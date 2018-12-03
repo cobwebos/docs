@@ -10,12 +10,12 @@ ms.component: computer-vision
 ms.topic: conceptual
 ms.date: 08/29/2018
 ms.author: pafarley
-ms.openlocfilehash: 602ea8028cf89b23df692d5c2fb9b781f64bcad4
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 7062d98d40c15f4e9e873038fc12fc1b104c996d
+ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49341678"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52333473"
 ---
 # <a name="categorizing-images"></a>对图像进行分类
 
@@ -25,7 +25,7 @@ ms.locfileid: "49341678"
 
 根据下图中所示的包含 86 个概念的列表，可以对图像按广泛到具体进行分类。 有关文本格式的完整分类，请参阅[类别分类](category-taxonomy.md)。
 
-![分析类别](./Images/analyze_categories.png)
+![类别分类中所有类别的分组列表](./Images/analyze_categories-v2.png)
 
 ## <a name="image-categorization-examples"></a>图像分类示例
 

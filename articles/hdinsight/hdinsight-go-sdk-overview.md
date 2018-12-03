@@ -7,12 +7,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 9/21/2018
 ms.author: tyfox
-ms.openlocfilehash: 8beb75748c2e9fe3f71ad321c4cd523e344fb90c
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: f018130ca94c7efb7a9c6c873c150dcc382dbc4c
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48901900"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52498291"
 ---
 # <a name="hdinsight-go-management-sdk-preview"></a>HDInsight Go 管理 SDK 预览版
 
@@ -141,7 +141,7 @@ func main() {
 
 #### <a name="example"></a>示例
 
-本示例演示如何创建包含 2 个头节点和 1 个工作节点的 Spark 群集。
+本示例演示如何创建包含 2 个头节点和 1 个工作节点的 [Apache Spark](https://spark.apache.org/) 群集。
 
 > [!NOTE]
 > 首先需要创建一个资源组和存储帐户，下面将予以介绍。 如果已创建资源组和存储帐户，则可以跳过这些步骤。

@@ -1,11 +1,12 @@
 ---
-title: 将数据从联机数据源导入机器学习工作室 | Microsoft 文档
-description: 如何将训练数据从各种联机源导入 Azure 机器学习工作室。
+title: 将数据从联机数据源导入机器学习工作室 - Azure | Microsoft Docs
+description: 本文介绍对从各种源导入联机数据的支持，以及将数据从这些源移入 Azure 机器学习工作室试验所需的信息。
 keywords: 导入数据, 数据格式, 数据类型, 数据源, 训练数据
 services: machine-learning
 documentationcenter: ''
-author: heatherbshapiro
-ms.author: hshapiro
+author: ericlicoding
+ms.custom: (previous ms.author=hshapiro, author=heatherbshapiro)
+ms.author: amlstudiodocs
 manager: hjerez
 editor: cgronlun
 ms.assetid: 701b93fe-765b-4d15-a1cf-9b607f17add6
@@ -16,15 +17,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/29/2017
-ms.openlocfilehash: 87a7e968073d8625375ea837f9377145b6dfb45a
-ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
+ms.openlocfilehash: 89e2414b32dfb3cc6773d09dcdc3e711e56492ef
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51344855"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52315013"
 ---
 # <a name="import-data-into-azure-machine-learning-studio-from-various-online-data-sources-with-the-import-data-module"></a>使用“导入数据”模块将数据从各种联机数据源导入 Azure 机器学习工作室
-本文介绍针对从各种源导入联机数据的支持，以及将数据从这些源移入 Azure 机器学习试验所需的信息。
+本文介绍对从各种源导入联机数据的支持，以及将数据从这些源移入 Azure 机器学习工作室试验所需的信息。
 
 > [!NOTE]
 > 本文提供有关[导入数据][import-data]模块的一般信息。 有关可访问的数据类型、格式、参数和常见问题解答的详细信息，请参阅[导入数据][import-data]模块的模块参考主题。

@@ -11,14 +11,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/28/2018
+ms.date: 11/19/2018
 ms.author: jeedes
-ms.openlocfilehash: 49516523abdd927c3ae60235fcd74473689c6856
-ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
+ms.openlocfilehash: 65649c3fdc11d74b5888b26b81ae85e10f2788bd
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48020568"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52426870"
 ---
 # <a name="atlassian-jira-and-confluence-admin-guide-for-azure-active-directory"></a>将 Atlassian Jira 和 Confluence 与 Azure Active Directory 结合使用的管理员指南
 
@@ -67,9 +67,23 @@ Jira 和 Confluence 管理员可以使用该插件来启用通过 Azure AD 进�
 
 该插件支持以下版本的 Jira 和 Confluence：
 
-* Jira 核心和软件：6.0 到 7.8
-* Jira Service Desk：3.0 到 3.2
+* Jira 核心和软件：6.0 到 7.12
+* Jira 服务台：3.0.0 到 3.5.0
+* JIRA 还支持 5.2。 有关更多详细信息，请单击 [Microsoft Azure Active Directory single sign-on for JIRA 5.2](https://docs.microsoft.com/azure/active-directory/saas-apps/jira52microsoft-tutorial)
 * Confluence：5.0 至 5.10
+* Confluence：6.0.1
+* Confluence：6.1.1
+* Confluence：6.2.1
+* Confluence：6.3.4
+* Confluence：6.4.0
+* Confluence：6.5.0
+* Confluence：6.6.2
+* Confluence：6.7.0
+* Confluence：6.8.1
+* Confluence：6.9.0
+* Confluence：6.10.0
+* Confluence：6.11.0
+* Confluence：6.12.0
 
 ## <a name="installation"></a>安装
 
@@ -79,7 +93,7 @@ Jira 和 Confluence 管理员可以使用该插件来启用通过 Azure AD 进�
 
 2. 转到 Jira/Confluence 管理控制台，并选择“加载项”。
 
-3. 在 Atlassian Marketplace 中搜索“Microsoft SAML SSO 插件”。
+3. 从 Microsoft 下载中心下载[适用于 Jira 的 Microsoft SAML SSO 插件](https://www.microsoft.com/download/details.aspx?id=56506)/ [适用于 Confluence 的 Microsoft SAML SSO 插件](https://www.microsoft.com/download/details.aspx?id=56503)。
 
    相应的插件版本随即显示在搜索结果中。
 
@@ -171,9 +185,23 @@ Jira 和 Confluence 管理员可以使用该插件来启用通过 Azure AD 进�
 
 此插件支持以下版本：
 
-* Jira 核心和软件：6.0 到 7.8
-* Jira Service Desk：3.0 到 3.2
+* Jira 核心和软件：6.0 到 7.12
+* Jira 服务台：3.0.0 到 3.5.0
+* JIRA 还支持 5.2。 有关更多详细信息，请单击 [Microsoft Azure Active Directory single sign-on for JIRA 5.2](https://docs.microsoft.com/azure/active-directory/saas-apps/jira52microsoft-tutorial)
 * Confluence：5.0 至 5.10
+* Confluence：6.0.1
+* Confluence：6.1.1
+* Confluence：6.2.1
+* Confluence：6.3.4
+* Confluence：6.4.0
+* Confluence：6.5.0
+* Confluence：6.6.2
+* Confluence：6.7.0
+* Confluence：6.8.1
+* Confluence：6.9.0
+* Confluence：6.10.0
+* Confluence：6.11.0
+* Confluence：6.12.0
 
 ### <a name="is-the-plug-in-free-or-paid"></a>此插件是免费的还是付费的？
 

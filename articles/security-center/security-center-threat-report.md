@@ -3,7 +3,7 @@ title: Azure 安全中心威胁智能报告 | Microsoft 文档
 description: 本文档可帮助你在调查过程中使用 Azure 安全中心威胁智能报告来查找有关安全警报的详细信息。
 services: security-center
 documentationcenter: na
-author: terrylan
+author: rkarlin
 manager: mbaldwin
 editor: ''
 ms.assetid: 5662e312-e8c2-4736-974e-576eeb333484
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/30/2017
-ms.author: yurid
-ms.openlocfilehash: f0c1588633f548b740e6b9f6a7a3121ef791500a
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.date: 11/28/2018
+ms.author: rkarlin
+ms.openlocfilehash: 90cf57e22c4bb86ed9a784731480bc3fb8d3025d
+ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51234249"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52619952"
 ---
 # <a name="azure-security-center-threat-intelligence-report"></a>Azure 安全中心威胁智能报告
 本文档介绍 Azure 安全中心威胁智能报告如何能够帮助了解有关生成了安全警报的威胁的详细信息。
@@ -48,7 +48,7 @@ ms.locfileid: "51234249"
 * **活动报告**：重点提供特定攻击活动的详细信息。
 * **威胁摘要报告**：包含前两个报告中的所有项目。
 
-在[事件响应](security-center-incident-response.md)过程中，进行调查以了解攻击来源、攻击者的动机以及将来可缓解此问题的的操作时，这种类型的信息非常有用。
+在[事件响应](security-center-incident-response.md)过程中，进行调查以了解攻击来源、攻击者的动机以及将来可缓解此问题的操作时，这种类型的信息很有用。
 
 ## <a name="how-to-access-the-threat-intelligence-report"></a>如何访问威胁智能报告？
 可以通过查看“安全警报”  磁贴查看当前警报。 打开 Azure 门户，按照以下步骤查看每个警报的更多详细信息：

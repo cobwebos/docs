@@ -10,16 +10,16 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 09/19/2018
 ms.author: kakampf
-ms.openlocfilehash: fca83090e6713e4360bd19d49c7fd6b9147fd6ea
-ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
+ms.openlocfilehash: 2ae0450be420edeb4ef18d0c9e5ca6e1dacaf50d
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51219726"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52497012"
 ---
 # <a name="what-are-the-apache-hadoop-components-and-versions-available-with-hdinsight"></a>HDInsight 提供了哪些 Apache Hadoop 组件和版本？
 
-了解 Microsoft Azure HDInsight 中的 Apache Hadoop 生态系统组件和版本，以及 Enterprise Security 包。 另外，还将了解如何检查 HDInsight 中的 Hadoop 组件版本。 
+了解 Microsoft Azure HDInsight 中的 [Apache Hadoop](https://hadoop.apache.org/) 生态系统组件和版本，以及企业安全性套餐。 另外，还将了解如何检查 HDInsight 中的 Hadoop 组件版本。 
 
 每个 HDInsight 版本都是某个版本的 Hortonworks 数据平台 (HDP) 的云分发版。
 
@@ -58,7 +58,7 @@ Azure HDInsight 支持多个可随时部署的 Hadoop 群集版本。 每个版�
 
 ## <a name="check-for-current-hadoop-component-version-information"></a>检查当前的 Hadoop 组件版本信息
 
-与 HDInsight 群集版本关联的组件版本可能会随 HDInsight 的更新而更改。 若要检查 Hadoop 组件并验证正在为群集使用哪些版本，请使用 Ambari REST API。 **GetComponentInformation** 命令检索有关服务组件的信息。 有关详细信息，请参阅 [Ambari 文档][ambari-docs]。
+与 HDInsight 群集版本关联的组件版本可能会随 HDInsight 的更新而更改。 若要检查 Hadoop 组件并验证正在为群集使用哪些版本，请使用 Ambari REST API。 **GetComponentInformation** 命令检索有关服务组件的信息。 有关详细信息，请参阅 [Apache Ambari 文档][ambari-docs]。
 
 对于 Windows 群集，检查组件版本的另一种方法是使用远程桌面登录到群集并检查 C:\apps\dist\ 目录的内容。
 
@@ -117,8 +117,8 @@ Enterprise Security 是一种可选包，可在 HDInsight 群集上作为创建�
 
     有关详细信息，请参阅：
 
-    - [已加入域的 HDInsight 群集的 Hadoop 安全性简介](./domain-joined/apache-domain-joined-introduction.md)
-    - [在 HDInsight 中计划 Azure 已加入域的 Hadoop 群集](./domain-joined/apache-domain-joined-architecture.md)
+    - [已加入域的 HDInsight 群集的 Apache Hadoop 安全性简介](./domain-joined/apache-domain-joined-introduction.md)
+    - [在 HDInsight 中计划 Azure 已加入域的 Apache Hadoop 群集](./domain-joined/apache-domain-joined-architecture.md)
     - [配置已加入域的沙盒环境](./domain-joined/apache-domain-joined-configure.md)
     - [使用 Azure Active Directory 域服务配置已加入域的 HDInsight 群集](./domain-joined/apache-domain-joined-configure-using-azure-adds.md)
 
@@ -129,7 +129,7 @@ Enterprise Security 是一种可选包，可在 HDInsight 群集上作为创建�
 
     有关详细信息，请参阅：
 
-    - [在已加入域的 HDInsight 中配置 Hive 策略](./domain-joined/apache-domain-joined-run-hive.md)
+    - [在已加入域的 HDInsight 中配置 Apache Hive 策略](./domain-joined/apache-domain-joined-run-hive.md)
 
 - 查看审核日志以监视访问和配置的策略。 
 
@@ -151,7 +151,7 @@ Enterprise Security 包支持使用 Azure Data Lake Store 作为主存储和附�
 ## <a name="hdinsight-windows-retirement"></a>HDInsight Windows 停用
 Microsoft Azure HDInsight 版本 3.3 是 Windows 上的最新 HDInsight 版本。 Windows 上的 HDInsight 的停用日期是 2018 年 7 月 31 日。 如果在 Windows 上具有 HDInsight 3.3 或更低版本的群集，则必须在 2018 年 7 月 31 日之前迁移到 Linux 上的 HDInsight（HDInsight 版本 3.5 或更高版本）。 迁移到 Linux OS 后，仍然能够创建 HDInsight 群集或调整其大小。 对 Windows 上的 HDInsight 版本 3.3 的支持已于 2016 年 6 月 27 日到期。
 
-从 HDInsight 版本 3.4 开始，Microsoft 仅在 Linux OS 上发行了 HDInsight。 因此，HDInsight 中的某些组件仅可供 Linux 使用。 这包括 Apache Ranger、Kafka、交互式查询、Spark、HDInsight 应用程序以及作为主文件系统的 Azure Data Lake Store。 HDInsight 的将来版本仅在 Linux OS 上可用。 Windows 上的 HDInsight 将不会有任何将来版本。 
+从 HDInsight 版本 3.4 开始，Microsoft 仅在 Linux OS 上发行了 HDInsight。 因此，HDInsight 中的某些组件仅可供 Linux 使用。 这包括 [Apache Ranger](https://ranger.apache.org/)、[Apache Kafka](https://kafka.apache.org/)、交互式查询、[Apache Spark](https://spark.apache.org/)、HDInsight 应用程序以及作为主文件系统的 Azure Data Lake Store。 HDInsight 的将来版本仅在 Linux OS 上可用。 Windows 上的 HDInsight 将不会有任何将来版本。 
 
 ## <a name="faqs"></a>常见问题
 
@@ -264,8 +264,8 @@ HDInsight Windows 群集将按现样运行，但是你将无法创建新的 HDIn
 > - 对于 HBase 群集类型，辅助角色称为“区域”。
 
 ## <a name="next-steps"></a>后续步骤
-- [为 HDInsight 上的 Hadoop、Spark 和其他组件设置群集](hdinsight-hadoop-provision-linux-clusters.md)
-- [使用 Windows 电脑在 HDInsight 上的 Hadoop 中工作](hdinsight-hadoop-windows-tools.md)
+- [为 HDInsight 上的 Apache Hadoop、Spark 和其他组件设置群集](hdinsight-hadoop-provision-linux-clusters.md)
+- [使用 Windows 电脑在 HDInsight 上的 Apache Hadoop 中工作](hdinsight-hadoop-windows-tools.md)
 
 [Supported HDInsight versions]:(#supported-hdinsight-versions)
 

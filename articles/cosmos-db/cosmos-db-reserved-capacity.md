@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: 79b3b84695bd547d6a4b12665aff822b21dfb781
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: d389b3b7e50c83246542fd6b446827055a5a002a
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49354217"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52583460"
 ---
 # <a name="prepay-for-azure-cosmos-db-resources-with-reserved-capacity"></a>通过预留容量预付 Azure Cosmos DB 资源费用
 
@@ -85,7 +85,7 @@ Azure Cosmos DB 预留容量涵盖为资源预配的吞吐量的费用。 但它
    * [了解即用即付订阅的预留使用情况](../billing/billing-understand-reserved-instance-usage.md)
    * [合作伙伴中心 CSP 计划中的 Azure 预留](https://docs.microsoft.com/partner-center/azure-reservations)
 
-## <a name="need-help-contact-support"></a>需要帮助？ 联系支持人员
+## <a name="need-help-contact-us"></a>需要帮助？ 请联系我们。
 
-如果仍有疑问，请[联系支持人员](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)以快速解决问题。
+如果你有任何疑问或需要帮助，请[创建支持请求](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)。
 

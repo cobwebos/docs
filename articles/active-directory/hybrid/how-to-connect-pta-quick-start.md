@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/28/2018
+ms.date: 11/27/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 70c19b394b5c5702a0ec0f18aa3bbd0c05e39dfd
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 95083ec1d909333596fd36ad998022778a4f9ec9
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51249789"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52582729"
 ---
 # <a name="azure-active-directory-pass-through-authentication-quick-start"></a>Azure Active Directory 直通身份验证：快速入门
 
@@ -29,7 +29,7 @@ ms.locfileid: "51249789"
 借助 Azure Active Directory (Azure AD) 直通身份验证，你的用户可使用同一密码登录到本地应用程序和基于云的应用程序。 直通身份验证通过直接针对本地 Active Directory 验证用户密码来使其登录。
 
 >[!IMPORTANT]
->如果要从 AD FS（或其他联合技术）迁移到传递身份验证，强烈建议按照[此处](https://github.com/Identity-Deployment-Guides/Identity-Deployment-Guides/blob/master/Authentication/Migrating%20from%20Federated%20Authentication%20to%20Pass-through%20Authentication.docx)发布的详细部署指南进行操作。
+>如果要从 AD FS（或其他联合技术）迁移到传递身份验证，强烈建议按照[此处](https://aka.ms/adfstoPTADPDownload)发布的详细部署指南进行操作。
 
 按照以下说明在租户上部署直通身份验证：
 
@@ -44,13 +44,13 @@ ms.locfileid: "51249789"
 
 ### <a name="in-your-on-premises-environment"></a>在本地环境中
 
-1. 标识运行 Windows Server 2012 R2 或更高版本的服务器，以在其上运行 Azure AD Connect。 将该服务器添加到与需要验证其密码的用户同一 Active Directory 林中。
+1. 标识运行 Windows Server 2012 R2 或更高版本的服务器，以在其上运行 Azure AD Connect。 如果尚未启用，请[在服务器上启用 TLS 1.2](./how-to-connect-install-prerequisites.md#enable-tls-12-for-azure-ad-connect)。 将该服务器添加到与需要验证其密码的用户同一 Active Directory 林中。
 2. 在上一步中标识的服务器上安装[最新版 Azure AD Connect](https://www.microsoft.com/download/details.aspx?id=47594)。 如果已在运行 Azure AD Connect，请确保其版本为 1.1.750.0 或更高版本。
 
     >[!NOTE]
     >Azure AD Connect 版本 1.1.557.0、1.1.558.0、1.1.561.0 和 1.1.614.0 具有密码哈希同步相关问题。 如果不打算将密码哈希同步与直通身份验证结合使用，请参阅 [Azure AD Connect 发行说明](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-version-history#116470)了解详细信息。
 
-3. 确定可以运行独立身份验证代理的一个或多个其他服务器（运行Windows Server 2012 R2 或更高版本）。 需要这些额外的服务器来确保登录请求的高可用性。 将这些服务器添加到需要验证其密码的用户所在的同一 Active Directory 林中。
+3. 确定可以运行独立身份验证代理的一个或多个其他服务器（在启用 TLS 1.2 的情况下运行 Windows Server 2012 R2 或更高版本）。 需要这些额外的服务器来确保登录请求的高可用性。 将这些服务器添加到需要验证其密码的用户所在的同一 Active Directory 林中。
 
     >[!IMPORTANT]
     >在生产环境中，我们建议你在租户上至少运行 3 个身份验证代理。 系统限制每位租户最多安装 12 个身份验证代理。 最佳做法是将运行身份验证代理的所有服务器视为第 0 层系统（请参阅[参考](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material)）。
@@ -85,7 +85,7 @@ ms.locfileid: "51249789"
 ![Azure AD Connect：更改用户登录](./media/how-to-connect-pta-quick-start/changeusersignin.png)
 
 >[!IMPORTANT]
->直通身份验证是租户级功能。 启用此功能将影响租户内所有托管域中的用户登录方式。 如果你从 Active Directory 联合身份验证服务 (AD FS) 切换到直通身份验证，你应等待至少 12 小时以后再关闭 AD FS 基础结构。 此等待时间是为了确保用户在转换期间可以保持登录到 Exchange ActiveSync。 有关从 AD FS 迁移到直通身份验证的更多帮助，请查看我们在[此处](https://github.com/Identity-Deployment-Guides/Identity-Deployment-Guides/blob/master/Authentication/Migrating%20from%20Federated%20Authentication%20to%20Pass-through%20Authentication.docx)发布的详细部署指南。
+>直通身份验证是租户级功能。 启用此功能将影响租户内所有托管域中的用户登录方式。 如果你从 Active Directory 联合身份验证服务 (AD FS) 切换到直通身份验证，你应等待至少 12 小时以后再关闭 AD FS 基础结构。 此等待时间是为了确保用户在转换期间可以保持登录到 Exchange ActiveSync。 有关从 AD FS 迁移到直通身份验证的更多帮助，请查看我们在[此处](https://aka.ms/adfstoptadpdownload)发布的详细部署计划。
 
 ## <a name="step-3-test-the-feature"></a>步骤 3：测试功能
 

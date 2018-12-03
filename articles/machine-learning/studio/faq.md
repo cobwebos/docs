@@ -1,11 +1,12 @@
 ---
-title: Azure 机器学习常见问题 (FAQ) | Microsoft 文档
-description: Azure 机器学习简介：包括用于简化型预测建模的云服务计费、功能和限制的常见问题。
+title: 机器学习工作室常见问题解答 (FAQ) - Azure | Microsoft Docs
+description: Azure 机器学习工作室：包括用于简化型预测建模的云服务计费、功能和限制的常见问题解答。
 keywords: 机器学习简介, 预测建模, 什么是机器学习
 services: machine-learning
 documentationcenter: ''
-author: heatherbshapiro
-ms.author: hshapiro
+author: ericlicoding
+ms.custom: (previous ms.author=hshapiro, author=heatherbshapiro)
+ms.author: amlstudiodocs
 ms.assetid: a4a32a06-dbed-4727-a857-c10da774ce66
 ms.service: machine-learning
 ms.component: studio
@@ -14,14 +15,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/02/2017
-ms.openlocfilehash: 77ae05c240dbb099528d7224a936d90416366816
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: c9c80da55737d0093813b84e33d3d90c5d7d4603
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51247766"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52309134"
 ---
-# <a name="azure-machine-learning-frequently-asked-questions-billing-capabilities-limitations-and-support"></a>Azure 机器学习常见问题：计费、功能、限制和支持
+# <a name="azure-machine-learning-studio-frequently-asked-questions-billing-capabilities-limitations-and-support"></a>Azure 机器学习工作室常见问题：计费、功能、限制和支持
 下面提供了一些有关 Azure 机器学习的常见问题 (FAQ) 和相应解答。Azure 机器学习是适合通过 Web 服务开发预测模型和操作解决方案的云服务。 这些常见问题涉及到服务使用方法，包括计费模式、功能、限制和支持。
 
 **存在此处找不到的问题？**
@@ -29,12 +30,6 @@ ms.locfileid: "51247766"
 Azure 机器学习在 MSDN 上设有论坛，数据科学社区的成员可以在那里咨询有关 Azure 机器学习的问题。 Azure 机器学习团队负责监管该论坛。 转到 [Azure 机器学习论坛](https://social.msdn.microsoft.com/Forums/windowsazure/home?forum=MachineLearning)搜索答案，或者发布自己的新问题。
 
 ## <a name="general-questions"></a>一般问题
-**什么是 Azure 机器学习？**
-
-Azure 机器学习是完全托管的服务，可用于创建、测试、操作和管理云中的预测分析解决方案。 只需使用浏览器即可登录和上载数据，立即开始机器学习试验。 拖放式预测建模、数量巨大的模块以及包含多种启动模板的库，简化并加速了常见机器学习任务的执行。 有关详细信息，请参阅 [Azure Machine Learning service overview](https://azure.microsoft.com/services/machine-learning/)（Azure 机器学习服务概述）。 如需机器学习简介，了解其中的重要术语和概念，请参阅 [Azure 机器学习简介](what-is-machine-learning.md)。
-
-[!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
-
 **什么是机器学习工作室？**
 
 机器学习工作室是可通过 Web 浏览器对其进行访问的工作台环境。 机器学习工作室在可视组合界面中托管了一组模块，有助于以试验形式构建端到端数据科学工作流。
@@ -93,7 +88,7 @@ Azure 机器学习有两种类型的 Web 服务：
 以下数据类型可以在特征规范化期间扩展为较大数据集，其限制为小于 10 GB：
 
 * 稀疏
-* 分类
+* Categorical
 * 字符串
 * 二进制数据
 
@@ -260,7 +255,7 @@ Azure 机器学习有两种类型的 Web 服务：
 以下数据类型可以在特征规范化期间扩展为较大数据集，其限制为小于 10 GB：
 
 * 稀疏
-* 分类
+* Categorical
 * 字符串
 * 二进制数据
 

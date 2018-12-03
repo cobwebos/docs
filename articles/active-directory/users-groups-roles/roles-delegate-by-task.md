@@ -14,12 +14,12 @@ ms.date: 11/08/2018
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
-ms.openlocfilehash: b4704e9f078b248ef1835babb3b63c378b011c4e
-ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
+ms.openlocfilehash: bd63e8379051864a19c473779625a925446185f2
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2018
-ms.locfileid: "51516414"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52445015"
 ---
 # <a name="administrator-roles-by-identity-task-in-azure-active-directory"></a>Azure Active Directory 中按照标识任务委托的管理员角色
 
@@ -147,7 +147,7 @@ ms.locfileid: "51516414"
 创建组 | 用户帐户管理员 | 
 创建、更新或删除组或应用的访问评审 | 用户帐户管理员 | 
 管理组到期时间 | 用户帐户管理员 | 
-管理组设置 | 用户帐户管理员 | 
+管理组设置 | 全局管理员角色 | 
 读取所有配置（隐藏成员身份除外） | 目录读者 | 默认用户角色（[请参阅文档](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)）
 读取隐藏成员身份 | 组成员 | 组所有者、密码管理员、Exchange 管理员、SharePoint 管理员、Teams 管理员、用户帐户管理员
 读取具有隐藏成员身份的组的成员身份 | 支持管理员 | 用户帐户管理员、Teams 管理员

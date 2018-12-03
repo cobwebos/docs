@@ -1,10 +1,11 @@
 ---
-title: 步骤 4：训练和评估预测分析模型 | Microsoft Docs
+title: 步骤 4：训练预测分析模型 - Azure 机器学习工作室 | Microsoft Docs
 description: 开发预测解决方案演练的步骤 4：在 Azure 机器学习工作室中训练、评分和评估多个模型。
 services: machine-learning
 documentationcenter: ''
-author: heatherbshapiro
-ms.author: hshapiro
+author: ericlicoding
+ms.custom: (previous ms.author=hshapiro, author=heatherbshapiro)
+ms.author: amlstudiodocs
 manager: hjerez
 editor: cgronlun
 ms.assetid: d905f6b3-9201-4117-b769-5f9ed5ee1cac
@@ -15,17 +16,17 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/23/2017
-ms.openlocfilehash: 95937ee74be3f6facbc482c3cfd80a8af9128ea3
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 4b4ffcf8e6c886a2f182c844f940e53c24d1efa0
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34836002"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52313463"
 ---
-# <a name="walkthrough-step-4-train-and-evaluate-the-predictive-analytic-models"></a>演练步骤 4：训练和评估预测分析模型
+# <a name="walkthrough-step-4-train-and-evaluate-the-predictive-analytic-models-in-machine-learning-studio"></a>演练步骤 4：在机器学习工作室中训练和评估预测分析模型
 本主题包含演练[在 Azure 机器学习中开发预测分析解决方案](walkthrough-develop-predictive-solution.md)的第四步
 
-1. [创建机器学习工作区](walkthrough-1-create-ml-workspace.md)
+1. [创建机器学习工作室工作区](walkthrough-1-create-ml-workspace.md)
 2. [上传现有数据](walkthrough-2-upload-data.md)
 3. [创建新试验](walkthrough-3-create-new-experiment.md)
 4. **定型和评估模型**
@@ -40,7 +41,7 @@ ms.locfileid: "34836002"
 可从多种模型中进行选择。 要查看可用的模型，请在模块调色板中展开“机器学习”节点，并展开“初始化模型”及其下面的节点。 为实现本实验的目的，我们将选择[两类支持向量机][two-class-support-vector-machine] (SVM) 和[两类提升决策树][two-class-boosted-decision-tree]模块。    
 
 > [!TIP]
-> 要获取有关确定哪种机器学习算法最适合你正尝试解决的特定问题的帮助，请参阅[如何选择 Microsoft Azure 机器学习的算法](algorithm-choice.md)。
+> 要获取有关确定哪种机器学习算法最适合你正尝试解决的特定问题的帮助，请参阅[如何选择 Microsoft Azure 机器学习工作室的算法](algorithm-choice.md)。
 > 
 > 
 

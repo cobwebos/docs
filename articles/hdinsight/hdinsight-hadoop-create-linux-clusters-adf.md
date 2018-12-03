@@ -9,17 +9,17 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/07/2018
 ms.author: hrasheed
-ms.openlocfilehash: 76651874951255d9b01efdc6e91892f6852d948d
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: 1e55da981daf29aca491c480d58f399bc681fd27
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51036370"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52499550"
 ---
 # <a name="tutorial-create-on-demand-apache-hadoop-clusters-in-hdinsight-using-azure-data-factory"></a>教程：使用 Azure 数据工厂在 HDInsight 中创建按需 Apache Hadoop 群集
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
 
-本文介绍如何使用 Azure 数据工厂在 Azure HDInsight 中按需创建 Apache Hadoop 群集。 然后使用 Azure 数据工厂中的数据管道运行 Hive 作业并删除该群集。 本教程结束时，你便知道如何将大数据作业运行操作化，其中的群集创建、作业运行和群集删除操作都是按计划执行的。
+本文介绍如何使用 Azure 数据工厂在 Azure HDInsight 中按需创建 [Apache Hadoop](https://hadoop.apache.org/) 群集。 然后使用 Azure 数据工厂中的数据管道运行 Hive 作业并删除该群集。 本教程结束时，你便知道如何将大数据作业运行操作化，其中的群集创建、作业运行和群集删除操作都是按计划执行的。
 
 本教程涵盖以下任务： 
 
@@ -43,7 +43,7 @@ ms.locfileid: "51036370"
 
 ## <a name="create-an-azure-storage-account"></a>创建 Azure 存储帐户
 
-在本部分，我们将创建一个存储帐户，用作按需创建的 HDInsight 群集的默认存储。 此存储帐户还包含示例 HiveQL 脚本 (**hivescript.hql**)，该脚本用于模拟群集上运行的示例 Hive 作业。
+在本部分，我们将创建一个存储帐户，用作按需创建的 HDInsight 群集的默认存储。 此存储帐户还包含示例 [HiveQL](https://cwiki.apache.org/confluence/display/Hive/LanguageManual) 脚本 (**hivescript.hql**)，该脚本用于模拟群集上运行的示例 [Apache Hive](https://hive.apache.org/) 作业。
 
 本部分使用 Azure PowerShell 脚本创建存储帐户，并在存储帐户中复制所需的文件。 本部分中的 Azure PowerShell 示例脚本执行以下任务：
 
@@ -338,7 +338,7 @@ Write-host "`nScript completed" -ForegroundColor Green
 
 
 ## <a name="next-steps"></a>后续步骤
-本文已介绍如何使用 Azure 数据工厂创建按需 HDInsight 群集和运行 Hive 作业。 请继续学习下一篇文章，了解如何使用自定义配置创建 HDInsight 群集。
+本文已介绍如何使用 Azure 数据工厂创建按需 HDInsight 群集和运行 [Apache Hive](https://hive.apache.org/) 作业。 请继续学习下一篇文章，了解如何使用自定义配置创建 HDInsight 群集。
 
 > [!div class="nextstepaction"]
 >[使用自定义配置创建 Azure HDInsight 群集](hdinsight-hadoop-provision-linux-clusters.md)

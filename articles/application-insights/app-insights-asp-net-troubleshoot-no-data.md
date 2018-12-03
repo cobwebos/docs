@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/23/2018
 ms.author: mbullwin
-ms.openlocfilehash: 47cf32a57fc4a2d0e20a9f2c242db1f3dec96fe5
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 8bc4c0617ebf9b400260a217462abbcc439ae440
+ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51228532"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52284670"
 ---
 # <a name="troubleshooting-no-data---application-insights-for-net"></a>排查无数据问题 - 用于 .NET 的 Application Insights
 ## <a name="some-of-my-telemetry-is-missing"></a>缺少一些遥测数据
@@ -175,8 +175,14 @@ ApplicationInsights.config 中的检测密钥控制遥测数据发送到的位�
 
 可以禁用该功能，但不建议这样做。 采样旨在正确传输相关遥测数据，以便进行诊断。 
 
-## <a name="client-ip-address-is-0000"></a>客户端 IP 地址为 0.0.0.0 
-在 2018 年 2 月，我们[宣布](https://blogs.msdn.microsoft.com/applicationinsights-status/2018/02/01/all-octets-of-ip-address-will-be-set-to-zero/)我们删除了客户端 IP 地址的日志记录。 这不会影响地理位置。
+## <a name="client-ip-address-is-0000"></a>客户端 IP 地址为 0.0.0.0
+
+在 2018 年 2 月 5 日，我们宣布我们删除了客户端 IP 地址的日志记录。 这不会影响地理位置。
+
+> [!NOTE]
+> 如果需要 IP 地址的前 3 个八位字节，则可以使用[遥测初始化程序](https://docs.microsoft.com/azure/application-insights/app-insights-api-filtering-sampling#add-properties-itelemetryinitializer)添加自定义属性。
+> 这不会影响 2018 年 2 月 5 日之前收集的数据。
+
 
 ## <a name="wrong-geographical-data-in-user-telemetry"></a>用户遥测数据包含错误的地理数据
 城市、区域和国家/地区维度派生自 IP 地址，因此不一定始终都是准确的。 首先针对位置处理这些 IP 地址，然后将其更改为 0.0.0.0 以进行存储。

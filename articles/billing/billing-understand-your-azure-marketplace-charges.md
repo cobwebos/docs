@@ -4,7 +4,7 @@ description: 了解 Azure 中外部服务（以前称为市场）的计费。
 services: ''
 documentationcenter: ''
 author: adpick
-manager: tonguyen
+manager: adpick
 editor: ''
 tags: billing
 ms.assetid: 5e0e2a3c-d111-4054-8508-0c111c1b749b
@@ -16,12 +16,12 @@ ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: cwatson
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6ee11b7b565e669f61f6ba77e02139f071c452f4
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: 0e90c043976fc1798f675f8bf480b02e0ed93536
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47392204"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52581912"
 ---
 # <a name="understand-your-azure-billing-for-external-service-charges"></a>了解外部服务收费的 Azure 计费
 外部服务由 Azure 市场中的第三方软件供应商发布。 例如，SendGrid 是可以在 Azure 中购买的外部服务，但不是 Microsoft 发布的。
@@ -86,6 +86,7 @@ EA 客户可以在 EA 门户中查看外部服务支出和下载报表。 若要
 
 ![删除资源](./media/billing-understand-your-azure-marketplace-charges/deleteMarketplaceOrder.PNG)
 
-## <a name="need-help-contact-support"></a>需要帮助？ 联系支持人员。
-如果仍有疑问，请[联系支持人员](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)以快速解决问题。
+## <a name="need-help-contact-us"></a>需要帮助？ 请联系我们。
+
+如果你有任何疑问或需要帮助，请[创建支持请求](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)。
 

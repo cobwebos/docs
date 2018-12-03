@@ -9,17 +9,17 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/6/2018
 ms.author: tylerfox
-ms.openlocfilehash: 4bf46501a75b9dd5be7ae1b446a0db90c20be559
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 936e53ca328b0f54bfd75e7b3d4f6747b0037669
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51235252"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52495174"
 ---
 # <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-azure-powershell"></a>使用 Azure PowerShell 管理 HDInsight 中的 Apache Hadoop 群集
 [!INCLUDE [selector](../../includes/hdinsight-portal-management-selector.md)]
 
-Azure PowerShell 可用于在 Azure 中控制和自动执行工作负荷的部署和管理。 本文介绍了如何使用 Azure PowerShell 管理 Azure HDInsight 中的 Apache Hadoop 群集。 有关 HDInsight PowerShell cmdlet 的列表，请参阅 [HDInsight cmdlet 参考](https://msdn.microsoft.com/library/azure/dn479228.aspx)。
+Azure PowerShell 可用于在 Azure 中控制和自动执行工作负荷的部署和管理。 本文介绍了如何使用 Azure PowerShell 管理 Azure HDInsight 中的 [Apache Hadoop](https://hadoop.apache.org/) 群集。 有关 HDInsight PowerShell cmdlet 的列表，请参阅 [HDInsight cmdlet 参考](https://msdn.microsoft.com/library/azure/dn479228.aspx)。
 
 **先决条件**
 
@@ -80,12 +80,12 @@ Remove-AzureRmResourceGroup -Name <Resource Group Name>
 
 更改 HDInsight 支持的每种类型的群集所用数据节点数的影响：
 
-* Hadoop
+* Apache Hadoop
 
     可以顺利地增加正在运行的 Hadoop 群集中的辅助节点数，而不会影响任何挂起或运行中的作业。 还可以在操作进行中提交新作业。 系统会正常处理失败的缩放操作，让群集始终保持正常运行状态。
 
     减少数据节点数目以缩减 Hadoop 群集时，系统会重新启动群集中的某些服务。 重启服务将导致所有正在运行和挂起的作业在缩放操作完成时失败。 但是，可以在操作完成后重新提交这些作业。
-* HBase
+* Apache HBase
 
     可以顺利地在 HBase 群集运行时对其添加或删除节点。 在完成缩放操作后的几分钟内，区域服务器就能自动平衡。 不过，也可手动均衡区域服务器，方法是登录到群集的头节点，然后在命令提示符窗口中运行以下命令：
 
@@ -95,7 +95,7 @@ Remove-AzureRmResourceGroup -Name <Resource Group Name>
     >balancer
     ```
 
-* Storm
+* Apache Storm
 
     可以顺利地在 Storm 群集运行时对其添加或删除数据节点。 但是，在缩放操作成功完成后，需要重新平衡拓扑。
 
@@ -207,25 +207,25 @@ $resourceGroupName = $cluster.ResourceGroup
 
 
 ## <a name="submit-jobs"></a>提交作业
-**提交 MapReduce 作业**
+**提交 Apache Hadoop MapReduce 作业**
 
-请参阅[运行 HDInsight 随附的 MapReduce 示例](hadoop/apache-hadoop-run-samples-linux.md)。
+请参阅[运行 HDInsight 随附的 Apache Hadoop MapReduce 示例](hadoop/apache-hadoop-run-samples-linux.md)。
 
-**提交 Hive 作业**
+**提交 Apache Hive 作业**
 
-请参阅[使用 PowerShell 运行 Hive 查询](hadoop/apache-hadoop-use-hive-powershell.md)。
+请参阅[使用 PowerShell 运行 Apache Hive 查询](hadoop/apache-hadoop-use-hive-powershell.md)。
 
-**提交 Pig 作业**
+**提交 Apache Pig 作业**
 
-请参阅[使用 PowerShell 运行 Pig 作业](hadoop/apache-hadoop-use-pig-powershell.md)。
+请参阅[使用 PowerShell 运行 Apache Pig 作业](hadoop/apache-hadoop-use-pig-powershell.md)。
 
-**提交 Sqoop 作业**
+**提交 Apache Sqoop 作业**
 
-请参阅[将 Sqoop 与 HDInsight 配合使用](hadoop/hdinsight-use-sqoop.md)。
+请参阅[将 Apache Sqoop 与 HDInsight 配合使用](hadoop/hdinsight-use-sqoop.md)。
 
-**提交 Oozie 作业**
+**提交 Apache Oozie 作业**
 
-请参阅[在 HDInsight 中将 Oozie 与 Hadoop 配合使用以定义和运行工作流](hdinsight-use-oozie.md)。
+请参阅[在 HDInsight 中将 Apache Oozie 与 Apache Hadoop 配合使用以定义和运行工作流](hdinsight-use-oozie.md)。
 
 ## <a name="upload-data-to-azure-blob-storage"></a>将数据上传到 Azure Blob 存储
 请参阅[将数据上传到 HDInsight][hdinsight-upload-data]。
@@ -236,7 +236,7 @@ $resourceGroupName = $cluster.ResourceGroup
 * [使用命令行接口管理 HDInsight][hdinsight-admin-cli]
 * [创建 HDInsight 群集][hdinsight-provision]
 * [将数据上传到 HDInsight][hdinsight-upload-data]
-* [以编程方式提交 Hadoop 作业][hdinsight-submit-jobs]
+* [以编程方式提交 Apache Hadoop 作业][hdinsight-submit-jobs]
 * [Azure HDInsight 入门][hdinsight-get-started]
 
 [azure-purchase-options]: http://azure.microsoft.com/pricing/purchase-options/

@@ -8,18 +8,18 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 07/09/2018
 ms.author: ashish
-ms.openlocfilehash: 82995f2cc8facac9bef6f8c84c9667775ac81463
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: abb80bb0877f99dfb1623e320078e935f581d833
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51038512"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52498672"
 ---
-# <a name="use-ambari-to-optimize-hdinsight-cluster-configurations"></a>使用 Ambari 优化 HDInsight 群集配置
+# <a name="use-apache-ambari-to-optimize-hdinsight-cluster-configurations"></a>使用 Apache Ambari 优化 HDInsight 群集配置
 
-HDInsight 为大规模数据处理应用程序提供 Apache Hadoop 群集。 对这些复杂的多节点群集进行管理、监视和优化可能存在一定的难度。 [Apache Ambari](http://ambari.apache.org/) 是可用于管理和监视 HDInsight Linux 群集的 Web 界面。  对于 Windows 群集，可以使用 Ambari [REST API](hdinsight-hadoop-manage-ambari-rest-api.md)。
+HDInsight 为大规模数据处理应用程序提供 [Apache Hadoop](https://hadoop.apache.org/) 群集。 对这些复杂的多节点群集进行管理、监视和优化可能存在一定的难度。 [Apache Ambari](http://ambari.apache.org/) 是可用于管理和监视 HDInsight Linux 群集的 Web 界面。  对于 Windows 群集，请使用 [Ambari REST API](hdinsight-hadoop-manage-ambari-rest-api.md)。
 
-有关使用 Ambari Web UI 的简介，请参阅[使用 Ambari Web UI 管理 HDInsight 群集](hdinsight-hadoop-manage-ambari.md)
+有关使用 Ambari Web UI 的简介，请参阅[使用 Apache Ambari Web UI 管理 HDInsight 群集](hdinsight-hadoop-manage-ambari.md)
 
 使用群集凭据通过 `https://CLUSTERNAME.azurehdidnsight.net` 登录到 Ambari。 初始屏幕显示了概述仪表板。
 
@@ -59,16 +59,16 @@ NameNode Java 堆大小取决于许多因素，例如群集上的负载、文件
 
     ![保存更改](./media/hdinsight-changing-configs-via-ambari/save-changes.png)
 
-## <a name="hive-optimization"></a>Hive 优化
+## <a name="apache-hive-optimization"></a>Apache Hive 优化
 
-以下部分介绍了用于优化 Hive 总体性能的配置选项。
+以下部分介绍了用于优化 Apache Hive 总体性能的配置选项。
 
 1. 若要修改 Hive 配置参数，请从“服务”边栏中选择“Hive”。
 1. 导航到“配置”选项卡。
 
 ### <a name="set-the-hive-execution-engine"></a>设置 Hive 执行引擎
 
-Hive 提供两个执行引擎：MapReduce 和 Tez。 Tez 的速度比 MapReduce 更快。 HDInsight Linux 群集将 Tez 用作默认的执行引擎。 更改执行引擎：
+Hive 提供两个执行引擎：[Apache Hadoop MapReduce](https://hadoop.apache.org/docs/r1.2.1/mapred_tutorial.html) 和 [Apache TEZ](https://tez.apache.org/)。 Tez 的速度比 MapReduce 更快。 HDInsight Linux 群集将 Tez 用作默认的执行引擎。 更改执行引擎：
 
 1. 在 Hive 的“配置”选项卡上的筛选框中，键入“执行引擎”。
 
@@ -99,7 +99,7 @@ Hadoop 会尝试将单个文件拆分（映射）为多个文件，以并行方�
 
 ### <a name="tune-reducers"></a>优化化简器
 
-ORC 和 Snappy 都提供高性能。 但是，Hive 默认提供的化简器可能太少，从而导致瓶颈。
+[Apache ORC](https://orc.apache.org/) 和 [Snappy](https://google.github.io/snappy/) 都提供高性能。 但是，Hive 默认提供的化简器可能太少，从而导致瓶颈。
 
 例如，假设输入数据大小为 50 GB。 使用 Snappy 以 ORC 格式压缩这些数据后，大小为 1 GB。 Hive 估计所需的化简器数目为：(在映射器中输入的字节数 / `hive.exec.reducers.bytes.per.reducer`)。
 
@@ -287,9 +287,9 @@ Hive 中的默认联接类型是“随机联接”。 在 Hive 中，特殊的�
 | `tez.am.container.idle.release-timeout-min.millis` | 20000+ | 10000 |
 | `tez.am.container.idle.release-timeout-max.millis` | 40000+ | 20000 |
 
-## <a name="pig-optimization"></a>Pig 优化
+## <a name="apache-pig-optimization"></a>Apache Pig 优化
 
-可以通过 Ambari Web UI 修改 Pig 属性以优化 Pig 查询。 通过 Ambari 修改 Pig 属性会直接修改 `/etc/pig/2.4.2.0-258.0/pig.properties` 文件中的 Pig 属性。
+可以通过 Ambari Web UI 修改 [Apache Pig](https://pig.apache.org/) 属性以优化 Pig 查询。 通过 Ambari 修改 Pig 属性会直接修改 `/etc/pig/2.4.2.0-258.0/pig.properties` 文件中的 Pig 属性。
 
 1. 若要修改 Pig 属性，请导航到 Pig 的“配置”选项卡，然后展开“高级 pig-properties”窗格。
 
@@ -344,7 +344,7 @@ Pig 在作业执行期间生成临时文件。 压缩临时文件可以在将文
 
 * `pig.tmpfilecompression`：如果为 true，则启用临时文件压缩。 默认值为 false。
 
-* `pig.tmpfilecompression.codec`：用于压缩临时文件的压缩编解码器。 建议的压缩编解码器为 LZO 和 Snappy，它们可以较低 CPU 利用率。
+* `pig.tmpfilecompression.codec`：用于压缩临时文件的压缩编解码器。 建议的压缩编解码器为 [LZO](https://www.oberhumer.com/opensource/lzo/) 和 Snappy，它们可以降低 CPU 利用率。
 
 ### <a name="enable-split-combining"></a>启用拆分合并
 
@@ -361,9 +361,9 @@ Pig 在作业执行期间生成临时文件。 压缩临时文件可以在将文
 化简器数目根据 `pig.exec.reducers.bytes.per.reducer` 参数计算。 该参数指定每个化简器处理的字节数，默认值为 1 GB。 若要限制化简器的最大数目，请设置 `pig.exec.reducers.max` 属性，默认值为 999。
 
 
-## <a name="hbase-optimization-with-the-ambari-web-ui"></a>使用 Ambari Web UI 优化 HBase
+## <a name="apache-hbase-optimization-with-the-ambari-web-ui"></a>使用 Ambari Web UI 优化 Apache HBase
 
-可以通过 HBase 的“配置”选项卡修改 HBase 配置。以下部分介绍了一些影响 HBase 性能的重要配置设置。
+可以通过“HBase 配置”选项卡修改 [Apache HBase](https://hbase.apache.org/) 配置。以下部分介绍了一些影响 HBase 性能的重要配置设置。
 
 ### <a name="set-hbaseheapsize"></a>设置 HBASE_HEAPSIZE
 
@@ -453,5 +453,5 @@ Memstore 本地分配缓冲区使用率由 `hbase.hregion.memstore.mslab.enabled
 
 ## <a name="next-steps"></a>后续步骤
 
-* [使用 Ambari Web UI 管理 HDInsight 群集](hdinsight-hadoop-manage-ambari.md)
-* [Ambari REST API](hdinsight-hadoop-manage-ambari-rest-api.md)
+* [使用 Apache Ambari Web UI 管理 HDInsight 群集](hdinsight-hadoop-manage-ambari.md)
+* [Apache Ambari REST API](hdinsight-hadoop-manage-ambari-rest-api.md)

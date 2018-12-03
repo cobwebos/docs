@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/16/2016
 ms.author: cephalin
-ms.openlocfilehash: b5a06cff653007568b4ab2b44624b6314413f8a6
-ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
+ms.openlocfilehash: cb7b114836c83338f71c85f59299ecf1dc4613a9
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51636061"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52317613"
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>设置 Azure 应用服务中的过渡环境
 <a name="Overview"></a>
@@ -75,6 +75,7 @@ ms.locfileid: "51636061"
 * 处理程序映射
 * 监视和诊断设置
 * WebJobs 内容
+* 混合连接
 
 **不交换的设置**：
 
@@ -168,7 +169,7 @@ ms.locfileid: "51636061"
 <a name="Warm-up"></a>
 
 ## <a name="custom-warm-up-before-swap"></a>交换前的自定义准备工作
-某些应用可能需要自定义的准备操作。 web.config 中的 `applicationInitialization` 配置元素允许指定收到请求之前要执行的自定义初始化操作。 交换操作会等待此自定义准备操作完成。 以下是 web.config 片段的示例。
+使用[自动交换](#Auto-Swap)时，某些应用可能需要自定义的准备操作。 web.config 中的 `applicationInitialization` 配置元素允许指定收到请求之前要执行的自定义初始化操作。 交换操作会等待此自定义准备操作完成。 以下是 web.config 片段的示例。
 
     <system.webServer>
         <applicationInitialization>

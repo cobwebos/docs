@@ -9,12 +9,12 @@ ms.author: xshi
 ms.date: 09/27/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: abfd65920348bd51a9923d0a7c74f0f980a01540
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: 275ee95261b168b0da7f0a4638679fe38fc0581b
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51567819"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52443877"
 ---
 # <a name="use-visual-studio-code-to-develop-and-debug-c-modules-for-azure-iot-edge"></a>使用 Visual Studio Code 开发和调试 Azure IoT Edge 的 C# 模块
 
@@ -60,7 +60,7 @@ ms.locfileid: "51567819"
 5. 输入解决方案的名称。 
 6. 选择“C# 模块”作为解决方案中第一个模块的模板。
 7. 输入模块的名称。 选择容器注册表中唯一的名称。 
-8. 提供模块的映像存储库的名称。 VS Code 使用 localhost:5000 自动填充模块名。 将其替换为你自己的注册表信息。 如果使用本地 Docker 注册表进行测试，则可以使用 localhost。 如果使用 Azure 容器注册表，那么请从注册表的设置中使用登录服务器。 登录服务器如下所示：\<registry name\>.azurecr.io。 仅替换字符串的 localhost 部分，不要删除模块名。
+8. 提供模块的映像存储库的名称。 VS Code 使用 localhost:5000 自动填充模块名。 将其替换为你自己的注册表信息。 如果使用本地 Docker 注册表进行测试，则可以使用 localhost。 如果使用 Azure 容器注册表，那么请从注册表的设置中使用登录服务器。 登录服务器如下所示：\<registry name\>.azurecr.io。 仅替换字符串的 localhost 部分，不要删除模块名。 最终的字符串看起来类似于 \<注册表名称\>.azurecr.io/\<modulename\>。
 
    ![提供 Docker 映像存储库](./media/how-to-develop-csharp-module/repository.png)
 
@@ -78,6 +78,8 @@ VS Code 采用你提供的信息，创建一个 IoT Edge 解决方案，然后�
    >仅当为模块提供了映像存储库时，才会创建环境文件。 如果接受 localhost 默认值在本地进行测试和调试，则不需要声明环境变量。 
 
 * 一个 deployment.template.json 文件，列出新模块以及模拟可用于测试的数据的示例 tempSensor 模块。 有关部署清单如何工作的详细信息，请参阅[了解如何使用部署清单部署模块和建立路由](module-composition.md)。 
+* **deployment.debug.template.json** 文件包含具有适当容器选项的模块映像的调试版本。
+
 
 ## <a name="develop-your-module"></a>开发模块
 
@@ -91,9 +93,22 @@ VS Code 中的 C# 支持针对跨平台 .NET Core 开发进行了优化。 详�
 
 IoT Edge C# 模块是一个 .Net Core 应用程序。 它依赖于 Azure IoT C# 设备 SDK。 因为 IoT C# 模块要求启动和运行环境设置，因此，请在默认的模块代码中使用环境设置和输入名称初始化 **ModuleClient**。 还需要将消息发送或路由到输入通道。 默认的 C# 模块仅包含一个名为 input1 的输入通道。
 
-### <a name="setup-iot-edge-simulator-for-single-module-app"></a>为单个模块应用设置 IoT Edge 模拟器
+### <a name="setup-iot-edge-simulator-for-iot-edge-solution"></a>为 IoT Edge 解决方案设置 IoT Edge 模拟器
 
-1. 若要设置和起动模拟器，请在 VS Code 命令面板中，键入并选择“Azure IoT Edge：启动单个模块的 IoT Edge 中心模拟器”。 此外，还需要为单个模块应用程序指定输入名称，键入 input1 并按 Enter。 该命令将触发 iotedgehubdev CLI 并启动 IoT Edge 模拟器并测试实用程序模块容器。 如果模拟器已成功以单模块模式启动，则可以在集成终端中看到下面的输出。 还可以看到 `curl` 命令以帮助发送消息。 稍后将使用它。
+在开发计算机中，可以启动 IoT Edge 模拟器（而不是安装 IoT Edge 安全守护程序）以运行 IoT Edge 解决方案。 
+
+1. 在左侧的设备资源管理器中，右键单击 IoT Edge 设备 ID，选择“设置 IoT Edge 模拟器”以使用设备连接字符串启动模拟器。
+
+2. 可以看到 IoT Edge 模拟器已在集成终端中成功设置。
+
+### <a name="setup-iot-edge-simulator-for-single-module-app"></a>为单个模块应用设置 IoT Edge 模拟器
+在开发计算机中，可以启动 IoT Edge 模拟器（而不是安装 IoT Edge 安全守护程序）以运行 IoT Edge 解决方案。 
+
+1. 在左侧的设备资源管理器中，右键单击 IoT Edge 设备 ID，选择“设置 IoT Edge 模拟器”以使用设备连接字符串启动模拟器。
+
+2. 可以看到 IoT Edge 模拟器已在集成终端中成功设置。
+
+3. 在 VS Code 命令面板中，键入并选择“Azure IoT Edge: 启动单个模块的 IoT Edge 中心模拟器”。 此外，还需要为单个模块应用程序指定输入名称，键入 input1 并按 Enter。 该命令将触发 iotedgehubdev CLI 并启动 IoT Edge 模拟器并测试实用程序模块容器。 如果模拟器已成功以单模块模式启动，则可以在集成终端中看到下面的输出。 还可以看到 `curl` 命令以帮助发送消息。 稍后将使用它。
 
    ![为单个模块应用设置 IoT Edge 模拟器](media/how-to-develop-csharp-module/start-simulator-for-single-module.png)
 
@@ -103,7 +118,7 @@ IoT Edge C# 模块是一个 .Net Core 应用程序。 它依赖于 Azure IoT C# 
 
    edgeHubDev 容器是本地 IoT Edge 模拟器的核心。 它可以在没有 IoT Edge 安全守护程序的情况下在开发计算机上运行，并为本机模块应用或模块容器提供环境设置。 input 容器公开 restAPI 以帮助将消息桥接到模块上的目标输入通道。
 
-2. 在 VS Code 命令面板中，键入并选择“Azure IoT Edge：将模块凭据设置为用户设置”，以在用户设置中将模块环境设置设为 `azure-iot-edge.EdgeHubConnectionString` 和 `azure-iot-edge.EdgeModuleCACertificateFile`。 可以在 .vscode  >  launch.json 和[ VS Code 用户设置](https://code.visualstudio.com/docs/getstarted/settings)中找到这些环境设置。
+4. 在 VS Code 命令面板中，键入并选择“Azure IoT Edge：将模块凭据设置为用户设置”，以在用户设置中将模块环境设置设为 `azure-iot-edge.EdgeHubConnectionString` 和 `azure-iot-edge.EdgeModuleCACertificateFile`。 可以在 .vscode  >  launch.json 和[ VS Code 用户设置](https://code.visualstudio.com/docs/getstarted/settings)中找到这些环境设置。
 
 ### <a name="build-module-app-and-debug-in-launch-mode"></a>生成模块应用并在启动模式下调试
 
@@ -144,7 +159,7 @@ IoT Edge C# 模块是一个 .Net Core 应用程序。 它依赖于 Azure IoT C# 
 
 ## <a name="build-module-container-for-debugging-and-debug-in-attach-mode"></a>生成用于调试的模块容器并在附加模式下进行调试
 
-默认解决方案包含两个模块，一个是模拟的温度传感器模块，另一个是 C# 管道模块。 模拟的温度传感器不断向 C# 管道模块发送消息，然后将消息通过管道传送到 IoT 中心。 在创建的模块文件夹中，有适用于不同容器类型的多个 Docker 文件。 使用以扩展名 .debug 结尾的任何文件来生成用于测试的模块。 目前，C# 模块仅支持在 Linux amd64 容器的附加模式下进行调试。
+默认解决方案包含两个模块，一个是模拟的温度传感器模块，另一个是 C# 管道模块。 模拟的温度传感器不断向 C# 管道模块发送消息，然后将消息通过管道传送到 IoT 中心。 在创建的模块文件夹中，有适用于不同容器类型的多个 Docker 文件。 使用以扩展名 .debug 结尾的任何文件来生成用于测试的模块。 默认情况下，**deployment.debug.template.json** 包含映像的调试版本。 目前，C# 模块仅支持在 Linux amd64 容器的附加模式下进行调试。 可以在 VS Code 状态栏中切换 Azure IoT Edge 默认平台。
 
 ### <a name="setup-iot-edge-simulator-for-iot-edge-solution"></a>为 IoT Edge 解决方案设置 IoT Edge 模拟器
 
@@ -156,28 +171,24 @@ IoT Edge C# 模块是一个 .Net Core 应用程序。 它依赖于 Azure IoT C# 
 
 ### <a name="build-and-run-container-for-debugging-and-debug-in-attach-mode"></a>生成和运行用于调试的容器并在附加模式下进行调试
 
-1. 在 VS Code 中，导航到 `deployment.template.json` 文件。 通过在末尾添加 .debug 来更新 C# 模块映像 URL。
+1. 导航到 `program.cs`。 在此文件中添加一个断点。
 
-   ![将 **.debug** 添加到映像名称](./media/how-to-develop-csharp-module/image-debug.png)
-
-2. 导航到 `program.cs`。 在此文件中添加一个断点。
-
-3. 在 VS Code 文件资源管理器中，为解决方案选择 `deployment.template.json` 文件，在上下文菜单中，单击“在模拟器中生成并运行 IoT Edge 解决方案”。 可以在同一窗口中监视所有模块容器日志。 还可以导航到 Docker Explorer 以监视容器状态。
+2. 在 VS Code 文件资源管理器中，为解决方案选择 `deployment.debug.template.json` 文件，在上下文菜单中，单击“在模拟器中生成并运行 IoT Edge 解决方案”。 可以在同一窗口中监视所有模块容器日志。 还可以导航到 Docker Explorer 以监视容器状态。
 
    ![监视变量](media/how-to-develop-csharp-module/view-log.png)
 
-4. 导航到 VS Code 调试视图。 选择你的模块的调试配置文件。 调试选项名称应类似于“ModuleName 远程调试(.NET Core)”
+3. 导航到 VS Code 调试视图。 选择你的模块的调试配置文件。 调试选项名称应类似于“ModuleName 远程调试(.NET Core)”
 
    ![选择“配置”](media/how-to-develop-csharp-module/debug-config.png)
 
-5. 选择“开始调试”或选择 F5。 选择要附加到的进程。
+4. 选择“开始调试”或选择 F5。 选择要附加到的进程。
 
-6. 在 VS Code 调试视图中，将在左侧面板中看到变量。
+5. 在 VS Code 调试视图中，将在左侧面板中看到变量。
 
-7. 若要停止调试会话，请单击“停止”按钮或按 Shift + F5。 在 VS Code 命令面板中，键入并选择“Azure IoT Edge：停止 IoT Edge 模拟器”。
+6. 若要停止调试会话，请单击“停止”按钮或按 Shift + F5。 在 VS Code 命令面板中，键入并选择“Azure IoT Edge：停止 IoT Edge 模拟器”。
 
     > [!NOTE]
-    > 此示例展示了如何调试容器上的 .NET Core IoT Edge 模块。 它基于 `Dockerfile.debug` 的调试版本，在生成容器映像时这将在容器映像中包括 Visual Studio .NET Core 命令行调试器 (VSDBG)。 对于生产就绪的 IoT Edge 模块，建议在调试完 C# 模块后在不使用 VSDBG 的情况下直接使用或自定义 `Dockerfile`。
+    > 此示例展示了如何调试容器上的 .NET Core IoT Edge 模块。 它基于 `Dockerfile.debug` 的调试版本，在生成容器映像时这将在容器映像中包括 Visual Studio .NET Core 命令行调试器 (VSDBG)。 对于生产就绪的 IoT Edge 模块，建议在调试完 C# 模块后在不使用 VSDBG 的情况下直接使用 Dockerfile。
 
 
 ## <a name="next-steps"></a>后续步骤

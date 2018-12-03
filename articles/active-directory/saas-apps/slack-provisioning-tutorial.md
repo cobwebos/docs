@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 01/26/2018
 ms.author: asmalser-msft
 ms.reviewer: asmalser
-ms.openlocfilehash: 83155e448f350618446fb22bf52e831b1cc8d499
-ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
+ms.openlocfilehash: 74bfd49fd69353e95a275f31fa0bba9e9b558227
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51636537"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52632919"
 ---
 # <a name="tutorial-configure-slack-for-automatic-user-provisioning"></a>教程：为 Slack 配置自动用户预配
 
@@ -113,6 +113,14 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 
 若要详细了解如何读取 Azure AD 预配日志，请参阅[有关自动用户帐户预配的报告](../manage-apps/check-status-user-account-provisioning.md)。
 
+## <a name="connector-limitations"></a>连接器限制
+
+  * 配置 Slack 的 **displayName** 属性时，请注意以下行为： 
+  * 值并非完全唯一（例如，2 个用户可以具有相同的显示名称）
+  * 支持非英语字符、空格、大写。 
+  * 允许使用的标点符号包括句点、下划线、连字符、撇号、括号（例如 **( [ { } ] )**）和分隔符（例如 **, / ;**）。
+  * 仅当在 Slack 的工作区/组织中配置了这两个设置时才进行更新 - **启用配置文件同步**和**用户无法更改其显示名称**。
+  * Slack 的 **userName** 属性必须小于 21 个字符并具有唯一值。 
 
 ## <a name="additional-resources"></a>其他资源
 

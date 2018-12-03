@@ -5,15 +5,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 03/28/2018
+ms.date: 11/28/2018
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: bc6d615409f3c2d0f46286d2ad2ba20c32574afd
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: c7e9c841e7a1d73fcdedd99e210eefb1e52bbf3e
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49091703"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52498761"
 ---
 # <a name="deciding-when-to-use-azure-blobs-azure-files-or-azure-disks"></a>确定何时使用 Azure Blob、Azure 文件或 Azure 磁盘
 
@@ -23,7 +23,7 @@ Microsoft Azure 在 Azure 存储中提供多种功能用于在云中存储和访
 
 下表比较了文件、Blob 和磁盘，并显示每种技术适合的示例情景。
 
-| 功能 | Description | 使用时机 |
+| Feature | Description | 使用时机 |
 |--------------|-------------|-------------|
 | **Azure 文件** | 提供 SMB 接口、客户端库，以及一个用于从任意位置访问所存储的文件的 [REST 接口](/rest/api/storageservices/file-service-rest-api)。 | 可让你将某个已使用本机文件系统 API 在自身与在 Azure 中运行的其他应用程序之间共享数据的应用程序“即时转移”到云中。<br/><br/>可让你存储需要从许多虚拟机访问的开发和调试工具。 |
 | **Azure Blob** | 提供客户端库，以及一个可用于在块 Blob 中批量存储和访问非结构化数据的 [REST 接口](/rest/api/storageservices/blob-service-rest-api)。 | 使应用程序能够支持流式处理和随机访问方案。<br/><br/>可让你从任意位置访问应用程序数据。 |
@@ -42,7 +42,7 @@ Microsoft Azure 在 Azure 存储中提供多种功能用于在云中存储和访
 |终结点|`http://myaccount.blob.core.windows.net/mycontainer/myblob`|`\\myaccount.file.core.windows.net\myshare\myfile.txt`<br /><br /> `http://myaccount.file.core.windows.net/myshare/myfile.txt`|  
 |目录|平面命名空间|真正目录对象|  
 |名称区分大小写|区分大小写|不区分大小写，但保留大小写|  
-|容量|最多 500 TiB 容器|5 TiB 文件共享|  
+|容量|最多 2 个 PiB 帐户限制 |5 TiB 文件共享|  
 |Throughput|每个块 Blob 高达 60 MiB/秒|每个共享高达 60 MiB/秒|  
 |对象大小|每个块 blob 最多大约 4.75 TiB|每个文件最多为 1 TiB|  
 |计费容量|基于写入的字节数|基于文件大小|  

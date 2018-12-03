@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.openlocfilehash: 400cb16e4f4440283a783116c4ee843bc0a7344c
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: d9d34441f36ea60141ed2659b3e33efdaac94ad3
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51248565"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52497118"
 ---
 # <a name="submit-jobs-from-r-tools-for-visual-studio"></a>从针对 Visual Studio 的 R 工具提交作业
 
@@ -64,7 +64,7 @@ RTVS 通过提供以下工具来增强 R 工作流：[R 交互窗口](https://do
 
 ## <a name="submit-jobs-to-an-hdinsight-ml-services-cluster"></a>将作业提交到 HDInsight ML Services 群集
 
-通过从安装有 PuTTY 的 Windows 计算机使用 Microsoft ML Server/Microsoft R Client，可以创建计算上下文，用于从本地客户端针对 HDInsight 群集运行分布式 `RevoScaleR` 函数。 使用 `RxSpark` 创建计算上下文，并指定用户名、Hadoop 群集的边缘节点、SSH 交换机等等。
+通过从安装有 PuTTY 的 Windows 计算机使用 Microsoft ML Server/Microsoft R Client，可以创建计算上下文，用于从本地客户端针对 HDInsight 群集运行分布式 `RevoScaleR` 函数。 使用 `RxSpark` 创建计算上下文，并指定用户名、Apache Hadoop 群集的边缘节点、SSH 交换机等等。
 
 1. 若要查找边缘节点的主机名，请在 Azure 上打开 HDInsight ML Services 群集窗格，然后选择“概述”窗格顶部菜单中的“安全外壳(SSH)”。
 
@@ -132,7 +132,7 @@ RTVS 通过提供以下工具来增强 R 工作流：[R 交互窗口](https://do
 
         ![复制的文件](./media/r-server-submit-jobs-r-tools-vs/copied-file.png)
 
-6. 用完当前 Spark 上下文后，必须将其停止。 不能同时运行多个上下文。
+6. 用完当前 Apache Spark 上下文后，必须将其停止。 不能同时运行多个上下文。
 
     ```R
     rxStopEngine(mySparkCluster)

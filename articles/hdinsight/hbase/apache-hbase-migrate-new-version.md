@@ -9,16 +9,16 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: ashishth
-ms.openlocfilehash: 64b3762c40cc2e01944d78c546ebe267503526a7
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 71285ce3b1fb3cc592fc65b4ad96c6783de0c408
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43049324"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52499301"
 ---
-# <a name="migrate-an-hbase-cluster-to-a-new-version"></a>将 HBase 群集迁移到新版本
+# <a name="migrate-an-apache-hbase-cluster-to-a-new-version"></a>将 Apache HBase 群集迁移到新版本
 
-可以直接升级基于作业的群集，例如 Spark 和 Hadoop - 具体请参阅[将 HDInsight 群集升级到更新版本](../hdinsight-upgrade-cluster.md)：
+可以直接升级基于作业的群集，例如 [Apache Spark](https://spark.apache.org/) 和 [Apache Hadoop](https://hadoop.apache.org/) - 具体请参阅[将 HDInsight 群集升级到更新版本](../hdinsight-upgrade-cluster.md)：
 
 1. 备份暂时性（本地存储的）数据。
 2. 删除现有的群集。
@@ -26,14 +26,14 @@ ms.locfileid: "43049324"
 4. 导入暂时性数据。
 5. 启动作业并在新群集上继续处理。
 
-若要升级 HBase 群集，需要执行本文所述的一些附加步骤。
+若要升级 [Apache HBase](http://hbase.apache.org/) 群集，需要执行本文所述的一些附加步骤。
 
 > [!NOTE]
 > 升级造成的停机时间应该很短，以分钟计。 停机是执行刷新所有内存中数据的步骤，然后在新群集上配置和重启服务造成的。 根据节点数目、数据量和其他变数，结果会有所不同。
 
-## <a name="review-hbase-compatibility"></a>检查 HBase 兼容性
+## <a name="review-apache-hbase-compatibility"></a>检查 Apache HBase 兼容性
 
-在升级 HBase 之前，请确保源和目标群集上的 HBase 版本兼容。 有关详细信息，请参阅 [HDInsight 提供的 Hadoop 组件和版本](../hdinsight-component-versioning.md)。
+在升级 Apache HBase 之前，请确保源群集和目标群集上的 HBase 版本兼容。 有关详细信息，请参阅 [HDInsight 提供的 Hadoop 组件和版本](../hdinsight-component-versioning.md)。
 
 > [!NOTE]
 > 我们强烈建议查看 [HBase 书册](https://hbase.apache.org/book.html#upgrading)中的版本兼容性矩阵。
@@ -57,7 +57,7 @@ ms.locfileid: "43049324"
 > [!NOTE]
 > HBase 版本发行说明中应会阐述任何重大的不兼容性。
 
-## <a name="upgrade-with-same-hbase-major-version"></a>使用相同的 HBase 主版本升级
+## <a name="upgrade-with-same-apache-hbase-major-version"></a>使用相同的 Apache HBase 主版本升级
 
 以下方案适用于使用相同的 HBase 主版本从 HDInsight 3.4 升级到 3.6（Apache HBase 1.1.2 已随附这两个版本）。 只要源和目标版本之间不存在兼容性问题，其他版本升级的过程都是类似的。
 
@@ -187,7 +187,7 @@ ms.locfileid: "43049324"
     
 4. 停止引入到旧 HBase 群集。
 5. 为确保刷新 memstore 中的所有最新数据，请再次运行前面的脚本。
-6. 在旧群集 (https://OLDCLUSTERNAME.azurehdidnsight.net) 上登录到 Ambari，并停止 HBase 服务。 当系统提示确认想要停止服务时，请选中为 HBase 启用维护模式的框。 有关连接和使用 Ambari 的详细信息，请参阅[使用 Ambari Web UI 管理 HDInsight 群集](../hdinsight-hadoop-manage-ambari.md)。
+6. 在旧群集 (https://OLDCLUSTERNAME.azurehdidnsight.net) 上登录到 [Apache Ambari](https://ambari.apache.org/)，并停止 HBase 服务。 当系统提示确认想要停止服务时，请选中为 HBase 启用维护模式的框。 有关连接和使用 Ambari 的详细信息，请参阅[使用 Ambari Web UI 管理 HDInsight 群集](../hdinsight-hadoop-manage-ambari.md)。
 
     ![在 Ambari 中单击“服务”选项卡，在左侧菜单中选择“HBase”，然后在“服务操作”下选择“停止”](./media/apache-hbase-migrate-new-version/stop-hbase-services.png)
 
@@ -211,9 +211,9 @@ ms.locfileid: "43049324"
 
 ## <a name="next-steps"></a>后续步骤
 
-有关 HBase 和升级 HDInsight 群集的详细信息，请参阅以下文章：
+若要详细了解 [Apache HBase](http://hbase.apache.org/) 以及如何升级 HDInsight 群集，请参阅以下文章：
 
 * [将 HDInsight 群集升级到更新版本](../hdinsight-upgrade-cluster.md)
-* [使用 Ambari Web UI 监视和管理 Azure HDInsight](../hdinsight-hadoop-manage-ambari.md)
-* [Hadoop 组件和版本](../hdinsight-component-versioning.md)
-* [使用 Ambari 优化配置](../hdinsight-changing-configs-via-ambari.md#hbase-optimization-with-the-ambari-web-ui)
+* [使用 Apache Ambari Web UI 监视和管理 Azure HDInsight](../hdinsight-hadoop-manage-ambari.md)
+* [Apache Hadoop 组件和版本](../hdinsight-component-versioning.md)
+* [使用 Apache Ambari 优化配置](../hdinsight-changing-configs-via-ambari.md#apache-hbase-optimization-with-the-ambari-web-ui)

@@ -1,10 +1,11 @@
 ---
-title: 机器学习批处理执行服务作业的专用容量 | Microsoft Docs
+title: 机器学习批处理执行服务作业的专用容量 - Azure 机器学习工作室 | Microsoft Docs
 description: 适用于机器学习作业的 Azure Batch 服务概述。
 services: machine-learning
 documentationcenter: ''
-author: YasinMSFT
-ms.author: yahajiza
+author: ericlicoding
+ms.custom: (previous ms.author=yahajiza, author=YasinMSFT)
+ms.author: amlstudiodocs
 manager: hjerez
 editor: cgronlun
 ms.service: machine-learning
@@ -14,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
-ms.openlocfilehash: 1e4cf34582e28e00108e280d928eea8a8134699a
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 13e9921b15faff10ac250aa7c19d655ada782ce2
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34834519"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52308118"
 ---
 # <a name="azure-batch-service-for-machine-learning-jobs"></a>适用于机器学习作业的 Azure Batch 服务
 

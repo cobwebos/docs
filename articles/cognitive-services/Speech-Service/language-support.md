@@ -10,12 +10,12 @@ ms.component: speech-service
 ms.topic: conceptual
 ms.date: 09/25/2018
 ms.author: erhopf
-ms.openlocfilehash: c1eeee35869f29170a7f15b1d9e2c1ee69a6314d
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: fa4563b84eb0882832a89ccc98396ff487f51b48
+ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51622510"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52284755"
 ---
 # <a name="language-and-region-support-for-speech-service-api"></a>语音服务 API 的语言和区域支持
 
@@ -63,14 +63,13 @@ Microsoft 语音识别 API 支持以下语言。 每种语言都有不同级别�
 
 语音合成 API 提供以下语音，每种语音支持区域设置标识的特定语言和方言。
 
-区域设置 | 语言 | 性别 | 服务名称映射
+区域设置 | 语言 | 性别 | Service name mapping
 -------|----------|---------|--------------------
 ar-EG\* | 阿拉伯语(埃及) | 女 | “Microsoft 服务器语音的文本转语音（ar-EG，Hoda）”
 ar-SA | 阿拉伯语(沙特阿拉伯) | 男 | “Microsoft 服务器语音的文本转语音（ar-SA，Naayf）”
 bg-BG | 保加利亚语 | 男 | “Microsoft 服务器语音的文本转语音（bg-BG，Ivan）”
 ca-ES | 加泰罗尼亚语(西班牙) | 女 | “Microsoft 服务器语音的文本转语音（ca-ES，HerenaRUS）”
 cs-CZ | 捷克语 | 男 | “Microsoft 服务器语音的文本转语音（cs-CZ，Jakub）”
-cs-CZ | 捷克语 | 男 | “Microsoft 服务器语音的文本转语音（cs-CZ，Vit）”
 da-DK | 丹麦语 | 女 | “Microsoft 服务器语音的文本转语音（da-DK，HelleRUS）”
 de-AT | 德语(奥地利) | 男 | “Microsoft 服务器语音的文本转语音（de-AT，Michael）”
 de-CH | 德语(瑞士) | 男 | “Microsoft 服务器语音的文本转语音（de-CH，Karsten）”
@@ -86,7 +85,6 @@ en-GB | 英语(英国) | 女 | “Microsoft 服务器语音的文本转语音（
 | | |女 | “Microsoft 服务器语音的文本转语音（en-GB，HazelRUS）”
 | | |男 | “Microsoft 服务器语音的文本转语音（en-GB，George，Apollo）”
 en-IE | 英语(爱尔兰) |男 | “Microsoft 服务器语音的文本转语音（en-IE，Sean）”
-en-IE | 英语(爱尔兰) |男 | “Microsoft 服务器语音的文本转语音（en-IE，Shaun）”
 en-IN | 英语(印度) | 女 | “Microsoft 服务器语音的文本转语音（en-IN，Heera，Apollo）”
 | | |女 | “Microsoft 服务器语音的文本转语音（en-IN，PriyaRUS）”
 | | |男 | “Microsoft 服务器语音的文本转语音（en-IN，Ravi，Apollo）”
@@ -153,10 +151,10 @@ zh-TW | 中文(中国台湾)|女 | “Microsoft 服务器语音的文本转语�
 
 ### <a name="customization"></a>自定义
 
-语音自定义功能适用于美国英语 (en-US)、中国大陆的普通话 (zh-CN) 和意大利语 (it-IT)。
+语音自定义功能适用于美国英语 (en-US)、中国大陆的普通话 (zh-CN)、法语 (fr-FR)、德语 (de-DE) 和意大利语 (it-IT)。
 
 > [!NOTE]
-> 意大利语语音训练从包含 2,000 多条话语的数据集开始。 包含 2,000 多条话语的初始数据集也支持中英双语模型。
+> 法语、德语和意大利语音训练从包含 2,000 多条话语的数据集开始。 包含 2,000 多条话语的初始数据集也支持中英双语模型。
 
 ## <a name="speech-translation"></a>语音翻译
 

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: 62502e946922928b8b4179d38ce9f9ae55f9930d
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 308527bce2048921c2af65aa78a12d8ef2c2bed2
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51238975"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52497789"
 ---
 # <a name="extend-azure-hdinsight-using-an-azure-virtual-network"></a>使用 Azure 虚拟网络扩展 Azure HDInsight
 
@@ -25,7 +25,7 @@ ms.locfileid: "51238975"
 
 * 将 HDInsight 连接到 Azure 虚拟网络中的数据存储。
 
-* 直接访问无法通过 Internet 公开访问的 Apache Hadoop 服务。 例如，Kafka API 或 HBase Java API。
+* 直接访问无法通过 Internet 公开访问的 [Apache Hadoop](https://hadoop.apache.org/) 服务。 例如，[Apache Kafka](https://kafka.apache.org/) API 或 [Apache HBase](https://hbase.apache.org/) Java API。
 
 > [!WARNING]
 > 本文档中的信息要求用户熟悉 TCP/IP 网络。 如果你不熟悉 TCP/IP 网络，应与之前对生产网络进行修改的人员合作。
@@ -171,11 +171,11 @@ Azure 为安装在虚拟网络中的 Azure 服务提供名称解析。 此内置
 
 有关详细信息，请参阅 [VM 和角色实例的名称解析](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md)文档。
 
-## <a name="directly-connect-to-hadoop-services"></a>直接连接到 Hadoop 服务
+## <a name="directly-connect-to-apache-hadoop-services"></a>直接连接到 Apache Hadoop 服务
 
 可以通过 https://CLUSTERNAME.azurehdinsight.net 连接到该群集。 此地址使用公共 IP，如果已使用 NSG 来限制来自 Internet 的传入流量，则可能无法访问此地址。 此外，在 VNet 中部署群集时，可以使用专用终结点 https://CLUSTERNAME-int.azurehdinsight.net 访问它。 此终结点可解析为 VNet 中的专用 IP，以进行群集访问。
 
-若要通过虚拟网络连接到 Ambari 以及其他网页，请使用以下步骤：
+若要通过虚拟网络连接到 Apache Ambari 以及其他网页，请使用以下步骤：
 
 1. 若要发现 HDInsight 群集节点的内部完全限定的域名 (FQDN)，请使用以下其中一种方法：
 
@@ -316,7 +316,7 @@ HDInsight 在多个端口上公开服务。 使用虚拟设备防火墙时，必
 * 11000-11999
 * 14000-14999
 
-对于特定服务的端口列表，请参阅 [HDInsight 上的 Hadoop 服务所用的端口](hdinsight-hadoop-port-settings-for-services.md)文档。
+对于特定服务的端口列表，请参阅 [HDInsight 上的 Apache Hadoop 服务所用的端口](hdinsight-hadoop-port-settings-for-services.md)文档。
 
 有关虚拟设备的防火墙规则的详细信息，请参阅[虚拟设备方案](../virtual-network/virtual-network-scenario-udr-gw-nva.md)文档。
 
@@ -660,10 +660,10 @@ $vnet | Set-AzureRmVirtualNetwork
 ## <a name="next-steps"></a>后续步骤
 
 * 有关将 HDInsight 配置为连接到本地网络的端到端示例，请参阅[将 HDInsight 连接到本地网络](./connect-on-premises-network.md)。
-* 要了解如何在 Azure 虚拟网络中配置 Hbase 群集，请参阅[在 Azure 虚拟网络中的 HDInsight 上创建 HBase 群集](hbase/apache-hbase-provision-vnet.md)。
-* 要了解如何配置 HBase 异地复制，请参阅[在 Azure 虚拟网络中设置 HBase 群集复制](hbase/apache-hbase-replication.md)。
+* 要了解如何在 Azure 虚拟网络中配置 Apache Hbase 群集，请参阅[在 Azure 虚拟网络中的 HDInsight 上创建 Apache HBase 群集](hbase/apache-hbase-provision-vnet.md)。
+* 要了解如何配置 Apache HBase 异地复制，请参阅[在 Azure 虚拟网络中设置 Apache HBase 群集复制](hbase/apache-hbase-replication.md)。
 * 有关 Azure 虚拟网络的详细信息，请参阅 [Azure 虚拟网络概述](../virtual-network/virtual-networks-overview.md)。
 
 * 有关网络安全组的详细信息，请参阅[网络安全组](../virtual-network/security-overview.md)。
 
-* 有关用户定义的路由的详细信息，请参阅[用户定义第路由和 IP 转发](../virtual-network/virtual-networks-udr-overview.md)。
+* 有关用户定义的路由的详细信息，请参阅[用户定义的路由和 IP 转发](../virtual-network/virtual-networks-udr-overview.md)。

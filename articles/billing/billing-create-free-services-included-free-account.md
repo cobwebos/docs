@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/25/2017
 ms.author: cwatson
-ms.openlocfilehash: ab0b48f8c8579af8a3314bad14dafbe79f9a9781
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: 77022b442a78c8d14284e06af4f156302c1e6ffc
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47393734"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52584394"
 ---
 # <a name="create-services-included-with-azure-free-account"></a>创建 Azure 免费帐户包含的服务
 
@@ -34,6 +34,6 @@ Azure 免费帐户包含数量有限的免费服务，使用期限为 12 个月�
 ## <a name="multiple-instances-of-services-can-be-created-within-allowed-limits"></a>可以在允许的限制内创建服务的多个实例
 只要使用率总和不超过使用率限制，就可以创建服务的多个免费实例。 例如，通过 Azure 免费帐户获得每月 750 小时的免费 B1S Windows 虚拟机。 这 750 小时可以按所需的任意组合使用。 例如，可以创建 5 个 B1S Windows 虚拟机，每个虚拟机使用 150 小时。 
 
-## <a name="need-help-contact-support"></a>需要帮助？ 联系支持人员
+## <a name="need-help-contact-us"></a>需要帮助？ 请联系我们。
 
-如果需要帮助，请[联系支持人员](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)以快速解决问题。
+如果你有任何疑问或需要帮助，请[创建支持请求](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)。

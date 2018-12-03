@@ -9,14 +9,14 @@ ms.service: cosmos-db
 ms.component: cosmosdb-sql
 ms.devlang: java
 ms.topic: reference
-ms.date: 05/07/2018
+ms.date: 11/21/2018
 ms.author: ramkris
-ms.openlocfilehash: f7784883bca4773d69d94b04e7ec24a89ecd88c1
-ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
+ms.openlocfilehash: 3483a2cf30421e96bc408516bab5c3c304fdce0d
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36300690"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52632497"
 ---
 # <a name="java-bulk-executor-library-download-information"></a>Java 批量执行程序库：下载信息
 
@@ -46,6 +46,6 @@ ms.locfileid: "36300690"
 
 <tr><td>**入门**</td><td>[批量执行程序库 Java SDK 入门](bulk-executor-java.md)</td></tr>
 
-<tr><td>受支持的最小运行时</td><td>JDK 7</td></tr>
+<tr><td>受支持的最小运行时</td><td>[Java 开发工具包 (JDK) 7+](https://aka.ms/azure-jdks)</td></tr>
 </table></br>
 

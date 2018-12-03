@@ -12,17 +12,17 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 05/29/2018
+ms.date: 11/21/2018
 ms.author: srrengar
-ms.openlocfilehash: 6dee895ba9fc024baac0500619b7d6cc62167b6d
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 332939710517e99aaa77642dc5e67256b476bd66
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49404471"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52634569"
 ---
 # <a name="event-analysis-and-visualization-with-log-analytics"></a>使用 Log Analytics 进行事件分析和可视化
-Log Analytics 从云中托管的应用程序和服务收集和分析遥测，并提供分析工具来帮助你最大限度地提高其可用性和性能。 本文概述如何在 Log Analytics 中运行查询，以获取见解并排查群集中发生的问题。 本文解决以下常见问题：
+ Log Analytics 从云中托管的应用程序和服务收集和分析遥测，并提供分析工具来帮助你最大限度地提高其可用性和性能。 本文概述如何在 Log Analytics 中运行查询，以获取见解并排查群集中发生的问题。 本文解决以下常见问题：
 
 * 如何排查运行状况事件问题？
 * 如何知道节点已关闭？
@@ -30,9 +30,12 @@ Log Analytics 从云中托管的应用程序和服务收集和分析遥测，并
 
 ## <a name="log-analytics-workspace"></a>Log Analytics 工作区
 
+>[!NOTE] 
+>虽然默认情况下诊断存储已在群集创建时启用，但你仍必须设置 Log Analytics 工作区以从诊断存储中读取。
+
 Log Analytics 从托管资源（包括 Azure 存储表或代理）收集数据，并在中央存储库中维护它们。 之后这些数据可用于分析、报警、可视化或进一步导出。 Log Analytics 支持事件、性能数据或其他任何自定义数据。 查看[配置诊断扩展以聚合事件的步骤](service-fabric-diagnostics-event-aggregation-wad.md)和[创建 Log Analytics 工作区以从存储中的事件读取数据的步骤](service-fabric-diagnostics-oms-setup.md)，确保数据流入 Log Analytics。
 
-Log Analytics 收到数据后，Azure 会提供多个预打包的管理解决方案，用于监视传入数据，且根据不同情形进行自定义。 包括 Service Fabric 分析解决方案和容器解决方案。使用 Service Fabric 群集时，这两种解决方案与诊断和监视最为相关。 本文介绍如何使用在工作区中创建的 Service Fabric 分析解决方案。
+Log Analytics 收到数据后，Azure 会提供多个预打包的管理解决方案或操作仪表板，来监视传入数据并根据几个场景进行自定义。 包括 Service Fabric 分析解决方案和容器解决方案。使用 Service Fabric 群集时，这两种解决方案与诊断和监视最为相关。 本文介绍如何使用在工作区中创建的 Service Fabric 分析解决方案。
 
 ## <a name="access-the-service-fabric-analytics-solution"></a>访问 Service Fabric 分析解决方案
 
@@ -40,7 +43,7 @@ Log Analytics 收到数据后，Azure 会提供多个预打包的管理解决方
 
 2. 选择资源 **ServiceFabric\<nameOfOMSWorkspace\>**。
 
-2. 在“摘要”中，将看到每个已启用的解决方案的图形形式的磁贴，包括 Service Fabric 的磁贴。 单击“Service Fabric”图形（下面的第一张图）转到 Service Fabric 分析解决方案（下面的第二张图）。
+2. 在 `Summary` 中，将看到每个已启用的解决方案的图形形式的磁贴，包括 Service Fabric 的磁贴。 单击“Service Fabric”图形（下面的第一张图）转到 Service Fabric 分析解决方案（下面的第二张图）。
 
     ![Service Fabric 解决方案](media/service-fabric-diagnostics-event-analysis-oms/oms_service_fabric_summary.PNG)
 
@@ -48,12 +51,12 @@ Log Analytics 收到数据后，Azure 会提供多个预打包的管理解决方
 
 上图是 Service Fabric 分析解决方案的主页。 这是群集中发生的情况的快照视图。 如果创建群集时启用了诊断，则可以看到以下对象的事件： 
 
-* [操作通道](service-fabric-diagnostics-event-generation-operational.md)：Service Fabric 平台（系统服务集合）执行的较高级操作。
+* [Service Fabric 群集事件](service-fabric-diagnostics-event-generation-operational.md)
 * [Reliable Actors 编程模型事件](service-fabric-reliable-actors-diagnostics.md)
 * [Reliable Services 编程模型事件](service-fabric-reliable-services-diagnostics.md)
 
 >[!NOTE]
->除了操作通道以外，可以通过[更新诊断扩展的配置](service-fabric-diagnostics-event-aggregation-wad.md#log-collection-configurations)来收集更详细的系统事件。
+>除了现成的 Service Fabric 事件之外，可以通过[更新诊断扩展的配置](service-fabric-diagnostics-event-aggregation-wad.md#log-collection-configurations)来收集更详细的系统事件。
 
 ### <a name="view-service-fabric-events-including-actions-on-nodes"></a>查看 Service Fabric 事件，包括对节点执行的操作
 
@@ -105,7 +108,7 @@ Kusto 查询语言非常强大。 可以运行另一个有用查询来找出哪�
 ## <a name="next-steps"></a>后续步骤
 
 * 若要启用基础结构监视（即性能计数器），请转到[添加 Log Analytics 代理](service-fabric-diagnostics-oms-agent.md)。 该代理将收集性能计数器，并将其添加到现有工作区。
-* 对于本地群集，Log Analytics 提供可用于向 Log Analytics 发送数据的网关（HTTP 正向代理）。 有关更多信息，请参阅[使用 Log Analytics 网关将无法访问 Internet 的计算机连接到 Log Analytics](../log-analytics/log-analytics-oms-gateway.md)。
+* 对于本地群集，Log Analytics 提供可用于向 Log Analytics 发送数据的网关（HTTP 正向代理）。 有关更多信息，请参阅[使用 Log Analytics 网关将无法访问 Internet 的计算机连接到 Log Analytics](../azure-monitor/platform/gateway.md)。
 * 配置[自动警报](../log-analytics/log-analytics-alerts.md)来帮助进行检测和诊断。
 * 掌握 Log Analytics 中提供的[日志搜索和查询](../log-analytics/log-analytics-log-searches.md)功能。
 * 有关 Log Analytics 及其功能的更详细概述，请参阅[什么是 Log Analytics？](../operations-management-suite/operations-management-suite-overview.md)。

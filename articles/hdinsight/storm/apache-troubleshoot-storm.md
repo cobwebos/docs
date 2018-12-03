@@ -9,16 +9,16 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 11/2/2017
-ms.openlocfilehash: 99ceeea33d3e2d9af798d5eb4161b0c16afc952d
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: b2f80b2d66de9e5f270c7b062c57d0efc3ab0f36
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51011368"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52499340"
 ---
-# <a name="troubleshoot-storm-by-using-azure-hdinsight"></a>使用 Azure HDInsight 对 Storm 进行故障排除
+# <a name="troubleshoot-apache-storm-by-using-azure-hdinsight"></a>使用 Azure HDInsight 对 Apache Storm 进行故障排除
 
-了解处理 Apache Ambari 中的 Apache Storm 有效负载时的最常见问题及其解决方法。
+了解处理 [Apache Ambari](https://ambari.apache.org/) 中的 [Apache Storm](https://storm.apache.org/) 有效负载时的最常见问题及其解决方法。
 
 ## <a name="how-do-i-access-the-storm-ui-on-a-cluster"></a>如何在群集上访问 Storm UI？
 可以使用两个选项从浏览器访问 Storm UI：
@@ -39,7 +39,7 @@ https://\<群集 DNS 名称\>/stormui
 
 ## <a name="how-do-i-transfer-storm-event-hub-spout-checkpoint-information-from-one-topology-to-another"></a>如何将 Storm 事件中心 Spout 检查点信息从一个拓扑传输到另一个拓扑？
 
-开发可使用 HDInsight Storm 事件中心 Spout .jar 文件从 Azure 事件中心读取数据的拓扑时，必须在新群集上部署同名的拓扑。 但是，必须在旧群集上保留已提交到 Apache ZooKeeper 的检查点数据。
+开发可使用 HDInsight Storm 事件中心 Spout .jar 文件从 Azure 事件中心读取数据的拓扑时，必须在新群集上部署同名的拓扑。 但是，必须在旧群集上保留已提交到 [Apache ZooKeeper](https://zookeeper.apache.org/) 的检查点数据。
 
 ### <a name="where-checkpoint-data-is-stored"></a>检查点数据的存储位置
 事件中心 Spout 将偏移检查点数据存储在 ZooKeeper 中的两个根路径下：
@@ -122,20 +122,20 @@ Storm 工作节点运行以下服务：
 有关在拓扑中使用 Storm 事件中心 Spout .jar 文件的详细信息，请参阅以下资源。
  
 ### <a name="java-based-topology"></a>基于 Java 的拓扑
-[使用 Storm on HDInsight 从 Azure 事件中心处理事件 (Java)](https://docs.microsoft.com/azure/hdinsight/hdinsight-storm-develop-java-event-hub-topology)
+[使用 Apache Storm on HDInsight 从 Azure 事件中心处理事件 (Java)](https://docs.microsoft.com/azure/hdinsight/hdinsight-storm-develop-java-event-hub-topology)
  
 ### <a name="c-based-topology-mono-on-hdinsight-34-linux-storm-clusters"></a>基于 C# 的拓扑（HDInsight 3.4+ Linux Storm 群集上的 Mono）
-[使用 Storm on HDInsight 从 Azure 事件中心处理事件 (C#)](https://docs.microsoft.com/azure/hdinsight/hdinsight-storm-develop-csharp-event-hub-topology)
+[使用 Apache Storm on HDInsight 从 Azure 事件中心处理事件 (C#)](https://docs.microsoft.com/azure/hdinsight/hdinsight-storm-develop-csharp-event-hub-topology)
  
-### <a name="latest-storm-event-hub-spout-binaries-for-hdinsight-35-linux-storm-clusters"></a>HDInsight 3.5+ Linux Storm 群集的最新 Storm 事件中心 Spout 二进制文件
+### <a name="latest-apache-storm-event-hub-spout-binaries-for-hdinsight-35-linux-storm-clusters"></a>HDInsight 3.5+ Linux Storm 群集的最新 Apache Storm 事件中心 Spout 二进制文件
 若要了解如何使用适用于 HDInsight 3.5+ Linux Storm 群集的最新 Storm 事件中心 Spout，请参阅 mvn-repo [自述文件](https://github.com/hdinsight/mvn-repo/blob/master/README.md)。
  
 ### <a name="source-code-examples"></a>源代码示例
 参阅有关如何在 Azure HDInsight 群集上使用 Apache Storm 拓扑（以 Java 编写）从 Azure 事件中心读取和写入数据的[示例](https://github.com/Azure-Samples/hdinsight-java-storm-eventhub)。
  
-## <a name="how-do-i-locate-storm-log4j-configuration-files-on-clusters"></a>如何在群集上查找 Storm Log4J 配置文件？
+## <a name="how-do-i-locate-storm-log4j-2-configuration-files-on-clusters"></a>如何在群集上查找 Storm Log4J 2 配置文件？
  
-识别 Storm 服务的 Apache Log4J 配置文件。
+识别 Storm 服务的 [Apache Log4j 2](https://logging.apache.org/log4j/2.x/) 配置文件。
  
 ### <a name="on-head-nodes"></a>在头节点上
 从 /usr/hdp/\<HDP version\>/storm/log4j2/cluster.xml 读取 Nimbus Log4J 配置。

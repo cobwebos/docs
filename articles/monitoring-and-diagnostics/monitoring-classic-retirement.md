@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/04/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: 589aae8321d2c081f09ed46d9def2229d3973ffd
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: 35869e0a345299f2b0724f01201154fc8d090e4f
+ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51613189"
+ms.lasthandoff: 11/19/2018
+ms.locfileid: "51975373"
 ---
 # <a name="unified-alerting--monitoring-in-azure-monitor-replaces-classic-alerting--monitoring"></a>Azure Monitor 中的统一警报和监视替换经典警报和监视
 
@@ -53,7 +53,7 @@ Azure 资源的新指标按以下形式提供：
 - 当前可通过 Azure 门户的[警报(经典)部分](monitoring-overview-alerts-classic.md)使用 Application Insights 的旧（经典）平台和自定义指标以及相关警报；可作为 [microsoft.insights/alertrules](https://docs.microsoft.com/rest/api/monitor/alertrules) 资源访问
 - 旧（经典）故障异常警报当前在 Azure 门户中作为 [Application Insights 内的智能检测](../application-insights/app-insights-proactive-diagnostics.md)提供；其中配置的警报显示在 Azure 门户的[警报(经典)部分](monitoring-overview-alerts-classic.md)
 
-所有经典监视和警报系统，包括相应的 [API](https://msdn.microsoft.com/library/azure/dn931945.aspx)、[PowerShell](insights-alerts-powershell.md)、[CLI](insights-alerts-command-line-interface.md)、[Azure 门户页面和[资源模板](monitoring-enable-alerts-using-template.md)在 2019 年 6 月前都可继续使用。 此日期之后，经典监视和警报服务将被停用并不再可用；而 2019 年 6 月后在警报(经典)中继续存在的任何警报规则都将继续执行，但不能进行修改。
+所有经典监视和警报系统，包括相应的 [API](https://msdn.microsoft.com/library/azure/dn931945.aspx)、[PowerShell](insights-alerts-powershell.md)、[CLI](insights-alerts-command-line-interface.md)、[Azure 门户页面](alert-metric-classic.md)和[资源模板](monitoring-enable-alerts-using-template.md)在 2019 年 6 月前都可继续使用。 此日期之后，经典监视和警报服务将被停用并不再可用；而 2019 年 6 月后在警报(经典)中继续存在的任何警报规则都将继续执行，但不能进行修改。
 
 2019 年 6 月以后在经典监视和警报平台中保留的任何警报都将由 Microsoft 于 2019 年 7 月自动迁移到其在新 Azure Monitor 中的等效项。 该过程无缝进行且没有任何停机时间，可确保客户监视覆盖范围没有任何损失。
 

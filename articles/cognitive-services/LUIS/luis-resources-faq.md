@@ -8,14 +8,14 @@ services: cognitive-services
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 10/19/2018
+ms.date: 11/19/2018
 ms.author: diberry
-ms.openlocfilehash: db8fc0b6926930521f11285dc56c886c10c42fc2
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: d371ead3280bca5239a9ee6bf2c4275414141fb4
+ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49649306"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52284364"
 ---
 # <a name="language-understanding-faq"></a>语言理解常见问题解答
 
@@ -60,6 +60,16 @@ Cortana 预构建应用已于 2017 年弃用。 它们不再受支持。
 
 ## <a name="luis-endpoint"></a>LUIS 终结点
 
+### <a name="my-endpoint-query-returned-unexpected-results-what-should-i-do"></a>我的终结点查询返回了意外的结果。 我该怎么办？
+
+意外的查询预测结果基于已发布模型的状态。 若要更正模型，可能需要更改模型、进行训练，然后重新发布。 
+
+更正模型从[主动学习](luis-how-to-review-endoint-utt.md)开始。
+
+可以通过更新[应用程序版本设置 API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/versions-update-application-version-settings) 来删除非确定性训练，以便使用所有训练数据。 
+
+有关其他提示，请查看[最佳做法](luis-concept-best-practices.md)。 
+
 ### <a name="why-does-luis-add-spaces-to-the-query-around-or-in-the-middle-of-words"></a>为什么 LUIS 向查询添加空格时，会将其添加到单词的周围或中间？
 LUIS 根据[区域性](luis-language-support.md#tokenization)将表述[标记化](luis-glossary.md#token)。 原始值和标记化值均可用于[数据提取](luis-concept-data-extraction.md#tokenized-entity-returned)。
 
@@ -67,7 +77,7 @@ LUIS 根据[区域性](luis-language-support.md#tokenization)将表述[标记化
 根据[服务](https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/)级别在 Azure 中[创建终结点密钥](luis-how-to-azure-subscription.md#create-luis-endpoint-key)。 在**[密钥和终结点](luis-how-to-manage-keys.md)** 页上[分配密钥](luis-how-to-manage-keys.md#assign-endpoint-key)。 此操作没有相应的 API。 然后，必须更改针对此终结点的 HTTP 请求才能[使用新终结点密钥](luis-concept-keys.md#use-endpoint-key-in-query)。
 
 ### <a name="how-do-i-interpret-luis-scores"></a>如何解释 LUIS 分数？
-系统应该使用最高得分意向，不管其值如何。 例如，分数低于 0.5（不到 50%）不一定意味着 LUIS 的置信度低。 提供更多训练数据可以提高最可能意向的分数。
+系统应该使用最高得分意向，不管其值如何。 例如，分数低于 0.5（不到 50%）不一定意味着 LUIS 的置信度低。 提供更多训练数据有助于提高最可能意向的[分数](luis-concept-prediction-score.md)。
 
 ### <a name="why-dont-i-see-my-endpoint-hits-in-my-apps-dashboard"></a>为何在应用的“仪表板”中看不到终结点命中数？
 应用的“仪表板”中的终结点总命中数会定期更新，但 Azure 门户中与 LUIS 终结点密钥相关联的指标的更新频率更高。

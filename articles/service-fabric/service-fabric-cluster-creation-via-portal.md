@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 09/06/2018
 ms.author: aljo
-ms.openlocfilehash: fbca9c746863b852a9ddd46d00a65d4133961718
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: f0c2108ee75f843e8285c5e2c5c55834643dc7da
+ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45984367"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52620534"
 ---
 # <a name="create-a-service-fabric-cluster-in-azure-using-the-azure-portal"></a>使用 Azure 门户在 Azure 中创建 Service Fabric 群集
 > [!div class="op_single_selector"]
@@ -75,7 +75,7 @@ ms.locfileid: "45984367"
 
 ## <a name="create-cluster-in-the-azure-portal"></a>在 Azure 门户中创建群集
 
-创建生产群集以满足应用程序需求需要进行一些规划，为此，强烈建议阅读并理解 [Service Fabric 群集规划注意事项][service-fabric-cluster-capacity]文档。 
+如何创建生产群集以满足应用程序需求需要进行一些规划，为此，强烈建议阅读并理解 [Service Fabric 群集规划注意事项][service-fabric-cluster-capacity]文档。 
 
 ### <a name="search-for-the-service-fabric-cluster-resource"></a>搜索 Service Fabric 群集资源
 
@@ -117,13 +117,13 @@ ms.locfileid: "45984367"
 1. 选择节点类型的名称（1 到 12 个字符，只能包含字母和数字）。
 2. 主节点类型的 VM 的**大小**下限取决于为群集选择的**持久性层**。 持久性层的默认值为 bronze。 有关持久性的详细信息，请参阅[如何选择 Service Fabric 群集持久性][service-fabric-cluster-durability]。
 3. 选择**虚拟机大小**。 D 系列 VM 具有 SSD 驱动器，强烈建议用于有状态应用程序。 不要使用任何具有部分核心或可用磁盘容量小于 10 GB 的 VM SKU。 如需选择 VM 大小的帮助，请参阅 [Service Fabric 群集规划注意事项文档][service-fabric-cluster-capacity]。
-4. 选择节点类型的**初始 VM 规模集容量**。 可在以后增加或减少节点类型中的 VM 数目，但对主节点类型，生产工作负荷的最小数是 5。 其他节点类型的下限可以是一个 VM。 主节点类型的 VM 的**数目**下限决定群集的**可靠性**。  
-5. **单个节点群集和三个节点群集**仅用于测试。 它们不支持任何正在运行的生产工作负荷。
+4.  **单个节点群集和三个节点群集**仅用于测试。 它们不支持任何正在运行的生产工作负荷。
+5. 选择节点类型的**初始 VM 规模集容量**。 可在以后增加或减少节点类型中的 VM 数目，但对主节点类型，生产工作负荷的最小数是 5。 其他节点类型的下限可以是一个 VM。 主节点类型的 VM 的**数目**下限决定群集的**可靠性**。  
 6. 配置**自定义终结点**。 可在此字段中输入以逗号分隔的端口列表，可以通过 Azure 负载均衡器针对应用程序向公共 Internet 公开这些端口。 例如，如果计划在群集中部署 Web 应用程序，请在此处输入“80”，允许端口 80 的流量进入群集。 有关终结点的详细信息，请参阅[与应用程序通信][service-fabric-connect-and-communicate-with-services]
 7. **启用反向代理**。  借助 [Service Fabric 反向代理](service-fabric-reverseproxy.md)，Service Fabric 群集中运行的微服务可以发现包含 http 终结点的其他服务，并与之通信。
-8. 在“+显示可选设置”下，配置群集**诊断**。 默认情况下，已在群集上启用诊断，以帮助排查问题。 要禁用诊断，请将其“**状态**”切换为“**关闭**”。 **不**建议关闭诊断。 如果已创建 Application Insights 项目，则提供该项目密钥，以便向其路由应用程序跟踪。
+8. 返回“群集配置”边栏选项卡，在“+显示可选设置”下，配置群集**诊断**。 默认情况下，已在群集上启用诊断，以帮助排查问题。 要禁用诊断，请将其“**状态**”切换为“**关闭**”。 **不**建议关闭诊断。 如果已创建 Application Insights 项目，则提供该项目密钥，以便向其路由应用程序跟踪。
 9. **包含 DNS 服务**。  [DNS 服务](service-fabric-dnsservice.md)是一项可选服务，使用户能够通过 DNS 协议查找其他服务。
-10. 选择要为群集设置的 **Fabric 升级模式**。 如果希望系统自动选取最新可用版本并尝试将群集升级到最新版本，则选择“**自动**”。 如果想要选择受支持的版本，则将模式设置为“**手动**”。 有关结构升级模式的详细信息，请参阅 [service-fabric-cluster-upgrade 文档][service-fabric-cluster-upgrade]。
+10. 选择要为群集设置的 **Fabric 升级模式**。 如果希望系统自动选取最新可用版本并尝试将群集升级到最新版本，则选择“**自动**”。 如果想要选择受支持的版本，则将模式设置为“**手动**”。 有关 Fabric 升级模式的详细信息，请参阅 [Service Fabric 群集升级文档][service-fabric-cluster-upgrade]。
 
 > [!NOTE]
 > 我们仅支持运行受支持的 Service Fabric 版本的群集。 通过选择“**手动**”模式，由你负责将群集升级到受支持的版本。
@@ -158,10 +158,10 @@ ms.locfileid: "45984367"
 
 ![SecurityCustomOption]
 
-你需要 CertificateThumbprint、SourceVault 和 CertificateURL 信息以完成“安全性”页。 如果“安全性”页未就绪，请打开另一个浏览器窗口，然后执行以下操作
+你需要源密钥保管库、证书 URL 和证书指纹信息以完成“安全性”页。 如果“安全性”页未就绪，请打开另一个浏览器窗口，然后在 Azure 门户中执行以下操作
 
-1. 导航到密钥保管库，选择证书。 
-2. 选择“属性”选项卡，并将“资源 ID”复制到其他浏览器窗口上的“源 Key vault” 
+1. 导航到密钥保管库服务。
+2. 选择“属性”选项卡，并将“资源 ID”复制到另一个浏览器窗口上的“源密钥保管库” 
 
     ![CertInfo0]
 
@@ -171,8 +171,8 @@ ms.locfileid: "45984367"
 
     ![CertInfo1]
 
-6. 你现在应位于如下所示的屏幕上。 将“指纹”复制到其他浏览器窗口上的“证书指纹”
-7. 将“机密标识符”信息复制到其他浏览器窗格上的“证书 URL”。
+6. 你现在应位于如下所示的屏幕上。 将十六进制 SHA-1 指纹复制到另一个浏览器窗口中的“证书指纹”
+7. 将“机密标识符”复制到另一个浏览器窗口上的“证书 URL”。
 
     ![CertInfo2]
 
@@ -186,7 +186,7 @@ ms.locfileid: "45984367"
 
 ![摘要]
 
-可以在通知栏中查看群集创建进度。 （单击屏幕右上角状态栏附近的铃铛图标）。如果在创建群集时曾经单击“固定到启动板”，则会看到“部署 Service Fabric 群集”已固定到“启动”板。
+可以在通知栏中查看群集创建进度。 （单击屏幕右上角状态栏附近的铃铛图标）。如果在创建群集时曾经单击“固定到启动板”，则会看到“部署 Service Fabric 群集”已固定到“启动”板。 此过程将需要一些时间才能完成。 
 
 若要使用 Powershell 或 CLI 对群集执行管理操作，需要连接群集，请参阅[连接群集](service-fabric-connect-to-secure-cluster.md)，了解有关如何连接的详细信息。
 

@@ -1,10 +1,11 @@
 ---
-title: 步骤 3：创建新机器学习实验 | Microsoft Docs
+title: 步骤 3：创建新的机器学习工作室试验 - Azure | Microsoft Docs
 description: 开发预测解决方案演练的步骤 3：在 Azure 机器学习工作室中创建新的训练实验。
 services: machine-learning
 documentationcenter: ''
-author: heatherbshapiro
-ms.author: hshapiro
+author: ericlicoding
+ms.custom: (previous ms.author=hshapiro, author=heatherbshapiro)
+ms.author: amlstudiodocs
 manager: hjerez
 editor: cgronlun
 ms.assetid: 660e3c27-55ef-4c33-a4e9-dff4d1224630
@@ -15,14 +16,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/23/2017
-ms.openlocfilehash: 95000f9fb57b95bf1edcda9abfba3668b5f5b523
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: a6f12c536cfc18ed0be55ec1755c7fe5179006ba
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34835733"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52317522"
 ---
-# <a name="walkthrough-step-3-create-a-new-azure-machine-learning-experiment"></a>演练步骤 3：创建新的 Azure 机器学习实验
+# <a name="walkthrough-step-3-create-a-new-azure-machine-learning-studio-experiment"></a>演练步骤 3：创建新的 Azure 机器学习工作室试验
 这是演练的第三步，[在 Azure 机器学习中开发预测分析解决方案](walkthrough-develop-predictive-solution.md)
 
 1. [创建机器学习工作区](walkthrough-1-create-ml-workspace.md)

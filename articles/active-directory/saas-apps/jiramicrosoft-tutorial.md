@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/01/2018
+ms.date: 11/22/2018
 ms.author: jeedes
-ms.openlocfilehash: f3f7fc3b837dd4eef9bab8ff34a36329436bad9a
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 608269a05ae1ed699954cd301aa03056e089fa8a
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51010722"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52426095"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-jira-saml-sso-by-microsoft"></a>教程：Azure Active Directory 与 JIRA SAML SSO by Microsoft 集成
 
@@ -154,11 +154,26 @@ ms.locfileid: "51010722"
 
     ![配置单一登录](./media/jiramicrosoft-tutorial/addon12.png)
 
-9. 插件安装后，它会显示在“管理加载项”部分的“用户已安装”加载项部分。 单击“配置”配置新的插件。
+9. 要运行 JIRA 反向代理方案或负载均衡器方案，请执行以下步骤：
+
+    > [!NOTE]
+    > 应先按照以下说明配置服务器，然后安装插件。
+
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在 JIRA 服务器应用程序的 **server.xml** 文件中的**连接器**端口中添加以下属性。
+
+    `scheme="https" proxyName="<subdomain.domain.com>" proxyPort="<proxy_port>" secure="true"`
+
+    ![配置单一登录](./media/jiramicrosoft-tutorial/reverseproxy1.png)
+
+    b. 根据代理/负载均衡器，在**系统设置**中更改**基本 URL**。
+
+    ![配置单一登录](./media/jiramicrosoft-tutorial/reverseproxy2.png)
+
+10. 插件安装后，它会显示在“管理加载项”部分的“用户已安装”加载项部分。 单击“配置”配置新的插件。
 
     ![配置单一登录](./media/jiramicrosoft-tutorial/addon13.png)
 
-10. 在配置页上执行下列步骤：
+11. 在配置页上执行下列步骤：
 
     ![配置单一登录](./media/jiramicrosoft-tutorial/addon52.png)
 

@@ -10,16 +10,16 @@ ms.topic: conceptual
 ms.date: 02/20/2018
 ms.author: hrasheed
 ms.custom: H1Hack27Feb2017,hdinsightactive,hdiseo17may2017
-ms.openlocfilehash: 8eb5a2429db26c987e9a6a40130e25c8034a210b
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 5f07f462fc33761f7d29944594491a72f283cd31
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51011640"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52582547"
 ---
 # <a name="create-an-apache-storm-topology-in-java"></a>以 Java 语言创建 Apache Storm 拓扑
 
-了解如何为 Apache Storm 创建基于 Java 的拓扑。 将创建实现了单词计数应用程序的 Storm 拓扑。 将使用 Maven 构建并打包项目。 然后了解如何使用 Flux 框架定义拓扑。
+了解如何为 [Apache Storm](http://storm.apache.org/) 创建基于 Java 的拓扑。 将创建实现了单词计数应用程序的 Storm 拓扑。 将使用 [Apache Maven](https://maven.apache.org/) 构建并打包项目。 然后了解如何使用 Flux 框架定义拓扑。
 
 完成本文档中的步骤之后，可将拓扑部署到 Apache Storm on HDInsight。
 
@@ -30,7 +30,7 @@ ms.locfileid: "51011640"
 
 * [Java 开发人员工具包 (JDK) 版本 8](https://aka.ms/azure-jdks)
 
-* [Maven https://maven.apache.org/download.cgi)](https://maven.apache.org/download.cgi)：Maven 是 Java 项目的项目生成系统。
+* [Apache Maven (https://maven.apache.org/download.cgi)](https://maven.apache.org/download.cgi)：Maven 是 Java 项目的项目生成系统。
 
 * 文本编辑器或 IDE。
 
@@ -534,7 +534,7 @@ public class WordCountTopology {
 
 ### <a name="configure-logging"></a>配置日志记录
 
-Storm 使用 Apache Log4j 来记录信息。 如果未配置日志记录，拓扑将发出诊断信息。 若要控制所记录的信息，请在 `resources` 目录中创建名为 `log4j2.xml` 的文件。 将以下 XML 用作该文件的内容。
+Storm 使用 [Apache Log4j 2](https://logging.apache.org/log4j/2.x/) 来记录信息。 如果未配置日志记录，拓扑将发出诊断信息。 若要控制所记录的信息，请在 `resources` 目录中创建名为 `log4j2.xml` 的文件。 将以下 XML 用作该文件的内容。
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -559,7 +559,7 @@ Storm 使用 Apache Log4j 来记录信息。 如果未配置日志记录，拓�
 
 `<Root level="error">` 部分将日志记录的根级别（不在 `com.microsoft.example` 中的所有内容）配置为只记录错误信息。
 
-有关为 Log4j 配置日志记录的详细信息，请参阅 [http://logging.apache.org/log4j/2.x/manual/configuration.html](http://logging.apache.org/log4j/2.x/manual/configuration.html)。
+有关为 Log4j 2 配置日志记录的详细信息，请参阅 [http://logging.apache.org/log4j/2.x/manual/configuration.html](http://logging.apache.org/log4j/2.x/manual/configuration.html)。
 
 > [!NOTE]
 > Storm 0.10.0 版及更高版本使用 Log4j 2.x。 早期版本的 Storm 使用 Log4j 1.x（为日志配置使用的格式不同）。 有关较旧配置的信息，请参阅 [http://wiki.apache.org/logging-log4j/Log4jXmlFormat](http://wiki.apache.org/logging-log4j/Log4jXmlFormat)。
@@ -588,7 +588,7 @@ mvn compile exec:java -Dstorm.topology=com.microsoft.example.WordCountTopology
 
 ## <a name="convert-the-topology-to-flux"></a>将拓扑转换为 Flux
 
-Flux 是 Storm 0.10.0 及更高版本随附的一个新框架，可以将配置和实现分离开来。 组件仍然是以 Java 语言定义的，但拓扑是使用 YAML 文件定义的。 可以随项目一起打包默认的拓扑定义，也可以在提交拓扑时使用独立的文件。 将拓扑提交到 Storm 时，可以使用环境变量或配置文件来填充 YAML 拓扑定义中的值。
+[Flux](http://storm.apache.org/releases/2.0.0-SNAPSHOT/flux.html) 是 Storm 0.10.0 及更高版本随附的一个新框架，可以将配置和实现分离开来。 组件仍然是以 Java 语言定义的，但拓扑是使用 YAML 文件定义的。 可以随项目一起打包默认的拓扑定义，也可以在提交拓扑时使用独立的文件。 将拓扑提交到 Storm 时，可以使用环境变量或配置文件来填充 YAML 拓扑定义中的值。
 
 YAML 文件定义了要用于拓扑的组件以及它们之间的数据流。 可以包括一个 YAML 文件（作为 jar 文件的一部分），也可以使用外部 YAML 文件。
 
@@ -762,23 +762,23 @@ YAML 文件定义了要用于拓扑的组件以及它们之间的数据流。 �
 
     启动拓扑后，应会发现发出批的间隔时间已发生更改，反映 newtopology.yaml 中的值。 因此可以看到，无需重新编译拓扑即可通过 YAML 文件更改配置。
 
-有关 Flux 框架的上述功能和其他功能的详细信息，请参阅 [Flux (https://storm.apache.org/releases/1.0.6/flux.html)](https://storm.apache.org/releases/1.0.6/flux.html)。
+有关 Flux 框架的上述功能和其他功能的详细信息，请参阅 [Flux (http://storm.apache.org/releases/current/flux.html)](http://storm.apache.org/releases/current/flux.html)。
 
 ## <a name="trident"></a>Trident
 
-Trident 是 Storm 提供的高级抽象。 它支持有状态处理。 Trident 的主要优点在于，它可以保证进入拓扑的每个消息只会处理一次。 如果不使用 Trident，则拓扑只能保证至少将消息处理一次。 两者还有其他方面的差异，例如，可以使用内置组件，而无需创建 Bolt。 事实上，可以使用低泛型组件（例如筛选、投影和函数）来取代 Bolt。
+[Trident](http://storm.apache.org/releases/current/Trident-API-Overview.html) 是 Storm 提供的高级抽象。 它支持有状态处理。 Trident 的主要优点在于，它可以保证进入拓扑的每个消息只会处理一次。 如果不使用 Trident，则拓扑只能保证至少将消息处理一次。 两者还有其他方面的差异，例如，可以使用内置组件，而无需创建 Bolt。 事实上，可以使用低泛型组件（例如筛选、投影和函数）来取代 Bolt。
 
 可以使用 Maven 项目来创建 Trident 应用程序。 使用本文前面所述的相同基本步骤 - 只有代码不同。 Trident（目前）还不能与 Flux 框架配合使用。
 
-有关 Trident 的详细信息，请参阅 [Trident API 概述](http://storm.apache.org/documentation/Trident-API-Overview.html)。
+有关 Trident 的详细信息，请参阅 [Trident API 概述](http://storm.apache.org/releases/current/Trident-API-Overview.html)。
 
 ## <a name="next-steps"></a>后续步骤
 
-已学习如何使用 Java 创建 Storm 拓扑。 接下来，请学习如何：
+已学习如何使用 Java 创建 Apache Storm 拓扑。 接下来，请学习如何：
 
 * [在 HDInsight 上部署和管理 Apache Storm 拓扑](apache-storm-deploy-monitor-topology.md)
 
 * [使用 Visual Studio 开发 Apache Storm on HDInsight 的 C# 拓扑](apache-storm-develop-csharp-visual-studio-topology.md)
 
-如需更多 Storm 拓扑示例，请访问 [Storm on HDInsight 示例拓扑](apache-storm-example-topology.md)。
+如需更多 Apache Storm 拓扑示例，请访问 [Apache Storm on HDInsight 示例拓扑](apache-storm-example-topology.md)。
 

@@ -9,16 +9,16 @@ ms.topic: conceptual
 ms.date: 06/26/2018
 ms.author: hrasheed
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.openlocfilehash: d037c4fc65bc32ff183ddc7a8925cd2f51411ea0
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: 41b9d295837d377df98208d43c9cd4699f380b86
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51034620"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52494389"
 ---
 # <a name="analyze-twitter-data-using-apache-hive-and-apache-hadoop-on-hdinsight"></a>使用 HDInsight 中的 Apache Hive 和 Apache Hadoop 分析 Twitter 数据
 
-了解如何使用 Apache Hive 处理 Twitter 数据。 结果是发送最多包含某个特定词的推文的 Twitter 用户列表。
+了解如何使用 [Apache Hive](https://hive.apache.org/) 处理 Twitter 数据。 结果是发送最多包含某个特定词的推文的 Twitter 用户列表。
 
 > [!IMPORTANT]
 > 本文档中的步骤已在 HDInsight 3.6 上进行测试。
@@ -182,7 +182,7 @@ hdfs dfs -put tweets.txt /tutorials/twitter/data/tweets.txt
 
 ## <a name="run-the-hiveql-job"></a>运行 HiveQL 作业
 
-1. 使用以下命令来创建包含 HiveQL 语句的文件：
+1. 使用以下命令来创建包含 [HiveQL](https://cwiki.apache.org/confluence/display/Hive/LanguageManual) 语句的文件：
 
    ```bash
    nano twitter.hql
@@ -322,7 +322,7 @@ hdfs dfs -put tweets.txt /tutorials/twitter/data/tweets.txt
 
 ## <a name="next-steps"></a>后续步骤
 
-你已了解如何将非结构化 JSON 数据集转换为结构化 Hive 表。 若要了解有关 HDInsight 上的 Hive 的详细信息，请参阅以下文档：
+你已了解如何将非结构化 JSON 数据集转换为结构化 [Apache Hive](https://hive.apache.org/) 表。 若要了解有关 HDInsight 上的 Hive 的详细信息，请参阅以下文档：
 
 * [HDInsight 入门](hadoop/apache-hadoop-linux-tutorial-get-started.md)
 * [使用 HDInsight 分析航班延误数据](hdinsight-analyze-flight-delay-data-linux.md)

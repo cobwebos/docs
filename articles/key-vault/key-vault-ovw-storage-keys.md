@@ -1,6 +1,6 @@
 ---
 ms.assetid: ''
-title: Azure Key Vault 存储帐户密钥
+title: Azure Key Vault 托管存储帐户 - CLI
 description: 存储帐户密钥在 Azure Key Vault 与 Azure 存储帐户基于密钥的访问方式之间提供无缝集成。
 ms.topic: conceptual
 services: key-vault
@@ -9,14 +9,14 @@ author: bryanla
 ms.author: bryanla
 manager: mbaldwin
 ms.date: 10/03/2018
-ms.openlocfilehash: e62c599d82f488bf1fc30ce503c271084c5ae59d
-ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.openlocfilehash: e110a24af6a0d49ea949db6bc30ab344c81d0f48
+ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51300213"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52619276"
 ---
-# <a name="azure-key-vault-storage-account-keys"></a>Azure Key Vault 存储帐户密钥
+# <a name="azure-key-vault-managed-storage-account---cli"></a>Azure Key Vault 托管存储帐户 - CLI
 
 > [!NOTE]
 > [Azure 存储现在支持 AAD 授权](https://docs.microsoft.com/azure/storage/common/storage-auth-aad)。 我们建议使用 Azure Active Directory 对存储进行身份验证和授权，因为用户不必担心轮换其存储帐户密钥。

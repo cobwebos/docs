@@ -9,16 +9,16 @@ ms.topic: conceptual
 ms.date: 03/01/2017
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: 53f729e23ced00bd0acb5674308f8c610bff8868
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: ce39e3ffce0b7721bde84254c7e5a35ec28465dc
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51005370"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52583153"
 ---
 # <a name="deploy-and-manage-apache-storm-topologies-on-windows-based-hdinsight"></a>在基于 Windows 的 HDInsight 上部署和管理 Apache Storm 拓扑
 
-Storm 仪表板可让你使用 Web 浏览器轻松在 HDInsight 群集中部署和运行 Apache Storm 拓扑。 还可以使用该仪表板监视和管理正在运行的拓扑。 如果使用 Visual Studio，则 HDInsight Tools for Visual Studio 会提供 Visual Studio 中的类似功能。
+[Apache Storm](http://storm.apache.org/) 仪表板可让你使用 Web 浏览器轻松在 HDInsight 群集中部署和运行 Apache Storm 拓扑。 还可以使用该仪表板监视和管理正在运行的拓扑。 如果使用 Visual Studio，则 HDInsight Tools for Visual Studio 会提供 Visual Studio 中的类似功能。
 
 HDInsight Tools 中的 Storm 仪表板和 Storm 功能依赖于 Storm REST API，此 API 可用于创建自己的监视和管理解决方案。
 
@@ -88,7 +88,7 @@ Storm UI 的主页面提供以下信息：
 
   * **重新平衡**：调整拓扑的并行度。 更改群集中的节点数目之后，应该重新平衡正在运行的拓扑。 这可让拓扑调整并行度，以弥补群集中增加或减少的节点数目。
 
-      有关详细信息，请参阅[了解 Storm 拓扑的并行度](http://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html)。
+      有关详细信息，请参阅[了解 Apache Storm 拓扑的并行度](http://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html)。
 
   * **终止**：在经过指定的超时之后终止 Storm 拓扑。
 
@@ -118,7 +118,7 @@ Storm UI 的主页面提供以下信息：
 
 ## <a name="hdinsight-tools-for-visual-studio"></a>用于 Visual Studio 的 HDInsight 工具
 
-HDInsight Tools 可用于将 C# 或混合拓扑提交到 Storm 群集。 以下步骤使用了一个示例应用程序。 有关使用 HDInsight 工具创建自己的拓扑的详细信息，请参阅[使用 Visual Studio 的 HDInsight 工具开发 C# 拓扑](apache-storm-develop-csharp-visual-studio-topology.md)。
+[HDInsight 工具](https://azure.microsoft.com/resources/videos/hdinsight-tools-for-visual-studio/)可用于将 C# 或混合拓扑提交到 Storm 群集。 以下步骤使用了一个示例应用程序。 有关使用 HDInsight 工具创建自己的拓扑的详细信息，请参阅[使用 Visual Studio 的 HDInsight 工具开发 C# 拓扑](apache-storm-develop-csharp-visual-studio-topology.md)。
 
 使用以下步骤将示例部署到 Storm on HDInsight 群集，并查看和管理拓扑。
 
@@ -159,7 +159,7 @@ HDInsight Tools 可用于将 C# 或混合拓扑提交到 Storm 群集。 以下�
 
 Storm UI 是以 REST API 为基础生成的，因此，可以使用 API 执行类似的管理和监视功能。 使用 REST API 可以创建自定义工具来管理和监视 Storm 拓扑。
 
-有关详细信息，请参阅 [Storm UI REST API](https://github.com/apache/storm/blob/0.9.3-branch/STORM-UI-REST-API.md)。 以下信息特定于将 REST API 与 Apache Storm on HDInsight 配合使用的情况。
+有关详细信息，请参阅 [Apache Storm UI REST API](https://github.com/apache/storm/blob/0.9.3-branch/STORM-UI-REST-API.md)。 以下信息特定于将 REST API 与 Apache Storm on HDInsight 配合使用的情况。
 
 ### <a name="base-uri"></a>基本 URI
 
@@ -174,7 +174,7 @@ HDInsight 群集上的 REST API 的基本 URI 是 **https://&lt;clustername>.azu
 
 ### <a name="return-values"></a>返回值
 
-从 REST API 返回的信息只能从群集或与群集相同的 Azure 虚拟网络上的虚拟机中使用。 例如，无法从 Internet 访问针对 Zookeeper 服务器返回的完全限定的域名 (FQDN)。
+从 REST API 返回的信息只能从群集或与群集相同的 Azure 虚拟网络上的虚拟机中使用。 例如，无法从 Internet 访问针对 [Apache ZooKeeper](https://zookeeper.apache.org/) 服务器返回的完全限定的域名 (FQDN)。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -182,9 +182,9 @@ HDInsight 群集上的 REST API 的基本 URI 是 **https://&lt;clustername>.azu
 
 * [使用 Visual Studio 的 HDInsight 工具开发 C# 拓扑](apache-storm-develop-csharp-visual-studio-topology.md)
 
-* [使用 Maven 开发基于 Java 的拓扑](apache-storm-develop-java-topology.md)
+* [使用 Apache Maven 开发基于 Java 的拓扑](apache-storm-develop-java-topology.md)
 
-有关更多示例拓扑的列表，请参阅 [Storm on HDInsight 的示例拓扑](apache-storm-example-topology.md)。
+有关更多示例拓扑的列表，请参阅 [Apache Storm on HDInsight 的示例拓扑](apache-storm-example-topology.md)。
 
 [hdinsight-dashboard]: ./media/apache-storm-deploy-monitor-topology/dashboard-link.png
 [storm-dashboard-submit]: ./media/apache-storm-deploy-monitor-topology/submit.png

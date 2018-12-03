@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/10/2018
 ms.author: dharmas
 ms.reviewer: sngun
-ms.openlocfilehash: 463c74638b0e50348b8c9454334b7457e7b570e6
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 5db43c6488a4592eb46d9a0fe9a044dde36fc494
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51283880"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52423341"
 ---
 # <a name="azure-cosmos-db-global-distribution---under-the-hood"></a>Azure Cosmos DB 全局分布 - 揭秘
 
@@ -72,7 +72,7 @@ Cosmos DB 的全球分布依赖于两个关键抽象 – 副本集和分区集�
 
 不管为 Cosmos 数据库配置了一个还是多个写入区域，都可以从五个妥善定义的一致性模型中进行选择。 借助新增的启用多个写入区域的支持，一致性级别获得了以下明显改善：  
 
-如同以往，有限过期一致性可保证所有读取操作将保留在任意区域中最新写入操作的 k 前缀或 t 秒范围内。 此外，可保证具有有限过期一致性的读取操作是单调的，且附带一致前缀保证。 反熵协议在运行时受到速率限制，确保前缀不会执行累加，并且不需要对写入应用反压。 如同以往，会话一致性可保证单调读取、单调写入、读取自己的写入、写入后读取，以及全球一致的前缀保证。 对于配置了非常一致性的数据库，该系统将通过在每个分区集中指定一个领先者，切换回到单个写入区域。 
+如同以往，有限过期一致性可保证所有读取操作将保留在任意区域中最新写入操作的 k 前缀或 t 秒范围内。 此外，可保证具有有限过期一致性的读取操作是单调的，且附带一致前缀保证。 反熵协议在运行时受到速率限制，确保前缀不会执行累加，并且不需要对写入应用反压。 如同以往，会话一致性可保证单调读取、单调写入、读取自己的写入、写入后读取，以及全球一致的前缀保证。 对于配置具有强一致性的数据库，由于跨区域的同步复制，多主数据库的好处（低写入延迟、高写入可用性）不适用。
 
 [此处](consistency-levels.md)介绍了 Cosmos DB 中五个一致性模型的语义，[此处](https://github.com/Azure/azure-cosmos-tla)使用高级 TLA+ 规范对其数学原理做了演示。
 
@@ -81,5 +81,5 @@ Cosmos DB 的全球分布依赖于两个关键抽象 – 副本集和分区集�
 接下来，请通过以下文章了解如何配置全局分布：
 
 * [如何配置多宿主客户端](how-to-manage-database-account.md#configure-clients-for-multi-homing)
-* [如何在数据库中添加/删除区域](how-to-manage-database-account.md#addremove-regions-from-your-database-account)
+* [在数据库帐户中添加/删除区域](how-to-manage-database-account.md#addremove-regions-from-your-database-account)
 * [如何为 SQL API 帐户创建自定义冲突解决策略](how-to-manage-conflicts.md#create-a-custom-conflict-resolution-policy)

@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.openlocfilehash: 466cb9ea116030d3f6ee6b41809011dae9acc00b
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 578479d43279dc1edb9edd24fd57d6841784166a
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51011198"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52498134"
 ---
 # <a name="azure-storage-solutions-for-ml-services-on-azure-hdinsight"></a>适用于 ML Services on HDInsight 的 Azure 存储解决方案
 
@@ -26,7 +26,7 @@ ML Services on HDInsight 可使用各种存储解决方案来保存数据、代�
 
 还可以使用 HDInsight 群集访问多个 Azure 存储帐户或容器。 Azure 文件存储是可在边缘节点上使用的一个方便的数据存储选项，通过它可将 Azure 存储文件共享装载到其他位置，例如 Linux 文件系统。 任何具有受支持操作系统（如 Windows 或 Linux）的系统，都可以装载和使用 Azure 文件共享。 
 
-在 HDInsight 中创建 Hadoop 群集时，将指定 Azure 存储帐户或 Data Lake Store。 该帐户中的某个特定存储容器可为你所创建的群集保存文件系统（例如 Hadoop 分布式文件系统）。 有关详细信息及指南，请参阅：
+在 HDInsight 中创建 Apache Hadoop 群集时，将指定 Azure 存储帐户或 Data Lake Store。 该帐户中的某个特定存储容器可为你所创建的群集保存文件系统（例如 Hadoop 分布式文件系统）。 有关详细信息及指南，请参阅：
 
 - [配合使用 Azure 存储与 HDInsight ](../hdinsight-hadoop-use-blob-storage.md)
 - [配合使用 Data Lake Store 和 Azure HDInsight 群集](../hdinsight-hadoop-use-data-lake-store.md)
@@ -170,6 +170,6 @@ ML Services on HDInsight 可使用各种存储解决方案来保存数据、代�
 ## <a name="next-steps"></a>后续步骤
 
 * [HDInsight 上的 ML Services 群集概述](r-server-overview.md)
-* [Hadoop 上的 ML Services 群集入门](r-server-get-started.md)
+* [Apache Hadoop 上的 ML Services 群集入门](r-server-get-started.md)
 * [适用于 HDInsight 上的 ML Services 群集的计算上下文选项](r-server-compute-contexts.md)
 

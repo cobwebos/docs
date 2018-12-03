@@ -9,16 +9,16 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 12/04/2017
-ms.openlocfilehash: f5be273401fa9fdfdc2c97296f5f2265dbb3c447
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: f36d89fb01e7892ef10576b7f5f0b5fa86d8a21b
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43042371"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52314245"
 ---
-# <a name="phoenix-query-server-rest-sdk"></a>Phoenix 查询服务器 REST SDK
+# <a name="apache-phoenix-query-server-rest-sdk"></a>Apache Phoenix 查询服务器 REST SDK
 
-[Apache Phoenix](http://phoenix.apache.org/) 是一个开源的大规模并行关系数据库层，以 [HBase](apache-hbase-overview.md) 为基础。 Phoenix 允许通过 [SQLLine](apache-hbase-phoenix-squirrel-linux.md) 之类的 SSH 工具将类 SQL 查询与 HBase 配合使用。 Phoenix 也提供名为“Phoenix 查询服务器 (PQS)”的 HTTP 服务器，这是一个瘦客户端，支持两种用于客户端通信的传输机制：JSON 和协议缓冲区。 协议缓冲区是默认的机制，提供的通信比 JSON 更高效。
+[Apache Phoenix](http://phoenix.apache.org/) 是一个以 [Apache HBase](apache-hbase-overview.md) 为基础的开源大规模并行关系数据库层。 Phoenix 允许通过 [SQLLine](apache-hbase-phoenix-squirrel-linux.md) 之类的 SSH 工具将类 SQL 查询与 HBase 配合使用。 Phoenix 也提供名为“Phoenix 查询服务器 (PQS)”的 HTTP 服务器，这是一个瘦客户端，支持两种用于客户端通信的传输机制：JSON 和协议缓冲区。 协议缓冲区是默认的机制，提供的通信比 JSON 更高效。
 
 本文介绍如何使用 PQS REST SDK 创建表、逐个或成批 upsert 行，以及使用 SQL 语句选择数据。 示例使用[适用于 Apache Phoenix 查询服务器的 Microsoft .NET 驱动程序](https://www.nuget.org/packages/Microsoft.Phoenix.Client)。 此 SDK 在 [Apache Calcite 的 Avatica](https://calcite.apache.org/avatica/) API 基础上构建，该 API 将协议缓冲区专用于序列化格式。
 
@@ -32,7 +32,7 @@ ms.locfileid: "43042371"
 
 ## <a name="instantiate-new-phoenixclient-object"></a>实例化新的 PhoenixClient 对象
 
-若要开始使用库，请实例化新的 `PhoenixClient` 对象，将包含 `Uri` 的 `ClusterCredentials` 传递到群集，并传递群集的 Hadoop 用户名和密码。
+若要开始使用库，请实例化新的 `PhoenixClient` 对象，将包含 `Uri` 的 `ClusterCredentials` 传入到群集，并传入群集的 Apache Hadoop 用户名和密码。
 
 ```csharp
 var credentials = new ClusterCredentials(new Uri("https://CLUSTERNAME.azurehdinsight.net/"), "USERNAME", "PASSWORD");
@@ -540,5 +540,5 @@ FM: 5
 
 ## <a name="next-steps"></a>后续步骤 
 
-* [HDInsight 中的 Phoenix](../hdinsight-phoenix-in-hdinsight.md)
-* [使用 HBase REST SDK](apache-hbase-rest-sdk.md)
+* [HDInsight 中的 Apache Phoenix](../hdinsight-phoenix-in-hdinsight.md)
+* [使用 Apache HBase REST SDK](apache-hbase-rest-sdk.md)

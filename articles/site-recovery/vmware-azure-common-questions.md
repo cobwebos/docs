@@ -4,15 +4,15 @@ description: 本文汇总了使用 Azure Site Recovery 设置将本地 VMware VM
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
-ms.date: 10/29/2018
+ms.date: 11/19/2018
 ms.topic: conceptual
 ms.author: raynew
-ms.openlocfilehash: c261dd083fed8b9c4a0f3846157c666cbb52083c
-ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
+ms.openlocfilehash: 248b2a748088330f91b3cc76564d5d8743f04411
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51636809"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52162477"
 ---
 # <a name="common-questions---vmware-to-azure-replication"></a>常见问题 - VMware 到 Azure 的复制
 
@@ -47,14 +47,20 @@ ms.locfileid: "51636809"
 ## <a name="on-premises"></a>本地
 
 ### <a name="what-do-i-need-on-premises"></a>需要在本地做好哪些准备？
-在本地，需要在单个 VMware VM 上安装 Site Recovery 组件。 还需要至少包含一台 ESXi 主机的 VMware 基础结构。我们建议使用 vCenter 服务器。 此外，需要提供一个或多个可供复制的 VMware VM。 [详细了解](vmware-azure-architecture.md) VMware 到 Azure 复制体系结构。
 
-本地配置服务器可通过以下两种方式之一进行部署
+在本地，你需要：
+- 在单个 VMware VM 上安装 Site Recovery 组件。
+- 至少包含一台 ESXi 主机的 VMware 基础结构。我们建议使用 vCenter 服务器。
+- 一个或多个可供复制的 VMware VM。
 
-1. 使用预先安装了配置服务器的 VM 模板进行部署。 在[此处](vmware-azure-tutorial.md#download-the-vm-template)了解详细信息。
-2. 使用选定的 Windows Server 2016 计算机上的安装程序进行部署。 在[此处](physical-azure-disaster-recovery.md#set-up-the-source-environment)了解详细信息。
+[详细了解](vmware-azure-architecture.md) VMware 到 Azure 复制体系结构。
 
-若要了解在自己的 Windows Server 计算机上部署配置服务器的入门步骤，请在“启用保护”的保护目标中，选择“转到 Azure”>“不虚拟化/其他”。
+本地配置服务器可通过如下所示方式进行部署：
+
+- 我们建议使用预先安装了配置服务器的 OVA 模板将配置服务器部署为 VMware VM。
+- 如果由于任何原因无法使用模板，则可以手动设置配置服务器。 [了解详细信息](physical-azure-disaster-recovery.md#set-up-the-source-environment)。
+
+
 
 ### <a name="where-do-on-premises-vms-replicate-to"></a>本地 VM 将复制到哪个位置？
 数据将复制到 Azure 存储。 运行故障转移时，Site Recovery 会自动从存储帐户创建 Azure VM。
@@ -144,7 +150,7 @@ Site Recovery 通过公共终结点或使用 ExpressRoute 公共对等互连将�
 否，只能将该 VM 用于配置服务器。 
 
 ### <a name="can-i-change-the-vault-registered-in-the-configuration-server"></a>是否可以更改在配置服务器中注册的保管库？
-否。 将保管库注册到配置服务器后，它无法更改。
+不是。 将保管库注册到配置服务器后，它无法更改。
 
 ### <a name="can-i-use-the-same-configuration-server-for-disaster-recovery-of-both-vmware-vms-and-physical-servers"></a>是否可以将同一配置服务器同时用于 VMware VM 和物理服务器的灾难恢复？
 可以，但请注意，物理计算机仅可故障回复到 VMware VM。

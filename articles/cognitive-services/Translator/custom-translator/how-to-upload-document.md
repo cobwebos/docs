@@ -9,16 +9,18 @@ ms.component: custom-translator
 ms.date: 11/13/2018
 ms.author: v-rada
 ms.topic: article
-ms.openlocfilehash: bb84a3ddfba54c47cdf91aa72889a960722cdbd3
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 3a0adb4b761121334e93f2b8d2d764ff3ab495e2
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51626705"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52633242"
 ---
 # <a name="upload-a-document"></a>上传文档
 
 在[自定义翻译](https://portal.customtranslator.azure.ai)中，可以上传并行文档来训练翻译模型。 [并行文档](what-are-parallel-documents.md)是配对的文档，其中的一个文档是另一个文档的翻译。 该对中的一个文档包含采用源语言的句子，另一个文档包含这些句子的目标语言翻译。
+
+在上传文档之前，请查看[文档格式和命名约定指南](document-formats-naming-convention.md)，以确保自定义翻译支持你的文件格式。
 
 ## <a name="how-to-upload-document"></a>如何上传文档？
 

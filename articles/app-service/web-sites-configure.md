@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/25/2017
 ms.author: cephalin
-ms.openlocfilehash: cf3a6fe24082a10db6a5b1267b70435d9e36b720
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.openlocfilehash: 73d2da542c4f7da0933187d800f562de76bfb3e6
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49115516"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52443502"
 ---
 # <a name="configure-web-apps-in-azure-app-service"></a>在 Azure 应用服务中配置 Web 应用
 
@@ -78,6 +78,8 @@ ms.locfileid: "49115516"
 
 应用程序设置在存储时始终进行加密（静态加密）。
 
+可以使用[密钥保管库引用](app-service-key-vault-references.md)从密钥保管库解析应用设置。
+
 ### <a name="connection-strings"></a>连接字符串
 链接资源的连接字符串。 
 
@@ -93,6 +95,8 @@ ms.locfileid: "49115516"
 例如，如果 MySql 连接字符串命名为 `connectionstring1`，则会通过环境变量 `MYSQLCONNSTR_connectionString1` 访问该字符串。
 
 连接字符串在存储时始终进行加密（静态加密）。
+
+可以使用[密钥保管库引用](app-service-key-vault-references.md)从密钥保管库解析连接字符串。
 
 ### <a name="default-documents"></a>默认文档
 默认文档是网站的根 URL 下显示的网页。  使用的是列表中的第一个匹配文件。 

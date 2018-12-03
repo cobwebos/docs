@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2018
 ms.author: tomfitz
-ms.openlocfilehash: a5a2300bd0b768b4a29b01e75f9558c4923ac11c
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: eea981800147f24025e01826f7550a95041c107f
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49395116"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52427295"
 ---
 # <a name="enable-safe-deployment-practices-with-azure-deployment-manager-private-preview"></a>使用 Azure 部署管理器启用安全部署实践（个人预览版）
 
@@ -34,6 +34,8 @@ Azure 部署管理器现以个人预览版提供。 要使用 Azure 部署管理
 * 推出的参数文件
 
 请在部署推出模板之前部署拓扑模板。
+
+可以在[此处](https://docs.microsoft.com/rest/api/deploymentmanager/)找到 Azure 部署管理器 REST API 参考。
 
 ## <a name="supported-locations"></a>支持的位置
 

@@ -1,10 +1,11 @@
 ---
-title: 在机器学习中创建 Web 服务终结点 | Microsoft Docs
+title: 在机器学习中创建 Web 服务终结点 - Azure 机器学习工作室 | Microsoft Docs
 description: 在 Azure 机器学习中创建 Web 服务终结点
 services: machine-learning
 documentationcenter: ''
-author: YasinMSFT
-ms.author: yahajiza
+author: ericlicoding
+ms.custom: (previous ms.author=yahajiza, author=YasinMSFT)
+ms.author: amlstudiodocs
 manager: hjerez
 editor: cgronlun
 ms.assetid: 4657fc1b-5228-4950-a29e-bc709259f728
@@ -15,14 +16,14 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 10/04/2016
-ms.openlocfilehash: 8cdf8c5ac3676d8abc9084fc842484aca5b6d1c7
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 266970bec1e61dca808bb6358f2b4580359ee70d
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34833540"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52314007"
 ---
-# <a name="creating-endpoints"></a>创建终结点
+# <a name="creating-endpoints"></a>创建终结点 
 > [!NOTE]
 >  本主题介绍适用于**经典**机器学习 Web 服务的技术。
 > 
@@ -30,7 +31,7 @@ ms.locfileid: "34833540"
 
 创建销售给客户的 Web 服务时，需要为每位客户提供训练的模型，这些模型链接到从中创建 Web 服务的实验。 此外，实验的任何更新都要有选择地应用到终结点，而不会覆盖自定义项。
 
-若要实现此目的，使用 Azure 机器学习可为已部署的 Web 服务创建多个终结点。 Web 服务中的每个终结点都是独立处理、限制和托管的。 每个终结点唯一 URL 和身份验证密钥，可以将其分发给客户。
+若要实现此目的，使用 Azure 机器学习工作室可为已部署的 Web 服务创建多个终结点。 Web 服务中的每个终结点都是独立处理、限制和托管的。 每个终结点唯一 URL 和身份验证密钥，可以将其分发给客户。
 
 [!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
 

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 08/27/2018
 ms.author: rangv
-ms.openlocfilehash: 55901d6f3bcbf5511b6921939fdcba03972efed3
-ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
+ms.openlocfilehash: 2ece10c43f25ac637a29324f46a88e50d9655431
+ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47182835"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52620432"
 ---
 # <a name="connect-iot-devkit-az3166-to-azure-iot-hub"></a>将 IoT DevKit AZ3166 连接到 Azure IoT 中心
 
@@ -119,12 +119,12 @@ DevKit 上运行的默认应用会检查固件的最新版本，并显示某些�
 
 我们建议安装适用于 Visual Studio Code 的 [Azure IoT Workbench](https://aka.ms/iot-workbench) 扩展，以便在 DevKit 上进行开发。
 
-Azure IoT Workbench 提供用于开发 IoT 解决方案的集成体验。 借助该工具可以通过 Azure IoT 和其他服务在设备与云中进行开发。 可以观看此 Channel9 视频来了解其功能概述。
+Azure IoT Workbench 提供用于开发 IoT 解决方案的集成体验。 借助该工具可以通过 Azure IoT 和其他服务在设备与云中进行开发。 可以观看此[第 9 频道视频](https://channel9.msdn.com/Shows/Internet-of-Things-Show/IoT-Workbench-extension-for-VS-Code)来了解其功能概述。
 
 遵循以下步骤准备 DevKit 的开发环境：
 
 1. 下载并安装 [Arduino IDE](https://www.arduino.cc/en/Main/Software)。 此 IDE 提供必要的工具链用于编译和上传 Arduino 代码。
-    * **Windows**：使用 Windows Installer 版本。
+    * **Windows**：使用 Windows Installer 版本。 不要从应用商店安装。
     * **macOS**：将解压缩的 **Arduino.app** 拖放到 `/Applications` 文件夹中。
     * **Ubuntu**：解压缩到某个文件夹中，例如 `$HOME/Downloads/arduino-1.8.5`
 
@@ -133,15 +133,15 @@ Azure IoT Workbench 提供用于开发 IoT 解决方案的集成体验。 借助
 3. 在扩展市场中找到 **Azure IoT Workbench** 并安装它。
     ![安装 Azure IoT Workbench](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/install-workbench.png)：将会连同 IoT Workbench 一起安装其他依赖的扩展。
 
-4. 打开“文件”>“首选项”>“设置”，并添加以下行来配置 Arduino。
-    * Windows：
-
+4. 配置 Arduino
+    * **Windows**：在 **Windows** 上打开“文件”>“首选项”>“设置”，单击“...”并打开 settings.json，然后添加以下行以配置 Arduino。 
+      
     ```json
     "arduino.path": "C:\\Program Files (x86)\\Arduino",
     "arduino.additionalUrls": "https://raw.githubusercontent.com/VSChina/azureiotdevkit_tools/master/package_azureboard_index.json"
     ```
 
-    * **macOS**：
+    * **macOS**：在 **macOS** 上打开“代码”>“首选项”>“设置”，单击“...”并打开 settings.json，然后添加以下行以配置 Arduino
 
     ```json
     "arduino.path": "/Applications",
@@ -195,7 +195,7 @@ Azure IoT Workbench 提供用于开发 IoT 解决方案的集成体验。 借助
 1. 在打开的新项目窗口中，单击 `F1` 打开命令面板，键入并选择 **IoT Workbench: Cloud**，然后选择“Azure 预配”。 遵照分步指南完成预配 Azure IoT 中心和创建设备。
     ![云预配](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/cloud-provision.png)
 
-1. 单击 `F1` 打开命令面板，键入并选择 **IoT Workbench: Device**，然后选择“配置设备设置”>“选择 IoT 中心设备连接字符串”。
+1. 单击 `F1` 打开命令面板，键入并选择 **IoT Workbench: Device**，然后选择“配置设备设置”>“配置设备连接字符串”>“选择 IoT 中心设备连接字符串”。
 
 1. 在 DevKit 上，按住**按钮 A** 不放，按下再松开**重置**按钮，然后松开**按钮 A**。DevKit 将进入配置模式并保存连接字符串。
     ![连接字符串](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/connection-string.png)

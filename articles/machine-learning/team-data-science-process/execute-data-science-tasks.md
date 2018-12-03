@@ -1,25 +1,21 @@
 ---
 title: 执行数据科学任务 - Azure 机器学习 | Microsoft Docs
 description: 数据科学家如何以可跟踪的协作型版本控制方式执行数据科学项目。
-documentationcenter: ''
-author: deguhath
+author: marktab
 manager: cgronlun
 editor: cgronlun
-ms.assetid: ''
 ms.service: machine-learning
 ms.component: team-data-science-process
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2017
-ms.author: deguhath
-ms.openlocfilehash: 19267429510207129b0229dc55fbd46f12977d5d
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.author: tdsp
+ms.custom: (previous author=deguhath, ms.author=deguhath)
+ms.openlocfilehash: 7e25e2c95f377b1ad40cba24b29ababd0561e32a
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39112638"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52495684"
 ---
 # <a name="execute-data-science-tasks-exploration-modeling-and-deployment"></a>执行数据科学任务：探索、建模和部署
 
@@ -34,7 +30,7 @@ ms.locfileid: "39112638"
 
 数据科学家可通过各种方法执行探索和报告：使用适用于 Python 的库和包（例如 matplotlib）或使用 R（例如 ggplot 或 lattice）。 数据科学家可以自定义此类代码，以满足特定方案中数据探索的需要。 结构化数据与非结构化数据（例如文本或图像）的处理需求有所不同。 
 
-Azure Machine Learning Workbench 等产品还提供了[高级数据准备](../desktop-workbench/tutorial-bikeshare-dataprep.md)用于数据整理和探索，包括特征创建。 用户应确定哪种工具、库和包最适合其需要。 
+Azure 机器学习服务等产品还提供了[高级数据准备](../service/how-to-transform-data.md)用于数据整理和探索，包括特征创建。 用户应确定哪种工具、库和包最适合其需要。 
 
 完成此阶段后，交付件是一份数据探索报告。 该报告应提供相当全面的数据视图用于建模，并评估这些数据是否适合继续在建模步骤中使用。 以下部分所述的，用于半自动化探索、建模和报告的 Team Data Science Process (TDSP) 实用工具也提供标准化的数据探索和建模报告。 
 
@@ -90,7 +86,7 @@ YAML 文件用于指定：
 可通过多种方法和平台将模型投入生产。 下面是几个选项：
 
 
-- [Azure 机器学习中的模型部署](../desktop-workbench/model-management-overview.md)
+- [Azure 机器学习服务中的模型部署](../service/how-to-deploy-and-where.md)
 - [SQL-Server 中的模型部署](https://docs.microsoft.com/sql/advanced-analytics/tutorials/sqldev-py6-operationalize-the-model)
 - [Microsoft Machine Learning Server](https://docs.microsoft.com/sql/advanced-analytics/r/r-server-standalone)
 

@@ -9,20 +9,20 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: ashish
-ms.openlocfilehash: 60b80843ce343c667413be55b59d02ac14b349f3
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: d2aeb41c2fcc11c37ec56707932eabcf63e026a0
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51037509"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52497206"
 ---
 # <a name="install-published-application---h2o-sparkling-water"></a>安装已发布的应用程序 - H2O Sparkling Water
 
-本文介绍如何在 Azure HDInsight 上安装和运行 [H20 Sparkling Water](http://www.h2o.ai/) 发布的 Apache Hadoop 应用程序。 有关 HDInsight 应用程序平台的概述以及可用独立软件供应商 (ISV) 发布的应用程序的列表，请参阅[安装第三方 Hadoop 应用程序](hdinsight-apps-install-applications.md)。 有关如何安装自己的应用程序的说明，请参阅[安装自定义 HDInsight 应用程序](hdinsight-apps-install-custom-applications.md)。
+本文介绍如何在 Azure HDInsight 上安装和运行 [H20 Sparkling Water](http://www.h2o.ai/) 发布的 [Apache Hadoop](https://hadoop.apache.org/) 应用程序。 有关 HDInsight 应用程序平台的概述以及可用独立软件供应商 (ISV) 发布的应用程序的列表，请参阅[安装第三方 Hadoop 应用程序](hdinsight-apps-install-applications.md)。 有关如何安装自己的应用程序的说明，请参阅[安装自定义 HDInsight 应用程序](hdinsight-apps-install-custom-applications.md)。
 
 ## <a name="about-h2o-sparkling-water"></a>关于 H2O Sparkling Water
 
-H2O Sparkling Water 是具有线性缩放能力的开源、完全分布式内存中机器学习平台。 使用 H2O Sparkling Water 可将 H2O 的快速、可缩放机器学习算法与 Spark 的功能相结合。 借助 Sparkling Water，用户可以使用 H2O Flow UI 推动 Scala、R 和 Python 的计算。
+H2O Sparkling Water 是具有线性缩放能力的开源、完全分布式内存中机器学习平台。 使用 H2O Sparkling Water 可将 H2O 的快速、可缩放机器学习算法与 [Apache Spark](https://spark.apache.org/) 的功能相结合。 借助 Sparkling Water，用户可以使用 H2O Flow UI 推动 [Scala](https://www.scala-lang.org/)、R 和 Python 的计算。
 
 H2O Sparkling Water 提供：
 
@@ -49,11 +49,11 @@ H2O Sparkling Water 提供：
 
 ## <a name="install-the-h2o-sparkling-water-published-application"></a>安装 H2O Sparkling Water 发布的应用程序
 
-有关安装此应用程序和其他可用 ISV 应用程序的分步说明，请阅读[安装第三方 Hadoop 应用程序](hdinsight-apps-install-applications.md)。
+有关安装此应用程序和其他可用 ISV 应用程序的分步说明，请阅读[安装第三方 Apache Hadoop 应用程序](hdinsight-apps-install-applications.md)。
 
 ## <a name="launch-h2o-sparkling-water"></a>启动 H2O Sparkling Water
 
-1. 安装完成后，可以在 Azure 门户中打开 Jupyter Notebook (`https://<ClusterName>.azurehdinsight.net/jupyter`)，通过群集开始使用 H2O Sparkling Water (h2o sparklingwater)。 转到 Jupyter 的另一种方法是在门户上的群集窗格中选择“群集仪表板”，然后选择“Jupyter Notebook”。 系统会提示输入凭据。 输入创建群集时指定的群集 Hadoop 凭据。
+1. 安装完成后，可以在 Azure 门户中打开 [Jupyter Notebook](https://jupyter.org/) (`https://<ClusterName>.azurehdinsight.net/jupyter`)，通过群集开始使用 H2O Sparkling Water (h2o-sparklingwater)。 转到 Jupyter 的另一种方法是在门户上的群集窗格中选择“群集仪表板”，然后选择“Jupyter Notebook”。 系统会提示输入凭据。 输入创建群集时指定的群集 Hadoop 凭据。
 
 2. Jupyter 中显示了三个文件夹：H2O-PySparkling-Examples、PySpark Examples 和 Scala Examples。 选择“H2O-PySparkling-Examples”文件夹。
 

@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 03/15/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 1e9ca18d2075d40f6f55bc84723f79ae7e10850b
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 2a28c8056e6dc25148299415a63a32993e874e01
+ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51261207"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52284534"
 ---
 # <a name="connection-assets-in-azure-automation"></a>Azure 自动化中的连接资产
 
@@ -102,11 +102,11 @@ Connect-AzureRmAccount -ServicePrincipal -Tenant $Conn.TenantID -ApplicationId $
 
 在图形编辑器的“库”窗格中，右键单击连接，并选择“添加到画布”将 **Get-AutomationConnection** 活动添加到图形 Runbook。
 
-![](media/automation-connections/connection-add-canvas.png)
+![添加到画布](media/automation-connections/connection-add-canvas.png)
 
 下图显示了在图形 Runbook 中使用连接的示例。  这是上面显示的同一示例，可以使用运行方式帐户通过文本 Runbook 进行身份验证。  此示例使用**常量值**数据集执行**获取 RunAs 连接**活动，该活动使用连接对象进行身份验证。  此处使用了一个[管道链接](automation-graphical-authoring-intro.md#links-and-workflow)，因为 ServicePrincipalCertificate 参数集需要单个对象。
 
-![](media/automation-connections/automation-get-connection-object.png)
+![获取连接](media/automation-connections/automation-get-connection-object.png)
 
 ### <a name="python2-runbook-sample"></a>Python2 Runbook 示例
 下图演示了如何在 Python2 Runbook 中使用运行方式连接进行身份验证。

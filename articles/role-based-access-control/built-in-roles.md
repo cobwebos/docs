@@ -11,16 +11,16 @@ ms.devlang: ''
 ms.topic: reference
 ms.tgt_pltfrm: ''
 ms.workload: identity
-ms.date: 10/19/2018
+ms.date: 11/26/2018
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: 72a8a09d04dc009598dafc35b65304662b7b8915
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 58bec272733d0ad83665f4e06f37ae528eb2f8b9
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49955898"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52499659"
 ---
 # <a name="built-in-roles-for-azure-resources"></a>Azure 资源的内置角色
 [基于角色的访问控制 (RBAC)](overview.md) 拥有多个内置角色定义，可将其分配给用户、组和服务主体。 角色分配是控制对 Azure 资源的访问的方式。 如果内置角色不能满足组织的特定需求，则你可以创建自己的[自定义角色](custom-roles.md)。
@@ -39,7 +39,7 @@ ms.locfileid: "49955898"
 | [AcrImageSigner](#acrimagesigner) | ACR 映像签名程序 |
 | [AcrQuarantineReader](#acrquarantinereader) | ACR 隔离数据读取器 |
 | [AcrQuarantineWriter](#acrquarantinewriter) | ACR 隔离数据编写器 |
-| [API 管理服务参与者](#api-management-service-contributor) | 允许你管理 API 管理服务，但不允许你访问这些服务。 |
+| [API 管理服务参与者](#api-management-service-contributor) | 可以管理服务和 API |
 | [API 管理服务操作员角色](#api-management-service-operator-role) | 可以管理服务，但不可管理 API |
 | [API 管理服务读者角色](#api-management-service-reader-role) | 对服务和 API 的只读访问权限 |
 | [Application Insights 组件参与者](#application-insights-component-contributor) | 可管理 Application Insights 组件 |
@@ -53,7 +53,7 @@ ms.locfileid: "49955898"
 | [备份参与者](#backup-contributor) | 允许管理备份服务，但不允许创建保管库以及授予其他人访问权限 |
 | [备份操作员](#backup-operator) | 允许管理备份服务，但删除备份、创建保管库以及授予其他人访问权限除外 |
 | [备份读取器](#backup-reader) | 可以查看备份服务，但是不能进行更改 |
-| [计费读者](#billing-reader) | 允许读取计费数据 |
+| [计费读者](#billing-reader) | 允许对帐单数据进行读取访问 |
 | [BizTalk 参与者](#biztalk-contributor) | 允许管理 BizTalk 服务，但不允许访问这些服务。 |
 | [CDN 终结点参与者](#cdn-endpoint-contributor) | 可以管理 CDN 终结点，但不能向其他用户授予访问权限。 |
 | [CDN 终结点读者](#cdn-endpoint-reader) | 可以查看 CDN 终结点，但不能进行更改。 |
@@ -70,12 +70,14 @@ ms.locfileid: "49955898"
 | [成本管理读者](#cost-management-reader) | 可以查看成本数据和配置（例如预算、导出） |
 | [Data Box 参与者](#data-box-contributor) | 可让你管理 Data Box 服务下的所有内容，但不能向其他人授予访问权限。 |
 | [Data Box 读者](#data-box-reader) | 可让你管理 Data Box 服务，但不能创建订单或编辑订单详细信息，以及向其他人授予访问权限。 |
-| [数据工厂参与者](#data-factory-contributor) | 允许管理数据工厂，但不允许访问它们。 |
+| [数据工厂参与者](#data-factory-contributor) | 创建和管理数据工厂，以及其中的子资源。 |
 | [Data Lake Analytics 开发人员](#data-lake-analytics-developer) | 允许提交、监视和管理自己的作业，但是不允许创建或删除 Data Lake Analytics 帐户。 |
 | [数据清除程序](#data-purger) | 可清除分析数据 |
 | [实验室用户](#devtest-labs-user) | 允许连接、启动、重启和关闭 Azure 开发测试实验室中的虚拟机。 |
 | [DNS 区域参与者](#dns-zone-contributor) | 允许管理 Azure DNS 中的 DNS 区域和记录集，但不允许控制对其访问的人员。 |
 | [DocumentDB 帐户参与者](#documentdb-account-contributor) | 可管理 Azure Cosmos DB 帐户。 Azure Cosmos DB 以前称为 DocumentDB。 |
+| [EventGrid EventSubscription 参与者（预览）](#eventgrid-eventsubscription-contributor-preview) | 可以管理 EventGrid 事件订阅操作。 |
+| [EventGrid EventSubscription 读者（预览）](#eventgrid-eventsubscription-reader-preview) | 可以读取 EventGrid 事件订阅。 |
 | [HDInsight 域服务参与者](#hdinsight-domain-services-contributor) | 可以读取、创建、修改和删除 HDInsight 企业安全性套餐所需的域服务相关操作 |
 | [智能系统帐户参与者](#intelligent-systems-account-contributor) | 允许管理智能系统帐户，但不允许访问这些帐户。 |
 | [密钥保管库参与者](#key-vault-contributor) | 允许管理密钥保管库，但不允许对其进行访问。 |
@@ -101,7 +103,7 @@ ms.locfileid: "49955898"
 | [计划程序作业集合参与者](#scheduler-job-collections-contributor) | 允许管理计划程序作业集合，但不允许访问这些集合。 |
 | [搜索服务参与者](#search-service-contributor) | 允许管理搜索服务，但不允许访问这些服务。 |
 | [安全管理员](#security-admin) | 仅在安全中心内：可以查看安全策略、查看安全状态、编辑安全策略、查看警报和建议、关闭警报和建议 |
-| [安全经理](#security-manager) | 允许管理安全性组件、安全策略和虚拟机 |
+| [安全管理器（旧版）](#security-manager-legacy) | 这是旧角色。 请改用安全管理员角色 |
 | [安全读者](#security-reader) | 仅在安全中心内：可以查看建议和警报、查看安全策略、查看安全状态，但不能进行更改 |
 | [Site Recovery 参与者](#site-recovery-contributor) | 允许管理除保管库创建和角色分配外的 Site Recovery 服务 |
 | [Site Recovery 运算符](#site-recovery-operator) | 允许进行故障转移和故障回复，但不允许执行其他 Site Recovery 管理操作 |
@@ -165,8 +167,7 @@ ms.locfileid: "49955898"
 > | **说明** | ACR 映像签名程序 |
 > | **Id** | 6cef56e8-d556-48e5-a04f-b8e64114680f |
 > | **操作** |  |
-> | Microsoft.ContainerRegistry/registries/*/read |  |
-> | Microsoft.ContainerRegistry/registries/*/write |  |
+> | Microsoft.ContainerRegistry/registries/sign/write | 推送/拉取容器注册表的内容信任元数据。 |
 
 ## <a name="acrquarantinereader"></a>AcrQuarantineReader
 > [!div class="mx-tableFixed"]
@@ -175,7 +176,7 @@ ms.locfileid: "49955898"
 > | **说明** | ACR 隔离数据读取器 |
 > | **Id** | cdda3590-29a3-44f6-95f2-9f980659eb04 |
 > | **操作** |  |
-> | Microsoft.ContainerRegistry/registries/*/read |  |
+> | Microsoft.ContainerRegistry/registries/quarantineRead/read | 从容器注册表中拉取或获取已隔离的映像 |
 
 ## <a name="acrquarantinewriter"></a>AcrQuarantineWriter
 > [!div class="mx-tableFixed"]
@@ -184,14 +185,14 @@ ms.locfileid: "49955898"
 > | **说明** | ACR 隔离数据编写器 |
 > | **Id** | c8d4ff99-41c3-41a8-9f60-21dfdad59608 |
 > | **操作** |  |
-> | Microsoft.ContainerRegistry/registries/*/write |  |
-> | Microsoft.ContainerRegistry/registries/*/read |  |
+> | Microsoft.ContainerRegistry/registries/quarantineRead/read | 从容器注册表中拉取或获取已隔离的映像 |
+> | Microsoft.ContainerRegistry/registries/quarantineWrite/write | 写入/修改已隔离映像的隔离状态 |
 
 ## <a name="api-management-service-contributor"></a>API 管理服务参与者
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **说明** | 允许你管理 API 管理服务，但不允许你访问这些服务。 |
+> | **说明** | 可以管理服务和 API |
 > | **Id** | 312a565d-c81f-4fd8-895a-4e21e48d571c |
 > | **操作** |  |
 > | Microsoft.ApiManagement/service/* | 创建和管理 API 管理服务 |
@@ -536,7 +537,7 @@ ms.locfileid: "49955898"
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **说明** | 允许读取计费数据 |
+> | **说明** | 允许对帐单数据进行读取访问 |
 > | **Id** | fa23ad8b-c56e-40d8-ac0c-ce449e1d2c64 |
 > | **操作** |  |
 > | Microsoft.Authorization/*/read | 读取角色和角色分配 |
@@ -813,7 +814,7 @@ ms.locfileid: "49955898"
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **说明** | 允许管理数据工厂，但不允许访问它们。 |
+> | **说明** | 创建和管理数据工厂，以及其中的子资源。 |
 > | **Id** | 673868aa-7521-48a0-acc6-0f60742d39f5 |
 > | **操作** |  |
 > | Microsoft.Authorization/*/read | 读取角色和角色分配 |
@@ -883,13 +884,14 @@ ms.locfileid: "49955898"
 > | Microsoft.Compute/virtualMachines/restart/action | 重新启动虚拟机 |
 > | Microsoft.Compute/virtualMachines/start/action | 启动虚拟机 |
 > | Microsoft.DevTestLab/*/read | 读取实验室属性 |
-> | Microsoft.DevTestLab/labs/createEnvironment/action | 在实验室中创建虚拟机。 |
 > | Microsoft.DevTestLab/labs/claimAnyVm/action | 在实验室中认领随机可认领虚拟机。 |
+> | Microsoft.DevTestLab/labs/createEnvironment/action | 在实验室中创建虚拟机。 |
 > | Microsoft.DevTestLab/labs/formulas/delete | 删除公式。 |
 > | Microsoft.DevTestLab/labs/formulas/read | 读取公式。 |
 > | Microsoft.DevTestLab/labs/formulas/write | 添加或修改公式。 |
 > | Microsoft.DevTestLab/labs/policySets/evaluatePolicies/action | 评估实验室策略。 |
 > | Microsoft.DevTestLab/labs/virtualMachines/claim/action | 获得现有虚拟机的所有权 |
+> | Microsoft.DevTestLab/labs/virtualmachines/listApplicableSchedules/action | 列出适用的启动/停止计划（如果有）。 |
 > | Microsoft.Network/loadBalancers/backendAddressPools/join/action | 加入负载均衡器后端地址池 |
 > | Microsoft.Network/loadBalancers/inboundNatRules/join/action | 加入负载均衡器入站 NAT 规则 |
 > | Microsoft.Network/networkInterfaces/*/read | 读取网络接口（例如，此网络接口所属的所有负载均衡器）的属性 |
@@ -936,6 +938,37 @@ ms.locfileid: "49955898"
 > | Microsoft.Resources/deployments/* | 创建和管理资源组部署 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | 获取或列出资源组。 |
 > | Microsoft.Support/* | 创建和管理支持票证 |
+
+## <a name="eventgrid-eventsubscription-contributor-preview"></a>EventGrid EventSubscription 参与者（预览）
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **说明** | 可以管理 EventGrid 事件订阅操作。 |
+> | **Id** | 428e0ff0-5e57-4d9c-a221-2c70d0e0a443 |
+> | **操作** |  |
+> | Microsoft.Authorization/*/read | 读取角色和角色分配 |
+> | Microsoft.EventGrid/eventSubscriptions/* |  |
+> | Microsoft.EventGrid/topicTypes/eventSubscriptions/read | 按主题类型列出全局事件订阅 |
+> | Microsoft.EventGrid/locations/eventSubscriptions/read | 列出区域事件订阅 |
+> | Microsoft.EventGrid/locations/topicTypes/eventSubscriptions/read | 按主题类型列出区域事件订阅 |
+> | Microsoft.Insights/alertRules/* | 创建和管理 Insights 警报规则 |
+> | Microsoft.Resources/deployments/* | 创建和管理资源组部署 |
+> | Microsoft.Resources/subscriptions/resourceGroups/read | 获取或列出资源组。 |
+> | Microsoft.Support/* | 创建和管理支持票证 |
+
+## <a name="eventgrid-eventsubscription-reader-preview"></a>EventGrid EventSubscription 读者（预览）
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **说明** | 可以读取 EventGrid 事件订阅。 |
+> | **Id** | 2414bbcf-6497-4faf-8c65-045460748405 |
+> | **操作** |  |
+> | Microsoft.Authorization/*/read | 读取角色和角色分配 |
+> | Microsoft.EventGrid/eventSubscriptions/read | 读取 eventSubscription |
+> | Microsoft.EventGrid/topicTypes/eventSubscriptions/read | 按主题类型列出全局事件订阅 |
+> | Microsoft.EventGrid/locations/eventSubscriptions/read | 列出区域事件订阅 |
+> | Microsoft.EventGrid/locations/topicTypes/eventSubscriptions/read | 按主题类型列出区域事件订阅 |
+> | Microsoft.Resources/subscriptions/resourceGroups/read | 获取或列出资源组。 |
 
 ## <a name="hdinsight-domain-services-contributor"></a>HDInsight 域服务参与者
 > [!div class="mx-tableFixed"]
@@ -1089,6 +1122,7 @@ ms.locfileid: "49955898"
 > | **说明** | 可让你在托管应用程序资源上读取和执行操作 |
 > | **Id** | c7393b34-138c-406f-901b-d8cf2b17e6ae |
 > | **操作** |  |
+> | */read | 读取除密码外的所有类型的资源。 |
 > | Microsoft.Solutions/applications/read | 检索应用程序列表。 |
 
 ## <a name="managed-applications-reader"></a>托管应用程序读者
@@ -1185,7 +1219,6 @@ ms.locfileid: "49955898"
 > | Microsoft.Support/* | 创建和管理支持票证 |
 > | Microsoft.WorkloadMonitor/monitors/* |  |
 > | Microsoft.WorkloadMonitor/notificationSettings/* |  |
-> | Microsoft.WorkloadMonitor/workloadInsights/* |  |
 
 ## <a name="monitoring-metrics-publisher"></a>监视指标发布者
 > [!div class="mx-tableFixed"]
@@ -1332,15 +1365,17 @@ ms.locfileid: "49955898"
 > | Microsoft.Security/locations/tasks/activate/action | 激活安全建议 |
 > | Microsoft.Security/locations/tasks/dismiss/action | 关闭安全建议 |
 > | Microsoft.Security/policies/write | 更新安全策略 |
-> | Microsoft.Security/securityContacts/write | 更新安全联系信息 |
+> | Microsoft.Security/pricings/write | 更新某一范围的定价设置 |
+> | Microsoft.Security/pricings/delete | 删除某一范围的定价设置 |
 > | Microsoft.Security/securityContacts/delete | 删除安全联系信息 |
+> | Microsoft.Security/securityContacts/write | 更新安全联系信息 |
 > | Microsoft.Support/* | 创建和管理支持票证 |
 
-## <a name="security-manager"></a>安全管理器
+## <a name="security-manager-legacy"></a>安全管理器（旧版）
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **说明** | 允许管理安全性组件、安全策略和虚拟机 |
+> | **说明** | 这是旧角色。 请改用安全管理员角色 |
 > | **Id** | e3d13bf0-dd5a-482e-ba6b-9b8433878d10 |
 > | **操作** |  |
 > | Microsoft.Authorization/*/read | 读取角色和角色分配 |
@@ -1559,11 +1594,13 @@ ms.locfileid: "49955898"
 > | Microsoft.Sql/managedInstances/databases/vulnerabilityAssessments/* |  |
 > | Microsoft.Sql/servers/auditingPolicies/* | 创建和管理 SQL 服务器审核策略 |
 > | Microsoft.Sql/servers/auditingSettings/* | 创建和管理 SQL 服务器审核设置 |
+> | Microsoft.Sql/servers/extendedAuditingSettings/read | 检索在给定服务器上配置的扩展服务器 blob 审核策略的详细信息 |
 > | Microsoft.Sql/servers/databases/auditingPolicies/* | 创建和管理 SQL 服务器数据库审核策略 |
 > | Microsoft.Sql/servers/databases/auditingSettings/* | 创建和管理 SQL 服务器数据库审核设置 |
 > | Microsoft.Sql/servers/databases/auditRecords/read | 读取审核记录 |
 > | Microsoft.Sql/servers/databases/connectionPolicies/* | 创建和管理 SQL 服务器数据库连接策略 |
 > | Microsoft.Sql/servers/databases/dataMaskingPolicies/* | 创建和管理 SQL 服务器数据库数据屏蔽策略 |
+> | Microsoft.Sql/servers/databases/extendedAuditingSettings/read | 检索在给定的数据库上配置的扩展 blob 审核策略的详细信息 |
 > | Microsoft.Sql/servers/databases/read | 返回数据库的列表，或获取指定数据库的属性。 |
 > | Microsoft.Sql/servers/databases/schemas/read | 检索数据库的架构列表 |
 > | Microsoft.Sql/servers/databases/schemas/tables/columns/read | 检索表的列列表 |

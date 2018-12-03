@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2018
 ms.author: apimpm
-ms.openlocfilehash: 06350d30999cb056babbd001f98a6c3a5fdbac6c
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: cfe2620801f743831f77fb76f344c156676966d3
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39576988"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52635061"
 ---
 # <a name="protect-an-api-by-using-oauth-20-with-azure-active-directory-and-api-management"></a>结合 Azure Active Directory 和 API 管理使用 OAuth 2.0 保护 API
 
@@ -54,7 +54,7 @@ ms.locfileid: "39576988"
 
 5. 对于“登录 URL”，可以使用 `https://localhost` 作为占位符。
 
-6. 选择**创建**。
+6. 选择“创建”。
 
 创建应用程序后，记下“应用程序 ID”，以便在后续步骤中使用。 
 
@@ -70,7 +70,7 @@ ms.locfileid: "39576988"
 
 4. 对于“登录 URL”，可以使用 `https://localhost` 作为占位符，或使用 API 管理实例的登录 URL。 （本示例使用 URL `https://contoso5.portal.azure-api.net/signin`。）
 
-5. 选择**创建**。
+5. 选择“创建”。
 
 创建应用程序后，记下“应用程序 ID”，以便在后续步骤中使用。 
 
@@ -100,8 +100,6 @@ ms.locfileid: "39576988"
 
 > [!NOTE]
 > 如果“Azure Active Directory”未在“对其他应用程序的权限”下列出，请选择“添加”并从列表中添加该项。
-> 
-> 
 
 ## <a name="enable-oauth-20-user-authorization-in-the-developer-console"></a>在开发人员门户中启用 OAuth 2.0 用户授权
 
@@ -109,7 +107,7 @@ ms.locfileid: "39576988"
 
 在本示例中，开发人员控制台是 client-app。 以下步骤说明如何在开发人员门户中启用 OAuth 2.0 用户授权 
 
-1. 浏览到 API 管理实例。
+1. 在 Azure 门户中，浏览到你的 API 管理实例。
 
 2. 选择“OAuth 2.0” > “添加”。
 
@@ -120,6 +118,9 @@ ms.locfileid: "39576988"
 5. 选择“授权代码”作为“授权类型”。
 
 6. 指定“授权终结点 URL”和“令牌终结点 URL”。 可以从 Azure AD 租户中的“终结点”页检索这些值。 再次浏览到“应用注册”页，并选择“终结点”。
+
+    >[!NOTE]
+    > 在此处使用 **v1** 终结点
 
 7. 复制“OAuth 2.0 授权终结点”，并将其粘贴到“授权终结点 URL”文本框。
 
@@ -133,7 +134,7 @@ ms.locfileid: "39576988"
 
 12. 紧接在客户端机密的后面，是授权代码授权类型的 **redirect_url**。 记下此 URL。
 
-13. 选择**创建**。
+13. 选择“创建”。
 
 14. 返回客户端应用的“设置”页。
 
@@ -154,6 +155,9 @@ ms.locfileid: "39576988"
 5. 选择“保存”。
 
 ## <a name="successfully-call-the-api-from-the-developer-portal"></a>从开发人员门户成功调用 API
+
+> [!NOTE]
+> 本部分不适用于“消耗”层，该层不支持开发人员门户。
 
 在 `Echo API` 中启用 OAuth 2.0 用户授权后，开发人员控制台在调用 API 之前，将会代表用户获取访问令牌。
 

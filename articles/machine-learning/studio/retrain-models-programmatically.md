@@ -1,10 +1,11 @@
 ---
-title: 以编程方式重新训练机器学习模型 | Microsoft Docs
+title: 以编程方式重新训练机器学习工作室模型 - Azure | Microsoft Docs
 description: 了解如何以编程方式重新训练模型并更新 Web 服务以使用 Azure 机器学习中的最新训练模型。
 services: machine-learning
 documentationcenter: ''
-author: YasinMSFT
-ms.author: yahajiza
+author: ericlicoding
+ms.custom: (previous ms.author=yahajiza, author=YasinMSFT)
+ms.author: amlstudiodocs
 manager: hjerez
 editor: cgronlun
 ms.assetid: 7ae4f977-e6bf-4d04-9dde-28a66ce7b664
@@ -15,15 +16,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
-ms.openlocfilehash: b2090b39991363ee2a5b2e12945d97dc0fa9f2b2
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: b38143fe6f1f1cf3e65a2989e1b0a71c28530b2a
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34835498"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52313379"
 ---
-# <a name="retrain-machine-learning-models-programmatically"></a>以编程方式重新训练机器学习模型
-在本演练中，学习如何使用 C# 和机器学习批处理执行服务以编程方式重新训练 Azure 机器学习 Web 服务。
+# <a name="retrain-machine-learning-studio-models-programmatically"></a>以编程方式重新训练机器学习工作室模型
+在本演练中，学习如何使用 C# 和机器学习批处理执行服务以编程方式重新训练 Azure 机器学习工作室 Web 服务。
 
 重新训练模型之后，下面的演练显示了如何更新预测 Web 服务中的模型：
 

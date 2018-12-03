@@ -10,27 +10,27 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: michmcla
-ms.openlocfilehash: 9873347683fdfabd93083b44d034a8d9d5bcaeef
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: f0b13480c06e154b85300f4a8a2f8a84db04c31b
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46297531"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52582371"
 ---
 # <a name="integrate-your-existing-nps-infrastructure-with-azure-multi-factor-authentication"></a>将现有 NPS 基础结构与 Azure 多重身份验证集成
 
-适用于 Azure MFA 的网络策略服务器 (NPS) 扩展可以使用现有的服务器将基于云的 MFA 功能添加到身份验证基础结构。 使用 NPS 扩展，可将电话呼叫、短信或电话应用验证添加到现有的身份验证流，而无需安装、配置和维护新服务器。 
+适用于 Azure MFA 的网络策略服务器 (NPS) 扩展可以使用现有的服务器将基于云的 MFA 功能添加到身份验证基础结构。 使用 NPS 扩展，可将电话呼叫、短信或电话应用验证添加到现有的身份验证流，而无需安装、配置和维护新服务器。 
 
 此扩展是为想要保护 VPN 连接，但不部署 Azure MFA 服务器的组织创建的。 NPS 扩展充当 RADIUS 和基于云的 Azure MFA 之间的适配器，以为联合用户或已同步用户提供身份验证的第二个因素。
 
-使用适用于 Azure MFA 的 NPS 扩展时，身份验证流包括以下组件： 
+使用适用于 Azure MFA 的 NPS 扩展时，身份验证流包括以下组件： 
 
-1. **NAS/VPN 服务器**接收来自 VPN 客户端的请求，并将其转换为可发往 NPS 服务器的 RADIUS 请求。 
-2. **NPS 服务器**连接到 Active Directory，针对 RADIUS 请求执行主要身份验证，成功后，将请求传递到所有已安装的扩展。  
-3. **NPS 扩展**向 Azure MFA 触发一个执行辅助身份验证的请求。 该扩展收到响应后，如果 MFA 质询成功，该扩展将通过向 NPS 服务器提供由 Azure STS 颁发的、包含 MFA 声明的安全令牌，来完成身份验证请求。  
+1. **NAS/VPN 服务器**接收来自 VPN 客户端的请求，并将其转换为可发往 NPS 服务器的 RADIUS 请求。 
+2. **NPS 服务器**连接到 Active Directory，针对 RADIUS 请求执行主要身份验证，成功后，将请求传递到所有已安装的扩展。  
+3. **NPS 扩展**向 Azure MFA 触发一个执行辅助身份验证的请求。 该扩展收到响应后，如果 MFA 质询成功，该扩展将通过向 NPS 服务器提供由 Azure STS 颁发的、包含 MFA 声明的安全令牌，来完成身份验证请求。  
 4. **Azure MFA** 与 Azure Active Directory 通信，检索用户的详细信息并使用配置给用户的验证方法执行辅助身份验证。
 
-下图显示了此高级身份验证请求流： 
+下图显示了此高级身份验证请求流： 
 
 ![身份验证流示意图](./media/howto-mfa-nps-extension/auth-flow.png)
 
@@ -118,7 +118,7 @@ NPS 服务器会连接到 Azure Active Directory，并对 MFA 请求进行身份
 
 部署 NPS 扩展时，请根据这些因素评估你的用户可使用哪些方法。 如果你的 RADIUS 客户端支持 PAP，但客户端 UX 没有可用于输入验证码的输入字段，则电话呼叫和移动应用通知是两种受支持的选项。
 
-可以在 Azure 中[禁用不受支持的身份验证方法](howto-mfa-mfasettings.md#selectable-verification-methods)。
+可以在 Azure 中[禁用不受支持的身份验证方法](howto-mfa-mfasettings.md#verification-methods)。
 
 ### <a name="register-users-for-mfa"></a>用户注册 MFA
 
@@ -212,15 +212,31 @@ NPS 服务器会连接到 Azure Active Directory，并对 MFA 请求进行身份
 
 打开 PowerShell 命令提示符并运行以下命令：
 
-```
+``` PowerShell
 import-module MSOnline
 Connect-MsolService
-Get-MsolServicePrincipalCredential -AppPrincipalId "981f26a1-7f43-403b-a875-f8b09b8cd720" -ReturnKeyValues 1 
+Get-MsolServicePrincipalCredential -AppPrincipalId "981f26a1-7f43-403b-a875-f8b09b8cd720" -ReturnKeyValues 1
 ```
 
 这些命令会在 PowerShell 会话中列显所有可将你的租户与 NPS 扩展实例相关联的证书。 通过将客户端证书导出为不带私钥的“Base-64 编码 X.509(.cer)”文件来找到你的证书，并将它与 PowerShell 中的列表进行比较。
 
+以下命令将在“C:”驱动器上以 .cer 格式创建名为“npscertificate”的文件。
+
+``` PowerShell
+import-module MSOnline
+Connect-MsolService
+Get-MsolServicePrincipalCredential -AppPrincipalId "981f26a1-7f43-403b-a875-f8b09b8cd720" -ReturnKeyValues 1 | select -ExpandProperty "value" | out-file c:\npscertficicate.cer
+```
+
+运行此命令后，请转到 C 驱动器，找到该文件并双击它。 转到详细信息并向下滚动到“指纹”，将服务器上安装的证书的指纹与此指纹进行比较。 证书指纹应匹配。
+
 如果该命令返回了多个证书，可以使用 Valid-From 和 Valid-Until 时间戳（采用用户可读格式）来筛选出每个不相符的项。
+
+-------------------------------------------------------------
+
+### <a name="why-cant-i-sign-in"></a>为何无法登录？
+
+检查密码是否未过期。 NPS 扩展不支持在登录工作流中更改密码。 请与组织的 IT 人员联系以获得进一步的帮助。
 
 -------------------------------------------------------------
 

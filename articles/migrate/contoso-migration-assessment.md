@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/23/2018
 ms.author: raynew
-ms.openlocfilehash: ea0987eaea8ee558df35ecce6afb5e7bab3ac4de
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.openlocfilehash: 6b4b1b74ace534517157edc20c33236d516205c5
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50087604"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52635010"
 ---
 # <a name="contoso-migration-assess-on-premises-workloads-for-migration-to-azure"></a>Contoso 迁移：评估本地工作负荷是否适合迁移到 Azure
 
@@ -125,8 +125,8 @@ Contoso 使用 Microsoft 工具进行迁移评估。 这些工具符合公司的
 - 至少两个本地 VMware VM，一个 VM 运行一个 SQL Server 数据库。
 - 在每个 VM 上安装 Azure Migrate 代理的权限。
 - 这些 VM 应该有直接的 Internet 连接。  
-        - 可以仅限对[所需 URL](https://docs.microsoft.com/azure/migrate/concepts-collector#collector-pre-requisites) 进行 Internet 访问。  
-        - 如果 VM 未连接 Internet，则必须在其上安装 Azure [Log Analytics 网关](../log-analytics/log-analytics-oms-gateway.md)，并代理通过它定向的流量。
+    - 可以仅限对[所需 URL](https://docs.microsoft.com/azure/migrate/concepts-collector#collector-pre-requisites) 进行 Internet 访问。  
+    - 如果 VM 未连接 Internet，则必须在其上安装 Azure [Log Analytics 网关](../azure-monitor/platform/gateway.md)，并代理通过它定向的流量。
 - 运行 SQL Server 实例的 VM 的 FQDN（用于数据库评估）。
 - 在 SQL Server VM 上运行的 Windows 防火墙应该允许在 TCP 端口 1433（默认）上进行外部连接。 此设置允许数据迁移助手进行连接。
 

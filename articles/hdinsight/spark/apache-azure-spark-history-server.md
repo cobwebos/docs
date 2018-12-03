@@ -9,22 +9,22 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 09/14/2018
-ms.openlocfilehash: 4627593e4ab96c63423a7afd6152f3a004bc6c3f
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 349298ba30de5540d5c86c81f483a1bd344dba9c
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47042357"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52497273"
 ---
-# <a name="use-extended-spark-history-server-to-debug-and-diagnose-spark-applications"></a>使用扩展的 Spark History Server 调试和诊断 Spark 应用程序
+# <a name="use-extended-apache-spark-history-server-to-debug-and-diagnose-apache-spark-applications"></a>使用扩展的 Apache Spark History Server 调试和诊断 Apache Spark 应用程序
 
-本文提供有关如何使用扩展的 Spark History Server 来调试和诊断已完成的和正在运行的 Spark 应用程序的指导。 该扩展包含数据选项卡、图形选项卡和诊断选项卡。在“数据”选项卡中，用户可以检查 Spark 作业的输入和输出数据。 在“图形”选项卡中，用户可以检查数据流和重播作业图形。 在“诊断”选项卡中，用户可以参阅“数据偏斜”、“时间偏斜”和“执行程序使用情况分析”。
+本文提供有关如何使用扩展的 Apache Spark History Server 来调试和诊断已完成的和正在运行的 Spark 应用程序的指导。 该扩展包含数据选项卡、图形选项卡和诊断选项卡。在“数据”选项卡中，用户可以检查 Spark 作业的输入和输出数据。 在“图形”选项卡中，用户可以检查数据流和重播作业图形。 在“诊断”选项卡中，用户可以参阅“数据偏斜”、“时间偏斜”和“执行程序使用情况分析”。
 
-## <a name="get-access-to-spark-history-server"></a>获取 Spark History Server 的访问权限
+## <a name="get-access-to-apache-spark-history-server"></a>获取 Apache Spark History Server 的访问权限
 
-Spark History Server 是已完成和正在运行的 Spark 应用程序的 Web UI。 
+Apache Spark History Server 是已完成的和正在运行的 Spark 应用程序的 Web UI。 
 
-### <a name="open-the-spark-history-server-web-ui-from-azure-portal"></a>从 Azure 门户打开 Spark History Server Web UI
+### <a name="open-the-apache-spark-history-server-web-ui-from-azure-portal"></a>从 Azure 门户打开 Apache Spark History Server Web UI
 
 1. 从 [Azure 门户](https://portal.azure.com/)打开 Spark 群集。 有关详细信息，请参阅[列出和显示群集](../hdinsight-administer-use-portal-linux.md#list-and-show-clusters)。
 2. 在“快速链接”中，依次单击“群集仪表板”、“Spark History Server”。 出现提示时，输入 Spark 群集的管理员凭据。 
@@ -87,7 +87,7 @@ Spark History Server Web UI 如下所示：
     ![图形 - 反馈](./media/apache-azure-spark-history-server/sparkui-graph-feedback.png)
 
 
-## <a name="graph-tab-in-spark-history-server"></a>Spark History Server 中的“图形”选项卡
+## <a name="graph-tab-in-apache-spark-history-server"></a>Apache Spark History Server 中的“图形”选项卡
 选择作业 ID，然后单击工具菜单中的“图形”获取作业图形视图。
 
 + 通过生成的作业图形检查作业概述。 
@@ -158,7 +158,7 @@ Spark History Server Web UI 如下所示：
     ![图形 - 反馈](./media/apache-azure-spark-history-server/sparkui-graph-feedback.png)
 
 
-## <a name="diagnosis-tab-in-spark-history-server"></a>Spark History Server 中的“诊断”选项卡
+## <a name="diagnosis-tab-in-apache-spark-history-server"></a>Apache Spark History Server 中的“诊断”选项卡
 选择作业 ID，然后单击工具菜单中的“诊断”以获取作业的“诊断”视图。 “诊断”选项卡包括“数据偏斜”、“时间偏斜”和“执行程序使用情况分析”。
     
 + 通过选择相应的选项卡来查看“数据偏斜”、“时间偏斜”和“执行程序使用情况分析”。
@@ -326,8 +326,8 @@ Spark History Server Web UI 如下所示：
 
 ## <a name="next-steps"></a>后续步骤
 
-* [管理 HDInsight 上 Spark 群集的资源](apache-spark-resource-manager.md)
-* [配置 Spark 设置](apache-spark-settings.md)
+* [管理 HDInsight 上 Apache Spark 群集的资源](apache-spark-resource-manager.md)
+* [配置 Apache Spark 设置](apache-spark-settings.md)
 
 
 ## <a name="contact-us"></a>联系我们

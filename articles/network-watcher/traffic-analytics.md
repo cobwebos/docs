@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/15/2018
 ms.author: yagup;jdial
-ms.openlocfilehash: 2b057a94022077aa210b1e4ebb6122eaf350a40b
-ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
+ms.openlocfilehash: dd07ed66b630f541ed3e2001dffdebed150bb71a
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49457402"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52443026"
 ---
 # <a name="traffic-analytics"></a>流量分析
 
@@ -53,9 +53,39 @@ Azure 虚拟网络提供 NSG 流日志，其中提供了传入和传出与单个
 
 ## <a name="supported-regions"></a>支持的区域
 
-可以对以下任何区域中的 NSG 使用流量分析：美国中西部、美国东部、美国东部 2、美国中北部、美国中南部、美国中部、美国西部、美国西部 2、加拿大中部、西欧、北欧、英国西部、英国南部、日本东部、印度中部、澳大利亚东部、澳大利亚东南部和东南亚。 
+可以在以下任何受支持的区域中对 NSG 使用流量分析：
 
-Log Analytics 工作区必须位于美国中西部、美国东部、西欧、英国南部、加拿大中部、日本东部、印度中部、澳大利亚东南部或东南亚区域。
+* 加拿大中部
+* 美国中西部
+* 美国东部
+* 美国东部 2
+* 美国中北部
+* 美国中南部
+* 美国中部
+* 美国西部
+* 美国西部 2
+* 西欧
+* 北欧
+* 巴西南部
+* 英国西部
+* 英国南部
+* 澳大利亚东部
+* 澳大利亚东南部
+* 东南亚
+* 印度中部
+* 印度南部
+* 日本东部 
+
+Log Analytics 工作区必须存在于以下区域中：
+* 加拿大中部
+* 美国中西部
+* 美国东部
+* 西欧
+* 英国南部
+* 澳大利亚东南部
+* 东南亚
+* 印度中部
+* 日本东部
 
 ## <a name="prerequisites"></a>先决条件
 

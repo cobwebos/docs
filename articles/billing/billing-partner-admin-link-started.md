@@ -3,6 +3,7 @@ title: 将 Azure 帐户链接到合作伙伴 ID | Microsoft Docs
 description: 通过将合作伙伴 ID 链接到用于管理客户资源的用户帐户来跟踪 Azure 客户的互动。
 services: billing
 author: dhirajgandhi
+manager: dhgandhi
 ms.author: cwatson
 ms.date: 03/12/2018
 ms.service: billing
@@ -10,12 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 57ffb30296e5dbede11e23c40041c42e00444c4c
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: 1e2492d978073f63c1c9494d652ec35a7d6565b7
+ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51686988"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52274173"
 ---
 # <a name="link-partner-id-to-your-azure-accounts"></a>将合作伙伴 ID 链接到 Azure 帐户
 
@@ -43,7 +44,7 @@ ms.locfileid: "51686988"
 
 2. 登录到 Azure 门户。
 
-3. 输入 Microsoft 合作伙伴 ID。合作伙伴 ID 是组织的 [Microsoft 合作伙伴网络 (MPN)](https://partner.microsoft.com/) ID。
+3. 输入 Microsoft 合作伙伴 ID。 合作伙伴 ID 是组织的 [Microsoft 合作伙伴网络 (MPN)](https://partner.microsoft.com/) ID。
 
   ![显示链接合作伙伴 ID 的屏幕截图](./media/billing-link-partner-id/link-partner-ID.PNG)
 
@@ -124,7 +125,7 @@ C:\ az managementpartner delete --partner-id 12345
 
 **谁可以链接合作伙伴 ID？**
 
-合作伙伴组织中管理客户资源的任意用户都可将合作伙伴 ID 链接到帐户。
+合作伙伴组织中管理客户的 Azure 资源的任何用户都可将合作伙伴 ID 链接到帐户。
 
 **链接合作伙伴 ID 后，是否可以更改该 ID？**
 

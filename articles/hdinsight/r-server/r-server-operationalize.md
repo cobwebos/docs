@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.openlocfilehash: 3f93f96c6c9fc551b8b66167eab58861b0ac0b52
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: ce701c029c63256714452aa13f646af77991cb67
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51005948"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52496920"
 ---
 # <a name="operationalize-ml-services-cluster-on-azure-hdinsight"></a>操作 Azure HDInsight 上的 ML Services 群集
 
@@ -79,9 +79,9 @@ ms.locfileid: "51005948"
 
     d. 从显示的菜单选项中，输入 **E** 返回到主菜单，然后输入 **8** 退出管理员实用程序。
 
-### <a name="long-delays-when-consuming-web-service-on-spark"></a>在 Spark 上使用 Web 服务时延迟时间很长
+### <a name="long-delays-when-consuming-web-service-on-apache-spark"></a>在 Apache Spark 上使用 Web 服务时延迟时间很长
 
-如果在尝试使用 Web 服务时遇到长时间的延迟，而这些服务是在 Spark 计算上下文中使用 mrsdeploy 函数创建的，则可能需要添加一些缺失的文件夹。 Spark 应用程序属于名为“rserve2”的用户，不论何时使用 mrsdeploy 函数从 Web 服务调用它。 若要解决此问题，请执行以下操作：
+如果在尝试使用 Web 服务时遇到长时间的延迟，而这些服务是在 Apache Spark 计算上下文中使用 mrsdeploy 函数创建的，则可能需要添加一些缺失的文件夹。 Spark 应用程序属于名为“rserve2”的用户，不论何时使用 mrsdeploy 函数从 Web 服务调用它。 若要解决此问题，请执行以下操作：
 
     # Create these required folders for user 'rserve2' in local and hdfs:
 
@@ -139,7 +139,7 @@ SSH 会话处于活动状态后，来自本地计算机端口 12800 的流量将
 
 ### <a name="step-1-decommission-the-worker-nodes"></a>步骤 1：解除工作节点的授权
 
-ML Services 群集未通过 YARN 托管。 如果工作节点未解除授权，YARN 资源管理器将无法正常工作，因为它不知道服务器所占用的资源。 为了避免这种情况，建议在扩大计算节点前解除辅助角色节点的授权。
+ML Services 群集未通过 [Apache Hadoop YARN](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html) 托管。 如果工作节点未解除授权，YARN 资源管理器将无法正常工作，因为它不知道服务器所占用的资源。 为了避免这种情况，建议在扩大计算节点前解除辅助角色节点的授权。
 
 请按照下列步骤解除工作节点的授权：
 

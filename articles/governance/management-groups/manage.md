@@ -5,17 +5,17 @@ author: rthorn17
 manager: rithorn
 ms.service: azure-resource-manager
 ms.devlang: na
-ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/18/2018
+ms.date: 11/20/2018
 ms.author: rithorn
-ms.openlocfilehash: a3de0df8fde3b271b7ba9bb9aab01dbcd5c3bf08
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.topic: conceptual
+ms.openlocfilehash: 10dfa9812a0546f3a8c57e28227851b6f72657fc
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46991200"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52582405"
 ---
 # <a name="manage-your-resources-with-management-groups"></a>使用管理组管理资源
 
@@ -207,7 +207,7 @@ az account management-group show --name 'Contoso'
 
 ### <a name="move-subscriptions-in-powershell"></a>在 PowerShell 中移动订阅
 
-若要在 PowerShell 中移动订阅，请使用 Add-AzureRmManagementGroupSubscription 命令。  
+若要在 PowerShell 中移动订阅，请使用 New-AzureRmManagementGroupSubscription 命令。  
 
 ```azurepowershell-interactive
 New-AzureRmManagementGroupSubscription -GroupName 'Contoso' -SubscriptionId '12345678-1234-1234-1234-123456789012'
@@ -272,12 +272,26 @@ Update-AzureRmManagementGroup -GroupName 'Contoso' -ParentName 'ContosoIT'
 az account management-group update --name 'Contoso' --parent 'Contoso Tenant'
 ```
 
+## <a name="audit-management-groups-using-activity-logs"></a>使用活动日志审核管理组
+
+若要通过此 API 跟踪管理组，请使用[租户活动日志 API](/rest/api/monitor/tenantactivitylogs)。 目前不可以使用 PowerShell、CLI 或 Azure 门户跟踪管理组活动。
+
+1. Azure AD 租户的租户管理员可以[提升访问权限](../../role-based-access-control/elevate-access-global-admin.md)，然后将一个“读者”角色分配给 `/providers/microsoft.insights/eventtypes/management` 范围内的审核用户。
+1. 以审核用户身份调用[租户活动日志 API](/rest/api/monitor/tenantactivitylogs) 来查看管理组活动。 需要按资源提供程序 **Microsoft.Management** 对所有管理组活动进行筛选。  示例：
+
+```xml
+GET "/providers/Microsoft.Insights/eventtypes/management/values?api-version=2015-04-01&$filter=eventTimestamp ge '{greaterThanTimeStamp}' and eventTimestamp le '{lessThanTimestamp}' and eventChannels eq 'Operation' and resourceProvider eq 'Microsoft.Management'"
+```
+
+> [!NOTE]
+> 若要快速从命令行调用此 API，请尝试使用 [ARMClient](https://github.com/projectkudu/ARMClient)。
+
 ## <a name="next-steps"></a>后续步骤
 
-若要详细了解管理组，请参阅：
+若要了解有关管理组的详细信息，请参阅：
 
-- [使用 Azure 管理组来组织资源](overview.md)
 - [创建管理组来组织 Azure 资源](create.md)
-- [安装 Azure PowerShell 模块](https://www.powershellgallery.com/packages/AzureRM.ManagementGroups)
-- [查看 REST API 规范](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/managementgroups/resource-manager/Microsoft.Management/preview)
-- [安装 Azure CLI 扩展](/cli/azure/extension?view=azure-cli-latest#az-extension-list-available)
+- [如何更改、删除或管理管理组](manage.md)
+- [在 Azure PowerShell 资源模块中查看管理组](https://aka.ms/mgPSdocs)
+- [在 REST API 中查看管理组](https://aka.ms/mgAPIdocs)
+- [在 Azure CLI 中查看管理组](https://aka.ms/mgclidoc)

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/22/2017
 ms.author: vturecek
-ms.openlocfilehash: 6bf7ea90bb5351411984110fd8fb05c2f8cb0650
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 01b67cc0c20710fcf7c9a072e0ba3baaf286852a
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34205155"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52423637"
 ---
 # <a name="service-fabric-with-azure-api-management-overview"></a>有关 Azure Service Fabric 与 API 管理的概述
 
@@ -27,7 +27,13 @@ ms.locfileid: "34205155"
 
 本文介绍了如何将 Azure API 管理用作 Service Fabric 应用程序的网关。 API 管理直接与 Service Fabric 集成，以便可以使用一组丰富的路由规则向后端 Service Fabric 服务发布 API。 
 
+## <a name="availability"></a>可用性
+
+> [!IMPORTANT]
+> 由于所需的虚拟网络支持，此功能在 API 管理的**高级**和**开发人员**层中可用。
+
 ## <a name="architecture"></a>体系结构
+
 常见 Service Fabric 体系结构使用单页 Web 应用程序，向公开 HTTP API 的后端服务发出 HTTP 调用。 [Service Fabric 入门示例应用程序](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)展示了此体系结构示例。
 
 在此方案中，无状态 Web 服务用作 Service Fabric 应用程序的网关。 使用这种方法，需要编写可以将 HTTP 请求代理到后端服务的 Web 服务，如下图所示：

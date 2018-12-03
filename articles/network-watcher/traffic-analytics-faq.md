@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/08/2018
 ms.author: jdial
-ms.openlocfilehash: 69d2d80e40400cc7fa40aeb5a163dce5036905ab
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 451480f5046d5ed8a1bd7262fd8f6a800e66dfc7
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49402754"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52582490"
 ---
 # <a name="traffic-analytics-frequently-asked-questions"></a>流量分析常见问题解答
 
@@ -30,7 +30,7 @@ ms.locfileid: "49402754"
 
 - 支持网络观察程序的订阅。
 - 为要监视的网络安全组 (NSG) 启用 NSG 流日志。
-- 存储原始流日志的 Azure 存储帐户。
+- 用于存储原始流日志的 Azure 存储帐户。
 - 具有读取和写入访问权限的 Azure Log Analytics 工作区。
 
 帐户必须符合以下某项条件才能启用流量分析：
@@ -63,7 +63,38 @@ ms.locfileid: "49402754"
 
 ## <a name="in-which-azure-regions-are-traffic-analytics-available"></a>可在哪些 Azure 区域使用流量分析？
 
-可以对以下任何支持区域中的 NSG 使用流量分析：美国中西部、美国东部、美国东部 2、美国中北部、美国中南部、美国中部、美国西部、美国西部 2、西欧、北欧、英国西部、英国南部、澳大利亚东部、澳大利亚东南部和东南亚。 Log Analytics 工作区必须位于美国中西部、美国东部、西欧、英国南部、澳大利亚东南部或东南亚区域。
+可以在以下任何受支持的区域中对 NSG 使用流量分析：
+- 加拿大中部
+- 美国中西部
+- 美国东部
+- 美国东部 2
+- 美国中北部
+- 美国中南部
+- 美国中部
+- 美国西部
+- 美国西部 2
+- 西欧
+- 北欧
+- 巴西南部
+- 英国西部
+- 英国南部
+- 澳大利亚东部
+- 澳大利亚东南部 
+- 东南亚
+- 印度中部
+- 印度南部
+- 日本东部
+
+Log Analytics 工作区必须存在于以下区域中：
+- 加拿大中部
+- 美国中西部
+- 美国东部
+- 西欧
+- 英国南部
+- 澳大利亚东南部
+- 东南亚 
+- 印度中部
+- 日本东部
 
 ## <a name="can-the-nsgs-i-enable-flow-logs-for-be-in-different-regions-than-my-workspace"></a>启用流日志的 NSG 是否可与工作区位于不同的区域？
 
@@ -91,11 +122,11 @@ ms.locfileid: "49402754"
 
 ## <a name="what-if-i-am-getting-the-status-failed-to-load-under-the-nsg-flow-logs-page"></a>如果在 NSG 流日志页显示“无法加载”状态，该如何解决？
 
-要使流日志记录正常工作，必须注册 Microsoft.Insights 提供程序。 如果不确定是否为订阅注册了 Microsoft.Insights 提供程序，请替换以下命令中的 xxxxx-xxxxx-xxxxxx-xxxx，并从 PowerShell 运行以下命令：
+要使流日志记录正常工作，必须注册 Microsoft.Insights 提供程序。 如果不确定是否为订阅注册了 Microsoft.Insights 提供程序，请替换以下命令中的“xxxxx-xxxxx-xxxxxx-xxxx”，并从 PowerShell 运行以下命令：
 
 ```powershell-interactive
-**Select-AzureRmSubscription** -SubscriptionId xxxxx-xxxxx-xxxxxx-xxxx
-**Register-AzureRmResourceProvider** -ProviderNamespace Microsoft.Insights
+**Select-AzureRmSubscription** -SubscriptionId xxxxx-xxxxx-xxxxxx-xxxx
+**Register-AzureRmResourceProvider** -ProviderNamespace Microsoft.Insights
 ```
 
 ## <a name="i-have-configured-the-solution-why-am-i-not-seeing-anything-on-the-dashboard"></a>我已配置解决方案。 为何仪表板上未显示任何信息？

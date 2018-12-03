@@ -12,19 +12,24 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 11/06/2018
+ms.date: 11/25/2018
 ms.author: cenkd;juliako
-ms.openlocfilehash: 6060f294820281df3124fb2fc702ece59a006af1
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: e0eaf88117aa3c67f7ffecad2e3811a22449a5f8
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51282401"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52312963"
 ---
 # <a name="filters-and-dynamic-manifests"></a>筛选器和动态清单
+
+> [!div class="op_single_selector" title1="Select the version of Media Services that you are using:"]
+> * [第 2 版](media-services-dynamic-manifest-overview.md)
+> * [第 3 版](../latest/filters-dynamic-manifest-overview.md)
+
 从 2.17 版开始，可使用媒体服务为资产定义筛选器。 这些筛选器是服务器端规则，可让客户选择执行如下操作：只播放一段视频（而非播放完整视频），或只指定客户设备可以处理的一部分音频和视频再现内容（而非与该资产相关的所有再现内容）。 通过按客户请求创建的**动态清单**可以实现对资产进行这种筛选，并基于指定的筛选器流式传输视频。
 
-本主题讨论一些常见方案，在这些方案中使用筛选器对于客户非常有利，并链接到演示如何以编程方式创建筛选器的主题。
+本主题讨论一些常见方案，在这些方案中使用筛选器对于客户很有利，并链接到演示如何以编程方式创建筛选器的主题。
 
 ## <a name="overview"></a>概述
 将内容传送到客户（流式传输实时事件或视频点播）时，目标是：将优质视频传递到处于不同网络条件下的各种设备。 若要实现此目标，请执行以下操作：

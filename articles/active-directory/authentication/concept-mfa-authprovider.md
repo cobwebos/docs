@@ -5,17 +5,17 @@ services: multi-factor-authentication
 ms.service: active-directory
 ms.component: authentication
 ms.topic: conceptual
-ms.date: 09/06/2018
+ms.date: 11/27/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: michmcla
-ms.openlocfilehash: 8e77a33667bd6794f667348958e0edb9c6a8fb0d
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: 41edbc621baede92c548f43ad2730b73f59756c0
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44094971"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52496103"
 ---
 # <a name="when-to-use-an-azure-multi-factor-authentication-provider"></a>何时使用 Azure 多重身份验证提供程序
 
@@ -26,13 +26,11 @@ ms.locfileid: "44094971"
 如果你拥有涵盖组织中所有用户的许可证，则不需要 Azure 多重身份验证提供程序。 仅当你还需要为没有许可证的某些用户提供双重验证时，才需要创建 Azure 多重身份验证提供程序。
 
 > [!NOTE]
-> 自 2018 年 9 月 1 日起，可能无法再创建新的身份验证提供程序。 可以继续使用和更新现有的身份验证提供程序。 多重身份验证将继续成为 Azure AD Premium 许可证中的可用功能。
+> 自 2018 年 9 月 1 日起，可能无法再创建新的身份验证提供程序。 可以继续使用和更新现有的身份验证提供程序。 多重身份验证将继续以 Azure AD Premium 许可证中的功能的形式提供。
 
 ## <a name="caveats-related-to-the-azure-mfa-sdk"></a>与 Azure MFA SDK 相关的注意事项
 
-需要 Azure 多重身份验证提供程序才能下载 SDK。 请注意，该 SDK 已弃用，不再对新客户支持，并将仅继续工作到 2018 年 11 月 14 日。 之后将无法再调用该 SDK。
-
-若要下载该 SDK，请创建 Azure 多重身份验证提供程序，即使拥有 Azure MFA、AAD Premium 或其他捆绑许可证，也是如此。 如果处于此目的而创建 Azure 多重身份验证提供程序且已拥有许可证，请务必使用**按启用的用户**模型创建提供程序。 然后，将该提供程序链接到包含 Azure MFA、Azure AD Premium 或其他捆绑许可证的目录。 该配置将确保仅当执行双重验证的唯一用户数大于所拥有的许可证数时才进行计费。
+请注意，该 SDK 已弃用，并将仅继续工作到 2018 年 11 月 14 日。 之后将无法再调用该 SDK。
 
 ## <a name="what-is-an-mfa-provider"></a>什么是 MFA 提供程序？
 

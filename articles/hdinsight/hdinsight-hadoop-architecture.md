@@ -9,23 +9,23 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: 066734c88890d5f1a6e42c5350db47d1a398b60a
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: f6393d15572eadb376cbd88dc94c3de0fd8fa80b
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51277573"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52495570"
 ---
 # <a name="apache-hadoop-architecture-in-hdinsight"></a>HDInsight 中的 Apache Hadoop 体系结构
 
-Apache Hadoop 包括两个核心组件：提供存储的 Hadoop 分布式文件系统 (HDFS)，以及提供处理功能的 Yet Another Resource Negotiator (YARN)。 有了存储和处理功能，群集就可以运行 MapReduce 程序来执行所需的数据处理。
+[Apache Hadoop](https://hadoop.apache.org/) 包括两个核心组件：提供存储的 [Apache Hadoop 分布式文件系统 (HDFS)](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsUserGuide.html)，以及提供处理功能的 [Apache Hadoop Yet Another Resource Negotiator (YARN)](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html)。 有了存储和处理功能，群集就可以运行 [Apache Hadoop MapReduce](https://hadoop.apache.org/docs/current/hadoop-mapreduce-client/hadoop-mapreduce-client-core/MapReduceTutorial.html) 程序来执行所需的数据处理。
 
 > [!NOTE]
 > 通常不会将 HDFS 部署在 HDInsight 群集中来提供存储， 而是由 Hadoop 组件来使用 HDFS 兼容接口层。 实际的存储功能由 Azure 存储或 Azure Data Lake Store 提供。 就 Hadoop 来说，在 HDInsight 群集上执行的 MapReduce 作业运行起来就像 HDFS 存在一样，因此不需更改即可满足其存储需求。 在 Hadoop on HDInsight 中，存储是外包的，但 YARN 处理仍为核心组件。 有关详细信息，请参阅 [Azure HDInsight 简介](hadoop/apache-hadoop-introduction.md)。
 
 本文介绍 YARN，说明其如何协调应用程序在 HDInsight 上的执行。
 
-## <a name="apache-yarn-basics"></a>Apache YARN 基础知识 
+## <a name="apache-hadoop-yarn-basics"></a>Apache Hadoop YARN 基础知识 
 
 YARN 控制并协调 Hadoop 中的数据处理。 YARN 有两个核心服务，在群集的节点上作为进程运行： 
 
@@ -50,5 +50,5 @@ NodeManagers 先运行应用程序包含的任务，然后将其进度和状态�
 
 ## <a name="next-steps"></a>后续步骤
 
-* [在 Hadoop on HDInsight 中使用 MapReduce](hadoop/hdinsight-use-mapreduce.md)
+* [在 Apache Hadoop on HDInsight 中使用 MapReduce](hadoop/hdinsight-use-mapreduce.md)
 * [Azure HDInsight 简介](hadoop/apache-hadoop-introduction.md)

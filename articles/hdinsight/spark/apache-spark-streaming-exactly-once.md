@@ -8,14 +8,14 @@ ms.author: hrasheed
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: 6c39eb02e9610e0020ab2abe8a192dabf0b768d9
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 78d18bfe0f47517067fbb053a2d7e076b15761a7
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51241305"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52580994"
 ---
-# <a name="create-spark-streaming-jobs-with-exactly-once-event-processing"></a>创建支持“恰好一次”事件处理的 Spark 流作业
+# <a name="create-apache-spark-streaming-jobs-with-exactly-once-event-processing"></a>使用“恰好一次”事件处理创建 Apache Spark 流式处理作业
 
 系统中发生某种故障后，流处理应用程序会采取不同的方法来应对消息的重新处理：
 
@@ -25,7 +25,7 @@ ms.locfileid: "51241305"
 
 本文介绍如何配置 Spark 流，以实现“恰好一次”处理。
 
-## <a name="exactly-once-semantics-with-spark-streaming"></a>Spark 流的“恰好一次”语义
+## <a name="exactly-once-semantics-with-apache-spark-streaming"></a>Apache Spark 流式处理的“恰好一次”语义
 
 首先，考虑在出现问题后所有系统故障点如何重启，以及如何避免数据丢失。 Spark 流应用程序包含：
 
@@ -41,11 +41,11 @@ ms.locfileid: "51241305"
 
 Spark 流应用程序从中读取事件的源必须可重播。 这意味着，如果已检测到消息，但在持久保存或处理该消息之前系统发生故障，则源必须再次提供同一消息。
 
-在 Azure 中，Azure 事件中心和 HDInsight 上的 Kafka 提供可重播源。 可重播源的另一个示例是 HDFS 等容错的文件系统、Azure 存储 Blob 或 Azure Data Lake Store，其中的所有数据将永久保留，随时都可以重新读取整个数据。
+在 Azure 中，Azure 事件中心和 HDInsight 上的 [Apache Kafka](https://kafka.apache.org/) 提供可重播源。 可重播源的另一个示例是 [Apache Hadoop HDFS](https://hadoop.apache.org/docs/r1.2.1/hdfs_design.html) 等容错的文件系统、Azure 存储 Blob 或 Azure Data Lake Store，其中的所有数据将永久保留，随时都可以重新读取整个数据。
 
 ### <a name="reliable-receivers"></a>可靠的接收器
 
-在 Spark 流中，事件中心和 Kafka 等源具有可靠的接收器，其中的每个接收器可跟踪它在读取源时的进度。 可靠的接收器将其状态持久保存在以下容错存储中：ZooKeeper，或者写入 HDFS 的 Spark 流检查点。 如果此类接收器发生故障并随后重启，它可以从上次中断的位置继续拾取数据。
+在 Spark 流中，事件中心和 Kafka 等源具有可靠的接收器，其中的每个接收器可跟踪它在读取源时的进度。 可靠的接收器将其状态持久保存在以下容错存储中：[Apache ZooKeeper](https://zookeeper.apache.org/)，或者写入 HDFS 的 Spark 流检查点。 如果此类接收器发生故障并随后重启，它可以从上次中断的位置继续拾取数据。
 
 ### <a name="use-the-write-ahead-log"></a>使用预写日志
 
@@ -89,5 +89,5 @@ Spark 流支持使用预写日志，其中每个收到的事件首先写入容�
 
 ## <a name="next-steps"></a>后续步骤
 
-* [Spark 流概述](apache-spark-streaming-overview.md)
-* [在 YARN 中创建高可用性 Spark 流作业](apache-spark-streaming-high-availability.md)
+* [Apache Spark 流式处理概述](apache-spark-streaming-overview.md)
+* [在 Apache Hadoop YARN 中创建高度可用的 Apache Spark 流式处理作业](apache-spark-streaming-high-availability.md)

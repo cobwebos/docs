@@ -9,12 +9,12 @@ ms.date: 07/12/2018
 ms.topic: conceptual
 ms.service: service-fabric-mesh
 manager: timlt
-ms.openlocfilehash: 925d97658a299bea983b16ae6b507159ef0e9e62
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
+ms.openlocfilehash: f72490169149d247a43e2760815d757c3606f1b3
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50979125"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52163718"
 ---
 # <a name="service-fabric-mesh-terminology"></a>Service Fabric 网格术语
 
@@ -32,7 +32,7 @@ Azure Service Fabric 网格是一个完全托管的服务，由此开发者可�
 
 **应用程序**：Service Fabric 网格应用程序是网格应用程序的部署、版本控制和生存期的单位。 可以独立管理每个应用程序实例的生命周期。  应用程序由一个或多个服务代码包和设置组成。 应用程序是使用 Azure 资源模型 (RM) 架构定义的。  服务被描述为 RM 模板中的应用程序资源的属性。  应用程序使用的网络和卷由应用程序引用。  创建应用程序时，应用程序、服务、网络和卷均使用 Service Fabric 资源模型建模。
 
-**服务**：应用程序中的服务代表微服务并执行完整且独立的功能。 每个服务由一个或多个代码包组成，这些代码包描述运行与代码包关联的容器映像所需的所有内容。  应用程序中的服务数量可以增大和减小。
+**服务**：应用程序中的服务代表微服务并执行完整且独立的功能。 每个服务由一个或多个代码包组成，这些代码包描述运行与代码包关联的容器映像所需的所有内容。  可以缩放应用程序中的服务副本数量。
 
 **代码包**：代码包描述运行与代码包关联的容器映像所需的所有内容，包括以下内容：
 

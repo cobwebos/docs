@@ -7,22 +7,22 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.topic: conceptual
 ms.date: 11/2/2017
-ms.openlocfilehash: 835a56413a4274a2be2511278b4dedd7f83c54c3
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: ab7602f7bae4dfb77a733dd7efe011a29b730377
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51016669"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52581579"
 ---
-# <a name="troubleshoot-spark-by-using-azure-hdinsight"></a>使用 Azure HDInsight 对 Spark 进行故障排除
+# <a name="troubleshoot-apache-spark-by-using-azure-hdinsight"></a>使用 Azure HDInsight 对 Apache Spark 进行故障排除
 
-了解处理 Apache Ambari 中的 Apache Spark 有效负载时的最常见问题及其解决方法。
+了解处理 [Apache Ambari](https://ambari.apache.org/) 中的 [Apache Spark](https://spark.apache.org/) 有效负载时的最常见问题及其解决方法。
 
-## <a name="how-do-i-configure-a-spark-application-by-using-ambari-on-clusters"></a>如何在群集上使用 Ambari 配置 Spark 应用程序？
+## <a name="how-do-i-configure-an-apache-spark-application-by-using-apache-ambari-on-clusters"></a>如何在群集上使用 Apache Ambari 配置 Apache Spark 应用程序？
 
 ### <a name="resolution-steps"></a>解决步骤
 
-事先在 HDInsight 中设置此过程的配置值。 若要确定需要设置哪些 Spark 配置以及配置值是什么，请参阅 [Spark 应用程序为何失败并出现 OutofMemoryError 异常](#what-causes-a-spark-application-outofmemoryerror-exception)。 
+事先在 HDInsight 中设置此过程的配置值。 若要确定需要设置哪些 Spark 配置以及配置值是什么，请参阅[导致 Apache Spark 应用程序出现 OutofMemoryError 异常的原因](#what-causes-a-spark-application-outofmemoryerror-exception)。 
 
 1. 在群集列表中选择“Spark2”。
 
@@ -84,14 +84,14 @@ ms.locfileid: "51016669"
 
 ### <a name="additional-reading"></a>其他阅读材料
 
-[在 HDInsight 群集上提交 Spark 作业](https://blogs.msdn.microsoft.com/azuredatalake/2017/01/06/spark-job-submission-on-hdinsight-101/)
+[在 HDInsight 群集上提交 Apache Spark 作业](https://blogs.msdn.microsoft.com/azuredatalake/2017/01/06/spark-job-submission-on-hdinsight-101/)
 
 
-## <a name="how-do-i-configure-a-spark-application-by-using-a-jupyter-notebook-on-clusters"></a>如何在群集上使用 Jupyter Notebook 配置 Spark 应用程序？
+## <a name="how-do-i-configure-an-apache-spark-application-by-using-a-jupyter-notebook-on-clusters"></a>如何在群集上使用 Jupyter Notebook 配置 Apache Spark 应用程序？
 
 ### <a name="resolution-steps"></a>解决步骤
 
-1. 若要确定需要设置哪些 Spark 配置以及配置值是什么，请参阅 [Spark 应用程序为何失败并出现 OutofMemoryError 异常](#what-causes-a-spark-application-outofmemoryerror-exception)。
+1. 若要确定需要设置哪些 Spark 配置以及配置值是什么，请参阅[导致 Apache Spark 应用程序出现 OutofMemoryError 异常的原因](#what-causes-a-spark-application-outofmemoryerror-exception)。
 
 2. 在 Jupyter Notebook 的第一个单元格中的 **%%configure** 指令后面，使用有效的 JSON 格式指定 Spark 配置。 根据需要更改实际值：
 
@@ -99,14 +99,14 @@ ms.locfileid: "51016669"
 
 ### <a name="additional-reading"></a>其他阅读材料
 
-[在 HDInsight 群集上提交 Spark 作业](https://blogs.msdn.microsoft.com/azuredatalake/2017/01/06/spark-job-submission-on-hdinsight-101/)
+[在 HDInsight 群集上提交 Apache Spark 作业](https://blogs.msdn.microsoft.com/azuredatalake/2017/01/06/spark-job-submission-on-hdinsight-101/)
 
 
-## <a name="how-do-i-configure-a-spark-application-by-using-livy-on-clusters"></a>如何在群集上使用 Livy 配置 Spark 应用程序？
+## <a name="how-do-i-configure-an-apache-spark-application-by-using-apache-livy-on-clusters"></a>如何在群集上使用 Apache Livy 配置 Apache Spark 应用程序？
 
 ### <a name="resolution-steps"></a>解决步骤
 
-1. 若要确定需要设置哪些 Spark 配置以及配置值是什么，请参阅 [Spark 应用程序为何失败并出现 OutofMemoryError 异常](#what-causes-a-spark-application-outofmemoryerror-exception)。 
+1. 若要确定需要设置哪些 Spark 配置以及配置值是什么，请参阅[导致 Apache Spark 应用程序出现 OutofMemoryError 异常的原因](#what-causes-a-spark-application-outofmemoryerror-exception)。 
 
 2. 使用 cURL 等 REST 客户端将 Spark 应用程序提交到 Livy。 使用如下所示的命令。 根据需要更改实际值：
 
@@ -116,14 +116,14 @@ ms.locfileid: "51016669"
 
 ### <a name="additional-reading"></a>其他阅读材料
 
-[在 HDInsight 群集上提交 Spark 作业](https://blogs.msdn.microsoft.com/azuredatalake/2017/01/06/spark-job-submission-on-hdinsight-101/)
+[在 HDInsight 群集上提交 Apache Spark 作业](https://blogs.msdn.microsoft.com/azuredatalake/2017/01/06/spark-job-submission-on-hdinsight-101/)
 
 
-## <a name="how-do-i-configure-a-spark-application-by-using-spark-submit-on-clusters"></a>如何在群集上使用 spark-submit 配置 Spark 应用程序？
+## <a name="how-do-i-configure-an-apache-spark-application-by-using-spark-submit-on-clusters"></a>如何在群集上使用 spark-submit 配置 Apache Spark 应用程序？
 
 ### <a name="resolution-steps"></a>解决步骤
 
-1. 若要确定需要设置哪些 Spark 配置以及配置值是什么，请参阅 [Spark 应用程序为何失败并出现 OutofMemoryError 异常](#what-causes-a-spark-application-outofmemoryerror-exception)。
+1. 若要确定需要设置哪些 Spark 配置以及配置值是什么，请参阅[导致 Apache Spark 应用程序出现 OutofMemoryError 异常的原因](#what-causes-a-spark-application-outofmemoryerror-exception)。
 
 2. 使用如下所示的命令启动 spark-shell。 根据需要更改实际配置值： 
 
@@ -133,10 +133,10 @@ ms.locfileid: "51016669"
 
 ### <a name="additional-reading"></a>其他阅读材料
 
-[在 HDInsight 群集上提交 Spark 作业](https://blogs.msdn.microsoft.com/azuredatalake/2017/01/06/spark-job-submission-on-hdinsight-101/)
+[在 HDInsight 群集上提交 Apache Spark 作业](https://blogs.msdn.microsoft.com/azuredatalake/2017/01/06/spark-job-submission-on-hdinsight-101/)
 
 
-## <a name="what-causes-a-spark-application-outofmemoryerror-exception"></a>哪些因素会导致 Spark 应用程序出现 OutofMemoryError 异常？
+## <a name="what-causes-an-apache-spark-application-outofmemoryerror-exception"></a>哪些因素会导致 Apache Spark 应用程序出现 OutofMemoryError 异常？
 
 ### <a name="detailed-description"></a>详细说明
 
@@ -217,8 +217,8 @@ java.lang.OutOfMemoryError
 
 ### <a name="additional-reading"></a>其他阅读材料
 
-- [Spark 内存管理概述](http://spark.apache.org/docs/latest/tuning.html#memory-management-overview)
-- [在 HDInsight 群集上调试 Spark 应用程序](https://blogs.msdn.microsoft.com/azuredatalake/2016/12/19/spark-debugging-101/)
+- [Apache Spark 内存管理概述](http://spark.apache.org/docs/latest/tuning.html#memory-management-overview)
+- [在 HDInsight 群集上调试 Apache Spark 应用程序](https://blogs.msdn.microsoft.com/azuredatalake/2016/12/19/spark-debugging-101/)
 
 
 ### <a name="see-also"></a>另请参阅

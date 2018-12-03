@@ -10,15 +10,15 @@ ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.component: pim
-ms.date: 08/27/2018
+ms.date: 11/21/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 59dab4651366c3ad6579e0da660baee0c653d1a3
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: 534714accb504e4ce487950fef028ab675c46a87
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43665996"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52496410"
 ---
 # <a name="activate-my-azure-ad-directory-roles-in-pim"></a>在 PIM 中激活 Azure AD 目录角色
 
@@ -70,9 +70,25 @@ Azure Active Directory (Azure AD) Privileged Identity Management (PIM) 简化了
 
 1. 单击“激活”。
 
-    如果角色不需要审批，而且已经激活，则此角色将出现在活动角色列表中。 如果[角色需要审批](./azure-ad-pim-approval-workflow.md)才能激活，则浏览器右上角会显示一条通知，告知你请求正在等待审批。
+    如果角色不需要审批，则会激活该角色并将其添加到活动角色列表中。 若要立即使用该角色，请按照下一部分中的步骤操作。
+
+    如果[角色需要审批](./azure-ad-pim-approval-workflow.md)才能激活，则浏览器右上角会显示一条通知，告知你请求正在等待审批。
 
     ![请求等待审批通知](./media/pim-how-to-activate-role/directory-roles-activate-notification.png)
+
+## <a name="use-a-role-immediately-after-activation"></a>激活后立即使用角色
+
+在 PIM 中激活某个角色时，需要等待至少 10 分钟，然后你才能访问所需的管理门户，或者执行特定管理工作负荷中的功能。 若要强制更新权限，请使用**应用程序访问**页，如以下步骤所述。
+
+1. 打开 Azure AD Privileged Identity Management。
+
+1. 单击“应用程序访问”页。
+
+    ![PIM 应用程序访问](./media/pim-how-to-activate-role/pim-application-access.png)
+
+1. 单击“Azure Active Directory”链接，在“所有用户”页上重新打开门户。
+
+    单击此链接时，会使当前令牌无效并强制 Azure 门户获取应包含已更新权限的新令牌。
 
 ## <a name="view-the-status-of-your-requests"></a>查看请求的状态
 
@@ -85,20 +101,6 @@ Azure Active Directory (Azure AD) Privileged Identity Management (PIM) 简化了
 1. 单击“我的请求”查看请求列表。
 
     ![Azure AD 目录角色 - 我的请求](./media/pim-how-to-activate-role/directory-roles-my-requests.png)
-
-## <a name="use-a-role-immediately-after-activation"></a>激活后立即使用角色
-
-由于缓存的原因，在未刷新的情况下，激活过程不会在 Azure 门户中立即发生。 如果需要在激活角色后减少延迟的可能性，可以使用门户中的“应用程序访问”页。 从此页访问的应用程序会立即检查新的角色分配。
-
-1. 打开 Azure AD Privileged Identity Management。
-
-1. 单击“应用程序访问”页。
-
-    ![PIM 应用程序访问](./media/pim-how-to-activate-role/pim-application-access.png)
-
-1. 单击“Azure Active Directory”，在“所有用户”页上重新打开门户。
-
-    单击此链接时，会强制刷新，并检查是否有新的 Azure AD 角色分配。
 
 ## <a name="deactivate-a-role"></a>停用角色
 
@@ -131,6 +133,14 @@ Azure Active Directory (Azure AD) Privileged Identity Management (PIM) 简化了
     单击“取消”会取消该请求。 若要再次激活该角色，必须提交新的激活请求。
 
    ![取消等待中的请求](./media/pim-how-to-activate-role/directory-role-cancel.png)
+
+## <a name="troubleshoot"></a>故障排除
+
+### <a name="permissions-not-granted-after-activating-a-role"></a>激活角色后未授予权限
+
+在 PIM 中激活某个角色时，需要等待至少 10 分钟，然后你才能访问所需的管理门户，或者执行特定管理工作负荷中的功能。 若要强制更新权限，请使用**应用程序访问**页，如前面[在激活后立即使用角色](#use-a-role-immediately-after-activation)中所述。
+
+有关其他故障排除步骤，请参阅[排查提升的权限问题](https://social.technet.microsoft.com/wiki/contents/articles/37568.troubleshooting-elevated-permissions-with-azure-ad-privileged-identity-management.aspx)。
 
 ## <a name="next-steps"></a>后续步骤
 

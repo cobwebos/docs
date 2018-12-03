@@ -9,16 +9,16 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: ashish
-ms.openlocfilehash: feb94f450621e999da01f77f0b5550258377d6c9
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: 4ba1e325ec978114016682aaee35be35a20ec028
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51038257"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52499118"
 ---
 # <a name="install-published-application---dataiku-dds"></a>安装已发布的应用程序 - Dataiku DDS
 
-本文介绍如何在 Azure HDInsight 上安装和运行 [Dataiku DDS](https://www.dataiku.com/) 发布的 Apache Hadoop 应用程序。 有关 HDInsight 应用程序平台的概述以及可用独立软件供应商 (ISV) 发布的应用程序的列表，请参阅[安装第三方 Hadoop 应用程序](hdinsight-apps-install-applications.md)。 有关如何安装自己的应用程序的说明，请参阅[安装自定义 HDInsight 应用程序](hdinsight-apps-install-custom-applications.md)。
+本文介绍如何在 Azure HDInsight 上安装和运行 [Dataiku DDS](https://www.dataiku.com/) 发布的 [Apache Hadoop](https://hadoop.apache.org/) 应用程序。 有关 HDInsight 应用程序平台的概述以及可用独立软件供应商 (ISV) 发布的应用程序的列表，请参阅[安装第三方 Hadoop 应用程序](hdinsight-apps-install-applications.md)。 有关如何安装自己的应用程序的说明，请参阅[安装自定义 HDInsight 应用程序](hdinsight-apps-install-custom-applications.md)。
 
 ## <a name="about-dataiku-dss"></a>关于 Dataiku DSS
 
@@ -26,9 +26,9 @@ Dataiku [Data Science Studio (DSS)](https://www.dataiku.com/dss/features/connect
 
 使用 DSS 可以从数据引入、准备和处理着手实施完整的分析解决方案。 在 DSS 解决方案中，还可以训练和应用机器学习模型、可视化，然后实现操作化。
 
-可以使用 Hadoop 或 Spark 群集在 HDInsight 上安装 DSS。 可以在运行的现有群集上安装 DSS，或者在创建新群集时安装 DSS。 DSS 还支持使用 Azure Blob 存储作为连接器来读取数据。
+可以使用 [Apache Hadoop](https://hadoop.apache.org/) 或 [Apache Spark](https://spark.apache.org/) 群集在 HDInsight 上安装 DSS。 可以在运行的现有群集上安装 DSS，或者在创建新群集时安装 DSS。 DSS 还支持使用 Azure Blob 存储作为连接器来读取数据。
 
-可以使用 DSS 生成项目，然后生成 MapReduce 或 Spark 作业。 这些作业在 HDInsight 上作为常规的 MapReduce 或 Spark 作业执行，因此可以按需缩放群集。
+可以使用 DSS 生成项目，然后项目可以生成 [Apache Hadoop MapReduce](https://hadoop.apache.org/docs/r1.2.1/mapred_tutorial.html) 或 Spark 作业。 这些作业在 HDInsight 上作为常规的 MapReduce 或 Spark 作业执行，因此可以按需缩放群集。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -40,7 +40,7 @@ Dataiku [Data Science Studio (DSS)](https://www.dataiku.com/dss/features/connect
 
 ## <a name="install-the-dataiku-dss-published-application"></a>安装 Dataiku DSS 发布的应用程序
 
-有关安装此应用程序和其他可用 ISV 应用程序的分步说明，请阅读[安装第三方 Hadoop 应用程序](hdinsight-apps-install-applications.md)。
+有关安装此应用程序和其他可用 ISV 应用程序的分步说明，请阅读[安装第三方 Apache Hadoop 应用程序](hdinsight-apps-install-applications.md)。
 
 ## <a name="launch-dataiku-dss"></a>启动 Dataiku DSS
 

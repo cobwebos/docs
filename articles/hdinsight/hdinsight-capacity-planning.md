@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/22/2017
 ms.author: maxluk
-ms.openlocfilehash: c3bdad6f1c199dda867370126eb7dcf5c296a12d
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 853bf9cfce458e6f112101b1382dd5bfd5df202d
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51230421"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52499116"
 ---
 # <a name="capacity-planning-for-hdinsight-clusters"></a>HDInsight 群集的容量规划
 
@@ -61,7 +61,7 @@ Azure 存储具有某些[容量限制](../azure-subscription-service-limits.md#s
 
 ## <a name="choose-a-cluster-type"></a>选择群集类型
 
-群集类型确定 HDInsight 群集配置为运行的工作负荷，例如 Hadoop、Storm、Kafka 或 Spark。 有关可用群集类型的详细说明，请参阅 [Azure HDInsight 简介](hadoop/apache-hadoop-introduction.md#cluster-types-in-hdinsight)。 每个群集类型具有一个特定的部署拓扑，该拓扑附带大小和节点数方面的要求。
+群集类型确定 HDInsight 群集配置为运行的工作负荷，例如 [Apache Hadoop](https://hadoop.apache.org/)、[Apache Storm](https://storm.apache.org/)、[Apache Kafka](https://kafka.apache.org/) 或 [Apache Spark](https://spark.apache.org/)。 有关可用群集类型的详细说明，请参阅 [Azure HDInsight 简介](hadoop/apache-hadoop-introduction.md#cluster-types-in-hdinsight)。 每个群集类型具有一个特定的部署拓扑，该拓扑附带大小和节点数方面的要求。
 
 ## <a name="choose-the-vm-size-and-type"></a>选择 VM 大小和类型
 
@@ -79,7 +79,7 @@ VM 大小和类型由 CPU 处理能力、RAM 大小和网络延迟决定：
 
 ## <a name="choose-the-cluster-scale"></a>选择群集规模
 
-群集的规模由其 VM 节点数量决定。 所有群集类型都存在一些具有特定缩放的节点类型，以及一些支持横向扩展的节点类型。例如，某个群集可能恰好需要三个 ZooKeeper 节点或两个头节点。 对于以分布方式执行数据处理的工作节点，可以通过添加更多的工作节点来享受横向扩展的好处。
+群集的规模由其 VM 节点数量决定。 所有群集类型都存在一些具有特定缩放的节点类型，以及一些支持横向扩展的节点类型。例如，某个群集可能恰好需要三个 [Apache ZooKeeper](https://zookeeper.apache.org/) 节点或两个头节点。 对于以分布方式执行数据处理的工作节点，可以通过添加更多的工作节点来享受横向扩展的好处。
 
 根据群集类型，增加工作节点数目可以添加更多的计算容量（例如更多的核心），但同时也可能会增大整个群集为所处理数据的内存中存储提供支持所需的内存总量。 在 VM 大小和类型的选择上，适当的群集规模通常是使用模拟工作负荷或 canary 查询凭经验选择出来的。
 
@@ -90,7 +90,7 @@ VM 大小和类型由 CPU 处理能力、RAM 大小和网络延迟决定：
 在群集的生存期内会产生费用。 如果只是需要在特定的时间启动并运行群集，可以使用 [Azure 数据工厂创建按需群集](hdinsight-hadoop-create-linux-clusters-adf.md)。 还可以创建 PowerShell 脚本用于预配和删除群集，然后使用 [Azure 自动化](https://azure.microsoft.com/services/automation/)计划这些脚本。
 
 > [!NOTE]
-> 删除某个群集时，也会一并删除其默认 Hive 元存储。 若要保留元存储供下一次重新创建群集时使用，可以使用 Azure 数据库或 Oozie 等外部元数据存储。
+> 删除某个群集时，也会一并删除其默认 Hive 元存储。 若要保留元存储供下一次重新创建群集时使用，可以使用 Azure 数据库或 [Apache Oozie](https://oozie.apache.org/) 等外部元数据存储。
 <!-- see [Using external metadata stores](hdinsight-using-external-metadata-stores.md). -->
 
 ### <a name="isolate-cluster-job-errors"></a>查明群集作业错误
@@ -109,5 +109,5 @@ VM 大小和类型由 CPU 处理能力、RAM 大小和网络延迟决定：
 
 ## <a name="next-steps"></a>后续步骤
 
-* [使用 Hadoop、Spark、Kafka 等在 HDInsight 中设置群集](hdinsight-hadoop-provision-linux-clusters.md)：了解如何使用 Hadoop、Spark、Kafka、交互式 Hive、HBase、ML Services 或 Storm 在 HDInsight 中设置和配置群集。
+* [使用 Apache Hadoop、Spark、Kafka 等在 HDInsight 中设置群集](hdinsight-hadoop-provision-linux-clusters.md)：了解如何使用 Apache Hadoop、Spark、Kafka、交互式 Hive、HBase、ML Services 或 Storm 在 HDInsight 中设置和配置群集。
 * [监视群集性能](hdinsight-key-scenarios-to-monitor.md)：了解要在 HDInsight 群集中监视的、可能会影响群集容量的关键情况。

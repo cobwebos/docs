@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/26/2018
 ms.author: bwren
-ms.openlocfilehash: 0f17cf7f2ef655f482b08b5c7163c0d85be77ce5
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.openlocfilehash: d1b7b5baeba88ec0209abff60e9327031afa8b66
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49068685"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52633769"
 ---
 # <a name="azure-monitor-overview"></a>Azure Monitor 概述
 
@@ -27,14 +27,14 @@ Azure Monitor 提供用于收集、分析和处理来自云与本地环境的遥
 > [!VIDEO https://www.youtube.com/embed/_hGff5bVtkM]
 
 ## <a name="overview"></a>概述
-下图提供了 Azure Monitor 的概要视图。 示意图的中心是用于存储指标和日志（Azure Monitor 使用的两种基本类型的数据）的数据存储。 左侧是[从不同的受监视资源收集遥测数据](../monitoring/monitoring-data-sources.md)并填充[数据存储](../monitoring/monitoring-data-collection.md)的源。 右侧是 Azure Monitor 针对这些收集的数据执行的不同功能，例如分析、警报和流式传输到外部系统。
+下图提供了 Azure Monitor 的概要视图。 示意图的中心是用于存储指标和日志（Azure Monitor 使用的两种基本类型的数据）的数据存储。 左侧是[从不同的受监视资源收集遥测数据](../azure-monitor/platform/data-sources.md)并填充[数据存储](../azure-monitor/platform/data-collection.md)的源。 右侧是 Azure Monitor 针对这些收集的数据执行的不同功能，例如分析、警报和流式传输到外部系统。
 
 
 ![Azure Monitor 概述](media/overview/overview.png)
 
 
 ## <a name="monitoring-data-platform"></a>监视数据平台
-Azure Monitor 收集的所有数据属于以下两种基本类型之一：[指标和日志](../monitoring/monitoring-data-collection.md)。 [指标](../monitoring/monitoring-data-collection.md#metrics)是数字值，用于描述系统某些方面在特定时间点的情况。 指标是轻型数据，可以支持近实时方案。 [日志](../monitoring/monitoring-data-collection.md#logs)包含不同类型的已经整理成记录的数据，每种类型都有不同的属性集。 与性能数据一样，事件和跟踪等遥测数据也作为日志存储，因此，可将它们合并以进行分析。
+Azure Monitor 收集的所有数据属于以下两种基本类型之一：[指标和日志](../azure-monitor/platform/data-collection.md)。 [指标](../azure-monitor/platform/data-collection.md#metrics)是数字值，用于描述系统某些方面在特定时间点的情况。 指标是轻型数据，可以支持近实时方案。 [日志](../azure-monitor/platform/data-collection.md#logs)包含不同类型的已经整理成记录的数据，每种类型都有不同的属性集。 与性能数据一样，事件和跟踪等遥测数据也作为日志存储，因此，可将它们合并以进行分析。
 
 Azure 门户中的“概述”页会直接显示 Azure Monitor 针对许多 Azure 资源收集的数据。 例如，在查看任一虚拟机时，多个图表会显示性能指标。 单击任一图形会在 Azure 门户上的[指标资源管理器](../monitoring-and-diagnostics/monitoring-metric-charts.md)中打开数据，可在其中绘制多个指标在不同时间段的值的图表。  可以通过交互方式查看图表，也可以将其固定到某个仪表板，与其他可视化效果一起查看。
 
@@ -47,7 +47,7 @@ Log Analytics 查询语言适用于简单的日志查询，但也包括高级功
 ![日志](media/overview/logs.png)
 
 ## <a name="what-data-does-azure-monitor-collect"></a>Azure Monitor 收集哪些数据？
-Azure Monitor 可从各种源收集数据。 可将应用程序的监视数据视为划分了层次，范围为应用程序、应用程序依赖的任何操作系统和服务，直到平台本身。 Azure Monitor 从以下每个层收集数据：
+Azure Monitor 可从各种源收集数据。 可将应用程序的监视数据视为划分了层次，范围从应用程序、应用程序依赖的任何操作系统和服务，直到平台本身。 Azure Monitor 从以下每个层收集数据：
 
 - **应用程序监视数据**：有关编写的代码的性能和功能的数据，不管平台是什么。
 - **来宾 OS 监视数据**：有关运行应用程序的操作系统的数据。 此应用程序可以在 Azure 中运行，也可以在其他云中或本地运行。 
@@ -57,7 +57,7 @@ Azure Monitor 可从各种源收集数据。 可将应用程序的监视数据�
 
 在创建 Azure 订阅并开始添加虚拟机和 Web 应用等资源后，Azure Monitor 会立即开始收集数据。  [活动日志](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md)记录创建或修改资源的时间。 [指标](../monitoring-and-diagnostics/monitoring-overview-metrics.md)告知资源的性能如何，以及该资源消耗的资源。 
 
-通过[启用诊断](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md)并[将代理添加](../log-analytics/log-analytics-agent-windows.md)到计算资源，将数据收集范围扩展到资源的实际操作。 这会收集资源内部操作的遥测数据，并可让你配置不同的[数据源](../log-analytics/log-analytics-data-sources.md)用于从 Windows 和 Linux 来宾操作系统收集日志与指标。 
+通过[启用诊断](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md)并[将代理添加](../azure-monitor/platform/agent-windows.md)到计算资源，将数据收集范围扩展到资源的实际操作。 这会收集资源内部操作的遥测数据，并可让你配置不同的[数据源](../azure-monitor/platform/agent-data-sources.md)用于从 Windows 和 Linux 来宾操作系统收集日志与指标。 
 
 [将检测包添加到应用程序](../application-insights/app-insights-azure-web-apps.md)，使 Application Insights 能够收集有关应用程序的详细信息，包括页面视图、应用程序请求和异常。 通过配置[可用性测试](../application-insights/app-insights-monitor-web-app-availability.md)来模拟用户流量，进一步验证应用程序的可用性。
 
@@ -67,7 +67,7 @@ Azure Monitor 可以使用[数据收集器 API](../log-analytics/log-analytics-d
 
 
 ## <a name="insights"></a>洞察力
-仅当能够有利于洞察计算环境的操作时，监视数据才有作用。 Azure Monitor 包含多种功能和工具，可以提供应用程序及其依赖的其他资源的有用见解。 [监视解决方案](../monitoring/monitoring-solutions.md)和 [Application Insights](../application-insights/app-insights-overview.md) 与 Container Insights 等功能在应用程序和特定 Azure 服务的不同方面提供深入见解。 
+仅当能够有利于洞察计算环境的操作时，监视数据才有作用。 Azure Monitor 包含多种功能和工具，可以提供应用程序及其依赖的其他资源的有用见解。 [监视解决方案](../azure-monitor/insights/solutions.md)和 [Application Insights](../application-insights/app-insights-overview.md) 与 Container Insights 等功能在应用程序和特定 Azure 服务的不同方面提供深入见解。 
 
 ### <a name="application-insights"></a>Application Insights
 无论 Web 应用程序托管在云中还是本地，[Application Insights](../application-insights/app-insights-overview.md) 都可以监视其可用性、性能和使用情况。 它利用 Log Analytics 中的强大数据分析平台来提供应用程序操作的深入见解，并可以诊断错误，无需等到用户报告这些问题。 Application Insights 包含各种开发工具的连接点，并与 Visual Studio 集成以支持 DevOps 过程。
@@ -86,9 +86,9 @@ Azure Monitor VM Insights 分析 Windows 和 Linux VM 的性能与运行状况�
 ![VM Insights](media/overview/vm-insights.png)
 
 ### <a name="monitoring-solutions"></a>监视解决方案
-Azure Monitor 中的[监视解决方案](../monitoring/monitoring-solutions.md)是打包的逻辑集，提供有关特定应用程序或服务的见解。 它们将数据连同其他监视数据一起收集到 Log Analytics 中，并使用[查询](../log-analytics/log-analytics-queries.md)进行分析，使用[视图](../log-analytics/log-analytics-view-designer.md)进行可视化。 监视解决方案由 [Microsoft](../monitoring/monitoring-solutions-inventory.md) 或合作伙伴提供，可针对各种 Azure 服务和其他应用程序提供监视。
+Azure Monitor 中的[监视解决方案](../azure-monitor/insights/solutions.md)是打包的逻辑集，提供有关特定应用程序或服务的见解。 它们将数据连同其他监视数据一起收集到 Log Analytics 中，并使用[查询](../log-analytics/log-analytics-queries.md)进行分析，使用[视图](../azure-monitor/platform/view-designer.md)进行可视化。 监视解决方案由 [Microsoft](../azure-monitor/insights/solutions-inventory.md) 或合作伙伴提供，可针对各种 Azure 服务和其他应用程序提供监视。
 
-![监视解决方案](../monitoring/media/monitoring-solutions/overview.png)
+![监视解决方案](media/overview/solutions-overview.png)
 
 ## <a name="responding-to-critical-situations"></a>应对关键状况
 除了让你以交互方式分析监视数据以外，有效的监视解决方案必须能够主动应对所收集的数据中指出的关键状况。 应对措施可以是向负责调查问题的管理员发送短信或邮件。 或者，可以启动自动化过程来尝试纠正错误状况。
@@ -115,7 +115,7 @@ Azure Monitor 中的警报规则使用[操作组](../monitoring-and-diagnostics/
 ![仪表板](media/overview/dashboard.png)
 
 ### <a name="views"></a>视图
-[Azure Monitor 中的视图](../log-analytics/log-analytics-view-designer.md)在 Log Analytics 中直观显示日志数据。  每个视图包含单个磁贴，使用该磁贴可以向下钻取到各种可视化效果的组合，例如汇总了关键数据的列表，以及条形图和折线图。  监视解决方案包含的视图汇总了特定应用程序的数据。你可以创建自己的视图来显示任何 Log Analytics 日志搜索的数据。 与 Azure Monitor 中的其他元素一样，可将视图添加到 Azure 仪表板。
+[Azure Monitor 中的视图](../azure-monitor/platform/view-designer.md)在 Log Analytics 中直观显示日志数据。  每个视图包含单个磁贴，使用该磁贴可以向下钻取到各种可视化效果的组合，例如汇总了关键数据的列表，以及条形图和折线图。  监视解决方案包含的视图汇总了特定应用程序的数据。你可以创建自己的视图来显示任何 Log Analytics 日志搜索的数据。 与 Azure Monitor 中的其他元素一样，可将视图添加到 Azure 仪表板。
 
 ![Log Analytics 视图](media/overview/view.png)
 
@@ -145,6 +145,6 @@ Azure Monitor 中的警报规则使用[操作组](../monitoring-and-diagnostics/
 ## <a name="next-steps"></a>后续步骤
 了解有关以下方面的详细信息：
 
-* [指标和日志](../monitoring/monitoring-data-collection.md)，了解由 Azure Monitor 收集的数据。
-* [数据源](../monitoring/monitoring-data-sources.md)，了解应用程序的不同组件如何发送遥测数据。
+* [指标和日志](../azure-monitor/platform/data-collection.md)，了解由 Azure Monitor 收集的数据。
+* [数据源](../azure-monitor/platform/data-sources.md)，了解应用程序的不同组件如何发送遥测数据。
 * [Log Analytics](../log-analytics/log-analytics-queries.md)，以便分析所收集的数据。

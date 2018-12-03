@@ -9,16 +9,16 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/11/2018
-ms.openlocfilehash: 4a7777be01cc15ed5cc4c9c091230afe1ddfa897
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: dc1fe8a3d9a1f0da0a190275b4fbb8bd18fff610
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43047436"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52499149"
 ---
-# <a name="optimize-spark-jobs"></a>优化 Spark 作业
+# <a name="optimize-apache-spark-jobs"></a>优化 Apache Spark 作业
 
-了解如何为特定工作负荷优化 Spark 群集配置。  最常面临的难题是内存压力，这归因于不正确的配置（尤其是大小不合的执行程序）、长时间运行的操作以及导致笛卡尔操作的任务。 可通过以下方式为作业提速：使用适当的缓存，并允许[数据倾斜](#optimize-joins-and-shuffles)。 若要实现最佳性能，应监视和查看长时间运行并耗用资源的 Spark 作业执行。
+了解如何为特定工作负荷优化 [Apache Spark](https://spark.apache.org/) 群集配置。  最常面临的难题是内存压力，这归因于不正确的配置（尤其是大小不合的执行程序）、长时间运行的操作以及导致笛卡尔操作的任务。 可通过以下方式为作业提速：使用适当的缓存，并允许[数据倾斜](#optimize-joins-and-shuffles)。 若要实现最佳性能，应监视和查看长时间运行并耗用资源的 Spark 作业执行。
 
 以下部分介绍常用的 Spark 作业优化方法和建议。
 
@@ -94,7 +94,7 @@ Spark 在运行时会将数据放在内存中，因此，管理内存资源是�
 
 ### <a name="spark-memory-considerations"></a>Spark 内存注意事项
 
-如果使用 YARN，YARN 会控制每个 Spark 节点上的所有容器使用的最大内存总和。  下图展示了一些键对象及其关系。
+如果使用 [Apache Hadoop YARN](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html)，则 YARN 会控制每个 Spark 节点上的所有容器使用的最大内存总和。  下图展示了一些键对象及其关系。
 
 ![YARN Spark 内存管理](./media/apache-spark-perf/yarn-spark-memory.png)
 
@@ -212,9 +212,9 @@ MAX(AMOUNT) -> MAX(cast(AMOUNT as DOUBLE))
 
 ## <a name="next-steps"></a>后续步骤
 
-* [调试 Azure HDInsight 中运行的 Spark 作业](apache-spark-job-debugging.md)
-* [管理 HDInsight 上 Spark 群集的资源](apache-spark-resource-manager.md)
-* [使用 Spark REST API 将远程作业提交到 Spark 群集](apache-spark-livy-rest-interface.md)
-* [Tuning Spark](https://spark.apache.org/docs/latest/tuning.html)（优化 Spark）
-* [How to Actually Tune Your Spark Jobs So They Work](https://www.slideshare.net/ilganeli/how-to-actually-tune-your-spark-jobs-so-they-work)（如何真正优化 Spark 作业以使其正常运行）
+* [调试 Azure HDInsight 中运行的 Apache Spark 作业](apache-spark-job-debugging.md)
+* [管理 HDInsight 上 Apache Spark 群集的资源](apache-spark-resource-manager.md)
+* [使用 Apache Spark REST API 将远程作业提交到 Apache Spark 群集](apache-spark-livy-rest-interface.md)
+* [优化 Apache Spark](https://spark.apache.org/docs/latest/tuning.html)
+* [How to Actually Tune Your Apache Spark Jobs So They Work](https://www.slideshare.net/ilganeli/how-to-actually-tune-your-spark-jobs-so-they-work)（如何真正优化 Apache Spark 作业以使其正常运行）
 * [Kryo 序列化](https://github.com/EsotericSoftware/kryo)

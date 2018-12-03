@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/14/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 7430e57ceaec8a280c17f1276d503919a9703182
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 7e648d6d3bd8d8ac14fb3f9723f4667c1cc33ac6
+ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51228889"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52620177"
 ---
 <a name="saas-application-technical-publishing-guide"></a>SaaS 应用程序技术发布指南
 ===========================================
@@ -32,7 +32,7 @@ ms.locfileid: "51228889"
 <a name="what-are-pre-requisites-for-publishing-a-saas-app"></a>发布 SaaS 应用的先决条件有哪些？
 -------------------------------------------------
 
-发布门户将提供对门户的基于角色的访问，能够让多人在发布产品/服务方面展开协作。 有关详细信息，请参阅[管理用户](./cloud-partner-portal-manage-users.md)。 
+[云合作伙伴门户](https://cloudpartner.azure.com)将提供对门户的基于角色的访问权限，使多个人可以在发布产品/服务方面展开协作。 有关详细信息，请参阅[管理用户](./cloud-partner-portal-manage-users.md)。 
 
 代表发布者帐户发布产品/服务之前，其中一个具有*所有者*角色的个人需同意遵守[使用条款](https://azure.microsoft.com/support/legal/website-terms-of-use/)、[Microsoft 隐私声明](https://www.microsoft.com/privacystatement/default.aspx)，以及 [Microsoft Azure 认证计划协议](https://azure.microsoft.com/support/legal/marketplace/certified-program-agreement/)。
 
@@ -58,7 +58,7 @@ SaaS 应用产品/服务包含 5 个部分，如下表所述：
 
 ### <a name="creating-a-new-offer"></a>创建新的产品/服务
 
-登录到云合作伙伴门户后，选择左侧菜单栏（包含可用产品/服务菜单）上的“新建产品/服务”项。 下图中列举了此类产品/服务：
+登录到[云合作伙伴门户](https://cloudpartner.azure.com)后，选择左侧菜单栏（显示可用产品/服务的菜单）上的“新建产品/服务”项。 下图中列举了此类产品/服务：
 
 ![SaaS 新产品/服务](media/cpp-creating-saas-offers/saas-new-offer.png)
 
@@ -154,7 +154,7 @@ SaaS 应用需要提供与应用相关的摘要和描述这前两个部分。
 
 | **产品/服务字段** | **说明**                                                                                                          |
 |------------------| ------------------------------------------------------------------------------------------------------------------------ |
-| 徽标            | 如果“通过 Azure 销售”SaaS 应用，应提供所有徽标图像。 如果只是一个产品列表，则仅需要提供 2 个徽标。 对于上传到云合作伙伴门户中的所有徽标，请遵循以下准则：     <br/> - 徽标上的主要和辅助颜色种类尽量少。 Azure 设计具有简单的调色板。     <br/> - 请避免将黑色或白色用作徽标的背景色。 Azure 门户的主题颜色为白色和黑色。 请改用可使徽标在 Azure 门户中突出显示的颜色。 建议使用简单的主颜色。 如果使用的是透明背景，请确保徽标和文本不使用白色、黑色或蓝色。     <br/> - 不要在徽标上使用渐变背景。     <br/> - 避免在徽标上放置文本，即使是公司或品牌名称也不可以。 徽标的外观应“平整”，并且应避免渐变。    <br/> - 徽标图像不应拉伸。                   |
+| 徽标            | 如果“通过 Azure 销售”SaaS 应用，应提供所有徽标图像。 如果只是一个产品列表，则仅需要提供 2 个徽标。 对于上传到[云合作伙伴门户](https://cloudpartner.azure.com)中的所有徽标，应遵循以下准则：     <br/> - 徽标上的主要和辅助颜色种类尽量少。 Azure 设计具有简单的调色板。     <br/> - 请避免将黑色或白色用作徽标的背景色。 Azure 门户的主题颜色为白色和黑色。 请改用可使徽标在 Azure 门户中突出显示的颜色。 建议使用简单的主颜色。 如果使用的是透明背景，请确保徽标和文本不使用白色、黑色或蓝色。     <br/> - 不要在徽标上使用渐变背景。     <br/> - 避免在徽标上放置文本，即使是公司或品牌名称也不可以。 徽标的外观应“平整”，并且应避免渐变。    <br/> - 徽标图像不应拉伸。                   |
 | 视频           | 可添加产品/服务的视频链接。 可以使用 YouTube 和/或 Vimeo 视频链接，这将随产品/服务一起呈现给客户。 此外，还需要输入视频的缩略图像，采用 1280 x 720 像素的 png 图像。 每个产品/服务最多可附带 4 个视频。 |
 | 文档        | 可将营销文档添加到产品/服务。 所有文档必须采用 PDF 格式，每个产品/服务最多可以有三个文档。                                                                                                                                                      |
 | 屏幕截图      | 可添加产品/服务的屏幕截图。 每个产品/服务最多可添加五张屏幕截图。 图像最大尺寸为 1280 x 720 像素。                                                                                                                                             |

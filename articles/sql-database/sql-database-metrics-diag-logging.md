@@ -12,12 +12,12 @@ ms.author: v-daljep
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 09/20/2018
-ms.openlocfilehash: 8f66c95202e0ccdef86f9630f7a98c20023a8955
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.openlocfilehash: b903d0ddbccac8fe4fa8b251d409bd8addebb435
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50087740"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52425993"
 ---
 # <a name="azure-sql-database-metrics-and-diagnostics-logging"></a>Azure SQL 数据库指标和诊断日志记录 
 
@@ -101,7 +101,7 @@ Azure SQL 数据库、弹性池、托管实例和托管实例中的数据库可�
    ![为 SQL 数据库配置诊断](./media/sql-database-metrics-diag-logging/diagnostics-settings-database-sql-selection.png)
 
 > [!NOTE]
-> 无法从数据库诊断设置启用审核日志。 若要启用审核日志流式传输，请参阅[为数据库设置审核](sql-database-auditing.md#subheading-2)，另请参阅 [Azure Log Analytics 和 Azure 事件中心内的 SQL 审核日志](https://blogs.msdn.microsoft.com/sqlsecurity/2018/09/13/sql-audit-logs-in-azure-log-analytics-and-azure-event-hubs/)。
+> 无法从数据库诊断设置启用安全审核日志。 若要启用审核日志流式传输，请参阅[为数据库设置审核](sql-database-auditing.md#subheading-2)，另请参阅 [Azure Log Analytics 和 Azure 事件中心内的 SQL 审核日志](https://blogs.msdn.microsoft.com/sqlsecurity/2018/09/13/sql-audit-logs-in-azure-log-analytics-and-azure-event-hubs/)。
 >
 
 > [!TIP]
@@ -182,7 +182,7 @@ Azure SQL 数据库、弹性池、托管实例和托管实例中的数据库可�
 2. 选择“诊断设置”
 3. 选择“启用诊断”（如果不存在以前的设置），或选择“编辑设置”来编辑以前的设置
 
-   ![为托管实例启用诊断](./media/sql-database-metrics-diag-logging/diagnostics-settings-database-mi-enable.png)
+   ![为托管实例启用诊断](./media/sql-database-metrics-diag-logging/diagnostics-settings-container-mi-enable.png)
 
 4. 键入设置名称 - 供自己参考
 5. 选择要将弹性池中的诊断数据流式传输到哪个资源：“存档到存储帐户”、“流式传输到事件中心”或“发送到 Log Analytics”
@@ -190,7 +190,7 @@ Azure SQL 数据库、弹性池、托管实例和托管实例中的数据库可�
 7. 选中诊断遥测 **ResourceUsageStats** 对应的复选框
 8. 单击“保存”
 
-   ![为托管实例配置诊断](./media/sql-database-metrics-diag-logging/diagnostics-settings-database-mi-selection.png)
+   ![为托管实例配置诊断](./media/sql-database-metrics-diag-logging/diagnostics-settings-container-mi-selection.png)
 
 > [!TIP]
 > 针对要监视的每个托管实例重复上述步骤。

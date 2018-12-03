@@ -9,16 +9,16 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/01/2018
-ms.openlocfilehash: b8494150a060e02145eab3674bdd2dd62cdda225
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 603aa8d85d42167accd2a5e71c4ab3e5245f5d07
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51277284"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52499262"
 ---
 # <a name="use-hdinsight-spark-cluster-to-read-and-write-data-to-azure-sql-database"></a>使用 HDInsight Spark 群集在 Azure SQL 数据库中读取和写入数据
 
-了解如何将 Azure HDInsight 中的 Apache Spark 群集连接到 Azure SQL 数据库，然后在 SQL 数据库中读取、写入和流式传输数据。 本文中的说明使用 Jupyter Notebook 运行 Scala 代码片段。 但是，可以在 Scala 或 Python 中创建独立的应用程序，然后执行相同的任务。 
+了解如何将 Azure HDInsight 中的 Apache Spark 群集连接到 Azure SQL 数据库，然后在 SQL 数据库中读取、写入和流式传输数据。 本文中的说明使用 [Jupyter Notebook](https://jupyter.org/) 运行 Scala 代码片段。 但是，可以在 Scala 或 Python 中创建独立的应用程序，然后执行相同的任务。 
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -32,19 +32,14 @@ ms.locfileid: "51277284"
 
 * **SQL Server Management Studio**。 遵照[使用 SSMS 连接和查询数据](../../sql-database/sql-database-connect-query-ssms.md)中的说明。
 
-## <a name="create-a-jupyter-notebook"></a>创建 Jupyter 笔记本
+## <a name="create-a-jupyter-notebook"></a>创建 Jupyter Notebook 
 
-首先，创建与 Spark 群集关联的 Jupyter Notebook。 到时要使用此 Notebook 来运行本文中所用的代码片段。 
+首先，创建与 Spark 群集关联的 [Jupyter Notebook](https://jupyter.org/)。 到时要使用此 Notebook 来运行本文中所用的代码片段。 
 
-1. 从 [Azure 门户网站](https://portal.azure.com/)打开群集。 
+1. 从 [Azure 门户网站](https://portal.azure.com/)打开群集。
+1. 选择右侧**群集仪表板**下方的 **Jupyter notebook**。  如果没有看到“群集仪表板”，请从边栏选项卡上的左侧菜单中单击“概述”。 出现提示时，请输入群集的管理员凭据。
 
-1. 在“快速链接”部分中，单击“群集仪表板”打开“群集仪表板”视图。  如果没有看到“快速链接”，请从边栏选项卡上的左侧菜单中单击“概述”。
-
-    ![Spark 上的群集仪表板](./media/apache-spark-connect-to-sql-database/hdinsight-cluster-dashboard-on-spark.png "Spark 上的群集仪表板") 
-
-1. 单击“Jupyter 笔记本”。 出现提示时，请输入群集的管理员凭据。
-
-    ![Spark 中的 Jupyter 笔记本](./media/apache-spark-connect-to-sql-database/hdinsight-jupyter-notebook-on-spark.png "Spark 中的 Jupyter 笔记本")
+    ![Spark 中的 Jupyter 笔记本](./media/apache-spark-connect-to-sql-database/hdinsight-spark-cluster-dashboard-jupyter-notebook.png "Spark 中的 Jupyter 笔记本")
    
    > [!NOTE]
    > 也可以在浏览器中打开以下 URL 来访问 Spark 群集中的 Jupyter Notebook。 将 **CLUSTERNAME** 替换为群集的名称：
@@ -242,4 +237,4 @@ ms.locfileid: "51277284"
 
 * [使用 HDInsight Spark 群集分析 Data Lake Store 中的数据](apache-spark-use-with-data-lake-store.md)
 * [使用事件中心处理结构化流事件](apache-spark-eventhub-structured-streaming.md)
-* [将 Spark 结构化流与 HDInsight 上的 Kafka 配合使用](../hdinsight-apache-kafka-spark-structured-streaming.md)
+* [将 Apache Spark 结构化流式处理与 Apache Kafka on HDInsight 配合使用](../hdinsight-apache-kafka-spark-structured-streaming.md)

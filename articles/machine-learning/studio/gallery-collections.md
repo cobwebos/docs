@@ -1,10 +1,11 @@
 ---
-title: Azure AI 库收藏 | Microsoft Docs
-description: 在 Azure AI 库中发现和共享收藏。
+title: Azure AI 库收藏 - Azure 机器学习工作室 | Microsoft Docs
+description: 可使用 Azure AI 库中的收藏将用于特定解决方案或概念的试验、API 以及其他库项组合在一起。 可以将它们组合在一起，以便使用、保存以供日后参考或者共享。
 services: machine-learning
 documentationcenter: ''
-author: YasinMSFT
-ms.author: yahajiza
+author: ericlicoding
+ms.custom: (previous ms.author=yahajiza, author=YasinMSFT)
+ms.author: amlstudiodocs
 manager: hjerez
 editor: cgronlun
 ms.assetid: c834a0dc-492f-4fa4-8a48-c86bba7b2b97
@@ -15,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2017
-ms.openlocfilehash: b586639cc6c9d4e25d65fa9f3a510e22789acfb2
-ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
+ms.openlocfilehash: cc70405655cd07d87ca5b1004b7666d3b45bc649
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51346029"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52308675"
 ---
 # <a name="discover-and-share-collections-in-azure-ai-gallery"></a>在 Azure AI 库中发现和共享收藏
 

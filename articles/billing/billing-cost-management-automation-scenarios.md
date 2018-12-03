@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: billing
 ms.date: 6/13/2018
 ms.author: erikre
-ms.openlocfilehash: 97f6339e5c9532250245a97a81dade12db139e98
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 09ecd46837a12f5f1a8278b1644dc099701bcd00
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47227361"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52584717"
 ---
 # <a name="billing-and-cost-management-automation-scenarios"></a>计费和成本管理自动化方案
 
@@ -122,4 +122,4 @@ ms.locfileid: "47227361"
 
 - 若要了解如何使用 Azure API 以编程方式洞察 Azure 使用情况，请参阅 [Azure 消耗 API 概述](billing-consumption-api-overview.md)和 [Azure 计费 API 概述](billing-usage-rate-card-overview.md)。
 - 若要在 Azure 门户中将发票与每日使用情况明细文件和成本管理报表进行比较，请参阅[了解 Microsoft Azure 帐单](billing-understand-your-bill.md)。
-- 如果仍有疑问，请[联系支持人员](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)以快速解决问题。
+- 如果你有任何疑问或需要帮助，请[创建支持请求](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)。

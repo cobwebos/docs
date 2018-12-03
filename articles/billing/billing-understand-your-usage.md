@@ -4,7 +4,7 @@ description: 了解如何阅读并理解 Azure 订阅的详细使用情况 CSV �
 services: ''
 documentationcenter: ''
 author: tonguyen10
-manager: tonguyen
+manager: alherz
 editor: ''
 tags: billing
 ms.service: billing
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/31/2017
 ms.author: cwatson
-ms.openlocfilehash: 83891e1abdb58b4fdae65cee3689195b8f35df12
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: c5b41d86133bbcafcc61423b4d60e59846edc2f2
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51230455"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52580909"
 ---
 # <a name="understand-terms-on-your-microsoft-azure-detailed-usage-charges"></a>了解 Microsoft Azure 详细使用费条款 
 
@@ -88,5 +88,6 @@ ms.locfileid: "51230455"
 ## <a name="external"></a>外部服务如何收费？
 外部服务（也称为市场订单）由独立的服务供应商提供，需要单独计费。 Azure 发票上不会记录该费用。 若要了解详细信息，请参阅[了解 Azure 外部服务收费](billing-understand-your-azure-marketplace-charges.md)。
 
-## <a name="need-help-contact-support"></a>需要帮助？ 联系支持人员。
-如果仍需帮助，请[联系支持人员](https://portal.azure.com/?)以快速解决问题。
+## <a name="need-help-contact-us"></a>需要帮助？ 请联系我们。
+
+如果你有任何疑问或需要帮助，请[创建支持请求](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)。

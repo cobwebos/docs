@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: hrasheed
-ms.openlocfilehash: 4e5561c4846889f53723ed8df82d7c6268aee180
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 1a053f92433b6091f0d77439399e8419a58df185
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51241610"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52495141"
 ---
 # <a name="create-apache-hadoop-clusters-in-hdinsight-by-using-resource-manager-templates"></a>使用资源管理器模板在 HDInsight 中创建 Apache Hadoop 群集
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
@@ -32,7 +32,7 @@ ms.locfileid: "51241610"
 ### <a name="resource-manager-templates"></a>资源管理器模板
 通过资源管理器模板，可轻松地通过单个协调操作为应用程序创建以下资源：
 * HDInsight 群集及其依赖资源（例如默认存储帐户）
-* 其他资源（例如要使用 Apache Sqoop 的 Azure SQL 数据库）
+* 其他资源（例如要使用 [Apache Sqoop](http://sqoop.apache.org/) 的 Azure SQL 数据库）
 
 在此模板中，定义应用程序所需的资源。 还可指定部署参数以输入不同环境的值。 模板中包含用于为部署构造值的 JSON 和表达式。
 

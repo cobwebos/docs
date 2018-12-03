@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 92d80d9a4d39a3f21539e5e6e498fc52df213a19
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: c56ac35f49c364b7b0f2ad26b82b178411419414
+ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50248806"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52282679"
 ---
 # <a name="add-symbols-and-markers-to-a-map"></a>将符号和标记添加到地图
 
@@ -51,7 +51,7 @@ ms.locfileid: "50248806"
 
 在第二个代码块中，定义了位置数组并创建了 [MultiPoint](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.multipoint?view=azure-iot-typescript-latest) 对象。 然后，使用 [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) 类创建数据源对象，并将 MultiPoint 对象添加到数据源。
 
-[气泡层](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.bubblelayer?view=azure-iot-typescript-latest)呈现作为圆包装在地图上[数据源](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest)中的基于点的数据。 最后一个代码块创建气泡层并将其添加到地图。 请在 [BubblerLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/models.bubblelayeroptions?view=azure-iot-typescript-latest) 中参阅气泡层的属性。
+[气泡层](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.bubblelayer?view=azure-iot-typescript-latest)呈现作为圆包装在地图上[数据源](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest)中的基于点的数据。 最后一个代码块创建气泡层并将其添加到地图。 请在 [BubblerLayerOptions](/javascript/api/azure-maps-control/atlas.bubblelayeroptions) 中查看气泡层的属性。
 
 在[事件侦听器](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events)函数中创建 MultiPoint 对象、数据源和气泡层并将其添加到地图，以确保完全加载地图后显示该圆。
 
@@ -64,9 +64,9 @@ ms.locfileid: "50248806"
 
 第二个代码块创建 [point](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.point?view=azure-iot-typescript-latest) 对象。 然后，使用 [datasource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) 类创建数据源对象，并将点添加到该数据源。
 
-[气泡层](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.bubblelayer?view=azure-iot-typescript-latest)呈现作为圆包装在地图上[数据源](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest)中的基于点的数据。 第三个代码块创建气泡层并将其添加到地图。 请在 [BubblerLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/models.bubblelayeroptions?view=azure-iot-typescript-latest) 中参阅气泡层的属性。
+[气泡层](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.bubblelayer?view=azure-iot-typescript-latest)呈现作为圆包装在地图上[数据源](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest)中的基于点的数据。 第三个代码块创建气泡层并将其添加到地图。 请在 [BubblerLayerOptions](/javascript/api/azure-maps-control/atlas.bubblelayeroptions) 中查看气泡层的属性。
 
-某个[符号层](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.symbollayer?view=azure-iot-typescript-latest)使用文本或图标来呈现作为符号包装在地图上 [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) 中的基于点的数据。 最后一个代码块创建符号层并将其添加到地图，用于呈现气泡的文本标签。 请在 [SymbolLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/models.symbollayeroptions?view=azure-iot-typescript-latest) 中参阅符号层的属性。
+某个[符号层](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.symbollayer?view=azure-iot-typescript-latest)使用文本或图标来呈现作为符号包装在地图上 [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) 中的基于点的数据。 最后一个代码块创建符号层并将其添加到地图，用于呈现气泡的文本标签。 请在 [SymbolLayerOptions](/javascript/api/azure-maps-control/atlas.symbollayeroptions) 中参阅符号层的属性。
 
 在[事件侦听器](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events)函数中创建数据源和层并将其添加到地图，以确保完全加载地图后显示该数据。
 

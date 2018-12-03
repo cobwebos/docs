@@ -8,18 +8,19 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 725f32fd-d0ad-49c7-b137-1cc246bf85d7
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/30/2018
+ms.date: 11/19/2018
 ms.author: jeedes
-ms.openlocfilehash: 0437bd46537d8b7024618706aba12660abca5512
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 34059652a33ddb539bf10a6d7931502c5a8694e3
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50414686"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52423654"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-line-works"></a>教程：Azure Active Directory 与 LINE WORKS 的集成
 
@@ -31,7 +32,7 @@ ms.locfileid: "50414686"
 - 可以让用户使用其 Azure AD 帐户自动登录到 LINE WORKS（单一登录）。
 - 可在中心位置（即 Azure 门户）管理帐户。
 
-如需了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
+如需了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -49,31 +50,33 @@ ms.locfileid: "50414686"
 - 如果没有 Azure AD 试用环境，可以[获取一个月的试用版](https://azure.microsoft.com/pricing/free-trial/)。
 
 ## <a name="scenario-description"></a>方案描述
+
 在本教程中，将在测试环境中测试 Azure AD 单一登录。 本教程中概述的方案包括两个主要构建基块：
 
 1. 从库中添加 LINE WORKS
 2. 配置和测试 Azure AD 单一登录
 
 ## <a name="adding-line-works-from-the-gallery"></a>从库中添加 LINE WORKS
+
 若要配置 LINE WORKS 与 Azure AD 的集成，需要从库中将 LINE WORKS 添加到托管 SaaS 应用列表。
 
 **若要从库中添加 LINE WORKS，请执行以下步骤：**
 
 1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”图标。 
 
-    ![图像](./media/worksmobile-tutorial/selectazuread.png)
+    ![“Azure Active Directory”按钮][1]
 
 2. 导航到“企业应用程序”。 然后转到“所有应用程序”。
 
-    ![图像](./media/worksmobile-tutorial/a_select_app.png)
-    
+    ![“企业应用程序”边栏选项卡][2]
+
 3. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
 
-    ![图像](./media/worksmobile-tutorial/a_new_app.png)
+    ![“新增应用程序”按钮][3]
 
 4. 在搜索框中，键入“LINE WORKS”，在结果面板中选择“LINE WORKS”，然后单击“添加”按钮添加该应用程序。
 
-     ![图像](./media/worksmobile-tutorial/tutorial_lineworks_addfromgallery.png)
+    ![结果列表中的 LINE WORKS](./media/worksmobile-tutorial/tutorial_lineworks_addfromgallery.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
 
@@ -83,41 +86,41 @@ ms.locfileid: "50414686"
 
 若要配置和测试 LINE WORKS 的 Azure AD 单一登录，需要完成以下构建基块：
 
-1. **[配置 Azure AD 单一登录](#configure-azure-ad-single-sign-on)** - 使用户能够使用此功能。
-2. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-3. **[创建 LINE WORKS 测试用户](#create-a-line-works-test-user)** - 在 LINE WORKS 中创建 Britta Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
-4. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
-5. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
+1. **[配置 Azure AD 单一登录](#configuring-azure-ad-single-sign-on)** - 让用户使用此功能。
+2. **[创建 Azure AD 测试用户](#creating-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
+3. **[创建 LINE WORKS 测试用户](#creating-a-line-works-test-user)** - 在 LINE WORKS 中创建 Britta Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
+4. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 使用 Azure AD 单一登录。
+5. **[测试单一登录](#testing-single-sign-on)** - 验证配置是否正常工作。
 
-### <a name="configure-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
+### <a name="configuring-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
 
 在本部分中，将在 Azure 门户中启用 Azure AD 单一登录并在 LINE WORKS 应用程序中配置单一登录。
 
 **若要配置 LINE WORKS 的 Azure AD 单一登录，请执行以下步骤：**
 
-1. 在 [Azure 门户](https://portal.azure.com/)中的 **LINE WORKS** 应用程序集成页上，选择“单一登录”。
+1. 在 Azure 门户中，在 **LINE WORKS** 应用程序集成页上，单击“单一登录”。
 
-    ![图像](./media/worksmobile-tutorial/b1_b2_select_sso.png)
+    ![配置单一登录链接][4]
 
 2. 在“选择单一登录方法”对话框中，单击“SAML”模式对应的“选择”，以启用单一登录。
 
-    ![图像](./media/worksmobile-tutorial/b1_b2_saml_sso.png)
+    ![配置单一登录](common/tutorial_general_301.png)
 
-3. 在“设置 SAML 单一登录”页上，单击“编辑”按钮，以打开“基本 SAML 配置”对话框。
+3. 在“使用 SAML 设置单一登录”页上，单击“编辑”图标以打开“基本 SAML 配置”对话框。
 
-    ![图像](./media/worksmobile-tutorial/b1-domains_and_urlsedit.png)
+    ![配置单一登录](common/editconfigure.png)
 
 4. 在“基本 SAML 配置”部分中，按照以下步骤操作：
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“登录 URL”文本框中，使用以下模式键入 URL：`https://auth.worksmobile.com/d/login/<domain>/?userId=<ID@domain>`。
+    ![LINE WORKS 域和 URL 单一登录信息](./media/worksmobile-tutorial/tutorial_lineworks_url.png)
 
-    b. 在“标识符”文本框中键入 URL：`worksmobile.com`
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“登录 URL”文本框中，使用以下模式键入 URL： `https://auth.worksmobile.com/d/login/<domain>/`
 
-    ![图像](./media/worksmobile-tutorial/tutorial_lineworks_url.png)
+    b. 在“标识符”文本框中，键入一个 URL：`worksmobile.com`
 
-5. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中，单击“下载”以下载“证书(原始)”并将其保存到计算机上。
+5. 在“SAML 签名证书”页的“SAML 签名证书”部分中，单击“下载”以下载“证书(原始)”并将证书文件保存在计算机上。
 
-    ![图像](./media/worksmobile-tutorial/tutorial_lineworks_certficate.png)
+    ![证书下载链接](./media/worksmobile-tutorial/tutorial_lineworks_certificate.png) 
 
 6. 在“设置 LINE WORKS”部分中，根据要求复制相应的 URL。
 
@@ -127,29 +130,28 @@ ms.locfileid: "50414686"
 
     c. 注销 URL
 
-    ![图像](./media/worksmobile-tutorial/d1_samlsonfigure.png) 
+    ![LINE WORKS 配置](common/configuresection.png)
 
 7. 若要在 **LINE WORKS** 端配置单一登录，请阅读 [LINE WORKS SSO 文档](https://developers.worksmobile.com/jp/document/1001080101)并配置 LINE WORKS 设置。
 
 > [!NOTE]
 > 需要将下载的证书文件从 .cert 转换为 .pem
 
-
-### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
+### <a name="creating-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 
 本部分的目的是在 Azure 门户中创建名为 Britta Simon 的测试用户。
 
 1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”。
 
-    ![图像](./media/worksmobile-tutorial/d_users_and_groups.png)
+    ![创建 Azure AD 用户][100]
 
 2. 选择屏幕顶部的“新建用户”。
 
-    ![图像](./media/worksmobile-tutorial/d_adduser.png)
+    ![创建 Azure AD 测试用户](common/create_aaduser_01.png) 
 
 3. 在“用户属性”中，按照以下步骤操作。
 
-    ![图像](./media/worksmobile-tutorial/d_userproperties.png)
+    ![创建 Azure AD 测试用户](common/create_aaduser_02.png)
 
     a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”字段中，输入 BrittaSimon。
   
@@ -159,45 +161,56 @@ ms.locfileid: "50414686"
     c. 选择“属性”，再选择“显示密码”复选框，然后记下“密码”框中显示的值。
 
     d. 选择“创建”。
- 
-### <a name="create-a-line-works-test-user"></a>创建 LINE WORKS 测试用户
+
+### <a name="creating-a-line-works-test-user"></a>创建 LINE WORKS 测试用户
 
 在本部分中，将在 LINE WORKS 中创建名为 Britta Simon 的用户。 访问 [LINE WORKS 管理员页](https://admin.worksmobile.com)并在 LINE WORKS 平台中添加用户。
 
-### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
+### <a name="assigning-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
 在本部分中，通过授予 Britta Simon 访问 LINE WORKS 的权限，允许其使用 Azure 单一登录。
 
 1. 在 Azure 门户中，选择“企业应用程序”，然后选择“所有应用程序”。
 
-    ![图像](./media/worksmobile-tutorial/d_all_applications.png)
+    ![分配用户][201]
 
 2. 在应用程序列表中，选择“LINE WORKS”。
 
-    ![图像](./media/worksmobile-tutorial/tutorial_lineworks_app.png)
+    ![配置单一登录](./media/worksmobile-tutorial/tutorial_lineworks_app.png)
 
-3. 在左侧菜单中，选择“用户和组”。
+3. 在左侧菜单中，单击“用户和组”。
 
-    ![图像](./media/worksmobile-tutorial/d_leftpaneusers.png)
+    ![分配用户][202]
 
-4. 选择“添加”按钮，然后在“添加分配”对话框中选择“用户和组”。
+4. 单击“添加”按钮。 然后在“添加分配”对话框中选择“用户和组”。
 
-    ![图像](./media/worksmobile-tutorial/d_assign_user.png)
+    ![分配用户][203]
 
-4. 在“用户和组”对话框中，选择“用户”列表中的 Britta Simon，然后单击屏幕底部的“选择”按钮。
+5. 在“用户和组”对话框中，选择“用户”列表中的 Britta Simon，然后单击屏幕底部的“选择”按钮。
 
-5. 在“添加分配”对话框中，选择“分配”按钮。
-    
-### <a name="test-single-sign-on"></a>测试单一登录
+6. 在“添加分配”对话框中，选择“分配”按钮。
+
+### <a name="testing-single-sign-on"></a>测试单一登录
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 单击访问面板中的 LINE WORKS 磁贴时，应当会自动登录到 LINE WORKS 应用程序。
-有关访问面板的详细信息，请参阅[访问面板简介](../active-directory-saas-access-panel-introduction.md)。 
+有关访问面板的详细信息，请参阅[访问面板简介](../user-help/active-directory-saas-access-panel-introduction.md)。
 
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](tutorial-list.md)
 * [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
+<!--Image references-->
 
+[1]: common/tutorial_general_01.png
+[2]: common/tutorial_general_02.png
+[3]: common/tutorial_general_03.png
+[4]: common/tutorial_general_04.png
+
+[100]: common/tutorial_general_100.png
+
+[201]: common/tutorial_general_201.png
+[202]: common/tutorial_general_202.png
+[203]: common/tutorial_general_203.png

@@ -10,16 +10,16 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 04/30/2018
 ms.author: hrasheed
-ms.openlocfilehash: b46fa5eb9772a19a5613fc276071167d884f6057
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 04046b4c7c36418b9024a690ad5279f9e34578a5
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51008753"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52583629"
 ---
 # <a name="develop-apache-storm-topologies-using-python-on-hdinsight"></a>在 HDInsight 上使用 Python 开发 Apache Storm 拓扑
 
-了解如何创建使用 Python 组件的 Apache Storm 拓扑。 Apache Storm 支持多种语言，甚至允许将几种语言的组件组合到一个拓扑中。 借助 Flux 框架（通过 Storm 0.10.0 引入），可以轻松地创建使用 Python 组件的解决方案。
+了解如何创建使用 Python 组件的 [Apache Storm](http://storm.apache.org/) 拓扑。 Apache Storm 支持多种语言，甚至允许将几种语言的组件组合到一个拓扑中。 借助 [Flux](http://storm.apache.org/releases/current/flux.html) 框架（通过 Storm 0.10.0 引入），可以轻松地创建使用 Python 组件的解决方案。
 
 > [!IMPORTANT]
 > 本文档中的信息已使用 Storm on HDInsight 3.6 进行测试。 Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight 在 Windows 上停用](../hdinsight-component-versioning.md#hdinsight-windows-retirement)。
@@ -32,7 +32,7 @@ ms.locfileid: "51008753"
 
 * Java JDK 1.8 或更高版本
 
-* Maven 3
+* [Apache Maven 3](https://maven.apache.org/download.cgi)
 
 * （可选）本地 Storm 开发环境。 仅当想要在本地运行拓扑时，才需要本地 Storm 环境。 有关详细信息，请参阅[设置开发环境](http://storm.apache.org/releases/1.1.2/Setting-up-development-environment.html)。
 
@@ -148,5 +148,5 @@ storm jar WordCount-1.0-SNAPSHOT.jar org.apache.storm.flux.Flux -l -R /topology.
 
 请参阅以下文档，了解配合使用 Python 和 HDInsight 的其他方式：
 
-* [如何使用 Python 流式处理 MapReduce 作业](../hadoop/apache-hadoop-streaming-python.md)
-* [如何在 Pig 和 Hive 中使用 Python 用户定义函数 (UDF) ](../hadoop/python-udf-hdinsight.md)
+* [如何使用 Python 流式处理 Apache Hadoop MapReduce 作业](../hadoop/apache-hadoop-streaming-python.md)
+* [如何在 Apache Pig 和 Apache Hive 中使用 Python 用户定义函数 (UDF)](../hadoop/python-udf-hdinsight.md)

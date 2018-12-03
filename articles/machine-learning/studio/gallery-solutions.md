@@ -1,10 +1,11 @@
 ---
-title: Azure AI 库解决方案 | Microsoft Docs
+title: Azure AI 库解决方案 - Azure 机器学习工作室 | Microsoft Docs
 description: 在 Azure AI 库中发现解决方案。
 services: machine-learning
 documentationcenter: ''
-author: heatherbshapiro
-ms.author: hshapiro
+author: ericlicoding
+ms.custom: (previous ms.author=hshapiro, author=heatherbshapiro)
+ms.author: amlstudiodocs
 manager: hjerez
 editor: cgronlun
 ms.assetid: c0be3f10-9e54-4fc1-b5df-725c2e919f65
@@ -15,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2017
-ms.openlocfilehash: cb02ed61ea050c17bc7e6dc0ebc724f29f885dd7
-ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
+ms.openlocfilehash: 4a16cdde41e17b334df389c4ef9dab64d959885a
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51344329"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52308938"
 ---
 # <a name="discover-solutions-in-the-azure-ai-gallery"></a>在 Azure AI 库中发现解决方案
 

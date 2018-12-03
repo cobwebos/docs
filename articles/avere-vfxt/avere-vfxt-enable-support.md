@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 10/31/2018
 ms.author: v-erkell
-ms.openlocfilehash: bc21e06b704bfe3d25132092efbbf23f342acb14
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 0f5eee20b0487fb5fce82047f40d137effb87ead
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50669284"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52164399"
 ---
 # <a name="enable-support-uploads"></a>启用支持上传
 
@@ -24,18 +24,21 @@ Avere vFXT for Azure 可以自动上传关于你的群集的支持数据。 这�
 1. 导航到顶部的“设置”选项卡。
 1. 单击左侧的“支持”链接并接受隐私政策。
 
-   ![确认接受隐私政策的屏幕截图](media/avere-vfxt-privacy-policy.png)
+   ![显示 Avere 控制面板和弹出窗口的屏幕截图，其中包含用于接受隐私策略的“确认”按钮](media/avere-vfxt-privacy-policy.png)
+
 1. 单击“客户信息”左侧的三角形以展开该部分。
+1. 单击“重新验证上传信息”按钮。
 1. 在“唯一群集名称”中设置群集的支持名称，确保它可以唯一地向支持人员标识你的群集。
 1. 选择与“统计信息监视”、“常规信息上传”和“故障信息上传”对应的复选框。
-1. 单击“验证上传信息”按钮。
 1. 单击“提交”。
+
+   ![包含支持设置页的完整客户信息部分的屏幕截图](media/avere-vfxt-support-info.png)
+
 1. 单击“安全主动支持 (SPS)”左侧的三角形以展开该部分。
 1. 单击“启用 SPS 链接”的复选框。
 1. 单击“提交”。
 
-   ![包含用于启用支持的所有步骤的屏幕截图](media/avere-vfxt-support-info-steps.png)
-
+   ![包含支持设置页上的完整“安全主动支持”部分的屏幕截图](media/avere-vfxt-support-sps.png)
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: hrasheed
-ms.openlocfilehash: 966f05fba96cc829c3a11331e2a66609705f6f4f
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: 58f4827910d863aef14171574d40e4b3acfc04d9
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51037658"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52498686"
 ---
 # <a name="enable-heap-dumps-for-apache-hadoop-services-on-linux-based-hdinsight"></a>在基于 Linux 的 HDInsight 上为 Apache Hadoop 服务启用堆转储
 
@@ -39,7 +39,7 @@ ms.locfileid: "51037658"
 
 ## <a name="configuration"></a>了解堆转储配置
 
-在某项服务启动时，可以通过将选项（有时称为 opts 或参数）传递到 JVM 来启用堆转储。 对于大多数 Hadoop 服务，可以修改用于启动该服务的 shell 脚本来传递这些选项。
+在某项服务启动时，可以通过将选项（有时称为 opts 或参数）传递到 JVM 来启用堆转储。 对于大多数 [Apache Hadoop](https://hadoop.apache.org/) 服务，可以修改用于启动该服务的 shell 脚本来传递这些选项。
 
 在每个脚本中，有一个针对 **\*\_OPTS** 的导出，其中包含传递到 JVM 的选项。 例如，在 **hadoop-env.sh** 脚本中，以 `export HADOOP_NAMENODE_OPTS=` 开头的行包含用于 NameNode 服务的选项。
 
@@ -49,7 +49,7 @@ ms.locfileid: "51037658"
 * **mapreduce.admin.reduce.child.java.opts**
 
 > [!NOTE]
-> 我们建议使用 Apache Ambari 来修改脚本和 mapred-site.xml 设置，因为 Ambari 负责在群集中跨节点复制更改。 请参阅[使用 Ambari](#using-ambari) 部分以了解具体的步骤。
+> 我们建议使用 [Apache Ambari](https://ambari.apache.org/) 来修改脚本和 mapred-site.xml 设置，因为 Ambari 负责在群集中跨节点复制更改。 请参阅[使用 Apache Ambari](#using-apache-ambari) 部分以了解具体的步骤。
 
 ### <a name="enable-heap-dumps"></a>启用堆转储
 
@@ -77,11 +77,11 @@ ms.locfileid: "51037658"
     -XX:OnOutOfMemoryError=/path/to/script
 
 > [!NOTE]
-> 由于 Hadoop 是分布式系统，任何使用的脚本都必须放置在服务运行时所在的群集的所有节点上。
+> 由于 Apache Hadoop 是分布式系统，任何使用的脚本都必须放置在服务运行时所在的群集的所有节点上。
 > 
 > 该脚本还必须位于可供帐户（服务以该帐户的身份运行）访问的位置，并且必须提供执行权限。 例如，你可能希望将脚本存储在 `/usr/local/bin` 中，并通过 `chmod go+rx /usr/local/bin/filename.sh` 来授予读取和执行权限。
 
-## <a name="using-ambari"></a>使用 Ambari
+## <a name="using-apache-ambari"></a>使用 Apache Ambari
 
 若要修改服务配置，请使用以下步骤：
 

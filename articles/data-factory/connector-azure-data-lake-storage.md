@@ -8,14 +8,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 11/09/2018
+ms.date: 11/28/2018
 ms.author: jingwang
-ms.openlocfilehash: 2fad3ad8bc6e1c0ca87038af6c461d863065fc95
-ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
+ms.openlocfilehash: ca2591f34a0aba598c12815de684ec6bb8fca929
+ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51345957"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52620347"
 ---
 # <a name="copy-data-to-or-from-azure-data-lake-storage-gen2-preview-using-azure-data-factory-preview"></a>使用 Azure 数据工厂向/从 Azure Data Lake Storage Gen2 预览版复制数据（预览）
 
@@ -29,7 +29,7 @@ ms.locfileid: "51345957"
 
 具体而言，此连接器支持：
 
-- 使用帐户密钥复制数据。
+- 通过使用帐户密钥、服务主体或托管标识进行 Azure 资源身份验证来复制数据。
 - 按原样复制文件，或使用[支持的文件格式和压缩编解码器](supported-file-formats-and-compression-codecs.md)分析/生成文件。
 
 >[!TIP]
@@ -49,7 +49,15 @@ ms.locfileid: "51345957"
 
 ## <a name="linked-service-properties"></a>链接服务属性
 
-Data Lake Storage Gen2 链接服务支持以下属性：
+Azure Data Lake Storage Gen2 连接器支持以下身份验证类型，有关详细信息，请参阅相应的部分：
+
+- [帐户密钥身份验证](#account-key-authentication)
+- [服务主体身份验证](#service-principal-authentication)
+- [Azure 资源的托管标识身份验证](#managed-identity)
+
+### <a name="account-key-authentication"></a>帐户密钥身份验证
+
+若要使用存储帐户密钥身份验证，需支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
@@ -62,7 +70,7 @@ Data Lake Storage Gen2 链接服务支持以下属性：
 
 ```json
 {
-    "name": "AzureDataLakeStorageLinkedService",
+    "name": "AzureDataLakeStorageGen2LinkedService",
     "properties": {
         "type": "AzureBlobFS",
         "typeProperties": {
@@ -71,6 +79,95 @@ Data Lake Storage Gen2 链接服务支持以下属性：
                 "type": "SecureString", 
                 "value": "<accountkey>" 
             }
+        },
+        "connectVia": {
+            "referenceName": "<name of Integration Runtime>",
+            "type": "IntegrationRuntimeReference"
+        }
+    }
+}
+```
+
+### <a name="service-principal-authentication"></a>服务主体身份验证
+
+若要使用服务主体身份验证，请执行以下步骤：
+
+1. 遵循[将应用程序注册到 Azure AD 租户](../storage/common/storage-auth-aad-app.md#register-your-application-with-an-azure-ad-tenant)，在 Azure Active Directory (Azure AD) 中注册一个应用程序实体。 记下下面的值，这些值用于定义链接服务：
+
+    - 应用程序 ID
+    - 应用程序密钥
+    - 租户 ID
+
+2. 授予服务主体在 Azure 存储中的适当权限。
+
+    - **对于源**，请在访问控制 (IAM) 中，至少授予“存储 Blob 数据读取者”角色。
+    - **对于接收器**，请在访问控制 (IAM) 中，至少授予“存储 Blob 数据参与者”角色。
+
+链接服务支持以下属性：
+
+| 属性 | 说明 | 必选 |
+|:--- |:--- |:--- |
+| type | type 属性必须设置为 AzureBlobFS。 |是 |
+| url | Data Lake Storage Gen2 的终结点，其模式为 `https://<accountname>.dfs.core.windows.net`。 | 是 | 
+| servicePrincipalId | 指定应用程序的客户端 ID。 | 是 |
+| servicePrincipalKey | 指定应用程序的密钥。 将此字段标记为 **SecureString** 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 是 |
+| tenant | 指定应用程序的租户信息（域名或租户 ID）。 将鼠标悬停在 Azure 门户右上角进行检索。 | 是 |
+| connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 如果数据存储位于专用网络，则可以使用 Azure 集成运行时或自承载集成运行时。 如果未指定，则使用默认 Azure Integration Runtime。 |否 |
+
+**示例：**
+
+```json
+{
+    "name": "AzureDataLakeStorageGen2LinkedService",
+    "properties": {
+        "type": "AzureBlobFS",
+        "typeProperties": {
+            "url": "https://<accountname>.dfs.core.windows.net", 
+            "servicePrincipalId": "<service principal id>",
+            "servicePrincipalKey": {
+                "type": "SecureString",
+                "value": "<service principal key>"
+            },
+            "tenant": "<tenant info, e.g. microsoft.onmicrosoft.com>" 
+        },
+        "connectVia": {
+            "referenceName": "<name of Integration Runtime>",
+            "type": "IntegrationRuntimeReference"
+        }
+    }
+}
+```
+
+### <a name="managed-identity"></a> Azure 资源的托管标识身份验证
+
+可将数据工厂与代表此特定数据工厂的 [Azure 资源托管标识](data-factory-service-identity.md)相关联。 可以像使用自己的服务主体一样，直接使用此服务标识进行 Blob 存储身份验证。 此指定工厂可通过此方法访问以及从/向 Blob 存储复制数据。
+
+若要使用 Azure 资源的托管标识身份验证，请执行以下步骤：
+
+1. 通过复制与工厂一起生成的“服务标识应用程序 ID”的值[检索数据工厂服务标识](data-factory-service-identity.md#retrieve-service-identity)。
+
+2. 授予托管标识在 Azure 存储中的适当权限。 
+
+    - **对于源**，请在访问控制 (IAM) 中，至少授予“存储 Blob 数据读取者”角色。
+    - **对于接收器**，请在访问控制 (IAM) 中，至少授予“存储 Blob 数据参与者”角色。
+
+链接服务支持以下属性：
+
+| 属性 | 说明 | 必选 |
+|:--- |:--- |:--- |
+| type | type 属性必须设置为 AzureBlobFS。 |是 |
+| url | Data Lake Storage Gen2 的终结点，其模式为 `https://<accountname>.dfs.core.windows.net`。 | 是 | 
+| connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 如果数据存储位于专用网络，则可以使用 Azure 集成运行时或自承载集成运行时。 如果未指定，则使用默认 Azure Integration Runtime。 |否 |
+
+**示例：**
+
+```json
+{
+    "name": "AzureDataLakeStorageGen2LinkedService",
+    "properties": {
+        "type": "AzureBlobFS",
+        "typeProperties": {
+            "url": "https://<accountname>.dfs.core.windows.net", 
         },
         "connectVia": {
             "referenceName": "<name of Integration Runtime>",

@@ -9,16 +9,16 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: ashish
-ms.openlocfilehash: 97d99aa59c490cf2dcdd4a69f32411a051942d36
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: 9e9ccb1ba3d19e0240df869dfea1e27ac4124c34
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51037798"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52498728"
 ---
 # <a name="install-published-application---datameer"></a>安装已发布的应用程序 - Datameer
 
-本文介绍如何在 Azure HDInsight 上安装和运行 [Datameer](https://www.datameer.com/) 发布的 Apache Hadoop 应用程序。 有关 HDInsight 应用程序平台的概述以及可用独立软件供应商 (ISV) 发布的应用程序的列表，请参阅[安装第三方 Hadoop 应用程序](hdinsight-apps-install-applications.md)。 有关如何安装自己的应用程序的说明，请参阅[安装自定义 HDInsight 应用程序](hdinsight-apps-install-custom-applications.md)。
+本文介绍如何在 Azure HDInsight 上安装和运行 [Datameer](https://www.datameer.com/) 发布的 [Apache Hadoop](https://hadoop.apache.org/) 应用程序。 有关 HDInsight 应用程序平台的概述以及可用独立软件供应商 (ISV) 发布的应用程序的列表，请参阅[安装第三方 Apache Hadoop 应用程序](hdinsight-apps-install-applications.md)。 有关如何安装自己的应用程序的说明，请参阅[安装自定义 HDInsight 应用程序](hdinsight-apps-install-custom-applications.md)。
 
 ## <a name="about-datameer"></a>关于 Datameer
 
@@ -34,7 +34,7 @@ Datameer 是 Hadoop 平台的本机应用程序，扩展了现有的 Azure HDIns
 
 ## <a name="install-the-datameer-published-application"></a>安装 Datameer 发布的应用程序
 
-有关安装此应用程序和其他可用 ISV 应用程序的分步说明，请阅读[安装第三方 Hadoop 应用程序](hdinsight-apps-install-applications.md)。
+有关安装此应用程序和其他可用 ISV 应用程序的分步说明，请阅读[安装第三方 Apache Hadoop 应用程序](hdinsight-apps-install-applications.md)。
 
 ## <a name="launch-datameer"></a>启动 Datameer
 

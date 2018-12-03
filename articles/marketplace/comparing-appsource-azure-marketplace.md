@@ -14,18 +14,22 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: 3aadd39a3c85b89c3626b838f15ea5e6e58fdfb8
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: 926fc46a4afd4e434e9769802ac096347b4ce4f0
+ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43668743"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52620075"
 ---
 # <a name="comparing-appsource-and-the-azure-marketplace"></a>比较 AppSource 和 Azure 市场
 [Azure 市场](https://azuremarketplace.microsoft.com)和 [Microsoft AppSource](https://appsource.microsoft.com) 中的店面满足独特的客户要求。 使用店面按角色定位客户。 你可以根据客户提供适当的解决方案或服务。
 
 ## <a name="understanding-the-differences-between-storefronts"></a>了解店面之间的差异
 若要选择店面，首先从确定产品/服务的目标受众开始。 如果你的目标是多个店面中的受众，可以发布一次产品/服务以在多个店面中销售。
+
+| Azure 市场 | AppSource |
+|:--- |:--- |
+| IT 专业人员和开发人员 | 业务决策者 |
  
 下表介绍了使用店面的好处：
 

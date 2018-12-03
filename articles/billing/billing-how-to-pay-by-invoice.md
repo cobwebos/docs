@@ -4,7 +4,7 @@ description: 说明如何用发票为 Azure 订阅付款
 services: ''
 documentationcenter: ''
 author: genlin
-manager: jlian
+manager: jureid
 editor: ''
 tags: billing
 ms.service: billing
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/11/2018
 ms.author: cwatson
-ms.openlocfilehash: 27d84748e932ae438f68ca7b84004c98c26e42d7
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: bea7f0e88a371474db907dd74f08bd74c0e7c9e1
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47393887"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52584360"
 ---
 # <a name="submit-a-request-to-pay-azure-subscription-by-invoice"></a>提交用发票为 Azure 订阅付款的请求
 
@@ -50,6 +50,6 @@ ms.locfileid: "47393887"
 
 如果由于所需的信用额度，我们需要运行信用检查，我们会发送给你信用检查应用程序。 提交该应用程序后，信用应用程序可能需要 5-7 天的时间进行处理。
 
-## <a name="need-help-contact-support"></a>需要帮助？ 联系支持人员。
+## <a name="need-help-contact-us"></a>需要帮助？ 请联系我们。
 
-如果仍需帮助，请[联系支持人员](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)以快速解决问题。
+如果你有任何疑问或需要帮助，请[创建支持请求](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)。

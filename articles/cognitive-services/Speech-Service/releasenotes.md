@@ -10,12 +10,12 @@ ms.component: speech-service
 ms.topic: conceptual
 ms.date: 11/12/2018
 ms.author: wolfma
-ms.openlocfilehash: 706f51ae1e2d81e2003f2fcd637def95c7a42f8e
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: ff09926d61d64294a4f12ccf959f6685910539f1
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51567530"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52317885"
 ---
 # <a name="release-notes"></a>发行说明
 
@@ -31,7 +31,7 @@ ms.locfileid: "51567530"
 
 * 在识别器配置中添加了附加的验证并添加了附加的错误消息。
 * 改进了对音频文件中间的长时间静默的处理。
-* NuGet 程序包：对于 .NET Framework 项目，阻止使用 AnyCPU 配置进行构建。
+* NuGet 包：对于 .NET Framework 项目，它阻止使用 AnyCPU 配置进行构建。
 
 **Bug 修复**
 

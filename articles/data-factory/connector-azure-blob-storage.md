@@ -9,12 +9,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 11/08/2018
 ms.author: jingwang
-ms.openlocfilehash: 3109cad0e00b6ec5af47210f2c8d094659bd4553
-ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
+ms.openlocfilehash: 999f7265cc62236fa085a0c2fb90a68707891dd4
+ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51345770"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52620370"
 ---
 # <a name="copy-data-to-or-from-azure-blob-storage-by-using-azure-data-factory"></a>使用 Azure 数据工厂向/从 Azure Blob 存储复制数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -33,7 +33,7 @@ ms.locfileid: "51345770"
 
 - 向/从常规用途的 Azure 存储帐户和热/冷 Blob 存储复制 Blob。 
 - 使用帐户密钥身份验证、服务共享访问签名身份验证、服务主体身份验证或 Azure 资源的托管标识身份验证复制 Blob。
-- 从块、追加或页 Blob 中复制 Blob，并将数据仅复制到块 Blob。 不支持将 Azure 高级存储用作接收器，因为它由页 Blob 支持。
+- 从块、追加或页 Blob 中复制 Blob，并将数据仅复制到块 Blob。
 - 按原样复制 Blob，或者使用[支持的文件格式和压缩编解码器](supported-file-formats-and-compression-codecs.md)分析或生成 Blob。
 
 >[!NOTE]
@@ -207,7 +207,7 @@ Azure Blob 存储链接服务支持以下属性：
 
 1. 通过复制与工厂一起生成的“服务标识应用程序 ID”的值[检索数据工厂服务标识](data-factory-service-identity.md#retrieve-service-identity)。
 
-2. 授予服务主体在 Azure Blob 存储中的适当权限。 有关角色的更多详细信息，请参阅[使用 RBAC 管理 Azure 存储数据的访问权限](../storage/common/storage-auth-aad-rbac.md)。
+2. 授予托管标识在 Azure Blob 存储中的适当权限。 有关角色的更多详细信息，请参阅[使用 RBAC 管理 Azure 存储数据的访问权限](../storage/common/storage-auth-aad-rbac.md)。
 
     - **对于源**，请在访问控制 (IAM) 中，至少授予“存储 Blob 数据读取者”角色。
     - **对于接收器**，请在访问控制 (IAM) 中，至少授予“存储 Blob 数据参与者”角色。

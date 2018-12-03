@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 659f6def7e6bb045606b7214a4b8b4cab693117b
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: 97b94cf54454a83510c5be2cf0d71281dbf5b004
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50248161"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52424233"
 ---
 # <a name="create-a-map"></a>创建地图
 
@@ -31,7 +31,7 @@ ms.locfileid: "50248161"
 <iframe height='500' scrolling='no' title='通过 CameraOptions 创建地图' src='//codepen.io/azuremaps/embed/qxKBMN/?height=543&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>请参阅 <a href='https://codepen.io'>CodePen</a> 上 Azure Location Based Services (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 提供的 Pen <a href='https://codepen.io/azuremaps/pen/qxKBMN/'>通过 `CameraOptions` 创建地图</a>。
 </iframe>
 
-在上面的代码中，通过 `new atlas.Map()` 创建了一个 [Map 对象](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)并且设置了中心和缩放。 中心和缩放级别等地图属性是 [CameraOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/models.cameraoptions?view=azure-iot-typescript-latest) 的一部分。
+在上面的代码中，通过 `new atlas.Map()` 创建了一个 [Map 对象](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)并且设置了中心和缩放。 中心和缩放级别等地图属性是 [CameraOptions](/javascript/api/azure-maps-control/atlas.cameraoptions) 的一部分。
 
 <a id="setCameraBoundsOptions"></a>
 
@@ -47,9 +47,9 @@ ms.locfileid: "50248161"
 <iframe height='500' scrolling='no' title='将地图视图制成动画' src='//codepen.io/azuremaps/embed/WayvbO/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>请参阅 <a href='https://codepen.io'>CodePen</a> 上由 Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 提供的 Pen <a href='https://codepen.io/azuremaps/pen/WayvbO/'>Animate Map View</a>（将地图视图制成动画）。
 </iframe>
 
-在上面的代码中，第一个代码块通过 `new atlas.Map()` 创建一个 [Map 对象](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)。 中心和缩放级别等地图属性是 [CameraOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/models.cameraoptions?view=azure-iot-typescript-latest) 的一部分。 可以在地图构造函数中定义 `CameraOptions`，也可以通过地图类的 [setCamera](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#setcamera) 函数实现。 [地图样式](https://review.docs.microsoft.com/azure/azure-maps/supported-map-styles?branch=pr-en-us-54960)设置为 `road`。
+在上面的代码中，第一个代码块通过 `new atlas.Map()` 创建一个 [Map 对象](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)。 中心和缩放级别等地图属性是 [CameraOptions](/javascript/api/azure-maps-control/atlas.cameraoptions) 的一部分。 可以在地图构造函数中定义 `CameraOptions`，也可以通过地图类的 [setCamera](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#setcamera) 函数实现。 [地图样式](https://docs.microsoft.com/azure/azure-maps/supported-map-styles)设置为 `road`。
 
-第二个代码块创建一个制作地图动画函数，它通过使用 [setCamera](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#setcamera) 函数定义 [AnimateOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/models.animationoptions?view=azure-iot-typescript-latest) 来将地图视图中的变化制成动画。 该函数由“将地图制成动画”按钮触发，在每次单击时将生成一个随机缩放级别。
+第二个代码块创建一个制作地图动画函数，它通过使用 [setCamera](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#setcamera) 函数定义 [AnimationOptions](/javascript/api/azure-maps-control/atlas.animationoptions) 来将地图视图中的变化制成动画。 该函数由“将地图制成动画”按钮触发，在每次单击时将生成一个随机缩放级别。
 
 ## <a name="try-out-the-code"></a>试用代码
 

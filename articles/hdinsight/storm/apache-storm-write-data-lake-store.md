@@ -9,16 +9,16 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/27/2018
-ms.openlocfilehash: d38b4e511defbb50dd5f74ae72e71d3316a57b3c
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: 524195372abde91b302ee03c13152f234ef56406
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51567122"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52498255"
 ---
-# <a name="write-to-hdfs-from-apache-storm-on-hdinsight"></a>从 Apache Storm on HDInsight 写入 HDFS
+# <a name="write-to-apache-hadoop-hdfs-from-apache-storm-on-hdinsight"></a>从 Apache Storm on HDInsight 写入到 Apache Hadoop HDFS
 
-了解如何使用 Storm 将数据写入到 Apache Storm on HDInsight 使用的 HDFS 兼容存储。 HDInsight 可以使用 Azure 存储和 Azure Data Lake Store 作为 HDFS 兼容的存储。 Storm 提供可将数据写入 HDFS 的 [HdfsBolt](http://storm.apache.org/releases/current/javadocs/org/apache/storm/hdfs/bolt/HdfsBolt.html) 组件。 本文档提供有关从 HdfsBolt 写入上述任一存储类型的信息。 
+了解如何使用 [Apache Storm](http://storm.apache.org/) 将数据写入到 Apache Storm on HDInsight 使用的 HDFS 兼容存储。 HDInsight 可以使用 Azure 存储和 Azure Data Lake Store 作为 HDFS 兼容的存储。 Storm 提供可将数据写入 HDFS 的 [HdfsBolt](http://storm.apache.org/releases/current/javadocs/org/apache/storm/hdfs/bolt/HdfsBolt.html) 组件。 本文档提供有关从 HdfsBolt 写入上述任一存储类型的信息。 
 
 > [!IMPORTANT]
 > 本文档中使用的示例拓扑依赖于 Storm on HDInsight 随附的组件。 对其他 Apache Storm 群集使用此拓扑时，可能需要修改此拓扑才能让它配合 Azure Data Lake Store 工作。
@@ -129,7 +129,7 @@ bolts:
 * `rotationPolicy`：定义何时轮换文件。 在此示例中，不执行轮换。
 * `hdfs-bolt`：使用前面的组件作为 `HdfsBolt` 类的配置参数。
 
-有关 Flux 框架的详细信息，请参阅 [https://storm.apache.org/releases/1.1.2/flux.html](https://storm.apache.org/releases/1.1.2/flux.html)。
+有关 Flux 框架的详细信息，请参阅 [https://storm.apache.org/releases/current/flux.html](https://storm.apache.org/releases/current/flux.html)。
 
 ## <a name="configure-the-cluster"></a>配置群集
 
@@ -219,5 +219,5 @@ Storm 拓扑会一直运行，直到被停止或群集被删除。 若要停止�
 
 ## <a name="next-steps"></a>后续步骤
 
-了解如何使用 Storm 写入 Azure 存储和 Azure Data Lake Store 后，接下来请学习其他 [HDInsight 的 Storm 示例](apache-storm-example-topology.md)。
+了解如何使用 Apache Storm 写入到 Azure 存储和 Azure Data Lake Store 后，接下来请学习其他 [HDInsight 的 Apache Storm 示例](apache-storm-example-topology.md)。
 

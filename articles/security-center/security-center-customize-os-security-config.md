@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/28/2018
+ms.date: 11/26/2018
 ms.author: rkarlin
-ms.openlocfilehash: 925f45f8d251882cfc8acf4b04902cea45451dd4
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 91ee57ccd676d1d5e806e3f22eed3389d0fe5e73
+ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51007243"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52334187"
 ---
 # <a name="customize-os-security-configurations-in-azure-security-center-preview"></a>在 Azure 安全中心自定义 OS 安全配置（预览）
 
@@ -32,7 +32,7 @@ Azure 安全中心应用 [150 多种建议的规则](https://gallery.technet.mic
 通过自定义规则，组织可以控制更适合其环境的配置选项。 可以设置自定义的评估策略并将其应用到订阅中所有适用的计算机。
 
 > [!NOTE]
-> - 目前，OS 安全配置自定义仅适用于 Windows Server 版本 2008、2008 R2、2012 和 2012 R2 操作系统。
+> - 目前，OS 安全配置自定义仅适用于 Windows Server 版本 2008、2008 R2、2012、2012 R2 和 2016 操作系统。
 > - 配置将应用到与选定订阅下的所有工作区相连接的所有 VM 和计算机。
 > - 只能在安全中心的标准层使用 OS 安全配置自定义。
 >
@@ -60,7 +60,7 @@ Azure 安全中心应用 [150 多种建议的规则](https://gallery.technet.mic
 3.  在要自定义的订阅对应的行中，单击“编辑设置”。
 
 4. 选择“编辑安全配置”。  
-    
+
     ![“编辑安全配置”窗口](media/security-center-customize-os-security-config/blade.png)
 
 5. 按步骤下载、编辑和上传修改后的文件。

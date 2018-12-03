@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 11/02/2018
+ms.date: 11/28/2018
 ms.topic: conceptual
 ms.service: cost-management
 manager: dougeby
 ms.custom: ''
-ms.openlocfilehash: 49341b320df98bb08ee4f5c4ee061a51bec29ff2
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: bb8eb4eae192cf0dd3a3555a3b1209705dd83aaf
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51686154"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52583685"
 ---
 # <a name="tutorial-create-and-manage-azure-budgets"></a>教程：创建并管理 Azure 预算
 
@@ -33,13 +33,15 @@ ms.locfileid: "51686154"
 
 ## <a name="prerequisites"></a>先决条件
 
-预算适用于所有 Azure EA 客户。 必须有 Azure EA 订阅的读取访问权限才能创建并管理预算。 可以为 EA 订阅和资源组创建单独的预算。 但是，不能为 EA 计费帐户创建预算。
+预算适用于所有 Azure EA 客户。 必须有 Azure EA 订阅的读取访问权限才能查看预算。 若要创建和管理预算，必须具有参与者权限。 可以为 EA 订阅和资源组创建单独的预算。 但是，不能为 EA 计费帐户创建预算。
 
 每个订阅支持以下 Azure 权限，以便按用户和组进行预算：
 
 - 所有者 - 可以为订阅创建、修改或删除预算。
-- 参与者 - 可以创建、修改或删除自己的预算。 可以修改其他人创建的预算的预算金额。
-- 读者 - 可以根据权限查看预算。
+- 参与者和成本管理参与者 - 可以创建、修改或删除自己的预算。 可以修改其他人创建的预算的预算金额。
+- 读者和成本管理读者 - 可以查看他们有权访问的预算。
+
+若要详细了解如何分配对成本管理数据的权限，请参阅[分配对成本管理数据的访问权限](assign-access-acm-data.md)。
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
 

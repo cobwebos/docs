@@ -8,14 +8,14 @@ ms.author: banders
 ms.date: 01/09/2018
 ms.topic: conceptual
 ms.service: cost-management
-manager: dougeby
+manager: vitavor
 ms.custom: ''
-ms.openlocfilehash: 43a682568708ab0286328cf3e483ddc3d5cf9dd8
-ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
+ms.openlocfilehash: 0adc821f7a3d5b059d549509b7ed18cda95b86bc
+ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2018
-ms.locfileid: "51515346"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52273793"
 ---
 # <a name="how-to-optimize-your-cloud-investment-with-azure-cost-management"></a>如何通过 Azure 成本管理优化云投资
 
@@ -31,7 +31,7 @@ ms.locfileid: "51515346"
 
 以下所述的三个关键团队，必须与组织达成一致，以确保成功管理成本。
 
-- **财务** - 财务人员根据云支出预测批准整个组织内的预算请求。 他们支付相应的账单，并将成本分摊到各个团队以促进问责制。
+- **财务** - 财务人员负责根据云支出预测批准整个组织内的预算请求。 他们支付相应的账单，并将成本分摊到各个团队以促进问责制。
 - **经理** - 组织的业务决策制定者需要了解云支出，发现最佳支出结果。
 - **应用团队** - 工程师每日管理云资源、开发服务以满足组织需要。 这些团队需要在指定的预算内交付最大价值的灵活性。
 
@@ -46,7 +46,7 @@ ms.locfileid: "51515346"
 - 我需要解决哪些业务问题？
 - 我所需的资源使用模式是什么？
 
-你的回答有助于你选择适合自己的套餐。 你的回答决定要使用什么基础结构，以及如何使用该基础结构来最大程度提高 Azure 效率。
+你的回答有助于你选择适合自己的产品/服务。 你的回答决定要使用什么基础结构，以及如何使用该基础结构来最大程度提高 Azure 效率。
 
 #### <a name="visibility"></a>可见性
 
@@ -62,7 +62,7 @@ ms.locfileid: "51515346"
 
 #### <a name="iteration"></a>迭代
 
-组织中的每个人必须加入到成本管理生命周期中。 他们需要对优化成本保持持续关注。 对此反复过程应持谨慎态度，将其作为组织中负责任的云管理的长期关键点。
+组织中的每个人必须加入到成本管理生命周期中。 他们需要对优化成本保持持续关注。 对此迭代过程应持严谨态度，将其作为组织中负责任的云监管的关键原则。
 
 ![关键原则](./media/cost-mgt-best-practices/principles.png)
 
@@ -157,7 +157,7 @@ Azure Migrate 服务可以评估本地数据中心中的组织当前工作负载
 
 ### <a name="cut-out-waste"></a>避免浪费
 
-在 Azure 中部署基础结构后，请务必确保其正在使用中。 立即开始节省的最简单方法是查看资源并移除没有使用的资源。 由此，应该确定资源正在被尽可能高效地使用。
+在 Azure 中部署基础结构后，请务必确保其正在使用中。 立即开始节省的最简单方法是查看资源并移除没有使用的资源。 由此，应该确定资源是否正在被尽可能高效地使用。
 
 #### <a name="azure-advisor"></a>Azure 顾问
 

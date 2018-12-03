@@ -17,12 +17,12 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: jesakowi, justhu
 ms.custom: aaddev
-ms.openlocfilehash: 93bc3db2b7cf3002efc93f1e8006c5362eddab9f
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: d60053de98e93d7414b1df3d80aff41ffe1e4756
+ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46959965"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52620160"
 ---
 # <a name="permissions-and-consent-in-the-azure-active-directory-v10-endpoint"></a>Azure Active Directory v1.0 终结点中的权限和许可
 
@@ -41,7 +41,7 @@ Azure AD 定义两种权限：
 
 有效权限是应用在对 API 发出请求时拥有的权限。 
 
-* 对于委托的权限，应用的有效权限是（通过许可）授予应用的委托权限与当前登录用户的特权的最低特权交集。 应用的特权永远不会超过登录用户的特权。 在组织内部，可以通过策略或者一个或多个管理员角色的成员身份来确定登录用户的特权。 有关管理员角色的详细信息，请参阅[在 Azure AD 中分配管理员角色](../users-groups-roles/directory-assign-admin-roles.md)。
+* 对于委托的权限，应用的有效权限是（通过许可）授予应用的委托权限与当前登录用户的特权的最低特权交集。 应用的特权永远不会超过登录用户的特权。 在组织内部，可以通过策略或者一个或多个管理员角色的成员身份来确定登录用户的特权。 若要了解哪些管理员角色可以同意委托的权限，请参阅 [Azure AD 中的管理员角色权限](../users-groups-roles/directory-assign-admin-roles.md)。
     例如，假设为应用授予了 Microsoft Graph 中的 `User.ReadWrite.All` 委托权限。 此权限在名义上会授予应用读取和更新组织中每个用户的个人资料的权限。 如果登录用户是全局管理员，则应用可以更新组织中每个用户的个人资料。 但是，如果登录用户不是充当管理员角色，则应用只能更新登录用户的个人资料。 它无法更新组织中其他用户的个人资料，因为该应用有权代表的用户没有这些特权。
 * 对于应用程序权限，应用的有效权限是权限默示的完整特权级别。 例如，拥有 `User.ReadWrite.All` 应用程序权限的应用可以更新组织中每个用户的个人资料。
 
@@ -63,7 +63,7 @@ Azure AD 中的权限提供多个属性用于帮助用户、管理员或应用�
 | 属性名称 | Description | 示例 |
 | --- | --- | --- |
 | `ID` | 这是唯一标识此权限的 GUID 值。 | 570282fd-fa5c-430d-a7fd-fc8dc98a9dca |
-| `IsEnabled` | 指示此权限是否可供使用。 | 是 |
+| `IsEnabled` | 指示此权限是否可供使用。 | true |
 | `Type` | 指示此权限是否需要用户许可或管理员许可。 | 用户 |
 | `AdminConsentDescription` | 这是在管理员许可体验期间向管理员显示的说明 | 允许应用读取用户邮箱中的电子邮件。 |
 | `AdminConsentDisplayName` | 这是在管理员许可体验期间向管理员显示的友好名称。 | 读取用户邮件 |
@@ -85,7 +85,7 @@ Azure AD 中的应用程序必须获得许可才能访问所需的资源或 API�
   
 * **管理员同意** - 当应用需要访问特定的高特权权限时必须执行。 管理员同意可以确保管理员在授权应用或用户访问组织中的高特权数据之前拥有某些额外的控制权。 [详细了解如何授予管理员许可](/azure/active-directory/develop/active-directory-v2-scopes#using-the-admin-consent-endpoint)。
 
-## <a name="best-practices"></a>最佳实践
+## <a name="best-practices"></a>最佳做法
 
 ### <a name="client-best-practices"></a>客户端最佳实践
 

@@ -12,14 +12,14 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 9/11/2018
+ms.date: 11/21/2018
 ms.author: srrengar
-ms.openlocfilehash: 68374cd1675f76555ff313b42e35bdf2aed96874
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 2cdc9f780e0d9ddb6e688e53208e5597b000aa56
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49408075"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52632766"
 ---
 # <a name="set-up-log-analytics-for-a-cluster"></a>为群集设置 Log Analytics
 
@@ -72,7 +72,7 @@ ms.locfileid: "49408075"
 已将 Service Fabric 分析解决方案添加到 Log Analytics 工作区中，后者现已正确连接到群集的平台和应用程序日志表。 可以用相同的方式将其他源添加到工作区中。
 
 
-## <a name="deploy-log-analytics-by-using-a-resource-manager-template"></a>使用资源管理器模板部署 Log Analytics
+## <a name="deploy-log-analytics-with-azure-resource-manager"></a>使用 Azure 资源管理器模板部署 Log Analytics
 
 使用资源管理器模板部署群集时，该模板还会新建一个 Log Analytics 工作区，向其添加 Service Fabric 解决方案，并将其配置为读取相应存储表中的数据。
 
@@ -93,7 +93,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName "<resourceGroupName>" -Tem
 
 Azure 资源管理器可检测出此命令要更新到现有资源。 它仅处理驱动现有部署的模板和提供的新模板之间的变化。
 
-## <a name="deploy-log-analytics-by-using-azure-powershell"></a>使用 Azure PowerShell 部署 Log Analytics
+## <a name="deploy-log-analytics-with-azure-powershell"></a>使用 Azure PowerShell 部署 Log Analytics
 
 还可使用 `New-AzureRmOperationalInsightsWorkspace` 命令通过 PowerShell 部署 Log Analytics 资源。 要使用此方法，请确保已安装 [Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-5.1.1)。 使用此脚本新建 Log Analytics 工作区，并向其添加 Service Fabric 解决方案： 
 
@@ -128,4 +128,4 @@ Set-AzureRmOperationalInsightsIntelligencePack -ResourceGroupName $ResourceGroup
 ## <a name="next-steps"></a>后续步骤
 * [将 Log Analytics 代理部署到节点上](service-fabric-diagnostics-oms-agent.md)，以收集性能计数器、docker 统计信息和容器日志
 * 掌握 Log Analytics 中提供的[日志搜索和查询](../log-analytics/log-analytics-log-searches.md)功能
-* [使用视图设计器在 Log Analytics 中创建自定义视图](../log-analytics/log-analytics-view-designer.md)
+* [使用视图设计器在 Log Analytics 中创建自定义视图](../azure-monitor/platform/view-designer.md)

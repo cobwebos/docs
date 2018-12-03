@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/9/2017
 ms.author: jeedes
-ms.openlocfilehash: 53cec59841fbda49e4e410f069882ea76996f9fb
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 1b6527207793558c132be4cf004b7d6fdde14a90
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39428285"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52584105"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mobileiron"></a>教程：Azure Active Directory 与 MobileIron 集成
 
@@ -106,22 +106,21 @@ ms.locfileid: "39428285"
  
     ![“单一登录”对话框](./media/mobileiron-tutorial/tutorial_mobileiron_samlbase.png)
 
-1. 在“MobileIron 域和 URL”部分中，如果要在“IDP”发起的模式下配置应用程序，请执行以下步骤：
+1. 若要在“IDP” 发起的模式下配置应用程序，请在“MobileIron 域和 URL”部分中，执行以下步骤 ****：
 
     ![MobileIron 域和 URL 单一登录信息](./media/mobileiron-tutorial/tutorial_mobileiron_url.png)
 
-    a. 在“标识符”文本框中，使用以下模式键入 URL：`https://www.mobileiron.com/<key>`
+    1. 在“标识符”文本框中，使用以下模式键入 URL：`https://www.mobileiron.com/<key>`
 
-    b. 在 **“回复 URL”** 文本框中，使用以下模式键入 URL：`https://<host>.mobileiron.com/saml/SSO/alias/<key>`
+    1. 在 **“回复 URL”** 文本框中，使用以下模式键入 URL：`https://<host>.mobileiron.com/saml/SSO/alias/<key>`
 
-1. 如果要在 SP 发起的模式下配置应用程序，请选中“显示高级 URL 设置”，并执行以下步骤：
+1. 若要在“SP” 发起的模式下配置应用程序，请选中“显示高级 URL 设置”  **** ****，并执行以下步骤：
 
     ![MobileIron 域和 URL 单一登录](./media/mobileiron-tutorial/tutorial_mobileiron_url1.png)
 
-    在“登录 URL”文本框中，使用以下模式键入 URL： `https://<host>.mobileiron.com/user/login.html`
+    在“登录 URL” **** 文本框中，使用以下模式键入 URL： `https://<host>.mobileiron.com/user/login.html`
     
-    > [!NOTE] 
-    > 这些不是实际值。 请使用实际的“标识符”、“回复 URL”和“登录 URL”更新这些值。 可从 MobileIron 的管理门户中获取该密钥和主机的值，本教程稍后会做介绍。
+    > [!NOTE]  这些不是实际值。 请使用实际的“标识符”、“回复 URL”和“登录 URL”更新这些值。 可从 MobileIron 的管理门户中获取该密钥和主机的值，本教程稍后会做介绍。
 
 1. 在“SAML 签名证书”部分中，单击“元数据 XML”，并在计算机上保存元数据文件。
 
@@ -174,13 +173,13 @@ ms.locfileid: "39428285"
 
     ![“用户”对话框](./media/mobileiron-tutorial/create_aaduser_04.png)
 
-    a. 在“姓名”框中，键入“BrittaSimon”。
+    1. 在“姓名”框中，键入“BrittaSimon”。
 
-    b. 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
+    1. 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
 
-    c. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
+    1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
 
-    d. 单击“创建”。
+    1. 单击“创建”。
   
 ### <a name="create-a-mobileiron-test-user"></a>创建 MobileIron 测试用户
 
@@ -199,13 +198,13 @@ ms.locfileid: "39428285"
 
     ![配置单一登录用户添加按钮](./media/mobileiron-tutorial/tutorial_mobileiron_useradd.png)
 
-    a. 在“电子邮件地址”文本框中，输入用户的电子邮件地址，例如 brittasimon@contoso.com。
+    1. 在“电子邮件地址”文本框中，输入用户的电子邮件地址，例如 brittasimon@contoso.com。
 
-    b. 在“名字”文本框中，输入用户的名字，例如 Britta。
+    1. 在“名字”文本框中，输入用户的名字，例如 Britta。
 
-    c. 在“姓氏”文本框中，输入用户的姓氏，例如 Simon。
+    1. 在“姓氏”文本框中，输入用户的姓氏，例如 Simon。
     
-    d. 单击“Done”（完成） 。  
+    1. 单击“完成”。  
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
@@ -242,12 +241,12 @@ ms.locfileid: "39428285"
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 当在访问面板中单击 MobileIron 磁贴时，应会自动登录到 MobileIron 应用程序。
-有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
+有关访问面板的详细信息，请参阅[访问面板简介](../user-help/active-directory-saas-access-panel-introduction.md)。 
 
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](tutorial-list.md)
-* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
+* [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
 
 <!--Image references-->

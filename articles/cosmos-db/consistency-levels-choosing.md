@@ -7,14 +7,14 @@ author: markjbrown
 ms.service: cosmos-db
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/23/2018
+ms.date: 10/24/2018
 ms.author: mjbrown
-ms.openlocfilehash: 9234a57bdec3dfd7a1ccdba00b90a5c853dc1c5a
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 42128a05ad9f82ff6b202eb6566c1fea60caa760
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50960951"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52162405"
 ---
 # <a name="choose-the-right-consistency-level-for-your-application"></a>为你的应用程序选择适当的一致性级别
 
@@ -52,7 +52,7 @@ ms.locfileid: "50960951"
 
 * 对于剩余的三个一致性级别，过期窗口在很大程度上取决于你的工作负载。 例如，如果未在数据库上执行任何写入操作，具有“最终”、“会话”或“一致前缀”一致性级别的读取操作可能产生与具有非常一致级别的读取操作相同的结果。
 
-如果使用非常一致性以外的一致性级别配置了 Cosmos DB 帐户，则可以通过查看概率有限过期 (PBS) 指标，找到客户端获得工作负荷的非常一致读取的概率。 此指标在 Azure 门户中公开。有关详细信息，请参阅[如何使用 PBS 指标](how-to-manage-consistency.md#monitor-probabilistically-bounded-staleness-pbs-metric)一文。
+如果使用非常一致性以外的一致性级别配置了 Cosmos DB 帐户，则可以通过查看概率有限过期 (PBS) 指标，找到客户端获得工作负荷的非常一致读取的概率。 此指标在 Azure 门户中公开，若要了解详细信息，请参阅[监视概率有限过期性 (PBS) 指标](how-to-manage-consistency.md#monitor-probabilistically-bounded-staleness-pbs-metric)。
 
 概率有限过期表明了最终一致的最终程度。 通过此指标可深入了解在 Cosmos DB 帐户中目前配置的一致性级别之间获得更强一致性的频率。 换句话说，可看到获得写入和读取区域组合的非常一致读取的概率（以毫秒计量）。
 
@@ -63,4 +63,4 @@ ms.locfileid: "50960951"
 * [跨 Cosmos DB API 的一致性级别映射](consistency-levels-across-apis.md)
 * [各种一致性级别的可用性和性能权衡](consistency-levels-tradeoffs.md)
 * [如何管理应用程序的会话令牌](how-to-manage-consistency.md#utilize-session-tokens)
-* [如何监视概率有限过期 (PBS) 指标](how-to-manage-consistency.md#monitor-probabilistically-bounded-staleness-pbs-metric)
+* [监视概率有限过期性 (PBS) 指标](how-to-manage-consistency.md#monitor-probabilistically-bounded-staleness-pbs-metric)

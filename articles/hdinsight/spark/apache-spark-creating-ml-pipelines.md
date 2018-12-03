@@ -9,14 +9,14 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/19/2018
-ms.openlocfilehash: 3cd27438247b801e384b80d96ba288896b4c5aae
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: d422b56acd56f87cb855c5e045e3a91666eee571
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51234216"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52499406"
 ---
-# <a name="create-a-spark-machine-learning-pipeline"></a>创建 Spark 机器学习管道
+# <a name="create-an-apache-spark-machine-learning-pipeline"></a>创建 Apache Spark 机器学习管道
 
 Apache Spark 的可缩放机器学习库 (MLlib) 向分布式环境引入了建模功能。 Spark 包 [`spark.ml`](http://spark.apache.org/docs/latest/ml-pipeline.html) 是一套基于数据帧的高级 API。 借助这些 API，可创建和调整实际的机器学习管道。  Spark 机器学习引用此基于 MLlib 数据帧的 API，而不是旧的基于 RDD 的管道 API。
 
@@ -131,4 +131,4 @@ only showing top 20 rows
 
 ## <a name="see-also"></a>另请参阅
 
-* [在 Azure 上使用 Scala 和 Spark 展开数据科研](../../machine-learning/team-data-science-process/scala-walkthrough.md)
+* [在 Azure 上使用 Scala 和 Apache Spark 展开数据科研](../../machine-learning/team-data-science-process/scala-walkthrough.md)

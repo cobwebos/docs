@@ -8,18 +8,22 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 09/06/2018
+ms.date: 11/27/2018
 ms.author: diberry
-ms.openlocfilehash: 32ef8ba2f6416e1b59fc98595f1b204e94bd2ead
-ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
+ms.openlocfilehash: feb51cd55801addaf5ce2486e5527542f794bbc5
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/06/2018
-ms.locfileid: "48830984"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52580944"
 ---
 # <a name="use-phrase-lists-to-boost-signal-of-word-list"></a>使用短语列表来增强字词列表的信号
 
 可以将功能添加到 LUIS 应用以提高其准确性。 特征通过提供某些字词和短语是应用域词汇表的一部分的提示来帮助 LUIS。 
+
+[短语列表](luis-concept-feature.md)包括一组值（词或短语），它们属于同一个类，并且必须以同样的方式处理它们（例如城市或产品名称）。 LUIS 对其中一个值的了解也自动应用到其他值。 此列表不是匹配字词的封闭列表实体（完全文本匹配）。
+
+短语列表添加到应用域的词汇中，作为这些字词的第二个 LUIS 信号。
 
 ## <a name="add-phrase-list"></a>添加短语列表
 
@@ -47,9 +51,6 @@ ms.locfileid: "48830984"
 
 > [!Note]
 > 可以在“短语列表”页上，删除或取消激活上下文工具栏中的短语列表。
-
-## <a name="pattern-regular-expression-feature"></a>模式（正则表达式）功能 
-此功能已弃用。 新的模式功能无法添加到 LUIS。 对任何现有模式功能的支持将截止到 2018 年 5 月。 有助于将标准 LUIS 正则表达式与 PR 匹配到[识别器-文本 Github 存储库](https://github.com/Microsoft/Recognizers-Text)。 
 
 ## <a name="next-steps"></a>后续步骤
 

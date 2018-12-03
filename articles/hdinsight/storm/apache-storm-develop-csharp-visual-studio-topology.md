@@ -9,16 +9,16 @@ ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 11/27/2017
 ROBOTS: NOINDEX
-ms.openlocfilehash: 5dcc9dcada981a6a4174ce34748356d49582f598
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 6f26ec6f1743a72a4a396ba245d80227f6f75913
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51237564"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52584275"
 ---
 # <a name="develop-c-topologies-for-apache-storm-by-using-the-data-lake-tools-for-visual-studio"></a>使用针对 Visual Studio 的 Data Lake 工具开发 Apache Storm 的 C# 拓扑
 
-了解如何使用针对 Visual Studio 的 Azure Data Lake (Hadoop) 工具创建 C# Storm 拓扑。 本文档逐步说明在 Visual Studio 中创建 Storm 项目，在本地测试该项目，然后将它部署到Apache Storm on Azure HDInsight 群集的过程。
+了解如何使用针对 Visual Studio 的 Azure Data Lake (Apache Hadoop) 工具创建 C# Apache Storm 拓扑。 本文档逐步说明在 Visual Studio 中创建 Storm 项目，在本地测试该项目，然后将它部署到Apache Storm on Azure HDInsight 群集的过程。
 
 还可了解如何创建使用 C# 和 Java 组件的混合拓扑。
 
@@ -27,7 +27,7 @@ ms.locfileid: "51237564"
 
 若要将 C# 拓扑与基于 Linux 的群集配合使用，必须将项目使用的 Microsoft.SCP.Net.SDK NuGet 包更新到版本 0.10.0.6 或更高版本。 包的版本还必须与安装在 HDInsight 上的 Storm 主版本相匹配。
 
-| HDInsight 版本 | Storm 版本 | SCP.NET 版本 | 默认 Mono 版本 |
+| HDInsight 版本 | Apache Storm 版本 | SCP.NET 版本 | 默认 Mono 版本 |
 |:-----------------:|:-------------:|:---------------:|:--------------------:|
 | 3.3 |0.10.x |0.10.x.x</br>（仅在基于 Windows 的 HDInsight 上） | NA |
 | 3.4 | 0.10.0.x | 0.10.0.x | 3.2.8 |
@@ -97,7 +97,7 @@ namespace ConsoleApplication2
 }
 ```
 
-## <a name="storm-templates"></a>Storm 模板
+## <a name="apache-storm-templates"></a>Apache Storm 模板
 
 针对 Visual Studio 的 Data Lake 工具提供以下模板：
 
@@ -119,7 +119,7 @@ namespace ConsoleApplication2
 
 在本文档的步骤中，使用基本 Storm 应用程序项目类型创建拓扑。
 
-### <a name="hbase-templates-notes"></a>HBase 模板说明
+### <a name="apache-hbase-templates-notes"></a>Apache HBase 模板说明
 
 HBase 读取器和写入器模板使用 HBase REST API（而不是 HBase Java API）与 HDInsight 群集上的 HBase 通信。
 
@@ -754,14 +754,14 @@ Context.Logger.Info("Component started");
 **Apache Storm on HDInsight**
 
 * [使用 Apache Storm on HDInsight 部署和监视拓扑](apache-storm-deploy-monitor-topology.md)
-* [Storm on HDInsight 的示例拓扑](apache-storm-example-topology.md)
+* [HDInsight 上的 Apache Storm 的示例拓扑](apache-storm-example-topology.md)
 
 **Apache Hadoop on HDInsight**
 
-* [将 Hive 与 Hadoop on HDInsight 配合使用](../hadoop/hdinsight-use-hive.md)
-* [将 Pig 与 Hadoop on HDInsight 配合使用](../hadoop/hdinsight-use-pig.md)
-* [将 MapReduce 与 HDInsight 上的 Hadoop 配合使用](../hadoop/hdinsight-use-mapreduce.md)
+* [将 Apache Hive 与 Apache Hadoop on HDInsight 配合使用](../hadoop/hdinsight-use-hive.md)
+* [将 Apache Pig 与 Apache Hadoop on HDInsight 配合使用](../hadoop/hdinsight-use-pig.md)
+* [将 Apache Hadoop MapReduce 与 Apache Hadoop on HDInsight 配合使用](../hadoop/hdinsight-use-mapreduce.md)
 
 **Apache HBase on HDInsight**
 
-* [HBase on HDInsight 入门](../hbase/apache-hbase-tutorial-get-started-linux.md)
+* [HDInsight 中的 Apache HBase 入门](../hbase/apache-hbase-tutorial-get-started-linux.md)

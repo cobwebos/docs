@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/18/2018
 ms.author: barclayn
-ms.openlocfilehash: 057c98d4bac87b4e43e5beb8268d3d3bdbe3ec85
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: 6033a61351423e65490edfe0b0607f2395c80f86
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46364241"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52498349"
 ---
 # <a name="security-best-practices-for-iaas-workloads-in-azure"></a>Azure 中 IaaS 工作负荷的安全性最佳实践
 
@@ -51,7 +51,7 @@ ms.locfileid: "46364241"
 
 - [虚拟机参与者](../role-based-access-control/built-in-roles.md#virtual-machine-contributor)：可管理 VM，但无法管理虚拟机连接的虚拟网络或存储帐户。
 - [经典虚拟机参与者](../role-based-access-control/built-in-roles.md#classic-virtual-machine-contributor)：可管理使用经典部署模型创建的 VM，但无法管理这些 VM 连接到的虚拟网络或存储帐户。
-- [安全管理员](../role-based-access-control/built-in-roles.md#security-manager)：可管理安全组件、安全策略和 VM。
+- [安全管理员](../role-based-access-control/built-in-roles.md#security-admin)：仅在安全中心内：可以查看安全策略、查看安全状态、编辑安全策略、查看警报和建议、关闭警报和建议。
 - [开发测试实验室用户](../role-based-access-control/built-in-roles.md#devtest-labs-user)：可查看所有内容，以及连接、启动、重新启动和关闭 VM。
 
 订阅管理员和共同管理员可更改此设置，使其成为订阅中所有 VM 的管理员。 请确保你信任所有订阅管理员和共同管理员，以登录你的任何计算机。

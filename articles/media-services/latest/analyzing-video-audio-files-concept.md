@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 10/23/2018
+ms.date: 11/17/2018
 ms.author: juliako
-ms.openlocfilehash: a087c1a069e340c01f2eda657a3d0ecce768168c
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 3af8aec6bb2fe08c4bd1ef65e4f272a6f85af50b
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51228121"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52427403"
 ---
 # <a name="analyzing-video-and-audio-files"></a>分析视频和音频文件
 
@@ -33,7 +33,7 @@ ms.locfileid: "51228121"
 
 |**预设名称**|**方案**|**详细信息**|
 |---|---|---|
-|**AudioAnalyzerPreset**|分析音频|该预设应用一组基于 AI 的预定义分析操作，包括语音听录。 目前，该预设支持处理单个音轨的内容。<br/>可以使用 BCP-47 格式“language tag-region”（例如“en-US”）为输入中的音频有效负载指定语言。 受支持语言列表中包括“en-US”、“en-GB”、“es-ES”、“es-MX”、“fr-FR”、“it-IT”、“ja-JP”、“pt-BR”、“zh-CN”。|
+|**AudioAnalyzerPreset**|分析音频|该预设应用一组基于 AI 的预定义分析操作，包括语音听录。 目前，该预设支持处理单个音轨的内容。<br/>可以使用 BCP-47 格式“language tag-region”（例如“en-US”）为输入中的音频有效负载指定语言。 受支持语言列表中包括“en-US”、“en-GB”、“es-ES”、“es-MX”、“fr-FR”、“it-IT”、“ja-JP”、“pt-BR”、“zh-CN”。 如果未指定语言或将其设置为 Null，则将使用自动语言检测。 自动语言检测功能目前支持英语、中文、法语、德语、意大利语、日语、西班牙语、俄语和葡萄牙语。|
 |**VideoAnalyzerPreset**|分析音频和视频|从音频和视频中提取见解（丰富的元数据），并输出 JSON 格式的文件。 可以指定在处理视频文件时是否只想提取音频见解。 有关详细信息，请参阅[分析视频](analyze-videos-tutorial-with-api.md)。|
 
 ### <a name="audioanalyzerpreset"></a>AudioAnalyzerPreset

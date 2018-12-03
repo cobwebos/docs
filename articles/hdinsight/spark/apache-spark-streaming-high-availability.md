@@ -9,16 +9,16 @@ ms.reviewer: jasonh
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 01/26/2018
-ms.openlocfilehash: 8f680b60a8f457e1a8619ac044798ff02df15694
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 9898a56991a44f3ac87fde4c34676943b1ab8341
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51013643"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52581895"
 ---
-# <a name="create-high-availability-spark-streaming-jobs-with-yarn"></a>使用 YARN 创建高可用性 Spark 流作业
+# <a name="create-high-availability-apache-spark-streaming-jobs-with-yarn"></a>使用 YARN 创建高可用性 Apache Spark 流式处理作业
 
-使用 Spark 流可以实施可缩放、高吞吐量、容错的应用程序进行数据流处理。 可将 HDInsight Spark 群集上的 Spark 流应用程序连接到各种数据源，例如 Azure 事件中心、Azure IoT 中心、Kafka、Flume、Twitter、ZeroMQ、原始 TCP 套接字，或者通过这些应用程序监视 HDFS 文件系统中发生的更改。 Spark 流支持容错，可保证只会处理任意给定的事件一次，即使某个节点发生故障。
+使用 [Apache Spark](https://spark.apache.org/) 流式处理可以实现可缩放、高吞吐量、容错的应用程序进行数据流处理。 可将 HDInsight Spark 群集上的 Spark 流式处理应用程序连接到各种数据源，例如 Azure 事件中心、Azure IoT 中心、[Apache Kafka](https://kafka.apache.org/)、[Apache Flume](https://flume.apache.org/)、Twitter、[ZeroMQ](http://zeromq.org/)、原始 TCP 套接字，或者通过这些应用程序监视 [Apache Hadoop HDFS](https://hadoop.apache.org/docs/r1.2.1/hdfs_design.html) 文件系统中发生的更改。 Spark 流支持容错，可保证只会处理任意给定的事件一次，即使某个节点发生故障。
 
 Spark 流创建长时间运行的作业，在此期间，你可以对数据应用转换，然后将结果推送到文件系统、数据库、仪表板和控制台。 Spark 流处理微批数据，它首先收集定义的时间间隔内的一批事件。 接下来，发送该批进行处理和输出。 批时间间隔通常以几分之一秒定义。
 
@@ -54,7 +54,7 @@ RDD 包含多个属性，可帮助创建高可用性且容错的 Spark 流作业
 
 若要创建一个处理每个事件一次（且仅一次）的应用程序，请考虑所有系统故障点在出现问题后如何重启，以及如何避免数据丢失。 “恰好一次”语义要求数据在任何时间点都不会丢失，并且不管故障发生在哪个位置，消息处理都可重启。 请参阅[创建支持“恰好一次”事件处理的 Spark 流作业](apache-spark-streaming-exactly-once.md)。
 
-## <a name="spark-streaming-and-yarn"></a>Spark 流和 YARN
+## <a name="spark-streaming-and-apache-hadoop-yarn"></a>Spark 流式处理和 Apache Hadoop YARN
 
 在 HDInsight 中，群集工作由 *Yet Another Resource Negotiator* (YARN) 协调。 设计 Spark 流的高可用性涉及到 Spark 流和 YARN 组件方面的技术。  下面显示了使用 YARN 的示例配置。 
 
@@ -120,8 +120,8 @@ RDD 包含多个属性，可帮助创建高可用性且容错的 Spark 流作业
 
 ## <a name="next-steps"></a>后续步骤
 
-* [Spark 流概述](apache-spark-streaming-overview.md)
-* [创建支持“恰好一次”事件处理的 Spark 流作业](apache-spark-streaming-exactly-once.md)
-* [YARN 中长时间运行的 Spark 流作业](http://mkuthan.github.io/blog/2016/09/30/spark-streaming-on-yarn/) 
+* [Apache Spark 流式处理概述](apache-spark-streaming-overview.md)
+* [使用“恰好一次”事件处理创建 Apache Spark 流式处理作业](apache-spark-streaming-exactly-once.md)
+* [YARN 中长时间运行的 Apache Spark 流式处理作业](http://mkuthan.github.io/blog/2016/09/30/spark-streaming-on-yarn/) 
 * [结构化流：容错语义](http://spark.apache.org/docs/2.1.0/structured-streaming-programming-guide.html#fault-tolerance-semantics)
 * [离散流：可缩放流处理的容错模型](https://www2.eecs.berkeley.edu/Pubs/TechRpts/2012/EECS-2012-259.pdf)

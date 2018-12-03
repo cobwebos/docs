@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 10/31/2018
 ms.author: v-erkell
-ms.openlocfilehash: 334b4c912c40949cbecab2173425927d46350d07
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 21b5dae6fda857a3a69aa06e461fdf3b716b5eb8
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50670004"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52163311"
 ---
 # <a name="avere-vfxt-for-azure-faq"></a>Avere vFXT for Azure FAQ
 
@@ -124,7 +124,7 @@ Avere vFXT 不支持虚拟机规模集 (VMSS) 部署。 仅针对参与群集的
 
 ### <a name="can-i-run-the-avere-vfxt-cluster-machines-in-different-availability-zones"></a>是否可以在不同的可用性区域中运行 Avere vFXT 群集计算机？
 
-不可以。 Avere vFXT 中使用的高可用性模型目前不支持位于不同的可用区域中的单个 vFXT 集群成员。
+不是。 Avere vFXT 中使用的高可用性模型目前不支持位于不同的可用区域中的单个 vFXT 集群成员。
 
 ### <a name="can-i-clone-avere-vfxt-virtual-machines"></a>可否可以克隆 Avere vFXT 虚拟机？
 
@@ -240,7 +240,7 @@ Avere vFXT 不支持专用对象存储。
 
 ### <a name="can-i-use-archive-blob-storage"></a>可否使用存档 Blob 存储？
 
-不可以。 存档存储的 SLA 与 vFXT 系统的实时目录和文件访问需求不兼容。 
+不是。 存档存储的 SLA 与 vFXT 系统的实时目录和文件访问需求不兼容。 
 
 ### <a name="can-i-use-cool-blob-storage"></a>可否使用冷 Blob 存储？
 
@@ -277,4 +277,4 @@ Avere vFXT 不支持专用对象存储。
 * [准备创建 Avere vFXT](avere-vfxt-prereqs.md)
 * [部署 vFXT 群集](avere-vfxt-deploy.md)
 
-要了解有关 Avere vFXT 功能的详细信息和用例的详细信息，请访问 [Avere vFXT for Azure（预览版）](https://azure.microsoft.com/services/storage/avere-vfxt/)。
+要了解有关 Avere vFXT 功能和用例的详细信息，请访问 [Avere vFXT for Azure](https://azure.microsoft.com/services/storage/avere-vfxt/)。

@@ -9,16 +9,16 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/05/2018
-ms.openlocfilehash: 229c3eff0db4f3689f4e2e3fd457410ecccb8ba7
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 86d64ef0e9abab4368569c2f7c5ccd633660085c
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43041516"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52583207"
 ---
-# <a name="overview-of-spark-streaming"></a>Spark 流式处理概述
+# <a name="overview-of-apache-spark-streaming"></a>Apache Spark 流式处理概述
 
-Spark 流式处理提供对 HDInsight Spark 群集的数据流处理，同时保证即便发生节点故障，任何输入事件也仅处理一次。 Spark 流是一个长时间运行的作业，接收各种来源（包括 Azure 事件中心、Azure IoT 中心、Kafka、Flume、Twitter、ZeroMQ、原始 TCP 套接字）的输入数据，或来自监视 HDFS 文件系统的输入数据。 与单独的事件驱动进程不同，Spark 流将输入数据批处理为时间范围，例如 2 秒的切片，然后使用映射、减少、联接和提取操作转化每批数据。 然后，Spark 流将转换后的数据写入文件系统、数据库、仪表板和控制台。
+[Apache Spark](https://spark.apache.org/) 流式处理提供对 HDInsight Spark 群集的数据流处理，同时保证即便发生节点故障，任何输入事件也仅处理一次。 Spark 流是一个长时间运行的作业，接收各种来源（包括 Azure 事件中心、Azure IoT 中心、[Apache Kafka](https://kafka.apache.org/)、[Apache Flume](https://flume.apache.org/)、Twitter、[ZeroMQ](http://zeromq.org/)、原始 TCP 套接字）的输入数据，或来自监视 [Apache Hadoop YARN](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html) 文件系统的输入数据。 与单独的事件驱动进程不同，Spark 流将输入数据批处理为时间范围，例如 2 秒的切片，然后使用映射、减少、联接和提取操作转化每批数据。 然后，Spark 流将转换后的数据写入文件系统、数据库、仪表板和控制台。
 
 ![使用 HDInsight 和 Spark 流式处理的流处理](./media/apache-spark-streaming-overview/hdinsight-spark-streaming.png)
 
@@ -86,7 +86,7 @@ Spark 流式处理应用程序是一个长时间运行的应用程序，从引�
     ssc.start()            
     ssc.awaitTermination()
 
-有关 Spark 流 API 及其支持的事件源、转换和输出操作的详细信息，请参阅 [Spark Streaming Programming Guide](https://people.apache.org/~pwendell/spark-releases/latest/streaming-programming-guide.html)（Spark 流式处理编程指南）。
+有关 Spark 流 API 及其支持的事件源、转换和输出操作的详细信息，请参阅 [Apache Spark Streaming Programming Guide](https://people.apache.org/~pwendell/spark-releases/latest/streaming-programming-guide.html)（Apache Spark 流式处理编程指南）。
 
 下面的示例应用程序是自包含的，因此可以在 [Jupyter Notebook](apache-spark-jupyter-notebook-kernels.md) 内运行它。 此示例将在类 DummySource 中创建模拟数据源，该源每五秒输出计数器的值以及当前时间（以毫秒为单位）。 新 StreamingContext 对象的批处理间隔为 30 秒。 每次创建批处理时，流式处理都将检查生成的 RDD，将 RDD 转换为 Spark DataFrame 并通过 DataFrame 创建一个临时表。
 
@@ -211,10 +211,10 @@ Spark 流式传输 API 中可用的滑动窗口函数包括 window、countByWind
 
 ![部署 Spark 流式处理应用程序](./media/apache-spark-streaming-overview/hdinsight-spark-streaming-livy.png)
 
-此外，可以使用 GET 请求针对 LIVY 终结点检查所有应用程序的状态。 最后，可以通过针对 LIVY 终结点发出 DELETE 请求终止正在运行的应用程序。 有关 LIVY API 的详细信息，请参阅[通过 LIVY 远程作业](apache-spark-livy-rest-interface.md)
+此外，可以使用 GET 请求针对 LIVY 终结点检查所有应用程序的状态。 最后，可以通过针对 LIVY 终结点发出 DELETE 请求终止正在运行的应用程序。 有关 LIVY API 的详细信息，请参阅[使用 Apache LIVY 执行远程作业](apache-spark-livy-rest-interface.md)
 
 ## <a name="next-steps"></a>后续步骤
 
 * [在 HDInsight 中创建 Apache Spark 群集](../hdinsight-hadoop-create-linux-clusters-portal.md)
-* [Spark Streaming Programming Guide](https://people.apache.org/~pwendell/spark-releases/latest/streaming-programming-guide.html)（Spark 流式处理编程指南）
-* [通过 LIVY 以远程方式启动 Spark 作业](apache-spark-livy-rest-interface.md)
+* [Apache Spark Streaming Programming Guide](https://people.apache.org/~pwendell/spark-releases/latest/streaming-programming-guide.html)（Apache Spark 流式处理编程指南）
+* [使用 Apache LIVY 远程启动 Apache Spark 作业](apache-spark-livy-rest-interface.md)

@@ -1,11 +1,12 @@
 ---
-title: 适用于机器学习的 R 语言快速入门教程 | Microsoft Docs
+title: 适用于机器学习工作室的 R 语言快速入门教程 - Azure | Microsoft Docs
 description: 通过此 R 编程教程，快速在 Azure 机器学习工作室中使用 R 语言创建预测解决方案。
 keywords: 快速入门, r 语言, r 编程语言, r 编程教程
 services: machine-learning
 documentationcenter: ''
-author: heatherbshapiro
-ms.author: hshapiro
+author: ericlicoding
+ms.custom: (previous ms.author=hshapiro, author=heatherbshapiro)
+ms.author: amlstudiodocs
 manager: hjerez
 editor: cgronlun
 ms.assetid: 99a3a0fd-b359-481a-b236-66868deccd96
@@ -16,14 +17,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/06/2017
-ms.openlocfilehash: 97107bb5ca1a598906cac9adbf508b2d15668e7d
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: eea61419e76f4363a286f796e6df28a4e90a9ed7
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36227232"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52317664"
 ---
-# <a name="quickstart-tutorial-for-the-r-programming-language-for-azure-machine-learning"></a>适用于 Azure 机器学习的 R 编程语言快速入门教程
+# <a name="quickstart-tutorial-for-the-r-programming-language-for-azure-machine-learning-studio"></a>适用于 Azure 机器学习工作室的 R 编程语言快速入门教程
 
 <!-- Stephen F Elston, Ph.D. -->
 
@@ -100,7 +101,7 @@ Microsoft Azure 机器学习包含许多功能强大的机器学习和数据操�
 
 *图 2.弹出错误消息*
 
-看来我们需要打开 output.log 文件查看此 R 错误消息。 单击“执行 R 脚本[execute-r-script]”后，单击右侧的“属性”窗格上的“查看 output.log”。[] 打开了新的浏览器窗口，我看到以下内容。
+看来我们需要打开 output.log 文件查看此 R 错误消息。 单击[执行 R 脚本][execute-r-script]后，单击右侧的“属性”窗格上的“查看 output.log”。 打开了新的浏览器窗口，我看到以下内容。
 
     [Critical]     Error: Error 0063: The following error occurred during evaluation of R script:
     ---------- Start of error message from R ----------
@@ -127,7 +128,7 @@ RStudio 是广泛使用的针对 R 语言的集成开发环境 (IDE)。我会使
 
 如果还没有在台式计算机上安装 R 编程语言，我建议立即安装。 可以从 Comprehensive R Archive Network (CRAN) 免费下载开放源代码 R 语言，网址为 [http://www.r-project.org/](http://www.r-project.org/)。 该网站提供了适用于 Windows、Mac OS 和 Linux/UNIX 的 R 语言下载。 请选择附近的网站镜像，并按照下载说明进行操作。 此外，CRAN 包含大量有用的分析和数据操作包。
 
-如果是 RStudio 的新手，应下载并安装桌面版。 可以在 http://www.rstudio.com/products/RStudio/ 处找到适用于 Windows、Mac OS 和 Linux/UNIX 的 RStudio 下载。 按照提供的说明在台式计算机上安装 RStudio。  
+如果是 RStudio 的新手，应下载并安装桌面版。 可以在 http://www.rstudio.com/products/RStudio/ 找到适用于 Windows、Mac OS 和 Linux/UNIX 的 RStudio 下载。 按照提供的说明在台式计算机上安装 RStudio。  
 
 有关 RStudio 的教程介绍，请访问 https://support.rstudio.com/hc/sections/200107586-Using-RStudio。
 
@@ -154,9 +155,9 @@ RStudio 是广泛使用的针对 R 语言的集成开发环境 (IDE)。我会使
 
 * 单击左下方的“+ 新建”，并依次选择“实验”和“空白实验”。
 * 可以命名试验，方法是选择和修改页面顶部的“在...创建的试验”标题。 例如，将其改为“CA 乳品分析”。
-* 在试验页面的左侧，展开“保存的数据集”，并选择“我的数据集”。 可看到之前上传的 cadairydata.csv。
+* 在试验页面的左侧，展开“保存的数据集”，并选择“我的数据集”。 可看到之前上传的 **cadairydata.csv**。
 * 将 **csdairydata.csv 数据集**拖放到试验。
-* 在左窗格顶部的“搜索试验项”框中，键入“执行 R 脚本[execute-r-script]”。[] 可以看到模块在搜索列表中显示。
+* 在左窗格顶部的“搜索试验项”框中，键入[执行 R 脚本][execute-r-script]。 可以看到模块在搜索列表中显示。
 * 将[执行 R 脚本][execute-r-script]拖放到托盘上。  
 * 将 **csdairydata.csv 数据集**的输出连接到[执行 R 脚本][execute-r-script]最左侧输入 (**Dataset1**)。
 * **别忘了单击“保存”！**  
@@ -242,7 +243,7 @@ RStudio 是广泛使用的针对 R 语言的集成开发环境 (IDE)。我会使
 
     cadairydata <- maml.mapInputPort(1)
 
-单击**运行**按钮执行试验。 执行完成后，单击[执行 R 脚本][execute-r-script]模块，并单击**属性**窗格上的“查看 output.log”。 浏览器中打开新的页面，其中显示 output.log 文件的内容。 向下滚动页面时会看到类似下面的内容：
+单击**运行**按钮执行试验。 执行完成后，单击[执行 R 脚本][execute-r-script]模块，并单击“属性”窗格上的“查看 output.log”。 浏览器中打开新的页面，其中显示 output.log 文件的内容。 向下滚动页面时会看到类似下面的内容：
 
     [ModuleOutput] InputDataStructure
     [ModuleOutput]

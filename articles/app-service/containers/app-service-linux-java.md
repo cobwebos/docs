@@ -12,12 +12,12 @@ ms.devlang: java
 ms.topic: article
 ms.date: 08/29/2018
 ms.author: routlaw
-ms.openlocfilehash: a6752f9127a176eef9fd03e7ffddfa7450772def
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: 8d15aeb92911a26a9a42a0449a24e8c0fee4467b
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51037647"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52497338"
 ---
 # <a name="java-developers-guide-for-app-service-on-linux"></a>Linux 上的应用服务的 Java 开发人员指南
 
@@ -28,6 +28,10 @@ Linux 上的 Azure 应用服务可让 Java 开发人员在完全托管的基于 
 ## <a name="logging-and-debugging-apps"></a>日志记录和调试应用
 
 可以通过 Azure 门户对每个应用使用性能报告、流量可视化和运行状况检查。 请参阅 [Azure 应用服务诊断概述](/azure/app-service/app-service-diagnostics)来详细了解如何访问和使用这些诊断工具。
+
+## <a name="application-performance-monitoring"></a>应用程序性能监视
+
+有关使用 Linux 版应用服务上运行的 Java 应用配置 New Relic 和 AppDynamics 的操作说明，请参阅[在 Linux 版 Azure 应用服务上使用 Java 应用的应用程序性能监视工具](how-to-java-apm-monitoring.md)。
 
 ### <a name="ssh-console-access"></a>SSH 控制台访问 
 
@@ -124,7 +128,7 @@ az webapp start -n ${WEBAPP_NAME} -g ${WEBAPP_RESOURCEGROUP_NAME}
 </appSettings> 
 ```
 
-## <a name="secure-application"></a>保护应用程序
+## <a name="secure-applications"></a>安全应用程序
 
 在适用于 Linux 应用服务中运行的 Java 应用程序实施与其他应用程序相同的一套[安全最佳做法](/azure/security/security-paas-applications-using-app-services)。 
 
@@ -168,7 +172,7 @@ az webapp start -n ${WEBAPP_NAME} -g ${WEBAPP_RESOURCEGROUP_NAME}
 
 1. 将 `context.xml` 文件添加到 Web 应用程序（如果该文件不存在），并在生成项目时将该文件添加到 WAR 文件所在的 `META-INF` 目录。
 
-2. 在此文件中添加 `Context` 路径项，以将数据源链接到 JNDI 地址。 The
+2. 在此文件中添加 `Context` 路径项，以将数据源链接到 JNDI 地址。
 
     ```xml
     <Context>
@@ -192,7 +196,7 @@ az webapp start -n ${WEBAPP_NAME} -g ${WEBAPP_RESOURCEGROUP_NAME}
 
 对于共享服务器级的资源：
 
-1. 如果尚未进行相关的配置，请使用 SSH 将 `/usr/local/tomcat/conf` 的内容复制到应用服务 Linux 实例上的 `/home/tomcat` 中。
+1. 如果尚未进行相关的配置，请使用 SSH 将 `/usr/local/tomcat/conf` 的内容复制到应用服务 Linux 实例上的 `/home/tomcat/conf` 中。
 
 2. 将上下文添加到 `server.xml`
 
@@ -231,7 +235,7 @@ az webapp start -n ${WEBAPP_NAME} -g ${WEBAPP_RESOURCEGROUP_NAME}
 
     3. 使用 SFTP 客户端连接到本地隧道端口，并将文件上传到 `/home/tomcat/lib` 文件夹。
 
-5. 重启应用服务 Linux 应用程序。 Tomcat 会将 `CATALINA_HOME` 重置为 `/home/tomcat`，并使用更新的配置和类。
+5. 重启应用服务 Linux 应用程序。 Tomcat 会将 `CATALINA_HOME` 重置为 `/home/tomcat/conf`，并使用更新的配置和类。
 
 ## <a name="docker-containers"></a>Docker 容器
 

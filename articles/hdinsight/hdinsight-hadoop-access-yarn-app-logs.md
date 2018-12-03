@@ -9,26 +9,26 @@ ms.topic: conceptual
 ms.date: 05/25/2017
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: b7b93ca9c8638451d23a27edeed823e593a95b23
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: 62499c35fd71d83f80a60e0511e6a27ce0109275
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51035639"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52495867"
 ---
-# <a name="access-apache-yarn-application-logs-on-windows-based-hdinsight"></a>在基于 Windows 的 HDInsight 上访问 Apache YARN 应用程序日志
-本文档介绍了如何访问 Azure HDInsight 中基于 Windows 的 Hadoop 群集上已完成的 Apache YARN 应用程序的日志
+# <a name="access-apache-hadoop-yarn-application-logs-on-windows-based-hdinsight"></a>在基于 Windows 的 HDInsight 上访问 Apache Hadoop YARN 应用程序日志
+本文档介绍了如何访问 Azure HDInsight 中基于 Windows 的 Apache Hadoop 群集上已完成的 [Apache Hadoop YARN](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html) 应用程序的日志
 
 > [!IMPORTANT]
-> 本文档中的信息仅适用于基于 Windows 的 HDInsight 群集。 Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight 在 Windows 上停用](hdinsight-component-versioning.md#hdinsight-windows-retirement)。 有关在基于 Linux 的 HDInsight 群集上访问 YARN 日志的信息，请参阅[在 HDInsight 上基于 Linux 的 Hadoop 中访问 Apache YARN 应用程序日志](hdinsight-hadoop-access-yarn-app-logs-linux.md)
+> 本文档中的信息仅适用于基于 Windows 的 HDInsight 群集。 Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight 在 Windows 上停用](hdinsight-component-versioning.md#hdinsight-windows-retirement)。 有关在基于 Linux 的 HDInsight 群集上访问 YARN 日志的信息，请参阅[在 HDInsight 上基于 Linux 的 Apache Hadoop 中访问 Apache Hadoop YARN 应用程序日志](hdinsight-hadoop-access-yarn-app-logs-linux.md)
 >
 
 
 ### <a name="prerequisites"></a>先决条件
-* 基于 Windows 的 HDInsight 群集。  请参阅[在 HDInsight 中创建基于 Windows 的 Hadoop 群集](hdinsight-hadoop-provision-linux-clusters.md)。
+* 基于 Windows 的 HDInsight 群集。  请参阅[在 HDInsight 中创建基于 Windows 的 Apache Hadoop 群集](hdinsight-hadoop-provision-linux-clusters.md)。
 
 ## <a name="yarn-timeline-server"></a>YARN Timeline Server
-<a href="http://hadoop.apache.org/docs/r2.4.0/hadoop-yarn/hadoop-yarn-site/TimelineServer.html" target="_blank">YARN Timeline Server</a> 通过两个不同的接口提供已完成之应用程序的相关泛型信息，以及架构特定应用程序信息。 具体而言：
+<a href="http://hadoop.apache.org/docs/r2.4.1/hadoop-yarn/hadoop-yarn-site/TimelineServer.html" target="_blank">Apache Hadoop YARN Timeline Server</a> 通过两个不同的接口提供已完成应用程序的相关泛型信息，以及框架特定应用程序信息。 具体而言：
 
 * 存储及检索 HDInsight 群集上泛型应用程序信息的功能已在版本 3.1.1.374 或更新版本上启用。
 * Timeline Server 的架构特定应用程序信息组件当前在 HDInsight 群集上并未提供。
@@ -53,7 +53,7 @@ YARN 通过将资源管理与应用程序计划/监视相分离，来支持多�
 * 容器为基本工作单元提供了上下文。 
 * 在容器的上下文中执行的工作是在容器分配到的单个工作节点上执行的。 
 
-有关详细信息，请参阅 [YARN 概念][YARN-concepts]。
+有关详细信息，请参阅 [Apache Hadoop YARN 概念][YARN-concepts]。
 
 应用程序日志（和关联的容器日志）在对有问题的 Hadoop 应用程序进行调试上相当重要。 YARN 提供一个良好的框架，通过使用[日志聚合][log-aggregation]功能收集、聚合和存储应用程序日志。 日志聚合功能让访问应用程序日志更具确定性，因为它会聚合辅助节点上所有容器的日志，并在应用程序完成之后，将它们按每个辅助节点一个聚合日志的方式存储在默认文件系统上。 应用程序可能使用数百或数千个容器，但在单个工作节点上运行的所有容器的日志将聚合成单个文件，也就是为应用程序所用的每个工作节点生成一个文件。 默认情况下，日志聚合已在 HDInsight 群集（3.0 和更高版本）上启用，在群集的默认容器中，可以找到聚合的日志，位置如下：
 

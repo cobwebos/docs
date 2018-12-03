@@ -1,10 +1,11 @@
 ---
-title: 如何使用 Azure 机器学习 Web 服务 | Microsoft Docs
-description: 一旦部署机器学习服务后，即可将可用的 RESTFul Web 服务用作实时请求响应服务或批处理执行服务。
+title: 如何使用 Azure 机器学习工作室 Web 服务 | Microsoft Docs
+description: 从 Azure 机器学习工作室部署机器学习服务后，即可将 RESTFul Web 服务用作实时请求响应服务或批处理执行服务。
 services: machine-learning
 documentationcenter: ''
-author: YasinMSFT
-ms.author: yahajiza
+author: ericlicoding
+ms.custom: (previous ms.author=yahajiza, author=YasinMSFT)
+ms.author: amlstudiodocs
 manager: hjerez
 editor: cgronlun
 ms.assetid: 804f8211-9437-4982-98e9-ca841b7edf56
@@ -15,14 +16,14 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 06/02/2017
-ms.openlocfilehash: b89fb0fbb499fa06c9e56f02937b1c586efde9b6
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: df837c64cf0e40f3bfc1c596b2950a9d23c74a90
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34833344"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52309100"
 ---
-# <a name="how-to-consume-an-azure-machine-learning-web-service"></a>如何使用 Azure 机器学习 Web 服务
+# <a name="how-to-consume-an-azure-machine-learning-studio-web-service"></a>如何使用 Azure 机器学习工作室 Web 服务
 
 将 Azure 机器学习预测模型部署为 Web 服务后，可以使用 REST API 向其发送数据并获取预测。 可以实时或者以批处理模式发送数据。
 

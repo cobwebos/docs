@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/14/2018
+ms.date: 11/23/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: c8bba283a0c3fde75966ae123023e50d497abd5a
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: 8b061ad2926110e27524ededb5c33dffa5ea04b6
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51687548"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52635452"
 ---
 # <a name="connect-operations-manager-to-log-analytics"></a>将 Operations Manager 连接到 Log Analytics
 若要保持 [System Center Operations Manager](https://docs.microsoft.com/system-center/scom/key-concepts?view=sc-om-1807) 中的现有投资并将扩展功能用于 Log Analytics，可将 Operations Manager 与 Log Analytics 工作区集成。 这样既可以利用 Log Analytics，又可以继续使用 Operations Manager 执行以下操作：
@@ -37,7 +37,7 @@ ms.locfileid: "51687548"
 
 ![oms-operations-manager-integration-diagram](./media/log-analytics-om-agents/oms-operations-manager-connection.png)
 
-如果 IT 安全策略不允许网络上的计算机连接到 Internet，可将管理服务器配置为连接到 Log Analytics 网关，以根据启用的解决方案接收配置信息并发送收集的数据。 有关如何将 Operations Manager 管理组配置为通过 Log Analytics 网关与 Log Analytics 服务通信的详细信息和步骤，请参阅[使用 Log Analytics 网关将计算机连接到 Log Analytics](log-analytics-oms-gateway.md)。  
+如果 IT 安全策略不允许网络上的计算机连接到 Internet，可将管理服务器配置为连接到 Log Analytics 网关，以根据启用的解决方案接收配置信息并发送收集的数据。 有关如何将 Operations Manager 管理组配置为通过 Log Analytics 网关与 Log Analytics 服务通信的详细信息和步骤，请参阅[使用 Log Analytics 网关将计算机连接到 Log Analytics](../azure-monitor/platform/gateway.md)。  
 
 ## <a name="prerequisites"></a>先决条件 
 在开始之前，请查看以下要求。
@@ -49,10 +49,13 @@ ms.locfileid: "51687548"
 
 >[!NOTE]
 >最近对 Azure API 所做的最新会阻止客户在其管理组与 Log Analytics 之间成功配置首次集成。 对于已将其管理组与该服务进行集成的客户，除非需要重新配置现有连接，否则他们不受影响。  
->为每个 Operations Manager 版本发布了新的管理包：  
+>已为以下版本的 Operations Manager 发布了新的管理包：
+>  
 >* 对于 System Center Operations Manager 1801，请从[此处](https://www.microsoft.com/download/details.aspx?id=57173)下载管理包  
 >* 对于 System Center 2016 - Operations Manager，请从[此处](https://www.microsoft.com/download/details.aspx?id=57172)下载管理包  
 >* 对于 System Center Operations Manager 2012 R2，请从[此处](https://www.microsoft.com/download/details.aspx?id=57171)下载管理包  
+>
+>此管理包更新不适用于 System Center Operations Manager 1807，后者是版本 1801 的更新版本，而不是产品的完整版本。   
 
 ### <a name="network"></a>网络
 下面的信息列出了 Operations Manager 代理、管理服务器和操作控制台与 Log Analytics 通信时必需的代理和防火墙配置信息。 来自每个组件的流量将从网络传出到 Log Analytics 服务。   
@@ -331,6 +334,6 @@ ms.locfileid: "51687548"
 * 适用于管理组的最新更新汇总。 Operations Manager 2012 的源文件夹为` %ProgramFiles%\Microsoft System Center 2012\Operations Manager\Server\Management Packs for Update Rollups`，而 2012 R2 的源文件夹则位于 `System Center 2012 R2\Operations Manager\Server\Management Packs for Update Rollups` 中。
 
 ## <a name="next-steps"></a>后续步骤
-若要添加功能并收集数据，请参阅[从解决方案库中添加 Log Analytics 解决方案](../monitoring/monitoring-solutions.md)。
+若要添加功能并收集数据，请参阅[从解决方案库中添加 Log Analytics 解决方案](../azure-monitor/insights/solutions.md)。
 
 
