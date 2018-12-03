@@ -35,7 +35,7 @@ Azure Cloud Shell 是免费的交互式 shell，可以使用它运行本文中�
 
 若要打开 Cloud Shell，只需要从代码块的右上角选择“试一试”。 也可以通过转到 [https://shell.azure.com/powershell](https://shell.azure.com/powershell) 在单独的浏览器标签页中启动 Cloud Shell。 选择“复制”以复制代码块，将其粘贴到 Cloud Shell 中，然后按 Enter 来运行它。
 
-如果选择在本地安装并使用 PowerShell，则本教程需要 Azure PowerShell 模块 5.7.0 或更高版本。 运行 `Get-Module -ListAvailable AzureRM` 即可查找版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-azurerm-ps)。 如果在本地运行 PowerShell，则还需运行 `Connect-AzureRmAccount` 以创建与 Azure 的连接。
+如果选择在本地安装并使用 PowerShell，则本教程需要 Azure PowerShell 模块 5.7.0 或更高版本。 运行 `Get-Module -ListAvailable AzureRM` 即可查找版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-azurerm-ps)。 如果在本地运行 PowerShell，则还需运行 `Connect-AzureRmAccount` 来创建与 Azure 的连接。
 
 ## <a name="create-resource-group"></a>创建资源组
 
@@ -49,7 +49,7 @@ New-AzureRmResourceGroup -Name myResourceGroup -Location EastUS
 
 使用 [New-AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm) 创建 VM。 请提供每个资源的名称，如果这些资源不存在，[New-AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm) cmdlet 会创建它们。
 
-出现提示时，请提供用作 VM 登录凭据的用户名和密码：
+出现提示时，请提供一个用户名和密码作为 VM 的登录凭证：
 
 ```azurepowershell-interactive
 New-AzureRmVm `
@@ -73,13 +73,13 @@ New-AzureRmVm `
 Get-AzureRmPublicIpAddress -ResourceGroupName "myResourceGroup" | Select "IpAddress"
 ```
 
-从本地计算机使用以下命令创建远程桌面会话。 将 IP 地址替换为你的 VM 的公用 IP 地址。 
+使用以下命令从本地计算机创建远程桌面会话。 将 IP 地址替换为您的虚拟机的公用 IP 地址。 
 
 ```powershell
 mstsc /v:publicIpAddress
 ```
 
-在“Windows 安全性”窗口中，依次选择“更多选择”、“使用其他帐户”。 以 **localhost**\\*username* 的形式键入用户名，输入为虚拟机创建的密码，然后单击“确定”。
+在“Windows 安全性”窗口中，依次选择“更多选项”、“使用其他帐户”。 以 **本地主机**\\*用户名* 的形式键入用户名，输入为虚拟机创建的密码，然后单击“确定”。
 
 你可能会在登录过程中收到证书警告。 单击“是”或“继续”以创建连接
 
