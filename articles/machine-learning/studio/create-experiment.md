@@ -82,7 +82,7 @@ ms.locfileid: "52425704"
 [步骤 5：预测新汽车价格]: #step-5-predict-new-automobile-prices
 
 > [!TIP] 
-> 可在 [Azure AI Gallery](https://gallery.cortanaintelligence.com)（Azure AI 库）中找到以下试验的工作副本。 请访问 **[Your first data science experiment - Automobile price prediction](https://gallery.cortanaintelligence.com/Experiment/Your-first-data-science-experiment-Automobile-price-prediction-1)**（第一个数据科学试验 - 汽车价格预测），并单击“在工作室中打开”将试验副本下载到机器学习工作室的工作区。
+> 可在 [Azure AI Gallery](https://gallery.cortanaintelligence.com)（Azure AI 库）中找到以下试验的工作副本。 请访问 **[第一个数据科学试验 - 汽车价格预测](https://gallery.cortanaintelligence.com/Experiment/Your-first-data-science-experiment-Automobile-price-prediction-1)**，并单击“在工作室中打开”将试验副本下载到机器学习工作室的工作区。
 
 
 ## <a name="step-1-get-data"></a>步骤 1：获取数据
