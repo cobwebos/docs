@@ -6,20 +6,20 @@ documentationcenter: ''
 author: mattbriggs
 manager: femila
 editor: ''
-ms.assetid: 6613946D-114C-441A-9F74-38E35DF0A7D7
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/05/2018
+ms.date: 12/03/2018
 ms.author: mabrigg
-ms.openlocfilehash: cb02ecb06728f5f36a0d51a3ec22cc8ba5cb44e7
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.reviewer: kivenkat
+ms.openlocfilehash: 9d6bb8d4327b428bb47d1d44422d816e7b20ed87
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50094749"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52847518"
 ---
 # <a name="considerations-for-using-virtual-machines-in-azure-stack"></a>在 Azure Stack 中使用虚拟机时的注意事项
 
@@ -29,7 +29,7 @@ Azure Stack 虚拟机提供可按需缩放的计算资源。 在部署虚拟机 
 
 ## <a name="cheat-sheet-virtual-machine-differences"></a>速查表：虚拟机的差异
 
-| 功能 | Azure（公有云） | Azure Stack |
+| Feature | Azure（公有云） | Azure Stack |
 | --- | --- | --- |
 | 虚拟机映像 | Azure 市场包含可用于创建虚拟机的映像。 若要查看 Azure 市场中的可用映像列表，请参阅 [Azure 市场](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/category/compute?subcategories=virtual-machine-images&page=1)页。 | Azure Stack 市场中默认不会提供任何映像。 Azure Stack 云管理员应该先将映像发布或下载到 Azure Stack 市场，然后用户才能使用这些映像。 |
 | 虚拟机大小 | Azure 支持各种不同的虚拟机大小。 若要了解可用的大小和选项，请参阅 [Windows 虚拟机大小](../../virtual-machines/virtual-machines-windows-sizes.md)和 [Linux 虚拟机大小](../../virtual-machines/linux/sizes.md)主题。 | Azure Stack 支持一部分可在 Azure 中使用的虚拟机大小。 若要查看支持的大小列表，请参阅本文的[虚拟机大小](#virtual-machine-sizes)部分。 |
@@ -40,7 +40,7 @@ Azure Stack 虚拟机提供可按需缩放的计算资源。 在部署虚拟机 
 | 虚拟机磁盘性能 | 依赖于磁盘类型和大小。 | 取决于已附加磁盘的 VM 的 VM 大小来，指代[支持在 Azure Stack 中的虚拟机大小](azure-stack-vm-sizes.md)一文。
 | API 版本 | Azure 始终提供所有虚拟机功能的最新 API 版本。 | Azure Stack 支持特定的 Azure 服务以及这些服务的特定 API 版本。 若要查看支持的 API 版本列表，请参阅本文的 [API 版本](#api-versions)部分。 |
 |虚拟机可用性集|多个容错域（每个区域 2 个或 3 个）<br>多个更新域<br>支持托管磁盘|多个容错域（每个区域 2 个或 3 个）<br>多个更新域（最多 20 个）<br>不支持托管磁盘|
-|虚拟机规模集|支持自动缩放|不支持自动缩放<br>使用门户、资源管理器模板或 PowerShell 将更多实例添加到规模集。
+|虚拟机规模集|自动缩放支持|不支持自动缩放。<br>使用门户、资源管理器模板或 PowerShell 将更多实例添加到规模集。
 
 ## <a name="virtual-machine-sizes"></a>虚拟机大小
 
