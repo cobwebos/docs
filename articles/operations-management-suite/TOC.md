@@ -11,7 +11,7 @@
 # 如何
 
 ## 分析
-### [Log Analytics](../log-analytics/log-analytics-queries.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
+### [Log Analytics](../azure-monitor/log-query/log-query-overview.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 ## 自动化
 ### [Azure 自动化概述](../automation/automation-intro.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 

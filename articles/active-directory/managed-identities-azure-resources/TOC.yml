@@ -134,12 +134,12 @@ items:
   - name: 支持 Azure 资源托管标识的 Azure 服务
     href: services-support-msi.md
   - name: 堆栈溢出
-    href: http://stackoverflow.com/questions/tagged/azure-msi
+    href: https://stackoverflow.com/questions/tagged/azure-msi
   - name: AAD 开发者论坛
     href: https://feedback.azure.com/forums/169401-azure-active-directory/category/164757-developer-experiences
-ms.openlocfilehash: bf5d9c7ef01b485cac235f3be179e70910e0aaaa
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: e269ecd7b33738a3fde63a403d961b65e0f4deb5
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50221387"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52841602"

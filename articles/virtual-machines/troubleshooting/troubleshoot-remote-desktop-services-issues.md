@@ -148,7 +148,7 @@ ms.locfileid: "50957686"
     2. 使用串行控制台可将文件复制到新驱动器。 例如，`copy C:\temp\ProcMonTrace.PML F:\`。 在此命令中，F 是附加的数据磁盘的驱动程序号。
     3. 分离数据驱动器，并将其附加到已安装进程监视器 ubstakke 的正常 VM。
 
-6. 在正常的 VM 上使用进程监视器打开 **ProcMonTrace.PML**。 然后按“结果为‘访问被拒绝’”进行筛选，如以下屏幕截图所示： ****
+6. 在正常的 VM 上使用进程监视器打开 **ProcMonTrace.PML**。 然后按“结果为‘访问被拒绝’”进行筛选，如以下屏幕截图所示 **：**
 
     ![在进程监视器中按结果进行筛选](./media/troubleshoot-remote-desktop-services-issues/process-monitor-access-denined.png)
 
