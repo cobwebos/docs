@@ -58,7 +58,7 @@ mkdir quickstart
 cd quickstart
 ```
 
-接下来，运行以下命令将示例应用代码库克隆到 quickstart 目录。
+接下来，运行以下命令将示例应用存储库克隆到 quickstart 目录。
 
 ```bash
 git clone https://github.com/Azure-Samples/html-docs-hello-world.git
