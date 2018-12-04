@@ -58,7 +58,7 @@ mkdir quickstart
 cd quickstart
 ```
 
-接下来，运行以下命令将示例应用存储库克隆到 quickstart 目录。
+接下来，运行以下命令将示例应用代码库克隆到 quickstart 目录。
 
 ```bash
 git clone https://github.com/Azure-Samples/html-docs-hello-world.git
@@ -104,7 +104,7 @@ az webapp up --location westeurope --name <app_name>
 
 记下 `resourceGroup` 值。 需要在[清理资源](#clean-up-resources)部分使用它。
 
-## <a name="browse-to-the-app"></a>浏览到应用
+## <a name="browse-to-the-app"></a>浏览应用
 
 在浏览器中转到 Azure Web 应用 URL：`http://<app_name>.azurewebsites.net`。
 
@@ -128,7 +128,7 @@ az webapp up --location westeurope --name <app_name>
 az webapp up --location westeurope --name <app_name>
 ```
 
-完成部署后，切换回**浏览到应用**步骤中打开的浏览器窗口，然后刷新页面。
+完成部署后，切换回**浏览应用**步骤中打开的浏览器窗口，然后刷新页面。
 
 ![已更新的示例应用主页](media/app-service-web-get-started-html/hello-azure-in-browser-az.png)
 
@@ -140,7 +140,7 @@ az webapp up --location westeurope --name <app_name>
 
 ![在门户中导航到 Azure Web 应用](./media/app-service-web-get-started-html/portal1.png)
 
-将看到 Web 应用的概述页。 在此处可以执行基本的管理任务，例如浏览、停止、启动、重新启动和删除。
+这里你将看到 Web 应用的概述页。 在此处可以执行基本的管理任务，例如浏览、停止、启动、重新启动和删除。
 
 ![Azure 门户中的应用服务边栏选项卡](./media/app-service-web-get-started-html/portal2.png)
 
@@ -148,7 +148,7 @@ az webapp up --location westeurope --name <app_name>
 
 ## <a name="clean-up-resources"></a>清理资源
 
-在前面的步骤中，在资源组中创建了 Azure 资源。 如果认为将来不需要这些资源，请在 Cloud Shell 中运行以下命令，以便删除资源组。 请记住，资源组名称已在[创建 Web 应用](#create-a-web-app)步骤中自动为你生成。
+在前面的步骤中，你在资源组中创建了 Azure 资源。 如果认为将来不需要这些资源，请在 Cloud Shell 中运行以下命令，以便删除资源组。 请记住，资源组名称已在[创建 Web 应用](#create-a-web-app)步骤中自动为你生成。
 
 ```bash
 az group delete --name appsvc_rg_Windows_westeurope
