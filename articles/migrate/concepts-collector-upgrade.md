@@ -1,6 +1,6 @@
 ---
-title: 升级 Azure 迁移中的收集器设备 | Microsoft Docs
-description: 介绍 Azure 迁移收集器设备升级。
+title: 升级 Azure Migrate 中的收集器设备 | Microsoft Docs
+description: 介绍 Azure Migrate 收集器设备升级。
 author: musa-57
 ms.service: azure-migrate
 ms.topic: conceptual
@@ -16,9 +16,9 @@ ms.locfileid: "50241457"
 ---
 # <a name="collector-update-release-history"></a>收集器更新版本历史记录
 
-本文总结了 [Azure 迁移](migrate-overview.md) 中的收集器设备的升级信息。
+本文总结了 [Azure Migrate](migrate-overview.md) 中的收集器设备的升级信息。
 
-Azure 迁移收集器是一种轻量级设备，用于在迁移到 Azure 之前发现本地 vCenter 环境，以便进行评估。 [了解详细信息](concepts-collector.md)。
+Azure Migrate 收集器是一种轻量级设备，用于在迁移到 Azure 之前发现本地 vCenter 环境，以便进行评估。 [了解详细信息](concepts-collector.md)。
 
 
 ## <a name="one-time-discovery-upgrade-versions"></a>一次性发现：升级版本
@@ -77,7 +77,7 @@ SHA256 | e3ee031fb2d47b7881cc5b13750fc7df541028e0a1cc038c796789139aa8e1e6
 
 ## <a name="continuous-discovery-upgrade-versions"></a>持续发现：升级版本
 
-尚未对持续发现设备进行升级。
+尚未提供面向持续发现设备的升级。
 
 ## <a name="run-an-upgrade"></a>运行升级
 
