@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 09/26/2018
+ms.date: 12/04/2018
 ms.author: sethm
 ms.reviewer: ''
-ms.openlocfilehash: 60e9a790a9b74bce7ccbdd58b320ad969c0932f3
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: 03fd91b8412c75a994f55f589179f718189e67a7
+ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49079270"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52891157"
 ---
 # <a name="start-azsreadinesschecker-cmdlet-reference"></a>Start-AzsReadinessChecker cmdlet 参考
 
@@ -228,7 +228,8 @@ Start-AzsReadinessChecker -PaaSCertificates $PaaSCertificates -DeploymentDataJSO
 **示例：验证 Azure 标识**
 ```PowerShell
 $serviceAdminCredential = Get-Credential -Message "Enter Credentials for Service Administrator of Azure Active Directory Tenant e.g. serviceadmin@contoso.onmicrosoft.com"
-Start-AzsReadinessChecker -AADServiceAdministrator $serviceAdminCredential -AzureEnvironment AzureCloud -AzureDirectoryTenantName azurestack.contoso.com
+# Supported values for the <environment name> parameter are AzureCloud, AzureChinaCloud or AzureUSGovernment depending which Azure subscription you are using.
+Start-AzsReadinessChecker -AADServiceAdministrator $serviceAdminCredential -AzureEnvironment "<environment name>" -AzureDirectoryTenantName azurestack.contoso.com
 ```
 
 在此示例中，系统以安全方式提示输入服务管理员帐户凭据，Start-AzsReadinessChecker 检查 Azure 帐户和 Azure Active Directory 是否适用于租户目录名称为“azurestack.contoso.com”的 AAD 部署
@@ -245,9 +246,10 @@ Start-AzsReadinessChecker -AADServiceAdministrator $serviceAdminCredential -Depl
 
 **示例：验证 Azure 注册**
 ```PowerShell
-$registrationCredential = Get-Credential -Message "Enter Credentials for Subscription Owner"e.g. subscriptionowner@contoso.onmicrosoft.com"
-$subscriptionID = "f7c26209-cd2d-4625-86ba-724ebeece794"
-Start-AzsReadinessChecker -RegistrationAccount $registrationCredential -RegistrationSubscriptionID $subscriptionID -AzureEnvironment AzureCloud
+$registrationCredential = Get-Credential -Message "Enter Credentials for Subscription Owner e.g. subscriptionowner@contoso.onmicrosoft.com"
+$subscriptionID = "<subscription ID"
+# Supported values for the <environment name> parameter are AzureCloud, AzureChinaCloud or AzureUSGovernment depending which Azure subscription you are using.
+Start-AzsReadinessChecker -RegistrationAccount $registrationCredential -RegistrationSubscriptionID $subscriptionID -AzureEnvironment "<environment name>"
 ```
 
 在此示例中，系统以安全方式提示输入订阅所有者凭据，然后，Start-AzsReadinessChecker 对给定的帐户和订阅执行验证，以确保它们可用于 Azure Stack 注册。 
@@ -255,8 +257,8 @@ Start-AzsReadinessChecker -RegistrationAccount $registrationCredential -Registra
 
 **示例：使用部署数据验证 Azure 注册（部署团队）**
 ```PowerShell
-$registrationCredential = Get-Credential -Message "Enter Credentials for Subscription Owner"e.g. subscriptionowner@contoso.onmicrosoft.com"
-$subscriptionID = "f7c26209-cd2d-4625-86ba-724ebeece794"
+$registrationCredential = Get-Credential -Message "Enter Credentials for Subscription Owner e.g. subscriptionowner@contoso.onmicrosoft.com"
+$subscriptionID = "<subscription ID>"
 Start-AzsReadinessChecker -RegistrationAccount $registrationCredential -RegistrationSubscriptionID $subscriptionID -DeploymentDataJSONPath .\contoso-deploymentdata.json
 ```
 
@@ -446,7 +448,7 @@ Start-AzsReadinessChecker -ReportPath Contoso-AzsReadinessReport.json -ReportSec
 |键入：                       |String   |
 |职位:                   |名为    |
 |默认值：              |无     |
-|有效值：               |'AzureCloud'、'AzureChinaCloud'、'AzureGermanCloud' |
+|有效值：               |AzureCloud，AzureChinaCloud，AzureUSGovernment |
 |接受管道输入：      |False    |
 |接受通配符： |False    |
 
@@ -479,7 +481,7 @@ Start-AzsReadinessChecker -ReportPath Contoso-AzsReadinessReport.json -ReportSec
 |----------------------------|---------|
 |键入：                       |String   |
 |职位:                   |名为    |
-|默认值：              |全部      |
+|默认值：              |All      |
 |接受管道输入：      |False    |
 |接受通配符： |False    |
 
@@ -529,7 +531,7 @@ ACSBlob、ACSQueue、ACSTable、ADFS、Admin Portal、ARM Admin、ARM Public、G
 |----------------------------|---------|
 |键入：                       |String   |
 |职位:                   |名为    |
-|默认值：              |全部      |
+|默认值：              |All      |
 |有效值：               |'Certificate'、'AzureRegistration'、'AzureIdentity'、'Jobs'、'All' |
 |接受管道输入：      |False    |
 |接受通配符： |False    |

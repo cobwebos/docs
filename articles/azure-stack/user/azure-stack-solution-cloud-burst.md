@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 09/24/2018
 ms.author: mabrigg
 ms.reviewer: Anjay.Ajodha
-ms.openlocfilehash: 645a32f56ee2bdc4132377f2d56f61b963104e42
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.openlocfilehash: 4881f992e5362efc7e4d7ac23898684966a066e0
+ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52334884"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52890987"
 ---
 # <a name="tutorial-create-cross-cloud-scaling-solutions-with-azure"></a>教程： 使用 Azure 创建跨云缩放解决方案
 
@@ -60,7 +60,7 @@ ms.locfileid: "52334884"
 
 -   在租户订阅中创建 Web 应用。 记下新 Web 应用的 URL，供稍后使用。
 
--   租户订阅中部署 VSTS 虚拟机。
+-   租户订阅中部署 Azure 管道虚拟机。
 
 -   需要装有 .NET 3.5 的 Windows Server 2016 VM。 此 VM 将在生成的专用生成代理与 Azure Stack 上的租户订阅中。
 
@@ -99,9 +99,11 @@ ms.locfileid: "52334884"
 > [!Note]  
 > Azure 堆栈用于综合运行 （Windows Server 和 SQL） 和应用服务部署到的正确映像是必需的。 查看应用服务文档"[开始使用 Azure Stack 上的应用服务之前](../azure-stack-app-service-before-you-get-started.md)"部分，了解 Azure Stack 操作员。
 
-### <a name="add-code-to-visual-studio-team-services-project"></a>将代码添加到 Visual Studio Team Services 项目
+### <a name="add-code-to-azure-repos"></a>将代码添加到 Azure 存储库
 
-1. 登录到 Visual Studio Team Services (VSTS) 与 VSTS 具有项目创建权限的帐户。
+Azure Repos
+
+1. 使用 Azure 存储库具有项目创建权限的帐户登录到 Azure 存储库。
 
     混合 CI/CD 可同时应用到应用程序代码和基础结构代码。 使用[Azure 资源管理器模板](https://azure.microsoft.com/resources/templates/)用于这两个私有云和托管云开发。
 
@@ -117,13 +119,13 @@ ms.locfileid: "52334884"
 
     ![Alt text](media\azure-stack-solution-cloud-burst\image3.png)
 
-2.  签入到 VSTS 使用团队资源管理器代码。
+2.  签入到 Azure 存储库使用团队资源管理器代码。
 
-3.  确认应用程序代码已签入 Visual Studio Team Services。
+3.  确认应用程序代码具有已签入到 Azure 存储库。
 
 ## <a name="create-the-build-definition"></a>创建生成定义
 
-1. 登录到 VSTS，以确认能够创建生成定义。
+1. 登录到 Azure 管道中，以便确认能够创建生成定义。
 
 2. 添加 **-r win10-x64** 代码。 在 .Net Core 中触发独立部署时需要此代码。
 
@@ -133,11 +135,11 @@ ms.locfileid: "52334884"
 
 ## <a name="use-an-azure-hosted-agent"></a>使用 Azure 托管的代理
 
-使用 VSTS 中托管代理是一个方便的选项来生成和部署 web 应用。 Microsoft Azure，从而启用不间断地持续开发、 测试和部署自动执行维护和升级。
+使用 Azure 管道中的托管代理是一个方便的选项来生成和部署 web 应用。 Microsoft Azure，从而启用不间断地持续开发、 测试和部署自动执行维护和升级。
 
 ### <a name="manage-and-configure-the-cd-process"></a>管理和配置 CD 过程
 
-Visual Studio Team Services 和 Team Foundation Server (TFS) 提供高度可配置和可管理管道发布到多个环境，如开发、 过渡、 QA 和生产环境;包括在特定阶段需要审批。
+Azure 管道和 Azure DevOps 服务器提供高度可配置和可管理管道发布到多个环境，如开发、 过渡、 QA 和生产环境;包括在特定阶段需要审批。
 
 ## <a name="create-release-definition"></a>创建发布定义
 
@@ -228,11 +230,11 @@ Visual Studio Team Services 和 Team Foundation Server (TFS) 提供高度可配�
 21. 保存所有更改。
 
 > [!Note]  
-> 任务的一些设置可能会自动被定义为[环境变量](https://docs.microsoft.com/vsts/build-release/concepts/definitions/release/variables?view=vsts#custom-variables)从模板创建发布定义时。 任务设置;，无法修改这些设置相反，必须选择父环境项可以编辑这些设置
+> 任务的一些设置可能会自动被定义为[环境变量](https://docs.microsoft.com/azure/devops/pipelines/release/variables?view=vsts&tabs=batch#custom-variables)从模板创建发布定义时。 任务设置;，无法修改这些设置相反，必须选择父环境项可以编辑这些设置
 
 ## <a name="publish-to-azure-stack-via-visual-studio"></a>发布到 Azure Stack 通过 Visual Studio
 
-通过创建终结点，Visual Studio Online (VSTO) 生成可以将 Azure 服务应用部署到 Azure Stack。 VSTS 会连接到生成代理，而后者会连接到 Azure Stack。
+通过创建终结点，Visual Studio Online (VSTO) 生成可以将 Azure 服务应用部署到 Azure Stack。 Azure 管道连接到生成代理，连接到 Azure Stack。
 
 1.  登录到 VSTO，然后导航到应用设置页。
 
@@ -254,18 +256,18 @@ Visual Studio Team Services 和 Team Foundation Server (TFS) 提供高度可配�
 
 10. 选择“保存更改”。
 
-有了终结点信息以后，就可以使用 VSTS 到 Azure Stack 的连接了。 Azure Stack 中的生成代理会从 VSTS 获取指令，然后，此代理会传达与 Azure Stack 通信所需的终结点信息。
+现在，已存在的终结点信息，Azure Stack 连接到 Azure 管道是可供使用。 在 Azure Stack 中的生成代理从 Azure 管道获取说明和代理然后传达与 Azure Stack 进行通信的终结点信息。
 
 ## <a name="develop-the-application-build"></a>开发应用程序生成
 
 > [!Note]  
 > Azure 堆栈用于综合运行 （Windows Server 和 SQL） 和应用服务部署到的正确映像是必需的。 查看应用服务文档"[开始使用 Azure Stack 上的应用服务之前](../azure-stack-app-service-before-you-get-started.md)"部分，了解 Azure Stack 操作员。
 
-使用[Azure 资源管理器模板，如 web](https://azure.microsoft.com/resources/templates/)从 VSTS 部署到两个云应用程序代码。
+使用[Azure 资源管理器模板，如 web](https://azure.microsoft.com/resources/templates/)从 Azure 存储库，以便部署到这两个云应用程序代码。
 
-### <a name="add-code-to-a-vsts-project"></a>将代码添加到 VSTS 项目
+### <a name="add-code-to-a-azure-repos-project"></a>将代码添加到 Azure 存储库项目
 
-1.  使用在 Azure Stack 上拥有项目创建权限的帐户登录到 VSTS。 下一屏幕捕获显示如何连接到 HybridCICD 项目。
+1.  使用 Azure Stack 具有项目创建权限的帐户登录到 Azure 存储库。 下一屏幕捕获显示如何连接到 HybridCICD 项目。
 
 2.  创建并打开默认 Web 应用以**克隆存储库**。
 
@@ -273,13 +275,13 @@ Visual Studio Team Services 和 Team Foundation Server (TFS) 提供高度可配�
 
 1.  编辑**WebApplication.csproj**文件： 选择**Runtimeidentifier**以及如何将 win10-x64。 有关详细信息，请参阅[独立的部署](https://docs.microsoft.com/dotnet/core/deploying/#self-contained-deployments-scd)文档。
 
-2.  使用团队资源管理器将代码签入 VSTS。
+2.  使用团队资源管理器将代码签入 Azure 存储库。
 
-3.  确认应用程序代码已签入 Visual Studio Team Services。
+3.  确认应用程序代码已签入到 Azure 存储库。
 
 ### <a name="create-the-build-definition"></a>创建生成定义
 
-1.  使用可以创建生成定义的帐户登录到 VSTS。
+1.  可以创建生成定义的帐户登录到 Azure 管道。
 
 2.  导航到**生成 Web 应用程序**项目页。
 
@@ -289,17 +291,17 @@ Visual Studio Team Services 和 Team Foundation Server (TFS) 提供高度可配�
 
 #### <a name="use-an-azure-hosted-build-agent"></a>使用 Azure 托管生成代理
 
-在 VSTS 中使用托管生成代理是生成并部署 Web 应用的便捷做法。 Microsoft Azure，从而使连续和不间断地开发周期自动执行代理维护和升级。
+在 Azure 管道中使用托管的生成代理是一个方便的选项，用于构建和部署 web 应用。 Microsoft Azure，从而使连续和不间断地开发周期自动执行代理维护和升级。
 
 ### <a name="configure-the-continuous-deployment-cd-process"></a>配置持续部署 (CD) 过程
 
-Visual Studio Team Services (VSTS) 和 Team Foundation Server (TFS) 提供高度可配置、可管理的管道，用于将内容发布到多个环境（例如开发、过渡、质量保证 (QA) 和生产）。 此过程可能包括要求在应用程序生命周期的特定阶段进行审批。
+Azure 的管道和 Azure DevOps 服务器到多个环境，如开发、 过渡、 质量保证 (QA) 和生产版本提供高度可配置和可管理管道。 此过程可能包括要求在应用程序生命周期的特定阶段进行审批。
 
 #### <a name="create-release-definition"></a>创建发布定义
 
 创建发布定义是在应用程序中的最后一步生成过程。 此发布定义用于创建一个发布并部署一个生成。
 
-1.  登录到 VSTS，并导航到**生成和发布**项目。
+1.  登录到 Azure 管道并导航到**生成和发布**项目。
 
 2.  上**版本**选项卡上，选择 **[+]** ，然后选取**创建发布定义**。
 
@@ -346,7 +348,7 @@ Visual Studio Team Services (VSTS) 和 Team Foundation Server (TFS) 提供高度
 23. 保存所有更改。
 
 > [!Note]  
-> 发布任务的某些设置会自动定义作为[环境变量](https://docs.microsoft.com/vsts/build-release/concepts/definitions/release/variables?view=vsts#custom-variables)从模板创建发布定义时。 这些设置不能修改在任务设置，但可以在父环境项目中修改。
+> 发布任务的某些设置会自动定义作为[环境变量](https://docs.microsoft.com/azure/devops/pipelines/release/variables?view=vsts&tabs=batch#custom-variables)从模板创建发布定义时。 这些设置不能修改在任务设置，但可以在父环境项目中修改。
 
 ## <a name="create-a-release"></a>创建发布
 
