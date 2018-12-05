@@ -29,7 +29,7 @@ ms.locfileid: "46971359"
 
 ## <a name="prerequisites"></a>先决条件
 
-完成本教程：
+完成本教程需要：
 
 - <a href="https://hub.docker.com/" target="_blank">注册 Docker 中心帐户</a>
 - <a href="https://docs.docker.com/docker-for-windows/install/" target="_blank">安装用于 Windows 的 Docker</a>。
@@ -64,7 +64,7 @@ ms.locfileid: "46971359"
 FROM microsoft/aspnet:4.7.1
 ```
 
-在菜单中，选择“调试>启动但不调试”以在本地运行 Web 应用。
+在菜单中，选择“调试>非调试启动”以在本地运行 Web 应用。
 
 ![在本地运行应用](./media/app-service-web-get-started-windows-container/local-web-app.png)
 
@@ -80,7 +80,7 @@ FROM microsoft/aspnet:4.7.1
 
 提供 Docker 中心帐户凭据，然后单击“保存”。 
 
-等待部署完成。 “发布”页现会显示以后要在应用服务中使用的存储库名称。
+等待部署完成。 “发布”页会显示以后要在应用服务中使用的存储库名称。
 
 ![从项目概述页发布](./media/app-service-web-get-started-windows-container/published-docker-repository.png)
 
@@ -94,13 +94,13 @@ FROM microsoft/aspnet:4.7.1
 
 1. 在 Azure 门户的左上角选择“创建资源”。
 
-2. 在 Azure 市场资源列表上方的搜索框中，搜索并选择“容器的 Web 应用”。
+2. 在 Azure 市场资源列表上方的搜索框中，搜索并选择“用于容器的 Web 应用”。
 
-3. 提供应用名称（例如 win-container-demo），接受创建新资源组所需的默认设置，然后在“OS”框中单击“Windows (预览版)”。
+3. 提供应用名称（例如 win-container-demo），保留创建新资源组所需的默认设置，然后在“OS”框中单击“Windows (预览)”。
 
     ![](media/app-service-web-get-started-windows-container/portal-create-page.png)
 
-4. 单击“应用服务计划/位置” > “新建”，创建应用服务计划。 为新计划提供一个名称，接受默认设置，然后单击“确定”。
+4. 单击“应用服务计划/位置” > “新建”，创建应用服务计划。 为新计划提供一个名称，保留默认设置，然后单击“确定”。
 
     ![](media/app-service-web-get-started-windows-container/portal-create-plan.png)
 
@@ -112,7 +112,7 @@ FROM microsoft/aspnet:4.7.1
 
 6. 单击“创建”，等待 Azure 创建所需的资源。
 
-## <a name="browse-to-the-container-app"></a>浏览到容器应用
+## <a name="browse-to-the-container-app"></a>浏览容器应用
 
 Azure 操作完成后，会显示通知框。
 
@@ -122,7 +122,7 @@ Azure 操作完成后，会显示通知框。
 
 2. 在应用页中，单击“URL”下的链接。
 
-此时会出现一个打开到以下页面的新浏览器页面：
+此时会打开一个新浏览器页面访问下图页面：
 
 ![](media/app-service-web-get-started-windows-container/app-starting.png)
 
@@ -130,11 +130,11 @@ Azure 操作完成后，会显示通知框。
 
 ![](media/app-service-web-get-started-windows-container/app-running-vs.png)
 
-**祝贺你！** 你现在是在 Azure 应用服务中运行第一个自定义 Windows 容器。
+**祝贺你！** 你在 Azure 应用服务中运行了第一个自定义 Windows 容器。
 
 ## <a name="see-container-start-up-logs"></a>查看容器启动日志
 
-Windows 容器的加载可能需要一定的时间。 若要查看进度，请导航到以下 URL（将 *\<app_name>* 替换为应用名称）。
+Windows 容器的加载可能需要一定的时间。 若要查看进度，请导航到以下 URL（将 *\<app_name>* 替换为你的应用名称）。
 ```
 https://<app_name>.scm.azurewebsites.net/api/logstream
 ```
@@ -170,7 +170,7 @@ https://<app_name>.scm.azurewebsites.net/api/logstream
 
 ![在 Azure 中重新启动 Web 应用](./media/app-service-web-get-started-windows-container/portal-restart-app.png)
 
-再次[浏览到容器应用](#browse-to-the-container-app)。 刷新网页时，应用应会先还原到“正在启动”页，然后在几分钟后再次显示更新的网页。
+再次[浏览容器应用](#browse-to-the-container-app)。 刷新网页时，应用会先还原到“正在启动”页，然后在几分钟后再次显示更新的网页。
 
 ![已在 Azure 中更新的 Web 应用](./media/app-service-web-get-started-windows-container/azure-web-app-updated.png)
 
