@@ -23,9 +23,9 @@ ms.locfileid: "50035308"
 az webapp deployment user set --user-name <username> --password <password>
 ```
 
-应该会获得一个 JSON 输出，密码显示为 `null`。 如果收到 `'Conflict'. Details: 409` 错误，请更改用户名。 如果收到 ` 'Bad Request'. Details: 400` 错误，请使用更强的密码。
+命令执行完成后你会获得一个 JSON 输出，密码显示为 `null`。 如果收到 `'Conflict'. Details: 409` 错误，请更改用户名。 如果收到 ` 'Bad Request'. Details: 400` 错误，请使用更强的密码。
 
-只创建此部署用户一次；可对所有 Azure 部署使用此用户。
+你只需创建此部署用户一次；之后可对所有 Azure 部署使用此用户。
 
 > [!NOTE]
 > 记录用户名和密码。 之后需要它们来部署 Web 应用。
