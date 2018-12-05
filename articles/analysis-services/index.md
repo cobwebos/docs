@@ -1,23 +1,19 @@
 ---
-title: Azure Analysis Services 文档 - 教程和 API 参考 | Microsoft 文档
+title: Azure Analysis Services 文档 - 教程和 API 参考
 description: 了解如何在云中使用 Analysis Services 设置数据建模。 文档介绍了如何使用表格数据创建企业 BI 解决方案。
 services: analysis-services
-author: czeumault
-manager: carolz
+author: minewiskan
+ms.author: owend
 layout: LandingPage
-ms.assetid: ''
 ms.service: azure-analysis-services
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: landing-page
 ms.date: 02/14/2018
-ms.author: carolz
-ms.openlocfilehash: 39b1870eebbaa1322e956576947bddb6b848c994
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 8e99f0d61b826c79e1458750ae42cc18742ec42a
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34595686"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52839596"
 ---
 # <a name="analysis-services-documentation"></a>Analysis Services 文档
 
@@ -86,40 +82,40 @@ ms.locfileid: "34595686"
 <ul class="panelContent cardsW">
     <li>
         <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardText">
-                        <h3>命令行</h3>
-                        <p><a href="/azure/analysis-services/analysis-services-powershell">PowerShell</a></p>
-                    </div>
-                </div>
-            </div>
-        </div>
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>命令行</h3>
+                        <p><a href="/azure/analysis-services/analysis-services-powershell">PowerShell</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </li>
     <li>
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardText">
-                        <h3>REST</h3>
-                        <p><a href="/rest/api/analysisservices/">REST API 参考</a></p>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>REST</h3>
+                        <p><a href="/rest/api/analysisservices/">REST API 参考</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </li>
     <li>
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardText">
-                        <h3>其他</h3>
-                        <p><a href="https://msdn.microsoft.com/library/gg413422.aspx">DAX</a></p>
-                        <p><a href="https://msdn.microsoft.com/library/mt211003.aspx">Power Query M</a></p>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>其他</h3>
+                        <p><a href="https://msdn.microsoft.com/library/gg413422.aspx">DAX</a></p>
+                        <p><a href="https://msdn.microsoft.com/library/mt211003.aspx">Power Query M</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </li>
 </ul>
 

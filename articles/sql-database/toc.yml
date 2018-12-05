@@ -143,8 +143,10 @@ items:
     items:
     - name: 托管实例
       href: sql-database-managed-instance-index.yml
-    - name: 概述
+    - name: 托管实例概述
       href: sql-database-managed-instance.md
+    - name: 创建和管理
+      href: sql-database-managed-instance-create-manage.md
     - name: 资源限制
       href: sql-database-managed-instance-resource-limits.md
     - name: VNet 集成
@@ -157,6 +159,8 @@ items:
         href: sql-database-managed-instance-sync-network-configuration.md
       - name: 连接体系结构
         href: sql-database-managed-instance-connectivity-architecture.md
+      - name: 管理终结点
+        href: sql-database-managed-instance-management-endpoint.md
       - name: 连接应用程序
         href: sql-database-managed-instance-connect-app.md
     - name: T-SQL 的差异
@@ -211,7 +215,7 @@ items:
     items:
     - name: 安全
       href: sql-database-security-index.yml
-    - name: 概述
+    - name: 安全概述
       href: sql-database-security-overview.md
     - name: 高级威胁防护
       items:
@@ -652,9 +656,9 @@ items:
     href: /azure/architecture/
   - name: 客户案例
     href: http://customers.microsoft.com/en-us/search?sq=%22Azure%20SQL%20Database%22&ff=&p=0&so=story_publish_date%20desc
-ms.openlocfilehash: 12add5f8ee32ce3c5207a604ef7cad821d5e5a4e
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: 2cc5240aa7302d687f0b7a2fad2af29105e86de0
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52165247"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52840412"

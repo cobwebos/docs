@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 08/14/2018
 ms.author: sethm
-ms.openlocfilehash: 2fa062621e551ce7182facc45ec84b39d4c2dad7
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: a770c88b294de24eb9e0f482681038e4d36b1d6f
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49078743"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52874594"
 ---
 # <a name="vpn-gateway-configuration-settings-for-azure-stack"></a>Azure Stack 的 VPN 网关配置设置
 
@@ -27,7 +27,7 @@ ms.locfileid: "49078743"
 
 VPN 网关是一种虚拟网络网关，可在 Azure Stack 中的虚拟网络与远程 VPN 网关之间发送加密流量。 远程 VPN 网关可位于 Azure 中、数据中心的设备中或另一个站点的设备中。  如果两个终结点之间有网络连接，可以在这两个网络之间建立安全的站点到站点 (S2S) VPN 连接。
 
-VPN 网关连接依赖于多个资源配置，其中每个资源包含可配置的设置。 本文讨论的资源和资源管理器部署模型中创建的虚拟网络的 VPN 网关相关的设置。 可在[关于 Azure Stack 的 VPN 网关](azure-stack-vpn-gateway-about-vpn-gateways.md)中找到每个连接解决方案的说明和拓扑图。
+VPN 网关连接依赖于多个资源配置，其中每个资源包含可配置的设置。 本文介绍与资源管理器部署模型中创建的虚拟网络的 VPN 网关相关的资源和设置。 可在[关于 Azure Stack 的 VPN 网关](azure-stack-vpn-gateway-about-vpn-gateways.md)中找到每个连接解决方案的说明和拓扑图。
 
 ## <a name="vpn-gateway-settings"></a>VPN 网关设置
 
@@ -100,7 +100,7 @@ New-AzureRmVirtualNetworkGatewayConnection -Name localtovon -ResourceGroupName t
 >
 > 此外，由于自定义 IPSec/IKE 策略配置尚不受支持，因此 Azure Stack 目前不支持对基于路由的网关使用基于策略的流量选择器。
 
-* **PolicyBased**：基于策略的 VPN 会根据使用本地网络和 Azure Stack VNet 之间的地址前缀的各种组合配置的 IPsec 策略，加密数据包并引导其通过 IPsec 隧道。 策略或流量选择器中，通常是 VPN 设备配置中的访问权限列表。
+* **PolicyBased**：基于策略的 VPN 会根据使用本地网络和 Azure Stack VNet 之间的地址前缀的各种组合配置的 IPsec 策略，加密数据包并引导其通过 IPsec 隧道。 策略或流量选择器通常是 VPN 设备配置中的访问列表。
 
   >[!NOTE]
   >PolicyBased 在 Azure 中受支持，但在 Azure Stack 中不受支持。
@@ -163,7 +163,7 @@ New-AzureRmLocalNetworkGateway -Name LocalSite -ResourceGroupName testrg
 
 ## <a name="ipsecike-parameters"></a>IPsec/IKE 参数
 
-在 Azure Stack 中设置 VPN 连接时，需在两端配置连接。  如果要配置 Azure Stack 与硬件设备，如交换机或路由器，它充当 VPN 网关之间的 VPN 连接，则该设备可能会要求你提供其他设置。
+在 Azure Stack 中设置 VPN 连接时，需在两端配置连接。  若要配置 Azure Stack 与硬件设备（例如用作 VPN 网关的交换机或路由器）之间的 VPN 连接，可能需要在该设备上进行其他设置。
 
 Azure Stack 仅支持一个产品/服务，这与 Azure 不同，后者支持将多个产品/服务用作发起程序和响应程序。
 
@@ -185,11 +185,11 @@ Azure Stack 仅支持一个产品/服务，这与 Azure 不同，后者支持将
 |加密和哈希算法（加密）     | GCMAES256|
 |加密和哈希算法（身份验证） | GCMAES256|
 |SA 生存期（时间）  | 27,000 秒  |
-|SA 生存期（字节数） | 33,553,408     |
-|完全向前保密 (PFS) |无<sup>请参阅备注 1</sup> |
+|SA 生存期 （千字节为单位） | 33,553,408     |
+|完全向前保密 (PFS) |无<sup>请参阅注释 1</sup> |
 |死对等体检测 | 支持|  
 
-* *注释 1:* 之前的版本 1807年，Azure Stack 使用 PFS2048 值为完全向前保密 (PFS)。
+* *注释 1：* 在版本 1807 以前，Azure Stack 使用值 PFS2048 作为“完全向前保密(PFS)”值。
 
 ## <a name="next-steps"></a>后续步骤
 

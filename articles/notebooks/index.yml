@@ -1,0 +1,74 @@
+### YamlMime:YamlDocument
+ms.openlocfilehash: 1be098bb098befecf29863bfe2d0d5220edddb01
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52852390"
+documentType: LandingData
+title: Azure Notebooks 文档
+metadata:
+  title: Azure Notebooks 文档 - 快速入门、教程和指南 | Microsoft Docs
+  description: 了解如何通过托管的 Azure Notebooks 服务创建、运行和共享 Jupyter 笔记本。
+  services: notebooks
+  author: kraigb
+  manager: douge
+  ms.service: notebooks
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 12/04/2018
+  ms.author: kraigb
+abstract:
+  description: Azure Notebooks 是免费的托管服务，用于在云中开发和运行 Jupyter 笔记本而无需进行安装。 Jupyter（以前称为 IPython）是一个开放源代码项目，可让你将 Markdown 文本、可执行代码（Python、R 和 F#）、持久性数据、图形和可视化效果轻松合并到单个可共享画布（称为笔记本）。
+sections:
+- title: 5 分钟快速入门
+  items:
+  - type: paragraph
+    text: 通过浏览这些快速入门了解如何使用 Azure Notebooks。
+  - type: list
+    style: cards
+    className: cardsM
+    columns: 2
+    items:
+    - href: /azure/notebooks/quickstart-create-share-jupyter-notebook
+      html: <p>了解如何在 Azure Notebooks 上创建并运行 Jupyter 笔记本，然后与他人共享该笔记本。</p>
+      image:
+        src: media/index/Azure_AddNotebook.svg
+      title: 创建和共享笔记本
+    - href: /azure/notebooks/quickstart-clone-jupyter-notebook
+      html: <p>了解如何克隆 GitHub 存储库中的 Jupyter 笔记本并在 Azure Notebooks 帐户中运行它。</p>
+      image:
+        src: media/index/Azure_ClonePage.svg
+      title: 克隆笔记本
+    - href: /azure/notebooks/quickstart-migrate-local-jupyter-notebook
+      html: <p>了解如何将 Jupyter 笔记本从本地计算机或 Web URL 传输到 Azure Notebooks，然后将其共享以进行协作。</p>
+      image:
+        src: media/index/Azure_MigrateNotebook.svg
+      title: 迁移本地 Jupyter 笔记本
+    - href: /azure/notebooks/quickstart-create-jupyter-notebook-project-environment
+      html: <p>了解如何使用一组特定的已安装包和启动脚本配置 Azure Notebooks 项目。</p>
+      image:
+        src: media/index/Azure_CustomEnvironment.svg
+      title: 在自定义环境下创建项目
+    - href: /azure/notebooks/quickstart-sign-in-azure-notebooks
+      html: <p>了解如何登录到 Azure Notebooks 并设置用户 ID，这使你能够访问已保存的项目并与他人共享笔记本。</p>
+      image:
+        src: media/index/Azure_UserAccount.svg
+      title: 登录并设置用户 ID
+- title: 分步教程
+  items:
+  - type: list
+    style: unordered
+    className: spaced noBullet
+    items:
+    - html: <a href="/azure/notebooks/tutorial-create-run-jupyter-notebook">了解如何从头到尾构建笔记本。</a>
+- title: 示例
+  items:
+  - type: paragraph
+    text: 参考以下示例来使用 Notebooks：
+  - type: list
+    style: unordered
+    className: spaced noBullet
+    items:
+    - html: <a href="/azure/notebooks/azure-notebooks-samples">示例 Jupyter 笔记本</a>
