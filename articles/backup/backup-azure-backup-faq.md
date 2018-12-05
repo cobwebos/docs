@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 10/23/2018
 ms.author: raynew
-ms.openlocfilehash: 2ba6fefb9c1d952fbfdb6942694d69565a299c2e
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 61e8a7732b7e6dc7fd521819a135fb1a7a6a13b3
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51241253"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52261660"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Azure 备份 - 常见问题
 本文回答有关 Azure 备份服务的常见问题。
@@ -125,7 +125,7 @@ Windows Storage Server 2012 64 位 | Standard、Workgroup | 使用最新服务�
 Windows Server 2008 R2 SP1 64 位 | Standard、Enterprise、Datacenter、Foundation | 使用最新更新。
 Windows Server 2008 64 位 | Standard、Enterprise、Datacenter | 使用最新更新。
 
-对于 Azure VM Linux 备份，Azure 备份支持 [Azure 认可的分发版列表](../virtual-machines/linux/endorsed-distros.md)，但 Core OS Linux 除外。  只要 VM 上装有 VM 代理且支持 Python，其他自带 Linux 发行版应该也能正常运行。
+对于 Azure VM Linux 备份，Azure 备份支持 [Azure 认可的分发版列表](../virtual-machines/linux/endorsed-distros.md)，但 Core OS Linux 和 32 位操作系统除外。 只要 VM 上装有 VM 代理且支持 Python，其他自带 Linux 发行版应该也能正常运行。
 
 
 ## <a name="are-there-size-limits-for-data-backup"></a>是否存在数据备份的大小限制？

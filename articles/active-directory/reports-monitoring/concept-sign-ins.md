@@ -16,12 +16,12 @@ ms.component: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: ae962cba5e3d08661eb1c93edfc2feb221a9367e
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: d3705267520087e098e3e2bcc55e677935dc6097
+ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51623754"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52275327"
 ---
 # <a name="sign-in-activity-reports-in-the-azure-active-directory-portal"></a>Azure Active Directory 门户中的“登录活动”报告
 
@@ -58,6 +58,9 @@ Azure Active Directory (Azure AD) 中的报告体系结构由以下部分组成�
 
 ![登录活动](./media/concept-sign-ins/61.png "登录活动")
 
+> [!IMPORTANT]
+> 登录报告仅显示“交互式”登录，即用户使用其用户名和密码进行的手动登录。 登录报告中不会显示服务到服务身份验证等非交互式登录。 
+
 登录日志有一个默认列表视图，用于显示：
 
 - 登录日期
@@ -93,7 +96,7 @@ Azure Active Directory (Azure AD) 中的报告体系结构由以下部分组成�
 若要将所报告数据的范围缩小到适当的级别，可以使用以下默认字段筛选登录数据：
 
 - 用户
-- 应用程序
+- Application
 - 登录状态
 - 条件性访问
 - 日期
@@ -106,15 +109,15 @@ Azure Active Directory (Azure AD) 中的报告体系结构由以下部分组成�
 
 “登录状态”筛选器用于选择：
 
-- 所有
-- 成功
+- All
+- Success
 - 失败
 
 使用“条件访问”筛选器可以选择登录的 CA 策略状态：
 
-- 所有
+- All
 - 未应用
-- 成功
+- Success
 - 失败
 
 “日期”筛选器用于定义已返回数据的时间范围。  
@@ -193,8 +196,8 @@ Azure Active Directory (Azure AD) 中的报告体系结构由以下部分组成�
 - 用户
 - 用户名
 - 应用程序 ID
-- 应用程序
-- 客户端
+- Application
+- Client
 - 位置
 - IP 地址
 - 日期

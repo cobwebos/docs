@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 11/21/2017
 ms.author: cshoe
-ms.openlocfilehash: 6f3b568fb23de51990f96a86cdc2b1814afe4530
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: 3d4c9e974f92f26b93900318c01dc8a659d8edbe
+ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50249908"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52276204"
 ---
 # <a name="azure-cosmos-db-bindings-for-azure-functions-1x"></a>适用于 Azure Functions 1.x 的 Azure Cosmos DB 绑定
 
@@ -1196,7 +1196,7 @@ Azure Cosmos DB 输出绑定允许使用 SQL API 将新文档写入 Azure Cosmos
 
 [跳过输出示例](#output---attributes)
 
-### <a name="ouput---c-examples"></a>输出 - C# 示例
+### <a name="output---c-examples"></a>输出 - C# 示例
 
 本部分包含以下示例：
 

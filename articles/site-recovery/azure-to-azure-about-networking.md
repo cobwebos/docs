@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 07/06/2018
 ms.author: sujayt
-ms.openlocfilehash: 77c445920041653ffb72d31e1dcfe4c368fb6642
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 37db2dd5908b231b9f04a5c009052d91724f6333
+ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37915919"
+ms.lasthandoff: 11/19/2018
+ms.locfileid: "51976242"
 ---
 # <a name="about-networking-in-azure-to-azure-replication"></a>关于 Azure 到 Azure 复制的网络
 
@@ -60,10 +60,9 @@ login.microsoftonline.com | 必需，用于向 Site Recovery 服务 URL 进行�
 - 对应于源区域中存储帐户的所有 IP 地址范围
     - 为源区域创建基于[存储服务标记](../virtual-network/security-overview.md#service-tags)的 NSG 规则。
     - 允许这些地址，才能从 VM 将数据写入到缓存存储帐户。
-- 对应于 Office 365 [身份验证和标识 IP V4 终结点](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2#bkmk_identity)的所有 IP 地址范围。
-    - 如果将来向 Office 365 范围添加新地址，则需要创建新的 NSG 规则。
+- 创建一个基于 [Azure Active Directory (AAD) 服务标记](../virtual-network/security-overview.md#service-tags)的 NSG 规则以允许访问与 AAD 对应的所有 IP 地址
+    - 如果将来要向 Azure Active Directory (AAD) 添加新地址，则需要创建新的 NSG 规则。
 - Site Recovery 服务终结点 IP 地址（[以 XML 文件形式提供](https://aka.ms/site-recovery-public-ips)，具体取决于目标位置）。
--  可以[下载并使用此脚本](https://aka.ms/nsg-rule-script)，以在 NSG 上自动创建所需的规则。
 - 在生产 NSG 中创建所需的 NSG 规则之前，建议先在测试 NSG 中创建这些规则，并确保没有任何问题。
 
 

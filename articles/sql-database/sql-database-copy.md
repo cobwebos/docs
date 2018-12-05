@@ -12,12 +12,12 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 10/05/2018
-ms.openlocfilehash: 639795824bf75bb99d34f12d4dfc4e0695341986
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: f3da1a8cef5abc8fd30a0dc7760005ad5fff5446
+ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48868406"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52335363"
 ---
 # <a name="copy-an-transactionally-consistent-copy-of-an-azure-sql-database"></a>复制 Azure SQL 数据库的事务一致性副本
 
@@ -26,6 +26,9 @@ ms.locfileid: "48868406"
 ## <a name="overview"></a>概述
 
 数据库副本是源数据库截至复制请求发出时的快照。 可以选择相同或不同的服务器、其服务层和计算大小，或相同服务层中的不同计算大小（版本）。 在完成该复制后，副本将成为能够完全行使功能的独立数据库。 此时，可以升级或降级到任意版本。 登录名、用户和权限可单独进行管理。  
+
+> [!NOTE]
+> 在创建数据库副本时，将用到[自动数据库备份](sql-database-automated-backups.md)。
 
 ## <a name="logins-in-the-database-copy"></a>数据库副本中的登录名
 

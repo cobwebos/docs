@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/25/2018
+ms.date: 11/15/2018
 ms.author: spelluru
-ms.openlocfilehash: 3ecbef3b3063ceb413b852f8000b44a85d28d08e
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: 8bd64aaa51faf968c0c7ae374daad3de4ca3a343
+ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50142673"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51706851"
 ---
 # <a name="create-and-manage-a-classroom-template-in-azure-lab-services"></a>在 Azure 实验室服务中创建和管理课堂模板
 实验室中的模板是基础虚拟机映像，用户的所有虚拟机均依据其创建。 设置模板虚拟机，为其准确配置需要提供给实验室用户的内容。 你可以提供实验室用户看到的模板的名称和描述。 然后发布此模板，让模板 VM 的实例可供实验室用户使用。 发布模板时，Azure 实验室服务会使用该模板在实验室中创建 VM。 在此过程中创建的 VM 数等于允许进入实验室的最大用户数，这可以在实验室的使用策略中设置。 所有虚拟机的配置都与模板相同。
@@ -88,16 +88,14 @@ ms.locfileid: "50142673"
 ## <a name="set-up-a-template-after-creating-a-lab"></a>创建实验室后设置模板 
 还可以在创建实验室后设置模板。   
 
-### <a name="set-template-title-and-description"></a>设置模板标题和说明
-1. 在“模板”部分，选择与模板相对应的“编辑”（铅笔图标）。 
-2. 在“用户视图”窗口中，输入模板的“标题”。
-3. 输入模板的“说明”。
-4. 选择“保存”。
+## <a name="set-or-update-template-title-and-description"></a>设置或更新模板标题和说明
+使用以下步骤来首次设置标题和说明，并在之后更新。 
 
-    ![课堂实验室说明](../media/how-to-manage-classroom-labs/lab-description.png)
+1. 在“模板”部分，将鼠标移动到模板“名称”上或模板“说明”上，并将其选中。 
+2. 为模板输入“新的名称”或“新的说明”，然后按 Enter。
 
-### <a name="set-up-the-template-vm"></a>设置模板 VM
- 请先连接到模板 VM 并在其上安装任何必需的软件，然后再将其提供给学生。 
+## <a name="set-up-or-update-a-template-vm"></a>设置或更新模板 VM
+ 请先连接到模板 VM 并在其上安装任何必需的软件，然后再将其提供给学生。 使用以下步骤来首次设置模板 VM 或更新 VM。 
 
 1. 等待模板虚拟机准备就绪。 在它准备就绪后，“启动”按钮会变为已启用状态。 若要启动此 VM，请选择“启动”。
 
@@ -112,7 +110,7 @@ ms.locfileid: "50142673"
     ![停止模板 VM](../media/tutorial-setup-classroom-lab/stop-template-vm.png)
 
 
-## <a name="publish-the-template"></a>发布模板 
+## <a name="publish-the-template-vm"></a>发布模板 VM
 如果不在创建实验室时发布模板，可在以后再发布。 在发布之前，可能需要连接到模板 VM，并使用任何软件对其进行更新。 发布模板时，Azure 实验室服务会使用该模板在实验室中创建 VM。 在此过程中创建的 VM 数等于允许进入实验室的最大用户数，这可以在实验室的使用策略中设置。 所有虚拟机的配置都与模板相同。 
 
 1. 在“模板”部分中选择“发布”。 
@@ -125,7 +123,7 @@ ms.locfileid: "50142673"
 4. 切换到“虚拟机”页，确认看到这些虚拟机处于“未分配”状态。 这些 VM 尚未分配给学生。 
 
     ![虚拟机](../media/tutorial-setup-classroom-lab/virtual-machines.png)
-5. 等待 VM 创建完毕。 它们应该处于“已停止”状态。 可以在此页上启动学生 VM，连接到该 VM，停止该 VM，然后删除该 VM。 你可以在此页中启动这些 VM，也可以让你的学生启动它们。 
+5. 等待 VM 创建完毕。 它们应该处于“已停止”状态。 可以在此页上启动学生 VM，连接到该 VM，停止该 VM，然后删除该 VM。 可以在此页上启动这些 VM，也可以让你的学生启动它们。 
 
     ![处于已停止状态的虚拟机](../media/tutorial-setup-classroom-lab/virtual-machines-stopped.png)
 
@@ -147,7 +145,9 @@ ms.locfileid: "50142673"
     ![重新发布成功](../media/how-to-create-manage-template/republish-success.png)
 
 ## <a name="next-steps"></a>后续步骤
-开始使用 Azure 实验室服务设置实验室：
+请参阅以下文章：
 
-- [设置课堂实验室](how-to-manage-classroom-labs.md)
-- [设置实验室](../tutorial-create-custom-lab.md)
+- [以管理员身份创建并管理实验室帐户](how-to-manage-lab-accounts.md)
+- [以实验室所有者身份创建并管理实验室](how-to-manage-classroom-labs.md)
+- [以实验室所有者身份配置并控制实验室的使用](how-to-configure-student-usage.md)
+- [以实验室用户身份访问教室实验室](how-to-use-classroom-lab.md)

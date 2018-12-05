@@ -10,12 +10,12 @@ ms.component: content-moderator
 ms.topic: conceptual
 ms.date: 10/10/2018
 ms.author: sajagtap
-ms.openlocfilehash: 79fe761bc6d8bb9561701fd11b06b010bf3454f6
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 259919f3b7cb0b614450c94f876cff933a5e01e8
+ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51260000"
+ms.lasthandoff: 11/17/2018
+ms.locfileid: "51852684"
 ---
 # <a name="quickstart-get-familiar-with-content-moderator"></a>快速入门：熟悉内容审查器
 
@@ -26,7 +26,7 @@ ms.locfileid: "51260000"
 - Web 浏览器
 
 ## <a name="set-up-the-review-tool"></a>设置评审工具
-内容审查器评审工具是一个基于 Web 的工具，可让评审人员借助认知服务做出决策。 在本指南中，你将执行一个简短的过程来设置评审工具，以便可以了解内容审查器服务的工作原理。 转到[内容审查器评审工具](https://contentmoderator.cognitive.microsoft.com/)站点并注册。
+内容审查器评审工具是一个基于 Web 的工具，可让评审人员协助认知服务做出决策。 在本指南中，你将执行一个简短的过程来设置评审工具，以便可以了解内容审查器服务的工作原理。 转到[内容审查器评审工具](https://contentmoderator.cognitive.microsoft.com/)站点并注册。
 
 ![内容审查器主页](images/homepage.PNG)
 
@@ -54,11 +54,11 @@ ms.locfileid: "51260000"
 
 在项目中，你或评审团队可以更改这些标记，或根据需要添加更多的标记。 单击“下一步”按钮提交这些更改。 当业务应用程序调用审查器 API 时，标记的内容将在此处排队，等待评审人员团队进行评审。 可以使用此方法快速评审大量内容。
 
-现在，你已使用内容审查器评审工具通过示例了解了内容审查器服务的功能。 接下来，可以详细了解评审工具，以及如何使用评审 API 将它集成到软件项目，或者，可以跳转到[后续步骤](#next-steps)部分来了解如何在应用中单独使用审查 API。
+现在，你已使用内容审查器评审工具来通过示例了解了内容审查器服务的功能。 接下来，可以详细了解评审工具，以及如何使用评审 API 将它集成到软件项目，或者，可以跳转到[后续步骤](#next-steps)部分来了解如何在应用中单独使用审查 API。
 
 ## <a name="learn-more-about-the-review-tool"></a>详细了解评审工具
 
-若要详细了解如何使用内容审查器评审工具，请查看[人机回圈](Review-Tool-User-Guide/human-in-the-loop.md)指南，并参阅“评审工具 API”来了解如何微调人工评审体验：
+若要详细了解如何使用内容审查器评审工具，请查看[审核工具](Review-Tool-User-Guide/human-in-the-loop.md)指南，并参阅审核工具 API 以了解如何优化人工审核体验：
 - [作业 API](try-review-api-job.md) 使用审核 API 审查你的内容，并在评审工具中生成评论。 
 - [评审 API](try-review-api-review.md) 无需先扫描内容即可直接为人工审查器创建图像、文本或视频评论。 
 - [工作流 API](try-review-api-workflow.md) 可创建、更新和获取有关团队创建的自定义工作流的详细信息。

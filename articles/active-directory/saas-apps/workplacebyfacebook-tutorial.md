@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/30/2018
 ms.author: jeedes
-ms.openlocfilehash: 1f83dd64c7f6773ddb8956e6ebbc37b8c55aacec
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 2e072a27087f90bddd3f7c416904758e40c2f6b9
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39423865"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52425156"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workplace-by-facebook"></a>教程：Azure Active Directory 与 Workplace by Facebook 集成
 
@@ -116,7 +116,7 @@ ms.locfileid: "39423865"
 
     ![配置单一登录](./media/workplacebyfacebook-tutorial/tutorial_workplacebyfacebook_url.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL： `https://<instancename>.facebook.com`
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“登录 URL”文本框中，使用以下模式键入 URL： `https://<instancename>.facebook.com`
 
     b. 在“标识符”文本框中，使用以下模式键入 URL：`https://www.facebook.com/company/<instanceID>`
 
@@ -140,7 +140,7 @@ ms.locfileid: "39423865"
    > [!NOTE] 
    > 作为 SAML 身份验证过程的一部分，Workplace 可使用查询字符串（最大为 2.5 KB）将参数传递给 Azure AD。
 
-1. 在“公司仪表板”中，转到“身份验证”选项卡。
+1. 在“管理员面板”中，转到“安全”选项卡，然后转到“身份验证”。
 
 1. 在“SAML 身份验证”下，从下拉列表中选择“仅 SSO”。
 
@@ -198,7 +198,7 @@ ms.locfileid: "39423865"
  
     ![创建 Azure AD 测试用户](./media/workplacebyfacebook-tutorial/create_aaduser_04.png) 
 
-    a. 在“名称”文本框中，键入 **BrittaSimon**。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
 
     b. 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
@@ -254,7 +254,7 @@ ms.locfileid: "39423865"
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](tutorial-list.md)
-* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
+* [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 * [配置用户预配](workplacebyfacebook-provisioning-tutorial.md)
 
 

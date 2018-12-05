@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 08/09/2018
 ms.author: jroth
-ms.openlocfilehash: a748532de7e8b8e910e335b67a693c4470861bf1
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: b19cf9cd4b67479d811a590cb80a618680f3b3d5
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40003553"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52496483"
 ---
 # <a name="pricing-guidance-for-sql-server-azure-vms"></a>SQL Server Azure VM 的定价指南
 
@@ -54,7 +54,7 @@ ms.locfileid: "40003553"
 
 若拥有非轻型生产工作负荷，请使用以下 SQL Server 版本之一：
 
-| SQL Server 版本 | 工作负载 |
+| SQL Server 版本 | 工作负荷 |
 |-----|-----|
 | Web | 小型网站 |
 | Standard | 中小型工作负荷 |
@@ -90,6 +90,9 @@ ms.locfileid: "40003553"
 >
 >而不包括 Web、Standard 和 Enterprise 版本的其他 SQL Server 许可成本。 若要获取最准确的估算定价，请在适用于 [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows/) 或 [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) 的定价页上选择操作系统和 SQL Server 版本。
 
+> [!NOTE]
+> 现在可以在按用量付费和自带许可证 (BYOL) 的许可模型之间来回更改。 有关详细信息，请参阅[如何更改 SQL VM 的许可模型](virtual-machines-windows-sql-ahb.md)。 
+
 ## <a id="byol"></a> 自带许可证 (BYOL)
 
 “通过许可移动性使用自己的 SQL Server 许可证”（也称为**BYOL**）是指在 Azure VM 中使用带软件保障的现有 SQL Server 批量许可证。 使用 BYOL 的 SQL Server VM 仅收取 VM 运行费用，而不收取 SQL Server 许可的费用，前提是已通过批量许可计划获得许可证和软件保障。
@@ -123,7 +126,9 @@ ms.locfileid: "40003553"
 > 请于 10 日内告知我们正在 Azure 中使用的 SQL Server 许可证数。 上述映像的链接具有如何执行此操作的说明。
 
 > [!NOTE]
-> 无法更改按秒付费的 SQL Server VM 的许可模式来使用自己的许可证。 要使用自己的许可证，必须创建新的 BYOL VM，并将数据库迁移到新 VM。
+> 现在可以在按用量付费和自带许可证 (BYOL) 的许可模型之间来回更改。 有关详细信息，请参阅[如何更改 SQL VM 的许可模型](virtual-machines-windows-sql-ahb.md)。 
+
+
 
 ## <a name="reduce-costs"></a>降低成本
 

@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 11/21/2017
 ms.author: cshoe
-ms.openlocfilehash: 4a1f9552b9a578cd34f3482e793947e06bb24407
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: 24bc0b19d03148e98083fe6d21dd3980fcdf3714
+ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50249761"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52276599"
 ---
 # <a name="azure-cosmos-db-bindings-for-azure-functions-2x"></a>适用于 Azure Functions 2.x 的 Azure Cosmos DB 绑定
 
@@ -187,7 +187,7 @@ JavaScript 代码如下所示：
             databaseName = "ToDoList",
             collectionName = "Items",
             leaseCollectionName = "leases",
-            reateLeaseCollectionIfNotExists = true,
+            createLeaseCollectionIfNotExists = true,
             connectionStringSetting = "AzureCosmosDBConnection") String[] items,
             final ExecutionContext context ) {
                 context.getLogger().info(items.length + "item(s) is/are changed.");
@@ -1277,7 +1277,7 @@ Azure Cosmos DB 输出绑定允许使用 SQL API 将新文档写入 Azure Cosmos
 
 [跳过输出示例](#output---attributes)
 
-### <a name="ouput---c-examples"></a>输出 - C# 示例
+### <a name="output---c-examples"></a>输出 - C# 示例
 
 本部分包含以下示例：
 

@@ -7,15 +7,15 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: implement
-ms.date: 04/18/2018
+ms.date: 11/26/2018
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: 81fd5ea082fe05c9908b2eb0689aba9a4fe4e789
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: 0324a6f71a0a30fc9f3005a041b4c5413e6af8da
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43307126"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52317295"
 ---
 # <a name="best-practices-for-azure-sql-data-warehouse"></a>Azure SQL 数据仓库最佳实践
 本文包含一系列最佳实践，可帮助你从 Azure SQL 数据仓库获得最佳性能。  本文的有些概念很基本且很容易解释，而有些概念则相对高级，本文只对其进行大致介绍。  本文的目的是提供一些基本指导，让用户在生成数据仓库时更加关注那些重要的方面。  每部分都介绍一个概念，并提供哪里可以阅读深度介绍的详细文章。
@@ -39,7 +39,7 @@ ms.locfileid: "43307126"
 另请参阅 [INSERT][INSERT]
 
 ## <a name="use-polybase-to-load-and-export-data-quickly"></a>使用 PolyBase 快速加载和导出数据
-SQL 数据仓库支持通过多种工具（包括 Azure 数据工厂、PolyBase、BCP）来加载和导出数据。  对于少量的数据，性能不是那么重要，任何工具都可以满足需求。  但是，当要加载或导出大量数据，或者需要快速的性能时，PolyBase 是最佳选择。  PolyBase 使用 SQL 数据仓库的 MPP（大规模并行处理）体系结构，因此加载和导出巨量数据的速度比其他任何工具更快。  可使用 CTAS 或 INSERT INTO 来运行 PolyBase 加载。  **使用 CTAS 可以减少事务日志记录，是加载数据最快的方法。**  Azure 数据工厂也支持 PolyBase 加载。  PolyBase 支持各种不同的文件格式，包括 Gzip 文件。  **要在使用 gzip 文本文件时获得最大的吞吐量，请将文件分成 60 个以上的文件让加载有最大化的并行度。**  若要更快的总吞吐量，请考虑并行加载数据。
+SQL 数据仓库支持通过多种工具（包括 Azure 数据工厂、PolyBase、BCP）来加载和导出数据。  对于少量的数据，性能不是那么重要，任何工具都可以满足需求。  但是，当要加载或导出大量数据，或者需要快速的性能时，PolyBase 是最佳选择。  PolyBase 使用 SQL 数据仓库的 MPP（大规模并行处理）体系结构，因此加载和导出巨量数据的速度比其他任何工具更快。  可使用 CTAS 或 INSERT INTO 来运行 PolyBase 加载。  **使用 CTAS 可以减少事务日志记录，是加载数据最快的方法。**  Azure 数据工厂还支持 PolyBase 加载，并且可以实现与 CTAS 类似的性能。  PolyBase 支持各种不同的文件格式，包括 Gzip 文件。  **要在使用 gzip 文本文件时获得最大的吞吐量，请将文件分成 60 个以上的文件让加载有最大化的并行度。**  若要更快的总吞吐量，请考虑并行加载数据。
 
 另请参阅[加载数据][Load data]、[PolyBase 使用指南][Guide for using PolyBase]、[Azure SQL Data Warehouse loading patterns and strategies][Azure SQL Data Warehouse loading patterns and strategies]（Azure SQL 数据仓库加载模式和策略）、[使用 Azure 数据工厂加载数据][Load Data with Azure Data Factory]、[使用 Azure 数据工厂移动数据][Move data with Azure Data Factory]、[CREATE EXTERNAL FILE FORMAT][CREATE EXTERNAL FILE FORMAT]、[Create table as select (CTAS)][Create table as select (CTAS)]
 

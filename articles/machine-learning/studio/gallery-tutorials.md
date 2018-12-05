@@ -1,10 +1,11 @@
 ---
-title: Azure AI 库教程 | Microsoft Docs
+title: Azure AI 库教程 - Azure 机器学习工作室 | Microsoft Docs
 description: 在 Azure AI 库中发现和共享教程。
 services: machine-learning
 documentationcenter: ''
-author: heatherbshapiro
-ms.author: hshapiro
+author: ericlicoding
+ms.custom: (previous ms.author=hshapiro, author=heatherbshapiro)
+ms.author: amlstudiodocs
 manager: hjerez
 editor: cgronlun
 ms.assetid: 70f0eb31-7dca-4907-a5d7-504357dcd889
@@ -15,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2017
-ms.openlocfilehash: 4ef653a603bccc001a5bbbb4c2af97e5ca0b20a8
-ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
+ms.openlocfilehash: ea0b6e3a4275c2d09c76bd57ec4e838413638d6e
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51344427"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52311817"
 ---
 # <a name="discover-and-share-tutorials-in-azure-ai-gallery"></a>在 Azure AI 库中发现和共享教程
 

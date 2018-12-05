@@ -1,11 +1,12 @@
 ---
-title: 使用机器学习的信用风险预测解决方案 | Microsoft Docs
+title: 信用风险预测解决方案 - Azure 机器学习工作室 | Microsoft Docs
 description: 详细演练中介绍如何创建预测分析解决方案，用于在 Azure 机器学习工作室中进行信用风险评估。
 keywords: 信用风险, 预测分析解决方案, 风险评估
 services: machine-learning
 documentationcenter: ''
-author: heatherbshapiro
-ms.author: hshapiro
+author: ericlicoding
+ms.custom: (previous ms.author=hshapiro, author=heatherbshapiro)
+ms.author: amlstudiodocs
 ms.assetid: 43300854-a14e-4cd2-9bb1-c55c779e0e93
 ms.service: machine-learning
 ms.component: studio
@@ -14,14 +15,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/23/2017
-ms.openlocfilehash: a107907dd01b15015c644f835239f6f90b948296
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: a5dd8432ca79cca8de37f5d64027e0b9c498f3b9
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51245828"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52311936"
 ---
-# <a name="walkthrough-develop-a-predictive-analytics-solution-for-credit-risk-assessment-in-azure-machine-learning"></a>演练：开发预测分析解决方案，用于在 Azure 机器学习中评估信用风险
+# <a name="walkthrough-develop-a-predictive-analytics-solution-for-credit-risk-assessment-in-azure-machine-learning-studio"></a>演练：在 Azure 机器学习工作室中为信用风险评估开发预测分析解决方案
 
 在本演练中，我们将深入探讨在机器学习工作室中开发预测分析解决方案的过程。 我们会在机器学习工作室中开发一个简单模型，然后将其部署为 Azure 机器学习 Web 服务，以便模型在其中使用新数据进行预测。 
 

@@ -2,25 +2,21 @@
 title: 了解 Azure AD 应用程序代理连接器 | Microsoft 文档
 description: 介绍有关 Azure AD 应用程序代理连接器的基础知识。
 services: active-directory
-documentationcenter: ''
 author: barbkess
 manager: mtillman
 ms.service: active-directory
 ms.component: app-mgmt
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/17/2018
+ms.date: 11/15/2018
 ms.author: barbkess
 ms.reviewer: japere
-ms.custom: it-pro
-ms.openlocfilehash: 62738cda8ce37ec7ca50e1e3f285dc71a37113f7
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: dce9c26d9f836a2238642521be4d88ba089058d7
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51036031"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52445952"
 ---
 # <a name="understand-azure-ad-application-proxy-connectors"></a>了解 Azure AD 应用程序代理连接器
 
@@ -32,7 +28,24 @@ ms.locfileid: "51036031"
 
 ## <a name="requirements-and-deployment"></a>要求和部署
 
-若要成功部署应用程序代理，至少需要一个连接器，但我们建议部署两个或更多个连接器来提高弹性。 在 Windows Server 2012 R2 或 2016 计算机上安装连接器。 连接器需要能够与应用程序代理服务以及发布的本地应用程序通信。 应用程序代理还要求在底层操作系统上运行 TLS 1.2。 若要更改为 TLS 1.2，请按照[启用 TLS 1.2](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-prerequisites#enable-tls-12-for-azure-ad-connect) 中的步骤进行操作。 虽然该内容适用于 Azure AD Connect，但是此过程对于所有 .NET 客户端都是相同的。
+若要成功部署应用程序代理，至少需要一个连接器，但我们建议部署两个或更多个连接器来提高弹性。 在 Windows Server 2012 R2 或 2016 计算机上安装连接器。 连接器需要能够与应用程序代理服务以及发布的本地应用程序通信。 
+
+### <a name="windows-server"></a>Windows Server
+需要运行 Windows Server 2012 R2 或更高版本的服务器，可以在该服务器上安装应用程序代理连接器。 该服务器需连接到 Azure 中的应用程序代理服务和你要发布的本地应用程序。
+
+在安装应用程序代理连接器前，Windows Server 需要启用 TLS 1.2。 版本低于 1.5.612.0 的现有连接器继续使用早期版本的 TLS，直到另行通知。 启用 TLS 1.2：
+
+1. 设置以下注册表项：
+    
+    ```
+    [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2]
+    [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Client] "DisabledByDefault"=dword:00000000 "Enabled"=dword:00000001
+    [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Server] "DisabledByDefault"=dword:00000000 "Enabled"=dword:00000001
+    [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\.NETFramework\v4.0.30319] "SchUseStrongCrypto"=dword:00000001
+    ```
+
+2. 重启服务器
+
 
 有关连接器服务器的网络要求的详细信息，请参阅[开始使用应用程序代理和安装连接器](application-proxy-enable.md)。
 

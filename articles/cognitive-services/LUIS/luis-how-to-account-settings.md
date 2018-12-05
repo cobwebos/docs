@@ -8,14 +8,14 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 07/08/2018
+ms.date: 11/26/2018
 ms.author: diberry
-ms.openlocfilehash: f3086f09e29664b816ba709fc5cda75d7b11d1b4
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: bb41331228e700c55da21c627d617d16faa2dcb9
+ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47035243"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52335394"
 ---
 # <a name="manage-account-and-authoring-key"></a>管理帐户和创作密钥
 LUIS 帐户信息的两个关键部分是用户帐户和创作密钥。 登录信息在 [account.microsoft.com](https://account.microsoft.com) 上进行管理。 创作密钥在 [LUIS](luis-reference-regions.md) 网站的“设置”页面上进行管理。 
@@ -24,7 +24,7 @@ LUIS 帐户信息的两个关键部分是用户帐户和创作密钥。 登录�
 
 使用“设置”页面上的这个区域特定的单个创作密钥，可通过 [LUIS](luis-reference-regions.md) 网站和[创作 API](https://aka.ms/luis-authoring-api) 创作各种应用。 为方便起见，创作密钥每月可执行[有限](luis-boundaries.md)数量的终结点查询。 
 
-![LUIS 设置页](./media/luis-how-to-account-settings/account-settings.png)
+[![LUIS 设置页](./media/luis-how-to-account-settings/account-settings.png)](./media/luis-how-to-account-settings/account-settings.png#lightbox)
 
 创作密钥可用于你拥有的所有应用以及列为协作者的任何应用。
 

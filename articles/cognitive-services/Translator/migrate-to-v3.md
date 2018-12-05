@@ -10,16 +10,19 @@ ms.component: translator-text
 ms.topic: conceptual
 ms.date: 03/27/2018
 ms.author: v-jansko
-ms.openlocfilehash: e0654d6a4696e6f02939cad51a715412fdcfb61a
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: 2f0b2984bf2390a9af0b824495b84c71d04aeac2
+ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49645228"
+ms.lasthandoff: 11/17/2018
+ms.locfileid: "51852837"
 ---
 # <a name="translator-text-api-v2-to-v3-migration"></a>将文本翻译 API V2 迁移到 V3
 
-Microsoft Translator 团队已发布文本翻译 API 版本 3 (V3)。 此版本包括新的功能、弃用了一些方法，并提供与 Microsoft Translator 服务相互发送和接收数据时所用的新格式。 本文档提供有关将应用程序更改为使用 V3 的信息。 V2 已于 2018 年 4 月 30 日弃用，并将在 2019 年 4 月 30 日彻底淘汰。
+> [!NOTE]
+> V2 已于 2018 年 4 月 30 日弃用，并将在 2019 年 4 月 30 日彻底淘汰。
+
+Microsoft Translator 团队已发布文本翻译 API 版本 3 (V3)。 此版本包括新的功能、弃用了一些方法，并提供与 Microsoft Translator 服务相互发送和接收数据时所用的新格式。 本文档提供有关将应用程序更改为使用 V3 的信息。 
 
 本文档末尾包含有用的链接，便于你了解详细信息。
 

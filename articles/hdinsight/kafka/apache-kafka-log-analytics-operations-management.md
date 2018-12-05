@@ -9,18 +9,18 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/15/2018
-ms.openlocfilehash: 809196411df56c7448a9d0f983c17c60d5d3b4ae
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: bd8bfb8775bc9c988bb7484ac25f189c3ff46991
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51015411"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52317273"
 ---
 # <a name="analyze-logs-for-apache-kafka-on-hdinsight"></a>分析 HDInsight 上 Apache Kafka 的日志
 
 了解如何使用 Log Analytics 分析 HDInsight 上 Apache Kafka 生成的日志。
 
-## <a name="enable-log-analytics-for-kafka"></a>为 Kafka 启用 Log Analytics
+## <a name="enable-log-analytics-for-apache-kafka"></a>为 Apache Kafka 启用 Log Analytics
 
 对于所有 HDInsight 群集，启用适用于 HDInsight 的 Log Analytics 的步骤都是相同的。 通过访问以下链接来了解如何创建和配置所需的服务：
 
@@ -74,9 +74,9 @@ ms.locfileid: "51015411"
 
 有关 Log Analytics 的详细信息，请参阅 [Log Analytics 工作区入门](../../log-analytics/log-analytics-get-started.md)文档。
 
-有关使用 Kafka 的详细信息，请参阅以下文档：
+有关使用 Apache Kafka 的详细信息，请参阅以下文档：
 
- * [在 HDInsight 群集间执行 Kafka 镜像操作](apache-kafka-mirroring.md)
- * [增加 Kafka on HDInsight 的可伸缩性](apache-kafka-scalability.md)
- * [将 Spark 流式处理 (DStream) 与 Kafka 配合使用](../hdinsight-apache-spark-with-kafka.md)
- * [将 Spark 结构化流式处理与 Kafka 配合使用](../hdinsight-apache-kafka-spark-structured-streaming.md)
+ * [在 HDInsight 群集间执行 Apache Kafka 镜像操作](apache-kafka-mirroring.md)
+ * [增加 HDInsight 上的 Apache Kafka 的可伸缩性](apache-kafka-scalability.md)
+ * [将 Apache Spark 流式处理 (DStream) 与 Apache Kafka 配合使用](../hdinsight-apache-spark-with-kafka.md)
+ * [将 Apache Spark 结构化流式处理与 Apache Kafka 配合使用](../hdinsight-apache-kafka-spark-structured-streaming.md)

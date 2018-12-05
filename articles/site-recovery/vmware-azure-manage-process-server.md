@@ -2,16 +2,17 @@
 title: 使用 Azure Site Recovery 管理进程服务器，以便将 VMware VM 和物理服务器灾难恢复到 Azure | Microsoft Docs
 description: 本文介绍使用 Azure Site Recovery 管理为 VMware VM 和物理服务器灾难恢复到 Azure 而设置的进程服务器。
 author: Rajeswari-Mamilla
+manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: ramamill
-ms.openlocfilehash: d99b5d1fdca39466d5e09ca077329b7ffa8622bc
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: 180d84f40f3d439419f9667b246b8c4b5c69814a
+ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51568846"
+ms.lasthandoff: 11/19/2018
+ms.locfileid: "51974182"
 ---
 # <a name="manage-process-servers"></a>管理进程服务器
 
@@ -31,7 +32,41 @@ ms.locfileid: "51568846"
 > [!NOTE]
   通常，使用 Azure 库映像在 Azure 中创建用于故障回复的进程服务器时，该进程服务器运行最新的可用版本。 Site Recovery 团队会定期发布修补程序和增强功能，因此我们建议你使进程服务器保持最新。
 
+## <a name="balance-the-load-on-process-server"></a>均衡进程服务器上的负载
 
+要均衡两个进程服务器之间的负载，
+
+1. 导航至“恢复服务保管库” > “管理” > “站点恢复基础结构” > “对于 VMware 和物理机” > “配置服务器”。
+2. 单击进程服务器注册到的配置服务器。
+3. 页面上列出了注册到该配置服务器的进程服务器。
+4. 单击要修改其工作负载的进程服务器。
+
+    ![LoadBalance](media/vmware-azure-manage-process-server/LoadBalance.png)
+
+5. 可根据需要使用“负载均衡”或“切换”选项，如下所述。
+
+### <a name="load-balance"></a>负载均衡
+
+通过此选项，可选择一个或多个虚拟机，并可将它们传输到另一个进程服务器。
+
+1. 单击“负载均衡”，从下拉列表中选择目标进程服务器。 单击 **“确定”**
+
+    ![LoadPS](media/vmware-azure-manage-process-server/LoadPS.PNG)
+
+2. 单击“选择计算机”，选择要从当前进程服务器移动到目标进程服务器的虚拟机。 针对每个虚拟机显示平均数据更改的详细信息。
+3. 单击“确定”。 在“恢复服务保管库” > “监控” > “站点恢复作业”下监控作业进度。
+4. 此操作成功完成后，需要 15 分钟才能反映所做更改，或者可以[刷新配置服务器](vmware-azure-manage-configuration-server.md#refresh-configuration-server)使更改立即生效。
+
+### <a name="switch"></a>Switch
+
+通过此选项，受进程服务器保护的整个工作负载将移动到另一个进程服务器。
+
+1. 单击“切换”，选择目标进程服务器，然后单击“确认”。
+
+    ![Switch](media/vmware-azure-manage-process-server/Switch.PNG)
+
+2. 在“恢复服务保管库” > “监控” > “站点恢复作业”下监控作业进度。
+3. 此操作成功完成后，需要 15 分钟才能反映所做更改，或者可以[刷新配置服务器](vmware-azure-manage-configuration-server.md#refresh-configuration-server)使更改立即生效。
 
 ## <a name="reregister-a-process-server"></a>重新注册进程服务器
 

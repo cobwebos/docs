@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: faf3cc6c333ee8f8757ec24ecc8ea8299657c4a7
-ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
+ms.openlocfilehash: 0f36cd798faac275e0f6dcb8a81bd37e14ab6d8d
+ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51578478"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52275813"
 ---
 # <a name="about-technical-profiles-in-azure-active-directory-b2c-custom-policies"></a>关于 Azure Active Directory B2C 自定义策略中的技术配置文件
 
@@ -106,7 +106,7 @@ AAD-UserReadUsingAlternativeSecurityId-NoError 和 AAD-UserReadUsingAlternativeS
 </TechnicalProfile>
 ```
 
-技术配置文件可以包括或继承另一个技术配置文件，该文件可以包括其他配置文件。 级别数没有限制。 根据业务要求，用户旅程可能会调用 AAD-UserReadUsingAlternativeSecurityId（如果用户社交帐户不存在，则会引发错误）或不会引发错误的 AAD-UserReadUsingAlternativeSecurityId-NoError。
+技术配置文件可以包括或继承另一个技术配置文件，该文件可以包括其他配置文件。 级别数没有限制。 根据业务要求，用户旅程可能会调用 AAD-UserReadUsingAlternativeSecurityId（如果用户社交帐户不存在，则会引发错误）或 AAD-UserReadUsingAlternativeSecurityId-NoError（不会引发错误）。
 
 
 

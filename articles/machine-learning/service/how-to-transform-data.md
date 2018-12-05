@@ -10,30 +10,30 @@ author: cforbe
 manager: cgronlun
 ms.reviewer: jmartens
 ms.date: 09/24/2018
-ms.openlocfilehash: 06e7d227511a9b651a905df3172f59a191acce01
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.openlocfilehash: 988301f24f710a3e29fad1254d405501166e8a4e
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49945665"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52309787"
 ---
 # <a name="transform-data-with-the-azure-machine-learning-data-prep-sdk"></a>使用 Azure 机器学习数据准备 SDK 转换数据
 
-为了方便用户清理数据，[Azure 机器学习数据准备 SDK](https://docs.microsoft.com/python/api/overview/azure/dataprep?view=azure-dataprep-py) 提供各种转换方法。 使用这些方法，可以轻松地添加列、筛选掉不需要的行或列，以及估算缺失值。
+在本文中，你将学习使用 [Azure 机器学习数据准备 SDK](https://aka.ms/data-prep-sdk) 加载数据的各种方法。 使用 SDK 提供的函数可以轻松地添加列、筛选掉不需要的行或列，以及估算缺失值。
 
-目前的方法适用于执行以下任务：
+目前的函数适用于执行以下任务：
+
 - [使用表达式添加列](#column)
 - [估算缺失值](#impute-missing-values)
 - [按示例派生列](#derive-column-by-example)
 - [筛选](#filtering)
 - [自定义 Python 转换](#custom-python-transforms)
 
-<a name=column>
 ## <a name="add-column-using-an-expression"></a>使用表达式添加列
 
 Azure 机器学习数据准备 SDK 包含 `substring` 表达式，可用于根据现有列计算值，再将计算出的值放入新列中。 下面的示例先加载数据，再尝试将输入数据添加到相应列中。
 
-```
+```python
 import azureml.dataprep as dprep
 
 # loading data
@@ -48,10 +48,9 @@ dataflow.head(3)
 |2|10140270|HY329253|07/05/2015 11:20:00 PM|121XX S FRONT AVE|0486|BATTERY|DOMESTIC BATTERY SIMPLE|STREET|false|true|...|9|53|08B|||2015|07/12/2015 12:42:46 PM|
 
 
+使用 `substring(start, length)` 表达式从“案例号”列中提取前缀，再将该字符串放入新列“`Case Category`”中。 将 `substring_expression` 变量传递给 `expression` 参数会创建一个新的计算列，该列在每条记录上执行表达式。
 
-使用 `substring(start, length)` 表达式从“案例号”列中提取前缀，再将相应数据放入新列“案例类别”中。
-
-```
+```python
 substring_expression = dprep.col('Case Number').substring(0, 2)
 case_category = dataflow.add_column(new_column_name='Case Category',
                                     prior_column='Case Number',
@@ -67,8 +66,9 @@ case_category.head(3)
 
 
 
-使用 `substring(start)` 表达式仅从“案例号”列中提取数字，再将相应数据转换为数字数据类型并放入新列“案例 ID”中。
-```
+使用 `substring(start)` 表达式仅从“案例号”列中提取编号并新建一列。 使用 `to_number()` 函数将其转换为数值数据类型，并将字符串列名作为参数传递。
+
+```python
 substring_expression2 = dprep.col('Case Number').substring(2)
 case_id = dataflow.add_column(new_column_name='Case Id',
                               prior_column='Case Number',
@@ -85,9 +85,9 @@ case_id.head(3)
 
 ## <a name="impute-missing-values"></a>估算缺失值
 
-Azure 机器学习数据准备 SDK 可估算指定列中的缺失值。 下面的示例先加载纬度和经度值，再尝试估算输入数据中的缺失值。
+SDK 可以估算指定列中的缺失值。 下面的示例先加载纬度和经度值，再尝试估算输入数据中的缺失值。
 
-```
+```python
 import azureml.dataprep as dprep
 
 # loading input data
@@ -105,10 +105,11 @@ df.head(5)
 |3|10139885|false|41.902152|-87.754883|
 |4|10140379|false|41.885610|-87.657009|
 
-第三条记录缺少纬度和经度值。 若要估算这些缺失值，可使用 `ImputeMissingValuesBuilder` 学习固定程序。 它可使用计算得出的 `MIN`、`MAX` 或 `MEAN` 值或使用 `CUSTOM` 值来估算列。 如果指定 `group_by_columns`，将使用每组计算得出的 `MIN`、`MAX` 和 `MEAN` 按组估算缺失值。
+第三条记录缺少纬度和经度值。 若要估算这些缺失值，可使用 `ImputeMissingValuesBuilder` 学习固定表达式。 它可使用计算得出的 `MIN`、`MAX`、`MEAN` 值或 `CUSTOM` 值来估算列。 如果指定 `group_by_columns`，将使用每组计算得出的 `MIN`、`MAX` 和 `MEAN` 按组估算缺失值。
 
-首先，快速检查“纬度”列的 `MEAN` 值。
-```
+使用 `summarize()` 函数检查纬度列的 `MEAN` 值。 此函数接受 `group_by_columns` 参数中的列数组以指定聚合级别。 `summary_columns` 参数接受 `SummaryColumnsValue` 调用。 此函数调用指定当前列名、新计算字段的名称和要执行的 `SummaryFunction`。
+
+```python
 df_mean = df.summarize(group_by_columns=['Arrest'],
                        summary_columns=[dprep.SummaryColumnsValue(column_id='Latitude',
                                                                  summary_column_name='Latitude_MEAN',
@@ -121,10 +122,11 @@ df_mean.head(1)
 |-----|-----|----|
 |0|false|41.878961|
 
-由于纬度的 `MEAN` 值没问题，因此可用它来估算纬度。 对于缺失的经度值，将根据外部知识使用 42 进行估算。
+纬度的 `MEAN` 值看上去是准确的，用 `ImputeColumnArguments` 函数来估算它。 此函数接受 `column_id` 字符串，并使用 `ReplaceValueFunction` 指定估算类型。 对于缺失的经度值，将根据外部知识使用 42 进行估算。
 
+可以使用生成器函数 `impute_missing_values()` 将估算步骤链接到一个 `ImputeMissingValuesBuilder` 对象中。 `impute_columns` 参数接受 `ImputeColumnArguments` 对象的数组。 调用 `learn()` 函数来存储估算步骤，然后使用 `to_dataflow()` 应用于数据流对象。
 
-```
+```python
 # impute with MEAN
 impute_mean = dprep.ImputeColumnArguments(column_id='Latitude',
                                           impute_function=dprep.ReplaceValueFunction.MEAN)
@@ -152,20 +154,22 @@ df_imputed.head(5)
 |4|10140379|false|41.885610|-87.657009|
 
 如以上结果所示，缺少的纬度是使用 `Arrest=='false'` 组的 `MEAN` 值进行估算。 缺少的经度是使用 42 进行估算。
-```
+
+```python
 imputed_longitude = df_imputed.to_pandas_dataframe()['Longitude'][2]
 assert imputed_longitude == 42
 ```
 
 ## <a name="derive-column-by-example"></a>按示例派生列
-Azure 机器学习数据准备 SDK 中的更高级工具之一是，能够使用所需结果的示例派生列。 这样一来，只需为 SDK 提供示例，它便能生成可实现预期派生的代码。
 
-```
+Azure 机器学习数据准备 SDK 中更高级的一个工具能使用所需结果的示例派生列。 这样一来，只需为 SDK 提供示例，它便能生成可实现预期转换的代码。
+
+```python
 import azureml.dataprep as dprep
 dataflow = dprep.read_csv(path='https://dpreptestfiles.blob.core.windows.net/testfiles/BostonWeather.csv')
-df = dataflow.head(10)
-df
+dataflow.head(10)
 ```
+
 ||DATE|REPORTTPYE|HOURLYDRYBULBTEMPF|HOURLYRelativeHumidity|HOURLYWindSpeed|
 |----|----|----|----|----|----|
 |0|1/1/2015 0:54|FM-15|22|50|10|
@@ -179,11 +183,9 @@ df
 |8|1/1/2015 6:54|FM-15|23|50|14|
 |9|1/1/2015 7:00|FM-12|23|50|14|
 
-可以看到，此文件相当简单。 不过，假设需要将此文件与日期和时间格式为“Mar 10, 2018 | 2AM-4AM”的数据集联接起来。
+假设需要将此文件与日期和时间格式为“Mar 10, 2018 | 2AM-4AM”的数据集联接起来。
 
-可以将数据转换为所需的格式。
-
-```
+```python
 builder = dataflow.builders.derive_column_by_example(source_columns=['DATE'], new_column_name='date_timerange')
 builder.add_example(source_data=df.iloc[1], example_value='Jan 1, 2015 12AM-2AM')
 builder.preview() 
@@ -202,17 +204,14 @@ builder.preview()
 |8|1/1/2015 6:54|Jan 1, 2015 6AM-8AM|
 |9|1/1/2015 7:00|Jan 1, 2015 6AM-8AM|
 
-上面的代码先创建派生列的生成器。 你提供了要考虑的源列数组 (`DATE`)，以及要添加的新列的名称。
+上面的代码先创建派生列的生成器。 你提供了要考虑的源列数组 (`DATE`)，以及要添加的新列的名称。 你传入了第二行（索引 1），并提供了派生列的预期值，作为第一个示例。
 
-然后，你传入了第二行（索引 1），并提供了派生列的预期值，作为第一个示例。
-
-最后，你调用了 `builder.preview()`，并能在源列旁边看到派生列。 虽然格式没问题，但日期值都是“Jan 1, 2015”。
+最后，你调用了 `builder.preview()`，并能在源列旁边看到派生列。 虽然格式正确，但日期值都是“Jan 1, 2015”。
 
 现在，传入向下查看行需要跳过 (`skip`) 最上面几行对应的数字。
 
 ```
-preview_df = builder.preview(skip=30)
-preview_df
+builder.preview(skip=30)
 ```
 
 ||DATE|date_timerange|
@@ -228,14 +227,11 @@ preview_df
 |38|11/2/2015 4:00|Feb 1, 2015 4AM-6AM|
 |39|11/2/2015 4:54|Feb 1, 2015 4AM-6AM|
 
-此时可以发现已生成程序存在下列问题：仅根据你上面提供的一个示例，派生程序选择了将日期分析为“日/月/年”，但这并不符合本示例的需求。
+此处可以发现生成的程序存在问题。 仅根据你上面提供的一个示例，派生程序选择了将日期分析为“日/月/年”，但这并不符合本示例的需求。 若要解决此问题，请使用 `add_example()` 函数对 `builder` 变量提供另一个示例。
 
-若要解决此问题，需要提供另一个示例。
-
-```
+```python
 builder.add_example(source_data=preview_df.iloc[3], example_value='Jan 2, 2015 12AM-2AM')
-preview_df = builder.preview(skip=30, count=10)
-preview_df
+builder.preview(skip=30, count=10)
 ```
 
 ||DATE|date_timerange|
@@ -251,10 +247,9 @@ preview_df
 |38|1/2/2015 4:00|Jan 2, 2015 4AM-6AM|
 |39|1/2/2015 4:54|Jan 2, 2015 4AM-6AM|
 
-
 现在，行将“1/2/2015”正确处理为“Jan 2, 2015”。不过，如果向下查看派生列，可能会发现最后的几个值在派生列中没有任何转换值。 若要解决此问题，需要为第 66 行提供另一个示例。
 
-```
+```python
 builder.add_example(source_data=preview_df.iloc[66], example_value='Jan 29, 2015 8PM-10PM')
 builder.preview(count=10)
 ```
@@ -272,14 +267,13 @@ builder.preview(count=10)
 |8|1/2/2015 4:00|Jan 2, 2015 4AM-6AM|
 |9|1/2/2015 4:54|Jan 2, 2015 4AM-6AM|
 
-虽然一切看似没问题，但会发现这并不完全符合预期。 为了生成正确的格式，需要用“|”将日期和时间隔开。
+若要使用“|”分隔日期和时间，请添加另一个示例。 这一次，不是从预览版中传入一行，而是对 `source_data` 参数构造列名和值的字典。
 
-若要解决此问题，可添加另一个示例。 这一次，不是从预览版中传入一行，而是对 `source_data` 参数构造列名和值的字典。
-
-```
+```python
 builder.add_example(source_data={'DATE': '11/11/2015 0:54'}, example_value='Nov 11, 2015 | 12AM-2AM')
 builder.preview(count=10)
 ```
+
 ||DATE|date_timerange|
 |-----|-----|-----|
 |0|1/1/2015 22:54|无|
@@ -293,12 +287,10 @@ builder.preview(count=10)
 |8|1/2/2015 4:00|无|
 |9|1/2/2015 4:54|无|
 
-这显然产生了负面影响，因为现在只有与提供的示例完全匹配的行，才会在派生列中有任何值。
+这显然产生了负面影响，因为现在只有与提供的示例完全匹配的行，才会在派生列中有任何值。 在生成器对象上调用 `list_examples()`，查看当前示例派生列表。
 
-接下来看看提供的示例：
-```
+```python
 examples = builder.list_examples()
-examples
 ```
 
 | |DATE|示例|example_id|
@@ -308,11 +300,11 @@ examples
 |2|1/29/2015 20:54|Jan 29, 2015 8PM-10PM|-3|
 |3|11/11/2015 0:54|Nov 11, 2015 \| 12AM-2AM|-4|
 
-可以看到，提供的示例不一致。 若要解决此问题，需要将前三个示例替换为正确示例（在日期和时间之间添加“|”）。
+在这种情况下，提供了不一致的示例。 要解决此问题，需将前三个示例替换为正确示例（在日期和时间之间添加“|”）。
 
-为此，可删除不正确的示例（要么从 pandas DataFrame 传入 `example_row`，要么传入 `example_id` 值），再重新添加新修改的示例。
+删除不正确的示例（要么从 pandas DataFrame 传入 `example_row`，要么传入 `example_id` 值），再重新添加新修改的示例，即可修复示例不一致的问题。
 
-```
+```python
 builder.delete_example(example_id=-1)
 builder.delete_example(example_row=examples.iloc[1])
 builder.delete_example(example_row=examples.iloc[2])
@@ -335,12 +327,11 @@ builder.preview()
 | 8 | 1/1/2015 6:54 | Jan 1, 2015 \| 6AM-8AM|
 | 9 | 1/1/2015 7:00 | Jan 1, 2015 \| 6AM-8AM|
 
-现在数据没问题，终于可以对生成器调用 `to_dataflow()` 了，这会返回包含相应派生列的数据流。
+现在数据没问题，你对生成器调用 `to_dataflow()`，这会返回添加了所需派生列的数据流。
 
-```
+```python
 dataflow = builder.to_dataflow()
 df = dataflow.to_pandas_dataframe()
-df
 ```
 
 ## <a name="filtering"></a>筛选
@@ -348,12 +339,14 @@ df
 SDK 包含方法 `Dataflow.drop_columns` 和 `Dataflow.filter`，可用于筛选掉列或行。
 
 ### <a name="initial-setup"></a>初始设置
-```
+
+```python
 import azureml.dataprep as dprep
 from datetime import datetime
 dataflow = dprep.read_csv(path='https://dprepdata.blob.core.windows.net/demo/green-small/*')
 dataflow.head(5)
 ```
+
 ||lpep_pickup_datetime|Lpep_dropoff_datetime|Store_and_fwd_flag|RateCodeID|Pickup_longitude|Pickup_latitude|Dropoff_longitude|Dropoff_latitude|Passenger_count|Trip_distance|Tip_amount|Tolls_amount|Total_amount|
 |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
 |0|无|无|无|无|无|无|无|无|无|无|无|无|无|
@@ -370,10 +363,11 @@ dataflow.head(5)
 
 在下面的示例中，`drop_columns` 需要使用字符串列表。 每个字符串应与要删除的相应列完全匹配。
 
-``` 
+```python
 dataflow = dataflow.drop_columns(['Store_and_fwd_flag', 'RateCodeID'])
 dataflow.head(5)
 ```
+
 ||lpep_pickup_datetime|Lpep_dropoff_datetime|Pickup_longitude|Pickup_latitude|Dropoff_longitude|Dropoff_latitude|Passenger_count|Trip_distance|Tip_amount|Tolls_amount|Total_amount|
 |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
 |0|无|无|无|无|无|无|无|无|无|无|无|
@@ -383,12 +377,14 @@ dataflow.head(5)
 |4|2013-08-01 10:38:35|2013-08-01 10:38:51|0|0|0|0|1|.00|0|0|3.25|
 
 #### <a name="filtering-columns-with-regex"></a>使用正则表达式筛选列
+
 也可以使用 `ColumnSelector` 表达式，删除与正则表达式匹配的列。 下面的示例删除与表达式 `Column*|.*longitude|.*latitude` 匹配的所有列。
 
-```
+```python
 dataflow = dataflow.drop_columns(dprep.ColumnSelector('Column*|.*longitud|.*latitude', True, True))
 dataflow.head(5)
 ```
+
 ||lpep_pickup_datetime|Lpep_dropoff_datetime|Passenger_count|Trip_distance|Tip_amount|Tolls_amount|Total_amount|
 |-----|-----|-----|-----|-----|-----|-----|-----|
 |0|无|无|无|无|无|无|无|
@@ -403,18 +399,19 @@ dataflow.head(5)
 
 ### <a name="filtering-rows-with-simple-expressions"></a>使用简单表达式筛选行
 
-使用表达式生成器 `col`，将列名指定为字符串参数 `col('column_name')`，并结合以下标准运算符（>、<、>=、<=、==、!=）之一，生成表达式（如 `col('Tip_amount') > 0`）。 最后，将生成的表达式传入 `Dataflow.filter` 函数中。
+使用表达式生成器 `col`，将列名指定为字符串参数 `col('column_name')`。 将此表达式与一个标准运算符（>、<、>=、<=、==、!=）组合使用生成像 `col('Tip_amount') > 0` 这样的表达式。 最后，将生成的表达式传入 `Dataflow.filter` 函数中。
 
 在下面的示例中，`dataflow.filter(col('Tip_amount') > 0)` 返回新数据流，其中包含 `Tip_amount` 值大于 0 的行。
 
 > [!NOTE] 
 > `Tip_amount` 先转换为数字，这便于生成将它与其他数字值进行比较的表达式。
 
-```
+```python
 dataflow = dataflow.to_number(['Tip_amount'])
 dataflow = dataflow.filter(dprep.col('Tip_amount') > 0)
 dataflow.head(5)
 ```
+
 ||lpep_pickup_datetime|Lpep_dropoff_datetime|Passenger_count|Trip_distance|Tip_amount|Tolls_amount|Total_amount|
 |-----|-----|-----|-----|-----|-----|-----|-----|
 |0|2013-08-01 19:33:28|2013-08-01 19:35:21|5|.00|0.08|0|4.58|
@@ -429,11 +426,12 @@ dataflow.head(5)
 
 在下面的示例中，`Dataflow.filter` 返回新数据流，其中包含 `'Passenger_count'` 小于 5 且 `'Tolls_amount'` 大于 0 的行。
 
-```
+```python
 dataflow = dataflow.to_number(['Passenger_count', 'Tolls_amount'])
 dataflow = dataflow.filter(dprep.f_and(dprep.col('Passenger_count') < 5, dprep.col('Tolls_amount') > 0))
 dataflow.head(5)
 ```
+
 ||lpep_pickup_datetime|Lpep_dropoff_datetime|Passenger_count|Trip_distance|Tip_amount|Tolls_amount|Total_amount|
 |-----|-----|-----|-----|-----|-----|-----|-----|
 |0|2013-08-08 12:16:00|2013-08-08 12:16:00|1.0|.00|2.25|5.00|19.75|
@@ -447,7 +445,7 @@ dataflow.head(5)
 > [!NOTE]
 > `lpep_pickup_datetime` 和 `Lpep_dropoff_datetime` 先转换为日期/时间，这便于生成将它与其他日期/时间值进行比较的表达式。
 
-```
+```python
 dataflow = dataflow.to_datetime(['lpep_pickup_datetime', 'Lpep_dropoff_datetime'], ['%Y-%m-%d %H:%M:%S'])
 dataflow = dataflow.to_number(['Total_amount', 'Trip_distance'])
 mid_2013 = datetime(2013,7,1)
@@ -470,9 +468,9 @@ dataflow.head(5)
 |3|2013-08-25 16:46:51+00:00|2013-08-25 17:13:55+00:00|2.0|9.66|7.37|5.33|44.20|
 |4|2013-08-25 17:42:11+00:00|2013-08-25 18:02:57+00:00|1.0|9.60|6.87|5.33|41.20|
 
-## <a name="custom-python-transforms"></a>自定义 Python 转换 
+## <a name="custom-python-transforms"></a>自定义 Python 转换
 
-在某些情况下，最简单的做法是编写一些 Python 代码。 SDK 提供了三个可用的扩展点。
+最简单的转换方式是编写自己的脚本，这样的情况始终存在。 SDK 提供了三个可用于自定义 Python 脚本的扩展点。
 
 - 新脚本列
 - 新脚本筛选器
@@ -484,13 +482,14 @@ dataflow.head(5)
 
 首先，从 Azure Blob 加载一些数据。
 
-```
+```python
 import azureml.dataprep as dprep
 col = dprep.col
 
 df = dprep.read_csv(path='https://dpreptestfiles.blob.core.windows.net/testfiles/read_csv_duplicate_headers.csv', skip_rows=1)
 df.head(5)
 ```
+
 | |stnam|fipst|leaid|leanm10|ncessch|MAM_MTH00numvalid_1011|
 |-----|-------|---------| -------|------|-----|------|-----|
 |0|ALABAMA|1|101710|Hale County|10171002158| |
@@ -501,12 +500,13 @@ df.head(5)
 
 剪裁数据集，并执行一些基本转换。
 
-```
+```python
 df = df.keep_columns(['stnam', 'leanm10', 'ncessch', 'MAM_MTH00numvalid_1011'])
 df = df.replace_na(columns=['leanm10', 'MAM_MTH00numvalid_1011'], custom_na_list='.')
 df = df.to_number(['ncessch', 'MAM_MTH00numvalid_1011'])
 df.head(5)
 ```
+
 | |stnam|leanm10|ncessch|MAM_MTH00numvalid_1011|
 |-----|-------|---------| -------|------|-----|
 |0|ALABAMA|Hale County|1.017100e+10|无|
@@ -515,9 +515,9 @@ df.head(5)
 |3|ALABAMA|Hale County|1.017100e+10|2|
 |4|ALABAMA|Hale County|1.017100e+10|无|
 
-使用筛选器查找空值。 你将会发现一些空值，所以现在填充这些缺失值。
+使用以下筛选器查找空值。
 
-```
+```python
 df.filter(col('MAM_MTH00numvalid_1011').is_null()).head(5)
 ```
 
@@ -531,17 +531,19 @@ df.filter(col('MAM_MTH00numvalid_1011').is_null()).head(5)
 
 ### <a name="transform-partition"></a>转换分区
 
-可使用便捷的 pandas 函数，将所有空值替换为 0。 下面的代码按分区运行，而不是一次性对所有数据集运行。 也就是说，对于大型数据集，下面的代码可能会在运行时处理数据时按分区并行运行。
+使用 pandas 函数，将所有空值替换为 0。 下面的代码按分区运行，而不是一次性对整个数据集运行。 也就是说，对于大型数据集，下面的代码可能会在运行时处理数据时按分区并行运行。
 
-```
+Python 脚本必须定义一个名为 `transform()` 的函数，该函数接受 `df` 和 `index` 两个参数。 `df` 参数是包含分区数据的 panda dataframe，`index` 参数是分区的唯一标识符。 转换函数可以充分编辑在 dataframe 中传递的内容，但是必须返回 dataframe。 Python 脚本导入的任何库都必须位于运行数据流的环境中。
+
+```python
 df = df.transform_partition("""
 def transform(df, index):
     df['MAM_MTH00numvalid_1011'].fillna(0,inplace=True)
     return df
 """)
-h = df.head(5)
-h
+df.head(5)
 ```
+
 ||stnam|leanm10|ncessch|MAM_MTH00numvalid_1011|
 |-----|-------|---------| -------|------|-----|
 |0|ALABAMA|Hale County|1.017100e+10|0.0|
@@ -554,14 +556,16 @@ h
 
 可使用 Python 代码新建包含县名和州名的列，其中州名采用首字母大写形式。 为此，请对数据流使用 `new_script_column()` 方法。
 
-```
+Python 脚本必须定义一个名为 `newvalue()` 的函数，该函数接受一个自变量 `row`。 `row` 自变量是 dict (`key`:column name, `val`: current value)，会为数据集中的每一行将该自变量传递给该函数。 此函数必须返回要在新列中使用的值。 Python 脚本导入的任何库都必须位于运行数据流的环境中。
+
+```python
 df = df.new_script_column(new_column_name='county_state', insert_after='leanm10', script="""
 def newvalue(row):
     return row['leanm10'] + ', ' + row['stnam'].title()
 """)
-h = df.head(5)
-h
+df.head(5)
 ```
+
 ||stnam|leanm10|county_state|ncessch|MAM_MTH00numvalid_1011|
 |-----|-------|---------| -------|------|-----|
 |0|ALABAMA|Hale County|Hale County, Alabama|1.017100e+10|0.0|
@@ -569,18 +573,18 @@ h
 |2|ALABAMA|Hale County|Hale County, Alabama|1.017100e+10|0.0|
 |3|ALABAMA|Hale County|Hale County, Alabama|1.017100e+10|2.0|
 |4|ALABAMA|Hale County|Hale County, Alabama|1.017100e+10|0.0|
+
 ### <a name="new-script-filter"></a>新脚本筛选器
 
-现在，生成 Python 表达式，将数据集筛选为仅包含新 `county_state` 列内没有“Hale”的行。 若要保留行，表达式返回 `True`；若要删除行，表达式返回 `False`。
+生成 Python 表达式，将数据集筛选为仅包含新 `county_state` 列内没有“Hale”的行。 若要保留行，表达式返回 `True`；若要删除行，表达式返回 `False`。
 
-```
+```python
 df = df.new_script_filter("""
 def includerow(row):
     val = row['county_state']
     return 'Hale' not in val
 """)
-h = df.head(5)
-h
+df.head(5)
 ```
 
 ||stnam|leanm10|county_state|ncessch|MAM_MTH00numvalid_1011|

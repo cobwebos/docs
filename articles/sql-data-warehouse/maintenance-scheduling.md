@@ -7,19 +7,19 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: design
-ms.date: 09/20/2018
+ms.date: 11/27/2018
 ms.author: anvang
 ms.reviewer: igorstan
-ms.openlocfilehash: c2ed79673af3563ae62f516057a174770cda99e9
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: d626fd9b083b9ca2c55c286a1dd806620a639434
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49427856"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52498015"
 ---
 # <a name="use-maintenance-schedules-to-manage-service-updates-and-maintenance"></a>使用维护计划管理服务更新和维护
 
-Azure SQL 数据仓库维护计划目前以预览版提供。 此功能可集成服务运行状况计划内维护通知、资源运行状况检查监视器和 Azure SQL 数据仓库维护计划服务。
+维护计划现已在所有 Azure SQL 数据仓库区域中可用。 此功能可集成服务运行状况计划内维护通知、资源运行状况检查监视器和 Azure SQL 数据仓库维护计划服务。
 
 使用维护计划可以选择一个方便接收新功能、升级和修补程序的时间范围。 请选择 7 天内的主要和辅助维护时段。 例如，主要时段为星期六 22:00 到星期日 01:00，辅助时段为星期三 19:00 到 22:00。 如果 SQL 数据仓库在主要维护时段无法执行维护，则它会尝试在辅助维护时段再次执行维护。
 
@@ -27,7 +27,7 @@ Azure SQL 数据仓库维护计划目前以预览版提供。 此功能可集成
 
 每个维护时段可以是 3 到 8 小时。 可在该时段的任何时间执行维护。 由于服务要将新代码部署到数据仓库，因此，短暂性的连接断开属于预料之内的问题。 
 
-在此功能的预览期，可以在单独的日期范围内指定主要时段和辅助时段。 所有维护操作应在计划的维护时段内完成。 在未事先通知的情况下，不会在指定的维护时段外进行维护。 如果在计划维护期间暂停数据仓库，则会在恢复操作期间进行更新。  
+要使用此功能，需要在单独的一天中确定主窗口和辅助窗口。 所有维护操作应在计划的维护时段内完成。 在未事先通知的情况下，不会在指定的维护时段外进行维护。 如果在计划维护期间暂停数据仓库，则会在恢复操作期间进行更新。  
 
 
 ## <a name="alerts-and-monitoring"></a>警报和监视
@@ -51,6 +51,7 @@ Azure SQL 数据仓库维护计划目前以预览版提供。 此功能可集成
 - [详细了解](changing-maintenance-schedule.md)如何更改维护计划。
 - [详细了解](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitor-alerts-unified-usage)如何使用 Azure Monitor 创建、查看和管理警报。
 - [详细了解](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitor-alerts-unified-log-webhook)用于日志警报规则的 Webhook 操作。
+- [深入了解](https://docs.microsoft.com/en-us/azure/monitoring-and-diagnostics/monitoring-action-groups)创建和管理操作组。
 - [详细了解](https://docs.microsoft.com/azure/service-health/service-health-overview) Azure 服务运行状况。
 
 

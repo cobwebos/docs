@@ -1,5 +1,5 @@
 ---
-title: 将 Azure 安全数据导出到 SIEM - 管道配置 [预览版] | Microsoft Docs
+title: 将 Azure 安全数据导出到 SIEM - 管道配置 | Microsoft Docs
 description: 本文介绍将 Azure 安全中心日志传送至 SIEM 的过程
 services: security-center
 documentationcenter: na
@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/01/2018
+ms.date: 11/26/2018
 ms.author: barclayn
-ms.openlocfilehash: aede60a729fe9c0594ded485e189c0b467e34271
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 4cc9478197b39198a94ace1cbefab81de3cdb32b
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44298227"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52306720"
 ---
-# <a name="azure-security-data-export-to-siem--pipeline-configuration-preview"></a>将 Azure 安全数据导出到 SIEM - 管道配置 [预览版]
+# <a name="azure-security-data-export-to-siem-pipeline-configuration"></a>将 Azure 安全数据导出到 SIEM - 管道配置
 
 本文详细介绍了将 Azure 安全中心安全数据导出到 SIEM 的过程。
 
@@ -37,11 +37,11 @@ Azure 安全中心生成的事件经过处理后，将被发布到 Azure [活动
 
 ## <a name="what-is-the-azure-security-data-exposed-to-siem"></a>公开给 SIEM 的 Azure 安全数据是什么？
 
-在此预览版中，我们将公开[安全警报。](../security-center/security-center-managing-and-responding-alerts.md) 在即将发布的版本中，我们将通过安全建议丰富数据集。
+在此版本中，我们将公开[安全警报。](../security-center/security-center-managing-and-responding-alerts.md) 在即将发布的版本中，我们将通过安全建议丰富数据集。
 
-## <a name="how-to-setup-the-pipeline"></a>如何设置管道？ 
+## <a name="how-to-setup-the-pipeline"></a>如何设置管道
 
-### <a name="create-an-event-hub"></a>创建事件中心 
+### <a name="create-an-event-hub"></a>创建事件中心
 
 开始之前，需[创建事件中心命名空间](../event-hubs/event-hubs-create.md)。 此命名空间和事件中心是所有监视数据的目标。
 

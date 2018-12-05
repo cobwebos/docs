@@ -5,15 +5,15 @@ author: dkamstra
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 09/12/2018
+ms.date: 11/26/2018
 ms.author: dukek
 ms.component: alerts
-ms.openlocfilehash: 3ce7c5111fa176bb7fa734f54084b9e14e7afbef
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 1b66f40594d0dd578e2e5680fb0d5bb0f82f1241
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51016040"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52311800"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>在 Azure 门户中创建和管理器操作组
 ## <a name="overview"></a>概述 ##
@@ -49,7 +49,7 @@ ms.locfileid: "51016040"
 
 1. 通过为每个操作提供以下项来定义操作列表：
 
-    a. 名称：输入此操作的唯一标识符。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 名称：输入此操作的唯一标识符。
 
     b. **操作类型**：选择电子邮件/短信/推送/语音、逻辑应用、Webhook、ITSM 或自动化 Runbook。
 
@@ -76,6 +76,8 @@ ms.locfileid: "51016040"
 **ITSM** - 在需要 ITSM 连接的操作组 ITSM 操作中最多可以有 10 个 ITSM 连接。 了解如何创建 [ITSM 连接](../log-analytics/log-analytics-itsmc-overview.md)。
 
 **逻辑应用** - 一个操作组中最多可以有 10 个逻辑应用操作。
+
+**Function App** - 配置为操作的 Function App 的函数密钥通过函数 API 读取，这当前需要 v2 函数应用将应用设置“AzureWebJobsSecretStorageType”配置为“文件”，请参阅[在 Functions V2 中进行密钥管理的更改]( https://aka.ms/funcsecrets)以了解详细信息。
 
 **Runbook** - 一个操作组中最多可以有 10 个 Runbook 操作，有关 Runbook 有效负载的限制，请参考 [Azure 订阅服务限制](../azure-subscription-service-limits.md)
 

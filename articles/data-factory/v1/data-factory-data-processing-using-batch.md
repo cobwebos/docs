@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: b8a9973738ac28a686488a816da0f7da5fe2ac3e
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 0865c8b88788387eff173443d190658cc6488946
+ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51238516"
+ms.lasthandoff: 11/19/2018
+ms.locfileid: "51976853"
 ---
 # <a name="process-large-scale-datasets-by-using-data-factory-and-batch"></a>使用数据工厂和 Batch 来处理大规模数据集
 > [!NOTE]
@@ -41,7 +41,7 @@ ms.locfileid: "51238516"
 * [Batch 基本信息](../../batch/batch-technical-overview.md)
 * [批处理功能概述](../../batch/batch-api-basics.md)
 
-（可选）若要了解有关 Batch 的详细信息，请参阅 [Batch 学习路径](https://azure.microsoft.com/documentation/learning-paths/batch/)。
+（可选）若要了解有关 Batch 的详细信息，请参阅 [Batch 文档](https://docs.microsoft.com/en-us/azure/batch/)。
 
 ## <a name="why-azure-data-factory"></a>为什么使用 Azure 数据工厂？
 数据工厂是一项基于云的数据集成服务，可对数据移动和转换进行安排并使其实现自动化。 可以使用数据工厂创建将数据从本地和云数据存储移动到集中数据存储的托管数据管道。 Azure Blob 存储是一个示例。 可以使用数据工厂，通过 Azure HDInsight 和 Azure 机器学习等服务来处理/转换数据。 还可以计划数据管道，以便按计划方法（例如每小时、每天和每周）运行。 可以一目了然地监视和管理管道，以便确定问题和采取措施。
@@ -51,7 +51,7 @@ ms.locfileid: "51238516"
 * [数据工厂简介](data-factory-introduction.md)
 * [生成第一个数据管道](data-factory-build-your-first-pipeline.md)   
 
-（可选）若要了解有关数据工厂数据工厂的详细信息，请参阅[数据工厂学习路径](https://azure.microsoft.com/documentation/learning-paths/data-factory/)。
+（可选）若要了解有关数据工厂的详细信息，请参阅[数据工厂文档](https://docs.microsoft.com/en-us/rest/api/datafactory/v1/data-factory-data-factory)。
 
 ## <a name="data-factory-and-batch-together"></a>配合使用数据工厂和 Batch
 数据工厂包括内置活动。 例如，复制活动用于将数据从源数据存储复制/移动到目标数据存储。 Hive 活动用于在 Azure 上使用 Hadoop 群集 (HDInsight) 处理数据。 有关支持的转换活动列表，请参阅[数据转换活动](data-factory-data-transformation-activities.md)。

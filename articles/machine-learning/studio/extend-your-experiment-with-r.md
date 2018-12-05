@@ -1,10 +1,11 @@
 ---
-title: 使用 R 扩展实验 | Microsoft Docs
+title: 使用 R 扩展试验 - Azure 机器学习工作室 | Microsoft Docs
 description: 如何使用执行 R 脚本模块通过 R 语言扩展 Azure 机器学习工作室的功能。
 services: machine-learning
 documentationcenter: ''
-author: heatherbshapiro
-ms.author: hshapiro
+author: ericlicoding
+ms.custom: (previous ms.author=hshapiro, author=heatherbshapiro)
+ms.author: amlstudiodocs
 manager: hjerez
 editor: cgronlun
 ms.assetid: 2c038a45-ba4d-42ea-9a88-e67391ef8c0a
@@ -15,14 +16,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2017
-ms.openlocfilehash: 1f05119d94611df2e75afc3a56d9682d1149326c
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: df6453f1cf6e8b372239d528067a7258d645518d
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34834468"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52311002"
 ---
-# <a name="extend-your-experiment-with-r"></a>使用 R 扩展试验
+# <a name="azure-machine-learning-studio-extend-your-experiment-with-r"></a>Azure 机器学习工作室：使用 R 扩展试验 
 如何使用[执行 R 脚本][execute-r-script]模块通过 R 语言扩展 Azure 机器学习工作室的功能。
 
 此模块接受多个输入数据集，并且生成单个数据集作为输出。 可将 R 脚本键入[执行 R 脚本][execute-r-script]模块的 **R 脚本**参数。
@@ -32,7 +33,7 @@ ms.locfileid: "34834468"
     dataset1 <- maml.mapInputPort(1)
 
 ## <a name="listing-all-currently-installed-packages"></a>列出所有当前安装的程序包
-已安装程序包列表可更改。 可在 [Azure 机器学习支持的 R 包](https://msdn.microsoft.com/library/azure/mt741980.aspx)中找到当前安装的包的列表。
+已安装程序包列表可更改。 可在 [Azure 机器学习工作室支持的 R 包](https://msdn.microsoft.com/library/azure/mt741980.aspx)中找到当前安装的包的列表。
 
 还可获取已安装程序包的最新完整列表，方法是将以下代码输入[执行 R 脚本][execute-r-script]模块：
 

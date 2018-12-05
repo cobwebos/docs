@@ -12,26 +12,27 @@ ms.workload: ''
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: article
-ms.date: 10/15/2018
+ms.date: 11/17/2018
 ms.author: yijenj
-ms.openlocfilehash: 3a1c5341e391c8be1af42eea940fbf147b88e7c8
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: 1ae10fb749e671f7a8b5ca48e652711d7dcf98c8
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51685695"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52262595"
 ---
 # <a name="azure-partner-customer-usage-attribution"></a>Azure 合作伙伴和客户使用情况归因
 
-作为 Azure 软件合作伙伴，你的解决方案要么需要使用 Azure 组件，要么直接部署在 Azure 基础结构上。 部署合作伙伴解决方案和预配自己 Azure 资源的客户可能难以观察这些部署的状态，并且难以洞察其对 Azure 增长的影响。 添加更高级别的可见性可与 Microsoft 销售团队保持一致，并获得 Microsoft 合作伙伴计划的信用额度。   
+作为 Azure 软件合作伙伴，你的解决方案要么需要使用 Azure 组件，要么直接部署在 Azure 基础结构上。 部署合作伙伴解决方案和预配自己 Azure 资源的客户可能难以观察这些部署的状态，并且难以洞察其对 Azure 增长的影响。 添加更高级别的可见性可与 Microsoft 销售团队保持一致，并获得 Microsoft 合作伙伴计划的信用额度。 
 
 Microsoft 现已提供一种新方法，帮助合作伙伴更好地跟踪与客户在 Azure 上部署软件相关的 Azure 使用情况。 此新方法使用 Azure 资源管理器来协调 Azure 服务的部署。
 
 Microsoft 合作伙伴可将 Azure 使用情况与其代表客户预配的任何 Azure 资源相关联。 可以通过 Azure 市场、快速入门存储库、专用 GitHub 存储库甚至一对一的客户互动来实现这种关联。 为启用跟踪，可以使用两种方法：
 
 - Azure 资源管理器模板：用于部署 Azure 服务以运行合作伙伴软件的资源管理器模板或解决方案模板。 合作伙伴可以创建资源管理器模板，其中定义 Azure 解决方案的基础结构和配置。 通过资源管理器模板，你和你的客户可以在解决方案的整个生命周期内部署该解决方案。 可以放心地以一致状态部署资源。 
-
 - Azure 资源管理器 API：合作伙伴可以直接调用资源管理器 API 来部署资源管理器模板，或生成 API 调用用于直接预配 Azure 服务。 
+
+发布到 Azure 市场的所有[解决方案模板](./cloud-partner-portal-orig/cloud-partner-portal-solution-template-offer-publish.md)都需要客户使用情况归因。 
 
 ## <a name="use-resource-manager-templates"></a>使用 Resource Manager 模板
 

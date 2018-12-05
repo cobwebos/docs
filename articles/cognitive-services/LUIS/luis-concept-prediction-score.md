@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: conceptual
 ms.date: 10/15/2018
 ms.author: diberry
-ms.openlocfilehash: 7cc3b6fd5865689df57258dcb2088bbef47b9a90
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.openlocfilehash: e1582da9a8fea4137d40b3a3855ead467dbbb548
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49637945"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52264380"
 ---
 # <a name="prediction-score"></a>预测分数
 预测分数表示 LUIS 对预测结果的置信度。 
@@ -62,7 +62,7 @@ ms.locfileid: "49637945"
 如果聊天机器人需要一个特定的 LUIS 分数来指示意向的置信度，则请改用最高两个意向之间的分差。 这样可更灵活地应对训练过程中的变化。 
 
 ## <a name="punctuation"></a>标点
-标点是 LUIS 中单独的标记。 在末尾包含句号的话语与不是两个单独话语并可能得到两种不同预测的话语。 请确保模型在[示例话语](luis-concept-utterance.md)（有标点和没有标点）或在更容易使用特殊语法忽略标点的 [patterns}(luis-concept-patterns.md) 中处理标点：`I am applying for the {Job} position[.]`
+标点是 LUIS 中单独的标记。 在末尾包含句号的话语与不是两个单独话语并可能得到两种不同预测的话语。 请确保模型在[示例话语](luis-concept-utterance.md)（有标点和没有标点）或在更容易使用特殊语法忽略标点的[模式](luis-concept-patterns.md)中处理标点：`I am applying for the {Job} position[.]`
 
 ## <a name="next-steps"></a>后续步骤
 

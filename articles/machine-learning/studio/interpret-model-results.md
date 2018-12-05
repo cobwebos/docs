@@ -1,10 +1,11 @@
 ---
-title: 在机器学习中解释模型结果 | Microsoft Docs
+title: 在机器学习工作室中解释模型结果 | Microsoft Docs
 description: 如何为使用并可视化评分模型输出的算法选择最佳的参数集。
 services: machine-learning
 documentationcenter: ''
-author: heatherbshapiro
-ms.author: hshapiro
+author: ericlicoding
+ms.custom: (previous ms.author=hshapiro, author=heatherbshapiro)
+ms.author: amlstudiodocs
 manager: hjerez
 editor: cgronlun
 ms.assetid: 6230e5ab-a5c0-4c21-a061-47675ba3342c
@@ -15,14 +16,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/29/2017
-ms.openlocfilehash: e62f4716a95a6c1840afde27361eeb756abff335
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: c06b05989270b4199e5d97ca399a1411b73a702b
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34836998"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52310263"
 ---
-# <a name="interpret-model-results-in-azure-machine-learning"></a>在 Azure 机器学习中解释模型结果
+# <a name="interpret-model-results-in-azure-machine-learning-studio"></a>在 Azure 机器学习工作室中解释模型结果
 本主题说明如何在 Azure 机器学习工作室中可视化和解释预测结果。 训练模型并根据它进行预测（“为模型评分”）后，需要了解并解释预测结果。
 
 [!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/20/2018
 ms.author: terrylan
-ms.openlocfilehash: d005dd01de0dff0136c0a4e9775001dbe018228f
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: ae6eeb2506eb82160c68e15e17eeb95c1e2ec046
+ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47035277"
+ms.lasthandoff: 11/17/2018
+ms.locfileid: "51853603"
 ---
 # <a name="azure-operational-security-best-practices"></a>Azure 操作安全性最佳做法
 Azure 操作安全性是指用户可用于在 Azure 中保护其数据、应用程序和其他资产的服务、控件和功能。 Azure 操作安全性建立在一个框架上，该框架融合了通过 Microsoft 独有的功能获得的知识，包括 [安全开发生命周期 (SDL)](https://www.microsoft.com/sdl)、[Microsoft 安全响应中心](https://www.microsoft.com/msrc?rtc=1)计划以及对网络安全威胁形态的深刻认识。
@@ -55,38 +55,38 @@ Azure 操作安全性是指用户可用于在 Azure 中保护其数据、应用�
 
 以下是网络监视和可用工具的最佳做法。
 
-最佳做法：使用数据包捕获实现远程网络监视的自动化。   
+最佳做法：使用数据包捕获实现远程网络监视的自动化。  
 详细信息：使用网络观察程序监视和诊断网络问题，无需登录 VM。 通过设置警报触发[数据包捕获](../network-watcher/network-watcher-alert-triggered-packet-capture.md)，并获取数据包级别上的实时性能信息访问权限。 如果遇到问题，可进行详细调查，获得更精确的诊断。
 
-最佳做法：使用流日志深入了解网络流量。   
+最佳做法：使用流日志深入了解网络流量。  
 详细信息：使用[网络安全组流日志](../network-watcher/network-watcher-nsg-flow-logging-overview.md)更深入地了解网络流量模式。 流日志中的信息可帮助收集符合性数据、审核和监视网络安全配置文件。
 
-最佳做法：诊断 VPN 连接问题。   
+最佳做法：诊断 VPN 连接问题。  
 详细信息：使用网络观察程序来[诊断最常见的 VPN 网关和连接问题](../network-watcher/network-watcher-diagnose-on-premises-connectivity.md)。 不仅可以确定问题，还可以使用详细日志进一步调查。
 
 ## <a name="secure-deployment-by-using-proven-devops-tools"></a>使用经验证的 DevOps 工具确保安全部署
 使用以下 DevOps 最佳做法来确保企业和团队多产且高效。
 
-最佳做法：自动生成和部署服务。   
-详细信息：[基础结构即代码](https://en.wikipedia.org/wiki/Infrastructure_as_Code)是一组技术和实践，使 IT 专业人员不再需要日复一日地生成和管理模块化基础结构。 使得 IT 专业人员生成和维护新式服务器环境的方式就像是软件开发人员生成和维护应用程序代码的方式。
+最佳做法：自动生成和部署服务。  
+详细信息：[基础结构即代码](https://docs.microsoft.com/azure/devops/learn/what-is-infrastructure-as-code)是一组技术和实践，使 IT 专业人员不再需要日复一日地生成和管理模块化基础结构。 使得 IT 专业人员生成和维护新式服务器环境的方式就像是软件开发人员生成和维护应用程序代码的方式。
 
 [Azure 资源管理器](https://azure.microsoft.com/documentation/articles/resource-group-authoring-templates/)允许用户使用声明性模板预配应用程序。 在单个模板中，可以部署多个服务及其依赖项。 在应用程序生命周期的每个阶段，可使用相同模板重复部署应用程序。
 
-最佳做法：自动生成并部署到 Azure Web 应用或云服务。   
-详细信息：可以将 Visual Studio Team Services (VSTS) 团队项目配置为[自动生成并部署](https://www.visualstudio.com/docs/build/overview)到 Azure Web 应用或云服务。 VSTS 在每次代码签入后对 Azure 执行一次生成，然后自动部署二进制文件。 包生成过程与 Visual Studio 中的 Package 命令等效，而发布步骤与 Visual Studio 中的 Publish 命令等效。
+最佳做法：自动生成并部署到 Azure Web 应用或云服务。  
+详细信息：可以使用 Azure Pipelines [自动生成并部署](https://docs.microsoft.com/azure/devops/pipelines/index?view=vsts)到 Azure Web 应用或云服务。 Azure Pipelines 在每次代码签入后对 Azure 执行一次生成，然后自动部署二进制文件。 包生成过程与 Visual Studio 中的 Package 命令等效，而发布步骤与 Visual Studio 中的 Publish 命令等效。
 
-最佳做法：自动执行发布管理。   
-详细信息：Visual Studio [Release Management](https://msdn.microsoft.com/library/vs/alm/release/overview) 是实现多阶段部署和管理发布过程自动化的解决方案。 创建托管的持续部署管道，快速、轻松地频繁发布。 通过 Release Management，可以使发布过程自动化，还可以拥有预定义的批准工作流。 根据需要进行本地部署和部署到云、扩展和自定义。
+最佳做法：使用持续部署。  
+详细信息：[Azure Pipelines](https://docs.microsoft.com/azure/devops/pipelines/index?view=vsts) 是实现多阶段部署和管理发布过程自动化的解决方案。 创建托管的持续部署管道，快速、轻松地频繁发布。 通过 Azure Pipelines，可以使发布过程自动化，还可以拥有预定义的批准工作流。 根据需要进行本地部署和部署到云、扩展和自定义。
 
-最佳做法：在推出应用或将更新部署到生产环境之前，先检查该应用的性能。   
-详细信息：通过使用 VSTS 执行以下操作来运行基于云的[负载测试](https://www.visualstudio.com/docs/test/performance-testing/getting-started/getting-started-with-performance-testing)：
+最佳做法：在推出应用或将更新部署到生产环境之前，先检查该应用的性能。  
+详细信息：通过使用 Azure Test Plans 执行以下操作来运行基于云的[负载测试](https://docs.microsoft.com/azure/devops/test/load-test/app-service-web-app-performance-test?view=vsts)：
 
 - 在应用中查找性能问题。
 - 提高部署质量。
 - 请确保应用始终可用。
 - 确保应用可以处理下一次启动或市场营销活动的流量。
 
-最佳做法：监视应用程序性能。   
+最佳做法：监视应用程序性能。  
 详细信息：[Azure Application Insights](../application-insights/app-insights-overview.md) 是多个平台上面向 Web 开发人员的可扩展应用程序性能管理 (APM) 服务。 使用 Application Insights 来监视实时 Web 应用程序。 它会自动检测性能异常。 其中包含分析工具来帮助诊断问题，了解用户在应用中实际执行了哪些操作。 Application Insights 有助于持续提高性能与可用性。
 
 ## <a name="mitigate-and-protect-against-ddos"></a>缓解和防范 DDoS
@@ -96,19 +96,19 @@ Azure 操作安全性是指用户可用于在 Azure 中保护其数据、应用�
 
 下面是用于在 Azure 上构建 DDoS 可复原服务的最佳做法。
 
-最佳做法：确保优先考虑从设计和实施到部署和操作的整个应用程序生命周期的安全性。 应用程序可能包含 bug，使相对较少的请求使用过多的资源，从而导致服务中断。    
+最佳做法：确保优先考虑从设计和实施到部署和操作的整个应用程序生命周期的安全性。 应用程序可能包含 bug，使相对较少的请求使用过多的资源，从而导致服务中断。  
 详细信息：为帮助保护 Microsoft Azure 上运行的服务，应该对应用程序体系结构有充分的了解，并重点关注[软件质量的五大要素](https://docs.microsoft.com/azure/architecture/guide/pillars)。 应该清楚典型的流量大小、应用程序与其他应用程序之间的连接模型，以及向公共 Internet 公开的服务终结点。
 
 至关重要的一点是，确保应用程序具有足够的弹性，可应对针对应用程序本身的拒绝服务攻击。 从[安全开发生命周期 (SDL)](https://www.microsoft.com/en-us/sdl) 开始，安全和隐私就已内置到 Azure 平台中。 SDL 可以解决每个开发阶段的安全性，并确保 Azure 不断更新，以变得越来越安全。
 
-最佳做法：采用可[横向缩放](https://docs.microsoft.com/azure/architecture/guide/design-principles/scale-out)的应用程序设计，以满足放大负载的需求，尤其是防范 DDoS 攻击。 如果应用程序依赖于服务的单个实例，则会造成单一故障点。 预配多个实例能够提高复原能力和可伸缩性。   
+最佳做法：采用可[横向缩放](https://docs.microsoft.com/azure/architecture/guide/design-principles/scale-out)的应用程序设计，以满足放大负载的需求，尤其是防范 DDoS 攻击。 如果应用程序依赖于服务的单个实例，则会造成单一故障点。 预配多个实例能够提高复原能力和可伸缩性。  
 详细信息：对于 [Azure 应用服务](../app-service/app-service-value-prop-what-is.md)，请选择提供多个实例的[应用服务计划](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md)。
 
 对于 Azure 云服务，请将每个角色配置为使用[多个实例](../cloud-services/cloud-services-choose-me.md)。
 
 对于 [Azure 虚拟机](../virtual-machines/windows/overview.md)，请确保 VM 体系结构包含多个 VM，并且每个 VM 包含在[可用性集](../virtual-machines/virtual-machines-windows-manage-availability.md)中。 建议使用虚拟机规模集来实现自动缩放功能。
 
-最佳做法：应用程序中的分层安全防御可以减少攻击成功的可能性。 使用 Azure 平台的内置功能对其应用程序实施安全设计。   
+最佳做法：应用程序中的分层安全防御可以减少攻击成功的可能性。 使用 Azure 平台的内置功能对其应用程序实施安全设计。  
 详细信息：攻击风险会随着应用程序的规模（外围应用）的增大而增大。 可以使用允许列表关闭负载均衡器（[Azure 负载均衡器](../load-balancer/load-balancer-get-started-internet-portal.md)和 [Azure 应用程序网关](../application-gateway/application-gateway-create-probe-portal.md)）上不需要的公开 IP 地址空间和侦听端口，来减少外围应用。
 
 [网络安全组](../virtual-network/security-overview.md)是缩小受攻击面的另一种方法。 可以使用[服务标记](../virtual-network/security-overview.md#service-tags)和[应用程序安全组](../virtual-network/security-overview.md#application-security-groups)来最大程度地简化安全规则的创建，并将网络安全性配置为应用程序结构的自然扩展。
@@ -125,7 +125,7 @@ Azure 具有两个 DDoS [服务产品](../virtual-network/ddos-protection-overvi
 - 标准防护提供针对网络攻击的高级 DDoS 缓解功能。 这些功能自动经过优化，可保护特定的 Azure 资源。 在创建虚拟网络期间，可以轻松启用保护。 也可以在创建之后启用它，而不需要对应用程序或资源做出任何更改。
 
 ## <a name="next-steps"></a>后续步骤
-有关通过使用 Azure 设计、部署和管理云解决方案时可以使用的更多安全最佳做法，请参阅 [Azure 安全最佳做法和模式](security-best-practices-and-patterns.md)。
+有关通过 Azure 设计、部署和管理云解决方案时可以使用的更多安全最佳做法，请参阅 [Azure 安全最佳做法和模式](security-best-practices-and-patterns.md)。
 
 以下资源提供了有关 Azure 安全性及相关 Microsoft 服务的更多常规信息：
 * [Azure 安全团队博客](https://blogs.msdn.microsoft.com/azuresecurity/) - 随时掌握 Azure 安全性的最新信息

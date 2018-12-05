@@ -1,11 +1,12 @@
 ---
-title: 在机器学习中使用线性回归 | Microsoft Docs
+title: 在机器学习工作室中使用线性回归 - Azure | Microsoft Docs
 description: Excel 中和 Azure 机器学习工作室中的线性回归模型比较
 metakeywords: ''
 services: machine-learning
 documentationcenter: ''
-author: heatherbshapiro
-ms.author: hshapiro
+author: ericlicoding
+ms.custom: (previous ms.author=hshapiro, author=heatherbshapiro)
+ms.author: amlstudiodocs
 manager: hjerez
 editor: cgronlun
 ms.assetid: 417ae6ab-de4f-4bdd-957a-d96133234656
@@ -16,14 +17,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2017
-ms.openlocfilehash: 162fc96c44db3c92103e12922de14b543daec9bf
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: d7ff9e157f776ebf683846652fe4788fc35e19af
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34836219"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52311052"
 ---
-# <a name="using-linear-regression-in-azure-machine-learning"></a>在 Azure 机器学习中使用线性回归
+# <a name="using-linear-regression-in-azure-machine-learning-studio"></a>在 Azure 机器学习工作室中使用线性回归
 > *Kate Baroni* 和 *Ben Boatman* 是 Microsoft 数据科学卓越中心中的企业解决方案架构师。 在本文中，他们将描述使用 Azure 机器学习将现有的回归分析套件迁移到基于云的解决方案的经验。 
 > 
 > 

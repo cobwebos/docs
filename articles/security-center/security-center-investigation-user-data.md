@@ -3,7 +3,7 @@ title: 管理在 Azure 安全中心调查中找到的用户数据 | Microsoft Do
 description: " 了解如何管理在 Azure 安全中心调查功能中找到的用户数据。 "
 services: operations-management-suite
 documentationcenter: na
-author: TerryLanfear
+author: rkarlin
 manager: MBaldwin
 editor: ''
 ms.assetid: 411d7bae-c9d4-4e83-be63-9f2f2312b075
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/23/2018
-ms.author: terrylan
-ms.openlocfilehash: d3b5f0ee4aa656fa66d577aa40f66fc98dff148d
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.date: 11/20/2018
+ms.author: rkarlin
+ms.openlocfilehash: d9bf3618b32ce7c5ba7a300a929428dd0614743d
+ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44301644"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52276238"
 ---
 # <a name="manage-user-data-found-in-an-azure-security-center-investigation"></a>管理在 Azure 安全中心调查中找到的用户数据
 本文提供有关如何管理在 Azure 安全中心调查功能中找到的用户数据的信息。 调查数据存储在 [Azure Log Analytics](../log-analytics/log-analytics-overview.md) 并在安全中心公开。 管理用户数据包括导出或删除数据的能力。
@@ -58,3 +58,4 @@ https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{reso
 
 ## <a name="next-steps"></a>后续步骤
 有关管理用户数据的详细信息，请参阅[管理 Azure 安全中心的用户数据](security-center-privacy.md)。
+若要详细了解如何删除 Log Analytics 中的专用数据，请参阅[如何导出和删除专用数据](../log-analytics/log-analytics-personal-data-mgmt.md#how-to-export-and-delete-private-data)。

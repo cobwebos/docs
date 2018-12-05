@@ -9,16 +9,52 @@ author: hning86
 ms.author: haining
 ms.reviewer: j-martens
 ms.date: 10/24/2018
-ms.openlocfilehash: 5ceb47f437f736829d0be10a856fe787fab944b0
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 6007a7e32e168ada529feb6aa24b8d572671d835
+ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51261559"
+ms.lasthandoff: 11/22/2018
+ms.locfileid: "52291334"
 ---
 # <a name="azure-machine-learning-service-release-notes"></a>Azure 机器学习服务发行说明
 
 本文介绍 Azure 机器学习服务版本。 
+
+## <a name="2018-11-20"></a>2018-11-20
+
+### <a name="azure-machine-learning-sdk-for-python-v0180"></a>适用于 Python 的 Azure 机器学习 SDK v0.1.80
+
++ **重大更改** 
+  * azureml.train.widgets 命名空间已移至 azureml.widgets。
+  * azureml.core.compute.AmlCompute 弃用了以下类 - azureml.core.compute.BatchAICompute 和 azureml.core.compute.DSVMCompute。 后续版本中将删除后一类。 AmlCompute 类现在有一个更简单的定义，只需要 vm_size 和 max_nodes，并在提交作业时自动将集群从 0 扩展到 max_nodes。 我们的 [示例笔记本]（ https://github.com/Azure/MachineLearningNotebooks/tree/master/training) 已经更新了这些信息，并且应该已为你提供如何使用它的示例。 我们希望你喜欢这种简化以及即将发布的版本中更多令人兴奋的功能！
+
+### <a name="azure-machine-learning-data-prep-sdk-v051"></a>Azure 机器学习数据准备 SDK v0.5.1 
+
+阅读[参考文档](https://aka.ms/data-prep-sdk)，了解数据准备 SDK 的详细信息。
++ **新功能**
+   * 创建了一个新的 DataPrep CLI 来执行 DataPrep 包并查看数据集或数据流的数据配置文件
+   * 重新设计 SetColumnType API 以提高可用性
+   * 将 smart_read_file 重命名为 auto_read_file
+   * 数据配置文件中现包括倾斜和峰度
+   * 可采用分层采样进行采样
+   * 可从包含 CSV 文件的 zip 文件中读取
+   * 可使用随机拆分逐行拆分数据集（例如，进入测试训练集）
+   * 可以通过调用 .dtypes 从数据流或数据配置文件中获取所有列数据类型
+   * 可以通过调用 .row_count 从数据流或数据配置文件中获取行计数
+
++ **Bug 修复**
+   * 修复长度为双线转换 
+   * 修复了任何添加列后的断言 
+   * 修复了 FuzzyGrouping 的问题，在某些情况下它无法检测到组
+   * 修复了排序功能以遵守多列排序顺序
+   * 修复和/或表达式与 Pandas 处理它们的方式类似
+   * 修复了从 dbfs 路径读取的问题
+   * 使错误消息更易于理解 
+   * 使用 AML 令牌在远程计算目标上读取时不再失败
+   * 现不再在 Linux DSVM 上失败
+   * 当非字符串值在字符串谓词中时，现不再崩溃
+   * 现在，当数据流正确失败时，将处理断言错误
+   * 现在支持 Azure Databricks 上的 dbutils 装载存储位置
 
 ## <a name="2018-11-05"></a>2018-11-05
 

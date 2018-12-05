@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/28/2018
 ms.author: v-wingf-msft
-ms.openlocfilehash: e5a69fa2ee9a8c4baaeb6586627c7a9a3c9ba4a8
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 53b78231dba4f525410f53dc1ae60901c67f043d
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44347947"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52634500"
 ---
 # <a name="tutorial-configure-samanage-for-automatic-user-provisioning"></a>教程：为 Samanage 配置自动用户预配
 
@@ -141,7 +141,7 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 
     ![Samanage 预配](./media/samanage-provisioning-tutorial/ProvisioningStatus.png)
 
-15. 通过在“设置”部分的“范围”中选择所需的值，定义要预配到 Samanage 的用户和/或组。
+15. 通过在“设置”部分的“范围”中选择所需的值，定义要预配到 Samanage 的用户和/或组。 选择“同步所有用户和组”选项时，请考虑下面“连接器限制”部分中所述的限制。
 
     ![Samanage 预配](./media/samanage-provisioning-tutorial/ScopeSync.png)
 
@@ -153,6 +153,10 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 此操作会对“设置”部分的“范围”中定义的所有用户和/或组启动初始同步。 初始同步执行的时间比后续同步长，只要 Azure AD 预配服务正在运行，大约每隔 40 分钟就会进行一次同步。 可使用“同步详细信息”部分监视进度并跟踪指向预配活动报告的链接，这些报告描述了 Azure AD 预配服务对 Samanage 执行的所有操作。
 
 若要详细了解如何读取 Azure AD 预配日志，请参阅[有关自动用户帐户预配的报告](../manage-apps/check-status-user-account-provisioning.md)。
+
+## <a name="connector-limitations"></a>连接器限制
+
+* 如果选择了“同步所有用户和组”选项并为 Samanage 角色属性配置了默认值，请确保“如果为 null，则为默认值(可选)”字段下的所需值采用以下格式表示：{"displayName":"role"}，其中“role”是所需的默认值。
 
 ## <a name="additional-resources"></a>其他资源
 

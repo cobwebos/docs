@@ -9,18 +9,18 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/05/2018
 ms.author: maxluk
-ms.openlocfilehash: 7470783ba3ebac652c83c397ba2bbe683023c657
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 23702c12f5ec538da4b980ed42fe2282dea69409
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43041579"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52582207"
 ---
-# <a name="overview-of-spark-structured-streaming"></a>Spark 结构化流的概述
+# <a name="overview-of-apache-spark-structured-streaming"></a>Apache Spark 结构化流的概述
 
-使用 Spark 结构化流可以实施可缩放、高吞吐量、容错的应用程序用于处理数据流。 结构化流构建在 Spark SQL 引擎的基础之上，从 Spark SQL 数据帧和数据集方面改进了构造，因此，我们可以像编写批处理查询一样编写流查询。  
+[Apache Spark](https://spark.apache.org/) 结构化流可以实现可缩放、高吞吐量、容错的应用程序来处理数据流。 结构化流构建在 Spark SQL 引擎的基础之上，从 Spark SQL 数据帧和数据集方面改进了构造，因此，我们可以像编写批处理查询一样编写流查询。  
 
-结构化流应用程序在 HDInsight Spark 群集上运行，可从 Kafka、TCP 套接字（调试时）、Azure 存储或 Azure Data Lake Store 连接到流数据。 后两个选项依赖于外部存储服务，可用于观察添加到存储中的新文件，以及处理其内容，如同这些文件经过流式处理一样。 
+结构化流应用程序在 HDInsight Spark 群集上运行，可从 [Apache Kafka](https://kafka.apache.org/)、TCP 套接字（调试时）、Azure 存储或 Azure Data Lake Store 连接到流数据。 后两个选项依赖于外部存储服务，可用于观察添加到存储中的新文件，以及处理其内容，如同这些文件经过流式处理一样。 
 
 结构化流创建长时间运行的查询，在此期间，可对输入数据应用操作，例如选择、投影、聚合、开窗，以及将流数据帧与引用数据帧相联接。 接下来，可以使用自定义代码（例如 SQL 数据库或 Power BI）将结果输出到文件存储（Azure 存储 Blob 或 Data Lake Store）或任何数据存储。 结构化流可向控制台提供输出以用于本地调试，还可以向内存中表提供输出，以便可以在 HDInsight 中查看用于调试的生成数据。 
 
@@ -124,7 +124,7 @@ Spark 结构化流以表的形式表示数据流，该表的深度受限，即�
 |{u'start': u'2016-07-26T07:00:00.000Z', u'end'...  |95 |   96.980971 | 99 |
 |{u'start': u'2016-07-26T08:00:00.000Z', u'end'...  |95 |   96.965997 | 99 |  
 
-有关 Spark 结构化流 API 及其支持的输入数据源、操作和输出接收器的详细信息，请参阅 [Spark 结构化流编程指南](http://spark.apache.org/docs/2.1.0/structured-streaming-programming-guide.html)。
+有关 Spark 结构化流 API 及其支持的输入数据源、操作和输出接收器的详细信息，请参阅 [Apache Spark 结构化流编程指南](http://spark.apache.org/docs/2.1.0/structured-streaming-programming-guide.html)。
 
 ## <a name="checkpointing-and-write-ahead-logs"></a>检查点和预写日志
 
@@ -132,14 +132,14 @@ Spark 结构化流以表的形式表示数据流，该表的深度受限，即�
 
 ## <a name="deploying-spark-streaming-applications"></a>部署 Spark 流式处理应用程序
 
-通常在本地将 Spark 流应用程序生成为 JAR 文件，然后通过将此 JAR 文件复制到 HDInsight 群集上附加的默认存储，在 Spark on HDInsight 中部署此应用程序。 可以使用 POST 操作，通过群集上可用的 LIVY REST API 启动该应用程序。 POST 的正文包括提供 JAR 路径的 JSON 文档、其 main 方法定义并运行流应用程序的类的名称，可选的作业资源要求（例如执行器、内存和核心的数量）以及应用程序代码所需的任何配置设置。
+通常在本地将 Spark 流应用程序生成为 JAR 文件，然后通过将此 JAR 文件复制到 HDInsight 群集上附加的默认存储，在 Spark on HDInsight 中部署此应用程序。 可以使用 POST 操作，通过群集上可用的 [Apache Livy](https://livy.incubator.apache.org/) REST API 启动该应用程序。 POST 的正文包括提供 JAR 路径的 JSON 文档、其 main 方法定义并运行流应用程序的类的名称，可选的作业资源要求（例如执行器、内存和核心的数量）以及应用程序代码所需的任何配置设置。
 
 ![部署 Spark 流式处理应用程序](./media/apache-spark-streaming-overview/hdinsight-spark-streaming-livy.png)
 
-此外，可以使用 GET 请求针对 LIVY 终结点检查所有应用程序的状态。 最后，可以通过针对 LIVY 终结点发出 DELETE 请求终止正在运行的应用程序。 有关 LIVY API 的详细信息，请参阅[通过 LIVY 远程作业](apache-spark-livy-rest-interface.md)
+此外，可以使用 GET 请求针对 LIVY 终结点检查所有应用程序的状态。 最后，可以通过针对 LIVY 终结点发出 DELETE 请求终止正在运行的应用程序。 有关 LIVY API 的详细信息，请参阅[使用 Apache LIVY 执行远程作业](apache-spark-livy-rest-interface.md)
 
 ## <a name="next-steps"></a>后续步骤
 
 * [在 HDInsight 中创建 Apache Spark 群集](../hdinsight-hadoop-create-linux-clusters-portal.md)
-* [Spark 结构化流编程指南](http://spark.apache.org/docs/2.1.0/structured-streaming-programming-guide.html)
-* [通过 LIVY 以远程方式启动 Spark 作业](apache-spark-livy-rest-interface.md)
+* [Apache Spark 结构化流编程指南](http://spark.apache.org/docs/2.1.0/structured-streaming-programming-guide.html)
+* [使用 Apache LIVY 远程启动 Apache Spark 作业](apache-spark-livy-rest-interface.md)

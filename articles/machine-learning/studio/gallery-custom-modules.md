@@ -1,10 +1,11 @@
 ---
-title: Azure AI 库自定义模块 | Microsoft Docs
+title: Azure AI 库自定义模块 - Azure 机器学习工作室 | Microsoft Docs
 description: 在 Azure AI 库中发现自定义机器学习模块。
 services: machine-learning
 documentationcenter: ''
-author: YasinMSFT
-ms.author: yahajiza
+author: ericlicoding
+ms.custom: (previous ms.author=yahajiza, author=YasinMSFT)
+ms.author: amlstudiodocs
 manager: hjerez
 editor: cgronlun
 ms.assetid: 16037a84-dad0-4a8c-9874-a1d3bd551cf0
@@ -15,14 +16,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/14/2017
-ms.openlocfilehash: fe58b335a029e558ce29871483589908f17c03cd
-ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
+ms.openlocfilehash: a504bcfbbcd70c1d6fc8402d4c232e7e8a5476b0
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51345685"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52313735"
 ---
-# <a name="discover-custom-machine-learning-modules-in-azure-ai-gallery"></a>在 Azure AI 库中发现自定义机器学习模块
+# <a name="machine-learning-studio-discover-custom-machine-learning-modules-in-azure-ai-gallery"></a>机器学习工作室：在 Azure AI 库中发现自定义机器学习模块
 
 [Azure AI 库](http://gallery.cortanaintelligence.com)提供了多个[自定义模块](https://gallery.cortanaintelligence.com/customModules)，可扩展 Azure 机器学习工作室的功能。 可导入这些模块供在实验中使用，以便开发更先进的预测分析解决方案。
 

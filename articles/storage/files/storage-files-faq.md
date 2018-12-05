@@ -7,12 +7,12 @@ ms.service: storage
 ms.date: 10/04/2018
 ms.author: renash
 ms.component: files
-ms.openlocfilehash: 29f09034988acde3643eebe368445caab035fabd
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 1ed08562657eb0c50f05efb335c1790d35dcab01
+ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49387497"
+ms.lasthandoff: 11/19/2018
+ms.locfileid: "51976819"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>有关 Azure 文件的常见问题解答 (FAQ)
 [Azure 文件](storage-files-introduction.md)在云端提供完全托管的文件共享，这些共享项可通过行业标准的[服务器消息块 (SMB) 协议](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx)进行访问。 你可以在云或 Windows、Linux 和 macOS 的本地部署同时装载 Azure 文件共享。 另外，你也可以使用 Azure 文件同步在 Windows Server 计算机上缓存 Azure 文件共享，以在靠近使用数据的位置实现快速访问。
@@ -205,7 +205,7 @@ ms.locfileid: "49387497"
     如果部署了文件共享的订阅与 VM 所加入到的 Azure AD 域服务部署相同的 Azure AD 租户相关联，则可以使用相同的 Azure AD 凭据访问 Azure 文件。 限制不是针对订阅，而是针对关联的 Azure AD 租户的。    
     
 * <a id="ad-support-subscription"></a>
-**我是否可以使用与文件共享关联的主租户之外的其他 Azure AD 租户启用通过 SMB 为 Azure 文件启用 Azure AD 身份验证？**
+**我是否可以使用与文件共享关联的主租户之外的 Azure AD 租户为 Azure 文件启用通过 SMB 进行 Azure AD 身份验证？**
 
     不可以。Azure 文件仅支持 Azure AD 与文件共享驻留在同一订阅中的 Azure AD 租户集成。 只有一个订阅可以与 Azure AD 租户相关联。
 

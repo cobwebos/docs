@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/03/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: dadff0dc501c20ef525fdfb7578cb391f29b3302
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 56a36e61bb9938ceb7e3cdaf2676c24c037b1d16
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51263917"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52585641"
 ---
 # <a name="frequently-asked-questions-about-azure-iaas-vm-disks-and-managed-and-unmanaged-premium-disks"></a>有关 Azure IaaS VM 磁盘以及托管和非托管高级磁盘的常见问题解答
 
@@ -136,6 +136,10 @@ Azure 托管磁盘当前仅支持本地冗余存储托管磁盘。
 **创建托管或非托管磁盘后，是否可以对其进行重命名？**
 
 对于托管磁盘，无法对其进行重命名。 但是，可以对非托管磁盘进行重命名，只要它当前未附加到 VHD 或 VM。
+
+可否在 Azure 磁盘上使用 GBT 分区？
+
+GBT 分区仅可在数据磁盘上使用，而不可在操作系统磁盘上使用。 操作系统磁盘必须使用 MBR 分区样式。
 
 ## <a name="standard-ssd-disks"></a>标准 SSD 盘
 
@@ -300,7 +304,7 @@ Azure 支持的操作系统磁盘的分区类型是主启动记录 (MBR)。 MBR 
 
 支持的最大页 blob 大小是多少？
 
-Azure 支持的最大页 blob 大小是 8 TiB (8,191 GiB)。 附加到 VM 作为数据或操作系统磁盘时，最大页面博客大小为 4 TiB (4,095 GiB)。
+Azure 支持的最大页 blob 大小是 8 TiB (8,191 GiB)。 附加到 VM 作为数据或操作系统磁盘时，最大页 blob 大小为 4 TiB (4,095 GiB)。
 
 **是否需要使用新版本的 Azure 工具来创建、附加、上传大于 1 TiB 的磁盘并重设其大小？**
 

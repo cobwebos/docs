@@ -8,12 +8,12 @@ ms.date: 09/20/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: eb44d6b0a4ea69d92f91af7ce1d6b19deff4e753
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: 3ab775d57ba188930cc66b0fa1655307e9a78179
+ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51567020"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52284636"
 ---
 # <a name="understand-extended-offline-capabilities-for-iot-edge-devices-modules-and-child-devices-preview"></a>了解有关 IoT Edge 设备、模块和子设备的扩展脱机功能（预览版）
 
@@ -48,7 +48,7 @@ Azure IoT Edge 支持 IoT Edge 设备上的扩展脱机操作，同时在非 Edg
 
 本文所述的扩展脱机功能可在 [IoT Edge 1.0.4 版或更高版本](https://github.com/Azure/azure-iotedge/releases)中获得。 早期版本有一个脱机功能子集。 不具备扩展脱机功能的现有 IoT Edge 设备不能通过更改运行时版本进行升级，但是必须用新的 IoT Edge 设备标识重新配置才能获得这些功能。 
 
-除了美国东部和西欧以外，所有提供 IoT Hub 的区域都提供扩展脱机支持。 
+除了美国东部以外，所有提供 IoT 中心的区域都提供扩展的脱机支持。
 
 只有非 Edge loT 设备可以作为子设备添加。 
 
@@ -65,6 +65,19 @@ IoT Edge 设备及其分配的子设备可以在初始一次性同步之后无�
    ![从 IoT Edge 设备的详细信息页管理子设备](./media/offline-capabilities/manage-child-devices.png)
 
 父设备可以有多个子设备，但子设备只能有一个父设备。
+
+### <a name="specifying-dns-servers"></a>指定 DNS 服务器 
+
+为了提高可靠性，建议指定在环境中使用的 DNS 服务器地址。 例如，在 Linux 上，更新 /etc/docker/daemon.json（可能需要创建该文件）以包括：
+
+```
+{
+    "dns": [“1.1.1.1”]
+}
+```
+
+如果使用的是本地 DNS 服务器，请将 1.1.1.1 替换为本地 DNS 服务器的 IP 地址。 重启 Docker 服务以使更改生效。
+
 
 ## <a name="optional-offline-settings"></a>可选脱机设置
 

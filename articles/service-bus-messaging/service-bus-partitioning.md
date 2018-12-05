@@ -8,12 +8,12 @@ ms.service: service-bus-messaging
 ms.topic: article
 ms.date: 09/06/2018
 ms.author: spelluru
-ms.openlocfilehash: 2ca2063158634dfa42da094b77c70a2730e82176
-ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
+ms.openlocfilehash: 049b6969b33290edf6ef8a2ea437808d914057a9
+ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47423164"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52285061"
 ---
 # <a name="partitioned-queues-and-topics"></a>分区的队列和主题
 
@@ -38,7 +38,7 @@ Azure 服务总线使用多个消息中转站来处理消息，并用多个消�
 
 ### <a name="standard"></a>标准
 
-在标准消息传送层中，可以创建 1、2、3、4 或 5 GB 大小的服务总线队列和主题（默认值为 1 GB）。 已启用分区，服务总线指定的每个 GB 的实体创建 16 个副本（16 个分区）。 因此，如果创建了一个大小为 5 GB 的队列，共有 16 个分区，最大队列大小为 (5 \* 16) = 80 GB。 可通过在 [Azure 门户][Azure portal]中分区队列或主题的“概述”边栏选项卡中查看该实体的条目来了解该队列或主题的最大大小。
+在标准消息传送层中，可以创建 1、2、3、4 或 5 GB 大小的服务总线队列和主题（默认值为 1 GB）。 已启用分区，服务总线指定的每个 GB 的实体创建 4 个副本（4 个分区）。 因此，如果创建了一个大小为 5 GB 的队列，共有 4 个分区，最大队列大小为 (5 \* 4) = 20 GB。 可通过在 [Azure 门户][Azure portal]中分区队列或主题的“概述”边栏选项卡中查看该实体的条目来了解该队列或主题的最大大小。
 
 ### <a name="premium"></a>高级
 

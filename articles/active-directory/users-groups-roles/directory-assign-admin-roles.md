@@ -14,12 +14,12 @@ ms.date: 10/26/2018
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
-ms.openlocfilehash: 8c5da669d490bf295c4066854ac1173bcc79ad5e
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: 5c880ca15eea6ccf77f93f74c9e1ca41f7fc01ee
+ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51686120"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52276714"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Azure Active Directory 中的管理员角色权限
 
@@ -174,15 +174,11 @@ ms.locfileid: "51686120"
   * Azure AD 之外的其他服务中的管理员，如 Exchange Online、Office 安全与合规中心以及人力资源系统。
   * 高级管理人员、法律顾问和人力资源员工之类的非管理员，可能有权访问敏感或私有信息。
 
+## <a name="role-permissions"></a>角色权限
 下表描述 Azure Active Directory 中授予每个角色的特定权限。 某些角色可能在 Azure Active Directory 外部的 Microsoft 服务中拥有其他权限。
 
 ### <a name="application-administrator"></a>应用程序管理员
 可以创建和管理应用注册和企业应用的所有方面。
-
-  > [!NOTE]
-  > 此角色从“目录读取者”角色继承其他权限。
-  >
-  >
 
 | **操作** | **说明** |
 | --- | --- |
@@ -223,11 +219,6 @@ ms.locfileid: "51686120"
 ### <a name="application-developer"></a>应用程序开发人员
 可以创建独立于“用户可注册应用程序”设置的应用程序注册。
 
-  > [!NOTE]
-  > 此角色从“目录读取者”角色继承其他权限。
-  >
-  >
-
 | **操作** | **说明** |
 | --- | --- |
 | microsoft.aad.directory/applications/createAsOwner | 在 Azure Active Directory 中创建应用程序。 添加创建者作为第一个所有者，创建的对象根据创建者的 250 个创建对象配额计数。 |
@@ -237,11 +228,6 @@ ms.locfileid: "51686120"
 
 ### <a name="billing-administrator"></a>计费管理员
 可以执行与常见计费相关的任务，例如更新付款信息。
-
-  > [!NOTE]
-  > 此角色从“目录读取者”角色继承其他权限。
-  >
-  >
 
   > [!NOTE]
   > 此角色拥有 Azure Active Directory 之外的其他权限。 有关详细信息，请参阅上面的角色说明。
@@ -263,11 +249,6 @@ ms.locfileid: "51686120"
 可以访问和管理桌面管理工具和服务，包括 Intune。
 
   > [!NOTE]
-  > 此角色从“目录读取者”角色继承其他权限。
-  >
-  >
-
-  > [!NOTE]
   > 此角色拥有 Azure Active Directory 之外的其他权限。 有关详细信息，请参阅上面的角色说明。
   >
   >
@@ -283,11 +264,6 @@ ms.locfileid: "51686120"
 
 ### <a name="cloud-application-administrator"></a>云应用管理员
 可以创建和管理应用注册和企业应用的所有方面，应用代理除外。
-
-  > [!NOTE]
-  > 此角色从“目录读取者”角色继承其他权限。
-  >
-  >
 
 | **操作** | **说明** |
 | --- | --- |
@@ -327,11 +303,6 @@ ms.locfileid: "51686120"
 ### <a name="cloud-device-administrator"></a>云设备管理员
 用于在 Azure AD 中管理设备的完全访问权限。
 
-  > [!NOTE]
-  > 此角色从“目录读取者”角色继承其他权限。
-  >
-  >
-
 | **操作** | **说明** |
 | --- | --- |
 | microsoft.aad.directory/devices/delete | 删除 Azure Active Directory 中的设备。 |
@@ -344,11 +315,6 @@ ms.locfileid: "51686120"
 
 ### <a name="company-administrator"></a>公司管理员
 可以管理 Azure AD 和使用 Azure AD 标识的 Microsoft 服务的所有方面。
-
-  > [!NOTE]
-  > 此角色从角色中继承其他权限。
-  >
-  >
 
   > [!NOTE]
   > 此角色拥有 Azure Active Directory 之外的其他权限。 有关详细信息，请参阅上面的角色说明。
@@ -411,11 +377,6 @@ ms.locfileid: "51686120"
 可以读取和管理 Azure AD 和 Office 365 中的符合性配置和报表。
 
   > [!NOTE]
-  > 此角色从“目录读取者”角色继承其他权限。
-  >
-  >
-
-  > [!NOTE]
   > 此角色拥有 Azure Active Directory 之外的其他权限。 有关详细信息，请参阅上面的角色说明。
   >
   >
@@ -435,11 +396,6 @@ ms.locfileid: "51686120"
 ### <a name="conditional-access-administrator"></a>条件访问管理员
 可以管理条件访问功能。
 
-  > [!NOTE]
-  > 此角色从“目录读取者”角色继承其他权限。
-  >
-  >
-
 | **操作** | **说明** |
 | --- | --- |
 | microsoft.aad.directory/policies/conditionalAccess/basic/read | 读取 Azure Active Directory 中的 policies.conditionalAccess 属性。 |
@@ -452,11 +408,6 @@ ms.locfileid: "51686120"
 
 ### <a name="crm-service-administrator"></a>CRM 服务管理员
 可以管理 Dynamics 365 产品的所有方面。
-
-  > [!NOTE]
-  > 此角色从“目录读取者”角色继承其他权限。
-  >
-  >
 
   > [!NOTE]
   > 此角色拥有 Azure Active Directory 之外的其他权限。 有关详细信息，请参阅上面的角色说明。
@@ -476,11 +427,6 @@ ms.locfileid: "51686120"
 可以批准 Microsoft 支持人员访问客户组织数据的请求。
 
   > [!NOTE]
-  > 此角色从“目录读取者”角色继承其他权限。
-  >
-  >
-
-  > [!NOTE]
   > 此角色拥有 Azure Active Directory 之外的其他权限。 有关详细信息，请参阅上面的角色说明。
   >
   >
@@ -493,11 +439,6 @@ ms.locfileid: "51686120"
 ### <a name="device-administrators"></a>设备管理员
 此角色的成员将添加到已加入 Azure AD 的设备上的本地管理员组。
 
-  > [!NOTE]
-  > 此角色从“目录读取者”角色继承其他权限。
-  >
-  >
-
 | **操作** | **说明** |
 | --- | --- |
 | microsoft.aad.directory/groupSettings/basic/read | 读取 Azure Active Directory 中 groupSettings 的基本属性。 |
@@ -505,11 +446,6 @@ ms.locfileid: "51686120"
 
 ### <a name="directory-readers"></a>目录读者
 可以读取基本目录信息。 用于授予对应用程序的访问权限，不针对用户。
-
-  > [!NOTE]
-  > 此角色从角色中继承其他权限。
-  >
-  >
 
 | **操作** | **说明** |
 | --- | --- |
@@ -570,11 +506,6 @@ ms.locfileid: "51686120"
 ### <a name="directory-synchronization-accounts"></a>目录同步帐户
 仅供 Azure AD Connect 服务使用。
 
-  > [!NOTE]
-  > 此角色从角色中继承其他权限。
-  >
-  >
-
 | **操作** | **说明** |
 | --- | --- |
 | microsoft.aad.directory/organization/dirSync/update | 更新 Azure Active Directory 中的 organization.dirSync 属性。 |
@@ -604,11 +535,6 @@ ms.locfileid: "51686120"
 ### <a name="directory-writers"></a>目录编写人员
 可以读取和写入基本目录信息。 用于授予对应用程序的访问权限，不针对用户。
 
-  > [!NOTE]
-  > 此角色从“目录读取者”角色继承其他权限。
-  >
-  >
-
 | **操作** | **说明** |
 | --- | --- |
 | microsoft.aad.directory/groups/create | 在 Azure Active Directory 中创建组。 |
@@ -630,11 +556,6 @@ ms.locfileid: "51686120"
 
 ### <a name="exchange-service-administrator"></a>Exchange 服务管理员
 可以管理 Exchange 产品的所有方面。
-
-  > [!NOTE]
-  > 此角色从“目录读取者”角色继承其他权限。
-  >
-  >
 
   > [!NOTE]
   > 此角色拥有 Azure Active Directory 之外的其他权限。 有关详细信息，请参阅上面的角色说明。
@@ -659,11 +580,6 @@ ms.locfileid: "51686120"
 ### <a name="guest-inviter"></a>来宾邀请者
 可以邀请与“成员可邀请来宾”设置无关的来宾用户。
 
-  > [!NOTE]
-  > 此角色从角色中继承其他权限。
-  >
-  >
-
 | **操作** | **说明** |
 | --- | --- |
 | microsoft.aad.directory/users/appRoleAssignments/read | 读取 Azure Active Directory 中的 users.appRoleAssignments 属性。 |
@@ -682,11 +598,6 @@ ms.locfileid: "51686120"
 ### <a name="helpdesk-administrator"></a>支持管理员
 可以重置非管理员和支持理员的密码。
 
-  > [!NOTE]
-  > 此角色从“目录读取者”角色继承其他权限。
-  >
-  >
-
 | **操作** | **说明** |
 | --- | --- |
 | microsoft.aad.directory/users/invalidateAllRefreshTokens | 使 Azure Active Directory 中的所有用户刷新令牌无效。 |
@@ -699,11 +610,6 @@ ms.locfileid: "51686120"
 
 ### <a name="information-protection-administrator"></a>信息保护管理员
 可以管理 Azure 信息保护产品的所有方面。
-
-  > [!NOTE]
-  > 此角色从“目录读取者”角色继承其他权限。
-  >
-  >
 
   > [!NOTE]
   > 此角色拥有 Azure Active Directory 之外的其他权限。 有关详细信息，请参阅上面的角色说明。
@@ -720,11 +626,6 @@ ms.locfileid: "51686120"
 
 ### <a name="intune-service-administrator"></a>Intune 服务管理员
 可以管理 Intune 产品的所有方面。
-
-  > [!NOTE]
-  > 此角色从“目录读取者”角色继承其他权限。
-  >
-  >
 
   > [!NOTE]
   > 此角色拥有 Azure Active Directory 之外的其他权限。 有关详细信息，请参阅上面的角色说明。
@@ -761,11 +662,6 @@ ms.locfileid: "51686120"
 ### <a name="license-administrator"></a>许可证管理员
 可以管理用户和组的产品许可证。
 
-  > [!NOTE]
-  > 此角色从“目录读取者”角色继承其他权限。
-  >
-  >
-
 | **操作** | **说明** |
 | --- | --- |
 | microsoft.aad.directory/users/assignLicense | 管理 Azure Active Directory 中用户的许可证。 |
@@ -776,11 +672,6 @@ ms.locfileid: "51686120"
 
 ### <a name="lync-service-administrator"></a>Lync 服务管理员
 可以管理 Skype for Business 产品的所有方面。
-
-  > [!NOTE]
-  > 此角色从“目录读取者”角色继承其他权限。
-  >
-  >
 
   > [!NOTE]
   > 此角色拥有 Azure Active Directory 之外的其他权限。 有关详细信息，请参阅上面的角色说明。
@@ -800,11 +691,6 @@ ms.locfileid: "51686120"
 只能在 Office 365 消息中心查看其组织的消息和更新。 
 
   > [!NOTE]
-  > 此角色从“目录读取者”角色继承其他权限。
-  >
-  >
-
-  > [!NOTE]
   > 此角色拥有 Azure Active Directory 之外的其他权限。 有关详细信息，请参阅上面的角色说明。
   >
   >
@@ -816,11 +702,6 @@ ms.locfileid: "51686120"
 
 ### <a name="partner-tier1-support"></a>合作伙伴一线支持人员
 不要使用 - 不适用于常规用途。
-
-  > [!NOTE]
-  > 此角色从“目录读取者”角色继承其他权限。
-  >
-  >
 
   > [!NOTE]
   > 此角色拥有 Azure Active Directory 之外的其他权限。 有关详细信息，请参阅上面的角色说明。
@@ -853,11 +734,6 @@ ms.locfileid: "51686120"
 
 ### <a name="partner-tier2-support"></a>合作伙伴二线支持人员
 不要使用 - 不适用于常规用途。
-
-  > [!NOTE]
-  > 此角色从“目录读取者”角色继承其他权限。
-  >
-  >
 
   > [!NOTE]
   > 此角色拥有 Azure Active Directory 之外的其他权限。 有关详细信息，请参阅上面的角色说明。
@@ -895,11 +771,6 @@ ms.locfileid: "51686120"
 可以管理 Power BI 产品的所有方面。
 
   > [!NOTE]
-  > 此角色从“目录读取者”角色继承其他权限。
-  >
-  >
-
-  > [!NOTE]
   > 此角色拥有 Azure Active Directory 之外的其他权限。 有关详细信息，请参阅上面的角色说明。
   >
   >
@@ -917,11 +788,6 @@ ms.locfileid: "51686120"
 可以管理 Azure AD 中的角色分配和 Privileged Identity Management 的所有方面。
 
   > [!NOTE]
-  > 此角色从“目录读取者”角色继承其他权限。
-  >
-  >
-
-  > [!NOTE]
   > 此角色拥有 Azure Active Directory 之外的其他权限。 有关详细信息，请参阅上面的角色说明。
   >
   >
@@ -933,11 +799,6 @@ ms.locfileid: "51686120"
 
 ### <a name="reports-reader"></a>报告读者
 可以读取登录和审核报告。
-
-  > [!NOTE]
-  > 此角色从“目录读取者”角色继承其他权限。
-  >
-  >
 
   > [!NOTE]
   > 此角色拥有 Azure Active Directory 之外的其他权限。 有关详细信息，请参阅上面的角色说明。
@@ -954,11 +815,6 @@ ms.locfileid: "51686120"
 
 ### <a name="security-administrator"></a>安全管理员
 可以读取安全信息和报表，以及管理 Azure AD 和 Office 365 中的配置。
-
-  > [!NOTE]
-  > 此角色从“目录读取者”角色继承其他权限。
-  >
-  >
 
   > [!NOTE]
   > 此角色拥有 Azure Active Directory 之外的其他权限。 有关详细信息，请参阅上面的角色说明。
@@ -988,11 +844,6 @@ ms.locfileid: "51686120"
 可以读取 Azure AD 和 Office 365 中的安全信息和报表。
 
   > [!NOTE]
-  > 此角色从“目录读取者”角色继承其他权限。
-  >
-  >
-
-  > [!NOTE]
   > 此角色拥有 Azure Active Directory 之外的其他权限。 有关详细信息，请参阅上面的角色说明。
   >
   >
@@ -1012,11 +863,6 @@ ms.locfileid: "51686120"
 可以读取服务运行状况信息和管理支持票证。
 
   > [!NOTE]
-  > 此角色从“目录读取者”角色继承其他权限。
-  >
-  >
-
-  > [!NOTE]
   > 此角色拥有 Azure Active Directory 之外的其他权限。 有关详细信息，请参阅上面的角色说明。
   >
   >
@@ -1031,11 +877,6 @@ ms.locfileid: "51686120"
 
 ### <a name="sharepoint-service-administrator"></a>SharePoint 服务管理员
 可以管理 SharePoint 服务的所有方面。
-
-  > [!NOTE]
-  > 此角色从“目录读取者”角色继承其他权限。
-  >
-  >
 
   > [!NOTE]
   > 此角色拥有 Azure Active Directory 之外的其他权限。 有关详细信息，请参阅上面的角色说明。
@@ -1061,11 +902,6 @@ ms.locfileid: "51686120"
 可以管理 Microsoft Teams 服务中的通话和会议功能。
 
   > [!NOTE]
-  > 此角色从“目录读取者”角色继承其他权限。
-  >
-  >
-
-  > [!NOTE]
   > 此角色拥有 Azure Active Directory 之外的其他权限。 有关详细信息，请参阅上面的角色说明。
   >
   >
@@ -1084,11 +920,6 @@ ms.locfileid: "51686120"
 可以使用高级工具排查 Teams 中的通信问题。
 
   > [!NOTE]
-  > 此角色从“目录读取者”角色继承其他权限。
-  >
-  >
-
-  > [!NOTE]
   > 此角色拥有 Azure Active Directory 之外的其他权限。 有关详细信息，请参阅上面的角色说明。
   >
   >
@@ -1104,11 +935,6 @@ ms.locfileid: "51686120"
 可以使用基本工具排查 Teams 中的通信问题。
 
   > [!NOTE]
-  > 此角色从“目录读取者”角色继承其他权限。
-  >
-  >
-
-  > [!NOTE]
   > 此角色拥有 Azure Active Directory 之外的其他权限。 有关详细信息，请参阅上面的角色说明。
   >
   >
@@ -1122,11 +948,6 @@ ms.locfileid: "51686120"
 
 ### <a name="teams-service-administrator"></a>Teams 服务管理员
 可以管理 Microsoft Teams 服务。
-
-  > [!NOTE]
-  > 此角色从“目录读取者”角色继承其他权限。
-  >
-  >
 
   > [!NOTE]
   > 此角色拥有 Azure Active Directory 之外的其他权限。 有关详细信息，请参阅上面的角色说明。
@@ -1152,11 +973,6 @@ ms.locfileid: "51686120"
 
 ### <a name="user-account-administrator"></a>用户帐户管理员
 可以管理用户和组的所有方面，包括重置有限管理员的密码。
-
-  > [!NOTE]
-  > 此角色从“目录读取者”角色继承其他权限。
-  >
-  >
 
 | **操作** | **说明** |
 | --- | --- |

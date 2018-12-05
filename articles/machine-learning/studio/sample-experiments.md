@@ -1,11 +1,12 @@
 ---
-title: 根据机器学习示例创建试验 - Azure | Microsoft Docs
-description: 了解如何通过 Azure AI 库和 Azure 机器学习使用示例机器学习试验来创建新试验。
+title: 根据示例创建机器学习工作室试验 - Azure | Microsoft Docs
+description: 了解如何通过 Azure AI 库和 Azure 机器学习工作室使用示例机器学习试验来创建新试验。
 keywords: 机器学习示例, 示例试验, 示例性机器学习, AI 示例
 services: machine-learning
 documentationcenter: ''
-author: heatherbshapiro
-ms.author: hshapiro
+author: ericlicoding
+ms.custom: (previous ms.author=hshapiro, author=heatherbshapiro)
+ms.author: amlstudiodocs
 manager: hjerez
 editor: cgronlun
 ms.assetid: 81e6c1d8-682c-4db3-bfd5-d7bfb1150ff3
@@ -16,12 +17,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/05/2018
-ms.openlocfilehash: f93d0d4e12d97fadb23476afc3199599b3268580
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 568732c5a1d2abbb9f304b624d885b2a3c692706
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46998043"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52306674"
 ---
 # <a name="create-machine-learning-experiments-from-working-examples-in-azure-ai-gallery"></a>根据 Azure AI 库中的工作示例创建机器学习试验
 
@@ -47,7 +48,7 @@ ms.locfileid: "46998043"
 3. 可以通过多种方式找到满足要求的试验︰
    * **选择左侧的筛选器。** 例如，若要浏览使用基于 PCA 的异常情况检测算法的试验，请在“类别”下单击“试验”。 然后，在“所用算法”下单击“全部显示”，并在对话框中选择“基于 PCA 的异常情况检测”。 可能需要滚动才能看到它。<br></br>
      ![选择筛选器](./media/sample-experiments/choose-an-algorithm.png)
-   * **使用搜索框。** 例如，若要查找由 Microsoft 提供且与使用双类支持向量机算法的数字识别相关的试验，请在搜索框中输入“数字识别”。 然后，选择筛选器“试验”、“仅限 Microsoft 内容”和“双类支持向量机”：<br></br>
+   * **使用搜索框。**  例如，若要查找由 Microsoft 提供且与使用双类支持向量机算法的数字识别相关的试验，请在搜索框中输入“数字识别”。 然后，选择筛选器“试验”、“仅限 Microsoft 内容”和“双类支持向量机”：<br></br>
      ![使用搜索框](./media/sample-experiments/search-for-experiments.png)
 4. 单击一个试验以了解其更多相关信息。
 5. 若要运行和/或修改试验，请在试验的页面上单击“ **在工作室中打开** ”。 <br></br>

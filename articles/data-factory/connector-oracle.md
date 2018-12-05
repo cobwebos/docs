@@ -11,18 +11,18 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/14/2018
+ms.date: 11/21/2018
 ms.author: jingwang
-ms.openlocfilehash: ec0fc11ac2caf421f331a8fe72f1dacdf6b8a702
-ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
+ms.openlocfilehash: 1e561a59ebe503e0088362087dbda4d7d89fee4c
+ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42311960"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52275680"
 ---
 # <a name="copy-data-from-and-to-oracle-by-using-azure-data-factory"></a>使用 Azure 数据工厂从/向 Oracle 复制数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [第 1 版](v1/data-factory-onprem-oracle-connector.md)
+> * [版本 1](v1/data-factory-onprem-oracle-connector.md)
 > * [当前版本](connector-oracle.md)
 
 本文概述了如何在 Azure 数据工厂中使用复制活动从/向 Oracle 数据库复制数据。 本文基于总体概述复制活动的[复制活动概述](copy-activity-overview.md)一文。
@@ -60,16 +60,51 @@ Oracle 链接服务支持以下属性。
 |:--- |:--- |:--- |
 | type | type 属性必须设置为 **Oracle**。 | 是 |
 | connectionString | 指定连接到 Oracle 数据库实例所需的信息。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。<br><br>**支持的连接类型**：可以使用 **Oracle SID** 或 **Oracle 服务名称**来标识数据库：<br>- 如果使用 SID：`Host=<host>;Port=<port>;Sid=<sid>;User Id=<username>;Password=<password>;`<br>- 如果使用服务名称：`Host=<host>;Port=<port>;ServiceName=<servicename>;User Id=<username>;Password=<password>;` | 是 |
-| connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 如果可以公开访问数据存储，则可以使用自承载集成运行时或 Azure 集成运行时。 如果未指定，则使用默认 Azure 集成运行时。 |否 |
+| connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 如果可以公开访问数据存储，则可以使用自承载集成运行时或 Azure Integration Runtime 时。 如果未指定，则使用默认 Azure Integration Runtime。 |否 |
 
 >[!TIP]
 >如果遇到错误消息指出“ORA-01025: UPI 参数超出范围”，且 Oracle 版本为 8i，请将 `WireProtocolMode=1` 添加到连接字符串并重试。
 
 若要在 Oracle 连接上启用加密，你有两种选择：
 
-1.  在Oracle 服务器端，转到“Oracle 高级安全性 (OAS)”并配置加密设置，该设置支持三重 DES 加密 (3DES) 和高级加密标准 (AES)，请参阅[此处](https://docs.oracle.com/cd/E11882_01/network.112/e40393/asointro.htm#i1008759)的详细信息。 ADF Oracle 连接器会自动协商加密方法，以便在建立与 Oracle 的连接时使用在 OAS 中配置的加密方法。
+1.  若要使用三重 DES 加密 (3DES) 和高级加密标准 (AES)，在 Oracle 服务器端，转到“Oracle 高级安全性 (OAS)”并配置加密设置，请参阅[此处](https://docs.oracle.com/cd/E11882_01/network.112/e40393/asointro.htm#i1008759)的详细信息。 ADF Oracle 连接器会自动协商加密方法，以便在建立与 Oracle 的连接时使用在 OAS 中配置的加密方法。
 
-2.  在客户端，可以在连接字符串中添加 `EncryptionMethod=1`。 这将使用 SSL/TLS 作为加密方法。 若要使用此功能，需要在 Oracle 服务器端的 OAS 中禁用非 SSL 加密设置，以避免加密冲突。
+2.  若要使用 SSL，请执行以下步骤：
+
+    1.  获取 SSL 证书信息。 获取 SSL 证书的 DER 编码证书信息，并将输出 (----- Begin Certificate … End Certificate -----) 另存为文本文件。
+
+        ```
+        openssl x509 -inform DER -in [Full Path to the DER Certificate including the name of the DER Certificate] -text
+        ```
+
+        示例：从 DERcert.cer 提取证书信息；然后，将输出保存到 cert.txt
+
+        ```
+        openssl x509 -inform DER -in DERcert.cer -text
+        Output:
+        -----BEGIN CERTIFICATE-----
+        XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+        XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+        XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+        XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+        XXXXXXXXX
+        -----END CERTIFICATE-----
+        ```
+    
+    2.  生成密钥存储或信任存储。 以下命令使用或不使用 PKCS-12 格式的密码来创建信任存储文件。
+
+        ```
+        openssl pkcs12 -in [Path to the file created in the previous step] -out [Path and name of TrustStore] -passout pass:[Keystore PWD] -nokeys -export
+        ```
+
+        示例：使用密码创建名为 MyTrustStoreFile 的 PKCS12 信任存储文件
+
+        ```
+        openssl pkcs12 -in cert.txt -out MyTrustStoreFile -passout pass:ThePWD -nokeys -export  
+        ```
+
+    3.  将信任存储文件放于自承载 IR 计算机上，例如，C:\MyTrustStoreFile。
+    4.  在 ADF 中，使用 `EncryptionMethod=1` 和相应的 `TrustStore`/`TrustStorePassword` 值配置 Oracle 连接字符串，例如 `Host=<host>;Port=<port>;Sid=<sid>;User Id=<username>;Password=<password>;EncryptionMethod=1;TrustStore=C:\\MyTrustStoreFile;TrustStorePassword=<trust_store_password>`。
 
 **示例：**
 

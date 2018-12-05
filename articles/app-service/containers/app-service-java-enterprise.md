@@ -12,12 +12,12 @@ ms.devlang: java
 ms.topic: article
 ms.date: 08/29/2018
 ms.author: routlaw
-ms.openlocfilehash: 6613def8891109e3a0ddf818111898a893a8035d
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: a6d50e6f405294bf8e91018dd4d7b6008cd49ada
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51628334"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52161866"
 ---
 # <a name="java-enterprise-guide-for-app-service-on-linux"></a>Linux 上应用服务的 Java 企业指南
 
@@ -27,13 +27,14 @@ Linux 上的Azure 应用服务使 Java 开发人员能够在完全托管的基�
 
 ## <a name="scale-with-app-service"></a>应用服务缩放 
 
-在 Linux 上的应用服务中运行的 WildFly 应用程序服务器以独立模式运行，而不是在域配置中运行。 
+在 Linux 上的应用服务中运行的 WildFly 应用程序服务器以独立模式运行，而不是在域配置中运行。 横向扩展应用服务计划时，每个 WildFly 实例都被配置为独立的服务器。
 
- 使用[缩放规则](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-autoscale-get-started?toc=%2Fazure%2Fapp-service%2Fcontainers%2Ftoc.json)和[增加实例数](https://docs.microsoft.com/azure/app-service/web-sites-scale?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)，纵向或横向缩放应用程序。
+ 使用[缩放规则](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-autoscale-get-started?toc=%2Fazure%2Fapp-service%2Fcontainers%2Ftoc.json)和[增加实例数](https://docs.microsoft.com/azure/app-service/web-sites-scale?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)，纵向或横向缩放应用程序。 
 
 ## <a name="customize-application-server-configuration"></a>自定义应用程序服务器配置
 
-开发人员可以编写启动 Bash 脚本来执行其应用程序所需的其他配置，例如：
+Web 应用实例是无状态的，因此必须在启动时配置启动的每个新实例，以支持应用程序所需的 Wildfly 配置。
+你可以编写一个用于调用 WildFly CLI 的启动 Bash 脚本，以便执行以下操作：
 
 - 设置数据源
 - 配置消息提供程序
@@ -51,7 +52,7 @@ Linux 上的Azure 应用服务使 Java 开发人员能够在完全托管的基�
 
 将 Azure 门户中的“启动脚本”字段设置为启动 shell 脚本的位置，例如 `/home/site/deployments/tools/your-startup-script.sh`。
 
-使用[应用程序设置](/azure/app-service/web-sites-configure#application-settings)来设置要在脚本中使用的环境变量。 这些设置可用于启动脚本环境，还可使连接字符串和其他机密不受版本控制。
+在应用程序配置中提供[应用程序设置](/azure/app-service/web-sites-configure#application-settings)，以传递供在脚本中使用的环境变量。 应用程序设置将连接字符串和配置应用程序所需的其他机密置于版本控制之外。
 
 ## <a name="modules-and-dependencies"></a>模块和依赖项
 

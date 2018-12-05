@@ -69,6 +69,8 @@ items:
         href: operator-best-practices-advanced-scheduler.md
       - name: 身份验证和授权
         href: operator-best-practices-identity.md
+      - name: 业务连续性 (BC) 和灾难恢复 (DR)
+        href: operator-best-practices-multi-region.md
     - name: 适用于应用程序开发人员
       items:
       - name: 资源管理
@@ -97,6 +99,12 @@ items:
       maintainContext: true
     - name: 启用了 Azure AD 的 AKS
       href: aad-integration.md
+    - name: 创建虚拟节点（预览版）
+      items:
+      - name: Azure CLI
+        href: virtual-nodes-cli.md
+      - name: Azure 门户
+        href: virtual-nodes-portal.md
     - name: 使用虚拟 Kubelet
       href: virtual-kubelet.md
     - name: 使用群集自动缩放程序
@@ -260,14 +268,14 @@ items:
   - name: 提供产品反馈
     href: https://feedback.azure.com/forums/914020-azure-kubernetes-service-aks
   - name: 堆栈溢出
-    href: http://stackoverflow.com/questions/tagged/azure-container-service
+    href: https://stackoverflow.com/questions/tagged/azure-container-service
   - name: 视频
     href: https://azure.microsoft.com/resources/videos/index/?services=container-service&sort=newest
   - name: 常见问题解答
     href: faq.md
-ms.openlocfilehash: fc7f58330bf5ca0819cf0da494e521324fd2a6ea
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.openlocfilehash: 4bc03d2a50f384527bdfd3612d684cff6a6310e2
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52441666"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52847331"

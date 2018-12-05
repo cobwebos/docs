@@ -14,17 +14,32 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: billmath
-ms.openlocfilehash: 8ca04fef8a17c43c9d1f761e36d8da7f1e07d4d5
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: f3684a1fa22982b62992db28cccd88d67738bc94
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51283574"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52161695"
 ---
 # <a name="azure-ad-connect-health-version-release-history"></a>Azure AD Connect Health：版本发布历史记录
 Azure Active Directory 团队会定期更新 Azure AD Connect Health 的新特性和功能。 本文列出已发布的版本和功能。
-适用于同步的 Azure AD Connect Health 与 Azure AD Connect 安装相集成。 了解有关 [Azure AD Connect 发行历史记录](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-version-history)的详细信息
+适用于同步的 Azure AD Connect Health 与 Azure AD Connect 安装相集成。 详细了解 [Azure AD Connect 版本历史记录](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-version-history)有关功能反馈，请在 [Connnect Health User Voice 频道](https://feedback.azure.com/forums/169401-azure-active-directory/filters/new?category_id=165591)进行投票
 
+## <a name="november-2018"></a>2018 年 11 月
+**正式版新功能：** 
+* 用于同步的 Azure AD Connect Health - 从门户诊断并修正重复的属性同步错误
+
+**代理更新：** 
+*  适用于 AD DS 的 Azure AD Connect Health 代理（3.1.24.0 版） 
+1. 传输层安全性 (TLS) 协议版本 1.2 符合性和强制执行
+2. 减少全局编录警报噪音
+3. 运行状况代理注册 bug 修复
+
+*   适用于 AD FS 的 Azure AD Connect Health 代理（3.1.24.0 版）
+1. 传输层安全性 (TLS) 协议版本 1.2 符合性和强制执行
+2. Test-ADFSRequestToken 对本地化操作系统的支持
+3. 解决了诊断代理 EventHandler 锁定问题
+4. 运行状况代理注册 bug 修复
 
 ## <a name="august-2018"></a>2018 年 8 月 
 *  适用于同步的 Azure AD Connect Health（3.1.7.0 版），与 Azure AD Connect 1.1.880.0 版一起发布    

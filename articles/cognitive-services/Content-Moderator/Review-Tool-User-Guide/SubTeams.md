@@ -9,12 +9,12 @@ ms.component: content-moderator
 ms.topic: article
 ms.date: 06/22/2017
 ms.author: sajagtap
-ms.openlocfilehash: 161c7cd8bac07d5ffc138297d98a40317a8d88fc
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 6e1fc08af1062ae8962ba33c6df980182175264b
+ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35365447"
+ms.lasthandoff: 11/17/2018
+ms.locfileid: "51852140"
 ---
 # <a name="team-and-subteams"></a>团队和子团队 #
 
@@ -58,6 +58,6 @@ ms.locfileid: "35365447"
 
 ## <a name="switch-between-subteams-to-review-assigned-content"></a>切换子团队以审阅分配的内容 ##
 
-若为一个或多个子团队的成员，可以在“审阅”工具仪表板中切换这些子团队。 若要查看子团队当前所有的待处理审阅，请选择“图像”选项卡中的“选择子团队”。
+如果你是一个或多个子团队的成员，则可在“审阅”工具仪表板中切换这些子团队。 若要查看子团队当前所有的待处理审阅，请选择“图像”选项卡中的“选择子团队”。
 
 ![切换子团队](images/3-review-image-subteam-2.png)

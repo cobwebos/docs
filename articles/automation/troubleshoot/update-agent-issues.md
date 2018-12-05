@@ -1,5 +1,5 @@
 ---
-title: 了解 Azure 更新管理中的代理检查结果
+title: 了解 Azure 更新管理中的 Windows 代理检查结果
 description: 了解如何排查更新管理代理问题。
 services: automation
 author: georgewallace
@@ -9,33 +9,33 @@ ms.topic: conceptual
 ms.service: automation
 ms.component: update-management
 manager: carmonm
-ms.openlocfilehash: 20323afe79ad3de1e3dfccd4752c4f7e28d22266
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: 61ff50cda6ec523964ccf8f885f07c39020fbc88
+ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50095365"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52335140"
 ---
-# <a name="understand-the-agent-check-results-in-update-management"></a>了解更新管理中的代理检查结果
+# <a name="understand-the-windows-agent-check-results-in-update-management"></a>了解更新管理中的 Windows 代理检查结果
 
-非 Azure 计算机在更新管理中未显示“就绪”的原因可能有多种。 在更新管理中，可以检查混合辅助角色代理的运行状况以确定潜在问题。 本文介绍如何从 Azure 门户和脱机方案中运行故障排除。
+Azure 计算机不能在 Azure 更新管理中显示“就绪”状态的原因有多种。 在更新管理中，可以检查混合辅助角色代理的运行状况以确定潜在问题。 本文介绍如何从 Azure 门户和脱机方案中运行更新管理故障排除。
 
 ## <a name="start-the-troubleshooter"></a>启动“故障排除”
 
-通过单击门户中“更新代理准备”列下的“故障排除”链接，可以启动“更新代理故障排除”页。 此页显示代理的问题以及本文的链接，用于帮助你解决问题。
+在 Azure 门户中，“更新代理故障排除”页显示代理存在的问题。 该页有一个指向本文的链接，有助于排查并解决问题。 要转到“更新代理故障排除”页面，请在“更新代理准备”列中选择“故障排除”链接。
 
-![VM 列表页](../media/update-agent-issues/vm-list.png)
+![虚拟机更新管理列表](../media/update-agent-issues/vm-list.png)
 
 > [!NOTE]
-> 检查要求 VM 处于运行状态。 如果 VM 未运行，会出现一个用于链接到“启动 VM”的按钮。
+> 要检查代理的运行状况，必须运行 VM。 如果 VM 没有运行，屏幕上会显示“启动 VM”按钮。
 
-在“更新代理故障排除”页上，单击“运行检查”，启动故障排除。 故障排除使用[运行命令](../../virtual-machines/windows/run-command.md)在计算机上运行脚本以验证代理程序具有的依赖项。 完成故障排除时，它会返回检查的结果。
+在“更新代理故障排除”页上选择“运行检查”，启动故障排除。 故障排除使用[运行命令](../../virtual-machines/windows/run-command.md)在计算机上运行脚本以验证代理依赖项。 完成故障排除时，它会返回检查的结果。
 
-![故障排除页](../media/update-agent-issues/troubleshoot-page.png)
+![“更新代理故障排除”页面](../media/update-agent-issues/troubleshoot-page.png)
 
-完成后，窗口中将返回结果。 [检查部分](#pre-requisistes-checks)提供有关每个检查正在寻找的信息。
+结果准备就绪后会显示在该页上。 [检查部分](#prerequisiste-checks)显示每个检查中包含的内容。
 
-![更新代理检查页](../media/update-agent-issues/update-agent-checks.png)
+![“更新代理故障排除”检查](../media/update-agent-issues/update-agent-checks.png)
 
 ## <a name="prerequisite-checks"></a>先决条件检查
 
@@ -45,24 +45,20 @@ ms.locfileid: "50095365"
 
 |操作系统  |说明  |
 |---------|---------|
-|Windows Server 2008、Windows Server 2008 R2 RTM    | 仅支持更新评估。         |
-|Windows Server 2008 R2 SP1 和更高版本     |需要 .NET Framework 4.5.1 或更高版本。 （[下载 .NET 框架](/dotnet/framework/install/guide-for-developers)）<br/> 需要 Windows PowerShell 4.0 或更高版本。 （[下载 WMF 4.0](https://www.microsoft.com/download/details.aspx?id=40855)）<br/> 为提高可靠性，建议使用 Windows PowerShell 5.1。  （[下载 WMF 5.1](https://www.microsoft.com/download/details.aspx?id=54616)）        |
-|CentOS 6 (x86/x64) 和 7 (x64)      | Linux 代理必须具有访问更新存储库的权限。 基于分类的修补需要借助“yum”来返回 CentOS 当前没有的安全数据。         |
-|Red Hat Enterprise 6 (x86/x64) 和 7 (x64)     | Linux 代理必须具有访问更新存储库的权限。        |
-|SUSE Linux Enterprise Server 11 (x86/x64) 和 12 (x64)     | Linux 代理必须具有访问更新存储库的权限。        |
-|Ubuntu 14.04 LTS、16.04 LTS 和 18.04 LTS (x86/x64)      |Linux 代理必须具有访问更新存储库的权限。         |
+|Windows Server 2008 R2 RTM、Windows Server 2008 | 仅支持更新评估。         |
+|Windows Server 2008 R2 SP1 和更高版本 |需要 .NET Framework 4.5.1 或更高版本。 （[下载 .NET Framework](/dotnet/framework/install/guide-for-developers)）<br/> 需要 Windows PowerShell 4.0 或更高版本。 （[下载 Windows Management Framework 4.0](https://www.microsoft.com/download/details.aspx?id=40855)）<br/> 为提高可靠性，建议使用 Windows PowerShell 5.1。  （[下载 Windows Management Framework 5.1](https://www.microsoft.com/download/details.aspx?id=54616)）        |
 
 ### <a name="net-451"></a>.NET 4.5.1
 
-.NET framework 检查，用于验证系统是否至少存在 [.NET Framework 4.5.1](https://www.microsoft.com/download/details.aspx?id=30653)。
+.NET Framework 检查，用于验证系统是否至少安装了 [.NET Framework 4.5.1](https://www.microsoft.com/download/details.aspx?id=30653)。
 
 ### <a name="wmf-51"></a>WMF 5.1
 
-WMF 检查，用于验证系统是否具有所需的 Windows Management Framework 版本。 [Windows Management Framework 4.0](https://www.microsoft.com/download/details.aspx?id=40855) 是支持的最低版本。 建议安装 [Windows Management Framework 5.1](https://www.microsoft.com/download/details.aspx?id=54616) 以提高混合 Runbook 辅助角色的可靠性。
+WMF 检查，用于验证系统是否具有所需的 Windows Management Framework (WMF) 版本。 [Windows Management Framework 4.0](https://www.microsoft.com/download/details.aspx?id=40855) 是支持的最低版本。 建议安装 [Windows Management Framework 5.1](https://www.microsoft.com/download/details.aspx?id=54616) 以提高混合 Runbook 辅助角色的可靠性。
 
 ### <a name="tls-12"></a>TLS 1.2
 
-此项检查用于确定是否使用 TLS 1.2 加密通信。 平台不再支持 TLS 1.0，建议客户端使用 TLS 1.2 与更新管理进行通信。
+此项检查用于确定是否使用 TLS 1.2 加密通信。 该平台不再支持 TLS 1.0。 建议客户端使用 TLS 1.2 与更新管理进行通信。
 
 ## <a name="connectivity-checks"></a>连接性检查
 
@@ -70,27 +66,27 @@ WMF 检查，用于验证系统是否具有所需的 Windows Management Framewor
 
 此检查确定代理是否可以与代理服务正确通信。
 
-代理和防火墙配置必须允许混合 Runbook 辅助角色代理与注册终结点通信。 有关要打开的地址和端口的列表，请参阅[混合辅助角色的网络规划](../automation-hybrid-runbook-worker.md#network-planning)
+代理和防火墙配置必须允许混合 Runbook 辅助角色代理与注册终结点通信。 有关要打开的地址和端口的列表，请参阅[混合辅助角色的网络规划](../automation-hybrid-runbook-worker.md#network-planning)。
 
 ### <a name="operations-endpoint"></a>操作终结点
 
 此检查用于确定代理是否可以与作业运行时数据服务正确通信。
 
-代理和防火墙配置必须允许混合 Runbook 辅助角色代理与作业运行时数据服务通信。 有关要打开的地址和端口的列表，请参阅[混合辅助角色的网络规划](../automation-hybrid-runbook-worker.md#network-planning)
+代理和防火墙配置必须允许混合 Runbook 辅助角色代理与作业运行时数据服务通信。 有关要打开的地址和端口的列表，请参阅[混合辅助角色的网络规划](../automation-hybrid-runbook-worker.md#network-planning)。
 
 ## <a name="vm-service-health-checks"></a>VM 服务运行状况检查
 
 ### <a name="monitoring-agent-service-status"></a>监视代理服务的状态
 
-此项检查确定 Microsoft Monitoring Agent `HealthService` 是否在计算机上运行。
+此项检查确定 `HealthService`（Microsoft Monitoring Agent）是否在计算机上运行。
 
 若要详细了解如何对服务进行故障排查，请参阅 [Microsoft Monitoring Agent 未运行](hybrid-runbook-worker.md#mma-not-running)。
 
-若要重新安装 Microsoft Monitoring Agent，请参阅[安装和配置 Microsoft Monitoring Agent](/log-analytics/log-analytics-concept-hybrid.md#install-and-configure-agent)
+若要重新安装 Microsoft Monitoring Agent，请参阅[安装和配置 Microsoft Monitoring Agent](../../log-analytics/log-analytics-quick-collect-windows-computer.md#install-the-agent-for-windows)。
 
 ### <a name="monitoring-agent-service-events"></a>监视代理服务事件
 
-此检查用于确定过去 24 小时内计算机上的 Operations Manager 日志中是否有任何 `4502` 事件。
+此检查用于确定过去 24 小时内计算机上的 Operations Manager 日志中是否出现过任何 `4502` 事件。
 
 有关此事件的详细信息，请参阅此事件的[故障排除指南](hybrid-runbook-worker.md#event-4502)。
 
@@ -98,11 +94,11 @@ WMF 检查，用于验证系统是否具有所需的 Windows Management Framewor
 
 ### <a name="machinekeys-folder-access"></a>MachineKeys 文件夹访问权限
 
-加密文件夹访问权限检查可确定本地系统帐户是否有权访问 `C:\ProgramData\Microsoft\Crypto\RSA`
+Crypto 文件夹访问检查确定本地系统帐户是否有权访问 C:\ProgramData\Microsoft\Crypto\RSA。
 
 ## <a name="troubleshoot-offline"></a>脱机使用故障排除
 
-可以通过在本地运行脚本，在混合 Runbook 辅助角色上脱机使用故障排除。 脚本 [Troubleshoot-WindowsUpdateAgentRegistration](https://www.powershellgallery.com/packages/Troubleshoot-WindowsUpdateAgentRegistration) 可在 PowerShell 库中找到。 以下示例显示了此脚本的输出示例：
+可以通过在本地运行脚本，在混合 Runbook 辅助角色上脱机使用故障排除。 可在 PowerShell 库中获得 [Troubleshoot-WindowsUpdateAgentRegistration](https://www.powershellgallery.com/packages/Troubleshoot-WindowsUpdateAgentRegistration) 脚本。 此脚本的输出如以下示例所示：
 
 ```output
 RuleId                      : OperatingSystemCheck
@@ -198,4 +194,4 @@ CheckResultMessageArguments : {}
 
 ## <a name="next-steps"></a>后续步骤
 
-若要排查混合 Runbook 辅助角色的其他问题，请参阅[故障排除 - 混合 Runbook 辅助角色](hybrid-runbook-worker.md)
+若要排查混合 Runbook 辅助角色的更多问题，请参阅[混合 Runbook 辅助角色的故障排除](hybrid-runbook-worker.md)。

@@ -1,11 +1,12 @@
 ---
-title: 将数据导入机器学习工作室 | Microsoft Docs
+title: 将数据导入机器学习工作室 - Azure | Microsoft Docs
 description: 如何将数据从各种数据源导入 Azure 机器学习工作室。 了解受支持的数据类型和数据格式。
 keywords: 导入数据, 数据格式, 数据类型, 数据源, 训练数据
 services: machine-learning
 documentationcenter: ''
-author: heatherbshapiro
-ms.author: hshapiro
+author: ericlicoding
+ms.custom: (previous ms.author=hshapiro, author=heatherbshapiro)
+ms.author: amlstudiodocs
 manager: hjerez
 editor: cgronlun
 ms.assetid: c194ee3b-838c-4efe-bb2a-c1d052326216
@@ -16,12 +17,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/29/2017
-ms.openlocfilehash: 575e17f214561bde06b70bf87c4895ae379659f2
-ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
+ms.openlocfilehash: 8f6bc6e1e13de879f81e6fc6f1f447d0c2856ced
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51344716"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52315250"
 ---
 # <a name="import-your-training-data-into-azure-machine-learning-studio-from-various-data-sources"></a>将训练数据从各种数据源导入 Azure 机器学习工作室
 

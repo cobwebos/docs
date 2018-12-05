@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: 68488788f73c9662b5d1eaa3b670f2120941defc
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: e2326f56ad367f744bc7895bc8c4bfd6f32d0310
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51616480"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52264873"
 ---
 # <a name="troubleshooting-log-alerts-in-azure-monitor"></a>在 Azure Monitor 中排查日志警报问题  
 ## <a name="overview"></a>概述
@@ -61,7 +61,7 @@ ms.locfileid: "51616480"
 
 ![包含多个值的指标度量查询执行](./media/monitor-alerts-unified/LogMMQuery.png)
 
-由于“聚合依据”为 $table – 数据已按 $table 列排序（如红框所示），我们进行分组并查看“聚合依据”字段（即 $table）的类型 - 例如：availabilityResults 的值将视为一个绘图/实体（在橙色框中突出显示）。 在此绘图/实体值中 – 警报服务将检查对表值“availabilityResults”触发的警报的三次连续违规（如绿框中所示）。 同样，如果其他任何 $table 值发生三次连续违规 - 同时会触发另一条警报通知；警报服务将自动按时间排序一个绘图/实体中的值（如橙色框中所示）。
+由于“聚合依据”为 $table – 数据已按 $table 列排序（如红框所示），我们进行分组并查看“聚合依据”字段（即 $table）的类型 - 例如：availabilityResults 的值将视为一个绘图/实体（在橙色框中突出显示）。 在此绘图/实体值中 – 警报服务将检查对表值“availabilityResults”触发的警报的三次连续违规（如绿框中所示）。 同样，如果任何其他 $table 值发生三次连续违规，同一事件会触发另一条警报通知；警报服务将自动按时间排序一个绘图/实体中的值（如橙色框中所示）。
 
 现在，假设指标度量日志警报规则已修改，查询为 `search *| summarize AggregatedValue = count() by bin(timestamp, 1h)`，但剩余的配置与前面相同，包括警报逻辑同样为三次连续违规。 在这种情况下，“聚合依据”选项默认为 timestamp。 由于在查询中只为 summarize…by 提供了一个值（即 timestamp），与前面的示例类似，在执行结束时，输出将如下所示。 
 

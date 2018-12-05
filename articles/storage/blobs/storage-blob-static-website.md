@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/19/18
 ms.author: tamram
 ms.component: blobs
-ms.openlocfilehash: ddc85cb7c9bd4488295b22e687d199a73d23922c
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 36b4fbac13e012de2fbef137c6637fd7e2daea8f
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49955620"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52161287"
 ---
 # <a name="static-website-hosting-in-azure-storage"></a>Azure 存储中的静态网站托管
 使用 Azure 存储 GPv2 帐户可以直接通过名为 *$web* 的存储容器提供静态内容（HTML、CSS、JavaScript 和图像文件）。 利用 Azure 存储中的托管，可以使用无服务器体系结构，包括 [Azure Functions](/azure/azure-functions/functions-overview) 和其他 PaaS 服务。
@@ -109,7 +109,7 @@ az storage blob upload-batch -s <SOURCE_PATH> -d $web --account-name <ACCOUNT_NA
 
 - [AzCopy](../common/storage-use-azcopy.md)
 - [存储资源管理器](https://azure.microsoft.com/features/storage-explorer/)
-- [Visual Studio Team System](https://code.visualstudio.com/tutorials/static-website/deploy-VSTS)
+- [Azure Pipelines](https://code.visualstudio.com/tutorials/static-website/deploy-VSTS)
 - [Visual Studio Code 扩展](https://code.visualstudio.com/tutorials/static-website/getting-started)
 
 在所有情况下，请确保将文件复制到 *$web* 容器。

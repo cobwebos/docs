@@ -9,12 +9,12 @@ ms.component: custom-translator
 ms.date: 11/13/2018
 ms.author: v-rada
 ms.topic: article
-ms.openlocfilehash: 378baad0735238dc0921e5e78e2a27b3ae907e19
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 611cd0878e88d2e1c0a988f73b57e391c5a8551d
+ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51626888"
+ms.lasthandoff: 11/19/2018
+ms.locfileid: "51975901"
 ---
 # <a name="migrate-hub-workspace-and-projects-to-custom-translator"></a>将 Hub 工作区和项目迁移到自定义翻译
 
@@ -68,7 +68,7 @@ ms.locfileid: "51626888"
 
 4.  在下一页上，选择以下两个选项之一：
 
-    a.  仅部署的训练：如果选择此选项，则只会已部署的系统和相关文档。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。  仅部署的训练：如果选择此选项，则只会已部署的系统和相关文档。
 
     b.  所有成功的训练：如果选择此选项，则会迁移所有已成功的训练和相关文档。
 
@@ -134,6 +134,19 @@ Microsoft Translator Hub 允许有选择性地迁移项目。
 
 >[!Note]
 >仅支持迁移到存在 NMT 语言的语言对。 请查看当前[支持的 NMT 语言](https://www.microsoft.com/translator/business/languages/)列表。 对于不存在 NMT 语言的语言对，数据将从 Hub 移到自定义翻译，但无法针对这些语言对执行训练。
+
+## <a name="custom-translator-versus-hub"></a>自定义翻译与 Hub
+
+此表比较了 Microsoft Translator Hub 和自定义翻译器之间的功能。
+
+|   | Hub | 自定义翻译 |
+|:-----|:----:|:----:|
+|自定义功能状态   | 正式版  | 预览 |
+| 文本 API 版本  | V2    | V3  |
+| SMT 自定义 | 是   | 否 |
+| NMT 自定义 | 否    | 是 |
+| 新的统一语音服务自定义 | 否    | 是 |
+| 无跟踪 | 是 | 是 |
 
 ## <a name="next-steps"></a>后续步骤
 

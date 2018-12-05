@@ -9,20 +9,20 @@ ms.service: cognitive-services
 ms.component: content-moderator
 ms.topic: article
 ms.author: sajagtap
-ms.openlocfilehash: 2e1a912f2d2aa8a6f9b165524351f2a16232537c
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: f1a3a401363866bdd803093e894615d90536f408
+ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50212193"
+ms.lasthandoff: 11/17/2018
+ms.locfileid: "51854214"
 ---
-# <a name="human-in-the-loop"></a>人工干预
+# <a name="review-tool-overview"></a>“审阅”工具概述
 
 当人机协作进行内容审核时，你将获得最佳结果。 计算机可以有效地增强人工评审，在现实世界环境中，必须辅助或调节预测置信度。 其结果是，相比人工或计算机单独工作的效果，一个混合内容审核过程的效果更佳。
 
-## <a name="how-the-review-tool-helps"></a>审阅工具如何提供帮助 ##
+## <a name="what-it-does"></a>作用
 
-当与计算机辅助的审核 API 一起使用时，人工评审工具将允许你完成与内容审核生命周期相关的重要任务。
+当与计算机辅助的审核 API 一起使用时，通过人工评审工具可以完成与内容审核生命周期相关的重要任务。
 
 1. 从基础审核 API 结果中自动创建人工评审
 2. 使用一个工具（评审工具和 API）来审核多种格式（文本、图像和视频）

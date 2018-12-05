@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: troubleshooting
-ms.date: 10/31/2018
+ms.date: 11/15/2018
 ms.author: genli
-ms.openlocfilehash: 80799eb716e77a4dec02a2daf028c35589c75da0
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: b14a98ce22979182ec27ba5dc849f9535fa2b387
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51235269"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51824296"
 ---
 # <a name="troubleshoot-azure-windows-virtual-machine-activation-problems"></a>排查 Azure Windows 虚拟机激活问题
 
@@ -29,7 +29,7 @@ ms.locfileid: "51235269"
 Azure 使用不同的终结点进行 KMS 激活，具体取决于 VM 所在的云区域。 使用本故障排除指南时，请使用适用于你所在区域的相应 KMS 终结点。
 
 * Azure 公有云区域：kms.core.windows.net:1688
-* Azure 中国国家云区域：kms.core.chinacloudapi.cn:1688
+* Azure 中国世纪互联国家云区域：kms.core.chinacloudapi.cn:1688
 * Azure 德国国家云区域：kms.core.cloudapi.de:1688
 * Azure US Gov 国家云区域：kms.core.usgovcloudapi.net:1688
 
@@ -84,8 +84,7 @@ Azure 使用不同的终结点进行 KMS 激活，具体取决于 VM 所在的�
 3. 请确保 VM 已配置为使用正确的 Azure KMS 服务器。 为此，请运行以下命令：
   
     ```
-    iex “$env:windir\system32\cscript.exe $env:windir\system32\slmgr.vbs /skms
-    kms.core.windows.net:1688
+    iex "$env:windir\system32\cscript.exe $env:windir\system32\slmgr.vbs /skms kms.core.windows.net:1688"
     ```
     此命令应返回：密钥管理服务计算机名称已成功设置为 kms.core.windows.net:1688。
 

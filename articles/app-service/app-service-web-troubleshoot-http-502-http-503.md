@@ -16,12 +16,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/06/2016
 ms.author: cephalin
-ms.openlocfilehash: 1a64e40b13b05fc7f9fdb6f5aa99c8d8cc47c471
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: d0d1efcdaab07e77d835319544fc70eb8687702f
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51251604"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52316338"
 ---
 # <a name="troubleshoot-http-errors-of-502-bad-gateway-and-503-service-unavailable-in-your-azure-web-apps"></a>排查 Azure Web 应用中的“502 错误的网关”和“503 服务不可用”HTTP 错误
 [Azure 应用服务](https://go.microsoft.com/fwlink/?LinkId=529714)中托管的 Web 应用经常出现“502 错误的网关”和“503 服务不可用”错误。 本文将帮助你排查这些错误。
@@ -74,22 +74,10 @@ ms.locfileid: "51251604"
 <a name="collect" />
 
 ### <a name="2-collect-data"></a>2.收集数据
-#### <a name="use-the-azure-app-service-support-portal"></a>使用 Azure 应用服务支持门户
-在 Web 应用中，可通过查看 HTTP 日志、事件日志、进程转储等信息来排查与 Web 应用相关的问题。 可以使用支持门户 (**http://&lt;your app name>.scm.azurewebsites.net/Support**) 访问所有这些信息。
+#### <a name="use-the-diagnostics-tool"></a>使用诊断工具
+应用服务提供了智能的交互式体验，可帮助我们排查 Web 应用的问题，且无需配置。 如果 Web 应用确实出现问题，诊断工具会指出问题所在，并引导获取适当的信息，以便更轻松快速地排查和解决问题。
 
-Azure 应用服务支持门户具有三个不同的选项卡，用于支持常见故障排除方案的三个步骤：
-
-1. 观察当前行为
-2. 通过收集诊断信息和运行内置分析器进行分析
-3. 缓解
-
-如果目前正在发生问题，请单击“分析” > “诊断” > “立即诊断”创建诊断会话，该会话将收集 HTTP 日志、事件查看器日志、内存转储、PHP 错误日志和 PHP 进程报告。
-
-完成数据收集后，该会话将对数据运行分析并提供一份 HTML 报告。
-
-如果想要下载数据，数据默认情况下会存储在 D:\home\data\DaaS 文件夹中。
-
-有关 Azure 应用服务支持门户的详细信息，请参阅[用于支持 Azure 网站的站点扩展的最新更新](https://azure.microsoft.com/blog/new-updates-to-support-site-extension-for-azure-websites)。
+若要访问应用服务诊断，请在 [Azure 门户](https://portal.azure.com)中导航到你的应用服务应用或应用服务环境。 在左侧导航栏中，单击“诊断并解决问题”。
 
 #### <a name="use-the-kudu-debug-console"></a>使用 Kudu 调试控制台
 Web 应用随附可用于调试、浏览和上传文件的调试控制台，以及用于获取环境相关信息的 JSON 终结点。 此控制台称为 Web 应用的 *Kudu 控制台*或 *SCM 仪表板*。

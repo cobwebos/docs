@@ -1,5 +1,5 @@
 ---
-title: TITLE | Microsoft Docs
+title: 在 Azure 市场中推出 Azure 应用程序产品/服务 | Microsoft Docs
 description: .
 services: Azure, Marketplace, Cloud Partner Portal,
 documentationcenter: ''
@@ -12,14 +12,14 @@ ms.workload: ''
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: conceptual
-ms.date: 09/13/2018
+ms.date: 11/15/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 643b7d674de3d51f98b69d6f0659478c9893e3b1
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 18a8e6ae8ab3bd4299c6a014f938e73a2a021492
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48805675"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52263581"
 ---
 <a name="make-your-azure-application-offer-live-on-azure-marketplace"></a>在 Azure 市场中推出你的 Azure 应用程序产品/服务 
 ===========================================================
@@ -33,19 +33,22 @@ ms.locfileid: "48805675"
 <a name="publishing-process"></a>发布过程 
 ------------------
 
-你将在“编辑器”选项卡下单击“发布”来启动发布过程。\"\"
+在“编辑器”选项卡下单击“发布”来启动发布过程\"\"。
 
 ![产品/服务推出步骤 1 - 发布](./media/cloud-partner-portal-publish-managed-app/newOffer_managedApp_publish.png)
 
-在“状态”选项卡下，你将看到“发布步骤”以及你的产品/服务处于哪个步骤。
+在“状态”选项卡下，你将看到“发布步骤”以及产品/服务所处的步骤。
 
 ![产品/服务推出步骤 2 - 工作流](./media/cloud-partner-portal-publish-managed-app/newOffer_managedApp_workflow.png)
 
 在发布过程中，还可以随时登录，单击“所有产品/服务”选项卡即可查看任何产品/服务的最新状态。 可以直接单击产品/服务的状态，查看有关产品/服务发布进度的详细信息。
 
-让我们演练一下每个发布步骤，讨论每个步骤发生的情况，而你则应估算一下每一步所需的时间。\'
+> [!WARNING]
+> 如果未启用客户使用情况归因，则在发布过程中将收到以下错误消息：“Azure partner customer usage attribution missing in one or more Azure Resource Manager templates. To resolve, add a tracking GUID to the Azure Resource Manager template in mainTemplate.json packages for the following plan: servicenow. For more details, see http://aka.ms/customerusageattribution.”（一个或多个 Azure 资源管理器模板缺少 Azure 合作伙伴客户使用情况归因。若要解决此问题，请为以下计划将跟踪 GUID 添加到 mainTemplate.json 包中的 Azure 资源管理器模板：servicenow。有关更多详细信息，请参阅 http://aka.ms/customerusageattribution。） 
 
-### <a name="validate-pre-requisites-1-day"></a>验证先决条件（\< 1 天） 
+让我们演练一下每个发布步骤，并讨论每个步骤会发生什么，以及每个步骤估计应花费多长时间。
+
+### <a name="validate-prerequisites-1-day"></a>验证先决条件（\< 1 天） 
 
 单击“发布”时，系统会进行自动检查，确保已填充了产品/服务的所有必填字段。\"\"\' 如果有字段未填充，则会在该字段旁边显示警告。需要准确填充该字段，并再次单击“发布”。\'\'
 
@@ -79,11 +82,11 @@ ms.locfileid: "48805675"
 
 在准备好继续前进后，单击“推出”\"\"，这会在 Visual Studio Online 中创建一个工作网站，然后 Microsoft 将对包内容进行代码评审。 代码评审将包括在创作模板时要使用的最佳模式/做法，以及用于优化资源创建的技巧和诀窍。 如果反馈导致发布者对文件进行更改，则必须重新启动发布过程。 当前发布将被取消，你必须在解决反馈意见后重新发布。
 
-### <a name="live"></a>推出
+### <a name="live"></a>实时
 
 你的产品/服务现已在 Azure 市场和 Azure 门户中推出。 你的客户将能够在其 Azure 订阅中查看并部署你的 Azure 托管应用程序。 可以单击“所有产品/服务”选项卡，查看在右侧栏中列出的所有产品/服务的状态。 单击状态即可详细查看产品/服务的发布流状态。
 
-### <a name="error-handling"></a>错误处理 
+### <a name="error-handling"></a>错误处理。 
 
 如果遇到错误，则会收到通知电子邮件，告知你出现错误，并提供后续步骤的指导。 在此过程中，也可以随时单击“状态”选项卡来查看错误。可以查看错误发生在此过程的什么时候，并且可以通过错误消息大致了解需要解决什么问题。
 

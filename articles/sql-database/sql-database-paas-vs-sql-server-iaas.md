@@ -12,13 +12,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 10/15/2018
-ms.openlocfilehash: 90427402d348fdbcec9f573848ed7cc0c5b03e2d
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.date: 11/26/2018
+ms.openlocfilehash: 06c56f92e26fba61120933eca32bd98e310b4474
+ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51254649"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52335225"
 ---
 # <a name="choose-a-cloud-sql-server-option-azure-sql-paas-database-or-sql-server-on-azure-vms-iaas"></a>选择云 SQL Server 选项：Azure SQL (PaaS) 数据库或 Azure VM 上的 SQL Server (IaaS)
 
@@ -83,13 +83,13 @@ ms.locfileid: "51254649"
 | | Azure SQL 数据库<br>逻辑服务器、弹性池和单一数据库 | Azure SQL 数据库<br>托管实例 |Azure 虚拟机<br>SQL Server |
 | --- | --- | --- |---|
 | **最适用于：** |需要使用最新的 SQL Server 稳定功能，且开发与面市时间有限的新云式设计应用程序。 | 需要使用最新的 SQL Server 稳定功能，并且在进行极少量更改的情况下迁移到云中的新应用程序或现有本地应用程序。  | 需要快速迁移到云中且只需进行极少量更改甚至不需要任何更改的现有应用程序。 想要快速完成开发和测试方案，但又不想购买本地 SQL Server 非生产硬件。 |
-|  | 需要对数据库内置高可用性、灾难恢复和升级的团队。 | 与 SQL 数据库相同。 | 可为 SQL Server 配置、微调、自定义和管理高可用性、灾难恢复与修补的团队。 提供的某些自动化功能可极大地简化此操作。 | |
-|  | 不想要管理基础操作系统和配置设置的团队。 | 与 SQL 数据库相同。 | 需要一个具有完全管理权限的自定义环境。 | |
-|  | 最多 100 TB 的数据库。 | 与 SQL 数据库相同。 | 存储最大为 64 TB 的 SQL Server 实例。 此实例可以根据需要支持任意数目的数据库。 |
+|  | 需要对数据库内置高可用性、灾难恢复和升级的团队。 | 与 Azure SQL 数据库逻辑服务器上的数据库相同。 | 可为 SQL Server 配置、微调、自定义和管理高可用性、灾难恢复与修补的团队。 提供的某些自动化功能可极大地简化此操作。 | |
+|  | 不想要管理基础操作系统和配置设置的团队。 | 与 Azure SQL 数据库逻辑服务器上的数据库相同。 | 需要一个具有完全管理权限的自定义环境。 | |
+|  | 最多 100 TB 的数据库。 | 与 Azure SQL 数据库逻辑服务器上的数据库相同。 | 存储最大为 64 TB 的 SQL Server 实例。 此实例可以根据需要支持任意数目的数据库。 |
 | **兼容性** | 支持大多数本地数据库级功能。 | 几乎支持所有的本地实例级和数据库级功能。 | 支持所有本地功能。 |
-| **资源：** | 不想使用 IT 资源来配置和管理底层基础结构，而是重点关注应用层。 | 与 SQL 数据库相同。 | 将一些 IT 资源用于配置和管理。 提供的某些自动化功能可极大地简化此操作。 |
-| **总拥有成本：** | 消除硬件成本并减少管理成本。 | 与 SQL 数据库相同。 | 消除硬件成本。 |
-| **业务连续性：** |除了[内置的容错基础结构功能](sql-database-high-availability.md)以外，Azure SQL 数据库还提供可提高业务连续性的功能，例如[自动备份](sql-database-automated-backups.md)、[时间点还原](sql-database-recovery-using-backups.md#point-in-time-restore)、[异地还原](sql-database-recovery-using-backups.md#geo-restore)和[故障转移组与活动异地复制](sql-database-geo-replication-overview.md)。 有关详细信息，请参阅 [《SQL Database business continuity overview》](sql-database-business-continuity.md)（SQL 数据库业务连续性概述）。 | 与 SQL 数据库相同，此外还提供用户发起的仅限复制的备份。 | 使用 Azure VM 上的 SQL Server 可以设置高可用性和灾难恢复解决方案，以满足数据库的具体需求。 因此，可以构建针对应用程序高度优化的系统。 可以视需要自我测试并运行故障转移。 有关详细信息，请参阅 [《High Availability and Disaster Recovery for SQL Server on Azure Virtual Machines》](../virtual-machines/windows/sql/virtual-machines-windows-sql-high-availability-dr.md)（Azure 虚拟机中 SQL Server 的高可用性和灾难恢复）。 |
+| **资源：** | 不想使用 IT 资源来配置和管理底层基础结构，而是重点关注应用层。 | 与 Azure SQL 数据库逻辑服务器上的数据库相同。 | 将一些 IT 资源用于配置和管理。 提供的某些自动化功能可极大地简化此操作。 |
+| **总拥有成本：** | 消除硬件成本并减少管理成本。 | 与 Azure SQL 数据库逻辑服务器上的数据库相同。 | 消除硬件成本。 |
+| **业务连续性：** |除了[内置的容错基础结构功能](sql-database-high-availability.md)以外，Azure SQL 数据库还提供可提高业务连续性的功能，例如[自动备份](sql-database-automated-backups.md)、[时间点还原](sql-database-recovery-using-backups.md#point-in-time-restore)、[异地还原](sql-database-recovery-using-backups.md#geo-restore)和[故障转移组与活动异地复制](sql-database-geo-replication-overview.md)。 有关详细信息，请参阅 [《SQL Database business continuity overview》](sql-database-business-continuity.md)（SQL 数据库业务连续性概述）。 | 与 Azure SQL 数据库逻辑服务器上的数据库相同，此外还提供用户启动的仅复制备份。 | 使用 Azure VM 上的 SQL Server 可以设置高可用性和灾难恢复解决方案，以满足数据库的具体需求。 因此，可以构建针对应用程序高度优化的系统。 可以视需要自我测试并运行故障转移。 有关详细信息，请参阅 [《High Availability and Disaster Recovery for SQL Server on Azure Virtual Machines》](../virtual-machines/windows/sql/virtual-machines-windows-sql-high-availability-dr.md)（Azure 虚拟机中 SQL Server 的高可用性和灾难恢复）。 |
 | **混合云：** |本地应用程序可以访问 Azure SQL 数据库中的数据。 | 使用 Azure Express Route 或 VPN 网关[实现本机虚拟网络](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-vnet-configuration)并连接到本地环境。 | 使用 Azure VN 上的 SQL Server，应用程序可以一部分在云中运行，一部分在本地运行。 例如，可以通过 [Azure 虚拟网络](../virtual-network/virtual-networks-overview.md)，将本地网络和 Active Directory 域扩展到云中。 此外，可以使用 [Azure 中的 SQL Server 数据文件功能](https://msdn.microsoft.com/library/dn385720.aspx)，将本地数据文件存储在 Azure 存储中。 有关详细信息，请参阅 [SQL Server 2014 混合云简介](https://msdn.microsoft.com/library/dn606154.aspx)。 |
 |  | 作为订阅服务器支持使用 [SQL Server 事务复制](https://msdn.microsoft.com/library/mt589530.aspx) 来复制数据。 | Azure SQL 数据库托管实例不支持复制。 | 完全支持使用 [SQL Server 事务复制](https://msdn.microsoft.com/library/mt589530.aspx)、[Always On 可用性组](../virtual-machines/windows/sql/virtual-machines-windows-sql-high-availability-dr.md)、集成服务和日志传送来复制数据。 此外，还完全支持传统的 SQL Server 备份 | |
 |  | | |

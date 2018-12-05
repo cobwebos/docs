@@ -4,26 +4,30 @@ description: 本文概述应用程序网关的 Web 应用程序防火墙 (WAF)
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.date: 11/7/2018
+ms.date: 11/16/2018
 ms.author: amsriva
-ms.openlocfilehash: 4b03065c59eed8f0d72e2724e60b6d8908518727
-ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
+ms.openlocfilehash: 71990244db859a61885968a502d9849a36d81dce
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51219522"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52425148"
 ---
 # <a name="web-application-firewall-waf"></a>Web 应用程序防火墙 (WAF)
 
-Web 应用程序防火墙 (WAF) 是应用程序网关的功能，可以对 Web 应用程序进行集中保护，避免其受到常见的攻击和漏洞伤害。 
+Web 应用程序防火墙 (WAF) 是应用程序网关的功能，可以对 Web 应用程序进行集中保护，避免其受到常见的攻击和漏洞伤害。
 
-Web 应用程序已逐渐成为利用常见已知漏洞的恶意攻击的目标。 这些攻击中最常见的攻击包括 SQL 注入攻击、跨站点脚本攻击等。 防止应用程序代码遭受此类攻击颇具挑战性，并且可能需要对应用程序拓扑的多个层进行严格的维护、修补和监视。 集中式 Web 应用程序防火墙有助于大幅简化安全管理，为抵卸威胁或入侵的应用程序管理员提供更好的保障。 相较保护每个单独的 Web 应用程序，WAF 解决方案还可通过在中央位置修补已知漏洞，更快地响应安全威胁。 可将现有应用程序网关轻松转换为支持 Web 应用程序防火墙的应用程序网关。
+Web 应用程序已逐渐成为利用常见已知漏洞的恶意攻击的目标。 这些攻击中最常见的攻击包括 SQL 注入攻击和跨站点脚本攻击等。 
+
+防止应用程序代码遭受此类攻击颇具挑战性，并且可能需要对应用程序拓扑的多个层进行严格的维护、修补和监视。 集中式 Web 应用程序防火墙有助于大幅简化安全管理，为抵卸威胁或入侵的应用程序管理员提供更好的保障。 相较保护每个单独的 Web 应用程序，WAF 解决方案还可通过在中央位置修补已知漏洞，更快地响应安全威胁。 可将现有应用程序网关轻松转换为支持 Web 应用程序防火墙的应用程序网关。
 
 WAF 基于 [OWASP 核心规则集](https://www.owasp.org/index.php/Category:OWASP_ModSecurity_Core_Rule_Set_Project) 3.0 或 2.2.9 中的规则。 它会自动更新以包含针对新漏洞的保护，而无需其他配置。
 
 ![imageURLroute](./media/waf-overview/WAF1.png)
 
-应用程序网关可作为应用程序传送控制器 (ADC) 运行，并提供 SSL 终止、基于 cookie 的会话相关性、轮循负载分发、基于内容的路由，以及托管多个网站和安全增强功能的能力。 应用程序网关提供的安全增强功能包括 SSL 策略管理、端到端 SSL 支持。 通过直接集成到 ADC 产品的 WAF（Web 应用程序防火墙），应用程序的安全性现已得到增强。 这提供了易于配置的中央位置，可用于管理和保护 Web 应用程序，使其免受常见 Web 漏洞的威胁。
+应用程序网关可作为应用程序传送控制器 (ADC) 运行，并提供 SSL 终止、基于 cookie 的会话相关性、轮循负载分发、基于内容的路由，以及托管多个网站和安全增强功能的能力。
+
+应用程序网关提供的安全增强功能包括 SSL 策略管理和端到端 SSL 支持。 通过直接集成到 ADC 产品的 WAF（Web 应用程序防火墙），应用程序的安全性现已得到增强。 这提供了易于配置的中央位置，可用于管理和保护 Web 应用程序，使其免受常见 Web 漏洞的威胁。
 
 ## <a name="benefits"></a>优点
 
@@ -53,7 +57,7 @@ WAF 基于 [OWASP 核心规则集](https://www.owasp.org/index.php/Category:OWAS
 - 防止 HTTP 协议违反行为
 - 防止 HTTP 协议异常行为（例如缺少主机用户代理和接受标头）
 - 防止自动程序、爬网程序和扫描程序
-- 检测常见应用程序错误配置（即 Apache、IIS 等）
+- 检测常见应用程序错误配置（例如 Apache、IIS 等）
 
 ### <a name="public-preview-features"></a>公共预览版功能
 
@@ -80,7 +84,7 @@ Web 应用程序防火墙中默认已预先配置 CRS 3.0，也可以选择使�
 - 防止 HTTP 协议违反行为
 - 防止 HTTP 协议异常行为（例如缺少主机用户代理和接受标头）
 - 防止自动程序、爬网程序和扫描程序
-- 检测常见应用程序错误配置（即 Apache、IIS 等）
+- 检测常见应用程序错误配置（例如 Apache、IIS 等）
 
 有关规则及其保护措施的更详细列表，请参阅[核心规则集](#core-rule-sets)。
 
@@ -91,7 +95,7 @@ Web 应用程序防火墙中默认已预先配置 CRS 3.0，也可以选择使�
 
 |RuleGroup|Description|
 |---|---|
-|**[REQUEST-911-METHOD-ENFORCEMENT](application-gateway-crs-rulegroups-rules.md#crs911)**|包含用于锁定方法（PUT、PATCH< 等）的规则。|
+|**[REQUEST-911-METHOD-ENFORCEMENT](application-gateway-crs-rulegroups-rules.md#crs911)**|包含用于锁定方法（PUT、PATCH）的规则|
 |**[REQUEST-913-SCANNER-DETECTION](application-gateway-crs-rulegroups-rules.md#crs913)**| 包含用于防范端口和环境扫描程序的规则。|
 |**[REQUEST-920-PROTOCOL-ENFORCEMENT](application-gateway-crs-rulegroups-rules.md#crs920)**|包含用于防范协议和编码问题的规则。|
 |**[REQUEST-921-PROTOCOL-ATTACK](application-gateway-crs-rulegroups-rules.md#crs921)**|包含用于防范标头注入、请求走私和响应拆分的规则|
@@ -129,7 +133,7 @@ Web 应用程序防火墙中默认已预先配置 CRS 3.0，也可以选择使�
 
 ### <a name="application-gateway-waf-reports"></a>WAF 监视
 
-监视应用程序网关的运行状况非常重要。 借助日志记录以及与 Azure Monitor、Azure 安全中心（即将推出）和 Log Analytics 的集成，可以监视 Web 应用程序防火墙及其保护的应用程序的运行状况。
+监视应用程序网关的运行状况非常重要。 借助日志记录以及与 Azure Monitor、Azure 安全中心和 Log Analytics 的集成，可以监视 Web 应用程序防火墙及其保护的应用程序的运行状况。
 
 ![诊断](./media/waf-overview/diagnostics.png)
 
@@ -145,7 +149,7 @@ Web 应用程序防火墙中默认已预先配置 CRS 3.0，也可以选择使�
 
 #### <a name="logging"></a>日志记录
 
-应用程序网关 WAF 提供有关检测到的每个威胁的详细报告。 日志记录与 Azure 诊断日志集成，警报以 JSON 格式记录。 这些日志可与 [Log Analytics](../log-analytics/log-analytics-azure-networking-analytics.md) 集成。
+应用程序网关 WAF 提供有关检测到的每个威胁的详细报告。 日志记录与 Azure 诊断日志集成，警报以 JSON 格式记录。 这些日志可与 [Log Analytics](../azure-monitor/insights/azure-networking-analytics.md) 集成。
 
 ![imageURLroute](./media/waf-overview/waf2.png)
 
@@ -179,7 +183,9 @@ Web 应用程序防火墙中默认已预先配置 CRS 3.0，也可以选择使�
 
 ## <a name="application-gateway-waf-sku-pricing"></a>应用程序网关 WAF SKU 定价
 
-Web 应用程序防火墙在新的 WAF SKU 中提供。 此 SKU 仅在 Azure 资源管理器预配模型中可用，在经典部署模型中不可用。 此外，WAF SKU 仅提供中型和大型应用程序网关实例大小。 应用程序网关的所有限制同样适用于 WAF SKU。 定价基于每小时网关实例费和数据处理费。 WAF SKU 的每小时网关定价不同于标准 SKU 费用，具体请参阅[应用程序网关定价详细信息](https://azure.microsoft.com/pricing/details/application-gateway/)。 数据处理费保持不变。 不会按规则或规则组收费。 可以使用同一个 Web 应用程序防火墙保护多个 Web 应用程序，支持多个应用程序不会产生额外的费用。 
+Web 应用程序防火墙在新的 WAF SKU 中提供。 此 SKU 仅在 Azure 资源管理器预配模型中可用，在经典部署模型中不可用。 此外，WAF SKU 仅提供中型和大型应用程序网关实例大小。 应用程序网关的所有限制同样适用于 WAF SKU。
+
+定价基于每小时网关实例费和数据处理费。 WAF SKU 的每小时网关定价不同于标准 SKU 费用，具体请参阅[应用程序网关定价详细信息](https://azure.microsoft.com/pricing/details/application-gateway/)。 数据处理费保持不变。 不会按规则或规则组收费。 可以使用同一个 Web 应用程序防火墙保护多个 Web 应用程序，并且无需为支持多个应用程序付费。
 
 ## <a name="next-steps"></a>后续步骤
 

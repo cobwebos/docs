@@ -9,12 +9,12 @@ services: search
 ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
-ms.openlocfilehash: a4689093508c3287e60da9d4668393e71211fbdd
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 0dbf8a44007fbba39f6ac4c20e375a6d13ac9021
+ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49405696"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51711066"
 ---
 # <a name="indexing-json-blobs-with-azure-search-blob-indexer"></a>使用 Azure 搜索 Blob 索引器对 JSON blob 编制索引
 本文介绍如何配置 Azure 搜索 Blob 索引器，以从 Azure Blob 存储中的 JSON Blob 提取结构化内容。
@@ -24,11 +24,8 @@ Azure Blob 存储中的 JSON Blob 通常是单个 JSON 文档或 JSON 数组。 
 | JSON 文档 | parsingMode | Description | 可用性 |
 |--------------|-------------|--------------|--------------|
 | 每个 Blob 各有一个 | `json` | 将 JSON Blob 分析为单个文本区块。 每个 JSON Blob 成为单个 Azure 搜索文档。 | 已在 [REST](https://docs.microsoft.com/rest/api/searchservice/indexer-operations) 和 [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexer) API 中正式发布。 |
-| 每个 Blob 有多个 | `jsonArray` | 分析 Blob 中的 JSON 数组，其中数组的每个元素成为单独的 Azure 搜索文档。  | 在预览版中，采用 [REST api-version=`2017-11-11-Preview`](search-api-2017-11-11-preview.md) 和 [.NET SDK 预览](https://aka.ms/search-sdk-preview)格式。 |
+| 每个 Blob 有多个 | `jsonArray` | 分析 Blob 中的 JSON 数组，其中数组的每个元素成为单独的 Azure 搜索文档。  | 已在 [REST](https://docs.microsoft.com/rest/api/searchservice/indexer-operations) 和 [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexer) API 中正式发布。 |
 
-> [!Note]
-> 预览 API 用于测试和评估，不应在生产环境中使用。
->
 
 ## <a name="setting-up-json-indexing"></a>设置 JSON 索引
 为 JSON Blob 编制索引的过程类似于在 Azure 搜索的所有索引器通用的三部分工作流中提取普通文档。
@@ -103,9 +100,9 @@ Azure Blob 存储中的 JSON Blob 通常是单个 JSON 文档或 JSON 数组。 
 
 如前所述，字段映射不是必需的。 假设某个索引包含“text”、“datePublished”和“tags”字段，则请求不需要存在字段映射，Blob 索引器就能推断正确的映射。
 
-## <a name="how-to-parse-json-arrays-preview"></a>如何分析 JSON 数组（预览）
+## <a name="how-to-parse-json-arrays"></a>如何分析 JSON 数组
 
-或者，可以选择启用 JSON 数组预览功能。 当 Blob 包含 JSON 对象的数组，并且你希望每个元素都成为单独的 Azure 搜索文档时，此功能非常有用。 例如，对于以下 JSON Blob，可以使用三个单独的文档（每个文档包含“id”和“text”字段）填充 Azure 搜索。  
+或者，可以选择启用 JSON 数组功能。 当 Blob 包含 JSON 对象的数组，并且你希望每个元素都成为单独的 Azure 搜索文档时，此功能非常有用。 例如，对于以下 JSON Blob，可以使用三个单独的文档（每个文档包含“id”和“text”字段）填充 Azure 搜索。  
 
     [
         { "id" : "1", "text" : "example 1" },
@@ -115,9 +112,9 @@ Azure Blob 存储中的 JSON Blob 通常是单个 JSON 文档或 JSON 数组。 
 
 ### <a name="indexer-definition-for-a-json-array"></a>JSON 数组的索引器定义
 
-对于 JSON 数组，索引器请求将会使用预览 API 和 `jsonArray` 分析器。 为 JSON Blob 编制索引时，只需满足与数组相关的这两项要求。
+对于 JSON 数组，索引器请求将使用 `jsonArray` 分析器。 为 JSON Blob 编制索引时，只需满足与数组相关的这两项要求。
 
-    POST https://[service name].search.windows.net/indexers?api-version=2017-11-11-Preview
+    POST https://[service name].search.windows.net/indexers?api-version=2017-11-11
     Content-Type: application/json
     api-key: [admin key]
 

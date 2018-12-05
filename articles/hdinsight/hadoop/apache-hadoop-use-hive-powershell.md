@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/23/2018
 ms.author: hrasheed
-ms.openlocfilehash: d29199c5e1534e3f98fbdbb73799840cf9c9e75f
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: 4927c76c1bb6be6c27d2e559e6d1292008b3643b
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51633105"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52162310"
 ---
 # <a name="run-apache-hive-queries-using-powershell"></a>使用 PowerShell 运行 Apache Hive 查询
 [!INCLUDE [hive-selector](../../../includes/hdinsight-selector-use-hive.md)]
@@ -59,7 +59,7 @@ Azure PowerShell 提供 *cmdlet*，可在 HDInsight 上远程运行 Hive 查询�
 
         .\hivejob.ps1
 
-    脚本运行时，系统会提示输入群集名称和该群集的 HTTPS/管理员帐户凭据。 可能还会提示登录到 Azure 订阅。
+    脚本运行时，系统会提示输入群集名称和 HTTPS/群集管理员帐户凭据。 可能还会提示登录到 Azure 订阅。
 
 3. 作业完成时，它会返回类似以下文本的信息：
 

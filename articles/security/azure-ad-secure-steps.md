@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 06/18/2018
 ms.author: martincoetzer
-ms.openlocfilehash: 8ce75efae2d735c5653f9dae72c670b0714351ac
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: 3e2fa822698f3888e1168ab7773d87e41db9eb5c
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51567944"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52165639"
 ---
 # <a name="five-steps-to-securing-your-identity-infrastructure"></a>保护标识基础结构的五个步骤
 
@@ -77,6 +77,9 @@ Microsoft 建议根据 [NIST 指导](https://pages.nist.gov/800-63-3/sp800-63b.h
 * 如果发生本地服务中断（例如，在勒索软件攻击中），可以切换到[使用密码哈希同步的云身份验证](https://docs.microsoft.com/azure/security/azure-ad-choose-authn)。使用此备用身份验证方法，可以继续访问配置为使用 Azure Active Directory 进行身份验证的应用，包括 Office 365。 在这种情况下，解决本地服务中断之前，IT 人员无需采用个人电子邮件帐户来共享数据。
 
 详细了解[密码哈希同步](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-implement-password-hash-synchronization)的工作原理。
+
+> [!NOTE]
+> 如果启用密码哈希同步并且使用 Azure AD 域服务，则 Kerberos (AES 256) 哈希和可选的 NTLM（RC4，不加盐）哈希也将加密并同步到 Azure AD。 
 
 ### <a name="implement-ad-fs-extranet-smart-lockout"></a>实施 AD FS Extranet 智能锁定
 

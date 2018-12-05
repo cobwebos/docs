@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/11/2018
+ms.date: 11/19/2018
 ms.author: jingwang
-ms.openlocfilehash: 9a75ae8645503366a490dbc0ea65d2fdc73d7c61
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: c10a933f371bfc84b863413134f2fdf5ff9c0e34
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49167284"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52161831"
 ---
 # <a name="copy-data-to-or-from-azure-cosmos-db-by-using-azure-data-factory"></a>使用 Azure 数据工厂在 Azure Cosmos DB 中复制或粘贴数据
 
@@ -182,8 +182,11 @@ Azure Cosmos DB 链接服务支持以下属性：
 |:--- |:--- |:--- |
 | type | 复制活动接收器的 **type** 属性必须设置为 **DocumentDbCollectionSink**。 |是 |
 | writeBehavior |描述如何将数据写入 Azure Cosmos DB。 允许的值为 **insert** 和 **upsert**。<br/><br/>**upsert** 的行为是，如果已存在具有相同 ID 的文档，则替换该文档；否则将插入该文档。<br /><br />**注意**：如果未在原始文档中指定 ID，或未通过列映射指定 ID，则数据工厂会自动为文档生成 ID。 这表示必须先确保文档有 ID，才能让 **upsert** 按预期工作。 |否<br />（默认值为 **insert**） |
-| writeBatchSize | 数据工厂使用 [Azure Cosmos DB 批量执行程序库](https://github.com/Azure/azure-cosmosdb-bulkexecutor-dotnet-getting-started)将数据写入 Azure Cosmos DB。 **writeBatchSize** 属性控制提供给库的文档的大小。 可以尝试增大 **writeBatchSize** 的值来提高性能。 |否<br />（默认值为 **10,000**） |
+| writeBatchSize | 数据工厂使用 [Azure Cosmos DB 批量执行程序库](https://github.com/Azure/azure-cosmosdb-bulkexecutor-dotnet-getting-started)将数据写入 Azure Cosmos DB。 **writeBatchSize** 属性控制提供给库的文档的大小。 可尝试增加 writeBatchSize 的值以提高性能，并在文档大小较大时降低该值 - 请参阅下面的提示。 |否<br />（默认值为 **10,000**） |
 | nestingSeparator |**源**列名称中的特殊字符，指示需要嵌套的文档。 <br/><br/>例如，当 **nestedSeparator** 为 **.**（点）时，输出数据集结构中的 `Name.First` 在 Azure Cosmos DB 文档中生成以下 JSON 结构： `"Name": {"First": "[value maps to this column from source]"}`  |否<br />（默认值为 **.** （点）） |
+
+>[!TIP]
+>Cosmos DB 将单个请求的大小限制为 2MB。 公式为请求大小 = 单个文档大小 * 写入批大小。 若出现“请求太大。”错误，请减少复制接收器配置中的 `writeBatchSize` 值。
 
 **示例**
 

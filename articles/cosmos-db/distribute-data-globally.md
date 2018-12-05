@@ -9,20 +9,20 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/26/2018
 ms.author: mjbrown
-ms.openlocfilehash: c90450fa4cc35b460198f5a351a965aee4ea4f4b
-ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
+ms.openlocfilehash: 181a8ad7291a8e8a0aa2a8373985c8747bd4569b
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51636402"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52446817"
 ---
-# <a name="build-globally-distributed-applications-with-azure-cosmos-db"></a>使用 Azure Cosmos DB 生成全局分布式应用程序
+# <a name="global-data-distribution-with-azure-cosmos-db"></a>使用 Azure Cosmos DB 全局分配数据
 
-当今，有许多应用程序需要在多个数据中心运行。 这些应用程序称为全局分布式应用程序。 这些应用程序必须始终“打开”，可供全球用户访问。 要管理这些应用程序使用的数据的全局分布，同时在全球提供低延迟、吞吐量弹性缩放和高可用性，确实很有难度。 Azure Cosmos DB 是一个全局分布式数据库服务，旨在提供低延迟、吞吐量弹性缩放和妥善定义的语义，以实现数据一致性和高可用性。 简单而言，如果应用程序需要保证在全球任何位置都能提供快速响应、始终联机并需要无限且可弹性缩放的吞吐量和存储，则你应该考虑使用 Azure Cosmos DB 生成应用程序。
+如今的应用程序需要具备高响应能力并始终联机。 若要实现低延迟和高可用性，需要在与用户关系密切的数据中心内部署这些应用程序的实例。 这些应用程序通常部署在多个数据中心，称为全球分布式应用程序。 全球分布式应用程序需要在全球范围内都可以以透明方式复制数据的全球分布式数据库，以确保应用程序能在与用户关系密切的数据副本上执行操作。 Azure Cosmos DB 是一个全局分布式数据库服务，旨在提供低延迟、吞吐量弹性缩放和妥善定义的语义，以实现数据一致性和高可用性。 简单而言，如果应用程序需要保证在全球任何位置都能提供快速响应、始终联机并需要无限且可弹性缩放的吞吐量和存储，则你应该考虑使用 Azure Cosmos DB 生成应用程序。
 
 Azure Cosmos DB 是一个基础 Azure 服务，默认可在所有 [Azure 区域](https://azure.microsoft.com/global-infrastructure/regions/)中使用。 Microsoft 在全球 54 个区域运营 Azure 数据中心，并且区域数目在持续增加，以满足不断增长的客户需求。 创建 Azure Cosmos 帐户时，需确定要将其部署在哪些区域。 Microsoft 全天候运转 Azure Cosmos DB 服务，让你将工作重心放在自己的应用程序上。
 
-可将数据库配置为全局分布，并使其可在任何 Azure 区域中使用。 为了降低延迟，应将数据定位在靠近用户的位置。 选择所需的区域数目取决于应用程序的全球覆盖范围以及用户所处的位置。 Azure Cosmos DB 以透明方式将帐户中的所有数据复制到与帐户关联的所有区域。 它提供全局分布式 Azure Cosmos 数据库和容器的单个系统映像，使应用程序能够在本地读取和写入。 使用 Azure Cosmos DB 可以随时添加或删除与帐户关联的区域。 无需暂停或重新部署应用程序即可添加或删除区域。 得益于该服务提供的多宿主功能，它始终都能保持高可用性。
+可将数据库配置为全局分布，并使其可在任何 Azure 区域中使用。 为了降低延迟，应将数据定位在靠近用户的位置。 选择所需的区域数目取决于应用程序的全球覆盖范围以及用户所处的位置。 Azure Cosmos DB 以透明方式将帐户中的所有数据复制到与帐户关联的所有区域。 它提供全球分布式 Azure Cosmos 数据库和容器的单个系统映像，使应用程序能够在本地读取和写入。 使用 Azure Cosmos DB 可以随时添加或删除与帐户关联的区域。 无需暂停或重新部署应用程序即可添加或删除区域。 得益于该服务提供的多宿主功能，它始终都能保持高可用性。
 
 ## <a name="key-benefits-of-global-distribution"></a>全局分布的重要优势
 

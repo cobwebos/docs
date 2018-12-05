@@ -1,11 +1,12 @@
 ---
-title: 提出数据可解答的问题 - 数据科学问题 - Azure 机器学习 | Microsoft Docs
+title: 提出数据可解答的问题 - Azure 机器学习工作室 | Microsoft Docs
 description: 通过学习“适合初学者的数据科学”视频 3，了解如何将棘手的数据科学问题公式化。 包括分类和回归问题的比较。
 keywords: 数据科学问题，数据科学问题，公式化问题，回归问题，分类问题，针对性问题
 services: machine-learning
 documentationcenter: na
-author: heatherbshapiro
-ms.author: hshapiro
+author: ericlicoding
+ms.custom: (previous ms.author=hshapiro, author=heatherbshapiro)
+ms.author: amlstudiodocs
 manager: hjerez
 editor: cjgronlund
 ms.assetid: 5b9501e3-9964-417a-8ffc-8913103da77b
@@ -16,12 +17,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/03/2018
-ms.openlocfilehash: 2078f7e84522a40cf6fcf6dff860d24307084467
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: c6d42ed7920b634994adf5313656c77e2df6dd5b
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34833795"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52310831"
 ---
 # <a name="ask-a-question-you-can-answer-with-data"></a>提出数据方面的可解答问题
 ## <a name="video-3-data-science-for-beginners-series"></a>视频 3：适合初学者的数据科学系列
@@ -37,7 +38,7 @@ ms.locfileid: "34833795"
 ## <a name="other-videos-in-this-series"></a>本系列中的其他视频
 “适合初学者的数据科学”对数据科学进行简要介绍，共五个短视频。
 
-* 视频 1：[数据科学可解答的 5 个问题](data-science-for-beginners-the-5-questions-data-science-answers.md)（5 分 14 秒）
+* 视频 1：[数据科学解答的 5 个问题](data-science-for-beginners-the-5-questions-data-science-answers.md)（5 分 14 秒）
 * 视频 2：[数据是否可用于数据科学？](data-science-for-beginners-is-your-data-ready-for-data-science.md) （4 分 56 秒）
 * 视频 3：提出可用数据回答的问题
 * 视频 4：[使用简单的模型预测答案](data-science-for-beginners-predict-an-answer-with-a-simple-model.md)（7 分 42 秒）

@@ -1,5 +1,5 @@
 ---
-title: 发布解决方案模板 | Microsoft Docs
+title: 发布 Azure 解决方案模板 | Microsoft Docs
 description: 将解决方案模板发布到 Azure 市场。
 services: Azure, Marketplace, Cloud Partner Portal,
 documentationcenter: ''
@@ -12,14 +12,14 @@ ms.workload: ''
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: conceptual
-ms.date: 09/17/2018
+ms.date: 11/15/2018
 ms.author: pbutlerm
-ms.openlocfilehash: c7c7912860568aea497e327f29a1b7b71b8f5e87
-ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
+ms.openlocfilehash: 333eebfa1bae919c43164572c63f2de4f7251fe0
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51345583"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52261611"
 ---
 # <a name="publish-a-solution-template-to-azure-marketplace"></a>将解决方案模板发布到 Azure 市场
 
@@ -31,31 +31,22 @@ ms.locfileid: "51345583"
 
 ### <a name="technical"></a>技术方面
 
-- [了解 Azure 资源管理器模板](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authoring-templates)
-
+- [了解 Azure 资源管理器模板](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authoring-templates)。
 - Azure 快速入门模板：
-
     - [Azure 快速入门模板文档](https://azure.microsoft.com/documentation/templates/)
-
     - [GitHub 上的 Azure 快速入门文档](https://github.com/azure/azure-quickstart-templates)
-
  - [创建 Azure 门户用户界面文件](https://docs.microsoft.com/azure/azure-resource-manager/managed-application-createuidefinition-overview)
+ - 启用[客户使用情况属性](./../azure-partner-customer-usage-attribution.md)，以帮助跟踪在 Azure 上的客户部署软件的 Azure 使用情况。
 
 ### <a name="non-technical-business-requirements"></a>非技术方面（业务要求）
 
--   公司（或其子公司）必须位于 Azure 市场支持的销售国家/地区。
-
--   产品必须以兼容 Azure 市场支持的计费模式的方式获得许可。
-
--   你需要负责以商业上合理的方式向客户提供技术支持，支持的形式包括免费、付费或社区支持。
-
--   负责获得自己的软件和任何第三方软件依赖项的许可。
-
--   提供的内容必须满足在 Azure 市场上和 Azure 管理门户中列出的套餐的标准。
-
--   同意 Azure 市场参与政策与发布者协议的条款。
-
--   同意遵守使用条款、Microsoft 隐私声明和 Microsoft Azure 认证计划协议。
+- 公司（或其子公司）必须位于 Azure 市场支持的销售国家/地区。
+- 产品必须以兼容 Azure 市场支持的计费模式的方式获得许可。
+- 你需要负责以商业上合理的方式向客户提供技术支持，支持的形式包括免费、付费或社区支持。
+- 负责获得自己的软件和任何第三方软件依赖项的许可。
+- 提供的内容必须满足在 Azure 市场上和 Azure 门户中列入名单的产品/服务的标准。
+- 同意 Azure 市场参与政策与发布者协议的条款。
+- 同意遵守使用条款、Microsoft 隐私声明和 Microsoft Azure 认证计划协议。
 
 ## <a name="before-you-begin"></a>开始之前
 
@@ -101,7 +92,7 @@ SKU 显示在 Azure 市场的父套餐下，并在 Azure 门户中以可购买�
 
     **套餐 ID**
 
-     发布者配置文件中套餐的唯一标识符。 此 ID 在产品 URL、ARM 模板和计费报告中可见。 只能使用小写字母数字字符或短划线 (-)。 ID 不能以短划线结束，并且不能超过 50 个字符。 
+     发布者配置文件中套餐的唯一标识符。 此 ID 显示在产品 URL、Azure 资源管理器模板和计费报表中。 只能使用小写字母数字字符或短划线 (-)。 ID 不能以短划线结束，并且不能超过 50 个字符。 
     >[!Note]
     >此字段在套餐推出后处于锁定状态。
 
@@ -128,7 +119,7 @@ SKU 显示在 Azure 市场的父套餐下，并在 Azure 门户中以可购买�
 
     ![新建 SKU](./media/cloud-partner-portal-publish-managed-app/newOffer_skus.png)
 
-    SKU ID是 SKU 在套餐内的唯一标识符。 此 ID 在产品 URL、ARM 模板和计费报告中可见。 SKU ID：
+    SKU ID是 SKU 在套餐内的唯一标识符。 此 ID 显示在产品 URL、Resource Manager 模板和计费报表中。 SKU ID：
     - 不能超过 50 个字符。
     - 只能由小写字母数字字符或短划线 (-) 组成。
     - ID 不能以短划线结尾。
@@ -146,14 +137,10 @@ SKU 显示在 Azure 市场的父套餐下，并在 Azure 门户中以可购买�
 提供以下 SKU 设置。
 
 - **标题** - SKU 的标题。 此标题将显示在此项的库中。
-
 - **摘要** - SKU 的简短摘要说明。 （最大长度为 100 个字符。）
-
 - **说明** - SKU 的详细说明。
-
 - **SKU 类型** - 包含以下值的下拉列表：“托管应用程序(预览版)”和“解决方案模板”。 对于本方案，请选择“解决方案模板”。
-
-- **云可用性** - SKU 的位置。 默认值为“Azure 公有云”。
+- **云可用性** - SKU 的位置。 默认值为“公共 Azure”。
 
 ### <a name="package-details"></a>包详细信息
 
@@ -162,11 +149,8 @@ SKU 显示在 Azure 市场的父套餐下，并在 Azure 门户中以可购买�
 ![包详细信息](./media/cloud-partner-portal-publish-managed-app/newOffer_newsku_ST_package.png)
 
 - **当前版本** - 要上传的包版本。 版本标记必须采用 X.Y.Z 格式，其中 X、Y 和 Z 是整数。
-
 - **包文件** - 此包包含以下文件，这些文件保存在一个 .zip 文件中。
-
     -   MainTemplate.json - 部署模板文件，用于部署解决方案/应用程序并创建针对解决方案定义的资源。 有关详细信息，请参阅[如何创作部署模板文件](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-create-first-template)
-
     -   createUIDefinition.json - Azure 门户使用此文件生成用于预配此解决方案/应用程序的用户界面。 有关详细信息，请参阅[为托管应用程序创建 Azure 门户用户界面](https://docs.microsoft.com/azure/azure-resource-manager/managed-application-createuidefinition-overview)
 
     >[!IMPORTANT]
@@ -182,7 +166,7 @@ SKU 显示在 Azure 市场的父套餐下，并在 Azure 门户中以可购买�
 
 ### <a name="suggested-categories"></a>建议的类别
 
-从提供的可以与产品/服务关联最密切的列表中最多选择 5 种类别。 所选的类别用于将产品/服务映射到在 [Azure 市场](https://azuremarketplace.microsoft.com)和 [Azure 门户](https://portal.azure.com/)中提供的产品类别。
+从提供的列表中选择最多五个与产品/服务最相关的类别。 所选的类别用于将产品/服务映射到在 [Azure 市场](https://azuremarketplace.microsoft.com)和 [Azure 门户](https://portal.azure.com/)中提供的产品类别。
 
 以下示例显示 Azure 市场和 Azure 门户中的市场信息。
 
@@ -219,7 +203,7 @@ SKU 显示在 Azure 市场的父套餐下，并在 Azure 门户中以可购买�
 
 -   不要在徽标上使用渐变背景。
 
--   避免在徽标中插入文本， 包括公司名称或品牌名称。 徽标的外观应平整，应避免渐变。
+-   避免在徽标中插入文本， 此准则包括公司名称或品牌名称。 徽标的外观应平整，应避免渐变。
 
 -   不应拉伸徽标。
 

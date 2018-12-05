@@ -1,10 +1,11 @@
 ---
-title: 对 Azure 机器学习经典 Web 服务重新训练进行故障排除 | Microsoft 文档
-description: 标识并更正重新训练 Azure 机器学习 Web 服务的模型时遇到的常见问题。
+title: 对机器学习工作室经典 Web 服务重新训练进行故障排除 - Azure | Microsoft Docs
+description: 确定并更正重新训练 Azure 机器学习工作室 Web 服务的模型时遇到的常见问题。
 services: machine-learning
 documentationcenter: ''
-author: YasinMSFT
-ms.author: yahajiza
+author: ericlicoding
+ms.custom: (previous ms.author=yahajiza, author=YasinMSFT)
+ms.author: amlstudiodocs
 manager: hjerez
 editor: cgronlun
 ms.assetid: 75cac53c-185c-437d-863a-5d66d871921e
@@ -15,14 +16,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/01/2017
-ms.openlocfilehash: 989bf010320501050a37fbf2f0799f50a5a3e2ba
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 1105b81d0f8ba80bd76bcdf140fe79b9e8a7102d
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34835767"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52307196"
 ---
-# <a name="troubleshooting-the-retraining-of-an-azure-machine-learning-classic-web-service"></a>对 Azure 机器学习经典 Web 服务重新训练进行故障排除
+# <a name="troubleshooting-the-retraining-of-an-azure-machine-learning-studio-classic-web-service"></a>对 Azure 机器学习工作室经典 Web 服务重新训练进行故障排除
 ## <a name="retraining-overview"></a>重新训练概述
 将预测实验部署为评分 Web 服务时，它是静态模型。 当新数据变得可用时，或当 API 使用者拥有其自己的数据时，需要重新训练模型。 
 

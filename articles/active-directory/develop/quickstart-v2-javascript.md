@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 09/24/2018
 ms.author: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: 69c77896f894201d1419aaef33470a02ac45ff91
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: d044b1ad18df6eee1235e881038bbb9734a999ff
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49986282"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52317341"
 ---
 # <a name="quickstart-sign-in-users-and-acquire-an-access-token-from-a-javascript-application"></a>快速入门：通过 JavaScript 应用程序登录用户并获取访问令牌
 
@@ -66,7 +66,7 @@ ms.locfileid: "49986282"
 #### <a name="step-3-configure-your-javascript-app"></a>步骤 3：配置 JavaScript 应用
 
 > [!div renderon="docs"]
-> 编辑 `index.html` 并将 `applicationConfig` 下的 `Enter_the_Application_Id_here` 替换为你刚才注册的应用的应用程序 ID。
+> 编辑 `index.html` 并在 `applicationConfig` 下设置 `clientID` 和 `authority` 值。
 
 > [!div class="sxs-lookup" renderon="portal"]
 > 编辑 `index.html` 并将 `applicationConfig` 替换为：
@@ -74,13 +74,25 @@ ms.locfileid: "49986282"
 ```javascript
 var applicationConfig = {
     clientID: "Enter_the_Application_Id_here",
+    authority: "https://login.microsoftonline.com/Enter_the_Tenant_Info_Here",
     graphScopes: ["user.read"],
     graphEndpoint: "https://graph.microsoft.com/v1.0/me"
 };
 ```
+> [!div renderon="docs"]
+>
+> 其中：
+> - `Enter_the_Application_Id_here` - 是已注册应用程序的**应用程序（客户端）ID**。
+> - `Enter_the_Tenant_Info_Here` - 设置为以下选项之一：
+>   - 如果应用程序支持“此组织目录中的帐户”，请将该值替换为**租户 ID** 或**租户名称**（例如 contoso.microsoft.com）
+>   - 如果应用程序支持“任何组织目录中的帐户”，请将该值替换为 `organizations`
+>   - 如果应用程序支持“任何组织目录中的帐户和个人 Microsoft 帐户”，请将该值替换为 `common`
+>
+> > [!TIP]
+> > 若要查找“应用程序(客户端) ID”、“目录(租户) ID”和“支持的帐户类型”的值，请转到 Azure 门户中应用的“概述”页。
+
 > [!NOTE]
->如果使用 [Node.js](https://nodejs.org/en/download/)，则需要配置 *server.js* 文件，以便服务器开始在端口 30662 上进行侦听。
-> 如果使用 [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/)，则需要配置代码示例的 *.csproj* 文件，以便服务器开始在端口 30662 上进行侦听。
+> 服务器配置为在 [Node.js](https://nodejs.org/en/download/) 项目中的 server.js 文件中以及 [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/) 项目中的 .csproj 文件中的端口 30662 上进行侦听。
 >
 
 #### <a name="step-4-run-the-project"></a>步骤 4：运行项目
@@ -121,7 +133,7 @@ npm install msal
 快速入门代码也演示了如何初始化库：
 
 ```javascript
-var myMSALObj = new Msal.UserAgentApplication(applicationConfig.clientID, null, acquireTokenRedirectCallBack, {storeAuthStateInCookie: true, cacheLocation: "localStorage"});
+var myMSALObj = new Msal.UserAgentApplication(applicationConfig.clientID, applicationConfig.authority, acquireTokenRedirectCallBack, {storeAuthStateInCookie: true, cacheLocation: "localStorage"});
 ```
 
 > |其中  |  |

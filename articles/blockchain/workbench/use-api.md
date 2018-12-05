@@ -5,21 +5,21 @@ services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 10/1/2018
+ms.date: 11/14/2018
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: zeyadr
 manager: femila
-ms.openlocfilehash: 2e9124213181fe32f3492e353b05ace89a9d6992
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: c1a9b526f08f330d62c30dd1d676e95460aee6c2
+ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48240693"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51712341"
 ---
-# <a name="using-the-azure-blockchain-workbench-rest-api"></a>使用 Azure Blockchain Workbench REST API 
+# <a name="using-the-azure-blockchain-workbench-rest-api"></a>使用 Azure Blockchain Workbench REST API
 
-开发人员和信息工作者可以使用 Azure Blockchain Workbench REST API 生成丰富的适用于区块链应用程序的集成。 本文档详细介绍 Workbench REST API 的多种主要方法。 假设这样一种场景：开发人员需要创建一个自定义区块链客户端，以便登录用户查看已分配的区块链应用程序并与之交互。 用户可以通过客户端查看合同实例并对智能合同执行操作。 在用户已登录的情况下，客户端会使用 Workbench REST API 执行以下操作：
+开发人员和信息工作者可以使用 Azure Blockchain Workbench REST API 生成丰富的适用于区块链应用程序的集成。 本文档详细介绍 Workbench REST API 的多种主要方法。 例如，假设开发人员要创建自定义区块链客户端。 此区块链客户端允许已登录用户查看并使用其已分配的区块链应用程序进行交互。 用户可以通过客户端查看合同实例并对智能合同执行操作。 在用户已登录的情况下，客户端会使用 Workbench REST API 执行以下操作：
 
 * 列出应用程序
 * 列出应用程序的工作流
@@ -27,23 +27,23 @@ ms.locfileid: "48240693"
 * 列出可用于合同的操作
 * 执行适用于合同的操作
 
-上述场景中使用的示例区块链应用程序可以[从 GitHub 下载](https://github.com/Azure-Samples/blockchain)。 
+上述场景中使用的示例区块链应用程序可以[从 GitHub 下载](https://github.com/Azure-Samples/blockchain)。
 
 ## <a name="list-applications"></a>列出应用程序
 
 当用户登录到区块链客户端以后，第一个任务是为该用户检索所有 Blockchain Workbench 应用程序。 在这种情况下，用户可以访问两个应用程序：
 
-1.  [资产转移](https://github.com/Azure-Samples/blockchain/blob/master/blockchain-workbench/application-and-smart-contract-samples/asset-transfer/readme.md)
-2.  [冷藏运输](https://github.com/Azure-Samples/blockchain/blob/master/blockchain-workbench/application-and-smart-contract-samples/refrigerated-transportation/readme.md)
+1. [资产转移](https://github.com/Azure-Samples/blockchain/blob/master/blockchain-workbench/application-and-smart-contract-samples/asset-transfer/readme.md)
+2. [冷藏运输](https://github.com/Azure-Samples/blockchain/blob/master/blockchain-workbench/application-and-smart-contract-samples/refrigerated-transportation/readme.md)
 
 使用 [Applications GET API](https://docs.microsoft.com/rest/api/azure-blockchain-workbench/applications/applicationsget)：
 
 ``` http
-GET /api/v1/applications 
+GET /api/v1/applications
 Authorization : Bearer {access token}
 ```
 
-响应会列出可供用户在 Blockchain Workbench 中访问的所有区块链应用程序。 Blockchain Workbench 管理员可以获取所有区块链应用程序，而非 Workbench 管理员则可获取有它们的至少一个相关应用程序角色或相关智能合同实例角色的所有区块链。
+响应会列出可供用户在 Blockchain Workbench 中访问的所有区块链应用程序。 Blockchain Workbench 管理员获取所有区块链应用程序。 非 Workbench 管理员获取至少具有一个关联的应用程序角色或一个关联的智能合同实例角色的全部区块链。
 
 ``` http
 HTTP/1.1 200 OK
@@ -77,7 +77,7 @@ Content-type: application/json
 
 ## <a name="list-workflows-for-an-application"></a>列出应用程序的工作流
 
-一旦用户选择了适当的区块链应用程序（在本示例中为“资产转移”），区块链客户端就会检索该特定区块链应用程序的所有工作流。 然后，用户可以在工作流的所有智能合同实例显示之前选择适当的工作流。 每个区块链应用程序有一个或多个工作流，每个工作流有零个或多个智能合同实例。 开发区块链客户端应用程序时，建议在只有一个工作流适用于区块链应用程序的情况下跳过允许用户选择适当工作流的用户体验流。 在本示例中，资产转移只有一个工作流，也称为“资产转移”。
+一旦用户选择了适当的区块链应用程序（如“资产转移”），区块链客户端就会检索该特定区块链应用程序的所有工作流。 然后，用户可以在工作流的所有智能合同实例显示之前选择适当的工作流。 每个区块链应用程序有一个或多个工作流，每个工作流有零个或多个智能合同实例。 对于只有一个工作流的区块链客户端应用程序，建议跳过允许用户选择相应工作流的用户体验流。 在本示例中，资产转移只有一个工作流，也称为“资产转移”。
 
 使用 [Applications Workflows GET API](https://docs.microsoft.com/rest/api/azure-blockchain-workbench/applications/workflowsget)：
 
@@ -86,7 +86,7 @@ GET /api/v1/applications/{applicationId}/workflows
 Authorization: Bearer {access token}
 ```
 
-响应会列出可供用户在 Blockchain Workbench 中访问的指定区块链应用程序的所有工作流。 Blockchain Workbench 管理员可以获取所有区块链工作流，而非 Workbench 管理员则可获取有它们的至少一个相关应用程序角色或相关智能合同实例角色的所有工作流。
+响应会列出可供用户在 Blockchain Workbench 中访问的指定区块链应用程序的所有工作流。 Blockchain Workbench 管理员获取所有区块链工作流。 非 Workbench 管理员获取至少具有一个关联的应用程序角色或与智能合同实例角色关联的全部工作流。
 
 ``` http
 HTTP/1.1 200 OK
@@ -109,16 +109,16 @@ Content-type: application/json
 
 ## <a name="list-smart-contract-instances-for-a-workflow"></a>列出工作流的智能合同实例
 
-一旦用户选择了适当的工作流（在本示例中为“资产转移”），区块链客户端就会检索指定工作流的所有智能合同实例。 可以根据此信息来显示工作流的所有智能合同实例，以便用户深入了解任何显示的智能合同实例。 在此示例中，设想用户会与某个需执行操作的智能合同实例交互。
+一旦用户选择了适当的工作流（在本示例中为“资产转移”），区块链客户端就会检索指定工作流的所有智能合同实例。 可以使用此信息显示工作流的所有智能合同实例。 也可以允许用户深入了解任何显示的智能合同实例。 在此示例中，设想用户会与某个需执行操作的智能合同实例交互。
 
-使用 [Contracts GET API](https://docs.microsoft.com/rest/api/azure-blockchain-workbench/contracts/contractsget)：
+使用 [Contracts GET API](/rest/api/azure-blockchain-workbench/contractsv2/contractsget)：
 
 ``` http
 GET api/v1/contracts?workflowId={workflowId}
 Authorization: Bearer {access token}
 ```
 
-响应会列出指定工作流的所有智能合同实例。 Workbench 管理员可以获取所有智能合同实例，而非 Workbench 管理员则可获取有它们的至少一个相关应用程序角色或相关智能合同实例角色的所有智能合同实例。
+响应会列出指定工作流的所有智能合同实例。 Workbench 管理员获取所有智能合同实例。 非 Workbench 管理员获取至少具有一个关联的应用程序角色或与智能合同实例角色关联的全部智能合同实例。
 
 ``` http
 HTTP/1.1 200 OK
@@ -208,12 +208,12 @@ Content-type: application/json
 
 ## <a name="list-available-actions-for-a-contract"></a>列出可用于合同的操作
 
-一旦用户决定深入了解某个合同，区块链客户端就会根据合同的状态向该用户显示所有可用的操作。 在此示例中，用户将查看适用于新建智能合同的所有操作：
+一旦用户决定深入了解某个合同，区块链客户端就会显示给定合同的状态下可用的用户操作。 在此示例中，用户将查看适用于新建智能合同的所有操作：
 
 * 修改：允许用户修改资产的说明和价格。
-* 终止：允许用户终止资产的合同。
+* 终止：允许用户终止资产合同。
 
-使用 [Contract Action GET API](https://docs.microsoft.com/rest/api/azure-blockchain-workbench/contracts/contractactionget)：
+使用 [Contract Action GET API](/rest/api/azure-blockchain-workbench/contractsv2/contractactionget)：
 
 ``` http
 GET /api/v1/contracts/{contractId}/actions
@@ -275,12 +275,12 @@ Content-type: application/json
 
 ## <a name="execute-an-action-for-a-contract"></a>执行适用于合同的操作
 
-然后，用户可以根据指定的智能合同实例来决定要采取的操作。 在此示例中，假设这样一种场景：用户要将资产的说明和价格修改如下：
+然后，用户可以根据指定的智能合同实例来决定要采取的操作。 在此示例中，假设这样一种场景：用户要将资产的说明和价格修改为如下操作：
 
 * 说明：“My updated car”
 * 价格：54321
 
-使用 [Contract Action POST API](https://docs.microsoft.com/rest/api/azure-blockchain-workbench/contracts/contractactionpost)：
+使用 [Contract Action POST API](/rest/api/azure-blockchain-workbench/contractsv2/contractactionpost)：
 
 ``` http
 POST /api/v1/contracts/{contractId}/actions

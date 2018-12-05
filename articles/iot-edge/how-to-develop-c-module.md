@@ -9,12 +9,12 @@ ms.author: xshi
 ms.date: 09/13/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: d40b82b5beac2da78038e303cb50402d6fa0be7a
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: b8d8223647d42213eff53c2ff8310bed0cfe6cdb
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51566017"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52446732"
 ---
 # <a name="use-visual-studio-code-to-develop-and-debug-c-modules-for-azure-iot-edge"></a>使用 Visual Studio Code 开发和调试 Azure IoT Edge 的 C 模块
 
@@ -59,7 +59,7 @@ ms.locfileid: "51566017"
 
 7. 输入模块的名称。 选择容器注册表中唯一的名称。 
 
-8. 提供模块的映像存储库的名称。 VS Code 使用 localhost:5000 自动填充模块名。 将其替换为你自己的注册表信息。 如果使用本地 Docker 注册表进行测试，则可以使用 localhost。 如果使用 Azure 容器注册表，那么请从注册表的设置中使用登录服务器。 登录服务器如下所示：\<registry name\>.azurecr.io。 仅替换字符串的 localhost 部分，不要删除模块名。 
+8. 提供模块的映像存储库的名称。 VS Code 使用 localhost:5000 自动填充模块名。 将其替换为你自己的注册表信息。 如果使用本地 Docker 注册表进行测试，则可以使用 localhost。 如果使用 Azure 容器注册表，那么请从注册表的设置中使用登录服务器。 登录服务器如下所示：\<registry name\>.azurecr.io。 仅替换字符串的 localhost 部分，不要删除模块名。 最终的字符串看起来类似于 \<注册表名称\>.azurecr.io/\<modulename\>。
 
    ![提供 Docker 映像存储库](./media/how-to-develop-c-module/repository.png)
 
@@ -87,20 +87,11 @@ VS Code 采用你提供的信息，创建一个 IoT Edge 解决方案，然后�
 
 每个模块文件夹中都有多个适用于不同容器类型的 Docker 文件。 使用以扩展名 .debug 结尾的任何文件来生成用于测试的模块。 目前，C 模块仅支持在 Linux amd64 容器中进行调试。
 
-1. 在 VS Code 中，导航到 `deployment.template.json` 文件。 通过在末尾添加 .debug 来更新模块映像 URL。
-
-    ![将 **.debug** 添加到映像名称](./media/how-to-develop-c-module/image-debug.png)
-
-2. 将 deployment.template.json 中的 C 模块 createOptions 替换为以下内容并保存此文件： 
-    
-    ```json
-    "createOptions": "{\"HostConfig\": {\"Privileged\": true}}"
-    ```
-
+1. 在 VS Code 中，导航到 `deployment.debug.template.json` 文件。 此文件包含具有正确创建选项的模块映像的调试版本。 
 2. 在 VS Code 命令面板中，输入并运行“Azure IoT Edge: Build and Push IoT Edge solution”命令。
-3. 从命令面板中选择解决方案的 `deployment.template.json` 文件。 
+3. 从命令面板中选择解决方案的 `deployment.debug.template.json` 文件。 
 4. 在 Azure IoT 中心 Device Explorer 中，右键单击某个 IoT Edge 设备 ID。 然后，选择“为单个设备创建部署”。 
-5. 打开解决方案的 config 文件夹。 然后选择 `deployment.json` 文件。 选择“选择 Edge 部署清单”。 
+5. 打开解决方案的 config 文件夹。 然后选择 `deployment.debug.amd64.json` 文件。 选择“选择 Edge 部署清单”。 
 
 将在 VS Code 集成终端中看到已成功创建部署且具有一个部署 ID。
 

@@ -1,46 +1,51 @@
 ---
-title: 使用 Azure Kubernetes 服务 (AKS) 的 Jenkins 持续部署
-description: 了解如何使用 Jenkins 自动完成持续部署流程，以部署和升级 Azure Kubernetes 服务 (AKS) 中的容器化应用程序
+title: 教程 - 使用 Jenkins 从 GitHub 部署到 Azure Kubernetes 服务 (AKS)
+description: 设置 Jenkins 以便从 GitHub 持续集成 (CI) 和持续部署 (CD) 到适用于 Java Web 应用的 Azure Kubernetes 服务 (AKS)
 services: container-service
-author: iainfoulds
 ms.service: container-service
+author: iainfoulds
+ms.author: iainfou
 ms.topic: article
 ms.date: 09/27/2018
-ms.author: iainfou
-ms.openlocfilehash: 5417e59f15ffcf48cc2af27044355d2bb5c9edaf
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.openlocfilehash: d252e275280ed2a5c2129f6b228e9989a33b37fd
+ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50087689"
+ms.lasthandoff: 11/17/2018
+ms.locfileid: "51853607"
 ---
-# <a name="create-a-continuous-deployment-pipeline-with-jenkins-and-azure-kubernetes-service-aks"></a>创建使用 Jenkins 和 Azure Kubernetes 服务 (AKS) 的持续部署管道
+# <a name="tutorial-deploy-from-github-to-azure-kubernetes-service-aks-with-jenkins-continuous-integration-and-deployment"></a>教程：使用 Jenkins 持续集成和部署从 GitHub 部署到 Azure Kubernetes 服务 (AKS)
 
-通常使用持续集成和持续交付 (CI/CD) 平台，快速向 Azure Kubernetes 服务 (AKS) 中的应用程序部署更新。 在 CI/CD 平台中，代码提交可触发生成新容器，用于部署更新后的应用程序实例。 本文将 Jenkins 用作 CI/CD 平台，以生成容器映像并将它们推送到 Azure 容器注册表 (ACR)，然后运行 AKS 中的这些应用程序。 学习如何：
+本教程通过设置 Jenkins 中的持续集成 (CI) 和持续部署 (CD)，将 GitHub 中的一个示例应用部署到 [Azure 容器服务 (AKS)](/azure/aks/intro-kubernetes) 群集。 这样一来，通过将提交内容推送到 GitHub 以更新应用时，Jenkins 将自动运行一个新的容器内部版本，将容器映像推送到 Azure 容器注册表 (ACR)，然后在 AKS 中运行应用。 
+
+在本教程中，你将完成以下任务：
 
 > [!div class="checklist"]
-> * 将示例 Azure 投票应用程序部署到 AKS 群集
-> * 创建简单 Jenkins 实例
-> * 配置可供 Jenkins 与 ACR 交互的凭据
-> * 创建用于自动执行生成操作的 Jenkins 生成作业和 GitHub Webhook
-> * 测试 CI/CD 管道，以根据 GitHub 代码提交来更新 AKS 中的应用程序
+> * 将示例 Azure 投票应用部署到 AKS 群集。
+> * 创建一个基本 Jenkins 项目。
+> * 设置可供 Jenkins 与 ACR 交互的凭据。
+> * 创建用于自动执行生成操作的 Jenkins 生成作业和 GitHub Webhook。
+> * 测试 CI/CD 管道，基于 GitHub 代码提交来更新 AKS 中的应用程序。
 
-## <a name="before-you-begin"></a>开始之前
+## <a name="prerequisites"></a>先决条件
 
-需要准备好以下各项才能完成本文中的步骤。
+若要完成本教程，需要准备好以下各项：
 
 - 基本了解 Kubernetes、Git、CI/CD 和容器映像
 
-- 已配置 [AKS 群集凭据][aks-credentials]的 [AKS 群集][aks-quickstart]和 `kubectl`。
-- [Azure 容器注册表 (ACR) 注册表][acr-quickstart]、ACR 登录服务器名称，以及已配置为[使用 ACR 注册表验证方法][acr-authentication]的 AKS 群集。
+- 已配置 [AKS 群集凭据][aks-credentials]的 [AKS 群集][aks-quickstart]和 `kubectl`
+
+- [Azure 容器注册表 (ACR) 注册表][acr-quickstart]、ACR 登录服务器名称，以及已配置为[使用 ACR 注册表进行身份验证][acr-authentication]的 AKS 群集
 
 - 已安装并配置 Azure CLI 2.0.46 或更高版本。 运行  `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅 [安装 Azure CLI][install-azure-cli]。
-- 已在开发系统上[安装 Docker][docker-install]。
-- GitHub 帐户、[GitHub 个人访问令牌][git-access-token]，以及在开发系统上安装的 Git 客户端。
+
+- 在开发系统上[安装的 Docker][docker-install]
+
+- GitHub 帐户、[GitHub 个人访问令牌][git-access-token]，以及在开发系统上安装的 Git 客户端
 
 - 如果你提供自己的 Jenkins 实例而不是以此示例脚本方式来部署 Jenkins，那么你的 Jenkins 实例需要安装和配置 [Docker][docker-install] 和 [kubectl][kubectl-install]。
 
-## <a name="prepare-the-application"></a>准备应用程序
+## <a name="prepare-your-app"></a>准备应用程序
 
 本文使用示例 Azure 投票应用程序，其中包含托管在一个或多个 Pod 中的 Web 接口，以及另一个托管 Redis 的 Pod（用作临时数据存储）。 集成 Jenkins 和 AKS 以执行自动部署前，请先手动准备 Azure 投票应用程序，并将它部署到 AKS 群集。 此手动部署版本是示例应用程序的第一版，可便于了解应用程序的实际效果。
 

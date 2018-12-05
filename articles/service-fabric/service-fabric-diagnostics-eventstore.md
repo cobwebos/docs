@@ -3,7 +3,7 @@ title: Azure Service Fabric EventStore | Microsoft Docs
 description: 了解 Azure Service Fabric 的 EventStore
 services: service-fabric
 documentationcenter: .net
-author: dkkapur
+author: srrengar
 manager: timlt
 editor: ''
 ms.assetid: ''
@@ -12,27 +12,28 @@ ms.devlang: dotNet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 04/25/2018
-ms.author: dekapur
-ms.openlocfilehash: 1d235d5a75975c8d58cad1bbde0f16df2b1b3e7a
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.date: 11/21/2018
+ms.author: srrengar
+ms.openlocfilehash: cd58e24a51b153d6bf217f7d32a82e882183ed73
+ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34206510"
+ms.lasthandoff: 11/22/2018
+ms.locfileid: "52290665"
 ---
 # <a name="eventstore-service-overview"></a>事件存储服务概述
 
->[!NOTE]
->从 Service Fabric 版本 6.2 开始。 EventStore API 当前为预览版，仅可用于在 Azure 中运行的 Windows 群集。 我们正在将此功能移植到 Linux 以及我们的独立群集。
-
 ## <a name="overview"></a>概述
 
-EventStore 服务是在版本 6.2 中引入的，它是 Service Fabric 中的一个监视选项，提供了一种方法来了解群集或工作负荷在任意给定时间点的状态。 EventStore 服务通过可以调用的 API 来公开 Service Fabric 事件。 这些 EventStore API 允许直接查询群集来获取关于群集中的任何实体的诊断数据，并且应当用来帮助执行以下操作：
+EventStore 服务是在版本 6.2 中引入的，它是 Service Fabric 中的一个监视选项，提供了一种方法来了解群集或工作负荷在任意给定时间点的状态。 EventStore 服务通过一组 API（可通过 REST 端点或客户端库进行访问）公开 Service Fabric 事件。 这些 EventStore API 允许直接查询群集来获取关于群集中的任何实体的诊断数据，并且应当用来帮助执行以下操作：
+
 * 在开发或测试时或者当可能使用监视管道时对问题进行诊断
 * 确认群集在正确处理你对群集执行的管理操作
 
 若要查看 EventStore 中可用的事件的完整列表，请参阅 [Service Fabric 事件](service-fabric-diagnostics-event-generation-operational.md)。
+
+>[!NOTE]
+>从 Service Fabric 版本 6.2 开始。 EventStore API 当前为预览版，仅可用于在 Azure 中运行的 Windows 群集。 我们正在将此功能移植到 Linux 以及我们的独立群集。
 
 可以向 EventStore 服务查询可用于群集中的每个实体和实体类型的事件。 这意味着可以在以下级别查询事件：
 * 群集：所有群集级事件
@@ -49,6 +50,8 @@ EventStore 服务是在版本 6.2 中引入的，它是 Service Fabric 中的一
 
 
 EventStore 服务还能够将群集中的事件相关联。 通过查看在同一时间从可能已相互影响的不同实体写入的事件，EventStore 服务能够将这些事件进行关联来帮助查明群集中发生各项活动的原因。 例如，如果某个应用程序变得不正常且没有诱发任何变化，则 EventStore 将查看由平台公开的其他事件并且可能会将此情况与 `NodeDown` 事件相关联。 这有助于更快地进行故障检测和根本原因分析。
+
+我们建议使用 EventStore 进行快速分析，以获取关于群集运行状况的快照，并了解事情是否按预期发生。
 
 若要开始使用 EventStore 服务，请参阅[通过 EventStore API 查询群集事件](service-fabric-diagnostics-eventstore-query.md)。
 

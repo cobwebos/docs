@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: reference
 ms.date: 09/14/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 3f0f087c98f2b6594ab7e841f92ffac7ffe4003e
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: a7666ada6c4535010297415eac8b0bd9e5226d9e
+ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48805691"
+ms.lasthandoff: 11/19/2018
+ms.locfileid: "51974461"
 ---
 <a name="retrieve-operations"></a>检索操作
 ===================
@@ -189,7 +189,7 @@ ms.locfileid: "48805691"
 |  submissionType              | 标识为产品/服务报告的操作类型，例如 `Publish/GGoLive`      |
 |  createdDateTime             | 创建操作时的 UTC 日期/时间                                                       |
 |  lastActionDateTime          | 上次更新操作时的 UTC 日期/时间                                       |
-|  status                      | 操作的状态，一次可为“未启动” | “正在运行” | “失败” | “已完成”`. Only one operation can have status `。 |
+|  status                      | 操作的状态，`not started` \| `running` \| `failed` \| `completed`。 一次只能有一个操作具有状态 `running`。 |
 |  error                       | 操作失败的错误消息                                                               |
 |  |  |
 

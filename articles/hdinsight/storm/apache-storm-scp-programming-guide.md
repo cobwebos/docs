@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2016
-ms.openlocfilehash: e6025ba2645c284cca87483b48b2d79a9558d574
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 420a1c2ee09f84586f99864878e226df59606f2d
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51012524"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52496866"
 ---
 # <a name="scp-programming-guide"></a>SCP 编程指南
 SCP 是一个用于构建实时、可靠、一致和高性能的数据处理应用程序的平台。 它在 [Apache Storm](http://storm.incubator.apache.org/) 的基础上构建而成 -- Storm 是开源软件 (OSS) 社区设计的一个流处理系统。 Storm 由 Nathan Marz 设计，在 Twitter 上进行开源。 其利用 [Apache ZooKeeper](http://zookeeper.apache.org/)（另一个 Apache 项目）来实现高可靠性的分布式协调和状态管理。 
@@ -207,7 +207,7 @@ SCP.NET 还会提供可供开发人员用于编程的简单密钥对象集。 �
 ### <a name="statestore"></a>StateStore
 `StateStore` 提供元数据服务、单调序列生成和无等待协调。 可以在 `StateStore` 中构建高级分布式并发抽象，包括分布式锁、分布式队列、屏障和事务服务。
 
-SCP 可使用 `State` 对象在 ZooKeeper 中保留某些信息，尤其是适用于事务性拓扑的信息。 这样做时，如果事务性 Spout 崩溃并重新启动，它可以从 ZooKeeper 检索必要信息并重新开始数据传输。
+SCP 应用程序可使用 `State` 对象在 [Apache ZooKeeper](https://zookeeper.apache.org/) 中保留某些信息，尤其是适用于事务性拓扑的信息。 这样做时，如果事务性 Spout 崩溃并重新启动，它可以从 ZooKeeper 检索必要信息并重新开始数据传输。
 
 `StateStore` 对象主要提供以下方法：
 
@@ -642,9 +642,9 @@ HelloWorld 是一个简单的 SCP.Net 编程示例。 它使用非事务性拓�
 本质上，本示例与 HelloWorld 相同。 唯一不同之处是，在本示例中，用户代码被编译为 DLL，而且使用 SCPHost.exe 提交拓扑。 有关更详细说明，请参阅“SCP 主机模式”部分。
 
 ## <a name="next-steps"></a>后续步骤
-有关使用 SCP 创建的 Storm 拓扑示例，请参阅以下文档：
+有关使用 SCP 创建的 Apache Storm 拓扑示例，请参阅以下文档：
 
 * [使用 Visual Studio 开发 Apache Storm on HDInsight 的 C# 拓扑](apache-storm-develop-csharp-visual-studio-topology.md)
-* [使用 Storm on HDInsight 从 Azure 事件中心处理事件](apache-storm-develop-csharp-event-hub-topology.md)
-* [使用 Storm on HDInsight 处理事件中心的汽车传感器数据](https://github.com/hdinsight/hdinsight-storm-examples/tree/master/IotExample)
-* [从 Azure 事件中心提取、转换和加载 (ETL) 到 HBase](https://github.com/hdinsight/hdinsight-storm-examples/blob/master/RealTimeETLExample)
+* [使用 Apache Storm on HDInsight 从 Azure 事件中心处理事件](apache-storm-develop-csharp-event-hub-topology.md)
+* [使用 Apache Storm on HDInsight 处理事件中心的车辆传感器数据](https://github.com/hdinsight/hdinsight-storm-examples/tree/master/IotExample)
+* [从 Azure 事件中心提取、转换和加载 (ETL) 到 Apache HBase](https://github.com/hdinsight/hdinsight-storm-examples/blob/master/RealTimeETLExample)

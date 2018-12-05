@@ -9,16 +9,16 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.openlocfilehash: 0811f0e115545a37b6c570c436900a8548adae61
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 3a65b66619351462fcd9c77c3fb9b935cf99ebcc
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51006356"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52496458"
 ---
 # <a name="get-started-with-ml-services-on-azure-hdinsight"></a>Azure HDInsight 上的 ML Services 入门
 
-可以使用 Azure HDInsight 创建 ML Services 群集。 此选项允许 R 脚本使用 Spark 和 MapReduce 运行分布式计算。 在本文中，你将学习如何在 HDInsight 上创建 ML Services 群集，以及如何运行演示了使用 Spark 进行分布式 R 计算的一个 R 脚本。
+可以使用 Azure HDInsight 创建 ML Services 群集。 此选项允许 R 脚本使用 [Apache Spark](https://spark.apache.org/) 和 [Apache Hadoop MapReduce](https://hadoop.apache.org/docs/r1.2.1/mapred_tutorial.html) 运行分布式计算。 在本文中，你将学习如何在 HDInsight 上创建 ML Services 群集，以及如何运行演示了使用 Spark 进行分布式 R 计算的一个 R 脚本。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -37,7 +37,7 @@ ms.locfileid: "51006356"
 
     * **群集名称**：HDInsight 群集的名称。
     * **订阅**：选择要使用的订阅。
-    * **群集登录用户名**和**群集登录密码**：通过 HTTPS 访问群集时的登录凭据。 可以使用这些凭据访问 Ambari Web UI 或 REST API 等服务。
+    * **群集登录用户名**和**群集登录密码**：通过 HTTPS 访问群集时的登录凭据。 使用这些凭据访问 Apache Ambari Web UI 或 REST API 等服务。
     * **安全外壳 (SSH) 用户名**：通过 SSH 访问群集时使用的登录名。 默认情况下，密码与群集登录密码相同。
     * **资源组**：要在其中创建群集的资源组。
     * **位置**：要在其中创建群集的 Azure 区域。

@@ -11,16 +11,17 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/14/2017
+ms.date: 11/20/2018
 ms.author: mbullwin
-ms.openlocfilehash: 53ade76b9dbdc27df90da1f7e197464816529d1d
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 4df6780fa61c1ed32279d882f383097dc0287716
+ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35295755"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52275909"
 ---
 # <a name="monitor-docker-applications-in-application-insights"></a>在 Application Insights 中监视 Docker 应用程序
+
 [Docker](https://www.docker.com/) 容器中的生命周期事件和性能计数器可以在 Application Insights 上绘制成图表。 在主机的容器中安装 [Application Insights](https://hub.docker.com/r/microsoft/applicationinsights/) 映像，该映像会显示主机及其他映像的性能计数器。
 
 借助 Docker，可连同所有依赖项在轻量级容器中分配应用。 它们会在运行 Docker 引擎的任何主机计算机上运行。
@@ -31,33 +32,28 @@ ms.locfileid: "35295755"
 * 获取所有容器的性能计数器。 CPU、内存、网络使用量等。
 * 如果针对容器中运行的应用程序[安装了 Application Insights SDK](app-insights-java-live.md)，这些应用程序的所有遥测数据可用于识别容器和主机计算机的其他属性。 例如，如果在多台主机上运行某应用的多个实例，则可按主机轻松筛选应用遥测数据。
 
-![示例](./media/app-insights-docker/00.png)
+> [!NOTE]
+> 此解决方案已弃用。 若要深入了解我们当前对容器监控的投资，建议查看[适用于容器的 Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-overview)。
 
 ## <a name="set-up-your-application-insights-resource"></a>设置 Application Insights 资源
+
 1. 登录到 [Microsoft Azure 门户](https://azure.com)并打开应用的 Application Insights 资源；或[创建新资源](app-insights-create-new-resource.md)。 
    
     *应该使用哪种资源？* 如果主机上运行的应用由其他人开发，则需要[创建新的 Application Insights 资源](app-insights-create-new-resource.md)。 这是查看和分析遥测数据的位置。 （选择“常规”作为应用类型。）
    
     但如果是应用的开发人员，我们建议[将 Application Insights SDK 添加到](app-insights-java-live.md)每个应用。 如果这些应用实际上都是单个业务应用程序的组件，则可以将所有应用配置为向一个资源发送遥测数据，并使用相一资源显示 Docker 生命周期和性能数据。 
    
-    第三种情况是你开发了大多数应用，但使用不同的资源来显示其遥测数据。 此情况下，可能还需要为 Docker 数据创建不同的资源。 
-2. 添加“Docker”磁贴：选择“添加磁贴”，从库中拖出“Docker”磁贴，并单击“完成”。 
-   
-    ![示例](./media/app-insights-docker/03.png)
+    第三种情况是你开发了大多数应用，但使用不同的资源来显示其遥测数据。 此情况下，可能还需要为 Docker 数据创建不同的资源。
 
-> [!NOTE]
-> Application Insights 中的“概述”窗格现已锁定，不允许从库中添加磁贴。 仍可通过 Azure 仪表板接口添加上述 Docker 磁贴。
-
-3. 单击“概要”下拉列表，并复制检测密钥。 使用此密钥告知 SDK 要将遥测数据发送到哪个位置。
-
-    ![示例](./media/app-insights-docker/02-props.png)
+2. 单击“概要”下拉列表，并复制检测密钥。 使用此密钥告知 SDK 要将遥测数据发送到哪个位置。
 
 保持打开浏览器窗口，因为稍后要返回查看遥测数据。
 
 ## <a name="run-the-application-insights-monitor-on-your-host"></a>在主机上运行 Application Insights 监视器
+
 设置一个显示遥测数据的位置后，可以设置用于收集和发送遥测数据的容器化应用。
 
-1. 连接到 Docker 主机。 
+1. 连接到 Docker 主机。
 2. 在以下命令中编辑检测密钥，并运行该命令：
    
    ```
@@ -84,19 +80,6 @@ ms.locfileid: "35295755"
 
 片刻之后，就能看到来自 Docker 应用的数据，尤其是 Docker 引擎上有其他容器运行时。
 
-下面是可能显示的一些视图。
-
-### <a name="perf-counters-by-host-activity-by-image"></a>按主机列出的性能计数器、按映像列出的活动
-![示例](./media/app-insights-docker/10.png)
-
-![示例](./media/app-insights-docker/11.png)
-
-单击任一主机或映像名称可获取更多详细信息。
-
-若要自定义视图，请单击任一图表、网格标题，或使用“添加图表”。 
-
-[详细了解指标资源管理器](app-insights-metrics-explorer.md)。
-
 ### <a name="docker-container-events"></a>Docker 容器事件
 ![示例](./media/app-insights-docker/13.png)
 
@@ -106,13 +89,7 @@ ms.locfileid: "35295755"
 ![示例](./media/app-insights-docker/14.png)
 
 ### <a name="docker-context-added-to-app-telemetry"></a>已添加到应用遥测的 Docker 上下文
-从使用 AI SDK 检测的应用程序发送的请求遥测数据，已使用 Docker 上下文进行补充：
-
-![示例](./media/app-insights-docker/16.png)
-
-处理器时间和可用内存性能计数器，已使用 Docker 容器名称进行补充和分组：
-
-![示例](./media/app-insights-docker/15.png)
+从使用 AI SDK 检测的应用程序发送的请求遥测数据，已使用 Docker 上下文信息进行补充。
 
 ## <a name="q--a"></a>问题解答
 *Application Insights 提供 Docker 所不能提供的哪些功能？*

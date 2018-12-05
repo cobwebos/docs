@@ -2,22 +2,22 @@
 title: include 文件
 description: include 文件
 services: virtual-machines-windows, virtual-machines-linux
-author: dlepow
+author: cynthn
 ms.service: multiple
 ms.topic: include
-ms.date: 10/23/2018
-ms.author: danlep;azcspmt;jonbeck
+ms.date: 11/14/2018
+ms.author: cynthn;azcspmt;jonbeck
 ms.custom: include file
-ms.openlocfilehash: 4fde34338d5606a1f431ff4b7f7074d9cd472e90
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: b6df4ada1aa13e20c7ad52d2b58cdf9c783f9e24
+ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "50035273"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51716135"
 ---
 GPU 优化 VM 大小是具有单个或多个 NVIDIA GPU 的专用虚拟机。 这些大小是针对计算密集型、图形密集型和可视化工作负荷设计的。 本文介绍有关 GPU、vCPU、数据磁盘和 NIC 的数量和类型的信息。 此分组中的每个大小还包括存储吞吐量及网络带宽。 
 
-* NC、NCv2、NCv3 和 ND 的大小针对计算密集型和网络密集型应用程序和算法进行了优化。 一些示例包括基于 CUDA 和 OpenCL 的应用程序和模拟、AI 和深度学习。 NCv3 系列专用于采用 NVIDIA Tesla V100 GPU 的高性能计算工作负载。  ND 系列专用于进行深度学习的培训和推理方案。 该系列使用 NVIDIA Tesla P40 GPU。
+* NC、NCv2、NCv3 ND 和 NDv2 的大小针对计算密集型和网络密集型应用程序和算法进行了优化。 一些示例包括基于 CUDA 和 OpenCL 的应用程序和模拟、AI 和深度学习。 NCv3 系列专用于采用 NVIDIA Tesla V100 GPU 的高性能计算工作负载。  ND 系列专用于进行深度学习的培训和推理方案。 该系列使用 NVIDIA Tesla P40 GPU。
 * **NV 和 NVv2** 大小已使用 OpenGL 和 DirectX 之类的框架针对远程可视化效果、流式处理、游戏、编码和 VDI 方案进行了优化和设计。  这些 VM 由 NVIDIA Tesla M60 GPU 提供支持。
 
 
@@ -87,13 +87,33 @@ NCv3 系列 VM 采用 [NVIDIA Tesla V100](http://www.nvidia.com/content/PDF/Volt
 
 *支持 RDMA
 
+## <a name="ndv2-series-preview"></a>NDv2 系列（预览）
+
+
+高级存储：支持
+
+高级存储缓存：支持
+
+无限宽带：不支持
+
+
+NDv2 系列虚拟机是 GPU 系列的新成员，经过专门设计以满足 HPC、AI 和机器学习工作负荷方面的需求。 它具有 8 个互连的 NVIDIA Tesla V100 NVLINK GPU、40 个 Intel Skylake 核心以及 672 GiB 的系统内存。 NDv2 实例为利用 Cuda、TensorFlow、Pytorch、Caffe 的 HPC 和 AI 以及其他框架提供卓越的 FP32 和 FP64 性能。
+
+[注册并在预览期访问这些虚拟机](https://aka.ms/ndv2signup)。
+<br>
+
+
+| 大小              | vCPU | GPU              | 内存  | NIC 数（最大值） | 最大 磁盘大小           | 最大 数据磁盘（每个 1023 GB） | 最大网络带宽 | 
+|-------------------|-------------|-------------------|--------|------------------|---------|------------|--------------------------|--------------------|--------------------------------|-----------------------------------------|-----------------------|------------|
+| Standard_ND40s_v2 | 40     | 8 V100 (NVlilnk) | 672 GiB | 8          | 临时存储 1344/2948XIO | 32    | 24000 Mbps             | 
+
 ## <a name="nd-series"></a>ND 系列
 
 高级存储：支持
 
 高级存储缓存：支持
 
-ND 系列虚拟机是针对 AI 和深度学习工作负荷设计的 GPU 家族的新成员。 它们在训练和推理方面性能卓越。 ND 实例采用 [NVIDIA Tesla P40](http://images.nvidia.com/content/pdf/tesla/184427-Tesla-P40-Datasheet-NV-Final-Letter-Web.pdf) GPU。 这些实例可以针对单精度浮点运算和利用 Microsoft 认知工具包、TensorFlow、Caffe 及其他框架的 AI 工作负荷提供卓越的性能。 ND 系列还提供了更大的 GPU 内存大小（24 GB），能够适应更大的神经网络模型。 与 NC 系列一样，ND 系列可通过 RDMA 和 InfiniBand 连接提供含辅助型低延迟、高吞吐量网络的配置，以便可运行跨多个 GPU 的大规模训练作业。
+ND 系列虚拟机是针对 AI 和深度学习工作负荷设计的 GPU 系列的新成员。 它们在训练和推理方面性能卓越。 ND 实例采用 [NVIDIA Tesla P40](http://images.nvidia.com/content/pdf/tesla/184427-Tesla-P40-Datasheet-NV-Final-Letter-Web.pdf) GPU。 这些实例可以针对单精度浮点运算和利用 Microsoft 认知工具包、TensorFlow、Caffe 及其他框架的 AI 工作负荷提供卓越的性能。 ND 系列还提供了更大的 GPU 内存大小（24 GB），能够适应更大的神经网络模型。 与 NC 系列一样，ND 系列可通过 RDMA 和 InfiniBand 连接提供含辅助型低延迟、高吞吐量网络的配置，以便可运行跨多个 GPU 的大规模训练作业。
 
 > [!IMPORTANT]
 > 对于此大小系列，订阅中每个区域的 vCPU（核心）配额最初都设置为 0。 可以请求在某个[可用区域](https://azure.microsoft.com/regions/services/)中[提高此系列的 vCPU 配额](../articles/azure-supportability/resource-manager-core-quotas-request.md)。

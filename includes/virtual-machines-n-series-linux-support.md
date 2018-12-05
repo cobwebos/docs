@@ -2,24 +2,24 @@
 title: include 文件
 description: include 文件
 services: virtual-machines-linux
-author: dlepow
+author: cynthn
 ms.service: virtual-machines-linux
 ms.topic: include
-ms.date: 11/08/2018
-ms.author: danlep
+ms.date: 11/27/2018
+ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: c829b8d6fedaabfb9b43c6352c8188128cf36701
-ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.openlocfilehash: df7d8815eeb588e4e99041844642b6721e25dad7
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51333737"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52585632"
 ---
 ## <a name="supported-distributions-and-drivers"></a>支持的分发和驱动程序
 
 ### <a name="nvidia-cuda-drivers"></a>NVIDIA CUDA 驱动程序
 
-仅下表列出的 Linux 分发中支持适用于 NC、NCv2、NCv3 和 ND 系列 VM 的 NVIDIA CUDA 驱动程序（对 NV 系列为可选项）。 本文发布时，CUDA 驱动程序信息为最新版本。 有关最新 CUDA 驱动程序，请访问 [NVIDIA](https://developer.nvidia.com/cuda-zone) 网站。 确保安装或升级到最新 CUDA 驱动程序分发软件包。 
+仅下表列出的 Linux 分发中支持适用于 NC、NCv2、NCv3、ND 和 NDv2 系列 VM 的 NVIDIA CUDA 驱动程序（对 NV 系列为可选项）。 本文发布时，CUDA 驱动程序信息为最新版本。 有关最新 CUDA 驱动程序，请访问 [NVIDIA](https://developer.nvidia.com/cuda-zone) 网站。 确保安装或升级到最新 CUDA 驱动程序分发软件包。 
 
 > [!TIP]
 > 作为一种在 Linux VM 上手动安装 CUDA 驱动程序的替代方法，可以部署 Azure [数据科学虚拟机](../articles/machine-learning/data-science-virtual-machine/overview.md)映像。 用于 Ubuntu 16.04 LTS 或 CentOS 7.4 的 DSVM 版本预安装 NVIDIA CUDA 驱动程序、CUDA 深度神经网络库和其他工具。
@@ -34,7 +34,7 @@ Microsoft 为用作虚拟工作站或用于虚拟应用程序的 NV 和 NVv2 系
 
 | 分发 | 驱动程序 |
 | --- | -- |
-| Ubuntu 16.04 LTS<br/><br/>Red Hat Enterprise Linux 7.3 或 7.4<br/><br/>基于 CentOS 的 7.3 或 7.4 | NVIDIA GRID 6.2，驱动程序分支为 R390|
+| Ubuntu 16.04 LTS<br/><br/>Red Hat Enterprise Linux 7.3 或 7.4<br/><br/>基于 CentOS 的 7.3 或 7.4 | NVIDIA GRID 7，驱动程序分支为 R410|
 
 > [!WARNING] 
 > 在 Red Hat 产品上安装第三方软件可能会影响 Red Hat 支持条款。 请参阅 [Red Hat 知识库文章](https://access.redhat.com/articles/1067)。

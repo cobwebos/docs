@@ -1,10 +1,11 @@
 ---
-title: 机器学习 Web 服务的日志记录 | Microsoft Docs
+title: 机器学习工作室 Web 服务的日志记录 | Microsoft Docs
 description: 了解如何为机器学习 Web 服务启用日志记录。 日志记录提供用于帮助对 API 进行故障排除的其他信息。
 services: machine-learning
 documentationcenter: ''
-author: YasinMSFT
-ms.author: yahajiza
+author: ericlicoding
+ms.custom: (previous ms.author=yahajiza, author=YasinMSFT)
+ms.author: amlstudiodocs
 manager: hjerez
 editor: cgronlun
 ms.assetid: c54d41e1-0300-46ef-bbfc-d6f7dca85086
@@ -15,14 +16,14 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 06/15/2017
-ms.openlocfilehash: 4e1545c8fd05795c683b24c029376a3d1e6d85b8
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 5ac8712b1f5dbea4ed3225e87b1a6f51312c3529
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34835825"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52310406"
 ---
-# <a name="enable-logging-for-machine-learning-web-services"></a>为机器学习 Web 服务启用日志记录
+# <a name="enable-logging-for-machine-learning-studio-web-services"></a>为机器学习工作室 Web 服务启用日志记录
 本文档提供有关机器学习 Web 服务的日志记录功能的信息。 日志记录可提供错误编号和消息以外的其他信息，这些信息有助于对调用机器学习 API 进行故障排除。  
 
 ## <a name="how-to-enable-logging-for-a-web-service"></a>如何为 Web 服务启用日志记录

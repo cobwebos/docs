@@ -1,18 +1,18 @@
 ---
 title: 使用 Azure Site Recovery 管理配置服务器，以便进行 VMware 和物理服务器灾难恢复 | Microsoft Docs
 description: 本文介绍如何使用 Azure Site Recovery 管理现有配置服务器，以便将 VMware VM 和物理服务器灾难恢复到 Azure。
-author: rayne-wiselman
-manager: carmonm
+author: Rajeswari-Mamilla
+manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/11/2018
-ms.author: raynew
-ms.openlocfilehash: e8f41ef44adbd72e8ab16329d5fec94c08df2fe7
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.author: ramamill
+ms.openlocfilehash: a58de808816bf80cf950d7b032ca042c7913a2e5
+ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51568448"
+ms.lasthandoff: 11/19/2018
+ms.locfileid: "51976377"
 ---
 # <a name="manage-the-configuration-server-for-vmware-vm-disaster-recovery"></a>为 VMware VM 灾难恢复管理配置服务器
 
@@ -222,9 +222,16 @@ ms.locfileid: "51568448"
 2. 到期日期显示在“配置服务器运行状况”下。
 3. 选择“续订证书”。
 
-## <a name="update-windows-licence"></a>更新 Windows 许可证
+## <a name="refresh-configuration-server"></a>刷新配置服务器
 
-通过 OVF 模板提供的许可证是有效期为 180 天的评估许可证。 为了不间断的使用，必须使用已采购的许可证来激活 Windows。
+1. 在 Azure 门户中，导航至“恢复服务保管库” > “管理” > “站点恢复基础结构” > “对于 VMware 和物理机” > “配置服务器”
+2. 单击要刷新的配置服务器。
+3. 在包含所选配置服务器详细信息的边栏选项卡上，单击“更多” > “刷新服务器”。
+4. 在“恢复服务保管库” > “监控” > “站点恢复作业”下监控作业进度。
+
+## <a name="update-windows-license"></a>更新 Windows 许可证
+
+通过 OVF 模板提供的许可证是有效期为 180 天的评估许可证。 为确保不间断使用，必须使用采购的许可证来激活 Windows。
 
 ## <a name="failback-requirements"></a>故障回复要求
 

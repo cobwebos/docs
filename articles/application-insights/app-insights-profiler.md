@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.reviewer: cawa
 ms.date: 08/06/2018
 ms.author: mbullwin
-ms.openlocfilehash: 9aae08aa5906f341a890ac15e30d2863109d83a2
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: b0fc10099f1388169146d90efcd7c20dcbe8df27
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50140002"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52164942"
 ---
 # <a name="profile-live-azure-web-apps-with-application-insights"></a>使用 Application Insights 探查实时 Azure Web 应用
 
@@ -31,18 +31,18 @@ Profiler 目前适用于 Web 应用上运行的 ASP.NET 和 ASP.NET Core Web 应
 * [虚拟机](app-insights-profiler-vm.md?toc=/azure/azure-monitor/toc.json)
 
 
-Application Insights Profiler 是随 Application Insights 站点扩展一起安装的。 你需要安装站点扩展并对其进行配置以获取你的 Azure Web 应用的配置文件。 部署 Web 应用后，即使在源代码中包括了 App Insights SDK，也要执行以下步骤来启用 Profiler。
+预安装 Application Insights Profiler 作为应用服务运行时的一部分，但需启用它才能获得适用于 Azure Web 应用的配置文件。 部署 Web 应用后，即使在源代码中包括了 App Insights SDK，也要执行以下步骤来启用 Profiler。
 
 1. 转到 Azure 门户中的“应用服务”窗格。
 1. 导航到“设置”>“监视”窗格。
 
    ![在应用服务门户上启用 App Insights](./media/app-insights-profiler/AppInsights-AppServices.png)
 
-1. 按窗格中的说明创建新资源，或者选择现有的 App Insights 资源，以便监视 Web 应用。 接受所有默认选项。 默认情况下会启用**代码级诊断**，并且它会启用 Profiler。
+1. 按窗格中的说明创建新资源，或者选择现有的 App Insights 资源，以便监视 Web 应用。 此外，请确保 Profiler 已启用。
 
    ![添加 App Insights 站点扩展][Enablement UI]
 
-1. Profiler 现在已随 App Insights 站点扩展安装，并且使用应用服务应用设置启用。
+1. 现已使用应用服务应用设置启用了 Profiler。
 
     ![Profiler 的应用设置][profiler-app-setting]
 

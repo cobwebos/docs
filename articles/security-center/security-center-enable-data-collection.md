@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/2/2018
 ms.author: rkarlin
-ms.openlocfilehash: d88a59d3b9a39a42120b302fd8e7989c968db952
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: f6a818e0f628924342ddd50322bb54bf1d1d6079
+ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51624771"
+ms.lasthandoff: 11/19/2018
+ms.locfileid: "51976651"
 ---
 # <a name="data-collection-in-azure-security-center"></a>Azure 安全中心中的数据收集
 安全中心从 Azure 虚拟机 (VM) 和非 Azure 计算机收集数据以监视安全漏洞和威胁。 数据是使用 Microsoft Monitoring Agent 收集的，它从计算机中读取各种安全相关的配置和事件日志，然后将数据复制到工作区以进行分析。 此类数据的示例包括：操作系统类型和版本、操作系统日志（Windows 事件日志）、正在运行的进程、计算机名称、IP 地址和已登录的用户。 Microsoft Monitoring Agent 还将故障转储文件复制到工作区。
@@ -48,7 +48,7 @@ ms.locfileid: "51624771"
 
 启用 Microsoft Monitoring Agent 自动设置的步骤：
 1. 在“安全中心”主菜单下，选择“安全策略”。
-2. 选择订阅。
+2. 单击列表中所需订阅的“设置”列中的“编辑设置”。
 
   ![选择订阅][7]
 
@@ -135,7 +135,7 @@ ms.locfileid: "51624771"
 
     a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。  在安全中心主菜单中，选择“安全策略”。
      
-    b.  选择要在其中连接代理的所需工作区。
+    b.  通过单击列表中所需订阅的“设置”列中的“编辑设置”，选择要在其中连接代理的所需工作区。
         ![选择工作区][8] c. 设置定价层。
         ![选择定价层][9] 
    

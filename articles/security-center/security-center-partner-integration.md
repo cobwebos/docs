@@ -3,7 +3,7 @@ title: 在 Azure 安全中心集成安全解决方案 | Microsoft Docs
 description: 了解如何将 Azure 安全中心与合作伙伴集成，以增强 Azure 资源的总体安全性。
 services: security-center
 documentationcenter: na
-author: TerryLanfear
+author: rkarlin
 manager: mbaldwin
 editor: ''
 ms.assetid: 6af354da-f27a-467a-8b7e-6cbcf70fdbcb
@@ -12,14 +12,14 @@ ms.topic: conceptual
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/20/2018
-ms.author: terrylan
-ms.openlocfilehash: 1abf9efb5c0bed205ce5b87b1f055c14a11ce9ec
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.date: 11/26/2018
+ms.author: rkarlin
+ms.openlocfilehash: bbdda5012e6132940d00ae23a6d26469b0216fd0
+ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51244999"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52335430"
 ---
 # <a name="integrate-security-solutions-in-azure-security-center"></a>在 Azure 安全中心集成安全解决方案
 本文档介绍如何管理已连接到 Azure 安全中心的安全解决方案，以及如何添加新的安全解决方案。
@@ -47,14 +47,17 @@ ms.locfileid: "51244999"
 | 终结点保护               | 平台                             | 安全中心安装 | 安全中心发现 |
 |-----------------------------------|---------------------------------------|------------------------------|---------------------------|
 | Windows Defender (Microsoft Antimalware)                  | Windows Server 2016                   | 否，内置到 OS           | 是                       |
-| System Center Endpoint Protection (Microsoft Antimalware) | Windows Server 2012 R2、2012、2008 R2 | 通过扩展                | 是                       |
+| System Center Endpoint Protection (Microsoft Antimalware) | Windows Server 2012 R2、2012、2008 R2（请参阅以下备注） | 通过扩展                | 是                       |
 | Trend Micro – 所有版本         | Windows Server 系列                 | 否                           | 是                       |
 | Symantec v12.1.1100+              | Windows Server 系列                 | 否                           | 是                       |
 | McAfee v10+                       | Windows Server 系列                 | 否                           | 是                       |
 | Kaspersky                         | Windows Server 系列                 | 否                           | 否                        |
 | Sophos                            | Windows Server 系列                 | 否                           | 否                        |
 
-
+> [!NOTE]
+> 在 Windows Server 2008 R2 虚拟机上检测 System Center Endpoint Protection (SCEP) 需要在 PowerShell 3.0（或更高版本）之后安装 SCEP。
+>
+>
 
 ## <a name="how-security-solutions-are-integrated"></a>安全中心如何集成
 从安全中心部署的 Azure 安全解决方案是自动连接的。 还可以连接其他安全数据源，包括：

@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 07/19/2018
 ms.author: seanmck
 ms.custom: mvc
-ms.openlocfilehash: 41e3f38817abbdd0cab9ab2c72d39cb6f3f69531
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
+ms.openlocfilehash: 062308622e3170a4eb8f75a96300f04f683a90e7
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50978172"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51820352"
 ---
 # <a name="troubleshoot-common-issues-in-azure-container-instances"></a>排查 Azure 容器实例中的常见问题
 
@@ -205,6 +205,9 @@ microsoft/aci-helloworld    latest    7f78509b568e    13 days ago    68.1MB
 ## <a name="cannot-connect-to-underlying-docker-api-or-run-privileged-containers"></a>无法连接到基础 Docker API 或运行特权容器
 
 Azure 容器实例不公开对托管容器组的底层基础结构的直接访问。 这包括访问运行在容器主机上的 Docker API 和运行特权容器。 如果需要 Docker 交互，请查看 [REST 参考文档](https://aka.ms/aci/rest)以了解 ACI API 支持的内容。 如果缺少某些内容，请在 [ACI 反馈论坛](https://aka.ms/aci/feedback)上提交请求。
+
+## <a name="ips-may-not-be-accessible-due-to-mismatched-ports"></a>IP 可能会由于端口不匹配而无法访问
+Azure 容器实例目前不支持具有常规 docker 配置的端口映射，但此修复已在规划中。 如果发现 IP 在你认为应该可以访问的情况下无法访问，请确保已使用 `ports` 属性将容器映像配置为侦听在容器组中公开的相同端口。
 
 ## <a name="next-steps"></a>后续步骤
 了解如何[检索容器日志和事件](container-instances-get-logs.md)来帮助调试你的容器。

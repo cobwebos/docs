@@ -9,12 +9,12 @@ ms.component: content-moderator
 ms.topic: article
 ms.date: 02/03/2017
 ms.author: sajagtap
-ms.openlocfilehash: cb8774395b7374677e8de3b80630a2d4abf490f9
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 60a8d03a6562c9a66c2f6781ebbc330c989b343e
+ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35365439"
+ms.lasthandoff: 11/17/2018
+ms.locfileid: "51852089"
 ---
 # <a name="review-text"></a>审阅文本
 
@@ -32,4 +32,4 @@ ms.locfileid: "35365439"
 
 详细结果显示在窗口中。 结果包括文本审查 API 返回的检测的标记和术语。 若要切换标记选择状态，请选择标记。 还可以使用可能已创建的任何自定义标记。
 
-![文本审阅结果](images/3-review-text-2.png)
+![评审工具的屏幕截图，显示 Chrome 浏览器窗口中的已标记文字](../images/reviewresults_text.png)

@@ -8,13 +8,13 @@ author: ecfan
 ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
-ms.date: 10/11/2018
-ms.openlocfilehash: f4d8030918804dc30437aae34de87615ce7e82b5
-ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
+ms.date: 11/16/2018
+ms.openlocfilehash: 62235c0c06621169997cc4ad16816c0a4d638e78
+ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51346688"
+ms.lasthandoff: 11/17/2018
+ms.locfileid: "51853823"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Azure 逻辑应用的限制和配置信息
 
@@ -323,9 +323,10 @@ ms.locfileid: "51346688"
 
 ### <a name="managed-connectors"></a>托管的连接器
 
-若要支持 [Microsoft 托管连接器](../connectors/apis-list.md)进行的调用，请根据逻辑应用所在的区域设置防火墙配置，使其包含这些出站 IP 地址。
+若要支持 [Microsoft 托管连接器](../connectors/apis-list.md)进行的调用，请设置防火墙配置，使其包括为逻辑应用所在的区域指定的所有出站 IP 地址。 对于 [Azure 政府](/azure-government/documentation-government-welcome)和 [Azure 中国世纪互联](/azure/china/china-welcome)，连接器的保留 IP 地址目前不可用。
 
 > [!IMPORTANT]
+> 
 > 如果你有现有配置，请于 2018 年 9 月 1 日前尽快对其更新，以使其包含并匹配此列表中针对你的逻辑应用所在的位置对应的 IP 地址。 
 > 
 > 逻辑应用不支持通过防火墙直接连接到 Azure 存储帐户。 若要访问这些存储帐户，请使用以下任一选项： 

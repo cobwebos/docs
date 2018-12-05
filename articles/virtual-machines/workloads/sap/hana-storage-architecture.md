@@ -11,19 +11,19 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 09/04/2018
+ms.date: 11/20/2018
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 614d6aef4a2b7be551574fd3c8e25e2a3e3c1c07
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: e692cc1fd8670cc14b42e4714d84356d4d4c53a2
+ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44030308"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52275983"
 ---
 # <a name="sap-hana-large-instances-storage-architecture"></a>SAP HANA（大型实例）存储体系结构
 
-SAP HANA 根据 SAP 建议的指导原则在经典部署模型中配置 Azure 上的 SAP HANA（大型实例）存储布局。 [SAP HANA 存储要求](http://go.sap.com/documents/2015/03/74cdb554-5a7c-0010-82c7-eda71af511fa.html)白皮书中阐述了指导原则。
+SAP HANA 根据 SAP 建议的指导原则在经典部署模型中配置 Azure 上的 SAP HANA（大型实例）的存储布局。 [SAP HANA 存储要求](http://go.sap.com/documents/2015/03/74cdb554-5a7c-0010-82c7-eda71af511fa.html)白皮书中阐述了指导原则。
 
 I 类 HANA 大型实例附带有四倍内存卷作为存储卷。 对于 II 类 HANA 大型实例单位，存储不会是四倍大小。 这些单位附带的卷用于存储 HANA 事务日志备份。 有关详细信息，请参阅[安装和配置 Azure 上的 SAP HANA（大型实例）](hana-installation.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
 
@@ -33,6 +33,7 @@ I 类 HANA 大型实例附带有四倍内存卷作为存储卷。 对于 II 类 
 | --- | --- | --- | --- | --- |
 | S72 | 1,280 GB | 512 GB | 768 GB | 512 GB |
 | S72m | 3,328 GB | 768 GB |1,280 GB | 768 GB |
+| S96 | 1,280 GB | 512 GB | 768 GB | 512 GB |
 | S192 | 4,608 GB | 1,024 GB | 1,536 GB | 1,024 GB |
 | S192m | 11,520 GB | 1,536 GB | 1,792 GB | 1,536 GB |
 | S192xm |  11,520 GB |  1,536 GB |  1,792 GB |  1,536 GB |
@@ -72,18 +73,18 @@ I 类 HANA 大型实例附带有四倍内存卷作为存储卷。 对于 II 类 
 
 可以在 HANA 大型实例单位上托管多个活动的 SAP HANA 实例。 此类配置需要按实例进行卷设置，这样就仍然能够提供存储快照和灾难恢复的功能。 目前，HANA 大型实例单位可以细分如下：
 
-- **S72、S72m、S144、S192**：以 256 GB 为增量，且以 256 GB 为最小起始单位。 可以组合使用不同的增量（例如 256 GB、512 GB 等），但不得超出该单位的最大内存。
+- **S72、S72m、S96、S144、S192**：以 256 GB 为增量，且以 256 GB 为最小起始单位。 可以组合使用不同的增量（例如 256 GB、512 GB 等），但不得超出该单位的最大内存。
 - **S144m 和 S192m**：以 256 GB 为增量，以 512 GB 为最小单位。 可以组合使用不同的增量（例如 512 GB、768 GB 等），但不得超出该单位的最大内存。
 - **II 类**：以 512 GB 为增量，最小起始单位为 2 TB。 可以组合使用不同的增量（例如 512 GB、1 TB 和 1.5 TB 等），但不得超出该单位的最大内存。
 
-运行多个 SAP HANA 实例的部分示例如下：
+运行多个 SAP HANA 实例的部分示例如下。
 
 | SKU | 内存大小 | 存储大小 | 使用多个数据库时的大小 |
 | --- | --- | --- | --- |
-| S72 | 768 GB | 3 TB | 1x768 GB HANA 实例<br /> 或 1x512 GB 实例 + 1x256 GB 实例<br /> 或 3x256 GB 实例 | 
-| S72m | 1.5 TB | 6 TB | 3x512GB HANA 实例<br />或 1x512 GB 实例 + 1x1 TB 实例<br />或 6x256 GB 实例<br />或 1x1.5 TB 实例 | 
-| S192m | 4 TB | 16 TB | 8x512 GB 实例<br />或 4x1 TB 实例<br />或 4x512 GB 实例 + 2x1 TB 实例<br />或 4x768 GB 实例 + 2x512 GB 实例<br />或 1x4 TB 实例 |
-| S384xm | 8 TB | 22 TB | 4x2 TB 实例<br />或 2x4 TB 实例<br />或 2x3 TB 实例 + 1x2 TB 实例<br />或 2x2.5 TB 实例 + 1x3 TB 实例<br />或 1x8 TB 实例 |
+| S72 | 768 GB | 3 TB | 1 x 768 GB HANA 实例<br /> 或 1 x 512 GB 实例 + 1 x 256 GB 实例<br /> 或 3 x 256 GB 实例 | 
+| S72m | 1.5 TB | 6 TB | 3x512GB HANA 实例<br />或 1 x 512 GB 实例 + 1 x 1 TB 实例<br />或 6 x 256 GB 实例<br />或 1 x 1.5 TB 实例 | 
+| S192m | 4 TB | 16 TB | 8 x 512 GB 实例<br />或 4 x 1 TB 实例<br />或 4 x 512 GB 实例 + 2 x 1 TB 实例<br />或 4 x 768 GB 实例 + 2 x 512 GB 实例<br />或 1 x 4 TB 实例 |
+| S384xm | 8 TB | 22 TB | 4 x 2 TB 实例<br />或 2 x 4 TB 实例<br />或 2 x 3 TB 实例 + 1 x 2 TB 实例<br />或 2 x 2.5 TB 实例 + 1 x 3 TB 实例<br />或 1 x 8 TB 实例 |
 
 
 还有其他组合变化。 

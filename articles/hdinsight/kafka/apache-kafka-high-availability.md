@@ -9,18 +9,18 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/01/2018
-ms.openlocfilehash: e2cd03f28e4a3cd8176f6126817c61508697af94
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: e39829d4fa08e466f98930becc831c6f4b551aed
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51007784"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52315828"
 ---
 # <a name="high-availability-of-your-data-with-apache-kafka-on-hdinsight"></a>通过 Apache Kafka on HDInsight 实现数据的高可用性
 
-了解如何为 Kafka 主题配置分区副本，充分利用基础硬件机架配置。 此配置可确保存储在 HDInsight 上的 Apache Kafka 中的数据的可用性。
+了解如何为 Apache Kafka 主题配置分区副本，充分利用基础硬件机架配置。 此配置可确保存储在 HDInsight 上的 Apache Kafka 中的数据的可用性。
 
-## <a name="fault-and-update-domains-with-kafka"></a>Kafka 的容错域和更新域
+## <a name="fault-and-update-domains-with-apache-kafka"></a>Apache Kafka 的容错域和更新域
 
 容错域是 Azure 数据中心基础硬件的逻辑分组。 每个容错域共享公用电源和网络交换机。 在 HDInsight 群集中实现节点的虚拟机和托管磁盘跨这些容错域分布。 此体系结构可限制物理硬件故障造成的潜在影响。
 
@@ -44,15 +44,15 @@ ms.locfileid: "51007784"
 
 如果必须使用只包含两个容错域的区域，请使用 4 作为复制因子，将副本均衡地分布到两个容错域中。
 
-如需创建主题和设置复制因子的示例，请参阅 [HDInsight 上的 Kafka 入门](apache-kafka-get-started.md)文档。
+如需创建主题和设置复制因子的示例，请参阅 [HDInsight 上的 Apache Kafka 入门](apache-kafka-get-started.md)文档。
 
 ## <a name="how-to-rebalance-partition-replicas"></a>如何重新均衡分区副本
 
-使用 [Kafka 分区重新均衡工具](https://github.com/hdinsight/hdinsight-kafka-tools)来重新均衡所选主题。 必须通过 SSH 会话运行此工具，以便连接到 Kafka 群集的头节点。
+使用 [Apache Kafka 分区重新均衡工具](https://github.com/hdinsight/hdinsight-kafka-tools)以重新均衡所选主题。 必须通过 SSH 会话运行此工具，以便连接到 Kafka 群集的头节点。
 
 若要详细了解如何使用 SSH 连接到 HDInsight，请参阅[将 SSH 与 HDInsight 配合使用](../hdinsight-hadoop-linux-use-ssh-unix.md)文档。
 
 ## <a name="next-steps"></a>后续步骤
 
-* [HDInsight 上的 Kafka 的可伸缩性](apache-kafka-scalability.md)
-* [通过 HDInsight 上的 Kafka 进行镜像](apache-kafka-mirroring.md)
+* [HDInsight 上的 Apache Kafka 的可伸缩性](apache-kafka-scalability.md)
+* [通过 HDInsight 上的 Apache Kafka 执行镜像操作](apache-kafka-mirroring.md)

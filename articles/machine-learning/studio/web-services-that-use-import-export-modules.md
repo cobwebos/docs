@@ -1,10 +1,11 @@
 ---
-title: 在 Azure 机器学习 Web 服务中使用导入/导出数据 | Microsoft 文档
+title: 在 Azure 机器学习工作室 Web 服务中使用导入/导出数据 | Microsoft Docs
 description: 了解如何使用导入数据和导出数据模块从 Web 服务发送和接收数据。
 services: machine-learning
 documentationcenter: ''
-author: YasinMSFT
-ms.author: yahajiza
+author: ericlicoding
+ms.custom: (previous ms.author=yahajiza, author=YasinMSFT)
+ms.author: amlstudiodocs
 manager: hjerez
 editor: cgronlun
 ms.assetid: 3a7ac351-ebd3-43a1-8c5d-18223903d08e
@@ -15,14 +16,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/28/2017
-ms.openlocfilehash: 27873930ebef75923088f8bf2170c8e6a383cfa8
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: ee7d0fb4792983099dc6192de8f85338daee357f
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34837406"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52306941"
 ---
-# <a name="deploying-azure-ml-web-services-that-use-data-import-and-data-export-modules"></a>部署使用数据导入和数据导出模块的 Azure 机器学习 Web 服务
+# <a name="deploy-azure-machine-learning-studio-web-services-that-use-data-import-and-data-export-modules"></a>部署使用数据导入和数据导出模块的 Azure 机器学习工作室 Web 服务
 
 创建预测性实验时，通常添加 Web 服务输入和输出。 部署实验时，使用者可通过输入和输出从 Web 服务发送和接收数据。 对于某些应用程序，使用者的数据可能从数据源提供或已经驻留在外部数据源（如 Azure Blob 存储）中。 在这些情况下，它们不需要使用 Web 服务输入和输出读取和写入数据。 它们可以改为使用批处理执行服务 (BES)，使用导入数据模块从数据源读取数据，使用导出数据模块将评分结果写入不同的数据位置。
 

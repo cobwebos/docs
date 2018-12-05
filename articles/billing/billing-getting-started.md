@@ -4,7 +4,7 @@ description: 了解如何在 Azure 帐单上避免意外费用。 将成本跟�
 services: ''
 documentationcenter: ''
 author: tonguyen10
-manager: tonguyen
+manager: alherz
 editor: ''
 tags: billing
 ms.assetid: 482191ac-147e-4eb6-9655-c40c13846672
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/24/2018
 ms.author: cwatson
-ms.openlocfilehash: 3e7af4039ca5cd8aaadc36d3f87900e2127af7ab
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: c19769dda281f4346c23b823ea00eac83790b618
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51255653"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52582524"
 ---
 # <a name="prevent-unexpected-charges-with-azure-billing-and-cost-management"></a>通过 Azure 计费和成本管理来防止意外费用
 
@@ -167,7 +167,8 @@ ms.locfileid: "51255653"
 
 如果不是帐户管理员，则其他人可以通过 [Azure Active Directory 基于角色的访问控制](../role-based-access-control/role-assignments-portal.md) (RBAC) 授予部分访问权限。 要管理订阅和更改计费信息，请[查找帐户管理员](billing-subscription-transfer.md#whoisaa)，请其执行该任务或请其[将订阅转交给你](billing-subscription-transfer.md)。
 
-当帐户管理员不再属于组织，并且需要管理帐单时，请[与支持人员联系](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)。 
-## <a name="need-help-contact-support"></a>需要帮助？ 联系支持人员
+当帐户管理员不再属于组织，并且需要管理帐单时，请[联系我们](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)。
 
-如果需要帮助，请[联系支持人员](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)以快速解决问题。
+## <a name="need-help-contact-us"></a>需要帮助？ 请联系我们。
+
+如果你有任何疑问或需要帮助，请[创建支持请求](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)。

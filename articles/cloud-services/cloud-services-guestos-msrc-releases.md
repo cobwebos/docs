@@ -11,17 +11,52 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 11/12/2018
+ms.date: 11/15/2018
 ms.author: raiye
-ms.openlocfilehash: 19f9584c86993942e949716e14d2190fc5b31ce0
-ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
+ms.openlocfilehash: c2ff5d79c59a08c6ed808312027dc69aee910224
+ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51578767"
+ms.lasthandoff: 11/17/2018
+ms.locfileid: "51854265"
 ---
 # <a name="azure-guest-os"></a>Azure 来宾 OS
 下表显示了适用于 Azure 来宾 OS 的 Microsoft 安全响应中心 (MSRC) 更新。 要确定特定的更新是否适用于使用的来宾 OS，请搜索本文。 引入这些更新的特定[系列][family-explain]始终会包含这些更新。
+
+## <a name="november-2018-guest-os"></a>2018 年 11 月来宾 OS
+
+>[!NOTE]
+>11 月来宾 OS 目前正在推出到配置为自动更新的云服务 VM。 推出完成后，此版本将可通过 Azure 门户和配置文件进行手动更新。 11 月来宾 OS 中包含以下修补程序。 此列表可能随时变动。
+
+| 产品类别 | 上层知识库文章 | 漏洞描述 | 来宾 OS | 首次引入日期 |
+| --- | --- | --- | --- | --- |
+| Rel 18-11 | [4466536] | Internet Explorer | 2.80、3.67、4.60 | 2018 年 11 月 13 日 |
+| Rel 18-11 | [4467694] | 闪烁 | 3.67、4.60、5.25 | 2018 年 11 月 13 日 |
+| Rel 18-11 | [4467106] | Windows 安全性 | 2.80 | 2018 年 11 月 13 日 |
+| Rel 18-11 | [4467678] | Windows 安全性 | 3.67 | 2018 年 11 月 13 日 |
+| Rel 18-11 | [4467703] | Windows 安全性 | 4.60 | 2018 年 11 月 13 日 |
+| Rel 18-11 | [4467691] | Windows 10 安全性 | 5.25 | 2018 年 11 月 13 日 |
+| 不适用 | [3173426] | 服务堆栈更新 | 3.67 | 2016 年 7 月 12日 |
+| 不适用 | [4465659] | 服务堆栈更新 | 5.25 | 2018 年 11 月 13 日 |
+| 不适用 | [4462923] | 10 月非安全性汇总 | 2.80 | 2018 年 10 月 9 日 |
+| 不适用 | [4462929] | 10 月非安全性汇总 | 3.67 | 2018 年 10 月 9 日 |
+| 不适用 | [4462926] | 10 月非安全性汇总 | 4.60 | 2018 年 10 月 9 日 |
+| 不适用 | [3109976] | 应用兼容性填充码 | 4.60 | 2016 年 4 月 12 日 |
+| 不适用 | [4457037] | 应用兼容性填充码 | 4.60| 2018 年 6 月 12 日 |
+
+[4466536]: http://support.microsoft.com/kb/4466536
+[4467694]: http://support.microsoft.com/kb/4467694
+[4467106]: http://support.microsoft.com/kb/4467106
+[4467678]: http://support.microsoft.com/kb/4467678
+[4467703]: http://support.microsoft.com/kb/4467703
+[4467691]: http://support.microsoft.com/kb/4467691
+[3173426]: http://support.microsoft.com/kb/3173426
+[4465659]: http://support.microsoft.com/kb/4465659
+[4462923]: http://support.microsoft.com/kb/4462923
+[4462929]: http://support.microsoft.com/kb/4462929
+[4462926]: http://support.microsoft.com/kb/4462926
+[3109976]: http://support.microsoft.com/kb/3109976
+[4457037]: http://support.microsoft.com/kb/4457037
 
 ## <a name="october-2018-guest-os"></a>2018 年 10 月来宾 OS
 

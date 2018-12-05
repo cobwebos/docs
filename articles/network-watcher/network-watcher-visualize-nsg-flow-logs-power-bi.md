@@ -14,18 +14,21 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: mareat
-ms.openlocfilehash: bcd67d2e879d199296289dbaef2141ba659b2412
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 1f8807094c6e93cf55467e76e0fa2b617ec3d5fb
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47032672"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51822868"
 ---
 # <a name="visualizing-network-security-group-flow-logs-with-power-bi"></a>使用 Power BI 可视化网络安全组流日志
 
 使用网络安全组流日志可以查看有关网络安全组中入口和出口 IP 流量的信息。 这些流日志基于每个规则显示出站和入站流、流所适用的 NIC、有关流的 5 元组信息（源/目标 IP、源/目标端口、协议），以及是允许还是拒绝流量。
 
 手动搜索日志文件可能难以洞察流日志数据。 本文提供一种用来可视化最新流日志和了解网络流量的解决方案。
+
+> [!Warning]  
+> 以下步骤适用于流日志版本 1。 有关详细信息，请参阅[针对网络安全组进行流日志记录简介](network-watcher-nsg-flow-logging-overview.md)。 以下说明在未修改的情况下不适用于版本 2 的日志文件。
 
 ## <a name="scenario"></a>场景
 

@@ -1,10 +1,11 @@
 ---
-title: 步骤 6：访问机器学习 Web 服务 | Microsoft Docs
-description: 开发预测解决方案演练的步骤 6：访问活动的 Azure 机器学习 Web 服务。
+title: 步骤 6：访问机器学习工作室 Web 服务 | Microsoft Docs
+description: 开发预测解决方案演练的步骤 6：访问活动的 Azure 机器学习工作室 Web 服务。
 services: machine-learning
 documentationcenter: ''
-author: YasinMSFT
-ms.author: yahajiza
+author: ericlicoding
+ms.custom: (previous ms.author=yahajiza, author=YasinMSFT)
+ms.author: amlstudiodocs
 manager: hjerez
 editor: cgronlun
 ms.assetid: 6a65c89a-40ab-4673-8dd8-8eee0a150e3b
@@ -15,14 +16,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/23/2017
-ms.openlocfilehash: be63a04d0fe71039b19eb6bc0678a319f622a811
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 5402f228a650a1a3d3282180a52f9e9f9cc10a3a
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34836698"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52306448"
 ---
-# <a name="walkthrough-step-6-access-the-azure-machine-learning-web-service"></a>演练步骤 6：访问 Azure 机器学习 Web 服务
+# <a name="walkthrough-step-6-access-the-azure-machine-learning-studio-web-service"></a>演练步骤 6：访问 Azure 机器学习工作室 Web 服务
 
 这是演练的最后一步，[在 Azure 机器学习中开发预测分析解决方案](walkthrough-develop-predictive-solution.md)
 

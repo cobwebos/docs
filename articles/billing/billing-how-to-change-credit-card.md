@@ -4,7 +4,7 @@ description: 介绍如何更改用于支付 Azure 订阅的信用卡
 services: ''
 documentationcenter: ''
 author: genlin
-manager: jlian
+manager: jureid
 editor: ''
 tags: billing
 ms.assetid: 15252ced-1841-4a66-ae79-2e58af1d3370
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/11/2018
 ms.author: cwatson
-ms.openlocfilehash: 68f987daff5bc0ef81c248f6f5e75aaf1318b025
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: 69c24e08ce2434c39b8bb67cb53173f9ceaee51b
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47395485"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52581436"
 ---
 # <a name="add-update-or-remove-a-credit-or-debit-card-for-azure"></a>添加、更新或删除用于 Azure 的信用卡或借记卡
 
@@ -82,7 +82,7 @@ ms.locfileid: "47395485"
 
 ### <a name="why-do-i-keep-getting-your-login-session-has-expired-please-click-here-to-log-back-in"></a>为何我总是看到“登录会话已过期。 请单击此处以重新登录”？
 
-如果注销并重新登陆后，还是不断收到此错误消息，请尝试使用专用浏览会话再次登陆。
+如果注销并重新登录后，还是不断收到此错误消息，请尝试使用专用浏览会话再次登录。
 
 ### <a name="how-do-i-use-a-different-card-for-each-subscription-i-have"></a>如何分别为每个订阅使用不同的卡？
 
@@ -102,6 +102,6 @@ ms.locfileid: "47395485"
 
 若要添加或更新税务 ID，请访问 [Azure 帐户中心中的“配置文件”](https://account.azure.com/Profile)，然后选择“税收记录”。 此税务 ID 用于免税计算，并且会显示在发票上。
 
-## <a name="need-help-contact-support"></a>需要帮助？ 联系支持人员
+## <a name="need-help-contact-us"></a>需要帮助？ 请联系我们。
 
-如果仍需帮助，请[联系支持人员](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)以快速解决问题。
+如果你有任何疑问或需要帮助，请[创建支持请求](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)。

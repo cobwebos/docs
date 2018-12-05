@@ -1,19 +1,21 @@
 ---
 title: 手动安装移动服务以使用 Azure Site Recovery 对 VMware VM 和物理服务器进行灾难恢复 | Microsoft Docs
 description: 了解如何安装移动服务代理以使用 Azure Site Recovery 将 VMware VM 和物理服务器灾难恢复到 Azure。
-author: rayne-wiselman
-manager: carmonm
+author: Rajeswari-Mamilla
+manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/04/2018
-ms.author: raynew
-ms.openlocfilehash: dfed0209131379843b97ff8050c2f2ba7294537d
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.author: ramamill
+ms.openlocfilehash: b3b6d7a64873d77336b2fcf14e22f4d6ae33e3a2
+ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51019748"
+ms.lasthandoff: 11/19/2018
+ms.locfileid: "51976785"
 ---
+ms.author: ramamill
+
 # <a name="install-the-mobility-service-manually-on-vmware-vms-and-physical-servers"></a>在 VMware VM 和物理服务器上手动安装移动服务
 
 在使用 [Azure Site Recovery](site-recovery-overview.md) 设置 VMware VM 和物理服务器的灾难恢复时，可在每个本地 VMware VM 和物理服务器上安装 [Site Recovery 移动服务](vmware-physical-mobility-service-overview.md)。  移动服务可以捕获计算机上的数据写入，并将其转发到 Site Recovery 进程服务器。

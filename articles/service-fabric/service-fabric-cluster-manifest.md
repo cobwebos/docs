@@ -12,20 +12,19 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/06/2017
+ms.date: 11/12/2018
 ms.author: dekapur
-ms.openlocfilehash: 37859a117c88238089a681e3814c2a52f62bfce4
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: c71473e975333d33406d78130ad28f417b9b967e
+ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39412577"
+ms.lasthandoff: 11/17/2018
+ms.locfileid: "51853330"
 ---
 # <a name="configuration-settings-for-a-standalone-windows-cluster"></a>独立 Windows 群集的配置设置
-本文介绍如何使用 ClusterConfig.json 文件配置独立的 Azure Service Fabric 群集。 需要使用该文件指定有关群集节点、安全配置以及有关容错域和升级域的网络拓扑信息。
+本文介绍可使用 ClusterConfig.json 文件设置的独立 Azure Service Fabric 群集的配置设置。 需要使用该文件指定有关群集节点、安全配置以及有关容错域和升级域的网络拓扑信息。  更改或添加配置设置后，可以[创建一个独立的群集](service-fabric-cluster-creation-for-windows-server.md)，也可以[升级独立群集的配置](service-fabric-cluster-config-upgrade-windows-server.md)。
 
 [下载独立的 Service Fabric 包](service-fabric-cluster-creation-for-windows-server.md#downloadpackage)时还会附带 ClusterConfig.json 示例。 名称中包含“DevCluster”的示例可使用逻辑节点创建所有三个节点都在同一台计算机上的群集。 在这些节点中，必须至少将一个节点标记为主节点。 此群集类型可用于开发或测试环境。 不支持将它用作生产群集。 名称中包含“MultiMachine”的示例可帮助创建生产等级群集，其中的每个节点位于不同的计算机上。 这些群集的主节点数取决于群集的[可靠性级别](#reliability)。 在版本 5.7 API 版本 05-2017 中，我们删除了可靠性级别属性。 取而代之的是，我们的代码将计算群集的最优可靠性级别。 请勿尝试在版本 5.7 及以上版本中设置此属性的值。
-
 
 * ClusterConfig.Unsecure.DevCluster.json 和 ClusterConfig.Unsecure.MultiMachine.json 分别说明如何创建不安全的测试群集和生产群集。
 
@@ -48,26 +47,27 @@ ms.locfileid: "39412577"
 
 ## <a name="nodes-on-the-cluster"></a>群集上的节点
 可以使用 nodes 节配置 Service Fabric 群集上的节点，如以下代码片段中所示：
-
-    "nodes": [{
-        "nodeName": "vm0",
-        "iPAddress": "localhost",
-        "nodeTypeRef": "NodeType0",
-        "faultDomain": "fd:/dc1/r0",
-        "upgradeDomain": "UD0"
-    }, {
-        "nodeName": "vm1",
-        "iPAddress": "localhost",
-        "nodeTypeRef": "NodeType1",
-        "faultDomain": "fd:/dc1/r1",
-        "upgradeDomain": "UD1"
-    }, {
-        "nodeName": "vm2",
-        "iPAddress": "localhost",
-        "nodeTypeRef": "NodeType2",
-        "faultDomain": "fd:/dc1/r2",
-        "upgradeDomain": "UD2"
-    }],
+```json
+"nodes": [{
+    "nodeName": "vm0",
+    "iPAddress": "localhost",
+    "nodeTypeRef": "NodeType0",
+    "faultDomain": "fd:/dc1/r0",
+    "upgradeDomain": "UD0"
+}, {
+    "nodeName": "vm1",
+    "iPAddress": "localhost",
+    "nodeTypeRef": "NodeType1",
+    "faultDomain": "fd:/dc1/r1",
+    "upgradeDomain": "UD1"
+}, {
+    "nodeName": "vm2",
+    "iPAddress": "localhost",
+    "nodeTypeRef": "NodeType2",
+    "faultDomain": "fd:/dc1/r2",
+    "upgradeDomain": "UD2"
+}],
+```
 
 一个 Service Fabric 群集必须至少包含三个节点。 可以根据设置向此节添加更多节点。 下表说明了每个节点的配置设置：
 
@@ -88,57 +88,65 @@ reliabilityLevel 的概念定义可在群集的主节点上运行的 Service Fab
 ### <a name="diagnostics"></a>诊断
 在 diagnosticsStore 节中可以配置参数，以便能够诊断和排查节点或群集故障，如以下代码片段中所示： 
 
-    "diagnosticsStore": {
-        "metadata":  "Please replace the diagnostics store with an actual file share accessible from all cluster machines.",
-        "dataDeletionAgeInDays": "7",
-        "storeType": "FileShare",
-        "IsEncrypted": "false",
-        "connectionstring": "c:\\ProgramData\\SF\\DiagnosticsStore"
-    }
+```json
+"diagnosticsStore": {
+    "metadata":  "Please replace the diagnostics store with an actual file share accessible from all cluster machines.",
+    "dataDeletionAgeInDays": "7",
+    "storeType": "FileShare",
+    "IsEncrypted": "false",
+    "connectionstring": "c:\\ProgramData\\SF\\DiagnosticsStore"
+}
+```
 
 metadata 用于描述群集诊断，可以根据具体的情况进行设置。 这些变量用于收集 ETW 跟踪日志、故障转储和性能计数器。 有关 ETW 跟踪日志的详细信息，请阅读 [Tracelog](https://msdn.microsoft.com/library/windows/hardware/ff552994.aspx) 和 [ETW 跟踪](https://msdn.microsoft.com/library/ms751538.aspx)。 可将包含[故障转储](https://blogs.technet.microsoft.com/askperf/2008/01/08/understanding-crash-dump-files/)和[性能计数器](https://msdn.microsoft.com/library/windows/desktop/aa373083.aspx)的所有日志定向到计算机上的 connectionString 文件夹。 还可以使用 AzureStorage 来存储诊断信息。 请参阅以下示例代码片段：
 
-    "diagnosticsStore": {
-        "metadata":  "Please replace the diagnostics store with an actual file share accessible from all cluster machines.",
-        "dataDeletionAgeInDays": "7",
-        "storeType": "AzureStorage",
-        "IsEncrypted": "false",
-        "connectionstring": "xstore:DefaultEndpointsProtocol=https;AccountName=[AzureAccountName];AccountKey=[AzureAccountKey]"
-    }
+```json
+"diagnosticsStore": {
+    "metadata":  "Please replace the diagnostics store with an actual file share accessible from all cluster machines.",
+    "dataDeletionAgeInDays": "7",
+    "storeType": "AzureStorage",
+    "IsEncrypted": "false",
+    "connectionstring": "xstore:DefaultEndpointsProtocol=https;AccountName=[AzureAccountName];AccountKey=[AzureAccountKey]"
+}
+```
 
 ### <a name="security"></a>安全
 对于安全的 Service Fabric 独立群集，必须使用 security 节。 以下代码片段显示了该部分的一部分内容：
 
-    "security": {
-        "metadata": "This cluster is secured using X509 certificates.",
-        "ClusterCredentialType": "X509",
-        "ServerCredentialType": "X509",
-        . . .
-    }
+```json
+"security": {
+    "metadata": "This cluster is secured using X509 certificates.",
+    "ClusterCredentialType": "X509",
+    "ServerCredentialType": "X509",
+    . . .
+}
+```
 
 metadata 用于描述安全群集，可根据具体的情况进行设置。 ClusterCredentialType 和 ServerCredentialType 确定群集与节点将要实现的安全类型。 可将这两项设置为 *X509* 来实现基于证书的安全性，或者设置为 *Windows* 来实现基于 Azure Active Directory 的安全性。 security 节的余下设置基于安全类型。 若要了解如何填充 security 节的余下设置，请参阅[独立群集中基于证书的安全性](service-fabric-windows-cluster-x509-security.md)，或[独立群集中的 Windows 安全性](service-fabric-windows-cluster-windows-security.md)。
 
 ### <a name="node-types"></a>节点类型
 nodeTypes 节描述群集中的节点类型。 一个群集必须指定至少一个节点类型，如以下代码片段所示： 
 
-    "nodeTypes": [{
-        "name": "NodeType0",
-        "clientConnectionEndpointPort": "19000",
-        "clusterConnectionEndpointPort": "19001",
-        "leaseDriverEndpointPort": "19002"
-        "serviceConnectionEndpointPort": "19003",
-        "httpGatewayEndpointPort": "19080",
-        "reverseProxyEndpointPort": "19081",
-        "applicationPorts": {
-            "startPort": "20575",
-            "endPort": "20605"
-        },
-        "ephemeralPorts": {
-            "startPort": "20606",
-            "endPort": "20861"
-        },
-        "isPrimary": true
-    }]
+```json
+"nodeTypes": [{
+    "name": "NodeType0",
+    "clientConnectionEndpointPort": "19000",
+    "clusterConnectionEndpointPort": "19001",
+    "leaseDriverEndpointPort": "19002"
+    "serviceConnectionEndpointPort": "19003",
+    "httpGatewayEndpointPort": "19080",
+    "reverseProxyEndpointPort": "19081",
+    "applicationPorts": {
+        "startPort": "20575",
+        "endPort": "20605"
+    },
+    "ephemeralPorts": {
+        "startPort": "20606",
+        "endPort": "20861"
+    },
+    "isPrimary": true
+}]
+```
 
 name 是此特定节点类型的友好名称。 要创建这种类型的节点，请[如前所述](#nodes-on-the-cluster)，将该节点的友好名称分配到其 nodeTypeRef 变量。 对于每个节点类型，请定义要使用的连接终结点。 可为这些连接终结点选择任意端口号，只要不与此群集中的任何其他终结点冲突即可。 在多节点群集中，根据 [reliabilityLevel](#reliability)，将有一个或多个主节点（即，isPrimary 设置为 *true*）。 若要详细了解主节点类型和非主节点类型，请参阅 [Service Fabric 群集容量规划注意事项](service-fabric-cluster-capacity.md)，了解有关 nodeTypes 和 reliabilityLevel 的信息。 
 
@@ -155,44 +163,53 @@ name 是此特定节点类型的友好名称。 要创建这种类型的节点�
 ### <a name="log-settings"></a>日志设置
 在 fabricSettings 节中，可以设置 Service Fabric 数据和日志的根目录。 只能在初次创建群集时自定义这些目录。 请参阅此节的以下示例代码片段：
 
-    "fabricSettings": [{
-        "name": "Setup",
-        "parameters": [{
-            "name": "FabricDataRoot",
-            "value": "C:\\ProgramData\\SF"
-        }, {
-            "name": "FabricLogRoot",
-            "value": "C:\\ProgramData\\SF\\Log"
-    }]
+```json
+"fabricSettings": [{
+    "name": "Setup",
+    "parameters": [{
+        "name": "FabricDataRoot",
+        "value": "C:\\ProgramData\\SF"
+    }, {
+        "name": "FabricLogRoot",
+        "value": "C:\\ProgramData\\SF\\Log"
+}]
+```
 
 建议使用非 OS 驱动器作为 FabricDataRoot 和 FabricLogRoot。 此类驱动器提供更高的可靠性，可防止 OS 停止响应的情况。 如果只自定义数据根目录，则会将日志根目录放置在比数据根目录低一级的位置。
 
 ### <a name="stateful-reliable-services-settings"></a>有状态 Reliable Services 设置
 在 KtlLogger 节中，可以设置 Reliable Services 的全局配置设置。 有关这些设置的详细信息，请阅读[配置有状态 Reliable Services](service-fabric-reliable-services-configuration.md)。 以下示例演示如何更改创建的共享事务日志，以备份有状态服务的任何可靠集合：
 
-    "fabricSettings": [{
-        "name": "KtlLogger",
-        "parameters": [{
-            "name": "SharedLogSizeInMB",
-            "value": "4096"
-        }]
+```json
+"fabricSettings": [{
+    "name": "KtlLogger",
+    "parameters": [{
+        "name": "SharedLogSizeInMB",
+        "value": "4096"
     }]
+}]
+```
 
 ### <a name="add-on-features"></a>附加功能
 若要配置附加功能，请将 apiVersion 配置为 04-2017 或更高，并按如下所示配置 addonFeatures：
 
-    "apiVersion": "04-2017",
-    "properties": {
-      "addOnFeatures": [
-          "DnsService",
-          "RepairManager"
-      ]
-    }
+```json
+"apiVersion": "04-2017",
+"properties": {
+    "addOnFeatures": [
+        "DnsService",
+        "RepairManager"
+    ]
+}
+```
 
 ### <a name="container-support"></a>容器支持
 若要为 Windows Server 容器和独立群集的 Hyper-V 容器启用容器支持，必须启用 DnsService 附加功能。
 
-
 ## <a name="next-steps"></a>后续步骤
-根据独立群集设置配置一个完整的 ClusterConfig.json 文件后，可以部署群集。 请遵循[创建独立 Service Fabric 群集](service-fabric-cluster-creation-for-windows-server.md)中所述的步骤。 然后继续[使用 Service Fabric Explorer 可视化群集](service-fabric-visualizing-your-cluster.md)并遵循此文中的步骤操作。
+根据独立群集设置配置一个完整的 ClusterConfig.json 文件后，即可可部署群集。 请遵循[创建独立 Service Fabric 群集](service-fabric-cluster-creation-for-windows-server.md)中所述的步骤。 
+
+如果已部署了独立群集，还可以[升级独立群集的配置](service-fabric-cluster-config-upgrade-windows-server.md)。 
+
+了解如何[使用 Service Fabric Explorer 可视化群集](service-fabric-visualizing-your-cluster.md)。
 

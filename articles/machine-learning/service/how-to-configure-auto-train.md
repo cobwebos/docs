@@ -9,12 +9,12 @@ ms.service: machine-learning
 ms.component: core
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 5a539aebc9b1ccb5f52f89d511fc992ee6a24c81
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 5c75b462c3b1201eb70c1028c748def5da114b92
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51008940"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51823293"
 ---
 # <a name="configure-your-automated-machine-learning-experiment"></a>配置自动化机器学习试验
 
@@ -192,7 +192,7 @@ cv_splits_indices   | 整数数组 ||  （可选）用于拆分数据以进行�
 `max_time_sec` |    限制特定迭代占用的时间（秒）。 如果某个迭代超过指定的时间，将取消该迭代。 如果未设置，则迭代会继续运行，直到完成。 |   无
 `n_cross_validations`   |交叉验证拆分数| 无
 `validation_size`   |验证集的大小（占所有训练样本的百分比）。|  无
-`preprocess` | True/False <br/>如果为 True，则试验可以基于输入执行预处理。 下面是预处理子集<li>缺少数据：插补缺失数据 - 带平均值的数字，出现次数最多的文本 </li><li>分类值：如果数据类型为数字，并且唯一值的数量小于 5%，则转换为独热编码 </li><li>等等。有关完整列表，请查看 [GitHub 存储库](https://aka.ms/aml-notebooks)</li><br/>注意：如果数据比较稀疏，则不能使用 preprocess = true | False | 
+`preprocess` | True/False <br/>如果为 True，则试验可以基于输入执行预处理。 下面是预处理子集<li>缺少数据：插补缺失数据 - 带平均值的数字，出现次数最多的文本 </li><li>分类值：如果数据类型为数字，并且唯一值的数量小于 5%，则转换为独热编码 </li><li>等等。有关完整列表，请查看 [GitHub 存储库](https://aka.ms/aml-notebooks)</li><br/>注意：如果数据比较稀疏，则不能使用 preprocess = true |  False | 
 `blacklist_algos`   | 自动化机器学习试验会尝试许多不同的算法。 可将自动化机器学习配置为从试验中排除某些算法。 如果你知道某些算法不适合你的数据集，则这种做法很有用。 排除算法可以节省计算资源和训练时间。<br/>分类允许的值<br/><li>逻辑回归</li><li>SGD 分类器</li><li>MultinomialNB</li><li>BernoulliNB</li><li>SVM</li><li>LinearSVM</li><li>kNN</li><li>DT</li><li>RF</li><li>附加树</li><li>渐进提升</li><li>lgbm_classifier</li><br/>回归允许的值<br/><li>弹性网络</li><li>渐进提升回归器</li><li>DT 回归器</li><li>kNN 回归器</li><li>Lasso lars</li><li>SGD 回归器</li><li>RF 回归器</li><li>附加树回归器</li>|   无
 `verbosity` |使用 INFO（最详细）和 CRITICAL（最精简）控制日志记录级别。<br/>允许值包括：<br/><li>logging.INFO</li><li>logging.WARNING</li><li>logging.ERROR</li><li>logging.CRITICAL</li>  | logging.INFO</li> 
 `X` | 用于训练的所有特征 |  无

@@ -15,12 +15,12 @@ ms.devlang: powershell
 ms.topic: sample
 ms.date: 11/07/2017
 ms.author: fryu
-ms.openlocfilehash: c37b416578a76e9b12e29d68e413d851796ccc6f
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 7e28b8938c8c0eb258fbb599dd5765258a4d52e4
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2017
-ms.locfileid: "26368538"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52867369"
 ---
 # <a name="calculate-the-total-billing-size-of-a-blob-container"></a>计算要计费的 Blob 容器总大小
 
@@ -37,7 +37,7 @@ ms.locfileid: "26368538"
 
 Blob 容器的总大小包括容器自身大小，以及容器内所有 blob 的大小。
 
-下述部分介绍 Blob 容器和 blob 的存储容量计算方法。 在下一部分中，Len(X) 表示字符串中的字符数。
+下述部分介绍 Blob 容器和 blob 的存储容量计算方法。 在下一部分中，Len(X) 表示字符串中的字符数。
 
 ### <a name="blob-containers"></a>Blob 容器
 
@@ -103,16 +103,16 @@ For-Each Signed Identifier[512 bytes]
 * 对于块 blob：
     * 块列表为 8 字节。
     * 块数乘以块 ID 大小（按字节计）。
-    * 所有已提交和未提交块中数据的大小。 
-    
+    * 所有已提交和未提交块中数据的大小。
+
     >[!NOTE]
     >使用快照时，大小仅包括此基本或快照 blob 的唯一数据。 如果未提交块在一周后未被使用，则回收到垃圾桶。 之后不计入账单。
 
 * 对于页 blob：
     * 字节数按具有数据的不连续页面范围数乘以 12 计算。 这是在调用 GetPageRanges API 时看到的唯一页面范围数。
 
-    * 所有存储页面中的数据大小（按字节计）。 
-    
+    * 所有存储页面中的数据大小（按字节计）。
+
     >[!NOTE]
     >使用快照时，大小仅包含要计数的基本 blob 或快照 blob 的唯一页面。
 

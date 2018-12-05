@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.reviewer: cawa
 ms.date: 08/06/2018
 ms.author: mbullwin
-ms.openlocfilehash: 6013c0a1b404336ad7cca21edafb7adec5c7f7ca
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
+ms.openlocfilehash: fa6e70fe58e5066fcf308425a4c0d104c072a756
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50978836"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52164297"
 ---
 # <a name="troubleshoot-problems-enabling-or-viewing-application-insights-profiler"></a>排查启用或查看 Application Insights Profiler 时遇到的问题
 
@@ -46,9 +46,6 @@ Profiler 将跟踪消息和自定义事件写入到 Application Insights 资源�
 
 1. 如果在 Profiler 运行的时间段内发出了请求，请确保应用程序中已启用 Profiler 的组件可以处理该请求。 有时，应用程序包括多个组件，但只对一部分（而不是全部）组件启用了 Profiler。 “配置 Application Insights Profiler”页将显示已上传跟踪的组件。
 
-### <a name="net-core-21-bug"></a>.Net Core 2.1 bug
-探查器代理中有一个 bug，使其无法上传从 ASP.NET Core 2.1 上运行的应用程序中获取的跟踪。 我们正在努力修复，很快就会解决。 将在 10 月底部署此 bug 的修复程序。
-
 ### <a name="other-things-to-check"></a>要检查的其他事项：
 * 应用在 .NET Framework 4.6 上运行。
 * 如果 Web 应用是 ASP.NET Core 应用程序，则必须至少运行 ASP.NET Core 2.0。
@@ -69,10 +66,11 @@ Profiler 将跟踪消息和自定义事件写入到 Application Insights 资源�
 ## <a name="troubleshooting-profiler-on-app-services"></a>排查应用服务中 Profiler 的问题
 ### <a name="for-the-profiler-to-work-properly"></a>要使 Profiler 正常工作：
 * Web 应用服务计划必须属于“基本”层或更高层。
-* Web 应用中必须已安装应用服务的 Application Insights 扩展 (2.6.5)。
+* Web 应用必须已启用 Application Insights。
 * 必须在 Web 应用的 **APPINSIGHTS_INSTRUMENTATIONKEY** 应用设置中配置 Application Insights SDK 所用的相同检测密钥。
 * 必须定义 Web 应用的 **APPINSIGHTS_PROFILERFEATURE_VERSION** 应用设置，并将其设置为 1.0.0。
-* **ApplicationInsightsProfiler2** Web 作业必须正在运行。 可以转到 [Kudu](https://blogs.msdn.microsoft.com/cdndevs/2015/04/01/the-kudu-debug-console-azure-websites-best-kept-secret/)，并打开“工具”菜单下的“WebJobs 仪表板”来检查 Web 作业。 如以下屏幕截图所示，单击“ApplicationInsightsProfiler2”链接可以查看 Webjob 的详细信息，包括日志。
+* Web 应用必须已定义 DiagnosticServices_EXTENSION_VERSION 应用设置并将该值设置为 ~3。
+* ApplicationInsightsProfiler3 Web 作业必须正在运行。 可以转到 [Kudu](https://blogs.msdn.microsoft.com/cdndevs/2015/04/01/the-kudu-debug-console-azure-websites-best-kept-secret/)，并打开“工具”菜单下的“WebJobs 仪表板”来检查 Web 作业。 如以下屏幕截图所示，单击“ApplicationInsightsProfiler2”链接可以查看 Webjob 的详细信息，包括日志。
 
     下面是查看 Webjob 详细信息所要单击的链接： 
 
@@ -91,11 +89,7 @@ Profiler 将跟踪消息和自定义事件写入到 Application Insights 资源�
 1. 将“Always On”设置为“打开”。
 1. 添加应用设置“APPINSIGHTS_INSTRUMENTATIONKEY”，将值设置为 SDK 使用的同一检测密钥。
 1. 添加 **APPINSIGHTS_PROFILERFEATURE_VERSION** 应用设置，并将值设置为 1.0.0。
-1. 打开“高级工具”。
-1. 选择“转到”打开 Kudu 网站。
-1. 在 Kudu 网站上，选择“站点扩展”。
-1. 从 Azure Web 应用库中安装“Application Insights”。
-1. 重新启动 Web 应用。
+1. 添加 DiagnosticServices_EXTENSION_VERSION 应用设置，并将该值设置为 ~3。
 
 ### <a name="too-many-active-profiling-sessions"></a>活动分析会话太多
 

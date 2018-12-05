@@ -10,22 +10,22 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
-ms.date: 06/16/2017
+ms.date: 11/14/2018
 ms.author: danlep
-ms.openlocfilehash: f562a6647cadbde6c46eba87b180dfb4cbb3fb90
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 549be57b52fa88efa8c3850d131563fea2a7c65e
+ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43126306"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51706120"
 ---
 # <a name="persist-task-data-to-azure-storage-with-the-batch-service-api"></a>使用 Batch 服务 API 将任务数据保存到 Azure 存储
 
 [!INCLUDE [batch-task-output-include](../../includes/batch-task-output-include.md)]
 
-从版本 2017-05-01 开始，Batch 服务 API 支持将采用虚拟机配置的池上运行的任务和作业管理器任务的输出数据保存到 Azure 存储。 添加任务时，可将 Azure 存储中的某个容器指定为该任务的输出目标。 然后，在完成该任务时，Batch 服务会将所有输出数据写入该容器。
+Batch 服务 API 支持将具有虚拟机配置的池上运行的任务和作业管理器任务的输出数据保存到 Azure 存储。 添加任务时，可将 Azure 存储中的某个容器指定为该任务的输出目标。 然后，在完成该任务时，Batch 服务会将所有输出数据写入该容器。
 
-使用 Batch 服务 API 保存任务输出的优势之一是不需要修改任务运行的应用程序。 只需对客户端应用程序进行几处简单的修改，即可从创建任务的代码内部保存任务的输出。   
+使用 Batch 服务 API 保存任务输出的优势之一是不需要修改任务运行的应用程序。 只需对客户端应用程序进行几处修改，即可从创建任务的同一代码内部保存任务的输出。
 
 ## <a name="when-do-i-use-the-batch-service-api-to-persist-task-output"></a>何时使用 Batch 服务 API 保存任务输出？
 
@@ -36,7 +36,10 @@ Azure Batch 提供多种方式来保存任务输出。 使用 Batch 服务 API �
 - 希望将输出保存到具有任意名称的 Azure 存储容器。
 - 希望将输出保存到按照 [Batch 文件约定标准](https://github.com/Azure/azure-sdk-for-net/tree/psSdkJson6/src/SDKs/Batch/Support/FileConventions#conventions)命名的 Azure 存储容器。 
 
-如果你的情况与上面不同，可能需要考虑不同的方法。 例如，在运行任务时，Batch 服务 API 目前不支持将输出流式传输到 Azure 存储。 若要流式传输输出，请考虑使用适用于 .NET 的 Batch 文件约定库。 对于其他语言，需要实现自己的解决方案。 有关保存任务输出的其他选项的详细信息，请参阅[将作业和任务输出保存到 Azure 存储](batch-task-output.md)。 
+> [!NOTE]
+> 批处理服务 API 不支持保存使用云服务配置创建的池中运行的任务数据。 有关保存运行云服务配置的池的任务输出的信息，请参阅[使用适用于 .NET 的批处理文件约定库将作业和任务数据保存到 Azure 存储](batch-task-output-file-conventions.md)。
+
+如果你的情况与上面不同，可能需要考虑不同的方法。 例如，在运行任务时，Batch 服务 API 目前不支持将输出流式传输到 Azure 存储。 若要流式传输输出，请考虑使用适用于 .NET 的 Batch 文件约定库。 对于其他语言，需要实现自己的解决方案。 有关保存任务输出的其他选项的详细信息，请参阅[将作业和任务输出保存到 Azure 存储](batch-task-output.md)。
 
 ## <a name="create-a-container-in-azure-storage"></a>在 Azure 存储中创建容器
 
@@ -64,14 +67,14 @@ string containerSasToken = container.GetSharedAccessSignature(new SharedAccessBl
     Permissions = SharedAccessBlobPermissions.Write
 });
 
-string containerSasUrl = container.Uri.AbsoluteUri + containerSasToken; 
+string containerSasUrl = container.Uri.AbsoluteUri + containerSasToken;
 ```
 
 ## <a name="specify-output-files-for-task-output"></a>指定任务输出的输出文件
 
-若要指定任务的输出文件，请创建 [OutputFile](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.outputfile) 对象的集合，并在创建任务时将该集合分配到 [CloudTask.OutputFiles](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudtask.outputfiles#Microsoft_Azure_Batch_CloudTask_OutputFiles) 属性。 
+若要指定任务的输出文件，请创建 [OutputFile](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.outputfile) 对象的集合，并在创建任务时将该集合分配到 [CloudTask.OutputFiles](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudtask.outputfiles#Microsoft_Azure_Batch_CloudTask_OutputFiles) 属性。
 
-以下 .NET 代码示例创建一个可将随机数写入名为 `output.txt` 的文件的任务。 该示例为要写入容器的 `output.txt` 创建输出文件。 该示例还为匹配文件模式 `std*.txt`（例如 `stdout.txt` 和 `stderr.txt`）的所有日志文件创建输出文件。 容器 URL 需要先前为容器创建的 SAS。 Batch 服务使用 SAS 对容器的访问进行身份验证： 
+以下 C# 代码示例创建可将随机数写入名为 `output.txt` 的文件的任务。 该示例为要写入容器的 `output.txt` 创建输出文件。 该示例还为匹配文件模式 `std*.txt`（例如 `stdout.txt` 和 `stderr.txt`）的所有日志文件创建输出文件。 容器 URL 需要先前为容器创建的 SAS。 Batch 服务使用 SAS 对容器的访问进行身份验证：
 
 ```csharp
 new CloudTask(taskId, "cmd /v:ON /c \"echo off && set && (FOR /L %i IN (1,1,100000) DO (ECHO !RANDOM!)) > output.txt\"")
@@ -101,7 +104,7 @@ new CloudTask(taskId, "cmd /v:ON /c \"echo off && set && (FOR /L %i IN (1,1,1000
 
 指定输出文件时，可以使用 [OutputFile.FilePattern](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.outputfile.filepattern#Microsoft_Azure_Batch_OutputFile_FilePattern) 属性指定用于匹配的文件模式。 文件模式可以匹配零个文件、一个文件或者任务创建的一组文件。
 
-**FilePattern** 属性支持标准文件系统通配符，例如 `*`（表示非递归匹配）和 `**`（表示递归匹配）。 例如，上述代码示例指定要以非递归方式匹配 `std*.txt` 的文件模式： 
+**FilePattern** 属性支持标准文件系统通配符，例如 `*`（表示非递归匹配）和 `**`（表示递归匹配）。 例如，上述代码示例指定要以非递归方式匹配 `std*.txt` 的文件模式：
 
 `filePattern: @"..\std*.txt"`
 
@@ -113,7 +116,7 @@ new CloudTask(taskId, "cmd /v:ON /c \"echo off && set && (FOR /L %i IN (1,1,1000
 
 [OutputFileUploadOptions.UploadCondition](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.outputfileuploadoptions.uploadcondition#Microsoft_Azure_Batch_OutputFileUploadOptions_UploadCondition) 属性允许按条件上传输出文件。 一种常见方案是任务成功时上传一组文件，任务失败时上传另一组文件。 例如，你可能希望仅当任务失败并使用非零退出代码退出时，才上传详细日志文件。 同样，你可能希望仅当任务成功时才上传结果文件，因为任务失败时这些文件可能会丢失或不完整。
 
-上述代码示例将 **UploadCondition** 属性设置为 **TaskCompletion**。 此设置指定在任务完成后上传文件，不管退出代码的值是什么。 
+上述代码示例将 **UploadCondition** 属性设置为 **TaskCompletion**。 此设置指定在任务完成后上传文件，不管退出代码的值是什么。
 
 `uploadCondition: OutputFileUploadCondition.TaskCompletion`
 
@@ -145,10 +148,9 @@ https://myaccount.blob.core.windows.net/mycontainer/task2/output.txt
 
 有关 Azure 存储中的虚拟目录的详细信息，请参阅[列出容器中的 Blob](../storage/blobs/storage-quickstart-blobs-dotnet.md#list-the-blobs-in-a-container)。
 
-
 ## <a name="diagnose-file-upload-errors"></a>诊断文件上传错误
 
-如果将输出文件上传到 Azure 存储失败，该任务将转为 **Completed** 状态，同时系统会设置 [TaskExecutionInformation.FailureInformation](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.taskexecutioninformation.failureinformation#Microsoft_Azure_Batch_TaskExecutionInformation_FailureInformation) 属性。 检查 **FailureInformation** 属性可确定发生了哪种错误。 例如，下面是在找不到容器的情况下，上传文件时发生的错误： 
+如果将输出文件上传到 Azure 存储失败，该任务将转为 **Completed** 状态，同时系统会设置 [TaskExecutionInformation.FailureInformation](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.taskexecutioninformation.failureinformation#Microsoft_Azure_Batch_TaskExecutionInformation_FailureInformation) 属性。 检查 **FailureInformation** 属性可确定发生了哪种错误。 例如，下面是在找不到容器的情况下，上传文件时发生的错误：
 
 ```
 Category: UserError

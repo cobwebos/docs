@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 09/06/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 1f74538deab38db536bfcdc6d0f703d455039d51
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: b42dc0f86a70feb06b32a20c7cbdd513920f65d6
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51235898"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52263515"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect：版本发布历史记录
 Azure Active Directory (Azure AD) 团队会定期更新 Azure AD Sync 的新特性和功能。 并非所有的新增内容都适用于所有受众。
@@ -36,6 +36,17 @@ Azure Active Directory (Azure AD) 团队会定期更新 Azure AD Sync 的新特�
 所需的权限 | 有关应用更新时所需的权限，请参阅[帐户和权限](reference-connect-accounts-permissions.md#upgrade)。
 
 下载| [下载 Azure AD Connect](https://go.microsoft.com/fwlink/?LinkId=615771)。
+
+
+## <a name="12670"></a>1.2.67.0
+
+### <a name="release-status"></a>版本状态 
+
+2018/11/19：已发布供下载
+
+### <a name="fixed-issues"></a>修复的问题
+
+此修补程序版本修复了之前版本的回归问题：在 Windows Server 2008/R2 上使用 ADDS 域控制器时，密码写回失败。
 
 ## <a name="12650"></a>1.2.65.0 
 

@@ -1,6 +1,6 @@
 ---
-title: 教程：使用 Azure Active Directory 为 Netsuite 配置自动用户预配 | Microsoft Docs
-description: 了解如何在 Azure Active Directory 和 Netsuite 之间配置单一登录。
+title: 教程：使用 Azure Active Directory 为 Netsuite OneWorld 配置自动用户预配 | Microsoft Docs
+description: 了解如何在 Azure Active Directory 和 Netsuite OneWorld 之间配置单一登录。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,26 +14,26 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: e14f74f3dd6d49b882dedcb2ae01029a50a459a3
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 81e590297283a8fe88d9257e201259056a3e3744
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44346740"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51823839"
 ---
 # <a name="tutorial-configuring-netsuite-for-automatic-user-provisioning"></a>教程：为 Netsuite 配置自动用户预配
 
-本教程旨在介绍为从 Azure AD 自动将用户帐户预配到 Netsuite 以及取消其预配而需要在 Netsuite 和 Azure 中执行的步骤。
+本教程旨在介绍为从 Azure AD 自动将用户帐户预配到 Netsuite 以及取消其预配而需要在 Netsuite OneWorld 和 Azure AD 中执行的步骤。
 
 ## <a name="prerequisites"></a>先决条件
 
 在本教程中概述的方案假定已有以下各项：
 
 *   Azure Active Directory 租户。
-*   已启用 Netsuite 单一登录的订阅。
-*   具有团队管理员权限的 Netsuite 用户帐户。
+*   Netsuite OneWorld 订阅。 请注意，目前仅 NetSuite OneWorld 支持自动用户预配。
+*   具有管理员权限的 Netsuite 用户帐户。
 
-## <a name="assigning-users-to-netsuite"></a>将用户分配到 Netsuite
+## <a name="assigning-users-to-netsuite-oneworld"></a>将用户分配到 Netsuite OneWorld
 
 Azure Active Directory 使用称为“分配”的概念来确定哪些用户应收到对所选应用的访问权限。 在自动用户帐户预配的上下文中，只同步已“分配”到 Azure AD 中应用程序的用户和组。
 
@@ -41,7 +41,7 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 
 [向企业应用分配用户或组](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)
 
-### <a name="important-tips-for-assigning-users-to-netsuite"></a>将用户分配到 Netsuite 的重要提示
+### <a name="important-tips-for-assigning-users-to-netsuite-oneworld"></a>将用户分配到 Netsuite OneWorld 的重要提示
 
 *   建议将单个 Azure AD 用户分配到 Netsuite 以测试预配配置。 其他用户和/或组可以稍后分配。
 
@@ -70,7 +70,7 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 
 1. 在“管理员凭据”部分中，提供以下配置设置：
    
-    a. 在“管理员用户名”文本框中，键入在 Netsuite.com 中已分配“系统管理员”配置文件的 Netsuite 帐户名称。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“管理员用户名”文本框中，键入在 Netsuite.com 中已分配“系统管理员”配置文件的 Netsuite 帐户名称。
    
     b. 在“管理员密码”文本框中，键入此帐户的密码。
       
@@ -95,5 +95,5 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 ## <a name="additional-resources"></a>其他资源
 
 * [管理企业应用的用户帐户预配](tutorial-list.md)
-* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
+* [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 * [配置单一登录](netsuite-tutorial.md)

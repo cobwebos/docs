@@ -10,12 +10,12 @@ ms.component: manage
 ms.date: 09/06/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: bdcc0510503e48caf70f4f0d91d7602d767ca9ab
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: e060075fbcf6a5083e51b753e119cb5471129a79
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44092472"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52308459"
 ---
 # <a name="backup-and-restore-in-azure-sql-data-warehouse"></a>Azure SQL 数据仓库中的备份和还原
 了解 Azure SQL 数据仓库中备份和还原的工作方式。 使用数据仓库快照可将数据仓库恢复或复制到主要区域中以前的某个还原点。 使用数据仓库异地冗余备份可还原到不同的地理区域。 
@@ -68,7 +68,7 @@ SQL 数据仓库对[已配对数据中心](../best-practices-availability-paired
 默认情况下，异地备份处于启用状态。 如果数据仓库为 Gen1，则可按需[选择退出](/powershell/module/azurerm.sql/set-azurermsqldatabasegeobackuppolicy)。 不能为 Gen2 禁用异地备份，因为数据保护是固有的保证。
 
 > [!NOTE]
-> 如果希望异地备份的 RPO 更短，请在[此处](https://feedback.azure.com/forums/307516-sql-data-warehouse)为此功能投票。 此外，可以创建用户定义的还原点，然后从新建的还原点还原到其他区域中的新数据仓库。 还原后，数据仓库将会联机，可以无限期将其暂停，以节省计算成本。 暂停的数据库按 Azure 高级存储费率收取存储费用。 然后暂停。 如需数据仓库的活动副本，可以执行恢复，只需花费几分钟时间。
+> 如果希望异地备份的 RPO 更短，请在[此处](https://feedback.azure.com/forums/307516-sql-data-warehouse)为此功能投票。 此外，可以创建用户定义的还原点，然后从新建的还原点还原到其他区域中的新数据仓库。 还原后，数据仓库将会联机，可以无限期将其暂停，以节省计算成本。 暂停的数据库按 Azure 高级存储费率收取存储费用。 然后暂停。<!-- should this be removed or is something missing? --> 如需数据仓库的活动副本，可以执行恢复，只需花费几分钟时间。
 >
 
 

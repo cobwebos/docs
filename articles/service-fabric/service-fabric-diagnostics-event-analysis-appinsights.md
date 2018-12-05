@@ -12,22 +12,24 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 04/04/2018
+ms.date: 11/21/2018
 ms.author: srrengar
-ms.openlocfilehash: aedbc5925a6e101299170843abef79ef6125eafe
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: f9c7a70eae4c49173b3e11b7fbfa901f7e5b89d6
+ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50230414"
+ms.lasthandoff: 11/22/2018
+ms.locfileid: "52291039"
 ---
 # <a name="event-analysis-and-visualization-with-application-insights"></a>使用 Application Insights 进行事件分析和可视化
 
-Microsoft Azure Application Insights 是用于应用程序监视和诊断的可扩展平台。 它具有强大的分析和查询工具、可自定义的仪表板和可视化效果，以及包括自动报警在内的其他选项。 推荐使用该平台为 Service Fabric 应用程序和服务进行监视和诊断。 本文帮助解决以下常见问题
+作为 Azure Monitor 的一部分，Application Insights 是用于应用程序监视和诊断的可扩展平台。 它具有强大的分析和查询工具、可自定义的仪表板和可视化效果，以及包括自动报警在内的其他选项。 Application Insights 与 Service Fabric 的集成包括 Visual Studio 和 Azure 门户的工具体验，以及 Service Fabric 特定的指标，从而提供综合性的现成日志记录体验。 尽管使用 Application Insights 时会自动创建和收集许多日志，但我们建议将更多的自定义日志记录添加到应用程序以创建更丰富的诊断体验。
 
-* 如何知道应用程序中发生的情况，如何收集遥测数据
-* 如何排查应用程序问题，尤其是服务相互通信的问题
-* 如何获取服务性能相关的指标，例如页面加载时间和 http 请求数
+本文帮助解决以下常见问题：
+
+* 如何知道应用程序和服务中发生的情况，如何收集遥测数据？
+* 如何排查应用程序问题，尤其是服务之间相互通信的问题？
+* 如何获取与服务性能相关的指标，例如页面加载时间和 HTTP 请求数？
 
 本文旨在介绍如何从 Application Insights 获取见解和进行故障排除。 如果想要了解如何使用 Service Fabric 设置和配置 Application Insights，请查看[此教程](service-fabric-tutorial-monitoring-aspnet.md)。
 
@@ -110,7 +112,7 @@ Application Insights 提供指定的视图用于查询所有传入的数据。 �
 
 建议使用 EventFlow 和 WAD 作为聚合解决方案，因为它们允许使用更加模块化的方法，方便诊断和监视。例如，若要从 EventFlow 更改输出，不需要更改实际检测，仅需对配置文件进行简单修改。 然而，若决定投资使用 Application Insights，且不太可能更改到其他平台，则应使用 Application Insights 的新 SDK 以聚合事件并将它们发送到 Application Insights。 这意味着不再非得配置 EventFlow 将数据发送到 Application Insights，而是安装 Application Insight 的 Service Fabric NuGet 包。 可在[此处](https://github.com/Microsoft/ApplicationInsights-ServiceFabric)找到此包的详细信息。
 
-[微服务和容器的 Application Insights 支持](https://azure.microsoft.com/blog/app-insights-microservices/)会显示一些开发中的新功能（当前仍为 beta 版本），通过它们可以使用更加丰富的现成 Application Insights 监视选项。 这包含依赖项跟踪（用于生成群集中所有服务和应用程序的 AppMap 以及它们之间的通信），以及服务的更好跟踪关联（有助于更好地查明应用或服务的工作流中的问题）。
+[微服务和容器的 Application Insights 支持](https://azure.microsoft.com/blog/app-insights-microservices/)会显示一些开发中的新功能（当前仍为 beta 版本），通过它们可以使用更加丰富的现成 Application Insights 监视选项。 这包含依赖项跟踪（用于生成群集中所有服务和应用程序的 AppMap 以及它们之间的通信），以及来自服务更好的跟踪关联（有助于更好地查明应用程序或服务的工作流中的问题）。
 
 若在 .NET 中进行开发，将来可能会使用一些 Service Fabric 编程模型，且愿意使用 Application Insights 作为可视化和分析事件和日志数据的平台，那我们建议选取 Application Insights SDK 途径作为监视和诊断工作流。 请参阅[此文](../application-insights/app-insights-asp-net-more.md)和[此文](../application-insights/app-insights-asp-net-trace-logs.md)，开始使用 Application Insights 收集和显示日志。
 

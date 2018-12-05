@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/25/2018
 ms.author: hrasheed
-ms.openlocfilehash: 9489d6e8780a30c5c54ee307d6c45c4bc2eb0e5d
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: fa72765e02592b72efb09320958a0aa244ae8b08
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50419276"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52265281"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---security-and-devops-best-practices"></a>将本地 Apache Hadoop 群集迁移到 Azure HDInsight - 安全性和 DevOps 最佳做法
 
@@ -24,7 +24,7 @@ ms.locfileid: "50419276"
 
 企业安全性套餐 (ESP) 支持基于 Active Directory 的身份验证、多用户支持和基于角色的访问控制。 选择 ESP 选项后，HDInsight 群集将加入 Active Directory 域，企业管理员可以使用 Apache Ranger 为 Hive 安全性配置基于角色的访问控制 (RBAC)。 管理员可以审核员工的数据访问权限和对访问控制策略所做的任何更改。
 
-ESP 功能目前处于预览阶段，仅适用于以下群集类型：Apache Hadoop、Apache Spark、Apache HBase、Apache Kafka 和 Apache Interactive Query。
+ESP 适用于以下群集类型：Apache Hadoop、Apache Spark、Apache HBase、Apache Kafka 和 Interactive Query (Hive LLAP)。 
 
 使用以下步骤部署已加入域的 HDInsight 群集：
 

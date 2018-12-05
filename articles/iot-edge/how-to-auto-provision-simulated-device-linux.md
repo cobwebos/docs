@@ -8,16 +8,16 @@ ms.date: 10/31/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 703dedc69e491377ce0890610a2882ab95ae6e5a
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: 61da3b8e139cf5091aec4c1ab835c23fe319ea46
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51565065"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52446228"
 ---
 # <a name="create-and-provision-an-edge-device-with-a-virtual-tpm-on-a-linux-virtual-machine"></a>使用 Linux 虚拟机上的虚拟 TPM 创建和预配 Edge 设备
 
-可以使用[设备预配服务](../iot-dps/index.yml)自动预配 Azure IoT Edge 设备，就像预配未启用 Edge 的设备一样。 如果你不熟悉自动预配过程，请在继续操作之前查看[自动预配的概念](../iot-dps/concepts-auto-provisioning.md)。 
+可以使用[设备预配服务](../iot-dps/index.yml)自动预配 Azure IoT Edge 设备，就像预配未启用 Edge 的设备一样。 如果不熟悉自动预配过程，请在继续操作之前查看[自动预配的概念](../iot-dps/concepts-auto-provisioning.md)。 
 
 本文介绍如何使用以下步骤，在模拟的 Edge 设备上测试自动预配： 
 
@@ -65,7 +65,7 @@ ms.locfileid: "51565065"
    2. **配置网络**：设置“连接”的值设置为在上一部分创建的虚拟交换机。 
    3. **安装选项**：选择“从可启动映像文件安装操作系统”，并浏览到本地保存的磁盘映像文件。
 
-创建新 VM 可能需要几分钟时间。 
+创建新的 VM 可能需要几分钟。 
 
 ### <a name="enable-virtual-tpm"></a>启用虚拟 TPM
 
@@ -136,7 +136,7 @@ IoT Edge 运行时部署在所有 IoT Edge 设备上。 该运行时的组件在
 
 IoT Edge 运行时需要有权访问 TPM 才能自动预配设备。 
 
-使用以下步骤授予 TPM 访问权限。 或者，可以重写 systemd 设置，使 *iotedge* 服务能够以 root 身份运行，以此实现相同的目的。 
+通过覆盖系统设置可以授予 IoT Edge 运行时对 TPM 的访问权限，以便 iotedge 服务获得根特权。 如果不想提升服务权限，也可以使用以下步骤手动提供 TPM 访问权限。 
 
 1. 在设备上找到 TPM 硬件模块的文件路径，并将其保存为本地变量。 
 
@@ -180,8 +180,10 @@ IoT Edge 运行时需要有权访问 TPM 才能自动预配设备。
    如果成功应用，输出将如下所示：
 
    ```output
-   crw------- 1 root iotedge 10, 224 Jul 20 16:27 /dev/tpm0
+   crw-rw---- 1 root iotedge 10, 224 Jul 20 16:27 /dev/tpm0
    ```
+
+   如果未看到应用了正确的权限，请尝试重新启动计算机来刷新 udev。 
 
 8. 打开 IoT Edge 运行时 overrides 文件。 
 
@@ -234,7 +236,7 @@ IoT Edge 运行时需要有权访问 TPM 才能自动预配设备。
 
 ## <a name="verify-successful-installation"></a>验证是否成功安装
 
-如果成功启动了运行时，则可以转到 IoT 中心，查看新设备是否已自动预配并已准备好运行 IoT Edge 模块。 
+如果运行时成功启动，则可以转到 IoT 中心，查看新设备是否自动预配。 现在，设备已准备好运行 IoT Edge 模块。 
 
 检查 IoT Edge 守护程序的状态。
 
@@ -257,4 +259,4 @@ iotedge list
 
 ## <a name="next-steps"></a>后续步骤
 
-使用设备预配服务注册过程可以在预配新设备的同时，设置设备 ID 和设备孪生标记。 可以在自动设备管理中，使用这些值将单个设备或设备组指定为目标。 了解如何[使用 Azure 门户大规模部署和监视 IoT Edge 模块](how-to-deploy-monitor.md)，或[使用 Azure CLI](how-to-deploy-monitor-cli.md) 执行此操作
+使用设备预配服务注册过程可以在预配新设备的同时，设置设备 ID 和设备孪生标记。 可以在自动设备管理中，使用这些值将单个设备或设备组指定为目标。 了解如何[使用 Azure 门户大规模部署和监视 IoT Edge 模块](how-to-deploy-monitor.md)，或[使用 Azure CLI](how-to-deploy-monitor-cli.md) 执行此操作。

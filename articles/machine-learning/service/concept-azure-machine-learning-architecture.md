@@ -9,12 +9,12 @@ ms.author: haining
 author: hning86
 ms.reviewer: larryfr
 ms.date: 10/24/2018
-ms.openlocfilehash: 95f74b23b9d0c89966347f066041b23f64f3b82c
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 0acf41cc0a2673ba665d1815b493df928fa4507d
+ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50210680"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51706800"
 ---
 # <a name="how-the-azure-machine-learning-service-works-architecture-and-concepts"></a>Azure 机器学习服务的工作方式：体系结构和概念
 
@@ -156,9 +156,9 @@ Azure IoT Edge 将确保模块正在运行并且监视托管它的设备。
 
 有关使用试验的示例，请参阅[快速入门：开始使用 Azure 机器学习服务](quickstart-get-started.md)文档。
 
-## <a name="pipelines"></a>管道
+## <a name="pipeline"></a>管道
 
-管道用来创建和管理将各个机器学习阶段整合到一起的工作流。 例如，管道可以包括数据准备、模型训练、模型部署以及推断阶段。 每个阶段可以包含多个步骤，每个步骤都能够以无人参与方式在各种计算目标中运行。
+机器学习管道用来创建和管理将各个机器学习阶段整合到一起的工作流。 例如，管道可以包括数据准备、模型训练、模型部署以及推断阶段。 每个阶段可以包含多个步骤，每个步骤都能够以无人参与方式在各种计算目标中运行。
 
 有关机器学习管道与此服务的详细信息，请参阅[管道和 Azure 机器学习](concept-ml-pipelines.md)一文。
 

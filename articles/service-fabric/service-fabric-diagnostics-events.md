@@ -3,7 +3,7 @@ title: Azure Service Fabric 事件 | Microsoft Docs
 description: 了解所提供的可直接用来帮助监视 Azure Service Fabric 群集的 Service Fabric 事件。
 services: service-fabric
 documentationcenter: .net
-author: dkkapur
+author: srrengar
 manager: timlt
 editor: ''
 ms.assetid: ''
@@ -12,14 +12,14 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 04/25/2018
-ms.author: dekapur
-ms.openlocfilehash: ca63d67f6d7c19b4ca6928c4cc0f9ccb06eace2b
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.date: 11/21/2018
+ms.author: srrengar
+ms.openlocfilehash: 936a47593b9db6e4989c30b2df37dfd82c286c59
+ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49402975"
+ms.lasthandoff: 11/22/2018
+ms.locfileid: "52290512"
 ---
 # <a name="service-fabric-events"></a>Service Fabric 事件 
 
@@ -33,20 +33,20 @@ Service Fabric 平台会为群集内发生的关键操作活动写入多个结�
 
 若要查看平台公开的事件的完整列表，请参阅 [Service Fabric 事件列表](service-fabric-diagnostics-event-generation-operational.md)。
 
-下面是群集中你应当查看其事件的一些重要场景的示例。 
-1. 节点生命周期事件：当节点启动、发生故障、被激活/被停用或重新启动时，将会公开事件来指明发生了什么，并帮助查明是计算机本身发生错误还是通过 SF 调用了 API 来修改节点状态。
-1. 群集升级：当群集升级时（SF 版本或配置更改），将会看到升级启动、滚动通过每个 UD 以及完成（或回滚）。 
-1. 应用程序升级：与群集升级类似，当升级滚动完成时会生成一套完整的事件。 这些事件可用来了解升级是何时计划的、升级的当前状态以及整个事件序列。 这有助于回看哪些升级已成功实施。
-1. 应用程序/服务部署/删除：针对创建或删除的每个应用程序、服务和容器都存在对应的事件。
-1. 分区移动（重新配置）：每当有状态分区经历重新配置时（副本集发生更改），都会记录一个事件。 如果尝试了解分区副本集的更改频率或者在任意时间点跟踪哪个节点在运行主副本，则这非常有用。
-1. Chaos 事件：当使用 Service Fabric 的 [Chaos](service-fabric-controlled-chaos.md) 服务时，每次启动或停止该服务时或者当该服务在系统中导致错误时，都会看到事件。
-1. 运行状况事件：每次创建了“警告”或“错误”运行状况报告时，或者当实体恢复为“正常”运行状况状态时，或者当运行状况报告过期时，Service Fabric 都会公开运行状况事件。 这些事件对于跟踪实体的历史运行状况统计信息非常有帮助。 
+下面是群集中你应会看到其事件的一些场景的示例。 
+* 节点生命周期事件：当节点启动、发生故障、缩小/扩大、重启、被激活/被停用时，这些事件将会公开以显示发生了什么情况，并帮助查明是计算机本身发生故障还是存在通过 SF 调用 API 来修改节点状态的 API。
+* 群集升级：当群集升级时（SF 版本或配置更改），将会看到升级启动、滚动通过每个升级域以及完成（或回滚）。 
+* 应用程序升级：与群集升级类似，当升级滚动完成时会生成一套完整的事件。 这些事件可用来了解升级是何时计划的、升级的当前状态以及整个事件序列。 这有助于回看哪些升级已成功实施或是否触发了回滚。
+* 应用程序/服务部署/删除：针对创建或删除的每个应用程序、服务和容器都存在对应的事件，并且在缩小或扩大（例如，增加副本的数量）时非常有用
+* 分区移动（重新配置）：每当有状态分区经历重新配置时（副本集发生更改），都会记录一个事件。 如果尝试了解分区副本集更改或故障转移的频率，或者在任意时间点跟踪正在运行主副本的节点，则这非常有用。
+* Chaos 事件：当使用 Service Fabric 的 [Chaos](service-fabric-controlled-chaos.md) 服务时，每次启动或停止该服务时或者当该服务在系统中导致错误时，都会看到事件。
+* 运行状况事件：每次创建了“警告”或“错误”运行状况报告时，或者当实体恢复为“正常”运行状况状态时，或者当运行状况报告过期时，Service Fabric 都会公开运行状况事件。 这些事件对于跟踪实体的历史运行状况统计信息非常有帮助。 
 
 ## <a name="how-to-access-events"></a>如何访问事件
 
 可以通过以下几种不同的方式访问 Service Fabric 事件：
-* 通过操作通道。 可以通过 Azure 诊断扩展收集这些事件并将其发送到存储表以便使用或引入到诸如 Azure Log Analytics 的工具中。 为群集启用“诊断”后，Azure 诊断代理便会部署在群集上，并默认配置为通过操作通道读取日志。 详细了解如何配置 [Azure 诊断代理](service-fabric-diagnostics-event-aggregation-wad.md)，以便修改群集的诊断配置，从而获取更多日志或性能计数器。 
-* 通过 EventStore 服务的 Rest API，这允许直接查询群集；或者通过 Service Fabric 客户端库。 请参阅[通过 EventStore API 查询群集事件](service-fabric-diagnostics-eventstore-query.md)。
+* 事件通过标准通道（如 ETW/Windows 事件日志）进行记录，并且可由任何支持这些事件的监视工具（如 Log Analytics）显示。 默认情况下，在门户中创建的群集已启用诊断并让 Microsoft Azure 诊断代理将事件发送到 Azure 表存储，但你仍需要将此群集与 Log Analytics 资源集成。 详细了解如何配置 [Azure 诊断代理](service-fabric-diagnostics-event-aggregation-wad.md)，以便修改群集的诊断配置，从而获取更多日志或性能计数器以及 [Log Analytics 集成](service-fabric-diagnostics-event-analysis-oms.md)
+* EventStore 服务的 Rest API 允许直接查询群集或通过 Service Fabric 客户端库进行查询。 请参阅[通过 EventStore API 查询群集事件](service-fabric-diagnostics-eventstore-query.md)。
 
 ## <a name="next-steps"></a>后续步骤
 * 了解有关监视群集的详细信息 - [监视群集和平台](service-fabric-diagnostics-event-generation-infra.md)。

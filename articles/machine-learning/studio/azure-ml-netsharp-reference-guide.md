@@ -1,10 +1,11 @@
 ---
-title: Net# 神经网络规范语言指南 - Azure 机器学习 | Microsoft Docs
-description: 有关 Net# 神经网络规范语言的语法，以及如何使用 Net# 创建自定义神经网络模型的示例
+title: Net# 神经网络 - Azure 机器学习工作室 | Microsoft Docs
+description: 有关 Net# 神经网络规范语言的语法，以及如何使用 Net# 和 Azure 机器学习工作室创建自定义神经网络模型的示例。
 services: machine-learning
 documentationcenter: ''
-author: heatherbshapiro
-ms.author: hshapiro
+author: ericlicoding
+ms.custom: (previous ms.author=hshapiro, author=heatherbshapiro)
+ms.author: amlstudiodocs
 manager: hjerez
 editor: cgronlun
 ms.assetid: cfd1454b-47df-4745-b064-ce5f9b3be303
@@ -15,14 +16,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
 ms.date: 03/01/2018
-ms.openlocfilehash: 8a96cfdedcde9b4037627f3e61af862c0600ca20
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 3aa364e92dd7ce3742d28ac2b36d9a7f16cbebbf
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51258471"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52315301"
 ---
-# <a name="guide-to-net-neural-network-specification-language-for-azure-machine-learning"></a>有关 Azure 机器学习的 Net# 神经网络规范语言的指南
+# <a name="guide-to-net-neural-network-specification-language-for-azure-machine-learning-studio"></a>有关 Azure 机器学习工作室的 Net# 神经网络规范语言的指南
 
 Net# 是由 Microsoft 开发的一种用于定义神经网络体系结构的语言。 使用 Net# 定义神经网络的结构使定义复杂结构（如深层神经网络或任意维度的卷积）变得可能，这些复杂结构被认为可提高对数据的学习，如映像、音频或视频。
 
@@ -52,7 +53,7 @@ Net # 支持各种类型的连接捆绑，可自定义映射到隐藏层和映�
 
 此外，Net# 支持以下四种高级连接捆绑：
 
-+ **筛选捆绑**。 用户可通过使用源层节点和目标层节点的位置来定义一个谓词。 每当谓词为 True，节点即连接。
++ **筛选捆绑**。 用户可通过使用源层节点和目标层节点的位置来定义一个谓词。 每当谓词为 Ture，节点即连接。
 
 + **卷积捆绑**。 用户可在源层中定义节点的小范围邻域。 目标层中的每个节点连接到源层中节点的一个邻域。
 

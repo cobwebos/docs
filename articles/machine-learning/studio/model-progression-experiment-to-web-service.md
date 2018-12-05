@@ -1,10 +1,11 @@
 ---
-title: 如何将 Azure 机器学习模型变为 Web 服务 | Microsoft 文档
+title: 如何将机器学习工作室模型变为 Web 服务 - Azure | Microsoft Docs
 description: Azure 机器学习模型如何从开发实验逐步进展为运营 Web 服务的机制概述。
 services: machine-learning
 documentationcenter: ''
-author: YasinMSFT
-ms.author: yahajiza
+author: ericlicoding
+ms.custom: (previous ms.author=yahajiza, author=YasinMSFT)
+ms.author: amlstudiodocs
 manager: hjerez
 editor: cgronlun
 ms.assetid: 25e0c025-f8b0-44ab-beaf-d0f2d485eb91
@@ -15,14 +16,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2017
-ms.openlocfilehash: 7b9aec2815f836b3b220de37fe6428c54d39c3e5
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 1254f41d4961956acc8f7abc7d5490fedbb8c5d0
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34835566"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52310093"
 ---
-# <a name="how-a-machine-learning-model-progresses-from-an-experiment-to-an-operationalized-web-service"></a>机器学习模型如何从实验逐步变为运营 Web 服务
+# <a name="how-a-machine-learning-studio-model-progresses-from-an-experiment-to-an-operationalized-web-service"></a>机器学习工作室模型如何从实验逐步变为运营 Web 服务
 Azure 机器学习工作室提供交互式画布，允许开发、运行、测试和迭代表示预测分析模型的***实验***。 有大量各种不同的模块可用于：
 
 * 将数据输入到实验

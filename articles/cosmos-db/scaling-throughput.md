@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/15/2018
 ms.author: dharmas
 ms.reviewer: sngun
-ms.openlocfilehash: d29f01c7f953ed211b429e41b844a01c67e41054
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 7e3f6d053e9466f07e15b0c2c1092fece76c98a4
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51282367"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52160658"
 ---
 # <a name="scaling-throughput-in-azure-cosmos-db"></a>在 Azure Cosmos DB 中缩放吞吐量
 
@@ -23,9 +23,9 @@ ms.locfileid: "51282367"
 
 可以针对 Cosmos 容器或 Cosmos 数据库预配 RU。 针对容器预配的 RU 专门适用于针对该容器执行的操作。 针对数据库预配的 RU 在该数据库中的所有容器之间共享（具有专用分配 RU 的任何容器除外）
 
-若要弹性缩放吞吐量，随时可以增大或减小预配的 RU/秒。 有关详细信息，请参阅“[如何预配吞吐量](set-throughput.md)和弹性缩放 Cosmos 容器与数据库”。 若要全局缩放吞吐量，随时可以在 Cosmos 帐户中添加或删除区域。 有关详细信息，请参阅[如何在 Cosmos 帐户中添加或删除区域](how-to-manage-database-account.md#addremove-regions-from-your-database-account)。 在许多情况下，将多个区域与 Cosmos 帐户关联非常重要，这样可以在全球实现低延迟和[高可用性](high-availability.md)。
+若要弹性缩放吞吐量，随时可以增大或减小预配的 RU/秒。 有关详细信息，请参阅“[如何预配吞吐量](set-throughput.md)和弹性缩放 Cosmos 容器与数据库”。 若要全局缩放吞吐量，随时可以在 Cosmos 帐户中添加或删除区域。 有关详细信息，请参阅[在数据库帐户中添加/删除区域](how-to-manage-database-account.md#addremove-regions-from-your-database-account)。 在许多情况下，将多个区域与 Cosmos 帐户关联非常重要，这样可以在全球实现低延迟和[高可用性](high-availability.md)。
 
-## <a name="how-provisioned-throughput-is-distributed-across-regions"></a>如何跨区域分配预配的吞吐量
+## <a name="how-provisioned-throughput-is-distributed-across-regions"></a>预配吞吐量如何跨区域分布
 
 如果针对 Cosmos 容器（或数据库）预配了 'R' 个 RU，则 Cosmos DB 可确保 'R' 个 RU 在与 Cosmos 帐户关联的每个区域中都可用。 每次将新区域添加到帐户时，Cosmos DB 都会自动在新添加的区域中预配 'R' 个 RU。 保证针对 Cosmos 容器执行的操作可以在每个区域中获取 'R' 个 RU。 无法有选择地将 RU 分配给特定区域。 针对 Cosmos 容器（或数据库）预配的 RU 是针对与 Cosmos 帐户关联的所有区域预配的。
 

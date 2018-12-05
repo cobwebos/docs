@@ -7,16 +7,16 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.topic: conceptual
 ms.date: 10/15/2018
-ms.openlocfilehash: 3616183b5ea34b8a14712d2c449de87950443111
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 724e6c57f10fb85b4b91c2236d17a64899953d67
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49954498"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52581929"
 ---
 # <a name="improve-performance-of-apache-spark-workloads-using-azure-hdinsight-io-cache-preview"></a>使用 Azure HDInsight IO 缓存提高 Apache Spark 工作负载的性能（预览版）
 
-IO 缓存是 Azure HDInsight 的数据缓存服务，可用于提高 Apache Spark 作业的性能。 IO 缓存也适用于可在 Spark 群集上运行的 Tez 和 Hive 工作负载。 IO 缓存使用名为 RubiX 的开源缓存组件。 RubiX 是用于可从云存储系统访问数据的大数据分析引擎的本地磁盘缓存。 RubiX 在缓存系统中是唯一的，因为它使用固态硬盘 (SSD)，而不是保留操作内存以供缓存。 IO 缓存服务可在群集的每个工作节点上启动和管理 RubiX 元数据服务器。 它还可以配置群集的所有服务以便透明使用 RubiX 缓存。
+IO 缓存是 Azure HDInsight 的数据缓存服务，可用于提高 Apache Spark 作业的性能。 IO 缓存也适用于可在 [Apache Spark](https://spark.apache.org/) 群集上运行的 [Apache TEZ](https://tez.apache.org/) 和 [Apache Hive](https://hive.apache.org/) 工作负载。 IO 缓存使用名为 RubiX 的开源缓存组件。 RubiX 是用于可从云存储系统访问数据的大数据分析引擎的本地磁盘缓存。 RubiX 在缓存系统中是唯一的，因为它使用固态硬盘 (SSD)，而不是保留操作内存以供缓存。 IO 缓存服务可在群集的每个工作节点上启动和管理 RubiX 元数据服务器。 它还可以配置群集的所有服务以便透明使用 RubiX 缓存。
 
 大多数 SSD 提供超过 1 GB/秒的带宽。 此带宽由操作系统内存中文件缓存补充，提供的带宽足以加载大数据计算处理引擎（如 Apache Spark）。 剩余的操作内存可供 Apache Spark 处理很大程度依赖于内存的任务（如数据重组）。 独占使用操作内存可让 Apache Spark 实现最佳资源使用情况。  
 
@@ -52,7 +52,7 @@ IO 缓存是 Azure HDInsight 的数据缓存服务，可用于提高 Apache Spar
   
 启用 IO 缓存后可能会收到运行 Spark 作业时出现的磁盘空间错误。 出现这些错误的原因是 Spark 还将本地磁盘存储用于在执行数据重组操作期间存储数据。 启用 IO 缓存并减少 Spark 存储空间后，Spark 可能会耗尽 SSD 空间。 IO 缓存所用的空间量默认为 SSD 空间总量的一半。 IO 缓存的磁盘空间使用量可以在 Ambari 中进行配置。 如果收到磁盘空间错误，请减少 IO 缓存所用的 SSD 空间量，并重新启动该服务。 若要更改为 IO 缓存设置的空间，请执行以下步骤：
 
-1. 在 Ambari 中，选择左侧的“HDFS”服务。
+1. 在 Apache Ambari 中，选择左侧的“HDFS”服务。
 
 1. 依次选择“配置”和“高级”选项卡。
 

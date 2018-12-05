@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/31/2018
 ms.author: elsung
-ms.openlocfilehash: 130d0154fc0558ae7284e8407ba88fda3a2a53d5
-ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
+ms.openlocfilehash: a2367eff3095df82662f7b56571ecdbd966609fd
+ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44391294"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52284006"
 ---
 # <a name="access-azure-data-lake-storage-gen1-from-vms-within-an-azure-vnet"></a>从 Azure VNET 中的 VM 访问 Azure Data Lake Storage Gen1
 Azure Data Lake Storage Gen1 是一种在公共 Internet IP 地址上运行的 PaaS 服务。 可以连接到公共 Internet 的服务器通常也可连接到 Azure Data Lake Storage Gen1 终结点。 默认情况下，Azure VNET 中的所有 VM 都可以访问 Internet，因此可以访问 Azure Data Lake Storage Gen1。 但是，可以将 VNET 中的 VM 配置为无法访问 Internet。 对于此类 VM，对 Azure Data Lake Storage Gen1 的访问也受到限制。 可以使用以下任何方法在 Azure VNET 中阻止 VM 的公共 Internet 访问：
@@ -29,7 +29,7 @@ Azure Data Lake Storage Gen1 是一种在公共 Internet IP 地址上运行的 P
 本文介绍如何从 Azure VM 启用对 Azure Data Lake Storage Gen1 的访问，这些 VM 仅限于使用上述三种方法之一访问资源。
 
 ## <a name="enabling-connectivity-to-azure-data-lake-storage-gen1-from-vms-with-restricted-connectivity"></a>从连接受限的 VM 启用与 Azure Data Lake Storage Gen1 的连接
-若要从此类 VM 访问 Azure Data Lake Storage Gen1，必须将其配置为访问 Azure Data Lake Storage Gen1 帐户可用的 IP 地址。 可通过解析帐户的 DNS 名称 (`<account>.azuredatalakestore.net`) 来识别 Data Lake Storage Gen1 帐户的 IP 地址。 可以使用如 nslookup 等工具解析帐户的 DNS 名称。 在计算机上打开命令提示符并运行以下命令：
+若要从此类 VM 访问 Azure Data Lake Storage Gen1，必须将其配置为访问 Azure Data Lake Storage Gen1 帐户可用的区域的 IP 地址。 可通过解析帐户的 DNS 名称 (`<account>.azuredatalakestore.net`) 来识别 Data Lake Storage Gen1 帐户区域的 IP 地址。 可以使用如 nslookup 等工具解析帐户的 DNS 名称。 在计算机上打开命令提示符并运行以下命令：
 
     nslookup mydatastore.azuredatalakestore.net
 

@@ -9,22 +9,22 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: ashish
-ms.openlocfilehash: f963ae53e1396b1ef6279f2bd6502e5ab0cd23a1
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: ac287f2ee50501d703b7d7b79a436ecb5335d1bd
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51034551"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52497384"
 ---
 # <a name="install-published-application---streamsets-data-collector"></a>安装已发布应用程序 - StreamSets Data Collector
 
-本文介绍如何在 Azure HDInsight 上安装和运行 [StreamSets Data Collector for HDInsight](https://streamsets.com/) 发布的 Apache Hadoop 应用程序。 有关 HDInsight 应用程序平台的概述以及可用独立软件供应商 (ISV) 发布的应用程序的列表，请参阅[安装第三方 Hadoop 应用程序](hdinsight-apps-install-applications.md)。 有关如何安装自己的应用程序的说明，请参阅[安装自定义 HDInsight 应用程序](hdinsight-apps-install-custom-applications.md)。
+本文介绍如何在 Azure HDInsight 上安装和运行 [StreamSets Data Collector for HDInsight](https://streamsets.com/) 发布的 [Apache Hadoop](https://hadoop.apache.org/) 应用程序。 有关 HDInsight 应用程序平台的概述以及可用独立软件供应商 (ISV) 发布的应用程序的列表，请参阅[安装第三方 Apache Hadoop 应用程序](hdinsight-apps-install-applications.md)。 有关如何安装自己的应用程序的说明，请参阅[安装自定义 HDInsight 应用程序](hdinsight-apps-install-custom-applications.md)。
 
 ## <a name="about-streamsets-data-collector"></a>关于 StreamSets Data Collector
 
 StreamSets Data Collector 部署在 Azure HDInsight 应用程序之上。 StreamSets Data Collector 提供一个全功能的集成开发环境 (IDE)，可在其中设计、测试、部署和管理全面互通引入管道。 这些管道可以汇合流和批处理数据，并提供各种流中转换，所有这一切都无需编写自定义代码。
 
-StreamSets Data Collector 可以使用许多大数据组件（如 HDFS、Kafka、Solr、Hive、HBASE 和 Kudu）生成数据流。 StreamSets Data Collector 在边缘服务器上或 Hadoop 群集中运行后，你便可以实时监视数据异常和数据流操作。 此监视功能包括基于阈值的警报、异常检测和错误记录的自动修正。
+通过流集数据收集器，可使用许多大数据组件（如 [Apache Hadoop HDFS](https://hadoop.apache.org/docs/r1.2.1/hdfs_design.html)、[Apache Kafka](https://kafka.apache.org/)、[Apache Solr](https://lucene.apache.org/solr/)、[Apache Hive](https://hive.apache.org/)、[Apache HBase](https://hbase.apache.org/) 和 [Apache Kudu](https://kudu.apache.org/)）生成数据流。 StreamSets Data Collector 在边缘服务器上或 Hadoop 群集中运行后，你便可以实时监视数据异常和数据流操作。 此监视功能包括基于阈值的警报、异常检测和错误记录的自动修正。
 
 StreamSets Data Collector 旨在在管道中从逻辑上隔离每个阶段，因此你可以通过增加新的处理器和连接器，而无需编码只需最少的停机时间即可满足新的业务要求。
 
@@ -46,7 +46,7 @@ StreamSets Data Collector 旨在在管道中从逻辑上隔离每个阶段，因
 
 ## <a name="install-the-streamsets-data-collector-published-application"></a>安装 StreamSets Data Collector 发布的应用程序
 
-有关安装此应用程序和其他可用 ISV 应用程序的分步说明，请阅读[安装第三方 Hadoop 应用程序](hdinsight-apps-install-applications.md)。
+有关安装此应用程序和其他可用 ISV 应用程序的分步说明，请阅读[安装第三方 Apache Hadoop 应用程序](hdinsight-apps-install-applications.md)。
 
 ## <a name="launch-streamsets-data-collector"></a>启动 StreamSets Data Collector
 

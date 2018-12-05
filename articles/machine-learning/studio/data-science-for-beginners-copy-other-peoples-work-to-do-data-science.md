@@ -1,11 +1,12 @@
 ---
-title: 复制他人的数据科学示例 - Azure 机器学习 | Microsoft Docs
+title: 复制他人的数据科学示例 - Azure 机器学习工作室 | Microsoft Docs
 description: 数据科学的商业机密：让他人完成工作。 从 Azure AI 库获取机器学习示例。
 keywords: 数据科学示例, 机器学习示例, 聚类分析算法, 聚类分析算法示例
 services: machine-learning
 documentationcenter: na
-author: heatherbshapiro
-ms.author: hshapiro
+author: ericlicoding
+ms.custom: (previous ms.author=hshapiro, author=heatherbshapiro)
+ms.author: amlstudiodocs
 manager: hjerez
 editor: cjgronlund
 ms.assetid: ec2be823-c325-4ad8-b8b2-3e664f1a44b4
@@ -16,12 +17,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/05/2018
-ms.openlocfilehash: 84c6f4a1cedc0a04ee820f1de60f51e653f28425
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: e573a0394fa47cd6325fe582366242644232cf3d
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34833873"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52313769"
 ---
 # <a name="copy-other-peoples-work-to-do-data-science"></a>复制其他人的工作以执行数据科研
 ## <a name="video-5-data-science-for-beginners-series"></a>视频 5：适合初学者的数据科学系列
@@ -41,9 +42,9 @@ ms.locfileid: "34833873"
 ## <a name="other-videos-in-this-series"></a>本系列中的其他视频
 “适合初学者的数据科学”对数据科学进行简要介绍，共五个短视频。
 
-* 视频 1：[数据科学可解答的 5 个问题](data-science-for-beginners-the-5-questions-data-science-answers.md)（5 分 14 秒）
+* 视频 1：[数据科学解答的 5 个问题](data-science-for-beginners-the-5-questions-data-science-answers.md)（5 分 14 秒）
 * 视频 2：[数据是否可用于数据科学？](data-science-for-beginners-is-your-data-ready-for-data-science.md) （4 分 56 秒）
-* 视频 3：[提出可用数据回答的问题](data-science-for-beginners-ask-a-question-you-can-answer-with-data.md)（4 分钟 17 秒）
+* 视频 3：[提出数据方面的可解答问题](data-science-for-beginners-ask-a-question-you-can-answer-with-data.md)（4 分 17 秒）
 * 视频 4：[使用简单的模型预测答案](data-science-for-beginners-predict-an-answer-with-a-simple-model.md)（7 分 42 秒）
 * 视频 5：复制他人的工作以执行数据科研
 

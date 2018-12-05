@@ -10,12 +10,12 @@ ms.component: translator-text
 ms.topic: reference
 ms.date: 03/29/2018
 ms.author: v-jansko
-ms.openlocfilehash: 243ee16f8de8add8283581c8c03a37594797864b
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 6f679536d69f700fd6678eb3bbbb869e42439cde
+ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49430017"
+ms.lasthandoff: 11/17/2018
+ms.locfileid: "51853347"
 ---
 # <a name="translator-text-api-v30"></a>文本翻译 API v3.0
 
@@ -135,6 +135,7 @@ Authorization: Bearer <Base64-access_token>
 | 403000| 不允许该操作。|
 | 403001| 由于订阅已超过其免费配额，因此不允许该操作。|
 | 405000| 请求的资源不支持该请求方法。|
+| 408001| 请求的自定义翻译系统尚不可用。 请在几分钟后重试。|
 | 415000| Content-Type 标头缺失或无效。|
 | 429000、429001、429002| 由于客户端发送的请求过多，服务器拒绝了请求。 请降低请求频率，以避免发生限制。|
 | 500000| 发生了意外错误。 如果该错误持续出现，请报告发生错误的日期/时间、响应标头 X-RequestId 中的请求标识符，以及请求标头 X-ClientTraceId 中的客户端标识符。|

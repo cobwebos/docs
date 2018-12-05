@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure AD 访问评审来评审访问权限 | Microsoft Docs
-description: 了解如何使用 Azure Active Directory 访问评审来评审访问权限。
+title: 使用 Azure AD 访问评审来启动访问评审 | Microsoft Docs
+description: 了解如何使用 Azure Active Directory 访问评审来启动访问评审。
 services: active-directory
 author: rolyon
 manager: mtillman
@@ -14,14 +14,14 @@ ms.component: compliance
 ms.date: 07/16/2018
 ms.author: rolyon
 ms.reviewer: mwahl
-ms.openlocfilehash: 09247a430d2ece44c307297838b7f4dc2819d56d
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.openlocfilehash: 455a4922dfd0832c49729bed007dd696562be07a
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45607027"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52263411"
 ---
-# <a name="review-access-with-azure-ad-access-reviews"></a>使用 Azure AD 访问评审来评审访问权限
+# <a name="start-an-access-review-with-azure-ad-access-reviews"></a>使用 Azure AD 访问评审来启动访问评审
 
 Azure Active Directory (Azure AD) 使用称为“访问评审”的功能，简化了企业对 Azure AD 及其他 Microsoft Online Services 中应用程序和组成员的访问的管理方式。 你可能收到过来自 Microsoft 的电子邮件，要求你评审访问权限 - 有权访问应用程序的组成员或用户。 
 

@@ -13,12 +13,12 @@ ms.workload: identity
 ms.component: users-groups-roles
 ms.custom: it-pro
 ms.reviewer: martincoetzer, MarkMorow
-ms.openlocfilehash: f42e7c2e564f660df1e88c63c00a9f04db7c8116
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: d62559561bf7e8e2dc2a882543d7fa7fc45a7499
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51240097"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51821050"
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>确保 Azure AD 中混合部署和云部署的特权访问安全性
 
@@ -82,7 +82,7 @@ Microsoft 建议你制定并遵循一个路线图，防止特权访问受到网�
 
 #### <a name="turn-on-azure-ad-privileged-identity-management"></a>启用 Azure AD Privileged Identity Management
 
-如果尚未启用 Azure AD Privileged Identity Management (PIM)，请在生产租户中启用它。 启用 Privileged Identity Management 以后，会收到有关特权访问角色更改的通知电子邮件。 向目录中特许权限高的角色添加更多用户时，这些通知相当于早期警告。
+如果尚未启用 Azure AD Privileged Identity Management (PIM)，请在生产租户中启用它。 启用 Privileged Identity Management 以后，会收到有关特权访问角色更改的通知电子邮件。 向目录中的高特权角色添加更多用户时，这些通知相当于早期警告。
 
 Azure AD Privileged Identity Management 包括在 Azure AD Premium P2 或 EMS E5 中。 这些解决方案有助于保护对本地环境和云中环境中的应用程序和资源的访问权限。 如果还没有 Azure AD Premium P2 或 EMS E5，但希望评估本路线图中提到的更多功能，请注册[企业移动性 + 安全性 90 天免费试用版](https://www.microsoft.com/cloud-platform/enterprise-mobility-security-trial)。 有了这些许可证试用版，就可以尝试 Azure AD Privileged Identity Management 和 Azure AD Identity Protection，以便使用 Azure AD 高级安全报告、审核和警报来监视活动。
 
@@ -102,7 +102,7 @@ Azure AD Privileged Identity Management 包括在 Azure AD Premium P2 或 EMS E5
 
 启用 Azure AD Privileged Identity Management 后，请查看目录角色为“全局管理员”、“特权角色管理员”、“Exchange Online 管理员”和“SharePoint Online 管理员”的用户。 如果租户中没有 Azure AD PIM，则可使用 [PowerShell API](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)。 请从全局管理员角色开始，因为该角色是通用的：分配了此管理员角色的用户在组织已订阅的所有云服务中具有相同的权限，不管该角色是通过 Office 365 门户或 Azure 门户分配的，还是通过用于 Microsoft PowerShell 的 Azure AD 模块分配的。 
 
-请删除在这些角色中不再需要的任何帐户，并对剩余的分配给管理员角色的帐户分类：
+删除这些角色不再需要的任何帐户。 然后，对分配给管理员角色的剩余帐户进行分类：
 
 * 单独分配给管理用户，也可用于非管理性目的（例如，个人电子邮件）
 * 单独分配给管理用户，按规定只能用于管理目的
@@ -113,7 +113,7 @@ Azure AD Privileged Identity Management 包括在 Azure AD Premium P2 或 EMS E5
 
 #### <a name="define-at-least-two-emergency-access-accounts"></a>定义至少两个紧急访问帐户 
 
-确保不要进入这样一种境地：因无法登录或激活现有的充当管理员的单个用户帐户而意外地导致自己无法管理 Azure AD 租户。 例如，如果组织与某个本地标识提供者联合进行身份验证，则当该标识提供者不可用时，用户就会无法进行本地登录。 可在租户中存储两个或更多个紧急访问帐户，缓解意外丧失管理访问权限造成的影响。
+确保不要陷入以下情况：因无法登录或激活充当管理员的现有单个用户帐户而意外地导致自己无法管理 Azure AD 租户。 例如，如果组织与某个本地标识提供者联合进行身份验证，则当该标识提供者不可用时，用户就会无法进行本地登录。 可在租户中存储两个或更多个紧急访问帐户，缓解意外丧失管理访问权限造成的影响。
 
 可以使用紧急访问帐户来帮助组织限制现有 Azure Active Directory 环境中的特权访问。 这些帐户拥有极高的特权，不要将其分配给特定的个人。 紧急访问帐户只能用于“不受限”紧急情况，即不能使用正常管理帐户的情况。 组织务必控制和减少紧急帐户的使用，只在必要时使用。 
 
@@ -127,11 +127,11 @@ Azure AD Privileged Identity Management 包括在 Azure AD Premium P2 或 EMS E5
 
 ![阶段 2](./media/directory-admin-roles-secure/stage-two.png)
 
-路线图的阶段 2 着重于减轻进行凭据窃取和滥用时最常用攻击手段的危害。根据设计，大约在 2-4 周内实施。 此阶段的安全特权访问路线图包括以下操作。
+路线图的阶段 2 着重于减轻进行凭据窃取和滥用时最常用的攻击手段导致的危害，并且可在约 2-4 周内实现。 此阶段的安全特权访问路线图包括以下操作。
 
 ### <a name="general-preparation"></a>常规准备
 
-#### <a name="conduct-a-inventory-of-services-owners-and-admins"></a>制作一个包括服务、所有者和管理员在内的清单
+#### <a name="conduct-an-inventory-of-services-owners-and-admins"></a>制作一个包括服务、所有者和管理员在内的清单
 
 随着自带设备 (BYOD) 和在家办公策略实施人数的增加以及企业无线连接人数的增加，必须对连接到网络的人员进行监视。 有效的安全审核通常会显示那些在网络上运行但不受 IT 部门支持（因此可能不安全）的设备、应用程序和程序。 有关详细信息，请参阅 [Azure 安全管理和监视概述](../../security/security-management-and-monitoring-overview.md)。 请确保在清单进程中包括所有下述任务。 
 
@@ -337,7 +337,7 @@ Cloud App Security SIEM 代理将 Cloud App Security 与 SIEM 服务器集成，
 * 仅在需要的时候才授予特许访问权限，操作完后即将其删除（恰时）。
 * 保留并查看与特权帐户相关的审核活动。
 
-若要深入了解如何构建完整的安全路线图，请参阅 [Microsoft 云 IT 体系结构资源](https://docs.microsoft.com/office365/enterprise/microsoft-cloud-it-architecture-resources)。 若要深入了解如何运用 Microsoft 服务来帮助实现上述任意主题中的功能，请联系 Microsoft 代表或参阅 [Build critical cyber defenses to protect your enterprise](https://www.microsoft.com/microsoftservices/campaigns/cybersecurity-protection.aspx)（构建关键的网络防御来保护企业）。
+若要深入了解如何构建完整的安全路线图，请参阅 [Microsoft 云 IT 体系结构资源](https://docs.microsoft.com/office365/enterprise/microsoft-cloud-it-architecture-resources)。 若要深入了解如何运用 Microsoft 服务来帮助实现上述任意主题中的功能，请联系 Microsoft 代表或参阅 [Build critical cyber defenses to protect your enterprise](https://www.microsoft.com/en-us/microsoftservices/campaigns/cybersecurity-protection.aspx)（构建关键的网络防御来保护企业）。
 
 这个最后进行的阶段的安全特权访问路线图包括以下组件。
 

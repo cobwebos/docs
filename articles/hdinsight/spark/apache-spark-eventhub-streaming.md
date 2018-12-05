@@ -9,16 +9,16 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive,mvc
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: eb2145d2e7b787bafa0b546449282454f7059999
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 537ae87fa694a8b0e82cb2830dd8ad1f62986093
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51283404"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52496436"
 ---
-# <a name="tutorial-process-tweets-using-azure-event-hubs-and-spark-in-hdinsight"></a>教程：使用 HDInsight 中的 Azure 事件中心和 Spark 处理推文
+# <a name="tutorial-process-tweets-using-azure-event-hubs-and-apache-spark-in-hdinsight"></a>教程：在 HDInsight 中使用 Azure 事件中心和 Apache Spark 处理推文
 
-本教程介绍如何创建一个 Apache Spark 流式处理应用程序用于将推文发送到 Azure 事件中心，并创建另一个应用程序用于从事件中心读取推文。 有关 Spark 流式处理的详细说明，请参阅 [Apache Spark 流式处理概述](http://spark.apache.org/docs/latest/streaming-programming-guide.html#overview)。 HDInsight 将相同的流式处理功能引入到 Azure 上的 Spark 群集。
+本教程介绍如何创建 [Apache Spark](https://spark.apache.org/) 流式处理应用程序用于将推文发送到 Azure 事件中心，以及如何创建另一个应用程序用于从事件中心读取推文。 有关 Spark 流式处理的详细说明，请参阅 [Apache Spark 流式处理概述](http://spark.apache.org/docs/latest/streaming-programming-guide.html#overview)。 HDInsight 将相同的流式处理功能引入到 Azure 上的 Spark 群集。
 
 本教程介绍如何执行下列操作：
 > [!div class="checklist"]
@@ -102,7 +102,7 @@ ms.locfileid: "51283404"
 
 需要创建一个 Jupyter Notebook，并将其命名为 **SendTweetsToEventHub**。 
 
-1. 运行以下代码，添加外部 Maven 库：
+1. 运行以下代码，添加外部 Apache Maven 库：
 
     ```
     %%configure
@@ -184,7 +184,7 @@ ms.locfileid: "51283404"
 
 需要创建另一个 Jupyter Notebook，并将其命名为 **ReadTweetsFromEventHub**。 
 
-1. 运行以下代码，添加一个外部 Maven 库：
+1. 运行以下代码，添加一个外部 Apache Maven 库：
 
     ```
     %%configure -f

@@ -10,12 +10,12 @@ ms.component: translator-text
 ms.topic: reference
 ms.date: 03/29/2018
 ms.author: v-jansko
-ms.openlocfilehash: bebe9b6565d618cb773de0379122a17bf7f70403
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
+ms.openlocfilehash: 847794d46addc7f3cba09437c2d2c6e8a3a04e89
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50914288"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52165410"
 ---
 # <a name="translator-text-api-30-translate"></a>文本翻译 API 3.0：翻译
 
@@ -83,6 +83,11 @@ https://api.cognitive.microsofttranslator.com/translate?api-version=3.0
   <tr>
     <td>toScript</td>
     <td>可选参数。<br/>指定翻译文本的脚本。</td>
+  </tr>
+  <tr>
+    <td>allowFallback</td>
+    <td>可选参数。<br/>指定当自定义系统不存在时允许服务回退到一个常规系统。 可能的值为 `true`（默认）`false`。<br/><br/>`allowFallback=false` 指定翻译应仅使用针对由此请求指定的 `category` 而训练的系统。 如果将语言 X 翻译成语言 Y 需要通过枢轴语言 E 进行链接，那么此链中的所有系统（X->E 和 E->Y）将需要进行自定义并且具有相同的类别。 如果未通过特定类别找到任何系统，此请求将返回 400 状态代码。 `allowFallback=true` 指定当自定义系统不存在时允许服务回退到一个常规系统。
+</td>
   </tr>
 </table> 
 
@@ -164,6 +169,21 @@ https://api.cognitive.microsofttranslator.com/translate?api-version=3.0
 
 [示例](#examples)部分提供了 JSON 响应的示例。
 
+## <a name="response-headers"></a>响应标头
+
+<table width="100%">
+  <th width="20%">标头</th>
+  <th>Description</th>
+    <tr>
+    <td>X-RequestId</td>
+    <td>服务生成的用于标识请求的值。 它用于故障排除目的。</td>
+  </tr>
+  <tr>
+    <td>X-MT-System</td>
+    <td>指定用于将每种语言翻译“到”所请求翻译语言的系统类型。 此值是以逗号分隔的字符串列表。 每个字符串指示一个类型：<br/><ul><li>自定义 - 请求包括一个自定义系统，并且在翻译期间至少使用了一个自定义系统。</li><li>团队 - 所有其他要求</li></td>
+  </tr>
+</table> 
+
 ## <a name="response-status-codes"></a>响应状态代码
 
 下面是请求可能返回的 HTTP 状态代码。 
@@ -186,6 +206,10 @@ https://api.cognitive.microsofttranslator.com/translate?api-version=3.0
   <tr>
     <td>403</td>
     <td>请求未经授权。 请检查详细错误消息。 这通常表示试用订阅提供的所有可用翻译已用完。</td>
+  </tr>
+  <tr>
+    <td>408</td>
+    <td>无法满足请求，因为缺少资源。 请检查详细错误消息。 使用自定义 `category` 时，这通常指示自定义翻译系统尚不可用于为请求提供服务。 应在等待一段时间（例如 1 分钟）后重试此请求。</td>
   </tr>
   <tr>
     <td>429</td>

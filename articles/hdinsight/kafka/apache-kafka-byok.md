@@ -8,12 +8,12 @@ ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 85fea195b05bea8a1db70f8b5b81cabdfe7c6c72
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 8525b1450ae8b7badfe1c569c2040ecf1ab78070
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48041503"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52314365"
 ---
 # <a name="bring-your-own-key-for-apache-kafka-on-azure-hdinsight-preview"></a>为 Azure HDInsight 上的 Apache Kafka 创建自己的密钥（预览版）
 
@@ -83,7 +83,7 @@ BYOK 加密是在群集创建期间处理的一步过程，无需额外费用。
 
    在群集创建期间，提供完整的密钥 URL，包括密钥版本。 例如，`https://contoso-kv.vault.azure.net/keys/kafkaClusterKey/46ab702136bc4b229f8b10e8c2997fa4`。 还需要将托管标识分配给集群并提供密钥 URI。
 
-## <a name="faq-for-byok-to-kafka"></a>适用于 Kafka 的 BYOK 的常见问题解答
+## <a name="faq-for-byok-to-apache-kafka"></a>Apache Kafka BYOK 的常见问题解答
 
 **Kafka 群集如何访问我的密钥保管库？**
 

@@ -3,7 +3,7 @@ title: Azure 资源运行状况常见问题解答 | Microsoft Docs
 description: Azure 资源运行状况概述
 services: Resource health
 documentationcenter: dev-center-name
-author: BernardoAMunoz
+author: stephbaron
 manager: ''
 editor: ''
 ms.assetid: 85cc88a4-80fd-4b9b-a30a-34ff3782855f
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: Supportability
-ms.date: 03/27/2018
-ms.author: BernardoAMunoz
-ms.openlocfilehash: 1e22c62c291909bb4079ebaf389cfbd15ae9d8d5
-ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
+ms.date: 11/16/2018
+ms.author: stbaron
+ms.openlocfilehash: 821495ceb052184f3216c8ed696b39db33db00ac
+ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "42140801"
+ms.lasthandoff: 11/19/2018
+ms.locfileid: "51977194"
 ---
 # <a name="azure-resource-health-faq"></a>Azure 资源运行状况常见问题解答
 获取 Azure 资源运行状况常见问题的解答。

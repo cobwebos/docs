@@ -8,14 +8,14 @@ ms.service: batch
 ms.devlang: multiple
 ms.topic: article
 ms.workload: na
-ms.date: 10/24/2018
+ms.date: 11/19/2018
 ms.author: danlep
-ms.openlocfilehash: 458b0f7bbf581c7f2490a8122f351dac612b4ff0
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 1d915482a3a8b1f6416b50ab52de997a9d33294f
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50155590"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52262425"
 ---
 # <a name="run-container-applications-on-azure-batch"></a>在 Azure Batch 上运行容器应用程序
 
@@ -25,7 +25,7 @@ ms.locfileid: "50155590"
 
 ## <a name="why-use-containers"></a>为何使用容器？
 
-使用容器可以方便地运行 Batch 任务，无需管理环境和依赖项即可运行应用程序。 容器将应用程序部署为轻量级、可移植、自给自足的单元，可以在各种不同的环境中运行。 例如，你可以在本地构建和测试容器，然后将容器映像上传到 Azure 或其他位置的注册表中。 容器部署模型可确保始终正确安装和配置应用程序的运行时环境，而不考虑在何处托管应用程序。 Batch 中基于容器的任务也可利用非容器任务的功能，包括应用程序包以及资源文件和输出文件的管理。 
+使用容器可以方便地运行 Batch 任务，无需管理环境和依赖项即可运行应用程序。 容器将应用程序部署为轻量级、可移植、自给自足的单元，可以在各种不同的环境中运行。 例如，在本地构建和测试容器，然后将容器映像上传到 Azure 或其他位置的注册表中。 容器部署模型可确保始终正确安装和配置应用程序的运行时环境，而不考虑在何处托管应用程序。 Batch 中基于容器的任务也可利用非容器任务的功能，包括应用程序包以及资源文件和输出文件的管理。 
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -74,7 +74,7 @@ ms.locfileid: "50155590"
 
 * 预装了 NVIDIA GPU 驱动程序，以简化 Azure N 系列 VM 上的部署
 
-* 预装或未预装 RDMA 驱动程序的映像；在支持 RDMA 的 VM 上部署池节点后，这些驱动程序可让池节点访问 Azure RDMA 网络  
+* 预装或未预装 RDMA 驱动程序的选定映像。 在支持 RDMA 的 VM 上部署池节点后，这些驱动程序可让池节点访问 Azure RDMA 网络。 
 
 也可以从与 Batch 兼容的 Linux 分发版之一上运行 Docker 的 VM 创建自定义映像。 如果选择提供你自己的自定义 Linux 映像，请参阅[使用托管自定义映像创建虚拟机池](batch-custom-images.md)中的说明。
 
@@ -222,41 +222,62 @@ CloudPool pool = batchClient.PoolOperations.CreatePool(
 ...
 ```
 
-
 ## <a name="container-settings-for-the-task"></a>任务容器设置
 
-若要在计算节点上运行容器任务，必须指定特定于容器的设置，例如容器运行选项、要使用的映像，以及注册表。
+若要在启用了容器的池上运行容器任务，请指定特定于容器的设置。 设置包括要使用的映像、注册表和容器运行选项。
 
-使用任务类中的 `ContainerSettings` 属性来配置特定于容器的设置。 这些设置由 [TaskContainerSettings](/dotnet/api/microsoft.azure.batch.taskcontainersettings) 类定义。
+* 使用任务类中的 `ContainerSettings` 属性来配置特定于容器的设置。 这些设置由 [TaskContainerSettings](/dotnet/api/microsoft.azure.batch.taskcontainersettings) 类定义。
 
-如果在容器映像上运行任务，[云任务](/dotnet/api/microsoft.azure.batch.cloudtask)和[作业管理器任务](/dotnet/api/microsoft.azure.batch.cloudjob.jobmanagertask)将需要容器设置。 但是，[启动任务](/dotnet/api/microsoft.azure.batch.starttask)、[作业准备任务](/dotnet/api/microsoft.azure.batch.cloudjob.jobpreparationtask)和[作业发布任务](/dotnet/api/microsoft.azure.batch.cloudjob.jobreleasetask)都不需要容器设置（即，它们可以在容器上下文中或直接在节点上运行）。
+* 如果在容器映像上运行任务，[云任务](/dotnet/api/microsoft.azure.batch.cloudtask)和[作业管理器任务](/dotnet/api/microsoft.azure.batch.cloudjob.jobmanagertask)将需要容器设置。 但是，[启动任务](/dotnet/api/microsoft.azure.batch.starttask)、[作业准备任务](/dotnet/api/microsoft.azure.batch.cloudjob.jobpreparationtask)和[作业发布任务](/dotnet/api/microsoft.azure.batch.cloudjob.jobreleasetask)都不需要容器设置（即，它们可以在容器上下文中或直接在节点上运行）。
 
-可选的 [ContainerRunOptions](/dotnet/api/microsoft.azure.batch.taskcontainersettings.containerrunoptions) 是任务运行的用来创建容器的 `docker create` 命令的附加参数。
+### <a name="container-task-command-line"></a>容器任务命令行
+
+运行容器任务时，Batch 自动使用 [docker create](https://docs.docker.com/engine/reference/commandline/create/) 命令通过任务中指定的映像创建容器。 之后，Batch 会控制容器中的任务执行。 
+
+与非容器 Batch 任务一样，为容器任务设置命令行。 由于 Batch 自动创建容器，因此命令行仅指定将在容器中运行的命令。
+
+如果 Batch 任务的容器映像配置了 [ENTRYPOINT](https://docs.docker.com/engine/reference/builder/#exec-form-entrypoint-example) 脚本，则可以将命令行设置为使用默认的 ENTRYPOINT 或覆盖它： 
+
+* 若要使用容器映像的默认 ENTRYPOINT，请将任务命令行设置为空字符串 `""`。
+
+* 若要覆盖默认的 ENTRYPOINT，或者如果映像没有 ENTRYPOINT，请设置适用于容器的命令行，例如 `/app/myapp` 或 `/bin/sh -c python myscript.py`。
+
+可选的 [ContainerRunOptions](/dotnet/api/microsoft.azure.batch.taskcontainersettings.containerrunoptions) 是为 Batch 用于创建和运行容器的 `docker create` 命令提供的附加参数。 例如，若要为容器设置工作目录，请设置 `--workdir <directory>` 选项。 有关其他选项，请参阅 [docker create](https://docs.docker.com/engine/reference/commandline/create/) 参考。
 
 ### <a name="container-task-working-directory"></a>容器任务工作目录
 
-Azure Batch 容器任务的命令行在容器中的工作目录中执行，该容器与为常规（非容器）任务的环境 Batch 设置非常相似：
+Batch 容器任务在容器的工作目录中执行，该目录与 Batch 为常规（非容器）任务设置的目录非常相似。 请注意，此工作目录与映像中的 [WORKDIR](https://docs.docker.com/engine/reference/builder/#workdir)（如果配置）或默认容器工作目录（Windows容器上的 `C:\` 或 Linux 容器上的 `/`）不同。 
 
-* 以递归方式位于 `AZ_BATCH_NODE_ROOT_DIR`（节点上的 Azure Batch 目录的根）下的所有目录都映射到该容器
+对于 Batch 容器任务：
+
+* 以递归方式位于主机节点上的 `AZ_BATCH_NODE_ROOT_DIR`（Azure Batch 目录的根）下的所有目录都映射到容器中
 * 所有任务环境变量都映射到该容器
-* 应用程序工作目录的设置与常规任务的设置相同，因此可使用应用程序包和资源文件等功能
+* 节点上的任务工作目录 `AZ_BATCH_TASK_WORKING_DIR` 设置为与常规任务相同并映射到容器中。 
 
-因为 Batch 更改了容器中的默认工作目录，所以任务的运行位置不同于典型的容器工作目录（例如，默认情况下，Windows 容器上的 `c:\`、Linux 上的 `/` 或者在容器映像中配置的其他目录）。 若要确保容器应用程序在 Batch 上下文中正常运行，请执行以下操作之一： 
+这些映射允许以与处理非容器任务大致相同的方式处理容器任务。 例如，使用应用程序包安装应用程序，从 Azure 存储访问资源文件，使用任务环境设置，以及在容器停止后保留任务输出文件。
 
-* 确保你的任务命令行（或容器工作目录）指定一个绝对路径（如果尚未如此配置）。
+### <a name="troubleshoot-container-tasks"></a>对容器任务进行故障排除
 
-* 在任务的 ContainerSettings 中，在容器运行选项中设置一个工作目录。 例如，`--workdir /app`。
+如果容器任务未按预期运行，则可能需要获取有关容器映像的 WORKDIR 或 ENTRYPOINT 配置的信息。 若要查看配置，请运行 [docker image inspect](https://docs.docker.com/engine/reference/commandline/image_inspect/) 命令。 
 
-以下 Python 代码片段演示从 Docker 中心拉取的 Ubuntu 容器中运行的基本命令行。 此处，`--rm` 容器运行选项会在任务完成后删除容器。
+如果需要，请根据映像调整容器任务的设置：
+
+* 在任务命令行中指定绝对路径。 如果映像的默认 ENTRYPOINT 用于任务命令行，请确保设置了绝对路径。
+
+* 在任务的容器运行选项中，更改工作目录以匹配映像中的 WORKDIR。 例如，设置 `--workdir /app`。
+
+## <a name="container-task-examples"></a>容器任务示例
+
+以下 Python 代码片段展示了根据从 Docker 中心拉取的虚构映像创建的容器中运行的基本命令行。 此处，`--rm` 容器选项用于在任务完成后删除容器，`--workdir` 选项用于设置工作目录。 该命令行使用一个简单的 shell 命令（可将小文件写入主机上的任务工作目录）覆盖容器 ENTRYPOINT。 
 
 ```python
 task_id = 'sampletask'
 task_container_settings = batch.models.TaskContainerSettings(
-    image_name='ubuntu', 
-    container_run_options='--rm')
+    image_name='myimage', 
+    container_run_options='--rm --workdir /')
 task = batch.models.TaskAddParameter(
     id=task_id,
-    command_line='/bin/echo hello',
+    command_line='/bin/sh -c \"echo \'hello world\' > $AZ_BATCH_TASK_WORKING_DIR/output.txt\"',
     container_settings=task_container_settings
 )
 
@@ -267,11 +288,11 @@ task = batch.models.TaskAddParameter(
 ```csharp
 // Simple container task command
 
-string cmdLine = "c:\myApp.exe";
+string cmdLine = "c:\\app\\myApp.exe";
 
 TaskContainerSettings cmdContainerSettings = new TaskContainerSettings (
-    imageName: "tensorflow/tensorflow:latest-gpu",
-    containerRunOptions: "--rm --read-only"
+    imageName: "myimage",
+    containerRunOptions: "--rm --workdir c:\\app"
     );
 
 CloudTask containerTask = new CloudTask (

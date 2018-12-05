@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 05/17/2018
 ms.custom: it-pro
-ms.openlocfilehash: d0015f40714b639d15245827ae0da3ca0f132df4
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: 6aa2307123d62983f7afde3d871e8aa96e0abb5d
+ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45733391"
+ms.lasthandoff: 11/19/2018
+ms.locfileid: "51976887"
 ---
 # <a name="where-does-microsoft-azure-active-directory-azure-ad-store-identity-data-for-european-customers"></a>Microsoft Azure Active Directory (Azure AD) 在哪个位置存储欧洲客户的标识数据
 Azure AD 可帮助管理用户标识，并创建智能化的访问策略用于帮助保护组织的资源。 标识数据的存储位置基于订阅服务时（例如，订阅 Office 365 或 Azure 时） 组织提供的地址。 有关标识数据存储位置的具体信息，请参阅 Microsoft 信任中心的[数据存储在何处？](https://www.microsoft.com/trustcenter/privacy/where-your-data-is-located)部分。
@@ -25,7 +25,7 @@ Azure AD 可帮助管理用户标识，并创建智能化的访问策略用于�
 
 ## <a name="data-stored-outside-of-european-datacenters-for-european-customers"></a>存储在欧洲数据中心外部的欧洲客户数据
 
-营业地址位于欧洲的组织的大部分 Azure AD 相关欧洲标识数据都会保留在欧洲数据中心。 不会存储在欧洲数据中心的 Azure AD 数据包括：
+营业地址位于欧洲的组织的大部分 Azure AD 相关欧洲标识数据都会保留在欧洲数据中心。 存储在欧洲数据中心并复制到美国数据中心的 Azure AD 数据包括：
 
 - **标识相关的属性**
 

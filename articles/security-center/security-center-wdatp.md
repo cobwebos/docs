@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/20/2018
 ms.author: barclayn
-ms.openlocfilehash: e7bb7f0c4cb63390b91012e071589611991a2866
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.openlocfilehash: 4bd2b72596912d968ad6fc323ce32e620336d932
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49068322"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52316984"
 ---
 # <a name="windows-defender-advanced-threat-protection-with-azure-security-center"></a>Windows Defender 高级威胁防护与 Azure 安全中心
 
@@ -99,12 +99,12 @@ Azure 安全中心客户现在可以使用 Windows Defender ATP 的功能：
 
 3. 如果该命令成功，则 Azure 安全中心仪表板和 Windows Defender ATP 门户中会显示一条新警报。 此警报可能要在几分钟之后才显示。
 
-4. 若要在安全中心查看该警报，请转到“安全警报” >  “可疑的 Powershell 命令行”。
+4. 若要在安全中心查看该警报，请转到“安全警报”>  “可疑的 Powershell 命令行” 。
 
 5. 在调查窗口中，选择相应的链接转到 Windows Defender ATP 门户。
 
 ## <a name="next-steps"></a>后续步骤
 
-- [在 Azure 安全中心设置安全策略](security-center-policies.md)：了解如何配置 Azure 订阅和资源组的安全策略。
+- [在 Azure 安全中心设置安全策略](security-center-azure-policy.md)：了解如何配置 Azure 订阅和资源组的安全策略。
 - [在 Azure 安全中心管理安全建议](security-center-recommendations.md)：了解安全建议如何帮助保护 Azure 资源。
 - [Azure 安全中心的安全性运行状况监视](security-center-monitoring.md)：了解如何监视 Azure 资源的运行状况。

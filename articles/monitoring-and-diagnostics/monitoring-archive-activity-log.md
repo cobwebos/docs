@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/07/2018
 ms.author: johnkem
 ms.component: activitylog
-ms.openlocfilehash: ea29d9052c2389b0c7d145223d3660364cbf2c74
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 33681c7c9e1a625757e3f9403820ed3f469bec64
+ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51016312"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51705780"
 ---
 # <a name="archive-the-azure-activity-log"></a>存档 Azure 活动日志
 本文介绍如何使用 Azure 门户、PowerShell Cmdlet 或跨平台 CLI 将 [**Azure 活动日志**](monitoring-overview-activity-logs.md)存档到存储帐户中。 此选项适用于对保留时长超过 90 天的活动日志进行审核、静态分析或备份（对保留策略具备完全控制权限）。 如果只需将事件保留 90 天或更短的时间，则不需设置到存储帐户的存档，因为在不启用存档的情况下，活动日志事件保留在 Azure 平台中的时间是 90 天。
@@ -27,7 +27,7 @@ ms.locfileid: "51016312"
 在开始之前，需要[创建存储帐户](../storage/common/storage-quickstart-create-account.md)，将活动日志存档到其中。 强烈建议用户不要使用其中存储了其他非监视数据的现有存储帐户，以便更好地控制监视数据所需的访问权限。 但是，如果还要将诊断日志和指标存档到存储帐户，则也可将该存储帐户用于活动日志，使得所有监视数据都位于一个中心位置。 只要配置设置的用户同时拥有两个订阅的相应 RBAC 访问权限，存储帐户就不必与订阅发出日志位于同一订阅中。
 
 > [!NOTE]
->  当前无法将数据存档到安全虚拟网络中的存储帐户。
+>  目前无法将数据存档到在受保护虚拟网络后台创建的存储帐户。
 
 ## <a name="log-profile"></a>日志配置文件
 若要使用下述任意方法存档活动日志，可为订阅设置**日志配置文件**。 日志配置文件定义已存储或流式传输的事件的类型，以及输出 - 存储帐户和/或事件中心。 它还定义存储在存储帐户中的事件的保留策略（需保留的天数）。 如果将保留策略设置为零，事件将无限期存储。 如果不想让事件无限期存储，可将保留策略设置为 1 到 2147483647 之间的任何值。 保留策略按天应用，因此在一天结束时 (UTC)，会删除当天已超过保留策略期限的日志。 例如，假设保留策略的期限为一天，则在今天开始时，会删除前天的日志。 删除过程从 UTC 晚上 12 点开始，但请注意，可能需要最多 24 小时才能将日志从存储帐户中删除。 [可在此处了解日志配置文件的详细信息](monitoring-overview-activity-logs.md#export-the-activity-log-with-a-log-profile)。 

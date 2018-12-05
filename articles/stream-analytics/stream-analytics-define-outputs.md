@@ -2,26 +2,25 @@
 title: 了解 Azure 流分析的输出
 description: 本文介绍 Azure 流分析提供的数据输出选项，包括用于分析结果的 Power BI。
 services: stream-analytics
-author: jasonwhowell
+author: mamccrea
 ms.author: mamccrea
-manager: kfile
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 10/22/2018
-ms.openlocfilehash: 2ef599fe704b184e82de2d704753e3fb4a274a2a
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.date: 11/21/2018
+ms.openlocfilehash: 869941781643d3486506b5a3caed4006019fb3b7
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51257793"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52310028"
 ---
 # <a name="understand-outputs-from-azure-stream-analytics"></a>了解 Azure 流分析的输出
 本文将介绍适用于 Azure 流分析作业的不同类型的输出。 输出可帮助存储和保存流分析作业的结果。 使用输出数据，可进一步进行业务分析和数据的数据仓储。 
 
 设计流分析查询时，使用 [INTO 子句](https://msdn.microsoft.com/azure/stream-analytics/reference/into-azure-stream-analytics)引用输出的名称。 可针对每个作业使用单个输出，如果需要，也可通过在查询中提供多个 INTO 子句，针对每个流式处理作业使用多个输出。
 
-要创建、编辑和测试流分析作业输出，可使用 [Azure 门户](stream-analytics-quick-create-portal.md#configure-output-to-the-job)、[Azure PowerShell](stream-analytics-quick-create-powershell.md#configure-output-to-the-job)、[.Net API](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.streamanalytics.ioutputsoperations?view=azure-dotnet)、[REST API](https://docs.microsoft.com/rest/api/streamanalytics/stream-analytics-output) 和 [Visual Studio](stream-analytics-quick-create-vs.md)。
+要创建、编辑和测试流分析作业输出，可使用 [Azure 门户](stream-analytics-quick-create-portal.md#configure-job-output)、[Azure PowerShell](stream-analytics-quick-create-powershell.md#configure-output-to-the-job)、[.Net API](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.streamanalytics.ioutputsoperations?view=azure-dotnet)、[REST API](https://docs.microsoft.com/rest/api/streamanalytics/stream-analytics-output) 和 [Visual Studio](stream-analytics-quick-create-vs.md)。
 
 部分输出类型支持[分区](#partitioning)，并且[输出批大小](#output-batch-size)可变化以优化吞吐量。
 
@@ -70,8 +69,8 @@ ms.locfileid: "51257793"
 | 输出别名 |在查询中使用的友好名称，用于将查询输出定向到此数据库。 |
 | 数据库 | 数据库的名称（正在向该数据库发送输出）。 |
 | 服务器名称 | SQL 数据库服务器名称。 |
-| 用户名 | 有权写入到数据库的用户名。 |
-| 密码 | 用于连接到数据库的密码 |
+| 用户名 | 有权写入到数据库的用户名。 流分析仅支持 SQL 身份验证。 |
+| 密码 | 用于连接到数据库的密码。 |
 | 表 | 将写入输出的表名称。 表名称区分大小写，并且该表架构应与字段数量以及作业输出正在生成的字段类型完全匹配。 |
 
 > [!NOTE]

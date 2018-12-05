@@ -1,3 +1,16 @@
+---
+author: rothja
+ms.service: billing
+ms.topic: include
+ms.date: 11/09/2018
+ms.author: jroth
+ms.openlocfilehash: 515aeac3531a45080824df126ad674353f70cdb8
+ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52279461"
+---
 | 资源 | 免费 | 共享 | 基本 | 标准 | 高级 (v2) | 隔离 </th> |
 | --- | --- | --- | --- | --- | --- | --- |
 | 每个[应用服务计划](../articles/app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md)的 [Web 应用、移动应用或 API 应用数](https://azure.microsoft.com/services/app-service/)<sup>1</sup> |10 |100 |无限制<sup>2</sup> |无限制<sup>2</sup> |无限制<sup>2</sup> |无限制<sup>2</sup>|
@@ -12,6 +25,8 @@
 | 应用程序体系结构 |32 位 |32 位 |32 位/64 位 |32 位/64 位 |32 位/64 位 |32 位/64 位 |
 | 每个实例的 Web 套接字数<sup>7</sup> |5 |35 |350 |不受限制 |不受限制 |不受限制 |
 | 每个应用程序的并发[调试器连接数](../articles/app-service/web-sites-dotnet-troubleshoot-visual-studio.md) |1 |1 |1 |5 |5 |5 |
+| 每个订阅的应用服务证书数<sup>10</sup>| 不支持 | 不支持 |10 |10 |10 |10 |
+| 每个应用的自定义域数</a> |0（仅 azurewebsites.net 子域）|500 |500 |500 |500 |500 |
 | 自定义域 [SSL 支持](../articles/app-service/app-service-web-tutorial-custom-ssl.md) |不支持。 默认可用的 *.azurewebsites.net 的通配符证书。|不支持。 默认可用的 *.azurewebsites.net 的通配符证书。|无限制的 SNI SSL 连接 |包含无限制的 SNI SSL 连接和 1 个 IP SSL 连接 |包含无限制的 SNI SSL 连接和 1 个 IP SSL 连接 | 包含无限制的 SNI SSL 连接和 1 个 IP SSL 连接|
 | 集成负载均衡器 | |X |X |X |X |X<sup>9</sup> |
 | [始终打开](../articles/app-service/web-sites-configure.md) | | |X |X |X |X |
@@ -21,15 +36,15 @@
 | [Azure 计划程序](https://azure.microsoft.com/services/scheduler/)支持 | |X |X |X |X |X |
 | [终结点监视](../articles/app-service/web-sites-monitor.md) | | |X |X |X |X |
 | [过渡槽](../articles/app-service/web-sites-staged-publishing.md) | | | |5 |20 |20 |
-| 每个应用的自定义域数</a> |0（仅 azurewebsites.net 子域）|500 |500 |500 |500 |500 |
-| SLA | |  |99.9% |99.95%|99.95%|99.95%|
+| SLA | |  |99.9% |99.95%|99.95%|99.95%|  
 
-<sup>1</sup>除非特别说明，否则应用和存储配额依每个应用服务计划为准。  
-<sup>2</sup>可以在这些计算机上托管的应用的实际数目取决于应用的活动、计算机实例的大小和相应的资源利用率。  
-<sup>3</sup>专用实例可有不同的大小。 有关详细信息，请参阅[应用服务定价](https://azure.microsoft.com/pricing/details/app-service/)。  
-<sup>4</sup>收到请求时允许更多。
-<sup>5</sup>存储限制是跨相同应用服务计划中所有应用的内容总大小。 [应用服务环境](../articles/app-service/environment/app-service-web-configure-an-app-service-environment.md#storage)中提供了更多存储选项  
-<sup>6</sup>这些资源受到专用实例上的物理资源（实例大小和实例数）的限制。  
-<sup>7</sup>如果将基本层的某个应用扩展为两个实例，则其中每个实例有 350 个并发连接。  
-<sup>8</sup>按需、按计划或作为应用服务实例内的后台任务连续运行自定义可执行文件和/或脚本。 连续执行 WebJob 需要使用“始终打开”。 计划的 WebJob 需要使用 Azure 计划程序免费或标准版。 可以在应用服务实例中运行的 WebJob 的数量没有预定义的限制，但是存在实际限制，这些限制取决于应用程序代码尝试执行的任务。   
-<sup>9</sup>应用服务独立 SKU 能够使用 Azure 负载均衡器实现内部负载均衡 (ILB)，这表示没有来自 Internet 的公共连接。 因此，必须从能够直接访问 ILB 网络终结点的计算机使用 ILB 独立应用服务的某些功能。
+<sup>1</sup> 除非另有说明，否则应用和存储配额依每个应用服务计划为准。  
+<sup>2</sup> 可以在这些计算机上托管的应用的实际数目取决于应用的活动、计算机实例的大小和相应的资源利用率。  
+<sup>3</sup> 专用实例的大小可能有所不同。 有关详细信息，请参阅[应用服务定价](https://azure.microsoft.com/pricing/details/app-service/)。  
+<sup>4</sup> 收到请求时允许更多。  
+<sup>5</sup> 存储限制是跨同一应用服务计划中所有应用的内容总大小。  
+<sup>6</sup> 这些资源受到专用实例上的物理资源（实例大小和实例数）的约束。  
+<sup>7</sup> 如果将基本层中的某个应用扩展为两个实例，其中每个实例则有 350 个并发连接。  
+<sup>8</sup> 按需、按计划或持续作为应用服务实例内的后台任务运行自定义可执行文件和/或脚本。 连续执行 WebJob 需要使用“始终打开”。 计划的 WebJob 需要使用 Azure 计划程序免费或标准版。 可以在应用服务实例中运行的 WebJob 的数量没有预定义的限制，但是存在实际限制，这些限制取决于应用程序代码尝试执行的任务。  
+<sup>9</sup> 独立应用服务 SKU 能够通过使用 Azure 负载均衡器实现内部负载均衡 (ILB)，这表示没有来自 Internet 的公共连接。 因此，必须从能够直接访问 ILB 网络终结点的计算机使用 ILB 独立应用服务的某些功能。  
+<sup>10</sup> 每个订阅的应用服务证书配额限制可以通过支持请求增加到最大限制 200。  

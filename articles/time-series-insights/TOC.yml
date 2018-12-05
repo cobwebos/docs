@@ -1,11 +1,11 @@
 items:
 - name: Azure IoT 基础
   href: ../iot-fundamentals/index.yml
-- name: Azure 时序见解文档
+- name: Azure Time Series Insights 文档
   href: index.yml
 - name: 概述
   items:
-  - name: 关于时序见解（预览版）
+  - name: 关于时序见解
     href: time-series-insights-update-overview.md
 - name: 快速入门
   items:
@@ -29,7 +29,7 @@ items:
       href: tutorial-create-populate-tsi-environment.md
   - name: Azure 时序见解（预览版）
     items:
-    - name: 创建 TSI 环境
+    - name: Azure TSI（预览版）教程
       href: time-series-insights-update-create-environment.md
 - name: 概念
   items:
@@ -51,9 +51,9 @@ items:
       href: time-series-insights-update-storage-ingress.md
     - name: 用例
       href: time-series-insights-update-use-cases.md
-    - name: 时序模型
+    - name: 数据建模
       href: time-series-insights-update-tsm.md
-    - name: 时序查询
+    - name: 数据查询
       href: time-series-insights-update-tsq.md
     - name: 在资源管理器更新版中将数据可视化
       href: time-series-insights-update-explorer.md
@@ -109,25 +109,29 @@ items:
   items:
   - name: 时序见解
     items:
-    - name: 时序见解 GA
+    - name: Azure 时序见解 (GA)
+      href: /rest/api/time-series-insights/ga
       items:
       - name: Query
+        href: /rest/api/time-series-insights/ga-query
         items:
         - name: API
-          href: /rest/api/time-series-insights/time-series-insights-reference-queryapi
+          href: /rest/api/time-series-insights/ga-query-api
         - name: 语法
-          href: /rest/api/time-series-insights/time-series-insights-reference-query-syntax
+          href: /rest/api/time-series-insights/ga-query-syntax
       - name: 参考数据 API
+        href: /rest/api/time-series-insights/ga-reference-data-api
     - name: Azure 时序见解（预览版）
+      href: /rest/api/time-series-insights/preview
       items:
       - name: 时序查询
-        href: /rest/api/time-series-insights/time-series-insights-reference-update-tsq
+        href: /rest/api/time-series-insights/preview-query
       - name: 时序模型
-        href: /rest/api/time-series-insights/time-series-insights-reference-update-tsm
+        href: /rest/api/time-series-insights/preview-model
       - name: 时序环境 API
-        href: /rest/api/time-series-insights/time-series-insights-reference-update-env
+        href: /rest/api/time-series-insights/preview-env
       - name: 时序表达式和语法
-        href: /rest/api/time-series-insights/time-series-insights-reference-update-tsx
+        href: /rest/api/time-series-insights/preview-tsx
 - name: 相关内容
   items:
   - name: 解决方案
@@ -176,9 +180,9 @@ items:
     href: https://azure.microsoft.com/support/options/
   - name: 视频
     href: https://azure.microsoft.com/resources/videos/index/?services=time-series-insights
-ms.openlocfilehash: d30b4b2b19a4f055647b4723c91a15a1a977de6d
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: c75c034e0f54b33e28aa7f0ef5d0c18ad0004e55
+ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52849507"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52889985"

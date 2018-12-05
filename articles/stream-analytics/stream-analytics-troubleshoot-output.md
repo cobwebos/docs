@@ -7,13 +7,13 @@ ms.author: sidram
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 10/11/2018
-ms.openlocfilehash: 4209ce8d15bf53381825e8bb3e47f0a16366a436
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.date: 11/21/2018
+ms.openlocfilehash: 5124e06296962f1b673c77bfe318ff48d7fb11aa
+ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49346236"
+ms.lasthandoff: 11/22/2018
+ms.locfileid: "52291317"
 ---
 # <a name="troubleshoot-azure-stream-analytics-outputs"></a>Azure 流分析输出的故障排除
 
@@ -29,7 +29,7 @@ ms.locfileid: "49346236"
       - 如果该作业正在使用事件中心，请检查以查看消息正文是否为 Null。
       
     - 如果“数据转换错误数”大于 0 且在不断增加，则可能出现以下情况：
-      - 作业可能无法反序列化事件。
+      - 输出事件不符合目标接收器的架构。 
       - 事件架构可能与查询中事件的已定义/预期架构不匹配。
       - 事件中某些字段的数据类型可能不符合预期。
       

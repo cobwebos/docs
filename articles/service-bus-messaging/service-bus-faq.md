@@ -8,12 +8,12 @@ ms.service: service-bus-messaging
 ms.topic: article
 ms.date: 11/05/2018
 ms.author: spelluru
-ms.openlocfilehash: a000c599ecf8287af57aec2f6e9d550bbe61f280
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 8beb372c3fae567b23e51d2776dd9a79d837c657
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51279875"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52313811"
 ---
 # <a name="service-bus-faq"></a>服务总线常见问题解答
 
@@ -86,7 +86,7 @@ ms.locfileid: "51279875"
 有关可能的服务总线异常的列表，请参阅[异常概述][Exceptions overview]。
 
 ### <a name="what-is-a-shared-access-signature-and-which-languages-support-generating-a-signature"></a>什么是共享访问签名？哪些语言支持生成签名？
-共享访问签名是基于 SHA–256 安全哈希或 URI 的身份验证机制。 有关如何在 Node、PHP、Java 和 C\# 中生成自有签名的信息，请参阅[共享访问签名][Shared Access Signatures]一文。
+共享访问签名是基于 SHA-256 安全哈希或 URI 的身份验证机制。 有关如何在 Node.js、PHP、Java 和 C\# 中生成自己的签名的信息，请参阅[共享访问签名][Shared Access Signatures]一文。
 
 ## <a name="subscription-and-namespace-management"></a>订阅和命名空间管理
 ### <a name="how-do-i-migrate-a-namespace-to-another-azure-subscription"></a>如何将命名空间迁移到另一个 Azure 订阅中？

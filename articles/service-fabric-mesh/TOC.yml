@@ -10,7 +10,7 @@ items:
   items:
   - name: 部署 Hello World
     href: service-fabric-mesh-quickstart-deploy-container.md
-  - name: 创建 Web 应用并将其部署到 Azure Service Fabric 网格
+  - name: 使用 Visual Studio 创建 Web 应用
     href: service-fabric-mesh-quickstart-dotnet-core.md
 - name: 教程
   items:
@@ -42,26 +42,46 @@ items:
     href: service-fabric-mesh-terminology.md
   - name: Service Fabric 资源
     href: service-fabric-mesh-service-fabric-resources.md
+  - name: 网络和网关
+    href: service-fabric-mesh-networks-and-gateways.md
+  - name: 服务伸缩性
+    href: service-fabric-mesh-scalability.md
   - name: 监视和诊断
     href: service-fabric-mesh-monitoring-diagnostics.md
   - name: 存储状态
     href: service-fabric-mesh-storing-state.md
+  - name: 机密
+    href: service-fabric-mesh-secrets-overview.md
 - name: 操作指南
   items:
   - name: 设置开发环境
     href: service-fabric-mesh-howto-setup-developer-environment-sdk.md
   - name: 设置 Service Fabric 网格 CLI
     href: service-fabric-mesh-howto-setup-cli.md
+  - name: 将现有 .NET 应用容器化
+    href: service-fabric-mesh-howto-containerize-vs.md
+  - name: 优化 Visual Studio 性能
+    href: service-fabric-mesh-howto-optimize-vs.md
+  - name: 配置网关资源
+    href: service-fabric-mesh-howto-configure-gateways.md
+  - name: 自动缩放服务
+    href: service-fabric-mesh-howto-auto-scale-services.md
   - name: 使用 Azure 文件卷存储状态
     href: service-fabric-mesh-howto-deploy-app-azurefiles-volume.md
-  - name: 独立缩放应用中的微服务
-    href: service-fabric-mesh-howto-app-scale-out.md
+  - name: 使用 Service Fabric 可靠磁盘卷存储状态
+    href: service-fabric-mesh-howto-deploy-app-sfreliable-disk-volume.md
+  - name: 管理机密
+    href: service-fabric-mesh-howto-manage-secrets.md
+  - name: 查找示例
+    href: service-fabric-mesh-howto-find-samples.md
 - name: 引用
   items:
   - name: Service Fabric 网格资源提供程序 REST API
     href: /rest/api/servicefabric/sfmeshrp-index
   - name: Service Fabric 客户端资源 REST API
     href: /rest/api/servicefabric/sfclient-index#service-fabric-resource-model
+  - name: Service Fabric Maven CLI 参考
+    href: service-fabric-mesh-reference-maven.md
 - name: 资源
   items:
   - name: 常见问题
@@ -78,9 +98,9 @@ items:
     href: https://azure.microsoft.com/updates/?product=service-fabric-mesh
   - name: 区域可用性
     href: https://azure.microsoft.com/regions/services/
-ms.openlocfilehash: e29d383397b202578326d1db34265eddf5f7c40a
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: a510d3eeace6125e25faf4088cee16389001b3d9
+ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50155110"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52888437"

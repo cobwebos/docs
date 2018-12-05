@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/18/2017
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 7f34b0015a4a6d7b8c2c23f539cf21232adaec58
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 5d5eee525c6f071840d186cb6bd54faf9bf2787b
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46304666"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52310661"
 ---
 # <a name="troubleshoot-connectivity-issues-with-azure-ad-connect"></a>使用 Azure AD Connect 排查连接问题
 本文说明 Azure AD Connect 与 Azure AD 之间的连接的工作方式，以及如何排查连接问题。 这些问题很有可能出现在包含代理服务器的环境中。
@@ -46,7 +46,7 @@ Azure AD Connect 使用现代身份验证（使用 ADAL 库）来进行身份验
 | --- | --- | --- |
 | mscrl.microsoft.com |HTTP/80 |用于下载 CRL 列表。 |
 | \*.verisign.com |HTTP/80 |用于下载 CRL 列表。 |
-| \*.entrust.com |HTTP/80 |用于为 MFA 下载 CRL 列表。 |
+| \*.entrust.net |HTTP/80 |用于为 MFA 下载 CRL 列表。 |
 | \*.windows.net |HTTPS/443 |用于登录 Azure AD。 |
 | secure.aadcdn.microsoftonline p.com |HTTPS/443 |用于 MFA。 |
 | \*.microsoftonline.com |HTTPS/443 |用于配置 Azure AD 目录并导入/导出数据。 |
@@ -77,7 +77,7 @@ Azure AD Connect 使用现代身份验证（使用 ADAL 库）来进行身份验
 如果安装向导已成功连接到 Azure AD，但无法验证密码本身，将出现此错误：  
 ![badpassword](./media/tshoot-connect-connectivity/badpassword.png)
 
-* 密码是否为临时密码并且必须更改？ 它确实是正确的密码吗？ 请尝试登录到 https://login.microsoftonline.com （在 Azure AD Connect 服务器以外的另一台计算机上），并验证该帐户是否可用。
+* 密码是否为临时密码并且必须更改？ 它确实是正确的密码吗？  请尝试登录到 https://login.microsoftonline.com （在 Azure AD Connect 服务器以外的另一台计算机上），并验证该帐户是否可用。
 
 ### <a name="verify-proxy-connectivity"></a>验证代理连接
 若要验证 Azure AD Connect 服务器是否确实与代理和 Internet 建立了连接，请使用一些 PowerShell 来查看代理是否允许 Web 请求。 在 PowerShell 命令提示符下运行 `Invoke-WebRequest -Uri https://adminwebservice.microsoftonline.com/ProvisioningService.svc`。 （从技术上讲，第一个调用是对 https://login.microsoftonline.com 发出的并且此 URI 也能正常运行，但另一个 URI 的响应速度更快。）

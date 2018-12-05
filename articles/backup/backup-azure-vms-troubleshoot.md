@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 8/7/2018
 ms.author: trinadhk
-ms.openlocfilehash: 90e03c66717cafc1cd33f4629e88aba8e76c2c3f
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: dbd49166bbcb6bbd648b6a64f7eb97d8073f33fc
+ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51245713"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51706817"
 ---
 # <a name="troubleshoot-azure-virtual-machine-backup"></a>Azure 虚拟机备份疑难解答
 可以参考下表中所列的信息，排查使用 Azure 备份时遇到的错误。
@@ -25,7 +25,7 @@ ms.locfileid: "51245713"
 | VM 代理无法与 Azure 备份服务进行通信。 - 确保 VM 具有网络连接、VM 代理为最新版且正常运行。 有关详细信息，请参阅文章 http://go.microsoft.com/fwlink/?LinkId=800034。 |如果 VM 代理出现问题，或以某种方式阻止了对 Azure 基础结构的网络访问，则会引发此错误。 [详细了解](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md#UserErrorGuestAgentStatusUnavailable-vm-agent-unable-to-communicate-with-azure-backup)如何调试 VM 快照问题。<br> 如果 VM 代理未导致任何问题，请重启 VM。 VM 状态错误可能导致出现问题，重启 VM 会重置状态。 |
 | VM 处于失败预配状态 - 请重启 VM，并确保 VM 正在运行或已关闭。 | 当一个扩展失败导致 VM 状态为失败预配状态时，会出现此错误。 转到扩展列表，查看是否有失败的扩展，将其删除并尝试重启虚拟机。 如果所有扩展的状态都为正在运行，请检查 VM 代理服务是否正在运行。 如果未运行，请重启 VM 代理服务。 |
 | 托管磁盘的 VMSnapshot 扩展操作失败 - 请重试备份操作。 如果问题仍然存在，请按照 http://go.microsoft.com/fwlink/?LinkId=800034 中的说明操作。 如果该问题仍然存在，请联系 Microsoft 支持部门 | 备份服务未能触发快照时，会发生此错误。 [详细了解](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md#ExtentionOperationFailed-vmsnapshot-extension-operation-failed)如何调试 VM 快照问题。 |
-| 由于存储帐户可用空间不足，无法复制虚拟机快照 - 请确保存储帐户的可用空间等效于附加到虚拟机的高级存储磁盘上存在的数据 | 对于 VM 备份堆栈 V1 上的高级 VM，会将快照复制到存储帐户。 这是为了确保适用于快照的备份管理流量不会限制使用高级磁盘的应用程序可用的 IOPS 数。 Microsoft 建议仅分配总存储帐户空间的 50% (17.5 TB)，以便 Azure 备份服务可以将快照复制到存储帐户，并将数据从存储帐户中的复制位置传输到保管库。 | 
+| 由于存储帐户可用空间不足，无法复制虚拟机快照 - 请确保存储帐户的可用空间等效于附加到虚拟机的高级存储磁盘上存在的数据 | 对于 VM 备份堆栈 V1 上的高级 VM，会将快照复制到存储帐户。 这是为了确保适用于快照的备份管理流量不会限制使用高级磁盘的应用程序可用的 IOPS 数。 Microsoft 建议仅分配总存储帐户空间的 50% (17.5 TB)，以便 Azure 备份服务可以将快照复制到存储帐户，并将数据从存储帐户中的复制位置传输到保管库。 |
 | 无法执行操作，因为 VM 代理没有响应 |如果 VM 代理出现问题，或以某种方式阻止了对 Azure 基础结构的网络访问，则会引发此错误。 对于 Windows VM，请检查服务中的 VM 代理服务状态，以及代理是否显示在控制面板的程序中。 尝试从控制面板中删除程序，再重新安装代理，如[下](#vm-agent)所述。 重新安装代理后，将触发临时备份进行验证。 |
 | 恢复服务扩展操作失败。 - 确保虚拟机上有最新的虚拟机代理，并且代理服务正在运行。 请重试备份操作。 如果备份操作失败，请联系 Microsoft 支持部门。 |VM 代理过期会引发此错误。 请参阅以下“更新 VM 代理”部分，更新 VM 代理。 |
 | 虚拟机不存在。 - 请确保该虚拟机存在，或选择其他虚拟机。 |当主 VM 已删除，而备份策略仍继续查找要执行备份的 VM 时，会出现此错误。 若要修复此错误，请执行以下操作： <ol><li> 使用相同的名称和相同的资源组名称 [云服务名称] 重新创建虚拟机，<br>（或者）<br></li><li>停止保护虚拟机，无需删除备份数据。 [更多详细信息](https://go.microsoft.com/fwlink/?LinkId=808124)</li></ol> |
@@ -39,7 +39,7 @@ ms.locfileid: "51245713"
 | 找不到 Azure 虚拟机。 |当主 VM 已删除，而备份策略仍继续查找已删除的 VM 时，会出现此错误。 若要修复此错误，请执行以下操作： <ol><li>使用相同的名称和相同的资源组名称 [云服务名称] 重新创建虚拟机， <br>（或者） <li> 禁用对此 VM 的保护，从而不创建备份作业。 </ol> |
 | 虚拟机上不存在虚拟机代理 - 请安装任何必备组件和 VM 代理，并重启操作。 |[详细了解](#vm-agent)如何安装 VM 代理以及如何验证 VM 代理安装。 |
 | 快照操作失败，因为 VSS 编写器处于错误状态 |需重新启动处于错误状态的 VSS（卷影复制服务）编写器。 为此，请在提升权限的命令提示符处运行 ```vssadmin list writers```。 输出包含所有 VSS 编写器及其状态。 对于每个状态不为“[1] 稳定”的 VSS 编写器，请在提升权限的命令提示符处运行以下命令，以便重启 VSS 编写器：<br> ```net stop serviceName``` <br> ```net start serviceName```|
-| 快照操作失败，因为对配置进行分析失败 |发生这种情况是因为以下 MachineKeys 目录的权限已更改：_%systemdrive%\programdata\microsoft\crypto\rsa\machinekeys_ <br>请运行以下命令，验证 MachineKeys 目录的权限是否为默认权限：<br>_icacls %systemdrive%\programdata\microsoft\crypto\rsa\machinekeys_ <br><br> 默认权限为：<br>Everyone:(R,W) <br>BUILTIN\Administrators:(F)<br><br>如果看到 MachineKeys 目录的权限不同于默认权限，请执行以下步骤来更正权限、删除证书以及触发备份。<ol><li>修复 MachineKeys 目录上的权限。<br>对目录使用 Explorer 安全属性和高级安全设置，将权限重新设为默认值。 从目录中删除所有用户对象（默认值除外），确保 Everyone 权限对以下各项具有特殊访问权限：<br>-列出文件夹/读取数据 <br>-读取属性 <br>-读取扩展的属性 <br>-创建文件/写入数据 <br>-创建文件夹/追加数据<br>-写入属性<br>-写入扩展的属性<br>-读取权限<br><br><li>删除其中发布对象为经典部署模式或 Windows Azure CRP 证书生成器的所有证书。<ul><li>[打开证书（本地计算机）控制台](https://msdn.microsoft.com/library/ms788967(v=vs.110).aspx)<li>在“个人” > “证书”下，删除其中发布对象为经典部署模式或 Windows Azure CRP 证书生成器的所有证书。</ul><li>触发 VM 备份作业。 </ol>|
+| 快照操作失败，因为对配置进行分析失败 |发生这种情况是因为以下 MachineKeys 目录的权限已更改：_%systemdrive%\programdata\microsoft\crypto\rsa\machinekeys_ <br> 请运行以下命令，验证 MachineKeys 目录的权限是否为默认权限：<br>_icacls %systemdrive%\programdata\microsoft\crypto\rsa\machinekeys_ <br><br> 默认权限为：<br>Everyone:(R,W) <br>BUILTIN\Administrators:(F)<br><br>如果看到 MachineKeys 目录的权限不同于默认权限，请执行以下步骤来更正权限、删除证书以及触发备份。<ol><li>修复 MachineKeys 目录上的权限。<br>对目录使用 Explorer 安全属性和高级安全设置，将权限重新设为默认值。 从目录中删除所有用户对象（默认值除外），确保 Everyone 权限对以下各项具有特殊访问权限：<br>-列出文件夹/读取数据 <br>-读取属性 <br>-读取扩展的属性 <br>-创建文件/写入数据 <br>-创建文件夹/追加数据<br>-写入属性<br>-写入扩展的属性<br>-读取权限<br><br><li>删除其中发布对象为经典部署模式或 Windows Azure CRP 证书生成器的所有证书。<ul><li>[打开证书（本地计算机）控制台](https://msdn.microsoft.com/library/ms788967(v=vs.110).aspx)<li>在“个人” > “证书”下，删除其中发布对象为经典部署模式或 Windows Azure CRP 证书生成器的所有证书。</ul><li>触发 VM 备份作业。 </ol>|
 | Azure 备份服务对 Key Vault 没有足够的权限，无法备份加密的虚拟机。 |应在 PowerShell 中使用 [PowerShell 文档](backup-azure-vms-automation.md)的**启用备份**部分中所述的步骤向备份服务提供这些权限。 |
 |快照扩展安装失败，出现错误“COM+ was unable to talk to the Microsoft Distributed Transaction Coordinator”（COM+ 无法与 Microsoft 分布式事务处理协调器通信） | 通过提升权限的命令提示符（例如 net start COMSysApp）启动 Windows 服务“COM + 系统应用程序”。 <br>如果此服务启动失败，则执行下述操作：<ol><li> 确保“分布式事务处理协调器”服务的登录帐户为“网络服务”。 如果不是，请将登录帐户更改为“网络服务”，重启此服务，然后尝试启动“COM + 系统应用程序”。<li>如果“COM + 系统应用程序”无法启动，请按照以下步骤卸载/安装“分布式事务处理协调器”服务：<br> - 停止 MSDTC 服务<br> - 打开命令提示符 (cmd) <br> - 运行 ```msdtc -uninstall``` 命令 <br> - 运行 ```msdtc -install``` 命令 <br> - 启动 MSDTC 服务<li>启动 Windows 服务“COM + 系统应用程序”。 “COM + 系统应用程序”启动后，从 Azure 门户触发备份作业。</ol> |
 |  由于 COM + 错误导致快照操作失败 | 建议措施是，重启 Windows 服务“COM + 系统应用程序”（通过提升的命令提示符 net start COMSysApp）。 如果此问题一再出现，请重启 VM。 如果重启 VM 不起作用，请尝试[删除 VMSnapshot 扩展](https://docs.microsoft.com/azure/backup/backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout#cause-3-the-backup-extension-fails-to-update-or-load)并手动触发备份。 |
@@ -59,16 +59,16 @@ ms.locfileid: "51245713"
 ## <a name="restore"></a>还原
 | 错误详细信息 | 解决方法 |
 | --- | --- |
-| 发生云内部错误，还原失败 |<ol><li>使用 DNS 设置配置了你正在尝试还原的云服务。 可以检查 <br>$deployment = Get-AzureDeployment -ServiceName "ServiceName" -Slot "Production"     Get-AzureDns -DnsSettings $deployment.DnsSettings<br>如果配置了地址，则表示配置了 DNS 设置。<br> <li>尝试还原的云服务配置了 ReservedIP，且云服务中现有的 VM 处于停止状态。<br>可以使用以下 PowerShell cmdlet 检查云服务是否有保留的 IP：<br>$deployment = Get-AzureDeployment -ServiceName "servicename" -Slot "Production" $dep.ReservedIPName <br><li>正在尝试还原同一云服务中具有以下特殊网络配置的虚拟机。 <br>- 采用负载均衡器配置的虚拟机（内部和外部）<br>- 具有多个保留 IP 的虚拟机<br>- 具有多个 NIC 的虚拟机<br>请在 UI 中选择新的云服务，或者参阅[还原注意事项](backup-azure-arm-restore-vms.md#restore-vms-with-special-network-configurations)，了解具有特殊网络配置的 VM。</ol> |
-| 所选 DNS 名称已被使用 - 请指定其他 DNS 名称，并重试。 |此处的 DNS 名称是指云服务名称（通常以 .cloudapp.net 结尾）。 此名称必须是唯一名称。 如果遇到此错误，则需在还原过程中选择其他 VM 名称。 <br><br> 此错误仅向 Azure 门户用户显示。 通过 PowerShell 进行的还原操作会成功，因为它只还原磁盘，不创建 VM。 如果在磁盘还原操作之后显式创建 VM，则会遇到该错误。 |
-| 指定的虚拟网络配置不正确 - 请指定其他虚拟网络配置，并重试。 |无 |
+| 发生云内部错误，还原失败 |<ol><li>使用 DNS 设置配置了你正在尝试还原的云服务。 可以检查 <br>$deployment = Get-AzureDeployment -ServiceName "ServiceName" -Slot "Production"     Get-AzureDns -DnsSettings $deployment.DnsSettings<br>如果配置了地址，则表示配置了 DNS 设置。<br> <li>尝试还原的云服务配置了 ReservedIP，且云服务中现有的 VM 处于停止状态。<br>可以使用以下 PowerShell cmdlet 检查云服务是否有保留的 IP：<br>$deployment = Get-AzureDeployment -ServiceName "servicename" -Slot "Production" $dep.ReservedIPName <br><li>正在尝试还原同一云服务中具有以下特殊网络配置的虚拟机。 <br>- 采用负载均衡器配置的虚拟机（内部和外部）<br>- 具有多个保留 IP 的虚拟机<br>- 具有多个 NIC 的虚拟机<br> 请在 UI 中选择新的云服务，或参阅[还原注意事项](backup-azure-arm-restore-vms.md#restore-vms-with-special-network-configurations)，了解具有特殊网络配置的 VM。</ol> |
+| 所选 DNS 名称已被使用 - 请指定其他 DNS 名称，然后重试。 |此处的 DNS 名称是指云服务名称（通常以 .cloudapp.net 结尾）。 此名称必须是唯一名称。 如果遇到此错误，则需在还原过程中选择其他 VM 名称。 <br><br> 此错误仅向 Azure 门户用户显示。 通过 PowerShell 进行的还原操作会成功，因为它只还原磁盘，不创建 VM。 如果在磁盘还原操作之后显式创建 VM，则会遇到该错误。 |
+| 指定的虚拟网络配置不正确 - 请指定其他虚拟网络配置，然后重试。 |无 |
 | 指定的云服务使用的是保留 IP，这不符合要还原的虚拟机的配置 - 请指定其他不使用保留 IP 的云服务，或者选择其他用于还原的恢复点。 |无 |
 | 云服务已达到输入终结点的数目限制 - 请重新尝试该操作，指定其他云服务或使用现有终结点。 |无 |
 | 恢复服务保管库和目标存储帐户位于两个不同的区域 - 请确保在还原操作中指定的存储帐户与恢复服务保管库位于相同的 Azure 区域。 |无 |
 | 不支持为还原操作指定的存储帐户 - 仅支持具有本地冗余或地域冗余复制设置的“基本/标准”存储帐户。 请选择支持的存储帐户 |无 |
 | 针对还原操作指定的存储帐户类型不处于在线状态 - 请确保在还原操作中指定的存储帐户处于在线状态 |在 Azure 存储中出现暂时性错误或断电时，可能会发生这种情况。 请选择另一个存储帐户。 |
 | 已达到资源组配额限制 - 请从 Azure 门户中删除某些资源组，或者与 Azure 支持部门联系，请求他们提高限制。 |无 |
-| 所选子网不存在 - 请选择已存在的子网 |无 |
+| 所选子网不存在 - 请选择存在的子网 |无 |
 | 备份服务没有权限访问订阅中的资源。 |若要解决此问题，请先使用[选择 VM 还原配置](backup-azure-arm-restore-vms.md#choose-a-vm-restore-configuration)的**还原已备份磁盘**部分中提到的步骤还原磁盘。 之后，使用[基于还原的磁盘创建 VM](backup-azure-vms-automation.md#create-a-vm-from-restored-disks) 中提到的 PowerShell 步骤基于还原的磁盘创建完整的 VM。 |
 
 ## <a name="backup-or-restore-taking-time"></a>备份或还原需要一定时间
@@ -111,8 +111,8 @@ ms.locfileid: "51245713"
 VM 备份依赖于向底层存储发出快照命令。 如果无法访问存储或者快照任务执行延迟，则备份作业可能会失败。 以下因素可能会导致快照任务失败。
 
 1. 使用 NSG 阻止对存储进行网络访问<br>
-    详细了解如何使用 IP 允许列表或代理服务器[启用对存储的网络访问权限](backup-azure-arm-vms-prepare.md#establish-network-connectivity)。
-2. 配置了 Sql Server 备份的 VM 可能会导致快照任务延迟 <br>
+    详细了解如何使用 IP 白名单或代理服务器[启用对存储的网络访问权限](backup-azure-arm-vms-prepare.md#establish-network-connectivity)。
+2. 配置了 SQL Server 备份的 VM 可能会导致快照任务延迟 <br>
    默认情况下，VM 备份在 Windows VM 上创建 VSS 完整备份。 运行 SQL Server 且配置有 SQL Server 备份的 VM 可能出现快照延迟。 如果快照延迟导致备份失败，请设置如下注册表项。
 
    ```
@@ -139,7 +139,7 @@ VM 备份依赖于向底层存储发出快照命令。 如果无法访问存储�
 
 正确完成名称解析后，还需要提供对 Azure IP 的访问权限。 若要取消阻止对 Azure 基础结构的访问，请执行以下步骤之一：
 
-1. 将 Azure 数据中心 IP 范围加入允许列表。
+1. 将 Azure 数据中心 IP 范围加入白名单。
    * 获取要列入允许列表的 [Azure 数据中心 IP](https://www.microsoft.com/download/details.aspx?id=41653) 列表。
    * 使用 [New-NetRoute](https://docs.microsoft.com/powershell/module/nettcpip/new-netroute) cmdlet 取消阻止 IP。 在 Azure VM 上提升权限的 PowerShell 窗口中运行此 cmdlet（以管理员身份运行）。
    * 向 NSG 添加规则（如果已创建规则），以允许访问这些 IP。
@@ -148,7 +148,7 @@ VM 备份依赖于向底层存储发出快照命令。 如果无法访问存储�
    * 向 NSG 添加规则（如果已创建规则），以允许从 HTTP 代理访问 INTERNET。
 
 > [!NOTE]
-> 必须在来宾内启用 DHCP，才能正常进行 IaaS VM 备份。  如果需要静态专用 IP 地址，应该通过平台配置该 IP。 VM 内的 DHCP 选项应保持启用。
-> 查看有关[设置静态内部专用 IP](../virtual-network/virtual-networks-reserved-private-ip.md) 的详细信息。
+> 必须在来宾内启用 DHCP，才能正常进行 IaaS VM 备份。 如果需要静态专用 IP，则应通过 Azure 门户或 PowerShell 进行配置，同时确保启用 VM 内的 DHCP 选项。
+> 有关如何通过 PowerShell 设置静态 IP 的详细信息，请参阅[经典 VM](../virtual-network/virtual-networks-reserved-private-ip.md#how-to-add-a-static-internal-ip-to-an-existing-vm) 和[资源管理器 VM](../virtual-network/virtual-networks-static-private-ip-arm-ps.md#change-the-allocation-method-for-a-private-ip-address-assigned-to-a-network-interface)。
 >
 >

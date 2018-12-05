@@ -13,20 +13,20 @@ ms.topic: conceptual
 ms.date: 10/10/2018
 ms.reviewer: pharring
 ms.author: mbullwin
-ms.openlocfilehash: 6dd39fddd99f5f8ea9329f21c271ed4c1063362d
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: 9d0cb566ffb8fbec4b99b0f0eeca79b21d1b0dde
+ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49078964"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52335123"
 ---
 # <a name="debug-snapshots-on-exceptions-in-net-apps"></a>.NET 应用中发生异常时的调试快照
 
 发生异常时，可自动从实时 Web 应用程序收集调试快照。 快照显示发生异常时源代码和变量的状态。 [Azure Application Insights](app-insights-overview.md) 中的快照调试程序（预览版）可监视来自 Web 应用的异常遥测数据。 它可收集常出现的异常的调试快照，为诊断生产中的问题提供所需信息。 请将[快照收集器 NuGet 包](http://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector)添加到应用程序，并按需在 [ApplicationInsights.config](app-insights-configuration-with-applicationinsights-config.md) 中配置收集参数。快照显示在 Application Insights 门户中的[异常](app-insights-asp-net-exceptions.md)区域中。
 
-可在门户中查看调试快照，查看调用堆栈并检查每个调用堆栈帧中的变量。 若要获取更强大的调试体验与源代码，请[下载用于 Visual Studio 的快照调试程序扩展](https://aka.ms/snapshotdebugger)，在 Visual Studio 2017 Enterprise 中打开快照。 在 Visual Studio 中，还可以[将快照设置为以交互方式拍摄快照](https://aka.ms/snappoint)，而无需等待异常。
+可在门户中查看调试快照，查看调用堆栈并检查每个调用堆栈帧中的变量。 若要获取更强大的调试体验与源代码，请在 Visual Studio 2017 Enterprise 中打开快照。 在 Visual Studio 中，还可以[将快照设置为以交互方式拍摄快照](https://aka.ms/snappoint)，而无需等待异常。
 
-调试快照存储七天。 此保留策略基于每个应用程序进行设置。 如果需要增加此值，则可以通过在 Azure 门户中建立支持案例来请求增加。
+调试快照存储七天。 此保留策略基于每个应用程序进行设置。 如果需要，可以在 Azure 门户中打开支持案例，以请求增加此值。
 
 快照集合可用于：
 * 运行 .NET Framework 4.5 或更高版本的 .NET Framework 和 ASP.NET 应用程序。
@@ -226,7 +226,7 @@ ms.locfileid: "49078964"
 ## <a name="debug-snapshots-with-visual-studio-2017-enterprise"></a>使用 Visual Studio 2017 Enterprise 调试快照
 1. 单击“下载快照”按钮，下载可在 Visual Studio 2017 Enterprise 中打开的 `.diagsession` 文件。
 
-2. 要打开 `.diagsession` 文件，必须先[下载并安装用于 Visual Studio 的快照调试程序扩展](https://aka.ms/snapshotdebugger)。
+2. 若要打开 `.diagsession` 文件，需要安装 Snapshot Debugger VS 组件。 Snapshot Debugger 组件是 VS 中 ASP.net 工作负载的必需组件，可以从 VS 安装程序中的单独组件列表中选择。 如果你使用的是 15.5 之前的 Visual Studio 版本，则需要从 [VS Marketplace](http://aka.ms/snapshotdebugger) 安装扩展。
 
 3. 打开快照文件后，将出现 Visual Studio 中的“小型转储调试”页面。 单击“调试托管代码”开始调试快照。 快照将打开到引发异常的代码行，以便可以调试进程的当前状态。
 

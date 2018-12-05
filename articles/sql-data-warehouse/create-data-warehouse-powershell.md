@@ -7,15 +7,15 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: manage
-ms.date: 08/01/2018
+ms.date: 11/15/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: ecde7cb3662fc80e7968acfcac99bc8f28e8b15b
-ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
+ms.openlocfilehash: 60bd7cc2084ce64477cf89a5fd28d9a505fbfbfb
+ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43287567"
+ms.lasthandoff: 11/17/2018
+ms.locfileid: "51852633"
 ---
 # <a name="quickstart-create-and-query-an-azure-sql-data-warehouse-with-azure-powershell"></a>快速入门：使用 Azure PowerShell 创建和查询 Azure SQL 数据仓库
 
@@ -31,7 +31,7 @@ ms.locfileid: "43287567"
 >
 >
 
-## <a name="log-in-to-azure"></a>登录 Azure
+## <a name="sign-in-to-azure"></a>登录 Azure
 
 使用 [Add-AzureRmAccount](/powershell/module/azurerm.profile/add-azurermaccount) 命令登录到 Azure 订阅，并按照屏幕上的说明进行操作。
 
@@ -45,10 +45,10 @@ Add-AzureRmAccount
 Get-AzureRmSubscription
 ```
 
-如果需要使用与默认订阅不同的订阅，请运行 [Select-AzureRmSubscription](/powershell/module/azurerm.profile/select-azurermsubscription)。
+如果需要使用与默认订阅不同的订阅，请运行 [Set-AzureRmContext](/powershell/module/azurerm.profile/set-azurermcontext)。
 
 ```powershell
-Select-AzureRmSubscription -SubscriptionName "MySubscription"
+Set-AzureRmContext -SubscriptionName "MySubscription"
 ```
 
 
@@ -60,10 +60,10 @@ Select-AzureRmSubscription -SubscriptionName "MySubscription"
 # The data center and resource name for your resources
 $resourcegroupname = "myResourceGroup"
 $location = "WestEurope"
-# The logical server name: Use a random value or replace with your own value (do not capitalize)
+# The logical server name: Use a random value or replace with your own value (don't capitalize)
 $servername = "server-$(Get-Random)"
-# Set an admin login and password for your database
-# The login information for the server
+# Set an admin name and password for your database
+# The sign-in information for the server
 $adminlogin = "ServerAdmin"
 $password = "ChangeYourAdminPassword1"
 # The ip address range that you want to allow to access your server - change as appropriate
@@ -141,7 +141,7 @@ New-AzureRmSqlDatabase `
 本系列中的其他快速入门教程是在本快速入门的基础上制作的。 
 
 > [!TIP]
-> 如果打算继续使用后续的快速入门教程，请不要清除在本快速入门中创建的资源。 如果不打算继续，请在 Azure 门户中执行以下步骤来删除此快速入门创建的所有资源。
+> 如何打算继续学习后续快速入门教程，请不要清除本快速入门中创建的资源。 如果不打算继续，请在 Azure 门户中执行以下步骤，删除本快速入门创建的所有资源。
 >
 
 ```powershell

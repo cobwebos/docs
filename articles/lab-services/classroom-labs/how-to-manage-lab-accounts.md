@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/17/2018
+ms.date: 11/15/2018
 ms.author: spelluru
-ms.openlocfilehash: 6f9b85ec4821ff2454970136b3c8af2cb0f92154
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: c672634e79cbc0850edfe7f7fbdb0a880d5cf0d8
+ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50140817"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51707123"
 ---
 # <a name="manage-lab-accounts-in-azure-lab-services"></a>管理 Azure 实验室服务中的实验室帐户 
 在 Azure 实验室服务中，实验室帐户是托管实验室（如教室实验室）的容器。 管理员可以设置一个具有 Azure 实验室服务的实验室帐户，并为能够在帐户中创建实验室的实验室所有者提供访问权限。 本文介绍如何创建实验室帐户、查看所有实验室帐户，或者删除实验室帐户。
@@ -114,7 +114,9 @@ ms.locfileid: "50140817"
 
 
 ## <a name="next-steps"></a>后续步骤
-开始使用 Azure 实验室服务设置实验室：
+请参阅以下文章：
 
-- [设置课堂实验室](tutorial-setup-classroom-lab.md)
-- [设置实验室](../tutorial-create-custom-lab.md)
+- [以实验室所有者身份创建并管理实验室](how-to-manage-classroom-labs.md)
+- [以实验室所有者身份设置并发布模板](how-to-create-manage-template.md)
+- [以实验室所有者身份配置并控制实验室的使用](how-to-configure-student-usage.md)
+- [以实验室用户身份访问教室实验室](how-to-use-classroom-lab.md)

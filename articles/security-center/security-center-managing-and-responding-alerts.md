@@ -12,20 +12,20 @@ ms.topic: conceptual
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/3/2018
+ms.date: 11/22/2018
 ms.author: rkarlin
-ms.openlocfilehash: f865a0a609422ae4938a9cccf15d9cd176a9400a
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 779efdd509460ac8175b3922097d701edf8b9b68
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51227784"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52311222"
 ---
 # <a name="managing-and-responding-to-security-alerts-in-azure-security-center"></a>管理和响应 Azure 安全中心的安全警报
 本文档旨在帮助使用 Azure 安全中心来管理和响应安全警报。
 
 > [!NOTE]
-> 若要启用高级检测，请升级到 Azure 安全中心标准版。 可免费试用 60 天。 要升级，请选择 [安全策略](security-center-policies.md)中的“定价层”。 请参阅 [Azure 安全中心定价](security-center-pricing.md)，了解详细信息。
+> 若要启用高级检测，请升级到 Azure 安全中心标准版。 可免费试用 60 天。 要升级，请选择 [安全策略](security-center-azure-policy.md)中的“定价层”。 请参阅 [Azure 安全中心定价](security-center-pricing.md)，了解详细信息。
 >
 >
 
@@ -63,6 +63,20 @@ ms.locfileid: "51227784"
 > [!NOTE]
 > 安全中心生成的安全警报也会显示在“Azure 活动日志”下。 若要深入了解如何访问 Azure 活动日志，请阅读[查看活动日志以审核对资源的操作](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-audit)。
 >
+
+
+### <a name="alert-severity"></a>警报严重性
+
+> [!NOTE]
+> 警报严重性在门户和 REST API 中以不同的方式显示，两者之间的差异已在下面的列表中注明。
+
+-   **高**：资源遭到泄露的可能性较高。 应立即进行调查。 安全中心在所检测出的恶意意图和用于发出警报的发现结果方面的可信度较高。 例如，检测到执行已知的恶意工具的警报，例如用于凭据盗窃的一种常见工具 Mimikatz。 
+-   **中等（在 REST API 中为“低”）**：这可能是一个可疑活动，此类活动可能表明资源遭到泄露。
+安全中心对分析或发现结果的可信度为中等，所检测到的恶意意图的可信度为中等到高。 这些通常是机器学习或基于异常的检测。 例如，从异常位置进行的登录尝试。
+-   **低（在 REST API 中为“信息”）**：这可能是良性或已被阻止的攻击。 
+    - 安全中心不足以肯定此意图是否带有恶意，并且此活动可能无恶意。 例如，日志清除是当攻击者尝试隐藏踪迹时可能发生的操作，但在许多情况下此操作是由管理员执行的例行操作。
+    - 安全中心通常不会告知你攻击何时被阻止的，除非这是我们建议你应该仔细查看的一个引发关注的案例。 
+-   **信息（在 REST API 中为“无提示”）**：只有在深入了解安全事件时或者如果使用具有特定警报 ID 的 REST API，你才会看到信息警报。 一个事件通常由大量警报组成，有一些警报可能仅会单独出现以提供信息，而其他一些警报的上下文中的信息可能值得你深入探查一下。 
 
 ### <a name="filtering-alerts"></a>筛选警报
 可以根据日期、状态和严重性筛选警报。 对于需要缩小安全警报显示范围的情况，筛选警报非常有用。 例如，假设正在调查系统中的潜在危害，需要处理过去 24 小时内发生的安全警报。

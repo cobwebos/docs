@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: 35b80223552181e44beac011f5fb541158466acc
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: bdb2e355b29306c8a78a3a773269baeee13fc9d1
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51255391"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52497541"
 ---
 # <a name="manage-ml-services-cluster-on-azure-hdinsight"></a>管理 Azure HDInsight 上的 ML Services 群集
 
@@ -33,7 +33,7 @@ ms.locfileid: "51255391"
 
 ![并发用户 1](./media/r-server-hdinsight-manage/concurrent-users-1.png)
 
-- 群集登录用户名：一个通过 HDInsight 网关进行身份验证的 HTTP 用户，该网关用于保护所创建的 HDInsight 群集。 此 HTTP 用户用于访问 Ambari UI、YARN UI 以及其他 UI 组件。
+- 群集登录用户名：一个通过 HDInsight 网关进行身份验证的 HTTP 用户，该网关用于保护所创建的 HDInsight 群集。 此 HTTP 用户用于访问 Apache Ambari UI、Apache Hadoop YARN UI 以及其他 UI 组件。
 - 安全外壳 (SSH) 用户名：一个需通过安全外壳访问群集的 SSH 用户。 此用户是适用于所有头节点、辅助角色节点和边缘节点的 Linux 系统中的用户。 因此，可以使用安全外壳访问远程群集中的任何节点。
 
 在 HDInsight 上的 ML Services 群集中使用的 R Studio Server Community 版本仅接受 Linux 用户名和密码作为登录机制， 而不支持传递令牌。 因此，首次尝试在 ML Services 群集上访问 R Studio 时，需要登录两次。
@@ -52,7 +52,7 @@ ms.locfileid: "51255391"
 
 ### <a name="step-1-use-the-created-ssh-user-to-sign-in-to-the-edge-node"></a>步骤 1：使用创建的 SSH 用户登录到边缘节点
 
-按照[使用 SSH 连接到 HDInsight (Hadoop)](../hdinsight-hadoop-linux-use-ssh-unix.md) 中的说明访问边缘节点。 HDInsight 上的 ML Services 群集的边缘节点地址是 `CLUSTERNAME-ed-ssh.azurehdinsight.net`。
+按照[使用 SSH 连接到 HDInsight (Apache Hadoop)](../hdinsight-hadoop-linux-use-ssh-unix.md) 中的说明访问边缘节点。 HDInsight 上的 ML Services 群集的边缘节点地址是 `CLUSTERNAME-ed-ssh.azurehdinsight.net`。
 
 ### <a name="step-2-add-more-linux-users-in-edge-node"></a>步骤 2：在边缘节点中添加更多的 Linux 用户
 
@@ -104,7 +104,7 @@ ms.locfileid: "51255391"
       consoleOutput= TRUE
     )
 
-有关详细信息，请参阅 [How to use RevoScaleR in a Spark compute context](https://docs.microsoft.com/machine-learning-server/r/how-to-revoscaler-spark#more-spark-scenarios)（如何使用 Spark 计算机上下文中的 RevoScaleR）中的“使用 Microsoft Machine Learning Server 作为 Hadoop 客户端”部分
+有关详细信息，请参阅 [How to use RevoScaleR in an Apache Spark compute context](https://docs.microsoft.com/machine-learning-server/r/how-to-revoscaler-spark#more-spark-scenarios)（如何在 Apache Spark 计算上下文中使用 RevoScaleR）中的“使用 Microsoft Machine Learning Server 作为 Hadoop 客户端”部分
 
 ## <a name="use-a-compute-context"></a>使用计算上下文
 
@@ -250,7 +250,7 @@ ms.locfileid: "51255391"
         nodename
     "wn3-mymlser"
 
-## <a name="access-data-in-hive-and-parquet"></a>访问 Hive 和 Parquet 中的数据
+## <a name="access-data-in-apache-hive-and-parquet"></a>访问 Apache Hive 和 Parquet 中的数据
 
 通过 HDInsight ML Services 可直接访问 Hive 和 Parquet 中的数据，以供 Spark 计算上下文中的 ScaleR 函数使用。 这些功能通过名为 RxHiveData 和 RxParquetData 的新 ScaleR 数据源函数提供，它们通过使用 Spark SQL 将数据直接加载到 Spark DataFrame 中，供 ScaleR 进行分析。
 

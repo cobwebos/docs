@@ -1,10 +1,11 @@
 ---
-title: 步骤 2：将数据上传到机器学习实验 | Microsoft Docs
+title: 步骤 2：将数据上传到机器学习工作室试验中 - Azure | Microsoft Docs
 description: 开发预测解决方案演练步骤 2：将存储的公共数据上传到 Azure 机器学习工作室。
 services: machine-learning
 documentationcenter: ''
-author: heatherbshapiro
-ms.author: hshapiro
+author: ericlicoding
+ms.custom: (previous ms.author=hshapiro, author=heatherbshapiro)
+ms.author: amlstudiodocs
 manager: hjerez
 editor: cgronlun
 ms.assetid: 9f4bc52e-9919-4dea-90ea-5cf7cc506d85
@@ -15,14 +16,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/23/2017
-ms.openlocfilehash: dfa6ae8011da0299c270035b8b781d70a8e80119
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 0dc39d42e1ad7cc955b0bdc91d9a4c5cb49a2f2e
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34835784"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52311970"
 ---
-# <a name="walkthrough-step-2-upload-existing-data-into-an-azure-machine-learning-experiment"></a>演练步骤 2：将现有数据载入 Azure 机器学习试验
+# <a name="walkthrough-step-2-upload-existing-data-into-an-azure-machine-learning-studio-experiment"></a>演练步骤 2：将现有数据上传到 Azure 机器学习工作室试验中
 这是演练的第二步，[在 Azure 机器学习中开发预测分析解决方案](walkthrough-develop-predictive-solution.md)
 
 1. [创建机器学习工作区](walkthrough-1-create-ml-workspace.md)

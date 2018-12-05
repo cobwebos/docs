@@ -10,37 +10,31 @@ ms.component: speech-service
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: mahilleb
-ms.openlocfilehash: 088e581da7511797a0f39959d867c6298262462a
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 8d36036332e939075ffac8763bec9c23d8e4a3f7
+ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50242324"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51712885"
 ---
-# <a name="regions-of-the-speech-service"></a>语音服务区域
+# <a name="speech-service-supported-regions"></a>语音服务支持的区域
 
-语音服务可在不同区域使用。
-创建订阅时，可根据需要选择一个可用的区域。
+通过语音服务，应用程序可将音频转换为文本、执行语音翻译以及将文本转换为语音。 多个区域中均提供该服务，这些区域为语音 SDK 和 REST API 使用唯一终结点。
 
-使用订阅时，必须考虑所选的区域。
-
-## <a name="rest-api"></a>REST API
-
-使用 REST API 选择特定于区域的正确终结点。
-有关详细信息，请参阅 [REST API](rest-apis.md)。
+请务必使用与订阅的区域匹配的终结点。
 
 ## <a name="speech-sdk"></a>语音 SDK
 
 在[语音服务 SDK](speech-sdk.md) 中，区域指定为字符串（例如，在 C# 语音 SDK 中作为 `SpeechConfig.FromSubscription` 的参数）。
 
-### <a name="regions-for-speech-recognition-and-translation"></a>语音识别和转换的适用区域
+### <a name="speech-recognition-and-translation"></a>语音识别和翻译
 
-下表列出了“语音识别”和“翻译”的可用区域。
+以下区域提供语音 SDK，用于“语音识别”和“翻译”：
 
   区域 | 语音 SDK 参数 | 语音自定义门户
  ------|-------|--------
  美国西部 | `westus` | https://westus.cris.ai
- 美国西部 2 | `westus2` | https://westus2.cris.ai 
+ 美国西部 2 | `westus2` | https://westus2.cris.ai
  美国东部 | `eastus` | https://eastus.cris.ai
  美国东部 2 | `eastus2` | https://eastus2.cris.ai
  东亚 | `eastasia` | https://eastasia.cris.ai
@@ -49,8 +43,26 @@ ms.locfileid: "50242324"
  西欧 | `westeurope` | https://westeurope.cris.ai
 
 
-### <a name="regions-for-intent-recognition"></a>意向识别适用的区域
+### <a name="intent-recognition"></a>意向识别
+
+语音 SDK 的“意向识别”与 LIUS 共享区域支持。 有关可用区域的完整列表，请参阅[发布区域和终结点 - LUIS](https://docs.microsoft.comazure/cognitive-services/luis/luis-reference-regions)
 
 若要了解哪些区域可通过语音 SDK 进行**意向识别**，请参阅[语言理解服务区域页](/azure/cognitive-services/luis/luis-reference-regions)。
-对于列出的每个发布区域，相应的语音 SDK 区域参数肯定是将终结点域名的第一部分。
-例如，使用 `westus` 指定美国西部发布区域。
+
+对于列出的每个发布区域，请使用提供的“API 区域名称”。 例如，对美国西部使用 `westus`。
+
+## <a name="rest-apis"></a>REST API
+
+语音服务还为语音转文本和文本转语音请求公开 REST 终结点。
+
+### <a name="speech-to-text"></a>语音转文本
+
+有关语音转文本的参考文档，请参阅 [REST API](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis#speech-to-text)。
+
+[!INCLUDE [](../../../includes/cognitive-services-speech-service-endpoints-speech-to-text.md)]
+
+### <a name="text-to-speech"></a>文本转语音
+
+有关文本转语音的参考文档，请参阅 [REST API](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis#speech-to-text)。
+
+[!INCLUDE [](../../../includes/cognitive-services-speech-service-endpoints-text-to-speech.md)]

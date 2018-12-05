@@ -16,12 +16,12 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.reviwer: lenalepa, sureshja
 ms.custom: aaddev
-ms.openlocfilehash: 2195a43665f99e8388b13fc6dc3e528496bd3901
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: b1276ab227f4bf65483fb2cdec57c759573bc7c5
+ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50242681"
+ms.lasthandoff: 11/17/2018
+ms.locfileid: "51853585"
 ---
 # <a name="terms-of-service-and-privacy-statement-for-registered-azure-active-directory-apps"></a>已注册 Azure Active Directory 应用的服务条款和隐私声明
 
@@ -64,10 +64,10 @@ ms.locfileid: "50242681"
 
 如果已在 Azure 门户中注册应用，请按照下列步骤操作。
 
-1. 登录  [Azure 门户](https://portal.azure.com/)。
-2. 导航到 **“应用注册”** 部分并选择应用。
-3. 打开应用的 **“属性”** 部分。
-4. 填写 **“服务条款 URL”** 和 **“隐私声明 URL”** 字段。
+1. 登录到 [Azure 门户](https://portal.azure.com/)。
+2. 导航到“应用注册”部分并选择应用。
+3. 打开应用的“属性”部分。
+4. 填写“服务条款 URL”和“隐私声明 URL”字段。
 5. 保存所做更改。
 
     ![含有服务条款和隐私声明 URL 的应用属性部分](./media/howto-add-terms-of-service-privacy-statement/azure-portal-terms-service-privacy-statement-urls.png)
@@ -76,9 +76,9 @@ ms.locfileid: "50242681"
 
 如果已在应用注册门户或开发人员中心中注册应用，请按照下列步骤操作。
 
-1. 登录到 [应用程序注册门户](https://apps.dev.microsoft.com/)。
-2. 选择应用并滚动到 **“配置文件”** 部分。
-3. 填写 **“服务条款 URL”** 和 **“隐私声明 URL”** 字段。
+1. 登录到[应用程序注册门户](https://apps.dev.microsoft.com/)。
+2. 选择应用并滚动到“配置文件”部分。
+3. 填写“服务条款 URL”和“隐私声明 URL”字段。
 4. 保存所做更改。
 
     ![含有服务条款和隐私声明 URL 的应用配置文件部分](./media/howto-add-terms-of-service-privacy-statement/app-registration-portal-profile-terms-service-privacy-statement-urls.png)

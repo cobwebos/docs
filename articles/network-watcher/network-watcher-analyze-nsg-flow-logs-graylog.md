@@ -15,18 +15,21 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/19/2017
 ms.author: mareat
-ms.openlocfilehash: 3030fdcec95d91b75974465ad30f707837263367
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 08d3d59d20ea80065e8f0238f90579bb268c3723
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50414771"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51823038"
 ---
 # <a name="manage-and-analyze-network-security-group-flow-logs-in-azure-using-network-watcher-and-graylog"></a>在 Azure 中使用网络观察程序与 Graylog 来管理和分析网络安全组流日志
 
 [网络安全组流日志](network-watcher-nsg-flow-logging-overview.md)提供可用来了解 Azure 网络接口入口和出口 IP 流量的信息。 流日志根据网络安全组规则显示出站和入站流、流应用到的网络接口、有关流的 5 元组信息（源/目标 IP、源/目标端口、协议），以及是允许还是拒绝了流量。
 
 可以在启用了流日志记录的网络中使用许多的网络安全组。 使用多个已启用流日志记录的网络安全组，可能会导致从日志中分析和获取见解变得非常麻烦。 本文提供一种解决方法，即使用 Graylog（开源日志管理和分析工具）和 Logstash（开源服务器端数据处理管道）来集中管理这些网络安全组流日志。
+
+> [!Warning]
+> 以下步骤适用于流日志版本 1。 有关详细信息，请参阅[针对网络安全组进行流日志记录简介](network-watcher-nsg-flow-logging-overview.md)。 以下说明在未修改的情况下不适用于版本 2 的日志文件。
 
 ## <a name="scenario"></a>场景
 

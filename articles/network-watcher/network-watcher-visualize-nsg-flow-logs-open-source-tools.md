@@ -14,18 +14,21 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: mareat
-ms.openlocfilehash: 6debfaed28be2b5dee5e24a443b791f75f7bea8f
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: 10f76ea58b859611483c99c2f4accec607bc2939
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51634186"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51822902"
 ---
 # <a name="visualize-azure-network-watcher-nsg-flow-logs-using-open-source-tools"></a>使用开源工具可视化 Azure 网络观察程序 NSG 流日志
 
 可以通过网络安全组流日志提供的信息了解网络安全组的入口和出口 IP 流量。 这些流日志根据规则显示出站和入站流、流所适用的 NIC、有关流的 5 元组信息（源/目标 IP、源/目标端口、协议），以及是允许还是拒绝流量。
 
 这些流日志可能难以手动分析并获取见解。 不过，可以使用多个开源工具将相关数据可视化。 本文将提供一个使用 Elastic Stack 将这些日志可视化的解决方案，方便用户在 Kibana 仪表板上快速完成流日志的索引和可视化操作。
+
+> [!Warning]  
+> 以下步骤适用于流日志版本 1。 有关详细信息，请参阅[针对网络安全组的流日志记录简介](network-watcher-nsg-flow-logging-overview.md)。 以下说明在未修改的情况下不适用于版本 2 的日志文件。
 
 ## <a name="scenario"></a>场景
 

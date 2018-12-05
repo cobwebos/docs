@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 10/19/2018
 ms.author: pbutlerm
-ms.openlocfilehash: aa43a6f1f7c757366e321e7da0fb1e47d4928cee
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.openlocfilehash: b68f7004366dcb502ffc8332cf8266a434c7ecfb
+ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49638867"
+ms.lasthandoff: 11/19/2018
+ms.locfileid: "51977142"
 ---
 # <a name="virtual-machine-marketplace-tab"></a>虚拟机“市场”选项卡
 
@@ -40,7 +40,8 @@ ms.locfileid: "49638867"
 | **说明**           | 解决方案的说明。  最大长度为 3000 个字符，支持简单 HTML 格式。 |
 | **营销标识符**  | 与此套餐关联的唯一 URL，通常包含组织名称和解决方案名称，最大长度为 50 个字符。  例如： <br/> `https://azuremarketplace.microsoft.com/marketplace/apps/contoso.sampleApp`  |
 | **预览订阅 ID** | 为预览版添加 1 到 100 个订阅标识符。 在套餐发布之后、上线之前，这些已加入允许列表的订阅将有权访问该套餐。 |
-| **有用链接**          | 可能最适合与该套餐关联的企业和技术类别的多项选择。  最多允许选择五个链接。  |
+| **有用链接**          | 将 URL 添加到文档、发行说明、常见问题解答等内容。 |
+| **建议的类别（最多 5 个）** | 可能最适合与该套餐关联的企业和技术类别的多项选择。  最多允许选择五个链接。  |
 |  |  |
 
 

@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/28/2018
+ms.date: 11/23/2018
 ms.author: jingwang
-ms.openlocfilehash: c67f6c14dc396367e0179fe5bdb4663fcb7725da
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 1e0bbfafcda77ca48fb22ad919c5848a7670a102
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37045960"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52309668"
 ---
 # <a name="copy-data-from-servicenow-using-azure-data-factory"></a>使用 Azure 数据工厂从 ServiceNow 复制数据
 
@@ -100,20 +100,21 @@ ServiceNow 链接服务支持以下属性：
 
 ### <a name="servicenow-as-source"></a>以 ServiceNow 作为源
 
-要从 ServiceNow 复制数据，请将复制活动中的源类型设置为“ServiceNowSource”。 复制活动**源**部分支持以下属性：
+要从 ServiceNow 复制数据，请将复制活动中的源类型设置为“ServiceNowSource”。 复制活动源部分支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 复制活动源的 type 属性必须设置为：ServiceNowSource | 是 |
 | query | 使用自定义 SQL 查询读取数据。 例如：`"SELECT * FROM Actual.alm_asset"`。 | 是 |
 
-在查询中指定 ServiceNow 的架构和列时，请注意以下事项：
+在查询中指定 ServiceNow 的架构和列时注意以下内容，并且参阅有关复制性能隐含的[性能提示](#performance-tips)。
 
-- **架构：** 在 ServiceNow 查询中将架构指定为 `Actual` 或 `Display`，从而在调用 [ServiceNow restful API](https://developer.servicenow.com/app.do#!/rest_api_doc?v=jakarta&id=r_AggregateAPI-GET) 时可以将其视为参数 `sysparm_display_value`，其值为 true 或 false。 
+- **架构：** 在 ServiceNow 查询中将架构指定为 `Actual` 或 `Display`，从而在调用 [ServiceNow restful API](https://developer.servicenow.com/app.do#!/rest_api_doc?v=jakarta&id=r_AggregateAPI-GET) 时可以将其视为参数 `sysparm_display_value`，其值为 true 或 false。 
 - **列：**`Actual` 架构下实际值的列名是 `[columne name]_value`，而 `Display` 架构下显示值的列名为 `[columne name]_display_value`。 请注意，列名需要映射到查询中所使用的架构。
 
 **示例查询：**
-`SELECT col_value FROM Actual.alm_asset` 或 `SELECT col_display_value FROM Display.alm_asset`
+`SELECT col_value FROM Actual.alm_asset` 或  
+`SELECT col_display_value FROM Display.alm_asset`
 
 **示例：**
 
@@ -146,6 +147,17 @@ ServiceNow 链接服务支持以下属性：
     }
 ]
 ```
+## <a name="performance-tips"></a>性能提示
+
+### <a name="schema-to-use"></a>要使用的架构
+
+ServiceNow 有 2 个不同的架构，一个是“实际”，返回实际数据；另一个是“显示”，返回数据的显示值。 
+
+如果在有查询中筛选器，请使用“实际”架构，此架构具有更好的复制性能。 在针对“实际”架构进行查询时，ServiceNow 在提取数据时将本机支持筛选器以仅返回筛选的结果集，然而在针对“显示”架构进行查询时，ADF 将检索所有数据并在内部应用筛选器。
+
+### <a name="index"></a>索引
+
+ServiceNow 表索引有助于提高查询性能，请参阅[创建表索引](https://docs.servicenow.com/bundle/geneva-servicenow-platform/page/administer/table_administration/task/t_CreateCustomIndex.html)。
 
 ## <a name="next-steps"></a>后续步骤
 有关 Azure 数据工厂中复制活动支持作为源和接收器的数据存储的列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)。

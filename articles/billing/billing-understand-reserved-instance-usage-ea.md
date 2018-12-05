@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/28/2018
 ms.author: cwatson
-ms.openlocfilehash: a33a360d25930f1468f1c9240be2d0f306d682c7
-ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
+ms.openlocfilehash: 87f6437f836d46fc24ae016823a1b091bcd81943
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2018
-ms.locfileid: "47585741"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52582036"
 ---
 # <a name="understand-azure-reservation-usage-for-your-enterprise-enrollment"></a>了解适用于企业合约的 Azure 预留使用情况
 
@@ -93,7 +93,7 @@ Azure 预留使用情况也会出现在企业门户的使用情况摘要部分�
 - [了解即用即付订阅的预留使用情况](billing-understand-reserved-instance-usage.md)
 - [预订未包含的 Windows 软件成本](billing-reserved-instance-windows-software-costs.md)
 
-## <a name="need-help-contact-support"></a>需要帮助？ 联系支持人员
+## <a name="need-help-contact-us"></a>需要帮助？ 请联系我们。
 
-如果仍有疑问，请[联系支持人员](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)以快速解决问题。
+如果你有任何疑问或需要帮助，请[创建支持请求](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)。
 

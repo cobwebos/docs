@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 941a7242e1f6fddd1ff91721141be4e1f9816b31
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 650effed388dde4419e2ff6aede2f0468551a959
+ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49344857"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52276680"
 ---
 # <a name="runbook-input-parameters"></a>Runbook 输入参数
 
@@ -230,9 +230,8 @@ Runbook 有多种启动方式：通过 Azure 门户、Webhook、PowerShell cmdle
   ```
 
 #### <a name="start-a-runbook-by-using-the-rest-api-and-assign-parameters"></a>使用 REST API 启动 Runbook 并分配参数
-可在以下请求 URI 中使用 **PUT** 方法通过 Azure 自动化 REST API 来创建并启动 Runbook 作业：
+可在以下请求 URI 中使用 PUT 方法通过 Azure 自动化 REST API 来创建并启动 Runbook 作业： https://management.core.windows.net/<subscription-id>/cloudServices/<cloud-service-name>/resources/automation/~/automationAccounts/<automation-account-name>/jobs/<job-id>?api-version=2014-12-08`
 
-    https://management.core.windows.net/<subscription-id>/cloudServices/<cloud-service-name>/resources/automation/~/automationAccounts/<automation-account-name>/jobs/<job-id>?api-version=2014-12-08`
 
 在请求 URI 中替换以下参数：
 

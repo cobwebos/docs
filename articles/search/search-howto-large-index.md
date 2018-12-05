@@ -8,12 +8,12 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: heidist
-ms.openlocfilehash: 0dd7a5d5159144c6b1a050ff4c0443b181976738
-ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
+ms.openlocfilehash: 0b346756349c483dea32ec31827a653bd9b777cf
+ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39124948"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51705933"
 ---
 # <a name="how-to-scale-out-indexing-in-azure-search"></a>如何在 Azure 搜索中横向扩展索引
 
@@ -21,7 +21,7 @@ ms.locfileid: "39124948"
 
 作为满足更高需求的第一步，我们建议在现有服务的限制范围内提高[规模和容量](search-capacity-planning.md)。 
 
-在第二个步骤中，如果可以使用[索引器](search-indexer-overview.md)，将向可扩展索引添加机制。 索引器附带内置的计划程序，用于定期打包索引编制作业，或者将处理能力扩展到 24 小时时限以外。 此外，与数据源定义搭配使用时，索引器可以通过数据分区并使用计划来并行执行，帮助实现某种形式的并行度。
+第二步，如果可以使用[索引器](search-indexer-overview.md)，则添加针对可缩放索引的机制。 索引器附带内置的计划程序，用于定期打包索引编制作业，或者将处理能力扩展到 24 小时时限以外。 此外，与数据源定义搭配使用时，索引器可以通过数据分区并使用计划来并行执行，帮助实现某种形式的并行度。
 
 ### <a name="scheduled-indexing-for-large-data-sets"></a>针对大型数据集的按计划索引编制
 

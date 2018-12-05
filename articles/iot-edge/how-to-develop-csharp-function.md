@@ -8,12 +8,12 @@ ms.date: 06/26/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 343264f90ecf067786db9c0096625b87b2dbd319
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 40b8dfef3100ff8440165de74fb41f6b36afe37a
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51004402"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52315097"
 ---
 # <a name="use-visual-studio-code-to-develop-and-debug-azure-functions-for-azure-iot-edge"></a>使用 Visual Studio Code 开发和调试 Azure IoT Edge 的 Azure 函数
 
@@ -71,6 +71,7 @@ VS Code 采用所提供的信息，创建一个包含 Azure Functions 项目的 
    >仅当为模块提供了映像存储库时，才会创建环境文件。 如果接受 localhost 默认值在本地进行测试和调试，则不需要声明环境变量。 
 
 * 一个 deployment.template.json 文件，列出新模块以及模拟可用于测试的数据的示例 tempSensor 模块。 有关部署清单如何工作的详细信息，请参阅[了解如何使用部署清单部署模块和建立路由](module-composition.md)。
+* deployment.debug.template.json 文件包含具有适当容器选项的模块映像的调试版本。
 
 ## <a name="develop-your-module"></a>开发模块
 
@@ -79,12 +80,10 @@ VS Code 采用所提供的信息，创建一个包含 Azure Functions 项目的 
 当你准备使用自己的代码自定义 Azure 函数模板时，请使用 [Azure IoT Hub SDK](../iot-hub/iot-hub-devguide-sdks.md) 生成模块，以满足 IoT 解决方案的关键需求（例如安全性、设备管理和可靠性）。 
 
 ## <a name="build-your-module-for-debugging"></a>生成用于调试的模块
-1. 若要开始调试，请使用 **Dockerfile.amd64.debug** 重新生成 Docker 映像并重新部署 Edge 解决方案。 在 VS Code 资源管理器中，导航到 `deployment.template.json` 文件。 通过将 `.debug` 添加到末尾来更新函数映像 URL。
-
-    ![生成调试映像](./media/how-to-debug-csharp-function/build-debug-image.png)
-
+1. 若要开始调试，请使用 **Dockerfile.amd64.debug** 重新生成 Docker 映像并重新部署 Edge 解决方案。 在 VS Code 资源管理器中，导航到 `deployment.debug.template.json` 文件。
 2. 重新生成解决方案。 在 VS Code 命令面板中，输入并运行“Azure IoT Edge: Build IoT Edge solution”命令。
-3. 在 Azure IoT 中心设备资源管理器中，右键单击 IoT Edge 设备 ID，然后选择“为 Edge 设备创建部署”。 选择 `config` 文件夹中的 `deployment.json` 文件。 将在 VS Code 集成终端中看到已成功创建部署且具有一个部署 ID。
+3. 从命令面板中选择解决方案的 `deployment.debug.template.json` 文件。 
+4. 在 Azure IoT 中心设备资源管理器中，右键单击 IoT Edge 设备 ID，然后选择“为 Edge 设备创建部署”。 选择 `config` 文件夹中的 `deployment.debug.amd64.json` 文件。 将在 VS Code 集成终端中看到已成功创建部署且具有一个部署 ID。
 
 在 VS Code Docker 资源管理器中检查容器状态，或在终端中运行 `docker ps` 命令进行检查。
 

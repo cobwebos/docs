@@ -1,10 +1,10 @@
 ---
-title: Azure 市场顾问服务
+title: Azure 市场和 AppSource 咨询服务
 description: 本文介绍 Azure 市场中新咨询服务产品的合格条件和发布要求。
 services: Marketplace, Compute, Storage, Networking, Blockchain, Security
 documentationcenter: ''
-author: ellacroi
-manager: msmbaldwin
+author: yijenj
+manager: nuno costa
 editor: ''
 ms.assetid: e8d228c8-f9e8-4a80-9319-7b94d41c43a6
 ms.service: marketplace
@@ -12,19 +12,21 @@ ms.workload: ''
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: article
-ms.date: 03/9/2018
-ms.author: ellacroi
-ms.openlocfilehash: 104ef98aac3e34e30a86854a0d759cf11106b55b
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.date: 10/29/2018
+ms.author: yijenj
+ms.openlocfilehash: dbd97ba8faacdc387a6e0b78c206f65a201ca246
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45575285"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52261541"
 ---
-# <a name="azure-marketplace-consulting-services"></a>Azure 市场顾问服务
-Azure 市场中的咨询服务为 Microsoft 合作伙伴提供通过支持和扩展客户对 Azure 的使用来连接客户的目标。 Azure 市场支持来自 Microsoft 系统集成者 (SI) 合作伙伴的咨询服务产品。 
+# <a name="consulting-services-for-azure-marketplace-and-appsource"></a>Azure 市场和 AppSource 的咨询服务
+Azure 市场和 AppSource 中的咨询服务使 Microsoft 合作伙伴可实现将客户与服务相连以支持和扩展他们对 Azure 的使用的目标以及业务目标。 
 
-这些咨询服务产品是特定于客户的互动， 发布者可以选择确定列表类型，具有固定范围和持续时间，固定价格或免费，以及具有提供给客户的已定义可交付成果。 合作伙伴在其 CRM 系统中收到通知，目标是在 48 小时内响应请求。
+Azure 市场和 AppSource 支持 Microsoft 系统集成商 (SI) 合作伙伴提供的咨询服务产品列表，目标是提供高质量的咨询服务，使客户能够与他们需要的专家服务建立联系。 帮助客户评估、评价和部署可帮助他们实现业务目标的正确解决方案和实施。  
+
+这些咨询服务产品是特定于客户的互动， 发布者可以选择确定列表类型以及固定范围和持续时间，也可选择固定价格或免费，并且已制定了向客户交付成果的明确议程。 通过合作伙伴 CRM 系统中的通知接收潜在客户，目标是在 48 小时内响应客户。 
 
 ## <a name="consulting-services-in-azure-marketplace-vs-appsource-storefront"></a>Azure 市场中的咨询服务和 AppSource 店面
 市场店面与受众需求和 Microsoft 云产品的特点相匹配，从而帮助客户找到所需产品。 每个店面都提供专门的发布选项来帮助你最大程度地优化发布投资。 下表汇总了这些选项：
@@ -40,15 +42,17 @@ Azure 市场中的咨询服务为 Microsoft 合作伙伴提供通过支持和扩
 基于 Microsoft Dynamics 365、Office 365 和 Power BI 的服务产品可以列在 AppSource 中。 有关详细信息，请参阅 [Microsoft AppSource 咨询服务列出准则](https://smp-cdn-prod.azureedge.net/documents/Microsoft%20AppSource%20Partner%20Listing%20Guidelines.pdf)。 
 
 >[!Note]
->Azure 市场中的咨询服务应利用为**技术人员提供的产品，着重于 Azure 技术解决方案和服务。 **
+>Azure 市场中的咨询服务应利用为**技术人员提供的产品，着重于 Azure 技术解决方案和服务。 ** AppSource 中的咨询服务应利用面向其在为 Dynamics 365、Power BI 或 PowerApps 提供高质量解决方案方面的专业知识的产品，在 AppSource 上列出其咨询服务
 
 
 >[!TIP]
->此信息仅适用于 Azure 市场服务。 若要发布到 Azure 市场店面，请在进行选择时，从云合作伙伴门户的“主产品”下拉菜单中选择“Azure”。 若要发布到 AppSource，请在进行选择时，从云合作伙伴门户的“主产品”下拉菜单中选择“Dynamics 365”、“Power BI”或“Power Apps”。
+>若要发布到 Azure 市场店面，请在进行选择时，从云合作伙伴门户的“主产品”下拉菜单中选择“Azure”。 若要发布到 AppSource，请在进行选择时，从云合作伙伴门户的“主产品”下拉菜单中选择“Dynamics 365”、“Power BI”或“Power Apps”。
 
 ## <a name="eligible-partners-and-supported-countries"></a>符合条件的合作伙伴和受支持的国家/地区
 
-合作伙伴还需要在其服务的相关领域拥有**银级或金级资质**。 下表列出了合格资质：
+合作伙伴需要在其服务的相关领域拥有银级或金级资质。 
+
+下表列出了 Azure 市场的合格资质：
 
 |资质  |解决方案领域  |
 |---------|---------|
@@ -56,24 +60,34 @@ Azure 市场中的咨询服务为 Microsoft 合作伙伴提供通过支持和扩
 |应用程序开发和 ISV     |  应用程序开发、应用程序集成、DevOps       |
 |数据管理和分析    |  数据分析、数据平台       |
 
-有关详细信息，请参阅[通过 Microsoft 合作伙伴网络的资质](https://partner.microsoft.com/en-US/membership/competencies)。 
+
+下表列出了 AppSource 的合格资质：
+
+|主产品 |合格要求 |
+|---------|---------|
+| Dynamics 365 for Customer Engagement    |   银级或金级[云客户关系管理](https://partner.microsoft.com/membership/cloud-customer-relationship-management-competency)资格。    | 
+|Dynamics 365 for Finance and Operations Enterprise Edition  |  银级或金级[企业资源规划](https://partner.microsoft.com/en-us/membership/enterprise-resource-planning-competency)资格，后续 12 个月的云运营最低收入达到 25,000 美元。       |
+|Dynamics 365 for Finance and Operations Business Edition  |  充当至少一个客户的[云服务提供商 (CSP)](https://partner.microsoft.com/en-us/cloud-solution-provider) 或[数字记录合作伙伴 (DPOR)](https://partner.microsoft.com/en-us/membership/digital-partner-of-record)      |
+|Power BI、Power BI 自定义视觉对象 | 满足[解决方案合作伙伴的条件](https://www.microsoftpartnerserverandcloud.com/_layouts/download.aspx?SourceUrl=/Hosted%20Documents/BI%20Partner%20Program%20Overview%20%26%20Incentives.pdf)。|
+|PowerApps | 具有已发布的[合作伙伴展示]()解决方案
+
+<b>有关详细信息，请参阅 [Microsoft 合作伙伴网络的资质](https://partner.microsoft.com/membership/competencies)。</b>
  
 
 **SI 合作伙伴可针对以下 18 个国家/地区提交咨询服务产品**
 
-|符合条件的国家/地区 |  |  |
-|---------|---------|---------|
-|澳大利亚    |德国         |新西兰         |
-|比利时     |意大利         |挪威         |
-|加拿大     |印度         |波兰         |
-|丹麦     |日本         |瑞典         |
-|芬兰     |墨西哥         |英国         |
-|法国     |荷兰         |美国         |
+|符合条件的国家/地区 |   |   |   |
+|---------|----------|----------|----------|
+|澳大利亚 |法国  |     墨西哥          |西班牙       |
+|比利时   |德国 |     荷兰     |瑞典       |
+|加拿大    |印度   |     新西兰     |英国  |
+|丹麦   |意大利   |     挪威          |美国 |
+|芬兰   |日本   |     波兰          
 
-Azure 市场咨询服务的启动将在特定地理区域中进行。 首次启动区域将包括：美国、加拿大、英国和澳大利亚。 由合作伙伴提交且由 Microsoft 批准一定数量的有吸引力服务产品选项后，面向其他国家/地区的目录将会推出。
+咨询服务的启动将在特定地理区域中进行。 首次启动区域将包括：美国、加拿大、英国和澳大利亚。 由合作伙伴提交且由 Microsoft 批准一定数量的有吸引力服务产品选项后，面向其他国家/地区的目录将会推出。
 
-## <a name="how-to-register-for-consulting-services-in-azure-marketplace"></a>如何在 Azure 市场中注册咨询服务
-从在 [Azure 市场](https://azuremarketplace.microsoft.com/en-us/sell/signup)中注册咨询服务开始。 发布者可以参考[成为 Marketplace 中的发布者](https://docs.microsoft.com/azure/marketplace/become-publisher)，获取注册要求的完整清单。 
+## <a name="how-to-register-for-consulting-services-in-azure-marketplace-and-appsource"></a>如何在 Azure 市场和 AppSource 中注册咨询服务
+首先在市场中[注册](https://azuremarketplace.microsoft.com/en-us/sell/signup)公司信息。 发布者可以参考[成为 Marketplace 中的发布者](https://docs.microsoft.com/azure/marketplace/become-publisher)，获取注册要求的完整清单。 
 
 **注册后的期望** 实施团队将在 1-3 个工作日内通过欢迎电子邮件与你联系，其中包括你的云合作伙伴门户 (CPP) 登录信息。 [云合作伙伴门户](https://cloudpartner.azure.com)是产品/服务列表门户，发布者可以在其中提交列表信息和提交。 
 
@@ -103,14 +117,14 @@ Azure 市场咨询服务的启动将在特定地理区域中进行。 首次启�
 
 
 ## <a name="publishing-process"></a>发布过程
-在 Azure 市场中列出咨询服务产品涉及以下阶段：
+在 Azure 市场和 AppSource 中列出咨询服务产品涉及以下阶段：
 
-1. **请求**：若要发送请求，请使用 [Azure 市场提名表格](https://azuremarketplace.microsoft.com/en-us/sell/nominate)，并告诉我们有关你的组织的详细信息。 注意：发布者只需提交一次提名进程，以在 Azure 市场或 AppSource 上列出。 提名和载入进程完成后，将创建一个云合作伙伴门户，发布者可以在其中创建和提交其产品列表。
+1. **列出**：通过登录[云合作伙伴门户](https://cloudpartner.azure.com)帐户开始起草新的产品列表。 从下拉列表菜单中选择“新产品/服务”和“咨询服务”。 输入列表项目并发布。
 2. **验证：** 将评审你的请求，以确保你符合条件。 然后，我们会发送有关列出咨询服务产品的说明。 
 3. **提交：** 提供说明中列出的必需信息。 所有内容和支持材料都必须以英文提交。 
 4. **评审：** 我们的营销和编辑团队将会评审提交内容，并针对内可读性、语法和效果对其进行优化。 
 5. **暂存**：提交内容将暂存以供查阅。 
-6. **发布：** 在你和 Microsoft 都对暂存内容感到满意后，你的商品便可以在 Azure 市场中推出。 列表推出日期取决于产品/服务中指定的国家/地区。 如果所选国家/地区的目录已在 Azure 市场中推出，则你的商品会在几小时内显示。 否则，该目录一推出，就会显示列表。
+6. **发布：** 在你和 Microsoft 都对暂存内容感到满意后，所列产品便可以在市场中推出。 列表推出日期取决于产品/服务中指定的国家/地区。 如果所选国家/地区的目录已在 Azure 市场或 AppSource 中推出，则所列产品会在几小时内显示。 否则，该目录一推出，就会显示列表。
 
 ## <a name="offer-listings-and-content-review-criteria"></a>产品列表和内容审核标准
 产品/服务必须属于以下五种服务类型之一（可以列出多个）： 
@@ -121,13 +135,13 @@ Azure 市场咨询服务的启动将在特定地理区域中进行。 首次启�
 * **概念证明：** 进行有限范围的实施，以确定解决方案是否满足客户的要求。 
 * **研讨会：** 在客户场地开展的交互式活动， 可以涉及到培训、简报、评估，或根据客户数据或环境制作的演示。 
 
-**注意：** 可以面对面地（即在客户位置或者合作伙伴的设施内现场进行），或者以虚拟形式（即通过电话会议、网络会议或远程实施）提供咨询服务，但这一点不适用于“简报”服务类型。 简报必须面对面提供。
+**注意：** 可以面对面地（即在客户位置或者合作伙伴的设施内现场进行）或者以虚拟形式（即通过电话会议、网络会议或远程实施）提供咨询服务，但这一点不适用于“简报”服务类型。 简报必须面对面提供。
 
 当你配置好上面列出的所需元素以后，内容审核团队会验证你的产品/服务描述所提供的信息对于目标受众来说是否足够充分。 
 
 #### <a name="listing-title"></a>列出标题
 
-请注意，标题字段有一个 50 字符的限制，必须指出产品/服务的持续时间和服务类型。 这是为了尽量优化搜索引擎。 所需格式如下：名称：持续时间类型
+标题字段有一个 50 字符的限制，必须指出产品/服务的持续时间和服务类型，以最大限度地优化搜索引擎。 所需格式如下：名称：持续时间类型
 
 示例：
 
@@ -145,7 +159,7 @@ Azure 市场咨询服务的启动将在特定地理区域中进行。 首次启�
 |产品/服务类型  |必选 |建议  |
 |---------|---------|---------|
 |**评估**    |   包括一个详细的适用于多日或多周评估的议程，并说明客户预期可以获得的可交付结果      |    使用最常用的搜索引擎优化关键字来优化产品/服务摘要     |
-|**简报**    |   说明客户预期可以获得的可交付结果。 请记住，简便还必须面对面提供。 如果提供的是虚拟服务，请选择另一产品/服务类型    |  使用最常用的搜索引擎优化关键字来优化产品/服务摘要       |
+|**简报**    |   说明客户预期可以获得的可交付结果。 请记住，简报必须面对面提供。 如果提供的是虚拟服务，请选择另一产品/服务类型    |  使用最常用的搜索引擎优化关键字来优化产品/服务摘要       |
 |**实现**    |  包括一个详细的适用于多日或多周实现的议程，并说明客户参加后预期可以获得的工程变化、技术项目或其他项目       |    使用最常用的搜索引擎优化关键字来优化产品/服务摘要     |
 |**概念证明**    |    说明客户参加后预期可以获得的工程变化、技术项目或其他项目     | 使用最常用的搜索引擎优化关键字来优化产品/服务摘要        |
 |**研讨会**    |   包括一个详细的每日、每周或每月议程，具体取决于所选择的产品/服务持续时间。 说明研讨会的学习目标或其他可交付结果     |   使用最常用的搜索引擎优化关键字来优化产品/服务摘要      |
@@ -153,12 +167,14 @@ Azure 市场咨询服务的启动将在特定地理区域中进行。 首次启�
 在云合作伙伴门户中，可以通过 [Markdown](https://docs.microsoft.com/contribute/how-to-write-use-markdown) 向商品信息添加格式。 这是一种轻型设计语言，用于优化商品信息。 
 
 **示例 Markdown 说明**
-*   在复制块的开头和结尾添加 *（无空格）以创建斜体（例如：*content*）
+* 在复制块的开头和结尾添加 *（无空格）以创建斜体（例如：*content*）
 * 在“:”冒号后添加换行符
-*   针对项目符号的“*”后空格（例如：*(space)Content）
-*    ### <a name="space-for-heading-ex-spaceagendadeliverables"></a>针对标题的空格（例如：###(space)Agenda/Deliverables）
-*   标题后换行
-*   ** = 加粗（无空格）（例如：**No Space**）•   “产品/服务摘要”设置为斜体 •   “议程和可交付结果”为标题
+* 针对项目符号的“*”后空格（例如：*(space)Content）
+* ### <a name="space-for-heading-ex-spaceagendadeliverables"></a>针对标题的空格（例如：###(space)Agenda/Deliverables）
+* 标题后换行
+* ** = 粗体 
+* * 产品/服务摘要采用斜体
+
 
 ## <a name="next-steps"></a>后续步骤
 

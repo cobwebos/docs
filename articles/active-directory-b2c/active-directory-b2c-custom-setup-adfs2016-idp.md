@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/07/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: d94542e0c6c19fd3a79f465b69fadb6f3f28330e
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: 7f74da682c72f9effb4dbac49b316ff17f03b534
+ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51685763"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52275881"
 ---
 # <a name="add-adfs-as-a-saml-identity-provider-using-custom-policies-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中使用自定义策略添加 ADFS 作为 SAML 标识提供者
 
@@ -175,7 +175,7 @@ https://login.microsoftonline.com/te/your-tenant/your-policy/samlp/metadata?idpt
     | E-Mail-Address | 电子邮件 |
     | Display-Name | 名称 |
     
-12.  根据证书类型，可能需要设置哈希算法。 在信赖方信任（B2C 演示）属性窗口上，选择“高级”选项卡并将“安全哈希算法”更改为 `SHA-1` 或 `SHA-256`，单击“确定”。  
+12.  根据证书类型，可能需要设置哈希算法。 在信赖方信任（B2C 演示）属性窗口上，选择“高级”选项卡并将“安全哈希算法”更改为 `SHA-256`，然后单击“确定”。  
 13. 在“服务器管理器”中，选择“工具”，然后选择“ADFS 管理”。
 14. 选择所创建的信赖方信任，选择“从联合元数据更新”，然后单击“更新”。 
 

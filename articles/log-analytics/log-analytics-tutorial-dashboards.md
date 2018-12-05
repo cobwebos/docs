@@ -10,18 +10,17 @@ ms.assetid: abb07f6c-b356-4f15-85f5-60e4415d0ba2
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 09/14/2017
 ms.author: magoedte
 ms.custom: mvc
 ms.component: ''
-ms.openlocfilehash: 8ab6107279fe546205605b24da53073f49c7a204
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: f4d46b7b8ba245c4a7e3eddbe0615c47a1e99096
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51014442"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52870430"
 ---
 # <a name="create-and-share-dashboards-of-log-analytics-data"></a>创建和共享 Log Analytics 数据的仪表板
 
@@ -56,7 +55,7 @@ Log Analytics 仪表板可直观显示所有已保存的日志搜索，使你能
 
 可从 Azure 门户中的“日志搜索”门户创建针对单行的基本查询。 可在不启动外部门户的情况下使用日志搜索门户，并可将其用于执行日志搜索的多种函数，例如创建警报规则、创建计算机组和导出查询结果。 
 
-[Log Analytics 门户](../log-analytics/query-language/get-started-analytics-portal.md)是一个专用门户，提供日志搜索门户中不可用的高级功能。 这些功能包括在多行上编辑查询、选择性地执行代码、上下文相关 Intellisense 和智能分析。 在高级分析门户中，创建图表形式的性能视图，将其保存以供将来搜索，然后将其固定到之前创建的共享仪表板。   
+[Log Analytics 门户](../azure-monitor/log-query/get-started-portal.md)是一个专用门户，提供日志搜索门户中不可用的高级功能。 这些功能包括在多行上编辑查询、选择性地执行代码、上下文相关 Intellisense 和智能分析。 在高级分析门户中，创建图表形式的性能视图，将其保存以供将来搜索，然后将其固定到之前创建的共享仪表板。   
 
 通过日志搜索中的链接可启动高级分析门户。<br> ![启动高级分析门户](media/log-analytics-tutorial-dashboards/log-analytics-advancedportal-01.png)
 

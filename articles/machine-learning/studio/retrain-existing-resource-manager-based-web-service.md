@@ -1,10 +1,11 @@
 ---
-title: 重新训练现有预测 Web 服务 | Microsoft Docs
-description: 了解如何重新训练模型并更新 Web 服务以使用 Azure 机器学习中的最新训练模型。
+title: 重新训练现有预测 Web 服务 - Azure 机器学习工作室 | Microsoft Docs
+description: 了解如何重新训练模型和更新 Web 服务以在 Azure 机器学习工作室中使用最新经过训练的模型。
 services: machine-learning
 documentationcenter: ''
-author: YasinMSFT
-ms.author: yahajiza
+author: ericlicoding
+ms.custom: (previous ms.author=yahajiza, author=YasinMSFT)
+ms.author: amlstudiodocs
 manager: hjerez
 editor: cgronlun
 ms.assetid: cc4c26a2-5672-4255-a767-cfd971e46775
@@ -15,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/07/2017
-ms.openlocfilehash: 1a30f9166c81c4757267c95b13b08f3202748467
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: 8da3c5d5c79ce52f1f5176a8b3317ce2a0e0bc5f
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51684630"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52311290"
 ---
 # <a name="retrain-an-existing-predictive-web-service"></a>重新训练现有预测 Web 服务
 本文档介绍了以下方案的重新训练流程：
@@ -29,7 +30,7 @@ ms.locfileid: "51684630"
 * 具有想要预测 Web 服务用以执行评分的新数据。
 
 > [!NOTE]
-> 若要部署新的 Web 服务，必须对要部署 Web 服务的订阅拥有充分的权限。 有关详细信息，请参阅[使用 Azure 机器学习 Web 服务门户管理 Web 服务](manage-new-webservice.md)。
+> 若要部署新的 Web 服务，必须在要部署 Web 服务的订阅中拥有充分的权限。 有关详细信息，请参阅[使用 Azure 机器学习 Web 服务门户管理 Web 服务](manage-new-webservice.md)。
 
 若要开始使用现有 Web 服务和实验，需要遵循以下操作：
 

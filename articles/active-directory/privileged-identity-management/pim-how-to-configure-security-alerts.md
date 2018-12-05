@@ -10,15 +10,15 @@ ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.component: pim
-ms.date: 11/01/2018
+ms.date: 11/21/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: e7204c223681b9a33c439b0d9fc653167422384a
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 4a715020e37d5885dac26ac0573efe985c3f2cfb
+ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51011691"
+ms.lasthandoff: 11/22/2018
+ms.locfileid: "52291209"
 ---
 # <a name="configure-security-alerts-for-azure-ad-directory-roles-in-pim"></a>在 PIM 中为 Azure AD 目录角色配置安全警报
 
@@ -34,6 +34,47 @@ ms.locfileid: "51011691"
 * **中**：不需要立即采取措施但有潜在的策略冲突。
 * **低**：不需要立即采取措施，但建议考虑可取的策略更改。
 
+### <a name="administrators-arent-using-their-privileged-roles"></a>管理员不使用其特权角色
+
+| | |
+| --- | --- |
+| **严重性** | 低 |
+| **为何收到此警报？** | 为用户分配他们不需要的特权角色会增大受攻击的可能性。 攻击者更容易忽略不经常使用的帐户。 |
+| **如何修复？** | 检查列表中的用户，并将其从不需要的特权角色中删除。 |
+| **预防** | 仅将特权角色分配给有业务需要的用户。 </br>安排定期的[访问评审](pim-how-to-start-security-review.md)，以确认用户是否仍需要访问权限。 |
+| **门户中的缓解措施** | 从用户的特权角色中删除其帐户。 |
+| **触发器** | 如果用户在一定时间后未激活角色，将触发此警报。 |
+| **天数** | 此设置指定用户可以不激活角色的天数（0 到 100）。|
+
+### <a name="roles-dont-require-multi-factor-authentication-for-activation"></a>角色无需多重身份验证进行激活
+
+| | |
+| --- | --- |
+| **严重性** | 低 |
+| **为何收到此警报？** | 如果不执行 MFA，则遭到入侵的用户可以激活特权角色。 |
+| **如何修复？** | 检查角色列表，并针对每个角色[要求执行 MFA](pim-how-to-change-default-settings.md)。 |
+| **预防** | 针对每个角色[要求执行 MFA](pim-how-to-change-default-settings.md)。  |
+| **门户中的缓解措施** | 要求在激活特权角色时执行 MFA。 |
+
+### <a name="the-tenant-doesnt-have-azure-ad-premium-p2"></a>此租户没有 Azure AD Premium P2
+
+| | |
+| --- | --- |
+| **严重性** | 低 |
+| **为何收到此警报？** | 当前租户没有 Azure AD Premium P2。 |
+| **如何修复？** | 查看有关 [Azure AD 版本](../fundamentals/active-directory-whatis.md)的信息。 升级到 Azure AD Premium P2。 |
+
+### <a name="potential-stale-accounts-in-a-privileged-role"></a>可能有过时的帐户充当特权角色
+
+| | |
+| --- | --- |
+| **严重性** | 中型 |
+| **为何收到此警报？** | 最近未更改其密码的帐户可能是不受维护的服务或共享帐户。 这些充当特权角色的帐户容易受到攻击。 |
+| **如何修复？** | 请检查列表中的帐户。 如果它们不再需要访问权限，请将其从特权角色中删除。 |
+| **预防** | 确保当知道密码的用户有变化时，共享的帐户会轮换使用强密码。 </br>使用[访问评审](pim-how-to-start-security-review.md)定期审查具有特权角色的帐户，并删除不再需要的角色分配。 |
+| **门户中的缓解措施** | 从用户的特权角色中删除其帐户。 |
+| **最佳实践** | 使用密码进行身份验证并分配给高特权管理角色（如全局管理员或安全管理员）的共享帐户、服务帐户和紧急访问帐户应针对以下情况轮换其密码：<ul><li>发生涉及误用或泄露管理访问权限的安全事件后</li><li>任何用户的权限被更改而导致他们不再是管理员之后（例如，一名曾是管理员的员工离开了 IT 或组织）</li><li>固定时间间隔（例如，每季度或每年），即使没有任何已知的安全漏洞或 IT 人员变动</li></ul>由于多个用户有权限访问这些帐户的凭据，因此应轮换这些凭据以确保已失去其角色的人员无法再访问帐户。 [了解详细信息](https://aka.ms/breakglass) |
+
 ### <a name="roles-are-being-assigned-outside-of-pim"></a>在 PIM 之外分配的角色
 
 | | |
@@ -43,28 +84,6 @@ ms.locfileid: "51011691"
 | **如何修复？** | 检查列表中的用户，并将其从 PIM 外部分配的特权角色中删除。 |
 | **预防** | 调查在 PIM 外部的哪个位置为用户分配了特权角色，并禁止将来在该位置分配角色。 |
 | **门户中的缓解措施** | 从用户的特权角色中删除其帐户。 |
-
-### <a name="potential-stale-accounts-in-a-privileged-role"></a>可能有过时的帐户充当特权角色
-
-| | |
-| --- | --- |
-| **严重性** | 中型 |
-| **为何收到此警报？** | 最近未更改其密码的帐户可能是不受维护的服务或共享帐户。 这些充当特权角色的帐户容易受到攻击。 |
-| **如何修复？** | 请检查列表中的帐户。 如果它们不再需要访问权限，请将其从特权角色中删除。 |
-| **预防** | 确保当知道密码的用户有变化时，共享的帐户会轮换使用强密码。 </br>使用访问评审定期审查具有特权角色的帐户，并删除不再需要的角色分配。 |
-| **门户中的缓解措施** | 从用户的特权角色中删除其帐户。 |
-
-### <a name="users-arent-using-their-privileged-roles"></a>用户不使用其特权角色
-
-| | |
-| --- | --- |
-| **严重性** | 低 |
-| **为何收到此警报？** | 为用户分配他们不需要的特权角色会增大受攻击的可能性。 攻击者更容易忽略不经常使用的帐户。 |
-| **如何修复？** | 检查列表中的用户，并将其从不需要的特权角色中删除。 |
-| **预防** | 仅将特权角色分配给有业务需要的用户。 </br>安排定期的访问评审，以确认用户是否仍需要访问权限。 |
-| **门户中的缓解措施** | 从用户的特权角色中删除其帐户。 |
-| **触发器** | 如果用户在一定时间后未激活角色，将触发此警报。 |
-| **天数** | 此设置指定用户可以不激活角色的天数（0 到 100）。|
 
 ### <a name="there-are-too-many-global-administrators"></a>全局管理员过多
 
@@ -91,16 +110,6 @@ ms.locfileid: "51011691"
 | **触发器** | 如果用户在指定期限内多次激活同一特权角色，将触发此警报。 可以同时配置时间段和激活次数。 |
 | **激活续订时间范围** | 此设置以天、小时、分钟和秒为单位指定要用于跟踪可疑续订的时间段。 |
 | **激活续订次数** | 此设置在所选时间范围内指定你认为值得发送警报的激活次数（2 到 100）。 可通过移动滑块或在文本框中键入数字更改此设置。 |
-
-### <a name="roles-dont-require-mfa-for-activation"></a>角色不需要 MFA 即可激活
-
-| | |
-| --- | --- |
-| **严重性** | 低 |
-| **为何收到此警报？** | 如果不执行 MFA，则遭到入侵的用户可以激活特权角色。 |
-| **如何修复？** | 检查角色列表，并针对每个角色[要求执行 MFA](pim-how-to-change-default-settings.md)。 |
-| **预防** | 针对每个角色[要求执行 MFA](pim-how-to-change-default-settings.md)。  |
-| **门户中的缓解措施** | 要求在激活特权角色时执行 MFA。 |
 
 ## <a name="configure-security-alert-settings"></a>配置安全警报设置
 

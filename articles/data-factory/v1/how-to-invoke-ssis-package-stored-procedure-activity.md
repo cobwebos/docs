@@ -13,12 +13,12 @@ ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 01/19/2018
 ms.author: jingwang
-ms.openlocfilehash: fe2b509b62884c1cea554bc8dc5df25489205264
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: eb9d35b132a0aa3f0702604444f8a760bf66cf9a
+ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46966941"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52275575"
 ---
 # <a name="invoke-an-ssis-package-using-stored-procedure-activity-in-azure-data-factory"></a>在 Azure 数据工厂中使用存储过程活动调用 SSIS 包
 本文介绍如何使用存储过程活动从 Azure 数据工厂管道中调用 SSIS 包。 
@@ -236,7 +236,7 @@ ms.locfileid: "46966941"
 ### <a name="create-an-output-dataset"></a>创建输出数据集
 此输出数据集是一个虚拟数据集，用于驱动管道的计划。 注意，频率设置为“小时”，间隔设置为“1”。 因此，管道在启动至结束期间，一小时运行一次。 
 
-1. 创建一个 OuputDataset.json 文件，并在其中包含以下内容： 
+1. 创建一个 OutputDataset.json 文件，并在其中包含以下内容： 
     
     ```json
     {

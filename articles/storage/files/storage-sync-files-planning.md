@@ -5,15 +5,15 @@ services: storage
 author: wmgries
 ms.service: storage
 ms.topic: article
-ms.date: 07/19/2018
+ms.date: 11/26/2018
 ms.author: wgries
 ms.component: files
-ms.openlocfilehash: a2864ca743adf4ced1418630940146fed21b7fd5
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 89ab5ecb4e1a6a39e785a51c61e1344631b1f394
+ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51625294"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52335174"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>规划 Azure 文件同步部署
 使用 Azure 文件同步，即可将组织的文件共享集中在 Azure 文件中，同时又不失本地文件服务器的灵活性、性能和兼容性。 Azure 文件同步可将 Windows Server 转换为 Azure 文件共享的快速缓存。 可以使用 Windows Server 上可用的任意协议本地访问数据，包括 SMB、NFS 和 FTPS。 并且可以根据需要在世界各地具有多个缓存。
@@ -109,10 +109,11 @@ Azure 文件同步代理是一个可下载包，可实现 Windows 服务器与 A
 ```
 
 ### <a name="system-requirements"></a>系统要求
-- 运行 Windows Server 2012 R2 或 Windows Server 2016 的服务器：
+- 运行 Windows Server 2012 R2、Windows Server 2016 或 Windows Server 2019 的服务器：
 
     | 版本 | 支持的 SKU | 支持的部署选项 |
     |---------|----------------|------------------------------|
+    | Windows Server 2019 | 数据中心和标准版 | 完全（带 UI 的服务器） |
     | Windows Server 2016 | 数据中心和标准版 | 完全（带 UI 的服务器） |
     | Windows Server 2012 R2 | 数据中心和标准版 | 完全（带 UI 的服务器） |
 
@@ -198,10 +199,10 @@ Microsoft 的内部防病毒解决方案 Windows Defender 和 System Center Endp
 ### <a name="backup-solutions"></a>备份解决方案
 与防病毒解决方案一样，备份解决方案可能导致重新调用分层文件。 建议使用云备份解决方案来备份 Azure文件共享，而不是使用本地备份产品。
 
-如果使用的是本地备份解决方案，则应在已禁用云分层的同步组中的服务器上执行备份。 在服务器终结点位置内还原文件时，请使用文件级还原选项。 还原的文件将同步到同步组中的所有终结点，现有文件将被替换为从备份还原的版本。
+如果使用的是本地备份解决方案，则应在已禁用云分层的同步组中的服务器上执行备份。 执行还原时，使用卷级别或文件级还原选项。 使用文件级别还原选项还原的文件将同步到同步组中的所有终结点，现有文件将被替换为从备份还原的版本。  卷级别的还原不会替换 Azure 文件共享或其他服务器终结点中较新的文件版本。
 
 > [!Note]  
-> 应用程序感知、卷级别和裸机还原 (BMR) 选项可能导致意外结果，目前不受支持。 未来版本将支持这些还原选项。
+> 祼机 (BMR) 还原可能会导致意外的结果且当前不受支持。
 
 ### <a name="encryption-solutions"></a>加密解决方案
 是否支持加密解决方案取决于其实现方式。 Azure 文件同步现支持：

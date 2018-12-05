@@ -5,14 +5,14 @@ services: container-instances
 author: dlepow
 ms.service: container-instances
 ms.topic: article
-ms.date: 11/05/2018
+ms.date: 11/28/2018
 ms.author: danlep
-ms.openlocfilehash: e2f0d90a0a4384560c0a4126c028761765cb9e45
-ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.openlocfilehash: e03a35b31c9089abe973c7e4388b508f668a3970
+ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51288860"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52619837"
 ---
 # <a name="deploy-container-instances-into-an-azure-virtual-network"></a>将容器实例部署到 Azure 虚拟网络
 
@@ -44,6 +44,7 @@ ms.locfileid: "51288860"
 
 **支持的**区域：
 
+* 北欧 (northeurope)
 * 西欧 (westeurope)
 * 美国西部 (westus)
 
@@ -72,7 +73,7 @@ ms.locfileid: "51288860"
 
 网络配置文件是 Azure 资源的网络配置模板。 它指定资源的某些网络属性，例如，该资源应部署到哪个子网。 首次使用 [az container create][az-container-create] 命令将容器组部署到某个子网（并因此部署到虚拟网络）时，Azure 会自动创建一个网络配置文件。 以后在部署到该子网时，可以使用该网络配置文件。 
 
-若要使用资源管理器模板、YAML 文件或编程方法将容器组部署到子网，则需要提供网络配置文件的完整资源管理器资源 ID。 可以使用以前使用 [az container create][az-container-create] 创建的配置文件，也可以使用资源管理模板创建配置文件（请参阅[参考](https://docs.microsoft.com/azure/templates/microsoft.network/networkprofiles)）。 若要获取以前创建的配置文件的 ID，请使用 [az network profile list][az-network-profile-list] 命令。 
+若要使用资源管理器模板、YAML 文件或编程方法将容器组部署到子网，则需要提供网络配置文件的完整资源管理器资源 ID。 可以使用以前使用 [az container create][az-container-create] 创建的配置文件，也可以使用资源管理器模板创建配置文件（请参阅[模板示例](https://github.com/Azure/azure-quickstart-templates/tree/master/101-aci-vnet)和[参考](https://docs.microsoft.com/azure/templates/microsoft.network/networkprofiles)）。 若要获取以前创建的配置文件的 ID，请使用 [az network profile list][az-network-profile-list] 命令。 
 
 在下图中，有多个容器组已部署到委派给 Azure 容器实例的子网。 将一个容器组部署到某个子网后，可以通过指定相同的网络配置文件，将其他容器组部署到该子网。
 
@@ -295,6 +296,9 @@ az network vnet delete --resource-group $RES_GROUP --name aci-vnet
 ```
 
 ## <a name="next-steps"></a>后续步骤
+
+若要使用资源管理器模板部署新的虚拟网络、子网、网络配置文件和容器组，请参阅 [Create an Azure container group with VNet](https://github.com/Azure/azure-quickstart-templates/tree/master/101-aci-vnet
+)（使用 VNet 创建 Azure 容器组）。
 
 本文简要介绍了多个虚拟网络资源和功能。 Azure 虚拟网络文档全面介绍了这些主题：
 

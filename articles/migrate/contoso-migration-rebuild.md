@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/11/2018
 ms.author: raynew
-ms.openlocfilehash: 48b4878eef7395b51d19c59443736bae5aeb7365
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 0c44e57f99ea8fea91fd8178400c648e8dcd982b
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50233576"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52309804"
 ---
 # <a name="contoso-migration-rebuild-an-on-premises-app-to-azure"></a>Contoso 迁移：在 Azure 中重新生成本地应用
 
@@ -495,7 +495,7 @@ Contoso 管理员为前端站点创建两个不同的项目。
 
     ![Json 设置](./media/contoso-migration-rebuild/configure-webapp2.png)
 
-5. 更新文件后，将其重命名为 smarthotelsettingsurl，并将其上传到之前创建的存储 blob 中。
+5. 更新文件后，将其重命名为 smarthotelsettingsurl，并将其上传到之前创建的 blob 存储中。
 
     ![重命名和上传](./media/contoso-migration-rebuild/configure-webapp3.png)
 

@@ -1,41 +1,41 @@
 ---
-title: Azure 快速入门 - 使用 Java 存储 SDK V7 在对象存储中创建 Blob | Microsoft Docs
-description: 本快速入门将在对象 (Blob) 存储中创建存储帐户和容器。 然后，使用适用于 Java 的存储客户端库将一个 Blob 上传到 Azure 存储，下载一个 Blob，然后列出容器中的 Blob。
+title: 如何使用 Java 存储 SDK v7 在 Azure 存储中创建 Blob | Microsoft Docs
+description: 在对象 (Blob) 存储中创建存储帐户和容器。 随后，使用适用于 Java v7 的 Azure 存储客户端库将一个 Blob 上传到 Azure 存储，下载一个 Blob，然后列出容器中的 Blob。
 services: storage
 author: roygara
 ms.custom: mvc
 ms.service: storage
-ms.topic: quickstart
-ms.date: 10/23/2018
+ms.topic: conceptual
+ms.date: 11/14/2018
 ms.author: rogarana
-ms.openlocfilehash: 8aa56d8363fe96d58d6fb12f163f468e37dd0462
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 342b19927d290f5ff519d3fae5b84bcfa2b9d9cf
+ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50961851"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51711746"
 ---
-# <a name="quickstart-upload-download-and-list-blobs-using-java-sdk-v7"></a>快速入门：使用 Java SDK V7 上传、下载和列出 Blob
+# <a name="how-to-upload-download-and-list-blobs-using-java-sdk-v7"></a>如何使用 Java SDK v7 上传、下载和列出 Blob
 
-本快速入门介绍如何使用 Java 上传、下载和列出 Azure Blob 存储的容器中的块 blob。
+本操作说明指南介绍如何使用 Java 上传、下载和列出 Azure Blob 存储的容器中的块 Blob。
 
 ## <a name="prerequisites"></a>先决条件
 
-完成本快速入门教程：
+如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+
+同时在 [Azure 门户](https://portal.azure.com/#create/Microsoft.StorageAccount-ARM)中创建 Azure 存储帐户。 有关如何创建帐户的帮助，请参阅[创建存储帐户](../common/storage-quickstart-create-account.md)。
+
+确保满足以下先决条件：
 
 * 安装含有 Maven 集成的 IDE。
 
 * 或者，从命令行安装和配置 Maven。
 
-本教程使用具有“适用于 Java 开发者的 Eclipse IDE”配置的 [Eclipse](http://www.eclipse.org/downloads/)。
-
-如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
-
-[!INCLUDE [storage-create-account-portal-include](../../../includes/storage-create-account-portal-include.md)]
+本指南使用具有“适用于 Java 开发者的 Eclipse IDE”配置的 [Eclipse](http://www.eclipse.org/downloads/)。
 
 ## <a name="download-the-sample-application"></a>下载示例应用程序
 
-本快速入门中使用的[示例应用程序](https://github.com/Azure-Samples/storage-blobs-java-quickstart)是基本的控制台应用程序。  
+[示例应用程序](https://github.com/Azure-Samples/storage-blobs-java-quickstart)是基本的控制台应用程序。  
 
 使用 [git](https://git-scm.com/) 可将应用程序的副本下载到开发环境。 
 
@@ -130,9 +130,7 @@ container.createIfNotExists(BlobContainerPublicAccessType.CONTAINER, new BlobReq
 
 ### <a name="upload-blobs-to-the-container"></a>将 blob 上传到容器
 
-Blob 存储支持块 blob、追加 blob 和页 blob。 块 blob 最常用，此快速入门中也使用块 blob。 
-
-为了将文件上传到 blob，需获取对目标容器中 blob 的引用。 有了 blob 引用后，可以通过使用 [CloudBlockBlob.Upload](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.blob._cloud_block_blob.upload#com_microsoft_azure_storage_blob__cloud_block_blob_upload_final_InputStream_final_long) 将数据上传到其中。 此操作会创建 Blob（如果尚未存在），或者覆盖 Blob（若已存在）。
+若要将文件上传到块 Blob，请获取对目标容器中的 Blob 的引用。 有了 blob 引用后，可以通过使用 [CloudBlockBlob.Upload](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.blob._cloud_block_blob.upload#com_microsoft_azure_storage_blob__cloud_block_blob_upload_final_InputStream_final_long) 将数据上传到其中。 此操作会创建 Blob（如果尚未存在），或者覆盖 Blob（若已存在）。
 
 示例代码创建一个用于上传和下载的本地文件，存储作为“源”上传的文件和 blob 中的 blob 名称。 以下示例将文件上传到名为“quickstartcontainer”的容器。
 
@@ -184,7 +182,7 @@ blob.downloadToFile(downloadedFile.getAbsolutePath());
 
 ### <a name="clean-up-resources"></a>清理资源
 
-如果不再需要在此快速入门中上传的 blob，可使用 [CloudBlobContainer.DeleteIfExists](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.blob._cloud_blob_container.deleteifexists#com_microsoft_azure_storage_blob__cloud_blob_container_deleteIfExists) 删除整个容器。 此方法也会删除容器中的文件。
+如果不再需要上传的 Blob，可使用 [CloudBlobContainer.DeleteIfExists](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.blob._cloud_blob_container.deleteifexists#com_microsoft_azure_storage_blob__cloud_blob_container_deleteIfExists) 删除整个容器。 此方法也会删除容器中的文件。
 
 ```java
 try {
@@ -205,7 +203,7 @@ sourceFile.deleteOnExit();
 
 ## <a name="next-steps"></a>后续步骤
 
-在此快速入门教程中，介绍了如何使用 Java 在本地磁盘和 Azure Blob 存储之间传输文件。 若要详细了解 Java 的用法，请转到 GitHub 源代码存储库。
+本文介绍如何使用 Java 在本地磁盘和 Azure Blob 存储之间传输文件。 若要详细了解 Java 的用法，请转到 GitHub 源代码存储库。
 
 > [!div class="nextstepaction"]
 > [用于 Java 的 Azure 存储 SDK](https://github.com/azure/azure-storage-java) 

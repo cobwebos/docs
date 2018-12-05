@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 08/12/2016
 ms.author: pibehre
 ROBOTS: NOINDEX
-ms.openlocfilehash: 39995ca44573fe50bf0c2a2510c2c19fb227ff1d
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 99d48e2abdc166fe6472195c86d890c3c1060cfa
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51241117"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52863782"
 ---
 # <a name="what-is-the-web-language-model-api-preview"></a>什么是 Web 语言模型 API？ （预览版）
 
@@ -44,7 +44,7 @@ Web 语言模型 API 支持四个查找操作：
 1. 订阅服务。
 2. 下载 [SDK](https://www.github.com/microsoft/cognitive-weblm-windows)。
 3. 运行 SDK 示例代码。
-4. 有关终结点的完整详细信息，包括采用各种语言的代码片段，请参阅 [API 参考](https://westus.dev.cognitive.microsoft.com/docs/services/55de9ca4e597ed1fd4e2f104)。
+4. 有关终结点的完整详细信息，包括采用各种语言的代码片段，请参阅 [API 参考](http://web.archive.org/web/20170503191852/ https://westus.dev.cognitive.microsoft.com/docs/services/55de9ca4e597ed1fd4e2f104/operations/55de9ca4e597ed19b0de8a51)。
 
 ## <a name="underlying-technology"></a>基础技术
 

@@ -9,16 +9,16 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: da98873b133d69d78271494b991b67caea1d5a11
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 7fd201dd7c766880b1ed892abe3900b523d75145
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51283064"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52307468"
 ---
-# <a name="connect-to-kafka-on-hdinsight-through-an-azure-virtual-network"></a>通过 Azure 虚拟网络连接到 Kafka on HDInsight
+# <a name="connect-to-apache-kafka-on-hdinsight-through-an-azure-virtual-network"></a>通过 Azure 虚拟网络连接到 Apache Kafka on HDInsight
 
-了解如何通过 Azure 虚拟网络直接连接到 Kafka on HDInsight。 本文档提供有关使用以下配置连接到 Kafka 的信息：
+了解如何通过 Azure 虚拟网络直接连接到 Apache Kafka on HDInsight。 本文档提供有关使用以下配置连接到 Kafka 的信息：
 
 * 从本地网络中的资源。 使用本地网络上的 VPN 设备（软件或硬件）建立此连接。
 * 使用 VPN 软件客户端从开发环境。
@@ -37,7 +37,7 @@ HDInsight 不允许通过公共 Internet 直接连接到 Kafka。 Kafka 客户�
     4. 在每个网络中的 DNS 服务器之间配置转发。
     5. 在虚拟网络中创建 Kafka on HDInsight 群集。
 
-    有关详细信息，请参阅[从本地网络连接到 Kafka](#on-premises) 部分。 
+    有关详细信息，请参阅[从本地网络连接到 Apache Kafka](#on-premises) 部分。 
 
 * 使用 VPN 网关和 VPN 客户端将单个计算机连接到虚拟网络。 若要启用此配置，请执行以下任务：
 
@@ -47,7 +47,7 @@ HDInsight 不允许通过公共 Internet 直接连接到 Kafka。 Kafka 客户�
     4. 为 IP 播发配置 Kafka。 此配置允许客户端使用中转站 IP 地址而不是域名进行连接。
     5. 在开发系统上下载并使用 VPN 客户端。
 
-    有关详细信息，请参阅[使用 VPN 客户端连接到 Kafka](#vpnclient) 部分。
+    有关详细信息，请参阅[使用 VPN 客户端连接到 Apache Kafka](#vpnclient) 部分。
 
     > [!WARNING]
     > 由于存在以下限制，只建议将此配置用于开发目的：
@@ -57,7 +57,7 @@ HDInsight 不允许通过公共 Internet 直接连接到 Kafka。 Kafka 客户�
 
 有关在 Azure 虚拟网络中使用 HDInsight 的详细信息，请参阅[使用 Azure 虚拟网络扩展 HDInsight](../hdinsight-extend-hadoop-virtual-network.md)。
 
-## <a id="on-premises"></a>从本地网络连接到 Kafka
+## <a id="on-premises"></a>从本地网络连接到 Apache Kafka
 
 若要创建可与本地网络通信的 Kafka 群集，请遵循[将 HDInsight 连接到本地网络](./../connect-on-premises-network.md)文档中所述的步骤。
 
@@ -73,7 +73,7 @@ HDInsight 不允许通过公共 Internet 直接连接到 Kafka。 Kafka 客户�
 
 若要验证 Kafka 客户端是否可从本地连接到群集，请使用[示例：Python 客户端](#python-client)部分中的步骤。
 
-## <a id="vpnclient"></a>使用 VPN 客户端连接到 Kafka
+## <a id="vpnclient"></a>使用 VPN 客户端连接到 Apache Kafka
 
 使用本部分中的步骤创建以下配置：
 
@@ -237,7 +237,7 @@ HDInsight 不允许通过公共 Internet 直接连接到 Kafka。 Kafka 客户�
 
 ### <a name="configure-kafka-for-ip-advertising"></a>为 IP 播发配置 Kafka
 
-默认情况下，Zookeeper 向客户端返回 Kafka 中转站的域名。 此配置不使用 VPN 软件客户端，因为它无法对虚拟网络中的实体使用名称解析。 对于此配置，请使用以下步骤来配置 Kafka，以播发 IP 地址而不是域名：
+默认情况下，Apache Zookeeper 向客户端返回 Kafka 中转站的域名。 此配置不使用 VPN 软件客户端，因为它无法对虚拟网络中的实体使用名称解析。 对于此配置，请使用以下步骤来配置 Kafka，以播发 IP 地址而不是域名：
 
 1. 使用 Web 浏览器转到 https://CLUSTERNAME.azurehdinsight.net。 将 CLUSTERNAME 替换为 Kafka on HDInsight 群集的名称。
 
@@ -371,7 +371,7 @@ HDInsight 不允许通过公共 Internet 直接连接到 Kafka。 Kafka 客户�
 
 * [使用 Azure PowerShell 配置点到站点连接](../../vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps.md)
 
-有关使用 Kafka on HDInsight 的详细信息，请参阅以下文档：
+有关使用 Apache Kafka on HDInsight 的详细信息，请参阅以下文档：
 
-* [Kafka on HDInsight 入门](apache-kafka-get-started.md)
-* [通过 Kafka on HDInsight 使用镜像](apache-kafka-mirroring.md)
+* [Apache Kafka on HDInsight 入门](apache-kafka-get-started.md)
+* [通过 Apache Kafka on HDInsight 使用镜像](apache-kafka-mirroring.md)

@@ -1,5 +1,5 @@
 ---
-title: 因为 NIC 被禁用而无法通过远程桌面连接到 Azure 虚拟机 |Microsoft Docs
+title: 因为 NIC 被禁用而无法远程连接到 Azure 虚拟机 |Microsoft Docs
 description: 了解因为 NIC 在 Azure VM 中被禁用而导致 RDP 失败时如何进行故障排除 | Microsoft Docs
 services: virtual-machines-windows
 documentationCenter: ''
@@ -13,16 +13,16 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 11/12/2018
 ms.author: genli
-ms.openlocfilehash: 6b14530bd6b4c1b6617cb1d5c88d710a32e5372c
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: f9e4731146409f51d16a8c92c01d07a8ff11a7ea
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51634811"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52314518"
 ---
 #  <a name="cannot-remote-desktop-to-a-vm-because-the-network-interface-is-disabled"></a>无法通过远程桌面连接到 VM，因为网络接口被禁用
 
-本文展示了如何解决因为网络接口被禁用而无法通过远程桌面连接到 Azure Windows 虚拟机 (VM) 的问题。
+本文介绍如何解决在禁用网络接口时无法与 Azure Windows 虚拟机 (VM) 建立远程桌面连接的问题。
 
 > [!NOTE] 
 > Azure 具有用于创建和处理资源的两个不同的部署模型： [Resource Manager 和经典](../../azure-resource-manager/resource-manager-deployment-model.md)。 本文介绍如何使用资源管理器部署模型。建议对新部署使用该模型，而不要使用经典部署模型。 
@@ -51,7 +51,7 @@ ms.locfileid: "51634811"
 
         netsh interface set interface name="interface Name" admin=enabled
 
-    例如，如果网络接口名为“Ethernet 2”，请运行以下命令：
+    例如，如果网络接口名为“以太网 2”，请运行以下命令：
 
         netsh interface set interface name=""Ethernet 2" admin=enabled
     
@@ -66,4 +66,4 @@ ms.locfileid: "51634811"
 
 ## <a name="reset-network-interface"></a>重置网络接口
 
-若要重置网络接口，请使用 Azure 门户或 Azure PowerShell 将 IP 地址更改为子网中可用的另一个 IP 地址。 有关详细信息，请参阅[重置网络接口](reset-network-interface.md)。 
+要重置网络接口，请将 IP 地址更改为子网中可用的其他 IP 地址。 若要执行此操作，请使用 Azure 门户或 Azure PowerShell。 有关详细信息，请参阅[重置网络接口](reset-network-interface.md)。 

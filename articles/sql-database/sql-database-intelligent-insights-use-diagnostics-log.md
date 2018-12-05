@@ -12,12 +12,12 @@ ms.author: v-daljep
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 04/04/2018
-ms.openlocfilehash: 70096c8f3a5c07fa757b68494c04519b63435dcd
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: fb18507cc9b7aef92a07e6c34c99403e47be1c88
+ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47166888"
+ms.lasthandoff: 11/19/2018
+ms.locfileid: "51977091"
 ---
 # <a name="use-the-intelligent-insights-azure-sql-database-performance-diagnostics-log"></a>使用 Intelligent Insights Azure SQL 数据库性能诊断日志
 
@@ -39,9 +39,7 @@ ms.locfileid: "47166888"
 
 ## <a name="issue-id-and-database-affected"></a>问题 ID 和受影响的数据库
 
-问题标识属性 (issueId_d) 提供一种跟踪性能问题直至解决的独特方法。 Intelligent Insights 将每个问题的生命周期显示为：“活动”、“正在验证”或“已完成”。 使用所有这些状态阶段，Intelligent Insights 可以在日志中记录多个事件记录。 对于每个条目，问题 ID 编号始终是唯一的。 Intelligent Insights 会在问题的整个生命周期中对它进行跟踪，并且每 15 分钟在诊断日志中生成一个见解。
-
-一旦检测到性能问题并且只要它还在持续发生，该问题在状态 (status_s) 属性下将报告为“活动”。 检测的问题得到缓解后，它将进行验证，并在状态 (status_s) 属性下报告为“正在验证”。 如果问题已不在，状态 (status_s) 属性会将此问题报告为“完成”。
+问题标识属性 (issueId_d) 提供一种跟踪性能问题直至解决的独特方法。 同一问题的日志报告状态中的多个事件记录将共享同一问题 ID。
 
 除问题 ID 外，诊断日志还会报告与在诊断日志中所报告问题相关的特定事件的开始 (intervalStartTime_t) 和结束 (intervalEndTme_t) 时间戳。
 

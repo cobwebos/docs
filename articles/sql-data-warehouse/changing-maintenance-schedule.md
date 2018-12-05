@@ -7,22 +7,22 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: design
-ms.date: 10/07/2018
+ms.date: 10/15018
 ms.author: anvang
 ms.reviewer: igorstan
-ms.openlocfilehash: 428b9970471c9365812639e251810c571698a574
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 75384aed8c354cf2d549d92cdb75f87038f33ab8
+ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49425948"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51713259"
 ---
 # <a name="change-a-maintenance-schedule"></a>更改维护计划 
 
 ## <a name="portal"></a>门户
 可以在任何时间更新或更改维护计划。 如果所选的实例正在经历活动维护周期，将保存设置。 在下一个确定的维护周期，它们将处于活动状态。 [详细了解](https://docs.microsoft.com/azure/service-health/resource-health-overview)在活动维护事件期间监视数据仓库。 
 
-在 Azure 维护计划的预览期，可在七天时限内选择两个维护时段。 每个维护时段可以是 3 到 8 小时。 维护可在维护时段内的任意时间发生，但在未收到事先通知的情况下，不会在维护时段以外发生。 由于服务要将新代码部署到数据仓库，因此，还会出现短暂性的连接断开。 
+若要使用维护计划，必须在七天内选择两个维护时段。 每个维护时段可以是 3 到 8 小时。 维护可在维护时段内的任意时间发生，但在未收到事先通知的情况下，不会在维护时段以外发生。 由于服务要将新代码部署到数据仓库，因此，还会出现短暂性的连接断开。 
 
 ## <a name="identifying-the-primary-and-secondary-windows"></a>确定主要和辅助时段
 

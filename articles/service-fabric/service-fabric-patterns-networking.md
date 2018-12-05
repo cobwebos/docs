@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/19/2018
 ms.author: ryanwi
-ms.openlocfilehash: b180e62804b875ca4547a9d09f19efff32ae0cd9
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 2fce90f971d13b94c73012d4089cca05739c5440
+ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34207217"
+ms.lasthandoff: 11/17/2018
+ms.locfileid: "51853704"
 ---
 # <a name="service-fabric-networking-patterns"></a>Service Fabric 网络模式
 可将 Azure Service Fabric 群集与其他 Azure 网络功能集成。 本文说明如何创建使用以下功能的群集：
@@ -106,15 +106,20 @@ DnsSettings              : {
             },*/
     ```
 
+2. 注释掉 `Microsoft.Compute/virtualMachineScaleSets` 的 `nicPrefixOverride` 属性，因为你使用的是现有子网，并且已在步骤 1 中禁用了此变量。
 
-2. 将 `vnetID` 变量更改为指向现有虚拟网络：
+    ```
+            /*"nicPrefixOverride": "[parameters('subnet0Prefix')]",*/
+    ```
+
+3. 将 `vnetID` 变量更改为指向现有虚拟网络：
 
     ```
             /*old "vnetID": "[resourceId('Microsoft.Network/virtualNetworks',parameters('virtualNetworkName'))]",*/
             "vnetID": "[concat('/subscriptions/', subscription().subscriptionId, '/resourceGroups/', parameters('existingVNetRGName'), '/providers/Microsoft.Network/virtualNetworks/', parameters('existingVNetName'))]",
     ```
 
-3. 从资源中删除 `Microsoft.Network/virtualNetworks`，使 Azure 不会创建新的虚拟网络：
+4. 从资源中删除 `Microsoft.Network/virtualNetworks`，使 Azure 不会创建新的虚拟网络：
 
     ```
     /*{
@@ -144,7 +149,7 @@ DnsSettings              : {
     },*/
     ```
 
-4. 从 `Microsoft.Compute/virtualMachineScaleSets` 的 `dependsOn` 属性中注释掉虚拟网络，避免非得要创建新的虚拟网络：
+5. 从 `Microsoft.Compute/virtualMachineScaleSets` 的 `dependsOn` 属性中注释掉虚拟网络，避免非得要创建新的虚拟网络：
 
     ```
     "apiVersion": "[variables('vmssApiVersion')]",
@@ -158,7 +163,7 @@ DnsSettings              : {
 
     ```
 
-5. 部署模板：
+6. 部署模板：
 
     ```powershell
     New-AzureRmResourceGroup -Name sfnetworkingexistingvnet -Location westus

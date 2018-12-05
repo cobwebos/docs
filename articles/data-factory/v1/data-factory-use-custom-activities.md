@@ -14,16 +14,16 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: douglasl
 robots: noindex
-ms.openlocfilehash: 580dd5bf6a7e905927189f4b1ae42ab49a1cbc80
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: b7a2f9350633be5ec0cb8d5a7c6e7cc5048f956a
+ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45730700"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52275989"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>在 Azure 数据工厂管道中使用自定义活动
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [第 1 版](data-factory-use-custom-activities.md)
+> * [版本 1](data-factory-use-custom-activities.md)
 > * [版本 2（当前版本）](../transform-data-using-dotnet-custom-activity.md)
 
 > [!NOTE]
@@ -212,7 +212,7 @@ public IDictionary<string, string> Execute(
         foreach (LinkedService ls in linkedServices)
             logger.Write("linkedService.Name {0}", ls.Name);
     
-        // get the first Azure Storate linked service from linkedServices object
+        // get the first Azure Storage linked service from linkedServices object
         // using First method instead of Single since we are using the same
         // Azure Storage linked service for input and output.
         inputLinkedService = linkedServices.First(
@@ -358,7 +358,7 @@ public IDictionary<string, string> Execute(
     }
     ```
 
-    GetFolderPath 方法返回数据集所指向的文件夹路径，GetFileName 方法返回数据集指向的 blob/文件名称。 如果 havefolderPath 使用变量（如 {Year}、{Month}、{Day} 等）定义，该方法将返回实际字符串，不会将它们替换为运行时值。 有关访问 SliceStart、SliceEnd 等的详细信息，请参阅[访问扩展属性](#access-extended-properties)部分。    
+    GetFolderPath 方法返回数据集所指向的文件夹路径，GetFileName 方法返回数据集指向的 blob/文件名称。 如果使用变量（如 {Year}、{Month}、{Day} 等）定义 folderPath，该方法将原样返回字符串，而不会将它们替换为运行时值。 有关访问 SliceStart、SliceEnd 等的详细信息，请参阅[访问扩展属性](#access-extended-properties)部分。    
 
     ```JSON
     "name": "InputDataset",
@@ -451,7 +451,7 @@ test custom activity Microsoft test custom activity Microsoft
 4. 单击命令栏上的“部署”，部署链接服务。
 
 #### <a name="create-azure-batch-linked-service"></a>创建 Azure Batch 链接服务
-1. 在“数据工厂编辑器”中，单击命令栏上的“...**更多”**，单击“新建计算”，并从菜单中选择“Azure Batch”。
+1. 在“数据工厂编辑器”中，单击命令栏上的“...**更多”**，单击“新建计算”****，并从菜单中选择“Azure Batch”****。
 
     ![新建计算 - Azure Batch](media/data-factory-use-custom-activities/new-azure-compute-batch.png)
 2. 对 JSON 脚本进行以下更改：
@@ -566,7 +566,7 @@ test custom activity Microsoft test custom activity Microsoft
 3. 若要部署 **OutputDataset**，请在命令栏上单击“部署”。
 
 ### <a name="create-and-run-a-pipeline-that-uses-the-custom-activity"></a>创建并运行使用自定义活动的管道
-1. 在“数据工厂编辑器”中，单击“...**更多”**，并在命令栏上选择“新建管道”。 
+1. 在“数据工厂编辑器”中，单击“...**更多”**，并在命令栏上选择“新建管道”****。 
 2. 将右窗格中的 JSON 替换为以下 JSON 脚本：
 
     ```JSON
@@ -640,7 +640,7 @@ test custom activity Microsoft test custom activity Microsoft
    ![输出切片](./media/data-factory-use-custom-activities/OutputSlices.png)
 4. 验证输出文件是否在 **adftutorial** 容器的 blob 存储中生成。
 
-   ![自定义活动的输出][image-data-factory-ouput-from-custom-activity]
+   ![自定义活动的输出][image-data-factory-output-from-custom-activity]
 5. 打开输出文件，应看到如下所示的输出：
 
     ```
@@ -1063,6 +1063,6 @@ GitHub 上的 [Azure 数据工厂 - 本地环境](https://github.com/gbrueckl/Az
 [adfgetstarted]: data-factory-copy-data-from-azure-blob-storage-to-sql-database.md
 [hivewalkthrough]: data-factory-data-transformation-activities.md
 
-[image-data-factory-ouput-from-custom-activity]: ./media/data-factory-use-custom-activities/OutputFilesFromCustomActivity.png
+[image-data-factory-output-from-custom-activity]: ./media/data-factory-use-custom-activities/OutputFilesFromCustomActivity.png
 
 [image-data-factory-download-logs-from-custom-activity]: ./media/data-factory-use-custom-activities/DownloadLogsFromCustomActivity.png

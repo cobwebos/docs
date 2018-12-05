@@ -10,12 +10,12 @@ ms.component: bing-local-business
 ms.topic: article
 ms.date: 11/01/2018
 ms.author: rosh, v-gedod
-ms.openlocfilehash: e55c06c7e8a2d0952cac809b622fa9a63ccee399
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 533e8b30bf59010f71df477b96b5441c83c34be7
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50959794"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52307102"
 ---
 # <a name="quickstart-send-a-query-to-the-bing-local-business-search-api-using-java"></a>快速入门：使用 Java 将查询发送到必应当地企业搜索 API
 
@@ -27,7 +27,7 @@ ms.locfileid: "50959794"
 
 * [Java 开发工具包 (JDK)](https://www.oracle.com/technetwork/java/javase/downloads/index.html)
 
-必须创建一个具有必应搜索 API 的[认知服务 API 帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)。 [免费试用版](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)足以满足本快速入门的要求。 你将需要在激活免费试用版时提供的访问密钥。
+必须创建一个具有必应搜索 API 的[认知服务 API 帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)。 [免费试用版](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)足以满足本快速入门的要求。 你将需要使用在激活免费试用版时提供的访问密钥。  另请参阅[认知服务定价 - 必应搜索 API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)。
 
 此示例应用程序从 *hotel in Bellevue* 的查询获取本地响应数据。
 
@@ -37,9 +37,9 @@ ms.locfileid: "50959794"
 
 ````
     // construct URL of search request (endpoint + query string)
-     URL url = new URL(host + path + "?q=" +  URLEncoder.encode(searchQuery, "UTF-8") + "appid=AEA845921DC03F506DC317A90EDDBF33074523F7&traffictype=Internal_monitor&market=en-us");
+     URL url = new URL(host + path + "?q=" +  URLEncoder.encode(searchQuery, "UTF-8") + &mkt=en-us");
     HttpsURLConnection connection = (HttpsURLConnection)url.openConnection();
-    //connection.setRequestProperty("Ocp-Apim-Subscription-Key", subscriptionKey);
+    connection.setRequestProperty("Ocp-Apim-Subscription-Key", subscriptionKey);
 
     // receive JSON body
     InputStream stream = connection.getInputStream();
@@ -100,10 +100,9 @@ public class LocalSearchCls {
 
         public static SearchResults SearchLocal (String searchQuery) throws Exception {
             // construct URL of search request (endpoint + query string)
-            URL url = new URL(host + path + "?q=" +  URLEncoder.encode(searchQuery, "UTF-8") + 
-                         "&appid=" + subscriptionKey + "&traffictype=Internal_monitor&market=en-us");
+            URL url = new URL(host + path + "?q=" +  URLEncoder.encode(searchQuery, "UTF-8") + "&mkt=en-us");
             HttpsURLConnection connection = (HttpsURLConnection)url.openConnection();
-            //connection.setRequestProperty("Ocp-Apim-Subscription-Key", subscriptionKey);
+            connection.setRequestProperty("Ocp-Apim-Subscription-Key", subscriptionKey);
 
             // receive JSON body
             InputStream stream = connection.getInputStream();

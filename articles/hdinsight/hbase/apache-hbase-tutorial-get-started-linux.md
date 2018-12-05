@@ -10,16 +10,16 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 02/22/2018
 ms.author: hrasheed
-ms.openlocfilehash: 1e6c4097f4886213bde8adcaac51f36a3bfef702
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 0f9d786988cb547771b8fd999b911bd228cdc3e2
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51010282"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52311035"
 ---
 # <a name="get-started-with-an-apache-hbase-example-in-hdinsight"></a>HDInsight 中的 Apache HBase 入门示例
 
-了解如何使用 Hive 在 HDInsight 中创建 HBase 群集、创建 HBase 表和查询表。 有关 HBase 的一般信息，请参阅 [HDInsight HBase 概述][hdinsight-hbase-overview]。
+了解如何使用 [Apache Hive](https://hive.apache.org/) 在 HDInsight 中创建 [Apache HBase](http://hbase.apache.org/) 群集、创建 HBase 表和查询表。  有关 HBase 的一般信息，请参阅 [HDInsight HBase 概述][hdinsight-hbase-overview]。
 
 [!INCLUDE [delete-cluster-warning](../../../includes/hdinsight-delete-cluster-warning.md)]
 
@@ -30,7 +30,7 @@ ms.locfileid: "51010282"
 * [安全外壳 (SSH)](../hdinsight-hadoop-linux-use-ssh-unix.md)。 
 * [curl](http://curl.haxx.se/download.html)。
 
-## <a name="create-hbase-cluster"></a>创建 HBase 群集
+## <a name="create-apache-hbase-cluster"></a>创建 Apache HBase 群集
 以下过程使用 Azure 资源管理器模板创建 HBase 群集以及相关的默认 Azure 存储帐户。 若要了解该过程与其他群集创建方法中使用的参数，请参阅 [在 HDInsight 中创建基于 Linux 的 Hadoop 群集](../hdinsight-hadoop-provision-linux-clusters.md)。 有关使用 Data Lake Storage Gen2 的详细信息，请参阅[快速入门：在 HDInsight 中设置群集](../../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)。
 
 1. 单击下面的图像即可在 Azure 门户中打开该模板。 该模板位于 [Azure 快速启动模板](https://azure.microsoft.com/resources/templates/)中。
@@ -56,13 +56,13 @@ ms.locfileid: "51010282"
 > 
 
 ## <a name="create-tables-and-insert-data"></a>创建表和插入数据
-可以使用 SSH 连接到 HBase 群集，并使用 HBase Shell 来创建 HBase 表以及插入和查询数据。 有关详细信息，请参阅 [Use SSH with HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md)（对 HDInsight 使用 SSH）。
+可以使用 SSH 连接到 HBase 群集，并使用 [Apache HBase Shell](http://hbase.apache.org/0.94/book/shell.html) 来创建 HBase 表以及插入和查询数据。 有关详细信息，请参阅 [Use SSH with HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md)（对 HDInsight 使用 SSH）。
 
 对于大多数人而言，数据以表格形式显示：
 
 ![HDInsight HBase 表格数据][img-hbase-sample-data-tabular]
 
-在 HBase（BigTable 的一种实现）中，相同的数据看起来类似于：
+在 HBase（[Cloud BigTable](https://cloud.google.com/bigtable/) 的一种实现）中，相同的数据看起来类似于：
 
 ![HDInsight HBase BigTable 数据][img-hbase-sample-data-bigtable]
 
@@ -100,7 +100,7 @@ ms.locfileid: "51010282"
    
     会看到与使用扫描命令相同的结果，因为只有一个行。
    
-    有关 HBase 表架构的详细信息，请参阅 [HBase 架构设计简介][hbase-schema]。 有关 HBase 命令的详细信息，请参阅 [Apache HBase 参考指南][hbase-quick-start]。
+    有关 HBase 表架构的详细信息，请参阅 [Apache HBase 架构设计简介][hbase-schema]。 有关 HBase 命令的详细信息，请参阅 [Apache HBase 参考指南][hbase-quick-start]。
 5. 退出 shell
    
     ```hbaseshell
@@ -124,7 +124,7 @@ HBase 提供了多种方法用于将数据载入表中。  有关详细信息，
     4761    Caleb Alexander  670-555-0141    230-555-0199    4775 Kentucky Dr.
     16443   Terry Chander    998-555-0171    230-555-0200    771 Northridge Drive
 
-可以选择创建一个文本文件并将该文件上传到自己的存储帐户。 有关说明，请参阅[在 HDInsight 中为 Hadoop 作业上载数据][hdinsight-upload-data]。
+可以选择创建一个文本文件并将该文件上传到自己的存储帐户。 有关说明，请参阅[在 HDInsight 中为 Apache Hadoop 作业上传数据][hdinsight-upload-data]。
 
 > [!NOTE]
 > 此过程使用在上一个过程中创建的“联系人”HBase 表。
@@ -144,9 +144,9 @@ HBase 提供了多种方法用于将数据载入表中。  有关详细信息，
 
 3. 可以打开 HBase Shell，并使用扫描命令来列出表内容。
 
-## <a name="use-hive-to-query-hbase"></a>使用 Hive 查询 HBase
+## <a name="use-apache-hive-to-query-apache-hbase"></a>使用 Apache Hive 查询 Apache HBase
 
-可以使用 Hive 查询 HBase 表中的数据。 本部分将创建要映射到 HBase 表的 Hive 表，并使用该表来查询 HBase 表中的数据。
+可以使用 [Apache Hive](https://hive.apache.org/) 查询 HBase 表中的数据。 本部分将创建要映射到 HBase 表的 Hive 表，并使用该表来查询 HBase 表中的数据。
 
 1. 打开 **PuTTY**并连接到群集。  参阅前一过程中的说明。
 2. 在 SSH 会话中，使用以下命令启动 Beeline：
@@ -157,7 +157,7 @@ HBase 提供了多种方法用于将数据载入表中。  有关详细信息，
 
     有关 Beeline 的详细信息，请参阅[通过 Beeline 将 Hive 与 HDInsight 中的 Hadoop 配合使用](../hadoop/apache-hadoop-use-hive-beeline.md)。
        
-3. 运行以下 HiveQL 脚本，创建映射到 HBase 表的 Hive 表。 确保已创建本教程中前面引用的示例表，方法是在运行此语句前使用 HBase shell。
+3. 运行以下 [HiveQL](https://cwiki.apache.org/confluence/display/Hive/LanguageManual) 脚本，创建映射到 HBase 表的 Hive 表。 确保已创建本教程中前面引用的示例表，方法是在运行此语句前使用 HBase shell。
 
     ```hiveql   
     CREATE EXTERNAL TABLE hbasecontacts(rowkey STRING, name STRING, homephone STRING, officephone STRING, officeaddress STRING)
@@ -268,13 +268,14 @@ HDInsight 中的 HBase 随附了一个 Web UI 用于监视群集。 使用该 We
 如果在创建 HDInsight 群集时遇到问题，请参阅[访问控制要求](../hdinsight-administer-use-portal-linux.md#create-clusters)。
 
 ## <a name="next-steps"></a>后续步骤
-本文已介绍如何创建 HBase 群集、如何创建表以及如何从 HBase shell 查看这些表中的数据。 此外，学习了如何对 HBase 表中的数据使用 Hive 查询，以及如何使用 HBase C# REST API 创建 HBase 表并从该表中检索数据。
+本文已介绍如何创建 Apache HBase 群集、如何创建表以及如何从 HBase shell 查看这些表中的数据。 此外，学习了如何对 HBase 表中的数据使用 Hive 查询，以及如何使用 HBase C# REST API 创建 HBase 表并从该表中检索数据。
 
 若要了解更多信息，请参阅以下文章：
 
-* [HDInsight HBase 概述][hdinsight-hbase-overview]：HBase 是构建于 Hadoop 上的 Apache 开源 NoSQL 数据库，用于为大量非结构化和半结构化数据提供随机访问和高度一致性。
+* [HDInsight HBase 概述][hdinsight-hbase-overview]：Apache HBase 是构建于 Apache Hadoop 上的 Apache 开源 NoSQL 数据库，用于为大量非结构化和半结构化数据提供随机访问和高度一致性。
 
 [hdinsight-manage-portal]: hdinsight-administer-use-management-portal.md
+
 [hdinsight-upload-data]: ../hdinsight-upload-data.md
 [hbase-reference]: http://hbase.apache.org/book.html#importtsv
 [hbase-schema]: http://0b4af6cdc2f0c5998459-c0245c5c937c5dedcca3f1764ecc9b2f.r43.cf2.rackcdn.com/9353-login1210_khurana.pdf

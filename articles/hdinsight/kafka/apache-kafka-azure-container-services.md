@@ -9,16 +9,16 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/07/2018
-ms.openlocfilehash: aad23f1b50a3156d01ce127270e29368f82d18b3
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 569030cc6d72d206411a73703ec0d359e033bef7
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51014034"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52311664"
 ---
-# <a name="use-azure-kubernetes-service-with-kafka-on-hdinsight"></a>将 Azure Kubernetes 服务与 Kafka on HDInsight 配合使用
+# <a name="use-azure-kubernetes-service-with-apache-kafka-on-hdinsight"></a>将 Azure Kubernetes 服务与 Apache Kafka on HDInsight 配合使用
 
-了解如何将 Azure Kubernetes 服务 (AKS) 与 Kafka on HDInsight 群集配合使用。 本文档中的步骤使用 AKS 中托管的 Node.js 应用程序来验证与 Kafka 的连接。 此应用程序使用 [kafka-node](https://www.npmjs.com/package/kafka-node) 包来与 Kafka 通信。 它使用 [Socket.io](https://socket.io/) 在浏览器客户端与托管在 AKS 中的后端之间进行事件驱动的消息传送。
+了解如何将 Azure Kubernetes 服务 (AKS) 与 [Apache Kafka](https://kafka.apache.org/) on HDInsight 群集配合使用。 本文档中的步骤使用 AKS 中托管的 Node.js 应用程序来验证与 Kafka 的连接。 此应用程序使用 [kafka-node](https://www.npmjs.com/package/kafka-node) 包来与 Kafka 通信。 它使用 [Socket.io](https://socket.io/) 在浏览器客户端与托管在 AKS 中的后端之间进行事件驱动的消息传送。
 
 [Apache Kafka](https://kafka.apache.org) 是一个分布式流式处理平台，以开源方式提供，可用于构建实时流式处理数据管道和应用程序。 Azure Kubernetes 服务管理托管的 Kubernetes 环境，使用它可以快速轻松地部署容器化应用程序。 使用 Azure 虚拟网络可以连接这两个服务。
 
@@ -93,14 +93,14 @@ HDInsight 和 AKS 使用 Azure 虚拟网络作为计算资源的容器。 若要
 
     将其他所有字段保留默认值，然后选择“确定”以配置对等互连。
 
-## <a name="install-kafka-on-hdinsight"></a>安装 Kafka on HDInsight
+## <a name="install-apache-kafka-on-hdinsight"></a>安装 Apache Kafka on HDInsight
 
 创建 Kafka on HDInsight 群集时，必须加入前面针对 HDInsight 创建的虚拟网络。 有关创建 Kafka 群集的详细信息，请参阅[创建 Kafka 群集](apache-kafka-get-started.md)文档。
 
 > [!IMPORTANT]
 > 创建群集时，必须使用“高级设置”加入针对 HDInsight 创建的虚拟网络。
 
-## <a name="configure-kafka-ip-advertising"></a>配置 Kafka IP 播发
+## <a name="configure-apache-kafka-ip-advertising"></a>配置 Apache Kafka IP 播发
 
 使用以下步骤将 Kafka 配置为播发 IP 地址而不是域名：
 
@@ -152,7 +152,7 @@ HDInsight 和 AKS 使用 Azure 虚拟网络作为计算资源的容器。 若要
 
 此时，Kafka 和 Azure Kubernetes 服务通过对等互连的虚拟网络进行通信。 若要测试此连接，请使用以下步骤：
 
-1. 创建测试应用程序使用的 Kafka 主题。 有关创建 Kafka 主题的信息，请参阅[创建 Kafka 群集](apache-kafka-get-started.md)文档。
+1. 创建测试应用程序使用的 Kafka 主题。 有关创建 Kafka 主题的信息，请参阅[创建 Apache Kafka 群集](apache-kafka-get-started.md)文档。
 
 2. 从 [https://github.com/Blackmist/Kafka-AKS-Test](https://github.com/Blackmist/Kafka-AKS-Test) 下载示例应用程序。
 
@@ -161,7 +161,7 @@ HDInsight 和 AKS 使用 Azure 虚拟网络作为计算资源的容器。 若要
     * `var topic = 'mytopic'`：将 `mytopic` 替换为此应用程序使用的 Kafka 主题名称。
     * `var brokerHost = '176.16.0.13:9092`：将 `176.16.0.13` 替换为群集的某个代理主机的内部 IP 地址。
 
-        若要查找群集中代理主机（工作节点）的内部 IP 地址，请参阅 [Ambari REST API](../hdinsight-hadoop-manage-ambari-rest-api.md#example-get-the-internal-ip-address-of-cluster-nodes) 文档。 选择域名以 `wn` 开头的某个条目的 IP 地址。
+        若要查找群集中代理主机（工作节点）的内部 IP 地址，请参阅 [Apache Ambari REST API](../hdinsight-hadoop-manage-ambari-rest-api.md#example-get-the-internal-ip-address-of-cluster-nodes) 文档。 选择域名以 `wn` 开头的某个条目的 IP 地址。
 
 4. 在 `src` 目录中，通过命令行安装依赖项并使用 Docker 生成用于部署的映像：
 
@@ -224,12 +224,12 @@ HDInsight 和 AKS 使用 Azure 虚拟网络作为计算资源的容器。 若要
 
 使用以下链接了解如何使用 Apache Kafka on HDInsight：
 
-* [Kafka on HDInsight 入门](apache-kafka-get-started.md)
+* [Apache Kafka on HDInsight 入门](apache-kafka-get-started.md)
 
-* [使用 MirrorMaker 创建 Kafka on HDInsight 的副本](apache-kafka-mirroring.md)
+* [使用 MirrorMaker 创建 Apache Kafka on HDInsight 的副本](apache-kafka-mirroring.md)
 
-* [将 Apache Storm 与 Kafka on HDInsight 结合使用](../hdinsight-apache-storm-with-kafka.md)
+* [将 Apache Storm 与 Apache Kafka on HDInsight 配合使用](../hdinsight-apache-storm-with-kafka.md)
 
-* [将 Apache Spark 与 Kafka on HDInsight 结合使用](../hdinsight-apache-spark-with-kafka.md)
+* [将 Apache Spark 与 Apache Kafka on HDInsight 配合使用](../hdinsight-apache-spark-with-kafka.md)
 
-* [通过 Azure 虚拟网络连接到 Kafka](apache-kafka-connect-vpn-gateway.md)
+* [通过 Azure 虚拟网络连接到 Apache Kafka](apache-kafka-connect-vpn-gateway.md)

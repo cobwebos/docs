@@ -10,28 +10,28 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: ''
-ms.openlocfilehash: 7931cd8a6f8b3de826e8dd563a837f80fc15d88a
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 86561cd835a36282ca1b38638ab4372c6b360617
+ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46310406"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51705645"
 ---
 # <a name="azure-active-directory-premium-p2-licensing-feature-checklist"></a>Azure Active Directory Premium P2 许可功能清单
 
-为组织部署 Azure Active Directory (Azure AD) 并确保其安全，这似乎令人望而生畏。 本文确定了一些常见的任务，客户认为在 30 天、90 天或更长时限内完成这些任务有助于提高安全性。 即使已部署 Azure AD 的组织也可以使用此清单来确保从投资中获得最大的收益。
+为组织部署 Azure Active Directory (Azure AD) 并确保其安全，这似乎令人难以招架。 本文确定了客户认为有用的一些常见任务。 客户通常会在 30 天、90 天或更长时间内完成这些任务，以改善其安全状况。 即使已部署 Azure AD 的组织也可以使用此清单来确保从投资中获得最大的收益。
 
 精心规划和得到良好执行的身份基础结构为仅经过身份验证的用户和设备更安全地访问生产力工作负载和数据铺平了道路。
 
 ## <a name="prerequisites"></a>先决条件
 
-本指南假定你拥有 Azure AD Premium P2 许可证、企业移动 + 安全性 E5、Microsoft 365 E5 或等效的许可证捆绑包。
+本指南假定你拥有 Azure AD Premium P2 许可证、企业移动性 + 安全性 E5、Microsoft 365 E5 或类似的许可证捆绑包。
 
 [Azure AD 许可](https://azure.microsoft.com/pricing/details/active-directory/)
 
-[Microsoft 365 企业版](https://www.microsoft.com/licensing/product-licensing/microsoft-365-enterprise.aspx)
+[Microsoft 365 企业版](https://www.microsoft.com/en-us/licensing/product-licensing/microsoft-365-enterprise)
 
-[企业移动性 + 安全性](https://www.microsoft.com/licensing/product-licensing/enterprise-mobility-security.aspx)
+[企业移动性 + 安全性](https://www.microsoft.com/en-us/licensing/product-licensing/enterprise-mobility-security)
 
 ## <a name="plan-and-deploy-day-1-30"></a>计划和部署：第 1 到 30 日
 

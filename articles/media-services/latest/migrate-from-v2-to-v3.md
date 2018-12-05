@@ -13,20 +13,23 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: media
-ms.date: 11/07/2018
+ms.date: 11/21/2018
 ms.author: juliako
-ms.openlocfilehash: 8c3ff4af3b556614d0b2179dceed6cabd9cbabff
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: 73d4ecec2665e238236de4a778d6cdd43642c87b
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51616004"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52310389"
 ---
 # <a name="migration-guidance-for-moving-from-media-services-v2-to-v3"></a>有关从媒体服务 v2 迁移到 v3 的指导
 
 本文介绍 Azure 媒体服务 v3 中引入的更改，说明两个版本之间的差异，并提供迁移指导。
 
 如果你目前基于[旧版媒体服务 v2 API](../previous/media-services-overview.md) 开发了一个视频服务，则在迁移到 v3 API 之前，应查看以下指导原则和注意事项。 v3 API 中的许多优势和新功能可以改进开发体验和媒体服务的功能。 但是，如本文的[已知问题](#known-issues)部分中所述，API 版本的变化也带来了一些限制。 在媒体服务团队不断改进 v3 API 并解决版本差距的过程中，本页面会得到维护。 
+
+> [!NOTE]
+> 目前，无法使用 Azure 门户来管理 v3 资源。 请使用 [REST API](https://aka.ms/ams-v3-rest-sdk)、CLI 或支持的 SDK 之一。
 
 ## <a name="benefits-of-media-services-v3"></a>媒体服务 v3 的优势
 
@@ -65,9 +68,7 @@ ms.locfileid: "51616004"
 * 以下实体已重命名
     * JobOutput 取代了 Task，现在属于作业的一部分。
     * StreamingLocator 替换了 Locator。
-    * LiveEvent 替换了 Channel。
-        
-        LiveEvent 计费基于直播频道指标。 有关详细信息，请参阅[实时传送视频流](live-streaming-overview.md#billing)和[定价](https://azure.microsoft.com/pricing/details/media-services/)。
+    * LiveEvent 替换了 Channel。<br/>LiveEvent 计费基于直播频道指标。 有关详细信息，请参阅[实时传送视频流](live-streaming-overview.md#billing)和[定价](https://azure.microsoft.com/pricing/details/media-services/)。
     * LiveOutput 替换了 Program。
 * LiveOutput 无需显式启动，它们在创建时启动，在删除时停止。 v2 API 中的节目以不同的方式工作，它们必须在创建后启动。
 
@@ -75,10 +76,7 @@ ms.locfileid: "51616004"
 
 与 v2 API 相比，v3 API 存在以下功能差距。 我们正在弥补这些差距。
 
-* [Premium Encoder](../previous/media-services-premium-workflow-encoder-formats.md) 和旧版[媒体分析处理器](../previous/media-services-analytics-overview.md)（Azure 媒体服务索引器 2 预览版、Face Redactor 等）不可通过 v3 访问。
-
-    想要从媒体索引器 1 或 2 预览版迁移的客户可以立即使用 v3 API 中的 AudioAnalyzer 预设。  此新预设包含的功能比旧版媒体索引器 1 或 2 更多。 
-
+* [Premium Encoder](../previous/media-services-premium-workflow-encoder-formats.md) 和旧版[媒体分析处理器](../previous/media-services-analytics-overview.md)（Azure 媒体服务索引器 2 预览版、Face Redactor 等）不可通过 v3 访问。<br/>想要从媒体索引器 1 或 2 预览版迁移的客户可以立即使用 v3 API 中的 AudioAnalyzer 预设。  此新预设包含的功能比旧版媒体索引器 1 或 2 更多。 
 * 在 v2 API 中，Media Encoder Standard 的许多高级功能目前在 v3 中不可用，例如：
     * 剪辑（适用于按需和实时方案）
     * 资产拼接
@@ -103,13 +101,12 @@ ms.locfileid: "51616004"
 ## <a name="known-issues"></a>已知问题
 
 * 目前，无法使用 Azure 门户来管理 v3 资源。 请使用 [REST API](https://aka.ms/ams-v3-rest-sdk)、CLI 或支持的 SDK 之一。
-* 目前，只能使用媒体服务 v2 API 管理媒体保留单位。 有关详细信息，请参阅[缩放媒体处理](../previous/media-services-scale-media-processing-overview.md)。
+* 需要在帐户中预配媒体保留单位 (MRU) 才能控制作业的并发和性能，特别是涉及到视频或音频分析的那些作业。 有关详细信息，请参阅[缩放媒体处理](../previous/media-services-scale-media-processing-overview.md)。 可以使用[适用于媒体服务 v3 的 CLI 2.0](media-reserved-units-cli-how-to.md)、使用 [Azure 门户](../previous/media-services-portal-scale-media-processing.md)或 [v2 API](../previous/media-services-dotnet-encoding-units.md) 来管理 MRU。 无论使用的是媒体服务 v2 还是 v3 API，都需要预配 MRU。
 * 无法使用 v2 API 来管理通过 v3 API 创建的媒体服务实体。  
 * 不建议使用 v3 API 来管理通过 v2 API 创建的实体。 下面是会导致两个版本中的实体不兼容的差异示例：   
     * 在 v2 中创建作业和任务不会在 v3 中显示，因为它们不与转换相关联。 建议切换到 v3 转换和作业。 在切换过程中，需要花费一段相对较短的时间来监视即时 v2 作业。
-    * 无法持续使用 v3 来管理通过 v2 创建的频道和节目（将映射到 v3 中的 LiveEvent 和 LiveOutput）。 建议是停止频道后的方便时间，切换到 v3 LiveEvent 和 LiveOutput。
-    
-        目前，无法持续迁移正在运行的频道。  
+    * 无法持续使用 v3 来管理通过 v2 创建的频道和节目（将映射到 v3 中的 LiveEvent 和 LiveOutput）。 建议是停止频道后的方便时间，切换到 v3 LiveEvent 和 LiveOutput。<br/>目前，无法持续迁移正在运行的频道。  
+
 > [!NOTE]
 > 请将本文加入书签，并不时地查看最新信息。
 

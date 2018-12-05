@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 10/31/2018
 ms.author: v-erkell
-ms.openlocfilehash: c8bad3642f1e98cac3857d536f539554235e1a51
-ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
+ms.openlocfilehash: d7c207f89b9cb50f940f071fbbf6ee81b4d44976
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51578627"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52164314"
 ---
 # <a name="deploy-the-vfxt-cluster"></a>部署 vFXT 群集
 
@@ -286,7 +286,7 @@ RESOURCE_GROUP=
 * 子网名称
 * Azure AD 运行时角色名 - 如果按[创建群集节点访问角色](#create-the-cluster-node-access-role)中的示例操作，请使用 ``avere-cluster``。 
 * 存储帐户名（如果创建新的 Blob 容器）
-* 群集名称 - 同一个资源组中不能有两个具有相同名称的 vFXT 群集。 
+* 群集名称 - 同一个资源组中不能有两个具有相同名称的 vFXT 群集。 最佳做法是为每个群集指定唯一名称。
 * 管理密码 - 选择用于监视和管理群集的安全密码。 此密码已分配给用户 ``admin``。 
 * 节点实例类型 - 相关信息，请参阅 [vFXT 节点大小](avere-vfxt-deploy-plan.md#vfxt-node-sizes)
 * 节点缓存大小 - 相关信息，请参阅 [vFXT 节点大小](avere-vfxt-deploy-plan.md#vfxt-node-sizes)

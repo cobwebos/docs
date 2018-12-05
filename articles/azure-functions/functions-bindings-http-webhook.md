@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 11/21/2017
 ms.author: cshoe
-ms.openlocfilehash: 333e73af3578cdc363e7ede08ca52207cfd0fdb0
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: a20dec67201cb7d8b7ccd3a7662438f2afabfe63
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50248892"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52446783"
 ---
 # <a name="azure-functions-http-triggers-and-bindings"></a>Azure Functions HTTP 触发器和绑定
 
@@ -157,7 +157,7 @@ public static string Run(CustomObject req, ILogger log)
 }
 
 public class CustomObject {
-     public String name {get; set;}
+     public string name {get; set;}
 }
 ```
 
@@ -434,6 +434,45 @@ module.exports = function (context, req) {
 }
 ```
 
+### <a name="working-with-client-identities"></a>使用客户端标识
+
+如果函数应用使用[应用服务身份验证/授权](../app-service/app-service-authentication-overview.md)，则可通过代码查看有关已验证身份的客户端的信息。 此信息以[平台注入的请求标头](../app-service/app-service-authentication-how-to.md#access-user-claims)的形式提供。 
+
+还可从绑定数据中读取此信息。 此功能仅可用于 Functions 2.x 运行时， 而且它目前仅可用于 .NET 语言。
+
+在 .NET 语言中，此信息以 [ClaimsPrincipal](https://docs.microsoft.com/en-us/dotnet/api/system.security.claims.claimsprincipal?view=netstandard-2.0) 的形式提供。 ClaimsPrincipal 作为请求上下文的一部分提供，如以下示例中所示：
+
+```csharp
+using System.Net;
+using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
+
+public static IActionResult Run(HttpRequest req, ILogger log)
+{
+    ClaimsPrincipal identities = req.HttpContext.User;
+    // ...
+    return new OkResult();
+}
+```
+
+或者，可直接将 ClaimsPrincipal 作为其他参数包含在函数签名中：
+
+```csharp
+#r "Newtonsoft.Json"
+
+using System.Net;
+using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
+using Newtonsoft.Json.Linq;
+
+public static void Run(JObject input, ClaimsPrincipal principal, ILogger log)
+{
+    // ...
+    return;
+}
+
+```
+
 ### <a name="authorization-keys"></a>授权密钥
 
 Functions 允许使用密钥使其难以在开发过程中访问 HTTP 函数终结点。  标准 HTTP 触发器可能会要求在请求中出现此类 API 密钥。 
@@ -483,7 +522,7 @@ Functions 允许使用密钥使其难以在开发过程中访问 HTTP 函数终�
 
 若要全面保护生产环境中的函数终结点，应考虑实现以下函数应用级别的安全选项之一：
 
-* 打开函数应用的“应用服务身份验证/授权”。 应用服务平台允许使用 Azure Active Directory (AAD) 和多个第三方标识提供者对客户端进行身份验证。 可以使用此函数来实现函数的自定义授权规则，并且可以从函数代码处理用户信息。 若要了解详细信息，请参阅 [Azure 应用服务中的身份验证和授权](../app-service/app-service-authentication-overview.md)。
+* 打开函数应用的“应用服务身份验证/授权”。 应用服务平台允许使用 Azure Active Directory (AAD) 和多个第三方标识提供者对客户端进行身份验证。 可以使用此函数来实现函数的自定义授权规则，并且可以从函数代码处理用户信息。 若要了解详细信息，请参阅 [Azure 应用服务中的身份验证和授权](../app-service/app-service-authentication-overview.md)以及[使用客户端标识](#working-with-client-identities)。
 
 * 使用 Azure API 管理 (APIM) 对请求进行身份验证。 APIM 为传入请求提供了各种 API 安全选项。 若要了解详细信息，请参阅 [API 管理身份验证策略](../api-management/api-management-authentication-policies.md)。 有了 APIM，可以配置函数应用以接受仅来自 APIM 实例 IP 地址的请求。 若要了解详细信息，请参阅 [IP 地址限制](ip-addresses.md#ip-address-restrictions)。
 

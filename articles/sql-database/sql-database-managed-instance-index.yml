@@ -1,0 +1,137 @@
+### YamlMime:YamlDocument
+ms.openlocfilehash: 46e05ef45cca5accd6af817a06b63861c41aa2b3
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52160607"
+documentType: LandingData
+title: Azure SQL 数据库托管实例
+metadata:
+  document_id: 36d89c48-3646-380e-34a0-ae3ac62e2641
+  title: Azure SQL 数据库托管实例文档 - 教程和 API 参考
+  meta.description: Learn how to use Azure SQL Database Managed Instance.
+  services: sql-database
+  author: jovanpop-msft
+  manager: craigg
+  ms.service: sql-database
+  ms.tgt_pltfrm: na
+  ms.devlang: 
+  ms.topic: overview
+  ms.date: 11/11/2018
+  ms.author: jovanpop-msft
+abstract:
+  description: Azure SQL 数据库托管实例是托管在 Azure 云中的一个完全托管的 SQL Server 数据库引擎实例。 这是将 SQL Server 数据库迁移到云的最佳 PaaS 选项。 使用快速入门、教程和示例，了解如何创建和使用托管实例。
+  aside:
+    image:
+      alt: 
+      height: 110
+      src: media/sql-database-managed-instance-index/intro.png
+      width: 250
+    title: 介绍 Azure SQL 数据库托管实例 (5:38)
+    href: https://www.youtube.com/watch?v=W8feSZXm2Ec
+    width: 250
+sections:
+- items:
+  - type: list
+    style: cards
+    className: cardsM
+    columns: 3
+    items:
+    - title: 概述
+      href: /azure/sql-database/sql-database-managed-instance
+      html: <p>了解关于 Azure SQL 数据库托管实例服务的更多信息。</p>
+    - title: 丰富的外围应用
+      href: /azure/sql-database/sql-database-managed-instance#sql-features-supported
+      html: <p>SQL 功能与最新版 SQL Server 数据库引擎的兼容度接近 100%。</p>
+    - title: VNet 集成
+      href: /azure/sql-database/sql-database-managed-instance-vnet-configuration
+      html: <p>使用专用 IP 地址将安全服务放置在专用 Azure VNet 中。</p>
+    - title: 轻松迁移
+      href: /azure/sql-database/sql-database-managed-instance-get-started-restore
+      html: <p>使用本机还原可以轻松地将本地数据库迁移到 Azure 云。</p>
+    - title: 迁移无需停机
+      href: /azure/dms/tutorial-sql-server-to-managed-instance
+      html: <p>使用数据库迁移服务迁移一组数据库，使停机时间最短。</p>
+    - title: 定价
+      href: https://azure.microsoft.com/pricing/hybrid-benefit/
+      html: <p>使用 Azure Hybrid Benefit (AHB) 和现有的本地许可证最多可节省 40% 的费用。</p>
+    - title: PaaS 功能
+      href: /azure/sql-database/sql-database-paas
+      html: <p>Azure PaaS 使实例的可用性高达 99.99% 且管理量最少。</p>
+    - title: 服务层
+      href: /azure/sql-database/sql-database-high-availability
+      html: <p>根据业务需求，在常规用途和业务关键服务层之间作出选择。</p>
+    - title: 高级安全
+      href: /azure/sql-database/sql-database-security-index
+      html: <p>使用内置的 Azure SQL 数据库安全功能保护实例和数据库。<p>
+- title: 5 分钟快速入门
+  items:
+  - type: paragraph
+    text: 使用托管实例可通过 Azure 门户、Azure CLI 和 Azure PowerShell 轻松地执行基本管理任务。 了解如何使用以下快速入门示例执行基本的管理任务：
+  - type: table
+    style: dataMatrix
+    columns:
+    - image:
+        src: media/index/portal.svg
+      title: Azure 门户
+    - image:
+        src: media/index/cli.svg
+      title: Azure CLI
+    - image:
+        src: media/index/logo_powershell.svg
+      title: PowerShell
+    - image:
+        src: media/index/logo_arm.svg
+      title: Azure 资源管理器模板
+    rows:
+    - title: 创建新实例
+      values:
+      - href: /azure/sql-database/sql-database-managed-instance-get-started
+      - href: https://blogs.msdn.microsoft.com/sqlserverstorageengine/2018/11/14/create-azure-sql-managed-instance-using-azure-cli/
+      - href: https://blogs.msdn.microsoft.com/sqlserverstorageengine/2018/06/27/quick-start-script-create-azure-sql-managed-instance-using-powershell/
+      - href: https://github.com/Azure/azure-quickstart-templates/tree/master/101-sqlmi-new-vnet
+    - title: 修改实例
+      values:
+      - href: 
+      - href: https://blogs.msdn.microsoft.com/sqlserverstorageengine/2018/11/14/modify-azure-sql-database-managed-instance-using-azure-cli/
+      - href: https://blogs.msdn.microsoft.com/sqlserverstorageengine/2018/05/31/change-size-azure-sql-managed-instance-using-powershell/
+      - href: 
+    - title: 配置 Azure 网络环境
+      values:
+      - href: /azure/sql-database/sql-database-managed-instance-get-started
+      - href: 
+      - href: https://blogs.msdn.microsoft.com/sqlserverstorageengine/2018/06/25/quick-start-script-setup-azure-network-environment-for-azure-sql-managed-instance/
+      - href: https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-managed-instance-azure-environment
+    - title: 时间点还原
+      values:
+      - href: 
+      - href: https://blogs.msdn.microsoft.com/sqlserverstorageengine/2018/06/07/cross-instance-point-in-time-restore-in-azure-sql-database-managed-instance/
+      - href: https://blogs.msdn.microsoft.com/sqlserverstorageengine/2018/06/28/point-in-time-restore-of-a-database-on-azure-sql-managed-instance-using-azurerm-sql-powershell-library
+      - href: 
+- title: 分步教程和学习材料
+  items:
+  - type: paragraph
+    text: 了解如何创建、管理和使用托管实例。
+  - type: list
+    style: ordered
+    items:
+    - html: 了解<a href="/azure/sql-database/sql-database-managed-instance-resource-limits">硬件特性和限制</a>以及 <a href="/azure/sql-database/sql-database-managed-instance-transact-sql-information">SQL 语言限制</a>。
+    - html: 在部署托管实例的位置<a href="https://medium.com/azure-sqldb-managed-instance/the-ultimate-guide-for-creating-and-configuring-azure-sql-managed-instance-environment-91ff58c0be01">配置</a> Azure VNet。
+    - html: <a href="https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-vnet-configuration#modify-an-existing-virtual-network-for-managed-instances">验证</a>现有的 Azure VNet 可以用于部署托管实例。
+    - html: 使用 <a href="https://blogs.msdn.microsoft.com/sqlserverstorageengine/2018/09/21/the-easiest-way-to-create-azure-vm-that-can-access-your-azure-sql-managed-instance/">Azure 虚拟机</a>、<a href="/azure/sql-database/sql-database-managed-instance-configure-p2s">点到站点连接</a>或<a href="https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-connect-app">应用程序</a>连接到实例。
+    - html: 验证可以使用<a href="https://www.microsoft.com/download/details.aspx?id=53595">数据迁移助手</a>或<a href="https://blogs.msdn.microsoft.com/datamigration/2018/08/06/release-database-experimentation-assistant-dea-v2-6/">数据库实验助手</a>迁移数据库。
+    - html: 使用<a href="/azure/sql-database/sql-database-managed-instance-get-started-restore">本机还原</a>或<a href="/azure/dms/tutorial-sql-server-managed-instance-online">数据迁移服务</a>将数据库移动到托管实例。
+    - html: 将 SSIS 包迁移到 <a href="/azure/data-factory/tutorial-deploy-ssis-packages-azure">Azure 数据工厂</a>，将 SSAS 表格模型迁移到 <a href="https://azure.microsoft.com/resources/videos/azure-analysis-services-moving-models/">Azure 分析服务</a>，并将 SSRS 报表迁移到<a href="https://docs.microsoft.com/business-applications-release-notes/april18/power-bi/service/sql-server-reporting-services-ssrs-reports-power-bi-premium">Power BI Premium</a>。
+    - html: 找到<a href="https://www.youtube.com/watch?v=vO6k05Ox1iI">保护实例</a>的最佳做法和建议。
+    - html: 使用<a href="/azure/sql-database/replication-with-sql-database-managed-instance">事务复制</a>分发数据。
+- title: 引用
+  items:
+  - type: list
+    style: cards
+    className: cardsD
+    items:
+    - title: 博客
+      html: <p><a href="https://blogs.msdn.microsoft.com/sqlserverstorageengine/tag/managed-instance/">MSDN</a></p><p><a href="https://medium.com/azure-sqldb-managed-instance ">中型</a></p>
+    - title: 常见问题
+      html: <p><a href="https://stackoverflow.com/questions/tagged/azure-sql-managed-instance">Stack Overflow</a></p>

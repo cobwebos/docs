@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.component: B2B
 ms.topic: conceptual
-ms.date: 07/10/2018
+ms.date: 11/26/2018
 ms.author: mimart
 author: msmimart
 manager: mtillman
-ms.reviewer: sasubram
-ms.openlocfilehash: fef4615517da08262cc5845aaa076472c3874b34
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.reviewer: mal
+ms.openlocfilehash: bda01b5c9fbd43feed8c407e85b90b31bef0ffa1
+ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45984282"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52335055"
 ---
 # <a name="add-azure-active-directory-b2b-collaboration-users-in-the-azure-portal"></a>在 Azure 门户中添加 Azure Active Directory B2B 协作用户
 
@@ -83,11 +83,11 @@ ms.locfileid: "45984282"
 7. 在“添加分配”下，选择“用户和组”。
 8. 执行下列操作之一：
    - 如果目录中已存在该来宾用户，请搜索 B2B 用户。 选择用户，单击“选择”，然后单击“分配”将该用户添加到应用。
-   - 如果目录中不存在该来宾用户，请选择“邀请”。
+   - 如果来宾用户尚不在目录中，请在“选择成员或邀请外部用户”下键入用户的电子邮件地址。 在消息框中，键入个人消息（可选）。 在消息框下，单击“邀请”。
            
        ![添加邀请按钮以添加来宾成员](./media/add-users-administrator/AppInviteUsers.png)
    
-      在“邀请来宾”下输入电子邮件地址，键入可选的个人消息，然后选择“邀请”。 单击“选择”，然后单击“分配”将该用户添加到应用。 邀请会自动发送给受邀用户。
+      单击“选择”，然后单击“分配”将该用户添加到应用。 邀请会自动发送给受邀用户。
 
 9. 来宾用户将出现在应用程序的“用户和组”列表中，其中分配的角色为“默认访问权限”。 如果想要更改该角色，请执行以下操作：
    - 选择来宾用户，然后选择“编辑”。 

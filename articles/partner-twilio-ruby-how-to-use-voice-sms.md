@@ -14,12 +14,12 @@ ms.devlang: ruby
 ms.topic: article
 ms.date: 11/25/2014
 ms.author: MicrosoftHelp@twilio.com
-ms.openlocfilehash: 41b5383dd319f2cb6fad4316e963f86dd7a4bc61
-ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
+ms.openlocfilehash: 40b633c4e51a34e6640a9557be49bbe30543daf5
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39036602"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52426429"
 ---
 # <a name="how-to-use-twilio-for-voice-and-sms-capabilities-in-ruby"></a>如何通过 Ruby 使用 Twilio 实现语音和 SMS 功能
 本指南演示如何在 Azure 中使用 Twilio API 服务执行常见编程任务。 所涉及的任务包括发起电话呼叫和发送短信服务 (SMS) 消息。 有关 Twilio 以及在应用程序中使用语音和短信的详细信息，请参阅[后续步骤](#NextSteps)部分。
@@ -29,10 +29,8 @@ Twilio 是一种电话 Web 服务 API，可方便用户利用现有 Web 语言�
 
 利用 **Twilio 语音**，应用程序可以发起和接收电话呼叫。 应用程序可以使用 **Twilio SMS** 发出和接收 SMS 消息。 应用程序可以通过 **Twilio 客户端**使用现有 Internet 连接（包括移动连接）启用语音通信。
 
-## 
-  <a id="Pricing">
-  </a>Twilio 定价和特别优惠
-[Twilio 定价][twilio_pricing]中提供了有关 Twilio 定价的信息。 Azure 客户可享受[特别优惠][special_offer]：1000 条信息的免费信用额度或 1000 分钟的入站。 若要注册获取此套餐或了解更多信息，请访问 [http://ahoy.twilio.com/azure][special_offer]。  
+## <a id="Pricing"></a>Twilio 定价和特别优惠
+[Twilio 定价][twilio_pricing]中提供了有关 Twilio 定价的信息。 Azure 客户可享受[特别优惠][special_offer]：1000 条信息的免费信用额度或 1000 分钟的入站。 若要注册获取此套餐或了解更多信息，请访问 [https://ahoy.twilio.com/azure][special_offer]。  
 
 ## <a id="Concepts"></a>概念
 Twilio API 是一个为应用程序提供语音和 SMS 功能的 RESTful API。 提供了多种语言版本的客户端库；有关列表，请参阅 [Twilio API 库][twilio_libraries]。
@@ -148,7 +146,7 @@ Twilio 谓词是指示 Twilio **执行**哪些操作的 XML 标记。 例如，*
 
 第三个参数 (`url`) 是 Twilio 请求的 URL，以获取有关在连接呼叫后要执行的操作的指令。 在本例中，我们设置的 URL (`http://yourdomain.cloudapp.net`) 会返回一个简单 TwiML 文档，并使用 `<Say>` 谓词进行一些文本到语音转换，以便向接收呼叫的人员说出“Hello Monkey”。
 
-## <a id="howto_recieve_sms"></a>如何：接收短信
+## <a id="howto_receive_sms"></a>如何：接收短信
 在前面的示例中，我们发起了一个**传出**电话呼叫。 这一次，我们使用在注册过程中 Twilio 提供的电话号码来处理**传入**的 SMS 消息。
 
 首先，登录到 [Twilio 仪表板][twilio_account]（可能为英文页面）。 单击顶部导航栏中的“Numbers”（号码），然后单击提供给 Twilio 号码。 会看到两个可以配置的 URL。 一个语音请求 URL 和一个短信请求 URL。 每当有人拨打号码或向号码发送短信时，Twilio 就会调用这些 URL。 这些 URL 也称为“Web 挂钩”。
@@ -181,19 +179,19 @@ Twilio 谓词是指示 Twilio **执行**哪些操作的 XML 标记。 例如，*
 
 
 
-[twilio_pricing]: http://www.twilio.com/pricing
-[special_offer]: http://ahoy.twilio.com/azure
+[twilio_pricing]: https://www.twilio.com/pricing
+[special_offer]: https://ahoy.twilio.com/azure
 [twilio_libraries]: https://www.twilio.com/docs/libraries
-[twiml]: http://www.twilio.com/docs/api/twiml
-[twilio_api]: http://www.twilio.com/api
+[twiml]: https://www.twilio.com/docs/api/twiml
+[twilio_api]: https://www.twilio.com/api
 [try_twilio]: https://www.twilio.com/try-twilio
 [twilio_account]:  https://www.twilio.com/user/account
 [verify_phone]: https://www.twilio.com/user/account/phone-numbers/verified#
-[twilio_api_documentation]: http://www.twilio.com/api
-[twilio_security_guidelines]: http://www.twilio.com/docs/security
-[twilio_howtos]: http://www.twilio.com/docs/howto
+[twilio_api_documentation]: https://www.twilio.com/api
+[twilio_security_guidelines]: https://www.twilio.com/docs/security
+[twilio_howtos]: https://www.twilio.com/docs/howto
 [twilio_on_github]: https://github.com/twilio
-[twilio_support]: http://www.twilio.com/help/contact
-[twilio_quickstarts]: http://www.twilio.com/docs/quickstart
+[twilio_support]: https://www.twilio.com/help/contact
+[twilio_quickstarts]: https://www.twilio.com/docs/quickstart
 [sinatra]: http://www.sinatrarb.com/
 [azure_vm_setup]: https://docs.microsoft.com/azure/virtual-machines/linux/classic/ruby-rails-web-app

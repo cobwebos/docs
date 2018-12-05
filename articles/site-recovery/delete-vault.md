@@ -8,14 +8,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/06/2018
 ms.author: rajani-janaki-ram
-ms.openlocfilehash: f351bd715baf86407c249e13aa02cf3c37e374c4
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 6827bcc561ced0d346d79e60b3f2b2fde83bc2d8
+ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50212414"
+ms.lasthandoff: 11/19/2018
+ms.locfileid: "51977040"
 ---
-# <a name="delete-a-site-recovery-recovery-services-vault"></a>删除 Site Recovery 恢复服务保管库
+# <a name="delete-a-site-recovery-services-vault"></a>删除 Site Recovery 服务保管库
 
 依赖项可能会阻止删除 Azure Site Recovery 保管库。 需要采取的操作取决于 Site Recovery 方案。 若要删除用于 Azure 备份的保管库，请参阅[删除 Azure 备份保管库](../backup/backup-azure-delete-vault.md)。
 

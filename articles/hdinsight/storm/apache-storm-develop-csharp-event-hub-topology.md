@@ -9,19 +9,19 @@ ms.topic: conceptual
 ms.date: 11/27/2017
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: 0eb283eda04d4123e0c05d2c48663a5aca88ebc4
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 027c8155c84959ca429eb9b093a155ac22aaf324
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51249551"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52582201"
 ---
-# <a name="process-events-from-azure-event-hubs-with-storm-on-hdinsight-c"></a>使用 Storm on HDInsight 从 Azure 事件中心处理事件 (C#)
+# <a name="process-events-from-azure-event-hubs-with-apache-storm-on-hdinsight-c"></a>使用 Apache Storm on HDInsight 从 Azure 事件中心处理事件 (C#)
 
-了解如何从 Apache Storm on HDInsight 使用 Azure 事件中心。 本文档使用 C# Storm 拓扑对事件中心读取和写入数据
+了解如何从 [Apache Storm](http://storm.apache.org/) on HDInsight 使用 Azure 事件中心。 本文档使用 C# Storm 拓扑对事件中心读取和写入数据
 
 > [!NOTE]
-> 如需此项目的 Java 版，请参阅[使用 Storm on HDInsight 从 Azure 事件中心处理事件 (Java)](https://azure.microsoft.com/resources/samples/hdinsight-java-storm-eventhub/)。
+> 如需此项目的 Java 版，请参阅[使用 Apache Storm on HDInsight 从 Azure 事件中心处理事件 (Java)](https://azure.microsoft.com/resources/samples/hdinsight-java-storm-eventhub/)。
 
 ## <a name="scpnet"></a>SCP.NET
 
@@ -225,4 +225,4 @@ topologyBuilder.SetJavaBolt(
 
 * [使用 Visual Studio 开发 Apache Storm on HDInsight 的 C# 拓扑](apache-storm-develop-csharp-visual-studio-topology.md)
 * [SCP 编程指南](apache-storm-scp-programming-guide.md)
-* [Storm on HDInsight 的示例拓扑](apache-storm-example-topology.md)
+* [HDInsight 上的 Apache Storm 的示例拓扑](apache-storm-example-topology.md)

@@ -2,25 +2,21 @@
 title: 在 Azure Active Directory 中向企业应用分配用户或组 | Microsoft Docs
 description: 如何选择企业应用，在 Azure Active Directory 中向其分配用户或组
 services: active-directory
-documentationcenter: ''
 author: barbkess
 manager: mtillman
-editor: ''
 ms.service: active-directory
 ms.component: app-mgmt
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/05/2018
+ms.date: 11/15/2018
 ms.author: barbkess
 ms.reviewer: luleon
-ms.openlocfilehash: ee0b14123e193f219e403d2608368c27f953013d
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: b6b7408b4efe4c3271ea2ddeb63a499bee670976
+ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51037968"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51711304"
 ---
 # <a name="assign-a-user-or-group-to-an-enterprise-app-in-azure-active-directory"></a>在 Azure Active Directory 中向企业应用分配用户或组
 若要将用户或组分配到企业应用，必须具有适当的权限才能管理企业应用，并且必须是目录的全局管理员。
@@ -32,7 +28,7 @@ ms.locfileid: "51037968"
 > 对于 Microsoft 应用程序（例如 Office 365 应用），请使用 PowerShell 将用户分配到企业应用。
 
 
-## <a name="how-do-i-assign-user-access-to-an-enterprise-app-in-the-azure-portal"></a>如何在 Azure 门户中分配用户对企业应用的访问权限？
+## <a name="assign-a-user-to-an-app---portal"></a>将用户分配到应用 - 门户
 1. 使用目录全局管理员的帐户登录到 [Azure 门户](https://portal.azure.com)。
 2. 选择“所有服务”，在文本框中输入 Azure Active Directory，并选择“Enter”。
 3. 选择“企业应用程序”。
@@ -51,7 +47,25 @@ ms.locfileid: "51037968"
 10. 在“添加分配”边栏选项卡中，选择“角色”。 然后，在“选择角色”边栏选项卡中选择一个需要应用到所选用户或组的角色，再选择边栏选项卡底部的“确定”按钮。
 11. 在“添加分配”边栏选项卡中，选择边栏选项卡底部的“分配”按钮。 已分配用户或组的权限将是该企业应用的选定角色所定义的权限。
 
-## <a name="how-do-i-assign-a-user-to-an-enterprise-app-using-powershell"></a>如何使用 PowerShell 将用户分配到企业应用？
+## <a name="allow-all-users-to-access-an-app---portal"></a>允许所有用户访问某个应用 - 门户
+允许所有用户访问某个应用程序：
+
+1. 使用目录全局管理员的帐户登录到 [Azure 门户](https://portal.azure.com)。
+2. 选择“所有服务”，在文本框中输入 Azure Active Directory，并选择“Enter”。
+3. 选择“企业应用程序”。
+4. 在“企业应用程序”边栏选项卡中，选择“所有应用程序”。 随后会列出你可以管理的应用。
+5. 在在“企业应用程序 - 所有应用程序”边栏选项卡中，选择一个应用。
+6. 在“appname”边栏选项卡上，选择“属性”。
+7. 在“appname - 属性”边栏选项卡上，将“需要进行用户分配?”设置设置为“否”。 
+
+“需要进行用户分配?”选项：
+
+- 不影响应用程序是否出现在应用程序访问面板上。 要在访问面板上显示应用程序，需要为应用程序分配相应的用户或组。
+- 仅适用于为 SAML 单一登录配置的云应用程序以及使用应用程序代理配置的本地应用程序。 请参阅[应用程序的单一登录](what-is-single-sign-on.md)。
+- 需要用户许可某应用程序。 管理员可以为所有用户授予许可。  请参阅[配置最终用户对应用程序的许可方式](configure-user-consent.md)。
+
+
+## <a name="assign-a-user-to-an-app---powershell"></a>将用户分配到应用 - PowerShell
 
 1. 以提升的权限打开 Windows PowerShell 命令提示符。
 

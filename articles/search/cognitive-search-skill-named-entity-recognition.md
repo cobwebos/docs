@@ -8,24 +8,29 @@ ms.service: search
 ms.devlang: NA
 ms.workload: search
 ms.topic: conceptual
-ms.date: 05/01/2018
+ms.date: 11/27/2018
 ms.author: luisca
-ms.openlocfilehash: 653a4675d546432eea8478ba6203be1df71ec4f4
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: f9ff3f66f3a73fbaf1a4c2ca280c85f4bde65444
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45731387"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52442023"
 ---
 #    <a name="named-entity-recognition-cognitive-skill"></a>命名实体识别认知技能
 
 命名实体识别技能可以从文本中提取命名实体。 可用实体包括 `person`、`location` 和 `organization` 类型。
 
 > [!NOTE]
-> Azure 搜索目前以公共预览版提供。 技能集执行以及图像的提取和规范化目前免费提供。 我们日后会公布这些功能的定价。 
+> <ul>
+> <li>Azure 搜索目前提供公共预览版。 技能集执行以及图像的提取和规范化目前免费提供。 我们日后会公布这些功能的定价。 </li>
+> <li> 命名实体识别技能被视为“已弃用”，自 2019 年 2 月 15 日起将不再受到正式支持。 按照<a href="cognitive-search-skill-deprecated.md">弃用的认知搜索技能</a>页面中列出的建议，迁移到支持的技能</li>
 
 ## <a name="odatatype"></a>@odata.type  
 Microsoft.Skills.Text.NamedEntityRecognitionSkill
+
+## <a name="data-limits"></a>数据限制
+记录的最大大小应为 50,000 个字符，通过 `String.Length` 进行测量。 如果在将数据发送到关键短语提取器之前需要拆分数据，请使用[文本拆分技能](cognitive-search-skill-textsplit.md)。
 
 ## <a name="skill-parameters"></a>技能参数
 
@@ -34,7 +39,7 @@ Microsoft.Skills.Text.NamedEntityRecognitionSkill
 | 参数名称     | 说明 |
 |--------------------|-------------|
 | categories    | 应提取的类别的数组。  可能类别类型有：`"Person"`、`"Location"`、`"Organization"`。 如果不提供类别，则返回所有类型。|
-|defaultLanguageCode |  输入文本的语言代码。 支持以下语言：`ar, cs, da, de, en, es, fi, fr, he, hu, it, ko, pt-br, pt`|
+|defaultLanguageCode |  输入文本的语言代码。 支持以下语言：`de, en, es, fr, it`|
 | minimumPrecision  | 介于 0 和 1 之间的数字。 如果精度低于此值，则不会返回该实体。 默认值为 0。|
 
 ## <a name="skill-inputs"></a>技能输入
@@ -58,7 +63,7 @@ Microsoft.Skills.Text.NamedEntityRecognitionSkill
 ```json
   {
     "@odata.type": "#Microsoft.Skills.Text.NamedEntityRecognitionSkill",
-    "categories": [ "Person"],
+    "categories": [ "Person", "Location", "Organization"],
     "defaultLanguageCode": "en",
     "inputs": [
       {
@@ -83,7 +88,7 @@ Microsoft.Skills.Text.NamedEntityRecognitionSkill
         "recordId": "1",
         "data":
            {
-             "text": "This is a the loan application for Joe Romero, he is a Microsoft employee who was born in Chile and then moved to Australia… Ana Smith is provided as a reference.",
+             "text": "This is the loan application for Joe Romero, he is a Microsoft employee who was born in Chile and then moved to Australia… Ana Smith is provided as a reference.",
              "languageCode": "en"
            }
       }
@@ -101,32 +106,38 @@ Microsoft.Skills.Text.NamedEntityRecognitionSkill
       "data" : 
       {
         "persons": [ "Joe Romero", "Ana Smith"],
-        "locations": ["Seattle"],
-        "organizations":["Microsoft Corporation"],
+        "locations": ["Chile", "Australia"],
+        "organizations":["Microsoft"],
         "entities":  
         [
           {
             "category":"person",
             "value": "Joe Romero",
-            "offset": 45,
+            "offset": 33,
             "confidence": 0.87
           },
           {
             "category":"person",
             "value": "Ana Smith",
-            "offset": 59,
+            "offset": 124,
             "confidence": 0.87
           },
           {
             "category":"location",
-            "value": "Seattle",
-            "offset": 5,
+            "value": "Chile",
+            "offset": 88,
+            "confidence": 0.99
+          },
+          {
+            "category":"location",
+            "value": "Australia",
+            "offset": 112,
             "confidence": 0.99
           },
           {
             "category":"organization",
-            "value": "Microsoft Corporation",
-            "offset": 120,
+            "value": "Microsoft",
+            "offset": 54,
             "confidence": 0.99
           }
         ]
@@ -138,9 +149,10 @@ Microsoft.Skills.Text.NamedEntityRecognitionSkill
 
 
 ## <a name="error-cases"></a>错误案例
-如果指定了不支持的语言代码，或者如果内容与指定的语言不匹配，会返回错误且不提取实体。
+如果不支持文档的语言代码，则返回错误，并且不提取任何实体。
 
 ## <a name="see-also"></a>另请参阅
 
-+ [预定义的技能](cognitive-search-predefined-skills.md)
-+ [如何定义技能组合](cognitive-search-defining-skillset.md)
++ [预定义技能](cognitive-search-predefined-skills.md)
++ [如何定义技能集](cognitive-search-defining-skillset.md)
++ [实体识别技能](cognitive-search-skill-entity-recognition.md)

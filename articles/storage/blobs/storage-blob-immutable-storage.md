@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 11/05/2018
 ms.author: hux
 ms.component: blobs
-ms.openlocfilehash: 261f66013ab9c0ba493d18b84856d17db953402e
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: d3d83e240fec692d5aa655923637910006c7a62f
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51036985"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52261463"
 ---
 # <a name="store-business-critical-data-in-azure-blob-storage"></a>在 Azure Blob 存储中存储业务关键型数据
 
@@ -47,7 +47,7 @@ Azure Blob（对象）存储的不可变存储可让用户以 WORM（一次写�
 
 ## <a name="how-it-works"></a>工作原理
 
-Azure Blob 存储的不可变存储支持两类 WORM 或不可变策略：基于时间的保留和法定保留。 有关如何创建这些不可变策略的详细信息，请参阅[入门](#Getting-started)部分。
+Azure Blob 存储的不可变存储支持两类 WORM 或不可变策略：基于时间的保留和法定保留。 有关如何创建这些不可变策略的详细信息，请参阅[入门](#getting-started)部分。
 
 在容器上应用基于时间的保留策略或法定保留时，所有现有的 Blob 都会转为不可变（不可写入和删除）状态。 所有上传到容器的新 Blob 也会转为不可变状态。
 
@@ -69,7 +69,7 @@ Azure Blob 存储的不可变存储支持两类 WORM 或不可变策略：基于
 
 ### <a name="legal-holds"></a>法定保留
 
-如果设置了法定保留，所有现有的和新的 Blob 会一直保持在不可变状态，直至法定保留被清除。 有关如何设置和清除法定保留的详细信息，请参阅[入门](#Getting-started)部分。
+如果设置了法定保留，所有现有的和新的 Blob 会一直保持在不可变状态，直至法定保留被清除。 有关如何设置和清除法定保留的详细信息，请参阅[入门](#getting-started)部分。
 
 容器可能会同时有法定保留策略和基于时间的保留策略。 该容器中的所有 Blob 会一直保持不可变状态，直至所有法定保留被清除，即使有效保留期已过。 与之相反，即使所有法定保留已被清除，Blob 也会保持不可变状态，直至有效保留期已过。
 

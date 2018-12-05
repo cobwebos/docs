@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/24/2018
 ms.author: damaerte
-ms.openlocfilehash: 089c623ff2c53a59c60c3fe1a53876c16a5353dd
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: 72f85761db08652f0dff7f36fbcb2ef90654e078
+ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44159009"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52334391"
 ---
 # <a name="troubleshooting--limitations-of-azure-cloud-shell"></a>Azure Cloud Shell 的故障排除和限制
 
@@ -70,6 +70,8 @@ ms.locfileid: "44159009"
 - **解决方法**：关闭再重新打开 shell。
 
 ### <a name="troubleshooting-remote-management-of-azure-vms"></a>Azure VM 的远程管理故障排除
+> [!NOTE]
+> Azure VM 必须具有面向公众的 IP 地址。
 
 - **详细信息**：由于 WinRM 的默认 Windows 防火墙设置，用户可能会看到以下错误：`Ensure the WinRM service is running. Remote Desktop into the VM for the first time and ensure it can be discovered.`
 - 解决方法：运行 `Enable-AzureRmVMPSRemoting` 以启用目标计算机上 PowerShell 远程处理的所有方面。

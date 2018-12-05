@@ -4,12 +4,12 @@ ms.service: virtual-machines-linux
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
-ms.openlocfilehash: 46fd31b54b7692700cce0bebe484c4f5de591942
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 87dd3680aae3e87f78ab2dbe70c44b2008706747
+ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50226499"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52279458"
 ---
 将数据磁盘添加到 Linux VM 时，如果 LUN 0 位置没有磁盘，则你可能会遇到错误。 如果使用 `azure vm disk attach-new` 命令并指定 LUN (`--lun`) 来手动添加磁盘，而不是让 Azure 平台确定适当的 LUN，则请注意，LUN 0 已经有磁盘或者将有磁盘。 
 
@@ -20,7 +20,7 @@ ms.locfileid: "50226499"
 [5:0:0:1]    disk    Msft     Virtual Disk     1.0   /dev/sdd 
 ```
 
-两个数据磁盘位于 LUN 0 和 LUN 1（`lsscsi` 中的第一列输出了详细信息 `[host:channel:target:lun]`）。 两个磁盘应该都是可从 VM 内部访问的磁盘。 如果手动指定了要在 LUN 1 位置添加第一个磁盘并在 LUN 2 位置添加第二个磁盘，则可能无法从 VM 内部正常查看这些磁盘。
+两个数据磁盘位于 LUN 0 和 LUN 1（`lsscsi` 中的第一列输出了详细信息 `[host:channel:target:lun]`）。 两个磁盘都应该可从 VM 内部访问。 如果手动指定了要在 LUN 1 位置添加第一个磁盘并在 LUN 2 位置添加第二个磁盘，则可能无法从 VM 内部正常查看这些磁盘。
 
 > [!NOTE]
 > 在这些示例中，Azure `host` 值为 5，但此值可能根据所选存储类型的不同而异。

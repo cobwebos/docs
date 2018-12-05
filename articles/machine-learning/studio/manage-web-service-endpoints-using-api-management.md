@@ -1,11 +1,12 @@
 ---
-title: 了解如何使用 API 管理来管理 AzureML Web 服务 | Microsoft Docs
+title: 使用 API 管理以管理机器学习工作室 Web 服务 - Azure | Microsoft Docs
 description: 介绍如何使用 API 管理来管理 AzureML Web 服务的指南。
 keywords: 机器学习, API 管理
 services: machine-learning
 documentationcenter: ''
-author: YasinMSFT
-ms.author: yahajiza
+author: ericlicoding
+ms.custom: (previous ms.author=yahajiza, author=YasinMSFT)
+ms.author: amlstudiodocs
 manager: hjerez
 editor: cgronlun
 ms.assetid: 05150ae1-5b6a-4d25-ac67-fb2f24a68e8d
@@ -16,16 +17,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/03/2017
-ms.openlocfilehash: 9543b1f3b10c246dadaf21b6960c7b6785fb66f4
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: 0a262b2f8716c6d950dc84793a88277f62c3e6a9
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51566374"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52308233"
 ---
-# <a name="learn-how-to-manage-azureml-web-services-using-api-management"></a>了解如何使用 API 管理来管理 AzureML Web 服务
+# <a name="manage-azure-machine-learning-studio-web-services-using-api-management"></a>使用 API 管理以管理 Azure 机器学习工作室 Web 服务
 ## <a name="overview"></a>概述
-本指南介绍如何快速使用 API 管理来管理 AzureML Web 服务。
+本指南介绍如何快速入门，即使用 API 管理来管理 Azure 机器学习工作室 Web 服务。
 
 ## <a name="what-is-azure-api-management"></a>什么是 Azure API 管理？
 Azure API 管理是一项 Azure 服务，支持通过定义用户访问权限、使用限制和仪表板监视管理 REST API 终结点。 单击[此处](https://azure.microsoft.com/services/api-management/)获取有关 Azure API 管理的详细信息。 单击[此处](../../api-management/api-management-get-started.md)获取如何使用 Azure API 管理的指南。 这份额外指南（作为本指南的依据）涵盖更多主题，包括通知配置、层定价、响应处理、用户身份验证、创建产品、开发人员订阅和使用仪表板。

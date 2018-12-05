@@ -1,11 +1,12 @@
 ---
-title: 数据是否可用于数据科研？ 数据评估 - Azure 机器学习 | Microsoft Docs
+title: 数据是否可用于数据科研？ 数据评估 - Azure 机器学习工作室 | Microsoft Docs
 description: 数据可用于数据科学需要满足的四个条件。 本视频提供具体示例，帮助了解基本数据评估。
 keywords: 相关数据, 评估数据, 准备数据, 数据条件, 数据就绪情况
 services: machine-learning
 documentationcenter: na
-author: heatherbshapiro
-ms.author: hshapiro
+author: ericlicoding
+ms.custom: (previous ms.author=hshapiro, author=heatherbshapiro)
+ms.author: amlstudiodocs
 manager: hjerez
 editor: cjgronlund
 ms.assetid: d502062c-da70-4b21-9054-0bfd9902612e
@@ -16,12 +17,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/03/2018
-ms.openlocfilehash: 5ab3c7716485053432240cb74be8ebc60c9ad274
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 5e7949edb13bfec72fa7d80d86d2e77214ceaa37
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34834611"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52316202"
 ---
 # <a name="is-your-data-ready-for-data-science"></a>数据是否可用于数据科研？
 ## <a name="video-2-data-science-for-beginners-series"></a>视频 2：适合初学者的数据科学系列
@@ -52,33 +53,33 @@ ms.locfileid: "34834611"
 在数据科学中，有一些需要汇总的要素，包括：
 
 * 相关
-* 已连接
+* 连续
 * 准确
 * 足够使用
 
 ## <a name="is-your-data-relevant"></a>数据是否相关？
-因此，第一个要点是需要相关的数据。
+因此，第一个要素是需要相关的数据。
 
 ![相关数据与不相关数据 - 评估数据](./media/data-science-for-beginners-is-your-data-ready-for-data-science/relevant-and-irrelevant-data.png)
 
 表格左侧列出了在波士顿酒吧外测试的七个人的血液酒精含量、红袜队在最后一场比赛中的击球率以及最邻近的便利店中的牛奶价格。
 
-此数据完全合法。 唯一的问题是它不相关。 这些数字之间没有明显的关系。 如果提供现在的牛奶价格和红袜队的击球率，无法猜出血液酒精含量。
+这些都是不错的数据。 唯一的问题是它不相关。 这些数字之间没有明显的关系。 如果提供现在的牛奶价格和红袜队的击球率，无法猜出血液酒精含量。
 
-现在，观察右侧的表。 这一次，我们测量每个人的体重以及他们饮酒的数量。  现在，每行中的数字彼此相关。 如果提供体重和喝的玛格丽塔数量，便可猜测血液酒精含量。
+现在，观察右侧的表。 这一次，我们测量每个人的体重以及他们的饮酒杯数。  现在，每行中的数字彼此相关。 如果提供体重和喝的玛格丽塔数量，便可猜测血液酒精含量。
 
-## <a name="do-you-have-connected-data"></a>数据是否互连？
-下一个要素是数据互连。
+## <a name="do-you-have-connected-data"></a>数据是否连续？
+下一个要素是连续的数据。
 
-![互连数据互不相连的数据 - 数据条件、数据就绪情况](./media/data-science-for-beginners-is-your-data-ready-for-data-science/connected-vs-disconnected-data.png)
+![连续的数据和中断的数据 - 数据条件、数据就绪情况](./media/data-science-for-beginners-is-your-data-ready-for-data-science/connected-vs-disconnected-data.png)
 
 以下是一些关于汉堡包质量的相关数据：烤制温度、肉饼重量和以及在当地食物杂志中的等级。 但请注意左侧表中的空白处。
 
 大多数数据集都缺少某些值。 这样的空白很常见，这一问题是可以解决的。 但是如果值缺失过多，数据看起来就像瑞士奶酪。
 
-如果观察左侧的表，会发现有太多缺失数据，因此很难找出烤制温度和肉饼重量之间存在任何关系。 此示例显示已断开连接的数据。
+如果观察左侧的表，会发现有太多缺失数据，因此很难找出烤制温度和肉饼重量之间存在任何关系。 此示例显示中断的数据。
 
-但是，右侧的表数据很完整，是已连接数据的示例。
+但是，右侧的表数据很完整，是连续数据的示例。
 
 ## <a name="is-your-data-accurate"></a>数据是否准确？
 下一个要素是准确性。 以下是四个要命中的目标。
@@ -87,7 +88,7 @@ ms.locfileid: "34834611"
 
 观察右上方的靶子。 靶心附近位置有一组紧密聚集的数据。 当然，这是准确数据。 但奇怪的是，在数据科学语言中，右下方靶子所呈现的数据也被视为准确数据。
 
-如果标出这些箭支的中心点，会发现它非常靠近靶心。 箭支分散在靶子四周，因此认为其不准确。但它们都是以靶心为中心围绕分布，所以认为其是准确。
+如果标出这些箭支的中心点，会发现它非常靠近靶心。 箭支在靶子四周散开，因此不够精准。但它们是以靶心为中心分布的，所以是准确的。
 
 现在，观察左上方靶子。 在这个靶子上，箭支击中的点非常集中，形成一个紧密集聚的组。 他们是非常精确的，但因其中心远离靶心，所以他们所反应的数据是错误数据。 左下方靶子中的箭支是错误且不精确的。 这名弓箭手需多加练习。
 
@@ -104,7 +105,7 @@ ms.locfileid: "34834611"
 
 随着添加的数据增多，图片变得更为清晰，可以进行一些更具体的判断。 现在，你可以看到左河岸上的三个旅店。 并注意到近景中那家旅店的建筑特色。 你甚至可以选择留在三楼，因为风景优美。
 
-有了相关、已连接、准确且充足的数据，就有了进行优质数据科学分析所需的全部要素。
+有了相关、连续、准确且充足的数据，就有了进行优质数据科学分析所需的全部要素。
 
 务必观看 Microsoft Azure 机器学习的“适合初学者的数据科学”中的其他视频。
 
