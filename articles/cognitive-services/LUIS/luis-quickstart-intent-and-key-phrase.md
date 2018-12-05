@@ -24,8 +24,8 @@ ms.locfileid: "52424806"
 
 |陈述|keyPhrase 实体值|
 |--|--|
-|Is there a new medical plan with a lower deductible offered next year?|"lower deductible"<br>"new medical plan"<br>"year"|
-|Is vision therapy covered in the high deductible medical plan?|"high deductible medical plan"<br>"vision therapy"|
+|是否有具有较低扣除提供下一年的新医疗计划？是否有具有较低扣除提供下一年的新医疗计划？|"低扣除"<br>"新的医疗计划"<br>“年龄”|
+|视觉治疗中介绍了高可扣除医疗计划？|"高可扣除医疗计划"<br>"视觉治疗"|
 
 客户端应用程序可以使用这些值以及其他已提取的实体来决定对话中的下一步骤。
 
