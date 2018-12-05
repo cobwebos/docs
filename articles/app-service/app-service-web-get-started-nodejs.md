@@ -38,7 +38,7 @@ ms.locfileid: "50248181"
 
 ## <a name="prerequisites"></a>先决条件
 
-完成本快速入门教程：
+完成本快速入门教程需要：
 
 * <a href="https://nodejs.org/" target="_blank">安装 Node.js 和 NPM</a>
 
