@@ -38,7 +38,7 @@ ms.locfileid: "42884958"
 
 ## <a name="prerequisites"></a>先决条件
 
-完成本快速入门教程：
+完成本快速入门教程需要：
 
 * <a href="https://git-scm.com/" target="_blank">安装 Git</a>
 * <a href="http://php.net/manual/install.php" target="_blank">安装 PHP</a>
