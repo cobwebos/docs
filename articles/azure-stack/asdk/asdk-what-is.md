@@ -16,15 +16,15 @@ ms.custom: mvc
 ms.date: 10/25/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: 62eccba1b876ca8272dacbbd97a1d28c8b796081
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: 345d62f4045e7b9279d52acf70cc340d088f5db0
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50138304"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52961325"
 ---
 # <a name="what-is-the-azure-stack-development-kit"></a>什么是 Azure Stack 开发工具包？
-[Microsoft Azure Stack 集成系统](.\.\azure-stack-poc.md)范围从 4 到 16 节点的大小，由硬件合作伙伴和 Microsoft 共同提供支持。 使用 Azure Stack集成系统为自己的生产工作负荷实现新方案。 如果你是 Azure Stack 操作员，想要管理集成系统基础结构并提供服务，请参阅[操作员文档](https://docs.microsoft.com/azure/azure-stack)。
+[Microsoft Azure Stack 集成系统](../azure-stack-poc.md)范围从 4 到 16 节点的大小，由硬件合作伙伴和 Microsoft 共同提供支持。 使用 Azure Stack集成系统为自己的生产工作负荷实现新方案。 如果你是 Azure Stack 操作员，想要管理集成系统基础结构并提供服务，请参阅[操作员文档](https://docs.microsoft.com/azure/azure-stack)。
 
 Azure Stack 开发工具包 (ASDK) 用于对 Azure Stack 进行单节点部署，可以**免费**下载和使用。 所有 ASDK 组件都安装在单主机服务器计算机上运行的虚拟机中，该计算机必须满足或超过[最低硬件要求](asdk-deploy-considerations.md#hardware)。 ASDK 旨在提供一个特定的环境，方便你在其中评估 Azure Stack 并开发现代应用程序，所使用的 API 和工具与非生产环境中的 Azure 一致。 
 
@@ -48,9 +48,9 @@ ASDK 旨在为以下人员提供 Azure 一致性混合云体验：
 |说明|ASDK|多节点 Azure Stack|
 |-----|-----|-----|
 |**缩放**|所有组件都安装在一个单节点服务器计算机上。|从 4 到 16 节点的大小范围。|
-|**复原能力**|单节点配置不提供高可用性|支持[高可用性](.\.\azure-stack-key-features.md#high-availability-for-azure-stack)功能。|
-|**网络**|ASDK 使用名为 AzS-BGPNAT01 的 VM 来路由所有 ASDK 网络流量。 无其他切换要求。|AzS-BGPNAT01 VM 在多节点部署中不存在。 更复杂的[网络路由基础结构](.\.\azure-stack-network.md#network-infrastructure)是必需的，其中包括：架顶 (TOR)、基板管理控制器 (BMC) 和边界（数据中心网络）交换机。|
-|**修补和更新过程**|若要改用新版 ASDK，必须在开发工具包主机上重新部署 ASDK。|[修补和更新](.\.\azure-stack-updates.md)过程用于更新已安装的 Azure Stack 版本。|
+|**复原能力**|单节点配置不提供高可用性|支持[高可用性](../azure-stack-key-features.md#high-availability-for-azure-stack)功能。|
+|**网络**|ASDK 使用名为 AzS-BGPNAT01 的 VM 来路由所有 ASDK 网络流量。 无其他切换要求。|AzS-BGPNAT01 VM 在多节点部署中不存在。 更复杂的[网络路由基础结构](../azure-stack-network.md#network-infrastructure)是必需的，其中包括：架顶 (TOR)、基板管理控制器 (BMC) 和边界（数据中心网络）交换机。|
+|**修补和更新过程**|若要改用新版 ASDK，必须在开发工具包主机上重新部署 ASDK。|[修补和更新](../azure-stack-updates.md)过程用于更新已安装的 Azure Stack 版本。|
 |**支持**|MSDN Azure Stack 论坛。 Microsoft 客户服务和支持 (CSS) 支持不适用于非生产环境。|[MSDN Azure Stack 论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStack)和完整的 CSS 支持。|
 | | |
 
@@ -80,4 +80,4 @@ Azure Stack 会持续增加对其他 Azure 服务的支持。 若要了解 Azure
 
 
 ## <a name="next-steps"></a>后续步骤
-若要开始评估 Azure Stack，需要先[下载最新的 ASDK](asdk-download.md)和准备 asdk 主机。 准备开发工具包主机之后，可以安装 ASDK 和登录到管理员和用户门户以开始使用 Azure Stack。
+若要开始评估 Azure Stack，需要先[下载最新 ASDK](asdk-download.md) 并准备 ASDK 主机。 准备开发工具包主机后，可以安装 ASDK 并登录管理员和用户门户以开始使用 Azure Stack。

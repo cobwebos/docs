@@ -14,15 +14,15 @@ ms.topic: article
 ms.date: 12/03/2018
 ms.author: sethm
 ms.reviewer: misainat
-ms.openlocfilehash: c9ac1c228fd3fd4ba666fd7881e387d79929ed9a
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: a4be229e1c491c3062b14e631cfec5b14185bb82
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52869953"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52957651"
 ---
 # <a name="asdk-release-notes"></a>ASDK 发行说明  
-本文提供了有关改进、 修复和已知的问题在 Azure Stack 开发工具包 (ASDK) 的信息。 如果不确定所运行的版本，可以[使用门户检查版本](.\.\azure-stack-updates.md#determine-the-current-version)。
+本文提供了有关改进、 修复和已知的问题在 Azure Stack 开发工具包 (ASDK) 的信息。 如果不确定所运行的版本，可以[使用门户检查版本](../azure-stack-updates.md#determine-the-current-version)。
 
 > 请订阅 [![RSS](./media/asdk-release-notes/feed-icon-14x14.png)](https://docs.microsoft.com/api/search/rss?search=Azure+Stack+Development+Kit+release+notes&locale=en-us#) [源](https://docs.microsoft.com/api/search/rss?search=Azure+Stack+Development+Kit+release+notes&locale=en-us#)，随时了解 ASDK 的新增功能。
 
@@ -180,13 +180,13 @@ ms.locfileid: "52869953"
 此内部版本包含以下适用于 Azure Stack 的改进和修复。  
 
 <!-- 1658937 | ASDK, IS --> 
-- **按预定义的计划启动备份** - 作为一种设备，Azure Stack 现在可以定期自动触发基础结构备份，不需人为干预。 Azure Stack 还会自动清理那些超出了所定义保留期的备份的外部共享。 有关详细信息，请参阅[使用 PowerShell 为 Azure Stack 启用备份](.\.\azure-stack-backup-enable-backup-powershell.md)。
+- **按预定义的计划启动备份** - 作为一种设备，Azure Stack 现在可以定期自动触发基础结构备份，不需人为干预。 Azure Stack 还会自动清理那些超出了所定义保留期的备份的外部共享。 有关详细信息，请参阅[使用 PowerShell 为 Azure Stack 启用备份](../azure-stack-backup-enable-backup-powershell.md)。
 
 <!-- 2496385 | ASDK, IS -->  
-- **将数据传输时间加到了总备份时间中。** 有关详细信息，请参阅[使用 PowerShell 为 Azure Stack 启用备份](.\.\azure-stack-backup-enable-backup-powershell.md)。
+- **将数据传输时间加到了总备份时间中。** 有关详细信息，请参阅[使用 PowerShell 为 Azure Stack 启用备份](../azure-stack-backup-enable-backup-powershell.md)。
 
 <!-- 1702130 | ASDK, IS --> 
-- **备份外部容量现在显示正确的外部共享容量。** （以前，此项硬编码成 10 GB。）有关详细信息，请参阅[使用 PowerShell 为 Azure Stack 启用备份](.\.\azure-stack-backup-enable-backup-powershell.md)。
+- **备份外部容量现在显示正确的外部共享容量。** （以前，此项硬编码成 10 GB。）有关详细信息，请参阅[使用 PowerShell 为 Azure Stack 启用备份](../azure-stack-backup-enable-backup-powershell.md)。
  
 <!-- 2753130 |  IS, ASDK   -->  
 - **Azure 资源管理器模板现在支持 condition 元素** - 现在可以使用条件在 Azure 资源管理器模板中部署资源。 可以将模板设计为根据某个条件（例如评估是否存在某个参数值）来部署资源。 若要了解如何使用模板作为条件，请参阅 Azure 文档中的[按条件部署资源](https://docs.microsoft.com/azure/architecture/building-blocks/extending-templates/conditional-deploy)和 [Azure 资源管理器模板的 Variables 节](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-templates-variables)。 
@@ -194,7 +194,7 @@ ms.locfileid: "52869953"
    也可使用模板[将资源部署到多个订阅或资源组](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-cross-resource-group-deployment)。  
 
 <!--2753073 | IS, ASDK -->  
-- **Microsoft.Network API 资源版本支持已更新**，增加了对 Azure Stack 网络资源 API 版本 2017-10-01（基于 2015-06-15）的支持。 此发行版中未包括对 2015-06-15 和 2017-10-01 之间的资源版本的支持。 有关功能差异，请参阅 [Azure Stack 网络注意事项](.\.\user\azure-stack-network-differences.md)。
+- **Microsoft.Network API 资源版本支持已更新**，增加了对 Azure Stack 网络资源 API 版本 2017-10-01（基于 2015-06-15）的支持。 此发行版中未包括对 2015-06-15 和 2017-10-01 之间的资源版本的支持。 有关功能差异，请参阅 [Azure Stack 网络注意事项](../user/azure-stack-network-differences.md)。
 
 <!-- 2272116 | IS, ASDK   -->  
 - **Azure Stack 增加了对反向 DNS 查找的支持，适用于面向外部的 Azure Stack 基础结构终结点**（即适用于 portal、adminportal、management 和 adminmanagement 终结点）。 这样就可以根据 IP 地址解析 Azure Stack 外部终结点名称。
@@ -222,7 +222,7 @@ ms.locfileid: "52869953"
 - **Azure 资源管理器包括区域名称。** 使用此版本时，通过 Azure 资源管理器检索的对象现在将包括区域名称属性。 如果现有 PowerShell 脚本直接将对象传递给另一个 cmdlet，则脚本可能会产生错误并失败。 这是 Azure 资源管理器符合行为，并且要求调用方客户端去除区域属性。 有关 Azure 资源管理器的详细信息，请参阅 [Azure 资源管理器文档](https://docs.microsoft.com/azure/azure-resource-manager/)。
 
 <!-- TBD | IS, ASDK -->  
-- **在委托的提供商之间移动订阅。** 现在，你可以在属于同一目录租户的新的或现有委托的提供程序订阅之间移动订阅。 属于默认提供商订阅的订阅也可移到同一 Active Directory 租户中的委托提供商订阅。 有关详细信息，请参阅[在 Azure Stack 中委托套餐](.\.\azure-stack-delegated-provider.md)。
+- **在委托的提供商之间移动订阅。** 现在，你可以在属于同一目录租户的新的或现有委托的提供程序订阅之间移动订阅。 属于默认提供商订阅的订阅也可移到同一 Active Directory 租户中的委托提供商订阅。 有关详细信息，请参阅[在 Azure Stack 中委托套餐](../azure-stack-delegated-provider.md)。
  
 <!-- 2536808 IS ASDK --> 
 - **缩短了 VM 创建时间**：适用于使用从 Azure 市场下载的映像创建的 VM。
@@ -246,7 +246,7 @@ ms.locfileid: "52869953"
 - 备份列表现在会在你手动删除外部共享中的备份时进行刷新。
 
 <!-- 2360715 |  ASDK, IS -->  
-- 设置数据中心集成时，不再访问共享中的 AD FS 元数据文件。 有关详细信息，请参阅[通过提供联合元数据文件来设置 AD FS 集成](.\.\azure-stack-integrate-identity.md#setting-up-ad-fs-integration-by-providing-federation-metadata-file)。 
+- 设置数据中心集成时，不再访问共享中的 AD FS 元数据文件。 有关详细信息，请参阅[通过提供联合元数据文件来设置 AD FS 集成](../azure-stack-integrate-identity.md#setting-up-ad-fs-integration-by-providing-federation-metadata-file)。 
 
 <!-- 2388980 | ASDK, IS --> 
 - 修复了一个妨碍用户将此前已分配给某个网络接口或负载均衡器的现有公共 IP 地址分配给新的网络接口或负载均衡器的问题。  
@@ -269,7 +269,7 @@ ms.locfileid: "52869953"
 <!--  TBD ASDK --> 
 - 承载特权终结点 (PEP) 的虚拟机已增大到 4GB。 在 ASDK 中，此虚拟机名为 AzS-ERCS01。
 
-- <!--  TBD – IS, ASDK --> 通过门户[创建虚拟机规模集](.\.\azure-stack-compute-add-scalesets.md) (VMSS) 时，不再使用“基本 A”虚拟机大小。 若要按照此大小来创建 VMSS，请使用 PowerShell 或模板。 
+- <!--  TBD – IS, ASDK --> 通过门户[创建虚拟机规模集](../azure-stack-compute-add-scalesets.md) (VMSS) 时，不再使用“基本 A”虚拟机大小。 若要按照此大小来创建 VMSS，请使用 PowerShell 或模板。 
 
 ### <a name="known-issues"></a>已知问题
 
@@ -283,7 +283,7 @@ ms.locfileid: "52869953"
 - 即使从用户订阅中删除计划，也无法删除作为附加计划添加到用户订阅的计划。 该计划将一直保留，直到引用附加计划的订阅也被删除。 
 
 <!--2760466 – IS  ASDK --> 
-- 安装运行此版本的新 Azure Stack 环境时，指示“需要激活”的警报可能不显示。 必须先[激活](.\.\azure-stack-registration.md)，然后才能使用市场联合。 
+- 安装运行此版本的新 Azure Stack 环境时，指示“需要激活”的警报可能不显示。 必须先[激活](../azure-stack-registration.md)，然后才能使用市场联合。 
 
 <!-- TBD - IS ASDK --> 
 - 不应使用版本 1804 中引入的两种管理订阅类型。 这两种订阅类型为“计量订阅”和“消耗订阅”。 这两种订阅类型为“计量订阅”和“消耗订阅”。 从版本 1804 开始，这些订阅类型会在新的 Azure Stack 环境中显示，但尚不可用。 请继续使用“默认提供程序”订阅类型。
@@ -417,17 +417,17 @@ ms.locfileid: "52869953"
 ### <a name="new-features"></a>新增功能
 此内部版本包含以下适用于 Azure Stack 的改进和修复。  
 
-- <!-- 1658937 | ASDK, IS --> **按预定义的计划启动备份** - 作为一种设备，Azure Stack 现在可以定期自动触发基础结构备份，不需人为干预。 Azure Stack 还会自动清理那些超出了所定义保留期的备份的外部共享。 有关详细信息，请参阅[使用 PowerShell 为 Azure Stack 启用备份](.\.\azure-stack-backup-enable-backup-powershell.md)。
+- <!-- 1658937 | ASDK, IS --> **按预定义的计划启动备份** - 作为一种设备，Azure Stack 现在可以定期自动触发基础结构备份，不需人为干预。 Azure Stack 还会自动清理那些超出了所定义保留期的备份的外部共享。 有关详细信息，请参阅[使用 PowerShell 为 Azure Stack 启用备份](../azure-stack-backup-enable-backup-powershell.md)。
 
-- <!-- 2496385 | ASDK, IS -->  **将数据传输时间加到了总备份时间中。** 有关详细信息，请参阅[使用 PowerShell 为 Azure Stack 启用备份](.\.\azure-stack-backup-enable-backup-powershell.md)。
+- <!-- 2496385 | ASDK, IS -->  **将数据传输时间加到了总备份时间中。** 有关详细信息，请参阅[使用 PowerShell 为 Azure Stack 启用备份](../azure-stack-backup-enable-backup-powershell.md)。
 
--   <!-- 1702130 | ASDK, IS -->  **备份外部容量现在显示正确的外部共享容量。** （以前，此项硬编码成 10 GB。）有关详细信息，请参阅[使用 PowerShell 为 Azure Stack 启用备份](.\.\azure-stack-backup-enable-backup-powershell.md)。
+-   <!-- 1702130 | ASDK, IS -->  **备份外部容量现在显示正确的外部共享容量。** （以前，此项硬编码成 10 GB。）有关详细信息，请参阅[使用 PowerShell 为 Azure Stack 启用备份](../azure-stack-backup-enable-backup-powershell.md)。
  
 - <!-- 2753130 |  IS, ASDK   -->  **Azure 资源管理器模板现在支持 condition 元素** - 现在可以使用条件在 Azure 资源管理器模板中部署资源。 可以将模板设计为根据某个条件（例如评估是否存在某个参数值）来部署资源。 若要了解如何使用模板作为条件，请参阅 Azure 文档中的[按条件部署资源](https://docs.microsoft.com/azure/architecture/building-blocks/extending-templates/conditional-deploy)和 [Azure 资源管理器模板的 Variables 节](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-templates-variables)。 
 
    也可使用模板[将资源部署到多个订阅或资源组](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-cross-resource-group-deployment)。  
 
-- <!--2753073 | IS, ASDK -->  **Microsoft.Network API 资源版本支持已更新**，增加了对 Azure Stack 网络资源 API 版本 2017-10-01（基于 2015-06-15）的支持。  对 2015-06-15 和 2017-10-01 之间的资源版本的支持不包括在此发行版中，但会包括在未来的发行版中。  有关功能差异，请参阅 [Azure Stack 网络注意事项](.\.\user\azure-stack-network-differences.md)。
+- <!--2753073 | IS, ASDK -->  **Microsoft.Network API 资源版本支持已更新**，增加了对 Azure Stack 网络资源 API 版本 2017-10-01（基于 2015-06-15）的支持。  对 2015-06-15 和 2017-10-01 之间的资源版本的支持不包括在此发行版中，但会包括在未来的发行版中。  有关功能差异，请参阅 [Azure Stack 网络注意事项](../user/azure-stack-network-differences.md)。
 
 - <!-- 2272116 | IS, ASDK   -->  **Azure Stack 增加了对反向 DNS 查找的支持，适用于面向外部的 Azure Stack 基础结构终结点**（即适用于 portal、adminportal、management 和 adminmanagement 终结点）。 这样就可以根据 IP 地址解析 Azure Stack 外部终结点名称。
 
@@ -444,11 +444,11 @@ ms.locfileid: "52869953"
 
   由于此功能仍为预览版，因此请勿在生产环境中依赖它。
 
-  有关详细信息，请参阅 [Azure Stack Syslog 转发](.\.\azure-stack-integrate-security.md)。
+  有关详细信息，请参阅 [Azure Stack Syslog 转发](../azure-stack-integrate-security.md)。
 
 - <!-- ####### | IS, ASDK -->  **Azure 资源管理器包括区域名称。** 使用此版本时，通过 Azure 资源管理器检索的对象现在将包括区域名称属性。 如果现有 PowerShell 脚本直接将对象传递给另一个 cmdlet，则脚本可能会产生错误并失败。 这是 Azure 资源管理器符合行为，并且要求调用方客户端去除区域属性。 有关 Azure 资源管理器的详细信息，请参阅 [Azure 资源管理器文档](https://docs.microsoft.com/azure/azure-resource-manager/)。
 
-- <!-- TBD | IS, ASDK -->  **在委托的提供程序之间移动订阅。** 现在，你可以在属于同一目录租户的新的或现有委托的提供程序订阅之间移动订阅。 属于默认提供商订阅的订阅也可移到同一 Active Directory 租户中的委托提供商订阅。 有关详细信息，请参阅[在 Azure Stack 中委托套餐](.\.\azure-stack-delegated-provider.md)。
+- <!-- TBD | IS, ASDK -->  **在委托的提供程序之间移动订阅。** 现在，你可以在属于同一目录租户的新的或现有委托的提供程序订阅之间移动订阅。 属于默认提供商订阅的订阅也可移到同一 Active Directory 租户中的委托提供商订阅。 有关详细信息，请参阅[在 Azure Stack 中委托套餐](../azure-stack-delegated-provider.md)。
  
 - <!-- 2536808 IS ASDK --> **缩短了 VM 创建时间**：适用于使用从 Azure 市场下载的映像创建的 VM。
 
@@ -464,7 +464,7 @@ ms.locfileid: "52869953"
 
 - <!-- 2215948 |  ASDK, IS --> 备份列表现在会在你手动删除外部共享中的备份时进行刷新。
 
-- <!-- 2360715 |  ASDK, IS -->  设置数据中心集成时，不再访问共享中的 AD FS 元数据文件。 有关详细信息，请参阅[通过提供联合元数据文件来设置 AD FS 集成](.\.\azure-stack-integrate-identity.md#setting-up-ad-fs-integration-by-providing-federation-metadata-file)。 
+- <!-- 2360715 |  ASDK, IS -->  设置数据中心集成时，不再访问共享中的 AD FS 元数据文件。 有关详细信息，请参阅[通过提供联合元数据文件来设置 AD FS 集成](../azure-stack-integrate-identity.md#setting-up-ad-fs-integration-by-providing-federation-metadata-file)。 
 
 - <!-- 2388980 | ASDK, IS --> 修复了一个妨碍用户将此前已分配给某个网络接口或负载均衡器的现有公用 IP 地址分配给新的网络接口或负载均衡器的问题。  
 
@@ -511,7 +511,7 @@ ms.locfileid: "52869953"
 - 不能通过将 OEM 扩展包用于此版本的 Azure Stack 来应用驱动程序更新。  对于此问题，目前没有解决方法。
  
 <!-- TBD - IS ASDK --> 
-- 在管理员门户中[从下拉列表提交新的支持请求](.\.\azure-stack-manage-portals.md#quick-access-to-help-and-support)的功能不可用。 请改用以下链接：     
+- 在管理员门户中[从下拉列表提交新的支持请求](../azure-stack-manage-portals.md#quick-access-to-help-and-support)的功能不可用。 请改用以下链接：     
     - 对于 Azure Stack 开发工具包，请使用 https://aka.ms/azurestackforum。    
 
 <!-- 2403291 - IS ASDK --> 
@@ -605,7 +605,7 @@ ms.locfileid: "52869953"
 <!-- 2292271 - IS ASDK --> 
 - 如果提高属于某个套餐和计划的网络资源的配额限制，而该套餐和计划与租户订阅相关联，则新的限制不会应用到该订阅。 但是，新限制会应用到在配额提高后创建的新订阅。
 
-  当计划已与某个订阅相关联时，若要解决此问题，请使用加载项计划来增大网络配额。 有关详细信息，请参阅如何[提供加载项计划](.\.\azure-stack-subscribe-plan-provision-vm.md#to-make-an-add-on-plan-available)。
+  当计划已与某个订阅相关联时，若要解决此问题，请使用加载项计划来增大网络配额。 有关详细信息，请参阅如何[提供加载项计划](../azure-stack-subscribe-plan-provision-vm.md#to-make-an-add-on-plan-available)。
 
 <!-- 2304134 IS ASDK --> 
 - 不能删除与 DNS 区域资源或路由表资源相关联的订阅。 若要成功地删除该订阅，必须先从租户订阅中删除 DNS 区域资源和路由表资源。

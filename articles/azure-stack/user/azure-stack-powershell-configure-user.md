@@ -1,28 +1,27 @@
 ---
-title: 使用连接到 Azure Stack PowerShell 以用户身份 |Microsoft Docs
-description: 若要连接到用户的 Azure Stack 实例的步骤。
+title: 以用户身份使用 PowerShell 连接到 Azure Stack | Microsoft Docs
+description: 连接到用户的 Azure Stack 实例的步骤。
 services: azure-stack
 documentationcenter: ''
 author: sethmanheim
 manager: femila
 editor: ''
-ms.assetid: F4ED2238-AAF2-4930-AA7F-7C140311E10F
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/07/2018
+ms.date: 12/05/2018
 ms.author: sethm
 ms.reviewer: Balsu.G
-ms.openlocfilehash: acdad9788737f4f552cedc1b5f42e03e2288dba8
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: 7710a08fffed304d4d9dd9b036e4c00bcd02a9a9
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44159073"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52965951"
 ---
-# <a name="connect-to-azure-stack-with-powershell-as-a-user"></a>以用户身份连接到使用 PowerShell 的 Azure Stack
+# <a name="connect-to-azure-stack-with-powershell-as-a-user"></a>以用户身份使用 PowerShell 连接到 Azure Stack
 
 *适用于：Azure Stack 集成系统和 Azure Stack 开发工具包*
 
@@ -82,9 +81,13 @@ ms.locfileid: "44159073"
   $tenantId = (invoke-restmethod "$($AuthEndpoint)/.well-known/openid-configuration").issuer.TrimEnd('/').Split('/')[-1]
 
   # Sign in to your environment
+
+  $cred = get-credential
+
   Login-AzureRmAccount `
     -EnvironmentName "AzureStackUser" `
-    -TenantId $tenantId
+    -TenantId $tenantId `
+     $cred = get-credential
   ```
 
 ## <a name="register-resource-providers"></a>注册资源提供程序

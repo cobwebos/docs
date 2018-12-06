@@ -14,19 +14,19 @@ ms.topic: article
 ms.date: 11/20/2018
 ms.author: jeffgilb
 ms.reviewer: quying
-ms.openlocfilehash: b79d64cc063105cb8ecce537a09a7f39a78eef4c
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.openlocfilehash: 8b6257519c3b1db2180335523047e8dc55558d57
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52275021"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52954564"
 ---
 # <a name="remove-the-sql-resource-provider"></a>删除 SQL 资源提供程序
 
 删除 SQL 资源提供程序之前，必须删除该提供程序的所有依赖项。 你还需要用来安装资源提供程序的部署包的副本。
 
 > [!NOTE]
-> 您可以在提供程序安装程序的资源中找到下载链接[部署的资源提供程序先决条件](.\azure-stack-sql-resource-provider-deploy.md#prerequisites)。
+> 您可以在提供程序安装程序的资源中找到下载链接[部署的资源提供程序先决条件](./azure-stack-sql-resource-provider-deploy.md#prerequisites)。
 
 删除 SQL 资源提供程序不会从托管服务器中删除租户数据库。
 

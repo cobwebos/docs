@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/13/2018
 ms.author: anwestg
-ms.openlocfilehash: 54ceadc8173526e8638e70c8c859109eea157fa7
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: 79d78faa53962ea72178281d75cef3c2f61320b1
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51614032"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52971498"
 ---
 # <a name="add-an-app-service-resource-provider-to-a-disconnected-azure-stack-environment-secured-by-ad-fs"></a>将应用服务资源提供程序添加到受 AD FS 保护且已断开连接的 Azure Stack 环境
 
@@ -200,7 +200,7 @@ ms.locfileid: "51614032"
 2. 在概述中，在状态检查以查看是否**状态**显示**所有角色都已就绪**。
 
     ![应用服务管理](media/azure-stack-app-service-deploy/image12.png)
-    
+
 > [!NOTE]
 > 如果选择部署到现有虚拟网络和内部 IP 地址以连接到文件服务器，则必须添加出站安全规则，以便在工作子网和文件服务器之间启用 SMB 流量。  为此，请转到管理门户中的 WorkersNsg 并添加具有以下属性的出站安全规则：
 > * 源：任何
@@ -221,9 +221,9 @@ ms.locfileid: "51614032"
 > [!NOTE]
 > 需要创建一个套餐，其中的计划包含 Microsoft.Web 命名空间。 然后，需要有订阅此套餐的租户订阅。 有关详细信息，请参阅[创建套餐](azure-stack-create-offer.md)和[创建计划](azure-stack-create-plan.md)。
 >
-必须有租户订阅，才能创建使用 Azure Stack 上的应用服务的应用程序。 服务管理员只能在管理员门户中完成的功能与资源提供程序对应用服务的管理相关。 这些功能包括添加容量、配置部署源以及添加辅助角色层和 SKU。
+> 必须有租户订阅，才能创建使用 Azure Stack 上的应用服务的应用程序。 服务管理员只能在管理员门户中完成的功能与资源提供程序对应用服务的管理相关。 这些功能包括添加容量、配置部署源以及添加辅助角色层和 SKU。
 >
-至于第三个技术预览版，若要创建 Web 应用、API 应用和 Azure Functions 应用，必须使用租户门户并有租户订阅。
+> 至于第三个技术预览版，若要创建 Web 应用、API 应用和 Azure Functions 应用，必须使用租户门户并有租户订阅。
 
 1. 在 Azure Stack 租户门户中，单击“+ 创建资源” > “Web + 移动” > “Web 应用”。
 

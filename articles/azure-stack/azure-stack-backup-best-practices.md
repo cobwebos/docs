@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 11/05/2018
 ms.author: jeffgilb
 ms.reviewer: hectorl
-ms.openlocfilehash: ec17f6923fc1c928f24fcb762daedbaea5b688ac
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: cca5fe492032c74a9922780f197065e9c2b40ad3
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51035095"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52966107"
 ---
 # <a name="infrastructure-backup-service-best-practices"></a>基础结构备份服务最佳做法
 
@@ -46,7 +46,7 @@ ms.locfileid: "51035095"
 
 密钥必须存储在一个安全位置（例如，公共 Azure Key Vault 机密）。 在重新部署 Azure Stack 期间，必须使用此密钥。 
 
-![将密钥存储在一个安全位置。](media\azure-stack-backup\azure-stack-backup-encryption2.png)
+![将密钥存储在一个安全位置。](media/azure-stack-backup/azure-stack-backup-encryption2.png)
 
 ## <a name="operational-best-practices"></a>操作最佳实践
 

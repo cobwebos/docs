@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/20/2018
 ms.author: anwestg
 ms.reviewer: sethm
-ms.openlocfilehash: ee6e4397345b4cb169e7e22d951d4c4fdff5b7b7
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: 632cf506477bdc6f35c66a473963168f81e22351
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49078709"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52971889"
 ---
 # <a name="app-service-on-azure-stack-update-1-release-notes"></a>基于 Azure Stack 的应用服务 Update 1 发行说明
 
@@ -145,7 +145,7 @@ Get-AzureStackRootCert.ps1 出错，导致客户在尚未安装 Azure Stack 根�
 
       # Commit the changes back to NSG
       Set-AzureRmNetworkSecurityGroup -NetworkSecurityGroup $nsg
-      ```
+    ```
 
 2. 浏览到 Azure Stack 管理员门户中“虚拟机”下的 **CN0-VM**，单击“连接”，以便通过控制器实例打开远程桌面会话。 使用在部署应用服务期间指定的凭据。
 3. 以管理员身份启动 **PowerShell** 并执行以下脚本
@@ -197,18 +197,20 @@ Get-AzureStackRootCert.ps1 出错，导致客户在尚未安装 Azure Stack 根�
         # Commit the changes back to NSG
         Set-AzureRmNetworkSecurityGroup -NetworkSecurityGroup $nsg
     ```
-- 当应用服务部署在现有虚拟网络中并且文件服务器仅在专用网络上可用时，工作人员将无法访问文件服务器。
- 
+
+6. 当应用服务部署在现有虚拟网络中并且文件服务器仅在专用网络上可用时，工作人员将无法访问文件服务器。
+
 如果选择部署到现有虚拟网络和内部 IP 地址以连接到文件服务器，则必须添加出站安全规则，以便在工作子网和文件服务器之间启用 SMB 流量。 为此，请转到管理门户中的 WorkersNsg 并添加具有以下属性的出站安全规则：
- * 源：任何
- * 源端口范围：*
- * 目标：IP 地址
- * 目标 IP 地址范围：文件服务器的 IP 范围
- * 目标端口范围：445
- * 协议：TCP
- * 操作：允许
- * 优先级：700
- * 名称：Outbound_Allow_SMB445
+
+- 源：任何
+- 源端口范围：*
+- 目标：IP 地址
+- 目标 IP 地址范围：文件服务器的 IP 范围
+- 目标端口范围：445
+- 协议：TCP
+- 操作：允许
+- 优先级：700
+- 名称：Outbound_Allow_SMB445
 
 ### <a name="known-issues-for-cloud-admins-operating-azure-app-service-on-azure-stack"></a>云管理员在操作基于 Azure Stack 的 Azure 应用服务时的已知问题
 

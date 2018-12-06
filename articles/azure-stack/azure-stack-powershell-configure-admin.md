@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 11/08/2018
 ms.author: mabrigg
 ms.reviewer: thoroet
-ms.openlocfilehash: 530b2a1909ec198ddff5abfe4fd5bb7c645f7582
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: b961fac00ba43eb1b44acc46c6f60fa0f3a10877
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52261575"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52957072"
 ---
 # <a name="connect-to-azure-stack-with-powershell-as-an-operator"></a>以操作员身份使用 PowerShell 连接到 Azure Stack
 
@@ -29,7 +29,7 @@ ms.locfileid: "52261575"
 
 ## <a name="prerequisites"></a>必备组件
 
-运行以下先决条件[开发工具包](.\asdk\asdk-connect.md#connect-with-rdp)或基于 Windows 的外部客户端是否[连接到通过 VPN ASDK](.\asdk\asdk-connect.md#connect-with-vpn)。 
+运行以下先决条件[开发工具包](./asdk/asdk-connect.md#connect-with-rdp)或基于 Windows 的外部客户端是否[连接到通过 VPN ASDK](./asdk/asdk-connect.md#connect-with-vpn)。 
 
  - 安装 [Azure Stack 兼容的 Azure PowerShell 模块](azure-stack-powershell-install.md)。  
  - 下载[使用 Azure Stack 所需的工具](azure-stack-powershell-download.md)。  

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/15/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: 98ae7fe0fde922aee28ffc05b64d223a40085447
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 0b1affb708a8d481a1378fa691b6547865b0b214
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49340913"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52963583"
 ---
 # <a name="start-and-stop-the-azure-stack-development-kit-asdk"></a>启动和停止 Azure Stack 开发工具包 (ASDK)
 建议不要仅仅重启 ASDK 主机。 而是应该遵循本文中的过程正确关闭再重启 ASDK 服务。 
@@ -62,7 +62,7 @@ ms.locfileid: "49340913"
    ```
 6. 查看输出，确保 Azure Stack 服务已成功重启。
 
-若要详细了解正常关闭和重启 Azure Stack 服务的建议过程，请参阅[启动和停止 Azure Stack](.\.\azure-stack-start-and-stop.md)。 
+若要详细了解正常关闭和重启 Azure Stack 服务的建议过程，请参阅[启动和停止 Azure Stack](../azure-stack-start-and-stop.md)。 
 
 ## <a name="troubleshoot-startup-and-shutdown"></a>排查启动和关机问题 
 如果在打开 ASDK 主机后的两个小时内 Azure Stack 服务未成功启动，请执行以下步骤：
@@ -79,7 +79,7 @@ ms.locfileid: "49340913"
    ```powershell
    Test-AzureStack
    ```
-5. 查看输出并解决所有错误。 有关详细信息，请参阅[运行 Azure Stack 的验证测试](.\.\azure-stack-diagnostic-test.md)。
+5. 查看输出并解决所有错误。 有关详细信息，请参阅[运行 Azure Stack 的验证测试](../azure-stack-diagnostic-test.md)。
 6. 在 PEP 会话中运行 **Start-AzureStack** cmdlet，以重启 Azure Stack 服务：
 
    ```powershell
@@ -89,4 +89,4 @@ ms.locfileid: "49340913"
 如果运行 **Start-AzureStack** 导致失败，请访问 [Azure Stack 支持论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurestack)获取 ASDK 故障排除支持。 
 
 ## <a name="next-steps"></a>后续步骤 
-若要详细了解 Azure Stack 诊断工具和问题日志记录，请参阅 [Azure Stack 诊断工具](.\.\azure-stack-diagnostics.md)。
+若要详细了解 Azure Stack 诊断工具和问题日志记录，请参阅 [Azure Stack 诊断工具](../azure-stack-diagnostics.md)。

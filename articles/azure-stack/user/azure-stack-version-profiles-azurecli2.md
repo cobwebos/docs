@@ -13,20 +13,20 @@ ms.topic: article
 ms.date: 09/08/2018
 ms.author: sethm
 ms.reviewer: sijuman
-ms.openlocfilehash: 2c862dcaf5f9267265879faa8ac927ddf7515419
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 6251a0c7fd43a12dbe02a0013f1530557d142d25
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51277267"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52969951"
 ---
-# <a name="use-api-version-profiles-with-azure-cli-in-azure-stack"></a>使用 Azure CLI 在 Azure Stack 中使用 API 版本配置文件
+# <a name="use-api-version-profiles-with-azure-cli-in-azure-stack"></a>在 Azure Stack 中将 API 版本配置文件与 Azure CLI 配合使用
 
 可以按照本文中的步骤设置 Azure 命令行接口 (CLI)，以从 Linux、Mac 和 Windows 客户端平台管理 Azure Stack 开发工具包资源。
 
 ## <a name="install-cli"></a>安装 CLI
 
-登录到开发工作站并安装 CLI。 Azure Stack 需要版本 2.0 或更高版本的 Azure CLI。 可以使用中所述的步骤安装的[安装 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)一文。 若要验证安装是否成功，请打开终端或命令提示符窗口，并运行以下命令：
+登录到开发工作站并安装 CLI。 Azure Stack 需要 Azure CLI 2.0 版或更高版本。 可以使用[安装 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) 一文中所述的步骤来安装它。 若要验证安装是否成功，请打开终端或命令提示符窗口，并运行以下命令：
 
 ```azurecli
 az --version
@@ -36,7 +36,7 @@ az --version
 
 ## <a name="trust-the-azure-stack-ca-root-certificate"></a>信任 Azure Stack CA 根证书
 
-1. 从 [Azure Stack 运营商](..\azure-stack-cli-admin.md#export-the-azure-stack-ca-root-certificate)获取 Azure Stack CA 根证书，并信任该证书。 若要信任 Azure Stack CA 根书，请将它附加到现有的 Python 证书。
+1. 从 [Azure Stack 运营商](../azure-stack-cli-admin.md#export-the-azure-stack-ca-root-certificate)获取 Azure Stack CA 根证书，并信任该证书。 若要信任 Azure Stack CA 根书，请将它附加到现有的 Python 证书。
 
 1. 在计算机上找到证书位置。 该位置根据 Python 的安装位置而异。 需要安装 [pip](https://pip.pypa.io) 和 [certifi](https://pypi.org/project/certifi/) 模块。 可在 bash 提示符下使用以下 Python 命令：
 
@@ -203,11 +203,11 @@ Write-Host "Python Cert store was updated for allowing the azure stack CA root c
       ```
     * AD FS 环境
 
-        * 以身份登录*服务主体*: 
-          1.    准备要用于服务主体登录名的.pem 文件。
-                * 在客户端计算机主体的创建，服务主体证书导出为 pfx 使用私钥 (位于 cert: \CurrentUser\My; 的证书名称已与主体相同的名称)。
+        * 以服务主体身份登录： 
+          1.    准备要用于服务主体登录的 .pem 文件。
+                * 在创建主体的客户端计算机上，使用私钥（位于 cert:\CurrentUser\My；证书名称与主体名称相同）将服务主体证书导出为 pfx。
 
-                *   将 pfx 转换为 pem （使用 OpenSSL 实用程序）。
+                *   将 pfx 转换为 pem（使用 OpenSSL 实用程序）。
 
           1.    登录到 CLI。 :
                 ```azurecli
@@ -242,6 +242,6 @@ az group create \
 
 [使用 Azure CLI 部署模板](azure-stack-deploy-template-command-line.md)
 
-[为 Azure Stack 用户启用 Azure CLI（操作员）](..\azure-stack-cli-admin.md)
+[为 Azure Stack 用户启用 Azure CLI（操作员）](../azure-stack-cli-admin.md)
 
 [管理用户权限](azure-stack-manage-permissions.md)

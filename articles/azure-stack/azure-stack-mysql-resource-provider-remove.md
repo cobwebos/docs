@@ -14,19 +14,19 @@ ms.topic: article
 ms.date: 11/20/2018
 ms.author: jeffgilb
 ms.reviewer: quying
-ms.openlocfilehash: c3dbecfcaf40a85c57b9f795d7f2d9b76d27c195
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.openlocfilehash: 2740da5a51e95a327a868734a7f009dddf40219a
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52274060"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52964928"
 ---
 # <a name="remove-the-mysql-resource-provider"></a>删除 MySQL 资源提供程序
 
 删除 MySQL 资源提供程序之前，必须删除该提供程序的所有依赖项。 你还需要用来安装资源提供程序的部署包的副本。
 
 > [!NOTE]
-> 您可以在提供程序安装程序的资源中找到下载链接[部署的资源提供程序先决条件](.\azure-stack-mysql-resource-provider-deploy.md#prerequisites)。
+> 您可以在提供程序安装程序的资源中找到下载链接[部署的资源提供程序先决条件](./azure-stack-mysql-resource-provider-deploy.md#prerequisites)。
 
 正在删除 MySQL 资源提供程序不会从托管服务器中删除租户数据库。
 

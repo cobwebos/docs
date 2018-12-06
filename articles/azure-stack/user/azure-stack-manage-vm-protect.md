@@ -15,12 +15,12 @@ ms.topic: get-started-article
 ms.date: 10/15/2018
 ms.author: jeffgilb
 ms.reviewer: hector.linares
-ms.openlocfilehash: 3c27aecf18fcb5e14347d8f02d71891b351292be
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 87ba13334b037f7eb47264a120bb91b2be5f8a79
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49341831"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52963907"
 ---
 # <a name="protect-virtual-machines-deployed-on-azure-stack"></a>保护在 Azure Stack 上部署的虚拟机
 
@@ -58,7 +58,7 @@ Azure Stack 云的操作员负责创建针对底层 Azure Stack 基础结构和�
 | **部署到 CSP 数据中心并由 CSP 操作的 Azure Stack** | 用户 VM 部署到 CSP 操作的 Azure Stack。 用户 VM 从备份还原，或者直接故障转移到 Azure。 | CSP 在自己的数据中心操作 Azure Stack 的主要和次要实例。 用户 VM 在这两个 Azure Stack 实例之间还原或故障转移。 | CSP 在主要站点操作 Azure Stack。 客户的数据中心是还原或故障转移目标。 |
 | **部署到客户数据中心并由客户操作的 Azure Stack** | 用户 VM 部署到客户操作的 Azure Stack。 用户 VM 从备份还原，或者直接故障转移到 Azure。 | 客户在自己的数据中心操作 Azure Stack 的主要和次要实例。 用户 VM 在这两个 Azure Stack 实例之间还原或故障转移。 | 客户在主要站点操作 Azure Stack。 CSP 的数据中心是还原或故障转移目标。 |
 
-![源-目标组合](media\azure-stack-manage-vm-backup\vm_backupdataflow_01.png)
+![源-目标组合](media/azure-stack-manage-vm-backup/vm_backupdataflow_01.png)
 
 ## <a name="application-recovery-objectives"></a>应用程序恢复目标
 
@@ -77,7 +77,7 @@ RTO 和 RPO 属于业务要求。 开展风险评估的目的是定义应用程�
 
 对于基于 VM 的应用程序，最常见的保护方案是使用备份软件。 备份 VM 通常包括操作系统、操作系统配置、应用程序二进制文件和应用程序数据。 可以通过拍摄卷、磁盘或整个 VM 的快照来创建备份。 使用 Azure Stack 时，可以灵活地选择是从来宾 OS 的上下文中备份，还是从 Azure Stack 存储和计算 API 备份。 Azure Stack 不支持在虚拟机监控程序级别进行备份。
  
-![备份-还原](media\azure-stack-manage-vm-backup\vm_backupdataflow_03.png)
+![备份-还原](media/azure-stack-manage-vm-backup/vm_backupdataflow_03.png)
 
 恢复应用程序时，需要将一个或多个 VM 还原到相同的云或新的云。 可以将数据中心的云或公有云作为目标。 选择的云完全由你来控制，并且取决于数据隐私和自主性要求。
  
@@ -107,7 +107,7 @@ RTO 和 RPO 属于业务要求。 开展风险评估的目的是定义应用程�
 
 使用此方法时，会将应用程序部署在一个云中，将其 VM 复制到另一个云中。 如果触发了故障转移，则需在第二个云中启动辅助 VM。 在某些情况下，故障转移会创建 VM 并向其附加磁盘。 此过程可能需要很长时间才能完成，尤其是对于需要采用特定启动顺序的多层应用程序。 在应用程序准备好开始为请求提供服务之前，可能还必须运行其他步骤。
 
-![复制-手动故障转移](media\azure-stack-manage-vm-backup\vm_backupdataflow_02.png)
+![复制-手动故障转移](media/azure-stack-manage-vm-backup/vm_backupdataflow_02.png)
 
  - RTO：以分钟计量的停机时间
  - RPO：可变数据丢失（取决于复制频率）
