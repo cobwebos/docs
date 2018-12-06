@@ -47,7 +47,7 @@ Microsoft Online 业务服务（例如 Office 365 或 Microsoft Azure）要求�
 
 - **Azure Active Directory Premium P1。** 除了 Free 和 Basic 版功能，P1 还允许混合用户访问本地资源和云资源。 它还支持高级管理，例如动态组、自助服务组管理、Microsoft Identity Manager（一个本地标识与访问管理套件），以及允许本地用户进行自助密码重置的云写回功能。
 
-- **Azure Active Directory Premium P2。** 除了 Free、Basic 和 P1 版功能，P2 还提供 [Azure Active Directory Identity Protection](../identity-protection/enable.md)，用于对应用和重要的公司数据进行基于风险的条件访问，以及提供 [Privileged Identity Management](../privileged-identity-management/pim-getting-started.md)，用于发现、限制和监视管理员及其对资源的访问，并在需要时提供恰时访问。
+- **Azure Active Directory Premium P2。** 除了 Free、Basic 和 P1 版功能，P2 还提供 [Azure Active Directory Identity Protection](../identity-protection/enable.md)，用于对应用和重要的公司数据进行基于风险的条件访问，以及提供 [Privileged Identity Management](../privileged-identity-management/pim-getting-started.md)，用于发现、限制和监视管理员及其对资源的访问，并在需要时提供实时访问。
 
 - **“即用即付”功能许可证。** 也可获取其他功能许可证，例如 Azure Active Directory 企业对客户 (B2C) 许可证。 可以通过 B2C 为面向客户的应用提供标识和访问管理解决方案。 有关详细信息，请参阅 [Azure Active Directory B2C 文档](../../active-directory-b2c/index.yml)。
 
@@ -56,7 +56,7 @@ Microsoft Online 业务服务（例如 Office 365 或 Microsoft Azure）要求�
 ## <a name="terminology"></a>术语
 为了更好地理解 Azure AD 及其文档，应查看以下术语。
 
-|术语或概念|Description|
+|术语或概念|描述|
 |---------------|-----------|
 |Azure 订阅| 用于为 Azure 云服务付费。 可以有多个订阅，这些订阅与一张信用卡关联。|
 |Azure 租户| 组织在注册 Microsoft Azure、Microsoft Intune 或 Office 365 等 Microsoft 云服务订阅时自动创建的专用且受信任的 Azure AD 实例。 一个 Azure 租户表示一个组织。|
