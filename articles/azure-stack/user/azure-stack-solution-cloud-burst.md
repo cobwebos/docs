@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 09/24/2018
 ms.author: mabrigg
 ms.reviewer: Anjay.Ajodha
-ms.openlocfilehash: 4881f992e5362efc7e4d7ac23898684966a066e0
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.openlocfilehash: 57624133b249a8ec2ece90eac4a64729e4d15151
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52890987"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52968197"
 ---
 # <a name="tutorial-create-cross-cloud-scaling-solutions-with-azure"></a>教程： 使用 Azure 创建跨云缩放解决方案
 
@@ -107,17 +107,17 @@ Azure Repos
 
     混合 CI/CD 可同时应用到应用程序代码和基础结构代码。 使用[Azure 资源管理器模板](https://azure.microsoft.com/resources/templates/)用于这两个私有云和托管云开发。
 
-    ![Alt text](media\azure-stack-solution-cloud-burst\image1.JPG)
+    ![Alt text](media/azure-stack-solution-cloud-burst/image1.JPG)
 
 2. 创建并打开默认 Web 应用以**克隆存储库**。
 
-    ![Alt text](media\azure-stack-solution-cloud-burst\image2.png)
+    ![Alt text](media/azure-stack-solution-cloud-burst/image2.png)
 
 ### <a name="create-self-contained-web-app-deployment-for-app-services-in-both-clouds"></a>为这两个云中的应用服务创建独立的 Web 应用部署
 
 1.  编辑**WebApplication.csproj**文件。 选择**Runtimeidentifier**并添加**win10-x64**。 (请参阅[独立式部署](https://docs.microsoft.com/dotnet/core/deploying/#self-contained-deployments-scd)文档。) 
 
-    ![Alt text](media\azure-stack-solution-cloud-burst\image3.png)
+    ![Alt text](media/azure-stack-solution-cloud-burst/image3.png)
 
 2.  签入到 Azure 存储库使用团队资源管理器代码。
 
@@ -129,7 +129,7 @@ Azure Repos
 
 2. 添加 **-r win10-x64** 代码。 在 .Net Core 中触发独立部署时需要此代码。
 
-    ![Alt text](media\azure-stack-solution-cloud-burst\image4.png)
+    ![Alt text](media/azure-stack-solution-cloud-burst/image4.png)
 
 3. 运行生成。 [独立部署生成](https://docs.microsoft.com/dotnet/core/deploying/#self-contained-deployments-scd)过程将发布可在 Azure 和 Azure Stack 上运行的项目。
 
@@ -143,87 +143,87 @@ Azure 管道和 Azure DevOps 服务器提供高度可配置和可管理管道发
 
 ## <a name="create-release-definition"></a>创建发布定义
 
-![Alt text](media\azure-stack-solution-cloud-burst\image5.png)
+![Alt text](media/azure-stack-solution-cloud-burst/image5.png)
 
 1.  选择**加上**按钮添加新的发行版下**版本选项卡**VSO 的生成和发布页中。
 
-    ![Alt text](media\azure-stack-solution-cloud-burst\image6.png)
+    ![Alt text](media/azure-stack-solution-cloud-burst/image6.png)
 
 2. 应用 Azure App Service 部署模板。
 
-    ![Alt text](media\azure-stack-solution-cloud-burst\image7.png)
+    ![Alt text](media/azure-stack-solution-cloud-burst/image7.png)
 
 3. 在添加项目下添加 Azure 云生成应用的项目。
 
-    ![Alt text](media\azure-stack-solution-cloud-burst\image8.png)
+    ![Alt text](media/azure-stack-solution-cloud-burst/image8.png)
 
 4. 管道选项卡，选择**阶段时，任务**环境的链接，并设置 Azure 云环境值。
 
-    ![Alt text](media\azure-stack-solution-cloud-burst\image9.png)
+    ![Alt text](media/azure-stack-solution-cloud-burst/image9.png)
 
 5. 设置**环境名称**，并选择 Azure 云终结点的 Azure **订阅**。
 
-    ![Alt text](media\azure-stack-solution-cloud-burst\image10.png)
+    ![Alt text](media/azure-stack-solution-cloud-burst/image10.png)
 
 6. 在“环境名称”下，设置所需的 **Azure 应用服务名称**。
 
-    ![Alt text](media\azure-stack-solution-cloud-burst\image11.png)
+    ![Alt text](media/azure-stack-solution-cloud-burst/image11.png)
 
 7. 在 Azure 云托管环境的“代理队列”下输入 **Hosted VS2017**。
 
-    ![Alt text](media\azure-stack-solution-cloud-burst\image12.png)
+    ![Alt text](media/azure-stack-solution-cloud-burst/image12.png)
 
 8. 在“部署 Azure 应用服务”菜单中，为环境选择有效的**包或文件夹**。 选择**文件夹位置**旁边的“确定”。
 
-    ![Alt text](media\azure-stack-solution-cloud-burst\image13.png)
+    ![Alt text](media/azure-stack-solution-cloud-burst/image13.png)
 
-    ![Alt text](media\azure-stack-solution-cloud-burst\image14.png)
+    ![Alt text](media/azure-stack-solution-cloud-burst/image14.png)
 
 9. 保存所有更改并返回**发布管道**。
 
-    ![Alt text](media\azure-stack-solution-cloud-burst\image15.png)
+    ![Alt text](media/azure-stack-solution-cloud-burst/image15.png)
 
 10. 添加新项目选择 Azure Stack 应用的生成。
 
-    ![Alt text](media\azure-stack-solution-cloud-burst\image16.png)
+    ![Alt text](media/azure-stack-solution-cloud-burst/image16.png)
 
 11. 添加一个应用 Azure 应用服务部署的多个环境。
 
-    ![Alt text](media\azure-stack-solution-cloud-burst\image17.png)
+    ![Alt text](media/azure-stack-solution-cloud-burst/image17.png)
 
 12. 命名新的 Azure Stack 环境。
 
-    ![Alt text](media\azure-stack-solution-cloud-burst\image18.png)
+    ![Alt text](media/azure-stack-solution-cloud-burst/image18.png)
 
 13. 在“任务”选项卡下找到 Azure Stack 环境。
 
-    ![Alt text](media\azure-stack-solution-cloud-burst\image19.png)
+    ![Alt text](media/azure-stack-solution-cloud-burst/image19.png)
 
 14. 选择 Azure Stack 终结点的订阅。
 
-    ![Alt text](media\azure-stack-solution-cloud-burst\image20.png)
+    ![Alt text](media/azure-stack-solution-cloud-burst/image20.png)
 
 15. 将 Azure Stack web 应用名称设置为应用服务名称。
 
-    ![Alt text](media\azure-stack-solution-cloud-burst\image21.png)
+    ![Alt text](media/azure-stack-solution-cloud-burst/image21.png)
 
 16. 选择 Azure Stack 的代理。
 
-    ![Alt text](media\azure-stack-solution-cloud-burst\image22.png)
+    ![Alt text](media/azure-stack-solution-cloud-burst/image22.png)
 
 17. 在“部署 Azure 应用服务”部分下，为环境选择有效的**包或文件夹**。 选择**确定**到文件夹位置。
 
-    ![Alt text](media\azure-stack-solution-cloud-burst\image23.png)
+    ![Alt text](media/azure-stack-solution-cloud-burst/image23.png)
 
-    ![Alt text](media\azure-stack-solution-cloud-burst\image24.png)
+    ![Alt text](media/azure-stack-solution-cloud-burst/image24.png)
 
 18. 变量选项卡将添加一个名为变量`VSTS\_ARM\_REST\_IGNORE\_SSL\_ERRORS`，将作为其值设置**true**，和到 Azure Stack 的作用域。
 
-    ![Alt text](media\azure-stack-solution-cloud-burst\image25.png)
+    ![Alt text](media/azure-stack-solution-cloud-burst/image25.png)
 
 19. 选择**连续**部署中项目和启用的触发器图标**仍继续**部署触发器。
 
-    ![Alt text](media\azure-stack-solution-cloud-burst\image26.png)
+    ![Alt text](media/azure-stack-solution-cloud-burst/image26.png)
 
 20. 选择**预先部署**在 Azure Stack 环境中的条件图标并将触发器设置为**发布后。**
 
@@ -307,7 +307,7 @@ Azure 的管道和 Azure DevOps 服务器到多个环境，如开发、 过渡�
 
 3.  在“选择模板”上选择“Azure 应用服务部署”，然后选择“应用”。
 
-4.  上**添加项目**，从 * * 源 （生成定义） 选择 Azure 云生成应用程序。
+4.  上**添加项目**，从**源 （生成定义）** 选择 Azure 云生成应用程序。
 
 5.  在“管道”选项卡上选择“1 阶段，1 任务”链接，以便**查看环境任务**。
 
@@ -323,7 +323,7 @@ Azure 的管道和 Azure DevOps 服务器到多个环境，如开发、 过渡�
 
 11. 保存所有更改后，回到“管道”。
 
-12. 上**管道**选项卡上，选择**添加项目**，然后选择**NorthwindCloud 船舶容量 Traders**从 * * 源 （生成定义） * * 列表。
+12. 上**管道**选项卡上，选择**添加项目**，然后选择**NorthwindCloud 船舶容量 Traders**从**源 （生成的定义）** 列表。
 
 13. 在“选择模板”中添加另一环境。 选取“Azure 应用服务部署”，然后选择“应用”。
 

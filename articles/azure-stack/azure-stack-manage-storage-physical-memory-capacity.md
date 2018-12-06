@@ -15,12 +15,12 @@ ms.topic: get-started-article
 ms.date: 09/28/2018
 ms.author: mabrigg
 ms.reviewer: Thomas.Roettinger
-ms.openlocfilehash: a914d20f61b5b632e792ca29f6c201964db4a203
-ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
+ms.openlocfilehash: 0516ee7a8319b85765280b4c84f5febec8343ada
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47452133"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52965609"
 ---
 # <a name="manage-physical-memory-capacity-for-azure-stack"></a>管理 Azure Stack 的物理内存容量
 
@@ -33,7 +33,7 @@ ms.locfileid: "47452133"
 
 以下流程图显示将内存添加到每个缩放单元节点的一般过程。
 
-![将内存添加到每个缩放单元节点](media\azure-stack-manage-storage-physical-capacity\process-to-add-memory-to-scale-unit.png)
+![将内存添加到每个缩放单元节点](media/azure-stack-manage-storage-physical-capacity/process-to-add-memory-to-scale-unit.png)
 
 ## <a name="add-memory-to-an-existing-node"></a>将内存添加到现有节点
 以下步骤提供添加内存过程的高级概述。 

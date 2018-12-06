@@ -15,19 +15,19 @@ ms.topic: article
 ms.date: 10/15/2018
 ms.author: jeffgilb
 ms.reviewer: rtiberiu
-ms.openlocfilehash: 1ef20dc35b069c5f12c2f31d0979949be27271e0
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: be793fa5d346d05e6b7bd9f93f1108b7a3542fa6
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49324414"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52959166"
 ---
 # <a name="azure-stack-vm-update-and-management"></a>Azure Stack VM 更新和管理
 可以使用以下 Azure 自动化解决方案功能来管理使用 Azure Stack 部署的 Windows Vm:
 
 - **[更新管理](https://docs.microsoft.com/azure/automation/automation-update-management)**。 使用更新管理解决方案中，可以快速评估所有代理计算机上的可用更新的状态和管理适用于这些 Windows Vm 中安装所需的更新的过程。
 
-- **[更改跟踪](https://docs.microsoft.com/azure/automation/automation-change-tracking)**。 对已安装的软件、 Windows 服务、 Windows 注册表和受监视服务器上的文件的更改发送到云中的 Log Analytics 服务进行处理。 逻辑应用于接收的数据，云服务记录数据。 通过使用“更改跟踪”仪表板上的信息，可以轻松看到服务器基础结构中所做的更改。
+- **[更改跟踪](https://docs.microsoft.com/azure/automation/automation-change-tracking)**。 对已安装的软件、 Windows 服务、 Windows 注册表和受监视服务器上的文件的更改发送到云中的 Log Analytics 服务进行处理。 逻辑应用于接收的数据，云服务则记录数据。 通过使用“更改跟踪”仪表板上的信息，可以轻松查看服务器基础结构中所做的更改。
 
 - **[库存](https://docs.microsoft.com/azure/automation/automation-vm-inventory)**。 库存跟踪为 Azure Stack Windows 虚拟机提供了用于设置和配置清单收集的基于浏览器的用户界面。 
 
@@ -41,7 +41,7 @@ ms.locfileid: "49324414"
 若要使用 Azure Stack Windows Vm 的清单、 更改跟踪和更新管理 Azure 自动化功能，首先需要启用 Azure 中的这些解决方案。
 
 > [!TIP]
-> 如果已为 Azure Vm 启用这些功能，可以使用预先存在的 LogAnalytics 工作区凭据。 如果已 LogAnalytics 工作区 Id 和你想要使用的主键，跳到[下一步部分](.\vm-update-management.md#in-the-azure-stack-administration-portal)。 否则，继续在此部分中创建新的 LogAnalytics 工作区和自动化帐户。
+> 如果已为 Azure Vm 启用这些功能，可以使用预先存在的 LogAnalytics 工作区凭据。 如果已 LogAnalytics 工作区 Id 和你想要使用的主键，跳到[下一步部分](./vm-update-management.md#in-the-azure-stack-administration-portal)。 否则，继续在此部分中创建新的 LogAnalytics 工作区和自动化帐户。
 
 启用这些解决方案的第一步是向[创建 LogAnalytics 工作区](https://docs.microsoft.com/azure/log-analytics/log-analytics-quick-create-workspace)在 Azure 订阅中。 Log Analytics 工作区是一个具有其自己的数据存储库、 数据源和解决方案的独特 Log Analytics 环境。 创建一个工作区后，请注意工作区 Id 和密钥。 若要查看此信息，请转到工作区边栏选项卡，单击**高级设置**，并查看**工作区 ID**并**Primary Key**值。 
 

@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.date: 11/19/2018
 ms.author: mabrigg
 ms.reviewer: johnhas
-ms.openlocfilehash: bc2fbf7aadf99a2f765def2d352819dfa6cd5fa4
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: dc0c6a37e11574cef857a7af773a9d90bea57357
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52265766"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52972059"
 ---
 # <a name="interactive-feature-verification-testing"></a>交互式功能验证测试  
 
@@ -48,7 +48,7 @@ ms.locfileid: "52265766"
 
 3.  选择**启动**上**测试轮次**磁贴。
 
-    ![Alt text](media\azure-stack-vaas-interactive-feature-verification\image1.png)
+    ![Alt text](media/azure-stack-vaas-interactive-feature-verification/image1.png)
 
 4.  输入的名称**测试轮次**工作流。
 
@@ -63,7 +63,7 @@ ms.locfileid: "52265766"
 > [!Note]  
 > 为磁盘标识交互式功能验证测试，必须指定域管理员用户和密码。
 
-![Alt text](media\azure-stack-vaas-interactive-feature-verification\image2.png)
+![Alt text](media/azure-stack-vaas-interactive-feature-verification/image2.png)
 
 ## <a name="select-the-test"></a>选择的测试
 
@@ -72,51 +72,51 @@ ms.locfileid: "52265766"
     > [!Note]  
     > 随着所做的改进测试辅助资料，测试版本将递增。 除非 Microsoft 指示，否则，应始终使用最高版本。
 
-    ![Alt text](media\azure-stack-vaas-interactive-feature-verification\image4.png)
+    ![Alt text](media/azure-stack-vaas-interactive-feature-verification/image4.png)
 
 2.  通过选择提供的域管理员用户和密码**编辑**。
 
 3.  选择适当的测试执行代理/DVM 上启动测试。
 
-    ![Alt text](media\azure-stack-vaas-interactive-feature-verification\image5.png)
+    ![Alt text](media/azure-stack-vaas-interactive-feature-verification/image5.png)
 
 4.  选择**提交**以启动测试。
 
-![Alt text](media\azure-stack-vaas-interactive-feature-verification\image6.png)
+![Alt text](media/azure-stack-vaas-interactive-feature-verification/image6.png)
 
 ## <a name="start-the-test"></a>启动测试
 
 运行 VaaS 代理的计算机上显示的磁盘标识测试提示。 通常这是 DVM 或 Jumpbox 的 Azure Stack 实例。
 
-![Alt text](media\azure-stack-vaas-interactive-feature-verification\image8.png)
+![Alt text](media/azure-stack-vaas-interactive-feature-verification/image8.png)
 
 ## <a name="choose-the-actions"></a>选择操作
 
 1.  请按照**文档**并**验证**链接，以查看如何执行这种情况下从 Microsoft 的说明。
 
-    ![Alt text](media\azure-stack-vaas-interactive-feature-verification\image9.png)
+    ![Alt text](media/azure-stack-vaas-interactive-feature-verification/image9.png)
 
 2.  选择“**下一步**”。
 
-    ![Alt text](media\azure-stack-vaas-interactive-feature-verification\image10.png)
+    ![Alt text](media/azure-stack-vaas-interactive-feature-verification/image10.png)
 
 3.  按照运行预检查脚本的说明。
 
-    ![Alt text](media\azure-stack-vaas-interactive-feature-verification\image11.png)
+    ![Alt text](media/azure-stack-vaas-interactive-feature-verification/image11.png)
 
 4.  预检查脚本成功完成后，执行的手动方案 （磁盘更换） 根据**文档**并**验证**的链接从**信息**选项卡。
 
-    ![Alt text](media\azure-stack-vaas-interactive-feature-verification\image12.png)
+    ![Alt text](media/azure-stack-vaas-interactive-feature-verification/image12.png)
 
 5.  执行手动方案时，不要关闭对话框。
 
 6.  在完成执行的手动方案，请按照运行后检查脚本的说明。
 
-    ![Alt text](media\azure-stack-vaas-interactive-feature-verification\image13.png)
+    ![Alt text](media/azure-stack-vaas-interactive-feature-verification/image13.png)
 
 7.  手动方案 （磁盘更换） 的成功完成后，选择**下一步**。
 
-    ![Alt text](media\azure-stack-vaas-interactive-feature-verification\image14.png)
+    ![Alt text](media/azure-stack-vaas-interactive-feature-verification/image14.png)
 
 > [!Important]  
 > 如果关闭窗口，该测试将停止之前完成。
@@ -125,7 +125,7 @@ ms.locfileid: "52265766"
 
 1.  测试完成后，你将需要提供反馈。
 
-    ![Alt text](media\azure-stack-vaas-interactive-feature-verification\image15.png)
+    ![Alt text](media/azure-stack-vaas-interactive-feature-verification/image15.png)
 
 2.  这些问题将有助于 Microsoft 评估成功速率和发布质量的方案。
 
@@ -133,7 +133,7 @@ ms.locfileid: "52265766"
 
 1.  附加你要向 Microsoft 提交任何日志文件。
 
-    ![Alt text](media\azure-stack-vaas-interactive-feature-verification\image16.png)
+    ![Alt text](media/azure-stack-vaas-interactive-feature-verification/image16.png)
 
 2.  接受反馈提交最终用户许可协议。
 

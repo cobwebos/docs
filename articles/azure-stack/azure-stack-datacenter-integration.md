@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 09/12/2018
 ms.author: jeffgilb
 ms.reviewer: wfayed
-ms.openlocfilehash: 9e5a8cf59d4f1dc47495c5889f8ed4aae64f7ff7
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 3cbe7c1d458e95aa27c51f0d1c9f61326888a5ab
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44720440"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52962675"
 ---
 # <a name="datacenter-integration-considerations-for-azure-stack-integrated-systems"></a>有关 Azure Stack 集成系统的数据中心集成注意事项
 如果你对 Azure Stack 集成系统感兴趣，应了解一些有关部署的重要规划注意事项，及系统如何融入数据中心。 本文提供这些注意事项的综合概述，帮助你在 Azure Stack 多节点系统方面做出重要的基础结构决策。 配合 OEM 硬件供应商将 Azure Stack 部署到数据中心时，了解这些注意事项会有所帮助。  
@@ -57,7 +57,7 @@ Azure Stack 是一个密封的系统，从权限和网络角度来看，其基�
 
 标识提供者选项与租户虚拟机、标识系统及其使用的帐户、它们能否加入 Active Directory 域等因素无关。两者是彼此独立的。
 
-可以在 [Azure Stack 集成系统连接模型](.\azure-stack-connection-models.md)一文中详细了解如何选择标识提供者。
+可以在 [Azure Stack 集成系统连接模型](./azure-stack-connection-models.md)一文中详细了解如何选择标识提供者。
 
 ### <a name="ad-fs-and-graph-integration"></a>AD FS 与 Graph 集成
 如果选择将 AD FS 作为标识提供者来部署 Azure Stack，必须通过联合信任将 Azure Stack 上的 AD FS 实例与现有的 AD FS 实例集成。 这样，现有 Active Directory 林中的标识便可以对 Azure Stack 中的资源进行身份验证。
@@ -191,7 +191,7 @@ Azure Stack 不备份租户应用程序和数据。 必须针对 Azure Stack 的
 
 若要备份 Linux 或 Windows IaaS 虚拟机，必须使用有权访问来宾操作系统的备份产品来保护文件、文件夹、操作系统状态和应用程序数据。 可以使用 Azure 备份、System Center Data Center Protection Manager 或支持的第三方产品。
 
-在发生灾难时，若要将数据复制到辅助位置并协调应用程序故障转移，可以使用 Azure Site Recovery 或支持的第三方产品。 此外，支持本机复制，例如 Microsoft SQL Server 的应用程序可以将数据复制到运行该应用程序的另一个位置。
+在发生灾难时，若要将数据复制到辅助位置并协调应用程序故障转移，可以使用 Azure Site Recovery 或支持的第三方产品。 此外，支持本机复制的应用程序（例如 Microsoft SQL Server）可将数据复制到正在运行应用程序的另一个位置。
 
 ## <a name="learn-more"></a>了解详细信息
 

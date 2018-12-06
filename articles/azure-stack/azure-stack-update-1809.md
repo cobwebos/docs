@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/23/2018
+ms.date: 12/05/2018
 ms.author: sethm
 ms.reviewer: justini
-ms.openlocfilehash: 9afce9c6d4ed4d6dc6fbe5bcfcfedc33bdd7cfdf
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: bcb135e19796bcab8a8e06e3c1896b247188a58c
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52314658"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52970835"
 ---
 # <a name="azure-stack-1809-update"></a>Azure Stack 1809 更新
 
@@ -57,7 +57,7 @@ Azure Stack 1809 更新内部版本号是**1.1809.0.90**。
 <!-- TBD - IS ASDK --> 
 - 修复了在其中你在 Azure Stack 用户门户中，创建虚拟机，并在门户显示可以将附加到 DS 系列 VM 的数据磁盘数目不正确的问题。 DS 系列 VM 可以容纳的数据磁盘数取决于 Azure 配置。
 
-- 以下的托管的磁盘问题固定的中 1809，而且还修复中 1808年[Azure Stack 修补程序 1.1808.5.110](https://support.microsoft.com/help/4468920/): 
+- 以下的托管的磁盘问题固定的中 1809，而且还修复中 1808年[Azure Stack 修补程序 1.1808.9.117](https://support.microsoft.com/help/4481066/): 
 
    <!--  2966665 – IS, ASDK --> 
    - 在为高级托管的磁盘的虚拟机 （DS、 DSv2、 Fs、 Fs_V2） 失败，出现错误的大小的附加 SSD 数据磁盘中修复的问题：*未能更新虚拟机 vmname 错误的磁盘： 无法执行操作，因为请求的存储帐户类型 Premium_LRS 不支持的 VM 大小 Standard_DS/Ds_V2/FS/Fs_v2)*。 
@@ -78,14 +78,14 @@ Azure Stack 1809 更新内部版本号是**1.1809.0.90**。
       1. 在租户门户中转到“订阅”，找到相应订阅。 依次单击“资源提供程序”、“Microsoft.Compute”、“重新注册”。
       2. 在同一订阅下，转到“访问控制(标识和访问管理)”，验证“Azure Stack - 托管磁盘”是否已列出。
    2. 如果已配置多租户环境，在与来宾目录相关联的订阅中部署 VM 可能会失败并出现内部错误消息。 若要解决该错误，请执行以下步骤：
-      1. 应用 [1808 Azure Stack 修补程序](https://support.microsoft.com/help/4471992)。
+      1. 应用 [1808 Azure Stack 修补程序](https://support.microsoft.com/help/4481066)。
       2. 执行[此文](azure-stack-enable-multitenancy.md#registering-azure-stack-with-the-guest-directory)中的步骤，重新配置每个来宾目录。
 
 
 ### <a name="changes"></a>更改
 
 <!-- 2635202 - IS, ASDK -->
-- 基础结构备份服务将从移[公钥基础结构网络](https://docs.microsoft.com/en-us/azure/azure-stack/azure-stack-network#public-infrastructure-network)到[公共 VIP 网络](https://docs.microsoft.com/en-us/azure/azure-stack/azure-stack-network#public-vip-network)。 客户将需要确保该服务具有公共 VIP 网络中访问备份存储位置。  
+- 基础结构备份服务将从移[公钥基础结构网络](https://docs.microsoft.com/azure/azure-stack/azure-stack-network#public-infrastructure-network)到[公共 VIP 网络](https://docs.microsoft.com/azure/azure-stack/azure-stack-network#public-vip-network)。 客户将需要确保该服务具有公共 VIP 网络中访问备份存储位置。  
 
 > [!IMPORTANT]  
 > 如果您不允许公共 VIP 网络中的连接到文件服务器的防火墙，此更改将导致基础结构备份失败，"错误 53 找不到的网络路径。" 这是一项重大更改具有合理的解决方法。 根据客户反馈，Microsoft 将恢复此修补程序中的更改。 请查看[发布更新步骤一节](#post-update-steps)有关 1809年上可用的修补程序详细信息。 可用修补程序后，请确保将其应用更新到 1809年，仅当您的网络策略不允许访问基础结构资源的公共 VIP 网络后。 在 1811，此更改将应用于所有系统。 如果在 1809年应用修补程序，则无需任何进一步操作。  
@@ -143,7 +143,7 @@ Azure Stack 1809 更新内部版本号是**1.1809.0.90**。
 
 ### <a name="prerequisites"></a>必备组件
 
-- 为 1808年应用 1809年之前安装最新的 Azure Stack 修补程序。 有关详细信息，请参阅[KB 4471992 – Azure Stack 修补程序 Azure Stack 修补程序 1.1808.7.113](https://support.microsoft.com/help/4471992/)。
+- 为 1808年应用 1809年之前安装最新的 Azure Stack 修补程序。 有关详细信息，请参阅[KB 4481066 – Azure Stack 修补程序 Azure Stack 修补程序 1.1808.9.117](https://support.microsoft.com/help/4481066/)。
 
   > [!TIP]  
   > 订阅下述 *RRS* 或 *Atom* 源，了解 Azure Stack 修补程序的最新更新：

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 11/05/2018
 ms.author: jeffgilb
 ms.reviewer: hectorl
-ms.openlocfilehash: bd72abd4f8f23414ea1003c74d2f90cde3b51d34
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: 326fd38f7cb738540a389c93de2a9b5be015e0d7
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51034331"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52968726"
 ---
 # <a name="recover-from-catastrophic-data-loss"></a>在发生灾难性数据丢失后进行恢复
 
@@ -40,11 +40,11 @@ Azure Stack 在数据中心内运行 Azure 服务。 运行 Azure Stack 的环�
 
 保护 Azure Stack 的过程从分别备份基础结构和应用/租户数据开始。 本文档介绍了如何保护基础结构。 
 
-![Azure Stack 的初始部署](media\azure-stack-backup\azure-stack-backup-workflow1.png)
+![Azure Stack 的初始部署](media/azure-stack-backup/azure-stack-backup-workflow1.png)
 
 在所有数据均丢失的最差情形方案中，恢复 Azure Stack 是还原与 Azure Stack 部署相关的基础结构数据和所有用户数据的过程。 
 
-![重新部署 Azure Stack](media\azure-stack-backup\azure-stack-backup-workflow2.png)
+![重新部署 Azure Stack](media/azure-stack-backup/azure-stack-backup-workflow2.png)
 
 ## <a name="restore"></a>还原
 

@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 09/26/2018
 ms.author: mabrigg
 ms.reviewer: Anjay.Ajodha
-ms.openlocfilehash: 8c947e2effab84b17ea88623695e0a6b0d020d0f
-ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
+ms.openlocfilehash: 7c92b2a060e73484b73a60f9215425cba40ea3f1
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52285112"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52966715"
 ---
 # <a name="tutorial-create-an-edge-machine-learning-solution-with-azure-and-azure-stack"></a>教程： 创建边缘机器学习使用 Azure 和 Azure Stack 解决方案
 
@@ -163,23 +163,23 @@ ms.locfileid: "52285112"
 
 10. 选择“创建”以创建存储帐户。
 
-    ![Alt text](\media\azure-stack-solution-machine-learning\image1.png)
+    ![Alt text](/media/azure-stack-solution-machine-learning/image1.png)
 
 11.  选择最近创建的存储帐户。
 
 12.  选择上**Blob**。
 
-    ![Alt text](media\azure-stack-solution-machine-learning\image2.png)
+    ![Alt text](media/azure-stack-solution-machine-learning/image2.png)
 
 13.  选择上 **+ 容器**，然后选择上**容器**。
 
-    ![Alt text](media\azure-stack-solution-machine-learning\image3.png)
+    ![Alt text](media/azure-stack-solution-machine-learning/image3.png)
 
 14.  为容器名称**uploadeddata** ，然后选择访问类型**容器**。
 
 15.  选择上**创建**。
 
-    ![Alt text](media\azure-stack-solution-machine-learning\image4.png)
+    ![Alt text](media/azure-stack-solution-machine-learning/image4.png)
 
 ## <a name="step-2-create-a-data-science-virtual-machine"></a>步骤 2： 创建数据科学虚拟机
 
@@ -189,11 +189,11 @@ ms.locfileid: "52285112"
 
 2.  选择上 **+ 新建**链接，然后搜索"数据科学虚拟机适用于 Linux Ubuntu CSP
 
-    ![Alt text](media\azure-stack-solution-machine-learning\image5.png)
+    ![Alt text](media/azure-stack-solution-machine-learning/image5.png)
 
 1.  选择**适用于 Linux (Ubuntu) 的数据科学虚拟机**在列表中，按照屏幕说明创建 DSVM。
 
-    ![Alt text](media\azure-stack-solution-machine-learning\image6.png)
+    ![Alt text](media/azure-stack-solution-machine-learning/image6.png)
 
 > ![重要]  
 > **选择**密码 * * 作为*身份验证类型*。
@@ -268,19 +268,19 @@ Azure 机器学习服务（预览版）是集成式的端到端数据科学和�
 
 1.  登录到[Azure 门户](https://portal.azure.com/)使用 Azure 订阅的凭据来使用。 若要获取 Azure 订阅，创建[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-    ![Alt text](media\azure-stack-solution-machine-learning\image7.png)
+    ![Alt text](media/azure-stack-solution-machine-learning/image7.png)
 
 1.  选择门户左上角的“创建资源”按钮 (+)。
 
-    ![在 Azure 门户中创建资源](media\azure-stack-solution-machine-learning\image8.png)
+    ![在 Azure 门户中创建资源](media/azure-stack-solution-machine-learning/image8.png)
 
 1.  在搜索栏中输入“机器学习”。 选择名为“机器学习试验(预览版)”的搜索结果。
 
-    ![Azure 机器学习搜索](media\azure-stack-solution-machine-learning\image9.png)
+    ![Azure 机器学习搜索](media/azure-stack-solution-machine-learning/image9.png)
 
 1.  在中**机器学习试验**窗格中，滚动到底部，选择**创建**，开始定义试验帐户。
 
-    ![Azure 机器学习 - 创建试验帐户](media\azure-stack-solution-machine-learning\image10.png)
+    ![Azure 机器学习 - 创建试验帐户](media/azure-stack-solution-machine-learning/image10.png)
 
 1.  在中**机器学习试验**窗格配置机器学习试验帐户。
 
@@ -299,15 +299,15 @@ Azure 机器学习服务（预览版）是集成式的端到端数据科学和�
     | 模型管理定价层 | **DEVTEST** | 选择**未选择定价层**以指定新的模型管理帐户的定价层。 为了节省成本，如果订阅 （有限可用性） 上选择开发测试定价层。 否则，请选择 S1 定价层。 选择选择要保存所选定价层。 |
     | 固定到仪表板 | 对号 | 选择**固定到仪表板**选项，可以轻松地跟踪在 Azure 门户的前端仪表板页上的机器学习试验帐户。 |
 
-    ![机器学习试验帐户配置](media\azure-stack-solution-machine-learning\image11.png)
+    ![机器学习试验帐户配置](media/azure-stack-solution-machine-learning/image11.png)
 
 1.  选择“创建”，开始试验帐户和模型管理帐户的创建过程。
 
-    ![机器学习试验帐户配置](media\azure-stack-solution-machine-learning\image12.png)
+    ![机器学习试验帐户配置](media/azure-stack-solution-machine-learning/image12.png)
 
     可能需要一些时间来创建帐户。 通过选择 Azure 门户工具栏上的通知图标 （铃铛） 检查部署过程的状态。
 
-    ![Azure 门户中的通知](media\azure-stack-solution-machine-learning\image13.png)
+    ![Azure 门户中的通知](media/azure-stack-solution-machine-learning/image13.png)
 
 ### <a name="install-and-log-in-to-workbench"></a>安装并登录到 workbench 
 
@@ -349,7 +349,7 @@ Azure Machine Learning Workbench 适用于 Windows 或 macOS。 请参阅[支持
 
 1.  在“项目”窗格中选择加号 (+)，然后选择“新建项目”。
 
-    ![新建工作区](media\azure-stack-solution-machine-learning\image14.png)
+    ![新建工作区](media/azure-stack-solution-machine-learning/image14.png)
 
 1.  填充各窗体字段，然后选择“创建”按钮在 Workbench 中创建新项目。
 
@@ -362,11 +362,11 @@ Azure Machine Learning Workbench 适用于 Windows 或 macOS。 请参阅[支持
     | 所选工作区 | IrisGarden（如果存在） | 选择在 Azure 门户中的试验帐户创建一个工作区。 <br>使用快速入门，列出了此工作区的 IrisGarden 的名称。 否则，使用工作区具有试验帐户的名称或首选的帐户名称。 |
     | 项目模板 | 鸢尾花分类 | 模板包含脚本和用于浏览产品数据。 此模板包含脚本和此文档站点中，对于本快速入门和其他教程所需数据。 |
 
-    ![新建项目](media\azure-stack-solution-machine-learning\image15.png)
+    ![新建项目](media/azure-stack-solution-machine-learning/image15.png)
 
 1.  此时会创建新的项目，并会打开包含该项目的项目仪表板。 浏览项目主页、 数据源、 笔记本和源代码文件。
 
-    ![打开项目](media\azure-stack-solution-machine-learning\image16.png)
+    ![打开项目](media/azure-stack-solution-machine-learning/image16.png)
 
 ### <a name="attach-a-dsvm-compute-target"></a>附加 DSVM 计算目标
 
@@ -374,7 +374,7 @@ Azure Machine Learning Workbench 适用于 Windows 或 macOS。 请参阅[支持
 
 1.  从在 Azure ML Workbench 应用中，启动选择 Azure ML Workbench CLI**文件**->**打开 PowerShell**
 
-    ![Alt text](media\azure-stack-solution-machine-learning\image17.png)
+    ![Alt text](media/azure-stack-solution-machine-learning/image17.png)
 
 1.  一旦提示符打开的 PowerShell，请使用以下命令：
 
@@ -384,19 +384,19 @@ Azure Machine Learning Workbench 适用于 Windows 或 macOS。 请参阅[支持
 
 1.  将看到以下提示：
 
-     ![Alt text](media\azure-stack-solution-machine-learning\image18.png)
+     ![Alt text](media/azure-stack-solution-machine-learning/image18.png)
 
 1.  浏览到提示中所述的站点，然后输入提供的代码。
 
-    ![Alt text](media\azure-stack-solution-machine-learning\image19.png)
+    ![Alt text](media/azure-stack-solution-machine-learning/image19.png)
 
 1.  选择继续出现提示时，然后选择与关联的 Azure 机器学习试验帐户的 Azure 帐户。
 
-    ![Alt text](media\azure-stack-solution-machine-learning\image20.png)
+    ![Alt text](media/azure-stack-solution-machine-learning/image20.png)
 
 1.  Azure ML Workbench CLI 随后会发送以下提示：
 
-    ![Alt text](media\azure-stack-solution-machine-learning\image21.png)
+    ![Alt text](media/azure-stack-solution-machine-learning/image21.png)
 
 1.  当机器学习帐户和工作区登录显示为成功时，将附加 DSVM。
 
@@ -406,7 +406,7 @@ Azure Machine Learning Workbench 适用于 Windows 或 macOS。 请参阅[支持
 
     将显示以下通知：
 
-    ![Alt text](media\azure-stack-solution-machine-learning\image22.png)
+    ![Alt text](media/azure-stack-solution-machine-learning/image22.png)
 
     ```PowerShell  
         # prepare the Docker image on the DSVM 
@@ -427,15 +427,15 @@ Azure Machine Learning Workbench 适用于 Windows 或 macOS。 请参阅[支持
 
     该文件包含一个表，表中有 5 列和 50 行。 四列是数字特征列。 第五列是字符串目标列。 没有任何列有标头名称。
 
-    ![iris.csv](media\azure-stack-solution-machine-learning\image23.png)
+    ![iris.csv](media/azure-stack-solution-machine-learning/image23.png)
 
 1.  在“数据视图”中选择加号 (+) ，添加新的数据源。 此时会打开“添加数据源”页。
 
-    ![Azure Machine Learning Workbench 中的数据视图](media\azure-stack-solution-machine-learning\image24.png)
+    ![Azure Machine Learning Workbench 中的数据视图](media/azure-stack-solution-machine-learning/image24.png)
 
 1.  选择**文本文件 (\*.csv \*.json， \*.txt。，...)**.
 
-    ![在 Azure 机器学习 Workbench 中的数据源](media\azure-stack-solution-machine-learning\image25.png)
+    ![在 Azure 机器学习 Workbench 中的数据源](media/azure-stack-solution-machine-learning/image25.png)
 
 1.  选择“**下一步**”。
 
@@ -444,39 +444,39 @@ Azure Machine Learning Workbench 适用于 Windows 或 macOS。 请参阅[支持
     > [!Important]  
     > 选择**iris.csv**对于此练习的当前项目目录内文件。 否则，后续步骤可能会失败。
 
-    ![选择 iris](media\azure-stack-solution-machine-learning\image26.png)
+    ![选择 iris](media/azure-stack-solution-machine-learning/image26.png)
 
 1.  名为的新文件`*iris-1.dsource`创建。 该文件唯一命名`-1`因为示例项目已附带了没有编号**iris.dsource**文件。
 
     此时会打开文件并显示数据。 一系列列标题，从**Column1**到**列 5**，会自动添加到此数据集。 滚动到底部，请注意，空数据集的最后一行。 由于 CSV 文件中额外的换行符是空的行。
 
-    ![Iris 数据视图](media\azure-stack-solution-machine-learning\image27.png)
+    ![Iris 数据视图](media/azure-stack-solution-machine-learning/image27.png)
 
 1.  选择“指标”按钮。 此时会生成并显示直方图。
 
     通过选择切换回数据视图**数据**按钮。
 
-    ![Iris 数据视图](media\azure-stack-solution-machine-learning\image28.png)
+    ![Iris 数据视图](media/azure-stack-solution-machine-learning/image28.png)
 
 1.  观察直方图。 已为每一列计算出一组完整的统计信息。
 
-    ![Iris 数据视图](media\azure-stack-solution-machine-learning\image29.png)
+    ![Iris 数据视图](media/azure-stack-solution-machine-learning/image29.png)
 
 1.  选择“准备”按钮，开始创建数据准备包。 此时会打开“准备”对话框。
 
     示例项目包含**iris.dprep**默认处于选中状态的数据准备文件。
 
-    ![Iris 数据视图](media\azure-stack-solution-machine-learning\image30.png)
+    ![Iris 数据视图](media/azure-stack-solution-machine-learning/image30.png)
 
 1.  通过选择创建新的数据准备包 **+ 新建数据准备包**菜单中。
 
-    ![Iris 数据视图](media\azure-stack-solution-machine-learning\image31.png)
+    ![Iris 数据视图](media/azure-stack-solution-machine-learning/image31.png)
 
 1.  输入一个新值作为包名称（使用 **iris-1**），然后选择“确定”。
 
     新的数据准备包名为**iris-1.dprep**创建并在数据准备编辑器中打开。
 
-    ![Iris 数据视图](media\azure-stack-solution-machine-learning\image32.png)
+    ![Iris 数据视图](media/azure-stack-solution-machine-learning/image32.png)
 
     接下来，需要数据准备。
 
@@ -484,7 +484,7 @@ Azure Machine Learning Workbench 适用于 Windows 或 macOS。 请参阅[支持
 
     按顺序，输入**花萼长度**，**花萼宽度**，**花瓣长度**，**花瓣宽度**，并**物种**在五个列分别。
 
-    ![将列重命名](media\azure-stack-solution-machine-learning\image33.png)
+    ![将列重命名](media/azure-stack-solution-machine-learning/image33.png)
 
 1.  对非重复值计数：
 
@@ -496,23 +496,23 @@ Azure Machine Learning Workbench 适用于 Windows 或 macOS。 请参阅[支持
 
         此时会打开数据下面的“检查器”窗格。 将显示包含四个条形的直方图。 目标列包含四个非重复值： **iris-virginica**， **iris-versicolor**，**iris-setosa**，和一个 **(null)** 值。
 
-    ![选择“值计数”](media\azure-stack-solution-machine-learning\image34.png)
+    ![选择“值计数”](media/azure-stack-solution-machine-learning/image34.png)
 
-    ![值计数直方图](media\azure-stack-solution-machine-learning\image35.png)
+    ![值计数直方图](media/azure-stack-solution-machine-learning/image35.png)
 
 1.  若要筛选掉 null 值，请选择“(null)”栏，然后选择减号 (**-**)。
 
     然后，(null) 行变成灰色，表示它已被筛选掉。
 
-    ![筛选掉 null](media\azure-stack-solution-machine-learning\image36.png)
+    ![筛选掉 null](media/azure-stack-solution-machine-learning/image36.png)
 
 1.  注意“步骤”窗格中详述的各个数据准备步骤。 在列已重命名和筛选 null 值行，每个操作是作为数据准备步骤记录。 编辑各个步骤以调整其设置、 为步骤重新排序以及删除步骤。
 
-    ![Alt text](media\azure-stack-solution-machine-learning\image37.png)
+    ![Alt text](media/azure-stack-solution-machine-learning/image37.png)
 
 1.  关闭数据准备编辑器。 选择带图标的“iris-1”选项卡上的 x 图标，将该选项卡关闭。工作会自动保存到**iris-1.dprep**文件中所示**数据准备**标题。
 
-    ![关闭](media\azure-stack-solution-machine-learning\image38.png)
+    ![关闭](media/azure-stack-solution-machine-learning/image38.png)
 
 ### <a name="generate-python-code-to-invoke-a-data-preparation-package"></a>生成可调用数据准备包的 Python 代码
 
@@ -522,7 +522,7 @@ Azure Machine Learning Workbench 适用于 Windows 或 macOS。 请参阅[支持
 
 2.  右键单击 **iris-1.dprep** 文件，然后从上下文菜单中选择“生成数据访问代码文件”。
 
-    ![生成代码](media\azure-stack-solution-machine-learning\image39.png)
+    ![生成代码](media/azure-stack-solution-machine-learning/image39.png)
 
     名为的新文件**iris 1.py**打开包含以下用于调用以数据准备包形式创建的逻辑的代码行：
 
@@ -552,18 +552,18 @@ Azure Machine Learning Workbench 适用于 Windows 或 macOS。 请参阅[支持
 
 1.  在打开的项目中，选择**文件**上最左侧窗格中，打开项目文件夹中的文件列表的按钮 （文件夹图标）。
 
-    ![打开 Azure Machine Learning Workbench 项目](media\azure-stack-solution-machine-learning\image40.png)
+    ![打开 Azure Machine Learning Workbench 项目](media/azure-stack-solution-machine-learning/image40.png)
 
 1.  选择 **iris_sklearn.py** Python 脚本文件。
 
-    ![选择脚本](media\azure-stack-solution-machine-learning\image41.png)
+    ![选择脚本](media/azure-stack-solution-machine-learning/image41.png)
 
     代码随即会在 Workbench 中的新文本编辑器选项卡中打开。
 
     > [!Note]  
     > 显示的代码可能不是完全与前面的代码相同因为此示例项目经常更新。
 
-    ![打开文件](media\azure-stack-solution-machine-learning\image42.png)
+    ![打开文件](media/azure-stack-solution-machine-learning/image42.png)
 
 1.  检查 Python 脚本代码，以便熟悉编码样式。
 
@@ -615,31 +615,31 @@ Azure Machine Learning Workbench 适用于 Windows 或 macOS。 请参阅[支持
 
 2.  找到名为 **iris_sklearn.py** 的选项卡。
 
-    ![通过脚本查找选项卡](media\azure-stack-solution-machine-learning\image43.png)
+    ![通过脚本查找选项卡](media/azure-stack-solution-machine-learning/image43.png)
 
 1.  在该选项卡的工具栏中，选择**本地**作为执行环境，andiris_sklearn.pyas 要运行的脚本。 这些可能已被选中了。
 
-    ![Alt text](media\azure-stack-solution-machine-learning\image44.png)
+    ![Alt text](media/azure-stack-solution-machine-learning/image44.png)
 
 1.  将移动到右侧的工具栏和 enter0.01in**自变量**字段。
 
     此值对应于逻辑回归模型的正则化率。
 
-    ![本地和脚本选择](media\azure-stack-solution-machine-learning\image45.png)
+    ![本地和脚本选择](media/azure-stack-solution-machine-learning/image45.png)
 
 1.  选择“运行”按钮。 随后会立即计划一个作业。 该作业列在 Workbench 窗口右侧的“作业”窗格中。
 
-    ![本地和脚本选择](media\azure-stack-solution-machine-learning\image46.png)
+    ![本地和脚本选择](media/azure-stack-solution-machine-learning/image46.png)
 
     从作业的状态转换几分钟后**正在提交**给**运行**，最后到**已完成**。
 
 1.  在“作业”窗格的作业状态文本中选择“已完成”。
 
-    ![运行 sklearn](media\azure-stack-solution-machine-learning\image47.png)
+    ![运行 sklearn](media/azure-stack-solution-machine-learning/image47.png)
 
     弹出窗口将打开并显示运行的标准输出 (stdout) 文本。 若要关闭 stdout 文本，请选择**关闭**(**x**) 上的弹出窗口右上角的按钮。
 
-    ![标准输出](media\azure-stack-solution-machine-learning\image48.png)
+    ![标准输出](media/azure-stack-solution-machine-learning/image48.png)
 
 1.  在中的同一作业状态**作业**窗格中，选择蓝色文本 **iris_sklearn.py \[n\] **(* n * 为运行的编号) 正上方**完成**状态和开始时间。 此时会打开“运行属性”窗口，显示该特定运行的以下信息：
 
@@ -701,13 +701,13 @@ Azure Machine Learning Workbench 适用于 Windows 或 macOS。 请参阅[支持
 
 1.  若要打开“运行”列表，请选择左侧工具栏上的“运行”按钮（时钟图标）。 然后选择**iris_sklearn.py**以显示**运行仪表板**ofiris_sklearn.py。
 
-    ![“运行”视图](media\azure-stack-solution-machine-learning\image49.png)
+    ![“运行”视图](media/azure-stack-solution-machine-learning/image49.png)
 
 1.  此时会打开“运行仪表板”选项卡。
 
     查看在多个运行中捕获的统计信息。 图形呈现在选项卡的顶部。每个运行都有一个连续的数值，并在屏幕底部的表中列出了运行详细信息。
 
-    ![“运行”仪表板](media\azure-stack-solution-machine-learning\image50.png)
+    ![“运行”仪表板](media/azure-stack-solution-machine-learning/image50.png)
 
 1.  筛选该表，然后选择任意图形，查看每个运行的状态、持续时间、准确性和正则化率。
 
@@ -715,11 +715,11 @@ Azure Machine Learning Workbench 适用于 Windows 或 macOS。 请参阅[支持
 
 3.  若要返回到“运行仪表板”，请选择“比较”窗格左上角的“运行列表”后退按钮。
 
-    ![返回到“运行”列表](media\azure-stack-solution-machine-learning\image51.png)
+    ![返回到“运行”列表](media/azure-stack-solution-machine-learning/image51.png)
 
 1.  选择单个运行，查看运行详细信息视图。 请注意，所选运行的统计信息列在“运行属性”部分。 写入到输出文件夹中的文件中列出**输出**部分，并从该处下载文件。
 
-    ![运行详细信息](media\azure-stack-solution-machine-learning\image52.png)
+    ![运行详细信息](media/azure-stack-solution-machine-learning/image52.png)
 
 “视觉对象”部分呈现了两个绘图：混淆矩阵和多类 ROC 曲线。 还可以在“日志”部分中找到所有日志文件。
 
@@ -840,13 +840,13 @@ Azure Machine Learning Workbench 适用于 Windows 或 macOS。 请参阅[支持
 
     选择左侧窗格中的文件夹图标，列出项目文件。  打开名为 **run.py** 的 Python 脚本。 此脚本可用于循环通过各种正则化率。 
 
-    ![返回运行列表](media\azure-stack-solution-machine-learning\image53.png)
+    ![返回运行列表](media/azure-stack-solution-machine-learning/image53.png)
 
 1.  使用这些正则化率多次运行试验。
 
     此脚本首先` aniris_sklearn.pyjob`与正则化率 o `10.0` （数字过大）。 该脚本然后剪切速率到一半人员位于以下运行，，依此类推，直到速率不小于`0.005`。 脚本包含以下代码：
 
-    ![返回到“运行”列表](media\azure-stack-solution-machine-learning\image54.png)
+    ![返回到“运行”列表](media/azure-stack-solution-machine-learning/image54.png)
 
 1.  从命令行运行 **run.py** 脚本，如下所示：
 
@@ -906,7 +906,7 @@ Azure Machine Learning Workbench 适用于 Windows 或 macOS。 请参阅[支持
 
     3. 此时会打开“运行属性”窗格。 在窗格的右上部分中，请注意**输出**部分。 有。 若要下载 pickle 文件，选中的复选框旁边**model.pkl**文件，并选择**下载**。 将文件保存到项目文件夹的根目录。 后续步骤中需要该文件。  
 
-    ![下载 pickle 文件](media\azure-stack-solution-machine-learning\image55.png)
+    ![下载 pickle 文件](media/azure-stack-solution-machine-learning/image55.png)
 
 ### <a name="get-scoring-script-and-schema-files"></a>获取评分脚本和架构文件
 
@@ -918,7 +918,7 @@ Azure Machine Learning Workbench 适用于 Windows 或 macOS。 请参阅[支持
 
 3.  选择 score_iris.py 文件。 此时会打开 Python 脚本。 此文件用作评分文件。
 
-    ![评分文件](media\azure-stack-solution-machine-learning\image56.png)
+    ![评分文件](media/azure-stack-solution-machine-learning/image56.png)
 
 1.  若要获取架构文件，请运行该脚本。 在命令栏中选择 local 环境和 score_iris.py 脚本，然后选择“运行”。
 
@@ -1040,7 +1040,7 @@ Azure Machine Learning Workbench 适用于 Windows 或 macOS。 请参阅[支持
 
     确保"Provisioning State"具有值"Succeeded"，如所示，在设置步骤 5 中的环境之前：
 
-    ![预配状态](media\azure-stack-solution-machine-learning\image57.png)
+    ![预配状态](media/azure-stack-solution-machine-learning/image57.png)
 
 1.  设置环境。
 
@@ -1160,7 +1160,7 @@ Azure Machine Learning Workbench 适用于 Windows 或 macOS。 请参阅[支持
     The key fingerprint is: SHA256:lUtUUjzaqWqGeolEPKeBmsnrhcNGM9Dn2OxYatt05SE  <user>@<machine-name>
     The key's randomart image is:  
     ```
-    ![Alt text](media\azure-stack-solution-machine-learning\image58.png)
+    ![Alt text](media/azure-stack-solution-machine-learning/image58.png)
 
 4. 生成密钥之后, 将粘贴在密钥信息使用以下命令： 
     ```Bash
@@ -1217,11 +1217,11 @@ Azure Machine Learning Workbench 适用于 Windows 或 macOS。 请参阅[支持
 
 9.  选择“+新建” > “计算” > “Kubernetes 群集”。 选择“创建”。
 
-    ![部署解决方案模板](media\azure-stack-solution-machine-learning\image59.png)
+    ![部署解决方案模板](media/azure-stack-solution-machine-learning/image59.png)
 
 10\。 在“创建 Kubernetes 群集”中选择“基本设置”。
 
-    ![Deploy Solution Template](media\azure-stack-solution-machine-learning\image60.png)
+    ![Deploy Solution Template](media/azure-stack-solution-machine-learning/image60.png)
 
 11. 输入 **Linux VM 管理员用户名**。 构成 Kubernetes 群集和 DVM 的 Linux 虚拟机的用户名。
 
@@ -1250,7 +1250,7 @@ Azure Machine Learning Workbench 适用于 Windows 或 macOS。 请参阅[支持
 
 1.  选择“Azure Stack 戳设置”。
 
-    ![部署解决方案模板](media\azure-stack-solution-machine-learning\image61.png)
+    ![部署解决方案模板](media/azure-stack-solution-machine-learning/image61.png)
 
 2.  输入**租户 Azure 资源管理器终结点**。 这是在连接后即可为 Kubernetes 群集创建资源组的 Azure 资源管理器终结点。 对于集成系统需要从 Azure Stack 操作员的终结点。 为 Azure Stack 开发工具包 (ASDK)，使用`https://management.local.azurestack.external`。
 
@@ -1356,7 +1356,7 @@ sudo cat  /var/lib/waagent/custom-script/download/0/acs-engine/_output/edgemlsta
 
 （请参阅下面的输出），将定义 Kubernetes 配置设置。
 
-![Alt text](media\azure-stack-solution-machine-learning\image62.png)
+![Alt text](media/azure-stack-solution-machine-learning/image62.png)
 
 启动本地代理服务：
 
@@ -1366,19 +1366,19 @@ kubectl proxy
 
 浏览到 kubernetes 群集 UI 在以下地址： `https://localhost:8001`。
 
-![Alt text](media\azure-stack-solution-machine-learning\image63.png)
+![Alt text](media/azure-stack-solution-machine-learning/image63.png)
 
 现在，已部署容器，并位于云中，您可以看到在本地的容器的位置。
 
-![Alt text](media\azure-stack-solution-machine-learning\image64.png)
+![Alt text](media/azure-stack-solution-machine-learning/image64.png)
 
 自定义**iris_deployment.yaml**文件 (位于 /*mnt/c/用户/<current user>/文档/Kube 目录*) 以便**webservicename**和容器**图像**并**名称**匹配部署，使用选择的任何代码编辑器。
 
-![Alt text](media\azure-stack-solution-machine-learning\image65.png)
+![Alt text](media/azure-stack-solution-machine-learning/image65.png)
 
 将容器端口设置为**5001。**
 
-![Alt text](media\azure-stack-solution-machine-learning\image66.png)
+![Alt text](media/azure-stack-solution-machine-learning/image66.png)
 
 然后创建**imagePullSecret**:
 
@@ -1409,7 +1409,7 @@ kubectl create secret docker-registry azuremlcr --docker-server=<your-registry-s
 kubectl.exe create -f /mnt/c/users/<current  user>/documents/Kube/iris_deployment.yaml
 ```
 
-    ![Alt text](media\azure-stack-solution-machine-learning\image67.png)
+    ![Alt text](media/azure-stack-solution-machine-learning/image67.png)
 
 检查部署状态：
 
@@ -1417,7 +1417,7 @@ kubectl.exe create -f /mnt/c/users/<current  user>/documents/Kube/iris_deploymen
 Kubectl get deployments
 ```
 
-    ![Alt text](media\azure-stack-solution-machine-learning\image68.png)
+    ![Alt text](media/azure-stack-solution-machine-learning/image68.png)
 
 部署可能需要一些时间。
 
@@ -1429,7 +1429,7 @@ Kubectl get deployments
 
 2.  从项目页上，选择**新的项目**。
 
-    ![Alt text](media\azure-stack-solution-machine-learning\image69.png)
+    ![Alt text](media/azure-stack-solution-machine-learning/image69.png)
 
 1.  将项目命名**HybridMLIris**。
 
@@ -1437,7 +1437,7 @@ Kubectl get deployments
 
 3.  选择进程并选择**创建**。
 
-    ![Alt text](media\azure-stack-solution-machine-learning\image70.png)
+    ![Alt text](media/azure-stack-solution-machine-learning/image70.png)
 
 ### <a name="import-some-code--create-repository"></a>导入一些代码创建存储库
 
@@ -1447,15 +1447,15 @@ Kubectl get deployments
 
 1.  从默认项目面板中，选择生成 Git 凭据。
 
-    ![Alt text](media\azure-stack-solution-machine-learning\image71.png)
+    ![Alt text](media/azure-stack-solution-machine-learning/image71.png)
 
 1.  所需和保存 Git 凭据的位置，请输入密码。
 
-    ![Alt text](media\azure-stack-solution-machine-learning\image72.png)
+    ![Alt text](media/azure-stack-solution-machine-learning/image72.png)
 
 1.  通过选择初始化存储库**初始化**按钮，创建**自述文件**文件。
 
-    ![Alt text](media\azure-stack-solution-machine-learning\image73.png)
+    ![Alt text](media/azure-stack-solution-machine-learning/image73.png)
 
 #### <a name="clone-the-git-repository-locally-and-upload-the-code"></a>本地 Git 存储库克隆并上传代码。 
 
@@ -1465,7 +1465,7 @@ Kubectl get deployments
     sudo mkdir /mnt/c/users/<User>/source sudo mkdir /mnt/c/users/<User>/source/repos sudo mkdir /mnt/c/users/<User>/source/repos/hybridMLIris cd /mnt/c/users/<User>/source/repos/hybridMLIris sudo git clone  https://<yourvstssite>.visualstudio.com/HybridMLIris/_git/HybridMLIris
     ```
 
-    ![Alt text](media\azure-stack-solution-machine-learning\image74.png)
+    ![Alt text](media/azure-stack-solution-machine-learning/image74.png)
 
 1.  导航到新克隆存储库：
 
@@ -1474,7 +1474,7 @@ Kubectl get deployments
     cd ./HybridMLIris
     ```
     
-    ![Alt text](media\azure-stack-solution-machine-learning\image75.png)
+    ![Alt text](media/azure-stack-solution-machine-learning/image75.png)
 
 1.  复制**iris_deployment.yaml**进入存储库的文件。
 
@@ -1488,7 +1488,7 @@ Kubectl get deployments
     git add . git commit -m Added Deployment YAML git push
     ```
 
-    ![Alt text](media\azure-stack-solution-machine-learning\image76.png)
+    ![Alt text](media/azure-stack-solution-machine-learning/image76.png)
 
 ### <a name="prepare-the-private-build-and-release-agent-for-vsts-integration"></a>为 VSTS 集成准备专用生成和发布代理
 
@@ -1514,27 +1514,27 @@ VSTS 进行身份验证针对 Azure 资源管理器使用服务主体。 VSTS �
 
 1.  从**应用注册**Azure Active Directory 中选择的应用程序。
 
-    ![选择应用程序](media\azure-stack-solution-machine-learning\image77.png)
+    ![选择应用程序](media/azure-stack-solution-machine-learning/image77.png)
 
 1.  请记下的值**应用程序 id。在 VSTS 中配置服务终结点时，使用的值。**
 
-    ![Alt text](media\azure-stack-solution-machine-learning\image78.png)
+    ![Alt text](media/azure-stack-solution-machine-learning/image78.png)
 
 1.  若要生成身份验证密钥，请选择“设置”。
 
-    ![选择“设置”](media\azure-stack-solution-machine-learning\image79.png)
+    ![选择“设置”](media/azure-stack-solution-machine-learning/image79.png)
 
 1.  选择“密钥”。
 
-    ![选择密钥](media\azure-stack-solution-machine-learning\image80.png)
+    ![选择密钥](media/azure-stack-solution-machine-learning/image80.png)
 
 1.  提供密钥说明和密钥持续时间。 完成后，选择“保存”。
 
-    ![保存密钥](media\azure-stack-solution-machine-learning\image81.png)
+    ![保存密钥](media/azure-stack-solution-machine-learning/image81.png)
 
 保存密钥后, 会显示密钥的值。 复制此值，因为稍后需要它。 **键值**与应用程序时需要登录的应用程序 ID。 存储应用程序可在其中检索密钥值。
 
-![Alt text](media\azure-stack-solution-machine-learning\image82.png)
+![Alt text](media/azure-stack-solution-machine-learning/image82.png)
 
 #### <a name="get-tenant-id"></a>获取租户 ID
 
@@ -1542,15 +1542,15 @@ VSTS 服务终结点配置的一部分，需要**租户 ID** ，对应于 Azure 
 
 1.  选择“Azure Active Directory”。
 
-    ![选择 azure active directory](media\azure-stack-solution-machine-learning\image83.png)
+    ![选择 azure active directory](media/azure-stack-solution-machine-learning/image83.png)
 
 1.  若要获取租户 ID，请选择**属性**为 Azure AD 租户。
 
-    ![选择 Azure AD 属性](media\azure-stack-solution-machine-learning\image84.png)
+    ![选择 Azure AD 属性](media/azure-stack-solution-machine-learning/image84.png)
 
 1.  复制“目录 ID”。 此值是租户 id。
 
-    ![租户 ID](media\azure-stack-solution-machine-learning\image85.png)
+    ![租户 ID](media/azure-stack-solution-machine-learning/image85.png)
 
 授予服务主体的权限在 Azure Stack 订阅中部署资源
 
@@ -1560,27 +1560,27 @@ VSTS 服务终结点配置的一部分，需要**租户 ID** ，对应于 Azure 
 
 1.  导航到所需级别的作用域为应用程序分配。 例如，若要在订阅范围内分配角色，选择“订阅”。
 
-    ![Alt text](media\azure-stack-solution-machine-learning\image86.jpeg)
+    ![Alt text](media/azure-stack-solution-machine-learning/image86.jpeg)
 
 1.  选择**订阅**（资源组或资源），为应用程序分配。
 
-    ![选择进行分配的订阅](media\azure-stack-solution-machine-learning\image87.png)
+    ![选择进行分配的订阅](media/azure-stack-solution-machine-learning/image87.png)
 
 1.  选择“访问控制 (IAM)”。
 
-    ![选择访问权限](media\azure-stack-solution-machine-learning\image88.png)
+    ![选择访问权限](media/azure-stack-solution-machine-learning/image88.png)
 
 1.  选择 **添加** 。
 
-    ![选择添加](media\azure-stack-solution-machine-learning\image89.png)
+    ![选择添加](media/azure-stack-solution-machine-learning/image89.png)
 
 1.  选择要为应用程序分配的角色。 下图显示了“所有者”角色。
 
-    ![Alt text](media\azure-stack-solution-machine-learning\image90.png)
+    ![Alt text](media/azure-stack-solution-machine-learning/image90.png)
 
 1.  默认情况下，可用选项中不显示 Azure Active Directory 应用程序。 若要查找的应用程序，**提供的名称**在搜索字段中，选择它。
 
-    ![Alt text](media\azure-stack-solution-machine-learning\image91.png)
+    ![Alt text](media/azure-stack-solution-machine-learning/image91.png)
 
 1.  选择“保存”完成角色分配。 分配给该作用域角色的用户列表中显示的应用程序。
 
@@ -1598,18 +1598,18 @@ Azure 基于角色的访问控制 (RBAC) 可用于对 Azure 和 Azure Stack 的�
 
  -  选择“管理安全性”以访问令牌创建页。
 
-![Alt text](media\azure-stack-solution-machine-learning\image92.png)
+![Alt text](media/azure-stack-solution-machine-learning/image92.png)
 
-![Alt text](media\azure-stack-solution-machine-learning\image93.jpeg)
+![Alt text](media/azure-stack-solution-machine-learning/image93.jpeg)
 
-![Alt text](media\azure-stack-solution-machine-learning\image94.jpeg)
+![Alt text](media/azure-stack-solution-machine-learning/image94.jpeg)
 
 > [!Note]  
 > 获取令牌信息。 退出此屏幕后不再会显示此信息。
 
 1.  复制**令牌**。
 
-    ![Alt text](media\azure-stack-solution-machine-learning\image95.png)
+    ![Alt text](media/azure-stack-solution-machine-learning/image95.png)
 
 #### <a name="install-the-vsts-build-agent-on-the-azure-stack-hosted-build-server"></a>在 Azure Stack 托管的生成服务器上安装 VSTS 生成代理
 
@@ -1660,7 +1660,7 @@ Azure 基于角色的访问控制 (RBAC) 可用于对 Azure 和 Azure Stack 的�
 
 2.  下载并部署生成代理作为服务使用**个人访问令牌 (PAT)** 和 VM 管理员帐户运行。
 
-    ![Alt text](media\azure-stack-solution-machine-learning\image96.png)
+    ![Alt text](media/azure-stack-solution-machine-learning/image96.png)
 
     ```Bash  
         cd \home\<user>
@@ -1678,7 +1678,7 @@ Azure 基于角色的访问控制 (RBAC) 可用于对 Azure 和 Azure Stack 的�
         ./config.sh
     ```
 
-    ![Alt text](media\azure-stack-solution-machine-learning\image97.png)
+    ![Alt text](media/azure-stack-solution-machine-learning/image97.png)
 
 2.  之后 **./config.sh**完成后，请运行以下代码以便在服务器启动服务，并启动服务：
 
@@ -1693,23 +1693,23 @@ VSTS 文件夹中，代理是现在可见。
 
 用户可以创建终结点，使 VSTO 生成能够将 Azure 服务应用部署到堆栈。 VSTS 会连接到生成代理，而后者会连接到 Azure Stack。
 
-![Alt text](media\azure-stack-solution-machine-learning\image98.png)
+![Alt text](media/azure-stack-solution-machine-learning/image98.png)
 
 1.  在“设置”菜单中，选择“安全性”。
 
 2.  在左侧的“VSTS 组”列表中，选择“终结点创建者”。
 
-    ![Alt text](media\azure-stack-solution-machine-learning\image99.png)
+    ![Alt text](media/azure-stack-solution-machine-learning/image99.png)
 
 3.  上**成员选项卡上，** 选择 **+ 添加**。
 
-    ![Alt text](media\azure-stack-solution-machine-learning\image100.png)
+    ![Alt text](media/azure-stack-solution-machine-learning/image100.png)
 
 1.  类型**用户名**并从列表中选择用户名。
 
 2.  选择“保存更改”。
 
-    ![Alt text](media\azure-stack-solution-machine-learning\image101.png)
+    ![Alt text](media/azure-stack-solution-machine-learning/image101.png)
 
 3.  在左侧的“VSTS 组”列表中，选择“终结点管理员”。
 
@@ -1719,13 +1719,13 @@ VSTS 文件夹中，代理是现在可见。
 
 6.  选择**保存更改。**
 
-    ![buchatech](media\azure-stack-solution-machine-learning\image102.jpeg)
+    ![buchatech](media/azure-stack-solution-machine-learning/image102.jpeg)
 
     Azure Stack 中的生成代理会从 VSTS 获取指令，然后，VSTS 会传达与 Azure Stack 通信所需的终结点信息。
 
     从 VSTS 到 Azure Stack 的连接现已准备就绪。
 
-    ![Alt text](media\azure-stack-solution-machine-learning\image103.png)
+    ![Alt text](media/azure-stack-solution-machine-learning/image103.png)
 
 ### <a name="configure-build-and-release-definitions"></a>配置生成和发布定义
 
@@ -1735,61 +1735,61 @@ VSTS 文件夹中，代理是现在可见。
 
 1.  选择生成和发布中心下的生成部分并创建新的定义。
 
-    ![Alt text](media\azure-stack-solution-machine-learning\image104.png)
+    ![Alt text](media/azure-stack-solution-machine-learning/image104.png)
 
 1.  选择 VSTS Git，并选择前面创建的存储库。
 
-    ![Alt text](media\azure-stack-solution-machine-learning\image105.png)
+    ![Alt text](media/azure-stack-solution-machine-learning/image105.png)
 
 1.  选择空管道作为模板
 
-    ![Alt text](media\azure-stack-solution-machine-learning\image106.png)
+    ![Alt text](media/azure-stack-solution-machine-learning/image106.png)
 
 1.  命名生成**复制项目**和选择 Azure Stack 构建服务器的代理队列。
 
-    ![Alt text](media\azure-stack-solution-machine-learning\image107.png)
+    ![Alt text](media/azure-stack-solution-machine-learning/image107.png)
 
 1.  在进程中，选择第 1 阶段和对其重命名**复制项目**，然后**将任务添加**到阶段：
 
-    ![Alt text](media\azure-stack-solution-machine-learning\image108.png)
+    ![Alt text](media/azure-stack-solution-machine-learning/image108.png)
 
 1.  选择**发布生成项目**从**实用工具**列表，然后选择**添加**。
 
-    ![Alt text](media\azure-stack-solution-machine-learning\image109.png)
+    ![Alt text](media/azure-stack-solution-machine-learning/image109.png)
 
 1.  选择**发布路径**，然后选择**iris_deployment.yaml**文件。
 
-    ![Alt text](media\azure-stack-solution-machine-learning\image110.png)
+    ![Alt text](media/azure-stack-solution-machine-learning/image110.png)
 
 1.  命名项目**iris_deployment** ，然后选择要发布位置**Visual Studio Team Services/TFS**。
 
-    ![Alt text](media\azure-stack-solution-machine-learning\image111.png)
+    ![Alt text](media/azure-stack-solution-machine-learning/image111.png)
 
 1.  选择**保存并排队**。
 
-    ![Alt text](media\azure-stack-solution-machine-learning\image112.png)
+    ![Alt text](media/azure-stack-solution-machine-learning/image112.png)
 
 1.  通过选择生成 id。 检查生成的状态
 
-    ![Alt text](media\azure-stack-solution-machine-learning\image113.png)
+    ![Alt text](media/azure-stack-solution-machine-learning/image113.png)
 
 成功将类似于此：
 
-![Alt text](media\azure-stack-solution-machine-learning\image114.png)
+![Alt text](media/azure-stack-solution-machine-learning/image114.png)
 
 #### <a name="create-the-release-definition-for-the-yaml-code"></a>创建发布定义的 YAML 代码
 
 1.  选择版本部分下生成和发布中心，新的定义
 
-    ![Alt text](media\azure-stack-solution-machine-learning\image115.png)
+    ![Alt text](media/azure-stack-solution-machine-learning/image115.png)
 
 1.  为模板选择空管道。
 
-    ![Alt text](media\azure-stack-solution-machine-learning\image106.png)
+    ![Alt text](media/azure-stack-solution-machine-learning/image106.png)
 
 1.  名称的环境 Azure Stack。
 
-    ![Alt text](media\azure-stack-solution-machine-learning\image116.png)
+    ![Alt text](media/azure-stack-solution-machine-learning/image116.png)
 
 1.  通过选择添加新项目**项目**和 **+ 添加**
 
@@ -1799,25 +1799,25 @@ VSTS 文件夹中，代理是现在可见。
 
 4.  然后选择**添加**。
 
-    ![Alt text](media\azure-stack-solution-machine-learning\image117.png)
+    ![Alt text](media/azure-stack-solution-machine-learning/image117.png)
 
 1.  从环境中，选择 Azure Stack，然后将新任务添加到 Azure Stack
 
-    ![Alt text](media\azure-stack-solution-machine-learning\image118.png)
+    ![Alt text](media/azure-stack-solution-machine-learning/image118.png)
 
 
 1.  代理阶段设置到 Azure Stack 托管生成服务器的代理队列。
 
-    ![Alt text](media\azure-stack-solution-machine-learning\image119.png)
+    ![Alt text](media/azure-stack-solution-machine-learning/image119.png)
 
 1.  将新任务添加到此阶段选择部署到 Kubernetes 任务下部署并选择添加。
 
-    ![Alt text](media\azure-stack-solution-machine-learning\image120.png)
+    ![Alt text](media/azure-stack-solution-machine-learning/image120.png)
 
 
 1.  其命名为**Kubectl Apply** （默认名称），然后选择应用命令。
 
-    ![Alt text](media\azure-stack-solution-machine-learning\image121.png)
+    ![Alt text](media/azure-stack-solution-machine-learning/image121.png)
 
     现在，创建新的 Kubernetes 服务连接。
 
@@ -1846,7 +1846,7 @@ VSTS 文件夹中，代理是现在可见。
 
 11. 转到<https://aka.ms/devicelogin>在浏览器中。 出现提示时，输入在 CLI 中，接收到浏览器中的代码。
 
-    ![Kubernetes 服务终结点](media\azure-stack-solution-machine-learning\image122.png)
+    ![Kubernetes 服务终结点](media/azure-stack-solution-machine-learning/image122.png)
 
 1.  若要获取的 Kubernetes 群集的访问凭据在命令提示符处键入以下命令。
 
@@ -1854,20 +1854,20 @@ VSTS 文件夹中，代理是现在可见。
 
 az aks get-credentials 来获取凭据资源组<yourResourceGroup>名称 <yourazurecontainerservice>
 
-![Kubernetes 服务终结点](media\azure-stack-solution-machine-learning\image123.png)
+![Kubernetes 服务终结点](media/azure-stack-solution-machine-learning/image123.png)
 
 1.  导航到 **.kube**的主目录下的文件夹 (例如： c:\\用户\\<user>\\文档\\Kube)
 
 2.  将复制的内容**config**文件，并将其粘贴在 Kubernetes 连接窗口中。 选择**确定**按钮。
 
-    ![Kubernetes 服务终结点](media\azure-stack-solution-machine-learning\image124.png)
+    ![Kubernetes 服务终结点](media/azure-stack-solution-machine-learning/image124.png)
     
 
 3.  一旦创建并选择 Kubernetes 终结点，选择使用配置文件复选框以添加配置文件。 然后浏览到链接的项目中的 iris_deployment.yaml 文件。
 
-    ![Alt text](media\azure-stack-solution-machine-learning\image125.png)
+    ![Alt text](media/azure-stack-solution-machine-learning/image125.png)
 
-    ![Alt text](media\azure-stack-solution-machine-learning\image126.png)
+    ![Alt text](media/azure-stack-solution-machine-learning/image126.png)
 
 4.  保存发布定义。
 
@@ -1883,7 +1883,7 @@ kubectl get deployments
 
 输出应类似于此操作，请在部署过程中。
 
-![Alt text](media\azure-stack-solution-machine-learning\image127.png)
+![Alt text](media/azure-stack-solution-machine-learning/image127.png)
 
 ```Bash  
 kubectl proxy
@@ -1891,7 +1891,7 @@ kubectl proxy
 
 Kubernetes UI 开始运行后，浏览到在部署[ **https://localhost:8001/** ](https://localhost:8001/)然后导航到**工作负荷-> 副本集**。
 
-![Alt text](media\azure-stack-solution-machine-learning\image128.png)
+![Alt text](media/azure-stack-solution-machine-learning/image128.png)
 
 ### <a name="deploy-the-yaml-service"></a>部署 YAML 服务
 
@@ -1903,7 +1903,7 @@ Kubernetes UI 开始运行后，浏览到在部署[ **https://localhost:8001/** 
     cd /mnt/c/users/<User>/source/repos/HybridMLIris/HybridMLIris/
     ```
 
-    ![Alt text](media\azure-stack-solution-machine-learning\image75.png)
+    ![Alt text](media/azure-stack-solution-machine-learning/image75.png)
 
 1.  复制**iris_service.yaml**进入存储库的文件。
 
@@ -1919,21 +1919,21 @@ Kubernetes UI 开始运行后，浏览到在部署[ **https://localhost:8001/** 
     git push
     ```
 
-![Alt text](media\azure-stack-solution-machine-learning\image129.png)
+![Alt text](media/azure-stack-solution-machine-learning/image129.png)
 
 #### <a name="update-the-build-definition-for-the-yaml-code"></a>更新 YAML 代码的生成定义
 
 1.  选择生成和发布中心下的生成部分并选择前面创建的定义。
 
-    ![Alt text](media\azure-stack-solution-machine-learning\image130.png)
+    ![Alt text](media/azure-stack-solution-machine-learning/image130.png)
 
 2.  选择编辑按钮以编辑定义。
 
-    ![Alt text](media\azure-stack-solution-machine-learning\image131.png)
+    ![Alt text](media/azure-stack-solution-machine-learning/image131.png)
 
 3.  **将任务添加**到阶段。 选择**发布生成项目**从**实用工具**列表，然后选择**添加**。
 
-    ![Alt text](media\azure-stack-solution-machine-learning\image108.png)
+    ![Alt text](media/azure-stack-solution-machine-learning/image108.png)
 
 4.  其命名为**Kubectl Apply** （默认名称），然后选择应用命令。
 
@@ -1943,26 +1943,26 @@ Kubernetes UI 开始运行后，浏览到在部署[ **https://localhost:8001/** 
 
 1.  选择下生成和发布中心 theReleases 部分并选择前面创建的发布定义。 然后选择编辑链接。
 
-    ![Alt text](media\azure-stack-solution-machine-learning\image132.png)
+    ![Alt text](media/azure-stack-solution-machine-learning/image132.png)
 
 1.  选择的环境**Azure Stack**然后将新任务添加到 Azure Stack。
 
-    ![Alt text](media\azure-stack-solution-machine-learning\image133.png)
+    ![Alt text](media/azure-stack-solution-machine-learning/image133.png)
 
 1.  添加**新的任务**到此阶段中，选择**部署到 Kubernetes**任务下**部署**，然后选择**添加**。
 
-    ![Alt text](media\azure-stack-solution-machine-learning\image134.png)
+    ![Alt text](media/azure-stack-solution-machine-learning/image134.png)
 
 1.  其命名为**Kubectl Apply** （默认名称），然后选择应用命令。
 
-    ![Alt text](media\azure-stack-solution-machine-learning\image109.png)
+    ![Alt text](media/azure-stack-solution-machine-learning/image109.png)
 
 1.  为更早版本，创建的 Azure Stack 连接设置 Kubernates 服务连接，然后选择**使用配置文件**复选框以添加配置文件。 浏览到链接的项目中的 iris_service.yaml 文件。
 
-    ![Alt text](media\azure-stack-solution-machine-learning\image135.png)
+    ![Alt text](media/azure-stack-solution-machine-learning/image135.png)
 
 
-    ![Alt text](media\azure-stack-solution-machine-learning\image136.png)
+    ![Alt text](media/azure-stack-solution-machine-learning/image136.png)
 
 1.  保存发布定义。
 
@@ -1978,7 +1978,7 @@ kubectl get deployments
 
 输出应类似于此操作，请在部署过程中。
 
-![Alt text](media\azure-stack-solution-machine-learning\image127.png)
+![Alt text](media/azure-stack-solution-machine-learning/image127.png)
 
 
 ```Bash  
@@ -1987,7 +1987,7 @@ kubectl proxy
 
 Kubernetes UI 开始运行后，浏览到在部署[ **https://localhost:8001/** ](https://localhost:8001/)然后导航到**工作负荷-> 副本集**。
 
-![Alt text](media\azure-stack-solution-machine-learning\image137.png)
+![Alt text](media/azure-stack-solution-machine-learning/image137.png)
 
 
 ### <a name="kubernetes-scoring-and-validation"></a>Kubernetes 评分和验证
@@ -2000,15 +2000,15 @@ kubectl proxy
 
 浏览到 Kubernetes UI，然后转到**部署** -> **鸢尾花部署** -> **新副本设置** ->  **Iris-部署-xxxxxxxxx** （其中 x 是部署 ID）。
 
-![Alt text](media\azure-stack-solution-machine-learning\image138.png)
+![Alt text](media/azure-stack-solution-machine-learning/image138.png)
 
 然后导航到**Services** ，然后选择**外部终结点**要验证的服务的正常工作。
 
-![Alt text](media\azure-stack-solution-machine-learning\image139.png)
+![Alt text](media/azure-stack-solution-machine-learning/image139.png)
 
 应显示一条类似于下面的验证消息：
 
-![Alt text](media\azure-stack-solution-machine-learning\image140.png)
+![Alt text](media/azure-stack-solution-machine-learning/image140.png)
 
 #### <a name="create-azure-stack-scoring-function-app-in-the-azure-stack-portal"></a>创建在 Azure Stack 门户中评分函数应用的 Azure Stack
 
@@ -2016,37 +2016,37 @@ kubectl proxy
 
 1.  从 Azure Stack 用户门户中，选择 **+ 新建**位于左上角的按钮，然后选择**Web + 移动** >**Function App**。
 
-    ![Alt text](media\azure-stack-solution-machine-learning\image141.png)
+    ![Alt text](media/azure-stack-solution-machine-learning/image141.png)
 
 1.  命名函数**数据函数**并将其放在同一资源组使用其余的机器学习内容。 让该工具自动创建一个新的应用服务计划，供使用，并使用前面创建的应用程序存储的存储帐户。
 
-    ![定义新的 function app 设置](media\azure-stack-solution-machine-learning\image142.png)
+    ![定义新的 function app 设置](media/azure-stack-solution-machine-learning/image142.png)
 
 1.  选择**创建**预配和部署函数应用。
 
 2.  在门户的右上角选择通知图标，并观察**部署成功**消息。
 
-    ![定义新的函数应用设置](media\azure-stack-solution-machine-learning\image143.png)
+    ![定义新的函数应用设置](media/azure-stack-solution-machine-learning/image143.png)
 
 1.  选择**转到资源**若要查看新的 function app。
 
-    ![Alt text](media\azure-stack-solution-machine-learning\image144.png)
+    ![Alt text](media/azure-stack-solution-machine-learning/image144.png)
 
 1.  通过选择创建新的函数**函数**，然后 **+ 新建函数**按钮。
 
-    ![Alt text](media\azure-stack-solution-machine-learning\image145.png)
+    ![Alt text](media/azure-stack-solution-machine-learning/image145.png)
 
 1.  选择 HTTP 触发器
 
-    ![Alt text](media\azure-stack-solution-machine-learning\image146.png)
+    ![Alt text](media/azure-stack-solution-machine-learning/image146.png)
 
 1.  选择**C\#** 作为语言，并将函数命名：**清理得分数据**，并将授权级别设置为**Anonymous**。
 
-    ![Alt text](media\azure-stack-solution-machine-learning\image147.png)
+    ![Alt text](media/azure-stack-solution-machine-learning/image147.png)
 
 1.  复制-粘贴到函数清理得分数据的代码示例的内容。
 
-    ![Alt text](media\azure-stack-solution-machine-learning\image148.png)
+    ![Alt text](media/azure-stack-solution-machine-learning/image148.png)
 
 #### <a name="use-postman-to-validate-functions"></a>使用 Postman 来验证函数
 
@@ -2054,39 +2054,39 @@ kubectl proxy
 
 1.  浏览到 Kubernetes UI，然后转到**部署** -> **鸢尾花部署** -> **新副本设置** ->  **Iris-部署-xxxxxxxxx** （其中 x 是部署 ID）
 
-    ![Alt text](media\azure-stack-solution-machine-learning\image138.png)
+    ![Alt text](media/azure-stack-solution-machine-learning/image138.png)
 
 1.  然后导航到**Services**并复制**外部终结点**。
 
-    ![Alt text](media\azure-stack-solution-machine-learning\image149.png)
+    ![Alt text](media/azure-stack-solution-machine-learning/image149.png)
 
 1.  下载并安装 Postman 应用[此处](https://www.getpostman.com/apps)必要。
 
 2.  登录到 Postman 应用并关闭新建文件对话框。
 
-    ![Alt text](media\azure-stack-solution-machine-learning\image150.png)
+    ![Alt text](media/azure-stack-solution-machine-learning/image150.png)
 
 1.  从在 postman 应用中，选择 POST...
 
-    ![Alt text](media\azure-stack-solution-machine-learning\image151.png)
+    ![Alt text](media/azure-stack-solution-machine-learning/image151.png)
 
 1.  粘贴**外部终结点**下的 postman 应用到的 URL**请求 URL**添加**\\分数**到如下所示的 URL 的末尾。
 
-    ![Alt text](media\azure-stack-solution-machine-learning\image152.png)
+    ![Alt text](media/azure-stack-solution-machine-learning/image152.png)
 
 1.  选择**正文**选项卡，然后将数据类型作为**原始**，然后**JSON**。
 
-    ![Alt text](media\azure-stack-solution-machine-learning\image153.png)
+    ![Alt text](media/azure-stack-solution-machine-learning/image153.png)
 
 1.  从 web 浏览器中，导航到**外部终结点**。 将以下内容添加到 URL **/swagger.json**这会导致用来测试安装程序的服务 Swagger 文件。
 
-    ![Alt text](media\azure-stack-solution-machine-learning\image154.png)
+    ![Alt text](media/azure-stack-solution-machine-learning/image154.png)
 
 1.  中列出的示例复制**Swagger.JSON**文件。
 
 2.  在 Postman 应用中，示例粘贴到 Post 正文，然后选择**发送**。 它应返回一个值，类似于如下所示。
 
-    ![Alt text](media\azure-stack-solution-machine-learning\image155.png)
+    ![Alt text](media/azure-stack-solution-machine-learning/image155.png)
 
 ## <a name="step-7-create-an-azure-stack-storage-account-and-storage-queue"></a>步骤 7： 创建 Azure Stack 存储帐户和存储队列
 
@@ -2106,29 +2106,29 @@ kubectl proxy
 
 7.  选择**创建**创建存储帐户。
 
-    ![Alt text](media\azure-stack-solution-machine-learning\image156.png)
+    ![Alt text](media/azure-stack-solution-machine-learning/image156.png)
 
 1.  选择最近创建的存储帐户。
 
 2.  选择上**队列**。
 
-    ![Alt text](media\azure-stack-solution-machine-learning\image157.png)
+    ![Alt text](media/azure-stack-solution-machine-learning/image157.png)
 
 1.  选择上 **+ 队列**并命名队列和选择**确定。**
 
-    ![Alt text](media\azure-stack-solution-machine-learning\image158.png)
+    ![Alt text](media/azure-stack-solution-machine-learning/image158.png)
 
 1.  获取**连接字符串**存储队列并将其复制。
 
-    ![Alt text](media\azure-stack-solution-machine-learning\image159.png)
+    ![Alt text](media/azure-stack-solution-machine-learning/image159.png)
 
 1.  导航到 Azure 函数应用，然后选择**应用程序设置**。
 
-    ![Alt text](media\azure-stack-solution-machine-learning\image160.png)
+    ![Alt text](media/azure-stack-solution-machine-learning/image160.png)
 
 1.  在函数应用的应用程序设置中向下滚动到应用程序设置，然后选择 **+ 添加新设置**。
 
-    ![Alt text](media\azure-stack-solution-machine-learning\image161.png)
+    ![Alt text](media/azure-stack-solution-machine-learning/image161.png)
 
 1.  输入中的存储帐户名称**名称**字段中，在末尾添加; （_s）
 
@@ -2136,11 +2136,11 @@ kubectl proxy
 
 1.  然后粘贴连接字符串**值**字段。
 
-    ![Alt text](media\azure-stack-solution-machine-learning\image162.png)
+    ![Alt text](media/azure-stack-solution-machine-learning/image162.png)
 
 1.  向上滚动到顶部的应用程序设置，然后选择**保存**。
 
-    ![Alt text](media\azure-stack-solution-machine-learning\image163.png)
+    ![Alt text](media/azure-stack-solution-machine-learning/image163.png)
 
 ### <a name="update-the-scoring-function-to-use-storage-queue"></a>更新要使用存储队列的评分函数
 
@@ -2150,15 +2150,15 @@ kubectl proxy
 
 3.  然后选择 **+ 新建输出**从输出。
 
-    ![Alt text](media\azure-stack-solution-machine-learning\image164.png)
+    ![Alt text](media/azure-stack-solution-machine-learning/image164.png)
 
 1.  然后选择**Azure 队列存储**，然后选择**选择**。
 
-    ![Alt text](media\azure-stack-solution-machine-learning\image165.png)
+    ![Alt text](media/azure-stack-solution-machine-learning/image165.png)
 
 1.  更新**队列名称**到存储队列之前，创建，然后设置**存储帐户连接**创建较早的和选择的存储帐户连接到**保存。**
 
-    ![Alt text](media\azure-stack-solution-machine-learning\image166.png)
+    ![Alt text](media/azure-stack-solution-machine-learning/image166.png)
 
 ## <a name="step-8-create-a-function-to-handle-clean-data"></a>步骤 8： 创建一个函数来处理清理数据
 
@@ -2166,15 +2166,15 @@ kubectl proxy
 
 1.  通过选择创建新的函数**函数**，然后 **+ 新建函数**按钮。
 
-    ![Alt text](media\azure-stack-solution-machine-learning\image167.png)
+    ![Alt text](media/azure-stack-solution-machine-learning/image167.png)
 
 1.  选择“计时器触发器”。
 
-    ![Alt text](media\azure-stack-solution-machine-learning\image168.png)
+    ![Alt text](media/azure-stack-solution-machine-learning/image168.png)
 
 1.  选择**C\#** 作为语言，并将函数命名：**上传到 azure**并将计划设置为**0 0 \*/1 \* \* \*** 它在 CRON 表示法为每小时一次。
 
-    ![Alt text](media\azure-stack-solution-machine-learning\image169.png)
+    ![Alt text](media/azure-stack-solution-machine-learning/image169.png)
 
 ### <a name="get-the-connection-string-to-the-azure-hosted-storage-account"></a>获取 Azure 托管的存储帐户的连接字符串
 
@@ -2182,17 +2182,17 @@ kubectl proxy
 
 2.  选择**访问密钥**，然后将复制**连接字符串**的存储帐户。
 
-    ![Alt text](media\azure-stack-solution-machine-learning\image170.png)
+    ![Alt text](media/azure-stack-solution-machine-learning/image170.png)
 
 ### <a name="update-the-upload-to-azure-function-to-use-the-azure-hosted-storage"></a>更新上载到 azure 函数，以使用 Azure 托管的存储
 
 1.  导航到 Azure 函数应用，然后选择**应用程序设置**。
 
-    ![Alt text](media\azure-stack-solution-machine-learning\image171.png)
+    ![Alt text](media/azure-stack-solution-machine-learning/image171.png)
 
 1.  在函数应用的应用程序设置中向下滚动到应用程序设置，然后选择 **+ 添加新设置**。
 
-    ![Alt text](media\azure-stack-solution-machine-learning\image172.png)
+    ![Alt text](media/azure-stack-solution-machine-learning/image172.png)
 
 1.  输入中的存储帐户名称**名称**字段中，在末尾添加; （_s）
 
@@ -2200,11 +2200,11 @@ kubectl proxy
 
 1.  然后粘贴 Azure 托管存储帐户连接字符串**值**字段。
 
-    ![Alt text](media\azure-stack-solution-machine-learning\image173.png)
+    ![Alt text](media/azure-stack-solution-machine-learning/image173.png)
 
 1.  向上滚动到顶部的应用程序设置，然后选择**保存**。
 
-    ![Alt text](media\azure-stack-solution-machine-learning\image174.png)
+    ![Alt text](media/azure-stack-solution-machine-learning/image174.png)
 
 1.  导航回到**上传到 azure**函数。
 
@@ -2212,15 +2212,15 @@ kubectl proxy
 
 3.  然后选择 **+ 新建输出**从输出。
 
-    ![Alt text](media\azure-stack-solution-machine-learning\image175.png)
+    ![Alt text](media/azure-stack-solution-machine-learning/image175.png)
 
 1.  然后选择**Azure Blob 存储**，然后选择**选择**。
 
-    ![Alt text](media\azure-stack-solution-machine-learning\image176.png)
+    ![Alt text](media/azure-stack-solution-machine-learning/image176.png)
 
 1.  更新**路径**到以下格式在前面创建的存储容器： **uploadeddata / {rand guid}.txt**，然后设置**存储帐户连接**到存储帐户连接到 Azure 之前创建选择**保存。**
 
-    ![Alt text](media\azure-stack-solution-machine-learning\image177.png)
+    ![Alt text](media/azure-stack-solution-machine-learning/image177.png)
 
 1.  复制-粘贴的代码示例的内容**上传到 azure**到函数。
 
@@ -2228,11 +2228,11 @@ kubectl proxy
 
 3.  保存并运行代码。
 
-    ![Alt text](media\azure-stack-solution-machine-learning\image178.png)
+    ![Alt text](media/azure-stack-solution-machine-learning/image178.png)
 
 1.  检查要查看的数据的 Azure 托管的存储帐户已分析到从 Azure 云： 成功将类似于下面。
 
-    ![Alt text](media\azure-stack-solution-machine-learning\image179.png)
+    ![Alt text](media/azure-stack-solution-machine-learning/image179.png)
 
 清理敏感数据的 Azure Stack 托管 Kubernetes 机器学习数据并将其上载到 Azure 公有云，从本地 Azure Stack 中，通过 Azure Stack 托管函数的应用程序，并可以暂存中边缘/断开连接的上传数据此方案。
 

@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 10/22/2018
 ms.author: sethm
 ms.reviewer: kivenkat
-ms.openlocfilehash: accd36c9e0d09da0073570301600b362fff85f6e
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: 2c615dd781b40c3ebb78ae291453c5b4b2d2ef4d
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49647334"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52971821"
 ---
 # <a name="make-virtual-machine-scale-sets-available-in-azure-stack"></a>在 Azure Stack 中提供虚拟机规模集
 
@@ -97,7 +97,7 @@ Azure Stack 上的虚拟机规模集是类似于在 Azure 上的虚拟机规模�
 
     如果下载较新版本 （这会更改可用版本） 映像，规模集无法纵向扩展。 这是根据设计，因为规模集模板中指定的映像版本必须可用。  
 
-有关详细信息，请参阅[操作系统磁盘和映像](.\user\azure-stack-compute-overview.md#operating-system-disks-and-images)。  
+有关详细信息，请参阅[操作系统磁盘和映像](./user/azure-stack-compute-overview.md#operating-system-disks-and-images)。  
 
 ## <a name="scale-a-virtual-machine-scale-set"></a>缩放虚拟机规模集
 

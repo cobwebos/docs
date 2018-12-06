@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 09/10/2018
 ms.author: mabrigg
 ms.reviewer: ppacent
-ms.openlocfilehash: ef9fe0e05343f9c99656634a075b1bd464a13c7e
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: c26dcbc2fab7cff3134846234cafaa481fd5ba1a
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44379581"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52972019"
 ---
 # <a name="prepare-azure-stack-pki-certificates-for-deployment"></a>为部署准备 Azure Stack PKI 证书
 必须使用与 Azure Stack的证书要求匹配的属性导入和导出[从所选 CA 获取](azure-stack-get-pki-certs.md)的证书文件。
@@ -38,15 +38,15 @@ ms.locfileid: "44379581"
 
 1. 在**证书导入向导**中，选择“本地计算机”作为导入位置。 选择“**下一步**”。 在下一个屏幕上，再次单击“下一步”。
 
-    ![本地计算机导入位置](.\media\prepare-pki-certs\1.png)
+    ![本地计算机导入位置](./media/prepare-pki-certs/1.png)
 
 1.  选择“将所有证书放在以下存储中”，然后选择“企业信任”作为位置。 单击“确定”以关闭“证书存储选择”对话框，然后单击“下一步”。
 
-    ![配置证书存储](.\media\prepare-pki-certs\3.png)
+    ![配置证书存储](./media/prepare-pki-certs/3.png)
 
     a. 如果要导入 PFX，则将显示其他对话框。 在“私钥保护”页上，输入证书文件的密码，然后启用“将此密钥标记为可导出。这可让你在稍后备份或传输密钥”选项。 选择“**下一步**”。
 
-    ![将密钥标记为可导出](.\media\prepare-pki-certs\2.png)
+    ![将密钥标记为可导出](./media/prepare-pki-certs/2.png)
 
 1. 单击“完成”以完成导入。
 
@@ -58,11 +58,11 @@ ms.locfileid: "44379581"
 
 1. 单击“文件”、“添加/删除管理单元”，然后选择“证书”，单击“添加”。
 
-    ![“添加证书”管理单元](.\media\prepare-pki-certs\mmc-2.png)
+    ![“添加证书”管理单元](./media/prepare-pki-certs/mmc-2.png)
  
 1. 选择“计算机帐户”，单击“下一步”，选择“本地计算机”，然后单击“完成”。 单击“确定”以关闭“添加/删除管理单元”页。
 
-    ![“添加证书”管理单元](.\media\prepare-pki-certs\mmc-3.png)
+    ![“添加证书”管理单元](./media/prepare-pki-certs/mmc-3.png)
 
 1. 浏览到“证书”>“企业信任”>“证书位置”。 确认在右侧看到你的证书。
 

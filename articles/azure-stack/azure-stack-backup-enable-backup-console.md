@@ -15,15 +15,15 @@ ms.topic: article
 ms.date: 11/05/2018
 ms.author: jeffgilb
 ms.reviewer: hectorl
-ms.openlocfilehash: d7d47b61c926c6704a06dacc55f00d77a1266988
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: d8d88484181c3c38f64cf8f00f9d8feaa3b0217a
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51038359"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52962556"
 ---
 # <a name="enable-backup-for-azure-stack-from-the-administration-portal"></a>从管理门户为 Azure Stack 启用备份
-通过管理门户启用基础结构备份服务，以便 Azure Stack 可以生成备份。 出现[灾难性故障](.\azure-stack-backup-recover-data.md)时，可以通过云恢复使用这些备份还原环境。 云恢复的目的是为了确保操作员和用户在恢复完成后可以重新登录回门户。 用户将恢复其订阅，包括基于角色的访问权限和角色、原始计划、套餐以及先前定义的计算、存储和网络配额。
+通过管理门户启用基础结构备份服务，以便 Azure Stack 可以生成备份。 出现[灾难性故障](./azure-stack-backup-recover-data.md)时，可以通过云恢复使用这些备份还原环境。 云恢复的目的是为了确保操作员和用户在恢复完成后可以重新登录回门户。 用户将恢复其订阅，包括基于角色的访问权限和角色、原始计划、套餐以及先前定义的计算、存储和网络配额。
 
 但是，基础结构备份服务不会备份 IaaS VM、网络配置和存储资源（如存储帐户、Blob、表等），因此在云恢复完成后登录的用户将看不到他们以前存在的任何资源。 平台即服务 (PaaS) 资源和数据也不由该服务备份。 
 
@@ -58,31 +58,31 @@ ms.locfileid: "51038359"
     ```
 10. 选择“确定”以保存备份控制器设置。
 
-    ![Azure Stack - 备份控制器设置](media\azure-stack-backup\backup-controller-settings.png)
+    ![Azure Stack - 备份控制器设置](media/azure-stack-backup/backup-controller-settings.png)
 
 ## <a name="start-backup"></a>启动备份
 若要启动备份，请单击“立即备份”以启动按需备份。 按需备份不会修改已计划的下次备份的时间。 任务完成后，可以在“概要”中确认设置：
 
-![Azure Stack - 按需备份](media\azure-stack-backup\scheduled-backup.png)
+![Azure Stack - 按需备份](media/azure-stack-backup/scheduled-backup.png)
 
 还可以在 Azure Stack 管理计算机上运行 PowerShell cmdlet **Start-AzsBackup**。 有关详细信息，请参阅[备份 Azure Stack](azure-stack-backup-back-up-azure-stack.md)。
 
 ## <a name="enable-or-disable-automatic-backups"></a>启用或禁用自动备份
 在启用备份时会自动计划备份。 可以在“概要”中检查下一次计划备份时间。 
 
-![Azure Stack - 按需备份](media\azure-stack-backup\on-demand-backup.png)
+![Azure Stack - 按需备份](media/azure-stack-backup/on-demand-backup.png)
 
 如果需要禁用将来的已计划备份，请单击“禁用自动备份”。 禁用自动备份将保留所配置的备份设置，并将保留备份计划。 此操作只是告知计划程序跳过将来的备份。 
 
-![Azure Stack - 禁用计划的备份](media\azure-stack-backup\disable-auto-backup.png)
+![Azure Stack - 禁用计划的备份](media/azure-stack-backup/disable-auto-backup.png)
 
 在“概要”中确认已禁用了将来的已计划备份：
 
-![Azure Stack - 确认备份已禁用](media\azure-stack-backup\confirm-disable.png)
+![Azure Stack - 确认备份已禁用](media/azure-stack-backup/confirm-disable.png)
 
 单击“启用自动备份”以告知计划程序在计划的时间启动将来的备份。 
 
-![Azure Stack - 启用计划的备份](media\azure-stack-backup\enable-auto-backup.png)
+![Azure Stack - 启用计划的备份](media/azure-stack-backup/enable-auto-backup.png)
 
 
 > [!Note]  

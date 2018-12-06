@@ -3,8 +3,6 @@ items:
   items:
   - name: 什么是 Azure 文件？
     href: storage-files-introduction.md
-  - name: 选择 Blob、文件或数据磁盘
-    href: ../common/storage-decide-blobs-files-disks.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
 - name: 快速入门
   items:
   - name: 创建文件共享 - 门户
@@ -236,9 +234,9 @@ items:
       href: https://github.com/Azure/azure-storage-cpp
     - name: Python
       href: https://github.com/Azure/azure-storage-python
-ms.openlocfilehash: 5a813e17e84911dd13de2c2e9a7a927dfeabfa7b
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: bcfce193fdd41cf9c45e2967d565dc56ebbc2979
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52681001"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52970597"

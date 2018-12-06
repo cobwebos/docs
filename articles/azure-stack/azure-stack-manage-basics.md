@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/15/2018
 ms.author: jeffgilb
-ms.openlocfilehash: 5d3073c3ed499ecdb20243e6db2b217aec3e1448
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: f22754a16c4765989b5773d099fc3ecda73040db
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51254513"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52972382"
 ---
 # <a name="azure-stack-administration-basics"></a>Azure Stack 管理基础知识
 如果不熟悉 Azure Stack 管理，则需要了解几项事情。 本指南概述了 Azure Stack 操作员角色，以及需要告知用户哪些东西才能让他们快速提高工作效率。
@@ -32,9 +32,9 @@ ms.locfileid: "51254513"
  
 ### <a name="development-kit"></a>开发工具包
 
-如果使用 Azure Stack 开发工具包，请参阅[什么是 Azure Stack？](.\asdk\asdk-what-is.md)一文，确保了解该开发工具包的用途和限制。 应该将开发工具包作为“沙盒”使用，在其中对 Azure Stack 进行评估，并在非生产环境中开发和测试应用。 （有关部署信息，请参阅 [Azure Stack 开发工具包部署](.\asdk\asdk-install.md)一文。）
+如果使用 Azure Stack 开发工具包，请参阅[什么是 Azure Stack？](./asdk/asdk-what-is.md)一文，确保了解该开发工具包的用途和限制。 应该将开发工具包作为“沙盒”使用，在其中对 Azure Stack 进行评估，并在非生产环境中开发和测试应用。 （有关部署信息，请参阅 [Azure Stack 开发工具包部署](./asdk/asdk-install.md)一文。）
 
-正如 Azure 一样，我们的创新速度很快。 我们会定期发布新版本。 如果开发包正在运行，但需要更新到最新版本，则必须[重新部署 Azure Stack](.\asdk\asdk-redeploy.md)。 不能应用更新包。 此过程需要一定的时间，但好处是可以尝试最新功能。 我们网站上的开发工具包文档反映了最新的发行版。
+正如 Azure 一样，我们的创新速度很快。 我们会定期发布新版本。 如果开发包正在运行，但需要更新到最新版本，则必须[重新部署 Azure Stack](./asdk/asdk-redeploy.md)。 不能应用更新包。 此过程需要一定的时间，但好处是可以尝试最新功能。 我们网站上的开发工具包文档反映了最新的发行版。
 
 ## <a name="learn-about-available-services"></a>了解可用的服务
 

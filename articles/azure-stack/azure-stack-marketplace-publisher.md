@@ -15,20 +15,20 @@ ms.topic: article
 ms.date: 10/24/2018
 ms.author: sethm
 ms.reviewer: ''
-ms.openlocfilehash: 4758c29d1cdb7e09c397524574ba1ab6701efeeb
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 9f1c433be7e8adc0779860c3ec3bfb5d7174fca5
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51238014"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52970716"
 ---
 #  <a name="add-marketplace-items-using-publishing-tool"></a>使用发布工具添加市场项
 
-将内容添加到 [Azure Stack 市场](azure-stack-marketplace.md)后，你和租户可将你的解决方案用于部署。 Marketplace 工具包创建基于 IaaS Azure 资源管理器模板或 VM 扩展的 Azure Marketplace 包 (.azpkg) 文件。 您还可以使用 Marketplace 工具包发布.azpkg 文件，使用该工具创建或使用[手动](azure-stack-create-and-publish-marketplace-item.md)步骤。 本主题介绍下载该工具，创建 marketplace 项基于 VM 模板，然后将该项发布到 Azure Stack Marketplace。     
+将内容添加到 [Azure Stack 市场](azure-stack-marketplace.md)后，你和租户可将你的解决方案用于部署。 市场工具包基于 IaaS Azure 资源管理器模板或 VM 扩展创建 Azure 市场包 (.azpkg) 文件。 还可以使用市场工具包来发布通过工具或[手动](azure-stack-create-and-publish-marketplace-item.md)步骤创建的 .azpkg 文件。 本主题介绍如何下载该工具、基于 VM 模板创建市场项，然后将该项发布到 Azure Stack 市场。     
 
 ## <a name="prerequisites"></a>必备组件
 
- - 必须在 Azure Stack 主机上运行该工具包或具有[VPN](.\asdk\asdk-connect.md#connect-with-vpn)从其运行该工具的计算机连接到 ASDK 主机。
+ - 必须在 Azure Stack 主机上运行该工具包或具有[VPN](./asdk/asdk-connect.md#connect-with-vpn)从其运行该工具的计算机连接到 ASDK 主机。
 
  - 下载 [Azure Stack 快速入门模板](https://github.com/Azure/AzureStack-QuickStart-Templates/archive/master.zip)并解压缩。
 
@@ -38,11 +38,11 @@ ms.locfileid: "51238014"
 
 ## <a name="download-the-tool"></a>下载该工具
 
-您可以下载 Marketplace 工具包[从 Azure Stack 工具存储库](azure-stack-powershell-download.md)。
+可[从 Azure Stack 工具存储库](azure-stack-powershell-download.md)下载市场工具包。
 
 ##  <a name="create-marketplace-items"></a>创建市场项
 
-在本部分中，使用 Marketplace 工具包创建.azpkg 格式的 marketplace 项包。  
+在本部分，我们将使用市场工具包创建 .azpkg 格式的市场项包。  
 
 ### <a name="provide-marketplace-information-with-wizard"></a>在向导中提供市场信息
 
@@ -64,9 +64,9 @@ ms.locfileid: "51238014"
 1.  单击“浏览”并从所下载模板的 101-Simple-Windows-VM 文件夹中选择 *azuredeploy.json*。
 
     ![市场工具包第二个屏幕的屏幕截图](./media/azure-stack-marketplace-publisher/image8.png)
-2.  部署向导中填入*基本*为模板中指定每个参数的步骤和输入项。 可以添加其他步骤，并在步骤之间移动输入项。 例如，你可能需要为解决方案添加“前端配置”和“后端配置”步骤。
+2.  部署向导中填充了“基本”步骤，以及模板中所指定每个参数的输入项。 可以添加其他步骤，并在步骤之间移动输入项。 例如，你可能需要为解决方案添加“前端配置”和“后端配置”步骤。
 3.  指定 AzureGalleryPackager.exe 的路径。  
-4.  单击“创建”。 Marketplace 工具包打包成.azpkg 文件的解决方案。 完成后，该向导将显示您的解决方案文件的路径，并为你提供选项以继续将包发布到 Azure Stack。
+4.  单击“创建”。 市场工具包会将解决方案打包成 .azpkg 文件。 完成后，向导会显示解决方案文件的路径，并让你选择继续将包发布到 Azure Stack。
 
 ## <a name="publish-marketplace-items"></a>发布市场项
 
@@ -88,7 +88,7 @@ ms.locfileid: "51238014"
 
 也可以使用参数文件来填写市场项信息。  
 
-Marketplace 工具包包括*solution.parameters.ps1*可用于创建您自己的参数文件。
+市场工具包包含 *solution.parameters.ps1*，可以使用此脚本来创建自己的参数文件。
 
 ## <a name="support-files"></a>支持文件
 

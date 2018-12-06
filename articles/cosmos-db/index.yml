@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 2fdd8a586c9c8dae0ab9cec1176b71a137893b17
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 8243ee2e657f42959c9f0a71c7c50fc1a2dda737
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49384959"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52966397"
 documentType: LandingData
 title: Azure Cosmos DB 文档
 metadata:
@@ -13,13 +13,10 @@ metadata:
   description: 了解如何使用 Azure Cosmos DB 生成全局分布式多模型数据库。 教程介绍了如何生成和查询文档、键/值与图形数据库。
   services: cosmos-db
   author: SnehaGunda
-  manager: kfile
+  ms.author: sngun
   ms.service: cosmos-db
-  ms.tgt_pltfrm: na
-  ms.devlang: na
   ms.topic: landing-page
   ms.date: 04/26/2018
-  ms.author: sngun
 abstract:
   description: Azure Cosmos DB 是一种全球分布式多模型数据库服务，支持文档、键值、宽列和图形数据库。 参考我们的快速入门、教程和示例，了解如何使用 Azure Cosmos DB。
   aside:
@@ -161,7 +158,7 @@ sections:
     style: cards
     className: cardsFTitle
     items:
-    - title: " 创建按比例构建的 Azure Cosmos DB 数据库"
+    - title: " 创建按比例构建的 Azure Cosmos DB 数据库"
       href: /learn/modules/create-cosmos-db-for-scale/
       image:
         src: /learn/achievements/create-cosmos-db-for-scale.svg

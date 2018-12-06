@@ -15,12 +15,12 @@ ms.topic: get-started-article
 ms.date: 10/19/2018
 ms.author: sethm
 ms.reviewer: shnatara
-ms.openlocfilehash: e5ce479940faaaae95467fe6d426e999b4c6569f
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: 46dd9c786fddb2f6ce9fb8a761a1b9f135a82d74
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49468664"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52959190"
 ---
 # <a name="change-the-owner-for-an-azure-stack-user-subscription"></a>更改 Azure Stack 用户订阅的所有者
 
@@ -40,8 +40,8 @@ Azure Stack 操作员可以使用 PowerShell 更改用户订阅的账单所有�
 
 运行以下脚本来更改用户订阅的账单所有者。 用于运行该脚本的计算机必须连接到 Azure Stack 并运行 Azure Stack PowerShell 模块 1.3.0 或更高版本。 有关详细信息，请参阅[安装 Azure Stack PowerShell](azure-stack-powershell-install.md)。 
 
-> [!Note]  
->  在多租户 Azure Stack，新的所有者必须与现有的所有者相同的目录中。 你可以向另一个目录中的用户提供订阅的所有权之前，你必须首先[到你的目录作为来宾邀请该用户](../active-directory/b2b/add-users-administrator.md)。 
+> [!Note]
+>  在多租户 Azure Stack，新的所有者必须与现有的所有者相同的目录中。 你可以向另一个目录中的用户提供订阅的所有权之前，你必须首先[到你的目录作为来宾邀请该用户](../active-directory/b2b/add-users-administrator.md)。 
 
 运行脚本之前，请替换脚本中的以下值： 
  

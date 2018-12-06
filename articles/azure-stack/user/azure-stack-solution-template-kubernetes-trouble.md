@@ -14,21 +14,21 @@ ms.topic: article
 ms.date: 10/29/2018
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.openlocfilehash: f7f23a6d645a1d8e16e42e751050d8d91b49e2b3
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 472dfc04cea65cab39d177bb214c417d229b71d2
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51007819"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52956714"
 ---
-# <a name="troubleshoot-your-deployment-to-kubernetes-to-azure-stack"></a>排查到 Azure Stack 的 Kubernetes 部署
+# <a name="troubleshoot-your-deployment-to-kubernetes-to-azure-stack"></a>排查部署到 Kubernetes (K8) 以及向 Azure Stack 部署 Kubernetes (K8) 的问题
 
 *适用于：Azure Stack 集成系统和 Azure Stack 开发工具包*
 
 > [!Note]  
-> Azure Stack 上的 Kubernetes 处于预览状态。
+> Azure Stack 上的 Kubernetes 现为预览版。
 
-以下文章讨论了 Kubernetes 群集进行疑难解答。 您可以查看部署警报以及部署的状态部署所需的元素。 您可能需要从 Azure Stack 或 Linux Vm 托管 Kubernetes 收集部署日志。 您可能还需要与 Azure Stack 管理员联系，以从管理终结点检索日志。
+以下文章讨论了如何排查 Kubernetes 群集问题。 可以按部署所需的元素查看部署警报以及部署的状态。 您可能需要从 Azure Stack 或 Linux Vm 托管 Kubernetes 收集部署日志。 您可能还需要与 Azure Stack 管理员联系，以从管理终结点检索日志。
 
 ## <a name="overview-of-deployment"></a>部署概述
 
@@ -38,7 +38,7 @@ ms.locfileid: "51007819"
 
 下图显示了用于部署群集的一般过程。
 
-![部署 Kubernetes 进程](media/azure-stack-solution-template-kubernetes-trouble/002-Kubernetes-Deploy-Flow.png)
+![部署 Kubernetes 过程](media/azure-stack-solution-template-kubernetes-trouble/002-Kubernetes-Deploy-Flow.png)
 
 ### <a name="deployment-steps"></a>部署步骤
 
@@ -56,7 +56,7 @@ ms.locfileid: "51007819"
     -  运行 DVM 自定义脚本。 该脚本会执行以下任务：
         1. 从 Azure 资源管理器元数据终结点中获取库终结点。
         2. 获取 Azure 资源管理器元数据终结点从 active directory 资源 ID。
-        3. 将为 ACS 引擎加载 API 模型。
+        3. 为 ACS 引擎加载 API 模型。
         4. 将 ACS 引擎部署到 Kubernetes 群集，并将保存到 Azure Stack 云配置文件`/etc/kubernetes/azurestackcloud.json`。
 3. 创建主 Vm。
 
@@ -65,8 +65,8 @@ ms.locfileid: "51007819"
 5. 运行主脚本。
 
     该脚本会执行以下任务：
-    - 安装 etcd、 Docker 和 Kubernetes kubelet 等资源。 etcd 是分布式的键值存储，提供跨计算机群集的存储数据的方式。 Docker 支持称为容器基本操作系统级虚拟化。 Kubelet 是在每个 Kubernetes 节点运行的节点代理。
-    - 设置了 etcd 服务。
+    - 安装 etcd、Docker 和 Kubernetes 资源（如 kubelet）。 etcd 是一种分布式键值存储，用于跨一组计算机存储数据。 Docker 支持称为容器基本操作系统级虚拟化。 Kubelet 是在每个 Kubernetes 节点上运行的节点代理。
+    - 设置 etcd 服务。
     - 设置了 kubelet 服务。
     - 启动 kubelet。 此任务涉及以下步骤：
         1. 启动 API 服务。
@@ -83,18 +83,18 @@ ms.locfileid: "51007819"
 
 ## <a name="steps-for-troubleshooting"></a>故障排除步骤
 
-支持在 Kubernetes 群集的虚拟机上，可以收集日志。 此外可以查看部署日志。 您可能需要与你的 Azure Stack 管理员若要验证 Azure Stack，若要使用，以及若要从与你的部署相关的 Azure Stack 中获取日志所需的版本。
+支持在 Kubernetes 群集的虚拟机上，可以收集日志。 还可以查看部署日志。 您可能需要与你的 Azure Stack 管理员若要验证 Azure Stack，若要使用，以及若要从与你的部署相关的 Azure Stack 中获取日志所需的版本。
 
 1. 审阅[部署状态](#review-deployment-status)并[检索日志](#get-logs-from-a-vm)在 Kubernetes 群集中的主节点。
 2. 请确保使用 Azure Stack 的最新版本。 如果不确定正在使用哪个版本，请联系你的 Azure Stack 管理员。 Kubernetes 群集 marketplace 时 0.3.0 需要 1808年或更高版本的 Azure Stack 版本。
-3.  查看你的 VM 创建文件。 您可能已具有以下问题：  
+3.  查看 VM 创建文件。 您可能已具有以下问题：  
     - 公钥可能无效。 查看你创建的密钥。  
     - 创建 VM 可能会触发了内部错误，或触发创建错误。 许多因素可能会导致错误，包括 Azure Stack 订阅的容量限制。
     - 请确保 VM 的完全限定的域名 (FDQN) 开头重复的前缀。
-4.  如果 VM 位于**确定**，然后评估此 DVM。 如果此 DVM 具有一条错误消息：
+4.  如果 VM 位于**确定**，然后评估此 DVM。 如果 DVM 有一条错误消息：
 
     - 公钥可能无效。 查看你创建的密钥。  
-    - 需要联系你的 Azure Stack 管理员使用特权终结点适用于 Azure Stack 检索日志。 有关详细信息，请参阅[Azure Stack 诊断工具](https://docs.microsoft.com/azure/azure-stack/azure-stack-diagnostics)。
+    - 需要联系你的 Azure Stack 管理员使用特权终结点适用于 Azure Stack 检索日志。 有关详细信息，请参阅 [Azure Stack 诊断工具](https://docs.microsoft.com/azure/azure-stack/azure-stack-diagnostics)。
 5. 如果您有关于你的部署的任何问题，您可以将其发布，或者查看如果有人已回答了问题中的[Azure Stack 论坛](https://social.msdn.microsoft.com/Forums/azure/home?forum=azurestack)。 
 
 ## <a name="review-deployment-status"></a>查看部署状态
@@ -107,13 +107,13 @@ ms.locfileid: "51007819"
 
     ![故障排除](media/azure-stack-solution-template-kubernetes-trouble/azure-stack-kub-trouble-report.png)
 
-4.  请参阅故障排除窗口中。 每个已部署的资源提供了以下信息：
+4.  查看故障排除窗口。 每个已部署的资源提供了以下信息：
     
     | 属性 | 说明 |
     | ----     | ----        |
     | 资源 | 资源的名称。 |
     | 类型 | 资源提供程序和资源的类型。 |
-    | 状态 | 将项的状态。 |
+    | 状态 | 项状态。 |
     | 时间戳 | 时间的 UTC 时间戳。 |
     | 操作详细信息 | 操作详细信息，例如操作、 资源终结点和资源的名称中涉及的资源提供程序。 |
 
@@ -125,7 +125,7 @@ ms.locfileid: "51007819"
 
 ### <a name="prerequisites"></a>必备组件
 
-需要一个 bash 提示用于管理 Azure Stack 的计算机上。 使用 bash 运行访问的日志的脚本。 Windows 上，可以使用与 Git 一起安装在 bash 提示符处。 若要获取最新版本的 git，请参阅[Git 下载](https://git-scm.com/downloads)。
+需要一个 bash 提示用于管理 Azure Stack 的计算机上。 使用 bash 可运行访问日志的脚本。 Windows 上，可以使用与 Git 一起安装在 bash 提示符处。 若要获取最新版本的 git，请参阅[Git 下载](https://git-scm.com/downloads)。
 
 ### <a name="get-logs"></a>获取日志
 
@@ -153,10 +153,10 @@ ms.locfileid: "51007819"
 4. 检查参数，并设置基于你的环境的值。
     | 参数           | 说明                                                                                                      | 示例                                                                       |
     |---------------------|------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------|
-    | -i、-标识文件 | RSA 私钥文件将 Kubernetes 主 VM 连接。 密钥必须开头 `-----BEGIN RSA PRIVATE KEY-----` | C:\data\privatekey.pem                                                        |
-    | -h、--主机          | 公共 IP 或 Kubernetes 群集主 VM 的完全限定的域名 (FQDN)。 VM 名称开头`k8s-master-`。                       | IP: 192.168.102.37<br><br>FQDN: k8s 12345.local.cloudapp.azurestack.external      |
-    | -u，--用户          | Kubernetes 群集主 VM 的用户名。 配置 marketplace 项时设置此名称。                                                                    | azureuser                                                                     |
-    | -d、-vmdhost       | 公共 IP 或 FQDN DVM。 VM 名称开头`vmd-`。                                                       | IP: 192.168.102.38<br><br>DNS: vmd dnsk8 frog.local.cloudapp.azurestack.external |
+    | -i、--identity-file | RSA 私钥文件将 Kubernetes 主 VM 连接。 该密钥必须以 `-----BEGIN RSA PRIVATE KEY-----` 开头 | C:\data\privatekey.pem                                                        |
+    | -h、--host          | 公共 IP 或 Kubernetes 群集主 VM 的完全限定的域名 (FQDN)。 该 VM 名称以 `k8s-master-` 开头。                       | IP: 192.168.102.37<br><br>FQDN: k8s-12345.local.cloudapp.azurestack.external      |
+    | -u、--user          | Kubernetes 群集主 VM 的用户名。 配置 marketplace 项时设置此名称。                                                                    | azureuser                                                                     |
+    | -d、--vmdhost       | 公共 IP 或 FQDN DVM。 该 VM 名称以 `vmd-` 开头。                                                       | IP: 192.168.102.38<br><br>DNS: vmd-dnsk8-frog.local.cloudapp.azurestack.external |
 
    当您添加参数值时，它可能看起来如以下代码：
 
@@ -164,7 +164,7 @@ ms.locfileid: "51007819"
     ./getkuberneteslogs.sh --identity-file "C:\secretsecret.pem" --user azureuser --vmdhost 192.168.102.37
      ```
 
-    如果运行成功创建日志。
+    如果运行成功，则会创建日志。
 
     ![生成的日志](media/azure-stack-solution-template-kubernetes-trouble/azure-stack-generated-logs.png)
 
@@ -172,12 +172,12 @@ ms.locfileid: "51007819"
 4. 检索由该命令创建的文件夹中的日志。 该命令将创建新的文件夹和它们进行时间戳。
     - KubernetesLogs*YYYY-MM-DD-XX-XX-XX-XXX*
         - Dvmlogs
-        - Acsengine kubernetes dvm.log
+        - Acsengine-kubernetes-dvm.log
 
 ## <a name="next-steps"></a>后续步骤
 
 [将 Kubernetes 部署到 Azure Stack](azure-stack-solution-template-kubernetes-deploy.md)
 
-[（适用于 Azure Stack 操作员） 添加到 Marketplace 的 Kubernetes 群集](..\azure-stack-solution-template-kubernetes-cluster-add.md)
+[（适用于 Azure Stack 操作员） 添加到 Marketplace 的 Kubernetes 群集](../azure-stack-solution-template-kubernetes-cluster-add.md)
 
 [在 Azure 上的 Kubernetes](https://docs.microsoft.com/azure/container-service/kubernetes/container-service-kubernetes-walkthrough)

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 09/17/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: a343b01b89bfbe9bc047c0b8b703b975b21b6290
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: e099240d3f8670032ff2d6c0fad295c5f14f6e70
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48901866"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52969356"
 ---
 # <a name="post-asdk-installation-configuration-tasks"></a>安装 ASDK 后的配置任务
 
@@ -41,7 +41,7 @@ Set-PSRepository -Name "PSGallery" -InstallationPolicy Trusted
 无论是否与 ASDK 主机建立了 Internet 连接，都可以安装最新 Azure Stack PowerShell 模块：
 
 > [!IMPORTANT]
-> 在安装所需版本之前，请务必[卸载任何现有 Azure PowerShell 模块](.\.\azure-stack-powershell-install.md#3-uninstall-existing-versions-of-the-azure-stack-powershell-modules)。
+> 在安装所需版本之前，请务必[卸载任何现有 Azure PowerShell 模块](../azure-stack-powershell-install.md#3-uninstall-existing-versions-of-the-azure-stack-powershell-modules)。
 
 - **已从 ASDK 主机建立 Internet 连接**。 运行以下 PowerShell 脚本，在开发工具包安装中安装以下模块：
 
@@ -153,7 +153,7 @@ Set-PSRepository -Name "PSGallery" -InstallationPolicy Trusted
 
 若要确保开发工具包主机的密码不在评估期结束之前过期，请在部署 ASDK 之后执行以下步骤。
 
-### <a name="to-change-the-password-expiration-policy-from-powershell"></a>若要从 Powershell 中更改密码过期策略
+### <a name="to-change-the-password-expiration-policy-from-powershell"></a>通过 Powershell 更改密码过期策略
 
 在提升权限的 Powershell 控制台中，运行以下命令：
 
@@ -161,7 +161,7 @@ Set-PSRepository -Name "PSGallery" -InstallationPolicy Trusted
 Set-ADDefaultDomainPasswordPolicy -MaxPasswordAge 180.00:00:00 -Identity azurestack.local
 ```
 
-### <a name="to-change-the-password-expiration-policy-manually"></a>若要手动更改密码过期策略
+### <a name="to-change-the-password-expiration-policy-manually"></a>手动更改密码过期策略
 
 1. 在开发工具包主机上打开**组策略管理**(GPMC。MMC)，并导航到**组策略管理**–**林： azurestack.local** –**域**–**请将 azurestack.local**。
 2. 右键单击“默认域策略”，然后单击“编辑”。
@@ -173,10 +173,10 @@ Set-ADDefaultDomainPasswordPolicy -MaxPasswordAge 180.00:00:00 -Identity azurest
 
 ## <a name="enable-multi-tenancy"></a>启用多租户
 
-对于使用 Azure AD 部署，你需要[启用多租户](.\.\azure-stack-enable-multitenancy.md#enable-multi-tenancy)用于 ASDK 安装。
+对于使用 Azure AD 的部署，需要为 ASDK 安装[启用多租户](../azure-stack-enable-multitenancy.md#enable-multi-tenancy)。
 
 > [!NOTE]  
-> 当用于注册 Azure Stack 之外的域中的管理员或用户帐户用于登录到 Azure Stack 门户中时，用来注册 Azure Stack 的域名必须追加到门户 url。 例如，如果 Azure Stack 注册 fabrikam.onmicrosoft.com 和中的日志记录的用户帐户是admin@contoso.com，用于登录到用户门户的 url 是： https://portal.local.azurestack.external/fabrikam.onmicrosoft.com。
+> 当使用非用于注册 Azure Stack 的域的管理员或用户帐户登录 Azure Stack 门户时，用于注册 Azure Stack 的域名必须追加到门户 URL 后面。 例如，如果 Azure Stack 注册 fabrikam.onmicrosoft.com 和中的日志记录的用户帐户是admin@contoso.com，用于登录到用户门户的 url 是： https://portal.local.azurestack.external/fabrikam.onmicrosoft.com。
 
 ## <a name="next-steps"></a>后续步骤
 
