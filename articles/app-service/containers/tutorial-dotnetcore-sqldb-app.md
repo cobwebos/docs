@@ -22,10 +22,10 @@ ms.contentlocale: zh-CN
 ms.lasthandoff: 08/02/2018
 ms.locfileid: "39432256"
 ---
-# <a name="build-a-net-core-and-sql-database-web-app-in-azure-app-service-on-linux"></a>在 Linux 上的 Azure 应用服务中生成 .NET Core 和 SQL 数据库 Web 应用
+# <a name="build-a-net-core-and-sql-database-web-app-in-azure-app-service-on-linux"></a>在 Linux 上的 Azure 应用服务中构建 .NET Core 和 SQL 数据库 Web 应用
 
 > [!NOTE]
-> 本文将应用部署到基于 Linux 的应用服务。 若要部署到 _Windows_ 上的应用服务，请参阅[在 Azure 应用服务中生成 .NET Core 和 SQL 数据库 Web 应用](../app-service-web-tutorial-dotnetcore-sqldb.md)。
+> 本文将应用部署到基于 Linux 的应用服务。 若要部署到 _Windows_ 上的应用服务，请参阅[在 Azure 应用服务中构建 .NET Core 和 SQL 数据库 Web 应用](../app-service-web-tutorial-dotnetcore-sqldb.md)。
 >
 
 [Linux 应用服务](app-service-linux-intro.md)使用 Linux 操作系统，提供高度可缩放的自修补 Web 托管服务。 本教程演示如何创建 .NET Core Web 应用，并将其连接至 SQL 数据库。 完成操作后，将拥有一个在 Linux 应用服务中运行的 .NET Core MVC 应用。
