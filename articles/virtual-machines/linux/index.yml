@@ -21,7 +21,7 @@ metadata:
   ms.date: 01/23/2017
   ms.author: carolz
 abstract:
-  description: Azure Linux 虚拟机使用可以使用Red Hat、Ubuntu 或 你选择的Linux 发行版,按需提供具有高可伸缩性,并且十分安全的虚拟化基础结构。 使用快速入门、教程和示例了解如何创建、配置、管理、更新和缩放 Linux VM (虚拟机)。
+  description: Azure Linux 虚拟机可以使用 Red Hat、Ubuntu 或你选择的 Linux 发行版，按需提供具有高可伸缩性，并且十分安全的虚拟化基础结构。使用快速入门、教程和示例了解如何创建、配置、管理、更新和缩放 Linux VM (虚拟机)。
   aside:
     image:
       alt: 
