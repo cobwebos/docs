@@ -21,10 +21,10 @@ ms.contentlocale: zh-CN
 ms.lasthandoff: 08/02/2018
 ms.locfileid: "39425096"
 ---
-# <a name="tutorial-build-a-net-core-and-sql-database-web-app-in-azure-app-service"></a>教程：在 Azure 应用服务中生成 .NET Core 和 SQL 数据库 Web 应用
+# <a name="tutorial-build-a-net-core-and-sql-database-web-app-in-azure-app-service"></a>教程：在 Azure 应用服务中构建 .NET Core 和 SQL 数据库 Web 应用
 
 > [!NOTE]
-> 本文将应用部署到 Windows 上的应用服务。 若要部署到 _Linux_ 上的应用服务，请参阅[在 Linux 上的 Azure 应用服务中生成 .NET Core 和 SQL 数据库 Web 应用](./containers/tutorial-dotnetcore-sqldb-app.md)。
+> 本文将应用部署到 Windows 上的应用服务。 若要部署到 _Linux_ 上的应用服务，请参阅[在 Linux 上的 Azure 应用服务中构建 .NET Core 和 SQL 数据库 Web 应用](./containers/tutorial-dotnetcore-sqldb-app.md)。
 >
 
 [应用服务](app-service-web-overview.md)在 Azure 中提供高度可缩放、自修补的 Web 托管服务。 本教程演示如何创建 .NET Core Web 应用，并将其连接至 SQL 数据库。 完成操作后，你将拥有一个在应用服务中运行的 .NET Core MVC 应用。
