@@ -6,12 +6,12 @@ description: 了解如何使用 Microsoft Azure 云服务构建和管理功能�
 ms.topic: hub-page
 featureFlags:
 - clicktale
-ms.openlocfilehash: ef9cb669db24cf2b68de955047e8e2d2f9fb04e9
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 5860d828a4edffa130ecfd2f5cf37c236b3cf3fc
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52499642"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52963782"
 ---
 <div id="main" class="v2">
     <div class="container">
@@ -297,22 +297,22 @@ Azure DevOps Projects </a>
                                                 <ul class="noBullet">
                                                     <li>
                                                         <a class="barLink" href="/learn/modules/tour-azure-services-and-features/">
-                                                            <img src="/learn/achievements/tour-azure-services-and-features.svg" alt="">
+                                                            <img src="https://docs.microsoft.com/learn/achievements/tour-azure-services-and-features.svg" alt="">
 浏览 Azure 服务和功能 </a>
                                                     </li>
                                                     <li>
                                                         <a class="barLink" href="/learn/modules/principles-cloud-computing/">
-                                                            <img src="/learn/achievements/principles-cloud-computing.svg" alt="">
+                                                            <img src="https://docs.microsoft.com/learn/achievements/principles-cloud-computing.svg" alt="">
 云计算原则 </a>
                                                     </li>
                                                     <li>
                                                         <a class="barLink" href="/learn/modules/control-azure-services-with-cli/">
-                                                            <img src="/learn/achievements/control-azure-services-with-cli.svg" alt="">
+                                                            <img src="https://docs.microsoft.com/learn/achievements/control-azure-services-with-cli.svg" alt="">
 使用 CLI 控制 Azure 服务 </a>
                                                     </li>
                                                     <li>
                                                         <a class="barLink" href="/learn/modules/automate-azure-tasks-with-powershell/">
-                                                            <img src="/learn/achievements/automate-azure-tasks-with-powershell.svg" alt="">
+                                                            <img src="https://docs.microsoft.com/learn/achievements/automate-azure-tasks-with-powershell.svg" alt="">
 将脚本与 PowerShell 配合使用，自动完成 Azure 任务 </a>
                                                     </li>
                                                     <li>
@@ -1060,7 +1060,7 @@ Azure DevOps Projects </a>
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="/azure/storage/data-lake-storage/introduction">
+                                            <a href="/azure/storage/blobs/data-lake-storage-introduction">
                                                 <img src="media/index/Azure-Data-Lake-Store-COLOR.svg" alt="" />
                                                 <p>Data Lake Storage Gen2</p>
                                             </a>
@@ -1225,9 +1225,14 @@ Azure DevOps Projects </a>
                                             </a>
                                         </li>
                                         <li>
+                                            <a href="/azure/storage/blobs/data-lake-storage-introduction">
+                                                <img src="media/index/Azure-Data-Lake-Store-COLOR.svg" alt="" />
+                                                <p>Data Lake Storage Gen2</p>
+                                            </a>
+                                            <li>
                                             <a href="/azure/data-lake-store/">
                                                 <img src="media/index/Azure-Data-Lake-Store-COLOR.svg" alt="" />
-                                                <p>Data Lake Store</p>
+                                                <p>Data Lake Storage Gen1</p>
                                             </a>
                                         </li>
                                     </ul>
@@ -2367,7 +2372,7 @@ Azure DevOps Projects </a>
                                 </a>
                             </li>
                             <li>
-                                <a href="/azure/storage/data-lake-storage/introduction">
+                                <a href="/azure/storage/blobs/data-lake-storage-introduction">
                                     <div class="cardSize">
                                         <div class="cardPadding">
                                             <div class="card">
@@ -2378,7 +2383,7 @@ Azure DevOps Projects </a>
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Data Lake Storage Gen2</h3>
-                                                    <p>与 Blob 存储集成的、高度可缩放的安全 Data Lake 存储</p>
+                                                    <p>基于 Blob 存储构建的高度可缩放的安全 Data Lake 存储</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -3532,6 +3537,25 @@ Azure DevOps Projects </a>
                                 </a>
                             </li>
                             <li>
+                                <a href="/azure/storage/blobs/data-lake-storage-introduction">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage">
+                                                        <img src="media/index/Azure-Data-Lake-Store-COLOR.svg" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>Data Lake Storage Gen2</h3>
+                                                    <p>基于 Blob 存储构建的高度可缩放的安全 Data Lake 存储</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
                                 <a href="/azure/data-lake-store/">
                                     <div class="cardSize">
                                         <div class="cardPadding">
@@ -3542,7 +3566,7 @@ Azure DevOps Projects </a>
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Data Lake Store</h3>
+                                                    <h3>Data Lake Storage Gen1</h3>
                                                     <p>适用于大数据分析工作负荷的超大规模存储库</p>
                                                 </div>
                                             </div>
