@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/28/2018
+ms.date: 12/03/2018
 ms.author: sethm
 ms.reviewer: ''
-ms.openlocfilehash: 68d5742f5da542d5146997390e470180cf8c5776
-ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
+ms.openlocfilehash: e4f15da8464c2103b5f6540d342cb7c741a67c5f
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52620687"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52994843"
 ---
 # <a name="azure-marketplace-items-available-for-azure-stack"></a>适用于 Azure Stack 的 Azure 市场项
 
@@ -88,7 +88,6 @@ Microsoft Azure Stack 支持以下 Azure Marketplace 虚拟机和解决方案模
 | ![CoreOS 提供的 Container Linux](media/azure-stack-marketplace-azure-items/coreos.png) | [CoreOS 提供的 Container Linux](https://azuremarketplace.microsoft.com/marketplace/apps/CoreOS.CoreOS) | Container Linux 是一种新式的最小型 Linux 发行版，可以方便地运行容器、管理群集以及无缝地更新服务器 - 所有组件都启用了仓库规模的计算。 | CoreOS |
 | ![Ubuntu Server](media/azure-stack-marketplace-azure-items/ubuntu.png) | [Ubuntu Server](https://azuremarketplace.microsoft.com/marketplace/apps/Canonical.UbuntuServer) | Ubuntu Server 是全球流行的 Linux 云环境。 | Canonical |
 | ![Debian 8 "Jessie"](media/azure-stack-marketplace-azure-items/debian8.png) | [Debian 8“Jessie”](https://azuremarketplace.microsoft.com/marketplace/apps/credativ.Debian) | Debian GNU/Linux 是最流行的 Linux 分发版之一。 | credativ |
-| ![Debian 9“Stretch”](media/azure-stack-marketplace-azure-items/debian8.png) | [Debian 9“Stretch”](https://azuremarketplace.microsoft.com/marketplace/apps/credativ.Debian9) | Debian GNU/Linux 是最流行的 Linux 分发版之一。 | credativ |
 | ![基于 CentOS 的 6.9](media/azure-stack-marketplace-azure-items/roguewave.png) | [基于 CentOS 的 6.9](https://azuremarketplace.microsoft.com/marketplace/apps/RogueWave.CentOSbased69) | 此 Linux 发行版基于 CentOS ，由 Rogue Wave Software 提供。 | Rogue Wave Software（之前为 OpenLogic）  |
 | ![基于 CentOS 的 6.10](media/azure-stack-marketplace-azure-items/roguewave.png) | [基于 CentOS 的 6.10](https://azuremarketplace.microsoft.com/marketplace/apps/RogueWave.CentOSbased610) | 此 Linux 发行版基于 CentOS ，由 Rogue Wave Software 提供。 | Rogue Wave Software（之前为 OpenLogic）  |
 | ![基于 CentOS 的 7.3](media/azure-stack-marketplace-azure-items/roguewave.png) | [基于 CentOS 的 7.3](https://azuremarketplace.microsoft.com/marketplace/apps/RogueWave.CentOSbased73) | 此 Linux 发行版基于 CentOS ，由 Rogue Wave Software 提供。 | Rogue Wave Software（之前为 OpenLogic） |
@@ -236,7 +235,6 @@ Microsoft Azure Stack 支持以下 Azure Marketplace 虚拟机和解决方案模
 | ![CloudLink SecureVM](media/azure-stack-marketplace-azure-items/cloudlink.png) | [CloudLink SecureVM](https://azuremarketplace.microsoft.com/marketplace/apps/cloudlink.cloudlink-securevm)  | 轻松可靠地控制、监视和加密 VM。 **下载所有 CloudLink SecureVM 项。** | Dell EMC |
 | ![EventTracker SIEM](media/azure-stack-marketplace-azure-items/eventtracker.png) | [EventTracker SIEM](https://azuremarketplace.microsoft.com/marketplace/apps/eventtracker.eventtracker-siem)  | EventTracker SIEM 是一种综合性安全平台，提供具有审核就绪型符合性功能的高级安全工具。 | EventTracker |
 | ![f5](media/azure-stack-marketplace-azure-items/f5.png) | [f5 Big-IP 性能版本](https://azuremarketplace.microsoft.com/marketplace/apps/f5-networks.f5-big-ip-best)  | 高级负载平衡，GSLB、 网络防火墙、 DNS、 WAF 和应用程序访问权限。 | F5 网络 |
-| ![FortiGate 下一代防火墙](media/azure-stack-marketplace-azure-items/fortinetsquare.png) | [FortiGate 下一代防火墙](https://azuremarketplace.microsoft.com/marketplace/apps/fortinet.fortinet-fortigate-singlevm) | 防火墙技术，可提供与一套全面的强大的安全功能的完整内容和网络保护。 应用程序控制、 防病毒、 IPS、 web 筛选和 VPN 及高级功能，例如漏洞管理它们协同工作以识别并减小最新的复杂安全威胁。 | Fortinet |
 | ![Hortonworks 数据平台 (HDP) 沙盒](media/azure-stack-marketplace-azure-items/hortonworks.png) | [Hortonworks 数据平台 (HDP) 沙盒](https://azuremarketplace.microsoft.com/marketplace/apps/hortonworks.hortonworks-sandbox) | 由 HDP 2.5 100% 开源平台提供支持，适用于 Hadoop、Spark、Storm、HBase、Kafka、Hive、Ambari。 | Hortonworks |
 | ![Kaspersky](media/azure-stack-marketplace-azure-items/kaspersky.png) | [Kaspersky 的混合云安全性](https://azuremarketplace.microsoft.com/marketplace/apps/kaspersky_lab.kaspersky_hybrid_cloud_security?tab=Overview) | Kaspersky 的混合云安全性启用无缝地协调和自适应网络安全生态系统。 | Kaspersky 实验室 |
 | ![KEMP LoadMaster 负载均衡器 ADC 内容交换机](media/azure-stack-marketplace-azure-items/kemp.png) | [KEMP LoadMaster 负载均衡器 ADC 内容交换机](https://azuremarketplace.microsoft.com/marketplace/apps/kemptech.vlm-azure) | 第 4-7 层应用程序传送控制器 (ADC) 负载均衡器、内容交换机和流量管理器。 | KEMP Technologies Inc. |

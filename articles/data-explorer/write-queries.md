@@ -8,12 +8,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 952d8801c189322161bbf8b795676af48b92c29f
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: 71e39c6430231ae8d175f9c09a9059c3da4c9a1e
+ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49394316"
+ms.lasthandoff: 11/17/2018
+ms.locfileid: "51854248"
 ---
 # <a name="write-queries-for-azure-data-explorer"></a>Azure 数据资源管理器的编写查询
 
@@ -28,7 +28,7 @@ ms.locfileid: "49394316"
 
 - 在你自己的群集上，其中包括 StormEvents 示例数据。 有关详细信息，请参阅[快速入门：创建 Azure 数据资源管理器群集和数据库](create-cluster-database-portal.md)和[将示例数据引入到 Azure 数据资源管理器](ingest-sample-data.md)。
 
-StormEvents 示例数据集包含[国家环境信息中心](https://www.ncdc.noaa.gov/stormevents/)中与天气相关的数据。
+[!INCLUDE [data-explorer-storm-events](../../includes/data-explorer-storm-events.md)]
 
 ## <a name="overview-of-the-query-language"></a>查询语言概述
 
@@ -40,7 +40,7 @@ Azure 数据资源管理器中的查询语言是处理数据并返回结果的�
 
 例如，下面的查询有一个单独的语句，它是一个表格表达式语句。 该语句从对名为 `StormEvents` 的表引用开始（宿主此表的数据库在此是隐式的，并且是连接信息的一部分）。 然后，该表的数据（行）依次由 `StartTime` 列的值和 `State` 列的值进行筛选。 然后查询返回“幸存”的行计数。
 
-\[[单击以运行查询](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAAsuyS%2fKdS1LzSsp5uWqUSjPSC1KVQguSSwqCcnMTVWws1VISSxJLQGyNYwMDMx1DQ11DQw1FRLzUpBU2aArMgIpQjGvJFXB1lZByc3HP8jTxVFJQQEkm5xfmlcCAHoR9euCAAAA)\]
+**\[**[**单击以运行查询**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAAsuyS%2fKdS1LzSsp5uWqUSjPSC1KVQguSSwqCcnMTVWws1VISSxJLQGyNYwMDMx1DQ11DQw1FRLzUpBU2aArMgIpQjGvJFXB1lZByc3HP8jTxVFJQQEkm5xfmlcCAHoR9euCAAAA)**\]**
 
 ```Kusto
 StormEvents
@@ -72,11 +72,11 @@ StormEvents
 
 ### <a name="count"></a>计数
 
-[count](https://docs.microsoft.com/azure/kusto/query/countoperator)：返回表中的行数。
+[**count**](https://docs.microsoft.com/azure/kusto/query/countoperator)：返回表中的行数。
 
 以下查询返回 StormEvents 表中的行数。
 
-\[[单击以运行查询](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAAsuyS%2fKdS1LzSspVqhRSM4vzSsBALU2eHsTAAAA)\]
+**\[**[**单击以运行查询**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAAsuyS%2fKdS1LzSspVqhRSM4vzSsBALU2eHsTAAAA)**\]**
 
 ```Kusto
 StormEvents | count
@@ -88,7 +88,7 @@ StormEvents | count
 
 以下查询从 StormEvents 表返回 5 行。 关键字“limit”是“take”的别名。
 
-\[[单击以运行查询](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAAsuyS%2fKdS1LzSspVqhRKEnMTlUwBQDEz2b8FAAAAA%3d%3d)\]
+**\[**[**单击以运行查询**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAAsuyS%2fKdS1LzSspVqhRKEnMTlUwBQDEz2b8FAAAAA%3d%3d)**\]**
 
 ```Kusto
 StormEvents | take 5
@@ -103,7 +103,7 @@ StormEvents | take 5
 
 以下查询将返回一组特定的列。
 
-\[[单击以运行查询](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAAsuyS%2fKdS1LzSsp5uWqUShJzE5VMAWxCorys1KTSxSCSxKLSkIyc1N1FFzzUiAMoFgJiA%2fSFlJZAGS6JOYmpqcGFOUXpBaVVAKlCjKL81NS%2fRKLihJLMstSAY%2buIINnAAAA)\]
+**\[**[**单击以运行查询**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAAsuyS%2fKdS1LzSsp5uWqUShJzE5VMAWxCorys1KTSxSCSxKLSkIyc1N1FFzzUiAMoFgJiA%2fSFlJZAGS6JOYmpqcGFOUXpBaVVAKlCjKL81NS%2fRKLihJLMstSAY%2buIINnAAAA)**\]**
 
 ```Kusto
 StormEvents
@@ -117,7 +117,7 @@ StormEvents
 
 以下查询依据 `EventType` 和 `State` 来筛选数据。
 
-\[[单击以运行查询](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAEWMPQvCMBCGd8H%2fcFuWro4dBOvHkgoJOB%2fm0KjJhetRKfjjNe3g9n49r1OW1I2UdVivPvC%2bkxDM3k%2bFoG3B7F%2fMwQDmAE5Rl%2fCydceTPfjemsopPgk2VRXhB121TkV9TNRAl8MiZrz53zeww4Q3OgsXEp1%2bVYkDB7IoghpH%2bgI9OH8WnwAAAA%3d%3d)\]
+**\[**[**单击以运行查询**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAEWMPQvCMBCGd8H%2fcFuWro4dBOvHkgoJOB%2fm0KjJhetRKfjjNe3g9n49r1OW1I2UdVivPvC%2bkxDM3k%2bFoG3B7F%2fMwQDmAE5Rl%2fCydceTPfjemsopPgk2VRXhB121TkV9TNRAl8MiZrz53zeww4Q3OgsXEp1%2bVYkDB7IoghpH%2bgI9OH8WnwAAAA%3d%3d)**\]**
 
 ```Kusto
 StormEvents
@@ -128,11 +128,11 @@ StormEvents
 
 ### <a name="sort"></a>sort
 
-[sort](https://docs.microsoft.com/azure/kusto/query/sortoperator)：按照一个或多个列的顺序对输入表的行排序。
+[**sort**](https://docs.microsoft.com/azure/kusto/query/sortoperator)：按照一个或多个列的顺序对输入表的行排序。
 
 以下查询依据 `DamageProperty` 按降序对数据进行排序。
 
-\[[单击以运行查询](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAF2NPQvCMBCGd8H%2fcFuXrI4dBOvHEoUGnM%2fm0KjphctRKfjjNe0guL0fvM%2fbKktsBuo1LxdveN1ICCbvxkRQ11Btn8y%2bAuw9tIo6h%2bd1uz%2fYnTvaquwyi8JlhA1GvNJJOJHoCJ5yV2rFB8GqqCR8p04LSdSFSAaa3s9iopvfu%2fnDfasUMnuyKIIaBvoAtvGMsb4AAAA%3d)\]
+**\[**[**单击以运行查询**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAF2NPQvCMBCGd8H%2fcFuXrI4dBOvHEoUGnM%2fm0KjphctRKfjjNe0guL0fvM%2fbKktsBuo1LxdveN1ICCbvxkRQ11Btn8y%2bAuw9tIo6h%2bd1uz%2fYnTvaquwyi8JlhA1GvNJJOJHoCJ5yV2rFB8GqqCR8p04LSdSFSAaa3s9iopvfu%2fnDfasUMnuyKIIaBvoAtvGMsb4AAAA%3d)**\]**
 
 ```Kusto
 StormEvents
@@ -147,11 +147,11 @@ StormEvents
 
 ### <a name="top"></a>top
 
-[top](https://docs.microsoft.com/azure/kusto/query/topoperator)：返回按指定列排序的前 N 个记录。
+[top](https://docs.microsoft.com/azure/kusto/query/topoperator)：返回按指定列排序的前“N”个记录。 ** 
 
 以下查询返回与上面相同的结果，并减少了一个运算符。
 
-\[[单击以运行查询](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAF2NOwvCMBSFd8H%2fcLcsWR07CNbHkgoJOMfmohGTG24vlYA%2fXtsOgtt5cL5jhTi1I2YZ1qs3vO7ICLN3tSA0Daj9kygo8DmAFS9LeNna48kcXGfUtBMqsIFrhZ1P%2foZnpoIsFQIO%2fdQXpgf2MgFYXEyooc1hETNU%2f071H%2bRblThQQOOZvcQRP1rSng21AAAA)\]
+**\[**[**单击以运行查询**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAF2NOwvCMBSFd8H%2fcLcsWR07CNbHkgoJOMfmohGTG24vlYA%2fXtsOgtt5cL5jhTi1I2YZ1qs3vO7ICLN3tSA0Daj9kygo8DmAFS9LeNna48kcXGfUtBMqsIFrhZ1P%2foZnpoIsFQIO%2fdQXpgf2MgFYXEyooc1hETNU%2f071H%2bRblThQQOOZvcQRP1rSng21AAAA)**\]**
 
 ```Kusto
 StormEvents
@@ -271,7 +271,7 @@ StormEvents
 
 ### <a name="bin"></a>bin()
 
-[bin()](https://docs.microsoft.com/azure/kusto/query/binfunction)：将值舍入到给定 bin 大小的整数倍。
+[**bin()**](https://docs.microsoft.com/azure/kusto/query/binfunction)：将值舍入到给定 bin 大小的整数倍。
 
 以下查询计算一天存储桶大小的计数。
 
@@ -570,7 +570,7 @@ StormEvents
 
 ### <a name="dcounthll"></a>dcount_hll()
 
-[dcount_hll()](https://docs.microsoft.com/azure/kusto/query/dcount-hllfunction)：从 HyperLogLog 结果中计算 dcount（由 [hll](https://docs.microsoft.com/azure/kusto/query/hll-aggfunction) 或 [hll_merge](https://docs.microsoft.com/azure/kusto/query/hll-merge-aggfunction) 生成）。
+[**dcount_hll()**](https://docs.microsoft.com/azure/kusto/query/dcount-hllfunction)：从 HyperLogLog 结果中计算“dcount” （由 [“hll”](https://docs.microsoft.com/azure/kusto/query/hll-aggfunction) 或 [“hll_merge”](https://docs.microsoft.com/azure/kusto/query/hll-merge-aggfunction)生成） ****。
 
 以下查询使用 HLL 算法来生成计数。
 
@@ -600,7 +600,7 @@ StormEvents
 
 ### <a name="makeset"></a>makeset()
 
-[makeset()](https://docs.microsoft.com/azure/kusto/query/makeset-aggfunction)：返回表达式在组中所获取非重复值集的动态 (JSON) 数组。
+[**makeset()**](https://docs.microsoft.com/azure/kusto/query/makeset-aggfunction)：返回表达式在组中所获取非重复值集的动态 (JSON) 数组。
 
 以下查询返回每个州报告洪水的所有时间，并从非重复值集中创建一个数组。
 
@@ -632,7 +632,7 @@ FloodDataSet
 
 ### <a name="percentiles"></a>percentiles()
 
-[percentiles()](https://docs.microsoft.com/azure/kusto/query/percentiles-aggfunction)：返回表达式定义的指定人口中[最近排名百分位数](https://docs.microsoft.com/azure/kusto/query/percentiles-aggfunction)的估计值。 准确性取决于百分位区域中的填充密度。 只能在 [summarize](https://docs.microsoft.com/azure/kusto/query/summarizeoperator) 内的聚合上下文中使用。
+[percentiles()](https://docs.microsoft.com/azure/kusto/query/percentiles-aggfunction)：返回表达式定义的指定人口中 [最近排名百分位数](https://docs.microsoft.com/azure/kusto/query/percentiles-aggfunction)的估计值。  准确性取决于百分位区域中的填充密度。 只能在 [summarize](https://docs.microsoft.com/azure/kusto/query/summarizeoperator) 内的聚合上下文中使用。
 
 以下查询计算风暴持续时间的百分位数。
 
@@ -685,7 +685,7 @@ LightningStorms
 
 ### <a name="join"></a>join
 
-[join](https://docs.microsoft.com/azure/kusto/query/joinoperator)：通过匹配每个表中指定列的值，合并两个表的行以组成新表。 Kusto 支持一系列完整的联接类型：fullouter、inner、innerunique、leftanti、leftantisemi、leftouter、leftsemi、rightanti、rightantisemi、rightouter、rightsemi。
+[join](https://docs.microsoft.com/azure/kusto/query/joinoperator)：通过匹配每个表中指定列的值，合并两个表的行以组成新表。 Kusto 支持一系列完整的联接类型：fullouter、inner、innerunique、leftanti、leftantisemi、leftouter、leftsemi、rightanti、rightantisemi、rightouter、rightsemi。 **** **** **** **** **** **** **** **** ****
 
 以下示例使用内部联接来联接两个表。
 
@@ -842,7 +842,7 @@ range _day from _start to _end step 1d
 
 ### <a name="newactivitymetrics-plugin"></a>new_activity_metrics 插件
 
-[new_activity_metrics 插件](https://docs.microsoft.com/azure/kusto/query/new-activity-metrics-plugin)：为新用户队列计算有用的活动指标（非重复计数值、非重复计数的新值、保留率和改动率）。 此插件的概念类似于 [activity_metrics 插件](https://docs.microsoft.com/azure/kusto/query/activity-metrics-plugin)，但关注的是新用户。
+[new_activity_metrics 插件](https://docs.microsoft.com/azure/kusto/query/new-activity-metrics-plugin)：为新用户队列计算有用的活动指标（非重复计数值、非重复计数的新值、保留率和改动率）。 此插件的概念类似于 [activity_metrics 插件](https://docs.microsoft.com/azure/kusto/query/activity-metrics-plugin)，但关注的是新用户。
 
 以下查询计算新用户队列（第一周到达的用户）在周间窗口的保留率和改动率。
 
@@ -902,7 +902,7 @@ StormEvents
 
 [funnel_sequence_completion 插件](https://docs.microsoft.com/azure/kusto/query/funnel-sequence-completion-plugin)：计算不同时间段内已完成序列步骤的漏斗图。
 
-以下查询检查序列中的完成漏斗图：在一小时、四小时和一天 (`[1h, 4h, 1d]`) 的“总体”时间中的 `Hail -> Tornado -> Thunderstorm -> Wind`。
+以下查询检查序列中的完成漏斗图：在一小时、四小时和一天 (`[1h, 4h, 1d]`) 的“总体”时间中的  `Hail -> Tornado -> Thunderstorm -> Wind` 。
 
 \[[单击以运行查询](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA12QTYvCMBCG74L/YW6tkIV2XT9g8SjsnlvwICKhM9JAOqlJqrj4402CW0RIIB/PPLwzmjwcnZfWwwZQevKqo/yzKFYfRRnW7Hs60ZEhxjdi/UZcFaO5VuqPAjhfLvD/w9F5IG7iM95YdqrJ99mPVDoTkNXGskSTju3ASNZ5Y7t43wVhdhj9PVll0L1aylbAV9glJqyKldsLsXfTyR3oIvUQAsNpYCY95jg2puuDUhnOt71yBukXBVRxCnVoTjwnIlLX4rUzAUlf3/pEPYViDDd7AOyqowFQAQAA)\]
 
@@ -918,7 +918,7 @@ StormEvents
 
 ## <a name="functions"></a>函数
 
-本部分介绍[**函数**](https://docs.microsoft.com/azure/kusto/query/functions)：存储在服务器上的可重用查询。 函数可由查询和其他函数调用（不支持递归函数）。
+本部分介绍[**函数**](https://docs.microsoft.com/azure/kusto/query/functions)：存储在服务器上的可重用查询。 函数可由查询和其他函数调用（不支持递归函数）。
 
 > [!NOTE]
 > 你不能在只读的帮助群集上创建函数。 在此部分使用你自己的测试群集。
