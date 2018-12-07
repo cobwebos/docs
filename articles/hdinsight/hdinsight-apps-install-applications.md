@@ -29,7 +29,7 @@ HDInsight 应用程序是用户可以在 HDInsight 群集上安装的应用程�
 * **DATAIKU DDS on HDInsight**，利用此应用程序，数据专家可以对针对性很强的服务进行原型、生成和部署方面的操作，将原始数据转换成有影响力的业务预测。
 * **Datameer** 是一个自助的可缩放平台，用于准备、浏览和管理要分析的数据，可以加速将复杂的多源数据转变为有价值的可用于业务的信息，在企业级别提供更快更智能的见解。
 * **用于 HDInsight 的 H2O 人工智能（Beta 版本）** H2O Sparkling Water 支持以下分布式算法：GLM、Naïve Bayes、分布式随机森林、梯度增强机、深度神经网络、深度学习、K-means、PCA、广义低阶模型、异常情况检测和自编码器。
-* **Kyligence Analytics Platform** Kyligence Analytics Platform (KAP) 是以 Apache Kylin 和 Apache Hadoop 为后盾的，可供企业使用的数据仓库；它在处理大规模数据集时可提供次秒级的查询延迟，简化了企业用户和分析师的数据分析。 
+* **Kyligence Enterprise** 是基于 Apache Kylin 的企业级智能大数据分析平台，可为用户提供 PB 级数据集上的亚秒级查询能力，并引入了大量机器学习技术，提供自动建模等智能化功能，大大提升了企业大数据分析生产力。 
 * **Paxata 自助服务数据准备**
 * **Spark Job Server for KNIME Spark Executor** Spark Job Server for KNIME Spark Executor 用于将 KNIME Analytics Platform 连接到 HDInsight 群集。
 * **Starburst Presto** Presto 是一个快速的可缩放分布式 SQL 查询引擎。 Presto 针对存储和计算的分离进行了架构设计，非常适用于查询 Azure Data Lake Storage、Azure Blob 存储、SQL 和 NoSQL 数据库以及其他数据源中的数据。
