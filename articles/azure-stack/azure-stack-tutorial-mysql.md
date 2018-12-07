@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 10/23/2018
 ms.author: jeffgilb
 ms.reviewer: quying
-ms.openlocfilehash: 84aaa5534c629554074544b4bb56ae8da8825397
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: bee684409b2ef3fffeb9f175c2b469d3736b6484
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49986437"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52993843"
 ---
 # <a name="tutorial-offer-highly-available-mysql-databases"></a>教程： 提供高可用性的 MySQL 数据库
 
@@ -46,7 +46,7 @@ Azure Stack 操作员，可以配置承载 MySQL Server 数据库服务器 Vm。
 > 以下所有所需创建 MySQL 群集。
 
 - [使用复制的 MySQL](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/bitnami.mysql-cluster)。 这是将用于 MySQL 群集部署 Bitnami 解决方案模板。
-- [Debian 8"Jessie"](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/credativ.Debian8backports?tab=Overview)。 Debian 8"Jessie"backports 内核与适用于 Microsoft Azure 提供由 credativ 提供。 Debian GNU/Linux 是最流行的 Linux 分发版之一。
+- [Debian 8"Jessie"](https://azuremarketplace.microsoft.com/marketplace/apps/credativ.Debian)。 Debian 8"Jessie"backports 内核与适用于 Microsoft Azure 提供由 credativ 提供。 Debian GNU/Linux 是最流行的 Linux 分发版之一。
 - [适用于 linux 2.0 自定义脚本](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/microsoft.custom-script-linux?tab=Overview)。 自定义脚本扩展是一个工具，可执行 VM 自定义任务 post VM 设置。 此扩展添加到虚拟机，它可以从 Azure 存储下载脚本，并在 VM 上运行它们。 也可以使用 Azure PowerShell cmdlet 和 Azure 跨平台命令行接口 (xPlat CLI) 自动自定义脚本扩展任务。
 - Linux 扩展 1.4.7 的 VM 访问。 VM 访问扩展可以重置密码、 SSH 密钥或 SSH 配置，以便可以重新获得对 vm 的访问权限。 您还可以添加新用户使用密码或 SSH 密钥或删除使用此扩展的用户。 此扩展以目标 Linux Vm。
 

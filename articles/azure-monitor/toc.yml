@@ -85,7 +85,7 @@ items:
       - name: 日志数据
         href: platform/data-security.md
       - name: 个人日志数据处理
-        href: ../log-analytics/log-analytics-personal-data-mgmt.md?toc=/azure/azure-monitor/toc.json
+        href: platform/personal-data-mgmt.md
       - name: 应用程序数据收集、保留和存储
         href: ../application-insights/app-insights-data-retention-privacy.md?toc=/azure/azure-monitor/toc.json
   - name: 洞察力
@@ -115,9 +115,9 @@ items:
     - name: OMS 门户转换
       items:
       - name: 概述
-        href: ../log-analytics/log-analytics-oms-portal-transition.md?toc=/azure/azure-monitor/toc.json
+        href: platform/oms-portal-transition.md
       - name: 常见问题
-        href: ../log-analytics/log-analytics-oms-portal-faq.md?toc=/azure/azure-monitor/toc.json
+        href: platform/oms-portal-faq.md
   - name: 响应事件
     items:
     - name: 警报
@@ -153,7 +153,7 @@ items:
       - name: 角色权限和安全
         href: ../monitoring-and-diagnostics/monitoring-roles-permissions-security.md?toc=/azure/azure-monitor/toc.json
       - name: 工作区
-        href: ../log-analytics/log-analytics-manage-access.md?toc=/azure/azure-monitor/toc.json
+        href: platform/manage-access.md
       - name: 应用程序
         href: ../application-insights/app-insights-resources-roles-access-control.md?toc=/azure/azure-monitor/toc.json
       - name: IP 地址
@@ -166,8 +166,6 @@ items:
         href: ../application-insights/app-insights-web-monitor-performance.md?toc=/azure/azure-monitor/toc.json
       - name: 将开发、测试和生产隔开
         href: ../application-insights/app-insights-separate-resources.md?toc=/azure/azure-monitor/toc.json
-      - name: 使用多个组件监视应用
-        href: ../application-insights/app-insights-monitor-multi-role-apps.md?toc=/azure/azure-monitor/toc.json
       - name: 如何在 Application Insights 中执行...？
         href: ../application-insights/app-insights-how-do-i.md?toc=/azure/azure-monitor/toc.json
     - name: 管理工作区
@@ -181,7 +179,7 @@ items:
         - name: 使用 Azure PowerShell
           href: learn/quick-create-workspace-posh.md
       - name: 创建工作区
-        href: ../log-analytics/log-analytics-manage-del-workspace.md?toc=/azure/azure-monitor/toc.json
+        href: platform/delete-workspace.md
       - name: 适用于服务提供商的设计
         href: platform/service-providers.md
   - name: 收集数据
@@ -562,7 +560,7 @@ items:
         - name: 定价
           href: insights/network-performance-monitor-pricing-faq.md
         - name: 常见问题解答
-          href: ../log-analytics/log-analytics-network-performance-monitor-faq.md?toc=/azure/azure-monitor/toc.json
+          href: insights/network-performance-monitor-faq.md
     - name: 监视虚拟机
       items:
       - name: 用于 VM 的 Azure Monitor
@@ -647,7 +645,7 @@ items:
     - name: Power BI
       items:
       - name: 导出日志数据
-        href: ../log-analytics/log-analytics-powerbi.md?toc=/azure/azure-monitor/toc.json
+        href: platform/powerbi.md
       - name: 导出应用程序数据
         href: ../application-insights/app-insights-export-power-bi.md?toc=/azure/azure-monitor/toc.json
     - name: 将数据发送到 Grafana
@@ -838,7 +836,7 @@ items:
     - name: 应用程序企业计划详细信息
       href: ../application-insights/app-insights-pricing-enterprise-details.md?toc=/azure/azure-monitor/toc.json
     - name: 日志数据卷和保留期
-      href: ../log-analytics/log-analytics-manage-cost-storage.md?toc=/azure/azure-monitor/toc.json
+      href: platform/manage-cost-storage.md
     - name: 日志数据监视使用情况
       href: ../log-analytics/log-analytics-usage.md?toc=/azure/azure-monitor/toc.json
   - name: 自动化
@@ -1010,9 +1008,9 @@ items:
     href: https://stackoverflow.com/search?q=monitoring
   - name: 代码示例
     href: https://azure.microsoft.com/resources/samples/?service=monitor
-ms.openlocfilehash: ee2702e834ce782f5b690cbfc78d300efa1ee602
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: dc89f1634040b7002e58206aaf6d1ade6965b2a8
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52968163"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53017896"

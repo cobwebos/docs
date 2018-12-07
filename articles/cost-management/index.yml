@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: d65a593286ecd1ee394536033e85febb1dbc6f37
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: faf243df0c6b81ca75e912bff04893a1ff7fd945
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50229258"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52997724"
 documentType: LandingData
 title: Azure 成本管理文档
 metadata:
@@ -17,7 +17,7 @@ metadata:
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
-  ms.date: 10/29/2018
+  ms.date: 12/05/2018
   ms.author: banders
 abstract:
   description: Azure 成本管理是一种成本管理解决方案，可帮助监视和控制 Azure 支出并优化资源使用。 通过我们的快速入门和教程，了解如何分析成本，创建和管理预算，导出数据，以及查看和采纳建议。

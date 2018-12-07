@@ -10,12 +10,12 @@ ms.date: 09/13/2018
 ms.author: jeffgilb
 ms.reviewer: wamota
 keywords: ''
-ms.openlocfilehash: e6f7d255fbfbcd740d9f3a7c2743f57cecea1abf
-ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
-ms.translationtype: MT
+ms.openlocfilehash: a2c08c541c3726579d57d99141a147d98bf45849
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51298738"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52996710"
 ---
 # <a name="azure-stack-datacenter-integration---publish-endpoints"></a>Azure Stack 数据中心集成 - 发布终结点
 
@@ -79,10 +79,14 @@ Azure Stack 仅支持透明代理服务器。 如果部署中的透明代理上�
 |NTP|（为部署提供的 IP 的 NTP 服务器）|UDP|123|
 |DNS|（为部署提供的 IP 的 DNS 服务器）|TCP<br>UDP|53|
 |CRL|(在你的证书上的 CRL 分发点的 URL)|HTTP|80|
+|基础结构备份|（IP 或外部的目标文件服务器的 FQDN）|SMB|445|
 |     |     |     |     |
 
 > [!Note]  
 > 使用 Azure 流量管理器对出站 URL 进行负载均衡，以根据地理位置提供尽可能最佳的连接。 使用负载平衡的 Url，Microsoft 可以更新和更改后端终结点而不会影响客户。 Microsoft 不共享 IP 地址的列表，为负载平衡 Url。 应使用支持按 URL 而不是按 IP 筛选的设备。
+
+> [!Note]  
+> 在 1809，基础结构备份服务公共 VIP 网络中，进行通信的外部文件服务器。 之前 1809，服务通过公共基础结构网络通信。 如果您的环境不允许访问基础结构资源从公共 VIP 网络中，为 Azure Stack 应用最新 1809年修补程序。 此修补程序将基础结构备份服务返回到公共基础结构网络。 在 1811，如果应用 1809年修补程序，基础结构备份服务将保留在公共基础结构网络。 如果未应用此修补程序，更新将移动服务返回到公共基础结构网络。
 
 ## <a name="next-steps"></a>后续步骤
 

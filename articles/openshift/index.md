@@ -11,12 +11,12 @@ ms.devlang: devops
 ms.topic: landing-page
 ms.date: 06/19/2017
 ms.author: carolz
-ms.openlocfilehash: 0856b86ce3d5510dfaa395d17705a2c7d5675cde
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6f0d3eae8c005b7e26f425a4411042fdc050fdef
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23071154"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52995475"
 ---
 <div class="content">
     <h1>Azure 上的 OpenShift</h1>
@@ -26,7 +26,7 @@ OpenShift Origin 是基于 Kubernetes 构建的开放源代码容器平台，它
         </div>
     </div>
 <h2>5 分钟快速入门</h2>
-<a href="https://azure.microsoft.com/resources/templates/openshift-origin-rhel/">部署 OpenShift Origin 社区模板</a> 
+<a href="https://docs.microsoft.com/azure/virtual-machines/linux/openshift-okd">部署 OpenShift Origin 社区模板</a> 
 <h2>分步教程</h2>
 <p>了解如何在 Azure 上部署 OpenShift。</p>
 <ol>

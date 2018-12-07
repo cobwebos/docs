@@ -173,7 +173,7 @@
 ## [定价](https://azure.microsoft.com/pricing/details/app-service/)
 ## [定价计算器](https://azure.microsoft.com/pricing/calculator/)
 ## [服务更新](https://azure.microsoft.com/updates/?product=mobile-services)
-## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-mobile-services)
+## [堆栈溢出](https://stackoverflow.com/questions/tagged/azure-mobile-services)
 ## [视频](https://azure.microsoft.com/documentation/videos/index/?services=mobile-services)
 ## 示例
 ### [现场工程师](https://azure.microsoft.com/resources/samples/app-service-mobile-dotnet-fieldengineer/)
