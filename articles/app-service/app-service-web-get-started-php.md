@@ -105,10 +105,10 @@ Local git is configured with url of 'https://<username>@<app_name>.scm.azurewebs
   < JSON data removed for brevity. >
 }
 ```
-已创建了一个空的新 Web 应用并启用了 Git 部署。
+现在你已经创建了一个新的空 Web 应用并启用了 Git 部署。
 
 > [!NOTE]
-> Git 远程的 URL 将显示在 `deploymentLocalGitUrl` 属性中，其格式为 `https://<username>@<app_name>.scm.azurewebsites.net/<app_name>.git`。 保存此 URL，因为稍后需要它。
+> Git 远程的 URL 将显示在 `deploymentLocalGitUrl` 属性中，其格式为 `https://<username>@<app_name>.scm.azurewebsites.net/<app_name>.git`。 保存此 URL，因为后面需要它。
 >
 
 浏览到新建的 Web 应用。 将 _&lt;app name>_ 替换为在上一步中创建的唯一应用名称。
@@ -177,7 +177,7 @@ git commit -am "updated output"
 git push azure master
 ```
 
-完成部署后，返回到**浏览到应用**步骤期间打开的浏览器窗口，然后刷新页面。
+完成部署后，返回到“浏览到应用”步骤期间打开的浏览器窗口，然后刷新页面。
 
 ![已更新的在 Azure 中运行应用的示例](media/app-service-web-get-started-php/hello-azure-in-browser.png)
 
@@ -189,7 +189,7 @@ git push azure master
 
 ![在门户中导航到 Azure Web 应用](./media/app-service-web-get-started-php/php-docs-hello-world-app-service-list.png)
 
-将显示 Web 应用的概述页。 在此处可以执行基本的管理任务，例如浏览、停止、启动、重新启动和删除。
+此时将显示 Web 应用的概述页。在此处可以执行基本的管理任务，例如浏览、停止、启动、重启和删除。
 
 ![Azure 门户中的应用服务页](media/app-service-web-get-started-php/php-docs-hello-world-app-service-detail.png)
 
