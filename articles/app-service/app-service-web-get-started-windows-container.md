@@ -64,7 +64,7 @@ ms.locfileid: "46971359"
 FROM microsoft/aspnet:4.7.1
 ```
 
-在菜单中，选择“调试>非调试启动”以在本地运行 Web 应用。
+在菜单中，选择“调试>启动但不调试”以在本地运行 Web 应用。
 
 ![在本地运行应用](./media/app-service-web-get-started-windows-container/local-web-app.png)
 
@@ -96,11 +96,11 @@ FROM microsoft/aspnet:4.7.1
 
 2. 在 Azure 市场资源列表上方的搜索框中，搜索并选择“用于容器的 Web 应用”。
 
-3. 提供应用名称（例如 win-container-demo），保留创建新资源组所需的默认设置，然后在“OS”框中单击“Windows (预览)”。
+3. 提供应用名称（例如 win-container-demo），接受创建新资源组所需的默认设置，然后在“OS”框中单击“Windows (预览版)”。
 
     ![](media/app-service-web-get-started-windows-container/portal-create-page.png)
 
-4. 单击“应用服务计划/位置” > “新建”，创建应用服务计划。 为新计划提供一个名称，保留默认设置，然后单击“确定”。
+4. 单击“应用服务计划/位置” > “新建”，创建应用服务计划。 为新计划提供一个名称，接受默认设置，然后单击“确定”。
 
     ![](media/app-service-web-get-started-windows-container/portal-create-plan.png)
 
@@ -112,7 +112,7 @@ FROM microsoft/aspnet:4.7.1
 
 6. 单击“创建”，等待 Azure 创建所需的资源。
 
-## <a name="browse-to-the-container-app"></a>浏览容器应用
+## <a name="browse-to-the-container-app"></a>浏览到容器应用
 
 Azure 操作完成后，会显示通知框。
 
@@ -122,7 +122,7 @@ Azure 操作完成后，会显示通知框。
 
 2. 在应用页中，单击“URL”下的链接。
 
-此时会打开一个新浏览器页面访问下图页面：
+如果会打开一个如以下页面所示的新浏览器页面：
 
 ![](media/app-service-web-get-started-windows-container/app-starting.png)
 
@@ -130,11 +130,11 @@ Azure 操作完成后，会显示通知框。
 
 ![](media/app-service-web-get-started-windows-container/app-running-vs.png)
 
-**祝贺你！** 你在 Azure 应用服务中运行了第一个自定义 Windows 容器。
+祝贺你！你正在 Azure 应用服务中运行你的第一个自定义 Windows 容器。
 
 ## <a name="see-container-start-up-logs"></a>查看容器启动日志
 
-Windows 容器的加载可能需要一定的时间。 若要查看进度，请导航到以下 URL（将 *\<app_name>* 替换为你的应用名称）。
+加载 Windows 容器可能需要一些时间。 若要查看进度，请导航到以下 URL（将 \<app_name> 替换为你的应用名称）。
 ```
 https://<app_name>.scm.azurewebsites.net/api/logstream
 ```
@@ -170,7 +170,7 @@ https://<app_name>.scm.azurewebsites.net/api/logstream
 
 ![在 Azure 中重新启动 Web 应用](./media/app-service-web-get-started-windows-container/portal-restart-app.png)
 
-再次[浏览容器应用](#browse-to-the-container-app)。 刷新网页时，应用会先还原到“正在启动”页，然后在几分钟后再次显示更新的网页。
+再次[浏览到容器应用](#browse-to-the-container-app)。刷新网页时，应用应先还原到“正在启动”页，然后在几分钟后再次显示更新的网页。
 
 ![已在 Azure 中更新的 Web 应用](./media/app-service-web-get-started-windows-container/azure-web-app-updated.png)
 
