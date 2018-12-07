@@ -64,7 +64,7 @@ ms.locfileid: "51219556"
 * [容器实例](#container-instances-limits)
 * [容器注册表](#container-registry-limits)
 * [Kubernetes 服务](#kubernetes-service-limits)
-* [Data Factory](#data-factory-limits)
+* [数据工厂](#data-factory-limits)
 * [Data Lake Analytics](#data-lake-analytics-limits)
 * [Data Lake Store](#data-lake-store-limits)
 * [数据库迁移服务](#database-migration-service-limits)
