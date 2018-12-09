@@ -15,12 +15,12 @@ ms.topic: get-started-article
 ms.date: 06/18/2018
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: dfaee72be883ee8902fe4550890d757f114ff932
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: e526c5f2f446a1ae8134a3e2ca72fcc42024d904
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39426099"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52724088"
 ---
 # <a name="create-a-batch-account-with-the-azure-portal"></a>使用 Azure 门户创建 Batch 帐户
 
@@ -42,7 +42,7 @@ ms.locfileid: "39426099"
 
     ![创建批处理帐户][account_portal]
 
-    a. **帐户名称**：所选名称必须在创建帐户的 Azure 区域中唯一（参见下面的“位置”）。 帐户名只能包含小写字符或数字，且长度必须为 3-24 个字符。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 **帐户名称**：所选名称必须在创建帐户的 Azure 区域中唯一（参见下面的“位置”）。 帐户名只能包含小写字符或数字，且长度必须为 3-24 个字符。
 
     b. **订阅**：要在其中创建批处理帐户的订阅。 如果只有一个订阅，则默认选择此项。
 
@@ -91,11 +91,11 @@ ms.locfileid: "39426099"
 
     ![注册 Microsoft.Batch 提供程序][register_provider]
 
-1. 在“订阅”页中，选择“访问控制(IAM)” > “添加”。
+1. 在“订阅”页上，选择“访问控制(IAM)” > “角色分配” > “添加角色分配”。
 
     ![订阅访问控制][subscription_access]
 
-1. 在“添加权限”页上，选择“参与者”角色，然后搜索 Batch API。 搜索每一条字符串，直到找到此 API：
+1. 在“添加角色分配”页上，选择“参与者”角色，然后搜索 Batch API。 搜索每一条字符串，直到找到此 API：
     1. MicrosoftAzureBatch。
     1. Microsoft Azure Batch。 较新的 Azure AD 租户可能使用此名称。
     1. ddbf3205-c6bd-46ae-8127-60eb93363864 是此 Batch API 的 ID。 

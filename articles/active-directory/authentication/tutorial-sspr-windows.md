@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: bec94e2017660e9804bbc232e0a3163afdaafcb6
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 0c5554ca929cbd5231c99e568e987e6e0b7cf6eb
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51277760"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52844832"
 ---
 # <a name="tutorial-azure-ad-password-reset-from-the-login-screen"></a>教程：登录屏幕中的 Azure AD 密码重置
 
@@ -101,23 +101,29 @@ ms.locfileid: "51277760"
 
 用户可以在[重置工作或学校密码](../user-help/active-directory-passwords-update-your-own-password.md#reset-password-at-sign-in)中发现此功能的使用指南
 
-## <a name="common-issues"></a>常见问题
+Azure AD 审核日志将包含有关密码重置发生的 IP 地址和 ClientType 的信息。
+
+![Azure AD 审核日志中的登录屏幕密码重置示例](media/tutorial-sspr-windows/windows-sspr-azure-ad-audit-log.png)
+
+## <a name="limitations"></a>限制
 
 使用 Hyper-V 测试此功能时，“重置密码”链接不显示。
 
 * 转到用于测试的 VM，单击“视图”，然后取消选中“增强会话”。
 
-使用远程桌面测试此功能时，“重置密码”链接不显示。
+使用远程桌面或增强型 VM 会话测试此功能时，“重置密码”链接不显示。
 
 * 目前不支持从远程桌面进行密码重置。
 
-如果通过注册表项或组策略禁用了 Windows 锁屏，则“重置密码”功能将不可用。
-
 如果策略要求使用 Ctrl+Alt+Del，或者锁屏通知已关闭，则“重置密码”将无效。
 
-Azure AD 审核日志将包含有关密码重置发生的 IP 地址和 ClientType 的信息。
+已知以下策略设置会干扰密码重置功能
 
-![Azure AD 审核日志中的登录屏幕密码重置示例](media/tutorial-sspr-windows/windows-sspr-azure-ad-audit-log.png)
+   * HideFastUserSwitching 设置为“启用”或 1
+   * DontDisplayLastUserName 设置为“启用”或 1
+   * NoLockScreen 设置为“启用”或 1
+   * 在设备上设置 EnableLostMode
+   * 将 Explorer.exe 替换为自定义 shell
 
 如果 Windows 10 计算机位于代理服务器或防火墙后面，应允许向 passwordreset.microsoftonline.com 和 ajax.aspnetcdn.com 传输 HTTPS 流量 (443)。
 
