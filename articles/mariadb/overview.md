@@ -8,17 +8,17 @@ services: mariadb
 ms.service: mariadb
 ms.topic: overview
 ms.custom: mvc
-ms.date: 11/14/2018
-ms.openlocfilehash: ed4c05afdc5b061c7779a0b1ca34975f8b06ad7d
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.date: 12/03/2018
+ms.openlocfilehash: b1e458339c2befdb51439cd23ef5f22ba4379c78
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51686008"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52850255"
 ---
 # <a name="what-is-azure-database-for-mariadb"></a>什么是 Azure Database for MariaDB？
 
-在 Microsoft 云中，Azure Database for MariaDB 是关系数据库服务。 Azure Database for MariaDB 基于 [MariaDB 社区版](https://mariadb.org/download/)数据库引擎，版本为 10.2。 此服务目前以公共预览版提供。 
+在 Microsoft 云中，Azure Database for MariaDB 是关系数据库服务。 Azure Database for MariaDB 基于 [MariaDB 社区版](https://mariadb.org/download/)数据库引擎，版本为 10.2。
 
 Azure Database for MariaDB 的优点包括：
 
@@ -43,7 +43,7 @@ For a set of Azure CLI samples, see:
 
 ## <a name="adjust-performance-and-scale-within-seconds"></a>几秒钟内调整性能和规模
 
-在预览版中，Azure Database for MariaDB 服务提供多个服务层：“基本”、“常规用途”和“内存优化”。 每个层提供不同的性能和功能，以支持从轻型到重型的数据库工作负荷。 可以在一个月内花费很少的费用基于小型数据库构建第一个应用，然后根据解决方案的需求调整缩放。 动态可伸缩性有助于数据库以透明方式对不断变化的资源需求做出响应。 只需在需要资源时为所需的资源付费。 有关详细信息，请参阅 [定价层](concepts-pricing-tiers.md)。
+Azure Database for MariaDB 服务提供多个服务层：“基本”、“常规用途”和“内存优化”。 每个层提供不同的性能和功能，以支持从轻型到重型的数据库工作负荷。 可以在一个月内花费很少的费用基于小型数据库构建第一个应用，然后根据解决方案的需求调整缩放。 动态可伸缩性有助于数据库以透明方式对不断变化的资源需求做出响应。 只需在需要资源时为所需的资源付费。 有关详细信息，请参阅 [定价层](concepts-pricing-tiers.md)。
 
 ## <a name="monitoring-and-alerting"></a>监视和警报
 
@@ -51,7 +51,7 @@ For a set of Azure CLI samples, see:
 
 ## <a name="keep-your-app-and-business-running"></a>使应用和业务持续运转
 
-Azure 行业领先的 99.99% 可用性 SLA（在公共预览版中未提供）由 Microsoft 管理的数据中心的全球网络提供支持。 此网络可以让应用全天候运行。 你可以受益于 Azure Database for MariaDB 中的内置安全性、容错和数据保护功能。 使用 Azure Database for MariaDB，可以使用时间点还原将服务器还原到以前的状态，最多可还原到 35 天前。
+Azure 行业领先的 99.99% 可用性 SLA 由 Microsoft 管理的数据中心的全球网络提供支持。 此网络可以让应用全天候运行。 你可以受益于 Azure Database for MariaDB 中的内置安全性、容错和数据保护功能。 使用 Azure Database for MariaDB，可以使用时间点还原将服务器还原到以前的状态，最多可还原到 35 天前。
 
 ## <a name="secure-your-data"></a>保护数据
 

@@ -10,14 +10,14 @@ ms.component: translator-text
 ms.topic: quickstart
 ms.date: 11/21/2018
 ms.author: erhopf
-ms.openlocfilehash: 4987a50f7a689b74062154b8427fd7bec8e2e8a6
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.openlocfilehash: d67fbdad32612f23b1de31f7d2a1d7b4dee3b68e
+ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52334304"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52889134"
 ---
-# <a name="quickstart-transliterate-text-with-the-translator-text-rest-api-c"></a>快速入门：使用文本翻译 REST API (C#) 对文本进行直译
+# <a name="quickstart-use-the-translator-text-api-to-transliterate-text-using-c"></a>快速入门：使用文本翻译 API 通过 C# 对文本进行直译
 
 本快速入门介绍如何使用 .NET Core (C#) 和文本翻译 REST API 将文本从一个脚本直译（转换）为另一个脚本。 在提供的示例中，日语在经过直译后使用拉丁字母。
 
@@ -28,7 +28,7 @@ ms.locfileid: "52334304"
 * [.NET SDK](https://www.microsoft.com/net/learn/dotnet/hello-world-tutorial)
 * [Json.NET NuGet 包](https://www.nuget.org/packages/Newtonsoft.Json/)
 * [Visual Studio](https://visualstudio.microsoft.com/downloads/)、[Visual Studio Code](https://code.visualstudio.com/download) 或你喜欢用的文本编辑器
-* 语音服务的 Azure 订阅密钥
+* 适用于文本翻译的 Azure 订阅密钥
 
 ## <a name="create-a-net-core-project"></a>创建 .NET Core 项目
 

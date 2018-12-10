@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 09/18/2018
 ms.author: ryanwi
 ms.custom: mvc, devcenter
-ms.openlocfilehash: cca18b2aa5cb6f27df45e4b63e55251bea058625
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 19a9ae18c7fbf3b0f663396099f065c76969206f
+ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46968843"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52890375"
 ---
 # <a name="tutorial-deploy-an-application-to-service-fabric-mesh-using-a-template"></a>教程：使用模板将应用程序部署到 Service Fabric 网格
 
@@ -51,7 +51,7 @@ ms.locfileid: "46968843"
 
 * [安装 Docker](service-fabric-mesh-howto-setup-developer-environment-sdk.md#install-docker)
 
-* [在本地安装 Azure CLI 和 Service Fabric 网格 CLI](service-fabric-mesh-howto-setup-cli.md#install-the-service-fabric-mesh-cli-locally)。
+* [在本地安装 Azure CLI 和 Service Fabric 网格 CLI](service-fabric-mesh-howto-setup-cli.md#install-the-azure-service-fabric-mesh-cli)。
 
 ## <a name="create-a-container-registry"></a>创建容器注册表
 
@@ -346,7 +346,7 @@ Service Fabric 网格应用程序是一种 Azure 资源，可以使用 Azure 资
 在参数文件中，更新以下参数值：
 |参数|值|
 |---|---|
-|location|要将应用程序部署到的区域。  例如，“eastus”。|
+|位置|要将应用程序部署到的区域。  例如，“eastus”。|
 |registryPassword|之前在[检索注册表凭据](#retrieve-credentials-for-the-registry)中获取的密码。 模板中的此参数是安全字符串，不会显示在部署状态或 `az mesh service show` 命令中。|
 |registryUserName|在[检索注册表凭据](#retrieve-credentials-for-the-registry)中获取的用户名。|
 |registryServer|在[检索注册表凭据](#retrieve-credentials-for-the-registry)中获取的注册表服务器名称。|
@@ -359,9 +359,27 @@ Service Fabric 网格应用程序是一种 Azure 资源，可以使用 Azure 资
 az mesh deployment create --resource-group myResourceGroup --template-file c:\temp\mesh_rp.windows.json --parameters c:\temp\mesh_rp.windows.parameters.json
 ```
 
-几分钟后，应该看到：
+此命令将生成如下所示的 JSON 代码片段。 在 JSON 输出的 ```outputs``` 部分下，复制 ```publicIPAddress``` 属性。
 
-`todolistappNetwork has been deployed successfully on todolistappNetwork with public ip address <IP Address>`
+```json
+"outputs": {
+    "publicIPAddress": {
+    "type": "String",
+    "value": "40.83.78.216"
+    }
+}
+```
+
+此信息来自 ARM 模板中的 ```outputs``` 节。 如下所示，此节引用网关资源来获取公共 IP 地址。 
+
+```json
+  "outputs": {
+    "publicIPAddress": {
+      "value": "[reference('helloWorldGateway').ipAddress]",
+      "type": "string"
+    }
+  }
+```
 
 ## <a name="open-the-application"></a>打开应用程序
 

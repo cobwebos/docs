@@ -1,30 +1,32 @@
 ---
-title: 使用 Java 应用程序将示例数据加载到 Azure Cosmos DB Cassandra API 表 | Microsoft 文档
-description: 本文介绍如何使用 Java 应用程序将示例用户数据加载到 Azure Cosmos DB Cassandra API 帐户中的表。
-services: cosmos-db
+title: 教程：使用 Java 应用程序将示例数据加载到 Azure Cosmos DB 中的 Cassandra API 表
+description: 本教程展示了如何使用 Java 应用程序将示例用户数据加载到 Azure Cosmos DB 中的 Cassandra API 表。
 author: kanshiG
 ms.service: cosmos-db
 ms.component: cosmosdb-cassandra
 ms.topic: tutorial
-ms.date: 09/24/2018
+ms.date: 12/03/2018
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: e116dbf1d49fed1a47b830f9a57cd77a33b7ea9c
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+Customer intent: As a developer, I want to build a Java application to load data to a Cassandra API table in Azure Cosmos DB so that customers can store and manage the key/value data and utilize the global distribution, elastic scaling, multi-master, and other capabilities offered by Azure Cosmos DB.
+ms.openlocfilehash: fad6d34a3d3712a036e0275717754f75d5314aae
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50740714"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52863647"
 ---
-# <a name="tutorial-load-sample-data-into-an-azure-cosmos-db-cassandra-api-table"></a>教程：将示例数据加载到 Azure Cosmos DB Cassandra API 表
+# <a name="tutorial-load-sample-data-into-a-cassandra-api-table-in-azure-cosmos-db"></a>教程：将示例数据加载到 Azure Cosmos DB 中的 Cassandra API 表
 
-本教程介绍如何使用 Java 应用程序将示例用户数据加载到 Azure Cosmos DB Cassandra API 帐户中的表。 Java 应用程序使用 [Java 驱动程序](https://github.com/datastax/java-driver)并加载用户 ID、用户名、用户城市等用户数据。 
+作为开发人员，你可能具有使用键/值对的应用程序。 你可以使用 Azure Cosmos DB 中的 Cassandra API 帐户来存储键/值数据。 本教程展示了如何使用 Java 应用程序将示例用户数据加载到 Azure Cosmos DB 中的 Cassandra API 帐户中的表。 该 Java 应用程序使用 [Java 驱动程序](https://github.com/datastax/java-driver)并加载用户数据，例如用户 ID、用户名和用户城市。 
 
 本教程涵盖以下任务：
 
 > [!div class="checklist"]
 > * 将数据加载到 Cassandra 表
 > * 运行应用
+
+如果还没有 Azure 订阅，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -74,7 +76,7 @@ ms.locfileid: "50740714"
 
 ## <a name="run-the-app"></a>运行应用
 
-打开命令提示符或终端窗口并更改已创建项目的文件夹路径。 运行“mvn clean install”命令，以在目标文件夹中生成 cosmosdb cassandra examples.jar 文件并运行应用程序。 
+打开一个命令提示符或终端窗口，并将文件夹路径更改到你在其中创建了项目的位置。 运行“mvn clean install”命令，以在目标文件夹中生成 cosmosdb cassandra examples.jar 文件并运行应用程序。 
 
 ```bash
 cd "cassandra-demo"
@@ -88,7 +90,7 @@ java -cp target/cosmosdb-cassandra-examples.jar com.azure.cosmosdb.cassandra.exa
     
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，你已了解如何将示例数据加载到 Azure Cosmos DB Cassandra API 帐户。 你现在可以继续学习下一篇文章：
+在本教程中，你已了解如何将示例数据加载到 Azure Cosmos DB 中的 Cassandra API 帐户。 你现在可以继续学习下一篇文章：
 
 > [!div class="nextstepaction"]
 > [从 Cassandra API 帐户查询数据](cassandra-api-query-data.md)

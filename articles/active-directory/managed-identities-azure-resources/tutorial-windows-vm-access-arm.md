@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
 ms.author: daveba
-ms.openlocfilehash: 19b4a1382b2a9b6034fd6ac9feed776dcca6a124
-ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
+ms.openlocfilehash: 53f9850d794061f5aaebc556743291ae8f3305fb
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51704352"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52721283"
 ---
 # <a name="use-a-windows-vm-system-assigned-managed-identity-to-access-resource-manager"></a>使用 Windows VM 系统分配的托管标识访问资源管理器
 
@@ -41,7 +41,7 @@ ms.locfileid: "51704352"
 1.  转到“资源组”选项卡。 
 2.  选择为 Windows VM 创建的特定“资源组”。 
 3.  转到左侧面板中的“访问控制(IAM)”。 
-4.  然后为 Windows VM 添加一个新的角色分配。  选择“角色”作为“读取器”。 
+4.  然后单击“添加角色分配”为 **Windows VM** 添加一个新的角色分配。  选择“阅读器”作为“角色”。 
 5.  在下一个下拉列表中，为资源虚拟机分配访问权限。 
 6.  接下来，请确保“订阅”下拉列表中列出的订阅正确无误。 对于“资源组”，请选择“所有资源组”。 
 7.  最后，在“选择”中，选择下拉列表中的 Windows VM 并单击“保存”。

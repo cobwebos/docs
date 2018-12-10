@@ -3,25 +3,25 @@ title: Azure 应用程序网关的定义
 description: 了解如何使用 Azure 应用程序网关管理应用程序的 Web 流量。
 services: application-gateway
 author: vhorne
-manager: jpconnock
 ms.service: application-gateway
 ms.topic: overview
 ms.custom: mvc
-ms.workload: infrastructure-services
 ms.date: 10/11/2018
 ms.author: victorh
-ms.openlocfilehash: 8352a95fa0701f6d2a0261d8d2fe2431971eccef
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.openlocfilehash: b58237f25a51438f0255243f960cc2a6aed2b0ca
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49068088"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52679165"
 ---
 # <a name="what-is-azure-application-gateway"></a>什么是 Azure 应用程序网关？
 
-Azure 应用程序网关是一种 Web 流量负载均衡器，可用于管理 Web 应用程序的流量。 
+Azure 应用程序网关是一种 Web 流量负载均衡器，可用于管理 Web 应用程序的流量。 传统负载均衡器在传输层（OSI 层 4 - TCP 和 UDP）进行操作，并基于源 IP 地址和端口将流量路由到目标 IP 地址和端口。
 
-传统负载均衡器在传输层（OSI 层 4 - TCP 和 UDP）进行操作，并基于源 IP 地址和端口将流量路由到目标 IP 地址和端口。 但在使用应用程序网关时，可以实现更具体的操作。 例如，可以基于传入 URL 路由流量。 因此，如果 `/images` 在传入 URL 中，则可将流量路由到为映像配置的一组特定服务器（称为池）中。 如果 `/video` 在 URL 中，则可将该流量路由到为视频优化的另一个池中。
+![应用程序网关概念](media/overview/figure1-720.png)
+
+但在使用应用程序网关时，可以实现更具体的操作。 例如，可以基于传入 URL 路由流量。 因此，如果 `/images` 在传入 URL 中，则可将流量路由到为映像配置的一组特定服务器（称为池）中。 如果 `/video` 在 URL 中，则可将该流量路由到为视频优化的另一个池中。
 
 ![imageURLroute](./media/application-gateway-url-route-overview/figure1-720.png)
 
@@ -31,7 +31,7 @@ Azure 应用程序网关是一种 Web 流量负载均衡器，可用于管理 We
 
 ## <a name="autoscaling-public-preview"></a>自动缩放（公共预览版）
 
-除了本文中介绍的功能之外，应用程序网关还提供了新 SKU [Standard_V2] 的公共预览版，它提供了自动缩放功能和其他重要的性能增强。
+除了本文中介绍的功能之外，应用程序网关还提供了新 SKU [Standard_V2] 的公共预览版，后者提供了自动缩放功能和其他重要的性能增强功能。
 
 - **自动缩放** - 凭借自动缩放 SKU，应用程序网关或 WAF 部署可根据变化中的流量负载模式增加或减少。 自动缩放还无需在预配期间要求选择部署大小或实例计数。 
 
@@ -44,6 +44,10 @@ Azure 应用程序网关是一种 Web 流量负载均衡器，可用于管理 We
 - 与已正式发布的 SKU 相比，**SSL 卸载性能提高 5 倍**。
 
 若要详细了解应用程序网关公共预览版功能，请参阅[自动缩放和区域冗余应用程序网关（公共预览版）](application-gateway-autoscaling-zone-redundant.md)。
+
+## <a name="secure-sockets-layer-ssl-termination"></a>安全套接字层 (SSL) 终止
+
+应用程序网关支持在网关上终止 SSL，之后，流量通常会以未加密状态流到后端服务器。 此功能让 Web 服务器不用再负担昂贵的加密和解密开销。 但有时，与服务器进行未加密的通信不是可以接受的选项。 这可能是因为安全要求、符合性要求，或者应用程序可能仅接受安全连接。 对于这些应用程序，应用程序网关支持端到端 SSL 加密。
 
 ## <a name="azure-kubernetes-service-aks-ingress-controller-preview"></a>Azure Kubernetes 服务 (AKS) 入口控制器预览版 
 
@@ -59,10 +63,6 @@ Azure 应用程序网关是一种 Web 流量负载均衡器，可用于管理 We
 应用程序网关允许你创建自定义错误页而非显示默认错误页。 你可以在自定义错误页上使用自己的品牌和布局。
 
 有关详细信息，请参阅[创建应用程序网关自定义错误页](custom-error.md)。
-
-## <a name="secure-sockets-layer-ssl-termination"></a>安全套接字层 (SSL) 终止
-
-应用程序网关支持在网关上终止 SSL，之后，流量通常会以未加密状态流到后端服务器。 此功能让 Web 服务器不用再负担昂贵的加密和解密开销。 但有时，与服务器进行未加密的通信不是可以接受的选项。 这可能是因为安全要求、符合性要求，或者应用程序可能仅接受安全连接。 对于此类应用程序，应用程序网关支持端到端 SSL 加密。
 
 ## <a name="web-application-firewall"></a>Web 应用程序防火墙
 
@@ -96,22 +96,15 @@ Web 应用程序已逐渐成为利用常见已知漏洞的恶意攻击的目标�
 - 基于路径的重定向。 这种类型的重定向只能在特定站点区域（例如 `/cart/*` 表示的购物车区域）中进行 HTTP 到 HTTPS 的重定向。
 - 重定向到外部站点。
 
-
-
 ## <a name="session-affinity"></a>会话相关性
 
 需要在同一服务器上保留用户会话时，可以使用基于 Cookie 的会话相关性功能。 借助网关托管的 Cookie，应用程序网关可以将来自用户会话的后续流量定向到同一服务器进行处理。 在用户会话的会话状态在服务器上进行本地保存的情况下，此功能十分重要。
 
-
-
-
 ## <a name="websocket-and-http2-traffic"></a>Websocket 和 HTTP/2 流量
 
 应用程序网关为 WebSocket 和 HTTP/2 协议提供本机支持。 用户无法通过配置设置来选择性地启用或禁用 WebSocket 支持。 可以通过 Azure PowerShell 启用 HTTP/2 支持。
- 
+
 WebSocket 和 HTTP/2 协议通过长时间运行的 TCP 连接，在服务器和客户端之间实现全双工通信。 此功能让 Web 服务器和客户端之间能够进行交互性更强的通信。这种通信可以是双向的，而且不像基于 HTTP 的实现那样需要轮询。 不同于 HTTP，这些协议的开销很低，并且可以对多个请求/响应重复使用同一 TCP 连接，从而提高资源利用率。 这些协议设计为通过传统 HTTP 端口 80 和 443 运行。
-
-
 
 ## <a name="next-steps"></a>后续步骤
 

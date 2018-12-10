@@ -11,13 +11,13 @@ author: dphansen
 ms.author: davidph
 ms.reviewer: ''
 manager: cgronlun
-ms.date: 11/07/2018
-ms.openlocfilehash: 382ac23ea4c8e0ec54314bb754c00a8e6e43e9f6
-ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.date: 11/30/2018
+ms.openlocfilehash: fc5398b4ffb0b9310b6ab13561830d8d3db7a611
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51300959"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52725737"
 ---
 # <a name="quickstart-use-machine-learning-services-with-r-in-azure-sql-database-preview"></a>快速入门：在 Azure SQL 数据库中使用机器学习服务（预览版，使用 R）
 
@@ -51,11 +51,10 @@ SQL 数据库中的机器学习服务（使用 R）目前仅在基于 vCore 的�
 
 ## <a name="different-from-sql-server"></a>不同于 SQL Server
 
-Azure SQL 数据库中机器学习服务（使用 R）的功能类似于 [SQL Server 机器学习服务](https://review.docs.microsoft.com/sql/advanced-analytics/what-is-sql-server-machine-learning)。 但是，两者存在一些差异：
+Azure SQL 数据库中机器学习服务（使用 R）的功能类似于 [SQL Server 机器学习服务](https://docs.microsoft.com/sql/advanced-analytics/what-is-sql-server-machine-learning)。 但是，两者存在一些差异：
 
 - 只能使用 R。 目前不支持 Python。
 - 不需通过 `sp_configure` 配置 `external scripts enabled`。
-- 不需向用户提供脚本执行权限。
 - 包必须通过 **sqlmlutils** 进行安装。
 - 没有单独的外部资源调控。 R 资源是特定百分比的 SQL 资源，具体取决于层。
 
@@ -82,12 +81,22 @@ Azure SQL 数据库中机器学习服务（使用 R）的功能类似于 [SQL Se
 
 1. 如果出现错误，则可能是因为尚未为 SQL 数据库启用机器学习服务（使用 R）的公共预览版。 了解如何注册获取上述公共预览版。
 
+## <a name="grant-permissions"></a>授予权限
+
+如果你是管理员，可以自动运行外部代码。 必须向其他所有人授予权限。
+
+在运行该命令之前，需将 `<username>` 替换为有效的数据库用户登录名。
+
+```sql
+GRANT EXECUTE ANY EXTERNAL SCRIPT TO <username>
+```
+
 ## <a name="basic-r-interaction"></a>基本的 R 交互
 
 可以通过两种方式在 SQL 数据库中运行 R 代码：
 
-+ 将 R 脚本作为系统存储过程 [sp_execute_external_script](https://docs.microsoft.com/sql//relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql.md) 的参数添加。
-+ 从[远程 R 客户端](https://review.docs.microsoft.com/sql/advanced-analytics/r/set-up-a-data-science-client)连接到 SQL 数据库，并使用 SQL 数据库作为计算上下文来执行代码。
++ 将 R 脚本作为系统存储过程 [sp_execute_external_script](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql) 的参数添加。
++ 从[远程 R 客户端](https://docs.microsoft.com/sql/advanced-analytics/r/set-up-a-data-science-client)连接到 SQL 数据库，并使用 SQL 数据库作为计算上下文来执行代码。
 
 以下练习着重于第一个交互模型：如何将 R 代码传递给存储过程。
 
@@ -119,7 +128,7 @@ Azure SQL 数据库中机器学习服务（使用 R）的功能类似于 [SQL Se
 
 ## <a name="inputs-and-outputs"></a>输入和输出
 
-默认情况下，[sp_execute_external_script](https://review.docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql.md) 接受单个输入数据集，该数据集通常以有效 SQL 查询的形式提供。 其他类型的输入可以作为 SQL 变量传递。
+默认情况下，[sp_execute_external_script](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql) 接受单个输入数据集，该数据集通常以有效 SQL 查询的形式提供。 其他类型的输入可以作为 SQL 变量传递。
 
 存储过程将单个 R 数据帧作为输出返回，但你也可以将标量和模型作为变量输出。 例如，可以将训练的模型作为二进制变量输出，然后将其传递给 T-SQL INSERT 语句，以便将该模型写入到表中。 也可生成绘图（二进制格式）或标量（单个值，例如日期和时间、训练模型所用的时间，等等）。
 
@@ -284,7 +293,7 @@ Microsoft 提供许多预安装在 SQL 数据库的机器学习服务中的 R �
     - 提供用于训练模型的输入数据。
 
     > [!TIP]
-    > 如果需要补习线性模型方面的内容，建议使用[线性模型拟合](https://docs.microsoft.com/r-server/r/how-to-revoscaler-linear-model)教程，它介绍了使用 rxLinMod 进行模型拟合的过程
+    > 如果需要补习线性模型方面的内容，建议使用[线性模型拟合](https://docs.microsoft.com/machine-learning-server/r/how-to-revoscaler-linear-model)教程，它介绍了使用 rxLinMod 进行模型拟合的过程
 
     若要生成模型，请在 R 代码中定义公式，然后以输入参数的方式传递数据。
 
@@ -337,7 +346,7 @@ Microsoft 提供许多预安装在 SQL 数据库的机器学习服务中的 R �
     WHERE model_name = 'default model'
     ```
 
-4. 通常情况下，存储过程 [sp_execute_external_script](https://review.docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql.md) 的 R 输出仅限单个数据帧。
+4. 通常情况下，存储过程 [sp_execute_external_script](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql) 的 R 输出仅限单个数据帧。
 
     但是，可以返回除数据帧之外的其他类型的输出，例如标量。
 
@@ -381,7 +390,7 @@ Microsoft 提供许多预安装在 SQL 数据库的机器学习服务中的 R �
     VALUES (40), (50), (60), (70), (80), (90), (100)
     ```
 
-    在以下示例中，由于模型基于 **RevoScaleR** 包中提供的 **rxLinMod** 算法，因此调用 [rxPredict](https://docs.microsoft.com/r-server/r-reference/revoscaler/rxpredict) 函数而不是 R 的泛型 `predict` 函数。
+    在以下示例中，由于模型基于 **RevoScaleR** 包中提供的 **rxLinMod** 算法，因此调用 [rxPredict](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/rxpredict) 函数而不是 R 的泛型 `predict` 函数。
 
     ```sql
     DECLARE @speedmodel varbinary(max) = 
@@ -410,7 +419,7 @@ Microsoft 提供许多预安装在 SQL 数据库的机器学习服务中的 R �
     + 从表中检索模型以后，在该模型上调用 `unserialize` 函数。
 
         > [!TIP] 
-        > 另请查看由 RevoScaleR 提供的新的[序列化函数](https://docs.microsoft.com/r-server/r-reference/revoscaler/rxserializemodel)，这些函数支持实时评分。
+        > 另请查看由 RevoScaleR 提供的新的[序列化函数](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/rxserializemodel)，这些函数支持实时评分。
     + 将带有适当参数的 `rxPredict` 函数应用到模型，并提供新的输入数据。
 
     + 在示例中，`str` 函数是在测试阶段添加的，用于检查从 R 返回的数据的架构。可以稍后删除该语句。
@@ -439,7 +448,7 @@ Microsoft 提供许多预安装在 SQL 数据库的机器学习服务中的 R �
     R -e "install.packages('RODBCext', repos='https://cran.microsoft.com')"
     ```
 
-    如果收到“'R' 未识别为内部或外部命令、可运行程序或批处理文件。”之类的错误，则可能意味着 R.exe 的路径未包括在 Windows 的 **PATH** 环境变量中。 可以将目录添加到该环境变量，也可以导航到命令提示符中的目录（例如 `cd C:\Program Files\R\R-3.5.1\bin`）。
+    如果收到错误“'R' 未识别为内部或外部命令、可运行程序或批处理文件”，则可能意味着 R.exe 的路径未包括在 Windows 的 **PATH** 环境变量中。 在运行此命令之前，可以将目录添加到该环境变量，也可以导航到命令提示符中的目录（例如 `cd C:\Program Files\R\R-3.5.1\bin`）。
 
 1. 使用 **R CMD INSTALL** 命令安装 **sqlmlutils**。 指定已将 zip 文件下载到其中的目录的路径，以及 zip 文件的名称。 例如：
 
@@ -523,7 +532,7 @@ Microsoft 提供许多预安装在 SQL 数据库的机器学习服务中的 R �
 
 若要详细了解机器学习服务，请参阅下述有关 SQL Server 机器学习服务的文章。 虽然这些文章是针对 SQL Server 的，但大多数信息也适用于 Azure SQL 数据库中的机器学习服务（使用 R）。
 
-- [SQL Server 机器学习服务](https://review.docs.microsoft.com/sql/advanced-analytics/what-is-sql-server-machine-learning)
-- [Tutorial: Learn in-database analytics using R in SQL Server](https://review.docs.microsoft.com/sql/advanced-analytics/tutorials/sqldev-in-database-r-for-sql-developers)（教程：了解如何在 SQL Server 中使用 R 进行数据库内分析）
-- [End-to-end data science walkthrough for R and SQL Server](https://review.docs.microsoft.com/sql/advanced-analytics/tutorials/walkthrough-data-science-end-to-end-walkthrough)（适用于 R 和 SQL Server 的端到端数据科学演练）
-- [Tutorial: Use RevoScaleR R functions with SQL Server data](https://review.docs.microsoft.com/sql/advanced-analytics/tutorials/deepdive-data-science-deep-dive-using-the-revoscaler-packages)（教程：将 RevoScaleR R 函数与 SQL Server 数据配合使用）
+- [SQL Server 机器学习服务](https://docs.microsoft.com/sql/advanced-analytics/what-is-sql-server-machine-learning)
+- [Tutorial: Learn in-database analytics using R in SQL Server](https://docs.microsoft.com/sql/advanced-analytics/tutorials/sqldev-in-database-r-for-sql-developers)（教程：了解如何在 SQL Server 中使用 R 进行数据库内分析）
+- [End-to-end data science walkthrough for R and SQL Server](https://docs.microsoft.com/sql/advanced-analytics/tutorials/walkthrough-data-science-end-to-end-walkthrough)（适用于 R 和 SQL Server 的端到端数据科学演练）
+- [Tutorial: Use RevoScaleR R functions with SQL Server data](https://docs.microsoft.com/sql/advanced-analytics/tutorials/deepdive-data-science-deep-dive-using-the-revoscaler-packages)（教程：将 RevoScaleR R 函数与 SQL Server 数据配合使用）

@@ -12,16 +12,16 @@ ms.author: jovanpop
 ms.reviewer: Carlrab
 manager: craigg
 ms.date: 11/28/2018
-ms.openlocfilehash: b7a3fc6e5dafb59d6981ff4302d4b060b0c73d6b
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: d5be25abc634200e0c0afed6946b38fd163fb78e
+ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52499251"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52890494"
 ---
 # <a name="quickstart-create-an-azure-sql-database-managed-instance"></a>快速入门：创建 Azure SQL 数据库托管实例
 
-本快速入门分步介绍了如何在 Azure 门户中创建 Azure SQL 数据库[托管实例](sql-database-managed-instance.md)。 
+本快速入门分步介绍了如何在 Azure 门户中创建 Azure SQL 数据库[托管实例](sql-database-managed-instance.md)。
 
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
@@ -45,7 +45,7 @@ ms.locfileid: "52499251"
    | ------ | --------------- | ----------- |
    | **订阅** | 订阅 | 你有权在其中创建新资源的订阅 |
    |**托管实例名称**|任何有效的名称|请参阅[命名规则和限制](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)，了解什么是有效的名称。|
-   |**托管实例管理员登录名**|任何有效的用户名|请参阅[命名规则和限制](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)，了解什么是有效的名称。 不要使用“serveradmin”，因为这是保留的服务器级角色。| 
+   |**托管实例管理员登录名**|任何有效的用户名|请参阅[命名规则和限制](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)，了解什么是有效的名称。 不要使用“serveradmin”，因为这是保留的服务器级角色。|
    |**密码**|任何有效的密码|密码必须至少 16 个字符，且符合[定义的复杂性要求](../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm)。|
    |**位置**|你要在其中创建托管实例的位置|有关区域的信息，请参阅 [Azure 区域](https://azure.microsoft.com/regions/)。|
    |**虚拟网络**|选择“创建新的虚拟网络”或选择在你之前在此窗体中提供的资源组中以前创建的一个虚拟网络。| 若要使用自定义设置为托管实例配置虚拟网络，请参阅 Github 中的[配置 SQL 托管实例虚拟网络环境模板](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-managed-instance-azure-environment)。 若要了解为托管实例配置网络环境的要求，请参阅[为 Azure SQL 数据库托管实例配置 VNet](sql-database-managed-instance-vnet-configuration.md)。 |
@@ -53,15 +53,16 @@ ms.locfileid: "52499251"
 
    ![托管实例名称窗体](./media/sql-database-managed-instance-get-started/managed-instance-create-form.png)
 
-5. 选择“定价层”，设置计算和存储资源的大小并查看定价层选项。 默认值是具有 32 GB 内存和 16 个 vCore 的“常规用途”定价层。
-6. 使用滑块或文本框指定存储量和虚拟核心数。 
-7. 完成后选择“应用”，保存选择的内容。  
-8. 选择“创建”，部署托管实例。
-9. 选择“通知”图标，查看部署的状态。
+5. 若要将托管实例用作实例故障转移组辅助实例，请选择“签出”并指定 DnsAzurePartner 托管实例。 此功能处于预览状态，未在随附的屏幕截图中显示。
+6. 选择“定价层”，设置计算和存储资源的大小并查看定价层选项。 默认值是具有 32 GB 内存和 16 个 vCore 的“常规用途”定价层。
+7. 使用滑块或文本框指定存储量和虚拟核心数。
+8. 完成后选择“应用”，保存选择的内容。  
+9. 选择“创建”，部署托管实例。
+10. 选择“通知”图标，查看部署的状态。
 
     ![托管实例部署进度](./media/sql-database-managed-instance-get-started/deployment-progress.png)
 
-10. 选择“正在进行的部署”以打开“托管实例”窗口，进一步监视部署进度。 
+11. 选择“正在进行的部署”以打开“托管实例”窗口，进一步监视部署进度。
 
 > [!IMPORTANT]
 > 子网中第一个实例的部署时间通常远超后续实例的部署时间。 请勿因持续时间超出预期而取消部署操作。 在子网中创建第二个托管实例仅需要花费数分钟时间。
@@ -78,7 +79,6 @@ ms.locfileid: "52499251"
 
 3. 在“概览”选项卡上，找到“主机”属性并复制托管实例的完全限定主机地址。
 
-
    ![托管实例资源](./media/sql-database-managed-instance-get-started/host-name.png)
 
    名称类似于 **your_machine_name.a1b2c3d4e5f6.database.windows.net**。
@@ -90,4 +90,4 @@ ms.locfileid: "52499251"
   - 有关展示了如何从 Azure 虚拟机连接到托管实例的快速入门，请参阅[配置 Azure 虚拟机连接](sql-database-managed-instance-configure-vm.md)。
   - 如需介绍如何使用点到站点连接从本地客户端计算机连接到托管实例的快速入门，请参阅[配置点到站点连接](sql-database-managed-instance-configure-p2s.md)。
 - 若要将现有 SQL 服务器数据库从本地还原到托管实例，可以使用[用于迁移的 Azure 数据库迁移服务 (DMS)](../dms/tutorial-sql-server-to-managed-instance.md) 从数据库备份文件还原，或使用 [T-SQL RESTORE 命令](sql-database-managed-instance-get-started-restore.md)从数据库备份文件还原。
-- 有关使用内置故障排除智能对托管实例数据库性能进行的高级监视，请参阅[使用 Azure SQL Analytics 监视 Azure SQL 数据库](../log-analytics/log-analytics-azure-sql.md)
+- 有关使用内置故障排除智能对托管实例数据库性能进行的高级监视，请参阅[使用 Azure SQL Analytics 监视 Azure SQL 数据库](../azure-monitor/insights/azure-sql.md)

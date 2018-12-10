@@ -7,12 +7,12 @@ ms.service: container-registry
 ms.topic: quickstart
 ms.date: 08/20/2018
 ms.author: danlep
-ms.openlocfilehash: 1f1e7ce41c00078c0181fc5f32c43b7e5885eef8
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: 6db5bb4ee1995e08bd00588203db1fdba87a3db5
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48857663"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52727320"
 ---
 # <a name="content-trust-in-azure-container-registry"></a>Azure 容器注册表中的内容信任
 
@@ -77,7 +77,7 @@ docker build --disable-content-trust -t myacr.azurecr.io/myimage:v1 .
 
 ### <a name="azure-portal"></a>Azure 门户
 
-导航到 Azure 门户中的注册表，然后选择“访问控制(IAM)” > “添加”。 在“添加权限”下的“角色”下选择“`AcrImageSigner`”，然后在“选择”下选择一个或多个用户或服务主体，然后单击“保存”。
+导航到 Azure 门户中的注册表，然后选择“访问控制(IAM)” > “添加角色分配”。 在“添加角色分配”下的“角色”下选择“`AcrImageSigner`”，然后**选择**一个或多个用户或服务主体，然后单击“保存”。
 
 在此示例中，为以下两个实体分配了 `AcrImageSigner` 角色：名为“service-principal”的服务主体，以及名为“Azure 用户”的用户。
 

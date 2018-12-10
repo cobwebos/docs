@@ -5,16 +5,16 @@ services: service-fabric-mesh
 keywords: ''
 author: tylermsft
 ms.author: twhitney
-ms.date: 08/08/2018
+ms.date: 11/29/2018
 ms.topic: get-started-article
 ms.service: service-fabric-mesh
 manager: jeconnoc
-ms.openlocfilehash: 0531985cbab9c10b4df8ea3f27ac6c7903790da5
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
+ms.openlocfilehash: bec0b9a7e34f1577f80a99f5380795c479c04bc8
+ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50978224"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52890460"
 ---
 # <a name="set-up-your-windows-development-environment-to-build-service-fabric-mesh-apps"></a>设置 Windows 开发环境以生成 Service Fabric 网格应用
 
@@ -73,27 +73,31 @@ Install-WindowsFeature Containers
 
 ## <a name="build-a-cluster"></a>生成群集
 
+> [!IMPORTANT]
+> 在生成群集之前，Docker **必须**正在运行。
+> 若要测试 Docker 是否正在运行，请打开一个终端窗口，运行 `docker ps` 并查看是否出错。 如果响应中未指示错误，则表示 Docker 正在运行，可以生成群集。
+
 如果使用的是 Visual Studio，则可以跳过本部分，因为如果你还没有创建本地群集，Visual Studio 将创建它。
 
 为了在创建和运行 Service Fabric 应用时获得最佳调试性能，我们建议创建单节点本地开发群集。 每当部署或调试 Service Fabric 网格项目时，都必须运行此群集。
 
-在生成群集之前，Docker **必须**正在运行。 若要测试 Docker 是否正在运行，请打开一个终端窗口，运行 `docker ps` 并查看是否出错。 如果响应中未指示错误，则表示 Docker 正在运行，可以生成群集。
-
-安装运行时、SDK 和 Visual Studio 工具后，创建开发群集。
+安装运行时、SDK、Visual Studio 工具、Docker 并运行 Docker 之后，创建一个开发群集。
 
 1. 关闭 PowerShell 窗口。
 2. 以管理员身份打开权限提升的新 PowerShell 窗口。 需要执行此步骤来加载最近安装的 Service Fabric 模块。
 3. 运行以下 PowerShell 命令创建开发群集：
 
     ```powershell
-    . "C:\Program Files\Microsoft SDKs\Service Fabric\ClusterSetup\DevClusterSetup.ps1" -CreateOneNodeCluster -UseMachineName
+    . "C:\Program Files\Microsoft SDKs\Service Fabric\ClusterSetup\DevClusterSetup.ps1" -CreateMeshCluster -CreateOneNodeCluster
     ```
-
 4. 若要启动本地群集管理器工具，请运行以下 PowerShell 命令：
 
     ```powershell
     . "C:\Program Files\Microsoft SDKs\Service Fabric\Tools\ServiceFabricLocalClusterManager\ServiceFabricLocalClusterManager.exe"
     ```
+5. 服务群集管理器工具运行后（它出现在系统托盘中），右键单击它并单击“启动本地群集”。
+
+![图 1 - 启动本地群集](./media/service-fabric-mesh-howto-setup-developer-environment-sdk/start-local-cluster.png)
 
 现在，可以开始创建 Service Fabric 网格应用程序！
 
@@ -109,5 +113,5 @@ Install-WindowsFeature Containers
 [download-runtime]: https://aka.ms/sfruntime
 [download-sdk]: https://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric-CoreSDK
 [download-sdkmesh]: https://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric-SDK-Mesh
-[download-tools]: https://marketplace.visualstudio.com/items?itemName=ms-azuretools.ServiceFabricMesh
+[download-tools]: https://aka.ms/sfmesh_vs2017tools
 [download-visual-studio]: https://www.visualstudio.com/downloads/

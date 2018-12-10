@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 08/29/2018
 ms.author: twhitney
 ms.custom: mvc
-ms.openlocfilehash: 06bc4be6ee485e61523d210b692c3fe2567cc62c
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.openlocfilehash: 2320aaf2d502280a29562a49dfff1e4e9244d079
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52443485"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52872962"
 ---
 # <a name="tutorial-deploy-a-container-application-with-cicd-to-a-service-fabric-cluster"></a>教程：通过 CI/CD 将容器应用程序部署到 Service Fabric 群集
 
@@ -65,7 +65,7 @@ ms.locfileid: "52443485"
 
 发布存储库会在你的帐户中创建一个与本地存储库同名的新团队项目。 若要在现有团队项目中创建存储库，请单击“存储库名称”旁边的“高级”并选择一个团队项目。 可以通过选择“在 web 上查看”来在 web 上查看代码。
 
-## <a name="configure-continuous-delivery-with-vsts"></a>配置“使用 VSTS 实现持续交付”
+## <a name="configure-continuous-delivery-with-azure-pipelines"></a>使用 Azure Pipelines 配置持续交付
 
 Azure DevOps 生成定义所描述的工作流由一系列按顺序执行的生成步骤组成。 创建一个生成定义，以生成要部署到 Service Fabric 群集的 Service Fabric 应用程序包和其他项目。 详细了解 Azure DevOps [生成定义](https://www.visualstudio.com/docs/build/define/create)。 
 

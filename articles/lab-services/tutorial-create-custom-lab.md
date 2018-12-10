@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 05/17/2018
 ms.author: spelluru
-ms.openlocfilehash: c3eecfdf4bc2e6bf6798a6b3845cdc2e2e243341
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: ee2def6287a845cd0fd0260254efb20f9638ab2c
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49467423"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52839035"
 ---
 # <a name="tutorial-set-up-a-lab-by-using-azure-devtest-labs"></a>教程：使用 Azure 开发测试实验室设置实验室
 在此教程中，使用 Azure 门户创建实验室。 实验室管理员在组织中设置实验室、创建实验室中的 VM 并配置策略。 实验室用户（例如：开发人员和测试人员）认领、连接到并使用实验室中的 VM。 
@@ -80,15 +80,11 @@ ms.locfileid: "49467423"
 1. 在左侧菜单中，选择“配置和策略”。 
 
     ![配置和策略](./media/tutorial-create-custom-lab/configuration-and-policies-menu.png)
-1. 从菜单中选择“访问控制 (IAM)”，并在工具栏中选择“+ 添加”。 
-
-    ![访问控制 - 添加用户按钮](./media/tutorial-create-custom-lab/access-control-add.png)
+1. 从菜单中选择“访问控制(IAM)”，并在工具栏中选择“+ 添加角色分配”。 
 1. 在“添加权限”页上，执行以下操作：
     1. 在“角色”中，选择“开发测试实验室用户”。 
     2. 选择要添加的“用户”。 
     3. 选择“保存”。
-
-        ![添加权限](./media/tutorial-create-custom-lab/add-lab-user.png)
 4. 若要关闭“配置和策略 - 访问控制 (IAM)”，请选择右上角的“X”。 
 
 ## <a name="cleanup-resources"></a>清理资源

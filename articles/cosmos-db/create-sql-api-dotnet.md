@@ -1,28 +1,28 @@
 ---
-title: 使用 SQL API 生成包含 Azure Cosmos DB 的 .NET Web 应用 | Microsoft Docs
+title: 使用 SQL API 生成包含 Azure Cosmos DB 的 .NET Web 应用
 description: 本快速入门介绍如何使用 Azure Cosmos DB SQL API 和 Azure 门户创建 .NET Web 应用
 services: cosmos-db
 author: SnehaGunda
-manager: kfile
+ms.author: sngun
 ms.service: cosmos-db
 ms.component: cosmosdb-sql
 ms.custom: quick start connect, mvc, devcenter
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 04/10/2018
-ms.author: sngun
 clicktale: true
-ms.openlocfilehash: 506d21589ee8c5d284bd9ffc430d8b1d40afb910
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.date: 04/10/2018
+ms.openlocfilehash: a41042dc72fc7883d5b3185453eab446a1378ce4
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50741719"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52832303"
 ---
 # <a name="quickstart-build-a-net-web-app-with-azure-cosmos-db-using-the-sql-api-and-the-azure-portal"></a>快速入门：使用 SQL API 和 Azure 门户生成包含 Azure Cosmos DB 的 .NET Web 应用
 
 > [!div class="op_single_selector"]
 > * [.NET](create-sql-api-dotnet.md)
+> * [.NET（预览版）](create-sql-api-dotnet-preview.md)
 > * [Java](create-sql-api-java.md)
 > * [Node.js](create-sql-api-nodejs.md)
 > * [Python](create-sql-api-python.md)

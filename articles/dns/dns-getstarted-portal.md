@@ -1,107 +1,111 @@
 ---
 title: 快速入门 - 使用 Azure 门户创建 DNS 区域和记录
-description: 使用本快速入门了解如何在 Azure DNS 中创建 DNS 区域和记录。 这是有关使用 Azure 门户创建和管理第一个 DNS 区域和记录的分步指南。
+description: 使用此分步快速入门指南了解如何使用 Azure 门户创建 Azure DNS 区域和记录。
 services: dns
 author: vhorne
-manager: jeconnoc
 ms.service: dns
 ms.topic: quickstart
-ms.date: 6/13/2018
+ms.date: 12/4/2018
 ms.author: victorh
-ms.openlocfilehash: 0acb5bf18c078d8b7eb6a5c14a61fcef622f9f2d
-ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
+ms.openlocfilehash: f54a9e40c4f75704e66c4a3a90ad4b293d1e6309
+ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/06/2018
-ms.locfileid: "48831121"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52889219"
 ---
-# <a name="quickstart-configure-azure-dns-for-name-resolution-using-the-azure-portal"></a>快速入门：使用 Azure 门户将 Azure DNS 配置为进行名称解析
+# <a name="quickstart-configure-azure-dns-for-name-resolution-by-using-the-portal"></a>快速入门：使用门户配置用于名称解析的 Azure DNS
 
- 可以将 Azure DNS 配置为解析公共域中的主机名。 例如，如果从某个域名注册机构购买了 contoso.com 域名，则可将 Azure DNS 配置为托管 contoso.com 域，并将 www.contoso.com 解析为 Web 服务器或 Web 应用的 IP 地址。
+可以将 Azure DNS 配置为解析公共域中的主机名。 例如，如果从某个域名注册机构购买了 *contoso.com* 域名，则可配置 Azure DNS 来托管 *contoso.com* 域，并将 *www.contoso.com* 解析为 Web 服务器或 Web 应用的 IP 地址。
 
-在本快速入门中，将先创建一个测试域，然后创建一个名为“www”的可解析为 IP 地址 10.10.10.10 的地址记录。
+在本快速入门中，你将创建一个测试域，然后创建一个地址记录来将 *www* 解析为 IP 地址 *10.10.10.10*。
 
-请注意，本快速入门中使用的所有名称和 IP 地址都只是示例，不代表实际方案。 但在适用情况下，也会讨论实际方案。
+>[!IMPORTANT]
+>本快速入门中的所有名称和 IP 地址都是示例，不代表实际场景。 本快速入门还根据情况讨论了现实意义。
 
 <!---
 You can also perform these steps using [Azure PowerShell](dns-getstarted-powershell.md) or the cross-platform [Azure CLI](dns-getstarted-cli.md).
 --->
 
-DNS 区域用来包含某个特定域的 DNS 条目。 若要开始在 Azure DNS 中托管域，需要为该域名创建 DNS 区域。 随后会在此 DNS 区域内为每个 DNS 条目（或记录）创建域。 以下步骤显示如何执行该操作。
-
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+
+对于所有门户步骤，请登录到 [Azure 门户](https://portal.azure.com)。
 
 ## <a name="create-a-dns-zone"></a>创建 DNS 区域
 
-1. 登录到 Azure 门户。
-2. 在左上角依次单击“+ 创建资源”、“网络”、“DNS 区域”以打开“创建 DNS 区域”页。
+DNS 区域包含域的 DNS 条目。 若要开始在 Azure DNS 中托管域，请为该域名创建一个 DNS 区域。 
 
-    ![DNS 区域](./media/dns-getstarted-portal/openzone650.png)
+**创建 DNS 区域：**
 
-4. 在“创建 DNS 区域”页上，输入以下值，并单击“创建”：
+1. 在左上角，选择“创建资源”，然后依次选择“网络”和“DNS 区域”。
+   
+1. 在“创建 DNS 区域”页上，键入或选择以下值：
+   
+   - **名称**：对于本快速入门示例，键入 *contoso.xyz*。 DNS 区域名称可以是尚未在 Azure DNS 服务器上配置的任何值。 实际值可以是从域名注册机构购买的域。
+   - **资源组**：选择“新建”，输入 *dns-test*，然后选择“确定”。 资源组名称在 Azure 订阅中必须唯一。 
+   
+1. 选择“创建”。
 
-
-   | **设置** | **值** | **详细信息** |
-   |---|---|---|
-   |**Name**|contoso.xyz|此示例的 DNS 区域名称可以是本快速入门所需的任何值，只要它尚未在 Azure DNS 服务器上配置即可。 实际值可以是从域名注册机构购买的域。|
-   |**订阅**|[订阅]|选择要在其中创建 DNS 区域的订阅。|
-   |**资源组**|**新建：** dns-test|创建资源组。 资源组名称必须在所选订阅中唯一。 |
-   |**位置**|美国东部||
-
+   ![DNS 区域](./media/dns-getstarted-portal/openzone650.png)
+   
 创建区域可能需要几分钟。
 
 ## <a name="create-a-dns-record"></a>创建 DNS 记录
 
-现在请创建新的地址记录（“A”记录）。 “A”记录用于将主机名解析为 IPv4 地址。
+在 DNS 区域中为你的域创建 DNS 条目或记录。 创建一个新的地址记录或“A”记录以将主机名解析为 IPv4 地址。
 
-1. 在 Azure 门户的“收藏夹”窗格中单击“所有资源”。 在“所有资源”页中单击“contoso.xyz”DNS 区域。 如果所选订阅中已包含多个资源，则可在“按名称筛选…”框中输入“contoso.xyz”， 轻松访问 DNS 区域。
+**创建“A”记录：**
 
-1. 在“DNS 区域”页顶部，选择“+ 记录集”以打开“添加记录集”页。
+1. 在 Azure 门户中，在“所有资源”下，打开 **dns-test** 资源组中的 **contoso.xyz** DNS 区域。 可以在“按名称筛选”框中输入 *contoso.xyz* 来更轻松地找到它。
 
-1. 在“添加记录集”页中，输入以下值，并单击“确定”。 在此示例中，请创建一个“A”记录。
+1. 在“DNS 区域”页面顶部，选择“+ 记录集”。
 
-   |**设置** | **值** | **详细信息** |
-   |---|---|---|
-   |**Name**|www|记录的名称。 这是需用于主机的名称，而该主机需解析为 IP 地址。|
-   |类型|A| 要创建的 DNS 记录的类型。 “A”记录是最常见的，但是也有其他适用于邮件服务器 (MX)、IP v6 地址 (AAAA) 等的记录类型。 |
-   |**TTL**|1|DNS 请求的生存时间。 指定允许 DNS 服务器和客户端缓存响应的时间。|
-   |**TTL 单位**|小时|TTL 值的时间度量。|
-   |IP 地址|10.10.10.10| 此值是“A”记录解析成的 IP 地址。 这只是本快速入门的测试值。 对于实际示例，则请输入 Web 服务器的公共 IP 地址。|
+1. 在“添加记录集”页上，键入或选择以下值：
 
+   - **名称**：键入 *www*。 记录名称是你要解析为指定 IP 地址的主机名。
+   - **类型**：选择“A”。“A”记录是最常见的，但是也有其他适用于邮件服务器（“MX”）、IP v6 地址（“AAAA”）等的记录类型。 
+   - **TTL**：键入 *1*。 DNS 请求的*存活时间*指定 DNS 服务器和客户端可以将响应缓存多长时间。
+   - **TTL 单位**：选择“小时”。 这是用于 **TTL** 值的时间单位。 
+   - **IP 地址**：对于本快速入门示例，键入 *10.10.10.10*。 此值是记录名称解析为的 IP 地址。 在现实场景中，则应输入 Web 服务器的公用 IP 地址。
 
-由于在本快速入门中并没有实际购买真实的域名，因此不需将 Azure DNS 配置为域名注册机构的名称服务器。 但在实际方案中，则需 Internet 上的任何人都能够解析你的主机，以便连接到你的 Web 服务器或应用。 有关实际方案的详细信息，请参阅[将域委托给 Azure DNS](dns-delegate-domain-azure-dns.md)。
-
+因为本快速入门未使用真实的域，因此不需要在域名注册机构那里配置 Azure DNS 名称服务器。 对于现实域，你希望 Internet 上的任何人都能够解析主机名，以便连接到你的 Web 服务器或应用。 你将访问域名注册机构来将名称服务器记录替换为 Azure DNS 名称服务器。 有关详细信息，请参阅[教程：在 Azure DNS 中托管域](dns-delegate-domain-azure-dns.md#delegate-the-domain)。
 
 ## <a name="test-the-name-resolution"></a>测试名称解析
 
-有了测试区域且在其中有了测试性的“A”记录以后，即可使用名为 nslookup 的工具测试名称解析。 
+现在，你已有一个测试 DNS 区域且其中有一个测试“A”记录，可以使用名为 *nslookup* 的工具来测试名称解析了。 
 
-1. 首先，需记下要通过 nslookup 使用的 Azure DNS 名称服务器。 
+**测试 DNS 名称解析：**
 
-   用于你的区域的名称服务器列在 DNS 区域的“概述”页上。 复制其中一个名称服务器的名称：
+1. 在 Azure 门户中，在“所有资源”下，打开 **dns-test** 资源组中的 **contoso.xyz** DNS 区域。 可以在“按名称筛选”框中输入 *contoso.xyz* 来更轻松地找到它。
 
-   ![区域](./media/dns-getstarted-portal/viewzonens500.png)
-
-2. 现在请打开一个命令提示符并运行以下命令：
-
-   ```
-   nslookup <host name> <name server>
+1. 在“概述”页面上从名称服务器列表中复制其中一个名称服务器名称。 
    
-   For example:
+   ![区域](./media/dns-getstarted-portal/viewzonens500.png)
+   
+   >[!NOTE]
+   >在现实场景中，你将复制全部四个名称服务器名称，包括尾部句点，并在你的域注册机构那里将其用于新的 Azure DNS 名称服务器名称。 有关详细信息，请参阅[将域委托给 Azure DNS](dns-delegate-domain-azure-dns.md)。
+   
+1. 打开一个命令提示符，并运行以下命令：
 
-   nslookup www.contoso.xyz ns1-08.azure-dns.com
    ```
+   nslookup <host name> <name server name>
+   ```
+   
+   例如：
+   
+   ```
+   nslookup www.contoso.xyz ns1-08.azure-dns.com.
+   ```
+   
+   应当会看到类似以下屏幕的内容：
+   
+   ![nslookup](media/dns-getstarted-portal/nslookup.PNG)
 
-此时会看到类似以下屏幕截图的结果：
-
-![nslookup](media/dns-getstarted-portal/nslookup.PNG)
-
-验证名称解析是否正常工作。 www.contoso.xyz 解析为 10.10.10.10，就像你所配置的那样！
+主机名 **www.contoso.xyz** 解析为 **10.10.10.10**，正如你配置的那样。 此结果表明名称解析正常工作。 
 
 ## <a name="clean-up-resources"></a>清理资源
 
-不再需要时，可以通过删除 **dns-test** 资源组来删除本快速入门中创建的资源。 若要执行此操作，请单击“dns-test”资源组，然后单击“删除资源组”。
-
+当不再需要你在本快速入门中创建的资源时，通过删除 **dns-test** 资源组将它们删除。 打开 **dns-test** 资源组，并选择“删除资源组”。
 
 ## <a name="next-steps"></a>后续步骤
 

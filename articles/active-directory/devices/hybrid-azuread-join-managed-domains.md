@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 11/01/2018
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: 48bedff0cd09c3f0dbffdabe6a94847d035a0cf9
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 7061776ba5325a333033d0f272de3b2663b44351
+ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50963925"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52887791"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-join-for-managed-domains"></a>教程：为托管域配置混合 Azure Active Directory 联接
 
@@ -140,6 +140,8 @@ ms.locfileid: "50963925"
  
 - 配置设备注册的本地 Intranet 设置
 
+- 配置无缝单一登录 (SSO)
+
 - 控制 Windows 下层设备 
 
 
@@ -166,6 +168,11 @@ ms.locfileid: "50963925"
 - `https://autologon.microsoftazuread-sso.com`。
 
 此外，还需要在用户的本地 Intranet 区域中启用“允许通过脚本更新状态栏”。
+
+
+### <a name="configure-seamless-sso"></a>配置无缝 SSO
+
+若要在使用直通身份验证 (PTA) 或密码哈希同步 (PHS) 作为 Azure AD 云身份验证方法的托管域中成功完成 Windows 下层设备的混合 Azure AD 联接 ，还必须[配置无缝 SSO](https://docs.microsoft.com/en-us/azure/active-directory/hybrid/how-to-connect-sso-quick-start#step-2-enable-the-feature)。 
 
 
 ### <a name="control-windows-down-level-devices"></a>控制 Windows 下层设备 

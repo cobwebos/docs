@@ -1,28 +1,29 @@
 ---
-title: 使用异步 Java SDK 生成 Java 应用以管理 Azure Cosmos DB SQL API 数据 | Microsoft Docs
+title: 使用异步 Java SDK 生成 Java 应用以管理 Azure Cosmos DB SQL API 数据
 description: 本教程展示了如何通过异步 Java 应用程序使用 Azure Cosmos DB SQL API 帐户来存储和访问数据。
 keywords: nosql 教程, 联机数据库, java 控制台应用程序
 services: cosmos-db
 author: SnehaGunda
-manager: kfile
 ms.service: cosmos-db
 ms.component: cosmosdb-sql
 ms.devlang: java
 ms.topic: tutorial
 ms.date: 06/29/2018
 ms.author: sngun
-ms.openlocfilehash: 0c458892c56634c97eec92a9439059c087a32144
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: d9adaaaaf64204e27c07b0728ae4bbc473a5c70a
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52165469"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52875546"
 ---
 # <a name="tutorial-build-a-java-app-with-async-java-sdk-to-manage-azure-cosmos-db-sql-api-data"></a>教程：使用异步 Java SDK 生成 Java 应用以管理 Azure Cosmos DB SQL API 数据
 
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-get-started.md)
+> * [.NET（预览版）](sql-api-dotnet-get-started-preview.md)
 > * [.NET Core](sql-api-dotnetcore-get-started.md)
+> * [.NET Core（预览版）](sql-api-dotnet-core-get-started-preview.md)
 > * [Java](sql-api-java-get-started.md)
 > * [异步 Java](sql-api-async-java-get-started.md)
 > * [Node.js](sql-api-nodejs-get-started.md)

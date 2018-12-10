@@ -1,6 +1,6 @@
 ---
 title: 什么是 Azure 机器学习服务？
-description: 解释云中机器学习的基本概念，介绍其作用，以及定义机器学习的术语。 Azure 机器学习概述 - 这是一个集成式的端到端数据科学解决方案，能够让专业数据科学家以云规模开发、试验和部署高级分析应用程序。
+description: 云中的机器学习以及可以使用它执行的操作。 Azure 机器学习服务概述 - 这是一个集成式的端到端数据科学解决方案，能够让专业数据科学家以云规模开发、试验和部署高级分析应用程序。
 services: machine-learning
 ms.service: machine-learning
 ms.component: core
@@ -8,17 +8,17 @@ ms.topic: overview
 ms.reviewer: jmartens
 author: garyericson
 ms.author: garye
-ms.date: 09/24/2018
-ms.openlocfilehash: 1dac11b8ad71a936b33742b52c95ac998176baf7
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.date: 12/04/2018
+ms.openlocfilehash: fc241b284ab9370e03debf3e0851394c32087a57
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51244929"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52870684"
 ---
-# <a name="what-is-azure-machine-learning-service-preview"></a>什么是 Azure 机器学习服务（预览版）？
+# <a name="what-is-azure-machine-learning-service"></a>什么是 Azure 机器学习服务？
 
-Azure 机器学习服务（预览版）是一款可用于开发和部署机器学习模型的云服务。 使用 Azure 机器学习服务，你可以在生成、培训、部署和管理模型时对其进行跟踪，所有这些都以云提供的广泛规模完成。
+Azure 机器学习服务是一项云服务，可以使用它来训练、部署、自动执行以及管理机器学习模型，所有这些都是在云提供的广泛范围内进行的。
 
 ## <a name="what-is-machine-learning"></a>什么是机器学习？
 
@@ -33,33 +33,34 @@ Azure 机器学习服务提供了一个基于云的环境，你可以使用这�
 [ ![Azure 机器学习服务工作流](./media/overview-what-is-azure-ml/aml.png) ] (./media/overview-what-is-azure-ml/aml.png#lightbox)
 
 Azure 机器学习服务完全支持开放源代码技术，因此，你可以使用数以万计的开放源代码 Python 包与机器学习组件（如 TensorFlow 和 scikit-learn）。
-借助丰富的工具（如 [Jupyter Notebook](http://jupyter.org) 或 [Visual Studio Code Tools for AI](https://visualstudio.microsoft.com/downloads/ai-tools-vscode/)），可以交互式地轻松探索数据、转换数据，然后开发和测试模型。
+支持丰富的工具（例如 [Jupyter Notebook](http://jupyter.org) 或 [Azure Machine Learning for Visual Studio Code](https://visualstudio.microsoft.com/downloads/ai-tools-vscode/) 扩展），因此可以交互式地轻松探索数据、转换数据，然后开发和测试模型。
 此外，Azure 机器学习服务还包括[自动化模型生成和优化](tutorial-auto-train-models.md)的功能，能够帮助你轻松、高效和准确地创建模型。
 
-使用 Azure 机器学习服务，你可以先在本地计算机上开始培训，然后扩大到云。 通过提供对 [Azure Batch AI](https://azure.microsoft.com/services/batch-ai/) 的本机支持和[高级超参数优化服务](how-to-tune-hyperparameters.md)，你可以使用云的强大功能更快地生成更好的模型。 
+使用 Azure 机器学习服务，你可以先在本地计算机上开始培训，然后扩大到云。 借助许多可用的[计算目标](how-to-set-up-training-targets.md)（例如 Azure 机器学习计算和 [Azure Databricks](/azure/azure-databricks/what-is-azure-databricks) 以及[高级超参数优化服务](how-to-tune-hyperparameters.md)，你可以借助云的力量更快地构建更好的模型。
 
 在拥有合适的模型后，即可轻松地将其部署在 Docker 等的容器中。 这意味着，可以轻松部署到 [Azure 容器实例](how-to-deploy-to-aci.md)或 [Azure Kubernetes 服务](how-to-deploy-to-aks.md)，或者，你可以在自己的部署中使用容器，无论是在本地还是在云中。
 在尝试寻找最佳解决方案时，可以管理已部署的模型并跟踪多个运行。
+在部署后，你的模型可以基于大量数据[实时](how-to-consume-web-service.md)或[异步](how-to-run-batch-predictions.md)返回预测。
 
-[!INCLUDE [aml-preview-note](../../../includes/aml-preview-note.md)]
+使用高级[机器学习管道](concept-ml-pipelines.md)，你可以针对数据准备、模型训练和评估以及部署的所有步骤进行协作。
 
 ## <a name="what-can-i-do-with-azure-machine-learning-service"></a>通过 Azure 机器学习服务，我可以执行哪些操作？
 
-Azure 机器学习服务可以自动生成模型并为你自动优化模型。
+Azure 机器学习服务可以自动训练模型并自动优化模型。
 有关示例，请参阅[教程：使用 Azure 自动机器学习自动定型分类模型](tutorial-auto-train-models.md)。
 
-或者，可以使用适用于 Python 的 Azure 机器学习 <a href="https://aka.ms/aml-sdk" target="_blank">SDK</a>，以及开放源代码 Python 包，在 Azure 机器学习服务工作区中自行生成和训练高度准确的机器学习和深度学习模型。
+可以使用适用于 Python 的 Azure 机器学习 <a href="https://aka.ms/aml-sdk" target="_blank">SDK</a>，以及开放源代码 Python 包，在 Azure 机器学习服务工作区中自行生成和训练高度准确的机器学习和深度学习模型。
 可以从开放源代码 Python 包中提供的许多机器学习组件中进行选择，例如：
 
-- <a href="http://scikit-learn.org/stable/" target="_blank">Scikit-learn</a>
+- <a href="https://scikit-learn.org/stable/" target="_blank">Scikit-learn</a>
 - <a href="https://www.tensorflow.org" target="_blank">Tensorflow</a>
 - <a href="https://pytorch.org" target="_blank">PyTorch</a>
 - CNTK<a href="https://www.microsoft.com/en-us/cognitive-toolkit/" target="_blank"></a>
 - <a href="http://mxnet.io" target="_blank">MXNet</a>
 
-拥有模型后，你就可以使用它来创建可以在本地部署以进行测试的容器（如 Docker），然后将其作为 [Azure 容器实例](how-to-deploy-to-aci.md)或 [Azure Kubernetes 服务](how-to-deploy-to-aks.md)中的生产 Web 服务。
+在获得模型后，使用它来创建容器（例如 Docker），可以将该容器部署在本地以进行测试。 完成测试后，可以在 [Azure 容器实例](how-to-deploy-to-aci.md)或 [Azure Kubernetes 服务](how-to-deploy-to-aks.md)中将模型部署为一项生产 Web 服务。
 
-然后，可以使用 [Azure 门户](https://portal.azure.com/)或 [Azure 机器学习 CLI 扩展](reference-azure-machine-learning-cli.md)来管理已部署的模型。
+然后，可以使用 [Azure Machine Learning SDK for Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) 或 [Azure 门户](https://portal.azure.com/)来管理已部署的模型。
 你可以在跟踪模型的试验的同时评估模型指标、重新训练和重新部署模型的新版本。
 
 要开始使用 Azure 机器学习服务，请参阅下面的[后续步骤](#next-steps)。
@@ -76,21 +77,21 @@ Azure 机器学习工作室是一个协作式拖放可视化工作区，无需�
 > Azure 机器学习服务无法部署或管理在 Azure 机器学习工作室中创建的模型。
 
 ## <a name="free-trial"></a>免费试用
-如果不是订户，可以[免费建立一个 Azure 帐户](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F)。 你将获得可用于 Azure 服务的额度。 信用额度用完后，可以保留该帐户并继续使用[免费的 Azure 服务](https://azure.microsoft.com/free/)。 除非显式更改设置并要求付费，否则不会对信用卡收取任何费用。 也可以[激活 MSDN 订户权益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F)：MSDN 订阅每月提供可用于试用付费版 Azure 服务的信用额度。
+如果不是订户，可以[免费建立一个 Azure 帐户](https://aka.ms/amlfree)。 你将获得可用于 Azure 服务的额度。 信用额度用完后，可以保留该帐户并继续使用[免费的 Azure 服务](https://azure.microsoft.com/free/)。 除非显式更改设置并要求付费，否则不会对信用卡收取任何费用。 此外，也可以[激活 MSDN 订户权益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F)，这将每月为你提供可用于试用付费版 Azure 服务的信用额度。
 
 ## <a name="next-steps"></a>后续步骤
 
-- 按照文章[使用 Azure 门户入门](quickstart-get-started.md)创建机器学习服务工作区
- 
-- 按照完整教程[使用 Azure 机器学习定型图像分类模型](tutorial-train-models-with-aml.md)，了解如何使用 Azure 机器学习服务训练和部署模型
+- 创建一个机器学习服务工作区以[使用 Azure 门户](quickstart-get-started.md)或 [Python](quickstart-create-workspace-with-python.md) 开始入门学习。
 
-- 有关允许 Azure 机器学习自动生成和自动优化模型的信息，请参阅[教程：使用 Azure 自动机器学习自动定型分类模型](tutorial-auto-train-models.md)
+- 根据完整教程，[使用 Azure 机器学习训练并部署一个图像分类模型](tutorial-train-models-with-aml.md)。
+
+- [使用 Azure 机器学习自动生成并自动优化一个模型](tutorial-auto-train-models.md)。
 
 - 了解[机器学习管道](/azure/machine-learning/service/concept-ml-pipelines)，以便生成、优化和管理机器学习方案。
 
-- 有关该服务技术方面的深入探讨，请参阅 [Azure 机器学习服务体系结构和概念](concept-azure-machine-learning-architecture.md)
+- 阅读深入的 [Azure 机器学习服务体系结构和概念](concept-azure-machine-learning-architecture.md)文章。
 
-- 有关 Microsoft 提供的其他机器学习产品的更多信息，请参阅 [Microsoft 的其他机器学习产品](./overview-more-machine-learning.md)
+- 有关 Microsoft 提供的其他机器学习产品的更多信息，请参阅 [Microsoft 的其他机器学习产品](./overview-more-machine-learning.md)。
 
 
 <!-- 

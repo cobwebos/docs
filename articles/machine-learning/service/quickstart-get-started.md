@@ -8,13 +8,13 @@ ms.topic: quickstart
 ms.reviewer: sgilley
 author: rastala
 ms.author: roastala
-ms.date: 09/24/2018
-ms.openlocfilehash: 7ed45b5e8a8c3cab26c0998260055ffd7a0f0c5d
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.date: 12/04/2018
+ms.openlocfilehash: 59887c46e3ce06eae250e106a01239a1ba969e7f
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51710250"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52875308"
 ---
 # <a name="quickstart-use-the-azure-portal-to-get-started-with-azure-machine-learning"></a>快速入门：通过 Azure 门户开始使用 Azure 机器学习
 
@@ -35,7 +35,7 @@ ms.locfileid: "51710250"
   - [Azure Application Insights](https://azure.microsoft.com/services/application-insights/) 
   - [Azure Key Vault](https://azure.microsoft.com/services/key-vault/)
 
-所创建的资源可以用作其他机器学习服务教程和操作方法文章的先决条件。 与其他 Azure 服务一样，与机器学习关联的某些资源存在限制。 Azure Batch AI 群集大小是一个示例。 若要了解默认的限制以及如何提高配额，请参阅[此文](how-to-manage-quotas.md)。
+所创建的资源可以用作其他机器学习服务教程和操作方法文章的先决条件。 与其他 Azure 服务一样，与机器学习关联的某些资源也存在限制，例如计算群集大小。 详细了解[默认限制以及如何增加配额](how-to-manage-quotas.md)。
 
 如果还没有 Azure 订阅，可以在开始前创建一个[免费帐户](https://aka.ms/AMLfree)。
 
@@ -69,7 +69,7 @@ Azure Notebooks 为 Jupyter Notebook 提供了一个免费的云平台，它预�
 
 组织可能需要[管理员许可](https://notebooks.azure.com/help/signing-up/work-or-school-account/admin-consent)才能让你登录。
 
-登录后，会打开一个新的选项卡并显示 `Clone Library` 提示。 选择 `Clone`
+登录后，会打开一个新的选项卡并显示 `Clone Library` 提示。 选择 `Clone`。
 
 
 ### <a name="run-the-notebook"></a>运行笔记本

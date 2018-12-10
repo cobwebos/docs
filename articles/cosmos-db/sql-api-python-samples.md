@@ -1,22 +1,21 @@
 ---
-title: Azure Cosmos DB 的 SQL API Python 示例 | Microsoft Docs
+title: Azure Cosmos DB 的 SQL API Python 示例
 description: 在 GitHub 上查找用于 Azure Cosmos DB 中常见任务的 Python 示例，包括 CRUD 操作。
 keywords: Python 示例
 services: cosmos-db
 author: SnehaGunda
-manager: kfile
 ms.service: cosmos-db
 ms.component: cosmosdb-sql
 ms.devlang: python
 ms.topic: sample
 ms.date: 03/14/2018
 ms.author: sngun
-ms.openlocfilehash: 2eb585876f91526633fb2844e67ba734648b38e5
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: c7b4fc05fe0aff26f5a49d25345f519b15be590c
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49389524"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52879326"
 ---
 # <a name="azure-cosmos-db-python-examples"></a>Azure Cosmos DB Python 示例
 

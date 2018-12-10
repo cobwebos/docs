@@ -3,18 +3,18 @@ title: 使用 Azure Maps 执行交互式地图搜索 | Microsoft Docs
 description: Azure 快速入门 - 使用 Azure Maps 启动演示交互式地图搜索
 author: walsehgal
 ms.author: v-musehg
-ms.date: 10/26/2018
+ms.date: 12/02/2018
 ms.topic: quickstart
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: d2aa3385dd7556cfc169b42b36d94a3e1d9ee3dd
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 5f828bfd2ceee81daf86382846be0c5ee7f1fe8c
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50209966"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52836570"
 ---
 # <a name="launch-an-interactive-search-map-using-azure-maps"></a>使用 Azure Maps 启动交互式搜索地图
 
@@ -35,7 +35,7 @@ ms.locfileid: "50209966"
     - 新帐户的名称。
     - 要用于此帐户的订阅。
     - 此帐户的资源组。 可以选择新建或使用现有的资源组。
-    - 选择“资源组位置”。
+    - 选择所选的定价层。
     - 阅读许可证和隐私声明，并选择复选框接受这些条款。
     - 最后，单击“创建”按钮。
 

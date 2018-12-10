@@ -1,9 +1,8 @@
 ---
-title: Azure Cosmos DB：使用 .NET 和 MongoDB API 生成 Xamarin.Forms 应用 | Microsoft Docs
+title: Azure Cosmos DB：使用 .NET 和 MongoDB API 生成 Xamarin.Forms 应用
 description: 演示一个可以用来连接和查询 Azure Cosmos DB MongoDB API 的 Xamarin 代码示例
 services: cosmos-db
 author: codemillmatt
-manager: kfile
 ms.service: cosmos-db
 ms.component: cosmosdb-mongo
 ms.custom: quickstart, xamarin
@@ -11,12 +10,12 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 06/20/2018
 ms.author: masoucou
-ms.openlocfilehash: 45d299e2d5e1f9c9c454e6b2f77df7cdf8295e5f
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: 4fde6d203999b15f0f60d4879c2fdc595e1fb7e9
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51568703"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52835550"
 ---
 # <a name="quickstart-build-a-mongodb-api-xamarinforms-app-with-net-and-the-azure-portal"></a>快速入门：使用 .NET 和 Azure 门户生成 MongoDB API Xamarin.Forms 应用
 

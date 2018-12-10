@@ -10,14 +10,14 @@ ms.component: translator-text
 ms.topic: quickstart
 ms.date: 11/20/2018
 ms.author: erhopf
-ms.openlocfilehash: 06e294187247636c552dfd4a7d02167eb55be19a
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.openlocfilehash: 9d9a893a1e62ae35ed3c2f1630c92d4f23cdb2dc
+ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52334697"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52887672"
 ---
-# <a name="quickstart-translate-text-with-the-translator-text-rest-api-c"></a>快速入门：使用文本翻译 REST API (C#) 对文本进行翻译
+# <a name="quickstart-use-the-translator-text-api-to-translate-a-string-using-c"></a>快速入门：使用 C# 通过文本翻译 API 来翻译字符串
 
 本快速入门介绍如何使用 .NET Core 和文本翻译 REST API 将文本字符串从英文翻译为意大利文和德文。
 
@@ -28,7 +28,7 @@ ms.locfileid: "52334697"
 * [.NET SDK](https://www.microsoft.com/net/learn/dotnet/hello-world-tutorial)
 * [Json.NET NuGet 包](https://www.nuget.org/packages/Newtonsoft.Json/)
 * [Visual Studio](https://visualstudio.microsoft.com/downloads/)、[Visual Studio Code](https://code.visualstudio.com/download) 或你喜欢用的文本编辑器
-* 语音服务的 Azure 订阅密钥
+* 适用于文本翻译的 Azure 订阅密钥
 
 ## <a name="create-a-net-core-project"></a>创建 .NET Core 项目
 

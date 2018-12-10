@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 06/11/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 7cf3db5020d6a100ca6afdd5a1dccd522189720d
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
+ms.openlocfilehash: 3f7b1349788ad2bbd0ffe7b146074947364ce1e4
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50978496"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52835924"
 ---
 # <a name="tutorial-use-azure-security-center-to-monitor-windows-virtual-machines"></a>教程：使用 Azure 安全中心监视 Windows 虚拟机
 
@@ -107,7 +107,7 @@ Azure 安全中心可以帮助你深入了解 Azure 资源安全做法。 安全
 
 除了资源配置建议外，安全中心还显示威胁检测警报。 安全警报功能聚合从每个 VM、Azure 网络日志和连接的合作伙伴解决方案中收集的数据，以便检测针对 Azure 资源的安全威胁。 有关安全中心威胁检测功能的详细信息，请参阅 [Azure 安全中心检测功能](../../security-center/security-center-detection-capabilities.md)。
 
-安全警报功能要求将安全中心定价层从“免费”提升到“标准”。 迁移到这个更高的定价层后，可以**免费试用** 60 天。 
+安全警报功能要求将安全中心定价层从“免费”提升到“标准”。 迁移到这个更高的定价层后，可以**免费试用**。 
 
 更改定价层：  
 

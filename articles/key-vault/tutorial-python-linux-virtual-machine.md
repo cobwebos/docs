@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 09/05/2018
 ms.author: pryerram
 ms.custom: mvc
-ms.openlocfilehash: 5f56022be7968d3be65fd06fef791d859acf14c0
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: acc926151e5abd1d6f9d0992591575198d1fdf44
+ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52585150"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52890528"
 ---
 # <a name="tutorial-how-to-use-azure-key-vault-with-azure-linux-virtual-machine-in-python"></a>教程：如何将 Azure Key Vault 与通过 Python 编写的 Azure Linux 虚拟机配合使用
 
@@ -189,7 +189,7 @@ az keyvault set-policy --name '<YourKeyVaultName>' --object-id <VMSystemAssigned
     print(kvSecret.json()["value"])
 ```
 
-运行后会看到机密值 
+运行以下命令后会看到机密值 
 
 ```
 python Sample.py

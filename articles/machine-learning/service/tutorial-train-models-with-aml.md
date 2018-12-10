@@ -8,19 +8,19 @@ ms.topic: tutorial
 author: hning86
 ms.author: haining
 ms.reviewer: sgilley
-ms.date: 11/21/2018
-ms.openlocfilehash: 53de4715a458c5713a31541da64a4a671bf8c132
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.date: 12/04/2018
+ms.openlocfilehash: 8d3dd87adaad168d193b53507dbbb40efab57810
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52496222"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52879479"
 ---
 # <a name="tutorial-1-train-an-image-classification-model-with-azure-machine-learning-service"></a>教程 #1：使用 Azure 机器学习服务定型图像分类模型
 
-在本教程中，你将在本地和远程计算资源上定型机器学习模型。 将在 Python Jupyter Notebook 中使用 Azure 机器学习服务（预览）的定型和部署工作流。  然后可以将 Notebook 用作模板，使用你自己的数据来定型机器学习。 本教程是由两个部分构成的系列教程的第一部分。  
+在本教程中，你将在本地和远程计算资源上定型机器学习模型。 将在 Python Jupyter Notebook中使用 Azure 机器学习服务的定型和部署工作流。  然后可以将 Notebook 用作模板，使用你自己的数据来定型机器学习。 本教程是由两个部分构成的系列教程的第一部分。  
 
-本教程将 [MNIST](http://yann.lecun.com/exdb/mnist/) 数据集和 [scikit-learn](http://scikit-learn.org) 与 Azure 机器学习服务配合使用来定型简单的逻辑回归。  MNIST 是包含 70,000 张灰度图像的常用数据集。 每个图像是 28x28 像素的手写数字，代表一个从 0 到 9 的数字。 目标是创建多类分类器，以确定给定图像代表的数字。 
+本教程将 [MNIST](https://yann.lecun.com/exdb/mnist/) 数据集和 [scikit-learn](https://scikit-learn.org) 与 Azure 机器学习服务配合使用来定型简单的逻辑回归。  MNIST 是包含 70,000 张灰度图像的常用数据集。 每个图像是 28x28 像素的手写数字，代表一个从 0 到 9 的数字。 目标是创建多类分类器，以确定给定图像代表的数字。 
 
 了解如何：
 
@@ -36,16 +36,14 @@ ms.locfileid: "52496222"
 如果还没有 Azure 订阅，可以在开始前创建一个[免费帐户](https://aka.ms/AMLfree)。
 
 >[!NOTE]
-> 本文中的代码已使用 Azure 机器学习 SDK 版本 0.1.79 进行测试
+> 本文中的代码已使用 Azure 机器学习 SDK 版本 1.0.2 进行测试
 
 ## <a name="get-the-notebook"></a>获取 Notebook
 
-为方便起见，本教程以 [Jupyter Notebook](https://aka.ms/aml-notebook-tut-01) 的形式提供。 在 Azure Notebooks 或你自己的 Jupyter Notebook 服务器中运行 `01.train-models.ipynb` Notebook。
+为方便起见，本教程以 [Jupyter Notebook](https://github.com/Azure/MachineLearningNotebooks/blob/master/tutorials/img-classification-part1-training.ipynb) 的形式提供。 在 Azure Notebooks 或你自己的 Jupyter Notebook 服务器中运行 `tutorials/img-classification-part1-training.ipynb` Notebook。
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-in-azure-notebook.md)]
 
->[!NOTE]
-> 本教程已使用 Azure 机器学习 SDK 版本 0.1.74 进行测试 
 
 ## <a name="set-up-your-development-environment"></a>设置开发环境
 
@@ -94,11 +92,11 @@ from azureml.core import Experiment
 exp = Experiment(workspace=ws, name=experiment_name)
 ```
 
-### <a name="create-remote-compute-target"></a>创建远程计算目标
+### <a name="create-or-attach-existing-amlcompute"></a>创建或附加现有 AMlCompute
 
-Azure ML 托管计算是一项托管的服务，可以让数据科学家在 Azure 虚拟机（包括带 GPU 支持的 VM）群集上训练机器学习模型。  在本教程中，创建 Azure 托管计算群集作为训练环境。 如果工作区中尚且没有群集，此代码将创建一个群集。 
+Azure 机器学习托管计算 (AmlCompute) 是一项托管服务，可以让数据科学家在 Azure 虚拟机（包括带 GPU 支持的 VM）群集上训练机器学习模型。  在本教程中，创建 AmlCompute 作为训练环境。 如果工作区中尚且没有群集，此代码将创建计算群集。
 
- 创建群集需要大约 5 分钟。 如果群集已在工作区中，此代码将使用它，并跳过创建过程。
+ **创建计算群集需要大约 5 分钟。** 如果计算群集已在工作区中，此代码将使用它，并跳过创建过程。
 
 
 ```python
@@ -107,12 +105,17 @@ from azureml.core.compute import ComputeTarget
 import os
 
 # choose a name for your cluster
-compute_name = os.environ.get("BATCHAI_CLUSTER_NAME", "cpucluster")
-compute_min_nodes = os.environ.get("BATCHAI_CLUSTER_MIN_NODES", 0)
-compute_max_nodes = os.environ.get("BATCHAI_CLUSTER_MAX_NODES", 4)
+from azureml.core.compute import AmlCompute
+from azureml.core.compute import ComputeTarget
+import os
+
+# choose a name for your cluster
+compute_name = os.environ.get("AML_COMPUTE_CLUSTER_NAME", "cpucluster")
+compute_min_nodes = os.environ.get("AML_COMPUTE_CLUSTER_MIN_NODES", 0)
+compute_max_nodes = os.environ.get("AML_COMPUTE_CLUSTER_MAX_NODES", 4)
 
 # This example uses CPU VM. For using GPU VM, set SKU to STANDARD_NC6
-vm_size = os.environ.get("BATCHAI_CLUSTER_SKU", "STANDARD_D2_V2")
+vm_size = os.environ.get("AML_COMPUTE_CLUSTER_SKU", "STANDARD_D2_V2")
 
 
 if compute_name in ws.compute_targets:
@@ -132,7 +135,7 @@ else:
     # if no min node count is provided it will use the scale settings for the cluster
     compute_target.wait_for_completion(show_output=True, min_node_count=None, timeout_in_minutes=20)
     
-     # For a more detailed view of current BatchAI cluster status, use the 'status' property    
+     # For a more detailed view of current AmlCompute status, use the 'status' property    
     print(compute_target.status.serialize())
 ```
 
@@ -320,11 +323,10 @@ joblib.dump(value=clf, filename='outputs/sklearn_mnist_model.pkl')
 请注意该脚本获取数据和保存模型的方式：
 
 + 定型脚本读取参数以查找包含数据的目录。  稍后提交作业时，请参考数据存储获取此参数：`parser.add_argument('--data-folder', type=str, dest='data_folder', help='data directory mounting point')`
-    
+
 + 定型脚本将模型保存到一个名为“输出”的目录。 <br/>
 `joblib.dump(value=clf, filename='outputs/sklearn_mnist_model.pkl')`<br/>
 此目录中编写的所有内容都会自动上传到你的工作区。 你将在本教程后面从此目录访问模型。
-
 从定型脚本中引用文件 `utils.py` 来正确加载数据集。  将此脚本复制到脚本文件夹，以便可以与远程资源上的定型脚本一起访问。
 
 
@@ -340,12 +342,12 @@ shutil.copy('utils.py', script_folder)
 
 * 估算器对象的名称，`est`
 * 包含脚本的目录。 此目录中的所有文件都上传到群集节点以便执行。 
-* 计算目标。  在本例中，将使用你创建的 Batch AI 群集
+* 计算目标。  在此示例中，将使用所创建的 Azure 机器学习计算群集
 * 定型脚本名称，train.py
 * 定型脚本所需的参数 
 * 定型所需的 Python 包
 
-在本教程中，此目标是 Batch AI 群集。 此脚本文件夹中的所有文件都上传到群集节点来执行。 data_folder 设置为使用数据存储 (`ds.as_mount()`)。
+在本教程中，此目标是 AmlCompute。 此脚本文件夹中的所有文件都上传到群集节点来执行。 data_folder 设置为使用数据存储 (`ds.as_mount()`)。
 
 ```python
 from azureml.train.estimator import Estimator

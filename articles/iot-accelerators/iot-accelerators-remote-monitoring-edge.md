@@ -9,12 +9,12 @@ services: iot-accelerators
 ms.date: 11/08/2018
 ms.topic: tutorial
 ms.custom: mvc
-ms.openlocfilehash: 329bc41555f2def0e2b7001a7b445cd3de16d439
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: 51c19447e115426bd39d39fedc86193c8f091df1
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51826270"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52843302"
 ---
 # <a name="tutorial-detect-anomalies-at-the-edge-with-the-remote-monitoring-solution-accelerator"></a>教程：使用远程监视解决方案加速器检测边缘异常情况
 
@@ -24,16 +24,26 @@ ms.locfileid: "51826270"
 
 Contoso 想在油泵上部署一个智能边缘模块用于检测温度异常情况。 另一个边缘模块将警报发送到远程监视解决方案。 收到警报后，Contoso 操作员可以派遣维护技术人员。 Contoso 还可以配置在解决方案收到警报时要运行的自动操作，例如发送电子邮件。
 
-本教程使用本地 Windows 开发计算机作为 IoT Edge 设备。 安装边缘模块，用于模拟油泵设备以及检测温度异常情况。
+下图显示了教程方案中的关键组件：
+
+![概述](media/iot-accelerators-remote-monitoring-edge/overview.png)
 
 本教程介绍以下操作：
 
 >[!div class="checklist"]
 > * 将 IoT Edge 设备添加到解决方案
 > * 创建 Edge 清单
-> * 导入一个包，该包定义要在设备上运行的模块
+> * 将清单导入为定义要在设备上运行的模块的包
 > * 将该包部署到 IoT Edge 设备
 > * 查看设备发来的警报
+
+在 IoT Edge 设备上：
+
+* 运行时接收包并安装模块。
+* 流分析模块检测到泵中的温度异常，并发送命令解决该问题。
+* 流分析模块将筛选过的数据转发到解决方案加速器。
+
+本教程使用 Linux 虚拟机作为 IoT Edge 设备。 你还可以安装 Edge 模块来模拟油泵千斤顶装置。
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
@@ -111,54 +121,23 @@ Contoso 想在油泵上部署一个智能边缘模块用于检测温度异常情
     az vm create \
       --resource-group IoTEdgeDevices \
       --name EdgeVM \
-      --image Canonical:UbuntuServer:16.04-LTS:latest \
+      --image microsoft_iot_edge:iot_edge_vm_ubuntu:ubuntu_1604_edgeruntimeonly:latest \
       --admin-username azureuser \
       --generate-ssh-keys \
       --size Standard_B1ms
     ```
 
-    请记下公共 IP 地址，因为在下一步骤中使用 SSH 建立连接时需要用到它。
-
-1. 若要使用 SSH 连接到 VM，请在 Cloud Shell 中运行以下命令：
+1. 若要使用设备连接字符串配置 Edge 运行时，请使用之前记下的设备连接字符串运行以下命令：
 
     ```azurecli-interactive
-    ssh azureuser@{vm IP address}
+    az vm run-command invoke \
+      --resource-group IoTEdgeDevices \
+      --name EdgeVM \
+      --command-id RunShellScript \
+      --scripts 'sudo /etc/iotedge/configedge.sh "YOUR_DEVICE_CONNECTION_STRING"'
     ```
 
-1. 连接到 VM 后，运行以下命令以在 VM 中设置存储库：
-
-    ```azurecli-interactive
-    curl https://packages.microsoft.com/config/ubuntu/16.04/prod.list > ./microsoft-prod.list
-    sudo cp ./microsoft-prod.list /etc/apt/sources.list.d/
-    curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
-    sudo cp ./microsoft.gpg /etc/apt/trusted.gpg.d/
-    ```
-
-1. 若要在 VM 中安装容器和 Edge 运行时，请运行以下命令：
-
-    ```azurecli-interactive
-    sudo apt-get update
-    sudo apt-get install moby-engine
-    sudo apt-get install moby-cli
-    sudo apt-get update
-    sudo apt-get install iotedge
-    ```
-
-1. 若要使用设备连接字符串配置 Edge 运行时，请编辑配置文件：
-
-    ```azurecli-interactive
-    sudo nano /etc/iotedge/config.yaml
-    ```
-
-    将设备连接字符串分配到 **device_connection_string** 变量，保存更改，然后退出编辑器。
-
-1. 重启 Edge 运行时以使用新配置：
-
-    ```azurecli-interactive
-    sudo systemctl restart iotedge
-    ```
-
-1. 现在可以退出 SSH 会话并关闭 Cloud Shell。
+    请务必在双引号内包含连接字符串。
 
 现已在 Linux 设备上安装并配置 IoT Edge 运行时。 稍后在本教程中，我们要使用远程监视解决方案将 IoT Edge 模块部署到此设备。
 

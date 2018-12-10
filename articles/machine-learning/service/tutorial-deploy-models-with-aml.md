@@ -9,12 +9,12 @@ author: hning86
 ms.author: haining
 ms.reviewer: sgilley
 ms.date: 09/24/2018
-ms.openlocfilehash: 841448f477accb8a73d543447cd317bb9b427408
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 0fd3bebc1e2dba3ab7d1204e779a8c80b97c990b
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52497599"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52864054"
 ---
 # <a name="tutorial-2--deploy-an-image-classification-model-in-azure-container-instance-aci"></a>教程 #2：在 Azure 容器实例 (ACI) 中部署映像分类模型
 
@@ -22,7 +22,7 @@ ms.locfileid: "52497599"
 
 现在，你已准备好在 [Azure 容器实例](https://docs.microsoft.com/azure/container-instances/) (ACI) 中部署模型作为 Web 服务。 Web 服务是一个映像，在本例中是 Docker 映像，它用于封装评分逻辑和模型本身。 
 
-在教程的此部分，请使用 Azure 机器学习服务（预览版）执行以下操作：
+在教程的此部分，请使用 Azure 机器学习服务执行以下操作：
 
 > [!div class="checklist"]
 > * 设置测试环境
@@ -35,10 +35,12 @@ ACI 不适合用于生产部署，但它非常适合用于测试和理解工作�
 
 ## <a name="get-the-notebook"></a>获取 Notebook
 
-为方便起见，本教程以 [Jupyter Notebook](https://aka.ms/aml-notebook-tut-02) 的形式提供。 在 Azure Notebooks 或你自己的 Jupyter Notebook 服务器中运行 `02.deploy-models.ipynb` Notebook。
+为方便起见，本教程以 [Jupyter Notebook](https://github.com/Azure/MachineLearningNotebooks/blob/master/tutorials/img-classification-part2-deploy.ipynb) 的形式提供。 在 Azure Notebooks 或你自己的 Jupyter Notebook 服务器中运行 `tutorials/img-classification-part2-deploy.ipynb` Notebook。
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-in-azure-notebook.md)]
 
+>[!NOTE]
+> 本文中的代码已使用 Azure 机器学习 SDK 版本 1.0.2 进行测试
 
 ## <a name="prerequisites"></a>先决条件
 

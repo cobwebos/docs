@@ -11,15 +11,15 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: tutorial
-ms.date: 10/24/2018
+ms.date: 11/30/2018
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: 42a25d6c13fe1052f4aa14696a66c9c7f1fb4d65
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: 8c31e410713e4ba8ce6443170ba5ad5c2e740419
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51685678"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52677927"
 ---
 # <a name="tutorial-secure-azure-sql-database-connection-from-app-service-using-a-managed-identity"></a>教程：使用托管标识确保从应用服务进行的 Azure SQL 数据库连接的安全
 
@@ -174,6 +174,10 @@ az ad group member list -g $groupid
 ### <a name="reconfigure-azure-ad-administrator"></a>重新配置 Azure AD 管理员
 
 你此前已经以 Azure AD 管理员身份为 SQL 数据库分配托管标识。 不能使用此标识进行交互式登录（以添加数据库用户），因此需使用实际的 Azure AD 用户。 若要添加 Azure AD 用户，请执行[为 Azure SQL 数据库服务器预配 Azure Active Directory 管理员](../sql-database/sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server)中的步骤。 
+
+> [!IMPORTANT]
+> 添加之后，除非你想完全禁用 Azure AD 对 SQL 数据库的访问（从所有 Azure AD 帐户），否则不要删除 SQL 数据库的 Azure AD 管理员。
+> 
 
 ### <a name="grant-permissions-to-azure-active-directory-group"></a>向 Azure Active Directory 组授予权限
 

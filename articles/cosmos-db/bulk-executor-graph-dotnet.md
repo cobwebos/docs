@@ -4,21 +4,18 @@ description: 了解如何使用 BulkExecutor 库将图形数据大规模导入 A
 services: cosmos-db
 keywords: 图形, gremlin, 批量, bulkexecutor, 迁移, 数据, cosmosdb, cosmos, 数据库, 导入
 author: luisbosquez
-manager: kfile
-editor: cgronlun
 ms.service: cosmos-db
 ms.component: cosmosdb-graph
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 08/14/2018
 ms.author: lbosq
 ms.custom: mvc
-ms.openlocfilehash: 39abf6d6da8a8035cf486ceb30b9c21186bbb925
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: d5a25bd7cab68f77a37b14ba41bf3cc832c2125f
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "40234407"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52836706"
 ---
 # <a name="using-the-graph-bulkexecutor-net-library-to-perform-bulk-operations-in-azure-cosmos-db-gremlin-api"></a>使用图形 BulkExecutor .NET 库在 Azure Cosmos DB Gremlin API 中执行批量操作
 
@@ -121,7 +118,7 @@ e.AddProperty("customProperty", "value");
 ### <a name="prerequisites"></a>先决条件
 * 包含 Azure 开发工作负荷的 Visual Studio 2017。 一开始可以使用免费的 [Visual Studio 2017 Community Edition](https://visualstudio.microsoft.com/downloads/)。
 * Azure 订阅。 可以[在此创建一个免费的 Azure 帐户](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cosmos-db)。 也可创建一个 Cosmos DB 数据库帐户，在没有 Azure 订阅的情况下[免费试用 Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/)。
-* 包含**不受限集合**的 Azure Cosmos DB Gremlin API 数据库。 本指南介绍如何完成 [.NET 中的 Azure Cosmos DB Gremlin API](https://docs.microsoft.com/azure/cosmos-db/create-graph-dotnet) 的入门。
+* 包含**不受限集合**的 Azure Cosmos DB Gremlin API 数据库。 本指南介绍了如何开始使用 [.NET 中的 Azure Cosmos DB Gremlin API](https://docs.microsoft.com/azure/cosmos-db/create-graph-dotnet)。
 * Git。 有关详细信息，请查看[“Git 下载”页](https://git-scm.com/downloads)。
 
 ### <a name="clone-the-sample-application"></a>克隆示例应用程序
@@ -133,7 +130,7 @@ git clone https://github.com/Azure-Samples/azure-cosmosdb-graph-bulkexecutor-dot
 
 此存储库包含的 GraphBulkExecutor 示例包含以下文件：
 
-文件|Description
+文件|说明
 ---|---
 `App.config`|在这里指定特定于应用程序和数据库的参数。 在连接到目标数据库和集合之前，应先修改此文件。
 `Program.cs`| 此文件包含在创建 `DocumentClient` 集合、处理清理和发送 BulkExecutor 请求之后的逻辑。
@@ -141,7 +138,7 @@ git clone https://github.com/Azure-Samples/azure-cosmosdb-graph-bulkexecutor-dot
 
 在 `App.config` 文件中，以下项是可以提供的配置值：
 
-设置|Description
+设置|说明
 ---|---
 `EndPointUrl`|这是 **.NET SDK 终结点**，位于 Azure Cosmos DB Gremlin API 数据库帐户的“概览”边栏选项卡中。 此项的格式为 `https://your-graph-database-account.documents.azure.com:443/`
 `AuthorizationKey`|这是在 Azure Cosmos DB 帐户下列出的主密钥或辅助密钥。 详细了解如何[确保对 Azure Cosmos DB 数据的安全访问](https://docs.microsoft.com/azure/cosmos-db/secure-access-to-data#master-keys)

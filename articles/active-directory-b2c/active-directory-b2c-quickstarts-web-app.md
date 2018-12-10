@@ -7,15 +7,15 @@ manager: mtillman
 ms.service: active-directory
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 10/24/2018
+ms.date: 11/30/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: c4fa3f9cbba558cd743f85119dd9e91bd73ce062
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: edfd17763a7d555e773e7d271ed5cc22a0307996
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50250591"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52726587"
 ---
 # <a name="quickstart-set-up-sign-in-for-an-aspnet-application-using-azure-active-directory-b2c"></a>快速入门：使用 Azure Active Directory B2C 为 ASP.NET 应用程序设置登录
 
@@ -35,7 +35,7 @@ Azure Active Directory (Azure AD) B2C 提供云身份管理来保护应用程序
 
     示例解决方案中有下述两个项目：
 
-    - **TaskWebApp** - 一个用于创建和编辑任务列表的 Web 应用程序。 此 Web 应用程序使用**注册或登录**策略来注册或登录用户。
+    - **TaskWebApp** - 一个用于创建和编辑任务列表的 Web 应用程序。 此 Web 应用程序使用**注册或登录**用户流来注册或登录用户。
     - **TaskService** - 一个 Web API，支持创建、读取、更新和删除任务列表的功能。 此 Web API 受 Azure AD B2C 保护，可以通过 Web 应用程序进行调用。
 
 ## <a name="run-the-application-in-visual-studio"></a>在 Visual Studio 中运行应用程序
@@ -67,7 +67,7 @@ Azure Active Directory (Azure AD) B2C 提供云身份管理来保护应用程序
 
 ## <a name="edit-your-profile"></a>编辑个人资料
 
-Azure Active Directory B2C 提供允许用户更新个人资料的功能。 示例 Web 应用对工作流使用 Azure AD B2C 编辑配置文件策略。 
+Azure Active Directory B2C 提供允许用户更新个人资料的功能。 示例 Web 应用对工作流使用 Azure AD B2C 编辑配置文件用户流。 
 
 1. 在应用程序菜单栏中，单击个人资料名称，并选择“编辑个人资料”以编辑创建的个人资料。
 

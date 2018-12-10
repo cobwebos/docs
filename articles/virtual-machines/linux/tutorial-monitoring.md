@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 06/06/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: f8310885ddf7e2229054f36b8fda92b92c1ab01e
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: c271efceacab7f310b8e08a28d101f653c73a186
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49406494"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52868542"
 ---
 # <a name="tutorial-monitor-and-update-a-linux-virtual-machine-in-azure"></a>教程：监视和更新 Azure 中的 Linux 虚拟机
 
@@ -208,7 +208,7 @@ Linux VM 在 Azure 中有一个与它交互的专用主机。 系统会自动收
 * 更新分类- 选择部署中包含的更新部署的软件类型。 分类类型：
   * 关键和安全更新
   * 其他更新
-* **要排查的更新** - 可以提供一个列表，其中包含在更新部署过程中应跳过的包名。 包名支持通配符（例如，\*kernal\*）。
+* **要排查的更新** - 可以提供一个列表，其中包含在更新部署过程中应跳过的包名。 包名支持通配符（例如，\*kernel\*）。
 
   ![更新计划设置屏幕](./media/tutorial-monitoring/manage-updates-exclude-linux.png)
 

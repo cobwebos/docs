@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 09/18/2018
 ms.author: twhitney
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 09112aafdbabf0cda2b3ae13af73a9223533a6e1
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: eb68c7aacb4c62237fc4cd75ec430997b0145454
+ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46979187"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52888743"
 ---
 # <a name="tutorial-create-debug-deploy-and-upgrade-a-multi-service-service-fabric-mesh-app"></a>教程：创建、调试、部署和升级多服务 Service Fabric 网格应用
 
@@ -78,23 +78,23 @@ ms.locfileid: "46979187"
 
 将“服务名称”设置为 **WebFrontEnd**。 按“确定”创建 ASP.NET Core 服务。
 
-![Visual Studio 中的新建 Service Fabric 网格项目的对话框](./media/service-fabric-mesh-tutorial-deploy-dotnetcore/visual-studio-new-service-fabric-service.png)
+![Visual Studio - 新建 Service Fabric 网格项目 - 对话框](./media/service-fabric-mesh-tutorial-deploy-dotnetcore/visual-studio-new-service-fabric-service.png)
 
-随后会出现“新建 ASP.NET Core Web 应用程序”对话框。 在“新建 ASP.NET Core Web 应用程序”对话框中，选择“Web 应用程序”，然后单击“确定”。
+随后会出现“ASP.NET Core Web 应用程序”对话框。 选择“Web 应用”，然后单击“确定”。
 
-![Visual Studio 中的“新建 ASP.NET Core 应用程序”](./media/service-fabric-mesh-tutorial-deploy-dotnetcore/visual-studio-new-aspnetcore-app.png)
+![Visual Studio - 新建 ASP.NET Core 应用程序](./media/service-fabric-mesh-tutorial-deploy-dotnetcore/visual-studio-new-aspnetcore-app.png)
 
 现已创建一个 Service Fabric 网格应用程序。 接下来，请创建待办事项信息的模型。
 
 ## <a name="create-the-to-do-items-model"></a>创建待办事项模型
 
-为简单起见，待办事项已存储在内存中的列表中。 创建待办事项的类库，以及用于保存这些项的列表。 在当前已加载 **todolistapp** 的 Visual Studio 中，选择“文件” > “添加” > “新建项目”。
+为简单起见，待办事项已存储在内存中的列表中。 创建待办事项的类库，以及用于保存这些项的列表。 在 Visual Studio 中（当前已加载了 **todolistapp** 解决方案），选择“文件” > “添加” > “新建项目”。
 
-在“新建项目”对话框顶部的“搜索”框中键入 `C# .net core class`。 选择“类库(.NET Core)”模板。
+在“添加新项目”对话框顶部的“搜索”框中键入 `C# .net core class`。 选择“类库(.NET Core)”模板。
 
 在“名称”框中键入 `Model`。 单击“确定”创建类库。
 
-在解决方案资源管理器中的“模型”下面，右键单击“Class1.cs”并选择“重命名”。 将类重命名为 **ToDoItem.cs**。 如果出现提示，询问是否要重命名所有引用，请单击“是”。
+在解决方案资源管理器中的“模型”下面，右键单击“Class1.cs”并选择“重命名”。 将类重命名为 **ToDoItem.cs**。 当出现提示，询问是否要重命名所有引用时，请单击“是”。
 
 将空 `class ToDoItem` 的内容替换为：
 
@@ -124,7 +124,7 @@ public class ToDoItem
 }
 ```
 
-此类表示单个待办事项。
+此类表示待办事项。
 
 在 Visual Studio 中，右键单击“模型”类库并选择“添加” > “类...”，以创建用于保存待办事项的列表。 此时会出现“添加新项”对话框。 将“名称”设置为 `ToDoList.cs`，然后单击“添加”。
 
@@ -186,9 +186,9 @@ public class ToDoList
 
 在 Visual Studio 的“解决方案资源管理器”窗口中，右键单击“todolistapp”并单击“添加” > “新建 Service Fabric 服务...”
 
-此时会出现“新建 Service Fabric 服务”对话框。 选择“ASP.NET Core”项目类型，确保“容器 OS”设置为“Windows”。
+此时会出现“新建 Service Fabric 服务”对话框。 选择“ASP.NET Core”项目类型，确保“容器 OS”设置为“Windows”。 将“服务名称”设置为 **ToDoService**。 单击“确定”创建 ASP.NET Core 服务。
 
-将“服务名称”设置为 **ToDoService**。 单击“确定”创建 ASP.NET Core 服务。 随后会出现“新建 ASP.NET Core Web 应用程序”对话框。 在该对话框中，依次选择“API”、“确定”，随即会将该服务的项目添加到解决方案。
+随后会出现“新建 ASP.NET Core Web 应用程序”对话框。 在该对话框中，依次选择“API”、“确定”，随即会将该服务的项目添加到解决方案。
 
 ![Visual Studio 中的“新建 ASP.NET Core 应用程序”](./media/service-fabric-mesh-tutorial-deploy-dotnetcore/visual-studio-new-webapi.png)
 
@@ -203,7 +203,7 @@ public class ToDoList
 接下来创建一个数据上下文，用于协调为数据模型中的数据提供服务的活动。
 
 若要添加数据上下文类，请在解决方案资源管理器中，右键单击“ToDoService”并选择“添加” > “类”。
-在显示的“添加新项”对话框中，确保已选中“类”，将“名称”设置为 `DataContext`，然后单击“添加”。
+在显示的“添加新项”对话框中，确保已选中“类”，将“名称”设置为 `DataContext.cs`，然后单击“添加”。
 
 在 **DataContext.cs** 中，将空 `class DataContext` 的内容替换为：
 
@@ -313,7 +313,8 @@ public class ToDoController : Controller
 </div>
 ```
 
-在“解决方案资源管理器”中，通过依次打开 **Index.cshtml** 和 **Index.cshtml.cs**，打开索引页的代码。
+在“解决方案资源管理器”中单击 **Index.cshtml** 文件的下拉图标，然后打开 **Index.cshtml.cs**。
+
 在 **Index.cshtml.cs** 的顶部添加 `using System.Net.Http;`
 
 将 `public class IndexModel` 的内容替换为：
@@ -352,26 +353,41 @@ private static Uri backendUrl = new Uri($"http://{backendDNSName}:{Environment.G
 
 该 URL 由服务名称和端口组成。 在 **ToDoService** 项目的 service.yaml 文件中可以找到所有这些信息。
 
+> [!IMPORTANT]
+> 在以下步骤中，将修改 YAML 文件。
+> 必须使用空格而不是制表符来缩进 service.yaml 文件中的变量，否则该文件无法编译。 当你创建环境变量时，Visual Studio 可能会插入制表符。 请将所有制表符替换为空格。 虽然在**生成**调试输出中会显示错误，但是应用仍然会启动，但它不会工作，除非你将制表符转换为空格并重新生成。 为确保 service.yaml 文件中不包含制表符，可以在 Visual Studio 编辑器中使用“编辑”  > “高级”  > “查看空白”来显示空白字符。
+> 请注意，service.yaml 文件是使用英语区域设置进行处理的。 例如，如果需要使用小数分隔符，请使用句点而不是逗号。
+
 在“解决方案资源管理器”中导航到“ToDoService”项目，并打开“服务资源” > “service.yaml”。
 
 ![图 1 - ToDoService service.yaml 文件](./media/service-fabric-mesh-tutorial-deploy-dotnetcore/visual-studio-serviceyaml-port.png)
 
-* 服务名称 `ToDoService` 出现在 `services:` 下面的 `name:` 后面。请参阅上图中的 (1)。
-* 端口 `20008` 出现在 `endpoints:` 下面的 `port:` 后面。请参阅上图中的 (2)。 你的项目的端口号可能与此不同。
+* 服务名称 `ToDoService` 位于 `services:` 下方。请参阅上图中的 (1)。
+* 端口 `80` 位于 `endpoints:` 下方。请参阅上图中的 (2)。 你的项目的端口号可能与此不同。
 
-接下来，在 WebFrontEnd 项目中定义用于表示服务名称和端口号的环境变量，使项目能够调用后端服务。
+接下来，需要在 WebFrontEnd 项目中定义用于表示服务名称和端口号的环境变量，使项目能够调用后端服务。
 
 在“解决方案资源管理器”中，导航到“WebFrontEnd” > “服务资源” > “service.yaml”，定义用于指定后端服务地址的变量。
 
-在 service.yaml 文件中的 `environmentVariables` 下面添加以下变量。 间距非常重要，请将添加的变量与 `environmentVariables:` 下面的其他变量对齐
+在 service.yaml 文件中，在 `environmentVariables:` 下添加以下变量（首先需要删除 `#` 以取消注释 `environmentVariables:`）。间距很重要，因此请将你添加的变量与 `environmentVariables:` 下的其他变量对齐。 ApiHostPort 的值应当与之前在 ToDoService 的 service.yaml 文件中看到的 ToDoServiceListener 的端口值匹配，这非常重要。
 
-> [!IMPORTANT]
-> 必须使用空格而不是制表符来缩进 service.yaml 文件中的变量，否则该文件无法编译。 当你创建环境变量时，Visual Studio 可能会插入制表符。 请将所有制表符替换为空格。 尽管**生成**调试输出中出现错误，但应用仍会启动。 但是，在将制表符转换为空格之前，该应用无法正常工作。 为确保 service.yaml 文件中不包含制表符，可以在 Visual Studio 编辑器中使用“编辑”  > “高级”  > “查看空白”来显示空白字符。
-> 请注意，service.yaml 文件是使用英语区域设置进行处理的。  例如，如果需要使用小数分隔符，请使用句点而不是逗号。
+```yaml
+- name: ApiHostPort
+  value: 
+- name: ToDoServiceName
+  value: ToDoService
+```
+
+> [!Tip]
+> 有两种方法可以指定 `ToDoServiceName` 的值： 
+> - 仅指定服务名称，在 Windows 10 上的调试场景中以及将服务部署到 Azure Service Fabric 网格时都会解析此名称。
+> - 以 servicename.appname 形式完全限定。 这仅适用于在 Windows 10 上进行调试的场景。
+> 较好的做法是仅使用服务名称进行服务解析。
 
 **WebFrontEnd** 项目的 **service.yaml** 文件应大致如下所示，不过，你的 `ApiHostPort` 值可能与此不同：
 
 ![WebFrontEnd 项目中的 Service.yaml](./media/service-fabric-mesh-tutorial-deploy-dotnetcore/visual-studio-serviceyaml-envvars.png)
+
 
 现在，可以生成 Service Fabric 网格应用程序的映像以及后端 Web 服务，并将其部署到本地群集。
 

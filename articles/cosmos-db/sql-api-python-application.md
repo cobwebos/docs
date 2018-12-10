@@ -1,10 +1,9 @@
 ---
-title: 适用于 Azure Cosmos DB 的 Python Flask Web 应用程序教程 | Microsoft Docs
+title: 适用于 Azure Cosmos DB 的 Python Flask Web 应用程序教程
 description: 查看一个数据库教程，其中介绍了使用 Azure Cosmos DB 从 Azure 上托管的 Python Flask Web 应用程序来存储和访问数据。 查找应用程序开发解决方案。
 keywords: 应用程序开发, Python Flask, Python Web 应用程序, Python Web 开发
 services: cosmos-db
 author: SnehaGunda
-manager: kfile
 ms.service: cosmos-db
 ms.component: cosmosdb-sql
 ms.devlang: python
@@ -12,12 +11,12 @@ ms.topic: tutorial
 ms.date: 02/23/2017
 ms.author: sngun
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d9470df09c2724bf89a371ec62e7fb8a7e2132c6
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: af8b2c3f0b319ce9769e9789f6639e1d5eb266f6
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46953916"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52865210"
 ---
 # <a name="build-a-python-flask-web-application-using-azure-cosmos-db"></a>构建使用 Azure Cosmos DB 的 Python Flask Web 应用程序
 
@@ -45,7 +44,7 @@ ms.locfileid: "46953916"
 ## <a name="database-tutorial-prerequisites"></a>数据库教程先决条件
 在按照本文中的说明操作之前，应确保已安装下列项：
 
-* [一个 Azure 订阅](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。 
+* [Azure 订阅](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。 
 
   [!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
 

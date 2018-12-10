@@ -1,9 +1,8 @@
 ---
-title: Azure Cosmos DB：使用 Python 和 SQL API 生成应用 | Microsoft Docs
+title: Azure Cosmos DB：使用 Python 和 SQL API 生成应用
 description: 演示一个可以用来连接到 Azure Cosmos DB SQL API 并进行查询的 Python 代码示例
 services: cosmos-db
 author: SnehaGunda
-manager: kfile
 ms.service: cosmos-db
 ms.component: cosmosdb-sql
 ms.custom: quick start connect, mvc, devcenter
@@ -11,17 +10,18 @@ ms.devlang: python
 ms.topic: quickstart
 ms.date: 09/24/2018
 ms.author: sngun
-ms.openlocfilehash: 666b99bcca460e3dd756c9d94912d01945c68909
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: a12107fe0dd25a383e7be1adbc717c7c1c654fa5
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47035923"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52846532"
 ---
 # <a name="azure-cosmos-db-build-a-sql-api-app-with-python-and-the-azure-portal"></a>Azure Cosmos DB：使用 Python 和 Azure 门户生成 SQL API 应用
 
 > [!div class="op_single_selector"]
 > * [.NET](create-sql-api-dotnet.md)
+> * [.NET（预览版）](create-sql-api-dotnet-preview.md)
 > * [Java](create-sql-api-java.md)
 > * [Node.js](create-sql-api-nodejs.md)
 > * [Python](create-sql-api-python.md)
@@ -93,14 +93,14 @@ Azure Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务�
     client = cosmos_client.CosmosClient(url_connection=config['ENDPOINT'], auth={'masterKey': config['MASTERKEY']})
     ```
 
-* 创建一个新数据库。
+* 将创建一个新数据库。
 
     ```python
     # Create a database
     db = client.CreateDatabase({ 'id': config['DATABASE'] })
     ```
 
-* 创建一个新集合。
+* 将创建一个新集合。
 
     ```python
     # Create collection options
@@ -135,7 +135,7 @@ Azure Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务�
     )
     ```
 
-* 使用 SQL 执行查询
+* 将使用 SQL 执行查询
 
     ```python
     query = {'query': 'SELECT * FROM server s'}

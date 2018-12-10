@@ -1,21 +1,19 @@
 ---
-title: 了解如何为通过 MongoDB API 创建的 Azure Cosmos DB 文档设置生存时间值，以便在一段时间过后将其从系统中自动清除。
-description: 有关 MongoDB 按文档 TTL 功能的文档。
+title: Azure Cosmos DB 中的 MongoDB 按文档 TTL 功能
+description: 了解如何为通过 MongoDB API 创建的 Azure Cosmos DB 文档设置生存时间值，以便在一段时间过后将其从系统中自动清除。
 services: cosmos-db
 author: orestis-ms
-manager: kfile
-editor: ''
+ms.author: orkostak
 ms.service: cosmos-db
 ms.devlang: javascript
 ms.topic: quickstart
 ms.date: 08/10/2018
-ms.author: orkostak
-ms.openlocfilehash: 8679da0dfe92b1d611fd0b61b9f7404256b2b688
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 547ee489581b7e7e9203151fbfcdaad45dca8ea1
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50239859"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52868746"
 ---
 # <a name="expire-data-in-azure-cosmos-db-mongodb-api"></a>使 Azure Cosmos DB MongoDB API 中的数据过期
 

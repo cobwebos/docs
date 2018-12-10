@@ -1,21 +1,20 @@
 ---
-title: Azure 表存储概述 | Microsoft Docs
+title: Azure 表存储概述
 description: 使用 Azure 表存储（一种 NoSQL 数据存储）将结构化数据存储在云中。
 services: cosmos-db
 author: SnehaGunda
-manager: kfile
 ms.service: cosmos-db
 ms.component: cosmosdb-table
 ms.devlang: dotnet
 ms.topic: overview
 ms.date: 11/03/2017
 ms.author: sngun
-ms.openlocfilehash: 204d0032516886c2d954965c7c4561d967bae705
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 5f07d041e7674cb1579247ca2b444017762c5be0
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51232182"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52867403"
 ---
 # <a name="azure-table-storage-overview"></a>Azure 表存储概述
 
