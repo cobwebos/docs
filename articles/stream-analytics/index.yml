@@ -1,22 +1,22 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 439ac4e49941e425601124f2209eb67faa74cd43
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: f004aa82b7fb5cd85ca0054622010f956d056baf
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51687158"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53084220"
 documentType: LandingData
 title: 流分析文档
 metadata:
   title: Azure 流分析文档 - 教程和 API 参考
   meta.description: Learn how to run IoT analytics in the cloud with fully-managed event processing. Analyze data in real time from applications, sensors, devices, and more.
   services: stream-analytics
-  author: jasonwhowell
+  author: mamccrea
   ms.author: mamccrea
-  manager: kfile
   ms.service: stream-analytics
   ms.topic: landing-page
-  ms.date: 04/25/2018
+  ms.date: 12/06/2018
+  ms.custom: seodec18
 abstract:
   description: 了解如何使用流分析（完全托管的事件处理引擎）在云中运行物联网 (IoT) 分析。 教程和其他文档介绍了如何实时分析来自应用程序、传感器、设备、社交媒体等的数据。
   aside:
@@ -25,7 +25,7 @@ abstract:
       height: 110
       src: ./media/index/streaming-analytics-thumbnail.png
       width: 250
-    title: 使用 Azure 流分析在云和 IoT Edge 中启用实时分析和 ML 模型。 (1:15:05)
+    title: 使用 Azure 流分析进行实时分析和机器学习。 (1:15:05)
     href: https://myignite.techcommunity.microsoft.com/sessions/65358?source=sessions#ignite-html-anchor
     width: 250
 sections:

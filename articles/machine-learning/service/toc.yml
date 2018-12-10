@@ -83,13 +83,12 @@ items:
       href: how-to-set-up-training-targets.md
     - name: 在训练期间访问数据
       href: how-to-access-data.md
-    - name: 创建估算器
+    - name: 在训练期间创建估算器
       href: how-to-train-ml-models.md
-      items:
-      - name: PyTorch
-        href: how-to-train-pytorch.md
-      - name: TensorFlow
-        href: how-to-train-tensorflow.md
+    - name: 使用 PyTorch
+      href: how-to-train-pytorch.md
+    - name: 使用 TensorFlow
+      href: how-to-train-tensorflow.md
     - name: 优化超参数
       displayName: parameter
       href: how-to-tune-hyperparameters.md
@@ -110,18 +109,10 @@ items:
   - name: 部署模型
     items:
     - name: 模型部署位置
-      displayName: publish
+      displayName: publish, azure kubernetes, azure container instances
       href: how-to-deploy-and-where.md
-    - name: 部署到 ACI
-      displayName: Azure Container Instances
-      href: how-to-deploy-to-aci.md
-    - name: 部署到 AKS
-      displayName: Azure Kubernetes
-      href: how-to-deploy-to-aks.md
     - name: 部署到 FPGA
       href: how-to-deploy-fpga-web-service.md
-    - name: 部署到 IoT Edge
-      href: how-to-deploy-to-iot.md
     - name: 故障排除
       href: how-to-troubleshoot-deployment.md
     - name: 使用 SSL 进行保护
@@ -175,7 +166,7 @@ items:
     href: how-to-export-delete-data.md
   - name: 弃用的文档
     items:
-    - name: 如何迁移
+    - name: 从 Workbench 迁移
       displayName: Workbench, upgrade, update, transfer
       href: how-to-migrate.md
     - name: 导出或删除帐户数据（已弃用）
@@ -374,9 +365,9 @@ items:
       href: ../desktop-workbench/frequently-asked-questions.md
     - name: 旧问题
       href: ../desktop-workbench/known-issues-and-troubleshooting-guide.md
-ms.openlocfilehash: 087d101a655d87bdb4c8f7de2b39a5358c21e00e
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: a5c26bd2ef020ca737907c8a66776a3769bfeefd
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52962539"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53101239"

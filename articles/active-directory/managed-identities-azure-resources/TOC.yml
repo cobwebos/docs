@@ -97,6 +97,14 @@ items:
       href: how-to-use-vm-sign-in.md
     - name: 与 Azure SDK 配合使用
       href: how-to-use-vm-sdk.md
+  - name: 将托管标识访问权限分配给另一 Azure 资源
+    items:
+    - name: 门户
+      href: howto-assign-access-portal.md
+    - name: CLI
+      href: howto-assign-access-cli.md
+    - name: PowerShell
+      href: howto-assign-access-powershell.md
   - name: 管理用户分配的托管标识
     items:
     - name: 门户
@@ -145,9 +153,9 @@ items:
     href: https://stackoverflow.com/questions/tagged/azure-msi
   - name: AAD 开发者论坛
     href: https://feedback.azure.com/forums/169401-azure-active-directory/category/164757-developer-experiences
-ms.openlocfilehash: 77b31df1de1b39d6d53bd343adfd7c428d5f4e51
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 488481d3f7ba19f7d08c6a16443405ec58b5d462
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52873472"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53104300"

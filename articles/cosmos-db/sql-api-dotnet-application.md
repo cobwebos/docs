@@ -1,24 +1,22 @@
 ---
-title: 适用于 Azure Cosmos DB 的 ASP.NET MVC 教程：Web 应用程序开发 | Microsoft Docs
+title: 适用于 Azure Cosmos DB 的 ASP.NET MVC 教程：Web 应用程序开发
 description: 介绍如何创建使用 Azure Cosmos DB 的 MVC Web 应用程序的 ASP.NET MVC 教程。 将存储 JSON 并从 Azure 网站上托管的待办事项应用程序中访问数据 — ASP NET MVC 教程分步说明。
 keywords: asp.net mvc 教程, web 应用程序开发, mvc web 应用程序, asp net mvc 教程分步说明
 services: cosmos-db
 author: SnehaGunda
-manager: kfile
 ms.service: cosmos-db
 ms.component: cosmosdb-sql
-ms.workload: azure-vs
 ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 08/03/2017
 ms.author: sngun
 ms.custom: devcenter, vs-azure
-ms.openlocfilehash: 22856b6e9b543504db66bce074d32d9ad70f5238
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 8230c2ba8c7fdb10d7e37a317d4eeb5abb120d60
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51247664"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52868712"
 ---
 # <a name="_Toc395809351"></a>ASP.NET MVC 教程：使用 Azure Cosmos DB 开发 Web 应用程序
 

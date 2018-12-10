@@ -6,14 +6,20 @@ items:
     href: overview.md
 - name: 快速入门
   items:
-  - name: 内容审查器入门
+  - name: 入门
     href: quick-start.md
-  - name: 使用 .NET SDK
+  - name: 使用客户端 SDK
     items:
-    - name: 分析令人反感的材料的图像内容
-      href: image-moderation-quickstart-dotnet.md
-    - name: 分析令人反感的材料的文本内容
-      href: text-moderation-quickstart-dotnet.md
+    - name: C#
+      items:
+      - name: 分析图像内容
+        href: image-moderation-quickstart-dotnet.md
+      - name: 分析文本内容
+        href: text-moderation-quickstart-dotnet.md
+    - name: Python
+      items:
+      - name: 分析文本内容
+        href: text-moderation-quickstart-python.md
 - name: 概念
   items:
   - name: 图像审查
@@ -144,9 +150,9 @@ items:
     href: https://azure.microsoft.com/global-infrastructure/services/
   - name: Azure 路线图
     href: https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services
-ms.openlocfilehash: f7072fef1d0dea42d20f5cdd5a98dd5c7c20713f
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.openlocfilehash: 825aafe7980713fbb07499475cb4c8456873f1fe
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52276408"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53106169"

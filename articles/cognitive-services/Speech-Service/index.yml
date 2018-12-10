@@ -1,18 +1,16 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 452032e21a649fe4d34616225bd168d441ac0267
-ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
+ms.openlocfilehash: 6fa6a0f5a46d8e9a47a0750a66e9ca007864d40a
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51218622"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53092605"
 documentType: LandingData
 title: 语音服务文档
 metadata:
-  title: 语音服务文档 - 教程、快速入门和 API 参考 - 认知服务 | Microsoft Docs
-  meta.description: >
-    The Speech service gives developers an easy way to add powerful speech-enabled features to their applications.
-
-    Examples include voice command control and dialogue, natural speech conversation, speech transcription and dictation, and speech translation.
+  title: 语音服务文档 - 教程、快速入门和 API 参考
+  titleSuffix: Azure Cognitive Services
+  description: 开发人员可利用语音服务轻松将强大的语音支持功能添加到其应用程序。 示例包括语音命令控制和对话、自然语音聊天、语音听录和听写以及语音翻译。
   services: cognitive-services
   author: nitinme
   manager: cgronlun
@@ -22,8 +20,9 @@ metadata:
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
-  ms.date: 09/24/2018
-  ms.author: nitinme
+  ms.date: 12/06/2018
+  ms.author: erhopf
+  ms.custom: seodec18
 abstract:
   description: 了解如何使用语音服务和语音 SDK 向应用添加支持语音的功能。 可以使用语音 SDK 向应用添加<i>语音转文本</i>（语音识别/SR）、<i>意向</i>、<i>翻译</i>和<i>文本转语音</i> (TTS) 功能。 语音服务还有一个 REST API，此 API 适用于任何能够发出 HTTP 请求的编程语言。
 sections:
@@ -39,7 +38,7 @@ sections:
         src: ../media/index/i_overview.svg
       title: 什么是语音服务？
     - href: /azure/cognitive-services/speech-service/get-started
-      html: <p>了解如何注册免费试用语音服务。</p>
+      html: <p>免费注册。</p>
       image:
         src: ../media/index/i_get-started.svg
       title: 注册语音服务
