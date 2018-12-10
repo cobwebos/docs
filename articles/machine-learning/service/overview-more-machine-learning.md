@@ -8,36 +8,36 @@ ms.topic: overview
 ms.reviewer: jmartens
 author: garyericson
 ms.author: garye
-ms.date: 09/24/2018
-ms.openlocfilehash: 182504373795b3cb0f2794acbed5e253ac6bc95c
-ms.sourcegitcommit: 3150596c9d4a53d3650cc9254c107871ae0aab88
+ms.date: 12/04/2018
+ms.openlocfilehash: ad6cb53bd69218d2af801cb56f882f5ffde3026c
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47419553"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52872538"
 ---
 # <a name="what-are-the-machine-learning-product-options-from-microsoft"></a>Microsoft 提供哪些机器学习产品选项？
 
 Microsoft 提供多种多样的产品选项用于生成、部署和管理机器学习模型。 本文将比较这些产品，并帮助你选择所需的产品，以便最有效地开发机器学习解决方案。
 
-| 机器学习产品 | 描述 | 作用 |
+| 机器学习产品 | 作用 | 作用 |
 |-|-|-|
-| 在云中 | | |
+| ***在云中*** | | |
 | [Azure 机器学习服务](#azure-machine-learning-services) | 适用于机器学习的托管云服务  | 使用 Python 和 CLI 在 Azure 中训练、部署和管理模型 |
 | [Azure 机器学习工作室](#azure-machine-learning-studio) | 机器学习的拖放式可视界面 | 使用预配置的算法生成、试验和部署模型 |
 | [Azure Databricks](#azure-databricks) | 基于 Spark 的分析平台 | 生成和部署模型与数据工作流 |
 | [Azure 认知服务](#azure-cognitive-services) | 包含预生成 AI 和机器学习模型的 Azure 服务 | 轻松将智能功能轻松添加到应用中 |
 | [Azure Data Science Virtual Machine](#azure-data-science-virtual-machine) | 预装了数据科学工具的虚拟机 | 在预配置的环境中开发机器学习解决方案 |
-| 本地 | | |
+| ***本地***<br>（本地服务器也可在云端虚拟机中运行） | | |
 | [SQL Server 机器学习服务](#sql-server-machine-learning-services) | SQL 中嵌入的分析引擎 | 在 SQL Server 内部生成和部署模型 |
 | [Microsoft Machine Learning Server](#microsoft-machine-learning-server) | 用于预测分析的独立企业服务器 | 使用 R 和 Python 生成与部署模型 |
-| 开发人员工具 | | |
+| ***开发人员工具*** | | |
 | [ML.NET](#mlnet) | 开源跨平台机器学习 SDK | 开发适用于 .NET 应用程序的机器学习解决方案 |
 | [Windows ML](#windows-ml) | Windows 10 机器学习平台 | 在 Windows 10 设备上评估已训练的模型 |
 
 ## <a name="azure-machine-learning-service"></a>Azure 机器学习服务
 
-[Azure 机器学习服务](overview-what-is-azure-ml.md)（预览版）是用于大规模训练、部署和管理机器学习模型的完全托管式云服务。 它完全支持开源技术，可让你使用数以万计的开源 Python 包，例如 TensorFlow、PyTorch 和 scikit-learn。 它还提供丰富的工具，例如 [Azure Notebook](https://notebooks.azure.com/)、[Jupyter Notebook](http://jupyter.org) 或 [Visual Studio Code Tools for AI](https://visualstudio.microsoft.com/downloads/ai-tools-vscode/)，以方便探索和转换数据，然后训练和部署模型。 Azure 机器学习服务包含可以轻松、高效和准确地自动化模型生成和优化的功能。
+[Azure 机器学习服务](overview-what-is-azure-ml.md)是用于大规模训练、部署和管理机器学习模型的完全托管式云服务。 它完全支持开源技术，可让你使用数以万计的开源 Python 包，例如 TensorFlow、PyTorch 和 scikit-learn。 它还提供丰富的工具，例如 [Azure Notebook](https://notebooks.azure.com/)、[Jupyter Notebook](http://jupyter.org) 或[用于 Visual Studio Code 的 Azure 机器学习](https://visualstudio.microsoft.com/downloads/ai-tools-vscode/)扩展，以方便探索和转换数据，然后训练和部署模型。 Azure 机器学习服务包含可以轻松、高效和准确地自动化模型生成和优化的功能。
 
 在 Azure 机器学习服务中可以使用 Python 和 CLI 以云的规模训练、部署和管理机器学习模型。
 
@@ -74,9 +74,10 @@ Microsoft 提供多种多样的产品选项用于生成、部署和管理机器�
 ## <a name="azure-data-science-virtual-machine"></a>Azure 数据科学虚拟机
 
 [Azure Data Science Virtual Machine](../data-science-virtual-machine/overview.md) 是专为开展数据科学生成的 Microsoft Azure 云上的自定义虚拟机环境。 它预装并预配了许多热门数据科学和其他工具，可为高级分析快速生成智能应用程序。
-Data Science Virtual Machine 提供适用于 Windows 和 Linux Ubuntu 的版本（Linux CentOS 不支持 Azure 机器学习服务）。
-有关特定版本的信息以及版本功能的列表，请参阅 [Azure Data Science Virtual Machine 简介](../data-science-virtual-machine/overview.md)。
+
 支持将 Data Science Virtual Machine 用作 Azure 机器学习服务的目标。
+它提供适用于 Windows 和 Linux Ubuntu 的版本（Linux CentOS 不支持 Azure 机器学习服务）。
+有关特定版本的信息以及版本功能的列表，请参阅 [Azure Data Science Virtual Machine 简介](../data-science-virtual-machine/overview.md)。
 
 需要在单个节点上运行或托管作业时，可以使用数据科学 VM。 或者，需要在单个计算机上远程提高处理能力时，也可以使用它。
 

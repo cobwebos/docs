@@ -1,6 +1,6 @@
 ---
-title: 教程：使用自动化机器学习训练分类模型 - Azure 机器学习服务
-description: 了解如何使用自动化机器学习生成机器学习模型。  Azure 机器学习可以通过自动化方式为你执行数据预处理、算法选择和超参数选择操作。 然后，使用 Azure 机器学习服务来部署最终模型。
+title: 教程 2：使用自动化机器学习训练回归模型 - Azure 机器学习服务
+description: 了解如何使用自动化机器学习生成 ML 模型。  Azure 机器学习可以通过自动化方式为你执行数据预处理、算法选择和超参数选择操作。 然后，使用 Azure 机器学习服务来部署最终模型。
 services: machine-learning
 ms.service: machine-learning
 ms.component: core
@@ -8,54 +8,50 @@ ms.topic: tutorial
 author: nacharya1
 ms.author: nilesha
 ms.reviewer: sgilley
-ms.date: 11/21/2018
-ms.openlocfilehash: 0c7431e5b66da721248b2a49c214584bf43e577f
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.date: 12/04/2018
+ms.openlocfilehash: 0c4b9c31c4ae8a6a7a7044887c9af051966c745e
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52498573"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52879525"
 ---
-# <a name="tutorial-train-a-classification-model-with-automated-machine-learning-in-azure-machine-learning-service"></a>教程：使用 Azure 机器学习服务中的自动化机器学习训练分类模型
+# <a name="tutorial-2-train-a-regression-model-with-automated-machine-learning"></a>教程 2：使用自动化机器学习训练回归模型
 
-本教程介绍如何使用自动化机器学习（自动化 ML）生成机器学习模型。  Azure 机器学习服务可以通过自动化方式为你执行数据预处理、算法选择和超参数选择操作。 然后，可以按照[部署模型](tutorial-deploy-models-with-aml.md)教程中的工作流来部署最终模型。
+本教程是由两个部分构成的系列教程的第二部分。 在上一教程中，[已准备用于回归建模的纽约市出租车数据](tutorial-data-prep.md)。
+
+现在可以使用 Azure 机器学习服务来生成模型了。 在教程的此部分，需使用准备好的数据自动生成一个回归模型，用于预测出租车费用价格。 使用此服务的自动化 ML 功能，可以定义机器学习目标和约束，启动自动化机器学习过程，然后进行算法选择和超参数优化。 自动化 ML 技术会对算法和超参数的多种组合进行迭代访问，知道找到符合要求的最佳模型。
 
 ![流程图](./media/tutorial-auto-train-models/flow2.png)
 
-与[训练模型教程](tutorial-train-models-with-aml.md)类似，本教程会将 [MNIST](http://yann.lecun.com/exdb/mnist/) 数据集中的手绘数字图形 (0-9) 进行分类。 但这一次不指定算法，也不优化超参数。 自动化 ML 技术会对算法和超参数的多种组合进行迭代访问，知道找到符合要求的最佳模型。
-
-将了解如何执行以下操作：
+本教程介绍如何执行下列操作：
 
 > [!div class="checklist"]
-> * 设置开发环境
-> * 访问和检查数据
-> * 在本地计算机上使用自动化分类器进行训练
+> * 设置 Python 环境并导入 SDK 包
+> * 配置 Azure 机器学习服务工作区
+> * 自动训练回归模型
+> * 使用自定义参数在本地运行模型
 > * 浏览结果
-> * 查看训练结果
 > * 注册最佳模型
 
 如果还没有 Azure 订阅，可以在开始前创建一个[免费帐户](https://aka.ms/AMLfree)。
 
 >[!NOTE]
-> 本文中的代码已使用 Azure 机器学习 SDK 版本 0.1.79 进行测试
+> 本文中的代码已使用 Azure 机器学习 SDK 版本 1.0.0 进行测试
+
+
+## <a name="prerequisites"></a>先决条件
+
+> * [运行数据准备教程](tutorial-data-prep.md)。
+> * 自动化机器学习配置的环境，例如 Azure Notebooks、本地 Python 环境或 Data Science Virtual Machine。 [设置](samples-notebooks.md)自动化机器学习。
 
 ## <a name="get-the-notebook"></a>获取 Notebook
 
-为方便起见，本教程以 [Jupyter Notebook](https://aka.ms/aml-notebook-tut-03) 的形式提供。 在 Azure Notebooks 或你自己的 Jupyter Notebook 服务器中运行 `03.auto-train-models.ipynb` Notebook。
-
+为方便起见，本教程以 [Jupyter Notebook](https://github.com/Azure/MachineLearningNotebooks/blob/master/tutorials/regression-part2-automated-ml.ipynb) 的形式提供。 在 Azure Notebooks 或你自己的 Jupyter Notebook 服务器中运行 `regression-part2-automated-ml.ipynb` Notebook。
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-in-azure-notebook.md)]
 
-
-## <a name="set-up-your-development-environment"></a>设置开发环境
-
-开发工作的所有设置都可以在 Python Notebook 中完成。  设置包括：
-
-* 导入 Python 包
-* 配置一个工作区以启用本地计算机和远程资源之间的通信
-* 创建一个存储训练脚本的目录
-
-### <a name="import-packages"></a>导入包
+## <a name="import-packages"></a>导入包
 导入需要在本教程中使用的 Python 包。
 
 
@@ -66,25 +62,22 @@ from azureml.core.workspace import Workspace
 from azureml.train.automl.run import AutoMLRun
 import time
 import logging
-from sklearn import datasets
-from matplotlib import pyplot as plt
-from matplotlib.pyplot import imshow
-import random
-import numpy as np
+
 ```
 
-### <a name="configure-workspace"></a>配置工作区
+## <a name="configure-workspace"></a>配置工作区
 
-从现有工作区创建工作区对象。 `Workspace.from_config()` 读取 **aml_config/config.json** 文件并将详细信息加载到名为 `ws` 的对象中。  在本教程中，`ws` 在代码的其余部分使用。
+从现有工作区创建工作区对象。 `Workspace` 是一个类，可接受 Azure 订阅和资源信息，并创建云资源来监视和跟踪模型运行。 `Workspace.from_config()` 读取 **aml_config/config.json** 文件并将详细信息加载到名为 `ws` 的对象中。  在本教程中，`ws` 在代码的其余部分使用。
 
-有了工作区对象以后，请为试验指定一个名称，然后通过工作区创建并注册本地目录。 所有运行的历史记录都记录在指定的试验下。
+有了工作区对象以后，请为试验指定一个名称，然后通过工作区创建并注册本地目录。 所有运行的历史记录都记录在指定的试验下和 [Azure 门户](https://portal.azure.com)中。
+
 
 ```python
 ws = Workspace.from_config()
-# project folder to save your local files
-project_folder = './sample_projects/automl-local-classification'
 # choose a name for the run history container in the workspace
-experiment_name = 'automl-classifier'
+experiment_name = 'automated-ml-regression'
+# project folder
+project_folder = './automated-ml-regression'
 
 import os
 
@@ -101,134 +94,585 @@ pd.DataFrame(data=output, index=['']).T
 
 ## <a name="explore-data"></a>浏览数据
 
-初始训练教程使用了高分辨率版本的 MNIST 数据集（28x28 像素）。  由于自动化 ML 训练要求多个迭代，因此本教程使用较低分辨率版本的图像（8x8 像素）来演示概念，这同时可以缩短每个迭代所需的时间。  
+利用在上一教程中创建的数据流对象。 打开并执行数据流，然后查看结果。
+
 
 ```python
-from sklearn import datasets
-
-digits = datasets.load_digits()
-
-# Exclude the first 100 rows from training so that they can be used for test.
-X_train = digits.data[100:,:]
-y_train = digits.target[100:]
+import azureml.dataprep as dprep
+package_saved = dprep.Package.open(".\dflow")
+dflow_prepared = package_saved.dataflows[0]
+dflow_prepared.get_profile()
 ```
 
-### <a name="display-some-sample-images"></a>显示一些示例图像
 
-将数据加载到 `numpy` 数组中。 然后，使用 `matplotlib` 从数据集随意绘制 30 张图像，并在上方附加标签。
+
+
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>类型</th>
+      <th>Min</th>
+      <th>Max</th>
+      <th>Count</th>
+      <th>缺失计数</th>
+      <th>非缺失计数</th>
+      <th>缺失百分比</th>
+      <th>错误计数</th>
+      <th>空计数</th>
+      <th>0.1% 分位</th>
+      <th>1% 分位</th>
+      <th>5% 分位</th>
+      <th>25% 分位</th>
+      <th>50% 分位</th>
+      <th>75% 分位</th>
+      <th>95% 分位</th>
+      <th>99% 分位</th>
+      <th>99.9% 分位</th>
+      <th>平均值</th>
+      <th>标准偏差</th>
+      <th>Variance</th>
+      <th>倾斜</th>
+      <th>峰度</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>vendor</th>
+      <td>FieldType.STRING</td>
+      <td>1</td>
+      <td>VTS</td>
+      <td>7059.0</td>
+      <td>0.0</td>
+      <td>7059.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>pickup_weekday</th>
+      <td>FieldType.STRING</td>
+      <td>星期五</td>
+      <td>星期三</td>
+      <td>7059.0</td>
+      <td>0.0</td>
+      <td>7059.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>pickup_hour</th>
+      <td>FieldType.DECIMAL</td>
+      <td>0</td>
+      <td>23</td>
+      <td>7059.0</td>
+      <td>0.0</td>
+      <td>7059.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0</td>
+      <td>3.57523</td>
+      <td>3</td>
+      <td>9.91106</td>
+      <td>15.9327</td>
+      <td>19</td>
+      <td>22.0225</td>
+      <td>23</td>
+      <td>23</td>
+      <td>14.2326</td>
+      <td>6.34926</td>
+      <td>40.3131</td>
+      <td>-0.693335</td>
+      <td>-0.459336</td>
+    </tr>
+    <tr>
+      <th>pickup_minute</th>
+      <td>FieldType.DECIMAL</td>
+      <td>0</td>
+      <td>59</td>
+      <td>7059.0</td>
+      <td>0.0</td>
+      <td>7059.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0</td>
+      <td>5.32313</td>
+      <td>4.92308</td>
+      <td>14.2214</td>
+      <td>29.5244</td>
+      <td>44.6436</td>
+      <td>56.3767</td>
+      <td>58.9798</td>
+      <td>59</td>
+      <td>29.4635</td>
+      <td>17.4396</td>
+      <td>304.14</td>
+      <td>0.00440324</td>
+      <td>-1.20458</td>
+    </tr>
+    <tr>
+      <th>pickup_second</th>
+      <td>FieldType.DECIMAL</td>
+      <td>0</td>
+      <td>59</td>
+      <td>7059.0</td>
+      <td>0.0</td>
+      <td>7059.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0</td>
+      <td>4.99286</td>
+      <td>4.91954</td>
+      <td>14.6121</td>
+      <td>29.9239</td>
+      <td>44.5221</td>
+      <td>56.6792</td>
+      <td>59</td>
+      <td>59</td>
+      <td>29.6225</td>
+      <td>17.3868</td>
+      <td>302.302</td>
+      <td>-0.0227466</td>
+      <td>-1.19409</td>
+    </tr>
+    <tr>
+      <th>dropoff_weekday</th>
+      <td>FieldType.STRING</td>
+      <td>星期五</td>
+      <td>星期三</td>
+      <td>7059.0</td>
+      <td>0.0</td>
+      <td>7059.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>dropoff_hour</th>
+      <td>FieldType.DECIMAL</td>
+      <td>0</td>
+      <td>23</td>
+      <td>7059.0</td>
+      <td>0.0</td>
+      <td>7059.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0</td>
+      <td>3.23217</td>
+      <td>2.93333</td>
+      <td>9.92334</td>
+      <td>15.9135</td>
+      <td>19</td>
+      <td>22.2739</td>
+      <td>23</td>
+      <td>23</td>
+      <td>14.1815</td>
+      <td>6.45578</td>
+      <td>41.677</td>
+      <td>-0.691001</td>
+      <td>-0.500215</td>
+    </tr>
+    <tr>
+      <th>dropoff_minute</th>
+      <td>FieldType.DECIMAL</td>
+      <td>0</td>
+      <td>59</td>
+      <td>7059.0</td>
+      <td>0.0</td>
+      <td>7059.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0</td>
+      <td>5.1064</td>
+      <td>5</td>
+      <td>14.2051</td>
+      <td>29.079</td>
+      <td>44.2937</td>
+      <td>56.6338</td>
+      <td>58.9984</td>
+      <td>59</td>
+      <td>29.353</td>
+      <td>17.4241</td>
+      <td>303.598</td>
+      <td>0.0142562</td>
+      <td>-1.21531</td>
+    </tr>
+    <tr>
+      <th>dropoff_second</th>
+      <td>FieldType.DECIMAL</td>
+      <td>0</td>
+      <td>59</td>
+      <td>7059.0</td>
+      <td>0.0</td>
+      <td>7059.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0</td>
+      <td>5.03373</td>
+      <td>5</td>
+      <td>14.7471</td>
+      <td>29.598</td>
+      <td>45.3216</td>
+      <td>56.1044</td>
+      <td>58.9728</td>
+      <td>59</td>
+      <td>29.7923</td>
+      <td>17.481</td>
+      <td>305.585</td>
+      <td>-0.0281313</td>
+      <td>-1.21965</td>
+    </tr>
+    <tr>
+      <th>store_forward</th>
+      <td>FieldType.STRING</td>
+      <td>N</td>
+      <td>Y</td>
+      <td>7059.0</td>
+      <td>0.0</td>
+      <td>7059.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>pickup_longitude</th>
+      <td>FieldType.DECIMAL</td>
+      <td>-74.0782</td>
+      <td>-73.7365</td>
+      <td>7059.0</td>
+      <td>0.0</td>
+      <td>7059.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>-74.0763</td>
+      <td>-73.9625</td>
+      <td>-73.9629</td>
+      <td>-73.949</td>
+      <td>-73.9279</td>
+      <td>-73.8667</td>
+      <td>-73.8304</td>
+      <td>-73.8232</td>
+      <td>-73.7698</td>
+      <td>-73.9139</td>
+      <td>0.0487111</td>
+      <td>0.00237277</td>
+      <td>0.402697</td>
+      <td>-0.613516</td>
+    </tr>
+    <tr>
+      <th>pickup_latitude</th>
+      <td>FieldType.DECIMAL</td>
+      <td>40.5755</td>
+      <td>40.8799</td>
+      <td>7059.0</td>
+      <td>0.0</td>
+      <td>7059.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>40.6329</td>
+      <td>40.7131</td>
+      <td>40.7116</td>
+      <td>40.7214</td>
+      <td>40.7581</td>
+      <td>40.8051</td>
+      <td>40.8489</td>
+      <td>40.8676</td>
+      <td>40.8777</td>
+      <td>40.7652</td>
+      <td>0.0483485</td>
+      <td>0.00233758</td>
+      <td>0.228088</td>
+      <td>-0.598862</td>
+    </tr>
+    <tr>
+      <th>dropoff_longitude</th>
+      <td>FieldType.DECIMAL</td>
+      <td>-74.0857</td>
+      <td>-73.7209</td>
+      <td>7059.0</td>
+      <td>0.0</td>
+      <td>7059.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>-74.0788</td>
+      <td>-73.9856</td>
+      <td>-73.9858</td>
+      <td>-73.959</td>
+      <td>-73.9367</td>
+      <td>-73.8848</td>
+      <td>-73.8155</td>
+      <td>-73.7767</td>
+      <td>-73.7335</td>
+      <td>-73.9207</td>
+      <td>0.055961</td>
+      <td>0.00313163</td>
+      <td>0.648649</td>
+      <td>0.0229141</td>
+    </tr>
+    <tr>
+      <th>dropoff_latitude</th>
+      <td>FieldType.DECIMAL</td>
+      <td>40.5835</td>
+      <td>40.8797</td>
+      <td>7059.0</td>
+      <td>0.0</td>
+      <td>7059.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>40.5977</td>
+      <td>40.6954</td>
+      <td>40.6951</td>
+      <td>40.7275</td>
+      <td>40.7582</td>
+      <td>40.7884</td>
+      <td>40.8504</td>
+      <td>40.868</td>
+      <td>40.8786</td>
+      <td>40.7595</td>
+      <td>0.0504621</td>
+      <td>0.00254642</td>
+      <td>0.0484179</td>
+      <td>-0.0368799</td>
+    </tr>
+    <tr>
+      <th>passengers</th>
+      <td>FieldType.DECIMAL</td>
+      <td>1</td>
+      <td>6</td>
+      <td>7059.0</td>
+      <td>0.0</td>
+      <td>7059.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>5</td>
+      <td>5</td>
+      <td>6</td>
+      <td>6</td>
+      <td>2.32979</td>
+      <td>1.79978</td>
+      <td>3.2392</td>
+      <td>0.834099</td>
+      <td>-1.11111</td>
+    </tr>
+    <tr>
+      <th>cost</th>
+      <td>FieldType.DECIMAL</td>
+      <td>0</td>
+      <td>444</td>
+      <td>7059.0</td>
+      <td>0.0</td>
+      <td>7059.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0</td>
+      <td>3.01808</td>
+      <td>3.0125</td>
+      <td>5.91545</td>
+      <td>9.49055</td>
+      <td>16.5816</td>
+      <td>33.5638</td>
+      <td>51.9924</td>
+      <td>81.1368</td>
+      <td>12.9112</td>
+      <td>11.6447</td>
+      <td>135.599</td>
+      <td>8.6842</td>
+      <td>269.818</td>
+    </tr>
+  </tbody>
+</table>
+
+为试验准备数据时，请将列添加到 `dflow_x`，使之成为创建模型所需的特性。 将 `dflow_y` 定义为预测值：cost。
 
 ```python
-count = 0
-sample_size = 30
-plt.figure(figsize = (16, 6))
-for i in np.random.permutation(X_train.shape[0])[:sample_size]:
-    count = count + 1
-    plt.subplot(1, sample_size, count)
-    plt.axhline('')
-    plt.axvline('')
-    plt.text(x = 2, y = -2, s = y_train[i], fontsize = 18)
-    plt.imshow(X_train[i].reshape(8, 8), cmap = plt.cm.Greys)
-plt.show()
+dflow_X = dflow_prepared.keep_columns(['pickup_weekday', 'dropoff_latitude', 'dropoff_longitude','pickup_hour','pickup_longitude','pickup_latitude','passengers'])
+dflow_y = dflow_prepared.keep_columns('cost')
 ```
-随机图像示例显示：
 
-![位数](./media/tutorial-auto-train-models/digits.png)
+### <a name="split-data-into-train-and-test-sets"></a>将数据拆分为训练集和测试集
 
+现在请使用 `sklearn` 库中的 `train_test_split` 函数将数据拆分为训练集和测试集。 该函数将数据分成用于模型训练的 x（特性）数据集和用于测试的 y（用于预测的值）数据集。 `test_size` 参数决定了分配用于测试的数据的百分比。 `random_state` 参数设置随机数生成器的种子，因此进行的训练-测试拆分始终具有确定性。
 
-现在已有所需的包和数据，可以针对模型进行自动训练了。 
+```python
+from sklearn.model_selection import train_test_split
 
-## <a name="train-a-model"></a>训练模型
+x_df = dflow_X.to_pandas_dataframe()
+y_df = dflow_y.to_pandas_dataframe()
 
-若要自动训练一个模型，请先定义试验的配置设置，然后运行试验。
+x_train, x_test, y_train, y_test = train_test_split(x_df, y_df, test_size=0.2, random_state=123)
+# flatten y_train to 1d array
+y_train.values.flatten()
+```
 
+现在已有所需的包和数据，可以针对模型进行自动训练了。
 
-### <a name="define-settings"></a>定义设置
+## <a name="automatically-train-a-model"></a>自动训练模型
 
-定义试验设置和模型设置。
+若要自动训练模型，请执行以下操作：
+1. 定义试验运行的设置
+1. 提交用于模型优化的试验
+
+### <a name="define-settings-for-autogeneration-and-tuning"></a>定义自动生成和优化的设置
+
+定义自动生成和优化的试验参数和模型设置。 查看[设置](how-to-configure-auto-train.md)的完整列表。
+
 
 |属性| 本教程中的值 |Description|
 |----|----|---|
-|**primary_metric**|AUC 加权 | 要优化的指标。|
-|**max_time_sec**|12,000|每个迭代的时间限制（秒）|
-|**迭代**|20|迭代次数。 在每个迭代中，模型通过特定管道使用数据进行训练。|
-|**n_cross_validations**|3|交叉验证拆分数|
-|**preprocess**|False| *True/False*：允许试验基于输入执行预处理。  预处理会处理缺失的数据，并执行一些常见的特征提取操作|
-|**exit_score**|0.9985|*double* 值，指示 *primary_metric* 的目标。 超过目标运行就会终止|
-|**blacklist_algos**|['kNN','LinearSVM']|字符串的数组，指示要忽略的算法。
-|
+|**iteration_timeout_minutes**|10|每个迭代的时间限制（分钟）|
+|**迭代**|30|迭代次数。 在每个迭代中，模型通过特定管道使用数据进行训练。|
+|**primary_metric**| spearman_correlation | 要优化的指标。|
+|**preprocess**| True | 如果为 True，则试验可以基于输入执行预处理。|
+|**verbosity**| logging.INFO | 控制日志记录的级别。|
+|**n_cross_validationss**|5|交叉验证拆分数
+
+
+
+```python
+automl_settings = {
+    "iteration_timeout_minutes" : 10,
+    "iterations" : 30,
+    "primary_metric" : 'spearman_correlation',
+    "preprocess" : True,
+    "verbosity" : logging.INFO,
+    "n_cross_validations": 5
+}
+```
+
 
 ```python
 from azureml.train.automl import AutoMLConfig
 
-##Local compute 
-Automl_config = AutoMLConfig(task = 'classification',
-                             primary_metric = 'AUC_weighted',
-                             max_time_sec = 12000,
-                             iterations = 20,
-                             n_cross_validations = 3,
-                             preprocess = False,
-                             exit_score = 0.9985,
-                             blacklist_algos = ['kNN','LinearSVM'],
-                             X = X_train,
-                             y = y_train,
-                             path=project_folder)
+# local compute
+automated_ml_config = AutoMLConfig(task = 'regression',
+                             debug_log = 'automated_ml_errors.log',
+                             path = project_folder,
+                             X = x_train.values,
+                             y = y_train.values.flatten(),
+                             **automl_settings)
 ```
 
-### <a name="run-the-experiment"></a>运行试验
+### <a name="train-the-automatic-regression-model"></a>训练自动回归模型
 
-启动要在本地运行的试验。 将计算目标定义为 local，并将输出设置为 true，以便查看试验的进度。
+启动要在本地运行的试验。 将定义的 `automated_ml_config` 对象传递至试验，并将输出设置为 `true`，以便查看试验过程中的进度。
 
 
 ```python
 from azureml.core.experiment import Experiment
 experiment=Experiment(ws, experiment_name)
-local_run = experiment.submit(Automl_config, show_output=True)
+local_run = experiment.submit(automated_ml_config, show_output=True)
 ```
 
-在进行每个迭代时，输出（如下所示）每次显示一行。  每隔 **10-15 秒**就会看到新的一行。
-
-    Running locally
-    Parent Run ID: AutoML_ca0c807b-b7bf-4809-a963-61c6feb73ea1
-    ***********************************************************************************************
+    Parent Run ID: AutoML_83117da4-07e3-473a-b83e-99471bfa9e09
+    *******************************************************************************************
     ITERATION: The iteration being evaluated.
-    PIPELINE:  A summary description of the pipeline being evaluated.
+    PIPELINE: A summary description of the pipeline being evaluated.
     DURATION: Time taken for the current iteration.
     METRIC: The result of computing score on the fitted pipeline.
     BEST: The best observed score thus far.
-    ***********************************************************************************************
+    *******************************************************************************************
     
-     ITERATION     PIPELINE                               DURATION                METRIC      BEST
-             0      Normalizer extra trees                0:00:15.955367           0.988     0.988
-             1      Normalizer extra trees                0:00:14.203088           0.952     0.988
-             2      Normalizer lgbm_classifier            0:00:15.089057           0.994     0.994
-             3      Normalizer SGD classifier             0:00:14.866700           0.500     0.994
-             4      Normalizer SGD classifier             0:00:13.740577           0.983     0.994
-             5      Normalizer DT                         0:00:13.879204           0.937     0.994
-             6      Normalizer SGD classifier             0:00:13.379975           0.980     0.994
-             7      Normalizer lgbm_classifier            0:00:15.953293           0.997     0.997
-    Stopping criteria reached. Ending experiment.
+     ITERATION   PIPELINE                                       DURATION      METRIC      BEST
+             0   MaxAbsScaler ExtremeRandomTrees                0:00:21       0.6498    0.6498
+             1   MinMaxScaler GradientBoosting                  0:00:22       0.6624    0.6624
+             2   StandardScalerWrapper KNN                      0:00:18       0.7267    0.7267
+             3   StandardScalerWrapper GradientBoosting         0:00:18       0.5003    0.7267
+             4    Ensemble                                      0:00:38       0.6659    0.7267
+    
 
 ## <a name="explore-the-results"></a>浏览结果
 
-通过 Jupyter 小组件或者通过检查试验历史记录来浏览试验结果。
+通过 Jupyter 小组件或者通过检查试验历史记录来浏览自动训练的结果。
 
-### <a name="jupyter-widget"></a>Jupyter 小组件
+### <a name="option-1-add-a-jupyter-widget-to-see-results"></a>选项 1：添加查看结果所需的 Jupyter 小组件
 
-使用 Jupyter Notebook 小组件可以看到一个包含所有结果的图形和表。
+如果使用 Jupyter Notebook，则使用此 Jupyter Notebook 小组件可以看到一个包含所有结果的图形和表。
+
 
 ```python
 from azureml.widgets import RunDetails
 RunDetails(local_run).show()
 ```
 
-下面是小组件的静态图像。  在 Notebook 中，可以使用图表上方的下拉列表来查看每个迭代的每个可用指标的图表。
+![Jupyter 小组件运行详细信息](./media/tutorial-auto-train-models/jup-widget-auto.png)
 
-![小组件表](./media/tutorial-auto-train-models/table.png)
-![小组件绘图](./media/tutorial-auto-train-models/graph.png)
+### <a name="option-2-get-and-examine-all-run-iterations-in-python"></a>选项 2：获取并检查 Python 中的所有运行迭代
 
-### <a name="retrieve-all-iterations"></a>检索所有迭代
-
-查看试验历史记录，以及每个迭代运行的单个指标。
+也可检索每个试验的历史记录，并浏览每个迭代运行的单个指标。
 
 ```python
 children = list(local_run.get_children())
@@ -243,308 +687,213 @@ rundata = pd.DataFrame(metricslist).sort_index(1)
 rundata
 ```
 
-下表显示结果：
 
 
-<!-- hello world -->
 
-<table><thead><tr>
-        <th></th>
-        <th>0</th>
-        <th>1</th>
-        <th>2</th>
-        <th>3</th>
-        <th>4</th>
-        <th>5</th>
-        <th>6</th>
-        <th>7</th>
-    </tr></thead>
-<tbody>    <tr> 
-        <th id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180level0_row0" class="row_heading level0 row0" >AUC_macro</th> 
-        <td id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180row0_col0" class="data row0 col0" >0.988094</td> 
-        <td id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180row0_col1" class="data row0 col1" >0.951981</td> 
-        <td id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180row0_col2" class="data row0 col2" >0.993606</td> 
-        <td id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180row0_col3" class="data row0 col3" >0.5</td> 
-        <td id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180row0_col4" class="data row0 col4" >0.982724</td> 
-        <td id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180row0_col5" class="data row0 col5" >0.936998</td> 
-        <td id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180row0_col6" class="data row0 col6" >0.979978</td> 
-        <td id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180row0_col7" class="data row0 col7" >0.996639</td> 
-    </tr>    <tr> 
-        <th id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180level0_row1" class="row_heading level0 row1" >AUC_micro</th> 
-        <td id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180row1_col0" class="data row1 col0" >0.988104</td> 
-        <td id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180row1_col1" class="data row1 col1" >0.948402</td> 
-        <td id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180row1_col2" class="data row1 col2" >0.99413</td> 
-        <td id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180row1_col3" class="data row1 col3" >0.463035</td> 
-        <td id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180row1_col4" class="data row1 col4" >0.976078</td> 
-        <td id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180row1_col5" class="data row1 col5" >0.945169</td> 
-        <td id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180row1_col6" class="data row1 col6" >0.968913</td> 
-        <td id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180row1_col7" class="data row1 col7" >0.997027</td> 
-    </tr>    <tr> 
-        <th id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180level0_row2" class="row_heading level0 row2" >AUC_weighted</th> 
-        <td id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180row2_col0" class="data row2 col0" >0.987943</td> 
-        <td id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180row2_col1" class="data row2 col1" >0.952255</td> 
-        <td id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180row2_col2" class="data row2 col2" >0.993513</td> 
-        <td id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180row2_col3" class="data row2 col3" >0.5</td> 
-        <td id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180row2_col4" class="data row2 col4" >0.982801</td> 
-        <td id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180row2_col5" class="data row2 col5" >0.937292</td> 
-        <td id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180row2_col6" class="data row2 col6" >0.979973</td> 
-        <td id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180row2_col7" class="data row2 col7" >0.99656</td> 
-    </tr>    <tr> 
-        <th id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180level0_row3" class="row_heading level0 row3" >AUC_weighted_max</th> 
-        <td id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180row3_col0" class="data row3 col0" >0.987943</td> 
-        <td id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180row3_col1" class="data row3 col1" >0.987943</td> 
-        <td id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180row3_col2" class="data row3 col2" >0.993513</td> 
-        <td id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180row3_col3" class="data row3 col3" >0.993513</td> 
-        <td id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180row3_col4" class="data row3 col4" >0.993513</td> 
-        <td id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180row3_col5" class="data row3 col5" >0.993513</td> 
-        <td id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180row3_col6" class="data row3 col6" >0.993513</td> 
-        <td id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180row3_col7" class="data row3 col7" >0.99656</td> 
-    </tr>    <tr> 
-        <th id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180level0_row4" class="row_heading level0 row4" >accuracy</th> 
-        <td id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180row4_col0" class="data row4 col0" >0.852093</td> 
-        <td id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180row4_col1" class="data row4 col1" >0.666464</td> 
-        <td id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180row4_col2" class="data row4 col2" >0.898057</td> 
-        <td id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180row4_col3" class="data row4 col3" >0.0701284</td> 
-        <td id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180row4_col4" class="data row4 col4" >0.832662</td> 
-        <td id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180row4_col5" class="data row4 col5" >0.701827</td> 
-        <td id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180row4_col6" class="data row4 col6" >0.83325</td> 
-        <td id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180row4_col7" class="data row4 col7" >0.925752</td> 
-    </tr>    <tr> 
-        <th id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180level0_row5" class="row_heading level0 row5" >average_precision_score_macro</th> 
-        <td id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180row5_col0" class="data row5 col0" >0.929167</td> 
-        <td id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180row5_col1" class="data row5 col1" >0.786258</td> 
-        <td id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180row5_col2" class="data row5 col2" >0.961497</td> 
-        <td id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180row5_col3" class="data row5 col3" >0.1</td> 
-        <td id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180row5_col4" class="data row5 col4" >0.917486</td> 
-        <td id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180row5_col5" class="data row5 col5" >0.685547</td> 
-        <td id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180row5_col6" class="data row5 col6" >0.906611</td> 
-        <td id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180row5_col7" class="data row5 col7" >0.977775</td> 
-    </tr>    <tr> 
-        <th id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180level0_row6" class="row_heading level0 row6" >average_precision_score_micro</th> 
-        <td id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180row6_col0" class="data row6 col0" >0.932596</td> 
-        <td id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180row6_col1" class="data row6 col1" >0.728331</td> 
-        <td id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180row6_col2" class="data row6 col2" >0.964138</td> 
-        <td id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180row6_col3" class="data row6 col3" >0.0909031</td> 
-        <td id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180row6_col4" class="data row6 col4" >0.880136</td> 
-        <td id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180row6_col5" class="data row6 col5" >0.757538</td> 
-        <td id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180row6_col6" class="data row6 col6" >0.859813</td> 
-        <td id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180row6_col7" class="data row6 col7" >0.980408</td> 
-    </tr>    <tr> 
-        <th id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180level0_row7" class="row_heading level0 row7" >average_precision_score_weighted</th> 
-        <td id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180row7_col0" class="data row7 col0" >0.930681</td> 
-        <td id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180row7_col1" class="data row7 col1" >0.788964</td> 
-        <td id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180row7_col2" class="data row7 col2" >0.962007</td> 
-        <td id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180row7_col3" class="data row7 col3" >0.102123</td> 
-        <td id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180row7_col4" class="data row7 col4" >0.918785</td> 
-        <td id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180row7_col5" class="data row7 col5" >0.692041</td> 
-        <td id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180row7_col6" class="data row7 col6" >0.908293</td> 
-        <td id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180row7_col7" class="data row7 col7" >0.977699</td> 
-    </tr>    <tr> 
-        <th id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180level0_row8" class="row_heading level0 row8" >balanced_accuracy</th> 
-        <td id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180row8_col0" class="data row8 col0" >0.917902</td> 
-        <td id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180row8_col1" class="data row8 col1" >0.814509</td> 
-        <td id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180row8_col2" class="data row8 col2" >0.94491</td> 
-        <td id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180row8_col3" class="data row8 col3" >0.5</td> 
-        <td id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180row8_col4" class="data row8 col4" >0.909248</td> 
-        <td id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180row8_col5" class="data row8 col5" >0.833428</td> 
-        <td id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180row8_col6" class="data row8 col6" >0.907412</td> 
-        <td id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180row8_col7" class="data row8 col7" >0.959351</td> 
-    </tr>    <tr> 
-        <th id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180level0_row9" class="row_heading level0 row9" >f1_score_macro</th> 
-        <td id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180row9_col0" class="data row9 col0" >0.850511</td> 
-        <td id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180row9_col1" class="data row9 col1" >0.643116</td> 
-        <td id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180row9_col2" class="data row9 col2" >0.899262</td> 
-        <td id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180row9_col3" class="data row9 col3" >0.013092</td> 
-        <td id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180row9_col4" class="data row9 col4" >0.825054</td> 
-        <td id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180row9_col5" class="data row9 col5" >0.691712</td> 
-        <td id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180row9_col6" class="data row9 col6" >0.819627</td> 
-        <td id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180row9_col7" class="data row9 col7" >0.926081</td> 
-    </tr>    <tr> 
-        <th id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180level0_row10" class="row_heading level0 row10" >f1_score_micro</th> 
-        <td id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180row10_col0" class="data row10 col0" >0.852093</td> 
-        <td id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180row10_col1" class="data row10 col1" >0.666464</td> 
-        <td id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180row10_col2" class="data row10 col2" >0.898057</td> 
-        <td id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180row10_col3" class="data row10 col3" >0.0701284</td> 
-        <td id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180row10_col4" class="data row10 col4" >0.832662</td> 
-        <td id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180row10_col5" class="data row10 col5" >0.701827</td> 
-        <td id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180row10_col6" class="data row10 col6" >0.83325</td> 
-        <td id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180row10_col7" class="data row10 col7" >0.925752</td> 
-    </tr>    <tr> 
-        <th id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180level0_row11" class="row_heading level0 row11" >f1_score_weighted</th> 
-        <td id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180row11_col0" class="data row11 col0" >0.852134</td> 
-        <td id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180row11_col1" class="data row11 col1" >0.646049</td> 
-        <td id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180row11_col2" class="data row11 col2" >0.898705</td> 
-        <td id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180row11_col3" class="data row11 col3" >0.00933691</td> 
-        <td id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180row11_col4" class="data row11 col4" >0.830731</td> 
-        <td id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180row11_col5" class="data row11 col5" >0.696538</td> 
-        <td id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180row11_col6" class="data row11 col6" >0.824547</td> 
-        <td id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180row11_col7" class="data row11 col7" >0.925778</td> 
-    </tr>    <tr> 
-        <th id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180level0_row12" class="row_heading level0 row12" >log_loss</th> 
-        <td id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180row12_col0" class="data row12 col0" >0.554364</td> 
-        <td id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180row12_col1" class="data row12 col1" >1.15728</td> 
-        <td id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180row12_col2" class="data row12 col2" >0.51741</td> 
-        <td id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180row12_col3" class="data row12 col3" >2.30397</td> 
-        <td id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180row12_col4" class="data row12 col4" >1.94009</td> 
-        <td id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180row12_col5" class="data row12 col5" >1.57663</td> 
-        <td id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180row12_col6" class="data row12 col6" >2.1848</td> 
-        <td id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180row12_col7" class="data row12 col7" >0.250725</td> 
-    </tr>    <tr> 
-        <th id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180level0_row13" class="row_heading level0 row13" >norm_macro_recall</th> 
-        <td id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180row13_col0" class="data row13 col0" >0.835815</td> 
-        <td id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180row13_col1" class="data row13 col1" >0.629003</td> 
-        <td id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180row13_col2" class="data row13 col2" >0.890167</td> 
-        <td id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180row13_col3" class="data row13 col3" >0</td> 
-        <td id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180row13_col4" class="data row13 col4" >0.818755</td> 
-        <td id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180row13_col5" class="data row13 col5" >0.666629</td> 
-        <td id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180row13_col6" class="data row13 col6" >0.814739</td> 
-        <td id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180row13_col7" class="data row13 col7" >0.918851</td> 
-    </tr>    <tr> 
-        <th id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180level0_row14" class="row_heading level0 row14" >precision_score_macro</th> 
-        <td id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180row14_col0" class="data row14 col0" >0.855892</td> 
-        <td id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180row14_col1" class="data row14 col1" >0.707715</td> 
-        <td id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180row14_col2" class="data row14 col2" >0.90195</td> 
-        <td id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180row14_col3" class="data row14 col3" >0.00701284</td> 
-        <td id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180row14_col4" class="data row14 col4" >0.84882</td> 
-        <td id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180row14_col5" class="data row14 col5" >0.729611</td> 
-        <td id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180row14_col6" class="data row14 col6" >0.855384</td> 
-        <td id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180row14_col7" class="data row14 col7" >0.927881</td> 
-    </tr>    <tr> 
-        <th id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180level0_row15" class="row_heading level0 row15" >precision_score_micro</th> 
-        <td id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180row15_col0" class="data row15 col0" >0.852093</td> 
-        <td id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180row15_col1" class="data row15 col1" >0.666464</td> 
-        <td id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180row15_col2" class="data row15 col2" >0.898057</td> 
-        <td id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180row15_col3" class="data row15 col3" >0.0701284</td> 
-        <td id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180row15_col4" class="data row15 col4" >0.832662</td> 
-        <td id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180row15_col5" class="data row15 col5" >0.701827</td> 
-        <td id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180row15_col6" class="data row15 col6" >0.83325</td> 
-        <td id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180row15_col7" class="data row15 col7" >0.925752</td> 
-    </tr>    <tr> 
-        <th id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180level0_row16" class="row_heading level0 row16" >precision_score_weighted</th> 
-        <td id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180row16_col0" class="data row16 col0" >0.859204</td> 
-        <td id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180row16_col1" class="data row16 col1" >0.711918</td> 
-        <td id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180row16_col2" class="data row16 col2" >0.903523</td> 
-        <td id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180row16_col3" class="data row16 col3" >0.00500676</td> 
-        <td id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180row16_col4" class="data row16 col4" >0.861209</td> 
-        <td id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180row16_col5" class="data row16 col5" >0.737586</td> 
-        <td id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180row16_col6" class="data row16 col6" >0.863524</td> 
-        <td id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180row16_col7" class="data row16 col7" >0.928403</td> 
-    </tr>    <tr> 
-        <th id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180level0_row17" class="row_heading level0 row17" >recall_score_macro</th> 
-        <td id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180row17_col0" class="data row17 col0" >0.852234</td> 
-        <td id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180row17_col1" class="data row17 col1" >0.666102</td> 
-        <td id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180row17_col2" class="data row17 col2" >0.901151</td> 
-        <td id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180row17_col3" class="data row17 col3" >0.1</td> 
-        <td id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180row17_col4" class="data row17 col4" >0.83688</td> 
-        <td id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180row17_col5" class="data row17 col5" >0.699966</td> 
-        <td id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180row17_col6" class="data row17 col6" >0.833265</td> 
-        <td id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180row17_col7" class="data row17 col7" >0.926966</td> 
-    </tr>    <tr> 
-        <th id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180level0_row18" class="row_heading level0 row18" >recall_score_micro</th> 
-        <td id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180row18_col0" class="data row18 col0" >0.852093</td> 
-        <td id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180row18_col1" class="data row18 col1" >0.666464</td> 
-        <td id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180row18_col2" class="data row18 col2" >0.898057</td> 
-        <td id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180row18_col3" class="data row18 col3" >0.0701284</td> 
-        <td id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180row18_col4" class="data row18 col4" >0.832662</td> 
-        <td id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180row18_col5" class="data row18 col5" >0.701827</td> 
-        <td id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180row18_col6" class="data row18 col6" >0.83325</td> 
-        <td id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180row18_col7" class="data row18 col7" >0.925752</td> 
-    </tr>    <tr> 
-        <th id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180level0_row19" class="row_heading level0 row19" >recall_score_weighted</th> 
-        <td id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180row19_col0" class="data row19 col0" >0.852093</td> 
-        <td id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180row19_col1" class="data row19 col1" >0.666464</td> 
-        <td id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180row19_col2" class="data row19 col2" >0.898057</td> 
-        <td id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180row19_col3" class="data row19 col3" >0.0701284</td> 
-        <td id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180row19_col4" class="data row19 col4" >0.832662</td> 
-        <td id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180row19_col5" class="data row19 col5" >0.701827</td> 
-        <td id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180row19_col6" class="data row19 col6" >0.83325</td> 
-        <td id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180row19_col7" class="data row19 col7" >0.925752</td> 
-    </tr>    <tr> 
-        <th id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180level0_row20" class="row_heading level0 row20" >weighted_accuracy</th> 
-        <td id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180row20_col0" class="data row20 col0" >0.851054</td> 
-        <td id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180row20_col1" class="data row20 col1" >0.66639</td> 
-        <td id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180row20_col2" class="data row20 col2" >0.895428</td> 
-        <td id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180row20_col3" class="data row20 col3" >0.049121</td> 
-        <td id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180row20_col4" class="data row20 col4" >0.829247</td> 
-        <td id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180row20_col5" class="data row20 col5" >0.702754</td> 
-        <td id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180row20_col6" class="data row20 col6" >0.833464</td> 
-        <td id="T_32497c5c_a5a9_11e8_a10f_c49ded1c6180row20_col7" class="data row20 col7" >0.924723</td> 
-    </tr></tbody> 
-</table> 
-<!-- hello world -->
+<div>
+<style scoped> .dataframe tbody tr th:only-of-type { vertical-align: middle; }
 
-## <a name="register-the-best-model"></a>注册最佳模型 
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
 
-使用 `local_run` 对象获取最佳模型并将其注册到工作区中。 
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>0</th>
+      <th>1</th>
+      <th>2</th>
+      <th>3</th>
+      <th>4</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>explained_variance</th>
+      <td>0.113810</td>
+      <td>0.093514</td>
+      <td>-0.010248</td>
+      <td>0.005867</td>
+      <td>0.108187</td>
+    </tr>
+    <tr>
+      <th>mean_absolute_error</th>
+      <td>7.004893</td>
+      <td>6.348354</td>
+      <td>6.493000</td>
+      <td>7.045597</td>
+      <td>6.646850</td>
+    </tr>
+    <tr>
+      <th>median_absolute_error</th>
+      <td>4.834063</td>
+      <td>3.503244</td>
+      <td>3.321553</td>
+      <td>4.349547</td>
+      <td>4.389995</td>
+    </tr>
+    <tr>
+      <th>normalized_mean_absolute_error</th>
+      <td>0.077832</td>
+      <td>0.070537</td>
+      <td>0.072144</td>
+      <td>0.078284</td>
+      <td>0.073854</td>
+    </tr>
+    <tr>
+      <th>normalized_median_absolute_error</th>
+      <td>0.053712</td>
+      <td>0.038925</td>
+      <td>0.036906</td>
+      <td>0.048328</td>
+      <td>0.048778</td>
+    </tr>
+    <tr>
+      <th>normalized_root_mean_squared_error</th>
+      <td>0.117819</td>
+      <td>0.120518</td>
+      <td>0.126141</td>
+      <td>0.124289</td>
+      <td>0.118340</td>
+    </tr>
+    <tr>
+      <th>normalized_root_mean_squared_log_error</th>
+      <td>0.177689</td>
+      <td>0.163360</td>
+      <td>0.168101</td>
+      <td>0.178250</td>
+      <td>0.168685</td>
+    </tr>
+    <tr>
+      <th>r2_score</th>
+      <td>0.104661</td>
+      <td>0.064075</td>
+      <td>-0.036158</td>
+      <td>-0.004403</td>
+      <td>0.096976</td>
+    </tr>
+    <tr>
+      <th>root_mean_squared_error</th>
+      <td>10.603744</td>
+      <td>10.846632</td>
+      <td>11.352731</td>
+      <td>11.185972</td>
+      <td>10.650593</td>
+    </tr>
+    <tr>
+      <th>root_mean_squared_log_error</th>
+      <td>0.801531</td>
+      <td>0.736896</td>
+      <td>0.758279</td>
+      <td>0.804062</td>
+      <td>0.760913</td>
+    </tr>
+    <tr>
+      <th>spearman_correlation</th>
+      <td>0.549825</td>
+      <td>0.562435</td>
+      <td>0.526702</td>
+      <td>0.500302</td>
+      <td>0.565857</td>
+    </tr>
+    <tr>
+      <th>spearman_correlation_max</th>
+      <td>0.549825</td>
+      <td>0.562435</td>
+      <td>0.562435</td>
+      <td>0.562435</td>
+      <td>0.565857</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+## <a name="retrieve-the-best-model"></a>检索最佳模型
+
+从迭代中选择最佳管道。 `automl_classifier` 上的 `get_output` 方法针对上次拟合调用返回最佳运行和拟合的模型。 `get_output` 上有重载，因此可以针对任何记录的指标或特定的迭代来检索最佳运行和拟合的模型。
 
 ```python
-# find the run with the highest accuracy value.
 best_run, fitted_model = local_run.get_output()
+print(best_run)
+print(fitted_model)
+```
 
-# register model in workspace
+## <a name="register-the-model"></a>注册模型
+
+在 Azure 机器学习服务工作区中注册模型。
+
+
+```python
 description = 'Automated Machine Learning Model'
 tags = None
 local_run.register_model(description=description, tags=tags)
 local_run.model_id # Use this id to deploy the model as a web service in Azure
 ```
 
-## <a name="test-the-best-model"></a>测试最佳模型
+## <a name="test-the-best-model-accuracy"></a>测试最佳模型的准确性
 
-使用此模型预测一些随机数字。  显示预测的值和图像。  红色字体和反向图像（黑底白色）用于突出显示错误分类的样本。
-
-由于模型精度较高，可能需要运行以下代码几次才能看到错误分类的样本。
+使用最佳模型针对测试数据集运行预测。 函数 `predict` 使用最佳模型根据 `x_test` 数据集预测 y（行程费用）的值。 输出 `y_predict` 中头 10 个预测的费用值。
 
 ```python
-# find 30 random samples from test set
-n = 30
-X_test = digits.data[:100, :]
-y_test = digits.target[:100]
-sample_indices = np.random.permutation(X_test.shape[0])[0:n]
-test_samples = X_test[sample_indices]
-
-
-# predict using the  model
-result = fitted_model.predict(test_samples)
-
-# compare actual value vs. the predicted values:
-i = 0
-plt.figure(figsize = (20, 1))
-
-for s in sample_indices:
-    plt.subplot(1, n, i + 1)
-    plt.axhline('')
-    plt.axvline('')
-    
-    # use different color for misclassified sample
-    font_color = 'red' if y_test[s] != result[i] else 'black'
-    clr_map = plt.cm.gray if y_test[s] != result[i] else plt.cm.Greys
-    
-    plt.text(x = 2, y = -2, s = result[i], fontsize = 18, color = font_color)
-    plt.imshow(X_test[s].reshape(8, 8), cmap = clr_map)
-    
-    i = i + 1
-plt.show()
+y_predict = fitted_model.predict(x_test.values)
+print(y_predict[:10])
 ```
 
+将预测的费用值与实际费用值进行比较。 使用 `y_test` dataframe，将其转换为一个列表，以便与预测的值进行比较。 函数 `mean_absolute_error` 接受两个数组的值，计算两个数组之间的平均绝对值误差。 在此示例中，平均绝对误差为 3.5 意味着平均说来，此模型预测的费用与实际值的误差在上下 3.5 以内。
 
-![结果](./media/tutorial-auto-train-models/results.png)
+```python
+from sklearn.metrics import mean_absolute_error
+
+y_actual = y_test.values.flatten().tolist()
+mean_absolute_error(y_actual, y_predict)
+```
+
+    [ 3.16213051 ]
+
+运行以下代码，使用完整的 `y_actual` 和 `y_predict` 数据集来计算 MAPE（平均绝对百分比误差）。 此指标计算每个预测值和实际值之间的绝对差值，将所有差值求和，然后将该和表示为实际值总和的百分比。
+
+```python
+sum_actuals = sum_errors = 0
+
+for actual_val, predict_val in zip(y_actual, y_predict):
+    abs_error = actual_val - predict_val
+    if abs_error < 0:
+        abs_error = abs_error * -1
+
+    sum_errors = sum_errors + abs_error
+    sum_actuals = sum_actuals + actual_val
+
+mean_abs_percent_error = sum_errors / sum_actuals
+print("Model MAPE:")
+print(mean_abs_percent_error)
+print()
+print("Model Accuracy:")
+print(1 - mean_abs_percent_error)
+```
+
+    Model MAPE:
+    0.22424976634422172
+
+    Model Accuracy:
+    0.7757502336557782
 
 ## <a name="clean-up-resources"></a>清理资源
 
 [!INCLUDE [aml-delete-resource-group](../../../includes/aml-delete-resource-group.md)]
 
-
 ## <a name="next-steps"></a>后续步骤
 
-在本 Azure 机器学习服务教程中，已使用 Python 执行以下操作：
+本自动化机器学习教程介绍了以下内容：
 
 > [!div class="checklist"]
-> * 设置开发环境
-> * 访问和检查数据
-> * 通过自动化分类器使用自定义参数在本地进行训练
-> * 浏览结果
-> * 查看训练结果
+> * 配置工作区并准备试验数据
+> * 通过自动化回归模型在本地使用自定义参数进行训练
+> * 浏览和查看训练结果
 > * 注册最佳模型
 
-详细了解[如何为自动训练配置设置](how-to-configure-auto-train.md)，或者[如何在远程资源上使用自动训练](how-to-auto-train-remote.md)。  
-
+使用 Azure 机器学习来[部署模型](tutorial-deploy-models-with-aml.md)。
