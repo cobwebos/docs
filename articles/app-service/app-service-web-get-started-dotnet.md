@@ -101,7 +101,7 @@ ms.locfileid: "51301027"
 
 ![创建应用服务计划](./media/app-service-web-get-started-dotnet/configure-app-service-plan.png)
 
-| 设置 | 建议的值 | Description |
+| 设置 | 建议的值 | 描述 |
 |-|-|-|
 |应用服务计划| myAppServicePlan | 应用服务计划的名称。 |
 | 位置 | 西欧 | 托管 Web 应用的数据中心。 |
