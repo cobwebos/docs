@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/22/2018
 ms.author: rkarlin
-ms.openlocfilehash: d02c71865f900c2b75da60bd2e989e04a6823d11
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 7783a10badd98a29488732d68267241ff619b645
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51005234"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52838661"
 ---
 # <a name="quickstart-connect-security-solutions-to-security-center"></a>快速入门：将安全解决方案连接到安全中心
 
@@ -33,7 +33,7 @@ ms.locfileid: "51005234"
 ## <a name="prerequisites"></a>先决条件
 若要开始使用安全中心，必须具有 Microsoft Azure 订阅。 如果尚无订阅，可注册[免费帐户](https://azure.microsoft.com/free/)。
 
-若要逐步执行本快速入门，你必须位于安全中心的“标准”定价层。 可以尝试安全中心标准版，头 60 天免费。 快速入门教程“[将 Azure 订阅载入到安全中心标准版](security-center-get-started.md)”详细介绍了如何升级到标准版。
+若要逐步执行本快速入门，你必须位于安全中心的“标准”定价层。 可以免费试用安全中心标准版。 快速入门教程“[将 Azure 订阅载入到安全中心标准版](security-center-get-started.md)”详细介绍了如何升级到标准版。 若要了解详细信息，请参阅[定价页](https://azure.microsoft.com/pricing/details/security-center/)。
 
 此外还需一台 [Linux 计算机](https://docs.microsoft.com/azure/log-analytics/log-analytics-agent-linux)，其 Syslog 服务已连接到安全中心。
 

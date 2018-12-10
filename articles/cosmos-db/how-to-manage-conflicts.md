@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 10/17/2018
 ms.author: chrande
-ms.openlocfilehash: 6b44e08fc1dce489e703bea1cbef2a7e94ae0f2a
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 83785e532523c3e921b0772ddaa50502b2dc867d
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50961013"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52633786"
 ---
 # <a name="manage-conflicts-between-regions"></a>管理区域之间的冲突
 
@@ -83,9 +83,9 @@ manual_collection = {
 manual_collection = client.CreateContainer(database['_self'], collection)
 ```
 
-## <a name="create-a-custom-conflict-resolution-policy-with-stored-procedure"></a>使用存储的过程创建自定义冲突解决策略
+## <a name="create-a-custom-conflict-resolution-policy-with-a-stored-procedure"></a>使用存储过程创建自定义冲突解决策略
 
-这些示例介绍如何使用自定义冲突解决策略设置一个容器，通过存储的过程来解决冲突。 这些冲突**不**会显示在冲突源中，除非存储过程中存在错误。
+这些示例介绍如何使用自定义冲突解决策略设置一个容器，通过存储的过程来解决冲突。 这些冲突不会显示在冲突源中，除非存储过程中存在错误。
 
 ### <a id="create-custom-conflict-resolution-policy-stored-proc-dotnet"></a>.NET SDK
 
@@ -102,7 +102,7 @@ DocumentCollection udpCollection = await createClient.CreateDocumentCollectionIf
   });
 ```
 
-需在创建容器后创建 `resolver` 存储过程。
+创建容器后，必须创建 `resolver` 存储过程。
 
 ### <a id="create-custom-conflict-resolution-policy-stored-proc-java-async"></a>Java 异步 SDK
 
@@ -114,7 +114,7 @@ collection.setConflictResolutionPolicy(policy);
 DocumentCollection createdCollection = client.createCollection(databaseUri, collection, null).toBlocking().value();
 ```
 
-需在创建容器后创建 `resolver` 存储过程。
+创建容器后，必须创建 `resolver` 存储过程。
 
 ### <a id="create-custom-conflict-resolution-policy-stored-proc-java-sync"></a>Java 同步 SDK
 
@@ -127,7 +127,7 @@ udpCollection.setConflictResolutionPolicy(udpPolicy);
 DocumentCollection createdCollection = this.tryCreateDocumentCollection(createClient, database, udpCollection);
 ```
 
-需在创建容器后创建 `resolver` 存储过程。
+创建容器后，必须创建 `resolver` 存储过程。
 
 ### <a id="create-custom-conflict-resolution-policy-stored-proc-javascript"></a>Node.js/JavaScript/TypeScript SDK
 
@@ -146,7 +146,7 @@ const { container: udpContainer } = await database.containers.createIfNotExists(
 );
 ```
 
-需在创建容器后创建 `resolver` 存储过程。
+创建容器后，必须创建 `resolver` 存储过程。
 
 ### <a id="create-custom-conflict-resolution-policy-stored-proc-python"></a>Python SDK
 
@@ -154,11 +154,11 @@ const { container: udpContainer } = await database.containers.createIfNotExists(
 
 ```
 
-需在创建容器后创建 `resolver` 存储过程。
+创建容器后，必须创建 `resolver` 存储过程。
 
-## <a name="create-a-last-writer-wins-conflict-resolution-policy"></a>创建“以最后一次写入为准”冲突解决策略
+## <a name="create-a-last-writer-wins-conflict-resolution-policy"></a>创建“以最后写入者为准”冲突解决策略
 
-这些示例介绍如何使用“以最后一次写入为准”冲突解决策略设置一个容器。 如果路径未设置或无效，则会将其默认设置为 `_ts` 属性（时间戳字段）。 这些冲突**不**会显示在冲突源中。
+这些示例介绍如何使用“以最后写入者为准”冲突解决策略设置一个容器。 如果路径未设置或无效，则它默认为 `_ts` 属性。 此属性是时间戳字段。 这些冲突不会显示在冲突源中。
 
 ### <a id="create-custom-conflict-resolution-policy-lww-dotnet"></a>.NET SDK
 
@@ -210,7 +210,7 @@ const { container: lwwContainer } = await database.containers.createIfNotExists(
 );
 ```
 
-如果省略 `conflictResolutionPath` 属性，则会将其默认设置为 `_ts` 属性。
+如果省略 `conflictResolutionPath` 属性，则它默认为 `_ts` 属性。
 
 ### <a id="create-custom-conflict-resolution-policy-lww-python"></a>Python SDK
 
@@ -277,8 +277,8 @@ while conflict:
 
 ## <a name="next-steps"></a>后续步骤
 
-现在可以继续学习以下 Cosmos DB 概念：
+了解以下 Azure Cosmos DB 概念：
 
 * [分区和数据分布](partition-data.md)
-* [在 Cosmos DB 中编制索引](indexing-policies.md)
+* [Azure Cosmos DB 中的索引](indexing-policies.md)
 

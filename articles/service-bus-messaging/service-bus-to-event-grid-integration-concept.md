@@ -14,12 +14,12 @@ ms.devlang: multiple
 ms.topic: get-started-article
 ms.date: 09/15/2018
 ms.author: spelluru
-ms.openlocfilehash: 2173a24eb3bbaafe9dcf25461eb5357ba3a6e7ad
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: c5dcfcb61903c3dbb92e942a5d3dca264ad454e3
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49166893"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52834377"
 ---
 # <a name="azure-service-bus-to-event-grid-integration-overview"></a>Azure 服务总线到事件网格的集成概述
 
@@ -36,10 +36,7 @@ Azure 服务总线已推出与 Azure 事件网格集成的新功能。 此功能
 ![19][]
 
 ### <a name="verify-that-you-have-contributor-access"></a>验证你是否有参与者访问权限
-
-转到服务总线命名空间，选择“访问控制(IAM)”，如下所示：
-
-![1][]
+转到“服务总线”命名空间，选择“访问控制(IAM)”，并选择“角色分配”选项卡。验证你是否拥有该命名空间的参与者访问权限。 
 
 ### <a name="events-and-event-schemas"></a>事件和事件架构
 

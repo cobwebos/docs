@@ -1,23 +1,21 @@
 ---
-title: 表 API 的 Azure Cosmos DB 全局分发教程 | Microsoft Docs
+title: 适用于表 API 的 Azure Cosmos DB 全局分发教程
 description: 了解如何使用表 API 设置 Azure Cosmos DB 全局分发。
 services: cosmos-db
 keywords: 全局分发, 表
 author: SnehaGunda
-manager: kfile
+ms.author: sngun
 ms.service: cosmos-db
 ms.component: cosmosdb-table
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 12/13/2017
-ms.author: sngun
 ms.custom: mvc
-ms.openlocfilehash: 7baa1e5b4b50d1f420b514854fa4d4c9ef786c99
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.date: 12/13/2017
+ms.openlocfilehash: 92ae0c3dc07c6dada80e081c65484e4f6bf4f947
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38582129"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52874866"
 ---
 # <a name="set-up-azure-cosmos-db-global-distribution-using-the-table-api"></a>使用表 API 设置 Azure Cosmos DB 全局分发
 

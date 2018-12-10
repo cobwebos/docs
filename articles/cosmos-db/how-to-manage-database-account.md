@@ -7,16 +7,16 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 10/17/2018
 ms.author: chrande
-ms.openlocfilehash: 0683516d16bf1501eee83901c5171811b8c0e44d
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 9fe8142c4fce45adaa3697023eab3ac9dbb55f37
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51621541"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52635656"
 ---
 # <a name="manage-database-accounts-in-azure-cosmos-db"></a>在 Azure Cosmos DB 中管理数据库帐户
 
-本文介绍如何管理 Azure Cosmos DB 帐户，以便设置多宿主功能、添加/删除区域、配置多个写入区域，以及设置故障转移优先级。 
+本文介绍了如何管理你的 Azure Cosmos DB 帐户。 你将了解如何设置多宿主功能、添加或删除区域、配置多个写入区域，以及设置故障转移优先级。 
 
 ## <a name="create-a-database-account"></a>创建数据库帐户
 
@@ -36,21 +36,21 @@ az cosmosdb create --name <Azure Cosmos account name> --resource-group <Resource
 ### <a id="configure-clients-multi-homing-dotnet"></a>.NET SDK
 
 ```csharp
-// Create a new Connection Policy
+// Create a new connection policy.
 ConnectionPolicy policy = new ConnectionPolicy
     {
         // Note: These aren't required settings for multi-homing,
-        // just suggested defaults
+        // just suggested defaults.
         ConnectionMode = ConnectionMode.Direct,
         ConnectionProtocol = Protocol.Tcp,
         UseMultipleWriteLocations = true,
     };
-// Add regions to Preferred locations
-// The name of the location will match what you see in the portal/etc.
+// Add regions to preferred locations.
+// The name of the location will match what you see in the portal, etc.
 policy.PreferredLocations.Add("East US");
 policy.PreferredLocations.Add("North Europe");
 
-// Pass the Connection policy with the preferred locations on it to the client.
+// Pass the connection policy with the preferred locations on it to the client.
 DocumentClient client = new DocumentClient(new Uri(this.accountEndpoint), this.accountKey, policy);
 ```
 
@@ -79,11 +79,11 @@ DocumentClient client = new DocumentClient(accountEndpoint, accountKey, connecti
 ### <a id="configure-clients-multi-homing-javascript"></a>Node.js/JavaScript/TypeScript SDK
 
 ```javascript
-// Set up the connection policy with your preferred regions
+// Set up the connection policy with your preferred regions.
 const connectionPolicy: ConnectionPolicy = new ConnectionPolicy();
 connectionPolicy.PreferredLocations = ["West US", "Australia East"];
 
-// Pass that connection policy to the client
+// Pass that connection policy to the client.
 const client = new CosmosClient({
   endpoint: config.endpoint,
   auth: { masterKey: config.key },
@@ -104,19 +104,19 @@ client = cosmos_client.CosmosClient(self.account_endpoint, {'masterKey': self.ac
 
 ### <a id="add-remove-regions-via-portal"></a>Azure 门户
 
-1. 导航到 Azure Cosmos DB 帐户，打开“全局复制数据”菜单。
+1. 导航到你的 Azure Cosmos DB 帐户，打开“全局复制数据”菜单。
 
-2. 若要添加区域，请单击与所需区域对应的包含“+”标签的空六边形，以便从地图中选择一个或多个区域。 也可先选择“+ 添加区域”选项，然后从下拉列表中选择一个区域，通过这种方式来添加区域。
+2. 若要添加区域，请在地图上选择带有 **+** 标签且与你所需的区域对应的六边形。 若要添加某个区域，请选择“+ 添加区域”选项，然后从下拉菜单中选择一个区域。
 
-3. 若要删除区域，请取消选中地图中的一个或多个区域，方法是：单击带复选标记的蓝色六边形，或者选择右侧区域旁边的“废纸篓”(🗑) 图标。
+3. 若要删除区域，请选择带对号的蓝色六边形以从地图中清除一个或多个区域。 或者选择右侧位于区域旁边的“废纸篓”(🗑) 图标。
 
-4. 单击“保存”，保存更改。
+4. 若要保存更改，请选择“确定”。
 
-   ![“添加/删除区域”菜单](./media/how-to-manage-database-account/add-region.png)
+   ![添加或删除区域菜单](./media/how-to-manage-database-account/add-region.png)
 
-在单区域写入模式下，不能删除写入区域。 在删除当前的写入区域之前，必须故障转移到另一区域。
+在单区域写入模式下，不能删除写入区域。 必须先故障转移到另一区域，然后才能删除当前的写入区域。
 
-在多区域写入模式下，可以添加/删除任意区域，前提是至少保留一个区域。
+在多区域写入模式下，如果你至少具有一个区域，则可以添加或删除任何区域。
 
 ### <a id="add-remove-regions-via-cli"></a>Azure CLI
 
@@ -147,7 +147,7 @@ az cosmosdb create --name <Azure Cosmos account name> --resource-group <Resource
 
 ### <a id="configure-multiple-write-regions-arm"></a>资源管理器模板
 
-以下 JSON 代码是一个示例性的资源管理器模板。 可以使用它来部署 Azure Cosmos 帐户，并将一致性策略设置为“有限过期”，将最大过期时间间隔设置为 5 秒钟，将可以忍受的最大过期请求数设置为 100。 如需了解资源管理器模板的格式和语法，请参阅[资源管理器](../azure-resource-manager/resource-group-authoring-templates.md)文档。
+以下 JSON 代码是 Azure 资源管理器模板的一个示例。 可以使用它部署采用有限过期一致性策略的 Azure Cosmos DB 帐户。 最大过期时间间隔设置为 5 秒。 可以容忍的过期请求的最大数量设置为 100。 若要了解资源管理器模板的格式和语法，请参阅[资源管理器](../azure-resource-manager/resource-group-authoring-templates.md)。
 
 ```json
 {
@@ -202,19 +202,19 @@ az cosmosdb create --name <Azure Cosmos account name> --resource-group <Resource
 ```
 
 
-## <a id="manual-failover"></a>为 Azure Cosmos 帐户启用手动故障转移
+## <a id="manual-failover"></a>为 Azure Cosmos DB 帐户启用手动故障转移
 
 ### <a id="enable-manual-failover-via-portal"></a>Azure 门户
 
-1. 导航到 Azure Cosmos 帐户，打开“全局复制数据”菜单。
+1. 导航到你的 Azure Cosmos DB 帐户，打开“全局复制数据”菜单。
 
-2. 在菜单顶部单击“手动故障转移”按钮。
+2. 在菜单顶部，选择“手动故障转移”。
 
    ![“全局复制数据”菜单](./media/how-to-manage-database-account/replicate-data-globally.png)
 
-3. 在“手动故障转移”菜单上，选择新的写入区域，然后选中标记你了解此选项会更改写入区域的框。
+3. 在“手动故障转移”菜单上，选择你的新写入区域。 选中相应的复选框，以指示你了解此选项会更改你的写入区域。
 
-4. 单击“确定”，触发故障转移。
+4. 若要触发故障转移，请选择“确定”。
 
    ![手动故障转移门户菜单](./media/how-to-manage-database-account/manual-failover.png)
 
@@ -226,19 +226,19 @@ az cosmosdb create --name <Azure Cosmos account name> --resource-group <Resource
 az cosmosdb update --name <Azure Cosmos account name> --resource-group <Resource Group name> --locations 'eastus=1 westus=0'
 ```
 
-## <a id="automatic-failover"></a>为 Azure Cosmos 帐户启用自动故障转移
+## <a id="automatic-failover"></a>为 Azure Cosmos DB 帐户启用自动故障转移
 
 ### <a id="enable-automatic-failover-via-portal"></a>Azure 门户
 
-1. 在 Azure Cosmos 帐户中，打开“全局复制数据”窗格。 
+1. 在 Azure Cosmos DB 帐户中，打开“全局复制数据”窗格。 
 
-2. 在窗格顶部单击“自动故障转移”按钮。
+2. 在窗格顶部选择“自动故障转移”。
 
    ![“全局复制数据”菜单](./media/how-to-manage-database-account/replicate-data-globally.png)
 
 3. 在“自动故障转移”窗格中，确保将“启用自动故障转移”设置为“开”。 
 
-4. 单击菜单底部的“保存”。
+4. 选择“保存”。
 
    ![自动故障转移门户菜单](./media/how-to-manage-database-account/automatic-failover.png)
 
@@ -257,21 +257,21 @@ az cosmosdb update --name <Azure Cosmos account name> --resource-group <Resource
 az cosmosdb update --name <Azure Cosmos account name> --resource-group <Resource Group name> --enable-automatic-failover false
 ```
 
-## <a name="set-failover-priorities-for-your-azure-cosmos-account"></a>为 Azure Cosmos 帐户设置故障转移优先级
+## <a name="set-failover-priorities-for-your-azure-cosmos-db-account"></a>为 Azure Cosmos DB 帐户设置故障转移优先级
 
 ### <a id="set-failover-priorities-via-portal"></a>Azure 门户
 
-1. 在 Azure Cosmos 帐户中，打开“全局复制数据”窗格。 
+1. 在 Azure Cosmos DB 帐户中，打开“全局复制数据”窗格。 
 
-2. 在窗格顶部单击“自动故障转移”按钮。
+2. 在窗格顶部选择“自动故障转移”。
 
    ![“全局复制数据”菜单](./media/how-to-manage-database-account/replicate-data-globally.png)
 
 3. 在“自动故障转移”窗格中，确保将“启用自动故障转移”设置为“开”。 
 
-4. 可以修改故障转移优先级，方法是通过行左侧的三个点（当鼠标悬停在其上方时显示）单击并拖动读取区域。 
+4. 若要修改故障转移优先级，请将鼠标指针悬停在读取区域上，并通过在行左侧出现的三个点拖动读取区域。 
 
-5. 单击菜单底部的“保存”。
+5. 选择“保存”。
 
    ![自动故障转移门户菜单](./media/how-to-manage-database-account/automatic-failover.png)
 
@@ -285,8 +285,8 @@ az cosmosdb failover-priority-change --name <Azure Cosmos account name> --resour
 
 ## <a name="next-steps"></a>后续步骤
 
-可以通过以下文档了解如何在 Azure Cosmos DB 中管理一致性级别和数据冲突：
+了解如何管理 Azure Cosmos DB 中的一致性级别和数据冲突。 请参阅以下文章：
 
-* [如何管理一致性](how-to-manage-consistency.md)
-* [如何管理区域之间的冲突](how-to-manage-conflicts.md)
+* [管理一致性](how-to-manage-consistency.md)
+* [管理区域之间的冲突](how-to-manage-conflicts.md)
 
