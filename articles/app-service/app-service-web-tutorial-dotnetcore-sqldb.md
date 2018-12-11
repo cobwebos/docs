@@ -212,9 +212,9 @@ else
 services.BuildServiceProvider().GetService<MyDatabaseContext>().Database.Migrate();
 ```
 
-如果此代码检测到当前正在生产中运行（指 Azure 环境），则会使用先前配置的连接字符串连接到 SQL 数据库。
+如果此代码检测到当前正在生产环境中运行（指 Azure 环境），则会使用先前配置的连接字符串连接到 SQL 数据库。
 
-在 Azure 中运行时可利用 `Database.Migrate()` 调用，因为它会根据迁移配置自动创建 .NET Core 应用所需的数据库。 
+应用在 Azure 中运行时可调用 `Database.Migrate()` ，该方法会根据迁移配置自动创建 .NET Core 应用所需的数据库。 
 
 > [!IMPORTANT]
 > 对于需要横向扩展的生产应用，请遵循[在生产中应用迁移](/aspnet/core/data/ef-rp/migrations#applying-migrations-in-production)中的最佳做法。
@@ -269,7 +269,7 @@ http://<app_name>.azurewebsites.net
 
 ![在应用服务中运行的应用](./media/app-service-web-tutorial-dotnetcore-sqldb/azure-app-in-browser.png)
 
-**祝贺你！** 正在应用服务中运行数据驱动的 .NET Core 应用。
+**祝贺你！** 数据驱动的 .NET Core 应用已经在你的应用服务中运行了。
 
 ## <a name="update-locally-and-redeploy"></a>在本地更新并重新部署
 
@@ -285,7 +285,7 @@ public bool Done { get; set; }
 
 ### <a name="run-code-first-migrations-locally"></a>本地运行 Code First 迁移
 
-运行几个命令更新本地数据库。
+运行以下命令更新本地数据库。
 
 ```bash
 dotnet ef migrations add AddProperty
@@ -299,11 +299,11 @@ dotnet ef database update
 
 ### <a name="use-the-new-property"></a>使用新属性
 
-为使用 `Done` 属性，需要对代码做更多更改。 简单起见，本教程中将仅更改 `Index` 和 `Create` 视图，以便在操作中查看属性。
+为使用 `Done` 属性，需要对代码做更多更改。 简单起见，本教程中将仅更改 `Index` 和 `Create` 视图，以便在操作中查看属性
 
 打开 _Controllers\TodosController.cs_。
 
-找到 `Create([Bind("ID,Description,CreatedDate")] Todo todo)` 方法，并将 `Done` 添加到 `Bind` 属性中的属性列表。 完成后，`Create()` 方法签名应如下代码所示：
+找到 `Create([Bind("ID,Description,CreatedDate")] Todo todo)` 方法，并将 `Done` 添加到 `Bind` 属性中的属性列表。 完成后，`Create()` 方法签名应如以下代码所示：
 
 ```csharp
 public async Task<IActionResult> Create([Bind("ID,Description,CreatedDate,Done")] Todo todo)
@@ -351,9 +351,9 @@ public async Task<IActionResult> Create([Bind("ID,Description,CreatedDate,Done")
 dotnet run
 ```
 
-在浏览器中，导航到 `http://localhost:5000/`。 你现在可以添加一个待办事项，并检查“完成”。 然后，它应作为已完成项在主页中显示。 请牢记，由于未更改`Edit`视图，`Edit`视图不显示`Done`字段。
+在浏览器中，导航到 `http://localhost:5000/`。 你现在可以添加一个待办事项，并检查“Done”。 然后，它应作为已完成项在主页中显示。 请牢记，由于未更改`Edit`视图，`Edit`视图不显示`Done`字段。
 
-### <a name="publish-changes-to-azure"></a>发布对 Azure 所做的更改
+### <a name="publish-changes-to-azure"></a>将变更发布到 Azure
 
 ```bash
 git add .
@@ -365,7 +365,7 @@ git push azure master
 
 ![Code First 迁移后的 Azure Web 应用](./media/app-service-web-tutorial-dotnetcore-sqldb/this-one-is-done.png)
 
-所有现有待办事项仍将显示。 重新发布 .NET Core 应用时，SQL 数据库中的现有数据不会丢失。 此外，实体框架核心迁移仅更改数据架构，而使现有数据保持不变。
+所有现有待办事项仍将显示。 重新发布 .NET Core 应用时，SQL 数据库中的现有数据不会丢失。 此外，Entity Framework Core 迁移仅更改数据架构，而使现有数据保持不变。
 
 ## <a name="manage-your-azure-web-app"></a>管理 Azure Web 应用
 
@@ -375,7 +375,7 @@ git push azure master
 
 ![在门户中导航到 Azure Web 应用](./media/app-service-web-tutorial-dotnetcore-sqldb/access-portal.png)
 
-默认情况下，门户将显示 Web 应用“概述”页。 在此页中可以查看应用的运行状况。 在此处还可以执行基本的管理任务，例如浏览、停止、启动、重新启动和删除。 该页左侧的选项卡显示可以打开的不同配置页。
+默认情况下，门户将显示 Web 应用的概述页。 在此页中可以查看应用的运行状况。 在此处还可以执行基本的管理任务，例如浏览、停止、启动、重新启动和删除。 该页左侧的选项卡显示可以打开的不同配置页。
 
 ![Azure 门户中的应用服务页](./media/app-service-web-tutorial-dotnetcore-sqldb/web-app-blade.png)
 
