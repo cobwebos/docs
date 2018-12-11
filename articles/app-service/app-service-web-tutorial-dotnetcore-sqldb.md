@@ -77,7 +77,7 @@ dotnet ef database update
 dotnet run
 ```
 
-在浏览器中导航至 `http://localhost:5000` 。 选择“新建”链接，创建一对待办事项。
+在浏览器中导航至 `http://localhost:5000` 。 选择“新建”链接，创建几个待办事项。
 
 ![已成功连接到 SQL 数据库](./media/app-service-web-tutorial-dotnetcore-sqldb/local-app-in-browser.png)
 
