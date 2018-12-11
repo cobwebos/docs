@@ -1,6 +1,6 @@
 ---
 title: 快速入门 - 使用 Azure CLI 创建 Linux VM | Microsoft Docs
-description: 本快速入门介绍了如何使用 Azure CLI 创建 Linux 虚拟机
+description: 本文快速入门介绍了如何使用 Azure CLI 创建 Linux 虚拟机
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: cynthn
