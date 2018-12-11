@@ -180,9 +180,9 @@ Server=tcp:<server_name>.database.windows.net,1433;Database=coreDB;User ID=<db_u
 az webapp config connection-string set --resource-group myResourceGroup --name <app name> --settings MyDbConnection='<connection_string>' --connection-string-type SQLServer
 ```
 
-接下来，将应用设置的 `ASPNETCORE_ENVIRONMENT` 属性设置为Production。 由于对本地开发环境使用 SQLite，并对 Azure 环境使用 SQL 数据库，因此通过此设置，你可以了解应用是否正在 Azure 中运行。
+接下来，将应用设置的 `ASPNETCORE_ENVIRONMENT` 属性设置为_Production_。 由于对本地开发环境使用 SQLite，并对 Azure 环境使用 SQL 数据库，因此通过此设置，你可以了解应用是否正在 Azure 中运行。
 
-下面的示例在 Azure Web 应用中配置 `ASPNETCORE_ENVIRONMENT` 属性。 替换 \<app_name> 占位符。
+下面的示例在 Azure Web 应用中配置 `ASPNETCORE_ENVIRONMENT` 应用设置。 替换 \<app_name> 占位符。
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app_name> --resource-group myResourceGroup --settings ASPNETCORE_ENVIRONMENT="Production"
@@ -253,9 +253,9 @@ To https://<app_name>.scm.azurewebsites.net/<app_name>.git
  * [new branch]      master -> master
 ```
 
-### <a name="browse-to-the-azure-web-app"></a>浏览 Azure Web 应用
+### <a name="browse-to-the-azure-web-app"></a>浏览到 Azure Web 应用
 
-使用 Web 浏览器浏览已部署的 Web 应用。
+使用 Web 浏览器浏览到已部署的 Web 应用。
 
 ```bash
 http://<app_name>.azurewebsites.net
@@ -295,7 +295,7 @@ dotnet ef database update
 
 ### <a name="use-the-new-property"></a>使用新属性
 
-为使用 `Done` 属性，需要对代码做一些更改。 简单起见，本教程中将仅更改 `Index` 和 `Create` 视图，以便在action中查看属性。
+为使用 `Done` 属性，需要对代码做更多更改。 简单起见，本教程中将仅更改 `Index` 和 `Create` 视图，以便在操作中查看属性
 
 打开 _Controllers\TodosController.cs_。
 
@@ -337,7 +337,7 @@ public async Task<IActionResult> Create([Bind("ID,Description,CreatedDate,Done")
 </td>
 ```
 
-这就是要在 `Index` 和 `Create` 视图中所要做的全部更改。
+这就是要在 `Index` 和 `Create` 视图中查看更改所需的全部操作。
 
 ### <a name="test-your-changes-locally"></a>在本地测试更改
 
