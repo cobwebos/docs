@@ -26,10 +26,10 @@ ms.locfileid: "52311970"
 # <a name="walkthrough-step-2-upload-existing-data-into-an-azure-machine-learning-studio-experiment"></a>演练步骤 2：将现有数据上传到 Azure 机器学习工作室试验中
 这是演练的第二步，[在 Azure 机器学习中开发预测分析解决方案](walkthrough-develop-predictive-solution.md)
 
-1. [创建一个机器学习工作区](walkthrough-1-create-ml-workspace.md)
+1. [创建机器学习工作区](walkthrough-1-create-ml-workspace.md)
 2. **上传现有数据**
-3. [创建一个的新试验](walkthrough-3-create-new-experiment.md)
-4. [培训和评估模型](walkthrough-4-train-and-evaluate-models.md)
+3. [创建新试验](walkthrough-3-create-new-experiment.md)
+4. [定型和评估模型](walkthrough-4-train-and-evaluate-models.md)
 5. [部署 Web 服务](walkthrough-5-publish-web-service.md)
 6. [访问 Web 服务](walkthrough-6-access-web-service.md)
 
@@ -47,7 +47,7 @@ UCI 网站提供此数据的功能向量的属性说明。 这包括财务信息
 
 下面是一个有趣的转折。 UCI 网站上的数据集说明提及了如果我们对人员的信用风险进行错误的分类所要付出的代价。
 如果模型预测某个人员具有高信用风险，而实际上该人员具有低信用风险，则该模型进行了错误分类。
-但对金融机构而言，反向错误分类会付出五倍以上的代价：如果模型预测某个人员具有低信贷风险，而实际上该人员具有高信贷风险。
+但对金融机构而言，反向错误分类会付出五倍的代价：如果模型预测某个人员具有低信贷风险，而实际上该人员具有高信贷风险。
 
 因此，我们想要训练模型，使后一种类型的错误分类代价高于其他方式的错误分类五倍。
 在实验中训练模型时实现此目的的一个简单方法是复制（5 次）表示高信用风险用户的条目。 然后，如果模型将实际上具有高风险的某人错误分类为低信用风险，则模型会执行该相同的错误分类五次（每个重复项一次）。 这会增加此错误在训练结果中的成本。
