@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/18/2017
 ms.author: glenga
-ms.openlocfilehash: 4c56a1164a589af5d325d1378f331a7d0ee138b7
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 55d4f53a23c92bb96934e84c0400bc182bc3d87e
+ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49956425"
+ms.lasthandoff: 11/19/2018
+ms.locfileid: "51976802"
 ---
 # <a name="get-started-guide-for-azure-developers"></a>Azure 开发人员入门指南
 
@@ -92,9 +92,9 @@ Azure 提供了支持应用程序开发和托管需求的服务。 Azure 还提�
 
 Azure Service Fabric 是一个分布式系统平台，适用于生成、打包、部署和管理可缩放的可靠微服务。 它还提供了全面的应用程序管理功能，用于设置、部署、监视、升级/修补和删除部署的应用程序。 在共享计算机池上运行的应用可以从小规模开始，再根据需要扩展为成百上千个计算机。
 
-Service Fabric 支持具有 Open Web Interface for .NET (OWIN) 和 ASP.NET Core 的 WebAPI。 它提供了用于在 Linux 上使用 .NET Core 和 Java 构建服务的 SDK。 若要了解有关 Service Fabric 的详细信息，请参阅 [Service Fabric 学习路径](https://azure.microsoft.com/documentation/learning-paths/service-fabric/)。
+Service Fabric 支持具有 Open Web Interface for .NET (OWIN) 和 ASP.NET Core 的 WebAPI。 它提供了用于在 Linux 上使用 .NET Core 和 Java 构建服务的 SDK。 若要了解有关 Service Fabric 的详细信息，请参阅 [Service Fabric 文档](https://docs.microsoft.com/en-us/azure/service-fabric/)。
 
->何时使用：如果要创建应用程序或重新编写现有应用程序，以使用微服务体系结构，则 Service Fabric 将是一个不错的选择。 当你需要更好地控制或直接访问底层基础结构时，也可以使用 Service Fabric。
+>**何时使用：** 如果要创建应用程序或重新编写现有应用程序，以使用微服务体系结构，则 Service Fabric 将是一个不错的选择。 当你需要更好地控制或直接访问底层基础结构时，也可以使用 Service Fabric。
 
 >开始使用：[创建第一个 Azure Service Fabric 应用程序](../../service-fabric/service-fabric-create-your-first-application-in-visual-studio.md)。
 
@@ -217,7 +217,7 @@ Azure 提供了一套丰富的体验，可让你同时以编程方式和在 [Azu
 
 Azure 提供了两种方式（通过使用 Bash、终端、命令提示符或你所选的命令行工具）从命令行中管理应用程序和服务。 通常情况下，你可以从命令行执行与在 Azure 门户中一样任务，例如，创建和配置虚拟机、虚拟网络、Web 应用以及其他服务。
 
--   [Azure 命令行接口 (CLI)](../../xplat-cli-install.md)：允许你连接到 Azure 订阅，并从命令行根据Azure资源为各种任务编写程序。
+-   [Azure 命令行接口 (CLI)](../../xplat-cli-install.md)：允许你连接到 Azure 订阅，并从命令行根据 Azure 资源对各种任务进行编程。
 
 -   [Azure PowerShell](../../powershell-install-configure.md)：提供了一组带 cmdlet 的模块，可让你通过使用 Windows PowerShell 来管理 Azure 资源。
 
@@ -231,7 +231,7 @@ Azure 是基于一组支持 Azure 门户 UI 的 REST API 构建的。 其中大�
 
 ### <a name="apis"></a>API
 
-除了 REST API，许多Azure服务还允许你通过使用特定于平台的Azure SDK以编程方式管理应用程序中的资源，包括用于以下开发平台的 SDK：
+除了 REST API，许多 Azure 服务还允许以编程方式管理应用程序中的资源，方法是通过使用特定于平台的 Azure SDK，包括用于以下开发平台的 SDK：
 
 -   [.NET](https://go.microsoft.com/fwlink/?linkid=834925)
 -   [Node.js](https://docs.microsoft.com/javascript/azure)
@@ -241,15 +241,15 @@ Azure 是基于一组支持 Azure 门户 UI 的 REST API 构建的。 其中大�
 -   [Ruby](https://github.com/Azure/azure-sdk-for-ruby/blob/master/README.md)
 -   [Go](https://docs.microsoft.com/go/azure)
 
-[移动应用](../../app-service-mobile/app-service-mobile-dotnet-how-to-use-client-library.md)和 [Azure 媒体服务](../../media-services/previous/media-services-dotnet-how-to-use.md)等均提供客户端 SDK，你可以从 Web 和移动客户端应用访问服务。
+[移动应用](../../app-service-mobile/app-service-mobile-dotnet-how-to-use-client-library.md)和 [Azure 媒体服务](../../media-services/previous/media-services-dotnet-how-to-use.md)等服务均提供客户端 SDK，可让你从 Web 和移动客户端应用访问服务。
 
 ### <a name="azure-resource-manager"></a>Azure 资源管理器 
     
 在 Azure 上运行应用可能需要使用多个 Azure 服务，所有这些服务都遵循相同的生命周期，并且可以被视为一个逻辑单元。 例如，Web 应用可以使用 Web 应用、SQL 数据库、存储、Azure Redis 缓存，以及 Azure 内容分发网络服务。 [Azure 资源管理器](../../azure-resource-manager/resource-group-overview.md)能够使你以组的方式处理应用程序中的资源。 你可以通过单个协调的操作来部署、更新或删除所有资源。
 
-除了逻辑分组和管理相关的资源外，Azure 资源管理器还包括可让你自定义相关资源部署和配置的能力。 例如，通过使用资源管理器，你可以将包含多个虚拟机、负载均衡器和 Azure SQL 数据库的应用程序作为一个单元进行部署和配置。
+除了逻辑分组和管理相关的资源外，Azure 资源管理器还包括可让你自定义相关资源部署和配置的部署功能。 例如，通过使用资源管理器，你可以将包含多个虚拟机、负载均衡器和 Azure SQL 数据库的应用程序作为单一单元进行部署和配置。
 
-你可以通过使用 Azure 资源管理器模板（以 JSON 格式化的文档）来开发这些部署。 使用这些模板，可让你通过使用声明性模板（而不是脚本）来定义应用程序的部署和管理。 模板可用于测试、演示和生产等不同的环境。 例如，通过使用模板，可将一个按钮添加到 GitHub 存储库，然后只需单击一下即可将存储库中的代码部署到一组 Azure 服务中。
+可使用 Azure 资源管理器模板（JSON 格式的文档）来开发这些部署。借助这些模板，可使用声明性模板（而不是脚本）来定义应用程序的部署和管理。模板可用于测试、暂存和生产等不同的环境。例如，通过使用模板，可将一个按钮添加到 GitHub 存储库，然后只需单击一下即可将存储库中的代码部署到一组 Azure 服务中。
 
 >何时使用：在希望对通过使用 REST API、Azure CLI 和 Azure PowerShell 以编程方式进行管理的应用执行基于模板的部署时，可以使用资源管理器模板。
 
@@ -261,19 +261,19 @@ Azure 是基于一组支持 Azure 门户 UI 的 REST API 构建的。 其中大�
 
 ### <a name="what-is-an-azure-account"></a>什么是 Azure 帐户？
 
-若要创建或使用 Azure 订阅，你必须有一个 Azure 帐户。 Azure 帐户只是 Azure AD 或目录中的一个标识，如受 Azure AD 信任的工作或学校组织。 如果你不属于此类组织，则可以通过使用受 Azure AD 信任的 Microsoft 帐户来创建订阅。 若要了解有关将本地 Windows Server Active Directory 与 Azure AD 集成的详细信息，请参阅[将本地标识与 Azure Active Directory 集成](../../active-directory/hybrid/whatis-hybrid-identity.md)。
+必须有一个 Azure 帐户才可创建或使用 Azure 订阅。Azure 帐户只是 Azure AD 或目录中的一个标识，如受 Azure AD 信任的工作或学校组织。 如果你不属于此类组织，则始终可以通过使用受 Azure AD 信任的 Microsoft 帐户来创建订阅。若要了解有关将本地 Windows Server Active Directory 与 Azure AD 集成的详细信息，请参阅[将本地标识与 Azure Active Directory 集成](../../active-directory/hybrid/whatis-hybrid-identity.md)。
 
 每个 Azure 订阅都与某个 Azure AD 实例存在信任关系。 这意味着，此订阅信任该目录对用户、服务和设备执行身份验证。 多个订阅可以信任同一个目录，但一个订阅只能信任一个目录。 有关详细信息，请参阅 [Azure 订阅与 Azure Active Directory 的关联方式](../../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)。
 
-除了定义单个 Azure 帐户标识（也称为用户）之外，你还可以定义 Azure AD 中的组。 通过使用基于角色的访问控制(RBAC)，创建用户组是管理对订阅中的资源访问的一种好方法。 若要了解如何创建组，请参阅[在 Azure Active Directory 预览版中创建组](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)。 此外，也可以通过[使用 PowerShell](../../active-directory/users-groups-roles/groups-settings-v2-cmdlets.md) 创建和管理组。
+除了定义单个 Azure 帐户标识（也称为用户）之外，你还可以定义 Azure AD 中的组。 创建用户组是通过使用基于角色的访问控制 (RBAC) 来管理订阅中资源的一种好方式。 若要了解如何创建组，请参阅[在 Azure Active Directory 预览版中创建组](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)。 此外，也可以通过[使用 PowerShell](../../active-directory/users-groups-roles/groups-settings-v2-cmdlets.md) 创建和管理组。
 
 ### <a name="manage-your-subscriptions"></a>管理订阅
 
-订阅是链接到 Azure 帐户的 Azure 服务的一个逻辑分组。 一个 Azure 帐户可包含多个订阅。 Azure 服务计费是按照订阅量进行计算的。 对于按类型提供的可用订阅服务列表，请参阅 [Microsoft Azure 订阅详情](https://azure.microsoft.com/support/legal/offer-details/)。 Azure 订阅有一个帐户管理员和一个服务管理员，前者可以完全控制订阅，后者可以控制订阅中的所有服务。 有关经典订阅管理员的信息，请参阅[添加或更改 Azure 订阅管理员](../../billing/billing-add-change-azure-subscription-administrator.md)。 除了管理员外，还可以使用[基于角色的访问控制 (RBAC)](../../role-based-access-control/overview.md) 对单个帐户授予对 Azure 资源的详细控制权限。
+订阅是链接到 Azure 帐户的 Azure 服务的逻辑分组。一个 Azure 帐户可包含多个订阅。 Azure 服务计费是按照订阅量进行计算的。对于按类型提供的可用订阅优惠列表，请参阅 [Microsoft Azure 优惠详细信息](https://azure.microsoft.com/support/legal/offer-details/)。Azure 订阅有一个帐户管理员和一个服务管理员，前者可以完全控制订阅，后者可以控制订阅中的所有服务。有关经典订阅管理员的信息，请参阅[添加或更改 Azure 订阅管理员](../../billing/billing-add-change-azure-subscription-administrator.md)。 除了管理员外，还可以使用[基于角色的访问控制 (RBAC)](../../role-based-access-control/overview.md) 对单个帐户授予对 Azure 资源的详细控制权限。
 
 #### <a name="resource-groups"></a>资源组
 
-当你设置新的 Azure 服务时，你可以在给定订阅中执行此操作。 各个 Azure 服务（也称为资源）在资源组的上下文中创建。 通过资源组，可让你更加轻松地部署和管理应用程序的资源。 资源组应包含你想要作为一个单元使用的应用程序的所有资源。 你可以在资源组内移动资源，甚至可以移到不同的订阅。 若要了解有关移动资源的信息，请参阅[将资源移到新资源组或订阅](../../resource-group-move-resources.md)。
+预配新的 Azure 服务时，可在给定订阅中执行此操作。各个 Azure 服务（也称为资源）在资源组的上下文中创建。通过资源组，可更加轻松地部署和管理应用程序的资源。资源组应包含要作为一个单元使用的应用程序的所有资源。可在资源组之间移动资源，甚至可将资源移到不同的订阅。若要了解有关移动资源的信息，请参阅[将资源移到新资源组或订阅](../../resource-group-move-resources.md)。
 
 Azure 资源浏览器是一款非常出色的工具，可用于可视化已在订阅中创建的资源。 若要了解详细信息，请参阅[使用 Azure 资源浏览器查看和修改资源](../../resource-manager-resource-explorer.md)。
 
@@ -281,7 +281,7 @@ Azure 资源浏览器是一款非常出色的工具，可用于可视化已在�
 
 当你允许对 Azure 资源进行访问时，最佳做法是，始终为用户提供执行某个给定任务所需的最小特权。
 
--   **基于角色的访问控制 (RBAC)**：在 Azure 中，可以在如下指定范围内授予对用户帐户（主体）的访问权限：订阅、资源组或单个资源。 通过 RBAC，你可以将一组资源部署到资源组，并为特定用户或组授予权限。 此外，它还可限制访问权限，让你仅有访问属于目标资源组的资源。 此外，你还可以授予对单个资源的访问权限，例如，虚拟机或虚拟网络。 若要授予访问权限，请将角色分配给用户、组或服务主体。 有很多预定义的角色，不过你也可以定义你自己的自定义角色。 有关详细信息，请参阅[什么是基于角色的访问控制 (RBAC)？](../../role-based-access-control/overview.md)。
+-   **基于角色的访问控制 (RBAC)**：在 Azure 中，可以在如下指定范围内授予对用户帐户（主体）的访问权限：订阅、资源组或单个资源。通过 RBAC，可将一组资源部署到资源组，并为特定用户或组授予权限。 通过它还可限制访问权限，从而仅访问属于目标资源组的资源。此外，还可以授予对单个资源的访问权限，例如虚拟机或虚拟网络。若要授予访问权限，请将角色分配给用户、组或服务主体。预定义角色有很多，但也可定义自己的自定义角色。有关详细信息，请参阅[什么是基于角色的访问控制 (RBAC)？](../../role-based-access-control/overview.md)。
 
     >何时使用：当需要对用户和组进行细致的访问管理，或者当需要使用户成为订阅的所有者时使用。
 
