@@ -22,10 +22,10 @@ ms.contentlocale: zh-CN
 ms.lasthandoff: 08/02/2018
 ms.locfileid: "39432059"
 ---
-# <a name="build-a-nodejs-and-mongodb-web-app-in-azure-app-service-on-linux"></a>在 Linux 上的 Azure 应用服务中生成 Node.js 和 MongoDB Web 应用
+# <a name="build-a-nodejs-and-mongodb-web-app-in-azure-app-service-on-linux"></a>在 Linux 上的 Azure 应用服务中构建 Node.js 和 MongoDB Web 应用
 
 > [!NOTE]
-> 本文将应用部署到基于 Linux 的应用服务。 若要部署到基于 _Windows_ 的应用服务，请参阅[在 Azure 中生成 Node.js 和 MongoDB Web 应用](../app-service-web-tutorial-nodejs-mongodb-app.md)。
+> 本文将应用部署到基于 Linux 的应用服务。 若要部署到基于 _Windows_ 的应用服务，请参阅[在 Azure 中构建 Node.js 和 MongoDB Web 应用](../app-service-web-tutorial-nodejs-mongodb-app.md)。
 >
 
 [Linux 应用服务](app-service-linux-intro.md)使用 Linux 操作系统，提供高度可缩放的自修补 Web 托管服务。 本教程演示如何创建 Node.js Web 应用，在本地将其连接到 MongoDB 数据库，然后使用 MongoDB API 将其部署到已连接到 CosmosDB 数据库的 Azure。 完成操作后，将拥有一个在 Linux 应用服务中运行的 MEAN 应用程序（MongoDB、Express、AngularJS 和 Node.js）。 为简单起见，示例应用程序使用了 [MEAN.js Web 框架](http://meanjs.org/)。
