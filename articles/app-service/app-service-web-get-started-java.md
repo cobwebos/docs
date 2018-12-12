@@ -24,11 +24,11 @@ ms.locfileid: "30283922"
 ---
 # <a name="create-your-first-java-web-app-in-azure"></a>在 Azure 中创建第一个 Java Web 应用
 
-[Azure Web 应用](app-service-web-overview.md)提供高度可缩放、自修补的 Web 托管服务。 本快速入门演示如何使用 [面向 Java EE 开发者的 Eclipse 集成开发环境](http://www.eclipse.org/) 将 Java Web 应用部署到应用服务。
+[Azure Web 应用](app-service-web-overview.md)提供高度可缩放、自修补的 Web 托管服务。本快速入门演示如何使用[面向 Java EE 开发者的 Eclipse IDE](http://www.eclipse.org/) 将 Java Web 应用部署到应用服务。
 
 > [!NOTE]
 >
-> 本快速入门中的步骤演示了如何使用 Eclipse 集成开发环境将 Java Web 应用发布到应用服务，但你还可以使用 IntelliJ IDEA 旗舰版或社区版。 有关详细信息，请参阅[使用 IntelliJ 创建适用于 Azure 的 Hello World Web 应用](/java/azure/intellij/azure-toolkit-for-intellij-create-hello-world-web-app)。
+> 本快速入门中的步骤演示了如何使用 Eclipse IDE 将 Java Web 应用发布到应用服务，但你可以使用 IntelliJ IDEA 旗舰版或社区版。 有关详细信息，请参阅[使用 IntelliJ 创建 Azure 的 Hello World Web 应用](/java/azure/intellij/azure-toolkit-for-intellij-create-hello-world-web-app)。
 >
 
 完成本快速入门后，应用程序会在 Web 浏览器中如下图所示：
@@ -41,7 +41,7 @@ ms.locfileid: "30283922"
 
 若要完成本快速入门教程，请安装：
 
-* 免费 <a href="http://www.eclipse.org/downloads/" target="_blank">面向 Java EE 开发者的 Eclipse 集成开发环境</a>。 本快速入门教程使用 Eclipse Neon。
+* 免费版<a href="http://www.eclipse.org/downloads/" target="_blank">面向 Java EE 开发人员的 Eclipse IDE</a>。本快速入门使用 Eclipse Neon。
 * <a href="/java/azure/eclipse/azure-toolkit-for-eclipse-installation" target="_blank">用于 Eclipse 的 Azure 工具包</a>。
 
 > [!NOTE]
@@ -110,20 +110,20 @@ ms.locfileid: "30283922"
 
 ### <a name="create-app-service-dialog-box"></a>“创建应用服务”对话框
 
-随即显示含有默认值的“创建应用服务”对话框。 下图中显示的数字 **170602185241** 与你实际操作中弹出的对话框中的不同。
+随即显示含有默认值的“创建应用服务”对话框。下图中显示的数字 **170602185241** 与实际操作对话框中的不同。
 
 ![“创建应用服务”对话框](./media/app-service-web-get-started-java/cas1.png)
 
 在“创建应用服务”对话框中：
 
 * 为 Web 应用输入唯一名称，或保留生成的名称。 该名称在 Azure 中必须唯一。 该名称是 Web 应用的 URL 地址的一部分。 例如：如果 Web 应用名称为 **MyJavaWebApp**，则 URL 为 myjavawebapp.azurewebsites.net。
-* 对于本快速入门，请保留默认的 Web 容器选项。
+* 对于本快速入门，请保留默认的 Web 容器。
 * 选择 Azure 订阅。
 * 在“应用服务计划”选项卡中：
 
   * **新建**：保留默认值，该值是应用服务计划的名称。
   * **位置**：选择“西欧”或你附近的位置。
-  * **定价层**：选择免费选项。 有关不同定价层应用服务的功能，请参阅[应用服务定价](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
+  * **定价层**：选择免费选项。 有关功能，请参阅[应用服务定价](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 
    ![“创建应用服务”对话框](./media/app-service-web-get-started-java/create-app-service-dialog-box.png)
 
@@ -131,7 +131,7 @@ ms.locfileid: "30283922"
 
 ### <a name="resource-group-tab"></a>“资源组”选项卡
 
-选择“资源组”选项卡。保留默认的生成值。
+选择“资源组”选项卡。保留默认的资源组生成值。
 
 ![“资源组”选项卡](./media/app-service-web-get-started-java/create-app-service-resource-group.png)
 
@@ -157,7 +157,7 @@ Azure 工具包创建 Web 应用，并显示进度对话框。
 
 ![“部署 Web 应用”对话框](./media/app-service-web-get-started-java/deploy-web-app-to-root.png)
 
-该对话框显示 Azure、JDK 和 Web 容器的内容。
+该对话框显示 Azure、JDK 和 Web 容器所选内容。
 
 选择“部署”将 Web 应用发布到 Azure。
 
@@ -189,9 +189,9 @@ Azure 工具包创建 Web 应用，并显示进度对话框。
 > 请在每次发布时选择“部署到根目录”。 
 > 
 
-选择 Web 应用，然后选择“部署”，此操作将发布变更。
+选择 Web 应用，然后选择“部署”，此操作将发布更改。
 
-当“发布”链接显示后，点击它以浏览 Web 应用，并查看变更。
+当“发布”链接显示后，选择它以浏览到 Web 应用，并查看更改。
 
 ## <a name="manage-the-web-app"></a>管理 Web 应用
 
@@ -201,7 +201,7 @@ Azure 工具包创建 Web 应用，并显示进度对话框。
 
 ![门户导航到资源组](media/app-service-web-get-started-java/rg.png)
 
-选择前面创建的资源组。 该页显示在本快速入门教程中创建的资源。
+选择前面创建的资源组。该页显示在本快速入门中创建的资源。
 
 ![资源组](media/app-service-web-get-started-java/rg2.png)
 
