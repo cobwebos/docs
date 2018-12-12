@@ -80,7 +80,7 @@ FROM microsoft/aspnet:4.7.1
 
 提供 Docker 中心帐户凭据，然后单击“保存”。 
 
-等待部署完成。 “发布”页会显示以后要在应用服务中使用的存储库名称。
+等待部署完成。 等待部署完成。 “发布”页会显示以后要在应用服务中使用的存储库名称。
 
 ![从项目概述页发布](./media/app-service-web-get-started-windows-container/published-docker-repository.png)
 
@@ -130,11 +130,11 @@ Azure 操作完成后，会显示通知框。
 
 ![](media/app-service-web-get-started-windows-container/app-running-vs.png)
 
-祝贺你！你正在 Azure 应用服务中运行你的第一个自定义 Windows 容器。
+祝贺你！ 你正在 Azure 应用服务中运行你的第一个自定义 Windows 容器。
 
 ## <a name="see-container-start-up-logs"></a>查看容器启动日志
 
-加载 Windows 容器可能需要一些时间。 若要查看进度，请导航到以下 URL（将 \<app_name> 替换为你的应用名称）。
+加载 Windows 容器可能需要一些时间。 要查看进度，请导航到以下 URL（将 \<app_name> 替换为你的应用名称）。
 ```
 https://<app_name>.scm.azurewebsites.net/api/logstream
 ```
@@ -170,7 +170,7 @@ https://<app_name>.scm.azurewebsites.net/api/logstream
 
 ![在 Azure 中重新启动 Web 应用](./media/app-service-web-get-started-windows-container/portal-restart-app.png)
 
-再次[浏览到容器应用](#browse-to-the-container-app)。刷新网页时，应用应先还原到“正在启动”页，然后在几分钟后再次显示更新的网页。
+再次[浏览到容器应用](#browse-to-the-container-app)。 刷新网页时，应用应先还原到“正在启动”页，然后在几分钟后再次显示更新的网页。
 
 ![已在 Azure 中更新的 Web 应用](./media/app-service-web-get-started-windows-container/azure-web-app-updated.png)
 

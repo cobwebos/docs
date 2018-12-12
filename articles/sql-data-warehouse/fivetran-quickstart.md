@@ -1,5 +1,5 @@
 ---
-title: Azure SQL 数据仓库 Fivetran 快速入门 |Microsoft Docs
+title: Azure SQL 数据仓库 Fivetran 快速入门 | Microsoft Docs
 description: 快速开始使用 Fivetran 和 Azure SQL 数据仓库。
 services: sql-data-warehouse
 author: hirokib
@@ -10,69 +10,75 @@ ms.component: manage
 ms.date: 10/12/2018
 ms.author: elbutter
 ms.reviewer: craigg
-ms.openlocfilehash: 8e738becfe356908af5baffc0ebf225916b2616e
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: 50f5f813444ddf38d15863d028b1f61bb9b0d55c
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49355170"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52580521"
 ---
 # <a name="get-started-quickly-with-fivetran-and-sql-data-warehouse"></a>快速开始使用 Fivetran 和 SQL 数据仓库
 
-本快速入门教程假定已有 SQL 数据仓库的实例。
+本快速入门介绍如何设置一个新的可以使用 Azure SQL 数据仓库的 Fivetran 用户。 本文假定你已有 SQL 数据仓库的实例。
 
-## <a name="setup-connection"></a>设置连接
+## <a name="set-up-a-connection"></a>设置连接
 
-1. 查找用于连接 Azure SQL 数据仓库的完全限定的服务器名和数据库名。
+1. 查找用于连接 SQL 数据仓库的完全限定的服务器名和数据库名。
+    
+    如果在查找该信息时需要帮助，请参阅[连接到 Azure SQL 数据仓库](sql-data-warehouse-connect-overview.md)。
 
-   [如何从门户查找服务器名和数据库名？](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-connect-overview)
+2. 在安装向导中，选择是要直接连接数据库还是通过 SSH 隧道进行连接。
 
-2. 在安装向导中，确定是要直接连接数据库还是通过 SSH 隧道连接。
+   如果选择直接连接数据库，则必须创建防火墙规则，用于允许访问。 此方法是最简单且最安全的方法。
 
-   如果决定直接连接数据库，需要创建防火墙规则，用于允许访问。 此方法是最简单且最安全的方法。
+   如果选择通过 SSH 隧道进行连接，Fivetran 会连接到网络中一个单独的服务器。 服务器提供一个连接到数据库的 SSH 隧道。 如果数据库位于虚拟网络上一个无法访问的子网中，则必须使用此方法。
 
-   如果决定通过 SSH 隧道进行连接，Fivetran 会连接到网络中一个单独的服务器，用于提供到数据库的 SSH 隧道。 如果数据库位于虚拟网络上一个无法访问的子网中，则必须使用此方法。
+3. 在服务器级别防火墙中添加 IP 地址 **52.0.2.4**，允许传入从 Fivetran 到 SQL 数据仓库实例的连接。
 
-3. 在服务器级别防火墙中添加 "52.0.2.4" IP 地址以允许传入从 Fivetran 到 Azure SQL 数据仓库的连接。
+   有关详细信息，请参阅[创建服务器级防火墙规则](create-data-warehouse-portal.md#create-a-server-level-firewall-rule)。
 
-   [如何添加服务器级防火墙？](https://docs.microsoft.com/azure/sql-data-warehouse/create-data-warehouse-portal#create-a-server-level-firewall-rule)
+## <a name="set-up-user-credentials"></a>设置用户凭据
 
-## <a name="setup-user-credentials"></a>设置用户凭据
+1. 使用 SQL Server Management Studio 或首选工具连接到 Azure SQL 数据仓库。 以服务器管理员用户身份登录。 然后，运行以下 SQL 命令，为 Fivetran 创建一个用户：
+    - 在 master 数据库中： 
+    
+      ```
+      CREATE LOGIN fivetran WITH PASSWORD = '<password>'; 
+      ```
 
-使用 SQL Server Management Studio 或所选工具，以服务器管理员用户身份连接到 Azure SQL 数据仓库，并执行以下 SQL 命令，为 Fivetran 创建用户：
+    - 在 SQL 数据仓库数据库中：
 
-在 master 数据库中：` CREATE LOGIN fivetran WITH PASSWORD = '<password>'; `
+      ```
+      CREATE USER fivetran_user_without_login without login;
+      CREATE USER fivetran FOR LOGIN fivetran;
+      GRANT IMPERSONATE on USER::fivetran_user_without_login to fivetran;
+      ```
 
-在 SQL 数据仓库数据库中：
+2. 向 Fivetran 用户授予以下仓库权限：
 
-```
-CREATE USER fivetran_user_without_login without login;
-CREATE USER fivetran FOR LOGIN fivetran;
-GRANT IMPERSONATE on USER::fivetran_user_without_login to fivetran;
-```
+    ```
+    GRANT CONTROL to fivetran;
+    ```
 
-创建用户 fivetran 后，立即向其授予以下仓库权限：
+    创建数据库范围的凭据需要 CONTROL 权限，而用户在通过 PolyBase 从 Azure Blob 存储加载文件时会使用该凭据。
 
-```
-GRANT CONTROL to fivetran;
-```
+3. 向 Fivetran 用户添加适当的资源类。 所用资源类取决于创建列存储索引时需要的内存。 例如，与 Marketo 和 Salesforce 之类的产品集成时由于产品使用的列数较多且数据量较大，需要较高级别的资源类。 较高级别的资源类需要更多内存来创建列存储索引。
 
-将合适的资源类添加到创建的用户，具体取决于有关创建列存储索引的内存要求。 例如，Marketo 和 Salesforce 等集成由于列数较多或数据量较大，需要较多内存来创建列存储索引，因此需要较高级别的资源类。
+    建议使用静态资源类。 可以从 `staticrc20` 资源类着手。 资源类 `staticrc20` 为每个用户分配 200 MB，不考虑你所使用的性能级别。 如果列存储索引无法使用初始资源类级别，请提高资源类的级别。
 
-建议使用静态资源类。 一开始可以使用资源类 `staticrc20`，可为用户分配 200 MB，而无需考虑所使用的性能级别。 如果列存储索引无法使用当前资源类，需要增加资源类。
+    ```
+    EXEC sp_addrolemember '<resource_class_name>', 'fivetran';
+    ```
 
-```
-EXEC sp_addrolemember '<resource_class_name>', 'fivetran';
-```
+    有关详细信息，请阅读[内存和并发限制](memory-and-concurrency-limits.md)和[资源类](sql-data-warehouse-memory-optimizations-for-columnstore-compression.md#ways-to-allocate-more-memory)。
 
-有关详细信息，请查看有关[内存和并发限制](https://docs.microsoft.com/azure/sql-data-warehouse/memory-and-concurrency-limits#data-warehouse-limits)和[资源类](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-memory-optimizations-for-columnstore-compression#ways-to-allocate-more-memory)的文档
 
-创建数据库范围的凭据需要 CONTROL 权限，使用 PolyBase 将文件从 Blob 存储中进行加载时需要使用该权限。
+## <a name="sign-in-to-fivetran"></a>登录到 Fivetran
 
-输入凭据以访问 Azure SQL 数据仓库
+若要登录到 Fivetran，请输入用于访问 SQL 数据仓库的凭据： 
 
-1. 主机（服务器名称）
-2. 端口
-3. 数据库
-4. 用户（用户名应为 `fivetran@<server_name>`，其中 `<server_name>` 是 azure 主机 uri 的一部分：`<server_name>.database.windows.net`）
-5. 密码
+* 主机（服务器名称）。
+* 端口。
+* 数据库。
+* 用户（用户名应该为 **fivetran@_server_name_**，其中 *server_name* 是 Azure 主机 URI ***server_name*.database.windows.net** 的一部分）。
+* Password。

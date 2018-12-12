@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/23/2018
+ms.date: 11/27/2018
 ms.author: ergreenl
-ms.openlocfilehash: 0dc4019d2b3f33bfc92d73aeadadc0c64ecaab3b
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: cac1814057b5adbb75d9484b332bd3f8aaa31a18
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50158510"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52446852"
 ---
 # <a name="enable-azure-active-directory-domain-services-using-the-azure-portal"></a>使用 Azure 门户启用 Azure Active Directory 域服务
 
@@ -42,6 +42,22 @@ ms.locfileid: "50158510"
 
 3. 完成后，单击“确定”以前进到向导的“摘要”页。
 
+## <a name="configure-synchronization"></a>配置同步
+
+Azure AD 域服务允许完全同步 Azure AD 中可用的所有用户和组，还允许选择具有作用域的同步以仅同步特定的组。 如果你选择完全同步，则以后无法选择具有作用域的同步。 若要详细了解具有作用域的同步，请访问 [Azure AD 域服务具有作用域的同步文章](active-directory-ds-scoped-synchronization.md)。
+
+### <a name="full-synchronization"></a>完全同步
+
+1. 若要进行完全同步，只需要单击屏幕底部的“确定”，因为已选择了完全同步。
+    ![完全同步](./media\active-directory-domain-services-admin-guide\create-sync-all.PNG)
+
+### <a name="scoped-synchronization"></a>具有作用域的同步
+
+1. 将同步按钮切换到“具有作用域的”，此时将出现“选择组”页面。 从此页面中，可以看到已选择将哪些组同步到你的托管域。
+    ![具有作用域的同步](media\active-directory-domain-services-admin-guide\create-sync-scoped.PNG)
+2. 单击顶部导航栏中的“选择组”。 从此处，将在一侧弹出组选取器。 可以使用它选择要同步到 Azure AD 域服务的任何其他组。 完成后，单击“选择”以关闭组选取器并将那些组添加到选定列表。
+    ![具有作用域的同步选择组](media\active-directory-domain-services-admin-guide\create-sync-scoped-groupselect.PNG)
+3. 单击“确定”以移动到摘要页。
 
 ## <a name="deploy-your-managed-domain"></a>部署托管域
 

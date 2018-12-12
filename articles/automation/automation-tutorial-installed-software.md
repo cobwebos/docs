@@ -11,12 +11,12 @@ ms.service: automation
 ms.component: change-inventory-management
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: ad9fc7deb73cdcbcf83cc10b9b28f7d7e4ac7661
-ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
+ms.openlocfilehash: 6ff8bccc7037782b2709340312f0602b4cd7ab1f
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52283785"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52834326"
 ---
 # <a name="discover-what-software-is-installed-on-your-azure-and-non-azure-machines"></a>发现在 Azure 计算机和非 Azure 计算机上安装的软件
 
@@ -70,7 +70,7 @@ ms.locfileid: "52283785"
 
 ## <a name="onboard-a-non-azure-machine"></a>载入非 Azure 计算机
 
-若要添加非 Azure 计算机，请根据你的操作系统安装适用于 [Windows](../log-analytics/log-analytics-agent-windows.md) 或 [Linux](automation-linux-hrw-install.md) 的代理。 安装代理后，导航到你的自动化帐户，然后转到“配置管理”下的“清单”。 单击“管理计算机”时，可以看到向你的 Log Analytics 工作区进行报告且尚未启用此解决方案的计算机的列表。 选择适合你的环境的选项。
+若要添加非 Azure 计算机，请根据你的操作系统安装适用于 [Windows](../azure-monitor/platform/agent-windows.md) 或 [Linux](automation-linux-hrw-install.md) 的代理。 安装代理后，导航到你的自动化帐户，然后转到“配置管理”下的“清单”。 单击“管理计算机”时，可以看到向你的 Log Analytics 工作区进行报告且尚未启用此解决方案的计算机的列表。 选择适合你的环境的选项。
 
 * **在所有可用计算机上启用** - 此选项在当前向你的 Log Analytics 工作区进行报告的所有计算机上启用此解决方案。
 * **在所有可用计算机以及将来的计算机上启用** - 此选项在向你的 Log Analytics 工作区进行报告的所有计算机上启用此解决方案，并且会在将来添加到该工作区的所有计算机上启用此解决方案。
@@ -113,7 +113,7 @@ ConfigurationData
 | summarize arg_max(TimeGenerated, *) by SoftwareName, Computer
 ```
 
-若要详细了解如何在 Log Analytics 中运行和搜索日志文件，请参阅 [Azure Log Analytics](../log-analytics/log-analytics-queries.md)。
+若要详细了解如何在 Log Analytics 中运行和搜索日志文件，请参阅 [Azure Log Analytics](../azure-monitor/log-query/log-query-overview.md)。
 
 ### <a name="single-machine-inventory"></a>单个计算机的清单
 

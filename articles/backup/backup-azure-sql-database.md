@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 08/02/2018
 ms.author: markgal;anuragm
 ms.custom: ''
-ms.openlocfilehash: 72d48bd1716e1b62ae92f8317f3f9611ac463453
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 6091a3b3506adf87418b529c3cca6b96e9bb2af9
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50211496"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52317681"
 ---
 # <a name="back-up-sql-server-databases-to-azure"></a>将 SQL Server 数据库备份到 Azure
 
@@ -54,31 +54,31 @@ SQL Server 数据库属于关键工作负荷，要求较低的恢复点目标 (R
 
 以下地理区域支持 Azure 备份：
 
-- 澳大利亚东南部 (ASE) 
+- 澳大利亚东南部 (ASE)
 - 巴西南部 (BRS)
 - 加拿大中部 (CNC)
 - 加拿大东部 (CE)
 - 美国中部 (CUS)
 - 东亚 (EA)
-- 东澳大利亚 (AE) 
+- 东澳大利亚 (AE)
 - 美国东部 (EUS)
 - 美国东部 2 (EUS2)
-- 印度中部 (INC) 
+- 印度中部 (INC)
 - 印度南部 (INS)
 - 日本东部 (JPE)
 - 日本西部 (JPW)
 - 韩国中部 (KRC)
 - 韩国南部 (KRS)
-- 美国中北部 (NCUS) 
-- 北欧 (NE) 
-- 美国中南部 (SCUS) 
+- 美国中北部 (NCUS)
+- 北欧 (NE)
+- 美国中南部 (SCUS)
 - 东南亚 (SEA)
-- 英国南部 (UKS) 
-- 英国西部 (UKW) 
+- 英国南部 (UKS)
+- 英国西部 (UKW)
 - 美国中西部 (WCUS)
-- 西欧 (WE) 
+- 西欧 (WE)
 - 美国西部 (WUS)
-- 美国西部 2 (WUS 2) 
+- 美国西部 2 (WUS 2)
 
 ## <a name="support-for-operating-systems-and-sql-server-versions"></a>支持的操作系统和 SQL Server 版本
 
@@ -118,7 +118,7 @@ SQL Server 数据库属于关键工作负荷，要求较低的恢复点目标 (R
 
 对于所有操作，SQL 虚拟机需要与 Azure 公共 IP 地址建立连接。 在未连接到公共 IP 地址的情况下，SQL 虚拟机操作（例如数据库发现、配置备份、计划的备份、还原恢复点等）将会失败。 使用以下选项之一提供备份流量的明确路径：
 
-- 将 Azure 数据中心 IP 范围加入允许列表 - 若要将 Azure 数据中心 IP 范围加入允许列表，请使用[下载中心页了解有关 IP 范围的详细信息和说明](https://www.microsoft.com/download/details.aspx?id=41653)。 
+- 将 Azure 数据中心 IP 范围加入允许列表 - 若要将 Azure 数据中心 IP 范围加入允许列表，请使用[下载中心页了解有关 IP 范围的详细信息和说明](https://www.microsoft.com/download/details.aspx?id=41653)。
 - 部署 HTTP 代理服务器用于路由流量 - 在 VM 中备份 SQL 数据库时，VM 上的备份扩展将使用 HTTPS API 将管理命令发送到 Azure 备份，并将数据发送到 Azure 存储。 备份扩展还使用 Azure Active Directory (Azure AD) 进行身份验证。 通过 HTTP 代理路由这三个服务的备份扩展流量。 该扩展是为了访问公共 Internet 而配置的唯一组件。
 
 这些选项之间的利弊体现在易管理性、精细控制和成本方面。
@@ -157,10 +157,8 @@ SQL Server 数据库属于关键工作负荷，要求较低的恢复点目标 (R
 5. 在“发现 VM 中的数据库”下面，选择“开始发现”以搜索订阅中不受保护的虚拟机。 可能需要一段时间才能搜索完所有虚拟机。 搜索时间取决于订阅中不受保护的虚拟机数量。
 
     ![在搜索 VM 中的数据库期间，备份将会挂起。](./media/backup-azure-sql-database/discovering-sql-databases.png)
- 
-    发现不受保护的虚拟机后，它会显示在列表中。 不受保护的虚拟机按其虚拟机名称和资源组列出。 可能有多个虚拟机同名。 但是，同名的虚拟机属于不同的资源组。 如果预期的虚拟机未列出，请检查该虚拟机是否已在保管库中受保护。
 
-6. 在虚拟机列表中，选择包含要保护的 SQL 数据库的 VM，然后选择“发现数据库”。 
+6. 在虚拟机列表中，选择包含要保护的 SQL 数据库的 VM，然后选择“发现数据库”。
 
     发现过程会在该虚拟机上安装 **AzureBackupWindowsWorkload** 扩展。 该扩展可让 Azure 备份服务与虚拟机通信，以便能够备份 SQL 数据库。 安装扩展后，Azure 备份会在虚拟机上创建 Windows 虚拟服务帐户 **NT Service\AzureWLBackupPluginSvc**。 该虚拟服务帐户需要 SQL sysadmin 权限。 在安装虚拟服务帐户过程中，如果出现错误 `UserErrorSQLNoSysadminMembership`，请参阅[修复 SQL sysadmin 权限](backup-azure-sql-database.md#fix-sql-sysadmin-permissions)。
 
@@ -182,7 +180,7 @@ SQL Server 数据库属于关键工作负荷，要求较低的恢复点目标 (R
 
     ![在“登录名 - 新建”对话框中选择“搜索”](./media/backup-azure-sql-database/new-login-search.png)
 
-3. 在虚拟机注册和 SQL 发现阶段已创建 Windows 虚拟服务帐户 **NT Service\AzureWLBackupPluginSvc**。 请输入“输入要选择的对象名称”对话框中显示的帐户名。 选择“检查名称”以解析名称。 
+3. 在虚拟机注册和 SQL 发现阶段已创建 Windows 虚拟服务帐户 **NT Service\AzureWLBackupPluginSvc**。 请输入“输入要选择的对象名称”对话框中显示的帐户名。 选择“检查名称”以解析名称。
 
     ![选择“检查名称”以解析未知的服务名称](./media/backup-azure-sql-database/check-name.png)
 
@@ -220,7 +218,7 @@ Azure 备份会发现 SQL Server 实例上的所有数据库。 可根据备份�
 
     ![输入并选择“恢复服务保管库”](./media/backup-azure-sql-database/all-services.png) <br/>
 
-    此时会显示订阅中的恢复服务保管库列表。 
+    此时会显示订阅中的恢复服务保管库列表。
 
 4. 在“恢复服务保管库”列表中，选择用来保护 SQL 数据库的保管库。
 
@@ -235,13 +233,13 @@ Azure 备份会发现 SQL Server 实例上的所有数据库。 可根据备份�
     ![选择“Azure VM 中的 SQL Server”进行备份](./media/backup-azure-sql-database/choose-sql-database-backup-goal.png)
 
     “备份目标”菜单会显示两个步骤：“发现 VM 中的数据库”和“配置备份”。
-    
+
     ![查看两个“备份目标”步骤](./media/backup-azure-sql-database/backup-goal-menu-step-one.png)
 
 8. 在“发现 VM 中的数据库”下面，选择“开始发现”以搜索订阅中不受保护的虚拟机。 可能需要一段时间才能搜索完所有虚拟机。 搜索时间取决于订阅中不受保护的虚拟机数量。
 
     ![在搜索 VM 中的数据库期间，备份将会挂起。](./media/backup-azure-sql-database/discovering-sql-databases.png)
- 
+
     发现不受保护的虚拟机后，它会显示在列表中。 可能有多个虚拟机同名。 但是，同名的虚拟机属于不同的资源组。 不受保护的虚拟机按其虚拟机名称和资源组列出。 如果预期的虚拟机未列出，请检查该虚拟机是否已在保管库中受保护。
 
 9. 在虚拟机列表中，选择包含要保护的 SQL 数据库的 VM，然后选择“发现数据库”。
@@ -252,7 +250,7 @@ Azure 备份会发现 SQL Server 实例上的所有数据库。 可根据备份�
 
 使用“发现数据库”工具时，Azure 备份会在后台执行以下操作：
 
-- 将虚拟机注册到恢复服务保管库，以进行工作负荷备份。 注册的虚拟机上的所有数据库只能备份到此恢复服务保管库。 
+- 将虚拟机注册到恢复服务保管库，以进行工作负荷备份。 注册的虚拟机上的所有数据库只能备份到此恢复服务保管库。
 
 - 在虚拟机上安装 **AzureBackupWindowsWorkload** 扩展。 备份 SQL 数据库是一种无代理的解决方案。 扩展安装在虚拟机上，SQL 数据库中未安装任何代理。
 
@@ -262,7 +260,7 @@ Azure 备份会发现 SQL Server 实例上的所有数据库。 可根据备份�
 
 ## <a name="configure-backup-for-sql-server-databases"></a>配置 SQL Server 数据库的备份
 
-Azure 备份提供管理服务用于保护 SQL Server 数据库和管理备份作业。 管理和监视功能取决于恢复服务保管库。 
+Azure 备份提供管理服务用于保护 SQL Server 数据库和管理备份作业。 管理和监视功能取决于恢复服务保管库。
 
 > [!NOTE]
 > 每次只能使用一个备份解决方案来备份 SQL Server 数据库。 在使用此功能之前，请禁用其他所有 SQL 备份，否则备份会受到干扰并失败。 可以结合 SQL 备份一起为 IaaS VM 启用 Azure 备份，这不会产生冲突。
@@ -283,35 +281,37 @@ Azure 备份提供管理服务用于保护 SQL Server 数据库和管理备份�
     ![选择“Azure VM 中的 SQL Server”进行备份](./media/backup-azure-sql-database/choose-sql-database-backup-goal.png)
 
     “备份目标”菜单会显示两个步骤：“发现 VM 中的数据库”和“配置备份”。
-    
+
     如果按顺序完成了本文中的步骤，则已发现未受保护的虚拟机，并且已将此保管库注册到虚拟机。 现在，可以配置 SQL 数据库的保护。
-    
+
 5. 在“备份目标”菜单中，选择“配置备份”。
 
     ![选择“配置备份”](./media/backup-azure-sql-database/backup-goal-configure-backup.png)
 
-    Azure 备份服务会显示包含独立数据库的所有 SQL Server 实例，以及 SQL Server Always On 可用性组。 若要查看 SQL Server 实例中的独立数据库，请选择实例名称旁边的 V 形图标。 下图显示独立实例和 Always On 可用性组的示例。
+    Azure 备份服务会显示包含独立数据库的所有 SQL Server 实例，以及 SQL Server Always On 可用性组。 若要查看 SQL Server 实例中的独立数据库，请选择实例名称旁边的 V 形图标。 同样，选择 Always On 可用性组旁边的 V 形图标查看数据库列表。 下图是独立实例和 Always On 可用性组的示例。
 
-    > [!NOTE]
-    > 对于 SQL Server Always On 可用性组，将优先使用 SQL 备份首选项。 但由于 SQL 平台存在限制，完整备份和差异备份需要从主节点执行。 日志备份根据备份首选项发生。 由于这种限制，必须始终为可用性组注册主节点。
-    >
+      ![显示包含独立数据库的所有 SQL Server 实例](./media/backup-azure-sql-database/list-of-sql-databases.png)
 
-    ![SQL 实例中的数据库列表](./media/backup-azure-sql-database/discovered-databases.png)
+6. 在数据库列表中，选择要保护的所有数据库，然后单击“确定”。
 
-    选择 Always On 可用性组旁边的 V 形图标查看数据库列表。
-
-    ![Always On 可用性组中的数据库列表](./media/backup-azure-sql-database/discovered-database-availability-group.png)
-
-6. 在数据库列表中，选择要保护的所有数据库，然后选择“确定”。
-
-    ![选择要保护的多个数据库](./media/backup-azure-sql-database/select-multiple-database-protection.png)
+    ![保护数据库](./media/backup-azure-sql-database/select-database-to-protect.png)
 
     一次最多可以选择 50 个数据库。 若要保护 50 个以上的数据库，请分多个轮次操作。 保护前 50 个数据库之后，重复此步骤保护下一组数据库。
 
-    > [!Note] 
+    > [!Note]
     > 为了优化备份负载，Azure 备份会将大型备份作业划分为多个批。 一个备份作业中的最大数据库数为 50。
     >
-    >
+
+    或者，可以通过在“自动保护”列中的相应下拉列表内选择“打开”选项，针对整个实例或 Always On 可用性组启用自动保护。 自动保护功能不仅可以一次性针对所有现有数据库启用保护，而且还会自动保护将来要添加到该实例或可用性组的所有新数据库。  
+
+      ![针对 Always On 可用性组启用自动保护](./media/backup-azure-sql-database/enable-auto-protection.png)
+
+      如果某个实例或可用性组的某些数据库已受保护，你仍可以**启用**自动保护选项。 在这种情况下，下一步骤中定义的备份策略仅适用于不受保护的数据库，已受保护的数据库将继续受相应策略的保护。
+
+      使用自动保护功能时，一次性选择的数据库数目没有限制（只要不超过保管库中可选择的数据库数目即可）。  
+
+      如果你希望自动为将来要添加的所有数据库配置保护，则我们建议针对所有实例和 Always On 可用性组启用自动保护。
+
 
 7. 若要创建或选择备份策略，请在“备份”菜单中选择“备份策略”。 此时会打开“备份策略”菜单。
 
@@ -324,10 +324,10 @@ Azure 备份提供管理服务用于保护 SQL Server 数据库和管理备份�
 
     ![从列表中选择备份策略](./media/backup-azure-sql-database/select-backup-policy-steptwo.png)
 
-    在“备份策略”菜单的“选择备份策略”下拉列表框中，可以： 
+    在“备份策略”菜单的“选择备份策略”下拉列表框中，可以：
     - 选择默认策略：**HourlyLogBackup**。
     - 选择前面为 SQL 创建的现有备份策略。
-    - 根据 RPO 和保留范围[定义新策略](backup-azure-sql-database.md#define-a-backup-policy)。 
+    - 根据 RPO 和保留范围[定义新策略](backup-azure-sql-database.md#define-a-backup-policy)。
 
     > [!Note]
     > Azure 备份支持基于祖父-父-子备份方案的长期保留策略。 此方案优化了后端存储消耗，同时满足法规遵从需求。
@@ -346,18 +346,18 @@ Azure 备份提供管理服务用于保护 SQL Server 数据库和管理备份�
 
 备份策略定义由备份创建时间和这些备份的保留时间长度构成的矩阵。 使用 Azure 备份来计划三种类型的 SQL 数据库备份：
 
-* 完整备份：完整数据库备份将备份整个数据库。 完整备份包含特定数据库或者文件组或文件集中的所有数据，以及足以用于恢复数据的日志。 每天最多可以触发一次完整备份。 可以选择每天或每周创建完整备份。 
+* 完整备份：完整数据库备份将备份整个数据库。 完整备份包含特定数据库或者文件组或文件集中的所有数据，以及足以用于恢复数据的日志。 每天最多可以触发一次完整备份。 可以选择每天或每周创建完整备份。
 * 差异备份：差异备份基于最新的、以前的完整数据备份。 差异备份只捕获自完整备份以来发生更改的数据。 每天最多可以触发一次差异备份。 不能在同一天配置完整备份和差异备份。
 * 事务日志备份：日志备份可以实现时间点还原，精度可达到特定的秒。 最多可以配置为每隔 15 分钟创建事务日志备份。
 
-策略在恢复服务保管库级别创建。 多个保管库可以使用相同的备份策略，但必须向每个保管库应用该备份策略。 创建备份策略时，每日完整备份是默认设置。 可以添加差异备份，但仅在将完整备份配置为每周发生时，才能这样做。 以下过程说明如何为 Azure 虚拟机中的 SQL Server 实例创建备份策略。 
+策略在恢复服务保管库级别创建。 多个保管库可以使用相同的备份策略，但必须向每个保管库应用该备份策略。 创建备份策略时，每日完整备份是默认设置。 可以添加差异备份，但仅在将完整备份配置为每周发生时，才能这样做。 以下过程说明如何为 Azure 虚拟机中的 SQL Server 实例创建备份策略。
 
 > [!NOTE]
 > 在预览版中无法编辑备份策略。 必须新建一个包含所需详细信息的策略。  
- 
+
 创建备份策略：
 
-1. 在保护 SQL 数据库的恢复服务保管库中，单击“备份策略”，然后单击“添加”。 
+1. 在保护 SQL 数据库的恢复服务保管库中，单击“备份策略”，然后单击“添加”。
 
    ![打开“新建备份策略”对话框](./media/backup-azure-sql-database/new-policy-workflow.png)
 
@@ -389,13 +389,13 @@ Azure 备份提供管理服务用于保护 SQL Server 数据库和管理备份�
 
     恢复点已根据其保留范围标记为保留。 例如，如果选择每日完整备份，则每天只触发一次完整备份。 根据每周保留范围和每周保留设置，将会标记并保留特定日期的备份。 每月和每年保留范围的行为类似。
 
-6. 若要添加差异备份策略，请选择“差异备份”。 此时会打开“差异备份策略”菜单。 
+6. 若要添加差异备份策略，请选择“差异备份”。 此时会打开“差异备份策略”菜单。
 
    ![打开“差异备份策略”菜单](./media/backup-azure-sql-database/backup-policy-menu-choices.png)
 
     在“差异备份策略”菜单中，选择“启用”打开频率和保留控件。 每天最多可以触发一次差异备份。
-    
-    > [!Important] 
+
+    > [!Important]
     > 差异备份最多可以保留 180 天。 如果需要保留更长时间，必须使用完整备份。
     >
 
@@ -413,7 +413,7 @@ Azure 备份提供管理服务用于保护 SQL Server 数据库和管理备份�
 
     Azure 备份在后端使用 SQL 本机备份压缩。
 
-9. 完成备份策略的编辑后，选择“确定”。 
+9. 完成备份策略的编辑后，选择“确定”。
 
    ![接受新备份策略](./media/backup-azure-sql-database/backup-policy-click-ok.png)
 
@@ -436,11 +436,11 @@ Azure 备份提供使用事务日志备份将单个数据库还原到特定的�
 
     ![打开“备份项”菜单](./media/backup-azure-sql-database/restore-sql-vault-dashboard.png).
 
-3. 在“备份项”菜单中的“备份管理类型”下，选择“Azure VM 中的 SQL”。 
+3. 在“备份项”菜单中的“备份管理类型”下，选择“Azure VM 中的 SQL”。
 
     ![选择“Azure VM 中 SQL”](./media/backup-azure-sql-database/sql-restore-backup-items.png)
 
-    “备份项”菜单显示 SQL 数据库列表。 
+    “备份项”菜单显示 SQL 数据库列表。
 
 4. 在 SQL 数据库列表中，选择要还原的数据库。
 
@@ -470,7 +470,7 @@ Azure 备份提供使用事务日志备份将单个数据库还原到特定的�
 此过程会逐步将数据还原到备用位置。 若要在还原期间覆盖数据库，请转到[还原并覆盖数据库](backup-azure-sql-database.md#restore-and-overwrite-the-database)。 在此阶段，恢复服务保管库已打开，并且“还原配置”菜单可见。 如果不在此阶段操作，请先[还原 SQL 数据库](backup-azure-sql-database.md#restore-a-sql-database)。
 
 > [!NOTE]
-> 可将数据库还原到同一 Azure 区域中的 SQL Server 实例。 目标服务器需要注册到恢复服务保管库。 
+> 可将数据库还原到同一 Azure 区域中的 SQL Server 实例。 目标服务器需要注册到恢复服务保管库。
 >
 
 在“还原配置”菜单中，“服务器”下拉列表框仅显示已注册到恢复服务保管库的 SQL Server 实例。 如果所需的服务器不在该列表中，请参阅[发现 SQL Server 数据库](backup-azure-sql-database.md#discover-sql-server-databases)来查找该服务器。 在发现过程中，新服务器会注册到恢复服务保管库。
@@ -503,7 +503,7 @@ Azure 备份提供使用事务日志备份将单个数据库还原到特定的�
         选择日期后，时间线图会显示连续范围内的可用恢复点。
 
     3. 使用时间线图或“时间”对话框，指定恢复点的特定时间。 选择“确定”完成还原点步骤。
-    
+
        ![打开日历](./media/backup-azure-sql-database/recovery-point-logs-graph.png)
 
         “选择还原点”菜单关闭，“高级配置”菜单打开。
@@ -530,7 +530,7 @@ Azure 备份提供使用事务日志备份将单个数据库还原到特定的�
 
         菜单会显示可用恢复点的列表。
 
-    2. 在列表中选择一个恢复点，然后选择“确定”完成还原点过程。 
+    2. 在列表中选择一个恢复点，然后选择“确定”完成还原点过程。
 
         ![选择完整恢复点](./media/backup-azure-sql-database/choose-fd-recovery-point.png)
 
@@ -556,7 +556,7 @@ Azure 备份提供使用事务日志备份将单个数据库还原到特定的�
 
 在“还原配置”菜单中，“服务器”下拉列表框仅显示已注册到恢复服务保管库的 SQL Server 实例。 如果所需的服务器不在该列表中，请参阅[发现 SQL Server 数据库](backup-azure-sql-database.md#discover-sql-server-databases)来查找该服务器。 在发现过程中，新服务器会注册到恢复服务保管库。
 
-1. 在“还原配置”菜单中选择“覆盖数据库”，然后选择“确定”完成目标配置。 
+1. 在“还原配置”菜单中选择“覆盖数据库”，然后选择“确定”完成目标配置。
 
    ![选择“覆盖数据库”](./media/backup-azure-sql-database/restore-configuration-overwrite-db.png)
 
@@ -579,7 +579,7 @@ Azure 备份提供使用事务日志备份将单个数据库还原到特定的�
         选择日期后，时间线图会显示可用恢复点。
 
     3. 使用时间线图或“时间”对话框，指定恢复点的特定时间。 选择“确定”完成还原点步骤。
-    
+
        ![打开日历](./media/backup-azure-sql-database/recovery-point-logs-graph.png)
 
         “选择还原点”菜单关闭，“高级配置”菜单打开。
@@ -606,7 +606,7 @@ Azure 备份提供使用事务日志备份将单个数据库还原到特定的�
 
         菜单会显示可用恢复点的列表。
 
-    2. 在列表中选择一个恢复点，然后选择“确定”完成还原点过程。 
+    2. 在列表中选择一个恢复点，然后选择“确定”完成还原点过程。
 
         ![选择完整恢复点](./media/backup-azure-sql-database/choose-fd-recovery-point.png)
 
@@ -644,7 +644,7 @@ Azure 备份在“备份作业”门户中显示所有手动触发的作业或�
 - 手动触发的备份操作。
 - 还原操作。
 - 注册和发现数据库操作。
-- 停止备份操作。 
+- 停止备份操作。
 
 ![“备份作业”门户](./media/backup-azure-sql-database/jobs-list.png)
 
@@ -675,12 +675,12 @@ backup_finish_date,
 DATEDIFF(SECOND, backup_start_date, backup_finish_date) AS TimeTakenByBackupInSeconds,
 backup_size AS BackupSizeInBytes
   from msdb.dbo.backupset where user_name = 'NT SERVICE\AzureWLBackupPluginSvc' AND database_name =  <DB1>  
- 
+
 ```
 
 ### <a name="view-backup-alerts"></a>查看备份警报
 
-由于日志备份每隔 15 分钟就会发生一次，因此，监视备份作业有时会很繁琐。 Azure 备份在此情况下可提供帮助。 会针对所有备份失败触发电子邮件警报。 警报按错误代码在数据库级别合并。 只针对数据库的首次备份失败发送电子邮件警报。 登录到 Azure 门户来监视数据库的所有失败。 
+由于日志备份每隔 15 分钟就会发生一次，因此，监视备份作业有时会很繁琐。 Azure 备份在此情况下可提供帮助。 会针对所有备份失败触发电子邮件警报。 警报按错误代码在数据库级别合并。 只针对数据库的首次备份失败发送电子邮件警报。 登录到 Azure 门户来监视数据库的所有失败。
 
 监视备份警报：
 
@@ -688,7 +688,7 @@ backup_size AS BackupSizeInBytes
 
 2. 打开已注册到 SQL 虚拟机的恢复服务保管库。
 
-3. 在“恢复服务保管库”仪表板中，选择“警报和事件”。 
+3. 在“恢复服务保管库”仪表板中，选择“警报和事件”。
 
    ![选择“警报和事件”](./media/backup-azure-sql-database/vault-menu-alerts-events.png)
 
@@ -703,7 +703,7 @@ backup_size AS BackupSizeInBytes
 * 停止所有将来的备份作业并删除所有恢复点。
 * 停止所有将来的备份作业，但保留恢复点。
 
-如果选择停止备份保留数据，将根据备份策略清除恢复点。 你将产生 SQL 保护实例的定价费用，加上存储使用费，直到清除所有恢复点。 有关 SQL 的 Azure 备份定价信息，请参阅 [Azure 备份定价页](https://azure.microsoft.com/pricing/details/backup/)。 
+如果选择停止备份保留数据，将根据备份策略清除恢复点。 你将产生 SQL 保护实例的定价费用，加上存储使用费，直到清除所有恢复点。 有关 SQL 的 Azure 备份定价信息，请参阅 [Azure 备份定价页](https://azure.microsoft.com/pricing/details/backup/)。
 
 停止数据库的保护：
 
@@ -713,11 +713,11 @@ backup_size AS BackupSizeInBytes
 
     ![打开“备份项”菜单](./media/backup-azure-sql-database/restore-sql-vault-dashboard.png).
 
-3. 在“备份项”菜单中的“备份管理类型”下，选择“Azure VM 中的 SQL”。 
+3. 在“备份项”菜单中的“备份管理类型”下，选择“Azure VM 中的 SQL”。
 
     ![选择“Azure VM 中 SQL”](./media/backup-azure-sql-database/sql-restore-backup-items.png)
 
-    “备份项”菜单显示 SQL 数据库列表。 
+    “备份项”菜单显示 SQL 数据库列表。
 
 4. 在 SQL 数据库列表中，选择要停止保护的数据库。
 
@@ -725,7 +725,7 @@ backup_size AS BackupSizeInBytes
 
     选择数据库时，会打开其菜单。
 
-5. 在选定的数据库的菜单中，选择“停止备份”。 
+5. 在选定的数据库的菜单中，选择“停止备份”。
 
     ![选择“停止备份”](./media/backup-azure-sql-database/stop-db-button.png)
 
@@ -735,11 +735,21 @@ backup_size AS BackupSizeInBytes
 
     ![“停止备份”菜单](./media/backup-azure-sql-database/stop-backup-button.png)
 
-7. 选择“停止备份”以停止数据库的保护。 
+7. 选择“停止备份”以停止数据库的保护。
+
+  请注意，“停止备份”选项不适用于自动保护的实例中的数据库。 停止保护此数据库的唯一方法是暂时针对该实例禁用自动保护，然后在该数据库对应的“备份项”下面选择“停止备份”选项。  
+
+  可在“配置备份”下针对实例或 Always On 可用性组禁用自动保护。 单击实例名称以在右侧打开信息面板，其顶部显示了“禁用自动保护”。 单击“禁用自动保护”即可针对该实例禁用自动保护。
+
+    ![针对该实例禁用自动保护](./media/backup-azure-sql-database/disable-auto-protection.png)
+
+该实例中的所有数据库将继续受到保护。 但是，此操作会针对将来要添加的所有数据库禁用自动保护。
+
+禁用自动保护后，可在“备份项”下面针对数据库**停止备份**。 现在，可为该实例重新启用自动保护。
 
 ### <a name="resume-protection-for-a-sql-database"></a>恢复 SQL 数据库的保护
 
-如果在停止 SQL 数据库的保护时选择了“保留备份数据”选项，则可以恢复保护。 如果未保留备份数据，则无法恢复保护。 
+如果在停止 SQL 数据库的保护时选择了“保留备份数据”选项，则可以恢复保护。 如果未保留备份数据，则无法恢复保护。
 
 1. 若要恢复 SQL 数据库的保护，请打开备份项并选择“恢复备份”。
 
@@ -774,11 +784,11 @@ backup_size AS BackupSizeInBytes
 
    ![选择“受保护的服务器”](./media/backup-azure-sql-database/protected-servers.png)
 
-    此时会打开“受保护的服务器”菜单。 
+    此时会打开“受保护的服务器”菜单。
 
 4. 在“受保护的服务器”菜单中，选择要取消注册的服务器。 若要删除保管库，必须取消注册所有服务器。
 
-5. 在“受保护的服务器”菜单中，右键单击受保护的服务器，并选择“删除”。 
+5. 在“受保护的服务器”菜单中，右键单击受保护的服务器，并选择“删除”。
 
    ![选择“删除”](./media/backup-azure-sql-database/delete-protected-server.png)
 
@@ -824,8 +834,30 @@ backup_size AS BackupSizeInBytes
 
 不是。 Azure 备份保护 Azure 中运行的 SQL Server。 如果可用性组 (AG) 分散在 Azure 与本地计算机之间，则仅当主副本在 Azure 中运行时，才可以保护 AG。 此外，Azure 备份仅保护恢复服务保管库所在的同一 Azure 区域中运行的节点。
 
-### <a name="can-i-protect-sql-always-on-availability-groups-which-are-spread-across-azure-regions"></a>能否保护跨 Azure 区域分布的 SQL Always On 可用性组
+### <a name="can-i-protect-sql-always-on-availability-groups-which-are-spread-across-azure-regions"></a>能否保护跨 Azure 区域分布的 SQL Always On 可用性组？
+
 Azure 备份恢复服务保管库可以检测并保护与恢复服务保管库位于同一区域中的所有节点。 如果有跨多个 Azure 区域的 SQL Always On 可用性组，则需要从具有主要节点的区域配置备份。 Azure 备份将能够根据备份首选项检测并保护可用性组中的所有数据库。 如果不满足备份首选项，则备份将失败，你将收到故障警报。
+
+### <a name="while-i-want-to-protect-most-of-the-databases-in-an-instance-i-would-like-to-exclude-a-few-is-it-possible-to-still-use-the-auto-protection-feature"></a>我想要保护实例中的大多数数据库，但同时也希望排除一些数据库的保护。 是否仍可以使用自动保护功能？
+
+不可以，自动保护将应用到整个实例。 不能使用自动保护来选择地保护实例中的数据库。
+
+### <a name="can-i-have-different-policies-for-different-databases-in-an-auto-protected-instance"></a>是否可对自动保护的实例中的不同数据库使用不同的策略？
+
+如果实例中已有一些受保护的数据库，则即使**启用**自动保护选项，这些数据库也会继续受其相应策略的保护。 但是，所有不受保护的数据库以及将来要添加的数据库只会应用单个策略，该策略是选择数据库后在“配置备份”下面定义的。 事实上，与其他受保护数据库不同，你甚至无法更改自动保护的实例中数据库的策略。
+若要这样做，唯一的方法是暂时针对该实例禁用自动保护，然后更改该数据库的策略。 现在，可为此实例重新启用自动保护。
+
+### <a name="if-i-delete-a-database-from-an-auto-protected-instance-will-the-backups-for-that-database-also-stop"></a>如果从自动保护的实例中删除某个数据库，是否也会停止该数据库的备份？
+
+不会，如果从自动保护的实例中删除某个数据库，仍会尝试该数据库的备份。 这意味着，已删除的数据库会开始在“备份项”下面显示为不正常状态，但仍将其视为受保护。
+
+停止保护此数据库的唯一方法是暂时针对该实例禁用自动保护，然后在该数据库对应的“备份项”下面选择“停止备份”选项。 现在，可为此实例重新启用自动保护。
+
+###  <a name="why-cant-i-see-the-newly-added-database-to-an-auto-protected-instance-under-the-protected-items"></a>受保护的项下面为何不显示最近添加到自动保护的实例的数据库？
+
+最近添加到自动保护的实例的数据库可能不会立即显示。 这是因为，发现功能通常每隔 8 小时运行一次。 但是，用户可以使用“恢复数据库”选项运行手动发现，以立即发现并保护新数据库，如下图所示：
+
+  ![查看最近添加的数据库](./media/backup-azure-sql-database/view-newly-added-database.png)
 
 
 ## <a name="next-steps"></a>后续步骤

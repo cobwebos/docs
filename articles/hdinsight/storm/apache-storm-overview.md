@@ -10,20 +10,20 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: hrasheed
-ms.openlocfilehash: 034e3cfddee8cd6b51193e16ba0972d7f7595832
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 3ea1048b1bd47a5cb4f8f4f7725f5ac4d3bbed8a
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51005904"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52582831"
 ---
 # <a name="what-is-apache-storm-on-azure-hdinsight"></a>什么是 Azure HDInsight 上的 Apache Storm？
 
-[Apache Storm](http://storm.apache.org/) 是一种容错的分布式开源计算系统。 若要实时处理数据流，可以将 Storm 与 Hadoop 配合使用。 Storm 解决方案还提供有保障的数据处理功能，能够重播第一次未成功处理的数据。
+[Apache Storm](http://storm.apache.org/) 是一种容错的分布式开源计算系统。 若要实时处理数据流，可以将 Storm 与 [Apache Hadoop](https://hadoop.apache.org/) 配合使用。 Storm 解决方案还提供有保障的数据处理功能，能够重播第一次未成功处理的数据。
 
 [!INCLUDE [hdinsight-price-change](../../../includes/hdinsight-enhancements.md)]
 
-## <a name="why-use-storm-on-hdinsight"></a>为何要使用 Storm on HDInsight？
+## <a name="why-use-apache-storm-on-hdinsight"></a>为何使用 Apache Storm on HDInsight？
 
 Storm on HDInsight 提供以下功能：
 
@@ -44,15 +44,15 @@ Storm on HDInsight 提供以下功能：
 
 * **使用多个 Azure 服务创建流式处理管道**：Storm on HDInsight 集成其他 Azure 服务，例如事件中心、SQL 数据库、Azure 存储、Azure Data Lake Store。
 
-    如需集成 Azure 服务的示例解决方案，请参阅[使用 Storm on HDInsight 处理事件中心的事件](https://azure.microsoft.com/resources/samples/hdinsight-java-storm-eventhub/)。
+    如需集成 Azure 服务的示例解决方案，请参阅[使用 Apache Storm on HDInsight 处理事件中心的事件](https://azure.microsoft.com/resources/samples/hdinsight-java-storm-eventhub/)。
 
 有关在实时分析解决方案中使用 Apache Storm 的公司的列表，请参阅[使用 Apache Storm 的公司](https://storm.apache.org/documentation/Powered-By.html)。
 
-若要开始使用 Storm，请参阅 [Storm on HDInsight 入门][gettingstarted]。
+若要开始使用 Storm，请参阅 [Apache Storm on HDInsight 入门][gettingstarted]。
 
-## <a name="how-does-storm-work"></a>Storm 的工作原理
+## <a name="how-does-apache-storm-work"></a>Apache Storm 如何工作
 
-Storm 运行的是拓扑，而不是你可能熟悉的 MapReduce 作业。 Storm 拓扑由多个以有向无环图 (DAG) 形式排列的组件构成。 数据在该图中的组件之间流动。 每个组件使用一个或多个数据流，并可选择性地发出一个或多个流。 下图演示了一个基本单词计数拓扑中组件之间的数据流动方式：
+Storm 运行的是拓扑，而不是你可能熟悉的 [Apache Hadoop MapReduce](https://hadoop.apache.org/docs/r1.2.1/mapred_tutorial.html) 作业。 Storm 拓扑由多个以有向无环图 (DAG) 形式排列的组件构成。 数据在该图中的组件之间流动。 每个组件使用一个或多个数据流，并可选择性地发出一个或多个流。 下图演示了一个基本单词计数拓扑中组件之间的数据流动方式：
 
 ![Storm 拓扑中组件排列方式的示例](./media/apache-storm-overview/example-apache-storm-topology-diagram.png)
 
@@ -64,7 +64,7 @@ Storm 运行的是拓扑，而不是你可能熟悉的 MapReduce 作业。 Storm
 
 Apache Storm 保证每个传入消息始终受到完全处理，即使数据分析分散在数百个节点。
 
-Nimbus 节点提供的功能与 Hadoop JobTracker 类似，它通过 Zookeeper 将任务分配给群集中的其他节点。 Zookeeper 节点为群集提供协调功能，并促进 Nimbus 与辅助节点上的 Supervisor 进程进行通信。 如果处理的一个节点出现故障，Nimbus 节点将得到通知，并分配到另一个节点的任务和关联的数据。
+Nimbus 节点提供的功能与 Apache Hadoop JobTracker 类似，它通过 [Apache ZooKeeper](https://zookeeper.apache.org/) 将任务分配给群集中的其他节点。 Zookeeper 节点为群集提供协调功能，并促进 Nimbus 与辅助节点上的 Supervisor 进程进行通信。 如果处理的一个节点出现故障，Nimbus 节点将得到通知，并分配到另一个节点的任务和关联的数据。
 
 Apache Storm 群集的默认配置是只能有一个 Nimbus 节点。 HDInsight 上的 Storm 提供两个 Nimbus 节点。 如果主节点出现故障，Storm 群集将切换到辅助节点，同时主节点会恢复。 下图说明了 Storm on HDInsight 的任务流配置：
 
@@ -82,7 +82,7 @@ Apache Storm 群集的默认配置是只能有一个 Nimbus 节点。 HDInsight 
 
 * __Web 连接__：所有 HDInsight 群集都提供 Ambari Web UI。 可以使用 Ambari Web UI 在群集上轻松监视、配置和管理服务。 Storm 群集还提供 Storm UI。 可以使用 Storm UI，通过浏览器监视和管理 Storm 拓扑的运行。
 
-  有关详细信息，请参阅[使用 Ambari Web UI 管理 HDInsight](../hdinsight-hadoop-manage-ambari.md) 和[使用 Storm UI 进行监视和管理](apache-storm-deploy-monitor-topology-linux.md#monitor-and-manage-storm-ui)文档。
+  有关详细信息，请参阅[使用 Apache Ambari Web UI 管理 HDInsight](../hdinsight-hadoop-manage-ambari.md) 和[使用 Apache Storm UI 进行监视和管理](apache-storm-deploy-monitor-topology-linux.md#monitor-and-manage-storm-ui)文档。
 
 * __Azure PowerShell 和 Azure 经典 CLI__：PowerShell 和 经典 CLI 都提供命令行实用工具，可在客户端系统中使用这些工具来操作 HDInsight 和其他 Azure 服务。
 
@@ -96,11 +96,11 @@ Apache Storm 群集的默认配置是只能有一个 Nimbus 节点。 HDInsight 
 
 * __事件中心__：有关将事件中心与 Storm 群集配合使用的示例，请参阅以下示例：
 
-    * [使用 Storm on HDInsight 从 Azure 事件中心处理事件 (Java)](https://azure.microsoft.com/resources/samples/hdinsight-java-storm-eventhub/)
+    * [使用 Apache Storm on HDInsight 从 Azure 事件中心处理事件 (Java)](https://azure.microsoft.com/resources/samples/hdinsight-java-storm-eventhub/)
 
-    * [使用 Storm on HDInsight 从 Azure 事件中心处理事件 (C#)](apache-storm-develop-csharp-event-hub-topology.md)
+    * [使用 Apache Storm on HDInsight 从 Azure 事件中心处理事件 (C#)](apache-storm-develop-csharp-event-hub-topology.md)
 
-* __SQL 数据库__、__Cosmos DB__、__事件中心__和 __HBase__：针对 Visual Studio 的 Data Lake 工具包含模板示例。 有关详细信息，请参阅[为 Storm on HDInsight 开发 C# 拓扑](apache-storm-develop-csharp-visual-studio-topology.md)。
+* __SQL 数据库__、__Cosmos DB__、__事件中心__和 __HBase__：针对 Visual Studio 的 Data Lake 工具包含模板示例。 有关详细信息，请参阅[为 Apache Storm on HDInsight 开发 C# 拓扑](apache-storm-develop-csharp-visual-studio-topology.md)。
 
 ## <a name="support"></a>支持
 
@@ -120,23 +120,23 @@ Storm on HDInsight 附带完整的企业级持续支持。 Storm on HDInsight �
 * 搜索
 * 移动应用场景
 
-有关实际方案的信息，请参阅文档 [How companies are using Storm](https://storm.apache.org/documentation/Powered-By.html)（公司如何使用 Storm）。
+有关实际方案的信息，请参阅文档 [How companies are using Apache Storm](https://storm.apache.org/documentation/Powered-By.html)（公司如何使用 Apache Storm）。
 
 ## <a name="development"></a>开发
 
 .NET 开发人员使用针对 Visual Studio 的 Data Lake 工具即可以 C# 语言设计和实施拓扑。 你也可以创建使用 Java 和 C# 组件的混合拓扑。
 
-有关详细信息，请参阅 [使用 Visual Studio 开发适用于 Storm on HDInsight 的 C# 拓扑](apache-storm-develop-csharp-visual-studio-topology.md)。
+有关详细信息，请参阅 [使用 Visual Studio 开发 Apache Storm on HDInsight 的 C# 拓扑](apache-storm-develop-csharp-visual-studio-topology.md)。
 
-还可以使用所选的 IDE 开发 Java 解决方案。 有关详细信息，请参阅[开发适用于 Storm on HDInsight 的 Java 拓扑](apache-storm-develop-java-topology.md)。
+还可以使用所选的 IDE 开发 Java 解决方案。 有关详细信息，请参阅[开发适用于 Apache Storm on HDInsight 的 Java 拓扑](apache-storm-develop-java-topology.md)。
 
-还可以使用 Python 开发 Storm 组件。 有关详细信息，请参阅[使用 Python on HDInsight 开发 Storm 拓扑](apache-storm-develop-python-topology.md)。
+还可以使用 Python 开发 Storm 组件。 有关详细信息，请参阅[使用 Python on HDInsight 开发 Apache Storm 拓扑](apache-storm-develop-python-topology.md)。
 
 ## <a name="common-development-patterns"></a>常见开发模式
 
 ### <a name="guaranteed-message-processing"></a>有保证的消息处理
 
-Apache Storm 可以提供不同级别的有保证的消息处理。 例如，基本的 Storm 应用程序至少可以保证一次处理，而 Trident 仅可以保证一次处理。
+Apache Storm 可以提供不同级别的有保证的消息处理。 例如，基本的 Storm 应用程序至少可以保证一次处理，而 [Trident](http://storm.apache.org/releases/current/Trident-API-Overview.html) 仅可以保证一次处理。
 
 有关详细信息，请参阅 apache.org 上的 [数据处理保证](https://storm.apache.org/about/guarantees-data-processing.html) 。
 
@@ -170,13 +170,13 @@ Apache Storm 提供名为“计时周期元组”的内部计时机制。 可以
 
 ## <a name="logging"></a>日志记录
 
-Storm 使用 Apache Log4j 来记录信息。 默认情况下，将记录大量的数据，因此很难通过信息排序。 可以让日志记录配置文件包括在 Storm 拓扑中，控制日志记录行为。
+Storm 使用 [Apache Log4j 2](https://logging.apache.org/log4j/2.x/) 来记录信息。 默认情况下，将记录大量的数据，因此很难通过信息排序。 可以让日志记录配置文件包括在 Storm 拓扑中，控制日志记录行为。
 
 有关演示如何配置日志记录的示例拓扑，请参阅适用于 HDInsight 上的 Storm 的 [Java-based WordCount](apache-storm-develop-java-topology.md) （基于 Java 的 WordCount）示例。
 
 ## <a name="next-steps"></a>后续步骤
 
-了解有关使用 Storm on HDInsight 构建实时分析解决方案的详细信息：
+了解有关使用 Apache Storm on HDInsight 构建实时分析解决方案的详细信息：
 
 * [HDInsight 上的 Apache Storm 入门][gettingstarted]
 * [HDInsight 上的 Apache Storm 的示例拓扑](apache-storm-example-topology.md)

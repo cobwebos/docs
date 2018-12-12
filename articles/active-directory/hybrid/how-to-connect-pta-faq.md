@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/14/2018
+ms.date: 11/27/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 400f266b1f63de675b9cefae289878dbef0a278c
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: 77872ab809f4375523a91f4ebc9b24f8606e6c94
+ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51685644"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52619805"
 ---
 # <a name="azure-active-directory-pass-through-authentication-frequently-asked-questions"></a>Azure Active Directory 传递身份验证：常见问题
 
@@ -34,7 +34,7 @@ ms.locfileid: "51685644"
 
 直通身份验证是一项免费功能。 不需要拥有任何付费版本的 Azure AD 即可使用。
 
-## <a name="is-pass-through-authentication-available-in-the-microsoft-azure-germany-cloudhttpwwwmicrosoftdecloud-deutschland-and-the-microsoft-azure-government-cloudhttpsazuremicrosoftcomfeaturesgov"></a>能否在 [Microsoft Azure 德国云](http://www.microsoft.de/cloud-deutschland)和 [Microsoft Azure 政府云](https://azure.microsoft.com/features/gov/)中使用直通身份验证？
+## <a name="is-pass-through-authentication-available-in-the-microsoft-azure-germany-cloudhttpswwwmicrosoftdecloud-deutschland-and-the-microsoft-azure-government-cloudhttpsazuremicrosoftcomfeaturesgov"></a>能否在 [Microsoft Azure 德国云](https://www.microsoft.de/cloud-deutschland)和 [Microsoft Azure 政府云](https://azure.microsoft.com/features/gov/)中使用直通身份验证？
 
 不是。 直通身份验证只能在全球范围内的 Azure AD 实例中使用。
 
@@ -44,7 +44,7 @@ ms.locfileid: "51685644"
 
 ## <a name="does-pass-through-authentication-support-alternate-id-as-the-username-instead-of-userprincipalname"></a>传递身份验证是否支持使用“备用 ID”（而非“userPrincipalName”）作为其用户名？
 
-是的。 直通身份验证在 Azure AD Connect 中配置时支持作为用户名的 `Alternate ID`。 有关详细信息，请参阅 [Azure AD Connect 的自定义安装](how-to-connect-install-custom.md)。 并非所有 Office 365 应用程序都支持 `Alternate ID`。 请参阅特定应用程序的文档支持声明。
+是，直通身份验证在 Azure AD Connect 中配置时支持作为用户名的 `Alternate ID`。 作为先决条件，Azure AD Connect 需要将本地 Active Directory `UserPrincipalName` 属性同步到 Azure AD。 有关详细信息，请参阅 [Azure AD Connect 的自定义安装](how-to-connect-install-custom.md)。 并非所有 Office 365 应用程序都支持 `Alternate ID`。 请参阅特定应用程序的文档支持声明。
 
 ## <a name="does-password-hash-synchronization-act-as-a-fallback-to-pass-through-authentication"></a>密码哈希同步是否可以充当直通身份验证的回退？
 
@@ -119,6 +119,10 @@ ms.locfileid: "51685644"
 
 是的。 如果 Active Directory 林之间存在林信任关系并且正确配置了名称后缀路由，则支持多林环境。
 
+## <a name="does-pass-through-authentication-provide-load-balancing-across-multiple-authentication-agents"></a>直通身份验证是否跨多个身份验证代理提供负载均衡？
+
+否，安装多个直通身份验证代理只能保证[高可用性](how-to-connect-pta-quick-start.md#step-4-ensure-high-availability)。 它不提供身份验证代理之间的确定性负载均衡。 任何身份验证代理（随机）都可以处理特定的用户登录请求。
+
 ## <a name="how-many-pass-through-authentication-agents-do-i-need-to-install"></a>需要安装多少个直通身份验证代理？
 
 安装多个直通身份验证代理能保证[高可用性](how-to-connect-pta-quick-start.md#step-4-ensure-high-availability)。 但它不提供身份验证代理之间的确定性负载均衡。
@@ -132,7 +136,7 @@ ms.locfileid: "51685644"
 对于大多数客户而言，总共两个或三个身份验证代理足以满足高可用性和大容量需求。 应在域控制器附近安装身份验证代理以改善登录延迟。
 
 >[!NOTE]
->系统限制每位租户最多安装 12 个身份验证代理。
+>系统限制每位租户最多安装 40 个身份验证代理。
 
 ## <a name="can-i-install-the-first-pass-through-authentication-agent-on-a-server-other-than-the-one-that-runs-azure-ad-connect"></a>能否在未运行 Azure AD Connect 的服务器上安装第一个传递身份验证代理？
 
@@ -149,6 +153,22 @@ ms.locfileid: "51685644"
 ## <a name="what-happens-when-i-uninstall-a-pass-through-authentication-agent"></a>如果卸载传递身份验证代理，会发生什么情况？
 
 如果从服务器上卸载直通身份验证代理，会导致服务器停止接受登录请求。 若要避免中断租户上的用户登录功能，请确保在卸载直通身份验证代理前有其他正在运行的身份验证代理。
+
+## <a name="i-have-an-older-tenant-that-was-originally-setup-using-ad-fs--we-recently-migrated-to-pta-but-now-are-not-seeing-our-upn-changes-synchronizing-to-azure-ad--why-are-our-upn-changes-not-being-synchronized"></a>我有最初使用 AD FS 设置的较旧租户。  我们最近迁移到了 PTA，但现在未看到我们的 UPN 更改同步到 Azure AD。  我们的 UPN 更改为何没有同步？
+
+答：在以下情况下，你的本地 UPN 更改可能不会同步：
+
+- 如果 Azure AD 租户是在 2015 年 6 月 15 日之前创建的
+- 你最初将 AD FS 用于身份验证，通过你的 Azure AD 租户进行联合身份验证
+- 你进行切换并具有了使用 PTA 进行身份验证的托管用户
+
+这是因为在 2015 年 6 月 15 日之前创建的租户的默认行为是阻止 UPN 更改。  如果需要取消阻止 UPN 更改，则需要运行以下 PowerShell cmdlt：  
+
+`Set-MsolDirSyncFeature -Feature SynchronizeUpnForManagedUsers-Enable $True`
+
+在 2015 年 6 月 15 日之后创建的租户的默认行为是同步 UPN 更改。   
+
+
 
 ## <a name="next-steps"></a>后续步骤
 - [当前限制](how-to-connect-pta-current-limitations.md)：了解支持和不支持的方案。

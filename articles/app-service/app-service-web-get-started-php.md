@@ -189,7 +189,7 @@ git push azure master
 
 ![在门户中导航到 Azure Web 应用](./media/app-service-web-get-started-php/php-docs-hello-world-app-service-list.png)
 
-此时将显示 Web 应用的概述页。在此处可以执行基本的管理任务，例如浏览、停止、启动、重启和删除。
+此时将显示 Web 应用的概述页。 在此处可以执行基本的管理任务，例如浏览、停止、启动、重启和删除。
 
 ![Azure 门户中的应用服务页](media/app-service-web-get-started-php/php-docs-hello-world-app-service-detail.png)
 

@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 09/24/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: fb1ef9c2bb448d74d447e647f6dc8122cda6e1f7
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.openlocfilehash: 0b4e334ea9a423ed4eb9a0830d68ad7f4b843a88
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52445747"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52833633"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster"></a>快速入门：部署 Azure Kubernetes 服务 (AKS) 群集
 
@@ -27,7 +27,7 @@ ms.locfileid: "52445747"
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
 
-通过 http://portal.azure.com 登录到 Azure 门户。
+通过 https://portal.azure.com 登录到 Azure 门户。
 
 ## <a name="create-an-aks-cluster"></a>创建 AKS 群集
 

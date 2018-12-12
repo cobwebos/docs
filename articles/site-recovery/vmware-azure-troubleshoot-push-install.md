@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.author: ramamill
 ms.date: 10/29/2018
-ms.openlocfilehash: 2051f37656b6717c879a24f6e06c31a0ade0b950
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 1a8396f91f1e6f863d99be17dc8d00133a1bdd3a
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51012320"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52162523"
 ---
 # <a name="troubleshoot-mobility-service-push-installation-issues"></a>解决移动服务推送安装问题
 
@@ -21,6 +21,7 @@ ms.locfileid: "51012320"
 * 凭据/权限错误
 * 连接错误
 * 操作系统不受支持
+* VSS 安装失败
 
 启用复制时，Azure Site Recovery 尝试在虚拟机上推送安装移动服务代理。 其间，配置服务器尝试连接虚拟机并复制代理。 要成功安装，请按照下面给出的分步故障排除指导进行操作。
 
@@ -40,13 +41,10 @@ ms.locfileid: "51012320"
 ## <a name="connectivity-check-errorid-95117--97118"></a>连接性检查 (ErrorID：95117 & 97118)
 
 * 请确保你能够从配置服务器对源计算机执行 ping 操作。 如果在启用复制期间选择了横向扩展进程服务器，请确保能够从进程服务器对源计算机执行 ping 操作。
-  * 在源服务器计算机命令行中，使用 Telnet 通过 https 端口（默认为 9443）对配置服务器/横向扩展进程服务器执行 ping 操作（如下所示），查看是否存在任何网络连接问题或防火墙端口阻止问题。
+  * 在源服务器计算机命令行中，使用 Telnet 通过 https 端口 (135) 对配置服务器/横向扩展进程服务器执行 ping 操作（如下所示），查看是否存在任何网络连接问题或防火墙端口阻止问题。
 
-     `telnet <CS/ scale-out PS IP address> <port>`
-
-  * 如果无法连接，请允许配置服务器/横向扩展进程服务器上的入站端口 9443。
+     `telnet <CS/ scale-out PS IP address> <135>`
   * 检查 InMage Scout VX Agent – Sentinel/Outpost 服务的状态。 如果服务未运行，请启动服务。
-
 * 此外，对于Linux VM，
   * 检查是否已安装最新的 openssh、openssh-server 和 openssl 包。
   * 检查并确保安全外壳 (SSH) 已启用且正在端口 22 上运行。
@@ -95,6 +93,43 @@ ms.locfileid: "51012320"
 另一个最常见的失败原因可能是操作系统不受支持。 确保使用的是受支持的操作系统/内核版本，以便成功安装移动服务。
 
 若要了解有关哪些操作系统支持 Azure Site Recovery 的信息，请参阅[支持矩阵文档](vmware-physical-azure-support-matrix.md#replicated-machines)。
+
+## <a name="vss-installation-failures"></a>VSS 安装失败
+
+VSS 安装是移动代理安装的一部分。 在生成应用程序一致恢复点的过程中将使用此服务。 VSS 安装过程可能会由于多种原因而失败。 若要查明确切的错误，请参阅 **c:\ProgramData\ASRSetupLogs\ASRUnifiedAgentInstaller.log**。 以下部分中重点介绍了几个常见的错误和解决方法步骤。
+
+### <a name="vss-error--2147023170-0x800706be---exit-code-511"></a>VSS 错误 -2147023170 [0x800706BE] - 退出代码 511
+
+当防病毒软件阻止了 Azure Site Recovery 服务的操作时通常会出现此问题。 若要解决此问题，请执行以下操作：
+
+1. 排除[此处](vmware-azure-set-up-source.md#azure-site-recovery-folder-exclusions-from-antivirus-program)提到的所有文件夹。
+2. 按照你的防病毒软件提供商发布的指南在 Windows 中取消阻止 DLL 的注册。
+
+### <a name="vss-error-7-0x7---exit-code-511"></a>VSS 错误 7 [0x7] - 退出代码 511
+
+这是一个运行时错误，并且是由于没有足够的内存可用于安装 VSS 导致的。 请确保增大磁盘空间以成功完成此操作。
+
+### <a name="vss-error--2147023824-0x80070430---exit-code-517"></a>VSS 错误 -2147023824 [0x80070430] - 退出代码 517
+
+当 Azure Site Recovery VSS 提供程序服务[标记为待删除](https://msdn.microsoft.com/en-us/library/ms838153.aspx)时会发生此错误。 请尝试通过运行以下命令行手动在源计算机上安装 VSS
+
+`C:\Program Files (x86)\Microsoft Azure Site Recovery\agent>"C:\Program Files (x86)\Microsoft Azure Site Recovery\agent\InMageVSSProvider_Install.cmd"`
+
+### <a name="vss-error--2147023841-0x8007041f---exit-code-512"></a>VSS 错误 -2147023841 [0x8007041F] - 退出代码 512
+
+当 Azure Site Recovery VSS 提供程序服务数据库[被锁定](https://msdn.microsoft.com/en-us/library/ms833798.aspx)时会发生此错误。请尝试通过运行以下命令行手动在源计算机上安装 VSS
+
+`C:\Program Files (x86)\Microsoft Azure Site Recovery\agent>"C:\Program Files (x86)\Microsoft Azure Site Recovery\agent\InMageVSSProvider_Install.cmd"`
+
+### <a name="vss-exit-code-806"></a>VSS 退出代码 806
+
+当用于安装的用户帐户无权执行 CSScript 命令时会发生此错误。 请为用户帐户提供执行此脚本所需的权限，然后重试操作。
+
+### <a name="other-vss-errors"></a>其他 VSS 错误
+
+请尝试通过运行以下命令行手动在源计算机上安装 VSS 提供程序服务
+
+`C:\Program Files (x86)\Microsoft Azure Site Recovery\agent>"C:\Program Files (x86)\Microsoft Azure Site Recovery\agent\InMageVSSProvider_Install.cmd"`
 
 ## <a name="next-steps"></a>后续步骤
 

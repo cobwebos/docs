@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/25/2018
 ms.author: hrasheed
-ms.openlocfilehash: 6b06b8eb8d5e18acd3107ec5cccac79fc7be7edc
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 492087f7eeca8628ac6ac9a9e42f355a9356f1ce
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50418171"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52584700"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---data-migration-best-practices"></a>将本地 Apache Hadoop 群集迁移到 Azure HDInsight - 数据迁移最佳做法
 
@@ -25,20 +25,12 @@ ms.locfileid: "50418171"
 有两个主要选项可将数据从本地迁移到 Azure 环境：
 
 1.  使用 TLS 通过网络传输数据
-    1.  通过 Internet
-    2.  Express Route
-2.  传送数据
-    1.  导入/导出服务
-        - 仅限内部 SATA HDD 或 SSD
-        - 静态加密（AES-128/AES-256）
-        - 导入作业最多可以包括 10 个磁盘
-        - 已在所有公共区域和正式版中推出
-    1.  Data Box
-        - 每个 Data Box 最多包含 80 TB 数据
-        - 静态加密 (AES-256)
-        - 使用 NAS 协议，并支持常见的数据复制工具
-        - 加固的硬件
-        - 仅在美国和公共预览版中推出
+    1. 通过 Internet - 可以使用以下多个工具中的任意一个将数据通过 Internet 传输到 Azure 存储：Azure 存储资源管理器、AzCopy、Azure Powershell 和 Azure CLI。  有关详细信息，请参阅[将数据移入和移出 Azure 存储](../../storage/common/storage-moving-data.md)。
+    2. Express Route - ExpressRoute 是一项 Azure 服务，允许在 Microsoft 数据中心与本地环境或共同租用设施中的基础结构之间创建专用连接。 ExpressRoute 连接不通过公共 Internet，与通过 Internet 的典型连接相比，提供更高的安全性、可靠性、速度和更低的延迟。 有关详细信息，请参阅[创建和修改 ExpressRoute 线路](../../expressroute/expressroute-howto-circuit-portal-resource-manager.md)。
+    1. Data Box 联机数据传输 - Data Box Edge 和 Data Box Gateway 是联机数据传输产品，它们用作网络存储网关来管理站点和 Azure 之间的数据。 Data Box Edge 是一种本地网络设备，可将数据传入和传出 Azure，并使用支持人工智能 (AI) 的边缘计算来处理数据。 Data Box Gateway 是具有存储网关功能的虚拟设备。 有关详细信息，请参阅 [Azure Data Box 文档 - 联机传输](https://docs.microsoft.com/azure/databox-online/)。
+1.  脱机寄送数据
+    1. 导入 / 导出服务 - 你可以将物理磁盘发送到 Azure，他们将为你上传数据。 有关详细信息，请转到[什么是 Azure 导入/导出服务？](https://docs.microsoft.com/azure/storage/common/storage-import-export-service)。
+    1. Data Box 脱机数据传输 - Data Box、Data Box Disk 和 Data Box Heavy 设备可在网络不可用时将大量数据传输到 Azure。 这些脱机数据传输设备在组织和 Azure 数据中心之间往返运输。 它们使用 AES 加密来帮助保护传输中的数据，还在上传后执行一个清理过程，从设备中删除你的数据。 有关详细信息，请参阅 [Azure Data Box 文档 - 脱机传输](https://docs.microsoft.com/azure/databox/)。
 
 下表根据数据量和网络带宽列出了大致的数据传输持续时间。 如果数据迁移预计需要花费三周以上，请使用 Data Box。
 
