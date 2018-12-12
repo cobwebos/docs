@@ -23,9 +23,9 @@ ms.lasthandoff: 12/04/2018
 ms.locfileid: "52833255"
 ---
 # <a name="azure-and-linux"></a>Azure 和 Linux
-Microsoft Azure 正在不断集结各种集成的公有云服务，包括分析、虚拟机、数据库、移动、网络、存储和 Web&mdash;是托管解决方案的理想之选。  Microsoft Azure 提供可缩放的计算平台，允许即用即付，而无需投资购买本地硬件。  Azure 允许根据客户端所需的任何规模，随时扩展和缩减解决方案。
+Microsoft Azure 是一个不断扩大的集成公共云服务的集合，包括分析、虚拟机、数据库、移动、网络、存储和 Web&mdash;是托管解决方案的理想之选。Microsoft Azure 提供可缩放的计算平台，允许即用即付，而无需投资购买本地硬件。当你需要纵向和横向扩展到任意规模以满足客户的需求时，Azure 可随时为你提供支持。
 
-如果熟悉 Amazon AWS 各项功能的话，可以查看 Azure 与 AWS 的[定义映射文档](https://azure.microsoft.com/campaigns/azure-vs-aws/mapping/)。
+如果你已熟悉 Amazon AWS 的各项功能，则可以查看 Azure 与 AWS 的[定义映射文档](https://azure.microsoft.com/campaigns/azure-vs-aws/mapping/)。
 
 ## <a name="regions"></a>区域
 Microsoft Azure 资源分布在世界各地的多个地理区域。  一个“区域”代表位于单个地理区域的多个数据中心。 Azure 目前（截至 2018 年 8 月）已在全球 42 个区域正式推出，另外已宣布即将在另外 12 个区域推出 - 全球区域的数目比任何其他的云提供商都要多。 可在以下页面上找到现有区域和新宣布推出区域的更新列表：
@@ -33,7 +33,7 @@ Microsoft Azure 资源分布在世界各地的多个地理区域。  一个“�
 * [Azure 区域](https://azure.microsoft.com/regions/)
 
 ## <a name="availability"></a>可用性
-Azure 宣布了行业领先的单实例虚拟机服务级别协议：可用性达到 99.9%（前提是为所有磁盘使用高级存储部署 VM）。  为了使部署符合标准 99.95% 的 VM 服务级别协议，仍需要在可用性集中部署两个或更多个运行工作负荷的 VM。 可用性集可确保 VM 分布在 Azure 数据中心内的多个容错域，并使用不同的维护时段部署到主机。 完整 [Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/) 说明了 Azure 作为整体的保证可用性。
+Azure 宣布了行业领先的单实例虚拟机服务级别协议：可用性达到 99.9%（前提是为所有磁盘部署具有高级存储部署的 VM）。  为了使部署符合标准 99.95% 的 VM 服务级别协议，仍需要在可用性集中部署两个或更多个运行工作负荷的 VM。 可用性集可确保 VM 分布在 Azure 数据中心内的多个容错域，并使用不同的维护时段部署到主机。 完整 [Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/) 说明了 Azure 作为整体的保证可用性。
 
 ## <a name="managed-disks"></a>托管磁盘
 
@@ -42,11 +42,11 @@ Azure 宣布了行业领先的单实例虚拟机服务级别协议：可用性�
 用户还可以按 Azure 区域在一个存储帐户中管理自定义映像，并使用这些映像在同一订阅中创建数百台 VM。 有关托管磁盘的详细信息，请参阅[托管磁盘概述](../linux/managed-disks-overview.md)。
 
 ## <a name="azure-virtual-machines--instances"></a>Azure 虚拟机和实例
-Microsoft Azure 支持运行由多家合作伙伴提供和维护的众多热门 Linux 分发版。  可以在 Azure 市场中找到 Red Hat Enterprise、CentOS、SUSE Linux Enterprise、Debian、Ubuntu、CoreOS、RancherOS 和 FreeBSD 等分发版。 Microsoft 积极与各大 Linux 社区合作以便为 [Azure 认可的 Linux 分发版](endorsed-distros.md)列表添加更多成员。
+Microsoft Azure 支持运行由多家合作伙伴提供和维护的众多热门 Linux 分发版。 可以在 Azure 市场中找到 Red Hat Enterprise、CentOS、SUSE Linux Enterprise、Debian、Ubuntu、CoreOS、RancherOS 和 FreeBSD 等分发版。 Microsoft 积极与各大 Linux 社区合作以便为 [Azure 认可的 Linux 分发版](endorsed-distros.md)列表添加更多成员
 
 如果首选的 Linux 分发版目前不在库中，可以通过[在 Azure 中创建和上传 Linux VHD](create-upload-generic.md) 来“自带 Linux”VM。
 
-借助 Azure 虚拟机，用户可以采用灵活的方式部署各种计算解决方案。 几乎可以在任何操作系统（Windows、Linux 或从我们不断增长的合作伙伴列表中的任一合作伙伴自定义创建的操作系统）上部署几乎任何工作负荷和任何语言。 没有找到所需的映像？  别担心，也可以使用本地的自有映像。
+借助 Azure 虚拟机，用户可以采用灵活的方式部署各种计算解决方案。 几乎可以在任何操作系统（Windows、Linux 或从我们不断增长的合作伙伴列表中的任一合作伙伴自定义创建的操作系统）上部署任何工作负荷和任何语言。 没有找到所需的映像？  别担心，也可以使用本地的自有映像。
 
 ## <a name="vm-sizes"></a>VM 大小
 VM 的[大小](sizes.md)由所要运行的工作负荷决定。 然后，所选大小又会影响多个因素，例如处理能力、内存和存储容量。 Azure 提供各种大小来支持多种类型的用途。
@@ -59,12 +59,12 @@ Azure 根据 VM 的大小和操作系统按[小时价格](https://azure.microsof
 * [Azure 模板](create-ssh-secured-vm-from-template.md)
 * [Azure VMAccess](using-vmaccess-extension.md)
 
-Azure 正在支持它的大多数 Linux 发行版中推出 [cloud-init](http://cloud-init.io/) 支持。  目前，默认情况下 Canonical Ubuntu VM 在启用 cloud-init 的情况下进行部署。  Red Hat RHEL、CentOS 和 Fedora 支持 cloud-init，但 Red Hat 维护的 Azure 映像目前未安装 cloud-init。  若要在 Red Hat 系列 OS 上使用 cloud-init，必须创建安装了 cloud-init 的自定义映像。
+Azure 正在支持它的大多数 Linux 分发版中推出 [cloud-init](http://cloud-init.io/) 支持。目前，默认情况下 Canonical Ubuntu VM 在启用 cloud-init 的情况下进行部署。Red Hat RHEL、CentOS 和 Fedora 支持 cloud-init，但 Red Hat 维护的 Azure 映像目前未安装 cloud-init。若要在 Red Hat 系列操作系统上使用 cloud-init，必须创建安装了 cloud-init 的自定义映像。
 
 * [在 Azure Linux VM 上使用 cloud-init](using-cloud-init.md)
 
 ## <a name="quotas"></a>配额
-每个 Azure 订阅都有默认的配额限制，此限制会在为项目部署大量 VM 时造成影响。 每个订阅的当前限制是每区域 20 个 VM。  若要快速轻松地提高配额限制，可以开具支持票证来请求提高限制。  有关配额限制的更多详细信息，请参阅：
+每个 Azure 订阅都有默认的配额限制，此限制会在为项目部署大量 VM 时造成影响。 每个订阅的当前限制是每区域 20 个 VM。  若要快速轻松地提高配额限制，可以通过提交支持票证来请求提高限制。  有关配额限制的更多详细信息，请参阅：
 
 * [Azure 订阅服务限制](../../azure-subscription-service-limits.md)
 
