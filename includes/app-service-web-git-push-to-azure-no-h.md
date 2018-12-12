@@ -15,7 +15,7 @@ ms.contentlocale: zh-CN
 ms.lasthandoff: 07/11/2018
 ms.locfileid: "38731887"
 ---
-回到本地终端窗口，将 Azure 远程功能添加到本地 Git 存储库。 将 _&lt;deploymentLocalGitUrl-from-create-step>_ 替换为从[创建 Web 应用](#create)保存的 Git 远程 URL。
+回到本地终端窗口，将 Azure 远程功能添加到本地 Git 存储库。 将 _&lt;deploymentLocalGitUrl-from-create-step>_ 替换为在[创建 Web 应用](#create)中保存的 Git 远程 URL。
 
 ```bash
 git remote add azure <deploymentLocalGitUrl-from-create-step>
