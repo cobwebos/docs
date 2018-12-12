@@ -27,7 +27,7 @@ Azure Active Directory (Azure AD) 是 Microsoft 推出的基于云的标识和�
 ## <a name="who-uses-azure-ad"></a>谁会用到 Azure AD？
 Azure AD 适用于：
 
-- **IT 管理员。** 作为 IT 管理员，你可以使用 Azure AD 根据业务要求控制用户对你的应用和应用资源的访问。 例如，可以使用 Azure AD 要求用户在访问重要的组织资源时进行多重身份验证。 另外，还可以使用 Azure AD 在现有 Windows Server AD 和云应用（包括 Office 365）之间自动完成用户预配。 最终可以利用 Azure AD 提供的强大工具自动保护用户标识和凭据，实现访问管理要求。 若要开始，请注册 [30 天 Azure Active Directory Premium 免费试用版](https://azure.microsoft.com/trial/get-started-active-directory/)。
+- **IT 管理员。** 作为 IT 管理员，你可以使用 Azure AD 根据业务要求控制用户对你的应用和应用资源的访问。 例如，可以使用 Azure AD 要求用户在访问重要的组织资源时进行多重身份验证。 另外，还可以使用 Azure AD 在现有 Windows Server AD 和云应用（包括 Office 365）之间自动完成用户预配。 最终可以利用 Azure AD 提供的强大工具自动保护用户标识和凭据，实现访问管理要求。 若要开始尝试，请注册 [30 天 Azure Active Directory Premium 免费试用版](https://azure.microsoft.com/trial/get-started-active-directory/)。
 
 - **应用开发人员。** 作为应用开发人员，你可以通过 Azure AD 以基于标准的方式向应用添加单一登录 (SSO) 功能，使之能够与用户的预先存在的凭据配合使用。 另外还可以通过 Azure AD 提供的 API 来构建个性化应用体验，充分利用现有的组织数据。 若要开始尝试，请注册 [30 天 Azure Active Directory Premium 免费试用版](https://azure.microsoft.com/trial/get-started-active-directory/)。 有关详细信息，还可以参阅[针对开发人员的 Azure Active Directory](../develop/index.yml)。
 
@@ -47,7 +47,7 @@ Microsoft Online 业务服务（例如 Office 365 或 Microsoft Azure）要求�
 
 - **Azure Active Directory Premium P1。** 除了 Free 和 Basic 版功能，P1 还允许混合用户访问本地资源和云资源。 它还支持高级管理，例如动态组、自助服务组管理、Microsoft Identity Manager（一个本地标识与访问管理套件），以及允许本地用户进行自助密码重置的云写回功能。
 
-- **Azure Active Directory Premium P2。** 除了 Free、Basic 和 P1 版功能，P2 还提供 [Azure Active Directory Identity Protection](../identity-protection/enable.md)，用于对应用和重要的公司数据进行基于风险的条件访问，以及提供 [Privileged Identity Management](../privileged-identity-management/pim-getting-started.md)，用于发现、限制和监视管理员及其对资源的访问，并在需要时提供恰时访问。
+- **Azure Active Directory Premium P2。** 除了 Free、Basic 和 P1 版功能，P2 还提供 [Azure Active Directory Identity Protection](../identity-protection/enable.md)，用于对应用和重要的公司数据进行基于风险的条件访问，以及提供 [Privileged Identity Management](../privileged-identity-management/pim-getting-started.md)，用于发现、限制和监视管理员及其对资源的访问，并在需要时提供实时访问。
 
 - **“即用即付”功能许可证。** 也可获取其他功能许可证，例如 Azure Active Directory 企业对客户 (B2C) 许可证。 可以通过 B2C 为面向客户的应用提供标识和访问管理解决方案。 有关详细信息，请参阅 [Azure Active Directory B2C 文档](../../active-directory-b2c/index.yml)。
 

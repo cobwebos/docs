@@ -269,7 +269,7 @@ http://<app_name>.azurewebsites.net
 
 ![在应用服务中运行的应用](./media/app-service-web-tutorial-dotnetcore-sqldb/azure-app-in-browser.png)
 
-**祝贺你！** 正在应用服务中运行数据驱动的 .NET Core 应用。
+**祝贺你！** 数据驱动的 .NET Core 应用已经在你的应用服务中运行了。
 
 ## <a name="update-locally-and-redeploy"></a>在本地更新并重新部署
 
@@ -351,7 +351,7 @@ public async Task<IActionResult> Create([Bind("ID,Description,CreatedDate,Done")
 dotnet run
 ```
 
-在浏览器中，导航到 `http://localhost:5000/`。 你现在可以添加一个待办事项，并检查“完成”。 然后，它应作为已完成项在主页中显示。 请牢记，由于未更改`Edit`视图，`Edit`视图不显示`Done`字段。
+在浏览器中，导航到 `http://localhost:5000/`。 你现在可以添加一个待办事项，并检查**Done**。 然后，它应作为已完成项在主页中显示。 请牢记，由于未更改`Edit`视图，`Edit`视图不显示`Done`字段。
 
 ### <a name="publish-changes-to-azure"></a>将变更发布到 Azure
 
@@ -375,7 +375,7 @@ git push azure master
 
 ![在门户中导航到 Azure Web 应用](./media/app-service-web-tutorial-dotnetcore-sqldb/access-portal.png)
 
-默认情况下，门户将显示 Web 应用“概述”页。 在此页中可以查看应用的运行状况。 在此处还可以执行基本的管理任务，例如浏览、停止、启动、重新启动和删除。 该页左侧的选项卡显示可以打开的不同配置页。
+默认情况下，门户将显示 Web 应用**的**概述页。 在此页中可以查看应用的运行状况。 在此处还可以执行基本的管理任务，例如浏览、停止、启动、重新启动和删除。 该页左侧的选项卡显示可以打开的不同配置页。
 
 ![Azure 门户中的应用服务页](./media/app-service-web-tutorial-dotnetcore-sqldb/web-app-blade.png)
 

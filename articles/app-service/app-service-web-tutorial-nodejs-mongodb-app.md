@@ -25,7 +25,7 @@ ms.locfileid: "49364279"
 # <a name="tutorial-build-a-nodejs-and-mongodb-web-app-in-azure"></a>教程：在 Azure 中构建 Node.js 和 MongoDB Web 应用
 
 > [!NOTE]
-> 本文将应用部署到 Windows 上的应用服务。 若要部署到 Linux 上的应用服务，请参阅[在 Linux 上的 Azure 应用服务中生成 Node.js 和 MongoDB Web 应用](./containers/tutorial-nodejs-mongodb-app.md)。
+> 本文将应用部署到 Windows 上的应用服务。 若要部署到 Linux 上的应用服务，请参阅[在 Linux 上的 Azure 应用服务中构建 Node.js 和 MongoDB Web 应用](./containers/tutorial-nodejs-mongodb-app.md)。
 >
 
 Azure Web 应用提供高度可缩放的自修补 Web 托管服务。 本教程演示如何在 Azure 中创建 Node.js Web 应用，并将其连接至 MongoDB 数据库。 完成操作后，将拥有一个在 [Azure 应用服务](app-service-web-overview.md)上运行的 MEAN 应用程序（MongoDB、Express、AngularJS 和 Node.js）。 为简单起见，示例应用程序使用了 [MEAN.js Web 框架](http://meanjs.org/)。
