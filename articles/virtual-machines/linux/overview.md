@@ -23,7 +23,7 @@ ms.lasthandoff: 12/04/2018
 ms.locfileid: "52833255"
 ---
 # <a name="azure-and-linux"></a>Azure 和 Linux
-Microsoft Azure 是一个不断扩大的集成公共云服务的集合，包括分析、虚拟机、数据库、移动、网络、存储和 Web&mdash;是托管解决方案的理想之选。Microsoft Azure 提供可缩放的计算平台，允许即用即付，而无需投资购买本地硬件。当你需要纵向和横向扩展到任意规模以满足客户的需求时，Azure 可随时为你提供支持。
+Microsoft Azure 是一个不断扩大的集成公共云服务的集合，包括分析、虚拟机、数据库、移动、网络、存储和 Web&mdash;是托管解决方案的理想之选。  Microsoft Azure 提供可缩放的计算平台，允许即用即付，而无需投资购买本地硬件。  当你需要纵向和横向扩展到任意规模以满足客户的需求时，Azure 可随时为你提供支持。
 
 如果你已熟悉 Amazon AWS 的各项功能，则可以查看 Azure 与 AWS 的[定义映射文档](https://azure.microsoft.com/campaigns/azure-vs-aws/mapping/)。
 
@@ -42,7 +42,7 @@ Azure 宣布了行业领先的单实例虚拟机服务级别协议：可用性�
 用户还可以按 Azure 区域在一个存储帐户中管理自定义映像，并使用这些映像在同一订阅中创建数百台 VM。 有关托管磁盘的详细信息，请参阅[托管磁盘概述](../linux/managed-disks-overview.md)。
 
 ## <a name="azure-virtual-machines--instances"></a>Azure 虚拟机和实例
-Microsoft Azure 支持运行由多家合作伙伴提供和维护的众多热门 Linux 分发版。 可以在 Azure 市场中找到 Red Hat Enterprise、CentOS、SUSE Linux Enterprise、Debian、Ubuntu、CoreOS、RancherOS 和 FreeBSD 等分发版。 Microsoft 积极与各大 Linux 社区合作以便为 [Azure 认可的 Linux 分发版](endorsed-distros.md)列表添加更多成员
+Microsoft Azure 支持运行由多家合作伙伴提供和维护的众多热门 Linux 分发版。  可以在 Azure 市场中找到 Red Hat Enterprise、CentOS、SUSE Linux Enterprise、Debian、Ubuntu、CoreOS、RancherOS 和 FreeBSD 等分发版。 Microsoft 积极与各大 Linux 社区合作以便为 [Azure 认可的 Linux 分发版](endorsed-distros.md)列表添加更多成员。
 
 如果首选的 Linux 分发版目前不在库中，可以通过[在 Azure 中创建和上传 Linux VHD](create-upload-generic.md) 来“自带 Linux”VM。
 
@@ -59,7 +59,7 @@ Azure 根据 VM 的大小和操作系统按[小时价格](https://azure.microsof
 * [Azure 模板](create-ssh-secured-vm-from-template.md)
 * [Azure VMAccess](using-vmaccess-extension.md)
 
-Azure 正在支持它的大多数 Linux 分发版中推出 [cloud-init](http://cloud-init.io/) 支持。目前，默认情况下 Canonical Ubuntu VM 在启用 cloud-init 的情况下进行部署。Red Hat RHEL、CentOS 和 Fedora 支持 cloud-init，但 Red Hat 维护的 Azure 映像目前未安装 cloud-init。若要在 Red Hat 系列操作系统上使用 cloud-init，必须创建安装了 cloud-init 的自定义映像。
+Azure 正在支持它的大多数 Linux 分发版中推出 [cloud-init](http://cloud-init.io/) 支持。  目前，默认情况下 Canonical Ubuntu VM 在启用 cloud-init 的情况下进行部署。  Red Hat RHEL、CentOS 和 Fedora 支持 cloud-init，但 Red Hat 维护的 Azure 映像目前未安装 cloud-init。  若要在 Red Hat 系列操作系统上使用 cloud-init，必须创建安装了 cloud-init 的自定义映像。
 
 * [在 Azure Linux VM 上使用 cloud-init](using-cloud-init.md)
 

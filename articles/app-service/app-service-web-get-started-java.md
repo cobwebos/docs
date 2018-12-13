@@ -24,7 +24,7 @@ ms.locfileid: "30283922"
 ---
 # <a name="create-your-first-java-web-app-in-azure"></a>在 Azure 中创建第一个 Java Web 应用
 
-[Azure Web 应用](app-service-web-overview.md)提供高度可缩放、自修补的 Web 托管服务。本快速入门演示如何使用[面向 Java EE 开发者的 Eclipse IDE](http://www.eclipse.org/) 将 Java Web 应用部署到应用服务。
+[Azure Web 应用](app-service-web-overview.md)提供高度可缩放、自修补的 Web 托管服务。 本快速入门演示如何使用[面向 Java EE 开发者的 Eclipse IDE](http://www.eclipse.org/) 将 Java Web 应用部署到应用服务。
 
 > [!NOTE]
 >
@@ -41,7 +41,7 @@ ms.locfileid: "30283922"
 
 若要完成本快速入门教程，请安装：
 
-* 免费版<a href="http://www.eclipse.org/downloads/" target="_blank">面向 Java EE 开发人员的 Eclipse IDE</a>。本快速入门使用 Eclipse Neon。
+* 免费版<a href="http://www.eclipse.org/downloads/" target="_blank">面向 Java EE 开发人员的 Eclipse IDE</a>。 本快速入门使用 Eclipse Neon。
 * <a href="/java/azure/eclipse/azure-toolkit-for-eclipse-installation" target="_blank">用于 Eclipse 的 Azure 工具包</a>。
 
 > [!NOTE]
@@ -110,7 +110,7 @@ ms.locfileid: "30283922"
 
 ### <a name="create-app-service-dialog-box"></a>“创建应用服务”对话框
 
-随即显示含有默认值的“创建应用服务”对话框。下图中显示的数字 **170602185241** 与实际操作对话框中的不同。
+随即显示含有默认值的“创建应用服务”对话框。 下图中显示的数字 **170602185241** 与实际操作对话框中的不同。
 
 ![“创建应用服务”对话框](./media/app-service-web-get-started-java/cas1.png)
 
@@ -186,7 +186,7 @@ Azure 工具包创建 Web 应用，并显示进度对话框。
 “部署 Web 应用”对话框随即出现并显示之前创建的应用服务。 
 
 > [!NOTE] 
-> 请在每次发布时选择“部署到根目录”。 
+> 每次发布时选择“部署到根目录”。 
 > 
 
 选择 Web 应用，然后选择“部署”，此操作将发布更改。
@@ -201,7 +201,7 @@ Azure 工具包创建 Web 应用，并显示进度对话框。
 
 ![门户导航到资源组](media/app-service-web-get-started-java/rg.png)
 
-选择前面创建的资源组。该页显示在本快速入门中创建的资源。
+选择前面创建的资源组。 该页显示在本快速入门中创建的资源。
 
 ![资源组](media/app-service-web-get-started-java/rg2.png)
 
