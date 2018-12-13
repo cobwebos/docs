@@ -11,17 +11,17 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 09/26/2018
+ms.date: 12/07/2018
 ms.author: mabrigg
 ms.reviewer: Anjay.Ajodha
-ms.openlocfilehash: 057df4260da267254cb764e58fdac749bee3b842
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: 5a1f0c0ee8a9f6ef6871e19e7722e09f4e96ba7f
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53106747"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53142064"
 ---
-# <a name="tutorial-create-an-edge-machine-learning-solution-with-azure-and-azure-stack"></a>教程： 创建边缘机器学习使用 Azure 和 Azure Stack 解决方案
+# <a name="tutorial-create-an-edge-machine-learning-solution-with-azure-and-azure-stack"></a>教程：创建边缘机器学习使用 Azure 和 Azure Stack 解决方案
 
 *适用于：Azure Stack 集成系统和 Azure Stack 开发工具包*
 
@@ -135,13 +135,13 @@ ms.locfileid: "53106747"
 
  -  **托管的 VSTS Linux 生成代理池。** 快速构建、 测试和部署应用程序使用 Microsoft 管理和维护托管的代理。 详细了解托管 VSTS 生成代理观看[托管代理](https://docs.microsoft.com/vsts/build-release/concepts/agents/hosted?view=vsts)文档。
 
-## <a name="step-1-create-a-storage-account"></a>步骤 1：创建存储帐户
+## <a name="step-1-create-a-storage-account"></a>步骤 1:创建存储帐户
 
 创建存储帐户和清理的数据驻留的容器。
 
 1.  登录到[ *Azure 门户*](https://portal.azure.com/)。
 
-2.  在 Azure 门户中，展开左侧和右侧以打开服务菜单，然后选择菜单**所有服务**。 向下滚动到“存储”，选择“存储帐户”。 在 * * 存储帐户 * * 窗口选择**添加**。
+2.  在 Azure 门户中，展开左侧和右侧以打开服务菜单，然后选择菜单**所有服务**。 向下滚动到“存储”，选择“存储帐户”。 在中**存储帐户**窗口中选择**添加**。
 
 3.  输入存储帐户的名称。
 
@@ -152,7 +152,7 @@ ms.locfileid: "53106747"
 
 5.  选择存储帐户的类型：**常规用途 V1**，然后指定性能层：**标准**。
 
-6.  选择存储帐户的复制选项： **GRS**。
+6.  选择存储帐户的复制选项：**GRS**。
 
 7.  选择新存储帐户订阅。
 
@@ -162,7 +162,7 @@ ms.locfileid: "53106747"
 
 10. 选择“创建”以创建存储帐户。
 
-    ![Alt text](/media/azure-stack-solution-machine-learning/image1.png)
+    ![Alt text](media/azure-stack-solution-machine-learning/image1.png)
 
 11.  选择最近创建的存储帐户。
 
@@ -180,7 +180,7 @@ ms.locfileid: "53106747"
 
     ![Alt text](media/azure-stack-solution-machine-learning/image4.png)
 
-## <a name="step-2-create-a-data-science-virtual-machine"></a>步骤 2： 创建数据科学虚拟机
+## <a name="step-2-create-a-data-science-virtual-machine"></a>步骤 2:创建数据科学虚拟机
 
 在 Azure 门户中创建 Ubuntu 数据科学虚拟机 (DSVM)。
 
@@ -194,8 +194,8 @@ ms.locfileid: "53106747"
 
     ![Alt text](media/azure-stack-solution-machine-learning/image6.png)
 
-> ![重要]  
-> **选择**密码 * * 作为*身份验证类型*。
+> [!Important]  
+> 选择**密码**作为**身份验证类型**。
 
 与新创建的存储帐户相同的资源组中置于新 DSVM。 在此资源组中的 Azure 中部署边缘机器学习的所有对象。
 
@@ -209,7 +209,8 @@ ms.locfileid: "53106747"
 
     d.  有关**诊断存储帐户**，选择前面创建的存储帐户。
 
-    e.  注意： 使用 AAD 启用并配置 Azure 订阅，为 Azure 资源管理的标识可以启用也。
+    > [!Note]  
+    > 使用 AAD 启用并配置 Azure 订阅，可以也启用针对 Azure 资源管理的标识。
 
 2.  选择“确定”。
 
@@ -235,7 +236,7 @@ apt-get -y dist-upgrade
 apt-get -y autoremove
 ```
 
-## <a name="step-3-deploy-azure-machine-learning-services"></a>步骤 3： 部署 Azure 机器学习服务
+## <a name="step-3-deploy-azure-machine-learning-services"></a>步骤 3:部署 Azure 机器学习服务
 
 部署 Azure 机器学习在 Azure 中的服务。
 
@@ -259,7 +260,7 @@ Azure 机器学习服务（预览版）是集成式的端到端数据科学和�
  -  Windows 10 或 Windows Server 2016
  -  macOS Sierra 或 High Sierra
 
-## <a name="step-4-create-azure-machine-learning-services"></a>步骤 4： 创建 Azure 机器学习服务
+## <a name="step-4-create-azure-machine-learning-services"></a>步骤 4:创建 Azure 机器学习服务
 
 创建 Azure 机器学习服务帐户。
 
@@ -312,7 +313,8 @@ Azure 机器学习服务（预览版）是集成式的端到端数据科学和�
 
 Azure Machine Learning Workbench 适用于 Windows 或 macOS。 请参阅[支持的平台](https://docs.microsoft.com/azure/machine-learning/service/quickstart-installation)的列表。
 
-**警告：** 安装可能需要约一小时内完成。
+> [!Warning]  
+> 安装可能需要约一小时内完成。
 
 1.  下载并启动最新的 Workbench 安装程序。
 
@@ -321,7 +323,7 @@ Azure Machine Learning Workbench 适用于 Windows 或 macOS。 请参阅[支持
 
 1.  请按照屏幕说明完成安装程序中的。
 
-    * * 安装可能需要多达 30 分钟才能完成。 **
+    **安装可能需要多达 30 分钟才能完成。**
     
     `Windows: C:\\Users\\<user>\\AppData\\Local\\AmlWorkbench`
     
@@ -493,7 +495,7 @@ Azure Machine Learning Workbench 适用于 Windows 或 macOS。 请参阅[支持
 
     3.  选择**值计数**菜单中。
 
-        此时会打开数据下面的“检查器”窗格。 将显示包含四个条形的直方图。 目标列包含四个非重复值： **iris-virginica**， **iris-versicolor**，**iris-setosa**，和一个 **(null)** 值。
+        此时会打开数据下面的“检查器”窗格。 将显示包含四个条形的直方图。 目标列包含四个非重复值：**鸢尾花 virginica**， **iris-versicolor**，**iris-setosa**，和一个 **(null)** 值。
 
     ![选择“值计数”](media/azure-stack-solution-machine-learning/image34.png)
 
@@ -865,7 +867,7 @@ Azure Machine Learning Workbench 适用于 Windows 或 macOS。 请参阅[支持
     ```yaml  
     Framework: Python
     ```
-1.  发出相同的命令像以前一样在 CLI 窗口中，使用目标*<DSVM>* 此时若要在远程 Docker 容器中执行 iris_sklearn.py: (替换<DSVM>数据科学 VM 名称，不使用括号)。
+1.  发出相同的命令像以前一样在 CLI 窗口中，使用目标*<DSVM>* 此时若要在远程 Docker 容器中执行 iris_sklearn.py:(替代<DSVM>数据科学 VM 名称，不使用括号)。
 
     ```CLI
         az ml experiment submit -c <DSVM> iris_sklearn.py
@@ -885,7 +887,7 @@ Azure Machine Learning Workbench 适用于 Windows 或 macOS。 请参阅[支持
 
 4.  查看 **iris_sklearn.py** 文件，确定在哪个位置生成了 pickle 文件。 选择 Ctrl+F 打开“查找”对话框，然后在 Python 代码中找到 pickle 一词。
 
-此代码片段演示 pickle 输出文件是如何生成的。 输出 pickle 文件在磁盘上命名为 model.pkl。
+    此代码片段演示 pickle 输出文件是如何生成的。 输出 pickle 文件在磁盘上命名为 model.pkl。
 
     ```Python
         print("Export the model to model.pkl")
@@ -923,7 +925,7 @@ Azure Machine Learning Workbench 适用于 Windows 或 macOS。 请参阅[支持
 
     此脚本创建的 JSON 文件中**输出**部分中，它将捕获模型所需的输入的数据架构。
 
-1.  请注意“项目仪表板”窗格右侧的“作业”窗格。 等待最新版本 * * score_iris.py** 作业显示绿色**已完成**状态。 然后选择最新作业运行对应的超链接 **score_iris.py**，查看运行详细信息。
+1.  请注意“项目仪表板”窗格右侧的“作业”窗格。 等待最新的 score_iris.py 作业显示绿色的“已完成”状态。 然后选择最新作业运行对应的超链接 **score_iris.py**，查看运行详细信息。
 
 2.  在“运行属性”窗格的“输出”部分，选择新建的 service_schema.json 文件。 选中文件名旁边的复选框，然后选择“下载”。 将文件保存到项目根文件夹。
 
@@ -952,23 +954,23 @@ Azure Machine Learning Workbench 适用于 Windows 或 macOS。 请参阅[支持
 
 现在，准备环境来操作化模型。
 
-## <a name="step-5-deploy-and-use-azure-container-registry"></a>步骤 5： 部署和使用 Azure 容器注册表
+## <a name="step-5-deploy-and-use-azure-container-registry"></a>步骤 5:部署并使用 Azure 容器注册表
 
 部署和使用 Azure 容器注册表。
 
 使用 **az acr create** 命令创建 Azure 容器注册表。 注册表名称在 Azure 中必须唯一，并且包含 5-50 个字母数字字符。 资源组是相同的。
 
-    ```CLI
-        az acr create --resource-group <ResourceGroup> --name  <acrName> --sku Basic
-    ```
+```CLI
+    az acr create --resource-group <ResourceGroup> --name  <acrName> --sku Basic
+```
 
 ### <a name="container-registry-login"></a>容器注册表登录
 
 运行 **az acr login** 命令，登录 ACR 实例。 请提供创建容器注册表时所使用的唯一名称。
 
-    ```CLI
-        az acr login --name <acrName>
-    ```
+```CLI
+    az acr login --name <acrName>
+```
 
 该命令将返回登录成功的消息一次完成。
 
@@ -978,11 +980,11 @@ Azure Machine Learning Workbench 适用于 Windows 或 macOS。 请参阅[支持
 
 若要完成以下步骤来操作化模型，必须在本地运行 Docker 引擎。 使用`-h`末尾的每个命令显示相应的帮助消息的标志。
 
-    > [!Note]  
-    > If Docker engine is not locally available, proceed by creating a cluster in Azure for deployment and keep the cluster for re-use, or delete it after the tutorial to avoid ongoing charges.
+> [!Note]  
+> 如果 Docker 引擎在本地不可用，通过创建在 Azure 中用于部署的群集来继续操作并保留群集以便重复使用，或完成本教程以避免持续产生费用后删除它。
 
-    > [!Note]  
-    > Web services deployed locally do not appear in Azure Portal's list of services. They will be running in Docker on the local machine.
+> [!Note]  
+> 在 Azure 门户的服务列表中不显示本地部署的 web 服务。 它们将在本地计算机上的 Docker 中运行。
 
 1.  打开命令行界面 (CLI)。 在 Machine Learning Workbench 应用程序的“文件”菜单上，选择“打开命令提示符”。
 
@@ -1017,7 +1019,7 @@ Azure Machine Learning Workbench 适用于 Windows 或 macOS。 请参阅[支持
     az provider show -n Microsoft.ContainerRegistry
     ```
 
-    第三行输出显示 **"registrationState": "Registering"**。 稍候片刻并重复**显示**命令，直到输出显示 **"registrationState":"注册。**
+    第三行输出显示 **"registrationState":"注册"**。 稍候片刻并重复**显示**命令，直到输出显示 **"registrationState":"注册。**
 
 1.  创建环境。 运行此步骤一次每个环境。
 
@@ -1106,7 +1108,7 @@ Azure Machine Learning Workbench 适用于 Windows 或 macOS。 请参阅[支持
     
     接下来，运行 web 服务。
 
-## <a name="step-6-deploy-a-kubernetes-cluster-to-azure-stack"></a>步骤 6： 将 Kubernetes 群集部署到 Azure Stack
+## <a name="step-6-deploy-a-kubernetes-cluster-to-azure-stack"></a>步骤 6:将 Kubernetes 群集部署到 Azure Stack
 
 将 Kubernetes 群集部署到 Azure Stack。
 
@@ -1204,7 +1206,7 @@ Azure Machine Learning Workbench 适用于 Windows 或 macOS。 请参阅[支持
 
 3.  选择创建的订阅。
 
-4.  选择“访问控制(IAM)”，然后选择“+ 添加”。
+4.  选择**访问控制 (IAM)** > 选择 **+ 添加**。
 
 5.  选择“所有者”角色。
 
@@ -1218,9 +1220,9 @@ Azure Machine Learning Workbench 适用于 Windows 或 macOS。 请参阅[支持
 
     ![部署解决方案模板](media/azure-stack-solution-machine-learning/image59.png)
 
-10\。 在“创建 Kubernetes 群集”中选择“基本设置”。
+10. 在“创建 Kubernetes 群集”中选择“基本设置”。
 
-    ![Deploy Solution Template](media/azure-stack-solution-machine-learning/image60.png)
+    ![部署解决方案模板](media/azure-stack-solution-machine-learning/image60.png)
 
 11. 输入 **Linux VM 管理员用户名**。 构成 Kubernetes 群集和 DVM 的 Linux 虚拟机的用户名。
 
@@ -1261,7 +1263,7 @@ Azure Machine Learning Workbench 适用于 Windows 或 macOS。 请参阅[支持
 
 ```PowerShell  
 Install-script -name install-kubectl -scope CurrentUser -force
-Install-kubectl.ps1 -downloadlocation “C:\Users\<Current User>\Documents\Kube
+Install-kubectl.ps1 -downloadlocation "C:\Users\<Current User>\Documents\Kube"
 ```
 
 ### <a name="install-kubectl-on-the-windows-subsystem-for-linux-environment"></a>安装 kubectl 的 Windows 子系统上的 Linux 环境
@@ -1301,7 +1303,7 @@ The connection to the server <server-name:port> was refused -  did you specify t
 如果 kubectl 群集信息返回 url 响应，但群集是仍未正确配置的可访问，检查使用：
 
 ```Bash  
-> kubectl cluster-info dump
+    kubectl cluster-info dump
 ```
 
 ### <a name="enable-shell-autocompletion"></a>启用命令行程序自动完成功能
@@ -1349,7 +1351,7 @@ sudo cat  /var/lib/waagent/custom-script/download/0/acs-engine/_output/edgemlsta
     kubectl proxy
     kubectl create -f https://raw.githubusercontent.com/kubernetes/dashboard/master/src/deploy/recommended/kubernetes-dashboard.yaml
     kubectl proxy
-    set KUBECONFIG=”/mnt/c/users/<current user>/documents/Kube/kubeconfig.json”
+    set KUBECONFIG="/mnt/c/users/<current user>/documents/Kube/kubeconfig.json"
     kubectl.exe config view
 ```
 
@@ -1408,7 +1410,7 @@ kubectl create secret docker-registry azuremlcr --docker-server=<your-registry-s
 kubectl.exe create -f /mnt/c/users/<current  user>/documents/Kube/iris_deployment.yaml
 ```
 
-    ![Alt text](media/azure-stack-solution-machine-learning/image67.png)
+![Alt text](media/azure-stack-solution-machine-learning/image67.png)
 
 检查部署状态：
 
@@ -1416,7 +1418,7 @@ kubectl.exe create -f /mnt/c/users/<current  user>/documents/Kube/iris_deploymen
 Kubectl get deployments
 ```
 
-    ![Alt text](media/azure-stack-solution-machine-learning/image68.png)
+![Alt text](media/azure-stack-solution-machine-learning/image68.png)
 
 部署可能需要一些时间。
 
@@ -1553,7 +1555,7 @@ VSTS 服务终结点配置的一部分，需要**租户 ID** ，对应于 Azure 
 
 授予服务主体的权限在 Azure Stack 订阅中部署资源
 
-若要访问订阅中的资源，将分配到角色的应用程序。 决定哪个角色表示应用程序的相应权限。 若要了解有关可用角色的信息，请参阅 [RBAC：内置角色](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)。
+若要访问订阅中的资源，将分配到角色的应用程序。 决定哪个角色表示应用程序的相应权限。 若要了解有关可用的角色信息，请参阅[RBAC:内置角色](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)。
 
 在订阅、 资源组或资源的级别设置作用域。 较低级别的作用域将继承权限。 例如，添加到资源组的读取者角色的应用程序使得它可以读取资源组和它所包含的所有资源。
 
@@ -1824,11 +1826,11 @@ VSTS 文件夹中，代理是现在可见。
 
 1.  Kubernetes 服务连接下选择 **+ 新建**按钮，然后选择**Kubernetes**从列表中。 可以使用此终结点连接**VSTS**并**Azure 容器服务 (AKS)**。
 
-2.  **连接名称**： 提供连接名称。
+2.  **连接名称**:提供连接名称。
 
-3.  **服务器 URL**： 提供 formathttp 中的容器服务地址: / / {API 服务器地址}
+3.  **服务器 URL**:容器服务中提供地址 formathttp: / / {API 服务器地址}
 
-4.  **Kubeconfig**： 若要获取 Kubeconfig 值，请使用管理员权限启动命令提示符中运行以下 Azure 命令。
+4.  **Kubeconfig**:若要获取 Kubeconfig 值，请使用管理员特权启动的命令提示中运行以下 Azure 命令。
 
     > [!Important]  
     > 使用此 CLI 窗口来完成后续步骤。
@@ -1855,7 +1857,7 @@ az aks get-credentials 来获取凭据资源组<yourResourceGroup>名称 <youraz
 
 ![Kubernetes 服务终结点](media/azure-stack-solution-machine-learning/image123.png)
 
-1.  导航到 **.kube**的主目录下的文件夹 (例如： c:\\用户\\<user>\\文档\\Kube)
+1.  导航到 **.kube**的主目录下的文件夹 (例如：C:\\用户\\<user>\\文档\\Kube)
 
 2.  将复制的内容**config**文件，并将其粘贴在 Kubernetes 连接窗口中。 选择**确定**按钮。
 
@@ -1914,7 +1916,7 @@ Kubernetes UI 开始运行后，浏览到在部署[ **https://localhost:8001/** 
 
     ```Bash  
     git add .
-    git commit -m “Added Service YAML” 
+    git commit -m "Added Service YAML" 
     git push
     ```
 
@@ -1958,10 +1960,9 @@ Kubernetes UI 开始运行后，浏览到在部署[ **https://localhost:8001/** 
 
 1.  为更早版本，创建的 Azure Stack 连接设置 Kubernates 服务连接，然后选择**使用配置文件**复选框以添加配置文件。 浏览到链接的项目中的 iris_service.yaml 文件。
 
-    ![Alt text](media/azure-stack-solution-machine-learning/image135.png)
-
-
-    ![Alt text](media/azure-stack-solution-machine-learning/image136.png)
+    ![替换文字](media/azure-stack-solution-machine-learning/image135.png)
+    <!-- -->
+    ![替换文字](media/azure-stack-solution-machine-learning/image136.png)
 
 1.  保存发布定义。
 
@@ -2023,7 +2024,7 @@ kubectl proxy
 
 1.  选择**创建**预配和部署函数应用。
 
-2.  在门户的右上角选择通知图标，并观察**部署成功**消息。
+2.  选择门户右上角的“通知”图标，留意是否显示“部署成功”消息。
 
     ![定义新的函数应用设置](media/azure-stack-solution-machine-learning/image143.png)
 
@@ -2087,7 +2088,7 @@ kubectl proxy
 
     ![Alt text](media/azure-stack-solution-machine-learning/image155.png)
 
-## <a name="step-7-create-an-azure-stack-storage-account-and-storage-queue"></a>步骤 7： 创建 Azure Stack 存储帐户和存储队列
+## <a name="step-7-create-an-azure-stack-storage-account-and-storage-queue"></a>步骤 7:创建 Azure Stack 存储帐户和存储队列
 
 创建数据的 Azure Stack 存储帐户和存储队列。
 
@@ -2097,7 +2098,7 @@ kubectl proxy
 
 3.  输入存储帐户的名称。
 
-4.  选择存储帐户的复制选项： **LRS**。
+4.  选择存储帐户的复制选项：**LRS**。
 
 5.  指定新资源组或选择现有资源组。
 
@@ -2129,7 +2130,7 @@ kubectl proxy
 
     ![Alt text](media/azure-stack-solution-machine-learning/image161.png)
 
-1.  输入中的存储帐户名称**名称**字段中，在末尾添加; （_s）
+1.  输入中的存储帐户名称**名称**字段中，将添加到末尾， `_STORAGE`。
 
 这允许应用程序以了解这是存储帐户终结点。
 
@@ -2159,7 +2160,7 @@ kubectl proxy
 
     ![Alt text](media/azure-stack-solution-machine-learning/image166.png)
 
-## <a name="step-8-create-a-function-to-handle-clean-data"></a>步骤 8： 创建一个函数来处理清理数据
+## <a name="step-8-create-a-function-to-handle-clean-data"></a>步骤 8:创建一个函数来处理清理数据
 
 创建一个新的 Azure Stack 函数来从 Azure Stack 的干净的数据移到 Azure。
 
@@ -2229,7 +2230,7 @@ kubectl proxy
 
     ![Alt text](media/azure-stack-solution-machine-learning/image178.png)
 
-1.  检查要查看的数据的 Azure 托管的存储帐户已分析到从 Azure 云： 成功将类似于下面。
+1.  检查以查看已从 Azure 云到分析数据的 Azure 托管的存储帐户：成功将类似于下面。
 
     ![Alt text](media/azure-stack-solution-machine-learning/image179.png)
 
