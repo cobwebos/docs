@@ -27,7 +27,7 @@ ms.locfileid: "52312457"
 # <a name="overview-diagram-of-azure-machine-learning-studio-capabilities"></a>Azure 机器学习工作室功能的概要示意图
 **Microsoft Azure 机器学习工作室功能概述** 示意图高度概括了如何使用机器学习工作室开发预测分析模型并在 Azure 云中加以实施。
 
-[Azure 机器学习工作室](https://studio.azureml.net/) 具有大量可用的机器学习算法，以及可帮助进行数据输入、输出、准备和可视化的模块。 使用这些组件可以开发预测分析试验、迭代并使用它来定型模型。
+[Azure 机器学习工作室](https://studio.azureml.net/) 具有大量可用的机器学习算法，以及可帮助进行数据输入、输出、准备和可视化的模块。 使用这些组件可以开发一个预测分析实验，对其进行迭代，并使用它来培训您的模型。
 然后，单击一次便可在 Azure 云中实施模型，以便使用它为新数据评分。
 
 此示意图显示了所有这些片段组合在一起的方式。
@@ -53,4 +53,3 @@ ms.locfileid: "52312457"
 * 有关机器学习工作室中可用机器学习算法的详细讨论，请参阅 [如何选择 Microsoft Azure 机器学习算法](algorithm-choice.md)。
 
 [!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
-
