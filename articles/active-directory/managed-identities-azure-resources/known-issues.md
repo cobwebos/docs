@@ -15,12 +15,12 @@ ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 12/12/2017
 ms.author: daveba
-ms.openlocfilehash: fa872c184429e69eb46fb4da112c08ee9432f1c4
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
+ms.openlocfilehash: 256f36ac56126fc76561a6dbe4281ac4975df6e4
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50913982"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52632783"
 ---
 # <a name="faqs-and-known-issues-with-managed-identities-for-azure-resources"></a>Azure 资源托管标识的 FAQ 和已知问题
 
@@ -43,18 +43,33 @@ ms.locfileid: "50913982"
 
 标识的安全边界是标识所附加到的资源。 例如，启用了 Azure 资源托管标识的虚拟机的安全边界是虚拟机。 在该 VM 上运行的任何代码都可以调用 Azure 资源托管标识终结点和请求令牌。 使用支持 Azure 资源托管标识的其他资源也具有类似体验。
 
+### <a name="what-identity-will-imds-default-to-if-dont-specify-the-identity-in-the-request"></a>如果没有在请求中指定标识，IMDS 将默认采用什么标识？
+
+- 如果启用了系统分配的托管标识并且没有在请求中指定标识，则 IMDS 将默认采用系统分配的托管标识。
+- 如果未启用系统分配的托管标识并且仅存在一个用户分配的托管标识，则 IMDS 将默认采用该单一用户分配的托管标识。 
+- 如果未启用系统分配的托管的标识，并且存在多个用户分配的托管标识，则必须在请求中指定一个托管标识。
+
 ### <a name="should-i-use-the-managed-identities-for-azure-resources-vm-imds-endpoint-or-the-vm-extension-endpoint"></a>我应该使用 Azure 资源托管标识 VM IMDS 终结点还是 VM 扩展终结点？
 
 将 Azure 资源托管标识与 VM 一起使用时，我们建议使用 Azure 资源托管标识 IMDS 终结点。 Azure 实例元数据服务是一个 REST 终结点，可供通过 Azure 资源管理器创建的所有 IaaS VM 使用。 通过 IMDS 使用 Azure 资源托管标识的好处包括：
-
-1. 所有 Azure IaaS 支持的操作系统都可以通过 IMDS 使用 Azure 资源托管标识。 
-2. 不再需要在 VM 上安装扩展即可启用 Azure 资源托管标识。 
-3. Azure 资源托管标识使用的证书将不再出现在 VM 中。 
-4. IMDS 终结点是一个已知不可路由的 IP 地址，该地址只能在 VM 中访问。 
+    - 所有 Azure IaaS 支持的操作系统都可以通过 IMDS 使用 Azure 资源托管标识。
+    - 不再需要在 VM 上安装扩展即可启用 Azure 资源托管标识。 
+    - Azure 资源托管标识使用的证书将不再出现在 VM 中。
+    - IMDS 终结点是一个已知不可路由的 IP 地址，该地址只能在 VM 中访问。
 
 Azure 资源托管标识 VM 扩展目前仍可使用；但在以后，我们会默认使用 IMDS 终结点。 Azure 资源托管标识 VM 扩展将于 2019 年 1 月弃用。 
 
 有关 Azure 实例元数据服务的详细信息，请参阅 [IMDS 文档](https://docs.microsoft.com/azure/virtual-machines/windows/instance-metadata-service)
+
+### <a name="will-managed-identities-be-recreated-automatically-if-i-move-a-subscription-to-another-directory"></a>如果我将订阅移动到另一个目录中，是否会自动重新创建托管标识？
+
+否。 如果你将订阅移动到另一个目录中，则必须手动重新创建标识并重新向它们授予 Azure RBAC 角色分配。
+    - 对于系统分配的托管标识：禁用并重新启用。
+    - 对于用户分配的托管标识：删除、重新创建并重新将其附加到所需的资源（例如虚拟机）
+
+### <a name="can-i-use-a-managed-identity-to-access-a-resource-in-a-different-directorytenant"></a>是否可以使用托管标识来访问不同目录/租户中的资源？
+
+否。 托管标识当前不支持跨目录方案。 
 
 ### <a name="what-are-the-supported-linux-distributions"></a>有哪些受支持的 Linux 发行版？
 

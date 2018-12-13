@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 9402147e2dab7fbf52fc893f339f6f3b8e112377
-ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
+ms.openlocfilehash: 3fd0dfb327e925ecb28a7ca12e03b79c873118dc
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2018
-ms.locfileid: "51515635"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52309338"
 ---
 # <a name="azure-active-directory-device-management-faq"></a>Azure Active Directory 设备管理常见问题解答
 
@@ -93,6 +93,7 @@ USER 设备下面只会列出以下设备：
 
 >[!Note] 
 >对于注册的设备，建议擦除该设备，确保用户无法访问这些资源。 有关详细信息，请参阅 [Enroll devices for management in Intune](https://docs.microsoft.com/intune/deploy-use/enroll-devices-in-microsoft-intune)（注册设备以便在 Intune 中进行管理）。 
+
 ---
 
 # <a name="azure-ad-join-faq"></a>加入 Azure AD 常见问题解答
@@ -103,6 +104,20 @@ USER 设备下面只会列出以下设备：
 - 对于已加入混合 Azure AD 的设备，请确保关闭自动注册，以便计划任务不会再次注册该设备。 接下来，以管理员身份打开命令提示符并键入 `dsregcmd.exe /debug /leave`。 或者，可以将该命令作为脚本跨多个设备运行，以批量取消加入。
 
 - 对于已加入纯 Azure AD 的设备，请确保你有脱机本地管理员帐户或创建一个，因为你将无法使用任何 Azure AD 用户凭据登录。 接下来，转到“设置” > “帐户” > “访问工作单位或学校”。 选择帐户，然后单击“断开连接”。 按照提示操作，并在出现提示时提供本地管理员凭据。 重新启动设备以完成取消加入过程。
+
+---
+
+**问：我的用户是否可以登录到已在 Azure AD 中删除或禁用的已加入 Azure AD 的设备？**
+**答：** 是。 Windows 具有缓存的登录功能，允许以前登录过的用户快速访问桌面，甚至可以在无网络连接的情况下访问。 当某台设备在 Azure AD 中被删除或禁用时，Windows 设备不会知道此情况。 因此，以前登录过的用户可以使用缓存的登录继续访问桌面。 但是，当设备被删除或禁用时，用户无法访问由基于设备的条件访问保护的任何资源。 
+
+尚未登录过的用户无法访问设备，因为不存在为它们启用的缓存登录。 
+
+---
+
+**问：已禁用或删除的用户是否可以登录到已加入 Azure AD 的设备？**
+**答：** 可以，但时间有限。 当某个用户已在 Azure AD 中删除或禁用时，Windows 设备不会立即知道该设备。 因此，以前登录过的用户可以使用缓存的登录访问桌面。 当设备知道用户状态后（通常不到 4 小时便会知道），Windows 会阻止那些用户访问桌面。 由于用户在 Azure AD 中被删除或禁用，其所有令牌都将被撤销，因此他们无法访问任何资源。 
+
+以前未登录过的已删除或已禁用用户无法访问设备，因为不存在为它们启用的缓存登录。 
 
 ---
 
