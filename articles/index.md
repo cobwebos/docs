@@ -6,12 +6,12 @@ description: 了解如何使用 Microsoft Azure 云服务构建和管理功能�
 ms.topic: hub-page
 featureFlags:
 - clicktale
-ms.openlocfilehash: 5860d828a4edffa130ecfd2f5cf37c236b3cf3fc
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 78f9fa6c3d15d43c1505b5a84a2e269992290afa
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52963782"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53082214"
 ---
 <div id="main" class="v2">
     <div class="container">
@@ -458,9 +458,9 @@ Azure DevOps Projects </a>
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="/azure/redis-cache/">
+                                            <a href="/azure/azure-cache-for-redis/">
                                                 <img src="media/index/RedisCache.svg" alt="" />
-                                                <p>Redis 缓存</p>
+                                                <p>用于 Redis 的 Azure 缓存</p>
                                             </a>
                                         </li>
                                         <li>
@@ -580,12 +580,6 @@ Azure DevOps Projects </a>
                                             <a href="/azure/event-grid/">
                                                 <img src="media/index/azure_event_grid.svg" alt="" />
                                                 <p>事件网格</p>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="/azure/biztalk-services/">
-                                                <img src="media/index/BizTalkServices.svg" alt="" />
-                                                <p>BizTalk 服务</p>
                                             </a>
                                         </li>
                                     </ul>
@@ -3095,7 +3089,7 @@ Azure DevOps Projects </a>
                                 </a>
                             </li>
                             <li>
-                                <a href="/azure/redis-cache/">
+                                <a href="/azure/azure-cache-for-redis/">
                                     <div class="cardSize">
                                         <div class="cardPadding">
                                             <div class="card">
@@ -3105,7 +3099,7 @@ Azure DevOps Projects </a>
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Redis 缓存</h3>
+                                                    <h3>用于 Redis 的 Azure 缓存</h3>
                                                     <p>具有高吞吐量、低延迟的数据访问的强大应用程序</p>
                                                 </div>
                                             </div>
@@ -4388,25 +4382,6 @@ Azure DevOps Projects </a>
                                                 <div class="cardText">
                                                     <h3>事件网格</h3>
                                                     <p>实现大规模的可靠事件传递</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="/azure/biztalk-services/">
-                                    <div class="cardSize">
-                                        <div class="cardPadding">
-                                            <div class="card">
-                                                <div class="cardImageOuter">
-                                                    <div class="cardImage">
-                                                        <img src="media/index/BizTalkServices.svg" alt="" />
-                                                    </div>
-                                                </div>
-                                                <div class="cardText">
-                                                    <h3>BizTalk 服务</h3>
-                                                    <p>将企业与云无缝集成</p>
                                                 </div>
                                             </div>
                                         </div>

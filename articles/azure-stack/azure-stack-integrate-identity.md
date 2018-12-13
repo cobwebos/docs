@@ -6,16 +6,16 @@ author: jeffgilb
 manager: femila
 ms.service: azure-stack
 ms.topic: article
-ms.date: 11/08/2018
+ms.date: 12/10/2018
 ms.author: jeffgilb
 ms.reviewer: wfayed
 keywords: ''
-ms.openlocfilehash: b59d503b8aadef9e8f9c2d7db71ff60aee3b6387
-ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.openlocfilehash: 9d9e97d81e33487a5f23197912eba3802e83a32e
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51300704"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53257370"
 ---
 # <a name="azure-stack-datacenter-integration---identity"></a>Azure Stack 数据中心集成 - 标识
 可以使用 Azure Active Directory (Azure AD) 或 Active Directory 联合身份验证服务 (AD FS) 作为标识提供者来部署 Azure Stack。 必须在部署 Azure Stack 之前做出选择。 使用 AD FS 的部署也称为在断开连接模式下部署 Azure Stack。
@@ -131,7 +131,7 @@ Azure Stack 中的 Graph 服务使用以下协议和端口来与目标 Active Di
 
 |参数|说明|示例|
 |---------|---------|---------|
-|CustomAdfsName|声明提供程序的名称。<cr>AD FS 登陆页上会显示此名称。|Contoso|
+|CustomAdfsName|声明提供程序的名称。<br>AD FS 登录页上会显示此名称。|Contoso|
 |CustomAD<br>FSFederationMetadataEndpointUri|联合元数据链接|https://ad01.contoso.com/federationmetadata/2007-06/federationmetadata.xml|
 
 
@@ -215,7 +215,7 @@ Azure Stack 中的 Graph 服务使用以下协议和端口来与目标 Active Di
 
 Microsoft 提供了用于配置信赖方信任（包括声明转换规则）的脚本。 不一定要使用此脚本，也可以手动运行命令。
 
-可以从 Github 上的 [Azure Stack 工具](https://github.com/Azure/AzureStack-Tools/tree/vnext/DatacenterIntegration/Identity)下载帮助器脚本。
+您可以下载中的帮助程序脚本[Azure Stack 工具](https://github.com/Azure/AzureStack-Tools/tree/vnext/DatacenterIntegration/Identity)GitHub 上。
 
 如果确定要手动运行命令，请遵循以下步骤：
 
@@ -252,14 +252,14 @@ Microsoft 提供了用于配置信赖方信任（包括声明转换规则）的�
    => issue(claim = c);
    ```
 
-2. 验证基于 Windows 窗体的身份验证的 extranet 和 intranet 已启用。 首先验证是否其已启用通过运行以下 cmdlet:
+2. 验证是否已启用基于 Windows 窗体的 Extranet 和 Intranet 身份验证。 首先通过运行以下 cmdlet 验证它是否已启用：
 
    ```PowerShell  
    Get-AdfsAuthenticationProvider | where-object { $_.name -eq "FormsAuthentication" } | select Name, AllowedForPrimaryExtranet, AllowedForPrimaryIntranet
    ```
 
     > [!Note]  
-    > Windows 集成身份验证 (WIA) 受支持的用户代理字符串可能会过时，AD FS 部署可能需要更新，以支持最新的客户端。 你可以阅读更多有关更新 WIA 的文章中支持用户代理字符串[配置 intranet 基于窗体的身份验证不支持 WIA 的设备](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-intranet-forms-based-authentication-for-devices-that-do-not-support-wia)。<br>在本文中，介绍了这些步骤来启用基于窗体的身份验证策略[配置身份验证策略](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-authentication-policies)。
+    > Windows 集成身份验证 (WIA) 支持的用户代理字符串可能已过时，AD FS 部署可能需要更新以支持最新客户端。 可以在[为不支持 WIA 的设备配置基于 Intranet 窗体的身份验证](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-intranet-forms-based-authentication-for-devices-that-do-not-support-wia)一文中阅读有关更新 WIA 支持的用户代理字符串的更多信息。<br>有关启用基于表单的身份验证策略的步骤，请参阅文章[配置身份验证策略](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-authentication-policies)。
 
 3. 若要添加信赖方信任，请在 AD FS 实例或场成员上运行以下 Windows PowerShell 命令。 请务必更新 AD FS 终结点，并指向步骤 1 中创建的文件。
 

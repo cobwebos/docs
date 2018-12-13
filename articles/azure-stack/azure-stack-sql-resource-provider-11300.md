@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/14/2018
+ms.date: 12/10/2018
 ms.author: jeffgilb
-ms.reviewer: quying
-ms.openlocfilehash: d2dda25c63a6e4a73205b9e4a830a211d025b3ed
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.reviewer: georgel
+ms.openlocfilehash: 7bcec2d17f61345986c1676d13011946a0036666
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51688206"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53164701"
 ---
 # <a name="sql-resource-provider-11300-release-notes"></a>SQL 资源提供程序 1.1.30.0 发行说明
 
@@ -58,15 +58,29 @@ ms.locfileid: "51688206"
 
 - **SQL Sku 可能需要长达一小时才能在门户中看到**。 可能要花费一小时，新创建的 Sku，以便创建新的 SQL 数据库时要使用可见。 
 
-    **解决方法**： 无。
+    **解决方法**：无。
 
 - **重复使用 SQL 登录名**。 尝试创建新的 SQL 与同一订阅下现有登录名作为相同的用户名的登录名会重复使用相同的登录名和现有的密码。 
 
-    **解决方法**： 创建新的登录名在同一订阅下时使用不同的用户名或使用不同的订阅下的同一用户名创建登录名。
+    **解决方法**：创建新的登录名在同一订阅下时使用不同的用户名或创建具有相同的用户名下不同的订阅的登录名。
 
 - **共享的 SQL 登录名会导致数据不一致**。 如果在同一订阅下的多个 SQL 数据库共享 SQL 登录名，则更改登录密码将导致数据不一致。
 
-    **解决方法**： 始终使用同一订阅下的不同数据库的不同登录名。
+    **解决方法**：始终在同一订阅下的不同数据库的使用不同的登录名。
+
+- **TLS 1.2 支持要求**。 如果你尝试部署或更新 SQL 资源提供程序在未启用 TLS 1.2 的计算机，则操作可能失败。 用于部署或更新资源提供程序以验证 TLS 1.2 返回所支持的计算机上运行以下 PowerShell 命令：
+
+  ```powershell
+  [System.Net.ServicePointManager]::SecurityProtocol
+  ```
+
+  如果**Tls12**是命令的输出中不包括，未在计算机上启用 TLS 1.2。
+
+    **解决方法**：运行以下 PowerShell 命令来启用 TLS 1.2，然后启动资源提供程序部署或更新相同的 PowerShell 会话中的脚本：
+
+    ```powershell
+    [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.SecurityProtocolType]::Tls12
+    ```
 
 ### <a name="known-issues-for-cloud-admins-operating-azure-stack"></a>云管理员在操作 Azure Stack 的已知的问题
 中的文档，请参阅[Azure Stack 发行说明](azure-stack-servicing-policy.md)。

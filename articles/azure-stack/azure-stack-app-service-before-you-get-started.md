@@ -12,14 +12,14 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/13/2018
+ms.date: 12/11/2018
 ms.author: anwestg
-ms.openlocfilehash: 4f669d44582c47cc6c7c090627f957288fee0f1a
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: add4a7f1ce8133b5c3891f731fc98ee7fdb26ebd
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51615868"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53275663"
 ---
 # <a name="before-you-get-started-with-app-service-on-azure-stack"></a>在 Azure Stack 上开始使用应用服务之前
 
@@ -152,6 +152,12 @@ API 证书放在“管理”角色上。 资源提供程序使用它来帮助保
 | 格式 | 示例 |
 | --- | --- |
 | sso.appservice.\<region\>.\<DomainName\>.\<extension\> | sso.appservice.redmond.azurestack.external |
+
+
+### <a name="validate-certificates"></a>验证证书
+在部署之前应用服务资源提供程序，您应该[验证要使用的证书](azure-stack-validate-pki-certs.md#perform-platform-as-a-service-certificate-validation)使用可从 Azure Stack 就绪性检查器工具[PowerShell 库](https://aka.ms/AzsReadinessChecker)。 Azure Stack 就绪状态检查器工具验证生成的 PKI 证书适用于应用服务部署。 
+
+作为最佳做法，当在使用任何所需[Azure Stack PKI 证书](azure-stack-pki-certs.md)，则应该计划将保留足够的时间来测试和重新颁发证书，如有必要。 
 
 ## <a name="virtual-network"></a>虚拟网络
 
@@ -347,7 +353,7 @@ icacls %WEBSITES_FOLDER% /grant *S-1-1-0:(OI)(CI)(IO)(RA,REA,RD)
 | AzureStackAdminCredential | 需要 | Null | Azure AD 服务管理员凭据。 |
 | CertificateFilePath | 需要 | Null | 前面生成的标识应用程序证书文件的**完整路径**。 |
 | CertificatePassword | 需要 | Null | 帮助保护证书私钥的密码。 |
-| 环境 | 可选 | AzureCloud | 其中目标 Azure Active Directory Graph 服务可用的受支持云环境的名称。  允许的值: AzureCloud、 AzureChinaCloud、 AzureUSGovernment、 AzureGermanCloud。|
+| 环境 | 可选 | AzureCloud | 其中目标 Azure Active Directory Graph 服务可用的受支持云环境的名称。  允许的值：AzureCloud、 AzureChinaCloud、 AzureUSGovernment、 AzureGermanCloud。|
 
 ## <a name="create-an-active-directory-federation-services-application"></a>创建 Active Directory 联合身份验证服务应用程序
 

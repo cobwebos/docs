@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 09/15/2018
 ms.author: ryanwi
 ms.custom: mvc, devcenter
-ms.openlocfilehash: f366413ae5f758601dfebc2a29ff848feb756083
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 9b72ca2a166e805d960eab47835f449e0f5b991e
+ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46960421"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52889508"
 ---
 # <a name="tutorial-remove-an-application-and-resources"></a>教程：删除应用程序和资源
 
@@ -47,7 +47,7 @@ ms.locfileid: "46960421"
 
 * 如果没有 Azure 订阅，可以在开始前[创建免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-* 打开 [Azure Cloud Shell](service-fabric-mesh-howto-setup-cli.md) 或者[在本地安装 Azure CLI 和 Service Fabric 网格 CLI](service-fabric-mesh-howto-setup-cli.md#install-the-service-fabric-mesh-cli-locally)。
+* 打开 [Azure Cloud Shell](service-fabric-mesh-howto-setup-cli.md) 或者[在本地安装 Azure CLI 和 Service Fabric 网格 CLI](service-fabric-mesh-howto-setup-cli.md#install-the-azure-service-fabric-mesh-cli)。
 
 ## <a name="delete-the-resource-group-and-all-the-resources"></a>删除资源组以及所有资源
 

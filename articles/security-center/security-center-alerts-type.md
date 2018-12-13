@@ -3,7 +3,7 @@ title: Azure 安全中心按类型划分的安全警报 | Microsoft Docs
 description: 本文讨论可以在 Azure 安全中心使用的不同类型的安全警报。
 services: security-center
 documentationcenter: na
-author: terrylan
+author: rkarlin
 manager: mbaldwin
 editor: ''
 ms.assetid: b3e7b4bc-5ee0-4280-ad78-f49998675af1
@@ -12,19 +12,19 @@ ms.topic: conceptual
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/21/2018
-ms.author: yurid
-ms.openlocfilehash: 0573442568115fc872cc4cf4cf8c369cd635028e
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.date: 11/29/2018
+ms.author: rkarlin
+ms.openlocfilehash: 24c6487ee7ec7d8398f933e29ca51cc9e390f47f
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51262108"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52633259"
 ---
 # <a name="understanding-security-alerts-in-azure-security-center"></a>了解 Azure 安全中心中的安全警报
 本文可帮助了解 Azure 安全中心提供的各类安全警报和相关的见解。 有关如何管理警报和事件的详细信息，请参阅[管理和响应 Azure 安全中心的安全警报](security-center-managing-and-responding-alerts.md)。
 
-若要设置高级检测，请升级到 Azure 安全中心标准版。 可免费试用 60 天。 若要升级，请选择 **安全策略** 中的 [定价层](security-center-policies.md) 。 若要了解详细信息，请参阅[定价页](https://azure.microsoft.com/pricing/details/security-center/)。
+若要设置高级检测，请升级到 Azure 安全中心标准版。 可免费试用 60 天。 若要升级，请选择 **安全策略** 中的 [定价层](security-center-azure-policy.md) 。 若要了解详细信息，请参阅[定价页](https://azure.microsoft.com/pricing/details/security-center/)。
 
 > [!NOTE]
 > 安全中心在功能有限的预览版中发布了新的一组检测。这些检测利用审核记录这种常用审核框架，检测 Linux 计算机上的恶意行为。 若要体验预览版，请向[我们](mailto:ASC_linuxdetections@microsoft.com)发送包含订阅 ID 的电子邮件。
@@ -57,7 +57,7 @@ Azure 安全中心可以使用行为分析，根据对虚拟机事件日志的�
     * 执行的进程带有可疑的扩展名。
     * 执行的进程带有可疑的双重扩展名。
     * 执行的进程在其文件名中带有可疑的从右到左 (RLO) 字符。
-    * 执行的进程的名称非常类似于极常运行的进程，但又与之不同。
+    * 执行的进程的名称类似于通常运行的进程，但又与之不同。
     * 执行的进程的名称与已知的攻击者工具相符。
     * 执行的进程使用随机名称。
     * 执行的进程带有可疑的扩展名。
@@ -96,7 +96,7 @@ Azure 安全中心可以使用行为分析，根据对虚拟机事件日志的�
 * **删除了所有的文件影子副本**：此警报表明影子副本已被删除。
 * **可疑的文件清除命令**：此警报表明攻击者组合使用 systeminfo 命令来执行入侵后的自清除活动。  虽然 *systeminfo.exe* 是合法的 Windows 工具，但此处这样的使用方式（即连续执行该工具两次，然后使用删除命令）是很罕见的。
 * **可疑的帐户创建操作**：此警报表明攻击者创建的帐户十分类似于现有的内置管理权限帐户。 攻击者可能会使用此方法创建一个恶意帐户，而不会被检测到。
-* **可疑的卷影复制活动**：此警报表明在资源上存在影子副本删除活动。 卷影复制 (VSC) 是重要的项目，用于存储数据快照。 此活动通常与勒索软件相关联，但也可能是合法活动。
+* **可疑的卷影复制活动**：此警报表明在资源上存在影子副本删除活动。 卷影复制 (VSC) 是重要的项目，用于存储数据快照。 此活动与勒索软件有关，但也可能是合法活动。
 * **Windows 注册表持久性方法**：此警报表明攻击者尝试在 Windows 注册表中持久保留某个可执行文件。 恶意软件通常使用这种方法，因此在计算机启动后仍然存在。
 * **可疑的全新防火墙规则**：此警报表明攻击者已通过 *netsh.exe* 添加了新的防火墙规则，允许来自可疑位置的某个可执行文件的流量。
 * **可疑的 XCOPY 执行操作**：此警报表明存在一系列 XCOPY 执行操作。这可能表示攻击者已损害你的某个计算机并用其传播恶意软件。
@@ -134,7 +134,7 @@ Azure 安全中心可以使用行为分析，根据对虚拟机事件日志的�
 * **命令行参数可疑**：此警报表明与活动组 HYDROGEN 所使用的反向 shell 结合使用的命令行参数可疑。
 * **文档凭据可疑**：此警报表明在通过恶意软件执行某个文件时，该恶意软件所使用的常用预计算密码哈希可疑。
 * **动态构造 PS 脚本**：此警报表明构造 PowerShell 脚本的方式是动态的。 攻击者使用此手段以渐进方式构造脚本，目的是逃避 IDS 系统的检测。
-* **指示存在 Metaploit**：此警报表明存在与 Metasploit 框架相关联的活动，该框架提供一系列可供攻击者使用的功能和工具。
+* **指示存在 Metasploit**：此警报表明存在与 Metasploit 框架相关联的活动，该框架提供一系列可供攻击者使用的功能和工具。
 * **可疑的帐户活动**：此警报表明有人尝试使用最近泄漏的帐户连接到计算机。
 * **创建了帐户**：此警报表明在计算机上创建了新帐户。
 
@@ -190,9 +190,9 @@ Azure 安全中心可以使用行为分析，根据对虚拟机事件日志的�
 
 - 日志清除事件
 - 从未知设备插入的 PNP 设备
-- 无法执行的警报
+- 没有可操作性的警报
 - 新建帐户
-- 使用 certutil 工具解码的文件 
+- 使用 certutil 工具解码的文件
 
 ![异常访问警报](./media/security-center-alerts-type/security-center-alerts-type-fig20.png)
 

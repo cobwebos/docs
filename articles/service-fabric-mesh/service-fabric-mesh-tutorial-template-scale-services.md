@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 09/18/2018
 ms.author: ryanwi
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 4d6839fea3ce0eb74cdf87396716cdc69c0cd1a0
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: af733b75780787f07ec28ff45bda6810c3d96baa
+ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49165975"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52888114"
 ---
 # <a name="tutorial-scale-an-application-running-in-service-fabric-mesh"></a>教程：缩放在 Service Fabric 网格中运行的应用程序
 
@@ -47,7 +47,7 @@ ms.locfileid: "49165975"
 
 * 如果没有 Azure 订阅，可以在开始前[创建免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-* [在本地安装 Azure CLI 和 Service Fabric 网格 CLI](service-fabric-mesh-howto-setup-cli.md#install-the-service-fabric-mesh-cli-locally)。
+* [在本地安装 Azure CLI 和 Service Fabric 网格 CLI](service-fabric-mesh-howto-setup-cli.md#install-the-azure-service-fabric-mesh-cli)。
 
 ## <a name="manually-scale-your-services-in-or-out"></a>手动对服务进行横向缩放
 

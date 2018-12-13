@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/05/2018
+ms.date: 12/08/2018
 ms.author: sethm
 ms.reviewer: justini
-ms.openlocfilehash: 88041cf185aeb6ae5cb27f2405b62401cae069d9
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 7979bbafda6373c7f25c6e9c7d5cd997fbf5c3eb
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52964247"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53098084"
 ---
 # <a name="azure-stack-1808-update"></a>Azure Stack 1808 更新
 
@@ -275,6 +275,12 @@ Azure Stack 1808 更新内部版本号为 **1.1808.0.97**。
 <!-- 3179561 - IS --> 
 - 托管的磁盘使用情况报告以小时为单位，如中所述[Azure Stack 使用情况常见问题解答](azure-stack-usage-related-faq.md#managed-disks)。 但是，Azure Stack 计费使用每月价格而因此您可能会错误地收费的托管磁盘使用情况或之前年 9 月 27。 我们具有暂停，费用为托管磁盘后年 9 月 27 之前解决该计费问题。 如果你具有已收费的不正确的托管磁盘使用情况，请联系 Microsoft 计费支持。
 从 Azure Stack 用量 Api 生成的使用情况报告显示正确的数量和可用。
+
+<!-- 3507629 - IS, ASDK --> 
+- 托管的磁盘创建两个新[计算配额类型](azure-stack-quota-types.md#compute-quota-types)来限制可以预配的托管磁盘的最大容量。 默认情况下，为每个托管的磁盘配额类型分配 GiB。 但是，您可能会遇到以下问题：
+
+   - 对于 1808年更新之前创建的配额，托管磁盘配额将显示 0 值在管理员门户中，尽管分配 GiB。 你可以增加或减少值基于您的实际需求，并使用新设置配额值将覆盖 2048 GiB 默认值。
+   - 如果您更新的配额值为 0，相当于 GiB 的默认值。 作为一种解决方法，设置为 1 的配额值。
 
 <!-- 2869209 – IS, ASDK --> 
 - 使用 [**Add-AzsPlatformImage** cmdlet](https://docs.microsoft.com/powershell/module/azs.compute.admin/add-azsplatformimage?view=azurestackps-1.4.0) 时，必须使用 **-OsUri** 参数作为存储帐户 URI（在其中上传磁盘）。 如果使用磁盘的本地路径，则此 cmdlet 会失败并显示以下错误：长时间运行的操作失败，状态为“失败”。 

@@ -8,14 +8,14 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: qna-maker
 ms.topic: article
-ms.date: 11/08/2018
+ms.date: 11/27/2018
 ms.author: tulasim
-ms.openlocfilehash: 2e4a5d9b7ee2a1a88bcfe819be6540385458108f
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 28153e71ba6f2336398517454a81cfce39b93956
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51622357"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52496341"
 ---
 # <a name="frequently-asked-questions"></a>常见问题
 
@@ -25,7 +25,7 @@ ms.locfileid: "51622357"
 
 所有删除操作都是永久性的，包括问题和答案对、文件、URL、自定义问题和答案、知识库或 Azure 资源。 在删除知识库的任何部分之前，请务必从“设置”页导出知识库。 
 
-### <a name="why-is-my-urlsfiles-is-not-extracting-question-answer-pairs"></a>为什么我的 URL/文件没有提取问答对？
+### <a name="why-is-my-urlsfiles-not-extracting-question-answer-pairs"></a>为什么我的 URL/文件没有提取问答对？
 
 QnA Maker 可能无法从有效的常见问题解答 URL 中自动提取某些问答 (QnA) 内容。 在这种情况下，可以将 QnA 内容粘贴到 .txt 文件中，并查看该工具是否可以引入它。 或者，也可以通过 [QnA Maker 门户](https://qnamaker.ai)以编辑方式向知识库添加内容。
 
@@ -41,13 +41,13 @@ QnA Maker 可能无法从有效的常见问题解答 URL 中自动提取某些�
 
 共享在 QnA Maker 服务级别工作，即将共享服务中的所有知识库。 请参阅[此处](./How-To/collaborate-knowledge-base.md)了解如何在知识库上进行协作。
 
-### <a name="can-you-share-a-kb-with-a-contributor-that-is-not-in-the-same-aad-tenant-to-modify-a-kb"></a>是否可以与不在同一个 AAD 租户中的参与者共享知识库，以修改知识库？ 
+### <a name="can-you-share-a-knowledge-base-with-a-contributor-that-is-not-in-the-same-aad-tenant-to-modify-a-knowledge-base"></a>是否可以与不在同一个 AAD 租户中的参与者共享知识库，以修改知识库？ 
 
 共享基于 Azure 基于角色的访问控制 (RBAC)。 如果可与其他用户共享 Azure 中的任何资源，则也可以共享 QnA Maker。
 
-### <a name="if-you-have-an-app-service-plan-with-5-qnamaker-kbs-can-you-assign-readwrite-rights-to-5-different-users-so-each-of-them-can-access-only-1-qnamaker-kb"></a>如果应用服务计划计划 5 个 QnAMaker 知识库， 是否可以向 5 个不同的用户分配读/写权限，使得其中每个用户只能访问 1 个 QnAMaker 知识库？
+### <a name="if-you-have-an-app-service-plan-with-5-qnamaker-knowledge-bases-can-you-assign-readwrite-rights-to-5-different-users-so-each-of-them-can-access-only-1-qnamaker-knowledge-base"></a>如果某个应用服务计划具有 5 个 QnAMaker 知识库， 是否可以向 5 个不同的用户分配读/写权限，使得其中每个用户只能访问 1 个 QnAMaker 知识库？
 
-可以共享整个 QnAMaker 服务，但不能共享单个知识库。
+可以共享整个 QnAMaker 服务，但不能共享个体知识库。
 
 ### <a name="how-can-i-change-the-default-message-when-no-good-match-is-found"></a>如果找不到良好匹配，如何更改默认消息？
 
@@ -65,8 +65,7 @@ QnA Maker 可能无法从有效的常见问题解答 URL 中自动提取某些�
 
 ### <a name="why-is-my-sharepoint-link-not-getting-extracted"></a>为什么我的 SharePoint 链接没有被提取？
 
-该工具目前仅解析公共 URL，不支持经过身份验证的数据源。 或者，你可以下载该文件并使用文件上传选项来提取问题和答案。
-
+有关详细信息，请参阅[数据源位置](./Concepts/data-sources-supported.md#data-source-locations)。
 
 ### <a name="the-updates-that-i-made-to-my-knowledge-base-are-not-reflected-on-publish-why-not"></a>我对知识库所做的更新没有反映在发布上， 为什么？
 
@@ -94,9 +93,13 @@ QnA Maker 可能无法从有效的常见问题解答 URL 中自动提取某些�
 
 如果怀疑终结点密钥已被泄漏，请刷新终结点密钥。
 
-### <a name="can-i-use-the-same-azure-search-resource-for-kbs-using-multiple-languages"></a>是否可以针对使用相同语言的知识库使用相同的 Azure 搜索资源？
+### <a name="can-i-use-the-same-azure-search-resource-for-knowledge-bases-using-multiple-languages"></a>是否可以将同一 Azure 搜索资源用于使用多种语言的知识库？
 
-若要使用多个语言和多个知识库，用户必须为每种语言创建一个 QnA Maker 资源。 这会为每种语言创建单独的 Azure 搜索服务。 在单个 Azure 搜索服务中混合使用不同语言的知识库会导致结果相关性下降。
+若要使用多种语言和多个知识库，用户必须为每种语言创建一个 QnA Maker 资源。 这会为每种语言创建单独的 Azure 搜索服务。 在单个 Azure 搜索服务中混合使用不同语言的知识库会导致结果相关性下降。
+
+### <a name="how-can-i-change-the-name-of-the-azure-search-resource-used-by-qna-maker"></a>如何更改 QnA Maker 使用的 Azure 搜索资源的名称？
+
+Azure 搜索资源的名称是 QnA Maker 资源名称加上在末尾追加的一些随机字母。 这使得 QnA Maker 难以区分多个搜索资源。 请创建一个单独的 Azure 搜索服务（以你喜欢的方式对其进行命名）并将其连接到你的 QnA 服务。 步骤类似于[升级 Azure 搜索](How-To/upgrade-qnamaker-service.md#upgrade-azure-search-service)时需要执行的步骤。
 
 ## <a name="integrate-with-other-services-including-bots"></a>与其他服务（包括机器人）集成
 

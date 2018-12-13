@@ -12,20 +12,20 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/05/2018
+ms.date: 12/11/2018
 ms.author: jeffgilb
 ms.reviewer: wfayed
-ms.openlocfilehash: 5714257fce53fafa148b8ae4d5a3addf3b872c6f
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: 33512b47eff75421ce07b02f9c17ae3028152568
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51035469"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53276241"
 ---
 # <a name="azure-disconnected-deployment-planning-decisions-for-azure-stack-integrated-systems"></a>Azure Stack 集成系统的 Azure 断开连接部署计划决策
 在决定[如何将 Azure Stack 集成到混合云环境](azure-stack-connection-models.md)后，可以完成 Azure Stack 部署决策。
 
-可以部署和使用 Azure Stack 没有连接到 internet。 但是，使用断开连接部署，你将受限于一个 AD FS 标识存储和基于容量的计费模型。 
+可以部署和使用 Azure Stack 没有连接到 internet。 但是，使用断开连接部署，你将受限于一个 AD FS 标识存储和基于容量的计费模型。 因为多租户模式要求使用 Azure AD，断开连接部署不支持多租户模式。 
 
 适合选择此选项的情况如下所述：
 - 如果存在要求你在未连接到 Internet 的环境中部署 Azure Stack 的安全性或其他限制。
@@ -40,7 +40,7 @@ ms.locfileid: "51035469"
 ## <a name="features-that-are-impaired-or-unavailable-in-disconnected-deployments"></a>在断开连接部署中被削弱或不可用的功能 
 Azure Stack 设计为在连接到 Azure 的情况下功能最佳，因此请务必注意，在断开连接模式下，有些功能被削弱或完全不可用。 
 
-|功能|断开连接模式的影响|
+|Feature|断开连接模式的影响|
 |-----|-----|
 |VM 部署（带有用于配置 VM 后期部署的 DSC 扩展）|被削弱 - DSC 扩展从 Internet 查找最新 WMF。|
 |VM 部署（带有用于运行 Docker 命令的 Docker 扩展）|被削弱-Docker 将检查 Internet 以确定最新版本，并且此检查将失败。|
@@ -58,7 +58,7 @@ Azure Stack 设计为在连接到 Azure 的情况下功能最佳，因此请务�
 
 ## <a name="learn-more"></a>了解详细信息
 - 有关用例、购买、合作伙伴和 OEM 硬件供应商的信息，请参阅 [Azure Stack](https://azure.microsoft.com/overview/azure-stack/) 产品页。
-- 有关 Azure Stack 集成系统的路线图和上市区域的信息，请参阅白皮书：[Azure Stack: An extension of Azure](https://azure.microsoft.com/resources/azure-stack-an-extension-of-azure/)（Azure Stack：Azure 的扩展）。 
+- 了解路线图和上市区域 Azure Stack 集成的系统，请参阅白皮书：[Azure Stack:Azure 的扩展](https://azure.microsoft.com/resources/azure-stack-an-extension-of-azure/)。 
 - 若要了解有关 Microsoft Azure Stack 打包和定价的详细信息[下载此.pdf](https://azure.microsoft.com/mediahandler/files/resourcefiles/5bc3f30c-cd57-4513-989e-056325eb95e1/Azure-Stack-packaging-and-pricing-datasheet.pdf)。 
 
 ## <a name="next-steps"></a>后续步骤

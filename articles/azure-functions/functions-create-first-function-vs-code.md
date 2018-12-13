@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.date: 09/07/2018
 ms.author: glenga
 ms.custom: mvc, devcenter
-ms.openlocfilehash: ce4adface65237ec6f4ed0ef8f8ba9bbdf72355c
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: c5889d89ec8c913d9300fa85318a16b4eb452d3b
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50421044"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52633752"
 ---
 # <a name="create-your-first-function-using-visual-studio-code"></a>使用 Visual Studio Code 创建你的第一个函数
 
@@ -49,39 +49,9 @@ Azure Functions 用于在[无服务器](https://azure.microsoft.com/solutions/se
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="install-the-azure-function-extension"></a>安装 Azure Functions 扩展
+[!INCLUDE [functions-install-vs-code-extension](../../includes/functions-install-vs-code-extension.md)]
 
-Azure Functions 扩展用于创建、测试函数以及将函数部署到 Azure。
-
-1. 在 Visual Studio Code 中打开“扩展”并搜索 `azure functions`，或者[在 Visual Studio Code 中打开此链接](vscode:extension/ms-azuretools.vscode-azurefunctions)。
-
-1. 选择“安装”将扩展安装到 Visual Studio Code。 
-
-    ![安装适用于 Azure Functions 的扩展](./media/functions-create-first-function-vs-code/vscode-install-extension.png)
-
-1. 重新启动 Visual Studio Code，然后选择“活动”栏上的 Azure 图标。 此时侧边栏中应显示 Azure Functions 区域。
-
-    ![侧边栏中的 Azure Functions 区域](./media/functions-create-first-function-vs-code/azure-functions-window-vscode.png)
-
-## <a name="create-an-azure-functions-project"></a>创建 Azure Functions 项目
-
-使用 Visual Studio Code 中的 Azure Functions 项目模板可创建一个项目，该项目可发布到 Azure 中的函数应用。 函数应用可将函数分组为一个逻辑单元，以用于管理、部署和共享资源。
-
-1. 在 Visual Studio Code 中，选择 Azure 徽标以显示“Azure: Functions”区域，然后选择“创建新项目”图标。
-
-    ![创建函数应用项目](./media/functions-create-first-function-vs-code/create-function-app-project.png)
-
-1. 为项目工作区选择位置，然后选择“选择”。
-
-    > [!NOTE]
-    > 本文已设计为在工作区之外完成。 在这种情况下，请不要选择属于工作区内的项目文件夹。
-
-1. 选择函数应用项目的语言。 在本文中将使用 JavaScript。
-    ![选择项目语言](./media/functions-create-first-function-vs-code/create-function-app-project-language.png)
-
-1. 出现提示时，选择“添加到工作区”。
-
-Visual Studio Code 将在新的工作区中创建函数应用项目。 此项目包含 [host.json](functions-host-json.md) 和 [local.settings.json](functions-run-local.md#local-settings-file) 配置文件以及任何特定于语言的项目文件。 在项目文件夹中还会有新的 Git 存储库。
+[!INCLUDE [functions-create-function-app-vs-code](../../includes/functions-create-function-app-vs-code.md)]
 
 ## <a name="create-an-http-triggered-function"></a>创建 HTTP 触发的函数
 
@@ -127,57 +97,9 @@ Visual Studio Code 将在新的工作区中创建函数应用项目。 此项目
 
 确认该函数可以在本地计算机上正确运行以后，即可将项目发布到 Azure。
 
-## <a name="sign-in-to-azure"></a>登录 Azure
+[!INCLUDE [functions-sign-in-vs-code](../../includes/functions-sign-in-vs-code.md)]
 
-在发布应用之前，必须先登录到 Azure。
-
-1. 在“Azure: Functions”区域中，选择“登录到 Azure...”。如果没有帐户，可以**创建一个免费 Azure 帐户**。
-
-    ![浏览器中的函数 localhost 响应](./media/functions-create-first-function-vs-code/functions-sign-into-azure.png)
-
-1. 出现提示时，选择“复制并打开”，或者复制显示的代码并在浏览器中打开 <https://aka.ms/devicelogin>。
-
-1. 将复制的代码粘贴到“设备登录”页中，验证 Visual Studio Code 的登录信息，然后选择“继续”。  
-
-1. 使用 Azure 帐户凭据完成登录。 成功登录后，可以关闭浏览器。
-
-## <a name="publish-the-project-to-azure"></a>将项目发布到 Azure
-
-使用 Visual Studio Code 可以将函数项目直接发布到 Azure。 在此过程中，将在 Azure 订阅中创建函数应用和相关的资源。 函数应用为函数提供了执行上下文。 该项目将打包并部署到 Azure 订阅中的新函数应用。 
-
-本文假定你要创建新的函数应用。 发布到现有函数应用将覆盖该应用在 Azure 中的内容。
-
-1. 在“Azure: Functions”区域中，选择“部署到函数应用”图标。
-
-    ![函数应用设置](./media/functions-create-first-function-vs-code/function-app-publish-project.png)
-
-1. 选择项目文件夹（即当前工作区）。
-
-1. 如果有多个订阅，请选择要承载函数应用的订阅，然后选择“+ 创建新的函数应用”。
-
-1. 键入用于标识函数应用的全局唯一名称，然后按 Enter。 函数应用名称的有效字符包括 `a-z`、`0-9` 和 `-`。
-
-1. 选择“+ 创建新的资源组”，键入资源组名称（如 `myResourceGroup`），然后按 Enter。 也可以使用现有资源组。
-
-1. 选择“+ 创建新的存储帐户”，键入函数应用使用的新存储帐户的全局唯一名称，然后按 Enter。 存储帐户名称必须为 3 到 24 个字符，并且只能包含数字和小写字母。 也可以使用现有帐户。
-
-1. 选择离你近或离函数访问的其他服务近的[区域](https://azure.microsoft.com/regions/)中的位置。
-
-    选择位置后，创建函数应用将会开始。 创建函数应用并应用了部署包之后，会显示一个通知。
-
-1. 在通知中选择“查看输出”以查看创建和部署结果，其中包括你创建的 Azure 资源。
-
-    ![函数应用创建输出](./media/functions-create-first-function-vs-code/function-create-notifications.png)
-
-1. 记下 Azure 中的新函数应用的 URL。 在该项目发布到 Azure 之后将使用此 URL 来测试函数。
-
-    ![函数应用创建输出](./media/functions-create-first-function-vs-code/function-create-output.png)
-
-1. 回到“Azure: Functions”区域中，你将看到订阅下显示了新的函数应用。 展开此节点时，可以看到函数应用中的函数，以及应用程序设置和函数代理。
-
-    ![函数应用设置](./media/functions-create-first-function-vs-code/function-app-project-settings.png)
-
-    从函数应用节点中，按住 Ctrl 并单击（右键单击）可选择要在 Azure 中针对该函数应用执行的各种管理和配置任务。 还可以选择在 Azure 门户中查看该函数应用。
+[!INCLUDE [functions-publish-project-vscode](../../includes/functions-publish-project-vscode.md)]
 
 ## <a name="test-your-function-in-azure"></a>在 Azure 中测试函数
 

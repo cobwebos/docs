@@ -2,7 +2,7 @@
 title: 在 Azure 中大规模备份 Azure VM
 description: 本教程详细介绍了如何将多个 Azure 虚拟机备份到恢复服务保管库。
 services: backup
-author: markgalioto
+author: rayne-wiselman
 manager: carmonm
 keywords: 虚拟机备份; 备份虚拟机; 备份和灾难恢复
 ms.service: backup
@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 09/06/2017
 ms.author: trinadhk
 ms.custom: mvc
-ms.openlocfilehash: 863960e012a8e345434459ad16526c8971f00b6b
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: d2b83963f7af52101ed298e85b6c7fd64fc99a07
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34606998"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52875580"
 ---
 # <a name="back-up-azure-virtual-machines-in-azure-at-scale"></a>在 Azure 中大规模备份 Azure 虚拟机
 

@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 09/26/2018
 ms.author: mabrigg
 ms.reviewer: Anjay.Ajodha
-ms.openlocfilehash: e503a394eed7d5c4bdd4c93037dc86442097f72e
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
-ms.translationtype: MT
+ms.openlocfilehash: 057df4260da267254cb764e58fdac749bee3b842
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53002174"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53106747"
 ---
 # <a name="tutorial-create-an-edge-machine-learning-solution-with-azure-and-azure-stack"></a>教程： 创建边缘机器学习使用 Azure 和 Azure Stack 解决方案
 
@@ -357,7 +357,7 @@ Azure Machine Learning Workbench 适用于 Windows 或 macOS。 请参阅[支持
     | 项目名称 | myIris | 输入用于标识帐户的唯一名称。 使用部门或项目最好地标识试验的名称。 名称应介于 2 到 32 个字符之间， 只应包含字母数字字符和短划线 (-) 字符。 |
     | 项目目录 | c:\Temp\ | 指定在其中创建项目的目录。 |
     | 项目说明 | 留空 | 用于描述项目的可选字段。 |
-    | Visualstudio.com GIT 存储库 URL | 留空 | 可选字段。 将项目与源代码管理和协作的 Visual Studio Team Services 上的 Git 存储库相关联。 |
+    | Visualstudio.com GIT 存储库 URL | 留空 | 可选字段。 将项目与 Azure 存储库上的 Git 存储库进行源代码管理和协作相关联。 |
     | 所选工作区 | IrisGarden（如果存在） | 选择在 Azure 门户中的试验帐户创建一个工作区。 <br>使用快速入门，列出了此工作区的 IrisGarden 的名称。 否则，使用工作区具有试验帐户的名称或首选的帐户名称。 |
     | 项目模板 | 鸢尾花分类 | 模板包含脚本和用于浏览产品数据。 此模板包含脚本和此文档站点中，对于本快速入门和其他教程所需数据。 |
 
@@ -1420,7 +1420,7 @@ Kubectl get deployments
 
 部署可能需要一些时间。
 
-### <a name="configure-visual-studio-team-services-to-deploy-automatically"></a>配置 Visual Studio Team Services，若要自动部署
+### <a name="configure-azure-devops-to-deploy-automatically"></a>配置 Azure DevOps，以自动部署
 
 #### <a name="create-a-team-project"></a>创建团队项目
 
@@ -1760,7 +1760,7 @@ VSTS 文件夹中，代理是现在可见。
 
     ![Alt text](media/azure-stack-solution-machine-learning/image110.png)
 
-1.  命名项目**iris_deployment** ，然后选择要发布位置**Visual Studio Team Services/TFS**。
+1.  命名项目**iris_deployment** ，然后选择要发布位置**Azure 管道**。
 
     ![Alt text](media/azure-stack-solution-machine-learning/image111.png)
 

@@ -1,21 +1,19 @@
 ---
-title: 导入要在 Azure Cosmos DB 表 API 中使用的数据 | Microsoft Docs
+title: 导入要在 Azure Cosmos DB 表 API 中使用的数据
 description: 了解如何导入要在 Azure Cosmos DB 表 API 中使用的数据。
 services: cosmos-db
 author: SnehaGunda
-manager: kfile
 ms.service: cosmos-db
 ms.component: cosmosdb-table
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 11/28/2017
 ms.author: sngun
-ms.openlocfilehash: 8614bf7009afab8c005d2ffb8b1a78f3694d2af7
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.openlocfilehash: d277df3fa98564ebec92e548fa070e92cf76f200
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48247503"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52874033"
 ---
 # <a name="migrate-your-data-to-azure-cosmos-db-table-api-account"></a>将数据迁移到 Azure Cosmos DB 表 API 帐户
 

@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/05/2018
+ms.date: 12/08/2018
 ms.author: sethm
 ms.reviewer: justini
-ms.openlocfilehash: bcb135e19796bcab8a8e06e3c1896b247188a58c
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 5a0d7a0e96a788c3136adba70fb27a2c98674e7a
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52970835"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53088045"
 ---
 # <a name="azure-stack-1809-update"></a>Azure Stack 1809 更新
 
@@ -70,17 +70,6 @@ Azure Stack 1809 更新内部版本号是**1.1809.0.90**。
 - <!-- 2702741 -  IS, ASDK --> 修复了在发出“停止-解除分配”命令后，无法保证系统会保留使用动态分配方法部署的公共 IP 的问题。 它们现在已保留。
 
 - <!-- 3078022 - IS, ASDK --> 如果 VM 已停止解除分配，1808年之前它不能重新分配 1808年更新后。  此问题已在 1809 中解决。 处于这种状态且无法启动的实例可以在已应用此修复的 1809 中启动。 此修复还可以防止该问题反复发生。
-
-<!-- 3090289 – IS, ASDK --> 
-- 已修复问题，其中应用 1808年更新后，你可能会遇到以下问题部署包含托管磁盘的 Vm 时：
-
-   1. 如果订阅是在 1808 更新之前创建的，通过托管磁盘部署 VM 可能会失败并出现内部错误消息。 若要解决此错误，请针对每个订阅执行以下步骤：
-      1. 在租户门户中转到“订阅”，找到相应订阅。 依次单击“资源提供程序”、“Microsoft.Compute”、“重新注册”。
-      2. 在同一订阅下，转到“访问控制(标识和访问管理)”，验证“Azure Stack - 托管磁盘”是否已列出。
-   2. 如果已配置多租户环境，在与来宾目录相关联的订阅中部署 VM 可能会失败并出现内部错误消息。 若要解决该错误，请执行以下步骤：
-      1. 应用 [1808 Azure Stack 修补程序](https://support.microsoft.com/help/4481066)。
-      2. 执行[此文](azure-stack-enable-multitenancy.md#registering-azure-stack-with-the-guest-directory)中的步骤，重新配置每个来宾目录。
-
 
 ### <a name="changes"></a>更改
 
@@ -173,7 +162,7 @@ Azure Stack 1809 更新内部版本号是**1.1809.0.90**。
 > 获取 Azure Stack 部署准备好进行扩展主机启用的下一个更新包。 使用以下指南对系统进行准备[准备适用于 Azure Stack 扩展主机](azure-stack-extension-host-prepare.md)。
 
 安装此更新之后，请安装所有适用的修补程序。 有关详细信息，请查看以下知识库文章，以及我们的[服务策略](azure-stack-servicing-policy.md)。  
-- [KB 4477849 – Azure Stack 修补程序 Azure Stack 修补程序 1.1809.6.102](https://support.microsoft.com/help/4477849/)  
+- [KB 4481548 – Azure Stack 修补程序 Azure Stack 修补程序 1.1809.12.114](https://support.microsoft.com/help/4481548/)  
 
 ## <a name="known-issues-post-installation"></a>已知问题（安装后）
 
@@ -226,7 +215,7 @@ Azure Stack 1809 更新内部版本号是**1.1809.0.90**。
    
   运行[Test-azurestack](azure-stack-diagnostic-test.md) cmdlet 来验证基础结构角色实例的运行状况和缩放单位节点。 如果 [Test-AzureStack](azure-stack-diagnostic-test.md) 未检测到问题，则可以忽略这些警报。 如果检测到问题，则可以尝试使用管理门户或 PowerShell 启动基础结构角色实例或节点。
 
-  最新版本中修复此问题[1809年修补程序版本](https://support.microsoft.com/help/4477849/)，因此请确保安装此修补程序，如果遇到此问题。 
+  最新版本中修复此问题[1809年修补程序版本](https://support.microsoft.com/help/4481548/)，因此请确保安装此修补程序，如果遇到此问题。 
 
 <!-- 1264761 - IS ASDK -->  
 - 可能会看到包含以下详细信息的“运行状况控制器”组件的警报：  
@@ -292,7 +281,18 @@ Azure Stack 1809 更新内部版本号是**1.1809.0.90**。
 
    若要查找指标数据，例如 VM 的 CPU 百分比图表，请转到指标窗口并显示所有受支持的 Windows VM 来宾指标。
 
+<!-- 3507629 - IS, ASDK --> 
+- 托管的磁盘创建两个新[计算配额类型](azure-stack-quota-types.md#compute-quota-types)来限制可以预配的托管磁盘的最大容量。 默认情况下，为每个托管的磁盘配额类型分配 GiB。 但是，您可能会遇到以下问题：
 
+   - 对于 1808年更新之前创建的配额，托管磁盘配额将显示 0 值在管理员门户中，尽管分配 GiB。 你可以增加或减少值基于您的实际需求，并使用新设置配额值将覆盖 2048 GiB 默认值。
+   - 如果您更新的配额值为 0，相当于 GiB 的默认值。 作为一种解决方法，设置为 1 的配额值。
+
+<!-- TBD - IS ASDK --> 更新应用 1809年后，部署包含托管磁盘的 Vm 时，您可能会遇到以下问题：
+
+   - 如果 1808年更新，使用托管磁盘部署 VM 之前创建的订阅可能会失败并显示内部错误消息。 若要解决此错误，请针对每个订阅执行以下步骤：
+      1. 在租户门户中转到“订阅”，找到相应订阅。 依次单击“资源提供程序”、“Microsoft.Compute”、“重新注册”。
+      2. 在同一订阅下，转到“访问控制(标识和访问管理)”，验证“Azure Stack - 托管磁盘”是否已列出。
+   2. 如果已配置多租户环境中，在与来宾目录关联的订阅中部署虚拟机内部的错误消息可能会失败。 若要解决此错误，请按照中的步骤[这篇文章](azure-stack-enable-multitenancy.md#registering-azure-stack-with-the-guest-directory)重新配置每个来宾目录。
 
 ### <a name="networking"></a>网络  
 
