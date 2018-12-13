@@ -140,7 +140,7 @@ az webapp up --location westeurope --name <app_name>
 
 ![在门户中导航到 Azure Web 应用](./media/app-service-web-get-started-html/portal1.png)
 
-此时会看到 Web 应用的概述页。在此处可以执行基本的管理任务，例如浏览、停止、启动、重启和删除。
+此时会看到 Web 应用的概述页。 在此处可以执行基本的管理任务，例如浏览、停止、启动、重启和删除。
 
 ![Azure 门户中的应用服务边栏选项卡](./media/app-service-web-get-started-html/portal2.png)
 
