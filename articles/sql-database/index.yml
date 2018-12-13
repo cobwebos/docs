@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 9e68e60fa22964f43680cd2070a09fffc98fbee3
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: 7591e1303e69df522a02b08a079ac00bdac5f6bc
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52163381"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52870293"
 documentType: LandingData
 title: Azure SQL 数据库文档
 metadata:
@@ -53,7 +53,7 @@ sections:
       image:
         src: media/index/i_scale.svg
       title: 可伸缩性
-    - href: /azure/sql-database/sql-database-servers-databases
+    - href: /azure/sql-database/sql-database-single-index
       html: <p>将逻辑服务器中托管的单一数据库用于需要一个具有可预测性能的单一数据库的 SaaS 应用程序和微服务。</p>
       image:
         src: media/index/i_db.svg

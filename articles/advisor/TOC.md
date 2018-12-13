@@ -19,7 +19,7 @@
 # 相关内容
 ## [安全中心](https://azure.microsoft.com/services/security-center/)
 ## [SQL DB 顾问](https://azure.microsoft.com/documentation/articles/sql-database-advisor/)
-## [Redis 缓存](https://azure.microsoft.com/documentation/articles/cache-configure/#redis-cache-advisor)
+## [用于 Redis 的 Azure 缓存](https://azure.microsoft.com/documentation/articles/cache-configure/#redis-cache-advisor)
 ## [应用服务](https://azure.microsoft.com/documentation/articles/app-service-best-practices/)
 
 # 资源

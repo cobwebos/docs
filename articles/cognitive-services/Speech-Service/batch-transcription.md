@@ -10,16 +10,16 @@ ms.component: speech-service
 ms.topic: conceptual
 ms.date: 04/26/2018
 ms.author: panosper
-ms.openlocfilehash: cd57e9a90b07447392fbff48017bb29f002ad29e
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: 8a180dfada9da92e0b8ed69373a20602b3b0a177
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51035945"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52495598"
 ---
-# <a name="use-batch-transcription"></a>使用 Batch 听录
+# <a name="why-use-batch-transcription"></a>为何使用 Batch 听录？
 
-如果存储中有大量音频，批量听录是理想的选择。 使用 REST API 可以通过共享访问签名 (SAS) URI 指向音频文件并异步接收听录。
+如果存储中有大量音频，批量听录是理想的选择。 使用专用 REST API 可以通过共享访问签名 (SAS) URI 指向音频文件并异步接收听录。
 
 ## <a name="the-batch-transcription-api"></a>Batch 听录 API
 
@@ -36,16 +36,16 @@ Batch 听录 API 提供异步语音转文本听录和其他功能。 它是一�
 
 Batch 听录 API 支持以下格式：
 
-名称| 通道  |
-----|----------|
-mp3 |   Mono   |   
-mp3 |  立体声  | 
-wav |   Mono   |
-wav |  立体声  |
-opus|   Mono   |
-opus|  立体声  |
+| 格式 | 编解码器 | Bitrate | 采样率 |
+|--------|-------|---------|-------------|
+| WAV | PCM | 16 位 | 8 或 16 kHz、单声道、立体声 |
+| MP3 | PCM | 16 位 | 8 或 16 kHz、单声道、立体声 |
+| OGG | OPUS | 16 位 | 8 或 16 kHz、单声道、立体声 |
 
-对于立体声音频流，Batch 听录将在听录期间分离左右声道。 根据单个通道创建两个带有结果的 JSON 文件。 开发人员可利用每个话语的时间戳创建有序的最终脚本。 以下 JSON 示例显示了声道的输出，包括用于设置猥亵语言筛选器和停顿模型的属性：
+> [!NOTE]
+> Batch 听录 API 需要 S0 密钥（付费层）。 它不能使用免费 (f0) 密钥。
+
+对于立体声音频流，Batch 听录 API 将在听录期间分离左右声道。 根据单个通道创建两个带有结果的 JSON 文件。 开发人员可利用每个话语的时间戳创建有序的最终脚本。 以下 JSON 示例显示了声道的输出，包括用于设置不雅内容筛选器和标点模型的属性。
 
 ```json
 {
@@ -62,6 +62,16 @@ opus|  立体声  |
 
 > [!NOTE]
 > Batch 听录 API 使用 REST 服务来请求听录内容、听录状态和相关结果。 可在任何语言中使用该 API。 下一部分将介绍该 API 的用法。
+
+### <a name="query-parameters"></a>查询参数
+
+可将以下参数包含在 REST 请求的查询字符串中。
+
+| 参数 | 说明 | 必需/可选 |
+|-----------|-------------|---------------------|
+| `ProfanityFilterMode` | 指定如何处理识别结果中的不雅内容。 接受的值为 `none`（禁用不雅内容筛选）、`masked`（将不雅内容替换为星号）、`removed`（从结果中删除所有不雅内容）或 `tags`（添加“不雅内容”标记）。 默认设置是 `masked`。 | 可选 |
+| `PunctuationMode` | 指定如何处理识别结果中的标点。 接受的值为 `none`（禁用标点）、`dictated`（表示使用显式标点）、`automatic`（允许解码器处理标点）或 `dictatedandautomatic`（表示使用专用标点符号或自动使用标点）。 | 可选 |
+
 
 ## <a name="authorization-token"></a>授权令牌
 

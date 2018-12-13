@@ -10,12 +10,12 @@ ms.reviewer: v-mamcge, jasonh, kfile, anshan
 ms.workload: big-data
 ms.topic: overview
 ms.date: 01/26/2018
-ms.openlocfilehash: f865086a7e57898adb7d43ec0c02c7d38ef0da9c
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: 85436fedacc765dcdf6a8005cf96f3d63312504c
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46365564"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52868797"
 ---
 # <a name="what-is-azure-time-series-insights"></a>什么是 Azure 时序见解？
 
@@ -34,7 +34,7 @@ ms.locfileid: "46365564"
 
 如果你不确定你的数据是否为时序的，请参考下文将介绍的一些内容。  时序数据表示资产或过程是如何随时间变化的。  它的独特之处在于它有一个时间戳，而时间是最有意义的轴。  时序数据通常按时间顺序到达，通常被视为插入，而不是数据库的更新。  因为时序见解会捕获每一个新事件并储存为一行，所以更改是随着时间进行度量的，让你可以回顾及预测将来的更改。  在大型卷中，存储、索引、查询、分析和可视化时序数据可能很具有挑战性。  
 
-## <a name="video"></a>视频： 
+## <a name="video"></a>视频
 
 ### <a name="in-this-video-we-provide-an-overview-of-time-series-insights-a-cloud-based-iot-analytics-platformbr"></a>在本视频中，我们提供了时序见解（一个基于云的 IoT 分析平台）的概述。</br>
 

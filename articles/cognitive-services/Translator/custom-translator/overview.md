@@ -9,14 +9,14 @@ ms.component: custom-translator
 ms.date: 11/13/2018
 ms.author: v-rada
 ms.topic: overview
-ms.openlocfilehash: 76e6bc006ff6049b631409a3515628fbd169f713
-ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
+ms.openlocfilehash: f845c064ec3625d205ec346ddfc90c3a1b2c3d8d
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2018
-ms.locfileid: "51976972"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52874832"
 ---
-# <a name="what-is-custom-translator-preview"></a>什么是自定义翻译（预览版）？
+# <a name="what-is-custom-translator"></a>什么是自定义翻译？
 
 [自定义翻译](https://portal.customtranslator.azure.ai)是 Microsoft Translator 服务的一项功能，允许翻译企业、应用开发人员和语言服务提供者生成自定义的神经机器翻译 (NMT) 系统。 自定义的翻译系统可无缝集成到现有的应用程序、工作流和网站中。 [自定义翻译](https://portal.customtranslator.azure.ai/)提供的功能类似于 [Microsoft Translator Hub](https://hub.microsofttranslator.com/) 为统计机器翻译 (SMT) 提供的功能，但专用于神经机器翻译 (NMT) 系统。
 

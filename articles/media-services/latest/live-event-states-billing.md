@@ -1,0 +1,44 @@
+---
+title: Azure 媒体服务中的 LiveEvent 状态和计费 | Microsoft Docs
+description: 本主题概述了 Azure 媒体服务 LiveEvent 状态和计费。
+services: media-services
+documentationcenter: ''
+author: Juliako
+manager: femila
+editor: ''
+ms.service: media-services
+ms.workload: media
+ms.tgt_pltfrm: na
+ms.devlang: ne
+ms.topic: article
+ms.date: 11/16/2018
+ms.author: juliako
+ms.openlocfilehash: 1a49f62d7b5e21fe9d6483f71b729a9100aff1a3
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52585381"
+---
+# <a name="liveevent-states-and-billing"></a>LiveEvent 状态和计费
+
+在 Azure 媒体服务中，一旦 LiveEvent 的状态转换为**正在运行**，就会开始计费。 若要停止 LiveEvent 的计费，必须停止 LiveEvent。
+
+将 [LiveEvent](https://docs.microsoft.com/rest/api/media/liveevents) 上的 **LiveEventEncodingType** 设置为 Standard (Basic) 后，媒体服务就会自动关闭在输入源丢失 12 小时后仍处于**正在运行**状态但却没有 **LiveOutput** 运行的 LiveEvent。 但是，LiveEvent 处于**正在运行**状态的时间段内，仍会进行计费。
+
+## <a name="states"></a>状态
+
+LiveEvent 可能会处于以下任一状态。
+
+|状态|说明|
+|---|---|
+|**已停止**| 这是 LiveEvent 在创建后的初始状态（除非设置了自动启动）。此状态下不会发生计费。 在此状态下，可以更新 LiveEvent 属性，但不允许进行流式传输。|
+|**正在启动**| 正在启动 LiveEvent 并分配资源。 此状态下不会发生计费。 此状态下不允许进行更新或流式处理。 如果发生错误，则 LiveEvent 会返回到“已停止”状态。|
+|**正在运行**| 已分配了 LiveEvent 资源，已生成了引入和预览 URL，并且能够接收实时流。 此时，计费处于活动状态。 你必须显式对 LiveEvent 资源调用停止操作才能停止进一步计费。|
+|**正在停止**| 正在停止 LiveEvent 并解除预配资源。 此暂时性状态下不会发生计费。 此状态下不允许进行更新或流式处理。|
+|**正在删除**| 正在删除 LiveEvent。 此暂时性状态下不会发生计费。 此状态下不允许进行更新或流式处理。|
+
+## <a name="next-steps"></a>后续步骤
+
+- [实时流式处理概述](live-streaming-overview.md)
+- [实时传送视频流教程](stream-live-tutorial-with-api.md)

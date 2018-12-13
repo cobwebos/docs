@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/15/2018
 ms.author: sethm
 ms.reviewer: anwestg
-ms.openlocfilehash: d65c8653bc039b591f1c0fb711dfe68e3fbacd88
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: 66688ae762aa646fc72045836c4ec4671bf4b7b4
+ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49353552"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52888505"
 ---
 # <a name="configure-deployment-sources"></a>配置部署源
 
@@ -38,7 +38,8 @@ Azure Stack 上的应用服务支持从多个源代码管理提供程序的按�
 ## <a name="view-deployment-sources-in-app-service-administration"></a>在应用服务管理中查看部署源
 
 1. 以服务管理员身份登录到 Azure Stack 管理员门户 (https://adminportal.local.azurestack.external))。
-2. 浏览到“资源提供程序”并选择“应用服务资源提供程序管理”。![应用服务资源提供程序管理][1]
+2. 浏览到**所有服务**，然后选择**应用服务**。
+    ![应用服务资源提供程序管理][1]
 3. 单击“源代码管理配置”。 您可以查看所有配置的部署源的列表。
     ![应用服务资源提供程序管理中的源代码管理配置][2]
 

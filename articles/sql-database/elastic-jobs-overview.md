@@ -3,7 +3,7 @@ title: Azure SQL 弹性数据库作业 | Microsoft Docs
 description: 使用弹性数据库作业跨由一个或多个 Azure SQL 数据库组成的集合运行 Transact-SQL (T-SQL) 脚本
 services: sql-database
 ms.service: sql-database
-ms.subservice: operations
+ms.subservice: scale-out
 ms.custom: ''
 ms.devlang: ''
 ms.topic: overview
@@ -12,12 +12,12 @@ ms.author: srinia
 ms.reviewer: ''
 manager: craigg
 ms.date: 07/26/2018
-ms.openlocfilehash: a029697c2fdd3c9bd3b3da2c2b5a1420d0dd0a8c
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.openlocfilehash: 9df51626a1bd36b0ea171c89c67a5c1ca79d60e6
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47054721"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52873694"
 ---
 # <a name="manage-groups-of-databases-with-elastic-database-jobs"></a>通过弹性数据库作业管理数据库组
 

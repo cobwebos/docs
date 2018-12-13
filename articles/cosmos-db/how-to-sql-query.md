@@ -1,17 +1,17 @@
 ---
-title: Azure Cosmos DB 的 SQL 查询 | Microsoft Docs
+title: Azure Cosmos DB 的 SQL 查询
 description: 了解 Azure Cosmos DB 的 SQL 语法、数据库概念和 SQL 查询。 SQL 可在 Azure Cosmos DB 中作为 JSON 查询语言使用。
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: sample
 ms.date: 11/15/2018
 ms.author: mjbrown
-ms.openlocfilehash: 9496f88a24c92387418d5d9ae23bb7f2eaff2088
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.openlocfilehash: f7b3826e1e77933b49f0a742ebf8dfb994bf7ea9
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52444423"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52848725"
 ---
 # <a name="query-azure-cosmos-db-data-with-sql-queries"></a>使用 SQL 查询来查询 Azure Cosmos DB 数据
 

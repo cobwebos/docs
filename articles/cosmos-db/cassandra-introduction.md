@@ -1,22 +1,20 @@
 ---
-title: Azure Cosmos DB Cassandra API 简介 | Microsoft Docs
+title: Azure Cosmos DB Cassandra API 简介
 description: 了解如何使用 Azure Cosmos DB“直接迁移”现有的应用程序以及如何通过使用 Cassandra 驱动程序和熟悉的 CQL 的 Cassandra API 构建新的应用程序。
 services: cosmos-db
 author: kanshiG
-manager: kfile
 ms.service: cosmos-db
 ms.component: cosmosdb-cassandra
-ms.devlang: na
 ms.topic: overview
 ms.date: 09/24/2018
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: 1037f7921093d38d9020bafd9fd3597f27ca5011
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 79c131be14de05e84eb21d6d53eefd1aa224df16
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50230244"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52834997"
 ---
 # <a name="introduction-to-the-azure-cosmos-db-cassandra-api"></a>Azure Cosmos DB Cassandra API 简介
 
