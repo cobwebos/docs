@@ -9,17 +9,16 @@ ms.assetid: 6ccab5d4-34c4-4303-9d3b-a0f1b11e6651
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
-ms.devlang: na
 ms.custom: mvc
 ms.topic: overview
 ms.date: 09/06/2018
 ms.author: mbullwin
-ms.openlocfilehash: 41c8fd0092af035153b3161c4a6c3eb5c5ef3f1d
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: cb106abaff2446fdbc2d025ae96c95745bc53150
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50958893"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52728049"
 ---
 # <a name="overview-of-application-insights-for-devops"></a>Application Insights for DevOps 概述
 

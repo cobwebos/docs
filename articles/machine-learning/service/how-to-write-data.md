@@ -10,19 +10,20 @@ author: cforbe
 manager: cgronlun
 ms.reviewer: jmartens
 ms.date: 09/24/2018
-ms.openlocfilehash: 81344d388fbba0db034b8adb06adab6797ec2ce1
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 4a2af832fda8a85ee8a4aba395a8f436172153ed
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47166735"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52308556"
 ---
 # <a name="write-data-using-the-azure-machine-learning-data-prep-sdk"></a>使用 Azure 机器学习数据准备 SDK 写入数据
-可在数据流中的任何位置写出数据。 系统将这些写入操作视为步骤添加到生成的数据流中，并在数据流每次运行时运行它们。 数据写入多个分区文件以实现并行写入。
 
-由于对管道中有多少写步骤没有限制，因此你可以轻松添加更多写步骤来获取中间结果以用于故障排除或用于其他管道。 
+在本文中，你将学习使用 Azure 机器学习数据准备 SDK 写入数据的各种方法。 可以在数据流中的任何点写入输出数据，这些写入操作将作为步骤添加到生成的数据流中，并在数据流每次运行时运行它们。 数据写入多个分区文件以实现并行写入。
 
-每次运行写步骤时，都会完全拉取数据流中的数据。 例如，具有三个写步骤的数据流将读取并处理数据集中的每个记录三次。
+由于对管道中有多少写步骤没有限制，因此你可以轻松添加更多写步骤来获取中间结果以用于故障排除或用于其他管道。
+
+每次运行写步骤时，都会完全拉取数据流中的数据。 例如，具有三个写步骤的数据流将三次读取并处理数据集中的每个记录。
 
 ## <a name="supported-data-types-and-location"></a>支持的数据类型和位置
 
@@ -36,21 +37,23 @@ ms.locfileid: "47166735"
 + Azure Data Lake 存储
 
 ## <a name="spark-considerations"></a>Spark 注意事项
+
 在 Spark 中运行数据流时，必须写入空文件夹。 尝试运行向现有文件夹进行写入的操作将会失败。 确保目标文件夹为空，或为每次运行使用不同的目标位置，否则写入将失败。
 
 ## <a name="monitoring-write-operations"></a>监视写入操作
+
 为方便你进行监视，在写入完成后，会生成一个名为 SUCCESS 的哨兵文件。 该文件可帮助你确定中间写入的完成时间，而无需等待整个管道的完成。
 
 ## <a name="example-write-code"></a>示例写入代码
 
-对于此示例，首先将数据加载到数据流中。 我们将通过不同格式重复使用此数据。
+对于此示例，首先将数据加载到数据流中。 你将通过不同格式重复使用此数据。
 
 ```python
 import azureml.dataprep as dprep
 t = dprep.smart_read_file('./data/fixed_width_file.txt')
 t = t.to_number('Column3')
 t.head(10)
-```   
+```
 
 示例输出：
 |   |  Column1 |    Column2 | Column3 | Column4  |Column5   | Column6 | Column7 | Column8 | Column9 |
@@ -68,7 +71,7 @@ t.head(10)
 
 ### <a name="delimited-file-example"></a>带分隔符的文件示例
 
-在本部分中，你可以看到使用 `write_to_csv` 函数通过带分隔符的文件进行写入的示例。
+以下代码使用 `write_to_csv` 函数将数据写入到带分隔符的文件中。
 
 ```python
 # Create a new data flow using `write_to_csv` 
@@ -95,9 +98,9 @@ written_files.head(10)
 |8| 10020.0|    99999.0|    ERROR |   NO| SV|     |80050.0|   16250.0|    80.0|
 |9| 10030.0|    99999.0|    ERROR |   NO| SV|     |77000.0|   15500.0|    120.0|
 
-在前面的输出中，你可以看到，由于未正确分析数字，数值列中出现了多个错误。 默认情况下，写入 CSV 时，这些 NULL 值将替换为字符串“ERROR”。 
+在前面的输出中，由于未正确分析数字，数值列中出现了多个错误。 默认情况下，写入 CSV 时，NULL 值将替换为字符串“ERROR”。
 
-可在 write 调用中添加参数，并指定一个字符串用于表示 NULL 值。 例如：
+在写入调用中添加参数，并指定一个字符串用于表示 NULL 值。
 
 ```python
 write_t = t.write_to_csv(directory_path=dprep.LocalFileOutput('./test_out/'), 
@@ -122,7 +125,6 @@ written_files.head(10)
 |8| 10020.0|    99999.0|    BadData |   NO| SV|     |80050.0|   16250.0|    80.0|
 |9| 10030.0|    99999.0|    BadData |   NO| SV|     |77000.0|   15500.0|    120.0|
 
-
 ### <a name="parquet-file-example"></a>Parquet 文件示例
 
 与 `write_to_csv` 类似，`write_to_parquet` 函数将返回一个带有 Parquet 写入步骤的新数据流，该步骤在数据流运行时执行。
@@ -132,9 +134,9 @@ write_parquet_t = t.write_to_parquet(directory_path=dprep.LocalFileOutput('./tes
 error='MiscreantData')
 ```
 
-接下来，你可以运行数据流来启动写入操作。
+运行数据流来启动写入操作。
 
-```
+```python
 write_parquet_t.run_local()
 
 written_parquet_files = dprep.read_parquet_file('./test_parquet_out/part-*')

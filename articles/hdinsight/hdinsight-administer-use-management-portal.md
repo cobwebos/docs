@@ -9,18 +9,18 @@ ms.topic: conceptual
 ms.date: 05/25/2017
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: 651a03f69a7664b68ce3fe5c512c59c01762a505
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 378f52f0418c8c99e9ce6ca393ca10a77504698d
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51282469"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52499587"
 ---
 # <a name="manage-windows-based-apache-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>使用 Azure 门户在 HDInsight 中管理基于 Windows 的 Apache Hadoop 群集
 
-使用 [Azure 门户][azure-portal]，可在 Azure HDInsight 中创建基于 Windows 的 Apache Hadoop 群集、更改 Hadoop 用户密码，以及启用远程桌面协议 (RDP) 以便访问群集上的 Hadoop 命令控制台。
+使用 [Azure 门户][azure-portal]，可在 Azure HDInsight 中创建基于 Windows 的 [Apache Hadoop](https://hadoop.apache.org/) 群集、更改 Hadoop 用户密码，以及启用远程桌面协议 (RDP) 以便访问群集上的 Hadoop 命令控制台。
 
-本文中的信息仅适用于基于 Windows 的 HDInsight 群集。 有关管理基于 Linux 的群集的信息，请参阅[使用 Azure 门户管理 HDInsight 中的 Hadoop 群集](hdinsight-administer-use-portal-linux.md)。
+本文中的信息仅适用于基于 Windows 的 HDInsight 群集。 有关管理基于 Linux 的群集的信息，请参阅[使用 Azure 门户管理 HDInsight 中的 Apache Hadoop 群集](hdinsight-administer-use-portal-linux.md)。
 
 [!INCLUDE [windows-retirement-notice](../../includes/windows-retirement-notice.md)]
 
@@ -49,11 +49,11 @@ ms.locfileid: "51282469"
 ## <a name="create-clusters"></a>创建群集
 有关使用门户创建群集的说明，请参阅创建 [HDInsight 群集](hdinsight-hadoop-provision-linux-clusters.md)。
 
-HDInsight 使用各种 Hadoop 组件。 有关已获得验证和支持的组件的列表，请参阅 [Azure HDInsight 包含哪个版本的 Hadoop？](hdinsight-component-versioning.md)。 可使用以下选项之一自定义 HDInsight：
+HDInsight 使用各种 Apache Hadoop 组件。 有关已获得验证和支持的组件的列表，请参阅 [Azure HDInsight 包含哪个版本的 Apache Hadoop](hdinsight-component-versioning.md)。 可使用以下选项之一自定义 HDInsight：
 
 * 使用脚本操作来运行可以自定义群集的自定义脚本，以更改群集配置或安装 Giraph 或 Solr 等自定义组件。 有关详细信息，请参阅[使用脚本操作自定义 HDInsight 群集](hdinsight-hadoop-customize-cluster.md)。
 * 在群集创建期间使用 HDInsight .NET SDK 或 Azure PowerShell 中的群集自定义参数。 这样，这些配置更改会在群集的整个生存期内保留，并且不受 Azure 平台在维护时定期执行的群集节点重置映像影响。 有关使用群集自定义参数的详细信息，请参阅[创建 HDInsight 群集](hdinsight-hadoop-provision-linux-clusters.md)。
-* 一些本机 Java 组件（如 Mahout 和 Cascading）可以在群集上作为 JAR 文件运行。 可以通过 Hadoop 作业提交机制将这些 JAR 文件分发到 Azure Blob 存储，并提交到 HDInsight 群集。 有关详细信息，请参阅[以编程方式提交 Hadoop 作业](hadoop/submit-apache-hadoop-jobs-programmatically.md)。
+* 一些本机 Java 组件（例如 [Apache Mahout](https://mahout.apache.org/) 和 [Cascading](https://www.cascading.org/)）可以在群集上作为 JAR 文件运行。 可以通过 Hadoop 作业提交机制将这些 JAR 文件分发到 Azure Blob 存储，并提交到 HDInsight 群集。 有关详细信息，请参阅[以编程方式提交 Apache Hadoop 作业](hadoop/submit-apache-hadoop-jobs-programmatically.md)。
 
   > [!NOTE]
   > 如果在将 JAR 文件部署到 HDInsight 群集或调用 HDInsight 群集上的 JAR 文件时遇到问题，请联系 [Microsoft 支持](https://azure.microsoft.com/support/options/)。
@@ -91,7 +91,7 @@ HDInsight 使用各种 Hadoop 组件。 有关已获得验证和支持的组件�
    * **Ambari 视图**：Ambari Web 的链接。
 
      > [!IMPORTANT]
-     > 若要管理 HDInsight 群集提供的服务，必须使用 Ambari Web 或 Ambari REST API。 有关如何使用 Ambari 的详细信息，请参阅[使用 Ambari 管理 HDInsight 群集](hdinsight-hadoop-manage-ambari.md)。
+     > 若要管理 HDInsight 群集提供的服务，必须使用 Ambari Web 或 Ambari REST API。 有关如何使用 Ambari 的详细信息，请参阅[使用 Apache Ambari 管理 HDInsight 群集](hdinsight-hadoop-manage-ambari.md)。
      >
      >
 
@@ -106,7 +106,7 @@ HDInsight 使用各种 Hadoop 组件。 有关已获得验证和支持的组件�
    * **群集 AAD 标识**：
    * **Azure 存储密钥**：查看默认存储帐户及其密钥。 存储帐户是在群集创建过程中完成的配置。
    * **群集登录**：更改群集 HTTP 用户的用户名和密码。
-   * **外部元存储**：查看 Hive 和 Oozie 元存储。 只能在群集创建过程中配置元存储。
+   * **外部元存储**：查看 [Apache Hive](https://hive.apache.org/) 和 [Apache Oozie](https://oozie.apache.org/) 元存储。 只能在群集创建过程中配置元存储。
    * **缩放群集**：增加和减少群集辅助角色节点的数量。
    * **远程桌面**：启用和禁用远程桌面 (RDP) 访问，以及配置 RDP 用户名。  RDP 用户名必须不同于 HTTP 用户名。
    * **记录合作伙伴**：
@@ -152,12 +152,12 @@ HDInsight 使用各种 Hadoop 组件。 有关已获得验证和支持的组件�
 
 更改 HDInsight 支持的每种类型的群集所用数据节点数的影响：
 
-* Hadoop
+* Apache Hadoop
 
     可以顺利地增加正在运行的 Hadoop 群集中的辅助节点数，而不会影响任何挂起或运行中的作业。 还可以在操作进行中提交新作业。 系统会正常处理失败的缩放操作，让群集始终保持正常运行状态。
 
     减少数据节点数目以缩减 Hadoop 群集时，系统会重新启动群集中的某些服务。 这会导致所有正在运行和挂起的作业在缩放操作完成时失败。 但是，可以在操作完成后重新提交这些作业。
-* HBase
+* Apache HBase
 
     可以顺利地在 HBase 群集运行时对其添加或删除节点。 在完成缩放操作后的几分钟内，区域服务器就能自动平衡。 不过，也可以手动平衡区域服务器，方法是登录到群集的头节点，并在命令提示符窗口中运行以下命令：
 
@@ -166,13 +166,13 @@ HDInsight 使用各种 Hadoop 组件。 有关已获得验证和支持的组件�
         >balancer
 
     有关使用 HBase shell 的详细信息，请参阅 []
-* Storm
+* Apache Storm
 
     可以顺利地在 Storm 群集运行时对其添加或删除数据节点。 但是，在缩放操作成功完成后，需要重新平衡拓扑。
 
     可以使用两种方法来完成重新平衡操作：
 
-  * Storm Web UI
+  * Apache Storm Web UI
   * 命令行界面 (CLI) 工具
 
     有关详细信息，请参阅 [Apache Storm 文档](http://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html)。
@@ -206,7 +206,7 @@ HDInsight 使用各种 Hadoop 组件。 有关已获得验证和支持的组件�
 * 用户 Azure 数据工厂。 请参阅 [Azure HDInsight 链接服务](../data-factory/compute-linked-services.md)和[使用 Azure 数据工厂进行转换和分析](../data-factory/transform-data.md)，了解按需的和自定义的 HDInsight 链接服务。
 * 使用 Azure PowerShell。  请参阅[分析航班延误数据](hdinsight-analyze-flight-delay-data.md)。
 * 使用 Azure 经典 CLI。 请参阅[使用 Azure 经典 CLI 管理 HDInsight 群集](hdinsight-administer-use-command-line.md)。
-* 使用 HDInsight .NET SDK。 请参阅[提交 Hadoop 作业](hadoop/submit-apache-hadoop-jobs-programmatically.md)。
+* 使用 HDInsight .NET SDK。 请参阅[提交 Apache Hadoop 作业](hadoop/submit-apache-hadoop-jobs-programmatically.md)。
 
 有关定价信息，请参阅 [HDInsight 定价](https://azure.microsoft.com/pricing/details/hdinsight/)。 若要从门户中删除群集，请参阅[删除群集](#delete-clusters)
 
@@ -264,7 +264,7 @@ HDInsight 群集提供以下 HTTP Web 服务（所有这些服务都有 REST 样
 ## <a name="open-hdinsight-query-console"></a>打开 HDInsight 查询控制台
 HDInsight 查询控制台包括下列功能：
 
-* **Hive 编辑器**：用于提交 Hive 作业的 GUI Web 界面。  请参阅[使用查询控制台运行 Hive 查询](hadoop/apache-hadoop-use-hive-query-console.md)。
+* **Hive 编辑器**：用于提交 Hive 作业的 GUI Web 界面。  请参阅[使用查询控制台运行 Apache Hive 查询](hadoop/apache-hadoop-use-hive-query-console.md)。
 
     ![HDInsight 门户 hive 编辑器](./media/hdinsight-administer-use-management-portal/hdinsight-hive-editor.png)
 * **作业历史记录**：监视 Hadoop 作业。  
@@ -301,7 +301,7 @@ HDInsight 查询控制台包括下列功能：
 HDInsight 群集边栏选项卡的“使用情况”部分会显示相关信息，方便了解订阅中可以用于 HDInsight 的核心数、分配给此群集的核心数，以及这些核心是如何分配给此群集中的节点的。 请参阅[列出和显示群集](#list-and-show-clusters)。
 
 > [!IMPORTANT]
-> 若要监视 HDInsight 群集提供的服务，必须使用 Ambari Web 或 Ambari REST API。 有关如何使用 Ambari 的详细信息，请参阅[使用 Ambari 管理 HDInsight 群集](hdinsight-hadoop-manage-ambari.md)
+> 若要监视 HDInsight 群集提供的服务，必须使用 Ambari Web 或 Ambari REST API。 有关如何使用 Ambari 的详细信息，请参阅[使用 Apache Ambari 管理 HDInsight 群集](hdinsight-hadoop-manage-ambari.md)
 >
 >
 
@@ -347,7 +347,7 @@ HDInsight 群集边栏选项卡的“使用情况”部分会显示相关信息�
 
     ![HDI.HadoopCommandLine][image-hadoopcommandline]
 
-    有关 Hadoop 命令的详细信息，请参阅 [Hadoop 命令参考](http://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/CommandsManual.html)。
+    有关 Hadoop 命令的详细信息，请参阅 [Apache Hadoop 命令参考](http://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/CommandsManual.html)。
 
 在上面的屏幕快照中，文件夹名称嵌入了 Hadoop 版本号。 版本号可以根据群集上安装的 Hadoop 组件的版本而更改。 可以使用 Hadoop 环境变量来引用这些文件夹。 例如：
 
@@ -359,14 +359,14 @@ HDInsight 群集边栏选项卡的“使用情况”部分会显示相关信息�
     cd %hcatalog_home%
 
 ## <a name="next-steps"></a>后续步骤
-在本文中，学习了如何使用门户创建 HDInsight 群集以及如何打开 Hadoop 命令行工具。 若要了解更多信息，请参阅下列文章：
+在本文中，你学习了如何使用门户创建 HDInsight 群集以及如何打开 Apache Hadoop 命令行工具。 若要了解更多信息，请参阅下列文章：
 
 * [使用 Azure PowerShell 管理 HDInsight](hdinsight-administer-use-powershell.md)
 * [使用 Azure 经典 CLI 管理 HDInsight](hdinsight-administer-use-command-line.md)
 * [创建 HDInsight 群集](hdinsight-hadoop-provision-linux-clusters.md)
-* [以编程方式提交 Hadoop 作业](hadoop/submit-apache-hadoop-jobs-programmatically.md)
+* [以编程方式提交 Apache Hadoop 作业](hadoop/submit-apache-hadoop-jobs-programmatically.md)
 * [Azure HDInsight 入门](hadoop/apache-hadoop-linux-tutorial-get-started.md)
-* [Azure HDInsight 包含哪个版本的 Hadoop？](hdinsight-component-versioning.md)
+* [Azure HDInsight 包含哪个版本的 Apache Hadoop？](hdinsight-component-versioning.md)
 
 [azure-portal]: https://portal.azure.com
 [image-hadoopcommandline]: ./media/hdinsight-administer-use-management-portal/hdinsight-hadoop-command-line.png "Hadoop 命令行"

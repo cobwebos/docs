@@ -6,15 +6,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 10/28/2018
+ms.date: 11/27/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 9917656a3bc8fd8cfe7d71786dc39d296a2449c1
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 93928d7eb84ce986c8a9322188183e4c3dd76d99
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50239281"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52847858"
 ---
 # <a name="fail-over-and-fail-back-azure-vms-between-azure-regions"></a>在 Azure 区域之间故障转移和故障回复 Azure VM
 
