@@ -10,12 +10,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 10/24/2018
 ms.author: maquaran
-ms.openlocfilehash: a57e7ccedd0c3b776a39c6750a3d5b4b5cc41d88
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: 327873d228fe92a9da495f802c97eb73612caef9
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51685440"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52632477"
 ---
 # <a name="net-change-feed-processor-sdk-download-and-release-notes"></a>.NET 更改源处理器 SDK：下载和发行说明
 > [!div class="op_single_selector"]
@@ -43,8 +43,18 @@ ms.locfileid: "51685440"
 
 ### <a name="v2-builds"></a>v2 版本
 
+### <a name="a-name224224"></a><a name="2.2.4"/>2.2.4
+* 添加了新属性 ChangeFeedProcessorOptions.StartContinuation 来支持从请求继续标记开始更改源。 只有当租约集合为空或者租约未设置 ContinuationToken 时才使用此属性。 对于租约集合中设置了 ContinuationToken 的租约，将使用 ContinuationToken 并忽略 ChangeFeedProcessorOptions.StartContinuation。
+
+### <a name="a-name223223"></a><a name="2.2.3"/>2.2.3
+* 增加了对使用自定义存储的支持，用以按分区持久保存继续标记。
+  * 例如，自定义租约存储可以是以任何自定义方式分区的 Azure Cosmos DB 租约集合。
+  * 自定义租约存储可以使用新的扩展点 ChangeFeedProcessorBuilder.WithLeaseStoreManager(ILeaseStoreManager) 和 ILeaseStoreManager 公共接口。
+  * 将 ILeaseManager 接口重构到了多个角色接口中。
+* 次要重大更改：删除了扩展点 ChangeFeedProcessorBuilder.WithLeaseManager(ILeaseManager)，请改用 ChangeFeedProcessorBuilder.WithLeaseStoreManager(ILeaseStoreManager)。
+
 ### <a name="a-name222222"></a><a name="2.2.2"/>2.2.2
-* 修复了在对租用集合分区时处理拆分过程中可能出现的问题。 此问题可能导致已分区的租用未从租用集合中删除。 此版本中已修复了此问题。
+* 此版本修复了在处理受监视集合中的拆分和使用已分区租约集合期间发生的一个问题。 在处理拆分分区的租约时，可能不会删除对应于该分区的租约。 此版本中已修复了此问题。
 
 ### <a name="a-name221221"></a><a name="2.2.1"/>2.2.1
 * 多主机帐户和新的会话令牌格式的固定估计器计算。

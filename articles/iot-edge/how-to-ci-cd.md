@@ -4,28 +4,27 @@ description: Azure IoT Edge 持续集成和持续部署的概述
 author: shizn
 manager: ''
 ms.author: xshi
-ms.date: 11/12/2018
+ms.date: 11/29/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 06dec64a55aaece4cd67ebf0485e34aa206a8936
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: 16dac996f871241b8c9b5e4c1b797d07d79aeb79
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51633727"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52632556"
 ---
 # <a name="continuous-integration-and-continuous-deployment-to-azure-iot-edge"></a>向 Azure IoT Edge 进行持续集成和持续部署
 
-借助[适用于 Azure Pipelines 的 Azure IoT Edge](https://marketplace.visualstudio.com/items?itemName=vsc-iot.iot-edge-build-deploy) 和[适用于 Jenkins 的 Azure IoT Edge 插件](https://plugins.jenkins.io/azure-iot-edge)，可以轻松在 Azure IoT Edge 应用程序中采用 DevOps。 本文演示如何使用 Azure Pipelines 和 Microsoft Team Foundation Server (TFS) 的持续集成和持续部署功能，快速高效地生成和测试应用程序并将其部署到 Azure IoT Edge。 
+借助 Azure Pipelines 中的内置 Azure IoT Edge 任务或 Jenkins 服务器上[适用于 Jenkins 的 Azure IoT Edge 插件](https://plugins.jenkins.io/azure-iot-edge)，可以轻松地在 Azure IoT Edge 应用程序中采用 DevOps。 本文演示如何使用 Azure Pipelines 和 Azure DevOps Server 的持续集成和持续部署功能，快速高效地生成和测试应用程序并将其部署到 Azure IoT Edge。 
 
 本文介绍如何执行以下操作：
 * 创建并签入示例 IoT Edge 解决方案。
-* 安装适用于 Azure DevOps 的 Azure IoT Edge 扩展。
 * 配置持续集成 (CI) 以生成解决方案。
 * 配置持续部署 (CD) 以部署解决方案并查看响应。
 
-完成本文中的步骤需要 30 分钟。
+完成本文中的步骤需要 20 分钟。
 
 ![CI 和 CD](./media/how-to-ci-cd/cd.png)
 
@@ -34,7 +33,7 @@ ms.locfileid: "51633727"
 
 在本部分中，创建一个示例 IoT Edge 解决方案，其中包含可在生成过程中执行的单元测试。 在按照本部分中的指导进行操作之前，请先完成[使用 Visual Studio Code 中的多个模块开发 IoT Edge 解决方案](tutorial-multiple-modules-in-vscode.md)中的步骤。
 
-1. 在 VS Code 命令面板中，键入并运行“Azure IoT Edge: New IoT Edge Solution”命令。 然后，选择你的工作区文件夹，提供解决方案名称（默认名称为 EdgeSolution），并创建一个 C# 模块 (FilterModule) 作为此解决方案中的第一个用户模块。 还需要为你的第一个模块指定 Docker 映像存储库。 默认映像存储库基于本地 Docker 注册表 (`localhost:5000/filtermodule`)。 为了进一步的持续集成，需要将其更改为 Azure 容器注册表 (`<your container registry address>/filtermodule`) 或 Docker 中心。
+1. 在 VS Code 命令面板中，键入并运行“Azure IoT Edge: New IoT Edge Solution”命令。 然后，选择你的工作区文件夹，提供解决方案名称（默认名称为 EdgeSolution），并创建一个 C# 模块 (FilterModule) 作为此解决方案中的第一个用户模块。 还需要为你的第一个模块指定 Docker 映像存储库。 默认映像存储库基于本地 Docker 注册表 (`localhost:5000/filtermodule`)。 为了进一步的持续集成，请将其更改为 Azure 容器注册表 (`<your container registry address>/filtermodule`) 或 Docker 中心。
 
     ![设置 ACR](./media/how-to-ci-cd/acr.png)
 
@@ -42,7 +41,7 @@ ms.locfileid: "51633727"
 
 3. 现在，示例 IoT Edge 解决方案已准备就绪。 默认 C# 模块充当管道消息模块。 在 `deployment.template.json` 中，你将看到此解决方案包含两个模块。 消息将从 `tempSensor` 模块生成，并且将通过 `FilterModule` 直接输送，然后发送到 IoT 中心。
 
-4. 保存这些项目，然后将其签入 Azure Repos 或 TFS 存储库。
+4. 保存这些项目，然后将其签入 Azure Repos 或 Azure DevOps Server 存储库。
     
 > [!NOTE]
 > 若要详细了解如何使用 Azure 存储库，请参阅 [Share your code with Visual Studio and Azure Repos](https://docs.microsoft.com/azure/devops/repos/git/share-your-code-in-git-vs?view=vsts)（与 Visual Studio 和 Azure 存储库共享代码）。
@@ -55,15 +54,11 @@ ms.locfileid: "51633727"
 
     ![签入代码](./media/how-to-ci-cd/init-project.png)
 
-1. 请访问 Azure DevOps 市场中的[适用于 Azure Pipelines 的 Azure IoT Edge](https://marketplace.visualstudio.com/items?itemName=vsc-iot.iot-edge-build-deploy)。 单击“免费获取”并按照向导操作，将此扩展安装至 Azure DevOps 组织或下载到 TFS。
-
-    ![安装扩展](./media/how-to-ci-cd/install-extension.png)
-
-1. 在 Azure Pipelines 中打开“生成和发布”中心，并在“生成”选项卡中选择“+ 新建管道”。 或者，如果已有生成管道，则选择“+ 新建”按钮。
+1. 在 Azure Pipelines 中打开“生成”选项卡，选择“+ 新建管道”。 或者，如果已有生成管道，则选择“+ 新建”按钮。 然后选择“新建生成管道”。
 
     ![新建管道](./media/how-to-ci-cd/add-new-build.png)
 
-1. 若出现提示，请选择“Git”源类型。 然后选择代码所在的项目、存储库和分支。 选择“继续”。
+1. 若出现提示，请选择“Azure DevOps Git”源类型。 然后选择代码所在的项目、存储库和分支。 选择“继续”。
 
     ![选择 git](./media/how-to-ci-cd/select-vsts-git.png)
 
@@ -79,15 +74,19 @@ ms.locfileid: "51633727"
     
     ![配置生成代理](./media/how-to-ci-cd/configure-env.png)
 
-1. 在代理作业中单击“+”，以在生成管道中添加两个任务。 第一个任务来自“Azure IoT Edge”。 第二个任务来自“发布生成项目”
+1. 在代理作业中单击“+”，以在生成管道中添加三个任务。 头两个任务来自“Azure IoT Edge”。 第三个任务来自“发布生成项目”
     
     ![添加任务](./media/how-to-ci-cd/add-tasks.png)
 
-1. 在第一个 Azure IoT Edge 任务中，将“显示名称”更新为“模块生成和推送”，并在“操作”下拉列表中选择“生成并推送”。 在“Module.json 文件”文本框中添加下面的路径。 然后选择“容器注册表类型”，确保在代码中配置并选择相同的注册表 (module.json)。 此任务将生成并推送解决方案中的所有模块，并发布至指定的容器注册表。 如果要将模块推送至不同的注册表，则会有多个“模块生成和推送”任务。 如果 IoT Edge 解决方案不在代码存储库的根目录下，则可以在生成定义中指定 Edge 解决方案根路径。
+1. 在第一个 Azure IoT Edge 任务中，将“显示名称”更新为“Azure IoT Edge - 生成模块映像”，并在“操作”下拉列表中选择“生成模块映像”。 在 **.template.json 文件**控件中，选择 **deployment.template.json** 文件，该文件描述 IoT Edge 解决方案。 然后选择“默认平台”，确保选择与 IoT Edge 设备相同的平台。 此任务会通过指定的目标平台生成解决方案中的所有模块。 另外还会生成 **deployment.json** 文件，可以在“输出变量”中找到文件路径。 对于此变量，请将别名设置为 `edge`。
     
     ![生成并推送](./media/how-to-ci-cd/build-and-push.png)
 
-1. 在“发布生成项目”任务中，将指定生成任务生成的部署文件。 将“要发布的路径”设置为“config/deployment.json”。 如果在上一个任务中设置的是“Edge 解决方案根路径”，则必须在此处加入根路径。 例如，如果 Edge 解决方案根路径为“./edgesolution”，则“要发布的路径”应为“./edgesolution/config/deployment.json”。 `deployment.json` 文件是在生成期间生成的，因此可以放心忽略文本框中的红色错误行。 
+1. 在第二个 Azure IoT Edge 任务中，将“显示名称”更新为“Azure IoT Edge - 推送模块映像”，并在“操作”下拉列表中选择“推送模块映像”。 选择“容器注册表类型”，确保在代码中配置并选择相同的注册表 (module.json)。 在 **.template.json 文件**控件中，选择 **deployment.template.json** 文件，该文件描述 IoT Edge 解决方案。 然后选择“默认平台”，确保为已生成的模块映像选择相同的平台。 此任务会将所有模块映像推送到所选容器注册表。 另外还会在 **deployment.json** 文件中添加容器注册表凭据，可以在“输出变量”中找到文件路径。 对于此变量，请将别名设置为 `edge`。 如果有多个用于托管模块映像的容器注册表，则需重复此任务，选择其他容器注册表，并使用高级设置中的“绕过模块”来绕过不适用于此特定注册表的映像。
+
+    ![推送](./media/how-to-ci-cd/push.png)
+
+1. 在“发布生成项目”任务中，将指定生成任务生成的部署文件。 将“要发布的路径”设置为 `$(edge.DEPLOYMENT_FILE_PATH)`。
 
     ![发布项目](./media/how-to-ci-cd/publish-build-artifacts.png)
 
@@ -133,21 +132,21 @@ ms.locfileid: "51633727"
 
     ![添加 QA 任务](./media/how-to-ci-cd/add-task-qa.png)
 
-5. 在 Azure IoT Edge 任务中，导航到“操作”下拉列表，选择“部署到 IoT Edge 设备”。 选择 Azure 订阅并输入你的 IoT 中心名称。 可以指定 IoT Edge 部署 ID 和部署优先级。 还可以选择部署至单个设备或多个设备。 如果要部署到多个设备，需要指定设备目标条件。 目标条件是用于在 IoT 中心匹配一组 Edge 设备的筛选器。 若想将设备标记用作条件，则需要使用 IoT 中心设备孪生更新对应的设备标记。 假设已将多个 IoT Edge 设备标记为“qa”，则任务配置应如以下屏幕截图中所示。 
+5. 在 Azure IoT Edge 任务中，导航到“操作”下拉列表，选择“部署到 IoT Edge 设备”。 选择 Azure 订阅并输入你的 IoT 中心名称。 可以选择部署至单个设备或多个设备。 如果要部署到多个设备，需要指定设备目标条件。 目标条件是用于在 IoT 中心匹配一组 Edge 设备的筛选器。 若想将设备标记用作条件，则需要使用 IoT 中心设备孪生更新对应的设备标记。 在高级设置中将“IoT Edge 部署 ID”更新为“deploy-qa”。 假设已将多个 IoT Edge 设备标记为“qa”，则任务配置应如以下屏幕截图中所示。 
 
     ![部署到 QA](./media/how-to-ci-cd/deploy-to-qa.png)
 
     保存新发布管道。 单击“保存”按钮  。 然后，单击“管道”以返回到管道。
 
-6. 第二个阶段针对生产环境。 若要添加新阶段“PROD”，只需克隆“QA”阶段并将克隆的阶段重命名为“PROD”即可。
+6. 第二个阶段针对生产环境。 若要添加新阶段“PROD”，可以克隆“QA”阶段并将克隆的阶段重命名为“PROD”。
 
     ![克隆阶段](./media/how-to-ci-cd/clone-stage.png)
 
-7. 为生产环境配置任务。 假设已将多个 IoT Edge 设备标记为“prod”，请在任务配置中，将目标条件更新为“prod”，并将部署 ID 设置为“deploy-prod”。 单击“保存”按钮  。 然后，单击“管道”以返回到管道。
+7. 为生产环境配置任务。 假设已将多个 IoT Edge 设备标记为“prod”，请在任务配置中将目标条件更新为“prod”，并在高级设置中将部署 ID 设置为“deploy-prod”。 单击“保存”按钮  。 然后，单击“管道”以返回到管道。
     
     ![部署到生产环境](./media/how-to-ci-cd/deploy-to-prod.png)
 
-7. 目前，在 QA 阶段和 PROD 阶段将会连续触发生成项目。 但大多数情况下，需要在 QA 设备上集成一些测试用例并手动审批位。 之后会将这些位部署到 PROD 环境。 在 PROD 阶段按照如下所示设置审批。
+7. 目前，在 QA 阶段和 PROD 阶段将会连续触发生成项目。 但大多数情况下，需要在 QA 设备上集成一些测试用例并手动审批位。 之后会将这些位部署到 PROD 环境。 在 PROD 阶段按照以下屏幕截图所示来设置审批。
 
     1. 打开“预先部署条件”设置面板。
 
@@ -158,7 +157,7 @@ ms.locfileid: "51633727"
         ![设置条件](./media/how-to-ci-cd/set-pre-deployment-conditions.png)
 
 
-8. 现在，发布管道已按照以下所示进行设置。
+8. 现在，发布管道已按照以下屏幕截图所示进行设置。
 
     ![发布管道](./media/how-to-ci-cd/release-pipeline.png)
 
@@ -171,11 +170,11 @@ ms.locfileid: "51633727"
 
     ![手动触发器](./media/how-to-ci-cd/manual-trigger.png)
 
-2. 如果生成管道成功完成，它将触发到 QA 阶段的发布。 导航到生成管道日志，应该会看到以下内容。
+2. 如果生成管道成功完成，它将触发到 QA 阶段的发布。 导航到生成管道日志，应该会看到以下屏幕截图。
 
     ![生成日志](./media/how-to-ci-cd/build-logs.png)
 
-3. 成功部署到 QA 阶段将会触发通知（发送给审批者）。 导航到发布管道，可以看到以下内容。 
+3. 成功部署到 QA 阶段将会触发通知（发送给审批者）。 导航到发布管道，可以看到以下屏幕截图。 
 
     ![待审批](./media/how-to-ci-cd/pending-approval.png)
 

@@ -9,18 +9,18 @@ ms.topic: conceptual
 ms.date: 05/25/2017
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: 3e792eb9ab2e2902bfc9c84db7c1c344fb0cf67f
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 93929df86057b48e132048a0879bc7347402652a
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51622330"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52497746"
 ---
-# <a name="analyze-flight-delay-data-by-using-hive-in-hdinsight"></a>使用 HDInsight 中的 Hive 分析航班延误数据
-Hive 提供了通过类似 SQL 的脚本语言（称为 [HiveQL][hadoop-hiveql]）运行 Apache Hadoop MapReduce 作业的方法，此方法可用于对大量数据进行汇总、查询和分析。
+# <a name="analyze-flight-delay-data-by-using-apache-hive-in-hdinsight"></a>使用 HDInsight 中的 Apache Hive 分析航班延误数据
+[Apache Hive](https://hive.apache.org/) 提供了通过类似于 SQL 的脚本语言（称为 *[HiveQL][hadoop-hiveql]*）运行 [Apache Hadoop MapReduce](https://hadoop.apache.org/docs/r1.2.1/mapred_tutorial.html) 作业的方法，此方法可用于对大量数据进行汇总、查询和分析。
 
 > [!IMPORTANT]
-> 本文档中的步骤要求使用基于 Windows 的 HDInsight 群集。 Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight 在 Windows 上停用](hdinsight-component-versioning.md#hdinsight-windows-retirement)。 有关适用于基于 Linux 的群集的步骤，请参阅[在 HDInsight (Linux) 中使用 Hive 分析航班延误数据](hdinsight-analyze-flight-delay-data-linux.md)。
+> 本文档中的步骤要求使用基于 Windows 的 HDInsight 群集。 Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight 在 Windows 上停用](hdinsight-component-versioning.md#hdinsight-windows-retirement)。 有关适用于基于 Linux 的群集的步骤，请参阅[在 HDInsight (Linux) 中使用 Apache Hive 分析航班延误数据](hdinsight-analyze-flight-delay-data-linux.md)。
 
 Azure HDInsight 的主要优势之一就是隔离数据存储和计算。 HDInsight 将 Azure Blob 存储用于数据存储。 典型的作业包含 3 部分：
 
@@ -44,7 +44,7 @@ Azure HDInsight 的主要优势之一就是隔离数据存储和计算。 HDInsi
 在附录中，你可以找到有关上传航班延误数据、创建/上传 Hive 查询字符串和针对 Sqoop 作业准备 Azure SQL 数据库的说明。
 
 > [!NOTE]
-> 本文档中的步骤特定于基于 Windows 的 HDInsight 群集。 有关适用于基于 Linux 的群集的步骤，请参阅[在 HDInsight (Linux) 中使用 Hive 分析航班延误数据](hdinsight-analyze-flight-delay-data-linux.md)
+> 本文档中的步骤特定于基于 Windows 的 HDInsight 群集。 有关适用于基于 Linux 的群集的步骤，请参阅[在 HDInsight (Linux) 中使用 Apache Hive 分析航班延误数据](hdinsight-analyze-flight-delay-data-linux.md)
 
 ### <a name="prerequisites"></a>先决条件
 开始学习本教程之前，必须做好以下准备：
@@ -76,7 +76,7 @@ PowerShell 脚本的一部分将数据从公共 blob 容器复制到群集的默
 
 ## <a name="create-cluster-and-run-hivesqoop-jobs"></a>创建群集并运行 Hive/Sqoop 作业
 Hadoop MapReduce 属于批处理。 运行 Hive 作业时，最具成本效益的方法是为作业创建群集，并在作业完成之后删除作业。 以下脚本覆盖了整个过程。
-有关创建 HDInsight 群集和运行 Hive 作业的详细信息，请参阅[在 HDInsight 中创建 Hadoop 群集][hdinsight-provision]和[将 Hive 与 HDInsight 配合使用][hdinsight-use-hive]。
+有关创建 HDInsight 群集和运行 Hive 作业的详细信息，请参阅[在 HDInsight 中创建 Apache Hadoop 群集][hdinsight-provision]和[将 Apache Hive 与 HDInsight 配合使用][hdinsight-use-hive]。
 
 **使用 Azure PowerShell 运行 Hive 查询**
 
@@ -237,10 +237,10 @@ Hadoop MapReduce 属于批处理。 运行 Hive 作业时，最具成本效益�
 - - -
 
 ## <a id="appendix-a"></a>附录 A - 将航班延迟数据上传到 Azure Blob 存储
-上传数据文件和 HiveQL 脚本文件（请参阅[附录 B](#appendix-b)）需要进行规划。 思路是在创建 HDInsight 群集和运行 Hive 作业之前存储数据文件和 HiveQL 文件。 可以使用两个选项：
+上传数据文件和 [HiveQL](https://cwiki.apache.org/confluence/display/Hive/LanguageManual) 脚本文件（请参阅[附录 B](#appendix-b)）需要进行规划。 思路是在创建 HDInsight 群集和运行 Hive 作业之前存储数据文件和 HiveQL 文件。 可以使用两个选项：
 
 * **使用由 HDInsight 群集用作默认文件系统的同一 Azure 存储帐户。** 由于 HDInsight 群集将具有存储帐户访问密钥，因此，无需进行任何其他更改。
-* **使用与 HDInsight 群集默认文件系统不同的 Azure 存储帐户。** 如果选择了此项，则必须修改[创建 HDInsight 群集和运行 Hive/Sqoop 作业](#runjob)中的 Windows PowerShell 脚本的创建部分，以链接该存储帐户作为额外的存储帐户。 有关说明，请参阅[在 HDInsight 中创建 Hadoop 群集][hdinsight-provision]。 这样，HDInsight 群集就会知道存储帐户的访问密钥。
+* **使用与 HDInsight 群集默认文件系统不同的 Azure 存储帐户。** 如果选择了此项，则必须修改[创建 HDInsight 群集和运行 Apache Hive/Sqoop 作业](#runjob)中的 Windows PowerShell 脚本的创建部分，以链接该存储帐户作为额外的存储帐户。 有关说明，请参阅[在 HDInsight 中创建 Apache Hadoop 群集][hdinsight-provision]。 这样，HDInsight 群集就会知道存储帐户的访问密钥。
 
 > [!NOTE]
 > 数据文件的 WASB 路径会在 HiveQL 脚本文件中进行硬编码。 必须相应地更新该路径。
@@ -359,7 +359,7 @@ Hadoop MapReduce 属于批处理。 运行 Hive 作业时，最具成本效益�
 - - -
 
 ## <a id="appendix-b"></a>附录 B - 创建并上传 HiveQL 脚本
-使用 Azure PowerShell，可以一次运行多个 HiveQL 语句，或者将 HiveQL 语句打包到一个脚本文件中。 本部分说明如何创建 HiveQL 脚本，以及使用 Azure PowerShell 将脚本上传到 Azure Blob 存储。 Hive 要求 HiveQL 脚本必须存储在 Azure Blob 存储中。
+使用 Azure PowerShell，可以一次运行多个 [HiveQL](https://cwiki.apache.org/confluence/display/Hive/LanguageManual) 语句，或者将 HiveQL 语句打包到一个脚本文件中。 本部分说明如何创建 HiveQL 脚本，以及使用 Azure PowerShell 将脚本上传到 Azure Blob 存储。 Hive 要求 HiveQL 脚本必须存储在 Azure Blob 存储中。
 
 HiveQL 脚本将执行以下操作：
 
@@ -369,7 +369,7 @@ HiveQL 脚本将执行以下操作：
 4. **创建 delays 表**。 这适用于在进一步处理前清理数据。 此查询将从 delays_raw 表创建一个新表 *delays*。 请注意，不会复制 TEMP 列（如前所述），并且将使用 **substring** 函数从数据中删除引号标记。
 5. **计算平均天气延迟，并按城市名对结果进行分组。** 它还会将结果输出到 Blob 存储。 请注意，查询将从数据中删除撇号，并且将排除 **weather_delay** 的值为 null 的行。 由于本教程中稍后使用的 Sqoop 在默认情况下无法适当地处理这些值，因此这是必要的。
 
-如需 HiveQL 命令的完整列表，请参阅 [Hive 数据定义语言][hadoop-hiveql]。 每条 HiveQL 命令必须以分号结尾。
+如需 HiveQL 命令的完整列表，请参阅 [Apache Hive 数据定义语言][hadoop-hiveql]。 每条 [HiveQL](https://cwiki.apache.org/confluence/display/Hive/LanguageManual) 命令必须以分号结尾。
 
 **创建 HiveQL 脚本文件**
 
@@ -712,13 +712,13 @@ HiveQL 脚本将执行以下操作：
 5. 验证脚本输出。 确保已成功运行脚本。
 
 ## <a id="nextsteps"></a>后续步骤
-现在你已了解如何执行以下操作：将文件上传到 Azure Blob 存储、使用 Azure Blob 存储中的数据填充 Hive 表、运行 Hive 查询以及使用 Sqoop 将数据从 HDFS 导出到 Azure SQL 数据库。 若要了解更多信息，请参阅下列文章：
+现在你已了解了如何执行以下操作：将文件上传到 Azure Blob 存储、使用 Azure Blob 存储中的数据填充 Apache Hive 表、运行 Apache Hive 查询以及使用 Sqoop 将数据从 [Apache Hadoop HDFS](https://hadoop.apache.org/docs/r1.2.1/hdfs_design.html) 导出到 Azure SQL 数据库。 若要了解更多信息，请参阅下列文章：
 
 * [HDInsight 入门][hdinsight-get-started]
-* [将 Hive 与 HDInsight 配合使用][hdinsight-use-hive]
-* [将 Oozie 与 HDInsight 配合使用][hdinsight-use-oozie]
-* [将 Sqoop 与 HDInsight 配合使用][hdinsight-use-sqoop]
-* [将 Pig 与 HDInsight 配合使用][hdinsight-use-pig]
+* [将 Apache Hive 和 HDInsight 配合使用][hdinsight-use-hive]
+* [将 Apache Oozie 和 HDInsight 配合使用][hdinsight-use-oozie]
+* [将 Apache Sqoop 与 HDInsight 配合使用][hdinsight-use-sqoop]
+* [将 Apache Pig 和 HDInsight 配合使用][hdinsight-use-pig]
 * [为 HDInsight 开发 Java MapReduce 程序][hdinsight-develop-mapreduce]
 
 [azure-purchase-options]: http://azure.microsoft.com/pricing/purchase-options/
