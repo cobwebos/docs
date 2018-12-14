@@ -1,16 +1,18 @@
 # [Azure 市场和 AppSource 文档](index.md)
-## [分级和评审策略](./rating-review-policies.md)   
+
 ## [Azure 市场和 AppSource 概述与权益](./marketplace-publishers-guide.md)  
 
 ### [成为市场上的发布者](./become-publisher.md)  
 #### [创建 Microsoft 帐户](./guidelines.md)
 #### [在开发人员中心注册](./register-dev-center.md) 
 #### [Azure 合作伙伴客户使用情况归因](./azure-partner-customer-usage-attribution.md)
-#### [云市场的的销售线索管理](./lead-management-for-cloud-marketplace.md)
 
-### [店面](./comparing-appsource-azure-marketplace.md)  
+### [一个市场，两个店面](./comparing-appsource-azure-marketplace.md)  
 
-### [确定解决方案的发布选项](./determine-your-listing-type.md)  
+### [发布选项和注意事项](./determine-your-listing-type.md)
+#### [潜在客户管理](./lead-management-for-cloud-marketplace.md)
+#### [在 Azure 市场中交易](./marketplace-commercial-transaction-capabilities-and-considerations.md)
+#### [专用产品/服务](./private-offers.md)
 
 ### [按产品/服务类型提供的发布指南](./publisher-guide-by-offer-type.md)
 #### [虚拟机](./marketplace-virtual-machines.md)
@@ -26,8 +28,7 @@
 ### [通过市场扩展业务](./grow-your-business-with-azure-marketplace.md)  
 #### [首选解决方案](./preferred-solutions.md) 
 #### [市场内容验证](./marketplace-criteria-content-validation.md)
-#### [专用产品/服务](./private-offers.md)
-#### [市场商业交易功能和注意事项](./marketplace-commercial-transaction-capabilities-and-considerations.md)
+#### [分级和评审策略](./rating-review-policies.md)   
 
 ### [对 Azure 市场和 AppSource 的支持](./support-azure-marketplace.md)  
 
@@ -67,8 +68,15 @@
 #### [常见 VHD 创建问题](./cloud-partner-portal/virtual-machine/cpp-common-vhd-creation-issues.md)
 #### [连接到 VM](./cloud-partner-portal/virtual-machine/cpp-connect-vm.md)
 #### [配置 VM](./cloud-partner-portal/virtual-machine/cpp-configure-vm.md)
-#### [从 VHD 部署 VM](./cloud-partner-portal/virtual-machine/cpp-deploy-vm-vhd.md)
-##### [VHD 部署模板 (JSON)](./cloud-partner-portal/virtual-machine/cpp-deploy-json-template.md)
+#### [Windows 远程管理](./cloud-partner-portal/virtual-machine/cpp-winrm-over-https.md) 
+##### [在创建 VM 后配置 WinRM](./cloud-partner-portal/virtual-machine/cpp-configure-winrm-after-vm-creation.md)
+#### [部署 VM](./cloud-partner-portal/virtual-machine/cpp-deploy-vm-vhd.md)
+##### [创建用户 VM 映像](./cloud-partner-portal/virtual-machine/cpp-create-user-image.md)
+##### [创建密钥保管库证书](./cloud-partner-portal/virtual-machine/cpp-create-key-vault-cert.md)
+###### [密钥保管库部署模板](./cloud-partner-portal/virtual-machine/cpp-key-vault-deploy-template.md)
+#### [从用户 VHD 部署 VM](./cloud-partner-portal/virtual-machine/cpp-deploy-vm-user-image.md)
+##### [VHD 部署模板](./cloud-partner-portal/virtual-machine/cpp-deploy-json-template.md)
+##### [从市场部署 VM](./cloud-partner-portal/virtual-machine/cpp-deploy-vm-marketplace.md)
 #### [认证 VM 映像](./cloud-partner-portal/virtual-machine/cpp-certify-vm.md)
 #### [获取 SAS URI](./cloud-partner-portal/virtual-machine/cpp-get-sas-uri.md)
 #### [常见 SAS URL 问题](./cloud-partner-portal/virtual-machine/cpp-common-sas-url-issues.md)
@@ -88,21 +96,53 @@
 ### [Migrate offers](./cloud-partner-portal-orig/cloud-partner-portal-how-to-migrate-to-the-new-cloud-partner-portal.md)
 ### [Automate offer publishing](./cloud-partner-portal-orig/cloud-partner-portal-automate-offer-publishing.md)
 -->
+<!-- new section for Azure apps -->
 
-## [Azure 应用程序产品/服务](./cloud-partner-portal-orig/cpp-azure-app-offer.md)
-### [创建托管应用程序](./cloud-partner-portal-orig/cloud-partner-portal-managed-app-publish.md)
-### [创建解决方案模板](./cloud-partner-portal-orig/cloud-partner-portal-solution-template-offer-publish.md)
-### [发布管理解决方案](./cloud-partner-portal-orig/cloud-partner-portal-management-solution-publish.md)
-### [SEO 指南](./cloud-partner-portal-orig/cloud-partner-portal-seo-guidance.md)
-### [推出产品/服务](./cloud-partner-portal-orig/cloud-partner-portal-managed-app-offer-go-live.md)
-### [更新现有产品/服务](./cloud-partner-portal-orig/cloud-partner-portal-managed-app-offer-update.md)
-### [删除产品/服务](./cloud-partner-portal-orig/cloud-partner-portal-managed-app-offer-delete.md)
-<!-- Obsolete ### [Migrate offers](./cloud-partner-portal-orig/cloud-partner-portal-how-to-migrate-to-the-new-cloud-partner-portal.md)  -->
+## [Azure 应用程序产品/服务](./cloud-partner-portal/azure-applications/cpp-azure-app-offer.md)
+### [先决条件](./cloud-partner-portal/azure-applications/cpp-prerequisites.md)
+### [创建 Azure 应用程序套餐](./cloud-partner-portal/azure-applications/cpp-create-offer.md)
+#### [“产品/服务设置”选项卡](./cloud-partner-portal/azure-applications/cpp-offer-settings-tab.md)
+#### [“SKU”选项卡](./cloud-partner-portal/azure-applications/cpp-skus-tab.md)
+#### [“体验版”选项卡](./cloud-partner-portal/azure-applications/cpp-testdrive-tab.md)
+#### [“市场”选项卡](./cloud-partner-portal/azure-applications/cpp-marketplace-tab.md)
+#### [“支持”选项卡](./cloud-partner-portal/azure-applications/cpp-support-tab.md)
+<!-- ### [Create technical assets](./cloud-partner-portal/azure-applications/cpp-create-technical-assets.md) -->
+### [发布 Azure 应用程序套餐](./cloud-partner-portal/azure-applications/cpp-publish-offer.md)
+### [更新现有产品/服务](./cloud-partner-portal/azure-applications/cpp-update-existing-offer.md)
 
-## [SaaS 应用程序产品/服务](./cloud-partner-portal-orig/cpp-saas-app-offer.md)
-### [SaaS 应用技术发布指南](./cloud-partner-portal-orig/cloud-partner-portal-saas-offers-tech-publishing-guide.md)
-### [SaaS - 通过 Azure 销售](./cloud-partner-portal-orig/cloud-partner-portal-saas-offer-subscriptions.md)
+<!-- Legacy Azure App section replaced
+## [Azure application offer](./cloud-partner-portal-orig/cpp-azure-app-offer.md)
+    Obsolete ### [Author managed application](./cloud-partner-portal-orig/cloud-partner-portal-managed-app-publish.md)
+### [Author solution template](./cloud-partner-portal-orig/cloud-partner-portal-solution-template-offer-publish.md)
+### [Publish a Management Solution](./cloud-partner-portal-orig/cloud-partner-portal-management-solution-publish.md)
+### [SEO guidance](./cloud-partner-portal-orig/cloud-partner-portal-seo-guidance.md)
+### [Make offer live](./cloud-partner-portal-orig/cloud-partner-portal-managed-app-offer-go-live.md)
+### [Update existing offer](./cloud-partner-portal-orig/cloud-partner-portal-managed-app-offer-update.md)
+### [Delete offer](./cloud-partner-portal-orig/cloud-partner-portal-managed-app-offer-delete.md)
+   Obsolete ### [Migrate offers](./cloud-partner-portal-orig/cloud-partner-portal-how-to-migrate-to-the-new-cloud-partner-portal.md)  
+-->
+
+<!-- new for SaaS 12/05/2018 -->
+## [SaaS 应用程序产品/服务](./cloud-partner-portal/saas-app/cpp-saas-offer.md)
+### [先决条件](./cloud-partner-portal/saas-app/cpp-prerequisites.md)
+### [创建 SaaS 应用程序套餐](./cloud-partner-portal/saas-app/cpp-create-offer.md)
+#### [“产品/服务设置”选项卡](./cloud-partner-portal/saas-app/cpp-offer-settings-tab.md)
+#### [“技术信息”选项卡](./cloud-partner-portal/saas-app/cpp-technical-info-tab.md)
+#### [“计划”选项卡](./cloud-partner-portal/saas-app/cpp-plans-tab.md)
+#### [“通道信息”选项卡](./cloud-partner-portal/saas-app/cpp-channel-info-tab.md)
+#### [“体验版”选项卡](./cloud-partner-portal/saas-app/cpp-testdrive-tab.md)
+#### [“店面详细信息”选项卡](./cloud-partner-portal/saas-app/cpp-storefront-tab.md)
+#### [“联系人”选项卡](./cloud-partner-portal/saas-app/cpp-contacts-tab.md)
+### [发布产品/服务](./cloud-partner-portal/saas-app/cpp-publish-offer.md)
+### [更新现有产品/服务](./cloud-partner-portal/saas-app/cpp-update-existing-offer.md)
 ### [SaaS API](./cloud-partner-portal-orig/cloud-partner-portal-saas-subscription-apis.md)
+
+<!-- Legacy SaaS Offer replaced
+## [SaaS application offer](./cloud-partner-portal-orig/cpp-saas-app-offer.md)
+### [SaaS apps technical publishing guide](./cloud-partner-portal-orig/cloud-partner-portal-saas-offers-tech-publishing-guide.md)
+### [SaaS Sell through Azure](./cloud-partner-portal-orig/cloud-partner-portal-saas-offer-subscriptions.md)
+### [SaaS APIs](./cloud-partner-portal-orig/cloud-partner-portal-saas-subscription-apis.md)
+-->
 
 ## [容器产品/服务](./cloud-partner-portal/containers/cpp-containers-offer.md)
 ### [先决条件](./cloud-partner-portal/containers/cpp-prerequisites.md)

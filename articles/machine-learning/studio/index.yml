@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: d7c8e534095da9144cb72c11a162af93699eb013
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: bdd2e3bd8175b5fd9a26e78979a804da65e255f1
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46957925"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53275119"
 documentType: LandingData
 title: Azure 机器学习工作室文档
 metadata:
@@ -12,7 +12,6 @@ metadata:
   description: 了解如何使用 Azure 机器学习工作室。
   services: machine-learning
   author: j-martens
-  manager: cgronlun
   ms.service: machine-learning
   ms.component: studio
   ms.tgt_pltfrm: na
@@ -26,13 +25,13 @@ sections:
 - items:
   - type: list
     style: cards
-    className: cardsB
-    columns: 1
+    className: cardsFTitle
     items:
-    - html: <p>开始在 Studio 的拖放界面中构建和部署模型。</p>
+    - title: 开始了解 Azure 机器学习工作室
+      href: create-experiment
       image:
         src: /azure/machine-learning/media/index/machine-learning-studio.svg
-      title: Azure 机器学习工作室
+        href: create-experiment
 - title: 5 分钟快速入门
   items:
   - type: paragraph

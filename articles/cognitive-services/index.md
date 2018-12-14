@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.author: nitinme
 ms.date: 10/23/2018
 ms.topic: hub-page
-ms.openlocfilehash: 5f5e4ae85f18870ab6ed22ca010977efc28be058
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: 1d82809a4ed88ee5f84b812955e6979df2ae6070
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51633880"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53322067"
 ---
 <h1>Azure 认知服务文档</h1>
         <p style="font-size: 1.12rem;margin-bottom: 1rem;">了解如何将智能算法构建到应用、网站和机器人中，从而使它们通过自然的沟通方式观察、倾听、说出和理解用户需求。 教程、快速入门、API 参考和示例演示了操作方法。</p>
@@ -58,6 +58,26 @@ ms.locfileid: "51633880"
                 </div>
             </a>
         </li>
+        <li>
+            <a href="/azure/cognitive-services/authentication/">
+                <div class="cardSize">
+                    <div class="cardPadding">
+                        <div class="card">
+                            <div class="cardImageOuter">
+                                <div class="cardImage">
+                                    <img src="media/index/i_guidelines.svg" alt="" />
+                                </div>
+                            </div>
+                            <div class="cardText">
+                                <h3>对请求进行身份验证</h3>
+                                <p>了解如何通过 Azure 认知服务对请求进行身份验证。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </li>
+
         <li>
             <a href="/azure/cognitive-services/language-support/">
                 <div class="cardSize">

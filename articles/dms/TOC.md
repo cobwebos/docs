@@ -13,6 +13,7 @@
 ## [以联机方式将 SQL Server 迁移到 Azure SQL DB 托管实例](tutorial-sql-server-managed-instance-online.md)
 ## [以联机方式将 MySQL 迁移到用于 MySQL 的 Azure DB](tutorial-mysql-azure-mysql-online.md)
 ## [以联机方式将 PostgreSQL 迁移到用于 PostgreSQL 的 Azure DB](tutorial-postgresql-azure-postgresql-online.md)
+## [将 MongoDB 脱机迁移到 Azure Cosmos DB Mongo API](tutorial-mongodb-cosmos-db.md)
 
 # 操作指南
 ## [使用 PowerShell 将 SQL Server 迁移到 Azure SQL DB](howto-sql-server-to-azure-sql-powershell.md)
@@ -20,16 +21,17 @@
 ## [监视迁移活动](how-to-monitor-migration-activity.md)
 
 # 资源
+## [数据库迁移方案状态](resource-scenario-status.md)
+## [先决条件概述](pre-reqs.md)
+## [Azure SQL DB 托管实例迁移的网络拓扑](resource-network-topologies.md)
 ## [已知问题 - 联机迁移到 Azure SQL DB](known-issues-azure-sql-online.md)
 ## [已知问题 - 联机迁移到用于 MySQL 的 Azure DB](known-issues-azure-mysql-online.md)
 ## [已知问题 - 联机迁移到用于 PostgreSQL 的 Azure DB](known-issues-azure-postgresql-online.md)
 ## [可用于数据迁移方案的服务和工具](dms-tools-matrix.md)
-## [先决条件概述](pre-reqs.md)
 ## [常见问题](faq.md)
-## [Azure SQL DB 托管实例迁移的网络拓扑](resource-network-topologies.md)
-## [服务更新](https://azure.microsoft.com/updates/?product=database-migration)
-## [定价](https://aka.ms/dms-pricing)
 ## [用户语音反馈](https://feedback.azure.com/forums/906100-azure-database-migration-service)
+## [定价](https://aka.ms/dms-pricing)
+## [服务更新](https://azure.microsoft.com/updates/?product=database-migration)
 ## [数据库迁移指南](https://aka.ms/datamigration)
 ## [Data Migration Assistant](https://aka.ms/dma)
 ## [SQL Server 迁移助手](https://aka.ms/ssma)

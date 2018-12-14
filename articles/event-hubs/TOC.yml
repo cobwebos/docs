@@ -65,6 +65,8 @@ items:
   - name: 使用事件中心将数据流式传输到 Azure Databricks
     href: ../azure-databricks/databricks-stream-from-eventhubs.md
     maintainContext: true
+  - name: 在事件中心命名空间中启用虚拟网络集成和防火墙
+    href: event-hubs-tutorial-virtual-networks-firewalls.md
   - name: 用于 Apache Kafka 的事件中心
     items:
     - name: 将 Kafka 代理镜像到已启用 Apache Kafka 的事件中心
@@ -134,7 +136,7 @@ items:
     items:
     - name: 例外
       href: event-hubs-messaging-exceptions.md
-  - name: 使用 IP 筛选器
+  - name: 使用防火墙
     href: event-hubs-ip-filtering.md
   - name: 使用虚拟网络服务终结点
     href: event-hubs-service-endpoints.md
@@ -186,9 +188,9 @@ items:
     href: http://stackoverflow.com/questions/tagged/azure-eventhub
   - name: 视频
     href: https://azure.microsoft.com/documentation/videos/index/?services=event-hubs
-ms.openlocfilehash: d6fb88ed6bfcf48cb35da068e50b670f4b1b685c
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 2ce3523843713bd2e00536922f7bcfeebaa54798
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52726961"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53267979"

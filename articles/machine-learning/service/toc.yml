@@ -4,30 +4,32 @@ items:
 - name: 概述
   items:
   - name: 什么是 Azure 机器学习服务？
-    displayName: AML, services, overview
+    displayName: AML services overview
     href: overview-what-is-azure-ml.md
   - name: 服务的工作原理
-    displayName: architecture
+    displayName: architecture concepts definitions
     href: concept-azure-machine-learning-architecture.md
   - name: Workbench 发生了什么情况？
-    displayName: desktop
+    displayName: desktop ui
     href: overview-what-happened-to-workbench.md
   - name: 发行说明
-    displayName: what's new
+    displayName: what's new issues bugs
     href: azure-machine-learning-release-notes.md
   expanded: true
 - name: 快速入门
   items:
   - name: 入门 - 门户
+    displayName: install sdk workspace
     href: quickstart-get-started.md
   - name: 入门 - Python
-    displayName: create workspace
+    displayName: create workspace install sdk
     href: quickstart-create-workspace-with-python.md
 - name: 教程
   items:
   - name: 图像分类（MNIST 数据）
     items:
     - name: 1. 训练模型
+      displayName: build modeling
       href: tutorial-train-models-with-aml.md
     - name: 2. 部署模型
       href: tutorial-deploy-models-with-aml.md
@@ -43,6 +45,9 @@ items:
   href: samples-notebooks.md
 - name: 概念
   items:
+  - name: 自动化机器学习
+    displayName: automl, auto ml
+    href: concept-automated-ml.md
   - name: 模型管理
     displayName: deploy, deployment
     href: concept-model-management-and-deployment.md
@@ -68,7 +73,6 @@ items:
         href: how-to-vscode-train-deploy.md
   - name: 准备数据
     displayName: data prep, etl, elt, data preparation
-    href: how-to-data-prep.md
     items:
     - name: 加载数据
       href: how-to-load-data.md
@@ -79,7 +83,7 @@ items:
   - name: 训练模型
     items:
     - name: 设置训练环境
-      displayName: compute target, dsvm, Data Science Virtual Machine, local, cluster, aci, container instance, databricks, data lake, lake, hdi, hdinsights
+      displayName: compute target, dsvm, Data Science Virtual Machine, local, cluster, aci, container instance, Databricks, data lake, lake, hdi, hdinsights
       href: how-to-set-up-training-targets.md
     - name: 在训练期间访问数据
       href: how-to-access-data.md
@@ -96,11 +100,11 @@ items:
       href: how-to-track-experiments.md
   - name: 自动化机器学习
     displayName: automl, auto ml
-    href: how-to-automated-ml.md
     items:
     - name: 配置自动训练
       href: how-to-configure-auto-train.md
     - name: 使用远程计算目标
+      displayName: automl automated auto ml
       href: how-to-auto-train-remote.md
   - name: ONNX 模型
     items:
@@ -109,9 +113,9 @@ items:
   - name: 部署模型
     items:
     - name: 模型部署位置
-      displayName: publish, azure kubernetes, azure container instances
+      displayName: publish azure kubernetes azure container instances
       href: how-to-deploy-and-where.md
-    - name: 部署到 FPGA
+    - name: FPGA
       href: how-to-deploy-fpga-web-service.md
     - name: 故障排除
       href: how-to-troubleshoot-deployment.md
@@ -120,7 +124,7 @@ items:
   - name: 使用 Web 服务
     items:
     - name: 实时使用
-      displayName: create client, client, consume
+      displayName: create client consume
       href: how-to-consume-web-service.md
     - name: 运行批量预测
       href: how-to-run-batch-predictions.md
@@ -136,18 +140,18 @@ items:
     displayName: limits
     href: how-to-manage-quotas.md
   - name: 使用机器学习 CLI
-    displayName: cli, command line, command-line, az,
+    displayName: cli command line command-line az ci/cd automate automated
     href: reference-azure-machine-learning-cli.md
 - name: 引用
   items:
   - name: 机器学习 SDK
-    displayName: api, core, package
+    displayName: api core package python
     href: https://aka.ms/aml-sdk
   - name: 数据准备 SDK
-    displayName: api, preparation, package
+    displayName: api preparation package python
     href: https://aka.ms/data-prep-sdk
   - name: 监视 SDK
-    displayName: api, package
+    displayName: api package python monitor
     href: https://aka.ms/aml-monitoring-sdk
 - name: 资源
   items:
@@ -158,6 +162,7 @@ items:
   - name: 区域可用性
     href: https://azure.microsoft.com/regions/services/
   - name: 已知问题
+    displayName: bugs errors troubleshoot
     href: resource-known-issues.md
   - name: 获取支持
     href: support-for-aml-services.md
@@ -167,7 +172,7 @@ items:
   - name: 弃用的文档
     items:
     - name: 从 Workbench 迁移
-      displayName: Workbench, upgrade, update, transfer
+      displayName: Workbench upgrade update transfer
       href: how-to-migrate.md
     - name: 导出或删除帐户数据（已弃用）
       href: ../desktop-workbench/export-delete-experimentation-model-management-data-dsr.md
@@ -365,9 +370,9 @@ items:
       href: ../desktop-workbench/frequently-asked-questions.md
     - name: 旧问题
       href: ../desktop-workbench/known-issues-and-troubleshooting-guide.md
-ms.openlocfilehash: a5c26bd2ef020ca737907c8a66776a3769bfeefd
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: cf7216271dea4bcdda7bea91c1b386a4ba612f8f
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53101239"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53310498"
