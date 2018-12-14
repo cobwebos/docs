@@ -25,7 +25,7 @@ ms.lasthandoff: 11/26/2018
 ms.locfileid: "52307996"
 ---
 # <a name="downloadable-infographic-machine-learning-basics-with-algorithm-examples"></a>可下载的信息图：具有算法示例的机器学习基础知识
-下载此易于理解的机器学习基础知识信息图概述，以了解用于解答常见机器学习问题的常用算法。 算法示例可帮助机器学习初学者了解可使用的算法及其用途。
+下载此易于理解的机器学习基础知识信息图概述，以了解用于解答常见机器学习问题的常用算法。 算法示例可帮助机器初学者理解使用哪些算法以及它们的用途。
 
 ## <a name="popular-algorithms-in-machine-learning-studio"></a>机器学习工作室中的常见算法
 [Azure 机器学习工作室](https://studio.azureml.net/) 附带用于预测分析的大型算法库。 信息图标识了四类常用算法：回归、异常情况检测、群集和分类，并在 [Azure AI 库](https://gallery.cortanaintelligence.com/)中提供了指向工作示例的链接。 该库包含示例试验和演示如何在许多实际解决方案中应用这些算法的教程。
@@ -39,7 +39,7 @@ ms.locfileid: "52307996"
 * 有关不同类型的机器学习算法及其使用方式，以及如何选择适合的解决方案的更深入讨论，请参阅[如何选择 Microsoft Azure 机器学习的算法](algorithm-choice.md)。
 * 有关机器学习工作室中所有可用的机器学习算法的种类列表，请参阅“机器学习工作室算法和模块帮助”中的[初始化模型][initialize-model]。
 * 有关机器学习工作室中算法和模块的完整列表（按字母顺序排列），请参阅“机器学习工作室算法和模块帮助”中的[机器学习工作室模块 A-Z 列表][a-z-list]。
-* 若要下载和打印 Microsoft Azure 机器学习工作室功能概述示意图，请参阅 [Overview diagram of Azure Machine Learning Studio capabilities](studio-overview-diagram.md)（Azure Machine 机器学习工作室功能概述）。
+* 若要下载和打印 Microsoft Azure 机器学习工作室功能概述示意图，请参阅 [Overview diagram of Azure Machine Learning Studio capabilities](studio-overview-diagram.md)（Azure 机器学习工作室功能概述）。
 * 若要概括性了解 Azure AI 库以及其中提供的许多社区生成的资源，请参阅[在 Azure AI 库中共享和发现资源](gallery-how-to-use-contribute-publish.md)。
 
 [!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
