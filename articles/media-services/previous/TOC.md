@@ -177,8 +177,8 @@
 ### [使用内容审查器进行处理](media-services-content-moderation.md)
 
 ## [配置遥测](media-services-telemetry-overview.md)
-###[.NET](media-services-dotnet-telemetry.md)
-###[REST](media-services-rest-telemetry.md)
+### [.NET](media-services-dotnet-telemetry.md)
+### [REST](media-services-rest-telemetry.md)
 
 ## 缩放
 ### [媒体处理](media-services-scale-media-processing-overview.md)

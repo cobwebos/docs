@@ -69,7 +69,7 @@ items:
   - name: 应用服务计划
     href: azure-web-sites-web-hosting-plans-in-depth-overview.md
   - name: OS 功能
-    href: web-sites-available-operating-system-functionality.md
+    href: operating-system-functionality.md
   - name: 安全
     href: app-service-security.md
     items:
@@ -213,34 +213,8 @@ items:
     href: https://azure.microsoft.com/pricing/details/app-service/
   - name: 配额信息
     href: ../azure-subscription-service-limits.md#app-service-limits
-  - name: 服务更新和发行说明
-    items:
-    - name: Azure 更新
-      href: https://azure.microsoft.com/updates/?product=app-service
-    - name: 用于 .NET 3.0 的 Azure SDK
-      href: azure-sdk-dotnet-release-notes-3-0.md
-    - name: 用于 .NET 2.9 的 Azure SDK
-      href: azure-sdk-dotnet-release-notes-2-9.md
-    - name: Azure SDK for .NET 2.8
-      href: azure-sdk-dotnet-release-notes-2-8.md
-    - name: Azure SDK for .NET 2.7
-      href: azure-sdk-dotnet-release-notes-2-7.md
-    - name: 用于 .NET 2.6 的 Azure SDK
-      href: azure-sdk-dotnet-release-notes-2-6.md
-    - name: 用于 .NET 2.5.1 的 Azure SDK
-      href: app-service-release-notes.md
-    - name: 用于 .NET 2.5 的 Azure SDK
-      href: https://msdn.microsoft.com/library/azure/dn873976.aspx
-    - name: 用于 .NET 2.4 的 Azure SDK
-      href: https://msdn.microsoft.com/library/azure/dn794167.aspx
-    - name: 用于 .NET 2.3 的 Azure SDK
-      href: https://msdn.microsoft.com/library/azure/dn655054.aspx
-    - name: 用于 .NET 2.2 的 Azure SDK
-      href: https://msdn.microsoft.com/library/azure/dn459835.aspx
-    - name: 用于 .NET 2.1 的 Azure SDK
-      href: https://msdn.microsoft.com/library/azure/dn407359.aspx
-    - name: 用于 .NET 2.0 的 Azure SDK
-      href: https://msdn.microsoft.com/library/azure/dn169556.aspx
+  - name: 服务更新
+    href: https://azure.microsoft.com/updates/?product=app-service
   - name: 最佳做法
     href: app-service-best-practices.md
   - name: 示例
@@ -260,21 +234,21 @@ items:
     - name: 对 Node.js 应用进行故障排除
       href: app-service-web-nodejs-best-practices-and-troubleshoot-guide.md
     - name: 排查 HTTP 502 和 503 错误
-      href: app-service-web-troubleshoot-http-502-http-503.md
+      href: troubleshoot-http-502-http-503.md
     - name: 排查性能问题
-      href: app-service-web-troubleshoot-performance-degradation.md
+      href: troubleshoot-performance-degradation.md
     - name: 排查域和证书问题
-      href: app-service-web-troubleshoot-domain-ssl-certificates.md
+      href: troubleshoot-domain-ssl-certificates.md
     - name: 常见问题解答
       items:
       - name: 可用性、性能和应用程序常见问题解答
-        href: app-service-web-availability-performance-application-issues-faq.md
+        href: faq-availability-performance-application-issues.md
       - name: 部署常见问题解答
-        href: app-service-web-deployment-faq.md
+        href: faq-deployment.md
       - name: 开放源代码技术常见问题解答
-        href: app-service-web-open-source-technologies-faq.md
+        href: faq-open-source-technologies.md
       - name: 配置和管理常见问题解答
-        href: app-service-web-configuration-and-management-faq.md
+        href: faq-configuration-and-management.md
   - name: IP 地址更改
     items:
     - name: 入站 IP 地址
@@ -283,9 +257,9 @@ items:
       href: ip-address-change-outbound.md
     - name: SSL 地址
       href: ip-address-change-ssl.md
-ms.openlocfilehash: d67c2a680d47710bdfa63153d19c64803125e65a
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 5a3af3678496bb850ed99397f8d6bb186ce92677
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53259097"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53382790"

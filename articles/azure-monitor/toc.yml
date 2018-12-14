@@ -121,13 +121,13 @@ items:
   - name: 响应事件
     items:
     - name: 警报
-      href: ../monitoring-and-diagnostics/monitoring-overview-alerts.md?toc=/azure/azure-monitor/toc.json
+      href: platform/alerts-overview.md
     - name: 经典警报
       href: platform/alerts-classic.overview.md
     - name: 智能组
-      href: ../monitoring-and-diagnostics/monitoring-overview-alerts-smartgroups.md?toc=/azure/azure-monitor/toc.json
+      href: platform/alerts-smartgroups-overview.md
     - name: 自动缩放
-      href: ../monitoring-and-diagnostics/monitoring-overview-autoscale.md?toc=/azure/azure-monitor/toc.json
+      href: platform/autoscale-overview.md
     - name: 指标警报
       href: platform/alerts-metric-overview.md
     - name: 日志警报
@@ -151,7 +151,7 @@ items:
     - name: 管理访问权限
       items:
       - name: 角色权限和安全
-        href: ../monitoring-and-diagnostics/monitoring-roles-permissions-security.md?toc=/azure/azure-monitor/toc.json
+        href: platform/roles-permissions-security.md
       - name: 工作区
         href: platform/manage-access.md
       - name: 应用程序
@@ -217,7 +217,7 @@ items:
         - name: 故障排除
           href: platform/diagnostics-extension-troubleshooting.md
         - name: 使用资源管理器模板启用诊断设置
-          href: ../monitoring-and-diagnostics/monitoring-enable-diagnostic-logs-using-template.md?toc=/azure/azure-monitor/toc.json
+          href: platform/diagnostic-logs-stream-template.md
         - name: 准备 JSON Lines 诊断日志格式
           href: ../monitoring-and-diagnostics/monitor-diagnostic-logs-append-blobs.md?toc=/azure/azure-monitor/toc.json
         - name: VM 来宾到指标存储
@@ -441,9 +441,9 @@ items:
     - name: 路由数据
       items:
       - name: 存档活动日志
-        href: ../monitoring-and-diagnostics/monitoring-archive-activity-log.md?toc=/azure/azure-monitor/toc.json
+        href: platform/archive-activity-log.md
       - name: 存档诊断日志
-        href: ../monitoring-and-diagnostics/monitoring-archive-diagnostic-logs.md?toc=/azure/azure-monitor/toc.json
+        href: platform/archive-diagnostic-logs.md
       - name: 存储诊断日志
         href: ../monitoring-and-diagnostics/monitor-stream-diagnostic-logs-log-analytics.md?toc=/azure/azure-monitor/toc.json
       - name: 将活动日志流式传输到事件中心
@@ -655,7 +655,7 @@ items:
   - name: 分析数据
     items:
     - name: 在指标资源管理器中创建指标图表
-      href: ../monitoring-and-diagnostics/monitoring-metric-charts.md?toc=/azure/azure-monitor/toc.json
+      href: platform/metrics-charts.md
     - name: 在活动日志中查看事件
       href: ../azure-resource-manager/resource-group-audit.md?toc=/azure/azure-monitor/toc.json
     - name: 查看服务通知
@@ -740,11 +740,11 @@ items:
         - name: 使用动态阈值的警报
           href: platform/alerts-dynamic-thresholds.md
         - name: 配置基于日志的指标警报
-          href: ../monitoring-and-diagnostics/monitoring-metric-alerts-logs.md?toc=/azure/azure-monitor/toc.json
+          href: platform/alerts-metric-logs.md
         - name: 使用资源管理器模板创建更新的指标警报
-          href: ../monitoring-and-diagnostics/monitoring-create-metric-alerts-with-templates.md?toc=/azure/azure-monitor/toc.json
+          href: platform/alerts-metric-create-templates.md
         - name: 使用资源管理器模板创建经典指标警报
-          href: ../monitoring-and-diagnostics/monitoring-enable-alerts-using-template.md?toc=/azure/azure-monitor/toc.json
+          href: platform/alerts-enable-template.md
         - name: 让经典指标警报调用 Webhook
           href: platform/alerts-webhooks.md
       - name: 使用日志警报
@@ -760,7 +760,7 @@ items:
         - name: 针对活动日志事件配置警报
           href: platform/alerts-activity-log.md
         - name: 迁移到活动日志警报
-          href: ../monitoring-and-diagnostics/monitoring-migrate-management-alerts.md?toc=/azure/azure-monitor/toc.json
+          href: platform/migrate-management-alerts.md
         - name: 针对服务通知配置警报
           href: platform/alerts-activity-log-service-notifications.md
       - name: 使用应用程序警报
@@ -776,11 +776,11 @@ items:
         - name: 了解 webhook 架构
           href: platform/activity-log-alerts-webhook.md
         - name: 短信警报行为
-          href: ../monitoring-and-diagnostics/monitoring-sms-alert-behavior.md?toc=/azure/azure-monitor/toc.json
+          href: platform/alerts-sms-behavior.md
         - name: 警报速率限制
-          href: ../monitoring-and-diagnostics/monitoring-alerts-rate-limiting.md?toc=/azure/azure-monitor/toc.json
+          href: platform/alerts-rate-limiting.md
         - name: 使用资源管理器创建操作组
-          href: ../monitoring-and-diagnostics/monitoring-create-action-group-with-resource-manager-template.md?toc=/azure/azure-monitor/toc.json
+          href: platform/action-groups-create-resource-manager-template.md
         - name: 实现逻辑应用操作
           href: platform/action-groups-logic-app.md
       - name: 来自 Operations Manager 的警报
@@ -790,11 +790,11 @@ items:
         - name: 管理警报实例
           href: platform/alerts-managing-alert-instances.md
         - name: 管理智能组
-          href: ../monitoring-and-diagnostics/monitoring-alerts-managing-smart-groups.md?toc=/azure/azure-monitor/toc.json
+          href: platform/alerts-managing-smart-groups.md
         - name: 管理警报和智能组状态
-          href: ../monitoring-and-diagnostics/monitoring-alerts-managing-alert-states.md?toc=/azure/azure-monitor/toc.json
+          href: platform/alerts-managing-alert-states.md
         - name: 管理来自其他监视服务的警报
-          href: ../monitoring-and-diagnostics/monitoring-alerts-managing-nagios-zabbix-scom.md?toc=/azure/azure-monitor/toc.json
+          href: platform/alerts-managing-nagios-zabbix-scom.md
     - name: 自动缩放
       items:
       - name: 自动缩放演练
@@ -808,7 +808,7 @@ items:
       - name: 常见模式
         href: ../monitoring-and-diagnostics/monitoring-autoscale-common-scale-patterns.md?toc=/azure/azure-monitor/toc.json
       - name: 使用自定义指标自动缩放
-        href: ../monitoring-and-diagnostics/monitoring-autoscale-scale-by-custom-metric.md?toc=/azure/azure-monitor/toc.json
+        href: platform/autoscale-custom-metric.md
       - name: 使用资源管理器模板自动缩放 VM 规模集
         href: platform/autoscale-virtual-machine-scale-sets.md
       - name: 在 VM 规模集中自动缩放计算机
@@ -958,9 +958,9 @@ items:
   - name: 架构
     items:
     - name: 诊断日志服务、类别和架构
-      href: ../monitoring-and-diagnostics/monitoring-diagnostic-logs-schema.md?toc=/azure/azure-monitor/toc.json
+      href: platform/tutorial-dashboards.md
     - name: 活动日志事件架构
-      href: ../monitoring-and-diagnostics/monitoring-activity-log-schema.md?toc=/azure/azure-monitor/toc.json
+      href: platform/activity-log-schema.md
     - name: Azure 诊断扩展架构
       href: platform/diagnostics-extension-schema.md
       items:
@@ -1010,9 +1010,9 @@ items:
     href: https://stackoverflow.com/search?q=monitoring
   - name: 代码示例
     href: https://azure.microsoft.com/resources/samples/?service=monitor
-ms.openlocfilehash: 06ea6e43343a0cf9982a6161fbd60d5bfce6b0ba
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: 037ec2d246e30725448fb3da98263b557e11186d
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53322544"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53384423"
