@@ -53,3 +53,4 @@ ms.locfileid: "52312457"
 * 有关机器学习工作室中可用机器学习算法的详细讨论，请参阅 [如何选择 Microsoft Azure 机器学习算法](algorithm-choice.md)。
 
 [!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
+
