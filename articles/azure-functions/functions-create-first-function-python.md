@@ -11,12 +11,12 @@ ms.service: functions
 ms.custom: mvc
 ms.devlang: python
 manager: jeconnoc
-ms.openlocfilehash: 1ab6bb341c0b21db1e50f7dcada5b0a6b4267a49
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: a5abc90f5a40911538b6516622203f595adfed5c
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52853220"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53091809"
 ---
 # <a name="create-your-first-python-function-in-azure-preview"></a>在 Azure 中创建你的第一个 Python 函数（预览版）
 
@@ -185,7 +185,7 @@ Http Functions:
 
 ```azurecli-interactive
 az functionapp create --resource-group myResourceGroup --os-type Linux \
---consumption-plan-location westus  --runtime python \
+--consumption-plan-location westeurope  --runtime python \
 --name <app_name> --storage-account  <storage_name>
 ```
 

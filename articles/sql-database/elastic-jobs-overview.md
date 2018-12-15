@@ -12,12 +12,12 @@ ms.author: srinia
 ms.reviewer: ''
 manager: craigg
 ms.date: 07/26/2018
-ms.openlocfilehash: 9df51626a1bd36b0ea171c89c67a5c1ca79d60e6
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 0d593e52c8dc3bc961df706ccef2da9da2f3f778
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52873694"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53087127"
 ---
 # <a name="manage-groups-of-databases-with-elastic-database-jobs"></a>通过弹性数据库作业管理数据库组
 

@@ -1,19 +1,18 @@
 ---
 title: include 文件
 description: include 文件
-services: signalr
 author: anthonychu
 ms.service: signalr
 ms.topic: include
 ms.date: 09/14/2018
 ms.author: antchu
 ms.custom: include file
-ms.openlocfilehash: c74a0726bbbe635793b48b6fe6ebd6f0c72f95f6
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 1e01db73f58c77ff62f7abe707884fc2649fd042
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47006174"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53262743"
 ---
 ## <a name="clean-up-resources"></a>清理资源
 
@@ -24,4 +23,3 @@ ms.locfileid: "47006174"
 1. 在打开的窗口中选择资源组，然后单击“删除资源组”。
 
 1. 在新窗口中键入要删除的资源组的名称，然后单击“删除”。
-

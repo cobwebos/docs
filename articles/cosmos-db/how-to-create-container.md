@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 11/06/2018
 ms.author: mjbrown
-ms.openlocfilehash: d22103a049d62f48e8b9b9d3f71138842fbfaa89
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 5558409c3a3b0aef3757ebb73b2046a7018e4150
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51262482"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53088181"
 ---
 # <a name="create-a-container-in-azure-cosmos-db"></a>在 Azure Cosmos DB 中创建容器
 
@@ -30,7 +30,6 @@ ms.locfileid: "51262482"
 
    * 创建新数据库或使用现有数据库。
    * 输入集合 ID。
-   * 对于“无限制”存储容量。
    * 输入分区键。
    * 输入吞吐量，例如 1000 RU。
    * 选择“确定”。

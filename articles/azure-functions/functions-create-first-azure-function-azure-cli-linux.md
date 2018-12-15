@@ -11,16 +11,16 @@ ms.service: azure-functions
 ms.custom: mvc
 ms.devlang: javascript
 manager: jeconnoc
-ms.openlocfilehash: 6597e0058176eaa819170a494e4908ab44456360
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: b6df653f89f05a9b253ecea102ed8310ff2a53b7
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52850527"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53438264"
 ---
 # <a name="create-your-first-function-hosted-on-linux-using-core-tools-and-the-azure-cli-preview"></a>使用 Core Tools 和 Azure CLI（预览版）创建第一个托管在 Linux 上的函数
 
-Azure Functions 用于在[无服务器](https://azure.microsoft.com/overview/serverless-computing/) Linux 环境中执行代码，无需先创建 VM 或发布 Web 应用程序。 Linux 托管目前为预览版，并且需要 [Functions 2.0 运行时](functions-versions.md)。 若要了解有关在 Linux 上运行函数应用的预览版注意事项的更多信息，请参阅[此“Linux 上的 Functions”文章](https://aka.ms/funclinux)。
+Azure Functions 用于在[无服务器](https://azure.com/serverless) Linux 环境中执行代码，无需先创建 VM 或发布 Web 应用程序。 Linux 托管目前为预览版，并且需要 [Functions 2.0 运行时](functions-versions.md)。 若要了解有关在 Linux 上运行函数应用的预览版注意事项的更多信息，请参阅[此“Linux 上的 Functions”文章](https://aka.ms/funclinux)。
 
 本快速入门文章逐步讲解如何使用 Azure CLI 创建第一个在 Linux 上运行的函数应用。 函数代码在本地创建，然后使用 [Azure Functions Core Tools](functions-run-local.md) 部署到 Azure。
 

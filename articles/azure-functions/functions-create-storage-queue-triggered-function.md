@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.date: 10/01/2018
 ms.author: glenga
 ms.custom: mvc, cc996988-fb4f-47
-ms.openlocfilehash: fd2d19119c5be91942d9587a073be30d59c8fd6c
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.openlocfilehash: 33f7367d9cdc510cf04f349f44b6e85215d46038
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49113761"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52995602"
 ---
 # <a name="create-a-function-triggered-by-azure-queue-storage"></a>创建由 Azure 队列存储触发的函数
 
@@ -27,7 +27,7 @@ ms.locfileid: "49113761"
 
 ## <a name="prerequisites"></a>先决条件
 
-- 下载并安装 [Microsoft Azure 存储资源管理器](http://storageexplorer.com/)。
+- 下载并安装 [Microsoft Azure 存储资源管理器](https://storageexplorer.com/)。
 
 - Azure 订阅。 如果还没有该订阅，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
@@ -63,7 +63,7 @@ ms.locfileid: "49113761"
 
     | 设置 | 建议的值 | 说明 |
     |---|---|---|
-    | **Name** | 在 Function App 中唯一 | 此队列触发函数的名称。 |
+    | **名称** | 在 Function App 中唯一 | 此队列触发函数的名称。 |
     | **队列名称**   | myqueue-items    | 要连接到存储帐户中的队列的名称。 |
     | **存储帐户连接** | AzureWebJobStorage | 可以使用 Function App 已在使用的存储帐户连接，也可以创建一个新的存储帐户连接。  |    
 
@@ -77,7 +77,7 @@ ms.locfileid: "49113761"
 
     ![获取存储帐户连接凭据。](./media/functions-create-storage-queue-triggered-function/functions-storage-account-connection.png)
 
-1. 运行 [Microsoft Azure 存储资源管理器](http://storageexplorer.com/)工具，单击左侧的“连接”图标，选择“使用存储帐户名称和密钥”，并单击“下一步”。
+1. 运行 [Microsoft Azure 存储资源管理器](https://storageexplorer.com/)工具，单击左侧的“连接”图标，选择“使用存储帐户名称和密钥”，并单击“下一步”。
 
     ![运行“存储帐户资源管理器”工具。](./media/functions-create-storage-queue-triggered-function/functions-storage-manager-connect-1.png)
 

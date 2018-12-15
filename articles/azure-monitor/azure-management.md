@@ -6,18 +6,17 @@ author: bwren
 manager: carmonm
 editor: tysonn
 ms.service: monitoring
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/07/2018
 ms.author: bwren
-ms.openlocfilehash: 30898be58db228484bcd85e8896da10d0bfc29dd
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 29daa447be051af3df86ba9211bc2e4871d8c71e
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51277454"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52965099"
 ---
 # <a name="azure-management---monitoring"></a>Azure 管理 - 监视
 
@@ -38,7 +37,7 @@ Azure 中的监视是 Azure 管理的一个方面。  本文简要介绍了在 A
 监视是一种数据收集和分析操作，用于确定商业应用程序的性能、运行状况及应用程序和其所依赖的资源的可用性。 通过实施有效的监视策略，可了解应用程序中不同组件的具体操作情况，通过主动发出有关关键问题的通知，可帮助在问题发生前解决问题，从而延长运行时间。 Azure 中的监视功能主要由 [Azure Monitor](../azure-monitor/overview.md) 提供，后者可以提供常用存储来存储监视数据、提供多个数据源从支持应用程序的不同层来收集数据，以及提供多项功能来分析和响应所收集的数据。
 
 ## <a name="configure"></a>配置
-配置指的是应用程序和资源的初始部署和配置，以及其通过修补程序和更新进行的当前维护。  通过脚本和策略自动执行这些任务，可以消除冗余，最大限度地节省时间和工作量，以及提高准确性和效率。  [Azure 自动化](..\automation\automation-intro.md)提供了大量用于自动执行配置任务的服务。  除了用于自动执行流程的 runbook 之外，它还提供了配置和更新管理，以帮助你通过策略管理配置以及识别和部署更新。
+配置指的是应用程序和资源的初始部署和配置，以及其通过修补程序和更新进行的当前维护。  通过脚本和策略自动执行这些任务，可以消除冗余，最大限度地节省时间和工作量，以及提高准确性和效率。  [Azure 自动化](../automation/automation-intro.md)提供了大量用于自动执行配置任务的服务。  除了用于自动执行流程的 runbook 之外，它还提供了配置和更新管理，以帮助你通过策略管理配置以及识别和部署更新。
 
 ## <a name="govern"></a>治理
 “治理”提供了机制和流程来保持对 Azure 中的应用程序和资源的控制。  它涉及规划计划和设置战略优先级。  Azure 中的治理主要是通过两个服务实现的。  [Azure Policy](../governance/policy/overview.md) 可用于创建、分配和管理策略定义，用以对资源强制实施不同的规则和操作，从而使这些资源保持符合公司标准和服务级别协议。 [Cloudyn 提供的 Azure 成本管理](../cost-management/overview.md)可用于跟踪 Azure 资源和其他云提供商（包括 AWS 和 Google）的云使用情况和开支。

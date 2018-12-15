@@ -4,12 +4,12 @@ ms.service: storage
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: tamram
-ms.openlocfilehash: 027b370d2497822dcbd6f3958556357957f9e8f5
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: aeefb63a283c473a98639ead1aa6640d88409125
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50964656"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53318124"
 ---
 ## <a name="sign-in-to-azure"></a>登录 Azure
 
@@ -22,17 +22,17 @@ Connect-AzureRmAccount
 如果你不知道要使用哪个位置，可以列出可用的位置。 使用以下代码示例显示位置列表，并找到要使用的位置。 本示例使用 **eastus**。 将位置存储在变量中，并使用该变量，这样就可以在一个位置更改它。
 
 ```powershell
-Get-AzureRmLocation | select Location 
+Get-AzureRmLocation | select Location
 $location = "eastus"
 ```
 
 ## <a name="create-a-resource-group"></a>创建资源组
 
-使用 [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) 创建 Azure 资源组。 资源组是在其中部署和管理 Azure 资源的逻辑容器。 
+使用 [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) 创建 Azure 资源组。 资源组是在其中部署和管理 Azure 资源的逻辑容器。
 
 ```powershell
 $resourceGroup = "myResourceGroup"
-New-AzureRmResourceGroup -Name $resourceGroup -Location $location 
+New-AzureRmResourceGroup -Name $resourceGroup -Location $location
 ```
 
 ## <a name="create-a-storage-account"></a>创建存储帐户
@@ -44,7 +44,6 @@ $storageAccount = New-AzureRmStorageAccount -ResourceGroupName $resourceGroup `
   -Name "mystorageaccount" `
   -SkuName Standard_LRS `
   -Location $location `
-  -Kind Storage
 
 $ctx = $storageAccount.Context
 ```
