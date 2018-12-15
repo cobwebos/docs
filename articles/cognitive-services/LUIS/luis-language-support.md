@@ -1,21 +1,22 @@
 ---
-title: 语言支持 - LUIS
+title: 语言支持
 titleSuffix: Azure Cognitive Services
 description: LUIS 在服务中具有多种功能。 并非所有功能都会同等地以各种语言提供。 请确保你所定位的语言文化支持你感兴趣的功能。 LUIS 应用特定于区域性，一旦设置即无法更改。
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 09/26/2018
 ms.author: diberry
-ms.openlocfilehash: a26fa1f64f1ef8ecef8140b1feab89fdd57875fe
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: 452700593d7145e828155c3bd999ad90e2437ba9
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51569193"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53098995"
 ---
 # <a name="language-and-region-support-for-luis"></a>LUIS 的语言和区域支持
 

@@ -4,18 +4,18 @@ description: include 文件
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: include file
 ms.service: cognitive-services
 ms.component: luis
 ms.topic: include
-ms.custom: include file
 ms.date: 08/17/2018
 ms.author: diberry
-ms.openlocfilehash: 29332f7f43932c115a4e80b9c66f747555c9c298
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 489b2cd890452a62e7d19ce16bd4b72b71c71314
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47105731"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53107254"
 ---
 若要在聊天机器人或其他客户端应用程序中接收 LUIS 预测，需要将应用发布到终结点。 
 

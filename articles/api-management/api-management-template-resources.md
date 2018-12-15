@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
-ms.openlocfilehash: 36b64912eb3393ad496d04ff656bed5b0c41566c
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.openlocfilehash: 790d05201550461b095cfefd32f0330f37697e0b
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52444753"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52970325"
 ---
 # <a name="azure-api-management-template-resources"></a>Azure API 管理模板资源
 Azure API 管理提供以下类型的资源，适用于开发人员门户模板。  
@@ -59,7 +59,7 @@ Azure API 管理提供以下类型的资源，适用于开发人员门户模板�
   
 -   [CommonStrings](#CommonStrings)  
   
--   [Documentation](#Documentation)  
+-   [文档](#Documentation)  
   
 -   [ErrorPageStrings](#ErrorPageStrings)  
   
@@ -176,7 +176,7 @@ Azure API 管理提供以下类型的资源，适用于开发人员门户模板�
 |WebDocumentationTemplatesDeveloperKey|指定订阅密钥|  
 |WebDocumentationTemplatesJavaApache|此示例使用 HTTP 组件中的 Apache HTTP 客户端 (http://hc.apache.org/httpcomponents-client-ga/)|  
 |WebDocumentationTemplatesOptionalParams|根据需要指定可选参数的值|  
-|WebDocumentationTemplatesPhpPackage|此示例使用 HTTP_Request2 包。 （详细信息： http://pear.php.net/package/HTTP_Request2)|  
+|WebDocumentationTemplatesPhpPackage|此示例使用 HTTP_Request2 包。 （详细信息： https://pear.php.net/package/HTTP_Request2)|  
 |WebDocumentationTemplatesPythonValuesForPath|根据需要指定路径参数的值(显示为 {...})和请求正文|  
 |WebDocumentationTemplatesRequestBody|指定请求正文|  
 |WebDocumentationTemplatesRequiredParams|指定以下必需参数的值|  
@@ -571,13 +571,13 @@ Azure API 管理提供以下类型的资源，适用于开发人员门户模板�
 |ApiManagementUserLimitReached|此服务已达到允许的用户的最大数目。 请升级到更高的定价层。|  
   
 ##  <a name="glyphs"></a> 字形资源  
- API 管理开发人员门户模板可以使用 [Bootstrap 提供的 Glyphicon](http://getbootstrap.com/components/#glyphicons) 中的字形。 此字形集包括 250 多个字形，采用 [Glyphicon](http://glyphicons.com/) Halflings 集中的字体格式。 若要使用此集中的字形，请使用以下语法。  
+ API 管理开发人员门户模板可以使用 [Bootstrap 提供的 Glyphicon](https://getbootstrap.com/components/#glyphicons) 中的字形。 此字形集包括 250 多个字形，采用 [Glyphicon](https://glyphicons.com/) Halflings 集中的字体格式。 若要使用此集中的字形，请使用以下语法。  
   
 ```html  
 <span class="glyphicon glyphicon-user">  
 ```  
   
- 如需字形的完整列表，请参阅 [Bootstrap 提供的 Glyphicon](http://getbootstrap.com/components/#glyphicons)。
+ 如需字形的完整列表，请参阅 [Bootstrap 提供的 Glyphicon](https://getbootstrap.com/components/#glyphicons)。
 
 ## <a name="next-steps"></a>后续步骤
 如需详细了解如何使用模板，请参阅[如何使用模板自定义 API 管理开发人员门户](api-management-developer-portal-templates.md)。

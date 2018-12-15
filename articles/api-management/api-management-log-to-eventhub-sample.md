@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 01/23/2018
 ms.author: apimpm
-ms.openlocfilehash: 4c58be8f501e72027e1692ceb73552a3f252f92a
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 48dfa3180f040af3e8298d418cf71c537477ba5a
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38603172"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52956941"
 ---
 # <a name="monitor-your-apis-with-azure-api-management-event-hubs-and-runscope"></a>使用 Azure API 管理、事件中心和 Runscope 监视 API
 [API 管理服务](api-management-key-concepts.md)提供许多功能来增强发送到 HTTP API 的 HTTP 请求的处理。 但是，请求和响应都是暂时性存在的。 在请求发出后，将通过 API 管理服务流送到后端 API。 API 将处理该请求，然后，将响应返回给 API 使用者。 API 管理服务保留要在 Azure 门户仪表板中显示的有关 API 的一些重要统计信息，但除此之外不显示详细信息。
@@ -45,7 +45,7 @@ Azure 事件中心旨在引入大量数据，它能够处理的事件数目远�
 ## <a name="a-policy-to-send-applicationhttp-messages"></a>用于发送 application/http 消息的策略
 事件中心接受简单字符串形式的事件数据。 该字符串的内容由你确定。 要打包 HTTP 请求并将其发送到事件中心，需要使用请求或响应信息来格式化字符串。 在此类情况下，如果有可以重复使用的现有格式，则不需要编写自己的分析代码。 最初，我考虑使用 [HAR](http://www.softwareishard.com/blog/har-12-spec/) 来发送 HTTP 请求和响应。 但是，这种格式最适合用于存储 JSON 格式的一连串 HTTP 请求。 其中包含一些必需的元素，使得通过网络传递 HTTP 消息的方案增加了不必要的复杂性。  
 
-另一个做法是使用 HTTP 规范 [RFC 7230](http://tools.ietf.org/html/rfc7230) 中所述的 `application/http` 媒体类型。 此媒体类型使用的格式与用于通过网络实际发送 HTTP 消息的格式完全相同，但整个消息可以放在另一个 HTTP 请求的正文中。 在本例中，我们将使用该正文作为消息发送到事件中心。 [Microsoft ASP .NET Web API 2.2 客户端](https://www.nuget.org/packages/Microsoft.AspNet.WebApi.Client/)库中有一个分析器可以分析此格式并将其转换为本机 `HttpRequestMessage` 和 `HttpResponseMessage` 对象，相当方便。
+另一个做法是使用 HTTP 规范 [RFC 7230](https://tools.ietf.org/html/rfc7230) 中所述的 `application/http` 媒体类型。 此媒体类型使用的格式与用于通过网络实际发送 HTTP 消息的格式完全相同，但整个消息可以放在另一个 HTTP 请求的正文中。 在本例中，我们将使用该正文作为消息发送到事件中心。 [Microsoft ASP .NET Web API 2.2 客户端](https://www.nuget.org/packages/Microsoft.AspNet.WebApi.Client/)库中有一个分析器可以分析此格式并将其转换为本机 `HttpRequestMessage` 和 `HttpResponseMessage` 对象，相当方便。
 
 若要创建此消息，需要在 Azure API 管理中使用基于 C# 的[策略表达式](https://msdn.microsoft.com/library/azure/dn910913.aspx)。 下面是可将 HTTP 请求消息发送到 Azure 事件中心的策略。
 
@@ -159,7 +159,7 @@ HTTP 标头可以转换为采用简单键/值对格式的消息格式。 我们�
 `set-variable` 策略创建一个可供 `<inbound>` 节和 `<outbound>` 节中的 `log-to-eventhub` 策略访问的值。  
 
 ## <a name="receiving-events-from-event-hubs"></a>从事件中心接收事件
-使用 [AMQP 协议](http://www.amqp.org/)可从 Azure 事件中心接收事件。 Microsoft 服务总线团队提供了客户端库来方便使用事件。 支持两种不同的方法：一种是成为*直接使用者*，另一种是使用 `EventProcessorHost` 类。 在[事件中心编程指南](../event-hubs/event-hubs-programming-guide.md)中可以找到这两种方法的示例。 简而言之，两者的差别在于：`Direct Consumer` 提供给完全控制权，而 `EventProcessorHost` 可以自动完成一些繁琐的工作，但在如何处理这些事件上做出了假设。  
+使用 [AMQP 协议](https://www.amqp.org/)可从 Azure 事件中心接收事件。 Microsoft 服务总线团队提供了客户端库来方便使用事件。 支持两种不同的方法：一种是成为*直接使用者*，另一种是使用 `EventProcessorHost` 类。 在[事件中心编程指南](../event-hubs/event-hubs-programming-guide.md)中可以找到这两种方法的示例。 简而言之，两者的差别在于：`Direct Consumer` 提供给完全控制权，而 `EventProcessorHost` 可以自动完成一些繁琐的工作，但在如何处理这些事件上做出了假设。  
 
 ### <a name="eventprocessorhost"></a>EventProcessorHost
 为方便起见，本示例将使用 `EventProcessorHost`，但这不一定是此特定方案的最佳选择。 `EventProcessorHost` 努力确保用户无需担心特定事件处理器类中发生线程问题。 但是，在我们的方案中，只需将消息转换为另一种格式，并使用异步方法将它传递到另一个服务。 不需要更新共享状态，因此没有线程问题的风险。 在大多数情况下，`EventProcessorHost` 可能是最佳选择，当然也是更方便的选项。     
@@ -213,7 +213,7 @@ public class HttpMessage
 然后，`HttpMessage` 实例将转发到 `IHttpMessageProcessor` 的实现，这是为了分离从 Azure 事件中心接收和解释事件以及实际处理事件而创建的接口。
 
 ## <a name="forwarding-the-http-message"></a>转发 HTTP 消息
-在本示例中，我觉得将 HTTP 请求推送到 [Runscope](http://www.runscope.com) 的过程很有趣。 Runscope 是专门用于 HTTP 调试、日志记录和监视的基于云的服务。 该服务提供免费层，因此可以方便试用。它可以让我们实时查看流经 API 管理服务的 HTTP 请求。
+在本示例中，我觉得将 HTTP 请求推送到 [Runscope](https://www.runscope.com) 的过程很有趣。 Runscope 是专门用于 HTTP 调试、日志记录和监视的基于云的服务。 该服务提供免费层，因此可以方便试用。它可以让我们实时查看流经 API 管理服务的 HTTP 请求。
 
 `IHttpMessageProcessor` 实现如下所示：
 
@@ -260,7 +260,7 @@ public class RunscopeHttpMessageProcessor : IHttpMessageProcessor
 }
 ```
 
-我可以利用 [Runscope 的现有客户端库](http://www.nuget.org/packages/Runscope.net.hapikit/0.9.0-alpha)，因此可以轻松将 `HttpRequestMessage` 和 `HttpResponseMessage` 实例推送到它们的服务。 若要访问 Runscope API，需有一个帐户和 API 密钥。 在 [Creating Applications to Access Runscope API](http://blog.runscope.com/posts/creating-applications-to-access-the-runscope-api)（创建用于访问 Runscope API 的应用程序）屏幕录制视频中，可以找到有关如何获取 API 密钥的说明。
+我可以利用 [Runscope 的现有客户端库](https://www.nuget.org/packages/Runscope.net.hapikit/0.9.0-alpha)，因此可以轻松将 `HttpRequestMessage` 和 `HttpResponseMessage` 实例推送到它们的服务。 若要访问 Runscope API，需有一个帐户和 API 密钥。 在 [Creating Applications to Access Runscope API](https://blog.runscope.com/posts/creating-applications-to-access-the-runscope-api)（创建用于访问 Runscope API 的应用程序）屏幕录制视频中，可以找到有关如何获取 API 密钥的说明。
 
 ## <a name="complete-sample"></a>完整示例
 GitHub 上提供了本示例的[源代码](https://github.com/darrelmiller/ApimEventProcessor)和测试。 需要准备好 [API 管理服务](get-started-create-service-instance.md)、[连接的事件中心](api-management-howto-log-event-hubs.md)和[存储帐户](../storage/common/storage-create-storage-account.md)才能自行运行本示例。   

@@ -11,12 +11,12 @@ ms.service: application-insights
 ms.custom: mvc
 ms.topic: quickstart
 manager: carmonm
-ms.openlocfilehash: b36e4598f5ff20b921c5cd150ae19be233cc2d14
-ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
+ms.openlocfilehash: 45d1275ac3b78836cbb77c4e1508d0689c215d69
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43246507"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52998609"
 ---
 # <a name="start-monitoring-your-java-web-application"></a>开始监视 Java Web 应用程序
 
@@ -26,10 +26,10 @@ ms.locfileid: "43246507"
 
 ## <a name="prerequisites"></a>先决条件
 
-完成本快速入门教程：
+完成本快速入门教程需要：
 
 - 安装 JRE 1.7 或 1.8
-- 安装[免费 Eclipse IDE for Java EE Developers](http://www.eclipse.org/downloads/)。 本快速入门使用 Eclipse Oxygen (4.7)
+- 安装[免费 Eclipse IDE for Java EE Developers](https://www.eclipse.org/downloads/)。 本快速入门使用 Eclipse Oxygen (4.7)
 - 将需要 Azure 订阅和现有 Java 动态 Web 项目
  
 如果没有 Java 动态 Web 项目，可以使用[创建 Java Web 应用快速入门](https://docs.microsoft.com/azure/app-service-web/app-service-web-get-started-java)创建一个。
@@ -54,7 +54,7 @@ Application Insights 可以从任何连接 Internet 的应用程序收集遥测�
 
     | 设置        | 值           | 说明  |
    | ------------- |:-------------|:-----|
-   | **Name**      | 全局唯一值 | 标识所监视的应用的名称 |
+   | **名称**      | 全局唯一值 | 标识所监视的应用的名称 |
    | **应用程序类型** | Java Web 应用程序 | 所监视的应用的类型 |
    | **资源组**     | myResourceGroup      | 用于托管 App Insights 数据的新资源组的名称 |
    | **位置** | 美国东部 | 选择离你近的位置或离托管应用的位置近的位置 |
@@ -67,7 +67,7 @@ Application Insights 可以从任何连接 Internet 的应用程序收集遥测�
 
    ![“新建 App Insights 资源”窗体](./media/app-insights-java-quick-start/000-j.png)
 
-2. 将 ```http://dl.microsoft.com/eclipse``` 复制到“使用”字段中 > 选中“用于 Java 的 Azure 工具包”> 选择“用于 Java 的 Application Insights 插件” > **取消选中**“安装期间联系所有更新站点以查找所需的软件”。
+2. 将 ```https://dl.microsoft.com/eclipse``` 复制到“使用”字段中 > 选中“用于 Java 的 Azure 工具包”> 选择“用于 Java 的 Application Insights 插件” > **取消选中**“安装期间联系所有更新站点以查找所需的软件”。
 
 3. 安装完成后，系统会提示“重启 Eclipse”。
 
@@ -130,7 +130,7 @@ Application Insights 可以从任何连接 Internet 的应用程序收集遥测�
 
    ![“服务器指标”图](./media/app-insights-java-quick-start/livemetricsjava.png)
 
-若要了解有关监视 Java 的详细信息，请查看[其他 App Insights Java 文档](.\app-insights-java-get-started.md)。
+若要了解有关监视 Java 的详细信息，请查看[其他 App Insights Java 文档](./app-insights-java-get-started.md)。
 
 ## <a name="clean-up-resources"></a>清理资源
 

@@ -2,19 +2,18 @@
 title: include 文件
 description: include 文件
 services: machine-learning
-author: j-martens
 ms.service: machine-learning
-ms.author: jmartens
-manager: cgronlund
 ms.custom: include file
 ms.topic: include
-ms.date: 07/27/2018
-ms.openlocfilehash: 300b4a3e5c6c52f1c09f8e70a72f08406861a5d1
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+author: j-martens
+ms.author: jmartens
+ms.date: 12/04/2018
+ms.openlocfilehash: de24478a39b656c1326bc53825aab317e652d672
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49400201"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "53007935"
 ---
 >[!IMPORTANT]
 >已创建的资源可以用作其他 Azure 机器学习服务教程和操作方法文章的先决条件。 
@@ -31,5 +30,3 @@ ms.locfileid: "49400201"
 1. 选择“删除资源组”。
 
 1. 输入资源组名称，然后选择“删除”。
-
-   如果出现“删除嵌套资源前无法删除资源”错误消息，则必须先删除任何嵌套资源。 有关如何删除嵌套资源的信息，请参阅[此故障排除部分](../articles/machine-learning/desktop-workbench/known-issues-and-troubleshooting-guide.md#cant-delete-experimentation-account)。 

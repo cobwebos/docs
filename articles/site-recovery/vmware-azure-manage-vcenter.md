@@ -4,14 +4,14 @@ description: 本文介绍如何使用 Azure Site Recovery 添加和管理 VMware
 author: Rajeswari-Mamilla
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 06/20/2018
+ms.date: 11/27/2018
 ms.author: ramamill
-ms.openlocfilehash: 854d7724aebd882414287b19c015ef1425bfa6db
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 6c00ed6f3bec1e16b2a3cb8588335c1741a92883
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50210284"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52849031"
 ---
 # <a name="manage-vmware-vcenter-server"></a>管理 VMware vCenter 服务器
 

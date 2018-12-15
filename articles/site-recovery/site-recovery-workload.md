@@ -4,14 +4,14 @@ description: 介绍可以通过将灾难恢复与 Azure Site Recovery 服务配�
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 10/29/2018
+ms.date: 11/27/2018
 ms.author: raynew
-ms.openlocfilehash: 70f19213da9c311e306e09890f54185f6d2834dc
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 8592b4dc5b5ae791c6e231876839f8647d171145
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50213231"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52850101"
 ---
 # <a name="what-workloads-can-you-protect-with-azure-site-recovery"></a>可以通过 Azure Site Recovery 保护哪些工作负荷？
 

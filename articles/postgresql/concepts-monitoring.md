@@ -8,12 +8,12 @@ editor: jasonwhowell
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 11/05/2018
-ms.openlocfilehash: 8ad7369bc940f682bb7c11c3ed4e3444f1bb056a
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: b8d5526b258e70238bf8d5e4dc91ab02f403368e
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51035078"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52843676"
 ---
 # <a name="monitor-and-tune"></a>监视和优化
 监视服务器的相关数据有助于排查工作负荷故障及优化工作负荷。 Azure Database for PostgreSQL 提供各种监视选项，可以深入了解服务器的行为。
@@ -42,7 +42,7 @@ Azure Database for PostgreSQL 提供了各种指标来帮助用户深入了解�
 |backup_storage_used|使用的备份存储|字节|已使用的备份存储量。|
 
 ## <a name="server-logs"></a>服务器日志
-可以在服务器上启用日志记录。 这些日志也可通过 [Log Analytics](../log-analytics/log-analytics-queries.md)、事件中心和存储帐户中的 Azure 诊断日志获得。 若要了解有关日志记录的详细信息，请访问[服务器日志](concepts-server-logs.md)页。
+可以在服务器上启用日志记录。 这些日志也可通过 [Log Analytics](../azure-monitor/log-query/log-query-overview.md)、事件中心和存储帐户中的 Azure 诊断日志获得。 若要了解有关日志记录的详细信息，请访问[服务器日志](concepts-server-logs.md)页。
 
 ## <a name="query-store"></a>查询存储
 [查询存储](concepts-query-store.md)是一项公共预览功能，可以随着时间的推移跟踪查询性能，包括查询运行时统计信息和等待事件。 此功能将查询运行时性能信息保留在 query_store 架构下名为 azure_sys 的一个系统数据库中。 你可以通过各种配置旋钮控制数据的收集和存储。

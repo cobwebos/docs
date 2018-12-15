@@ -9,12 +9,12 @@ ms.devlang: php
 ms.topic: sample
 ms.date: 04/05/2018
 ms.author: sngun
-ms.openlocfilehash: 14cb684b0cc3e93992c6ed78c53e8794214c85a8
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: cf8cc380caec1475ad831cfd3e0e9aa5b168e8de
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52879708"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53095289"
 ---
 # <a name="how-to-use-azure-storage-table-service-or-the-azure-cosmos-db-table-api-from-php"></a>如何通过 PHP 使用 Azure 存储表服务或 Azure Cosmos DB 表 API
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
@@ -52,7 +52,7 @@ ms.locfileid: "52879708"
   }
 }
 ```
-2. 将 [composer.phar](http://getcomposer.org/composer.phar) 下载到根目录中。 
+2. 将 [composer.phar](https://getcomposer.org/composer.phar) 下载到根目录中。 
 3. 打开命令提示符并在项目根目录中执行以下命令：
 ```
 php composer.phar install
@@ -509,7 +509,7 @@ catch(ServiceException $e){
 * [PHP 开发人员中心](https://azure.microsoft.com/develop/php/)。
 
 [download]: https://packagist.org/packages/microsoft/azure-storage-table
-[require_once]: http://php.net/require_once
+[require_once]: https://php.net/require_once
 [table-service-timeouts]: https://docs.microsoft.com/rest/api/storageservices/setting-timeouts-for-table-service-operations
 
 [table-data-model]: https://docs.microsoft.com/rest/api/storageservices/Understanding-the-Table-Service-Data-Model

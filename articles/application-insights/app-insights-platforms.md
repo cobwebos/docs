@@ -9,17 +9,16 @@ ms.assetid: 974db106-54ff-4318-9f8b-f7b3a869e536
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/01/2016
 ms.reviewer: olegan
 ms.author: mbullwin
-ms.openlocfilehash: 9d23c680d1ec43a671eba29b4e0168af18af4e1e
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 9f7f7731490467ff32a72507239bfeedc794f2f2
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51229418"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "53000536"
 ---
 # <a name="developer-analytics-languages-platforms-and-integrations"></a>开发人员分析：语言、平台和集成
 这些项是我们听说过的 [Application Insights](app-insights-overview.md) 的实现，包括第三方的一些实现。
@@ -57,7 +56,7 @@ ms.locfileid: "51229418"
 * [Node.JS](https://www.npmjs.com/package/applicationinsights)
 * [OSX](https://github.com/Microsoft/ApplicationInsights-OSX)
 * [安全堆栈](https://safe-stack.github.io/docs/template-azure-ai/)
-* [Spring](http://joe.blog.freemansoft.com/2015/12/enabling-microsoft-application-insight.html)
+* [Spring](https://joe.blog.freemansoft.com/2015/12/enabling-microsoft-application-insight.html)
 * [通用 Windows 应用](app-insights-mobile-center-quickstart.md) (App Center)
 * [WCF](https://github.com/Microsoft/ApplicationInsights-SDK-Labs/blob/master/WCF/readme.md)
 * [Windows 桌面应用程序、服务和辅助角色](app-insights-windows-desktop.md)

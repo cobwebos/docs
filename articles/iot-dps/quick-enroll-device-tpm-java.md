@@ -10,12 +10,12 @@ services: iot-dps
 manager: timlt
 ms.devlang: java
 ms.custom: mvc
-ms.openlocfilehash: 6b0068bc912de13590cd9bc7418ea6fcdb01189f
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 4c494eda7126a21223f65a7e52c220fca93b2e39
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50420483"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53184655"
 ---
 # <a name="enroll-tpm-device-to-iot-hub-device-provisioning-service-using-java-service-sdk"></a>使用 Java 服务 SDK 将 TPM 设备注册到 IoT 中心设备预配服务
 
@@ -34,7 +34,7 @@ ms.locfileid: "50420483"
 
 2. 设置 Java 安装的环境变量。 `PATH` 变量应包括 *jdk1.8.x\bin* 目录的完整路径。 如果这是计算机的首次 Java 安装，则请创建名为 `JAVA_HOME` 的新的环境变量，将其指向 *jdk1.8.x* 目录的完整路径。 在 Windows 计算机上，该目录位于 *C:\\Program Files\\Java\\* 文件夹中。可以通过在 Windows 计算机的“控制面板”上搜索“编辑系统环境变量”来创建或编辑环境变量。 
 
-  可以在命令窗口中运行以下命令，查看 Java 是否已成功安装在计算机上：
+   可以在命令窗口中运行以下命令，查看 Java 是否已成功安装在计算机上：
 
     ```cmd\sh
     java -version

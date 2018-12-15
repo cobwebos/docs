@@ -8,12 +8,12 @@ ms.author: gwallace
 ms.date: 11/01/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 65de18445f114f468dd42c5a7e7128dd2f63d44c
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: f742f6923b7d9f40a8752d77c7702e9b2ea2a4cf
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50959814"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53185850"
 ---
 # <a name="monitoring-runbooks-with-metric-alerts"></a>使用指标警报监视 Runbook
 
@@ -51,7 +51,7 @@ ms.locfileid: "50959814"
 
 ### <a name="define-the-action-to-take"></a>定义要执行的操作
 
-1. 在“3. 定义操作组”下，单击“+ 新建操作组”。 操作组是可以对多个警报使用的一组操作。 这可能包括但不限于电子邮件通知、Runbook、Webhook 以及其他操作。 若要了解有关操作组的详细信息，请参阅[创建和管理操作组](../monitoring-and-diagnostics/monitoring-action-groups.md)。
+1. 在“3. 定义操作组”下，单击“+ 新建操作组”。 操作组是可以对多个警报使用的一组操作。 这可能包括但不限于电子邮件通知、Runbook、Webhook 以及其他操作。 若要了解有关操作组的详细信息，请参阅[创建和管理操作组](../azure-monitor/platform/action-groups.md)。
 
 1. 在“操作组名称”框中，为其提供一个友好名称和短名称。 使用此组发送通知时，短名称被用来代替完整的操作组名称。
 

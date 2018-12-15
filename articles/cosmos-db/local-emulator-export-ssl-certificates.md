@@ -8,12 +8,12 @@ ms.service: cosmos-db
 ms.topic: tutorial
 ms.date: 06/06/2017
 ms.author: danoble
-ms.openlocfilehash: f73c6f279f4281abb3751f101255ca3707a59641
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: b7a6649fab8b0203c20b93bee9e941614828a99b
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52850374"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53091792"
 ---
 # <a name="export-the-azure-cosmos-db-emulator-certificates-for-use-with-java-python-and-nodejs"></a>导出 Azure Cosmos DB 模拟器证书供 Java、Python 和 Node.js 使用
 
@@ -76,7 +76,7 @@ Azure Cosmos DB 本地模拟器中的证书在首次运行模拟器时生成。 
 
 请按照[将证书添加到 Java CA 证书存储](https://docs.microsoft.com/azure/java-add-certificate-ca-store)中的说明将 X.509 证书导入到默认 Java 证书存储。 请记住，需在 ％JAVA_HOME％ 目录中运行 keytool。
 
-安装“CosmosDBEmulatorCertificate”SSL 证书后，应用程序应能连接并使用本地 Azure Cosmos DB 模拟器。 如果仍遇到问题，请按照 [Debugging SSL/TLS Connections](http://docs.oracle.com/javase/7/docs/technotes/guides/security/jsse/ReadDebug.html)（调试 SSL / TLS 连接）一文操作。 很有可能是该证书未安装到 %JAVA_HOME%/jre/lib/security/cacerts 存储中。 例如，如果安装了多个 Java 版本，应用程序使用的 cacerts 存储可能未更新。
+安装“CosmosDBEmulatorCertificate”SSL 证书后，应用程序应能连接并使用本地 Azure Cosmos DB 模拟器。 如果仍遇到问题，请按照 [Debugging SSL/TLS Connections](https://docs.oracle.com/javase/7/docs/technotes/guides/security/jsse/ReadDebug.html)（调试 SSL / TLS 连接）一文操作。 很有可能是该证书未安装到 %JAVA_HOME%/jre/lib/security/cacerts 存储中。 例如，如果安装了多个 Java 版本，应用程序使用的 cacerts 存储可能未更新。
 
 ## <a name="how-to-use-the-certificate-in-python"></a>如何在 Python 中使用证书
 

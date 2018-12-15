@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/21/2018
 ms.author: srrengar
-ms.openlocfilehash: 2cdc9f780e0d9ddb6e688e53208e5597b000aa56
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 00fc04afd26da2ef5741eec308835bb8c897c26b
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52632766"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53077335"
 ---
 # <a name="set-up-log-analytics-for-a-cluster"></a>为群集设置 Log Analytics
 
@@ -123,7 +123,7 @@ Set-AzureRmOperationalInsightsIntelligencePack -ResourceGroupName $ResourceGroup
 
 完成后，请按照上一部分中的步骤将 Log Analytics 连接到相应的存储帐户。
 
-还可添加其他解决方案或使用 PowerShell 对 Log Analytics 工作区进行其他修改。 有关详细信息，请参阅 [使用 PowerShell 管理 Log Analytics](../log-analytics/log-analytics-powershell-workspace-configuration.md)。
+还可添加其他解决方案或使用 PowerShell 对 Log Analytics 工作区进行其他修改。 有关详细信息，请参阅 [使用 PowerShell 管理 Log Analytics](../azure-monitor/platform/powershell-workspace-configuration.md)。
 
 ## <a name="next-steps"></a>后续步骤
 * [将 Log Analytics 代理部署到节点上](service-fabric-diagnostics-oms-agent.md)，以收集性能计数器、docker 统计信息和容器日志

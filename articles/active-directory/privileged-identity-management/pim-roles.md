@@ -13,12 +13,12 @@ ms.component: pim
 ms.date: 07/23/2018
 ms.author: rolyon
 ms.custom: pim ; H1Hack27Feb2017;oldportal;it-pro;
-ms.openlocfilehash: 63f4c4c48dd0fed3130dc99929a0e84c3cba2026
-ms.sourcegitcommit: 06724c499837ba342c81f4d349ec0ce4f2dfd6d6
+ms.openlocfilehash: 531d19925d24930b6a2bd642a8ff0ec55bd6d16f
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46466041"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52841568"
 ---
 # <a name="azure-ad-directory-roles-you-can-manage-in-pim"></a>可以在 PIM 中管理的 Azure AD 目录角色
 <!-- **PLACEHOLDER: Need description of how this works. Azure PIM uses roles from MSODS objects.**-->
@@ -75,7 +75,7 @@ Exchange Online 或 SharePoint Online 中的角色（前面所述的角色除外
 
 ## <a name="assign-a-license-to-a-user-in-azure-ad"></a>将许可证分配到 Azure AD 中的用户
 
-1. 使用全局管理员或所有者角色登录到 [Azure 门户](http://portal.azure.com)。
+1. 使用全局管理员或所有者角色登录到 [Azure 门户](https://portal.azure.com)。
 
 1. 选择要使用的、包含关联许可证的 Azure AD 目录。
 

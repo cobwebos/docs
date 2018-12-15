@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/16/2018
 ms.author: sedusch
-ms.openlocfilehash: bbb0bbc6ddbbabb37932edc6946394b020631231
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: 484a0043b9b5eefa5491dee75e87244d1c001620
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45636423"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53342317"
 ---
 # <a name="glusterfs-on-azure-vms-on-red-hat-enterprise-linux-for-sap-netweaver"></a>适用于 SAP NetWeaver 的 Red Hat Enterprise Linux 上的 Azure VM 上的 GlusterFS
 
@@ -110,10 +110,10 @@ Azure 市场中包含适用于 Red Hat Enterprise Linux 的映像，可以用于
 1. 创建可用性集  
    设置最大更新域
 1. 创建虚拟机 1  
-   请至少使用 RHEL 7（此示例中为 Red Hat Enterprise Linux 7.4 映像）<https://ms.portal.azure.com/#create/RedHat.RedHatEnterpriseLinux74-ARM>  
+   请至少使用 RHEL 7（此示例中为 Red Hat Enterprise Linux 7.4 映像）<https://portal.azure.com/#create/RedHat.RedHatEnterpriseLinux74-ARM>  
    选择前面创建的可用性集  
 1. 创建虚拟机 2  
-   请至少使用 RHEL 7（此示例中为 Red Hat Enterprise Linux 7.4 映像）<https://ms.portal.azure.com/#create/RedHat.RedHatEnterpriseLinux74-ARM>  
+   请至少使用 RHEL 7（此示例中为 Red Hat Enterprise Linux 7.4 映像）<https://portal.azure.com/#create/RedHat.RedHatEnterpriseLinux74-ARM>  
    选择前面创建的可用性集  
 1. 向两台虚拟机中为每个 SAP 系统添加一个数据磁盘。
 

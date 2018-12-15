@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: 4c96ca70b9b6a82dcccec443ac0b1e06f96a2396
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 2035d342a89ace6d286fc205c346591b29646c5d
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2018
-ms.locfileid: "31597405"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53270128"
 ---
 # <a name="use-packet-capture-for-proactive-network-monitoring-with-alerts-and-azure-functions"></a>通过警报和 Azure Functions，使用数据包捕获执行主动网络监视
 
@@ -331,7 +331,7 @@ $Encryptedpassword
 
     ![复制函数 URL][2]
 
-如果需要在 webhook POST 请求的有效负载中使用自定义属性，请参阅[针对 Azure 指标警报配置 webhook](../monitoring-and-diagnostics/insights-webhooks-alerts.md)。
+如果需要在 webhook POST 请求的有效负载中使用自定义属性，请参阅[针对 Azure 指标警报配置 webhook](../azure-monitor/platform/alerts-webhooks.md)。
 
 ## <a name="configure-an-alert-on-a-vm"></a>在 VM 上配置警报
 
@@ -343,7 +343,7 @@ $Encryptedpassword
 
   |**设置** | **值** | **详细信息** |
   |---|---|---|
-  |**Name**|TCP_Segments_Sent_Exceeded|警报规则的名称。|
+  |**名称**|TCP_Segments_Sent_Exceeded|警报规则的名称。|
   |**说明**|发送的 TCP 段已超出阈值|警报规则的说明。||
   |**指标**|发送的 TCP 段| 用于触发警报的指标。 |
   |**条件**|大于| 评估指标时要使用的条件。|

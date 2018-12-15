@@ -1,23 +1,23 @@
 ---
 title: 在 Azure IoT Central 应用程序中创建和管理事件规则 | Microsoft Docs
 description: 可以通过 Azure IoT Central 事件规则以近实时方式监视设备并自动调用操作（例如在触发规则时发送电子邮件）。
-author: ankitgupta
+author: ankitscribbles
 ms.author: ankitgup
 ms.date: 08/14/2018
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 889f3928ee72c035035abb635eb71ec0b06a3b45
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: af85ff8272853be82bae5c79622295fddfc60ade
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45730143"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53337268"
 ---
 # <a name="create-an-event-rule-and-set-up-notifications-in-your-azure-iot-central-application"></a>在 Azure IoT Central 应用程序中创建事件规则并设置通知
 
-本文适用于操作员、构建者和管理员。
+*本文适用于操作员、构建者和管理员。*
 
 可以使用 Azure IoT Central 对连接的设备进行远程监视。 可以通过 Azure IoT Central 规则近乎实时地监视设备并自动调用操作（例如发送电子邮件或触发 Microsoft Flow）。 只需几次单击即可定义用于监视设备数据的条件并配置相应操作。 本文介绍如何创建规则来监视设备发送的事件。
 
@@ -36,7 +36,7 @@ ms.locfileid: "45730143"
 
 1. 如果尚未创建任何规则，则会看到以下屏幕：
 
-    ![尚无规则](media\howto-create-event-rules\Rules_Landing_Page.png)
+    ![尚无规则](media/howto-create-event-rules/Rules_Landing_Page.png)
 
 
 1. 在“规则”选项卡上，依次单击“编辑模板”和“+ 新建规则”，即可查看可以创建的规则类型。
@@ -44,14 +44,14 @@ ms.locfileid: "45730143"
 
 1. 单击“事件”磁贴创建事件监视规则。
 
-    ![规则类型](media\howto-create-event-rules\Rule_Types.png)
+    ![规则类型](media/howto-create-event-rules/Rule_Types.png)
 
     
 1. 输入一个有助于在此设备模板中识别该规则的名称。
 
 1. 若要立即为所有根据此模板创建的设备启用此规则，请将“为此模板的所有设备启用规则”切换为开启状态。
 
-    ![规则详细信息](media\howto-create-event-rules\Rule_Detail.png)
+    ![规则详细信息](media/howto-create-event-rules/Rule_Detail.png)
 
     此规则自动应用到该设备模板下的所有设备。
 
@@ -63,7 +63,7 @@ ms.locfileid: "45730143"
 
 1. 从“度量”下拉列表中选择要监视的事件。 在此示例中，已选择“风扇电机错误”事件。
 
-   ![条件](media\howto-create-event-rules\Condition_Filled_Out.png) 
+   ![条件](media/howto-create-event-rules/Condition_Filled_Out.png) 
 
 
 1. 或者，还可将“计数”设为“聚合”，并提供相应阈值。
@@ -73,7 +73,7 @@ ms.locfileid: "45730143"
  
     例如，如果要对 5 分钟内存在超过 3 个设备事件的情况发出警报，请选择事件，然后将聚合函数设为“计数”，将运算符设为“大于”，并将“阈值”设为“3”。 将“聚合时间段”设为“5 分钟”。 设备在 5 分钟内发送超过 3 个事件时，此规则会触发。 规则评估频率与“聚合时间段”相同，也就是说，此例中规则每隔 5 分钟评估一次。 
 
-    ![添加事件条件](media\howto-create-event-rules\Aggregate_Condition_Filled_Out.png)
+    ![添加事件条件](media/howto-create-event-rules/Aggregate_Condition_Filled_Out.png)
 
     >[!NOTE] 
     >“条件”下可添加多个事件度量。 如果指定多个条件，必须满足所有条件才能触发该规则。 每个条件通过“AND”子句隐式联接。 使用聚合时，必须聚合每个度量。
@@ -84,14 +84,14 @@ ms.locfileid: "45730143"
 
 1. 选择“操作”旁边的“+”。 在此处可以看到可用操作的列表。 
 
-    ![添加操作](media\howto-create-event-rules\Add_Action.png)
+    ![添加操作](media/howto-create-event-rules/Add_Action.png)
 
 1. 选择“电子邮件”操作，在“收件人”字段中输入有效的电子邮件地址，并提供一个说明，用于在触发规则时显示在电子邮件的正文中。
 
     > [!NOTE]
     > 电子邮件只发送给那些已添加到应用程序中并已至少登录一次的用户。 详细了解 Azure IoT Central 中的[用户管理](howto-administer.md)。
 
-   ![配置操作](media\howto-create-event-rules\Configure_Action.png)
+   ![配置操作](media/howto-create-event-rules/Configure_Action.png)
 
 1. 若要保存规则，请选择“保存”。 此规则数分钟即可生效，然后就开始监视发送到应用程序的事件。 匹配规则中指定的条件时，规则会触发配置的电子邮件操作。
 

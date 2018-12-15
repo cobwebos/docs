@@ -3,23 +3,22 @@ title: Azure 顾问高可用性建议 | Microsoft Docs
 description: 使用 Azure 顾问提高 Azure 部署的高可用性。
 services: advisor
 documentationcenter: NA
-author: manbeenkohli
+author: kasparks
 manager: carmonm
 editor: ''
 ms.assetid: ''
 ms.service: advisor
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/16/2016
-ms.author: makohli
-ms.openlocfilehash: 2216b915c47ea05d3303ca02e51e976490ea36c6
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.author: kasparks
+ms.openlocfilehash: 61e85861ab5829620699d07fe24b1ebfdfc7cbdc
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49068343"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52839496"
 ---
 # <a name="advisor-high-availability-recommendations"></a>顾问高可用性建议
 
@@ -34,7 +33,7 @@ Azure 顾问可帮助确保并提高业务关键应用程序的连续性。 可�
 
 ## <a name="ensure-availability-set-fault-tolerance"></a>确保可用性集容错 
 
-要为应用程序提供冗余，建议将两个或更多虚拟机组合到一个可用性集中。 顾问标识包含单个虚拟机的可用性集，并建议向其中添加一个或多个虚拟机。 这种配置可以确保在计划内或计划外维护事件期间，至少有一个虚拟机可用，并满足 Azure 虚拟机 SLA 要求。 可以选择创建虚拟机，或将现有的虚拟机添加到可用性集。  
+要为应用程序提供冗余，建议将两个或更多虚拟机组合到一个可用性集中。 顾问标识包含单个虚拟机的可用性集，并建议向其中添加一个或多个虚拟机。 这种配置可以确保在计划内或计划外维护事件期间，至少有一个虚拟机可用，并满足 Azure 虚拟机 SLA 要求。 可以选择创建虚拟机，或将现有的虚拟机添加到可用性集。  
 
 ## <a name="ensure-application-gateway-fault-tolerance"></a>确保应用程序网关容错
 为了确保由应用程序网关提供支持的任务关键型应用程序的业务连续性，顾问会标识没有针对容错进行配置的应用程序网关实例，并建议可以执行的修正操作。 顾问会标识中型或大型单实例应用程序网关，并建议至少再添加一个实例。 它还标识单实例或多实例小型应用程序网关，并建议迁移到中型或大型 SKU。 顾问建议执行这些操作以确保应用程序网关实例配置为满足这些资源的当前 SLA 要求。

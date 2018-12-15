@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/02/18
 ms.author: jeconnoc
-ms.openlocfilehash: d3aeb930dcb325aebc8c6b0a9dfde3602312618b
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: b288c6a64572287c460e82cd8746a8504d264933
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39001457"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53322937"
 ---
 # <a name="collect-performance-counters-for-your-azure-cloud-service"></a>收集 Azure 云服务的性能计数器
 
@@ -127,7 +127,7 @@ Application Insights 会自动收集以下性能计数器：
 
 要收集的性能计数器在 **diagnostics.wadcfgx** 文件中定义。 请在 Visual Studio 中打开此文件（为每个角色定义了此文件），并找到 **DiagnosticsConfiguration** > **PublicConfig** > **WadCfg** > **DiagnosticMonitorConfiguration** > **PerformanceCounters** 元素。 将新的 **PerformanceCounterConfiguration** 元素添加为子级。 此元素有两个属性：`counterSpecifier` 和 `sampleRate`。 `counterSpecifier` 属性定义要收集的系统性能计数器集（请参阅上一部分）。 `sampleRate` 值指示轮询值的频率。 将会根据父 `PerformanceCounters` 元素的 `scheduledTransferPeriod` 属性值，将所有性能计数器作为一个整体传输到 Azure。
 
-有关 `PerformanceCounters` 架构元素的详细信息，请参阅 [Azure 诊断架构](../monitoring-and-diagnostics/azure-diagnostics-schema-1dot3-and-later.md#performancecounters-element)。
+有关 `PerformanceCounters` 架构元素的详细信息，请参阅 [Azure 诊断架构](../azure-monitor/platform/diagnostics-extension-schema-1dot3.md#performancecounters-element)。
 
 `sampleRate` 属性定义的时间段使用 XML 持续时间数据类型来指示轮询性能计数器的频率。 在以下示例中，频率设置为 `PT3M`，表示 `[P]eriod[T]ime[3][M]inutes`：每隔 3 分钟。
 
@@ -297,4 +297,4 @@ counterServiceUsed.Increment();
 - [适用于 Azure 云服务的 Application Insights](../application-insights/app-insights-cloudservices.md#performance-counters)
 - [Application Insights 中的系统性能计数器](../application-insights/app-insights-performance-counters.md)
 - [指定计数器路径](https://msdn.microsoft.com/library/windows/desktop/aa373193(v=vs.85))
-- [Azure 诊断架构 - 性能计数器](../monitoring-and-diagnostics/azure-diagnostics-schema-1dot3-and-later.md#performancecounters-element)
+- [Azure 诊断架构 - 性能计数器](../azure-monitor/platform/diagnostics-extension-schema-1dot3.md#performancecounters-element)

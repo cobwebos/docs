@@ -10,17 +10,15 @@ ms.assetid: 8b4e56bc-2d4f-4648-a236-16e9e732ebef
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/16/2018
 ms.author: magoedte
-ms.component: ''
-ms.openlocfilehash: 761140b1022f5a1c1cd523c6e0e52193ff2a9700
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: a006e9a9eb3fe4d9dc049e29eb404e5edf8f35c9
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52429982"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53342130"
 ---
 # <a name="monitor-surface-hubs-with-log-analytics-to-track-their-health"></a>使用 Log Analytics 监视 Surface Hub 以跟踪其运行状况
 
@@ -35,7 +33,7 @@ ms.locfileid: "52429982"
 
 * [Log Analytics 订阅](https://azure.microsoft.com/pricing/details/log-analytics/)级别，用于支持要监视的设备数。 根据注册设备的数量以及处理的数据量，Log Analytics 定价会有所不同。 在规划 Surface Hub 的部署时需要考虑这一点。
 
-添加一个现有的 Log Analytics 工作区，或新建一个工作区。 有关使用这两种方法的详细说明，请参见[在 Azure 门户中创建 Log Analytics 工作区](../../log-analytics/log-analytics-quick-create-workspace.md)。 Log Analytics 工作区配置完成后，可通过两种方式注册 Surface Hub 设备：
+添加一个现有的 Log Analytics 工作区，或新建一个工作区。 有关使用这两种方法的详细说明，请参见[在 Azure 门户中创建 Log Analytics 工作区](../../azure-monitor/learn/quick-create-workspace.md)。 Log Analytics 工作区配置完成后，可通过两种方式注册 Surface Hub 设备：
 
 * 通过 Intune 自动注册
 * 通过 Surface Hub 设备上的“**设置**”手动注册。
@@ -84,8 +82,8 @@ Intune 然后会在 Log Analytics 工作区中注册设备，从而将 Log Analy
 
    ![Surface Hub 仪表板](./media/surface-hubs/surface-hub-dashboard.png)
 
-可以根据现有或自定义的日志搜索创建[警报](../../monitoring-and-diagnostics/monitoring-overview-alerts.md)。 通过使用 Log Analytics 从 Surface Hub 收集的数据，可以按照为设备定义的条件搜索问题和警报。
+可以根据现有或自定义的日志搜索创建[警报](../../azure-monitor/platform/alerts-overview.md)。 通过使用 Log Analytics 从 Surface Hub 收集的数据，可以按照为设备定义的条件搜索问题和警报。
 
 ## <a name="next-steps"></a>后续步骤
-* 使用 [Log Analytics 中的日志搜索](../../log-analytics/log-analytics-queries.md)，查看详细的 Surface Hub 数据。
-* 创建[警报](../../monitoring-and-diagnostics/monitoring-overview-alerts.md)，以便在 Surface Hub 出现问题时通知你。
+* 使用 [Log Analytics 中的日志搜索](../../azure-monitor/log-query/log-query-overview.md)，查看详细的 Surface Hub 数据。
+* 创建[警报](../../azure-monitor/platform/alerts-overview.md)，以便在 Surface Hub 出现问题时通知你。

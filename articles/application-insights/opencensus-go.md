@@ -9,12 +9,12 @@ ms.date: 09/15/2018
 ms.service: application-insights
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 64e49dee5bf560dec263e67daa3c130a0ba8b40c
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 1b4acea71633f79a5465d52c465b4c9f9884f927
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50420942"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52996285"
 ---
 # <a name="collect-distributed-traces-from-go-preview"></a>从 Go（预览版）收集分布式跟踪
 
@@ -94,7 +94,7 @@ Application Insights 现在支持通过与 [OpenCensus](https://opencensus.io) �
         // you may not use this file except in compliance with the License.
         // You may obtain a copy of the License at
         //
-        //     http://www.apache.org/licenses/LICENSE-2.0
+        //     https://www.apache.org/licenses/LICENSE-2.0
         //
         // Unless required by applicable law or agreed to in writing, software
         // distributed under the License is distributed on an "AS IS" BASIS,

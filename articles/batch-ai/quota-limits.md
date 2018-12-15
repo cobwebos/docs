@@ -11,14 +11,17 @@ ms.topic: article
 ms.date: 08/08/2018
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: cade124cefbd4e2e63ab4cb6fa4f22b3bd672ad0
-ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
+ROBOTS: NOINDEX
+ms.openlocfilehash: 16032ec5ba1e613462f92b86281ce93153b70923
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44391804"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53409711"
 ---
 # <a name="batch-ai-service-quotas-and-limits"></a>Batch AI 服务配额和限制
+
+[!INCLUDE [batch-ai-retiring](../../includes/batch-ai-retiring.md)]
 
 与其他 Azure 服务一样，与 Batch AI 服务关联的某些资源存在限制。 在 Batch AI 中，这些限制是[提供](https://azure.microsoft.com/global-infrastructure/services/)服务的每个区域在订阅级别应用的默认配额。 本文将描述这些默认值，以及如何请求提高配额。
 
@@ -66,7 +69,7 @@ ms.locfileid: "44391804"
 2. 在 Batch AI 菜单上单击“新建支持请求”。
 3. 在“基本信息”中：
    
-    a. “问题类型” > “配额”
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 “问题类型” > “配额”
    
     b. **订阅** > 选择自己的订阅。
    
@@ -77,7 +80,7 @@ ms.locfileid: "44391804"
     单击“下一步”。
 4. 在“问题”中：
    
-    a. 根据[业务影响情况][support_sev]选择“严重性”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 根据[业务影响情况][support_sev]选择“严重性”。
    
     b. 在“配额详细信息”中，指定位置、配额类型和资源类型。 指定要请求的新限制。 单击“保存并继续”。
 
@@ -86,7 +89,7 @@ ms.locfileid: "44391804"
     单击“下一步”。
 5. 在“联系人信息”中：
    
-    a. 选择“首选联系方法”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 选择“首选联系方法”。
    
     b. 输入并确认所需的联系人详细信息。
    

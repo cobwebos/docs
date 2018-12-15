@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/16/2017
 ms.author: alkohli
-ms.openlocfilehash: d47109d541a3df93d9234e27e53d1538f6bc4c6e
-ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
+ms.openlocfilehash: 7e35aa8120c455b8cc0d0881a9ceb5120c57deff
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2017
-ms.locfileid: "24879052"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52969662"
 ---
 # <a name="available-regions-for-your-storsimple"></a>StorSimple 的可用区域
 
@@ -47,7 +47,7 @@ Azure 数据中心在全球多个地理位置运行，目的是满足客户对�
 
 ![storsimple-device-manager-service-regions](./media/storsimple-region/storsimple-device-manager-service-regions.png)
 
-对于 Azure 政府云，StorSimple 设备管理器服务在美国爱荷华州政府和美国弗吉尼亚州政府数据中心提供。
+对于 Azure 政府云，StorSimple 设备管理器服务在 US Gov 爱荷华州和 US Gov 弗吉尼亚州数据中心提供。
 
 ## <a name="region-availability-for-data-stored-in-storsimple"></a>存储在 StorSimple 中的数据的区域可用性
 
@@ -70,22 +70,22 @@ StorSimple 设备在不同的地理位置或国家/地区可用，具体取决�
 | #  | 国家/地区        | #  | 国家/地区     | #  | 国家/地区      | #  | 国家/地区              |
 |----|----------------|----|-------------|----|--------------|----|----------------------|
 | 1  | 澳大利亚      | 16 | 香港特别行政区   | 31 | 新西兰  | 46 | 南非         |
-| #N/A  | 奥地利        | 17 | 匈牙利     | 32 | 尼日利亚      | 47 | 韩国          |
+| 2  | 奥地利        | 17 | 匈牙利     | 32 | 尼日利亚      | 47 | 韩国          |
 | 3  | 巴林        | 18 | 冰岛     | 33 | 挪威       | 48 | 西班牙                |
 | 4  | 比利时        | 19 | 印度       | 34 | 秘鲁         | 49 | 斯里兰卡            |
 | 5  | 巴西         | 20 | 印度尼西亚   | 35 | 菲律宾  | 50 | 瑞典               |
 | 6  | 加拿大         | 21 | 爱尔兰     | 36 | 波兰       | 51 | 瑞士          |
-| 7  | 智利          | 22 | 以色列      | 37 | 葡萄牙     | 52 | 中国台湾                 |
+| 7  | 智利          | 22 | 以色列      | 37 | 葡萄牙     | 52 | 中国台湾               |
 | 8  | 哥伦比亚       | 23 | 意大利       | 38 | 波多黎各  | 53 | 泰国             |
 | 9  | 捷克共和国 | 24 | 日本       | 39 | 卡塔尔        | 54 | 土耳其               |
 | 10 | 丹麦        | 25 | 肯尼亚       | 40 | 罗马尼亚      | 55 | 乌克兰              |
 | 11 | 埃及          | 26 | 科威特      | 41 | 俄罗斯       | 56 | 阿拉伯联合酋长国 |
-| 12 | 芬兰        | 27 | 澳门       | 42 | 沙特阿拉伯 | 57 | 英国       |
+| 12 | 芬兰        | 27 | 中国澳门       | 42 | 沙特阿拉伯 | 57 | 英国       |
 | 13 | 法国         | 28 | 马来西亚    | 43 | 新加坡    | 58 | 美国        |
 | 14 | 德国        | 29 | 墨西哥      | 44 | 斯洛伐克     | 59 | 越南              |
 | 15 | 希腊         | 30 | 荷兰 | 45 | 斯洛文尼亚     | 60 | 克罗地亚              |
 
-此列表会变化，因为会不断添加更多的国家/地区。 如需地理位置的最新列表，请参阅[产品条款](https://www.microsoft.com/en-us/Licensing/product-licensing)中的“存储阵列条款附录”。
+此列表会变化，因为会不断添加更多的国家/地区。 如需地理位置的最新列表，请参阅[产品条款](https://www.microsoft.com/en-us/licensing/product-licensing/products)中的“存储阵列条款附录”。
 
 Microsoft 可以向前述列表中的地理位置寄送 StorSimple 物理硬件并提供更换用的硬件备件。
 

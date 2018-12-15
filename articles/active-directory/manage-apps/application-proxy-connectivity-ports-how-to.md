@@ -15,16 +15,16 @@ ms.topic: conceptual
 ms.date: 05/21/2018
 ms.author: barbkess
 ms.reviewer: asteen
-ms.openlocfilehash: af43b1dd0a6ccb60ba6911bce8dd540aed5c0db4
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: bd3c0d2dffb2f3ed4569d115c21524377074bed3
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44354356"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53136624"
 ---
 # <a name="how-to-open-the-firewall-ports-required-for-an-application-proxy-application"></a>如何打开应用程序代理应用程序所需的防火墙端口
 
-若要查看所需端口的完整列表及每个端口的功能，请参阅[应用程序代理文档](application-proxy-enable.md)的先决条件部分。 请注意，应用程序代理仅使用出站端口。
+若要查看所需端口的完整列表及每个端口的功能，请参阅[应用程序代理文档](application-proxy-add-on-premises-application.md)的先决条件部分。 请注意，应用程序代理仅使用出站端口。
 
 还可以通过从本地网络打开[连接器端口测试工具](https://aadap-portcheck.connectorporttest.msappproxy.net/)，检查是否已打开所需的全部端口。 绿色复选标记越多表示复原能力越强。 
 

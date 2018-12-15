@@ -10,17 +10,15 @@ ms.assetid: 81eb41b8-eb62-4eb2-9f7b-fde5c89c9b47
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/27/2017
 ms.author: magoedte
-ms.component: ''
-ms.openlocfilehash: 65acbfbecf8ae34ff25780bfc161c52b5adc1d65
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 063cedc679c3365e6352549e78c75ecff903cae7
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52634908"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53193002"
 ---
 # <a name="optimize-your-active-directory-environment-with-the-active-directory-health-check-solution-in-log-analytics"></a>使用 Log Analytics 中的 Active Directory 运行状况检查解决方案优化 Active Directory 环境
 
@@ -55,7 +53,7 @@ ms.locfileid: "52634908"
 
 1. 如果域控制器尚不受 System Center 2016 - Operations Manager 或 Operations Manager 2012 R2 的监视，请安装 [Microsoft Monitoring Agent (MMA)](../../azure-monitor/platform/agent-windows.md)。
 2. 如果域控制器受 System Center 2016 - Operations Manager 或 Operations Manager 2012 R2 的监视并且管理组未与 Log Analytics 服务集成，则它可与 Log Analytics 共用多个宿主，以收集数据并将其转发到服务，同时仍可由 Operations Manager 监视。  
-3. 否则，如果 Operations Manager 管理组已与服务集成，则在工作区中启用解决方案后，需要遵循[添加代理管理的计算机](../../log-analytics/log-analytics-om-agents.md#connecting-operations-manager-to-log-analytics)中的步骤，为数据收集服务添加域控制器。  
+3. 否则，如果 Operations Manager 管理组已与服务集成，则在工作区中启用解决方案后，需要遵循[添加代理管理的计算机](../../azure-monitor/platform/om-agents.md#connecting-operations-manager-to-log-analytics)中的步骤，为数据收集服务添加域控制器。  
 
 域控制器上的代理向 Operations Manager 管理组报告、收集数据、将数据转发到为其分配的管理服务器，然后将数据从管理服务器直接发送到 Log Analytics 服务。  数据不会写入 Operations Manager 数据库。  
 
@@ -186,4 +184,4 @@ Active Directory 运行状况检查使用已启用的代理收集以下来源的
 * 有的，请参阅上面的 [忽略建议](#ignore-recommendations) 部分。
 
 ## <a name="next-steps"></a>后续步骤
-* 使用 [Log Analytics 中的日志搜索](../../log-analytics/log-analytics-queries.md)了解如何分析详细的 AD 运行状况检查数据和建议。
+* 使用 [Log Analytics 中的日志搜索](../../azure-monitor/log-query/log-query-overview.md)了解如何分析详细的 AD 运行状况检查数据和建议。

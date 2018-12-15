@@ -6,14 +6,14 @@ author: rajani-janaki-ram
 manager: gauravd
 ms.service: site-recovery
 ms.topic: article
-ms.date: 07/06/2018
+ms.date: 11/27/2018
 ms.author: rajanaki
-ms.openlocfilehash: f890fc6e854f1d56d396c56ddfd8cc5a0481282f
-ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
+ms.openlocfilehash: 0b5fe1b1df306bf0930715bc6cfb586e5445f85c
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2018
-ms.locfileid: "51976938"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52839953"
 ---
 # <a name="reprotect-failed-over-azure-vms-to-the-primary-region"></a>重新保护已故障转移到主要区域的 Azure VM
 

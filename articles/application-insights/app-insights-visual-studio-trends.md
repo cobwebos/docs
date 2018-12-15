@@ -10,18 +10,17 @@ ms.service: application-insights
 ms.custom: vs-azure
 ms.workload: azure-vs
 ms.tgt_pltfrm: ibiza
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/17/2017
 ms.reviewer: mbullwin
 ms.pm_owner: daviste;NumberByColors
 ms.author: daviste
-ms.openlocfilehash: 7de545870b87d4b221bba8eba32652a00c9ad2b2
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: d84f37e8350778b3b1fbc9d618df451e1d3ca9f8
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50139902"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52723478"
 ---
 # <a name="analyzing-trends-in-visual-studio"></a>在 Visual Studio 中分析趋势
 Application Insights 趋势工具以可视化方式呈现 Web 应用程序在各时间段的重要遥测事件变化，帮助快速识别问题和异常。 “趋势”提供更详细诊断信息的链接，可帮助改进应用程序性能、跟踪异常的原因，以及从自定义事件中找到见解。

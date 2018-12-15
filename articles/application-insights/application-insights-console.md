@@ -9,22 +9,21 @@ ms.assetid: 3b722e47-38bd-4667-9ba4-65b7006c074c
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/28/2018
 ms.reviewer: lmolkova
 ms.author: mbullwin
-ms.openlocfilehash: 6d161a49b35bbdfedcb27dd91f9f09dcf7ba4133
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: f2f237d250a6b6e2a0f6ed2e62540968d9fcc7eb
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43122020"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52997972"
 ---
 # <a name="application-insights-for-net-console-applications"></a>适用于 .NET 控制台应用程序的 Application Insights
 使用 [Application Insights](app-insights-overview.md) 可以监视 Web 应用程序的可用性、性能和使用情况。
 
-需要 [Microsoft Azure](http://azure.com) 订阅。 使用 Microsoft 帐户登录，该帐户可能适用于 Windows、XBox Live 或其他 Microsoft 云服务。 团队可能拥有 Azure 组织订阅：要求所有者使用 Microsoft 帐户你将加入其中。
+需要 [Microsoft Azure](https://azure.com) 订阅。 使用 Microsoft 帐户登录，该帐户可能适用于 Windows、XBox Live 或其他 Microsoft 云服务。 团队可能拥有 Azure 组织订阅：要求所有者使用 Microsoft 帐户你将加入其中。
 
 ## <a name="getting-started"></a>入门
 
@@ -125,7 +124,7 @@ TelemetryConfiguration.Active.TelemetryInitializers.Add(new OperationCorrelation
 TelemetryConfiguration.Active.TelemetryInitializers.Add(new HttpDependenciesParsingTelemetryInitializer());
 ```
 
-* 对于 .NET Framework Windows 应用，还可安装并初始化性能计数器收集器模块，如[此处](http://apmtips.com/blog/2017/02/13/enable-application-insights-live-metrics-from-code/)所述
+* 对于 .NET Framework Windows 应用，还可安装并初始化性能计数器收集器模块，如[此处](https://apmtips.com/blog/2017/02/13/enable-application-insights-live-metrics-from-code/)所述
 
 #### <a name="full-example"></a>完整示例
 

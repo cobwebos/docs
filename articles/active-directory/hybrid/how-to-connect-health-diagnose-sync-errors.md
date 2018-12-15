@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/11/2018
 ms.author: zhiweiw
-ms.openlocfilehash: c077e8592157b5c09dd1bc99934afd9f687b1da1
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 8841a4d216160af4ed731570b40754307ffbb5a4
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51282520"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52996047"
 ---
 # <a name="diagnose-and-remediate-duplicated-attribute-sync-errors"></a>诊断并修正重复的属性同步错误
 
@@ -28,7 +28,7 @@ ms.locfileid: "51282520"
 - 它提供诊断过程，可缩小重复的属性同步错误的范围。 并且还能提供特定的修复。
 - 它可对 Azure AD 中专有的场景应用修复，一步即可解决错误。
 - 无需升级或配置即可启用此功能。
-有关 Azure AD 的详细信息，请参阅[标识同步和重复属性复原](https://aka.ms/dupattributeresdocs)。
+有关 Azure AD 的详细信息，请参阅[标识同步和重复属性复原](how-to-connect-syncservice-duplicate-attribute-resiliency.md)。
 
 ## <a name="problems"></a>问题
 ### <a name="a-common-scenario"></a>常见方案

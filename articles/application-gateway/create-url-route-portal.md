@@ -11,12 +11,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 10/25/2018
 ms.author: victorh
-ms.openlocfilehash: 0c59405cc6d46bcaffbab0e2a746467eec26de69
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: e106094ce94b7f232fd5687988af2bd11b971e3f
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50024114"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "53001934"
 ---
 # <a name="create-an-application-gateway-with-path-based-routing-rules-using-the-azure-portal"></a>通过 Azure 门户使用基于路径的路由规则创建应用程序网关
 
@@ -39,7 +39,7 @@ ms.locfileid: "50024114"
 
 ## <a name="log-in-to-azure"></a>登录 Azure
 
-在 [http://portal.azure.com](http://portal.azure.com) 登录到 Azure 门户
+在 [https://portal.azure.com](https://portal.azure.com) 登录到 Azure 门户
 
 ## <a name="create-an-application-gateway"></a>创建应用程序网关
 

@@ -9,12 +9,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 04/23/2018
 ms.author: hrasheed
-ms.openlocfilehash: 3c16d85479399d7988be18f9b852563617bb824b
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: e1b4681bc8e42294be6b47a04a24e28f81703e6f
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51632640"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53436851"
 ---
 # <a name="develop-java-mapreduce-programs-for-apache-hadoop-on-hdinsight"></a>为 HDInsight 上的 Apache Hadoop 开发 Java MapReduce 程序
 
@@ -25,12 +25,12 @@ ms.locfileid: "51632640"
 
 ## <a name="prerequisites"></a>先决条件
 
-* [Java JDK](http://www.oracle.com/technetwork/java/javase/downloads/) 8 或更高版本（或类似程序，如 OpenJDK）。
+* [Java JDK](https://www.oracle.com/technetwork/java/javase/downloads/) 8 或更高版本（或类似程序，如 OpenJDK）。
     
     > [!NOTE]
     > HDInsight 版本 3.4 及更早版本使用 Java 7。 HDInsight 3.5 及更高版本使用 Java 8。
 
-* [Apache Maven](http://maven.apache.org/)
+* [Apache Maven](https://maven.apache.org/)
 
 ## <a name="configure-development-environment"></a>配置开发环境
 
@@ -63,7 +63,7 @@ ms.locfileid: "51632640"
 
     此命令将使用 `artifactID` 参数指定的名称（此示例中为 **wordcountjava**）创建目录。此目录包含以下项：
 
-   * `pom.xml` - [项目对象模型 (POM)](http://maven.apache.org/guides/introduction/introduction-to-the-pom.html)，其中包含用于生成项目的信息和配置详细信息。
+   * `pom.xml` - [项目对象模型 (POM)](https://maven.apache.org/guides/introduction/introduction-to-the-pom.html)，其中包含用于生成项目的信息和配置详细信息。
 
    * `src` - 包含应用程序的目录。
 
@@ -94,7 +94,7 @@ ms.locfileid: "51632640"
     </dependency>
    ```
 
-    这会定义具有特定版本（在 &lt;version\> 中列出）的库（在 &lt;artifactId\> 中列出）。 在编译时，会从默认 Maven 存储库下载这些依赖项。 可使用 [Maven 存储库搜索](http://search.maven.org/#artifactdetails%7Corg.apache.hadoop%7Chadoop-mapreduce-examples%7C2.5.1%7Cjar)来查看详细信息。
+    这会定义具有特定版本（在 &lt;version\> 中列出）的库（在 &lt;artifactId\> 中列出）。 在编译时，会从默认 Maven 存储库下载这些依赖项。 可使用 [Maven 存储库搜索](https://search.maven.org/#artifactdetails%7Corg.apache.hadoop%7Chadoop-mapreduce-examples%7C2.5.1%7Cjar)来查看详细信息。
    
     `<scope>provided</scope>` 告诉 Maven 这些依赖关系不应与此应用程序一起打包，因为它们会在运行时由 HDInsight 群集提供。
 
@@ -138,7 +138,7 @@ ms.locfileid: "51632640"
     </build>
    ```
 
-    第一个插件配置 [Maven Shade Plugin](http://maven.apache.org/plugins/maven-shade-plugin/)，用于生成 uberjar（有时称为 fatjar），其中包含应用程序所需的依赖项。 它还可以防止在 jar 包中复制许可证，复制许可证在某些系统中可能会导致问题。
+    第一个插件配置 [Maven Shade Plugin](https://maven.apache.org/plugins/maven-shade-plugin/)，用于生成 uberjar（有时称为 fatjar），其中包含应用程序所需的依赖项。 它还可以防止在 jar 包中复制许可证，复制许可证在某些系统中可能会导致问题。
 
     第二个插件配置目标 Java 版本。
 
@@ -285,15 +285,15 @@ ms.locfileid: "51632640"
 
 在本文档中，学习了如何开发 Java MapReduce 作业。 请参阅以下文档，了解使用 HDInsight 的其他方式。
 
-* [将 Hive 与 HDInsight 配合使用](hdinsight-use-hive.md)
-* [将 Pig 与 HDInsight 配合使用](hdinsight-use-pig.md)
+* [将 Apache Hive 和 HDInsight 配合使用](hdinsight-use-hive.md)
+* [将 Apache Pig 和 HDInsight 配合使用](hdinsight-use-pig.md)
 * [将 MapReduce 与 HDInsight 配合使用](hdinsight-use-mapreduce.md)
 
 有关详细信息，另请参阅 [Java 开发人员中心](https://azure.microsoft.com/develop/java/)。
 
-[azure-purchase-options]: http://azure.microsoft.com/pricing/purchase-options/
-[azure-member-offers]: http://azure.microsoft.com/pricing/member-offers/
-[azure-free-trial]: http://azure.microsoft.com/pricing/free-trial/
+[azure-purchase-options]: https://azure.microsoft.com/pricing/purchase-options/
+[azure-member-offers]: https://azure.microsoft.com/pricing/member-offers/
+[azure-free-trial]: https://azure.microsoft.com/pricing/free-trial/
 
 [hdinsight-use-sqoop]:hdinsight-use-sqoop.md
 [hdinsight-ODBC]: hdinsight-connect-excel-hive-ODBC-driver.md
@@ -303,5 +303,5 @@ ms.locfileid: "51632640"
 [hdinsight-admin-powershell]: hdinsight-administer-use-powershell.md
 [hdinsight-power-query]:apache-hadoop-connect-excel-power-query.md
 
-[powershell-PSCredential]: http://social.technet.microsoft.com/wiki/contents/articles/4546.working-with-passwords-secure-strings-and-credentials-in-windows-powershell.aspx
+[powershell-PSCredential]: https://social.technet.microsoft.com/wiki/contents/articles/4546.working-with-passwords-secure-strings-and-credentials-in-windows-powershell.aspx
 

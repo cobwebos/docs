@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/02/2018
 ms.author: apimpm
-ms.openlocfilehash: e8d0522dc4cc218792569498c149b32b3de652cb
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.openlocfilehash: e2f0fb6333f3786b29c2a7516e46a4599d6e89ed
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52443570"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52961003"
 ---
 # <a name="how-to-save-and-configure-your-api-management-service-configuration-using-git"></a>如何使用 Git 保存和配置 API 管理服务
 
@@ -81,7 +81,7 @@ ms.locfileid: "52443570"
 > 记下此密码。 离开此页面后，不会再次显示该密码。
 > 
 
-以下示例使用 [Git for Windows](http://www.git-scm.com/downloads) 中的 Git Bash 工具，但可以使用熟悉的任何 Git 工具。
+以下示例使用 [Git for Windows](https://www.git-scm.com/downloads) 中的 Git Bash 工具，但可以使用熟悉的任何 Git 工具。
 
 使用 Azure 门户提供的命令，在所需文件夹中打开 Git 工具并运行以下命令以将 Git 存储库克隆到本地计算机。
 

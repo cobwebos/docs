@@ -6,6 +6,7 @@ services: machine-learning
 documentationcenter: ''
 author: gopitk
 manager: cgronlun
+ms.custom: seodec18
 ms.assetid: ''
 ms.service: machine-learning
 ms.component: data-science-vm
@@ -15,12 +16,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/08/2018
 ms.author: gokuma
-ms.openlocfilehash: ea8d53ee71e9272167a045e2ea1780828f974d30
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 84dfef65c341ca8023b741a98c26081da36e9ff7
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45573585"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53085121"
 ---
 # <a name="data-science-virtual-machine-based-team-analytics-and-ai-environment"></a>基于数据科学虚拟机的团队分析和 AI 环境 
 [数据科学虚拟机](overview.md) (DSVM) 通过人工智能 (AI) 和数据分析的预建软件在 Azure 平台上提供丰富的环境。 

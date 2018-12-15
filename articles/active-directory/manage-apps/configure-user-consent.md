@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 10/22/2018
 ms.author: barbkess
 ms.reviewer: arvindh
-ms.openlocfilehash: 25f5d79b900cf15a9bdcb8f037fa95494c63b7e1
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.openlocfilehash: 991199747f51f379ee6f3efe8009ab9166c33ac7
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50088239"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52832000"
 ---
 # <a name="configure-the-way-end-users-consent-to-an-application-in-azure-active-directory"></a>配置最终用户对 Azure Active Directory 中应用程序的许可方式
 了解如何配置用户许可应用程序权限的方式。 可以通过授予管理员许可来来简化用户体验。 本文提供配置用户许可的不同方式。 这些方法适用于 Azure Active Directory (Azure AD) 租户中的所有最终用户。 
@@ -73,4 +73,4 @@ ms.locfileid: "50088239"
 
 [同意并为 AzureAD v2.0 聚合应用授予权限](../develop/active-directory-v2-scopes.md)
 
-[AzureAD StackOverflow](http://stackoverflow.com/questions/tagged/azure-active-directory)
+[AzureAD StackOverflow](https://stackoverflow.com/questions/tagged/azure-active-directory)

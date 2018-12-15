@@ -7,13 +7,13 @@ ms.author: mamccrea
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 10/05/2018
-ms.openlocfilehash: 77c761ce72449f91cf91c66219ebc815d1620e94
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.date: 12/04/2018
+ms.openlocfilehash: 637afab45e04c68777f8d1b42817c912cdc09941
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49343668"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53133734"
 ---
 # <a name="azure-stream-analytics-preview-features"></a>Azure 流分析预览功能
 
@@ -22,10 +22,6 @@ ms.locfileid: "49343668"
 ## <a name="public-previews"></a>公共预览版
 
 以下功能以公共预览版提供。 现在可以使用这些功能，但请勿在生产环境中使用它们。
-
-### <a name="azure-stream-analytics-on-iot-edge"></a>Azure IoT Edge 流分析
-
-通过 Azure IoT Edge 流分析，开发人员可在 IoT Edge 设备上部署准实时分析。 有关详细信息，请参阅 [Azure IoT Edge 流分析](stream-analytics-edge.md)文档。
 
 ### <a name="integration-with-azure-machine-learning"></a>与 Azure 机器学习集成
 

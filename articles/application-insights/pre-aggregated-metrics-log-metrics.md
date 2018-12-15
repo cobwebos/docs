@@ -10,12 +10,12 @@ ms.date: 09/18/2018
 ms.service: application-insights
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 136279a94d64b846247c436eb7a5fb487e05b41a
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: d095be8c5d921001ab4a492d2385938020fa8ce0
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46946895"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52967208"
 ---
 # <a name="log-based-and-pre-aggregated-metrics-in-application-insights"></a>Application Insights 中基于日志的指标和预先聚合的指标
 
@@ -55,7 +55,7 @@ ms.locfileid: "46946895"
 
 使用 [trackMetric](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#trackmetric) 或 [GetMetric 和 TrackValue](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#getmetric) API 调用发送的所有指标将自动存储在日志和指标存储中。 但是，自定义指标的基于日志的版本始终保留所有维度，而指标的预先聚合版本在存储时默认不包含任何维度。 可以在[用量和预估成本](https://docs.microsoft.com/azure/application-insights/app-insights-pricing)选项卡上选中“针对自定义指标维度启用警报”，来启用自定义指标维度的收集： 
 
-![用量和预估成本](.\media\pre-aggregated-metrics-log-metrics\001-cost.png)
+![用量和预估成本](./media/pre-aggregated-metrics-log-metrics/001-cost.png)
 
 ## <a name="why-is-collection-of-custom-metrics-dimensions-turned-off-by-default"></a>为何默认禁用了自定义指标维度的收集？
 
@@ -65,7 +65,7 @@ ms.locfileid: "46946895"
 
 使用 Azure Monitor 指标资源管理器可以绘制预先聚合的指标和基于日志的指标的图表，以及创作包含图表的仪表板。 选择所需的 Application Insights 资源后，使用命名空间选取器在标准指标（预览版）和基于日志的指标之间切换，或选择自定义指标命名空间：
 
-![指标命名空间](.\media\pre-aggregated-metrics-log-metrics\002-metric-namespace.png)
+![指标命名空间](./media/pre-aggregated-metrics-log-metrics/002-metric-namespace.png)
 
 ## <a name="next-steps"></a>后续步骤
 

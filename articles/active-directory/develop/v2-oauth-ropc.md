@@ -16,12 +16,12 @@ ms.date: 11/28/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 3beda2dc9214900a11bdd4422637f7dec3ce4924
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 4eb6850e4b6e267e0b4ef83f7639e90308cee989
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52576938"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52841432"
 ---
 # <a name="azure-active-directory-v20-and-the-oauth-20-resource-owner-password-credential"></a>Azure Active Directory v2.0 和 OAuth 2.0 资源所有者密码凭据
 
@@ -46,7 +46,7 @@ ROPC 流是单一请求&mdash;它将客户端标识和用户的凭据发送到 I
 ```
 // Line breaks and spaces are for legibility only.
 
-POST https://login.microsoftonline.com/{tenant}/oauth2/v2.0/authorize?
+POST https://login.microsoftonline.com/{tenant}/oauth2/v2.0/token?
 
 client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 &scope=user.read%20openid%20profile%20offline_access

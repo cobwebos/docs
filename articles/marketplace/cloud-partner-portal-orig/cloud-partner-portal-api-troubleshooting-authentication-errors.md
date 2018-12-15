@@ -14,26 +14,25 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 82a5ef86d1ca35cddb05cb4e126e64cc3759bcc0
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 12ed395855b9d870f8f6e3564dc5b3b899b9c6c1
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48805243"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53313864"
 ---
-<a name="troubleshooting-common-authentication-errors"></a>排查常见的身份验证错误
-------------------------------------------
+# <a name="troubleshooting-common-authentication-errors"></a>排查常见的身份验证错误
 
 此文章提供帮助以排查使用云合作伙伴门户 API 时常见的身份验证错误。
 
-### <a name="unauthorized-error"></a>未授权的错误
+## <a name="unauthorized-error"></a>未授权的错误
 
 如果一直收到 `401 unauthorized` 错误，请验证你访问令牌是否有效。  如果尚未执行此操作，请创建基本 Azure Active Directory (Azure AD) 应用程序和服务主体，如[使用门户创建可访问资源的 Azure Active Directory 应用程序和服务主体](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal)中所述。 然后，使用应用程序或简单的 HTTP POST 请求来验证访问权限。  将需要提供租户 ID、应用程序 ID、对象 ID 和密钥以获取如下图中所示的访问令牌：
 
 ![排查 401 错误](./media/cloud-partner-portal-api-troubleshooting-authentication-errors/troubleshooting-401-error.jpg)
 
 
-### <a name="forbidden-error"></a>禁止错误
+## <a name="forbidden-error"></a>禁止错误
 
 如果收到 `403 forbidden` 错误，请确保已将正确的服务主体添加到云合作伙伴门户中的发布者帐户。
 按照[先决条件](./cloud-partner-portal-api-prerequisites.md)页面中的步骤将服务主体添加到门户。

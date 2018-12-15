@@ -9,19 +9,18 @@ ms.assetid: 4ac803a8-f424-4c0c-b18f-4b9c189a64a5
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/17/2015
 ms.author: mbullwin
-ms.openlocfilehash: e2ec165d0183510487744bc98e31688eb5de0f8c
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: e8fafbe1c5fafd338009b1bdd8c5d838c3fac726
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50959250"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53323280"
 ---
 # <a name="using-powershell-to-set-up-application-insights-for-an-azure-web-app"></a>使用 PowerShell 为 Azure Web 应用设置 Application Insights
-可以将 [Microsoft Azure](https://azure.com) 配置为向 [Azure Application Insights](app-insights-overview.md)[发送 Azure 诊断](../monitoring-and-diagnostics/azure-diagnostics-configure-application-insights.md)。 该诊断与 Azure Cloud Service 和 Azure VM 有关。 它们是对使用 Application Insights SDK 从应用内发送的遥测的补充。 作为在 Azure 中自动处理新建资源过程的一部分，可以使用 PowerShell 配置诊断。
+可以将 [Microsoft Azure](https://azure.com) 配置为向 [Azure Application Insights](app-insights-overview.md)[发送 Azure 诊断](../azure-monitor/platform/diagnostics-extension-to-application-insights.md)。 该诊断与 Azure Cloud Service 和 Azure VM 有关。 它们是对使用 Application Insights SDK 从应用内发送的遥测的补充。 作为在 Azure 中自动处理新建资源过程的一部分，可以使用 PowerShell 配置诊断。
 
 ## <a name="azure-template"></a>Azure 模板
 如果 Web 应用在 Azure 中，并且使用 Azure 资源管理器模板创建资源，可以通过将以下内容添加到资源节点来配置 Application Insights：
@@ -136,6 +135,6 @@ ms.locfileid: "50959250"
 
 ## <a name="see-also"></a>另请参阅
 * [使用 Application Insights 监视 Azure Cloud Service 应用](app-insights-cloudservices.md)
-* [将 Azure 诊断发送到 Application Insights](../monitoring-and-diagnostics/azure-diagnostics-configure-application-insights.md)
+* [将 Azure 诊断发送到 Application Insights](../azure-monitor/platform/diagnostics-extension-to-application-insights.md)
 * [自动配置警报](app-insights-powershell-alerts.md)
 

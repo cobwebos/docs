@@ -2,19 +2,19 @@
 title: 在创建过程中启用 Azure VM 备份
 description: 查看在创建过程中启用 Azure 虚拟机备份的步骤。
 services: backup, virtual-machines
-author: markgalioto
+author: rayne-wiselman
 manager: carmonm
 tags: azure-resource-manager, virtual-machine-backup
 ms.service: backup, virtual-machines
 ms.topic: conceptual
 ms.date: 01/08/2018
 ms.author: trinadhk
-ms.openlocfilehash: 9fd4707a201163002cc15cc9cf97e544e76cf7c6
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ms.openlocfilehash: 518d171c96b9c4f9bf3e195a7130f4c022b7ad07
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35756271"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52879870"
 ---
 # <a name="enable-backup-during-azure-virtual-machine-creation"></a>在 Azure 虚拟机创建过程中启用备份 
 

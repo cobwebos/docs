@@ -2,21 +2,20 @@
 title: 适用于 Functions 1.x 的 Azure Cosmos DB 绑定
 description: 了解如何在 Azure Functions 中使用 Azure Cosmos DB 触发器和绑定。
 services: functions
-documentationcenter: na
 author: craigshoemaker
+ms.author: cshoe
 manager: jeconnoc
 keywords: Azure Functions，函数，事件处理，动态计算，无服务体系结构
 ms.service: azure-functions; cosmos-db
-ms.devlang: multiple
 ms.topic: reference
 ms.date: 11/21/2017
-ms.author: cshoe
-ms.openlocfilehash: 3d4c9e974f92f26b93900318c01dc8a659d8edbe
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.custom: seodec18
+ms.openlocfilehash: 2a501129720447462d1e6e961597b51fa683dc1e
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52276204"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53136199"
 ---
 # <a name="azure-cosmos-db-bindings-for-azure-functions-1x"></a>适用于 Azure Functions 1.x 的 Azure Cosmos DB 绑定
 
@@ -24,7 +23,7 @@ ms.locfileid: "52276204"
 > * [版本 1](functions-bindings-cosmosdb.md)
 > * [第 2 版](functions-bindings-cosmosdb-v2.md)
 
-本文介绍如何在 Azure Functions 中使用 [Azure Cosmos DB](..\cosmos-db\serverless-computing-database.md) 绑定。 Azure Functions 支持 Azure Cosmos DB 的触发器、输入和输出绑定。
+本文介绍如何在 Azure Functions 中使用 [Azure Cosmos DB](../cosmos-db/serverless-computing-database.md) 绑定。 Azure Functions 支持 Azure Cosmos DB 的触发器、输入和输出绑定。
 
 > [!NOTE]
 > 本文适用于 Azure Functions 1.x。  若要了解如何在 Functions 2.x 中使用这些绑定，请参阅[适用于 Azure Functions 2.x 的 Azure Cosmos DB 绑定](functions-bindings-cosmosdb-v2.md)。
@@ -38,7 +37,7 @@ ms.locfileid: "52276204"
 
 ## <a name="packages---functions-1x"></a>包 - Functions 1.x
 
-[Microsoft.Azure.WebJobs.Extensions.DocumentDB](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.DocumentDB) NuGet 包 1.x 版中提供了适用于 Functions 1.x 版的 Azure Cosmos DB 绑定。 [azure-webjobs-sdk-extensions](https://github.com/Azure/azure-webjobs-sdk-extensions/tree/v2.x/src/WebJobs.Extensions.DocumentDB) GitHub 存储库中提供了此绑定的源代码。
+[Microsoft.Azure.WebJobs.Extensions.DocumentDB](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.DocumentDB) NuGet 包 1.x 版中提供了适用于 Functions 1.x 版的 Azure Cosmos DB 绑定。 [azure-webjobs-sdk-extensions](https://github.com/Azure/azure-webjobs-sdk-extensions/tree/v2.x/src/WebJobs.Extensions.DocumentDB) GitHub 存储库中提供了此绑定的源代码。
 
 [!INCLUDE [functions-package](../../includes/functions-package.md)]
 
@@ -895,7 +894,7 @@ public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, Docume
 
 本部分包含以下示例：
 
-* [队列触发器，从 JSON 查找 ID](#queue-trigger-look-up-id-from-string-javascript)
+* [队列触发器，从 JSON 查找 ID](#queue-trigger-look-up-id-from-json-javascript)
 * [HTTP 触发器，从查询字符串查找 ID](#http-trigger-look-up-id-from-query-string-javascript)
 * [HTTP 触发器，从路由数据查找 ID](#http-trigger-look-up-id-from-route-data-javascript)
 * [队列触发器，使用 SqlQuery 获取多个文档](#queue-trigger-get-multiple-docs-using-sqlquery-javascript)
@@ -1177,7 +1176,7 @@ F# 代码如下所示：
 
 在 C# 函数和 F# 函数中，函数成功退出后，通过命名输入参数对输入文档所做的任何更改都会自动保存。 
 
-在 JavaScript 函数中，函数退出时不会自动进行更新。 请改用 `context.bindings.<documentName>In` 和 `context.bindings.<documentName>Out` 进行更新。 请参阅 [JavaScript 示例](#input---javascript-example)。
+在 JavaScript 函数中，函数退出时不会自动进行更新。 请改用 `context.bindings.<documentName>In` 和 `context.bindings.<documentName>Out` 进行更新。 请参阅 [JavaScript 示例](#input---javascript-examples)。
 
 ## <a name="output"></a>输出
 
@@ -1571,7 +1570,7 @@ F# 代码如下所示：
     }
 ```
 
-有关完整示例，请参阅[输出 - C# 示例](#output---c-example)。
+有关完整示例，请参阅[输出 - C# 示例](#output---c-examples)。
 
 ## <a name="output---configuration"></a>输出 - 配置
 
@@ -1606,7 +1605,7 @@ F# 代码如下所示：
 
 ## <a name="next-steps"></a>后续步骤
 
-* [详细了解如何使用 Cosmos DB 执行无服务器数据库计算](..\cosmos-db\serverless-computing-database.md)
+* [详细了解如何使用 Cosmos DB 执行无服务器数据库计算](../cosmos-db/serverless-computing-database.md)
 * [详细了解 Azure Functions 触发器和绑定](functions-triggers-bindings.md)
 
 <!---

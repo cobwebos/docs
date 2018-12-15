@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/08/2018
 ms.author: cynthn
-ms.openlocfilehash: 8d83af114ebb5e5ff78372897d3e08ed592d4012
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: 854f457e6731f69c64bf2036840d9e1c18a1cbf2
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49093895"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53075084"
 ---
 # <a name="attach-a-managed-data-disk-to-a-windows-vm-by-using-the-azure-portal"></a>使用 Azure 门户将托管数据磁盘附加到 Windows VM
 
@@ -52,30 +52,6 @@ ms.locfileid: "49093895"
 8. 在“格式化新磁盘”窗口中，检查设置，然后选择“启动”。
 9. 此时出现一条警告，通知你格式化磁盘会擦除所有数据。 选择“确定”。
 10. 完成格式化后，选择“确定”。
-
-## <a name="use-trim-with-standard-storage"></a>将 TRIM 与标准存储配合使用
-
-如果使用标准存储 (HDD)，则应启用 **TRIM** 命令。 **TRIM** 命令会放弃磁盘上未使用的块，以便仅对实际使用的存储计费。 如果创建大型文件，然后将其删除，使用 **TRIM** 便可节省成本。 
-
-若要检查 **TRIM** 设置，请在 Windows VM 上打开命令提示符并输入以下命令：
-
-```
-fsutil behavior query DisableDeleteNotify
-```
-
-如果该命令返回 0，则表示正确启用了 **TRIM**。 如果该命令返回 1，则运行以下命令以启用 **TRIM**：
-
-```
-fsutil behavior set DisableDeleteNotify 0
-```
-
-从磁盘中删除数据后，通过使用 **TRIM** 运行碎片整理，可以确保正常刷新 **TRIM** 操作：
-
-```
-defrag.exe <volume:> -l
-```
-
-也可以通过设置卷格式确保裁剪整个卷。
 
 ## <a name="next-steps"></a>后续步骤
 

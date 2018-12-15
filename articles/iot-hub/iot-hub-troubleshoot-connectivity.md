@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 07/19/2018
 ms.author: jlian
-ms.openlocfilehash: 197b15baee81c7ceff5d76dd21ceb6db1f0f5fdf
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: b05a8bfd46800c5b0b0126adcf2acb4852bb6683
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52424657"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53339750"
 ---
 # <a name="detect-and-troubleshoot-disconnects-with-azure-iot-hub"></a>检测和排查 Azure IoT 中心的连接断开问题
 
@@ -50,7 +50,7 @@ ms.locfileid: "52424657"
 
    ![建议的指标警报][3]
 
-有关详细信息，请参阅 [Microsoft Azure 中的经典警报是什么？](../monitoring-and-diagnostics/monitoring-overview-alerts.md)。
+有关详细信息，请参阅 [Microsoft Azure 中的经典警报是什么？](../azure-monitor/platform/alerts-overview.md)。
 
 ## <a name="resolve-connectivity-errors"></a>解决连接错误
 

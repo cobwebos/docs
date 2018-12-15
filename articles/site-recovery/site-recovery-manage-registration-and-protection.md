@@ -5,14 +5,14 @@ author: rajani-janaki-ram
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 10/29/2018
+ms.date: 11/27/2018
 ms.author: rajani-janaki-ram
-ms.openlocfilehash: e5a77117b21c889a72b9dd65b072ce3aa5c34314
-ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
+ms.openlocfilehash: 8e8cabe48f7f1036986a896d0449798f4aea2522
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2018
-ms.locfileid: "51976264"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52844560"
 ---
 # <a name="remove-servers-and-disable-protection"></a>删除服务器并禁用保护
 

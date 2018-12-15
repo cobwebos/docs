@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 10/05/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 3c06a0b0af306aaf46f4aa542e26c3fcf885e754
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: fc762a4cf500713a09ba325e8b4e41c4cc2b8f15
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49168221"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52848930"
 ---
 # <a name="set-up-sign-in-with-an-amazon-account-using-custom-policies-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中使用自定义策略设置 Amazon 帐户登录
 
@@ -26,7 +26,7 @@ ms.locfileid: "49168221"
 ## <a name="prerequisites"></a>先决条件
 
 - 完成[自定义策略入门](active-directory-b2c-get-started-custom.md)中的步骤。
-- 如果还没有 Amazon 帐户，请在 [http://www.amazon.com/](https://www.amazon.com/) 上创建一个。
+- 如果还没有 Amazon 帐户，请在 [https://www.amazon.com/](https://www.amazon.com/) 上创建一个。
 
 ## <a name="register-the-application"></a>注册应用程序
 

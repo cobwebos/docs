@@ -10,17 +10,15 @@ ms.assetid: f44a40c4-820a-406e-8c40-70bd8dc67ae7
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/20/2018
 ms.author: magoedte
-ms.component: ''
-ms.openlocfilehash: e7fd5649f1cd08713b066a20887b36b9a3c38e7c
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 5641792c058d10bba1bfd468f3c5c90b9217226e
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52633072"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53187647"
 ---
 # <a name="gather-insights-about-your-dns-infrastructure-with-the-dns-analytics-preview-solution"></a>使用 DNS Analytics 预览解决方案收集有关 DNS 基础结构的见解
 
@@ -45,9 +43,9 @@ DNS Analytics 可帮助：
 | **连接的源** | **支持** | **说明** |
 | --- | --- | --- |
 | [Windows 代理](../../azure-monitor/platform/agent-windows.md) | 是 | 解决方案会从 Windows 代理收集 DNS 信息。 |
-| [Linux 代理](../../log-analytics/log-analytics-quick-collect-linux-computer.md) | 否 | 解决方案不会从直接 Linux 代理收集 DNS 信息。 |
-| [System Center Operations Manager 管理组](../../log-analytics/log-analytics-om-agents.md) | 是 | 解决方案会从连接的 Operations Manager 管理组中的代理收集 DNS 信息。 从 Operations Manager 代理到 Log Analytics 的直接连接不是必须的。 数据将从管理组转发到 Log Analytics 工作区。 |
-| [Azure 存储帐户](../../log-analytics/log-analytics-azure-storage.md) | 否 | 解决方案不会使用 Azure 存储。 |
+| [Linux 代理](../../azure-monitor/learn/quick-collect-linux-computer.md) | 否 | 解决方案不会从直接 Linux 代理收集 DNS 信息。 |
+| [System Center Operations Manager 管理组](../../azure-monitor/platform/om-agents.md) | 是 | 解决方案会从连接的 Operations Manager 管理组中的代理收集 DNS 信息。 从 Operations Manager 代理到 Log Analytics 的直接连接不是必须的。 数据将从管理组转发到 Log Analytics 工作区。 |
+| [Azure 存储帐户](../../azure-monitor/platform/collect-azure-metrics-logs.md) | 否 | 解决方案不会使用 Azure 存储。 |
 
 ### <a name="data-collection-details"></a>数据收集详细信息
 
@@ -57,7 +55,7 @@ DNS Analytics 可帮助：
 
 使用以下信息配置解决方案：
 
-- 在要监视的每个 DNS 服务器上，都必须装有 [Windows](../../azure-monitor/platform/agent-windows.md) 或 [Operations Manager](../../log-analytics/log-analytics-om-agents.md) 代理。
+- 在要监视的每个 DNS 服务器上，都必须装有 [Windows](../../azure-monitor/platform/agent-windows.md) 或 [Operations Manager](../../azure-monitor/platform/om-agents.md) 代理。
 - 从 [Azure 市场](https://aka.ms/dnsanalyticsazuremarketplace)将 DNS Analytics 解决方案添加到 Log Analytics 工作区。 也可以使用[从解决方案库中添加 Log Analytics 解决方案](../../azure-monitor/insights/solutions.md)中所述的过程。
 
 解决方案将开始收集数据，而无需进一步配置。 但是，可使用以下配置自定义数据收集。
@@ -85,7 +83,7 @@ DNS Analytics 可帮助：
 - Microsoft DNS 数据收集器智能包 (Microsft.IntelligencePacks.Dns)
 - Microsoft System Center Advisor DNS Analytics 配置 (Microsoft.IntelligencePack.Dns.Configuration)
 
-有关如何更新解决方案管理包的详细信息，请参阅[将 Operations Manager 连接到 Log Analytics](../../log-analytics/log-analytics-om-agents.md)。
+有关如何更新解决方案管理包的详细信息，请参阅[将 Operations Manager 连接到 Log Analytics](../../azure-monitor/platform/om-agents.md)。
 
 ## <a name="use-the-dns-analytics-solution"></a>使用 DNS Analytics 解决方案
 
@@ -190,4 +188,4 @@ DNS Analytics 可帮助：
 
 ## <a name="next-steps"></a>后续步骤
 
-[搜索日志](../../log-analytics/log-analytics-queries.md)以查看详细的 DNS 日志记录。
+[搜索日志](../../azure-monitor/log-query/log-query-overview.md)以查看详细的 DNS 日志记录。

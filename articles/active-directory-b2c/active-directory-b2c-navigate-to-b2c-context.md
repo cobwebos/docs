@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 4/13/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 9b8ff03ff90a0962a6a890cf7cc99e7134559b7f
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 8c0b6cb411618b01adfc23fa124ff624206da7b2
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37442945"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52836094"
 ---
 # <a name="switching-to-your-azure-ad-b2c-tenant"></a>切换到 Azure AD B2C 租户
 
@@ -25,7 +25,7 @@ ms.locfileid: "37442945"
 
 若要导航到 Azure AD B2C 租户，必须以 Azure AD B2C 租户全局管理员身份登录到 Azure 门户。
 
-1. 登录到 [Azure 门户](http://portal.azure.com)。
+1. 登录到 [Azure 门户](https://portal.azure.com)。
 1. 单击右上角的电子邮件地址或图片即可切换租户。
 1. 在显示的 `Directory` 列表中，选择要管理的 Azure AD B2C 租户。
 

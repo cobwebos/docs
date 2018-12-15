@@ -10,12 +10,12 @@ ms.component: consume
 ms.date: 04/17/2018
 ms.author: jrj
 ms.reviewer: igorstan
-ms.openlocfilehash: f3e45d62f5117ade9109733d3cc5aba629bf9c7d
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 09be96a4a6fd4e36412e4e0958683a14873e172d
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49389728"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52961818"
 ---
 # <a name="sql-data-warehouse-data-integration-partners"></a>SQL 数据仓库数据集成合作伙伴
 要创建数据仓库解决方案，请从行业领先的各种工具中进行选择。 本文重点介绍其数据集成解决方案支持 Azure SQL 数据仓库的 Microsoft 合作伙伴公司。
@@ -70,7 +70,7 @@ ms.locfileid: "49389728"
 <!--Website Links -->
 [alteryx_designer_website]:http://www.alteryx.com/partners/microsoft/
 [attunity_cloudbeam_website]:http://www.attunity.com/attunity-cloudbeam-for-azure/
-[bryte_systems_azure_website]:http://www.bryte.com.au/azure-integration/
+[bryte_systems_azure_website]:http://www.bryteflow.com/
 [informatica_Cloud_Services_website]:https://www.informatica.com/products/cloud-integration.html
 [informatica_PowerCenter_website]:https://www.informatica.com/products/data-integration/powercenter.html
 [redgate_website]:http://dataplatformstudio.com/
