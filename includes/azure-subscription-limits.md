@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/18/2018
 ms.author: jroth
 ms.custom: include file
-ms.openlocfilehash: fe457acc2b9787526be448880c57448af1226b08
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: be75b982d3e63ecb1edd7398e32150156a06995d
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51264194"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52886323"
 ---
 | 资源 | 默认限制 | 最大限制 |
 | --- | --- | --- |
@@ -24,7 +24,6 @@ ms.locfileid: "51264194"
 | 每个订阅的[本地网络数](https://msdn.microsoft.com/library/jj157100.aspx) |10 |500 |
 | 每个订阅的 DNS 服务器 |9 |100 |
 | 每个订阅的保留的 IP |20 |100 |
-| 每个订阅的托管服务证书数 |199 |199 |
 | 每个订阅的[地缘组数](../articles/virtual-network/virtual-networks-migrate-to-regional-vnet.md) |256 |256 |
 
 

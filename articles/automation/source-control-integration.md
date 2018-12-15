@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 09/26/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 5778c38d5a0c44e42b83fd139078be1f0bb45f7f
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: 95355a6d1a0aff9829d75789df86f37768d25e22
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50023740"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53342232"
 ---
 # <a name="source-control-integration-in-azure-automation"></a>Azure 自动化中的源代码管理集成
 
@@ -50,7 +50,7 @@ Azure 自动化支持 3 种类型的源代码管理：
 |属性  |Description  |
 |---------|---------|
 |源代码管理名称     | 源代码管理的友好名称        |
-|源代码管理类型     | 源代码管理源的类型。 可用选项包括：</br> Github</br>Azure DevOps (Git)</br> Azure DevOps (TFVC)        |
+|源代码管理类型     | 源代码管理源的类型。 可用选项包括：</br> GitHub</br>Azure DevOps (Git)</br> Azure DevOps (TFVC)        |
 |存储库     | 存储库或项目的名称。 此值从源代码管理存储库中拉取。 示例：$/ContosoFinanceTFVCExample         |
 |分支     | 要从源文件中提取的分支。 分支目标确定不适用于 TFVC 源代码管理类型。          |
 |文件夹路径     | 包含要同步的 runbook 的文件夹。示例：/Runbooks         |
@@ -62,7 +62,7 @@ Azure 自动化支持 3 种类型的源代码管理：
 
 ## <a name="syncing"></a>同步
 
-如果在配置源代码管理集成时配置了自动同步，则将自动启动初始同步。 如果未设置自动同步，请从“源代码管理(预览版)”页面上的表中选择源。 单击“开始同步”以开始同步过程。  
+如果在配置源代码管理集成时配置了自动同步，则将自动启动初始同步。 如果未设置自动同步，请从“源代码管理(预览版)”页面上的表中选择源。 单击“开始同步”以开始同步过程。
 
 可以通过单击“同步作业”选项卡来查看当前同步作业或之前的同步作业的状态。在“源代码管理”下拉列表中，选择一个源代码管理。
 

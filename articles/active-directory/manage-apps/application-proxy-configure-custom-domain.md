@@ -15,12 +15,12 @@ ms.date: 01/31/2018
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 090df19861e00a99f0bb63bf20eb2f26dc6761fd
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: b0ad4aa63dbeefce6b55e099fd51d3608ae3abb8
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39368475"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53133343"
 ---
 # <a name="working-with-custom-domains-in-azure-ad-application-proxy"></a>使用 Azure AD 应用程序代理中的自定义域
 
@@ -40,7 +40,7 @@ ms.locfileid: "39368475"
 配置自定义域之前，请确保根据以下要求做好准备： 
 - 一个[已添加到 Azure Active Directory 的经验证的域](../fundamentals/add-custom-domain.md)。
 - 一个用于域的、采用 PFX 文件格式的自定义证书。 
-- 一个[通过应用程序代理发布](application-proxy-publish-azure-portal.md)的本地应用。
+- 一个[通过应用程序代理发布](application-proxy-add-on-premises-application.md)的本地应用。
 
 ### <a name="configure-your-custom-domain"></a>配置自定义域
 

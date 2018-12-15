@@ -9,19 +9,18 @@ ms.assetid: 7f13ea66-09dc-450f-b8f9-f40fdad239f2
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/10/2018
 ms.author: mbullwin
-ms.openlocfilehash: 6e19735f604fdcd6d6642814e776fd9987d11fde
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 83dfd77c311e1b3324540d352432ec7a6b706d78
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52499505"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52993364"
 ---
 # <a name="feed-power-bi-from-application-insights"></a>从 Application Insights 向 Power BI 馈送数据
-[Power BI](http://www.powerbi.com/) 是一套商业工具，可帮助分析数据及分享见解。 每个设备上都提供了丰富的仪表板。 可以结合许多源的数据，包括来自 [Azure Application Insights](app-insights-overview.md) 的数据。
+[Power BI](https://www.powerbi.com/) 是一套商业工具，可帮助分析数据及分享见解。 每个设备上都提供了丰富的仪表板。 可以结合许多源的数据，包括来自 [Azure Application Insights](app-insights-overview.md) 的数据。
 
 可以使用三种方法将 Application Insights 数据导出到 Power BI：
 
@@ -41,7 +40,7 @@ ms.locfileid: "52499505"
 安装 [Power BI Desktop](https://powerbi.microsoft.com/en-us/desktop/)。
 
 ### <a name="export-an-analytics-query"></a>导出 Analytics 查询
-1. [打开 Analytics 并编写查询](../log-analytics/query-language/get-started-analytics-portal.md)。
+1. [打开 Analytics 并编写查询](../azure-monitor/log-query/get-started-portal.md)。
 2. 测试并优化查询，直到对结果满意。 导出之前，请确保查询在 Analytics 中正常运行。
 3. 在“导出”菜单中，选择“Power BI (M)”。 保存文本文件。
    
@@ -52,18 +51,18 @@ ms.locfileid: "52499505"
 
     ![Power BI Desktop 的屏幕截图，其中突出显示了“高级编辑器”](./media/app-insights-export-power-bi/power-bi-import-analytics-query.png)
 
-1. 可能需要提供凭据才能让 Power BI 访问 Azure。 使用“组织帐户”和 Microsoft 帐户登录。
+5. 可能需要提供凭据才能让 Power BI 访问 Azure。 使用“组织帐户”和 Microsoft 帐户登录。
    
     ![Power BI“查询设置”对话框的屏幕截图](./media/app-insights-export-power-bi/power-bi-import-sign-in.png)
 
     如果需要验证凭据，请使用查询编辑器中的“数据源设置”菜单命令。 请务必指定用于 Azure 的凭据，它可能不同于用于 Power BI 的凭据。
-2. 选择查询的可视化效果并选择 X 轴、Y 轴和分段维度的字段。
+6. 选择查询的可视化效果并选择 X 轴、Y 轴和分段维度的字段。
    
     ![Power BI Desktop 可视化选项的屏幕截图](./media/app-insights-export-power-bi/power-bi-analytics-visualize.png)
-3. 将报告发布到 Power BI 云工作区。 在该工作区中，可将同步的版本嵌入其他网页。
+7. 将报告发布到 Power BI 云工作区。 在该工作区中，可将同步的版本嵌入其他网页。
    
     ![Power BI Desktop 的屏幕截图，其中突出显示了“发布”按钮](./media/app-insights-export-power-bi/publish-power-bi.png)
-4. 定期手动刷新报告，或者在选项页中设置按计划刷新。
+8. 定期手动刷新报告，或者在选项页中设置按计划刷新。
 
 ### <a name="export-a-funnel"></a>导出漏斗图
 1. [生成漏斗图](usage-funnels.md)。
@@ -153,6 +152,6 @@ ms.locfileid: "52499505"
 完成初始导入后，仪表板和报告会持续每日更新。 可以控制数据集的刷新计划。
 
 ## <a name="next-steps"></a>后续步骤
-* [Power BI - 学习](http://www.powerbi.com/learning/)
-* [Analytics 教程](../log-analytics/query-language/get-started-analytics-portal.md)
+* [Power BI - 学习](https://www.powerbi.com/learning/)
+* [Analytics 教程](../azure-monitor/log-query/get-started-portal.md)
 

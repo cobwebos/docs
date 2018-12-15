@@ -4,14 +4,14 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
-ms.openlocfilehash: 109f4621af3e3ca617dfe521575d9352f22c5917
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: a65dbbcfddf33692ee179755b4306019ffa8863e
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50227072"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53399794"
 ---
-通过收集、查看和分析诊断与日志数据，可以利用很多机会来监视 VM。 若要执行简单的 VM [监视](../articles/azure-monitor/overview.md)，可以在 Azure 门户中使用 VM 的“概述”屏幕。 可以使用[扩展](../articles/virtual-machines/windows/extensions-features.md)配置 VM 的诊断以收集更多指标数据。 还可以使用更多高级监视选项，如 [Application Insights](../articles/application-insights/app-insights-overview.md) 和 [Log Analytics](../articles/log-analytics/log-analytics-queries.md)。
+通过收集、查看和分析诊断与日志数据，可以利用很多机会来监视 VM。 若要执行简单的 VM [监视](../articles/azure-monitor/overview.md)，可以在 Azure 门户中使用 VM 的“概述”屏幕。 可以使用[扩展](../articles/virtual-machines/windows/extensions-features.md)配置 VM 的诊断以收集更多指标数据。 还可以使用更多高级监视选项，如 [Application Insights](../articles/application-insights/app-insights-overview.md) 和 [Log Analytics](../articles/azure-monitor/log-query/log-query-overview.md)。
 
 ## <a name="diagnostics-and-metrics"></a>诊断和指标 
 
@@ -31,7 +31,7 @@ ms.locfileid: "50227072"
 
 ## <a name="alerts"></a>警报
 
-可以根据特定的性能指标创建[警报](../articles/monitoring-and-diagnostics/monitoring-overview-alerts.md)。 举例来说，可以根据以下问题生成警报，平均 CPU 使用率超过特定的阈值，或者可用磁盘空间低于特定的空间量。 可以在 [Azure 门户](../articles/monitoring-and-diagnostics/insights-alerts-portal.md)中或者使用 [Azure PowerShell](../articles/monitoring-and-diagnostics/insights-alerts-powershell.md) 或 [Azure CLI](../articles/monitoring-and-diagnostics/insights-alerts-command-line-interface.md) 来配置警报。
+可以根据特定的性能指标创建[警报](../articles/azure-monitor/platform/alerts-overview.md)。 举例来说，可以根据以下问题生成警报，平均 CPU 使用率超过特定的阈值，或者可用磁盘空间低于特定的空间量。 可以在 [Azure 门户](../articles/monitoring-and-diagnostics/insights-alerts-portal.md)中或者使用 [Azure PowerShell](../articles/monitoring-and-diagnostics/insights-alerts-powershell.md) 或 [Azure CLI](../articles/monitoring-and-diagnostics/insights-alerts-command-line-interface.md) 来配置警报。
 
 ## <a name="azure-service-health"></a>Azure 服务运行状况
 
@@ -50,7 +50,7 @@ ms.locfileid: "50227072"
 - [根据活动日志事件创建警报](../articles/monitoring-and-diagnostics/monitoring-overview-activity-logs.md)。
 - [将活动日志流式传输到事件中心](../articles/monitoring-and-diagnostics/monitoring-stream-activity-logs-event-hubs.md)，方便第三方服务或自定义分析解决方案（例如 PowerBI）引入。
 - 在 PowerBI 中使用 [PowerBI 内容包](https://powerbi.microsoft.com/documentation/powerbi-content-pack-azure-audit-logs/)分析活动日志。
-- [将活动日志保存到存储帐户](../articles/monitoring-and-diagnostics/monitoring-archive-activity-log.md)进行存档或手动检查。 可以使用“日志配置文件”指定保留时间（天）。
+- [将活动日志保存到存储帐户](../articles/azure-monitor/platform/archive-activity-log.md)进行存档或手动检查。 可以使用“日志配置文件”指定保留时间（天）。
 
 还可以通过使用 [Azure PowerShell](https://docs.microsoft.com/powershell/module/azurerm.insights/)、[Azure CLI](https://docs.microsoft.com/cli/azure/monitor) 或[监视 REST API](https://docs.microsoft.com/rest/api/monitor/) 访问活动日志数据。
 
@@ -58,7 +58,7 @@ ms.locfileid: "50227072"
 
 可以对诊断日志执行的部分操作包括：
 
-- 将诊断日志保存到[存储帐户](../articles/monitoring-and-diagnostics/monitoring-archive-diagnostic-logs.md)进行审核或手动检查。 可以使用“资源诊断设置”指定保留时间（天）。
+- 将诊断日志保存到[存储帐户](../articles/azure-monitor/platform/archive-diagnostic-logs.md)进行审核或手动检查。 可以使用“资源诊断设置”指定保留时间（天）。
 - [将诊断日志流式传输到事件中心](../articles/monitoring-and-diagnostics/monitoring-stream-diagnostic-logs-to-event-hubs.md)，方便第三方服务或自定义分析解决方案（例如 PowerBI）引入。
 - 使用 [OMS Log Analytics](../articles/log-analytics/log-analytics-azure-storage.md) 对诊断日志进行分析。
 

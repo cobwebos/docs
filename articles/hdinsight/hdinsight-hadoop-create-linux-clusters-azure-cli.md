@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: hrasheed
-ms.openlocfilehash: 03d51cfb03de071f63578717a65eeda4b119bf0d
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: f82ac972e54dac6df5a913a8059417b701e2f7e0
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52497848"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53191574"
 ---
 # <a name="create-hdinsight-clusters-using-the-azure-classic-cli"></a>使用 Azure 经典 CLI 创建 HDInsight 群集
 
@@ -80,7 +80,7 @@ ms.locfileid: "52497848"
     * 将 `groupname` 替换为资源组名称。
     * 将 `storagename` 替换为存储帐户的名称。
 
-     在返回的数据中，保存 `key1` 的 `key` 值。
+      在返回的数据中，保存 `key1` 的 `key` 值。
 
 6. 创建 HDInsight 群集。
 
@@ -90,8 +90,8 @@ ms.locfileid: "52497848"
 
     * 将 `Hadoop` 替换为希望创建的群集类型。 例如，`Hadoop`、`HBase`、`Kafka`、`Spark` 或 `Storm`。
 
-     > [!IMPORTANT]
-     > HDInsight 群集具有各种不同的类型，与该群集进行优化的工作负荷或技术相对应。 没有任何方法支持创建组合多种类型的群集，如一个群集同时具有 Storm 和 HBase 类型。
+      > [!IMPORTANT]
+      > HDInsight 群集具有各种不同的类型，与该群集进行优化的工作负荷或技术相对应。 没有任何方法支持创建组合多种类型的群集，如一个群集同时具有 Storm 和 HBase 类型。
 
     * 将 `location` 替换为上一步中使用的同一位置。
 
@@ -105,12 +105,12 @@ ms.locfileid: "52497848"
 
     * 将 `sshuser` 和 `sshuserpassword` 替换为通过 SSH 访问群集时要使用的用户名和密码
 
-    > [!IMPORTANT]
-    > 此示例创建一个具有两个辅助角色节点的群集。 也可以在创建群集后，通过执行缩放操作更改辅助节点数。 如果计划使用 32 个以上的辅助节点，则必须选择至少具有 8 个核心和 14 GB RAM 的头节点大小。 可以在创建群集的过程中使用 `--headNodeSize` 参数设置头节点大小。
-    >
-    > 有关节点大小和相关费用的详细信息，请参阅 [HDInsight 定价](https://azure.microsoft.com/pricing/details/hdinsight/)。
-
-    可能需要几分钟时间才能完成群集创建过程。 通常大约为 15 分钟。
+      > [!IMPORTANT]
+      > 此示例创建一个具有两个辅助角色节点的群集。 也可以在创建群集后，通过执行缩放操作更改辅助节点数。 如果计划使用 32 个以上的辅助节点，则必须选择至少具有 8 个核心和 14 GB RAM 的头节点大小。 可以在创建群集的过程中使用 `--headNodeSize` 参数设置头节点大小。
+      >
+      > 有关节点大小和相关费用的详细信息，请参阅 [HDInsight 定价](https://azure.microsoft.com/pricing/details/hdinsight/)。
+      
+      可能需要几分钟时间才能完成群集创建过程。 通常大约为 15 分钟。
 
 ## <a name="troubleshoot"></a>故障排除
 

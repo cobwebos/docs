@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2018
 ms.author: rkarlin
-ms.openlocfilehash: 7a059cd5c22306c42adc4c7c8fcc4e52c3ebcd00
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: c4fff902614b3979fcc28833c5352afe2bdd84b0
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52313565"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53341487"
 ---
 # <a name="enable-vm-agent-in-azure-security-center"></a>在 Azure 安全中心启用 VM 代理
 必须在虚拟机 (VM) 上安装 VM 代理以便[启用数据收集](security-center-enable-data-collection.md)。  使用 Azure 安全中心，可以查看需要 VM 代理的 VM，并建议在这些 VM 上启用 VM 代理。
@@ -40,7 +40,7 @@ ms.locfileid: "52313565"
 ## <a name="see-also"></a>另请参阅
 若要了解有关安全中心的详细信息，请参阅以下文章：
 
-* [在 Azure 安全中心中设置安全策略](security-center-azure-policy.md) - 了解如何配置 Azure 订阅和资源组的安全策略。
+* [在 Azure 安全中心中设置安全策略](tutorial-security-policy.md) - 了解如何配置 Azure 订阅和资源组的安全策略。
 * [管理 Azure 安全中心安全建议](security-center-recommendations.md) - 了解安全建议如何有助于保护 Azure 资源。
 * [Azure 安全中心的安全性运行状况监视](security-center-monitoring.md) - 了解如何监视 Azure 资源的运行状况。
 * [管理和响应 Azure 安全中心的安全警报](security-center-managing-and-responding-alerts.md) - 了解如何管理和响应安全警报。

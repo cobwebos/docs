@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: d085777e347e1e892c3a49f4f37aa1d8130ef18c
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: a5475ad2f487bca90f600406ca9bb8f0925a4988
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51005727"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52964809"
 ---
 # <a name="create-a-telemetry-rule-and-set-up-notifications-in-your-azure-iot-central-application"></a>在 Azure IoT Central 应用程序中创建遥测规则并设置通知
 
@@ -36,19 +36,19 @@ ms.locfileid: "51005727"
 
 1. 如果尚未创建任何规则，则会看到以下屏幕：
 
-    ![尚无规则](media\howto-create-telemetry-rules\Rules_Landing_Page.png)
+    ![尚无规则](media/howto-create-telemetry-rules/Rules_Landing_Page.png)
 
 1. 在“规则”选项卡上，依次单击“编辑模板”和“+ 新建规则”，即可查看可以创建的规则类型。
 
 1. 单击“遥测”，创建用于监视设备遥测数据的规则。
 
-    ![规则类型](media\howto-create-telemetry-rules\Rule_Types.png)
+    ![规则类型](media/howto-create-telemetry-rules/Rule_Types.png)
 
 1. 输入一个有助于在此设备模板中识别该规则的名称。
 
 1. 若要对针对此模板创建的所有设备立即启用规则，请切换到“为此模板的所有设备启用规则”。
 
-   ![规则详细信息](media\howto-create-telemetry-rules\Rule_Detail.png)
+   ![规则详细信息](media/howto-create-telemetry-rules/Rule_Detail.png)
     
     此规则自动应用到该设备模板下的所有设备。
     
@@ -61,7 +61,7 @@ ms.locfileid: "51005727"
 
 1. 从“度量”下拉列表中选择要监视的遥测数据。
 
-   ![条件](media\howto-create-telemetry-rules\Aggregate_Condition_Filled_Out.png)
+   ![条件](media/howto-create-telemetry-rules/Aggregate_Condition_Filled_Out.png)
 
 1. 接下来，选择“聚合”、“运算符”并提供“阈值”。
     - 聚合是可选的。 如无聚合，此规则将对每个满足此条件的遥测数据点触发。 例如，如果规则配置为在温度超过 80 时触发，则当设备报告温度超过 80 时，该规则会在瞬间触发。
@@ -78,14 +78,14 @@ ms.locfileid: "51005727"
 
 1. 选择“操作”旁边的“+”。 在此处可以看到可用操作的列表。  
 
-    ![添加操作](media\howto-create-telemetry-rules\Add_Action.png)
+    ![添加操作](media/howto-create-telemetry-rules/Add_Action.png)
 
 1. 选择“电子邮件”操作，在“收件人”字段中输入有效的电子邮件地址，并提供一个说明，用于在触发规则时显示在电子邮件的正文中。
 
     > [!NOTE]
     > 电子邮件只发送给那些已添加到应用程序中并已至少登录一次的用户。 详细了解 Azure IoT Central 中的[用户管理](howto-administer.md)。
 
-   ![配置操作](media\howto-create-telemetry-rules\Configure_Action.png)
+   ![配置操作](media/howto-create-telemetry-rules/Configure_Action.png)
 
 1. 若要保存规则，请选择“保存”。 此规则在数分钟内即可生效，然后开始监视发送到应用程序的遥测数据。 满足规则中指定的条件时，规则会触发配置的电子邮件操作。
 

@@ -1,6 +1,6 @@
 ---
-title: 语言理解 (LUIS) API 服务术语表
-titleSuffix: Azure Cognitive Services
+title: 术语表
+titleSuffix: Language Understanding - Azure Cognitive Services
 description: 术语表解释使用 LUIS API 服务时可能遇到的术语。
 services: cognitive-services
 author: diberry
@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: b24b21ee5fc929d3e7bd026191ce8791d79f9abc
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: a7a2c921d2bb0f77579c48d0608eb0d195e83ca1
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48870768"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53078916"
 ---
 # <a name="glossary"></a>术语表
 语言理解 (LUIS) 术语表解释使用 LUIS API 服务时可能遇到的术语。

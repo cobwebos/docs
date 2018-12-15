@@ -9,16 +9,15 @@ ms.assetid: 0b2deb30-6ea8-4bc4-8ed0-26765b85149f
 ms.service: application-insights
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/25/2018
 ms.author: mbullwin
-ms.openlocfilehash: 17a0b36fffb14f423aba3dd02b5b42d44933309c
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: 00af4cc67dc7490727af46e12c387fb0f147371d
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52165384"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53339835"
 ---
 # <a name="monitor-azure-web-app-performance"></a>监视 Azure Web 应用性能
 在 [Azure 门户](https://portal.azure.com)中，可为 [Azure Web 应用](../app-service/app-service-web-overview.md)设置应用程序性能监视。 [Azure Application Insights](app-insights-overview.md) 将检测应用，将其活动的相关遥测数据发送到 Application Insights 服务，以便在其中存储和分析。 此处的指标图表和搜索工具可用于帮助诊断问题、改善性能以及评估使用情况。
@@ -100,9 +99,9 @@ Application Insights 可以通过将 SDK 安装到应用中来提供更详细的
 ## <a name="next-steps"></a>后续步骤
 * [在实时应用上运行探查器](app-insights-profiler.md)。
 * [Azure Functions](https://github.com/christopheranderson/azure-functions-app-insights-sample) - 使用 Application Insights 监视 Azure Functions
-* [将 Azure 诊断配置为](../monitoring-and-diagnostics/azure-diagnostics-configure-application-insights.md)向 Application Insights 发送数据。
+* [将 Azure 诊断配置为](../azure-monitor/platform/diagnostics-extension-to-application-insights.md)向 Application Insights 发送数据。
 * [监视服务运行状况指标](../azure-monitor/platform/data-collection.md)以确保服务可用且做出快速响应。
-* 每当操作事件发生或指标超过阈值时[接收警报通知](../monitoring-and-diagnostics/monitoring-overview-alerts.md)。
+* 每当操作事件发生或指标超过阈值时[接收警报通知](../azure-monitor/platform/alerts-overview.md)。
 * 若要从访问网页的浏览器获取客户端遥测数据，请使用[适用于 JavaScript 应用和网页的 Application Insights](app-insights-javascript.md)。
 * [设置可用性 Web 测试](app-insights-monitor-web-app-availability.md)，以便在站点关闭时发出警报。
 

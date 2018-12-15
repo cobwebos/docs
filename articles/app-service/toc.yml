@@ -134,15 +134,15 @@ items:
     - name: 对用户进行身份验证
       items:
       - name: 使用 Azure AD 进行身份验证
-        href: app-service-mobile-how-to-configure-active-directory-authentication.md
+        href: configure-authentication-provider-aad.md
       - name: 使用 Facebook 进行身份验证
-        href: app-service-mobile-how-to-configure-facebook-authentication.md
+        href: configure-authentication-provider-facebook.md
       - name: 使用 Google 进行身份验证
-        href: app-service-mobile-how-to-configure-google-authentication.md
+        href: configure-authentication-provider-google.md
       - name: 使用 Microsoft 帐户进行身份验证
-        href: app-service-mobile-how-to-configure-microsoft-authentication.md
+        href: configure-authentication-provider-microsoft.md
       - name: 使用 Twitter 进行身份验证
-        href: app-service-mobile-how-to-configure-twitter-authentication.md
+        href: configure-authentication-provider-twitter.md
     - name: 高级身份验证
       href: app-service-authentication-how-to.md
     - name: 限制 IP
@@ -162,7 +162,7 @@ items:
     - name: 配置 PremiumV2 层
       href: app-service-configure-premium-tier.md
     - name: 横向扩展到多个实例
-      href: ../monitoring-and-diagnostics/monitoring-autoscale-get-started.md?toc=%2fazure%2fapp-service%2ftoc.json
+      href: ../azure-monitor/platform/autoscale-get-started.md?toc=%2fazure%2fapp-service%2ftoc.json
     - name: 高密度承载
       href: app-service-high-density-hosting.md
   - name: 监视应用
@@ -257,9 +257,9 @@ items:
       href: ip-address-change-outbound.md
     - name: SSL 地址
       href: ip-address-change-ssl.md
-ms.openlocfilehash: 5a3af3678496bb850ed99397f8d6bb186ce92677
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 2a0dc03143688e1aadb0666242d44ab06763f04b
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53382790"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53437871"

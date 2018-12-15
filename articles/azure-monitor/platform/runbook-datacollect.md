@@ -10,19 +10,18 @@ ms.assetid: a831fd90-3f55-423b-8b20-ccbaaac2ca75
 ms.service: monitoring
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 05/27/2017
 ms.author: bwren
-ms.openlocfilehash: 87ceb682f35626c5bf468afd83a2f4a35901ef2b
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 2ecb50bdf44b93e8620d6d98a98fc735da6e87c3
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52632341"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53186712"
 ---
 # <a name="collect-data-in-log-analytics-with-an-azure-automation-runbook"></a>使用 Azure 自动化 runbook 收集 Log Analytics 中的数据
-可以从各种源中收集 Log Analytics 中的大量数据，包括代理上的[数据源](../../azure-monitor/platform/agent-data-sources.md)以及[从 Azure 中收集的数据](../../log-analytics/log-analytics-azure-storage.md)。  尽管某些情况下，需要收集无法通过这些标准源访问的数据。  这时，可以使用 [HTTP 数据收集器 API](../../log-analytics/log-analytics-data-collector-api.md) 将数据从任何 REST API 客户端写入到 Log Analytics。  一种执行此数据收集的常用方法是使用 Azure 自动化中的 runbook。   
+可以从各种源中收集 Log Analytics 中的大量数据，包括代理上的[数据源](../../azure-monitor/platform/agent-data-sources.md)以及[从 Azure 中收集的数据](../../azure-monitor/platform/collect-azure-metrics-logs.md)。  尽管某些情况下，需要收集无法通过这些标准源访问的数据。  这时，可以使用 [HTTP 数据收集器 API](../../azure-monitor/platform/data-collector-api.md) 将数据从任何 REST API 客户端写入到 Log Analytics。  一种执行此数据收集的常用方法是使用 Azure 自动化中的 runbook。   
 
 本教程将逐步介绍在 Azure 自动化中创建和计划 runbook，将数据写入 Log Analytics 的过程。
 
@@ -30,7 +29,7 @@ ms.locfileid: "52632341"
 ## <a name="prerequisites"></a>先决条件
 此方案要求在 Azure 订阅中配置以下资源。  两者皆可为免费帐户。
 
-- [Log Analytics 工作区](../../log-analytics/log-analytics-quick-create-workspace.md)。
+- [Log Analytics 工作区](../../azure-monitor/learn/quick-create-workspace.md)。
 - [Azure 自动化帐户](../..//automation/automation-quickstart-create-account.md)。
 
 ## <a name="overview-of-scenario"></a>方案概述
@@ -41,7 +40,7 @@ ms.locfileid: "52632341"
 
 
 ## <a name="1-install-data-collector-api-module"></a>1.安装数据收集器 API 模块
-每个[来自 HTTP 数据收集器的 API 请求](../../log-analytics/log-analytics-data-collector-api.md#create-a-request)必须进行适当的格式设置，且包含授权标头。  可以在 runbook 中执行此操作，但可通过使用简化此过程的模块，减少所需的代码量。  一个可用的模块是 PowerShell 库中的 [OMSIngestionAPI 模块](https://www.powershellgallery.com/packages/OMSIngestionAPI)。
+每个[来自 HTTP 数据收集器的 API 请求](../../azure-monitor/platform/data-collector-api.md#create-a-request)必须进行适当的格式设置，且包含授权标头。  可以在 runbook 中执行此操作，但可通过使用简化此过程的模块，减少所需的代码量。  一个可用的模块是 PowerShell 库中的 [OMSIngestionAPI 模块](https://www.powershellgallery.com/packages/OMSIngestionAPI)。
 
 若要在 runbook 中使用一个[模块](../../automation/automation-integration-modules.md)，则该模块必须安装在自动化帐户中。  之后同一帐户中的任何 runbook 便可使用模块中的函数。  通过在自动化帐户中选择“资产” > “模块” > “添加模块”，安装新的模块。  
 
@@ -145,7 +144,7 @@ Azure 自动化包含用于[测试 runbook](../../automation/automation-testing-
     ![发布输出](media/runbook-datacollect/post-output.png)
 
 ## <a name="5-verify-records-in-log-analytics"></a>5.验证 Log Analytics 中的记录
-完成 runbook 的测试，并确认成功接收到输出后，便可验证记录是否是使用 [Log Analytics 中的日志搜索](../../log-analytics/log-analytics-queries.md)创建的。
+完成 runbook 的测试，并确认成功接收到输出后，便可验证记录是否是使用 [Log Analytics 中的日志搜索](../../azure-monitor/log-query/log-query-overview.md)创建的。
 
 ![日志输出](media/runbook-datacollect/log-output.png)
 
@@ -216,4 +215,4 @@ Azure 自动化包含用于[测试 runbook](../../automation/automation-testing-
 - 打包[管理解决方案](../../azure-monitor/insights/solutions-creating.md)中的 runbook，分发给客户。
 - 详细了解 [Log Analytics](https://docs.microsoft.com/azure/log-analytics/)。
 - 详细了解 [Azure 自动化](https://docs.microsoft.com/azure/automation/)。
-- 详细了解 [HTTP 数据收集器 API](../../log-analytics/log-analytics-data-collector-api.md)。
+- 详细了解 [HTTP 数据收集器 API](../../azure-monitor/platform/data-collector-api.md)。

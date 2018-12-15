@@ -1,21 +1,21 @@
 ---
 title: 测试 LUIS 应用
-titleSuffix: Azure Cognitive Services
-description: 进行测试过程中，会向 LUIS 提供示例话语并获取 LUIS 识别出的意向和实体响应。 可以交互方式测试 LUIS，一次提供一条话语，或提供一批话语。 通过测试，可比较当前活动模型与已发布的模型。
-services: cognitive-services
+titleSuffix: Language Understanding - Azure Cognitive Services
+description: 进行测试过程中，会向 LUIS 提供示例话语并获取 LUIS 识别出的意向和实体响应。
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: conceptual
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: 58bcf45d1a45d448f2f5845ffe43ad07f886a6fc
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.openlocfilehash: 5aeb955b579a15f29429c585720dbef1b9560efa
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49637005"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53105523"
 ---
 # <a name="testing-example-utterances-in-luis"></a>在 LUIS 中测试示例话语
 

@@ -8,17 +8,16 @@ manager: carmonm
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
-ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 09/18/2018
 ms.reviewer: nimolnar
 ms.author: mbullwin
-ms.openlocfilehash: ddfcb90090d82d8fe947292737163a81c715b32d
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: f5f42ae5068440c3a90bf3b374238e18781b9770
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46972821"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52970580"
 ---
 # <a name="local-forwarder"></a>本地转发器
 
@@ -40,7 +39,7 @@ https://www.microsoft.com/net/download/dotnet-framework-runtime/net472?utm_sourc
 
 1. 从 GitHub 上的[本地转发器发布页](https://github.com/Microsoft/ApplicationInsights-LocalForwarder/releases)下载 LF.WindowsServiceHost.zip 文件。
 
-    ![本地转发器发布下载页的屏幕截图](.\media\opencensus-local-forwarder\001-local-forwarder-windows-service-host-zip.png)
+    ![本地转发器发布下载页的屏幕截图](./media/opencensus-local-forwarder/001-local-forwarder-windows-service-host-zip.png)
 
 2. 在这个易于演示的示例中，我们只需将该 .zip 文件解压缩到路径 `C:\LF-WindowsServiceHost`。
 
@@ -56,7 +55,7 @@ https://www.microsoft.com/net/download/dotnet-framework-runtime/net472?utm_sourc
     
     若要通过服务 GUI 检查新服务，请键入 ``services.msc``
         
-     ![本地转发器服务的屏幕截图](.\media\opencensus-local-forwarder\002-services.png)
+     ![本地转发器服务的屏幕截图](./media/opencensus-local-forwarder/002-services.png)
 
 3. **右键单击**新的本地转发器并选择“启动”。 现在，该服务将进入运行状态。
 
@@ -74,7 +73,7 @@ https://www.microsoft.com/net/download/dotnet-framework-runtime/net472?utm_sourc
     
 6. 若要确认所需的设置是否已准备就绪并且本地转发器正在按预期侦听跟踪数据，请检查 ``LocalForwarder.log`` 文件。 在该文件的底部，应会看到下图所示的结果：
 
-    ![LocalForwarder.log 文件的屏幕截图](.\media\opencensus-local-forwarder\003-log-file.png)
+    ![LocalForwarder.log 文件的屏幕截图](./media/opencensus-local-forwarder/003-log-file.png)
 
 #### <a name="console-application"></a>控制台应用程序
 

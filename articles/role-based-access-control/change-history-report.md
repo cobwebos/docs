@@ -15,12 +15,12 @@ ms.date: 05/23/2018
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d5a67cdcef7f39830b747dec5f2c980483e1ab91
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: c1ba7798fd8c1a18bc84aeb9ab8c4c2e0ff718cc
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46978329"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52967889"
 ---
 # <a name="view-activity-logs-for-rbac-changes"></a>查看 RBAC 更改的活动日志
 
@@ -117,15 +117,15 @@ az monitor activity-log list --resource-provider "Microsoft.Authorization" --sta
 
 以下是开始使用的基本步骤：
 
-1. [创建 Log Analytics 工作区](../log-analytics/log-analytics-quick-create-workspace.md)。
+1. [创建 Log Analytics 工作区](../azure-monitor/learn/quick-create-workspace.md)。
 
-1. 为工作区[配置 Activity Log Analytics 解决方案](../log-analytics/log-analytics-activity.md#configuration)。
+1. 为工作区[配置 Activity Log Analytics 解决方案](../azure-monitor/platform/collect-activity-logs.md#configuration)。
 
-1. [查看活动日志](../log-analytics/log-analytics-activity.md#using-the-solution)。 单击“Log Analytics”选项可以快速导航至 Activity Log Analytics 概述页面。
+1. [查看活动日志](../azure-monitor/platform/collect-activity-logs.md#using-the-solution)。 单击“Log Analytics”选项可以快速导航至 Activity Log Analytics 概述页面。
 
    ![门户中的 Log Analytics 选项](./media/change-history-report/azure-log-analytics-option.png)
 
-1. 可以选择使用[日志搜索](../log-analytics/log-analytics-log-search.md)页面或[高级分析门户](../log-analytics/query-language/get-started-analytics-portal.md)来查询并查看日志。 若要详细了解这两种选择，请参阅[日志搜索页面或高级分析门户](../log-analytics/log-analytics-log-search-portals.md)。
+1. 可以选择使用[日志搜索](../log-analytics/log-analytics-log-search.md)页面或[高级分析门户](../azure-monitor/log-query/get-started-portal.md)来查询并查看日志。 若要详细了解这两种选择，请参阅[日志搜索页面或高级分析门户](../azure-monitor/log-query/portals.md)。
 
 以下查询返回由目标资源提供程序组织的新角色分配：
 

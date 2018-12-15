@@ -8,12 +8,12 @@ ms.author: tanmayb
 ms.date: 10/29/2018
 ms.topic: conceptual
 manager: peterpr
-ms.openlocfilehash: dbc72e040f3d68ca77c036c41612f57616d1e74e
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: b72b2183cb796602f05a0a6858d4de108d3cc2c7
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51016822"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52964792"
 ---
 # <a name="as-a-csp-create-and-manage-an-azure-iot-central-application-on-behalf-of-your-customer"></a>作为 CSP，代表客户创建和管理 Azure IoT Central 应用程序 
 
@@ -23,21 +23,21 @@ Microsoft 云解决方案提供商 (CSP) 计划是 Microsoft 经销商计划。 
 
 若要开始，请在 Microsof 合作伙伴门户上登录你的帐户，然后选择要为其创建 Azure IoT Central 应用程序的客户。 从左侧导航栏导航到客户的服务管理。
 
-![Microsoft 合作伙伴中心, 客户视图](media\howto-create-application-asCSP\image1.png)
+![Microsoft 合作伙伴中心, 客户视图](media/howto-create-application-asCSP/image1.png)
 
 Azure IoT Central 将列为可用于管理的服务。 单击页面上的 Azure IoT Central 链接以为该客户创建新应用程序或管理现有应用程序。
 
-![可用于管理的 Azure IoT Central](media\howto-create-application-asCSP\image2.png)
+![可用于管理的 Azure IoT Central](media/howto-create-application-asCSP/image2.png)
 
 登陆 Azure IoT Central 的“应用程序管理器”页。 Azure IoT Central 保留你来自 Microsoft 合作伙伴中心的上下文，并且你来管理该特定客户。 你会在“应用程序管理器”页的标题中看到此确认。 从这里，你可以导航到之前为该客户创建的现有应用程序来管理它或为客户创建新的应用程序。
 
-![创建适用于 CSP 的管理器](media\howto-create-application-asCSP\image3.png)
+![创建适用于 CSP 的管理器](media/howto-create-application-asCSP/image3.png)
 
 若要创建 Azure IoT Central 应用程序，请单击“新建应用程序”磁贴。 这将加载“应用程序创建”页。 必须完成此页上的所有字段，然后选择“创建”。 你将找到有关以下每个字段的详细信息。
 
-![适用于 CSP 的“创建应用程序”页](media\howto-create-application-asCSP\image4.png)
+![适用于 CSP 的“创建应用程序”页](media/howto-create-application-asCSP/image4.png)
 
-![适用于 CSP 的“创建应用程序”页](media\howto-create-application-asCSP\image4-1.png)
+![适用于 CSP 的“创建应用程序”页](media/howto-create-application-asCSP/image4-1.png)
 
 ## <a name="payment-plan"></a>付款计划
 

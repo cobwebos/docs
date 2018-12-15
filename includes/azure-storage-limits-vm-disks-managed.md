@@ -5,15 +5,15 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 09/24/2018
+ms.date: 12/12/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 4441ad1e2940892c1627cbc2d4ee0186e4cfda17
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: bbb338d2b1d359d8e141b18a2beacd8b7faafe9c
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51264259"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53326646"
 ---
 **标准托管虚拟机 HDD**
 
@@ -33,7 +33,7 @@ ms.locfileid: "51264259"
 
 **高级托管虚拟机磁盘：每个磁盘的限制**
 
-| 高级磁盘类型  | P4               | P6               | P10             | P15 | P20              | S30              | P40              | P50              | P60 *             | P70 *             | P80 *             |
+| 高级磁盘类型  | P4               | P6               | P10             | P15 | P20              | P30              | P40              | P50              | P60 *             | P70 *             | P80 *             |
 |---------------------|---------------------|---------------------|------------------|------------------|------------------|------------------|------------------|------------------|------------------|------------------|------------------|
 | 磁盘大小 (GiB)           | 32             | 64             | 128            | 256  | 512            | 1,024    | 2,048     | 4,095    | 8,192     | 16,384     | 32,767     |
 | 每个磁盘的 IOPS       | 最多 120 | 最多 240              | 最多 500              | 最多 1,100 | 最多 2,300              | 最多 5,000              | 最多 7,500             | 最多 7,500              | 最多 12,500              | 最多 15,000              | 最多 20,000              |

@@ -6,14 +6,14 @@ author: Rajeswari-Mamilla
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 11/19/2018
+ms.date: 11/27/2018
 ms.author: ramamill
-ms.openlocfilehash: 6bdbb60da2a135b5f53f6119377c703d88df6ed9
-ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
+ms.openlocfilehash: 099576b1a4c5c28aab7672aaeb9274bc0beb96bf
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2018
-ms.locfileid: "51975339"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52842316"
 ---
 # <a name="set-up-a-process-server-in-azure-for-failback"></a>在 Azure 中设置进程服务器以便进行故障回复
 

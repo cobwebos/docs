@@ -3,7 +3,7 @@ title: 在 Azure 安全中心内管理已连接的合作伙伴解决方案 | Mic
 description: 本文档将对 Azure 安全中心如何让你轻松监视与 Azure 订阅集成的合作伙伴解决方案的运行状态进行指导。
 services: security-center
 documentationcenter: na
-author: TerryLanfear
+author: rkarlin
 manager: MBaldwin
 editor: ''
 ms.assetid: 70c076ef-3ad4-4000-a0c1-0ac0c9796ff1
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/20/2018
-ms.author: terrylan
-ms.openlocfilehash: 103e0e353efeaf493fb1d72f03eb6ce6469cd683
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.author: rkarlin
+ms.openlocfilehash: 27a8abe0008c0b9c3854ea663e1c0fb3b55cfc30
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51235660"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52964537"
 ---
 # <a name="managing-connected-partner-solutions-with-azure-security-center"></a>在 Azure 安全中心内管理已连接的合作伙伴解决方案
 本文介绍了如何在 Azure 安全中心内管理和监视已连接的安全解决方案。

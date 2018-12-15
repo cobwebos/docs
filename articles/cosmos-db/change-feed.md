@@ -2,16 +2,17 @@
 title: 使用 Azure Cosmos DB 中的更改源支持
 description: 使用 Azure Cosmos DB 的更改源支持跟踪文档中发生的更改，执行基于事件的处理（例如触发器），使缓存和分析系统保持最新状态。
 author: rafats
+ms.author: rafats
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.author: rafats
-ms.openlocfilehash: 4edf637d97070416c0dc2970f4bed483e5f4f34d
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.custom: seodec18
+ms.openlocfilehash: 0519bb78b01cd7cab6abaf453efd7a4595101ef4
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51621303"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53133741"
 ---
 # <a name="change-feed-in-azure-cosmos-db"></a>Azure Cosmos DB 中的更改源
 
@@ -82,7 +83,7 @@ _etag 属于内部格式，请不要依赖它，因为它随时可能更改。 _
 
 以下是一些可通过更改源轻松实现的方案：
 
-* 在[无服务器](http://azure.com/serverless) Web 应用或移动应用中，可以跟踪各种事件（例如，对客户配置文件、首选项或其位置的更改），并触发特定的操作（例如，使用 [Azure Functions](#azure-functions) 向客户的设备发送推送通知）。 
+* 在[无服务器](https://azure.microsoft.com/en-us/solutions/serverless/) Web 应用或移动应用中，可以跟踪各种事件（例如，对客户配置文件、首选项或其位置的更改），并触发特定的操作（例如，使用 [Azure Functions](change-feed-functions.md) 向客户的设备发送推送通知）。
 
 * 例如，若要使用 Azure Cosmos DB 构建游戏，可使用更改源，根据已完成的游戏的分数实时更新排行榜。
 
@@ -120,7 +121,7 @@ _etag 属于内部格式，请不要依赖它，因为它随时可能更改。 _
 
 ## <a name="next-steps"></a>后续步骤
 
-现在，可以在以下文章中了解有关更改流的详细信息：
+接下来，请通过以下文章继续详细了解更改源：
 
 * [读取更改源的选项](read-change-feed.md)
 * [将更改源与 Azure Functions 配合使用](change-feed-functions.md)

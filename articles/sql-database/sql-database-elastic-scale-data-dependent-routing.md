@@ -3,7 +3,7 @@ title: 数据依赖型路由与 Azure SQL 数据库 | Microsoft Docs
 description: 如何将 .NET 应用中的 ShardMapManager 类用于数据相关路由（Azure SQL 数据库中共享数据库的一项功能）
 services: sql-database
 ms.service: sql-database
-ms.subservice: elastic-scale
+ms.subservice: scale-out
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 10/05/2018
-ms.openlocfilehash: d40d0aff62492a01694eecac0a3650fcba69c448
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 60e00868805342c1399c3b44f3e944311af0f3b7
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50242919"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52870565"
 ---
 # <a name="use-data-dependent-routing-to-route-a-query-to-appropriate-database"></a>使用数据依赖型路由可将查询路由到相应的数据库
 

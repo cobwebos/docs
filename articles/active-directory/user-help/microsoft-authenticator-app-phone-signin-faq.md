@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 08/12/2017
 ms.author: lizross
 ms.reviewer: librown
-ms.openlocfilehash: b2483d93fdc83970ca1568326f4bc728de16f77c
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 3df4be80e1a979590a05ff10601485e950de54bd
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47038861"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52962211"
 ---
 # <a name="sign-in-with-your-phone-not-your-password"></a>使用手机（而不是密码）登录
 在你输入密码后，Microsoft Authenticator 应用不仅可以通过执行双重验证来帮助保护帐户的安全，而且现在它还能完全取代 Microsoft 帐户密码。
@@ -43,13 +43,13 @@ ms.locfileid: "47038861"
 
     键入用户名后，会看到一个页面，其中包含一个两位数的数字，并要求通过 Microsoft Authenticator 应用批准登录。 如果不想要使用此登录方法，可以选择“改用密码”，并使用密码登录。
 
-    ![“批准登录”框](media\microsoft-authenticator-app-phone-signin-faq/microsoft-auth-app-sign-in.png)
+    ![“批准登录”框](media/microsoft-authenticator-app-phone-signin-faq/microsoft-auth-app-sign-in.png)
 
 2. Microsoft 身份验证应用程序中会显示一条通知，要求你**批准登录**。 如果你认可这次登录，请选择“批准”。 否则请选择“拒绝”。 
 
 3. 点击“批准登录”屏幕上显示的同一数字。 使用手机的 PIN 或生物识别密钥完成身份验证。
 
-    ![带有待选择的数字的“批准登录”框](media\microsoft-authenticator-app-phone-signin-faq/microsoft-auth-app-sign-in-numbers.png)
+    ![带有待选择的数字的“批准登录”框](media/microsoft-authenticator-app-phone-signin-faq/microsoft-auth-app-sign-in-numbers.png)
 
 ## <a name="turn-on-phone-sign-in-for-your-personal-account"></a>为个人帐户启用手机登录 
 可为个人 Microsoft 帐户（例如，用来登录 Outlook.com、Xbox、或 Skype 的帐户）启用手机登录。

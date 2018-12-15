@@ -4,14 +4,14 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
-ms.openlocfilehash: 0e46caf855bca184ff8a714d2c93d573b910fea8
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 9ad161e3e19a1e546f30a17b38737fa88bc0953a
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50226692"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53399799"
 ---
-使用[虚拟机规模集](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md)和 [Azure Monitor 的自动缩放功能](../articles/monitoring-and-diagnostics/monitoring-overview-autoscale.md)时，可以轻松[自动缩放](../articles/monitoring-and-diagnostics/insights-autoscale-best-practices.md)[虚拟机 (VM)](../articles/virtual-machines/windows/overview.md)。 VM 需要成为规模集的成员才能自动缩放。 本文提供了用于更好地了解如何使用自动和手动方法以纵向方式和横向方式缩放 VM 的信息。
+使用[虚拟机规模集](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md)和 [Azure Monitor 的自动缩放功能](../articles/azure-monitor/platform/autoscale-overview.md)时，可以轻松[自动缩放](../articles/azure-monitor/platform/autoscale-best-practices.md)[虚拟机 (VM)](../articles/virtual-machines/windows/overview.md)。 VM 需要成为规模集的成员才能自动缩放。 本文提供了用于更好地了解如何使用自动和手动方法以纵向方式和横向方式缩放 VM 的信息。
 
 ## <a name="horizontal-or-vertical-scaling"></a>横向缩放或纵向缩放
 
@@ -35,7 +35,7 @@ Azure Monitor 的自动缩放功能仅以横向方式调整资源的规模，即
  
 ### <a name="metrics"></a>度量值
 
-使用 Azure Monitor 的自动缩放功能，可以基于[指标](../articles/monitoring-and-diagnostics/insights-autoscale-common-metrics.md)增加或减少正在运行的 VM 数量。 默认情况下，VM 针对磁盘、网络和 CPU 使用情况提供基本的主机级别指标。 使用诊断扩展配置诊断数据收集时，额外的来宾 OS 性能计数器将可用于磁盘、CPU 和内存。
+使用 Azure Monitor 的自动缩放功能，可以基于[指标](../articles/azure-monitor/platform/autoscale-common-metrics.md)增加或减少正在运行的 VM 数量。 默认情况下，VM 针对磁盘、网络和 CPU 使用情况提供基本的主机级别指标。 使用诊断扩展配置诊断数据收集时，额外的来宾 OS 性能计数器将可用于磁盘、CPU 和内存。
 
 ![指标条件](./media/virtual-machines-autoscale/virtual-machines-autoscale-criteria.png)
 
@@ -49,7 +49,7 @@ Azure Monitor 的自动缩放功能仅以横向方式调整资源的规模，即
  
 ### <a name="notifications"></a>通知
 
-可以[设置触发器](../articles/monitoring-and-diagnostics/insights-autoscale-to-webhook-email.md)，以便基于你创建的自动缩放规则调用特定 Web URL 或发送电子邮件。 通过 webhook 可以将 Azure 警报通知路由到其他系统以便用于后处理或自定义通知。
+可以[设置触发器](../articles/azure-monitor/platform/autoscale-webhook-email.md)，以便基于你创建的自动缩放规则调用特定 Web URL 或发送电子邮件。 通过 webhook 可以将 Azure 警报通知路由到其他系统以便用于后处理或自定义通知。
 
 ## <a name="manually-scale-vms-in-a-scale-set"></a>手动缩放规模集中的 VM
 

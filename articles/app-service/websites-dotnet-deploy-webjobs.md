@@ -15,12 +15,12 @@ ms.custom: vs-azure
 ms.workload: azure-vs
 ms.date: 09/12/2017
 ms.author: glenga;david.ebbo;suwatch;pbatum;naren.soni
-ms.openlocfilehash: 08cbff7bc58f5925dee9b77ff195d362af4379d8
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 300ccf5da3528be63ae618338b8953d05b0e799d
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51245712"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53337455"
 ---
 # <a name="develop-and-deploy-webjobs-using-visual-studio---azure-app-service"></a>使用 Visual Studio 开发和部署 WebJobs - Azure 应用服务
 
@@ -35,7 +35,7 @@ ms.locfileid: "51245712"
 
 已启用 Web 作业的项目中添加了以下项：
 
-* [Microsoft.Web.WebJobs.Publish](http://www.nuget.org/packages/Microsoft.Web.WebJobs.Publish/) NuGet 包。
+* [Microsoft.Web.WebJobs.Publish](https://www.nuget.org/packages/Microsoft.Web.WebJobs.Publish/) NuGet 包。
 * [webjob-publish-settings.json](#publishsettings) 文件，其中包含部署和计划程序设置。 
 
 ![显示在控制台应用中添加哪些项目才能让部署作为 Web 作业的插图](./media/websites-dotnet-deploy-webjobs/convert.png)
@@ -97,7 +97,7 @@ ms.locfileid: "51245712"
     创建一个项目，该项目配置为在针对位于相同解决方案中的 Web 项目进行部署时，自动以 Web 作业的方式部署。 要在运行相关 Web 应用程序的同一 Web 应用中运行 Web 作业时，请使用此选项。
 
 > [!NOTE]
-> Web 作业新建项目模板会自动安装 NuGet 包，并在 *Program.cs* 中包含适用于 [WebJobs SDK](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/getting-started-with-windows-azure-webjobs) 的代码。 如果不希望使用 WebJobs SDK，请删除或更改 *Program.cs* 中的 `host.RunAndBlock` 语句。
+> Web 作业新建项目模板会自动安装 NuGet 包，并在 *Program.cs* 中包含适用于 [WebJobs SDK](https://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/getting-started-with-windows-azure-webjobs) 的代码。 如果不希望使用 WebJobs SDK，请删除或更改 *Program.cs* 中的 `host.RunAndBlock` 语句。
 > 
 > 
 
@@ -130,7 +130,7 @@ ms.locfileid: "51245712"
 > 
 
 ## <a id="publishsettings"></a>webjob-publish-settings.json
-设置 Web 作业部署的控制台应用程序时，Visual Studio 会安装 [Microsoft.Web.WebJobs.Publish](http://www.nuget.org/packages/Microsoft.Web.WebJobs.Publish/) NuGet 包，并将计划信息存储在 Web 作业项目的项目 *Properties* 文件夹中的 *webjob-publish-settings.json* 文件内。 以下是该文件的示例：
+设置 Web 作业部署的控制台应用程序时，Visual Studio 会安装 [Microsoft.Web.WebJobs.Publish](https://www.nuget.org/packages/Microsoft.Web.WebJobs.Publish/) NuGet 包，并将计划信息存储在 Web 作业项目的项目 *Properties* 文件夹中的 *webjob-publish-settings.json* 文件内。 以下是该文件的示例：
 
         {
           "$schema": "http://schemastore.org/schemas/json/webjob-publish-settings.json",
@@ -142,7 +142,7 @@ ms.locfileid: "51245712"
           "runMode": "Continuous"
         }
 
-可以编辑此文件目录，Visual Studio 将提供 IntelliSense。 在 [http://schemastore.org](http://schemastore.org/schemas/json/webjob-publish-settings.json) 中可查看存储的文件架构。  
+可以编辑此文件目录，Visual Studio 将提供 IntelliSense。 在 [https://schemastore.org](https://schemastore.org/schemas/json/webjob-publish-settings.json) 中可查看存储的文件架构。  
 
 ## <a id="webjobslist"></a>webjobs-list.json
 如果将已启用 Web 作业的项目链接到 Web 项目，Visual Studio 会将 Web 作业项目的名称存储在 Web 项目 *Properties* 文件夹的 *webjobs-list.json* 文件中。 该列表可能包含多个 Web 作业项目，如以下示例所示：
@@ -159,7 +159,7 @@ ms.locfileid: "51245712"
           ]
         }
 
-可以编辑此文件目录，Visual Studio 将提供 IntelliSense。 在 [http://schemastore.org](http://schemastore.org/schemas/json/webjobs-list.json) 中可查看存储的文件架构。
+可以编辑此文件目录，Visual Studio 将提供 IntelliSense。 在 [https://schemastore.org](https://schemastore.org/schemas/json/webjobs-list.json) 中可查看存储的文件架构。
 
 ## <a id="deploy"></a>部署 WebJobs 项目
 已链接到 Web 项目的 Web 作业项目会通过 Web 项目自动部署。 有关 Web 项目部署的信息，请参阅左侧导航区域中的“操作指南” > “部署应用”。

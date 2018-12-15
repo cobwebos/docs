@@ -14,22 +14,20 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 7e7aa2e14d86a0295a9921766f7fef547d42a05d
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: df323d121b42ab1200844f3fefb713122ba43106
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48805249"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53316074"
 ---
-<a name="business-process-libraries"></a>业务流程库
-==========================
+# <a name="business-process-libraries"></a>业务流程库
 
 业务流程库只是你的最终方案的任务指南。 业务流程库应直接与营销内容保持一致。 业务流程库中的每个业务流程都应该有一个与之关联的[任务记录](https://docs.microsoft.com/dynamics365/operations/dev-itpro/user-interface/task-recorder)。 如果你有 Dynamics 365 for Operations 之外的流程，请将 Visio 附加到 BPM 库。
 
 有关详细信息，请参阅[业务流程建模器](https://docs.microsoft.com/dynamics365/operations/dev-itpro/lcs-solutions/business-process-modeler-libraries-lcs-solutions)。
 
-<a name="methodologies"></a>方法
-=============
+## <a name="methodologies"></a>方法
 
 Microsoft Dynamics 的生命周期服务 (LCS) 提供了一些方法，你可以使用这些方法来确保更可重复和可预测的实现项目体验。 你可以使用提供的方法之一，也可以创建自己的方法。 使用方法，可以轻松跟踪和报告进度。
 

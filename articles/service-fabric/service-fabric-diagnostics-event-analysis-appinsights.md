@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/21/2018
 ms.author: srrengar
-ms.openlocfilehash: f9c7a70eae4c49173b3e11b7fbfa901f7e5b89d6
-ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
+ms.openlocfilehash: 815b792f8584e984ff77c32265de65f9b633adb1
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2018
-ms.locfileid: "52291039"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53322783"
 ---
 # <a name="event-analysis-and-visualization-with-application-insights"></a>使用 Application Insights 进行事件分析和可视化
 
@@ -54,7 +54,7 @@ Application Insights 提供指定的视图用于查询所有传入的数据。 �
 >[!NOTE]
 >目前仅适用于 Windows 群集。
 
-可通过两种方式将数据从 WAD 发送到 Azure Application Insights，这一过程是通过向 WAD 配置添加 Application Insights 接收器实现，如[此文](../monitoring-and-diagnostics/azure-diagnostics-configure-application-insights.md)所述。
+可通过两种方式将数据从 WAD 发送到 Azure Application Insights，这一过程是通过向 WAD 配置添加 Application Insights 接收器实现，如[此文](../azure-monitor/platform/diagnostics-extension-to-application-insights.md)所述。
 
 #### <a name="add-an-application-insights-instrumentation-key-when-creating-a-cluster-in-azure-portal"></a>在 Azure 门户中创建群集时添加 Application Insights 检测密钥
 
@@ -88,7 +88,7 @@ Application Insights 提供指定的视图用于查询所有传入的数据。 �
 
 在上面的两个代码片段中，名称“applicationInsights”用于描述接收器。 这不是必需的，并且只要接收器名称包含在“接收器”中，就可将名称设定为任何字符串。
 
-目前，群集中的日志在 Application Insights 日志查看器中显示为**跟踪**。 由于来自平台的大部分跟踪信息都是“参考”级别，因此还可以考虑将接收器配置更改为仅发送类型为“关键”或“错误”的日志。 这可通过将“通道”添加到接收器完成，如[本文](../monitoring-and-diagnostics/azure-diagnostics-configure-application-insights.md)所示。
+目前，群集中的日志在 Application Insights 日志查看器中显示为**跟踪**。 由于来自平台的大部分跟踪信息都是“参考”级别，因此还可以考虑将接收器配置更改为仅发送类型为“关键”或“错误”的日志。 这可通过将“通道”添加到接收器完成，如[本文](../azure-monitor/platform/diagnostics-extension-to-application-insights.md)所示。
 
 >[!NOTE]
 >如果在门户或资源管理器模板中使用错误的 Application Insights 密钥，则必须手动更改密钥并更新/重新部署群集。

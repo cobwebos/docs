@@ -3,7 +3,7 @@ title: 使用 Azure 安全中心建议增强安全性 | Microsoft 文档
 description: " 了解如何使用 Azure 安全中心内的安全策略和建议来帮助减少安全攻击。 "
 services: security-center
 documentationcenter: na
-author: TerryLanfear
+author: rkarlin
 manager: MBaldwin
 editor: ''
 ms.assetid: ''
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/18/2017
-ms.author: terrylan
-ms.openlocfilehash: 3640e4affe42986106791cba50f6cbfd97906806
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.author: rkarlin
+ms.openlocfilehash: d496f3f28cee711109c5c200102d48482bf6cd9c
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52308318"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53340685"
 ---
 # <a name="use-azure-security-center-recommendations-to-enhance-security"></a>使用 Azure 安全中心建议增强安全性
 可以通过配置安全策略，并实施 Azure 安全中心提供的建议，降低发生重大安全事件的可能性。 本文说明了如何使用安全中心内的安全策略和建议来帮助减少安全攻击。
@@ -30,7 +30,7 @@ ms.locfileid: "52308318"
 >
 
 ## <a name="managing-security-recommendations"></a>管理安全建议
-安全策略用于定义一组控制，这些控制是针对指定订阅或资源组中的资源建议的。 在安全中心内定义策略时，需考虑到公司的安全要求。 若要了解详细信息，请参阅[在安全中心设置安全策略](security-center-azure-policy.md)。
+安全策略用于定义一组控制，这些控制是针对指定订阅或资源组中的资源建议的。 在安全中心内定义策略时，需考虑到公司的安全要求。 若要了解详细信息，请参阅[在安全中心设置安全策略](tutorial-security-policy.md)。
 
 资源组的安全策略从订阅级别继承。
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/17/2018
 ms.author: barbkess
-ms.openlocfilehash: 6acc9a8b9cd7b6ef1218b1e8cae2e6a9af92f9d8
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: 9eb8b6e6af6fb2912789b66ed622fd47d2cb8b8b
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49393688"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53311875"
 ---
 # <a name="how-to-remove-a-users-access-to-an-application"></a>如何删除用户对应用程序的访问权限
 
@@ -70,5 +70,6 @@ ms.locfileid: "49393688"
 6.  将“用户可以允许应用代表他们访问公司数据”切换为“否”并单击“保存”按钮。
 
 
-# <a name="next-steps"></a>后续步骤
+## <a name="next-steps"></a>后续步骤
+
 [管理对应用的访问](what-is-access-management.md)

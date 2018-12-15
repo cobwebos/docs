@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 04/06/2018
 ms.author: johnkem
-ms.openlocfilehash: db4208c8fef27d2e2085e63ba3a986456d0544bf
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: fe24307f7ed01c64217bcb1f9f7645a30bce7f44
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49429110"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53322817"
 ---
 # <a name="azure-diagnostics-extension-for-windows-vms"></a>适用于 Windows VM 的 Azure 诊断扩展
 
@@ -37,7 +37,7 @@ Azure 诊断扩展要求目标虚拟机已连接到 Internet。
 
 ## <a name="extension-schema"></a>扩展架构
 
-[本文档介绍了 Azure 诊断扩展架构和属性值。](../../monitoring-and-diagnostics/azure-diagnostics-schema-1dot3-and-later.md)
+[本文档介绍了 Azure 诊断扩展架构和属性值。](../../azure-monitor/platform/diagnostics-extension-schema-1dot3.md)
 
 ## <a name="template-deployment"></a>模板部署
 
@@ -80,12 +80,12 @@ Set-AzureRmVMDiagnosticsExtension -ResourceGroupName $vm_resourcegroup `
 az vm extension list --resource-group myResourceGroup --vm-name myVM -o table
 ```
 
-有关 Azure 诊断扩展的更全面的故障排除指南，请[参阅此文章](../../monitoring-and-diagnostics/azure-diagnostics-troubleshooting.md)。
+有关 Azure 诊断扩展的更全面的故障排除指南，请[参阅此文章](../../azure-monitor/platform/diagnostics-extension-troubleshooting.md)。
 
 ### <a name="support"></a>支持
 
 如果对本文中的任何内容需要更多帮助，可以联系 [MSDN Azure 和 Stack Overflow 论坛](https://azure.microsoft.com/support/forums/)上的 Azure 专家。 或者，你也可以提出 Azure 支持事件。 请转到 [Azure 支持站点](https://azure.microsoft.com/support/options/)并选择“获取支持”。 有关使用 Azure 支持的信息，请阅读 [Microsoft Azure 支持常见问题解答](https://azure.microsoft.com/support/faq/)。
 
 ## <a name="next-steps"></a>后续步骤
-* [详细了解 Azure 诊断扩展](../../monitoring-and-diagnostics/azure-diagnostics.md)
-* [查看扩展架构和版本](../../monitoring-and-diagnostics/azure-diagnostics-schema.md)
+* [详细了解 Azure 诊断扩展](../../azure-monitor/platform/diagnostics-extension-overview.md)
+* [查看扩展架构和版本](../../azure-monitor/platform/diagnostics-extension-schema.md)
