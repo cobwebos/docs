@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: a314401883d0325029ce50502f85c335458e3959
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 9bbf1c5e5ff58d746a0749f0423f8ca42d2971b4
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51285044"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53338254"
 documentType: LandingData
 title: Azure 数据库迁移服务文档
 metadata:
@@ -18,7 +18,7 @@ metadata:
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
-  ms.date: 10/30/2018
+  ms.date: 12/12/2018
   ms.author: rajpo
 abstract:
   description: 使用 Azure 数据库迁移服务可从多个数据库源无缝迁移到 Azure 数据平台，且会尽量缩短停机时间。 该服务使用数据迁移助手生成评估报告，这些报告提供建议以指导你在执行迁移之前完成所需的更改。 准备好开始迁移过程时，Azure 数据库迁移服务会执行所有必需步骤。
@@ -70,6 +70,8 @@ sections:
     style: unordered
     className: spaced noBullet
     items:
+    - html: <a href="/azure/dms/resource-scenario-status">Azure 数据库迁移服务支持的迁移方案的状态</a>
     - html: <a href="/azure/dms/pre-reqs">使用 Azure 数据库迁移服务的先决条件概述</a>
     - html: <a href="/azure/dms/faq">有关使用 Azure 数据库迁移服务的常见问题解答</a>
     - html: <a href="/azure/dms/known-issues-azure-sql-online">联机迁移到 Azure SQL 数据库时存在的已知问题/迁移限制</a>
+    - html: <a href="/azure/dms/dms-tools-matrix">用于数据迁移方案的服务和工具</a>

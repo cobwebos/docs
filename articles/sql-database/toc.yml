@@ -157,14 +157,8 @@ items:
       href: sql-database-managed-instance-create-manage.md
     - name: 资源限制
       href: sql-database-managed-instance-resource-limits.md
-    - name: VNet 配置
-      items:
-      - name: VNet 配置
-        href: sql-database-managed-instance-vnet-configuration.md
-      - name: 连接体系结构
-        href: sql-database-managed-instance-connectivity-architecture.md
-      - name: 管理终结点
-        href: sql-database-managed-instance-management-endpoint.md
+    - name: 连接体系结构
+      href: sql-database-managed-instance-connectivity-architecture.md
     - name: T-SQL 的差异
       href: sql-database-managed-instance-transact-sql-information.md
   - name: 平台即服务
@@ -287,34 +281,28 @@ items:
       href: elastic-jobs-overview.md
   - name: SQL 功能比较
     href: sql-database-features.md
-  - name: 监视和性能优化
+  - name: 监视和优化
     items:
-    - name: 监视和优化概述
+    - name: 监视和性能优化
       href: sql-database-monitor-tune-overview.md
-    - name: 智能性能
+    - name: 性能监视
       items:
-      - name: 优化操作和建议
-        href: sql-database-performance.md
       - name: 查询性能见解
         href: sql-database-query-performance.md
-      - name: 数据库顾问性能建议
-        href: sql-database-advisor.md
-    - name: 高级监视
-      items:
       - name: Azure SQL Analytics 监视
         href: https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-sql
       - name: 诊断遥测日志记录
         href: sql-database-metrics-diag-logging.md
-    - name: 针对性能的智能见解
-      href: sql-database-intelligent-insights.md
-    - name: 自动优化
-      href: sql-database-automatic-tuning.md
-    - name: 智能查询处理
+    - name: 智能性能
       items:
-      - name: 智能查询处理
-        href: https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing?toc=/azure/sql-database/toc.json
-      - name: 自适应查询处理
-        href: https://docs.microsoft.com/sql/relational-databases/performance/adaptive-query-processing?toc=/azure/sql-database/toc.json
+      - name: 自动优化
+        href: sql-database-automatic-tuning.md
+      - name: 针对性能的智能见解
+        href: sql-database-intelligent-insights.md
+      - name: 优化操作和建议
+        href: sql-database-performance.md
+      - name: 数据库顾问性能建议
+        href: sql-database-advisor.md
   - name: 数据库功能
     items:
     - name: 数据库功能
@@ -409,10 +397,20 @@ items:
       href: sql-database-managed-instance-migrate.md
     - name: 将 TDE 证书迁移到托管实例
       href: sql-database-managed-instance-migrate-tde-certificate.md
+    - name: 确定托管实例子网的大小
+      href: sql-database-managed-instance-determine-size-vnet-subnet.md
+    - name: 为托管实例创建新的 VNet 和子网
+      href: sql-database-managed-instance-create-vnet-subnet.md
+    - name: 为托管实例配置现有 VNet 和子网
+      href: sql-database-managed-instance-configure-vnet-subnet.md
     - name: 配置自定义 DNS
       href: sql-database-managed-instance-custom-dns.md
     - name: 同步网络配置
       href: sql-database-managed-instance-sync-network-configuration.md
+    - name: 查找管理终结点 IP 地址
+      href: sql-database-managed-instance-find-management-endpoint-ip-address.md
+    - name: 验证内置防火墙保护
+      href: sql-database-managed-instance-management-endpoint-verify-built-in-firewall.md
     - name: 事务复制
       href: replication-with-sql-database-managed-instance.md
     - name: 配置威胁检测
@@ -668,9 +666,9 @@ items:
       href: sql-database-elastic-jobs-getting-started.md
     - name: 卸载弹性作业（已弃用）
       href: sql-database-elastic-jobs-uninstall.md
-ms.openlocfilehash: bb051db62acda98e40be09c174216208578afccc
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: d94f4fb39ccdee60fae434204369fd844aedeb20
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53320959"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53384269"

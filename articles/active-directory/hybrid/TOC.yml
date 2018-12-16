@@ -133,6 +133,12 @@ items:
       href: plan-connect-userprincipalname.md
     - name: 有关实例的特殊注意事项
       href: reference-connect-instances.md
+    - name: 迁移
+      items:
+      - name: 从联合身份验证迁移到 PHS
+        href: plan-migrate-adfs-password-hash-sync.md
+      - name: 从联合身份验证迁移到 PTA
+        href: plan-migrate-adfs-pass-through-authentication.md
     - name: 混合标识设计注意事项
       items:
       - name: 混合标识设计注意事项概述
@@ -319,9 +325,9 @@ items:
     href: reference-connect-adsynctools.md
   - name: ADConnectivityTools 参考
     href: reference-connect-adconnectivitytools.md
-ms.openlocfilehash: b3488ec5aec1c5bd1d3f38a2bf87ab1d8d3a87f1
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 53da6c08a48f14034e95094ec698f4ec55703466
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53080140"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53342487"

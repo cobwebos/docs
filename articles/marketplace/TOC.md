@@ -83,21 +83,6 @@
 ### [发布 VM 产品/服务](./cloud-partner-portal/virtual-machine/cpp-publish-offer.md)
 ### [更新现有产品/服务](./cloud-partner-portal/virtual-machine/cpp-update-existing-offer.md)
 
-<!-- Following legacy VM section was replaced.  -->
-<!-- 
-## Virtual machines
-### [Dev center account registration](./cloud-partner-portal-orig/cloud-partner-portal-dev-center-accounts-registration.md)
-### [Author virtual machine offer](./cloud-partner-portal-orig/cloud-partner-portal-publish-virtual-machine.md)
-### [Private SKUs](./cloud-partner-portal-orig/cloud-partner-portal-azure-private-skus.md)
-### [SEO guidance](./cloud-partner-portal-orig/cloud-partner-portal-seo-guidance.md)
-### [Make offer live](./cloud-partner-portal-orig/cloud-partner-portal-make-offer-live-on-Azure-Marketplace.md)
-### [Update existing offer](./cloud-partner-portal-orig/cloud-partner-portal-update-existing-offer.md)
-### [Delete offer](./cloud-partner-portal-orig/cloud-partner-portal-delete-an-offer.md)
-### [Migrate offers](./cloud-partner-portal-orig/cloud-partner-portal-how-to-migrate-to-the-new-cloud-partner-portal.md)
-### [Automate offer publishing](./cloud-partner-portal-orig/cloud-partner-portal-automate-offer-publishing.md)
--->
-<!-- new section for Azure apps -->
-
 ## [Azure 应用程序产品/服务](./cloud-partner-portal/azure-applications/cpp-azure-app-offer.md)
 ### [先决条件](./cloud-partner-portal/azure-applications/cpp-prerequisites.md)
 ### [创建 Azure 应用程序套餐](./cloud-partner-portal/azure-applications/cpp-create-offer.md)
@@ -201,7 +186,16 @@
 ### [BPM 和方法](./cloud-partner-portal-orig/bpm-and-methodologies.md)
 ### [帮助 wiki](./cloud-partner-portal-orig/help-wiki.md)
 
-## [咨询服务](./cloud-partner-portal-orig/cloud-partner-portal-consulting-services-publishing-offer.md)
+<!--
+## [Consulting services](./cloud-partner-portal-orig/cloud-partner-portal-consulting-services-publishing-offer.md)
+-->
+## [咨询服务](./cloud-partner-portal/consulting-services/cloud-partner-portal-consulting-services-publishing-offer.md)
+### [先决条件](./cloud-partner-portal/consulting-services/cpp-consulting-service-prerequisites.md)
+### [创建咨询服务产品](./cloud-partner-portal/consulting-services/cpp-consulting-service-create-offer.md)
+#### [“产品/服务设置”选项卡](./cloud-partner-portal/consulting-services/cpp-consulting-service-define-offer-settings.md)
+#### [“店面详细信息”选项卡](./cloud-partner-portal/consulting-services/cpp-consulting-service-storefront-details.md)
+### [发布咨询服务产品](./cloud-partner-portal/consulting-services/cpp-consulting-service-publish-offer.md) 
+
 ## [管理发布者个人资料](./cloud-partner-portal-orig/cloud-partner-portal-manage-publisher-profile.md)
 ## [管理用户](./cloud-partner-portal-orig/cloud-partner-portal-manage-users.md)
 ## [GDPR 符合性](./cloud-partner-portal-orig/cloud-partner-portal-gdpr.md)
