@@ -24,7 +24,7 @@ ms.locfileid: "49353810"
 ---
 # <a name="tutorial-build-an-aspnet-app-in-azure-with-sql-database"></a>教程：使用 SQL 数据库在 Azure 中构建 ASP.NET 应用
 
-[Azure Web 应用](app-service-web-overview.md)提供高度可缩放、自修补的 Web 托管服务。 本教程演示如何在 Azure 中部署数据驱动的 ASP.NET Web 应用，以及如何将其连接到 [Azure SQL 数据库](../sql-database/sql-database-technical-overview.md)。 完成本教程后，将拥有在 Azure 中运行并已连接到 SQL 数据库的 ASP.NET 应用。
+[Azure Web 应用](app-service-web-overview.md)提供高度可缩放、自修补的 Web 托管服务。 本教程演示如何在 Azure 中部署数据驱动的 ASP.NET Web 应用，以及如何将其连接到 [Azure SQL 数据库](../sql-database/sql-database-technical-overview.md)。 完成本教程后，你将拥有在 Azure 中运行的连接到 SQL 数据库的 ASP.NET 应用。
 
 ![已在 Azure Web 应用中发布 ASP.NET 应用程序](./media/app-service-web-tutorial-dotnet-sqldatabase/azure-app-in-browser.png)
 
@@ -42,7 +42,7 @@ ms.locfileid: "49353810"
 
 ## <a name="prerequisites"></a>先决条件
 
-完成本教程：
+完成本教程需要：
 
 安装带有 ASP.NET 和 Web 开发工作负荷的 <a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2017</a>。
 
@@ -53,7 +53,7 @@ ms.locfileid: "49353810"
 - [下载示例项目 ](https://github.com/Azure-Samples/dotnet-sqldb-tutorial/archive/master.zip)。
 - 提取（解压缩）dotnet-sqldb-tutorial-master.zip 文件。
 
-此示例项目包含一个使用 [Entity Framework Code First](/aspnet/mvc/overview/getting-started/getting-started-with-ef-using-mvc/creating-an-entity-framework-data-model-for-an-asp-net-mvc-application) 的基本 [ASP.NET MVC](https://www.asp.net/mvc) 创建-读取-更新-删除 (CRUD) 应用。
+此示例项目包含一个使用 [Entity Framework Code First](/aspnet/mvc/overview/getting-started/getting-started-with-ef-using-mvc/creating-an-entity-framework-data-model-for-an-asp-net-mvc-application) 的基本的 [ASP.NET MVC](https://www.asp.net/mvc) 创建-读取-更新-删除 (CRUD) 应用。
 
 ### <a name="run-the-app"></a>运行应用
 
@@ -124,7 +124,7 @@ ms.locfileid: "49353810"
 
 ### <a name="create-a-sql-server-instance"></a>创建 SQL Server 实例
 
-在创建数据库时之前，需要 [Azure SQL 数据库逻辑服务器](../sql-database/sql-database-features.md)。 逻辑服务器包含一组作为组管理的数据库。
+在创建数据库之前，需要 [Azure SQL 数据库逻辑服务器](../sql-database/sql-database-features.md)。 逻辑服务器包含一组作为组管理的数据库。
 
 单击“创建 SQL 数据库”。
 
@@ -132,11 +132,11 @@ ms.locfileid: "49353810"
 
 在“配置 SQL 数据库”对话框中，单击“SQL Server”旁的“新建”。 
 
-将生成唯一的服务器名称。 此名称用作用于逻辑服务器`<server_name>.database.windows.net`的默认 URL 的一部分。 在 Azure 中的所有逻辑服务器实例，它必须是唯一的。 你可以更改服务器名称，但本教程保留生成值。
+这将生成唯一的服务器名称。 此名称用作逻辑服务器`<server_name>.database.windows.net`的默认 URL 的一部分。 在 Azure 所有的逻辑服务器实例中，它必须是唯一的。 你可以更改服务器名称，但本教程保留生成的值。
 
 添加管理员用户名和密码。 有关密码复杂性要求，请参阅[密码策略](/sql/relational-databases/security/password-policy)。
 
-牢记此用户名和密码。 随后，你需要用它们来管理逻辑服务器实例。
+牢记此用户名和密码。 你需要在之后用它们来管理逻辑服务器实例。
 
 > [!IMPORTANT]
 > 虽然连接字符串中的密码已在 Visual Studio 和应用服务中受到屏蔽，但由于它实际上是保留在某个位置，因此增加了应用的受攻击面。 应用服务可以使用[托管服务标识](app-service-managed-service-identity.md)，因此根本不需要将机密保留在代码或应用配置中，这样就消除了上述风险。 有关详细信息，请参阅[后续步骤](#next-steps)。
