@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 08/17/2018
 ms.author: crdun
-ms.openlocfilehash: 28a741393fd4b7b4076449c90575f8a4ab30e0fc
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: c8bd6430b362fde81c3133c2c16cf369aa050103
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "41920822"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52999379"
 ---
 # <a name="create-a-windows-app"></a>创建 Windows 应用
 
@@ -73,15 +73,15 @@ ms.locfileid: "41920822"
 ## <a name="next-steps"></a>后续步骤
 
 * [向应用添加身份验证](app-service-mobile-windows-store-dotnet-get-started-users.md)  
-  了解如何使用标识提供者对应用的用户进行身份验证。
+   了解如何使用标识提供者对应用的用户进行身份验证。
 * [向应用添加推送通知](app-service-mobile-windows-store-dotnet-get-started-push.md)  
-  了解如何为应用添加推送通知支持，以及如何将移动应用后端配置为使用 Azure 通知中心发送推送通知。
+   了解如何为应用添加推送通知支持，以及如何将移动应用后端配置为使用 Azure 通知中心发送推送通知。
 * [为应用启用脱机同步](app-service-mobile-windows-store-dotnet-get-started-offline-data.md)  
   了解如何使用移动应用后端向应用添加脱机支持。 借助脱机同步，最终用户即使在没有网络连接时也能够与移动应用进行交互（查看、添加或修改数据）。
 
 <!-- Anchors. -->
 <!-- Images. -->
 <!-- URLs. -->
-[Mobile App SDK]: http://go.microsoft.com/fwlink/?LinkId=257545
+[Mobile App SDK]: https://go.microsoft.com/fwlink/?LinkId=257545
 [Azure portal]: https://portal.azure.com/
 [Visual Studio Community 2017]: https://go.microsoft.com/fwLink/p/?LinkID=534203
