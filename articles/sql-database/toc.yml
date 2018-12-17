@@ -101,6 +101,8 @@ items:
       href: sql-database-service-tiers-dtu.md
     - name: 为预留容量预付费
       href: sql-database-reserved-capacity.md
+    - name: 从高级 RS 服务层迁移
+      href: sql-database-service-tiers-prs.md
   - name: 计算和存储
     items:
     - name: 概述
@@ -115,7 +117,7 @@ items:
       href: sql-database-service-tier-hyperscale-faq.md
   - name: 单一数据库
     items:
-    - name: 单一数据库
+    - name: 单个数据库概述
       href: sql-database-single-index.yml
     - name: 创建和管理
       href: sql-database-single-databases-manage.md
@@ -149,7 +151,7 @@ items:
       href: sql-database-single-database-scale.md
   - name: 托管实例
     items:
-    - name: 托管实例
+    - name: 托管实例概述
       href: sql-database-managed-instance-index.yml
     - name: 托管实例概述
       href: sql-database-managed-instance.md
@@ -163,7 +165,7 @@ items:
       href: sql-database-managed-instance-transact-sql-information.md
   - name: 平台即服务
     items:
-    - name: 平台即服务
+    - name: “平台即服务”概述
       href: sql-database-paas.yml
     - name: 业务连续性
       href: sql-database-business-continuity.md
@@ -195,7 +197,7 @@ items:
         href: sql-database-disaster-recovery-drills.md
   - name: 安全
     items:
-    - name: 安全
+    - name: 安全概述
       href: sql-database-security-index.yml
     - name: 安全概述
       href: sql-database-security-overview.md
@@ -249,7 +251,7 @@ items:
         href: transparent-data-encryption-byok-azure-sql.md
   - name: 可伸缩性
     items:
-    - name: 可伸缩性
+    - name: 可伸缩性概述
       href: sql-database-scalability-index.yml
     - name: 纵向扩展/缩减
       href: sql-database-scale-resources.md
@@ -283,6 +285,8 @@ items:
     href: sql-database-features.md
   - name: 监视和优化
     items:
+    - name: 监视和优化概述
+      href: sql-database-monitoring-tuning-index.yml
     - name: 监视和性能优化
       href: sql-database-monitor-tune-overview.md
     - name: 性能监视
@@ -315,8 +319,12 @@ items:
       href: sql-database-temporal-tables.md
 - name: 操作指南
   items:
+  - name: 概述
+    href: sql-database-howto.md
   - name: 单一数据库
     items:
+    - name: 概述
+      href: sql-database-howto-single-database.md
     - name: 迁移到 SQL 数据库
       href: sql-database-cloud-migrate.md
     - name: 在迁移后管理 SQL 数据库
@@ -393,6 +401,8 @@ items:
         href: elastic-jobs-migrate.md
   - name: 托管实例
     items:
+    - name: 概述
+      href: sql-database-howto-managed-instance.md
     - name: 迁移到托管实例
       href: sql-database-managed-instance-migrate.md
     - name: 将 TDE 证书迁移到托管实例
@@ -666,9 +676,9 @@ items:
       href: sql-database-elastic-jobs-getting-started.md
     - name: 卸载弹性作业（已弃用）
       href: sql-database-elastic-jobs-uninstall.md
-ms.openlocfilehash: d94f4fb39ccdee60fae434204369fd844aedeb20
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: d276b202da8055965a43f5313b6a8c4b335f74b2
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53384269"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53436018"

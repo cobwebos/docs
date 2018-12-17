@@ -91,7 +91,7 @@
 #### [“体验版”选项卡](./cloud-partner-portal/azure-applications/cpp-testdrive-tab.md)
 #### [“市场”选项卡](./cloud-partner-portal/azure-applications/cpp-marketplace-tab.md)
 #### [“支持”选项卡](./cloud-partner-portal/azure-applications/cpp-support-tab.md)
-<!-- ### [Create technical assets](./cloud-partner-portal/azure-applications/cpp-create-technical-assets.md) -->
+### [创建技术资产](./cloud-partner-portal/azure-applications/cpp-create-technical-assets.md)
 ### [发布 Azure 应用程序套餐](./cloud-partner-portal/azure-applications/cpp-publish-offer.md)
 ### [更新现有产品/服务](./cloud-partner-portal/azure-applications/cpp-update-existing-offer.md)
 

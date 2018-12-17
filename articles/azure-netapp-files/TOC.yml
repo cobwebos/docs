@@ -1,0 +1,39 @@
+items:
+- name: Azure NetApp 文件文档
+  href: index.md
+- name: 概述
+  items:
+  - name: Azure NetApp 文件简介
+    href: azure-netapp-files-introduction.md
+  - name: 了解存储层次结构
+    href: azure-netapp-files-understand-storage-hierarchy.md
+- name: 快速入门
+  items:
+  - name: 注册 Azure NetApp 文件
+    href: azure-netapp-files-register.md
+  - name: 创建 NetApp 帐户
+    href: azure-netapp-files-create-netapp-account.md
+  - name: 设置容量池
+    href: azure-netapp-files-set-up-capacity-pool.md
+  - name: 将子网委托到 Azure NetApp 文件
+    href: azure-netapp-files-delegate-subnet.md
+  - name: 为 Azure NetApp 文件创建卷
+    href: azure-netapp-files-create-volumes.md
+  - name: 为卷配置导出策略（可选）
+    href: azure-netapp-files-configure-export-policy.md
+- name: 操作指南
+  items:
+  - name: 管理卷
+    href: azure-netapp-files-manage-volumes.md
+  - name: 为虚拟机装载或卸载卷
+    href: azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md
+  - name: 管理快照
+    href: azure-netapp-files-manage-snapshots.md
+  - name: 重设容量池或卷的大小
+    href: azure-netapp-files-resize-capacity-pools-or-volumes.md
+ms.openlocfilehash: 9e500904c2249fe1f419e4e8e3657bb083f0143b
+ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53414212"

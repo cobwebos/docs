@@ -80,7 +80,7 @@ items:
       href: consistency-levels.md
     - name: 选择适当的一致性级别
       href: consistency-levels-choosing.md
-    - name: 一致性级别和 Azure Cosmos DB API
+    - name: 一致性级别和 Cosmos DB API
       href: consistency-levels-across-apis.md
     - name: 一致性、可用性和性能权衡
       href: consistency-levels-tradeoffs.md
@@ -144,6 +144,12 @@ items:
       href: unique-keys.md
     - name: 事务和乐观并发
       href: database-transactions-optimistic-concurrency.md
+  - name: 服务器端编程
+    items:
+    - name: 存储过程、触发器和 UDF
+      href: stored-procedures-triggers-udfs.md
+    - name: JavaScript 查询 API
+      href: javascript-query-api.md
   - name: 优化 Azure Cosmos DB 成本
     items:
     - name: 定价模型
@@ -178,8 +184,6 @@ items:
       href: firewall-support.md
     - name: 从虚拟网络访问
       href: vnet-service-endpoint.md
-    - name: Key Vault 支持
-      href: access-secrets-from-keyvault.md
   - name: 企业就绪情况
     items:
     - name: 联机备份和还原
@@ -250,8 +254,14 @@ items:
       items:
       - name: 调整查询性能
         href: sql-api-query-metrics.md
-      - name: 存储过程、触发器和 UDF
-        href: programming.md
+      - name: 服务器端编程
+        items:
+        - name: 编写存储过程、触发器和 UDF
+          href: how-to-write-stored-procedures-triggers-udfs.md
+        - name: 使用 JavaScript 查询 API 编写存储过程和触发器
+          href: how-to-write-javascript-query-api.md
+        - name: 使用存储过程、触发器和 UDF
+          href: how-to-use-stored-procedures-triggers-udfs.md
       - name: 数据类型
         items:
         - name: DateTime
@@ -308,7 +318,7 @@ items:
             href: tutorial-develop-mongodb-nodejs-part3.md
           - name: 第 4 部分 - 创建帐户
             href: tutorial-develop-mongodb-nodejs-part4.md
-          - name: 第 5 部分 - 连接到 Azure Cosmos DB
+          - name: 第 5 部分 - 连接到 Cosmos DB
             href: tutorial-develop-mongodb-nodejs-part5.md
           - name: 第 6 部分 - 执行 CRUD 操作
             href: tutorial-develop-mongodb-nodejs-part6.md
@@ -479,6 +489,8 @@ items:
       href: how-to-configure-vnet-service-endpoint.md
     - name: 配置跨源资源共享 (CORS)
       href: how-to-configure-cross-origin-resource-sharing.md
+    - name: 使用 Key Vault 进行保护
+      href: access-secrets-from-keyvault.md
   - name: 企业就绪情况
     items:
     - name: 从备份还原数据
@@ -529,7 +541,7 @@ items:
         href: performance-testing.md
     - name: 以经济高效的方式读取和写入
       href: key-value-store-cost.md
-  - name: 将 Azure Cosmos DB 数据可视化
+  - name: 将 Cosmos DB 数据可视化
     items:
     - name: 使用 Power BI
       href: powerbi-visualize.md
@@ -603,9 +615,9 @@ items:
       href: use-cases.md
     - name: 社交媒体应用
       href: social-media-apps.md
-ms.openlocfilehash: d31364cb9d458e54ae407d10fd88d8db4e9f457f
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 34fc77f13f0c0bd394d96e19b86a1632ce2846b1
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 12/14/2018
-ms.locfileid: "53384660"
+ms.locfileid: "53410102"
