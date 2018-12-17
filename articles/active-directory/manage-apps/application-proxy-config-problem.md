@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 05/21/2018
 ms.author: barbkess
 ms.reviewer: asteen
-ms.openlocfilehash: 2344d35827cf541f0230f74917be3ae0ea39e074
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: e75b04b3220347bdaa90dbc2f21d92475df3aa47
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44354350"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53136238"
 ---
 # <a name="problem-creating-an-application-proxy-application"></a>创建应用程序代理应用程序时出现问题 
 
@@ -28,7 +28,7 @@ ms.locfileid: "44354350"
 
 ## <a name="recommended-documents"></a>建议的文档 
 
-若要了解通过管理门户创建应用程序代理应用程序的详细信息，请参阅[使用 Azure AD 应用程序代理发布应用程序](application-proxy-publish-azure-portal.md)。
+若要了解通过管理门户创建应用程序代理应用程序的详细信息，请参阅[使用 Azure AD 应用程序代理发布应用程序](application-proxy-add-on-premises-application.md)。
 
 如果按照该文档中的步骤操作，但在创建应用程序时出错，请参阅错误详细信息以获取有关如何修复应用程序的信息和建议。 大多数的错误消息都包含建议的修复方法。 
 
@@ -51,4 +51,4 @@ ms.locfileid: "44354350"
    ![通知提示](./media/application-proxy-config-problem/error-message.png)
 
 ## <a name="next-steps"></a>后续步骤
-[在 Azure 门户中启用应用程序代理](application-proxy-enable.md)
+[在 Azure 门户中启用应用程序代理](application-proxy-add-on-premises-application.md)

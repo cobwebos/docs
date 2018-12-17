@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.topic: reference
 ms.date: 11/20/2018
 ms.author: tomfitz
-ms.openlocfilehash: a4bb423dc5eddde0fd2d2b9b4f263ab39dbd801f
-ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
+ms.openlocfilehash: 580955d3c6fd7a33c152e49e601d8078eb169a22
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52284976"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53409660"
 ---
 # <a name="tag-support-for-azure-resources"></a>Azure 资源的标记支持
 本文介绍某一资源类型是否支持[标记](resource-group-using-tags.md)。
@@ -68,18 +68,6 @@ ms.locfileid: "52284976"
 | 资源类型 | 支持标记 |
 | ------------- | ----------- |
 | batchAccounts | 是 | 
-
-## <a name="batch-ai"></a>Batch AI
-| 资源类型 | 支持标记 |
-| ------------- | ----------- |
-| clusters | 是 | 
-| jobs | 是 | 
-| fileservers | 是 | 
-| workspaces | 是 | 
-| workspaces/clusters | 否 | 
-| workspaces/fileservers | 否 | 
-| workspaces/experiments | 否 | 
-| workspaces/experiments/jobs | 否 | 
 
 ## <a name="bing-maps"></a>必应地图
 | 资源类型 | 支持标记 |

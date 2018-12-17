@@ -1,5 +1,5 @@
 ---
-title: Azure WebJobs SDK 入门
+title: WebJobs SDK 入门 - Azure
 description: 用于事件驱动的后台处理的 WebJobs SDK 简介。 了解如何访问 Azure 服务和第三方服务中的数据。
 services: app-service\web, storage
 documentationcenter: .net
@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 04/27/2018
 ms.author: glenga
-ms.openlocfilehash: b0f4ef5079ac689827cb49884fa1c6a51529ea83
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: 034f182cc282f50eb3a4a1de05331f42957f49fe
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50140343"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53339801"
 ---
 # <a name="get-started-with-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>用于事件驱动的后台处理的 Azure WebJobs SDK 入门
 
@@ -63,9 +63,9 @@ public static void Run(
 
 1. 在 Visual Studio 中，选择“文件”>“新建项目”。
 
-1. 选择“Windows 经典桌面”>“控制台应用(.NET Framework)”。
+2. 选择“Windows 经典桌面”>“控制台应用(.NET Framework)”。
 
-1. 将项目命名为 *WebJobsSDKSample*，然后选择“确定”。
+3. 将项目命名为 *WebJobsSDKSample*，然后选择“确定”。
 
    ![“新建项目”对话框](./media/webjobs-sdk-get-started/new-project.png)
 
@@ -396,7 +396,7 @@ WebJobs SDK 在“应用设置”集合中查找存储连接字符串。 在本�
 
 在本部分，我们将再次在本地运行，以验证日志记录数据现在是否转到 Application Insights 和控制台。
 
-1. 像[前面](#trigger-the-function)所做的那样，在 Visual Studio 中使用“服务器资源管理器”创建队列消息，不过这次要输入 Hello App Insights! 作为消息文本。
+1. 像[前面](#trigger-the-function-in-azure)所做的那样，在 Visual Studio 中使用“服务器资源管理器”创建队列消息，不过这次要输入 Hello App Insights! 作为消息文本。
 
 1. 运行该项目。
 

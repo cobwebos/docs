@@ -10,12 +10,12 @@ ms.component: speech-service
 ms.topic: conceptual
 ms.date: 05/07/2018
 ms.author: panosper
-ms.openlocfilehash: bf06042d3b820e61d1f5b316a8b7b26d1a366388
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: e2c176e35cbc75747230e429d0ddae9d420db8b5
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49467712"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52867574"
 ---
 # <a name="creating-custom-voice-fonts"></a>创建自定义语音字体
 
@@ -87,7 +87,7 @@ ms.locfileid: "49467712"
 自定义语音系统会将文本转换为小写并删除多余的标点，使脚本规范化。 必须确保脚本是相应音频录制内容的完全准确的听录。
 
 > [!TIP]
-> 如果生成生产型“文本转语音”语音，请在选择表述（或撰写脚本）时既要考虑到语音覆盖率，又要考虑到效率。 无法获得所需的结果？ [与自定义语音团队联系](mailto:tts@microsoft.com)以了解有关让我们咨询的更多信息。
+> 如果生成生产型“文本转语音”语音，请在选择表述（或撰写脚本）时既要考虑到语音覆盖率，又要考虑到效率。 无法获得所需的结果？ [与自定义语音团队联系](mailto:speechsupport@microsoft.com)以了解有关让我们咨询的更多信息。
 
 ## <a name="upload-your-datasets"></a>上传数据集
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 3/27/2018
 ms.author: shtabriz
-ms.openlocfilehash: 8535caf482b10912e6f7bc6df445756094d7603f
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 5d32c3539446482f2dcdaeb954bb704dc9b78c58
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2018
-ms.locfileid: "30261406"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53274915"
 ---
 # <a name="configure-health-notifications-for-existing-problem-management-systems-using-a-webhook"></a>使用 Webhook 为现有的问题管理系统配置运行状况通知
 
@@ -37,7 +37,7 @@ ms.locfileid: "30261406"
 ## <a name="configuring-a-custom-notification-using-the-service-health-webhook-payload"></a>使用服务运行状况 Webhook 有效负载配置自定义通知
 若要设置自己的自定义 Webhook 集成，需分析在服务运行状况通知期间发送的 JSON 有效负载。
 
-查看[此处的示例](../monitoring-and-diagnostics/monitoring-activity-log-alerts-webhook.md)，了解 `ServiceHealth` Webhook 有效负载。
+查看[此处的示例](../azure-monitor/platform/activity-log-alerts-webhook.md)，了解 `ServiceHealth` Webhook 有效负载。
 
 可以通过查看 `context.eventSource == "ServiceHealth"` 来确定其是否为服务运行状况警报。 在这里，与引入最相关的属性为：
  * `data.context.activityLog.status`
@@ -102,7 +102,7 @@ https://app.azure.com/h/0DET-URB/bbadb3
 
 
 ## <a name="testing-your-webhook-integration-via-an-http-post-request"></a>通过 HTTP POST 请求测试 Webhook 集成
-1. 创建要发送的服务运行状况有效负载。 可以在 [Azure 活动日志警报的 Webhook](../monitoring-and-diagnostics/monitoring-activity-log-alerts-webhook.md) 中找到示例服务运行状况 Webhook 有效负载。
+1. 创建要发送的服务运行状况有效负载。 可以在 [Azure 活动日志警报的 Webhook](../azure-monitor/platform/activity-log-alerts-webhook.md) 中找到示例服务运行状况 Webhook 有效负载。
 
 2. 按如下所示创建 HTTP POST 请求：
 
@@ -118,6 +118,6 @@ https://app.azure.com/h/0DET-URB/bbadb3
 4. 转到 [PagerDuty](https://www.pagerduty.com/)，确认集成已设置成功。
 
 ## <a name="next-steps"></a>后续步骤
-- 查看[活动日志警报 webhook 架构](../monitoring-and-diagnostics/monitoring-activity-log-alerts-webhook.md)。 
+- 查看[活动日志警报 webhook 架构](../azure-monitor/platform/activity-log-alerts-webhook.md)。 
 - 了解[服务运行状况通知](../monitoring-and-diagnostics/monitoring-service-notifications.md)。
-- 详细了解[操作组](../monitoring-and-diagnostics/monitoring-action-groups.md)。
+- 详细了解[操作组](../azure-monitor/platform/action-groups.md)。

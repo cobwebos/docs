@@ -4,14 +4,14 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 09/04/2018
 ms.author: glenga
-ms.openlocfilehash: 9fb462b83eccde3d2b486d491517973fe6bac4f1
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: c1784111cd2fc2c93b67510f310b9e513cf2b86e
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50132824"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52978683"
 ---
-Azure Functions [触发器和绑定](..\articles\azure-functions\functions-triggers-bindings.md)与各种 Azure 服务进行通信。 与这些服务集成时，可能会遇到来源于底层 Azure 服务 API 的引发错误。 尝试使用 REST 或客户端库通过函数代码与其他服务进行通信时，也可能会发生错误。 若要避免数据丢失并确保函数的行为正常，请务必处理来自任一源的错误。
+Azure Functions [触发器和绑定](../articles/azure-functions/functions-triggers-bindings.md)与各种 Azure 服务进行通信。 与这些服务集成时，可能会遇到来源于底层 Azure 服务 API 的引发错误。 尝试使用 REST 或客户端库通过函数代码与其他服务进行通信时，也可能会发生错误。 若要避免数据丢失并确保函数的行为正常，请务必处理来自任一源的错误。
 
 以下触发器具有内置重试支持：
 
@@ -19,8 +19,8 @@ Azure Functions [触发器和绑定](..\articles\azure-functions\functions-trigg
 * [Azure 队列存储](../articles/azure-functions/functions-bindings-storage-queue.md)
 * [Azure 服务总线（队列/主题）](../articles/azure-functions/functions-bindings-service-bus.md)
 
-默认情况下，这两种触发器最多重试五次。 第五次重试后，这些触发器会将消息写入到一个特殊的[有害队列](..\articles\azure-functions\functions-bindings-storage-queue.md#trigger---poison-messages)。 
+默认情况下，这两种触发器最多重试五次。 第五次重试后，这些触发器会将消息写入到一个特殊的[有害队列](../articles/azure-functions/functions-bindings-storage-queue.md#trigger---poison-messages)。
 
-对于其他 Functions 触发器而言，函数执行期间发生错误时没有内置重试机制。 为了防止在函数中发生错误时触发器信息丢失，我们建议你在函数代码中使用 try-catch 块捕获任何错误。 发生错误时，触发器会将传入函数的信息写入到特殊的“有害”消息队列。 [Blob 存储触发器](..\articles\azure-functions\functions-bindings-storage-blob.md#trigger---poison-blobs)也使用此方法。 
+对于其他 Functions 触发器而言，函数执行期间发生错误时没有内置重试机制。 为了防止在函数中发生错误时触发器信息丢失，我们建议你在函数代码中使用 try-catch 块捕获任何错误。 发生错误时，触发器会将传入函数的信息写入到特殊的“有害”消息队列。 [Blob 存储触发器](../articles/azure-functions/functions-bindings-storage-blob.md#trigger---poison-blobs)也使用此方法。
 
 这样，可以捕获因出错可能会丢失的触发器事件，并在稍后通过其他函数使用存储的信息重试处理有害队列中的消息。  

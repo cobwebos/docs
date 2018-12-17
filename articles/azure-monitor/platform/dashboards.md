@@ -10,17 +10,15 @@ ms.assetid: abb07f6c-b356-4f15-85f5-60e4415d0ba2
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/08/2017
 ms.author: magoedte
-ms.component: ''
-ms.openlocfilehash: b692eb64f84e49a085e1d388b1e418a8d9c1a245
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 613001c8495ba6c6a259063b8d8d3bce21b66960
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52637472"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53336403"
 ---
 # <a name="create-a-custom-dashboard-for-use-in-log-analytics"></a>创建适用于 Log Analytics 的自定义仪表板
 
@@ -88,4 +86,4 @@ ms.locfileid: "52637472"
 ![删除磁贴](./media/dashboards/oms-dashboards-remove-tile.png)
 
 ## <a name="next-steps"></a>后续步骤
-* 在 Log Analytics 中创建[警报](../../monitoring-and-diagnostics/monitoring-overview-alerts.md)，以生成通知并解决问题。
+* 在 Log Analytics 中创建[警报](../../azure-monitor/platform/alerts-overview.md)，以生成通知并解决问题。

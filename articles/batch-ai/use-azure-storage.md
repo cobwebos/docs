@@ -11,14 +11,17 @@ ms.topic: article
 ms.date: 08/14/2018
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 42697f7f4bb8c6b9ef785eef0fe2f5f33b2b38a7
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ROBOTS: NOINDEX
+ms.openlocfilehash: 1e9a4c6355c60b18bb78aae362c1e2f142e2d864
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51615597"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53407994"
 ---
 # <a name="store-batch-ai-job-input-and-output-with-azure-storage"></a>使用 Azure 存储来存储 Batch AI 作业输入和输出
+
+[!INCLUDE [batch-ai-retiring](../../includes/batch-ai-retiring.md)]
 
 本指南介绍如何在运行作业时使用 Azure 存储来存储输入和输出文件。 Azure 存储是受 Batch AI 支持的几种存储选项之一。 Batch AI 通过将 Azure 存储系统装载到 Batch AI 作业或群集文件系统来与 Azure 存储集成，从而允许无缝访问存储在云中的文件。 
 

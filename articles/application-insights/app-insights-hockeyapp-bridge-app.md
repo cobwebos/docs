@@ -9,16 +9,15 @@ ms.assetid: 97783cc6-67d6-465f-9926-cb9821f4176e
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/30/2017
 ms.author: mbullwin
-ms.openlocfilehash: 1951f001de1b9d0667e5d4430454b32b5a3c890e
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 2f9b61a212251332cd94379b40f93eb52d49c729
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50957482"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52870057"
 ---
 # <a name="exploring-hockeyapp-data-in-application-insights"></a>在 Application Insights 中浏览 HockeyApp 数据
 
@@ -61,7 +60,7 @@ Analytics 是功能强大的即席数据查询工具，可用于诊断和分析�
 
 ![分析](./media/app-insights-hockeyapp-bridge-app/05.png)
 
-* [详细了解 Analytics](../log-analytics/query-language/get-started-analytics-portal.md)
+* [详细了解 Analytics](../azure-monitor/log-query/get-started-portal.md)
 
 ## <a name="continuous-export"></a>连续导出
 使用连续导出可将数据导出到 Azure Blob 存储容器。 如果数据所需的保留时间超过 Application Insights 目前提供的保留期间，此功能就非常有用。 可以将数据保留在 Blob 存储中，在 SQL 数据库或首选的数据仓库解决方案中进行处理。
@@ -69,5 +68,5 @@ Analytics 是功能强大的即席数据查询工具，可用于诊断和分析�
 [详细了解连续导出](app-insights-export-telemetry.md)
 
 ## <a name="next-steps"></a>后续步骤
-* [将 Analytics 应用到数据](../log-analytics/query-language/get-started-analytics-portal.md)
+* [将 Analytics 应用到数据](../azure-monitor/log-query/get-started-portal.md)
 

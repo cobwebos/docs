@@ -9,12 +9,12 @@ editor: jasonwhowell
 ms.service: mysql
 ms.topic: article
 ms.date: 02/28/2018
-ms.openlocfilehash: 3accc31f433e6db40c7d1de2b56dfbd4180b4933
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 6db451ab7de50039c38b59612dd2ab1c61c35e7b
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35265160"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53271223"
 ---
 # <a name="use-the-azure-portal-to-set-up-alerts-on-metrics-for-azure-database-for-mysql"></a>使用 Azure 门户设置针对 Azure Database for MySQL 指标的警报 
 
@@ -29,8 +29,8 @@ ms.locfileid: "35265160"
 
 可使用以下项配置并获取预警规则相关信息：
 * [Azure 门户](../monitoring-and-diagnostics/insights-alerts-portal.md)
-* [PowerShell](../monitoring-and-diagnostics/insights-alerts-powershell.md)
-* [命令行接口 (CLI)](../monitoring-and-diagnostics/insights-alerts-command-line-interface.md)
+* [PowerShell](../azure-monitor/platform/alerts-classic-portal.md)
+* [命令行接口 (CLI)](../azure-monitor/platform/alerts-classic-portal.md)
 * [Azure 监视器 REST API](https://msdn.microsoft.com/library/azure/dn931945.aspx)
 
 ## <a name="create-an-alert-rule-on-a-metric-from-the-azure-portal"></a>通过 Azure 门户针对指标创建警报规则
@@ -46,10 +46,10 @@ ms.locfileid: "35265160"
 
    ![添加指标警报窗体](./media/howto-alert-on-metric/2-add-rule-form.png)
 
-   | 设置 | 说明  |
+   | 设置 | Description  |
    |---------|---------|
    | 名称 | 为警报规则提供一个名称。 此值将在警报通知电子邮件中发送。 |
-   | 说明 | 提供警报规则的简短说明。 此值将在警报通知电子邮件中发送。 |
+   | Description | 提供警报规则的简短说明。 此值将在警报通知电子邮件中发送。 |
    | 警报对象 | 对于此类警报，请选择“指标”。 |
    | 订阅 | 此字段预填充了托管着 Azure Database for MySQL 的订阅。 |
    | 资源组 | 此字段预填充了 Azure Database for MySQL 的资源组。 |
@@ -82,5 +82,5 @@ ms.locfileid: "35265160"
 
 
 ## <a name="next-steps"></a>后续步骤
-* 了解[在警报中配置 Webhook](../monitoring-and-diagnostics/insights-webhooks-alerts.md)的详细信息。
+* 了解[在警报中配置 Webhook](../azure-monitor/platform/alerts-webhooks.md)的详细信息。
 * 获取[指标集合概述](../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md)以确保服务可用且响应迅速。

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
 ms.component: common
-ms.openlocfilehash: b842a80762989c34ae278a397cc49c088ff77fb2
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 2ae44edf0d9356000f64ab72fd609f1921cf095c
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39525512"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53316572"
 ---
 # <a name="azure-importexport-service-log-file-format"></a>Azure 导入/导出服务日志文件格式
 当 Microsoft Azure 导入/导出服务在执行导入作业或导出作业的过程中针对驱动器执行某个操作时，会将日志写入到与该作业关联的存储帐户中的块 Blob 中。  
@@ -74,7 +74,7 @@ page-range-list ::=
 <PageRangeList>  
       [<PageRange Offset="page-range-offset" Length="page-range-length"   
        [Hash="md5-hash"] Status="page-range-status"/>]  
-      [<PageRange Offset="page-range-offset" Length="page-range-length"   
+      [<PageRange Offset="page-range-offset" Length="page-range-length"   
        [Hash="md5-hash"] Status="page-range-status"/>]  
 </PageRangeList>  
   
@@ -82,7 +82,7 @@ block-list ::=
 <BlockList>  
       [<Block Offset="block-offset" Length="block-length" [Id="block-id"]  
        [Hash="md5-hash"] Status="block-status"/>]  
-      [<Block Offset="block-offset" Length="block-length" [Id="block-id"]   
+      [<Block Offset="block-offset" Length="block-length" [Id="block-id"]   
        [Hash="md5-hash"] Status="block-status"/>]  
 </BlockList>  
   
@@ -101,7 +101,7 @@ properties-status ::=
 
 下表介绍了日志文件的元素。  
   
-|XML 元素|Type|Description|  
+|XML 元素|类型|Description|  
 |-----------------|----------|-----------------|  
 |`DriveLog`|XML 元素|表示驱动器日志。|  
 |`Version`|属性，字符串|日志格式的版本。|  
@@ -142,7 +142,7 @@ properties-status ::=
 |`Properties/Path/@Hash`|属性，字符串|properties 文件的 Base16 编码 MD5 哈希。|  
 |`Blob/Status`|String|Blob 的处理状态。|  
   
-# <a name="drive-status-codes"></a>驱动器状态代码  
+## <a name="drive-status-codes"></a>驱动器状态代码  
 下表列出了驱动器的处理状态代码。  
   
 |状态代码|Description|  

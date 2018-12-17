@@ -9,12 +9,12 @@ editor: jasonwhowell
 ms.service: postgresql
 ms.topic: article
 ms.date: 02/28/2018
-ms.openlocfilehash: b4b15998276dd6c32e9c15622aa0251c6c066085
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: b57827cb4e8c1105c88b6fab217e17d6cf4db056
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2018
-ms.locfileid: "29690247"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53271211"
 ---
 # <a name="use-the-azure-portal-to-set-up-alerts-on-metrics-for-azure-database-for-postgresql"></a>使用 Azure 门户设置针对 Azure Database for PostgreSQL 指标的警报 
 
@@ -28,9 +28,9 @@ ms.locfileid: "29690247"
 * 调用 Webhook。
 
 可使用以下项配置并获取预警规则相关信息：
-* [Azure portal](../monitoring-and-diagnostics/insights-alerts-portal.md)
-* [PowerShell](../monitoring-and-diagnostics/insights-alerts-powershell.md)
-* [命令行接口 (CLI)](../monitoring-and-diagnostics/insights-alerts-command-line-interface.md)
+* [Azure 门户](../monitoring-and-diagnostics/insights-alerts-portal.md)
+* [PowerShell](../azure-monitor/platform/alerts-classic-portal.md)
+* [命令行接口 (CLI)](../azure-monitor/platform/alerts-classic-portal.md)
 * [Azure 监视器 REST API](https://msdn.microsoft.com/library/azure/dn931945.aspx)
 
 ## <a name="create-an-alert-rule-on-a-metric-from-the-azure-portal"></a>通过 Azure 门户针对指标创建警报规则
@@ -46,10 +46,10 @@ ms.locfileid: "29690247"
 
    ![添加指标警报窗体](./media/howto-alert-on-metric/2-add-rule-form.png)
 
-   | 设置 | 说明  |
+   | 设置 | Description  |
    |---------|---------|
    | 名称 | 为警报规则提供一个名称。 此值将在警报通知电子邮件中发送。 |
-   | 说明 | 提供警报规则的简短说明。 此值将在警报通知电子邮件中发送。 |
+   | Description | 提供警报规则的简短说明。 此值将在警报通知电子邮件中发送。 |
    | 警报对象 | 对于此类警报，请选择“指标”。 |
    | 订阅 | 此字段预填充了托管 Azure Database for PostgreSQL 的订阅。 |
    | 资源组 | 此字段预填充了 Azure Database for PostgreSQL 的资源组。 |
@@ -81,5 +81,5 @@ ms.locfileid: "29690247"
 * 如果要暂时停止或恢复接收通知，可禁用或启用警报。
 
 ## <a name="next-steps"></a>后续步骤
-* 了解[在警报中配置 Webhook](../monitoring-and-diagnostics/insights-webhooks-alerts.md)的详细信息。
+* 了解[在警报中配置 Webhook](../azure-monitor/platform/alerts-webhooks.md)的详细信息。
 * 获取[指标集合概述](../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md)以确保服务可用且响应迅速。

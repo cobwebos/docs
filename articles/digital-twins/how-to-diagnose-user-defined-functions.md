@@ -8,12 +8,12 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: stefanmsft
-ms.openlocfilehash: ac7664e94c6e02ab90dbb1b32a54c8234614afe2
-ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
+ms.openlocfilehash: 9476db888a4bfae2d43ae4eec340972d4c2eb714
+ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51636265"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53413007"
 ---
 # <a name="how-to-debug-issues-with-user-defined-functions-in-azure-digital-twins"></a>如何在 Azure 数字孪生中使用用户定义的函数调试问题
 
@@ -25,7 +25,7 @@ ms.locfileid: "51636265"
 
 ### <a name="enable-log-analytics-for-your-instance"></a>为实例启用 Log Analytics
 
-Azure 数字孪生实例的日志和指标通过 Azure Monitor 公开。 以下文档假设你已通过 [Azure 门户](../log-analytics/log-analytics-quick-create-workspace.md)、通过 [Azure CLI](../log-analytics/log-analytics-quick-create-workspace-cli.md) 或通过 [PowerShell](../log-analytics/log-analytics-quick-create-workspace-posh.md) 创建了 [Azure Log Analytics](../log-analytics/log-analytics-queries.md) 工作区。
+Azure 数字孪生实例的日志和指标通过 Azure Monitor 公开。 以下文档假设你已通过 [Azure 门户](../azure-monitor/learn/quick-create-workspace.md)、通过 [Azure CLI](../azure-monitor/learn/quick-create-workspace-cli.md) 或通过 [PowerShell](../azure-monitor/learn/quick-create-workspace-posh.md) 创建了 [Azure Log Analytics](../azure-monitor/log-query/log-query-overview.md) 工作区。
 
 > [!NOTE]
 > 将事件首次发送到 Log Analytics 时，可能会遇到 5 分钟的延迟。
@@ -42,7 +42,7 @@ Azure 数字孪生实例的日志和指标通过 Azure Monitor 公开。 以下�
 
 ```Kusto
 AzureDiagnostics
-| where CorrelationId = 'YOUR_CORRELATION_IDENTIFIER'
+| where CorrelationId == 'YOUR_CORRELATION_IDENTIFIER'
 ```
 
 | 查询值 | 替换为 |
@@ -53,7 +53,7 @@ AzureDiagnostics
 
 ```Kusto
 AzureDiagnostics
-| where Category = 'UserDefinedFunction'
+| where Category == 'UserDefinedFunction'
 ```
 
 有关功能强大的查询操作的详细信息，请参阅[开始使用查询](https://docs.microsoft.com/azure/log-analytics/query-language/get-started-queries)。

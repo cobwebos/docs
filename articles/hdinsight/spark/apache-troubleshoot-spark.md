@@ -6,13 +6,14 @@ ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.topic: conceptual
-ms.date: 11/2/2017
-ms.openlocfilehash: ab7602f7bae4dfb77a733dd7efe011a29b730377
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.date: 12/06/2018
+ms.custom: seodec18
+ms.openlocfilehash: f286d8b2ba254cfad542db14b8719d6f3f676222
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52581579"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53093737"
 ---
 # <a name="troubleshoot-apache-spark-by-using-azure-hdinsight"></a>使用 Azure HDInsight 对 Apache Spark 进行故障排除
 

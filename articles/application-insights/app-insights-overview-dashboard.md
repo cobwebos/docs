@@ -9,16 +9,15 @@ ms.assetid: ea2a28ed-4cd9-4006-bd5a-d4c76f4ec20b
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/31/2018
 ms.author: mbullwin
-ms.openlocfilehash: 313be519662570debdd7c78a43bbfe7c27e63296
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: cd8bcc9345ec73f95e8e742446522ec41c1f0f65
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43344624"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52956931"
 ---
 # <a name="application-insights-overview-dashboard"></a>Application Insights 概述仪表板
 
@@ -28,17 +27,17 @@ Application Insights 一直都有一个总览窗格，可让用户快速、直�
 
 现在默认情况下将启动新的概述仪表板：
 
-![概览预览窗格](.\media\app-insights-overview-dashboard\overview.png)
+![概览预览窗格](./media/app-insights-overview-dashboard/overview.png)
 
 ## <a name="better-performance"></a>性能更好
 
 时间范围选择已简化为简单的一键式界面。
 
-![时间范围](.\media\app-insights-overview-dashboard\app-insights-overview-dashboard-03.png)
+![时间范围](./media/app-insights-overview-dashboard/app-insights-overview-dashboard-03.png)
 
 总体性能已大大提高。 只需单击一次即可访问常用功能，例如**搜索**和**分析**。 每个默认动态更新的 KPI 磁贴都可让你深入了解相应的 Application Insights 功能。 若要了解有关失败请求的详细信息，请在“调查”标题下选择“失败”：
 
-![失败数](.\media\app-insights-overview-dashboard\app-insights-overview-dashboard-04.png)
+![失败数](./media/app-insights-overview-dashboard/app-insights-overview-dashboard-04.png)
 
 ## <a name="application-dashboard"></a>应用程序仪表板
 
@@ -46,11 +45,11 @@ Application Insights 一直都有一个总览窗格，可让用户快速、直�
 
 若要访问默认仪表板，请选择左上角的“应用程序仪表板”。
 
-![仪表板视图](.\media\app-insights-overview-dashboard\app-insights-overview-dashboard-05.png)
+![仪表板视图](./media/app-insights-overview-dashboard/app-insights-overview-dashboard-05.png)
 
 如果这是你第一次访问仪表板，它将启动默认视图：
 
-![仪表板视图](.\media\app-insights-overview-dashboard\0001-dashboard.png)
+![仪表板视图](./media/app-insights-overview-dashboard/0001-dashboard.png)
 
 如果你喜欢，可以保留默认视图。 或者，可以在仪表板中执行添加或删除操作，让仪表板契合团队的需求。
 
@@ -59,7 +58,7 @@ Application Insights 一直都有一个总览窗格，可让用户快速、直�
 
 若要导航回概览体验，只需选择：
 
-![“概览”按钮](.\media\app-insights-overview-dashboard\app-insights-overview-dashboard-07.png)
+![“概览”按钮](./media/app-insights-overview-dashboard/app-insights-overview-dashboard-07.png)
 
 ## <a name="next-steps"></a>后续步骤
 

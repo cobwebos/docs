@@ -8,12 +8,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.date: 09/22/2018
 ms.topic: article
-ms.openlocfilehash: a71f28413028efe3547df7c464ec852fe2161f63
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: accb7b84793b9fc98bc20f1637ec30f97a7f4a87
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49649935"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52962074"
 ---
 # <a name="ansible-module-and-version-matrix"></a>Ansible 模块和版本矩阵
 
@@ -133,4 +133,4 @@ Ansible 配备了多个模块，这些模块可远程主机上直接执行或通
 azure_preview_module playbook 角色每三周发布一次。
 
 ## <a name="next-steps"></a>后续步骤
-如需与 playbook 角色相关的详细信息，请参阅[创建可重用的 Playbook](http://docs.ansible.com/ansible/latest/playbooks_reuse.html)。 
+如需与 playbook 角色相关的详细信息，请参阅[创建可重用的 Playbook](https://docs.ansible.com/ansible/latest/playbooks_reuse.html)。 

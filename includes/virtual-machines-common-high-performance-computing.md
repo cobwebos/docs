@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/02/2018
 ms.author: danlep
 ms.custom: include file
-ms.openlocfilehash: 8f43edfe468958bbc4a6fde14e8e03e5b4d4e0f2
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 88aeaf1246583345d1d28218e8e91b3ecbcd166b
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51264399"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53429921"
 ---
 组织具有大规模计算需求。 这些大型计算工作负荷包括工程设计和分析、财务风险计算、图像渲染、复杂建模、Monte Carlo 仿真等。 
 
@@ -86,7 +86,6 @@ ms.locfileid: "51264399"
 
 ### <a name="ai-and-deep-learning"></a>AI 和深度学习
 
-* 针对深度学习模型的 [Batch AI](../articles/batch-ai/overview.md) 培训
 * [Microsoft 认知工具包](https://docs.microsoft.com/cognitive-toolkit/cntk-on-azure)
 * [深度学习 VM](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-ads.dsvm-deep-learning)
 * [用于深入学习的 Batch Shipyard 窍门](https://github.com/Azure/batch-shipyard/tree/master/recipes#deeplearning)
@@ -161,14 +160,13 @@ Azure 虚拟机、虚拟机规模集、Batch 和相关的计算服务是大多�
 
 ### <a name="data-and-analytics"></a>数据和分析
 * [HDInsight](../articles/hdinsight/hadoop/apache-hadoop-introduction.md)
-* [Data Factory](../articles/data-factory/introduction.md)
+* [数据工厂](../articles/data-factory/introduction.md)
 * [Data Lake Storage Gen1](../articles/data-lake-store/data-lake-store-overview.md)
 * [Databricks](../articles/azure-databricks/what-is-azure-databricks.md)
 * [SQL 数据库](../articles/sql-database/sql-database-technical-overview.md)
 
 ### <a name="ai-and-machine-learning"></a>AI 和机器学习
 * [机器学习服务](../articles/machine-learning/service/overview-what-is-azure-ml.md)
-* [Batch AI](../articles/batch-ai/overview.md)
 * [基因组学](../articles/genomics/overview-what-is-genomics.md)
 
 ### <a name="networking"></a>网络

@@ -8,18 +8,17 @@ manager: carmonm
 editor: tysonn
 ms.assetid: 1915e204-ba7e-431b-9718-9eb6b4213ad8
 ms.service: operations-management-suite
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/27/2017
 ms.author: bwren
-ms.openlocfilehash: e5011dbaad5e5935f3aa792bd3a3ed2b271f23bc
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: d6d2414935bb5d1f095ad2b200acafa97b3b9b32
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52632427"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53192681"
 ---
 # <a name="best-practices-for-creating-management-solutions-in-azure-preview"></a>在 Azure 中创建管理解决方案的最佳做法（预览版）
 > [!NOTE]
@@ -28,7 +27,7 @@ ms.locfileid: "52632427"
 本文提供在 Azure 中[创建管理解决方案文件](solutions-solution-file.md)的最佳做法。  发现其他最佳做法后，将更新此信息。
 
 ## <a name="data-sources"></a>数据源
-- 数据源可以[使用 Resource Manager 模板进行配置](../../log-analytics/log-analytics-template-workspace-configuration.md)，但它们不应包含在解决方案文件中。  原因是，数据源配置当前是不幂等的，这意味着解决方案可以覆盖用户工作区中的现有配置。<br><br>例如，解决方案可能需要应用程序事件日志中的警告和错误事件。  如果在解决方案中将此项指定为数据源，则当用户已在其工作区中配置此项时，可能会删除信息事件。  如果包含所有事件，则可能会在用户的工作区中收集过多信息事件。
+- 数据源可以[使用 Resource Manager 模板进行配置](../../azure-monitor/platform/template-workspace-configuration.md)，但它们不应包含在解决方案文件中。  原因是，数据源配置当前是不幂等的，这意味着解决方案可以覆盖用户工作区中的现有配置。<br><br>例如，解决方案可能需要应用程序事件日志中的警告和错误事件。  如果在解决方案中将此项指定为数据源，则当用户已在其工作区中配置此项时，可能会删除信息事件。  如果包含所有事件，则可能会在用户的工作区中收集过多信息事件。
 
 - 如果解决方案需要来自某个标准数据源的数据，则应将此数据源定义为先决条件。  在文档中声明：客户必须自己配置数据源。  
 - 向解决方案中的任何视图添加[数据流验证](../../azure-monitor/platform/view-designer-tiles.md)消息，以针对需要为待收集的所需数据而配置的数据源向用户提供指示。  找不到所需的数据时，此消息会显示在视图的磁贴上。

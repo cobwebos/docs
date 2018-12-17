@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 8f56f287fde9e17d2a17298ca04eda63b69e3636
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: aaae119ec72a713adc2faa311dbcb6bd204035fd
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47159915"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52835082"
 ---
 # <a name="relyingparty"></a>RelyingParty
 
@@ -28,8 +28,8 @@ RelyingParty 元素指定用户旅程，以执行当前对 Azure Active Director
 ```XML
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <TrustFrameworkPolicy
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+  xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance"
+  xmlns:xsd="https://www.w3.org/2001/XMLSchema"
   xmlns="http://schemas.microsoft.com/online/cpim/schemas/2013/06"
   PolicySchemaVersion="0.3.0.0"
   TenantId="your-tenant.onmicrosoft.com"
@@ -165,13 +165,13 @@ ContentDefinitionParameters 元素包含以下属性：
 
 ## <a name="technicalprofile"></a>TechnicalProfile
 
-TechnicalProfile 元素包含以下属性：
+**TechnicalProfile** 元素包含以下属性：
 
 | 属性 | 必选 | Description |
 | --------- | -------- | ----------- | 
 | ID | 是 | 值必须是 `PolicyProfile`。 |
 
-TechnicalProfile 包含以下元素：
+**TechnicalProfile** 包含以下元素：
 
 | 元素 | 出现次数 | Description |
 | ------- | ----------- | ----------- |
@@ -186,7 +186,7 @@ Protocol 元素包含以下属性：
 
 | 属性 | 必选 | Description |
 | --------- | -------- | ----------- |
-| 名称 | 是 | Azure AD B2C 支持的有效协议的名称，作为技术配置文件的一部分使用。 可能的值：`OpenIdConnect` 或 `SAML2`。 `OpenIdConnect` 值表示根据 OpenID 基本规范的 OpenID Connect 1.0 协议标准。 `SAML2` 表示根据 OASIS 规范的 SAML 2.0 协议标准。 不要在生产环境中使用 SAML 令牌。 |
+| 名称 | 是 | Azure AD B2C 支持的有效协议的名称，用作技术配置文件的一部分。 可能的值：`OpenIdConnect` 或 `SAML2`。 `OpenIdConnect` 值表示根据 OpenID 基本规范的 OpenID Connect 1.0 协议标准。 `SAML2` 表示根据 OASIS 规范的 SAML 2.0 协议标准。 不要在生产环境中使用 SAML 令牌。 |
 
 ## <a name="outputclaims"></a>OutputClaims
 

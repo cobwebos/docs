@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 04/25/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 427c3601d6a4ca65407a98d54b0206cde9af4235
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 18c35070707408f43fd0e5dfc5e3330ef62a914d
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52638392"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53343150"
 ---
 # <a name="how-to-run-durable-functions-as-webjobs"></a>如何以 WebJobs 的形式运行 Durable Functions
 
@@ -35,7 +35,7 @@ WebJobs SDK 版本中提供了有关链接 Durable Functions 的示例：下载�
 
 * [安装包含 **Azure 开发**工作负荷的 Visual Studio 2017 版本 15.6 或以上](https://docs.microsoft.com/visualstudio/install/)。
 
-  如果已安装 Visual Studio，但未配置该工作负荷，请选择“工具”>“获取工具和功能”添加该工作负荷。 
+  如果已安装 Visual Studio，但未配置该工作负荷，请选择“工具”>“获取工具和功能”添加该工作负荷。
 
   可以改用 [Visual Studio Code](https://code.visualstudio.com/)，但某些说明仅适用于 Visual Studio。）
 
@@ -43,7 +43,7 @@ WebJobs SDK 版本中提供了有关链接 Durable Functions 的示例：下载�
 
 ## <a name="webjobs-sdk-versions"></a>WebJobs SDK 版本
 
-本文介绍如何开发 WebJobs SDK 2.x 项目（等效于 Azure Functions 版本 1.x）。 有关版本 3.x 的信息，请参阅本文稍后的 [WebJobs SDK 3.x](#webjobs-sdk-3x)。 
+本文介绍如何开发 WebJobs SDK 2.x 项目（等效于 Azure Functions 版本 1.x）。 有关版本 3.x 的信息，请参阅本文稍后的 [WebJobs SDK 3.x](#webjobs-sdk-3x)。
 
 ## <a name="create-console-app"></a>创建控制台应用
 
@@ -190,9 +190,9 @@ while (true)
 
 1. 若要在本地运行时查看 Application Insights 中的日志：
 
-  a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 创建应用类型为“常规”的 Application Insights 资源。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 创建应用类型为“常规”的 Application Insights 资源。
 
-  b. 在 *App.config* 文件中保存检测密钥。
+    b. 在 *App.config* 文件中保存检测密钥。
 
 1. 运行该项目。
 
@@ -216,8 +216,8 @@ while (true)
 
 1. 选择以下包的预发行版 3.x：
 
-  * `Microsoft.Azure.WebJobs.Extensions`
-  * `Microsoft.Azure.WebJobs.Logging.ApplicationInsights`
+    * `Microsoft.Azure.WebJobs.Extensions`
+    * `Microsoft.Azure.WebJobs.Logging.ApplicationInsights`
 
 1. 更改 `Main` 方法代码，以使用 .NET Core 配置框架从 *appsettings.json* 文件中获取存储连接字符串和 Application Insights 检测密钥。  下面是一个示例：
 
@@ -235,7 +235,7 @@ while (true)
            var config = new JobHostConfiguration();
 
            config.DashboardConnectionString = "";
-           config.StorageConnectionString = 
+           config.StorageConnectionString =
                appSettingsConfig.GetConnectionString("AzureWebJobsStorage");
            var instrumentationKey =
                appSettingsConfig["APPINSIGHTS_INSTRUMENTATIONKEY"];
@@ -258,4 +258,3 @@ while (true)
 ## <a name="next-steps"></a>后续步骤
 
 若要详细了解 WebJobs SDK，请参阅[如何使用 WebJobs SDK](../../app-service/webjobs-sdk-how-to.md)。
-

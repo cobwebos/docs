@@ -9,16 +9,15 @@ ms.assetid: 878b007e-161c-4e36-8ab2-3d7047d8a92d
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/02/2016
 ms.author: mbullwin
-ms.openlocfilehash: 59bb8564613e9a0cebda00c2c847283ff218b882
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 3c3ff606958503efcf2df5fd99b6e52e4687de4a
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35294711"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52996262"
 ---
 # <a name="create-an-application-insights-resource"></a>创建 Application Insights 资源
 Azure Application Insights 在 Microsoft Azure *资源*中显示有关应用程序的数据。 因此创建新资源属于[设置 Application Insights 来监视新应用程序][start]的一个环节。 在许多情况下，IDE 可以自动完成资源创建。 但在某些情况下需要手动创建资源（例如，创建分别用于应用程序开发和产品构建的资源）。
@@ -26,11 +25,11 @@ Azure Application Insights 在 Microsoft Azure *资源*中显示有关应用程�
 创建资源后，可以获取其检测密钥，并将其用于设置应用程序中的 SDK。 资源密钥将遥测数据链接到资源。
 
 ## <a name="sign-up-to-microsoft-azure"></a>注册 Microsoft Azure
-如果没有 [Microsoft 帐户，请立即注册一个](http://live.com)。 （如果曾经用过 Outlook.com、OneDrive、Windows Phone 或 XBox Live 等服务，则已获得了一个 Microsoft 帐户。）
+如果没有 [Microsoft 帐户，请立即注册一个](https://live.com)。 （如果曾经用过 Outlook.com、OneDrive、Windows Phone 或 XBox Live 等服务，则已获得了一个 Microsoft 帐户。）
 
-此外，还需要订阅 [Microsoft Azure](http://azure.com)。 如果团队或组织拥有 Azure 订阅，则所有者可以使用 Windows Live ID 你将加入其中。 仅对使用的内容收取费用。 默认基本计划允许一定量的免费试用。
+此外，还需要订阅 [Microsoft Azure](https://azure.com)。 如果团队或组织拥有 Azure 订阅，则所有者可以使用 Windows Live ID 你将加入其中。 仅对使用的内容收取费用。 默认基本计划允许一定量的免费试用。
 
-获取订阅的访问权限后，请在 [http://portal.azure.com](https://portal.azure.com) 中使用 Live ID 登录到 Application Insights。
+获取订阅的访问权限后，请在 [https://portal.azure.com](https://portal.azure.com) 中使用 Live ID 登录到 Application Insights。
 
 ## <a name="create-an-application-insights-resource"></a>创建 Application Insights 资源
 在 [portal.azure.com](https://portal.azure.com) 中，添加 Application Insights 资源：

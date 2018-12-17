@@ -14,17 +14,19 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/01/2016
 ms.author: crdun
-ms.openlocfilehash: e0146be345215701cf1afe86345afc286933d51b
-ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
+ms.openlocfilehash: ca0eaf9e47b88bc0df8e7f050d8558c23d884f78
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36750962"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52999304"
 ---
 # <a name="enable-offline-sync-for-your-xamarinandroid-mobile-app"></a>为 Xamarin.Android 移动应用启用脱机同步
+
 [!INCLUDE [app-service-mobile-selector-offline](../../includes/app-service-mobile-selector-offline.md)]
 
 ## <a name="overview"></a>概述
+
 本教程介绍适用于 Xamarin.Android 的 Azure 移动应用的脱机同步功能。 脱机同步允许最终用户与移动应用交互（查看、添加或修改数据），即使在没有网络连接时也是如此。 更改存储在本地数据库中。
 设备重新联机后，这些更改会与远程服务同步。
 
@@ -33,6 +35,7 @@ ms.locfileid: "36750962"
 若要了解有关脱机同步功能的详细信息，请参阅主题 [Azure 移动应用中的脱机数据同步]。
 
 ## <a name="update-the-client-app-to-support-offline-features"></a>更新客户端应用以支持脱机功能
+
 脱机情况下，可使用 Azure 移动应用脱机功能与本地数据库交互。 要在应用中使用这些功能，请将 [SyncContext] 初始化到本地存储。 然后，通过 [IMobileServiceSyncTable](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.mobileservices.sync.imobileservicesynctable?view=azure-dotnet) 接口引用表。 SQLite 在设备上用作本地存储。
 
 1. 在 Visual Studio 中，打开在[创建 Xamarin Android 应用]教程中完成的项目中的 NuGet 包管理器。  搜索并安装 **Microsoft.Azure.Mobile.Client.SQLiteStore** NuGet 包。
@@ -40,6 +43,7 @@ ms.locfileid: "36750962"
 3. 在 Visual Studio 中，按 **F5** 键重新生成并运行客户端应用。 应用的工作方式与启用脱机同步之前一样。但是，本地数据库中现在填充了可以在脱机方案中使用的数据。
 
 ## <a name="update-sync"></a>更新应用以与后端断开连接
+
 在本部分中，将断开与移动应用后端的连接，以模拟脱机情况。 添加数据项时，异常处理程序将指示该应用处于脱机模式。 在此状态下，新项已添加到本地存储，在以连接状态执行推送时，这些新项将同步到移动应用后端。
 
 1. 在共享项目中编辑 ToDoActivity.cs。 更改 **applicationURL** 以指向无效的 URL：
@@ -54,6 +58,7 @@ ms.locfileid: "36750962"
 6. （可选）通过 Fiddler 或 Postman 之类的 REST 工具使用 `https://<your-mobile-app-backend-name>.azurewebsites.net/tables/TodoItem` 格式的 GET 查询，查询移动后端。
 
 ## <a name="update-online-app"></a>更新应用以重新连接移动应用后端
+
 在本部分中，会将应用重新连接到移动应用后端。 首次运行该应用程序时，`OnCreate` 事件处理程序将调用 `OnRefreshItemsSelected`。 而此方法将调用 `SyncAsync`，将本地存储与后端数据库同步。
 
 1. 在共享项目中，打开 ToDoActivity.cs 并恢复对 **applicationURL** 属性的更改。
@@ -64,6 +69,7 @@ ms.locfileid: "36750962"
    `CheckItem` 调用 `SyncAsync`，将每个已完成项与移动应用后端同步。 `SyncAsync` 同时调用推送和拉取操作。 **每当对客户端已更改的表执行拉取操作时，始终会自动执行推送操作**。 这可确保本地存储中的所有表以及关系都保持一致。 此行为可能会导致意外的推送。 有关此行为的详细信息，请参阅 [Azure 移动应用中的脱机数据同步]。
 
 ## <a name="review-the-client-sync-code"></a>查看客户端同步代码
+
 完成[创建 Xamarin Android 应用]教程时下载的 Xamarin 客户端项目已包含使用本地 SQLite 数据库支持脱机同步的代码。 下面简要概述了在教程代码中已包含的内容。 有关功能的概念性概述，请参阅 [Azure 移动应用中的脱机数据同步]。
 
 * 表操作之前，必须初始化本地存储区。 `ToDoActivity.OnCreate()` 执行 `ToDoActivity.InitLocalStoreAsync()` 时，对本地存储数据库进行初始化。 此方法将使用 Azure 移动应用客户端 SDK 提供的 `MobileServiceSQLiteStore` 类创建一个本地 SQLite 数据库。
@@ -87,7 +93,7 @@ ms.locfileid: "36750962"
 
             // Uses the default conflict handler, which fails on conflict
             // To use a different conflict handler, pass a parameter to InitializeAsync.
-            // For more details, see http://go.microsoft.com/fwlink/?LinkId=521416.
+            // For more details, see https://go.microsoft.com/fwlink/?LinkId=521416.
             await client.SyncContext.InitializeAsync(store);
         }
 * `ToDoActivity` 的 `toDoTable` 成员属于 `IMobileServiceSyncTable` 类型而不是 `IMobileServiceTable` 类型。 MobileServiceSyncTable 会将所有创建、读取、更新和删除 (CRUD) 表操作定向到本地存储数据库。
@@ -112,12 +118,13 @@ ms.locfileid: "36750962"
         }
 
 ## <a name="additional-resources"></a>其他资源
+
 * [Azure 移动应用中的脱机数据同步]
 * [Azure 移动应用：.NET SDK 操作方法][8]
 
 <!-- URLs. -->
-[创建 Xamarin Android 应用]: ../app-service-mobile-xamarin-android-get-started.md
-[Azure 移动应用中的脱机数据同步]: ../app-service-mobile-offline-data-sync.md
+[创建 Xamarin Android 应用]: ./app-service-mobile-xamarin-android-get-started.md
+[Azure 移动应用中的脱机数据同步]: ./app-service-mobile-offline-data-sync.md
 
 <!-- Images -->
 

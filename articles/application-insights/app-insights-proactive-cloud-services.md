@@ -9,17 +9,16 @@ ms.assetid: ea2a28ed-4cd9-4006-bd5a-d4c76f4ec20b
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/07/2018
 ms.reviewer: harelbr
 ms.author: mbullwin
-ms.openlocfilehash: cdb395a590fb200a24c68e56728a270b968e53b5
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: c51c3fcde95f53565ac50a0ccef1d0ac8b348382
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47091417"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52728066"
 ---
 # <a name="alert-on-issues-in-azure-cloud-services-using-the-azure-diagnostics-integration-with-azure-application-insights"></a>使用 Azure 诊断与 Azure Application Insights 的集成针对 Azure 云服务中的问题发出警报
 
@@ -101,7 +100,7 @@ EventLogs
 在“搜索查询”框中，粘贴你在前面的步骤中编制的组合查询。
 
 然后，前进到“阈值”框并将其值设置为 0。 还可以调整“期间”和“频率”字段。
-单击“Done”（完成） 。
+单击“完成”。
 
 ![配置信号逻辑查询的屏幕截图](./media/app-insights-proactive-cloud-services/003.png)
 

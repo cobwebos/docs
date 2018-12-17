@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: Supportability
 ms.date: 11/16/2018
 ms.author: stbaron
-ms.openlocfilehash: be3c8d10ef034a4bd03f178bc1334b8a9eeb2f58
-ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
+ms.openlocfilehash: 7121087d9d9699a73b88e07599f70e0c7c40c1eb
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52282900"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53308274"
 ---
 # <a name="azure-status"></a>Azure 状态
 [Azure 状态](https://azure.microsoft.com/status/)可提供 Azure 服务运行状况的全局视图。 通过 Azure 状态可获取有关服务可用性的最新信息。 所有人均可访问 Azure 状态并查看报告其服务运行状况的所有服务。 
@@ -37,8 +37,8 @@ Azure 状态页会根据 Azure 服务的更改而实时更新。 如果保持 Az
 在该页中可最多查看过去 90 天内的事件，包括有关 Azure 的初步根本原因、风险缓解和后续步骤。
 
 ## <a name="rss-feed"></a>RSS 源
-Azure 状态还提供可订阅的 Azure 服务的运行状况更改的 [RSS 源](https://azure.microsoft.com/en-us/status/feed/)。
+Azure 状态还提供可订阅的 Azure 服务的运行状况更改的 [RSS 源](https://azure.microsoft.com/status/feed/)。
 
-# <a name="next-steps"></a>后续步骤
+## <a name="next-steps"></a>后续步骤
 * 了解如何使用[服务运行状况](./service-health-overview.md)更个性化地查看 Azure 运行状况。
 * 了解如何使用[资源运行状况](./resource-health-overview.md)更细化地查看特定 Azure 资源的运行状况。

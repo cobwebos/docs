@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 07/24/2017
 ms.author: adigan
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f9cdb11bad5d4aa94fdc083a0fc7dc6a2c5787cd
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: f4ecc87a0a7a0c74b02b72164fe129daa6530ea2
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52635146"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52877575"
 ---
 # <a name="log-analytics-data-model-for-azure-backup-data"></a>Azure 备份数据的 Log Analytics 数据模型
 使用 Log Analytics 数据模型可以创建报告。 使用数据模型可以创建自定义的查询和仪表板，但也可以根据需要自定义 Azure 备份数据。
@@ -30,7 +30,7 @@ ms.locfileid: "52635146"
 | AlertUniqueId_s |文本 |生成的警报的唯一标识符 |
 | AlertType_s |文本 |警报的类型，例如 Backup |
 | AlertStatus_s |文本 |警报的状态，例如 Active |
-| AlertOccurenceDateTime_s |日期/时间 |警报的创建日期和时间 |
+| AlertOccurrenceDateTime_s |日期/时间 |警报的创建日期和时间 |
 | AlertSeverity_s |文本 |警报的严重性，例如 Critical |
 | EventName_s |文本 |事件的名称。 始终为 AzureBackupCentralReport |
 | BackupItemUniqueId_s |文本 |与警报关联的备份项的唯一标识符 |

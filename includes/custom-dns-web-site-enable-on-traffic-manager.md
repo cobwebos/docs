@@ -4,17 +4,17 @@ ms.service: app-service-web
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: cephalin
-ms.openlocfilehash: 2e6697b07f305a78ef4cc3f462c76804160a9d12
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: 67b9c0ba2566206b0e70db51844b21e5d5d3c261
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51571858"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53344580"
 ---
 在传播域名记录后，应可使用浏览器验证自定义域名能否用于访问 Azure 应用服务中的 Web 应用。
 
 > [!NOTE]
-> CNAME 通过 DNS 系统向外传播可能需要一段时间。 可使用 <a href="http://www.digwebinterface.com/">http://www.digwebinterface.com/</a> 等服务验证该 CNAME 是否可用。
+> CNAME 通过 DNS 系统向外传播可能需要一段时间。 可使用 <a href="https://www.digwebinterface.com/">https://www.digwebinterface.com/</a> 等服务验证该 CNAME 是否可用。
 > 
 > 
 

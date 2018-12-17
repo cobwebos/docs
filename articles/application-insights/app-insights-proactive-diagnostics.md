@@ -9,16 +9,15 @@ ms.assetid: 2eeb4a35-c7a1-49f7-9b68-4f4b860938b2
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/31/2016
 ms.author: mbullwin
-ms.openlocfilehash: 0083c157eab489943f94ed1453c66a5c8d2f291a
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: b884fc15770e91268d1033dc4bab9bf96766de94
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50960290"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52868933"
 ---
 # <a name="smart-detection-in-application-insights"></a>Application Insights 中的智能检测
  当 Web 应用程序中存在潜在性能问题时，智能检测会自动向你发出警告。 它会对应用发送至 [Application Insights](app-insights-overview.md) 的遥测数据执行主动分析。 如果失败率中存在骤升或者客户端或服务器性能中存在异常模式，将收到警报。 此功能不需要任何配置。 它会在应用程序发送足够的遥测时运行。
@@ -57,7 +56,7 @@ ms.locfileid: "50960290"
 
 * [指标资源管理器](app-insights-metrics-explorer.md)
 * [搜索资源管理器](app-insights-diagnostic-search.md)
-* [分析 - 功能强大的查询语言](../log-analytics/query-language/get-started-analytics-portal.md)
+* [分析 - 功能强大的查询语言](../azure-monitor/log-query/get-started-portal.md)
 
 智能检测是完全自动执行的。 但是或许你想要设置更多的警报？
 

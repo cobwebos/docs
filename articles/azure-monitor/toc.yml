@@ -137,7 +137,7 @@ items:
   - name: 可视化数据
     href: visualizations.md?toc=/azure/azure-monitor/toc.json
   - name: 合作伙伴集成
-    href: ../monitoring-and-diagnostics/monitoring-partners.md?toc=/azure/azure-monitor/toc.json
+    href: platform/partners.md
   - name: 常见问题解答
     items:
     - name: Log Analytics
@@ -219,7 +219,7 @@ items:
         - name: 使用资源管理器模板启用诊断设置
           href: platform/diagnostic-logs-stream-template.md
         - name: 准备 JSON Lines 诊断日志格式
-          href: ../monitoring-and-diagnostics/monitor-diagnostic-logs-append-blobs.md?toc=/azure/azure-monitor/toc.json
+          href: platform/diagnostic-logs-append-blobs.md
         - name: VM 来宾到指标存储
           href: platform/collect-custom-metrics-guestos-resource-manager-vm.md
         - name: VM 规模集来宾到指标存储
@@ -651,7 +651,7 @@ items:
       - name: 导出应用程序数据
         href: ../application-insights/app-insights-export-power-bi.md?toc=/azure/azure-monitor/toc.json
     - name: 将数据发送到 Grafana
-      href: ../monitoring-and-diagnostics/monitor-send-to-grafana.md?toc=/azure/azure-monitor/toc.json
+      href: platform/grafana-plugin.md
   - name: 分析数据
     items:
     - name: 在指标资源管理器中创建指标图表
@@ -798,7 +798,7 @@ items:
     - name: 自动缩放
       items:
       - name: 自动缩放演练
-        href: ../monitoring-and-diagnostics/monitoring-autoscale-get-started.md?toc=/azure/azure-monitor/toc.json
+        href: platform/autoscale-get-started.md
       - name: 了解自动缩放设置
         href: ../monitoring-and-diagnostics/monitoring-understanding-autoscale-settings.md?toc=/azure/azure-monitor/toc.json
       - name: 最佳做法
@@ -806,7 +806,7 @@ items:
       - name: 常见指标
         href: platform/autoscale-common-metrics.md
       - name: 常见模式
-        href: ../monitoring-and-diagnostics/monitoring-autoscale-common-scale-patterns.md?toc=/azure/azure-monitor/toc.json
+        href: platform/autoscale-common-scale-patterns.md
       - name: 使用自定义指标自动缩放
         href: platform/autoscale-custom-metric.md
       - name: 使用资源管理器模板自动缩放 VM 规模集
@@ -832,7 +832,7 @@ items:
   - name: 管理使用情况和成本
     items:
     - name: 使用情况和预估成本
-      href: ../monitoring-and-diagnostics/monitoring-usage-and-estimated-costs.md?toc=/azure/azure-monitor/toc.json
+      href: platform/usage-estimated-costs.md
     - name: 应用程序数据卷和保留期
       href: ../application-insights/app-insights-pricing.md?toc=/azure/azure-monitor/toc.json
     - name: 应用程序企业计划详细信息
@@ -866,7 +866,7 @@ items:
     - name: API
       items:
       - name: REST API 用法演练
-        href: ../monitoring-and-diagnostics/monitoring-rest-api-walkthrough.md?toc=/azure/azure-monitor/toc.json
+        href: platform/rest-api-walkthrough.md
       - name: 警报 API
         href: platform/api-alerts.md
     - name: 应用程序
@@ -952,7 +952,7 @@ items:
   - name: 度量值
     items:
     - name: 支持的指标
-      href: ../monitoring-and-diagnostics/monitoring-supported-metrics.md?toc=/azure/azure-monitor/toc.json
+      href: platform/metrics-supported.md
     - name: 较新的警报支持的指标
       href: ../monitoring-and-diagnostics/monitoring-near-real-time-metric-alerts.md?toc=/azure/azure-monitor/toc.json
   - name: 架构
@@ -1010,9 +1010,9 @@ items:
     href: https://stackoverflow.com/search?q=monitoring
   - name: 代码示例
     href: https://azure.microsoft.com/resources/samples/?service=monitor
-ms.openlocfilehash: 037ec2d246e30725448fb3da98263b557e11186d
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 9be0566a2e0fddc61d5c7028e9ecc7a24930b2f2
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53384423"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53438381"

@@ -1,5 +1,6 @@
 ---
-title: 为 Linux VM 配置 DHCPv6 | Microsoft Docs
+title: 为 Linux VM 配置 DHCPv6
+titlesuffix: Azure Load Balancer
 description: 如何为 Linux VM 配置 DHCPv6。
 services: load-balancer
 documentationcenter: na
@@ -8,16 +9,17 @@ keywords: ipv6, azure 负载均衡器, 双堆栈, 公共 ip, 本机 ipv6, 移动
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
+ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: 7ef376c044bceb14614388a72c11942869dbde07
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.openlocfilehash: ea1ef845f55fbdadeea1992e167ef6568572abc9
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50741617"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53141707"
 ---
 # <a name="configure-dhcpv6-for-linux-vms"></a>为 Linux VM 配置 DHCPv6
 

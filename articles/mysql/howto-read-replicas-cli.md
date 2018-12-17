@@ -8,12 +8,12 @@ editor: jasonwhowell
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 11/07/2018
-ms.openlocfilehash: c1c550e6b99b9933b66c85e1de7e0a5cc2eb711d
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: 637c1b77a4ced9c8f7542548a56d8e3b0315d075
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51564837"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53136285"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mysql-using-the-azure-cli"></a>如何使用 Azure CLI 在 Azure Database for MySQL 中创建和管理只读副本
 
@@ -36,10 +36,11 @@ az mysql server replica create --name mydemoreplicaserver --source-server mydemo
 ```
 
 `az mysql server replica create` 命令需要以下参数：
-| 设置 | 示例值 | 说明  |
+
+| 设置 | 示例值 | Description  |
 | --- | --- | --- |
 | resource-group |  myresourcegroup |  要在其中创建副本服务器的资源组。  |
-| name | mydemoreplicaserver | 所创建的新副本服务器的名称。 |
+| 名称 | mydemoreplicaserver | 所创建的新副本服务器的名称。 |
 | source-server | mydemoserver | 要从中进行复制的现有主服务器的名称或 ID。 |
 
 > [!NOTE]
@@ -57,10 +58,11 @@ az mysql server replica stop --name mydemoreplicaserver --resource-group myresou
 ```
 
 `az mysql server replica stop` 命令需要以下参数：
-| 设置 | 示例值 | 说明  |
+
+| 设置 | 示例值 | Description  |
 | --- | --- | --- |
 | resource-group |  myresourcegroup |  副本服务器所在的资源组。  |
-| name | mydemoreplicaserver | 要停止在其上进行复制的副本服务器的名称。 |
+| 名称 | mydemoreplicaserver | 要停止在其上进行复制的副本服务器的名称。 |
 
 ## <a name="delete-a-replica-server"></a>删除副本服务器
 
@@ -90,7 +92,8 @@ az mysql server replica list --server-name mydemoserver --resource-group myresou
 ```
 
 `az mysql server replica list` 命令需要以下参数：
-| 设置 | 示例值 | 说明  |
+
+| 设置 | 示例值 | Description  |
 | --- | --- | --- |
 | resource-group |  myresourcegroup |  要在其中创建副本服务器的资源组。  |
 | server-name | mydemoserver | 主服务器的名称或 ID。 |

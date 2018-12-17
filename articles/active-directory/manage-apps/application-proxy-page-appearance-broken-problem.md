@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 05/21/2018
 ms.author: barbkess
 ms.reviewer: asteen
-ms.openlocfilehash: 2ebcf225fb0959b5c72c3cea50f2f1386beb1457
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 6354b4b0224effb1eef063779dba736cb6263286
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44354506"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53141622"
 ---
 # <a name="application-page-does-not-display-correctly-for-an-application-proxy-application"></a>应用程序代理应用程序的应用程序页无法正确显示
 
@@ -39,4 +39,4 @@ ms.locfileid: "44354506"
 为此，我们建议使用[自定义域](application-proxy-configure-custom-domain.md)解决方案。 但是，若要使用该解决方案，则必须拥有域证书，且应用程序必须使用完全限定的域名 (FQDN)。 有关其他选项，请参阅[断开链接的故障排除文档](application-proxy-page-links-broken-problem.md)。
 
 ## <a name="next-steps"></a>后续步骤
-[使用 Azure AD 应用程序代理发布应用程序](application-proxy-publish-azure-portal.md)
+[使用 Azure AD 应用程序代理发布应用程序](application-proxy-add-on-premises-application.md)

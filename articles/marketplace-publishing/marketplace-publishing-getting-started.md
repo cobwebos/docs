@@ -14,17 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/05/2017
 ms.author: hascipio
-ms.openlocfilehash: 3556384d71649391d094172a136b863ed26fd2ad
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 2c8c97d8f5477e7640df87030ed6ef27c4c7b979
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51227393"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53310073"
 ---
+# <a name="publish-and-manage-an-offer-in-the-azure-marketplace"></a>在 Azure 市场中发布和管理产品/服务
+
 > [!NOTE]
 > 本文档不再处于最新状态，因此内容并不准确。 请转到 Azure 市场[卖家指南](https://docs.microsoft.com/azure/marketplace/seller-guide/cloud-partner-portal-seller-guide)，获取向 Azure 市场发布产品/服务的相关指导。
 
-# <a name="publish-and-manage-an-offer-in-the-azure-marketplace"></a>在 Azure 市场中发布和管理产品/服务
 本文旨在帮助开发人员创建、部署和管理在 Azure 市场中列出的解决方案，以便其他 Azure 客户和合作伙伴可进行购买和使用。
 
 ## <a name="marketplace-publishing"></a>市场发布

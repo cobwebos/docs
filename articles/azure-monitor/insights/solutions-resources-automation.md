@@ -8,19 +8,18 @@ manager: carmonm
 editor: tysonn
 ms.assetid: 5281462e-f480-4e5e-9c19-022f36dce76d
 ms.service: monitoring
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/24/2017
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 814646902a88c7170da66397709ff3a8c7b081fd
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.openlocfilehash: 1d2a1be55f00b1b31609f44bd0187fd839340773
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51713868"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53185115"
 ---
 # <a name="adding-azure-automation-resources-to-a-management-solution-preview"></a>将 Azure 自动化资源添加到管理解决方案（预览版）
 > [!NOTE]
@@ -317,8 +316,8 @@ runbook 应依赖于模块资源，以确保模块资源在 runbook 之前创建
 ### <a name="updating-modules"></a>更新模块
 如果更新的管理解决方案包含使用计划的 Runbook，并且新版本的解决方案具有该 Runbook 使用的新模块，则该 Runbook 可以使用旧版本的模块。  应在解决方案中包括以下 Runbook，并创建一个作业，以在任何其他 Runbook 之前运行它们。  这会确保在加载 Runbook 之前视需要更新任何模块。
 
-* [Update-ModulesinAutomationToLatestVersion](https://www.powershellgallery.com/packages/Update-ModulesInAutomationToLatestVersion/1.03/DisplayScript) 将确保解决方案中的 Runbook 使用的所有模块都是最新版本。  
-* [ReRegisterAutomationSchedule-MS-Mgmt](https://www.powershellgallery.com/packages/ReRegisterAutomationSchedule-MS-Mgmt/1.0/DisplayScript) 将重新注册所有的计划资源来确保 Runbook 链接到使用最新模块的 Runbook。
+* [Update-ModulesinAutomationToLatestVersion](https://www.powershellgallery.com/packages/Update-ModulesInAutomationToLatestVersion/1.03/) 将确保解决方案中的 Runbook 使用的所有模块都是最新版本。  
+* [ReRegisterAutomationSchedule-MS-Mgmt](https://www.powershellgallery.com/packages/ReRegisterAutomationSchedule-MS-Mgmt/1.0/) 将重新注册所有的计划资源来确保 Runbook 链接到使用最新模块的 Runbook。
 
 
 

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 06/26/2017
 ms.author: adigan
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6b1531e23d0e5fd34eff59868055ccd855b423e4
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 573b7e9c5c44c7162b4020f1ef54b8986003c0b5
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37444297"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52877127"
 ---
 # <a name="data-model-for-azure-backup-reports"></a>Azure 备份报表的数据模型
 本文介绍用于创建 Azure 备份报表的 Power BI 数据模型。 使用此数据模型，可基于相关字段筛选现有报表，更重要是，还可使用模型中表格和字段创建自己的报表。 
@@ -28,12 +28,12 @@ Power BI 提供了自定义功能，可用于[通过数据模型创建报表](ht
 ### <a name="alert"></a>警报
 此表提供针对各种警报相关字段的基本字段和聚合。
 
-| 字段 | 数据类型 | 说明 |
+| 字段 | 数据类型 | Description |
 | --- | --- | --- |
 | #AlertsCreatedInPeriod |整数 |在选定时间段内创建的警报数 |
 | %ActiveAlertsCreatedInPeriod |百分比 |所选时间段内活动警报的百分比 |
 | %CriticalAlertsCreatedInPeriod |百分比 |所选时间段内严重警报的百分比 |
-| AlertOccurenceDate |日期 |警报的创建日期 |
+| AlertOccurrenceDate |日期 |警报的创建日期 |
 | AlertSeverity |文本 |警报的严重性，例如“严重” |
 | AlertStatus |文本 |警报的状态，例如“活动” |
 | AlertType |文本 |生成的警报的类型，例如“备份” |
@@ -45,7 +45,7 @@ Power BI 提供了自定义功能，可用于[通过数据模型创建报表](ht
 ### <a name="backup-item"></a>备份项
 此表提供针对各种备份项相关字段的基本字段和聚合。
 
-| 字段 | 数据类型 | 说明 |
+| 字段 | 数据类型 | Description |
 | --- | --- | --- |
 | #BackupItems |整数 |备份项的数量 |
 | #UnprotectedBackupItems |整数 |停止以进行保护或配置进行备份但未启动备份的备份项的数量|
@@ -63,7 +63,7 @@ Power BI 提供了自定义功能，可用于[通过数据模型创建报表](ht
 ### <a name="calendar"></a>日历
 此表提供了日历相关字段的详细信息。
 
-| 字段 | 数据类型 | 说明 |
+| 字段 | 数据类型 | Description |
 | --- | --- | --- |
 | 日期 |日期 |用于筛选数据的日期 |
 | 日期键 |文本 |每个日期项的唯一键 |
@@ -80,7 +80,7 @@ Power BI 提供了自定义功能，可用于[通过数据模型创建报表](ht
 ### <a name="job"></a>作业
 此表提供针对各种作业相关字段的基本字段和聚合。
 
-| 字段 | 数据类型 | 说明 |
+| 字段 | 数据类型 | Description |
 | --- | --- | --- |
 | #JobsCreatedInPeriod |整数 |在选定时间段内创建的作业数 |
 | %FailuresForJobsCreatedInPeriod |百分比 |所选时间段内作业失败总数的百分比 |
@@ -100,7 +100,7 @@ Power BI 提供了自定义功能，可用于[通过数据模型创建报表](ht
 ### <a name="policy"></a>策略
 此表提供了针对多个策略相关字段的基本字段和聚合。
 
-| 字段 | 数据类型 | 说明 |
+| 字段 | 数据类型 | Description |
 | --- | --- | --- |
 | #Policies |整数 |系统中存在的备份策略数目 |
 | #PoliciesInUse |整数 |当前正用于配置备份的策略数目 |
@@ -134,7 +134,7 @@ Power BI 提供了自定义功能，可用于[通过数据模型创建报表](ht
 ### <a name="protected-server"></a>受保护的服务器
 此表提供针对多个受保护服务器相关字段的基本字段和聚合。
 
-| 字段 | 数据类型 | 说明 |
+| 字段 | 数据类型 | Description |
 | --- | --- | --- |
 | #ProtectedServers |整数 |受保护服务器的数目 |
 | AsOnDateTime |日期/时间 |所选行的最近刷新时间 |
@@ -153,7 +153,7 @@ Power BI 提供了自定义功能，可用于[通过数据模型创建报表](ht
 ### <a name="storage"></a>存储
 此表提供针对各种存储相关字段的基本字段和聚合。
 
-| 字段 | 数据类型 | 说明 |
+| 字段 | 数据类型 | Description |
 | --- | --- | --- |
 | #ProtectedInstances |十进制数 |用于计算账单中前端存储量的受保护实例的数目，基于所选时间中的最新值进行计算 |
 | AsOnDateTime |日期/时间 |所选行的最近刷新时间 |
@@ -164,7 +164,7 @@ Power BI 提供了自定义功能，可用于[通过数据模型创建报表](ht
 ### <a name="time"></a>时间
 此表提供时间相关字段的详细信息。
 
-| 字段 | 数据类型 | 说明 |
+| 字段 | 数据类型 | Description |
 | --- | --- | --- |
 | 小时 |时间 |当天的小时，例如 1:00:00 PM |
 | 小时数 |十进制数 |当天的具体小时，例如 13.00 |
@@ -176,7 +176,7 @@ Power BI 提供了自定义功能，可用于[通过数据模型创建报表](ht
 ### <a name="vault"></a>保管库
 此表提供针对各种保管库相关字段的基本字段和聚合。
 
-| 字段 | 数据类型 | 说明 |
+| 字段 | 数据类型 | Description |
 | --- | --- | --- |
 | #Vaults |整数 |保管库的数目 |
 | AsOnDateTime |日期/时间 |所选行的最近刷新时间 |

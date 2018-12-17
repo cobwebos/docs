@@ -7,17 +7,16 @@ manager: carmonm
 ms.service: azure-monitor
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
-ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 09/19/2018
 ms.reviewer: mbullwin
 ms.author: daviste
-ms.openlocfilehash: 4b24ab406cc9cdbc3ce03ee203ec034843d5630a
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: 2b9aee39942562ec7f17c08c0fcf46143a7a25d3
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49986417"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52961801"
 ---
 # <a name="monitor-resource-groups-with-azure-monitor-preview"></a>使用 Azure Monitor（预览版）监视资源组
 
@@ -29,19 +28,19 @@ ms.locfileid: "49986417"
 2. 选择其中一个要浏览的资源组。 （如果拥有大量资源组，则按订阅筛选有时会很有用。）
 3. 若要访问资源组的见解，单击任意资源组的左侧菜单中的“见解”。
 
-![资源组见解概述页的屏幕截图](.\media\resource-group-insights\0001-overview.png)
+![资源组见解概述页的屏幕截图](./media/resource-group-insights/0001-overview.png)
 
 ## <a name="resources-with-active-alerts-and-health-issues"></a>具有活动警报和运行状况问题的资源
 
 概述页显示已触发且仍处于活动状态的警报数以及每个资源的当前 Azure 资源运行状况。 这些信息有助于快速发现出现问题的任何资源。 警报可帮助检测代码中的问题以及配置基础结构的方式。 Azure 资源运行状况显示 Azure 平台本身的问题，这些问题并非特定于单个应用程序。
 
-![Azure 资源运行状况窗格的屏幕截图](.\media\resource-group-insights\0002-overview.png)
+![Azure 资源运行状况窗格的屏幕截图](./media/resource-group-insights/0002-overview.png)
 
 ### <a name="azure-resource-health"></a>Azure 资源运行状况
 
 若要显示 Azure 资源运行状况，选中表格上方的“显示 Azure 资源运行状况”。 默认情况下隐藏此列，以快速加载页面。
 
-![添加了资源运行状况图的屏幕截图](.\media\resource-group-insights\0003-overview.png)
+![添加了资源运行状况图的屏幕截图](./media/resource-group-insights/0003-overview.png)
 
 默认情况下，按照应用层和资源类型对资源进行分组。 应用层是资源类型的简单分类，仅存在于资源组见解概述页的上下文中。 存在与应用程序代码、计算基础结构、网络、存储 + 数据库相关的资源类型。 管理工具具有自己的应用层，每个其他资源都归类为属于“其他”应用层。 此分组可以帮助快速查看应用程序的哪些子系统运行正常，哪些子系统运行不正常。
 
@@ -70,33 +69,33 @@ ms.locfileid: "49986417"
 
 选择完成后，左侧菜单栏会发生更改，提供新选项。
 
-![故障概述窗格的屏幕截图](.\media\resource-group-insights\00004-failures.png)
+![故障概述窗格的屏幕截图](./media/resource-group-insights/00004-failures.png)
 
 选择应用服务时，会看到 Azure Monitor 工作簿模板库。
 
-![应用程序工作簿库的屏幕截图](.\media\resource-group-insights\0005-failure-insights-workbook.png)
+![应用程序工作簿库的屏幕截图](./media/resource-group-insights/0005-failure-insights-workbook.png)
 
 选择故障见解的模板会打开工作簿。
 
-![故障报告的屏幕截图](.\media\resource-group-insights\0006-failure-visual.png)
+![故障报告的屏幕截图](./media/resource-group-insights/0006-failure-visual.png)
 
 可以选择任意行。 然后所选内容显示在图形的详细信息视图中。
 
-![故障详细信息的屏幕截图](.\media\resource-group-insights\0007-failure-details.png)
+![故障详细信息的屏幕截图](./media/resource-group-insights/0007-failure-details.png)
 
 工作簿将创建自定义报告和可视化效果的困难工作抽象化为易于使用的格式。 虽然一些用户可能只想调整预生成的参数，但工作簿是完全可自定义的。
 
 若要了解此工作簿是如何在内部运作的，选择顶栏的“编辑”。
 
-![其他编辑选项的屏幕截图](.\media\resource-group-insights\0008-failure-edit.png)
+![其他编辑选项的屏幕截图](./media/resource-group-insights/0008-failure-edit.png)
 
 许多“编辑”框将显示在工作簿的各种元素周围。 选择操作表下方的“编辑”框。
 
-![编辑框的屏幕截图](.\media\resource-group-insights\0009-failure-edit-graph.png)
+![编辑框的屏幕截图](./media/resource-group-insights/0009-failure-edit-graph.png)
 
 这显示了生成表的可视化效果的基础 Log Analytics 查询。
 
- ![Log Analytics 查询窗口的屏幕截图](.\media\resource-group-insights\0010-failure-edit-query.png)
+ ![Log Analytics 查询窗口的屏幕截图](./media/resource-group-insights/0010-failure-edit-query.png)
 
 可以直接修改查询。 还可以将其作为参考，并在设计自己的自定义参数化工作簿时从中借用。
 
@@ -104,11 +103,11 @@ ms.locfileid: "49986417"
 
 性能提供其自己的工作簿库。 对于应用服务，预生成的应用程序性能工作簿提供以下视图：
 
- ![性能视图的屏幕截图](.\media\resource-group-insights\0011-performance.png)
+ ![性能视图的屏幕截图](./media/resource-group-insights/0011-performance.png)
 
 在这种情况下，如果选择编辑，将看到这组可视化效果由 Azure Monitor Metrics 提供支持。
 
- ![Azure Metrics 的性能视图的屏幕截图](.\media\resource-group-insights\0012-performance-metrics.png)
+ ![Azure Metrics 的性能视图的屏幕截图](./media/resource-group-insights/0012-performance-metrics.png)
 
 ## <a name="troubleshooting"></a>故障排除
 

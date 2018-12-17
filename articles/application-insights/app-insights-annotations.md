@@ -9,23 +9,22 @@ ms.assetid: 23173e33-d4f2-4528-a730-913a8fd5f02e
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/08/2018
 ms.author: mbullwin
-ms.openlocfilehash: 4b7b663b95bee12848f4afe2d2f48504a4408266
-ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
+ms.openlocfilehash: d725c42a758a44fa872138dfaef7e1c05e4b688f
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2018
-ms.locfileid: "51515165"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53385680"
 ---
 # <a name="annotations-on-metric-charts-in-application-insights"></a>为 Application Insights 中的指标图表添加批注
 
 [指标资源管理器](app-insights-metrics-explorer.md)图表上的批注显示将新版本部署到了何处，或者显示其他重要事件。 使用批注可让轻松查看更改是否对应用程序的性能产生了任何影响。 [Azure DevOps Services 生成系统](https://docs.microsoft.com/azure/devops/pipelines/tasks/)可自动创建批注。 也可以[通过 PowerShell 创建批注](#create-annotations-from-powershell)用于标记所要处理的任何事件。
 
 > [!NOTE]
-> 本文反映了已弃用的**经典指标体验**。 批注目前仅在经典体验和**[工作簿](app-insights-usage-workbooks.md)** 中可用。 若要详细了解当前指标体验，可查阅[此文](../monitoring-and-diagnostics/monitoring-metric-charts.md)。
+> 本文反映了已弃用的**经典指标体验**。 批注目前仅在经典体验和**[工作簿](app-insights-usage-workbooks.md)** 中可用。 若要详细了解当前指标体验，可查阅[此文](../azure-monitor/platform/metrics-charts.md)。
 
 ![显示与服务器响应时间的关联的批注示例](./media/app-insights-annotations/00.png)
 

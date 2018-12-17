@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 07/11/2017
 ms.author: barbkess
 ms.reviewer: asteen
-ms.openlocfilehash: 4cce49509a452153815c845d9ab72a1b4a8a5b7f
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 13a628d37ef67d0a1dc3ad8231229493191c4e7f
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44354493"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52849558"
 ---
 # <a name="error-on-an-applications-page-after-signing-in"></a>登录后应用程序的页面上出现错误
 
@@ -30,7 +30,7 @@ ms.locfileid: "44354493"
 
 -   如果应用程序位于 Azure AD 库，请确认已遵循[如何在 Azure Active Directory 中调试对应用程序进行基于 SAML 的单一登录](https://azure.microsoft.com/documentation/articles/active-directory-saml-debugging)文章中的所有步骤。
 
--   使用 [Fiddler](http://www.telerik.com/fiddler) 之类的工具捕获 SAML 请求、SAML 响应和 SAML 令牌。
+-   使用 [Fiddler](https://www.telerik.com/fiddler) 之类的工具捕获 SAML 请求、SAML 响应和 SAML 令牌。
 
 -   与应用程序供应商共享 SAML 响应以了解缺少的内容。
 

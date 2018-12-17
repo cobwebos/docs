@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 09/21/2018
 ms.author: cherylmc
-ms.openlocfilehash: 27bac5265a5e884b808c4ccb58fda0b2fffeb774
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: d3dda3bb5fd39b844f50044c1262008e3610e301
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46975634"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52871398"
 ---
 # <a name="about-zone-redundant-virtual-network-gateways-in-azure-availability-zones"></a>关于 Azure 可用性区域中的区域冗余虚拟网络网关
 
@@ -86,7 +86,7 @@ ms.locfileid: "46975634"
 
 ### <a name="what-regions-are-available-for-me-to-use-the-new-skus"></a>我可以在哪些区域中使用新 SKU？
 
-新 SKU 可在具有 Azure 可用性区域的 Azure 区域（“美国中部”、“法国中部”和“西欧”区域）中使用。 今后，我们将在其他 Azure 公共区域推出区域冗余网关。
+新 SKU 可在具有 Azure 可用性区域的 Azure 区域（“美国中部”、“法国中部”、“北欧”、“西欧”和“美国西部 2”区域）中使用。 今后，我们将在其他 Azure 公共区域推出区域冗余网关。
 
 ### <a name="can-i-changemigrateupgrade-my-existing-virtual-network-gateways-to-zone-redundant-or-zonal-gateways"></a>我能否将现有虚拟网络网关更改/迁移/升级为区域冗余网关或区域网关？
 

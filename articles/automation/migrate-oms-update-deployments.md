@@ -9,16 +9,16 @@ ms.author: gwallace
 ms.date: 07/16/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: d0b380aa6046daa235098516a8c93d3ba72533a6
-ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
+ms.openlocfilehash: 5380372cc1f2928b79b0d20f4dd46e429a93dc5e
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/15/2018
-ms.locfileid: "42140821"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52992260"
 ---
 # <a name="migrate-your-oms-update-deployments-to-azure"></a>将 OMS 更新部署迁移到 Azure
 
-Operations Management Suite (OMS) 门户已被[弃用](../log-analytics/log-analytics-oms-portal-transition.md)。 Azure 门户提供了 OMS 门户中可用于更新管理的所有功能。 本文提供迁移到 Azure 门户所需的信息。
+Operations Management Suite (OMS) 门户已被[弃用](../azure-monitor/platform/oms-portal-transition.md)。 Azure 门户提供了 OMS 门户中可用于更新管理的所有功能。 本文提供迁移到 Azure 门户所需的信息。
 
 ## <a name="key-information"></a>重要信息
 
@@ -43,7 +43,7 @@ Operations Management Suite (OMS) 门户已被[弃用](../log-analytics/log-anal
 
 ## <a name="recreate-existing-deployments"></a>重新创建现有部署
 
-在 OMS 门户中创建的所有更新部署有一个[保存的搜索结果](../log-analytics/log-analytics-computer-groups.md)，也称为计算机组，其名称与现有更新部署的名称相同。 保存的搜索结果包含在更新部署中计划的计算机列表。
+在 OMS 门户中创建的所有更新部署有一个[保存的搜索结果](../azure-monitor/platform/computer-groups.md)，也称为计算机组，其名称与现有更新部署的名称相同。 保存的搜索结果包含在更新部署中计划的计算机列表。
 
 ![更新管理](media/migrate-oms-update-deployments/oms-deployment.png)
 
@@ -61,12 +61,12 @@ Operations Management Suite (OMS) 门户已被[弃用](../log-analytics/log-anal
 | --- | --- |
 |名称 |用于标识更新部署的唯一名称。 |
 |操作系统| 选择 **Linux** 或 **Windows**。|
-|要更新的计算机 |选择已保存的搜索、已导入的组或者从下拉列表中选择“计算机”并选择单个计算机。 如果选择“计算机”，则计算机的准备情况将显示在“更新代理准备”列中。</br> 若要了解在 Log Analytics 中创建计算机组的不同方法，请参阅 [Log Analytics 中的计算机组](../log-analytics/log-analytics-computer-groups.md) |
+|要更新的计算机 |选择已保存的搜索、已导入的组或者从下拉列表中选择“计算机”并选择单个计算机。 如果选择“计算机”，则计算机的准备情况将显示在“更新代理准备”列中。</br> 要了解在 Log Analytics 中创建计算机组的不同方法，请参阅 [Log Analytics 中的计算机组](../azure-monitor/platform/computer-groups.md) |
 |更新分类|选择所需的所有更新分类。 CentOS 不能现成地支持此功能。|
 |要排除的更新|输入要排除的更新。 对于 Windows，输入不带 **KB** 前缀的知识库文章。 对于 Linux，输入包名称或使用通配符。  |
 |计划设置|选择启动时间，对于“定期”，然后“一次”或“重复”。|| 维护时段 |为更新设置的分钟数。 该值不能小于 30 分钟，也不能大于 6 小时。 |
 | 维护时段 |为更新设置的分钟数。 该值不能小于 30 分钟，且不能大于 6 小时 |
-| 重新启动控制| 确定应如何处理重新启动。</br>可用选项包括：</br>需要时重新启动(默认)</br>始终重新启动</br>从不重新启动</br>仅重新启动 - 不会安装更新|
+| 重新启动控制| 确定应如何处理重新启动。</br>可用选项包括：</br>需要时重新启动(默认)</br>始终重新启动</br>从不重新启动</br>仅重启 - 不安装更新|
 
 单击“计划的更新部署”以查看新建更新部署的状态。
 

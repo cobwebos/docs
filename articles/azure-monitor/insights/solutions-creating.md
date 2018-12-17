@@ -8,19 +8,18 @@ manager: carmonm
 editor: tysonn
 ms.assetid: 1915e204-ba7e-431b-9718-9eb6b4213ad8
 ms.service: monitoring
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/20/2017
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4fd36d58574b60e3e6351cba03c68b9217bc703d
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 44335137eedb67d7ceca420a061880767b895cad
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52632460"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53339274"
 ---
 # <a name="design-and-build-a-management-solution-in-azure-preview"></a>在 Azure 中设计和生成管理解决方案（预览）
 > [!NOTE]
@@ -46,19 +45,19 @@ ms.locfileid: "52632460"
 
 可以通过多种方式在 Log Analytics 存储库中收集数据源，详见 [Log Analytics 中的数据源](../../azure-monitor/platform/agent-data-sources.md)。  可以收集 Windows 事件日志中的事件，或者收集由 Windows 和 Linux 客户端的 Syslog 和性能计数器生成的事件。  此外，还可以收集通过 Azure Monitor 收集的 Azure 资源中的数据。  
 
-如果所需数据无法通过任何可用的数据源进行访问，则可通过任何能够调用 REST API 的客户端，使用 [HTTP 数据收集器 API](../../log-analytics/log-analytics-data-collector-api.md) 将数据写入 Log Analytics 存储库。  在管理解决方案中自定义数据收集时，最常见的方式是创建 [Azure 自动化中的 runbook](../../automation/automation-runbook-types.md)，以便从 Azure 或外部资源收集所需数据，并使用数据收集器 API 将数据写入存储库。  
+如果所需数据无法通过任何可用的数据源进行访问，则可通过任何能够调用 REST API 的客户端，使用 [HTTP 数据收集器 API](../../azure-monitor/platform/data-collector-api.md) 将数据写入 Log Analytics 存储库。  在管理解决方案中自定义数据收集时，最常见的方式是创建 [Azure 自动化中的 runbook](../../automation/automation-runbook-types.md)，以便从 Azure 或外部资源收集所需数据，并使用数据收集器 API 将数据写入存储库。  
 
 ### <a name="log-searches"></a>日志搜索
-[日志搜索](../../log-analytics/log-analytics-queries.md)用于提取和分析 Log Analytics 存储库中的数据。  视图和警报可以使用日志搜索，用户也可以使用日志搜索对存储库中的数据进行临时分析。  
+[日志搜索](../../azure-monitor/log-query/log-query-overview.md)用于提取和分析 Log Analytics 存储库中的数据。  视图和警报可以使用日志搜索，用户也可以使用日志搜索对存储库中的数据进行临时分析。  
 
 如果认为某些查询对用户有用，则应定义这些查询，即使视图或警报不使用这些查询。  这些查询会在门户中以“保存的搜索”形式提供给用户，也可将其添加到自定义视图的[“查询列表”可视化效果部件](../../azure-monitor/platform/view-designer-parts.md#list-of-queries-part)。
 
 ### <a name="alerts"></a>警报
-[Log Analytics 中的警报](../../monitoring-and-diagnostics/monitoring-overview-alerts.md)通过[日志搜索](#log-searches)来搜索存储库中的数据，从而确定问题。  警报会通知用户，或者自动运行某个操作作为响应。 应该为应用程序确定不同的警报条件，并且让相应的警报规则包括在解决方案文件中。
+[Log Analytics 中的警报](../../azure-monitor/platform/alerts-overview.md)通过[日志搜索](#log-searches)来搜索存储库中的数据，从而确定问题。  警报会通知用户，或者自动运行某个操作作为响应。 应该为应用程序确定不同的警报条件，并且让相应的警报规则包括在解决方案文件中。
 
 如果有可能通过自动化过程纠正问题，则通常应在 Azure 自动化中创建一个 runbook 来执行该纠正操作。  大多数 Azure 服务可以通过 [cmdlet](/powershell/azure/overview) 进行管理，runbook 也可以利用后者来执行此类功能。
 
-如果解决方案需要外部功能来响应警报，则可使用 [webhook 响应](../../monitoring-and-diagnostics/alert-metric.md)，  以便调用外部 Web 服务，发送警报中的信息。
+如果解决方案需要外部功能来响应警报，则可使用 [webhook 响应](../../azure-monitor/platform/alerts-metric.md)，  以便调用外部 Web 服务，发送警报中的信息。
 
 ### <a name="views"></a>视图
 Log Analytics 中的视图用于可视化 Log Analytics 存储库中的数据。  每个解决方案通常会包含一个视图，其中的[磁贴](../../azure-monitor/platform/view-designer-tiles.md)会显示在用户的主仪表板上。  该视图可以包含任意数目的[可视化效果部件](../../azure-monitor/platform/view-designer-parts.md)，为用户提供所收集数据的不同可视化效果。
