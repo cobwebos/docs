@@ -53,7 +53,7 @@ ms.locfileid: "49353810"
 - [下载示例项目 ](https://github.com/Azure-Samples/dotnet-sqldb-tutorial/archive/master.zip)。
 - 提取（解压缩）dotnet-sqldb-tutorial-master.zip 文件。
 
-此示例项目包含一个使用 [Entity Framework Code First](/aspnet/mvc/overview/getting-started/getting-started-with-ef-using-mvc/creating-an-entity-framework-data-model-for-an-asp-net-mvc-application) 的基本的 [ASP.NET MVC](https://www.asp.net/mvc) 创建-读取-更新-删除 (CRUD) 应用。
+此示例项目包含一个使用 [Entity Framework Code First](/aspnet/mvc/overview/getting-started/getting-started-with-ef-using-mvc/creating-an-entity-framework-data-model-for-an-asp-net-mvc-application) 的基本 [ASP.NET MVC](https://www.asp.net/mvc) 创建-读取-更新-删除 (CRUD) 应用。
 
 ### <a name="run-the-app"></a>运行应用
 
