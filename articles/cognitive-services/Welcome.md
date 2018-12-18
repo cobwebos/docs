@@ -18,14 +18,14 @@ ms.locfileid: "50025389"
 ---
 # <a name="what-are-azure-cognitive-services"></a>什么是 Azure 认知服务？
 
-Azure 认知服务是 API、SDK 和服务，可帮助开发人员生成智能应用程序，无需拥有直接的 AI 或数据科学技能或知识。 Azure 认知服务是在 Microsoft 不断发展的机器学习 API 产品组合基础上的拓展，可让开发人员轻松地在其应用程序中添加认知功能 – 例如情绪和视频检测；面部、语音与视觉识别；语音与语言理解。 Azure 认知服务的目标是帮助开发人员创建可以看、听、说、理解甚至开始推理的应用程序。 Azure 认知服务中的服务目录可分为五大主要支柱类别：影像、语音、语言、搜索和知识。
+Azure 认知服务是 API、SDK 和服务，可帮助开发人员生成智能应用程序，而无需具备直接的 AI 或数据科学技能或知识。Azure 认知服务是 Microsoft 不断发展的机器学习 API 产品组合基础上的拓展，可让开发人员轻松地在其应用程序中添加认知功能 – 例如情绪和视频检测；面部、语音与视觉识别；语音与语言理解。Azure 认知服务的目标是帮助开发人员创建可以看、听、说、理解甚至开始推理的应用程序。Azure 认知服务中的服务目录可分为五大主要支柱类别：视觉、语音、语言、搜索和知识。
 
-## <a name="vision-apis"></a>影像 API
+## <a name="vision-apis"></a>视觉 API
 
 |服务名称|服务说明|
 |:-----------|:------------------|
 |[计算机视觉](https://docs.microsoft.com/azure/cognitive-services/computer-vision/ "计算机视觉")|使用计算机视觉服务，你可以访问用于处理图像并返回信息的高级算法。|
-|[自定义影像服务](https://docs.microsoft.com/azure/cognitive-services/Custom-Vision-Service/home "自定义影像服务")（预览版）|通过自定义影像服务可以生成自定义图像分类器。|
+|[自定义视觉服务](https://docs.microsoft.com/azure/cognitive-services/Custom-Vision-Service/home "自定义视觉服务")（预览版）|通过自定义视觉服务可以生成自定义图像分类器。|
 |[内容审查器](https://docs.microsoft.com/azure/cognitive-services/content-moderator/overview "内容审查器")|内容审查器监视可能的冒犯性、不可取和危险内容。|
 |[人脸 API](https://docs.microsoft.com/azure/cognitive-services/face/ "人脸 API")|使用人脸 API 可访问高级人脸算法，支持人脸属性检测和识别。|
 |[情感 API](https://docs.microsoft.com/azure/cognitive-services/emotion/home "情感 API")（预览版）|情感 API 采用图像作为输入，并返回图像中的每张人脸与一组情感对应的置信度。|
@@ -50,7 +50,7 @@ Azure 认知服务是 API、SDK 和服务，可帮助开发人员生成智能应
 |[语言分析](https://docs.microsoft.com/azure/cognitive-services/linguisticanalysisapi/home "语言分析")（预览版）|语言分析提供可识别文本结构的自然语言处理工具。|
 |[文本分析](https://docs.microsoft.com/azure/cognitive-services/text-analytics/ "文本分析")|文本分析提供对原始文本的自然语言处理，用于情绪分析、关键短语提取和语言检测。|
 |[文本翻译](https://docs.microsoft.com/azure/cognitive-services/translator/ "文本翻译")|文本翻译近乎实时地提供基于机器的文本翻译。||
-|[Web 语言模型](https://docs.microsoft.com/azure/cognitive-services/web-language-model/home "Web 语言模型")（预览版）|自然语言处理，用于预测字词排序、完成情况以及不带空格的字符串的字词断句。|
+|[Web 语言模型](https://docs.microsoft.com/azure/cognitive-services/web-language-model/home "Web 语言模型")（预览版）|用于预测无空格字符串的字序、补全和断字的自然语言处理。|
 
 ## <a name="search-apis"></a>搜索 API
 
@@ -82,7 +82,7 @@ Azure 认知服务是 API、SDK 和服务，可帮助开发人员生成智能应
 
 ## <a name="upgrade-to-unlock-limits"></a>通过升级来解锁限制
 
-所有 API 都有一个免费试用版计划。  随着每个 API 付费产品的推出，你将被定向到 Azure 门户以完成购买。  你可以在“订阅”页面中找到“购买”链接（如果已经在使用订阅），也可以完全跳过试用版，使用[定价](https://www.microsoft.com/cognitive-services/en-us/pricing "定价")上提供的链接进行购买。  你将需要使用信用卡和电话号码设置一个 Azure 订阅者帐户。 如果你有特殊要求或者只是想与销售人员交谈，请单击定价页顶部的“联系我们”按钮。
+所有 API 都有一个免费试用版计划。 随着每个 API 付费产品的推出，你将被定向到 Azure 门户以完成购买。 你可以在“订阅”页面中找到“购买”链接（如果已经在使用订阅），也可以完全跳过试用版，使用[定价](https://www.microsoft.com/cognitive-services/en-us/pricing "定价")上提供的链接进行购买。 你将需要使用信用卡和电话号码设置一个 Azure 订阅者帐户。 如果你有特殊要求或者只是想与销售人员交谈，请单击定价页顶部的“联系我们”按钮。
 
 ## <a name="regional-availability"></a>区域可用性
 
