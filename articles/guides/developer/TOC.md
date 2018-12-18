@@ -55,7 +55,7 @@
 ### [无服务器应用](https://docs.microsoft.com/azure/azure-functions/functions-reference)
 ### [微服务群集](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-via-portal)
 ## 部署
-### [来自源控件的 Web 和移动应用](https://docs.microsoft.com/azure/app-service/app-service-continuous-deployment)
+### [来自源控件的 Web 和移动应用](https://docs.microsoft.com/azure/app-service/deploy-continuous-deployment)
 ### [本地微服务](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-with-a-local-cluster)
 ### [Linux VM](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-manage-vm)
 ### [Windows VM](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-manage-vm)
