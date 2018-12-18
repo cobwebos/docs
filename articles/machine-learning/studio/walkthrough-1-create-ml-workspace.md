@@ -24,11 +24,11 @@ ms.lasthandoff: 11/26/2018
 ms.locfileid: "52316951"
 ---
 # <a name="walkthrough-step-1-create-a-machine-learning-studio-workspace"></a>演练步骤 1：创建机器学习工作室工作区
-这是[在 Azure 机器学习中开发预测分析解决方案](walkthrough-develop-predictive-solution.md)的第一步。
+这是演练[在 Azure 机器学习中开发预测分析解决方案](walkthrough-develop-predictive-solution.md)的第一步。
 
-1. **创建一个机器学习工作区**
-2. [上传现有的数据](walkthrough-2-upload-data.md)
-3. [创建一个新的试验](walkthrough-3-create-new-experiment.md)
+1. **创建机器学习工作区**
+2. [上传现有数据](walkthrough-2-upload-data.md)
+3. [创建新试验](walkthrough-3-create-new-experiment.md)
 4. [培训和评估模型](walkthrough-4-train-and-evaluate-models.md)
 5. [部署 Web 服务](walkthrough-5-publish-web-service.md)
 6. [访问 Web 服务](walkthrough-6-access-web-service.md)
@@ -38,16 +38,16 @@ ms.locfileid: "52316951"
 
 若要使用机器学习工作室，需要具有 Microsoft Azure 机器学习工作区。 此工作区包含创建、管理和发布试验所需的工具。  
 
-Azure 订阅的管理员需创建工作区，并将您添加为所有者或贡献者。 有关详细信息，请参阅[创建和共享 Azure 机器学习工作区](create-workspace.md)。
+Azure 订阅的管理员需创建工作区，并将你添加为所有者或参与者。 有关详细信息，请参阅[创建和共享 Azure 机器学习工作区](create-workspace.md)。
 
 创建工作区后，请打开机器学习工作室 ([https://studio.azureml.net/Home](https://studio.azureml.net/Home))。 如果有多个工作区，可在窗口右上角的工具栏中选择工作区。
 
 ![在 Studio 中选择工作区][2]
 
 > [!TIP]
-> 如果是工作区的所有者，则可通过邀请其他人到工作区来共享所正在进行的实验。 可以在“设置”页面上的“机器学习工作室”中执行此操作。 仅需要每位用户的 Microsoft 帐户或组织帐户。
+> 如果你是工作区的所有者，则可通过邀请其他人到工作区来共享所进行的实验。可以在“设置”页上的“机器学习工作室”中执行此操作。只需每位用户的 Microsoft 帐户或组织帐户即可。
 > 
-> 在“设置”页面上，单击“用户”，并在窗口底部单击“邀请更多用户”。
+> 在“设置”页上，单击“用户”，并在窗口底部单击“邀请更多用户”。
 > 
 > 
 
