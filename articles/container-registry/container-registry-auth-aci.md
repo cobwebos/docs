@@ -18,7 +18,7 @@ ms.locfileid: "48855827"
 
 可以使用 Azure Active Directory (Azure AD) 服务主体提供对 Azure 容器注册表中专用容器注册表的访问权限。
 
-在本文中，了解如何创建和配置具有注册表*拉取*权限的 Azure AD 服务主体。 然后，启动 Azure 容器实例 (ACI) 中的某个容器，以从专用注册表拉取其映像，并使用服务主体进行身份验证。
+在本文中，了解如何创建和配置具有注册表“拉取”权限的 Azure AD 服务主体。 然后，启动 Azure 容器实例 (ACI) 中的某个容器，以从专用注册表拉取其映像，并使用服务主体进行身份验证。
 
 ## <a name="when-to-use-a-service-principal"></a>何时使用服务主体
 
