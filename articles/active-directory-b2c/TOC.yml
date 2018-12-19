@@ -87,10 +87,22 @@ items:
     href: active-directory-b2c-reference-mfa.md
   - name: 标识体验框架
     items:
-    - name: 创建自定义策略
-      href: active-directory-b2c-get-started-custom.md
     - name: 使用 Application Insights 收集日志
       href: active-directory-b2c-troubleshoot-custom.md
+    - name: 配置用户输入
+      href: active-directory-b2c-configure-signup-self-asserted-custom.md
+    - name: 创建自定义策略
+      href: active-directory-b2c-get-started-custom.md
+    - name: 自定义 UI
+      href: active-directory-b2c-ui-customization-custom.md
+    - name: 动态自定义 UI
+      href: active-directory-b2c-ui-customization-custom-dynamic.md
+    - name: 自定义令牌
+      href: active-directory-b2c-reference-manage-sso-and-token-configuration.md
+    - name: 定义自定义属性
+      href: active-directory-b2c-create-custom-attributes-profile-edit-custom.md
+    - name: 启用“使我保持登录状态”
+      href: active-directory-b2c-reference-kmsi-custom.md
     - name: 集成 RESTful API
       items:
       - name: 验证用户输入
@@ -123,6 +135,10 @@ items:
       href: page-contract.md
     - name: 传递访问令牌
       href: idp-pass-through-custom.md
+    - name: 密码复杂性
+      href: active-directory-b2c-reference-password-complexity-custom.md
+    - name: 密码更改
+      href: active-directory-b2c-reference-password-change-custom.md
     - name: SAML 提供程序
       items:
       - name: ADFS
@@ -131,24 +147,6 @@ items:
         href: active-directory-b2c-setup-sf-app-custom.md
     - name: 跟踪用户行为
       href: active-directory-b2c-custom-guide-eventlogger-appins.md
-    - name: 用户流
-      items:
-      - name: 配置用户输入
-        href: active-directory-b2c-configure-signup-self-asserted-custom.md
-      - name: 自定义属性
-        href: active-directory-b2c-create-custom-attributes-profile-edit-custom.md
-      - name: 自定义 UI
-        href: active-directory-b2c-ui-customization-custom.md
-      - name: 动态自定义 UI
-        href: active-directory-b2c-ui-customization-custom-dynamic.md
-      - name: 自定义令牌
-        href: active-directory-b2c-reference-manage-sso-and-token-configuration.md
-      - name: 密码复杂性
-        href: active-directory-b2c-reference-password-complexity-custom.md
-      - name: 密码更改
-        href: active-directory-b2c-reference-password-change-custom.md
-      - name: 启用“使我保持登录状态”
-        href: active-directory-b2c-reference-kmsi-custom.md
     - name: 引用
       items:
       - name: 声明解析程序
@@ -326,9 +324,9 @@ items:
     href: active-directory-b2c-support.md
   - name: 视频
     href: https://azure.microsoft.com/documentation/videos/index/?services=active-directory-b2c
-ms.openlocfilehash: 80e90efcc500f04e3ec1f3e10c157c9b415f0eda
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: d61d6726d388fd7bf18f1bcbc168078afadd1a71
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53079069"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53579798"

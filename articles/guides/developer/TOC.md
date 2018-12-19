@@ -26,18 +26,18 @@
 
 # 示例
 ## Azure CLI
-### [Web 应用](https://docs.microsoft.com/azure/app-service/app-service-cli-samples)
+### [Web 应用](https://docs.microsoft.com/azure/app-service/samples-cli)
 ### [Linux VM](https://docs.microsoft.com/azure/virtual-machines/linux/cli-samples)
 ### [Windows VM](https://docs.microsoft.com/azure/virtual-machines/windows/cli-samples)
 ## Azure PowerShell
-### [Web 应用](https://docs.microsoft.com/azure/app-service/app-service-powershell-samples)
+### [Web 应用](https://docs.microsoft.com/azure/app-service/samples-powershell)
 ### [Linux VM](https://docs.microsoft.com/azure/virtual-machines/linux/powershell-samples)
 ### [Windows VM](https://docs.microsoft.com/azure/virtual-machines/windows/powershell-samples)
 
 # 概念
 ## [计费和订阅](https://docs.microsoft.com/azure/billing/billing-getting-started)
 ## [宿主比较](https://docs.microsoft.com/azure/app-service/choose-web-site-cloud-service-vm)
-## [什么是应用服务？](https://docs.microsoft.com/azure/app-service/app-service-web-overview)
+## [什么是应用服务？](https://docs.microsoft.com/azure/app-service/overview)
 ## 虚拟机
 ### [Linux VM](https://docs.microsoft.com/azure/virtual-machines/linux/overview)
 ### [Windows VM](https://docs.microsoft.com/azure/virtual-machines/windows/overview)
