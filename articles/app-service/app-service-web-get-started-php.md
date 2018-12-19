@@ -28,7 +28,7 @@ ms.locfileid: "42884958"
 > 本文将应用部署到 Windows 上的应用服务。 若要部署到基于 _Linux_ 的应用服务，请参阅[在基于 Linux 的应用服务中创建 PHP Web 应用](./containers/quickstart-php.md)。
 >
 
-[Azure Web 应用](app-service-web-overview.md)提供高度可缩放、自修补的 Web 托管服务。  本快速入门教程演示如何将 PHP 应用部署到 Azure Web 应用。 在 Cloud Shell 中使用 [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) 创建 Web 应用，并使用 Git 将 PHP 代码示例部署到 Web 应用。
+[Azure Web 应用](app-service-web-overview.md)提供高度可伸缩、自我修补的 Web 托管服务。  本快速入门教程演示如何将 PHP 应用部署到 Azure Web 应用。 在 Cloud Shell 中使用 [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) 创建 Web 应用，并使用 Git 将 PHP 代码示例部署到该 Web 应用。
 
 ![在 Azure 中运行应用的示例](media/app-service-web-get-started-php/hello-world-in-browser.png)
 
@@ -156,7 +156,7 @@ To https://<app_name>.scm.azurewebsites.net/<app_name>.git
 http://<app_name>.azurewebsites.net
 ```
 
-PHP 示例代码在 Azure 应用服务 Web 应用中运行。
+PHP 示例代码在 Azure 应用服务的 Web 应用中运行。
 
 ![在 Azure 中运行应用的示例](media/app-service-web-get-started-php/hello-world-in-browser.png)
 
