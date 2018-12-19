@@ -66,7 +66,7 @@ php -S localhost:8080
 
 ![本地运行应用的示例](media/app-service-web-get-started-php/localhost-hello-world-in-browser.png)
 
-在终端窗口中，按 **Ctrl+C** 关闭 内置的PHP Web 服务器。
+在终端窗口中，按 **Ctrl+C** 退出 Web 服务器。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
