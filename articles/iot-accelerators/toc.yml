@@ -228,7 +228,7 @@ items:
     - name: IoT 中心设备预配服务
       href: /azure/iot-dps
     - name: IoT 服务 SDK
-      href: /azure/iot-hub/iot-hub-devguide-sdks  azure-iot-service-sdks
+      href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks
     - name: 地图
       href: /azure/azure-maps
     - name: 时序见解
@@ -255,9 +255,9 @@ items:
     href: https://stackoverflow.com/questions/tagged/azure-iot-suite
   - name: 远程监视 V1
     href: https://docs.microsoft.com/previous-versions/azure/iot-suite/
-ms.openlocfilehash: 948cd45c2b971e2d743709b051eb5a36a7e818aa
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: 6d3683c125959281f4580de3a5180394a8482cd9
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53554956"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53603576"
