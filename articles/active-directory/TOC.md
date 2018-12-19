@@ -275,6 +275,7 @@
 ##### [配置用户预配时保存管理员凭据出现问题 - 库应用](manage-apps/application-provisioning-config-problem-storage-limit.md)
 ##### [未预配用户 - 库应用](manage-apps/application-provisioning-config-problem-no-users-provisioned.md)
 ##### [预配了错误的用户 - 库应用](manage-apps/application-provisioning-config-problem-wrong-users-provisioned.md)
+##### [SCIM 兼容性问题 - 非库应用](manage-apps/application-provisioning-config-problem-scim-compatibility.md)
 
 #### 单一登录
 ##### [选择方法](manage-apps/single-sign-on-modes.md)
@@ -321,10 +322,10 @@
 ## [故障排除](fundamentals/active-directory-troubleshooting-support-howto.md)
 
 ## 部署 Azure AD 概念证明 (PoC)
-### [PoC 演练手册：简介](active-directory-playbook-intro.md)
-### [PoC 演练手册：要素](active-directory-playbook-ingredients.md)
-### [PoC 演练手册：实现](active-directory-playbook-implementation.md)
-### [PoC 演练手册：构建基块](active-directory-playbook-building-blocks.md)
+### [PoC Playbook：简介](active-directory-playbook-intro.md)
+### [PoC Playbook：成分](active-directory-playbook-ingredients.md)
+### [PoC Playbook：实现](active-directory-playbook-implementation.md)
+### [PoC Playbook：构建基块](active-directory-playbook-building-blocks.md)
 
 # 引用
 ## [代码示例](https://azure.microsoft.com/resources/samples/?service=active-directory)

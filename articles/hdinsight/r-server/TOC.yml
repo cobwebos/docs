@@ -41,7 +41,7 @@ items:
     - name: 使用 Azure 存储
       href: ../hdinsight-hadoop-use-blob-storage.md
       maintainContext: true
-    - name: 使用 Azure Data Lake Store
+    - name: 使用 Azure Data Lake Storage
       href: ../hdinsight-hadoop-use-data-lake-store.md
       maintainContext: true
   - name: 使用 HDInsight 工具
@@ -190,7 +190,7 @@ items:
     - name: 上传 Apache Hadoop 作业的数据
       href: ../hdinsight-upload-data.md
       maintainContext: true
-    - name: 将多个 HDInsight 群集与 Data Lake Store 配合使用
+    - name: 将多个 HDInsight 群集与 Data Lake Storage 配合使用
       href: ../hdinsight-multiple-clusters-data-lake-store.md
       maintainContext: true
     - name: 使用 Apache Sqoop 导入和导出数据
@@ -337,9 +337,9 @@ items:
   - name: 适用于 HDInsight 的 Windows 工具
     href: ../hdinsight-hadoop-windows-tools.md
     maintainContext: true
-ms.openlocfilehash: fdf844f959d7832214795155c3af5c0cf3ec6a25
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: f9bf9d14d0a4124dd19dd76777226c0976ffc84d
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52495816"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53601349"
