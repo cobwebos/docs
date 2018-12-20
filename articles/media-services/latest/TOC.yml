@@ -12,20 +12,14 @@ items:
   expanded: true
 - name: 教程
   items:
-  - name: 上传、编码和流式处理
-    items:
-    - name: 使用 .NET
-      href: stream-files-tutorial-with-api.md
-    - name: 使用 REST
-      href: stream-files-tutorial-with-rest.md
-  - name: 实时流式处理
-    items:
-    - name: 使用 .NET Core
-      href: stream-live-tutorial-with-api.md
-  - name: 分析视频
-    items:
-    - name: 使用 .NET
-      href: analyze-videos-tutorial-with-api.md
+  - name: 对远程文件和流视频进行编码 – REST
+    href: stream-files-tutorial-with-rest.md
+  - name: 对上传的文件和流视频进行编码 – .NET
+    href: stream-files-tutorial-with-api.md
+  - name: 实时流 - .NET
+    href: stream-live-tutorial-with-api.md
+  - name: 分析视频 - .NET
+    href: analyze-videos-tutorial-with-api.md
 - name: 示例
   items:
   - name: Azure 代码示例
@@ -186,9 +180,9 @@ items:
     href: limits-quotas-constraints.md
   - name: 常见问题解答
     href: frequently-asked-questions.md
-ms.openlocfilehash: 9c42d463bc88ae936e0fbe965fd4039a716e3052
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: 49c15b2540b33a3f37f4f276b435ce3f4508b513
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 12/18/2018
-ms.locfileid: "53557166"
+ms.locfileid: "53582501"

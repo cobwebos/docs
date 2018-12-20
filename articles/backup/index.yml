@@ -1,24 +1,24 @@
 ### YamlMime:YamlDocument
+ms.openlocfilehash: ea96f7e3928e29f7d9c80d9d44b245953d102b04
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53652415"
 documentType: LandingData
 title: Azure 备份文档
 metadata:
   title: Azure 备份文档 - 教程和 API 参考 | Microsoft 文档
   description: 使用 Azure 备份可以备份本地服务器、虚拟机、虚拟化工作负荷、SQL 服务器、SharePoint 服务器等的数据。 使用快速入门、教程和示例了解如何备份与还原数据。
   services: backup
-  author: markgalioto
+  author: rayne-wiselman
   manager: carmonm
   ms.service: backup
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
   ms.date: 05/22/2018
-  ms.author: markgal
-  ms.openlocfilehash: b2907330477c62cce2ee5e9498cc4445580161a2
-  ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
-  ms.translationtype: HT
-  ms.contentlocale: zh-CN
-  ms.lasthandoff: 06/01/2018
-  ms.locfileid: "34606845"
+  ms.author: raynew
 abstract:
   description: 使用 Azure 备份保护本地服务器、虚拟机、虚拟化工作负荷、SQL 服务器、SharePoint 服务器等的数据。 使用快速入门、教程和示例了解如何备份与还原数据。
 sections:
