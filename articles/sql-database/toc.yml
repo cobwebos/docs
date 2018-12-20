@@ -199,7 +199,7 @@ items:
     items:
     - name: 安全概述
       href: sql-database-security-index.yml
-    - name: 安全概述
+    - name: 安全功能
       href: sql-database-security-overview.md
     - name: 高级威胁防护
       items:
@@ -680,9 +680,9 @@ items:
       href: sql-database-elastic-jobs-getting-started.md
     - name: 卸载弹性作业（已弃用）
       href: sql-database-elastic-jobs-uninstall.md
-ms.openlocfilehash: 6e00ce0b4e218342a5c8fc1f7894b215acb172ae
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: a33b66928e4c84f020856af1897b1bc40e351dc7
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53602233"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53654115"
