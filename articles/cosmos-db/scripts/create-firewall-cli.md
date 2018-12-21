@@ -1,17 +1,17 @@
 ---
-title: Azure CLI 脚本 - 为 Azure Cosmos DB 创建防火墙 | Microsoft Docs
+title: Azure CLI 脚本 - 为 Azure Cosmos DB 创建防火墙
 description: Azure CLI 脚本示例 - 为 Azure Cosmos DB 创建防火墙
 author: markjbrown
+ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: sample
 ms.date: 10/26/2018
-ms.author: mjbrown
-ms.openlocfilehash: b43fff02f247e557d018a74772ca115543d904bf
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 793fc68bfcd2d7afdc7a5a4b1916737889d27ba5
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51013031"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52955360"
 ---
 # <a name="azure-cosmos-db-create-a-firewall-using-azure-cli"></a>Azure Cosmos DB：使用 Azure CLI 创建防火墙
 

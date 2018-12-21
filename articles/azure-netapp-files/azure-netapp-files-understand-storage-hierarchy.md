@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 03/28/2018
 ms.author: b-juche
-ms.openlocfilehash: 6f5ed4e7ede9a098d69b7a40f44dd60f9b400472
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: fa498c39123e09c212466c900e6000c0138db467
+ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39010984"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53413092"
 ---
 # <a name="understand-the-storage-hierarchy-of-azure-netapp-files"></a>了解 Azure NetApp 文件的存储层次结构
 
@@ -35,17 +35,19 @@ ms.locfileid: "39010984"
 ## <a name="capacity_pools"></a>容量池
 
 - 容量池是按其预配的容量度量的。  
-- 该容量预配为你购买的固定 SKU 数（例如 4-TB 容量）。
+- 该容量预配为你购买的固定 SKU 数（例如 4-TiB 容量）。
+- 单个容量池的最小大小为 4 TiB，最大大小为 500 TiB。 
 - 容量池只能有一个服务级别。  
   目前，仅提供了高级服务级别。
-- 每个容量池仅属于一个 NetApp 帐户。  
+- 每个容量池可以仅属于一个 NetApp 帐户。 但是，你可以在一个 NetApp 帐户中拥有多个容量池。  
 - 容量池无法在 NetApp 帐户之间移动。   
   例如，在下面的[存储层次结构的概念图](#conceptual_diagram_of_storage_hierarchy)中，无法将容量池 1 从 NetApp 帐户 US East 移动到 NetApp 帐户 US West 2。  
 
 ## <a name="volumes"></a>卷
 
-- 卷是按逻辑容量消耗度量的，并且每个卷最大可以扩展到 100 TB。
+- 卷按逻辑容量消耗进行度量，并且是可缩放的。 单个卷的最小大小为 100 GiB，最大大小为 92 TiB。
 - 卷的容量消耗是依据其池的预配容量计数的。
+-   每个区域每个 Azure 订阅最多可以有 100 个卷。 
 - 每个卷只属于一个池，但一个池可以包含多个卷。 
 - 在同一 NetApp 帐户中，可以在池之间移动卷。    
   例如，在下面的[存储层次结构的概念图](#conceptual_diagram_of_storage_hierarchy)中，可以将卷从容量池 1 移动到容量池 2。
@@ -57,7 +59,4 @@ ms.locfileid: "39010984"
 
 ## <a name="next-steps"></a>后续步骤
 
-1. [创建 NetApp 帐户](azure-netapp-files-create-netapp-account.md)
-2. [设置容量池](azure-netapp-files-set-up-capacity-pool.md)
-3. [为 Azure NetApp 文件创建卷](azure-netapp-files-create-volumes.md)
-4. [为卷配置导出策略（可选）](azure-netapp-files-configure-export-policy.md)
+[注册 Azure NetApp 文件](azure-netapp-files-register.md)

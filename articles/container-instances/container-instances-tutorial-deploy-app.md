@@ -1,21 +1,21 @@
 ---
-title: Azure 容器实例教程 - 部署应用
-description: Azure 容器实例教程第 3 部分 - 部署应用程序
+title: 教程 - 将容器应用部署到 Azure 容器实例
+description: Azure 容器实例教程第 3 部分（共 3 部分）- 将容器应用程序部署到 Azure 容器实例
 services: container-instances
 author: dlepow
 ms.service: container-instances
 ms.topic: tutorial
 ms.date: 03/21/2018
 ms.author: danlep
-ms.custom: mvc
-ms.openlocfilehash: 9e8a72564151bea9194ef5180589fa8eae001df5
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.custom: seodec18, mvc
+ms.openlocfilehash: 54fcbe9adc8fbf4a8fba6eabbd7c2f8802fd933a
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52863714"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53191082"
 ---
-# <a name="tutorial-deploy-a-container-to-azure-container-instances"></a>教程：将容器部署到 Azure 容器实例
+# <a name="tutorial-deploy-a-container-application-to-azure-container-instances"></a>教程：将容器应用程序部署到 Azure 容器实例
 
 这是由三个部分组成的系列教程的最后一个教程。 在本系列教程的前几篇文章中，我们已[创建一个容器映像](container-instances-tutorial-prepare-app.md)并将其[推送到 Azure 容器注册表](container-instances-tutorial-prepare-acr.md)。 本文是本系列教程的最后一篇，介绍如何将容器部署到 Azure 容器实例。
 

@@ -13,12 +13,13 @@ ms.devlang: na
 ms.date: 11/13/2018
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 0bcff6e0cec234f17b0aaab9828602eb4a194d85
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.custom: seodec18
+ms.openlocfilehash: 3a84f9ed35bac7f56d4a6aa2af94d1c28e335b74
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52334204"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53093193"
 ---
 # <a name="tutorial-integrate-azure-key-vault-in-resource-manager-template-deployment"></a>教程：在资源管理器模板部署中集成 Azure Key Vault
 
@@ -81,7 +82,7 @@ ms.locfileid: "52334204"
 
 1. 选择下图登录到 Azure 并打开一个模板。 该模板将创建 Key Vault 和 Key Vault 机密。
 
-    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Farmtutorials.blob.core.windows.net%2Fcreatekeyvault%2FCreateKeyVault.json"><img src="./media/resource-manager-tutorial-use-key-vault/deploy-to-azure.png" /></a>
+    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Farmtutorials.blob.core.windows.net%2Fcreatekeyvault%2FCreateKeyVault.json"><img src="./media/resource-manager-tutorial-use-key-vault/deploy-to-azure.png" alt="deploy to azure"/></a>
 
 2. 选择或输入以下值。  输入值后不要选择“购买”。
 
@@ -94,7 +95,7 @@ ms.locfileid: "52334204"
     * **租户 ID**：模板函数会自动检索租户 ID。不要更改默认值。
     * **AD 用户 ID**：输入在上一过程中检索到的 Azure AD 用户对象 ID。
     * **机密名称**：默认名称为 **vmAdminPassword**。 如果更改机密名称，则需要在部署虚拟机时更新机密名称。
-    * **机密值**：输入机密。  机密是用于登录虚拟机的密码。 建议使用在上一过程中创建的生成密码。
+    * **机密值**：输入你的机密。  机密是用于登录虚拟机的密码。 建议使用在上一过程中创建的生成密码。
     * **我同意上述条款和条件**：选中。
 3. 选择顶部的“编辑参数”以查看模板。
 4. 浏览到模板 JSON 文件的第 28 行。 这是 Key Vault 资源的定义。

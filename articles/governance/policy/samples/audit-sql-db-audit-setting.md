@@ -1,5 +1,5 @@
 ---
-title: Azure Policy 示例 - 审核 SQL DB 级别审核设置
+title: 示例 - 审核 SQL DB 级别审核设置
 description: 如果 SQL 数据库审核设置与指定的设置不匹配，则此示例策略将对这些数据库设置进行审核。
 services: azure-policy
 author: DCtheGeek
@@ -8,13 +8,12 @@ ms.service: azure-policy
 ms.topic: sample
 ms.date: 09/18/2018
 ms.author: dacoulte
-ms.custom: mvc
-ms.openlocfilehash: 22755f2be4a335a8527fb4723aa329e3048b9f5c
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 24313c83809734367459937d2b02441896b6a5fb
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46970730"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53315309"
 ---
 # <a name="audit-sql-db-level-audit-setting"></a>审核 SQL DB 级别审核设置
 

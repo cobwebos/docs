@@ -1,5 +1,5 @@
 ---
-title: '教程：Apache Kafka 与 Apache Storm on HDInsight - Azure '
+title: 教程：使用 Apache Storm 通过 Apache Kafka 读取和写入数据 - Azure HDInsight
 description: 了解如何使用 Apache Storm 和 Apache Kafka on HDInsight 创建流式处理管道。 本教程使用 KafkaBolt 和 KafkaSpout 组件来流式传输 Kafka 的数据。
 services: hdinsight
 author: hrasheed-msft
@@ -8,15 +8,15 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: tutorial
-ms.date: 05/21/2018
-ms.openlocfilehash: 74cdaed91624e9d0602ce6a85ccc5cd341b9519e
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.date: 12/06/2018
+ms.openlocfilehash: 1c2a61ba936fa86bb3acb560909b29cda762693c
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52496626"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53166568"
 ---
-# <a name="tutorial-use-apache-storm-with-apache-kafka-on-hdinsight"></a>教程：将 Apache Storm 与 Apache Kafka on HDInsight 结合使用
+# <a name="tutorial-use-apache-storm-with-apache-kafka-on-hdinsight"></a>教程：将 Apache Storm 与 Apache Kafka on HDInsight 配合使用
 
 本教程说明如何使用 [Apache Storm](https://storm.apache.org/) 拓扑并通过 [Apache Kafka](https://kafka.apache.org/) on Azure HDInsight 来读取和写入数据。 本教程还说明如何将数据保存到 Storm 群集上的 [Apache Hadoop HDFS](https://hadoop.apache.org/docs/r1.2.1/hdfs_design.html) 兼容存储。
 
@@ -73,7 +73,7 @@ Apache Storm 提供了多个组件以便与 Apache Kafka 配合使用。 此教�
 
 * `org.apache.storm.kafka.bolt.KafkaBolt`：此组件将数据写入 Kafka。 此组件依赖于下列组件：
 
-    * `org.apache.storm.kafka.bolt.selector.DefaultTopicSelector`：描述被写入的主题。
+    * `org.apache.storm.kafka.bolt.selector.DefaultTopicSelector`：描述写入到的主题。
 
     * `org.apache.kafka.common.serialization.StringSerializer`：配置 Bolt 以将数据串行化为字符串值。
 
@@ -137,13 +137,13 @@ Apache Storm 提供了多个组件以便与 Apache Kafka 配合使用。 此教�
 
 * `${kafka.topic}`：拓扑读取/写入的 Kafka 主题的名称。
 
-* `${kafka.broker.hosts}`：Kafka 中转站运行时所在的主机。 写入 Kafka 时，KafkaBolt 将使用中转站信息。
+* `${kafka.broker.hosts}`：运行 Kafka 中转站的主机。 写入 Kafka 时，KafkaBolt 将使用中转站信息。
 
-* `${kafka.zookeeper.hosts}`：Kafka 群集中 Zookeeper 运行时所在的主机。
+* `${kafka.zookeeper.hosts}`：Kafka 群集中运行 Zookeeper 的主机。
 
 * `${hdfs.url}`：HDFSBolt 组件的文件系统 URL。 指示是否已将数据写入 Azure 存储帐户或 Azure Data Lake Store。
 
-* `${hdfs.write.dir}`：写入数据的目录。
+* `${hdfs.write.dir}`：数据写入到的目录。
 
 有关 Flux 拓扑的详细信息，请参阅 [https://storm.apache.org/releases/1.1.2/flux.html](https://storm.apache.org/releases/1.1.2/flux.html)。
 

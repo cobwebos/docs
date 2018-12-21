@@ -14,14 +14,17 @@ ms.tgt-pltfrm: multiple
 ms.workload: na
 ms.date: 08/16/2018
 ms.author: danlep
-ms.openlocfilehash: 01281c0328fab85814ff93c73f9ea25e0d4c1b08
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ROBOTS: NOINDEX
+ms.openlocfilehash: 41a3a801214ff00c01397034e26fde6946ab97f0
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50232794"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53407807"
 ---
 # <a name="cli-example-create-a-batch-ai-cluster-using-a-cluster-configuration-file"></a>CLI 示例：使用群集配置文件创建 Batch AI 群集
+
+[!INCLUDE [batch-ai-retiring](../../../includes/batch-ai-retiring.md)]
 
 此脚本展示了如何使用 JSON 配置文件指定 Batch AI 群集的设置。 请为 `az batchai cluster create` 使用这些设置而非使用相应的命令行参数。 当需要在群集节点上装载多个文件系统或者希望在多个群集中使用相同的配置时，配置文件非常有用。
 

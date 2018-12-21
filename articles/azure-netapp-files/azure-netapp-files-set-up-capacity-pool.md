@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 03/28/2018
 ms.author: b-juche
-ms.openlocfilehash: 0e9203f5b4e2a9043e242b804c82017cf6fc3ee1
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 55a1d16ce1617ecf7bc28c7c62de8557ceeea311
+ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39010797"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53412905"
 ---
 # <a name="set-up-a-capacity-pool"></a>设置容量池
 设置容量池可以在其中创建卷。  
@@ -29,7 +29,7 @@ ms.locfileid: "39010797"
 
 [创建 NetApp 帐户](azure-netapp-files-create-netapp-account.md)
 
-## <a name="steps"></a>步骤 
+## <a name="steps"></a>Steps 
 
 1. 转到你的 NetApp 帐户的管理边栏选项卡，从导航窗格中选择“容量池”。
 
@@ -55,6 +55,6 @@ ms.locfileid: "39010797"
 
 ## <a name="next-steps"></a>后续步骤 
 
-1. [为 Azure NetApp 文件创建卷](azure-netapp-files-create-volumes.md)
-2. [为卷配置导出策略（可选）](azure-netapp-files-configure-export-policy.md)
+[将子网委托给 Azure NetApp 文件](azure-netapp-files-delegate-subnet.md)
+
 

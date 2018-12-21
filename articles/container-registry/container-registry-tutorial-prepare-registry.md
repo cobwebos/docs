@@ -1,5 +1,5 @@
 ---
-title: Azure 容器注册表教程 - 准备异地复制的 Azure 容器注册表
+title: 教程 - 在 Azure 中创建异地复制的 Docker 注册表
 description: 创建 Azure 容器注册表，配置异地复制，准备 Docker 映像，并将该映像部署到注册表。 由三个部分构成的系列教程的第一部分。
 services: container-registry
 author: dlepow
@@ -7,13 +7,13 @@ ms.service: container-registry
 ms.topic: tutorial
 ms.date: 04/30/2017
 ms.author: danlep
-ms.custom: mvc
-ms.openlocfilehash: 9d1371dc02f37889b15b3448d82c62d76472f847
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.custom: seodec18, mvc
+ms.openlocfilehash: db00672c7cbb39002c4a40eb7397af76e4c8189a
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48854297"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53261307"
 ---
 # <a name="tutorial-prepare-a-geo-replicated-azure-container-registry"></a>教程：准备异地复制的 Azure 容器注册表
 

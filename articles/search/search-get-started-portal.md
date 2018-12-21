@@ -1,5 +1,5 @@
 ---
-title: 有关如何使用门户在 Azure 搜索中进行索引编制、查询和筛选的教程 | Microsoft Docs
+title: 有关如何在 Azure 门户中编制索引、查询和筛选的教程 - Azure 搜索
 description: 本教程介绍如何使用 Azure 门户和预定义的示例数据在 Azure 搜索中生成索引。 探索全文搜索、筛选器、分面 (Facet)、模糊搜索、地域搜索等功能。
 author: HeidiSteen
 manager: cgronlun
@@ -9,14 +9,15 @@ ms.service: search
 ms.topic: tutorial
 ms.date: 07/10/2018
 ms.author: heidist
-ms.openlocfilehash: aac579da3aaf6ab1507bbc12d79a5b183a82d665
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.custom: seodec2018
+ms.openlocfilehash: d8b95aaab99fc4f0aa5df21374d6ec023f869b7d
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39592749"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53314017"
 ---
-# <a name="tutorial-use-built-in-tools-for-azure-search-indexing-and-queries"></a>教程：使用内置工具在 Azure 搜索中进行索引编制和查询
+# <a name="tutorial-use-built-in-portal-tools-for-azure-search-indexing-and-queries"></a>教程：使用内置门户工具在 Azure 搜索中进行索引编制和查询
 
 若要快速查看 Azure 搜索概念并增强对其的理解，可以使用 Azure 门户的 Azure 搜索服务页中提供的内置工具。 这些工具可能不提供 .NET 和 REST API 的完整功能。 但是，这些向导和编辑器以无代码的方式对 Azure 搜索进行了简介，让你可以立刻针对示例数据集编写有意思的查询。
 

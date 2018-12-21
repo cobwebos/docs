@@ -9,12 +9,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 3/12/2018
-ms.openlocfilehash: a162d0c19bef28e6e4566d39c2dc3b82a87a4aa9
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 6fef56d780fe664e79f66fa23be526aec71d7e7b
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51242086"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52971158"
 ---
 # <a name="use-an-azure-marketplace-image-to-create-a-terraform-linux-virtual-machine-with-managed-identities-for-azure-resources"></a>结合 Azure 资源的托管标识使用 Azure 市场映像创建 Terraform Linux 虚拟机
 
@@ -37,7 +37,7 @@ ms.locfileid: "51242086"
 
 3. 在 Terraform 详细信息选项卡的右下角选择“创建”按钮。
 
-    ![创建 Terraform 虚拟机](media\terraformmsi.png)
+    ![创建 Terraform 虚拟机](media/terraformmsi.png)
 
 4. 以下部分提供在向导中创建 Terraform Linux 虚拟机所要执行的每个步骤的输入。 以下部分列出了配置每个步骤所需的输入。
 
@@ -56,7 +56,7 @@ ms.locfileid: "51242086"
 
 2. **其他设置**
 
-   * **大小**：虚拟机的大小。 
+   * **大小**：虚拟机大小。 
    * **VM 磁盘类型**：SSD 或 HDD。
 
 3. **Terraform 摘要**

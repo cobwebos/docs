@@ -1,5 +1,6 @@
 ---
-title: 教程：使用 Azure 机器学习服务定型图像分类模型
+title: 图像分类教程：训练模型
+titleSuffix: Azure Machine Learning service
 description: 本教程介绍如何使用 Azure 机器学习服务在 Python Jupyter notebook 中使用 scikit-learn 训练映像分类模型。 本教程是由两个部分构成的系列教程的第一部分。
 services: machine-learning
 ms.service: machine-learning
@@ -9,14 +10,15 @@ author: hning86
 ms.author: haining
 ms.reviewer: sgilley
 ms.date: 12/04/2018
-ms.openlocfilehash: 8d3dd87adaad168d193b53507dbbb40efab57810
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.custom: seodec18
+ms.openlocfilehash: a2208e160d641d762b57668cdc635fe877677ff5
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52879479"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53310107"
 ---
-# <a name="tutorial-1-train-an-image-classification-model-with-azure-machine-learning-service"></a>教程 #1：使用 Azure 机器学习服务定型图像分类模型
+# <a name="tutorial-train-an-image-classification-model-with-azure-machine-learning-service"></a>教程：使用 Azure 机器学习服务定型图像分类模型
 
 在本教程中，你将在本地和远程计算资源上定型机器学习模型。 将在 Python Jupyter Notebook中使用 Azure 机器学习服务的定型和部署工作流。  然后可以将 Notebook 用作模板，使用你自己的数据来定型机器学习。 本教程是由两个部分构成的系列教程的第一部分。  
 
@@ -33,7 +35,7 @@ ms.locfileid: "52879479"
 
 稍后，你将在[本教程的第二部分](tutorial-deploy-models-with-aml.md)学习如何选择模型并对其进行部署。 
 
-如果还没有 Azure 订阅，可以在开始前创建一个[免费帐户](https://aka.ms/AMLfree)。
+如果还没有 Azure 订阅，可以在开始前创建一个免费帐户。 立即试用 [Azure 机器学习服务免费或付费版](http://aka.ms/AMLFree)。
 
 >[!NOTE]
 > 本文中的代码已使用 Azure 机器学习 SDK 版本 1.0.2 进行测试
@@ -382,15 +384,15 @@ run
 
 下面是等待时发生的情况：
 
-- 映像创建：将创建与估算器指定的 Python 环境相匹配的 Docker 映像。 映像将上传到工作区。 创建和上传映像需要大约 5 分钟。 
+- **映像创建**：将创建与估算器指定的 Python 环境相匹配的 Docker 映像。 映像将上传到工作区。 创建和上传映像需要大约 5 分钟。 
 
   此阶段针对每个 Python 环境发生一次，因为容器已缓存用于后续运行。  映像创建期间，日志流式传输到运行历史记录。 可以使用这些日志监视映像创建进度。
 
-- 缩放：如果远程群集需要比当前可用的节点更多的节点来执行运行，则会自动添加其他节点。 缩放通常需要大约 5 分钟。
+- **缩放**：如果远程群集需要比当前可用的节点更多的节点来执行运行，则会自动添加其他节点。 缩放通常需要大约 5 分钟。
 
-- 运行：在此阶段，将所需的脚本和文件发送到计算目标，装载/复制数据存储，然后运行 entry_script。 运行作业时，stdout 和 ./logs 目录将流式传输到运行历史记录。 可以使用这些日志监视运行进度。
+- **运行**：在此阶段，将所需的脚本和文件发送到计算目标，装载/复制数据存储，然后运行 entry_script。 运行作业时，stdout 和 ./logs 目录将流式传输到运行历史记录。 可以使用这些日志监视运行进度。
 
-- 后期处理：运行的 /outputs 目录将复制到工作区中的运行历史记录，以便可以访问这些结果。
+- **后期处理**：运行的 /outputs 目录将复制到工作区中的运行历史记录，以便可以访问这些结果。
 
 
 可以通过多种方式查看正在运行的作业的进度。 本教程使用 Jupyter 小组件以及 `wait_for_completion` 方法。 

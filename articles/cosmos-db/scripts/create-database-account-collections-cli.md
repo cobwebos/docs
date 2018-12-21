@@ -1,22 +1,22 @@
 ---
-title: Azure CLI 脚本 - 创建 Azure Cosmos DB SQL API 帐户、数据库和容器 | Microsoft Docs
+title: Azure CLI 脚本 - 创建 Azure Cosmos DB SQL API 帐户、数据库和容器
 description: Azure CLI 脚本示例 - 创建 Azure Cosmos DB SQL API 帐户、数据库和容器
 author: markjbrown
+ms.author: mjbrown
 ms.service: cosmos-db
 ms.component: cosmosdb-sql
 ms.topic: sample
 ms.date: 10/26/2018
-ms.author: mjbrown
-ms.openlocfilehash: b38c836efce9f0bd2e29dcfa8c88f6894cf29b38
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 0a39786d2ccc8b0b57f539b10ee12d7b55bba381
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51016363"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52964588"
 ---
 # <a name="azure-cosmos-db-create-a-sql-api-account-using-cli"></a>Azure Cosmos DB：使用 CLI 创建 SQL API 帐户
 
-此示例 CLI 脚本创建了一个 Azure Cosmos DB SQL API 帐户、数据库和容器。  
+此示例 CLI 脚本创建一个 Azure Cosmos DB SQL API 帐户、数据库和容器。  
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 

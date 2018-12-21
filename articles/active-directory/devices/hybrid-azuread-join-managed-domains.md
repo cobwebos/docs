@@ -16,14 +16,14 @@ ms.topic: tutorial
 ms.date: 11/01/2018
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: 7061776ba5325a333033d0f272de3b2663b44351
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.openlocfilehash: b8d45e72e15ff86b53f7355634e8f197b94260bd
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52887791"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53435423"
 ---
-# <a name="tutorial-configure-hybrid-azure-active-directory-join-for-managed-domains"></a>教程：为托管域配置混合 Azure Active Directory 联接
+# <a name="tutorial-configure-hybrid-azure-active-directory-join-for-managed-domains"></a>教程：为托管域配置混合 Azure Active Directory 加入
 
 与用户类似，设备将成为要保护的另一标识，并且也用于随时保护资源和位置。 为此，可通过下述某一方法将设备的标识引入 Azure AD：
 
@@ -53,7 +53,11 @@ ms.locfileid: "52887791"
 -  [如何控制设备的混合 Azure AD 加入](hybrid-azuread-join-control.md)
   
 
-要配置本文中的方案，需要安装[最新版本的 Azure AD Connect](https://www.microsoft.com/download/details.aspx?id=47594) (1.1.819.0 或更高版本)。 
+要配置本文中的方案，需具备以下项：
+
+- 架构级别为 85 或更高级别的本地 Active Directory (AD)。 有关详细信息，请参阅[升级 Active Directory 架构](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-device-based-conditional-access-on-premises#upgrade-your-active-directory-schema)。
+
+- 要安装的[最新版本的 Azure AD Connect](https://www.microsoft.com/download/details.aspx?id=47594)（1.1.819.0 或更高版本）。 
 
 验证 Azure AD Connect 是否已将要加入混合 Azure AD 的设备的计算机对象同步到 Azure AD。 如果这些计算机对象属于特定组织单位 (OU)，则也需要在 Azure AD connect 中配置这些 OU 以进行同步。
 
@@ -153,7 +157,7 @@ ms.locfileid: "52887791"
 
 
     
-必须将以下策略设置为“所有”：“用户可以向 Azure AD 注册其设备”
+以下策略必须设置为 **All**：**用户可以向 Azure AD 注册其设备**
 
 ![注册设备](media/hybrid-azuread-join-managed-domains/23.png)
 
@@ -172,7 +176,7 @@ ms.locfileid: "52887791"
 
 ### <a name="configure-seamless-sso"></a>配置无缝 SSO
 
-若要在使用直通身份验证 (PTA) 或密码哈希同步 (PHS) 作为 Azure AD 云身份验证方法的托管域中成功完成 Windows 下层设备的混合 Azure AD 联接 ，还必须[配置无缝 SSO](https://docs.microsoft.com/en-us/azure/active-directory/hybrid/how-to-connect-sso-quick-start#step-2-enable-the-feature)。 
+若要在使用直通身份验证 (PTA) 或密码哈希同步 (PHS) 作为 Azure AD 云身份验证方法的托管域中成功完成 Windows 下层设备的混合 Azure AD 联接 ，还必须[配置无缝 SSO](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sso-quick-start#step-2-enable-the-feature)。 
 
 
 ### <a name="control-windows-down-level-devices"></a>控制 Windows 下层设备 

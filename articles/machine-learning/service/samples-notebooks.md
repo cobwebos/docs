@@ -1,5 +1,6 @@
 ---
-title: Jupyter 笔记本中的 Azure 机器学习服务教程
+title: 示例 Jupyter Notebook
+titleSuffix: Azure Machine Learning service
 description: 找到并使用示例 Jupyter 笔记本，以便在 Python 中探索 Azure 机器学习服务。
 services: machine-learning
 ms.service: machine-learning
@@ -9,12 +10,13 @@ author: sdgilley
 ms.author: sgilley
 ms.reviewer: sgilley
 ms.date: 12/04/2018
-ms.openlocfilehash: 5ec010d6e0539e9ba316b48dc02110dc19e4b13e
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.custom: seodec18
+ms.openlocfilehash: 0d74f731d0a7eca25238344e36838dc6c806c788
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52883662"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53434522"
 ---
 # <a name="use-jupyter-notebooks-to-explore-azure-machine-learning-service"></a>使用 Jupyter 笔记本探索 Azure 机器学习服务
 
@@ -27,7 +29,7 @@ ms.locfileid: "52883662"
 
 完成 [Azure 机器学习 Python 快速入门](quickstart-get-started.md)，以便创建工作区并启动 Azure Notebooks。
 
-## <a name="try-azure-notebooks-free-jupyter-notebooks-in-the-cloud"></a>试用 Azure Notebooks：云中的免费 Jupyter 笔记本
+## <a name="try-azure-notebooks-free-jupyter-notebooks-in-the-cloud"></a>试用 Azure Notebook：云中免费的 Jupyter Notebook
 
 Azure Notebooks 的入门很容易！ 已在 Azure Notebooks 上安装和配置[用于 Python 的 Azure 机器学习 SDK](https://aka.ms/aml-sdk)。 安装和未来的更新通过 Azure 服务自动管理。
   
@@ -96,7 +98,7 @@ Azure Notebooks 的入门很容易！ 已在 Azure Notebooks 上安装和配置[
    >[!NOTE]
    >可以使用现有的 conda，只要它是 4.4.10 或更高版本即可。 使用 `conda -V` 来显示版本。 可以使用 `conda update conda` 命令来更新 conda 版本。 无需专门安装 mini-conda。
 
-1. 从 [Github](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning
+1. 从 [GitHub](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning
 ) 下载 zip 格式的示例笔记本，将内容解压缩到本地目录。 自动化机器学习笔记本在 `how-to-use-azureml/automated-machine-learning` 文件夹中。
 
 1. 设置新的 Conda 环境。 
@@ -114,9 +116,10 @@ Azure Notebooks 的入门很容易！ 已在 Azure Notebooks 上安装和配置[
       + 配置小组件
       + 启动 Jupyter 笔记本
       
-      脚本采用 conda 环境名称作为可选参数。 默认的 conda 环境名称为 `azure_automl`。 具体的命令取决于操作系统。 
+   >[!NOTE]
+   > 脚本采用 conda 环境名称作为可选参数。 默认的 conda 环境名称为 `azure_automl`。 具体的命令取决于操作系统。 如果要创建新环境或升级到新版本，这将非常有用。 例如，可以使用“automl_setup.cmd azure_automl_sandbox”来创建环境名称 azure_automl_sandbox。 
       
-      脚本完成后，会在浏览器中看到一个 Jupyter 笔记本主页。
+1. 脚本完成后，会在浏览器中看到一个 Jupyter 笔记本主页。
 
 1. 导航到保存笔记本的路径。 
 

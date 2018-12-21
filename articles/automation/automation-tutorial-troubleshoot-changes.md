@@ -7,16 +7,16 @@ ms.component: change-inventory-management
 keywords: 更改, 跟踪, 自动化
 author: jennyhunter-msft
 ms.author: jehunte
-ms.date: 11/01/2018
+ms.date: 12/05/2018
 ms.topic: tutorial
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: e4ea8f92a562ea4bc90df98d6e459377b9886777
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 1df3fcad8a30b0d79f40aecc353684b7356fe061
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52844900"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53190010"
 ---
 # <a name="troubleshoot-changes-in-your-environment"></a>排查环境中的更改错误
 
@@ -102,7 +102,7 @@ ConfigurationChange
 |已启用     | 确定是否应用了设置        |
 |项名称     | 要跟踪的文件的友好名称        |
 |组     | 一个组名，用于对文件进行逻辑分组        |
-|Windows 注册表项   | 用于查看文件的路径，例如“HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders\Common Startup”      |
+|Windows 注册表项   | 用于查看文件的路径，例如：“HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders\Common Startup”      |
 
 ### <a name="add-a-windows-file"></a>添加 Windows 文件
 
@@ -117,7 +117,7 @@ ConfigurationChange
 |组     | 一个组名，用于对文件进行逻辑分组        |
 |输入路径     | 用于查看文件的路径，例如：“c:\temp\\\*.txt”<br>还可以使用环境变量，例如“%winDir%\System32\\\*.*”         |
 |递归     | 在查找要跟踪的项时，确定是否使用递归。        |
-|上传所有设置的文件内容| 针对已跟踪的更改启用或关闭文件内容上传功能。 可用选项：“True”或“False”。|
+|上传所有设置的文件内容| 针对已跟踪的更改启用或关闭文件内容上传功能。 可用选项：**True** 或 **False**。|
 
 ### <a name="add-a-linux-file"></a>添加 Linux 文件
 
@@ -135,7 +135,7 @@ ConfigurationChange
 |递归     | 在查找要跟踪的项时，确定是否使用递归。        |
 |使用 Sudo     | 此设置确定在检查该项时是否使用 Sudo。         |
 |链接     | 此设置确定在遍历目录时如何处理符号链接。<br> **忽略** - 忽略符号链接，不包括引用的文件/目录<br>**追随** - 在递归期间追随符号链接，并且包括引用的文件/目录<br>**管理** - 追随符号链接并允许修改返回内容的处置方式      |
-|上传所有设置的文件内容| 针对已跟踪的更改启用或关闭文件内容上传功能。 可用选项：“True”或“False”。|
+|上传所有设置的文件内容| 针对已跟踪的更改启用或关闭文件内容上传功能。 可用选项：**True** 或 **False**。|
 
    > [!NOTE]
    > 不建议使用“管理”链接选项。 不支持文件内容检索。
@@ -177,12 +177,11 @@ ConfigurationChange
 
 若要为已停止的服务添加警报，请在 Azure 门户中转至“监视”。 在“共享服务”下，选择“警报”，并单击“+ 新建警报规则”
 
-在“1. 定义警报条件”下，单击“+ 选择目标”。 在“按资源类型筛选”下，选择“Log Analytics”。 选择 Log Analytics 工作区，然后选择“完成”。
+单击“选择”以选择资源。 在“选择资源”页上，从“按资源类型筛选”下拉列表中选择“Log Analytics”。 选择 Log Analytics 工作区，然后选择“完成”。
 
 ![选择资源](./media/automation-tutorial-troubleshoot-changes/select-a-resource.png)
 
-选择“+ 添加条件”。
-在“配置信号逻辑”下的表中选择“自定义日志搜索”。 在“搜索查询”文本框中输入以下查询：
+在“配置信号逻辑”页上单击“添加条件”，在表中选择“自定义日志搜索”。 在“搜索查询”文本框中输入以下查询：
 
 ```loganalytics
 ConfigurationChange | where ConfigChangeType == "WindowsServices" and SvcName == "W3SVC" and SvcState == "Stopped" | summarize by Computer
@@ -194,11 +193,9 @@ ConfigurationChange | where ConfigChangeType == "WindowsServices" and SvcName ==
 
 ![配置信号逻辑](./media/automation-tutorial-troubleshoot-changes/configure-signal-logic.png)
 
-在“2. 定义警报详细信息“下，下，输入警报的名称和说明。 将“严重性”设置为“信息(严重性 2)”、“警告(严重性 1)”或“关键(严重性 0)”。
+在“操作组”下，选择“新建”。 操作组是可以在多个警报中使用的一组操作。 这些操作可能包括但不限于电子邮件通知、Runbook、Webhook 以及其他操作。 若要了解有关操作组的详细信息，请参阅[创建和管理操作组](../azure-monitor/platform/action-groups.md)。
 
-![定义警报详细信息](./media/automation-tutorial-troubleshoot-changes/define-alert-details.png)
-
-在“3. 定义操作组”下，选择“新建操作组”。 操作组是可以在多个警报中使用的一组操作。 这些操作可能包括但不限于电子邮件通知、Runbook、Webhook 以及其他操作。 若要了解有关操作组的详细信息，请参阅[创建和管理操作组](../monitoring-and-diagnostics/monitoring-action-groups.md)。
+在“警报详细信息”下，输入警报的名称和说明。 将“严重性”设置为“信息(严重性 2)”、“警告(严重性 1)”或“关键(严重性 0)”。
 
 在“操作组名称”框中输入警报的名称和一个短名称。 使用此组发送通知时，短名称用来代替完整的操作组名称。
 

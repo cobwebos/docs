@@ -1,5 +1,5 @@
 ---
-title: Azure 容器服务教程 - 缩放应用程序
+title: （已弃用）Azure 容器服务教程 - 缩放应用程序
 description: Azure 容器服务教程 - 缩放应用程序
 services: container-service
 author: dlepow
@@ -9,16 +9,19 @@ ms.topic: tutorial
 ms.date: 09/14/2017
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 792d9b1409b9571474f47da4940724df7a764d82
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: b16682535e7311648e832286e1e876ee0e694712
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39429876"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52993073"
 ---
-# <a name="scale-kubernetes-pods-and-kubernetes-infrastructure"></a>缩放 Kubernetes Pod 和 Kubernetes 基础结构
+# <a name="deprecated-scale-kubernetes-pods-and-kubernetes-infrastructure"></a>（已弃用）缩放 Kubernetes Pod 和 Kubernetes 基础结构
 
-[!INCLUDE [aks-preview-redirect.md](../../../includes/aks-preview-redirect.md)]
+> [!TIP]
+> 有关使用 Azure Kubernetes 服务的此教程的更新版本，请参阅[教程：在 Azure Kubernetes 服务 (AKS) 中缩放应用程序](../../aks/tutorial-kubernetes-scale.md)。
+
+[!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
 如果已按照教程执行，则你在 Azure 容器服务中具有工作 Kubernetes 群集，并且部署了 Azure 投票应用。 
 

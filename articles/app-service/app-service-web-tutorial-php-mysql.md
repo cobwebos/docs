@@ -1,5 +1,5 @@
 ---
-title: 在 Azure 中构建 PHP 和 MySQL Web 应用 | Microsoft Docs
+title: 使用 MySQL 生成 PHP 应用 - Azure 应用服务 | Microsoft Docs
 description: 了解如何创建一个可在 Azure 中运行的 PHP 应用，并将其连接到 MySQL 数据库。
 services: app-service\web
 documentationcenter: php
@@ -14,13 +14,13 @@ ms.devlang: php
 ms.topic: tutorial
 ms.date: 11/15/2018
 ms.author: cephalin
-ms.custom: mvc
-ms.openlocfilehash: 9a1468c27e668663ca9079f5f1c9e5e97e51d2d5
-ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
+ms.custom: seodec18
+ms.openlocfilehash: a20373e43780cea10e550ae968deb2a8720b9a9f
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2018
-ms.locfileid: "52291277"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53251668"
 ---
 # <a name="tutorial-build-a-php-and-mysql-web-app-in-azure"></a>教程：在 Azure 中构建 PHP 和 MySQL Web 应用
 
@@ -49,7 +49,7 @@ ms.locfileid: "52291277"
 完成本教程：
 
 * [安装 Git](https://git-scm.com/)
-* [安装 PHP 5.6.4 或更高版本](http://php.net/downloads.php)
+* [安装 PHP 5.6.4 或更高版本](https://php.net/downloads.php)
 * [安装 Composer](https://getcomposer.org/doc/00-intro.md)
 * 启用 Laravel 所需的以下 PHP 扩展：OpenSSL、PDO-MySQL、Mbstring、Tokenizer、XML
 * [安装并启动 MySQL](https://dev.mysql.com/doc/refman/5.7/en/installing.html) 
@@ -66,7 +66,7 @@ ms.locfileid: "52291277"
 mysql -u root -p
 ```
 
-当系统提示输入密码时，请输入 `root` 帐户的密码。 如果不记得自己的 root 帐户密码，请参阅 [MySQL：如何重置 Root 密码](https://dev.mysql.com/doc/refman/5.7/en/resetting-permissions.html)。
+当系统提示输入密码时，请输入 `root` 帐户的密码。 如果不记得自己的 Root 帐户密码，请参阅 [MySQL：如何重置 Root 密码](https://dev.mysql.com/doc/refman/5.7/en/resetting-permissions.html)。
 
 如果命令成功运行，则表示 MySQL 服务器正在运行。 否则，请确保遵循 [MySQL 安装后步骤](https://dev.mysql.com/doc/refman/5.7/en/postinstallation.html)启动本地 MySQL 服务器。
 
@@ -206,7 +206,7 @@ az mysql server firewall-rule create --name allAzureIPs --server <mysql_server_n
 ```
 
 > [!TIP] 
-> 甚至可以让防火墙规则更严格，即[只使用应用所使用的出站 IP 地址](app-service-ip-addresses.md#find-outbound-ips)。
+> 你甚至可以让防火墙规则更严格，即[只使用应用所使用的出站 IP 地址](app-service-ip-addresses.md#find-outbound-ips)。
 >
 
 在 Cloud Shell 中再次运行该命令（将 *\<your_ip_address>* 替换为[你的本地 IPv4 IP 地址](http://www.whatsmyip.org/)），以便从本地计算机进行访问。
@@ -598,9 +598,9 @@ az webapp log tail --name <app_name> --resource-group myResourceGroup
 若要随时停止日志流式处理，请键入 `Ctrl`+`C`。
 
 > [!TIP]
-> PHP 应用程序可以使用标准 [error_log()](http://php.net/manual/function.error-log.php) 输出到控制台。 示例应用程序在 _app/Http/routes.php_ 中使用此方法。
+> PHP 应用程序可以使用标准 [error_log()](https://php.net/manual/function.error-log.php) 输出到控制台。 示例应用程序在 _app/Http/routes.php_ 中使用此方法。
 >
-> 作为一种 Web 框架，[Laravel 使用 Monolog](https://laravel.com/docs/5.4/errors) 作为日志记录提供程序。 要了解如何使用 Monolog 将消息输出到控制台，请参阅 [PHP：如何使用 monolog 记录到控制台 (php://out)](http://stackoverflow.com/questions/25787258/php-how-to-use-monolog-to-log-to-console-php-out)。
+> 作为一种 Web 框架，[Laravel 使用 Monolog](https://laravel.com/docs/5.4/errors) 作为日志记录提供程序。 若要了解如何使用 Monolog 将消息输出到控制台，请参阅 [PHP：如何使用 monolog 记录到控制台 (php://out)](https://stackoverflow.com/questions/25787258/php-how-to-use-monolog-to-log-to-console-php-out)。
 >
 >
 

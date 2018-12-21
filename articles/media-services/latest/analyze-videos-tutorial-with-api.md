@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 媒体服务分析视频 | Microsoft Docs
+title: 使用媒体服务分析视频 - Azure | Microsoft Docs
 description: 按照本教程的步骤，使用 Azure 媒体服务分析视频。
 services: media-services
 documentationcenter: ''
@@ -9,15 +9,15 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: tutorial
-ms.custom: mvc
-ms.date: 11/08/2018
+ms.date: 12/08/2018
 ms.author: juliako
-ms.openlocfilehash: 3f0d6784f7b7c476313c5cc4190cacd99e4c3973
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.custom: seodec18
+ms.openlocfilehash: 42ffecec896265f99a8f1f0b43b47c1988a493d6
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51612748"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53133887"
 ---
 # <a name="tutorial-analyze-videos-with-media-services-v3-using-apis"></a>教程：通过 API 使用媒体服务 v3 分析视频
 
@@ -115,7 +115,7 @@ CreateInputAsset 函数创建新的输入[资产](https://docs.microsoft.com/res
 
 #### <a name="job"></a>作业
 
-如上所述，[转换](https://docs.microsoft.com/rest/api/media/transforms)对象为脚本，[作业则是](https://docs.microsoft.com/rest/api/media/jobs)对媒体服务的实际请求，请求将转换应用到给定输入视频或音频内容。 作业指定输入视频位置和输出位置等信息。 可使用以下方法指定视频位置：HTTPS URL、SAS URL 或媒体服务帐户中的资产。 
+如上所述，[转换](https://docs.microsoft.com/rest/api/media/transforms)对象为脚本，[作业则是](https://docs.microsoft.com/rest/api/media/jobs)对媒体服务的实际请求，请求将转换应用到给定输入视频或音频内容。 作业指定输入视频位置和输出位置等信息。 可以使用以下项指定视频的位置：HTTPS URL、SAS URL 或媒体服务帐户中的资产。 
 
 在此示例中，作业输入是一个本地视频。  
 
@@ -129,7 +129,7 @@ CreateInputAsset 函数创建新的输入[资产](https://docs.microsoft.com/res
 
 事件网格旨在实现高可用性、一致性能和动态缩放。 使用事件网格，应用可以侦听和响应来自几乎所有 Azure 服务和自定义源的事件。 处理基于 HTTP 的反应事件非常简单，这有助于通过对事件的智能筛选和路由生成高效的解决方案。 请参阅[将事件路由到自定义 Web 终结点](job-state-events-cli-how-to.md)。
 
-作业通常将经历以下状态：“已计划”、“已排队”、“正在处理”、“已完成”（最终状态）。 如果作业出错，则显示“错误”状态。 如果作业正处于取消过程中，则显示“正在取消”，完成时则显示“已取消”。
+**作业**通常会经历以下状态：**已计划**、**已排队**、**正在处理**、**已完成**（最终状态）。 如果作业出错，则显示“错误”状态。 如果作业正处于取消过程中，则显示“正在取消”，完成时则显示“已取消”。
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/AnalyzeVideos/Program.cs#WaitForJobToFinish)]
 

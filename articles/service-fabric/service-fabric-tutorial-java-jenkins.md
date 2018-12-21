@@ -15,16 +15,16 @@ ms.workload: NA
 ms.date: 08/27/2018
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: b8c114ec3fe9b27d0318bf11a8b1fa8e3ce5f1c3
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: a4b8d930a2176c16bb9d1cbcd3b67e6f919575ed
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43124974"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53162216"
 ---
 # <a name="tutorial-configure-a-jenkins-environment-to-enable-cicd-for-a-java-application-on-service-fabric"></a>教程：配置 Jenkins 环境以便为 Service Fabric 上的 Java 应用程序启用 CI/CD
 
-本教程是系列教程的第五部分， 介绍如何使用 Jenkins 将升级部署到应用程序。 本教程结合使用 Service Fabric Jenkins 插件和托管投票应用程序的 Github 存储库，将应用程序部署到群集。
+本教程是系列教程的第五部分， 介绍如何使用 Jenkins 将升级部署到应用程序。 本教程结合使用 Service Fabric Jenkins 插件和托管投票应用程序的 GitHub 存储库，将应用程序部署到群集。
 
 本系列教程的第五部分介绍以下操作：
 > [!div class="checklist"]
@@ -84,7 +84,7 @@ ms.locfileid: "43124974"
 
 ## <a name="create-and-configure-a-jenkins-job"></a>创建和配置 Jenkins 作业
 
-1. 首先，如果没有可用于在 Github 上托管投票项目的存储库，请创建一个存储库。 在本教程的余下内容中，此存储库名为 **dev_test**。
+1. 首先，如果没有可用于在 GitHub 上托管投票项目的存储库，请创建一个存储库。 在本教程的余下内容中，此存储库名为 **dev_test**。
 
 1. 在 ``http://<HOST-IP>:8080`` 的 Jenkins 仪表板上创建一个**新项**。
 
@@ -92,13 +92,13 @@ ms.locfileid: "43124974"
 
 1. 转到作业页，单击“配置”。
 
-   a. 在常规部分中，选择“GitHub 项目”所对应的复选框，指定 GitHub 项目 URL。 此 URL 托管要与 Jenkins 持续集成和持续部署 (CI/CD) 流（例如 ``https://github.com/testaccount/dev_test``）集成的 Service Fabric Java 应用程序。
+   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在常规部分中，选择“GitHub 项目”所对应的复选框，指定 GitHub 项目 URL。 此 URL 托管要与 Jenkins 持续集成和持续部署 (CI/CD) 流（例如 ``https://github.com/testaccount/dev_test``）集成的 Service Fabric Java 应用程序。
 
    b. 在“源代码管理”部分，选择 **Git**。 指定用于托管要与 Jenkins CI/CD 流（例如 *https://github.com/testaccount/dev_test.git*）集成的 Service Fabric Java 应用程序的存储库 URL。 也可在此处指定要生成的分支（例如 **/master**）。
 
 1. 配置 *GitHub*（存储库的托管位置），使它能够与 Jenkins 通信。 请执行以下步骤：
 
-   a. 转到 GitHub 存储库页。 转到“设置” > “集成和服务”。
+   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 转到 GitHub 存储库页。 转到“设置” > “集成和服务”。
 
    b. 选择“添加服务”，键入 **Jenkins**，并选择“Jenkins-GitHub 插件”。
 
@@ -181,7 +181,7 @@ ms.locfileid: "43124974"
     </CodePackage>
     ```
 
-1. 若要初始化执行应用程序升级的 Jenkins 作业，请将新更改推送到 Github 存储库。
+1. 若要初始化执行应用程序升级的 Jenkins 作业，请将新更改推送到 GitHub 存储库。
 
 1. 在 Service Fabric Explorer 中，单击“应用程序”下拉列表。 若要查看升级状态，请单击“正在进行升级”选项卡。
 

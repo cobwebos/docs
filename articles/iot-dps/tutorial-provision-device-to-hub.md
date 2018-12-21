@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 1b9d6342d30c5f5e9ef80213664447c48a62494c
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 40d16076a3d995ecccd06591278b330652d960d8
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39521894"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53189007"
 ---
 # <a name="provision-the-device-to-an-iot-hub-using-the-azure-iot-hub-device-provisioning-service"></a>使用 Azure IoT 中心设备预配服务将设备预配到 IoT 中心
 
@@ -40,12 +40,12 @@ ms.locfileid: "39521894"
     - 特定于每个 TPM 芯片或模拟的“认可密钥”，可以从 TPM 芯片制造商处获得。  请阅读[了解 TPM 认可密钥](https://technet.microsoft.com/library/cc770443.aspx)获取详细信息。
     - 注册 ID，用于在命名空间/作用域内唯一标识设备。 此 ID 可能与设备 ID 相同或不同。 此 ID 是每台设备的必备项。 对于基于 TPM 的设备，可能从 TPM 本身派生注册 ID，例如 TPM 认可密钥的 SHA-256 哈希。
 
-    [![门户中有关 TPM 的注册信息](./media/tutorial-provision-device-to-hub/tpm-device-enrollment.png)](./media/tutorial-provision-device-to-hub/tpm-device-enrollment.png#lightbox)  
+      [![门户中有关 TPM 的注册信息](./media/tutorial-provision-device-to-hub/tpm-device-enrollment.png)](./media/tutorial-provision-device-to-hub/tpm-device-enrollment.png#lightbox)  
 
 - 对于基于 X.509 的设备，你需要提供：
     - [颁发给 X.509（芯片或模拟）的证书](https://msdn.microsoft.com/library/windows/desktop/bb540819.aspx) 采用 .pem 或 .cer 文件的格式。 对于单独注册，需要对 X.509 系统使用基于设备的“签名人证书”；而对于注册组，则需要使用“根证书”。 
 
-    [![在门户中为 X.509 证明添加单个注册](./media/tutorial-provision-device-to-hub/individual-enrollment.png)](./media/tutorial-provision-device-to-hub/individual-enrollment.png#lightbox)
+      [![在门户中为 X.509 证明添加单个注册](./media/tutorial-provision-device-to-hub/individual-enrollment.png)](./media/tutorial-provision-device-to-hub/individual-enrollment.png#lightbox)
 
 可通过两种方法向设备预配服务注册设备：
 
@@ -89,7 +89,7 @@ IoT 设备可以是真实设备，也可以是模拟设备。 因为 IoT 设备�
 
     ![成功连接到门户中的中心](./media/tutorial-provision-device-to-hub/hub-connect-success.png)
 
-有关详细信息，请参阅 TPM 模拟器示例应用程序 [dps_client_sample](https://github.com/Azure/azure-iot-device-auth/blob/master/dps_client/samples/dps_client_sample/dps_client_sample.c)。 
+有关详细信息，请参阅预配设备客户端示例 [prov_dev_client_sample.c](https://github.com/Azure/azure-iot-sdk-c/blob/master/provisioning_client/samples/prov_dev_client_sample/prov_dev_client_sample.c)。 此示例演示了如何使用 TPM、X.509 证书和对称密钥预配模拟设备。 请回头参阅 [TPM](https://docs.microsoft.com/azure/iot-dps/quick-create-simulated-device)、[X.509](https://docs.microsoft.com/azure/iot-dps/quick-create-simulated-device-x509) 和[对称密钥](https://docs.microsoft.com/azure/iot-dps/quick-create-simulated-device-symm-key)证明快速入门，了解有关如何使用示例的分步说明。
 
 ## <a name="next-steps"></a>后续步骤
 本教程介绍了如何：

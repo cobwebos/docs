@@ -16,12 +16,12 @@ ms.topic: get-started-article
 ms.date: 07/17/2017
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: afc24d75b128c192efe14af061ac1df7521c7ef2
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 2fe5c44e834826f9dc62acd30e853c3736b432ee
+ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51621253"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53412429"
 ---
 # <a name="federate-multiple-instances-of-azure-ad-with-single-instance-of-ad-fs"></a>将 Azure AD 的多个实例与 AD FS 的单个实例联合
 
@@ -45,7 +45,7 @@ ms.locfileid: "51621253"
  
 ## <a name="step-2-modify-contosocom-federation-settings"></a>步骤 2：修改 contoso.com 联合身份验证设置 
  
-为联合到 AD FS 的单个域设置的默认颁发者为“http://ADFSServiceFQDN/adfs/services/trust”，例如“http://fs.contoso.com/adfs/services/trust”。 Azure Active Directory 要求每个联合域都有唯一颁发者。 由于同一 AD FS 将联合两个域，因此颁发者值需进行修改，使之对于每个与 Azure Active Directory 联合的域 AD FS 都是唯一的。 
+为联合到 AD FS 的单个域设置的默认颁发者为“http://ADFSServiceFQDN/adfs/services/trust”，例如 `http://fs.contoso.com/adfs/services/trust`。 Azure Active Directory 要求每个联合域都有唯一颁发者。 由于同一 AD FS 将联合两个域，因此颁发者值需进行修改，使之对于每个与 Azure Active Directory 联合的域 AD FS 都是唯一的。 
  
 在 AD FS 服务器上，打开 Azure AD PowerShell（确保 MSOnline 模块已安装）并执行以下步骤：
  
@@ -55,7 +55,7 @@ ms.locfileid: "51621253"
  
 ## <a name="step-3-federate-fabrikamcom-with-ad-fs"></a>步骤 3：通过 AD FS 联合 fabrikam.com
  
-在 Azure AD PowerShell 会话中，执行以下步骤：连接到 Azure Active Directory，其中包含域 fabrikam.com
+在 Azure AD powershell 会话中执行以下步骤：连接到包含域 fabrikam.com 的 Azure Active Directory
 
     Connect-MsolService
 将 fabrikam.com 托管域转换为联合身份验证域：

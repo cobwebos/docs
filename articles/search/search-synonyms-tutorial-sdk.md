@@ -1,6 +1,6 @@
 ---
-title: Azure 搜索中的同义词 C# 教程 | Microsoft Docs
-description: 在本教程中，将向 Azure 搜索中的索引添加同义词功能。
+title: 同义词 C# 教程 - Azure 搜索
+description: 本 C# 教程介绍如何向 Azure 搜索中的索引添加同义词功能。 同义词映射是等效术语的列表。 具有同义词支持的字段可扩展查询以包括用户提供的术语和所有相关的同义词。
 manager: cgronlun
 author: HeidiSteen
 services: search
@@ -8,12 +8,13 @@ ms.service: search
 ms.topic: tutorial
 ms.date: 07/10/2018
 ms.author: heidist
-ms.openlocfilehash: 8340c4dc2a855911073905a3aea93e19fc7b520d
-ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.custom: seodec2018
+ms.openlocfilehash: b239fdc176951066699c557eaae5f7fe08a6c26f
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38990555"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53309223"
 ---
 # <a name="tutorial-add-synonyms-for-azure-search-in-c"></a>教程：使用 C# 为 Azure 搜索添加同义词
 
@@ -167,7 +168,7 @@ Name: Roach Motel       Category: Budget        Tags: [motel, budget]
 
 ## <a name="clean-up-resources"></a>清理资源
 
-完成本教程后，最快的清理方式是删除包含 Azure 搜索服务的资源组。 现在，你可以删除资源组以永久删除其中的所有内容。 在门户中，资源组名称显示在 Azure 搜索服务的“概述”页上。
+完成本教程后，最快的清理方式是删除包含 Azure 搜索服务的资源组。 现在，可以删除资源组以永久删除其中的所有内容。 在门户中，资源组名称显示在 Azure 搜索服务的“概述”页上。
 
 ## <a name="next-steps"></a>后续步骤
 

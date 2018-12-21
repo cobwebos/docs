@@ -1,5 +1,5 @@
 ---
-title: Azure 容器服务教程 - 管理 DC/OS
+title: （已弃用）Azure 容器服务教程 - 管理 DC/OS
 description: Azure 容器服务教程 - 管理 DC/OS
 services: container-service
 author: iainfoulds
@@ -9,14 +9,16 @@ ms.topic: tutorial
 ms.date: 02/26/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 8f4b1c1c66243c06d46ef3fddec8ea495163fa07
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: fe943ae5ac7894cdd8d8e104615cea670513b7eb
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46999607"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "53000424"
 ---
-# <a name="azure-container-service-tutorial---manage-dcos"></a>Azure 容器服务教程 - 管理 DC/OS
+# <a name="deprecated-azure-container-service-tutorial---manage-dcos"></a>（已弃用）Azure 容器服务教程 - 管理 DC/OS
+
+[!INCLUDE [ACS deprecation](../../../includes/container-service-deprecation.md)]
 
 DC/OS 提供了一个用于运行现代和容器化应用程序的分布式平台。 通过 Azure 容器服务，使预配生产就绪的 DC/OS 群集变得简单快捷。 此快速入门详细介绍了部署 DC/OS 群集和运行基本工作负载所需的基本步骤。
 

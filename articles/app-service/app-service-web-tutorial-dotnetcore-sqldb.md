@@ -1,5 +1,5 @@
 ---
-title: 在 Azure 应用服务中生成 .NET Core 和 SQL 数据库 Web 应用 | Microsoft Docs
+title: 使用 SQL 数据库构建 .NET Core 应用 - Azure 应用服务 | Microsoft Docs
 description: 了解如何在 Azure 应用服务中运行 .NET Core 应用，同时使其连接到 SQL 数据库。
 services: app-service\web
 documentationcenter: dotnet
@@ -13,21 +13,21 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 04/11/2018
 ms.author: cephalin
-ms.custom: mvc
-ms.openlocfilehash: e0161073c0c3e7d6ef491a4f2b86510e826b85dc
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.custom: seodec18
+ms.openlocfilehash: 775d7595e80c02bcfbc1c3d6abc687d5e335d7da
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52678655"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53261001"
 ---
-# <a name="tutorial-build-a-net-core-and-sql-database-web-app-in-azure-app-service"></a>教程：在 Azure 应用服务中构建 .NET Core 和 SQL 数据库 Web 应用
+# <a name="tutorial-build-a-net-core-and-sql-database-web-app-in-azure-app-service"></a>教程：在 Azure 应用服务中生成 .NET Core 和 SQL 数据库 Web 应用
 
 > [!NOTE]
-> 本文将应用部署到 Windows 上的应用服务。 若要部署到 _Linux_ 上的应用服务，请参阅[在 Linux 上的 Azure 应用服务中构建 .NET Core 和 SQL 数据库 Web 应用](./containers/tutorial-dotnetcore-sqldb-app.md)。
+> 本文将应用部署到 Windows 上的应用服务。 若要部署到 _Linux_ 上的应用服务，请参阅[在 Linux 上的 Azure 应用服务中生成 .NET Core 和 SQL 数据库 Web 应用](./containers/tutorial-dotnetcore-sqldb-app.md)。
 >
 
-[应用服务](app-service-web-overview.md)在 Azure 中提供高度可缩放、自修补的 Web 托管服务。 本教程演示如何创建 .NET Core Web 应用，并将其连接至 SQL 数据库。 完成操作后，你将拥有一个在应用服务中运行的 .NET Core MVC 应用。
+[应用服务](app-service-web-overview.md)在 Azure 中提供高度可缩放、自修补的 Web 托管服务。 本教程演示如何创建 .NET Core Web 应用，并将其连接至 SQL 数据库。 完成操作后，将拥有一个在应用服务中运行的 .NET Core MVC 应用。
 
 ![在应用服务中运行的应用](./media/app-service-web-tutorial-dotnetcore-sqldb/azure-app-in-browser.png)
 
@@ -45,7 +45,7 @@ ms.locfileid: "52678655"
 
 ## <a name="prerequisites"></a>先决条件
 
-完成本教程需要：
+完成本教程：
 
 * [安装 Git](https://git-scm.com/)
 * [安装 .NET Core](https://www.microsoft.com/net/core/)
@@ -58,7 +58,7 @@ ms.locfileid: "52678655"
 
 在终端窗口中，通过 `cd` 转到工作目录。
 
-运行以下命令来克隆示例存储库，并转到它的根目录。
+运行以下命令来克隆示例存储库，并更改为其根。
 
 ```bash
 git clone https://github.com/azure-samples/dotnetcore-sqldb-tutorial
@@ -81,7 +81,7 @@ dotnet run
 
 ![已成功连接到 SQL 数据库](./media/app-service-web-tutorial-dotnetcore-sqldb/local-app-in-browser.png)
 
-任何时候都可以在终端按 `Ctrl+C` 停止 .NET Core。
+在终端按 `Ctrl+C`，随时停止 .NET Core。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -180,7 +180,7 @@ Server=tcp:<server_name>.database.windows.net,1433;Database=coreDB;User ID=<db_u
 az webapp config connection-string set --resource-group myResourceGroup --name <app name> --settings MyDbConnection='<connection_string>' --connection-string-type SQLServer
 ```
 
-接下来，将应用设置的 `ASPNETCORE_ENVIRONMENT` 属性设置为_Production_。 由于对本地开发环境使用 SQLite，并对 Azure 环境使用 SQL 数据库，因此通过此设置，你可以了解应用是否正在 Azure 中运行。
+接下来，将 `ASPNETCORE_ENVIRONMENT` 应用设置设置为_生产_。 由于对本地开发环境使用 SQLite，并对 Azure 环境使用 SQL 数据库，因此通过此设置，你可以了解应用是否正在 Azure 中运行。
 
 下面的示例在 Azure Web 应用中配置 `ASPNETCORE_ENVIRONMENT` 应用设置。 替换 \<app_name> 占位符。
 
@@ -212,9 +212,9 @@ else
 services.BuildServiceProvider().GetService<MyDatabaseContext>().Database.Migrate();
 ```
 
-如果此代码检测到当前正在生产环境中运行（指 Azure 环境），则会使用先前配置的连接字符串连接到 SQL 数据库。
+如果此代码检测到当前正在生产中运行（指 Azure 环境），则会使用先前配置的连接字符串连接到 SQL 数据库。
 
-应用在 Azure 中运行时可调用 `Database.Migrate()` ，该方法会根据迁移配置自动创建 .NET Core 应用所需的数据库。 
+在 Azure 中运行时可利用 `Database.Migrate()` 调用，因为它会根据迁移配置自动创建 .NET Core 应用所需的数据库。 
 
 > [!IMPORTANT]
 > 对于需要横向扩展的生产应用，请遵循[在生产中应用迁移](/aspnet/core/data/ef-rp/migrations#applying-migrations-in-production)中的最佳做法。
@@ -353,7 +353,7 @@ dotnet run
 
 在浏览器中，导航到 `http://localhost:5000/`。 你现在可以添加一个待办事项，并检查**Done**。 然后，它应作为已完成项在主页中显示。 请牢记，由于未更改`Edit`视图，`Edit`视图不显示`Done`字段。
 
-### <a name="publish-changes-to-azure"></a>将变更发布到 Azure
+### <a name="publish-changes-to-azure"></a>发布对 Azure 所做的更改
 
 ```bash
 git add .
@@ -365,7 +365,7 @@ git push azure master
 
 ![Code First 迁移后的 Azure Web 应用](./media/app-service-web-tutorial-dotnetcore-sqldb/this-one-is-done.png)
 
-所有现有待办事项仍将显示。 重新发布 .NET Core 应用时，SQL 数据库中的现有数据不会丢失。 此外，Entity Framework Core 迁移仅更改数据架构，而使现有数据保持不变。
+所有现有待办事项仍将显示。 重新发布 .NET Core 应用时，SQL 数据库中的现有数据不会丢失。 此外，实体框架核心迁移仅更改数据架构，而使现有数据保持不变。
 
 ## <a name="manage-your-azure-web-app"></a>管理 Azure Web 应用
 

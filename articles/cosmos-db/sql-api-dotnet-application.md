@@ -11,14 +11,14 @@ ms.topic: tutorial
 ms.date: 08/03/2017
 ms.author: sngun
 ms.custom: devcenter, vs-azure
-ms.openlocfilehash: 8230c2ba8c7fdb10d7e37a317d4eeb5abb120d60
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: b0c8d46e74eec4bad7b7e664682c97eb0f0068b6
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52868712"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53098720"
 ---
-# <a name="_Toc395809351"></a>ASP.NET MVC 教程：使用 Azure Cosmos DB 开发 Web 应用程序
+# <a name="_Toc395809351"></a>ASP.NET MVC 教程：使用 Azure Cosmos DB 进行 Web 应用程序开发
 
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-dotnet-application.md)
@@ -414,9 +414,9 @@ ms.locfileid: "52868712"
    
     此代码会调用到 DocumentDBRepository，并使用 CreateItemAsync 方法将新的待办事项保存到数据库。 
    
-    **安全说明**：此处所使用的 **ValidateAntiForgeryToken** 属性可帮助此应用程序防止跨站点请求伪造攻击。 这不仅仅是添加此属性，视图也必须使用此防伪令牌。 有关此主题的详细信息以及如何正确实施此操作的示例，请参阅[防止跨站点请求伪造][Preventing Cross-Site Request Forgery]。 [GitHub][GitHub] 上提供的源代码已有完整实现。
+    **安全说明**：此处使用的 **ValidateAntiForgeryToken** 属性可帮助此应用程序防止跨站点请求伪造攻击。 这不仅仅是添加此属性，视图也必须使用此防伪令牌。 有关此主题的详细信息以及如何正确实施此操作的示例，请参阅[防止跨站点请求伪造][Preventing Cross-Site Request Forgery]。 [GitHub][GitHub] 上提供的源代码已有完整实现。
    
-    **安全说明**：我们还会在方法参数中使用 **Bind** 属性，帮助防范 over-posting 攻击。 有关更多详细信息，请参阅 [ASP.NET MVC 中的基本 CRUD 操作][Basic CRUD Operations in ASP.NET MVC]。
+    **安全说明**：我们还会在方法参数中使用 **Bind** 属性，帮助防范过度提交攻击。 有关更多详细信息，请参阅 [ASP.NET MVC 中的基本 CRUD 操作][Basic CRUD Operations in ASP.NET MVC]。
 
 将新项添加到数据库所需的代码至此结束。
 
@@ -545,8 +545,8 @@ ms.locfileid: "52868712"
 若要向应用程序添加其他功能，请查看 [Azure Cosmos DB .NET 库](/dotnet/api/overview/azure/cosmosdb?view=azure-dotnet)中提供的 API，并欢迎在 [GitHub][GitHub] 上的 Azure Cosmos DB .NET 库中补充内容。 
 
 [\*]: https://microsoft.sharepoint.com/teams/DocDB/Shared%20Documents/Documentation/Docs.LatestVersions/PicExportError
-[Visual Studio Express]: http://www.visualstudio.com/products/visual-studio-express-vs.aspx
-[Microsoft Web Platform Installer]: http://www.microsoft.com/web/downloads/platform.aspx
-[Preventing Cross-Site Request Forgery]: http://go.microsoft.com/fwlink/?LinkID=517254
-[Basic CRUD Operations in ASP.NET MVC]: http://go.microsoft.com/fwlink/?LinkId=317598
+[Visual Studio Express]: https://www.visualstudio.com/products/visual-studio-express-vs.aspx
+[Microsoft Web Platform Installer]: https://www.microsoft.com/web/downloads/platform.aspx
+[Preventing Cross-Site Request Forgery]: https://go.microsoft.com/fwlink/?LinkID=517254
+[Basic CRUD Operations in ASP.NET MVC]: https://go.microsoft.com/fwlink/?LinkId=317598
 [GitHub]: https://github.com/Azure-Samples/documentdb-net-todo-app

@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 12/03/2018
 ms.author: dech
-ms.openlocfilehash: ef805ff82b8f44f4caeeafdc8867d851f4501894
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: c0b1ed5aff7f22000a179983396239c24d21a311
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52852496"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53101324"
 ---
 # <a name="tutorial-develop-an-aspnet-mvc-web-application-with-azure-cosmos-db-by-using-net-preview-sdk"></a>教程：通过 .Net 预览版 SDK 开发使用 Azure Cosmos DB 的 ASP.NET MVC Web 应用程序 
 
@@ -47,7 +47,7 @@ ms.locfileid: "52852496"
 
 在按照本文中的说明操作之前，请确保具备以下资源：
 
-* **活动的 Azure 帐户：** 如果没有 Azure 订阅，请在开始前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。 
+* **有效的 Azure 帐户：** 如果还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。 
 
   [!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
 
@@ -288,8 +288,8 @@ ms.locfileid: "52852496"
 > [生成 Java 应用程序以访问在 Azure Cosmos DB 的 SQL API 帐户中存储的数据]( sql-api-java-application.md)
 
 
-[Visual Studio Express]: http://www.visualstudio.com/products/visual-studio-express-vs.aspx
-[Microsoft Web Platform Installer]: http://www.microsoft.com/web/downloads/platform.aspx
-[Preventing Cross-Site Request Forgery]: http://go.microsoft.com/fwlink/?LinkID=517254
-[Basic CRUD Operations in ASP.NET MVC]: http://go.microsoft.com/fwlink/?LinkId=317598
+[Visual Studio Express]: https://www.visualstudio.com/products/visual-studio-express-vs.aspx
+[Microsoft Web Platform Installer]: https://www.microsoft.com/web/downloads/platform.aspx
+[Preventing Cross-Site Request Forgery]: https://go.microsoft.com/fwlink/?LinkID=517254
+[Basic CRUD Operations in ASP.NET MVC]: https://go.microsoft.com/fwlink/?LinkId=317598
 [GitHub]: https://github.com/Azure-Samples/cosmos-dotnet-todo-app

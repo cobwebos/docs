@@ -1,5 +1,5 @@
 ---
-title: Azure Policy 示例 - 已批准的 VM 映像
+title: 示例 - 已批准的 VM 映像
 description: 此示例策略要求在环境中仅部署已批准的自定义映像。
 services: azure-policy
 author: DCtheGeek
@@ -8,13 +8,12 @@ ms.service: azure-policy
 ms.topic: sample
 ms.date: 09/18/2018
 ms.author: dacoulte
-ms.custom: mvc
-ms.openlocfilehash: d4216c785155ac5462dbcb1b48bf58e7bc718601
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: efec6c4e0a677681fd9f1132f4573d99b35236d4
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46965358"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53312657"
 ---
 # <a name="approved-vm-images"></a>已批准的 VM 映像
 
@@ -54,7 +53,7 @@ ms.locfileid: "46965358"
 
 ## <a name="parameters"></a>parameters
 
-|名称 |Type |字段 |Description |
+|名称 |类型 |字段 |Description |
 |---|---|---|---|
 |imageIds |Array |Microsoft.Compute/imageIds |已批准的 VM 映像的列表|
 

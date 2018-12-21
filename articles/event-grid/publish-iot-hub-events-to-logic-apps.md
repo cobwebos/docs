@@ -4,22 +4,22 @@ description: 使用 Azure 事件网格的事件路由服务创建自动化过程
 services: iot-hub
 documentationcenter: ''
 author: kgremban
-manager: timlt
+manager: philmea
 editor: ''
 ms.service: iot-hub
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/30/2018
+ms.date: 12/07/2018
 ms.author: kgremban
-ms.openlocfilehash: c91dad17016cd9619d2d42a3fcee04a7d14b5eab
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 7c5030a80ead7e84526e01aa3a8a4a75ee2b276a
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51242513"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53135009"
 ---
-# <a name="send-email-notifications-about-azure-iot-hub-events-using-logic-apps"></a>使用逻辑应用发送有关 Azure IoT 中心事件的电子邮件
+# <a name="tutorial-send-email-notifications-about-azure-iot-hub-events-using-logic-apps"></a>教程：使用逻辑应用发送有关 Azure IoT 中心事件的电子邮件
 
 使用 Azure 事件网格可以通过在下游业务应用程序中触发操作，对 IoT 中心内的事件做出反应。
 
@@ -37,19 +37,16 @@ ms.locfileid: "51242513"
 
 ### <a name="create-a-logic-app-resource"></a>创建逻辑应用资源
 
-1. 在 [Azure 门户](https://portal.azure.com)中，选择“新建” > “集成” > “逻辑应用”。
+1. 在 [Azure 门户](https://portal.azure.com)中，选择“创建资源” > “集成” > “逻辑应用”。
 
    ![创建逻辑应用](./media/publish-iot-hub-events-to-logic-apps/select-logic-app.png)
 
 2. 为逻辑应用指定一个在订阅中唯一的名称，然后选择 IoT 中心所在的同一订阅、资源组和位置。 
-3. 准备就绪后，请选择“固定到仪表板”，并选择“创建”。
+3. 选择“创建”。
 
-   你现在已为逻辑应用程序创建 Azure 资源。 在 Azure 部署逻辑应用后，逻辑应用设计器会显示针对常用模式的模板，以便你可以更快地入门。
+4. 创建资源后，导航到你的逻辑应用。 
 
-   > [!NOTE] 
-   > 选择“固定到仪表板”时，逻辑应用会在逻辑应用设计器中自动打开。 否则，你可以手动查找和打开逻辑应用。
-
-4. 在逻辑应用设计器中的“模板”下选择“空白逻辑应用”，以便从头开始生成逻辑应用。
+5. 逻辑应用设计器会显示针对常用模式的模板，以便你可以更快地入门。 在逻辑应用设计器中的“模板”下选择“空白逻辑应用”，以便从头开始生成逻辑应用。
 
 ### <a name="select-a-trigger"></a>选择触发器
 
@@ -66,51 +63,51 @@ ms.locfileid: "51242513"
 
 4. 在文本框中粘贴以下示例 JSON 代码，然后选择“完成”：
 
-```json
-[{
-  "id": "56afc886-767b-d359-d59e-0da7877166b2",
-  "topic": "/SUBSCRIPTIONS/<subscription ID>/RESOURCEGROUPS/<resource group name>/PROVIDERS/MICROSOFT.DEVICES/IOTHUBS/<hub name>",
-  "subject": "devices/LogicAppTestDevice",
-  "eventType": "Microsoft.Devices.DeviceCreated",
-  "eventTime": "2018-01-02T19:17:44.4383997Z",
-  "data": {
-    "twin": {
-      "deviceId": "LogicAppTestDevice",
-      "etag": "AAAAAAAAAAE=",
-      "deviceEtag": "null",
-      "status": "enabled",
-      "statusUpdateTime": "0001-01-01T00:00:00",
-      "connectionState": "Disconnected",
-      "lastActivityTime": "0001-01-01T00:00:00",
-      "cloudToDeviceMessageCount": 0,
-      "authenticationType": "sas",
-      "x509Thumbprint": {
-        "primaryThumbprint": null,
-        "secondaryThumbprint": null
-      },
-      "version": 2,
-      "properties": {
-        "desired": {
-          "$metadata": {
-            "$lastUpdated": "2018-01-02T19:17:44.4383997Z"
-          },
-          "$version": 1
-        },
-        "reported": {
-          "$metadata": {
-            "$lastUpdated": "2018-01-02T19:17:44.4383997Z"
-          },
-          "$version": 1
-        }
-      }
-    },
-    "hubName": "egtesthub1",
-    "deviceId": "LogicAppTestDevice"
-  },
-  "dataVersion": "1",
-  "metadataVersion": "1"
-}]
-```
+   ```json
+   [{
+     "id": "56afc886-767b-d359-d59e-0da7877166b2",
+     "topic": "/SUBSCRIPTIONS/<subscription ID>/RESOURCEGROUPS/<resource group name>/PROVIDERS/MICROSOFT.DEVICES/IOTHUBS/<hub name>",
+     "subject": "devices/LogicAppTestDevice",
+     "eventType": "Microsoft.Devices.DeviceCreated",
+     "eventTime": "2018-01-02T19:17:44.4383997Z",
+     "data": {
+       "twin": {
+         "deviceId": "LogicAppTestDevice",
+         "etag": "AAAAAAAAAAE=",
+         "deviceEtag": "null",
+         "status": "enabled",
+         "statusUpdateTime": "0001-01-01T00:00:00",
+         "connectionState": "Disconnected",
+         "lastActivityTime": "0001-01-01T00:00:00",
+         "cloudToDeviceMessageCount": 0,
+         "authenticationType": "sas",
+         "x509Thumbprint": {
+           "primaryThumbprint": null,
+           "secondaryThumbprint": null
+         },
+         "version": 2,
+         "properties": {
+           "desired": {
+             "$metadata": {
+               "$lastUpdated": "2018-01-02T19:17:44.4383997Z"
+             },
+             "$version": 1
+           },
+           "reported": {
+             "$metadata": {
+               "$lastUpdated": "2018-01-02T19:17:44.4383997Z"
+             },
+             "$version": 1
+           }
+         }
+       },
+       "hubName": "egtesthub1",
+       "deviceId": "LogicAppTestDevice"
+     },
+     "dataVersion": "1",
+     "metadataVersion": "1"
+   }]
+   ```
 
 5. 可能会收到一条弹出通知，其中指出，“请记住要在请求中包含设为 application/json 的内容类型标头”。 可以放心忽略此建议，并转到下一部分。 
 
@@ -119,13 +116,17 @@ ms.locfileid: "51242513"
 操作是在触发器启动逻辑应用工作流之后发生的任何步骤。 在本教程中，操作是从电子邮件提供程序发送电子邮件通知。 
 
 1. 选择“新建步骤”。 此时会打开一个窗口，供用户“选择操作”。
+
 2. 搜索“电子邮件”。
+
 3. 根据你的电子邮件提供程序，找到并选择匹配的连接器。 本教程使用 **Office 365 Outlook**。 使用其他电子邮件提供程序时执行的步骤类似。 
 
    ![选择电子邮件提供程序连接器](./media/publish-iot-hub-events-to-logic-apps/o365-outlook.png)
 
 4. 选择“发送电子邮件”操作。 
+
 5. 根据提示登录到电子邮件帐户。 
+
 6. 生成电子邮件模板。 
    * **收件人**：输入接收通知电子邮件的电子邮件地址。 本教程使用你可以访问的测试电子邮件帐户。 
    * **主题**和**正文**：编写电子邮件的文本。 在选择器工具中选择 JSON 属性，以包含基于事件数据的动态内容。  
@@ -162,21 +163,23 @@ ms.locfileid: "51242513"
 
 4. 使用以下值创建事件订阅： 
     * **事件类型**：取消选中“订阅所有事件类型”，然后从菜单中选择“已创建的设备”。
-    * **终结点详细信息**：选择“Webhook”作为“终结点类型”，然后单击所选终结点并粘贴从逻辑应用中复制的 URL，然后确认所做的选择。
+    * **终结点详细信息**：选择“Webhook”作为“终结点类型”，单击所选终结点并粘贴从逻辑应用中复制的 URL，然后确认选择。
 
     ![选择终结点 URL](./media/publish-iot-hub-events-to-logic-apps/endpoint-url.png)
 
-    * **事件订阅详细信息**：提供一个说明性的名称，然后选择“事件网格架构”。
-
-  可在此处保存事件订阅，并接收针对 IoT 中心内创建的每个设备发送的通知。 不过，在本教程中，我们将使用可选字段来筛选特定的设备： 
-
-  * **主题开头**：输入 `devices/Building1_`，以便筛选建筑物 1 中的设备事件。
-  * **主题结尾**：输入 `_Temperature`，以便筛选与温度相关的设备事件。
+    * **事件订阅详细信息**：提供一个说明性的名称，然后选择“事件网格架构”
 
   完成后，窗体应如以下示例所示： 
 
     ![示例事件订阅窗体](./media/publish-iot-hub-events-to-logic-apps/subscription-form.png)
-    
+
+5. 可在此处保存事件订阅，并接收针对 IoT 中心内创建的每个设备发送的通知。 不过，在本教程中，我们将使用可选字段来筛选特定的设备。 选择窗体顶部的“其他功能”。 
+
+6. 创建以下筛选器：
+
+  * **主题开头为**：输入 `devices/Building1_`，筛选建筑物 1 中的设备事件。
+  * **主题结尾为**：输入 `_Temperature`，筛选与温度相关的设备事件。
+
 5. 选择“创建”保存事件订阅。
 
 ## <a name="create-a-new-device"></a>创建新设备
