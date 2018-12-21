@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: a4402d33bda8ece965608a19c8150ec616118b1c
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: a6afbd8e2ffd76ca29be294f5badbc7fa2edbc9a
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53105965"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53650006"
 documentType: LandingData
 title: QnA Maker 文档
 metadata:
@@ -18,10 +18,10 @@ metadata:
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
-  ms.date: 11/10/2018
+  ms.date: 12/18/2018
   ms.author: tulasim
 abstract:
-  description: 使用 QnA Maker，可以根据常见问题解答文档或者 URL 和产品手册等半结构化内容打造一项问题与解答服务。
+  description: QnA Maker 是一种基于云的 API 服务，它创建基于数据的聊天式问答层。 使用 QnA Maker，可以根据常见问题解答文档、URL 和产品手册等半结构化内容打造一项问题与解答服务。 QnA Maker 服务可以回答用户的自然语言问题，其方法是将问题与知识库的 QnA 中的最可能答案进行匹配。
   aside:
     image:
       alt: 
@@ -32,6 +32,27 @@ abstract:
     href: https://channel9.msdn.com/Shows/AI-Show/Build-a-Bot-in-Minutes-with-QnA-Maker
     width: 250
 sections:
+- items:
+  - type: list
+    style: cards
+    className: cardsM
+    columns: 3
+    items:
+    - href: /azure/cognitive-services/qnamaker/overview/overview
+      html: <p>了解 QnA Maker。</p>
+      image:
+        src: ../media/index/i_overview.svg
+      title: 什么是 QnA Maker？
+    - href: /azure/cognitive-services/qnamaker/quickstarts/create-publish-knowledge-base
+      html: <p>了解如何创建、训练和发布知识库。</p>
+      image:
+        src: ../media/index/i_tasks.svg
+      title: 创建、训练和发布知识库
+    - href: /azure/cognitive-services/qnamaker/concepts/data-sources-supported
+      html: <p>了解如何发布知识库。</p>
+      image:
+        src: ../media/index/i_tasks.svg
+      title: 了解数据源
 - title: 5 分钟快速入门
   items:
   - type: paragraph
@@ -59,7 +80,16 @@ sections:
         src: media/index/logo_python.svg
       text: Python
       href: Quickstarts/create-new-kb-python
-- title: 引用
+- title: 分步教程
+  items:
+  - type: paragraph
+    text: 了解如何使用 QnA Maker 开发应用程序：
+  - type: list
+    style: unordered
+    items:
+    - html: <a href="/azure/cognitive-services/qnamaker/tutorials/create-publish-query-in-portal">创建知识库并回答问题</a></li>
+    - html: <a href="/azure/cognitive-services/qnamaker/tutorials/create-qna-bot">创建 QnA Maker 机器人</a></li>
+- title: 参考
   items:
   - type: list
     style: cards

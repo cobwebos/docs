@@ -70,6 +70,8 @@ items:
     items:
     - name: 使用 Python 从 Databricks 连接
       href: connect-from-databricks.md
+    - name: 使用 Jupyter Notebook 和 Kqlmagic 分析数据
+      href: kqlmagic.md
     - name: 在 Grafana 中将数据可视化
       href: grafana.md
   - name: 故障排除
@@ -80,7 +82,7 @@ items:
       href: troubleshoot-connect-cluster.md
     - name: 使用数据库和表
       href: troubleshoot-database-table.md
-- name: 引用
+- name: 参考
   items:
   - name: 查询语言
     href: /azure/kusto/query/
@@ -112,9 +114,9 @@ items:
     href: http://aka.ms/adecostestimator
   - name: 服务更新
     href: https://azure.microsoft.com/updates/?product=data-explorer
-ms.openlocfilehash: 5773939edb8bb846325e5709cc46273b9669117b
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: fdde75acc0d975db194108458ca308c459b4f9a7
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53606820"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53653010"
