@@ -36,7 +36,7 @@
 
 # 概念
 ## [计费和订阅](https://docs.microsoft.com/azure/billing/billing-getting-started)
-## [宿主比较](https://docs.microsoft.com/azure/app-service/choose-web-site-cloud-service-vm)
+## [宿主比较](https://docs.microsoft.com/azure/app-service/overview-compare)
 ## [什么是应用服务？](https://docs.microsoft.com/azure/app-service/overview)
 ## 虚拟机
 ### [Linux VM](https://docs.microsoft.com/azure/virtual-machines/linux/overview)
@@ -76,11 +76,11 @@
 ### [Web 和移动应用](https://docs.microsoft.com/azure/app-service/app-service-web-tutorial-custom-ssl)
 
 ## 备份
-### [Web 和移动应用](https://docs.microsoft.com/azure/app-service/web-sites-backup)
+### [Web 和移动应用](https://docs.microsoft.com/azure/app-service/manage-backup)
 ### [虚拟机](https://docs.microsoft.com/azure/backup/backup-azure-vms-introduction)
 
 ## 监视
-### [Web 和移动应用](https://docs.microsoft.com/azure/app-service/web-sites-enable-diagnostic-log)
+### [Web 和移动应用](https://docs.microsoft.com/azure/app-service/troubleshoot-diagnostic-logs)
 ### [Linux VM](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-monitoring)
 ### [Windows VM](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-monitoring)
 ### [微服务](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-overview)
