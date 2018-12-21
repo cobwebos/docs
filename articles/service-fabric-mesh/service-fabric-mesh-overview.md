@@ -9,12 +9,12 @@ ms.date: 10/1/2018
 ms.topic: overview
 ms.service: service-fabric-mesh
 manager: timlt
-ms.openlocfilehash: f753d7273c685a7ec3e4e0877e171df04e69e5b4
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
+ms.openlocfilehash: da5370e274aa1904f803227d8c85912a7d26c533
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50978309"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "53000664"
 ---
 # <a name="what-is-service-fabric-mesh"></a>什么是 Service Fabric 网格？
 
@@ -50,6 +50,7 @@ Service Fabric 网格支持可在容器中运行的任何编程语言或框架�
 - 使用 [Azure 门户](https://portal.azure.com)、资源管理器模板或 Azure CLI/PowerShell 库部署和管理资源。
 - 使用 [Application Insights](/azure/application-insights/)（或所选工具）设置操作监视和警报，以从平台捕获操作和诊断跟踪。
 - 使用 [Application Insights](/azure/application-insights/) 或所选工具访问应用程序模型发出的应用程序诊断信息。
+- 通过为应用程序定义中的服务指定自动缩放规则来优化资源使用率。
 
 ## <a name="mission-critical-platform-capabilities"></a>任务关键型平台功能
 

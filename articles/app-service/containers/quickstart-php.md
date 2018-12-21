@@ -1,5 +1,5 @@
 ---
-title: 创建 PHP Web 应用并将其部署到 Linux 应用服务 | Microsoft Docs
+title: 在 Linux 上创建 PHP Web 应用 - Azure 应用服务 | Microsoft Docs
 description: 数分钟内在 Linux 应用服务中部署第一个 PHP Hello World。
 services: app-service\web
 documentationcenter: ''
@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: quickstart
 ms.date: 08/30/2017
 ms.author: cfowler
-ms.custom: mvc
-ms.openlocfilehash: 5fdf277eb8f99f2d52600140601b413b51bcdfd8
-ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
+ms.custom: seodec18
+ms.openlocfilehash: 2c9586bb5abce66e4043e3df80b420174a582cbb
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42885899"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53257346"
 ---
 # <a name="create-a-php-web-app-in-app-service-on-linux"></a>在 Linux 应用服务中创建 PHP Web 应用
 
@@ -38,7 +38,7 @@ ms.locfileid: "42885899"
 
 ## <a name="prerequisites"></a>先决条件
 
-完成本快速入门教程：
+完成本快速入门教程需要：
 
 * <a href="https://git-scm.com/" target="_blank">安装 Git</a>
 * <a href="https://php.net" target="_blank">安装 PHP</a>
@@ -129,7 +129,7 @@ PHP 示例代码在包含内置映像的 Web 应用中运行。
 
 ![在 Azure 中运行应用的示例](media/quickstart-php/hello-world-in-browser.png)
 
-**祝贺你！** 现已将第一个 PHP 应用部署到 Linux 应用服务。
+祝贺你！ 现已将第一个 PHP 应用部署到 Linux 应用服务。
 
 ## <a name="update-locally-and-redeploy-the-code"></a>在本地更新并重新部署代码
 
@@ -158,11 +158,11 @@ git push azure master
 
 ![在门户中导航到 Azure Web 应用](./media/quickstart-php/php-docs-hello-world-app-service-list.png)
 
-将看到 Web 应用的概述页。 在此处可以执行基本的管理任务，例如浏览、停止、启动、重新启动和删除。
+这里我们可以看到 Web 应用的概述页。 并可以执行基本的管理任务，例如浏览、停止、启动、重新启动和删除。
 
 ![Azure 门户中的应用服务页](media/quickstart-php/php-docs-hello-world-app-service-detail.png)
 
-左侧菜单提供用于配置应用的不同页面。 
+左侧菜单提供了用于配置应用的不同页面。 
 
 [!INCLUDE [cli-samples-clean-up](../../../includes/cli-samples-clean-up.md)]
 

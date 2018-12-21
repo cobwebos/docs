@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 09/24/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 0b4e334ea9a423ed4eb9a0830d68ad7f4b843a88
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 6075086b390a14e807e493bd574ac889b81272bf
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52833633"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53437344"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster"></a>快速入门：部署 Azure Kubernetes 服务 (AKS) 群集
 
@@ -36,27 +36,27 @@ ms.locfileid: "52833633"
 若要创建 AKS 群集，请完成以下步骤：
 
 1. **基本信息** - 配置以下选项：
-    - *项目详细信息*：选择 Azure 订阅，然后选择或创建一个 Azure 资源组，例如 *myResourceGroup*。 输入 **Kubernetes 群集名称**，例如 *myAKSCluster*。
-    - *群集详细信息*：选择 AKS 群集的区域、Kubernetes 版本和 DNS 名称前缀。
-    - *缩放*：选择 AKS 节点的 VM 大小。 一旦部署 AKS 群集，不能更改 VM 大小。
+    - 项目详细信息：选择 Azure 订阅，然后选择或创建一个 Azure 资源组，例如 myResourceGroup。 输入 **Kubernetes 群集名称**，例如 *myAKSCluster*。
+    - 群集详细信息：选择 AKS 群集的区域、Kubernetes 版本和 DNS 名称前缀。
+    - 缩放：选择 AKS 节点的 VM 大小。 一旦部署 AKS 群集，不能更改 VM 大小。
         - 选择要部署到群集中的节点数。 对于本快速入门，请将“节点计数”设置为“1”。 部署群集后，可以调整节点计数。
     
     ![创建 AKS 群集 - 提供基本信息](media/kubernetes-walkthrough-portal/create-cluster-basics.png)
 
-    在完成时选择“下一步: 身份验证”。
+    在完成时选择“下一步:身份验证”。
 
-1. **身份验证** - 配置以下选项：
+1. **身份验证**：配置以下选项：
     - 创建新的服务主体，或者通过“配置”来使用现有的。 使用现有 SPN 时，需要提供 SPN 客户端 ID 和密码。
     - 启用 Kubernetes 基于角色的访问控制 (RBAC) 所对应的选项。 这些控制可以对部署在 AKS 群集中的 Kubernetes 资源进行更精细的访问控制。
 
-    完成时选择“下一步: 网络”。
+    在完成时选择“下一步:网络”。
 
-1. **网络**：配置以下网络选项这些选项应该设置为默认值：
+1. **网络**：配置以下网络选项：
     
     - **Http 应用程序路由** - 选择“是”，以便配置可自动创建公共 DNS 名称的集成入口控制器。 有关 Http 路由的详细信息，请参阅 [AKS HTTP 路由和 DNS][http-routing]。
     - **网络配置** - 选择使用 [kubenet][kubenet] Kubernetes 插件的“基本”网络配置，而不是使用 [Azure CNI][azure-cni] 的高级网络配置。 有关网络选项的详细信息，请参阅 [AKS 网络概述][aks-network]。
     
-    完成时选择“下一步: 监视”。
+    在完成时选择“下一步:监视”。
 
 1. 部署 AKS 群集时，可以将用于容器的 Azure Monitor 配置为监视 AKS 群集以及群集上运行的 Pod 的运行状况。 有关容器运行状况监视的详细信息，请参阅[监视 Azure Kubernetes 服务运行状况][aks-monitor]。
 
@@ -88,7 +88,7 @@ az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
 kubectl get nodes
 ```
 
-以下示例输出显示在上一步创建的单个节点。
+以下示例输出显示在上一步创建的单个节点。 请确保节点的状态为“就绪”。
 
 ```
 NAME                       STATUS    ROLES     AGE       VERSION

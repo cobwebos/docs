@@ -9,14 +9,14 @@ ms.topic: tutorial
 ms.date: 05/07/2018
 ms.author: hrasheed
 ms.custom: H1Hack27Feb2017,hdinsightactive,mvc
-ms.openlocfilehash: fa84d5a09eab56dc01a6e841323ca11d12886582
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: c0123008e5b15d6d3edce27245a7ed1fa6c431e7
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52495512"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53015035"
 ---
-# <a name="tutorial-extract-transform-and-load-data-using-apache-hive-on-azure-hdinsight"></a>教程：在 Azure HDInsight 上使用 Apache Hive 提取、转换和加载数据
+# <a name="tutorial-extract-transform-and-load-data-using-apache-hive-on-azure-hdinsight"></a>教程：使用 Apache Hive on Azure HDInsight 提取、转换和加载数据
 
 在此教程中，需将原始 CSV 数据文件导入 HDInsight 群集存储，然后在 Azure HDInsight 上使用 [Apache Hive](https://hive.apache.org/) 转换数据。 数据转换完毕后，使用 [Apache Sqoop](http://sqoop.apache.org/) 将数据加载到 Azure SQL 数据库。 本文使用公开提供的航班数据。
 
@@ -315,7 +315,7 @@ ms.locfileid: "52495512"
 
 若要了解使用 HDInsight 中的数据的更多方式，请参阅以下文章：
 
-* [教程：在 Azure HDInsight 上使用 Apache Hive 提取、转换和加载数据](../storage/data-lake-storage/tutorial-extract-transform-load-hive.md)
+* [教程：使用 Apache Hive on Azure HDInsight 提取、转换和加载数据](../storage/data-lake-storage/tutorial-extract-transform-load-hive.md)
 * [将 Apache Hive 和 HDInsight 配合使用][hdinsight-use-hive]
 * [将 Apache Pig 和 HDInsight 配合使用][hdinsight-use-pig]
 * [为 Apache Hadoop on HDInsight 开发 Java MapReduce 程序][hdinsight-develop-mapreduce]
@@ -325,13 +325,13 @@ ms.locfileid: "52495512"
 
 
 
-[azure-purchase-options]: http://azure.microsoft.com/pricing/purchase-options/
-[azure-member-offers]: http://azure.microsoft.com/pricing/member-offers/
-[azure-free-trial]: http://azure.microsoft.com/pricing/free-trial/
+[azure-purchase-options]: https://azure.microsoft.com/pricing/purchase-options/
+[azure-member-offers]: https://azure.microsoft.com/pricing/member-offers/
+[azure-free-trial]: https://azure.microsoft.com/pricing/free-trial/
 
 
 [rita-website]: http://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236&DB_Short_Name=On-Time
-[cindygross-hive-tables]: http://blogs.msdn.com/b/cindygross/archive/2013/02/06/hdinsight-hive-internal-and-external-tables-intro.aspx
+[cindygross-hive-tables]: https://blogs.msdn.com/b/cindygross/archive/2013/02/06/hdinsight-hive-internal-and-external-tables-intro.aspx
 
 [hdinsight-use-oozie]: hdinsight-use-oozie-linux-mac.md
 [hdinsight-use-hive]:hadoop/hdinsight-use-hive.md

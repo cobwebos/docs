@@ -10,12 +10,12 @@ ms.author: mimart
 author: msmimart
 manager: mtillman
 ms.reviewer: mal
-ms.openlocfilehash: 609f48d0c2ba41d658850ade367d9b225941b105
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: 992abf97751695c10f28f355e1086a12530b9456
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45982602"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53165225"
 ---
 # <a name="what-is-guest-user-access-in-azure-active-directory-b2b"></a>什么是 Azure Active Directory B2B 中的来宾用户访问权限？
 
@@ -73,7 +73,7 @@ ms.locfileid: "45982602"
 
 使用按组织需求自定义的方法引入外部合作伙伴。
 - 使用 [B2B 协作邀请 API](https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation)，可自定义载入体验，包括创建自助服务注册门户。 
-- 使用我们[在 Github 上](https://github.com/Azure/active-directory-dotnet-graphapi-b2bportal-web)为自助服务门户提供的示例代码。
+- 使用我们[在 GitHub 上](https://github.com/Azure/active-directory-dotnet-graphapi-b2bportal-web)为自助服务门户提供的示例代码。
 
 ![注册门户](media/what-is-b2b/sign-up-portal.png)
 

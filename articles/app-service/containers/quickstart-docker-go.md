@@ -1,5 +1,5 @@
 ---
-title: 在用于容器的 Azure Web 应用中部署 Docker/Go 应用
+title: 在 Linux 上创建 Docker/Go 应用 - Azure 应用服务
 description: 如何将运行 Go 应用程序的 Docker 映像部署到用于容器的 Azure Web 应用。
 keywords: azure 应用服务, web 应用, go, docker, 容器
 services: app-service
@@ -11,13 +11,13 @@ ms.devlang: go
 ms.topic: quickstart
 ms.date: 01/17/2018
 ms.author: msangapu
-ms.custom: mvc
-ms.openlocfilehash: f1d58adcc017367a3de8ee6130a3333f86fb501c
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.custom: seodec18
+ms.openlocfilehash: 36a6b73a6e358104f22d64b00f436a219f29bbd4
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39423239"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53251872"
 ---
 # <a name="deploy-a-dockergo-web-app-in-web-app-for-containers"></a>在用于容器的 Web 应用中部署 Docker/Go Web 应用
 
@@ -70,7 +70,7 @@ http://<app_name>.azurewebsites.net/hello
 
 ![在 Azure 中运行应用的示例](media/quickstart-docker-go/hello-world-in-browser.png)
 
-**祝贺你！** 已将运行 Go 应用程序的自定义 Docker 映像部署到用于容器的 Web 应用。
+祝贺你！ 已将运行 Go 应用程序的自定义 Docker 映像部署到用于容器的 Web 应用。
 
 [!INCLUDE [Clean-up section](../../../includes/cli-script-clean-up.md)]
 

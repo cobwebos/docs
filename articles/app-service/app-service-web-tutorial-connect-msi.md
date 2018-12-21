@@ -1,5 +1,5 @@
 ---
-title: 使用托管标识确保从应用服务进行的 Azure SQL 数据库连接的安全 | Microsoft Docs
+title: 使用托管标识确保 Azure SQL 数据库连接的安全 - Azure 应用服务 | Microsoft Docs
 description: 了解如何使用托管标识让数据库连接更安全，以及如何将此应用到其他 Azure 服务。
 services: app-service\web
 documentationcenter: dotnet
@@ -14,16 +14,16 @@ ms.topic: tutorial
 ms.date: 11/30/2018
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: 8c31e410713e4ba8ce6443170ba5ad5c2e740419
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: b7d8a9b0ef48f7daed74fb15263e516d820a6a38
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52677927"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53259063"
 ---
 # <a name="tutorial-secure-azure-sql-database-connection-from-app-service-using-a-managed-identity"></a>教程：使用托管标识确保从应用服务进行的 Azure SQL 数据库连接的安全
 
-[应用服务](app-service-web-overview.md)在 Azure 中提供高度可缩放、自修补的 Web 托管服务。 它还为应用提供[托管标识](app-service-managed-service-identity.md)，这是一项统包解决方案，可以确保安全地访问 [Azure SQL 数据库](/azure/sql-database/)和其他 Azure 服务。 应用服务中的托管标识可以让应用更安全，因为不需在应用中存储机密，例如连接字符串中的凭据。 在本教程中，请将托管标识添加到在[教程：使用 SQL 数据库在 Azure 中构建 ASP.NET 应用](app-service-web-tutorial-dotnet-sqldatabase.md)中构建的示例 ASP.NET Web 应用。 完成后，示例应用就可以安全地连接到 SQL 数据库，不需用户名和密码。
+[应用服务](app-service-web-overview.md)在 Azure 中提供高度可缩放、自修补的 Web 托管服务。 它还为应用提供[托管标识](app-service-managed-service-identity.md)，这是一项统包解决方案，可以确保安全地访问 [Azure SQL 数据库](/azure/sql-database/)和其他 Azure 服务。 应用服务中的托管标识可以让应用更安全，因为不需在应用中存储机密，例如连接字符串中的凭据。 在本教程中，请将托管标识添加到在[教程：使用 SQL 数据库在 Azure 中构建 ASP.NET 应用](app-service-web-tutorial-dotnet-sqldatabase.md)。 完成后，示例应用就可以安全地连接到 SQL 数据库，不需用户名和密码。
 
 > [!NOTE]
 > 此方案目前受 .NET Framework 4.6 及更高版本的支持，但不受 [.NET Core 2.1](https://www.microsoft.com/net/learn/get-started/windows) 的支持。 [.NET Core 2.2](https://www.microsoft.com/net/download/dotnet-core/2.2) 支持此方案，但它尚未包括在应用服务的默认映像中。 
@@ -44,7 +44,7 @@ ms.locfileid: "52677927"
 
 ## <a name="prerequisites"></a>先决条件
 
-本文是[教程：使用 SQL 数据库在 Azure 中构建 ASP.NET 应用](app-service-web-tutorial-dotnet-sqldatabase.md)的后续内容。 如果尚未学习该教程，请先学习该教程。 也可调整这些步骤，使用 SQL 数据库来构建自己的 ASP.NET 应用。
+本文从你在[教程：使用 SQL 数据库在 Azure 中构建 ASP.NET 应用](app-service-web-tutorial-dotnet-sqldatabase.md)。 如果尚未学习该教程，请先学习该教程。 也可调整这些步骤，使用 SQL 数据库来构建自己的 ASP.NET 应用。
 
 <!-- ![app running in App Service](./media/app-service-web-tutorial-dotnetcore-sqldb/azure-app-in-browser.png) -->
 
@@ -95,11 +95,10 @@ az webapp config connection-string set --resource-group myResourceGroup --name <
 
 ## <a name="modify-aspnet-code"></a>修改 ASP.NET 代码
 
-在 Visual Studio 的 **DotNetAppSqlDb** 项目中打开 _packages.config_，在包列表中添加以下行。
+在 Visual Studio 中，打开包管理器控制台，并添加 NuGet 包 [Microsoft.Azure.Services.AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication)：
 
-```xml
-<package id="Microsoft.Azure.Services.AppAuthentication" version="1.1.0-preview" targetFramework="net461" />
-<package id="Microsoft.IdentityModel.Clients.ActiveDirectory" version="3.14.2" targetFramework="net461" />
+```PowerShell
+Install-Package Microsoft.Azure.Services.AppAuthentication -Version 1.1.0-preview
 ```
 
 打开 _Models\MyDatabaseContext.cs_，将以下 `using` 语句添加到文件顶部：

@@ -1,21 +1,22 @@
 ---
-title: 教程 4：提取文本匹配项 - LUIS 列表实体
+title: 文本完全匹配
 titleSuffix: Azure Cognitive Services
 description: 获取与项的预定义列表匹配的数据。 列表中的每个项可以有也是完全匹配的同义词
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: tutorial
 ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: a4e294687b6c3ea2ba6ff8003e7a8f1ac69ea639
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 5706e0b124bb9ceaf1abf7228faf088dc4e510ce
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52425065"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53096683"
 ---
 # <a name="tutorial-4-extract-exact-text-matches"></a>教程 4：提取确切的文本匹配项
 本教程介绍如何获取与项的预定义列表匹配的数据。 列表中的每个项可以包含一个同义词列表。 就人力资源应用来说，可以通过多项信息（例如姓名、电子邮件、电话号码、美国联邦税务 ID）来确定员工身份。 
@@ -106,11 +107,11 @@ ms.locfileid: "52425065"
 
 3. 在实体弹出对话框中，输入 `Employee` 作为实体名称，输入“列表”作为实体类型。 选择“完成”。  
 
-    [![](media/luis-quickstart-intent-and-list-entity/hr-list-entity-ddl.png "创建新实体弹出对话框的屏幕截图")](media/luis-quickstart-intent-and-list-entity/hr-list-entity-ddl.png#lightbox)
+    [![创建新实体弹出项对话框的屏幕截图](media/luis-quickstart-intent-and-list-entity/hr-list-entity-ddl.png "Screenshot of creating new entity pop-up dialog")](media/luis-quickstart-intent-and-list-entity/hr-list-entity-ddl.png#lightbox)
 
 4. 在“员工”实体页上，输入 `Employee-24612` 作为新值。
 
-    [![](media/luis-quickstart-intent-and-list-entity/hr-emp1-value.png "输入值的屏幕截图")](media/luis-quickstart-intent-and-list-entity/hr-emp1-value.png#lightbox)
+    [![输入值的屏幕截图](media/luis-quickstart-intent-and-list-entity/hr-emp1-value.png "Screenshot of entering value")](media/luis-quickstart-intent-and-list-entity/hr-emp1-value.png#lightbox)
 
 5. 对于“同义项”，请添加以下值：
 
@@ -122,7 +123,7 @@ ms.locfileid: "52425065"
     |个人移动电话号码|425-555-1212|
     |美国联邦社会安全号码|123-45-6789|
 
-    [![](media/luis-quickstart-intent-and-list-entity/hr-emp1-synonyms.png "输入同义项的屏幕截图")](media/luis-quickstart-intent-and-list-entity/hr-emp1-synonyms.png#lightbox)
+    [![输入同义词的屏幕截图](media/luis-quickstart-intent-and-list-entity/hr-emp1-synonyms.png "Screenshot of entering synonyms")](media/luis-quickstart-intent-and-list-entity/hr-emp1-synonyms.png#lightbox)
 
 6. 输入 `Employee-45612` 作为新值。
 
@@ -150,7 +151,7 @@ ms.locfileid: "52425065"
 
 2. 将光标定位到地址中 URL 的末尾，并输入 `shift 123-45-6789 from Z-1242 to T-54672`。 最后一个查询字符串参数为 `q`，表示陈述查询 (**q**uery)。 此陈述不同于标记的任何陈述，因此，它非常适合用于测试，测试结果应返回提取了 `Employee` 的 `MoveEmployee` 意向。
 
-  ```JSON
+  ```json
   {
     "query": "shift 123-45-6789 from Z-1242 to T-54672",
     "topScoringIntent": {

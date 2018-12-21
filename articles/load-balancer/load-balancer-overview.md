@@ -1,5 +1,6 @@
 ---
-title: Azure 负载均衡器概述 | Microsoft 文档
+title: 什么是 Azure 负载均衡器？
+titlesuffix: Azure Load Balancer
 description: Azure 负载均衡器功能、体系结构和实现概述。 了解负载均衡器工作原理，并在云中对其进行利用。
 services: load-balancer
 documentationcenter: na
@@ -8,16 +9,17 @@ ms.service: load-balancer
 Customer intent: As an IT administrator, I want to learn more about the Azure Load Balancer service and what I can use it for.
 ms.devlang: na
 ms.topic: overview
+ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/20/2018
 ms.author: kumud
-ms.openlocfilehash: 6368b47400f6ea06babfe538cf6f58b18cc49117
-ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
+ms.openlocfilehash: 3b1f2374618a0fdb446c4d0bf59fa14a828639ea
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51219573"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53185607"
 ---
 # <a name="what-is-azure-load-balancer"></a>什么是 Azure 负载均衡器？
 
@@ -62,7 +64,7 @@ Azure 负载均衡器以两种 SKU 提供：“基本”和“标准”。 规�
 
     ![基于哈希的分发](./media/load-balancer-overview/load-balancer-distribution.png)
 
-    *图：基于哈希的分配*
+    图：基于哈希的分发
 
 * **端口转发**
 
@@ -129,7 +131,7 @@ _最佳做法是显式指定 SKU，尽管目前不强制要求这样做。_  目
 
 ![公共负载均衡器示例](./media/load-balancer-overview/IC727496.png)
 
-*图：使用公共负载均衡器对 Web 流量进行负载均衡*
+图：*使用公共负载均衡器对 Web 流量进行负载均衡*
 
 当 Internet 客户端将网页请求发送到 TCP 端口 80 上的 Web 应用的公共 IP 地址时，Azure 负载均衡器会在负载均衡集中的三个 VM 之间分配请求。 有关负载均衡器算法的详细信息，请参阅本文的[负载均衡器功能](load-balancer-overview.md##fundamental-load-balancer-features)部分。
 
@@ -148,7 +150,7 @@ _最佳做法是显式指定 SKU，尽管目前不强制要求这样做。_  目
 
 ![内部负载均衡器示例](./media/load-balancer-overview/IC744147.png)
 
-*图：使用公共和内部负载均衡器对多层应用程序进行负载均衡*
+图：使用公共和内部负载均衡器对多层应用程序进行负载均衡
 
 ## <a name="pricing"></a>定价
 根据配置的负载均衡规则数量以及处理的入站和出站数据量计收标准负载均衡器的费用。 有关标准负载均衡器的定价信息，请访问[负载均衡器定价](https://azure.microsoft.com/pricing/details/load-balancer/)页。

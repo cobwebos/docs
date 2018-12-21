@@ -1,5 +1,5 @@
 ---
-title: 快速入门：使用语音服务 SDK 在 Windows 上的 C++ 中识别语音
+title: 快速入门：识别语音，C++ (Windows) - 语音服务
 titleSuffix: Azure Cognitive Services
 description: 了解如何使用语音服务 SDK 在 Windows 桌面上的 C++ 中识别语音
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.component: speech-service
 ms.topic: quickstart
 ms.date: 11/06/2018
 ms.author: wolfma
-ms.openlocfilehash: 8947ba3f39cebf51e956db0d841e393963832bc4
-ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
+ms.openlocfilehash: 454b84f4ba5e492f61daf67c980b204c82a2090d
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51218724"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53075181"
 ---
 # <a name="quickstart-recognize-speech-in-c-on-windows-by-using-the-speech-sdk"></a>快速入门：使用语音 SDK 在 Windows 上的 C++ 中识别语音
 
@@ -31,11 +31,11 @@ ms.locfileid: "51218724"
 
 1. 启动 Visual Studio 2017。
 
-1. 确保“使用 C++ 进行的桌面开发”工作负荷可用。 在 Visual Studio 菜单栏中选择“工具” > “获取工具和功能”，以便打开 Visual Studio 安装程序。 如果此工作负荷已启用，请跳到下一步。 
+1. 确保“使用 C++ 进行的桌面开发”工作负荷可用。 在 Visual Studio 菜单栏中选择“工具” > “获取工具和功能”，以便打开 Visual Studio 安装程序。 如果此工作负荷已启用，请跳到下一步。
 
     ![Visual Studio 工作负荷选项卡的屏幕截图](media/sdk/vs-enable-cpp-workload.png)
 
-    否则，请勾选“使用 C++ 进行的桌面开发”旁边的框。 
+    否则，请勾选“使用 C++ 进行的桌面开发”旁边的框。
 
 1. 确保 **NuGet 包管理器**组件可用。 切换到 Visual Studio 安装程序对话框的“单个组件”选项卡，选择“NuGet 包管理器”（如果尚未启用）。
 

@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 11/7/2018
 ms.author: alinast
-ms.openlocfilehash: e11ae90655e1d4ce7a2475f0eacefb25491416da
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: ab1e879a7c145699779f6af3a97cef0ee6b5d219
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52582388"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53105506"
 ---
 # <a name="quickstart-find-available-rooms-by-using-azure-digital-twins"></a>快速入门：通过 Azure 数字孪生查找可用房间
 
@@ -71,7 +71,7 @@ ms.locfileid: "52582388"
 - 一个自定义函数。 
 - 一个角色分配。
  
-空间图使用 [provisionSample.yaml](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/actions/provisionSample.yaml) 文件进行预配。
+空间图使用 [provisionSample.yaml](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/actions/provisionSample.yaml) 文件进行预配。 
 
 1. 运行 `dotnet run ProvisionSample`。
     >[!NOTE]
@@ -88,6 +88,9 @@ ms.locfileid: "52582388"
 1. 在执行结束时，请复制设备的 `ConnectionString`，以便在设备模拟器示例中使用。 仅复制下图所示的字符串。
 
     ![预配示例][1]
+
+    >[!TIP]
+    > 可以使用 [Azure 数字孪生图形查看器](https://github.com/Azure/azure-digital-twins-graph-viewer)查看和修改空间图。
 
 ## <a name="send-sensor-data"></a>发送传感器数据
 

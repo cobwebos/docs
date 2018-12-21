@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: quickstart
 ms.date: 12/4/2018
 ms.author: victorh
-ms.openlocfilehash: f54a9e40c4f75704e66c4a3a90ad4b293d1e6309
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.openlocfilehash: 9929662f1fe4612e51c82248f64e3191f7fdb223
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52889219"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52955192"
 ---
 # <a name="quickstart-configure-azure-dns-for-name-resolution-by-using-the-portal"></a>快速入门：使用门户配置用于名称解析的 Azure DNS
 
@@ -41,8 +41,8 @@ DNS 区域包含域的 DNS 条目。 若要开始在 Azure DNS 中托管域，�
    
 1. 在“创建 DNS 区域”页上，键入或选择以下值：
    
-   - **名称**：对于本快速入门示例，键入 *contoso.xyz*。 DNS 区域名称可以是尚未在 Azure DNS 服务器上配置的任何值。 实际值可以是从域名注册机构购买的域。
-   - **资源组**：选择“新建”，输入 *dns-test*，然后选择“确定”。 资源组名称在 Azure 订阅中必须唯一。 
+   - **名称**：对于本快速入门示例，键入 contoso.xyz。 DNS 区域名称可以是尚未在 Azure DNS 服务器上配置的任何值。 实际值可以是从域名注册机构购买的域。
+   - **资源组**：选择“新建”，输入 dns-test，然后选择“确定”。 资源组名称在 Azure 订阅中必须唯一。 
    
 1. 选择“创建”。
 
@@ -62,13 +62,13 @@ DNS 区域包含域的 DNS 条目。 若要开始在 Azure DNS 中托管域，�
 
 1. 在“添加记录集”页上，键入或选择以下值：
 
-   - **名称**：键入 *www*。 记录名称是你要解析为指定 IP 地址的主机名。
-   - **类型**：选择“A”。“A”记录是最常见的，但是也有其他适用于邮件服务器（“MX”）、IP v6 地址（“AAAA”）等的记录类型。 
-   - **TTL**：键入 *1*。 DNS 请求的*存活时间*指定 DNS 服务器和客户端可以将响应缓存多长时间。
+   - **名称**：键入 www。 记录名称是你要解析为指定 IP 地址的主机名。
+   - **类型**：选择 A。“A”记录是最常见的，但是也有其他适用于邮件服务器（“MX”）、IP v6 地址（“AAAA”）等的记录类型。 
+   - **TTL**：键入 1。 DNS 请求的*存活时间*指定 DNS 服务器和客户端可以将响应缓存多长时间。
    - **TTL 单位**：选择“小时”。 这是用于 **TTL** 值的时间单位。 
-   - **IP 地址**：对于本快速入门示例，键入 *10.10.10.10*。 此值是记录名称解析为的 IP 地址。 在现实场景中，则应输入 Web 服务器的公用 IP 地址。
+   - **IP 地址**：对于本快速入门示例，键入 10.10.10.10。 此值是记录名称解析为的 IP 地址。 在现实场景中，则应输入 Web 服务器的公用 IP 地址。
 
-因为本快速入门未使用真实的域，因此不需要在域名注册机构那里配置 Azure DNS 名称服务器。 对于现实域，你希望 Internet 上的任何人都能够解析主机名，以便连接到你的 Web 服务器或应用。 你将访问域名注册机构来将名称服务器记录替换为 Azure DNS 名称服务器。 有关详细信息，请参阅[教程：在 Azure DNS 中托管域](dns-delegate-domain-azure-dns.md#delegate-the-domain)。
+因为本快速入门未使用真实的域，因此不需要在域名注册机构那里配置 Azure DNS 名称服务器。 对于现实域，你希望 Internet 上的任何人都能够解析主机名，以便连接到你的 Web 服务器或应用。 你将访问域名注册机构来将名称服务器记录替换为 Azure DNS 名称服务器。 有关详细信息，请参见[教程：在 Azure DNS 中托管域](dns-delegate-domain-azure-dns.md#delegate-the-domain)。
 
 ## <a name="test-the-name-resolution"></a>测试名称解析
 

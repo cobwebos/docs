@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 09/27/2018
+ms.date: 12/06/2018
 ms.topic: quickstart
 ms.service: cost-management
 manager: vitavor
-ms.custom: ''
-ms.openlocfilehash: f2cb5d33b8d7a7442da16a38e268c56de363a9c6
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.custom: secdec18
+ms.openlocfilehash: 9a27efe7908b2a15ceb823d7a85c4a12603731ab
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52274061"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53075975"
 ---
 # <a name="activate-azure-subscriptions-and-accounts-with-cloudyn"></a>使用 Cloudyn 激活 Azure 订阅和帐户
 
@@ -41,7 +41,7 @@ ms.locfileid: "52274061"
 3. 在 Azure Active Directory 中，选择“用户设置”。
 4. 检查“应用注册”选项。
     - 如果该选项设置为“是”，则非管理员用户可以注册 AD 应用。 此设置意味着 Active AD 租户中的任何用户都可以注册应用。  
-    ![应用注册](./media/activate-subs-accounts/app-register.png)
+    ![在“用户设置”中选择“应用注册”](./media/activate-subs-accounts/app-register.png)
     - 如果“应用注册”选项设置为“否”，则只有租户管理用户才能注册 Azure Active Directory 应用。 租户管理员必须注册 CloudynCollector 应用程序。
 
 
@@ -53,12 +53,12 @@ ms.locfileid: "52274061"
 
 1. 在 Cloudyn 门户中，单击右上方的齿轮符号，然后选择“云帐户”。
 2. 单击“添加新帐户”，随即会显示“添加新帐户”框。 输入所需的信息。  
-    ![添加新帐户框](./media/activate-subs-accounts//add-new-account.png)
+    ![在“添加新帐户”框中输入所需的信息](./media/activate-subs-accounts/add-new-account.png)
 
 ### <a name="update-a-subscription"></a>更新订阅
 
 1. 要在“帐户管理”中更新 Cloudyn 中已存在的未激活订阅，请单击父租户 GUID 右侧的编辑铅笔符号。 订阅已归属于父租户，因此应避免单独激活订阅。
-    ![重新发现订阅](./media/activate-subs-accounts/existing-sub.png)
+    ![在“重新发现订阅”框中选择租户 ID](./media/activate-subs-accounts/existing-sub.png)
 2. 根据必要输入租户 ID。 如果不知道自己的租户 ID，可使用以下步骤找到它：
     1. 登录到 [Azure 门户](https://portal.azure.com)。
     2. 在 Azure 门户中，选择“Azure Active Directory”。
@@ -106,7 +106,7 @@ ms.locfileid: "52274061"
 只有 Azure 服务管理员可以启用 Cloudyn。 协同管理员的权限不足。 但是，你可以绕过管理员要求。 你可以使用 PowerShell 脚本请求 Azure Active Directory 管理员授予对 **CloudynAzureCollector** 进行授权所需的权限。 以下脚本授予注册 Azure Active Directory 服务主体 **CloudynAzureCollector** 所需的权限。
 
 
-```
+```powershell
 #THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 #Tenant - enter your tenant ID or Name

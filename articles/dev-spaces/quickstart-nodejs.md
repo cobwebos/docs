@@ -10,14 +10,14 @@ ms.date: 09/26/2018
 ms.topic: quickstart
 description: 在 Azure 中使用容器和微服务快速开发 Kubernetes
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes 服务, 容器
-ms.openlocfilehash: efb3e63841dbe88bd8711881b373ab505468eabd
-ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
+ms.openlocfilehash: 52cca29392f226aa0f33081b9303a8c5d1f41036
+ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51704760"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53413330"
 ---
-# <a name="quickstart-create-a-kubernetes-dev-space-with-azure-dev-spaces-nodejs"></a>快速入门：使用 Azure Dev Spaces 创建 Kubernetes 开发空间 (Node.js)
+# <a name="quickstart-create-a-kubernetes-dev-space-with-azure-dev-spaces-nodejs"></a>快速入门：使用 Azure Dev Spaces (Node.js) 创建 Kubernetes dev 空间
 
 本指南介绍如何：
 
@@ -37,12 +37,12 @@ ms.locfileid: "51704760"
 
     ```cmd
     az group create --name MyResourceGroup --location <region>
-    az aks create -g MyResourceGroup -n myAKS --location <region> --kubernetes-version 1.11.2 --enable-addons http_application_routing --generate-ssh-keys
+    az aks create -g MyResourceGroup -n myAKS --location <region> --kubernetes-version 1.10.9 --enable-addons http_application_routing --generate-ssh-keys
     ```
 
 ## <a name="set-up-azure-dev-spaces"></a>设置 Azure Dev Spaces
 
-Azure CLI 和 Azure Dev Spaces 扩展可以在 Windows、Mac 或 Linux 计算机上安装并运行。 Linux 支持以下发行版：Ubuntu（18.04、16.04 和 14.04）、Debian 8 和 9、RHEL 7、Fedora 26+、CentOS 7、openSUSE 42.2、SLES 12。
+Azure CLI 和 Azure Dev Spaces 扩展可以在 Windows、Mac 或 Linux 计算机上安装并运行。 对于 Linux，支持以下发行版：Ubuntu（18.04、16.04 和 14.04）、Debian 8 和 9、RHEL 7、Fedora 26+、CentOS 7、openSUSE 42.2 和 SLES 12。
 
 请按以下步骤设置 Azure Dev Spaces：
 

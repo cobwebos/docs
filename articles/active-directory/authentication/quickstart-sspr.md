@@ -10,14 +10,14 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: c40cb3192d514d990ea2a5d66e1484ff204e9b10
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: d04d27ee6136edec8d9af16f9133cf9a7cc0720c
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39223551"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53311552"
 ---
-# <a name="quickstart-self-service-password-reset"></a>快速入门：自助服务密码重置
+# <a name="quickstart-self-service-password-reset"></a>快速入门：自助密码重置
 
 本快速入门分步展示了 IT 管理员如何配置自助服务密码重置 (SSPR)，通过这种简单方法使用户能够重置其密码或解锁其帐户。
 
@@ -25,7 +25,7 @@ ms.locfileid: "39223551"
 
 * 一个至少启用了试用版许可证的有效 Azure AD 租户。
 * 一个具有全局管理员权限的帐户。
-* 一个你知道其密码的非管理员测试用户，如果需要创建用户，请参阅[快速入门：向 Azure Active Directory 添加新用户](../add-users-azure-active-directory.md)一文。
+* 一个你知道其密码的非管理员测试用户，如果需要创建用户，请参阅[快速入门：向 Azure Active Directory 添加新用户](../add-users-azure-active-directory.md)。
 * 非管理员测试用户所属的用于测试的一个试点组，如果需要创建组，请参阅[在 Azure Active Directory 中创建组并添加成员](../active-directory-groups-create-azure-portal.md)一文。
 
 ## <a name="enable-self-service-password-reset"></a>启用自助服务密码重置
@@ -49,7 +49,7 @@ ms.locfileid: "39223551"
 
 4. 在“注册”页上，进行以下选择：
    * 要求用户在登录时注册：**是**
-   * 设置用户必须在几天后重新确认其身份验证信息：**365**
+   * 设置用户必须在几天后重新确认其身份验证信息：365
 
 ## <a name="test-self-service-password-reset"></a>测试自助服务密码重置
 
@@ -64,7 +64,7 @@ ms.locfileid: "39223551"
 
 ## <a name="clean-up-resources"></a>清理资源
 
-禁用自助密码重置很容易。 打开 Azure AD 租户，转到“密码重置” > “属性”，然后在“启用自助密码重置”下选择“无”。
+禁用自助密码重置很容易。 打开 Azure AD 租户，转到“属性” > “密码重置”，然后在“已启用自助服务密码重置”下选择“无”。
 
 ## <a name="next-steps"></a>后续步骤
 

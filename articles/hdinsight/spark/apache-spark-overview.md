@@ -1,5 +1,5 @@
 ---
-title: Azure HDInsight 中的 Apache Spark 是什么
+title: Apache Spark 是什么 - Azure HDInsight
 description: 本文介绍了 HDInsight 中的 Spark，以及可以在 HDInsight 中使用 Spark 群集的不同方案。
 services: hdinsight
 author: hrasheed-msft
@@ -7,21 +7,20 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,mvc
 ms.topic: overview
-ms.date: 05/07/2018
+ms.date: 12/07/2018
 ms.author: hrasheed
-ms.openlocfilehash: afd40298679375ed5dffcd35cdf5c877277dab8c
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 35c063435e5524b5be473f6a71d8aa64ed74513c
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52498131"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53166415"
 ---
 # <a name="what-is-apache-spark-in-azure-hdinsight"></a>Azure HDInsight 中的 Apache Spark 是什么
 
-Apache Spark：一个并行处理框架，支持使用内存中处理来提升大数据分析应用程序的性能。 Azure HDInsight 中的 Apache Spark 是 Microsoft 的 Apache Spark 在云中的实现。 使用 HDInsight 可在 Azure 中轻松创建和配置 Spark 群集。 HDInsight 中的 Spark 群集兼容 Azure 存储和 Azure Data Lake Store。 因此，可使用 HDInsight Spark 群集来处理存储在 Azure 中的数据。 有关组件和版本信息，请参阅 [Azure HDInsight 中的 Apache Hadoop 组件和版本](../hdinsight-component-versioning.md)。
+Apache Spark 是并行处理框架，支持使用内存中处理来提升大数据分析应用程序的性能。 Azure HDInsight 中的 Apache Spark 是 Microsoft 的 Apache Spark 在云中的实现。 使用 HDInsight 可在 Azure 中轻松创建和配置 Spark 群集。 HDInsight 中的 Spark 群集兼容 Azure 存储和 Azure Data Lake Store。 因此，可使用 HDInsight Spark 群集来处理存储在 Azure 中的数据。 有关组件和版本信息，请参阅 [Azure HDInsight 中的 Apache Hadoop 组件和版本](../hdinsight-component-versioning.md)。
 
 ![Spark：一种统一框架](./media/apache-spark-overview/hdinsight-spark-overview.png)
-
 
 ## <a name="what-is-spark"></a>什么是 Spark？
 
@@ -88,7 +87,7 @@ HDInsight 中的 Spark 群集适用于以下主要方案：
 - Spark 流式处理和实时数据分析
 
     HDInsight 中的 Spark 群集提供丰富的支持，供你生成实时分析解决方案。 尽管 Spark 已随附从 Kafka、Flume、Twitter、ZeroMQ 或 TCP 套接字等众多来源引入数据的连接器，但 HDInsight 中的 Spark 增加了一流的支持，供你从 Azure 事件中心引入数据。 事件中心是 Azure 上最广泛使用的队列服务。 拥有立即可用的事件中心支持，让 HDInsight 中的 Spark 群集成为生成实时分析管道的理想平台。
-    
+
 ## <a name="where-do-i-start"></a>从哪里开始？
 
 可通过以下文章深入了解 HDInsight 中的 Apache Spark：
@@ -104,4 +103,3 @@ HDInsight 中的 Spark 群集适用于以下主要方案：
 在此概述中，可了解 Azure HDInsight 中 Apache Spark 的一些基础知识。 转到下一文章，了解如何创建 HDInsight Spark 群集并运行 Spark SQL 查询：
 
 - [在 HDInsight 中创建 Apache Spark 群集](./apache-spark-jupyter-spark-sql.md)
-

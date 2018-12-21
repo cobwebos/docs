@@ -1,6 +1,7 @@
 ---
-title: Azure Machine Learning workbench 发生了什么情况？ | Microsoft Docs
-description: 了解 Workbench 应用程序发生的情况、Azure 机器学习有何变化，以及支持时间线是什么。
+title: Workbench 发生了什么情况？
+titleSuffix: Azure Machine Learning service
+description: 了解 Workbench 应用程序发生的情况、Azure 机器学习服务有何变化，以及支持时间线是什么。
 services: machine-learning
 ms.service: machine-learning
 ms.component: core
@@ -9,14 +10,15 @@ ms.reviewer: jmartens
 author: j-martens
 ms.author: jmartens
 ms.date: 12/04/2018
-ms.openlocfilehash: db09203e86c32a7e03b4b2c4bcc670d16583ab20
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.custom: seodec18
+ms.openlocfilehash: c9559e07cc70cbd7adafd75c23b9e67d45bee48a
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52879428"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53184299"
 ---
-# <a name="what-is-happening-to-workbench-in-azure-machine-learning"></a>Azure 机器学习中的 Workbench 发生了什么情况？
+# <a name="what-is-happening-to-workbench-in-azure-machine-learning-service"></a>Azure 机器学习服务中的 Workbench 发生了什么情况？
 
 为了给改进后的[体系结构](concept-azure-machine-learning-architecture.md)让路，2018 年 9 月版本弃用并替换了 Workbench 应用程序和其他一些早期功能。 此版本包含许多重大更新，这些更新是由有助于改善体验的客户反馈促成。 核心功能（从试验运行到模型部署）并无变化，但现在可以使用可靠的 <a href="https://aka.ms/aml-sdk" target="_blank">SDK</a> 和 [CLI](reference-azure-machine-learning-cli.md) 完成机器学习任务和管道。  
 
@@ -82,13 +84,13 @@ ms.locfileid: "52879428"
  
 若要继续使用旧模型注册表中注册的模型，必须将它们迁移到新工作区。 为此，请在新工作区中[下载模型并重新注册它们](how-to-migrate.md)。 
 
-若要继续使用在旧映像注册表中创建的映像，必须在新工作区中重新创建它们。 为此，请按照[创建 docker 映像](how-to-deploy-to-aci.md#configure-an-image)部分中的说明操作。 
+若要继续使用在旧映像注册表中创建的映像，必须在新工作区中重新创建它们。 可以按照[配置和创建映像](how-to-deploy-and-where.md#configureimage)部分进行操作。 
 
 ## <a name="what-about-deployed-web-services"></a>已部署 Web 服务又如何？
 
 只要 Azure 容器服务 (ACS) 受支持，使用模型管理帐户部署为 Web 服务的模型就可以继续运行。 甚至在模型管理帐户不再受支持后，这些 Web 服务也仍会运行。 不过，在旧 CLI 不再受支持后，管理这些 Web 服务的功能支持也不再提供。
 
-在更高版本中，模型作为 Web 服务部署到 [Azure 容器实例](how-to-deploy-to-aci.md) (ACI) 或 [Azure Kubernetes 服务](how-to-deploy-to-aks.md) (AKS) 群集中。 还可以[部署到 FPGA 和 IoT Edge](how-to-deploy-and-where.md)。 无需更改任何计分文件、依赖项和架构，即可使用全新 SDK 或 CLI 重新部署模型。 
+在更高版本中，模型作为 Web 服务部署到 Azure 容器实例 (ACI) 或 Azure Kubernetes 服务 (AKS) 群集中。 还可以部署到 FPGA 和 IoT Edge。 有关详细信息，请参阅[部署方式及位置](how-to-deploy-and-where.md)文档。 无需更改任何计分文件、依赖项和架构，即可使用全新 SDK 或 CLI 重新部署模型。 
 
 ## <a name="what-about-the-old-sdk--cli"></a>旧 SDK 和 CLI 又如何？
 
@@ -112,4 +114,4 @@ ms.locfileid: "52879428"
 
 * [什么是 Azure 机器学习服务](overview-what-is-azure-ml.md)
 * [快速入门：使用 Python 创建工作区](quickstart-get-started.md)
-* [教程：定型模型](tutorial-train-models-with-aml.md)
+* [教程：训练模型](tutorial-train-models-with-aml.md)

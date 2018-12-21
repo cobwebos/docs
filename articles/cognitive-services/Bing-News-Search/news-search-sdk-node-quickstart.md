@@ -1,7 +1,7 @@
 ---
-title: 快速入门：必应新闻搜索 SDK、Node
+title: 快速入门：执行新闻搜索 - 适用于 Node.js 的必应新闻搜索 SDK
 titleSuffix: Azure Cognitive Services
-description: 设置必应新闻搜索 SDK 控制台应用程序
+description: 使用本快速入门，可以使用适用于 Node.js 的必应新闻搜索 SDK 搜索新闻，并处理响应。
 services: cognitive-services
 author: mikedodaro
 manager: cgronlun
@@ -10,14 +10,15 @@ ms.component: bing-news-search
 ms.topic: quickstart
 ms.date: 02/12/2018
 ms.author: v-gedod
-ms.openlocfilehash: 075ce771b6fa92663f172734aabf57b089b294a9
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.custom: seodec2018
+ms.openlocfilehash: 0fa78474d6400f890626859c32915c8657f92d4e
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52316933"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53249339"
 ---
-# <a name="quickstart-bing-news-search-sdk-with-node"></a>快速入门：通过 Node 使用必应新闻搜索 SDK
+# <a name="quickstart-perform-a-news-search-with-the-bing-news-search-sdk-for-nodejs"></a>快速入门：使用适用于 Node.js 的必应新闻搜索 SDK 执行新闻搜索
 
 必应新闻搜索 SDK 包含用于新闻查询以及对结果进行分析的 REST API 功能。 
 
@@ -51,10 +52,10 @@ client.newsOperations.search('Winter Olympics').then((result) => {
 
 ```
 代码会将 `result.value` 项输出至控制台，并且不会分析任何文本。 结果（如果每个类别都有结果）将包括：
-- _type: 'NewsArticle'
-- _type: 'WebPage'
-- _type: 'VideoObject'
-- _type: 'ImageObject'
+- _type:'NewsArticle'
+- _type:'WebPage'
+- _type:'VideoObject'
+- _type:'ImageObject'
 
 <!-- Remove until we can replace with santized version
 ![News results](media/node-sdk-quickstart-results.png)

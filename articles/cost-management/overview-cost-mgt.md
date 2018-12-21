@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 09/21/2018
+ms.date: 12/05/2018
 ms.topic: overview
 ms.service: cost-management
 manager: benshy
 ms.custom: ''
-ms.openlocfilehash: 16e2da864d51cbc44457715813e851fd873c8746
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.openlocfilehash: a90ef531cedb5e4c32a8f0af8b6cca86a93fb39a
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52276663"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52997122"
 ---
 # <a name="what-is-azure-cost-management"></a>Azure 成本管理是什么？
 
@@ -29,7 +29,7 @@ ms.locfileid: "52276663"
 
 ## <a name="plan-and-control-expenses"></a>计划和控制支出
 
-成本管理可帮助你计划和控制成本的方式包括：成本分析、预算、建议和导出成本管理数据。
+成本管理帮助你规划和控制成本的方式包括：成本分析、预算、建议和导出成本管理数据。
 
 可以通过成本分析来了解和分析组织成本。 可以按组织查看合计成本，了解哪些方面持续产生成本并确定支出趋势。 此外，还可以查看一段时间的累计成本，根据预算预估每月、每季度，甚至每年的成本趋势。
 

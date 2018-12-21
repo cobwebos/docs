@@ -1,7 +1,7 @@
 ---
-title: 快速入门：必应新闻搜索 API、Java
+title: 快速入门：通过 C# 执行 Web 搜索 - 必应 Web 搜索 REST API
 titlesuffix: Azure Cognitive Services
-description: 获取信息和代码示例，以帮助你快速开始使用 Azure 上的 Microsoft 认知服务中的必应新闻搜索 API。
+description: 使用本快速入门，通过使用 Java 将请求发送到必应新闻搜索 REST API，并接收 JSON 响应。
 services: cognitive-services
 author: aahill
 manager: cgronlun
@@ -10,14 +10,15 @@ ms.component: bing-news-search
 ms.topic: quickstart
 ms.date: 9/21/2017
 ms.author: aahi
-ms.openlocfilehash: d8ab0e10e8332cf2305185849d6446d679210845
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.custom: seodec2018
+ms.openlocfilehash: 9933f1c54e6081ed3f1004712543610a7883736b
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52316831"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53260950"
 ---
-# <a name="quickstart-for-bing-news-search-api-with-java"></a>将必应新闻搜索 API 与 Java 配合使用快速入门
+# <a name="quickstart-perform-a-news-search-using-java-and-the-bing-news-search-rest-api"></a>快速入门：使用 Java 和必应新闻搜索 REST API 执行新闻搜索
 
 本文展示了如何使用 Azure 上的 Microsoft 认知服务中包含的必应搜索 API。 虽然本文是使用 Java 编写的，但 API 是一种 RESTful Web 服务，与任何可以发出 HTTP 请求并分析 JSON 的编程语言兼容。 
 

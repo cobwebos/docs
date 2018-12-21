@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 09/05/2018
 ms.author: pryerram
 ms.custom: mvc
-ms.openlocfilehash: defe1a109381c7ee44c6fc5e5db4c6f6ecc5ac6f
-ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
+ms.openlocfilehash: 50a7f3166d677fe1af961866ccae4445a3d810b8
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51706834"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53322135"
 ---
 # <a name="tutorial-use-azure-key-vault-with-an-azure-web-app-in-net"></a>教程：如何将 Azure Key Vault 与 .NET Azure Web 应用配合使用
 
@@ -56,7 +56,7 @@ Azure Key Vault 可帮助你保护机密，例如 API 密钥和数据库连接�
 
 Azure Key Vault 可以安全地存储凭据，因此不需要在代码中提供凭据。 但是，需要对 Azure Key Vault 进行身份验证才能检索密钥。 若要对 Key Vault 进行身份验证，需要提供凭据。 因此，在启动过程中，这是一个难以兼顾的典型问题。 托管服务标识 (MSI) 提供简化该过程的启动标识，可以解决此问题。
 
-为 Azure 服务（例如：虚拟机、应用服务或 Functions）启用 MSI 时，Azure 会创建一个[服务主体](key-vault-whatis.md#basic-concepts)。 MSI 针对 Azure Active Directory (Azure AD) 中的服务实例提供启动标识，并将服务主体的凭据注入该实例。
+为 Azure 服务启用 MSI 时（例如：虚拟机、应用服务或 Functions），Azure 会创建[服务主体](key-vault-whatis.md#basic-concepts)。 MSI 针对 Azure Active Directory (Azure AD) 中的服务实例提供启动标识，并将服务主体的凭据注入该实例。
 
 ![MSI 示意图](media/MSI.png)
 
@@ -90,7 +90,7 @@ Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。
 
 * Key Vault 名称：由 3 到 24 个字符构成的字符串，可以包含数字、字母和连字符（例如：0-9、a-z、A-Z 和 -）
 * 资源组名称
-* 位置：“美国西部”
+* 位置：**美国西部**
 
 在 Azure CLI 中输入以下命令：
 
@@ -132,7 +132,7 @@ az keyvault secret show --name "AppSecret" --vault-name "<YourKeyVaultName>"
    - [KeyVault](https://www.nuget.org/packages/Microsoft.Azure.KeyVault)
 3. 在 About.cshtml.cs 文件中导入以下代码：
 
-   ```
+   ```csharp
     using Microsoft.Azure.KeyVault;
     using Microsoft.Azure.KeyVault.Models;
     using Microsoft.Azure.Services.AppAuthentication;
@@ -140,7 +140,7 @@ az keyvault secret show --name "AppSecret" --vault-name "<YourKeyVaultName>"
 
 4. AboutModel 类中的代码应如下所示：
 
-   ```
+   ```csharp
     public class AboutModel : PageModel
     {
         public string Message { get; set; }
@@ -220,7 +220,7 @@ az keyvault secret show --name "AppSecret" --vault-name "<YourKeyVaultName>"
 
 1. 将应用程序发布到 Azure 时，请记下 `PrincipalId`。 步骤 1 中命令的输出应采用以下格式：
 
-   ```
+   ```json
    {
      "principalId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
      "tenantId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",

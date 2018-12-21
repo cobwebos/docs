@@ -1,21 +1,22 @@
 ---
-title: 使用 Azure CLI 创建策略分配以识别 Azure 环境中的不合规资源
-description: 使用 PowerShell 创建 Azure Policy 分配以识别不合规的资源。
+title: 使用 Azure CLI 创建策略以识别不符合的资源
+description: 使用 Azure CLI 创建 Azure Policy 分配以识别不符合的资源。
 services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 09/18/2018
+ms.date: 12/06/2018
 ms.topic: quickstart
 ms.service: azure-policy
-ms.custom: mvc
-ms.openlocfilehash: 4954ca42af1755ea62e7142048d48805397b6a0a
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+manager: carmonm
+ms.custom: seodec18
+ms.openlocfilehash: 99e8b782f3f52ed89b5188de19d70cb276a0eb84
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46968471"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53315814"
 ---
-# <a name="create-a-policy-assignment-to-identify-non-compliant-resources-in-your-azure-environment-with-the-azure-cli"></a>使用 Azure CLI 创建策略分配以识别 Azure 环境中的不合规资源
+# <a name="create-a-policy-assignment-to-identify-non-compliant-resources-with-azure-cli"></a>使用 Azure CLI 创建策略分配以识别不符合的资源
 
 若要了解 Azure 中的符合性，第一步是确定资源的状态。
 本快速入门逐步讲解如何创建策略分配，以识别未使用托管磁盘的虚拟机。
@@ -28,11 +29,11 @@ Azure CLI 用于从命令行或脚本创建和管理 Azure 资源。 本指南�
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-本快速入门需要运行 Azure CLI 2.0.4 版或更高版本，以便在本地安装并使用 CLI。 若要查找版本，请运行 `az --version`。 如果需要进行安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。
+本快速入门需要运行 Azure CLI 2.0.4 版或更高版本，以便在本地安装并使用 CLI。 要查找版本，请运行 `az --version`。 如果需要进行安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。
 
 ## <a name="prerequisites"></a>先决条件
 
-使用 Azure CLI 注册 Policy Insights 资源提供程序。 注册此资源提供程序可确保订阅能够使用它。 若要注册资源提供程序，必须具有为资源提供程序执行注册操作的权限。 此操作包含在“参与者”和“所有者”角色中。 运行以下命令，注册资源提供程序：
+使用 Azure CLI 注册 Policy Insights 资源提供程序。 注册此资源提供程序可确保订阅能够使用它。 要注册资源提供程序，必须具有注册资源提供程序操作的权限。 此操作包含在“参与者”和“所有者”角色中。 运行以下命令，注册资源提供程序：
 
 ```azurecli-interactive
 az provider register --namespace 'Microsoft.PolicyInsights'
@@ -49,14 +50,14 @@ az provider register --namespace 'Microsoft.PolicyInsights'
 运行以下命令创建策略分配：
 
 ```azurecli-interactive
-az policy assignment create --name 'audit-vm-manageddisks' --display-name 'Audit Virtual Machines without Managed Disks Assignment' --scope '<scope>' --policy '<policy definition ID>'
+az policy assignment create --name 'audit-vm-manageddisks' --display-name 'Audit VMs without managed disks Assignment' --scope '<scope>' --policy '<policy definition ID>'
 ```
 
 上述命令使用以下信息：
 
 - **名称** - 分配的实际名称。  对于此示例，使用 *audit-vm-manageddisks*。
-- **显示名称** - 策略分配的显示名称。 本例使用了“审核不带托管磁盘分配的虚拟机”。
-- **策略** - 策略定义 ID，用作创建分配的依据。 在本例中，此值为策略定义“审核未使用托管磁盘的 VM”的 ID。 若要获取策略定义 ID，请运行以下命令：`az policy definition list --query "[?displayName=='Audit VMs that do not use managed disks']"`
+- **显示名称** - 策略分配的显示名称。 本例使用了“审核未使用托管磁盘分配的虚拟机”。
+- **策略** - 策略定义 ID，用作创建分配的依据。 在本例中，它为策略定义“审核未使用托管磁盘的 VM”的 ID。 若要获取策略定义 ID，请运行以下命令：`az policy definition list --query "[?displayName=='Audit VMs that do not use managed disks']"`
 - **范围** - 范围确定在其中实施策略分配的资源或资源组。 它可以从订阅延伸至资源组。 请务必将 &lt;scope&gt; 替换为资源组的名称。
 
 ## <a name="identify-non-compliant-resources"></a>识别不合规的资源
@@ -64,7 +65,7 @@ az policy assignment create --name 'audit-vm-manageddisks' --display-name 'Audit
 若要查看此新分配下不合规的资源，请运行以下命令获取策略分配 ID：
 
 ```azurepowershell-interactive
-$policyAssignment = Get-AzureRmPolicyAssignment | Where-Object { $_.Properties.DisplayName -eq 'Audit Virtual Machines without Managed Disks Assignment' }
+$policyAssignment = Get-AzureRmPolicyAssignment | Where-Object { $_.Properties.DisplayName -eq 'Audit VMs without managed disks Assignment' }
 $policyAssignment.PolicyAssignmentId
 ```
 
@@ -106,7 +107,7 @@ armclient post "/subscriptions/<subscriptionID>/resourceGroups/<rgName>/provider
 
 ## <a name="clean-up-resources"></a>清理资源
 
-本教程系列中的其他指南建立在本快速入门的基础之上。 如何打算继续学习后续教程，请不要清除本快速入门中创建的资源。 如果不打算继续学习，请运行以下命令删除创建的分配：
+要删除创建的分配，请使用以下命令：
 
 ```azurecli-interactive
 az policy assignment delete --name 'audit-vm-manageddisks' --scope '/subscriptions/<subscriptionID>/<resourceGroupName>'
@@ -116,7 +117,7 @@ az policy assignment delete --name 'audit-vm-manageddisks' --scope '/subscriptio
 
 本快速入门已分配一个策略定义用于识别 Azure 环境中的不合规资源。
 
-若要详细了解如何分配策略并确保**将来**创建的资源合规，请继续学习以下教程：
+要了解有关分配策略以验证新资源是否符合要求的详细信息，请继续以下教程：
 
 > [!div class="nextstepaction"]
 > [创建和管理策略](./tutorials/create-and-manage.md)

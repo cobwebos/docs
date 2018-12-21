@@ -1,5 +1,5 @@
 ---
-title: 在 Linux 上的 Azure 应用服务中创建 Node.js | Microsoft Docs
+title: 在 Linux 上创建 Node.js Web 应用 - Azure 应用服务 | Microsoft Docs
 description: 数分钟内在 Linux 上的 Azure 应用服务中部署第一个 Node.js Hello World。
 services: app-service\web
 documentationcenter: ''
@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: quickstart
 ms.date: 06/07/2017
 ms.author: msangapu
-ms.custom: mvc
-ms.openlocfilehash: 44c3f8ce05854e993ad551a025eec447d882c326
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.custom: seodec18
+ms.openlocfilehash: 22a022b12e931fd4edf139038eb7506e69422f8e
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38969538"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53253558"
 ---
 # <a name="create-a-nodejs-web-app-in-azure-app-service-on-linux"></a>在 Linux 上的 Azure 应用服务中创建 Node.js Web 应用
 
@@ -64,7 +64,7 @@ mkdir quickstart
 cd quickstart
 ```
 
-接下来，运行以下命令将示例应用存储库克隆到 quickstart 目录。
+接下来请运行以下命令，将示例应用存储库克隆到快速入门目录。
 
 ```bash
 git clone https://github.com/Azure-Samples/nodejs-docs-hello-world
@@ -150,7 +150,7 @@ Node.js 示例代码在包含内置映像的 Web 应用中运行。
 
 ![在 Azure 中运行应用的示例](media/quickstart-nodejs/hello-world-in-browser.png)
 
-**祝贺你！** 现已将第一个 Node.js 应用部署到 Linux 应用服务。
+祝贺你！ 现已将第一个 Node.js 应用部署到 Linux 应用服务。
 
 ## <a name="update-and-redeploy-the-code"></a>更新并重新部署代码
 
@@ -184,15 +184,15 @@ az webapp up -n <app_name>
 
 ![在门户中导航到 Azure Web 应用](./media/quickstart-nodejs/nodejs-docs-hello-world-app-service-list.png)
 
-将看到 Web 应用的概述页。 在此处，可以完成基本的管理任务，例如浏览、停止、启动、重启和删除。
+这里我们可以看到 Web 应用的概述页。 在此处，可以完成基本的管理任务，例如浏览、停止、启动、重启和删除。
 
 ![Azure 门户中的应用服务页](media/quickstart-nodejs/nodejs-docs-hello-world-app-service-detail.png)
 
-左侧菜单提供用于配置应用的不同页面。
+左侧菜单提供了用于配置应用的不同页面。
 
 ## <a name="clean-up-resources"></a>清理资源
 
-在前面的步骤中，在资源组中创建了 Azure 资源。 如果预计将来不需要这些资源，请从 Cloud Shell 中删除资源组。 如果已修改了区域，请将资源组名称 `appsvc_rg_Linux_CentralUS` 更新为特定于你的应用的资源组。
+在前面的步骤中，你在资源组中创建了 Azure 资源。 如果预计将来不需要这些资源，请从 Cloud Shell 中删除资源组。 如果已修改了区域，请将资源组名称 `appsvc_rg_Linux_CentralUS` 更新为特定于你的应用的资源组。
 
 ```azurecli-interactive
 az group delete --name appsvc_rg_Linux_CentralUS

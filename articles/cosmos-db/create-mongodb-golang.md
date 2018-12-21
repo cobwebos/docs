@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 07/21/2017
 ms.author: sclyon
 ms.custom: mvc
-ms.openlocfilehash: 04149e12e2926888bab82495a0924df94d6e3450
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: a05ca8602ad3b5ea3135ad2ce915bdc38359bfd7
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52836162"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53089553"
 ---
 # <a name="azure-cosmos-db-build-a-mongodb-api-console-app-with-golang-and-the-azure-portal"></a>Azure Cosmos DB：使用 Golang 和 Azure 门户生成 MongoDB API 控制台应用
 
@@ -63,7 +63,7 @@ Azure Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务�
     go get gopkg.in/mgo.v2
     ```
 
-[mgo](http://labix.org/mgo) 驱动程序是适用于 [Go 语言](http://golang.org/)的 [MongoDB](http://www.mongodb.org/) 驱动程序，该语言采用很简单的 API 和标准的 GO 惯用语，实现了多种经过严格测试的精选功能。
+[mgo](https://labix.org/mgo) 驱动程序是适用于 [Go 语言](https://golang.org/)的 [MongoDB](https://www.mongodb.com/) 驱动程序，该语言采用很简单的 API 和标准的 GO 惯用语，实现了多种经过严格测试的精选功能。
 
 <a id="connection-string"></a>
 
@@ -95,7 +95,7 @@ Azure Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务�
 
 ### <a name="connecting-the-go-app-to-azure-cosmos-db"></a>将 Go 应用连接到 Azure Cosmos DB
 
-Azure Cosmos DB 支持启用了 SSL 的 MongoDB。 若要连接到启用了 SSL 的 MongoDB，需在 [mgo.DialInfo](http://gopkg.in/mgo.v2#DialInfo) 中定义 DialServer 函数，然后使用 [tls.Dial](http://golang.org/pkg/crypto/tls#Dial) 函数进行连接。
+Azure Cosmos DB 支持启用了 SSL 的 MongoDB。 若要连接到启用了 SSL 的 MongoDB，需在 [mgo.DialInfo](https://godoc.org/gopkg.in/mgo.v2#DialInfo) 中定义 DialServer 函数，然后使用 [tls.Dial](https://golang.org/pkg/crypto/tls#Dial) 函数进行连接。
 
 以下 Golang 代码片段通过 Azure Cosmos DB MongoDB API 连接 Go 应用。 DialInfo 类包含与 MongoDB 群集建立会话的选项。
 

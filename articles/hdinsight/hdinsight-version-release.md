@@ -7,22 +7,22 @@ ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.topic: overview
 ms.date: 10/04/2018
-ms.openlocfilehash: ade162d0261b765336cbff9ea8a6429f9bd2d871
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 34582e66dec3b2f97efba7856ccfbf678f8f1f63
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48801808"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53408079"
 ---
 # <a name="hdinsight-40-overview-preview"></a>HDInsight 4.0 概述（预览版）
 
-Azure HDInsight 是 Azure 中最受企业客户青睐的开源 Hadoop 和 Spark 分析服务之一。 HDInsight (HDI) 4.0 是 [Hortonworks Data Platform (HDP) 3.0](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.0/release-notes/content/relnotes.html) 提供的 Hadoop 组件的云分发版。 本文提供有关最新 Azure HDInsight 版本以及如何升级的信息。
+Azure HDInsight 是 Azure 中最受企业客户青睐的开源 Apache Hadoop 和 Apache Spark 分析服务之一。 HDInsight (HDI) 4.0 是 [Hortonworks Data Platform (HDP) 3.0](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.0/release-notes/content/relnotes.html) 提供的 Apache Hadoop 组件的云分发版。 本文提供有关最新 Azure HDInsight 版本以及如何升级的信息。
 
 ## <a name="whats-new-in-hdi-40"></a>HDI 4.0 中有哪些新增功能？
 
-### <a name="hive-30-and-llap"></a>Hive 3.0 和 LLAP
+### <a name="apache-hive-30-and-llap"></a>Apache Hive 3.0 和 LLAP
 
-Hive 低延迟分析处理 (LLAP) 使用持久性查询服务器和内存中缓存，以提供有关远程云存储中数据的快速 SQL 查询结果。 Hive LLAP 利用一组执行的 Hive 查询片段的持久性守护程序。 LLAP 上的执行查询类似于没有 LLAP 的 Hive，其中工作人员任务在 LLAP 守护程序而不是容器内运行。
+Apache Hive 低延迟分析处理 (LLAP) 使用持久性查询服务器和内存中缓存，以提供有关远程云存储中数据的快速 SQL 查询结果。 Hive LLAP 利用一组执行的 Hive 查询片段的持久性守护程序。 LLAP 上的执行查询类似于没有 LLAP 的 Hive，其中工作人员任务在 LLAP 守护程序而不是容器内运行。
 
 Hive LLAP 的优势包括：
 
@@ -72,7 +72,7 @@ HDInsight 4.0 上的 Apache Spark 支持以下方案：
 详细了解 [Apache Spark](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.0/spark-overview/content/analyzing_data_with_apache_spark.html)。
 
 
-### <a name="oozie"></a>Oozie
+### <a name="apache-oozie"></a>Apache Oozie
 
 Apache Oozie 4.3.1 包含在 HDI 4.0 中，并进行了以下更改：
 
@@ -90,7 +90,7 @@ Apache Oozie 4.3.1 包含在 HDI 4.0 中，并进行了以下更改：
 
 ## <a name="limitations"></a>限制
 
-* HDI 4.0 不支持 MapReduce。 请改用 Tez。 详细了解 [Apache Tez](https://tez.apache.org/)。
+* HDI 4.0 不支持 MapReduce。 改为使用 Apache Tez。 详细了解 [Apache Tez](https://tez.apache.org/)。
 
 * HDI 4.0 中不再提供 Hive 视图。 
 

@@ -10,12 +10,12 @@ ms.workload: big-data
 ms.topic: quickstart
 ms.date: 07/23/2018
 ms.custom: mvc
-ms.openlocfilehash: 080bf465d65199c54e0d09eab8c7bccbc9616ed7
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: 1c8f280d58d12df33b687fa9c09712176987cdd1
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51568948"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53259539"
 ---
 # <a name="quickstart-run-a-spark-job-on-azure-databricks-using-the-azure-portal"></a>快速入门：使用 Azure 门户在 Azure Databricks 上运行 Spark 作业
 
@@ -86,12 +86,12 @@ ms.locfileid: "51568948"
 ## <a name="download-a-sample-data-file"></a>上传示例数据文件
 下载示例 JSON 数据文件并将其保存到 Azure blob 存储中。
 
-1. [从 Github](https://raw.githubusercontent.com/Azure/usql/master/Examples/Samples/Data/json/radiowebsite/small_radio_json.json) 中将此示例 JSON 数据文件下载到本地计算机上。 单击右键并在本地保存原始文件。
+1. [从 GitHub](https://raw.githubusercontent.com/Azure/usql/master/Examples/Samples/Data/json/radiowebsite/small_radio_json.json) 中将此示例 JSON 数据文件下载到本地计算机上。 单击右键并在本地保存原始文件。
 
 2. 如果还没有存储帐户，请创建一个。
     - 在 Azure 门户中，选择“创建资源”。 选择**存储**类别，然后选择**存储帐户**
     - 为存储帐户提供唯一名称。
-    - 选择“帐户类型”：“Blob 存储”
+    - 选择“帐户类型”：**Blob 存储**
     - 选择一个**资源组**名称。 使用在其中创建了 Databricks 工作区的同一个资源组。
     
     有关详细信息，请参阅[创建 Azure Blob 存储帐户](../storage/common/storage-quickstart-create-account.md)。

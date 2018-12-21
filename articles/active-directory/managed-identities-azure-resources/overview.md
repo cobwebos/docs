@@ -14,12 +14,12 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 10/23/2018
 ms.author: daveba
-ms.openlocfilehash: e025d9041358fbb9dee9b64519e012c4c1988024
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: 6b1eb36ae661d758f78f98de37f33c4b56741f89
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49987254"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53320772"
 ---
 # <a name="what-is-managed-identities-for-azure-resources"></a>什么是 Azure 资源的托管标识？
 
@@ -34,7 +34,15 @@ Azure Active Directory (Azure AD) 中的 Azure 资源托管标识功能可以解
 > [!NOTE]
 > Azure 资源托管标识是以前称为托管服务标识 (MSI) 的服务的新名称。
 
-## 如何使用此功能？<a name="how-does-it-work"></a>
+## <a name="terminology"></a>术语
+
+以下术语用于 Azure 资源文档集的托管标识：
+
+- **客户端 ID** - Azure AD 生成的唯一标识符，在其初始预配期间与应用程序和服务主体绑定。
+- **主体 ID** - 托管标识的服务主体对象的对象 ID，用于授予对 Azure 资源的基于角色的访问权限。
+- **Azure 实例元数据服务 (IMDS)** - 一个 REST 终结点，可供通过 Azure 资源管理器创建的所有 IaaS VM 使用。 该终结点位于已知不可路由的 IP 地址 (169.254.169.254)，该地址只能从 VM 中访问。
+
+## Azure 资源托管标识的工作原理<a name="how-does-it-work"></a>
 
 托管标识分为两种类型：
 

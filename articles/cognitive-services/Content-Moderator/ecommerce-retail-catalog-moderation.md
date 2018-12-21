@@ -10,12 +10,12 @@ ms.component: content-moderator
 ms.topic: tutorial
 ms.date: 09/25/2017
 ms.author: sajagtap
-ms.openlocfilehash: 0bd61c3f1a4f660076be4e87bb5443302e5dc013
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.openlocfilehash: 285590435a7e3c31d45d5d154d4e430ed3252838
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49363988"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53256224"
 ---
 # <a name="tutorial-ecommerce-catalog-moderation-with-machine-learning"></a>教程：通过机器学习进行电子商务目录审查
 
@@ -66,7 +66,7 @@ ms.locfileid: "49363988"
 > [!NOTE]
 > 本教程是为在下列终结点中可见的区域中使用订阅密钥专门设计的。 请务必匹配 API 密钥与地区 URL，否则密钥可能无法用于下列终结点：
 
-        // Your API keys
+         // Your API keys
         public const string ContentModeratorKey = "XXXXXXXXXXXXXXXXXXXX";
         public const string ComputerVisionKey = "XXXXXXXXXXXXXXXXXXXX";
         public const string CustomVisionKey = "XXXXXXXXXXXXXXXXXXXX";
@@ -128,11 +128,11 @@ ms.locfileid: "49363988"
 4. 要登录，从可用的 Internet 帐户列表中选择。
 5. 请注意，API 密钥已显示在服务页面上。
     
-    ![计算机视觉 API 密钥](images/tutorial-computer-vision-keys.PNG)
+   ![计算机视觉 API 密钥](images/tutorial-computer-vision-keys.PNG)
     
 6. 请参阅项目源代码，以了解使用计算机视觉 API 扫描图像的函数。
 
-        public static bool EvaluateComputerVisionTags(string ImageUrl, string ComputerVisionUri, string ComputerVisionKey, ref KeyValuePair[] ReviewTags)
+         public static bool EvaluateComputerVisionTags(string ImageUrl, string ComputerVisionUri, string ComputerVisionKey, ref KeyValuePair[] ReviewTags)
         {
             var File = ImageUrl;
             string Body = $"{{\"URL\":\"{File}\"}}";
@@ -149,7 +149,7 @@ ms.locfileid: "49363988"
                 ComputerVisionPrediction CVObject = JsonConvert.DeserializeObject<ComputerVisionPrediction>(Response.Content.ReadAsStringAsync().Result);
 
                 if ((CVObject.categories[0].detail != null) && (CVObject.categories[0].detail.celebrities.Count() > 0))
-                {
+                {                 
                     ReviewTags[2].Value = "true";
                 }
             }
@@ -161,7 +161,7 @@ ms.locfileid: "49363988"
 
 1. [登录](https://azure.microsoft.com/services/cognitive-services/custom-vision-service/)到[自定义视觉 API 预览](https://www.customvision.ai/)。
 2. 使用[快速入门](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/getting-started-build-a-classifier)构建自定义分类器来检测是否可能存在国旗、玩具和笔。
-    ![自定义视觉训练图像](images/tutorial-ecommerce-custom-vision.PNG)
+   ![自定义视觉训练图像](images/tutorial-ecommerce-custom-vision.PNG)
 3. 为自定义分类器[获取预测终结点 URL](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/use-prediction-api)。
 4. 请参阅项目源代码，以查看调用分类器预测终结点扫描图像的函数。
 
@@ -179,15 +179,13 @@ ms.locfileid: "49363988"
                 SaveCustomVisionTags(response.Content.ReadAsStringAsync().Result, ref ReviewTags);
             }
             return response.IsSuccessStatusCode;
-        }
+        }       
  
 ## <a name="reviews-for-human-in-the-loop"></a>“人工干预”审查
 
 1. 在上述部分中，已经扫描了成人和不雅（内容审查器）、名人（计算机视觉）和国旗（自定义视觉）的传入图像。
 2. 基于每次扫描的匹配阈值，将细致的案例提供给审查工具中的人工审查。
-
-        public static bool CreateReview(string ImageUrl, KeyValuePair[] Metadata)
-        {
+        public static bool CreateReview(string ImageUrl, KeyValuePair[] Metadata) {
 
             ReviewCreationRequest Review = new ReviewCreationRequest();
             Review.Item[0] = new ReviewItem();
@@ -209,10 +207,7 @@ ms.locfileid: "49363988"
 
 1. 本教程假设一个“C:Test”目录，其中有一个提供图像 Url 列表的文本文件。
 2. 下列代码检查文件是否存在，然后将所有 Url 读入内存。
-
-            // Check for a test directory for a text file with the list of Image URLs to scan
-            var topdir = @"C:\test\";
-            var Urlsfile = topdir + "Urls.txt";
+            // Check for a test directory for a text file with the list of Image URLs to scan var topdir = @"C:\test\"; var Urlsfile = topdir + "Urls.txt";
 
             if (!Directory.Exists(topdir))
                 return;
@@ -229,12 +224,7 @@ ms.locfileid: "49363988"
 
 1. 此顶级函数遍历之前提及的文本文件中的所有图像 URL。
 2. 它使用每个 API 进行扫描，如果匹配置信度分数低于标准，则为人工审查器创建审查。
-
-            // for each image URL in the file...
-            foreach (var Url in Urls)
-            {
-                // Initiatize a new review tags array
-                ReviewTags = new KeyValuePair[MAXTAGSCOUNT];
+             // for each image URL in the file... foreach (var Url in Urls) { // Initiatize a new review tags array ReviewTags = new KeyValuePair[MAXTAGSCOUNT];
 
                 // Evaluate for potential adult and racy content with Content Moderator API
                 EvaluateAdultRacy(Url, ref ReviewTags);
@@ -259,4 +249,4 @@ ms.locfileid: "49363988"
 
 ## <a name="next-steps"></a>后续步骤
 
-通过使用 GitHub 上的[项目源文件](https://github.com/MicrosoftContentModerator/samples-eCommerceCatalogModeration)构建和扩展教程。
+通过使用 GitHub 上的[项目源文件](https://github.com/MicrosoftContentModerator/samples-eCommerceCatalogModeration)生成和扩展教程。

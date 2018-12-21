@@ -1,23 +1,26 @@
 ---
-title: Go 语言快速入门 - 预测意向 - LUIS
-titleSuffix: Azure Cognitive Services
-description: 本快速入门使用可用的公共 LUIS 应用从会话文本中确定用户的意向。 使用 GO 将用户的意向作为文本发送到公共应用的 HTTP 预测终结点。 在终结点处，LUIS 应用公共应用的模型来分析自然语言文本的含义，确定总体意向并提取与应用的主题域相关的数据。
+title: 获取意向，Go
+titleSuffix: Language Understanding - Azure Cognitive Services
+description: 此 Go 快速入门使用可用的公共 LUIS 应用从会话文本中确定用户的意向。
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: quickstart
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: f19c46fcc7dcff2e02786bb3a03082f831e880a2
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 9768e7945a94c5b28a1f28ea0264108cd47865d6
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47032727"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53104707"
 ---
 # <a name="quickstart-get-intent-using-go"></a>快速入门：使用 Go 获取意向
+
+在本快速入门中，你将向 LUIS 终结点传递话语并返回意向和实体。
 
 [!INCLUDE [Quickstart introduction for endpoint](../../../includes/cognitive-services-luis-qs-endpoint-intro-para.md)]
 

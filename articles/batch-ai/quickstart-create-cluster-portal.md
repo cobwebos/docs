@@ -15,14 +15,17 @@ ms.devlang: na
 ms.topic: quickstart
 ms.date: 08/15/2018
 ms.author: danlep
-ms.openlocfilehash: 8b9daa0fbbf84e0f602498a0847c9e120f709b17
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ROBOTS: NOINDEX
+ms.openlocfilehash: 78c743448a7f7439875d3598d6ba5d4eb6dc12fc
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44057433"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53408929"
 ---
 # <a name="quickstart-create-a-cluster-for-batch-ai-training-jobs-using-the-azure-portal"></a>快速入门：使用 Azure 门户创建用于 Batch AI 训练作业的群集
+
+[!INCLUDE [batch-ai-retiring](../../includes/batch-ai-retiring.md)]
 
 本快速入门演示如何使用 Azure 门户创建 Batch AI 群集，以便将其用于训练 AI 和机器学习模型。 Batch AI 是一项托管的服务，可以让数据科学家和 AI 研究人员在 Azure 虚拟机群集上大规模训练 AI 和机器学习模型。
 
@@ -91,7 +94,7 @@ Batch AI 文件服务器是单节点 NFS，可以自动装载在群集节点上�
    |**VM 大小**     |标准 NC6|
    |**节点目标数目**     |1|
 
-3. 输入**管理员用户名**，将 SSH 公钥文件的内容复制到 **SSH 密钥**。 至于此页上的其余值，请接受默认设置，然后选择“下一步: 节点设置”。
+3. 输入**管理员用户名**，将 SSH 公钥文件的内容复制到 **SSH 密钥**。 至于此页上的其余值，请接受默认设置，然后选择“下一步：节点设置”。
 
    ![输入基本的群集信息](./media/quickstart-create-cluster-portal/create-cluster.png)
 

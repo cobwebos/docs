@@ -3,18 +3,18 @@ title: Azure 数字孪生概述 | Microsoft Docs
 description: 详细了解 Azure 数字孪生，一种适用于空间智能的 Azure IoT 解决方案。
 author: julieseto
 ms.author: jseto
-ms.date: 10/10/2018
+ms.date: 12/14/2018
 ms.topic: overview
 ms.service: digital-twins
 services: digital-twins
 manager: bertvanhoof
 ms.custom: mvc
-ms.openlocfilehash: 84f329c0a97d0f79a5f612fb3054b82a182e4da9
-ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.openlocfilehash: 2848f9ce97c2bdad59d86031c5894219875b6059
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51287364"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53437106"
 ---
 # <a name="overview-of-azure-digital-twins"></a>Azure 数字孪生概述
 
@@ -27,12 +27,12 @@ Azure 数字孪生是一种 Azure IoT 服务，用于创建物理环境的综合
 - 优化办公室的可用空间的使用。
 
 Azure 数字孪生适用于所有类型的环境。 例如：仓库、办公室、学校、医院、银行。 它甚至可以用于体育场、工厂、停车场、公园、智能电网、城市。 Azure 数字孪生可用于以下示例方案，目的是：
- 
-- 跟踪多个州的每日温度。 
+
+- 跟踪多个州的每日温度。
 - 监视繁忙的无人机路径。
-- 确定自动驾驶车辆。 
-- 分析大楼房间的占用情况。 
-- 找出商店中最繁忙的收银机。 
+- 确定自动驾驶车辆。
+- 分析大楼房间的占用情况。
+- 找出商店中最繁忙的收银机。
 
 不管实际的业务方案是什么，都可以通过 Azure 数字孪生预配相应的数字实例。
 
@@ -94,7 +94,7 @@ Azure 数字孪生可用于表示物理世界及其多项关系。 它可以简�
 
 Azure 数字孪生使用 Azure IoT 中心来连接 IoT 设备和传感器，使一切与物理世界同步。 下图显示了 Azure 数字孪生与其他 Azure IoT 服务的关系。
 
-![Azure 数字孪生是构建于 Azure IoT 中心之上的服务](./media/overview/azure-digital-twins-in-iot-ecosystem.png)
+![Azure 数字孪生是构建于 Azure IoT 中心之上的服务][1]
 
 有关 IoT 的详细信息，请参阅 [Azure IoT 技术和解决方案](https://docs.microsoft.com/azure/iot-fundamentals/iot-services-and-technologies)。
 
@@ -102,15 +102,18 @@ Azure 数字孪生使用 Azure IoT 中心来连接 IoT 设备和传感器，使�
 
 查看关于 Azure 数字孪生的简短演示：
 
-> [!div class="nextstepaction"]
-> [快速入门：通过 Azure 数字孪生查找可用房间](./quickstart-view-occupancy-dotnet.md)
+>[!div class="nextstepaction"]
+>[快速入门：通过 Azure 数字孪生查找可用房间](./quickstart-view-occupancy-dotnet.md)
 
 深入了解使用 Azure 数字孪生的设施管理应用程序：
 
-> [!div class="nextstepaction"]
-> [教程：部署 Azure 数字孪生并配置空间图](./tutorial-facilities-setup.md)
+>[!div class="nextstepaction"]
+>[教程：部署 Azure 数字孪生并配置空间图](./tutorial-facilities-setup.md)
 
 了解 Azure 数字孪生核心概念：
 
-> [!div class="nextstepaction"]
-> [了解数字孪生对象模型和空间智能图](./concepts-objectmodel-spatialgraph.md)
+>[!div class="nextstepaction"]
+>[了解数字孪生对象模型和空间智能图](./concepts-objectmodel-spatialgraph.md)
+
+<!-- Images -->
+[1]: media/overview/azure-digital-twins-in-iot-ecosystem.png

@@ -1,6 +1,7 @@
 ---
-title: 快速入门：使用 Python SDK 创建机器学习服务工作区 - Azure 机器学习
-description: Azure 机器学习入门。 安装 Python SDK 并用它创建工作区。 该工作区是基础的云端块，用于通过 Azure 机器学习进行机器学习模型的试验、训练和部署。
+title: 快速入门：Python 入门
+titleSuffix: Azure Machine Learning service
+description: 在 Python 中开始使用 Azure 机器学习服务。 使用 Python SDK 创建工作区，该工作区是基础的云端块，用于试验、训练和部署机器学习模型。
 services: machine-learning
 ms.service: machine-learning
 ms.component: core
@@ -9,16 +10,17 @@ ms.reviewer: sgilley
 author: hning86
 ms.author: haining
 ms.date: 12/04/2018
-ms.openlocfilehash: f16d39238b46a811f34fdfe291d6c09bee662b9a
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.custom: seodec18
+ms.openlocfilehash: 3ab55cec4b8483cf254ec3d9fe68521baca9cdf5
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52870056"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53268490"
 ---
-# <a name="quickstart-use-python-to-get-started-with-azure-machine-learning"></a>快速入门：通过 Python 开始使用 Azure 机器学习
+# <a name="quickstart-use-python-sdk-to-get-started-with-azure-machine-learning"></a>快速入门：通过 Python SDK 开始使用 Azure 机器学习
 
-在本快速入门中，请通过用于 Python 的 Azure 机器学习 SDK 来创建并使用机器学习服务[工作区](concept-azure-machine-learning-architecture.md)。 该工作区是基础的云端块，用于通过机器学习进行机器学习模型的试验、训练和部署。 在本教程中，请从配置自己的 Python 环境和 Jupyter Notebook 服务器着手。 若要在没有进行安装的情况下运行，请参阅[快速入门：通过 Azure 门户开始使用 Azure 机器学习](quickstart-get-started.md)。
+在本快速入门中，请通过用于 Python 的 Azure 机器学习 SDK 来创建并使用机器学习服务[工作区](concept-azure-machine-learning-architecture.md)。 该工作区是基础的云端块，用于通过机器学习进行机器学习模型的试验、训练和部署。 在本教程中，请从配置自己的 Python 环境和 Jupyter Notebook 服务器着手。 要在未安装的情况下运行，请参阅[快速入门：通过 Azure 门户开始使用 Azure 机器学习](quickstart-get-started.md)。
 
 > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE2G9N6]
 
@@ -38,14 +40,12 @@ ms.locfileid: "52870056"
 - [Azure Application Insights](https://azure.microsoft.com/services/application-insights/) 
 - [Azure Key Vault](https://azure.microsoft.com/services/key-vault/)
 
->[!NOTE]
-> 本文中的代码已使用 Azure 机器学习 SDK 版本 1.0.2 进行测试 
-
-
-如果还没有 Azure 订阅，可以在开始前创建一个[免费帐户](https://aka.ms/AMLfree)。
-
+如果还没有 Azure 订阅，请在开始前创建免费帐户。 立即试用 [Azure 机器学习服务免费版或付费版](http://aka.ms/AMLFree)。
 
 ## <a name="install-the-sdk"></a>安装 SDK
+
+>[!NOTE]
+> 本文中的代码需要 Azure 机器学习 SDK 版本 1.0.2 或更高版本。 
 
 如果使用的是 2018 年 9 月 27 日之后创建的数据科学虚拟机，请跳过本部分。 这些数据科学虚拟机附带预先安装的 Python SDK。
 

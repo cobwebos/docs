@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 10/23/2017
 ms.author: suhuruli
 ms.custom: mvc, devcenter
-ms.openlocfilehash: a7e71b4f93f3b890ea73e36052570f9047fc8f32
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 43a059e13945be3e39f65995e18ccd552727b874
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51228226"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53312562"
 ---
 # <a name="quickstart-deploy-a-java-reliable-services-application-to-service-fabric"></a>快速入门：将 Java Reliable Services 应用程序部署到 Service Fabric
 
@@ -67,7 +67,7 @@ git clone https://github.com/Azure-Samples/service-fabric-java-quickstart.git
 
 2. 打开 Eclipse。
 3. 单击“文件”- >“导入”- > Gradle - > 现有 Gradle 项目，然后按照向导进行操作。
-4. 单击“目录”，然后在从 Github 克隆的 `service-fabric-java-quickstart` 文件夹中选择 `Voting` 目录。 单击“完成”。 
+4. 单击“目录”，然后在从 GitHub 克隆的 `service-fabric-java-quickstart` 文件夹中选择 `Voting` 目录。 单击“完成”。
 
     ![Eclipse 的“导入”对话框](./media/service-fabric-quickstart-java/eclipseimport.png)
 
@@ -132,7 +132,7 @@ Service Fabric 提供多种可以用来管理群集及其应用程序的工具�
     openssl x509 -in [CERTIFICATE_PEM_FILE] -fingerprint -noout
     ```
 
-2. 在 `Voting/VotingApplication/ApplicationManifest.xml` 文件中，在 **ApplicationManifest** 标记下添加以下代码片段。 **X509FindValue** 应该是上一步的指纹（无分号）。 
+2. 在 `Voting/VotingApplication/ApplicationManifest.xml` 文件中，在 **ApplicationManifest** 标记下添加以下代码片段。 **X509FindValue** 应该是上一步的指纹（无分号）。
 
     ```xml
     <Certificates>

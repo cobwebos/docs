@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: quickstart
 ms.date: 11/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: a0aed1fd65444397b3ca084cc0100aa5af49c918
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: a9794c25bd5f0acd48362611d13bac17fc502450
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52839495"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53341042"
 ---
 # <a name="create-your-first-durable-function-in-c"></a>使用 C\# 创建你的第一个持久函数
 
@@ -76,7 +76,7 @@ Visual Studio 创建一个空的函数应用项目。  它包含应用所需的�
 
 一个新的持久函数将添加到应用中。  打开新文件以查看内容。  此持久函数是一个简单的函数链接示例。  
 
-* `RunOrchestrator` 方法与业务流程协调程序函数相关联。  此函数将启动，创建一个列表，并将三个函数调用的结果添加到该列表。  当三个函数调用完成后，它将返回该列表。  它调用的函数是 `SayHello` 方法（默认情况下它名为“<NameOfFile>_Hello”）。
+* `RunOrchestrator` 方法与业务流程协调程序函数相关联。  此函数将启动，创建一个列表，并将三个函数调用的结果添加到该列表。  当三个函数调用完成后，它将返回该列表。  它调用的函数是 `SayHello` 方法（默认情况下它名为“`<NameOfFile>_Hello`”）。
 * `SayHello` 函数将返回 hello。
 * `HttpStart` 方法描述了将启动业务流程实例的函数。  它与一个 [HTTP 触发器](../functions-bindings-http-webhook.md)相关联，该触发器将启动业务流程协调程序的一个新实例并返回检查状态响应。
 
@@ -92,7 +92,7 @@ Visual Studio 创建一个空的函数应用项目。  它包含应用所需的�
 
     ![Azure 本地运行时](./media/durable-functions-create-first-csharp/functions-vs-debugging.png)
 
-3. 将 HTTP 请求的 URL 粘贴到浏览器的地址栏中并执行请求。 下面演示浏览器中函数返回的对本地 GET 请求的响应： 
+3. 将 HTTP 请求的 URL 粘贴到浏览器的地址栏中并执行请求。 下面演示浏览器中函数返回的对本地 GET 请求的响应：
 
     ![浏览器中的函数 localhost 响应](./media/durable-functions-create-first-csharp/functions-vs-status.png)
 

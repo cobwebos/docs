@@ -1,23 +1,23 @@
 ---
-title: Azure Cosmos DB：使用 Python 和 Azure Cosmos DB MongoDB API 构建 Flask Web 应用
+title: Azure Cosmos DB：使用 Python 和 Azure Cosmos DB MongoDB API 生成 Flask Web 应用
 description: 演示可用来连接到 Azure Cosmos DB MongoDB API 并进行查询的 Python Flask 代码示例
 services: cosmos-db
 author: slyons
+ms.author: sclyon
 ms.service: cosmos-db
 ms.component: cosmosdb-mongo
-ms.custom: quick start connect, mvc
+ms.custom: quick start connect, mvc, seodec18
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 10/02/2017
-ms.author: sclyon
-ms.openlocfilehash: 70a103aa7c03abeed98237a3b1dc3ec8b514810a
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 09c19f57a2993c0faad3dca708f67526f99d13df
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52849051"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53165106"
 ---
-# <a name="azure-cosmos-db-build-a-flask-app-with-the-mongodb-api"></a>Azure Cosmos DB：借助 MongoDB API 构建 Flask 应用
+# <a name="azure-cosmos-db-build-a-flask-app-with-the-mongodb-api"></a>Azure Cosmos DB：使用 MongoDB API 生成 Flask 应用
 
 > [!div class="op_single_selector"]
 > * [.NET](create-mongodb-dotnet.md)
@@ -46,7 +46,7 @@ Azure Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务�
 
 ## <a name="clone-the-sample-application"></a>克隆示例应用程序
 
-现在，请从 github 克隆 Flask-MongoDB API 应用、设置连接字符串并运行。 会看到以编程方式处理数据是多么容易。
+现在，请从 GitHub 克隆 Flask-MongoDB API 应用、设置连接字符串并运行。 会看到以编程方式处理数据是多么容易。
 
 1. 打开命令提示符，新建一个名为“git-samples”的文件夹，然后关闭命令提示符。
 
@@ -120,7 +120,7 @@ Azure Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务�
 
 若要针对实时 Azure Cosmos DB 帐户测试代码，请转到 Azure 门户创建一个帐户，并获取连接字符串信息。 然后将其复制到此应用中。
 
-1. 在 [Azure 门户](http://portal.azure.com/)的 Azure Cosmos DB 帐户的左侧导航栏中，单击“连接字符串”，并单击“读写密钥”。 使用屏幕右侧的复制按钮将用户名、密码和主机复制到下一步的 Dal.cs 文件中。
+1. 在 [Azure 门户](https://portal.azure.com/)的 Azure Cosmos DB 帐户的左侧导航栏中，单击“连接字符串”，并单击“读写密钥”。 使用屏幕右侧的复制按钮将用户名、密码和主机复制到下一步的 Dal.cs 文件中。
 
 2. 在根目录中打开 app.py 文件。
 
@@ -134,7 +134,7 @@ Azure Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务�
 
 ## <a name="deploy-to-azure"></a>“部署到 Azure”
 
-若要部署此应用，可在 Azure 中创建新的 Web 应用，并使用此 github 存储库分支启用持续部署。 按照此[教程](https://docs.microsoft.com/azure/app-service-web/app-service-continuous-deployment)，在 Azure 中使用 Github 设置持续部署。
+若要部署此应用，可在 Azure 中创建新的 Web 应用，并使用此 GitHub 存储库分支启用持续部署。 按照此[教程](https://docs.microsoft.com/azure/app-service-web/app-service-continuous-deployment)，在 Azure 中使用 GitHub 设置持续部署。
 
 部署到 Azure 时，应删除应用程序密钥并确保以下部分未被注释掉：
 
@@ -149,11 +149,11 @@ Azure Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务�
 如果不想创建此存储库的分支，也可单击下方的“部署到 Azure”按钮。 然后应转到 Azure，就可使用 Cosmos DB 的帐户信息设置应用程序设置。
 
 <a href="https://deploy.azure.com/?repository=https://github.com/heatherbshapiro/To-Do-List---Flask-MongoDB-Example" target="_blank">
-<img src="http://azuredeploy.net/deploybutton.png"/>
+<img src="https://azuredeploy.net/deploybutton.png" alt="Click to Deploy to Azure">
 </a>
 
 > [!NOTE]
-> 如果打算将代码存储在 Github 或其他源代码管理选项中，请务必从代码中删除连接字符串。 可改为使用 Web 应用的应用程序设置进行设置。
+> 如果打算将代码存储在 GitHub 或其他源代码管理选项中，请务必从代码中删除连接字符串。 可改为使用 Web 应用的应用程序设置进行设置。
 
 ## <a name="review-slas-in-the-azure-portal"></a>在 Azure 门户中查看 SLA
 

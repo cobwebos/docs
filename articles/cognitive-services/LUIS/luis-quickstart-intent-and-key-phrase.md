@@ -1,21 +1,22 @@
 ---
-title: 教程 8：LUIS 中的关键短语提取
+title: 关键短语提取
 titleSuffix: Azure Cognitive Services
 description: 使用 keyPhrase 预生成实体从话语中提取关键主题。 不需要使用预生成的实体标记任何话语。 自动检测实体。
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: tutorial
 ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: fafb6a6cb986b5bcd795c9bac0fadfce2827c667
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 0a064966f118925d2a08e0ff1ce6efc7683cac96
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52424806"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53096921"
 ---
 # <a name="tutorial-8-extract-key-phrases-of-utterance"></a>教程 8：提取话语的关键短语
 在本教程中，使用预生成的 keyPhrase 实体从话语中提取关键主题。 不需要使用预生成的实体标记任何话语。 自动检测实体。
@@ -31,7 +32,6 @@ ms.locfileid: "52424806"
 
 **本教程介绍如何执行下列操作：**
 
-<!-- green checkmark -->
 > [!div class="checklist"]
 > * 使用现有的教程应用
 > * 添加 keyPhrase 实体 
@@ -84,7 +84,7 @@ ms.locfileid: "52424806"
 
 2. 将光标定位到地址中 URL 的末尾，并输入 `does form hrf-123456 cover the new dental benefits and medical plan`。 最后一个查询字符串参数为 `q`，表示陈述**查询**。 
     
-    ```JSON
+    ```json
     {
       "query": "does form hrf-123456 cover the new dental benefits and medical plan",
       "topScoringIntent": {

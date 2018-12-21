@@ -1,7 +1,7 @@
 ---
-title: 快速入门：使用 PHP 执行图像搜索 - 必应图像搜索 API
+title: 快速入门：搜索图像 - 必应图像搜索 REST API 和 PHP
 titleSuffix: Azure Cognitive Services
-description: 使用本快速入门进行你的第一次必应图像搜索 API 调用并接收 JSON 响应。 本文中的简单应用程序会发送一个搜索查询并显示原始结果。
+description: 使用本快速入门，通过 PHP 将图像搜索请求发送到必应图像搜索 REST API，并接收 JSON 响应。
 services: cognitive-services
 documentationcenter: ''
 author: aahill
@@ -11,14 +11,15 @@ ms.component: bing-image-search
 ms.topic: quickstart
 ms.date: 9/07/2018
 ms.author: aahi
-ms.openlocfilehash: b3143a34590e41d0222b4e4aa6eeda07ee407e45
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.custom: seodec2018
+ms.openlocfilehash: 239ceb7ad88dd711ce082ae70391dae09bfc5e1f
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52311851"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53261120"
 ---
-# <a name="quickstart-send-search-queries-using-the-bing-image-search-rest-api-and-php"></a>快速入门：使用必应图像搜索 REST API 和 PHP 发送搜索查询
+# <a name="quickstart-search-for-images-using-the-bing-image-search-rest-api-and-php"></a>快速入门：使用必应图像搜索 REST API 和 PHP 来搜索图像
 
 使用本快速入门进行你的第一次必应图像搜索 API 调用并接收 JSON 响应。 本文中的简单应用程序会发送一个搜索查询并显示原始结果。
 

@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 01/23/2017
 ms.author: anroth
 ROBOTS: NOINDEX
-ms.openlocfilehash: f3a84a68718fba29e2a4b2fae057e68976119c95
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: da605ec4013fb11606f99f3d9a2dcfcfcab00d3b
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48237018"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53163311"
 ---
 # <a name="tutorial-recognize-emotions-on-a-face-in-an-image"></a>教程：识别图像中人脸的情感。
 
@@ -33,7 +33,7 @@ ms.locfileid: "48237018"
 创建示例前，必须先订阅 Microsoft 认知服务中包含的情感 API。 请参阅[订阅](https://azure.microsoft.com/try/cognitive-services/)。 主密钥和辅助密钥均适用于本教程。 为了确保 API 密钥的机密性和安全性，请务必遵循最佳做法。  
 
 #### <a name="get-the-client-library-and-example"></a>获取客户端库和示例  
-可以通过 [SDK](https://www.github.com/microsoft/cognitive-emotion-windows) 下载情感 API 客户端库。 下载的 zip 文件需要提取到选定的文件夹，许多用户会选择 Visual Studio 2015 文件夹。
+可以通过 [SDK](https://www.github.com/microsoft/cognitive-emotion-windows) 下载情感 API 客户端库。 必须将下载的 zip 文件解压缩到选定文件夹，许多用户选择解压缩到 Visual Studio 2015 文件夹。
 ## <a name="Step1">步骤 1：打开示例</a>
 1.  启动 Microsoft Visual Studio 2015 并单击“文件”，选择“打开”，然后选择“项目/解决方案”。
 2.  浏览到保存下载的情感 API 文件的文件夹。 依次单击“情感”、“Windows”、“Sample-WPF”文件夹。
@@ -64,7 +64,7 @@ ms.locfileid: "48237018"
 
 此示例应用采用了情感 API 客户端库，这是 Microsoft 情感 API 的精简 C# 客户端包装器。 在按上文所述生成示例应用时，从 NuGet 包中获得了客户端库。 可在“情感”、“Windows”、“客户端库”下的“[客户端库](https://github.com/Microsoft/Cognitive-Emotion-Windows/tree/master/ClientLibrary)”文件夹中查看客户端库源代码，该代码包含在上面的[先决条件](#Prerequisites)中提到的已下载文件存储库中。
 
-还可了解如何在“解决方案资源管理器”中使用客户端库代码：在 **EmotionAPI-WPF_Samples** 下，展开 **DetectEmotionUsingStreamPage.xaml** 找到 **DetectEmotionUsingStreamPage.xaml.cs**（用于浏览本地存储的文件），或者展开 **DetectEmotionUsingURLPage.xaml** 找到 **DetectEmotionUsingURLPage.xaml.cs**（在上传图像 URL 时使用）。 双击 .xaml.cs 文件，将其在 Visual Studio 的新窗口中打开。
+还可以了解如何在解决方案资源管理器中使用客户端库代码：在 EmotionAPI-WPF_Samples 下，展开 DetectEmotionUsingStreamPage.xaml 找到 DetectEmotionUsingStreamPage.xaml.cs（用于浏览本地存储的文件），或者展开 DetectEmotionUsingURLPage.xaml 找到 DetectEmotionUsingURLPage.xaml.cs（在上传图像 URL 时使用）。 双击 .xaml.cs 文件，将其在 Visual Studio 的新窗口中打开。
 
 我们来看一看 **DetectEmotionUsingStreamPage.xaml.cs** 和 **DetectEmotionUsingURLPage.xaml.cs** 中的两个代码片段，回顾一下情感客户端库在示例应用中的用法。 每个文件均包含指示“KEY SAMPLE CODE STARTS HERE”和“KEY SAMPLE CODE ENDS HERE”的代码注释，可帮助你查找下面再现的代码片段。
 

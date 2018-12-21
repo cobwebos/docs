@@ -10,12 +10,12 @@ ms.component: computer-vision
 ms.topic: overview
 ms.date: 08/10/2017
 ms.author: kefre
-ms.openlocfilehash: e2f3a5655b2fbedf3ad80d555421599e26225196
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: 09a7f02df1102e42bc45b4615a2af4235372bcdc
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45982067"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52957021"
 ---
 # <a name="what-is-computer-vision-api-version-10"></a>什么是计算机视觉 API 版本 1.0？
 
@@ -31,7 +31,7 @@ ms.locfileid: "45982067"
 * [检测人脸并返回其坐标。](#Faces)
 * [识别特定于域的内容。](#Domain-Specific)
 * [生成内容说明。](#Descriptions)
-* [使用光学字符识别标识图像中找到的印刷体文本。](#OCR)
+* [使用光学字符识别标识图像中找到的打印文本。](#OCR)
 * [识别手写的文本。](#RecognizeText)
 * [区分配色方案。](#Color)
 * [标志成人内容。](#Adult)
@@ -39,12 +39,12 @@ ms.locfileid: "45982067"
 
 ## <a name="requirements"></a>要求
 * 支持的输入方法：原始图像二进制，采用应用程序/业务流程流或图像 URL 的形式。
-* 支持的图像格式：JPEG、PNG、GIF、BMP。
+* 支持的图像格式：JPEG、PNG、GIF 和 BMP。
 * 图像文件大小：小于 4 MB。
-* 图像尺寸：大于 50 x 50 像素。
+* 图像维度：大于 50 x 50 像素。
 
 ## <a name="tagging-images"></a>标记图像
-计算机视觉 API 在超过 2000 个可识别对象、生物、风景和操作的基础上返回标记。 如果标记含混不清或者不常见，API 响应会提供“提示”，明确已知设置上下文中的标记的含义。 标记未组织为分类，并且不存在继承层次结构。 内容标记的集合构成在完整句子中显示为用户可读语言的图像“说明”的基础。 请注意，此时图像说明仅支持英语。
+计算机视觉 API 在上千个可识别对象、生物、风景和操作的基础上返回标记。 如果标记含混不清或者不常见，API 响应会提供“提示”，明确已知设置上下文中的标记的含义。 标记未组织为分类，并且不存在继承层次结构。 内容标记的集合构成在完整句子中显示为用户可读语言的图像“说明”的基础。 请注意，此时图像说明仅支持英语。
 
 上载图像或指定图像 URL 后，计算机视觉 API 算法在对象、生物和图像中标识的操作的基础上输出标记。 标记并不局限于主体（如前景中的人员），还包括设置（室内或室外）、家具、工具、工厂、动物、附件、小工具等。
 
@@ -137,9 +137,9 @@ Returned Json
 
 映像|响应
 ----|----
-![视觉分析女士屋顶人脸](./Images/woman_roof_face.png) | [ { "age": 23, "gender": "Female", "faceRectangle": { "left": 1379, "top": 320, "width": 310, "height": 310 } } ]
-![视觉分析母女人脸](./Images/mom_daughter_face.png) | [ { "age": 28, "gender": "Female", "faceRectangle": { "left": 447, "top": 195, "width": 162, "height": 162 } }, { "age": 10, "gender": "Male", "faceRectangle": { "left": 355, "top": 87, "width": 143, "height": 143 } } ]
-![视觉分析系列照片人脸](./Images/family_photo_face.png) | [ { "age": 11, "gender": "Male", "faceRectangle": { "left": 113, "top": 314, "width": 222, "height": 222 } }, { "age": 11, "gender": "Female", "faceRectangle": { "left": 1200, "top": 632, "width": 215, "height": 215 } }, { "age": 41, "gender": "Male", "faceRectangle": { "left": 514, "top": 223, "width": 205, "height": 205 } }, { "age": 37, "gender": "Female", "faceRectangle": { "left": 1008, "top": 277, "width": 201, "height": 201 } } ]
+![视觉分析女士屋顶人脸](./Images/woman_roof_face.png) | [ { "age":23, "gender":"Female", "faceRectangle": { "left":1379, "top":320, "width":310, "height":310 } } ]
+![视觉分析母女人脸](./Images/mom_daughter_face.png) | [ { "age":28, "gender":"Female", "faceRectangle": { "left":447, "top":195, "width":162, "height":162 } }, { "age":10, "gender":"Male", "faceRectangle": { "left":355, "top":87, "width":143, "height":143 } } ]
+![视觉分析系列照片人脸](./Images/family_photo_face.png) | [ { "age":11, "gender":"Male", "faceRectangle": { "left":113, "top":314, "width":222, "height":222 } }, { "age":11, "gender":"Female", "faceRectangle": { "left":1200, "top":632, "width":215, "height":215 } }, { "age":41, "gender":"Male", "faceRectangle": { "left":514, "top":223, "width":205, "height":205 } }, { "age":37, "gender":"Female", "faceRectangle": { "left":1008, "top":277, "width":201, "height":201 } } ]
 
 
 ## <a name="domain-specific-content"></a>特定于域的内容
@@ -250,7 +250,7 @@ OCR 支持 25 种语言。 这些语言包括：阿拉伯语、简体中文、�
 - 单词开头的大写字母过大或缺失
 - 下标、上标或删除线文本。
 
-限制：在以文本为主的照片上，误报可能来自部分识别的字。 在某些照片上，尤其在不带任何文本的照片上，精度会因图像类型而存在较大差异。
+限制：在以文本为主的照片上，误报可能来自部分识别的字词。 在某些照片上，尤其在不带任何文本的照片上，精度会因图像类型而存在较大差异。
 
 ## <a name="recognize-handwritten-text"></a>识别手写的文本
 此技术使你可以检测和提取笔记、信件、文章、白板、表格等对象中的手写文本。它适用于不同的图面和背景，如白纸、黄色便签和白板等。
@@ -267,11 +267,11 @@ OCR 支持 25 种语言。 这些语言包括：阿拉伯语、简体中文、�
 ## <a name="generating-thumbnails"></a>生成缩略图
 缩略图是完全尺寸的图像的小型表示形式。 不同设备（如手机、平板电脑和电脑）需要不同的用户体验 (UX) 布局和缩略图大小。 使用智能裁剪，此计算机视觉 API 功能可帮助解决该问题。
 
-上载图像后，会生成高质量的缩略图，并且计算机视觉 API 算法会分析图像内的对象。 然后会裁剪图像以满足感兴趣区域 (ROI) 的要求。 输出显示在一个特殊框架中，如下图中所示。 可以使用与原始图像的纵横比不同的纵横比显示生成的缩略图以满足用户需求。
+上载图像后，会生成高质量的缩略图，并且计算机视觉 API 算法会分析图像内的对象。 然后会裁剪图像以满足感兴趣区域的要求。 输出显示在一个特殊框架中，如下图中所示。 可以使用与原始图像的纵横比不同的纵横比显示生成的缩略图以满足用户需求。
 
 缩略图算法的工作方式如下：
 
-1. 从图像中删除让人分散注意力的元素并识别主对象，即感兴趣区域 (ROI)。
+1. 从图像中删除让人分散注意力的元素并识别主要对象，即感兴趣区域。
 2. 基于所标识的感兴趣区域裁剪图像。
 3. 更改纵横比以适应目标缩略图尺寸。
 

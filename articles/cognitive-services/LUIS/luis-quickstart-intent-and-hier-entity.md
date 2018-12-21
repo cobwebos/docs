@@ -1,21 +1,22 @@
 ---
-title: 教程 5：父/子关系 - 根据上下文学习的数据的 LUIS 分层实体
+title: 分层实体
 titleSuffix: Azure Cognitive Services
 description: 基于上下文查找相关的数据片段。 例如，对于从一个建筑物和办公室到另一个建筑物和办公室的物理移动，源位置和目标位置是相关的。
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: tutorial
-ms.date: 09/09/2018
+ms.date: 12/05/2018
 ms.author: diberry
-ms.openlocfilehash: d3b8d0597f0732a4a3cfab79125a885b2d141c9f
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: a79c0091220e2980101471abaaa0aaf4c0a898ca
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52424691"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53104401"
 ---
 # <a name="tutorial-5-extract-contextually-related-data"></a>教程 5：提取与上下文相关的数据
 在本教程中，基于上下文查找相关的数据片段。 例如，对于从一个建筑物和办公室到另一个建筑物和办公室的物理移动，源位置和目标位置是相关的。 若要生成工作订单，可能同时需要这两个数据片段，并且它们彼此相关。  
@@ -32,7 +33,6 @@ ms.locfileid: "52424691"
 
 **本教程介绍如何执行下列操作：**
 
-<!-- green checkmark -->
 > [!div class="checklist"]
 > * 使用现有的教程应用
 > * 添加意向 
@@ -55,7 +55,7 @@ ms.locfileid: "52424691"
 3. 在“管理”部分的“版本”选项卡上，克隆版本并将其命名为 `hier`。 克隆非常适合用于演练各种 LUIS 功能，且不会影响原始版本。 由于版本名称用作 URL 路由的一部分，因此该名称不能包含任何在 URL 中无效的字符。 
 
 ## <a name="remove-prebuilt-number-entity-from-app"></a>从应用中删除预生成的数字实体
-若要查看整个陈述并标记分层子级，请暂时删除预生成的数字实体。
+若要查看整个陈述并标记分层子级，请[暂时删除预生成的数字实体](luis-prebuilt-entities.md#marking-entities-containing-a-prebuilt-entity-token)。 
 
 1. [!INCLUDE [Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
 
@@ -90,7 +90,7 @@ LUIS 需要通过在陈述中标记原始位置和目标位置来了解什么是
 
 考虑以下陈述：
 
-```JSON
+```json
 mv Jill Jones from a-2349 to b-1298
 ```
 
@@ -100,19 +100,19 @@ mv Jill Jones from a-2349 to b-1298
 
 1. 在陈述 `Displace 425-555-0000 away from g-2323 toward hh-2345` 中，选择单词 `g-2323`。 此时会出现下拉菜单，其顶部有一个文本框。 在文本框中输入实体名称 `Locations`，然后在下拉菜单中选择“创建新实体”。 
 
-    [![](media/luis-quickstart-intent-and-hier-entity/hr-create-new-entity-1.png "在意向页上创建新实体的屏幕截图")](media/luis-quickstart-intent-and-hier-entity/hr-create-new-entity-1.png#lightbox)
+    [![在意向页上创建新实体的屏幕截图](media/luis-quickstart-intent-and-hier-entity/hr-create-new-entity-1.png "Screenshot of creating new entity on intent page")](media/luis-quickstart-intent-and-hier-entity/hr-create-new-entity-1.png#lightbox)
 
 2. 在弹出窗口中，选择包含 `Origin` 和 `Destination` 子实体的“分层”实体类型。 选择“完成”。
 
-    ![](media/luis-quickstart-intent-and-hier-entity/hr-create-new-entity-2.png "用于创建新位置实体的弹出对话框的屏幕截图")
+    ![新建位置实体的实体创建弹出对话框的屏幕截图](media/luis-quickstart-intent-and-hier-entity/hr-create-new-entity-2.png "Screenshot of entity creation pop-up dialog for new Location entity")
 
 3. `g-2323` 的标签已标记为 `Locations`，因为 LUIS 不知道名词是出发地还是目的地，或者两者都不是。 依次选择 `g-2323`、“位置”，遵循菜单操作，然后选择 `Origin`。
 
-    [![](media/luis-quickstart-intent-and-hier-entity/hr-label-entity.png "实体的屏幕截图，该实体标记用于更改位置实体子级的弹出对话框")](media/luis-quickstart-intent-and-hier-entity/hr-label-entity.png#lightbox)
+    [![实体标签弹出对话框的屏幕截图，该对话框用于更改位置实体子级](media/luis-quickstart-intent-and-hier-entity/hr-label-entity.png "Screenshot of entity labeling pop-up dialog to change locations entity child")](media/luis-quickstart-intent-and-hier-entity/hr-label-entity.png#lightbox)
 
 5. 标记所有其他陈述中的其他位置，方法是：选择陈述中的大楼和办公室，然后选择“位置”，再遵循右侧的菜单选择 `Origin` 或 `Destination`。 所有位置都标记以后，“令牌视图”中的陈述开始显示出某种模式。 
 
-    [![](media/luis-quickstart-intent-and-hier-entity/hr-entities-labeled.png "在陈述中标记的“位置”实体的屏幕截图")](media/luis-quickstart-intent-and-hier-entity/hr-entities-labeled.png#lightbox)
+    [![在陈述中标记的位置实体的屏幕截图](media/luis-quickstart-intent-and-hier-entity/hr-entities-labeled.png "Screenshot of Locations entity labeled in utterances")](media/luis-quickstart-intent-and-hier-entity/hr-entities-labeled.png#lightbox)
 
 ## <a name="add-prebuilt-number-entity-to-app"></a>向应用添加预生成的数字实体
 将预生成的数字实体添加回应用程序。
@@ -140,7 +140,7 @@ mv Jill Jones from a-2349 to b-1298
 
 2. 将光标定位到地址栏中 URL 的末尾，并输入 `Please relocation jill-jones@mycompany.com from x-2345 to g-23456`。 最后一个查询字符串参数为 `q`，表示陈述**查询**。 此话语不同于标记的任何话语，因此，它非常适合用于测试，测试结果应返回包含所提取的分层实体的 `MoveEmployee` 意向。
 
-    ```JSON
+    ```json
     {
       "query": "Please relocation jill-jones@mycompany.com from x-2345 to g-23456",
       "topScoringIntent": {

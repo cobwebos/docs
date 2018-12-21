@@ -1,7 +1,7 @@
 ---
-title: 快速入门：使用 C# 执行图像搜索 - 必应图像搜索 API
+title: 快速入门：搜索图像 - 必应图像搜索 REST API 和 C#
 titleSuffix: Azure Cognitive Services
-description: 使用本快速入门首次调用必应图像搜索 API 并查看 JSON 响应中的搜索结果。 这个简单的 C# 应用程序会向 API 发送 HTTP 图像搜索查询，并显示所返回的第一个图像的 URL。
+description: 使用本快速入门，通过 C# 将图像搜索请求发送到必应图像搜索 REST API，并接收 JSON 响应。
 services: cognitive-services
 author: aahill
 manager: cgronlun
@@ -10,14 +10,14 @@ ms.component: bing-image-search
 ms.topic: quickstart
 ms.date: 9/07/2018
 ms.author: aahi
-ms.openlocfilehash: 3819b476c5d3638f409b4195d6340920032d7b99
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 67dd91d7555ebd1e72cea168fc8b841bf4ed9175
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52307485"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53249509"
 ---
-# <a name="quickstart-send-search-queries-using-the-bing-image-search-api-and-c"></a>快速入门：使用必应图像搜索 API 和 C# 发送搜索查询
+# <a name="quickstart-search-for-images-using-the-bing-image-search-rest-api-and-c"></a>快速入门：使用必应图像搜索 REST API 和 C# 来搜索图像
 
 使用本快速入门首次调用必应图像搜索 API 并查看 JSON 响应中的搜索结果。 这个简单的 C# 应用程序会向 API 发送 HTTP 图像搜索查询，并显示所返回的第一个图像的 URL。
 

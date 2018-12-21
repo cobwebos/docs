@@ -1,5 +1,5 @@
 ---
-title: 在 Azure 中创建第一个 Java Web 应用
+title: 创建 Java Web 应用 - Azure 应用服务
 description: 了解如何通过部署基本的 Java 应用，从而在应用服务中运行 Web 应用。
 services: app-service\web
 documentationcenter: ''
@@ -14,17 +14,17 @@ ms.devlang: java
 ms.topic: quickstart
 ms.date: 03/26/2018
 ms.author: cephalin;robmcm
-ms.custom: mvc, devcenter
-ms.openlocfilehash: 854ae54992a1389ec7c7f7892c738d070421264d
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.custom: seodec18
+ms.openlocfilehash: b9321241f174a97976b2f150a9bd6c3547f0dc20
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2018
-ms.locfileid: "30283922"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53253148"
 ---
 # <a name="create-your-first-java-web-app-in-azure"></a>在 Azure 中创建第一个 Java Web 应用
 
-[Azure Web 应用](app-service-web-overview.md)提供高度可缩放、自修补的 Web 托管服务。 本快速入门演示如何使用[面向 Java EE 开发者的 Eclipse IDE](http://www.eclipse.org/) 将 Java Web 应用部署到应用服务。
+[Azure Web 应用](app-service-web-overview.md)提供高度可缩放、自修补的 Web 托管服务。 本快速入门演示如何使用[面向 Java EE 开发者的 Eclipse IDE](https://www.eclipse.org/) 将 Java Web 应用部署到应用服务。
 
 > [!NOTE]
 >
@@ -41,7 +41,7 @@ ms.locfileid: "30283922"
 
 若要完成本快速入门教程，请安装：
 
-* 免费版<a href="http://www.eclipse.org/downloads/" target="_blank">面向 Java EE 开发人员的 Eclipse IDE</a>。 本快速入门使用 Eclipse Neon。
+* 免费版<a href="https://www.eclipse.org/downloads/" target="_blank">面向 Java EE 开发人员的 Eclipse IDE</a>。 本快速入门使用 Eclipse Neon。
 * <a href="/java/azure/eclipse/azure-toolkit-for-eclipse-installation" target="_blank">用于 Eclipse 的 Azure 工具包</a>。
 
 > [!NOTE]
@@ -104,7 +104,7 @@ ms.locfileid: "30283922"
 
 登录 Azure 帐户后，随即显示“部署 Web 应用”对话框。
 
-选择**创建**。
+选择“创建”。
 
 ![“部署 Web 应用”对话框](./media/app-service-web-get-started-java/deploy-web-app-dialog-box.png)
 
@@ -137,7 +137,7 @@ ms.locfileid: "30283922"
 
 [!INCLUDE [resource-group](../../includes/resource-group.md)]
 
-选择**创建**。
+选择“创建”。
 
 <!--
 ### The JDK tab
