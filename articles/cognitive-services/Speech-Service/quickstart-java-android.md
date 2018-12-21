@@ -1,5 +1,5 @@
 ---
-title: 快速入门：使用语音服务 SDK 在 Android 上的 Java 中识别语音
+title: 快速入门：识别语音，Java (Android) - 语音服务
 titleSuffix: Azure Cognitive Services
 description: 了解如何使用语音服务 SDK 在 Android 上的 Java 中识别语音
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.component: speech-service
 ms.topic: quickstart
 ms.date: 11/06/2018
 ms.author: wolfma
-ms.openlocfilehash: 0785383d8b5a8ab282d8097d5229fa5a8aade06f
-ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
+ms.openlocfilehash: afe0cfe61779e95fc9a65a1f4928ddae4b7af267
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51219420"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53090102"
 ---
 # <a name="quickstart-recognize-speech-in-java-on-android-by-using-the-speech-sdk"></a>快速入门：使用语音 SDK 在 Android 上的 Java 中识别语音
 
@@ -42,7 +42,7 @@ ms.locfileid: "51219420"
 
    ![“新建项目”向导的屏幕截图](media/sdk/qs-java-android-02-create-android-project.png)
 
-1. 在“目标 Android 设备”屏幕中，仅选择“手机和平板电脑”。 在它下面的下拉列表中选择“API 23: Android 6.0 (Marshmallow)”，然后选择“下一步”。
+1. 在“目标 Android 设备”屏幕中，仅选择“手机和平板电脑”。 在下方的下拉列表中选择“API 23:Android 6.0 (Marshmallow)”，然后选择“下一步”。
 
    ![“新建项目”向导的屏幕截图](media/sdk/qs-java-android-03-target-android-devices.png)
 
@@ -63,7 +63,7 @@ Android Studio 需要一定的时间来准备你的新 Android 项目。 接下�
 将适用于 Android 的语音 SDK 打包为[ AAR（Android 库）](https://developer.android.com/studio/projects/android-library)，其内附必要的库以及使用它所需的 Android 权限。
 它托管在 Maven 存储库 (https://csspeechstorage.blob.core.windows.net/maven/) 中。
 
-设置项目以使用语音 SDK。 打开“项目结构”窗口，方法是从 Android Studio 菜单栏中选择“文件” > “项目结构”。 在“项目结构”窗口中进行以下更改： 
+设置项目以使用语音 SDK。 打开“项目结构”窗口，方法是从 Android Studio 菜单栏中选择“文件” > “项目结构”。 在“项目结构”窗口中进行以下更改：
 
 1. 在窗口左侧的列表中，选择“项目”。 编辑“默认库存储库”设置，方法是附加用单引号引起来的逗号和 Maven 存储库 URL。 'https://csspeechstorage.blob.core.windows.net/maven/'
 
@@ -118,7 +118,7 @@ Android Studio 需要一定的时间来准备你的新 Android 项目。 接下�
    [!code-java[](~/samples-cognitive-services-speech-sdk/quickstart/java-android/app/src/main/java/com/microsoft/cognitiveservices/speech/samples/quickstart/MainActivity.java#code)]
 
    * `onCreate` 方法包含的代码可请求麦克风和 Internet 权限并初始化本机平台绑定。 只需配置本机平台绑定一次。 这应该尽快在应用程序初始化期间完成。
-   
+
    * 如前所述，`onSpeechButtonClicked` 方法是按钮单击处理程序。 按下按钮会触发语音到文本的听录。
 
 1. 在同一文件中，将字符串 `YourSubscriptionKey` 替换为订阅密钥。
