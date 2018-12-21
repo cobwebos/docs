@@ -12,18 +12,18 @@ ms.topic: tutorial
 ms.date: 09/29/2018
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: 2a60084577255b9aa88700509129b8d917c43a79
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: f08de2398174363604576874627026dcc6199ac5
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51282490"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53104656"
 ---
-# <a name="automate-resizing-uploaded-images-using-event-grid"></a>使用事件网格自动调整上传图像的大小
+# <a name="tutorial-automate-resizing-uploaded-images-using-event-grid"></a>教程：使用事件网格自动调整上传图像的大小
 
 [Azure 事件网格](overview.md)是一项用于云的事件处理服务， 可使你创建由 Azure 服务或第三方资源引发的事件的订阅。  
 
-本教程是存储教程系列中的第二部分。 它对[前面存储教程][previous-tutorial]的内容进行了扩充，以学习如何使用 Azure 事件网格和 Azure Functions 添加无服务器自动缩略图生成。 事件网格可使 [Azure Functions](..\azure-functions\functions-overview.md) 响应 [Azure Blob 存储](..\storage\blobs\storage-blobs-introduction.md)事件，并生成上传图像的缩略图。 针对 Blob 存储创建事件会创建一个事件订阅。 当将 blob 添加到特定 Blob 存储容器时，将调用一个函数终结点。 从事件网格传递到函数绑定的数据用于访问 blob 并生成缩略图。
+本教程是存储教程系列中的第二部分。 它对[前面存储教程][previous-tutorial]的内容进行了扩充，以学习如何使用 Azure 事件网格和 Azure Functions 添加无服务器自动缩略图生成。 事件网格可使 [Azure Functions](../azure-functions/functions-overview.md) 响应 [Azure Blob 存储](../storage/blobs/storage-blobs-introduction.md)事件，并生成上传图像的缩略图。 针对 Blob 存储创建事件会创建一个事件订阅。 当将 blob 添加到特定 Blob 存储容器时，将调用一个函数终结点。 从事件网格传递到函数绑定的数据用于访问 blob 并生成缩略图。
 
 可以使用 Azure CLI 和 Azure 门户将调整大小功能添加到现有图像上传应用。
 
@@ -40,7 +40,7 @@ ms.locfileid: "51282490"
 
 完成本教程：
 
-必须完成以前的 Blob 存储教程：[使用 Azure 存储上传云中的图像数据][previous-tutorial]。
+必须已完成以前的 Blob 存储教程：[使用 Azure 存储在云中上传图像数据][previous-tutorial]。
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -200,6 +200,6 @@ az functionapp deployment source config --name <function_app> \
 > [安全访问云中的应用程序数据](../storage/blobs/storage-secure-access-application.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
 
 + 要详细了解事件网格，请参阅 [Azure 事件网格简介](overview.md)。 
-+ 若要尝试了解有关 Azure Functions 的其他教程，请参阅[创建与 Azure 逻辑应用集成的函数](..\azure-functions\functions-twitter-email.md)。 
++ 若要尝试了解有关 Azure Functions 的其他教程，请参阅[创建与 Azure 逻辑应用集成的函数](../azure-functions/functions-twitter-email.md)。 
 
 [previous-tutorial]: ../storage/blobs/storage-upload-process-images.md

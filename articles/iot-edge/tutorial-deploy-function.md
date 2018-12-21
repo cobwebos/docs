@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure IoT Edge 部署 Azure 函数 | Microsoft Docs
-description: 在本教程中，请将 Azure 函数作为一个模块部署到边缘设备。
+title: 教程：将 Azure 函数部署到设备 - Azure IoT Edge | Microsoft Docs
+description: 在本教程中，你将一个 Azure 函数开发为 IoT Edge模块，然后将其部署到边缘设备。
 author: kgremban
 manager: philmea
 ms.author: kgremban
@@ -8,15 +8,15 @@ ms.date: 10/19/2018
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.custom: mvc
-ms.openlocfilehash: d0ae009db0d9470942a4ff5d7c09e2cdd7bcdd53
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.custom: mvc, seodec18
+ms.openlocfilehash: 1488f6aff202f8b307b883d8a795d7df20066661
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52165606"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53081874"
 ---
-# <a name="tutorial-deploy-azure-functions-as-iot-edge-modules"></a>教程：将 Azure 函数作为 IoT Edge 模块进行部署
+# <a name="tutorial-deploy-azure-functions-as-iot-edge-modules"></a>教程：将 Azure Functions 作为 IoT Edge 模块进行部署
 
 可以使用 Azure Functions 部署代码，以直接将业务逻辑实现到 Azure IoT Edge 设备。 本教程将引导你在模拟的 IoT Edge 设备上创建和部署用于筛选传感器数据的 Azure 函数。 使用的模拟 IoT Edge 设备是在 [Windows](quickstart.md) 或 [Linux](quickstart-linux.md) 快速入门的“在模拟设备上部署 Azure IoT Edge”中创建的。 本教程介绍如何执行下列操作：     
 
@@ -27,7 +27,7 @@ ms.locfileid: "52165606"
 > * 查看筛选的数据。
 
 <center>
-![教程体系结构示意图](./media/tutorial-deploy-function/FunctionsTutDiagram.png)
+![关系图 - 教程体系结构，暂存以及部署函数模块](./media/tutorial-deploy-function/functions-architecture.png)
 </center>
 
 >[!NOTE]
@@ -63,7 +63,7 @@ Azure IoT Edge 设备：
 
 1. 在 [Azure 门户](https://portal.azure.com)中，选择“创建资源” > “容器” > “容器注册表”。
 
-    ![创建容器注册表](./media/tutorial-deploy-function/create-container-registry.png)
+    ![在 Azure 门户中创建容器注册表](./media/tutorial-deploy-function/create-container-registry.png)
 
 2. 提供以下值，以便创建容器注册表：
 
@@ -90,7 +90,7 @@ Azure IoT Edge 设备：
 
 2. 打开 VS Code 命令面板，方法是选择“视图” > “命令面板”。
 
-3. 在命令面板中，输入并运行“Azure IoT Edge: 新建 IoT Edge 解决方案”命令。 按命令面板中的提示创建解决方案。
+3. 在命令面板中，输入并运行 **Azure IoT Edge:New IoT Edge solution** 命令。 按命令面板中的提示创建解决方案。
 
    | 字段 | 值 |
    | ----- | ----- |
@@ -225,9 +225,9 @@ Azure IoT Edge 设备：
 
 1. 打开 VS Code 命令面板，方法是选择“视图” > “命令面板”。
 
-2. 搜索并运行“Azure: 登录”命令。 按照说明登录 Azure 帐户。 
+2. 搜索并运行 **Azure:Sign in** 命令。 按照说明登录 Azure 帐户。 
 
-3. 在命令面板中，搜索并运行“Azure IoT 中心: 选择 IoT 中心”命令。 
+3. 在命令面板中，搜索并运行 **Azure IoT Hub:Select IoT Hub** 命令。 
 
 4. 选择包含 IoT 中心的订阅，然后选择要访问的 IoT 中心。
 
@@ -243,11 +243,11 @@ Azure IoT Edge 设备：
 
 ## <a name="view-generated-data"></a>查看生成的数据
 
-若要查看到达 IoT 中心的所有消息，可在命令面板中运行“Azure IoT 中心: 开始监视 D2C 消息”。
+若要查看到达 IoT 中心的所有消息，请在命令面板中运行 **Azure IoT Hub:Start Monitoring D2C Message**。
 
 也可通过筛选视图来查看从特定设备到达 IoT 中心的所有消息。 右键单击“Azure IoT 中心设备”部分的设备，然后选择“开始监视 D2C 消息”。
 
-若要停止监视消息，请在命令面板中运行“Azure IoT 中心: 停止监视 D2C 消息”命令。 
+若要停止监视消息，请在命令面板中运行 **Azure IoT Hub:Start Monitoring D2C Message** 命令。 
 
 
 ## <a name="clean-up-resources"></a>清理资源

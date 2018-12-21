@@ -1,14 +1,11 @@
 ---
-title: 教程：跨可用性区域的负载均衡器 VM - Azure 门户 | Microsoft Docs
+title: 教程：跨可用性区域的负载均衡器 VM - Azure 门户
+titlesuffix: Azure Load Balancer
 description: 本指南演示了如何使用 Azure 门户创建包含区域冗余前端的标准负载均衡器，以便对跨可用性区域的 VM 进行负载均衡
 services: load-balancer
 documentationcenter: na
 author: KumudD
-manager: jeconnoc
-editor: ''
-tags: azure-resource-manager
 Customer intent: As an IT administrator, I want to create a load balancer that load balances incoming internet traffic to virtual machines across availability zones in a region, so that the customers can still access the web service if a datacenter is unavailable.
-ms.assetid: ''
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: tutorial
@@ -16,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/17/2018
 ms.author: kumud
-ms.custom: mvc
-ms.openlocfilehash: 5ec1cc42a0c932e47c08493fa632495426abc4c7
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.custom: seodec18
+ms.openlocfilehash: 18b5f82a5181f0bbf7024b302b802684ef676c8f
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/18/2018
-ms.locfileid: "34304454"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53255323"
 ---
 # <a name="tutorial-load-balance-vms-across-availability-zones-with-a-standard-load-balancer-using-the-azure-portal"></a>教程：在 Azure 门户中使用标准负载均衡器对跨可用性区域的 VM 进行负载均衡
 
@@ -41,7 +38,7 @@ ms.locfileid: "34304454"
 
 如果需要，也可以使用 [Azure CLI](load-balancer-standard-public-zone-redundant-cli.md) 完成本教程中的步骤。
 
-如果你还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。 
+如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。 
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
 
@@ -71,7 +68,7 @@ ms.locfileid: "34304454"
 创建用于部署后端服务器的虚拟网络。
 
 1. 在屏幕的左上方，单击“创建资源” > “网络” > “虚拟网络”，然后输入虚拟网络的以下值：
-    - *myVNet* - 虚拟网络的名称。
+    - *myVnet* - 虚拟网络的名称。
     - *myResourceGroupLBAZ* - 现有资源组的名称。
     - *myBackendSubnet* - 子网名称。
 2. 单击“创建”以创建虚拟网络。
@@ -177,7 +174,7 @@ ms.locfileid: "34304454"
     - 在下拉菜单中，针对“虚拟机”单击“myVM1”。
     - 在下拉菜单中，针对“IP 地址”单击 myVM1 的 IP 地址。
 4. 单击“添加新后端资源”，将每个虚拟机（*myVM2* 和 *myVM3*）添加到负载均衡器的后端池。
-5. 单击 **“添加”**。
+5. 单击“添加”。
 
     ![添加到后端地址池 - ](./media/load-balancer-standard-public-availability-zones-portal/add-backend-pool.png)
 

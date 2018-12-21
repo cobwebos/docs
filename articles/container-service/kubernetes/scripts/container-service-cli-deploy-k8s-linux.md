@@ -3,7 +3,7 @@ title: Azure CLI 脚本示例 - 创建 ACS Linux Kubernetes 群集 | Microsoft �
 description: Azure CLI 脚本示例 - 创建 ACS Linux Kubernetes 群集
 services: container-service
 documentationcenter: ''
-author: neilpeterson
+author: iainfoulds
 manager: jeconnoc
 editor: ''
 tags: acs, azure-container-service
@@ -15,15 +15,17 @@ ms.topic: sample
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/30/2017
-ms.author: nepeters
-ms.openlocfilehash: 938990e0c39e96d909c07bef05d2630a01e3076a
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.author: iainfou
+ms.openlocfilehash: 11549e730e38c72e09ed2e94a72113c6e7e5bbb9
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39423753"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52996270"
 ---
-# <a name="create-an-azure-container-service-kubernetes-linux-cluster"></a>创建 Azure 容器服务 Kubernetes Linux 群集
+# <a name="deprecated-create-an-azure-container-service-kubernetes-linux-cluster"></a>（已弃用）创建 Azure 容器服务 Kubernetes Linux 群集
+
+[!INCLUDE [ACS deprecation](../../../../includes/container-service-kubernetes-deprecation.md)]
 
 此示例将创建运行基于 Linux 容器的 Kubernetes 的 Azure 容器服务群集。
 

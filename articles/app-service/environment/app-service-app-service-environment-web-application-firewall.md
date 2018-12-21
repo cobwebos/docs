@@ -1,5 +1,5 @@
 ---
-title: 为应用服务环境配置 Web 应用程序防火墙 (WAF)
+title: 为应用服务环境配置 Web 应用程序防火墙 (WAF) - Azure
 description: 了解如何在应用服务环境的前面配置 Web 应用程序防火墙。
 services: app-service\web
 documentationcenter: ''
@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/03/2018
 ms.author: naziml
-ms.custom: mvc
-ms.openlocfilehash: e1c327051982ce36e94cd1fe0f824db5ec424da1
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.custom: seodec18
+ms.openlocfilehash: 6bc354ef3451862e3567adbe5ff8ee6da0eacaf6
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51226985"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53314867"
 ---
 # <a name="configuring-a-web-application-firewall-waf-for-app-service-environment"></a>为应用服务环境配置 Web 应用程序防火墙 (WAF)
 ## <a name="overview"></a>概述
