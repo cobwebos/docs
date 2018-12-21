@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/26/2018
 ms.author: jdial
-ms.openlocfilehash: 6501444aacd36c794c8a169a8d1b16898efad018
-ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
+ms.openlocfilehash: ad5205bcf063cd3375e68ef609c71ced2f551b61
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2018
-ms.locfileid: "51977244"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53311756"
 ---
 # <a name="security-groups"></a>安全组
 <a name="network-security-groups"></a>
@@ -56,7 +56,7 @@ ms.locfileid: "51977244"
 
  可在安全规则定义中使用以下服务标记。 服务标记的名称根据 [Azure 部署模型](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json)的不同而略有不同。
 
-* **VirtualNetwork**（资源管理器）（如果是经典部署模型，则为 **VIRTUAL_NETWORK**）：此标记包括虚拟网络地址空间（为虚拟网络定义的所有 CIDR 范围）、所有连接的本地地址空间，以及[对等互连](virtual-network-peering-overview.md)的虚拟网络，或已连接到[虚拟网络网关](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json)的虚拟网络。
+* **VirtualNetwork**（资源管理器）（如果是经典部署模型，则为 **VIRTUAL_NETWORK**）：此标记包括虚拟网络地址空间（为虚拟网络定义的所有 CIDR 范围）、所有连接的本地地址空间，以及[对等互连](virtual-network-peering-overview.md)的虚拟网络，或已连接到[虚拟网关](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json)的虚拟网络。
 * **AzureLoadBalancer**（资源管理器）（如果是经典部署模型，则为 **AZURE_LOADBALANCER**）：此标记表示 Azure 的基础结构负载均衡器。 此标记将转换为[主机的虚拟 IP 地址](security-overview.md##azure-platform-considerations) (168.63.129.16)，Azure 的运行状况探测源于该 IP。 如果不使用 Azure 负载均衡器，则可替代此规则。
 * **Internet**（资源管理器）（如果是经典部署模型，则为 **INTERNET**）：此标记表示虚拟网络外部的 IP 地址空间，可以通过公共 Internet 进行访问。 地址范围包括 [Azure 拥有的公共 IP 地址空间](https://www.microsoft.com/download/details.aspx?id=41653)。
 * **AzureCloud**（仅限资源管理器）：此标记表示 Azure 的 IP 地址空间，包括所有[数据中心公共 IP 地址](https://www.microsoft.com/download/details.aspx?id=41653)。 如果指定 AzureCloud 作为值，则会允许或拒绝发往 Azure 公共 IP 地址的流量。 如果仅希望允许访问某个特定[区域](https://azure.microsoft.com/regions)中的 AzureCloud，可以指定该区域。 例如，如果希望只允许访问美国东部区域中的 Azure AzureCloud，可以指定 AzureCloud.EastUS 作为服务标记。 
@@ -201,7 +201,7 @@ Azure 在你所创建的每个网络安全组中创建以下默认规则：
 - **VM1**：系统会处理 *NSG2* 中的安全规则。 除非创建一条安全规则来拒绝从端口 80 到 Internet 的出站流量，否则 *NSG1* 和 *NSG2* 中的 [AllowInternetOutbound](#allowinternetoutbound) 默认安全规则都会允许该流量。 如果 *NSG2* 有一条拒绝端口 80 的安全规则，则流量会被拒绝，不会由 *NSG1* 评估。 若要拒绝从虚拟机到端口 80 的流量，则两个网络安全组或其中的一个必须有一条规则来拒绝从端口 80 到 Internet 的流量。
 - **VM2**：所有流量都会通过网络接口发送到子网，因为附加到 *VM2* 的网络接口没有关联的网络安全组。 系统会处理 *NSG1* 中的规则。
 - **VM3**：如果 *NSG2* 有一条拒绝端口 80 的安全规则，则流量会被拒绝。 如果 *NSG2* 有一条允许端口 80 的安全规则，则允许从端口 80 到 Internet 的出站流量，因为没有关联到 *Subnet2* 的网络安全组。
-- **VM4**：允许来自 *VM4* 的所有网络流量，因为网络安全组没有关联到已附加到虚拟机的网络接口，也没有关联到 *Subnet3*。
+- **VM4**：允许来自 *VM4* 的所有网络流量，因为网络安全组没有关联到已附加到虚拟机的网络接口，或者没有关联到 *Subnet3*。
 
 可以通过查看网络接口的[有效安全规则](virtual-network-network-interface.md#view-effective-security-rules)，轻松查看已应用到网络接口的聚合规则。 还可以使用 Azure 网络观察程序中的 [IP 流验证](../network-watcher/diagnose-vm-network-traffic-filtering-problem.md?toc=%2fazure%2fvirtual-network%2ftoc.json)功能来确定是否允许发往或发自网络接口的通信。 IP 流验证会告知你系统是允许还是拒绝通信，以及哪条网络安全规则允许或拒绝该流量。
 
@@ -213,7 +213,7 @@ Azure 在你所创建的每个网络安全组中创建以下默认规则：
 
 ## <a name="azure-platform-considerations"></a>Azure 平台注意事项
 
-- **主机节点的虚拟 IP**：基本的基础结构服务（例如 DHCP、DNS 和运行状况监视）是通过虚拟化主机 IP 地址 168.63.129.16 和 169.254.169.254 提供的。 这些公共 IP 地址属于 Microsoft，是仅有的用于所有区域的虚拟化 IP 地址，没有其他用途。 此地址映射到托管虚拟机的服务器计算机（主机节点）的物理 IP 地址。 主机节点充当 DHCP 中继、DNS 递归解析器，以及进行负载均衡器运行状况探测和计算机运行状况探测的探测源。 与这些 IP 地址的通信不是攻击。 如果阻止发往或发自这些 IP 地址的流量，虚拟机可能无法正常工作。
+- **主机节点的虚拟 IP**：基本的基础结构服务（例如 DHCP、DNS、IMDS和运行状况监视）是通过虚拟化主机 IP 地址 168.63.129.16 和 169.254.169.254 提供的。 这些 IP 地址属于 Microsoft，是仅有的用于所有区域的虚拟化 IP 地址，没有其他用途。
 - **许可（密钥管理服务）**：在虚拟机中运行的 Windows 映像必须获得许可。 为了确保许可，会向处理此类查询的密钥管理服务主机服务器发送请求。 该请求是通过端口 1688 以出站方式提出的。 对于使用[默认路由 0.0.0.0/0](virtual-networks-udr-overview.md#default-route) 配置的部署，此平台规则会被禁用。
 - **负载均衡池中的虚拟机**：应用的源端口和地址范围来自源计算机，而不是来自负载均衡器。 目标端口和地址范围是目标计算机的，而不是负载均衡器的。
 - **Azure 服务实例**：在虚拟网络子网中部署了多个 Azure 服务的实例，例如 HDInsight、应用程序服务环境和虚拟机规模集。 有关可部署到虚拟网络的服务的完整列表，请参阅 [Azure 服务的虚拟网络](virtual-network-for-azure-services.md#services-that-can-be-deployed-into-a-virtual-network)。 在将网络安全组应用到部署了资源的子网之前，请确保熟悉每个服务的端口要求。 如果拒绝服务所需的端口，服务将无法正常工作。
@@ -223,8 +223,8 @@ Azure 在你所创建的每个网络安全组中创建以下默认规则：
 
      - **企业协议**：允许端口 25 的出站通信。 可以将出站电子邮件直接从虚拟机发送到外部电子邮件提供商，不受 Azure 平台的限制。 
      - **即用即付：** 阻止所有资源通过端口 25 进行出站通信。 如需将电子邮件从虚拟机直接发送到外部电子邮件提供商（不使用经身份验证的 SMTP 中继），可以请求去除该限制。 Microsoft 会自行审核和批准此类请求，并且只在进行防欺诈检查后授予相关权限。 若要提交请求，请建立一个问题类型为“技术”、“虚拟网络连接”、“无法发送电子邮件（SMTP/端口 25）”的支持案例。 在支持案例中，请详细说明为何你的订阅需要将电子邮件直接发送到邮件提供商，而不经过经身份验证的 SMTP 中继。 如果订阅得到豁免，则只有在豁免日期之后创建的虚拟机能够经端口 25 进行出站通信。
-     - **MSDN、Azure Pass、Azure 开放许可、教育、BizSpark 和免费试用版**：阻止所有资源经端口 25 进行出站通信。 不能请求去除该限制，因为不会针对请求授予相关权限。 若需从虚拟机发送电子邮件，则需使用 SMTP 中继服务。
-     - **云服务提供商**：如果无法使用安全的 SMTP 中继，通过云服务提供商消耗 Azure 资源的客户可以通过其云服务提供商创建支持案例，并请求提供商代表他们创建取消阻止案例。
+     - **MSDN、Azure Pass、Azure 开放许可、教育、BizSpark 和免费试用版**：阻止所有资源通过端口 25 进行出站通信。 不能请求去除该限制，因为不会针对请求授予相关权限。 若需从虚拟机发送电子邮件，则需使用 SMTP 中继服务。
+     - **云服务提供商**：如果无法使用安全的 SMTP 中继，通过云服务提供商消耗 Azure 资源的客户可以通过其云服务提供商创建支持案例，请求提供商代表他们创建取消阻止案例。
 
   即使 Azure 允许经端口 25 发送电子邮件，Microsoft 也不能保证电子邮件提供商会接受来自你的虚拟机的入站电子邮件。 如果特定的提供商拒绝了来自你的虚拟机的邮件，请直接与该提供商协商解决邮件传送问题或垃圾邮件过滤问题，否则只能使用经身份验证的 SMTP 中继服务。
 
