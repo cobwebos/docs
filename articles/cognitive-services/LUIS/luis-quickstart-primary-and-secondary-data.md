@@ -1,21 +1,22 @@
 ---
-title: 教程 7：LUIS 中使用短语列表的简单实体
+title: 简单实体，短语列表
 titleSuffix: Azure Cognitive Services
-description: 从话语中提取机器学习的数据
+description: 在本教程中，请使用简单实体从话语中提取雇佣工作名称的机器学习数据。 若要提高提取的准确性，请添加一个短语列表，其中包含特定于简单实体的术语。
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: tutorial
-ms.date: 09/09/2018
+ms.date: 12/07/2018
 ms.author: diberry
-ms.openlocfilehash: f3e931344d2d2294c03756d630c688df1e5da9a8
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: e8a1575527f906fab130e08cda715f6c8e904275
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52425235"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53166262"
 ---
 # <a name="tutorial-7-extract-names-with-simple-entity-and-phrase-list"></a>教程 7：通过简单实体和短语列表提取名称
 
@@ -92,7 +93,7 @@ ms.locfileid: "52425235"
 
 3. 在陈述`I want to apply for the new accounting job`中选择`accounting`，在弹出菜单的顶部字段中输入`Job`，然后在弹出菜单中选择“创建新实体”。 
 
-    [![](media/luis-quickstart-primary-and-secondary-data/hr-create-entity.png "LUIS 的屏幕截图，其中已突出显示包含创建实体步骤的“ApplyForJob”意向")](media/luis-quickstart-primary-and-secondary-data/hr-create-entity.png#lightbox)
+    [![带有“ApplyForJob”意向的 LUIS 的屏幕截图，其中突出显示了创建实体的步骤](media/luis-quickstart-primary-and-secondary-data/hr-create-entity.png "Screenshot of LUIS with 'ApplyForJob' intent with create entity steps highlighted")](media/luis-quickstart-primary-and-secondary-data/hr-create-entity.png#lightbox)
 
 4. 在弹出窗口中验证实体名称和类型，然后选择“完成”。
 
@@ -100,7 +101,7 @@ ms.locfileid: "52425235"
 
 5. 在陈述 `Submit resume for engineering position` 中，将 `engineering` 一词标记为“工作”实体。 选择 `engineering` 一词，然后从弹出菜单中选择“工作”。 
 
-    [![](media/luis-quickstart-primary-and-secondary-data/hr-label-simple-entity.png "LUIS 的屏幕截图，其中已突出标记工作实体")](media/luis-quickstart-primary-and-secondary-data/hr-label-simple-entity.png#lightbox)
+    [![LUIS 标签的屏幕截图，突出显示了工作实体](media/luis-quickstart-primary-and-secondary-data/hr-label-simple-entity.png "Screenshot of LUIS labeling job entity highlighted")](media/luis-quickstart-primary-and-secondary-data/hr-label-simple-entity.png#lightbox)
 
     所有陈述都已标记，但五个陈述还不足以教会 LUIS 什么是工作相关词汇和短语。 使用数值的工作不需更多示例，因为使用的是正则表达式实体。 使用词汇或短语的工作至少还需要 15 个示例。 
 
@@ -157,7 +158,7 @@ ms.locfileid: "52425235"
 
 2. 将光标定位到地址中 URL 的末尾，并输入 `Here is my c.v. for the programmer job`。 最后一个查询字符串参数为 `q`，表示陈述查询 (**q**uery)。 此陈述不同于标记的任何陈述，因此，它非常适合用于测试，测试结果应返回 `ApplyForJob` 陈述。
 
-    ```JSON
+    ```json
     {
       "query": "Here is my c.v. for the programmer job",
       "topScoringIntent": {
@@ -226,7 +227,7 @@ LUIS 应用通过高置信度来查找正确的意向，然后提取工作名称
 
 在下面的 JSON 中，LUIS 使用正确的意向 `ApplyForJob` 进行了响应，但没有提取工作名称 `lead welder`。 
 
-```JSON
+```json
 {
   "query": "This is the lead welder paperwork.",
   "topScoringIntent": {
@@ -283,7 +284,7 @@ LUIS 应用通过高置信度来查找正确的意向，然后提取工作名称
 
 ## <a name="to-boost-signal-add-phrase-list"></a>若要增强信号，请添加短语列表
 
-打开 LUIS-Samples Github 存储库中的 [jobs-phrase-list.csv](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/job-phrase-list.csv)。 此列表的工作词汇和短语超过一千个。 查看列表中是否有对你有意义的工作词汇。 如果列表中没有你的词汇或短语，请添加你自己的词汇或短语。
+打开 LUIS-Samples GitHub 存储库中的 [jobs-phrase-list.csv](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/job-phrase-list.csv)。 此列表的工作词汇和短语超过一千个。 查看列表中是否有对你有意义的工作词汇。 如果列表中没有你的词汇或短语，请添加你自己的词汇或短语。
 
 1. 在 LUIS 应用的“生成”部分，选择“提高应用性能”菜单下的“短语列表”。
 
@@ -291,13 +292,13 @@ LUIS 应用通过高置信度来查找正确的意向，然后提取工作名称
 
 3. 将新的短语列表命名为`Job`，然后将列表从 jobs-phrase-list.csv 复制到“值”文本框中。 按 Enter。 
 
-    [![](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-1.png "“创建新的短语列表”弹出对话框的屏幕截图")](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-1.png#lightbox)
+    [![“新建短语列表”弹出对话框的屏幕截图](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-1.png "Screenshot of create new phrase list dialog pop-up")](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-1.png#lightbox)
 
     如果需要将更多词汇添加到短语列表中，请查看“相关值”，然后添加相关值。 
 
 4. 选择“保存”，激活短语列表。
 
-    [![](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-2.png "“创建新的短语列表”弹出对话框的屏幕截图，在短语列表值框中已填充了词汇")](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-2.png#lightbox)
+    [![“新建短语列表”弹出对话框以及短语列表值框中字词的屏幕截图](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-2.png "Screenshot of create new phrase list dialog pop-up with words in phrase list values box")](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-2.png#lightbox)
 
 5. 再次[训练](#train)并[发布](#publish)应用，以便使用短语列表。
 
@@ -305,7 +306,7 @@ LUIS 应用通过高置信度来查找正确的意向，然后提取工作名称
 
     JSON 响应包含提取的实体：
 
-    ```JSON
+    ```json
     {
         "query": "This is the lead welder paperwork.",
         "topScoringIntent": {

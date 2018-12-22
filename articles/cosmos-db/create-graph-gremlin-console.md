@@ -8,12 +8,12 @@ ms.component: cosmosdb-graph
 ms.topic: quickstart
 ms.date: 01/08/2018
 ms.author: lbosq
-ms.openlocfilehash: 7f23ddc5b8f58403e5d2e69f11bd39b859f8d548
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: b3077920f08688d2cc84997ef8712183e8d7a09a
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52844443"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53098060"
 ---
 # <a name="azure-cosmos-db-create-query-and-traverse-a-graph-in-the-gremlin-console"></a>Azure Cosmos DB：在 Gremlin 控制台中创建、查询和遍历图形
 
@@ -28,11 +28,11 @@ ms.locfileid: "52844443"
 
 Azure Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务。 可快速创建和查询文档、键/值和图形数据库，所有这些都受益于 Azure Cosmos DB 核心的全球分布和水平缩放功能。 
 
-本快速入门教程演示如何使用 Azure 门户创建 Azure Cosmos DB [Gremlin API](graph-introduction.md) 帐户、数据库和图形（容器），并使用 [Apache TinkerPop](http://tinkerpop.apache.org) 的 [Gremlin 控制台](https://tinkerpop.apache.org/docs/current/reference/#gremlin-console)处理 Gremlin API 数据。 本教程将创建并查询顶点和边缘，更新顶点属性，查询顶点，遍历图形，然后删除顶点。
+本快速入门教程演示如何使用 Azure 门户创建 Azure Cosmos DB [Gremlin API](graph-introduction.md) 帐户、数据库和图形（容器），并使用 [Apache TinkerPop](https://tinkerpop.apache.org) 的 [Gremlin 控制台](https://tinkerpop.apache.org/docs/current/reference/#gremlin-console)处理 Gremlin API 数据。 本教程将创建并查询顶点和边缘，更新顶点属性，查询顶点，遍历图形，然后删除顶点。
 
 ![Apache Gremlin 控制台中的 Azure Cosmos DB](./media/create-graph-gremlin-console/gremlin-console.png)
 
-Gremlin 控制台基于 Groovy/Java，在 Linux、Mac 和 Windows 上运行。 可以从 [Apache TinkerPop 站点](http://tinkerpop.apache.org/downloads.html)下载它。
+Gremlin 控制台基于 Groovy/Java，在 Linux、Mac 和 Windows 上运行。 可以从 [Apache TinkerPop 站点](https://tinkerpop.apache.org/downloads.html)下载它。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -40,7 +40,7 @@ Gremlin 控制台基于 Groovy/Java，在 Linux、Mac 和 Windows 上运行。 �
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-还需要安装 [Gremlin 控制台](http://tinkerpop.apache.org/)。 使用 3.2.5 或更高版本。 （若要在 Windows 上使用 Gremlin 控制台，需安装 [Java 运行时](https://www.oracle.com/technetwork/java/javase/overview/index.html)。）
+还需要安装 [Gremlin 控制台](https://tinkerpop.apache.org/)。 使用 3.2.5 或更高版本。 （若要在 Windows 上使用 Gremlin 控制台，需安装 [Java 运行时](https://www.oracle.com/technetwork/java/javase/overview/index.html)。）
 
 ## <a name="create-a-database-account"></a>创建数据库帐户
 
@@ -63,9 +63,9 @@ Gremlin 控制台基于 Groovy/Java，在 Linux、Mac 和 Windows 上运行。 �
     connectionPool|{enableSsl: true}|SSL 的连接池设置。
     serializer|{ className: org.apache.tinkerpop.gremlin.<br>driver.ser.GraphSONMessageSerializerV1d0,<br> config: { serializeResultToString: true }}|请设置为此值，并在粘贴此值时删除所有 `\n` 换行符。
 
-    对于“主机”值，请复制“概述”页中的“Gremlin URI”值：![在 Azure 门户中的“概述”页上查看和复制“Gremlin URI”值](./media/create-graph-gremlin-console/gremlin-uri.png)
+    对于 Hosts 值，请从“概览”页复制“Gremlin URI”值：![在 Azure 门户的“概览”页上查看和复制 Gremlin URI 值](./media/create-graph-gremlin-console/gremlin-uri.png)
 
-    对于“密码”值，请复制“密钥”页中的“主密钥”：![在 Azure 门户中的“密钥”页上查看和复制主密钥](./media/create-graph-gremlin-console/keys.png)
+    对于密码值，请从“密钥”页复制“主密钥”：![在 Azure 门户的“密钥”页中查看和复制主密钥](./media/create-graph-gremlin-console/keys.png)
 
 remote-secure.yaml 文件应如下所示：
 
@@ -80,7 +80,7 @@ connectionPool: {
 serializer: { className: org.apache.tinkerpop.gremlin.driver.ser.GraphSONMessageSerializerV1d0, config: { serializeResultToString: true }}
 ```
 
-3. 在终端中运行 `bin/gremlin.bat` 或 `bin/gremlin.sh` 启动[Gremlin 控制台](http://tinkerpop.apache.org/docs/3.2.5/tutorials/getting-started/)。
+3. 在终端中运行 `bin/gremlin.bat` 或 `bin/gremlin.sh` 启动[Gremlin 控制台](https://tinkerpop.apache.org/docs/3.2.5/tutorials/getting-started/)。
 4. 在终端中运行 `:remote connect tinkerpop.server conf/remote-secure.yaml` 连接到应用服务。
 
     > [!TIP]
@@ -301,7 +301,7 @@ g.E().drop()
 g.V().drop()
 ```
 
-祝贺你！ 现已完成这篇“Azure Cosmos DB：Gremlin API”教程！
+祝贺你！ 你已完成“Azure Cosmos DB：Gremlin API”教程！
 
 ## <a name="review-slas-in-the-azure-portal"></a>在 Azure 门户中查看 SLA
 

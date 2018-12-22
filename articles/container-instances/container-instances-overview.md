@@ -1,6 +1,6 @@
 ---
-title: Azure 容器实例概述
-description: 了解 Azure 容器实例
+title: 什么是 Azure 容器实例？
+description: Azure 容器实例服务提供了在 Azure 中运行隔离容器的最简捷方式，既无需管理虚拟机，也不必采用更高级的业务流程协调程序。
 services: container-instances
 author: seanmck
 manager: jeconnoc
@@ -8,15 +8,15 @@ ms.service: container-instances
 ms.topic: overview
 ms.date: 11/30/2018
 ms.author: seanmck
-ms.custom: mvc
-ms.openlocfilehash: b5f97dac202edd5405c51b75581275166042ac38
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.custom: seodec18, mvc
+ms.openlocfilehash: ba454965ff2bb78ebe526e71d9280200b1f4b08b
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52841449"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53187188"
 ---
-# <a name="azure-container-instances"></a>Azure 容器实例
+# <a name="what-is-azure-container-instances"></a>什么是 Azure 容器实例？
 
 容器正在变成对云应用程序执行打包、部署和管理操作的首选方式。 Azure 容器实例提供了在 Azure 中运行容器的最简捷方式，既无需管理任何虚拟机，也不必采用更高级的服务。
 

@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
 ms.date: 12/04/2018
-ms.openlocfilehash: ba27ceb784cf139c288a89f3191282fb9b364ddc
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 8780e145845d820ef0c6ff2c43891287c1902e2c
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52864368"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "53000914"
 ---
 # <a name="tutorial-migrate-postgresql-to-azure-database-for-postgresql-online-using-dms"></a>教程：使用 DMS 以联机方式将 PostgreSQL 迁移到 Azure Database for PostgreSQL
 可以使用 Azure 数据库迁移服务在尽量缩短停机时间的情况下，将数据库从本地 PostgreSQL 实例迁移到 [Azure Database for PostgreSQL](https://docs.microsoft.com/azure/postgresql/)。 换句话说，可以在尽量减少应用程序故障时间的情况下进行迁移。 本教程介绍如何在 Azure 数据库迁移服务中使用联机迁移活动将 **DVD Rental** 示例数据库从 PostgreSQL 9.6 的本地实例迁移到 Azure Database for PostgreSQL。
@@ -38,7 +38,7 @@ ms.locfileid: "52864368"
 ## <a name="prerequisites"></a>先决条件
 要完成本教程，需要：
 
-- 下载并安装 [PostgreSQL 社区版](https://www.postgresql.org/download/) 9.5、9.6 或 10.3。 源 PostgreSQL 服务器版本必须是 9.5.11、9.6.7、10.3 或以上。 有关详细信息，请参阅[支持的 PostgreSQL 数据库版本](https://docs.microsoft.com/azure/postgresql/concepts-supported-versions)一文。
+- 下载并安装 [PostgreSQL 社区版](https://www.postgresql.org/download/) 9.5、9.6 或 10。 源 PostgreSQL 服务器版本必须是 9.5.11、9.6.7、10 或更高版本。 有关详细信息，请参阅[支持的 PostgreSQL 数据库版本](https://docs.microsoft.com/azure/postgresql/concepts-supported-versions)一文。
 
     另外，本地 PostgreSQL 版本必须与 Azure Database for PostgreSQL 版本相符。 例如，PostgreSQL 9.5.11.5 只能迁移到 Azure Database for PostgreSQL 9.5.11，不能迁移到 9.6.7 版本。
 
@@ -52,7 +52,7 @@ ms.locfileid: "52864368"
 - 可以通过两种方法来调用 CLI：
     - 在 Azure 门户右上角选择“Cloud Shell”按钮：
  
-       ![Azure 门户中的“Cloud Shell”按钮](media\tutorial-postgresql-to-azure-postgresql-online\cloud-shell-button.png)
+       ![Azure 门户中的“Cloud Shell”按钮](media/tutorial-postgresql-to-azure-postgresql-online/cloud-shell-button.png)
  
     - 在本地安装并运行 CLI。 CLI 2.0 是用于管理 Azure 资源的命令行工具。
      

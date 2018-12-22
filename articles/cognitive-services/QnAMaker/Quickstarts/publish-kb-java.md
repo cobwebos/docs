@@ -1,23 +1,24 @@
 ---
-title: 快速入门：发布知识库 - REST、Java - QnA Maker
-titleSuffix: Azure Cognitive Services
-description: 此基于 REST 的快速入门将指导你完成发布知识库的过程，发布操作会将经过测试的知识库的最新版本推送至代表“已发布”知识库的专用 Azure 搜索索引。 还会创建一个终结点，可在应用程序或聊天机器人中调用此终结点。
+title: 发布知识库、REST 和 Java
+titleSuffix: QnA Maker - Azure Cognitive Services
+description: 此基于 Java REST 的快速入门将指导你完成发布知识库的过程，发布操作会将经过测试的知识库的最新版本推送至代表“已发布”知识库的专用 Azure 搜索索引。 还会创建一个终结点，可在应用程序或聊天机器人中调用此终结点。
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: qna-maker
 ms.topic: quickstart
 ms.date: 11/19/2018
 ms.author: diberry
-ms.openlocfilehash: 58d34aa84d57c8c69a146666f23ce9f769554f88
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: a115c5180044da1fe66349fefd9c28824fdd2e51
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52165588"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53163950"
 ---
-# <a name="quickstart-publish-a-knowledge-base-in-qna-maker-using-java"></a>快速入门：在 QnA Maker 中通过 Java 发布知识库
+# <a name="quickstart-publish-a-knowledge-base-in-qna-maker-using-java"></a>快速入门：在 QnA Maker 中使用 Java 发布知识库
 
 此基于 REST 的快速入门将指导你完成以编程方式发布知识库 (KB) 的过程。 发布操作会将知识库的最新版本推送到一个专用 Azure 搜索引擎，并创建一个可以在应用程序或聊天机器人中调用的终结点。
 
@@ -37,10 +38,10 @@ ms.locfileid: "52165588"
 
     ![QnA Maker 知识库 ID](../media/qnamaker-quickstart-kb/qna-maker-id.png)
 
-    如果还没有知识库，可以创建一个用于此快速入门的示例知识库：[创建新的知识库](create-new-kb-csharp.md)。
+    如果还没有知识库，可以创建一个用于本快速入门的示例知识库：[创建新的知识库](create-new-kb-csharp.md)。
 
 > [!NOTE] 
-> 完整的解决方案文件可从 [**Azure-Samples/cognitive-services-qnamaker-java** Github 存储库](https://github.com/Azure-Samples/cognitive-services-qnamaker-java/tree/master/documentation-samples/quickstarts/publish-knowledge-base)获得。
+> 完整的解决方案文件可从 [Azure-Samples/cognitive-services-qnamaker-java GitHub 存储库](https://github.com/Azure-Samples/cognitive-services-qnamaker-java/tree/master/documentation-samples/quickstarts/publish-knowledge-base)获得。
 
 ## <a name="create-a-java-file"></a>创建 Java 文件
 

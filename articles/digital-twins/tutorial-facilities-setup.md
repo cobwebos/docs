@@ -7,12 +7,12 @@ ms.service: digital-twins
 ms.topic: tutorial
 ms.date: 10/15/2018
 ms.author: dkshir
-ms.openlocfilehash: 4491ec4661c93570893e5fafd5524715e0773d8c
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: 61b81602342b910a50c0cc6318746ec85a659a92
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52582299"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53080583"
 ---
 # <a name="tutorial-deploy-azure-digital-twins-and-configure-a-spatial-graph"></a>教程：部署 Azure 数字孪生并配置空间图
 
@@ -163,6 +163,9 @@ public static async Task<IEnumerable<ProvisionResults.Space>> ProvisionSample(Ht
     > 请确保 `dataType` 和 `hardwareId` 键与此代码片段上面的语句对齐。 另请确保编辑器不将空格替换为制表符。 
 
 保存并关闭 provisionSample.yaml 文件。 在下一教程中，将向此文件添加更多的信息，然后预配 Azure 数字孪生示例大楼。
+
+> [!TIP]
+> 可以使用 [Azure 数字孪生图形查看器](https://github.com/Azure/azure-digital-twins-graph-viewer)查看和修改空间图。
 
 
 ## <a name="clean-up-resources"></a>清理资源

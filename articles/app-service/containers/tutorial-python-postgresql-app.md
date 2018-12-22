@@ -1,5 +1,5 @@
 ---
-title: 在 Azure 应用服务中生成 Python 和 PostgreSQL Web 应用 | Microsoft Docs
+title: 在 Linux 上使用 PostgreSQL 生成 Python Web 应用 - Azure 应用服务 | Microsoft Docs
 description: 了解如何在 Azure 中运行可以连接到 PostgreSQL 数据库的数据驱动型 Python 应用。
 services: app-service\web
 documentationcenter: python
@@ -11,13 +11,13 @@ ms.devlang: python
 ms.topic: tutorial
 ms.date: 11/29/2018
 ms.author: beverst;cephalin
-ms.custom: mvc
-ms.openlocfilehash: 3963e2ffb521a4b4732814e9b2992f4e83af1835
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.custom: seodec18
+ms.openlocfilehash: 8846ec386ad1776172ae1949b5e0f26e03ddf1df
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52865618"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53337982"
 ---
 # <a name="build-a-python-and-postgresql-web-app-in-azure-app-service"></a>在 Azure 应用服务中生成 Python 和 PostgreSQL Web 应用
 
@@ -205,7 +205,7 @@ az postgres server firewall-rule create --resource-group myResourceGroup --serve
 > [!NOTE]
 > 此设置允许从 Azure 网络中的所有 IP 进行网络连接。 进行生产性使用时，请尝试尽可能配置最严格的防火墙规则，即[只使用应用所使用的出站 IP 地址](../app-service-ip-addresses.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#find-outbound-ips)。
 
-在 Cloud Shell 中再次运行该命令（将 *\<your_ip_address>* 替换为[你的本地 IPv4 IP 地址](http://www.whatsmyip.org/)），以便从本地计算机进行访问。
+在 Cloud Shell 中再次运行该命令（将 *\<your_ip_address>* 替换为[你的本地 IPv4 IP 地址](https://www.whatsmyip.org/)），以便从本地计算机进行访问。
 
 ```azurecli-interactive
 az postgres server firewall-rule create --resource-group myResourceGroup --server-name <postgresql_name> --start-ip-address=<your_ip_address> --end-ip-address=<your_ip_address> --name AllowLocalClient
@@ -287,7 +287,7 @@ Django 会验证传入请求中的 `HTTP_HOST` 标头。 若要在应用服务�
 ALLOWED_HOSTS = [os.environ['WEBSITE_SITE_NAME'] + '.azurewebsites.net', '127.0.0.1'] if 'WEBSITE_SITE_NAME' in os.environ else []
 ```
 
-接下来，由于 Django 不支持[在生产环境中处理静态文件](https://docs.djangoproject.com/en/2.1/howto/static-files/deployment/)，因此需手动完成相关的启用操作。 在本教程中，请使用 [WhiteNoise](http://whitenoise.evans.io/en/stable/)。 WhiteNoise 包已经包括在 _requirements.txt_ 中。 只需将 Django 配置为使用它即可。 
+接下来，由于 Django 不支持[在生产环境中处理静态文件](https://docs.djangoproject.com/en/2.1/howto/static-files/deployment/)，因此需手动完成相关的启用操作。 在本教程中，请使用 [WhiteNoise](https://whitenoise.evans.io/en/stable/)。 WhiteNoise 包已经包括在 _requirements.txt_ 中。 只需将 Django 配置为使用它即可。 
 
 在 _azuresite/settings.py_ 中找到 `MIDDLEWARE` 设置，将 `whitenoise.middleware.WhiteNoiseMiddleware` 中间件添加到列表的 `django.middleware.security.SecurityMiddleware` 中间件下方。 `MIDDLEWARE` 设置应该如下所示：
 
@@ -307,7 +307,7 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 ```
 
-有关如何配置 WhiteNoise 的详细信息，请参阅 [WhiteNoise 文档](http://whitenoise.evans.io/en/stable/)。
+有关如何配置 WhiteNoise 的详细信息，请参阅 [WhiteNoise 文档](https://whitenoise.evans.io/en/stable/)。
 
 > [!IMPORTANT]
 > 数据库设置部分已经遵循了有关如何使用环境变量的安全方面的最佳做法。 如需完整的部署建议，请参阅 [Django 文档：部署清单](https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/)。
@@ -411,7 +411,7 @@ az webapp log tail --name <app_name> --resource-group myResourceGroup
 
 ![在门户中导航到 Azure Web 应用](./media/tutorial-python-postgresql-app/app-resource.png)
 
-默认情况下，门户将显示 Web 应用“概述”页。 在此页中可以查看应用的运行状况。 在此处还可以执行基本的管理任务，例如浏览、停止、启动、重新启动和删除。 该页左侧的选项卡显示可以打开的不同配置页。
+默认情况下，门户将显示 Web 应用**的**概述页。 在此页中可以查看应用的运行状况。 在此处还可以执行基本的管理任务，例如浏览、停止、启动、重新启动和删除。 该页左侧的选项卡显示可以打开的不同配置页。
 
 ![Azure 门户中的应用服务页](./media/tutorial-python-postgresql-app/app-mgmt.png)
 

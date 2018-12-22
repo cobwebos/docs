@@ -14,12 +14,12 @@ ms.topic: overview
 ms.date: 11/15/2017
 ms.author: apimpm
 ms.custom: mvc
-ms.openlocfilehash: cded90d4f36e353241bb594bae35b7c7e03599b9
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.openlocfilehash: 0ede6c0c55e2f953e0d109d2d371313759ed4d06
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37435992"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52965149"
 ---
 # <a name="what-is-api-management"></a>什么是 API 管理？
 
@@ -32,10 +32,8 @@ API 管理 (APIM) 可帮助组织将 API 发布给外部、合作伙伴和内部
 要使用 API 管理，管理员需要创建 API。 每个 API 包括一个或多个操作，并可以将每个 API 添加到一个或多个产品。 要使用的 API，开发人员需要订阅包含该 API 的产品，它们可以调用该 API 的操作，根据任何可能生效的使用情况策略。 常见方案包括：
 
 * **保护移动基础结构** 通过使用 API 密钥控制访问，使用限制或使用高级安全策略（如 JWT 令牌验证）阻止 DOS 攻击。
-* 
-  **启用 ISV 合作伙伴生态系统** 通过开发人员门户提供快速的合作伙伴加入，并构建 API 外观使其与未准备好供合作伙伴使用的内部实现分离。
-* 
-  **运行内部的 API 程序** 通过为组织提供一个集中位置来交流 API 的可用性和最新更改，基于组织帐户控制访问，所有这一切都基于 API 网关与后端之间的安全通道。
+* **启用 ISV 合作伙伴生态系统** 通过开发人员门户提供快速的合作伙伴加入，并构建 API 外观使其与未准备好供合作伙伴使用的内部实现分离。
+* **运行内部的 API 程序** 通过为组织提供一个集中位置来交流 API 的可用性和最新更改，基于组织帐户控制访问，所有这一切都基于 API 网关与后端之间的安全通道。
 
 系统由以下组件组成：
 
@@ -61,7 +59,7 @@ API 管理 (APIM) 可帮助组织将 API 发布给外部、合作伙伴和内部
   * 创建帐户并可以订阅以获取 API 密钥。
   * 访问他们自己的使用情况分析。
 
-有关详细信息，请参阅 PDF 版的 [基于云的 API 管理：利用 API 的强大功能](http://j.mp/ms-apim-whitepaper) 白皮书。 由 CITO Research 编撰的有关 API 管理的简介白皮书包括︰ 
+有关详细信息，请参阅[基于云的 API 管理：利用 API 的强大功能](https://j.mp/ms-apim-whitepaper) PDF 白皮书。 由 CITO Research 编撰的有关 API 管理的简介白皮书包括︰ 
  
  * 常见 API 需求和挑战
  * 分离 API 和呈现外观

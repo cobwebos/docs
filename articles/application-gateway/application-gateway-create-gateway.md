@@ -15,12 +15,12 @@ ms.custom: H1Hack27Feb2017
 ms.workload: infrastructure-services
 ms.date: 07/31/2017
 ms.author: victorh
-ms.openlocfilehash: a1cfd42f5b1c31b911005b2539047630c6d320dd
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: 862d587442b4d3b752092810c33a197ba15a6b51
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/03/2018
-ms.locfileid: "32771183"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52994077"
 ---
 # <a name="create-start-or-delete-an-application-gateway-with-powershell"></a>使用 PowerShell 创建、启动或删除应用程序网关 
 
@@ -49,10 +49,10 @@ Azure 应用程序网关是第 7 层负载均衡器。 它在不同服务器之�
 有效值为：
 
 * **后端服务器池：** 后端服务器的 IP 地址列表。 列出的 IP 地址应属于虚拟网络子网，或者是公共 IP/VIP。
-* **后端服务器池设置：** 每个池都有一些设置，例如端口、协议和基于 Cookie 的关联性。 这些设置绑定到池，并会应用到池中的所有服务器。
+* **后端服务器池设置：** 每个池均具有端口、协议和基于 Cookie 的相关性等设置。 这些设置绑定到池，并会应用到池中的所有服务器。
 * **前端端口：** 此端口是应用程序网关上打开的公共端口。 流量将抵达此端口，并重定向到后端服务器之一。
 * **侦听器：** 侦听器具有前端端口、协议（Http 或 Https，这些值区分大小写）和 SSL 证书名称（如果要配置 SSL 卸载）。
-* **规则：** 规则会绑定侦听器和后端服务器池，并定义当流量抵达特定侦听器时应定向到的后端服务器池。
+* **规则：** 规则会绑定侦听器和后端服务器池，并定义当流量抵达特定侦听器时应定向到哪个后端服务器池。
 
 ## <a name="create-an-application-gateway"></a>创建应用程序网关
 
@@ -116,7 +116,7 @@ DnsName       :
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
-<ApplicationGatewayConfiguration xmlns:i="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/windowsazure">
+<ApplicationGatewayConfiguration xmlns:i="https://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/windowsazure">
     <FrontendPorts>
         <FrontendPort>
             <Name>(name-of-your-frontend-port)</Name>
@@ -168,7 +168,7 @@ DnsName       :
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
-<ApplicationGatewayConfiguration xmlns:i="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/windowsazure">
+<ApplicationGatewayConfiguration xmlns:i="https://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/windowsazure">
     <FrontendPorts>
         <FrontendPort>
             <Name>FrontendPort1</Name>

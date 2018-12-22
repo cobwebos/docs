@@ -1,7 +1,7 @@
 ---
-title: 快速入门：必应新闻搜索 API、Python
+title: 快速入门：使用 Python 执行新闻搜索 - 必应新闻搜索 REST API
 titlesuffix: Azure Cognitive Services
-description: 获取信息和代码示例，以帮助你快速开始使用必应新闻搜索 API。
+description: 使用本快速入门，通过 Python 将请求发送到必应新闻搜索 REST API，并接收 JSON 响应。
 services: cognitive-services
 author: aahill
 manager: cgronlun
@@ -10,14 +10,16 @@ ms.component: bing-news-search
 ms.topic: quickstart
 ms.date: 9/21/2017
 ms.author: aahi
-ms.openlocfilehash: 738b139cb2070f2244442311d3670757caac6541
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.custom: seodec2018
+ms.openlocfilehash: 8ce8353df9a6f8354c56d9c9115645c0b7f2136a
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52308811"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53251651"
 ---
-# <a name="quickstart-for-bing-news-search-api-with-python"></a>将必应新闻搜索 API 与 Python 配合使用快速入门
+# <a name="quickstart-perform-a-news-search-using-python-and-the-bing-news-search-rest-api"></a>快速入门：使用 Python 和必应新闻搜索 REST API 执行新闻搜索
+
 本演练演示了一个简单的示例：调用必应新闻搜索 API 并后期处理生成的 JSON 对象。 有关详细信息，请参阅[必应新闻搜索文档](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference)。  
 
 可以通过单击启动活页夹锁屏提醒，在 [MyBinder](https://mybinder.org) 上将此示例作为 Jupyter 笔记本运行： 

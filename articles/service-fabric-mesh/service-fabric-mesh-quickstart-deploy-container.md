@@ -9,12 +9,12 @@ ms.date: 11/27/2018
 ms.topic: quickstart
 ms.service: service-fabric-mesh
 manager: timlt
-ms.openlocfilehash: ce3001a2984726332b036eea69d4e18e3d7d300b
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.openlocfilehash: 4be24b00c3ac4ffadf7eafdc7397f59113ec03b2
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52890426"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53088354"
 ---
 # <a name="quickstart-deploy-hello-world-to-service-fabric-mesh"></a>快速入门：将 Hello World 部署到 Service Fabric 网格
 
@@ -48,10 +48,10 @@ az group create --name myResourceGroup --location eastus
 使用 `az mesh deployment create` 命令在资源组中创建应用程序。  运行以下内容：
 
 ```azurecli-interactive
-az mesh deployment create --resource-group myResourceGroup --template-uri https://raw.githubusercontent.com/Azure-Samples/service-fabric-mesh/master/templates/helloworld/mesh_rp.linux.json --parameters "{'location': {'value': 'eastus'}}" 
+az mesh deployment create --resource-group myResourceGroup --template-uri https://raw.githubusercontent.com/Azure-Samples/service-fabric-mesh/master/templates/helloworld/helloworld.linux.json --parameters "{'location': {'value': 'eastus'}}" 
 ```
 
-上面的命令使用 [mesh_rp.linux.json 模板](https://sfmeshsamples.blob.core.windows.net/templates/helloworld/mesh_rp.linux.json)部署 Linux 应用程序。 若要部署 Windows 应用程序，请使用 [mesh_rp.windows.json 模板](https://sfmeshsamples.blob.core.windows.net/templates/helloworld/mesh_rp.windows.json)。 Windows 容器映像大于 Linux 容器映像，可能需要更多时间进行部署。
+上面的命令使用 [linux.json 模板](https://raw.githubusercontent.com/Azure-Samples/service-fabric-mesh/master/templates/helloworld/helloworld.linux.json)部署 Linux 应用程序。 若要部署 Windows 应用程序，请使用 [windows.json 模板](https://raw.githubusercontent.com/Azure-Samples/service-fabric-mesh/master/templates/helloworld/helloworld.windows.json)。 Windows 容器映像大于 Linux 容器映像，可能需要更多时间进行部署。
 
 此命令将生成如下所示的 JSON 代码片段。 在 JSON 输出的 ```outputs``` 部分下，复制 ```publicIPAddress``` 属性。
 

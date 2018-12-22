@@ -1,6 +1,6 @@
 ---
-title: 什么是 Azure 搜索 | Microsoft Docs
-description: Azure 搜索是完全托管的托管云搜索服务。 通过此功能概述，了解详细信息。
+title: 什么是 Azure 搜索服务 - Azure 搜索
+description: Azure 搜索是完全托管的托管云搜索服务。 查看功能说明、开发工作流、Azure 搜索与其他搜索产品相比如何，以及操作说明入门。
 manager: cgronlun
 author: HeidiSteen
 services: search
@@ -8,12 +8,13 @@ ms.service: search
 ms.topic: overview
 ms.date: 11/09/2018
 ms.author: heidist
-ms.openlocfilehash: 85a071017f4394f4ccde297fb229f7786d9249b3
-ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
+ms.custom: seodec2018
+ms.openlocfilehash: 81b9aef553b4cdc214fbcc681a2e5a91b833e6be
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52285129"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53313490"
 ---
 # <a name="what-is-azure-search"></a>什么是 Azure 搜索？
 Azure 搜索是一种搜索即服务云解决方案，它为开发人员提供 API 和工具，以便基于 Web、移动和企业应用程序中的专用异类内容添加丰富的搜索体验。 查询执行是通过用户定义的索引进行的。
@@ -105,7 +106,7 @@ Azure 订户可以[在免费层中预配服务](search-create-service-portal.md)
 
 如果不是订户，可以[免费建立一个 Azure 帐户](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F)。 将获得试用付费版 Azure 服务的信用额度。 信用额度用完后，可以保留该帐户并继续使用[免费的 Azure 服务](https://azure.microsoft.com/free/)。 除非显式更改设置并要求付费，否则不会对信用卡收取任何费用。
 
-也可以[激活 MSDN 订户权益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F)：MSDN 订阅每月提供可用于试用付费版 Azure 服务的信用额度。 
+还可以[激活 MSDN 订户权益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F)：MSDN 订阅每月提供可用来试用付费版 Azure 服务的信用额度。 
 
 ## <a name="how-to-get-started"></a>如何入门
 
@@ -116,7 +117,7 @@ Azure 订户可以[在免费层中预配服务](search-create-service-portal.md)
 3. 使用 .NET 或 REST API 继续编写代码：
 
   + [如何使用 .NET SDK](search-howto-dotnet-sdk.md) 演示了托管代码中的主要工作流。  
-  + [REST API 入门](https://github.com/Azure-Samples/search-rest-api-getting-started)演示了使用 REST API 的相同步骤。 还可以使用此快速入门从 Postman 或 Fiddler 调用 REST API：[探索 Azure 搜索 REST API](search-fiddler.md)。
+  + [REST API 入门](https://github.com/Azure-Samples/search-rest-api-getting-started)演示了使用 REST API 的相同步骤。 还可以使用本快速入门从 Postman 或 Fiddler 调用 REST API：[浏览 Azure 搜索 REST API](search-fiddler.md)。
 
 ## <a name="watch-this-video"></a>观看此视频
 

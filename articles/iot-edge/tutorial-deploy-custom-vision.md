@@ -1,6 +1,6 @@
 ---
-title: 将自定义视觉部署到 Azure IoT Edge 设备 | Microsoft Docs
-description: 了解如何通过自定义视觉和 IoT Edge 将计算机视觉模型以容器方式运行。
+title: 教程：将自定义视觉分类器部署到设备 - Azure IoT Edge | Microsoft Docs
+description: 本教程介绍如何通过自定义视觉和 IoT Edge 使计算机视觉模型以容器方式运行。
 services: iot-edge
 author: kgremban
 manager: philmea
@@ -8,13 +8,13 @@ ms.author: kgremban
 ms.date: 11/01/2018
 ms.topic: tutorial
 ms.service: iot-edge
-ms.custom: mvc
-ms.openlocfilehash: a8f72c62393f6ba470c31a55668382ae0beb290e
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.custom: mvc, seodec18
+ms.openlocfilehash: 6acdbdf5ed5312dc9bc9aa5120bad6e7cf0935b7
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51566476"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53075822"
 ---
 # <a name="tutorial-perform-image-classification-at-the-edge-with-custom-vision-service"></a>教程：在边缘使用自定义视觉服务进行图像分类
 
@@ -99,7 +99,7 @@ Azure IoT Edge 设备：
 
 5. 选择“上传 10 个文件”。 
 
-   ![上传带“铁杉”标记的文件](./media/tutorial-deploy-custom-vision/upload-hemlock.png)
+   ![将 hemlock 标记的文件上传到自定义视觉](./media/tutorial-deploy-custom-vision/upload-hemlock.png)
 
 6. 成功上传图像以后，选择“完成”。
 
@@ -117,7 +117,7 @@ Azure IoT Edge 设备：
 
 1. 训练分类器以后，请在分类器的“性能”页上选择“导出”。 
 
-   ![导出图像分类器](./media/tutorial-deploy-custom-vision/export.png)
+   ![导出已训练的图像分类器](./media/tutorial-deploy-custom-vision/export.png)
 
 2. 选择“DockerFile”作为平台。 
 
@@ -151,7 +151,7 @@ Azure IoT Edge 设备：
 
 3. 选择“视图” > “命令面板”，打开 VS Code 命令面板。 
 
-4. 在命令面板中，输入并运行“Azure IoT Edge: 新建 IoT Edge 解决方案”命令。 在命令面板中提供以下信息，以便创建解决方案： 
+4. 在“命令面板”中，输入并运行 **Azure IoT Edge:New IoT Edge Solution** 命令。 在命令面板中提供以下信息，以便创建解决方案： 
 
    | 字段 | 值 |
    | ----- | ----- |
@@ -201,7 +201,7 @@ Visual Studio Code 中的 Python 模块模板包含一些可以在运行后对 I
 
 在此部分，请将新模块添加到同一 CustomVisionSolution 并提供创建模拟摄像头所需的代码。 
 
-1. 在同一 Visual Studio Code 窗口中，使用命令面板运行“Azure IoT Edge: 添加 IoT Edge 模块”。 在命令面板中提供新模块所需的以下信息： 
+1. 在同一 Visual Studio Code 窗口中，使用命令面板运行 **Azure IoT Edge:Add IoT Edge Module**。 在命令面板中提供新模块所需的以下信息： 
 
    | Prompt | 值 | 
    | ------ | ----- |

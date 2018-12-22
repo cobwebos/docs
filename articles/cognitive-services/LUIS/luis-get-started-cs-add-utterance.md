@@ -1,21 +1,22 @@
 ---
-title: C# 快速入门 - 更改模型并训练 LUIS 应用
-titleSuffix: Azure Cognitive Services
-description: 此 C# 快速入门将示例话语添加到家庭自动化应用并训练该应用。 示例话语是映射到意向的聊天式用户文本。 通过提供意向的示例话语，可以教 LUIS 用户提供的文本类型属于哪种意向。
+title: 更改、训练应用，C#
+titleSuffix: Language Understanding - Azure Cognitive Services
+description: 此 C# 快速入门将示例话语添加到家庭自动化应用并训练该应用。
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: quickstart
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: aab9651092f7ad5dbc78c31db8df4ef3538fedfc
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 23692bd6a0c708b2747a3cc211b8238d30dfe5db
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47039966"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53161740"
 ---
 # <a name="quickstart-change-model-using-c"></a>快速入门：使用 C# 更改模型
 
@@ -28,7 +29,7 @@ ms.locfileid: "47039966"
 * C# 编程语言已安装。
 * [JsonFormatterPlus](https://www.nuget.org/packages/JsonFormatterPlus) 和 [CommandLine](https://www.nuget.org/packages/CommandLineParser/) NuGet 包
 
-[!INCLUDE [Code is available in LUIS-Samples Github repo](../../../includes/cognitive-services-luis-qs-change-model-luis-repo-note.md)]
+[!INCLUDE [Code is available in LUIS-Samples GitHub repo](../../../includes/cognitive-services-luis-qs-change-model-luis-repo-note.md)]
 
 ## <a name="example-utterances-json-file"></a>示例话语 JSON 文件
 
@@ -56,7 +57,7 @@ Visual Studio 项目需要 **JsonFormatterPlus** 和 **CommandLineParser**。 �
 ### <a name="write-the-c-code"></a>编写 C# 代码
 **Program.cs** 文件应为：
 
-```CSharp
+```C#
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -98,9 +99,7 @@ namespace ConsoleApp3
 
 将示例话语从文件方法添加到 **Program** 类。
 
-   [!code-csharp[Add example utterances from file.
-](~/samples-luis/documentation-samples/quickstarts/change-model/csharp/ConsoleApp1/Program.cs?range=77-86 "Add example utterances from file.
-")]
+   [!code-csharp[Add example utterances from file.](~/samples-luis/documentation-samples/quickstarts/change-model/csharp/ConsoleApp1/Program.cs?range=77-86 "Add example utterances from file.")]
 
 将更改应用到模型以后，训练该模型。 将方法添加到 **Program** 类。
 
@@ -128,7 +127,7 @@ namespace ConsoleApp3
 
 在项目的 /bin/Debug 目录中，从命令行运行应用程序。 
 
-```CMD
+```console
 ConsoleApp\bin\Debug> ConsoleApp1.exe --add utterances.json --train --status
 ```
 

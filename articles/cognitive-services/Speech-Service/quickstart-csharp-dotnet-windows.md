@@ -1,5 +1,5 @@
 ---
-title: 快速入门：识别和转录语音、.NET Framework (Windows) - 语音服务
+title: 快速入门：识别语音，.NET Framework (Windows) - 语音服务
 titleSuffix: Azure Cognitive Services
 description: 按照本指南使用适用于 Windows 的 .NET framework 和语音 SDK 创建语音转文本控制台应用程序。 完成后，可以使用计算机的麦克风实时将语音转录为文本。
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.component: speech-service
 ms.topic: quickstart
 ms.date: 11/05/2018
 ms.author: wolfma
-ms.openlocfilehash: 502f59c88808480f26e6ea5a6d2c5b362c78869b
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: 171d6c6a972d6fa3eb2e96ceacb75dd2fce1eb92
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51683486"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53074889"
 ---
 # <a name="quickstart-recognize-and-transcribe-speech-using-the-speech-sdk-and-net-framework-windows"></a>快速入门：使用语音 SDK 和 .NET Framework (Windows) 识别和转录语音
 

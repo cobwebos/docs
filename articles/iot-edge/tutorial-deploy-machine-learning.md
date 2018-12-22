@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure IoT Edge 部署 Azure 机器学习 | Microsoft 文档
+title: 教程：将 Azure 机器学习部署到设备 - Azure IoT Edge | Microsoft Docs
 description: 在本教程中，请将 Azure 机器学习作为一个模块部署到边缘设备
 author: kgremban
 manager: philmea
@@ -8,15 +8,15 @@ ms.date: 11/15/2018
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.custom: mvc
-ms.openlocfilehash: c98dc9019421133b83ab9aec29f725852315f6ba
-ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
+ms.custom: mvc, seodec18
+ms.openlocfilehash: db8318e94b646d57c00bc2e6958ba9e7f46ec7af
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2018
-ms.locfileid: "51977195"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53344007"
 ---
-# <a name="tutorial-deploy-azure-machine-learning-as-an-iot-edge-module-preview"></a>教程：将 Azure 机器学习作为 IoT Edge 模块（预览版）进行部署
+# <a name="tutorial-deploy-azure-machine-learning-as-an-iot-edge-module-preview"></a>教程：将 Azure 机器学习作为 IoT Edge 模块进行部署（预览版）
 
 可以使用 IoT Edge 模块部署代码，以直接将业务逻辑实现到 IoT Edge 设备。 本教程逐步演示如何部署 Azure 机器学习模块，以便根据模拟的机器温度数据预测设备故障时间。 有关 IoT Edge 上的 Azure ML 的详细信息，请参阅 [Azure 机器学习文档](../machine-learning/service/how-to-deploy-to-iot.md)。
 
@@ -115,7 +115,7 @@ export IOTEDGE_HOST="http://172.17.0.1:15580"
 
 1. 在“注册表设置”部分，添加从 Azure 容器注册表复制的凭据。 
 
-   ![添加注册表凭据](./media/tutorial-deploy-machine-learning/registry-settings.png)
+   ![将注册表凭据添加到清单](./media/tutorial-deploy-machine-learning/registry-settings.png)
 
 1. 如果以前已将 tempSensor 模块部署到 IoT Edge 设备，则它可能会自动填充。 如果它尚未出现在模块列表中，请添加它。
 
@@ -174,7 +174,7 @@ export IOTEDGE_HOST="http://172.17.0.1:15580"
 
 ### <a name="view-data-arriving-at-your-iot-hub"></a>查看到达 IoT 中心的数据
 
-可以使用 [Visual Studio Code 的 Azure IoT Toolkit 扩展](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit)查看 IoT 中心接收的设备到云消息。
+可以使用[用于 Visual Studio Code 的 Azure IoT 中心工具包扩展](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit)（以前称为 Azure IoT 工具包扩展）查看 IoT 中心接收的设备到云消息。
 
 以下步骤介绍如何设置 Visual Studio Code，以便监视到达 IoT 中心的设备到云消息。 
 
@@ -182,7 +182,7 @@ export IOTEDGE_HOST="http://172.17.0.1:15580"
 
 2. 选择 **...**，然后从菜单中选择“设置 IoT 中心连接字符串”。
 
-   ![IoT 中心设备“更多”菜单](./media/tutorial-deploy-machine-learning/set-connection.png)
+   ![设置 IoT 中心连接字符串](./media/tutorial-deploy-machine-learning/set-connection.png)
 
 3. 在页面顶部打开的文本框中，输入你的 IoT 中心的 iothubowner 连接字符串。 你的 IoT Edge 设备应当会出现在“IoT 中心设备”列表中。
 

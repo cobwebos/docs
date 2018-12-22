@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 12/01/2018
 ms.author: dech
 clicktale: true
-ms.openlocfilehash: 7686baf2476942748a67ae7c73b02596b6588607
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 4422e656759418d715fb0bd26643581a0ca99a4f
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52853285"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53089116"
 ---
 # <a name="quickstart-build-an-aspnet-web-app-with-azure-cosmos-db-using-the-sql-api-and-the-azure-portal"></a>快速入门：使用 SQL API 和 Azure 门户生成包含 Azure Cosmos DB 的 ASP.NET Web 应用
 
@@ -117,7 +117,7 @@ Azure Cosmos DB 是 Microsoft 提供的高度可用的全球分布式多模型�
 
 现在返回到 Azure 门户，获取连接字符串信息，并将其复制到应用。
 
-1. 在 [Azure 门户](http://portal.azure.com/)的 Azure Cosmos DB 帐户的左侧导航栏中，选择“密钥”，然后选择“读写密钥”。 使用屏幕右侧的复制按钮将 URI 和主密钥复制到下一步的 web.config 文件中。
+1. 在 [Azure 门户](https://portal.azure.com/)的 Azure Cosmos DB 帐户的左侧导航栏中，选择“密钥”，然后选择“读写密钥”。 使用屏幕右侧的复制按钮将 URI 和主密钥复制到下一步的 web.config 文件中。
 
     ![在 Azure 门户的“密钥”边栏选项卡中查看并复制访问密钥](./media/create-sql-api-dotnet/keys.png)
 

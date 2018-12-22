@@ -1,21 +1,22 @@
 ---
-title: 教程 9：LUIS 中的情感分析（包括积极、消极和中性）
+title: 情绪分析
 titleSuffix: Azure Cognitive Services
 description: 在本教程中，我们将创建一个应用，用于演示如何从陈述中提取积极、消极和中性的情绪。 情绪是从整个话语确定的。
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: tutorial
 ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: 60c4b280033e110f6b8b2a3ce720934e118c8479
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: d93c7619bb670a81372ab83359836a78b8956b09
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52424844"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53098911"
 ---
 # <a name="tutorial-9--extract-sentiment-of-overall-utterance"></a>教程 9：提取整体话语的情绪
 在本教程中，我们将创建一个应用，用于演示如何从陈述中提取积极、消极和中性的情绪。 情绪是从整个话语确定的。
@@ -94,7 +95,7 @@ ms.locfileid: "52424844"
 
 2. 切换到“情绪分析”以启用此设置。 
 
-    ![](./media/luis-quickstart-intent-and-sentiment-analysis/turn-on-sentiment-analysis-as-publish-setting.png)
+    ![开启“情绪分析”作为发布设置](./media/luis-quickstart-intent-and-sentiment-analysis/turn-on-sentiment-analysis-as-publish-setting.png)
 
 ## <a name="publish"></a>发布
 
@@ -106,7 +107,7 @@ ms.locfileid: "52424844"
 
 2. 将光标定位到地址中 URL 的末尾，并输入 `Jill Jones work with the media team on the public portal was amazing`。 最后一个查询字符串参数为 `q`，表示陈述查询 (**q**uery)。 此陈述不同于标记的任何陈述，因此，它非常适合用于测试，测试结果应返回包含所提取的情绪分析的 `EmployeeFeedback` 意向。
     
-    ```JSON
+    ```json
     {
       "query": "Jill Jones work with the media team on the public portal was amazing",
       "topScoringIntent": {

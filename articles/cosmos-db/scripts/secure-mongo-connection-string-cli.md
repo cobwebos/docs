@@ -1,18 +1,18 @@
 ---
-title: Azure CLI 脚本 - 获取 MongoDB 应用的 Azure Cosmos DB 连接字符串| Microsoft Docs
+title: Azure CLI 脚本 - 获取 MongoDB 应用的 Azure Cosmos DB 连接字符串
 description: Azure CLI 脚本示例 - 获取 MongoDB 的 Azure Cosmos DB 连接字符串
 author: markjbrown
+ms.author: mjbrown
 ms.service: cosmos-db
 ms.component: cosmosdb-mongo
 ms.topic: sample
 ms.date: 10/26/2018
-ms.author: mjbrown
-ms.openlocfilehash: e2b28a370da96484c4731c9ac3867b1d86d6adab
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 2781e18d56b4ae0691791b37b5be9d951a2c7104
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51009413"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52972229"
 ---
 # <a name="get-an-azure-cosmos-db-connection-string-for-mongodb-using-the-azure-cli"></a>使用 Azure CLI 获取 MongoDB 的 Azure Cosmos DB 连接字符串
 

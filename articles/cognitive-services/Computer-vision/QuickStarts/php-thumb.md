@@ -10,12 +10,12 @@ ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 08/28/2018
 ms.author: pafarley
-ms.openlocfilehash: 3a652e4b937dc3600ffe7af7231322b14bd52e05
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 171893dd3017d46c405d2269506fe37896155e55
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49342020"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52964503"
 ---
 # <a name="quickstart-generate-a-thumbnail-using-the-rest-api-and-php-in-computer-vision"></a>快速入门：在计算机视觉中使用 REST API 和 PHP 生成缩略图
 

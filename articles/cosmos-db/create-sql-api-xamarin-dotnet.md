@@ -1,5 +1,5 @@
 ---
-title: Azure Cosmos DB：使用 Xamarin 生成 ToDo 应用
+title: Azure Cosmos DB：使用 Xamarin 生成 todo 应用
 description: 演示了一个可以用来连接到 Azure Cosmos DB 并进行查询的 Xamarin 代码示例
 services: cosmos-db
 author: codemillmatt
@@ -10,14 +10,14 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 05/30/2018
 ms.author: masoucou
-ms.openlocfilehash: 0099bacb98d921a852ece8787bcb7152c5eae3f2
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: f955e0386cd601212eb992870f02607538b537e2
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52838559"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53252620"
 ---
-# <a name="azure-cosmos-db-build-a-todo-app-with-xamarin"></a>Azure Cosmos DB：使用 Xamarin 生成 ToDo 应用
+# <a name="azure-cosmos-db-build-a-todo-app-with-xamarin"></a>Azure Cosmos DB：使用 Xamarin 生成 todo 应用
 
 > [!div class="op_single_selector"]
 > * [.NET](create-sql-api-dotnet.md)
@@ -64,7 +64,7 @@ Azure Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务�
 
 ## <a name="clone-the-sample-application"></a>克隆示例应用程序
 
-现在请从 GitHub 克隆 Xamarin SQL API 应用，查看代码，获取 API 密钥，然后运行该应用。 会看到以编程方式处理数据是多么容易。
+现在请从 GitHub 克隆 Xamarin SQL API 应用、查看代码、获取 API 密钥，然后运行该应用。 会看到以编程方式处理数据是多么容易。
 
 1. 打开命令提示符，新建一个名为“git-samples”的文件夹，然后关闭命令提示符。
 
@@ -90,7 +90,7 @@ Azure Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务�
 
 返回到 Azure 门户，获取 API 密钥信息并将其复制到应用中。
 
-1. 在 [Azure 门户](http://portal.azure.com/)的 Azure Cosmos DB SQL API 帐户的左侧导航栏中，单击“密钥”，然后单击“读写密钥”。 使用屏幕右侧的复制按钮将 URI 和主密钥复制到下一步的 APIKeys.cs 文件中。
+1. 在 [Azure 门户](https://portal.azure.com/)的 Azure Cosmos DB SQL API 帐户的左侧导航栏中，单击“密钥”，然后单击“读写密钥”。 使用屏幕右侧的复制按钮将 URI 和主密钥复制到下一步的 APIKeys.cs 文件中。
 
     ![在 Azure 门户的“密钥”边栏选项卡中查看并复制访问密钥](./media/create-sql-api-xamarin-dotnet/keys.png)
 

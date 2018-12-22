@@ -4,15 +4,15 @@ description: 概述 Azure Migrate 服务。
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: overview
-ms.date: 11/28/2018
+ms.date: 12/05/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 98ff54bcfe67d79d8c15da666aad0bebfe48f6e0
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: fcf26b8a5eff407d6dde092ae645084fb20a14a8
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52839728"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53250563"
 ---
 # <a name="about-azure-migrate"></a>关于 Azure Migrate
 
@@ -22,10 +22,10 @@ Azure Migrate 服务会评估要迁移到 Azure 的本地工作负荷。 该服�
 
 Azure Migrate 有助于：
 
-- **评估 Azure 迁移就绪性**：评估本地计算机是否适合在 Azure 中运行。
-- **获取大小建议**：获取 Azure VM 的大小建议，具体取决于本地 VM 的性能历史记录。
+- **评估 Azure 就绪性**：评估本地计算机是否适合在 Azure 中运行。
+- **获取大小建议**：根据本地 VM 的性能历史记录来获取 Azure VM 的大小建议。
 - **估算每月成本**：获取在 Azure 中运行本地计算机的估算成本。  
-- **充满信心地进行迁移**：将本地计算机的依赖关系可视化，创建可以一起进行评估和迁移的计算机组。
+- **充满信心地进行迁移**：将本地计算机的依赖项可视化，创建将进行评估并一起迁移的计算机组。
 
 ## <a name="current-limitations"></a>当前限制
 
@@ -34,10 +34,14 @@ Azure Migrate 有助于：
 - 一次发现最多可以发现 1500 个 VM，单个项目中最多可以发现 1500 个 VM。 另外，单次评估最多可以评估 1500 个 VM。
 - 若要发现更大的环境，可以拆分发现，然后创建多个项目。 [了解详细信息](how-to-scale-assessment.md)。 Azure Migrate 最多允许每个订阅 20 个项目。
 - Azure Migrate 仅支持使用托管磁盘进行迁移评估。
--  只能在地理位置为“美国”的区域创建一个 Azure Migrate 项目。 但是，可以计划到任意目标 Azure 位置的迁移。
-    - 只有在本地环境中发现的元数据才会存储在迁移项目区域中。
-    - 元数据存储在以下所选地理区域之一中：美国中西部/美国东部。
-    - 如果通过创建新的 Log Analytics 工作区来使用依赖关系可视化，则会在项目所在的区域中创建工作区。
+-  只能在以下地域创建 Azure Migrate 项目。 但是，这不会限制你为其他目标 Azure 位置创建评估。
+    **地域** | **存储位置**
+    --- | ---
+    美国 | 美国中西部或美国东部
+    Azure Government  | 美国政府弗吉尼亚州
+
+    与迁移项目关联的地域用于存储本地部署环境中发现的元数据。 根据为迁移项目指定的地域，元数据存储在其中某个区域中。 如果通过创建新的 Log Analytics 工作区来使用依赖关系可视化，则会在项目所在的区域中创建工作区。
+- 依赖项可视化功能在 Azure 政府中不可用。
 
 
 ## <a name="what-do-i-need-to-pay-for"></a>需要支付哪些费用？

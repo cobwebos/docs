@@ -1,5 +1,5 @@
 ---
-title: 教程：使用 Azure 流分析作业运行 Azure Functions | Microsoft Docs
+title: 教程：使用 Azure 流分析作业运行 Azure Functions |Microsoft Docs
 description: 本教程介绍如何将 Azure Functions 配置为流分析作业的输出接收器。
 services: stream-analytics
 author: jasonwhowell
@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.date: 04/09/2018
 ms.author: mamccrea
 ms.reviewer: jasonh
-ms.openlocfilehash: 0a187bbc476738294e2f7f31de4e11ea92e604f9
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
+ms.openlocfilehash: 6a89333f32fb4ccc8fc4d4710266157fca16fe02
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50977986"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53164154"
 ---
 # <a name="run-azure-functions-from-azure-stream-analytics-jobs"></a>从 Azure 流分析作业运行 Azure Functions 
 
@@ -35,34 +35,34 @@ ms.locfileid: "50977986"
 
 ## <a name="configure-a-stream-analytics-job-to-run-a-function"></a>创建流分析作业以运行函数 
 
-本部分演示如何配置流分析作业以运行将数据写入 Azure Redis 缓存的函数。 流分析作业从 Azure 事件中心读取事件，并运行调用函数的查询。 此函数从流分析作业读取数据，并将其写入 Azure Redis 缓存。
+本部分演示了如何配置流分析作业来运行一个函数以将数据写入到用于 Redis 的 Azure 缓存。 流分析作业从 Azure 事件中心读取事件，并运行调用函数的查询。 此函数从流分析作业读取数据，并将其写入到用于 Redis 的 Azure 缓存中。
 
 ![显示各项 Azure 服务间关系的图表](./media/stream-analytics-with-azure-functions/image1.png)
 
 需要执行以下步骤来完成此任务：
 * [创建以事件中心为输入的流分析作业](#create-a-stream-analytics-job-with-event-hubs-as-input)  
-* [创建 Azure Redis 缓存实例](#create-an-azure-redis-cache-instance)  
-* [在 Azure Functions 中创建可将数据写入到 Azure Redis 缓存的函数](#create-a-function-in-azure-functions-that-can-write-data-to-azure-redis-cache)    
+* [创建用于 Redis 的 Azure 缓存实例](#create-an-azure-redis-cache-instance)  
+* [在 Azure Functions 中创建可将数据写入到用于 Redis 的 Azure 缓存的函数](#create-a-function-in-azure-functions-that-can-write-data-to-azure-redis-cache)    
 * [更新流分析作业，以函数作为输出](#update-the-stream-analytics-job-with-the-function-as-output)  
-* [在 Azure Redis 缓存中检查结果](#check-azure-redis-cache-for-results)  
+* [在用于 Redis 的 Azure 缓存中检查结果](#check-azure-redis-cache-for-results)  
 
 ## <a name="create-a-stream-analytics-job-with-event-hubs-as-input"></a>创建以事件中心为输入的流分析作业
 
 按照[实时欺诈检测](stream-analytics-real-time-fraud-detection.md)教程以创建事件中心，启动事件生成器应用程序，并创建流分析作业。 （跳过创建查询和输出的步骤。 改为按以下各节所述设置 Functions 输出。）
 
-## <a name="create-an-azure-redis-cache-instance"></a>创建 Azure Redis 缓存实例
+## <a name="create-an-azure-cache-for-redis-instance"></a>创建用于 Redis 的 Azure 缓存实例
 
-1. 使用[创建缓存](../redis-cache/cache-dotnet-how-to-use-azure-redis-cache.md#create-a-cache)中所述的步骤，在 Azure Redis 缓存中创建缓存。  
+1. 使用[创建缓存](../azure-cache-for-redis/cache-dotnet-how-to-use-azure-redis-cache.md#create-a-cache)中所述的步骤，在用于 Redis 的 Azure 缓存中创建缓存。  
 
 2. 创建缓存后，在“设置”下方选择“访问密钥”。 记下主要连接字符串。
 
-   ![Azure Redis 缓存连接字符串的屏幕截图](./media/stream-analytics-with-azure-functions/image2.png)
+   ![用于 Redis 的 Azure 缓存连接字符串的屏幕截图](./media/stream-analytics-with-azure-functions/image2.png)
 
-## <a name="create-a-function-in-azure-functions-that-can-write-data-to-azure-redis-cache"></a>在 Azure Functions 中创建可将数据写入到 Azure Redis 缓存的函数
+## <a name="create-a-function-in-azure-functions-that-can-write-data-to-azure-cache-for-redis"></a>在 Azure Functions 中创建可将数据写入到用于 Redis 的 Azure 缓存的函数
 
 1. 请参阅 Functions 文档的[创建函数应用](../azure-functions/functions-create-first-azure-function.md#create-a-function-app)一节。 该小节演示了如何通过使用 CSharp 语言，[在 Azure Functions 中创建函数应用和 HTTP 触发的函数](../azure-functions/functions-create-first-azure-function.md#create-function)。  
 
-2. 浏览到 run.csx 函数。 将其更新为以下代码。 （请务必将“\<在此处放置 redis 缓存的连接字符串\>”替换为上一节中检索到的 Azure Redis 缓存主连接字符串。）  
+2. 浏览到 run.csx 函数。 将其更新为以下代码。 （请务必将“\<在此处放置用于 Redis 的 Azure 缓存连接字符串\>”替换为上一节中检索到的用于 Redis 的 Azure 缓存主连接字符串。）  
 
    ```csharp
    using System;
@@ -85,7 +85,7 @@ ms.locfileid: "50977986"
       {        
          return new HttpResponseMessage(HttpStatusCode.RequestEntityTooLarge);
       }
-      var connection = ConnectionMultiplexer.Connect("<your redis cache connection string goes here>");
+      var connection = ConnectionMultiplexer.Connect("<your Azure Cache for Redis connection string goes here>");
       log.Info($"Connection string.. {connection}");
     
       // Connection refers to a property that returns a ConnectionMultiplexer
@@ -185,17 +185,17 @@ ms.locfileid: "50977986"
     
 6.  启动流分析作业。
 
-## <a name="check-azure-redis-cache-for-results"></a>在 Azure Redis 缓存中检查结果
+## <a name="check-azure-cache-for-redis-for-results"></a>在用于 Redis 的 Azure 缓存中检查结果
 
-1. 浏览到 Azure 门户中，并查找你的 Azure Redis 缓存。 选择“控制台”。  
+1. 浏览到 Azure 门户，并查找你的用于 Redis 的 Azure 缓存。 选择“控制台”。  
 
-2. 使用 [Redis 缓存命令](https://redis.io/commands)验证数据在 Redis 缓存中。 （该命令采用 Get {key} 格式。）例如：
+2. 使用[用于 Redis 的 Azure 缓存命令](https://redis.io/commands)验证你的数据是否在用于 Redis 的 Azure 缓存中。 （该命令采用 Get {key} 格式。）例如：
 
    **Get "12/19/2017 21:32:24 - 123414732"**
 
    此命令应会打印指定键的值：
 
-   ![Azure Redis 缓存输出的屏幕截图](./media/stream-analytics-with-azure-functions/image5.png)
+   ![用于 Redis 的 Azure 缓存输出的屏幕截图](./media/stream-analytics-with-azure-functions/image5.png)
    
 ## <a name="error-handling-and-retries"></a>错误处理和重试
 如果在将事件发送到 Azure Functions 时失败，流分析会重试，直至成功完成操作。 不过，有些失败不会进行重试，如下所示：
@@ -207,6 +207,8 @@ ms.locfileid: "50977986"
 ## <a name="known-issues"></a>已知问题
 
 在 Azure 门户中，尝试将最大批次大小/最大批次数值重置为空（默认），值将在保存时改回上次输入的值。 这时，请手动输入这些字段的默认值。
+
+流分析当前不支持在 Azure Functions 上使用 [Http 路由](https://docs.microsoft.com/sandbox/functions-recipes/routes?tabs=csharp)。
 
 ## <a name="clean-up-resources"></a>清理资源
 

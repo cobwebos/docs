@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: c2f5ff778b49ffb544c53b41cf515e820d646249
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 3ae454be8327c1f9ce605899e4b26105d44ab0f6
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50157847"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53189296"
 ---
 # <a name="quickstart-provision-a-simulated-tpm-device-using-the-azure-iot-c-sdk"></a>快速入门：使用 Azure IoT C SDK 预配模拟的 TPM 设备
 
@@ -25,8 +25,8 @@ ms.locfileid: "50157847"
 如果不熟悉自动预配过程，请查看[自动预配的概念](concepts-auto-provisioning.md)。 另外，在继续学习本快速入门之前，请确保已完成[通过 Azure 门户设置 IoT 中心设备预配服务](./quick-setup-auto-provision.md)中的步骤。 
 
 Azure IoT 设备预配服务支持两类注册：
-- [注册组](concepts-service.md#enrollment-group)：用于注册多个相关的设备。
-- [单个注册](concepts-service.md#individual-enrollment)：用于注册单个设备。
+- [注册组](concepts-service.md#enrollment-group)：用于注册多个相关设备。
+- [单独注册](concepts-service.md#individual-enrollment)：用于注册单个设备。
 
 本文将演示单个注册。
 
@@ -143,14 +143,14 @@ Azure IoT 设备预配服务支持两类注册：
 3. 在“添加注册”中输入以下信息，然后单击“保存”按钮。
 
     - **机制：** 选择“TPM”作为标识证明*机制*。
-    - **认可密钥：** 输入通过运行 *tpm_device_provision* 项目为 TPM 设备生成的*认可密钥*。
-    - **注册 ID：** 输入通过运行 *tpm_device_provision* 项目为 TPM 设备生成的*注册 ID*。
+    - **认可密钥：** 输入通过运行 tpm_device_provision 项目为 TPM 设备生成的“认可密钥”。
+    - **注册 ID：** 输入通过运行 tpm_device_provision 项目为 TPM 设备生成的“注册 ID”。
     - **IoT Edge 设备：** 选择“禁用”。
-    - **IoT 中心设备 ID：** 输入 **test-docs-device** 作为设备的 ID。
+    - **IoT 中心设备 ID：** 输入 test-docs-device 作为设备的 ID。
 
-    ![在门户中输入设备注册信息](./media/quick-create-simulated-device/enter-device-enrollment.png)  
+      ![在门户中输入设备注册信息](./media/quick-create-simulated-device/enter-device-enrollment.png)  
 
-    成功注册以后，设备的“注册 ID”会显示在“单个注册”选项卡下的列表中。 
+      成功注册以后，设备的“注册 ID”会显示在“单个注册”选项卡下的列表中。 
 
 
 <a id="firstbootsequence"></a>

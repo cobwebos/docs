@@ -1,5 +1,5 @@
 ---
-title: 快速入门：提取文本 - SDK、C# - 计算机视觉
+title: 快速入门：提取文本（SDK、C#）计算机视觉
 titleSuffix: Azure Cognitive Services
 description: 本快速入门将使用计算机视觉 Windows C# 客户端库从图像中提取文本。
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 09/27/2018
 ms.author: pafarley
-ms.openlocfilehash: c1b25db440023618d3d633f9a2b2ebcd5c0a6293
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.openlocfilehash: c0323c215e83850dc53acd5e350d7eeeeb9a05b1
+ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51852480"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53413211"
 ---
 # <a name="quickstart-extract-text-using-the-computer-vision-sdk-and-c"></a>快速入门：使用计算机视觉 SDK 和 C# 提取文本
 
@@ -188,7 +188,7 @@ namespace ExtractText
 
 成功的响应会显示每个图像的各行已识别文本。
 
-如需原始 JSON 输出的示例，请参阅[快速入门：提取手写文本 - REST、C#](../QuickStarts/CSharp-hand-text.md#examine-the-response)。
+请参阅[快速入门：提取手写体文本 - REST、C#](../QuickStarts/CSharp-hand-text.md#examine-the-response) 以获取原始 JSON 输出的示例。
 
 ```cmd
 Calling GetHandwritingRecognitionOperationResultAsync()

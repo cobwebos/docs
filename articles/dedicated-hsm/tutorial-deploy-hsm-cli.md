@@ -1,6 +1,6 @@
 ---
-title: 教程 - 使用 CLI 将 HSM 部署到现有虚拟网络中的 Azure 专用 HSM | Microsoft Docs
-description: 介绍如何使用 CLI 部署专用 HSM 的教程
+title: 教程：使用 Azure CLI 部署到现有虚拟网络中 - Azure 专用 HSM | Microsoft Docs
+description: 本教程介绍如何使用 CLI 将专用 HSM 部署到现有虚拟网络中
 services: dedicated-hsm
 documentationcenter: na
 author: barclayn
@@ -8,19 +8,19 @@ manager: mbaldwin
 editor: ''
 ms.service: key-vault
 ms.topic: tutorial
-ms.custom: mvc
+ms.custom: mvc, seodec18
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/28/2018
+ms.date: 12/07/2018
 ms.author: barclayn
-ms.openlocfilehash: ca30dc9d86db8faabfdd3791b74b9f86c9480ea5
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: d8171a3c506ed53c986db6cddd959411f0a146aa
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52679641"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53080310"
 ---
-# <a name="tutorial--deploying-hsms-into-an-existing-virtual-network-using-cli"></a>教程 - 使用 CLI 将 HSM 部署到现有虚拟网络中
+# <a name="tutorial-deploying-hsms-into-an-existing-virtual-network-using-cli"></a>教程：使用 CLI 将 HSM 部署到现有虚拟网络中
 
 Azure 专用 HSM 提供供单个客户使用的物理设备，由客户对设备进行完全的管理控制并承担完全的管理责任。 由于使用物理设备，因此需要 Microsoft 来控制设备分配，确保对容量进行有效的管理。 因此，在 Azure 订阅中，专用 HSM 服务通常不可见，不可用于资源预配。 Azure 客户如果需要访问专用 HSM 服务，必须首先联系其 Microsoft 客户主管，提交专用 HSM 服务注册请求。 只有在此流程成功完成以后，才可以进行预配。 
 
@@ -38,7 +38,7 @@ Azure 专用 HSM 提供供单个客户使用的物理设备，由客户对设备
 
 ## <a name="prerequisites"></a>先决条件
 
-Azure 专用 HSM 目前在 Azure 门户中不可用。 与该服务的所有交互将通过命令行或 PowerShell 进行。 本教程将使用 Azure Cloud Shell 中的命令行 (CLI) 界面。 如果不熟悉 Azure CLI，请按 [Azure CLI 2.0 入门](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest)中的入门说明操作。
+Azure 专用 HSM 目前在 Azure 门户中不可用。 与该服务的所有交互将通过命令行或 PowerShell 进行。 本教程将使用 Azure Cloud Shell 中的命令行 (CLI) 界面。 如果不熟悉 Azure CLI，请按以下入门说明操作：[Azure CLI 2.0 入门](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest)。
 
 假设：
 
@@ -130,7 +130,7 @@ HSM 预配到客户的虚拟网络中，因此虚拟网络和子网是必需的�
 
 命令 shell 在工具栏上有一个上传/下载选项。应该选择该选项，将模板和参数文件上传到文件共享：
 
-![订阅状态](media/tutorial-deploy-hsm-cli/file-share.png)
+![文件共享](media/tutorial-deploy-hsm-cli/file-share.png)
 
 上传文件以后，即可创建资源。 在创建新的 HSM 资源之前，应确保某些先决条件资源到位： 必须有一个子网范围适用于计算、HSM 和网关的虚拟网络。 以下命令以示例方式说明了如何才能创建此类虚拟网络。
 
@@ -191,7 +191,7 @@ az resource show \
    --ids /subscriptions/$subid/resourceGroups/myRG/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs/HSM2
 ```
 
-![预配状态](media/tutorial-deploy-hsm-cli/progress-status2.png)
+![预配输出](media/tutorial-deploy-hsm-cli/progress-status2.png)
 
 现在也可通过 [Azure 资源浏览器](https://resources.azure.com/)来查看资源。   进入浏览器中以后，请依次展开左侧的“订阅”、专用 HSM 的特定订阅、“资源组”、所使用的资源组，最后选择“资源”项。
 

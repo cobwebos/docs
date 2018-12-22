@@ -10,12 +10,12 @@ ms.devlang: java
 ms.topic: tutorial
 ms.date: 05/22/2017
 ms.author: sngun
-ms.openlocfilehash: 1c50b1bc362a66b17097575336bcb2c9bd4856ca
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 0bab289fedbbceb2d5cb763bd0f55e455bb60a29
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52866077"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53093008"
 ---
 # <a name="nosql-tutorial-build-a-sql-api-java-console-application"></a>NoSQL 教程：构建 SQL API Java 控制台应用程序
 
@@ -56,7 +56,7 @@ ms.locfileid: "52866077"
 
 * [Git](https://git-scm.com/downloads)。
 * [Java 开发工具包 (JDK) 7+](https://aka.ms/azure-jdks)。
-* [Maven](http://maven.apache.org/download.cgi)。
+* [Maven](https://maven.apache.org/download.cgi)。
 
 ## <a name="step-1-create-an-azure-cosmos-db-account"></a>步骤 1：创建 Azure Cosmos DB 帐户
 让我们创建一个 Azure Cosmos DB 帐户。 如果已有一个可用的帐户，可以直接跳到[克隆 GitHub 项目](#GitClone)。 如果使用 Azure Cosmos DB 模拟器，请遵循 [Azure Cosmos DB 模拟器](local-emulator.md)中的步骤设置该模拟器，并直接跳到[克隆 GitHub 项目](#GitClone)。
@@ -91,7 +91,7 @@ ms.locfileid: "52866077"
 
 ![在 NoSQL 教程中用于创建 Java 控制台应用程序的 Azure 门户屏幕截图。 显示了一个 Azure Cosmos DB 帐户，在“Azure Cosmos DB 帐户”边栏选项卡上突出显示了“ACTIVE”中心、“密钥”按钮，在“密钥”边栏选项卡上突出显示了 URI、主密钥、辅助密钥的值][keys]
 
-## <a name="step-4-create-a-database"></a>第 4 步：创建数据库
+## <a name="step-4-create-a-database"></a>步骤 4：创建数据库
 可以使用 **DocumentClient** 类的 [createDatabase](/java/api/com.microsoft.azure.documentdb._document_client.createdatabase) 方法创建 Azure Cosmos DB [数据库](databases-containers-items.md#azure-cosmos-databases)。 数据库是跨集合分区的 JSON 文档存储的逻辑容器。
 
     Database database = new Database();
@@ -117,7 +117,7 @@ ms.locfileid: "52866077"
 
     this.client.createCollection("/dbs/familydb", collectionInfo, requestOptions);
 
-## <a id="CreateDoc"></a>第 6 步：创建 JSON 文档
+## <a id="CreateDoc"></a>步骤 6：创建 JSON 文档
 可以使用 **DocumentClient** 类的 [createDocument](/java/api/com.microsoft.azure.documentdb._document_client.createdocument) 方法创建文档。 文档是用户定义的（任意）JSON 内容。 现在，我们可以插入一个或多个文档。 如果已有要在数据库中存储的数据，则可以使用 Azure Cosmos DB 的[数据迁移工具](import-data.md)将数据导入数据库。
 
     // Insert your Java objects as documents 

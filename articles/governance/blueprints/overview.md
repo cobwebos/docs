@@ -4,17 +4,17 @@ description: Azure 蓝图是一项 Azure 服务，可用于在 Azure 环境中�
 services: blueprints
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 11/07/2018
+ms.date: 12/05/2018
 ms.topic: overview
 ms.service: blueprints
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: a48876adc853ca94f606f58f7eeb13c3d1a57ce8
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: f1ebbc10109563b771c5417a0449efec12138526
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52498600"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52967685"
 ---
 # <a name="what-is-azure-blueprints"></a>什么是 Azure 蓝图？
 
@@ -111,7 +111,7 @@ Azure 蓝图服务由全球分布的 [Azure Cosmos DB](../../cosmos-db/introduct
 > [!NOTE]
 > 由于在订阅上创建了蓝图分配，因此必须在订阅范围授予蓝图分配和取消分配权限，或者将其继承到订阅范围。
 
-除了蓝图分配权限外，“所有者”角色和“参与者”角色中还包含这些权限。 若这些内置角色不适合安全需求，请考虑创建[自定义角色](../../role-based-access-control/custom-roles.md)。
+上述所有权限都包含在“所有者”角色中。 “参与者”角色创建了蓝图并删除了蓝图权限，但并没有蓝图分配权限。 若这些内置角色不适合安全需求，请考虑创建[自定义角色](../../role-based-access-control/custom-roles.md)。
 
 > [!NOTE]
 > Azure 蓝图的服务主体在分配订阅上需要所有者角色以启用部署。 若使用门户，则会自动为部署授予和撤消此角色。 若使用 REST API，则必须手动授予此角色，但在部署完成后仍会自动撤消此角色。

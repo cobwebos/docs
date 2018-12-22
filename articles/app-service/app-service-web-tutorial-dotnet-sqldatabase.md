@@ -1,5 +1,5 @@
 ---
-title: 使用 SQL 数据库在 Azure 中构建 ASP.NET 应用 | Microsoft Docs
+title: 使用 SQL 数据库构建 ASP.NET 应用 - Azure 应用服务 | Microsoft Docs
 description: 了解如何将采用 SQL Server 数据库的 C# ASP.NET 应用部署到 Azure。
 services: app-service\web
 documentationcenter: ''
@@ -14,13 +14,13 @@ ms.devlang: csharp
 ms.topic: tutorial
 ms.date: 06/25/2018
 ms.author: cephalin
-ms.custom: mvc, devcenter, vs-azure
-ms.openlocfilehash: 783bf93c8507e76717a4293b2b29a9c11e9a1eed
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.custom: seodec18
+ms.openlocfilehash: 14dbd723772caa0045e9744ddb726060e3a1b8cf
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49353810"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53257771"
 ---
 # <a name="tutorial-build-an-aspnet-app-in-azure-with-sql-database"></a>教程：使用 SQL 数据库在 Azure 中构建 ASP.NET 应用
 
@@ -42,7 +42,7 @@ ms.locfileid: "49353810"
 
 ## <a name="prerequisites"></a>先决条件
 
-完成本教程需要：
+完成本教程：
 
 安装带有 ASP.NET 和 Web 开发工作负荷的 <a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2017</a>。
 
@@ -124,7 +124,7 @@ ms.locfileid: "49353810"
 
 ### <a name="create-a-sql-server-instance"></a>创建 SQL Server 实例
 
-在创建数据库之前，需要 [Azure SQL 数据库逻辑服务器](../sql-database/sql-database-features.md)。 逻辑服务器包含一组作为组管理的数据库。
+在创建数据库时之前，需要 [Azure SQL 数据库逻辑服务器](../sql-database/sql-database-features.md)。 逻辑服务器包含一组作为组管理的数据库。
 
 单击“创建 SQL 数据库”。
 
@@ -132,11 +132,11 @@ ms.locfileid: "49353810"
 
 在“配置 SQL 数据库”对话框中，单击“SQL Server”旁的“新建”。 
 
-这将生成唯一的服务器名称。 此名称用作逻辑服务器`<server_name>.database.windows.net`的默认 URL 的一部分。 在 Azure 所有的逻辑服务器实例中，它必须是唯一的。 你可以更改服务器名称，但本教程保留生成的值。
+将生成唯一的服务器名称。 此名称用作用于逻辑服务器`<server_name>.database.windows.net`的默认 URL 的一部分。 在 Azure 中的所有逻辑服务器实例，它必须是唯一的。 你可以更改服务器名称，但本教程保留生成值。
 
 添加管理员用户名和密码。 有关密码复杂性要求，请参阅[密码策略](/sql/relational-databases/security/password-policy)。
 
-牢记此用户名和密码。 你需要在之后用它们来管理逻辑服务器实例。
+牢记此用户名和密码。 随后，你需要用它们来管理逻辑服务器实例。
 
 > [!IMPORTANT]
 > 虽然连接字符串中的密码已在 Visual Studio 和应用服务中受到屏蔽，但由于它实际上是保留在某个位置，因此增加了应用的受攻击面。 应用服务可以使用[托管服务标识](app-service-managed-service-identity.md)，因此根本不需要将机密保留在代码或应用配置中，这样就消除了上述风险。 有关详细信息，请参阅[后续步骤](#next-steps)。
@@ -253,7 +253,7 @@ Update-Database
 
 打开 _Controllers\TodosController.cs_。
 
-在第 52 行找到 `Create()` 方法，并将 `Done` 添加到 `Bind` 属性中的属性列表。 完成后，`Create()` 方法签名应如下代码所示：
+在第 52 行找到 `Create()` 方法，并将 `Done` 添加到 `Bind` 属性中的属性列表。 完成后，`Create()` 方法签名应如以下代码所示：
 
 ```csharp
 public ActionResult Create([Bind(Include = "Description,CreatedDate,Done")] Todo todo)

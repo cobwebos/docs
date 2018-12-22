@@ -12,16 +12,16 @@ ms.topic: quickstart
 ms.date: 10/02/2018
 ms.author: glenga
 ms.custom: cc996988-fb4f-47
-ms.openlocfilehash: 4fc1c0b87aa5312be0ccac50681e952dc7f1c4ed
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: f0173940656581c8bf6b66b0d2a4744e1c751f82
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51251723"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52968282"
 ---
 # <a name="create-a-function-triggered-by-azure-cosmos-db"></a>创建由 Azure Cosmos DB 触发的函数
 
-了解如何创建在数据添加到 Azure Cosmos DB 或在其中更改数据时触发的函数。 若要了解有关 Azure Cosmos DB 的详细信息，请参阅 [Azure Cosmos DB：使用 Azure Functions 的无服务器数据库计算](..\cosmos-db\serverless-computing-database.md)。
+了解如何创建在数据添加到 Azure Cosmos DB 或在其中更改数据时触发的函数。 若要了解有关 Azure Cosmos DB 的详细信息，请参阅 [Azure Cosmos DB：使用 Azure Functions 的无服务器数据库计算](../cosmos-db/serverless-computing-database.md)。
 
 ![在日志中查看消息。](./media/functions-create-cosmos-db-triggered-function/quickstart-completed.png)
 

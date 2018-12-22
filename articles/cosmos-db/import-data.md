@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 11/15/2018
 ms.author: dech
 ms.custom: mvc
-ms.openlocfilehash: e3968155c2619b5d6b09b68a59ff01607c45fa2b
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 57c70716ac0e3156440d4a602704cb0ac2e30130
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52843540"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53091148"
 ---
 # <a name="use-data-migration-tool-to-migrate-your-data-to-azure-cosmos-db"></a>使用数据迁移工具将数据迁移到 Azure Cosmos DB
 
@@ -174,7 +174,7 @@ dt.exe /s:MongoDBExport /s.Files:D:\mongoemployees.json /t:DocumentDBBulk /t.Con
 
 请注意 Address.AddressType 和 Address.Location.StateProvinceName 等别名。 通过指定嵌套分隔符“.”，导入工具会在导入过程中创建 Address 和 Address.Location 子文档。 下面是 Azure Cosmos DB 中的生成文档的示例：
 
-{ "id": "956", "Name": "Finer Sales and Service", "Address": { "AddressType": "Main Office", "AddressLine1": "#500-75 O'Connor Street", "Location": { "City": "Ottawa", "StateProvinceName": "Ontario" }, "PostalCode": "K4B 1S2", "CountryRegionName": "Canada" } }
+*{ "id":"956", "Name":"Finer Sales and Service", "Address": { "AddressType":"Main Office", "AddressLine1": "#500-75 O'Connor Street", "Location": { "City":"Ottawa", "StateProvinceName":"Ontario" }, "PostalCode":"K4B 1S2", "CountryRegionName":"Canada" } }*
 
 下面是一些从 SQL Server 中导入的命令行示例：
 
@@ -198,7 +198,7 @@ CSV 文件源导入程序选项可用于导入一个或多个 CSV 文件。 添�
 
 请注意 DomainInfo.Domain_Name 和 RedirectInfo.Redirecting 等别名。 通过指定嵌套分隔符“.”，导入工具会在导入过程中创建 DomainInfo 和 RedirectInfo 子文档。 下面是 Azure Cosmos DB 中的生成文档的示例：
 
-{ "DomainInfo": { "Domain_Name": "ACUS.GOV", "Domain_Name_Address": "http://www.ACUS.GOV" }, "Federal Agency": "Administrative Conference of the United States", "RedirectInfo": { "Redirecting": "0", "Redirect_Destination": "" }, "id": "9cc565c5-ebcd-1c03-ebd3-cc3e2ecd814d" }
+*{ "DomainInfo": { "Domain_Name":"ACUS.GOV", "Domain_Name_Address": "https://www.ACUS.GOV" }, "Federal Agency":"Administrative Conference of the United States", "RedirectInfo": { "Redirecting":"0", "Redirect_Destination": "" }, "id":"9cc565c5-ebcd-1c03-ebd3-cc3e2ecd814d" }*
 
 导入工具会尝试针对 CSV 文件中不带引号的值推断类型信息（带引号的值始终作为字符串处理）。  按以下顺序标识类型︰数值、日期时间、布尔值。  
 
@@ -391,13 +391,13 @@ Azure Cosmos DB 帐户连接字符串可从 Azure 门户的“密钥”页中检
 
 * 字符串：保持字符串值
 * Epoch：保持 Epoch 数字值
-* 两者：保持字符串和 Epoch 数字值。 此选项创建一个子文档，例如："date_joined": { "Value": "2013-10-21T21:17:25.2410000Z", "Epoch": 1382390245 }
+* 两者：保持字符串和 Epoch 数字值。 此选项创建一个子文档，例如："date_joined": { "Value":"2013-10-21T21:17:25.2410000Z", "Epoch":1382390245 }
 
 Azure Cosmos DB 批量导入程序具有下列高级附加选项：
 
-1. 批大小︰工具默认将批大小设置为 50。  如果要导入的文档很大，请考虑减小批大小。 如果要导入的文档很小，请考虑增大批大小。
+1. 批大小：工具默认将批大小设置为 50。  如果要导入的文档很大，请考虑减小批大小。 如果要导入的文档很小，请考虑增大批大小。
 2. 最大脚本大小（字节）：工具默认设置为 512 KB 的最大脚本大小。
-3. 禁用自动生成 ID︰如果要导入的每个文档都包含一个 ID 字段，则选择此选项可以提高性能。 不会导入缺少唯一 ID 字段的文档。
+3. 禁用自动生成 ID：如果要导入的每个文档都包含一个 ID 字段，则选择此选项可以提高性能。 不会导入缺少唯一 ID 字段的文档。
 4. 更新现有文档：工具将默认设置为不替换存在 ID 冲突的现有文档。 选择此选项可以覆盖具有匹配 ID 的现有文档。 此功能可用于更新现有文档的计划内数据迁移。
 5. 失败重试次数：指定在发生暂时性故障（例如网络连接中断）期间重试 Azure Cosmos DB 连接的频率。
 6. 重试间隔：指定在发生暂时性故障（例如网络连接中断）时重试 Azure Cosmos DB 连接等待的时间间隔。
@@ -446,12 +446,12 @@ Azure Cosmos DB 连接字符串的格式为：
 
 * 字符串：保持字符串值
 * Epoch：保持 Epoch 数字值
-* 两者：保持字符串和 Epoch 数字值。 此选项创建一个子文档，例如："date_joined": { "Value": "2013-10-21T21:17:25.2410000Z", "Epoch": 1382390245 }
+* 两者：保持字符串和 Epoch 数字值。 此选项创建一个子文档，例如："date_joined": { "Value":"2013-10-21T21:17:25.2410000Z", "Epoch":1382390245 }
 
 Azure Cosmos DB - 顺序记录导入程序具有下列高级附加选项：
 
 1. 并行请求数：工具默认设置为两个并行请求。 如果要导入的文档很小，请考虑增加并行请求的数量。 如果此数字提高得过多，则导入可能会遇到速率限制。
-2. 禁用自动生成 ID︰如果要导入的每个文档都包含一个 ID 字段，则选择此选项可以提高性能。 不会导入缺少唯一 ID 字段的文档。
+2. 禁用自动生成 ID：如果要导入的每个文档都包含一个 ID 字段，则选择此选项可以提高性能。 不会导入缺少唯一 ID 字段的文档。
 3. 更新现有文档：工具将默认设置为不替换存在 ID 冲突的现有文档。 选择此选项可以覆盖具有匹配 ID 的现有文档。 此功能可用于更新现有文档的计划内数据迁移。
 4. 失败重试次数：指定在发生暂时性故障（例如网络连接中断）期间重试 Azure Cosmos DB 连接的频率。
 5. 重试间隔：指定在发生暂时性故障（例如网络连接中断）期间重试 Azure Cosmos DB 连接等待的时间间隔。

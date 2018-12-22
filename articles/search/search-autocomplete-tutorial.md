@@ -1,5 +1,5 @@
 ---
-title: 教程：使用 Azure 搜索将自动完成功能添加到搜索框 | Microsoft Docs
+title: 教程：将自动完成功能添加到搜索框 - Azure 搜索
 description: 演示如何使用 Azure 搜索自动完成功能和建议 API 改善数据导向型应用程序的最终用户体验的示例。
 manager: pablocas
 author: mrcarter8
@@ -9,12 +9,13 @@ ms.devlang: NA
 ms.topic: tutorial
 ms.date: 07/11/2018
 ms.author: mcarter
-ms.openlocfilehash: 63f4d9f72b9bf81ea772123d65db0659fd3ffa5c
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.custom: seodec2018
+ms.openlocfilehash: 10f86a482fbb35e7276f8f689a7eba184a7b624b
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45578168"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53316176"
 ---
 # <a name="tutorial-add-auto-complete-to-your-search-box-using-azure-search"></a>教程：使用 Azure 搜索将自动完成功能添加到搜索框
 
@@ -126,7 +127,7 @@ source: "/home/suggest?highlights=false&fuzzy=true&",
 
 1. 打开 Controllers 目录下的 HomeController.cs 文件。 
 
-1. 首先会发现，InitSearch 类的顶部有一个方法。  此方法在 Azure 搜索服务中创建经过身份验证的 HTTP 索引客户端。  若要详细了解其中的工作原理，请访问以下教程：[如何在 .NET 应用程序中使用 Azure 搜索](https://docs.microsoft.com/azure/search/search-howto-dotnet-sdk)
+1. 首先会发现，InitSearch 类的顶部有一个方法。  此方法在 Azure 搜索服务中创建经过身份验证的 HTTP 索引客户端。  若要详细了解其中的工作原理，请访问以下教程：[如何使用 .NET 应用程序中的 Azure 搜索](https://docs.microsoft.com/azure/search/search-howto-dotnet-sdk)
 
 1. 转到 Suggest 函数。
 

@@ -1,24 +1,27 @@
 ---
-title: Azure 容器服务教程 - 部署群集
+title: （已弃用）Azure 容器服务教程 - 部署群集
 description: Azure 容器服务教程 - 部署群集
 services: container-service
-author: neilpeterson
+author: iainfoulds
 manager: jeconnoc
 ms.service: container-service
 ms.topic: tutorial
 ms.date: 09/14/2017
-ms.author: nepeters
+ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 8403e5d8dd3bad07e412b08709dcb8c28201bcdf
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: d77396cdcaa3f2f291aff52dfd1e6793aee4039c
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39434418"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52997847"
 ---
-# <a name="deploy-a-kubernetes-cluster-in-azure-container-service"></a>在 Azure 容器服务中部署 Kubernetes 群集
+# <a name="deprecated-deploy-a-kubernetes-cluster-in-azure-container-service"></a>（已弃用）在 Azure 容器服务中部署 Kubernetes 群集
 
-[!INCLUDE [aks-preview-redirect.md](../../../includes/aks-preview-redirect.md)]
+> [!TIP]
+> 有关使用 Azure Kubernetes 服务的此教程的更新版本，请参阅[教程：部署 Azure Kubernetes 服务 (AKS) 群集](../../aks/tutorial-kubernetes-deploy-cluster.md)。
+
+[!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
 Kubernetes 为容器化应用程序提供一个分布式平台。 通过 Azure 容器服务，使预配生产就绪的 Kubernetes 群集变得简单快捷。 在本教程的第 3 部分（共 7 部分），便成功部署了一个 Azure 容器服务 Kubernetes 群集。 已完成的步骤包括：
 

@@ -1,5 +1,5 @@
 ---
-title: 将现有的自定义 SSL 证书绑定到 Azure Web 应用 | Microsoft Docs
+title: 绑定现有的自定义 SSL 证书 - Azure 应用服务 | Microsoft Docs
 description: 了解如何将自定义 SSL 证书绑定到 Azure 应用服务中的 Web 应用、移动应用后端或 API 应用。
 services: app-service\web
 documentationcenter: nodejs
@@ -14,13 +14,13 @@ ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 08/24/2018
 ms.author: cephalin
-ms.custom: mvc
-ms.openlocfilehash: a543561658d593398ca74f8ae68dd6d0d27bcdaa
-ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
+ms.custom: seodec18
+ms.openlocfilehash: 57046b9e199fbe5e88d0ea7fa25248641693508a
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51636436"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53256989"
 ---
 # <a name="tutorial-bind-an-existing-custom-ssl-certificate-to-azure-web-apps"></a>教程：将现有的自定义 SSL 证书绑定到 Azure Web 应用
 
@@ -139,9 +139,9 @@ openssl pkcs12 -export -out myserver.pfx -inkey <private-key-file> -in <merged-c
 >
 >
 
-在“SSL 类型”中，选择是要使用**[服务器名称指示 (SNI)](http://en.wikipedia.org/wiki/Server_Name_Indication)** 还是使用基于 IP 的 SSL。
+在“SSL 类型”中，选择是要使用**[服务器名称指示 (SNI)](https://en.wikipedia.org/wiki/Server_Name_Indication)** 还是使用基于 IP 的 SSL。
 
-- 基于 SNI 的 SSL - 可添加多个基于 SNI 的 SSL 绑定。 选择此选项可以使用多个 SSL 证书来保护同一 IP 地址上的多个域。 大多数新式浏览器（包括 Internet Explorer、Chrome、Firefox 和 Opera）都支持 SNI（在[服务器名称指示](http://wikipedia.org/wiki/Server_Name_Indication)中了解更全面的浏览器支持信息）。
+- 基于 SNI 的 SSL - 可添加多个基于 SNI 的 SSL 绑定。 选择此选项可以使用多个 SSL 证书来保护同一 IP 地址上的多个域。 大多数新式浏览器（包括 Internet Explorer、Chrome、Firefox 和 Opera）都支持 SNI（在[服务器名称指示](https://wikipedia.org/wiki/Server_Name_Indication)中了解更全面的浏览器支持信息）。
 - 基于 IP 的 SSL - 只能添加一个基于 IP 的 SSL 绑定。 选择此选项只能使用一个 SSL 证书来保护专用公共 IP 地址。 若要保护多个域，必须使用同一个 SSL 证书来保护所有这些域。 这是 SSL 绑定的传统选项。
 
 单击“添加绑定”。

@@ -1,5 +1,5 @@
 ---
-title: 探索 Azure 时序见解 JavaScript 客户端库
+title: 探索 Azure 时序见解 JavaScript 客户端库 | Microsoft Docs
 description: 了解 Azure 时序见解 JavaScript 客户端库和相关的编程模型。
 author: ashannon7
 manager: cshankar
@@ -8,12 +8,13 @@ services: time-series-insights
 ms.topic: tutorial
 ms.date: 06/05/2018
 ms.author: anshan
-ms.openlocfilehash: 5f31dce98cd873a0bf4b750934384e1bf6d2564a
-ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
+ms.custom: seodec18
+ms.openlocfilehash: 33dcf6f69d1287b4e040b3cccf4164667db2b75f
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51706987"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53269968"
 ---
 # <a name="tutorial-explore-the-azure-time-series-insights-javascript-client-library"></a>教程：探索 Azure 时序见解 JavaScript 客户端库
 
@@ -137,7 +138,7 @@ TSI 客户端库 API 重度使用聚合表达式。 使用聚合表达式可以�
 
    **aggregateExpression 参数**
 
-   | 参数 | Description | 示例 |
+   | 参数 | 说明 | 示例 |
    | --------- | ----------- | ------- |
    | `predicateObject` | 数据筛选表达式。 |`{predicateString: "Factory = 'Factory3'"}` |
    | `measureObject`   | 所用度量的属性名称。 | `{property: 'Temperature', type: "Double"}` |
@@ -156,7 +157,7 @@ TSI 客户端库 API 重度使用聚合表达式。 使用聚合表达式可以�
 
    **getAggregates 参数**
 
-   | 参数 | Description | 示例 |
+   | 参数 | 说明 | 示例 |
    | --------- | ----------- | ------- |
    | `token`     | TSI API 的访问令牌。 |  `authContext.getTsiToken()` 有关详细信息，请参阅[身份验证部分](#authentication)。 |
    | `envFQDN`   | TSI 环境的完全限定域名 (FQDN)。 | 例如，Azure 门户中的 `10000000-0000-0000-0000-100000000108.env.timeseries.azure.com`。 |
@@ -236,7 +237,7 @@ TSI 客户端库还会公开一些可按需使用的可选高级功能。
 1. 首先定义一系列自定义操作。 每个操作包含由一个或多个元素构成的数组。 每个元素定义单个上下文菜单项：
 
    - `barChartActions`：此操作定义饼图的上下文菜单，该菜单包含一个元素用于定义单个项：
-     - `name`：用于菜单项的文本：“在控制台上列显参数。”
+     - `name`：用于菜单项的文本：“将参数输出到控制台。”
      - `action`：与菜单项关联的操作。 该操作始终是一个匿名函数，根据用于创建图表的聚合表达式采用三个参数。 在本例中，这些参数将写入浏览器控制台窗口：
        - `ae`：聚合表达式数组。
        - `splitBy`：splitBy 值。
@@ -262,7 +263,7 @@ TSI 客户端库还会公开一些可按需使用的可选高级功能。
 前一示例“包含用于创建饼图/条形图的上下文菜单的折线图”（描述[弹出上下文菜单](#popup-context-menus-section)）中显示了用于演示画笔的代码。
 
 1. 画笔操作类似于上下文菜单，为画笔定义一系列自定义操作。 每个操作包含由一个或多个元素构成的数组。 每个元素定义单个上下文菜单项：
-   - `name`：用于菜单项的文本：“在控制台上列显参数。”
+   - `name`：用于菜单项的文本：“将参数输出到控制台。”
    - `action`：与菜单项关联的操作，始终是采用两个参数的匿名函数。 在本例中，这些参数将写入浏览器控制台窗口：
       - `fromTime`：画笔选项的“起始时间”时间戳。
       - `toTime`：画笔选项的“截止时间”时间戳。

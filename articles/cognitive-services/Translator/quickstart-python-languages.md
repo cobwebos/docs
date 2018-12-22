@@ -10,12 +10,12 @@ ms.component: translator-text
 ms.topic: quickstart
 ms.date: 10/29/2018
 ms.author: erhopf
-ms.openlocfilehash: 4c261a46b96865900a92bc53e4973fa3df094289
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: 8b78ec4e358f654342140df1491e19d3fc62fee7
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50246552"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52992396"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-get-a-list-of-supported-languages-using-python"></a>快速入门：使用 Python 通过文本翻译 API 获取所支持语言的列表
 
@@ -215,7 +215,7 @@ python get-languages.py
 
 ## <a name="see-also"></a>另请参阅
 
-除了文本直译，还请了解如何使用文本翻译 API 执行以下操作：
+了解如何使用文本翻译 API 执行以下操作：
 
 * [翻译文本](quickstart-python-translate.md)
 * [直译文本](quickstart-python-transliterate.md)

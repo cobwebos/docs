@@ -1,21 +1,21 @@
 ---
-title: Azure 容器实例教程 - 准备应用
-description: Azure 容器实例教程第 1 部分（共 3 部分）- 准备部署到 Azure 容器实例的应用
+title: 教程 - 准备用于 Azure 容器实例的容器映像
+description: Azure 容器实例教程第 1 部分（共 3 部分）- 准备容器映像中的应用以部署到 Azure 容器实例
 services: container-instances
 author: dlepow
 ms.service: container-instances
 ms.topic: tutorial
 ms.date: 03/21/2018
 ms.author: danlep
-ms.custom: mvc
-ms.openlocfilehash: dfe494eba64f546616e4e6cc9898f9d63d81eaa2
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.custom: seodec18, mvc
+ms.openlocfilehash: 029b4f2d0f0f88f56ca1f3e282d8c80e76f4d5c7
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48854773"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53186406"
 ---
-# <a name="tutorial-create-container-for-deployment-to-azure-container-instances"></a>教程：创建部署到 Azure 容器实例的容器
+# <a name="tutorial-create-a-container-image-for-deployment-to-azure-container-instances"></a>教程：创建要部署到 Azure 容器实例的容器映像
 
 使用 Azure 容器实例可将 Docker 容器部署到 Azure 基础结构，不需要预配任何虚拟机，也不需要采用更高级别的服务。 在本教程中，我们将一个小型 Node.js Web 应用程序打包成可以使用 Azure 容器实例运行的容器映像。
 

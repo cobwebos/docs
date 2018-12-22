@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure IoT Edge SQL 模块存储数据 | Microsoft Docs
+title: 教程：使用 SQL 模块存储数据 - Azure IoT Edge | Microsoft Docs
 description: 了解如何使用 SQL Server 模块将数据存储到本地的 IoT Edge 设备
 services: iot-edge
 author: kgremban
@@ -8,15 +8,15 @@ ms.author: kgremban
 ms.date: 12/01/2018
 ms.topic: tutorial
 ms.service: iot-edge
-ms.custom: mvc
-ms.openlocfilehash: b0d26704d287f2e02541cc667250af8e8005f864
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.custom: mvc, seodec18
+ms.openlocfilehash: 0193d79dec663b089184099c2a4d275c91380c8b
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52833987"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53163406"
 ---
-# <a name="tutorial-store-data-at-the-edge-with-sql-server-databases"></a>教程：使用 SQL Server 数据库在边缘存储数据
+# <a name="tutorial-store-data-at-the-edge-with-sql-server-databases"></a>教程：使用 SQL Server 数据库存储边缘中的数据
 
 使用 Azure IoT Edge 和 SQL Server 在边缘存储和查询数据。 Azure IoT Edge 有基本的存储功能，可以在设备脱机的情况下缓存消息，在重新建立连接后再转发这些消息。 不过，你可能需要更高级的存储功能，例如在本地查询数据的功能。 整合本地数据库以后，IoT Edge 设备就可以执行更复杂的计算而不需维持到 IoT 中心的连接。 例如，计算机上的传感器一月一次将数据上传到云，以便报告和改进计算机学习模块。 不过，如果现场技术人员正在计算机上工作，则该技术人员可以在本地访问过去数天的传感器数据。
 
@@ -87,7 +87,7 @@ Azure IoT Edge 设备：
 
 2. 打开 VS Code 命令面板，方法是选择“视图” > “命令面板”。
 
-3. 在命令面板中，键入并运行“Azure IoT Edge: 新建 IoT Edge 解决方案”命令。 在命令面板中提供以下信息，以便创建解决方案： 
+3. 在命令面板中，键入并运行“Azure IoT Edge: New IoT Edge solution”命令。 在命令面板中提供以下信息，以便创建解决方案： 
 
    | 字段 | 值 |
    | ----- | ----- |
@@ -163,7 +163,7 @@ Azure IoT Edge 设备：
                        {
                            //Execute the command and log the # rows affected.
                            var rows = await cmd.ExecuteNonQueryAsync();
-                           log.Info($"{rows} rows were updated");
+                           logger.LogInformation($"{rows} rows were updated");
                        }
                    }
 
@@ -251,7 +251,7 @@ Azure IoT Edge 设备：
    }
    ```
 
-   ![添加 SQL Server 容器](./media/tutorial-store-data-sql-server/view_json_sql.png)
+   ![将 SQL Server 模块添加到清单](./media/tutorial-store-data-sql-server/view_json_sql.png)
 
 5. 根据 IoT Edge 设备的 Docker 容器的类型，使用以下代码更新 **sql** 模块参数：
    * Windows 容器：
@@ -416,7 +416,7 @@ Azure IoT Edge 设备：
    GO
    ```
 
-   ![查看本地数据](./media/tutorial-store-data-sql-server/view-data.png)
+   ![查看本地数据库的内容](./media/tutorial-store-data-sql-server/view-data.png)
 
 
 

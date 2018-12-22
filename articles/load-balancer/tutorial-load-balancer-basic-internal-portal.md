@@ -1,14 +1,11 @@
 ---
-title: 教程：使用 Azure 门户创建基本的内部负载均衡器 | Microsoft Docs
+title: 教程：创建内部负载均衡器 - Azure 门户
+titlesuffix: Azure Load Balancer
 description: 本教程展示了如何使用 Azure 门户创建内部的基本负载均衡器。
 services: load-balancer
 documentationcenter: na
 author: KumudD
-manager: jeconnoc
-editor: ''
-tags: azure-resource-manager
 Customer intent: As an IT administrator, I want to create a load balancer that load balances incoming internal traffic to virtual machines within a specific zone in a region.
-ms.assetid: aa9d26ca-3d8a-4a99-83b7-c410dd20b9d0
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: tutorial
@@ -16,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/28/2018
 ms.author: kumud
-ms.custom: mvc
-ms.openlocfilehash: 9ccbbb107dfd8fde237cdfdd4b0c3fcc080fd70e
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.custom: seodec18
+ms.openlocfilehash: 1ed77e8573479665d0caac15941d6b6c6ab790cb
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52839239"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53262344"
 ---
 # <a name="tutorial-balance-internal-traffic-load-with-a-basic-load-balancer-in-the-azure-portal"></a>教程：在 Azure 门户中通过基本负载均衡器对内部流量负载进行均衡
 
@@ -45,8 +42,8 @@ ms.locfileid: "52839239"
 1. 在“创建虚拟网络”窗格中键入或选择以下值：
    
    - **名称**：键入 *MyVNet*。
-   - **ResourceGroup**：选择“新建”，输入 *MyResourceGroupLB*，然后选择“确定”。 
-   - “子网” > “名称”：键入 *MyBackendSubnet*。
+   - **资源组**：选择“新建”，输入 *MyResourceGroupLB*，然后选择“确定”。 
+   - **子网** > **名称**：键入 *MyBackendSubnet*。
    
 1. 选择“创建”。
 
@@ -57,16 +54,13 @@ ms.locfileid: "52839239"
 1. 在门户左上角，选择“创建资源” > “计算” > “Windows Server 2016 Datacenter”。 
    
 1. 在“创建虚拟机”中，在“基本信息”选项卡中键入或选择以下值：
-   - “订阅” > “资源组”：在下拉列表中选择“MyResourceGroupLB”。
-   - “实例详细信息” > “虚拟机名称”：键入 *MyVM1*。
+   - **订阅** > **资源组**：下拉并选择“MyResourceGroupLB”。
+   - **实例详细信息** > **虚拟机名称**：键入 *MyVM1*。
    - “实例详细信息” > “可用性选项”： 
      1. 在下拉列表中选择“可用性集”。 
      2. 选择“新建”，键入 *MyAvailabilitySet*，然后选择“确定”。
-   - “管理员帐户” > “用户名”：键入 *azureuser*。
-   - “管理员帐户” > “密码”：键入 *Azure1234567*。 
-     在“确认密码”字段中，重新键入该密码。
    
-1. 选择“网络”选项卡，或者选择“下一步: 磁盘”，然后选择“下一步: 网络”。 
+1. 选择“网络”选项卡，或选择“下一步: 磁盘”，然后选择“下一步:网络”。 
    
    确保选中以下项：
    - **虚拟网络**：**MyVNet**
@@ -99,9 +93,9 @@ ms.locfileid: "52839239"
    - **SKU**：选择“基本”。
    - **虚拟网络**：选择“选择虚拟网络”，然后选择“MyVNet”。
    - **子网**：选择“选择子网”，然后选择“MyBackendSubnet”。
-   - **IP 地址分配**：选择“静态”（如果尚未选中）。
+   - **IP 地址分配**：选择“静态”（如果未选择）。
    - **专用 IP 地址**：键入一个位于虚拟网络和子网地址空间中的地址，例如 *10.3.0.7*。
-   - **ResourceGroup**：在“选择现有”下拉列表中选择“MyResourceGroupLB”。 
+   - **资源组**：下拉“选择现有”列表并选择“MyResourceGroupLB”。 
    
 1. 选择“创建”。
    
@@ -113,7 +107,7 @@ ms.locfileid: "52839239"
 
 ### <a name="create-a-back-end-address-pool"></a>创建后端地址池
 
-若要向 VM 分发流量，请让负载均衡器使用后端地址池。 后端地址池包含连接到负载均衡器的虚拟网络接口 (NIC) 的 IP 地址。 
+若要向 VM 分配流量，请让负载均衡器使用后端地址池。 后端地址池包含连接到负载均衡器的虚拟网络接口 (NIC) 的 IP 地址。 
 
 **若要创建包含 VM1 和 VM2 的后端地址池，请执行以下操作：**
 
@@ -153,7 +147,7 @@ ms.locfileid: "52839239"
 1. 在“添加运行状况探测”页上，键入或选择以下值：
    
    - **名称**：键入 *MyHealthProbe*。
-   - **协议**：在下拉列表中选择“HTTP”。 
+   - **协议**：下拉并选择“HTTP”。 
    - **端口**：键入 *80*。 
    - **路径**：接受 */* 作为默认 URI。 可以将此值替换为任何其他的 URI。 
    - **时间间隔**：键入 *15*。 时间间隔是两次探测尝试之间的秒数。
@@ -178,7 +172,7 @@ ms.locfileid: "52839239"
 1. 在“添加负载均衡规则”页上，键入或选择以下值（如果还没有这些值）：
    
    - **名称**：键入 *MyLoadBalancerRule*。
-   - **前端 IP 地址**：键入 *LoadBalancerFrontEnd*（如果不存在）。
+   - **前端 IP 地址：** 键入 *LoadBalancerFrontEnd*（如果不存在）。
    - **协议**：选择“TCP”。
    - **端口**：键入 *80*。
    - **后端端口**：键入 *80*。
@@ -212,7 +206,7 @@ ms.locfileid: "52839239"
    
 1. 在“Windows 安全性”屏幕上选择“更多选择”，然后选择“使用其他帐户”。 
    
-   输入用户名 *azureuser* 和密码 *Azure1234567*，然后选择“确定”。
+   输入用户名和密码，然后选择“确定”。
    
 1. 使用“是”对任何证书请求进行响应。 
    

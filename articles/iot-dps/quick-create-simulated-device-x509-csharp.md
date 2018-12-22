@@ -10,23 +10,23 @@ services: iot-dps
 manager: timlt
 ms.devlang: csharp
 ms.custom: mvc
-ms.openlocfilehash: ae5601cf35540b6f506521a851b4d90dfaf0a20a
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: d9b4777067ed1ee9f253714bc82c2a20aaa0d127
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50156453"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52997028"
 ---
 # <a name="create-and-provision-a-simulated-x509-device-using-c-device-sdk-for-iot-hub-device-provisioning-service"></a>使用适用于 IoT 中心设备预配服务的 C# 设备 SDK 创建和预配模拟的 X.509 设备
 [!INCLUDE [iot-dps-selector-quick-create-simulated-device-x509](../../includes/iot-dps-selector-quick-create-simulated-device-x509.md)]
 
-以下步骤演示了如何在运行 Windows OS 的开发计算机上生成 [Azure IoT 中心 C# SDK](https://github.com/Azure/azure-iot-sdk-csharp) 模拟的 X.509 设备示例，以及如何通过设备预配服务和 IoT 中心连接该模拟设备。
+这些步骤展示如何使用[用于 C# 的 Azure IoT 示例](https://github.com/Azure-Samples/azure-iot-samples-csharp)在运行 Windows OS 的开发计算机上模拟 X.509 设备。 该示例还使用设备预配服务将模拟设备连接到 IoT 中心。
 
 如果不熟悉自动预配过程，还务必查看[自动预配概念](concepts-auto-provisioning.md)。 另外，在继续操作之前，请确保已完成[通过 Azure 门户设置 IoT 中心设备预配服务](./quick-setup-auto-provision.md)中的步骤。 
 
 Azure IoT 设备预配服务支持两类注册：
-- [注册组](concepts-service.md#enrollment-group)：用于注册多个相关的设备。
-- [单个注册](concepts-service.md#individual-enrollment)：用于注册单个设备。
+- [注册组](concepts-service.md#enrollment-group)：用于注册多个相关设备。
+- [单独注册](concepts-service.md#individual-enrollment)：用于注册单个设备。
 
 本文将演示单个注册。
 
@@ -35,14 +35,14 @@ Azure IoT 设备预配服务支持两类注册：
 <a id="setupdevbox"></a>
 ## <a name="prepare-the-development-environment"></a>准备开发环境 
 
-1. 确保已在计算机上安装 [.NET Core SDK](https://www.microsoft.com/net/download/windows)。 
+1. 确保在计算机上已安装 [.NET Core 2.1 SDK 或更高版本](https://www.microsoft.com/net/download/windows)。 
 
 1. 确保在计算机上安装 `git` 并将其添加到可供命令窗口访问的环境变量。 请参阅[软件自由保护组织提供的 Git 客户端工具](https://git-scm.com/download/)，了解要安装的最新版 `git` 工具，其中包括 Git Bash，这是一个命令行应用，可以用来与本地 Git 存储库交互。 
 
-4. 打开命令提示符或 Git Bash。 克隆 [Azure IoT SDK for C#](https://github.com/Azure/azure-iot-sdk-csharp) GitHub 存储库：
+1. 打开命令提示符或 Git Bash。 克隆用于 C# GitHub 存储库的 Azure IoT 示例：
     
     ```cmd
-    git clone --recursive https://github.com/Azure/azure-iot-sdk-csharp.git
+    git clone https://github.com/Azure-Samples/azure-iot-samples-csharp.git
     ```
 
 ## <a name="create-a-self-signed-x509-device-certificate-and-individual-enrollment-entry"></a>创建自签名的 X.509 设备证书和单个注册项
@@ -52,13 +52,13 @@ Azure IoT 设备预配服务支持两类注册：
 * 自签名证书仅用于测试，不应在生产环境中使用。
 * 自签名证书的默认过期日期为一年。
 
-你将使用来自 [Azure IoT SDK for .NET](https://github.com/Azure/azure-iot-sdk-csharp.git) 的示例代码创建要与模拟设备的个体注册条目一起使用的证书。
+将使用来自[预配设备客户端示例 - X.509 证明](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/master/provisioning/Samples/device/X509Sample)的示例代码创建要与模拟设备的单独注册条目一起使用的证书。
 
 
 1. 在命令提示符处将目录更改为 X.509 设备预配示例的项目目录。
 
     ```cmd
-    cd .\azure-iot-sdk-csharp\provisioning\device\samples\ProvisioningDeviceClientX509
+    cd .\azure-iot-samples-csharp\provisioning\Samples\device\X509Sample
     ```
 
 2. 示例代码设置为使用在受密码保护的 PKCS12 格式文件 (certificate.pfx) 中存储的 X.509 证书。 另外，还需要一个公钥证书文件 (certificate.cer)，用于在本快速入门的后面部分创建单个注册。 若要生成自签名的证书及其关联的 .cer 和 .pfx 文件，请运行以下命令：

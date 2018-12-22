@@ -1,23 +1,24 @@
 ---
-title: Azure 事件网格概述
-description: 介绍 Azure 事件网格及其概念。
+title: 发布和订阅应用程序事件 - Azure 事件网格
+description: 使用 Azure 事件网格将事件数据从源发送到处理程序。 生成基于事件的应用程序，并与 Azure 服务集成。
 services: event-grid
 author: banisadr
 manager: timlt
 ms.service: event-grid
 ms.topic: overview
-ms.date: 08/17/2018
+ms.date: 12/06/2018
 ms.author: babanisa
-ms.openlocfilehash: fbe9b79cd407f74686d572aa1e5c7ac1d837cd25
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.custom: seodec18
+ms.openlocfilehash: 466f7614026866bb038f3c73b23e28e34d9f2e30
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47223401"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53321010"
 ---
-# <a name="an-introduction-to-azure-event-grid"></a>Azure 事件网格简介
+# <a name="what-is-azure-event-grid"></a>什么是 Azure 事件网格？
 
-通过 Azure 事件网格，可使用基于事件的体系结构轻松生成应用程序。 先选择要订阅的 Azure 资源，然后提供要向其发送事件的事件处理程序或 WebHook 终结点。 事件网格包含来自 Azure 服务对事件的内置支持，如存储 blob 和资源组。 事件网格还使用自定义主题支持自己的事件。 
+通过 Azure 事件网格，可使用基于事件的体系结构轻松生成应用程序。 首先，选择要订阅的 Azure 资源，然后提供要向其发送事件的事件处理程序或 WebHook 终结点。 事件网格包含来自 Azure 服务对事件的内置支持，如存储 blob 和资源组。 事件网格还使用自定义主题支持自己的事件。 
 
 可以使用筛选器将特定事件路由到不同的终结点，多播到多个终结点，并确保事件可靠传送。
 
@@ -25,9 +26,9 @@ ms.locfileid: "47223401"
 
 本文将对 Azure 事件网格进行简要概述。 若要开始使用事件网格，请参阅[使用 Azure 事件网格创建和路由自定义事件](custom-event-quickstart.md)。 
 
-![事件网格功能模型](./media/overview/functional-model.png)
+![源和处理程序的事件网格模型](./media/overview/functional-model.png)
 
-请注意：此图显示了事件网格如何连接源和处理程序，而不是支持的集成的完整列表。
+此图展示事件网格连接源和处理程序的方式，而不是支持的集成的完整列表。
 
 ## <a name="event-sources"></a>事件源
 
@@ -64,7 +65,7 @@ ms.locfileid: "47223401"
 * 事件 - 发生了什么。
 * **事件源** - 事件发生的地点。
 * 主题 - 其中发布者发送事件的终结点。
-* 事件订阅 - 用于路由事件，有时用于多个处理程序的终结点或内置机制。 订阅还用于处理程序，以便智能地筛选传入事件。
+* **事件订阅** - 用于路由事件，有时用于多个处理程序的终结点或内置机制。 订阅还用于处理程序，以便智能地筛选传入事件。
 * 事件处理程序 - 对事件作出反应的应用或服务。
 
 有关这些概念的详细信息，请参阅 [Azure 事件网格中的概念](concepts.md)。
@@ -74,9 +75,9 @@ ms.locfileid: "47223401"
 下面是 Azure 事件网格中的一些主要功能：
 
 * 简洁性 - 指向并单击从 Azure 资源到任何事件处理程序或终结点的目标事件。
-* 高级筛选 - 筛选事件类型或事件发布路径，以确保事件处理程序仅接收相关的事件。
-* 扇出 - 订阅到相同事件的多个终结点，以将该事件的副本发送到所需的所有位置。
-* 可靠性 - 会以指数退避算法在 24 小时内重试，以确保事件成功传送。
+* **高级筛选** - 筛选事件类型或事件发布路径，以确保事件处理程序仅接收相关的事件。
+* **扇出** - 订阅到相同事件的多个终结点，以将该事件的副本发送到所需的所有位置。
+* **可靠性** - 使用指数退避算法在 24 小时内重试，以确保事件成功传送。
 * 按事件支付 - 仅支付事件网格的使用量。
 * 高吞吐量 - 通过对每秒数以百万计事件的支持，在事件网格上生成大量工作负荷。
 * 内置事件 - 使用资源定义的内置事件快速启动和运行。
@@ -86,25 +87,25 @@ ms.locfileid: "47223401"
 
 ## <a name="what-can-i-do-with-event-grid"></a>使用事件网格可以做什么？
 
-Azure 事件网格提供了多个极大地改进无服务器的功能、运维自动化和集成工作： 
+Azure 事件网格提供多项功能，极大程度地改进了无服务器体系结构、运维自动化和[集成](http://azure.com/integration)工作： 
 
 ### <a name="serverless-application-architectures"></a>无服务器应用程序体系结构
 
-![无服务器应用程序](./media/overview/serverless_web_app.png)
+![无服务器应用程序体系结构](./media/overview/serverless_web_app.png)
 
-事件网格将数据源与事件处理程序连接。 例如，使用事件网格在每次向 Blob 存储容器添加新照片时，立即触发无服务器功能运行图像分析。 
+事件网格将数据源与事件处理程序连接。 例如，使用事件网格触发无服务器功能，该功能在添加到 blob 存储容器时分析图像。 
 
 ### <a name="ops-automation"></a>运维自动化
 
 ![运维自动化](./media/overview/Ops_automation.png)
 
-使用事件网格，可以加快自动化，简化策略执行。 例如，事件网格可在创建虚拟机或启动 SQL 数据库时通知 Azure 自动化。 这些事件可用于自动检查服务配置是否符合要求，是否将元数据放入操作工具、标记虚拟机或文件工作项中。
+使用事件网格，可以加快自动化，简化策略执行。 例如，使用事件网格在创建虚拟机或 SQL 数据库时通知 Azure 自动化。 使用事件自动检查服务配置是否符合要求、将元数据放入操作工具、标记虚拟机或提交工作项。
 
 ### <a name="application-integration"></a>应用程序集成
 
-![应用程序集成](./media/overview/app_integration.png)
+![将应用程序与 Azure 集成](./media/overview/app_integration.png)
 
-事件网格将应用与其他服务连接。 例如，创建一个自定义主题以将应用的事件数据发送到事件网格，并利用其可靠交付、高级路由和与 Azure 的直接集成。 或者，可使用具有逻辑应用的事件网格来处理任何位置的数据，而无需编写代码。 
+事件网格将应用与其他服务连接。 例如，创建一个自定义主题以将应用的事件数据发送到事件网格，并利用其可靠交付、高级路由和与 Azure 的直接集成。 或者，可将事件网格与逻辑应用搭配使用，处理任何位置的数据，而无需编写代码。 
 
 ## <a name="how-much-does-event-grid-cost"></a>事件网格的费用是多少？
 
@@ -121,4 +122,4 @@ Azure 事件网格使用按事件支付的定价模型，因此，你只需为�
 * [将大数据流式传输到数据仓库](event-grid-event-hubs-integration.md)  
   本教程介绍如何使用 Azure Functions 将数据从事件中心流式传输到 SQL 数据仓库。
 * [事件网格 REST API 参考](/rest/api/eventgrid)  
-  介绍有个 Azure 事件网格的更多技术信息，以及管理事件订阅、路由和过滤的参考。
+  提供用于管理事件订阅、路由和筛选的参考内容。

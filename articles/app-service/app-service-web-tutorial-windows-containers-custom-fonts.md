@@ -1,6 +1,6 @@
 ---
-title: 使用 Windows 容器将 ASP.NET 应用迁移到 Azure 应用服务（预览）| Microsoft Docs
-description: 了解如何将自定义 Windows 容器部署到 Azure 应用服务中。
+title: 使用 Windows 容器（预览）生成 ASP.NET 应用 - Azure 应用服务 | Microsoft Docs
+description: 了解如何将自定义 Windows 容器部署到 Azure 应用服务中并在容器中部署自定义软件。
 services: app-service\web
 documentationcenter: ''
 author: cephalin
@@ -13,23 +13,23 @@ ms.devlang: na
 ms.topic: quickstart
 ms.date: 09/17/2018
 ms.author: cephalin
-ms.custom: mvc
-ms.openlocfilehash: 8f6268a345a861ae65a10c3220d1992ba2d45928
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.custom: seodec18
+ms.openlocfilehash: 96f83f86a03b4fa6b12962c28ce1488d4250ba5a
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46980332"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53384575"
 ---
 # <a name="migrate-an-aspnet-app-to-azure-app-service-using-a-windows-container-preview"></a>使用 Windows 容器将 ASP.NET 应用迁移到 Azure 应用服务（预览）
 
-[Azure 应用服务](app-service-web-overview.md)在 Windows 上提供预定义的应用程序堆栈，例如在 IIS 上运行的 ASP.NET 或 Node.js。 预配置的 Windows 环境锁定了操作系统，不允许对其进行管理访问、软件安装、全局程序集缓存更改等操作（请参阅 [Azure 应用服务上的操作系统功能](web-sites-available-operating-system-functionality.md)）。 但是，通过在应用服务中使用自定义 Windows 容器，可以作出应用所需的 OS 更改，因此可轻松迁移需要自定义 OS 和软件配置的本地应用。 本教程演示如何将使用 Windows 字体库中安装的自定义字体的 ASP.NET 应用迁移到应用服务。 你将自定义配置的 Windows 映像从 Visual Studio 部署到 [Azure 容器注册表](https://docs.microsoft.com/azure/container-registry/)，然后在应用服务中运行它。
+[Azure 应用服务](app-service-web-overview.md)在 Windows 上提供预定义的应用程序堆栈，例如在 IIS 上运行的 ASP.NET 或 Node.js。 预配置的 Windows 环境锁定了操作系统，不允许对其进行管理访问、软件安装、全局程序集缓存更改等操作（请参阅 [Azure 应用服务上的操作系统功能](operating-system-functionality.md)）。 但是，通过在应用服务中使用自定义 Windows 容器，可以作出应用所需的 OS 更改，因此可轻松迁移需要自定义 OS 和软件配置的本地应用。 本教程演示如何将使用 Windows 字体库中安装的自定义字体的 ASP.NET 应用迁移到应用服务。 你将自定义配置的 Windows 映像从 Visual Studio 部署到 [Azure 容器注册表](https://docs.microsoft.com/azure/container-registry/)，然后在应用服务中运行它。
 
 ![](media/app-service-web-tutorial-windows-containers-custom-fonts/app-running.png)
 
 ## <a name="prerequisites"></a>先决条件
 
-完成本教程：
+完成本教程需要：
 
 - <a href="https://hub.docker.com/" target="_blank">注册 Docker 中心帐户</a>
 - <a href="https://docs.docker.com/docker-for-windows/install/" target="_blank">安装用于 Windows 的 Docker</a>。
@@ -172,7 +172,7 @@ Azure 操作完成后，会显示通知框。
 
 2. 在应用页中，单击“URL”下的链接。
 
-此时会出现一个打开到以下页面的新浏览器页面：
+如果会打开一个如以下页面所示的新浏览器页面：
 
 ![](media/app-service-web-tutorial-windows-containers-custom-fonts/app-starting.png)
 
@@ -180,11 +180,11 @@ Azure 操作完成后，会显示通知框。
 
 ![](media/app-service-web-tutorial-windows-containers-custom-fonts/app-running.png)
 
-**祝贺你！** 你已通过 Windows 容器将 ASP.NET 应用程序迁移到 Azure 应用服务。
+祝贺你！ 你已通过 Windows 容器将 ASP.NET 应用程序迁移到 Azure 应用服务。
 
 ## <a name="see-container-start-up-logs"></a>查看容器启动日志
 
-Windows 容器的加载可能需要一定的时间。 若要查看进度，请导航到以下 URL（将 *\<app_name>* 替换为应用名称）。
+加载 Windows 容器可能需要一些时间。 要查看进度，请导航到以下 URL（将 \<app_name> 替换为你的应用名称）。
 ```
 https://<app_name>.scm.azurewebsites.net/api/logstream
 ```

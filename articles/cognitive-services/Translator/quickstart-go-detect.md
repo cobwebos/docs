@@ -8,105 +8,161 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
 ms.topic: quickstart
-ms.date: 06/29/2018
+ms.date: 12/05/2018
 ms.author: erhopf
-ms.openlocfilehash: 0275b408e71ec967f6453c94566b4799b3dd4396
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: 84522612dbd31d406537b9679887e0f82a971b1c
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49647198"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "53000491"
 ---
-# <a name="quickstart-identify-language-from-text-with-the-translator-text-rest-api-go"></a>快速入门：使用文本翻译 REST API (Go) 识别文本中的语言
+# <a name="quickstart-use-the-translator-text-api-to-detect-text-language-using-go"></a>快速入门：使用文本翻译 API 通过 Go 来检测文本语言
 
-在本快速入门中，你将使用文本翻译 API 识别源文本的语言。
+本快速入门介绍如何使用 Go 和文本翻译 REST API 来检测所提供文本的语言。
+
+此快速入门需要包含文本翻译资源的 [Azure 认知服务帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)。 如果没有帐户，可以使用[免费试用版](https://azure.microsoft.com/try/cognitive-services/)获取订阅密钥。
 
 ## <a name="prerequisites"></a>先决条件
 
-需要安装 [Go 发行版](https://golang.org/doc/install)才能运行此代码。 本示例代码仅使用核心库，因此不需要外部依赖项。
+本快速入门需要：
 
-若要使用文本翻译 API，还需要订阅密钥；请参阅[如何注册文本翻译 API](translator-text-how-to-signup.md)。
+* [Go](https://golang.org/doc/install)
+* 适用于文本翻译的 Azure 订阅密钥
 
-## <a name="detect-request"></a>检测请求
+## <a name="create-a-project-and-import-required-modules"></a>创建一个项目并导入必需的模块
 
-以下代码使用 [Detect](./reference/v3-0-detect.md) 方法识别源文本的语言。
+使用最喜欢的 IDE 或编辑器创建新的 Go 项目。 然后，将此代码片段复制到项目的名为 `detect-language.go` 的文件中。
 
-1. 在你喜欢使用的代码编辑器中新建一个 Go 项目。
-2. 添加以下提供的代码。
-3. 使用对订阅有效的访问密钥替换 `subscriptionKey` 值。
-4. 使用“.go”扩展名保存文件。
-5. 在安装了 Go 的计算机上打开命令提示符。
-6. 生成文件，例如：“go build quickstart-detect.go”。
-7. 运行文件，例如：“quickstart-detect”。
-
-```golang
+```go
 package main
 
 import (
+    "bytes"
     "encoding/json"
     "fmt"
-    "io/ioutil"
+    "log"
     "net/http"
-    "strconv"
-    "strings"
-    "time"
+    "net/url"
+    "os"
 )
+```
 
+## <a name="create-the-main-function"></a>创建 main 函数
+
+此示例将尝试从环境变量 `TRANSLATOR_TEXT_KEY` 读取文本翻译订阅密钥。 如果不熟悉环境变量，则可将 `subscriptionKey` 设置为字符串并注释掉条件语句。
+
+将以下代码复制到项目中：
+
+```go
 func main() {
-    // Replace the subscriptionKey string value with your valid subscription key
-    const subscriptionKey = "<Subscription Key>"
-
-    const uriBase = "https://api.cognitive.microsofttranslator.com"
-    const uriPath = "/detect?api-version=3.0"
-
-    const uri = uriBase + uriPath
-
-    const text = "Salve, mondo!"
-
-    r := strings.NewReader("[{\"Text\" : \"" + text + "\"}]")
-
-    client := &http.Client{
-        Timeout: time.Second * 2,
+    /*
+     * Read your subscription key from an env variable.
+     * Please note: You can replace this code block with
+     * var subscriptionKey = "YOUR_SUBSCRIPTION_KEY" if you don't
+     * want to use env variables.
+     */
+    subscriptionKey := os.Getenv("TRANSLATOR_TEXT_KEY")
+    if subscriptionKey == "" {
+       log.Fatal("Environment variable TRANSLATOR_TEXT_KEY is not set.")
     }
-
-    req, err := http.NewRequest("POST", uri, r)
-    if err != nil {
-        fmt.Printf("Error creating request: %v\n", err)
-        return
-    }
-
-    req.Header.Add("Content-Type", "application/json")
-    req.Header.Add("Content-Length", strconv.FormatInt(req.ContentLength, 10))
-    req.Header.Add("Ocp-Apim-Subscription-Key", subscriptionKey)
-
-    resp, err := client.Do(req)
-    if err != nil {
-        fmt.Printf("Error on request: %v\n", err)
-        return
-    }
-    defer resp.Body.Close()
-
-    body, err := ioutil.ReadAll(resp.Body)
-    if err != nil {
-        fmt.Printf("Error reading response body: %v\n", err)
-        return
-    }
-
-    var f interface{}
-    json.Unmarshal(body, &f)
-
-    jsonFormatted, err := json.MarshalIndent(f, "", "  ")
-    if err != nil {
-        fmt.Printf("Error producing JSON: %v\n", err)
-        return
-    }
-    fmt.Println(string(jsonFormatted))
+    /*
+     * This calls our detect function, which we'll
+     * create in the next section. It takes a single argument,
+     * the subscription key.
+     */
+    detect(subscriptionKey)
 }
 ```
 
-## <a name="detect-response"></a>Detect 响应
+## <a name="create-a-function-to-detect-the-text-language"></a>创建文本语言检测函数
 
-成功的响应以 JSON 格式返回，如以下示例所示：
+创建文本语言检测函数。 此函数将接受一个参数，即文本翻译订阅密钥。
+
+```go
+func detect(subscriptionKey string) {
+    /*  
+     * In the next few sections, we'll add code to this
+     * function to make a request and handle the response.
+     */
+}
+```
+
+接下来，构造 URL。 使用 `Parse()` 和 `Query()` 方法生成 URL。
+
+将此代码复制到 `detect` 函数中。
+
+```go
+// Build the request URL. See: https://golang.org/pkg/net/url/#example_URL_Parse
+u, _ := url.Parse("https://api.cognitive.microsofttranslator.com/detect?api-version=3.0")
+q := u.Query()
+u.RawQuery = q.Encode()
+```
+
+>[!NOTE]
+> 有关终结点、路由和请求参数的详细信息，请参阅[文本翻译 API 3.0：检测](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-detect)。
+
+## <a name="create-a-struct-for-your-request-body"></a>创建请求正文的结构
+
+接下来，创建请求正文的匿名结构，并使用 `json.Marshal()` 将其编码为 JSON。 将此代码添加到 `detect` 函数中。
+
+```go
+// Create an anonymous struct for your request body and encode it to JSON
+body := []struct {
+    Text string
+}{
+    {Text: "Salve, Mondo!"},
+}
+b, _ := json.Marshal(body)
+```
+
+## <a name="build-the-request"></a>生成请求
+
+将请求正文编码为 JSON 后，可以生成 POST 请求并调用文本翻译 API。
+
+```go
+// Build the HTTP POST request
+req, err := http.NewRequest("POST", u.String(), bytes.NewBuffer(b))
+if err != nil {
+    log.Fatal(err)
+}
+// Add required headers
+req.Header.Add("Ocp-Apim-Subscription-Key", subscriptionKey)
+req.Header.Add("Content-Type", "application/json")
+
+// Call the Translator Text API
+res, err := http.DefaultClient.Do(req)
+if err != nil {
+    log.Fatal(err)
+}
+```
+
+## <a name="handle-and-print-the-response"></a>处理并输出响应
+
+将此代码添加到 `detect` 函数以解码 JSON 响应，然后格式化并输出结果。
+
+```go
+// Decode the JSON response
+var result interface{}
+if err := json.NewDecoder(res.Body).Decode(&result); err != nil {
+    log.Fatal(err)
+}
+// Format and print the response to terminal
+prettyJSON, _ := json.MarshalIndent(result, "", "  ")
+fmt.Printf("%s\n", prettyJSON)
+```
+
+## <a name="put-it-all-together"></a>将其放在一起
+
+就是这样，你已构建了一个简单的程序。该程序可以调用文本翻译 API 并返回 JSON 响应。 现在，可以运行该程序了：
+
+```console
+go run detect-language.go
+```
+
+如果希望将你的代码与我们的进行比较，请查看 [GitHub](https://github.com/MicrosoftTranslator/Text-Translation-API-V3-Go) 上提供的完整示例。
+
+## <a name="sample-response"></a>示例响应
 
 ```json
 [
@@ -139,3 +195,13 @@ func main() {
 
 > [!div class="nextstepaction"]
 > [浏览 GitHub 上的 Go 程序包](https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices)
+
+## <a name="see-also"></a>另请参阅
+
+了解如何使用文本翻译 API 执行以下操作：
+
+* [翻译文本](quickstart-go-translate.md)
+* [直译文本](quickstart-go-transliterate.md)
+* [获取备用翻译](quickstart-go-dictionary.md)
+* [获取支持的语言的列表](quickstart-go-languages.md)
+* [根据输入确定句子长度](quickstart-go-sentences.md)

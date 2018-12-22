@@ -9,14 +9,17 @@ ms.topic: tutorial
 ms.date: 09/03/2018
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: de19b20865127fd37cd7bc1ac854288a95a68091
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ROBOTS: NOINDEX
+ms.openlocfilehash: 45255845d8645391ee33471830ac2ef27870a40d
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44058072"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53408623"
 ---
 # <a name="tutorial-train-a-distributed-model-with-horovod"></a>教程：通过 Horovod 训练分布式模型
+
+[!INCLUDE [batch-ai-retiring](../../includes/batch-ai-retiring.md)]
 
 在本教程中，请在 Batch AI 群集中跨多个节点并行运行分布式深度学习模型，以便对其进行训练。 Batch AI 是一项托管服务，可以在 Azure GPU 群集上大规模训练机器学习和 AI 模型。 
 

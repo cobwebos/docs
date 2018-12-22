@@ -1,5 +1,5 @@
 ---
-title: 快速入门：通过适用于 Python 的必应图像搜索 SDK 搜索图像
+title: 快速入门：搜索图像 - 适用于 Python 的必应图像搜索 SDK
 titleSuffix: Azure Cognitive Services
 description: 在本快速入门中，你将使用必应图像搜索 SDK（它是 API 的包装程序并包含相同的功能）创建你的第一个图像搜索。 此简单的 Python 应用程序发送图像搜索查询，分析 JSON 响应，并显示返回的第一个图像的 URL。
 services: cognitive-services
@@ -10,18 +10,19 @@ ms.component: bing-image-search
 ms.topic: quickstart
 ms.date: 08/28/2018
 ms.author: aahi
-ms.openlocfilehash: a2a39049196e19d29d2b4d845b9cf756392013bf
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.custom: seodec2018
+ms.openlocfilehash: c0cb795f2d40963263cbbb15a54ba8af2953f5f0
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52315015"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53250359"
 ---
-# <a name="quickstart-search-for-images-with-the-bing-image-search-sdk-and-python"></a>快速入门：通过必应图像搜索 SDK 和 Python 搜索图像
+# <a name="quickstart-search-for-images-with-the-bing-image-search-sdk-for-python"></a>快速入门：使用适用于 Python 的必应图像搜索 SDK 搜索图像
 
 在本快速入门中，你将使用必应图像搜索 SDK（它是 API 的包装程序并包含相同的功能）创建你的第一个图像搜索。 此简单的 Python 应用程序发送图像搜索查询，分析 JSON 响应，并显示返回的第一个图像的 URL。
 
-[Github](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/blob/master/samples/search/image-search-quickstart.py) 上提供了此示例的源代码以及附加的错误处理和注释。
+[GitHub](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/blob/master/samples/search/image-search-quickstart.py) 上提供了此示例的源代码以及附加的错误处理和注释。
 
 ## <a name="prerequisites"></a>先决条件
 在“搜索”下获取[认知服务访问密钥](https://azure.microsoft.com/try/cognitive-services/)。  另请参阅[认知服务定价 - 必应搜索 API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)。

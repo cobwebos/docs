@@ -8,12 +8,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 09/24/2018
-ms.openlocfilehash: 7b9bc52e07bccf931593cd2dbddd68e973d1b26c
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: 7ce66d3f6117a5e395920dc2232efb0e43f4cd18
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49394351"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53106441"
 ---
 # <a name="quickstart-query-data-in-azure-data-explorer"></a>快速入门：在 Azure 数据资源管理器中查询数据
 
@@ -134,7 +134,7 @@ Azure 数据资源管理器是一项快速且高度可缩放的数据探索服�
 
 1. 运行以下查询。
 
-    ```Kutso
+    ```Kusto
     StormEvents
     | sort by StartTime desc
     | where DamageProperty > 5000
@@ -148,7 +148,7 @@ Azure 数据资源管理器是一项快速且高度可缩放的数据探索服�
 
     此面板的功能类似于 Excel 中的数据透视表字段列表，可在网格中执行更多分析。
 
-1. 选择“透视模式”，然后按如下方式拖动列：“状态”到“行组”、“DamageProperty”到“值”和“EventType”到“列标签”。  
+1. 选择“透视模式”，然后按以下方式拖动列：将“状态”拖动到“行组”；将“DamageProperty”拖动到“值”，并将“EventType”拖动到“列标签”。  
 
     ![透视模式](media/web-query-data/pivot-mode.png)
 

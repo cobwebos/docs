@@ -1,5 +1,6 @@
 ---
-title: 教程 1：通过 Azure 机器学习服务为建模准备数据
+title: 回归模型教程：准备数据
+titleSuffix: Azure Machine Learning service
 description: 本教程的第一部分介绍如何在 Python 中准备数据，以便使用 Azure ML SDK 进行回归建模。
 services: machine-learning
 ms.service: machine-learning
@@ -9,14 +10,15 @@ author: cforbe
 ms.author: cforbe
 ms.reviewer: trbye
 ms.date: 12/04/2018
-ms.openlocfilehash: 700dfa9fded30fd09eab69a15abf54fb420c5c06
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.custom: seodec18
+ms.openlocfilehash: d20ff1fabfb73c899153cf42bb6f2d7a8f233e21
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52883674"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53314680"
 ---
-# <a name="tutorial-1-prepare-data-for-regression-modeling"></a>教程 1：为回归建模准备数据
+# <a name="tutorial-prepare-data-for-regression-modeling"></a>教程：为回归建模准备数据
 
 本教程介绍如何准备数据，以便使用 Azure 机器学习数据准备 SDK 进行回归建模。 执行各种转换，以便筛选并组合两个不同的纽约市出租车数据集。 本教程系列的最终目标是根据数据特性（包括上车时间、星期几、乘客数和坐标）训练一个模型，以便预测出租车打车费用。 本教程是由两个部分构成的系列教程的第一部分。
 
@@ -73,7 +75,7 @@ display(yellow_df.head(5))
 all_columns = dprep.ColumnSelector(term=".*", use_regex=True)
 drop_if_all_null = [all_columns, dprep.ColumnRelationship(dprep.ColumnRelationship.ALL)]
 useful_columns = [
-    "cost", "distance""distance", "dropoff_datetime", "dropoff_latitude", "dropoff_longitude",
+    "cost", "distance", "dropoff_datetime", "dropoff_latitude", "dropoff_longitude",
     "passengers", "pickup_datetime", "pickup_latitude", "pickup_longitude", "store_forward", "vendor"
 ]
 ```
@@ -104,9 +106,6 @@ tmp_df = (green_df
 tmp_df.head(5)
 ```
 
-
-
-
 <div>
 <style scoped> .dataframe tbody tr th:only-of-type { vertical-align: middle; }
 
@@ -131,6 +130,7 @@ tmp_df.head(5)
       <th>dropoff_longitude</th>
       <th>dropoff_latitude</th>
       <th>passengers</th>
+      <th>distance</th>
       <th>cost</th>
     </tr>
   </thead>
@@ -146,6 +146,7 @@ tmp_df.head(5)
       <td>0</td>
       <td>0</td>
       <td>1</td>
+      <td>.00</td>
       <td>21.25</td>
     </tr>
     <tr>
@@ -159,6 +160,7 @@ tmp_df.head(5)
       <td>0</td>
       <td>0</td>
       <td>2</td>
+      <td>.00</td>
       <td>74.5</td>
     </tr>
     <tr>
@@ -172,6 +174,7 @@ tmp_df.head(5)
       <td>0</td>
       <td>0</td>
       <td>1</td>
+      <td>.00</td>
       <td>1</td>
     </tr>
     <tr>
@@ -185,6 +188,7 @@ tmp_df.head(5)
       <td>0</td>
       <td>0</td>
       <td>1</td>
+      <td>.00</td>
       <td>3.25</td>
     </tr>
     <tr>
@@ -198,16 +202,14 @@ tmp_df.head(5)
       <td>0</td>
       <td>0</td>
       <td>1</td>
+      <td>.00</td>
       <td>8.5</td>
     </tr>
   </tbody>
 </table>
 </div>
 
-
-
 使用在上一步中的 `tmp_df` 上执行的转换覆盖 `green_df` 变量。
-
 
 ```python
 green_df = tmp_df
@@ -632,6 +634,14 @@ combined_df.keep_columns(columns='store_forward').get_profile()
 combined_df = combined_df.replace(columns="store_forward", find="0", replace_with="N").fill_nulls("store_forward", "N")
 ```
 
+执行另一个 `replace` 函数，这一次针对 `distance` 字段。 这将重新格式化错误标记为 `.00` 的距离值，并用 0 填充任何空值。 将 `distance` 字段转换为数值格式。
+
+
+```python
+combined_df = combined_df.replace(columns="distance", find=".00", replace_with=0).fill_nulls("distance", 0)
+combined_df = combined_df.to_number(["distance"])
+```
+
 将上车和下车日期时间拆分为相应的日期和时间列。 使用 `split_column_by_example()` 进行拆分。 在此示例中，`split_column_by_example()` 的可选 `example` 参数已省略。 因此，函数会自动根据数据来确定在何处进行拆分。
 
 
@@ -641,9 +651,6 @@ tmp_df = (combined_df
     .split_column_by_example(source_column="dropoff_datetime"))
 tmp_df.head(5)
 ```
-
-
-
 
 <div>
 <style scoped> .dataframe tbody tr th:only-of-type { vertical-align: middle; }
@@ -673,6 +680,7 @@ tmp_df.head(5)
       <th>dropoff_longitude</th>
       <th>dropoff_latitude</th>
       <th>passengers</th>
+      <th>distance</th>
       <th>cost</th>
     </tr>
   </thead>
@@ -692,6 +700,7 @@ tmp_df.head(5)
       <td>-73.937767</td>
       <td>40.758480</td>
       <td>1</td>
+      <td>0.0</td>
       <td>2.5</td>
     </tr>
     <tr>
@@ -709,6 +718,7 @@ tmp_df.head(5)
       <td>-73.937927</td>
       <td>40.757843</td>
       <td>1</td>
+      <td>0.0</td>
       <td>2.5</td>
     </tr>
     <tr>
@@ -726,6 +736,7 @@ tmp_df.head(5)
       <td>-73.937721</td>
       <td>40.758369</td>
       <td>1</td>
+      <td>0.0</td>
       <td>3.3</td>
     </tr>
     <tr>
@@ -743,6 +754,7 @@ tmp_df.head(5)
       <td>-73.937790</td>
       <td>40.758358</td>
       <td>1</td>
+      <td>0.0</td>
       <td>3.3</td>
     </tr>
     <tr>
@@ -760,12 +772,12 @@ tmp_df.head(5)
       <td>-73.937775</td>
       <td>40.758450</td>
       <td>1</td>
+      <td>0.0</td>
       <td>3.3</td>
     </tr>
   </tbody>
 </table>
 </div>
-
 
 
 将 `split_column_by_example()` 生成的列重命名为有意义的名称。
@@ -836,9 +848,6 @@ tmp_df = (combined_df
 tmp_df.head(5)
 ```
 
-
-
-
 <div>
 <style scoped> .dataframe tbody tr th:only-of-type { vertical-align: middle; }
 
@@ -871,6 +880,7 @@ tmp_df.head(5)
       <th>dropoff_longitude</th>
       <th>dropoff_latitude</th>
       <th>passengers</th>
+      <th>distance</th>
       <th>cost</th>
     </tr>
   </thead>
@@ -894,6 +904,7 @@ tmp_df.head(5)
       <td>-73.937767</td>
       <td>40.758480</td>
       <td>1</td>
+      <td>0.0</td>
       <td>2.5</td>
     </tr>
     <tr>
@@ -915,6 +926,7 @@ tmp_df.head(5)
       <td>-73.937927</td>
       <td>40.757843</td>
       <td>1</td>
+      <td>0.0</td>
       <td>2.5</td>
     </tr>
     <tr>
@@ -936,6 +948,7 @@ tmp_df.head(5)
       <td>-73.937721</td>
       <td>40.758369</td>
       <td>1</td>
+      <td>0.0</td>
       <td>3.3</td>
     </tr>
     <tr>
@@ -957,6 +970,7 @@ tmp_df.head(5)
       <td>-73.937790</td>
       <td>40.758358</td>
       <td>1</td>
+      <td>0.0</td>
       <td>3.3</td>
     </tr>
     <tr>
@@ -978,13 +992,12 @@ tmp_df.head(5)
       <td>-73.937775</td>
       <td>40.758450</td>
       <td>1</td>
+      <td>0.0</td>
       <td>3.3</td>
     </tr>
   </tbody>
 </table>
 </div>
-
-
 
 从上面的数据可以看出，通过派生的转换生成的上车和下车日期和时间组件是正确的。 请删除 `pickup_datetime` 和 `dropoff_datetime` 列，因为已不再需要它们。
 
@@ -1002,27 +1015,24 @@ type_infer.learn()
 type_infer
 ```
 
-
-
-
-    {'pickup_weekday': [FieldType.STRING],
-     'pickup_hour': [FieldType.DECIMAL],
-     'pickup_second': [FieldType.DECIMAL],
-     'dropoff_hour': [FieldType.DECIMAL],
-     'dropoff_minute': [FieldType.DECIMAL],
-     'dropoff_second': [FieldType.DECIMAL],
-     'store_forward': [FieldType.STRING],
-     'pickup_minute': [FieldType.DECIMAL],
-     'dropoff_weekday': [FieldType.STRING],
-     'vendor': [FieldType.STRING],
-     'pickup_longitude': [FieldType.DECIMAL],
-     'pickup_latitude': [FieldType.DECIMAL],
-     'dropoff_longitude': [FieldType.DECIMAL],
-     'dropoff_latitude': [FieldType.DECIMAL],
-     'passengers': [FieldType.DECIMAL],
-     'cost': [FieldType.DECIMAL]}
-
-
+    Column types conversion candidates:
+    'pickup_weekday': [FieldType.STRING],
+    'pickup_hour': [FieldType.DECIMAL],
+    'pickup_minute': [FieldType.DECIMAL],
+    'pickup_second': [FieldType.DECIMAL],
+    'dropoff_hour': [FieldType.DECIMAL],
+    'dropoff_minute': [FieldType.DECIMAL],
+    'dropoff_second': [FieldType.DECIMAL],
+    'store_forward': [FieldType.STRING],
+    'pickup_longitude': [FieldType.DECIMAL],
+    'dropoff_longitude': [FieldType.DECIMAL],
+    'passengers': [FieldType.DECIMAL],
+    'distance': [FieldType.DECIMAL],
+    'vendor': [FieldType.STRING],
+    'dropoff_weekday': [FieldType.STRING],
+    'pickup_latitude': [FieldType.DECIMAL],
+    'dropoff_latitude': [FieldType.DECIMAL],
+    'cost': [FieldType.DECIMAL]
 
 根据数据来看，推断结果看起来是正确的，因此现在可以将类型转换应用到数据流了。
 
@@ -1032,18 +1042,27 @@ tmp_df = type_infer.to_dataflow()
 tmp_df.get_profile()
 ```
 
-目前已经有了完全转换和准备好的数据流对象，可以在机器学习模型中使用了。 此 SDK 包含对象序列化功能，其用法如下。
-
+在打包数据流之前，请对数据集执行两个最终筛选器。 若要消除不正确的数据点，请对 `cost` 和 `distance` 都大于零的记录筛选数据流。
 
 ```python
+tmp_df = tmp_df.filter(dprep.col("distance") > 0)
+tmp_df = tmp_df.filter(dprep.col("cost") > 0)
+```
+
+目前已经有了完全转换和准备好的数据流对象，可以在机器学习模型中使用了。 此 SDK 包含对象序列化功能，其用法如下。
+
+```python
+import os
+file_path = os.path.join(os.getcwd(), "dflows.dprep")
+
 dflow_prepared = tmp_df
 package = dprep.Package([dflow_prepared])
-package.save(".\dflow")
+package.save(file_path)
 ```
 
 ## <a name="clean-up-resources"></a>清理资源
 
-如果不希望继续学习本教程的第二部分，请删除当前目录中的 `dflow` 文件（不管是在本地还是在 Azure Notebooks 中运行）。 如果继续学习第二部分，则需要当前目录中的 `dflow` 文件。
+如果不希望继续学习本教程的第二部分，请删除当前目录中的 `dflows.dprep` 文件（不管是在本地还是在 Azure Notebooks 中运行）。 如果继续学习第二部分，则需要当前目录中的 `dflows.dprep` 文件。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -1058,4 +1077,4 @@ package.save(".\dflow")
 现在可以在本系列教程的下一部分使用此训练数据了：
 
 > [!div class="nextstepaction"]
-> [教程 2：训练回归模型](tutorial-auto-train-models.md)
+> [教程 #2：训练回归模型](tutorial-auto-train-models.md)

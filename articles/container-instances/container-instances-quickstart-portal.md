@@ -1,23 +1,23 @@
 ---
-title: 快速入门 - 在 Azure 容器实例中运行应用程序
-description: 在本快速入门中，将使用 Azure 门户将在 Docker 容器中运行的应用程序部署到 Azure 容器实例
+title: 快速入门 - 在 Azure 容器实例中运行应用程序 - 门户
+description: 在本快速入门中，将使用 Azure 门户部署 Docker 容器应用程序，以在 Azure 容器实例中的独立容器中运行
 services: container-instances
 author: dlepow
 ms.service: container-instances
 ms.topic: quickstart
 ms.date: 10/02/2018
 ms.author: danlep
-ms.custom: mvc
-ms.openlocfilehash: 6ab7680559400c0a270142563ecf7e251c2cd1b8
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.custom: seodec18, mvc
+ms.openlocfilehash: 8f547977e544854e281e1c6be442607d55149e5e
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48857714"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53190282"
 ---
-# <a name="quickstart-run-an-application-in-azure-container-instances"></a>快速入门：在 Azure 容器实例中运行应用程序
+# <a name="quickstart-run-a-container-application-in-azure-container-instances-in-the-azure-portal"></a>快速入门：在 Azure 门户中的 Azure 容器实例中运行容器应用程序
 
-使用 Azure 容器实例在 Azure 中简单快速地运行 Docker 容器。 不需要部署虚拟机或使用 Kubernetes 之类的完整容器业务流程平台。 在本快速入门中，将使用 Azure 门户在 Azure 中创建一个容器，并使其应用程序可通过完全限定的域名 (FQDN) 使用。 在配置一些设置并部署容器后，你可以浏览到正在运行的应用程序：
+使用 Azure 容器实例在 Azure 中快速方便地运行 Docker 容器。 不需要部署虚拟机或使用 Kubernetes 之类的完整容器业务流程平台。 在本快速入门中，将使用 Azure 门户在 Azure 中创建一个容器，并使其应用程序可通过完全限定的域名 (FQDN) 使用。 在配置一些设置并部署容器后，你可以浏览到正在运行的应用程序：
 
 ![在浏览器中显示的已部署到 Azure 容器实例的应用][aci-portal-07]
 
@@ -37,7 +37,7 @@ ms.locfileid: "48857714"
 
 * 容器名称：`mycontainer`
 * 容器映像：`microsoft/aci-helloworld`
-* 资源组：**新建** > `myResourceGroup`
+* 资源组：“新建” > `myResourceGroup`
 
 ![在 Azure 门户中配置新的容器实例的基本设置][aci-portal-03]
 

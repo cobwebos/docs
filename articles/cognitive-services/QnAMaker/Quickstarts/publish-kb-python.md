@@ -1,21 +1,22 @@
 ---
-title: 快速入门：发布知识库 - REST、Python - QnA Maker
-titleSuffix: Azure Cognitive Services
-description: 此基于 REST 的快速入门将指导你完成发布知识库的过程，发布操作会将经过测试的知识库的最新版本推送至代表“已发布”知识库的专用 Azure 搜索索引。 还会创建一个终结点，可在应用程序或聊天机器人中调用此终结点。
+title: 发布知识库、REST 和 Python
+titleSuffix: QnA Maker - Azure Cognitive Services
+description: 此基于 Python REST 的快速入门将指导你完成发布知识库的过程，发布操作会将经过测试的知识库的最新版本推送至代表“已发布”知识库的专用 Azure 搜索索引。 还会创建一个终结点，可在应用程序或聊天机器人中调用此终结点。
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: qna-maker
 ms.topic: quickstart
 ms.date: 11/19/2018
 ms.author: diberry
-ms.openlocfilehash: c942045f01e08161394304f5ec15ff44ba84fc4b
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: a9ce92677e66bf4a0c38399dea1f9bab5285824e
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52164449"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53162369"
 ---
 # <a name="quickstart-publish-a-knowledge-base-in-qna-maker-using-python"></a>快速入门：在 QnA Maker 中通过 Python 发布知识库
 
@@ -32,10 +33,10 @@ ms.locfileid: "52164449"
 
     ![QnA Maker 知识库 ID](../media/qnamaker-quickstart-kb/qna-maker-id.png)
 
-    如果还没有知识库，可以创建一个用于此快速入门的示例知识库：[创建新的知识库](create-new-kb-nodejs.md)。
+    如果还没有知识库，可以创建一个用于本快速入门的示例知识库：[创建新的知识库](create-new-kb-nodejs.md)。
 
 > [!NOTE] 
-> 完整的解决方案文件可从 [**Azure-Samples/cognitive-services-qnamaker-python** Github 存储库](https://github.com/Azure-Samples/cognitive-services-qnamaker-python/tree/master/documentation-samples/quickstarts/publish-knowledge-base)获得。
+> 完整的解决方案文件可从 [Azure-Samples/cognitive-services-qnamaker-python GitHub 存储库](https://github.com/Azure-Samples/cognitive-services-qnamaker-python/tree/master/documentation-samples/quickstarts/publish-knowledge-base)获得。
 
 ## <a name="create-a-knowledge-base-python-file"></a>创建知识库 Python 文件
 

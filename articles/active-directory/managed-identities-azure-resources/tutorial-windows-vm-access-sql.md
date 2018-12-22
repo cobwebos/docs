@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/07/2018
 ms.author: daveba
-ms.openlocfilehash: 5d67d25912df5040665b3a04858be0f3807e8112
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: ee4b504cf26456baa7d10eab05305eee5e36c35a
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51623819"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53191897"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-sql"></a>教程：使用 Windows VM 系统分配托管标识访问 Azure SQL
 
@@ -63,6 +63,8 @@ ms.locfileid: "51623819"
 
 - [使用 SQL 数据库和 SQL 数据仓库进行通用身份验证（MFA 的 SSMS 支持）](/azure/sql-database/sql-database-ssms-mfa-authentication)
 - [使用 SQL 数据库或 SQL 数据仓库配置和管理 Azure Active Directory 身份验证](/azure/sql-database/sql-database-aad-authentication-configure)
+
+SQL DB 需要唯一的 AAD 显示名称。 因此，AAD 帐户（如用户、组和服务主体（应用程序））以及启用了托管标识的 VM 名称必须在 AAD 中针对其显示名称进行唯一定义。 SQL DB 在使用 T-SQL 创建此类用户期间会检查 AAD 显示名称，如果它不唯一，则命令将无法请求为给定帐户提供唯一的 AAD 显示名称。
 
 1.  启动 SQL Server Management Studio。
 2.  在“连接到服务器”对话框的“服务器名称”字段中，输入 SQL 服务器名称。

@@ -1,5 +1,5 @@
 ---
-title: Azure IoT Edge Node.js 教程 | Microsoft Docs
+title: 教程：创建自定义 Node.js 模块 - Azure IoT Edge | Microsoft Docs
 description: 本教程介绍如何使用 Node.js 代码创建 IoT Edge 模块并将其部署到边缘设备
 services: iot-edge
 author: shizn
@@ -8,13 +8,13 @@ ms.author: xshi
 ms.date: 11/25/2018
 ms.topic: tutorial
 ms.service: iot-edge
-ms.custom: mvc
-ms.openlocfilehash: 12ba0ba4addd882d82007df34b79d5f13f6b1ec6
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.custom: mvc, seodec18
+ms.openlocfilehash: 76bc59b41bf35f6427b1dcb273f3f50c5e70b748
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52309566"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53344051"
 ---
 # <a name="tutorial-develop-and-deploy-a-nodejs-iot-edge-module-to-your-simulated-device"></a>教程：开发 Node.js IoT Edge 模块并将其部署到模拟设备
 
@@ -92,9 +92,9 @@ Azure IoT Edge 设备：
 
 3. 选择“视图” > “命令面板”，打开 VS Code 命令面板。 
 
-3. 在命令面板中，键入并运行“Azure: 登录”命令，然后按说明登录 Azure 帐户。 如果已登录，则可跳过此步骤。
+3. 在命令面板中，键入并运行 **Azure:Sign in** 命令并按照说明登录到 Azure 帐户。 如果已登录，则可跳过此步骤。
 
-4. 在命令面板中，键入并运行“Azure IoT Edge: 新建 IoT Edge 解决方案”命令。 按命令面板中的提示创建解决方案。
+4. 在命令面板中，键入并运行 **Azure IoT Edge:New IoT Edge solution** 命令。 按命令面板中的提示创建解决方案。
 
    | 字段 | 值 |
    | ----- | ----- |
@@ -221,9 +221,9 @@ VS Code 窗口将加载你的 IoT Edge 解决方案空间。 解决方案工作�
 
 ## <a name="deploy-and-run-the-solution"></a>部署并运行解决方案
 
-在用于设置 IoT Edge 设备的快速入门文章中，已使用 Azure 门户部署了一个模块。 还可以使用用于 Visual Studio Code 的 Azure IoT Toolkit 扩展来部署模块。 你已经为方案准备了部署清单，即 **deployment.json** 文件。 现在需要做的就是选择一个设备来接收部署。
+在用于设置 IoT Edge 设备的快速入门文章中，已使用 Azure 门户部署了一个模块。 还可以使用用于 Visual Studio Code 的 Azure IoT 中心工具包扩展（以前称为 Azure IoT 工具包扩展）来部署模块。 你已经为方案准备了部署清单，即 **deployment.json** 文件。 现在需要做的就是选择一个设备来接收部署。
 
-1. 在 VS Code 命令面板中，运行“Azure IoT 中心: 选择 IoT 中心”。 
+1. 在 VS Code 命令面板中，运行 **Azure IoT Hub:Select IoT Hub** 命令。 
 
 2. 选择包含要配置的 IoT Edge 设备的订阅和 IoT 中心。 
 
@@ -252,7 +252,7 @@ VS Code 窗口将加载你的 IoT Edge 解决方案空间。 解决方案工作�
 
 1. 若要监视到达 IoT 中心的数据，请单击“...”，然后选择“开始监视 D2C 消息”。
 2. 若要监视特定设备的 D2C 消息，请右键单击列表中的设备，然后选择“开始监视 D2C 消息”。
-3. 若要停止监视数据，请在命令面板中运行“Azure IoT 中心: 停止监视 D2C 消息”命令。 
+3. 若要停止监视数据，请在命令面板中运行 **Azure IoT Hub:Stop monitoring D2C message** 命令。 
 4. 若要查看或更新模块孪生，请右键单击列表中的模块，然后选择“编辑模块孪生”。 若要更新模块孪生，请保存孪生 JSON 文件，然后右键单击编辑器区域并选择“更新模块孪生”。
 5. 若要查看 Docker 日志，可以安装用于 VS Code 的 [Docker](https://marketplace.visualstudio.com/items?itemName=PeterJausovec.vscode-docker)，然后通过 Docker 资源管理器在本地找到正在运行的模块。 在上下文菜单中单击“显示日志”，在集成终端中进行查看。 
 

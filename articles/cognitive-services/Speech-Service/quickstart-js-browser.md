@@ -1,5 +1,5 @@
 ---
-title: 快速入门：使用语音服务 SDK 在浏览器的 JavaScript 中识别语音
+title: 快速入门：识别语音，Javascript（浏览器） - 语音服务
 titleSuffix: Azure Cognitive Services
 description: 了解如何使用语音服务 SDK 在浏览器的 JavaScript 中识别语音
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.component: speech-service
 ms.topic: quickstart
 ms.date: 11/06/2018
 ms.author: fmegen
-ms.openlocfilehash: 1e844f83c715dd8ac78a3340628988625e95a4ba
-ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
+ms.openlocfilehash: f8b6f4d39ce4dc65d691ec6a0e3d0734abb19734
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51218434"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53087909"
 ---
 # <a name="quickstart-recognize-speech-in-javascript-in-a-browser-using-the-speech-service-sdk"></a>快速入门：使用语音服务 SDK 在浏览器的 JavaScript 中识别语音
 

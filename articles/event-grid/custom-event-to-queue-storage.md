@@ -1,21 +1,22 @@
 ---
-title: 将 Azure 事件网格的自定义事件发送到存储队列 | Microsoft Docs
+title: 将自定义事件发送到存储队列 - 事件网格、Azure CLI
 description: 使用 Azure 事件网格和 Azure CLI 发布一个主题，然后订阅该事件。 存储队列用于终结点。
 services: event-grid
 keywords: ''
 author: tfitzmac
 ms.author: tomfitz
-ms.date: 11/08/2018
+ms.date: 12/07/2018
 ms.topic: quickstart
 ms.service: event-grid
-ms.openlocfilehash: c9b5e33f7994209bf1530200cf14d812fa1cf67d
-ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.custom: seodec18
+ms.openlocfilehash: 065ace2f34f95cf0813f0088a188c7fdb1d66d2e
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51299140"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53093958"
 ---
-# <a name="route-custom-events-to-azure-queue-storage-with-azure-cli-and-event-grid"></a>使用 Azure CLI 和事件网格将自定义事件路由到 Azure 队列存储
+# <a name="quickstart-route-custom-events-to-azure-queue-storage-with-azure-cli-and-event-grid"></a>快速入门：使用 Azure CLI 和事件网格将自定义事件路由到 Azure 队列存储
 
 Azure 事件网格是针对云的事件处理服务。 Azure 队列存储是受支持的事件处理程序之一。 在本文中，将使用 Azure CLI 创建一个自定义主题，然后订阅该自定义主题，再触发可查看结果的事件。 将事件发送到队列存储。
 

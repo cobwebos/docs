@@ -1,5 +1,5 @@
 ---
-title: '教程：Azure 流分析 JavaScript 用户定义的函数 | Microsoft Docs '
+title: '教程：Azure 流分析 JavaScript 用户定义的函数 | Microsoft 文档 '
 description: 在本教程中，将使用 JavaScript 用户定义的函数执行高级查询机制
 keywords: javascript, 用户定义的函数, udf
 services: stream-analytics
@@ -13,12 +13,12 @@ ms.custom: mvc
 ms.date: 04/01/2018
 ms.workload: data-services
 ms.author: rodrigoa
-ms.openlocfilehash: 56ac08593d29a9003f5509f2be52f50fa250bd75
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: e33b90d6f70bb1b765f5170ac37880d31e87f3a5
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47431589"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53088868"
 ---
 # <a name="tutorial-azure-stream-analytics-javascript-user-defined-functions"></a>教程：Azure 流分析 JavaScript 用户定义的函数
  
@@ -58,7 +58,7 @@ JavaScript 用户定义的函数支持仅用于计算的且不需要外部连接
 4.  在“新建函数”边栏选项卡中，为“函数类型”选择“JavaScript”。 编辑器中会显示默认函数模板。
 5.  为“UDF 别名”输入 **hex2Int**，并按如下所示更改函数实现：
 
-    ```
+    ```javascript
     // Convert Hex value to integer.
     function hex2Int(hexValue) {
         return parseInt(hexValue, 16);
@@ -73,7 +73,7 @@ JavaScript 用户定义的函数支持仅用于计算的且不需要外部连接
 1. 在查询编辑器中的“作业拓扑”下面选择“查询”。
 2.  编辑查询，并调用该用户定义的函数，如下所示：
 
-    ```
+    ```SQL
     SELECT
         time,
         UDF.hex2Int(offset) AS IntOffset
@@ -129,14 +129,14 @@ JavaScript 运行时错误被视为严重错误，可通过活动日志查看。
 
 **JavaScript 用户定义的函数定义：**
 
-```
+```javascript
 function main(x) {
 return JSON.stringify(x);
 }
 ```
 
 **示例查询：**
-```
+```SQL
 SELECT
     DataString,
     DataValue,

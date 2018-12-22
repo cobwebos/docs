@@ -4,21 +4,20 @@ description: 了解流分析，这是一种托管的服务，可以帮助你分�
 services: stream-analytics
 author: jseb225
 ms.author: jeanb
-manager: kfile
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: overview
 ms.workload: data-services
-ms.custom: mvc
-ms.date: 03/27/2018
-ms.openlocfilehash: 7b38548ce3266d74ffd51ce75ffa92bdb4ac24b9
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.custom: seodec18
+ms.date: 12/07/2018
+ms.openlocfilehash: 9cd1a8a095c697c4baeaa435f80c136ce49e0313
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37437614"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53098570"
 ---
-# <a name="what-is-stream-analytics"></a>什么是流分析？
+# <a name="what-is-azure-stream-analytics"></a>什么是 Azure 流分析？
 
 Azure 流分析是一个事件处理引擎，用于检查从设备流式传输的大量数据。 传入数据可能来自设备、传感器、网站、社交媒体源、应用程序等。 它还支持从数据流提取信息，以及确定模式和关系。 然后，你可以使用这些模式来触发其他下游操作（例如警报）、将信息馈送到报告工具，或者将其存储起来供以后使用。
 
@@ -42,13 +41,13 @@ Azure 流分析从流数据源开始，可以使用引入到 Azure 事件中心�
 
 下图表示流分析管道。流分析作业可以使用所有或部分输入和输出。 此图说明了如何将数据发送到流分析，在进行分析后再发送到其他位置进行其他操作（例如存储或演示）：
 
-![流分析管道](./media/stream-analytics-introduction/stream_analytics_intro_pipeline.png)
+![流分析介绍管道](./media/stream-analytics-introduction/stream-analytics-intro-pipeline.png)
 
 ## <a name="key-capabilities-and-benefits"></a>主要功能和优点
 
 Azure 流分析经过专门的设计，具有易用、灵活、可靠的特点，并可根据作业大小进行缩放。 它可以跨多个数据中心和主权云使用。 下图说明了 Azure 流分析的重要功能：
 
-![流分析重要功能](./media/stream-analytics-introduction/stream_analytics_key_capabilities.png)
+![流分析重要功能](./media/stream-analytics-introduction/stream-analytics-key-capabilities.png)
 
 ## <a name="ease-of-getting-started"></a>易于入门
 

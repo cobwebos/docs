@@ -8,12 +8,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 10/25/2018
-ms.openlocfilehash: fa322ee685d09717ac5b98398d4d1d61de2be1e9
-ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
+ms.openlocfilehash: c638369efc89ca4442b69c9337827fe3872fd197
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51706620"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53085954"
 ---
 # <a name="quickstart-ingest-data-using-the-azure-data-explorer-node-library"></a>快速入门：使用 Azure 数据资源管理器 Node 库引入数据
 
@@ -54,8 +54,8 @@ Azure 数据资源管理器使用 Azure Active Directory 租户 ID，以对应�
 ```javascript
 const authorityId = "<TenantId>";
 const kustoUri = "https://<ClusterName>.<Region>.kusto.windows.net:443/";
-const kustoIngestUri = "https://ingest-<ClusterName>.<Region>.kusto.windows.net:443/"
-const kustoDatabase  = "<DatabaseName>"
+const kustoIngestUri = "https://ingest-<ClusterName>.<Region>.kusto.windows.net:443/";
+const kustoDatabase  = "<DatabaseName>";
 ```
 
 现在构造连接字符串。 此示例使用设备身份验证来访问群集。 还可以使用 Azure Active Directory 应用程序证书、应用程序密钥以及用户和密码。
@@ -64,9 +64,7 @@ const kustoDatabase  = "<DatabaseName>"
 
 ```javascript
 const kcsbIngest = KustoConnectionStringBuilder.withAadDeviceAuthentication(kustoIngestUri, authorityId);
-
 const kcsbData = KustoConnectionStringBuilder.withAadDeviceAuthentication(kustoUri, authorityId);
-
 const destTable = "StormEvents";
 const destTableMapping = "StormEvents_CSV_Mapping";
 ```
@@ -81,20 +79,19 @@ from azure.kusto.ingest import KustoIngestClient, IngestionProperties, FileDescr
 
 const container = "samplefiles";
 const account = "kustosamplefiles";
-const sas = "?st=2018-08-31T22%3A02%3A25Z&se=2020-09-01T22%3A02%3A00Z&sp=r&sv=2018-03-28&sr=b&sig=LQIbomcKI8Ooz425hWtjeq6d61uEaq21UVX7YrM61N4%3D"
+const sas = "?st=2018-08-31T22%3A02%3A25Z&se=2020-09-01T22%3A02%3A00Z&sp=r&sv=2018-03-28&sr=b&sig=LQIbomcKI8Ooz425hWtjeq6d61uEaq21UVX7YrM61N4%3D";
 const filePath = "StormEvents.csv";
-const fileSize = 64158321    # in bytes
-
-const blobPath = `https://${account}.blob.core.windows.net/${container}/${filePath}${sas}";
+const fileSize = 64158321; // in bytes
+const blobPath = `https://${account}.blob.core.windows.net/${container}/${filePath}${sas}`;
 ```
 
 ## <a name="create-a-table-on-your-test-cluster"></a>在测试群集上创建表
 
-创建与 `StormEvents.csv` 文件中的数据架构匹配的表。 此代码运行时，它将返回如下消息：若要登录，请使用 Web 浏览器打开页面 https://microsoft.com/devicelogin，并输入代码 XXXXXXXXX 进行身份验证。 按照步骤登录，然后返回运行下一个代码块。 建立连接的后续代码块会要求你再次登录。
+创建与 `StormEvents.csv` 文件中的数据架构匹配的表。 运行此代码时，它会返回如下消息：若要登录，请使用 Web 浏览器打开页 https://microsoft.com/devicelogin，然后输入代码 XXXXXXXXX 进行身份验证。 按照步骤登录，然后返回运行下一个代码块。 建立连接的后续代码块会要求你再次登录。
 
 ```javascript
 const kustoClient = new KustoClient(kcsbData);
-const createTableCommand = ".create table StormEvents (StartTime: datetime, EndTime: datetime, EpisodeId: int, EventId: int, State: string, EventType: string, InjuriesDirect: int, InjuriesIndirect: int, DeathsDirect: int, DeathsIndirect: int, DamageProperty: int, DamageCrops: int, Source: string, BeginLocation: string, EndLocation: string, BeginLat: real, BeginLon: real, EndLat: real, EndLon: real, EpisodeNarrative: string, EventNarrative: string, StormSummary: dynamic)"
+const createTableCommand = ".create table StormEvents (StartTime: datetime, EndTime: datetime, EpisodeId: int, EventId: int, State: string, EventType: string, InjuriesDirect: int, InjuriesIndirect: int, DeathsDirect: int, DeathsIndirect: int, DamageProperty: int, DamageCrops: int, Source: string, BeginLocation: string, EndLocation: string, BeginLat: real, BeginLon: real, EndLat: real, EndLon: real, EpisodeNarrative: string, EventNarrative: string, StormSummary: dynamic)";
 
 kustoClient.executeMgmt(kustoDatabase, createTableCommand, (err, results) => {
     console.log(result.primaryResults[0]);

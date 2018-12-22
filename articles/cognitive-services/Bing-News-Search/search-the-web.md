@@ -1,7 +1,7 @@
 ---
-title: 什么是必应新闻搜索？
+title: 什么是必应新闻搜索 API？
 titlesuffix: Azure Cognitive Services
-description: 介绍如何使用必应新闻搜索 API 搜索 Web 中的新闻。
+description: 了解如何使用必应新闻搜索 API 在 Web 上搜索多个类别的当前标题，包括标题和热门主题。
 services: cognitive-services
 author: swhite-msft
 manager: cgronlun
@@ -10,14 +10,15 @@ ms.component: bing-news-search
 ms.topic: overview
 ms.date: 06/21/2016
 ms.author: scottwhi
-ms.openlocfilehash: 7a5df20358198e7ccb44ccc60be3ab7716f71ba6
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.custom: seodec2018
+ms.openlocfilehash: 17383d38b1401149003ad9d1794b3e69284f9033
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51227852"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53253080"
 ---
-# <a name="what-is-bing-news-search"></a>什么是必应新闻搜索？
+# <a name="what-is-the-bing-news-search-api"></a>什么是必应新闻搜索 API？
 
 必应新闻搜索 API 提供的体验与[必应新闻](https://www.bing.com/news)类似（但并不完全相同）。 可以通过必应新闻搜索 API 向必应发送搜索查询，取回相关新闻文章的列表。
 

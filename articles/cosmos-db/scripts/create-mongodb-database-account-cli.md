@@ -1,18 +1,18 @@
 ---
-title: Azure CLI 脚本 - 创建 Azure Cosmos DB MongoDB API 帐户、数据库和集合 | Microsoft Docs
+title: Azure CLI 脚本 - 创建 Azure Cosmos DB MongoDB API 帐户、数据库和集合
 description: Azure CLI 脚本示例 - 创建 Azure Cosmos DB MongoDB API 帐户、数据库和集合
 author: markjbrown
+ms.author: mjbrown
 ms.service: cosmos-db
 ms.component: cosmosdb-mongo
 ms.topic: sample
 ms.date: 10/26/2018
-ms.author: mjbrown
-ms.openlocfilehash: 6ca603a324dddf243927cf5bb67556edfb1cf7e6
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 7c7f3f6907f0c21e3c66a3d814dc355476bec553
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51007122"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52958343"
 ---
 # <a name="azure-cosmos-db-create-an-mongodb-api-account-using-azure-cli"></a>Azure Cosmos DB：使用 Azure CLI 创建 MongoDB API 帐户
 

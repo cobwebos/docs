@@ -2,7 +2,6 @@
 title: 使用 Azure 存储在云中上传图像数据 | Microsoft Docs
 description: 将 Azure blob 存储与 Web 应用配合使用来存储应用数据
 services: storage
-documentationcenter: ''
 author: tamram
 ms.service: storage
 ms.devlang: dotnet
@@ -10,12 +9,12 @@ ms.topic: tutorial
 ms.date: 11/26/2018
 ms.author: tamram
 ms.custom: mvc
-ms.openlocfilehash: 371a679978c501c71da6e8360d7541c31a6a720f
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: c55e63d813c462db8a6c404894b8754f4130d935
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52682314"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53097941"
 ---
 # <a name="tutorial-upload-image-data-in-the-cloud-with-azure-storage"></a>教程：使用 Azure 存储在云中上传图像数据
 
@@ -114,7 +113,7 @@ az appservice plan create --name myAppServicePlan --resource-group myResourceGro
 
 Web 应用为从 GitHub 示例存储库部署的示例应用代码提供承载空间。 使用 [az webapp create](/cli/azure/webapp#az_webapp_create) 命令在 `myAppServicePlan` 应用服务计划中创建 [Web 应用](../../app-service/app-service-web-overview.md)。  
 
-在以下命令中，将 `<web_app>` 替换为唯一名称。 有效的字符是 `a-z`、`0-9` 和 `-`。 如果 `<web_app>` 不是唯一名称，将收到错误消息：“具有给定名称 `<web_app>` 的网站已存在”。 Web 应用的默认 URL 为 `https://<web_app>.azurewebsites.net`。  
+在以下命令中，将 `<web_app>` 替换为唯一名称。 有效的字符是 `a-z`、`0-9` 和 `-`。 如果 `<web_app>` 不唯一，将收到错误消息：_具有给定名称 `<web_app>` 的网站已存在。_ Web 应用的默认 URL 为 `https://<web_app>.azurewebsites.net`。  
 
 ```azurecli-interactive
 az webapp create --name <web_app> --resource-group myResourceGroup --plan myAppServicePlan

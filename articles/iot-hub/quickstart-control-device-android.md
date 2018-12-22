@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 11/19/2018
 ms.author: wesmc
-ms.openlocfilehash: 28884b9b7d29a3c8da1fee0f0b54269bdaadf926
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: b8623acc9d29f083e34c7fa7494e866317146802
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52427618"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53252552"
 ---
 # <a name="quickstart-control-a-device-connected-to-an-iot-hub-android"></a>快速入门：控制连接到 IoT 中心的设备 (Android)
 
@@ -36,11 +36,11 @@ IoT 中心是一项 Azure 服务，可将大量遥测数据从 IoT 设备引入�
 ## <a name="prerequisites"></a>先决条件
 
 
-* https://developer.android.com/studio/ 提供的 Android Studio。 有关 Android Studio 安装的详细信息，请参阅 [Android 安装](https://developer.android.com/studio/install)。 
+* https://developer.android.com/studio/ 提供的 Android Studio。 有关 Android Studio 安装的详细信息，请参阅 [Android 安装](https://developer.android.com/studio/install)。
 
-* 本文中的示例使用 Android SDK 27。 
+* 本文中的示例使用 Android SDK 27。
 
-* 本快速入门需要两个示例应用程序：[设备 SDK 示例 Android 应用程序](https://github.com/Azure-Samples/azure-iot-samples-java/tree/master/iot-hub/Samples/device/AndroidSample)和[服务 SDK 示例 Android 应用程序](https://github.com/Azure-Samples/azure-iot-samples-java/tree/master/iot-hub/Samples/service/AndroidSample)。 这两个示例都是 Github 上 azure-iot-samples-java 存储库的一部分。 请下载或克隆 [azure-iot-samples-java](https://github.com/Azure-Samples/azure-iot-samples-java) 存储库。
+* 本快速入门需要两个示例应用程序：[设备 SDK 示例 Android 应用程序](https://github.com/Azure-Samples/azure-iot-samples-java/tree/master/iot-hub/Samples/device/AndroidSample)和[服务 SDK 示例 Android 应用程序](https://github.com/Azure-Samples/azure-iot-samples-java/tree/master/iot-hub/Samples/service/AndroidSample)。 这两个示例都是 GitHub 上 azure-iot-samples-java 存储库的一部分。 请下载或克隆 [azure-iot-samples-java](https://github.com/Azure-Samples/azure-iot-samples-java) 存储库。
 
 
 ## <a name="create-an-iot-hub"></a>创建 IoT 中心
@@ -55,11 +55,11 @@ IoT 中心是一项 Azure 服务，可将大量遥测数据从 IoT 设备引入�
 
 必须先将设备注册到 IoT 中心，然后该设备才能进行连接。 在本快速入门中，将使用 Azure Cloud Shell 来注册模拟设备。
 
-1. 在 Azure Cloud Shell 中运行以下命令，以添加 IoT 中心 CLI 扩展并创建设备标识。 
+1. 在 Azure Cloud Shell 中运行以下命令，以添加 IoT 中心 CLI 扩展并创建设备标识。
 
    **YourIoTHubName**：将下面的占位符替换为你为 IoT 中心选择的名称。
 
-   **MyAndroidDevice**：此值是为已注册设备提供的名称。 请按显示的方法使用 MyAndroidDevice。 如果为设备选择其他名称，则可能还需要在本文中从头至尾使用该名称，并在运行示例应用程序之前在其中更新设备名称。
+   **MyAndroidDevice**：此值是为注册的设备提供的名称。 请按显示的方法使用 MyAndroidDevice。 如果为设备选择其他名称，则可能还需要在本文中从头至尾使用该名称，并在运行示例应用程序之前在其中更新设备名称。
 
     ```azurecli-interactive
     az extension add --name azure-cli-iot-ext
@@ -87,7 +87,7 @@ IoT 中心是一项 Azure 服务，可将大量遥测数据从 IoT 设备引入�
 ## <a name="retrieve-the-service-connection-string"></a>检索服务连接字符串
 
 还需一个服务连接字符串，以便后端服务应用程序能够连接到 IoT 中心以执行方法并检索消息。 以下命令检索 IoT 中心的服务连接字符串：
-   
+
 **YourIoTHubName**：将下面的占位符替换为你为 IoT 中心选择的名称。
 
 ```azurecli-interactive
@@ -145,11 +145,11 @@ az iot hub show-connection-string --hub-name YourIoTHubName --output table
 
 ## <a name="call-the-direct-method"></a>调用直接方法
 
-服务应用程序会连接到 IoT 中心的服务端终结点。 应用程序通过 IoT 中心对设备进行直接方法调用，并侦听确认。 
+服务应用程序会连接到 IoT 中心的服务端终结点。 应用程序通过 IoT 中心对设备进行直接方法调用，并侦听确认。
 
 请在单独的物理 Android 设备或 Android 模拟器上运行此应用。
 
-IoT 中心后端服务应用程序通常在云中运行，这样可以更轻松地减轻与敏感的连接字符串相关联的风险。该字符串控制某个 IoT 中心的所有设备。 在此示例中，我们将它作为 Android 应用运行，仅仅是为了演示。 其他语言版本的本快速入门提供其他与后端服务应用程序更匹配的示例。 
+IoT 中心后端服务应用程序通常在云中运行，这样可以更轻松地减轻与敏感的连接字符串相关联的风险。该字符串控制某个 IoT 中心的所有设备。 在此示例中，我们将它作为 Android 应用运行，仅仅是为了演示。 其他语言版本的本快速入门提供其他与后端服务应用程序更匹配的示例。
 
 1. 在 Android Studio 中打开 GitHub 服务示例 Android 项目。 此项目位于克隆的或下载的 [azure-iot-sample-java](https://github.com/Azure-Samples/azure-iot-samples-java) 存储库副本的以下目录中。
 
@@ -159,14 +159,14 @@ IoT 中心后端服务应用程序通常在云中运行，这样可以更轻松�
 
     ```
     ConnectionString=HostName={YourIoTHubName}.azure-devices.net;SharedAccessKeyName=iothubowner;SharedAccessKey={YourSharedAccessKey}
-    DeviceId=MyAndroidDevice    
+    DeviceId=MyAndroidDevice
     ```
 
 3. 在 Android Studio 中，单击“文件” > “将项目与 Gradle 文件同步”。 验证生成是否已完成。
 
 4. 生成完成以后，请单击“运行” > “运行‘应用’”。 将应用配置为在单独的物理 Android 设备或 Android 模拟器上运行。 若要详细了解如何在物理设备或模拟器上运行 Android 应用，请参阅[运行您的应用](https://developer.android.com/training/basics/firstapp/running-app)。
 
-5. 待应用加载以后，将“设置消息传送时间间隔”值更新为 **1000**，然后单击“调用”。 
+5. 待应用加载以后，将“设置消息传送时间间隔”值更新为 **1000**，然后单击“调用”。
 
     遥测消息传送时间间隔以毫秒为单位。 设备示例的默认遥测时间间隔设置为 5 秒钟。 此更改会更新 Android IoT 设备，使遥测数据每秒发送一次。
 

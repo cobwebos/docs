@@ -1,5 +1,5 @@
 ---
-title: Azure DC/OS 群集的文件共享
+title: （已弃用）Azure DC/OS 群集的文件共享
 description: 在 Azure 容器服务中创建文件共享并将其装载到 DC/OS 群集
 services: container-service
 author: julienstroheker
@@ -9,14 +9,16 @@ ms.topic: tutorial
 ms.date: 06/07/2017
 ms.author: juliens
 ms.custom: mvc
-ms.openlocfilehash: 4e03a0b450c9806edfb81a867fba97052659ec44
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 728f8ddbda35f27c0f89e1d72e98fd2d7669320e
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46973486"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52999860"
 ---
-# <a name="create-and-mount-a-file-share-to-a-dcos-cluster"></a>创建文件共享并将其装载到 DC/OS 群集
+# <a name="deprecated-create-and-mount-a-file-share-to-a-dcos-cluster"></a>（已弃用）创建文件共享并将其装载到 DC/OS 群集
+
+[!INCLUDE [ACS deprecation](../../../includes/container-service-deprecation.md)]
 
 本教程详细介绍了如何在 Azure 中创建文件共享并将其装载到 DC/OS 群集的每个代理和主节点上。 设置文件共享可以更轻松地跨群集共享文件（如配置、访问权限和日志等）。 本教程中将完成以下任务：
 

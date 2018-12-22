@@ -1,30 +1,22 @@
 ---
-title: Azure SignalR 服务无服务器快速入门 - C# | Microsoft Docs
+title: Azure SignalR Service 无服务器快速入门 - C#
 description: 使用 Azure SignalR 服务和 Azure Functions 创建聊天室的快速入门。
-services: signalr
-documentationcenter: ''
 author: sffamily
-manager: cfowler
-editor: ''
-ms.assetid: ''
 ms.service: signalr
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.tgt_pltfrm: Azure Functions
-ms.workload: tbd
 ms.date: 09/23/2018
 ms.author: zhshang
-ms.openlocfilehash: 7c28385c9b29f98968bcdf758f4a9a5b08da3f9f
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: db54282563acc6afac4dada7a45f6dff0716879a
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46993096"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53255051"
 ---
-# <a name="quickstart-create-a-chat-room-with-azure-functions-and-signalr-service-using-c"></a>快速入门：通过 C# 使用 Azure Functions 和 SignalR 服务创建聊天室
+# <a name="quickstart-create-a-chat-room-with-azure-functions-and-signalr-service-using-c"></a>快速入门：使用 C\# 通过 Azure Functions 和 SignalR 服务创建聊天室
 
 使用 Azure SignalR 服务可以轻松地将实时功能添加到应用程序。 Azure Functions 是一个无服务器平台，可让你在不管理任何基础结构的情况下运行代码。 本快速入门介绍了如何使用 SignalR 服务和 Functions 构建无服务器的实时聊天应用程序。
-
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -32,16 +24,13 @@ ms.locfileid: "46993096"
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-
 ## <a name="log-in-to-azure"></a>登录 Azure
 
 使用 Azure 帐户登录到 <https://portal.azure.com/> 的 Azure 门户。
 
-
 [!INCLUDE [Create instance](includes/signalr-quickstart-create-instance.md)]
 
 [!INCLUDE [Clone application](includes/signalr-quickstart-clone-application.md)]
-
 
 ## <a name="configure-and-run-the-azure-function-app"></a>配置和运行 Azure 函数应用
 
@@ -68,9 +57,7 @@ ms.locfileid: "46993096"
 
     ![调试应用程序](media/signalr-quickstart-azure-functions-csharp/signalr-quickstart-debug-vs.png)
 
-
 [!INCLUDE [Run web application](includes/signalr-quickstart-run-web-application.md)]
-
 
 [!INCLUDE [Cleanup](includes/signalr-quickstart-cleanup.md)]
 

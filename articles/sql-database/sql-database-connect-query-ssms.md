@@ -1,10 +1,10 @@
 ---
-title: SSMS：在 Azure SQL 数据库中进行连接和数据查询 | Microsoft Docs
+title: SSMS：在 Azure SQL 数据库中连接和查询数据 | Microsoft Docs
 description: 了解如何通过使用 SQL Server Management Studio (SSMS) 连接到在 Azure 上的 SQL 数据库。 然后，通过运行 Transact-SQL (T-SQL) 语句来查询和编辑数据。
 keywords: 连接到 sql 数据库, sql server management studio
 services: sql-database
 ms.service: sql-database
-ms.subservice: scenario
+ms.subservice: operations
 ms.custom: ''
 ms.devlang: ''
 ms.topic: quickstart
@@ -12,29 +12,29 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 11/01/2018
-ms.openlocfilehash: f8d153ef415bcab85720f6733d4e01e9b44c9e50
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.date: 12/04/2018
+ms.openlocfilehash: b3342164aec49967e819c316827dca9a65f2674f
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52870990"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53098920"
 ---
-# <a name="quickstart-azure-sql-database-use-sql-server-management-studio-to-connect-and-query-data"></a>快速入门：Azure SQL 数据库：使用 SQL Server Management Studio 进行连接和数据查询
+# <a name="quickstart-use-sql-server-management-studio-to-connect-and-query-an-azure-sql-database"></a>快速入门：使用 SQL Server Management Studio 连接和查询 Azure SQL 数据库
 
-[SQL Server Management Studio][ssms-install-latest-84g] (SSMS) 是用于管理任何 SQL 基础结构（从适用于 Microsoft Windows 的 SQL Server 到 SQL 数据库，不一而足）的集成环境。 本快速入门演示了如何使用 SSMS 连接到 Azure SQL 数据库，并使用 Transact-SQL 语句在数据库中查询、插入、更新和删除数据。 
+可以使用 [SQL Server Management Studio][ssms-install-latest-84g] (SSMS) 管理任何 SQL 基础结构（从适用于 Microsoft Windows 的 SQL Server 到 SQL 数据库，不一而足）。 本快速入门演示如何使用 SSMS 连接到 Azure SQL 数据库，然后运行 Transact-SQL 语句查询、插入、更新和删除数据。 
 
 ## <a name="prerequisites"></a>先决条件
 
-本快速入门使用以下某个快速入门中创建的资源作为其起点：
+要完成本教程，需要：
 
 [!INCLUDE [prerequisites-create-db](../../includes/sql-database-connect-query-prerequisites-create-db-includes.md)]
 
-本快速入门还需要配置服务器级防火墙规则。 有关说明如何执行此操作的快速入门，请参阅[创建服务器级防火墙规则](sql-database-get-started-portal-firewall.md)。
+* 配置态服务器级防火墙规则。 有关详细信息，请参阅[创建服务器级防火墙规则](sql-database-get-started-portal-firewall.md)。
 
 #### <a name="install-the-latest-ssms"></a>安装最新的 SSMS
 
-在开始之前，请确保已安装最新版本的 [SSMS][ssms-install-latest-84g]。 
+在开始之前，请确保已安装最新的 [SSMS][ssms-install-latest-84g]。 
 
 ## <a name="sql-server-connection-information"></a>SQL Server 连接信息
 
@@ -42,43 +42,44 @@ ms.locfileid: "52870990"
 
 ## <a name="connect-to-your-database"></a>连接到数据库
 
-使用 SQL Server Management Studio 建立到 Azure SQL 数据库服务器的连接。 
+在 SMSS 中，连接到 Azure SQL 数据库服务器。 
 
 > [!IMPORTANT]
-> Azure SQL 数据库逻辑服务器在端口 1433 上进行侦听。 如果尝试在企业防火墙内连接到 Azure SQL 数据库逻辑服务器，则必须在企业防火墙中打开此端口，否则无法成功进行连接。
+> Azure SQL 数据库逻辑服务器在端口 1433 上进行侦听。 要从公司防火墙后连接到逻辑服务器，该防火墙必须打开此端口。
 >
 
-1. 打开 SQL Server Management Studio。
+1. 打开 SSMS。 此时会显示“连接到服务器”对话框。
 
-2. 在“连接到服务器”对话框中，输入以下信息：
+2. 输入以下信息：
 
    | 设置      | 建议的值    | Description | 
    | ------------ | ------------------ | ----------- | 
-   | **服务器类型** | 数据库引擎 | 此值是必需的。 |
-   | **服务器名称** | 完全限定的服务器名称 | 该名称应类似于：mynewserver20170313.database.windows.net。 |
-   | **身份验证** | SQL Server 身份验证 | SQL 身份验证是本教程中配置的唯一身份验证类型。 |
-   | **登录名** | 服务器管理员帐户 | 这是在创建服务器时指定的帐户。 |
-   | **密码** | 服务器管理员帐户的密码 | 这是在创建服务器时指定的密码。 |
+   | **服务器类型** | 数据库引擎 | 所需的值。 |
+   | **服务器名称** | 完全限定的服务器名称 | 类似于：mynewserver20170313.database.windows.net。 |
+   | **身份验证** | SQL Server 身份验证 | 本教程使用 SQL 身份验证。 |
+   | **登录名** | 服务器管理员帐户用户 ID | 用于创建服务器的服务器管理员帐户的用户 ID。 |
+   | **密码** | 服务器管理员帐户密码 | 用于创建服务器的服务器管理员帐户的密码。 |
    ||||
 
    ![连接到服务器](./media/sql-database-connect-query-ssms/connect.png)  
 
-3. 单击“连接到服务器”对话框中的“选项”。 在“连接到数据库”部分输入 **mySampleDatabase**，以连接到此数据库。
+3. 选择“连接到服务器”对话框中的“选项”。 在“连接到数据库”下拉菜单中，选择“mySampleDatabase”。
 
    ![连接到服务器上的 DB](./media/sql-database-connect-query-ssms/options-connect-to-db.png)  
 
-4. 单击“连接”。 此时会在 SSMS 中打开“对象资源管理器”窗口。 
+4. 选择“连接”。 此时会打开“对象资源管理器”窗口。 
 
-   ![已连接到服务器](./media/sql-database-connect-query-ssms/connected.png)  
+5. 要查看数据库的对象，请展开“数据库”，然后展开“mySampleDatabase”。
 
-5. 在对象资源管理器中展开“数据库”，然后展开 **mySampleDatabase**，查看示例数据库中的对象。
+   ![查看数据库对象](./media/sql-database-connect-query-ssms/connected.png)  
 
 ## <a name="query-data"></a>查询数据
 
-通过以下代码使用 [SELECT](https://msdn.microsoft.com/library/ms189499.aspx) Transact-SQL 语句，以便按类别查询前 20 个产品。
+使用以下 [SELECT](https://msdn.microsoft.com/library/ms189499.aspx) Transact-SQL 代码，按类别查询前 20 个产品。
 
-1. 在“对象资源管理器”中，右键单击“mySampleDatabase”，并单击“新建查询”。 此时会打开一个空白查询窗口，该窗口连接到数据库。
-2. 在查询窗口中输入以下查询：
+1. 在对象资源管理器中，右键单击“mySampleDatabase”，并选择“新建查询”。 此时会打开一个空白查询窗口，该窗口连接到数据库。
+
+1. 在查询窗口中，粘贴此 SQL 查询。
 
    ```sql
    SELECT pc.Name as CategoryName, p.name as ProductName
@@ -87,15 +88,15 @@ ms.locfileid: "52870990"
    ON pc.productcategoryid = p.productcategoryid;
    ```
 
-3. 在工具栏中，单击“执行”从 Product 表和 ProductCategory 表检索数据。
+3. 在工具栏上，选择“执行”，以便从 `Product` 和 `ProductCategory` 表检索数据。
 
-    ![query](./media/sql-database-connect-query-ssms/query.png)
+    ![从 2 个表中检索数据的查询](./media/sql-database-connect-query-ssms/query2.png)
 
 ## <a name="insert-data"></a>插入数据
 
-通过以下代码使用 [INSERT](https://msdn.microsoft.com/library/ms174335.aspx) Transact-SQL 语句，将新产品插入到 SalesLT.Product 表中。
+使用以下 [INSERT](https://msdn.microsoft.com/library/ms174335.aspx) Transact-SQL 代码，在 `SalesLT.Product` 表中创建新产品。
 
-1. 在查询窗口中，以前的查询替换为以下查询：
+1. 将之前的查询替换为此查询。
 
    ```sql
    INSERT INTO [SalesLT].[Product]
@@ -105,8 +106,7 @@ ms.locfileid: "52870990"
            , [ProductCategoryID]
            , [StandardCost]
            , [ListPrice]
-           , [SellStartDate]
-           )
+           , [SellStartDate] )
      VALUES
            ('myNewProduct'
            ,123456789
@@ -117,15 +117,26 @@ ms.locfileid: "52870990"
            ,GETDATE() );
    ```
 
-2. 在工具栏上单击“执行”，将新行插入 Product 表。
+2. 选择“执行”在 Product 表中插入新行。 “消息”面板显示“(受影响的 1 行)”。
 
-    <img src="./media/sql-database-connect-query-ssms/insert.png" alt="insert" style="width: 780px;" />
+## <a name="view-the-result"></a>查看结果
 
-## <a name="update-data"></a>更新数据
+1. 将之前的查询替换为此查询。
 
-通过以下代码使用 [UPDATE](https://msdn.microsoft.com/library/ms177523.aspx) Transact-SQL 语句，以便更新此前添加的新产品。
+   ```sql
+   SELECT * FROM [SalesLT].[Product] 
+   WHERE Name='myNewProduct' 
 
-1. 在查询窗口中，以前的查询替换为以下查询：
+2. Select **Execute**. The following result appears. 
+
+   ![result](./media/sql-database-connect-query-ssms/result.png)
+
+ 
+## Update data
+
+Use the following [UPDATE](https://msdn.microsoft.com/library/ms177523.aspx) Transact-SQL code to modify the new product you just added.
+
+1. Replace the previous query with this one.
 
    ```sql
    UPDATE [SalesLT].[Product]
@@ -133,28 +144,24 @@ ms.locfileid: "52870990"
    WHERE Name = 'myNewProduct';
    ```
 
-2. 在工具栏上单击“执行”，更新 Product 表中的指定行。
-
-    <img src="./media/sql-database-connect-query-ssms/update.png" alt="update" style="width: 780px;" />
+2. 选择“执行”更新 Product 表中的指定行。 “消息”面板显示“(受影响的 1 行)”。
 
 ## <a name="delete-data"></a>删除数据
 
-通过以下代码使用 [DELETE](https://msdn.microsoft.com/library/ms189835.aspx) Transact-SQL 语句，以便删除此前添加的新产品。
+使用以下 [DELETE](https://msdn.microsoft.com/library/ms189835.aspx) Transact-SQL 代码，删除此前添加的新产品。
 
-1. 在查询窗口中，以前的查询替换为以下查询：
+1. 将之前的查询替换为此查询。
 
    ```sql
    DELETE FROM [SalesLT].[Product]
    WHERE Name = 'myNewProduct';
    ```
 
-2. 在工具栏上单击“执行”，删除 Product 表中的指定行。
-
-    <img src="./media/sql-database-connect-query-ssms/delete.png" alt="delete" style="width: 780px;" />
+2. 选择“执行”删除 Product 表中的指定行。 “消息”面板显示“(受影响的 1 行)”。
 
 ## <a name="next-steps"></a>后续步骤
 
-- 有关 SSMS 的信息，请参阅[使用 SQL Server Management Studio](https://msdn.microsoft.com/library/ms174173.aspx)。
+- 有关 SSMS 的信息，请参阅 [SQL Server Management Studio](https://msdn.microsoft.com/library/ms174173.aspx)。
 - 若要使用 Azure 门户进行连接和查询，请参阅[使用 Azure 门户 SQL 查询编辑器进行连接和查询](sql-database-connect-query-portal.md)。
 - 若要使用 Visual Studio Code 进行连接和查询，请参阅[使用 Visual Studio Code 进行连接和查询](sql-database-connect-query-vscode.md)。
 - 若要使用 .NET 进行连接和查询，请参阅[使用 .NET 进行连接和查询](sql-database-connect-query-dotnet.md)。

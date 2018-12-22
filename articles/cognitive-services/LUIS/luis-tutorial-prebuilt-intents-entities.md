@@ -1,21 +1,22 @@
 ---
-title: 教程 2：预生成的意向和实体 - 使用预生成的常用话语 - 在 LUIS 中提取常用数据
+title: 预生成意向和实体
 titleSuffix: Azure Cognitive Services
 description: 将预生成的意向和实体添加到人力资源教程应用，以便快速了解意向预测和数据提取。 不需要使用预生成的实体标记任何话语。 自动检测实体。
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: tutorial
 ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: 3bad68d1a388a5bc8780df633313206afaadcef9
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: b6fb603b84cdcf3cb0f75d0020fa2047a0a838d1
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52422416"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53074055"
 ---
 # <a name="tutorial-2-identify-common-intents-and-entities"></a>教程 2：确定常见意向和实体
 在本教程中，修改“人力资源”应用。 将预生成的意向和实体添加到人力资源教程应用，以便快速了解意向预测和数据提取。 不需要使用预生成的实体标记任何话语，因为会自动检测实体。
@@ -90,7 +91,7 @@ LUIS 为常见数据提取提供多个预生成的实体。
 
 2. 将光标定位到浏览器地址栏中 URL 的末尾，并输入 `I want to cancel on March 3`。 最后一个查询字符串参数为 `q`，表示陈述查询 (**q**uery)。 
 
-    ```JSON
+    ```json
     {
       "query": "I want to cancel on March 3",
       "topScoringIntent": {

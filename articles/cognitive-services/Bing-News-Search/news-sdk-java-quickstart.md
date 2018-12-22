@@ -1,7 +1,7 @@
 ---
-title: 快速入门：必应新闻搜索 SDK、Java
+title: 快速入门：执行新闻搜索 - 适用于 Java 的必应新闻搜索 SDK
 titleSuffix: Azure Cognitive Services
-description: 如何设置必应新闻搜索 SDK 控制台应用程序。
+description: 使用本快速入门，可以使用适用于 Java 的必应新闻搜索 SDK 搜索新闻，并处理响应。
 services: cognitive-services
 author: mikedodaro
 manager: cgronlun
@@ -10,14 +10,15 @@ ms.component: bing-news-search
 ms.topic: quickstart
 ms.date: 02/16/2018
 ms.author: v-gedod
-ms.openlocfilehash: f01f31c5cfc30ac31ea41db2a8504454e1f05799
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.custom: seodec2018
+ms.openlocfilehash: 056d75a1039e805786b14aa19c896bda78d04150
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52316865"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53251583"
 ---
-# <a name="quickstart-bing-news-search-sdk-with-java"></a>快速入门：通过 Java 使用必应新闻搜索 SDK
+# <a name="quickstart-bing-news-search-sdk-with-java"></a>快速入门：适用于 Java 的必应新闻搜索 SDK
 
 必应新闻搜索 SDK 提供了用于新闻查询以及对结果进行分析的 REST API 功能。  在“搜索”下获取[认知服务访问密钥](https://azure.microsoft.com/try/cognitive-services/)。  另请参阅[认知服务定价 - 必应搜索 API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)。 
 

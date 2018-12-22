@@ -1,5 +1,5 @@
 ---
-title: 快速入门 - 使用 PowerShell 在 Azure 中创建专用 Docker 注册表
+title: 快速入门 - 在 Azure 中创建专用 Docker 注册表 - PowerShell
 description: 快速了解如何使用 PowerShell 在 Azure 中创建专用 Docker 容器注册表。
 services: container-registry
 author: dlepow
@@ -7,15 +7,15 @@ ms.service: container-registry
 ms.topic: quickstart
 ms.date: 05/08/2018
 ms.author: danlep
-ms.custom: mvc
-ms.openlocfilehash: fe21ab3e29b7a4cbf204be82246d37a4b91128e4
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.custom: seodec18, mvc
+ms.openlocfilehash: 7dcdca594949a3b20000b31db681370ee4f9eac3
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48856677"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53255272"
 ---
-# <a name="quickstart-create-an-azure-container-registry-using-powershell"></a>教程：使用 PowerShell 创建 Azure 容器注册表
+# <a name="quickstart-create-a-private-container-registry-using-azure-powershell"></a>快速入门：使用 Azure PowerShell 创建专用容器注册表
 
 Azure 容器注册表是托管的专用 Docker 容器注册表服务，用于生成、存储和提供 Docker 容器映像。 本快速入门介绍如何使用 PowerShell 创建 Azure 容器注册表。 创建注册表以后，请向其推送容器映像，然后将容器从注册表部署到 Azure 容器实例 (ACI) 中。
 

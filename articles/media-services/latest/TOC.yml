@@ -28,6 +28,8 @@ items:
     href: cli-samples.md
 - name: 概念
   items:
+  - name: 从 v2 迁移到 v3
+    href: migrate-from-v2-to-v3.md
   - name: 分析内容
     href: analyzing-video-audio-files-concept.md
   - name: 对内容进行编码
@@ -78,8 +80,6 @@ items:
       href: live-event-latency.md
 - name: 操作指南
   items:
-  - name: 从 v2 迁移到 v3
-    href: migrate-from-v2-to-v3.md
   - name: 创建帐户 - CLI
     href: create-account-cli-how-to.md
   - name: 访问 API - CLI
@@ -90,6 +90,8 @@ items:
       href: job-input-from-http-how-to.md
     - name: 从本地文件 - .NET
       href: job-input-from-local-file-how-to.md
+    - name: 从本地文件 - REST
+      href: upload-files-rest-how-to.md
   - name: 创建筛选器
     items:
     - name: 使用 .NET
@@ -118,7 +120,7 @@ items:
     href: media-rest-apis-with-postman.md
   - name: 缩放媒体保留单位 - CLI
     href: media-reserved-units-cli-how-to.md
-- name: 引用
+- name: 参考
   items:
   - name: OpenAPI 规范 (Swagger)
     href: https://aka.ms/ams-v3-rest-sdk
@@ -180,9 +182,9 @@ items:
     href: limits-quotas-constraints.md
   - name: 常见问题解答
     href: frequently-asked-questions.md
-ms.openlocfilehash: 49c15b2540b33a3f37f4f276b435ce3f4508b513
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: aafc49b10a012bab6c3dc3d455480deca44fde32
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53582501"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53631985"

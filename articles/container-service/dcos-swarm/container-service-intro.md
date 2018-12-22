@@ -1,5 +1,5 @@
 ---
-title: 托管在 Azure 云中的 Docker 容器
+title: （已弃用）托管在 Azure 云中的 Docker 容器
 description: Azure 容器服务提供了一种简化创建、配置和管理预配置来运行容器化应用程序的虚拟机群集的方法。
 services: container-service
 author: rgardler
@@ -9,14 +9,16 @@ ms.topic: overview
 ms.date: 03/01/2017
 ms.author: rogardle
 ms.custom: H1Hack27Feb2017, mvc
-ms.openlocfilehash: 6bb13ad19f9b0b6137cdb2b4a9afbb2f325b9d36
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 348bde94bc01e00777603af8ac078d5e319d732c
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46975048"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "53001978"
 ---
-# <a name="introduction-to-docker-container-hosting-solutions-with-azure-container-service"></a>Azure 容器服务的 Docker 容器托管解决方案简介 
+# <a name="deprecated-introduction-to-docker-container-hosting-solutions-with-azure-container-service"></a>（已弃用）Azure 容器服务的托管解决方案的 Docker 容器简介 
+
+[!INCLUDE [ACS deprecation](../../../includes/container-service-deprecation.md)]
 
 Azure 容器服务让创建、配置和管理预配置来运行容器化应用程序的虚拟机群集变得更简单。 它使用热门开源计划和业务流程工具的优化配置。 通过此服务，用户可使用现有技能或利用不断增加的大量社区专业知识，在 Microsoft Azure 上部署和管理基于容器的应用程序。
 

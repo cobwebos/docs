@@ -1,5 +1,5 @@
 ---
-title: Azure Cosmos DB：使用 JavaScript SDK 生成 Node.js 应用，用于管理 Azure Cosmos DB SQL API 数据
+title: Azure Cosmos DB：使用 JavaScript SDK 生成 Node.js 应用，以管理 Azure Cosmos DB SQL API 数据
 description: 演示一个可以用来连接到 Azure Cosmos DB SQL API 并进行查询的 Node.js 代码示例
 services: cosmos-db
 author: deborahc
@@ -10,14 +10,14 @@ ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 09/24/2018
 ms.author: dech
-ms.openlocfilehash: 615e03e1905fc282a8561138904a965db6226837
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: ae935157264dd5fa33df9afd0d8f7d5447855a92
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52833001"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53161213"
 ---
-# <a name="azure-cosmos-db-build-a-nodejs-app-using-javascript-sdk-to-manage-azure-cosmos-db-sql-api-data"></a>Azure Cosmos DB：使用 JavaScript SDK 生成 Node.js 应用，用于管理 Azure Cosmos DB SQL API 数据
+# <a name="azure-cosmos-db-build-a-nodejs-app-using-javascript-sdk-to-manage-azure-cosmos-db-sql-api-data"></a>Azure Cosmos DB：使用 JavaScript SDK 生成 Node.js 应用，以管理 Azure Cosmos DB SQL API 数据
 
 > [!div class="op_single_selector"]
 > * [.NET](create-sql-api-dotnet.md)
@@ -39,7 +39,7 @@ Azure Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务�
 
 * 此外：
     * [Node.js](https://nodejs.org/en/) v6.0.0 或更高版本
-    * [Git](http://git-scm.com/)
+    * [Git](https://git-scm.com/)
 
 ## <a name="create-a-database-account"></a>创建数据库帐户
 
@@ -59,7 +59,7 @@ Azure Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务�
 
 ## <a name="clone-the-sample-application"></a>克隆示例应用程序
 
-现在，请克隆 GitHub 中的 SQL API 应用，设置连接字符串，然后运行该应用。
+现在，让我们从 GitHub 中克隆一个 SQL API 应用，设置连接字符串，然后运行该应用。
 
 1. 打开命令提示符，新建一个名为“git-samples”的文件夹，然后关闭命令提示符。
 
@@ -135,7 +135,7 @@ Azure Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务�
 
 现在返回到 Azure 门户，获取连接字符串信息，并将其复制到应用。
 
-1. 在 [Azure 门户](http://portal.azure.com/)的 Azure Cosmos DB 帐户的左侧导航栏中，单击“密钥”，并单击“读写密钥”。 使用屏幕右侧的复制按钮将 URI 和主密钥复制到下一步的 `config.js` 文件中。
+1. 在 [Azure 门户](https://portal.azure.com/)的 Azure Cosmos DB 帐户的左侧导航栏中，单击“密钥”，并单击“读写密钥”。 使用屏幕右侧的复制按钮将 URI 和主密钥复制到下一步的 `config.js` 文件中。
 
     ![在 Azure 门户的“密钥”边栏选项卡中查看并复制访问密钥](./media/create-sql-api-dotnet/keys.png)
 
