@@ -19,7 +19,7 @@ ms.locfileid: "46295115"
 ---
 # <a name="tutorial-enabling-password-writeback"></a>教程：启用密码写回
 
-在本教程中，将为混合环境启用密码写回。 密码写回用来将 Azure Active Directory (Azure AD) 中的密码更改同步回本地 Active Directory 域服务 (AD DS) 环境。 密码写回是作为 Azure AD Connect 的一部分启用的，它提供了一种机制来将密码更改从 Azure AD 发送回现有的本地目录。 可以在[什么是密码写回](concept-sspr-writeback.md)一文中找到有关密码写回的内部工作的更多详细信息。
+在本教程中，将为混合环境启用密码写回。 密码写回用来将 Azure Active Directory (Azure AD) 中的密码更改同步回本地 Active Directory 域服务 (AD DS) 环境。 密码写回启用为Azure AD Connect的一部分，用于提供一种安全机制，将密码更改从Azure AD发送回现有的本地目录。 可参阅[什么是密码写回](concept-sspr-writeback.md)一文，深入了解密码写回的作用机制。
 
 > [!div class="checklist"]
 > * 在 Azure AD Connect 中启用密码写回选项
@@ -27,7 +27,7 @@ ms.locfileid: "46295115"
 
 ## <a name="prerequisites"></a>先决条件
 
-* 能够访问至少分配有试用版许可证的有效 Azure AD 租户。
+* 有权访问某个工作 Azure AD 租户，且至少拥有一个分配的试用许可证。
 * 在 Azure AD 租户中具有全局管理员权限的帐户。
 * 已配置的运行 [Azure AD Connect](../hybrid/how-to-connect-install-express.md) 的当前版本的一台现有服务器。
 * 已完成了前面的自助服务密码重置 (SSPR) 教程。
@@ -47,7 +47,7 @@ ms.locfileid: "46295115"
 
 ## <a name="enable-password-writeback-option-in-sspr"></a>在 SSPR 中启用密码写回选项
 
-在 Azure AD Connect 中启用密码写回功能只是故事的一半。 允许 SSPR 使用密码写回将完成整个循环，这将使对密码进行更改或重置的用户同样在本地设置该密码。
+在 Azure AD Connect 中启用密码写回功能只完成了全部操作的一半。 还要允许 SSPR 使用密码写回，只要这样，更改或重置密码的用户才能同时在本地设置密码。
 
 1. 使用全局管理员帐户登录到 [Azure 门户](https://portal.azure.com)。
 2. 浏览到“Azure Active Directory”，单击“密码重置，然后选择“本地集成”。
