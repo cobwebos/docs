@@ -4,25 +4,25 @@ description: 了解如何排查更新管理代理问题。
 services: automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 11/06/2018
+ms.date: 12/14/2018
 ms.topic: conceptual
 ms.service: automation
 ms.component: update-management
 manager: carmonm
-ms.openlocfilehash: adaeb3087fca57a4a868f4525d588e014ff36fcf
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.openlocfilehash: 491f60b55843957bf9ec904f7310ef67219ba3c5
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52335821"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53438636"
 ---
 # <a name="understand-the-linux-agent-check-results-in-update-management"></a>了解更新管理中的 Azure 代理检查结果
 
-可能会有许多原因导致 Azure 计算机在更新管理中不显示“就绪”。 在更新管理中，可以检查混合辅助角色代理的运行状况以确定潜在问题。 本文介绍如何从 Azure 门户和脱机方案中运行故障排除。
+可能会有许多原因导致计算机在更新管理中不显示“就绪”。 在更新管理中，可以检查混合辅助角色代理的运行状况以确定潜在问题。 本文介绍如何从 Azure 门户为 Azure 计算机运行故障排除，以及如何为[离线场景](#troubleshoot-offline)下的非 Azure 计算机运行故障排除。
 
 ## <a name="start-the-troubleshooter"></a>启动“故障排除”
 
-通过单击门户中“更新代理准备”列下的“故障排除”链接，可以启动“更新代理故障排除”页。 此页显示代理的问题以及本文的链接，用于帮助你解决问题。
+对于 Azure 计算机，通过单击门户中“更新代理准备”列下的“故障排除”链接，可以启动“更新代理故障排除”页。 对于非 Azure 计算机，该链接会转到本文。 请参阅[离线说明](#offline)来排查非 Azure 计算机问题。
 
 ![VM 列表页](../media/update-agent-issues-linux/vm-list.png)
 
@@ -54,12 +54,12 @@ ms.locfileid: "52335821"
 
 ### <a name="oms-agent"></a>OMS 代理
 
-此检查可确保已安装适用于 Linux 的 OMS 代理。 有关如何安装的说明，请参阅[安装适用于 Linux 的代理](../../log-analytics//log-analytics-quick-collect-linux-computer.md#install-the-agent-for-linux
+此检查可确保已安装适用于 Linux 的 OMS 代理。 有关如何安装的说明，请参阅[安装适用于 Linux 的代理](../../azure-monitor/learn/quick-collect-linux-computer.md#install-the-agent-for-linux
 )。
 
 ### <a name="oms-agent-status"></a>OMS 代理状态
 
-此检查可确保适用于 Linux 的 OMS 代理正在运行。 如果代理未在运行，则可以运行以下命令尝试重启代理。 有关对代理进行故障排除的其他信息，请参阅 [Linux 混合 Runbook 辅助角色疑难解答](hybrid-runbook-worker.md#linux)
+此检查可确保适用于 Linux 的 OMS 代理正在运行。 如果该代理未在运行，则可以运行以下命令尝试重启该代理。 有关对该代理进行故障排除的详细信息，请参阅[对 Linux 混合 Runbook 辅助角色进行故障排除](hybrid-runbook-worker.md#linux)
 
 ```bash
 sudo /opt/microsoft/omsagent/bin/service_control restart
@@ -71,7 +71,7 @@ sudo /opt/microsoft/omsagent/bin/service_control restart
 
 ### <a name="hybrid-runbook-worker"></a>混合 Runbook 辅助角色
 
-此检查可确保适用于 Linux 的 OMS 代理拥有混合 Runbook 辅助角色包。 更新管理需要此包才能工作。
+此检查可验证适用于 Linux 的 OMS 代理是否拥有混合 Runbook 辅助角色包。 更新管理需要此包才能工作。
 
 ### <a name="hybrid-runbook-worker-status"></a>混合 Runbook 辅助角色状态
 
@@ -113,7 +113,7 @@ nxautom+   8595      1  0 14:45 ?        00:00:02 python /opt/microsoft/omsconfi
 
 此检查会验证计算机是否可以访问 Log Analytics 代理所需的终结点。
 
-## <a name="troubleshoot-offline"></a>脱机使用故障排除
+## <a name="troubleshoot-offline"></a>脱机进行故障排除
 
 可以通过在本地运行脚本，在混合 Runbook 辅助角色上脱机使用故障排除。 Python 脚本 [update_mgmt_health_check.py](https://gallery.technet.microsoft.com/scriptcenter/Troubleshooting-utility-3bcbefe6) 可在脚本中心内找到。 以下示例显示了此脚本的输出示例：
 
