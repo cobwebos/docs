@@ -4,19 +4,21 @@ description: 概述 Azure Migrate 服务中的评估计算。
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 09/25/2018
+ms.date: 12/05/2018
 ms.author: raynew
-ms.openlocfilehash: 04ae28ca566e97570ec64e78d3408ea8bd1e3d42
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 88dcc7110acaf42243d0ebb3c1ae25aa6d0bca46
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51010314"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53257959"
 ---
 # <a name="dependency-visualization"></a>依赖项可视化
 
 [Azure Migrate](migrate-overview.md) 服务会评估要迁移到 Azure 的本地计算机组。 可以在 Azure Migrate 中使用依赖项可视化功能来创建组。 本文提供了有关此功能的信息。
 
+> [!NOTE]
+> 依赖项可视化功能在 Azure 政府中不可用。
 
 ## <a name="overview"></a>概述
 
@@ -31,8 +33,14 @@ Azure Migrate 使用 [Log Analytics](../log-analytics/log-analytics-overview.md)
 
     ![关联 Log Analytics 工作区](./media/concepts-dependency-visualization/associate-workspace.png)
 
-- 创建新工作区时，需要指定工作区的名称。 然后在与迁移项目相同的 [Azure 地理位置](https://azure.microsoft.com/global-infrastructure/geographies/)中的区域内创建工作区。
-- 关联的工作区使用“迁移项目”键和“项目名称”值进行标记，可用于在 Azure 门户中进行搜索。
+- 关联一个工作区时，可以选择是创建新的工作区还是附加现有工作区：
+      - 创建新工作区时，需要指定工作区的名称。 然后在与迁移项目相同的 [Azure 地理位置](https://azure.microsoft.com/global-infrastructure/geographies/)中的区域内创建工作区。
+      - 附加现有的工作区时，可以从迁移项目所在订阅中的所有可用工作区进行选择。 请注意，只有在[服务映射受支持](https://docs.microsoft.com/azure/azure-monitor/insights/service-map-configure#supported-azure-regions)的区域中创建的那些工作区才会列出。 为了能够附加工作区，请确保对该工作区有“读取者”访问权限。
+
+  > [!NOTE]
+  > 工作区附加到一个项目后，你将无法再对其进行更改。
+
+- 关联的工作区通过“迁移项目”键和“项目名称”值（可用于在 Azure 门户中进行搜索）进行标记。
 - 若要导航到与项目关联的工作区，可以转到项目“概述”页的“Essentials”部分并访问工作区
 
     ![导航 Log Analytics 工作区](./media/concepts-dependency-visualization/oms-workspace.png)
@@ -40,10 +48,10 @@ Azure Migrate 使用 [Log Analytics](../log-analytics/log-analytics-overview.md)
 若要使用依赖项可视化，你需要在要分析的每台本地计算机上下载并安装代理。  
 
 - 需要在每台计算机上安装 [Microsoft Monitoring Agent (MMA)](https://docs.microsoft.com/azure/log-analytics/log-analytics-agent-windows)。
-- 需要在每台计算机上安装[依赖关系代理](https://docs.microsoft.com/azure/monitoring/monitoring-service-map-configure)。
+- 需要在每台计算机上安装[依赖项代理](https://docs.microsoft.com/azure/monitoring/monitoring-service-map-configure)。
 - 此外，如果计算机未连接到 Internet，则需要在计算机上下载并安装 Log Analytics 网关。
 
-除非要使用依赖关系可视化，否则在要评估的计算机上不需要安装这些代理。
+除非要使用依赖项可视化，否则在要评估的计算机上不需要安装这些代理。
 
 ## <a name="do-i-need-to-pay-for-it"></a>是否需要对其付费？
 
@@ -63,7 +71,7 @@ Azure Migrate 使用 [Log Analytics](../log-analytics/log-analytics-overview.md)
 
 ## <a name="how-do-i-manage-the-workspace"></a>如何管理工作区？
 
-你可以使用 Azure Migrate 外部的 Log Analytics 工作区。 如果删除在其中创建工作区的迁移项目，不会删除工作区。 如果你不再需要工作区，请手动[删除工作区](../log-analytics/log-analytics-manage-access.md)。
+你可以使用 Azure Migrate 外部的 Log Analytics 工作区。 如果删除在其中创建工作区的迁移项目，不会删除工作区。 如果你不再需要工作区，请手动[删除工作区](../azure-monitor/platform/manage-access.md)。
 
 不要删除由 Azure Migrate 创建的工作区，除非你删除迁移项目。 否则，依赖项可视化功能将不会按预期工作。
 

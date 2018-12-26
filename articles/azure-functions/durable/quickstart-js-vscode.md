@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: quickstart
 ms.date: 11/07/2018
 ms.author: azfuncdf, cotresne, glenga
-ms.openlocfilehash: 7dceed4d81f1e1767cbf91804573043d1204beee
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: ad17b6ef032c7bc25a019d53f12cc33baa3163f3
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52838899"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53340889"
 ---
 # <a name="create-your-first-durable-function-in-javascript"></a>使用 JavaScript 创建你的第一个持久函数
 
@@ -44,66 +44,35 @@ ms.locfileid: "52838899"
 
 [!INCLUDE [functions-create-function-app-vs-code](../../../includes/functions-create-function-app-vs-code.md)]
 
+## <a name="install-the-durable-functions-npm-package"></a>安装 Durable Functions npm 包
+
+1. 通过运行函数应用的根目录中的 `npm install durable-functions` 来安装 `durable-functions` npm 包。
+
 ## <a name="create-a-starter-function"></a>创建一个初学者函数
 
 首先，创建一个 HTTP 触发的函数，用以启动持久函数业务流程。
 
-1. 从“Azure: Functions”区域中选择“创建函数”图标。
+1. 从 **Azure：Functions** 区域中，选择“创建函数”图标。
 
     ![创建函数](./media/quickstart-js-vscode/create-function.png)
 
-1. 选择包含函数应用项目的文件夹，然后选择“HTTP 触发器”函数模板。
+2. 选择包含函数应用项目的文件夹，然后选择“HTTP 触发器”函数模板。
 
     ![选择 HTTP 触发器模板](./media/quickstart-js-vscode/create-function-choose-template.png)
 
-1. 键入 `HttpStart` 作为函数名称，然后按 Enter，然后选择“匿名”身份验证。
+3. 键入 `HttpStart` 作为函数名称，然后按 Enter，然后选择“匿名”身份验证。
 
     ![选择匿名身份验证](./media/quickstart-js-vscode/create-function-anonymous-auth.png)
 
     此时将使用 HTTP 触发的函数的模板，以所选语言创建函数。
 
-1. 将 index.js 替换为以下 JavaScript：
+4. 将 index.js 替换为以下 JavaScript：
 
-    ```javascript
-    const df = require("durable-functions");
-    
-    module.exports = async function (context, req) {
-        const client = df.getClient(context);
-        const instanceId = await client.startNew(req.params.functionName, undefined, req.body);
-    
-        context.log(`Started orchestration with ID = '${instanceId}'.`);
-    
-        return client.createCheckStatusResponse(context.bindingData.req, instanceId);
-    };
-    ```
+    [!code-javascript[Main](~/samples-durable-functions/samples/javascript/HttpStart/index.js)]
 
-1. 将 function.json 替换为以下 JSON：
+5. 将 function.json 替换为以下 JSON：
 
-    ```JSON
-    {
-      "bindings": [
-        {
-          "authLevel": "anonymous",
-          "name": "req",
-          "type": "httpTrigger",
-          "direction": "in",
-          "route": "orchestrators/{functionName}",
-          "methods": ["post"]
-        },
-        {
-          "name": "$return",
-          "type": "http",
-          "direction": "out"
-        },
-        {
-          "name": "starter",
-          "type": "orchestrationClient",
-          "direction": "in"
-        }
-      ],
-      "disabled": false
-    }
-    ```
+    [!code-json[Main](~/samples-durable-functions/samples/javascript/HttpStart/function.json)]
 
 我们现在已创建了我们的持久函数的一个入口点。 让我们添加一个业务流程协调程序。
 
@@ -113,11 +82,11 @@ ms.locfileid: "52838899"
 
 1. 使用 HTTP 触发器模板重复上一部分中的步骤来创建第二个函数。 这次将函数命名为 `OrchestratorFunction`。
 
-1. 打开新函数的 index.js 文件并将其内容替换为以下代码：
+2. 打开新函数的 index.js 文件并将其内容替换为以下代码：
 
     [!code-json[Main](~/samples-durable-functions/samples/javascript/E1_HelloSequence/index.js)]
 
-1. 打开 function.json 文件并将其替换为以下 JSON：
+3. 打开 function.json 文件并将其替换为以下 JSON：
 
     [!code-json[Main](~/samples-durable-functions/samples/javascript/E1_HelloSequence/function.json)]
 
@@ -127,11 +96,11 @@ ms.locfileid: "52838899"
 
 1. 使用 HTTP 触发器模板重复上一部分中的步骤来创建第三个函数。 但这次将函数命名为 `SayHello`。
 
-1. 打开新函数的 index.js 文件并将其内容替换为以下代码：
+2. 打开新函数的 index.js 文件并将其内容替换为以下代码：
 
     [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E1_SayHello/index.js)]
 
-1. 将 function.json 替换为以下 JSON：
+3. 将 function.json 替换为以下 JSON：
 
     [!code-json[Main](~/samples-durable-functions/samples/csx/E1_SayHello/function.json)]
 
@@ -141,19 +110,20 @@ ms.locfileid: "52838899"
 
 使用 Azure Functions Core Tools 可以在本地开发计算机上运行 Azure Functions 项目。 首次从 Visual Studio Code 启动某个函数时，系统会提示你安装这些工具。  
 
-1. 通过运行函数应用的根目录中的 `npm install durable-functions` 来安装 durable-functions npm 包。
-
 1. 在 Windows 计算机上，启动 Azure 存储模拟器并确保将 local.settings.json 的 **AzureWebJobsStorage** 属性设置为 `UseDevelopmentStorage=true`。 在 Mac 或 Linux 计算机上，必须将 **AzureWebJobsStorage** 属性设置为现有 Azure 存储帐户的连接字符串。 本文中稍后将创建一个存储帐户。
 
-1. 若要测试函数，请在函数代码中设置断点并按 F5 启动函数应用项目。 来自 Core Tools 的输出会显示在“终端”面板中。 如果这是你首次使用 Durable Functions，则会安装 Durable Functions 扩展并且生成可能需要几秒钟时间。
+2. 若要测试函数，请在函数代码中设置断点并按 F5 启动函数应用项目。 来自 Core Tools 的输出会显示在“终端”面板中。 如果这是你首次使用 Durable Functions，则会安装 Durable Functions 扩展并且生成可能需要几秒钟时间。
 
-1. 在“终端”面板中，复制 HTTP 触发的函数的 URL 终结点。
+    > [!NOTE]
+    > JavaScript Durable Functions 需要 1.7.0 版或更高版本的 Microsoft.Azure.WebJobs.Extensions.DurableTask 扩展。 验证 `extensions.csproj` 文件中 Durable Functions 扩展的版本是否满足此要求。 如果不满足要求，请停止函数应用，更改版本，然后按 F5 重启函数应用。
+
+3. 在“终端”面板中，复制 HTTP 触发的函数的 URL 终结点。
 
     ![Azure 本地输出](../media/functions-create-first-function-vs-code/functions-vscode-f5.png)
 
-1. 将 HTTP 请求的 URL 粘贴到浏览器的地址栏中，查看你的业务流程的状态。
+4. 将 HTTP 请求的 URL 粘贴到浏览器的地址栏中，查看你的业务流程的状态。
 
-1. 若要停止调试，请按 Shift + F1。
+5. 若要停止调试，请按 Shift + F1。
 
 确认该函数可以在本地计算机上正确运行以后，即可将项目发布到 Azure。
 
@@ -165,9 +135,9 @@ ms.locfileid: "52838899"
 
 1. 从“输出”面板复制 HTTP 触发器的 URL。 调用 HTTP 触发的函数的 URL 应采用以下格式：
 
-        http://<functionappname>.azurewebsites.net/api/<functionname>
+        http://<functionappname>.azurewebsites.net/orchestrators/<functionname>
 
-1. 将 HTTP 请求的这个新 URL 粘贴到浏览器的地址栏中。 你应当会得到与之前使用已发布的应用时相同的状态响应。
+2. 将 HTTP 请求的这个新 URL 粘贴到浏览器的地址栏中。 你应当会得到与之前使用已发布的应用时相同的状态响应。
 
 ## <a name="next-steps"></a>后续步骤
 

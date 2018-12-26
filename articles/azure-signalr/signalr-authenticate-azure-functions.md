@@ -1,25 +1,18 @@
 ---
-title: 教程：使用 Azure Functions 进行 Azure SignalR 服务身份验证 | Microsoft Docs
+title: 教程：使用 Azure Functions 进行 Azure SignalR 服务身份验证
 description: 本教程介绍如何对 Azure SignalR 服务客户端进行身份验证
-services: signalr
-documentationcenter: ''
 author: sffamily
-manager: cfowler
-editor: ''
-ms.assetid: ''
 ms.service: signalr
-ms.workload: tbd
-ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 09/18/2018
 ms.author: zhshang
-ms.openlocfilehash: 8af657c39217f3edcadef6ec0981a31ec7e89aa6
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 34cbb4d2c8a1e84499961802ca7bd07408375345
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46978408"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53409373"
 ---
 # <a name="tutorial-azure-signalr-service-authentication-with-azure-functions"></a>教程：使用 Azure Functions 进行 Azure SignalR 服务身份验证
 
@@ -42,14 +35,12 @@ ms.locfileid: "46978408"
 * [.NET SDK](https://www.microsoft.com/net/download)（版本 2.x，Functions 扩展需要）
 * [Azure Functions Core Tools](https://github.com/Azure/azure-functions-core-tools)（版本 2）
 * 包含以下扩展的 [Visual Studio Code](https://code.visualstudio.com/) (VS Code)
-    * [Azure Functions](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions) - 在 VS Code 中使用 Azure Functions
-    * [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) - 提供用于本地测试的网页
-
+  * [Azure Functions](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions) - 在 VS Code 中使用 Azure Functions
+  * [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) - 提供用于本地测试的网页
 
 ## <a name="sign-into-the-azure-portal"></a>登录到 Azure 门户
 
 转到 [Azure 门户](https://portal.azure.com/)并使用自己的凭据登录。
-
 
 ## <a name="create-an-azure-signalr-service-instance"></a>创建 Azure SignalR 服务实例
 
@@ -69,9 +60,8 @@ ms.locfileid: "46978408"
     | 资源组 | 创建新的资源组 |
     | 位置 | 选择靠近自己的位置 |
     | 定价层 | 免费 |
-    
-1. 单击“创建”。
 
+1. 单击“创建”。
 
 ## <a name="initialize-the-function-app"></a>初始化函数应用
 
@@ -81,23 +71,23 @@ ms.locfileid: "46978408"
 
 1. 使用 VS Code 中的 Azure Functions 扩展初始化主项目文件夹中的函数应用。
     1. 在 VS Code 的菜单中选择“视图”>“命令面板”（Windows 快捷键为 `Ctrl-Shift-P`，macOS 快捷键为 `Cmd-Shift-P`）打开命令面板。
-    1. 搜索“Azure Functions: 创建新项目”命令并将其选中。
+    1. 搜索“Azure Functions: Create New Project”命令并将其选中。
     1. 此时应会显示主项目文件夹。 选择该文件夹（或使用“浏览”找到它）。
     1. 当系统提示选择语言时，请选择“JavaScript”。
 
     ![创建函数应用](media/signalr-authenticate-azure-functions/signalr-create-vscode-app.png)
 
-
 ### <a name="install-function-app-extensions"></a>安装函数应用扩展
 
 本教程使用 Azure Functions 绑定来与 Azure SignalR 服务交互。 与其他大多数绑定一样，SignalR 服务绑定可用作扩展，需要先通过 Azure Functions Core Tools CLI 安装该扩展才能使用它。
 
-1. 在 VS Code 的菜单中选择“视图”>“集成终端”(Ctrl-') 打开一个终端。
+1. 在 VS Code 的菜单中选择“视图”>“集成终端”(Ctrl-\`) 打开一个终端。
 
 1. 确保当前目录是主项目文件夹。
 
 1. 安装 SignalR 服务函数应用扩展。
-    ```
+
+    ```bash
     func extensions install -p Microsoft.Azure.WebJobs.Extensions.SignalRService -v 1.0.0-preview1-10002
     ```
 
@@ -108,6 +98,7 @@ ms.locfileid: "46978408"
 1. 在 VS Code 的“资源管理器”窗格中选择“local.settings.json”并将其打开。
 
 1. 将该文件的内容替换为以下内容。
+
     ```json
     {
         "IsEncrypted": false,
@@ -133,14 +124,13 @@ ms.locfileid: "46978408"
 
     ![更新本地设置](media/signalr-authenticate-azure-functions/signalr-update-local-settings.png)
 
-
 ## <a name="create-a-function-to-authenticate-users-to-signalr-service"></a>创建一个用于在 SignalR 服务中验证用户身份的函数
 
 当聊天应用在浏览器中首次打开时，需要使用有效的连接凭据连接到 Azure SignalR 服务。 我们将在函数应用中创建名为 *SignalRInfo* 的 HTTP 触发的函数，以返回此连接信息。
 
 1. 打开 VS Code 命令面板（Windows 快捷键为 `Ctrl-Shift-P`，macOS 快捷键为 `Cmd-Shift-P`）。
 
-1. 搜索并选择“Azure Functions: 创建函数”命令。
+1. 搜索并选择“Azure Functions: Create Function”命令。
 
 1. 出现提示时，请提供以下信息。
 
@@ -150,7 +140,7 @@ ms.locfileid: "46978408"
     | 模板 | HTTP 触发器 |
     | 名称 | SignalRInfo |
     | 授权级别 | 匿名 |
-    
+
     将创建包含新函数的名为 **SignalRInfo** 的文件夹。
 
 1. 打开 **SignalRInfo/function.json** 以配置函数的绑定。 按如下所示修改该文件的内容。 这会添加一个用于生成有效凭据的输入绑定，使客户端能够连接到名为 `chat` 的 Azure SignalR 服务中心。
@@ -194,14 +184,13 @@ ms.locfileid: "46978408"
 
     此函数从输入绑定中提取 SignalR 连接信息，并在 HTTP 响应正文中将此信息返回给客户端。
 
-
 ## <a name="create-a-function-to-send-chat-messages"></a>创建用于发送聊天消息的函数
 
 Web 应用还需要使用一个 HTTP API 来发送聊天消息。 我们将创建名为 *SendMessage* 的 HTTP 触发的函数，用于通过 SignalR 服务将消息发送到所有连接的客户端。
 
 1. 打开 VS Code 命令面板（Windows 快捷键为 `Ctrl-Shift-P`，macOS 快捷键为 `Cmd-Shift-P`）。
 
-1. 搜索并选择“Azure Functions: 创建函数”命令。
+1. 搜索并选择“Azure Functions: Create Function”命令。
 
 1. 出现提示时，请提供以下信息。
 
@@ -211,7 +200,7 @@ Web 应用还需要使用一个 HTTP API 来发送聊天消息。 我们将创�
     | 模板 | HTTP 触发器 |
     | 名称 | SendMessage |
     | 授权级别 | 匿名 |
-    
+
     将创建包含新函数的名为 **SendMessage** 的文件夹。
 
 1. 打开 **SendMessage/function.json** 以配置函数的绑定。 按如下所示修改该文件的内容。
@@ -250,17 +239,18 @@ Web 应用还需要使用一个 HTTP API 来发送聊天消息。 我们将创�
 1. 保存文件。
 
 1. 打开 **SendMessage/index.js** 查看函数的正文。 按如下所示修改该文件的内容。
+
     ```javascript
     module.exports = function (context, req) {
         const message = req.body;
         message.sender = req.headers && req.headers['x-ms-client-principal-name'] || '';
-            
+
         let recipientUserId = '';
         if (message.recipient) {
             recipientUserId = message.recipient;
             message.isPrivate = true;
         }
-    
+
         context.bindings.signalRMessages = [{
             'userId': recipientUserId,
             'target': 'newMessage',
@@ -269,12 +259,12 @@ Web 应用还需要使用一个 HTTP API 来发送聊天消息。 我们将创�
         context.done();
     };
     ```
+
     此函数从 HTTP 请求中提取正文，并通过在连接到 SignalR 服务的每个客户端上调用名为 `newMessage` 的函数，将此正文发送到所有这些客户端。
 
     此函数可以读取发送者的标识，并可以接受消息正文中的 *recipient* 值，以便能够以私密的方式将消息发送到单个用户。 本教程稍后将使用这些功能。
 
 1. 保存文件。
-
 
 ## <a name="create-and-run-the-chat-client-web-user-interface"></a>创建并运行聊天客户端 Web 用户界面
 
@@ -294,20 +284,17 @@ Web 应用还需要使用一个 HTTP API 来发送聊天消息。 我们将创�
 
 1. 应用程序已打开。 在聊天框中输入一条消息并按 Enter。 刷新应用程序以查看新消息。 由于未配置身份验证，所有消息将以“匿名”方式发送。
 
-
 ## <a name="deploy-to-azure-and-enable-authentication"></a>部署到 Azure 并启用身份验证
 
 我们一直在本地运行函数应用和聊天应用程序。 现在，我们将其部署到 Azure，并在应用程序中启用身份验证和私密消息传送。
-
 
 ### <a name="log-into-azure-with-vs-code"></a>使用 VS Code 登录到 Azure
 
 1. 打开 VS Code 命令面板（Windows 快捷键为 `Ctrl-Shift-P`，macOS 快捷键为 `Cmd-Shift-P`）。
 
-1. 搜索并选择“Azure: 登录”命令。
+1. 搜索并选择“Azure: Sign in”命令。
 
 1. 在浏览器中遵照说明完成登录过程。
-
 
 ### <a name="configure-function-app-for-authentication"></a>为函数应用配置身份验证
 
@@ -331,10 +318,9 @@ Web 应用还需要使用一个 HTTP API 来发送聊天消息。 我们将创�
 
 1. 保存文件。
 
-
 ### <a name="deploy-function-app"></a>部署函数应用
 
-1. 打开 VS Code 命令面板（Windows 快捷键为 `Ctrl-Shift-P`，macOS 快捷键为 `Cmd-Shift-P`），然后选择“Azure Functions: 部署到函数应用”。 
+1. 打开 VS Code 命令面板（Windows 快捷键为 `Ctrl-Shift-P`，macOS 快捷键为 `Cmd-Shift-P`），然后选择“Azure Functions: 部署到函数应用”。
 
 1. 出现提示时，请提供以下信息。
 
@@ -348,9 +334,8 @@ Web 应用还需要使用一个 HTTP API 来发送聊天消息。 我们将创�
     | 存储帐户 | 选择“创建新存储帐户” |
     | 存储帐户名称 | 输入唯一的名称（3-24 个字符，仅限字母数字字符） |
     | 位置 | 选择靠近自己的位置 |
-    
-    随即会在 Azure 中创建新的函数应用，并开始部署。 等待部署完成。
 
+    随即会在 Azure 中创建新的函数应用，并开始部署。 等待部署完成。
 
 ### <a name="upload-function-app-local-settings"></a>上传函数应用本地设置
 
@@ -368,7 +353,6 @@ Web 应用还需要使用一个 HTTP API 来发送聊天消息。 我们将创�
     | 函数应用名称 | 输入唯一的名称 |
 
 本地设置将上传到 Azure 中的函数应用。 如果系统提示是否要覆盖现有设置，请选择“全是”。
-
 
 ### <a name="enable-function-app-cross-origin-resource-sharing-cors"></a>启用函数应用跨域资源共享 (CORS)
 
@@ -395,7 +379,6 @@ Web 应用还需要使用一个 HTTP API 来发送聊天消息。 我们将创�
 > [!NOTE]
 > 在实际应用程序中，请不要在所有源上允许 CORS (`*`)，更安全的做法是针对需要 CORS 的每个域输入特定的 CORS 条目。
 
-
 ### <a name="update-the-web-app"></a>更新 Web 应用
 
 1. 在 Azure 门户中，导航到函数应用的概述页。
@@ -404,13 +387,11 @@ Web 应用还需要使用一个 HTTP API 来发送聊天消息。 我们将创�
 
     ![获取 URL](media/signalr-authenticate-azure-functions/signalr-get-url.png)
 
-
 1. 在 VS Code 中打开 **index.html**，并将 `apiBaseUrl` 的值替换为函数应用的 URL。
 
 1. 可以使用 Azure Active Directory、Facebook、Twitter、Microsoft 帐户或 Google 为应用程序配置身份验证。 通过设置 `authProvider` 的值来选择要使用的身份验证提供程序。
 
 1. 保存文件。
-
 
 ### <a name="deploy-the-web-application-to-blob-storage"></a>将 Web 应用程序部署到 Blob 存储
 
@@ -454,7 +435,6 @@ Web 应用还需要使用一个 HTTP API 来发送聊天消息。 我们将创�
 
 1. 返回到“静态网站”页。 记下“主终结点”。 这是 Web 应用程序的 URL。
 
-
 ### <a name="enable-app-service-authentication"></a>启用应用服务身份验证
 
 应用服务身份验证支持使用 Azure Active Directory、Facebook、Twitter、Microsoft 帐户和 Google 的身份验证。
@@ -469,12 +449,11 @@ Web 应用还需要使用一个 HTTP API 来发送聊天消息。 我们将创�
 
 1. 遵循所选登录提供程序的文档完成配置。
 
-    - [Azure Active Directory](https://docs.microsoft.com/azure/app-service/app-service-mobile-how-to-configure-active-directory-authentication)
-    - [Facebook](https://docs.microsoft.com/azure/app-service/app-service-mobile-how-to-configure-facebook-authentication)
-    - [Twitter](https://docs.microsoft.com/azure/app-service/app-service-mobile-how-to-configure-twitter-authentication)
-    - [Microsoft 帐户](https://docs.microsoft.com/azure/app-service/app-service-mobile-how-to-configure-microsoft-authentication)
-    - [Google](https://docs.microsoft.com/azure/app-service/app-service-mobile-how-to-configure-google-authentication)
-
+    - [Azure Active Directory](https://docs.microsoft.com/azure/app-service/configure-authentication-provider-aad)
+    - [Facebook](https://docs.microsoft.com/azure/app-service/configure-authentication-provider-facebook)
+    - [Twitter](https://docs.microsoft.com/azure/app-service/configure-authentication-provider-twitter)
+    - [Microsoft 帐户](https://docs.microsoft.com/azure/app-service/configure-authentication-provider-microsoft)
+    - [Google](https://docs.microsoft.com/azure/app-service/configure-authentication-provider-google)
 
 ### <a name="try-the-application"></a>尝试运行应用程序
 
@@ -490,11 +469,9 @@ Web 应用还需要使用一个 HTTP API 来发送聊天消息。 我们将创�
 
 ![演示](media/signalr-authenticate-azure-functions/signalr-serverless-chat.gif)
 
-
 ## <a name="clean-up-resources"></a>清理资源
 
 若要清理本教程创建的资源，请使用 Azure 门户删除相应的资源组。
-
 
 ## <a name="next-steps"></a>后续步骤
 

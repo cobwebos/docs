@@ -1,5 +1,5 @@
 ---
-title: Microsoft 机器学习产品选项的比较 - Azure | Microsoft Docs
+title: 比较 Microsoft 的机器学习产品选项
 description: 比较 Microsoft 提供的用于生成、部署和管理机器学习模型的各种产品。 确定要为解决方案选择哪种产品。
 services: machine-learning
 ms.service: machine-learning
@@ -9,14 +9,14 @@ ms.reviewer: jmartens
 author: garyericson
 ms.author: garye
 ms.date: 12/04/2018
-ms.openlocfilehash: ad6cb53bd69218d2af801cb56f882f5ffde3026c
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: bae28fd24cfbbf9fe36a626af1f0ec9359c8cda0
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52872538"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53274101"
 ---
-# <a name="what-are-the-machine-learning-product-options-from-microsoft"></a>Microsoft 提供哪些机器学习产品选项？
+# <a name="what-are-the-machine-learning-products-at-microsoft"></a>Microsoft 的机器学习产品有哪些？
 
 Microsoft 提供多种多样的产品选项用于生成、部署和管理机器学习模型。 本文将比较这些产品，并帮助你选择所需的产品，以便最有效地开发机器学习解决方案。
 
@@ -41,8 +41,7 @@ Microsoft 提供多种多样的产品选项用于生成、部署和管理机器�
 
 在 Azure 机器学习服务中可以使用 Python 和 CLI 以云的规模训练、部署和管理机器学习模型。
 
->[!Note]
-> 可以免费尝试 Azure 机器学习。 不需要信用卡或 Azure 订阅。 立即开始。 https://azure.microsoft.com/free/
+立即试用 [Azure 机器学习服务免费版或付费版](http://aka.ms/AMLFree)。
 
 ## <a name="azure-machine-learning-studio"></a>Azure 机器学习工作室
 

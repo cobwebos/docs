@@ -1,6 +1,6 @@
 ---
-title: 上传数据（REST API - Azure 搜索）| Microsoft Docs
-description: 了解如何使用 REST API 将数据上传到 Azure 搜索索引。
+title: 使用搜索服务 REST API 上传代码中的数据 - Azure 搜索
+description: 了解如何使用 HTTP 请求和 REST API 将数据上传到 Azure 搜索中的全文可搜索索引。
 author: brjohnstmsft
 manager: jlembicz
 ms.author: brjohnst
@@ -9,12 +9,13 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: quickstart
 ms.date: 04/20/2018
-ms.openlocfilehash: 53b20c9db7efe1f8876eec7c0167dc151aa38786
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.custom: seodec2018
+ms.openlocfilehash: b3044ec3fb21e77c5174ebd5a6b2dabd2282240f
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32187974"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53312844"
 ---
 # <a name="upload-data-to-azure-search-using-the-rest-api"></a>使用 REST API 将数据上传到 Azure 搜索
 > [!div class="op_single_selector"]
@@ -50,10 +51,10 @@ ms.locfileid: "32187974"
 
 “value”数组中的每个 JSON 对象表示要索引的文档。 每个对象都包含文档密钥，并指定所需的索引操作（upload、merge、delete 等）。 根据选择的以下操作，每个文档必须仅包含某些特定的字段：
 
-| @search.action | 说明 | 每个文档必需的字段 | 说明 |
+| @search.action | Description | 每个文档必需的字段 | 说明 |
 | --- | --- | --- | --- |
 | `upload` |`upload` 操作类似于“upsert”，如果文档是新文档，则插入；如果文档已经存在，则进行更新/替换。 |关键字段以及要定义的任何其他字段 |更新/替换现有文档时，会将请求中未指定的任何字段设置为 `null`。 即使该字段之前设置为了非 null 值也是如此。 |
-| `merge` |使用指定的字段更新现有文档。 如果索引中不存在该文档，merge 会失败。 |关键字段以及要定义的任何其他字段 |merge 中指定的任何字段都将替换文档中的现有字段。 包括 `Collection(Edm.String)`类型的字段。 例如，如果文档包含值为 `["budget"]` 的字段 `tags`，并且已使用值 `["economy", "pool"]` 对 `tags` 执行合并，则 `tags` 字段的最终值将为 `["economy", "pool"]`。 而不会是 `["budget", "economy", "pool"]`。 |
+| `merge` |使用指定的字段更新现有文档。 如果索引中不存在该文档，merge 会失败。 |关键字段以及要定义的任何其他字段 |merge 中指定的任何字段都将替换文档中的现有字段。 这包括 `Collection(Edm.String)`类型的字段。 例如，如果文档包含值为 `["budget"]` 的字段 `tags`，并且已使用值 `["economy", "pool"]` 对 `tags` 执行合并，则 `tags` 字段的最终值将为 `["economy", "pool"]`。 而不会是 `["budget", "economy", "pool"]`。 |
 | `mergeOrUpload` |如果索引中已存在具有给定关键字段的文档，则此操作的行为类似于 `merge`。 如果该文档不存在，则它的行为类似于对新文档进行 `upload` 。 |关键字段以及要定义的任何其他字段 |- |
 | `delete` |从索引中删除指定文档。 |仅关键字段 |所指定关键字段以外的所有字段都会被忽略。 如果要从文档中删除单个字段，请改用 `merge`，只需将该字段显式设置为 null。 |
 

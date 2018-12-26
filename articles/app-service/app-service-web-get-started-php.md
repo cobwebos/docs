@@ -1,5 +1,5 @@
 ---
-title: 在 Azure 中创建 PHP Web 应用 | Microsoft Docs
+title: 创建 PHP Web 应用 - Azure 应用服务 | Microsoft Docs
 description: 数分钟内在 Azure 应用服务 Web 应用中部署首个 PHP Hello World。
 services: app-service\web
 documentationcenter: ''
@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: quickstart
 ms.date: 08/24/2018
 ms.author: cephalin;cfowler
-ms.custom: mvc
-ms.openlocfilehash: 0dd8f90a39abc18263fcaa5bdb63a5b743728952
-ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
+ms.custom: seodec18
+ms.openlocfilehash: 02c80f3b3883af4b32b5bc0fb837680dad1e0ecf
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42884958"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53261545"
 ---
 # <a name="create-a-php-web-app-in-azure"></a>在 Azure 中创建 PHP Web 应用
 
@@ -28,7 +28,7 @@ ms.locfileid: "42884958"
 > 本文将应用部署到 Windows 上的应用服务。 若要部署到基于 _Linux_ 的应用服务，请参阅[在基于 Linux 的应用服务中创建 PHP Web 应用](./containers/quickstart-php.md)。
 >
 
-[Azure Web 应用](app-service-web-overview.md)提供高度可缩放、自修补的 Web 托管服务。  本快速入门教程演示如何将 PHP 应用部署到 Azure Web 应用。 在 Cloud Shell 中使用 [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) 创建 Web 应用，并使用 Git 将 PHP 代码示例部署到 Web 应用。
+[Azure Web 应用](app-service-web-overview.md)提供高度可伸缩、自我修补的 Web 托管服务。  本快速入门教程演示如何将 PHP 应用部署到 Azure Web 应用。 在 Cloud Shell 中使用 [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) 创建 Web 应用，并使用 Git 将 PHP 代码示例部署到该 Web 应用。
 
 ![在 Azure 中运行应用的示例](media/app-service-web-get-started-php/hello-world-in-browser.png)
 
@@ -41,7 +41,7 @@ ms.locfileid: "42884958"
 完成本快速入门教程需要：
 
 * <a href="https://git-scm.com/" target="_blank">安装 Git</a>
-* <a href="http://php.net/manual/install.php" target="_blank">安装 PHP</a>
+* <a href="https://php.net/manual/install.php" target="_blank">安装 PHP</a>
 
 ## <a name="download-the-sample-locally"></a>将示例下载到本地
 
@@ -156,7 +156,7 @@ To https://<app_name>.scm.azurewebsites.net/<app_name>.git
 http://<app_name>.azurewebsites.net
 ```
 
-PHP 示例代码在 Azure 应用服务 Web 应用中运行。
+PHP 示例代码在 Azure 应用服务的 Web 应用中运行。
 
 ![在 Azure 中运行应用的示例](media/app-service-web-get-started-php/hello-world-in-browser.png)
 

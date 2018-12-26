@@ -1,7 +1,7 @@
 ---
-title: 快速入门：使用 Node.js 执行图像搜索 - 必应图像搜索 API
+title: 快速入门：搜索图像 - 必应图像搜索 REST API 和 Node.js
 titleSuffix: Azure Cognitive Services
-description: 使用本快速入门进行你的第一次必应图像搜索 API 调用并接收 JSON 响应。 这个简单的 JavaScript 应用程序会向 API 发送一个搜索查询并显示原始结果。
+description: 使用本快速入门，通过 JavaScript 将图像搜索请求发送到必应图像搜索 REST API，并接收 JSON 响应。
 services: cognitive-services
 documentationcenter: ''
 author: aahill
@@ -11,14 +11,15 @@ ms.component: bing-image-search
 ms.topic: quickstart
 ms.date: 8/20/2018
 ms.author: aahi
-ms.openlocfilehash: 189533e496e90dc072f33c9560275323ba5e62c4
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.custom: seodec2018
+ms.openlocfilehash: c6f8a4c24a600eb9a84076d63bed295f646f3fec
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52312046"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53251158"
 ---
-# <a name="quickstart-send-search-queries-using-the-bing-image-search-rest-api-and-nodejs"></a>快速入门：使用必应图像搜索 REST API 和 Node.js 发送搜索查询
+# <a name="quickstart-search-for-images-using-the-bing-image-search-rest-api-and-nodejs"></a>快速入门：使用必应图像搜索 REST API 和 Node.js 来搜索图像
 
 使用本快速入门进行你的第一次必应图像搜索 API 调用并接收 JSON 响应。 这个简单的 JavaScript 应用程序会向 API 发送一个搜索查询并显示原始结果。
 

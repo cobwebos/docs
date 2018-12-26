@@ -1,5 +1,5 @@
 ---
-title: 在 Linux 上的 Azure 应用服务中创建 Java Web 应用的快速入门
+title: 在 Linux 上创建 Java Web 应用 - Azure 应用服务
 description: 本快速入门介绍如何在数分钟内在 Linux 上的 Azure 应用服务中部署第一个 Java Hello World。
 services: app-service\web
 documentationcenter: ''
@@ -12,15 +12,15 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: Java
 ms.topic: quickstart
-ms.date: 03/07/2018
+ms.date: 12/10/2018
 ms.author: msangapu
 ms.custom: mvc
-ms.openlocfilehash: e286942f092d2e8c22824a18f5a6503d04a1be0c
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: d27491d84d4df1757f77a403cd754496bbff6887
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50247549"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53252603"
 ---
 # <a name="quickstart-create-a-java-web-app-in-app-service-on-linux"></a>快速入门：在 Linux 上的应用服务中创建 Java Web 应用
 
@@ -100,7 +100,7 @@ mvn package azure-webapp:deploy
 
 ![在 Azure 中运行应用的示例](media/quickstart-java/java-hello-world-in-browser-curl.png)
 
-**祝贺你！** 现已将第一个 Java 应用部署到 Linux 应用服务。
+祝贺你！ 现已将第一个 Java 应用部署到 Linux 应用服务。
 
 
 [!INCLUDE [cli-samples-clean-up](../../../includes/cli-samples-clean-up.md)]
@@ -108,8 +108,10 @@ mvn package azure-webapp:deploy
 
 ## <a name="next-steps"></a>后续步骤
 
-在本快速入门中，你已使用 Maven 创建了一个 Java Web 应用，配置了[适用于 Azure Web 应用的 Maven 插件](https://github.com/Microsoft/azure-maven-plugins/tree/develop/azure-webapp-maven-plugin)，然后将 Web 存档打包的 Java 应用部署到了 Linux 上的应用服务。 若要了解如何连接数据库、设置日志记录和监视、配置安全性、设置运行时选项，请转到适用于 Linux 上的应用服务的 Java 开发人员指南。
+在本快速入门中，你已使用 Maven 创建了一个 Java Web 应用，配置了[适用于 Azure Web 应用的 Maven 插件](https://github.com/Microsoft/azure-maven-plugins/tree/develop/azure-webapp-maven-plugin)，然后将 Web 存档打包的 Java 应用部署到了 Linux 上的应用服务。 有关在 Linux 上的应用服务上托管 Java 应用程序的详细信息，请参阅以下教程和操作指南文章。
 
-> [!div class="nextstepaction"]
-> [Linux 上的应用服务 Java 开发人员指南](app-service-linux-java.md)
+- [教程：使用 PostgreSQL 部署 Java 企业应用](tutorial-java-enterprise-postgresql-app.md)
+- [配置 Tomcat 数据源](app-service-linux-java.md#connecting-to-data-sources)
+- [将 CI/CD 与 Jenkins 配合使用](/azure/jenkins/deploy-jenkins-app-service-plugin)
+- [设置应用程序性能监视工具](how-to-java-apm-monitoring.md)
 

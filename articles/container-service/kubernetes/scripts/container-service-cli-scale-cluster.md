@@ -3,7 +3,7 @@ title: Azure CLI 脚本示例 - 缩放 ACS 群集 | Microsoft 文档
 description: Azure CLI 脚本示例 - 缩放 ACS 群集
 services: container-service
 documentationcenter: ''
-author: neilpeterson
+author: iainfoulds
 manager: jeconnoc
 editor: ''
 tags: acs, azure-container-service
@@ -15,15 +15,17 @@ ms.topic: sample
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/30/2017
-ms.author: nepeters
-ms.openlocfilehash: 1e5ca9fb44ea3ad15206f36a16e61f2865d79f5f
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.author: iainfou
+ms.openlocfilehash: 199a2f09df57878d6523cfed6873001f190e14f5
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39427765"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52992243"
 ---
-# <a name="scale-an-azure-container-service-cluster"></a>缩放 Azure 容器服务群集
+# <a name="deprecated-scale-an-azure-container-service-cluster"></a>（已弃用）缩放 Azure 容器服务群集
+
+[!INCLUDE [ACS deprecation](../../../../includes/container-service-kubernetes-deprecation.md)]
 
 此示例缩放 Azure 容器服务。 
 

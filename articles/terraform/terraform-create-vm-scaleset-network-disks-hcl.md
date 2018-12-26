@@ -9,36 +9,36 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 10/26/2018
-ms.openlocfilehash: 5bf3e6d8839c3ec08bae03772d9a7ab011c67857
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 4784672364e2bdf44f0415ab4e1e386a5a80076b
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51228396"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53313048"
 ---
 # <a name="use-terraform-to-create-an-azure-virtual-machine-scale-set"></a>使用 Terraform 创建 Azure 虚拟机规模集
 
-使用 [Azure 虚拟机规模集](/azure/virtual-machine-scale-sets)可以创建并管理一组相同的负载均衡虚拟机，其中的虚拟机实例数可以根据需求或定义的计划自动增加或减少。 
+使用 [Azure 虚拟机规模集](/azure/virtual-machine-scale-sets)可以创建并管理一组相同的负载均衡虚拟机，其中的虚拟机实例数可以根据需求或定义的计划自动增加或减少。
 
 本教程介绍如何使用 [Azure Cloud Shell](/azure/cloud-shell/overview) 来执行以下任务：
 
 > [!div class="checklist"]
 > * 设置 Terraform 部署
-> * 使用变量和输出部署 Terraform 
+> * 使用变量和输出部署 Terraform
 > * 创建和部署网络基础结构
 > * 创建和部署虚拟机规模集并将其附加到网络
 > * 创建和部署 jumpbox 以通过 SSH 连接到 VM
 
 > [!NOTE]
-> [Github 上的 Awesome Terraform 存储库](https://github.com/Azure/awesome-terraform/tree/master/codelab-vmss)中提供了本文所用的最新版本的 Terraform 配置文件。
+> [GitHub 上的 Awesome Terraform 存储库](https://github.com/Azure/awesome-terraform/tree/master/codelab-vmss)中提供了本文所用的最新版本的 Terraform 配置文件。
 
 ## <a name="prerequisites"></a>先决条件
 
-- **Azure 订阅**：如果还没有 Azure 订阅，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
+- **Azure 订阅**：如果还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 
-- **安装 Terraform**：遵循 [Terraform 以及配置对 Azure 的访问](/azure/virtual-machines/linux/terraform-install-configure)一文中的指导
+- **安装 Terraform**：遵循[安装 Terraform 并配置对 Azure 的访问权限](/azure/virtual-machines/linux/terraform-install-configure)一文中的指导
 
-- **创建 SSH 密钥对**：如果没有 SSH 密钥对，请遵照[如何创建和使用适用于 Azure 中 Linux VM 的 SSH 公钥和私钥对](https://docs.microsoft.com/azure/virtual-machines/linux/mac-create-ssh-keys)一文中的说明操作。
+- **创建 SSH 密钥对**：如果没有 SSH 密钥对，请遵照[如何创建和使用适用于 Azure 中 Linux VM 的 SSH 公钥和私钥对](https://docs.microsoft.com/azure/virtual-machines/linux/mac-create-ssh-keys)一文中的说明进行操作。
 
 ## <a name="create-the-directory-structure"></a>创建目录结构
 
@@ -122,7 +122,8 @@ ms.locfileid: "51228396"
 
 1. 按 I 键进入插入模式。
 
-1. 在编辑器中粘贴以下代码，以公开虚拟机的完全限定域名 (FQDN)。 :
+1. 在编辑器中粘贴以下代码，以公开虚拟机的完全限定域名 (FQDN)。
+:
 
   ```JSON
     output "vmss_public_ip" {
@@ -139,9 +140,9 @@ ms.locfileid: "51228396"
     ```
 
 ## <a name="define-the-network-infrastructure-in-a-template"></a>在模板中定义网络基础结构
-在本部分，我们将在新的 Azure 资源组中创建以下网络基础结构： 
+在本部分，我们将在新的 Azure 资源组中创建以下网络基础结构：
 
-  - 1 个虚拟网络 (VNET)，其地址空间为 10.0.0.0/16 
+  - 1 个虚拟网络 (VNET)，其地址空间为 10.0.0.0/16
   - 1 个子网，地址空间为 10.0.2.0/24
   - 2 个公共 IP 地址。 一个供虚拟机规模集负载均衡器使用，另一个用于连接到 SSH jumpbox。
 
@@ -155,7 +156,7 @@ ms.locfileid: "51228396"
 
 1. 按 I 键进入插入模式。
 
-1. 在文件的末尾粘贴以下代码，以公开虚拟机的完全限定域名 (FQDN)。 
+1. 在文件的末尾粘贴以下代码，以公开虚拟机的完全限定域名 (FQDN)。
 
   ```JSON
   resource "azurerm_resource_group" "vmss" {
@@ -210,7 +211,7 @@ ms.locfileid: "51228396"
 1. 初始化 Terraform。
 
   ```bash
-  terraform init 
+  terraform init
   ```
 
 1. 运行以下命令，在 Azure 中部署定义的基础结构。
@@ -235,8 +236,8 @@ ms.locfileid: "51228396"
 本部分介绍如何将以下资源添加到模板：
 
 - Azure 负载均衡器和规则，用于为应用程序提供服务并将其附加到本文前面所配置的公共 IP 地址
-- Azure 后端地址池，并将其分配到负载均衡器 
-- 运行状况探测端口，供应用程序使用并在负载均衡器上配置 
+- Azure 后端地址池，并将其分配到负载均衡器
+- 运行状况探测端口，供应用程序使用并在负载均衡器上配置
 - 虚拟机规模集，位于本文前面部署的 VNET 上运行的负载均衡器后面
 - 使用 [cloud-init](http://cloudinit.readthedocs.io/en/latest/) 在虚拟机规模集节点上添加 [Nginx](http://nginx.org/)。
 
@@ -359,7 +360,7 @@ ms.locfileid: "51228396"
     :wq
     ```
 
-1. 创建名为 `web.conf` 的文件，充当规模集中包含的虚拟机的 cloud-init 配置。 
+1. 创建名为 `web.conf` 的文件，充当规模集中包含的虚拟机的 cloud-init 配置。
 
     ```bash
     vi web.conf
@@ -407,7 +408,7 @@ ms.locfileid: "51228396"
   variable "admin_password" {
       description = "Default password for admin account"
   }
-  ``` 
+  ```
 
 1. 按 Esc 键退出插入模式。
 
@@ -430,14 +431,14 @@ ms.locfileid: "51228396"
 1. 在 Azure 中部署新资源。
 
   ```bash
-  terraform apply 
+  terraform apply
   ```
 
   命令的输出应如以下屏幕截图所示：
 
   ![Terraform 虚拟机规模集资源组](./media/terraform-create-vm-scaleset-network-disks-hcl/resource-group-contents.png)
 
-1. 打开浏览器并连接到该命令返回的 FQDN。 
+1. 打开浏览器并连接到该命令返回的 FQDN。
 
   ![浏览到 FQDN 后的结果](./media/terraform-create-vm-scaleset-network-disks-hcl/browser-fqdn.png)
 
@@ -545,7 +546,7 @@ SSH *jumpbox* 是为了访问网络中的其他服务器而“跳转”的单个
 1. 部署 jumpbox。
 
   ```bash
-  terraform apply 
+  terraform apply
   ```
 
 完成部署后，资源组的内容应与以下屏幕截图类似：
@@ -555,7 +556,7 @@ SSH *jumpbox* 是为了访问网络中的其他服务器而“跳转”的单个
 > [!NOTE]
 > 在部署的 jumpbox 和虚拟机规模集上已禁用密码登录功能。 请使用 SSH 登录以访问虚拟机。
 
-## <a name="environment-cleanup"></a>环境清理 
+## <a name="environment-cleanup"></a>环境清理
 
 若要删除本教程中创建的 Terraform 资源，请在 Cloud Shell 中输入以下命令：
 
@@ -566,9 +567,9 @@ terraform destroy
 销毁过程可能需要几分钟才能完成。
 
 ## <a name="next-steps"></a>后续步骤
-本文已介绍如何使用 Terraform 创建 Azure 虚拟机规模集。 请参阅以下附加资源，帮助自己详细了解 Azure 上的 Terraform： 
+本文已介绍如何使用 Terraform 创建 Azure 虚拟机规模集。 请参阅以下附加资源，帮助自己详细了解 Azure 上的 Terraform：
 
- [Microsoft.com 中的 Terraform 中心](https://docs.microsoft.com/azure/terraform/)  
- [Terraform Azure 提供程序文档](https://aka.ms/terraform)  
- [Terraform Azure 提供程序源](https://aka.ms/tfgit)  
+[Microsoft.com 中的 Terraform 中心](https://docs.microsoft.com/azure/terraform/)
+[Terraform Azure 提供程序文档](https://aka.ms/terraform)
+[Terraform Azure 提供程序源](https://aka.ms/tfgit)
  [Terraform Azure 模块](https://aka.ms/tfmodules)

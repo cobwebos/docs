@@ -48,7 +48,7 @@ items:
     - name: 使用 Azure 存储
       href: ../hdinsight-hadoop-use-blob-storage.md
       maintainContext: true
-    - name: 使用 Azure Data Lake Store
+    - name: 使用 Azure Data Lake Storage
       href: ../hdinsight-hadoop-use-data-lake-store.md
       maintainContext: true
   - name: 使用 Apache Hadoop 执行批量查询
@@ -63,7 +63,7 @@ items:
         href: apache-hadoop-use-hive-visual-studio.md
       - name: 使用 Apache Hive 视图
         href: apache-hadoop-use-hive-ambari-view.md
-      - name: 使用 Beeline
+      - name: 使用 Apache Hive Beeline
         href: apache-hadoop-use-hive-beeline.md
       - name: 使用 REST API
         href: apache-hadoop-use-hive-curl.md
@@ -105,7 +105,7 @@ items:
         href: apache-hadoop-use-pig-curl.md
       - name: 使用远程桌面
         href: apache-hadoop-use-pig-remote-desktop.md
-    - name: 将 DataFu 与 Apache Pig 配合使用
+    - name: 将 Apache DataFu 与 Apache Pig 配合使用
       href: apache-hadoop-use-pig-datafu-udf.md
     - name: 提交 Apache Hadoop 作业
       href: submit-apache-hadoop-jobs-programmatically.md
@@ -201,7 +201,7 @@ items:
     - name: 安装或更新 Mono
       href: ../hdinsight-hadoop-install-mono.md
       maintainContext: true
-    - name: 添加 Hive 库
+    - name: 添加 Apache Hive 库
       href: ../hdinsight-hadoop-add-hive-libraries.md
       maintainContext: true
     - name: 使用 Apache Giraph
@@ -337,7 +337,7 @@ items:
     - name: 上传 Apache Hadoop 作业的数据
       href: ../hdinsight-upload-data.md
       maintainContext: true
-    - name: 将多个 HDInsight 群集与 Data Lake Store 配合使用
+    - name: 将多个 HDInsight 群集与 Data Lake Storage 配合使用
       href: ../hdinsight-multiple-clusters-data-lake-store.md
       maintainContext: true
     - name: 使用 Apache Sqoop 导入和导出数据
@@ -460,7 +460,7 @@ items:
       maintainContext: true
     - name: 分析 Apache Hadoop 日志
       href: apache-hadoop-debug-jobs.md
-- name: 引用
+- name: 参考
   items:
   - name: 代码示例
     href: https://azure.microsoft.com/resources/samples/?service=hdinsight
@@ -559,9 +559,9 @@ items:
   - name: 适用于 HDInsight 的 Windows 工具
     href: ../hdinsight-hadoop-windows-tools.md
     maintainContext: true
-ms.openlocfilehash: 43ebb63bdda8c484ce1c2d2828293032ea90013c
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: f1d3fbab35ddedf3a1dc9360ecc4dbe38591e58c
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53321146"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53653690"

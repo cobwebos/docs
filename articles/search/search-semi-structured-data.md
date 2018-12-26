@@ -1,5 +1,5 @@
 ---
-title: 教程：在 Azure 搜索中从 Azure 云存储中搜索半结构化数据 | Microsoft Docs
+title: 教程：在 Azure 云存储中搜索半结构化数据 - Azure 搜索
 description: 在本教程中，了解如何使用 Azure 搜索来搜索半结构化 Azure blob 数据。
 author: HeidiSteen
 manager: cgronlun
@@ -8,12 +8,13 @@ ms.service: search
 ms.topic: tutorial
 ms.date: 07/12/2018
 ms.author: heidist
-ms.openlocfilehash: a7b006bd8469ddce1415ab6cb7c52c0171ae11cd
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.custom: seodec2018
+ms.openlocfilehash: 5608495ff2975cabefdb83e5794a7d92b318b5a5
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39005071"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53313813"
 ---
 # <a name="tutorial-search-semi-structured-data-in-azure-cloud-storage"></a>教程：在 Azure 云存储中搜索半结构化数据
 
@@ -281,7 +282,7 @@ ms.locfileid: "39005071"
 
 ## <a name="clean-up-resources"></a>清理资源
 
-完成本教程后，最快的清理方式是删除包含 Azure 搜索服务的资源组。 现在，你可以删除资源组以永久删除其中的所有内容。 在门户中，资源组名称显示在 Azure 搜索服务的“概述”页上。
+完成本教程后，最快的清理方式是删除包含 Azure 搜索服务的资源组。 现在，可以删除资源组以永久删除其中的所有内容。 在门户中，资源组名称显示在 Azure 搜索服务的“概述”页上。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -1,5 +1,5 @@
 ---
-title: 快速入门：通过适用于 Node.js 的必应图像搜索 SDK 搜索图像
+title: 快速入门：搜索图像 - 适用于 Node.js 的必应图像搜索 SDK
 description: 在本快速入门中，你将使用必应图像搜索 SDK（它是 API 的包装程序并包含相同的功能）创建你的第一个图像搜索。 此简单的 Node.js 应用程序发送图像搜索查询，分析 JSON 响应，并显示返回的第一个图像的 URL。
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
@@ -10,14 +10,15 @@ ms.component: bing-image-search
 ms.topic: quickstart
 ms.date: 08/28/2018
 ms.author: aahi
-ms.openlocfilehash: a1fda703c74549c351d8eb609819198d7e2856cf
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.custom: seodec2018
+ms.openlocfilehash: cb01b45e26975d44e30669e066b195f4e3abc90a
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52311263"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53251991"
 ---
-# <a name="quickstart-search-for-images-with-the-bing-image-search-sdk-and-nodejs"></a>快速入门：通过必应图像搜索 SDK 和 Node.js 搜索图像
+# <a name="quickstart-search-for-images-with-the-bing-image-search-sdk-for-nodejs"></a>快速入门：使用适用于 Node.js 的必应图像搜索 SDK 搜索图像
 
 在本快速入门中，你将使用必应图像搜索 SDK（它是 API 的包装程序并包含相同的功能）创建你的第一个图像搜索。 此简单的 JavaScript 应用程序发送图像搜索查询，分析 JSON 响应，并显示返回的第一个图像的 URL。
 

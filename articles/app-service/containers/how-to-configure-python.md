@@ -1,5 +1,5 @@
 ---
-title: 为 Linux 上的 Azure 应用服务配置 Python 应用
+title: 在 Linux 上配置 Python 应用 - Azure 应用服务
 description: 本教程介绍为 Linux 上的 Azure 应用服务创作和配置 Python 应用时可用的选项。
 services: app-service\web
 documentationcenter: ''
@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: quickstart
 ms.date: 10/09/2018
 ms.author: astay;cephalin;kraigb
-ms.custom: mvc
-ms.openlocfilehash: 9474b2d64c97b6e6d0fc06c3c448fa6e0515e70c
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.custom: seodec18
+ms.openlocfilehash: 1d9b0e356f0f65be44a533fe098282084b900d89
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51633642"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53249628"
 ---
 # <a name="configure-your-python-app-for-the-azure-app-service-on-linux"></a>为 Linux 上的 Azure 应用服务配置 Python 应用
 
@@ -28,7 +28,7 @@ ms.locfileid: "51633642"
 
 ## <a name="set-python-version"></a>设置 Python 版本
 
-提供两个基础映像：Python 3.6 和 Python 3.7。 可以使用所需的基于 Python 的映像创建一个应用。 例如，若要使用 Python 3.7 创建一个应用，请在 Cloud Shell 中运行以下命令：
+以下两个基础映像可用：Python 3.6 和 Python 3.7。 可以使用所需的基于 Python 的映像创建一个应用。 例如，若要使用 Python 3.7 创建一个应用，请在 Cloud Shell 中运行以下命令：
 
 ```azurecli-interactive
 az webapp create --resource-group <group_name> --plan <plan_name> --name <app_name> --runtime "PYTHON|3.7"
@@ -48,7 +48,7 @@ az webapp config set --resource-group <group_name> --name <app_name> --linux-fx-
 
 此容器具有以下特征：
 
-- 应用是结合附加参数 `--bind=0.0.0.0 --timeout 600`，使用 [Gunicorn WSGI HTTP Server](http://gunicorn.org/) 运行的。
+- 应用是结合附加参数 `--bind=0.0.0.0 --timeout 600`，使用 [Gunicorn WSGI HTTP Server](https://gunicorn.org/) 运行的。
 
 - 默认情况下，基础映像包含 Flask Web 框架，但容器支持符合 WSGI 规范并与 Python 3.7 兼容的其他框架，例如 Django。
 
@@ -59,9 +59,9 @@ az webapp config set --resource-group <group_name> --name <app_name> --linux-fx-
 在启动期间，Linux 上的应用服务容器将运行以下步骤：
 
 1. 检查并应用自定义启动命令（如果已提供）。
-1. 检查是否存在 Django 应用的 *wsgi.py* 文件，如果存在，则使用该文件启动 Gunicorn。
-1. 检查名为 *application.py* 的文件，如果找到，则使用 `application:app`（采用某个 Flask 应用）启动 Gunicorn。
-1. 如果未找到其他任何应用，则启动容器中内置的默认应用。
+2. 检查是否存在 Django 应用的 *wsgi.py* 文件，如果存在，则使用该文件启动 Gunicorn。
+3. 检查名为 *application.py* 的文件，如果找到，则使用 `application:app`（采用某个 Flask 应用）启动 Gunicorn。
+4. 如果未找到其他任何应用，则启动容器中内置的默认应用。
 
 以下部分提供了每个选项的更多详细信息。
 
@@ -100,7 +100,7 @@ gunicorn --bind=0.0.0.0 --timeout 600 hello:myapp
 gunicorn --bind=0.0.0.0 --timeout 600 --chdir website hello:myapp
 ```
 
-还可以将 Gunicorn 的任何附加参数添加到该命令，例如 `--workers=4`。 有关详细信息，请参阅[运行 Gunicorn](http://docs.gunicorn.org/en/stable/run.html) (docs.gunicorn.org)。
+还可以将 Gunicorn 的任何附加参数添加到该命令，例如 `--workers=4`。 有关详细信息，请参阅[运行 Gunicorn](https://docs.gunicorn.org/en/stable/run.html) (docs.gunicorn.org)。
 
 若要提供自定义命令，请执行以下步骤：
 

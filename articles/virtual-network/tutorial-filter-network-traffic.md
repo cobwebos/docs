@@ -14,19 +14,19 @@ ms.devlang: ''
 ms.topic: tutorial
 ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
-ms.date: 06/20/2018
+ms.date: 12/13/2018
 ms.author: jdial
 ms.custom: ''
-ms.openlocfilehash: a731c1e0617fe0ccf9d571dd2b7d0c2ad107bc9e
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: 68fdb158a7d4c723bffb54f33203120afb72a8ef
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37901392"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53385391"
 ---
-# <a name="tutorial-filter-network-traffic-with-a-network-security-group-using-the-azure-portal"></a>教程：在 Azure 门户中使用网络安全组筛选网络流量
+# <a name="tutorial-filter-network-traffic-with-a-network-security-group-using-the-azure-portal"></a>教程：使用 Azure 门户通过网络安全组筛选网络流量
 
-可以使用网络安全组来筛选虚拟网络子网的入站和出站网络流量。 网络安全组包含安全规则，这些规则可按 IP 地址、端口和协议筛选网络流量。 安全规则应用到子网中部署的资源。 本教程介绍如何执行以下操作：
+可以使用网络安全组来筛选虚拟网络子网的入站和出站网络流量。 网络安全组包含安全规则，这些规则可按 IP 地址、端口和协议筛选网络流量。 安全规则应用到子网中部署的资源。 本教程介绍如何执行下列操作：
 
 > [!div class="checklist"]
 > * 创建网络安全组和安全规则
@@ -38,7 +38,7 @@ ms.locfileid: "37901392"
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="log-in-to-azure"></a>登录 Azure
+## <a name="sign-in-to-azure"></a>登录 Azure
 
 通过 https://portal.azure.com 登录到 Azure 门户。
 
@@ -126,7 +126,7 @@ ms.locfileid: "37901392"
     | 目标             | 选择“应用程序安全组”，然后选择 **myAsgMgmtServers** 作为**应用程序安全组**。 |
     | 目标端口范围 | 输入 3389                                                                                                      |
     | 协议                | 选择 TCP                                                                                                      |
-    | Priority                | 输入 110                                                                                                       |
+    | 优先度                | 输入 110                                                                                                       |
     | 名称                    | Allow-RDP-All                                                                                                   |
 
     在本教程中，将在 Internet 上为分配给 *myAsgMgmtServers* 应用程序安全组的 VM 公开 RDP（端口 3389）。 在生产环境中，建议使用 VPN 或专用网络连接来连接到要管理的 Azure 资源，而不要向 Internet 公开端口 3389。

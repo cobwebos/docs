@@ -42,11 +42,11 @@ items:
     - name: Apache Kafka 和 Apache Storm (Java)
       href: ../hdinsight-apache-storm-with-kafka.md
       maintainContext: true
-    - name: 事件中心、存储和 Data Lake Store (Java)
+    - name: 事件中心、存储和 Data Lake Storage (Java)
       href: https://azure.microsoft.com/resources/samples/hdinsight-java-storm-eventhub/
     - name: 事件中心和 Apache Storm（C# 和 Java）
       href: apache-storm-develop-csharp-event-hub-topology.md
-    - name: Azure 存储/Data Lake Store (Java)
+    - name: Azure 存储/Data Lake Storage (Java)
       href: apache-storm-write-data-lake-store.md
     - name: 事件中心、Apache HBase (Java)
       href: apache-storm-sensor-data-analysis.md
@@ -156,7 +156,7 @@ items:
     - name: 上传 Apache Hadoop 作业的数据
       href: ../hdinsight-upload-data.md
       maintainContext: true
-    - name: 将多个 HDInsight 群集与 Data Lake Store 配合使用
+    - name: 将多个 HDInsight 群集与 Data Lake Storage 配合使用
       href: ../hdinsight-multiple-clusters-data-lake-store.md
       maintainContext: true
     - name: 使用 Apache Sqoop 导入和导出数据
@@ -249,7 +249,7 @@ items:
     - name: 监视群集性能
       href: ../hdinsight-key-scenarios-to-monitor.md
       maintainContext: true
-- name: 引用
+- name: 参考
   items:
   - name: 代码示例
     href: https://azure.microsoft.com/resources/samples/?service=hdinsight
@@ -316,9 +316,9 @@ items:
   - name: 适用于 HDInsight 的 Windows 工具
     href: ../hdinsight-hadoop-windows-tools.md
     maintainContext: true
-ms.openlocfilehash: 8003378277a74a4ca1f35c54794e4c4045113d8a
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: e9a96fb58a68b7ff896545e442a03eaa6c90a9c7
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53321829"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53635351"

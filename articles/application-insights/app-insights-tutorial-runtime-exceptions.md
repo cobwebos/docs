@@ -10,12 +10,12 @@ ms.service: application-insights
 ms.custom: mvc
 ms.topic: tutorial
 manager: carmonm
-ms.openlocfilehash: 48e338a08330e0674cc4410adf135ec546a5e1c3
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 9c36920d2d1d201a874abaeeaac9eb965e0e641b
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51230591"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53084000"
 ---
 # <a name="find-and-diagnose-run-time-exceptions-with-azure-application-insights"></a>使用 Azure Application Insights 查找并诊断运行时异常
 
@@ -75,20 +75,20 @@ Application Insights 收集应用程序中出现的所有故障，让用户能�
     ![异常详细信息](media/app-insights-tutorial-runtime-exceptions/failed-requests-exception.png)
 
 ## <a name="identify-failing-code"></a>确定故障代码
-Snapshot Debugger 收集应用程序中最频繁出现的异常的快照，帮助在生产中诊断其根本原因。  可在门户中查看调试快照，查看调用堆栈并检查每个调用堆栈帧中的变量。 随后可通过下载快照并在 Visual Studio 2017 中打开，对源代码进行调试。
+Snapshot Debugger 收集应用程序中最频繁出现的异常的快照，帮助在生产中诊断其根本原因。  可在门户中查看调试快照，查看调用堆栈并检查每个调用堆栈帧中的变量。 之后，你可以选择通过下载快照并在 Visual Studio 2017 Enterprise 中打开它来调试源代码。
 
 1. 在异常的属性中，单击“打开调试快照”。
 2. 此时会打开“调试快照”面板，并显示请求的调用堆栈。  单击任意方法来查看提交请求时所有局部变量的值。  从此示例的第一个方法开始，可发现局部变量没有值。
 
     ![调试快照](media/app-insights-tutorial-runtime-exceptions/debug-snapshot-01.png)
 
-4. 具有有效值的第一个调用是 **ValidZipCode**，可发现邮政编码通过无法转换为整数的字母提供。  这是代码中的错误，需要更正。
+3. 具有有效值的第一个调用是 **ValidZipCode**，可发现邮政编码通过无法转换为整数的字母提供。  这是代码中的错误，需要更正。
 
     ![调试快照](media/app-insights-tutorial-runtime-exceptions/debug-snapshot-02.png)
 
-5. 若要将此快照下载到我们可在其中找到需要更正的实际代码的 Visual Studio 中，请单击“下载快照”。
-6. 快照会加载到 Visual Studio 中。
-7. 现在可在 Visual Studio 中运行调试会话，帮助快速确定导致异常的代码行。
+4. 然后，可以选择将此快照下载到 Visual Studio 中，我们可在其中找到需要更正的实际代码。 为此，请单击“下载快照”。
+5. 快照会加载到 Visual Studio 中。
+6. 现在可在 Visual Studio Enterprise 中运行调试会话，以便快速确定导致异常的代码行。
 
     ![代码中的异常](media/app-insights-tutorial-runtime-exceptions/exception-code.png)
 

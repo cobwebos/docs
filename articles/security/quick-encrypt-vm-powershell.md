@@ -1,6 +1,6 @@
 ---
 title: 快速入门 - 使用 Azure PowerShell 加密 Windows IaaS VM | Microsoft Docs
-description: 本快速入门介绍了如何使用 Azure PowerShell 加密 Windows 虚拟机。
+description: 本快速入门介绍如何使用 Azure PowerShell 加密 Azure 中的 Windows IaaS VM。
 services: security
 documentationcenter: na
 author: mestew
@@ -13,16 +13,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/29/2018
 ms.author: mstewart
-ms.openlocfilehash: 531da9af871595e6f8bf5d22832367bbfb301dab
-ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
+ms.custom: seodec18
+ms.openlocfilehash: ee2a4be97b2b56f9c659639a34e821e37c188828
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43245865"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53087858"
 ---
 # <a name="quickstart-encrypt-a-windows-iaas-vm-with-azure-powershell"></a>快速入门：使用 Azure PowerShell 加密 Windows IaaS VM
 
-Azure 磁盘加密用于加密 Windows 和 Linux IaaS 虚拟机磁盘。 此解决方案与 Azure Key Vault 集成，用于控制和管理磁盘加密密钥与机密。 使用 Azure 磁盘加密，可以确保使用行业标准的加密技术轻松保护 IaaS VM。 在本快速入门中，需创建一个 Windows Server 2016 VM 并加密 OS 磁盘。 
+Azure 磁盘加密用于加密 Windows 和 Linux IaaS 虚拟机磁盘。 此解决方案与 Azure Key Vault 集成，用于控制和管理磁盘加密密钥与机密。 使用 Azure 磁盘加密，可以确保使用行业标准的加密技术轻松保护 IaaS VM。 在本快速入门中，需创建一个 Windows Server 2016 VM 并加密 OS 磁盘。
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
@@ -40,7 +41,7 @@ Azure 磁盘加密用于加密 Windows 和 Linux IaaS 虚拟机磁盘。 此解�
 ## <a name="sign-in-to-azure"></a>登录 Azure
 
 1. 右键单击“Windows PowerShell ISE”，然后单击“以管理员身份运行”。
-1. 在“管理员: Windows PowerShell ISE”窗口中，单击“视图”，并单击“显示脚本窗格”。
+1. 在“管理员:Windows PowerShell ISE”窗口中，单击“视图”，然后单击“显示脚本窗格”。
 1. 在脚本窗格中，键入以下 cmdlet： 
 
      ```azurepowershell
@@ -54,7 +55,7 @@ Azure 磁盘加密用于加密 Windows 和 Linux IaaS 虚拟机磁盘。 此解�
 ## <a name="bkmk_PrereqScript"></a> 运行 Azure 磁盘加密先决条件脚本
  **ADEPrereqScript.ps1** 会创建资源组和密钥保管库，并会设置密钥保管库访问策略。 此脚本还会在密钥保管库上创建资源锁，目的是防止它被意外删除。  
 
-1. 在“管理员: Windows PowerShell ISE”窗口中单击“文件”，然后单击“打开”。 导航到 **ADEPrereqScript.ps1** 文件，然后双击它。 此脚本会在脚本窗格中打开。
+1. 在“管理员:Windows PowerShell ISE”窗口中，单击“文件”，然后单击“打开”。 导航到 **ADEPrereqScript.ps1** 文件，然后双击它。 此脚本会在脚本窗格中打开。
 2. 单击“运行脚本”所对应的绿色箭头，或者使用 F5 来运行脚本。 
 3. 键入新**资源组**和新**密钥保管库**的名称。 请勿在本快速入门中使用现有的资源组或密钥保管库，因为我们会在稍后删除资源组。 
 4. 键入要在其中创建资源的位置，例如 **EastUS**。 使用 `Get-AzureRMLocation` 获取位置列表。
@@ -68,7 +69,7 @@ Azure 磁盘加密用于加密 Windows 和 Linux IaaS 虚拟机磁盘。 此解�
 ## <a name="create-a-virtual-machine"></a>创建虚拟机 
 现在需创建一个虚拟机，以便加密其磁盘。 将要使用的脚本会创建一个 RAM 为 8 GB 且 OS 磁盘为 30 GB 的 Windows Server 2016 VM。 
 
-1. 将脚本复制到“管理员: Windows PowerShell ISE”脚本窗格中，然后更改前三个变量。 资源组和位置需要与用于[先决条件脚本](#bkmk_PrereqScript)的资源组和位置相同。  
+1. 将脚本复制到“管理员:Windows PowerShell ISE”脚本窗格中，然后更改前三个变量。 资源组和位置需要与用于[先决条件脚本](#bkmk_PrereqScript)的资源组和位置相同。  
 
    ```azurepowershell
     # Variables for common values

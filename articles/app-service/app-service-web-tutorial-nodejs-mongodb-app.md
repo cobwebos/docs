@@ -1,5 +1,5 @@
 ---
-title: 在 Azure 中生成 Node.js 和 MongoDB Web 应用 | Microsoft Docs
+title: 使用 MongoDB 生成 Node.js 应用 - Azure 应用服务 | Microsoft Docs
 description: 了解如何使在 Node.js 应用在 Azure 中运行，并使用 MongoDB 连接字符串连接到 Cosmos DB 数据库。
 services: app-service\web
 documentationcenter: nodejs
@@ -14,21 +14,21 @@ ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 05/04/2017
 ms.author: cephalin
-ms.custom: mvc
-ms.openlocfilehash: 2363f7f2e17bfc451ea9fd5486ba60fbc8ccb993
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.custom: seodec18
+ms.openlocfilehash: 3666af764fa20a8343addedbddcdb12de0daf4a1
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49364279"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53251498"
 ---
-# <a name="tutorial-build-a-nodejs-and-mongodb-web-app-in-azure"></a>教程：在 Azure 中构建 Node.js 和 MongoDB Web 应用
+# <a name="tutorial-build-a-nodejs-and-mongodb-web-app-in-azure"></a>教程：在 Azure 中生成 Node.js 和 MongoDB Web 应用
 
 > [!NOTE]
 > 本文将应用部署到 Windows 上的应用服务。 若要部署到 Linux 上的应用服务，请参阅[在 Linux 上的 Azure 应用服务中构建 Node.js 和 MongoDB Web 应用](./containers/tutorial-nodejs-mongodb-app.md)。
 >
 
-Azure Web 应用提供高度可缩放的自修补 Web 托管服务。 本教程演示如何在 Azure 中创建 Node.js Web 应用，并将其连接至 MongoDB 数据库。 完成操作后，将拥有一个在 [Azure 应用服务](app-service-web-overview.md)上运行的 MEAN 应用程序（MongoDB、Express、AngularJS 和 Node.js）。 为简单起见，示例应用程序使用了 [MEAN.js Web 框架](http://meanjs.org/)。
+Azure Web 应用提供高度可缩放的自修补 Web 托管服务。 本教程演示如何在 Azure 中创建 Node.js Web 应用，并将其连接至 MongoDB 数据库。 完成操作后，将拥有一个在 [Azure 应用服务](app-service-web-overview.md)上运行的 MEAN 应用程序（MongoDB、Express、AngularJS 和 Node.js）。 为简单起见，示例应用程序使用了 [MEAN.js Web 框架](https://meanjs.org/)。
 
 ![在 Azure 应用服务中运行的 MEAN.js 应用](./media/app-service-web-tutorial-nodejs-mongodb-app/meanjs-in-azure.png)
 
@@ -49,10 +49,10 @@ Azure Web 应用提供高度可缩放的自修补 Web 托管服务。 本教程�
 完成本教程：
 
 1. [安装 Git](https://git-scm.com/)
-1. [安装 Node.js 和 NPM](https://nodejs.org/)
-1. [安装 Bower](https://bower.io/)（[MEAN.js](http://meanjs.org/docs/0.5.x/#getting-started) 必需的）
-1. [安装 Gulp.js](http://gulpjs.com/)（[MEAN.js](http://meanjs.org/docs/0.5.x/#getting-started) 必需的）
-1. [安装并运行 MongoDB 社区版](https://docs.mongodb.com/manual/administration/install-community/) 
+2. [安装 Node.js 和 NPM](https://nodejs.org/)
+3. [安装 Bower](https://bower.io/)（[MEAN.js](https://meanjs.org/docs/0.5.x/#getting-started) 必需的）
+4. [安装 Gulp.js](https://gulpjs.com/)（[MEAN.js](https://meanjs.org/docs/0.5.x/#getting-started) 必需的）
+5. [安装并运行 MongoDB 社区版](https://docs.mongodb.com/manual/administration/install-community/) 
 
 ## <a name="test-local-mongodb"></a>测试本地 MongoDB
 
@@ -310,10 +310,10 @@ remote: Handling node.js deployment.
 .
 remote: Deployment successful.
 To https://<app_name>.scm.azurewebsites.net/<app_name>.git
- * [new branch]      master -> master
+ * [new branch]      master -> master
 ``` 
 
-你可能会注意到，部署进程将在运行 `npm install` 之后运行 [Gulp](http://gulpjs.com/)。 应用服务在部署期间不会运行 Gulp 或 Grunt 任务，因此该示例存储库的根目录中有两个额外文件用于启用它： 
+你可能会注意到，部署进程将在运行 `npm install` 之后运行 [Gulp](https://gulpjs.com/)。 应用服务在部署期间不会运行 Gulp 或 Grunt 任务，因此该示例存储库的根目录中有两个额外文件用于启用它： 
 
 - _.deployment_ - 此文件告知应用服务将 `bash deploy.sh` 作为自定义部署脚本运行。
 - _deploy.sh_ - 自定义部署脚本。 如果查看该文件，则将看到它在 `npm install` 和 `bower install` 之后运行 `gulp prod`。 
@@ -336,7 +336,7 @@ http://<app_name>.azurewebsites.net
 
 选择“管理员”>“管理文章”，添加一些文章。 
 
-**祝贺你！** 正在 Azure 应用服务中运行数据驱动的 Node.js 应用。
+祝贺你！ 正在 Azure 应用服务中运行数据驱动的 Node.js 应用。
 
 ## <a name="update-data-model-and-redeploy"></a>更新数据模型和重新部署
 
@@ -492,7 +492,7 @@ az webapp log tail --name <app_name> --resource-group myResourceGroup
 
 ![在门户中导航到 Azure Web 应用](./media/app-service-web-tutorial-nodejs-mongodb-app/access-portal.png)
 
-默认情况下，门户将显示 Web 应用“概述”页。 在此页中可以查看应用的运行状况。 在此处还可以执行基本的管理任务，例如浏览、停止、启动、重新启动和删除。 该页左侧的选项卡显示可以打开的不同配置页。
+默认情况下，门户将显示 Web 应用**的**概述页。 在此页中可以查看应用的运行状况。 在此处还可以执行基本的管理任务，例如浏览、停止、启动、重新启动和删除。 该页左侧的选项卡显示可以打开的不同配置页。
 
 ![Azure 门户中的应用服务页](./media/app-service-web-tutorial-nodejs-mongodb-app/web-app-blade.png)
 

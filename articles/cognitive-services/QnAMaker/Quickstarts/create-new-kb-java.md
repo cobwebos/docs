@@ -10,20 +10,20 @@ ms.component: qna-maker
 ms.topic: quickstart
 ms.date: 11/06/2018
 ms.author: diberry
-ms.openlocfilehash: 47a900f6877355fb45481d7b04052387ab3619cf
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 87ba02b6a840d416d54e3129b5720b4f59820eb8
+ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51229588"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53413432"
 ---
-# <a name="quickstart-create-a-knowledge-base-in-qna-maker-using-java"></a>快速入门：通过 Java 在 QnA Maker 中创建知识库
+# <a name="quickstart-create-a-knowledge-base-in-qna-maker-using-java"></a>快速入门：在 QnA Maker 中使用 Java 创建知识库
 
-本快速入门将指导你完成以编程方式创建示例 QnA Maker 知识库的过程。 QnA Maker 自动从[数据源](../Concepts/data-sources-supported.md)中从半结构化内容（例如常见问题解答）中自动提取问题和解答。 用于知识库的模型是在 API 请求的正文中发送的 JSON 中定义的。 
+本快速入门将指导你完成以编程方式创建示例 QnA Maker 知识库的过程。 QnA Maker 自动从[数据源](../Concepts/data-sources-supported.md)中从半结构化内容（例如常见问题解答）中自动提取问题和解答。 用于知识库的模型是在 API 请求的正文中发送的 JSON 中定义的。
 
-[!INCLUDE [Code is available in Azure-Samples Github repo](../../../../includes/cognitive-services-qnamaker-java-repo-note.md)]
+[!INCLUDE [Code is available in Azure-Samples GitHub repo](../../../../includes/cognitive-services-qnamaker-java-repo-note.md)]
 
-## <a name="create-a-knowledge-base-file"></a>创建知识库文件 
+## <a name="create-a-knowledge-base-file"></a>创建知识库文件
 
 创建名为 `CreateKB.java` 的文件
 
@@ -34,7 +34,7 @@ ms.locfileid: "51229588"
 [!code-java[Add the required dependencies](~/samples-qnamaker-java/documentation-samples/quickstarts/create-knowledge-base/CreateKB.java?range=1-5 "Add the required dependencies")]
 
 ## <a name="add-the-required-constants"></a>添加必需的常量
-在上述必需的依赖项后，向 `CreateKB` 类添加访问 QnA Maker 所必需的常量。 将 `subscriptionKey` 变量的值替换为你自己的 QnA Maker 密钥。 不需要添加最后的大括号来结束该类；它位于本快速入门末尾的最终代码片段中。 
+在上述必需的依赖项后，向 `CreateKB` 类添加访问 QnA Maker 所必需的常量。 将 `subscriptionKey` 变量的值替换为你自己的 QnA Maker 密钥。 不需要添加最后的大括号来结束该类；它位于本快速入门末尾的最终代码片段中。
 
 [!code-java[Add the required constants](~/samples-qnamaker-java/documentation-samples/quickstarts/create-knowledge-base/CreateKB.java?range=26-34 "Add the required constants")]
 
@@ -48,7 +48,7 @@ ms.locfileid: "51229588"
 
 接下来，在 `CreateKB` 类中添加以下支持函数。
 
-1. 添加以下函数，用于以可读格式输出 JSON：    
+1. 添加以下函数，用于以可读格式输出 JSON：
 
     [!code-java[Add the PrettyPrint function](~/samples-qnamaker-java/documentation-samples/quickstarts/create-knowledge-base/CreateKB.java?range=82-87 "Add the KB model definition classes")]
 
@@ -56,7 +56,7 @@ ms.locfileid: "51229588"
 
     [!code-java[Add class to manage the HTTP response](~/samples-qnamaker-java/documentation-samples/quickstarts/create-knowledge-base/CreateKB.java?range=89-97 "Add class to manage the HTTP response")]
 
-3. 添加以下方法，以向 QnA Maker API 发出 POST 请求。 `Ocp-Apim-Subscription-Key` 是用于身份验证的 QnA Maker 服务密钥。 
+3. 添加以下方法，以向 QnA Maker API 发出 POST 请求。 `Ocp-Apim-Subscription-Key` 是用于身份验证的 QnA Maker 服务密钥。
 
     [!code-java[Add POST method](~/samples-qnamaker-java/documentation-samples/quickstarts/create-knowledge-base/CreateKB.java?range=99-121 "Add POST method")]
 
@@ -65,11 +65,11 @@ ms.locfileid: "51229588"
     [!code-java[Add GET method](~/samples-qnamaker-java/documentation-samples/quickstarts/create-knowledge-base/CreateKB.java?range=123-137 "Add GET method")]
 
 ## <a name="add-a-method-to-create-the-kb"></a>添加方法以创建知识库
-添加以下方法，以通过调用 Post 方法创建知识库。 
+添加以下方法，以通过调用 Post 方法创建知识库。
 
 [!code-java[Add CreateKB method](~/samples-qnamaker-java/documentation-samples/quickstarts/create-knowledge-base/CreateKB.java?range=139-144 "Add CreateKB method")]
 
-此 API 调用将返回包括操作 ID 的 JSON 响应。 使用操作 ID 来确定知识库是否已成功创建。 
+此 API 调用将返回包括操作 ID 的 JSON 响应。 使用操作 ID 来确定知识库是否已成功创建。
 
 ```JSON
 {
@@ -82,11 +82,11 @@ ms.locfileid: "51229588"
 ```
 
 ## <a name="add-a-method-to-get-status"></a>添加方法以获取状态
-添加以下方法以检查创建状态。 
+添加以下方法以检查创建状态。
 
 [!code-java[Add GetStatus method](~/samples-qnamaker-java/documentation-samples/quickstarts/create-knowledge-base/CreateKB.java?range=146-150 "Add GetStatus method")]
 
-重复调用，直到成功或失败： 
+重复调用，直到成功或失败：
 
 ```JSON
 {
@@ -100,10 +100,10 @@ ms.locfileid: "51229588"
 ```
 
 ## <a name="add-a-main-method"></a>添加 main 方法
-main 方法创建知识库，然后轮询状态。 _create_ **Operation ID** 在 POST 响应标头字段 **Location** 中返回，然后在 GET 请求中用作路由的一部分。 **`while` 循环重试获取状态（如果该操作未完成）。 
+main 方法创建知识库，然后轮询状态。 _create_ **Operation ID** 在 POST 响应标头字段 **Location** 中返回，然后在 GET 请求中用作路由的一部分。 **`while` 循环重试获取状态（如果该操作未完成）。
 
 [!code-java[Add main method](~/samples-qnamaker-java/documentation-samples/quickstarts/create-knowledge-base/CreateKB.java?range=152-191 "Add main method")]
- 
+
 ## <a name="compile-and-run-the-program"></a>编译并运行程序
 
 1. 确保 gson 库位于 `./libs` 目录中。 在命令行中，编译文件 `CreateKB.java`：
@@ -118,9 +118,9 @@ main 方法创建知识库，然后轮询状态。 _create_ **Operation ID** 在
     java -cp ",;libs/*" CreateKB
     ```
 
-创建知识库以后，即可在 QnA Maker 门户 - [My knowledge bases](https://www.qnamaker.ai/Home/MyServices)（我的知识库）页中查看它。    
+创建知识库以后，即可在 QnA Maker 门户 - [My knowledge bases](https://www.qnamaker.ai/Home/MyServices)（我的知识库）页中查看它。
 
-[!INCLUDE [Clean up files and KB](../../../../includes/cognitive-services-qnamaker-quickstart-cleanup-resources.md)] 
+[!INCLUDE [Clean up files and KB](../../../../includes/cognitive-services-qnamaker-quickstart-cleanup-resources.md)]
 
 ## <a name="next-steps"></a>后续步骤
 

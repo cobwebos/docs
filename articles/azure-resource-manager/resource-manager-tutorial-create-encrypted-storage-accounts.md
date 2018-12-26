@@ -1,6 +1,6 @@
 ---
-title: 创建用于部署已加密存储帐户的 Azure 资源管理器模板 | Microsoft Docs
-description: 使用 Visual Studio Code 创建用于部署已加密存储帐户的模板。
+title: 利用 Azure 资源管理器模板参考 | Microsoft Docs
+description: 利用 Azure 资源管理器模板参考创建用于部署加密存储帐户的模板。
 services: azure-resource-manager
 documentationcenter: ''
 author: mumian
@@ -10,17 +10,18 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 11/13/2018
+ms.date: 12/06/2018
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 6c75c0ce7d12f65878ec8cde0f265022c7beeb29
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.custom: seodec18
+ms.openlocfilehash: 1f831f2d962626de6f847e2fe775605b7bfca5b8
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51613505"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53097584"
 ---
-# <a name="tutorial-deploy-an-encrypted-azure-storage-account-with-resource-manager-template"></a>教程：使用资源管理器模板部署加密的 Azure 存储帐户
+# <a name="tutorial-utilize-the-azure-resource-manager-template-reference"></a>教程：利用 Azure 资源管理器模板参考
 
 了解如何查找模板架构信息，以及如何使用该信息创建 Azure 资源管理器模板。
 
@@ -77,9 +78,11 @@ ms.locfileid: "51613505"
 
 1. 浏览到 [Azure 模板](https://docs.microsoft.com/azure/templates/)。
 2. 在“按标题筛选”中，输入“存储帐户”。
-3. 选择“参考/模板参考/存储/存储帐户”，如以下屏幕截图中所示：
+3. 选择“参考/模板参考/存储/<Version>/存储帐户”，如以下屏幕截图中所示：
 
     ![资源管理器模板参考存储帐户](./media/resource-manager-tutorial-create-encrypted-storage-accounts/resource-manager-template-resources-reference-storage-accounts.png)
+
+    如果不知道选择哪个版本，请使用最新版本。
 
 4. 查找与加密相关的定义信息。  
 

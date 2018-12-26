@@ -1,24 +1,26 @@
 ---
-title: 快速入门：在 Azure 门户中创建机器学习服务工作区 - Azure 机器学习
-description: 使用 Azure 门户创建 Azure 机器学习工作区。 该工作区是基础的云端块，用于通过 Azure 机器学习进行机器学习模型的试验、训练和部署。
+title: 通过 Azure 门户快速入门
+titleSuffix: Azure Machine Learning service
+description: Azure 机器学习服务入门。 使用 Azure 门户创建工作区，该工作区是基础的云端块，用于试验、训练和部署机器学习模型。
 services: machine-learning
 ms.service: machine-learning
 ms.component: core
 ms.topic: quickstart
 ms.reviewer: sgilley
-author: rastala
-ms.author: roastala
+author: hning86
+ms.author: haining
 ms.date: 12/04/2018
-ms.openlocfilehash: 59887c46e3ce06eae250e106a01239a1ba969e7f
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.custom: seodec18
+ms.openlocfilehash: c215a3947069e572f73692ea54010c77d78ae4fd
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52875308"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53273555"
 ---
 # <a name="quickstart-use-the-azure-portal-to-get-started-with-azure-machine-learning"></a>快速入门：通过 Azure 门户开始使用 Azure 机器学习
 
-在本快速入门中，请使用 Azure 门户创建 Azure 机器学习工作区。 该工作区是基础的云端块，用于通过机器学习进行机器学习模型的试验、训练和部署。 本快速入门使用云资源，不需安装。 若要改为配置自己的 Jupyter Notebook 服务器，请参阅[快速入门：通过 Python 开始使用 Azure 机器学习](quickstart-create-workspace-with-python.md)。
+在本快速入门中，请使用 Azure 门户创建 Azure 机器学习工作区。 该工作区是基础的云端块，用于通过机器学习进行机器学习模型的试验、训练和部署。 本快速入门使用云资源，不需安装。 要改为配置自己的 Jupyter 笔记本服务器，请参阅[快速入门：通过 Python 开始使用 Azure 机器学习](quickstart-create-workspace-with-python.md)。
 
 > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE2F9Ad]
 
@@ -37,7 +39,7 @@ ms.locfileid: "52875308"
 
 所创建的资源可以用作其他机器学习服务教程和操作方法文章的先决条件。 与其他 Azure 服务一样，与机器学习关联的某些资源也存在限制，例如计算群集大小。 详细了解[默认限制以及如何增加配额](how-to-manage-quotas.md)。
 
-如果还没有 Azure 订阅，可以在开始前创建一个[免费帐户](https://aka.ms/AMLfree)。
+如果还没有 Azure 订阅，请在开始前创建免费帐户。 立即试用 [Azure 机器学习服务免费版或付费版](http://aka.ms/AMLFree)。
 
 
 ## <a name="create-a-workspace"></a>创建工作区 

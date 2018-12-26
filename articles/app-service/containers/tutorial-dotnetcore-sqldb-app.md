@@ -1,5 +1,5 @@
 ---
-title: 在 Linux 上的 Azure 应用服务中生成 .NET Core 和 SQL 数据库 Web 应用 | Microsoft Docs
+title: 在 Linux 上使用 SQL 数据库构建 .NET Core 应用 - Azure 应用服务 | Microsoft Docs
 description: 了解如何在 Linux 上的 Azure 应用服务中运行 .NET Core 应用，同时使其连接到 SQL 数据库。
 services: app-service\web
 documentationcenter: dotnet
@@ -14,13 +14,13 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 04/11/2018
 ms.author: cephalin
-ms.custom: mvc
-ms.openlocfilehash: ddea4621277303dd6c153205b683b4eea0151db0
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.custom: seodec18
+ms.openlocfilehash: cb81699671bd2a0e86838d043ad0a4442eb79a6c
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39432256"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53254235"
 ---
 # <a name="build-a-net-core-and-sql-database-web-app-in-azure-app-service-on-linux"></a>在 Linux 上的 Azure 应用服务中构建 .NET Core 和 SQL 数据库 Web 应用
 
@@ -32,7 +32,7 @@ ms.locfileid: "39432256"
 
 ![在 Azure 应用服务中运行的应用](./media/tutorial-dotnetcore-sqldb-app/azure-app-in-browser.png)
 
-学习如何：
+你将学习如何：
 
 > [!div class="checklist"]
 > * 在 Azure 中创建 SQL 数据库。
@@ -53,7 +53,7 @@ ms.locfileid: "39432256"
 
 ## <a name="create-local-net-core-app"></a>创建本地 .NET Core 应用
 
-在此步骤中，将设置本地 .NET Core 项目。
+在此步骤中，你将设置本地 .NET Core 项目。
 
 ### <a name="clone-the-sample-application"></a>克隆示例应用程序
 
@@ -66,7 +66,7 @@ git clone https://github.com/azure-samples/dotnetcore-sqldb-tutorial
 cd dotnetcore-sqldb-tutorial
 ```
 
-此示例项目包含使用[实体框架核心](https://docs.microsoft.com/ef/core/)的基本 CRUD（创建-读取-更新-删除）应用。
+此示例项目包含使用[Entity Framework Core](https://docs.microsoft.com/ef/core/)的基本 CRUD（创建-读取-更新-删除）应用。
 
 ### <a name="run-the-application"></a>运行应用程序
 
@@ -78,7 +78,7 @@ dotnet ef database update
 dotnet run
 ```
 
-在浏览器中导航至 `http://localhost:5000` 。 选择“新建”链接，创建一对待办事项。
+在浏览器中导航至 `http://localhost:5000` 。 选择“新建”链接，创建几个待办事项。
 
 ![已成功连接到 SQL 数据库](./media/tutorial-dotnetcore-sqldb-app/local-app-in-browser.png)
 
@@ -86,7 +86,7 @@ dotnet run
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-## <a name="create-production-sql-database"></a>创建生产 SQL 数据库
+## <a name="create-production-sql-database"></a>创建生产环境 SQL 数据库
 
 此步骤在 Azure 中创建一个 SQL 数据库。 应用部署到 Azure 后，它将使用该云数据库。
 
@@ -177,7 +177,7 @@ Server=tcp:<server_name>.database.windows.net,1433;Database=coreDB;User ID=<db_u
 az webapp config connection-string set --resource-group myResourceGroup --name <app name> --settings MyDbConnection='<connection_string>' --connection-string-type SQLServer
 ```
 
-接下来，将 `ASPNETCORE_ENVIRONMENT` 应用设置设置为_生产_。 由于对本地开发环境使用 SQLite，并对 Azure 环境使用 SQL 数据库，因此通过此设置，可了解是否正在 Azure 中运行。
+接下来，将 `ASPNETCORE_ENVIRONMENT` 应用设置设置为_生产_。 由于对本地开发环境使用 SQLite，并对 Azure 环境使用 SQL 数据库，因此通过此设置，你可以了解应用是否正在 Azure 中运行。
 
 下面的示例在 Azure Web 应用中配置 `ASPNETCORE_ENVIRONMENT` 应用设置。 替换 \<app_name> 占位符。
 
@@ -185,7 +185,7 @@ az webapp config connection-string set --resource-group myResourceGroup --name <
 az webapp config appsettings set --name <app_name> --resource-group myResourceGroup --settings ASPNETCORE_ENVIRONMENT="Production"
 ```
 
-### <a name="connect-to-sql-database-in-production"></a>在生产中连接到 SQL 数据库
+### <a name="connect-to-sql-database-in-production"></a>在生产环境中连接到 SQL 数据库
 
 在本地存储库中，打开 Startup.cs 并查找下列代码：
 
@@ -262,7 +262,7 @@ http://<app_name>.azurewebsites.net
 
 ![在 Azure 应用服务中运行的应用](./media/tutorial-dotnetcore-sqldb-app/azure-app-in-browser.png)
 
-**祝贺你！** 正在 Linux 应用服务中运行数据驱动的 .NET Core 应用。
+祝贺你！ 正在 Linux 应用服务中运行数据驱动的 .NET Core 应用。
 
 ## <a name="update-locally-and-redeploy"></a>在本地更新并重新部署
 
@@ -278,7 +278,7 @@ public bool Done { get; set; }
 
 ### <a name="run-code-first-migrations-locally"></a>本地运行 Code First 迁移
 
-运行几个命令更新本地数据库。
+运行以下命令更新本地数据库。
 
 ```bash
 dotnet ef migrations add AddProperty
@@ -296,7 +296,7 @@ dotnet ef database update
 
 打开 _Controllers\TodosController.cs_。
 
-找到 `Create()` 方法，并将 `Done` 添加到 `Bind` 属性中的属性列表。 完成后，`Create()` 方法签名应如下代码所示：
+找到 `Create()` 方法，并将 `Done` 添加到 `Bind` 属性中的属性列表。 完成后，`Create()` 方法签名应如以下代码所示：
 
 ```csharp
 public async Task<IActionResult> Create([Bind("ID,Description,CreatedDate,Done")] Todo todo)
@@ -330,7 +330,7 @@ public async Task<IActionResult> Create([Bind("ID,Description,CreatedDate,Done")
 
 ```csharp
 <td>
-    @Html.DisplayFor(modelItem => item.CreatedDate)
+    @Html.DisplayFor(modelItem => item.Done)
 </td>
 ```
 
@@ -344,7 +344,7 @@ public async Task<IActionResult> Create([Bind("ID,Description,CreatedDate,Done")
 dotnet run
 ```
 
-在浏览器中，导航到 `http://localhost:5000/`。 你现在可以添加一个待办事项，并检查“完成”。 然后，它应作为已完成项在主页中显示。 请牢记，由于未更改`Edit`视图，`Edit`视图不显示`Done`字段。
+在浏览器中，导航到 `http://localhost:5000/`。 你现在可以添加一个待办事项，并检查**Done**。 然后，它应作为已完成项在主页中显示。 请牢记，由于未更改`Edit`视图，`Edit`视图不显示`Done`字段。
 
 ### <a name="publish-changes-to-azure"></a>发布对 Azure 所做的更改
 
@@ -368,7 +368,7 @@ git push azure master
 
 ![在门户中导航到 Azure Web 应用](./media/tutorial-dotnetcore-sqldb-app/access-portal.png)
 
-默认情况下，门户将显示 Web 应用“概述”页。 在此页中可以查看应用的运行状况。 在此处还可以执行基本的管理任务，例如浏览、停止、启动、重新启动和删除。 该页左侧的选项卡显示可以打开的不同配置页。
+默认情况下，门户将显示 Web 应用**的**概述页。 在此页中可以查看应用的运行状况。 在此处还可以执行基本的管理任务，例如浏览、停止、启动、重新启动和删除。 该页左侧的选项卡显示可以打开的不同配置页。
 
 ![Azure 门户中的应用服务页](./media/tutorial-dotnetcore-sqldb-app/web-app-blade.png)
 

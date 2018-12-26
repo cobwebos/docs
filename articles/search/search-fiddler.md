@@ -1,5 +1,5 @@
 ---
-title: 在 Fiddler 或 Postman（Azure 搜索 REST）中探索 REST API | Microsoft Docs
+title: 在 Fiddler 或 Postman Web HTTP 测试工具中探索 REST API - Azure 搜索
 description: 如何使用 Fiddler 或 Postman 发出对 Azure 搜索的 HTTP 请求和 REST API 调用。
 author: HeidiSteen
 manager: cgronlun
@@ -9,12 +9,13 @@ ms.devlang: rest-api
 ms.topic: quickstart
 ms.date: 04/20/2018
 ms.author: heidist
-ms.openlocfilehash: eba41086da645c2ff5cee65f9395267227cb1c11
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.custom: seodec2018
+ms.openlocfilehash: f73ec81686575efde70b7f90239299ec4deca00c
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32190179"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53312967"
 ---
 # <a name="explore-azure-search-rest-apis-using-fiddler-or-postman"></a>使用 Fiddler 或 Postman 探索 Azure 搜索 REST API
 
@@ -65,7 +66,7 @@ REST 调用需要在每个请求中使用服务 URL 和访问密钥。 搜索服
 
 ### <a name="fiddler"></a>Fiddler
 
-构建一个如以下屏幕截图所示的请求。 选择 PUT 作为谓词。 Fiddler 添加 `User-Agent=Fiddler`。 可以在其下的新行中粘贴这两个额外的请求标头。 使用服务的管理员访问密钥，包括适用于服务的 content-type 和 api-key。
+构建如以下屏幕截图所示的请求。 选择 PUT 作为谓词。 Fiddler 添加 `User-Agent=Fiddler`。 可以在其下的新行中粘贴这两个额外的请求标头。 使用服务的管理员访问密钥，包括适用于服务的 content-type 和 api-key。
 
 ![Fiddler 请求标头][1]
 
@@ -74,7 +75,7 @@ REST 调用需要在每个请求中使用服务 URL 和访问密钥。 搜索服
 
 ### <a name="postman"></a>Postman
 
-构建一个如以下屏幕截图所示的请求。 选择 PUT 作为谓词。 
+构建如以下屏幕截图所示的请求。 选择 PUT 作为谓词。 
 
 ![Postman 请求标头][6]
 
@@ -217,7 +218,7 @@ REST 调用需要在每个请求中使用服务 URL 和访问密钥。 搜索服
 + 更改终结点，使之包括查询参数（包括搜索字符串）。 查询 URL 可能类似于 `https://my-app.search.windows.net/indexes/hotels/docs?search=motel&$count=true&api-version=2017-11-11`
 + 按原样保留请求标头
 
-此查询针对“motel”一词进行搜索，在搜索结果中返回文档的计数。 在单击“发送”后，请求和响应应该类似于以下针对 Postman 的屏幕截图。 状态代码应为 200。
+此查询针对“motel”一词进行搜索，在搜索结果中返回文档的计数。 在单击“发送”后，请求和响应应类似于以下针对 Postman 的屏幕截图。 状态代码应为 200。
 
  ![Postman 查询响应][11]
 

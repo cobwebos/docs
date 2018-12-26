@@ -1,25 +1,22 @@
 ---
-title: Azure Cosmos DB 常见问题解答 | Microsoft Docs
+title: 有关 Azure Cosmos DB 中不同 API 的常见问题
 description: 获取与 Azure Cosmos DB（一种全球分布式多模型数据库服务）相关的常见问题答案。 了解容量、性能级别和缩放。
 keywords: 数据库问题, 常见问题, documentdb, azure, Microsoft azure
 services: cosmos-db
 author: SnehaGunda
-manager: kfile
 ms.service: cosmos-db
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/15/2018
+ms.date: 12/06/2018
 ms.author: sngun
-ms.openlocfilehash: 50d606486a6d80f00424685494eae28a95fe361a
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.custom: seodec18
+ms.openlocfilehash: 70feaae718bc6ff8e3f956f0fbc6aa395ba27061
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52164704"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53410391"
 ---
-# <a name="azure-cosmos-db-faq"></a>Azure Cosmos DB 常见问题解答
-
-## <a name="azure-cosmos-db-fundamentals"></a>Azure Cosmos DB 基础知识
+# <a name="frequently-asked-questions-about-different-apis-in-azure-cosmos-db"></a>有关 Azure Cosmos DB 中不同 API 的常见问题
 
 ### <a name="what-happened-to-the-documentdb-api"></a>DocumentDB API 发生了什么情况？
 
@@ -80,7 +77,7 @@ Azure Cosmos DB 有一个不受架构影响的索引编制引擎，能够自动�
 若要询问技术问题，可以在下述两个问答论坛之一发帖：
 
 * [MSDN 论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurecosmosdb)
-* [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-cosmosdb)。 Stack Overflow 适合编程问题。 请确保提问[切中主题](https://stackoverflow.com/help/on-topic)并[尽可能提供较多的详细信息，使问题清楚明了，便于回答](https://stackoverflow.com/help/how-to-ask)。
+* [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-cosmosdb)。 Stack Overflow 适合编程问题。 请确保提问[切中主题](https://stackoverflow.com/help/on-topic)并[尽可能提供较多的详细信息，使问题清楚明了，便于回答](https://stackoverflow.com/help/how-to-ask)。
 
 若要请求新功能，请在 [Uservoice](https://feedback.azure.com/forums/263030-azure-cosmos-db) 上提交新的请求。
 
@@ -99,7 +96,7 @@ Azure Cosmos DB 有一个不受架构影响的索引编制引擎，能够自动�
 * 对于 SQL、Gremlin API 和表帐户，每个订阅一个容器。
 * 对于 MongoDB 帐户，每个订阅最多三个集合。
 * 10-GB 存储容量。
-* 全球复制面向后列 [Azure 区域](https://azure.microsoft.com/regions/)提供：美国中部、北欧和东南亚
+* 以下 [Azure 区域](https://azure.microsoft.com/regions/)中提供全局复制：美国中部、北欧和东南亚
 * 最大吞吐量为 5000 RU/s。
 * 订阅在 24 小时后到期，有效期最多延长 48 小时。
 * 不能为“试用 Azure Cosmos DB”帐户创建 Azure 支持票据；但会为拥有现有支持计划的订阅者提供支持。
@@ -128,10 +125,6 @@ Azure 门户中提供了 Azure Cosmos DB。 首先注册 Azure 订阅。 注册�
 
 容器级和数据库级吞吐量预配是不同的产品，在这两者之间切换需要将数据从源迁移到目标。 这意味着你需要创建新数据库或新集合，然后使用[批量执行程序库](bulk-executor-overview.md)或 [Azure 数据工厂](../data-factory/connector-azure-cosmos-db.md)迁移数据。
 
-### <a name="how-do-i-create-fixed-collection-with-partition-key"></a>如何使用分区键创建固定集合
-
-目前，可以使用 .Net SDK 的 [CreatePartitionedCollection](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/CollectionManagement/Program.cs#L118) 方法或使用 [Azure CLI](https://docs.microsoft.com/cli/azure/cosmosdb/collection?view=azure-cli-latest#az-cosmosdb-collection-create) 创建带有分区键吞吐量的集合。 目前不支持使用 Azure 门户创建固定集合。
-
 ### <a name="does-azure-cosmosdb-support-time-series-analysis"></a>Azure CosmosDB 是否支持时序分析？
 
 是，Azure CosmosDB 支持时序分析，下面是一个[时序模式](https://github.com/Azure/azure-cosmosdb-dotnet/tree/master/samples/Patterns)示例。 此示例演示如何使用更改源基于时序数据构建聚合的视图。 可以使用 spark 流式处理或其他流数据处理器扩展此方法。
@@ -154,7 +147,7 @@ GitHub 上提供了 SQL API [.NET](sql-api-dotnet-samples.md)、[Java](https://g
 
 ### <a name="does-the-sql-api-support-acid-transactions"></a>SQL API 是否支持 ACID 事务？
 
-是，SQL API 支持以 JavaScript 存储过程和触发器形式表示的跨文档事务。 事务以每个容器内的单个分区为范围，且以 ACID 语义执行，也就是“全有或全无”，与其他并发执行的代码和用户请求隔离。 如果在服务器端执行 JavaScript 应用程序代码的过程中引发了异常，则会回滚整个事务。 有关事务的详细信息，请参阅[数据库程序事务](programming.md#database-program-transactions)。
+是，SQL API 支持以 JavaScript 存储过程和触发器形式表示的跨文档事务。 事务以每个容器内的单个分区为范围，且以 ACID 语义执行，也就是“全有或全无”，与其他并发执行的代码和用户请求隔离。 如果在服务器端执行 JavaScript 应用程序代码的过程中引发了异常，则会回滚整个事务。 
 
 ### <a name="what-is-a-container"></a>什么是容器？
 
@@ -238,10 +231,10 @@ Azure Cosmos DB 强制实施严格的安全要求和标准。 Azure Cosmos DB �
 
 除了常见的 MongoDB 错误代码外，MongoDB API 还具有自己的特定错误代码：
 
-| 错误               | 代码  | Description  | 解决方案  |
+| 错误               | 代码  | Description  | 解决方法  |
 |---------------------|-------|--------------|-----------|
 | TooManyRequests     | 16500 | 使用的请求单位总数超过了集合的预配请求单位率，已达到限制。 | 考虑从 Azure 门户中对分配给一个容器或一组容器的吞吐量进行缩放，或者重试。 |
-| ExceededMemoryLimit | 16501 | 作为一种多租户服务，操作已超出客户端的内存配额。 | 通过限制性更强的查询条件缩小操作的作用域，或者通过 [Azure 门户](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)联系支持人员。 <br><br>示例：*&nbsp;&nbsp;&nbsp;&nbsp;db.getCollection('users').aggregate([<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{$match: {name: "Andy"}}, <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{$sort: {age: -1}}<br>&nbsp;&nbsp;&nbsp;&nbsp;])*) |
+| ExceededMemoryLimit | 16501 | 作为一种多租户服务，操作已超出客户端的内存配额。 | 通过限制性更强的查询条件缩小操作的作用域，或者通过 [Azure 门户](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)联系支持人员。 <br><br>示例：*&nbsp;&nbsp;&nbsp;&nbsp;db.getCollection('users').aggregate([<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{$match: {name:"Andy"}}, <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{$sort: {age: -1}}<br>&nbsp;&nbsp;&nbsp;&nbsp;])*) |
 
 ### <a name="is-the-simba-driver-for-mongodb-supported-for-use-with-azure-cosmosdb-mongodb-api"></a>用于 MongoDB 的 Simba 驱动程序是否受支持，可以与 Azure CosmosDB MongoDB API 配合使用？
 
@@ -306,7 +299,7 @@ Azure Cosmos DB 强制实施严格的安全要求和标准。 Azure Cosmos DB �
 
 * [User Voice](https://feedback.azure.com/forums/263030-azure-cosmos-db)
 * [MSDN 论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurecosmosdb)
-* [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-cosmosdb)。 Stack Overflow 适合编程问题。 请确保提问[切中主题](https://stackoverflow.com/help/on-topic)并[尽可能提供较多的详细信息，使问题清楚明了，便于回答](https://stackoverflow.com/help/how-to-ask)。
+* [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-cosmosdb)。 Stack Overflow 适合编程问题。 请确保提问[切中主题](https://stackoverflow.com/help/on-topic)并[尽可能提供较多的详细信息，使问题清楚明了，便于回答](https://stackoverflow.com/help/how-to-ask)。
 
 ### <a name="what-is-the-connection-string-that-i-need-to-use-to-connect-to-the-table-api"></a>连接到表 API 需要使用哪个连接字符串？
 
@@ -402,11 +395,11 @@ Azure Cosmos DB 在一致性、可用性和延迟之间提供合理的平衡。 
 
 ### <a name="when-global-distribution-is-enabled-how-long-does-it-take-to-replicate-the-data"></a>启用全局分发后，完成数据的复制需要多久？
 
-Azure Cosmos DB 会在本地区域持续提交数据，然后在几毫秒内将数据立即推送到其他区域。 此复制仅依赖于数据中心的往返时间 (RTT)。 若要详细了解 Azure Cosmos DB 的全局分发功能，请参阅 [Azure Cosmos DB：Azure 上的全球分布式数据库服务](distribute-data-globally.md)。
+Azure Cosmos DB 会在本地区域持续提交数据，然后在几毫秒内将数据立即推送到其他区域。 此复制仅依赖于数据中心的往返时间 (RTT)。 若要详细了解 Azure Cosmos DB 的全球分布功能，请参阅 [Azure Cosmos DB：Azure 上的全球分布式数据库服务](distribute-data-globally.md)。
 
 ### <a name="can-the-read-request-consistency-level-be-changed"></a>是否可以更改读取请求一致性级别？
 
-使用 Azure Cosmos DB 时，可以在容器级别（在表上）设置一致性级别。 使用 .NET SDK，可以通过在 app.config 文件中提供 TableConsistencyLevel 键值来更改级别。 可能的值包括：非常、有限过期、会话、一致前缀和最终。 有关详细信息，请参阅 [Azure Cosmos DB 中的可优化数据一致性级别](consistency-levels.md)。 关键是不能将请求的一致性级别设置为高于表的一致性级别。 例如，不能将表的一致性级别设置为“最终”，而将请求的一致性级别设置为“非常”。
+使用 Azure Cosmos DB 时，可以在容器级别（在表上）设置一致性级别。 使用 .NET SDK，可以通过在 app.config 文件中提供 TableConsistencyLevel 键值来更改级别。 可能的值包括：“强”、“有限过期”、“会话”、“一致前缀”和“最终”。 有关详细信息，请参阅 [Azure Cosmos DB 中的可优化数据一致性级别](consistency-levels.md)。 关键是不能将请求的一致性级别设置为高于表的一致性级别。 例如，不能将表的一致性级别设置为“最终”，而将请求的一致性级别设置为“非常”。
 
 ### <a name="how-does-the-table-api-handle-failover-if-a-region-goes-down"></a>在某个区域出现故障时，表 API 如何处理故障转移？
 
@@ -527,7 +520,7 @@ Azure Cosmos DB 是基于 SLA 的系统，在可用性、延迟和吞吐量方�
 
 ### <a name="for-cnet-development-should-i-use-the-microsoftazuregraphs-package-or-gremlinnet"></a>对于 C#/.NET 开发，我是否应使用 Microsoft.Azure.Graphs 包或 Gremlin.NET？
 
-Azure Cosmos DB Gremlin API 利用开源驱动程序作为服务的主要连接器。 因此，建议的选项是使用 [Apache Tinkerpop 支持的驱动程序](http://tinkerpop.apache.org/)。
+Azure Cosmos DB Gremlin API 利用开源驱动程序作为服务的主要连接器。 因此，建议的选项是使用 [Apache Tinkerpop 支持的驱动程序](https://tinkerpop.apache.org/)。
 
 ### <a name="how-are-rus-charged-when-running-queries-on-a-graph-database"></a>在图形数据库上运行查询时如何针对每秒的 RU 数目收费？
 
@@ -541,15 +534,15 @@ Azure Cosmos DB 利用[水平分区](partition-data.md)自动满足增加存储�
 
 ### <a name="how-can-i-protect-against-injection-attacks-using-gremlin-drivers"></a>如何使用 Gremlin 驱动程序防范注入式攻击？
 
-大多数本机 Tinkerpop Gremlin 驱动程序允许用户选择为执行查询提供参数字典。 这里提供了有关如何执行此操作的示例（分别以 [Gremlin.Net](http://tinkerpop.apache.org/docs/3.2.7/reference/#gremlin-DotNet) 和 [Gremlin Javascript](https://github.com/Azure-Samples/azure-cosmos-db-graph-nodejs-getting-started/blob/master/app.js) 编写）。
+大多数本机 Tinkerpop Gremlin 驱动程序允许用户选择为执行查询提供参数字典。 这里提供了有关如何执行此操作的示例（分别以 [Gremlin.Net](https://tinkerpop.apache.org/docs/3.2.7/reference/#gremlin-DotNet) 和 [Gremlin Javascript](https://github.com/Azure-Samples/azure-cosmos-db-graph-nodejs-getting-started/blob/master/app.js) 编写）。
 
-### <a name="why-am-i-getting-the-gremlin-query-compilation-error-unable-to-find-any-method-error"></a>为什么我收到“Gremlin 查询编译错误: 找不到任何方法”错误？
+### <a name="why-am-i-getting-the-gremlin-query-compilation-error-unable-to-find-any-method-error"></a>为什么我收到“Gremlin 查询编译错误:找不到任何方法”错误？
 
 Azure Cosmos DB Gremlin API 实现了 Gremlin 图面区域中定义的功能的子集。 有关受支持的步骤和详细信息，请参阅 [Gremlin 支持](gremlin-support.md)一文。
 
 最佳解决方法是使用受支持的功能重新编写所需的 Gremlin 步骤，因为 Azure Cosmos DB 支持所有基本 Gremlin 步骤。
 
-### <a name="why-am-i-getting-the-websocketexception-the-server-returned-status-code-200-when-status-code-101-was-expected-error"></a>为什么我收到“WebSocketException: 当状态代码应为‘101’时，服务器返回了状态代码‘200’”错误？
+### <a name="why-am-i-getting-the-websocketexception-the-server-returned-status-code-200-when-status-code-101-was-expected-error"></a>为什么我收到“WebSocketException:当状态代码应为‘101’时，服务器返回了状态代码‘200’”错误？
 
 正在使用不正确的终结点时，可能会引发此错误。 导致出现此错误的终结点采用以下模式：
 

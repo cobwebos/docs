@@ -9,14 +9,14 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/23/2018
 ms.author: hrasheed
-ms.openlocfilehash: 3c8e3b1186192d0d7c3fabb4e5a02cc4fcdf494d
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 06181eaf4a44a00ddeeedcd9c40edeae9157abd9
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51009787"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53438542"
 ---
-# <a name="generate-movie-recommendations-by-using-apache-mahout-with-hadoop-in-hdinsight-powershell"></a>将 Apache Mahout 与 HDInsight (PowerShell) 中的 Hadoop 配合使用生成电影推荐
+# <a name="generate-movie-recommendations-by-using-apache-mahout-with-apache-hadoop-in-hdinsight-powershell"></a>将 Apache Mahout 与 HDInsight 中的 Apache Hadoop 配合使用生成电影推荐 (PowerShell)
 
 [!INCLUDE [mahout-selector](../../includes/hdinsight-selector-mahout.md)]
 
@@ -26,27 +26,27 @@ ms.locfileid: "51009787"
 
 * 基于 Linux 的 HDInsight 群集。 有关创建该群集的信息，请参阅[开始在 HDInsight 中使用基于 Linux 的 Hadoop][getstarted]。
 
-    > [!IMPORTANT]
+    > [!IMPORTANT]  
     > Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight 在 Windows 上停用](hdinsight-component-versioning.md#hdinsight-windows-retirement)。
 
 * [Azure PowerShell](/powershell/azure/overview)
 
 ## <a name="recommendations"></a>使用 Azure PowerShell 生成推荐
 
-> [!WARNING]
+> [!WARNING]  
 > 本节中的作业通过使用 Azure PowerShell 运行。 许多通过 Mahout 提供的类当前无法与 Azure PowerShell 配合使用。 有关不适用于 Azure PowerShell 的类的列表，请参阅[故障排除](#troubleshooting)部分。
 >
-> 有关使用 SSH 连接到 HDInsight 和直接在群集上运行 Mahout 示例的示例，请参阅[使用 Mahout 和 HDInsight (SSH) 生成电影推荐](hadoop/apache-hadoop-mahout-linux-mac.md)。
+> 有关使用 SSH 连接到 HDInsight 并直接在群集上运行 Mahout 示例的示例，请参阅[使用 Apache Mahout 和 HDInsight 生成电影推荐 (SSH)](hadoop/apache-hadoop-mahout-linux-mac.md)。
 
 由 Mahout 提供的功能之一是推荐引擎。 此引擎接受 `userID`、`itemId` 和 `prefValue` 格式（项的用户首选项）的数据。 Mahout 使用该数据确定拥有类似项首选项的用户，这些首选项可用于提供建议。
 
 以下示例是对于建议流程的工作原理的简化演练：
 
-* **共现**：Joe、Alice 和 Bob 都喜欢电影《星球大战》、《帝国反击战》和《绝地归来》。 Mahout 可确定喜欢以上电影之一的用户也喜欢其他两部。
+* **共现**：Joe、Alice 和 Bob 都喜欢电影《星球大战》、《帝国反击战》和《绝地大反击》。 Mahout 可确定喜欢以上电影之一的用户也喜欢其他两部。
 
 * **共现**：Bob 和 Alice 还喜欢电影《幽灵的威胁》、《克隆人的进攻》和《西斯的复仇》。 Mahout 确定喜欢前面三部电影的用户也喜欢这些电影。
 
-* **类似性推荐**：由于 Joe 喜欢前三部电影，Mahout 会查看具有类似首选项的其他人喜欢的电影，但是 Joe 还未观看过（喜欢/评价）。 在这种情况下，Mahout 推荐《幽灵的威胁》、《克隆人的进攻》和《西斯的复仇》。
+* **类似性推荐**：由于 Joe 喜欢前三部电影，Mahout 会查看具有类似偏好的其他人已喜欢但 Joe 还未观看过（已喜欢/已评价）的电影。 在这种情况下，Mahout 推荐《幽灵的威胁》、《克隆人的进攻》和《西斯的复仇》。
 
 ### <a name="understanding-the-data"></a>了解数据
 
@@ -66,12 +66,12 @@ user-ratings.txt 中包含的数据具有 `userID`、`movieID`、`userRating` �
 
 使用以下 Windows PowerShell 脚本来运行作业，以将 Mahout 推荐引擎用于电影数据：
 
-> [!NOTE]
+> [!NOTE]  
 > 此文件会提示输入用于连接到 HDInsight 群集和运行作业的信息。 完成作业和下载 output.txt 文件可能需要几分钟时间。
 
 [!code-powershell[main](../../powershell_scripts/hdinsight/mahout/use-mahout.ps1?range=5-98)]
 
-> [!NOTE]
+> [!NOTE]  
 > Mahout 作业不删除在处理作业时创建的临时数据。 在示例作业中指定 `--tempDir` 参数，将临时文件隔离到特定目录中。
 
 Mahout 作业不会将输出返回到 STDOUT。 而是会将其作为 **part-r-00000** 存储在指定的输出目录中。 该脚本将此文件下载到工作站上的当前目录中的 **output.txt** 中。
@@ -202,15 +202,15 @@ foreach($blob in $blobs)
 * org.apache.mahout.classifier.sequencelearning.hmm.RandomSequenceGenerator
 * org.apache.mahout.classifier.df.tools.Describe
 
-要运行使用这些类的作业，请使用 SSH 连接到 HDInsight 群集，并从命令行运行这些作业。 有关使用 SSH 运行 Mahout 作业的示例，请参阅[使用 Mahout 和 HDInsight (SSH) 生成电影推荐](hadoop/apache-hadoop-mahout-linux-mac.md)。
+要运行使用这些类的作业，请使用 SSH 连接到 HDInsight 群集，并从命令行运行这些作业。 有关使用 SSH 运行 Mahout 作业的示例，请参阅[使用 Apache Mahout 和 HDInsight 生成电影推荐 (SSH)](hadoop/apache-hadoop-mahout-linux-mac.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
-现在，已经学习了如何使用 Mahout，因此可以探索通过其他方式来使用 HDInsight 上的数据：
+现在，已经学习了如何使用 Mahout，因此可以探索通过其他方式来使用 Apache HDInsight 上的数据：
 
-* [Hive 和 HDInsight 配合使用](hadoop/hdinsight-use-hive.md)
-* [Pig 和 HDInsight 配合使用](hadoop/hdinsight-use-pig.md)
-* [MapReduce 和 HDInsight 配合使用](hadoop/hdinsight-use-mapreduce.md)
+* [将 Apache Hive 和 HDInsight 配合使用](hadoop/hdinsight-use-hive.md)
+* [将 Apache Pig 和 HDInsight 配合使用](hadoop/hdinsight-use-pig.md)
+* [将 MapReduce 和 HDInsight 配合使用](hadoop/hdinsight-use-mapreduce.md)
 
 [build]: http://mahout.apache.org/developers/buildingmahout.html
 [aps]: /powershell/azureps-cmdlets-docs
@@ -218,8 +218,8 @@ foreach($blob in $blobs)
 [100k]: http://files.grouplens.org/datasets/movielens/ml-100k.zip
 [getstarted]:hadoop/apache-hadoop-linux-tutorial-get-started.md
 [upload]: hdinsight-upload-data.md
-[ml]: http://en.wikipedia.org/wiki/Machine_learning
-[forest]: http://en.wikipedia.org/wiki/Random_forest
+[ml]: https://en.wikipedia.org/wiki/Machine_learning
+[forest]: https://en.wikipedia.org/wiki/Random_forest
 [enableremote]: ./media/hdinsight-mahout/enableremote.png
 [connect]: ./media/hdinsight-mahout/connect.png
 [hadoopcli]: ./media/hdinsight-mahout/hadoopcli.png

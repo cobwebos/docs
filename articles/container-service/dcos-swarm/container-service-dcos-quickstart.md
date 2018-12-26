@@ -1,5 +1,5 @@
 ---
-title: Azure 容器服务快速入门 - 部署 DC/OS 群集
+title: （已弃用）Azure 容器服务快速入门 - 部署 DC/OS 群集
 description: Azure 容器服务快速入门 - 部署 DC/OS 群集
 services: container-service
 author: iainfoulds
@@ -9,14 +9,16 @@ ms.topic: quickstart
 ms.date: 02/26/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 4cd7f2284f3449fe8abdf1a6f8e85b9b0b712d7a
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: efaf82c3f378f572c289b587dbe5df1923a58c62
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46998553"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "53000520"
 ---
-# <a name="deploy-a-dcos-cluster"></a>部署 DC/OS 群集
+# <a name="deprecated-deploy-a-dcos-cluster"></a>（已弃用）部署 DC/OS 群集
+
+[!INCLUDE [ACS deprecation](../../../includes/container-service-deprecation.md)]
 
 DC/OS 提供了一个用于运行现代和容器化应用程序的分布式平台。 通过 Azure 容器服务，使预配生产就绪的 DC/OS 群集变得简单快捷。 此快速入门详细介绍了部署 DC/OS 群集和运行基本工作负载所需的基本步骤。
 

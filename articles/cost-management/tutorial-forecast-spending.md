@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 09/18/2018
+ms.date: 12/07/2018
 ms.topic: tutorial
 ms.service: cost-management
-ms.custom: ''
+ms.custom: seodec18
 manager: benshy
-ms.openlocfilehash: 25fa099bcd6fa3843deadb3dc39d4250624ead06
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.openlocfilehash: 2d83bab3686d274b9f37c0b0f7c92515801dbe70
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52274579"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53086447"
 ---
 # <a name="tutorial-forecast-future-spending"></a>教程：预测将来的支出
 
@@ -37,11 +37,11 @@ Cloudyn 包括了成本预测报表，可帮助你根据在一段时间内的使
 
 “本月预测成本”报表显示你的服务的成本。 它使用月初和上月的成本来显示预测的成本。 在门户顶部的报表菜单中，单击“成本” > “预测和预算” > “本月预测成本”。 下图显示了一个示例。
 
-![本月预测成本](./media/tutorial-forecast-spending/project-month01.png)
+![本月预测成本报表中显示的示例信息](./media/tutorial-forecast-spending/project-month01.png)
 
 在示例中，可以查看哪些服务的支出最高。 Azure 成本低于 AWS 成本。 如果希望查看 Azure VM 的成本预测详细信息，请在“筛选器”列表中选择“Azure/VM”。
 
-![Azure VM 本月预测成本](./media/tutorial-forecast-spending/project-month02.png)
+![显示 Azure VM 本月预测成本的示例](./media/tutorial-forecast-spending/project-month02.png)
 
 对于你关注的其他服务，按照与前面相同的基本步骤来查看每月成本预测。
 
@@ -49,11 +49,11 @@ Cloudyn 包括了成本预测报表，可帮助你根据在一段时间内的使
 
 在门户顶部的报表菜单中，单击“成本” > “预测和预算” > “年度预测成本”。 下图显示了一个示例。
 
-![年度预测成本报表](./media/tutorial-forecast-spending/project-annual01.png)
+![显示年度预测成本报表的示例](./media/tutorial-forecast-spending/project-annual01.png)
 
 在示例中，可以查看哪些服务的支出最高。 与每月示例一样，Azure 成本低于 AWS 成本。 如果希望查看 Azure VM 的成本预测详细信息，请在“筛选器”列表中选择“Azure/VM”。
 
-![VM 的年度预测成本](./media/tutorial-forecast-spending/project-annual02.png)
+![显示年度预测 VM 成本的示例](./media/tutorial-forecast-spending/project-annual02.png)
 
 在上图中，Azure VM 的年度预测成本为 $28,374。
 

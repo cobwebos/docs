@@ -11,12 +11,12 @@ ms.author: carlrab
 ms.reviewer: v-masebo
 manager: craigg
 ms.date: 11/28/2018
-ms.openlocfilehash: be3ac9fab6c89c65ad9673811e108cefe2c80d00
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: b768b50af7ad6736e5cc3c885e6ac5016976f48a
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52724241"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52958536"
 ---
 # <a name="quickstart-use-php-to-query-an-azure-sql-database"></a>快速入门：使用 PHP 查询 Azure SQL 数据库
 
@@ -32,9 +32,9 @@ ms.locfileid: "52724241"
 
 - 已为操作系统安装与 PHP 相关的软件：
 
-    - **MacOS**：安装 Homebrew 和 PHP，接着安装 ODBC 驱动程序和 SQLCMD，再安装 PHP Driver for SQL Server。 请参阅[步骤 1.2、1.3 和 2.1](https://www.microsoft.com/sql-server/developer-get-started/php/mac/)。
+    - **MacOS**，安装 PHP、ODBC 驱动程序，然后安装 PHP Driver for SQL Server。 请参阅[步骤 1、2 和 3](/sql/connect/php/installation-tutorial-linux-mac)。
 
-    - **Ubuntu**：安装 PHP 和其他所需包，然后安装 PHP Driver for SQL Server。 请参阅[步骤 1.2 和 2.1](https://www.microsoft.com/sql-server/developer-get-started/php/ubuntu/)。
+    - **Linux**，安装 PHP、ODBC 驱动程序，然后安装 PHP Driver for SQL Server。 请参阅[步骤 1、2 和 3](/sql/connect/php/installation-tutorial-linux-mac)。
 
     - **Windows**：安装用于 IIS Express 的 PHP 和 Chocolatey，然后安装 ODBC 驱动程序和 SQLCMD。 请参阅[步骤 1.2 和 1.3](https://www.microsoft.com/sql-server/developer-get-started/php/windows/)。
 

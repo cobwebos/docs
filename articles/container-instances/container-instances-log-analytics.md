@@ -7,12 +7,12 @@ ms.service: container-instances
 ms.topic: overview
 ms.date: 07/17/2018
 ms.author: danlep
-ms.openlocfilehash: 7f4af06222141eb0e143e67ba4bfcdcb2f5f92fa
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: 4dbcccc1a4b23ca37918495dc536df08a70cade7
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51613998"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53337880"
 ---
 # <a name="container-instance-logging-with-azure-log-analytics"></a>使用 Azure Log Analytics 进行容器实例日志记录
 
@@ -24,7 +24,7 @@ Log Analytics 工作区可以集中存储和查询来自 Azure 资源、本地�
 
 若要在容器实例中启用日志记录，需具备以下条件：
 
-* [Log Analytics 工作区](../log-analytics/log-analytics-quick-create-workspace.md)
+* [Log Analytics 工作区](../azure-monitor/learn/quick-create-workspace.md)
 * [Azure CLI](/cli/azure/install-azure-cli)（或 [Cloud Shell](/azure/cloud-shell/overview)）
 
 ## <a name="get-log-analytics-credentials"></a>获取 Log Analytics 凭据
@@ -44,7 +44,7 @@ Azure 容器实例需要权限才能向 Log Analytics 工作区发送数据。 �
 
 有了 Log Analytics 工作区 ID 和主密钥以后，即可创建启用日志记录的容器组。
 
-下面的示例演示了创建包含单个 [fluentd][fluentd] 容器的容器组的两种方式：Azure CLI、Azure CLI 与 YAML 模板。 Fluentd 容器在其默认配置中生成多行输出。 由于该输出发送到 Log Analytics 工作区，因此适用于演示如何查看和查询日志。
+下面的示例演示了使用单个 [fluentd][fluentd] 容器创建容器组的两种方式：Azure CLI 和带有 YAML 模板的 Azure CLI。 Fluentd 容器在其默认配置中生成多行输出。 由于该输出发送到 Log Analytics 工作区，因此适用于演示如何查看和查询日志。
 
 ### <a name="deploy-with-azure-cli"></a>使用 Azure CLI 进行部署
 
@@ -135,7 +135,7 @@ ContainerInstanceLog_CL
 若要详细了解如何在 Azure Log Analytics 中查询日志和配置警报，请参阅：
 
 * [了解 Log Analytics 中的日志搜索](../log-analytics/log-analytics-log-search.md)
-* [Azure Monitor 中的统一警报](../monitoring-and-diagnostics/monitoring-overview-alerts.md)
+* [Azure Monitor 中的统一警报](../azure-monitor/platform/alerts-overview.md)
 
 
 ### <a name="monitor-container-cpu-and-memory"></a>监视容器 CPU 和内存

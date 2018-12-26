@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: overview
-ms.date: 10/30/2018
+ms.date: 12/11/2018
 ms.author: alkohli
-ms.openlocfilehash: 5e4461a910f13c5047c4a2aadd7326c4e12c533f
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: f437f1fd61cfdaa4d2ff908f6e294fa0c679b9a5
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51238125"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53273046"
 ---
 # <a name="what-is-azure-data-box-disk-preview"></a>什么是 Azure Data Box 磁盘？ （预览版）
 
@@ -59,7 +59,7 @@ A.  在预览阶段，Data Box Disk 在美国、加拿大、澳大利亚和欧�
 A. 美国、加拿大、澳大利亚、西欧和北欧的所有区域支持 Data Box Disk 预览版。 仅支持 Azure 公有云区域。 不支持 Azure 政府版或其他主权云。
 
 ### <a name="q-whom-should-i-contact-if-i-encounter-any-issues--with-data-box-disks"></a>问： 如果 Data Box 磁盘出现任何问题，我应该与谁联系？
-A. 如果遇到 Data Box 磁盘相关的任何问题，请联系 [Data Box 磁盘支持](mailto:expresspodsupport@microsoft.com)。
+A. 如果 Data Box Disk 出现任何问题，请联系 [Microsoft 支持部门](https://docs.microsoft.com/azure/databox/data-box-disk-contact-microsoft-support)。
 
 ## <a name="configure-and-connect"></a>配置和连接
  
@@ -108,7 +108,7 @@ A.  使用 Robocopy、Diskboss 等 SMB 复制工具，甚至是 Windows 文件�
 ### <a name="q-are-there-any-tips-to-speed-up-the-data-copy"></a>问： 在加快数据复制方面你们是否有诀窍？
 A.  若要加快复制过程：
 
-- 使用多个数据复制流。 例如，在 Robocopy 中使用多线程选项。 有关所用的确切命令的详细信息，请转到[教程：将数据复制到 Azure Data Box 磁盘并验证](data-box-disk-deploy-copy-data.md#copy-data-to-disks)。
+- 使用多个数据复制流。 例如，在 Robocopy 中使用多线程选项。 有关所用的确切命令的详细信息，请转到[教程：将数据复制到 Azure Data Box Disk 并进行验证](data-box-disk-deploy-copy-data.md#copy-data-to-disks)。
 - 使用多个会话。
 - 不通过网络共享进行复制（否则可能受到网络速度的限制）可确保使数据驻留在磁盘所连接到计算机本地。
 - 在整个复制过程中，确保使用 USB 3.0 或更高版本。 下载并使用 [USBView 工具](https://docs.microsoft.com/windows-hardware/drivers/debugger/usbview)，以识别已连接到计算机的 USB 控制器和 USB 设备。

@@ -8,14 +8,14 @@ ms.component: cosmosdb-table
 ms.topic: overview
 ms.date: 11/20/2017
 ms.author: sngun
-ms.openlocfilehash: 5d50b50d05877b213f0211a6ca8fa89f69231f52
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 2647065d251caea571e2bfcd5703bbb3bec08345
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52866485"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53074296"
 ---
-# <a name="introduction-to-azure-cosmos-db-table-api"></a>Azure Cosmos DB：表 API 简介
+# <a name="introduction-to-azure-cosmos-db-table-api"></a>Azure Cosmos DB 简介：表 API
 
 [Azure Cosmos DB](introduction.md) 提供的表 API 适用于为 Azure 表存储编写且需要以下高级功能的应用程序：
 
@@ -23,7 +23,7 @@ ms.locfileid: "52866485"
 * 全球范围内[专用的吞吐量](partition-data.md)。
 * 99% 的情况下低至个位数的毫秒级延迟。
 * 保证高可用性。
-* [自动编制辅助索引](http://www.vldb.org/pvldb/vol8/p1668-shukla.pdf)。
+* [自动编制辅助索引](https://www.vldb.org/pvldb/vol8/p1668-shukla.pdf)。
 
 为 Azure 表存储编写的应用程序无需更改代码便可使用表 API 迁移到 Azure Cosmos DB，并可充分利用高级功能。 表 API 包含可用于 .NET、Java、Python 和 Node.js 的客户端 SDK。
 

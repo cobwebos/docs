@@ -3,7 +3,7 @@ items:
   href: index.yml
 - name: 概述
   items:
-  - name: 关于 Azure Cosmos DB
+  - name: 欢迎使用 Azure Cosmos DB
     href: introduction.md
 - name: 快速入门
   items:
@@ -192,7 +192,7 @@ items:
       href: compliance.md
 - name: 多模型 API
   items:
-  - name: SQL API 文档
+  - name: SQL API
     items:
     - name: 模型文档数据
       href: modeling-data.md
@@ -272,7 +272,7 @@ items:
           href: bulk-executor-dot-net.md
         - name: 批量执行程序 - Java 库
           href: bulk-executor-java.md
-    - name: 引用
+    - name: 参考
       items:
       - name: .NET
         href: sql-api-sdk-dotnet.md
@@ -296,11 +296,11 @@ items:
         href: /rest/api/cosmos-db/
       - name: REST 资源提供程序
         href: /rest/api/cosmos-db-resource-provider/
-  - name: MongoDB API 文档
+  - name: MongoDB API
     items:
     - name: 介绍
       href: mongodb-introduction.md
-    - name: MongoDB 支持
+    - name: 线路协议支持
       href: mongodb-feature-support.md
     - name: 教程
       items:
@@ -346,11 +346,11 @@ items:
         href: mongodb-time-to-live.md
       - name: 管理数据索引编制
         href: mongodb-indexing.md
-  - name: Gremlin API 文档
+  - name: Gremlin API
     items:
     - name: 介绍
       href: graph-introduction.md
-    - name: Gremlin 支持
+    - name: 线路协议支持
       href: gremlin-support.md
     - name: 教程
       items:
@@ -362,11 +362,11 @@ items:
         href: bulk-executor-graph-dotnet.md
       - name: 关系图数据分区
         href: graph-partitioning.md
-  - name: Cassandra API 文档
+  - name: Cassandra API
     items:
     - name: 介绍
       href: cassandra-introduction.md
-    - name: Cassandra 支持
+    - name: 线路协议支持
       href: cassandra-support.md
     - name: 教程
       items:
@@ -400,7 +400,7 @@ items:
         href: cassandra-spark-aggregation-ops.md
       - name: 复制表数据
         href: cassandra-spark-table-copy-ops.md
-  - name: 表 API 文档
+  - name: 表 API
     items:
     - name: 介绍
       href: table-introduction.md
@@ -438,7 +438,7 @@ items:
         href: table-storage-how-to-use-ruby.md
       - name: F#
         href: https://docs.microsoft.com/dotnet/articles/fsharp/using-fsharp-on-azure/table-storage
-    - name: 引用
+    - name: 参考
       items:
       - name: .NET
         href: table-sdk-dotnet.md
@@ -615,9 +615,9 @@ items:
       href: use-cases.md
     - name: 社交媒体应用
       href: social-media-apps.md
-ms.openlocfilehash: 34fc77f13f0c0bd394d96e19b86a1632ce2846b1
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: 0afac84a08028219e5aa0acdc94ec9775d16c368
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53410102"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53728017"

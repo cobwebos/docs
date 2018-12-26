@@ -1,5 +1,5 @@
 ---
-title: 快速入门 - 使用 Azure CLI 在 Azure 中创建专用 Docker 注册表
+title: 快速入门 - 在 Azure 中创建专用 Docker 注册表 - Azure CLI
 description: 快速了解如何使用 Azure CLI 创建专用 Docker 容器注册表。
 services: container-registry
 author: dlepow
@@ -7,15 +7,15 @@ ms.service: container-registry
 ms.topic: quickstart
 ms.date: 03/03/2018
 ms.author: danlep
-ms.custom: H1Hack27Feb2017, mvc
-ms.openlocfilehash: 57c72056b669865278fa8109cd7f4963a1f0887a
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.custom: seodec18, H1Hack27Feb2017, mvc
+ms.openlocfilehash: e75a2d126680c71542aa04bae5a30ea7c376cea1
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48855232"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53255918"
 ---
-# <a name="quickstart-create-a-container-registry-using-the-azure-cli"></a>快速入门：使用 Azure CLI 创建容器注册表
+# <a name="quickstart-create-a-private-container-registry-using-the-azure-cli"></a>快速入门：使用 Azure CLI 创建专用容器注册表
 
 Azure 容器注册表是托管的 Docker 容器注册表服务，用于存储专用的 Docker 容器映像。 本指南详述了如何通过 Azure CLI 创建一个 Azure 容器注册表实例，如何将容器映像推送到注册表中，以及如何最终将容器从注册表部署到 Azure 容器实例 (ACI) 中。
 

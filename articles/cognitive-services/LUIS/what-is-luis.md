@@ -1,20 +1,20 @@
 ---
 title: 什么是语言理解 (LUIS) - Azure 认知服务 | Microsoft Docs
-description: 语言理解 (LUIS) 是一种基于云的 API 服务，可在用户对话的自然语言文本中应用自定义机器学习智能，以便预测整体含义并提炼出相关的详细信息。 LUIS 的客户端应用程序可以是任何传统的应用程序，只要其能够以自然语言与用户通信并完成任务即可。 这些客户端应用程序包括社交媒体应用、聊天机器人以及支持语音的桌面应用程序。
+description: 语言理解 (LUIS) 是一种基于云的 API 服务，可在用户对话的自然语言文本中应用自定义机器学习智能，以便预测整体含义并提炼出相关的详细信息。
 services: cognitive-services
 author: diberry
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: overview
-ms.date: 10/06/2018
+ms.date: 12/10/2018
 ms.author: diberry
-ms.openlocfilehash: 28580a29c2ffaadfa3b3ea26cb28f103d883d576
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.openlocfilehash: ca92a6a2eb92e3b7fed9452d135c0a6bce55a57c
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49637266"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53273232"
 ---
 # <a name="what-is-language-understanding-luis"></a>什么是语言理解 (LUIS)？
 
@@ -41,32 +41,6 @@ LUIS 应用一旦发布，客户端应用程序即可向 LUIS 自然语言处理
 
 LUIS 应用提供的智能有助于客户端应用程序进行智能选择。 LUIS 不提供这些选择。 
 
-<!--
-
-### Example of JSON endpoint response
-
-The minimum JSON endpoint response contains the query utterance, and the top scoring intent. It can also extract data such as the following **Contact Type** entity. 
-
-```JSON
-{
-  "query": "I want to call my HR rep.",
-  "topScoringIntent": {
-    "intent": "HRContact",
-    "score": 0.921233
-  },
-  "entities": [
-    {
-      "entity": "call",
-      "type": "Contact Type",
-      "startIndex": 10,
-      "endIndex": 13,
-      "score": 0.7615982
-    }
-  ]
-}
-```
--->
-
 <a name="Key-LUIS-concepts"></a>
 <a name="what-is-a-luis-model"></a>
 
@@ -89,41 +63,6 @@ LUIS 模型从称为**[意向](luis-concept-intent.md)** 的用户意向的类�
 |“你的店铺何时开门？”|店铺营业时间和位置|开门|
 |“安排下午 1 点与分销部的何石谈话”|安排谈话|下午 1 点，何石|
 
-<!--
-## What is a natural language model?
-
-A model begins with a list of general user intentions, called _intents_, such as "Book Flight" or "Contact Help Desk." You provide user's example text, called _example utterances_ for the intents. Then mark significant words or phrases in the utterance, called _entities_.
-
-
-A model includes:
-
-* **[intents](#intents)**: categories of user intentions (overall intended action or result)
-* **[entities](#entities)**: specific types of data in utterances such as number, email, or name contained in text
-* **[example utterances](#example-utterances)**: example text a user might enter in the client application
-
-### Intents 
-
-An [intent](luis-how-to-add-intents.md), short for _intention_, is a purpose or goal expressed in a user's utterance, such as booking a flight, paying a bill, or finding a news article. You create an intent for each action. A LUIS travel app may define an intent named "BookFlight." Each prediction query includes the top scored intent. 
-
-The client application can use the top scoring intent to trigger an action. For example, when "BookFlight" intent is returned from LUIS, a client application could trigger an API call to an external service for booking a plane ticket.
-
-### Entities
-
-An [entity](luis-how-to-add-entities.md) represents detailed information found within the utterance that is relevant to the user's request. For example, in the utterance "Book a ticket to Paris",  a single ticket is requested, and "Paris" is a location. Two entities are found "a ticket" indicating a single ticket and "Paris" indicating the destination. 
-
-After LUIS returns the entities found in the user’s utterance, the client application can use the list of entities as parameters to trigger an action. For example, booking a flight requires entities like the travel destination, date, and airline.
--->
-<!--
-### Example utterances
-
-An example [utterance](luis-how-to-add-example-utterances.md) is text input from the user that the client application needs to understand. It may be a sentence, like "Book a ticket to Paris", or a fragment of a sentence, like "Booking" or "Paris flight." Utterances aren't always well-formed, and there can be many utterance variations for a particular intent. Add 10 to 20 example utterances to each intent and mark entities in every utterance.
-
-|Example user utterance|Intent|Entities|
-|-----------|-----------|-----------|
-|"Book a flight to __Seattle__?"|BookFlight|Seattle|
-|"When does your store __open__?"|StoreHoursAndLocation|open|
-|"Schedule a meeting at __1pm__ with __Bob__ in Distribution"|ScheduleMeeting|1pm, Bob|
--->
 ## <a name="query-prediction-endpoint"></a>查询预测终结点
 
 在生成模型并将其发布到终结点以后，客户端应用程序会将话语发送到已发布的预测[终结点](https://aka.ms/luis-endpoint-apis) API。 API 将模型应用于要分析的文本。 API 使用 JSON 格式的预测结果进行响应。  
@@ -152,24 +91,8 @@ JSON 终结点响应至少包含查询话语和得分最高的意向。 它还�
 ## <a name="improve-model-prediction"></a>改进模型预测
 
 在 LUIS 模型发布和接收实时用户话语之后，LUIS 提供了多种方式来提升预测的准确性：针对终结点话语的[主动学习](luis-concept-review-endpoint-utterances.md)、针对专业领域字词内容的[短语列表](luis-concept-feature.md)，以及用于减少所需话语数的[模式](luis-concept-patterns.md)。
-<!--
-### Active learning
 
-In the [active learning](luis-how-to-review-endoint-utt.md) process, LUIS allows you to adapt the LUIS app to real-world utterances by selecting utterances it received at the endpoint for your review. You can accept or correct the endpoint prediction, retrain, and republish. LUIS learns quickly with this iterative process, taking the minimum amount of your time and effort. 
-
-### Phrase lists 
-
-LUIS provides [phrases lists](luis-concept-feature.md) so you can indicate important words or phrases of the model. LUIS uses these lists to add additional significance to those words and phrases that would otherwise not be found in the model.
-
-### Patterns 
-
-Patterns allow you to simplify an intent's utterance collection into common [templates](luis-concept-patterns.md) of word choice and word order. This allows LUIS to learn quicker by needing fewer example utterances for the intents. Patterns are a hybrid system of regular expressions and machine-learned expressions. 
--->
 <a name="using-luis"></a>
-<!--
-## Authoring and accessing models
-Author LUIS from the [authoring](https://aka.ms/luis-authoring-apis) APIs or from the LUIS portal. Query the published prediction endpoint of the model from the [endpoint](https://aka.ms/luis-endpoint-apis) APIs.
--->
 
 ## <a name="development-lifecycle"></a>开发生命周期
 LUIS 提供工具、版本控制以及与其他 LUIS 创建者的协作，以便在客户端应用程序和语言模型级别集成到完整的开发生命周期。 
@@ -197,7 +120,6 @@ LUIS 的顶级客户端应用程序是：
 
 使用[预构建的](luis-get-started-create-app.md)或[自定义的](luis-quickstart-intents-only.md)域创作新的 LUIS 应用。 [查询公用 IoT 应用的预测终结点](luis-get-started-cs-get-intent.md)。
 
-<!-- Reference-style links -->
 [bot-framework]: https://docs.microsoft.com/bot-framework/
 [flow]: https://docs.microsoft.com/connectors/luis/
 [authoring-apis]: https://aka.ms/luis-authoring-api

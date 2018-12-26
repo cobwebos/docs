@@ -8,14 +8,14 @@ ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.topic: tutorial
 ms.date: 09/24/2018
-ms.openlocfilehash: aa6702ccf00faa3d63d5458cfbd77ac15fbfbeaa
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: 0d9ad11ab9a53cf5de51dd3f262dc16054be5d85
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51633028"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53438602"
 ---
-# <a name="tutorial-configure-apache-kafka-policies-in-hdinsight-with-enterprise-security-package-preview"></a>教程：使用企业安全性套餐（预览）在 HDInsight 中配置 Apache Kafka 策略
+# <a name="tutorial-configure-apache-kafka-policies-in-hdinsight-with-enterprise-security-package-preview"></a>教程：使用企业安全性套餐（预览版）在 HDInsight 中配置 Apache Kafka 策略
 
 了解如何为企业安全性套餐 (ESP) Apache Kafka 群集配置 Apache Ranger 策略。 将 ESP 群集连接到域，可允许用户使用域凭据进行身份验证。 本教程将创建两个 Ranger 策略来限制对 `sales*` 和 `marketingspend` 主题的访问。
 
@@ -39,7 +39,7 @@ ms.locfileid: "51633028"
 
 1. 在浏览器中，使用 URL `https://<ClusterName>.azurehdinsight.net/Ranger/` 连接到 Ranger 管理用户界面。 请记住将 `<ClusterName>` 更改为 Kafka 群集的名称。
 
-    > [!NOTE] 
+    > [!NOTE]  
     > Ranger 凭据与 Hadoop 集群凭据不同。 若要防止浏览器使用缓存的 Hadoop 凭据，请使用新的 InPrivate 浏览器窗口连接到 Ranger 管理 UI。
 
 2. 使用 Azure Active Directory (AD) 管理员凭据登录。 Azure AD 管理员凭据与 HDInsight 群集凭据或 Linux HDInsight 节点 SSH 凭据不同。
@@ -74,7 +74,7 @@ ms.locfileid: "51633028"
 
    ![Apache Ranger 管理 UI 创建策略](./media/apache-domain-joined-run-kafka/apache-ranger-admin-create-policy.png)   
 
-   >[!NOTE] 
+   >[!NOTE]   
    >如果“选择用户”中未自动填充域用户，请等待片刻时间让 Ranger 与 Azure AD 同步。
 
 4. 单击“添加”保存策略。
@@ -113,17 +113,17 @@ ms.locfileid: "51633028"
    read -p 'Enter your Kafka cluster name:' CLUSTERNAME
    ```
 
-3. 使用以下命令获取 Kafka 代理主机和 Zookeeper 主机。 出现提示时，输入群集管理帐户的密码。
+3. 使用以下命令获取 Kafka 中转站主机和 Apache Zookeeper 主机。 出现提示时，输入群集管理帐户的密码。
 
    ```bash
    export KAFKAZKHOSTS=`curl -sS -u admin -G https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/services/ZOOKEEPER/components/ZOOKEEPER_SERVER | jq -r '["\(.host_components[].HostRoles.host_name):2181"] | join(",")' | cut -d',' -f1,2`; \
    export KAFKABROKERS=`curl -sS -u admin -G https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/services/KAFKA/components/KAFKA_BROKER | jq -r '["\(.host_components[].HostRoles.host_name):9092"] | join(",")' | cut -d',' -f1,2`; \
    ```
-> [!Note]
+> [!Note]  
 > 在继续操作之前，可能需要设置开发环境（如果尚未这样做）。 需要 Java JDK、Apache Maven 以及包含 scp 的 SSH 客户端等组件。 请参阅这些[设置说明](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started/tree/master/DomainJoined-Producer-Consumer)，了解更多详细信息。
 1. 下载 [Apache Kafka 域加入生成者使用者示例](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started/tree/master/DomainJoined-Producer-Consumer)。
 
-1. 按[教程：使用 Apache Kafka 生成者和使用者 API](https://docs.microsoft.com/azure/hdinsight/kafka/apache-kafka-producer-consumer-api#build-and-deploy-the-example) 中“生成和部署示例”下的步骤 2 和 3 操作
+1. 按照以下文章的**生成并部署示例**下的步骤 2 和步骤 3 进行操作：[教程：使用 Apache Kafka 生成者和使用者 API](https://docs.microsoft.com/azure/hdinsight/kafka/apache-kafka-producer-consumer-api#build-and-deploy-the-example)
 
 1. 运行以下命令：
 
@@ -132,7 +132,7 @@ ms.locfileid: "51633028"
    java -jar -Djava.security.auth.login.config=/usr/hdp/current/kafka-broker/config/kafka_client_jaas.conf kafka-producer-consumer.jar create marketingspend $KAFKABROKERS
    ```
 
-   >[!NOTE] 
+   >[!NOTE]   
    >只有 Kafka 服务的过程所有者（例如 root）才能写入 Zookeeper 节点 `/config/topics`。 非特权用户创建主题时，不会强制执行 Ranger 策略。 这是因为 `kafka-topics.sh` 脚本直接与 Zookeeper 通信以创建主题。 将条目添加到 Zookeeper 节点，同时代理端的观察程序则相应地监视和创建主题。 授权不能通过 Ranger 插件完成，上面的命令是通过 Kafka 代理使用 `sudo` 执行的。
 
 
@@ -210,5 +210,5 @@ ms.locfileid: "51633028"
 
 ## <a name="next-steps"></a>后续步骤
 
-* [自带密钥到 Kafka](https://docs.microsoft.com/azure/hdinsight/kafka/apache-kafka-byok)
-* [企业安全性套餐 Hadoop 安全性简介](https://docs.microsoft.com/azure/hdinsight/domain-joined/apache-domain-joined-introduction)
+* [将自己的密钥带到 Apache Kafka](https://docs.microsoft.com/azure/hdinsight/kafka/apache-kafka-byok)
+* [使用企业安全性套餐实现 Apache Hadoop 安全性简介](https://docs.microsoft.com/azure/hdinsight/domain-joined/apache-domain-joined-introduction)

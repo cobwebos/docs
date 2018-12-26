@@ -2,19 +2,20 @@
 title: 教程：将数据迁移到 Azure Cosmos DB 中的 Cassandra API 帐户
 description: 在本教程中，了解如何使用 CQL Copy 命令和 Spark 将数据从 Apache Cassandra 复制到 Azure Cosmos DB 中的 Cassandra API 帐户。
 author: kanshiG
+ms.author: govindk
+ms.reviewer: sngun
 ms.service: cosmos-db
 ms.component: cosmosdb-cassandra
-ms.author: govindk
 ms.topic: tutorial
 ms.date: 12/03/2018
-ms.reviewer: sngun
+ms.custom: seodec18
 Customer intent: As a developer, I want to migrate my existing Cassandra workloads to Azure Cosmos DB so that the overhead to manage resources, clusters, and garbage collection is automatically handled by Azure Cosmos DB.
-ms.openlocfilehash: 604cab3bed73366ce28c8bb35b63df6379985cfb
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: ed86ce20a6230d487dfbd968a31507953400fab6
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52867454"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53100429"
 ---
 # <a name="tutorial-migrate-your-data-to-cassandra-api-account-in-azure-cosmos-db"></a>教程：将数据迁移到 Azure Cosmos DB 中的 Cassandra API 帐户
 
@@ -34,9 +35,9 @@ ms.locfileid: "52867454"
 
 * **估计吞吐量需求：** 在将数据迁移到 Azure Cosmos DB 中的 Cassandra API 帐户之前，应当估计你的工作负荷的吞吐量需求。 通常，建议先从 CRUD 操作所需的平均吞吐量开始，然后再包括提取转换加载 (ETL) 或高峰操作所需的额外吞吐量。 需要以下详细信息来规划迁移： 
 
-   * 现有数据大小或估计数据大小：定义最小数据库大小和吞吐量要求。 如果正在估计新应用程序的数据大小，则可以假定数据均匀分布在行中并通过乘以数据大小来估计值。 
+   * **现有数据大小或估计的数据大小：** 定义最小数据库大小和吞吐量要求。 如果正在估计新应用程序的数据大小，则可以假定数据均匀分布在行中并通过乘以数据大小来估计值。 
 
-   * **所需的吞吐量：** 大概的读取（查询/获取）和写入（更新/删除/插入）吞吐率。 需要使用此值来计算所需的请求单位以及处于稳定状态的数据大小。  
+   * **所需吞吐量：** 大概的读取（查询/获取）和写入（更新/删除/插入）吞吐率。 需要使用此值来计算所需的请求单位以及处于稳定状态的数据大小。  
 
    * **架构：** 通过 cqlsh 连接到现有的 Cassandra 群集并从 Cassandra 中导出架构： 
 
@@ -60,24 +61,24 @@ ms.locfileid: "52867454"
        }
      ```
 
-* 分配所需的吞吐量：随着吞吐量需求的增长，Azure Cosmos DB 可以自动扩展存储和吞吐量。 可以使用 [Azure Cosmos DB 请求单位计算器](https://www.documentdb.com/capacityplanner)来估计吞吐量需求。 
+* **分配所需的吞吐量：** 随着吞吐量需求的增长，Azure Cosmos DB 可以自动扩展存储和吞吐量。 可以使用 [Azure Cosmos DB 请求单位计算器](https://www.documentdb.com/capacityplanner)来估计吞吐量需求。 
 
-* **在 Cassandra API 帐户中创建表：** 在开始迁移数据之前，从 Azure 门户或从 cqlsh 预创建所有表。 如果要迁移到具有数据库级别吞吐量的 Azure Cosmos 帐户，请确保在创建 Azure Cosmos 容器时提供分区键。
+* **在 Cassandra API 帐户中创建表：** 在开始迁移数据之前，通过 Azure 门户或 cqlsh 预先创建所有表。 如果要迁移到具有数据库级别吞吐量的 Azure Cosmos 帐户，请确保在创建 Azure Cosmos 容器时提供分区键。
 
-* 增加吞吐量：数据迁移的持续时间取决于为 Azure Cosmos DB 中的表预配的吞吐量。 在迁移期间增加吞吐量。 提高吞吐量后，可避免受到速率限制，并缩短迁移时间。 完成迁移后，减少吞吐量以节约成本。 此外，还建议在源数据库所在的同一区域中拥有 Azure Cosmos 帐户。 
+* **增加吞吐量：** 数据迁移的持续时间取决于为 Azure Cosmos DB 中的表预配的吞吐量。 在迁移期间增加吞吐量。 提高吞吐量后，可避免受到速率限制，并缩短迁移时间。 完成迁移后，减少吞吐量以节约成本。 此外，还建议在源数据库所在的同一区域中拥有 Azure Cosmos 帐户。 
 
-* 启用 SSL：Azure Cosmos DB 具有严格的安全要求和标准。 请确保在与帐户进行交互时启用 SSL。 当你将 CQL 与 SSH 配合使用时，可以选择提供 SSL 信息。
+* **启用 SSL：** Azure Cosmos DB 具有严格的安全要求和标准。 请确保在与帐户进行交互时启用 SSL。 当你将 CQL 与 SSH 配合使用时，可以选择提供 SSL 信息。
 
 ## <a name="options-to-migrate-data"></a>迁移数据的选项
 
 你可以使用以下选项将数据从现有的 Cassandra 工作负载移到 Azure Cosmos DB：
 
-* [使用 cqlsh COPY 命令](#using-cqlsh-copy-command)  
-* [使用 Spark](#using-spark) 
+* [使用 cqlsh COPY 命令](#migrate-data-using-cqlsh-copy-command)  
+* [使用 Spark](#migrate-data-using-spark) 
 
 ## <a name="migrate-data-using-cqlsh-copy-command"></a>使用 cqlsh COPY 命令迁移数据
 
-[CQL COPY 命令](http://cassandra.apache.org/doc/latest/tools/cqlsh.html#cqlsh)用于将本地数据复制到 Azure Cosmos DB 中的 Cassandra API 帐户。 使用以下步骤复制数据：
+[CQL COPY 命令](https://cassandra.apache.org/doc/latest/tools/cqlsh.html#cqlsh)用于将本地数据复制到 Azure Cosmos DB 中的 Cassandra API 帐户。 使用以下步骤复制数据：
 
 1. 获取 Cassandra API 帐户的连接字符串信息：
 

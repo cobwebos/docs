@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/11/2018
 ms.author: robinsh
 ms.custom: mvc
-ms.openlocfilehash: cf8c82f597cd659911cd66b0b7db8139e8d9d1a5
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 6f1cd08e3c786a1d163a22b5da5150fde5f45b95
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50416879"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53135332"
 ---
 # <a name="tutorial-configure-message-routing-with-iot-hub"></a>教程：使用 IoT 中心配置消息路由
 
@@ -56,6 +56,10 @@ ms.locfileid: "50416879"
 1. 创建[资源组](../azure-resource-manager/resource-group-overview.md)。 
 
 2. 在 S1 层级中创建 IoT 中心。 将使用者组添加到 IoT 中心。 检索数据时，Azure 流分析使用使用者组。
+
+   > [!NOTE]
+   > 必须使用付费层中的 IoT 中心来完成本教程。 免费层只允许设置一个终结点，但本教程需要多个终结点。
+   > 
 
 3. 使用 Standard_LRS 副本创建标准 V1 存储帐户。
 
@@ -308,7 +312,7 @@ New-AzureRmServiceBusQueue -ResourceGroupName $resourceGroup `
    
    **数据源**：从下拉列表选择“设备遥测消息”。
 
-   **启用路由**：确保启用了此选项。
+   **启用路由**：确保启用此选项。
    
    **路由查询**：输入 `level="storage"` 作为查询字符串。 
 
@@ -330,7 +334,7 @@ New-AzureRmServiceBusQueue -ResourceGroupName $resourceGroup `
 
 4. 填写字段：
 
-   **终结点名称**：输入终结点名称。 本教程使用 CriticalQueue。
+   **终结点名称**：为终结点输入名称。 本教程使用 CriticalQueue。
    
    **服务总线命名空间**：单击此字段以显示下拉列表；选择你在准备步骤中设置的服务总线命名空间。 本教程使用 ContosoSBNamespace。
 
@@ -366,7 +370,7 @@ New-AzureRmServiceBusQueue -ResourceGroupName $resourceGroup `
 
 1. 在 [Azure 门户](https://portal.azure.com)中，单击“+创建资源”。 在搜索框中输入“逻辑应用”，并单击 Enter。 从显示的搜索结果中，选择逻辑应用，然后单击“创建”，进入“创建逻辑应用”窗格。 填充字段。 
 
-   **名称**：该字段是逻辑应用的名称。 本教程使用 ContosoLogicApp。 
+   **名称**：此字段是逻辑应用的名称。 本教程使用 ContosoLogicApp。 
 
    **订阅**：选择 Azure 订阅。
 
@@ -374,7 +378,7 @@ New-AzureRmServiceBusQueue -ResourceGroupName $resourceGroup `
 
    **位置**：使用你的位置。 本教程使用“美国西部”。 
 
-   **日志分析**：应关闭此开关。 
+   **Log Analytics**：应关闭此开关。 
 
    ![显示“创建逻辑应用”屏幕的屏幕截图。](./media/tutorial-routing/create-logic-app.png)
 
@@ -428,7 +432,7 @@ New-AzureRmServiceBusQueue -ResourceGroupName $resourceGroup `
 
    **资源组**：使用 IoT 中心所用的同一资源组。 本教程使用 ContosoResources。 
 
-   **位置**：使用设置脚本中所用的相同位置。 本教程使用“美国西部”。 
+   **位置**：使用设置脚本中所用的同一位置。 本教程使用“美国西部”。 
 
    ![显示如何创建流分析作业的屏幕截图。](./media/tutorial-routing/stream-analytics-create-job.png)
 
@@ -442,7 +446,7 @@ New-AzureRmServiceBusQueue -ResourceGroupName $resourceGroup `
 
    **输入别名**：本教程使用 contosoinputs。
 
-   **订阅**：选择自己的订阅。
+   **订阅**：选择订阅。
 
    **IoT 中心**：选择 IoT 中心。 本教程使用 ContosoTestHub。
 

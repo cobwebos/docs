@@ -1,5 +1,5 @@
 ---
-title: 使用 SQL 数据库在 Azure 中构建 ASP.NET 应用 | Microsoft Docs
+title: 使用 SQL 数据库构建 ASP.NET 应用 - Azure 应用服务 | Microsoft Docs
 description: 了解如何将采用 SQL Server 数据库的 C# ASP.NET 应用部署到 Azure。
 services: app-service\web
 documentationcenter: ''
@@ -14,13 +14,13 @@ ms.devlang: csharp
 ms.topic: tutorial
 ms.date: 06/25/2018
 ms.author: cephalin
-ms.custom: mvc, devcenter, vs-azure
-ms.openlocfilehash: 783bf93c8507e76717a4293b2b29a9c11e9a1eed
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.custom: seodec18
+ms.openlocfilehash: 14dbd723772caa0045e9744ddb726060e3a1b8cf
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49353810"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53257771"
 ---
 # <a name="tutorial-build-an-aspnet-app-in-azure-with-sql-database"></a>教程：使用 SQL 数据库在 Azure 中构建 ASP.NET 应用
 
@@ -132,11 +132,11 @@ ms.locfileid: "49353810"
 
 在“配置 SQL 数据库”对话框中，单击“SQL Server”旁的“新建”。 
 
-这将生成唯一的服务器名称。 此名称用作逻辑服务器`<server_name>.database.windows.net`的默认 URL 的一部分。 在 Azure 所有的逻辑服务器实例中，它必须是唯一的。 你可以更改服务器名称，但本教程保留生成的值。
+将生成唯一的服务器名称。 此名称用作逻辑服务器`<server_name>.database.windows.net`默认 URL 的一部分。 在 Azure 中的所有逻辑服务器实例中，此名称必须是唯一的。可以更改服务器名称，但本教程沿用生成的值。
 
 添加管理员用户名和密码。 有关密码复杂性要求，请参阅[密码策略](/sql/relational-databases/security/password-policy)。
 
-牢记此用户名和密码。 你需要在之后用它们来管理逻辑服务器实例。
+牢记此用户名和密码。 随后，你需要用它们来管理逻辑服务器实例。
 
 > [!IMPORTANT]
 > 虽然连接字符串中的密码已在 Visual Studio 和应用服务中受到屏蔽，但由于它实际上是保留在某个位置，因此增加了应用的受攻击面。 应用服务可以使用[托管服务标识](app-service-managed-service-identity.md)，因此根本不需要将机密保留在代码或应用配置中，这样就消除了上述风险。 有关详细信息，请参阅[后续步骤](#next-steps)。
@@ -159,13 +159,13 @@ ms.locfileid: "49353810"
 
 ![已创建资源](media/app-service-web-tutorial-dotnet-sqldatabase/app_svc_plan_done.png)
 
-向导程序完成创建 Azure 资源后，它将会把你的 ASP.NET 应用发布到 Azure。 默认浏览器将同 URL一起发布到部署的应用中。 
+向导程序完成创建 Azure 资源后，它将会把你的 ASP.NET 应用发布到 Azure。 默认浏览器将会以指向所部署应用的URL启动。 
 
 添加几个待办事项。
 
 ![已在 Azure Web 应用中发布 ASP.NET 应用程序](./media/app-service-web-tutorial-dotnet-sqldatabase/azure-app-in-browser.png)
 
-祝贺你！ 数据驱动 ASP.NET 应用程序当前在 Azure 应用服务中实时运行。
+祝贺你！你的数据驱动的 ASP.NET 应用程序已经在 Azure 应用服务中运行了。
 
 ## <a name="access-the-sql-database-locally"></a>本地访问 SQL 数据库
 
@@ -207,7 +207,7 @@ Visual Studio 成功为 SQL 数据库实例创建防火墙设置后，连接将�
 
 ## <a name="update-app-with-code-first-migrations"></a>使用 Code First 迁移更新应用
 
-可以在 Visual Studio 中使用熟悉的工具，以在 Azure 中更新数据库和 web 应用。 此步骤中将使用实体框架中的 Code First 迁移对数据库架构进行更改，并将其发布至 Azure。
+可以在 Visual Studio 中使用熟悉的工具，更新 Azure 中的数据库和 web 应用。 此步骤使用 Entity Framework 中的 Code First 迁移对数据库架构进行更改，并将其发布至 Azure。
 
 有关使用 Entity Framework Code First 迁移的详细信息，请参阅[用 MVC 5 开始使用 Entity Framework 6 Code First](https://docs.microsoft.com/aspnet/mvc/overview/getting-started/getting-started-with-ef-using-mvc/creating-an-entity-framework-data-model-for-an-asp-net-mvc-application)。
 
@@ -249,11 +249,11 @@ Update-Database
 
 ### <a name="use-the-new-property"></a>使用新属性
 
-为使用 `Done` 属性，需要对代码做更多更改。 简单起见，本教程中将仅更改 `Index` 和 `Create` 视图，以便在操作中查看属性。
+为使用 `Done` 属性，需要对代码做一些更改。 为简单起见，本教程中将仅更改 `Index` 和 `Create` 视图，以便在操作过程中查看属性。
 
 打开 _Controllers\TodosController.cs_。
 
-在第 52 行找到 `Create()` 方法，并将 `Done` 添加到 `Bind` 属性中的属性列表。 完成后，`Create()` 方法签名应如下代码所示：
+在第 52 行找到 `Create()` 方法，并将 `Done` 添加到 `Bind` 特性中的属性列表。 完成后，`Create()` 方法签名应如下面的代码所示：
 
 ```csharp
 public ActionResult Create([Bind(Include = "Description,CreatedDate,Done")] Todo todo)
@@ -261,7 +261,7 @@ public ActionResult Create([Bind(Include = "Description,CreatedDate,Done")] Todo
 
 打开 _Views\Todos\Create.cshtml_。
 
-在 Razor 代码中，你应看到使用 `model.Description` 的 `<div class="form-group">` 元素，以及将另一个使用 `model.CreatedDate` 的 `<div class="form-group">` 元素。 紧跟在这两个元素之后，另一个使用 `model.Done` 的 `<div class="form-group">` 元素：
+在 Razor 代码中，你会看到使用 `model.Description` 的 `<div class="form-group">` 元素，以及使用 `model.CreatedDate` 的 `<div class="form-group">` 元素。 紧跟在这两个元素之后的是使用 `model.Done` 的 `<div class="form-group">` 元素：
 
 ```csharp
 <div class="form-group">
@@ -285,7 +285,7 @@ public ActionResult Create([Bind(Include = "Description,CreatedDate,Done")] Todo
 </th>
 ```
 
-查找包含 `Html.ActionLink()` 帮助程序方法的 `<td>` 元素。 在此 `<td>` _上面_，使用以下 Razor 代码添加另一个 `<td>` 元素：
+查找包含 `Html.ActionLink()` 帮助程序方法的 `<td>` 元素。 在此 `<td>` 上方，使用以下 Razor 代码添加另一个 `<td>` 元素：
 
 ```csharp
 <td>
@@ -297,11 +297,11 @@ public ActionResult Create([Bind(Include = "Description,CreatedDate,Done")] Todo
 
 键入 `Ctrl+F5` 运行应用。
 
-你现在可以添加一个待办事项，并检查“完成”。 然后，它应作为已完成项在主页中显示。 请牢记，由于未更改`Edit`视图，`Edit`视图不显示`Done`字段。
+现在可以添加一个待办事项，并勾选“完成”。 然后，它会在主页中显示为已完成的项。 请记住，由于未更改`Edit`视图，`Edit`视图不显示`Done`字段。
 
 ### <a name="enable-code-first-migrations-in-azure"></a>在 Azure 中启用 Code First 迁移
 
-代码更改生效（包括数据库迁移）后，将其发布至 Azure Web 应用，并仍使用 Code First 迁移更新 SQL 数据库。
+代码更改生效（包括数据库迁移）后，将其发布至 Azure 应用，并使用 Code First 迁移更新 SQL 数据库。
 
 与先前的操作相同，右键单击项目，并选择“发布”。
 

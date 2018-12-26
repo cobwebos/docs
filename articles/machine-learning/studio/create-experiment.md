@@ -1,13 +1,12 @@
 ---
-title: 机器学习工作室中的简单试验 | Microsoft Docs
+title: 简单试验 - Azure 机器学习工作室 | Microsoft Docs
 description: 本机器学习教程逐步讲解如何轻松完成数据科研试验。 使用回归算法预测汽车价格。
 keywords: 试验, 线性回归, 机器学习算法, 机器学习教程, 预测建模技术, 数据科研试验
 services: machine-learning
 documentationcenter: ''
-author: ericlicoding
-ms.custom: (previous ms.author=hshapiro, author=heatherbshapiro)
-ms.author: amlstudiodocs
-manager: hjerez
+author: garyericson
+ms.custom: seodec18
+ms.author: garye
 editor: cgronlun
 ms.assetid: b6176bb2-3bb6-4ebf-84d1-3598ee6e01c6
 ms.service: machine-learning
@@ -17,14 +16,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/20/2017
-ms.openlocfilehash: 7ee1df8c38ac2dbfc6618febd223d5c4bbf32be6
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: b3d8aa709fefcf0eb8c16117f62cbe3bab8e319a
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52425704"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53262412"
 ---
-# <a name="machine-learning-tutorial-create-your-first-data-science-experiment-in-azure-machine-learning-studio"></a>机器学习教程：在 Azure 机器学习工作室中创建第一个数据科研试验
+# <a name="tutorial-create-your-first-data-science-experiment-in-azure-machine-learning-studio"></a>教程：在 Azure 机器学习工作室中创建你的第一个数据科学试验
 
 本教程适合从未使用过 **Azure 机器学习工作室**的用户。
 
@@ -41,7 +40,7 @@ ms.locfileid: "52425704"
 - [机器学习基础知识及算法示例](basics-infographic-with-algorithm-examples.md) - 以信息图方式图文并茂地详细介绍了机器学习工作室包含的各类机器学习算法。
 - [Machine Learning Guide](https://gallery.cortanaintelligence.com/Tutorial/Machine-Learning-Guide-1)（机器学习指南）- 此指南介绍的内容与上面的信息图类似，只是采用了交互的方式。
 - [机器学习算法备忘](algorithm-cheat-sheet.md)和[如何选择 Microsoft Azure 机器学习的算法](algorithm-choice.md) - 可供用户下载的海报及深度讨论工作室算法的相关文章。
-- [Machine Learning Studio: Algorithm and Module Help](https://msdn.microsoft.com/library/azure/dn905974.aspx)（机器学习工作室：算法和模块帮助）- 包括机器学习算法在内的所有工作室模块的完整参考。
+- [机器学习工作室：算法和模块帮助](https://msdn.microsoft.com/library/azure/dn905974.aspx) - 包括机器学习算法在内的所有工作室模块的完整参考。
 
 
 
@@ -49,10 +48,10 @@ ms.locfileid: "52425704"
 
 借助机器学习工作室，可以轻松使用拖放模块（使用预测模型技术预先编写）来设置试验。
 
-用户可通过交互式、可视化的工作区将“数据集”和分析“模块”拖放到交互式画布上。将它们连接到一起就是一个可在机器学习工作室中运行的“试验”。
+用户可通过交互式、可视化的工作区将***数据集*** 和分析***模块*** 拖放到交互式画布上。 将它们连接到一起就是一个可在机器学习工作室中运行的***试验***。
 先***创建模型***，然后***对模型定型***，最后再***对模型进行评分和测试***。
 
-可以反复进行模型设计，不断地编辑和运行试验，直至获得所要的结果。 模型就绪以后，可将其作为“Web 服务”发布，方便其他用户向其发送新的数据并获得预测结果。
+可以反复进行模型设计，不断地编辑和运行试验，直至获得所要的结果。 模型就绪以后，可将其作为 ***Web 服务*** 发布，方便其他用户向其发送新的数据并获得预测结果。
 
 ## <a name="open-machine-learning-studio"></a>打开机器学习工作室
 
@@ -126,7 +125,7 @@ ms.locfileid: "52425704"
 
 ## <a name="step-2-prepare-the-data"></a>步骤 2：准备数据
 
-数据集通常需要经过一些预处理才能进行分析。 例如，你可能已注意到，在多个行的列中存在缺失值。 需要清除这些缺失值，使模型能够正确分析数据。 在本例中，将删除包含缺失值的所有行。 此外，“标准化损失”列包含较大比例的缺失值，因此要将该列从模型中完全排除。
+数据集通常需要经过一些预处理才能进行分析。 例如，可能已注意到，在多个行的列中存在缺失值。 需要清除这些缺失值，使模型能够正确分析数据。 在本例中，将删除包含缺失值的所有行。 此外，“标准化损失”列包含较大比例的缺失值，因此要将该列从模型中完全排除。
 
 > [!TIP]
 > 使用大多数模块时，都必须从输入数据中清除缺失值。
@@ -304,7 +303,7 @@ ms.locfileid: "52425704"
 
 针对本例中的模型显示了以下统计信息：
 
-- **平均绝对误差** (MAE)：绝对误差的平均值（ *误差* 是指预测值与实际值之间的差异）。
+- **平均绝对误差** (MAE)：绝对误差的平均值（*误差* 是指预测值与实际值之间的差异）。
 - **均方根误差** (RMSE)：对测试数据集所做预测的平均误差的平方根。
 - **相对绝对误差**：相对于实际值与所有实际值平均值之间的绝对差异的绝对误差平均值。
 - **相对平方误差**：相对于实际值与所有实际值平均值之间的平方差异的平方误差平均值。

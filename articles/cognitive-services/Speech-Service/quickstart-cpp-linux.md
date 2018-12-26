@@ -1,5 +1,5 @@
 ---
-title: 快速入门：在 Linux 上使用语音服务 SDK 通过 C++ 识别语音
+title: 快速入门：识别语音，C++ (Linux) - 语音服务
 titleSuffix: Azure Cognitive Services
 description: 了解如何在 Linux 上使用语音服务 SDK 通过 C++ 识别语音
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.component: speech-service
 ms.topic: quickstart
 ms.date: 11/06/2018
 ms.author: wolfma
-ms.openlocfilehash: bfb71c000eea56e705b33fb97827aead23de8cbb
-ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
+ms.openlocfilehash: e26190b46a79d581e5996e51bfd104f1d4beb6f6
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51219267"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53094026"
 ---
 # <a name="quickstart-recognize-speech-in-c-on-linux-by-using-the-speech-sdk"></a>快速入门：在 Linux 上使用语音 SDK 通过 C++ 识别语音
 

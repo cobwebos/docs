@@ -1,6 +1,6 @@
 ---
-title: Azure Notebooks 概述 | Microsoft Docs
-description: 使用免费的 Azure Notebooks 服务在云中运行 Jupyter 笔记本。
+title: Azure Notebooks 概述
+description: 使用免费的 Azure Notebooks 服务在云中运行 Jupyter 笔记本，不需要进行设置或配置。
 services: app-service
 documentationcenter: ''
 author: kraigb
@@ -13,18 +13,18 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 12/04/2018
 ms.author: kraigb
-ms.openlocfilehash: a84f71c2656c73867ee076d4b993026558a0a504
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 92cfdea12dc51884ea04ed894a79ded7f532d88b
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52853219"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53085393"
 ---
 # <a name="overview-of-azure-notebooks"></a>Azure Notebooks 概述
 
-Azure Notebooks 是免费的托管服务，用于在云中开发和运行 Jupyter 笔记本而无需进行安装。 [Jupyter](http://jupyter.org/)（以前称为 IPython）是一个开放源代码项目，可让你将 Markdown 文本、可执行代码、持久性数据、图形和可视化效果轻松合并到单个可共享画布，即笔记本（jupyter.org 提供的图片）：
+Azure Notebooks 是免费的托管服务，用于在云中开发和运行 Jupyter 笔记本而无需进行安装。 [Jupyter](https://jupyter.org/)（以前称为 IPython）是一个开放源代码项目，可让你将 Markdown 文本、可执行代码、持久性数据、图形和可视化效果轻松合并到单个可共享画布，即笔记本（jupyter.org 提供的图片）：
 
-[![](http://jupyter.org/assets/jupyterpreview.png "Jupyter 笔记本")](http://jupyter.org/assets/jupyterpreview.png#lightbox)
+[![](https://jupyter.org/assets/jupyterpreview.png "Jupyter 笔记本")](https://jupyter.org/assets/jupyterpreview.png#lightbox)
 
 由于代码、图形和说明性文本的这种组合功能强大，因此 Jupyter 在许多方面已变得很常用，例如数据科学指令、数据清理和转换、数值模拟、统计建模，以及机器学习模型的开发。
 
@@ -51,7 +51,7 @@ Azure Notebooks 是免费的托管服务，用于在云中开发和运行 Jupyte
 简而言之，Azure Notebooks 可以提高工作效率和生产力。
 
 > [!Note]
-> 有关 Jupyter 本身的详细信息，可查看 [jupyter.org](http://jupyter.org/) 和 [Jupyter 文档](http://jupyter-notebook.readthedocs.io/en/latest/)。
+> 有关 Jupyter 本身的详细信息，可查看 [jupyter.org](https://jupyter.org/) 和 [Jupyter 文档](https://jupyter-notebook.readthedocs.io/en/latest/)。
 
 ## <a name="pricing-and-quotas"></a>定价和配额
 
@@ -71,7 +71,7 @@ Azure Notebooks 是一项免费服务，但每个项目有 4-GB 内存和 1-GB �
 
 Azure Notebooks 还包括除基础发行版之外的额外包。 例如，Python 内核包括 numpy、pandas、scikit-learn、matplotlib 和 bokeh 库。
 
-也可自定义一个项目，为该项目中的所有笔记本创建一个环境。 有关更多信息，请参阅[快速入门：使用自定义环境创建项目](quickstart-create-jupyter-notebook-project-environment.md)。
+也可自定义一个项目，为该项目中的所有笔记本创建一个环境。 有关详细信息，请参阅[快速入门：在自定义环境下创建项目](quickstart-create-jupyter-notebook-project-environment.md)。
 
 除了基础发行版，Azure Notebooks 还预安装了许多额外的可供数据科学家使用的包。 也可使用每种语言的典型过程来安装你自己的包。
 

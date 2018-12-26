@@ -1,5 +1,5 @@
 ---
-title: Azure Policy 示例 - 拒绝对存储帐户使用冷访问层
+title: 示例 - 拒绝对存储帐户使用冷访问层
 description: 此示例策略禁止对 blob 存储帐户使用冷访问层。
 services: azure-policy
 author: DCtheGeek
@@ -8,13 +8,12 @@ ms.service: azure-policy
 ms.topic: sample
 ms.date: 09/18/2018
 ms.author: dacoulte
-ms.custom: mvc
-ms.openlocfilehash: dedf280a6aa704971d54de4677f90685dfccbdb5
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: c6b8e293b42d209a8556e85c4348596023dd3fdf
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46946045"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53308543"
 ---
 # <a name="deny-cool-access-tiering-for-storage-accounts"></a>拒绝对存储帐户使用冷访问层
 

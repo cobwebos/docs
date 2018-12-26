@@ -1,7 +1,7 @@
 ---
 title: 快速入门：使用 Python 执行搜索 - 必应 Web 搜索 API
 titleSuffix: Azure Cognitive Services
-description: 本快速入门介绍了如何使用 Python 进行你的第一次必应 Web 搜索 API 调用并接收 JSON 响应。
+description: 使用本快速入门，通过 Python 将请求发送到必应 Web 搜索 REST API，并接收 JSON 响应
 services: cognitive-services
 author: aahill
 manager: cgronlun
@@ -10,12 +10,13 @@ ms.component: bing-web-search
 ms.topic: quickstart
 ms.date: 8/16/2018
 ms.author: aahi
-ms.openlocfilehash: 0f6f3991e01e4eb6919d958002ef6230a2570dbe
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.custom: seodec2018
+ms.openlocfilehash: 4c42461c31e821128c8aa583b5620c1274a9e955
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52309447"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53260049"
 ---
 # <a name="quickstart-use-python-to-call-the-bing-web-search-api"></a>快速入门：使用 Python 调用必应 Web 搜索 API  
 在“搜索”下获取[认知服务访问密钥](https://azure.microsoft.com/try/cognitive-services/)。  另请参阅[认知服务定价 - 必应搜索 API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)。
@@ -80,7 +81,7 @@ rows = "\n".join(["""<tr>
 HTML("<table>{0}</table>".format(rows))
 ```
 
-## <a name="sample-code-on-github"></a>Github 上的示例代码
+## <a name="sample-code-on-github"></a>GitHub 上的示例代码
 
 如果希望在本地运行此代码，[GitHub 上提供了完整的示例](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/nodejs/Search/BingWebSearchv7.js)。
 

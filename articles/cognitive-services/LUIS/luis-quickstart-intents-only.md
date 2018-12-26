@@ -1,23 +1,24 @@
 ---
-title: 教程 1：在自定义 LUIS 应用中查找意图
+title: 预测意向
 titleSuffix: Azure Cognitive Services
 description: 创建可预测用户意图的自定义应用。 此应用是最简单类型的 LUIS 应用，因为它不从话语文本（例如电子邮件地址或日期）提取各种数据元素。
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: tutorial
 ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: 30c9f572d77caacbeecf5f15d74fd8517e9fa883
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: b1a9718fdf7222dae06f7fe9b3a0f14b50293c08
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52426853"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53097788"
 ---
-# <a name="tutorial-1-build-custom-app-to-determine-user-intentions"></a>教程 1：生成可确定用户意图的自定义应用
+# <a name="tutorial-1-build-custom-app-to-determine-user-intentions"></a>教程 1：生成自定义应用，以确定用户意向
 
 在本教程中，请创建一个自定义人力资源 (HR) 应用，以便根据话语（文本）预测用户的意图。 完成本教程后，会在云中运行一个 LUIS 终结点。
 
@@ -43,11 +44,11 @@ LUIS 在返回 JSON 响应后，就已经完成了此请求。 LUIS 不提供用
 
 2. 选择“创建新应用”。  
 
-    [![](media/luis-quickstart-intents-only/app-list.png "语言理解 (LUIS) 的“我的应用”页的屏幕截图")](media/luis-quickstart-intents-only/app-list.png#lightbox)
+    [![语言理解 (LUIS) 我的应用页的屏幕截图](media/luis-quickstart-intents-only/app-list.png "Screenshot of Language Understanding (LUIS) My Apps page")](media/luis-quickstart-intents-only/app-list.png#lightbox)
 
 3. 在弹出的对话框中输入名称 `HumanResources`，保留默认的区域性“英语”。 将说明保留为空。
 
-    ![LUIS 新应用](./media/luis-quickstart-intents-only/create-app.png)
+    ![创建 LUIS 新 HumanResources 应用](./media/luis-quickstart-intents-only/create-app.png)
 
     接下来，应用会显示具有 **None** 意向的“意向”页。
 
@@ -55,7 +56,7 @@ LUIS 在返回 JSON 响应后，就已经完成了此请求。 LUIS 不提供用
 
 1. 选择“创建新意向”。 输入新意向名称 `GetJobInformation`。 每当某个用户想要获取公司空缺职位的信息时，就会预测此意向。
 
-    ![](media/luis-quickstart-intents-only/create-intent.png "语言理解 (LUIS) 的“新建意向”对话框的屏幕截图")
+    ![语言理解 (LUIS) 新建意向对话框的屏幕截图](media/luis-quickstart-intents-only/create-intent.png "Screenshot of Language Understanding (LUIS) New intent dialog")
 
 2. 可以通过提供示例话语来训练 LUIS，让其了解应该根据哪些类型的话语预测出此意向。 将多个示例话语添加到你预期用户会请求的此意向，例如：
 
@@ -69,7 +70,7 @@ LUIS 在返回 JSON 响应后，就已经完成了此请求。 LUIS 不提供用
     |是否为新作业？|
     |在西雅图办事处是否有任何新职位？|
 
-    [![](media/luis-quickstart-intents-only/utterance-getstoreinfo.png "为 MyStore 意向输入新陈述的屏幕截图")](media/luis-quickstart-intents-only/utterance-getstoreinfo.png#lightbox)
+    [![为 MyStore 意向输入新话语的屏幕截图](media/luis-quickstart-intents-only/utterance-getstoreinfo.png "Screenshot of entering new utterances for MyStore intent")](media/luis-quickstart-intents-only/utterance-getstoreinfo.png#lightbox)
 
     [!INCLUDE [Do not use too few utterances](../../../includes/cognitive-services-luis-too-few-example-utterances.md)]    
 
@@ -150,7 +151,7 @@ LUIS 在返回 JSON 响应后，就已经完成了此请求。 LUIS 不提供用
     |Here is my c.v. for position 654234|
     |Job 567890 and my paperwork|
 
-    [![](media/luis-quickstart-intents-only/utterance-applyforjob.png "为 ApplyForJob 意向输入新陈述的屏幕截图")](media/luis-quickstart-intents-only/utterance-applyforjob.png#lightbox)
+    [![为 ApplyForJob 意向输入新话语的屏幕截图](media/luis-quickstart-intents-only/utterance-applyforjob.png "Screenshot of entering new utterances for ApplyForJob intent")](media/luis-quickstart-intents-only/utterance-applyforjob.png#lightbox)
 
     带标签的意向框在红色框中，因为 LUIS 目前并不确定该意向是否正确。 训练应用可让 LUIS 知道这些陈述位于正确的意向中。 
 
@@ -168,7 +169,7 @@ LUIS 在返回 JSON 响应后，就已经完成了此请求。 LUIS 不提供用
 
 2. 在新浏览器窗口中，在 URL 的末尾输入 `Can I submit my resume for job 235986`。 
 
-    ```JSON
+    ```json
     {
       "query": "Can I submit my resume for job 235986",
       "topScoringIntent": {

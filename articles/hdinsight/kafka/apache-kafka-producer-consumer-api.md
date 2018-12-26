@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 11/06/2018
-ms.openlocfilehash: 947eb76f84f865135e87803b53fa94e20eecb78c
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: dd4c077e23170a295a29a75df08cf8f29f8ba3e4
+ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52313805"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53413347"
 ---
 # <a name="tutorial-use-the-apache-kafka-producer-and-consumer-apis"></a>教程：使用 Apache Kafka 生成者和使用者 API
 
@@ -49,7 +49,7 @@ Kafka 生成者 API 允许应用程序将数据流发送到 Kafka 群集。 Kafk
 
 * `JAVA_HOME` - 应该指向 JDK 的安装目录。
 * `PATH` - 应该包含以下路径：
-  
+
     * `JAVA_HOME`（或等效路径）。
     * `JAVA_HOME\bin`（或等效路径）。
     * Maven 的安装目录。
@@ -92,7 +92,7 @@ Kafka 生成者 API 允许应用程序将数据流发送到 Kafka 群集。 Kafk
 
 ### <a name="producerjava"></a>Producer.java
 
-生成者与 Kafka 中转站主机（辅助角色节点）进行通信，并将数据发送到 Kafka 主题。 以下代码片段摘自 [github 存储库](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started)中的 [Producer.java](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started/blob/master/Producer-Consumer/src/main/java/com/microsoft/example/Producer.java) 文件，并演示如何设置生成者属性：
+生成者与 Kafka 中转站主机（辅助角色节点）进行通信，并将数据发送到 Kafka 主题。 以下代码片段摘自 [GitHub 存储库](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started)中的 [Producer.java](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started/blob/master/Producer-Consumer/src/main/java/com/microsoft/example/Producer.java) 文件，并演示如何设置生成者属性：
 
 ```java
 Properties properties = new Properties();
@@ -145,11 +145,11 @@ consumer = new KafkaConsumer<>(properties);
     此命令创建一个名为 `target` 的目录，其中包含名为 `kafka-producer-consumer-1.0-SNAPSHOT.jar` 的文件。
 
 3. 使用以下命令将 `kafka-producer-consumer-1.0-SNAPSHOT.jar` 文件复制到 HDInsight 群集：
-   
+
     ```bash
     scp ./target/kafka-producer-consumer-1.0-SNAPSHOT.jar SSHUSER@CLUSTERNAME-ssh.azurehdinsight.net:kafka-producer-consumer.jar
     ```
-   
+
     将 **SSHUSER** 替换为群集的 SSH 用户，并将 **CLUSTERNAME** 替换为群集的名称。 出现提示时，请输入 SSH 用户密码。
 
 ## <a id="run"></a> 运行示例
@@ -190,11 +190,11 @@ consumer = new KafkaConsumer<>(properties);
     ```
 
 4. 在生成者完成后，使用以下命令从主题中读取：
-   
+
     ```bash
     java -jar kafka-producer-consumer.jar consumer test $KAFKABROKERS
     ```
-   
+
     将显示读取的记录以及记录计数。
 
 5. 使用 __Ctrl + C__ 让使用者退出。
@@ -204,7 +204,7 @@ consumer = new KafkaConsumer<>(properties);
 在读取记录时，Kafka 使用者使用使用者组。 让多个使用者使用同一个组会导致对主题的读取进行负载均衡操作。 组中的每个使用者接收一部分记录。
 
 使用者应用程序接受一个用作组 ID 的参数。 例如，以下命令使用组 ID `mygroup` 启动一个使用者：
-   
+
 ```bash
 java -jar kafka-producer-consumer.jar consumer test $KAFKABROKERS mygroup
 ```

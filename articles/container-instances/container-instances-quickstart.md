@@ -1,23 +1,23 @@
 ---
-title: 快速入门 - 在 Azure 容器实例中运行应用程序
-description: 在本快速入门中，将使用Azure CLI 将在 Docker 容器中运行的应用程序部署到 Azure 容器实例
+title: 快速入门 - 在 Azure 容器实例中运行应用程序 - CLI
+description: 本快速入门介绍如何使用 Azure CLI 部署 Docker 容器应用程序，以在 Azure 容器实例中的独立容器中运行
 services: container-instances
 author: dlepow
 ms.service: container-instances
 ms.topic: quickstart
 ms.date: 10/02/2018
 ms.author: danlep
-ms.custom: mvc
-ms.openlocfilehash: 7db3d9a076fe9ff5b8bbf970705b82a3f0d5ce54
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.custom: seodec18, mvc
+ms.openlocfilehash: 70d1bc9003d98f0154b9f38738f1b8e82b0c506d
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48855657"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53189602"
 ---
-# <a name="quickstart-run-an-application-in-azure-container-instances"></a>快速入门：在 Azure 容器实例中运行应用程序
+# <a name="quickstart-run-a-container-application-in-azure-container-instances-with-the-azure-cli"></a>快速入门：使用 Azure CLI 在 Azure 容器实例中运行容器应用程序
 
-使用 Azure 容器实例在 Azure 中简单快速地运行 Docker 容器。 不需要部署虚拟机或使用 Kubernetes 之类的完整容器业务流程平台。 在本快速入门中，将使用 Azure 门户在 Azure 中创建一个容器，并使其应用程序可通过完全限定的域名 (FQDN) 使用。 在执行单个部署命令几秒钟之后，可以浏览到正在运行的应用程序：
+使用 Azure 容器实例在 Azure 中快速方便地运行 Docker 容器。 不需要部署虚拟机或使用 Kubernetes 之类的完整容器业务流程平台。 在本快速入门中，我们将使用 Azure CLI 在 Azure 中创建一个容器，并使其应用程序可通过完全限定的域名 (FQDN) 使用。 在执行单个部署命令几秒钟之后，可以浏览到正在运行的应用程序：
 
 ![在浏览器中显示的已部署到 Azure 容器实例的应用][aci-app-browser]
 
@@ -39,7 +39,7 @@ az group create --name myResourceGroup --location eastus
 
 ## <a name="create-a-container"></a>创建容器
 
-现在，你已有一个资源组，可以在 Azure 中运行容器了。 若要使用 Azure CLI 创建容器实例，请向 [az container create][az-container-create] 命令提供一个资源组名称、容器实例名称和 Docker 容器映像。 可以通过指定要打开的一个或多个端口、一个 DNS 名称标签（或同时指定两者）来向 Internet 公开你的容器。 在本快速入门中，你将部署一个具有 DNS 名称标签的容器，该容器承载着一个使用 Node.js 编写的小型 Web 应用。
+创建资源组后，可在 Azure 中运行容器。 若要使用 Azure CLI 创建容器实例，请向 [az container create][az-container-create] 命令提供一个资源组名称、容器实例名称和 Docker 容器映像。 可以通过指定要打开的一个或多个端口、一个 DNS 名称标签（或同时指定两者）来向 Internet 公开你的容器。 在本快速入门中，你将部署一个具有 DNS 名称标签的容器，该容器承载着一个使用 Node.js 编写的小型 Web 应用。
 
 执行以下命令以启动容器实例。 在创建实例的 Azure 区域中，`--dns-name-label` 值必须是唯一的。 如果收到“DNS 名称标签不可用”错误消息，请尝试使用一个不同的 DNS 名称标签。
 
@@ -62,7 +62,7 @@ FQDN                               ProvisioningState
 aci-demo.eastus.azurecontainer.io  Succeeded
 ```
 
-如果容器的 `ProvisioningState` 为 **Succeeded**，则在浏览器中导航到其 FQDN。 如果看到一个与下图类似的网页，那么恭喜你了！ 你已成功将在 Docker 容器中运行的应用程序部署到 Azure。
+如果容器的 `ProvisioningState` 为 **Succeeded**，则在浏览器中导航到其 FQDN。 如果看到一个与下图类似的网页，那么恭喜你了！ 现已成功将 Docker 容器中运行的应用程序部署到 Azure。
 
 ![浏览器屏幕截图，显示应用程序在 Azure 容器实例中运行][aci-app-browser]
 

@@ -1,21 +1,22 @@
 ---
-title: 快速入门：使用语音服务 SDK 通过 C# 在 UWP 应用中识别语音
+title: 快速入门：识别语音，C# (UWP) - 语音服务
 titleSuffix: Azure Cognitive Services
-description: 了解如何使用语音服务 SDK 在 UWP 应用中识别语音
+description: 在本文中，请使用认知服务语音 SDK 创建 C# 通用 Windows 平台 (UWP) 应用程序。 可以通过设备的麦克风实时将语音转录为文本。 该应用程序是使用语音 SDK NuGet 包和 Microsoft Visual Studio 2017 构建的。
 services: cognitive-services
 author: wolfma61
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: quickstart
-ms.date: 11/06/2018
+ms.date: 12/06/2018
 ms.author: wolfma
-ms.openlocfilehash: 7b132ea9fea7591d32b693ef9c95acf7626c8fff
-ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
+ms.custom: seodec18
+ms.openlocfilehash: 55988ef65e223c76a485c3cbec13626abf68d3b9
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51218882"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53104623"
 ---
 # <a name="quickstart-recognize-speech-in-a-uwp-app-by-using-the-speech-sdk"></a>快速入门：使用语音 SDK 在 UWP 应用中识别语音
 
@@ -34,7 +35,7 @@ ms.locfileid: "51218882"
 
 1. 启动 Visual Studio 2017。
 
-1. 确保“通用 Windows 平台开发”工作负荷可用。 在 Visual Studio 菜单栏中选择“工具” > “获取工具和功能”，以便打开 Visual Studio 安装程序。 如果此工作负荷已启用，请关闭对话框。 
+1. 确保“通用 Windows 平台开发”工作负荷可用。 在 Visual Studio 菜单栏中选择“工具” > “获取工具和功能”，以便打开 Visual Studio 安装程序。 如果此工作负荷已启用，请关闭对话框。
 
     ![Visual Studio 安装程序的屏幕截图，其中突出显示了“工作负荷”选项卡](media/sdk/vs-enable-uwp-workload.png)
 

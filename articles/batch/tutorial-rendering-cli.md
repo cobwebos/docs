@@ -2,19 +2,19 @@
 title: 在云中渲染场景 - Azure Batch
 description: 教程 - 如何使用 Batch 渲染服务和 Azure 命令行界面通过 Arnold 来渲染 Autodesk 3ds Max 场景
 services: batch
-author: dlepow
+author: laurenhughes
 manager: jeconnoc
 ms.service: batch
 ms.topic: tutorial
-ms.date: 10/24/2018
-ms.author: danlep
+ms.date: 12/11/2018
+ms.author: lahugh
 ms.custom: mvc
-ms.openlocfilehash: 9f9464874230538bf2976b47896dae8e67c9744f
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: 0b9f6e440140edbec59d1bf837a0dfb16ab44d5f
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50024386"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53323416"
 ---
 # <a name="tutorial-render-a-scene-with-azure-batch"></a>教程：使用 Azure Batch 渲染场景 
 
@@ -124,7 +124,7 @@ az storage blob upload-batch \
       "publisher": "batch",
       "offer": "rendering-windows2016",
       "sku": "rendering",
-      "version": "1.2.1"
+      "version": "1.3.1"
     },
     "nodeAgentSKUId": "batch.node.windows amd64"
   },

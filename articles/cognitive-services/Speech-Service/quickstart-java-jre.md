@@ -1,5 +1,5 @@
 ---
-title: 快速入门：识别 Java 中的语音（Windows 或 Linux）
+title: 快速入门：识别语音，Java - 语音服务
 titleSuffix: Azure Cognitive Services
 description: 了解如何识别 Java 中的语音（Windows 或 Linux）
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.component: speech-service
 ms.topic: quickstart
 ms.date: 11/06/2018
 ms.author: fmegen
-ms.openlocfilehash: 2b39084443690b99391268acb6352763657e2a3c
-ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
+ms.openlocfilehash: 7d1f26a43866025c3b542fc10a3f316ad0d1dc37
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51218570"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53103109"
 ---
 # <a name="quickstart-recognize-speech-in-java-on-windows-or-linux-by-using-the-speech-service-sdk"></a>快速入门：在 Windows 或 Linux 上使用语音服务 SDK 通过 Java 识别语音
 

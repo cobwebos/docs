@@ -1,5 +1,5 @@
 ---
-title: 在 Azure 中创建静态 HTML Web 应用 | Microsoft Docs
+title: 创建静态 HTML Web 应用 - Azure 应用服务 | Microsoft Docs
 description: 了解如何通过部署静态 HTML 示例应用，在 Azure 应用服务中运行 Web 应用。
 services: app-service\web
 documentationcenter: ''
@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: quickstart
 ms.date: 08/28/2018
 ms.author: msangapu
-ms.custom: mvc
-ms.openlocfilehash: cee0bdffb99076903df988d30fcaa4f6cb2234c6
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.custom: seodec18
+ms.openlocfilehash: c7d01d4c079eacfd2af1ebad4ac41d70f792a0bb
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43123184"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53253557"
 ---
 # <a name="create-a-static-html-web-app-in-azure"></a>在 Azure 中创建静态 HTML Web 应用
 
@@ -112,7 +112,7 @@ az webapp up --location westeurope --name <app_name>
 
 ![示例应用主页](media/app-service-web-get-started-html/hello-world-in-browser-az.png)
 
-**祝贺你！** 现已将第一个 HTML 应用部署到应用服务。
+祝贺你！ 现已将第一个 HTML 应用部署到应用服务。
 
 ## <a name="update-and-redeploy-the-app"></a>更新并重新部署应用
 
@@ -140,11 +140,11 @@ az webapp up --location westeurope --name <app_name>
 
 ![在门户中导航到 Azure Web 应用](./media/app-service-web-get-started-html/portal1.png)
 
-此时会看到 Web 应用的概述页。 在此处可以执行基本的管理任务，例如浏览、停止、启动、重启和删除。
+这里我们可以看到 Web 应用的概述页。 并可以执行基本的管理任务，例如浏览、停止、启动、重新启动和删除。
 
 ![Azure 门户中的应用服务边栏选项卡](./media/app-service-web-get-started-html/portal2.png)
 
-左侧菜单提供用于配置应用的不同页面。
+左侧菜单提供了用于配置应用的不同页面。
 
 ## <a name="clean-up-resources"></a>清理资源
 

@@ -1,5 +1,5 @@
 ---
-title: 将 Azure 应用服务环境配置为采用强制隧道
+title: 将应用服务环境配置为采用强制隧道 - Azure
 description: 在通过强制隧道传输出站流量时，使应用服务环境能够正常运行
 services: app-service
 documentationcenter: na
@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: quickstart
 ms.date: 05/29/2018
 ms.author: ccompy
-ms.custom: mvc
-ms.openlocfilehash: ba93aab14c8eaccf9e3ed9ae9db0d169f41dddea
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.custom: seodec18
+ms.openlocfilehash: 89827cdc7d29a817c83fd16ec2a4340f06c8343c
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44024039"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53272723"
 ---
 # <a name="configure-your-app-service-environment-with-forced-tunneling"></a>使用强制隧道配置应用服务环境
 
@@ -105,13 +105,13 @@ ASE 具有许多外部依赖项，详见[应用服务环境网络体系结构][n
 
 3. 获取可供所有从应用服务环境到 Internet 的出站流量使用的地址。 如果在本地路由流量，则这些地址为 NAT 或网关 IP。 若要通过 NVA 路由应用服务环境出站流量，则出口地址为 NVA 的公共 IP。
 
-4. _若要在现有的应用服务环境中设置传出地址：_ 请转到 resources.azure.com，再转到 Subscription/\<subscription id>/resourceGroups/\<ase resource group>/providers/Microsoft.Web/hostingEnvironments/\<ase name>。 然后即可看到描述应用服务环境的 JSON 代码。 确保代码的顶部显示“读/写”。 选择“编辑”。 向下滚动到底部。 将“userWhitelistedIpRanges”值从“null”更改为类似于以下内容的值。 使用要设置为出口地址范围的地址。 
+4. 在现有应用服务环境中设置出口地址：请转到 resources.azure.com，再转到 Subscription/\<subscription id>/resourceGroups/\<ase resource group>/providers/Microsoft.Web/hostingEnvironments/\<ase name>。 然后即可看到描述应用服务环境的 JSON 代码。 确保代码的顶部显示“读/写”。 选择“编辑”。 向下滚动到底部。 将“userWhitelistedIpRanges”值从“null”更改为类似于以下内容的值。 使用要设置为出口地址范围的地址。 
 
         "userWhitelistedIpRanges": ["11.22.33.44/32", "55.66.77.0/24"] 
 
    选择顶部的“PUT”。 此选项会触发应用服务环境的缩放操作，并对防火墙进行调整。
 
-_若要使用传出地址创建 ASE_：请按[使用模板创建应用服务环境][template]中的说明操作，拉取相应的模板。  编辑 azuredeploy.json 文件中的 "resources" 节，但 "properties" 块除外，并添加一行，用于 **userWhitelistedIpRanges**（含值）。
+使用出口地址创建 ASE：按照[使用模板创建应用服务环境][template]中的说明，并下拉相应的模板。  编辑 azuredeploy.json 文件中的 "resources" 节，但 "properties" 块除外，并添加一行，用于 **userWhitelistedIpRanges**（含值）。
 
     "resources": [
       {

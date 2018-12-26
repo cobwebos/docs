@@ -10,14 +10,14 @@ ms.topic: tutorial
 ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: eamono
-ms.openlocfilehash: a4356f38df017901ab219318463538003d3a979e
-ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
+ms.openlocfilehash: 9da40508c6f8fec1122ab116786ed726b576a639
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/15/2018
-ms.locfileid: "41920821"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53106696"
 ---
-# <a name="integrate-azure-automation-with-event-grid-and-microsoft-teams"></a>将 Azure 自动化与事件网格和 Microsoft Teams 相集成
+# <a name="tutorial-integrate-azure-automation-with-event-grid-and-microsoft-teams"></a>教程：将 Azure 自动化与事件网格和 Microsoft Teams 相集成
 
 本教程介绍如何执行下列操作：
 

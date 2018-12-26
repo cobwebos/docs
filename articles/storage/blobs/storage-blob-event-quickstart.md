@@ -1,21 +1,22 @@
 ---
-title: 将 Azure Blob 存储事件路由到自定义 Web 终结点 | Microsoft Docs
-description: 使用 Azure 事件网格订阅 Blob 存储事件。
+title: 将 Azure Blob 存储事件发送到 Web 终结点 - Azure CLI | Microsoft Docs
+description: 使用 Azure 事件网格订阅 Blob 存储事件。 将事件发送到 WebHook。 处理 Web 应用程序中的事件。
 services: storage,event-grid
 author: cbrooksmsft
 ms.author: cbrooks
-ms.date: 08/23/2018
+ms.date: 12/06/2018
 ms.topic: quickstart
 ms.service: storage
 ms.component: blobs
-ms.openlocfilehash: 78ee6f198bf4e16e3b2b0deb8fdb0b68c0fe9b73
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.custom: seodec18
+ms.openlocfilehash: 2586b7f9c2a182ee065daab1d2a43eb5e0e2c99c
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45735075"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53073714"
 ---
-# <a name="route-blob-storage-events-to-a-custom-web-endpoint-with-azure-cli"></a>利用 Azure CLI 将 Blob 存储事件路由到自定义 Web 终结点
+# <a name="quickstart-route-storage-events-to-web-endpoint-with-azure-cli"></a>快速入门：使用 Azure CLI 将存储事件路由到 Web 终结点
 
 Azure 事件网格是针对云的事件处理服务。 在本文中，请使用 Azure CLI 订阅 Blob 存储事件，然后触发可查看结果的事件。
 
@@ -32,7 +33,7 @@ Azure 事件网格是针对云的事件处理服务。 在本文中，请使用 
 
 如果选择在本地安装并使用 CLI，本文需要运行最新版的 Azure CLI（2.0.24 或更高版本）。 要查找版本，请运行 `az --version`。 如果需要进行安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。
 
-如果不使用 Cloud Shell，必须先使用 `az login` 进行登录。
+如果不使用 Cloud Shell，则必须先使用 `az login` 登录。
 
 ## <a name="create-a-resource-group"></a>创建资源组
 
@@ -117,7 +118,7 @@ touch testfile.txt
 az storage blob upload --file testfile.txt --container-name testcontainer --name testfile.txt
 ```
 
-你已经触发事件，而事件网格则已将消息发送到你在订阅时配置的终结点。 查看 Web 应用以查看刚刚发送的事件。
+现已触发事件，并且事件网格已将消息发送到订阅时配置的终结点。 查看 Web 应用以查看刚刚发送的事件。
 
 
 ```json

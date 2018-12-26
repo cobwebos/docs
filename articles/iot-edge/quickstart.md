@@ -1,6 +1,6 @@
 ---
-title: 快速入门 Azure IoT Edge + Windows | Microsoft Docs
-description: 通过在模拟边缘设备上运行分析来试用 Azure IoT Edge
+title: 关于在 Windows 上创建 Azure IoT Edge 设备的快速入门 | Microsoft Docs
+description: 本快速入门介绍如何创建 IoT Edge 设备，然后从 Azure 门户远程部署预生成的代码。
 author: kgremban
 manager: philmea
 ms.author: kgremban
@@ -8,13 +8,13 @@ ms.date: 10/02/2018
 ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
-ms.custom: mvc
-ms.openlocfilehash: 78cb00c568942e6b8c0f5da035381c82f5789a08
-ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
+ms.custom: mvc, seodec18
+ms.openlocfilehash: 941d5d8f356fbd1477b4559f1475511165c01341
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2018
-ms.locfileid: "51977006"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53340090"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-from-the-azure-portal-to-a-windows-device---preview"></a>快速入门：将第一个 IoT Edge 模块从 Azure 门户部署到 Windows 设备 - 预览
 
@@ -27,7 +27,7 @@ ms.locfileid: "51977006"
 3. 在设备上安装并启动 IoT Edge 运行时。
 4. 以远程方式将模块部署到 IoT Edge 设备并将遥测数据发送到 IoT 中心。
 
-![快速入门体系结构](./media/quickstart/install-edge-full.png)
+![关系图 - 设备和云架构的快速入门](./media/quickstart/install-edge-full.png)
 
 在本快速入门中部署的模块为模拟传感器，可以生成温度、湿度和压强数据。 其他 Azure IoT Edge 教程均以本教程中通过部署模块（这些模块通过分析模拟数据来获得业务见解）执行的操作为基础。
 
@@ -72,7 +72,7 @@ IoT Edge 设备：
 
 通过 Azure CLI 创建 IoT 中心，启动快速入门。
 
-![创建 IoT 中心](./media/quickstart/create-iot-hub.png)
+![关系图 - 在云中创建 IoT 中心](./media/quickstart/create-iot-hub.png)
 
 免费级的 IoT 中心适用于此快速入门。 如果曾经用过 IoT 中心并且已创建免费的中心，则可使用该 IoT 中心。 每个订阅仅能有一个免费 IoT 中心。
 
@@ -87,7 +87,7 @@ IoT Edge 设备：
 ## <a name="register-an-iot-edge-device"></a>注册 IoT Edge 设备
 
 使用新创建的 IoT 中心注册 IoT Edge 设备。
-![注册设备](./media/quickstart/register-device.png)
+![关系图 - 使用 IoT 中心标识注册设备](./media/quickstart/register-device.png)
 
 为模拟设备创建设备标识，以便它可以与 IoT 中心通信。 设备标识存在于云中，而将物理设备关联到设备标识时，则使用唯一的设备连接字符串。
 
@@ -112,7 +112,7 @@ IoT Edge 设备：
 ## <a name="install-and-start-the-iot-edge-runtime"></a>安装和启动 IoT Edge 运行时
 
 在 IoT Edge 设备上安装 Azure IoT Edge 运行时，并使用设备连接字符串对其进行配置。
-![注册设备](./media/quickstart/start-runtime.png)
+![关系图 - 在设备上启动运行时](./media/quickstart/start-runtime.png)
 
 IoT Edge 运行时部署在所有 IoT Edge 设备上。 它有三个组件。 每次某个 Edge 设备在启动后通过启动 IoT Edge 代理来启动此设备时，**IoT Edge 安全守护程序**就会启动。 **IoT Edge 代理**协助部署和监视 IoT Edge 设备（包括 IoT Edge 中心）的模块。 IoT Edge 中心管理 IoT Edge 设备模块之间以及设备和 Azure IoT 中心之间的通信。
 
@@ -175,7 +175,7 @@ IoT Edge 设备现在已配置好。 它可以运行云部署型模块了。
 ## <a name="deploy-a-module"></a>部署模块
 
 从云端管理 Azure IoT Edge 设备，部署将遥测数据发送到 IoT 中心的模块。
-![注册设备](./media/quickstart/deploy-module.png)
+![关系图 - 将模块从云部署到设备](./media/quickstart/deploy-module.png)
 
 [!INCLUDE [iot-edge-deploy-module](../../includes/iot-edge-deploy-module.md)]
 
@@ -199,7 +199,7 @@ iotedge logs tempSensor -f
 
   ![查看模块中的数据](./media/quickstart/iotedge-logs.png)
 
-也可使用 [Visual Studio Code 的 Azure IoT Toolkit 扩展](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit)查看到达 IoT 中心的消息。 
+也可以使用 [Visual Studio Code 的 Azure IoT Toolkit 扩展](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit)（以前称为 Azure IoT 工具包扩展）查看到达 IoT 中心的消息。 
 
 ## <a name="clean-up-resources"></a>清理资源
 

@@ -1,5 +1,5 @@
 ---
-title: 在 Linux 上的 Azure 应用服务中创建 Python Web 应用 | Microsoft Docs
+title: 在 Linux 上创建 Python Web 应用 - Azure 应用服务 | Microsoft Docs
 description: 数分钟内在 Linux 上的 Azure 应用服务中部署第一个 Python hello world 应用。
 services: app-service\web
 documentationcenter: ''
@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: quickstart
 ms.date: 10/09/2018
 ms.author: cephalin
-ms.custom: mvc
-ms.openlocfilehash: 5f9d694d47c0bd0765af7871d7e535a4174c30ff
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.custom: seodec18
+ms.openlocfilehash: d9d6f3549ec5db914536400fac53de60f2ad4a94
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49404708"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53261844"
 ---
 # <a name="create-a-python-web-app-in-azure-app-service-on-linux-preview"></a>在 Linux 上的 Azure 应用服务（预览）中创建 Python Web 应用
 
@@ -34,7 +34,7 @@ ms.locfileid: "49404708"
 
 ## <a name="prerequisites"></a>先决条件
 
-完成本快速入门教程：
+完成本快速入门教程需要：
 
 * <a href="https://www.python.org/downloads/" target="_blank">安装 Python 3.7</a>
 * <a href="https://git-scm.com/" target="_blank">安装 Git</a>
@@ -50,7 +50,7 @@ cd python-docs-hello-world
 
 ## <a name="run-the-app-locally"></a>在本地运行应用
 
-在本地运行应用程序，这样就能了解将它部署到 Azure 时它的外观应该是什么样的。 打开终端窗口，使用以下命令安装所需的依赖项，并启动内置开发服务器。 
+在本地运行应用程序，以便你能了解将它部署到 Azure 时它的外观应该是什么样的。 打开终端窗口，使用以下命令安装所需的依赖项，并启动内置开发服务器。 
 
 ```bash
 # In Bash
@@ -133,7 +133,7 @@ Python 示例代码在包含内置映像的 Web 应用中运行。
 
 ![在 Azure 中运行应用的示例](media/quickstart-python/hello-world-in-browser.png)
 
-**祝贺你！** 现已将第一个 Python 应用部署到 Linux 应用服务。
+祝贺你！ 现已将第一个 Python 应用部署到 Linux 应用服务。
 
 ## <a name="update-locally-and-redeploy-the-code"></a>在本地更新并重新部署代码
 
@@ -162,11 +162,11 @@ git push azure master
 
 ![在门户中导航到 Azure Web 应用](./media/quickstart-python/app-service-list.png)
 
-将看到 Web 应用的概述页。 在此处可以执行基本的管理任务，例如浏览、停止、启动、重新启动和删除。
+这里我们可以看到 Web 应用的概述页。 并可以执行基本的管理任务，例如浏览、停止、启动、重新启动和删除。
 
 ![Azure 门户中的应用服务页](media/quickstart-python/app-service-detail.png)
 
-左侧菜单提供用于配置应用的不同页面。 
+左侧菜单提供了用于配置应用的不同页面。 
 
 [!INCLUDE [cli-samples-clean-up](../../../includes/cli-samples-clean-up.md)]
 

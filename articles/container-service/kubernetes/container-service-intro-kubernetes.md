@@ -1,5 +1,5 @@
 ---
-title: 用于 Kubernetes 的 Azure 容器服务简介
+title: （已弃用）用于 Kubernetes 的 Azure 容器服务简介
 description: 有了用于 Kubernetes 的 Azure 容器服务，即可在 Azure 上轻松部署和管理基于容器的应用程序。
 services: container-service
 author: gabrtv
@@ -9,16 +9,19 @@ ms.topic: overview
 ms.date: 07/21/2017
 ms.author: gamonroy
 ms.custom: mvc
-ms.openlocfilehash: 3e019f02d13ade6a42f4739eacae55f5bf6ac2af
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: e00ac57cc36b3331cfb847ecedc6c75132cdeb6b
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46973586"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52999174"
 ---
-# <a name="introduction-to-azure-container-service-for-kubernetes"></a>用于 Kubernetes 的 Azure 容器服务简介
+# <a name="deprecated-introduction-to-azure-container-service-for-kubernetes"></a>（已弃用）用于 Kubernetes 的 Azure 容器服务简介
 
-[!INCLUDE [aks-preview-redirect.md](../../../includes/aks-preview-redirect.md)]
+> [!TIP]
+> 有关本文中使用 Azure Kubernetes 服务的更新版本，请参阅 [Azure Kubernetes 服务 (AKS) 概览](../../aks/intro-kubernetes.md)。
+
+[!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
 有了用于 Kubernetes 的 Azure 容器服务，即可轻松创建、配置和管理虚拟机群集，这些虚拟机已经过预配置，可以运行容器化应用程序。 通过此服务，用户可使用现有技能或利用不断增加的大量社区专业知识，在 Microsoft Azure 上部署和管理基于容器的应用程序。
 

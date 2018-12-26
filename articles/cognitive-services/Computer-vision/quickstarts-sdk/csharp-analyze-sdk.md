@@ -1,5 +1,5 @@
 ---
-title: 快速入门：分析图像 - SDK、C# - 计算机视觉
+title: 快速入门：分析图像（SDK、C#）计算机视觉
 titleSuffix: Azure Cognitive Services
 description: 在本快速入门中，你将使用计算机视觉 Windows C# 客户端库分析图像。
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 09/14/2018
 ms.author: pafarley
-ms.openlocfilehash: 7de7a87c73c2dabddf2268a6a0bc2992d6017e4d
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.openlocfilehash: 0983978221e9872e92ca366edd3bd3f2bfd9c3f4
+ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51853925"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53413313"
 ---
 # <a name="quickstart-analyze-an-image-using-the-computer-vision-sdk-and-c"></a>快速入门：使用计算机视觉 SDK 和 C# 分析图像
 
@@ -162,7 +162,7 @@ namespace ImageAnalyze
 
 成功的响应会显示每个图像的最相关的描述文字。
 
-有关原始 JSON 输出的示例，请参阅 [API 快速入门：使用 C# 分析本地图像](../QuickStarts/CSharp-analyze.md#examine-the-response)。
+原始 JSON 输出的示例，请参阅 [API 快速入门：使用 C# 分析本地图像](../QuickStarts/CSharp-analyze.md#examine-the-response)。
 
 ```
 http://upload.wikimedia.org/wikipedia/commons/3/3c/Shaki_waterfall.jpg

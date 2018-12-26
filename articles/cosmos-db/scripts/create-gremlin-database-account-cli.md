@@ -1,18 +1,18 @@
 ---
-title: Azure CLI 脚本 - 创建 Azure Cosmos DB Gremlin API 帐户、数据库和图形 | Microsoft Docs
+title: Azure CLI 脚本 - 创建 Azure Cosmos DB Gremlin API 帐户、数据库和图形
 description: Azure CLI 脚本示例 - 创建 Azure Cosmos DB Gremlin API 帐户、数据库和图形
 author: markjbrown
+ms.author: mjbrown
 ms.service: cosmos-db
 ms.component: cosmosdb-graph
 ms.topic: sample
 ms.date: 10/26/2018
-ms.author: mjbrown
-ms.openlocfilehash: c920fd55442897688fab8c88e599fe4837667cf9
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 0e870b00cefc235a99c084c5a405b69c07187907
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51019535"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52956663"
 ---
 # <a name="azure-cosmos-db-create-a-gremlin-api-account-using-azure-cli"></a>Azure Cosmos DB：使用 Azure CLI 创建 Gremlin API 帐户
 

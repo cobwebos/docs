@@ -1,6 +1,6 @@
 ---
 title: Azure Cosmos DB：SQL API 的 .NET 示例
-description: 在 github 上查找使用 Azure Cosmos DB SQL API 的常见任务的 C# .NET 示例，包括 CRUD 操作。
+description: 在 GitHub 上查找使用 Azure Cosmos DB SQL API 的常见任务的 C# .NET 示例，包括 CRUD 操作。
 keywords: NoSQL 示例
 author: rnagpal
 ms.service: cosmos-db
@@ -8,12 +8,12 @@ ms.component: cosmosdb-sql
 ms.topic: sample
 ms.date: 02/22/2017
 ms.author: rnagpal
-ms.openlocfilehash: 39eacca1e5ddb4c7024c5195dc1823f2c3c651e7
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 9c16a882e49ceec4fc733cb3a8c1061dd1949e28
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52875257"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53166619"
 ---
 # <a name="azure-cosmos-db-net-examples-for-the-sql-api"></a>Azure Cosmos DB：SQL API 的 .NET 示例
 > [!div class="op_single_selector"]
@@ -37,11 +37,11 @@ ms.locfileid: "52875257"
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
   
-- 可以[激活 Visual Studio 订户权益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)：Visual Studio 订阅每月为用户提供可用来试用付费版 Azure 服务的信用额度。
+- 可以[激活 Visual Studio 订阅者权益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)：Visual Studio 订阅每月提供可用来试用付费版 Azure 服务的信用额度。
 
 [!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
 
-也需要 [Microsoft.Azure.DocumentDB NuGet 程序包](http://www.nuget.org/packages/Microsoft.Azure.DocumentDB/)。 
+也需要 [Microsoft.Azure.DocumentDB NuGet 程序包](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/)。 
 
 > [!NOTE]
 > 每个示例都是独立的，自行对自身进行设置并在完成后自行进行清理。 同样地，这些示例对 CreateDocumentCollectionAsync() 发出多个调用。 每当执行此操作时，即会根据所创建的集合的性能层，对订阅收取使用 1 小时的费用。 

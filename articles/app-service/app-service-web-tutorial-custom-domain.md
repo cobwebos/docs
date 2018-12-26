@@ -1,5 +1,5 @@
 ---
-title: 将现有的自定义 DNS 名称映射到 Azure Web 应用 | Microsoft Docs
+title: 映射现有的自定义 DNS 名称 - Azure 应用服务 | Microsoft Docs
 description: 了解如何在 Azure 应用服务中向 Web 应用、移动应用后端或 API 应用添加现有的自定义 DNS 域名（虚域）。
 keywords: 应用服务, Azure 应用服务, 域映射, 域名, 现有域, 主机名
 services: app-service\web
@@ -15,13 +15,13 @@ ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 06/18/2018
 ms.author: cephalin
-ms.custom: mvc
-ms.openlocfilehash: 30199005db93f9a43a37d2c72bb34dd772265419
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.custom: seodec18
+ms.openlocfilehash: 2debb52c703aaa25b2ff0a182bed3e07431b6f48
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43664881"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53270257"
 ---
 # <a name="tutorial-map-an-existing-custom-dns-name-to-azure-web-apps"></a>教程：将现有的自定义 DNS 名称映射到 Azure Web 应用
 
@@ -52,7 +52,7 @@ ms.locfileid: "43664881"
 
 ## <a name="prepare-the-app"></a>准备应用
 
-若要映射自定义 DNS 名称到 Web 应用，Web 应用的[应用服务计划](https://azure.microsoft.com/pricing/details/app-service/)必须位于付费层（“共享”、“基本”、“标准”或“高级”）。 在此步骤中，需确保应用服务计划位于受支持的定价层。
+若要将自定义 DNS 名称映射到 Web 应用，Web 应用的[应用服务计划](https://azure.microsoft.com/pricing/details/app-service/)必须位于付费层（Azure Functions 的“共享”、“基本”、“标准”、“高级”或“消耗”层）。 在此步骤中，需确保应用服务计划位于受支持的定价层。
 
 [!INCLUDE [app-service-dev-test-note](../../includes/app-service-dev-test-note.md)]
 

@@ -1,5 +1,5 @@
 ---
-title: 快速入门：使用语音服务 SDK 在 iOS 上的 Objective-C 中识别语音
+title: 快速入门：识别语音，Objective-C - 语音服务
 titleSuffix: Azure Cognitive Services
 description: 了解如何使用语音服务 SDK 在 iOS 上的 Objective-C 中识别语音
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.component: speech-service
 ms.topic: quickstart
 ms.date: 11/06/2018
 ms.author: chlandsi
-ms.openlocfilehash: 7d1e05e13e55b8b7bc07eda71d63f96f12c81ff9
-ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
+ms.openlocfilehash: eaa44f942082c6bd062599dbdd0401fe4505daf4
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51219182"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53090189"
 ---
 # <a name="quickstart-recognize-speech-in-objective-c-on-ios-using-the-speech-service-sdk"></a>快速入门：使用语音服务 SDK 在 iOS 上的 Objective-C 中识别语音
 
@@ -25,8 +25,11 @@ ms.locfileid: "51219182"
 
 ## <a name="prerequisites"></a>先决条件
 
-* 语音服务的订阅密钥。 请参阅[免费试用语音服务](get-started.md)。
-* 一台将 Xcode 9.4.1 作为 iOS 开发环境安装的 Mac。 本教程以 iOS 版本 11.4 为目标。 如果还没有 Xcode，可以通过 [App Store](https://geo.itunes.apple.com/us/app/xcode/id497799835?mt=12) 来安装它。
+在开始之前，请满足以下一系列先决条件：
+
+* 语音服务的[订阅密钥](get-started.md)
+* [Xcode 9.4.1](https://geo.itunes.apple.com/us/app/xcode/id497799835?mt=12) 或更高版本的 macOS 计算机
+* 目标设置为 iOS 11.4 版或更高版本
 
 ## <a name="get-the-speech-sdk-for-ios"></a>获取用于 iOS 的语音 SDK
 
@@ -37,7 +40,7 @@ ms.locfileid: "51219182"
 用于 Mac 和 iOS 的认知服务语音 SDK 目前以 Cocoa Framework 形式发行。
 它可以从 https://aka.ms/csspeech/iosbinary 下载。 将文件下载到主目录。
 
-## <a name="create-an-xcode-project"></a>创建 Xcode 项目 
+## <a name="create-an-xcode-project"></a>创建 Xcode 项目
 
 启动 Xcode，然后通过单击“文件” > “新建” > “项目”来启动新项目。
 在模板选择对话框中，选择“iOS 单一视图应用”模板。
@@ -54,7 +57,7 @@ ms.locfileid: "51219182"
     1. 选择用于放置项目的主目录。 这样会在主目录中创建一个 `helloworld` 目录，其中包含 Xcode 项目的所有文件。
     1. 禁止创建适用于此示例项目的 Git 存储库。
     1. 在“项目设置”中调整 SDK 的路径。
-        1. 在“常规”选项卡的“嵌入式二进制文件”标头下，添加 SDK 库作为框架：单击“添加嵌入式二进制文件” > “添加其他...”，导航到主目录，然后选择 `MicrosoftCognitiveServicesSpeech.framework` 文件。 这样也会自动将 SDK 库添加到“链接的框架和库”标头。
+        1. 在“嵌入式二进制文件”标头下的“常规”选项卡中，添加 SDK 库作为框架：“添加嵌入式二进制文件” > “添加其他...”> 导航到主目录，并选择文件 `MicrosoftCognitiveServicesSpeech.framework`。 这样也会自动将 SDK 库添加到“链接的框架和库”标头。
         ![添加的框架](media/sdk/qs-objectivec-framework.png)
         1. 转到“生成设置”选项卡，激活“所有”设置。
         1. 将目录 `$(SRCROOT)/..` 添加到“搜索路径”标头下的“框架搜索路径”。
@@ -103,4 +106,3 @@ ms.locfileid: "51219182"
 
 > [!div class="nextstepaction"]
 > [获取我们的示例](speech-sdk.md#get-the-samples)
-

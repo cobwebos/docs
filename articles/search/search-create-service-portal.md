@@ -1,6 +1,6 @@
 ---
-title: 在门户中创建 Azure 搜索服务 | Microsoft Docs
-description: 在门户中预配 Azure 搜索服务。
+title: 在门户中创建 Azure 搜索服务 - Azure 搜索
+description: 在 Azure 门户中预配 Azure 搜索服务。 选择资源组、区域以及 SKU 或定价层。
 manager: cgronlun
 author: HeidiSteen
 services: search
@@ -8,12 +8,13 @@ ms.service: search
 ms.topic: quickstart
 ms.date: 07/09/2018
 ms.author: heidist
-ms.openlocfilehash: 83e34f926ec3133f89ccb90979fc3e6708613a80
-ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
+ms.custom: seodec2018
+ms.openlocfilehash: 2055ad9baff0c6acc05c9287ca1b8fb08731f8bc
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39713921"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53315972"
 ---
 # <a name="create-an-azure-search-service-in-the-portal"></a>在门户中创建 Azure 搜索服务
 
@@ -58,8 +59,7 @@ ms.locfileid: "39713921"
 作为 Azure 服务，Azure 搜索可托管在世界各地的数据中心中。 请注意，[价格因地域而异](https://azure.microsoft.com/pricing/details/search/)。
 
 ## <a name="select-a-pricing-tier-sku"></a>选择定价层 (SKU)
-
-  [Azure 搜索当前以多个定价层提供](https://azure.microsoft.com/pricing/details/search/)：免费、基本或标准。 每个层都有自己的[容量和限制](search-limits-quotas-capacity.md)。 有关相关指南，请参阅[选择定价层或 SKU](search-sku-tier.md)。
+[Azure 搜索当前以多个定价层提供](https://azure.microsoft.com/pricing/details/search/)：免费、基本或标准。 每个层都有自己的[容量和限制](search-limits-quotas-capacity.md)。 有关相关指南，请参阅[选择定价层或 SKU](search-sku-tier.md)。
 
 通常为生产性工作负荷选择“标准”，但大多数客户会从“免费”服务开始。
 

@@ -10,12 +10,12 @@ ms.topic: overview
 ms.date: 06/12/2018
 ms.author: kgremban
 ms.custom: mvc
-ms.openlocfilehash: 1a1281be1c1b58b21406dad5826e240ccac6c898
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: 08a6134d61c4f93f891488ef24a7b81e81645897
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51567751"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53089796"
 ---
 # <a name="what-is-azure-iot-edge"></a>什么是 Azure IoT Edge
 
@@ -71,7 +71,7 @@ Azure IoT Edge 与 Azure IoT 解决方案加速器无缝集成，提供一个符
 * 将工作负荷发送到一组设备。
 * 监视在现场设备上运行的工作负荷。
 
-![设备的遥测、见解和操作与云协调](./media/about-iot-edge/cloud-interface.png)
+![设备遥测和操作与云进行协调](./media/about-iot-edge/cloud-interface.png)
 
 ## <a name="next-steps"></a>后续步骤
 

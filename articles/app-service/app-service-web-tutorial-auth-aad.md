@@ -1,5 +1,5 @@
 ---
-title: 在 Azure 应用服务中对用户进行端到端身份验证和授权 | Microsoft Docs
+title: 对用户进行端到端身份验证和授权 - Azure 应用服务 | Microsoft Docs
 description: 了解如何使用应用服务身份验证和授权来确保应用服务应用的安全性，包括确保访问远程 API 时的安全性。
 keywords: 应用服务, azure 应用服务, authN, authZ, 安全, 安全性, 多层, azure active directory, azure ad
 services: app-service\web
@@ -14,12 +14,13 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 08/07/2018
 ms.author: cephalin
-ms.openlocfilehash: 9b66dad87708ad127186b0bbbc39965fe90b6b75
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.custom: seodec18
+ms.openlocfilehash: 7c1e07d73d110d5ef7f681486479ec65ff436b19
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50416148"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53408841"
 ---
 # <a name="tutorial-authenticate-and-authorize-users-end-to-end-in-azure-app-service"></a>教程：在 Azure 应用服务中对用户进行端到端身份验证和授权
 
@@ -59,7 +60,7 @@ ms.locfileid: "50416148"
 
 ## <a name="create-local-net-core-app"></a>创建本地 .NET Core 应用
 
-在此步骤中，将设置本地 .NET Core 项目。 请使用同一项目来部署后端 API 应用和前端 Web 应用。
+在此步骤中，你将设置本地 .NET Core 项目。 请使用同一项目来部署后端 API 应用和前端 Web 应用。
 
 ### <a name="clone-and-run-the-sample-application"></a>克隆和运行示例应用程序
 
@@ -213,7 +214,7 @@ git push frontend master
 
 在此步骤中，请为两个应用启用身份验证和授权。 另请配置前端应用，以便生成一个访问令牌，用于对后端应用进行经身份验证的调用。
 
-请将 Azure Active Directory 用作标识提供者。 有关详细信息，请参阅[为应用服务应用程序配置 Azure Active Directory 身份验证](app-service-mobile-how-to-configure-active-directory-authentication.md)。
+请将 Azure Active Directory 用作标识提供者。 有关详细信息，请参阅[为应用服务应用程序配置 Azure Active Directory 身份验证](configure-authentication-provider-aad.md)。
 
 ### <a name="enable-authentication-and-authorization-for-back-end-app"></a>启用针对后端应用的身份验证和授权
 
@@ -420,7 +421,7 @@ git push frontend master
 
 ## <a name="clean-up-resources"></a>清理资源
 
-在前面的步骤中，在资源组中创建了 Azure 资源。 如果认为将来不需要这些资源，请在 Cloud Shell 中运行以下命令删除资源组：
+在前面的步骤中，你在资源组中创建了 Azure 资源。 如果认为将来不需要这些资源，请在 Cloud Shell 中运行以下命令删除资源组：
 
 ```azurecli-interactive
 az group delete --name myAuthResourceGroup

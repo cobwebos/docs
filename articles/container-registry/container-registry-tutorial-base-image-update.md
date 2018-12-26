@@ -1,21 +1,21 @@
 ---
-title: 教程 - 使用 Azure 容器注册表任务在基础映像更新时自动化容器映像生成
-description: 本教程介绍在更新基础映像时，如何配置生成任务以自动触发云中的容器映像生成。
+title: 教程 - 在基础映像更新时自动化容器映像生成 - Azure 容器注册表任务
+description: 本教程介绍在更新基础映像时，如何配置 Azure 容器注册表任务以自动触发云中的容器映像生成。
 services: container-registry
 author: dlepow
 ms.service: container-registry
 ms.topic: tutorial
 ms.date: 09/24/2018
 ms.author: danlep
-ms.custom: mvc
-ms.openlocfilehash: 54e8892787fa2b7b093609ee5d09f3a87e103411
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.custom: seodec18, mvc
+ms.openlocfilehash: b3d8c3aea4955d6f95ead69d5bed147cc486e7c8
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48856575"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53254031"
 ---
-# <a name="tutorial-automate-image-builds-on-base-image-update-with-azure-container-registry-tasks"></a>教程：使用 Azure 容器注册表任务在基础映像更新时自动化映像生成
+# <a name="tutorial-automate-container-image-builds-when-a-base-image-is-updated-in-an-azure-container-registry"></a>教程：在 Azure 容器注册表中更新基础映像时自动化容器映像生成 
 
 ACR 任务支持在容器基础映像更新时自动化的生成执行，例如在某个基础映像中修补 OS 或应用程序框架时。 本教程介绍当容器基础映像已推送到注册表时，如何在 ACR 任务中创建在云中触发生成的任务。
 
@@ -73,7 +73,7 @@ GIT_PAT=<personal-access-token> # The PAT you generated in the second tutorial
 
 本教程将指导完成基础映像更新方案。 [代码示例][code-sample]包括两个 Dockerfile：一个应用程序映像和一个它指定为其基础的映像。 在后续部分，我们将创建一个 ACR 任务，它会在新版本基础映像推送到容器注册表时自动触发应用程序映像的生成。
 
-[Dockerfile-app][dockerfile-app]：小型 Node.js Web 应用程序，它呈现一个静态 Web 页面，该页面显示该应用程序所基于的 Node.js 版本。 该版本字符串是模拟的：显示基础映像中定义的环境变量和 `NODE_VERSION` 的内容。
+[Dockerfile-app][dockerfile-app]：小型 Node.js Web 应用程序，它呈现一个静态 Web 页面，其中显示该应用程序所基于的 Node.js 版本。 该版本字符串是模拟的：显示基础映像中定义的环境变量和 `NODE_VERSION` 的内容。
 
 [Dockerfile-base][dockerfile-base]：`Dockerfile-app` 指定为其基础的映像。 它本身基于[节点][base-node]映像，并且包括 `NODE_VERSION` 环境变量。
 

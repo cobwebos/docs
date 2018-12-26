@@ -1,7 +1,8 @@
 ---
-title: 教程 4：上下文相关数据的模式角色
+title: 模式角色
 titleSuffix: Azure Cognitive Services
 description: 使用模式从格式正确的模板话语中提取数据。 模板话语使用简单的实体和角色提取相关的数据，例如源位置和目标位置。
+ms.custom: seodec18
 services: cognitive-services
 author: diberry
 manager: cgronlun
@@ -10,12 +11,12 @@ ms.component: language-understanding
 ms.topic: tutorial
 ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: d13d77fdb741f7f7cf16e3d25c755f4363e56f93
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: b6d800705509edc31b410d1e9cd30f8b53702010
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52427482"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53094400"
 ---
 # <a name="tutorial-4-extract-contextually-related-patterns"></a>教程 4：提取与上下文相关的模式
 
@@ -28,7 +29,7 @@ ms.locfileid: "52427482"
 
 需要将新员工和家人从现有城市调到虚构公司所在的城市。 由于新员工可以来自于任何城市，因此需要发现此位置。 诸如列表实体等的集合列表可能不起作用，因为只会提取列表中的城市。
 
-与原城市和目的地城市相关联的角色名称需要在所有实体中是唯一的。 确保这些角色唯一的一种简单办法是通过命名策略将其绑定到包含实体。 “NewEmployeeRelocation”实体是包含两个角色（“NewEmployeeReloOrigin”和“NewEmployeeReloDestination”）的简单实体。 Relo 是 relocation 的缩写。
+与原城市和目的地城市相关联的角色名称需要在所有实体中是唯一的。 确保这些角色唯一的一种简单办法是通过命名策略将其绑定到包含实体。 NewEmployeeRelocation 实体是具有以下两个角色的简单实体：NewEmployeeReloOrigin 和 NewEmployeeReloDestination。 Relo 是 relocation 的缩写。
 
 由于示例话语 `Move new employee Robert Williams from Sacramento and San Francisco` 仅具有机器学习的实体，因此，向意向提供足够的示例话语至关重要，以便检测到这些实体。  
 
@@ -128,7 +129,7 @@ ms.locfileid: "52427482"
 
 2. 将光标定位到地址中 URL 的末尾，并输入 `Move Wayne Berry from Miami to Mount Vernon`。 最后一个查询字符串参数为 `q`，表示陈述**查询**。 
 
-    ```JSON
+    ```json
     {
       "query": "Move Wayne Berry from Newark to Columbus",
       "topScoringIntent": {
@@ -258,7 +259,7 @@ ms.locfileid: "52427482"
 
 2. 将光标定位到地址中 URL 的末尾，并输入 `Move wayne berry from miami to mount vernon`。 最后一个查询字符串参数为 `q`，表示陈述**查询**。 
 
-    ```JSON
+    ```json
     {
       "query": "Move Wayne Berry from Miami to Mount Vernon",
       "topScoringIntent": {

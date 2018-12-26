@@ -1,7 +1,7 @@
 ---
-title: 教程：必应新闻搜索单页应用
+title: 教程：创建单页 Web 应用 - 必应新闻搜索 API
 titlesuffix: Azure Cognitive Services
-description: 介绍如何在单页 Web 应用程序中使用必应新闻搜索 API。
+description: 使用本教程构建可向必应新闻 API 发送搜索查询并在网页内显示结果的单页 Web 应用程序。
 services: cognitive-services
 author: mikedodaro
 manager: cgronlun
@@ -10,14 +10,16 @@ ms.component: bing-news-search
 ms.topic: tutorial
 ms.date: 10/30/2017
 ms.author: v-gedod
-ms.openlocfilehash: 1d27751d12c82736ca519bb3a0e9bcd49bef4a47
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.custom: seodec2018
+ms.openlocfilehash: 311abe4583d29098ebd26dfcf2214553aa1fe1c9
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48803641"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53262038"
 ---
-# <a name="tutorial-single-page-news-search-app"></a>教程：单页新闻搜索应用
+# <a name="tutorial-create-a-single-page-web-app"></a>教程：创建单页 Web 应用
+
 通过必应新闻搜索 API 可以搜索 Web 并获取与搜索查询相关的新闻类型结果。 本教程将生成一个单页 Web 应用程序，该应用程序使用必应新闻搜索 API 在页面中显示搜索结果。 该应用程序包含 HTML、CSS 和 JavaScript 组件。
 
 <!-- Remove until we can replace it with sanitized copy

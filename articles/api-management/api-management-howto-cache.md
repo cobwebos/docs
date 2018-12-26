@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 11/27/2018
 ms.author: apimpm
-ms.openlocfilehash: 2c417a0e9a3f50032aa3c97ced57d3249bc7c93a
-ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
+ms.openlocfilehash: 549194ce1dcab5cd449c60c934421b3bea154d6a
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52620655"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53015681"
 ---
 # <a name="add-caching-to-improve-performance-in-azure-api-management"></a>添加缓存以提高 Azure API 管理中的性能
 
@@ -38,7 +38,7 @@ API 管理中的操作可以配置为响应缓存。 响应缓存可以显著减
 ## <a name="availability"></a>可用性
 
 > [!NOTE]
-> 内部缓存在 Azure API 管理的“消耗”层中不可用。 你可以[改用外部 Redis 缓存](api-management-howto-cache-external.md)。
+> 内部缓存在 Azure API 管理的“消耗”层中不可用。 可以改为[使用外部 Azure Redis 缓存](api-management-howto-cache-external.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -76,7 +76,7 @@ API 管理中的操作可以配置为响应缓存。 响应缓存可以显著减
     **持续时间** 指定缓存响应的过期时间间隔。 此示例中的时间间隔为 **20** 秒。
 
 > [!TIP]
-> 如果使用的是外部缓存，如[在 Azure API 管理中使用外部 Redis 缓存](api-management-howto-cache-external.md)中所述，可能需要指定缓存策略的 `cache-preference` 属性。 有关更多详细信息，请参阅 [API 管理缓存策略](api-management-caching-policies.md)。
+> 如果使用的是外部缓存，如[在 Azure API 管理中使用外部 Azure Redis 缓存](api-management-howto-cache-external.md)中所述，可能需要指定缓存策略的 `cache-preference` 属性。 有关更多详细信息，请参阅 [API 管理缓存策略](api-management-caching-policies.md)。
 
 ## <a name="test-operation"> </a>调用操作和测试缓存
 若要查看作用的缓存，请从开发人员门户调用操作。
@@ -91,7 +91,7 @@ API 管理中的操作可以配置为响应缓存。 响应缓存可以显著减
 ## <a name="next-steps"></a>后续步骤
 * 有关缓存策略的详细信息，请参阅 [API 管理策略参考][API Management policy reference]中的[缓存策略][Caching policies]。
 * 有关使用策略表达式按密钥缓存项目的信息，请参阅 [Azure API 管理中的自定义缓存](api-management-sample-cache-by-key.md)。
-* 有关使用外部 Redis 缓存的详细信息，请参阅[在 Azure API 管理中使用外部 Redis 缓存](api-management-howto-cache-external.md)。
+* 有关使用外部 Azure Redis 缓存的详细信息，请参阅[在 Azure API 管理中使用外部 Azure Redis 缓存](api-management-howto-cache-external.md)。
 
 [api-management-management-console]: ./media/api-management-howto-cache/api-management-management-console.png
 [api-management-echo-api]: ./media/api-management-howto-cache/api-management-echo-api.png

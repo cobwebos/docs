@@ -1,5 +1,5 @@
 ---
-title: 教程 - 将 ASA 作业部署到 Azure IoT Edge 设备 | Microsoft Docs
+title: 教程：将 Azure 流分析作业部署到设备 - Azure IoT Edge | Microsoft Docs
 description: 在本教程中，请将 Azure 流分析作为模块部署到 IoT Edge 设备
 author: kgremban
 manager: philmea
@@ -7,16 +7,15 @@ ms.author: kgremban
 ms.date: 09/21/2018
 ms.topic: tutorial
 ms.service: iot-edge
-services: iot-edge
-ms.custom: mvc
-ms.openlocfilehash: 2188e21cfd29ac8ac2d44878819ee62a3e2d555e
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.custom: mvc, seodec18
+ms.openlocfilehash: 0096a7a57cb4a404f5c8e36d8b69eac2c20c1fab
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51566935"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53139805"
 ---
-# <a name="tutorial-deploy-azure-stream-analytics-as-an-iot-edge-module-preview"></a>教程：将 Azure 流分析作为 IoT Edge 模块（预览版）进行部署
+# <a name="tutorial-deploy-azure-stream-analytics-as-an-iot-edge-module"></a>教程：将 Azure 流分析作为 IoT Edge 模块进行部署
 
 许多 IoT 解决方案使用分析服务来了解从 IoT 设备到达云的数据。 使用 Azure IoT Edge 时，可以获取 [Azure 流分析](https://docs.microsoft.com/azure/stream-analytics/)逻辑，将其转到设备中。 在边缘处理遥测流可以减少上传数据量，缩短对可操作见解进行响应的时间。
 
@@ -34,11 +33,9 @@ Azure 流分析提供一种丰富结构化的查询语法，可用于在云和 I
 > * 将 Azure 流分析作业从 Azure 门户部署到 IoT Edge 设备。
 
 <center>
-![教程体系结构示意图](./media/tutorial-deploy-stream-analytics/ASATutorialDiagram.png)
+![关系图 - 教程体系结构、阶段和部署 ASA 作业](./media/tutorial-deploy-stream-analytics/asa-architecture.png)
 </center>
 
->[!NOTE]
->IoT Edge 的 Azure 流分析模块为[公开预览版](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -100,9 +97,9 @@ Azure IoT Edge 设备：
 
 1. 在“作业拓扑”下选择“输入”，然后选择“添加流输入”。
 
-   ![Azure 流分析输入](./media/tutorial-deploy-stream-analytics/asa_input.png)
+   ![Azure 流分析添加输入](./media/tutorial-deploy-stream-analytics/asa_input.png)
 
-1. 从下拉列表中选择“Edge 中心”。
+1. 从下拉列表中选择“边缘中心”。
 
 1. 在“新建输入”窗格中，输入 **temperature** 作为输入别名。 
 
@@ -110,9 +107,9 @@ Azure IoT Edge 设备：
 
 1. 在“作业拓扑”下打开“输出”，然后选择“添加”。
 
-   ![Azure 流分析输出](./media/tutorial-deploy-stream-analytics/asa_output.png)
+   ![Azure 流分析添加输出](./media/tutorial-deploy-stream-analytics/asa_output.png)
 
-1. 从下拉列表中选择“Edge 中心”。
+1. 从下拉列表中选择“边缘中心”。
 
 1. 在“新建输出”窗格中，输入 **alert** 作为输出别名。 
 
@@ -207,7 +204,7 @@ Azure IoT Edge 设备：
 
     应会看到新的流分析模块与 IoT Edge 代理模块和 IoT Edge 中心在同时运行。
 
-    ![模块输出](./media/tutorial-deploy-stream-analytics/module_output2.png)
+    ![设备报告的 tempSensor 和 ASA 模块](./media/tutorial-deploy-stream-analytics/module_output2.png)
 
 ## <a name="view-data"></a>查看数据
 
@@ -229,7 +226,7 @@ Azure IoT Edge 设备：
 
 应该可以看到，机器温度逐渐升高，在 30 秒内达到了 70 度。 然后，流分析模块触发重置，机器温度下降到 21 度。 
 
-   ![Docker 日志](./media/tutorial-deploy-stream-analytics/docker_log.png)
+   ![将命令输出重置为模块日志](./media/tutorial-deploy-stream-analytics/docker_log.png)
 
 ## <a name="clean-up-resources"></a>清理资源 
 

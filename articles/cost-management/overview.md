@@ -5,19 +5,19 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 09/18/2018
+ms.date: 12/06/2018
 ms.topic: overview
 ms.service: cost-management
 manager: benshy
-ms.custom: ''
-ms.openlocfilehash: 2125863f212b9e79b88e9f46ed0eb0def71d79b4
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.custom: seodec18
+ms.openlocfilehash: 5c99d638845cf0cd00ddbacf1ed0dcf3da889dd6
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52276187"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53082537"
 ---
-# <a name="what-is-cloudyn"></a>什么是 Cloudyn？
+# <a name="what-is-the-cloudyn-service"></a>什么是 Cloudyn 服务？
 
 Cloudyn（一家 Microsoft 子公司）可以跟踪 Azure 资源和其他云提供商（包括 AWS 和 Google）的云使用量和开支。 便于理解的仪表板报告也有助于成本分配和 Showback/Chargeback。 Cloudyn 通过确定可供稍后管理和调整的未充分利用的资源，帮助优化云支出。
 

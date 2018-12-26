@@ -1,5 +1,5 @@
 ---
-title: 教程：Facebook 内容审查 - Azure 内容审查器
+title: 教程：Facebook 内容审核 - Azure 内容审查器
 titlesuffix: Azure Cognitive Services
 description: 使用内容审查器审查 Facebook 页面。
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.component: content-moderator
 ms.topic: tutorial
 ms.date: 09/18/2017
 ms.author: sajagtap
-ms.openlocfilehash: ead8c1d445bf32ecaaf236b4e73c2a583c755049
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 048f2f40714fd7675c073337825d75443e58039b
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47223932"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53255425"
 ---
-# <a name="tutorial-facebook-content-moderation-with-content-moderator"></a>教程：使用内容审查器审查 Facebook 内容
+# <a name="tutorial-facebook-content-moderation-with-content-moderator"></a>教程：使用内容审查器执行 Facebook 内容审核
 
 本教程介绍如何使用基于机器学习的内容审查器帮助审查 Facebook 帖子和评论。
 
@@ -61,7 +61,7 @@ ms.locfileid: "47223932"
 4. 定义以下[应用程序设置](https://docs.microsoft.com/azure/azure-functions/functions-how-to-use-azure-function-app-settings#settings)：
 
 > [!NOTE]
-> cm: Region 应为区域的名称（不含空格）。
+> cm:Region 应为区域名称（无空格）。
 > 例如，应为 westeurope，而不是 West Europe；应为 westcentralus，而不是 West Central US，以此类推。
 >
 

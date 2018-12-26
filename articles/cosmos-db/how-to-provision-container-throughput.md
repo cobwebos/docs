@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 11/06/2018
 ms.author: mjbrown
-ms.openlocfilehash: 3b766cfa339e6cbb568cf57383667d270153401f
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: dd47976bca75569142f1912eee06c66061e92fa6
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51262414"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53097659"
 ---
 # <a name="provision-throughput-for-an-azure-cosmos-db-container"></a>为 Azure Cosmos DB 容器预配吞吐量
 
@@ -24,10 +24,11 @@ ms.locfileid: "51262414"
 
 1. [新建 Cosmos DB 帐户](create-sql-api-dotnet.md#create-a-database-account)或选择现有的帐户。
 
-1. 打开“数据资源管理器”窗格，然后选择“新建集合”。 接下来，在表单中填写以下详细信息：
+1. 打开“数据资源管理器”窗格，然后选择“新建集合”。 接下来，在窗体中填写以下详细信息：
 
    * 创建新数据库或使用现有数据库。
    * 输入集合 ID（或表、图形）。
+   * 输入分区键值，例如 `/userid`。
    * 输入吞吐量，例如 1000 RU。
    * 选择“确定”。
 

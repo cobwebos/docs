@@ -1,5 +1,5 @@
 ---
-title: Azure Policy 示例 - 对 VM 网络接口使用已批准的子网
+title: 示例 - 对 VM 网络接口使用已批准的子网
 description: 此示例策略要求网络接口使用已批准的子网。
 services: azure-policy
 author: DCtheGeek
@@ -8,13 +8,12 @@ ms.service: azure-policy
 ms.topic: sample
 ms.date: 09/18/2018
 ms.author: dacoulte
-ms.custom: mvc
-ms.openlocfilehash: 60a79c73765a201f4ed3c9ad6f45900e13753c1c
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: ed09740e7929dc2505a98b00e020eb7149dc4eab
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46995867"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53308526"
 ---
 # <a name="use-approved-subnet-for-vm-network-interfaces"></a>为 VM 网络接口使用已批准的子网
 

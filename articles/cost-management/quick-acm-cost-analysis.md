@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 11/09/2018
+ms.date: 12/11/2018
 ms.topic: quickstart
 ms.service: cost-management
 manager: dougeby
-ms.custom: ''
-ms.openlocfilehash: f8f7d43d4b42f5236c6c8d25c88314043053b0cc
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec18
+ms.openlocfilehash: 9085bea06553bcb2b8cf871153ddd1fb767c04f4
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52445696"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53277737"
 ---
 # <a name="quickstart-explore-and-analyze-costs-with-cost-analysis"></a>快速入门：通过成本分析了解和分析成本
 
@@ -43,7 +43,7 @@ ms.locfileid: "52445696"
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
 
-- 通过 http://portal.azure.com 登录到 Azure 门户。
+- 通过 https://portal.azure.com 登录到 Azure 门户。
 
 ## <a name="review-costs-in-cost-analysis"></a>通过成本分析查看成本
 
@@ -63,7 +63,7 @@ ms.locfileid: "52445696"
 
 透视图（圆环图）– 提供动态透视，按一组常见标准属性分解总成本。 它们显示当月累计的最高成本至最低成本。 通过选择不同的透视，可以随时更改透视图。 成本按以下类别分类：服务（计量类别）、位置（区域）和子范围（默认）。 例如，注册帐户在计费帐户之下，资源组在订阅之下，资源在资源组之下。
 
-![成本分析的初始视图](./media/quick-acm-cost-analysis/cost-analysis-01.png)
+![Azure 门户中成本分析的初始视图](./media/quick-acm-cost-analysis/cost-analysis-01.png)
 
 ## <a name="customize-cost-views"></a>自定义成本视图
 
@@ -76,21 +76,23 @@ ms.locfileid: "52445696"
 
 默认情况下，成本分析显示当前月份的数据。 使用日期选择器可快速切换到：上个月、本月、本季度、本年度或所选的自定义日期范围。 要分析最近的 Azure 发票并轻松进行对账，最快速的方式是选择上个月。 当前季度和年度选项有助于跟踪针长期预算的成本。 也可以选择不同的日期范围。 例如，可以选择一天、过去七天或当前月之前一年的任何时间。
 
-![日期选择器](./media/quick-acm-cost-analysis/date-selector.png)
+![显示本月示例选择的日期选择器](./media/quick-acm-cost-analysis/date-selector.png)
 
 默认情况下，成本分析显示“累计”成本。 累计成本显示包括前几天在内的每日费用总额，显示每日应计成本不断变化的情况。 此视图已进行优化，可显示对预算而言所选日期范围的支出趋势。
 
 此外，还有每日视图显示每日成本。 每日视图不会显示增长趋势。 该视图旨在显示异常，如每日的成本峰值或 dip。 如果选择了预算，则每日视图还会显示每日预算的估算值。 如果你的每日成本不断高于估算的每日预算，则可能会超出每月预算。 估算的每日预算只是一种可在较浅显的层面上帮助你直观查看预算的方式。 如果每日成本出现波动，则与每月预算比较，估算的每日预算不太准确。
 
-![每日视图](./media/quick-acm-cost-analysis/daily-view.png)
+通常情况下，有望在 8 小时内看到所用资源的数据或者通知。
+
+![显示当月的示例每日成本的每日视图](./media/quick-acm-cost-analysis/daily-view.png)
 
 可通过“分组依据”选择分组类别，从而更改顶部“总计”面积图中显示的数据。 通过分组，可以快速查看支出是如何按常用资源和使用属性（例如资源组或资源标记）分类的。 若要按标记分组，请选择要按其分组的标记密钥，然后会看到成本按该标记的每个值进行细分，并且有一个额外的段，用于未应用该标记的资源。 请注意，成本管理仅支持自标记直接应用到资源之日起的资源标记。 目前不支持资源组标记。 下面是 Azure 服务成本的上月视图。
 
-![分组的每日汇总视图](./media/quick-acm-cost-analysis/grouped-daily-accum-view.png)
+![显示上个月示例 Azure 服务成本的分组的每日汇总视图](./media/quick-acm-cost-analysis/grouped-daily-accum-view.png)
 
 主图下的透视图显示了不同的分组，让你在更大范围内了解所选时段和筛选器对应的总体成本。 选择一个属性或标记即可按任意维度查看聚合的成本。 展开“数据”抽屉或选择屏幕顶部的“导出”**>**“下载 CSV”即可找到屏幕底部的总视图的完整数据集。 下面是资源组的数据抽屉的示例。
 
-![当前视图的完整数据](./media/quick-acm-cost-analysis/full-data-set.png)
+![显示资源组名称的当前视图的完整数据](./media/quick-acm-cost-analysis/full-data-set.png)
 
 上图显示了资源组名称。 虽然可以按标记分组，以便按标记查看总成本，但在任何成本分析视图中，都不可按资源或资源组来查看所有标记。
 

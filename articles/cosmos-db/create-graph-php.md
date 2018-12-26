@@ -10,12 +10,12 @@ ms.devlang: php
 ms.topic: quickstart
 ms.date: 01/05/2018
 ms.author: lbosq
-ms.openlocfilehash: e5a7d40007076d09695d166148d84684c1cccee5
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: f6ff46f391ce03f67619ef685f841dcf95a1fd92
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52839604"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53089460"
 ---
 # <a name="azure-cosmos-db-create-a-graph-database-using-php-and-the-azure-portal"></a>Azure Cosmos DB：使用 PHP 和 Azure 门户创建图形数据库
 
@@ -37,7 +37,7 @@ Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服�
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]或者，无需 Azure 订阅即可[免费试用 Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/)，也无需缴纳费用或承诺金。
 
 此外：
-* [PHP](http://php.net/) 5.6 或更高版本
+* [PHP](https://php.net/) 5.6 或更高版本
 * [编辑器](https://getcomposer.org/download/)
 
 ## <a name="create-a-database-account"></a>创建数据库帐户
@@ -104,7 +104,7 @@ Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服�
 
 现在，返回到 Azure 门户，获取连接信息，并将信息复制到应用程序中。 借助这些设置，应用程序可以与托管的数据库进行通信。
 
-1. 在 [Azure 门户](http://portal.azure.com/)中，单击“密钥”。 
+1. 在 [Azure 门户](https://portal.azure.com/)中，单击“密钥”。 
 
     复制 URI 值的第一部分。
 

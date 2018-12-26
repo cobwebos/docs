@@ -1,45 +1,50 @@
 ---
-title: 保护 Azure SQL 数据库 | Microsoft Docs
-description: 介绍保护 Azure SQL 数据库的技术和功能。
+title: 在 Azure SQL 数据库中确保单一数据库的安全 | Microsoft Docs
+description: 了解在 Azure SQL 数据库中保护单一数据库的技术和功能。
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
 ms.custom: ''
 ms.devlang: ''
 ms.topic: tutorial
-author: DRediske
-ms.author: daredis
-ms.reviewer: vanto, carlrab
+author: VanMSFT
+ms.author: vanto
+ms.reviewer: carlrab
 manager: craigg
-ms.date: 11/01/2018
-ms.openlocfilehash: 827b3b6776656619314af3053cb05f8cfc3754c0
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
+ms.date: 12/13/2018
+ms.openlocfilehash: 814d558efee4a72a25d956828e0db237424cab24
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50914368"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53409762"
 ---
-# <a name="tutorial-secure-your-azure-sql-database"></a>教程：保护 Azure SQL 数据库
+# <a name="tutorial-secure-a-single-database-in-azure-sql-database"></a>教程：在 Azure SQL 数据库中确保单一数据库的安全
 
-SQL 数据库通过以下方式来确保数据的安全： 
-- 使用防火墙规则限制对数据库的访问 
+SQL 数据库在单一 Azure SQL 数据库中保护数据的方式是：
+
+- 使用防火墙规则限制对数据库的访问
 - 使用需要标识的身份验证机制
-- 通过基于角色的成员身份和权限实现对数据的授权 
+- 通过基于角色的成员身份和权限实现对数据的授权
 - 行级别安全性
 - 动态数据掩码
 
-SQL 数据库还有复杂的监视、审核和威胁检测功能。 
+SQL 数据库还有复杂的监视、审核和威胁检测功能。
 
-只需几个简单的步骤，即可大大提升数据库抵御恶意用户或未经授权的访问的能力。 在本教程中，学习： 
+> [!IMPORTANT]
+> Azure SQL 数据库在托管实例中保护数据库安全的方式是使用网络安全规则和专用终结点。 有关详细信息，请参阅[Azure SQL 数据库托管实例](sql-database-managed-instance-index.yml)和 [Azure SQL 数据库托管实例连接体系结构](sql-database-managed-instance-connectivity-architecture.md)。
+
+只需几个简单的步骤，即可大大提升数据库抵御恶意用户或未经授权的访问的能力。 在本教程中，学习：
 
 > [!div class="checklist"]
-> * 在 Azure 门户中创建服务器的服务器级防火墙规则
-> * 使用 SSMS 创建数据库的数据库级防火墙规则
-> * 使用安全连接字符串连接到数据库
-> * 管理用户访问权限
-> * 通过加密保护数据
-> * 启用 SQL 数据库审核
-> * 启用 SQL 数据库威胁检测
+> - 在 Azure 门户中创建服务器的服务器级防火墙规则
+> - 使用 SSMS 创建数据库的数据库级防火墙规则
+> - 使用安全连接字符串连接到数据库
+> - 为 Azure SQL 配置 Azure Active Directory 管理员
+> - 管理用户访问权限
+> - 通过加密保护数据
+> - 启用 SQL 数据库审核
+> - 启用 SQL 数据库威胁检测
 
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
@@ -47,9 +52,12 @@ SQL 数据库还有复杂的监视、审核和威胁检测功能。
 
 若要完成本教程，请确保符合以下条件：
 
-- 已安装最新版 [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) (SSMS)。 
+- 已安装最新版 [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) (SSMS)。
 - 已安装 Microsoft Excel
-- 已创建 Azure SQL 服务器和数据库。请参阅[在 Azure 门户中创建 Azure SQL 数据库](sql-database-get-started-portal.md)、[使用 Azure CLI 创建单一 Azure SQL 数据库](sql-database-cli-samples.md)和[使用 PowerShell 创建单一 Azure SQL 数据库](sql-database-powershell-samples.md)。 
+- 已创建 Azure SQL 服务器和数据库。请参阅[在 Azure 门户中创建 Azure SQL 数据库](sql-database-get-started-portal.md)、[使用 Azure CLI 创建单一 Azure SQL 数据库](sql-database-cli-samples.md)和[使用 PowerShell 创建单一 Azure SQL 数据库](sql-database-powershell-samples.md)。
+
+> [!NOTE]
+> 本教程假定你已配置 Azure Active Directory，或使用初始 Azure Active Directory 托管域。 若要了解如何为各种方案配置 Azure Active Directory，请参阅[将本地标识与 Azure Active Directory 集成](../active-directory/hybrid/whatis-hybrid-identity.md)、[将自己的域名添加到 Azure AD](../active-directory/active-directory-domains-add-azure-portal.md)、[Microsoft Azure 现在支持与 Windows Server Active Directory 联合](https://azure.microsoft.com/blog/2012/11/28/windows-azure-now-supports-federation-with-windows-server-active-directory/)、[管理 Azure AD 目录](../active-directory/fundamentals/active-directory-administer.md)、[使用 Windows PowerShell 管理 Azure AD](/powershell/azure/overview?view=azureadps-2.0) 和[混合标识所需端口和协议](../active-directory/hybrid/reference-connect-ports.md)。
 
 ## <a name="log-in-to-the-azure-portal"></a>登录到 Azure 门户
 
@@ -61,21 +69,20 @@ SQL 数据库受 Azure 中的防火墙保护。 默认情况下，将拒绝与�
 
 最安全的配置是将“允许访问 Azure 服务”设置为“关闭”。 如果需要从 Azure VM 或云服务连接到数据库，则应创建[保留 IP](../virtual-network/virtual-networks-reserved-public-ip.md)（经典部署），且仅允许保留的 IP 地址通过防火墙进行访问。 如果使用[资源管理器](https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm)部署模型，则会为资源分配专用公共 IP 地址。应该允许此 IP 地址通过防火墙。
 
-按照以下步骤为服务器创建 [SQL 数据库服务器级防火墙规则](sql-database-firewall-configure.md)，以允许从特定 IP 地址进行连接。 
+按照以下步骤为服务器创建 [SQL 数据库服务器级防火墙规则](sql-database-firewall-configure.md)，以允许从特定 IP 地址进行连接。
 
 > [!NOTE]
 > 如果已根据前面的教程或快速入门之一在 Azure 中创建了示例数据库，并要使用这些教程使用的同一 IP 地址在计算机上执行本教程，可以跳过这一步，因为已创建服务器级防火墙规则。
->
 
 1. 从左侧菜单中单击“SQL 数据库”，并在“SQL 数据库”页单击要为其配置防火墙规则的数据库。 此时会打开数据库的概述页，其中显示了完全限定的服务器名称（例如 **mynewserver-20170313.database.windows.net**），并提供了其他配置的选项。
 
-      ![服务器防火墙规则](./media/sql-database-security-tutorial/server-firewall-rule.png) 
+      ![服务器防火墙规则](./media/sql-database-security-tutorial/server-firewall-rule.png)
 
-2. 如上图所示，在工具栏上单击“设置服务器防火墙”。 此时会打开 SQL 数据库服务器的“防火墙设置”页。 
+2. 如上图所示，在工具栏上单击“设置服务器防火墙”。 此时会打开 SQL 数据库服务器的“防火墙设置”页。
 
 3. 在工具栏单击“添加客户端 IP”，添加连接到门户的计算机的公共 IP 地址，或者手动输入防火墙规则，并单击“保存”。
 
-      ![设置服务器防火墙规则](./media/sql-database-security-tutorial/server-firewall-rule-set.png) 
+      ![设置服务器防火墙规则](./media/sql-database-security-tutorial/server-firewall-rule-set.png)
 
 4. 单击“确定”，并单击“X”关闭“防火墙设置”页。
 
@@ -87,7 +94,7 @@ SQL 数据库受 Azure 中的防火墙保护。 默认情况下，将拒绝与�
 
 ## <a name="create-a-database-level-firewall-rule-using-ssms"></a>使用 SSMS 创建数据库级防火墙规则
 
-使用数据库级防火墙规则，可以为同一逻辑服务器内的各个数据库创建不同的防火墙设置，并创建可移植的防火墙规则。也就是说，这些规则在[故障转移](sql-database-geo-replication-overview.md)期间与数据库一起转移，而不是存储在 SQL 服务器上。 数据库级防火墙规则只能通过使用 Transact-SQL 语句进行配置，而且只能在配置了第一个服务器级防火墙规则后才能配置。 有关详细信息，请参阅 [Azure SQL 数据库服务器级和数据库级防火墙规则](sql-database-firewall-configure.md)。
+使用数据库级防火墙规则，可以为同一逻辑服务器内的各个数据库创建不同的防火墙设置，并创建可移植的防火墙规则。也就是说，这些规则在故障转移期间与数据库一起转移，而不是存储在 SQL 服务器上。 数据库级防火墙规则只能通过使用 Transact-SQL 语句进行配置，而且只能在配置了第一个服务器级防火墙规则后才能配置。 有关详细信息，请参阅 [Azure SQL 数据库服务器级和数据库级防火墙规则](sql-database-firewall-configure.md)。
 
 按照以下步骤操作，创建特定于数据库的防火墙规则。
 
@@ -108,7 +115,7 @@ SQL 数据库受 Azure 中的防火墙保护。 默认情况下，将拒绝与�
 若要确保客户端应用程序与 SQL 数据库的连接安全且已加密，必须将连接字符串配置为：
 
 - 请求实现加密连接；以及
-- 不信任服务器证书。 
+- 不信任服务器证书。
 
 这会使用传输层安全性 (TLS) 建立连接并减少中间人攻击的风险。 可从 Azure 门户为支持的客户端驱动程序的 SQL 数据库获得正确配置的连接字符串，如 ADO.net 的以下屏幕截图所示。 有关 TLS 和连接的信息，请参阅 [TLS 注意事项](sql-database-connect-query.md#tls-considerations-for-sql-database-connectivity)。
 
@@ -120,15 +127,36 @@ SQL 数据库受 Azure 中的防火墙保护。 默认情况下，将拒绝与�
 
     ![ADO.NET 连接字符串](./media/sql-database-security-tutorial/adonet-connection-string.png)
 
+## <a name="provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server"></a>为 Azure SQL 数据库服务器预配 Azure Active Directory 管理员
+
+在 Azure 门户中为 Azure SQL Server 预配 Azure Active Directory 管理员。
+
+1. 在 [Azure 门户](https://portal.azure.com/)右上角，选择你的连接，以下拉可能的 Active Directory 列表。 选择正确的 Active Directory 作为默认的 Azure AD。 此步骤将与订阅关联的 Active Directory 链接到 Azure SQL Server，确保为 Azure AD 和 SQL Server 使用相同的订阅。 （Azure SQL Server 托管的可能是 Azure SQL 数据库或 Azure SQL 数据仓库。）
+
+    ![选择-AD](./media/sql-database-aad-authentication/8choose-ad.png)
+
+2. 在“SQL Server”页上选择“Active Directory 管理员”，在“Active Directory 管理员”页上选择“设置管理员”。![选择 active directory](./media/sql-database-aad-authentication/select-active-directory.png)  
+
+3. 在“添加管理员”页中，搜索某位用户，选择该用户或组作为管理员，然后选择“选择”。 （“Active Directory 管理员”页会显示 Active Directory 的所有成员和组。 若用户或组为灰显，则无法选择，因为不支持它们作为 Azure AD 管理员。 （请参阅[将 Azure Active Directory 身份验证与使用 SQL 数据库或 SQL 数据仓库进行身份验证结合使用](sql-database-aad-authentication.md)的“Azure AD 功能和限制”部分中支持的管理员列表。）基于角色的访问控制 (RBAC) 仅适用于该门户，不会传播到 SQL Server。
+    ![选择管理员](./media/sql-database-aad-authentication/select-admin.png)  
+
+4. 在“Active Directory 管理员”页顶部，选择“保存”。
+    ![保存管理员](./media/sql-database-aad-authentication/save-admin.png)
+
+更改管理员的过程可能需要几分钟时间。 然后，新管理员将出现在“Active Directory 管理员”框中。
+
+   > [!NOTE]
+   > 设置 Azure AD 管理员时，此新的管理员名称（用户或组）不能已作为 SQL Server 身份验证用户存在于虚拟 master 数据库中。 如果存在，Azure AD 管理员设置会失败；将回滚其创建，并指示此管理员（名称）已存在。 由于这种 SQL Server 身份验证用户不是 Azure AD 的一部分，因此使用 Azure AD 身份验证连接到服务器的任何尝试都会失败。
+
 ## <a name="creating-database-users"></a>创建数据库用户
 
-创建任何用户前，必须首先从 Azure SQL 数据库支持的两种身份验证类型中选择一种类型： 
+创建任何用户前，必须首先从 Azure SQL 数据库支持的两种身份验证类型中选择一种类型：
 
-SQL 身份验证，为登录名和仅在逻辑服务器内特定数据库的上下文中有效的用户使用用户名和密码。 
+SQL 身份验证，为登录名和仅在逻辑服务器内特定数据库的上下文中有效的用户使用用户名和密码。
 
-Azure Active Directory 身份验证，使用 Azure Active Directory 管理的标识。 
+Azure Active Directory 身份验证，使用 Azure Active Directory 管理的标识。
 
-如果要使用 [Azure Active Directory](./sql-database-aad-authentication.md) 对 SQL 数据库进行身份验证，必须存在已填充的 Azure Active Directory 才能继续下一步操作。
+### <a name="create-a-user-using-sql-authentication"></a>使用 SQL 身份验证创建用户
 
 请按照以下步骤操作，使用 SQL 身份验证创建用户：
 
@@ -153,12 +181,32 @@ Azure Active Directory 身份验证，使用 Azure Active Directory 管理的标
 
 最好在数据库级别创建这些非管理员帐户以连接到数据库，除非需要执行创建新用户等管理员任务。 请查看 [Azure Active Directory 教程](./sql-database-aad-authentication-configure.md)，了解如何使用 Azure Active Directory 进行身份验证。
 
+### <a name="create-a-user-using-azure-active-directory-authentication"></a>使用 Azure Active Directory 身份验证创建用户
+
+Azure Active Directory 身份验证要求以包含的数据库用户的身份创建数据库用户。 基于 Azure AD 标识的包含的数据库用户是在 master 数据库中不具有登录名的数据库用户，它映射到与数据库相关联的 Azure AD 目录中的标识。 Azure AD 标识可以是单独的用户帐户，也可以是组。 有关包含的数据库用户的详细信息，请参阅[包含的数据库用户 - 使数据库可移植](https://msdn.microsoft.com/library/ff929188.aspx)。
+
+> [!NOTE]
+> 不能使用 Azure 门户创建数据库用户（管理员除外）。 RBAC 角色不会传播到 SQL Server、SQL 数据库或 SQL 数据仓库。 Azure RBAC 角色用于管理 Azure 资源，不会应用于数据库权限。 例如，**SQL Server 参与者**角色不会授予连接到 SQL 数据库或 SQL 数据仓库的访问权限。 必须使用 Transact-SQL 语句直接在数据库中授予访问权限。
+> [!WARNING]
+> 不支持在 T-SQL CREATE LOGIN 和 CREATE USER 语句中将特殊字符（例如冒号 `:` 或与号 `&`）用作用户名。
+
+1. 至少使用 **ALTER ANY USER** 权限通过 Azure Active Directory 帐户连接到 Azure SQL Server。
+2. 在对象资源管理器中，右键单击要为其添加新用户的数据库，并单击“新建查询”。 此时会打开一个空白查询窗口，该窗口连接到所选数据库。
+
+3. 在查询窗口中输入以下查询，并将 `<Azure_AD_principal_name>` 修改为 Azure AD 用户的所需用户主体名称，或者修改为 Azure AD 组的显示名称：
+
+   ```sql
+   CREATE USER <Azure_AD_principal_name> FROM EXTERNAL PROVIDER;
+   ```
+
+   > [!NOTE]
+   > Azure AD 用户在数据库元数据中均标记为类型 E (EXTERNAL_USER)，而组则标记为类型 X (EXTERNAL_GROUPS)。 有关详细信息，请参阅 [sys.database_principals](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-database-principals-transact-sql)。
 
 ## <a name="protect-your-data-with-encryption"></a>通过加密保护数据
 
 Azure SQL 数据库透明数据加密 (TDE) 会自动加密静态数据，无需对访问加密数据库的应用程序做任何更改。 对于新创的数据库，TDE 默认处于开启状态。 若要为数据库启用 TDE 或验证 TDE 是否开启，请按照以下步骤操作：
 
-1. 从左侧菜单中选择“SQL 数据库”，并单击“SQL 数据库”页上的数据库。 
+1. 从左侧菜单中选择“SQL 数据库”，并单击“SQL 数据库”页上的数据库。
 
 2. 单击“透明数据加密”，打开 TDE 的配置页。
 
@@ -166,13 +214,13 @@ Azure SQL 数据库透明数据加密 (TDE) 会自动加密静态数据，无需
 
 3. 必要时，将“数据加密”设置为“开”，再单击“保存”。
 
-加密进程在后台启动。 若要监视进度，可以使用 [SQL Server Management Studio](./sql-database-connect-query-ssms.md) 连接到 SQL 数据库并查询 [sys.dm_database_encryption_keys](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-database-encryption-keys-transact-sql?view=sql-server-2017) 视图的 encryption_state 列。 状态为 3 指示数据库已加密。 
+加密进程在后台启动。 若要监视进度，可以使用 [SQL Server Management Studio](./sql-database-connect-query-ssms.md) 连接到 SQL 数据库并查询 [sys.dm_database_encryption_keys](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-database-encryption-keys-transact-sql?view=sql-server-2017) 视图的 encryption_state 列。 状态为 3 指示数据库已加密。
 
 ## <a name="enable-sql-database-auditing-if-necessary"></a>启用 SQL 数据库审核（必要时）
 
 Azure SQL 数据库审核跟踪数据库事件，并将事件写入 Azure 存储帐户中的审核日志。 审核可帮助保持遵从法规、了解数据库活动，以及深入了解可以指明潜在安全违规的偏差和异常。 请按照以下步骤操作，为 SQL 数据库创建默认审核策略：
 
-1. 从左侧菜单中选择“SQL 数据库”，并单击“SQL 数据库”页上的数据库。 
+1. 从左侧菜单中选择“SQL 数据库”，并单击“SQL 数据库”页上的数据库。
 
 2. 在“设置”边栏选项卡中，选择“审核和威胁检测”。 请注意，服务器级审核已禁用，可以单击“查看服务器设置”链接，在此上下文中查看或修改服务器审核设置。
 
@@ -182,11 +230,10 @@ Azure SQL 数据库审核跟踪数据库事件，并将事件写入 Azure 存储
 
     ![启用审核](./media/sql-database-security-tutorial/auditing-get-started-turn-on.png)
 
-4. 选择“存储详细信息”打开“审核日志存储”边栏选项卡。 选择日志要保存到的 Azure 存储帐户以及保留期（超过此期限的旧日志会被删除），然后单击底部的“确定”。 
+4. 选择“存储详细信息”打开“审核日志存储”边栏选项卡。 选择日志要保存到的 Azure 存储帐户以及保留期（超过此期限的旧日志会被删除），然后单击底部的“确定”。
 
    > [!TIP]
    > 请对所有已审核的数据库使用同一存储帐户，以充分利用审核报告模板。
-   > 
 
 5. 单击“ **保存**”。
 
@@ -241,20 +288,20 @@ Azure SQL 数据库审核跟踪数据库事件，并将事件写入 Azure 存储
 
 11. 结果会显示在“SQL 审核日志”工作表中，使你能够对检测到的异常活动运行更深入的分析，并缓解应用程序中安全事件造成的影响。
 
-
 ## <a name="next-steps"></a>后续步骤
-学习本教程后，只需几个简单的步骤，即可大大提升数据库抵御恶意用户或未经授权的访问的能力。  你已了解如何： 
+
+学习本教程后，只需几个简单的步骤，即可大大提升数据库抵御恶意用户或未经授权的访问的能力。  你已了解如何：
 
 > [!div class="checklist"]
-> * 为服务器和/或数据库设置防火墙规则
-> * 使用安全连接字符串连接到数据库
-> * 管理用户访问权限
-> * 通过加密保护数据
-> * 启用 SQL 数据库审核
-> * 启用 SQL 数据库威胁检测
+> - 为服务器和/或数据库设置防火墙规则
+> - 使用安全连接字符串连接到数据库
+> - 为 Azure SQL 配置 Azure Active Directory 管理员
+> - 管理用户访问权限
+> - 通过加密保护数据
+> - 启用 SQL 数据库审核
+> - 启用 SQL 数据库威胁检测
 
 请转到下一教程，了解如何实施分布式数据库。
 
 > [!div class="nextstepaction"]
 >[实现地理分散的数据库](sql-database-implement-geo-distributed-database.md)
-

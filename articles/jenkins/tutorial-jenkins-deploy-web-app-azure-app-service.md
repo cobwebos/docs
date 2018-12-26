@@ -8,12 +8,12 @@ ms.author: tarcher
 manager: jeconnoc
 ms.topic: tutorial
 ms.date: 11/15/2018
-ms.openlocfilehash: 274de7ac63df0afc1a59e197deebeb7929cf1ef8
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.openlocfilehash: b65972b79fd16b912abfbd2e35642ef5d9f5adc4
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51855007"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53438466"
 ---
 # <a name="tutorial-deploy-from-github-to-azure-app-service-with-jenkins-continuous-integration-and-deployment"></a>教程：使用 Jenkins 持续集成和部署从 GitHub 部署到 Azure 应用服务
 
@@ -92,7 +92,7 @@ ms.locfileid: "51855007"
 > 
 > 这些步骤将创建个人访问令牌凭据，使 Jenkins 能够使用你的 GitHub 用户名和密码来利用 GitHub。 
 > 但是，如果你的 GitHub 帐户使用双重身份验证，请在 GitHub 中创建令牌，并将 Jenkins 设置为改用该令牌。 
-> 有关详细信息，请参阅 [Jenkins GitHub 插件](https://wiki.jenkins.io/display/JENKINS/Github+Plugin)文档。
+> 有关详细信息，请参阅 [Jenkins GitHub 插件](https://wiki.jenkins.io/display/JENKINS/GitHub+Plugin)文档。
 
 1. 在“管理 Jenkins”页中，选择“配置系统”。 
 

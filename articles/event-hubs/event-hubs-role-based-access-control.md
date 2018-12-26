@@ -1,6 +1,6 @@
 ---
-title: Azure 事件中心基于角色的访问控制 (RBAC) 预览版 | Microsoft Docs
-description: Azure 事件中心基于角色的访问控制
+title: “基于角色的访问控制”预览版 - Azure 事件中心 | Microsoft Docs
+description: 本文提供有关 Azure 事件中心基于角色的访问控制的信息。
 services: event-hubs
 documentationcenter: na
 author: ShubhaVijayasarathy
@@ -8,14 +8,15 @@ manager: timlt
 ms.service: event-hubs
 ms.devlang: na
 ms.topic: article
-ms.date: 07/05/2018
+ms.custom: seodec18
+ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: ef74600fdf5051394f8b7bfbdd71e144b3f26d8a
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: 1324700445aebe672b2c5ae2b55ad9bc0bab13b2
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40005732"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53384252"
 ---
 # <a name="active-directory-role-based-access-control-preview"></a>Active Directory 基于角色的访问控制（预览版）
 
@@ -33,7 +34,7 @@ Microsoft Azure 基于 Azure Active Directory (Azure AD) 针对资源和应用�
 
 以下部分介绍创建和运行一个示例应用程序（该应用程序提示交互式 Azure AD 用户进行登录）所需的步骤，如何向该用户帐户授予事件中心访问权限，以及如何使用该标识来访问事件中心。 
 
-此介绍描述了一个简单的控制台应用程序，[其代码位于 Github 上](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Rbac/EventHubsSenderReceiverRbac/)
+此介绍描述了一个简单的控制台应用程序，[其代码位于 GitHub 上](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Rbac/EventHubsSenderReceiverRbac/)
 
 ### <a name="create-an-active-directory-user-account"></a>创建 Active Directory 用户帐户
 
@@ -43,13 +44,9 @@ Microsoft Azure 基于 Azure Active Directory (Azure AD) 针对资源和应用�
 
 ### <a name="create-an-event-hubs-namespace"></a>创建事件中心命名空间
 
-接下来，在支持事件中心预览版 RBAC 的 Azure 区域（**美国东部**、**美国东部 2** 或**西欧**）之一中[创建事件中心命名空间](event-hubs-create.md)。 
+接下来，在支持事件中心预览版 RBAC 的以下 Azure 区域之一[创建事件中心命名空间](event-hubs-create.md)：**美国东部**、**美国东部 2** 或**西欧**。 
 
-在创建命名空间后，在门户上导航到其“访问控制(IAM)”页面，然后单击“添加”将 Azure AD 用户帐户添加到“所有者”角色。 如果你使用自己的用户帐户并且已创建了命名空间，则已获得“所有者”角色。 若要向角色添加一个不同的帐户，请在“添加权限”面板的“选择”字段中搜索 Web 应用程序的名称，然后单击该条目。 然后单击“保存”。
- 
-![](./media/event-hubs-role-based-access-control/rbac1.PNG)
-
-用户帐户现在已具有对事件中心命名空间和对之前创建的事件中心的访问权限。
+在创建命名空间后，在门户上导航到其“访问控制(IAM)”页面，然后单击“添加角色分配”将 Azure AD 用户帐户添加到“所有者”角色。 如果你使用自己的用户帐户并且已创建了命名空间，则已获得“所有者”角色。 若要向角色添加一个不同的帐户，请在“添加权限”面板的“选择”字段中搜索 Web 应用程序的名称，然后单击该条目。 然后单击“保存”。 用户帐户现在已具有对事件中心命名空间和对之前创建的事件中心的访问权限。
  
 ### <a name="register-the-application"></a>注册应用程序
 
@@ -66,11 +63,13 @@ Microsoft Azure 基于 Azure Active Directory (Azure AD) 针对资源和应用�
 - `tenantId`：设置为 **TenantId** 值。
 - `clientId`：设置为 **ApplicationId** 值。 
 - `clientSecret`：如果希望使用客户端机密进行登录，请在 Azure AD 中创建它。 此外，请使用 Web 应用或 API 而非本机应用。 另外，请在之前创建的命名空间中将该应用添加到“访问控制(IAM)”下。
-- `eventHubNamespaceFQDN`：设置为新创建的事件中心命名空间的完全限定的 DNS 名称，例如 `example.servicebus.windows.net`。
-- `eventHubName`：设置为创建的事件中心的名称。
+- `eventHubNamespaceFQDN`：设置为新创建的事件中心命名空间的完全限定 DNS 名称，例如 `example.servicebus.windows.net`。
+- `eventHubName`：设置为已创建的事件中心的名称。
 - 执行前面的步骤时在应用中指定的重定向 URI。
  
 运行该控制台应用程序时，系统会提示选择一个方案，请通过键入相应的编号并按 ENTER 来选择“交互式用户登录”。 应用程序会显示一个登录窗口，要求同意访问事件中心，然后使用登录标识通过该服务来运行整个发送/接收方案。
+
+此应用使用 `ServiceAudience.EventHubsAudience` 作为令牌受众。 使用受众无法作为常量使用的其他语言或 SDK 时，要使用的正确值为 `https://eventhubs.azure.net/`。
 
 ## <a name="next-steps"></a>后续步骤
 

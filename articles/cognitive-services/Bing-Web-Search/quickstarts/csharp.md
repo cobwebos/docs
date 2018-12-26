@@ -1,7 +1,7 @@
 ---
-title: 快速入门：使用 C# 执行搜索 - 必应 Web 搜索 API
+title: 快速入门：通过 C# 执行 Web 搜索 - 必应 Web 搜索 REST API
 titleSuffix: Azure Cognitive Services
-description: 本快速入门介绍如何使用 C# 进行你的第一次必应 Web 搜索 API 调用并接收 JSON 响应。
+description: 使用本快速入门，通过 C# 将请求发送到必应 Web 搜索 REST API，并接收 JSON 响应。
 services: cognitive-services
 author: aahill
 manager: cgronlun
@@ -10,14 +10,15 @@ ms.component: bing-web-search
 ms.topic: quickstart
 ms.date: 8/16/2018
 ms.author: aahi
-ms.openlocfilehash: d868bec1e19ddde556f3c387646c5d7aa898b7d9
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.custom: seodec2018
+ms.openlocfilehash: 844fe2f65b59caba41697db00e809e34e1fe1017
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52313480"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53258655"
 ---
-# <a name="quickstart-use-c-to-call-the-bing-web-search-api"></a>快速入门：使用 C# 调用必应 Web 搜索 API  
+# <a name="quickstart-search-the-web-using-the-bing-web-search-rest-api-and-c"></a>快速入门：使用必应 Web 搜索 REST API 和 C# 搜索网页
 
 使用本快速入门进行你的第一次必应 Web 搜索 API 并接收 JSON 响应。  
 
@@ -28,7 +29,7 @@ ms.locfileid: "52313480"
 ## <a name="prerequisites"></a>先决条件
 下面是在开始本快速入门之前需要准备好的项目：
 
-* Windows：[Visual Studio 2017](https://www.visualstudio.com/downloads/)
+* Windows:[Visual Studio 2017](https://www.visualstudio.com/downloads/)
 * Linux/macOS：[Mono](http://www.mono-project.com/)  
 * 订阅密钥
 

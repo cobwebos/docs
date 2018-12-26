@@ -1,5 +1,5 @@
 ---
-title: 在基于 Linux 的 Azure 应用服务中生成 Java Enterprise Web 应用 | Microsoft Docs
+title: 在 Linux 上构建 Java Enterprise Web 应用 - Azure 应用服务 | Microsoft Docs
 description: 了解如何在基于 Linux 的 Azure 应用服务的 Wildfly 中运行 Java Enterprise 应用。
 author: JasonFreeberg
 manager: routlaw
@@ -10,16 +10,17 @@ ms.devlang: java
 ms.topic: tutorial
 ms.date: 11/13/2018
 ms.author: jafreebe
-ms.openlocfilehash: 0772dbb1aaa6b00994bd653c19b006114377dc5f
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.custom: seodec18
+ms.openlocfilehash: 2a38b117cde6d6b51b101f6b0ef0eb3a19b42ba3
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52165452"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53344221"
 ---
 # <a name="tutorial-build-a-java-ee-and-postgres-web-app-in-azure"></a>教程：在 Azure 中生成 Java EE 和 Postgres Web 应用
 
-本教程将介绍如何在 Azure 应用服务中创建 Java Enterprise Edition Web 应用，并将其连接到 Postgres 数据库。 完成本教程后，即可使用 [WildFly](http://www.wildfly.org/about/) 应用程序将数据存储到[用于 Postgres 的 Azure 数据库](https://azure.microsoft.com/services/postgresql/)，后者运行在[适用于 Linux 的 Azure 应用服务](app-service-linux-intro.md)中。
+本教程将介绍如何在 Azure 应用服务中创建 Java Enterprise Edition Web 应用，并将其连接到 Postgres 数据库。 完成本教程后，即可使用 [WildFly](https://www.wildfly.org/about/) 应用程序将数据存储到[用于 Postgres 的 Azure 数据库](https://azure.microsoft.com/services/postgresql/)，后者运行在[适用于 Linux 的 Azure 应用服务](app-service-linux-intro.md)中。
 
 在本教程中，将了解如何：
 > [!div class="checklist"]
@@ -32,8 +33,8 @@ ms.locfileid: "52165452"
 ## <a name="prerequisites"></a>先决条件
 
 1. [下载并安装 Git](https://git-scm.com/)
-1. [下载并安装 Maven 3](https://maven.apache.org/install.html)
-1. [下载并安装 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)
+2. [下载并安装 Maven 3](https://maven.apache.org/install.html)
+3. [下载并安装 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)
 
 ## <a name="clone-and-edit-the-sample-app"></a>克隆并编辑示例应用
 

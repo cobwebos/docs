@@ -1,23 +1,23 @@
 ---
-title: Azure Cosmos DB：在 .NET 中使用表 API 进行开发
-description: 了解如何通过 .NET 使用 Azure Cosmos DB 的表 API 进行开发
-services: cosmos-db
+title: 通过 .NET SDK 使用表 API 进行开发
+titleSuffix: Azure Cosmos DB
+description: 了解如何通过 .NET SDK 使用 Azure Cosmos DB 中的表 API 进行开发
 author: SnehaGunda
 ms.service: cosmos-db
 ms.component: cosmosdb-table
 ms.devlang: dotnet
 ms.topic: tutorial
-ms.date: 12/18/2017
+ms.date: 12/07/2018
 ms.author: sngun
-ms.custom: mvc
-ms.openlocfilehash: 02c4ead0f41463a70cc7123427193f835d9cca94
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.custom: seodec18
+ms.openlocfilehash: f10cb17f0300b6bd21d17b1e2ff204d57e4a7988
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52877729"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53251175"
 ---
-# <a name="azure-cosmos-db-develop-with-the-table-api-in-net"></a>Azure Cosmos DB：在 .NET 中使用表 API 进行开发
+# <a name="develop-with-azure-cosmos-dbs-table-api-using-net-sdk"></a>通过 .NET SDK 使用 Azure Cosmos DB 的表 API 进行开发
 
 Azure Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务。 可快速创建和查询文档、键/值和图形数据库，所有这些都受益于 Azure Cosmos DB 核心的全球分布和水平缩放功能。
 
@@ -77,7 +77,7 @@ Azure Cosmos DB 为有某类需求的应用程序提供[表 API](table-introduct
 
 ## <a name="clone-the-sample-application"></a>克隆示例应用程序
 
-现在让我们从 github 克隆表应用、设置连接字符串，并运行。 会看到以编程方式处理数据是多么容易。 
+现在让我们从 GitHub 克隆表应用，设置连接字符串，然后运行该应用。 会看到以编程方式处理数据是多么容易。 
 
 1. 打开诸如 git bash 之类的 git 终端窗口，并使用 `cd` 命令更改为相应的示例应用程序安装文件夹。 
 
@@ -97,7 +97,7 @@ Azure Cosmos DB 为有某类需求的应用程序提供[表 API](table-introduct
 
 现在返回到 Azure 门户，获取连接字符串信息，并将其复制到应用。 这样，应用程序就可以与托管的数据库进行通信。 
 
-1. 在 [Azure 门户](http://portal.azure.com/)中，单击“连接字符串”。 
+1. 在 [Azure 门户](https://portal.azure.com/)中，单击“连接字符串”。 
 
     使用屏幕右侧的复制按钮复制“主连接字符串”。
 
@@ -180,7 +180,8 @@ CloudTableClient tableClient = storageAccount.CreateCloudTableClient();
 使用 `TableConnectionMode`、`TableConnectionProtocol`、`TableConsistencyLevel` 和 `TablePreferredLocations` 配置值初始化此客户端（如已在应用设置中指定）。
 
 ## <a name="create-a-table"></a>创建表
-然后使用 `CloudTable` 创建表。 Azure Cosmos DB 中的表可就存储和吞吐量进行独立缩放，分区由服务自动处理。 Azure Cosmos DB 支持固定大小和数量不限的表。 有关详细信息，请参阅 [Azure Cosmos DB 中的分区](partition-data.md)。 
+
+然后使用 `CloudTable` 创建表。 Azure Cosmos DB 中的表可就存储和吞吐量进行独立缩放，分区由服务自动处理。 
 
 ```csharp
 CloudTable table = tableClient.GetTableReference("people");

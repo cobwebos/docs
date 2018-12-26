@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 09/21/2018
+ms.date: 12/07/2018
 ms.topic: tutorial
 ms.service: cost-management
 manager: dougeby
-ms.custom: ''
-ms.openlocfilehash: e671c75b1ceee0e42b3af9ddc149edf2f3b0040c
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.custom: seodec18
+ms.openlocfilehash: 4614a1417213ed8b4d57c3b7ab21ac7424d75949
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51822348"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53087927"
 ---
 # <a name="tutorial-create-and-manage-exported-data"></a>教程：创建和管理导出的数据
 
@@ -50,11 +50,11 @@ ms.locfileid: "51822348"
 
 为导出键入一个名称，然后选择“每日导出本月截止到现在的成本”选项。 单击“下一步”。
 
-![新建导出：导出类型](./media/tutorial-export-acm-data/basics_exports.png)
+![显示导出类型的新导出示例](./media/tutorial-export-acm-data/basics_exports.png)
 
 指定 Azure 存储帐户的订阅，然后选择存储帐户。  指定要将导出文件放置到其中的存储容器和目录路径。  单击“下一步”。
 
-![新建导出：存储](./media/tutorial-export-acm-data/storage_exports.png)
+![显示存储帐户详细信息的新导出示例](./media/tutorial-export-acm-data/storage_exports.png)
 
 查看导出详细信息，然后单击“创建”。
 
@@ -68,15 +68,15 @@ ms.locfileid: "51822348"
 
 在导出列表中，单击存储帐户名称。 在存储帐户页上，单击“在资源管理器中打开”。 如果看到确认框，单击“是”，即可在 Azure 存储资源管理器中打开文件。
 
-![存储帐户页](./media/tutorial-export-acm-data/storage-account-page.png)
+![存储帐户页面，其中显示示例信息和“在资源管理器中打开”链接](./media/tutorial-export-acm-data/storage-account-page.png)
 
 在存储资源管理器中，导航到你想要打开的容器，并选择与当前月份相对应的文件夹。 然后将显示 CSV 文件列表。 选择一个文件，然后单击“打开”。
 
-![存储资源管理器](./media/tutorial-export-acm-data/storage-explorer.png)
+![存储资源管理器中显示的示例信息](./media/tutorial-export-acm-data/storage-explorer.png)
 
 该文件将通过设置为打开 CSV 文件扩展名的程序或应用程序打开。 下面是 Excel 中的一个示例。
 
-![示例导出数据](./media/tutorial-export-acm-data/example-export-data.png)
+![Excel 中显示的导出 CSV 数据示例](./media/tutorial-export-acm-data/example-export-data.png)
 
 ## <a name="access-exported-data-from-other-systems"></a>从其他系统访问导出的数据
 

@@ -1,12 +1,12 @@
 ---
-title: 什么是 Azure 机器学习工作室？ | Microsoft Docs
+title: 概述 - Azure 机器学习工作室 | Microsoft Docs
 description: 概述 Azure 机器学习工作室：一个拖放式工具，可以通过现成可用的算法库和模块快速构建模型。
 keywords: azure 机器学习,azure ml, 机器学习工作室
 services: machine-learning
 documentationcenter: ''
-author: ericlicoding
-ms.custom: (previous ms.author=hshapiro, author=heatherbshapiro)
-ms.author: amlstudiodocs
+author: garyericson
+ms.custom: seodec18
+ms.author: garye
 ms.assetid: e65c8fe1-7991-4a2a-86ef-fd80a7a06269
 ms.service: machine-learning
 ms.component: studio
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
 ms.date: 03/28/2018
-ms.openlocfilehash: d893a0817be6ae8a271d403ed0477fa04238954b
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: b1c0d3da6dba4bf56baaf583d89c58fdc13ef83f
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52264397"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53250512"
 ---
 # <a name="what-is-azure-machine-learning-studio"></a>什么是 Azure 机器学习工作室？
 Microsoft Azure 机器学习工作室是一个协作型拖放式工具，可用于根据数据构建、测试和部署预测分析解决方案。 机器学习工作室将模型发布为可让自定义应用或 BI 工具（如 Excel）方便使用的 Web 服务。
@@ -41,7 +41,7 @@ Microsoft Azure 机器学习工作室是一个协作型拖放式工具，可用�
 > 
 > 
 
-![Azure 机器学习工作室示意图：创建试验、读取多个源的数据、写入评分的数据、写入模型。][ml-studio-overview]
+![Azure 机器学习工作室示意图：创建试验、读取多个源的数据、编写评分的数据、编写模型。][ml-studio-overview]
 
 ## <a name="get-started-with-machine-learning-studio"></a>机器学习工作室入门
 首次进入[机器学习工作室](https://studio.azureml.net)时，会看到“主页”。 可在此处查看文档、视频、网络研讨会，以及查找其他重要资源。
@@ -147,7 +147,7 @@ Microsoft Azure 机器学习工作室是一个协作型拖放式工具，可用�
 
 ## <a name="other-common-machine-learning-terms"></a>其他常见的机器学习术语
 * **算法**：通过数据处理、数学计算或自动推理来解决问题的一组独立规则。
-* **异常检测**：标记异常的事件或值，帮助发现问题的模型。 例如，信用卡诈骗检测可以查找异常的购买活动。
+* **异常检测**：标记异常事件或值，帮助发现问题的模型。 例如，信用卡诈骗检测可以查找异常的购买活动。
 * **分类数据**：按类别组织的、可分组的数据。 例如，汽车的分类数据集可以指定年份、制造商、车型和价格。
 * **分类**：根据类别分组已知的数据集，将数据点组织成不同类别的模型。
 * **特征工程**：提取或选择与数据集相关的特征，以便增强数据集并改善结果的过程。 例如，机票价格数据可通过星期几和假日来增强。 请参阅 [Feature selection and engineering in Azure Machine Learning](../team-data-science-process/create-features.md)（Azure 机器学习中的特征选择和工程）。
@@ -157,7 +157,7 @@ Microsoft Azure 机器学习工作室是一个协作型拖放式工具，可用�
 * **分区**：将数据拆分成多个样本的方法。 有关详细信息，请参阅 [Partition and Sample](https://msdn.microsoft.com/library/azure/dn905960.aspx) （分区和采样）。
 * **预测**：预测是来自机器学习模型的一个或多个预测值。 有时称为“预测评分”。 但是，预测评分不是模型的最终输出。 评分之后还要评估模型。
 * **回归**：根据独立变量预测值的模型，例如根据汽车的年份和制造商预测汽车价格。
-* **评分**：使用机器学习工作室中的 [“评分模型”模块](https://msdn.microsoft.com/library/azure/dn905995.aspx) ，从训练分类或回归模型生成的预测值。 分类模型也返回预测值的机率评分。 从模型生成分数之后，即可使用 [“评估模型”模块](https://msdn.microsoft.com/library/azure/dn905915.aspx)来评估模型的准确性。
+* **评分**：使用机器学习工作室中的[“评分模型”模块](https://msdn.microsoft.com/library/azure/dn905995.aspx)，从训练分类或回归模型生成的预测值。 分类模型也返回预测值的机率评分。 从模型生成分数之后，即可使用 [“评估模型”模块](https://msdn.microsoft.com/library/azure/dn905915.aspx)来评估模型的准确性。
 * **样本**：用于代表整体的一部分数据集。 可以随机采样，或根据数据集的具体特征采样。
 
 ## <a name="next-steps"></a>后续步骤

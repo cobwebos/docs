@@ -1,6 +1,6 @@
 ---
-title: 什么是专用 HSM？ | Microsoft Docs
-description: Azure 专用 HSM 在 Azure 中提供符合 FIPS 140-2 级别 3 认证的密钥存储功能
+title: 什么是专用 HSM？ - Azure 专用 HSM | Microsoft Docs
+description: 关于 Azure 专用 HSM 在 Azure 中提供符合 FIPS 140-2 级别 3 认证的密钥存储功能的概述
 services: dedicated-hsm
 author: barclayn
 manager: mbaldwin
@@ -10,19 +10,19 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.custom: mvc
-ms.date: 11/26/2018
+ms.custom: mvc, seodec18
+ms.date: 12/07/2018
 ms.author: barclayn
-ms.openlocfilehash: 92d77ec886a0f37c28f5e3031a7e14f63299c8aa
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 1eeafa33c8c1cdbcd7d0e55e3860dda1b8d451fe
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52427108"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53080072"
 ---
-# <a name="what-is-dedicated-hsm"></a>什么是专用 HSM？
+# <a name="what-is-azure-dedicated-hsm"></a>什么是 Azure 专用 HSM？
 
-Azure 专用 HSM 在 Azure 中提供符合最严格安全要求的加密密钥存储。 对于需要 FIPS 140-2 级别 3 验证设备并需对 HSM 设备进行全权控制的客户来说，专用 HSM 是理想的解决方案。 HSM 设备可以跨多个 Azure 区域进行全球部署，并且可以轻松地预配为一对设备，在经过配置后可确保高可用性。 HSM 也可跨区域预配，目的是防范区域级故障转移的情况。 Microsoft 已使用 Gemalto 的 [SafeNet Luna 网络 HSM 7（型号：A790）](https://safenet.gemalto.com/data-encryption/hardware-security-modules-hsms/safenet-network-hsm/)设备提供专用 HSM 服务。 此设备提供最高级别的性能和加密集成选项。 预配以后，HSM 可以直接连接到客户的虚拟网络，还可以通过本地应用程序和管理工具进行访问，只需配置点到站点或站点到站点 VPN 连接即可。 客户会获得从 Gemalto 的支持门户配置和管理 HSM 设备所需的软件和文档。
+Azure 专用 HSM 是一项 Azure 服务，用于提供 Azure 中的加密密钥存储。 专用 HSM 符合最严格的安全要求。 对于需要 FIPS 140-2 级别 3 验证设备并需对 HSM 设备进行全权控制的客户来说，专用 HSM 是理想的解决方案。 HSM 设备可以跨多个 Azure 区域进行全球部署，并且可以轻松地预配为一对设备，在经过配置后可确保高可用性。 HSM 也可跨区域预配，目的是防范区域级故障转移的情况。 Microsoft 已使用 Gemalto 的 [SafeNet Luna 网络 HSM 7（型号：A790）](https://safenet.gemalto.com/data-encryption/hardware-security-modules-hsms/safenet-network-hsm/)设备提供专用 HSM 服务。 此设备提供最高级别的性能和加密集成选项。 预配以后，HSM 可以直接连接到客户的虚拟网络，还可以通过本地应用程序和管理工具进行访问，只需配置点到站点或站点到站点 VPN 连接即可。 客户会获得从 Gemalto 的支持门户配置和管理 HSM 设备所需的软件和文档。
 
 ## <a name="why-use-azure-dedicated-hsm"></a>为何使用 Azure 专用 HSM？
 

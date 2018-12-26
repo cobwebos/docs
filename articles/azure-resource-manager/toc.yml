@@ -20,6 +20,8 @@ items:
     href: resource-manager-tutorial-create-encrypted-storage-accounts.md
   - name: 创建多个实例
     href: resource-manager-tutorial-create-multiple-instances.md
+  - name: 移动资源
+    href: resource-manager-tutorial-move-resources.md
   - name: 设置资源部署顺序
     href: resource-manager-tutorial-create-templates-with-dependent-resources.md
   - name: 使用条件
@@ -44,9 +46,10 @@ items:
     href: https://azure.microsoft.com/resources/samples/?sort=0&service=azure-resource-manager
 - name: 概念
   items:
-  - name: 模板结构
-    href: resource-group-authoring-templates.md
+  - name: 模板
     items:
+    - name: 模板文件结构
+      href: resource-group-authoring-templates.md
     - name: parameters
       href: resource-manager-templates-parameters.md
     - name: 变量
@@ -57,17 +60,21 @@ items:
       href: resource-manager-templates-resources.md
     - name: Outputs
       href: resource-manager-templates-outputs.md
+  - name: 指南
+    items:
+    - name: 模板最佳实践
+      href: template-best-practices.md
+    - name: 订阅监管
+      href: /azure/architecture/cloud-adoption/appendix/azure-scaffold
+      maintainContext: true
+    - name: 用于提供云一致性的模板
+      href: templates-cloud-consistency.md
   - name: 资源提供程序和类型
     href: resource-manager-supported-services.md
   - name: 管理组
     href: management-groups-overview.md
   - name: 部署管理器
     href: deployment-manager-overview.md
-  - name: 订阅监管
-    href: /azure/architecture/cloud-adoption-guide/subscription-governance
-    maintainContext: true
-  - name: 用于提供云一致性的模板
-    href: templates-cloud-consistency.md
   - name: 部署模式
     href: deployment-modes.md
   - name: 资源的删除
@@ -94,7 +101,7 @@ items:
       href: /azure/architecture/building-blocks/extending-templates/update-resource
   - name: 部署模板
     items:
-    - name: 使用门户进行部署
+    - name: 使用 Azure 门户进行部署
       href: resource-group-template-deploy-portal.md
     - name: 使用 Azure CLI 进行部署
       href: resource-group-template-deploy-cli.md
@@ -123,27 +130,27 @@ items:
       maintainContext: true
   - name: 管理模板
     items:
-    - name: Azure PowerShell
-      href: powershell-azure-resource-manager.md
-    - name: Azure CLI
-      href: cli-azure-resource-manager.md
-    - name: Azure 门户
+    - name: 使用 Azure 门户进行管理
       href: resource-group-portal.md
-    - name: 使用标记来组织资源
-      href: resource-group-using-tags.md
-    - name: 将资源移到新组或订阅
+    - name: 使用 Azure PowerShell 进行管理
+      href: powershell-azure-resource-manager.md
+    - name: 使用 Azure CLI 进行管理
+      href: cli-azure-resource-manager.md
+    - name: 移动资源
       href: resource-group-move-resources.md
       items:
       - name: 根据资源类型移动支持
         href: move-support-resources.md
+    - name: 使用标记组织资源
+      href: resource-group-using-tags.md
+    - name: 锁定资源
+      href: resource-group-lock-resources.md
+    - name: 用于访问订阅的身份验证 API
+      href: resource-manager-api-authentication.md
     - name: 创建 EA 订阅
       href: programmatically-create-subscription.md
     - name: 授予访问权限以创建 EA 订阅
       href: grant-access-to-create-subscription.md
-    - name: 用于访问订阅的身份验证 API
-      href: resource-manager-api-authentication.md
-    - name: 锁定资源
-      href: resource-group-lock-resources.md
   - name: 审核部署
     items:
     - name: 查看活动日志
@@ -184,7 +191,7 @@ items:
     href: resource-manager-request-limits.md
   - name: 跟踪异步操作
     href: resource-manager-async-operations.md
-- name: 引用
+- name: 参考
   items:
   - name: 模板参考
     href: subtoc/toc.yml
@@ -211,7 +218,7 @@ items:
     href: /rest/api/resources/
   - name: REST - 部署管理器
     href: /rest/api/deploymentmanager/
-  - name: PowerShell
+  - name: Azure PowerShell
     href: /powershell/module/azurerm.resources
   - name: Azure CLI
     href: /cli/azure/resource
@@ -235,9 +242,9 @@ items:
     href: resource-manager-personal-data.md
   - name: 视频
     href: https://azure.microsoft.com/documentation/videos/index/?services=azure-resource-manager
-ms.openlocfilehash: 166a23d480db7dfda7a78a5a63e7717b5e721bb9
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 71ea002b3f29952521a79ef5165e5432a48e72d6
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53436783"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53714451"

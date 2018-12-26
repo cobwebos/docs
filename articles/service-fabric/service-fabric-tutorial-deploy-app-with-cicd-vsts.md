@@ -1,6 +1,6 @@
 ---
-title: 在 Azure 中部署具有持续集成功能的 Service Fabric 应用 (Azure DevOps Services) | Microsoft Docs
-description: 本教程介绍如何使用 Azure Devops Services 为 Service Fabric 应用程序设置持续集成和部署。
+title: 在 Azure 中部署具有持续集成功能和 Azure Pipelines 的 Service Fabric 应用 | Microsoft Docs
+description: 本教程介绍了如何使用 Azure Pipelines 为 Service Fabric 应用程序设置持续集成和部署。
 services: service-fabric
 documentationcenter: .net
 author: rwike77
@@ -12,26 +12,26 @@ ms.devlang: dotNet
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 11/15/2018
+ms.date: 12/02/2018
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: 5d53250ebdc14b7b6631e2f419b5b24ac98f3038
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.openlocfilehash: 766c0c780807ff7627ae9fb96aca4a896918f9c6
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51853722"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53094944"
 ---
 # <a name="tutorial-deploy-an-application-with-cicd-to-a-service-fabric-cluster"></a>教程：将具有 CI/CD 的应用程序部署到 Service Fabric 群集
 
-本教程是一个系列的第四部分，介绍了如何使用 Azure DevOps 为 Azure Service Fabric 应用程序设置持续集成和部署。  需要一个现有的 Service Fabric 应用程序，将使用在[生成 .NET 应用程序](service-fabric-tutorial-create-dotnet-app.md)中创建的应用程序作为示例。
+本教程是一个系列的第四部分，介绍了如何使用 Azure Pipelines 为 Azure Service Fabric 应用程序设置持续集成和部署。  需要一个现有的 Service Fabric 应用程序，将使用在[生成 .NET 应用程序](service-fabric-tutorial-create-dotnet-app.md)中创建的应用程序作为示例。
 
 在该系列的第三部分中，你会学习如何：
 
 > [!div class="checklist"]
 > * 向项目中添加源代码管理
-> * 在 Azure DevOps 中创建生成管道
-> * 在 Azure DevOps 中创建发布管道
+> * 在 Azure Pipelines 中创建生成管道
+> * 在 Azure Pipelines 中创建发布管道
 > * 自动部署和升级应用程序
 
 在此系列教程中，你会学习如何：
@@ -50,7 +50,7 @@ ms.locfileid: "51853722"
 * [安装 Visual Studio 2017](https://www.visualstudio.com/)，并安装 **Azure 开发**以及 **ASP.NET 和 Web 开发**工作负荷。
 * [安装 Service Fabric SDK](service-fabric-get-started.md)
 * 在 Azure 上创建一个 Windows Service Fabric 群集，例如[根据此教程](service-fabric-tutorial-create-vnet-and-windows-cluster.md)创建
-* 创建一个 [Azure DevOps 组织](https://docs.microsoft.com/azure/devops/organizations/accounts/create-organization-msa-or-work-student)。
+* 创建一个 [Azure DevOps 组织](https://docs.microsoft.com/azure/devops/organizations/accounts/create-organization-msa-or-work-student)。 这允许你在 Azure DevOps 中创建项目并使用 Azure Pipelines。
 
 ## <a name="download-the-voting-sample-application"></a>下载投票示例应用程序
 
@@ -62,7 +62,7 @@ git clone https://github.com/Azure-Samples/service-fabric-dotnet-quickstart
 
 ## <a name="prepare-a-publish-profile"></a>准备一个发布配置文件
 
-你已[创建了一个应用程序](service-fabric-tutorial-create-dotnet-app.md)并已[将该应用程序部署到了 Azure](service-fabric-tutorial-deploy-app-to-party-cluster.md)，现在可以设置持续集成了。  首先，在应用程序中准备一个发布配置文件，供要在 Azure DevOps 中执行的部署进程使用。  应当将发布配置文件配置为以你之前创建的群集为目标。  启动 Visual Studio 并打开一个现有的 Service Fabric 应用程序项目。  在“解决方案资源管理器”中，右键单击该应用程序并选择“发布...”。
+你已[创建了一个应用程序](service-fabric-tutorial-create-dotnet-app.md)并已[将该应用程序部署到了 Azure](service-fabric-tutorial-deploy-app-to-party-cluster.md)，现在可以设置持续集成了。  首先，在应用程序中准备一个发布配置文件，供要在 Azure Pipelines 中执行的部署进程使用。  应当将发布配置文件配置为以你之前创建的群集为目标。  启动 Visual Studio 并打开一个现有的 Service Fabric 应用程序项目。  在“解决方案资源管理器”中，右键单击该应用程序并选择“发布...”。
 
 在应用程序项目中选择一个要用于持续集成工作流的目标配置文件，例如 Cloud。  指定群集连接终结点。  选中“升级应用程序”复选框，以便应用程序针对 Azure DevOps 中的每个部署进行升级。  单击“保存”超链接将设置保存到发布配置文件，然后单击“取消”关闭对话框。
 
@@ -84,11 +84,11 @@ git clone https://github.com/Azure-Samples/service-fabric-dotnet-quickstart
 
 发布存储库会在你的帐户中创建一个与本地存储库同名的新项目。 若要在现有项目中创建存储库，请单击“存储库名称”旁边的“高级”并选择一个项目。 可以通过选择“在 web 上查看”来在 web 上查看代码。
 
-## <a name="configure-continuous-delivery-with-azure-devops"></a>配置使用 Azure DevOps 的持续交付
+## <a name="configure-continuous-delivery-with-azure-pipelines"></a>使用 Azure Pipelines 配置持续交付
 
-Azure DevOps 生成管道描述了由按顺序执行的一组生成步骤组成的工作流。 创建一个生成管道，以生成要部署到 Service Fabric 群集的 Service Fabric 应用程序包和其他项目。 请详细了解 [Azure DevOps 生成管道](https://www.visualstudio.com/docs/build/define/create)。 
+Azure Pipelines 生成管道描述了由按顺序执行的一组生成步骤组成的工作流。 创建一个生成管道，以生成要部署到 Service Fabric 群集的 Service Fabric 应用程序包和其他项目。 请详细了解 [Azure Pipelines 生成管道](https://www.visualstudio.com/docs/build/define/create)。 
 
-Azure DevOps 发布管道描述了将应用程序程序包部署到群集的工作流。 一起使用时，生成管道和发布管道将执行从开始到结束的整个工作流，即一开始只有源文件，结束时群集中会有一个运行的应用程序。 请详细了解 [Azure DevOps 发布管道](https://www.visualstudio.com/docs/release/author-release-definition/more-release-definition)。
+Azure Pipelines 发布管道描述了将应用程序程序包部署到群集的工作流。 一起使用时，生成管道和发布管道将执行从开始到结束的整个工作流，即一开始只有源文件，结束时群集中会有一个运行的应用程序。 请详细了解 [Azure Pipelines 发布管道](https://www.visualstudio.com/docs/release/author-release-definition/more-release-definition)。
 
 ### <a name="create-a-build-pipeline"></a>创建生成管道
 
@@ -156,11 +156,11 @@ Azure DevOps 发布管道描述了将应用程序程序包部署到群集的工�
 
 ![全部提交][changes]
 
-在“团队资源管理器”中选择“未发布的更改”状态栏图标（![未发布的更改][unpublished-changes]）或“同步”视图。 选择“推送”以更新 Azure DevOps Services/TFS 中的代码。
+在“团队资源管理器”中选择“未发布的更改”状态栏图标（![未发布的更改][unpublished-changes]）或“同步”视图。 选择“推送”以更新 Azure Pipelines 中的代码。
 
 ![推送更改][push]
 
-将更改推送到 Azure DevOps 会自动触发生成。  当生成管道成功完成时，会自动创建一个发布，并将开始升级群集上的应用程序。
+将更改推送到 Azure Pipelines 会自动触发生成。  当生成管道成功完成时，会自动创建一个发布，并将开始升级群集上的应用程序。
 
 若要检查生成进度，请在 Visual Studio 中切换到“团队资源管理器”中的“生成”选项卡。  在验证生成成功执行后，请定义用于将应用程序部署到群集的发布管道。
 

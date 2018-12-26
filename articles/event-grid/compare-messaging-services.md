@@ -1,21 +1,22 @@
 ---
-title: Azure 消息服务对比
-description: 比较 Azure 事件网格、事件中心和服务总线。 推荐不同场景使用的服务。
+title: Azure 消息传递比较 - 事件网格、事件中心、服务总线
+description: 介绍三种 Azure 消息传递服务 - Azure 事件网格、事件中心和服务总线。 推荐不同场景使用的服务。
 services: event-grid
 author: tfitzmac
 manager: timlt
 ms.service: event-grid
 ms.topic: overview
-ms.date: 07/05/2018
+ms.date: 12/07/2018
 ms.author: tomfitz
-ms.openlocfilehash: 28f80dc71afd7d4865763561682ce54de1b118ab
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.custom: seodec18
+ms.openlocfilehash: 0eeded4e6bfe9041b360441d1e7b2a5c7dd4a099
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51852191"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53166517"
 ---
-# <a name="choose-between-azure-services-that-deliver-messages"></a>在传递消息的 Azure 服务之间进行选择
+# <a name="choose-between-azure-messaging-services---event-grid-event-hubs-and-service-bus"></a>在 Azure 消息传递服务之间进行选择 - 事件网格、事件中心和服务总线
 
 Azure 提供三种协助在整个解决方案中传递事件消息的服务。 这些服务分别为：
 
@@ -33,7 +34,7 @@ Azure 提供三种协助在整个解决方案中传递事件消息的服务。 �
 
 事件是条件或状态更改的轻量通知。 事件发布者对于如何处理事件没有期望。 事件使用者决定要对通知执行的操作。 事件可以是离散单元或一系列的一部分。
 
-离散事件报告状态更改，并可操作。 若要执行下一步，使用者只需知道发生了问题。 事件数据包含关于所发生事件的信息，但不包含触发事件的数据。 例如，事件会通知使用者文件已创建。 它可能包含文件的常规信息，但不包含文件本身。 离散事件非常适合于需要缩放的无服务器解决方案。
+离散事件报告状态更改，并可操作。 若要执行下一步，使用者只需知道发生了问题。 事件数据包含关于所发生事件的信息，但不包含触发事件的数据。 例如，事件会通知使用者文件已创建。 它可能包含文件的常规信息，但不包含文件本身。 离散事件非常适合于需要缩放的[无服务器](http://azure.com/serverless)解决方案。
 
 系列事件报告情况，并且可分析。 事件按时间排序并彼此相关。 使用者需要排序的一系列事件以分析发生的情况。
 

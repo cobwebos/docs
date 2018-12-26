@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/20/2018
 ms.author: yexu
-ms.openlocfilehash: 95f2947a30499ce563d5943dfa423ee89a172f47
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: e25cdd0677efce0ea8d40ad1c8ae07a5d071a67f
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51614509"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52969781"
 ---
 # <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-an-azure-sql-database"></a>以增量方式将数据从 SQL Server 中的多个表加载到 Azure SQL 数据库
 在本教程中，请创建一个带管道的 Azure 数据工厂，将增量数据从本地 SQL Server 中的多个表加载到 Azure SQL 数据库。    
@@ -61,7 +61,7 @@ ms.locfileid: "51614509"
 
     下面是高级解决方案示意图： 
 
-    ![以增量方式加载数据](media\tutorial-incremental-copy-multiple-tables-portal\high-level-solution-diagram.png)
+    ![以增量方式加载数据](media/tutorial-incremental-copy-multiple-tables-portal/high-level-solution-diagram.png)
 
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费](https://azure.microsoft.com/free/)帐户。
@@ -248,7 +248,7 @@ END
 1. 选择数据工厂的**位置**。 下拉列表中仅显示支持的位置。 数据工厂使用的数据存储（Azure 存储、Azure SQL 数据库，等等）和计算资源（HDInsight 等）可以位于其他区域中。
 1. 选择“固定到仪表板”。     
 1. 单击“创建”。      
-1. 在仪表板上，会看到状态为“正在部署数据工厂”的以下磁贴。 
+1. 在仪表板上，会看到具有状态的以下磁贴：“正在部署数据工厂”。 
 
     ![“正在部署数据工厂”磁贴](media/tutorial-incremental-copy-multiple-tables-portal/deploying-data-factory.png)
 1. 创建完成后，可以看到图中所示的“数据工厂”页。
@@ -277,7 +277,7 @@ END
 1. 在“名称”中输入 **MySelfHostedIR**，然后单击“下一步”。 
 
    ![自承载 IR 名称](./media/tutorial-incremental-copy-multiple-tables-portal/self-hosted-ir-name.png)
-1. 在“选项 1: 快速安装”部分单击“单击此处对此计算机启动快速安装”。 
+1. 在“选项 1: 快速安装”部分中单击“单击此处对此计算机启动快速安装”。 
 
    ![单击“快速安装”链接](./media/tutorial-incremental-copy-multiple-tables-portal/click-express-setup.png)
 1. 在“集成运行时(自承载)快速安装”窗口中，单击“关闭”。 

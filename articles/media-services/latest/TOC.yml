@@ -12,20 +12,14 @@ items:
   expanded: true
 - name: 教程
   items:
-  - name: 上传、编码和流式处理
-    items:
-    - name: 使用 .NET
-      href: stream-files-tutorial-with-api.md
-    - name: 使用 REST
-      href: stream-files-tutorial-with-rest.md
-  - name: 实时流式处理
-    items:
-    - name: 使用 .NET Core
-      href: stream-live-tutorial-with-api.md
-  - name: 分析视频
-    items:
-    - name: 使用 .NET
-      href: analyze-videos-tutorial-with-api.md
+  - name: 对远程文件和流视频进行编码 – REST
+    href: stream-files-tutorial-with-rest.md
+  - name: 对上传的文件和流视频进行编码 – .NET
+    href: stream-files-tutorial-with-api.md
+  - name: 实时流 - .NET
+    href: stream-live-tutorial-with-api.md
+  - name: 分析视频 - .NET
+    href: analyze-videos-tutorial-with-api.md
 - name: 示例
   items:
   - name: Azure 代码示例
@@ -34,6 +28,8 @@ items:
     href: cli-samples.md
 - name: 概念
   items:
+  - name: 从 v2 迁移到 v3
+    href: migrate-from-v2-to-v3.md
   - name: 分析内容
     href: analyzing-video-audio-files-concept.md
   - name: 对内容进行编码
@@ -72,6 +68,8 @@ items:
   - name: 实时流式处理事件
     href: live-streaming-overview.md
     items:
+    - name: 推荐的实时编码器
+      href: recommended-on-premises-live-encoders.md
     - name: 使用云 DVR
       href: live-event-cloud-dvr.md
     - name: 功能比较
@@ -82,8 +80,6 @@ items:
       href: live-event-latency.md
 - name: 操作指南
   items:
-  - name: 从 v2 迁移到 v3
-    href: migrate-from-v2-to-v3.md
   - name: 创建帐户 - CLI
     href: create-account-cli-how-to.md
   - name: 访问 API - CLI
@@ -94,6 +90,8 @@ items:
       href: job-input-from-http-how-to.md
     - name: 从本地文件 - .NET
       href: job-input-from-local-file-how-to.md
+    - name: 从本地文件 - REST
+      href: upload-files-rest-how-to.md
   - name: 创建筛选器
     items:
     - name: 使用 .NET
@@ -122,7 +120,7 @@ items:
     href: media-rest-apis-with-postman.md
   - name: 缩放媒体保留单位 - CLI
     href: media-reserved-units-cli-how-to.md
-- name: 引用
+- name: 参考
   items:
   - name: OpenAPI 规范 (Swagger)
     href: https://aka.ms/ams-v3-rest-sdk
@@ -184,9 +182,9 @@ items:
     href: limits-quotas-constraints.md
   - name: 常见问题解答
     href: frequently-asked-questions.md
-ms.openlocfilehash: 3f1f685eecbec2cba5659ae58bcd22812548206b
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: aafc49b10a012bab6c3dc3d455480deca44fde32
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53386344"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53631985"

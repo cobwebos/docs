@@ -1,25 +1,18 @@
 ---
-title: 快速入门 - Azure SignalR 服务 REST API | Microsoft Docs
+title: 快速入门 - Azure SignalR 服务 REST API
 description: 有关使用 Azure SignalR 服务 REST API 的快速入门。
-services: signalr
-documentationcenter: ''
 author: sffamily
-manager: cfowler
-editor: ''
-ms.assetid: ''
 ms.service: signalr
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.tgt_pltfrm: ASP.NET
-ms.workload: tbd
 ms.date: 06/13/2018
 ms.author: zhshang
-ms.openlocfilehash: 36fb87d3255149c041c4288d13c54eaff8425e06
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: fdbdbe77c6541d62acef0d23d599d9687f5301b1
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50024322"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53251855"
 ---
 # <a name="quickstart-broadcast-real-time-messages-from-console-app"></a>快速入门：从控制台应用广播实时消息
 
@@ -30,17 +23,15 @@ Azure SignalR 服务提供了 [REST API](https://github.com/Azure/azure-signalr/
 ## <a name="prerequisites"></a>先决条件
 
 本快速入门可以在 macOS、Windows 或 Linux 上运行。
+
 * [.NET Core SDK](https://www.microsoft.com/net/download/core)
 * 你选择的文本编辑器或代码编辑器。
 
-
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
-
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
 
 使用 Azure 帐户登录到 <https://portal.azure.com/> 的 Azure 门户。
-
 
 [!INCLUDE [Create instance](includes/signalr-quickstart-create-instance.md)]
 
@@ -68,6 +59,7 @@ Azure SignalR 服务提供了 [REST API](https://github.com/Azure/azure-signalr/
 ### <a name="build-the-executable-file"></a>生成可执行文件
 
 我们使用 macOS osx.10.13-x64 作为示例。 你可以找到有关如何在其他平台上进行生成的[参考资料](https://docs.microsoft.com/dotnet/core/rid-catalog)。
+
 ```bash
 cd AzureSignalR-samples/samples/Serverless/
 
@@ -108,7 +100,7 @@ dotnet run -- client <ClientName> -c "<ConnectionString>" -h <HubName>
 
 ## <a name="usage"></a>使用情况
 
-在服务器启动后，使用以下命令发送消息
+在服务器启动后，使用以下命令发送消息：
 
 ```
 send user <User Id>
@@ -121,8 +113,11 @@ broadcast
 可以启动具有不同客户端名称的多个客户端。
 
 ## <a name="usage"> </a> 与第三方服务集成
+
 Azure SignalR 服务允许第三方服务与系统集成。
-### <a name="usage"> </a> 定义技术规范
+
+### <a name="definition-of-technical-specifications"></a>定义技术规范
+
 下表显示到目前为止受支持的 REST API 的所有版本。 也可找到每个特定版本的定义文件
 
 版本 | API 状态 | 门 | 特定
@@ -144,6 +139,7 @@ API | `1.0-preview` | `1.0`
 
 <a name="broadcast"> </a>
 ### <a name="broadcast-to-everyone"></a>广播到所有人
+
 版本 | API HTTP 方法 | 请求 URL | 请求正文
 --- | --- | --- | ---
 `1.0-preview` | `POST` | `https://<instance-name>.service.signalr.net:5002/api/v1-preview/hub/<hub-name>` | `{"target": "<method-name>", "arguments": [...]}`
@@ -151,6 +147,7 @@ API | `1.0-preview` | `1.0`
 
 <a name="broadcast-group"> </a>
 ### <a name="broadcast-to-a-group"></a>广播到组
+
 版本 | API HTTP 方法 | 请求 URL | 请求正文
 --- | --- | --- | ---
 `1.0-preview` | `POST` | `https://<instance-name>.service.signalr.net:5002/api/v1-preview/hub/<hub-name>/group/<group-name>` | `{"target": "<method-name>", "arguments": [...]}`
@@ -158,6 +155,7 @@ API | `1.0-preview` | `1.0`
 
 <a name="send-user"> </a>
 ### <a name="sending-to-specific-users"></a>发送到特定用户
+
 版本 | API HTTP 方法 | 请求 URL | 请求正文
 --- | --- | --- | ---
 `1.0-preview` | `POST` | `https://<instance-name>.service.signalr.net:5002/api/v1-preview/hub/<hub-name>/user/<user-id>` | `{"target": "<method-name>", "arguments": [...]}`
@@ -165,12 +163,14 @@ API | `1.0-preview` | `1.0`
 
 <a name="add-user-to-group"> </a>
 ### <a name="adding-a-user-to-a-group"></a>将用户添加到组
+
 版本 | API HTTP 方法 | 请求 URL
 --- | --- | ---
 `1.0` | `PUT` | `https://<instance-name>.service.signalr.net/api/v1/hubs/<hub-name>/groups/<group-name>/users/<userid>`
 
 <a name="remove-user-from-group"> </a>
 ### <a name="removing-a-user-from-a-group"></a>从组中删除用户
+
 版本 | API HTTP 方法 | 请求 URL
 --- | --- | ---
 `1.0` | `DELETE` | `https://<instance-name>.service.signalr.net/api/v1/hubs/<hub-name>/groups/<group-name>/users/<userid>`

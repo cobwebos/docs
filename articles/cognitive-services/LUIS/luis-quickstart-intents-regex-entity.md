@@ -1,37 +1,37 @@
 ---
-title: 教程 3：正则表达式匹配的数据 - 提取格式良好的数据
+title: 正则表达式实体
 titleSuffix: Azure Cognitive Services
 description: 使用正则表达式实体从话语中提取带有一致格式的数据。
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: tutorial
-ms.date: 09/09/2018
+ms.date: 12/07/2018
 ms.author: diberry
-ms.openlocfilehash: 5e8345deb629d293d9673819893181e652d5dbb9
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: d4deeec2c5af5047fa16a2d80f0992409d517910
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52423409"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53135570"
 ---
-# <a name="tutorial-3-extract-well-formatted-data"></a>教程 3：提取格式良好的数据
+# <a name="tutorial-3-extract-well-formatted-data"></a>教程 3：提取格式正确的数据
 在本教程中，我们将修改人力资源应用，以使用“正则表达式”实体从话语中提取带有一致格式的数据。
 
 该实体的用途是提取话语中包含的重要数据。 此应用使用正则表达式实体的目的是从话语中提取带有格式的人力资源 (HR) 表单编号。 尽管话语的意向始终是使用机器学习确定的，但此特定实体类型不是机器学习的内容。 
 
 **示例话语包括：**
 
-```
-Where is HRF-123456?
-Who authored HRF-123234?
-HRF-456098 is published in French?
-HRF-456098
-HRF-456098 date?
-HRF-456098 title?
-```
+|示例陈述|
+|--|
+|HRF-123456 在哪里？|
+|HRF-123234 的作者是谁？|
+|HRF-456098 是以法语发布的吗？|
+|HRF-456098|
+|HRF-456098 日期？|
  
 在以下情况下，正则表达式非常适合此类数据：
 
@@ -129,7 +129,7 @@ HRF 代表 `human resources form`。
 
 2. 将光标定位到地址中 URL 的末尾，并输入 `When were HRF-123456 and hrf-234567 published in the last year?`。 最后一个查询字符串参数为 `q`，表示陈述查询 (**q**uery)。 此陈述不同于标记的任何陈述，因此，它非常适合用于测试，测试结果应返回包含两个表单编号（`HRF-123456` 和 `hrf-234567`）的 `FindForm` 意向。
 
-    ```JSON
+    ```json
     {
       "query": "When were HRF-123456 and hrf-234567 published in the last year?",
       "topScoringIntent": {

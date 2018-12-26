@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 11/15/2018
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 6ad839b9cf1179e282b9163df5a38e13417408e2
-ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
+ms.openlocfilehash: 7e11affece7e7eb133aa22e159ec07d4f15e96f7
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51706222"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52999602"
 ---
 # <a name="quickstart-direct-web-traffic-with-azure-application-gateway---azure-portal"></a>快速入门：使用 Azure 应用程序网关定向 Web 流量 - Azure 门户
 
@@ -25,7 +25,7 @@ ms.locfileid: "51706222"
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
 
-通过 [http://portal.azure.com](http://portal.azure.com) 登录到 Azure 门户
+通过 [https://portal.azure.com](https://portal.azure.com) 登录到 Azure 门户
 
 ## <a name="create-an-application-gateway"></a>创建应用程序网关
 
@@ -87,10 +87,10 @@ ms.locfileid: "51706222"
     - *azureuser* - 作为管理员用户名。
     - *Azure123456!* - 密码。
 
-   接受其他默认值，并单击“下一步: 磁盘”。
-4. 接受磁盘默认值，并单击“下一步: 网络”。
+   接受其他默认值，并单击“下一步:磁盘”。
+4. 接受磁盘默认值，并单击“下一步:网络”。
 5. 请确保选择 **myVNet** 作为虚拟网络，子网是 **myBackendSubnet**。
-6. 接受其他默认值，并单击“下一步: 管理”。
+6. 接受其他默认值，并单击“下一步:管理”。
 7. 单击“关闭”以禁用启动诊断。 接受其他默认值，并单击“复查 + 创建”。
 8. 在“摘要”页上复查设置，然后单击“创建”。
 9. 等待虚拟机创建完成，然后再继续操作。

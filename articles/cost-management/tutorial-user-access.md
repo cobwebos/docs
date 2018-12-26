@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 09/18/2018
+ms.date: 12/07/2018
 ms.topic: tutorial
 ms.service: cost-management
-ms.custom: ''
+ms.custom: seodec18
 manager: benshy
-ms.openlocfilehash: 19cb1e414ba4a486139a502034e958907d027470
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.openlocfilehash: 64e56233546a22804036b43d9769247678036049
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52275259"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53099437"
 ---
 # <a name="tutorial-assign-access-to-cloudyn-data"></a>教程：分配对 Cloudyn 数据的访问权限
 
@@ -47,7 +47,7 @@ ms.locfileid: "52275259"
 输入有关用户的必需信息。 **登录 ID** 必须是有效的电子邮件地址。 选择允许进行用户管理的权限，以便用户可以创建和修改其他用户。 收件人列表管理允许用户编辑收件人列表。 当你选择“通过电子邮件通知用户”时，一个包含登录信息的链接会从 Cloudyn 通过电子邮件发送给用户。 用户在首次登录时设置密码。
 
 在“用户拥有管理员访问权限”下，组织的根实体处于选择状态。 保留选择根，然后保存用户信息。 选择根实体使用户不仅对树中的根实体，而且对位于其下的所有实体都拥有管理员权限。  
-  ![添加拥有管理员访问权限的新用户](.\media\tutorial-user-access\new-admin-access.png)
+  ![在“添加新用户”框中显示管理访问的示例](./media/tutorial-user-access/new-admin-access.png)
 
 ## <a name="create-a-user-with-user-access"></a>创建拥有用户访问权限的用户
 需要访问 Cloudyn 数据（如仪表板和报表）的典型用户应拥有用户访问权限来查看这些内容。 创建拥有用户访问权限的新用户，这与使用管理员访问权限创建的用户类似，不过具有以下差异：
@@ -56,7 +56,7 @@ ms.locfileid: "52275259"
 - 在“用户拥有用户访问权限”列表中选择用户需要访问的实体。
 - 还可以根据需要允许管理员访问特定实体。
 
-![添加拥有用户访问权限的新用户](.\media\tutorial-user-access\new-user-access.png)
+![在“添加新用户”框中显示用户访问的示例](./media/tutorial-user-access/new-user-access.png)
 
 若要观看有关如何添加用户的教程视频，请参阅[将用户添加到 Cloudyn](https://youtu.be/Nzn7GLahx30)。
 
@@ -88,11 +88,11 @@ ms.locfileid: "52275259"
 
 在 Cloudyn 门户中，单击右上方的齿轮符号，然后选择“云帐户”。 从单个实体（根）开始，在根下构建实体树。 下面是树完成之后可能类似于许多 IT 组织的实体层次结构示例：
 
-![实体树](.\media\tutorial-user-access\entity-tree.png)
+![显示在“帐户管理”页上的实体树示例](./media/tutorial-user-access/entity-tree.png)
 
 在“实体”旁，单击“添加实体”。 输入有关要添加的人员或部门的信息。 “全名”和“电子邮件”字段不必与现有用户匹配。 如果要查看访问级别列表，请在帮助中搜索“添加实体”。
 
-![添加实体](.\media\tutorial-user-access\add-entity.png)
+![在“添加实体”框中显示实体名称和访问级别的示例](./media/tutorial-user-access/add-entity.png)
 
 完成后，“保存”实体。
 

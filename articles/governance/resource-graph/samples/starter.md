@@ -1,5 +1,5 @@
 ---
-title: 初学者 Azure 资源图表查询
+title: 初学者查询示例
 description: 使用 Azure 资源图表以运行一些初学者查询。
 services: resource-graph
 author: DCtheGeek
@@ -8,13 +8,13 @@ ms.date: 10/22/2018
 ms.topic: quickstart
 ms.service: resource-graph
 manager: carmonm
-ms.custom: mvc
-ms.openlocfilehash: d5b2bb719bcd5c2145740a02bc408385953ff739
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.custom: seodec18
+ms.openlocfilehash: a1e54c4f78f502c6ae354ecdf4dd3c4b48a3457b
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50084524"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53310175"
 ---
 # <a name="starter-resource-graph-queries"></a>初学者资源图表查询
 

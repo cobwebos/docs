@@ -19,6 +19,7 @@
 ## [使用 PowerShell 将 SQL Server 迁移到 Azure SQL DB](howto-sql-server-to-azure-sql-powershell.md)
 ## [使用 PowerShell 将 SQL Server 迁移到 Azure SQL DB MI](howto-sql-server-to-azure-sql-mi-powershell.md)
 ## [监视迁移活动](how-to-monitor-migration-activity.md)
+## [将 SSIS 包迁移到 Azure](how-to-migrate-ssis-packages.md)
 
 # 资源
 ## [数据库迁移方案状态](resource-scenario-status.md)

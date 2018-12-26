@@ -13,17 +13,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 11/07/2018
+ms.date: 12/04/2018
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: e40c18edadebae1f92cf811ea054503b9cd6b1ae
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: c35c16e1414b1287fa891d1ce1f65ca8eff3d2c5
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51277964"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53434947"
 ---
-# <a name="tutorial-configure-hybrid-azure-active-directory-join-for-federated-domains"></a>教程：为联盟域配置混合 Azure Active Directory 联接
+# <a name="tutorial-configure-hybrid-azure-active-directory-join-for-federated-domains"></a>教程：为联盟域配置混合 Azure Active Directory 加入
 
 与用户类似，设备将成为要保护的另一标识，并且也用于随时保护资源和位置。 为此，可通过下述某一方法将设备的标识引入 Azure AD：
 
@@ -53,9 +53,12 @@ ms.locfileid: "51277964"
 -  [如何控制设备的混合 Azure AD 加入](hybrid-azuread-join-control.md)
 
 
+
 要配置本教程中的方案，需具备以下项：
 
 - 带 AD FS 的 Windows Server 2012 R2
+
+- 架构级别为 85 或更高级别的本地 Active Directory (AD)。 有关详细信息，请参阅[升级 Active Directory 架构](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-device-based-conditional-access-on-premises#upgrade-your-active-directory-schema)。
 
 - [Azure AD Connect](https://www.microsoft.com/download/details.aspx?id=47594) 1.1.819.0 或更高版本。 
  
@@ -167,7 +170,7 @@ ms.locfileid: "51277964"
 
 
     
-必须将以下策略设置为“所有”：“用户可以向 Azure AD 注册其设备”
+以下策略必须设置为 **All**：**用户可以向 Azure AD 注册其设备**
 
 ![注册设备](./media/hybrid-azuread-join-federated-domains/23.png)
 

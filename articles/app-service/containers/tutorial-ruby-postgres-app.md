@@ -1,5 +1,5 @@
 ---
-title: 在基于 Linux 的 Azure 应用服务中生成 Ruby 和 Postgres Web 应用 | Microsoft Docs
+title: 在 Linux 上使用 Postgres 生成 Ruby Web 应用 - Azure 应用服务 | Microsoft Docs
 description: 了解如何创建一个可在 Azure 中运行的 Ruby 应用，并将其连接到 PostgreSQL 数据库。
 services: app-service\web
 documentationcenter: ''
@@ -11,17 +11,17 @@ ms.devlang: ruby
 ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: cephalin
-ms.custom: mvc
-ms.openlocfilehash: 925537b3dff852921aad1e74d009e09fc90c394a
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.custom: seodec18
+ms.openlocfilehash: 247c4f24869901f0f50b081d8f57b7e3841a8e8a
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39445070"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53271022"
 ---
 # <a name="build-a-ruby-and-postgres-web-app-in-azure-app-service-on-linux"></a>在基于 Linux 的 Azure 应用服务中生成 Ruby 和 Postgres Web 应用
 
-[Linux 应用服务](app-service-linux-intro.md)使用 Linux 操作系统，提供高度可缩放的自修补 Web 托管服务。 本教程介绍如何创建 Ruby Web 应用，并将其连接到 PostgreSQL 数据库。 完成本教程后，Linux 上的应用服务将会运行一个 [Ruby on Rails](http://rubyonrails.org/) 应用。
+[Linux 应用服务](app-service-linux-intro.md)使用 Linux 操作系统，提供高度可缩放的自修补 Web 托管服务。 本教程介绍如何创建 Ruby Web 应用，并将其连接到 PostgreSQL 数据库。 完成本教程后，Linux 上的应用服务将会运行一个 [Ruby on Rails](https://rubyonrails.org/) 应用。
 
 ![Azure 应用服务中运行的 Ruby on Rails 应用](./media/tutorial-ruby-postgres-app/complete-checkbox-published.png)
 
@@ -43,7 +43,7 @@ ms.locfileid: "39445070"
 
 * [安装 Git](https://git-scm.com/)
 * [安装 Ruby 2.3](https://www.ruby-lang.org/en/documentation/installation/)
-* [安装 Ruby on Rails 5.1](http://guides.rubyonrails.org/v5.1/getting_started.html)
+* [安装 Ruby on Rails 5.1](https://guides.rubyonrails.org/v5.1/getting_started.html)
 * [安装并运行 PostgreSQL](https://www.postgresql.org/download/)
 
 ## <a name="prepare-local-postgres"></a>准备本地 Postgres
@@ -92,7 +92,7 @@ bundle install --path vendor/bundle
 
 ### <a name="run-the-sample-locally"></a>在本地运行示例
 
-运行 [Rails 迁移](http://guides.rubyonrails.org/active_record_migrations.html#running-migrations)以创建应用程序所需的表。 若要查看迁移中创建了哪些表，请查看 Git 存储库中的 _db/migrate_ 目录。
+运行 [Rails 迁移](https://guides.rubyonrails.org/active_record_migrations.html#running-migrations)以创建应用程序所需的表。 若要查看迁移中创建了哪些表，请查看 Git 存储库中的 _db/migrate_ 目录。
 
 ```bash
 rake db:create
@@ -162,7 +162,7 @@ az postgres server firewall-rule create --resource-group myResourceGroup --serve
 ```
 
 > [!TIP] 
-> 甚至可以让防火墙规则更严格，即[只使用应用所使用的出站 IP 地址](../app-service-ip-addresses.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#find-outbound-ips)。
+> 你甚至可以让防火墙规则更严格，即[只使用应用所使用的出站 IP 地址](../app-service-ip-addresses.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#find-outbound-ips)。
 >
 
 ### <a name="connect-to-production-postgres-server-locally"></a>在本地连接到生产 Postgres 服务器

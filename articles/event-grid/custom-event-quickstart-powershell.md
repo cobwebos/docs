@@ -1,23 +1,24 @@
 ---
-title: 通过 PowerShell 自定义 Azure 事件网格的事件 | Microsoft Docs
-description: 使用 Azure 事件网格和 PowerShell 发布一个主题，然后订阅该事件。
+title: 将自定义事件发送到 Web 终结点 - 事件网格、PowerShell
+description: 使用 Azure 事件网格和 PowerShell 发布自定义主题，然后订阅该主题的事件。 事件由 Web 应用程序处理。
 services: event-grid
 keywords: ''
 author: tfitzmac
 ms.author: tomfitz
-ms.date: 08/23/2018
+ms.date: 12/07/2018
 ms.topic: quickstart
 ms.service: event-grid
-ms.openlocfilehash: 13620fbd6393c747285574cf16b519b9b6a1f324
-ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
+ms.custom: seodec18
+ms.openlocfilehash: 46278d0663cd748f88fcfa13d0688ec89a17bd89
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2018
-ms.locfileid: "42745178"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53096665"
 ---
-# <a name="create-and-route-custom-events-with-azure-powershell-and-event-grid"></a>使用 Azure PowerShell 和事件网格创建和路由自定义事件
+# <a name="quickstart-route-custom-events-to-web-endpoint-with-powershell-and-event-grid"></a>快速入门：使用 PowerShell 和事件网格将自定义事件路由到 Web 终结点
 
-Azure 事件网格是针对云的事件处理服务。 在本文中，请使用 Azure PowerShell 创建一个自定义主题，然后订阅该主题，再触发可查看结果的事件。 通常，你将事件发送到用于处理事件数据并执行操作的终结点。 但是，为了简化本文，你将事件发送到收集并显示消息的 Web 应用。
+Azure 事件网格是针对云的事件处理服务。 在本文中，请使用 Azure PowerShell 创建一个自定义主题，然后订阅该主题，再触发可查看结果的事件。 通常，你会将事件发送到处理事件数据并执行操作的终结点。 但是，为了简化本文，你将事件发送到收集并显示消息的 Web 应用。
 
 完成后即可看到事件数据已发送到 Web 应用。
 
@@ -43,7 +44,7 @@ New-AzureRmResourceGroup -Name gridResourceGroup -Location westus2
 
 ## <a name="create-a-custom-topic"></a>创建自定义主题
 
-事件网格主题提供用户定义的终结点，可向其发布事件。 以下示例在资源组中创建自定义主题。 用主题的唯一名称替换 `<your-topic-name>`。 主题名称必须唯一，因为它是 DNS 条目的一部分。
+事件网格主题提供用户定义的终结点，可向其发布事件。 以下示例在资源组中创建自定义主题。 用主题的唯一名称替换 `<your-topic-name>`。 主题名称必须唯一，因为它是 DNS 条目的一部分。 此外，它必须介于 3 到 50 个字符之间，并且只包含值 a-z、A-Z、0-9 和“-”
 
 ```powershell-interactive
 $topicname="<your-topic-name>"
@@ -53,7 +54,7 @@ New-AzureRmEventGridTopic -ResourceGroupName gridResourceGroup -Location westus2
 
 ## <a name="create-a-message-endpoint"></a>创建消息终结点
 
-在订阅主题之前, 让我们创建事件消息的终结点。 通常情况下，终结点基于事件数据执行操作。 为了简化此快速入门，将部署用于显示事件消息的[预建 Web 应用](https://github.com/Azure-Samples/azure-event-grid-viewer)。 部署的解决方案包括应用服务计划、应用服务 Web 应用和 GitHub 中的源代码。
+在订阅主题之前，让我们创建事件消息的终结点。 通常情况下，终结点基于事件数据执行操作。 为了简化此快速入门，将部署用于显示事件消息的[预建的 Web 应用](https://github.com/Azure-Samples/azure-event-grid-viewer)。 所部署的解决方案包括应用服务计划、应用服务 Web 应用和 GitHub 中的源代码。
 
 将 `<your-site-name>` 替换为 Web 应用的唯一名称。 Web 应用名称必须唯一，因为它是 DNS 条目的一部分。
 
@@ -69,11 +70,11 @@ New-AzureRmResourceGroupDeployment `
 
 部署可能需要几分钟才能完成。 部署成功后，请查看 Web 应用以确保它正在运行。 在 Web 浏览器中导航到 `https://<your-site-name>.azurewebsites.net`
 
-应该看到当前未显示任何消息的站点。
+应会看到站点上当前未显示任何消息。
 
 ## <a name="subscribe-to-a-topic"></a>订阅主题
 
-订阅主题，以告知事件网格要跟踪哪些事件，以及要将这些事件发送到何处。 以下示例将订阅所创建的主题，并将 Web 应用中的 URL 作为事件通知的终结点传递。
+订阅主题，以告知事件网格要跟踪哪些事件以及要将这些事件发送到哪个位置。 以下示例将订阅所创建的主题，并将 Web 应用中的 URL 作为事件通知的终结点传递。
 
 Web 应用的终结点必须包括后缀 `/api/updates/`。
 
@@ -87,7 +88,7 @@ New-AzureRmEventGridSubscription `
   -TopicName $topicname
 ```
 
-再次查看 Web 应用，并注意订阅验证事件已发送给它。 选择眼睛图标以展开事件数据。 事件网格发送验证事件，以便终结点可以验证它是否想要接收事件数据。 Web 应用包含用于验证订阅的代码。
+再次查看 Web 应用，并注意现已向该应用发送了订阅验证事件。 选择眼睛图标以展开事件数据。 事件网格发送验证事件，以便终结点可以验证它是否想要接收事件数据。 Web 应用包含用于验证订阅的代码。
 
 ![查看订阅事件](./media/custom-event-quickstart-powershell/view-subscription-event.png)
 
