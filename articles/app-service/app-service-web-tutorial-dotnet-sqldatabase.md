@@ -136,7 +136,7 @@ ms.locfileid: "53257771"
 
 添加管理员用户名和密码。 有关密码复杂性要求，请参阅[密码策略](/sql/relational-databases/security/password-policy)。
 
-牢记此用户名和密码。 你需要在之后用它们来管理逻辑服务器实例。
+牢记此用户名和密码。 随后，你需要用它们来管理逻辑服务器实例。
 
 > [!IMPORTANT]
 > 虽然连接字符串中的密码已在 Visual Studio 和应用服务中受到屏蔽，但由于它实际上是保留在某个位置，因此增加了应用的受攻击面。 应用服务可以使用[托管服务标识](app-service-managed-service-identity.md)，因此根本不需要将机密保留在代码或应用配置中，这样就消除了上述风险。 有关详细信息，请参阅[后续步骤](#next-steps)。
