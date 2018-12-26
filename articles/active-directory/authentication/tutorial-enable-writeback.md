@@ -1,4 +1,4 @@
----
+﻿---
 title: Azure AD 启用密码写回
 description: 在本教程中，你将启用密码写回（作为 Azure AD Connect 的一部分）以将云发起的密码更改写回到本地 AD。
 services: active-directory
@@ -50,7 +50,7 @@ ms.locfileid: "46295115"
 在 Azure AD Connect 中启用密码写回功能只完成了全部操作的一半。 还要允许 SSPR 使用密码写回，只要这样，更改或重置密码的用户才能同时在本地设置密码。
 
 1. 使用全局管理员帐户登录到 [Azure 门户](https://portal.azure.com)。
-2. 浏览到“Azure Active Directory”，单击“密码重置，然后选择“本地集成”。
+2. 浏览到“Azure Active Directory”，单击“密码重置”，然后选择“本地集成”。
 3. 将“将密码写回到本地目录”选项设置为“是”。
 4. 将“允许用户在不重置密码的情况下解锁帐户”选项设置为“是”。
 5. 单击“保存”
