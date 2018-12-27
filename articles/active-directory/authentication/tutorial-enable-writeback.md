@@ -1,4 +1,4 @@
-﻿---
+---
 title: Azure AD 启用密码写回
 description: 在本教程中，你将启用密码写回（作为 Azure AD Connect 的一部分）以将云发起的密码更改写回到本地 AD。
 services: active-directory
