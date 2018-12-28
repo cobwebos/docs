@@ -16,12 +16,12 @@ ms.workload: big-compute
 ms.date: 04/24/2017
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 65f8eb0752a181eda312515e557bb733c091e2e5
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: fd511a8a9d17bf79f1237bbfe2dc2ddbc5ec1b2e
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39505373"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52867420"
 ---
 # <a name="manage-batch-accounts-and-quotas-with-the-batch-management-client-library-for-net"></a>通过用于 .NET 的 Batch Management 客户端库管理 Batch 帐户和配额
 
@@ -153,7 +153,7 @@ Batch 管理 .NET 库是 Azure 资源提供程序客户端，与 [Azure 资源�
 
 ## <a name="sample-project-on-github"></a>GitHub 上的示例项目
 
-查看 GitHub 上的 [AccountManagment][acct_mgmt_sample] 示例项目，了解 Batch Management .NET 的操作实践。 AccountManagment 示例应用程序演示了以下操作：
+查看 GitHub 上的 [AccountManagement][acct_mgmt_sample] 示例项目，了解 Batch Management .NET 的操作实践。 AccountManagement 示例应用程序演示了以下操作：
 
 1. 使用 [ADAL][aad_adal] 从 Azure AD 获取安全令牌。 如果用户尚未登录，系统会提示其输入 Azure 凭据。
 2. 使用从 Azure AD 获取的安全令牌创建 [SubscriptionClient][resman_subclient]，以便在 Azure 中查询与帐户关联的订阅列表。 如果列表包含多个订阅，则用户可从中选择一个订阅。

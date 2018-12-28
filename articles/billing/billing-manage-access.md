@@ -1,6 +1,6 @@
 ---
 title: 管理对 Azure 账单信息的访问权限 | Microsoft Docs
-description: ''
+description: 了解如何向团队成员提供对 Azure 帐单信息的访问权限。
 services: ''
 documentationcenter: ''
 author: vikramdesai01
@@ -15,12 +15,13 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/02/2018
 ms.author: cwatson
-ms.openlocfilehash: 7a4e19ae5bf770949623f4cee7fa0d3033ccfa29
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.custom: seodec18
+ms.openlocfilehash: a15d055505ca0f28ad28b477e90e6fe859cc9ac7
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52582609"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53094281"
 ---
 # <a name="manage-access-to-billing-information-for-azure"></a>管理对 Azure 账单信息的访问权限
 
@@ -72,9 +73,10 @@ ms.locfileid: "52582609"
 
 1. 选择“访问控制 (IAM)”。
 1. 选择“角色分配”以查看此订阅的所有角色分配。
-1. 选择“添加” > “添加角色分配”。
+1. 选择“添加角色分配”。
 1. 在“角色”下拉列表中，选择“账单读取者”。
 1. 在“选择”文本框中，键入要添加的用户的名称或电子邮件。
+1. 选择用户。
 1. 选择“保存”。
 1. 片刻之后，会在订阅范围内为该用户分配“账单读取者”角色。
 1. 账单读取者会收到一封电子邮件，其中包含登录链接。
@@ -104,4 +106,4 @@ ms.locfileid: "52582609"
 
 ## <a name="need-help-contact-us"></a>需要帮助？ 请联系我们。
 
-如果你有任何疑问或需要帮助，请[创建支持请求](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)。
+如有任何疑问或需要帮助，请[创建支持请求](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)。

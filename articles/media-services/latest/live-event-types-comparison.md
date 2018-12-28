@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: juliako
-ms.openlocfilehash: 7ff48962d01a83e8c9fce380d92fbc196ff96533
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: 2dbc2b4e316155e880d3baa900196d5cdd31be72
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52585376"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53011770"
 ---
 # <a name="liveevent-types-comparison"></a>LiveEvent 类型比较
 
@@ -28,7 +28,7 @@ ms.locfileid: "52585376"
 
 下表比较了两种 LiveEvent 类型的功能。
 
-| 功能 | 直通 LiveEvent | 标准（基本）LiveEvent |
+| Feature | 直通 LiveEvent | 标准（基本）LiveEvent |
 | --- | --- | --- |
 | 单比特率输入在云中被编码为多比特率 |否 |是 |
 | 贡献源的最大视频分辨率 |4K（4096x2160，60 帧/秒） |1080p（1920x1088，30 帧/秒）|
@@ -42,9 +42,10 @@ ms.locfileid: "52585376"
 | 支持的视频位深、输入和输出|最多 10 位，包括 HDR 10/HLG|8 位|
 | 支持的输入音频编解码器|AAC-LC、HE-AAC v1、HE-AAC v2|AAC-LC、HE-AAC v1、HE-AAC v2|
 | 支持的输出音频编解码器|与输入相同|AAC-LC|
+| 输出视频的最大视频分辨率|与输入相同|720p（速率为 30 帧/秒）|
 | 输入协议|RTMP、分段 MP4（平滑流式处理）|RTMP、分段 MP4（平滑流式处理）|
 | 价格|请参阅[定价页](https://azure.microsoft.com/pricing/details/media-services/)并单击“实时视频”选项卡|请参阅[定价页](https://azure.microsoft.com/pricing/details/media-services/)并单击“实时视频”选项卡|
-| 最长运行时间|24x365 实时线性|24x7|
+| 最长运行时间|24x365 实时线性|全天候运行|
 | 传递嵌入式 CEA 608/708 字幕数据的能力|是|是|
 | 支持插入静态图像|否|否|
 | 支持通过 API 发出广告指示| 否|否|
@@ -56,4 +57,4 @@ ms.locfileid: "52585376"
 
 ## <a name="next-steps"></a>后续步骤
 
-[实时流式处理概述](live-streaming-overview.md)
+[实时传送视频流概述](live-streaming-overview.md)

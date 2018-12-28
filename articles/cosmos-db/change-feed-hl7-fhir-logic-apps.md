@@ -1,21 +1,19 @@
 ---
-title: 更改 HL7 FHIR 资源的源 - Azure Cosmos DB | Microsoft Docs
+title: 适用于 HL7 FHIR 资源的更改源 - Azure Cosmos DB
 description: 了解如何使用 Azure 逻辑应用、Azure Cosmos DB 和服务总线设置 HL7 FHIR 患者卫生保健记录的更改通知。
 keywords: hl7 fhir
 services: cosmos-db
 author: SnehaGunda
-manager: kfile
 ms.service: cosmos-db
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/08/2017
 ms.author: sngun
-ms.openlocfilehash: aab6e5247830ee444bcab0b15bda34e4464aaad1
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: 5cc6bdfa9c16a6dfbdd0f6c87873a90b2a203169
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51565473"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53089218"
 ---
 # <a name="notifying-patients-of-hl7-fhir-health-care-record-changes-using-logic-apps-and-azure-cosmos-db"></a>使用逻辑应用和 Azure Cosmos DB 通知患者 HL7 FHIR 医疗保健记录的更改
 
@@ -25,7 +23,7 @@ ms.locfileid: "51565473"
 
 ## <a name="project-requirements"></a>项目要求
 - 提供程序需发送 XML 格式的 HL7 综合临床文档架构 (C-CDA) 文档。 C-CDA 文档差不多包含每种类型的临床文档，包括家族病史和免疫记录等临床文档，以及管理、工作流和财务文档。 
-- 将 C-CDA 文档转换为 JSON 格式的 [HL7 FHIR 资源](http://hl7.org/fhir/2017Jan/resourcelist.html)。
+- 将 C-CDA 文档转换为 JSON 格式的 [HL7 FHIR 资源](https://hl7.org/fhir/2017Jan/resourcelist.html)。
 - 通过电子邮件发送 JSON 格式的修改后的 FHIR 资源文档。
 
 ## <a name="solution-workflow"></a>解决方案工作流 
@@ -40,9 +38,9 @@ ms.locfileid: "51565473"
 
 ## <a name="solution-architecture"></a>解决方案体系结构
 此解决方案需要三个逻辑应用才能满足上述要求并完成解决方案工作流。 这三个逻辑应用包括：
-1. HL7-FHIR-Mapping 应用：接收 HL7 C-CDA 文档，将其转换为 FHIR资源，然后保存到 Azure Cosmos DB。
-2. EHR 应用：查询 Azure Cosmos DB FHIR 存储库，并将响应保存到服务总线队列。 此逻辑应用使用 [API 应用](#api-app)检索新的和更改后的文档。
-3. **进程通知应用**：发送电子邮件通知，正文中包括 FHIR 资源文档。
+1. **HL7-FHIR-Mapping 应用**：接收 HL7 C-CDA 文档，将其转换为 FHIR 资源，然后保存到 Azure Cosmos DB。
+2. **EHR 应用**：查询 Azure Cosmos DB FHIR 存储库，并将响应保存到服务总线队列。 此逻辑应用使用 [API 应用](#api-app)检索新的和更改后的文档。
+3. **进程通知应用**：发送正文中包含 FHIR 资源文档的电子邮件通知。
 
 ![此 HL7 FHIR 医疗保健解决方案中使用的三个逻辑应用](./media/change-feed-hl7-fhir-logic-apps/health-care-solution-hl7-fhir.png)
 
@@ -64,11 +62,11 @@ ms.locfileid: "51565473"
     ![用于接收 HL7 FHIR 医疗保健记录的逻辑应用](./media/change-feed-hl7-fhir-logic-apps/hl7-fhir-logic-apps-json-transform.png)
 
 
-2. EHR 应用：查询 Azure Cosmos DB FHIR 存储库，并将响应保存到服务总线队列。 下面是 GetNewOrModifiedFHIRDocuments 应用的代码。
+2. **EHR 应用**：查询 Azure Cosmos DB FHIR 存储库，并将响应保存到服务总线队列。 下面是 GetNewOrModifiedFHIRDocuments 应用的代码。
 
     ![用于查询 Azure Cosmos DB 的逻辑应用](./media/change-feed-hl7-fhir-logic-apps/hl7-fhir-logic-apps-api-app.png)
 
-3. **进程通知应用**：发送电子邮件通知，正文中包括 FHIR 资源文档。
+3. **进程通知应用**：发送正文中包含 FHIR 资源文档的电子邮件通知。
 
     ![向患者发送电子邮件（正文中包括 HL7 FHIR 资源）的逻辑应用](./media/change-feed-hl7-fhir-logic-apps/hl7-fhir-logic-apps-send-email.png)
 
@@ -91,7 +89,7 @@ API 应用将连接到 Azure Cosmos DB，并按资源类型查询新的或修改
 - 集合 ID
 - HL7 FHIR 资源类型名称
 - 布尔：从头开始
-- 整型：返回的文档数目
+- Int：返回的文档数
 
 **输出**
 - 成功：状态代码：200，响应：文档列表（JSON 数组）

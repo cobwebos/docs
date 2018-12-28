@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 09/24/2018
 ms.author: wolfma
-ms.openlocfilehash: 3394fc2f6395799a252b645635d982b4573296c6
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 31482cc7850c574b952c454021af729da324ba15
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47000699"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52978744"
 ---
 <!-- N.B. no header, no intents here, language-agnostic -->
 
@@ -21,7 +21,7 @@ ms.locfileid: "47000699"
 
 1. 如果需要，可捆绑事件以进行异步操作。 然后，识别器将在其具有中间和最终结果时调用事件处理程序。 否则，应用程序将只收到最终听录结果。
 
-1. 开始识别。 对于单次识别（例如命令或查询识别），请使用 `RecognizeOnceAsync()` 方法。 此方法返回第一个已识别的话语。 对于长时间运行的识别（例如听录），请使用 `StartContinuousRecognitionAsync()` 方法。 捆绑事件以获得异步识别结果。
+1. 开始识别。 对于单次识别（例如命令或查询识别），请使用 `RecognizeOnceAsync()`（或语言等效）方法。 此方法返回第一个已识别的话语。 对于长时间运行的识别（例如听录），请使用 `StartContinuousRecognitionAsync()`（或语言等效）方法。 捆绑事件以获得异步识别结果。
 
 有关使用语音 SDK 的语音识别方案，请参阅以下代码片段。
 

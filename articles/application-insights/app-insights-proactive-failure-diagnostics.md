@@ -9,17 +9,16 @@ ms.assetid: ea2a28ed-4cd9-4006-bd5a-d4c76f4ec20b
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/09/2017
 ms.reviewer: yossiy
 ms.author: mbullwin
-ms.openlocfilehash: 8394584b2b4f8cbc47a6fdaadd754e8649c3f794
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 0895d31475de5d78c82f3bfedc0765e5a9549339
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50960916"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52877592"
 ---
 # <a name="smart-detection---failure-anomalies"></a>智能检测 - 失败异常
 如果 Web 应用的失败请求速率出现异常上升，[Application Insights](app-insights-overview.md) 会几乎实时地自动通知你。 它会对 HTTP 请求速率或报告为失败的依赖项调用的异常上升进行检测。 对于请求而言，失败的请求通常是响应代码为 400 或更高的请求。 为了帮助会审和诊断问题，通知中会提供失败及相关遥测的特征分析。 还提供指向 Application Insights 门户的链接，以供进一步诊断。 该功能不需要任何设置或配置，因为它使用机器学习算法来预测正常的失败率。
@@ -92,7 +91,7 @@ ms.locfileid: "50960916"
 
 若要进一步调查，每个部分中的链接可直接转到[搜索页](app-insights-diagnostic-search.md)，该页面已针对相关请求、异常、依赖项或跟踪进行筛选。 或者，可以打开 [Azure 门户](https://portal.azure.com)，导航到应用的 Application Insights 资源并打开“失败”边栏选项卡。
 
-在此示例中，单击“查看依赖项失败详细信息”链接将打开 Application Insights 搜索边栏选项卡。 它显示包含根本原因的示例的 SQL 语句：在必填字段提供 NULL，并且在保存操作期间未通过验证。
+在此示例中，单击“查看依赖项失败详细信息”链接将打开 Application Insights 搜索边栏选项卡。 它显示具有根本原因示例的 SQL 语句：在必填字段中提供了 NULL，并且在保存操作期间未通过验证。
 
 ![诊断搜索](./media/app-insights-proactive-failure-diagnostics/051.png)
 
@@ -147,7 +146,7 @@ ms.locfileid: "50960916"
 
 * [指标资源管理器](app-insights-metrics-explorer.md)
 * [搜索资源管理器](app-insights-diagnostic-search.md)
-* [分析 - 功能强大的查询语言](../log-analytics/query-language/get-started-analytics-portal.md)
+* [分析 - 功能强大的查询语言](../azure-monitor/log-query/get-started-portal.md)
 
 智能检测是完全自动执行的。 但是或许你想要设置更多的警报？
 

@@ -9,12 +9,12 @@ ms.component: custom-translator
 ms.date: 11/13/2018
 ms.author: v-rada
 ms.topic: conceptual
-ms.openlocfilehash: fef4ecd207fd32b5a92a4c072832f3ab45b58300
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 74b421691f5d3536c44af16e99dc54451dfde3f7
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51626725"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52872758"
 ---
 # <a name="document-formats-and-naming-convention-guidance"></a>文档格式和命名约定指南
 
@@ -43,11 +43,13 @@ ms.locfileid: "51626725"
 
 可将文档组合到单个 zip 文件并上传。 自定义翻译支持 zip 文件格式（ZIP、GZ 和 TGZ）。
 
-zip 文件中的每个文档必须遵循以下命名约定：
+扩展名为 TXT、HTML、HTM、PDF、DOCX、ALIGN 的 zip 文件中的每个文档都必须遵循以下命名约定：
 
 {document name}\_{language code}：其中，{document name} 是文档的名称，{language code} 是 ISO 语言 ID（两个字符），指示文档包含采用该语言的句子。 语言代码的前面必须有下划线 (_)。
 
 例如，若要在 zip 中为英语到西班牙语翻译系统上传两个并行文档，则应将文件命名为“data_en”和“data_es”。
+
+无需翻译记忆库文件（TMX、XLF、XLIFF、LCL、XLSX）即可遵循特定的语言命名约定。  
 
 ## <a name="next-steps"></a>后续步骤
 

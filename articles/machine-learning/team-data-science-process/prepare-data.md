@@ -1,6 +1,6 @@
 ---
-title: 清理和准备 Azure 机器学习的数据 | Microsoft 文档
-description: 预处理和清理数据以为机器学习做准备。
+title: 清理和准备 Azure 机器学习的数据 - Team Data Science Process
+description: 预处理和清理数据，使其有效地用于机器学习。
 services: machine-learning
 author: marktab
 manager: cgronlun
@@ -10,13 +10,13 @@ ms.component: team-data-science-process
 ms.topic: article
 ms.date: 11/09/2017
 ms.author: tdsp
-ms.custom: (previous author=deguhath, ms.author=deguhath)
-ms.openlocfilehash: 52457e19cede5d8d2b74d9c3d81ebf35e3ad06c4
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: a926edc3409290a0e8cd89fd909427833f9e1427
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52446554"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53134363"
 ---
 # <a name="tasks-to-prepare-data-for-enhanced-machine-learning"></a>用于准备数据以进行增强型机器学习的任务
 预处理和清理数据是重要的任务，通常必须先执行此任务才能有效地使用数据集进行机器学习。 原始数据通常具有干扰性且不可靠，还可能缺少值。 使用此类数据进行建模会产生误导性结果。 这些任务是 Team Data Science Process (TDSP) 的一部分，通常对用于发现和计划所需预处理的数据集进行初步探索。 有关 TDSP 过程的详细说明，请参阅 [Team Data Science Process](overview.md) 中概述的步骤。
@@ -74,7 +74,7 @@ ms.locfileid: "52446554"
 ## <a name="how-to-normalize-data"></a>如何规范化数据？
 数据规范化将数值重新调整到指定范围。 常用的数据规范化方法包括：
 
-* **最小 - 最大值规范化**：将数据线性转换到某一范围（例如 0 和 1 之间），这会最小值缩放为 0，最大值缩放为 1。
+* **最小 - 最大值规范化**：将数据线性转换到某一范围（例如 0 和 1 之间），这会将最小值缩放为 0，最大值缩放为 1。
 * **Z 分数规范化**：基于平均值和标准偏差缩放数据：将数据和平均值之间的差除以标准偏差。
 * **小数缩放**：通过移动属性值的小数点缩放数据。  
 

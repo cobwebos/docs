@@ -1,5 +1,5 @@
 ---
-title: 语音设备 SDK 入门
+title: 语音设备 SDK 入门 - 语音服务
 titleSuffix: Azure Cognitive Services
 description: 语音设备 SDK 入门的先决条件和说明。
 services: cognitive-services
@@ -8,18 +8,19 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: conceptual
-ms.date: 05/18/2018
+ms.date: 12/06/2018
 ms.author: erhopf
-ms.openlocfilehash: e035e1bdedefc8e327b0179006b45f3bad4c41ee
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.custom: seodec18
+ms.openlocfilehash: 46f7762a815a7fa4aa4663d9ac6e7c6001ea345c
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49470194"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53097176"
 ---
 # <a name="get-started-with-the-speech-devices-sdk"></a>语音设备 SDK 入门
 
-本文介绍如何使用语音设备 SDK 配置开发电脑和语音设备开发工具包，以开发支持语音的设备。 然后，将生成示例应用程序并将其部署到设备。 
+本文介绍如何使用语音设备 SDK 配置开发电脑和语音设备开发工具包，以开发支持语音的设备。 然后，将生成示例应用程序并将其部署到设备。
 
 示例应用程序的源代码随附在语音设备 SDK 中， 也可在 [GitHub 上获取](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK)。
 
@@ -40,7 +41,7 @@ ms.locfileid: "49470194"
 
 * 获取[语音服务订阅密钥](get-started.md)。 可获取 30 天免费试用版，或从 Azure 仪表板获取密钥。
 
-* 如果想要使用语音服务的意向识别，请订阅[语言理解服务](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/) (LUIS) 并[获取订阅密钥](https://docs.microsoft.com/azure/cognitive-services/luis/azureibizasubscription)。 
+* 如果想要使用语音服务的意向识别，请订阅[语言理解服务](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/) (LUIS) 并[获取订阅密钥](https://docs.microsoft.com/azure/cognitive-services/luis/azureibizasubscription)。
 
     可[创建一个简单的 LUIS 模型](https://docs.microsoft.com/azure/cognitive-services/luis/)，或使用示例 LUIS 模型 LUIS-example.json。 可从[语音设备 SDK 下载站点](https://shares.datatransfer.microsoft.com/)获取示例 LUIS 模型。 选择“导入新应用”并选择 JSON 文件，将模型的 JSON 文件上传到 [LUIS 门户](https://www.luis.ai/home)。
 
@@ -64,9 +65,9 @@ ms.locfileid: "49470194"
 1. 安装证书和唤醒字（关键字）表文件，并设置声音设备的权限。 在命令提示符窗口中键入以下命令：
 
    ```
-   adb push C:\SDSDK\Android-Sample-Release\scripts\roobo_setup.sh /data/ 
+   adb push C:\SDSDK\Android-Sample-Release\scripts\roobo_setup.sh /data/
    adb shell
-   cd /data/ 
+   cd /data/
    chmod 777 roobo_setup.sh
    ./roobo_setup.sh
    exit
@@ -77,34 +78,34 @@ ms.locfileid: "49470194"
 
     > [!TIP]
     > 将电脑的麦克风和扬声器调为静音，以确保使用开发工具包的麦克风。 这可以避免电脑中的音频意外触发设备。
-    
+
 1.  在计算机上启动 Vysor。
 
     ![Vysor](media/speech-devices-sdk/qsg-3.png)
 
-1.  你的设备应列在“选择设备”下。 选择设备旁边的“视图”按钮。 
- 
+1.  你的设备应列在“选择设备”下。 选择设备旁边的“视图”按钮。
+
 1.  选择文件夹图标，然后选择“设置” > “WLAN”连接到无线网络。
 
     ![Vysor WLAN](media/speech-devices-sdk/qsg-4.png)
- 
+
     > [!NOTE]
-    > 如果你的公司有关于将设备连接到 Wi-Fi 系统的政策，则你需要获取 MAC 地址并联系 IT 部门来了解如何将它连接到公司的 Wi-Fi。 
+    > 如果你的公司有关于将设备连接到 Wi-Fi 系统的政策，则你需要获取 MAC 地址并联系 IT 部门来了解如何将它连接到公司的 Wi-Fi。
     >
     > 若要查找开发工具包的 MAC 地址，请在开发工具包的桌面上选择文件夹图标。
     >
     >  ![Vysor 文件夹](media/speech-devices-sdk/qsg-10.png)
     >
-    > 选择“设置”。 搜索“mac 地址”，然后选择“Mac 地址” > “高级 WLAN”。 记下对话框底部附近显示的 MAC 地址。 
+    > 选择“设置”。 搜索“mac 地址”，然后选择“Mac 地址” > “高级 WLAN”。 记下对话框底部附近显示的 MAC 地址。
     >
     > ![Vysor MAC 地址](media/speech-devices-sdk/qsg-11.png)
     >
     > 某些公司可能会限制设备可以连接到其 Wi-Fi 系统的时长。 在一定的天数后，可能需要延长开发工具包在 Wi-Fi 系统中的注册。
-    > 
+    >
     > 如果希望将扬声器连接到开发工具包，可将其连接到音频线路输出。应选择优质的 3.5-mm 扬声器。
     >
     > ![Vysor 音频](media/speech-devices-sdk/qsg-14.png)
- 
+
 ## <a name="run-a-sample-application"></a>运行示例应用程序
 
 若要运行 ROOBO 测试并验证开发工具包设置，请生成并安装示例应用程序：
@@ -114,10 +115,10 @@ ms.locfileid: "49470194"
 1.  选择“打开现有 Android Studio 项目”。
 
     ![Android Studio - 打开现有项目](media/speech-devices-sdk/qsg-5.png)
- 
+
 1.  转到 C:\SDSDK\Android-Sample-Release\example。 选择“确定”打开示例项目。
- 
-1.  将语音订阅密钥添加到源代码。 如果想要尝试意向识别，还需要添加[语言理解服务](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/)订阅密钥和应用程序 ID。 
+
+1.  将语音订阅密钥添加到源代码。 如果想要尝试意向识别，还需要添加[语言理解服务](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/)订阅密钥和应用程序 ID。
 
     密钥和应用程序信息位于源文件 MainActivity.java 中的以下几行中：
 
@@ -135,7 +136,7 @@ ms.locfileid: "49470194"
     还可以[创建自定义唤醒字](speech-devices-sdk-create-kws.md)。
 
     安装要使用的唤醒字：
- 
+
     * 在命令提示符窗口中运行以下命令，在设备上的 data 文件夹中创建 keyword 文件夹：
 
         ```
@@ -152,9 +153,9 @@ ms.locfileid: "49470194"
         adb push C:\SDSDK\Android-Sample-Release\keyword\Computer\kws_k.fst /data/keyword
         adb push C:\SDSDK\Android-Sample-Release\keyword\Computer\words_kw.txt /data/keyword
         ```
-    
+
     * 在示例应用程序中引用这些文件。 在 MainActivity.java 中找到以下行。 确保指定的关键字是正在使用的关键字，并且路径指向推送到设备的 `kws.table` 文件。
-        
+
         ```java
         private static final String Keyword = "Computer";
         private static final String KeywordModel = "/data/keyword/kws.table";
@@ -175,7 +176,7 @@ ms.locfileid: "49470194"
     private static final String SelectedGeometry = "Circular6+1";
     ```
     下表描述了可用的值：
-    
+
     |变量|含义|可用值|
     |--------|-------|----------------|
     |`DeviceGeometry`|物理麦克风配置|环形开发工具包：`Circular6+1` |
@@ -186,12 +187,12 @@ ms.locfileid: "49470194"
     |||使用两个麦克风的线性开发工具包：`Linear2`|
 
 
-1.  若要生成应用程序，请在“运行”菜单中选择“运行‘应用’”。 此时会显示“选择部署目标”对话框。 
+1.  若要生成应用程序，请在“运行”菜单中选择“运行‘应用’”。 此时会显示“选择部署目标”对话框。
 
 1. 选择设备，然后选择“确定”，将应用程序部署到设备。
 
     ![“选择部署目标”对话框](media/speech-devices-sdk/qsg-7.png)
- 
+
 1.  语音设备 SDK 示例应用程序将会启动，并显示以下选项：
 
     ![示例语音设备 SDK 的示例应用程序和选项](media/speech-devices-sdk/qsg-8.png)
@@ -208,12 +209,12 @@ ms.locfileid: "49470194"
 
     ![在“设置”下选择“日期和时间”](media/speech-devices-sdk/qsg-12.png)
 
-1. 将“自动日期和时间”选项保持选中状态。 在“选择时区”下，选择你的当前时区。 
+1. 将“自动日期和时间”选项保持选中状态。 在“选择时区”下，选择你的当前时区。
 
     ![选择日期和时区选项](media/speech-devices-sdk/qsg-13.png)
 
-    看到开发工具包的时间与电脑上的时间匹配时，表示开发工具包已连接到 Internet。 
-    
+    看到开发工具包的时间与电脑上的时间匹配时，表示开发工具包已连接到 Internet。
+
     有关更多开发信息，请参阅 [ROOBO 开发指南](http://dwn.roo.bo/server_upload/ddk/ROOBO%20Dev%20Kit-User%20Guide.pdf)。
 
 ### <a name="audio"></a>音频

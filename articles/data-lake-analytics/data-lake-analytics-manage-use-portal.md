@@ -9,12 +9,12 @@ ms.reviewer: jasonwhowell
 ms.assetid: a0e045f1-73d6-427f-868d-7b55c10f811b
 ms.topic: conceptual
 ms.date: 12/05/2016
-ms.openlocfilehash: 1d49403ec04b2ec35291869385c316cb5ab3b0da
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 8b2f16f45be1d095e9be8042611de328af36f064
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43044902"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52724054"
 ---
 # <a name="manage-azure-data-lake-analytics-using-the-azure-portal"></a>使用 Azure 门户管理 Azure Data Lake Analytics
 [!INCLUDE [manage-selector](../../includes/data-lake-analytics-selector-manage.md)]
@@ -32,11 +32,11 @@ ms.locfileid: "43044902"
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 2. 单击“创建资源” > “智能 + 分析” > “Data Lake Analytics”。
 3. 为以下项选择值： 
-   1. 名称：Data Lake Analytics 帐户的名称。
-   2. 订阅：用于帐户的 Azure 订阅。
-   3. 资源组：要在其中创建帐户的 Azure 资源组。 
-   4. 位置：Data Lake Analytics 帐户的 Azure 数据中心。 
-   5. Data Lake Store：要用于 Data Lake Analytics 帐户的默认存储。 Azure Data Lake Store 帐户和 Data Lake Analytics 帐户必须位于同一位置。
+   1. **名称**：Data Lake Analytics 帐户的名称。
+   2. **订阅**：用于帐户的 Azure 订阅。
+   3. **资源组**：要在其中创建帐户的 Azure 资源组。 
+   4. **位置**：Data Lake Analytics 帐户的 Azure 数据中心。 
+   5. **Data Lake Store**：用于 Data Lake Analytics 帐户的默认存储。 Azure Data Lake Store 帐户和 Data Lake Analytics 帐户必须位于同一位置。
 4. 单击“创建”。 
 
 ### <a name="delete-a-data-lake-analytics-account"></a>删除 Data Lake Analytics 帐户
@@ -98,9 +98,9 @@ Data Lake Analytics 支持以下数据源：
 与其他 Azure 服务一样，可使用基于角色的访问控制 (RBAC) 来控制用户与服务交互的方式。
 
 标准 RBAC 角色具有以下功能：
-* 所有者：可提交作业、监视作业、从任何用户取消作业以及配置帐户。
-* 参与者：可提交作业、监视作业、从任何用户取消作业以及配置帐户。
-* 读者：可监视作业。
+* **所有者**：可提交作业、监视作业、取消来自任何用户的作业以及配置帐户。
+* **参与者**：可提交作业、监视作业、取消来自任何用户的作业以及配置帐户。
+* **读者**：可以监视作业。
 
 使用 Data Lake Analytics 开发人员角色使 U-SQL 开发人员能够使用 Data Lake Analytics 服务。 可使用 Data Lake Analytics 开发人员角色执行以下操作：
 * 提交作业。
@@ -111,7 +111,7 @@ Data Lake Analytics 支持以下数据源：
 ### <a name="add-users-or-security-groups-to-a-data-lake-analytics-account"></a>将用户或安全组添加到 Data Lake Analytics 帐户
 
 1. 在 Azure 门户中转到 Data Lake Analytics 帐户。
-2. 单击“访问控制 (IAM)” > “添加”。
+2. 单击“访问控制 (IAM)” > “添加角色分配”。
 3. 选择角色。
 4. 添加用户。
 5. 单击“确定”。
@@ -131,9 +131,9 @@ Data Lake Analytics 支持以下数据源：
 
 2. 单击“新建作业”。 对每个作业配置以下各项：
 
-    1. 作业名称：作业的名称。
-    2. 优先级：数字越小优先级越高。 如果队列有两个作业，将先运行优先级值低的作业。
-    3. 并行：为此作业保留的最大计算进程数。
+    1. **作业名称**：作业的名称。
+    2. **优先级**：数字越小，优先级越高。 如果队列有两个作业，将先运行优先级值低的作业。
+    3. **并行度**：为此作业保留的最大计算进程数。
 
 3. 单击“提交”。
 

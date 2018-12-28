@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: hrasheed
-ms.openlocfilehash: 24fecd73876228b3665cde21ae312963ec979df6
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 5ef7ddc068fea7703dad67b80b96c292bfd26943
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51279691"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52870693"
 ---
 # <a name="customize-linux-based-hdinsight-clusters-using-script-actions"></a>使用脚本操作自定义基于 Linux 的 HDInsight 群集
 
@@ -111,7 +111,7 @@ HDInsight 提供一个称为**脚本操作**的配置方法，该方法可调用
 脚本在配置 HDInsight 时运行。 脚本在群集中的所有指定节点上并行运行，并且在节点上使用 root 权限运行。
 
 > [!NOTE]
-> 可以执行停止和启动服务（包括 Hadoop 相关服务）等操作。 如果停止服务，必须确保 Ambari 服务及其他 Hadoop 相关服务在脚本完成运行之前正在运行。 这些服务必须在群集创建时，成功地确定群集的运行状况和状态。
+> 可以执行停止和启动服务（包括 Apache Hadoop 相关服务）等操作。 如果停止服务，必须确保 Ambari 服务及其他 Hadoop 相关服务在脚本完成运行之前正在运行。 这些服务必须在群集创建时，成功地确定群集的运行状况和状态。
 
 
 在创建群集期间，可以同时使用多个脚本操作。 按照这些脚本的指定顺序调用它们。
@@ -160,7 +160,7 @@ HDInsight 提供了脚本用于在 HDInsight 群集上安装以下组件：
 | **安装 Solr** |https://hdiconfigactions.blob.core.windows.net/linuxsolrconfigactionv01/solr-installer-v01.sh。请参阅 [在 HDInsight 群集上安装并使用 Solr](hdinsight-hadoop-solr-install-linux.md). |
 | **安装 Giraph** |https://hdiconfigactions.blob.core.windows.net/linuxgiraphconfigactionv01/giraph-installer-v01.sh。请参阅 [在 HDInsight 群集上安装并使用 Giraph](hdinsight-hadoop-giraph-install-linux.md). |
 | **预加载 Hive 库** |https://hdiconfigactions.blob.core.windows.net/linuxsetupcustomhivelibsv01/setup-customhivelibs-v01.sh。请参阅 [在 HDInsight 群集上添加 Hive 库](hdinsight-hadoop-add-hive-libraries.md). |
-| **安装或更新 Mono** | https://hdiconfigactions.blob.core.windows.net/install-mono/install-mono.bash。 请参阅 [在 HDInsight 上安装或更新 Mono](hdinsight-hadoop-install-mono.md). |
+| **安装或更新 Mono** | https://hdiconfigactions.blob.core.windows.net/install-mono/install-mono.bash。  请参阅 [在 HDInsight 上安装或更新 Mono](hdinsight-hadoop-install-mono.md). |
 
 ## <a name="use-a-script-action-during-cluster-creation"></a>在创建群集期间使用脚本操作
 
@@ -168,7 +168,7 @@ HDInsight 提供了脚本用于在 HDInsight 群集上安装以下组件：
 
 ### <a name="use-a-script-action-during-cluster-creation-from-the-azure-portal"></a>在创建群集期间从 Azure 门户使用脚本操作
 
-1. 根据[在 HDInsight 中创建 Hadoop 群集](hdinsight-hadoop-provision-linux-clusters.md)中的说明开始创建群集。 创建群集期间，你将到达__群集摘要__页。 从“群集摘要”页中选择__高级设置__的__编辑__链接。
+1. 根据[在 HDInsight 中创建 Apache Hadoop 群集](hdinsight-hadoop-provision-linux-clusters.md)中的说明开始创建群集。 创建群集期间，你将到达__群集摘要__页。 从“群集摘要”页中选择__高级设置__的__编辑__链接。
 
     ![高级设置链接](./media/hdinsight-hadoop-customize-cluster-linux/advanced-settings-link.png)
 
@@ -402,17 +402,17 @@ HDInsight .NET SDK 提供客户端库，可简化从 .NET 应用程序中使用 
 
 ## <a name="support-for-open-source-software-used-on-hdinsight-clusters"></a>支持 HDInsight 群集上使用的开放源代码软件
 
-Microsoft Azure HDInsight 服务使用围绕 Hadoop 构建的开源技术生态系统。 Microsoft Azure 为开源技术提供常规级别的支持。 有关详细信息，请参阅 [Azure 支持常见问题解答网站](https://azure.microsoft.com/support/faq/)的“支持范围”部分。 HDInsight 服务为内置组件提供附加的支持级别。
+Microsoft Azure HDInsight 服务使用围绕 Apache Hadoop 构建的开源技术生态系统。 Microsoft Azure 为开源技术提供常规级别的支持。 有关详细信息，请参阅 [Azure 支持常见问题解答网站](https://azure.microsoft.com/support/faq/)的“支持范围”部分。 HDInsight 服务为内置组件提供附加的支持级别。
 
 HDInsight 服务中有两种类型的开放源代码组件：
 
-* **内置组件** - 这些组件预先安装在 HDInsight 群集上，并提供在群集的核心功能。 例如，Yarn ResourceManager、Hive 查询语言 (HiveQL) 及 Mahout 库均属于此类别。 [HDInsight 提供的 Hadoop 群集版本有哪些新功能](hdinsight-component-versioning.md)中提供了群集组件的完整列表。
+* **内置组件** - 这些组件预先安装在 HDInsight 群集上，并提供在群集的核心功能。 例如，[Apache Hadoop YARN](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html) ResourceManager、Hive 查询语言 ([HiveQL](https://cwiki.apache.org/confluence/display/Hive/LanguageManual)) 及 [Apache Mahout](https://mahout.apache.org/) 库均属于此类别。 [HDInsight 提供的 Hadoop 群集版本有哪些新功能](hdinsight-component-versioning.md)中提供了群集组件的完整列表。
 * **自定义组件** - 作为群集用户，可以安装，或者在工作负荷中使用由社区提供的或自己创建的任何组件。
 
 > [!WARNING]
 > HDInsight 群集提供的组件受到完全支持。 Microsoft 支持部门可帮助找出并解决与这些组件相关的问题。
 >
-> 自定义组件可获得合理范围的支持，以帮助你进一步排查问题。 Microsoft 支持部门也许能够解决问题，也可能要求你参与可用的开放源代码技术渠道，获取该技术的深入专业知识。 有许多可以使用的社区站点，例如：[HDInsight 的 MSDN 论坛](https://social.msdn.microsoft.com/Forums/azure/home?forum=hdinsight)和 [http://stackoverflow.com](http://stackoverflow.com)。 此外，Apache 项目在 [http://apache.org](http://apache.org) 上提供了项目站点，例如 [Hadoop](http://hadoop.apache.org/)。
+> 自定义组件可获得合理范围的支持，以帮助你进一步排查问题。 Microsoft 支持部门也许能够解决问题，也可能要求你参与可用的开放源代码技术渠道，获取该技术的深入专业知识。 有许多可以使用的社区站点，例如：[面向 HDInsight 的 MSDN 论坛](https://social.msdn.microsoft.com/Forums/azure/home?forum=hdinsight)、[http://stackoverflow.com](http://stackoverflow.com)。 此外，Apache 项目在 [http://apache.org](http://apache.org) 上提供了项目站点，例如：[Hadoop](http://hadoop.apache.org/)。
 
 HDInsight 服务提供多种方式来使用自定义组件。 不论在群集上使用组件或安装组件的方式为何，均适用相同级别的支持。 以下列表介绍 HDInsight 群集上最常见的自定义组件用法：
 
@@ -426,7 +426,7 @@ HDInsight 服务提供多种方式来使用自定义组件。 不论在群集上
 
 可以使用 Ambari web UI 查看脚本操作记录的信息。 如果在创建群集期间脚本失败，则与该群集关联的默认存储帐户中也会提供日志。 本部分提供有关如何使用这两个选项检索日志的信息。
 
-### <a name="using-the-ambari-web-ui"></a>使用 Ambari Web UI
+### <a name="using-the-apache-ambari-web-ui"></a>使用 Apache Ambari Web UI
 
 1. 在浏览器中，导航到 https://CLUSTERNAME.azurehdinsight.net。 将 CLUSTERNAME 替换为 HDInsight 群集的名称。
 
@@ -479,7 +479,7 @@ HDInsight 服务提供多种方式来使用自定义组件。 不论在群集上
 
 ### <a name="cant-import-name-blobservice"></a>无法导入名称 BlobService
 
-__症状__：脚本操作失败。 在 Ambari 中查看该操作时，会显示类似于以下错误的文本：
+__故障现象__：脚本操作失败。 在 Ambari 中查看该操作时，会显示类似于以下错误的文本：
 
 ```
 Traceback (most recent call list):
@@ -513,8 +513,8 @@ sudo pip install azure-storage==0.20.0
 ## <a name="next-steps"></a>后续步骤
 
 * [为 HDInsight 开发脚本操作脚本](hdinsight-hadoop-script-actions-linux.md)
-* [在 HDInsight 群集上安装并使用 Solr](hdinsight-hadoop-solr-install-linux.md)
-* [在 HDInsight 群集上安装并使用 Giraph](hdinsight-hadoop-giraph-install-linux.md)
+* [在 HDInsight 群集上安装并使用 Apache Solr](hdinsight-hadoop-solr-install-linux.md)
+* [在 HDInsight 群集上安装并使用 Apache Giraph](hdinsight-hadoop-giraph-install-linux.md)
 * [将其他存储添加到 HDInsight 群集中](hdinsight-hadoop-add-storage.md)
 
 [img-hdi-cluster-states]: ./media/hdinsight-hadoop-customize-cluster-linux/HDI-Cluster-state.png "群集创建期间的阶段"

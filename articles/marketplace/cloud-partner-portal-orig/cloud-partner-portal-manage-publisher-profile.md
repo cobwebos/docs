@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 11/15/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 16e3e73e00af1cc6c2c531575345f12c288f1b69
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.openlocfilehash: 8459866aa192f2364ae52d0d5d68eace693e127e
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51853687"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52832677"
 ---
 # <a name="manage-azure-marketplace-and-appsource-publisher-profile"></a>管理“Azure 市场”和“AppSource”发布者个人资料
 
@@ -27,7 +27,7 @@ ms.locfileid: "51853687"
 
 到目前为止，你已完成成为 Azure 市场和 AppSource 发布者的步骤。 批准合作伙伴请求后，发布者个人资料将在**[云合作伙伴门户](https://cloudpartner.azure.com/)** 上注册。 发布者个人资料将适用于从合作伙伴注册期间使用的帐户发布的所有产品/服务和 SKU。
 
-如果尚未将公司注册为云合作伙伴，请参阅[云合作伙伴门户入门](https://cloudpartner.azure.com/#documentation/getting-started-with-the-cloud-partner-portal)。
+如果尚未将公司注册为云合作伙伴，请参阅[云合作伙伴门户入门](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-getting-started-with-the-cloud-partner-portal)。
 
 **发布者个人资料**：发布者个人资料用于在 Azure 市场和 AppSource 中区分你的公司。 发布者个人资料由发布者 ID、显示名称和所有者电子邮件组成。 管理完善的个人资料可增加可见性，有助于市场用户轻松识别和选择合适的产品。
 

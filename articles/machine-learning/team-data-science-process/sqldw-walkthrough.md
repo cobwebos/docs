@@ -1,6 +1,6 @@
 ---
-title: 团队数据科学过程实务：使用 SQL 数据仓库 | Microsoft Docs
-description: 高级分析流程和技术实务
+title: 使用 SQL 数据仓库生成和部署模型 - Team Data Science Process
+description: 使用 SQL 数据仓库和公开提供的数据集生成和部署机器学习模型。
 services: machine-learning
 author: marktab
 manager: cgronlun
@@ -10,13 +10,13 @@ ms.component: team-data-science-process
 ms.topic: article
 ms.date: 11/24/2017
 ms.author: tdsp
-ms.custom: (previous author=deguhath, ms.author=deguhath)
-ms.openlocfilehash: 87c3b0b597a401041b8bf1b6f3997431d8816e92
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: ed3731db88d7f829634a03c55e5ec033c03e4b0f
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52445694"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53139114"
 ---
 # <a name="the-team-data-science-process-in-action-using-sql-data-warehouse"></a>团队数据科学过程实务：使用 SQL 数据仓库
 在本教程中，我们指导为某个公开提供的数据集（[NYC 出租车车程](http://www.andresmh.com/nyctaxitrips/)数据集）完成以下过程：使用 SQL 数据仓库 (SQL DW) 构建和部署机器学习模型。 构建的二元分类模型可预测是否为某段旅程支付了小费；而且还会讨论用于多类分类和回归的模型，这些模型可预测支付的小费金额的分布。
@@ -52,15 +52,15 @@ NYC 出租车车程数据包含大约 20 GB（未压缩约为  48 GB）的压缩
 ## <a name="mltasks"></a>解决三种类型的预测任务
 我们根据 *tip\_amount* 编写了三个预测问题的公式，来阐明三种类型的建模任务︰
 
-1. 二元分类：预测是否已支付某个车程的小费，即大于 $0 的 **tip**amount *是正例，等于 $0 的 \_tip*amount *是反例\_*。
-2. **多元分类**：预测为行程支付的小费的范围。 我们将 *tip\_amount* 划分五个分类收纳组或类别：
+1. **二元分类**：预测是否已支付某个行程的小费，即大于 $0 的 tip\_amount 是正例，等于 $0 的 tip\_amount 是反例。
+2. **多类分类**：预测为行程支付的小费的范围。 我们将 *tip\_amount* 划分五个分类收纳组或类别：
    
         Class 0 : tip_amount = $0
         Class 1 : tip_amount > $0 and tip_amount <= $5
         Class 2 : tip_amount > $5 and tip_amount <= $10
         Class 3 : tip_amount > $10 and tip_amount <= $20
         Class 4 : tip_amount > $20
-3. **回归任务**：预测为行程支付的小费数量。  
+3. **回归任务**：预测为行程支付的小费金额。  
 
 ## <a name="setup"></a>设置 Azure 数据科学环境进行高级分析
 要设置 Azure 数据科学环境，请遵循以下步骤。
@@ -117,7 +117,7 @@ NYC 出租车车程数据包含大约 20 GB（未压缩约为  48 GB）的压缩
 
 在成功执行之后，当前工作目录会更改为 *-DestDir*。 应该能够看到类似下面的屏幕︰
 
-![][19]
+![当前工作目录更改][19]
 
 在 *-DestDir* 中，在管理员模式下执行下面的 PowerShell 脚本︰
 
@@ -321,7 +321,7 @@ NYC 出租车车程数据包含大约 20 GB（未压缩约为  48 GB）的压缩
 > 
 > 
 
-![Plot #21][21]
+![AzCopy 中的输出][21]
 
 可以使用自己的数据。 如果数据位于本地计算机上的实际应用程序中，仍然可以使用 AzCopy 将本地数据上传到专用 Azure blob 存储。 仅需要将 PowerShell 脚本文件的 AzCopy 命令中的**源**位置 `$Source = "http://getgoing.blob.core.windows.net/public/nyctaxidataset"` 更改为包含数据的本地目录。
 
@@ -334,7 +334,7 @@ NYC 出租车车程数据包含大约 20 GB（未压缩约为  48 GB）的压缩
 
 在成功执行之后，看到的屏幕与下面类似︰
 
-![][20]
+![成功执行脚本的输出][20]
 
 ## <a name="dbexplore"></a>Azure SQL 数据仓库中的数据浏览和功能设计
 在本部分中，我们会通过直接使用 **Visual Studio Data Tools** 针对 Azure SQL DW 运行 SQL 查询，执行数据浏览和功能生成。 本部分中使用的所有 SQL 查询都可以在名为 *SQLDW_Explorations.sql* 的示例脚本中找到。 此文件已经由 PowerShell 脚本下载到本地目录。 也可以从 [GitHub](https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataScience/master/Misc/SQLDW/SQLDW_Explorations.sql) 检索它。 但 GitHub 中的文件并未插入 Azure SQL DW 信息。
@@ -363,7 +363,7 @@ NYC 出租车车程数据包含大约 20 GB（未压缩约为  48 GB）的压缩
     -- Report number of columns in table <nyctaxi_trip>
     SELECT COUNT(*) FROM information_schema.columns WHERE table_name = '<nyctaxi_trip>' AND table_schema = '<schemaname>'
 
-**输出︰** 行数应该是 173,179,759，列数应该是 14。
+**输出：** 行数应该是 173,179,759，列数应该是 14。
 
 ### <a name="exploration-trip-distribution-by-medallion"></a>浏览：依据徽章的行程分布
 此示例查询标识在指定的时间段内完成超过 100 个行程的徽章（出租车编号）。 查询将受益于分区表访问，因为它受 **pickup\_datetime** 分区方案的限制。 查询完整数据集还将使用分区表和/或索引扫描。
@@ -374,7 +374,7 @@ NYC 出租车车程数据包含大约 20 GB（未压缩约为  48 GB）的压缩
     GROUP BY medallion
     HAVING COUNT(*) > 100
 
-**输出︰** 查询应返回一个表，表中的行指定 13,369 个徽章（出租车）和它们在 2013 年完成的行程数。 最后一列包含已完成的行程数量的计算。
+**输出：** 查询应返回一个表，表中的行指定 13,369 个徽章（出租车）和它们在 2013 年完成的行程数。 最后一列包含已完成的行程数量的计算。
 
 ### <a name="exploration-trip-distribution-by-medallion-and-hacklicense"></a>浏览：依据徽章和 hack_license 的行程分布
 此示例标识在指定的时间段内完成超过 100 个行程的徽章（出租车编号）和 hack_license 编号（驾驶员）。
@@ -385,7 +385,7 @@ NYC 出租车车程数据包含大约 20 GB（未压缩约为  48 GB）的压缩
     GROUP BY medallion, hack_license
     HAVING COUNT(*) > 100
 
-**输出︰** 查询应返回一个包含 13,369 行的表，这些行指定在 2013年已完成超过 100 个行程的 13,369 个汽车/驾驶员 ID。 最后一列包含已完成的行程数量的计算。
+**输出：** 查询应返回一个包含 13,369 行的表，这些行指定在 2013 年已完成超过 100 个行程的 13,369 个汽车/驾驶员 ID。 最后一列包含已完成的行程数量的计算。
 
 ### <a name="data-quality-assessment-verify-records-with-incorrect-longitude-andor-latitude"></a>数据质量评估：验证含有不正确的经度和/或纬度的记录
 此示例将调查是否有任何一个经度和/或纬度字段包含无效的值（弧度应介于 -90 到 90 之间），或者具有（0，0）坐标。
@@ -399,9 +399,9 @@ NYC 出租车车程数据包含大约 20 GB（未压缩约为  48 GB）的压缩
     OR    (pickup_longitude = '0' AND pickup_latitude = '0')
     OR    (dropoff_longitude = '0' AND dropoff_latitude = '0'))
 
-**输出︰** 查询返回经度和/或纬度字段无效的 837,467 个行程。
+**输出：** 查询返回经度和/或纬度字段无效的 837,467 个行程。
 
-### <a name="exploration-tipped-vs-not-tipped-trips-distribution"></a>浏览︰已付小费与未付小费的行程分布
+### <a name="exploration-tipped-vs-not-tipped-trips-distribution"></a>浏览：已付小费与未付小费的行程分布
 此示例查找指定时间段（或如果像此处设置的那在，时间段为全年，则表示完整的数据集）内已付小费与未付小费的行程的数量。 此分布反映二元标签分布，以便以后用于二元分类建模。
 
     SELECT tipped, COUNT(*) AS tip_freq FROM (
@@ -410,7 +410,7 @@ NYC 出租车车程数据包含大约 20 GB（未压缩约为  48 GB）的压缩
       WHERE pickup_datetime BETWEEN '20130101' AND '20131231') tc
     GROUP BY tipped
 
-**输出︰** 查询应返回 2013 年度的以下小费频率︰90,447,622 个已付小费的和 82,264,709 个未付小费的。
+**输出：** 查询应返回 2013 年度的以下小费频率：90,447,622 个已付小费的和 82,264,709 个未付小费的。
 
 ### <a name="exploration-tip-classrange-distribution"></a>浏览：小费分类/范围分布
 此示例将计算给定的时间段（或如果时间段为全年，则表示完整的数据集）内的小费范围分布。 这是以后用于多类分类建模的标签类的分布。
@@ -531,7 +531,7 @@ NYC 出租车车程数据包含大约 20 GB（未压缩约为  48 GB）的压缩
     AND CAST(dropoff_latitude AS float) BETWEEN -90 AND 90
     AND pickup_longitude != '0' AND dropoff_longitude != '0'
 
-**输出︰** 此查询生成一个表（包含 2,803,538 行），其中有提取纬度和减少纬度、提取经度和减少经度以及相应的直接距离（以英里计）。 下面是前 3 行的结果︰
+**输出：** 此查询生成一个表（包含 2,803,538 行），其中包含上下车的经纬度以及相应的直接距离（以英里计）。 下面是前 3 行的结果︰
 
 |  | pickup_latitude | pickup_longitude | dropoff_latitude | dropoff_longitude | DirectDistance |
 | --- | --- | --- | --- | --- | --- |
@@ -571,16 +571,16 @@ NYC 出租车车程数据包含大约 20 GB（未压缩约为  48 GB）的压缩
 
 1. 登录 AzureML 工作区、单击顶部的“工作室”，并单击网页左侧的“NOTEBOOKS”。
    
-    ![图 22][22]
+    ![依次单击“Studio”和“笔记本”][22]
 2. 单击网页左下角的“新建”，并选择“Python 2”。 然后，为笔记本提供名称，并单击复选标记以创建新的空白 IPython Notebook。
    
-    ![图 23][23]
+    ![单击“新建”，然后选择“Python 2”][23]
 3. 单击新 IPython Notebook 左上角的“Jupyter”符号。
    
-    ![图 24][24]
+    ![单击 Jupyter 符号][24]
 4. 将示例 IPython Notebook 拖放到 AzureML IPython Notebook 服务的“树”页面，然后单击“上传”。 然后，示例 IPython Notebook 将上传到 AzureML IPython Notebook 服务。
    
-    ![图 25][25]
+    ![单击“上传”][25]
 
 若要运行示例 IPython Notebook 或 Python 脚本文件，需要使用以下 Python 包。 如果使用的是 AzureML IPython Notebook 服务，这些包已经预安装。
 
@@ -684,7 +684,7 @@ NYC 出租车车程数据包含大约 20 GB（未压缩约为  48 GB）的压缩
 
     df1.boxplot(column='trip_distance',return_type='dict')
 
-![Plot #1][1]
+![盒须图输出][1]
 
 ### <a name="visualization-distribution-plot-example"></a>可视化效果：分布图示例
 可视化分布图和抽样行程距离的直方图。
@@ -695,7 +695,7 @@ NYC 出租车车程数据包含大约 20 GB（未压缩约为  48 GB）的压缩
     df1['trip_distance'].plot(ax=ax1,kind='kde', style='b-')
     df1['trip_distance'].hist(ax=ax2, bins=100, color='k')
 
-![Plot #2][2]
+![分布图输出][2]
 
 ### <a name="visualization-bar-and-line-plots"></a>可视化效果：条形图和折线图
 在此示例中，我们可以将行程距离量化为五个分类收纳组，并将分类收纳结果可视化。
@@ -709,26 +709,26 @@ NYC 出租车车程数据包含大约 20 GB（未压缩约为  48 GB）的压缩
 
     pd.Series(trip_dist_bin_id).value_counts().plot(kind='bar')
 
-![Plot #3][3]
+![条形图输出][3]
 
 and
 
     pd.Series(trip_dist_bin_id).value_counts().plot(kind='line')
 
-![Plot #4][4]
+![折线图输出][4]
 
 ### <a name="visualization-scatterplot-examples"></a>可视化效果：散点图示例
 我们会显示在 **trip\_time\_in\_secs** 和 **trip\_distance** 之间的散点图，以查看是否存在任何关联
 
     plt.scatter(df1['trip_time_in_secs'], df1['trip_distance'])
 
-![Plot #6][6]
+![时间和距离之间的关系的散点图输出][6]
 
 同样地，我们可以检查 **rate\_code** 和 **trip\_distance** 之间的关系。
 
     plt.scatter(df1['passenger_count'], df1['trip_distance'])
 
-![Plot #8][8]
+![代码和距离之间的关系的散点图输出][8]
 
 ### <a name="data-exploration-on-sampled-data-using-sql-queries-in-ipython-notebook"></a>在 IPython Notebook 中使用 SQL 查询对抽样数据进行数据浏览
 在本部分中，我们将使用之前创建的新表中保存的抽样数据来浏览数据分布。 请注意，可以使用原始表执行类似浏览。
@@ -749,7 +749,7 @@ and
 
     pd.read_sql(query, conn)
 
-#### <a name="exploration-tip-class-distribution"></a>浏览：小费类型分布
+#### <a name="exploration-tip-class-distribution"></a>浏览：小费类分布
     query = '''
         SELECT tip_class, count(*) AS tip_freq
         FROM <schemaname>.<nyctaxi_sample>
@@ -758,7 +758,7 @@ and
 
     tip_class_dist = pd.read_sql(query, conn)
 
-#### <a name="exploration-plot-the-tip-distribution-by-class"></a>浏览：按类型绘制小费分布
+#### <a name="exploration-plot-the-tip-distribution-by-class"></a>浏览：按类绘制小费分布
     tip_class_dist['tip_freq'].plot(kind='bar')
 
 ![图 26][26]
@@ -807,7 +807,7 @@ and
 
 1. **二元分类**：预测某个行程是否支付小费。
 2. **多类分类**：根据以前定义的类，预测小费支付范围。
-3. **回归任务**：预测为行程支付的小费数量。  
+3. **回归任务**：预测为行程支付的小费金额。  
 
 若要开始建模练习，请登录到 **Azure 机器学习**工作区。 如果尚未创建机器学习工作区，请参阅[创建 Azure ML 工作区](../studio/create-workspace.md)。
 

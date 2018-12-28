@@ -9,26 +9,25 @@ ms.assetid: 769a5ea4-a8c6-4c18-b46c-657e864e24de
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/05/2018
 ms.author: mbullwin
-ms.openlocfilehash: 275eb5f32def94fa974f0cb180b9de9dcedf1a00
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: abc3d5832cd85cb3297077f2d661ec8fe32fde9e
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51230914"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53105285"
 ---
 # <a name="instrument-web-apps-at-runtime-with-application-insights"></a>在运行时使用 Application Insights 检测 Web 应用
 
-无需修改或重新部署代码，即可使用 Azure Application Insights 检测实时 Web 应用。 如果应用由本地 IIS 服务器托管，请安装状态监视器。 如果这些应用是 Azure Web 应用或者在 Azure VM 中运行，则可通过 Azure 控制面板打开 Application Insights 监视。 （我们还单独提供了有关检测[实时 J2EE Web 应用](app-insights-java-live.md)和 [Azure 云服务](app-insights-cloudservices.md)的文章。）需要 [Microsoft Azure](http://azure.com) 订阅。
+无需修改或重新部署代码，即可使用 Azure Application Insights 检测实时 Web 应用。 如果应用由本地 IIS 服务器托管，请安装状态监视器。 如果这些应用是 Azure Web 应用或者在 Azure VM 中运行，则可通过 Azure 控制面板打开 Application Insights 监视。 （我们还单独提供了有关检测[实时 J2EE Web 应用](app-insights-java-live.md)和 [Azure 云服务](app-insights-cloudservices.md)的文章。）需要 [Microsoft Azure](https://azure.com) 订阅。
 
 ![包含失败请求、服务器响应时间和服务器请求信息的 App Insights 概览图屏幕截图](./media/app-insights-monitor-performance-live-website-now/overview-graphs.png)
 
 可以选择三种途径将 Application Insights 应用到 .NET Web 应用程序：
 
-* 生成时：[将 Application Insights SDK 添加][greenbrown]到 Web 应用代码。
+* **生成时：**[将 Application Insights SDK 添加][greenbrown]到 Web 应用代码。
 * **运行时：** 如下所述检测服务器上的 Web 应用，无需重建并重新部署代码。
 * **结合两种方法：** 将 SDK 构建到 Web 应用代码中，同时应用运行时扩展。 这样就充分利用了两种方法的优势。
 
@@ -120,6 +119,7 @@ Application Insights JavaScript SDK 现已注入到每个网页中。
   * 在 IIS 管理器中选择应用程序池，打开“高级设置”，并记下“进程模型”下的标识。
   * 在计算机管理控制面板中，将此标识添加到性能监试器用户组。
 * 如果在服务器上安装了 MMA/SCOM (Systems Center Operations Manager)，某些版本可能会发生冲突。 请卸载 SCOM 和状态监视器，并重新安装最新版本。
+* 默认情况下，可在此处找到状态监视器日志："C:\Program Files\Microsoft Application Insights\Status Monitor\diagnostics.log"
 * 请参阅[故障排除][qna]。
 
 ## <a name="system-requirements"></a>系统要求
@@ -133,9 +133,9 @@ Application Insights JavaScript SDK 现已注入到每个网页中。
 
 （装有最新 SP 及 .NET Framework 4.5）
 
-在客户端：Windows 7、8、8.1 和 10 上，同样需要安装 .NET Framework 4.5
+在客户端：对于 Windows 7、8、8.1 和 10，同样需要安装 .NET Framework 4.5
 
-IIS 支持：IIS 7、7.5、8、8.5（必须有 IIS）
+IIS 支持的是：IIS 7、7.5、8、8.5（IIS 是必需的）
 
 ## <a name="automation-with-powershell"></a>使用 PowerShell 自动化
 可以在 IIS 服务器上使用 PowerShell 启动和停止监视。
@@ -218,9 +218,12 @@ IIS 支持：IIS 7、7.5、8、8.5（必须有 IIS）
 
 为要进行检测的状态监视器选择 Web 应用时，请执行以下操作：
 
-* 下载 Application Insights 程序集和 .config 文件，并将其置于 Web 应用的二进制文件文件夹中。
-* 修改 `web.config`，以便添加 Application Insights HTTP 跟踪模块。
+* 下载 Application Insights 程序集和 Application Insights.config 文件，并将其置于 Web 应用的二进制文件文件夹中。
 * 启用 CLR 分析，以便收集依赖项调用。
+
+### <a name="what-version-of-application-insights-sdk-does-status-monitor-install"></a>状态监视器可安装哪个版本的 Application Insights SDK？
+
+目前，状态监视器仅可安装 Application Insights SDK 版本 2.3 或 2.4。
 
 ### <a name="do-i-need-to-run-status-monitor-whenever-i-update-the-app"></a>是否每次更新应用都需要运行状态监视器？
 
@@ -243,7 +246,7 @@ IIS 支持：IIS 7、7.5、8、8.5（必须有 IIS）
  * 依赖项调用 (.NET 4.5)；返回依赖项调用中的值 (.NET 4.6)。
  * 异常堆栈跟踪值。
 
-[了解详细信息](http://apmtips.com/blog/2016/11/18/how-application-insights-status-monitor-not-monitors-dependencies/)
+[了解详细信息](https://apmtips.com/blog/2016/11/18/how-application-insights-status-monitor-not-monitors-dependencies/)
 
 ## <a name="video"></a>视频
 

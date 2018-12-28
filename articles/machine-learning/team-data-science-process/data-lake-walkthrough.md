@@ -1,5 +1,5 @@
 ---
-title: Azure Data Lake 中可缩放的数据科研：端到端演练 | Microsoft 文档
+title: Azure Data Lake 中可缩放的数据科学 - Team Data Science Process
 description: 如何使用 Azure Data Lake 对数据集进行数据浏览和二进制分类任务。
 services: machine-learning
 author: marktab
@@ -10,15 +10,15 @@ ms.component: team-data-science-process
 ms.topic: article
 ms.date: 11/13/2017
 ms.author: tdsp
-ms.custom: (previous author=deguhath, ms.author=deguhath)
-ms.openlocfilehash: 52518f8c9295f00b93dee0ea356513605450aed7
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: 8549a35eed0c1f61c087b9056e4564577170f5f6
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52443553"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53141809"
 ---
-# <a name="scalable-data-science-with-azure-data-lake-an-end-to-end-walkthrough"></a>Azure Data Lake 中可缩放的数据科研：端到端演练
+# <a name="scalable-data-science-with-azure-data-lake-an-end-to-end-walkthrough"></a>Azure Data Lake 中可缩放的数据科学：端到端演练
 此演练介绍如何使用 Azure Data Lake 对 NYC 出租车行程和车费数据集的示例进行数据浏览和二进制分类任务，以预测小费是否是按车费所支付的。 它指导端到端完成 [Team Data Science Process](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/) 的步骤，从数据采集到模型训练，再到部署发布模型的 Web 服务。
 
 ### <a name="azure-data-lake-analytics"></a>Azure Data Lake Analytics
@@ -146,8 +146,8 @@ Azure 机器学习工作室用于生成和部署预测模型。 有两种方法�
 
 ![9](./media/data-lake-walkthrough/9-portal-submit-job.PNG)
 
-### <a name="ingest"></a>数据引入：从公共 blob 读入数据
-Azure blob 中数据的位置引用为 **wasb://container_name@blob_storage_account_name.blob.core.windows.net/blob_name**，可使用 **Extractors.Csv()** 对其进行提取。 将以下脚本中的 wasb 地址 container_name@blob_storage_account_name 替换为自己的容器名和存储帐户名。 由于文件名的格式都相同，因此可使用 **trip\_data_{\*\}.csv** 读入所有的 12 个行程文件。 
+### <a name="ingest"></a>数据引入：从公共 Blob 读入数据
+将 Azure blob 中数据的位置引用为 **wasb://container_name@blob_storage_account_name.blob.core.windows.net/blob_name**，且可以使用 **Extractors.Csv()** 进行提取。 将以下脚本中的 wasb 地址 container_name@blob_storage_account_name 替换为自己的容器名和存储帐户名。 由于文件名的格式都相同，因此可使用 **trip\_data_{\*\}.csv** 读入所有的 12 个行程文件。 
 
     ///Read in Trip data
     @trip0 =

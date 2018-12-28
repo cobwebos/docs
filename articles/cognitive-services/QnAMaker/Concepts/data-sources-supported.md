@@ -10,12 +10,12 @@ ms.component: qna-maker
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: tulasim
-ms.openlocfilehash: ee88c8dca1521f4cdc2e3ea141d5c1d497061bb4
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 71b0739bacd8df586267b61a9135f448aa76479d
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52422348"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53082231"
 ---
 # <a name="data-sources-for-qna-maker-content"></a>QnA Maker 内容的数据源
 
@@ -36,7 +36,7 @@ QnA Maker 从半结构化内容（例如常见问题解答、产品手册、指�
 
 ## <a name="faq-urls"></a>常见问题解答 URL
 
-QnA Maker 可以通过 3 种不同的形式支持常见问题解答网页：普通常见问题解答页、带链接的常见问题解答页、包含主题主页的常见问题解答页。
+QnA Maker 可以支持 3 种不同形式的常见问题解答网页：纯文本常见问题解答页、带有链接的常见问题解答页、具有主题主页的常见问题解答页。
 
 ### <a name="plain-faq-pages"></a>纯文本常见问题解答页
 
@@ -44,7 +44,7 @@ QnA Maker 可以通过 3 种不同的形式支持常见问题解答网页：普�
 
 下面是普通常见问题解答页的示例：
 
-![纯文本常见问题解答页](../media/qnamaker-concepts-datasources/plain-faq.png) 
+![知识库的纯文本常见问题解答页示例](../media/qnamaker-concepts-datasources/plain-faq.png) 
 
  
 ### <a name="faq-pages-with-links"></a>带链接的常见问题解答页 
@@ -53,7 +53,7 @@ QnA Maker 可以通过 3 种不同的形式支持常见问题解答网页：普�
 
 下面的示例是一个常见问题解答页，其中的链接位于同一页上的不同部分：
 
- ![部分链接常见问题解答页](../media/qnamaker-concepts-datasources/sectionlink-faq.png) 
+ ![知识库的部分链接常见问题解答页示例](../media/qnamaker-concepts-datasources/sectionlink-faq.png) 
 
 
 ### <a name="faq-pages-with-a-topics-homepage"></a>带主题主页的常见问题解答页
@@ -62,7 +62,7 @@ QnA Maker 可以通过 3 种不同的形式支持常见问题解答网页：普�
 
 下面的示例是一个常见问题解答页，其中的主题主页有一个链接，链接到不同页中的常见问题解答部分。 
 
- ![深层链接常见问题解答页](../media/qnamaker-concepts-datasources/topics-faq.png) 
+ ![知识库的深层链接常见问题解答页示例](../media/qnamaker-concepts-datasources/topics-faq.png) 
 
 
 ## <a name="pdf-doc-files"></a>PDF/DOC 文件
@@ -77,7 +77,7 @@ QnA Maker 根据视觉线索（例如字体大小、字体样式、编号、颜�
 
 下面是一个手册示例，其中包含索引页和分层内容。
 
- ![产品手册示例](../media/qnamaker-concepts-datasources/product-manual.png) 
+ ![知识库的产品手册示例](../media/qnamaker-concepts-datasources/product-manual.png) 
 
 > [!NOTE]
 > 提取最适用于具有目录和/或索引页的手册，以及具有分层标题的清晰结构。
@@ -106,7 +106,7 @@ Answer2
 
 下面是结构化 QnA Word 文档的示例：
 
- ![结构化 QnA 文档](../media/qnamaker-concepts-datasources/structured-qna-doc.png) 
+ ![知识库的结构化常见问题解答文档示例](../media/qnamaker-concepts-datasources/structured-qna-doc.png) 
 
 ## <a name="structured-txt-tsv-and-xls-files"></a>结构化 *TXT*、*TSV* 和 *XLS* 文件
 
@@ -121,7 +121,7 @@ Answer2
 
 下面是结构化 QnA *.xls* 文件的示例，包含 HTML 内容：
 
- ![结构化 QnA Excel](../media/qnamaker-concepts-datasources/structured-qna-xls.png)
+ ![知识库的结构化常见问题解答 Excel 示例](../media/qnamaker-concepts-datasources/structured-qna-xls.png)
 
 ## <a name="structured-data-format-through-import"></a>通过导入提供的结构化数据格式
 

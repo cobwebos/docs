@@ -1,6 +1,6 @@
 ---
-title: 缩放媒体保留单位 - Azure |Microsoft Docs
-description: 本主题概述了如何使用 Azure 媒体服务调整媒体处理的规模。
+title: 通过 CLI 使用 Azure 媒体服务创建筛选器 | Microsoft Docs
+description: 本主题展示如何通过 CLI 使用媒体服务创建筛选器。
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -13,12 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/26/2018
 ms.author: juliako
-ms.openlocfilehash: 9099429097efb17629e88318430f004f0f763cc5
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.custom: seodec18
+ms.openlocfilehash: a16024ad5d8b9d2355b579b9b508ef0de91f2ccd
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52336392"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53133853"
 ---
 # <a name="creating-filters-with-cli"></a>使用 CLI 创建筛选器 
 
@@ -32,7 +33,7 @@ ms.locfileid: "52336392"
 
     目前，并非所有[媒体服务 v3 CLI](https://aka.ms/ams-v3-cli-ref) 命令都可在 Azure Cloud Shell 中运行。 建议在本地使用 CLI。
 - [创建媒体服务帐户](create-account-cli-how-to.md)。 请务必记住资源组名称和媒体服务帐户名称。 
-- 请参阅[筛选器和动态清单](filters-dynamic-manifest-overview.md)。
+- 查看[筛选器和动态清单](filters-dynamic-manifest-overview.md)。
 
 ## <a name="define-a-filter"></a>定义筛选器 
 

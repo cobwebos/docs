@@ -1,23 +1,24 @@
 ---
-title: LUIS 应用协作 - 语言理解
-titleSuffix: Azure Cognitive Services
-description: LUIS 应用需要一个所有者和多个可选协作者。
+title: 协作
+titleSuffix: Language Understanding - Azure Cognitive Services
+description: LUIS 应用需要一个所有者和多个可选协作者以允许多人共同创作一个应用。
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: conceptual
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: 9acc0b04cbfa074f888d785930f357eaf94f310b
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.openlocfilehash: 8a3f0cb99dc714a6a0430d0a2ffb7c18583183e9
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49637317"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53084543"
 ---
-# <a name="collaborating"></a>协作
+# <a name="collaborating-with-other-authors"></a>与其他作者协作
 
 通过 LUIS 提供的协作组成员可共同创作应用。
 

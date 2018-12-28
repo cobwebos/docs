@@ -1,5 +1,5 @@
 ---
-title: 在生产环境中部署模型 - Azure 机器学习 | Microsoft Docs
+title: 在生产中部署模型 - Team Data Science Process
 description: 如何将模型部署到生产环境使其在进行业务决策方面能够发挥积极作用。
 author: marktab
 manager: cgronlun
@@ -9,15 +9,15 @@ ms.component: team-data-science-process
 ms.topic: article
 ms.date: 11/30/2017
 ms.author: tdsp
-ms.custom: (previous author=deguhath, ms.author=deguhath)
-ms.openlocfilehash: 5b1614f92f7633e008f4f7176723002dc7730b15
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: 35f9f369e752fa7c86a6bd295a79b79b23104d23
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52495975"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53137865"
 ---
-# <a name="deploy-models-in-production"></a>在生产环境中部署模型
+# <a name="deploy-models-to-production-to-play-an-active-role-in-making-business-decisions"></a>将模型部署到生产中，使这些模型在制定业务决策方面能够发挥积极作用
 
 生产部署可让模型在企业中发挥积极作用。 所部署模型提供的预测可用于业务决策。
 

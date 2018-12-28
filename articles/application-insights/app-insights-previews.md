@@ -9,16 +9,15 @@ ms.assetid: ''
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/01/2017
 ms.author: mbullwin
-ms.openlocfilehash: 42db55fbca1bcc4d0d0d1e22dd41636d1dbdaeff
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 14ec93a6dfb6608550fc49c9bde11925715feb2b
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50417695"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52722031"
 ---
 # <a name="preview-upcoming-changes-to-azure-application-insights"></a>预览 Azure Application Insights 即将推出的改进 
 
@@ -33,8 +32,8 @@ Application Insights 经常发布新功能。 如果要查看这些改进的预�
 在“预览”边栏选项卡上，可以从以下选项中选择查看预览的时间。
 
 - 始终：预览体验推出后，立即查看。
-- 自动：将看到 Microsoft 为你的帐户推荐的预览体验。 
-- 从不：将只能查看到你选择的预览体验。 
+- 自动：会看到 Microsoft 为你的帐户推荐的预览体验。 
+- 从不：将只看到所选的预览体验。 
 
 ## <a name="next-steps"></a>后续步骤
 

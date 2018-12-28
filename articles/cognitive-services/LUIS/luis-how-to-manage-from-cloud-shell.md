@@ -1,21 +1,22 @@
 ---
-title: LUIS 的 Azure Cloud Shell 使用情况数据
-titleSuffix: Azure Cognitive Services
+title: 使用情况数据 - Cloud Shell
+titleSuffix: Language Understanding - Azure Cognitive Services
 description: 了解如何在 Azure Cloud Shell 中获取 LUIS 的使用情况信息。
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 11/27/2018
+ms.date: 12/07/2018
 ms.author: diberry
-ms.openlocfilehash: aca81bd529fe6151dce7aba6754874355189fc59
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.openlocfilehash: d4f1a76fe587a34448cf218dbfef10f6b0e2ea46
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52444372"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53133464"
 ---
 # <a name="usage-data-for-luis-service-from-azure-cloud-shell"></a>从 Azure Cloud Shell 获取 LUIS 服务的使用情况数据
 通过 Azure 门户可使用 PowerShell cmdlet 处理 LUIS 资源。 
@@ -34,7 +35,7 @@ ms.locfileid: "52444372"
 
 使用“启动 Cloud Shell”按钮打开 Cloud Shell 或使用 [https://shell.azure.com](https://shell.azure.com) 打开浏览器。 选择 Power Shell 作为环境。 如果没有 Azure 存储帐户，则需创建一个。 
 
-<a style="cursor:pointer" onclick='javascript:window.open("https://shell.azure.com", "_blank", "toolbar=no,scrollbars=yes,resizable=yes,menubar=no,location=no,status=no")'><image src="https://shell.azure.com/images/launchcloudshell.png" /></a>
+<a style="cursor:pointer" onclick='javascript:window.open("https://shell.azure.com", "_blank", "toolbar=no,scrollbars=yes,resizable=yes,menubar=no,location=no,status=no")'><image src="https://shell.azure.com/images/launchcloudshell.png" alt="Start powershell" /></a>
 
 ## <a name="luis-endpoint-usage-information"></a>LUIS 终结点使用情况信息
 
@@ -42,7 +43,7 @@ PowerShell 6.x cmdlet `Get-AzureRmCognitiveServicesAccountUsage` 提供 Microsof
 
 命令语法为：
 
-```
+```powershell
 Get-AzureRmCognitiveServicesAccountUsage -ResourceGroupName my-resource-group -Name my-luis-service-name
 ```
 
@@ -50,7 +51,7 @@ Get-AzureRmCognitiveServicesAccountUsage -ResourceGroupName my-resource-group -N
 
 该 cmdlet 返回于 6 月 7 日结束的 30 天期限内使用的 16 个终结点命中（共 10,000 个终结点命中）的使用情况信息：
 
-```
+```powershell
 CurrentValue  : 16
 Name          : LUIS.Calls
 Limit         : 10000

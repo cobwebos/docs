@@ -3,19 +3,19 @@ title: 处理 Azure Database for MySQL 的暂时性连接错误 | Microsoft Docs
 description: 了解如何处理 Azure Database for MySQL 的暂时性连接错误。
 keywords: mysql 连接, 连接字符串, 连接问题, 暂时性错误, 连接错误
 services: mysql
-author: janeng
+author: jan-eng
 ms.author: janeng
 manager: kfile
 editor: jasonwhowell
 ms.service: mysql
 ms.topic: article
 ms.date: 11/09/2018
-ms.openlocfilehash: 1944b30e5c658f1df896050d0ff43f1058d5dd32
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 2d7b62d5f45f495d36b1ed103155f8f3178451e8
+ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51285449"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52887808"
 ---
 # <a name="handling-of-transient-connectivity-errors-for-azure-database-for-mysql"></a>处理 Azure Database for MySQL 的暂时性连接错误
 

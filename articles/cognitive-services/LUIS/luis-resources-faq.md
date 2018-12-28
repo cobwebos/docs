@@ -1,21 +1,22 @@
 ---
-title: FAQ - 常见问题解答 - 语言理解 (LUIS)
+title: 常见问题 (FAQ)
 titleSuffix: Azure Cognitive Services
 description: 本文包含有关语言理解 (LUIS) 的常见问题的解答。
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 services: cognitive-services
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 11/19/2018
+ms.date: 12/04/2018
 ms.author: diberry
-ms.openlocfilehash: d371ead3280bca5239a9ee6bf2c4275414141fb4
-ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
+ms.openlocfilehash: 9e5b132a7946bdc648e051c9f7327cc7159f291e
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52284364"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53163627"
 ---
 # <a name="language-understanding-faq"></a>语言理解常见问题解答
 
@@ -196,9 +197,9 @@ LUIS 根据[区域性](luis-language-support.md#tokenization)将表述[标记化
 
 ## <a name="luis-service"></a>LUIS 服务
 
-### <a name="is-luis-available-on-premises-or-in-private-cloud"></a>是否可以在本地或私有云中使用 LUIS？
-不是。
+### <a name="is-language-understanding-luis-available-on-premises-or-in-private-cloud"></a>是否可以在本地或私有云中使用语言理解 (LUIS)？
 
+是，如果具有计量使用情况的必要连接，则可以为这些方案使用 LUIS [容器](luis-container-howto.md)。 
 
 ### <a name="at-the-build-2018-conference-i-heard-about-a-language-understanding-feature-or-demo-but-i-dont-remember-what-it-was-called"></a>在 Build 2018 大会上，我了解到一项语言理解功能或演示，但我不记得它的名称了，它叫什么呢？
 
@@ -214,13 +215,13 @@ LUIS 根据[区域性](luis-language-support.md#tokenization)将表述[标记化
 此外还包括其他创作 [API 路由](https://github.com/Microsoft/LUIS-Samples/blob/master/authoring-routes.md)。
 
 视频：
-* [Azure Friday At Build 2018: Cognitive Services - Language (LUIS)](https://channel9.msdn.com/Shows/Azure-Friday/At-Build-2018-Cognitive-Services-Language-LUIS/player)（Build 2018 中的 Azure Friday：认知服务 - 语言 (LUIS)）
+* [Build 2018 中的 Azure Friday：认知服务 - 语言 (LUIS)](https://channel9.msdn.com/Shows/Azure-Friday/At-Build-2018-Cognitive-Services-Language-LUIS/player)
 * [Build 2018 AI Show - What’s New with Language Understanding Service](https://channel9.msdn.com/Shows/AI-Show/Whats-New-with-Language-Understanding-Service-LUIS/player)（Build 2018 AI 演示 - 语言理解服务的新增功能）
 * [Build 2018 会议 - 机器人智能、语音功能和 NLU 最佳做法](https://channel9.msdn.com/events/Build/2018/BRK3208)
 * [Build 2018 - LUIS Updates](https://channel9.msdn.com/events/Build/2018/THR3118/player)（Build 2018 - LUIS 更新）
 
 项目：
-* [Contoso 咖啡店机器人](https://github.com/botbuilderbuild2018/build2018demo)演示 - Github 上的源代码
+* [Contoso 咖啡店机器人](https://github.com/botbuilderbuild2018/build2018demo)演示 - GitHub 上的源代码
 
 ## <a name="next-steps"></a>后续步骤
 

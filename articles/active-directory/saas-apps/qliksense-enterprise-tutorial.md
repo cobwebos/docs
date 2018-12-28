@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/06/2018
 ms.author: jeedes
-ms.openlocfilehash: a8816451b45171e0ba8cbd7acc937201c587c481
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 24353f89f7c833a16675841f741a4a81ac34597c
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39627944"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53015207"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-qlik-sense-enterprise"></a>教程：Azure Active Directory 与 Qlik Sense Enterprise 集成
 
@@ -47,7 +47,7 @@ ms.locfileid: "39627944"
 测试本教程中的步骤应遵循以下建议：
 
 - 除非必要，请勿使用生产环境。
-- 如果没有 Azure AD 试用环境，可在此处获取一个月的试用版：[试用产品/服务](https://azure.microsoft.com/pricing/free-trial/)。
+- 如果没有 Azure AD 试用环境，可以在此处获取一个月的试用版：[试用版产品/服务](https://azure.microsoft.com/pricing/free-trial/)。
 
 ## <a name="scenario-description"></a>方案描述
 在本教程中，将在测试环境中测试 Azure AD 单一登录。 本教程中概述的方案包括两个主要构建基块：
@@ -110,9 +110,10 @@ ms.locfileid: "39627944"
 
     ![Qlik Sense Enterprise 域和 URL 单一登录信息](./media/qliksense-enterprise-tutorial/tutorial_qliksense-enterprise_url.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL： `https://<Qlik Sense Fully Qualifed Hostname>:4443/azure/hub`
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“登录 URL”文本框中，使用以下模式键入 URL： `https://<Qlik Sense Fully Qualifed Hostname>:4443/azure/hub`
 
     b. 在“标识符”文本框中，使用以下模式键入 URL：
+    
     | |
     |--|
     | `https://<Qlik Sense Fully Qualifed Hostname>.qlikpoc.com`|
@@ -141,7 +142,7 @@ ms.locfileid: "39627944"
 
     ![QlikSense][qs24]
 
-    a. 在文本编辑器中打开从 Azure 门户下载的 FederationMetaData.xml 文件。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在文本编辑器中打开从 Azure 门户下载的 FederationMetaData.xml 文件。
 
     b. 搜索值“RoleDescriptor”。  会出现四个条目（两对开始和结束元素标记）。
 
@@ -167,7 +168,7 @@ ms.locfileid: "39627944"
 
     ![QlikSense][qs8]  
 
-    a. “说明”字段是虚拟代理配置的友好名称。  输入说明的值。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 “说明”字段是虚拟代理配置的友好名称。  输入说明的值。
 
     b. “前缀”字段标识虚拟代理终结点，用于通过 Azure AD 单一登录连接到 Qlik Sense。  输入此虚拟代理服务器的唯一前缀名称。
 
@@ -179,7 +180,7 @@ ms.locfileid: "39627944"
 
     ![QlikSense][qs10]
 
-    a. “匿名访问模式”下拉列表决定匿名用户是否可以通过虚拟代理访问 Qlik Sense。  默认选项为非匿名用户。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 “匿名访问模式”下拉列表决定匿名用户是否可以通过虚拟代理访问 Qlik Sense。  默认选项为非匿名用户。
 
     b. “身份验证方法”下拉列表决定了虚拟代理要使用的身份验证方案。  从下拉列表中选择“SAML”。  会出现更多选项。
 
@@ -273,7 +274,7 @@ ms.locfileid: "39627944"
 
    ![“用户”对话框](./media/qliksense-enterprise-tutorial/create_aaduser_04.png)
 
-   a. 在“姓名”框中，键入“BrittaSimon”。
+   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“姓名”框中，键入“BrittaSimon”。
 
    b. 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
 
@@ -283,7 +284,7 @@ ms.locfileid: "39627944"
 
 ### <a name="create-a-qlik-sense-enterprise-test-user"></a>创建 Qlik Sense Enterprise 测试用户
 
-在本部分中，会在 Qlik Sense Enterprise 中创建一个名为“Britta Simon”的用户。 请与 [Qlik Sense Enterprise 客户端支持团队](https://www.qlik.com/us/services/support)协作来在 Qlik Sense Enterprise 平台中添加用户。 使用单一登录前，必须先创建并激活用户。
+在本部分中，会在 Qlik Sense Enterprise 中创建一个名为“Britta Simon”的用户。 请与  [Qlik Sense Enterprise 客户端支持团队](https://www.qlik.com/us/services/support) 协作来在 Qlik Sense Enterprise 平台中添加用户。 使用单一登录前，必须先创建并激活用户。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
@@ -324,7 +325,7 @@ ms.locfileid: "39627944"
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](tutorial-list.md)
-* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
+* [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

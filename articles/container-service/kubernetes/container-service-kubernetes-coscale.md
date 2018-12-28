@@ -1,5 +1,5 @@
 ---
-title: 使用 CoScale 监视 Azure Kubernetes 群集
+title: （已弃用）使用 CoScale 监视 Azure Kubernetes 群集
 description: 使用 CoScale 在 Azure 容器服务中监视 Kubernetes 群集
 services: container-service
 author: fryckbos
@@ -9,18 +9,18 @@ ms.topic: article
 ms.date: 05/22/2017
 ms.author: saudas
 ms.custom: mvc
-ms.openlocfilehash: e9896a34e835646e17328482c07d8031c624e858
-ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
+ms.openlocfilehash: 895346447e33926dcaa5ca09302f35c9d6636ed9
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45544024"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "53000233"
 ---
-# <a name="monitor-an-azure-container-service-kubernetes-cluster-with-coscale"></a>使用 CoScale 监视 Azure 容器服务 Kubernetes 群集
+# <a name="deprecated-monitor-an-azure-container-service-kubernetes-cluster-with-coscale"></a>（已弃用）使用 CoScale 监视 Azure 容器服务 Kubernetes 群集
 
-[!INCLUDE [aks-preview-redirect.md](../../../includes/aks-preview-redirect.md)]
+[!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
-在本文中，我们将介绍如何部署 [CoScale](https://www.coscale.com/) 代理以监视 Azure 容器服务中 Kubernetes 群集中的所有节点和容器。 此配置需要具有 CoScale 的帐户。 
+在本文中，我们将介绍如何部署 [CoScale](https://web.archive.org/web/20180317071550/ https://www.coscale.com/) 代理以监视 Azure 容器服务中 Kubernetes 群集中的所有节点和容器。 此配置需要具有 CoScale 的帐户。 
 
 
 ## <a name="about-coscale"></a>关于 CoScale 
@@ -34,7 +34,7 @@ CoScale 是一种监视平台，用于从多个业务流程平台中的所有容
 
 ## <a name="prerequisites"></a>先决条件
 
-首先需要[创建 CoScale 帐户](https://www.coscale.com/free-trial)。
+首先需要[创建 CoScale 帐户](https://web.archive.org/web/20170507123133/ https://www.coscale.com/free-trial)。
 
 本演练假定用户已[使用 Azure 容器服务创建 Kubernetes 群集](container-service-kubernetes-walkthrough.md)，
 
@@ -81,5 +81,5 @@ CoScale 代理将自动部署在群集中的新计算机上。 发布新版本�
 
 ## <a name="next-steps"></a>后续步骤
 
-有关 CoScale 监视解决方案的详细信息，请参阅 [CoScale 文档](http://docs.coscale.com/)和[博客](https://www.coscale.com/blog)。 
+有关 CoScale 监视解决方案的详细信息，请参阅 [CoScale 文档](https://web.archive.org/web/20180415164304/ http://docs.coscale.com:80/)和[博客](https://web.archive.org/web/20170501021344/ http://www.coscale.com:80/blog)。 
 

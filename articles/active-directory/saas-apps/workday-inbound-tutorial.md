@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 06/18/2018
 ms.author: chmutali
-ms.openlocfilehash: 30354ddb010c22dabe5cd69373ae59daaf4a8b46
-ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
+ms.openlocfilehash: 754c3278cb01e010718fa4d3cb257acf6ffe99c9
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51346739"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52849847"
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning-preview"></a>教程：为 Workday 配置自动用户预配（预览版）
 
@@ -67,8 +67,8 @@ Azure AD 用户预配服务支持的 Workday 用户预配工作流可将以下�
 
 本节介绍适用于常见混合环境的端到端用户预配解决方案体系结构。 有两个相关的流：
 
-* **权威 HR 数据流 - 从 Workday 到本地 Active Directory 域服务：** 在此流中，工作人员事件（如新雇员、换岗、离职等）首先发生在云 Workday HR 租户中，然后事件数据通过 Azure AD 和预配代理流入本地 Active Directory 域服务。 根据事件的不同，可能会导致在 AD 中创建/更新/启用/禁用操作。
-* **电子邮件写回流 - 从本地 Active Directory 域服务到 Workday：** 在 Active Directory 域服务中完成帐户创建后，将通过 Azure AD Connect 实现与 Azure AD 的同步，并且可以将源自 Active Directory 域服务的电子邮件属性写回到 Workday。
+* **权威 HR 数据流 - 从 Workday 到本地 Active Directory：** 在此流中，工作人员事件（如新雇员、换岗、离职等）首先发生在云 Workday HR 租户中，然后事件数据通过 Azure AD 和预配代理流入本地 Active Directory。 根据事件的不同，可能会导致在 AD 中创建/更新/启用/禁用操作。
+* **电子邮件写回流 - 从本地 Active Directory 到 Workday：** 在 Active Directory 域服务中完成帐户创建后，将通过 Azure AD Connect 实现与 Azure AD 的同步，并且可以将源自 Active Directory 的电子邮件属性写回到 Workday。
 
 ![概述](./media/workday-inbound-tutorial/wd_overview.png)
 
@@ -154,33 +154,33 @@ Workday 到 AD 用户预配解决方案需要在运行 Windows 2012 R2 或至少
 
 * **需要将 Workday 中的哪些用户预配到此 Active Directory 林？**
 
-   * *示例：Workday“Company”属性包含值“Contoso”，并且“Worker_Type”属性包含“Regular”的用户*
+   * 示例：Workday“Company”属性包含值“Contoso”，并且“Worker_Type”属性包含“Regular”
 
 * **如何将用户路由到不同的组织单位 (OU)？**
 
-   * *示例：将用户路由到与 Workday“Municipality”和“Country_Region_Reference”属性中定义的办公地点相对应的 OU*
+   * 示例：将用户路由到与 Workday“Municipality”和“Country_Region_Reference”属性中定义的办公地点相对应的 OU
 
 * **如何在 Active Directory 中填充以下属性？**
 
    * 公用名 (cn)
-      * *示例：使用人力资源部门设置的 Workday User_ID 值*
+      * 示例：使用人力资源部门设置的 Workday User_ID 值
       
    * 员工 ID (employeeId)
-      * *示例：使用 Workday Worker_ID 值*
+      * 示例：使用 Workday Worker_ID 值
       
    * SAM 帐户名 (sAMAccountName)
-      * *示例：使用 Workday User_ID 值，该值已通过 Azure AD 预配表达式筛选，以删除非法字符*
+      * 示例：*使用 Workday User_ID 值，该值已通过 Azure AD 预配表达式筛选，以删除非法字符*
       
    * 用户主体名称 (userPrincipalName)
-      * *示例：使用 Workday User_ID 值，并通过 Azure AD 预配表达式在其后追加一个域名*
+      * 示例：使用 Workday User_ID 值，并通过 Azure AD 预配表达式在其后追加一个域名
 
 * **如何匹配 Workday 与 Active Directory 之间的用户？**
 
-  * *示例：将具有特定 Workday“Worker_ID”值的用户与“employeeID”值相同的 Active Directory 用户进行匹配。如果在 Active Directory 中找不到该 Worker_ID 值，则创建新用户。*
+  * 示例：*具有特定 Workday“Worker_ID”值的用户与“employeeID”值相同的 Active Directory 用户匹配。如果在 Active Directory 中找不到该 Worker_ID 值，则创建新用户。*
   
 * **Active Directory 林是否已包含使匹配逻辑正常工作所需的用户 ID？**
 
-  * *示例：如果这是新的 Workday 部署，则我们强烈建议在 Active Directory 中预先填充正确的 Workday Worker_ID 值（或所选的唯一 ID 值），以便尽量简化匹配逻辑。*
+  * 示例：如果这是新的 Workday 部署，则我们强烈建议在 Active Directory 中预先填充正确的 Workday Worker_ID 值（或所选的唯一 ID 值），以便尽量简化匹配逻辑。
 
 
 
@@ -235,8 +235,8 @@ Workday 到 AD 用户预配解决方案需要在运行 Windows 2012 R2 或至少
     ![域安全策略](./media/workday-inbound-tutorial/wd_isu_06.png "域安全策略")  
 2. 在“域”文本框中，搜索以下域，并将其逐个添加到筛选器中。  
    * 外部帐户预配
-   * 工作人员数据：公职人员报告
-   * 人员数据：工作联系人信息
+   * 工作人员数据：公职人员报表
+   * 个人数据：工作联系人信息
    * 工作人员数据：所有职位
    * 工作人员数据：当前人员配备信息
    * 工作人员数据：工作人员个人资料中的职称
@@ -263,8 +263,8 @@ Workday 到 AD 用户预配解决方案需要在运行 Windows 2012 R2 或至少
 
    | Operation | 域安全策略 |
    | ---------- | ---------- | 
-   | “获取”和“放置” | 工作人员数据：公职人员报告 |
-   | “获取”和“放置” | 人员数据：工作联系人信息 |
+   | “获取”和“放置” | 工作人员数据：公职人员报表 |
+   | “获取”和“放置” | 个人数据：工作联系人信息 |
    | 获取 | 工作人员数据：所有职位 |
    | 获取 | 工作人员数据：当前人员配备信息 |
    | 获取 | 工作人员数据：工作人员个人资料中的职称 |
@@ -392,7 +392,7 @@ Workday 到 AD 用户预配解决方案需要在运行 Windows 2012 R2 或至少
    * Active Directory 林 - 使用代理注册的 Active Directory 域的“名称”。 这通常是如下所示的字符串：*contoso.com*
 
    * Active Directory 容器 - 输入默认情况下代理应在其中创建用户帐户的容器 DN。 
-        示例：*OU=Standard Users,OU=Users,DC=contoso,DC=test*
+        示例：OU=Standard Users,OU=Users,DC=contoso,DC=test
 > [!NOTE]
 > 如果未在属性映射中配置 parentDistinguishedName 属性，则此设置仅对用户帐户创建起作用。 此设置不用于用户搜索或更新操作。 整个域子树属于搜索操作的范围。
    * **通知电子邮件** – 输入电子邮件地址，然后选中“如果失败，则发送电子邮件”复选框。
@@ -415,7 +415,7 @@ Workday 到 AD 用户预配解决方案需要在运行 Windows 2012 R2 或至少
 
       * 属性：WorkerID
 
-      * 运算符：REGEX 匹配
+      * 运算符：REGEX Match
 
       * 值：(1[0-9][0-9][0-9][0-9][0-9][0-9])
 
@@ -576,11 +576,11 @@ Workday 到 AD 用户预配解决方案需要在运行 Windows 2012 R2 或至少
 
       * 属性：WorkerID
 
-      * 运算符：REGEX 匹配
+      * 运算符：REGEX Match
 
       * 值：(1[0-9][0-9][0-9][0-9][0-9][0-9])
 
-   * 示例：仅限临时工和非普通员工
+   * 示例：仅限临时工和非正式员工
 
       * 属性：ContingentID
 
@@ -725,7 +725,7 @@ Azure AD 预配服务支持自定义列表或 Workday 属性，以包含人力�
 
     ```
     <?xml version="1.0" encoding="UTF-8"?>
-    <env:Envelope xmlns:env="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <env:Envelope xmlns:env="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="https://www.w3.org/2001/XMLSchema">
       <env:Body>
         <wd:Get_Workers_Request xmlns:wd="urn:com.workday/bsvc" wd:version="v21.1">
           <wd:Request_References wd:Skip_Non_Existing_Instances="true">
@@ -758,15 +758,15 @@ Azure AD 预配服务支持自定义列表或 Workday 属性，以包含人力�
 
     ![Workday Studio](./media/workday-inbound-tutorial/wdstudio3.png)
 
-14. 在文件树中，浏览“/env: Envelope > env: Body > wd:Get_Workers_Response > wd:Response_Data > wd: Worker”找到用户的数据。 
+14. 在文件树中，浏览 **/env:Envelope > env:Body > wd:Get_Workers_Response > wd:Response_Data > wd:Worker**，查找用户数据。 
 
-15. 在“wd: Worker”下，找到要添加的属性并将其选中。
+15. 在“wd：Worker”下，找到要添加的属性并将其选中。
 
 16. 复制“文档路径”字段中选定属性的 XPath 表达式。
 
 1. 从复制的表达式中删除“/env:Envelope/env:Body/wd:Get_Workers_Response/wd:Response_Data/”前缀。
 
-18. 如果复制的表达式中的最后一项是节点（例如“/wd: Birth_Date”），请在表达式的末尾追加 **/text()**。 如果最后一项是属性（例如“/@wd: type”），则不需要执行此操作。
+18. 如果复制的表达式中的最后一项为节点（例如“/ wd:Birth_Date”），则在表达式的末尾追加“/text()”。 如果最后一项是属性（例如“/@wd: type”），则不需要执行此操作。
 
 19. 结果应类似于 `wd:Worker/wd:Worker_Data/wd:Personal_Data/wd:Birth_Date/text()`。 这就是要复制到 Azure 门户中的内容。
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: cwatson
-ms.openlocfilehash: a564e72cc695830edfa5092eddc1f4f9b80ba519
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: b4f38d80bfddc342d83a3552efe5d4a60cf6350f
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52583509"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52680117"
 ---
 # <a name="understand-azure-spending-limit-and-how-to-remove-it"></a>了解 Azure 支出限制以及移除方式
 
@@ -29,7 +29,7 @@ Azure 中的支出限制是为了防止支出超过信用额度。 如果注册�
 
 因使用而产生的费用已经用完了订阅中包括的每月额度时，部署的服务会在该计费月的剩余时间中被禁用。 
 
-例如，用完订阅中所含信用额度后，部署的云服务会从生产中移除，Azure 虚拟机会被停止并取消分配。 你的存储帐户和数据库中的数据将只能通过只读方式访问。
+例如，用完订阅中所含信用额度后，部署的云服务会从生产中移除，Azure 虚拟机会被停止并取消分配。 你的存储帐户中的数据将只能通过只读方式访问。
 
 在下一计费周期开始时，如果订阅套餐包含多个月的额度，则将自动重新启用订阅。 然后就可重新部署云服务，并可完全访问存储帐户和数据库。
 
@@ -46,7 +46,7 @@ Azure 中的支出限制是为了防止支出超过信用额度。 如果注册�
 若要移除支出限制，请按照以下步骤操作：
 
 1. 登录到[帐户中心](https://account.windowsazure.com/Subscriptions)。
-1. 选择一个订阅。 如果订阅因达到支出限制而被禁用，请单击此通知：“订阅达到了支出限制，且已被禁用以免产生费用。” 否则，请单击“订阅状态”区域中的“移除支出限制”。
+1. 选择一个订阅。 如果订阅已因达到支出限制而被禁用，请单击此通知：“订阅已达到支出限制并已被禁用以免产生费用。” 否则，请单击“订阅状态”区域中的“移除支出限制”。
 1. 选择适合选项。
 
 ![选择删除支出限制的选项](./media/billing-spending-limit/remove-spending-limit.PNG)
@@ -86,4 +86,4 @@ Azure 中的支出限制是为了防止支出超过信用额度。 如果注册�
 
 ## <a name="need-help-contact-us"></a>需要帮助？ 请联系我们。
 
-如果你有任何疑问或需要帮助，请[创建支持请求](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)。
+如有任何疑问或需要帮助，请[创建支持请求](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)。

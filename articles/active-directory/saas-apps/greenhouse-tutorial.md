@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/19/2017
 ms.author: jeedes
-ms.openlocfilehash: 7f48a0c11beb038370a8fc00e64d87127d356dec
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 14cdf0ddf648fb4441785106d3a8123d73a4bde9
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39424737"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52835890"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-greenhouse"></a>教程：Azure Active Directory 与 Greenhouse 集成
 
@@ -110,7 +110,7 @@ ms.locfileid: "39424737"
 
     ![Greenhouse 域和 URL 单一登录信息](./media/greenhouse-tutorial/tutorial_greenhouse_url.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL： `https://<companyname>.greenhouse.io`
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“登录 URL”文本框中，使用以下模式键入 URL： `https://<companyname>.greenhouse.io`
 
     b. 在“标识符”文本框中，使用以下模式键入 URL：`https://<companyname>.greenhouse.io`
 
@@ -127,10 +127,10 @@ ms.locfileid: "39424737"
 
     ![配置单一登录“保存”按钮](./media/greenhouse-tutorial/tutorial_general_400.png)
 
-1. 要在“Greenhouse”端配置单一登录，需要将下载的元数据 XML 发送给 [Greenhouse 支持团队](http://www.greenhouse.io/contact)。
+1. 要在“Greenhouse”端配置单一登录，需要将下载的元数据 XML 发送给 [Greenhouse 支持团队](https://www.greenhouse.io/contact)。
 
 > [!TIP]
-> 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[ Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
+> 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
@@ -157,7 +157,7 @@ ms.locfileid: "39424737"
 
     ![“用户”对话框](./media/greenhouse-tutorial/create_aaduser_04.png)
 
-    a. 在“姓名”框中，键入“BrittaSimon”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“姓名”框中，键入“BrittaSimon”。
 
     b. 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
 
@@ -188,7 +188,7 @@ ms.locfileid: "39424737"
    
    ![添加新用户](./media/greenhouse-tutorial/ic790793.png "添加新用户")
 
-   a. 在“输入用户电子邮件”文本框中，键入要预配的有效 Azure Active Directory 帐户的电子邮件地址。
+   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“输入用户电子邮件”文本框中，键入要预配的有效 Azure Active Directory 帐户的电子邮件地址。
 
    b. 单击“ **保存**”。    
    
@@ -235,7 +235,7 @@ ms.locfileid: "39424737"
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](tutorial-list.md)
-* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
+* [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

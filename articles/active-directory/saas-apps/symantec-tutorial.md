@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/27/2017
 ms.author: jeedes
-ms.openlocfilehash: dbf21c7c22a9b3273a65f7e186a2ac02ccae6ba2
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: b933bc5f5ecb39c3462e4e9bd300f1e07fd718c0
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39436201"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52838765"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-symantec-web-security-service-wss"></a>教程：Azure Active Directory 与 Symantec Web Security Service (WSS) 集成
 
@@ -113,7 +113,7 @@ ms.locfileid: "39436201"
 
     ![Symantec Web Security Service (WSS) 域和 URL 单一登录信息](./media/symantec-tutorial/tutorial_symantecwebsecurityservicewss_url.png)
 
-    a. 在“标识符”文本框中，键入 URL：`https://saml.threatpulse.net:8443/saml/saml_realm`
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“标识符”文本框中，键入 URL：`https://saml.threatpulse.net:8443/saml/saml_realm`
 
     b. 在“回复 URL”文本框中，键入 URL：`https://saml.threatpulse.net:8443/saml/saml_realm/bcsamlpost`
 
@@ -131,7 +131,7 @@ ms.locfileid: "39436201"
 1. 若要在 Symantec Web Security Service (WSS) 端配置单一登录，请参阅 WSS 联机文档。 需要将下载的“元数据 XML”文件导入到 WSS 门户。 如果配置 WSS 门户时需要帮助，请联系 [Symantec Web Security Service (WSS) 支持团队](https://www.symantec.com/contact-us)。
 
 > [!TIP]
-> 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[ Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
+> 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 
@@ -157,7 +157,7 @@ ms.locfileid: "39436201"
 
     ![“用户”对话框](./media/symantec-tutorial/create_aaduser_04.png)
 
-    a. 在“姓名”框中，键入“BrittaSimon”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“姓名”框中，键入“BrittaSimon”。
 
     b. 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
 
@@ -170,7 +170,7 @@ ms.locfileid: "39436201"
 在本部分中，将在 Symantec Web Security Service (WSS) 中创建一个名为 Britta Simon 的用户。 可在 WSS 门户中手动创建相应的最终用户名，或可等待 Azure AD 中预配的用户/组在几分钟（约 15 分钟）后同步到 WSS 门户。 使用单一登录前，必须先创建并激活用户。 将用于浏览网站的最终用户计算机的公共 IP 地址也需要在 Symantec Web Security Service (WSS) 门户中进行预配。
 
 > [!NOTE]
-> 请[单击此处](http://www.bing.com/search?q=my+ip+address&qs=AS&pq=my+ip+a&sc=8-7&cvid=29A720C95C78488CA3F9A6BA0B3F98C5&FORM=QBLH&sp=1)，获取计算机的公共 IP 地址。
+> 请[单击此处](https://www.bing.com/search?q=my+ip+address&qs=AS&pq=my+ip+a&sc=8-7&cvid=29A720C95C78488CA3F9A6BA0B3F98C5&FORM=QBLH&sp=1)，获取计算机的公共 IP 地址。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
@@ -211,7 +211,7 @@ ms.locfileid: "39436201"
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](tutorial-list.md)
-* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
+* [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

@@ -5,7 +5,7 @@ keywords: 机器学习简介, 预测建模, 什么是机器学习
 services: machine-learning
 documentationcenter: ''
 author: ericlicoding
-ms.custom: (previous ms.author=hshapiro, author=heatherbshapiro)
+ms.custom: seodec18
 ms.author: amlstudiodocs
 ms.assetid: a4a32a06-dbed-4727-a857-c10da774ce66
 ms.service: machine-learning
@@ -15,14 +15,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/02/2017
-ms.openlocfilehash: c9c80da55737d0093813b84e33d3d90c5d7d4603
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 23de87bb566764540f1a7bf152d72bfdc0e3719f
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52309134"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53091270"
 ---
-# <a name="azure-machine-learning-studio-frequently-asked-questions-billing-capabilities-limitations-and-support"></a>Azure 机器学习工作室常见问题：计费、功能、限制和支持
+# <a name="azure-machine-learning-studio-faq-billing-capabilities-limitations-and-support"></a>Azure 机器学习工作室常见问题解答：计费、功能、限制和支持
 下面提供了一些有关 Azure 机器学习的常见问题 (FAQ) 和相应解答。Azure 机器学习是适合通过 Web 服务开发预测模型和操作解决方案的云服务。 这些常见问题涉及到服务使用方法，包括计费模式、功能、限制和支持。
 
 **存在此处找不到的问题？**
@@ -32,7 +32,7 @@ Azure 机器学习在 MSDN 上设有论坛，数据科学社区的成员可以�
 ## <a name="general-questions"></a>一般问题
 **什么是机器学习工作室？**
 
-机器学习工作室是可通过 Web 浏览器对其进行访问的拖放画布环境。机器学习工作室在可视化组合界面中托管了一组模块，有助于以试验形式构建端到端的数据科学工作流。
+机器学习工作室是一个拖放画布环境，使用 Web 浏览器对其进行访问。 机器学习工作室在可视组合界面中托管了一组模块，有助于以试验形式构建端到端数据科学工作流。
 
 有关机器学习工作室的详细信息，请参阅[什么是机器学习工作室？](what-is-ml-studio.md)
 
@@ -55,7 +55,7 @@ Azure 机器学习在 MSDN 上设有论坛，数据科学社区的成员可以�
 
 Azure 机器学习有两种类型的 Web 服务：
 
-* 请求响应服务 (RRS)：低延迟、高度可缩放的服务，为使用机器学习工作室创建和部署的无状态模型提供接口。
+* 请求响应服务 (RRS)：低延迟、高度可缩放的服务，针对使用机器学习工作室创建和部署的无状态模型提供接口。
 * 批处理执行服务 (BES)：为一批数据记录进行评分的异步服务。
 
 可通过多种方法来使用 REST API 和访问 Web 服务。 例如，可以使用部署 Web 服务时生成的示例代码，在 C#、R 或 Python 中编写应用程序。
@@ -96,7 +96,7 @@ Azure 机器学习有两种类型的 Web 服务：
 
 * 推荐器模块
 * 合成少数类过采样技术 (SMOTE) 模块
-* 脚本模块：R、Python SQL
+* 脚本模块：R、Python、SQL
 * 输出数据大小可以大于输入数据大小的模块，例如联接或特征哈希
 * 迭代数目极大时的交叉验证、调整模型超参数、顺序回归和一对多的多类
 
@@ -263,7 +263,7 @@ Azure 机器学习有两种类型的 Web 服务：
 
 * 推荐器模块
 * 合成少数类过采样技术 (SMOTE) 模块
-* 脚本模块：R、Python SQL
+* 脚本模块：R、Python、SQL
 * 输出数据大小可以大于输入数据大小的模块，例如联接或特征哈希
 * 迭代数目极大时的交叉验证、调整模型超参数、顺序回归和一对多的多类
 
@@ -438,7 +438,7 @@ API 计算小时数是使用机器学习计算资源运行 API 调用所花费�
 
 是的。 不同的区域有不同的计划定价。 将 Web 服务部署到其他区域时，需要为服务分配该区域特定的计划。 有关详细信息，请参阅 [可用产品（按区域）]( https://azure.microsoft.com/regions/services/)。
 
-### <a name="new-web-services-overages"></a>新的 Web 服务：超额
+### <a name="new-web-services-overages"></a>新 Web 服务：超额部分
 **如何检查 Web 服务使用量是否超额？**
 
 可以在 Azure 机器学习 Web 服务门户的“计划”页中查看所有计划的使用量。 登录到门户，并单击“计划”菜单选项。
@@ -488,15 +488,15 @@ Azure 机器学习 API 服务根据它是经典 Web 服务还是新（基于 Res
 * 通过连接本地服务器来访问数据，该服务器在训练和评分模型中运行 SQL Server。
 * 对于经典 Web 服务：
   * 生产 API 计算小时数：此指标包括在生产中运行的 Web 服务所产生的计算费用。
-  * 生产 API 事务数（以 1000 次为单位）：此指标包括每次调用生产 Web 服务所产生的费用。
+  * 生产 API 事务（以 1000 次为单位）：此指标包括每次调用生产 Web 服务所产生的费用。
 
 除前述费用外，如果是基于 Resource Manager 的 Web 服务，费用将聚合到选定计划：
 
-* 标准 S1/S2/S3 API 计划（单位）：此指标表示为基于 Resource Manager 的 Web 服务选择的实例类型。
-* 标准 S1/S2/S3 超额 API 计算小时数：此指标包括现有实例中包含的数量用完后，基于 Resource Manager 的 Web 服务在生产环境中运行所产生的计算费用。 额外的使用量将按照与 S1/S2/S3 计划层关联的超额费率收费。
-* 标准 S1/S2/S3 超额 API 事务（以 1,000 计）：此指标包括现有实例中包含的数量用完后，对生产环境的基于 Resource Manager 的 Web 服务进行的每个调用所产生的费用。 额外的使用量将按照与 S1/S2/S3 计划层关联的超额费率收费。
-* 已包含的 API 计算小时数：在基于 Resource Manager 的 Web 服务中，此指标表示 API 计算小时数的已包含数量。
-* 已包含的 API 事务数（以 1,000 计）：在基于 Resource Manager 的 Web 服务中，此指标表示 API 事务的已包含数量。
+* 标准 S1/S2/S3 API 计划（单位）：此指标表示为基于资源管理器的 Web 服务选择的实例类型。
+* 标准 S1/S2/S3 超额 API 计算小时数：此指标包括现有实例中包含的数量用完后，基于资源管理器的 Web 服务在生产环境中运行所产生的计算费用。 额外的使用量将按照与 S1/S2/S3 计划层关联的超额费率收费。
+* 标准 S1/S2/S3 超额 API 事务（以 1,000 计）：此指标包括现有实例中包含的数量用完后，对生产环境的基于资源管理器的 Web 服务进行的每个调用所产生的费用。 额外的使用量将按照与 S1/S2/S3 计划层关联的超额费率收费。
+* 已包含的 API 计算小时数：在基于资源管理器的 Web 服务中，此指标表示 API 计算小时数的已包含数量。
+* 已包含的 API 事务数（以 1,000 计）：在基于资源管理器的 Web 服务中，此指标表示 API 事务的已包含数量。
 
 **如何注册 Azure 机器学习免费层？**
 

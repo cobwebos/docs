@@ -16,12 +16,12 @@ ms.component: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: a76486eaf2f9df8eb47b8bb73f1577324152a80f
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 65747da92a3cad770cd9d474d27645782f7306b9
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51623292"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52998739"
 ---
 # <a name="troubleshooting-azure-active-directory-activity-logs-content-pack-errors"></a>Azure Active Directory 活动日志内容包错误故障排除 
 
@@ -34,12 +34,13 @@ ms.locfileid: "51623292"
 
 - [刷新失败](troubleshoot-content-pack.md#refresh-failed) 
 - [无法更新数据源凭据](troubleshoot-content-pack.md#failed-to-update-data-source-credentials) 
-- [导入数据花费的时间过长](troubleshoot-content-pack.md#importing-of-data-is-taking-too-long)  
+- [导入数据的时间过长](troubleshoot-content-pack.md#importing-of-data-is-taking-too-long) 
+
 本文提供了有关可能的原因以及如何修复这些错误的信息。
  
 ## <a name="refresh-failed"></a>刷新失败 
  
-此错误是如何发现的：根据 Power BI 的电子邮件或刷新历史记录中的失败状态。 
+**此错误是如何发现的**：根据 Power BI 的电子邮件或刷新历史记录中的失败状态。 
 
 
 | 原因 | 如何解决 |
@@ -61,7 +62,7 @@ ms.locfileid: "51623292"
 
 ## <a name="data-import-is-too-slow"></a>数据导入速度太慢 
  
-**此错误是如何发现的**：在 Power BI 中，在连接内容包后，数据导入过程开始为 Azure AD 活动日志准备仪表板。 你会看到消息：**正在导入数据...** 且没有进一步的进展。  
+**此错误是如何发现的**：在 Power BI 中，在连接内容包后，数据导入过程开始为 Azure AD 活动日志准备仪表板。 将显示以下消息：**正在导入数据...** 且没有进一步的进展。  
 
 | 原因 | 如何解决 |
 | ---   | ---        |

@@ -7,15 +7,15 @@ manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 11/01/2018
+ms.date: 12/05/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 8068c4a8f38cd33a1a0547f5db5079bc75c76ec1
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: fcebada4ef10c3e0bb298e9308d66ecb37247832
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51013405"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52999250"
 ---
 # <a name="register-an-application-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中注册应用程序
 
@@ -82,7 +82,4 @@ ms.locfileid: "51013405"
 
 ## <a name="next-steps"></a>后续步骤
 
-将应用程序注册到 Azure AD B2C 以后，接下来可以完成[快速入门教程](active-directory-b2c-overview.md)之一，进一步做好启动和运行准备。
-
-> [!div class="nextstepaction"]
-> [使用注册、登录和密码重置创建 ASP.NET Web 应用](active-directory-b2c-devquickstarts-web-dotnet-susi.md)
+详细了解授予对[请求访问令牌](active-directory-b2c-access-tokens.md)中的 API 的权限的应用程序如何使用访问令牌

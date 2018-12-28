@@ -1,5 +1,6 @@
 ---
-title: 使用 Azure 机器学习优化模型的超参数
+title: 优化模型的超参数
+titleSuffix: Azure Machine Learning service
 description: 使用 Azure 机器学习服务，有效地优化深度学习/机器学习模型的超参数。 本文将介绍如何定义参数搜索空间、指定要优化的主要指标，以及提前终止性能不佳的运行。
 ms.author: swatig
 author: swatig007
@@ -8,15 +9,16 @@ services: machine-learning
 ms.service: machine-learning
 ms.component: core
 ms.topic: conceptual
-ms.date: 09/24/2018
-ms.openlocfilehash: e66dcac1d83c71174ad5d7c3fdcd2310143f8e01
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.date: 12/04/2018
+ms.custom: seodec18
+ms.openlocfilehash: da809aaaa1dd46c1232d0b032136833caaf0d2d0
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50140800"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53100729"
 ---
-# <a name="tune-hyperparameters-for-your-model"></a>优化模型的超参数
+# <a name="tune-hyperparameters-for-your-model-with-azure-machine-learning-service"></a>使用 Azure 机器学习服务优化模型的超参数
 
 使用 Azure 机器学习服务有效地优化模型的超参数。  超参数优化包括以下步骤：
 
@@ -36,8 +38,6 @@ ms.locfileid: "50140800"
 
 使用 Azure 机器学习可以有效地将超参数探索过程自动化，从而节省大量时间和资源。 指定超参数值的范围及训练运行的最大数量。 然后，系统会自动启动多个具有不同参数配置且同时进行的运行，并找到可以提供最佳性能的配置（由你选择的指标来度量）。 性能不佳的训练运行会自动提前终止，从而可以减少计算资源的浪费。 这些资源可以用来探索其他超参数配置。
 
->[!NOTE]
-> 本文中的代码已使用 Azure 机器学习 SDK 版本 0.168 进行测试 
 
 ## <a name="define-search-space"></a>定义搜索空间
 
@@ -311,7 +311,7 @@ hyperdrive_run = experiment.submit(hyperdrive_run_config)
 Azure 机器学习 SDK 提供了可将训练运行进度可视化的 Notebook 小组件。 以下代码片段可在 Jupyter 笔记本中的一个位置可视化所有的超参数优化运行：
 
 ```Python
-from azureml.train.widgets import RunDetails
+from azureml.widgets import RunDetails
 RunDetails(hyperdrive_run).show()
 ```
 
@@ -348,10 +348,9 @@ print('\n batch size:',parameter_values[7])
 ```
 
 ## <a name="sample-notebook"></a>示例 Notebook
-请参阅 
-* [training/03.train-hyperparameter-tune-deploy-with-tensorflow](https://github.com/Azure/MachineLearningNotebooks/blob/master/training/03.train-hyperparameter-tune-deploy-with-tensorflow)获取有关为 Tensorflow 模型优化超参数的教程。 
-
-获取此笔记本：
+请参阅以下笔记本：
+* [how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-pytorch](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-pytorch) 
+* [how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-tensorflow](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-tensorflow)
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-for-examples.md)]
 

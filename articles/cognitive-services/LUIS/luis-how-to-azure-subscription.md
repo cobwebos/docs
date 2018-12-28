@@ -1,21 +1,22 @@
 ---
-title: LUIS 中的终结点订阅管理
-titleSuffix: Azure Cognitive Services
+title: Azure 资源管理
+titleSuffix: Language Understanding - Azure Cognitive Services
 description: 本文中将为 LUIS 帐户创建计量终结点密钥，以在拥有付费计划后为终结点提供无限流量。
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: c7c6009d9fec14e8633a37e5384dd203f2f5fa60
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 5d3e837cf644e0cb9b35a0cfc715a9dcace592e3
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47040374"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53082979"
 ---
 # <a name="manage-azure-endpoint-subscription-keys"></a>管理 Azure 终结点订阅密钥
 
@@ -56,7 +57,7 @@ ms.locfileid: "47040374"
 5. 请记住在“发布”页[分配此终结点密钥](luis-how-to-manage-keys.md#assign-endpoint-key)，并将其用于所有终结点查询。 
 
 ## <a name="exceed-pricing-tier-usage"></a>超出定价层用量
-每层允许以特定速率向 LUIS 帐户发送终结点请求。 如果请求速率高于计费帐户的每分钟或每月的允许速率，则请求会出现 HTTP 错误“429: 请求过多”。
+每层允许以特定速率向 LUIS 帐户发送终结点请求。 如果请求速率高于计费帐户的每分钟或每月的允许速率，则请求会出现 HTTP 错误“429:请求过多”。
 
 每层允许按月累计请求数。 如果总请求数大于允许的速率，则请求会出现 HTTP 错误“403: 禁止”。  
 

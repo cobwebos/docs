@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/01/2018
 ms.author: spelluru
-ms.openlocfilehash: 5532c86271fa6a5f2b573e005993a68ac0a9e248
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: 25d2db5dcf3979341fc104643f7178047c29483b
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48857065"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52842826"
 ---
 # <a name="managed-identities-for-azure-resources-with-service-bus"></a>结合使用 Azure 资源的托管标识与 Azure 服务总线 
 
@@ -51,12 +51,10 @@ ms.locfileid: "48857065"
 
 ### <a name="create-a-new-service-bus-messaging-namespace"></a>创建新的服务总线消息传递命名空间
 
-接下来，在支持 RBAC 预览版的 Azure 区域（**美国东部**、**美国东部 2** 或**西欧**）之一中[创建服务总线消息传递命名空间](service-bus-create-namespace-portal.md)。 
+接下来，在支持 RBAC 预览版的以下 Azure 区域之一中[创建服务总线消息命名空间](service-bus-create-namespace-portal.md)：美国东部、美国东部 2 或西欧。 
 
-转到门户上的命名空间“访问控制(标识和访问管理)”页，再单击“添加”，向“所有者”角色添加托管标识。 为此，请在“添加权限”面板的“选择”字段中搜索 Web 应用程序的名称，然后单击该条目。 然后单击“保存”。
+在门户上导航到命名空间“访问控制(IAM)”页面，然后单击“添加角色分配”将托管标识添加到“所有者”角色。 为此，请在“添加权限”面板的“选择”字段中搜索 Web 应用程序的名称，然后单击该条目。 然后单击“保存”。
 
-![](./media/service-bus-managed-service-identity/msi2.png)
- 
 Web 应用程序的托管标识现已拥有对服务总线命名空间和之前创建的队列的访问权限。 
 
 ### <a name="run-the-app"></a>运行应用

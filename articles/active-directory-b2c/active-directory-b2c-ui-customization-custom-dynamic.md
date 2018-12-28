@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/20/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 11a14bc8b593e5e7d81e9bdbd4ac4ee3b2bbecaa
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: f078c1389e36b82f95b011ca1fbd7fbd1c4f895e
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52582881"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52834215"
 ---
 # <a name="azure-active-directory-b2c-configure-the-ui-with-dynamic-content-by-using-custom-policies"></a>Azure Active Directory B2C：使用自定义策略配置包含动态内容的 UI
 
@@ -193,7 +193,7 @@ HTML5 模板现在可供使用。 但是，无法在 `ContentDefinition` 代码�
 * 为 CORS 启用了内容服务器。
 
     >[!NOTE]
-    >若要验证托管内容的站点是否已启用 CORS 并可测试 CORS 请求，请转到 [test-cors.org](http://test-cors.org/) 网站。 
+    >若要验证托管内容的站点是否已启用 CORS 并可测试 CORS 请求，请转到 [test-cors.org](https://test-cors.org/) 网站。 
 
 * 提供的内容通过 **HTTPS** 安全传输。
 * 为所有链接、CSS 内容和图像使用绝对 URL，例如 *https://yourdomain/content*。
@@ -249,7 +249,7 @@ HTML5 模板现在可供使用。 但是，无法在 `ContentDefinition` 代码�
 
 2. 搜索 `<DefaultUserJourney>` 节点。 
 
-3. 在 `<DefaultUserJourney>` 节点中添加以下 XML 片段：  
+3. 在 `<DefaultUserJourney>` 节点中添加以下 XML 代码片段：  
 
     ```XML
     <UserJourneyBehaviors>

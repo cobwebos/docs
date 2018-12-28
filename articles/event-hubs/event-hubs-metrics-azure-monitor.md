@@ -1,6 +1,6 @@
 ---
 title: Azure Monitor（预览版）中的 Azure 事件中心指标 | Microsoft Docs
-description: 使用 Azure 监视来监视事件中心
+description: 本文介绍如何使用 Azure 监视功能来监视 Azure 事件中心
 services: event-hubs
 documentationcenter: .NET
 author: ShubhaVijayasarathy
@@ -12,14 +12,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/16/2018
+ms.custom: seodec18
+ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: c59cb8277bee13a83d0bf17c26deef1b8fc8d3e6
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: 27a9f2619801346660dfedbda3eefe57b41ad6ac
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51822837"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53094315"
 ---
 # <a name="azure-event-hubs-metrics-in-azure-monitor-preview"></a>Azure Monitor（预览版）中的 Azure 事件中心指标
 
@@ -37,13 +38,13 @@ Azure Monitor 提供多种访问指标的方法。 可从 [Azure 门户](https:/
 
 可在 [Azure 门户](https://portal.azure.com)中监视一段时间内的指标。 以下示例演示了如何在帐户级别查看成功的请求和传入的请求：
 
-![][1]
+![查看成功的指标][1]
 
 也可以直接通过命名空间来访问指标。 为此，请选择命名空间，然后单击“指标（预览）”。 若要显示筛选到事件中心范围的指标，请选择事件中心，然后单击“指标（预览）”。
 
 对于支持维度的指标，必须使用所需的维度值进行筛选，如以下示例所示：
 
-![][2]
+![使用维度值进行筛选][2]
 
 ## <a name="billing"></a>计费
 
@@ -62,34 +63,34 @@ Azure Monitor 提供多种访问指标的方法。 可从 [Azure 门户](https:/
 
 | 指标名称 | Description |
 | ------------------- | ----------------- |
-| 传入的请求数（预览版） | 在指定期间内向 Azure 事件中心服务发送的请求数。 <br/><br/> 单位：计数 <br/> 聚合类型：总计 <br/> 维度：EntityName |
-| 成功的请求（预览）   | 在指定期间内向 Azure 事件中心服务发送成功的请求数。 <br/><br/> 单位：计数 <br/> 聚合类型：总计 <br/> 维度：EntityName |
-| 服务器错误（预览） | 由于 Azure 事件中心服务发生错误，在指定期间内未处理的请求数。 <br/><br/>单位：计数 <br/> 聚合类型：总计 <br/> 维度：EntityName |
-|用户错误数（预览版）|由于存在用户错误，在指定期间内未处理的请求数。<br/><br/> 单位：计数 <br/> 聚合类型：总计 <br/> 维度：EntityName|
-|超出配额的错误（预览）|超出可用配额的请求数。 有关事件中心配额的详细信息，请参阅[本文](event-hubs-quotas.md)。<br/><br/> 单位：计数 <br/> 聚合类型：总计 <br/> 维度：EntityName|
+| 传入的请求数（预览版） | 在指定期间内向 Azure 事件中心服务发送的请求数。 <br/><br/> 单位：Count <br/> 聚合类型：总计 <br/> 维度：EntityName |
+| 成功的请求数（预览版）   | 在指定期间内向 Azure 事件中心服务发送成功的请求数。 <br/><br/> 单位：Count <br/> 聚合类型：总计 <br/> 维度：EntityName |
+| 服务器错误数（预览版） | 由于 Azure 事件中心服务发生错误，在指定期间内未处理的请求数。 <br/><br/>单位：Count <br/> 聚合类型：总计 <br/> 维度：EntityName |
+|用户错误数（预览版）|由于存在用户错误，在指定期间内未处理的请求数。<br/><br/> 单位：Count <br/> 聚合类型：总计 <br/> 维度：EntityName|
+|超出配额的错误（预览）|超出可用配额的请求数。 有关事件中心配额的详细信息，请参阅[本文](event-hubs-quotas.md)。<br/><br/> 单位：Count <br/> 聚合类型：总计 <br/> 维度：EntityName|
 
 ## <a name="throughput-metrics"></a>吞吐量指标
 
 | 指标名称 | Description |
 | ------------------- | ----------------- |
-|限制的请求数（预览版）|由于超出吞吐量单位用量而被限制的请求数。<br/><br/> 单位：计数 <br/> 聚合类型：总计 <br/> 维度：EntityName|
+|限制的请求数（预览版）|由于超出吞吐量单位用量而被限制的请求数。<br/><br/> 单位：Count <br/> 聚合类型：总计 <br/> 维度：EntityName|
 
 ## <a name="message-metrics"></a>消息指标
 
 | 指标名称 | Description |
 | ------------------- | ----------------- |
-|传入的消息数（预览版）|在指定期间内发送到事件中心的事件或邮件数。<br/><br/> 单位：计数 <br/> 聚合类型：总计 <br/> 维度：EntityName|
-|待发邮件（预览）|在指定期间内从事件中心检索的事件或邮件数。<br/><br/> 单位：计数 <br/> 聚合类型：总计 <br/> 维度：EntityName|
-|传入的字节（预览）|在指定期间内向 Azure 事件中心服务发送的字节数。<br/><br/> 单元：字节 <br/> 聚合类型：总计 <br/> 维度：EntityName|
-|待发字节（预览）|在指定期间内从 Azure 事件中心服务检索的字节数。<br/><br/> 单元：字节 <br/> 聚合类型：总计 <br/> 维度：EntityName|
+|传入的消息数（预览版）|在指定期间内发送到事件中心的事件或邮件数。<br/><br/> 单位：Count <br/> 聚合类型：总计 <br/> 维度：EntityName|
+|传出的消息数（预览版）|在指定期间内从事件中心检索的事件或邮件数。<br/><br/> 单位：Count <br/> 聚合类型：总计 <br/> 维度：EntityName|
+|传入的字节（预览）|在指定期间内向 Azure 事件中心服务发送的字节数。<br/><br/> 单位：字节 <br/> 聚合类型：总计 <br/> 维度：EntityName|
+|待发字节（预览）|在指定期间内从 Azure 事件中心服务检索的字节数。<br/><br/> 单位：字节 <br/> 聚合类型：总计 <br/> 维度：EntityName|
 
 ## <a name="connection-metrics"></a>连接指标
 
 | 指标名称 | Description |
 | ------------------- | ----------------- |
-|ActiveConnections（预览版）|命名空间以及实体上的活动连接数。<br/><br/> 单位：计数 <br/> 聚合类型：总计 <br/> 维度：EntityName|
-|打开的连接数（预览版）|打开的连接数。<br/><br/> 单位：计数 <br/> 聚合类型：总计 <br/> 维度：EntityName|
-|关闭的连接数（预览版）|关闭的连接数。<br/><br/> 单位：计数 <br/> 聚合类型：总计 <br/> 维度：EntityName|
+|ActiveConnections（预览版）|命名空间以及实体上的活动连接数。<br/><br/> 单位：Count <br/> 聚合类型：总计 <br/> 维度：EntityName|
+|打开的连接数（预览版）|打开的连接数。<br/><br/> 单位：Count <br/> 聚合类型：总计 <br/> 维度：EntityName|
+|关闭的连接数（预览版）|关闭的连接数。<br/><br/> 单位：Count <br/> 聚合类型：总计 <br/> 维度：EntityName|
 
 ## <a name="event-hubs-capture-metrics"></a>事件中心捕获指标
 
@@ -97,9 +98,9 @@ Azure Monitor 提供多种访问指标的方法。 可从 [Azure 门户](https:/
 
 | 指标名称 | Description |
 | ------------------- | ----------------- |
-|捕获的积压工作（预览）|尚未捕获到所选目标的字节数。<br/><br/> 单元：字节 <br/> 聚合类型：总计 <br/> 维度：EntityName|
-|捕获的邮件（预览）|在指定期间内捕获到所选目标的邮件或事件数。<br/><br/> 单位：计数 <br/> 聚合类型：总计 <br/> 维度：EntityName|
-|捕获的字节（预览）|在指定期间内捕获到所选目标的字节数。<br/><br/> 单元：字节 <br/> 聚合类型：总计 <br/> 维度：EntityName|
+|捕获的积压工作（预览）|尚未捕获到所选目标的字节数。<br/><br/> 单位：字节 <br/> 聚合类型：总计 <br/> 维度：EntityName|
+|捕获的邮件（预览）|在指定期间内捕获到所选目标的邮件或事件数。<br/><br/> 单位：Count <br/> 聚合类型：总计 <br/> 维度：EntityName|
+|捕获的字节（预览）|在指定期间内捕获到所选目标的字节数。<br/><br/> 单位：字节 <br/> 聚合类型：总计 <br/> 维度：EntityName|
 
 ## <a name="metrics-dimensions"></a>指标维度
 

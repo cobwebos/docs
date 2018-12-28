@@ -1,5 +1,6 @@
 ---
-title: 使用 Azure 机器学习数据准备 SDK 转换数据 - Python
+title: 转换：数据准备 Python SDK
+titleSuffix: Azure Machine Learning service
 description: 了解如何使用 Azure 机器学习数据准备 SDK 转换和清理数据。 转换方法可用于添加列、筛选掉不需要的行或列，以及估算缺失值。
 services: machine-learning
 ms.service: machine-learning
@@ -9,13 +10,14 @@ ms.author: cforbe
 author: cforbe
 manager: cgronlun
 ms.reviewer: jmartens
-ms.date: 09/24/2018
-ms.openlocfilehash: 988301f24f710a3e29fad1254d405501166e8a4e
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.date: 12/04/2018
+ms.custom: seodec18
+ms.openlocfilehash: d32244cd49ebd42192b2388215f79a64cacb3caa
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52309787"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53186134"
 ---
 # <a name="transform-data-with-the-azure-machine-learning-data-prep-sdk"></a>使用 Azure 机器学习数据准备 SDK 转换数据
 
@@ -216,16 +218,16 @@ builder.preview(skip=30)
 
 ||DATE|date_timerange|
 |-----|-----|-----|
-|30|11/1/2015 22:54|Jan 1, 2015 10PM-12AM|
-|31|11/1/2015 23:54|Jan 1, 2015 10PM-12AM|
-|32|11/1/2015 23:59|Jan 1, 2015 10PM-12AM|
-|33|11/2/2015 0:54|Feb 1, 2015 12AM-2AM|
-|34|11/2/2015 1:00|Feb 1, 2015 12AM-2AM|
-|35|11/2/2015 1:54|Feb 1, 2015 12AM-2AM|
-|36|11/2/2015 2:54|Feb 1, 2015 2AM-4AM|
-|37|11/2/2015 3:54|Feb 1, 2015 2AM-4AM|
-|38|11/2/2015 4:00|Feb 1, 2015 4AM-6AM|
-|39|11/2/2015 4:54|Feb 1, 2015 4AM-6AM|
+|30|1/1/2015 22:54|Jan 1, 2015 10PM-12AM|
+|31|1/1/2015 23:54|Jan 1, 2015 10PM-12AM|
+|32|1/1/2015 23:59|Jan 1, 2015 10PM-12AM|
+|33|1/2/2015 0:54|Feb 1, 2015 12AM-2AM|
+|34|1/2/2015 1:00|Feb 1, 2015 12AM-2AM|
+|35|1/2/2015 1:54|Feb 1, 2015 12AM-2AM|
+|36|1/2/2015 2:54|Feb 1, 2015 2AM-4AM|
+|37|1/2/2015 3:54|Feb 1, 2015 2AM-4AM|
+|38|1/2/2015 4:00|Feb 1, 2015 4AM-6AM|
+|39|1/2/2015 4:54|Feb 1, 2015 4AM-6AM|
 
 此处可以发现生成的程序存在问题。 仅根据你上面提供的一个示例，派生程序选择了将日期分析为“日/月/年”，但这并不符合本示例的需求。 若要解决此问题，请使用 `add_example()` 函数对 `builder` 变量提供另一个示例。
 

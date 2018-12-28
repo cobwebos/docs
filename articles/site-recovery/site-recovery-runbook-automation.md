@@ -1,18 +1,18 @@
 ---
 title: 将 Azure 自动化 Runbook 添加到 Site Recovery 恢复计划中 | Microsoft Docs
 description: 了解如何使用 Azure 自动化扩展恢复计划以使用 Azure Site Recovery 进行灾难恢复。
-author: ruturaj
+author: rajani-janaki-ram
 manager: gauravd
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 07/06/2018
-ms.author: ruturajd@microsoft.com
-ms.openlocfilehash: 1853d8d23aeb96cda3148c6c9e7668b9c2c28924
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.date: 11/27/2018
+ms.author: rajanaki
+ms.openlocfilehash: 5587d86cb4b3a213961ce46e77c75e947de2d29e
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51244003"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52866366"
 ---
 # <a name="add-azure-automation-runbooks-to-recovery-plans"></a>将 Azure 自动化 Runbook 添加到恢复计划
 本文将介绍 Azure Site Recovery 如何与 Azure 自动化集成，以便扩展恢复计划。 恢复计划可以安排恢复受 Site Recovery 保护的 VM。 恢复计划支持复制到辅助云和复制到 Azure。 恢复计划还有助于实现恢复的一致准确性、可重复性和自动化。 如果从 VM 故障转移到 Azure，与 Azure 自动化集成可以扩展恢复计划。 可用于执行 Runbook，从而提供功能强大的自动化任务。
@@ -27,9 +27,9 @@ ms.locfileid: "51244003"
     ![单击“自定义”按钮](media/site-recovery-runbook-automation-new/essentials-rp.png)
 
 
-2. 右键单击“组 1：启动”，再选择“添加后操作”。
+2. 右键单击“组 1: 启动”，然后选择“添加后操作”。
 
-    ![右键单击“组 1：启动”，并添加后操作](media/site-recovery-runbook-automation-new/customize-rp.png)
+    ![右键单击“组 1:”启动和添加后操作](media/site-recovery-runbook-automation-new/customize-rp.png)
 
 3. 单击“选择脚本”。
 
@@ -43,7 +43,7 @@ ms.locfileid: "51244003"
 
 6. 在自动化帐户中，选择一个 Runbook。 此 Runbook 是在恢复第一组后执行恢复计划期间运行的脚本。
 
-7. 选择“确定”，保存脚本。 此时，脚本添加到“组 1：后步骤”。
+7. 选择“确定”，保存脚本。 此脚本添加到“组 1: **后步骤”**。
 
     ![“组 1：后步骤”](media/site-recovery-runbook-automation-new/addedscript-rp.PNG)
 
@@ -213,7 +213,7 @@ workflow AddPublicIPAndNSG {
 4. 在 Runbook 中使用此变量。 如果在恢复计划上下文中找到了指定的 VM GUID，请在 VM 上应用 NSG：
 
     ```
-    $VMDetailsObj = Get-AutomationVariable -Name $RecoveryPlanContext.RecoveryPlanName
+    $VMDetailsObj = (Get-AutomationVariable -Name $RecoveryPlanContext.RecoveryPlanName).ToObject([hashtable])
     ```
 
 4. 在 Runbook 中，循环访问恢复计划上下文的 VM。 检查 $VMDetailsObj 中是否有 VM。 如果有，请访问变量属性，以应用 NSG：
@@ -223,13 +223,13 @@ workflow AddPublicIPAndNSG {
         $vmMap = $RecoveryPlanContext.VmMap
 
         foreach($VMID in $VMinfo) {
-            Write-output $VMDetailsObj.value.$VMID
-
-            if ($VMDetailsObj.value.$VMID -ne $Null) { #If the VM exists in the context, this will not b Null
+            $VMDetails = $VMDetailsObj[$VMID].ToObject([hashtable]);
+            Write-output $VMDetails
+            if ($VMDetails -ne $Null) { #If the VM exists in the context, this will not be Null
                 $VM = $vmMap.$VMID
                 # Access the properties of the variable
-                $NSGname = $VMDetailsObj.value.$VMID.'NSGName'
-                $NSGRGname = $VMDetailsObj.value.$VMID.'NSGResourceGroupName'
+                $NSGname = $VMDetails.NSGName
+                $NSGRGname = $VMDetails.NSGResourceGroupName
 
                 # Add code to apply the NSG properties to the VM
             }

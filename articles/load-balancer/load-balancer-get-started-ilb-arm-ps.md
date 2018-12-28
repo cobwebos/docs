@@ -1,5 +1,6 @@
 ---
-title: 使用 PowerShell 创建 Azure 内部负载均衡器 | Microsoft Docs
+title: 使用 PowerShell 创建 Azure 内部负载均衡器
+titlesuffix: Azure Load Balancer
 description: 了解如何将 Azure PowerShell 模块与 Azure 资源管理器配合使用，以便创建内部负载均衡器
 services: load-balancer
 documentationcenter: na
@@ -7,16 +8,17 @@ author: KumudD
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
+ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: 4e99411ec56f25e249429e4e65bae4a8e7071cc1
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 0a85c5e90be465b324248f961fd297b15c008d02
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50412680"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53075845"
 ---
 # <a name="create-an-internal-load-balancer-by-using-the-azure-powershell-module"></a>使用 Azure PowerShell 模块创建内部负载均衡器
 
@@ -135,8 +137,8 @@ $beaddresspool= New-AzureRmLoadBalancerBackendAddressPoolConfig -Name "LB-backen
 
 此示例创建以下四个规则对象：
 
-* 用于远程桌面协议 (RDP) 的入站 NAT 规则：将端口 3441 上的所有传入流量重定向到端口 3389。
-* 用于 RDP 的第二个 NAT 规则：将端口 3442 上的所有传入流量重定向到端口 3389。
+* 远程桌面协议 (RDP) 的入站 NAT 规则：将端口 3441 上的所有传入流量重定向到端口 3389。
+* RDP 的第二个入站 NAT 规则：将端口 3442 上的所有传入流量重定向到端口 3389。
 * 运行状况探测规则：检查 HealthProbe.aspx 路径的运行状况。
 * 负载均衡器规则：将公共端口 80 上的所有传入流量负载均衡到后端地址池中的本地端口 80。
 

@@ -1,21 +1,22 @@
 ---
-title: 在 LUIS 应用中添加示例话语
-titleSuffix: Azure Cognitive Services
-description: 了解如何在语言理解 (LUIS) 应用程序中添加表述。
+title: 添加示例话语
+titleSuffix: Language Understanding - Azure Cognitive Services
+description: 示例表述是用户问题或命令的文本示例。 若要传授语言理解 (LUIS)，需将示例话语添加到意向。
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 10/24/2018
+ms.date: 12/07/2018
 ms.author: diberry
-ms.openlocfilehash: caf8628569481149ee41e8253f4759e15e49150f
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: 33c941f84952faca1961bb65687b4098b837a2fd
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50139117"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53139158"
 ---
 # <a name="add-an-entity-to-example-utterances"></a>将实体添加到示例话语 
 
@@ -89,7 +90,7 @@ Does John Smith work in Seattle?
 
 1. 输入下拉列表中的复合实体名称。
 
-    ![输入实体名称的屏幕截图](./media/luis-how-to-add-example-utterances/hr-create-composite-2.png)
+    ![输入下拉列表中的复合实体名称的屏幕截图](./media/luis-how-to-add-example-utterances/hr-create-composite-2.png)
 
     正确包装实体后，会在整个短语下显示绿线。
 
@@ -117,7 +118,7 @@ Does John Smith work in Seattle?
 
 1. 表述中的单词已用父分层实体标记。 需将单词分配给子实体。 返回到意向详细信息页上的话语。 选择单词，然后从下拉列表中选择所创建的实体名称，再按照右侧菜单的提示选择正确的子实体。
 
-    ![“意向详细信息”页的屏幕截图，突出显示了“ToLocation”实体](./media/luis-how-to-add-example-utterances/hr-hier-3.png)
+    ![Intents 详细信息页的屏幕截图，需要将文字分配给子实体](./media/luis-how-to-add-example-utterances/hr-hier-3.png)
 
     >[!CAUTION]
     >子实体名称在单个应用的所有实体中必须唯一。 两个不同的分层实体不得包含同一名称的子实体。 
@@ -134,7 +135,7 @@ Does John Smith work in Seattle?
 
 实体框将显示“实体状态”，如果出现预测差异，则会显示一个红色感叹号。 若要在“实体状态”中查看有关标记实体与预测实体之间的差异的信息，请选择“实体状态”，然后选择右侧的项。
 
-![实体状态预测差异的屏幕截图](./media/luis-how-to-add-example-utterances/entity-status.png)
+![选择正确项以修复预测差异的屏幕截图](./media/luis-how-to-add-example-utterances/entity-status.png)
 
 红线可以出现在任何以下时间：
 

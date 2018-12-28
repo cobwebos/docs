@@ -6,32 +6,32 @@ manager: femila
 editor: ''
 services: media-services
 documentationcenter: ''
-ms.assetid: d72848e2-4b65-4c84-94bc-e2a90a6e7f47
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/30/2018
+ms.date: 12/05/2018
 ms.author: juliako
-ms.openlocfilehash: 1f37dcd14c1b3e85c3fae3bbf7aa67c16b8a898d
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: 3eea59eba9fc1fc79a6f72a61860ee7e66a7df5b
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50248989"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52994287"
 ---
 # <a name="input-metadata"></a>输入元数据
+
 编码作业与要在其上执行某些编码任务的输入资产（或资产）相关联。  完成任务后，会生成一个输出资产。  输出资产包含视频、音频、缩略图、清单等。输出资产还包含提供输入资产相关元数据的文件。 元数据 XML 文件的名称采用下列格式：&lt;asset_id&gt;_metadata.xml（例如，41114ad3-eb5e-4c57-8d92-5354e2b7d4a4_metadata.xml），其中 &lt;asset_id&gt; 是输入资产的 AssetId 值。  
+
+媒体服务不会先扫描输入资产以生成元数据。 只有在作业中处理输入资产时，才会生成输入元数据。 因此，此项目会写入到输出资产。 使用不同的工具为输入资产和输出资产生成元数据。 因此，输入元数据的模式与输出元数据略有不同。
 
 如果想要检查元数据文件，可以创建 **SAS** 定位器并将文件下载到本地计算机。 可以就如何创建 SAS 定位器并下载[使用媒体服务 .NET SDK 扩展](media-services-dotnet-get-started.md)的文件，找到相关示例。  
 
 本文讨论作为输入元数据 (&lt;asset_id&gt;_metadata.xml) 的基础的 XML 架构的元素和类型。  若要深入了解包含有关输出资产的元数据的文件，请参阅[输出元数据](media-services-output-metadata-schema.md)。  
 
-> [!NOTE]
-> 可以在本文末尾找到[架构代码](media-services-input-metadata-schema.md#code)和 [XML 示例](media-services-input-metadata-schema.md#xml)。  
-> 
-> 
+可以在本文末尾找到[架构代码](media-services-input-metadata-schema.md#code)和 [XML 示例](media-services-input-metadata-schema.md#xml)。  
+ 
 
 ## <a name="AssetFiles"></a> AssetFiles 元素（根元素）
 包含用于编码作业的 [AssetFile 元素](media-services-input-metadata-schema.md#AssetFile)集合。  
@@ -52,11 +52,11 @@ ms.locfileid: "50248989"
 | --- | --- | --- |
 | **名称**<br /><br /> 必选 |**xs:string** |资产文件名。 |
 | **大小**<br /><br /> 必选 |**xs:long** |资产文件的大小（以字节为单位）。 |
-| **持续时间**<br /><br /> 必选 |**xs:duration** |内容播放持续时间。 示例：持续时间 =“PT25M37.757S”。 |
+| **持续时间**<br /><br /> 必选 |**xs:duration** |内容播放持续时间。 示例：Duration="PT25M37.757S"。 |
 | **NumberOfStreams**<br /><br /> 必选 |**xs:int** |资产文件中的流数。 |
 | **FormatNames**<br /><br /> 必选 |**xs: string** |格式名。 |
 | **FormatVerboseNames**<br /><br /> 必选 |**xs: string** |格式详细名称。 |
-| **StartTime** |**xs:duration** |内容开始时间。 示例：StartTime =“PT2.669S”。 |
+| **StartTime** |**xs:duration** |内容开始时间。 示例：StartTime="PT2.669S"。 |
 | **OverallBitRate** |**xs: int** |资产文件的平均比特率（以 kbps 为单位）。 |
 
 > [!NOTE]
@@ -81,10 +81,10 @@ ms.locfileid: "50248989"
 | **Id**<br /><br /> 必选 |**xs:int** |此音频轨或视频轨从零开始的索引。<br /><br /> 这不一定是 MP4 文件中使用的 TrackID。 |
 | **编解码器** |**xs:string** |视频轨编解码器字符串。 |
 | **CodecLongName** |**xs: string** |音频或视频轨编解码器长名称。 |
-| **TimeBase**<br /><br /> 必选 |**xs:string** |时间基数。 示例：TimeBase =“1/48000” |
+| **TimeBase**<br /><br /> 必选 |**xs:string** |时间基数。 示例：TimeBase="1/48000" |
 | **NumberOfFrames** |**xs:int** |帧数（针对视频轨）。 |
-| **StartTime** |**xs: duration** |轨道开始时间。 示例：StartTime =“PT2.669S” |
-| **持续时间** |**xs:duration** |轨道持续时间。 示例：持续时间 =“PTSampleFormat M37.757S”。 |
+| **StartTime** |**xs: duration** |轨道开始时间。 示例：StartTime="PT2.669S" |
+| **持续时间** |**xs:duration** |轨道持续时间。 示例：Duration="PTSampleFormat M37.757S"。 |
 
 > [!NOTE]
 > 以下两个子元素必须出现在一个序列中。  

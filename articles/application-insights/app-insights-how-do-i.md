@@ -9,16 +9,15 @@ ms.assetid: 48b2b644-92e4-44c3-bc14-068f1bbedd22
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/04/2017
 ms.author: mbullwin
-ms.openlocfilehash: 8cee346a45cd20e7dd677fd7f2efed5500175598
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 1c76e25c29d79213fbdf36d563b4bd316b832b06
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47096388"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53017025"
 ---
 # <a name="how-do-i--in-application-insights"></a>如何在 Application Insights 中执行...？
 ## <a name="get-an-email-when-"></a>... 时收到电子邮件
@@ -83,8 +82,8 @@ ms.locfileid: "47096388"
 
 ## <a name="separate-telemetry-from-different-versions"></a>不同版本中的单独遥测
 
-* 应用中的多个角色：使用单个 Application Insights 资源，并对 cloud_Rolename 进行筛选。 [了解详细信息](app-insights-monitor-multi-role-apps.md)
-* 分隔开发、测试和发布版本：使用不同 Application Insights 资源。 从 web.config 中选取检测密钥。[了解详细信息](app-insights-separate-resources.md)
+* 应用中的多个角色：使用一个 Application Insights 资源，对 [cloud_Rolename](app-insights-app-map.md) 进行筛选。
+* 开发、测试和发布版本相互独立：使用不同的 Application Insights 资源。 从 web.config 中选取检测密钥。[了解详细信息](app-insights-separate-resources.md)
 * 报告生成版本：使用遥测初始值设定项添加属性。 [了解详细信息](app-insights-separate-resources.md)
 
 ## <a name="monitor-backend-servers-and-desktop-apps"></a>监视后端服务器和桌面应用

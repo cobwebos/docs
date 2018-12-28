@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 04/25/2018
-ms.openlocfilehash: b3b7b7374b02210f44fde408f28fd0378bf9bd12
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 0475318ce983b98951fb9cd5d24a5bc4452b1f1e
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52310848"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52970104"
 ---
 # <a name="understand-inputs-for-azure-stream-analytics"></a>理解 Azure 流分析的输入
 
@@ -41,8 +41,6 @@ Azure 流分析作业连接到一个或多个数据输入。 每个输入定义�
 流分析还支持称为“引用数据”的输入。 引用数据是完全静态的或更改缓慢。 它通常用于执行关联和查找。 例如，可以将数据流输入中的数据联接到引用数据中的数据，就像执行 SQL 联接以查找静态值一样。 目前只支持使用 Azure Blob 存储作为引用数据的输入源。 参考数据源 blob 的大小限制为最多 300 MB，具体取决于查询复杂性和分配的流单元。
 
 有关引用数据输入的详细信息，请参阅[在流分析中使用引用数据进行查找](stream-analytics-use-reference-data.md)
-
-本文是[流分析学习路径](https://azure.microsoft.com/documentation/learning-paths/stream-analytics/)中的一个步骤。
 
 ## <a name="next-steps"></a>后续步骤
 > [!div class="nextstepaction"]

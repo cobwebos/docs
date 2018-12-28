@@ -8,13 +8,13 @@ manager: kfile
 editor: jasonwhowell
 ms.service: mysql
 ms.topic: article
-ms.date: 06/30/2018
-ms.openlocfilehash: d73c0cc6416145fa3764d2ef938d6de7a4195c1b
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.date: 12/6/2018
+ms.openlocfilehash: 89451122ff8cae33f1710fc1458fcd4277964e1f
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45982872"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53090986"
 ---
 # <a name="limitations-in-azure-database-for-mysql"></a>Azure Database for MySQL 中的限制
 以下各部分介绍了数据库服务中的容量、存储引擎支持、特权支持、数据操作语句支持和功能限制。 另请参阅适用于 MySQL 数据库引擎的[常规限制](https://dev.mysql.com/doc/mysql-reslimits-excerpt/5.6/en/limits.html)。
@@ -31,13 +31,15 @@ ms.locfileid: "45982872"
 |常规用途| 8| 1250|
 |常规用途| 16| 2500|
 |常规用途| 32| 5000|
+|常规用途| 64| 10000|
 |内存优化| 2| 600|
 |内存优化| 4| 1250|
 |内存优化| 8| 2500|
 |内存优化| 16| 5000|
+|内存优化| 32| 10000|
 
 当连接数超出限制时，可能会收到以下错误：
-> 错误 1040 (08004): 连接过多
+> 错误 1040 (08004):连接过多
 
 ## <a name="storage-engine-support"></a>存储引擎支持
 

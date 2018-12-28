@@ -8,12 +8,12 @@ ms.service: event-grid
 ms.topic: reference
 ms.date: 05/02/2018
 ms.author: babanisa
-ms.openlocfilehash: cfb4dabea12f2988108d24b025e324cf05afb325
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: cd599a45ef4d3bfd38789a71647847f55cc0b966
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/18/2018
-ms.locfileid: "34301713"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53085886"
 ---
 # <a name="event-grid-subscription-schema"></a>事件网格订阅架构
 
@@ -29,25 +29,25 @@ PUT /subscriptions/{subscription-id}/resourceGroups/{group-name}/providers/{reso
 PUT /subscriptions/{subscription-id}/resourceGroups/examplegroup/providers/Microsoft.Storage/storageaccounts/examplestorage/Microsoft.EventGrid/eventSubscriptions/{event-type-definitions}?api-version=2018-01-01
 ``` 
 
-本文介绍请求正文的属性和架构。
- 
+事件订阅名称的长度必须为 3-64 个字符，并且只能包含 a-z、A-Z、0-9 和“-”。 本文介绍请求正文的属性和架构。
+ 
 ## <a name="event-subscription-properties"></a>事件订阅属性
 
-| 属性 | Type | 说明 |
+| 属性 | 类型 | Description |
 | -------- | ---- | ----------- |
 | 目标 | 对象 | 定义终结点的对象。 |
 | filter | 对象 | 用于筛选事件类型的可选字段。 |
 
 ### <a name="destination-object"></a>目标对象
 
-| 属性 | Type | 说明 |
+| 属性 | 类型 | Description |
 | -------- | ---- | ----------- |
 | endpointType | 字符串 | 订阅（webhook/HTTP、事件中心或队列）的终结点类型。 | 
 | endpointUrl | 字符串 | 此事件订阅中的事件的目标 URL。 | 
 
 ### <a name="filter-object"></a>筛选器对象
 
-| 属性 | Type | 说明 |
+| 属性 | 类型 | Description |
 | -------- | ---- | ----------- |
 | includedEventTypes | 数组 | 当事件消息中的事件类型与这些事件类型名称之一完全匹配时匹配。 当事件名称与事件源的已注册事件类型名称不匹配时，将引发错误。 默认匹配所有事件类型。 |
 | subjectBeginsWith | 字符串 | 事件消息中使用者字段的前缀匹配筛选器。 默认或空字符串匹配所有类型。 | 

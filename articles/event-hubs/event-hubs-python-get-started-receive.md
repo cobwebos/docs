@@ -1,20 +1,20 @@
 ---
-title: 使用 Python 从 Azure 事件中心接收事件 | Microsoft Docs
-description: 使用 Python 从 Azure 事件中心接收事件入门
+title: 使用 Python 接收事件 - Azure 事件中心 | Microsoft Docs
+description: 本文提供有关创建从 Azure 事件中心接收事件的 Python 应用程序的演练。
 services: event-hubs
 author: ShubhaVijayasarathy
 manager: femila
 ms.service: event-hubs
 ms.workload: core
 ms.topic: article
-ms.date: 07/26/2018
+ms.date: 11/26/2018
 ms.author: shvija
-ms.openlocfilehash: db177c3356d378317c41e0c91c10865db5e05992
-ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.openlocfilehash: bc1cf07c5a74bc4d7182eea5281e75525fd04247
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51286973"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53103178"
 ---
 # <a name="receive-events-from-event-hubs-using-python"></a>使用 Python 从事件中心接收事件
 
@@ -30,11 +30,9 @@ Azure 事件中心是一个具备高度伸缩性的事件管理系统，每秒�
 
 若要完成本教程，需要具备以下先决条件：
 
+- Azure 订阅。 如果没有订阅，请在开始之前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 - Python 3.4 或更高版本。
 - 现有事件中心命名空间和事件中心。 请按[本文](event-hubs-create.md)中的说明创建以下实体。 
-
-[!INCLUDE [create-account-note](../../includes/create-account-note.md)]
-
 
 ## <a name="install-python-package"></a>安装 Python 包
 

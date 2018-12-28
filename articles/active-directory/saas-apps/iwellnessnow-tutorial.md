@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/16/2018
 ms.author: jeedes
-ms.openlocfilehash: c260b32dc6f659ca4cc1b4c3f59859f75ba999d0
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: b02a5ec5a68743e148bcfef3c631d7777fd0a067
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39447367"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52871676"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-iwellnessnow"></a>教程：Azure Active Directory 与 iWellnessNow 集成
 
@@ -108,13 +108,13 @@ ms.locfileid: "39447367"
 
     ![iWellnessNow 域和 URL 单一登录上传](./media/iwellnessnow-tutorial/tutorial_iwellnessnow_upload.png)
 
-    a. 单击“上传元数据文件”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 单击“上传元数据文件”。
 
     ![iWellnessNow 域和 URL 单一登录上传配置](./media/iwellnessnow-tutorial/tutorial_iwellnessnow_uploadconfig.png)
 
     b. 单击“文件夹徽标”来选择元数据文件并单击“上传”。
     
-    c. 成功完成**服务提供程序元数据文件**的上传后，**标识符**和**回复 URL** 值将自动填充在“iWellnessNow 域和 URL”部分的文本框中，如下所示：
+    c. 成功完成“服务提供程序元数据文件”的上传后，“标识符”和“回复 URL” 值将自动填充在“iWellnessNow 域和 URL”部分的文本框中，如下所示：
 
     ![iWellnessNow 域和 URL 单一登录信息](./media/iwellnessnow-tutorial/tutorial_iwellnessnow_url3.png)
 
@@ -122,7 +122,7 @@ ms.locfileid: "39447367"
 
     ![iWellnessNow 域和 URL 单一登录信息](./media/iwellnessnow-tutorial/tutorial_iwellnessnow_url.png)
 
-    a. 在“标识符”文本框中，使用以下模式键入 URL：`http://<CustomerName>.iwellnessnow.com`
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“标识符”文本框中，使用以下模式键入 URL：`http://<CustomerName>.iwellnessnow.com`
 
     b. 在 **“回复 URL”** 文本框中，使用以下模式键入 URL：`https://<CustomerName>.iwellnessnow.com/ssologin`
 
@@ -169,7 +169,7 @@ ms.locfileid: "39447367"
 
     ![“用户”对话框](./media/iwellnessnow-tutorial/create_aaduser_04.png)
 
-    a. 在“姓名”框中，键入“BrittaSimon”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“姓名”框中，键入“BrittaSimon”。
 
     b. 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
 
@@ -179,7 +179,7 @@ ms.locfileid: "39447367"
  
 ### <a name="create-an-iwellnessnow-test-user"></a>创建 iWellnessNow 测试用户
 
-在本部分中，将在 iWellnessNow 中创建一个名为 Britta Simon 的用户。 请与 [iWellnessNow 支持团队](mailto:info@iwellnessnow.com)协作，在 iWellnessNow 平台中添加用户。 使用单一登录前，必须先创建并激活用户。
+在本部分中，将在 iWellnessNow 中创建一个名为 Britta Simon 的用户。 请与  [iWellnessNow 支持团队](mailto:info@iwellnessnow.com)协作，在 iWellnessNow 平台中添加用户。 使用单一登录前，必须先创建并激活用户。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
@@ -216,12 +216,12 @@ ms.locfileid: "39447367"
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 单击访问面板中的 iWellnessNow 磁贴时，应当会自动登录到 iWellnessNow 应用程序。
-有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
+有关访问面板的详细信息，请参阅[访问面板简介](../user-help/active-directory-saas-access-panel-introduction.md)。 
 
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](tutorial-list.md)
-* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
+* [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
 
 

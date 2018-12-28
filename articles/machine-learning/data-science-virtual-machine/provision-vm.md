@@ -1,29 +1,31 @@
 ---
-title: 在 Azure 上预配 Windows 数据科学虚拟机 | Microsoft Docs
+title: 创建 Windows Data Science Virtual Machine
+titleSuffix: Azure
 description: 在 Azure 上配置和创建数据科学虚拟机，用于进行分析和机器学习。
 services: machine-learning
 documentationcenter: ''
 author: gopitk
 manager: cgronlun
+ms.custom: seodec18
 ms.assetid: e1467c0f-497b-48f7-96a0-7f806a7bec0b
 ms.service: machine-learning
 ms.component: data-science-vm
 ms.workload: data-services
 ms.devlang: na
 ms.topic: article
-ms.date: 08/30/2018
+ms.date: 12/04/2018
 ms.author: gokuma
-ms.openlocfilehash: 1b293ee8f0f83d727cd647cdcdcc424b4db7e5d3
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 5dacbbcba44879b28e311f08b089d10d0ad8d95b
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51240879"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53079630"
 ---
 # <a name="provision-the-windows-data-science-virtual-machine-on-azure"></a>在 Azure 上预配 Windows 数据科学虚拟机
 Microsoft Data Science Virtual Machine (DSVM) 是一个 Windows Azure 虚拟机 (VM) 映像。 它是使用几种用于数据分析和机器学习的工具进行预安装和配置的。 包括以下工具：
 
-* [Azure Machine Learning](../service/index.yml) Workbench。
+* [Azure 机器学习服务](../service/index.yml) Python SDK。
 * [Microsoft Machine Learning Server](https://docs.microsoft.com/machine-learning-server/index) Developer Edition。
 * Enthought Python 分发版。
 * 使用 R、Python、PySpark 内核的 Jupyter Notebook。
@@ -33,7 +35,7 @@ Microsoft Data Science Virtual Machine (DSVM) 是一个 Windows Azure 虚拟机 
 * 用于本地开发和测试的独立 Apache Spark 实例。
 * [JuliaPro](https://juliacomputing.com/products/juliapro.html)。
 * 机器学习和数据分析工具：
-  * 深度学习框架。 VM 中包含一组丰富的 AI 框架：[Microsoft 认知工具包](https://www.microsoft.com/en-us/cognitive-toolkit/)、[TensorFlow](https://www.tensorflow.org/)、[Chainer](https://chainer.org/)、mxNet 和 Keras。
+  * 深度学习框架。 VM 上包含一组丰富的 AI 框架：[Microsoft Cognitive Toolkit](https://www.microsoft.com/en-us/cognitive-toolkit/)、[TensorFlow](https://www.tensorflow.org/)、[Chainer](https://chainer.org/)、mxNet 和 Keras。
   * [Vowpal Wabbit](https://github.com/JohnLangford/vowpal_wabbit)。 一种快速机器学习系统，支持在线哈希、allreduce、化简、learning2search、主动和交互式学习等技术。
   * [XGBoost](https://xgboost.readthedocs.org/en/latest/)。 一种可提供快速、 准确地提升树实现的工具。
   * [Rattle](https://togaware.com/rattle/)：用于实现轻松学习的 R 分析工具。 借助该工具可在 R 中开始数据分析和机器学习。它包括基于 GUI 的数据探索和使用自动 R 代码生成的建模。
@@ -150,7 +152,7 @@ Visual Studio Community 安装在 VM 上。 它是 Microsoft 免费提供的流�
 * Azure HDInsight Hadoop 和 Spark
 * Azure Data Lake 
 
-还有名为 ```Visual Studio Tools for AI``` 的插件，可以无缝集成到 Azure 机器学习，并有助于快速生成 AI 应用程序。 
+还有名为 ```Azure Machine Learning for Visual Studio Code``` 的插件，可以无缝集成到 Azure 机器学习，并有助于快速生成 AI 应用程序。 
 
 > [!NOTE]
 > 可能会有一条消息指出评估期已过。 在此情况下，请输入 Microsoft 帐户凭据。 或者新建一个免费帐户来获取 Visual Studio Community 的访问权限。 
@@ -193,13 +195,13 @@ VM 上安装了多个 Azure 工具：
 > 
 > 
 
-### <a name="azure-machine-learning-workbench"></a>Azure Machine Learning Workbench
+### <a name="azure-machine-learning-service-python-sdk"></a>Azure 机器学习服务 Python SDK
 
-Azure Machine Learning Workbench 是一个桌面应用程序和命令行接口。 Workbench 包含内置的数据准备功能，可在执行数据准备步骤时进行学习。 它还提供项目管理、运行历史记录和 Notebook 集成，大幅提高工作效率。 
+数据科学家和 AI 开发人员使用用于 Python 的 Azure 机器学习 SDK 和 [Azure 机器学习服务](../service/overview-what-is-azure-ml.md)构建和运行机器学习工作流程。 可以使用开源框架（例如 TensorFlow 和 scikit-learn）和任何 Python 环境（包括 Jupyter Notebook 或收藏的 Python IDE）中的服务进行交互。
 
-可以利用 TensorFlow、认知工具包、Spark ML 和 scikit-learn 等开源框架来开发模型。 DSVM 上提供了一个桌面图标，用于将 Azure Machine Learning Workbench 安装到每个用户的 **%LOCALAPPDATA%** 目录。 
+要快速入门使用 Python SDK，请参阅[通过 Python 开始使用 Azure 机器学习](../service/quickstart-create-workspace-with-python.md)。
 
-Workbench 的每个用户必须执行一个一次性的操作： 双击 ```AzureML Workbench Setup``` 桌面图标安装 Workbench 实例。 Azure 机器学习还会创建并使用已提取到 **%LOCALAPPDATA%\amlworkbench\python** 目录中的按用户 Python 环境。
+Microsoft Data Science Virtual Machine 上已预安装 Python SDK。
 
 ## <a name="more-microsoft-development-tools"></a>其他 Microsoft 开发工具
 [Microsoft Web 平台安装程序](https://www.microsoft.com/web/downloads/platform.aspx)用于查找和下载其他 Microsoft 开发工具。 Microsoft Data Science Virtual Machine 桌面上也提供了该工具的快捷方式。  
@@ -215,7 +217,6 @@ Workbench 的每个用户必须执行一个一次性的操作： 双击 ```Azure
 | Microsoft Machine Learning Server（独立版）Python | C:\Program Files\Microsoft\ML Server\PYTHON_SERVER |
 | 默认 R 实例，Machine Learning Server（独立版） | C:\Program Files\Microsoft\ML Server\R_SERVER |
 | SQL 机器学习服务数据库内部实例目录 | C:\Program Files\Microsoft SQL Server\MSSQL14.MSSQLSERVER |
-| Azure Machine Learning Workbench（按用户） | %localappdata%\amlworkbench | 
 | 其他工具 | c:\dsvm\tools |
 
 > [!NOTE]
@@ -226,7 +227,7 @@ Workbench 的每个用户必须执行一个一次性的操作： 双击 ```Azure
 ## <a name="next-steps"></a>后续步骤
 
 * 选择“开始”菜单来探索数据科学 VM 上的工具。
-* 访问产品的[快速入门和教程页](../service/index.yml)，了解 Azure 机器学习服务和 Workbench。 
+* 通过阅读[什么是 Azure 机器学习服务？](../service/overview-what-is-azure-ml.md)来了解其相关信息，并尝试可用的[快速入门与教程](../service/index.yml)。
 * 导航到 **C:\Program Files\Microsoft\ML Server\R_SERVER\library\RevoScaleR\demoScripts**，获取有关在 R 中使用 RevoScaleR 库的示例，该库支持企业级数据分析。  
 * 阅读文章：[Data Science Virtual Machine 的十大功能](https://aka.ms/dsvmtenthings)。
 * 通过使用 [Team Data Science Process](../team-data-science-process/index.yml)，了解如何系统地构建端到端分析解决方案。

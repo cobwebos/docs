@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/09/2018
 ms.author: artemuwka
 ms.component: common
-ms.openlocfilehash: a1b183e5b0929a2149502aa340e2e69c725dba6d
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: 2ab933506ea03ae72198113d70888460e5001a6d
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49168220"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52958401"
 ---
 # <a name="transfer-data-with-the-azcopy-v10-preview"></a>使用 AzCopy v10（预览版）传输数据
 
@@ -84,6 +84,16 @@ AzCopy v10 具有简单的自记录语法。 常规语法如下所示：
 .\azcopy cp -h
 ```
 
+## <a name="create-a-file-system-azure-data-lake-storage-gen2-only"></a>创建文件系统（仅限 Azure Data Lake Storage Gen2）
+
+如果已在 Blob 存储帐户上启用分层命名空间，则可以使用以下命令创建新的文件系统，以便将下载文件上传到该文件系统。
+
+```azcopy
+.\azcopy make "https://account.dfs.core.windows.net/top-level-resource-name" --recursive=true
+```
+
+此字符串的 ``account`` 部分是指存储帐户的名称。 此字符串的 ``top-level-resource-name`` 部分是指要创建的文件系统的名称。
+
 ## <a name="copy-data-to-azure-storage"></a>将数据复制到 Azure 存储
 
 使用 copy 命令将数据从源传输到目标。 源/目标可以是：
@@ -107,10 +117,22 @@ AzCopy v10 具有简单的自记录语法。 常规语法如下所示：
 .\azcopy cp "C:\local\path" "https://account.blob.core.windows.net/mycontainer1<sastoken>" --recursive=true
 ```
 
+如果已在 Blob 存储帐户上启用分层命名空间，则可以使用以下命令将文件上传到文件系统：
+
+```azcopy
+.\azcopy cp "C:\local\path" "https://myaccount.dfs.core.windows.net/myfolder<sastoken>" --recursive=true
+```
+
 以下命令将文件夹 C:\local\path 下的所有文件上传到容器“mycontainer1”（不递归到子目录中）：
 
 ```azcopy
 .\azcopy cp "C:\local\path\*" "https://account.blob.core.windows.net/mycontainer1<sastoken>"
+```
+
+如果已在 Blob 存储帐户上启用分层命名空间，则可以使用以下命令：
+
+```azcopy
+.\azcopy cp "C:\local\path\*" "https://account.blob.core.windows.net/myfolder<sastoken>"
 ```
 
 若要获取更多示例，请使用以下命令：
@@ -127,6 +149,8 @@ AzCopy v10 具有简单的自记录语法。 常规语法如下所示：
 ```azcopy
 .\azcopy cp "https://myaccount.blob.core.windows.net/<sastoken>" "https://myotheraccount.blob.core.windows.net/<sastoken>" --recursive=true
 ```
+
+若要使用启用了分层命名空间的 Blob 存储帐户，请在这些示例中将字符串 ``blob.core.windows.net`` 替换为 ``dfs.core.windows.net``。
 
 > [!NOTE]
 > 该命令将枚举所有 blob 容器并将它们复制到目标帐户。 目前，AzCopy v10 支持仅在两个存储帐户之间复制块 blob。 跳过所有其他存储帐户对象（追加 blob、页 blob、文件、表和队列）。
@@ -154,6 +178,8 @@ AzCopy v10 具有简单的自记录语法。 常规语法如下所示：
 ```
 
 通过该命令，可根据上次修改的时间戳将源以增量方式同步到目标。 如果在源中添加或删除文件，AzCopy v10 将在目标中执行相同的操作。
+
+[!NOTE] 若要使用启用了分层命名空间的 Blob 存储帐户，请在这些示例中将字符串 ``blob.core.windows.net`` 替换为 ``dfs.core.windows.net``。
 
 ## <a name="advanced-configuration"></a>高级配置
 

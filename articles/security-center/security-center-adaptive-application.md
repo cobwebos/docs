@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/20/2018
+ms.date: 12/2/2018
 ms.author: rkarlin
-ms.openlocfilehash: ddf9c5e30a27a829a74ccf0985dce30a68f9bbb7
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: b4023d45c3628df5006d076e01f32bb8f3aa80a6
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51256640"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52846243"
 ---
 # <a name="adaptive-application-controls-in-azure-security-center"></a>Azure 安全中心的自适应应用程序控制
 了解如何通过本演练在 Azure 安全中心配置应用程序控制。
@@ -118,7 +118,8 @@ ms.locfileid: "51256640"
   - **强制**：在此模式下，应用程序控制解决方案强制实施规则，确保阻止不允许运行的应用程序。
 
    > [!NOTE]
-   > 如前所述，默认情况下，新的应用程序控制策略始终在“审核”模式下配置。 
+   > -  在进一步通知之前，禁用“强制”保护模式。
+   > - 如前所述，默认情况下，新的应用程序控制策略始终在“审核”模式下配置。 
    >
 
 4. 可以在“策略扩展”下添加需要允许的任何应用程序路径。 添加这些路径后，除了已有的规则之外，安全中心还会更新所选 VMS 组中 VM 上的应用程序允许列表策略，并为这些应用程序创建适当的规则。
@@ -130,7 +131,7 @@ ms.locfileid: "51256640"
 6. 在“发布者允许列表规则”、“路径允许列表规则”和“哈希允许列表规则”下，可以根据规则集合类型，查看当前在组内的 VM 上配置了哪些应用程序允许列表规则。 对于每条规则，可以查看：
 
   - **规则**：AppLocker 根据此参数检查应用程序是否能运行。
-  - **文件类型**：特定规则涵盖的文件类型。 可以是以下任意类型：EXE、脚本、MSI 或这些类型的任意排列。
+  - **文件类型**：特定规则涵盖的文件类型。 可以是以下任意一种类型：EXE、脚本、MSI 或这些文件类型的任意排列。
   - **用户**：允许运行应用程序允许列表规则所涵盖的应用程序的用户的名称或数量。
 
    ![允许列表规则](./media/security-center-adaptive-application/security-center-adaptive-application-fig9.png)

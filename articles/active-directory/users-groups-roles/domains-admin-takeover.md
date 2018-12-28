@@ -14,12 +14,12 @@ ms.date: 04/06/2017
 ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro
-ms.openlocfilehash: 857d58d31565e413a207162202f1a680d7da7c65
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: c07b87d88b884b22f44fe108bb28877cb30f973e
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50250727"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52837165"
 ---
 # <a name="take-over-an-unmanaged-directory-as-administrator-in-azure-active-directory"></a>在 Azure Active Directory 中以管理员身份接管非托管目录
 本文介绍了在 Azure Active Directory (Azure AD) 的非托管目录中接管 DNS 域名的两种方式。 当自助服务用户注册一个使用 Azure AD 的云服务时，会根据其电子邮件域将其添加到非托管 Azure AD 目录。 有关自助服务或“迅速传播的”服务注册的详细信息，请参阅[什么是 Azure Active Directory 的自助服务注册？](https://docs.microsoft.com/azure/active-directory/active-directory-self-service-signup)
@@ -108,7 +108,11 @@ ms.locfileid: "50250727"
 
 当非托管租户位于不同区域时，密钥和模板不随之移动。 例如，非托管租户位于欧洲，而你拥有的租户位于北美。 
 
-虽然个人版 RMS 旨在支持通过 Azure AD 身份验证来打开受保护的内容，但它不会阻止用户对内容也进行保护。 如果用户使用个人版 RMS 订阅来保护内容，而密钥和模板未移动，则在进行域接管后，该内容将无法访问。    
+虽然个人版 RMS 旨在支持通过 Azure AD 身份验证来打开受保护的内容，但它不会阻止用户对内容也进行保护。 如果用户使用个人版 RMS 订阅来保护内容，而密钥和模板未移动，则在进行域接管后，该内容将无法访问。
+
+#### <a name="more-information-about-power-bi"></a>有关 Power BI 的更多信息
+
+执行外部接管时，接管前创建的 Power BI 内容将放置在 [Power BI 存档工作区](/power-bi/service-admin-power-bi-archived-workspace)。 对于想要在新租户中使用的内容，必须手动迁移。
 
 ### <a name="azure-ad-powershell-cmdlets-for-the-forcetakeover-option"></a>用于“ForceTakeover”选项的 Azure AD PowerShell cmdlet
 可以查看在 [PowerShell 示例](#powershell-example)中使用的这些 cmdlet。

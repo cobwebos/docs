@@ -14,12 +14,12 @@ ms.devlang: objective-c
 ms.topic: article
 ms.date: 10/01/2016
 ms.author: crdun
-ms.openlocfilehash: 2f415f1886c654f3bdd880cdccaadc7aa3e69892
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: bc0afcf1ac7d9e7a777d850e1b6df7b915837f3a
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32156489"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52956868"
 ---
 # <a name="enable-offline-syncing-with-ios-mobile-apps"></a>启用与 iOS 移动应用进行脱机同步
 [!INCLUDE [app-service-mobile-selector-offline](../../includes/app-service-mobile-selector-offline.md)]
@@ -159,7 +159,7 @@ ms.locfileid: "32156489"
 
 ![MS_TableOperations 表属性][defining-core-data-tableoperations-entity]
 
-| 属性 | Type |
+| 属性 | 类型 |
 | --- | --- |
 | id | Integer 64 |
 | itemId | String |
@@ -172,7 +172,7 @@ ms.locfileid: "32156489"
 
  ![MS_TableOperationErrors 表属性][defining-core-data-tableoperationerrors-entity]
 
-| 属性 | Type |
+| 属性 | 类型 |
 | --- | --- |
 | id |String |
 | operationId |64 位整数 |
@@ -183,7 +183,7 @@ ms.locfileid: "32156489"
 
  ![][defining-core-data-tableconfig-entity]
 
-| 属性 | Type |
+| 属性 | 类型 |
 | --- | --- |
 | id |String |
 | key |String |
@@ -195,10 +195,10 @@ ms.locfileid: "32156489"
 
 **TodoItem**
 
-| 属性 | Type | 注意 |
+| 属性 | 类型 | 注意 |
 | --- | --- | --- |
 | id | 字符串（标记为必需） |远程存储中的主键 |
-| complete | 布尔 | 待办事项字段 |
+| complete | Boolean | 待办事项字段 |
 | text |String |待办事项字段 |
 | createdAt | 日期 | （可选）映射到 **createdAt** 系统属性 |
 | updatedAt | 日期 | （可选）映射到 **updatedAt** 系统属性 |
@@ -285,5 +285,5 @@ ms.locfileid: "32156489"
 [defining-core-data-tableconfig-entity]: ./media/app-service-mobile-ios-get-started-offline-data/defining-core-data-tableconfig-entity.png
 [defining-core-data-todoitem-entity]: ./media/app-service-mobile-ios-get-started-offline-data/defining-core-data-todoitem-entity.png
 
-[云覆盖：Azure 移动服务中的脱机同步]: http://channel9.msdn.com/Shows/Cloud+Cover/Episode-155-Offline-Storage-with-Donna-Malayeri
-[Azure Friday: Offline-enabled apps in Azure Mobile Services]: http://azure.microsoft.com/documentation/videos/azure-mobile-services-offline-enabled-apps-with-donna-malayeri/
+[云覆盖：Azure 移动服务中的脱机同步]: https://channel9.msdn.com/Shows/Cloud+Cover/Episode-155-Offline-Storage-with-Donna-Malayeri
+[Azure Friday: Offline-enabled apps in Azure Mobile Services]: https://azure.microsoft.com/documentation/videos/azure-mobile-services-offline-enabled-apps-with-donna-malayeri/

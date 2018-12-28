@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/15/2018
 ms.author: barclayn
-ms.openlocfilehash: a28bf1dc23d678c710d7bd6b13f067427e76ef41
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: bb4ef826ed29187209b28c349445ca0eb5ffe9bb
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51238393"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52864888"
 ---
 # <a name="get-started-with-azure-key-vault"></a>Azure 密钥保管库入门
 本文有助于使用 PowerShell 完成 Azure Key Vault 入门，并详细介绍如何完成以下活动：
@@ -111,7 +111,7 @@ New-AzureRmKeyVault -Name 'ContosoKeyVault' -ResourceGroupName 'ContosoResourceG
 
 此 cmdlet 的输出显示创建的密钥保管库的属性。 两个最重要的属性是：
 
-* 保管库名称：在本示例中为 ContosoKeyVault。 将在其他密钥保管库 cmdlet 中使用此名称。
+* **保管库名称**：在本示例中为 ContosoKeyVault。 将在其他密钥保管库 cmdlet 中使用此名称。
 * 保管库 URI：在本示例中为 https://contosokeyvault.vault.azure.net/。 通过其 REST API 使用保管库的应用程序必须使用此 URI。
 
 Azure 帐户现已获取在此密钥保管库上执行任何作业的授权。 而且没有其他人有此授权。
@@ -193,7 +193,7 @@ $secret = Set-AzureKeyVaultSecret -VaultName 'ContosoKeyVault' -Name 'SQLPasswor
 ```powershell
 $secret.Id
 ```
-若要查看机密，请键入 `Get-AzureKeyVaultSecret –VaultName 'ContosoKeyVault'`。也可在门户中查看该机密。
+若要查看密码，请键入：`Get-AzureKeyVaultSecret –VaultName 'ContosoKeyVault'`。也可在门户中查看该机密。
 
 ![secret](./media/key-vault-get-started/secret-value.png)
 
@@ -222,14 +222,14 @@ $secret.Id
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 2. 在左侧单击“应用注册”。 如果没有看到应用注册，请单击“更多服务”。  
->[!NOTE]
-必须选择包含用于创建 Key Vault 的 Azure 订阅的相同目录。 
+    > [!NOTE]
+    > 必须选择包含用于创建 Key Vault 的 Azure 订阅的相同目录。 
 3. 单击“新建应用程序注册”。
 4. 在“创建”边栏选项卡上提供应用程序的名称，然后选择“WEB 应用程序和/或 WEB API”（默认值）并指定 Web 应用程序的“登录 URL”。 对于此步骤，如果目前没有该信息，可以进行编造（例如，可以指定 http://test1.contoso.com）。 这些网站是否存在并不重要。 
 
     ![新建应用程序注册](./media/key-vault-get-started/new-application-registration.png)
-    >[!WARNING]
-    请确保选择“WEB 应用程序和/或 WEB API”，否则在设置下看不到“密钥”选项。
+    > [!WARNING]
+    > 请确保选择“WEB 应用程序和/或 WEB API”，否则在设置下看不到“密钥”选项。
 
 5. 单击“创建”  按钮。
 6. 完成应用注册以后，可看到已注册应用的列表。 找到注册的应用，然后单击它。

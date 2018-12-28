@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: 7f1bb400650a223a9f0b4249c33f7c480a1bc009
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 7f90fccd062826493b7add1a90406fa9244e00b2
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51262363"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "53002052"
 ---
 # <a name="security-frame-sensitive-data--mitigations"></a>安全框架：敏感数据 | 缓解措施 
 | 产品/服务 | 文章 |
@@ -193,7 +193,7 @@ public override void OnActionExecuting(ActionExecutingContext filterContext)
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
 | **属性**              | SQL 版本 - 所有 |
-| **参考**              | [加密 SQL Server 中的敏感数据](https://technet.microsoft.com/library/ff848751(v=sql.105).aspx)、[如何：加密 SQL Server 中的数据列](https://msdn.microsoft.com/library/ms179331)、[使用证书加密](https://msdn.microsoft.com/library/ms188061) |
+| **参考**              | [加密 SQL Server 中的敏感数据](https://technet.microsoft.com/library/ff848751(v=sql.105).aspx)、[如何：加密 SQL Server 中数据列](https://msdn.microsoft.com/library/ms179331)、[使用证书进行加密](https://msdn.microsoft.com/library/ms188061) |
 | **步骤** | 信用卡号等敏感数据必须在数据库中加密。 可以使用列级加密，或者使用加密函数通过应用程序函数将数据加密。 |
 
 ## <a id="tde-enabled"></a>确保启用数据库级加密 (TDE)
@@ -429,7 +429,7 @@ Allow screen capture
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型、.NET Framework 3 |
 | **属性**              | 安全模式 - 传输，安全模式 - 消息 |
-| **参考**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx)、[巩固王国](https://vulncat.hpefod.com/en/detail?id=desc.semantic.dotnet.wcf_misconfiguration_security_not_enabled)、[WCF 安全基础知识 - CoDe 杂志](http://www.codemag.com/article/0611051) |
+| **参考**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx)、[巩固王国](https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.wcf_misconfiguration_weak_class_reference)、[WCF 安全基础知识 - CoDe 杂志](http://www.codemag.com/article/0611051) |
 | **步骤** | 未定义任何传输或消息安全性。 在未定义传输或消息安全性的情况下传输消息的应用程序无法保证消息的完整性或机密性。 如果 WCF 安全绑定设置为 None，将同时禁用传输和消息安全性。 |
 
 ### <a name="example"></a>示例

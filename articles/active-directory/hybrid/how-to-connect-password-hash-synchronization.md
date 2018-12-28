@@ -5,60 +5,29 @@ services: active-directory
 documentationcenter: ''
 author: billmath
 manager: mtillman
-editor: ''
 ms.assetid: 05f16c3e-9d23-45dc-afca-3d0fa9dbf501
 ms.service: active-directory
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 07/30/2018
+ms.date: 12/06/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 5936157a46643ff76b5e1cc11d636aa6be9175ff
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: f70c92e4f617ff5c2b652900ce3b803f8609d2f9
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52427465"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53078644"
 ---
 # <a name="implement-password-hash-synchronization-with-azure-ad-connect-sync"></a>使用 Azure AD Connect 同步实现密码哈希同步
 本文提供将用户密码从本地 Active Directory 实例同步到基于云的 Azure Active Directory (Azure AD) 实例时所需的信息。
-
-## <a name="what-is-password-hash-synchronization"></a>什么是密码哈希同步？
-因为忘记密码而无法完成工作的机率与需要记住的不同密码数目有关。 要记住的密码越多，忘记密码的机率就越高。 就密码重置和其他密码相关问题的疑问和来电占据了最多的技术支持资源。
-
-密码哈希同步是一种功能，用于将用户密码的哈希从本地 Active Directory 实例同步到基于云的 Azure AD 实例。
-使用此功能可登录到各种 Azure AD 服务，例如 Office 365、Microsoft Intune、CRM Online 和 Azure Active Directory 域服务 (Azure AD DS)。 登录到该服务时使用的密码与登录到本地 Active Directory 实例时使用的密码相同。
-
-![什么是 Azure AD Connect](./media/how-to-connect-password-hash-synchronization/arch1.png)
-
-减少密码数目以后，用户只需维护一个密码。 密码哈希同步有助于：
-
-* 提升用户的生产力。
-* 减少技术支持成本。  
-
-此外，如果决定[使用 Active Directory 联合身份验证服务 (AD FS) 进行联合身份验证](https://channel9.msdn.com/Series/Azure-Active-Directory-Videos-Demos/Configuring-AD-FS-for-user-sign-in-with-Azure-AD-Connect)，则可以选择性地设置密码哈希同步，作为在 AD FS 基础结构发生故障时的备用身份验证方式。
-
-密码哈希同步是由 Azure AD Connect 同步实现的目录同步功能的扩展。若要在环境中使用密码哈希同步，需要：
-
-* 安装 Azure AD Connect。  
-* 配置本地 Azure Active Directory 实例与 Azure Active Directory 实例之间的目录同步。
-* 启用密码哈希同步。
-
-有关详细信息，请参阅[将本地标识与 Azure Active Directory 集成](whatis-hybrid-identity.md)。
-
-> [!NOTE]
-> 有关为 FIPS 和密码哈希同步配置的 Azure Active Directory 域服务的更多详细信息，请参阅本文中后面的“密码哈希同步和 FIPS”。
->
->
 
 ## <a name="how-password-hash-synchronization-works"></a>密码哈希同步的工作原理
 Active Directory 域服务以实际用户密码的哈希值表示形式存储密码。 哈希值是单向数学函数（哈希算法）的计算结果。 没有任何方法可将单向函数的结果还原为纯文本版本的密码。 无法使用密码哈希来登录本地网络。
 
 为了同步密码，Azure AD Connect 同步将从本地 Active Directory 实例提取密码哈希。 同步到 Azure Active Directory 身份验证服务之前，已对密码哈希应用其他安全处理。 密码将基于每个用户按时间顺序同步。
 
-密码哈希同步过程的实际数据流类似于用户数据（例如 DisplayName 或电子邮件地址）的同步。 但是，密码的同步频率高于其他属性的标准目录同步窗口。 密码哈希同步过程每隔 2 分钟运行一次。 无法修改此过程的运行频率。 同步某个密码时，该密码将覆盖现有的云密码。
+密码哈希同步过程的实际数据流类似于用户数据的同步。 但是，密码的同步频率高于其他属性的标准目录同步窗口。 密码哈希同步过程每隔 2 分钟运行一次。 无法修改此过程的运行频率。 同步某个密码时，该密码将覆盖现有的云密码。
 
 首次启用密码哈希同步功能时，它将对范围内的所有用户执行初始密码同步。 无法显式定义一部分要同步的用户密码。
 
@@ -74,14 +43,14 @@ Active Directory 域服务以实际用户密码的哈希值表示形式存储密
 > 只有 Active Directory 的对象类型用户才支持密码同步。 不支持 iNetOrgPerson 对象类型。
 
 ### <a name="detailed-description-of-how-password-hash-synchronization-works"></a>密码哈希同步工作原理的详细说明
-下面将深入说明 Active Directory 与 Azure AD 之间的密码哈希同步工作原理。
+以下部分将深入说明 Active Directory 与 Azure AD 之间的密码哈希同步工作原理。
 
 ![详细的密码流程](./media/how-to-connect-password-hash-synchronization/arch3.png)
 
 
-1. 每隔两分钟，AD Connect 服务器上的密码哈希同步代理都会通过用于同步 DC 之间数据的标准 [MS-DRSR](https://msdn.microsoft.com/library/cc228086.aspx) 复制协议，从 DC 请求存储的密码哈希（unicodePwd 属性）。 服务帐户必须具有“复制目录更改”和“复制所有目录更改”AD 权限（默认情况下，在安装时授予），才能获取密码哈希。
+1. 每隔两分钟，AD Connect 服务器上的密码哈希同步代理都会从 DC 请求存储的密码哈希（unicodePwd 属性）。  此请求通过用于同步 DC 之间数据的标准 [MS-DRSR](https://msdn.microsoft.com/library/cc228086.aspx) 复制协议进行。 服务帐户必须具有“复制目录更改”和“复制所有目录更改”AD 权限（默认情况下，在安装时授予），才能获取密码哈希。
 2. 在发送前，DC 将使用密钥（即 RPC 会话密钥的 [MD5](https://www.rfc-editor.org/rfc/rfc1321.txt) 哈希）和 salt 对 MD4 密码哈希进行加密。 然后，它通过 RPC 将结果发送到密码哈希同步代理。 DC 还使用 DC 复制协议将 salt 传递给同步代理，因此该代理能够解密信封。
-3.  密码哈希同步代理获得加密的信封后，将使用 [MD5CryptoServiceProvider](https://msdn.microsoft.com/library/System.Security.Cryptography.MD5CryptoServiceProvider.aspx)和 salt 生成密钥，以便将收到的数据重新解密为其原始的 MD4 格式。 密码哈希同步代理无需有权访问明文密码。 密码哈希同步代理使用 MD5 完全是为了实现与 DC 的复制协议兼容性，并仅在本地的 DC 和密码哈希同步代理之间使用。
+3.  密码哈希同步代理获得加密的信封后，将使用 [MD5CryptoServiceProvider](https://msdn.microsoft.com/library/System.Security.Cryptography.MD5CryptoServiceProvider.aspx)和 salt 生成密钥，以便将收到的数据重新解密为其原始的 MD4 格式。 密码哈希同步代理永远无权访问明文密码。 密码哈希同步代理使用 MD5 完全是为了实现与 DC 的复制协议兼容性，并仅在本地的 DC 和密码哈希同步代理之间使用。
 4.  密码哈希同步代理通过先将哈希转换为 32 字节的十六进制字符串，然后使用 UTF-16 编码重新将此字符串转换为二进制，来将 16 字节的二进制密码哈希扩展为 64 字节。
 5.  密码哈希同步代理通过将每个用户的 salt（包含 10 字节长度的 salt）添加到 64 字节的二进制字符串，来进一步保护原始哈希。
 6.  然后，密码哈希同步代理将 MD4 哈希与每个用户的 salt 组合在一起，并将其输入到 [PBKDF2](https://www.ietf.org/rfc/rfc2898.txt) 函数。 使用 [HMAC-SHA256](https://msdn.microsoft.com/library/system.security.cryptography.hmacsha256.aspx) 键控哈希算法的 1000 次迭代。 
@@ -97,7 +66,7 @@ Active Directory 域服务以实际用户密码的哈希值表示形式存储密
 ### <a name="security-considerations"></a>安全注意事项
 同步密码时，纯文本版本的密码既不能向密码哈希同步功能公开，也不能向 Azure AD 或任何相关联的服务公开。
 
-用户身份验证针对 Azure AD（而不是针对组织自己的 Active Directory 实例）进行。 如果组织对以任何形式离开本地的数据有任何顾虑，请考虑到这样一个事实：存储在 Azure AD 中的 SHA256 密码数据（原始 MD4 哈希的哈希）比 Active Directory 中存储的数据要安全得多。 而且，由于此 SHA256 哈希无法解密，因此无法将其带回到组织的 Active Directory 环境，并且在“传递哈希”攻击中显示为有效的用户密码。
+用户身份验证针对 Azure AD（而不是针对组织自己的 Active Directory 实例）进行。 Azure AD 中存储的 SHA 256 密码数据（原始 MD4 哈希的哈希）比 Active Directory 中存储的数据更安全。 而且，由于此 SHA256 哈希无法解密，因此无法将其带回到组织的 Active Directory 环境，并且在“传递哈希”攻击中显示为有效的用户密码。
 
 ### <a name="password-policy-considerations"></a>密码策略注意事项
 有两种类型的密码策略受启用密码哈希同步的影响：
@@ -117,7 +86,7 @@ Active Directory 域服务以实际用户密码的哈希值表示形式存储密
 可以继续使用在本地环境中过期的同步密码来登录云服务。 下次在本地环境中更改密码时，云密码会更新。
 
 #### <a name="account-expiration"></a>帐户过期
-如果组织在用户帐户管理中使用了 accountExpires 属性，请注意，此属性不会同步到 Azure AD。 因此，环境中为密码哈希同步配置的过期 Active Directory 帐户仍会在 Azure AD 中处于活动状态。 我们建议，如果帐户已过期，工作流操作应触发一个 PowerShell 脚本以禁用用户的 Azure AD 帐户（使用 [Set-AzureADUser](https://docs.microsoft.com/powershell/module/azuread/set-azureaduser?view=azureadps-2.0) cmdlet）。 相反，在启用帐户后，Azure AD 实例应该开启。
+如果组织在用户帐户管理中使用了 accountExpires 属性，此属性不会同步到 Azure AD。 因此，环境中为密码哈希同步配置的过期 Active Directory 帐户仍会在 Azure AD 中处于活动状态。 我们建议，如果帐户已过期，工作流操作应触发一个 PowerShell 脚本以禁用用户的 Azure AD 帐户（使用 [Set-AzureADUser](https://docs.microsoft.com/powershell/module/azuread/set-azureaduser?view=azureadps-2.0) cmdlet）。 相反，在启用帐户后，Azure AD 实例应该开启。
 
 ### <a name="overwrite-synchronized-passwords"></a>覆盖已同步的密码
 管理员可以使用 Windows PowerShell 手动重置密码。
@@ -165,7 +134,7 @@ Active Directory 域服务以实际用户密码的哈希值表示形式存储密
     </configuration>
 ```
 
-有关安全性与 FIPS 的信息，请参阅 [AAD Password Sync, encryption and FIPS compliance](https://blogs.technet.microsoft.com/enterprisemobility/2014/06/28/aad-password-sync-encryption-and-fips-compliance/)（AAD 密码同步、加密和 FIPS 符合性）。
+有关安全性与 FIPS 的信息，请参阅 [Azure AD password hash sync, encryption, and FIPS compliance](https://blogs.technet.microsoft.com/enterprisemobility/2014/06/28/aad-password-sync-encryption-and-fips-compliance/)（Azure AD 密码哈希同步、加密和 FIPS 符合性）。
 
 ## <a name="troubleshoot-password-hash-synchronization"></a>排查密码哈希同步问题
 如果遇到密码哈希同步问题，请参阅[排查密码哈希同步问题](tshoot-connect-password-hash-synchronization.md)。

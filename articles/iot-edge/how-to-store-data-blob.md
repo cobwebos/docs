@@ -1,5 +1,5 @@
 ---
-title: Azure IoT Edge 设备上的 Azure Blob 存储 | Microsoft 文档
+title: 将块 Blob 存储在设备上 - Azure IoT Edge |Microsoft Docs
 description: 将 Azure Blob 存储模块部署到 IoT Edge 设备以在边缘存储数据。
 author: kgremban
 manager: philmea
@@ -9,12 +9,13 @@ ms.date: 10/03/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: fa88ff46b4fb93d55aa0087cca0e6184f3e087a0
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.custom: seodec18
+ms.openlocfilehash: e56d49208740686b51cdaef1bab778e2c08a9b58
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51567275"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53077914"
 ---
 # <a name="store-data-at-the-edge-with-azure-blob-storage-on-iot-edge-preview"></a>通过 IoT Edge 上的 Azure Blob 存储（预览版）在边缘存储数据
 
@@ -74,9 +75,9 @@ Azure IoT Edge 设备：
 
 1. 在“添加模块”部分的“部署模块”下，你会发现该模块已使用以“AzureBlobStorageonIoTEdge”开头的名称列出。 
 2. 从“部署模块”列表中选择 blob 存储模块。 将打开“IoT Edge 自定义模块”侧面板。
-3. 名称：可以在此处更改模块的名称
-4. 映像 URI：将 URI 替换为 mcr.microsoft.com/azure-blob-storage:latest
-5. 容器创建选项：使用你的值编辑以下 JSON 并将其替换为“门户”页中的 JSON：
+3. **名称**：可以在此处更改模块的名称
+4. **映像 URI**：将 URI 替换为 mcr.microsoft.com/azure-blob-storage:latest
+5. **容器创建选项**：使用值编辑以下 JSON 并将其替换为“门户”页中的 JSON：
    
    ```json
    {
@@ -105,7 +106,7 @@ Azure IoT Edge 设备：
    > [!CAUTION]
    > 对于 \<存储目录绑定> 值，不要更改 Linux 的“/blobroot”和 Windows 的“C:/BlobRoot”。
 
-    ![更新模块值](./media/how-to-store-data-blob/edit-module.png)
+    ![更新模块容器创建选项 - 门户](./media/how-to-store-data-blob/edit-module.png)
 
 6. 保存“IoT Edge 自定义模块”中的值
 7. 单击“设置模块”部分中的“下一步”
@@ -121,7 +122,7 @@ Azure IoT Edge 在 Visual Studio Code 中提供模板，以帮助你开发边缘
 
 1. 选择“视图” > “命令面板”。 
 
-2. 在“命令面板”中，输入并运行“Azure IoT Edge: New IoT Edge Solution”命令。 
+2. 在“命令面板”中，输入并运行 Azure IoT Edge：New IoT Edge Solution 命令。 
 
 3. 按照提示操作以创建一个新解决方案： 
 
@@ -149,7 +150,7 @@ VS Code 采用你提供的信息，创建一个 IoT Edge 解决方案，然后�
    {\"Env\": [\"LOCAL_STORAGE_ACCOUNT_NAME=$STORAGE_ACCOUNT_NAME\",\" LOCAL_STORAGE_ACCOUNT_KEY=$STORAGE_ACCOUNT_KEY\"],\"HostConfig\": {\"Binds\": [\"<storage directory bind>\"],\"PortBindings\": {\"11002/tcp\": [{\"HostPort\":\"11002\"}]}}}
    ```
 
-   ![更新模块创建选项](./media/how-to-store-data-blob/create-options.png)
+   ![更新模块创建选项 - VS Code](./media/how-to-store-data-blob/create-options.png)
 
 4. 在创建选项 JSON 中，根据容器操作系统更新 `<storage directory bind>`。 提供[卷](https://docs.docker.com/storage/volumes/)的名称或 IoT Edge 设备上希望 blob 模块在其中存储其数据的目录绝对路径。  
 

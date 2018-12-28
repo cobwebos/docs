@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: reference
-ms.date: 10/30/2018
+ms.date: 12/05/2018
 ms.author: juliako
-ms.openlocfilehash: 8124b399b859f812ec3bf9f7ea64b6643446a1b5
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: 9de0d8bc389218d3102633b09073b3af323d2ceb
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50249272"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53011988"
 ---
 # <a name="azure-event-grid-schemas-for-media-services-events"></a>媒体服务事件的 Azure 事件网格架构
 
@@ -28,7 +28,7 @@ ms.locfileid: "50249272"
 
 ### <a name="job-related-event-types"></a>作业相关事件类型
 
-媒体服务会发出如下所述的**作业**相关事件类型。 **作业**相关事件有两个类别：“监视作业状态更改”和“监视作业输出状态更改”。 
+媒体服务会发出如下所述的**作业**相关事件类型。 有两类作业相关事件：“监视作业状态更改”和“监视作业输出状态更改”。 
 
 可通过订阅 JobStateChange 事件来注册所有事件。 或者，可以只订阅特定事件（例如，JobErrored、JobFinished 和 JobCanceled 等最终状态）。 
 
@@ -112,9 +112,12 @@ ms.locfileid: "50249272"
 | 属性 | 类型 | Description |
 | -------- | ---- | ----------- |
 | previousState | 字符串 | 事件发生前的作业状态。 |
-| state | 字符串 | 此事件中通知的作业的新状态。 例如，“已排队: 作业正在等待资源”或“已计划: 作业准备就绪”。|
+| state | 字符串 | 此事件中通知的作业的新状态。 例如，“已计划：作业已准备就绪”或“已完成：作业已完成。”|
 
-作业状态可以为以下值之一：已排队、已计划、正在处理、已完成、错误、已取消、正在取消。
+作业状态可以是以下任何一个值：已排队、已计划、正在处理、已完成、错误、已取消、正在取消
+
+> [!NOTE]
+> 已排队仅出现在 previousState 属性中，不出现在 state 属性中。
 
 ### <a name="jobscheduled-jobprocessing-jobcanceling"></a>JobScheduled、JobProcessing、JobCanceling
 

@@ -4,25 +4,27 @@ description: 介绍如何在使用 Azure Migrate 服务运行评估之前分组�
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: article
-ms.date: 06/19/2018
+ms.date: 11/28/2018
 ms.author: raynew
-ms.openlocfilehash: ccab88c0195a7ca459c8579b7870d121dfd0fe1d
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: c11d2f22fa08417107b0eecdd902b4521410b358
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36231400"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53252416"
 ---
 # <a name="group-machines-for-assessment"></a>分组将计算机以进行评估
 
-本文介绍如何创建计算机组以使用 [Azure Migrate](migrate-overview.md) 进行评估。 Azure Migrate 可评估组中的计算机，以检查其是否适合迁移到 Azure，并提供在 Azure 中运行计算机的大小和成本估计。
+本文介绍如何创建计算机组以使用 [Azure Migrate](migrate-overview.md) 进行评估。 Azure Migrate 可评估组中的计算机，以检查其是否适合迁移到 Azure，并提供在 Azure 中运行计算机的大小和成本估计。 若知道哪些计算机是需要一起迁移的，可以使用以下方法在 Azure Migrate 中手动创建组。 若不太确定需要组合在一起的计算机，可以在 Azure Migrate 中使用依赖项可视化功能来创建组。 [了解详细信息。](how-to-create-group-machine-dependencies.md)
 
+> [!NOTE]
+> 依赖项可视化功能在 Azure 政府中不可用。
 
 ## <a name="create-a-group"></a>创建组
 
 1. 在 Azure Migrate 项目的“概述” **中** ，在“管理  **”下单击“组”**  “+ 组”> ，  **然后指定组名** 。
-2. 将一个或多个计算机添加到组中，然后单击 **“创建”**。 
-3. 你可以视情况选择为组运行新评估。 
+2. 将一个或多个计算机添加到组中，然后单击 **“创建”**。
+3. 你可以视情况选择为组运行新评估。
 
     ![创建组](./media/how-to-create-a-group/create-group.png)
 

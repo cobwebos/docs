@@ -1,20 +1,20 @@
 ---
-title: 使用 Python 将事件发送到 Azure 事件中心 | Microsoft Docs
-description: 使用 Python 将事件发送到事件中心入门
+title: 使用 Python 发送事件 - Azure 事件中心 | Microsoft Docs
+description: 本文提供了一个演练，说明如何创建发送事件到 Azure 事件中心的 Node.js 应用程序。
 services: event-hubs
 author: ShubhaVijayasarathy
 manager: femila
 ms.service: event-hubs
 ms.workload: core
 ms.topic: article
-ms.date: 10/16/2018
+ms.date: 11/16/2018
 ms.author: shvija
-ms.openlocfilehash: 05feab0227633ab52f0865fa7c19a310b612eb1c
-ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.openlocfilehash: b7adf3976f5f7e028ffa9ffeb13db22d3d4bba8e
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51286888"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53102973"
 ---
 # <a name="send-events-to-event-hubs-using-python"></a>使用 Python 将事件发送到事件中心
 
@@ -29,11 +29,16 @@ Azure 事件中心是一个大数据流式处理平台和事件引入服务，�
 
 若要完成本教程，需要具备以下先决条件：
 
+- Azure 订阅。 如果没有订阅，请在开始之前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 - Python 3.4 或更高版本。
 
 
 ## <a name="create-an-event-hubs-namespace-and-an-event-hub"></a>创建事件中心命名空间和事件中心
-第一步是使用 [Azure 门户](https://portal.azure.com)创建事件中心类型的命名空间，并获取应用程序与事件中心进行通信所需的管理凭据。 若要创建命名空间和事件中心，请按照[本文](event-hubs-create.md)中的步骤进行操作，然后继续执行本教程的以下步骤。
+第一步是使用 [Azure 门户](https://portal.azure.com)创建事件中心类型的命名空间，并获取应用程序与事件中心进行通信所需的管理凭据。 要创建命名空间和事件中心，请按照[此文](event-hubs-create.md)中的步骤操作。
+
+按照以下文章中的说明获取事件中心访问密钥的值：[获取连接字符串](event-hubs-get-connection-string.md#get-connection-string-from-the-portal)。 可在本教程后面编写的代码中使用该访问密钥。 默认密钥名称为：RootManageSharedAccessKey。
+
+现在，继续本教程中的以下步骤。
 
 ## <a name="install-python-package"></a>安装 Python 包
 

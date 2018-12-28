@@ -6,14 +6,14 @@ author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 10/16/2018
+ms.date: 11/27/2018
 ms.author: mayg
-ms.openlocfilehash: af57dc50dd156a3398c2c685e436d22ba3daea95
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: 5a16b81abb9cc95f46bd61f6c0232a28f3cda0ff
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51567758"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52875393"
 ---
 # <a name="integrate-azure-expressroute-with-disaster-recovery-for-azure-vms"></a>将 Azure ExpressRoute 与 Azure VM 的灾难恢复相集成
 
@@ -37,7 +37,7 @@ Site Recovery 通过将 Azure VM 数据复制到 Azure 来实现 Azure VM 的灾
 在开始之前，请确保了解以下概念：
 
 - ExpressRoute [线路](../expressroute/expressroute-circuit-peerings.md)
-- ExpressRoute [路由域](../expressroute/expressroute-circuit-peerings.md#expressroute-routing-domains)
+- ExpressRoute [路由域](../expressroute/expressroute-circuit-peerings.md#routingdomains)
 - ExpressRoute [位置](../expressroute/expressroute-locations.md)。
 - Azure VM [复制体系结构](azure-to-azure-architecture.md)
 - 如何为 Azure VM [设置复制](azure-to-azure-tutorial-enable-replication.md)。
@@ -90,7 +90,7 @@ Site Recovery 通过将 Azure VM 数据复制到 Azure 来实现 Azure VM 的灾
     - **源 vNet1**：10.1.0.0/24。
     - **源 vNet2**：10.2.0.0/24。
     - 每个分支虚拟网络都连接到“中心 vNet”。
-- **中心 vNet**。 中心 vNet“源中心 vNet”：10.10.10.0/24。
+- **中心 vNet**。 **中心 vNet“源中心 vNet”：** 10.10.10.0/24。
     - 此中心 vNet 充当网关守卫。
     - 跨子网的所有通信都通过此中心进行。
  - ****中心 vNet 子网**。 中心 vNet 具有两个子网：
@@ -136,7 +136,7 @@ Site Recovery 通过将 Azure VM 数据复制到 Azure 来实现 Azure VM 的灾
 
 ## <a name="fail-over-azure-vms-when-using-expressroute"></a>在使用 ExpressRoute 时对 Azure VM 进行故障转移
 
-在使用 Site Recovery 将 Azure VM 故障转移到目标 Azure 区域后，可以使用 ExpressRoute [专用对等互连](../expressroute/expressroute-circuit-peerings.md#azure-private-peering)对其进行访问。
+在使用 Site Recovery 将 Azure VM 故障转移到目标 Azure 区域后，可以使用 ExpressRoute [专用对等互连](../expressroute/expressroute-circuit-peerings.md#privatepeering)对其进行访问。
 
 - 需要使用新连接将 ExpressRoute 连接到目标 vNet。 现有的 ExpressRoute 连接不会自动传输。
 - 将 ExpressRoute 连接设置为目标 vNet 的方式取决于 ExpressRoute 拓扑。

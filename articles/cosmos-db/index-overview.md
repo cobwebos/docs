@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/10/2018
 ms.author: mjbrown
-ms.openlocfilehash: c0525cfba16fb61f8388ae4d6a693be3bb71674c
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 0333bc5e95b74fc97cfff3d79adbe28aefff5d40
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51628301"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52834632"
 ---
 # <a name="indexing-in-azure-cosmos-db"></a>Azure Cosmos DB 中的索引
 
@@ -29,7 +29,7 @@ Azure Cosmos DB 是一种架构不可知的数据库，使你能够快速迭代�
 
 Azure Cosmos DB 将项投影为 JSON 文档，将索引投影为树。 然后，可调整树中路径的策略。 可以选择在索引中包括或排除路径。 如果事先已知查询模式，这可以提高写入性能并减少方案所需的索引存储。 若要了解详细信息，请参阅[索引路径](index-paths.md)。
 
-## <a name="indexing-under-the-hood"></a>索引：深入了解
+## <a name="indexing-under-the-hood"></a>索引：揭秘
 
 Azure Cosmos 数据库将自动索引应用于数据，其中树中的所有路径均编制了索引，除非配置为排除某些路径。
 
