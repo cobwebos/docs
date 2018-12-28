@@ -1,21 +1,22 @@
 ---
 title: 配置容器
-titlesuffix: Computer Vision - Cognitive Services - Azure
+titlesuffix: Computer Vision - Azure Cognitive Services
 description: 计算机视觉中的容器配置设置。
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: text-analytics
 ms.topic: conceptual
 ms.date: 11/14/2018
 ms.author: diberry
-ms.openlocfilehash: 8df293878486a9cd4ded6e899871c30498c4b68f
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: f71cbe965e70dfce1b29cf0e5f9ea44faf0a4e27
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51634893"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53077012"
 ---
 # <a name="configure-containers"></a>配置容器
 
@@ -38,7 +39,7 @@ ms.locfileid: "51634893"
 
 环境变量值替代命令行参数值，而这些参数值又替代容器映像的默认值。 换言之，如果在环境变量和命令行参数中为同一配置设置（例如 `Logging:Disk:LogLevel`）指定不同的值，然后实例化容器，则实例化的容器将使用环境变量中的值。
 
-### <a name="configuration-settings-as-environment-variables"></a>环境变量形式的配置设置
+### <a name="configuration-settings-as-environment-variables"></a>作为环境变量的配置设置
 
 可以使用 [ASP.NET Core 环境变量语法](https://docs.microsoft.com/aspnet/core/fundamentals/configuration/?view=aspnetcore-2.1&tabs=basicconfiguration#configuration-by-environment)来指定配置设置。
 
@@ -51,7 +52,7 @@ ms.locfileid: "51634893"
   docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 containerpreview.azurecr.io/microsoft/cognitive-services-recognize-text Eula=accept Billing=https://westcentralus.api.cognitive.microsoft.com/vision/v1.0 ApiKey=0123456789
   ```
 
-### <a name="configuration-settings-as-command-line-arguments"></a>命令行参数形式的配置设置
+### <a name="configuration-settings-as-command-line-arguments"></a>作为命令行参数的配置设置
 
 可以使用 [ASP.NET Core 命令行参数语法](https://docs.microsoft.com/aspnet/core/fundamentals/configuration/?view=aspnetcore-2.1&tabs=basicconfiguration#arguments)来指定配置设置。
 
@@ -72,13 +73,13 @@ ms.locfileid: "51634893"
 
 ## <a name="applicationinsights-configuration-settings"></a>ApplicationInsights 配置设置
 
-使用 `ApplicationInsights` 节中的配置设置可以向容器添加 [Azure Application Insights](https://docs.microsoft.com/azure/application-insights) 遥测支持。 Application Insights 提供对容器的深入监视，深度可达代码级别。 可以轻松监视容器的可用性、性能和使用情况。 还可以快速识别和诊断容器中的错误，而无需等待用户报告这些错误。
+`ApplicationInsights` 部分中的配置设置允许向容器添加 [Azure Application Insights](https://docs.microsoft.com/azure/application-insights) 遥测支持。 Application Insights 提供对容器深入至代码级别的监视。 可以轻松监视容器的可用性、性能和使用情况。 还可以快速识别和诊断容器中的错误，而无需等待用户报告这些错误。
 
 下表描述了 `ApplicationInsights` 节支持的配置设置。
 
 | 名称 | 数据类型 | Description |
 |------|-----------|-------------|
-| `InstrumentationKey` | String | 容器遥测数据要发送到的 Application Insights 实例的检测密钥。 有关详细信息，请参阅 [Application Insights for ASP.NET Core](https://docs.microsoft.com/azure/application-insights/app-insights-asp-net-core)。 |
+| `InstrumentationKey` | String | 容器遥测数据要发送到的 Application Insights 实例的检测密钥。 有关详细信息，请参阅[适用于 ASP.NET Core 的 Application Insights](https://docs.microsoft.com/azure/application-insights/app-insights-asp-net-core)。 |
 
 ## <a name="authentication-configuration-settings"></a>Authentication 配置设置
 
@@ -86,7 +87,7 @@ ms.locfileid: "51634893"
 
 ## <a name="billing-configuration-setting"></a>Billing 配置设置
 
-`Billing` 配置设置指定 Azure 上用于跟踪容器账单信息的计算机视觉资源的终结点 URI。 必须为此配置设置指定值，并且该值必须是 Azure 上计算机视觉资源的有效终结点 URI。
+`Billing` 配置设置指定 Azure 上用于计量容器账单信息的计算机视觉资源的终结点 URI。 必须为此配置设置指定值，并且该值必须是 Azure 上计算机视觉资源的有效终结点 URI。
 
 > [!IMPORTANT]
 > [`ApiKey`](#apikey-configuration-setting)、[`Billing`](#billing-configuration-setting) 和 [`Eula`](#eula-configuration-setting) 配置设置一起使用。必须为所有三个设置提供有效值，否则容器将无法启动。 有关使用这些配置设置实例化容器的详细信息，请参阅[计费](computer-vision-how-to-install-containers.md#billing)。
@@ -97,6 +98,8 @@ ms.locfileid: "51634893"
 
 > [!IMPORTANT]
 > [`ApiKey`](#apikey-configuration-setting)、[`Billing`](#billing-configuration-setting) 和 [`Eula`](#eula-configuration-setting) 配置设置一起使用。必须为所有三个设置提供有效值，否则容器将无法启动。 有关使用这些配置设置实例化容器的详细信息，请参阅[计费](computer-vision-how-to-install-containers.md#billing)。
+
+根据管理 Azure 使用的[协议](https://go.microsoft.com/fwlink/?linkid=2018657)授予认知服务容器许可。 如果没有管理 Azure 使用的现有协议，则表示同意管理 Azure 使用的协议是 [Microsoft 在线订阅协议](https://go.microsoft.com/fwlink/?linkid=2018755)，其中包含[联机服务条款](https://go.microsoft.com/fwlink/?linkid=2018760)。 对于预览版，还应同意 [Microsoft Azure 预览版补充使用条款](https://go.microsoft.com/fwlink/?linkid=2018815)。 使用容器即表示同意这些条款。
 
 ## <a name="fluentd-configuration-settings"></a>Fluentd 配置设置
 

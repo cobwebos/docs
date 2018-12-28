@@ -5,14 +5,14 @@ author: sujayt
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 10/16/2018
+ms.date: 11/27/2018
 ms.author: sutalasi
-ms.openlocfilehash: 4b008cc119951e50567218e332818585fb017e5a
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: c20f61788086806d3eebb62d35b7ac9fbcbd6fb9
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51229401"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52846923"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-hyper-v-vms-using-powershell-and-azure-resource-manager"></a>使用 PowerShell 和 Azure 资源管理器对 Hyper-V VM 设置到 Azure 的灾难恢复
 
@@ -45,7 +45,7 @@ Azure PowerShell 提供用于通过 Windows PowerShell 管理 Azure 的 cmdlet�
 
 ## <a name="step-1-sign-in-to-your-azure-account"></a>步骤 1：登录到 Azure 帐户
 
-1. 打开 PowerShell 控制台，并运行以下命令以登录到 Azure 帐户。 该 cmdlet 会打开一个网页，提示输入帐户凭据：Connect-AzureRmAccount。
+1. 打开 PowerShell 控制台，并运行以下命令以登录到 Azure 帐户。 此 cmdlet 打开一个网页，提示输入帐户凭据：Connect-AzureRmAccount。
     - 或者，还可使用 -Credential 参数将帐户凭据作为参数包含在 Connect-AzureRmAccount cmdlet 中。
     - 如果是代表租户的 CSP 合作伙伴，则需使用 tenantID 或租户主域名将客户指定为一名租户。 例如：Connect-AzureRmAccount -Tenant "fabrikam.com"
 2. 一个帐户可以有多个订阅，因此请将需要使用的订阅与帐户关联在一起：

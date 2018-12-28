@@ -1,21 +1,22 @@
 ---
-title: 如何安装并运行容器
-titlesuffix: Computer Vision - Cognitive Services - Azure
+title: 安装和运行容器
+titlesuffix: Computer Vision - Azure Cognitive Services
 description: 如何在本演练教程中下载、安装和运行计算机视觉容器。
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: text-analytics
 ms.topic: article
 ms.date: 11/14/2018
 ms.author: diberry
-ms.openlocfilehash: 67dbf3bdf6631785fc876283847e36349e857a77
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 9964be07c578cd1cafd93328bffe972483123e03
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52634636"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53077029"
 ---
 # <a name="install-and-run-containers"></a>安装并运行容器
 
@@ -39,7 +40,7 @@ ms.locfileid: "52634636"
 
 有关 Docker 和容器的基础知识，请参阅 [Docker 概述](https://docs.docker.com/engine/docker-overview/)。
 
-### <a name="server-requirements-and-recommendations"></a>服务器要求和建议
+### <a name="container-requirements-and-recommendations"></a>容器要求和建议
 
 识别文本容器至少需要 1 个 CPU 核心、2.6 千兆赫 (GHz) 或更快，以及 8 千兆字节 (GB) 的分配内存，但我们建议至少使用 2 个 CPU 内核和 8 GB 分配内存。
 
@@ -162,7 +163,9 @@ http://localhost:5000/
 * 容器映像在 Docker 中运行。
 * 可以使用 REST API 或 SDK 通过指定容器的主机 URI 来调用计算机视觉容器中的操作。
 * 必须在实例化容器时指定账单信息。
-* **如果认知服务容器未连接到 Azure 进行计量，则不对其授权以运行。 客户需要始终让容器向计量服务传送账单信息。 认知服务容器不会将客户数据（例如，正在分析的图像或文本）发送给 Microsoft。  
+
+> [!IMPORTANT]
+> 如果未连接到 Azure 进行计量，则无法授权并运行认知服务容器。 客户需要始终让容器向计量服务传送账单信息。 认知服务容器不会将客户数据（例如，正在分析的图像或文本）发送给 Microsoft。
 
 ## <a name="next-steps"></a>后续步骤
 

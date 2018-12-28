@@ -18,12 +18,12 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: sureshja
 ms.custom: aaddev
-ms.openlocfilehash: b8dba999ac6523aad29aae40b528fd010fec0550
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: 7a3c3e39792119d296c849c012d4798ec85a0e03
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51687344"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52845464"
 ---
 # <a name="how-to-use-the-azure-ad-graph-api"></a>如何：使用 Azure AD 图形 API
 
@@ -40,7 +40,7 @@ Azure Active Directory (Azure AD) 图形 API 通过 OData REST API 终结点提�
 
 * **服务根**：在 Azure AD 图形 API 中，服务根始终是 https://graph.windows.net。
 * **租户标识符**：此部分可以是已验证（注册）的域名，在前面示例中为 contoso.com。 也可以是租户对象 ID 或者“myorganization”或“me”别名。 有关详细信息，请参阅[对 Azure AD 图形 API 中的实体和操作进行寻址](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-operations-overview)。
-* **资源路径**：URL 的此部分标识要交互的资源（用户、组、特定用户或特定组，等等）。在上面示例中，它是用于对资源集寻址的顶级“组”。 也可以对特定的实体寻址，例如“users/{objectId}”或“users/userPrincipalName”。
+* **资源路径**：URL 的此部分标识要交互的资源（用户、组、特定用户或特定组等等）。在上面示例中，它是用于对资源集寻址的顶级“组”。 也可以对特定的实体寻址，例如“users/{objectId}”或“users/userPrincipalName”。
 * **查询参数**：问号 (?) 用于分隔资源路径部分与查询参数部分。 需要对 Azure AD 图形 API 中的所有请求提供“api-version”查询参数。 Azure AD 图形 API 还支持以下 OData 查询选项：**$filter**、**$orderby**、**$expand**、**$top** 和 **$format**。 当前不支持以下查询选项：**$count**、**$inlinecount** 和 **$skip**。 有关详细信息，请参阅 [Azure AD 图形 API 支持的查询、筛选和分页选项](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-supported-queries-filters-and-paging-options)。
 
 ## <a name="graph-api-versions"></a>图形 API 版本
@@ -66,9 +66,9 @@ Azure Active Directory (Azure AD) 图形 API 通过 OData REST API 终结点提�
 
 ![Azure AD 图形 API 资源管理器](./media/active-directory-graph-api-quickstart/graph_explorer.png)
 
-**加载 Azure AD 图形资源管理器**：若要加载该工具，请导航到 [https://graphexplorer.azurewebsites.net/](https://graphexplorer.azurewebsites.net/)。 单击“登录”，并使用 Azure AD 帐户凭据登录，以针对租户运行 Azure AD 图形资源管理器。 如果针对自己的租户运行 Azure AD 图形资源管理器，则你或管理员需要在登录期间表示同意。 如果拥有 Office 365 订阅，则会自动拥有 Azure AD 租户。 用于登录 Office 365 的凭据事实上就是 Azure AD 帐户，可以在 Azure AD 图形资源管理器中使用这些凭据。
+**加载 Azure AD 图形资源管理器**：若要加载工具，请导航到 [https://graphexplorer.azurewebsites.net/](https://graphexplorer.azurewebsites.net/)。 单击“登录”，并使用 Azure AD 帐户凭据登录，以针对租户运行 Azure AD 图形资源管理器。 如果针对自己的租户运行 Azure AD 图形资源管理器，则你或管理员需要在登录期间表示同意。 如果拥有 Office 365 订阅，则会自动拥有 Azure AD 租户。 用于登录 Office 365 的凭据事实上就是 Azure AD 帐户，可以在 Azure AD 图形资源管理器中使用这些凭据。
 
-**运行查询**：要运行查询，请在请求文本框中键入查询，然后单击“获取”或单击 **Enter** 键。 结果会显示在响应框中。 例如，`https://graph.windows.net/myorganization/groups?api-version=1.6` 将列出已登录用户目录中的所有组对象。
+**运行查询**：要运行查询，请在请求文本框中键入查询，然后单击“获取”或单击 Enter 键。 结果会显示在响应框中。 例如，`https://graph.windows.net/myorganization/groups?api-version=1.6` 将列出已登录用户目录中的所有组对象。
 
 请注意，Azure AD 图形资源管理器具有以下功能与限制：
 
@@ -82,13 +82,13 @@ Azure Active Directory (Azure AD) 图形 API 通过 OData REST API 终结点提�
 
 ## <a name="using-fiddler-to-write-to-the-directory"></a>使用 Fiddler 写入目录
 
-在本快速入门指南中，可以使用 Fiddler Web 调试器来练习对 Azure AD 目录执行“写入”操作。 例如，可以获取和上传用户的个人资料照片（无法使用 Azure AD 图形资源管理器实现此目的）。 有关如何安装 Fiddler 的详细信息，请参阅 [http://www.telerik.com/fiddler](http://www.telerik.com/fiddler)。
+在本快速入门指南中，可以使用 Fiddler Web 调试器来练习对 Azure AD 目录执行“写入”操作。 例如，可以获取和上传用户的个人资料照片（无法使用 Azure AD 图形资源管理器实现此目的）。 有关如何安装 Fiddler 的详细信息，请参阅 [https://www.telerik.com/fiddler](https://www.telerik.com/fiddler)。
 
 以下示例使用 Fiddler Web 调试器在 Azure AD 目录中创建一个新的安全组“MyTestGroup”。
 
 **获取访问令牌**：若要访问 Azure AD Graph，客户端需要先成功地向 Azure AD 进行身份验证。 有关详细信息，请参阅 [Azure AD 的身份验证方案](authentication-scenarios.md)。
 
-**编写和运行查询**：请完成以下步骤：
+**编写和运行查询**：完成以下步骤：
 
 1. 打开 Fiddler Web 调试器并切换到“编辑器”选项卡。
 2. 由于要创建新的安全组，因此请从下拉菜单中选择“发布”作为 HTTP 方法。 有关对组对象的操作和权限的详细信息，请参阅 [Azure AD Graph REST API 参考](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/api-catalog)中的[组](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#group-entity)。

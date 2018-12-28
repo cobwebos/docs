@@ -1,21 +1,22 @@
 ---
-title: 教程 6：使用 LUIS 复合实体提取复合数据
+title: 复合实体"
 titleSuffix: Azure Cognitive Services
 description: 添加复合实体来将提取的各种类型的数据捆绑到单个内含实体中。 通过捆绑数据，客户端应用程序可以轻松提取各种数据类型的相关数据。
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: 8f7edecf1abd1f01a2f40f1420a6a85224271239
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: b5923d5cd4a704dda76e33ee6a2b76cfd903219d
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52423495"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53079205"
 ---
 # <a name="tutorial-6-group-and-extract-related-data"></a>教程 6：对相关的数据进行分组和提取
 在本教程中，添加复合实体来将提取的各种类型的数据捆绑到单个内含实体中。 通过捆绑数据，客户端应用程序可以轻松提取各种数据类型的相关数据。
@@ -70,7 +71,7 @@ ms.locfileid: "52423495"
 
 从终结点提取的数据应包含此信息，并在 `RequestEmployeeMove` 复合实体中将其返回：
 
-```JSON
+```json
 "compositeEntities": [
   {
     "parentType": "RequestEmployeeMove",
@@ -103,22 +104,22 @@ ms.locfileid: "52423495"
 
 3. 选择工具栏上的放大镜图标以筛选话语列表。 
 
-    [![](media/luis-tutorial-composite-entity/hr-moveemployee-magglass.png "“MoveEmployee”意向上的 LUIS 屏幕截图，其中已突出显示放大镜按钮")](media/luis-tutorial-composite-entity/hr-moveemployee-magglass.png#lightbox)
+    [![“MoveEmployee”意向上的 LUIS 屏幕截图，其中已突出显示放大镜按钮](media/luis-tutorial-composite-entity/hr-moveemployee-magglass.png "“MoveEmployee”意向上的 LUIS 屏幕截图，其中已突出显示放大镜按钮")](media/luis-tutorial-composite-entity/hr-moveemployee-magglass.png#lightbox)
 
 4. 在筛选器文本框中输入 `tomorrow` 以查找话语 `shift x12345 to h-1234 tomorrow`。
 
-    [![](media/luis-tutorial-composite-entity/hr-filter-by-tomorrow.png "“MoveEmployee”意向上的 LUIS 屏幕截图，其中已突出显示键入了“tomorrow”的筛选器")](media/luis-tutorial-composite-entity/hr-filter-by-tomorrow.png#lightbox)
+    [![“MoveEmployee”意向上的 LUIS 屏幕截图，其中已突出显示键入了“tomorrow”的筛选器](media/luis-tutorial-composite-entity/hr-filter-by-tomorrow.png "“MoveEmployee”意向上的 LUIS 屏幕截图，其中已突出显示键入了“tomorrow”的筛选器")](media/luis-tutorial-composite-entity/hr-filter-by-tomorrow.png#lightbox)
 
     另一种方法是通过 datetimeV2 筛选实体，通过选择“实体筛选器”，然后从列表中选择“datetimeV2”。 
 
 5. 选择第一个实体 `Employee`，然后在弹出菜单列表中选择“在复合实体中包装”。 
 
-    [![](media/luis-tutorial-composite-entity/hr-create-entity-1.png "“MoveEmployee”意向上的 LUIS 屏幕截图，其中已突出显示选择复合中的第一个实体")](media/luis-tutorial-composite-entity/hr-create-entity-1.png#lightbox)
+    [![“MoveEmployee”意向上的 LUIS 屏幕截图，其中已突出显示选择复合中的第一个实体](media/luis-tutorial-composite-entity/hr-create-entity-1.png "“MoveEmployee”意向上的 LUIS 屏幕截图，其中已突出显示选择复合中的第一个实体")](media/luis-tutorial-composite-entity/hr-create-entity-1.png#lightbox)
 
 
 6. 然后立即选择最后一个实体，话语中的 `datetimeV2`。 在所选字词下面绘制的绿色条指示复合实体。 在弹出菜单中，输入复合名称 `RequestEmployeeMove`，然后选择 Enter。 
 
-    [![](media/luis-tutorial-composite-entity/hr-create-entity-2.png "“MoveEmployee”意向上的 LUIS 屏幕截图，其中已突出显示选择复合中的最后一个实体和创建实体")](media/luis-tutorial-composite-entity/hr-create-entity-2.png#lightbox)
+    [![“MoveEmployee”意向上的 LUIS 屏幕截图，其中已突出显示选择复合中的最后一个实体和创建实体](media/luis-tutorial-composite-entity/hr-create-entity-2.png "“MoveEmployee”意向上的 LUIS 屏幕截图，其中已突出显示选择复合中的最后一个实体和创建实体")](media/luis-tutorial-composite-entity/hr-create-entity-2.png#lightbox)
 
 7. 在“想要创建哪种类型的实体?”中，列表中包含几乎所有所需字段。 仅缺失原始位置。 选择“添加子实体”，从现有实体列表中选择“位置::原始”，然后选择“完成”。 
 
@@ -135,15 +136,15 @@ ms.locfileid: "52423495"
 
 1. 在每个示例话语中，选择应在复合中的最左侧实体。 然后选择“在复合实体中包装”.
 
-    [![](media/luis-tutorial-composite-entity/hr-label-entity-1.png "“MoveEmployee”意向上的 LUIS 屏幕截图，其中已突出显示选择复合中的第一个实体")](media/luis-tutorial-composite-entity/hr-label-entity-1.png#lightbox)
+    [![“MoveEmployee”意向上的 LUIS 屏幕截图，其中已突出显示选择复合中的第一个实体](media/luis-tutorial-composite-entity/hr-label-entity-1.png "“MoveEmployee”意向上的 LUIS 屏幕截图，其中已突出显示选择复合中的第一个实体")](media/luis-tutorial-composite-entity/hr-label-entity-1.png#lightbox)
 
 2. 选择复合实体中的最后一个单词，然后从弹出菜单中选择“RequestEmployeeMove”。 
 
-    [![](media/luis-tutorial-composite-entity/hr-label-entity-2.png "“MoveEmployee”意向上的 LUIS 屏幕截图，其中已突出显示选择复合中的最后一个实体")](media/luis-tutorial-composite-entity/hr-label-entity-2.png#lightbox)
+    [![“MoveEmployee”意向上的 LUIS 屏幕截图，其中已突出显示选择复合中的最后一个实体](media/luis-tutorial-composite-entity/hr-label-entity-2.png "“MoveEmployee”意向上的 LUIS 屏幕截图，其中已突出显示选择复合中的最后一个实体")](media/luis-tutorial-composite-entity/hr-label-entity-2.png#lightbox)
 
 3. 验证意向中的所有话语都已使用复合实体进行标记。 
 
-    [![](media/luis-tutorial-composite-entity/hr-all-utterances-labeled.png "“MoveEmployee”意向上的 LUIS 屏幕截图，其中已标记所有话语")](media/luis-tutorial-composite-entity/hr-all-utterances-labeled.png#lightbox)
+    [![“MoveEmployee”意向上的 LUIS 屏幕截图，其中已标记所有话语](media/luis-tutorial-composite-entity/hr-all-utterances-labeled.png "“MoveEmployee”意向上的 LUIS 屏幕截图，其中已标记所有话语")](media/luis-tutorial-composite-entity/hr-all-utterances-labeled.png#lightbox)
 
 ## <a name="train"></a>定型
 
@@ -161,7 +162,7 @@ ms.locfileid: "52423495"
 
     由于此测试是为了验证是否正确提取复合，因此测试可以包括现有的示例话语或新话语。 一个有效的测试是在复合实体中包含所有子实体。
 
-    ```JSON
+    ```json
     {
       "query": "Move Jill Jones from a-1234 to z-2345 on March 3  2 p.m",
       "topScoringIntent": {
