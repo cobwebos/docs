@@ -12,14 +12,14 @@ ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 07/31/2018
+ms.date: 12/06/2018
 ms.author: bikang
-ms.openlocfilehash: d7f33bf0657ca2a6888387b7651706f9de537bb4
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.openlocfilehash: ce10e2c24e89140357df3fa6b724a1f89f389a50
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39494350"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53275476"
 ---
 # <a name="sfctl-sa-cluster"></a>sfctl sa-cluster
 管理独立 Service Fabric 群集。
@@ -63,18 +63,18 @@ ms.locfileid: "39494350"
 
 |参数|Description|
 | --- | --- |
-| --cluster-config            [必需] | 将应用于群集的群集配置。 |
+| --cluster-config            [必需] | 群集配置。 |
 | --application-health-policies | 应用程序类型名称对的 JSON 编码字典以及引发错误之前的最大不正常百分比。 |
 | --delta-unhealthy-nodes | 升级过程中允许的增量运行状况降级最大百分比。 允许的值为 0 到 100 的整数值。 |
 | --health-check-retry | 应用程序或群集不正常时尝试执行运行状况检查所间隔的时间长度。  默认值：PT0H0M0S。 |
-| --health-check-stable | 应用程序或群集必须保持正常状态的时间长度。  默认值：PT0H0M0S。 |
+| --health-check-stable | 升级继续到下一升级域之前，应用程序或群集必须保持正常的时长。  默认值：PT0H0M0S。 <br><br> 首先，会将其解释为表示 ISO 8601 持续时间的一个字符串。 如果那失败，则会将其解释为表示总毫秒数的一个数字。 |
 | --health-check-wait | 启动运行状况检查进程之前，完成升级域后等待的时间长度。  默认值：PT0H0M0S。 |
 | --timeout -t | 服务器超时，以秒为单位。  默认值\: 60。 |
 | --unhealthy-applications | 升级过程中允许的不正常应用程序最大百分比。 允许的值为 0 到 100 的整数值。 |
 | --unhealthy-nodes | 升级过程中允许的不正常节点最大百分比。 允许的值为 0 到 100 的整数值。 |
 | --upgrade-domain-delta-unhealthy-nodes | 升级过程中允许的升级域增量运行状况降级最大百分比。 允许的值为 0 到 100 的整数值。 |
-| --upgrade-domain-timeout | 升级域的超时。  默认值：PT0H0M0S。 |
-| --upgrade-timeout | 升级超时。  默认值：PT0H0M0S。 |
+| --upgrade-domain-timeout | 执行 FailureAction 前，每个升级域需等待的时长。  默认值：PT0H0M0S。 <br><br> 首先，会将其解释为表示 ISO 8601 持续时间的一个字符串。 如果那失败，则会将其解释为表示总毫秒数的一个数字。 |
+| --upgrade-timeout | 执行 FailureAction 前，完成整个升级需等待的时长。  默认值：PT0H0M0S。 <br><br> 首先，会将其解释为表示 ISO 8601 持续时间的一个字符串。 如果那失败，则会将其解释为表示总毫秒数的一个数字。 |
 
 ### <a name="global-arguments"></a>全局参数
 
@@ -88,7 +88,12 @@ ms.locfileid: "39494350"
 
 ### <a name="examples"></a>示例
 
-启动群集配置更新 sfctl sa-cluster config-upgrade --cluster-config <YOUR CLUSTER CONFIG> --application-health-policies "{"fabric:/System":{"ConsiderWarningAsError":true}}"
+启动群集配置更新
+
+```
+sfctl sa-cluster config-upgrade --cluster-config <YOUR CLUSTER CONFIG> --application-health-
+policies "{"fabric:/System":{"ConsiderWarningAsError":true}}"
+```
 
 ## <a name="sfctl-sa-cluster-upgrade-status"></a>sfctl sa-cluster upgrade-status
 获取 Service Fabric 独立群集的群集配置升级状态。
