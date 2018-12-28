@@ -9,18 +9,18 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 07/06/2018
+ms.date: 11/29/2018
 ms.author: jingwang
-ms.openlocfilehash: 558b426ea85decb0309390e36910eb18719e6e99
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 108ced5416eb7cd6826f4f96d4f62fd33e8f5653
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39002521"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52680848"
 ---
 # <a name="load-data-into-azure-data-lake-storage-gen2-preview-with-azure-data-factory"></a>使用 Azure 数据工厂将数据加载到 Azure Data Lake Storage Gen2（预览版）中
 
-[Azure Data Lake Storage Gen2（预览版）](../storage/data-lake-storage/introduction.md)向 Azure Blob 存储添加了新的协议，其中带有分层文件系统命名空间和安全功能，使得分析框架能更加轻松地连接到持久存储层。 在 Data Lake Storage Gen2（预览版）中，在添加文件系统接口优点的同时，还保留了对象存储的所有功能。
+Azure Data Lake Storage Gen2 预览版是一组致力于进行大数据分析的功能，基于 [Azure Blob 存储](../storage/blobs/storage-blobs-introduction.md)而构建。 它可使用文件系统和对象存储范例与数据进行交互。
 
 Azure 数据工厂是一个完全托管的基于云的数据集成服务。 通过该服务，可使用丰富的本地数据存储和基于云的数据存储中的数据填充数据湖，并更快速地生成分析解决方案。 若要查看受支持的连接器的详细列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)表。
 
@@ -33,9 +33,9 @@ Azure 数据工厂提供可横向扩展的托管数据移动解决方案。 得�
 
 ## <a name="prerequisites"></a>先决条件
 
-* Azure 订阅：如果没有 Azure 订阅，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/)。
-* 已启用 Data Lake Storage Gen2 的 Azure 存储帐户：如果没有存储帐户，请单击[此处](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM)进行创建。
-* 具备包含数据的 S3 bucket 的 AWS 帐户：本文介绍如何从 Amazon S3 复制数据。 可以按类似步骤使用其他数据存储。
+* Azure 订阅：如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/)。
+* 启用了 Data Lake Storage Gen2 的 Azure 存储帐户：如果没有存储帐户，请单击[此处](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM)创建一个。
+* AWS 帐户与一个包含数据的 S3 存储桶：本文介绍如何从 Amazon S3 复制数据。 可以按类似步骤使用其他数据存储。
 
 ## <a name="create-a-data-factory"></a>创建数据工厂
 
@@ -46,13 +46,13 @@ Azure 数据工厂提供可横向扩展的托管数据移动解决方案。 得�
       
    ![“新建数据工厂”页](./media/load-azure-data-lake-storage-gen2//new-azure-data-factory.png)
  
-    * **名称**：输入 Azure 数据工厂的全局唯一名称。 如果收到错误“数据工厂名称 \"LoadADLSDemo\" 不可用”，请输入不同的数据工厂名称。 例如，可以使用名称 _**yourname**_**ADFTutorialDataFactory**。 请重试创建数据工厂。 有关数据工厂项目的命名规则，请参阅[数据工厂 - 命名规则](naming-rules.md)。
+    * **名称**：输入 Azure 数据工厂的全局唯一名称。 如果收到错误“数据工厂名称 \"LoadADLSDemo\" 不可用”，请输入不同的数据工厂名称。 例如，可以使用名称 _**yourname**_**ADFTutorialDataFactory**。 请重试创建数据工厂。 有关数据工厂项目的命名规则，请参阅[数据工厂命名规则](naming-rules.md)。
     * **订阅**：选择要在其中创建数据工厂的 Azure 订阅。 
     * **资源组**：从下拉列表中选择现有资源组，或选择“新建”选项并输入资源组的名称。 若要了解有关资源组的详细信息，请参阅 [使用资源组管理 Azure 资源](../azure-resource-manager/resource-group-overview.md)。  
-    * **版本**：选择“V2”.
-    * **位置**：选择数据工厂所在的位置。 下拉列表中仅显示支持的位置。 数据工厂使用的数据存储可以在其他位置和区域中。 
+    * **版本**：选择“V2”。
+    * **位置**：选择数据工厂的位置。 下拉列表中仅显示支持的位置。 数据工厂使用的数据存储可以在其他位置和区域中。 
 
-3. 选择**创建**。
+3. 选择“创建”。
 4. 创建操作完成后，请转到数据工厂。 此时会看到“数据工厂”主页，如下图所示： 
    
    ![数据工厂主页](./media/load-azure-data-lake-storage-gen2/data-factory-home-page.png)
@@ -76,14 +76,14 @@ Azure 数据工厂提供可横向扩展的托管数据移动解决方案。 得�
     ![“源数据存储 S3”页](./media/load-azure-data-lake-storage-gen2/source-data-store-page-s3.png)
     
 4. 在“指定 Amazon S3 连接”页中，执行以下步骤：
-   1. 指定“访问密钥 ID”值。
-   2. 指定“机密访问密钥”值。
-   3. 单击“测试连接”以验证设置，然后选择“完成”。
+
+    1. 指定“访问密钥 ID”值。
+    2. 指定“机密访问密钥”值。
+    3. 单击“测试连接”以验证设置，然后选择“完成”。
+    4. 随即会显示新创建的连接。 选择“**下一步**”。
    
-   ![指定 Amazon S3 帐户](./media/load-azure-data-lake-storage-gen2/specify-amazon-s3-account.png)
-   
-   4. 随即会显示新创建的连接。 选择“**下一步**”。
-   
+    ![指定 Amazon S3 帐户](./media/load-azure-data-lake-storage-gen2/specify-amazon-s3-account.png)
+      
 5. 在“选择输入文件或文件夹”页上，浏览到要复制的文件夹和文件。 选择文件夹/文件，选择“选择”：
 
     ![选择输入文件或文件夹](./media/load-azure-data-lake-storage-gen2/choose-input-folder.png)
@@ -99,7 +99,7 @@ Azure 数据工厂提供可横向扩展的托管数据移动解决方案。 得�
 8. 在“指定 Azure Data Lake 存储连接”页，执行以下步骤：
 
    1. 从“存储帐户名称”下拉列表中选择能使用 Data Lake Storage Gen2 的帐户。
-   2. 选择“**下一步**”。
+   2. 选择“完成”以创建连接。 然后，选择“下一步”。
    
    ![指定 Azure Data Lake Storage Gen2 帐户](./media/load-azure-data-lake-storage-gen2/specify-adls.png)
 
@@ -130,7 +130,7 @@ Azure 数据工厂提供可横向扩展的托管数据移动解决方案。 得�
 
 16. 验证数据是否已复制到 Data Lake Storage Gen2 帐户。
 
-## <a name="best-practices"></a>最佳实践
+## <a name="best-practices"></a>最佳做法
 
 如果要从基于文件的数据存储复制大量数据，建议：
 

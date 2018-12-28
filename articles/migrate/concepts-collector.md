@@ -4,15 +4,15 @@ description: 介绍 Azure Migrate 中的收集器设备。
 author: snehaamicrosoft
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 10/30/2018
+ms.date: 12/05/2018
 ms.author: snehaa
 services: azure-migrate
-ms.openlocfilehash: 81e6731068db84f02073f02c49bea9a8fb7c7c70
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 255f5b34e53ddfb1a503130f0bccbac16a420f9a
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50241185"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53255969"
 ---
 # <a name="about-the-collector-appliance"></a>关于收集器设备
 
@@ -20,21 +20,9 @@ ms.locfileid: "50241185"
 
 Azure Migrate 收集器是一种轻量级设备，可用于在迁移到 Azure 之前发现本地 vCenter 环境，以便使用 [Azure Migrate](migrate-overview.md) 服务进行评估。  
 
-## <a name="discovery-methods"></a>发现方法
+## <a name="discovery-method"></a>发现方法
 
-收集器设备有两个选项：一次性发现或持续发现。
-
-### <a name="one-time-discovery"></a>一次性发现
-
-收集器设备与 vCenter Server 进行一次性通信，以收集有关 VM 的元数据。 使用此方法时：
-
-- 设备未持续连接到 Azure Migrate 项目。
-- 发现完成后，本地环境的更改不会反映在 Azure Migrate 中。 要反映任何更改，你需要重新发现同一项目中的相同环境。
-- 当收集 VM 的性能数据时，设备依赖于在 vCenter Server 中存储的历史性能数据。 它收集过去一个月内性能历史记录。
-- 若要收集历史性能数据，需将 vCenter Server 中的统计信息设置设置为三级。 设置为三级后，需等待至少一天 vCenter 才能收集性能计数器。 因此，建议至少在一天后运行发现。 如果要根据 1 周或 1 个月的性能数据来评估环境，则需等待相应的时间。
-- 在此发现方法中，Azure Migrate 针对每个可能会导致大小不足的指标（而不是峰值计数器）收集平均计数器。 建议使用持续发现选项以获取更准确地大小调整结果。
-
-### <a name="continuous-discovery"></a>持续发现
+在以前，收集器设备有两个选项，一次性发现和连续发现。 一次性发现模型现在已被弃用，因为它依赖于用于性能数据收集的 vCenter Server 统计信息设置（需要统计信息设置设置为级别 3），并且收集的平均计数器（而不是峰值）会导致大小不足。 连续发现模型可确保精细数据收集，并可收集峰值计数器，从而实现准确的大小调整。 其工作原理如下所示：
 
 收集器设备将持续连接到 Azure Migrate 项目，并不断收集 VM 的性能数据。
 
@@ -44,21 +32,23 @@ Azure Migrate 收集器是一种轻量级设备，可用于在迁移到 Azure �
 - 此模型不依赖于 vCenter Server 的统计信息设置来收集性能数据。
 - 你可以随时从收集器中停止连续分析。
 
-请注意，设备仅连续收集性能数据，它不会检测本地环境中的任何配置更改（即 VM 添加、删除、磁盘添加等）。 如果本地环境中存在配置更改，可以执行以下操作以在门户中反映更改：
+**即时满足条件：** 使用持续发现设备，一旦发现完成（花费几个小时，具体取决于 VM 数量），就可以立即创建评估。 由于性能数据收集在你启动发现时开始，如果你希望即时满足条件，则应当将评估中的大小调整条件选择为“按本地”。 对于基于性能的评估，建议在启动发现后等待至少一天，以便获得可靠的大小建议。
 
-- 添加项（VM、磁盘、核心等）：若要在 Azure 门户中反映这些更改，可以从设备停止发现，然后重新启动设备。 这可确保在 Azure Migrate 项目中更新更改。
+设备仅连续收集性能数据，它不会检测本地环境中的任何配置更改（即 VM 添加、删除、磁盘添加等）。 如果本地环境中存在配置更改，可以执行以下操作以在门户中反映更改：
 
-- 删除 VM：由于设备的设计方式，即使停止并启动发现，也不会反映 VM 的删除。 这是因为后续发现的数据会追加到较旧的发现后，而不是进行覆盖。 在这种情况下，可以通过从组中删除 VM 并重新计算评估来直接忽略门户中的 VM。
+- 添加项（VM、磁盘、核心等）：若要在 Azure 门户中反映这些更改，可以从设备停止发现，然后重启发现。 这可确保在 Azure Migrate 项目中更新更改。
+
+- 删除 VM：由于设备的设计方式，即使停止并启动发现，也不会反映出 VM 已删除这一更改。 这是因为后续发现的数据会追加到较旧的发现后，而不是进行覆盖。 在这种情况下，可以通过从组中删除 VM 并重新计算评估来直接忽略门户中的 VM。
 
 > [!NOTE]
-> 连续性发现功能为预览版。 建议使用此方法，因为此方法收集细粒度的性能数据并实现精确的大小调整。
+> 一次性发现设备现在已弃用，因为此方法依赖于 vCenter Server 针对性能数据点可用性的统计信息设置并且收集平均性能计数器，这导致用于迁移到 Azure 的 VM 大小不足。
 
 ## <a name="deploying-the-collector"></a>部署收集器
 
 使用 OVF 模板部署收集器设备：
 
 - 从 Azure 门户中的 Azure Migrate 项目下载 OVF 模板。 将下载的文件导入到 vCenter Server，以便设置收集器设备 VM。
-- 从 OVF 中，VMware 设置一个具有 4 个核心、8 GB RAM 和 80 GB 磁盘的 VM。 操作系统是 Windows Server 2012 R2（64 位）。
+- 从 OVF 中，VMware 设置一个具有 8 个核心、16 GB RAM 和 80 GB 磁盘的 VM。 操作系统是 Windows Server 2016（64 位）。
 - 运行收集器时，将运行一些先决条件检查以确保收集器可以连接到 Azure Migrate。
 
 - [详细了解](tutorial-assessment-vmware.md#create-the-collector-vm)如何创建收集器。
@@ -68,21 +58,25 @@ Azure Migrate 收集器是一种轻量级设备，可用于在迁移到 Azure �
 
 收集器必须通过一些先决条件检查，目的是确保它能够通过 Internet 连接到 Azure Migrate 服务并上传发现的数据。
 
-- 检查 Internet 连接：收集器可直接或通过代理连接到 Internet。
+- **验证 Azure 云**：收集器需要知道计划迁移到的 Azure 云。
+    - 如果打算迁移到 Azure 政府云，请选择 Azure 政府。
+    - 如果打算迁移到 Azure 商业版云，请选择 Azure 全局。
+    - 根据此处指定的云，设备将向各自的终结点发送已发现的元数据。
+- **检查 Internet 连接**：收集器可直接或通过代理连接到 Internet。
     - 先决条件检查验证是否能连接到[必需和可选 URL](#connect-to-urls)。
     - 如果可以直接连接到 Internet，则无需特定操作，否则要确保收集器可以访问所需的 URL。
     - 如果要通过代理进行连接，请注意[下面的要求](#connect-via-a-proxy)。
-- 验证时间同步：收集器应与 Internet 时间服务器同步，以确保向服务发出的请求经过身份验证。
+- **验证时间同步**：收集器应与 Internet 时间服务器同步，以确保向服务发出的请求经过身份验证。
     - portal.azure.com URL 应该能够从收集器访问，以便验证时间。
     - 如果计算机不同步，则需更改收集器 VM 上的时钟时间，使之与当前时间匹配。 为此，打开 VM 上的管理员提示符，运行 w32tm /tz 检查时区。 运行 w32tm /resync 来同步时间。
-- 检查收集器服务运行情况：Azure Migrate 收集器服务应该正在收集器 VM 上运行。
+- **检查收集器服务是否正在运行**：Azure Migrate 收集器服务应该正在收集器 VM 上运行。
     - 此服务在计算机启动时自动启动。
     - 如果服务未运行，则从控制面板中启动它。
     - 收集器服务连接到 vCenter Server，收集 VM 元数据和性能数据，并将其发送到 Azure Migrate 服务。
-- 检查安装的 VMware PowerCLI 6.5：VMware PowerCLI 6.5 PowerShell 模块必须安装在收集器 VM 上，以便它可以与 vCenter Server 进行通信。
+- **检查 VMware PowerCLI 6.5 是否已安装**：VMware PowerCLI 6.5 PowerShell 模块必须安装在收集器 VM 上，以便它可以与 vCenter Server 进行通信。
     - 如果收集器可访问模块安装所需的 URL，则会在收集器部署过程中自动安装模块。
     - 如果收集器不能在部署过程中安装模块，则必须[手动安装](#install-vwware-powercli-module-manually)。
-- 检查到 vCenter Server 的连接：收集器必须能够连接到 vCenter Server 和查询 VM、其元数据和性能计数器。 [验证先决条件](#connect-to-vcenter-server)以进行连接。
+- **检查 vCenter Server 连接**：收集器必须能够连接到 vCenter Server 和查询 VM、其元数据和性能计数器。 [验证先决条件](#connect-to-vcenter-server)以进行连接。
 
 
 ### <a name="connect-to-the-internet-via-a-proxy"></a>通过代理连接到 Internet
@@ -117,7 +111,8 @@ Azure Migrate 收集器是一种轻量级设备，可用于在迁移到 Azure �
 
 **URL** | **详细信息**  | **先决条件检查**
 --- | --- | ---
-*.portal.azure.com | 检查与 Azure 服务和时间同步的连接。 | 必须能够访问 URL。<br/><br/> 如果没有连接，先决条件检查会失败。
+*.portal.azure.com | 适用于 Azure 全局。 检查与 Azure 服务和时间同步的连接。 | 必须能够访问 URL。<br/><br/> 如果没有连接，先决条件检查会失败。
+*.portal.azure.us | 仅适用于 Azure 政府。 检查与 Azure 服务和时间同步的连接。 | 必须能够访问 URL。<br/><br/> 如果没有连接，先决条件检查会失败。
 *.oneget.org:443<br/><br/> *.windows.net:443<br/><br/> *.windowsazure.com:443<br/><br/> *.powershellgallery.com:443<br/><br/> *.msecnd.net:443<br/><br/> *.visualstudio.com:443| 用于下载 PowerShell vCenter PowerCLI 模块。 | 可选的 URL 访问。<br/><br/> 先决条件检查不会失败。<br/><br/> 收集器 VM 上的自动模块安装将失败。 需要手动安装该模块。
 
 
@@ -187,7 +182,7 @@ RDP | TCP 3389 |
 无需再次下载 OVA，即可将收集器升级到最新版本。
 
 1. 下载[最新列出的升级包](concepts-collector-upgrade.md)
-2. 若要确保下载的修补程序安全，请打开管理员命令窗口并运行以下命令生成 ZIP 文件的哈希。 生成的哈希应与针对特定版本提到的哈希匹配：
+2. 若要确保下载的修补程序安全，请打开管理员命令窗口并运行以下命令生成 ZIP 文件的哈希。 生成的哈希应与针对特定版本提到的哈希相匹配：
 
     ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
 
@@ -211,7 +206,7 @@ RDP | TCP 3389 |
 
 ### <a name="collected-metadata"></a>收集的元数据
 
-收集器设备发现 VM 的以下静态元数据：
+收集器设备发现每个 VM 的以下配置元数据。 VM 的配置数据在发现启动后一小时即可使用。
 
 - VM 显示名称（在 vCenter Server 上）
 - VM 的清单路径（vCenter Server 上的主机/文件夹）
@@ -224,26 +219,18 @@ RDP | TCP 3389 |
 
 #### <a name="performance-counters"></a>性能计数器
 
-- “一次性发现”：收集一次性发现的计数器时，请注意以下事项：
+ 收集器设备每隔 20 秒从 ESXi 主机为每个 VM 收集以下性能计数器。 这些计数器是 vCenter 计数器，虽然术语表示其为平均值，但 20 秒示例是实时计数器。 启动发现两个小时后，门户开始提供 VM 的性能数据。 在创建基于性能的评估之前，强烈建议等待至少一天，以获得精确的大小调整建议。 如果需要“即时满足条件”，可选择以“作为本地”为大小调整条件创建评估，如此则不会将性能数据纳入调整范围。
 
-    - 它可能需要最多 15 分钟的时间来收集配置元数据并将其发送到项目。
-    - 收集完配置数据后，可能需要一小时的时间才能在门户中使用性能数据。
-    - 在门户中提供元数据后，将显示 VM 列表，便可以开始创建用于评估的组。
-- 连续性发现：对于连续性发现，请注意以下事项：
-    - VM 的配置数据在发现启动后一小时即可使用
-    - 性能数据在 2 小时后开始变为可用。
-    - 在开始发现之后，设备至少需要一天的时间来分析环境，然后创建评估。
-
-**计数器** | **级别** | **每个设备级别** | **对评估的影响**
---- | --- | --- | ---
-cpu.usage.average | 1 | NA | 建议的 VM 大小和成本  
-mem.usage.average | 1 | NA | 建议的 VM 大小和成本  
-virtualDisk.read.average | 2 | 2 | 计算磁盘大小、存储成本和 VM 大小
-virtualDisk.write.average | 2 | 2  | 计算磁盘大小、存储成本和 VM 大小
-virtualDisk.numberReadAveraged.average | 1 | 3 |  计算磁盘大小、存储成本和 VM 大小
-virtualDisk.numberWriteAveraged.average | 1 | 3 |   计算磁盘大小、存储成本和 VM 大小
-net.received.average | 2 | 3 |  计算 VM 大小                          |
-net.transmitted.average | 2 | 3 | 计算 VM 大小     
+**计数器** |  **对评估的影响**
+--- | ---
+cpu.usage.average | 建议的 VM 大小和成本  
+mem.usage.average | 建议的 VM 大小和成本  
+virtualDisk.read.average | 计算磁盘大小、存储成本和 VM 大小
+virtualDisk.write.average | 计算磁盘大小、存储成本和 VM 大小
+virtualDisk.numberReadAveraged.average | 计算磁盘大小、存储成本和 VM 大小
+virtualDisk.numberWriteAveraged.average | 计算磁盘大小、存储成本和 VM 大小
+net.received.average | 计算 VM 大小                          
+net.transmitted.average | 计算 VM 大小     
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -1,5 +1,5 @@
 ---
-title: 教程：Azure Active Directory 与 Expensify 的集成 | Microsoft 文档
+title: 教程：Azure Active Directory 与 Expensify 集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 和 Expensify 之间配置单一登录。
 services: active-directory
 documentationCenter: na
@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/02/2018
 ms.author: jeedes
-ms.openlocfilehash: c9ee0af3cbf2c1aa7b24d2f4cf5fba9d664bc087
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.openlocfilehash: 5d61ac27eb5a6e4f546d8c6db66b84f2c204b507
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48248034"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52840463"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-expensify"></a>教程：Azure Active Directory 与 Expensify 的集成
+# <a name="tutorial-azure-active-directory-integration-with-expensify"></a>教程：Azure Active Directory 与 Expensify 集成
 
 本教程介绍了如何将 Expensify 与 Azure Active Directory (Azure AD) 进行集成。
 
@@ -103,19 +103,19 @@ ms.locfileid: "48248034"
 
     ![图像](./media/expensify-tutorial/b1_b2_select_sso.png)
 
-2. 单击屏幕顶部的“更改单一登录模式”，以选择 **SAML** 模式。
+2. 单击屏幕顶部的“更改单一登录模式”，以选择“SAML”模式。
 
       ![图像](./media/expensify-tutorial/b1_b2_saml_ssso.png)
 
-3. 在“选择单一登录方法”对话框中，对 **SAML** 模式单击“选择”以启用单一登录。
+3. 在“选择单一登录方法”对话框中，单击“SAML”模式对应的“选择”，以启用单一登录。
 
     ![图像](./media/expensify-tutorial/b1_b2_saml_sso.png)
 
-4. 在“使用 SAML 设置单一登录”页上，单击“编辑”按钮以打开“基本 SAML 配置”对话框。
+4. 在“设置 SAML 单一登录”页上，单击“编辑”按钮，以打开“基本 SAML 配置”对话框。
 
     ![图像](./media/expensify-tutorial/b1-domains_and_urlsedit.png)
 
-5. 在“基本 SAML 配置”部分中，执行以下步骤：
+5. 在“基本 SAML 配置”部分中，按照以下步骤操作：
 
     a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“登录 URL”文本框中，键入 URL：`https://www.expensify.com/authentication/saml/login`
 
@@ -128,11 +128,11 @@ ms.locfileid: "48248034"
 
     ![Expensify 域信息](./media/expensify-tutorial/tutorial_expensify_domain.png)
 
-6. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中，单击“下载”以根据要求下载相应的证书并将其保存在计算机上。
+6. 在“设置 SAML 单一登录”页的“SAML 签名证书”部分中，单击“下载”，以根据要求下载相应的证书，并将证书保存在计算机上。
 
     ![图像](./media/expensify-tutorial/certificatebase64.png)
 
-7. 若要在 Expensify 中启用 SSO，首先需要在应用程序中启用“域控制”。 可以通过[此处](http://help.expensify.com/domain-control)列出的步骤在应用程序中启用“域控制”。 有关其他支持，请与 [Expensify 客户端支持团队](mailto:help@expensify.com)协作。 在启用“域控制”后，执行以下步骤：
+7. 若要在 Expensify 中启用 SSO，首先需要在应用程序中启用“域控制”。 可以通过[此处](https://help.expensify.com/domain-control)列出的步骤在应用程序中启用“域控制”。 有关其他支持，请与 [Expensify 客户端支持团队](mailto:help@expensify.com)协作。 在启用“域控制”后，执行以下步骤：
    
     ![配置单一登录](./media/expensify-tutorial/tutorial_expensify_51.png)
     
@@ -148,7 +148,7 @@ ms.locfileid: "48248034"
 
 本部分的目的是在 Azure 门户中创建名为 Britta Simon 的测试用户。
 
-1. 在 Azure 门户的左窗格中，依次选择“Azure Active Directory”和“用户”，然后选择“所有用户”。
+1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”。
 
     ![图像](./media/expensify-tutorial/d_users_and_groups.png)
 
@@ -156,7 +156,7 @@ ms.locfileid: "48248034"
 
     ![图像](./media/expensify-tutorial/d_adduser.png)
 
-3. 在用户属性中执行以下步骤。
+3. 在“用户属性”中，按照以下步骤操作。
 
     ![图像](./media/expensify-tutorial/d_userproperties.png)
 
@@ -165,7 +165,7 @@ ms.locfileid: "48248034"
     b. 在“用户名”字段中键入 brittasimon@yourcompanydomain.extension  
     例如： BrittaSimon@contoso.com
 
-    c. 选择“属性”，再选中“显示密码”复选框，然后记下“密码”框中显示的值。
+    c. 选择“属性”，再选择“显示密码”复选框，然后记下“密码”框中显示的值。
 
     d. 选择“创建”。
  
@@ -193,7 +193,7 @@ ms.locfileid: "48248034"
 
     ![图像](./media/expensify-tutorial/d_assign_user.png)
 
-4. 在“用户和组”对话框中，选择“用户”列表中的 Britta Simon，然后选择屏幕底部的“选择”按钮。
+4. 在“用户和组”对话框中，选择“用户”列表中的 Britta Simon，然后单击屏幕底部的“选择”按钮。
 
 5. 在“添加分配”对话框中，选择“分配”按钮。
     
@@ -202,7 +202,7 @@ ms.locfileid: "48248034"
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 当在访问面板中单击 Expensify 磁贴时，应当会自动登录到 Expensify 应用程序。
-有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
+有关访问面板的详细信息，请参阅[访问面板简介](../user-help/active-directory-saas-access-panel-introduction.md)。 
 
 ## <a name="additional-resources"></a>其他资源
 

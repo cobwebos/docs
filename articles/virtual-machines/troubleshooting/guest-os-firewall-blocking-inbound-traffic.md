@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 11/22/2018
 ms.author: delhan
-ms.openlocfilehash: 3ddd2f122de832654be295c5978a88bec702558c
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 19ba7013b461917c4aea8ae96f689d7e39859652
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52319016"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53134431"
 ---
 # <a name="azure-vm-guest-os-firewall-is-blocking-inbound-traffic"></a>Azure VM 来宾 OS 防火墙阻止入站流量
 
@@ -31,17 +31,17 @@ ms.locfileid: "52319016"
 
 ## <a name="cause"></a>原因
 
-### <a name="cause-1"></a>原因 1 
+### <a name="cause-1"></a>原因 1
 
 未设置 RDP 规则来允许 RDP 流量。
 
-### <a name="cause-2"></a>原因 2 
+### <a name="cause-2"></a>原因 2
 
 来宾系统防火墙配置文件设置为阻止所有入站连接，包括 RDP 流量。
 
 ![防火墙设置](./media/guest-os-firewall-blocking-inbound-traffic/firewall-advanced-setting.png)
 
-## <a name="solution"></a>解决方案 
+## <a name="solution"></a>解决方案
 
 在执行这些步骤之前，请创建受影响 VM 的系统磁盘快照作为备份。 有关详细信息，请参阅 [拍摄磁盘快照](../windows/snapshot-copy-managed-disk.md)。
 
@@ -49,7 +49,7 @@ ms.locfileid: "52319016"
 
 ### <a name="online-troubleshooting"></a>联机故障排除
 
-连接到[串行控制台并打开 PowerShell 实例](serial-console-windows.md#open-cmd-or-powershell-in-serial-console)。 如果 VM 上未启用串行控制台，请转到“[脱机修复 VM](troubleshoot-rdp-internal-error.md#repair-the-vm-offline)”。
+连接到[串行控制台并打开 PowerShell 实例](serial-console-windows.md#use-cmd-or-powershell-in-serial-console)。 如果 VM 上未启用串行控制台，请转到“[脱机修复 VM](troubleshoot-rdp-internal-error.md#repair-the-vm-offline)”。
 
 #### <a name="mitigation-1"></a>缓解措施 1
 
@@ -80,7 +80,7 @@ ms.locfileid: "52319016"
     ```cmd
     netsh advfirewall firewall set rule group="Remote Desktop" new enable=yes
     ```
-    
+
     或者，要打开特定的远程桌面 (TCP-In) 规则，请运行以下命令：
 
     ```cmd
@@ -94,7 +94,7 @@ ms.locfileid: "52319016"
     ```
 
     完成故障排除并正确设置防火墙后，请重新启用防火墙。
-    
+
     > [!Note]
     > 无需重启 VM 即可应用这些更改。
 
@@ -128,11 +128,11 @@ ms.locfileid: "52319016"
     ```
 
     > [!Note]
-    > 无需重启 VM 即可应用更改。 
+    > 无需重启 VM 即可应用更改。
 
 4.  再次尝试通过 RDP 访问 VM。
 
-### <a name="offline-mitigations"></a>脱机缓解措施 
+### <a name="offline-mitigations"></a>脱机缓解措施
 
 1.  [将系统磁盘附加到恢复 VM](troubleshoot-recovery-disks-portal-windows.md)。
 
@@ -159,7 +159,7 @@ ms.locfileid: "52319016"
     robocopy f:\windows\system32\config f:\windows\system32\config.BACK /MT
 
     REM Mount the hive
-    reg load HKLM\BROKENSYSTEM f:\windows\system32\config\SYSTEM 
+    reg load HKLM\BROKENSYSTEM f:\windows\system32\config\SYSTEM
 
     REM Delete the keys to block all inbound connection scenario
     REG DELETE "HKLM\BROKENSYSTEM\ControlSet001\services\SharedAccess\Parameters\FirewallPolicy\DomainProfile" /v DoNotAllowExceptions

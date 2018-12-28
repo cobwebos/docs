@@ -3,7 +3,7 @@ title: 从 VHD 部署 Azure 市场 VM | Microsoft Docs
 description: 介绍如何从 Azure 部署的 VHD 注册 VM。
 services: Azure, Marketplace, Cloud Partner Portal,
 documentationcenter: ''
-author: pbutlerm
+author: v-miclar
 manager: Patrick.Butler
 editor: ''
 ms.assetid: ''
@@ -12,18 +12,18 @@ ms.workload: ''
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: article
-ms.date: 10/19/2018
+ms.date: 11/30/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 2771549af29b3e717d117afb42de6db03fbee226
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.openlocfilehash: 9157ce7f8f16bc60a6d5c16fa992a5402cf2d7ad
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49638873"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53190724"
 ---
 # <a name="deploy-a-vm-from-your-vhds"></a>从 VHD 部署 VM
 
-本文介绍如何从 Azure 部署的虚拟硬盘 (VHD) 注册虚拟机 (VM)。  其中列出了所需的工具，以及如何使用这些工具创建用户 VM 映像，然后使用 [Microsoft Azure 门户](https://ms.portal.azure.com/)或 PowerShell 脚本将其部署到 Azure。 
+本部分介绍如何从 Azure 部署的虚拟硬盘 (VHD) 部署虚拟机 (VM)。  其中列出了所需的工具，以及如何使用这些工具创建用户 VM 映像，然后使用 PowerShell 脚本将其部署到 Azure。
 
 将虚拟硬盘 (VHD)（通用化的操作系统 VHD 以及零个或多个数据磁盘 VHD）上传到 Azure 存储帐户之后，可将其注册为用户 VM 映像。 然后可以测试该映像。 由于操作系统 VHD 已通用化，因此无法通过提供 VHD URL 来直接部署 VM。
 
@@ -33,48 +33,23 @@ ms.locfileid: "49638873"
 - [VM Image PowerShell 'How To'](https://azure.microsoft.com/blog/vm-image-powershell-how-to-blog-post/)（VM 映像 PowerShell 操作方法）
 
 
-## <a name="set-up-the-necessary-tools"></a>设置所需的工具
+## <a name="prerequisite-install-the-necessary-tools"></a>先决条件：安装必要的工具
 
 遵照以下说明安装 Azure PowerShell 和 Azure CLI（如果尚未这样做）：
-
-<!-- TD: Change the following URLs (in this entire topic) to relative paths.-->
 
 - [使用 PowerShellGet 在 Windows 上安装 Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps)
 - [安装 Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli)
 
 
-## <a name="create-a-user-vm-image"></a>创建用户 VM 映像
+## <a name="deployment-steps"></a>部署步骤
 
-接下来，从通用化的 VHD 创建非托管映像。
+将使用以下步骤来创建和部署用户 VM 映像：
 
-#### <a name="capture-the-vm-image"></a>捕获 VM 映像
+1. 创建用户 VM 映像，这需要捕获和通用化映像。 
+2. 创建证书并将其存储在新的 Azure Key Vault 中。 建立与 VM 的安全 WinRM 连接需要此证书。  提供了 Azure 资源管理器模板和 Azure PowerShell 脚本。 
+3. 使用提供的模板和脚本从用户 VM 映像部署 VM。
 
-遵照以下文章中的说明捕获对应于访问方法的 VM：
-
--  PowerShell：[如何从 Azure VM 创建非托管 VM 映像](../../../virtual-machines/windows/capture-image-resource.md)
--  Azure CLI：[如何创建虚拟机或 VHD 的映像](../../../virtual-machines/linux/capture-image.md)
--  API：[虚拟机 - 捕获](https://docs.microsoft.com/rest/api/compute/virtualmachines/capture)
-
-### <a name="generalize-the-vm-image"></a>通用化 VM 映像
-
-由于用户映像是从以前已通用化的 VHD 生成的，因此也应该通用化该映像。  同样，请选择对应于访问机制中的以下文章。  （捕获磁盘时可能已将其通用化。）
-
--  PowerShell：[通用化 VM](https://docs.microsoft.com/azure/virtual-machines/windows/sa-copy-generalized#generalize-the-vm)
--  Azure CLI：[步骤 2：创建 VM 映像](https://docs.microsoft.com/azure/virtual-machines/linux/capture-image#step-2-create-vm-image)
--  API：[虚拟机 - 通用化](https://docs.microsoft.com/rest/api/compute/virtualmachines/generalize)
-
-
-## <a name="deploy-a-vm-from-a-user-vm-image"></a>从用户 VM 映像部署 VM
-
-接下来，使用 Azure 门户或 PowerShell 从用户 VM 映像部署 VM。
-
-<!-- TD: Recapture following hilited images and replace with red-box. -->
-
-### <a name="deploy-a-vm-from-azure-portal"></a>从 Azure 门户部署 VM
-
-在 Azure 门户中使用以下过程部署用户 VM。
-
-1.  登录到 [Azure 门户](https://portal.azure.com)。
+部署 VM 后，即可[认证 VM 映像](./cpp-certify-vm.md)。
 
 2.  单击“新建”并搜索“模板部署”，然后选择“在编辑器中生成自己的模板”。  <br/>
   ![在 Azure 门户中生成 VHD 部署模板](./media/publishvm_021.png)
@@ -121,10 +96,8 @@ Azure 将开始部署：使用指定的非托管 VHD 在指定的存储帐户路
     New-AzureVM -ServiceName "VMImageCloudService" -VMs $myVM -Location "West US" -WaitForBoot
 ```
 
-<!-- TD: The following is a marketplace-publishing article and may be out-of-date.  TD: update and move topic.
-For help with issues, see [Troubleshooting common issues encountered during VHD creation](https://docs.microsoft.com/azure/marketplace-publishing/marketplace-publishing-vm-image-creation-troubleshooting) for additional assistance.
--->
 
 ## <a name="next-steps"></a>后续步骤
 
-部署 VM 后，可以[配置 VM](./cpp-configure-vm.md)。
+接下来，将为解决方案[创建用户 VM 映像](cpp-create-user-image.md)。
+

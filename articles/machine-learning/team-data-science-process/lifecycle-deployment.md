@@ -1,5 +1,5 @@
 ---
-title: Team Data Science Process 生命周期部署阶段 - Azure | Microsoft Docs
+title: Team Data Science Process 生命周期部署阶段
 description: 你的数据科学项目部署阶段的目标、任务和可交付结果
 services: machine-learning
 author: marktab
@@ -10,15 +10,15 @@ ms.component: team-data-science-process
 ms.topic: article
 ms.date: 11/04/2017
 ms.author: tdsp
-ms.custom: (previous author=deguhath, ms.author=deguhath)
-ms.openlocfilehash: 30d54b1475188fa886a811b22460d88e53aa564e
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: d05f831aa1ae1f9b0912dce66bf7f5e15c109d49
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52446579"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53138562"
 ---
-# <a name="deployment"></a>部署
+# <a name="deployment-stage-of-the-team-data-science-process-lifecycle"></a>Team Data Science Process 生命周期部署阶段
 
 本文概述了与 Team Data Science Process (TDSP) 的部署相关联的目标、任务和可交付结果。 此过程提供可用于构建数据科学项目的建议生命周期。 该生命周期概述了项目通常执行的主要阶段（通常以迭代方式进行）：
 
@@ -39,7 +39,7 @@ ms.locfileid: "52446579"
 ## <a name="how-to-do-it"></a>如何执行
 在此阶段中解决的主要任务：
 
-**操作模型**：将模型和管道部署到生产中或生产类似的环境中供应用程序操作。
+操作模型：将模型和管道部署到生产或类似生产的环境中供应用程序操作。
 
 ### <a name="operationalize-a-model"></a>操作模型
 如果拥有一组运行良好的模型，则可操作这些模型，以供其他应用程序使用。 根据具体的业务需求，实时作出预测或基于批处理作出预测。 若要部署模型，请使用开放 API 接口公开模型。 通过该接口，各种应用程序可轻松使用模型，例如：

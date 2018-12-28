@@ -2,19 +2,19 @@
 title: Azure 流分析与 Azure 机器学习的集成
 description: 本文介绍如何使用用户定义的函数快速设置集成了 Azure 机器学习的简单 Azure 流分析作业。
 services: stream-analytics
-author: jasonwhowell
+author: mamccrea
 ms.author: mamccrea
-manager: kfile
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 04/16/2018
-ms.openlocfilehash: 2169c3a41991b0b49a4324c16ea079f5943fad0b
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.date: 12/07/2018
+ms.custom: seodec18
+ms.openlocfilehash: d90439e498e8812551d9e2994165f1714d3bdaab
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51685746"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53093308"
 ---
 # <a name="performing-sentiment-analysis-by-using-azure-stream-analytics-and-azure-machine-learning"></a>使用 Azure 流分析和 Azure 机器学习执行情绪分析
 本文介绍了如何快速设置集成了 Azure 机器学习的简单 Azure 流分析作业。 你将使用 Cortana Intelligence 库中的机器学习情绪分析模型来实时分析流文本数据并确定情绪分数。 可以使用 Cortana Intelligence Suite 完成此任务，不必担心构建情绪分析模型的复杂性。
@@ -28,7 +28,7 @@ ms.locfileid: "51685746"
 
 在实际方案中，将直接从 Twitter 数据流获取数据。 为简化教程，已将教程编写为让流分析作业从 Azure Blob 存储中的 CSV 文件获取推文。 可以创建自己的 CSV 文件，也可以使用示例 CSV 文件，如下图中所示：
 
-![CSV 文件中的示例推文](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-integration-tutorial-figure-2.png)  
+![CSV 文件中显示的示例推文](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-integration-tutorial-figure-2.png)  
 
 你创建的流分析作业将情绪分析模型用作用户定义的函数 (UDF)，用于处理来自 blob 存储的示例文本数据。 输出（情绪分析的结果）写入到同一 blob 存储中的另一个 CSV 文件中。 
 
@@ -58,15 +58,15 @@ ms.locfileid: "51685746"
 
 3. 指定一个现有资源组，并指定位置。 对于位置，建议为本教程中创建的所有资源使用同一位置。
 
-    ![提供存储帐户详细信息](./media/stream-analytics-machine-learning-integration-tutorial/create-sa1.png)
+    ![提供存储帐户详细信息](./media/stream-analytics-machine-learning-integration-tutorial/create-storage-account1.png)
 
 4. 在 Azure 门户中，选择存储帐户。 在存储帐户边栏选项卡中，单击“容器”，然后单击**+“容器”以创建 blob 存储。&nbsp;**
 
-    ![创建 blob 容器](./media/stream-analytics-machine-learning-integration-tutorial/create-sa2.png)
+    ![为输入创建 blob 存储容器](./media/stream-analytics-machine-learning-integration-tutorial/create-storage-account2.png)
 
 5. 为容器提供名称（在本例中为 `azuresamldemoblob`），并验证“访问类型”是否已设置为“blob”。 完成后，单击“确定”。
 
-    ![指定 blob 容器详细信息](./media/stream-analytics-machine-learning-integration-tutorial/create-sa3.png)
+    ![指定 blob 容器详细信息](./media/stream-analytics-machine-learning-integration-tutorial/create-storage-account3.png)
 
 6. 在“容器”边栏选项卡中，选择新容器，这将打开该容器的边栏选项卡。
 
@@ -123,7 +123,7 @@ ms.locfileid: "51685746"
 
 3. 将作业命名为 `azure-sa-ml-demo`，指定一个订阅，指定一个现有资源组或新建一个资源组，然后为作业选择位置。
 
-   ![指定新的流分析作业的设置](./media/stream-analytics-machine-learning-integration-tutorial/create-job-1.png)
+   ![指定新的流分析作业的设置](./media/stream-analytics-machine-learning-integration-tutorial/create-stream-analytics-job-1.png)
    
 
 ### <a name="configure-the-job-input"></a>配置作业输入
@@ -143,7 +143,7 @@ ms.locfileid: "51685746"
    |**容器**  | 选择前面创建的容器 (`azuresamldemoblob`)        |
    |**事件序列化格式**  |  选择“CSV”       |
 
-   ![新作业输入的设置](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-create-sa-input-new-portal.png)
+   ![新的流分析作业输入的设置](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-create-sa-input-new-portal.png)
 
 4. 单击“ **保存**”。
 
@@ -163,7 +163,7 @@ ms.locfileid: "51685746"
    |**容器**  | 选择前面创建的容器 (`azuresamldemoblob`)        |
    |**事件序列化格式**  |  选择“CSV”       |
 
-   ![新作业输出的设置](./media/stream-analytics-machine-learning-integration-tutorial/create-output2.png) 
+   ![新的流分析作业输出的设置](./media/stream-analytics-machine-learning-integration-tutorial/create-stream-analytics-output.png) 
 
 4. 单击“ **保存**”。   
 
@@ -185,7 +185,7 @@ ms.locfileid: "51685746"
    | **URL**| 粘贴 Web 服务 URL。|
    |**键** | 粘贴 API 密钥。 |
   
-   ![用于向流分析作业添加机器学习函数的设置](./media/stream-analytics-machine-learning-integration-tutorial/add-function.png)  
+   ![用于向流分析作业添加机器学习函数的设置](./media/stream-analytics-machine-learning-integration-tutorial/add-machine-learning-function.png)  
     
 4. 单击“ **保存**”。
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/01/2018
 ms.author: spelluru
-ms.openlocfilehash: 558df3fa70989aaf9ba182df3a918994c7dc9db6
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 1f1797cf3022285f81991eb15818b68df195de4b
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51243703"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52834122"
 ---
 # <a name="add-owners-and-users-in-azure-devtest-labs"></a>在 Azure 开发测试实验室中添加所有者和用户
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/How-to-set-security-in-your-DevTest-Lab/player]
@@ -69,15 +69,11 @@ ms.locfileid: "51243703"
 3. 从实验室列表，选择所需的实验室。
 4. 在实验室的边栏选项卡中，选择“配置和策略”。 
 5. 在“配置和策略”页面，选择左侧菜单中的“访问控制 (IAM)”。 
-6. 选择工具栏上的“添加”以将用户添加到角色。
-
-    ![添加用户](./media/devtest-lab-add-devtest-user/devtest-users-blade.png)
+6. 选择工具栏上的“添加角色分配”以将用户添加到角色。
 1. 在“添加权限”窗口中，执行以下操作： 
-    1. 选择一个角色（例如：DevTest Labs 用户）。 [每个角色可以执行的操作](#actions-that-can-be-performed-in-each-role)部分列出了所有者、开发测试用户和参与者三种角色的用户可以执行的各种操作。
+    1. 选择角色（例如：开发测试实验室用户）。 [每个角色可以执行的操作](#actions-that-can-be-performed-in-each-role)部分列出了所有者、开发测试用户和参与者三种角色的用户可以执行的各种操作。
     2. 选择要被添加到角色的用户。 
     3. 选择“保存”。 
-
-        ![将用户添加到角色](./media/devtest-lab-add-devtest-user/add-user.png) 
 11. 返回到“用户”边栏选项卡时，已添加该用户。  
 
 ## <a name="add-an-external-user-to-a-lab-using-powershell"></a>使用 PowerShell 将外部用户添加到实验室

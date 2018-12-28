@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/18/2017
 ms.author: chackdan
-ms.openlocfilehash: cc86a18b0db67bf968006c42f5791e1ad7a093f0
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 0a78405dc6293a7debd599e0e44754dc59d8af7e
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51016686"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53164631"
 ---
 # <a name="commonly-asked-service-fabric-questions"></a>有关 Service Fabric 的常见问题
 
@@ -39,7 +39,7 @@ ms.locfileid: "51016686"
 
 核心 Service Fabric 群集技术可用于将世界各地运行的计算机集合到一起，前提是它们相互之间已建立网络连接。 然而，生成并运行这样的群集可能很复杂。
 
-如果你对此方案有兴趣，建议你通过 [Service Fabric Github 问题列表](https://github.com/azure/service-fabric-issues)或通过支持代表联系我们以获取其他指南。 Service Fabric 团队正在努力针对此方案提供其他解释、指南和建议。 
+如果你对此方案感兴趣，建议你通过 [Service Fabric GitHub 问题列表](https://github.com/azure/service-fabric-issues)或通过你的支持代表与我们联系以获取其他指导。 Service Fabric 团队正在努力针对此方案提供其他解释、指南和建议。 
 
 应考虑的一些事项： 
 

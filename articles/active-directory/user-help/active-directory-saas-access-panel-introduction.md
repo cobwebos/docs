@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 09/11/2018
 ms.author: lizross
 ms.reviewer: asteen
-ms.openlocfilehash: d9ed140d404387b94428cea5d925911806b62552
-ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
+ms.openlocfilehash: 129f77ec9ea4d4e2633e1ea0b02795bc0df26433
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51705849"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52834700"
 ---
 # <a name="what-is-the-myapps-portal"></a>什么是 MyApps 门户？
 
@@ -41,9 +41,9 @@ MyApps 门户与 Azure 门户不同。 它不需要你拥有 Azure 订阅。
 
 ## <a name="access-the-myapps-portal"></a>访问 MyApps 门户
 
-可以通过转到 `http://myapps.microsoft.com` 访问 MyApps 门户。
+可以通过转到 `https://myapps.microsoft.com` 访问 MyApps 门户。
 
-如果为登录页配置了自定义商标，则可以将组织的域追加到 URL 来加载此商标（例如 `http://myapps.microsoft.com/<your domain>.com`）。
+如果为登录页配置了自定义商标，则可以将组织的域追加到 URL 来加载此商标（例如 `https://myapps.microsoft.com/<your domain>.com`）。
 
 可以使用已在 Azure 门户中配置的任何活动域名或已验证域名，如下所示：![Wingtip Toys 域名][2]  
 

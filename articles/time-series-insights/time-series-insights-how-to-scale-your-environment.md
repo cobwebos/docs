@@ -1,5 +1,5 @@
 ---
-title: 如何缩放 Azure 时序见解环境 | Microsoft Docs
+title: Azure 时序见解缩放 - 如何缩放 Azure 时序见解环境 | Microsoft Docs
 description: 本文介绍如何缩放 Azure 时序见解环境。 使用 Azure 门户增加或减少定价 SKU 中的容量。
 ms.service: time-series-insights
 services: time-series-insights
@@ -11,12 +11,13 @@ ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 11/15/2017
-ms.openlocfilehash: f80c3ad28c3944bd365100d1d873231869da46f8
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.custom: seodec18
+ms.openlocfilehash: 1adb93d935e16bdce23e35e306592a9575967452
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39629712"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53271855"
 ---
 # <a name="how-to-scale-your-time-series-insights-environment"></a>如何缩放时序见解环境
 

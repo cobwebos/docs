@@ -1,5 +1,5 @@
 ---
-title: 数据科学中的特征工程 | Microsoft Docs
+title: 数据科学中的特征工程 - Team Data Science Process
 description: 解释特征工程的目的，并提供其在机器学习的数据增强过程中的作用的相关示例。
 services: machine-learning
 author: marktab
@@ -10,13 +10,13 @@ ms.component: team-data-science-process
 ms.topic: article
 ms.date: 11/21/2017
 ms.author: tdsp
-ms.custom: (previous author=deguhath, ms.author=deguhath)
-ms.openlocfilehash: 80e925fddf1aebd9f699ee8e22b96cc496faeba6
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: 5767399189e4ed5168fbcc083ef9b4830cac1421
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52446669"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53138938"
 ---
 # <a name="feature-engineering-in-data-science"></a>数据科学中的特征工程
 本文章解释特征工程的目的，并提供其在机器学习的数据增强过程中的作用的相关示例。 用于说明此过程的示例来自 Azure 机器学习工作室。 
@@ -26,7 +26,7 @@ ms.locfileid: "52446669"
 特征工程尝试通过从原始数据创建特征，帮助简化学习过程，从而增加学习算法的预测能力。 特征的工程设计和选择是 [Team Data Science Process 生命周期是什么？](overview.md)中描述的 TDSP 的一部分 特征工程和选择是 TDSP 的**开发特征**步骤的一部分。 
 
 * **特征工程**：该过程尝试从数据中的现有原始特征创建其他相关特征，并提高学习算法的预测能力。
-* **特征选择**：该过程选择原始数据特征的关键子集，试图降低定型问题的维度。
+* **特性选择**：该过程选择原始数据特征的关键子集，试图降低定型问题的维度。
 
 通常，首先应用**特征工程**生成其他特征，然后执行**特征选择**步骤，消除不相关、冗余或高度相关的特征。
 

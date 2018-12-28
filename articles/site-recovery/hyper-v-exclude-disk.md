@@ -4,14 +4,14 @@ description: 介绍如何在灾难恢复到 Azure 期间将 VM 磁盘从复制�
 author: nsoneji
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 10/11/2018
+ms.date: 11/27/2018
 ms.author: nisoneji
-ms.openlocfilehash: 851da02ebd7486c0e96451a14086eb95d81968b4
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 7de9dc497b1c9ee29b46aa0d645b7b28676cb22d
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50213196"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52849014"
 ---
 # <a name="exclude-disks-from-replication"></a>从复制中排除磁盘
 本文介绍如何从复制中排除磁盘。 这种排除可以优化消耗的复制带宽，或者优化此类磁盘利用的目标端资源。
@@ -165,7 +165,7 @@ DB-Disk4 | Disk4 | G:\ | 用户数据库 2
 假设有一台虚拟机，其中的页面文件磁盘可以被排除。
 存在两种情况。
 
-### <a name="case-1-the-paging-file-is-configured-on-the-d-drive"></a>情况 1：在 D: 驱动器上配置页面文件
+### <a name="case-1-the-paging-file-is-configured-on-the-d-drive"></a>案例 1：在 D: 驱动器上配置页面文件
 以下为磁盘配置：
 
 **磁盘名称** | **来宾操作系统磁盘编号** | **驱动器号** | **磁盘上的数据类型**
@@ -194,7 +194,7 @@ Disk1 (D:) 已排除，因此 D: 是可用列表中的首个驱动器号。 Azur
 
 ![Azure 虚拟机上的页面文件设置](./media/hyper-v-exclude-disk/pagefile-on-Azure-vm-after-failover.png)
 
-### <a name="case-2-the-paging-file-is-configured-on-another-drive-other-than-d-drive"></a>情况 2：在另一驱动器（D: 以外的驱动器）上配置页面文件
+### <a name="case-2-the-paging-file-is-configured-on-another-drive-other-than-d-drive"></a>案例 2：在另一驱动器（非 D: 驱动器）上配置页面文件
 
 以下为源虚拟机磁盘配置：
 

@@ -4,14 +4,14 @@ description: 了解如何设置 Linux 主目标服务器，以便在使用 Azure
 author: nsoneji
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 10/11/2018
+ms.date: 11/27/2018
 ms.author: nisoneji
-ms.openlocfilehash: 415b50b94052e7d428ddfa55d5288c8954a3ff1a
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: e35a8cf720fffa3a3b4c7d9f1b83c2323041b1c4
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50212363"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52833306"
 ---
 # <a name="install-a-linux-master-target-server-for-failback"></a>安装用于故障回复的 Linux 主目标服务器
 将虚拟机故障转移到 Azure 后，可将虚拟机故障回复到本地站点。 若要故障回复，需要在本地站点中重新保护 Azure 中的虚拟机。 对于此过程，需要安装一个本地主目标服务器用于接收流量。 
@@ -38,10 +38,10 @@ ms.locfileid: "50212363"
 ## <a name="sizing-guidelines-for-creating-master-target-server"></a>创建主目标服务器时的大小调整准则
 
 根据下列大小调整准则创建主目标：
-- RAM：6GB 或更多
+- **RAM**：6 GB 或更多
 - **OS 磁盘大小**：100 GB 或更多（用于安装 OS）
-- 保留驱动器的附加磁盘大小：1TB
-- CPU 内核数：4 个内核或更多
+- **保留驱动器的附加磁盘大小**：1 TB
+- **CPU 核心数**：4 个核心或更多
 
 支持以下受支持的 Ubuntu 内核。
 

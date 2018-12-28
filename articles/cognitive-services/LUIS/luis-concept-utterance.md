@@ -1,21 +1,22 @@
 ---
-title: LUIS 应用中的话语
-titleSuffix: Azure Cognitive Services
+title: 不错的示例话语
+titleSuffix: Language Understanding - Azure Cognitive Services
 description: 话语是应用需要解释的用户输入。 收集你认为用户会输入的短语。 包括意思相同但在单词长度和单词位置上以不同方式构造的陈述。
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: conceptual
-ms.date: 09/10/2018
+ms.date: 12/03/2018
 ms.author: diberry
-ms.openlocfilehash: 2b21102a5416c1fd7e2abb35be677c48ffc63263
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.openlocfilehash: 4f6bb367e706771707b65445c91619d439257207
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49638063"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53014831"
 ---
 # <a name="utterances-in-luis"></a>LUIS 中的陈述
 
@@ -55,6 +56,10 @@ ms.locfileid: "49638063"
 LUIS 使用精心挑选的陈述构建有效的模型。 添加太多陈述是没有价值的，因为它会引起混乱。  
 
 最好先从几个陈述开始，然后[审查终结点陈述](luis-how-to-review-endoint-utt.md)以进行正确的意向预测和实体提取。
+
+## <a name="punctuation-marks"></a>标点符号
+
+默认情况下，LUIS 不会忽略标点符号，因为某些客户端应用程序可能会对这些标记赋予含义。 确保示例话语使用“标点”和“无标点”，以便两种样式都返回相同的相对分数。 如果标点在你的客户端应用程序中没有特定含义，请考虑使用模式[忽略标点](#ignoring-words-and-punctuation)。 
 
 ## <a name="ignoring-words-and-punctuation"></a>忽略单词和标点
 如果想要忽略示例陈述中的特定单词或标点符号，请在 _ignore_ 语法中使用[模式](luis-concept-patterns.md#pattern-syntax)。 

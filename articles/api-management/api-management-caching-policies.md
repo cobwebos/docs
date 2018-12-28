@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: apimpm
-ms.openlocfilehash: c1fd0f462a3eb960e27b002f4f7c940a6bf978c8
-ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
+ms.openlocfilehash: 48b0085e52c1752c0b5ecc89ce229a5a82f74345
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52620568"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53310430"
 ---
 # <a name="api-management-caching-policies"></a>API 管理缓存策略
 本主题提供以下 API 管理策略的参考。 有关添加和配置策略的信息，请参阅 [API 管理中的策略](https://go.microsoft.com/fwlink/?LinkID=398186)。  
@@ -80,7 +80,7 @@ ms.locfileid: "52620568"
 ```  
   
 #### <a name="example-using-policy-expressions"></a>策略表达式使用示例  
- 此示例演示如何配置 API 管理响应缓存持续时间，使之匹配由后端服务的 `Cache-Control` 指令指定的后端服务响应缓存。 有关配置和使用此策略的演示，请观看 [Cloud Cover Episode 177: More API Management Features with Vlad Vinogradsky](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/)（Cloud Cover 第 177 集：Vlad Vinogradsky 讲述更多 API 管理功能），快进到 25:25。  
+ 此示例演示如何配置 API 管理响应缓存持续时间，使之匹配由后端服务的 `Cache-Control` 指令指定的后端服务响应缓存。 有关配置和使用此策略的演示，请参见 [Cloud Cover 第 177 集：更多的 API 管理功能与 VLAD Vinogradsky](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/) 并快进到 25:25。  
   
 ```xml  
 <!-- The following cache policy snippets demonstrate how to control API Management response cache duration with Cache-Control headers sent by the backend service. -->  
@@ -115,11 +115,11 @@ ms.locfileid: "52620568"
 | 名称                           | Description                                                                                                                                                                                                                                                                                                                                                 | 必选 | 默认           |
 |--------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------|-------------------|
 | allow-private-response-caching | 设置为 `true` 即可缓存包含 Authorization 标头的请求。                                                                                                                                                                                                                                                                        | 否       | false             |
-| cache-preference               | 在以下属性值之间进行选择：<br />- `internal` 使用内置的 API 管理缓存；<br />- `external` 使用外部缓存，如[在 Azure API 管理中使用外部 Redis 缓存](api-management-howto-cache-external.md)中所述；<br />- `prefer-external` 如果外部缓存已配置，则使用外部缓存，否则使用内部缓存。 | 否       | `prefer-external` |
+| cache-preference               | 在以下属性值之间进行选择：<br />- `internal` 使用内置的 API 管理缓存；<br />- `external` 使用外部缓存，如[在 Azure API 管理中使用外部 Azure Redis 缓存](api-management-howto-cache-external.md)中所述，<br />- `prefer-external` 如果外部缓存已配置，则使用外部缓存，否则使用内部缓存。 | 否       | `prefer-external` |
 | downstream-caching-type        | 此属性必须设置为以下值之一。<br /><br /> -   none - 不允许下游缓存。<br />-   private - 允许下游专用缓存。<br />-   public - 允许专用和共享下游缓存。                                                                                                          | 否       | 无              |
 | must-revalidate                | 启用下游缓存时，此属性会启用或关闭网关响应中的 `must-revalidate` 缓存控制指令。                                                                                                                                                                                                                      | 否       | true              |
-| vary-by-developer              | 设置为 `true` 即可按开发人员密钥缓存响应。                                                                                                                                                                                                                                                                                                         | 是      |                   |
-| vary-by-developer-groups       | 设置为 `true` 即可按用户角色缓存响应。                                                                                                                                                                                                                                                                                                             | 是      |                   |  
+| vary-by-developer              | 设置为 `true` 即可按[订阅密钥](https://docs.microsoft.com/azure/api-management/api-management-subscriptions#what-is-subscriptions)缓存响应。                                                                                                                                                                                                                                                                                                         | 是      |                   |
+| vary-by-developer-groups       | 设置为 `true` 即可按[用户组](https://docs.microsoft.com/azure/api-management/api-management-howto-create-groups)缓存响应。                                                                                                                                                                                                                                                                                                             | 是      |                   |  
 
 ### <a name="usage"></a>使用情况  
  此策略可在以下策略[段](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[范围](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)中使用。  
@@ -159,7 +159,7 @@ ms.locfileid: "52620568"
 ```  
   
 #### <a name="example-using-policy-expressions"></a>策略表达式使用示例  
- 此示例演示如何配置 API 管理响应缓存持续时间，使之匹配由后端服务的 `Cache-Control` 指令指定的后端服务响应缓存。 有关配置和使用此策略的演示，请观看 [Cloud Cover Episode 177: More API Management Features with Vlad Vinogradsky](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/)（Cloud Cover 第 177 集：Vlad Vinogradsky 讲述更多 API 管理功能），快进到 25:25。  
+ 此示例演示如何配置 API 管理响应缓存持续时间，使之匹配由后端服务的 `Cache-Control` 指令指定的后端服务响应缓存。 有关配置和使用此策略的演示，请参见 [Cloud Cover 第 177 集：更多的 API 管理功能与 VLAD Vinogradsky](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/) 并快进到 25:25。  
   
 ```xml  
 <!-- The following cache policy snippets demonstrate how to control API Management response cache duration with Cache-Control headers sent by the backend service. -->  
@@ -234,7 +234,7 @@ ms.locfileid: "52620568"
   
 | 名称             | Description                                                                                                                                                                                                                                                                                                                                                 | 必选 | 默认           |
 |------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------|-------------------|
-| cache-preference | 在以下属性值之间进行选择：<br />- `internal` 使用内置的 API 管理缓存；<br />- `external` 使用外部缓存，如[在 Azure API 管理中使用外部 Redis 缓存](api-management-howto-cache-external.md)中所述；<br />- `prefer-external` 如果外部缓存已配置，则使用外部缓存，否则使用内部缓存。 | 否       | `prefer-external` |
+| cache-preference | 在以下属性值之间进行选择：<br />- `internal` 使用内置的 API 管理缓存；<br />- `external` 使用外部缓存，如[在 Azure API 管理中使用外部 Azure Redis 缓存](api-management-howto-cache-external.md)中所述，<br />- `prefer-external` 如果外部缓存已配置，则使用外部缓存，否则使用内部缓存。 | 否       | `prefer-external` |
 | default-value    | 在缓存密钥查找未命中的情况下，会分配给变量的值。 如果未指定此属性，则会分 `null`。                                                                                                                                                                                                           | 否       | `null`            |
 | key              | 要在查找中使用的缓存密钥值。                                                                                                                                                                                                                                                                                                                       | 是      | 不适用               |
 | variable-name    | 在查找成功的情况下，会向其分配查找值的[上下文变量](api-management-policy-expressions.md#ContextVariables)的名称。 如果查找未命中，则会为此变量分配 `default-value` 属性的值或 `null`（如果省略了 `default-value` 属性）。                                       | 是      | 不适用               |  
@@ -277,7 +277,7 @@ ms.locfileid: "52620568"
   
 | 名称             | Description                                                                                                                                                                                                                                                                                                                                                 | 必选 | 默认           |
 |------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------|-------------------|
-| cache-preference | 在以下属性值之间进行选择：<br />- `internal` 使用内置的 API 管理缓存；<br />- `external` 使用外部缓存，如[在 Azure API 管理中使用外部 Redis 缓存](api-management-howto-cache-external.md)中所述；<br />- `prefer-external` 如果外部缓存已配置，则使用外部缓存，否则使用内部缓存。 | 否       | `prefer-external` |
+| cache-preference | 在以下属性值之间进行选择：<br />- `internal` 使用内置的 API 管理缓存；<br />- `external` 使用外部缓存，如[在 Azure API 管理中使用外部 Azure Redis 缓存](api-management-howto-cache-external.md)中所述，<br />- `prefer-external` 如果外部缓存已配置，则使用外部缓存，否则使用内部缓存。 | 否       | `prefer-external` |
 | duration         | 会根据提供的期间值（以秒为单位指定）将值缓存一段时间。                                                                                                                                                                                                                                                                                 | 是      | 不适用               |
 | key              | 缓存密钥，会在其下存储值。                                                                                                                                                                                                                                                                                                                   | 是      | 不适用               |
 | 值            | 要缓存的值。                                                                                                                                                                                                                                                                                                                                     | 是      | 不适用               |
@@ -317,7 +317,7 @@ ms.locfileid: "52620568"
   
 | 名称             | Description                                                                                                                                                                                                                                                                                                                                                 | 必选 | 默认           |
 |------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------|-------------------|
-| cache-preference | 在以下属性值之间进行选择：<br />- `internal` 使用内置的 API 管理缓存；<br />- `external` 使用外部缓存，如[在 Azure API 管理中使用外部 Redis 缓存](api-management-howto-cache-external.md)中所述；<br />- `prefer-external` 如果外部缓存已配置，则使用外部缓存，否则使用内部缓存。 | 否       | `prefer-external` |
+| cache-preference | 在以下属性值之间进行选择：<br />- `internal` 使用内置的 API 管理缓存；<br />- `external` 使用外部缓存，如[在 Azure API 管理中使用外部 Azure Redis 缓存](api-management-howto-cache-external.md)中所述，<br />- `prefer-external` 如果外部缓存已配置，则使用外部缓存，否则使用内部缓存。 | 否       | `prefer-external` |
 | key              | 以前所缓存的值（将从缓存中删除）的密钥。                                                                                                                                                                                                                                                                                        | 是      | 不适用               |
   
 #### <a name="usage"></a>使用情况  

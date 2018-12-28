@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure IoT Edge 设备作为网关 | Microsoft Docs
+title: 用于下游设备的网关 - Azure IoT Edge | Microsoft Docs
 description: 使用 Azure IoT Edge 创建一个透明、不透明或代理网关设备，以将数据从多个下游设备发送到云或在本地对其进行处理。
 author: kgremban
 manager: philmea
@@ -8,12 +8,13 @@ ms.date: 11/01/2017
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 53f0f1e77f8879807b2fb93b86d825e3bd044f41
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.custom: seodec18
+ms.openlocfilehash: 6e54d28d494a58966ea5312492dc79ced4c50a8d
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51567207"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53092275"
 ---
 # <a name="how-an-iot-edge-device-can-be-used-as-a-gateway"></a>如何将 IoT Edge 设备用作网关
 
@@ -26,7 +27,7 @@ IoT 解决方案中的网关为 IoT 设备提供了设备连接和边缘分析�
 * **协议转换** - 也称为不透明网关模式，不支持 MQTT、AMQP 或 HTTP 的设备可以使用网关设备以它们的名义将数据发送到 IoT 中心。 网关理解下游设备使用的协议；然而，它是唯一一个在 loT 中心拥有标识的设备。 所有信息好像都来自一台设备，即网关。 如果云应用程序想要以设备位单位分析数据，则下游设备就必须在其消息中嵌入额外的标识信息。 此外，IoT 中心基元（例如孪生和方法）仅适用于网关设备，而不适用于下游设备。
 * **标识转换** - 无法连接到 IoT 中心的设备可以改为连接到网关设备。 网关代表下游设备提供 IoT 中心标识和协议转换。 网关非常智能，它能够理解下游设备使用的协议，为其提供标识，并转换 IoT 中心基元。 下游设备作为一流设备出现在 IoT 中心，随附克隆和方法。 用户可以与 IoT 中心的设备进行交互，但并觉察不到中间网关设备。
 
-![网关模式关系图](./media/iot-edge-as-gateway/edge-as-gateway.png)
+![关系图 - 透明、协议和标识网关模式](./media/iot-edge-as-gateway/edge-as-gateway.png)
 
 ## <a name="use-cases"></a>用例
 所有网关模式提供以下优势：

@@ -10,12 +10,12 @@ ms.component: speech-service
 ms.topic: conceptual
 ms.date: 11/28/2018
 ms.author: erhopf
-ms.openlocfilehash: 4f424e73fbe1f05155e7f051d90dd72d57405adf
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 3a0304a69cdff15cddf325be8abe336a42ea4fc1
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52641568"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53089864"
 ---
 # <a name="quickstart-convert-text-to-speech-using-net-core"></a>快速入门：使用 .NET Core 将文本转换为语音
 
@@ -193,7 +193,6 @@ using (var client = new HttpClient())
         // Update your resource name
         request.Headers.Add("User-Agent", "YOUR_RESOURCE_NAME");
         request.Headers.Add("X-Microsoft-OutputFormat", "riff-24khz-16bit-mono-pcm");
-        request.Headers.Add("Connection", "Keep-Alive");
         // Create a request
         Console.WriteLine("Calling the TTS service. Please wait... \n");
         using (var response = await client.SendAsync(request).ConfigureAwait(false))
@@ -224,7 +223,7 @@ using (var client = new HttpClient())
 dotnet run
 ```
 
-如果成功，则会将语音文件保存到项目文件夹中。 使用你最喜爱的媒体播放器来播放它。
+如果成功，则会将语音文件保存到项目文件夹中。 使用偏好的媒体播放器播放该文件。
 
 ## <a name="clean-up-resources"></a>清理资源
 
@@ -237,4 +236,5 @@ dotnet run
 
 ## <a name="see-also"></a>另请参阅
 
-* [教程：识别语音意向](how-to-recognize-intents-from-speech-csharp.md)
+* [创建自定义语音字体](how-to-customize-voice-font.md)
+* [录制语音样本用于创建自定义语音](record-custom-voice-samples.md)

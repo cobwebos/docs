@@ -1,5 +1,5 @@
 ---
-title: 使用用于 Visual Studio 的 Data Lake 工具连接到 Azure HDInsight
+title: 使用用于 Visual Studio 的 Data Lake 工具连接到 Apache Hadoop - Azure HDInsight
 description: 了解如何安装针对 Visual Studio 的 Data Lake 工具并用其连接到 Azure HDInsight 中的 Apache Hadoop 群集，然后运行 Hive 查询。
 keywords: hadoop 工具,hive 查询,visual studio,visual studio hadoop
 services: hdinsight
@@ -7,15 +7,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive, hdiseo17may2017
+ms.custom: hdinsightactive,hdiseo17may2017,seodec18
 ms.topic: conceptual
-ms.date: 05/16/2018
-ms.openlocfilehash: 670de3f61047bcc8b168863f5981e41084225ec4
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.date: 12/06/2018
+ms.openlocfilehash: 24efb8490afdf67b96d531802362f88bef7d13de
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51634662"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53166483"
 ---
 # <a name="use-data-lake-tools-for-visual-studio-to-connect-to-azure-hdinsight-and-run-apache-hive-queries"></a>使用针对 Visual Studio 的 Data Lake 工具连接到 Azure HDInsight 并运行 Apache Hive 查询
 
@@ -107,7 +107,7 @@ ms.locfileid: "51634662"
 ![服务器资源管理器中用于 Visual Studio 的 Data Lake 工具 Blob 操作的屏幕截图](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight.visual.studio.tools.blob.operations.png "在服务器资源管理器中上传、删除和下载 Blob")
 
 ## <a name="run-interactive-hive-queries"></a>运行交互式 Hive 查询
-[Apache Hive](http://hive.apache.org) 是构建于 Hadoop 之上的数据仓库基础结构。 Hive 用于数据汇总、查询和分析。 可以使用用于 Visual Studio 的 Data Lake 工具从 Visual Studio 运行 Hive 查询。 有关 Hive 的详细信息，请参阅[将 Hive 与 HDInsight 配合使用](hdinsight-use-hive.md)。
+[Apache Hive](https://hive.apache.org) 是构建于 Hadoop 之上的数据仓库基础结构。 Hive 用于数据汇总、查询和分析。 可以使用用于 Visual Studio 的 Data Lake 工具从 Visual Studio 运行 Hive 查询。 有关 Hive 的详细信息，请参阅[将 Hive 与 HDInsight 配合使用](hdinsight-use-hive.md)。
 
 [交互式查询](../interactive-query/apache-interactive-query-get-started.md)使用 Apache Hive 2.1 中的 [Hive on LLAP](https://cwiki.apache.org/confluence/display/Hive/LLAP)。 交互式查询为在存储的大型数据集上进行的复杂数据仓库样式查询带来了交互性。 相对于传统的 Hive 批处理作业，在交互式查询上运行 Hive 查询速度要快得多。 有关详细信息，请参阅[运行 Hive 批处理作业](#run-hive-batch-jobs)。
 

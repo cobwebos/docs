@@ -1,5 +1,5 @@
 ---
-title: 教程：Azure Active Directory 与 TeamSeer 集成 | Microsoft 文档
+title: 教程：Azure Active Directory 与 TeamSeer 集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 和 TeamSeer 之间配置单一登录。
 services: active-directory
 documentationCenter: na
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/09/2017
 ms.author: jeedes
-ms.openlocfilehash: a5910689f34c511c6cf7d8a044ef4358d2e0570d
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 2b9f3c7905fbb301c74a040a259b2f8666c75377
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39445574"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52834480"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-teamseer"></a>教程：Azure Active Directory 与 TeamSeer 集成
 
@@ -115,7 +115,7 @@ ms.locfileid: "39445574"
      在“登录 URL”文本框中，使用以下模式键入 URL： `https://www.teamseer.com/<companyid>`
 
     > [!NOTE] 
-    > 此值不是真实值。 使用实际登录 URL 更新该值。 若要获取该值，请与 [TeamSeer 客户端支持团队](http://pages.theaccessgroup.com/solutions_business-suite_absence-management_contact.html)联系。 
+    > 此值不是真实值。 使用实际登录 URL 更新该值。 若要获取该值，请与 [TeamSeer 客户端支持团队](https://pages.theaccessgroup.com/solutions_business-suite_absence-management_contact.html)联系。 
  
 1. 在“SAML 签名证书”部分中，单击“证书(base64)”，并在计算机上保存证书文件。
 
@@ -147,7 +147,7 @@ ms.locfileid: "39445574"
    
     ![SAML 设置](./media/teamseer-tutorial/ic789637.png "SAML 设置")   
 
-    a. 将“单一登录服务 URL”值粘贴到“URL”文本框中。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 将“单一登录服务 URL”值粘贴到“URL”文本框中。
           
     b. 在记事本中打开 base-64 编码证书，将其内容复制到剪贴板，然后将其粘贴到“IdP 公共证书”文本框中。
 
@@ -155,14 +155,14 @@ ms.locfileid: "39445574"
     
     ![SAML 设置](./media/teamseer-tutorial/ic789638.png "SAML 设置") 
 
-    a. 在“测试电子邮件地址”中，键入测试用户的电子邮件地址。 
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“测试电子邮件地址”中，键入测试用户的电子邮件地址。 
   
     b. 在“颁发者”文本框中，键入服务提供商的颁发者 URL。 
   
     c. 单击“ **保存**”。
 
 > [!TIP]
-> 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[ Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
+> 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
 ### <a name="creating-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
@@ -188,7 +188,7 @@ ms.locfileid: "39445574"
  
     ![创建 Azure AD 测试用户](./media/teamseer-tutorial/create_aaduser_04.png) 
 
-    a. 在“名称”文本框中，键入 **BrittaSimon**。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
 
     b. 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
@@ -208,7 +208,7 @@ ms.locfileid: "39445574"
    
     ![HR 管理员](./media/teamseer-tutorial/ic789640.png "HR 管理员")  
  
-    a. 转到“HR 管理员”\>“用户”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 转到“HR 管理员”\>“用户”。
   
     b. 单击“运行新建用户向导”。
 
@@ -216,7 +216,7 @@ ms.locfileid: "39445574"
    
     ![用户详细信息](./media/teamseer-tutorial/ic789641.png "用户详细信息")
 
-    a. 在相关文本框中键入要预配的有效 AAD 帐户的“名字”、“姓氏”和“用户名(电子邮件地址)”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在相关文本框中键入要预配的有效 AAD 帐户的“名字”、“姓氏”和“用户名(电子邮件地址)”。
   
     b. 单击“下一步”。
 
@@ -262,7 +262,7 @@ ms.locfileid: "39445574"
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](tutorial-list.md)
-* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
+* [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
 
 

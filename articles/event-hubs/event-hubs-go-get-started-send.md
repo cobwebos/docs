@@ -1,20 +1,21 @@
 ---
-title: 使用 Go 将事件发送到 Azure 事件中心 | Microsoft Docs
-description: 使用 Go 将事件发送到事件中心入门
+title: 使用 Go 发送事件 - Azure 事件中心 | Microsoft Docs
+description: 本文演示了创建 Go 应用程序的过程，可使用该应用程序从 Azure 事件中心发送事件。
 services: event-hubs
 author: ShubhaVijayasarathy
 manager: kamalb
 ms.service: event-hubs
 ms.workload: core
 ms.topic: article
-ms.date: 10/18/2018
+ms.custom: seodec18
+ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: f5e30a103b09613caee8e9912a89a5bc2d390f65
-ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
+ms.openlocfilehash: 44cbea8cc40f83ed5fdd2863da0cb0a01e8dc2b8
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49458082"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53091054"
 ---
 # <a name="send-events-to-event-hubs-using-go"></a>使用 Go 将事件发送到事件中心
 
@@ -30,10 +31,11 @@ Azure 事件中心是一个大数据流式处理平台和事件引入服务，�
 若要完成本教程，需要具备以下先决条件：
 
 * 已本地安装 Go。 若有必要，请按照[以下说明操作](https://golang.org/doc/install)。
-* 现有事件中心命名空间和事件中心。 请按[本文](event-hubs-create.md)中的说明创建以下实体。
 
 ## <a name="create-an-event-hubs-namespace-and-an-event-hub"></a>创建事件中心命名空间和事件中心
-第一步是使用 [Azure 门户](https://portal.azure.com)创建事件中心类型的命名空间，并获取应用程序与事件中心进行通信所需的管理凭据。 若要创建命名空间和事件中心，请按照[本文](event-hubs-create.md)中的步骤进行操作，然后继续执行本教程的以下步骤。
+第一步是使用 [Azure 门户](https://portal.azure.com)创建事件中心类型的命名空间，并获取应用程序与事件中心进行通信所需的管理凭据。 要创建命名空间和事件中心，请按照[此文](event-hubs-create.md)中的步骤操作。
+
+现在，继续本教程中的以下步骤。
 
 ## <a name="install-go-package"></a>安装 Go 包
 

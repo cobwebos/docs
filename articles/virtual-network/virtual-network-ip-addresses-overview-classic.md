@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/11/2016
 ms.author: genli
-ms.openlocfilehash: 6a63099bf2a8bc818c88ccec1d5f44bb9ffc32de
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 81699764952e50cb18c1f299c9c4f7c524b0a332
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31798200"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53011671"
 ---
 # <a name="ip-address-types-and-allocation-methods-classic-in-azure"></a>Azure 中的 IP 地址类型和分配方法（经典）
 可以将 IP 地址分配到与其他 Azure 资源通信的 Azure 资源，也可以将其分配到本地网络和 Internet。 可以在 Azure 中使用两种类型的 IP 地址：公共地址和专用地址。
@@ -30,7 +30,7 @@ ms.locfileid: "31798200"
 使用 VPN 网关或 ExpressRoute 线路将网络扩展到 Azure 时，专用 IP 地址用于在 Azure 虚拟网络 (VNet)、云服务以及本地网络中通信。
 
 > [!IMPORTANT]
-> Azure 具有用于创建和处理资源的两个不同的部署模型：[Resource Manager 和经典](../resource-manager-deployment-model.md)。  本文介绍使用经典部署模型。 Microsoft 建议大多数新部署使用 Resource Manager。 通过阅读 [IP 地址](virtual-network-ip-addresses-overview-arm.md)一文了解有关 Resource Manager 中的 IP 地址。
+> Azure 具有用于创建和处理资源的两个不同部署模型：[资源管理器部署模型和经典部署模型](../resource-manager-deployment-model.md)。  本文介绍使用经典部署模型。 Microsoft 建议大多数新部署使用 Resource Manager。 通过阅读 [IP 地址](virtual-network-ip-addresses-overview-arm.md)一文了解有关 Resource Manager 中的 IP 地址。
 
 ## <a name="public-ip-addresses"></a>公共 IP 地址
 公共 IP 地址可让 Azure 资源与 Internet 以及面向公众的 Azure 服务（例如 [Azure Redis 缓存](https://azure.microsoft.com/services/cache/)、[Azure 事件中心](https://azure.microsoft.com/services/event-hubs/)、[SQL 数据库](../sql-database/sql-database-technical-overview.md)和 [Azure 存储](../storage/common/storage-introduction.md)）通信。

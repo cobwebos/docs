@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/19/2018
+ms.date: 12/07/2018
 ms.author: jingwang
-ms.openlocfilehash: df1fbcb09310985b7ca9d9fd2e7a987fc6e2b2dc
-ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
+ms.openlocfilehash: 1958d694ab87d635624884b43486761269e37c37
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49457028"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53082640"
 ---
 # <a name="copy-activity-in-azure-data-factory"></a>Azure 数据工厂中的复制活动
 
@@ -55,7 +55,7 @@ ms.locfileid: "49457028"
 
 可以使用复制活动**复制**基于文件的两个数据存储间的文件，这种情况下，数据可以高效复制而无需任何序列化/反序列化。
 
-复制活动还支持以指定格式（**Text、JSON、Avro、ORC 和 Parquet**）从文件中读取并写入到文件，并且支持压缩编解码器 **GZip、Deflate、BZip2 和 ZipDeflate**。 有关详细信息，请参阅[支持的文件和压缩格式](supported-file-formats-and-compression-codecs.md)。
+复制活动还支持以指定的格式读取和写入文件：支持文本、JSON、Avro、ORC 和 Parquet，以及压缩编解码器 GZip、Deflate、BZip2 和 ZipDeflate。 有关详细信息，请参阅[支持的文件和压缩格式](supported-file-formats-and-compression-codecs.md)。
 
 例如，可执行以下复制活动：
 
@@ -130,7 +130,7 @@ ms.locfileid: "49457028"
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
-| type | 复制活动的类型属性必须设置为：**复制** | 是 |
+| type | 复制活动的 type 属性必须设置为：**Copy** | 是 |
 | inputs | 指定创建的指向源数据的数据集。 复制活动仅支持单个输入。 | 是 |
 | outputs | 指定创建的指向接收器数据的数据集。 复制活动仅支持单个输出。 | 是 |
 | typeProperties | 一组用来配置复制活动的属性。 | 是 |
@@ -173,14 +173,15 @@ ms.locfileid: "49457028"
 | dataRead | 从源中读取的数据大小 | Int64 值（**字节**） |
 | DataWritten | 写入接收器的数据大小 | Int64 值（**字节**） |
 | filesRead | 从文件存储复制数据时要复制的文件数。 | Int64 值（未指定单位） |
+| fileScanned | 正在扫描的源文件存储中的文件数量。 | Int64 值（未指定单位） |
 | filesWritten | 将数据复制到文件存储时要复制的文件数。 | Int64 值（未指定单位） |
 | rowsCopied | 正在复制（不适用于二进制复制）的行数。 | Int64 值（未指定单位） |
 | rowsSkipped | 跳过的不兼容行数。 可以通过将“enableSkipIncompatibleRow”设置为 true 来启用该功能。 | Int64 值（未指定单位） |
 | throughput | 数据传输比率 | 浮点数 (**KB/s**) |
 | copyDuration | 复制持续时间 | Int32 值（秒） |
-| sqlDwPolyBase | 如果将数据复制到 SQL 数据仓库时使用了 PolyBase。 | 布尔 |
-| redshiftUnload | 如果从 Redshift 复制数据时使用了 UNLOAD。 | 布尔 |
-| hdfsDistcp | 如果从 HDFS 复制数据时使用了 DistCp。 | 布尔 |
+| sqlDwPolyBase | 如果将数据复制到 SQL 数据仓库时使用了 PolyBase。 | Boolean |
+| redshiftUnload | 如果从 Redshift 复制数据时使用了 UNLOAD。 | Boolean |
+| hdfsDistcp | 如果从 HDFS 复制数据时使用了 DistCp。 | Boolean |
 | effectiveIntegrationRuntime | 以 `<IR name> (<region if it's Azure IR>)` 格式显示运行活动时使用的集成运行时。 | 文本（字符串） |
 | usedDataIntegrationUnits | 复制期间的有效数据集成单位。 | Int32 值 |
 | usedParallelCopies | 复制期间的有效 parallelCopies。 | Int32 值|

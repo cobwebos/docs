@@ -1,5 +1,5 @@
 ---
-title: 尝试登录 Azure 门户或 Azure 帐户中心时出现“找不到任何订阅”错误 | Microsoft Docs
+title: “找不到任何订阅”错误 – Azure 门户注册 | Microsoft Docs
 description: 提供针对登录 Azure 门户或 Azure 帐户中心时出现“找不到任何订阅”错误这一问题的解决方案。
 services: ''
 documentationcenter: ''
@@ -15,14 +15,15 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 05/11/2018
 ms.author: cwatson
-ms.openlocfilehash: 584342b3dd223c45495db36ad49d83dece858137
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.custom: seodec18
+ms.openlocfilehash: cef34d4e22732c2d718daf7ce10c23b25ff4649d
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52581776"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53081296"
 ---
-# <a name="no-subscriptions-found-error-in-azure-portal-or-azure-account-center"></a>Azure 门户或 Azure 帐户中心的“找不到任何订阅”错误
+# <a name="no-subscriptions-found-sign-in-error-for-azure-portal-or-azure-account-center"></a>在 Azure 门户或 Azure 帐户中心注册时出现“找不到任何订阅”错误
 
 尝试登录 [Azure 门户](https://portal.azure.com/)或 [Azure 帐户中心](https://account.windowsazure.com/Subscriptions)时，可能会出现“找不到任何订阅”错误消息。 本文提供针对此问题的解决方案。
 
@@ -36,7 +37,7 @@ ms.locfileid: "52581776"
 
 ## <a name="solution"></a>解决方案
 
-### <a name="scenario-1-error-message-is-received-in-the-azure-portalhttpsportalazurecom"></a>场景 1：[Azure 门户](https://portal.azure.com)收到错误消息
+### <a name="scenario-1-error-message-is-received-in-the-azure-portalhttpsportalazurecom"></a>方案 1：[Azure 门户](https://portal.azure.com)收到错误消息
 
 解决此问题：
 
@@ -45,7 +46,7 @@ ms.locfileid: "52581776"
   ![选择 Azure 门户右上角的目录](./media/billing-no-subscriptions-found/directory-switch.png)
 * 如果已选择正确的 Azure 目录，但仍收到错误消息，[请将所有者角色分配给帐户](../role-based-access-control/role-assignments-portal.md)。
 
-### <a name="scenario-2-error-message-is-received-in-the-azure-account-centerhttpsaccountwindowsazurecomsubscriptions"></a>场景 2：[Azure 帐户中心](https://account.windowsazure.com/Subscriptions)收到错误消息
+### <a name="scenario-2-error-message-is-received-in-the-azure-account-centerhttpsaccountwindowsazurecomsubscriptions"></a>方案 2：[Azure 帐户中心](https://account.windowsazure.com/Subscriptions)收到错误消息
 
 请检查使用的帐户是否是帐户管理员。 要验证谁是帐户管理员，请执行下列步骤：
 
@@ -55,4 +56,4 @@ ms.locfileid: "52581776"
 
 ## <a name="need-help-contact-us"></a>需要帮助？ 请联系我们。
 
-如果你有任何疑问或需要帮助，请[创建支持请求](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)。
+如有任何疑问或需要帮助，请[创建支持请求](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)。

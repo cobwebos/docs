@@ -1,11 +1,12 @@
 ---
 title: 设置数据科学虚拟机的通用标识 - Azure | Microsoft Docs
-description: 在企业团队的 DSVM 环境中设置通用标识。
+description: 了解如何创建可跨多个 Data Science Virtual Machine 使用的公共用户帐户。 可以使用 Azure Active Directory 或本地 Active Directory 对 Data Science Virtual Machine 的用户进行身份验证。
 keywords: 深度学习, AI, 数据科学工具, 数据科学虚拟机, 地理空间分析, 团队数据科学过程
 services: machine-learning
 documentationcenter: ''
 author: gopitk
 manager: cgronlun
+ms.custom: seodec18
 ms.assetid: ''
 ms.service: machine-learning
 ms.component: data-science-vm
@@ -15,12 +16,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/08/2018
 ms.author: gokuma
-ms.openlocfilehash: 25d40b6a72ab6da61feb1458f5930eb48ef1d900
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 6be7c63d3879c7ed89cd97eaecd6d59b6b5aadd4
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39436295"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53075465"
 ---
 # <a name="set-up-a-common-identity-on-the-data-science-virtual-machine"></a>在数据科学虚拟机上设置通用标识
 
@@ -40,7 +41,7 @@ Azure AD DS 在 Azure 上提供完全托管的服务，简化了标识管理。 
 
 1. 在 Azure 门户中，将用户添加到 Active Directory： 
 
-   a. 使用属于目录全局管理员的帐户登录到 [Azure Active Directory 管理中心](https://aad.portal.azure.com)。
+   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 使用属于目录全局管理员的帐户登录到 [Azure Active Directory 管理中心](https://aad.portal.azure.com)。
     
    b. 选择“Azure Active Directory”，然后选择“用户和组”。
     
@@ -67,7 +68,7 @@ Azure AD DS 在 Azure 上提供完全托管的服务，简化了标识管理。 
 1. 请按照[说明](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-join-ubuntu-linux-vm )将 DSVM 添加到 Active Directory。 
 1. 装载用于托管主目录或笔记本目录的共享 Azure 文件，以便在任何计算机上装载工作区。 （如果需要严格的文件级别权限，则需在一个或多个 VM 上运行 NFS。）
 
-   a. [创建 Azure 文件共享](../../storage/files/storage-how-to-create-file-share.md)。
+   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 [创建 Azure 文件共享](../../storage/files/storage-how-to-create-file-share.md)。
     
    b. 将其装载到 Linux DSVM 上。 在 Azure 门户的存储帐户中选择 Azure 文件共享所对应的“连接”按钮时，将会显示可以在 Linux DSVM 的 Bash Shell 中运行的命令。 命令如下所示：
    

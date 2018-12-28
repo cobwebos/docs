@@ -3,7 +3,7 @@ title: SQL 数据库的 XEvent 环形缓冲区代码 | Microsoft 文档
 description: 提供一个 Transact-SQL 代码示例，以帮助你快速轻松地在 Azure SQL 数据库中使用环形缓冲区目标。
 services: sql-database
 ms.service: sql-database
-ms.subservice: operations
+ms.subservice: monitor
 ms.custom: ''
 ms.devlang: PowerShell
 ms.topic: conceptual
@@ -12,12 +12,12 @@ ms.author: genemi
 ms.reviewer: ''
 manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: 0da4626943a7223b24baac80121b5da0062c0d73
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 522561d8afcf6fe1bdd2887f7fd5180b79565a61
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51237071"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52874611"
 ---
 # <a name="ring-buffer-target-code-for-extended-events-in-sql-database"></a>SQL 数据库中扩展事件的环形缓冲区目标代码
 

@@ -1,5 +1,5 @@
 ---
-title: Azure 搜索中的筛选器 | Microsoft Docs
+title: 用于在索引中限定搜索结果范围的筛选器 - Azure 搜索
 description: 按用户安全标识、语言、地理位置或数字值进行筛选可以减少 Azure 搜索（Microsoft Azure 上的托管云搜索服务）中的查询返回的搜索结果。
 author: HeidiSteen
 manager: cgronlun
@@ -8,12 +8,13 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 04/20/2018
 ms.author: heidist
-ms.openlocfilehash: 9f891dbe3f051f2fb5bfd242830f3c30abede487
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.custom: seodec2018
+ms.openlocfilehash: d99196e231d122fcb0e707d30aed4d3b3eb2b89d
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32191360"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53310345"
 ---
 # <a name="filters-in-azure-search"></a>Azure 搜索中的筛选器 
 
@@ -154,7 +155,7 @@ POST https://[service name].search.windows.net/indexes/hotels/docs/search?api-ve
 文本字符串区分大小写。 大写的单词不会转换成小写：`$filter=f eq 'Sunny day'` 不会查找“sunny day”。
 
 
-| 方法 | 说明 | 
+| 方法 | Description | 
 |----------|-------------|
 | [search.in()](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search) | 提供给定字段的逗号分隔字符串列表的函数。 字符串由筛选条件构成，这些条件应用到查询范围中的每个字段。 <br/><br/>`search.in(f, ‘a, b, c’)` 在语义上等效于 `f eq ‘a’ or f eq ‘b’ or f eq ‘c’`，不过，在值列表较大时，它的执行速度要快得多。<br/><br/>我们建议对[安全筛选器](search-security-trimming-for-azure-search.md)以及对包含要与给定字段中的值匹配的原始文本的任何筛选器使用 **search.in** 函数。 此方法旨在提高速度。 在查询数百到数千个值时，有望获得亚秒级的响应速度。 尽管可传入该函数的项数没有明确限制，但延迟会根据提供的字符串数按比例提高。 | 
 | [search.ismatch()](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search) | 用于在同一个筛选表达式中将全文搜索操作与严格的布尔筛选操作混合使用的函数。 该函数可在一个请求中实现多种查询筛选器组合。 还可以使用该函数来构建 *contains* 筛选器，以根据较大字符串中的部分字符串进行筛选。 |  

@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 10/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: cc4e128cab3cad235462e29e65fa58002a103bcd
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: 393426678d9331837bdc3b73c4e491dbe7eae6fa
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48855895"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52834819"
 ---
 # <a name="register-in-dev-center"></a>在开发人员中心内注册  
 若要帮助确认你登录的不是个人浏览器帐户，请打开一个新的 Internet Explorer InPrivate 或 Chrome Incognito 浏览会话。  
@@ -143,7 +143,7 @@ ms.locfileid: "48855895"
 ## <a name="frequently-asked-questions"></a>常见问题： 
 
 *   **哪些发布者需要使用开发人员中心帐户注册？** 
-> 在“事务处理”商品类型“VM”、“Azure 应用：解决方案模板”和“托管应用”中发布商品的发布者。  
+> 在 Transact 列表类型中进行发布的发布者：VM、Azure 应用：解决方案模板和托管应用。  
 
 *   **为何需要开发人员中心帐户？**
 > Microsoft 需要使用开发人员中心帐户代表发布者向客户计收“事务处理”商品类型的费用。 Microsoft 通过开发人员中心帐户注册来验证公司的法律、税务和银行信息。 有关详细信息，请单击[此处](https://docs.microsoft.com/azure/marketplace/become-publisher#register-in-dev-center)。
@@ -165,13 +165,13 @@ ms.locfileid: "48855895"
 > 填写[市场注册](https://azuremarketplace.microsoft.com/en-us/sell/signup)表单即可接收开发人员中心促销代码。
  
 *   **完成注册后预期会出现什么情况？**
-> 请查看来自 verify@microsoft.com 的电子邮件，其主题行中包含“Action needed: Verify your email account with Microsoft”（所需的操作：请向 Microsoft 验证你的电子邮件帐户）。 请单击有时间限制的验证链接以完成注册。 *如果在 24 小时内未收到电子邮件，请检查垃圾邮件文件夹。*
+> 查找来自 verify@microsoft.com 的、主题为“需要执行的操作：通过 Microsoft 验证电子邮件帐户”的电子邮件。 请单击有时间限制的验证链接以完成注册。 *如果在 24 小时内未收到电子邮件，请检查垃圾邮件文件夹。*
 
 *   **完成开发人员中心验证后，接下来要怎么做？**
 > 转到“你的计划”(https://developer.microsoft.com/dashboard/Account/Programs) 并登录到开发人员中心帐户。 如果未看到 Azure 作为已注册的程序，请在“为你推荐的程序”下查看，然后查找 Azure 以选择“开始使用”。
 
 *   **如何将开发人员中心帐户链接到云合作伙伴门户发布者个人资料？**
-> 发布之前的最后一步是将开发人员中心帐户链接到云合作伙伴门户[个人资料](https://cloudpartner.azure.com/#profile)。 如果开发人员中心帐户与[云合作伙伴门户](https://cloudpartner.azure.com/#alloffers)上的帐户不同，请将开发人员中心帐户添加为云合作伙伴门户中的新[用户](https://cloudpartner.azure.com/#documentation/manage-users)。 使用开发人员中心帐户登录[云合作伙伴门户](https://cloudpartner.azure.com/#alloffers)。 在 Web 浏览器右上角的菜单上选择“发布者个人资料”。 选择“链接开发人员中心帐户”。
+> 发布之前的最后一步是将开发人员中心帐户链接到云合作伙伴门户[个人资料](https://cloudpartner.azure.com/#profile)。 如果开发人员中心帐户与[云合作伙伴门户](https://cloudpartner.azure.com/#alloffers)上的帐户不同，请将开发人员中心帐户添加为云合作伙伴门户中的新[用户](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-manage-users)。 使用开发人员中心帐户登录[云合作伙伴门户](https://cloudpartner.azure.com/#alloffers)。 在 Web 浏览器右上角的菜单上选择“发布者个人资料”。 选择“链接开发人员中心帐户”。
 
 *   **我的开发人员中心应用程序为何被拒绝？**
 > 第三方审核公司 (Duns & Bradstreet) 无法通过提供的电话号码与你取得联系。 请在 [developer.microsoft.com/windows/support](https://developer.microsoft.com/windows/support) 上联系支持人员，以重新开始审核过程

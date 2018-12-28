@@ -10,12 +10,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 02/22/2018
 ms.author: hrasheed
-ms.openlocfilehash: 0f9d786988cb547771b8fd999b911bd228cdc3e2
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: b667cfad6eb2a2a13e4b84dacaad0bcd3dfa91b9
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52311035"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53017127"
 ---
 # <a name="get-started-with-an-apache-hbase-example-in-hdinsight"></a>HDInsight 中的 Apache HBase 入门示例
 
@@ -28,7 +28,7 @@ ms.locfileid: "52311035"
 
 * **Azure 订阅**。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)。
 * [安全外壳 (SSH)](../hdinsight-hadoop-linux-use-ssh-unix.md)。 
-* [curl](http://curl.haxx.se/download.html)。
+* [curl](https://curl.haxx.se/download.html)。
 
 ## <a name="create-apache-hbase-cluster"></a>创建 Apache HBase 群集
 以下过程使用 Azure 资源管理器模板创建 HBase 群集以及相关的默认 Azure 存储帐户。 若要了解该过程与其他群集创建方法中使用的参数，请参阅 [在 HDInsight 中创建基于 Linux 的 Hadoop 群集](../hdinsight-hadoop-provision-linux-clusters.md)。 有关使用 Data Lake Storage Gen2 的详细信息，请参阅[快速入门：在 HDInsight 中设置群集](../../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)。
@@ -42,8 +42,8 @@ ms.locfileid: "52311035"
    * **资源组**：创建 Azure 资源管理组，或使用现有的组。
    * **位置**：指定资源组的位置。 
    * **ClusterName**：输入 HBase 群集的名称。
-   * **群集登录名和密码**：默认登录名是 **admin**。
-   * **SSH 用户名和密码**：默认用户名是 **sshuser**。  可以重命名它。
+   * **群集登录名和密码**：默认登录名为“admin”。
+   * **SSH 用户名和密码**：默认用户名为“sshuser”。  可以重命名它。
      
      其他参数是可选的。  
      
@@ -174,7 +174,7 @@ HBase 提供了多种方法用于将数据载入表中。  有关详细信息，
 
 ## <a name="use-hbase-rest-apis-using-curl"></a>通过 Curl 使用 HBase REST API
 
-REST API 通过 [基本身份验证](http://en.wikipedia.org/wiki/Basic_access_authentication)进行保护。 始终应该使用安全 HTTP (HTTPS) 来发出请求，确保安全地将凭据发送到服务器。
+REST API 通过 [基本身份验证](https://en.wikipedia.org/wiki/Basic_access_authentication)进行保护。 始终应该使用安全 HTTP (HTTPS) 来发出请求，确保安全地将凭据发送到服务器。
 
 2. 使用以下命令列出现有的 HBase 表：
 
@@ -208,9 +208,9 @@ REST API 通过 [基本身份验证](http://en.wikipedia.org/wiki/Basic_access_a
    
     必须使用 base64 来为 -d 参数中指定的值编码。 在示例中：
    
-   * MTAwMA==: 1000
-   * UGVyc29uYWw6TmFtZQ==: Personal:Name
-   * Sm9obiBEb2xl: John Dole
+   * MTAwMA==：1000
+   * UGVyc29uYWw6TmFtZQ==：Personal:Name
+   * Sm9obiBEb2xl：John Dole
      
      [false-row-key](https://hbase.apache.org/apidocs/org/apache/hadoop/hbase/rest/package-summary.html#operation_cell_store_single) 允许插入多个（批处理）值。
 5. 使用以下命令获取行：
@@ -288,11 +288,11 @@ HDInsight 中的 HBase 随附了一个 Web UI 用于监视群集。 使用该 We
 [hdinsight-hbase-overview]:apache-hbase-overview.md
 [hdinsight-hbase-provision-vnet]:apache-hbase-provision-vnet.md
 [hdinsight-versions]: hdinsight-component-versioning.md
-[azure-purchase-options]: http://azure.microsoft.com/pricing/purchase-options/
-[azure-member-offers]: http://azure.microsoft.com/pricing/member-offers/
-[azure-free-trial]: http://azure.microsoft.com/pricing/free-trial/
+[azure-purchase-options]: https://azure.microsoft.com/pricing/purchase-options/
+[azure-member-offers]: https://azure.microsoft.com/pricing/member-offers/
+[azure-free-trial]: https://azure.microsoft.com/pricing/free-trial/
 [azure-portal]: https://portal.azure.com/
-[azure-create-storageaccount]: http://azure.microsoft.com/documentation/articles/storage-create-storage-account/
+[azure-create-storageaccount]: https://azure.microsoft.com/documentation/articles/storage-create-storage-account/
 
 [img-hbase-shell]: ./media/apache-hbase-tutorial-get-started-linux/hdinsight-hbase-shell.png
 [img-hbase-sample-data-tabular]: ./media/apache-hbase-tutorial-get-started-linux/hdinsight-hbase-contacts-tabular.png

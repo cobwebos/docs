@@ -1,12 +1,11 @@
 ---
-title: 如何准备在 Azure 机器学习工作室中部署的模型 | Microsoft Docs
+title: 为部署准备模型 - Azure 机器学习工作室 | Microsoft Docs
 description: 如何将机器学习工作室训练实验转换为预测实验，为将要部署为 Web 服务的训练模型做准备。
 services: machine-learning
 documentationcenter: ''
 author: ericlicoding
-ms.custom: (previous ms.author=hshapiro, author=heatherbshapiro)
+ms.custom: seodec18
 ms.author: amlstudiodocs
-manager: hjerez
 editor: cgronlun
 ms.assetid: eb943c45-541a-401d-844a-c3337de82da6
 ms.service: machine-learning
@@ -16,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/28/2017
-ms.openlocfilehash: 7849a21e2d005584030375e2193f74a99b3977bd
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: ef54281b91147060e9c00bcc6e45e0db0fb8933a
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52265230"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53273096"
 ---
 # <a name="how-to-prepare-your-model-for-deployment-in-azure-machine-learning-studio"></a>如何准备在 Azure 机器学习工作室中部署的模型
 
@@ -29,11 +28,11 @@ Azure 机器学习工作室提供必需的工具，方便你开发预测分析�
 
 为此，请使用工作室创建一个实验（称为“训练实验”），以便对模型进行训练、评分和编辑。 满意以后，即可将训练实验转换为*预测实验*（已配置为对用户数据进行评分），使模型做好部署准备。
 
-可以在[演练：开发预测分析解决方案，用于在 Azure 机器学习中评估信用风险](walkthrough-develop-predictive-solution.md)中查看此过程的示例。
+可以在[演练：在 Azure 机器学习中为信用风险评估开发预测分析解决方案](walkthrough-develop-predictive-solution.md)中查看此过程的示例。
 
 本文深入分析了将训练实验转换为预测实验并对后者进行部署的细节。 了解这些细节之后，即可学习如何配置已部署模型，使之更高效。
 
-[!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
+
 
 ## <a name="overview"></a>概述 
 

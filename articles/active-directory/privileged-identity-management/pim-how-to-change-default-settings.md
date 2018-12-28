@@ -10,15 +10,15 @@ ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.component: pim
-ms.date: 09/21/2018
+ms.date: 11/30/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 77a57afda3859de4a246c15d3b5c0b4ba8e2a8c8
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 87003a053823cfc257a3b6f41699feefadbbcc66
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47038982"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52835159"
 ---
 # <a name="configure-azure-ad-directory-role-settings-in-pim"></a>在 PIM 中配置 Azure AD 目录角色设置
 
@@ -50,7 +50,15 @@ ms.locfileid: "47038982"
 
 ## <a name="notifications"></a>通知
 
-使用“通知”开关指定是否要让系统发送电子邮件给管理员来确认他们已激活角色。 这对于检测未经授权或非法的激活而言相当有用。
+使用“通知”开关指定当角色激活时管理员是否将收到电子邮件通知。 这对于检测未经授权或非法的激活而言相当有用。
+
+设置为“启用”时，通知将发送至：
+
+- 特权角色管理员
+- 安全管理员
+- 全局管理员角色
+
+有关详细信息，请参阅 [PIM 中的电子邮件通知](pim-email-notifications.md)。
 
 ## <a name="incidentrequest-ticket"></a>事件/请求票证
 

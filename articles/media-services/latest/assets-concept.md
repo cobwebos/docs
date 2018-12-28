@@ -1,5 +1,5 @@
 ---
-title: Azure 媒体服务中的资产 | Microsoft Docs
+title: 媒体服务中的资产 - Azure | Microsoft Docs
 description: 本文介绍何为资产以及 Azure 媒体服务如何使用这些资产。
 services: media-services
 documentationcenter: ''
@@ -9,14 +9,15 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 10/24/2018
+ms.date: 12/08/2018
 ms.author: juliako
-ms.openlocfilehash: e7abdb568b11870fb467ee6d3759881ca337d3cc
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.custom: seodec18
+ms.openlocfilehash: f9a6f0963ce8f45da567bb4f6326e9fcc8f435ef
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50085768"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53140126"
 ---
 # <a name="assets"></a>资产
 

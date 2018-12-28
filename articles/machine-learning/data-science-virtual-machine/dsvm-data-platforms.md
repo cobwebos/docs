@@ -1,11 +1,12 @@
 ---
 title: 数据科学虚拟机的数据平台 - Azure | Microsoft Docs
-description: 数据科学虚拟机的数据平台。
+description: 了解 Data Science Virtual Machine 支持的数据平台和工具。
 keywords: 数据科学工具, 数据科学虚拟机, 数据科学工具, Linux 数据科学
 services: machine-learning
 documentationcenter: ''
 author: gopitk
 manager: cgronlun
+ms.custom: seodec18
 ms.assetid: ''
 ms.service: machine-learning
 ms.component: data-science-vm
@@ -15,14 +16,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/16/2018
 ms.author: gokuma
-ms.openlocfilehash: b3f340006801287383c2afb2924706affbd77a51
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: f73f90b76900a3a5213297f8a28ff13204852039
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31411023"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53105541"
 ---
-# <a name="data-platforms"></a>数据平台
+# <a name="data-platforms-supported-on-the-data-science-virtual-machine"></a>Data Science Virtual Machine 支持的数据平台
 
 借助数据科学虚拟机 (DSVM)，可生成针对各种数据平台的分析。 除远程数据平台接口外，DSVM 还提供用于快速开发和原型制作的本地实例。 
 

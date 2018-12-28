@@ -1,21 +1,22 @@
 ---
-title: 语音服务 SDK 文档
+title: 发行说明 - 语音服务
 titlesuffix: Azure Cognitive Services
-description: 发行说明 - 最新版本中的内容更改
+description: 请参阅 Azure 语音服务的功能发布、改进、bug 修复和已知问题的运行日志。
 services: cognitive-services
 author: wolfma61
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: conceptual
-ms.date: 11/12/2018
+ms.date: 12/06/2018
 ms.author: wolfma
-ms.openlocfilehash: ff09926d61d64294a4f12ccf959f6685910539f1
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.custom: seodec18
+ms.openlocfilehash: c99f1691618765e8997ef442a506c83b9a7bd4fa
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52317885"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53088290"
 ---
 # <a name="release-notes"></a>发行说明
 
@@ -24,7 +25,7 @@ ms.locfileid: "52317885"
 **新功能**
 
 * 对 Android x86/x64 的支持。
-* 代理支持：在 SpeechConfig 对象中，你现在可以调用某个函数来设置代理信息（主机名、端口、用户名和密码）。 此功能在 iOS 上尚不可用。
+* 代理支持：在 SpeechConfig 对象中，现在可以调用某个函数来设置代理信息（主机名、端口、用户名和密码）。 此功能在 iOS 上尚不可用。
 * 改进了错误代码和消息。 如果识别返回了错误，这在过去会将 `Reason`（在已取消事件中）或 `CancellationDetails`（在识别结果中）设置为 `Error`。 取消的事件现在包含两个附加的成员：`ErrorCode` 和 `ErrorDetails`。 如果服务器随所报告的错误返回了附加的错误信息，则现在将在新成员中提供该信息。
 
 **改进**
@@ -83,7 +84,7 @@ ms.locfileid: "52317885"
 * 使用语音 SDK 生成的 UWP 应用现在可以通过 Windows 应用认证工具包 (WACK)。
   请查看 [UWP 快速入门](quickstart-csharp-uwp.md)。
 * 在 Linux (Ubuntu 16.04 x64) 上支持 .NET Standard 2.0。
-* 实验性：在 Windows (64-bit) 和 Linux (Ubuntu 16.04 x64) 上支持 Java 8。
+* 试验：在 Windows (64-bit) 和 Linux (Ubuntu 16.04 x64) 上支持 Java 8。
   请查看 [Java 运行时环境快速入门](quickstart-java-jre.md)。
 
 **功能性更改**
@@ -108,7 +109,7 @@ ms.locfileid: "52317885"
 
 * 支持 Android 平台（API 23：Android 6.0 Marshmallow 或更高版本）。 查看 [Android 快速入门](quickstart-java-android.md)。
 * 在 Windows 上支持 .NET Standard 2.0。 查看 [.NET Core 快速入门](quickstart-csharp-dotnetcore-windows.md)。
-* 实验：在 Windows 上支持 UWP（版本 1709 或更高版本）。
+* 试验：在 Windows 上支持 UWP（版本 1709 或更高版本）。
   * 请查看 [UWP 快速入门](quickstart-csharp-uwp.md)。
   * 注意：使用语音 SDK 生成的 UWP 应用尚未通过 Windows 应用认证工具包 (WACK)。
 * 通过自动重新连接支持识别功能长时间运行。
@@ -175,6 +176,6 @@ ms.locfileid: "52317885"
 
 已添加更多示例，还将持续更新。 有关最新的示例集，请参阅[语音 SDK 示例 GitHub 存储库](https://aka.ms/csspeech/samples)。
 
-## <a name="cognitive-services-speech-sdk-0212733-2018-may-release"></a>认知服务语音 SDK 0.2.12733：2018 年 5 月版本
+## <a name="cognitive-services-speech-sdk-0212733-2018-may-release"></a>认知服务语音 0.2.12733：2018 年 5 月版本
 
 此版本是认知服务语音 SDK 的第一个公共预览版本。

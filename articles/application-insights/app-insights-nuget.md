@@ -7,16 +7,15 @@ manager: carmonm
 ms.service: application-insights
 ms.workload: TBD
 ms.tgt_pltfrm: ibiza
-ms.devlang: multiple
 ms.topic: reference
 ms.date: 10/16/2018
 ms.author: mbullwin
-ms.openlocfilehash: b6188bbf89d9aee842d7f8e232a820b59c4d9e31
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: 76cdd4bd4d95c7c11906f9c02a0f5cfa2326390e
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50023247"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "53000777"
 ---
 # <a name="application-insights-nuget-packages"></a>Application Insights NuGet 包
 
@@ -71,7 +70,7 @@ ms.locfileid: "50023247"
 | Microsoft.ApplicationInsights.Agent_x64 | 2.2.1 |  为 x64 应用程序启用运行时数据收集功能 | [下载包](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Agent_x64/) |
 | Microsoft.ApplicationInsights.Agent_x86 | 2.2.1 |  为 x86 应用程序启用运行时数据收集功能。 | [下载包](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Agent_x86/) |
 
-这些包属于[状态监视器](app-insights-monitor-performance-live-website-now.md)中运行时监视的核心功能。 无需直接下载这些包，只需使用状态监视器安装程序即可。 如果要详细了解这些包如何在后台工作，请参阅我们的一位开发人员撰写的这篇[博客文章](http://apmtips.com/blog/2016/11/18/how-application-insights-status-monitor-not-monitors-dependencies/)。
+这些包属于[状态监视器](app-insights-monitor-performance-live-website-now.md)中运行时监视的核心功能。 无需直接下载这些包，只需使用状态监视器安装程序即可。 如果要详细了解这些包如何在后台工作，请参阅我们的一位开发人员撰写的这篇[博客文章](https://apmtips.com/blog/2016/11/18/how-application-insights-status-monitor-not-monitors-dependencies/)。
 
 ## <a name="additional-packages"></a>其他包
 

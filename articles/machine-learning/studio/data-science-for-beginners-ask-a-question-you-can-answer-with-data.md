@@ -4,10 +4,9 @@ description: 通过学习“适合初学者的数据科学”视频 3，了解�
 keywords: 数据科学问题，数据科学问题，公式化问题，回归问题，分类问题，针对性问题
 services: machine-learning
 documentationcenter: na
-author: ericlicoding
-ms.custom: (previous ms.author=hshapiro, author=heatherbshapiro)
-ms.author: amlstudiodocs
-manager: hjerez
+author: garyericson
+ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
+ms.author: garye
 editor: cjgronlund
 ms.assetid: 5b9501e3-9964-417a-8ffc-8913103da77b
 ms.service: machine-learning
@@ -17,12 +16,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/03/2018
-ms.openlocfilehash: c6d42ed7920b634994adf5313656c77e2df6dd5b
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 8f117a8c47d7c98f13101efe0ca5147ce8d8c25a
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52310831"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53250971"
 ---
 # <a name="ask-a-question-you-can-answer-with-data"></a>提出数据方面的可解答问题
 ## <a name="video-3-data-science-for-beginners-series"></a>视频 3：适合初学者的数据科学系列
@@ -38,18 +37,18 @@ ms.locfileid: "52310831"
 ## <a name="other-videos-in-this-series"></a>本系列中的其他视频
 “适合初学者的数据科学”对数据科学进行简要介绍，共五个短视频。
 
-* 视频 1：[数据科学解答的 5 个问题](data-science-for-beginners-the-5-questions-data-science-answers.md)（5 分 14 秒）
+* 视频 1：[数据科学可解答的 5 个问题](data-science-for-beginners-the-5-questions-data-science-answers.md)（5 分 14 秒）
 * 视频 2：[数据是否可用于数据科学？](data-science-for-beginners-is-your-data-ready-for-data-science.md) （4 分 56 秒）
-* 视频 3：提出可用数据回答的问题
+* 视频 3：提出数据方面的可解答问题
 * 视频 4：[使用简单的模型预测答案](data-science-for-beginners-predict-an-answer-with-a-simple-model.md)（7 分 42 秒）
-* 视频 5：[复制他人的工作以研究数据科学](data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md)（3 分 18 秒）
+* 视频 5：[复制他人的工作以执行数据科学](data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md)（3 分 18 秒）
 
-## <a name="transcript-ask-a-question-you-can-answer-with-data"></a>脚本：提出可用数据回答的问题
+## <a name="transcript-ask-a-question-you-can-answer-with-data"></a>脚本：提出数据方面的可解答问题
 欢迎观看“适合初学者的数据科学”系列中的第二个视频。  
 
 此视频中提供了一些提示，可制定问题以便用数据解答。
 
-如果先观看了本系列中的前两个视频：“5 个数据科学可以解答的问题”和“数据是否可用于数据科学？”，可能会从此视频中了解更多的内容。
+如果先前观看了本系列以下两个视频，再观看本视频可能会更有收获：“数据科学可解答的 5 个问题”和“数据是否可用于数据科学？”
 
 ## <a name="ask-a-sharp-question"></a>提出尖锐问题
 我们已经探讨过数据科学如何使用名称（也称为类别或标签）和数字预测某个问题的答案的过程。 但这个问题并不指代任何问题；它必须是一个清晰具体的问题。

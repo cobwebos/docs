@@ -1,25 +1,24 @@
 ---
-title: 将 Mongoose 框架与 Azure Cosmos DB 配合使用 | Microsoft Docs
-description: 了解如何将 Node.js Mongoose 应用连接到 Azure Cosmos DB
-services: cosmos-db
-author: slyons
-manager: kfile
+title: 将 Node.js Mongoose 应用程序连接到 Azure Cosmos DB
+description: 了解如何在 Azure Cosmos DB 中使用 Mongoose 框架来存储和管理数据。
+author: SnehaGunda
 ms.service: cosmos-db
 ms.component: cosmosdb-mongo
 ms.devlang: nodejs
 ms.topic: conceptual
-ms.date: 01/08/2018
-ms.author: sclyon
-ms.openlocfilehash: 8cfa53a1792d8e01c05aad8e4a1a0b5239a092c1
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.date: 12/06/2018
+ms.author: sngun
+ms.custom: seodec18
+ms.openlocfilehash: ec47c265c3d6f826bc1b7e7d8038e284c6981b7a
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48857375"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53134924"
 ---
-# <a name="azure-cosmos-db-using-the-mongoose-framework-with-azure-cosmos-db"></a>Azure Cosmos DB：将 Mongoose 框架与 Azure Cosmos DB 配合使用
+# <a name="connect-a-nodejs-mongoose-application-to-azure-cosmos-db"></a>将 Node.js Mongoose 应用程序连接到 Azure Cosmos DB
 
-本教程演示在 Azure Cosmos DB 中存储数据时如何使用 [Mongoose 框架](http://mongoosejs.com/)。 本演练针对 Azure Cosmos DB 使用 MongoDB API。 不熟悉该接口的读者应知道，Mongoose 是 Node.js 中适用于 MongoDB 的对象建模框架，提供简单直接的、基于架构的解决方案来为应用程序数据建模。
+本教程演示在 Azure Cosmos DB 中存储数据时如何使用 [Mongoose 框架](https://mongoosejs.com/)。 本演练针对 Azure Cosmos DB 使用 MongoDB API。 不熟悉该接口的读者应知道，Mongoose 是 Node.js 中适用于 MongoDB 的对象建模框架，提供简单直接的、基于架构的解决方案来为应用程序数据建模。
 
 Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服务。 可快速创建和查询文档、键/值和图形数据库，所有这些都受益于 Azure Cosmos DB 核心的全球分布和水平缩放功能。
 
@@ -96,7 +95,7 @@ Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服�
 
 本演练介绍上述两种模型。 首先演练如何为每个集合存储一种类型的数据。 这是 Mongoose 的实际行为。
 
-Mongoose 还存在称作[鉴别器](http://mongoosejs.com/docs/discriminators.html)的概念。 鉴别器是架构继承机制。 使用鉴别器可在同一底层 MongoDB 集合的底层创建多个具有重叠架构的模型。
+Mongoose 还存在称作[鉴别器](https://mongoosejs.com/docs/discriminators.html)的概念。 鉴别器是架构继承机制。 使用鉴别器可在同一底层 MongoDB 集合的底层创建多个具有重叠架构的模型。
 
 可将各种数据模型存储在同一集合中，然后在查询时使用筛选子句，只提取所需的数据。
 
@@ -196,7 +195,7 @@ Mongoose 还存在称作[鉴别器](http://mongoosejs.com/docs/discriminators.ht
 
 ### <a name="using-mongoose-discriminators-to-store-data-in-a-single-collection"></a>使用 Mongoose 鉴别器在单个集合中存储数据
 
-在此方法中，我们使用 [Mongoose 鉴别器](http://mongoosejs.com/docs/discriminators.html)来帮助优化每个 Azure Cosmos DB 集合的成本。 使用鉴别器可以定义区分的“键”，使用该键可以存储、区分和筛选不同的对象模型。
+在此方法中，我们使用 [Mongoose 鉴别器](https://mongoosejs.com/docs/discriminators.html)来帮助优化每个 Azure Cosmos DB 集合的成本。 使用鉴别器可以定义区分的“键”，使用该键可以存储、区分和筛选不同的对象模型。
 
 我们将在此处创建一个基对象模型、定义区分键，并将“Family”和“VacationDestinations”作为扩展添加到基模型。
 

@@ -1,18 +1,19 @@
 ---
-title: 使用 Azure AD 应用 Linux IaaS VM 的 Azure 磁盘加密（以前的版本）| Microsoft Docs
+title: 使用 Azure AD 应用 Linux IaaS VM 的 Azure 磁盘加密（以前的版本）
 description: 本文提供有关如何为 Linux IaaS VM 启用 Microsoft Azure 磁盘加密的说明。
 author: mestew
 ms.service: security
 ms.subservice: Azure Disk Encryption
 ms.topic: article
 ms.author: mstewart
-ms.date: 09/19/2018
-ms.openlocfilehash: ffabd1169076ac5f887375c585c8880b587c86a8
-ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
+ms.date: 12/07/2018
+ms.custom: seodec18
+ms.openlocfilehash: 79b7fdd5ba6bd39058a5b892771f550bb872fa70
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51636996"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53083353"
 ---
 # <a name="enable-azure-disk-encryption-for-linux-iaas-vms-previous-release"></a>为 Linux IaaS VM 启用 Azure 磁盘加密（以前的版本）
 
@@ -210,7 +211,7 @@ key-encryption-key 参数值的语法是 KEK 的完整 URI，其格式为： htt
 ### <a name="bkmk_EFAPSH"></a>结合 PowerShell cmdlet 使用 EncryptFormatAll 参数
 结合 [EncryptFormatAll 参数](https://www.powershellgallery.com/packages/AzureRM/5.0.0)使用 [Set-AzureRmVMDiskEncryptionExtension](/powershell/module/azurerm.compute/set-azurermvmdiskencryptionextension) cmdlet。 
 
-**使用客户端机密和 EncryptFormatAll 加密正在运行的 VM：** 例如，以下脚本初始化变量，并结合 EncryptFormatAll 参数运行 Set-AzureRmVMDiskEncryptionExtension cmdlet。 作为先决条件，应已事先创建资源组、VM、Key Vault、AAD 应用和客户端机密。 将 MySecureRg、MySecureVM、MySecureVault、My-AAD-client-ID 和 My-AAD-client-secret 替换为自己的值。
+**使用客户端机密和 EncryptFormatAll 加密正在运行的 VM：** 例如，以下脚本会初始化变量，并结合 EncryptFormatAll 参数运行 Set-AzureRmVMDiskEncryptionExtension cmdlet。 作为先决条件，应已事先创建资源组、VM、Key Vault、AAD 应用和客户端机密。 将 MySecureRg、MySecureVM、MySecureVault、My-AAD-client-ID 和 My-AAD-client-secret 替换为自己的值。
   
    ```azurepowershell-interactive
      $rgName = 'MySecureRg';
@@ -375,7 +376,7 @@ key-encryption-key 参数值的语法是 KEK 的完整 URI，其格式为： htt
      ```azurecli-interactive
      az vm encryption disable --name "MySecureVM" --resource-group "MySecureRg" --volume-type [ALL, DATA, OS]
      ```
-- **使用资源管理器模板禁用加密：** 使用[在正在运行的 Linux VM 上禁用加密](https://aka.ms/decrypt-linuxvm)模板来禁用加密。
+- **使用资源管理器模板禁用加密：** 使用[在正在运行的 Linux VM 上禁用加密](https://aka.ms/decrypt-linuxvm)模板禁用加密。
      1. 单击 **“部署到 Azure”**。
      2. 选择订阅、资源组、位置、VM、法律条款和协议。
      3.  单击“购买”，在正在运行的 Windows VM 上禁用磁盘加密。 

@@ -7,13 +7,14 @@ ms.author: sidram
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 10/11/2018
-ms.openlocfilehash: 2b2dc3ba78cfa682c4a326754bdddfa9bc81f836
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.date: 12/07/2018
+ms.custom: seodec18
+ms.openlocfilehash: 6694865909a165842f994501befa404e1bc0a447
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49346151"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53164375"
 ---
 # <a name="troubleshoot-input-connections"></a>排查输入连接问题
 
@@ -35,7 +36,7 @@ ms.locfileid: "49346151"
  
 当流分析作业从某个输入收到格式不当的消息时，它会丢弃该消息并通过警告来通知你。 流分析作业的“输入”磁贴上会显示一个警告符号。 只要作业处于运行状态，此警告符号就存在：
 
-![Azure 流分析输入磁贴](media/stream-analytics-malformed-events/inputs_tile.png)
+![Azure 流分析输入磁贴](media/stream-analytics-malformed-events/stream-analytics-inputs-tile.png)
 
 启用诊断日志，查看警告的详细信息。 对于格式不正确的输入事件，执行日志包含具有如下所示消息的条目： 
 <code>Could not deserialize the input event(s) from resource <blob URI> as json.</code>
@@ -47,8 +48,8 @@ ms.locfileid: "49346151"
 
 2. 输入详细信息磁贴会显示含各问题详细信息的警告的列表。 下面的示例警告消息包含格式不正确的 JSON 数据所在的分区、偏移量和序列号。 
 
-   ![包含偏移量的警告消息](media/stream-analytics-malformed-events/warning_message_with_offset.png)
-
+   ![包含偏移量的流分析警告消息](media/stream-analytics-malformed-events/warning-message-with-offset.png)
+   
 3. 要找到格式正确的 JSON 数据，可在 [GitHub 示例存储库](https://github.com/Azure/azure-stream-analytics/tree/master/Samples/CheckMalformedEventsEH)中运行可用的 CheckMalformedEvents.cs 代码。 此代码读取分区 ID、偏移量并列显位于该偏移位置的数据。 
 
 4. 在阅读数据后，你可以分析并更正序列化格式。
@@ -89,9 +90,9 @@ ms.locfileid: "49346151"
 
 每个分区的读取器数超过数据中心限制（5 个）的情况如下：
 
-* 多个 SELECT 语句：如果使用引用同一个事件中心输入的多个 SELECT 语句，则每个 SELECT 语句都将导致新建一个接收器。
-* UNION：使用 UNION 时，可能存在引用同一个事件中心或使用者组的多个输入。
-* SELF JOIN：使用 SELF JOIN 操作时，可能会多次引用同一个事件中心。
+* 多个 SELECT 语句：如果使用引用“同一个”事件中心输入的多个 SELECT 语句，则每个 SELECT 语句都将导致新建一个接收器。
+* UNION：使用 UNION 时，可能存在引用“同一个”事件中心或使用者组的多个输入。
+* SELF JOIN：使用 SELF JOIN 操作时，可能会多次引用“同一个”事件中心。
 
 下列最佳做法可帮助缓解每个分区的读取器数超过数据中心限制（5 个）的情况。
 
@@ -101,7 +102,7 @@ WITH 子句将指定可由查询中的 FROM 子句引用的临时命名结果集
 
 例如，与使用此查询相比：
 
-```
+```SQL
 SELECT foo 
 INTO output1
 FROM inputEventHub
@@ -114,7 +115,7 @@ FROM inputEventHub
 
 请使用此查询：
 
-```
+```SQL
 WITH data AS (
    SELECT * FROM inputEventHub
 )

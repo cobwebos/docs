@@ -1,23 +1,24 @@
 ---
-title: LUIS 应用中的实体类型 - 语言理解
-titleSuffix: Azure Cognitive Services
+title: 实体类型
+titleSuffix: Language Understanding - Azure Cognitive Services
 description: 在语言理解智能服务 (LUIS) 应用中添加实体（应用程序域中的关键数据）。
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: conceptual
-ms.date: 10/19/2018
+ms.date: 12/07/2018
 ms.author: diberry
-ms.openlocfilehash: fdf81943a7bdbae80f4474915a72bb61f1123a30
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.openlocfilehash: f0e543263c7a9890abc485d0f0cd6bec88f16dd4
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50085787"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53135186"
 ---
-# <a name="entities-in-luis"></a>LUIS 中的实体
+# <a name="entity-types-and-their-purposes-in-luis"></a>实体类型及其在 LUIS 中的目的
 
 实体是话语中的字词或短语，而话语是应用程序域中的关键数据。
 
@@ -71,7 +72,7 @@ LUIS 提供多种类型的实体；预生成的实体、自定义机器学习实
 | 名称 | 可标记 | Description |
 | -- |--|--|
 | **预生成** <br/>[自定义](#prebuilt)| |  **定义**<br>用于表示常见概念的内置类型。 <br><br>**列表**<br/>关键短语编号、序数、温度、维度、资金、年龄、百分比、电子邮件、URL、电话号码和关键短语。 <br><br>预生成的实体名称已保留。 <br><br>添加到应用程序的所有预生成的实体会返回到[终结点](luis-glossary.md#endpoint)查询中。 有关详细信息，请参阅[预生成的实体](./luis-prebuilt-entities.md)。 <br/><br/>[实体响应示例](luis-concept-data-extraction.md#prebuilt-entity-data)|
-|<!-- added week of 3/21/08 --> **正则表达式**<br/>[RegEx](#regex)||**定义**<br>格式化的原始话语文本的自定义正则表达式。 不区分大小写，并忽略区域性变体。  <br><br>此实体非常适用于格式一致的词和短语（并且其任何变体也是一致的）。<br><br>完成拼写检查更改后，会应用正则表达式匹配。 <br><br>如果正则表达式过于复杂，例如使用了许多括号，则不能将表达式添加到模型。 <br><br>**示例**<br>`kb[0-9]{6,}` 与 kb123456 匹配。<br/><br/>[快速入门](luis-quickstart-intents-regex-entity.md)<br>[实体响应示例](luis-concept-data-extraction.md)|
+|<!-- added week of 3/21/08 --> **正则表达式**<br/>[RegEx](#regex)||**定义**<br>格式化的原始话语文本的自定义正则表达式。 不区分大小写，并忽略区域性变体。  <br><br>此实体非常适用于格式一致的词和短语（并且其任何变体也是一致的）。<br><br>完成字符级别而不是令牌级别的拼写检查更改后，会应用正则表达式匹配。 使用部分但并非全部 [.Net Regex](https://docs.microsoft.com/dotnet/standard/base-types/regular-expressions) 库。<br><br>如果正则表达式过于复杂，例如使用了许多括号，则不能将表达式添加到模型。 <br><br>**示例**<br>`kb[0-9]{6,}` 与 kb123456 匹配。<br/><br/>[快速入门](luis-quickstart-intents-regex-entity.md)<br>[实体响应示例](luis-concept-data-extraction.md)|
 | **简单** <br/>[机器学习](#machine-learned) | ✔ | **定义**<br>简单实体是描述单个概念的泛型实体，通过机器学习的上下文习得。 上下文包括选词、字词位置和话语长度。<br/><br/>该实体非常适用于格式不一致但含义相同的字词或短语。 <br/><br/>[快速入门](luis-quickstart-primary-and-secondary-data.md)<br/>[实体响应示例](luis-concept-data-extraction.md#simple-entity-data)|  
 | **列表** <br/>[完全匹配](#exact-match)|| **定义**<br>列表实体表示系统中一组固定、封闭的相关单词及其同义词。 <br><br>每个列表实体可能具有一种或多种形式。 最适用于同一概念的一组表示方式的已知变体。<br/><br/>LUIS 不会为列表实体发现更多值。 使用“建议”功能根据当前列表查看有关新词的建议。<br/><br>如果存在多个具有相同值的列表实体，则终结点查询中会返回其中每个实体。 <br/><br/>[快速入门](luis-quickstart-intent-and-list-entity.md)<br>[实体响应示例](luis-concept-data-extraction.md#list-entity-data)| 
 | **Pattern.any** <br/>[混合](#mixed) | ✔|**定义**<br>Patterns.any 是一种长度可变的占位符，仅在模式的模板话语中使用，用于标记实体的起始和结束位置。  <br><br>**示例**<br>例如，对于一个基于标题的书籍话语搜索，pattern.any 会提取完整的标题。 一个使用 pattern.any 的模板话语是 `Who wrote {BookTitle}[?]`。<br/><br/>[教程](luis-tutorial-pattern.md)<br>[实体响应示例](luis-concept-data-extraction.md#composite-entity-data)|  

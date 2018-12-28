@@ -8,16 +8,16 @@ ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
 author: danimir
-ms.author: v-daljep
+ms.author: danil
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 10/23/2018
-ms.openlocfilehash: 0d728d81a29c5520938c8553c026727c0f94cc43
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.date: 12/10/2018
+ms.openlocfilehash: 9e8b9b24707577aba5df754984953ef2f59b9ff9
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49956997"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53272858"
 ---
 # <a name="monitoring-and-performance-tuning"></a>监视和性能优化
 
@@ -85,7 +85,91 @@ Azure SQL 数据库由系统自动管理，它是一个灵活的数据服务，�
 > [!IMPORTANT]
 > 请参阅[识别 CPU 性能问题](sql-database-monitoring-with-dmvs.md#identify-cpu-performance-issues)，其中提供了一组使用这些 DMV 排查 CPU 利用率问题的 T-SQL 查询。
 
+### <a name="troubleshoot-queries-with-parameter-sensitive-query-execution-plan-issues"></a>使用参数敏感查询执行计划问题对查询进行故障排除
+
+参数敏感计划 (PSP) 问题是指查询优化器生成的查询执行计划仅适用于某个或某组特定的参数值，而缓存计划对于连续执行操作中所用的参数值并非最佳。 这样一来，非最佳计划可能会导致整体工作负荷吞吐量下降并出现查询性能问题。
+
+可通过以下几种解决方法来缓解这些问题，但每种方法各有利弊：
+
+- 在每次执行查询时使用 [RECOMPILE](https://docs.microsoft.com/sql/t-sql/queries/hints-transact-sql-query) 查询提示。 此解决方法以编译时间和 CPU 增加为代价来换取更好的计划质量。 对于需要高吞吐量的工作负荷，通常无法使用 `RECOMPILE` 选项。
+- 使用 [OPTION (OPTIMIZE FOR…)](https://docs.microsoft.com/sql/t-sql/queries/hints-transact-sql-query) 查询提示将实际参数值替代为典型的参数值，以便为大部分可能的参数值生成一个足够好的计划。   此选项要求充分了解最佳参数值和相关的计划特征。
+- 使用 [OPTION (OPTIMIZE FOR UNKNOWN)](https://docs.microsoft.com/sql/t-sql/queries/hints-transact-sql-query) 查询提示将实际参数值替代为密度向量平均值。 另一种方法是将传入的参数值捕获到局部变量中，然后在谓词内使用局部变量，而不是使用参数本身。 在此特定修复方法中，平均密度必须*足够好*。
+- 使用 [DISABLE_PARAMETER_SNIFFING](https://docs.microsoft.com/sql/t-sql/queries/hints-transact-sql-query) 查询提示完全禁用参数探查。
+- 使用 [KEEPFIXEDPLAN](https://docs.microsoft.com/sql/t-sql/queries/hints-transact-sql-query) 查询提示防止在缓存中重新编译。 此解决方法假定缓存中已有的通用计划已经*足够好*。 你还可以禁用统计信息自动更新，以便减少收回好计划而编译新的不良计划的可能性。
+- 通过显式使用 [USE PLAN](https://docs.microsoft.com/sql/t-sql/queries/hints-transact-sql-query) 查询提示（通过显式指定、使用查询存储设置特定计划或启用[自动优化](sql-database-automatic-tuning.md)）强制执行计划。
+- 将单个过程替换为一组嵌套的过程，可以根据条件逻辑和关联的参数值来使用其中每个过程。
+- 创建动态字符串执行来替代静态过程定义。
+
+有关解决这些类型的问题的其他信息，请参阅：
+
+- 这篇[探查参数](https://blogs.msdn.microsoft.com/queryoptteam/2006/03/31/i-smell-a-parameter/)博客文章
+- 这篇[参数探查问题和解决方法](https://blogs.msdn.microsoft.com/turgays/2013/09/10/parameter-sniffing-problem-and-possible-workarounds/)博客文章
+- 这篇[大象与老鼠参数探查](ttps://www.brentozar.com/archive/2013/06/the-elephant-and-the-mouse-or-parameter-sniffing-in-sql-server/)博客文章
+- 这篇[动态 sql 与参数化查询的计划质量](https://blogs.msdn.microsoft.com/conor_cunningham_msft/2009/06/03/conor-vs-dynamic-sql-vs-procedures-vs-plan-quality-for-parameterized-queries/)博客文章
+
+### <a name="troubleshooting-compile-activity-due-to-improper-parameterization"></a>排查因参数化不当而导致的编译活动问题
+
+当查询包含文本时，为了减少编译次数，要么数据库引擎选择自动参数化语​​句，要么用户可以将其显式参数化。 使用相同模式但不同文本值的大量查询编译可能会导致 CPU 利用率较高。 同样，如果仅将查询部分参数化，导致该查询仍包含文本，则数据库引擎不会将其进一步参数化。  以下是部分参数化查询的示例：
+
+```sql
+select * from t1 join t2 on t1.c1=t2.c1
+where t1.c1=@p1 and t2.c2='961C3970-0E54-4E8E-82B6-5545BE897F8F'
+```
+
+在前面的示例中，`t1.c1` 采用 `@p1`，而 `t2.c2` 继续采用 GUID 作为文本。 在这种情况下，如果更改 `c2` 的值，该查询将被视为不同的查询，并且将进行新的编译。 若要减少前面示例中的编译次数，解决方案还是参数化 GUID。
+
+以下查询显示查询哈希的查询计数，以确定查询是否已正确参数化：
+
+```sql
+   SELECT  TOP 10  
+      q.query_hash
+      , count (distinct p.query_id ) AS number_of_distinct_query_ids
+      , min(qt.query_sql_text) AS sampled_query_text
+   FROM sys.query_store_query_text AS qt
+      JOIN sys.query_store_query AS q
+         ON qt.query_text_id = q.query_text_id
+      JOIN sys.query_store_plan AS p 
+         ON q.query_id = p.query_id
+      JOIN sys.query_store_runtime_stats AS rs 
+         ON rs.plan_id = p.plan_id
+      JOIN sys.query_store_runtime_stats_interval AS rsi
+         ON rsi.runtime_stats_interval_id = rs.runtime_stats_interval_id
+   WHERE
+      rsi.start_time >= DATEADD(hour, -2, GETUTCDATE())
+      AND query_parameterization_type_desc IN ('User', 'None')
+   GROUP BY q.query_hash
+   ORDER BY count (distinct p.query_id) DESC
+```
+
+### <a name="resolve-problem-queries-or-provide-more-resources"></a>解决问题查询或提供更多资源
+
 识别问题后，可以优化有问题的查询，或升级计算大小或服务层，以增加 Azure SQL 数据库的容量来满足 CPU 要求。 有关缩放单一数据库资源的信息，请参阅[缩放 Azure SQL 数据库中的单一数据库资源](sql-database-single-database-scale.md)；有关缩放弹性池资源的信息，请参阅[缩放 Azure SQL 数据库中的弹性池资源](sql-database-elastic-pool-scale.md)。 有关缩放托管实例的信息，请参阅[实例级资源限制](sql-database-managed-instance-resource-limits.md#instance-level-resource-limits)。
+
+### <a name="determine-if-running-issues-due-to-increase-workload-volume"></a>确定运行问题是否是由工作负荷量增加引起的
+
+应用程序流量和工作负荷的增加可能会导致 CPU 利用率的增加，但是，要想正确诊断此问题，必须慎之又慎。 在高 CPU 方案中，回答这些问题以确定 CPU 增加是否确实是由工作负荷量变化引起的：
+
+1. 来自应用程序的查询是否是导致高 CPU 问题的原因？
+2. 对于 CPU 消耗量靠前的查询（可以识别）：
+
+   - 确定同一查询是否关联了多个执行计划。 如果是，请确定原因。
+   - 对于具有相同执行计划的查询，请确定执行时间是否一致以及执行计数是否增加。 如果是，则可能由于工作负荷增加而导致性能问题。
+
+总而言之，如果查询执行计划没有以不同的方式执行，CPU 利用率却随执行计数的增加而增加，则可能出现与工作负荷增加相关的性能问题。
+
+要得出是工作负荷量变化导致了 CPU 问题的结论并不容易。   需考虑的因素包括： 
+
+- **资源使用率发生了变化**
+
+  以 CPU 长时间增加到 80% 的情况为例。  单凭 CPU 利用率并不能说明工作负荷量发生了变化。  即使应用程序执行的工作负荷完全相同，查询执行计划的回归和数据分布的变化也有可能导致资源使用率的增加。
+
+- **出现了新查询**
+
+   应用程序有可能在不同时间发出一组新的查询。
+
+- **请求数量增加或减少**
+
+   这种情况最能说明工作负荷量的变化。 查询数量并不一定与资源利用率增加相对应。 但是，在其他因素不变的前提下，该指标仍然是一个重要信号。
 
 ## <a name="waiting-related-performance-issues"></a>等待相关的性能问题
 
@@ -94,6 +178,13 @@ Azure SQL 数据库由系统自动管理，它是一个灵活的数据服务，�
 - [查询存储](https://docs.microsoft.com/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store)每个查询在不同时间段的等待统计信息。 在查询存储中，等待类型合并成等待类别。 等待类别到等待类型的映射在 [sys.query_store_wait_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-query-store-wait-stats-transact-sql?view=sql-server-2017#wait-categories-mapping-table) 中提供。
 - [sys.dm_db_wait_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-wait-stats-azure-sql-database) 返回有关操作期间执行的线程遇到的所有等待的信息。 可以使用此聚合视图来诊断 Azure SQL 数据库以及特定查询和批的性能问题。
 - [sys.dm_os_waiting_tasks](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-os-waiting-tasks-transact-sql) 返回有关正在等待某个资源的任务的等待队列的信息。
+
+在高 CPU 方案中，查询存储和等待统计信息并不一定反映 CPU 利用率，原因有二：
+
+- CPU 消耗量较高的查询可能仍在执行，查询尚未完成
+- 发生故障转移时，正在运行 CPU 消耗量较高的查询
+
+查询存储和等待统计信息跟踪动态管理视图仅显示成功完成的查询和超时查询的结果，而不显示当前正在执行的语句的数据（直到其完成）。  动态管理视图 [sys.dm_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) 可用于跟踪当前正在执行的查询以及相关的工作线程时间。
 
 如上面的图表中所示，是最常见的等待是：
 

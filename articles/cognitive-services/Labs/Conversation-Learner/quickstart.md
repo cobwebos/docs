@@ -10,12 +10,12 @@ ms.component: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: bc0cf0900ec9f87c75091b3bf219d92e0859aa1f
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: b98b528d2d78d2285977dec49da18081df47e9d6
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39282133"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53166126"
 ---
 # <a name="create-a-conversation-learner-model-using-nodejs"></a>使用 Node.js 创建对话学习器模型
 
@@ -164,7 +164,7 @@ cp .env.example .env
 
 - 在 [Stack Overflow](https://stackoverflow.com) 中使用“microsoft cognitive”标记问题
 - 在 [User Voice 页](https://aka.ms/conversation-learner-uservoice)中请求功能
-- 在 [github 存储库](https://github.com/Microsoft/ConversationLearner-Samples)中提问
+- 在 [GitHub 存储库](https://github.com/Microsoft/ConversationLearner-Samples)中提问
 
 ## <a name="contributing"></a>供稿
 

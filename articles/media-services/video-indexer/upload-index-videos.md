@@ -7,34 +7,33 @@ author: Juliako
 manager: femila
 ms.service: media-services
 ms.topic: article
-ms.date: 11/19/2018
+ms.date: 12/10/2018
 ms.author: juliako
-ms.openlocfilehash: 2261b8fa496beaf2a14c9b949047b6a5cbc6ea32
-ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
+ms.openlocfilehash: f29adb500401c9f5d6e177a0740ce54719c36a34
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2018
-ms.locfileid: "52291738"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53253198"
 ---
 # <a name="upload-and-index-your-videos"></a>上传视频和编制视频索引  
 
-本文介绍如何使用 Azure 视频索引器上传视频。 视频索引器 API 提供了两个上传选项： 
+使用视频索引器 API 上传视频时，有两个上传选项： 
 
 * 从 URL 上传视频（首选），
 * 作为请求正文中的字节数组发送视频文件。
 * 提供[资产 ID](https://docs.microsoft.com/azure/media-services/latest/assets-concept)，以便使用现有的 Azure 媒体服务资产（仅付费帐户支持此功能）。
 
-本文介绍如何基于 URL 使用[上传视频](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?) API 来上传视频和编制视频索引。 本文中的代码示例包括注释掉的代码，该代码显示了如何上传字节数组。  
+本文介绍如何基于 URL 使用[上传视频](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?) API 来上传视频和编制视频索引。 本文中的代码示例包括注释掉的代码，该代码显示了如何上传字节数组。 <br/>本文还介绍可以在 API 上设置的用于更改 API 过程和输出的某些参数。
 
-本文还介绍可以在 API 上设置的用于更改 API 过程和输出的某些参数。
-
-> [!Note]
-> 创建视频索引器帐户时，可以选择免费试用帐户（提供特定分钟数的免费索引时间）或付费选项（不受配额的限制）。 <br/>使用免费试用版时，视频索引器为网站用户提供最多 600 分钟的免费索引，为 API 用户提供最多 2400 分钟的免费索引。 使用付费选项时，可以创建[连接到 Azure 订阅和 Azure 媒体服务帐户](connect-to-azure.md)的视频索引器帐户。 需要为编制索引的分钟数付费，此外还需要支付媒体帐户相关的费用。 
+视频上传以后，视频索引器会选择性地对视频进行编码（在本文中介绍）。 创建视频索引器帐户时，可以选择免费试用帐户（提供特定分钟数的免费索引时间）或付费选项（不受配额的限制）。 使用免费试用版时，视频索引器为网站用户提供最多 600 分钟的免费索引，为 API 用户提供最多 2400 分钟的免费索引。 使用付费选项时，可以创建[连接到 Azure 订阅和 Azure 媒体服务帐户](connect-to-azure.md)的视频索引器帐户。 需要为编制索引的分钟数付费，此外还需要支付媒体帐户相关的费用。 
 
 ## <a name="uploading-considerations"></a>上传注意事项
     
 - 根据 URL（首选方式）上传视频时，必须使用 TLS 1.2（或更高版本）保护终结点
-- 字节数组选项限制为 2GB，并且在 30 分钟后超时
+- 对于 URL 选项，上传大小限制为 10GB
+- 对于字节数组选项，上传大小限制为 2GB 
+- 字节组选项会在 30 分钟后超时
 - 需要对 `videoURL` 参数中提供的 URL 进行编码
 
 > [!Tip]
@@ -91,7 +90,7 @@ ms.locfileid: "52291738"
 
 ### <a name="priority"></a>priority
 
-视频由视频索引器根据优先级进行索引。 使用 **priority** 参数指定索引优先级。 以下值有效：**Low**（低）、**Normal**（正常，默认值）、**High**（高）。
+视频由视频索引器根据优先级进行索引。 使用 **priority** 参数指定索引优先级。 以下为有效值：低、正常（默认值）和高。
 
 仅付费帐户支持 **Priority** 参数。
 

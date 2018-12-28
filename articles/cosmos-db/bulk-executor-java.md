@@ -1,20 +1,19 @@
 ---
-title: 使用 Bulk Executor Java 库在 Azure Cosmos DB 中执行批量导入和更新操作 | Microsoft Docs
+title: 使用 Bulk Executor Java 库在 Azure Cosmos DB 中执行批量导入和更新操作
 description: 使用 Bulk Executor Java 库批量导入和更新 Azure Cosmos DB 文档。
 services: cosmos-db
 author: tknandu
-manager: kfile
 ms.service: cosmos-db
 ms.devlang: java
 ms.topic: conceptual
 ms.date: 10/16/2018
 ms.author: ramkris
-ms.openlocfilehash: 44477f77547c9373bd4a3394c80e217d419bc8e0
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: e91984281350e9ea0a5f3411c39d29dfd6420529
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50420033"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53080905"
 ---
 # <a name="use-bulk-executor-java-library-to-perform-bulk-operations-on-azure-cosmos-db-data"></a>使用 Bulk Executor Java 库针对 Azure Cosmos DB 数据执行批量操作
 
@@ -33,7 +32,7 @@ ms.locfileid: "50420033"
 
   - 请确保设置 JAVA_HOME 环境变量，使之指向在其中安装了 JDK 的文件夹。
 
-* [下载](http://maven.apache.org/download.cgi)和[安装](http://maven.apache.org/install.html) [Maven](http://maven.apache.org/) 二进制存档  
+* [下载](https://maven.apache.org/download.cgi)和[安装](https://maven.apache.org/install.html) [Maven](https://maven.apache.org/) 二进制存档  
   
   - 在 Ubuntu 上，可以通过运行 `apt-get install maven` 来安装 Maven。
 

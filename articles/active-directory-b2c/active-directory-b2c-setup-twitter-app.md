@@ -7,15 +7,15 @@ manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 09/19/2018
+ms.date: 11/30/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 819e6364aebab11097260c54575ab65914293ce7
-ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
+ms.openlocfilehash: f0f0b8e0cbb5fbab81a07a28a9d4a2c264be6545
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47180523"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52719855"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-twitter-account-using-azure-active-directory-b2c"></a>使用 Azure Active Directory B2C 设置通过 Twitter 帐户注册与登录
 
@@ -27,7 +27,7 @@ ms.locfileid: "47180523"
 2. 选择“创建应用”。
 3. 输入“应用名称”和“应用程序说明”。
 4. 在“网站 URL”中，输入 `https://your-tenant.b2clogin.com`。 将 `your-tenant` 替换为租户的名称。 例如， https://contosob2c.b2clogin.com。
-5. 对于“回调 URL”，输入 `https://your-tenant.b2clogin.com/your-tenant.onmicrosoft.com/your-policy-Id/oauth1/authresp`。 将 `your-tenant` 替换为你的租户的名称，并将 `your-policy-Id` 替换为你的策略的标识符。 例如，`b2c_1A_signup_signin_twitter`。 输入租户名称时，必须全部使用小写字母，即使租户是使用大写字母在 Azure AD B2C 中定义的，也是如此。
+5. 对于“回调 URL”，输入 `https://your-tenant.b2clogin.com/your-tenant.onmicrosoft.com/your-user-flow-Id/oauth1/authresp`。 将 `your-tenant` 替换为你的租户的名称，并将 `your-user-flow-Id` 替换为你的用户流的标识符。 例如，`b2c_1A_signup_signin_twitter`。 输入租户名称时，必须全部使用小写字母，即使租户是使用大写字母在 Azure AD B2C 中定义的，也是如此。
 6. 在页面底部，阅读并接受条款，然后选择“创建”。
 7. 在“应用详细信息”页上，选择“编辑”>“编辑详细信息”，勾选“启用 Twitter 登录”框，然后选择“保存”。
 8. 选择“密钥和令牌”并记录“使用者 API 密钥”和“使用者 API 密钥”的值，以便稍后使用。

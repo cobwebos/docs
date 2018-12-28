@@ -4,14 +4,14 @@ description: 介绍如何在 Azure Migrate 服务中使用组依赖项映射优�
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: article
-ms.date: 09/25/2018
+ms.date: 12/05/2018
 ms.author: raynew
-ms.openlocfilehash: d79513569b53d2b8958f44fbfac3839c91caaff8
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 9f01e94eb23083ab25dd2cbd41e8bad1297abb54
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52634296"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53255255"
 ---
 # <a name="refine-a-group-using-group-dependency-mapping"></a>使用组依赖项映射优化组
 
@@ -25,6 +25,9 @@ ms.locfileid: "52634296"
 ## <a name="prepare-for-dependency-visualization"></a>准备依赖项可视化
 Azure Migrate 使用 Log Analytics 中的服务映射解决方案来实现计算机的依赖项可视化。
 
+> [!NOTE]
+> 依赖项可视化功能在 Azure 政府中不可用。
+
 ### <a name="associate-a-log-analytics-workspace"></a>关联 Log Analytics 工作区
 若要利用依赖项可视化功能，需要将现有或新的 Log Analytics 工作区与 Azure Migrate 项目进行关联。 只能在创建迁移项目的同一订阅中创建或附加工作区。
 
@@ -32,8 +35,9 @@ Azure Migrate 使用 Log Analytics 中的服务映射解决方案来实现计算
 
     ![关联 Log Analytics 工作区](./media/concepts-dependency-visualization/associate-workspace.png)
 
-- 创建新工作区时，需要指定工作区的名称。 然后，在与迁移项目相同的订阅和与迁移项目相同的 [Azure 地理位置](https://azure.microsoft.com/global-infrastructure/geographies/)中的区域内创建工作区。
-- “使用现有”选项会仅列出那些在服务映射可用的区域中创建的工作区。 如果某个工作区位于服务映射不可用的区域中，则下拉列表中将不会列出该工作区。
+- 关联一个工作区时，可以选择是创建新的工作区还是附加现有工作区：
+    - 创建新工作区时，需要指定工作区的名称。 然后在与迁移项目相同的 [Azure 地理位置](https://azure.microsoft.com/global-infrastructure/geographies/)中的区域内创建工作区。
+    - 附加现有的工作区时，可以从迁移项目所在订阅中的所有可用工作区进行选择。 请注意，只有在[服务映射受支持](https://docs.microsoft.com/azure/azure-monitor/insights/service-map-configure#supported-azure-regions)的区域中创建的那些工作区才会列出。 为了能够附加工作区，请确保对该工作区有“读取者”访问权限。
 
 > [!NOTE]
 > 你无法更改与迁移项目关联的工作区。
@@ -63,7 +67,6 @@ Azure Migrate 使用 Log Analytics 中的服务映射解决方案来实现计算
 2. 使用 --install 参数安装捆绑包。
 
     ```sudo sh ./omsagent-<version>.universal.x64.sh --install -w <workspace id> -s <workspace key>```
-
 
 ### <a name="install-the-dependency-agent"></a>安装依赖项代理
 1. 若要在 Windows 计算机上安装依赖项代理，请双击安装程序文件，然后按照向导操作。

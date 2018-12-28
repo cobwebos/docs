@@ -1,6 +1,6 @@
 ---
-title: 使用 C 将事件发送到 Azure 事件中心 | Microsoft 文档
-description: 使用 C 将事件发送到 Azure 事件中心
+title: 使用 C 发送事件 - Azure 事件中心 | Microsoft Docs
+description: 本文提供了创建 C 应用程序的演练，该应用程序用于将事件发送到 Azure 事件中心。
 services: event-hubs
 documentationcenter: ''
 author: ShubhaVijayasarathy
@@ -12,14 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: c
 ms.devlang: csharp
 ms.topic: article
-ms.date: 10/16/2018
+ms.custom: seodec18
+ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 32345b0f064aa78dbf1cbb84cb2309138e7bf4f7
-ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
+ms.openlocfilehash: 8c134ae9944517d6ae66fcd22e06bbfc599912b4
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49455379"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53076386"
 ---
 # <a name="send-events-to-azure-event-hubs-using-c"></a>使用 C 将事件发送到 Azure 事件中心
 
@@ -33,6 +34,13 @@ Azure 事件中心是一个大数据流式处理平台和事件引入服务，�
 
 * C 语言开发环境。 本教程假定 gcc 堆栈在使用 Ubuntu 14.04 的 Azure Linux VM 上。
 * [Microsoft Visual Studio](https://www.visualstudio.com/)。
+
+## <a name="create-an-event-hubs-namespace-and-an-event-hub"></a>创建事件中心命名空间和事件中心
+第一步是使用 [Azure 门户](https://portal.azure.com)创建事件中心类型的命名空间，并获取应用程序与事件中心进行通信所需的管理凭据。 要创建命名空间和事件中心，请按照[此文](event-hubs-create.md)中的步骤操作。
+
+按照以下文章中的说明获取事件中心访问密钥的值：[获取连接字符串](event-hubs-get-connection-string.md#get-connection-string-from-the-portal)。 可在本教程后面编写的代码中使用该访问密钥。 默认密钥名称为：RootManageSharedAccessKey。
+
+现在，继续本教程中的以下步骤。
 
 ## <a name="write-code-to-send-messages-to-event-hubs"></a>编写将消息发送到事件中心的代码
 本部分介绍如何编写用于将事件发送到事件中心的 C 应用。 此代码使用 [Apache Qpid 项目](http://qpid.apache.org/)中的 Proton AMQP 库。 这类似于通过 C 将服务总线队列和主题与 AMQP 配合使用，如[此示例](https://code.msdn.microsoft.com/Using-Apache-Qpid-Proton-C-afd76504)所示。 有关详细信息，请参阅 [Qpid Proton 文档](http://qpid.apache.org/proton/index.html)。

@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/17/2018
+ms.date: 12/07/2018
 ms.author: tomfitz
-ms.openlocfilehash: fbfe7255f2b848187c74fd832f349186eef5eaef
-ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.openlocfilehash: 724b1a2562e4723bd02c97cdecb0ef7dbd8ed177
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51287561"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53139055"
 ---
 # <a name="using-linked-and-nested-templates-when-deploying-azure-resources"></a>部署 Azure 资源时使用链接模版和嵌套模版
 
@@ -169,7 +169,9 @@ ms.locfileid: "51287561"
 
 ## <a name="get-values-from-linked-template"></a>从链接模板中获取值
 
-若要从链接模板中获取输出值，请使用如下所示的语法检索属性值：`"[reference('<name-of-deployment>').outputs.<property-name>.value]"`。
+若要从链接模板中获取输出值，请使用如下所示的语法检索属性值：`"[reference('deploymentName').outputs.propertyName.value]"`。
+
+从链接模板获取输出属性时，属性名称不能包含短划线。
 
 以下示例演示如何引用链接模板和检索输出值。 链接模板返回一条简单的消息。
 

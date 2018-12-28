@@ -1,5 +1,5 @@
 ---
-title: 教程：Azure Active Directory 与 ClearCompany 集成 | Microsoft 文档
+title: 教程：Azure Active Directory 与 ClearCompany 集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 和 ClearCompany 之间配置单一登录。
 services: active-directory
 documentationCenter: na
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/28/2017
 ms.author: jeedes
-ms.openlocfilehash: 0463a89b8c320b31929bf5e0322079088c2cdeab
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 9cf5092dabf5649f4d063ce05dae169b90228378
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39054125"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52834088"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-clearcompany"></a>教程：Azure Active Directory 与 ClearCompany 集成
 
@@ -119,7 +119,7 @@ ms.locfileid: "39054125"
     在“登录 URL”文本框中，使用以下模式键入 URL： `https://<companyname>.clearcompany.com`
     
     > [!NOTE] 
-    > 登录 URL 值不是真实值。 使用实际登录 URL 更新此值。 请联系 [ClearCompany 客户端支持团队](http://www.clearcompany.com/support)来获取此值。 
+    > 登录 URL 值不是真实值。 使用实际登录 URL 更新此值。 请联系 [ClearCompany 客户端支持团队](https://www.clearcompany.com/support)来获取此值。 
 
 5. 在“SAML 签名证书”部分中，单击“证书(base64)”，并在计算机上保存证书文件。
 
@@ -133,10 +133,10 @@ ms.locfileid: "39054125"
 
     ![ClearCompany 配置](./media/clearcompany-tutorial/tutorial_clearcompany_configure.png) 
 
-8. 若要在 ClearCompany 端配置单一登录，需要将下载的证书(Base64) 和 SAML 单一登录服务 URL 发送给 [ClearCompany 支持团队](http://www.clearcompany.com/support)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
+8. 若要在 ClearCompany 端配置单一登录，需要将下载的证书(Base64) 和 SAML 单一登录服务 URL 发送给 [ClearCompany 支持团队](https://www.clearcompany.com/support)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
 
 > [!TIP]
-> 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[ Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
+> 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 
@@ -172,7 +172,7 @@ ms.locfileid: "39054125"
  
 ### <a name="create-a-clearcompany-test-user"></a>创建 ClearCompany 测试用户
 
-在本部分中，将在 ClearCompany 中创建名为 Britta Simon 的用户。 与 [ClearCompany 支持团队](http://www.clearcompany.com/support)合作，在 ClearCompany 平台中添加用户。 使用单一登录前，必须先创建并激活用户。
+在本部分中，将在 ClearCompany 中创建名为 Britta Simon 的用户。 与  [ClearCompany 支持团队](https://www.clearcompany.com/support) 合作，在 ClearCompany 平台中添加用户。 使用单一登录前，必须先创建并激活用户。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
@@ -209,12 +209,12 @@ ms.locfileid: "39054125"
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 在访问面板中单击 ClearCompany 磁贴时，应会自动登录到 ClearCompany 应用程序。
-有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
+有关访问面板的详细信息，请参阅[访问面板简介](../user-help/active-directory-saas-access-panel-introduction.md)。 
 
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](tutorial-list.md)
-* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
+* [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

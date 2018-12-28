@@ -3,7 +3,7 @@ title: 跨扩展云数据库进行报告 | Microsoft 文档
 description: 如何对横向分区设置弹性查询
 services: sql-database
 ms.service: sql-database
-ms.subservice: elastic-scale
+ms.subservice: scale-out
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -12,12 +12,12 @@ ms.author: mlandzic
 ms.reviewer: ''
 manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: e1eec489bf33cbf03269f68413c39c9fb03bbb22
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: de96de96d68164d021f8b823e69bc52322642aa7
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50240386"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52865397"
 ---
 # <a name="reporting-across-scaled-out-cloud-databases-preview"></a>跨扩展云数据库进行报告（预览）
 ![跨分片进行查询][1]
@@ -132,7 +132,7 @@ ms.locfileid: "50240386"
 ### <a name="remarks"></a>备注
 DATA\_SOURCE 子句定义了用于外部表的外部数据源（分片映射）。  
 
-SCHEMA\_NAME 和 OBJECT\_NAME 子句将外部表定义映射到不同架构的表。 如果省略，则假定远程对象的架构是“dbo”，并假定其名称与所定义的外部表名称相同。 如果远程表的名称已在要在其中创建外部表的数据库中使用，那么该做法很有用。 例如，希望定义一个外部表，用于获取扩展数据层上目录视图或 DMV 的聚合视图。 由于目录视图和 DMV 已在本地存在，因此不能在外部表定义中使用其名称。 而是改用不同名称，并在 SCHEMA\_NAME 和/或 OBJECT\_NAME 子句中使用目录视图或 DMV 的名称。 （请参阅下面的示例。） 
+ SCHEMA\_NAME 和 OBJECT\_NAME 子句将外部表定义映射到不同架构的表。 如果省略，则假定远程对象的架构是“dbo”，并假定其名称与所定义的外部表名称相同。 如果远程表的名称已在要在其中创建外部表的数据库中使用，那么该做法很有用。 例如，希望定义一个外部表，用于获取扩展数据层上目录视图或 DMV 的聚合视图。 由于目录视图和 DMV 已在本地存在，因此不能在外部表定义中使用其名称。 而是改用不同名称，并在 SCHEMA\_NAME 和/或 OBJECT\_NAME 子句中使用目录视图或 DMV 的名称。 （请参阅下面的示例。） 
 
 DISTRIBUTION 子句指定用于此表的数据分布。 查询处理器利用 DISTRIBUTION 子句中提供的信息来构建最有效的查询计划。  
 

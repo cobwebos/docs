@@ -9,21 +9,20 @@ ms.assetid: 40c68f45-197a-4624-bf89-541eb7323002
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/24/2016
 ms.author: mbullwin
-ms.openlocfilehash: fd8c45bf3d7fd9e392d55a82001aa8768fcce8ba
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 528b344063dd9f84720ee55c4b3663c20127e5fe
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47096593"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52995051"
 ---
-# <a name="collectd-linux-performance-metrics-in-application-insights"></a>collectd：Application Insights 中 Linux 性能指标
+# <a name="collectd-linux-performance-metrics-in-application-insights"></a>collectd：Application Insights 中的 Linux 性能指标
 
 
-若要浏览 [Application Insights](app-insights-overview.md) 中 Linux 系统性能指标，请安装 [collectd](http://collectd.org/) 及其 Application Insights 插件。 此开放源解决方案收集了各种系统和网络统计信息。
+若要浏览 [Application Insights](app-insights-overview.md) 中 Linux 系统性能指标，请安装 [collectd](https://collectd.org/) 及其 Application Insights 插件。 此开放源解决方案收集了各种系统和网络统计信息。
 
 如果[已通过 Application Insights 检测 Java Web 服务][java]，则通常会使用 collectd。 它可提供更多数据，有助于增强应用性能或诊断问题。 
 
@@ -39,7 +38,7 @@ ms.locfileid: "47096593"
 ## <a name="install-collectd-and-the-plug-in"></a>安装 collectd 和插件
 在 Linux 服务器计算机上：
 
-1. 安装 [collectd](http://collectd.org/) 版本 5.4.0 或更高版本。
+1. 安装 [collectd](https://collectd.org/) 版本 5.4.0 或更高版本。
 2. 下载 [Application Insights collectd 编写器插件](https://aka.ms/aijavasdk)。 注意版本号。
 3. 将插件 JAR 复制到 `/usr/share/collectd/java`。
 4. 编辑 `/etc/collectd/collectd.conf`：
@@ -129,7 +128,7 @@ ms.locfileid: "47096593"
 
 Application Insights 写入插件与某些读取插件不兼容。 Application Insights 插件需要浮点数时，有些插件有时会发送“NaN”。
 
-症状：collectd 日志显示的错误包括“AI：...SyntaxError：意外的令牌 N”。
+故障描述：collectd 日志显示包括“AI: ...SyntaxError:意外的令牌 N”的错误。
 
 解决方法：排除由问题写入插件收集的数据。 
 

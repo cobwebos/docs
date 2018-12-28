@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 222558a6596c676034e52812d3b2dd0c77e1466b
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 3c4bd08d2ba3aa4aeceb38a0ae498786f681d800
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37046895"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52960679"
 ---
 # <a name="azure-data-factory---security-considerations-for-data-movement"></a>Azure 数据工厂 - 数据移动的安全注意事项
 
@@ -126,7 +126,7 @@ Salesforce 支持防火墙平台加密，它允许加密所有文件、附件、
 
 下表基于混合数据移动的源和目标位置的不同组合，总结了相关的网络和网关配置建议。
 
-| Source | 目标 | 网络配置 | 网关设置 |
+| 源 | 目标 | 网络配置 | 网关设置 |
 | ------ | ----------- | --------------------- | ------------- | 
 | 本地 | 虚拟网络中部署的虚拟机和云服务 | IPSec VPN（点到站点或站点到站点） | 网关可以安装在本地或 VNet 中的 Azure 虚拟机 (VM) 上 | 
 | 本地 | 虚拟网络中部署的虚拟机和云服务 | ExpressRoute（私有对等互连） | 网关可以安装在本地或 VNet 中的 Azure VM 上 | 
@@ -149,7 +149,7 @@ IPSec VPN：
 
 下表提供了企业防火墙的出站端口和域要求。
 
-| 域名 | 出站端口 | 说明 |
+| 域名 | 出站端口 | Description |
 | ------------ | -------------- | ----------- | 
 | `*.servicebus.windows.net` | 443, 80 | 用于将网关连接到数据工厂中的数据移动服务 |
 | `*.core.windows.net` | 443 | 使用[暂存复制](data-factory-copy-activity-performance.md#staged-copy)功能时，由网关用于连接到 Azure 存储帐户。 | 
@@ -162,16 +162,16 @@ IPSec VPN：
 
 下表提供了 Windows 防火墙的入站端口要求。
 
-| 入站端口 | 说明 | 
+| 入站端口 | Description | 
 | ------------- | ----------- | 
 | 8050 (TCP) | 由凭据管理器应用程序用于为网关上的本地数据存储安全地设置凭据。 | 
 
-![网关端口要求](media\data-factory-data-movement-security-considerations/gateway-port-requirements.png) 
+![网关端口要求](media/data-factory-data-movement-security-considerations/gateway-port-requirements.png)
 
 #### <a name="ip-configurations-whitelisting-in-data-store"></a>数据存储中的 IP 配置/白名单
 云中的某些数据存储还需要访问它们的计算机的 IP 地址允许列表。 确保已在防火墙中将网关计算机的 IP 地址列入允许列表或对其进行了适当配置。
 
-以下云数据存储需要网关计算机的 IP 地址允许列表。 默认情况下，某些这类数据存储可能不需要 IP 地址允许列表。 
+以下云数据存储需要网关计算机的 IP 地址允许列表。 默认情况下，某些这类数据存储可能不需要 IP 地址白名单。 
 
 - [Azure SQL 数据库](../../sql-database/sql-database-firewall-configure.md) 
 - [Azure SQL 数据仓库](../../sql-data-warehouse/sql-data-warehouse-get-started-provision.md)
@@ -181,14 +181,14 @@ IPSec VPN：
 
 ## <a name="frequently-asked-questions"></a>常见问题
 
-问题：可否在不同的数据工厂之间共享网关？
-答案：我们尚不支持此功能。 我们正致力于解决该问题。
+**问题：** 可否在不同的数据工厂之间共享网关？
+**答案：** 我们尚不支持此功能。 我们正致力于解决该问题。
 
-问题：确保网关正常工作的端口要求是什么？
-答案：网关建立基于 HTTP 的连接，以打开 Internet。 必须打开出站端口 443 和 80，网关才能建立此连接。 仅在计算机级别（不是企业防火墙级别）为凭据管理器应用程序打开入站端口 8050。 如果使用 Azure SQL 数据库或 Azure SQL 数据仓库作为源/目标，则还需要打开端口 1433。 有关详细信息，请参阅[防火墙配置和白名单 IP 地址](#firewall-configurations-and-whitelisting-ip-address-of gateway)部分。 
+**问题：** 确保网关正常工作的端口要求是什么？
+**答案：** 网关建立基于 HTTP 的连接，以打开 Internet。 必须打开出站端口 443 和 80，网关才能建立此连接。 仅在计算机级别（不是企业防火墙级别）为凭据管理器应用程序打开入站端口 8050。 如果使用 Azure SQL 数据库或 Azure SQL 数据仓库作为源/目标，则还需要打开端口 1433。 有关详细信息，请参阅[防火墙配置和允许列表 IP 地址](#firewall-configurations-and-whitelisting-ip-address-of gateway)部分。 
 
-问题：网关的证书要求是什么？
-答案：当前网关需要凭据管理器应用程序用于安全设置数据存储凭据的证书。 该证书是由网关安装程序创建并配置的自签名证书。 可以改用自己的 TLS/SSL 证书。 有关详细信息，请参阅[一键式凭据管理器应用程序](#click-once-credentials-manager-app)部分。 
+**问题：** 网关的证书要求是什么？
+**答案：** 当前网关需要凭据管理器应用程序用于安全设置数据存储凭据的证书。 该证书是由网关安装程序创建并配置的自签名证书。 可以改用自己的 TLS/SSL 证书。 有关详细信息，请参阅[一键式凭据管理器应用程序](#click-once-credentials-manager-app)部分。 
 
 ## <a name="next-steps"></a>后续步骤
 有关复制活动性能的信息，请参阅[复制活动性能和优化指南](data-factory-copy-activity-performance.md)。

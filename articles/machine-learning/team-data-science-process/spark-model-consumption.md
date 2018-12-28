@@ -1,5 +1,5 @@
 ---
-title: 操作 Spark 构建的机器学习模型 | Microsoft 文档
+title: 操作 Spark 构建的机器学习模型 - Team Data Science Process
 description: 如何使用 Python 加载 Azure Blob 存储 (WASB) 中存储的学习模型并为其评分。
 services: machine-learning
 author: marktab
@@ -10,13 +10,13 @@ ms.component: team-data-science-process
 ms.topic: article
 ms.date: 03/15/2017
 ms.author: tdsp
-ms.custom: (previous author=deguhath, ms.author=deguhath)
-ms.openlocfilehash: 6ffe1dd960b6fd09539d093d8a632efc99452c00
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: 543ae7cecf9edcb5997a0bae66e0722d258a4523
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52442472"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53135299"
 ---
 # <a name="operationalize-spark-built-machine-learning-models"></a>操作 Spark 构建的机器学习模型
 
@@ -120,7 +120,7 @@ PySpark 内核提供一些预定义的“magic”，这是可以结合 %% 调用
 ## <a name="ingest-data-and-create-a-cleaned-data-frame"></a>引入数据并创建已清理的数据帧
 本部分包含引入要评分的数据所需的一系列任务的代码。 读入出租车行程和车费文件（存储为 .tsv 文件）的已加入的 0.1% 样本，并创建干净的数据帧。
 
-基于以下主题中提供的过程加入了出租车行程和车费文件：[运行中的 Team Data Science Process：使用 HDInsight Hadoop 群集](hive-walkthrough.md)主题。
+根据以下主题中提供的过程联接了出租车行程和车费文件：[运行中的 Team Data Science Process：使用 HDInsight Hadoop 群集](hive-walkthrough.md)。
 
     # INGEST DATA AND CREATE A CLEANED DATA FRAME
 
@@ -511,17 +511,17 @@ PySpark 内核提供一些预定义的“magic”，这是可以结合 %% 调用
 
 **输出：**
 
-logisticRegFileLoc：LogisticRegressionWithLBFGS_2016-05-0317_22_38.953814.txt
+logisticRegFileLoc:LogisticRegressionWithLBFGS_2016-05-0317_22_38.953814.txt
 
-linearRegFileLoc：LinearRegressionWithSGD_2016-05-0317_22_58.878949
+linearRegFileLoc:LinearRegressionWithSGD_2016-05-0317_22_58.878949
 
-randomForestClassificationFileLoc：RandomForestClassification_2016-05-0317_23_15.939247.txt
+randomForestClassificationFileLoc:RandomForestClassification_2016-05-0317_23_15.939247.txt
 
-randomForestRegFileLoc：RandomForestRegression_2016-05-0317_23_31.459140.txt
+randomForestRegFileLoc:RandomForestRegression_2016-05-0317_23_31.459140.txt
 
-BoostedTreeClassificationFileLoc：GradientBoostingTreeClassification_2016-05-0317_23_49.648334.txt
+BoostedTreeClassificationFileLoc:GradientBoostingTreeClassification_2016-05-0317_23_49.648334.txt
 
-BoostedTreeRegressionFileLoc：GradientBoostingTreeRegression_2016-05-0317_23_56.860740.txt
+BoostedTreeRegressionFileLoc:GradientBoostingTreeRegression_2016-05-0317_23_56.860740.txt
 
 ## <a name="consume-spark-models-through-a-web-interface"></a>通过 Web 界面使用 Spark 模型
 Spark 提供使用名为 Livy 的组件通过 REST 界面远程提交批处理作业或交互式查询的机制。 Livy 在 HDInsight Spark 群集上默认处于启用状态。 有关 Livy 的详细信息，请参阅：[使用 Livy 远程提交 Spark 作业](../../hdinsight/spark/apache-spark-livy-rest-interface.md)。 
@@ -587,5 +587,5 @@ Spark 提供使用名为 Livy 的组件通过 REST 界面远程提交批处理�
 ![逻辑应用设计器](./media/spark-model-consumption/spark-logica-app-client.png)
 
 ## <a name="whats-next"></a>后续步骤
-**交叉验证和超参数扫描**：请参阅[使用 Spark 进行高级数据探索和建模](spark-advanced-data-exploration-modeling.md)了解如何使用交叉验证和超参数扫描训练模型。
+**交叉验证和超参数扫描**：参阅[使用 Spark 进行高级数据探索和建模](spark-advanced-data-exploration-modeling.md)，了解如何使用交叉验证和超参数扫描训练模型。
 

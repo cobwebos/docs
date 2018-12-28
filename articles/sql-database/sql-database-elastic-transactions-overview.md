@@ -3,7 +3,7 @@ title: 跨云数据库的分布式事务
 description: Azure SQL 数据库的弹性数据库事务概述
 services: sql-database
 ms.service: sql-database
-ms.subservice: elastic-scale
+ms.subservice: scale-out
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: 02cf72bf9fe06993ef859d1789983b7611c8472e
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 2418de5c20c34ae82ad36a914955fb338afd2822
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51257463"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52877178"
 ---
 # <a name="distributed-transactions-across-cloud-databases"></a>跨云数据库的分布式事务
 Azure SQL 数据库 (SQL DB) 的弹性数据库事务可让你在 SQL DB 中跨多个数据库运行事务。 SQL DB 的弹性数据库事务适用于使用 ADO .NET 的 .NET 应用程序，并且与你熟悉的使用 [System.Transaction](https://msdn.microsoft.com/library/system.transactions.aspx) 类的编程体验相集成。 若要获取该库，请参阅 [.NET Framework 4.6.1（Web 安装程序）](https://www.microsoft.com/download/details.aspx?id=49981)。
@@ -31,7 +31,7 @@ SQL DB 的弹性数据库事务可让应用程序对多个不同 SQL 数据库�
 弹性数据库事务面向以下方案：
 
 * Azure 中的多数据库应用程序：在此方案中，数据垂直分区到 SQL DB 中的多个数据库，使得不同种类的数据位于不同的数据库。 某些操作需要更改两个以上的数据库中保存的数据。 应用程序使用弹性数据库事务来协调数据库之间的更改并确保原子性。
-* Azure 中的分区数据库应用程序：在此方案中，数据层使用[弹性数据库客户端库](sql-database-elastic-database-client-library.md)或自我分片，将数据水平分区到 SQL DB 中的多个数据库。 常见的用例之一是在分片的多租户应用程序中，当更改涉及到多个租户时，需要执行原子更改。 例如，从一个租户转移到另一个租户，而两者位于不同的数据库。 第二种方案是以细致分片来适应大租户的容量需求，这又通常表示某些原子操作需要扩展到用于同一租户的多个数据库。 第三种方案是以原子更新来引用数据库之间复制的数据。 现在，可以使用预览版跨多个数据库协调这几个方面原子性事务操作。
+* Azure 中的分片数据库应用程序：在此方案中，数据层使用[弹性数据库客户端库](sql-database-elastic-database-client-library.md)或自我分片，将数据水平分区到 SQL DB 中的多个数据库。 常见的用例之一是在分片的多租户应用程序中，当更改涉及到多个租户时，需要执行原子更改。 例如，从一个租户转移到另一个租户，而两者位于不同的数据库。 第二种方案是以细致分片来适应大租户的容量需求，这又通常表示某些原子操作需要扩展到用于同一租户的多个数据库。 第三种方案是以原子更新来引用数据库之间复制的数据。 现在，可以使用预览版跨多个数据库协调这几个方面原子性事务操作。
   弹性数据库事务使用两阶段提交，确保跨数据库的事务原子性。 如果事务涉及的数据库少于 100 个，则适合并入单个事务内。 这些限制不不是强制施加的，但是，如果超出这些限制时，弹性数据库事务的性能和成功率很有可能会下降。
 
 ## <a name="installation-and-migration"></a>安装和迁移
@@ -127,7 +127,7 @@ Azure SQL 数据库中支持跨不同逻辑服务器的弹性数据库事务。 
 * **Remove-AzureRmSqlServerCommunicationLink**：使用此 cmdlet 来删除现有通信关系。 
 
 ## <a name="monitoring-transaction-status"></a>监视事务状态
-使用 SQL DB 中的动态管理视图 (DMV) 来监视正在进行的弹性数据库事务的状态和进度。 与事务相关的所有 DMV 与 SQL DB 中的分布式事务相关。 可以在此处找到相应的 DMV 列表：[事务相关的动态管理视图和函数 (Transact-SQL)](https://msdn.microsoft.com/library/ms178621.aspx)。
+使用 SQL DB 中的动态管理视图 (DMV) 来监视正在进行的弹性数据库事务的状态和进度。 与事务相关的所有 DMV 与 SQL DB 中的分布式事务相关。 可以在此处找到相应的 DMV 列表：[与事务相关的动态管理视图和函数 (Transact-SQL)](https://msdn.microsoft.com/library/ms178621.aspx)。
 
 这些 DMV 特别有用：
 

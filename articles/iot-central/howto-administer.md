@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 4bfb7dc2b65dc479189ac7920509e1fd8a23ce4f
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 4dba6aff2002c1f17055cd647be94c4d8f644ad7
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50961341"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52992207"
 ---
 # <a name="administer-your-iot-central-application"></a>管理 IoT Central 应用程序
 
@@ -35,7 +35,7 @@ ms.locfileid: "50961341"
 ### <a name="change-application-name-and-url"></a>更改应用程序名称和 URL
 在“应用程序设置”页中，可以更改应用程序的名称和 URL，然后选择“保存”。
 
-![“应用程序设置”页](media\howto-administer\image0-a.png)
+![“应用程序设置”页](media/howto-administer/image0-a.png)
 
 > [!Note]
 > 如果更改了 URL，旧 URL 可由其他 Azure IoT Central 客户使用。 如果出现此情况，你再也不能使用旧 URL。 更改 URL 后，旧 URL 不再有效，因此需要告知用户要使用的新 URL。
@@ -48,18 +48,21 @@ ms.locfileid: "50961341"
 
 单击“复制”按钮。 在对话框中，输入新的即用即付应用程序的详细信息。 然后单击“复制”按钮以确认继续。 在[创建应用程序](quick-deploy-iot-central.md)快速入门中详细了解此窗体中的字段。
 
-![“应用程序设置”页](media\howto-administer\appCopy2.png)
+![“应用程序设置”页](media/howto-administer/appCopy2.png)
 
 应用复制操作成功后，可以使用显示的链接转到通过复制应用程序创建的新应用程序。
 
-![“应用程序设置”页](media\howto-administer\appCopy3.png)
+![“应用程序设置”页](media/howto-administer/appCopy3.png)
 
 > [!Note]
 > 复制某个应用程序也会复制规则和操作的定义。 但是，由于不会将有权访问原始应用的用户复制到已复制的应用，因此，必须手动将这些用户添加到需要指定用户的操作（例如电子邮件）。 一般而言，最好是检查规则和操作，以确保它们在新应用中是最新的。
 
 ### <a name="delete-an-application"></a>删除应用程序
 
-使用“删除”按钮可以永久删除 IoT Central 应用程序。 此操作会永久删除与该应用程序关联的所有数据。 若要删除某个应用程序，还必须有权删除在创建应用程序时所选的 Azure 订阅中的资源。 有关详细信息，请参阅[使用基于角色的访问控制来管理对 Azure 订阅资源的访问权限](https://docs.microsoft.com/azure/active-directory/role-based-access-control-configure)。
+> [!Note]
+> 若要删除某个应用程序，还必须有权删除在创建应用程序时所选的 Azure 订阅中的资源。 有关详细信息，请参阅[使用基于角色的访问控制来管理对 Azure 订阅资源的访问权限](https://docs.microsoft.com/azure/active-directory/role-based-access-control-configure)。
+
+使用“删除”按钮可以永久删除 IoT Central 应用程序。 此操作会永久删除与该应用程序关联的所有数据。
 
 ## <a name="manage-users"></a>管理用户
 
@@ -71,13 +74,13 @@ ms.locfileid: "50961341"
 
 1. 若要将用户添加到 IoT Central 应用程序，请转到“用户”页中的“管理”部分。
 
-    ![用户列表](media\howto-administer\image1.png)
+    ![用户列表](media/howto-administer/image1.png)
 
 1. 若要添加用户，在“用户”页上，选择“+ 添加用户”。
 
 1. 从“角色”下拉菜单中为用户选择一个角色。 在本文的[管理角色](#manage-roles)部分详细了解角色。
 
-    ![角色选择](media\howto-administer\image3.png)
+    ![角色选择](media/howto-administer/image3.png)
 
     > [!NOTE]
     >  若要批量添加用户，请输入想要添加的所有用户的用户 ID，并用分号分隔。 从“角色”下拉菜单中选择一个角色。 再选择“保存”。

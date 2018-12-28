@@ -15,12 +15,12 @@ ms.date: 09/06/2018
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 638ae4c779af3bebb68622ccee6932618d42e4f0
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: 8c876f220cde99bbeb3b5d9f8f8878acb5584802
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44056695"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53140041"
 ---
 # <a name="wildcard-applications-in-the-azure-active-directory-application-proxy"></a>Azure Active Directory 应用程序代理中的通配符应用程序 
 
@@ -49,7 +49,7 @@ Azure Active Directory (Azure AD) 中配置大量的本地应用程序后，如�
 
 如果其他应用程序采用不同的配置设置，则必须将这些例外的应用程序发布为单独的应用程序，以覆盖通配符的默认值设置。 没有通配符的应用程序始终优先于通配符应用程序。 从配置角度讲，前者“只是”普通的应用程序。
 
-创建通配符应用程序的过程基于适用于其他所有应用程序的相同[应用程序发布流](application-proxy-publish-azure-portal.md)。 唯一的区别在于，需在 URL 中包含通配符，有时可以在 SSO 配置中包含通配符。
+创建通配符应用程序的过程基于适用于其他所有应用程序的相同[应用程序发布流](application-proxy-add-on-premises-application.md)。 唯一的区别在于，需在 URL 中包含通配符，有时可以在 SSO 配置中包含通配符。
 
 
 ## <a name="prerequisites"></a>先决条件
@@ -137,7 +137,7 @@ Azure Active Directory (Azure AD) 中配置大量的本地应用程序后，如�
 - 具有相同的属性
 
 
-可以使用[使用 Azure AD 应用程序代理发布应用程序](application-proxy-publish-azure-portal.md)中所述的步骤发布通配符应用程序。 此方案假设：
+可以使用[使用 Azure AD 应用程序代理发布应用程序](application-proxy-add-on-premises-application.md)中所述的步骤发布通配符应用程序。 此方案假设：
 
 - 具有以下 ID 租户：`000aa000-11b1-2ccc-d333-4444eee4444e` 
 
@@ -145,7 +145,7 @@ Azure Active Directory (Azure AD) 中配置大量的本地应用程序后，如�
 
 - 已创建将 `*.adventure-works.com` 指向 `000aa000-11b1-2ccc-d333-4444eee4444e.tenant.runtime.msappproxy.net` 的 **CNAME** 条目。
 
-可以遵照[所述的步骤](application-proxy-publish-azure-portal.md)，在租户中创建新的应用程序代理应用程序。 在此示例中，通配符位于以下字段中：
+可以遵照[所述的步骤](application-proxy-add-on-premises-application.md)，在租户中创建新的应用程序代理应用程序。 在此示例中，通配符位于以下字段中：
 
 - 内部 URL：
 
@@ -184,7 +184,7 @@ Azure Active Directory (Azure AD) 中配置大量的本地应用程序后，如�
 
 需确保有一条 CNAME 记录将 `finance.adventure-works.com` 指向应用程序的应用程序代理页上指定的应用程序特定终结点。 对于此方案，`finance.adventure-works.com` 指向 `https://finance-awcycles.msappproxy.net/`。 
 
-根据[所述的步骤](application-proxy-publish-azure-portal.md)，此方案需要以下设置：
+根据[所述的步骤](application-proxy-add-on-premises-application.md)，此方案需要以下设置：
 
 
 - 在“内部 URL”中，设置 **finance** 而不是通配符。 
@@ -215,6 +215,6 @@ Azure Active Directory (Azure AD) 中配置大量的本地应用程序后，如�
 
 - 有关**自定义域**的信息，请参阅[使用 Azure AD 应用程序代理中的自定义域](application-proxy-configure-custom-domain.md)。
 
-- 有关**发布应用程序**的信息，请参阅[使用 Azure AD 应用程序代理发布应用程序](application-proxy-publish-azure-portal.md)
+- 有关**发布应用程序**的信息，请参阅[使用 Azure AD 应用程序代理发布应用程序](application-proxy-add-on-premises-application.md)
 
 

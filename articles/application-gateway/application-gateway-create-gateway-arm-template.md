@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/31/2017
 ms.author: victorh
-ms.openlocfilehash: c749cdf133caebb2d1f061d53a1db38e9ec433bd
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: 6a671744944527b64aab9a7b9afe05d6a9f2f27f
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/03/2018
-ms.locfileid: "32770768"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "53002082"
 ---
 # <a name="create-an-application-gateway-by-using-the-azure-resource-manager-template"></a>使用 Azure 资源管理器模板创建应用程序网关
 
@@ -60,7 +60,7 @@ Azure 应用程序网关是第 7 层负载均衡器。 它可在云端或本地�
 1. 打开保存的文件，并查看 **parameters** 下行中的内容
 1. Azure 资源管理器模板参数提供了在部署过程中可以填充的值的占位符。
 
-  | 参数 | 说明 |
+  | 参数 | Description |
   | --- | --- |
   | **subnetPrefix** |应用程序网关子网的 CIDR 块。 |
   | **applicationGatewaySize** | 应用程序网关的大小。  WAF 仅允许中型和大型网关。 |
@@ -84,7 +84,7 @@ Azure 应用程序网关是第 7 层负载均衡器。 它可在云端或本地�
 
     ```json
     {
-        "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+        "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
         "contentVersion": "1.0.0.0",
         "parameters": {
             "addressPrefix": {
@@ -121,11 +121,11 @@ Azure 应用程序网关是第 7 层负载均衡器。 它可在云端或本地�
     }
     ```
 
-1. 保存文件。 可以使用联机 JSON 验证工具（例如 [JSlint.com](http://www.jslint.com/)）测试 JSON 模板和参数模板。
+1. 保存文件。 可以使用联机 JSON 验证工具（例如 [JSlint.com](https://www.jslint.com/)）测试 JSON 模板和参数模板。
 
 ## <a name="deploy-the-azure-resource-manager-template-by-using-powershell"></a>使用 PowerShell 部署 Azure 资源管理器模板
 
-如果从未使用过 Azure PowerShell，请参阅：[如何安装和配置 Azure PowerShell](/powershell/azure/overview)，并按照说明进行操作，以登录到 Azure 并选择订阅。
+如果从未使用过 Azure PowerShell，请访问：[如何安装和配置 Azure PowerShell](/powershell/azure/overview)，并按照说明进行操作，以登录到 Azure 并选择订阅。
 
 1. 登录 PowerShell
 
@@ -233,9 +233,9 @@ az group delete --name appgatewayRG
 
 ## <a name="next-steps"></a>后续步骤
 
-若要配置 SSL 卸载，请访问：[配置应用程序网关以进行 SSL 卸载](application-gateway-ssl.md)。
+如果想要配置 SSL 卸载，请访问：[配置应用程序网关以进行 SSL 卸载](application-gateway-ssl.md)。
 
-要将应用程序网关配置为与内部负载均衡器配合使用，请访问：[创建具有内部负载均衡器 (ILB) 的应用程序网关](application-gateway-ilb.md)。
+如果要将应用程序网关配置为与内部负载均衡器配合使用，请访问：[创建具有内部负载均衡器 (ILB) 的应用程序网关](application-gateway-ilb.md)。
 
 如需负载均衡选项的其他常规信息，请访问：
 

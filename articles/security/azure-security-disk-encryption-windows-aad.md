@@ -1,20 +1,21 @@
 ---
-title: 使用适用于 Windows IaaS VM 的 Azure AD 应用启用 Azure 磁盘加密（以前的版本）| Microsoft Docs
+title: 使用 Azure AD 应用 Windows IaaS VM 的 Azure 磁盘加密（以前的版本）
 description: 本文提供有关如何为 Windows IaaS VM 启用 Microsoft Azure 磁盘加密的说明。
 author: mestew
 ms.service: security
 ms.subservice: Azure Disk Encryption
 ms.topic: article
 ms.author: mstewart
-ms.date: 10/04/2018
-ms.openlocfilehash: 407ea9adaaae4df15054dc4da3391b870dd8dcc7
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.date: 12/07/2018
+ms.custom: seodec18
+ms.openlocfilehash: 347fe1de15661d63ac96444f704e2da919fc54bd
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51622136"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53083948"
 ---
-#  <a name="enable-azure-disk-encryption-for-windows-iaas-vms-previous-release"></a>为 Windows IaaS 启用 Azure 磁盘加密（以前的版本）
+# <a name="enable-azure-disk-encryption-for-windows-iaas-vms-previous-release"></a>为 Windows IaaS 启用 Azure 磁盘加密（以前的版本）
 
 **新版本的 Azure 磁盘加密无需提供 Azure AD 应用程序参数即可启用 VM 磁盘加密。使用新版本，在执行启用加密步骤时，不再需要提供 Azure AD 凭据。所有新 VM 必须使用新版本在没有 Azure AD 应用程序参数的情况下进行加密。若要查看使用新版本启用 VM 磁盘加密的说明，请参阅[适用于 Windows VMS 的 Azure 磁盘加密](azure-security-disk-encryption-windows.md)。已使用 Azure AD 应用程序参数加密的 VM 仍受支持，应继续使用 AAD 语法进行维护。**
 

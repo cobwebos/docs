@@ -1,5 +1,6 @@
 ---
-title: 快速入门：创建标准负载均衡器 - Azure PowerShell | Microsoft Docs
+title: 快速入门：创建标准负载均衡器 - Azure PowerShell
+titlesuffix: Azure Load Balancer
 description: 本快速入门介绍如何使用 PowerShell 创建标准负载均衡器
 services: load-balancer
 documentationcenter: na
@@ -13,20 +14,20 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/22/2018
 ms.author: kumud
-ms:custom: mvc
-ms.openlocfilehash: e4e66d18f9dcb7f020cdb881226f6e47118e5186
-ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
+ms:custom: seodec18
+ms.openlocfilehash: 0db575ee6c04c0fb4639ea2e9e095200da781fe8
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51578546"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53256309"
 ---
 # <a name="get-started"></a>快速入门：使用 Azure PowerShell 创建标准负载均衡器
 本快速入门介绍如何使用 Azure PowerShell 创建标准负载均衡器。 为了测试负载均衡器，需要部署两台运行 Windows 服务器的虚拟机 (VM)，并在 VM 之间对一个 Web 应用进行负载均衡。 若要了解有关标准负载均衡器的详细信息，请参阅[什么是标准负载均衡器](load-balancer-standard-overview.md)。
 
 [!INCLUDE [cloud-shell-powershell.md](../../includes/cloud-shell-powershell.md)]
 
-如果选择在本地安装并使用 PowerShell，则本文需要 Azure PowerShell 模块 5.4.1 或更高版本。 运行 `Get-Module -ListAvailable AzureRM` 查找已安装的版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-azurerm-ps)。 如果在本地运行 PowerShell，则还需运行 `Login-AzureRmAccount` 以创建与 Azure 的连接。 
+如果选择在本地安装并使用 PowerShell，则本文需要 Azure PowerShell 模块 5.4.1 或更高版本。 运行 `Get-Module -ListAvailable AzureRM` 查找已安装的版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-azurerm-ps)。 如果在本地运行 PowerShell，则还需运行 `Login-AzureRmAccount` 来创建与 Azure 的连接。 
 
 ## <a name="create-a-resource-group"></a>创建资源组
 

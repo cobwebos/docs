@@ -3,23 +3,22 @@ title: Azure 顾问性能建议 | Microsoft Docs
 description: 使用顾问优化 Azure 部署的性能。
 services: advisor
 documentationcenter: NA
-author: manbeenkohli
+author: kasparks
 manager: carmonm
 editor: ''
 ms.assetid: ''
 ms.service: advisor
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/16/2016
-ms.author: makohli
-ms.openlocfilehash: 9516534216c4a2c0f61e33ea3cbf1bbcb2ab58c7
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.author: kasparks
+ms.openlocfilehash: 349632c751c3116244bc8ef7708708f3aa45754c
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44301304"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53013230"
 ---
 # <a name="advisor-performance-recommendations"></a>顾问性能建议
 
@@ -33,16 +32,16 @@ Azure 顾问将识别配置了较长 TTL 的流量管理器配置文件，并建
 
 ## <a name="improve-database-performance-with-sql-db-advisor"></a>通过 SQL DB 顾问提高数据库性能
 
-顾问针对所有 Azure 资源提供一个一致且统一的建议视图。 它与 SQL 数据库顾问集成，提供建议以改进 SQL Azure 数据库性能。 SQL 数据库顾问通过分析使用情况历史记录来评估 SQL Azure 数据库的性能。 提供的建议最适合运行数据库典型工作负荷。 
+顾问针对所有 Azure 资源提供一个一致且统一的建议视图。 它与 SQL 数据库顾问集成，提供建议以改进 SQL Azure 数据库性能。 SQL 数据库顾问通过分析使用情况历史记录来评估 SQL Azure 数据库的性能。 提供的建议最适合运行数据库典型工作负荷。 
 
 > [!NOTE]
 > 若要获取建议，数据库必须具有一周左右的使用量，且该周内必须有一些一致的活动。 SQL 数据库顾问优化一致的查询模式比优化随机的突发活动更加轻松。
 
 有关 SQL 数据库顾问的详细信息，请参阅 [SQL 数据库顾问](https://azure.microsoft.com/documentation/articles/sql-database-advisor/)。
 
-## <a name="improve-redis-cache-performance-and-reliability"></a>提高 Redis 缓存性能和可靠性
+## <a name="improve-azure-cache-for-redis-performance-and-reliability"></a>提高 Azure Redis 缓存的性能和可靠性
 
-Redis 缓存实例的性能可能会受到高内存使用率、服务器负载、网络带宽或大量客户端连接的不利影响，顾问可识别这些实例。 顾问还可提供最佳做法建议，有助于避免潜在问题。 有关 Redis 缓存建议的详细信息，请参阅 [Redis 缓存顾问](https://azure.microsoft.com/documentation/articles/cache-configure/#redis-cache-advisor)。
+Azure Redis 缓存实例的性能可能会受到高内存使用率、服务器负载、网络带宽或大量客户端连接的不利影响，顾问可识别这些实例。 顾问还可提供最佳做法建议，有助于避免潜在问题。 有关 Azure Redis 缓存的建议详细信息，请参阅 [Azure Redis 缓存](https://azure.microsoft.com/documentation/articles/cache-configure/#redis-cache-advisor)。
 
 
 ## <a name="improve-app-service-performance-and-reliability"></a>提高应用服务性能和可靠性

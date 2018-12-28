@@ -1,5 +1,5 @@
 ---
-title: 部署 Azure IoT Edge 模块 (CLI) | Microsoft Docs
+title: 从命令行部署模块 - Azure IoT Edge | Microsoft Docs
 description: 通过适用于 Azure CLI 的 IoT 扩展将模块部署到 IoT Edge 设备
 author: kgremban
 manager: philmea
@@ -9,12 +9,13 @@ ms.topic: conceptual
 ms.reviewer: menchi
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: a8f39befbe1a329091da19eeba14a8dcc749fa93
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.custom: seodec18
+ms.openlocfilehash: f9aa3fff8750dc20053072c939a6db9362a2b0d7
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51564980"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53093567"
 ---
 # <a name="deploy-azure-iot-edge-modules-with-azure-cli"></a>使用 Azure CLI 部署 Azure IoT Edge 模块
 
@@ -117,7 +118,7 @@ ms.locfileid: "51564980"
 
 device id 参数区分大小写。 content 参数指向你保存的部署清单文件。 
 
-   ![设置模块](./media/how-to-deploy-cli/set-modules.png)
+   ![az iot edge set-modules output](./media/how-to-deploy-cli/set-modules.png)
 
 ## <a name="view-modules-on-your-device"></a>查看设备上的模块
 
@@ -131,7 +132,7 @@ device id 参数区分大小写。 content 参数指向你保存的部署清单�
 
 device id 参数区分大小写。
 
-   ![列出模块](./media/how-to-deploy-cli/list-modules.png)
+   ![az iot hub module-identity list output](./media/how-to-deploy-cli/list-modules.png)
 
 ## <a name="next-steps"></a>后续步骤
 

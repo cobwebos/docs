@@ -10,12 +10,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: hrasheed
-ms.openlocfilehash: 110357a7a84aa8cc6bd7dcb5bbef9ca02879a9cb
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: c0687ec94af60d3683d3f129eff2bad8fb97d786
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52494286"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53165788"
 ---
 # <a name="apache-spark-streaming-dstream-example-with-apache-kafka-on-hdinsight"></a>Apache Kafka on HDInsight 的 Apache Spark 流式处理 (DStream) 示例
 
@@ -55,7 +55,7 @@ Apache Kafka on HDInsight 不提供通过公共 Internet 访问 Kafka 中转站�
    
     ![HDInsight 自定义部署](./media/hdinsight-apache-spark-with-kafka/parameters.png)
    
-    * **资源组**：创建一个资源组或选择现有的资源组。 此组包含 HDInsight 群集。
+    * **资源组**：创建一个组或选择有个现有的组。 此组包含 HDInsight 群集。
 
     * **位置**：选择在地理上邻近的位置。
 
@@ -67,7 +67,7 @@ Apache Kafka on HDInsight 不提供通过公共 Internet 访问 Kafka 中转站�
 
     * **SSH 用户名**：创建 Spark 和 Kafka 群集的 SSH 用户。
 
-    * **SSH 密码**：Spark 和 Kafka 群集的 SSH 用户密码。
+    * **SSH 密码**：Spark 和 Kafka 群集的 SSH 用户的密码。
 
 3. 阅读“条款和条件”，并选择“我同意上述条款和条件”。
 

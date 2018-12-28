@@ -8,16 +8,15 @@ ms.topic: article
 ms.date: 7/19/2018
 ms.author: wgries
 ms.component: files
-ms.openlocfilehash: 57929b23e437e17ceb90196e3cfa59c16d518f5a
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: af738b655b4070da1cfe7555daff82c0e40ff91c
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39527431"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53138579"
 ---
 # <a name="azure-files-scalability-and-performance-targets"></a>Azure 文件可伸缩性和性能目标
-
-  [Azure 文件](storage-files-introduction.md)在云中提供完全托管的文件共享，这些共享项可通过行业标准 SMB 协议进行访问。 本文讨论了 Azure 文件和 Azure 文件同步的可伸缩性和性能目标。
+[Azure 文件](storage-files-introduction.md)在云中提供完全托管的文件共享，这些共享项可通过行业标准 SMB 协议进行访问。 本文讨论了 Azure 文件和 Azure 文件同步的可伸缩性和性能目标。
 
 此处列出的可伸缩性和性能目标是高端目标，但可能会受部署中的其他变量影响。 例如，除了受限于托管着 Azure 文件服务的服务器之外，针对文件的吞吐量还可能会受限于可变的网络带宽。 强烈建议你对使用模式进行测试，以确定 Azure 文件的可伸缩性和性能是否满足你的要求。 随着时间的推移，我们也一直在努力提高这些限制。 如果希望我们提高某些限制，请尽管通过下面的评论或者通过 [Azure 文件 UserVoice](https://feedback.azure.com/forums/217298-storage/category/180670-files) 向我们提供反馈。
 
@@ -40,20 +39,21 @@ Azure 文件共享的父资源是 Azure 存储帐户。 存储帐户表示 Azure
 [!INCLUDE [storage-sync-files-scale-targets](../../../includes/storage-sync-files-scale-targets.md)]
 
 ### <a name="azure-file-sync-performance-metrics"></a>Azure 文件同步性能指标
-因为 Azure 文件同步代理在连接到 Azure 文件共享的 Windows Server 计算机上运行，所以实际的同步性能取决于基础结构中的许多元素：Windows Server 和基础磁盘配置、服务器与 Azure 存储之间的网络带宽、文件大小、总数据集大小以及数据集上的活动。 由于 Azure 文件同步在文件级别工作，因此可以更好地通过每秒处理的对象数（文件和目录）这一指标来度量基于 Azure 文件同步的解决方案的性能特征。 
+由于 Azure 文件同步代理在连接到 Azure 文件共享的 Windows Server 计算机上运行，因此有效的同步性能取决于基础结构中的多个因素：Windows Server 和基础磁盘配置、服务器与 Azure 存储之间的网络带宽、文件大小、总数据集大小以及数据集上的活动。 由于 Azure 文件同步在文件级别工作，因此可以更好地通过每秒处理的对象数（文件和目录）这一指标来度量基于 Azure 文件同步的解决方案的性能特征。 
  
 对于 Azure 文件同步，性能在两个阶段至关重要：
-1. **初始一次性预配**：若要优化初始预配的性能，请参阅[使用 Azure 文件同步进行载入](storage-sync-files-deployment-guide.md#onboarding-with-azure-file-sync)来了解最佳部署详细信息。
+1. **初始的一次性预配**：若要优化初始预配的性能，请参阅[使用 Azure 文件同步进行载入](storage-sync-files-deployment-guide.md#onboarding-with-azure-file-sync)来了解最佳部署详细信息。
 2. **持续同步**：在 Azure 文件同步中初次植入数据后，Azure 文件同步会使多个终结点保持同步。
 
 为帮助你计划每个阶段的部署，下面提供了在采用某个配置的系统上进行内部测试期间观察到的结果
+
 | 系统配置 |  |
 |-|-|
 | CPU | 64 个带 64 MiB L3 高速缓存的虚拟内核 |
 | 内存 | 128 GiB |
 | 磁盘 | 采用 RAID 10 且带有以电池供电的高速缓存的 SAS 磁盘 |
 | 网络 | 1 Gbps 网络 |
-| 工作负载 | 常规用途文件服务器|
+| 工作负荷 | 常规用途文件服务器|
 
 | 初始的一次性预配  |  |
 |-|-|

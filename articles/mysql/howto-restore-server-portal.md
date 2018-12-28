@@ -9,12 +9,12 @@ editor: jasonwhowell
 ms.service: mysql
 ms.topic: article
 ms.date: 04/01/2018
-ms.openlocfilehash: 6a34bbb5eefac117775c9876f3e4a25d3dade736
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 7f75950a0f61c646d6cf36ea0903ebdefbd336ee
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35266265"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53138473"
 ---
 # <a name="how-to-backup-and-restore-a-server-in-azure-database-for-mysql-using-the-azure-portal"></a>如何使用 Azure 门户在 Azure Database for MySQL 中备份和还原服务器
 
@@ -65,10 +65,10 @@ Azure Database for MySQL 服务器定期进行备份以便启用还原功能。 
 3. 使用必需信息填写“还原”窗体：
 
    ![Azure Database for MySQL - 还原信息 ](./media/howto-restore-server-portal/3-restore.png)
-  - **还原点**：选择要还原到的时间点。
-  - **目标服务器**：提供新服务器的名称。
-  - 位置：不可选择区域。 默认情况下，此值与源服务器相同。
-  - **定价层**：执行时间点还原时，无法更改这些参数。 此值与源服务器相同。 
+   - **还原点**：选择要还原到的时间点。
+   - **目标服务器**：提供新服务器的名称。
+   - **位置**：不可选择区域。 默认情况下，此值与源服务器相同。
+   - **定价层**：执行时间点还原时，无法更改这些参数。 此值与源服务器相同。 
 
 4. 单击“确定”，将服务器还原到某个时间点。 
 

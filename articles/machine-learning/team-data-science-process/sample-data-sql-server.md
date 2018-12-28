@@ -1,6 +1,6 @@
 ---
-title: 对 Azure 上 SQL Server 中的数据进行采样 | Microsoft Docs
-description: 对 Azure 上 SQL Server 中的数据进行采样
+title: 对 Azure 上 SQL Server 中的数据采样 - Team Data Science Process
+description: 使用 SQL 或 Python 编程语言对 Azure 上的 SQL Server 中存储的数据进行采样，然后将其移到 Azure 机器学习中。
 services: machine-learning
 author: marktab
 manager: cgronlun
@@ -10,13 +10,13 @@ ms.component: team-data-science-process
 ms.topic: article
 ms.date: 11/13/2017
 ms.author: tdsp
-ms.custom: (previous author=deguhath, ms.author=deguhath)
-ms.openlocfilehash: 6483ba9f070252f58e0e3706472939dbfab12b59
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: fec649706be1b3db01a5c6cbc8f395e8c7e1a4d2
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52445032"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53134329"
 ---
 # <a name="heading"></a>对 Azure 上 SQL Server 中的数据进行采样
 
@@ -30,9 +30,9 @@ Python 采样使用要连接到 Azure 上 SQL Server 的 [pyodbc](https://code.g
 > 
 
 **为什么对数据进行采样？**
-如果计划要分析的数据集很大，通常最好是对数据进行向下采样，以将数据减至较小但具备代表性且更易于管理的规模。 这有利于数据了解、探索和功能设计。 它在[团队数据科学过程 (TDSP)](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/) 中的作用是启用数据处理功能和机器学习模型的快速原型设计。
+如果计划要分析的数据集很大，通常最好是对数据进行向下采样，以将数据减至较小但具备代表性且更易于管理的规模。 这有利于数据了解、探索和功能设计。 它在[团队数据科学过程 (TDSP)](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/) 中的作用是启用数据处理功能和机器学习模型的快速原型设计。
 
-此采样任务是[团队数据科学流程 (TDSP)](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/) 中的一个步骤。
+此采样任务是[团队数据科学流程 (TDSP)](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/) 中的一个步骤。
 
 ## <a name="SQL"></a>使用 SQL
 本部分介绍了几种使用 SQL 针对数据库中的数据执行简单随机采样的方法。 请根据数据大小及其分发方式选择一种方法。

@@ -4,16 +4,16 @@ description: 了解如何解决 Azure 自动化共享资源的问题
 services: automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 11/05/2018
+ms.date: 12/3/2018
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 385d2969e65647ab0b5c5e21c07b127104587e7e
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: ce78c86cdae9a06100fd17d00e0229805e42983b
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51263412"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52848453"
 ---
 # <a name="troubleshoot-errors-with-shared-resources"></a>解决共享资源的错误
 
@@ -25,11 +25,11 @@ ms.locfileid: "51263412"
 
 #### <a name="issue"></a>问题
 
-在 Azure 自动化中导入或更新你的模块时，发现某个模块停滞在“正在导入”状态。
+在 Azure 自动化中导入或更新模块时，某个模块停滞在“正在导入”状态。
 
-#### <a name="error"></a>错误
+#### <a name="cause"></a>原因
 
-导入 PowerShell 模块是一个复杂的多步骤过程。 在此过程中可能会有模块无法正确导入。 如果发生此情况，则你导入的模块可能会停滞在某个暂时性状态。 若要详细了解此过程，请参阅[导入 PowerShell 模块]( /powershell/developer/module/importing-a-powershell-module#the-importing-process)。
+导入 PowerShell 模块是一个复杂的多步骤过程。 在此过程中可能会有模块无法正确导入。 如果发生此问题，则导入的模块可能会停滞在某个暂时性状态。 若要详细了解此过程，请参阅[导入 PowerShell 模块]( /powershell/developer/module/importing-a-powershell-module#the-importing-process)。
 
 #### <a name="resolution"></a>解决方法
 
@@ -38,6 +38,28 @@ ms.locfileid: "51263412"
 ```azurepowershell-interactive
 Remove-AzureRmAutomationModule -Name ModuleName -ResourceGroupName ExampleResourceGroup -AutomationAccountName ExampleAutomationAccount -Force
 ```
+
+## <a name="run-as-accounts"></a>运行方式帐户
+
+### <a name="unable-create-update"></a>场景：无法创建或更新运行方式帐户
+
+#### <a name="issue"></a>问题
+
+在尝试创建或更新运行方式帐户时，接收到类似于以下错误消息的错误：
+
+```error
+You do not have permissions to create…
+```
+
+#### <a name="cause"></a>原因
+
+没有创建或更新运行方式帐户所需的权限，或者资源在资源组级别锁定。
+
+#### <a name="resolution"></a>解决方法
+
+若要创建或更新运行方式帐户，必须对运行方式帐户使用的各种资源具有适当的权限。 要了解创建或更新运行方式帐户所需的权限，请参阅[运行方式帐户权限](../manage-runas-account.md#permissions)。
+
+如果问题是由锁定引起的，请验证锁定是否可以删除并导航到已锁定的资源，右键单击该锁定并选择“删除”以删除锁定。
 
 ## <a name="next-steps"></a>后续步骤
 

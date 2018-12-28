@@ -1,5 +1,5 @@
 ---
-title: Saas 应用：监视多个 Azure SQL 数据库的性能 | Microsoft Docs
+title: SaaS 应用：监视多个 Azure SQL 数据库的性能 | Microsoft Docs
 description: 在多租户 SaaS 应用中监视和管理 Azure SQL 数据库和池的性能
 services: sql-database
 ms.service: sql-database
@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 09/14/2018
-ms.openlocfilehash: 86fdd7b0bd8ac76ddb2ac30ff324b80101c177e8
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: 1ba98598a88973c5d5ae09cffda931a54d521b74
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49353894"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53259131"
 ---
 # <a name="monitor-and-manage-performance-of-azure-sql-databases-and-pools-in-a-multi-tenant-saas-app"></a>在多租户 SaaS 应用中监视和管理 Azure SQL 数据库和池的性能
 
@@ -75,7 +75,7 @@ Wingtip Tickets SaaS Database Per Tenant 应用使用单租户数据模型，在
 
 脚本会在不到五分钟的时间内部署 17 个租户。
 
-New-TenantBatch 脚本使用嵌套或链接形式的一组[资源管理器](../azure-resource-manager/index.md)模板来创建一批租户。这些租户在默认情况下会通过复制编录服务器上的数据库 basetenantdb 来创建新的租户数据库，然后将这些数据库注册到目录中，最后再使用租户名称和地点类型初始化这些数据库。 这与应用预配新租户的方式是一致的。 对 basetenantdb 所做的任何更改都将应用到此后预配的任何新租户。 请参阅[架构管理教程](saas-tenancy-schema-management.md)，了解如何对现有租户数据库（包括 basetenantdb 数据库）进行架构更改。
+New-TenantBatch 脚本使用嵌套或链接形式的一组[资源管理器](../azure-resource-manager/index.yml)模板来创建一批租户。这些租户在默认情况下会通过复制编录服务器上的数据库 basetenantdb 来创建新的租户数据库，然后将这些数据库注册到目录中，最后再使用租户名称和地点类型初始化这些数据库。 这与应用预配新租户的方式是一致的。 对 basetenantdb 所做的任何更改都将应用到此后预配的任何新租户。 请参阅[架构管理教程](saas-tenancy-schema-management.md)，了解如何对现有租户数据库（包括 basetenantdb 数据库）进行架构更改。
 
 ## <a name="simulate-usage-on-all-tenant-databases"></a>模拟所有租户数据库上的使用情况
 

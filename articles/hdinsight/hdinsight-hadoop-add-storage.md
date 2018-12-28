@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 04/23/2018
 ms.author: hrasheed
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.openlocfilehash: 194f84d2ce5360aa9ad9f3d771bf24f153ac6f5c
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: a75514013a1945d9ca5718be115184f6ba9950d9
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52496300"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53015749"
 ---
 # <a name="add-additional-storage-accounts-to-hdinsight"></a>将其他存储帐户添加到 HDInsight
 
@@ -95,7 +95,7 @@ curl -u admin:PASSWORD -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/cluster
 > [!NOTE]
 > 将 `$PASSWORD` 设置为群集登录（管理员）帐户密码。 将 `$CLUSTERNAME` 设置为 HDInsight 群集的名称。 将 `$STORAGEACCOUNTNAME` 设置为存储帐户的名称。
 >
-> 此示例使用 [curl (http://curl.haxx.se/)](http://curl.haxx.se/) 和 [jq (https://stedolan.github.io/jq/)](https://stedolan.github.io/jq/) 检索和分析 JSON 数据。
+> 此示例使用 [curl (https://curl.haxx.se/)](https://curl.haxx.se/) 和 [jq (https://stedolan.github.io/jq/)](https://stedolan.github.io/jq/) 检索和分析 JSON 数据。
 
 使用此命令时，将 __CLUSTERNAME__ 替换为 HDInsight 群集的名称。 将 __PASSWORD__ 替换为群集的 HTTP 登录密码。 将 __STORAGEACCOUNT__ 替换为使用脚本操作添加的存储帐户的名称。 此命令返回类似于以下文本的信息：
 

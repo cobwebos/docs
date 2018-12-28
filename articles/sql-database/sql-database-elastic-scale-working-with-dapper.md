@@ -3,7 +3,7 @@ title: 将弹性数据库客户端库与 Dapper 配合使用 | Microsoft 文档
 description: 将弹性数据库客户端库与 Dapper 配合使用。
 services: sql-database
 ms.service: sql-database
-ms.subservice: elastic-scale
+ms.subservice: scale-out
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: 3a25d68b0f0bdd97b204906af87fac8013ad3cff
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 14eb92141a9d27d9f8978abb6d5c9a738c821ead
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51253017"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52866298"
 ---
 # <a name="using-elastic-database-client-library-with-dapper"></a>将弹性数据库客户端库与 Dapper 配合使用
 本文档面向依赖于使用 Dapper 生成应用程序，但同时想要运用[弹性数据库工具](sql-database-elastic-scale-introduction.md)创建应用程序来实现分片，以横向扩展其数据层的开发人员。  本文档演示了与弹性数据库工具集成所需的基于 Dapper 的应用程序发生的更改。 我们将重点介绍如何使用 Dapper 构建弹性数据库分片管理和数据依赖型路由。 
@@ -49,8 +49,8 @@ Dapper 和 DapperExtensions 的另一个优点在于，应用程序可以控制�
 ### <a name="requirements-for-dapper-integration"></a>Dapper 集成的要求
 在使用弹性数据库客户端库和 Dapper API 时，希望保留以下属性：
 
-* 横向扩展：我们需要根据应用程序的容量需求，在分片应用程序的数据层中添加或删除数据库。 
-* 一致性：由于应用程序是使用分片横向扩展的，因此需要执行数据依赖型路由。 我们需要使用库的数据依赖型路由功能来实现此目的。 具体而言，需要保留验证和一致性保证（由通过分片映射管理器中转的连接提供，目的在于避免损坏或错误的查询结果）。 这可确保（举例而言）当前已使用 Split/Merge API 将 shardlet 移至其他分片时，拒绝或停止与给定 shardlet 的连接。
+* **横向扩展**：我们需要根据应用程序的容量需求，在分片应用程序的数据层中添加或删除数据库。 
+* **一致性**：由于应用程序是使用分片横向扩展的，因此需要执行数据依赖型路由。 我们需要使用库的数据依赖型路由功能来实现此目的。 具体而言，需要保留验证和一致性保证（由通过分片映射管理器中转的连接提供，目的在于避免损坏或错误的查询结果）。 这可确保（举例而言）当前已使用 Split/Merge API 将 shardlet 移至其他分片时，拒绝或停止与给定 shardlet 的连接。
 * **对象映射**：我们需要保留 Dapper 为了在应用程序中的类和基础数据库结构之间进行转换而提供的映射方便性。 
 
 以下部分基于 **Dapper** 和 **DapperExtensions** 的应用程序的这些要求的指南。
@@ -137,7 +137,7 @@ Dapper 随附了可以在开发数据库应用程序时提供更大方便性和�
     }
 
 ### <a name="handling-transient-faults"></a>处理暂时性故障
-Microsoft 模式和实践团队发布了[暂时性故障处理应用程序块](https://msdn.microsoft.com/library/hh680934.aspx)，以帮助应用程序开发人员消除在云中运行应用程序时遇到的常见暂时性故障状态。 有关详细信息，请参阅[锲而不舍是一切成功的秘密：使用暂时性故障处理应用程序块](https://msdn.microsoft.com/library/dn440719.aspx)。
+Microsoft 模式和实践团队发布了[暂时性故障处理应用程序块](https://msdn.microsoft.com/library/hh680934.aspx)，以帮助应用程序开发人员消除在云中运行应用程序时遇到的常见暂时性故障状态。 有关详细信息，请参阅[坚持不懈，所有胜利的秘密：使用暂时性故障处理应用程序块](https://msdn.microsoft.com/library/dn440719.aspx)。
 
 该代码示例依赖于暂时性故障库来防止暂时性故障。 
 

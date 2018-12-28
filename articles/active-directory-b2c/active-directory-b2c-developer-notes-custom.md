@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 10/13/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 31ca79976ec2ecf2755b975749e9c9150c4a49e8
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: ea884f6fecc1e8a0de1f6a0f8a4daafcdf612e9f
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37441067"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53272690"
 ---
 # <a name="release-notes-for-azure-active-directory-b2c-custom-policy-public-preview"></a>Azure Active Directory B2C 自定义策略公共预览版发行说明
 自定义策略功能集现已推出公共预览版，供所有 Azure Active Directory B2C (Azure AD B2C) 客户评估。 此功能集面向构建最复杂标识解决方案的高级标识开发人员。  
@@ -25,24 +25,23 @@ ms.locfileid: "37441067"
 ## <a name="features-included-in-this-public-preview"></a>此公共预览版包含的功能
 公共预览版中引入的新功能可让开发人员执行以下任务：<br>
 
-* 使用自定义策略创作并上传自定义身份验证用户旅程。 
+使用自定义策略创作并上传自定义身份验证用户旅程。 
    * 将用户旅程逐步描述为声明提供程序之间的交换。 
-   * 在用户旅程中定义条件分支。 
-* 在自定义身份验证用户旅程中集成已启用 REST API 的服务。  
+   * 在用户旅程中定义条件分支。 在自定义身份验证用户旅程中集成已启用 REST API 的服务。  
 * 添加与符合 OpenIDConnect 标准的标识提供者的联合。 <br>
 * 添加与遵守 SAML 2.0 协议的标识提供者的联合。 
 
 ## <a name="terms-of-the-public-preview"></a>公共预览版条款
 
-* 建议将新功能仅用于评估。<br>
-* 不应在生产环境中使用新功能。<br>
-* 服务级别协议 (SLA) 不适用于新功能。 <br>
-* 可通过普通支持渠道提出支持请求。 <br>
-* 尚未确定公开上市的日期。<br>
-* Microsoft 可以出于任何原因，根据自身的判断，标识并拒绝或限制已超出充当客户标识和访问管理 (CIAM) 平台的 Azure AD B2C 产品规章范围的方案和用户旅程。
+建议将新功能仅用于评估。<br>
+不应在生产环境中使用新功能。<br>
+服务级别协议 (SLA) 不适用于新功能。 <br>
+可通过普通支持渠道提出支持请求。 <br>
+尚未确定公开上市的日期。<br>
+Microsoft 可以出于任何原因，根据自身的判断，标识并拒绝或限制已超出充当客户标识和访问管理 (CIAM) 平台的 Azure AD B2C 产品规章范围的方案和用户旅程。
 
 ## <a name="responsibilities-of-custom-policy-feature-set-developers"></a>自定义策略功能集开发人员的责任
-手动策略配置授予对 Azure AD B2C 基础平台的较低访问级别，因此要求创建唯一的、完全可自定义的信任框架。 自定义标识提供者、信任关系、与外部服务的集成以及分步工作流的各种排列组合方式，对使用这些资源的高级开发人员提出了更高的要求。
+手动策略配置授予对 Azure AD B2C 基础平台的较低访问级别，因此要求创建唯一的、完全可自定义的信任框架。 自定义标识提供者、信任关系、与外部服务的集成以及分步工作流的各种排列组合方式，对使用这些资源的高级开发人员提出了更高的要求。
 
 为充分利用公共预览版，建议使用自定义策略功能集的开发人员遵守以下准则：
 * 熟悉标识体验框架和密钥/机密管理的配置语言。
@@ -52,7 +51,7 @@ ms.locfileid: "37441067"
 * 随时了解与之集成的标识提供程序和服务的新进展。 例如，跟踪机密的更改情况以及对服务的计划内和计划外更改。
 * 设置主动监控，监控生产环境的响应能力。
 * 在 Azure 订阅中保留最新的联系电子邮件地址，并快速回复 Microsoft 活动站点团队的电子邮件。
-* 根据 Microsoft 活动站点团队的通知及时采取措施。 
+* 根据 Microsoft 活动站点团队的通知及时采取措施。 
 
 ## <a name="features-by-stage-and-known-issues"></a>按阶段的功能和已知问题
 自定义策略/标识体验框架功能正在持续而快速地进行开发。  下表是功能 / 组件可用性的索引。
@@ -63,7 +62,7 @@ ms.locfileid: "37441067"
 ### <a name="identity-providers-tokens-protocols"></a>标识提供者、令牌、协议
 与外部组件和应用程序的接口
 
-| 功能 | 开发 | 预览 | GA | 说明 |
+| Feature | 开发 | 预览 | GA | 说明 |
 |---------------------------------------------|-------------|---------|----|-------|
 | IDP-OpenIDConnect |  | x |  | 例如 Google+ |
 | IDP-OAUTH2 |  | x |  | 例如 Facebook  |
@@ -80,7 +79,7 @@ ms.locfileid: "37441067"
 ### <a name="component-support"></a>组件支持
 
 
-| 功能 | 开发 | 预览 | GA | 说明 |
+| Feature | 开发 | 预览 | GA | 说明 |
 |-------------------------------------------|-------------|---------|----|-------|
 | Azure 多重身份验证 |  | x |  |  |
 | Azure Active Directory 用作本地目录 |  | x |  |  |
@@ -91,7 +90,7 @@ ms.locfileid: "37441067"
 
 ### <a name="content-definition"></a>内容定义
 
-| 功能 | 开发 | 预览 | GA | 说明 |
+| Feature | 开发 | 预览 | GA | 说明 |
 |-----------------------------------------------------------------------------|-------------|---------|----|-------|
 |   错误页，api.error |  | x |  |  |
 |   IDP 选择页，api.idpselections |  | x |  |  |
@@ -106,7 +105,7 @@ ms.locfileid: "37441067"
 
 
 ### <a name="app-ief-integration"></a>App-IEF 集成
-| 功能 | 开发 | 预览 | GA | 说明 |
+| Feature | 开发 | 预览 | GA | 说明 |
 |--------------------------------------------------|-------------|---------|----|-------------------------------------------------|
 | 查询字符串参数 id_token_hint | x |  |  |  |
 | 查询字符串参数 domain_hint |  | x |  | 作为声明提供时，可以传递给 IDP |
@@ -117,22 +116,22 @@ ms.locfileid: "37441067"
 
 ### <a name="session-management"></a>会话管理
 
-| 功能 | 开发 | 预览 | GA | 说明 |
+| Feature | 开发 | 预览 | GA | 说明 |
 |---------------------------------|-------------|---------|----|-------|
 | SSO 会话提供程序 |  | x |  |  |
 | 外部登录会话提供程序 |  | x |  |  |
 | SAML SSO 会话提供程序 |  | x |  |  |
 
 
-### <a name="security"></a>“安全”
-| 功能 | 开发 | 预览 | GA | 说明 |
+### <a name="security"></a>安全
+| Feature | 开发 | 预览 | GA | 说明 |
 |---------------------------------------------|-------------|---------|----|-------|
 | 策略密钥 - 生成、手动、上传 |  | x |  |  |
 | 策略密钥 - RSA/证书、机密 |  | x |  |  |
 
 
 ### <a name="developer-interface"></a>开发人员接口
-| 功能 | 开发 | 预览 | GA | 说明 |
+| Feature | 开发 | 预览 | GA | 说明 |
 |---------------------------------------------|-------------|---------|----|-------|
 | Azure 门户-IEF UX |  | x |  |  |
 | Application Insights UserJourney 日志  |  | x |  |  |

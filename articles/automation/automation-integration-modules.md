@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: e4bd6a3e39fbb5d1eea4d7770d8940f801aecd43
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.openlocfilehash: 7b7bd66d90ad01479965c928eb69bfb1dfccce5b
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52276477"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "53000206"
 ---
 # <a name="azure-automation-integration-modules"></a>Azure 自动化集成模块
 PowerShell 是 Azure 自动化背后的基本技术。 由于 Azure 自动化是基于 PowerShell 构建的，因此 PowerShell 模块对于 Azure 自动化的可扩展性很重要。 在本文中，我们将向你详细介绍 Azure 自动化如何使用 PowerShell 模块（也称“集成模块”），以及如何根据最佳做法创建自己的 PowerShell 模块，确保这些模块在 Azure 自动化中作为集成模块来运行。 
@@ -74,7 +74,7 @@ PowerShell 模块是指一组可以通过 PowerShell 控制台、脚本、工作
     #>
     function Get-TwilioPhoneNumbers {
     [CmdletBinding(DefaultParameterSetName='SpecifyConnectionFields', `
-    HelpUri='http://www.twilio.com/docs/api/rest/outgoing-caller-ids')]
+    HelpUri='https://www.twilio.com/docs/api/rest/outgoing-caller-ids')]
     param(
        [Parameter(ParameterSetName='SpecifyConnectionFields', Mandatory=$true)]
        [ValidateNotNullOrEmpty()]
@@ -136,7 +136,7 @@ PowerShell 模块是指一组可以通过 PowerShell 控制台、脚本、工作
     ```powershell
     function Send-TwilioSMS {
       [CmdletBinding(DefaultParameterSetName='SpecifyConnectionFields', `
-      HelpUri='http://www.twilio.com/docs/api/rest/sending-sms')]
+      HelpUri='https://www.twilio.com/docs/api/rest/sending-sms')]
       param(
          [Parameter(ParameterSetName='SpecifyConnectionFields', Mandatory=$true)]
          [ValidateNotNullOrEmpty()]

@@ -1,23 +1,24 @@
 ---
-title: 预测分数 - 意向、实体 - LUIS
-titleSuffix: Azure Cognitive Services
+title: 预测评分
+titleSuffix: Language Understanding - Azure Cognitive Services
 description: 预测分数表示 LUIS 对预测结果的置信度。
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: conceptual
-ms.date: 10/15/2018
+ms.date: 12/07/2018
 ms.author: diberry
-ms.openlocfilehash: e1582da9a8fea4137d40b3a3855ead467dbbb548
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: d082f8ee4d516e3c9571ec63653f39723cad8c77
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52264380"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53141979"
 ---
-# <a name="prediction-score"></a>预测分数
+# <a name="prediction-scores-indicate-prediction-accuracy-for-intent-and-entities"></a>预测评分指示意向和实体的预测准确性
 预测分数表示 LUIS 对预测结果的置信度。 
 
 预测分数在零 (0) 到一 (1) 之间。 例如，一个置信度很高的 LUIS 分数可以是 0.99。 置信度低的分数可以是 0.01。 

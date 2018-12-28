@@ -1,5 +1,6 @@
 ---
-title: 创建内部负载均衡器 - Azure 经典 CLI | Microsoft 文档
+title: 创建内部负载均衡器 - Azure 经典 CLI
+titlesuffix: Azure Load Balancer
 description: 了解如何在经典部署模型中使用 Azure 经典 CLI 创建内部负载均衡器
 services: load-balancer
 documentationcenter: na
@@ -7,16 +8,17 @@ author: genlin
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
+ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: c7659937599d778d9dc945254fcfff52840622dc
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 991e6554df62591dea5c126f8ea82704373d6ffd
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50415060"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53084917"
 ---
 # <a name="get-started-creating-an-internal-load-balancer-using-the-azure-classic-cli"></a>开始使用 Azure 经典 CLI 创建内部负载均衡器
 
@@ -28,7 +30,7 @@ ms.locfileid: "50415060"
 [!INCLUDE [load-balancer-get-started-ilb-intro-include.md](../../includes/load-balancer-get-started-ilb-intro-include.md)]
 
 > [!IMPORTANT]
-> Azure 具有用于创建和处理资源的两个不同的部署模型：[Resource Manager 和经典](../azure-resource-manager/resource-manager-deployment-model.md)。  本文介绍使用经典部署模型。 Microsoft 建议大多数新部署使用资源管理器模型。 了解如何[使用 Resource Manager 模型执行这些步骤](load-balancer-get-started-ilb-arm-cli.md)。
+> Azure 具有用于创建和处理资源的两个不同部署模型：[资源管理器部署模型和经典部署模型](../azure-resource-manager/resource-manager-deployment-model.md)。  本文介绍使用经典部署模型。 Microsoft 建议大多数新部署使用资源管理器模型。 了解如何[使用 Resource Manager 模型执行这些步骤](load-balancer-get-started-ilb-arm-cli.md)。
 
 [!INCLUDE [load-balancer-get-started-ilb-scenario-include.md](../../includes/load-balancer-get-started-ilb-scenario-include.md)]
 

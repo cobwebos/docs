@@ -1,20 +1,21 @@
 ---
-title: 使用 Java 从 Azure 事件中心接收事件 | Microsoft 文档
-description: 使用 Java 从事件中心接收事件入门
+title: 使用 Java 接收事件 - Azure 事件中心 | Microsoft Docs
+description: 本文提供了一个演练，说明如何创建从 Azure 事件中心接收事件的 Java 应用程序。
 services: event-hubs
 author: ShubhaVijayasarathy
 manager: timlt
 ms.service: event-hubs
 ms.workload: core
 ms.topic: article
-ms.date: 08/26/2018
+ms.custom: seodec18
+ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: dce7c4067ba6d96bf14f4e3300d951b594afe930
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: e29cf43f490bf5e8bac5e5c36b16476f93d80bfa
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50240626"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53081953"
 ---
 # <a name="receive-events-from-azure-event-hubs-using-java"></a>使用 Java 从 Azure 事件中心接收事件
 
@@ -44,11 +45,11 @@ EventProcessorHost 是一个 Java 类，通过在这些事件中心管理持久�
 1. 登录到 [Azure 门户][Azure portal]，然后单击屏幕左侧的“+创建资源”。
 2. 依次“存储”、“存储帐户”。 在“创建存储帐户”窗口中，键入存储帐户的名称。 填写其余字段，选择所需区域，然后单击“创建”。
    
-    ![](./media/event-hubs-dotnet-framework-getstarted-receive-eph/create-storage2.png)
+    ![创建存储帐户](./media/event-hubs-dotnet-framework-getstarted-receive-eph/create-storage2.png)
 
 3. 单击新创建的存储帐户，并单击“访问密钥”：
    
-    ![](./media/event-hubs-dotnet-framework-getstarted-receive-eph/create-storage3.png)
+    ![获取访问密钥](./media/event-hubs-dotnet-framework-getstarted-receive-eph/create-storage3.png)
 
     将 key1 值复制到临时位置。 本教程后面部分需要使用它。
 
@@ -277,7 +278,7 @@ eventHubClient.sendSync(sendEvent, partitionKey);
 
 使用检查点管理器的自定义实现 (com.microsoft.azure.eventprocessorhost.ICheckpointManager)
 
-在你的实现中，你可以替代默认检查点机制并根据你自己的数据存储（SQL Server、CosmosDB、Redis 缓存，等等）实现我们自己的检查点。 对于用于为检查点管理器实现提供支持的存储，建议使其可供为使用者组处理事件的所有 EPH 实例访问。
+在你的实现中，你可以替代默认检查点机制并根据你自己的数据存储（SQL Server、CosmosDB、Azure Redis 缓存等）实现我们自己的检查点。 对于用于为检查点管理器实现提供支持的存储，建议使其可供为使用者组处理事件的所有 EPH 实例访问。
 
 你可以使用你的环境中提供的任何数据存储。
 

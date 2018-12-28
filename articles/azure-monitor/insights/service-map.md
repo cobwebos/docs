@@ -8,18 +8,17 @@ manager: carmonm
 editor: tysonn
 ms.assetid: 3ceb84cc-32d7-4a7a-a916-8858ef70c0bd
 ms.service: monitoring
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/28/2018
 ms.author: magoedte
-ms.openlocfilehash: c25bc5d577096078694e3af0de74debe0f906251
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: cd55e97edb6cd0b4a2a3eceee406ce5718db8bd4
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51827106"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53186491"
 ---
 # <a name="using-service-map-solution-in-azure"></a>使用 Azure 中的服务映射解决方案
 服务映射自动发现 Windows 和 Linux 系统上的应用程序组件并映射服务之间的通信。 可使用服务映射如所想一般作为提供重要服务的互连系统查看服务器。 服务映射显示 TCP 连接的任何体系结构中服务器、进程、入站和出站连接延迟和端口之间的连接，只需安装代理，无需任何其他配置。
@@ -38,13 +37,13 @@ ms.locfileid: "51827106"
 2. 在搜索栏中键入“Service Map”，并按“Enter”。
 3. 在市场搜索结果页，选择列表中的“服务映射”。<br><br> ![选择 Azure 市场搜索结果中的服务映射解决方案](./media/service-map/marketplace-search-results.png)<br>
 4. 在“服务映射概述”窗格上，查看解决方案详细信息，然后单击“创建”以开始将进程载入到你的 Log Analytics 工作区。<br><br> ![载入服务映射解决方案](./media/service-map/service-map-onboard.png)。
-5. 在“配置解决方案”窗格中，选择现有工作区或创建一个新的 Log Analytics 工作区。  有关如何创建新工作区的详细信息，请参阅[在 Azure 门户创建 Log Analytics 工作区](../../log-analytics/log-analytics-quick-create-workspace.md)。 提供所需的信息后，单击“创建”。  
+5. 在“配置解决方案”窗格中，选择现有工作区或创建一个新的 Log Analytics 工作区。  有关如何创建新工作区的详细信息，请参阅[在 Azure 门户创建 Log Analytics 工作区](../../azure-monitor/learn/quick-create-workspace.md)。 提供所需的信息后，单击“创建”。  
 
 在验证信息和部署解决方案期间，可以在菜单中的“通知”下面跟踪操作进度。 
 
 在 Azure 门户从 Log Analytics 工作区访问服务映射，并选择左窗格中的“解决方案”选项。<br><br> ![选择工作区中的“解决方案”选项](./media/service-map/select-solution-from-workspace.png)。<br> 从解决方案列表中选择“ServiceMap(workspaceName)”，并在服务映射解决方案概述页面单击“服务映射摘要”标题。<br><br> ![服务映射摘要标题](./media/service-map/service-map-summary-tile.png)。
 
-## <a name="use-cases-make-your-it-processes-dependency-aware"></a>用例：使 IT 进程感知依赖关系
+## <a name="use-cases-make-your-it-processes-dependency-aware"></a>用例：使 IT 进程依赖关系具有感知
 
 ### <a name="discovery"></a>发现
 服务映射自动在服务器、进程和第三方服务上生成依赖关系的常见引用映射。 它可发现并映射所有 TCP 依赖关系，从而将意外连接、依赖的远程第三方系统和依赖关系标识到网络的传统深色区域（如 Active Directory）。 服务映射可发现托管系统尝试进行的失败网络连接，帮助标识潜在服务器配置错误、服务中断和网络问题。
@@ -277,7 +276,7 @@ Linux：
 ![“计算机更改跟踪”窗格](media/service-map/machine-updates.png)
 
 ## <a name="log-analytics-records"></a>Log Analytics 记录
-服务映射的计算机和进程清单数据可在 Log Analytics 中[搜索](../../log-analytics/log-analytics-queries.md)。 此数据可应用于包括迁移计划、容量分析、发现和按需性能故障排除在内的方案。
+服务映射的计算机和进程清单数据可在 Log Analytics 中[搜索](../../azure-monitor/log-query/log-query-overview.md)。 此数据可应用于包括迁移计划、容量分析、发现和按需性能故障排除在内的方案。
 
 除了在进程或计算机启动或载入服务映射时生成的记录外，还针对每个唯一计算机和进程每小时生成一条记录。 这些记录的属性在下表中列出。 ServiceMapComputer_CL 事件中的字段和值映射到 ServiceMap Azure 资源管理器 API 中计算机资源的字段。 ServiceMapProcess_CL 事件中的字段和值映射到 ServiceMap Azure 资源管理器 API 中进程资源的字段。 ResourceName_s 字段与相应的 Azure Resource Manager 资源中的名称字段匹配。 
 
@@ -286,8 +285,8 @@ Linux：
 
 包含内部生成的可用于标识唯一进程和计算机的属性：
 
-- 计算机：使用 *ResourceId* 或 *ResourceName_s* 唯一标识 Log Analytics 工作区中的计算机。
-- 进程：使用 *ResourceId* 唯一标识 Log Analytics 工作区中的进程。 *ResourceName_s* 在运行该进程的计算机 (MachineResourceName_s) 的上下文中唯一 
+- 计算机：使用 ResourceId 或 ResourceName_s 唯一标识 Log Analytics 工作区中的计算机。
+- 进程：使用 ResourceId 唯一标识 Log Analytics 工作区中的进程。 *ResourceName_s* 在运行该进程的计算机 (MachineResourceName_s) 的上下文中唯一 
 
 由于在指定的时间范围内，指定的进程和计算机可能存在多条记录，因此针对同一个计算机或进程的查询可能返回多条记录。 若要仅添加最新记录，请在查询中添加“| dedup ResourceId”。
 
@@ -504,7 +503,7 @@ Microsoft 通过使用服务映射服务，自动收集使用情况和性能数�
 
 
 ## <a name="next-steps"></a>后续步骤
-详细了解 Log Analytics 中的[日志搜索](../../log-analytics/log-analytics-queries.md)，以检索服务映射收集的数据。
+详细了解 Log Analytics 中的[日志搜索](../../azure-monitor/log-query/log-query-overview.md)，以检索服务映射收集的数据。
 
 
 ## <a name="troubleshooting"></a>故障排除

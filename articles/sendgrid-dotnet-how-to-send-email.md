@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/15/2017
 ms.author: dx@sendgrid.com
-ms.openlocfilehash: a5f07d02bfe4032d77a17e5972b88f6530125f28
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 91d28802b4af23da5b8060fa7c8f9a7e843a7dab
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38634962"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52840259"
 ---
 # <a name="how-to-send-email-using-sendgrid-with-azure"></a>如何在 Azure 中使用 SendGrid 发送电子邮件
 ## <a name="overview"></a>概述
@@ -43,7 +43,7 @@ SendGrid 是一项[基于云的电子邮件服务]，该服务提供了可靠的
 [SendGrid NuGet 包](https://www.nuget.org/packages/Sendgrid)是获取 SendGrid API 和使用所有依赖项配置应用程序的最简单方法。 NuGet 是 Microsoft Visual Studio 2015 及更高版本随附的一个 Visual Studio 扩展，可让用户轻松安装和更新库与工具。
 
 > [!NOTE]
-> 如果运行的 Visual Studio 版本低于 Visual Studio 2015，并且想要安装 NuGet，那么，请访问 [http://www.nuget.org](http://www.nuget.org)，并单击“安装 NuGet”按钮。
+> 如果运行的 Visual Studio 版本低于 Visual Studio 2015，并且想要安装 NuGet，那么，请访问 [https://www.nuget.org](https://www.nuget.org)，并单击“安装 NuGet”按钮。
 >
 >
 

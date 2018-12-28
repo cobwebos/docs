@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/01/2017
 ms.author: cherylmc
-ms.openlocfilehash: 71a8077f2423dd170d08d540edd307c08ed886cc
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: cf566811f1e5fe7fde20d148e68417acf6d42f54
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52165489"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53073816"
 ---
 # <a name="configure-forced-tunneling-using-the-classic-deployment-model"></a>使用经典部署模型配置强制隧道
 
@@ -41,8 +41,8 @@ ms.locfileid: "52165489"
 
 * 每个虚拟网络子网具有内置的系统路由表。 系统路由表具有以下三组路由：
 
-  * 本地 VNet 路由：直接路由到同一个虚拟网络中的目标 VM。
-  * 本地路由：路由到 Azure VPN 网关。
+  * **本地 VNet 路由：** 直接路由到同一个虚拟网络中的目标 VM。
+  * **本地路由：** 路由到 Azure VPN 网关。
   * **默认路由：** 直接路由到 Internet。 如果要将数据包发送到不包含在前面两个路由中的专用 IP 地址，数据包会被删除。
 * 随着用户定义路由的发布，可以创建路由表来添加默认路由，然后将路由表关联到 VNet 子网，在这些子网启用强制隧道。
 * 需要在连接到虚拟网络的跨界本地站点中，设置一个“默认站点”。
@@ -104,38 +104,41 @@ ms.locfileid: "52165489"
     </VirtualNetworkSite>
 ```
 
-在本示例中，虚拟网络“MultiTier-VNet”具有三个子网：“前端”、“中间层”和“后端子网”，并且具有四个跨界连接：一个“DefaultSiteHQ” 和三个 Branch。 
+在此示例中，虚拟网络“Multitier-VNet”具有三个子网：“Frontend”、“Midtier”和“Backend”子网，具有四个跨界连接：“DefaultSiteHQ”和三个分支。 
 
 以下步骤将“DefaultSiteHQ”设置为使用强制隧道的默认站点连接，并将中间层和后端子网配置为使用强制隧道。
 
 1. 创建一个路由表。 使用以下 cmdlet 创建路由表。
 
-  ```powershell
-  New-AzureRouteTable –Name "MyRouteTable" –Label "Routing Table for Forced Tunneling" –Location "North Europe"
-  ```
+   ```powershell
+   New-AzureRouteTable –Name "MyRouteTable" –Label "Routing Table for Forced Tunneling" –Location "North Europe"
+   ```
+
 2. 将默认路由添加到路由表中。 
 
-  下面的示例将默认路由添加到在步骤 1 中创建的路由表。 请注意，唯一支持的路由是“0.0.0.0/0”到“VPN 网关”下一跃点的目标前缀。
+   下面的示例将默认路由添加到在步骤 1 中创建的路由表。 请注意，唯一支持的路由是“0.0.0.0/0”到“VPN 网关”下一跃点的目标前缀。
 
-  ```powershell
-  Get-AzureRouteTable -Name "MyRouteTable" | Set-AzureRoute –RouteTable "MyRouteTable" –RouteName "DefaultRoute" –AddressPrefix "0.0.0.0/0" –NextHopType VPNGateway
-  ```
+   ```powershell
+   Get-AzureRouteTable -Name "MyRouteTable" | Set-AzureRoute –RouteTable "MyRouteTable" –RouteName "DefaultRoute" –AddressPrefix "0.0.0.0/0" –NextHopType VPNGateway
+   ```
+
 3. 将路由表关联到子网。 
 
-  创建路由表并添加路由后，可以使用以下示例将路由表添加到 VNet 子网，或将路由表与 VNet 子网关联。 下面的示例将“MyRouteTable”路由表添加到 VNet MultiTier-VNet 的中间层和后端子网。
+   创建路由表并添加路由后，可以使用以下示例将路由表添加到 VNet 子网，或将路由表与 VNet 子网关联。 下面的示例将“MyRouteTable”路由表添加到 VNet MultiTier-VNet 的中间层和后端子网。
 
-  ```powershell
-  Set-AzureSubnetRouteTable -VirtualNetworkName "MultiTier-VNet" -SubnetName "Midtier" -RouteTableName "MyRouteTable"
-  Set-AzureSubnetRouteTable -VirtualNetworkName "MultiTier-VNet" -SubnetName "Backend" -RouteTableName "MyRouteTable"
-  ```
+   ```powershell
+   Set-AzureSubnetRouteTable -VirtualNetworkName "MultiTier-VNet" -SubnetName "Midtier" -RouteTableName "MyRouteTable"
+   Set-AzureSubnetRouteTable -VirtualNetworkName "MultiTier-VNet" -SubnetName "Backend" -RouteTableName "MyRouteTable"
+   ```
+
 4. 为强制隧道指定默认站点。 
 
-  在前面的步骤中，示例 cmdlet 脚本创建了路由表，并将路由表关联到两个 VNet 子网。 剩下的步骤是在虚拟网络的多站点连接中，选择一个本地站点作为默认站点或隧道。
+   在前面的步骤中，示例 cmdlet 脚本创建了路由表，并将路由表关联到两个 VNet 子网。 剩下的步骤是在虚拟网络的多站点连接中，选择一个本地站点作为默认站点或隧道。
 
-  ```powershell
-  $DefaultSite = @("DefaultSiteHQ")
-  Set-AzureVNetGatewayDefaultSite –VNetName "MultiTier-VNet" –DefaultSite "DefaultSiteHQ"
-  ```
+   ```powershell
+   $DefaultSite = @("DefaultSiteHQ")
+   Set-AzureVNetGatewayDefaultSite –VNetName "MultiTier-VNet" –DefaultSite "DefaultSiteHQ"
+   ```
 
 ## <a name="additional-powershell-cmdlets"></a>其他 PowerShell cmdlet
 ### <a name="to-delete-a-route-table"></a>删除路由表

@@ -1,11 +1,12 @@
 ---
 title: 在数据科学虚拟机上安全存储访问凭据 - Azure | Microsoft Docs
-description: 在数据科学虚拟机上安全存储访问凭据。
+description: 了解如何在 Data Science Virtual Machine 上安全地存储访问凭据。 你将了解如何使用托管服务标识和 Azure Key Vault 存储访问凭据。
 keywords: 深度学习, AI, 数据科学工具, 数据科学虚拟机, 地理空间分析, 团队数据科学过程
 services: machine-learning
 documentationcenter: ''
 author: gopitk
 manager: cgronlun
+ms.custom: seodec18
 ms.assetid: ''
 ms.service: machine-learning
 ms.component: data-science-vm
@@ -15,12 +16,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/08/2018
 ms.author: gokuma
-ms.openlocfilehash: 1bf3150fc79f86e196be120fef78b76be8e47f63
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: d7d68e784aab371503e4828ce51387b86502de62
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49344500"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53103432"
 ---
 # <a name="store-access-credentials-on-the-data-science-virtual-machine-securely"></a>在数据科学虚拟机上安全存储访问凭据
 

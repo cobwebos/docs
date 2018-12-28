@@ -1,6 +1,6 @@
 ---
-title: 如何在 Azure Active Directory 中的其他组中添加或删除组 | Microsoft Docs
-description: 了解如何使用 Azure Active Directory 在其他组中添加或删除组。
+title: 在组中添加或删除另一个组 - Azure Active Directory | Microsoft Docs
+description: 有关如何使用 Azure Active Directory 在组中添加或删除另一个组的说明。
 services: active-directory
 author: eross-msft
 manager: mtillman
@@ -10,16 +10,16 @@ ms.component: fundamentals
 ms.topic: conceptual
 ms.date: 10/19/2018
 ms.author: lizross
-ms.custom: it-pro
+ms.custom: it-pro, seodec18
 ms.reviewer: krbain
-ms.openlocfilehash: 09e023d1d562ea53d9927adf609335beac38a2d7
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: 12f557e9453db0d8bff2ab91fe8453e026e0320c
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49468018"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53104265"
 ---
-# <a name="how-to-add-or-remove-a-group-from-another-group-using-azure-active-directory"></a>如何：使用 Azure Active Directory 在其他组中添加或删除组
+# <a name="add-or-remove-a-group-from-another-group-using-azure-active-directory"></a>使用 Azure Active Directory 在组中添加或删除另一个组
 本文可帮助使用 Azure Active Directory 在其他组中添加和删除组。
 
 >[!Note]
@@ -29,7 +29,7 @@ ms.locfileid: "49468018"
 可以将现有安全组添加到其他现有安全组（也称为“嵌套组”），以创建成员组（子组）和父组。 成员组会继承父组的特性和属性，从而节省配置时间。
 
 >[!Important]
->当前不支持：<ul><li>将安全组添加到 Office 365 组</li><li>将 Office 365 组添加到安全组或其他 Office 365 组</li><li>将应用分配到嵌套组</li><li>将许可证应用于嵌套组</li></ul>
+>当前不支持：<ul><li>将组添加到与本地 Active Directory 同步的组</li><li>将安全组添加到 Office 365 组</li><li>将 Office 365 组添加到安全组或其他 Office 365 组</li><li>将应用分配到嵌套组</li><li>将许可证应用于嵌套组</li></ul>
 
 ### <a name="to-add-a-group-as-a-member-of-another-group"></a>若要将组作为成员添加到其他组
 

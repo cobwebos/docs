@@ -9,17 +9,16 @@ ms.assetid: 46dc13b4-eb2e-4142-a21c-94a156f760ee
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/30/2018
 ms.reviewer: sdash
 ms.author: mbullwin
-ms.openlocfilehash: e8d07922334855a8133cd6271ee98bcfac2243d5
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 11a421a30508774d976def8d5836451743ecb6ea
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51282605"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53270376"
 ---
 # <a name="monitor-availability-and-responsiveness-of-any-web-site"></a>监视任何网站的可用性和响应能力
 将 Web 应用或网站部署到任何服务器之后，可以设置测试来监视其可用性和响应能力。 [Azure Application Insights](app-insights-overview.md) 将来自全球各地的 Web 请求定期发送到应用程序。 如果应用程序无响应或响应太慢，则会发出警报。
@@ -70,7 +69,7 @@ ms.locfileid: "51282605"
 
     **内容匹配**：类似于“欢迎!”的字符串。 我们测试区分大小写的匹配项是否出现在每个响应中。 它必须是不带通配符的纯字符串。 别忘了，如果页面内容更改，可能需要更新。
 
-* **警报位置阈值**：建议最少为 3/5 的位置数。 警报位置阈值和测试位置数目之间的最佳关系是警报位置阈值  =  测试位置数 - 2，至少有 5 个测试位置。
+* **警报位置阈值**：建议最少 3/5 个位置。 警报位置阈值和测试位置数目之间的最佳关系是警报位置阈值  =  测试位置数 - 2，至少有 5 个测试位置。
 
 ## <a name="multi-step-web-tests"></a>多步骤 Web 测试
 可以监视涉及一连串 URL 的方案。 例如，如果正在监视销售网站，可以测试是否能够正常地将商品添加购物车。
@@ -183,7 +182,7 @@ Web 测试插件提供时间参数化方式。
 
 * 检查从服务器收到的响应。
 * 使用在处理失败的可用性测试时收集的相关服务器端遥测数据进行故障诊断。
-* 在 Git 或 VSTS 中记录问题或工作项以跟踪问题。 Bug 中将包含转至此事件的链接。
+* 在 Git 或 Azure Boards 中记录问题或工作项以跟踪问题。 Bug 中将包含转至此事件的链接。
 * 在 Visual Studio 中打开 Web 测试结果。
 
 从[此处](app-insights-transaction-diagnostics.md)详细了解端到端事务诊断体验。
@@ -203,7 +202,7 @@ Web 测试插件提供时间参数化方式。
 
 ![创建体验](./media/app-insights-monitor-web-app-availability/appinsights-71webtestUpload.png)
 
-**重要信息**：使用[新的统一警报](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-unified-alerts)时，**必须**在警报体验中配置警报规则严重性和[操作组](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups)的通知首选项。 如果不执行以下步骤，则只会收到门户内通知。 
+**重要说明**：使用[新的统一警报](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-unified-alerts)时，必须在警报体验中配置预警规则严重性和[操作组](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups)的通知首选项。 如果不执行以下步骤，则只会收到门户内通知。 
 
 1. 保存可用性测试后，单击新测试名称以转到其详细信息。 单击“编辑警报”![保存后编辑](./media/app-insights-monitor-web-app-availability/editaftersave.png)
 
@@ -218,7 +217,7 @@ Web 测试插件提供时间参数化方式。
 ### <a name="alert-on-availability-metrics"></a>根据可用性指标发出警报
 使用[新的统一警报](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-unified-alerts)时，可以根据分段聚合可用性发出警报以及测试持续时间指标：
 
-1. 在“指标”体验中选择 Application Insights 资源，然后选择“可用性”指标：![可用性指标选择](./media/app-insights-monitor-web-app-availability/selectmetric.png)
+1. 在指标体验中选择 Application Insights 资源，然后选择可用性指标：![可用性指标选择](./media/app-insights-monitor-web-app-availability/selectmetric.png)
 
 2. 从菜单中配置警报选项将转到新体验，可在其中选择特定测试或位置以将警报规则设置为打开。 还可以在此处配置此警报规则的操作组。
     ![可用性警报配置](./media/app-insights-monitor-web-app-availability/availabilitymetricalert.png)
@@ -282,13 +281,13 @@ Web 测试插件提供时间参数化方式。
 
 ## <a name="automation"></a>自动化
 * [使用 PowerShell 脚本自动设置可用性测试](app-insights-powershell.md#add-an-availability-test)。
-* 设置在引发警报时调用的 [webhook](../monitoring-and-diagnostics/insights-webhooks-alerts.md) 。
+* 设置在引发警报时调用的 [webhook](../azure-monitor/platform/alerts-webhooks.md) 。
 
 ## <a name="qna"></a> FAQ
 
 * *站点看上去正常，但测试却失败？为什么 Application Insights 向我发出警报？*
 
-    * 测试是否启用了“分析从属请求”？ 这会导致严格检查脚本、图像等资源。这类故障在浏览器上可能不明显。 检查所有图像、脚本、样式表和页面加载的任何其他文件。 如果其中有任何一个失败，即使 html 主页加载正常，测试也仍会报告为失败。 若要使测试对此类资源故障不再敏感，只需在测试配置中取消选中“分析从属请求”即可。 
+    * 测试是否启用了“分析从属请求”？ 这会导致严格检查脚本、图像等资源。这类故障在浏览器上可能不明显。  检查所有图像、脚本、样式表和页面加载的任何其他文件。 如果其中有任何一个失败，即使 html 主页加载正常，测试也仍会报告为失败。 若要使测试对此类资源故障不再敏感，只需在测试配置中取消选中“分析从属请求”即可。 
 
     * 若要降低包括网络在内的各方面因素的干扰影响，请确保选中“测试故障时允许重试”配置。 也可从多个位置进行测试并对警报规则阈值进行相应的管理，防止在出现特定于位置的问题时引发不必要的警报。
 
@@ -310,7 +309,7 @@ Web 测试插件提供时间参数化方式。
 
     错误（“违反协议: CR 必须后跟 LF”）表明服务器（或依赖项）存在问题。 在响应中设置的标头格式错误时，会发生这种情况。 可能是负载均衡器或 CDN 引发的。 具体说来，某些标头可能没有使用 CRLF 来指示行结束，这违反了 HTTP 规范，因此无法通过 .NET WebRequest 级别的验证。 请检查响应，找出可能违反规范的标头。
     
-    注意：URL 可能不会在对 HTTP 标头的验证比较宽松的浏览器上发生故障。 有关该问题的详细说明，请参阅此博客文章： http://mehdi.me/a-tale-of-debugging-the-linkedin-api-net-and-http-protocol-violations/  
+    注意：在 HTTP 标头验证比较宽松的浏览器上，URL 可能不会失败。 有关该问题的详细说明，请参阅此博客文章： http://mehdi.me/a-tale-of-debugging-the-linkedin-api-net-and-http-protocol-violations/  
     
 * 看不到任何相关的、用于诊断测试失败的服务器端遥测数据？
     

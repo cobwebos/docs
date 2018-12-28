@@ -1,5 +1,6 @@
 ---
-title: 使用 IPv6 部署面向 Internet 的负载均衡器 - Azure 模板 | Microsoft 文档
+title: 使用 IPv6 部署面向 Internet 的负载均衡器 - Azure 模板
+titlesuffix: Azure Load Balancer
 description: 如何为 Azure 负载均衡器和负载均衡的 VM 部署 IPv6 支持。
 services: load-balancer
 documentationcenter: na
@@ -8,16 +9,17 @@ keywords: ipv6, azure 负载均衡器, 双堆栈, 公共 ip, 本机 ipv6, 移动
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
+ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: 14a28fb341692c309ff4f965628b38a767c56633
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.openlocfilehash: 2374df3a457e0f4730dcaa6d69ea3f2e0fa6e9cc
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50740733"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53163202"
 ---
 # <a name="deploy-an-internet-facing-load-balancer-solution-with-ipv6-using-a-template"></a>使用模板部署分配了 IPv6 的面向 Internet 的负载均衡器解决方案
 

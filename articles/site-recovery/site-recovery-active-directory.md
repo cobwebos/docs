@@ -7,14 +7,14 @@ author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 10/16/2018
+ms.date: 11/27/2018
 ms.author: mayg
-ms.openlocfilehash: f96ed8659fc2f49b89199a813f9fab9d5f4af5a1
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 84cc99bac9ae5fa1743ed151e5bf8c3043cf5869
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51232165"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52851004"
 ---
 # <a name="set-up-disaster-recovery-for-active-directory-and-dns"></a>为 Active Directory 和 DNS 设置灾难恢复
 
@@ -174,7 +174,7 @@ ms.locfileid: "51232165"
 
     `HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\NTDS\Parameters\Repl Perform Initial Synchronizations`
 
-    有关详细信息，请参阅[解决 DNS 事件 ID 4013：DNS 服务器不能加载 AD 集成的 DNS 区域](https://support.microsoft.com/kb/2001093)。
+    有关详细信息，请参阅[排查 DNS 事件 ID 4013：DNS 服务器无法加载 AD 集成 DNS 区域](https://support.microsoft.com/kb/2001093)。
 
 3. 禁用需要全局编录服务器才能验证用户登录的要求。 为此，请在本地域控制器中，将以下注册表项设置为 1。 如果 DWORD 不存在，可在“Lsa”节点下创建。
 

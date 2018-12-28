@@ -1,6 +1,6 @@
 ---
-title: Azure IoT Edge 的脱机功能 | Microsoft Docs
-description: 了解 IoT Edge 设备和模块如何能够长时间脱机操作，以及 IoT Edge 如何使常规 IoT 设备也能脱机操作。
+title: 脱机操作设备 - Azure IoT Edge | Microsoft Docs
+description: 了解 IoT Edge 设备和模块如何能够长时间在无 Internet 连接的情况下操作，以及 IoT Edge 如何使常规 IoT 设备也能脱机操作。
 author: kgremban
 manager: philmea
 ms.author: kgremban
@@ -8,12 +8,13 @@ ms.date: 09/20/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 3ab775d57ba188930cc66b0fa1655307e9a78179
-ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
+ms.custom: seodec18
+ms.openlocfilehash: 4c4713bade487ba46f1abdc6d0a76db3e81e38b1
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52284636"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53096938"
 ---
 # <a name="understand-extended-offline-capabilities-for-iot-edge-devices-modules-and-child-devices-preview"></a>了解有关 IoT Edge 设备、模块和子设备的扩展脱机功能（预览版）
 

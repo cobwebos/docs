@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/04/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: e4b33552c4b070164b55a84f1d8586422aced2f8
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: c733c148994b06e6d7cd13ee98e1a8157f26010a
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37446667"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53163169"
 ---
 # <a name="azure-active-directory-b2c-collecting-logs"></a>Azure Active Directory B2C：收集日志
 
@@ -91,7 +91,7 @@ Azure AD B2C 支持将数据发送到 Application Insights 的功能。  Applica
 1. 在 Application Insights 中打开新选项卡。
 1. 下面是可用于查看日志的查询列表
 
-| 查询 | 说明 |
+| Query | Description |
 |---------------------|--------------------|
 traces | 查看 Azure AD B2C 生成的所有日志 |
 traces \| where timestamp > ago(1d) | 查看 Azure AD B2C 为前一天生成的所有日志
@@ -108,7 +108,7 @@ traces \| where timestamp > ago(1d) | 查看 Azure AD B2C 为前一天生成的�
 >[!NOTE]
 >目前，此处所述的详细活动日志仅用来帮助开发自定义策略。 请勿在生产中使用开发模式。  日志收集在开发过程中发送到标识提供者以及从中发出的所有声明。  如果在生产中使用，则开发人员对他们所拥有的 App Insights 日志中收集的 PII（私人身份信息）负责。  仅当策略处于“开发模式”时才会收集这些详细日志。
 
-[不支持的自定义策略示例和相关工具的 Github 存储库](https://github.com/Azure-Samples/active-directory-b2c-advanced-policies)
+[不支持的自定义策略示例和相关工具的 GitHub 存储库](https://github.com/Azure-Samples/active-directory-b2c-advanced-policies)
 
 
 

@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/01/2016
 ms.author: crdun
-ms.openlocfilehash: 1f5626b1001f2d5deb3fa84d64eab6acf6c94b7e
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: dfdabed95d89e02b5a4b23ba23949cd0aaf838f3
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51239519"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52959388"
 ---
 # <a name="client-and-server-versioning-in-mobile-apps-and-mobile-services"></a>移动应用和移动服务中的客户端与服务器版本控制
 Azure 移动服务的最新版本是 Azure 应用服务的**移动应用**功能。
@@ -38,7 +38,7 @@ Azure 移动服务的最新版本是 Azure 应用服务的**移动应用**功能
 
 GET https://service.azurewebsites.net/tables/TodoItem
 
-HEADERS: ZUMO-API-VERSION: 2.0.0
+标头：ZUMO-API-VERSION:2.0.0
 
 POST https://service.azurewebsites.net/tables/TodoItem?ZUMO-API-VERSION=2.0.0
 
@@ -62,7 +62,7 @@ POST https://service.azurewebsites.net/tables/TodoItem?ZUMO-API-VERSION=2.0.0
 
 <!-- IMPORTANT!  The anchors for Mobile Services and Mobile Apps MUST be 1.0.0 and 2.0.0 respectively, since there is an exception error message that uses those anchors. -->
 
-<!-- NOTE: the fwlink to this document is http://go.microsoft.com/fwlink/?LinkID=690568 -->
+<!-- NOTE: the fwlink to this document is https://go.microsoft.com/fwlink/?LinkID=690568 -->
 
 ## <a name="1.0.0"></a>移动服务客户端和服务器
 下表中的客户端 SDK 与**移动服务**兼容。
@@ -75,7 +75,7 @@ POST https://service.azurewebsites.net/tables/TodoItem?ZUMO-API-VERSION=2.0.0
 | 托管客户端（Windows、Xamarin） |[1.3.2](https://www.nuget.org/packages/WindowsAzure.MobileServices/1.3.2) |不适用 |
 | iOS |[2.2.2](https://aka.ms/gc6fex) |不适用 |
 | Android |[2.0.3](https://go.microsoft.com/fwLink/?LinkID=280126) |不适用 |
-| HTML |[1.2.7](http://ajax.aspnetcdn.com/ajax/mobileservices/MobileServices.Web-1.2.7.min.js) |不适用 |
+| HTML |[1.2.7](https://ajax.aspnetcdn.com/ajax/mobileservices/MobileServices.Web-1.2.7.min.js) |不适用 |
 
 ### <a name="mobile-services-server-sdks"></a>移动*服务*服务器 SDK
 | 服务器平台 | 版本 | 接受的版本标头 |
@@ -128,5 +128,5 @@ POST https://service.azurewebsites.net/tables/TodoItem?ZUMO-API-VERSION=2.0.0
 [移动应用客户端]: #MobileAppsClients
 
 
-[Mobile App Server SDK]: http://www.nuget.org/packages/microsoft.azure.mobile.server
+[Mobile App Server SDK]: https://www.nuget.org/packages/microsoft.azure.mobile.server
 [将移动服务迁移到 Azure 应用服务]: app-service-mobile-migrating-from-mobile-services.md

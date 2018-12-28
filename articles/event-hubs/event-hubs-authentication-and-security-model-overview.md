@@ -1,6 +1,6 @@
 ---
-title: Azure 事件中心身份验证和安全模型概述 | Microsoft Docs
-description: 事件中心身份验证和安全模型概述。
+title: 身份验证和安全模型 - Azure事件中心 | Microsoft Docs
+description: 本文介绍 Azure 事件中心的身份验证和安全模型。
 services: event-hubs
 documentationcenter: na
 author: ShubhaVijayasarathy
@@ -12,16 +12,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/16/2018
+ms.custom: seodec18
+ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 0e8dcf9eede744d52e38b742946a59944988f199
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: 6f4abd9f826864914abee0b5d513d5b1c530d416
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42146127"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53104146"
 ---
-# <a name="event-hubs-authentication-and-security-model-overview"></a>事件中心身份验证和安全模型概述
+# <a name="azure-event-hubs---authentication-and-security-model"></a>Azure 事件中心 - 身份验证和安全模型
 
 Azure 事件中心安全模型满足以下要求：
 

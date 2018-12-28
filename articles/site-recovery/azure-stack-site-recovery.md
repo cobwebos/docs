@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.topic: conceptual
 ms.service: site-recovery
-ms.date: 10/28/2018
+ms.date: 11/27/2018
 ms.author: raynew
-ms.openlocfilehash: 9da64ebe675f9d481c7474a81fec294d50e49ce7
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 8285632d8dea76763c65dd06e8be2d7494a47188
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50215202"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52838984"
 ---
 # <a name="replicate-azure-stack-vms-to-azure"></a>将 Azure Stack VM 复制到 Azure
 
@@ -104,7 +104,7 @@ Site Recovery 有助于实现业务连续性和灾难恢复 (BCDR) 策略。 该
     - 如果使用的不是域帐户，则需在 VM 上禁用远程用户访问控制：
         - 在注册表中的 HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System 下，创建 DWORD 值 LocalAccountTokenFilterPolicy。
         - 将值设置为 1。
-        - 若要在命令提示符下执行此操作，请键入以下内容：REG ADD HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /v LocalAccountTokenFilterPolicy /t REG_DWORD /d 1。
+        - 为此，请在命令提示符窗口中键入以下命令：**REG ADD HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /v LocalAccountTokenFilterPolicy /t REG_DWORD /d 1**。
 - 在要复制的 VM 上的 Windows 防火墙中，允许“文件和打印机共享”以及 WMI。
     - 若要执行此操作，请运行 wf.msc 打开 Windows 防火墙控制台。 依次右键单击“入站规则” > “新建规则”。 选择“预定义”，然后从列表中选择“文件和打印机共享”。 完成向导，选择以允许连接，然后单击“完成”。
     - 对于域计算机，可使用 GPO 来执行此操作。
@@ -140,7 +140,7 @@ Site Recovery 有助于实现业务连续性和灾难恢复 (BCDR) 策略。 该
     ![专用 IP 地址](./media/azure-stack-site-recovery/private-ip.png)
 
 
-## <a name="step-2-create-a-vault-and-select-a-replication-goal"></a>第 2 步：创建保管库并选择复制目标
+## <a name="step-2-create-a-vault-and-select-a-replication-goal"></a>步骤 2：创建保管库并选择复制目标
 
 1. 在 Azure 门户中，选择“创建资源” > “监视 + 管理” > “备份和站点恢复”。
 2. 在“名称”中，输入一个友好名称以标识此保管库。 
@@ -202,7 +202,7 @@ Site Recovery 有助于实现业务连续性和灾难恢复 (BCDR) 策略。 该
 3. Site Recovery 会检查是否有一个或多个兼容的 Azure 存储帐户和网络。 如果未找到，则需创建至少一个存储帐户和虚拟网络，方可完成向导。
 
 
-## <a name="step-5-enable-replication"></a>第 5 步：启用复制
+## <a name="step-5-enable-replication"></a>步骤 5：启用复制
 
 ### <a name="create-a-replication-policy"></a>创建复制策略
 
@@ -314,7 +314,7 @@ Site Recovery 有助于实现业务连续性和灾难恢复 (BCDR) 策略。 该
 7. 验证 VM 后，单击“提交”完成故障转移。 这会删除所有可用的恢复点。
 
 > [!WARNING]
-> 请勿取消正在进行的故障转移：在故障转移开始前，停止 VM 复制。 如果取消正在进行的故障转移，故障转移会停止，但 VM 将不再进行复制。
+> 不会取消正在进行的故障转移：在故障转移开始前，VM 复制已停止。 如果取消正在进行的故障转移，故障转移会停止，但 VM 将不再进行复制。
 
 
 ### <a name="fail-back-to-azure-stack"></a>故障回复到 Azure Stack

@@ -2,21 +2,21 @@
 title: 初步了解：使用恢复服务保管库保护 Azure VM
 description: 使用恢复服务保管库保护 Azure VM。 使用 Resource Manager 部署型 VM、经典部署型 VM、高级存储 VM、加密 VM 和基于托管磁盘的 VM 的备份来保护数据。 创建并注册恢复服务保管库。 在 Azure 中注册 VM、创建策略和保护 VM。
 services: backup
-author: markgalioto
+author: rayne-wiselman
 manager: carmonm
 keyword: backups; vm backup
 ms.service: backup
 ms.topic: conceptual
 ms.date: 08/01/2018
-ms.author: markgal
+ms.author: raynew
 ms.custom: H1Hack27Feb2017
 keywords: 备份; VM 备份
-ms.openlocfilehash: daa2355d028af9b61b0b14a453452c1a96487403
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 2c6b881e5717c0f4600b4e3c2f47c19b5d2dae51
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51233535"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52869922"
 ---
 # <a name="back-up-azure-virtual-machines-to-recovery-services-vault"></a>将 Azure 虚拟机备份到恢复服务保管库
 

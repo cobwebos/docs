@@ -1,6 +1,6 @@
 ---
-title: 注册新 Azure IoT Edge 设备（门户）| Microsoft Docs
-description: 使用 Azure 门户注册新 IoT Edge 设备
+title: 在 Azure 门户中注册新设备 - Azure IoT Edge | Microsoft Docs
+description: 使用 Azure 门户注册新的 IoT Edge 设备并检索连接字符串
 author: kgremban
 manager: philmea
 ms.author: kgremban
@@ -8,12 +8,13 @@ ms.date: 06/05/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 6657203c76bc03a262fbcbd30b5bf74b5be140eb
-ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
+ms.custom: seodec18
+ms.openlocfilehash: da93541339ac1c199d3ba0a220fbfff6bbb8bf9c
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51577492"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53082113"
 ---
 # <a name="register-a-new-azure-iot-edge-device-from-the-azure-portal"></a>通过 Azure 门户注册新 Azure IoT Edge 设备
 

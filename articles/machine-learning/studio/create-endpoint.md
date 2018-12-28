@@ -1,12 +1,11 @@
 ---
-title: 在机器学习中创建 Web 服务终结点 - Azure 机器学习工作室 | Microsoft Docs
-description: 在 Azure 机器学习中创建 Web 服务终结点
+title: 创建 Web 服务终结点 - Azure 机器学习工作室 | Microsoft Docs
+description: 在 Azure 机器学习中创建 Web 服务终结点。 Web 服务中的每个终结点都是独立处理、限制和托管的。
 services: machine-learning
 documentationcenter: ''
 author: ericlicoding
-ms.custom: (previous ms.author=yahajiza, author=YasinMSFT)
+ms.custom: seodec18
 ms.author: amlstudiodocs
-manager: hjerez
 editor: cgronlun
 ms.assetid: 4657fc1b-5228-4950-a29e-bc709259f728
 ms.service: machine-learning
@@ -16,14 +15,14 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 10/04/2016
-ms.openlocfilehash: 266970bec1e61dca808bb6358f2b4580359ee70d
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 58418357d6e96204485887cca5d7724c42183db7
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52314007"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53275884"
 ---
-# <a name="creating-endpoints"></a>创建终结点 
+# <a name="creating-endpoints-for-deployed-azure-machine-learning-studio-web-services"></a>为部署的 Azure 机器学习工作室 Web 服务创建终结点
 > [!NOTE]
 >  本主题介绍适用于**经典**机器学习 Web 服务的技术。
 > 
@@ -33,7 +32,7 @@ ms.locfileid: "52314007"
 
 若要实现此目的，使用 Azure 机器学习工作室可为已部署的 Web 服务创建多个终结点。 Web 服务中的每个终结点都是独立处理、限制和托管的。 每个终结点唯一 URL 和身份验证密钥，可以将其分发给客户。
 
-[!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
+
 
 ## <a name="adding-endpoints-to-a-web-service"></a>将终结点添加到 Web 服务
 将终结点添加到 Web 服务有两种方法。

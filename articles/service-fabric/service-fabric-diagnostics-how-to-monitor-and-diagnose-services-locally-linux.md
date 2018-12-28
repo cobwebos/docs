@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
 ms.author: subramar
-ms.openlocfilehash: 5aeb87538968304d3eaf73873d4c4c762c07329c
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: 9f0c4789e73659e5965440989c23a8cf673f7cd2
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44051368"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53309155"
 ---
 # <a name="monitor-and-diagnose-services-in-a-local-machine-development-setup"></a>在本地计算机开发安装过程中监视和诊断服务
 
@@ -35,7 +35,7 @@ ms.locfileid: "44051368"
 
 ## <a name="debugging-service-fabric-java-applications"></a>调试 Service Fabric Java 应用程序
 
-对于 Java 应用程序，可以使用[多个记录框架](http://en.wikipedia.org/wiki/Java_logging_framework)。 由于 `java.util.logging` 是 JRE 的默认选项，因此也适用于 [github 中的代码示例](http://github.com/Azure-Samples/service-fabric-java-getting-started)。  以下内容说明如何配置 `java.util.logging` 框架。
+对于 Java 应用程序，可以使用[多个记录框架](http://en.wikipedia.org/wiki/Java_logging_framework)。 由于 `java.util.logging` 是 JRE 的默认选项，因此也适用于 [GitHub 中的代码示例](http://github.com/Azure-Samples/service-fabric-java-getting-started)。 以下内容说明如何配置 `java.util.logging` 框架。
 
 使用 java.util.logging 可将应用程序日志重定向到内存、输出流、控制台文件或套接字。 对于其中的每个选项，框架中已提供默认处理程序。 可以创建 `app.properties` 文件来配置应用程序的文件处理程序，将所有日志重定向到本地文件。
 
@@ -48,7 +48,7 @@ java.util.logging.FileHandler.level = ALL
 java.util.logging.FileHandler.formatter = java.util.logging.SimpleFormatter
 java.util.logging.FileHandler.limit = 1024000
 java.util.logging.FileHandler.count = 10
-java.util.logging.FileHandler.pattern = /tmp/servicefabric/logs/mysfapp%u.%g.log             
+java.util.logging.FileHandler.pattern = /tmp/servicefabric/logs/mysfapp%u.%g.log
 ```
 
 `app.properties` 文件指向的文件夹必须存在。 创建 `app.properties` 文件后，还需要修改 `<applicationfolder>/<servicePkg>/Code/` 文件夹中的入口点脚本 `entrypoint.sh`，将属性 `java.util.logging.config.file` 设置为 `app.propertes` 文件。 该入口点应如以下代码片段中所示：
@@ -64,7 +64,7 @@ java -Djava.library.path=$LD_LIBRARY_PATH -Djava.util.logging.config.file=<path 
 
 默认情况下，如果未显式配置处理程序，会注册控制台处理程序。 可以在 /var/log/syslog 下查看 syslog 中的日志。
 
-有关详细信息，请参阅 [github 中的代码示例](http://github.com/Azure-Samples/service-fabric-java-getting-started)。  
+有关详细信息，请参阅 [GitHub 中的代码示例](http://github.com/Azure-Samples/service-fabric-java-getting-started)。
 
 
 ## <a name="debugging-service-fabric-c-applications"></a>调试 Service Fabric C# 应用程序
@@ -83,8 +83,8 @@ java -Djava.library.path=$LD_LIBRARY_PATH -Djava.util.logging.config.file=<path 
 
 ```csharp
 
- public class ServiceEventSource : EventSource
- {
+public class ServiceEventSource : EventSource
+{
         public static ServiceEventSource Current = new ServiceEventSource();
 
         [NonEvent]
@@ -105,8 +105,8 @@ java -Djava.library.path=$LD_LIBRARY_PATH -Djava.util.logging.config.file=<path 
 
 
 ```csharp
-   internal class ServiceEventListener : EventListener
-   {
+internal class ServiceEventListener : EventListener
+{
 
         protected override void OnEventSourceCreated(EventSource eventSource)
         {
@@ -114,20 +114,20 @@ java -Djava.library.path=$LD_LIBRARY_PATH -Djava.util.logging.config.file=<path 
         }
         protected override void OnEventWritten(EventWrittenEventArgs eventData)
         {
-            using (StreamWriter Out = new StreamWriter( new FileStream("/tmp/MyServiceLog.txt", FileMode.Append)))           
-        { 
-                 // report all event information               
-         Out.Write(" {0} ",  Write(eventData.Task.ToString(), eventData.EventName, eventData.EventId.ToString(), eventData.Level,""));
-                if (eventData.Message != null)              
-            Out.WriteLine(eventData.Message, eventData.Payload.ToArray());              
-            else             
-        { 
-                    string[] sargs = eventData.Payload != null ? eventData.Payload.Select(o => o.ToString()).ToArray() : null; 
-                    Out.WriteLine("({0}).", sargs != null ? string.Join(", ", sargs) : "");             
+                using (StreamWriter Out = new StreamWriter( new FileStream("/tmp/MyServiceLog.txt", FileMode.Append)))
+                {
+                        // report all event information
+                        Out.Write(" {0} ", Write(eventData.Task.ToString(), eventData.EventName, eventData.EventId.ToString(), eventData.Level,""));
+                        if (eventData.Message != null)
+                                Out.WriteLine(eventData.Message, eventData.Payload.ToArray());
+                        else
+                        {
+                                string[] sargs = eventData.Payload != null ? eventData.Payload.Select(o => o.ToString()).ToArray() : null; 
+                                Out.WriteLine("({0}).", sargs != null ? string.Join(", ", sargs) : "");
+                        }
+                }
         }
-           }
-        }
-    }
+}
 ```
 
 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/13/2018
 ms.author: jeedes
-ms.openlocfilehash: c5422c9894c66348d571b757e50073d2a5501c7b
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: f46cb8f0d0b04b0cff5d3118906f11a060a55f80
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39440092"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52833731"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-attendance-management-services"></a>教程：Azure Active Directory 与 Attendance Management Services 的集成
 
@@ -108,12 +108,12 @@ ms.locfileid: "39440092"
 
     ![Attendance Management Services 域和 URL 单一登录信息](./media/attendancemanagementservices-tutorial/tutorial_attendancemanagementservices_url.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL： `https://id.obc.jp/<tenant information >/`
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“登录 URL”文本框中，使用以下模式键入 URL： `https://id.obc.jp/<tenant information >/`
 
     b. 在“标识符”文本框中，使用以下模式键入 URL：`https://id.obc.jp/<tenant information >/`
 
     > [!NOTE]
-    > 这些不是实际值。 必须使用实际登录 URL 和标识符更新这些值。 请联系 [Attendance Management Services 客户支持团队](http://www.obcnet.jp/)来获取这些值。
+    > 这些不是实际值。 必须使用实际登录 URL 和标识符更新这些值。 请联系 [Attendance Management Services 客户支持团队](https://www.obcnet.jp/)来获取这些值。
 
 1. 在“SAML 签名证书”部分中，单击“证书(base64)”，并在计算机上保存证书文件。
 
@@ -137,7 +137,7 @@ ms.locfileid: "39440092"
 
     ![Attendance Management Services 配置](./media/attendancemanagementservices-tutorial/user2.png)
 
-    a. 选择“使用 SAML 身份验证”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 选择“使用 SAML 身份验证”。
 
     b. 在“标识符”文本框中，粘贴从 Azure 门户复制的“SAML 实体 ID”值。 
 
@@ -150,7 +150,7 @@ ms.locfileid: "39440092"
     f. 单击“注册”
 
 > [!TIP]
-> 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！ 从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[ Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
+> 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！ 从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
@@ -177,7 +177,7 @@ ms.locfileid: "39440092"
 
     ![“用户”对话框](./media/attendancemanagementservices-tutorial/create_aaduser_04.png)
 
-    a. 在“姓名”框中，键入“BrittaSimon”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“姓名”框中，键入“BrittaSimon”。
 
     b. 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
 
@@ -205,7 +205,7 @@ ms.locfileid: "39440092"
 
     ![添加员工](./media/attendancemanagementservices-tutorial/user4.png)
 
-    a. 在“OBCiD”文本框中，键入用户的电子邮件，例如 BrittaSimon@contoso.com。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“OBCiD”文本框中，键入用户的电子邮件，例如 BrittaSimon@contoso.com。
 
     b. 在“密码”文本框中，键入用户的密码。
 
@@ -247,12 +247,12 @@ ms.locfileid: "39440092"
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 在访问面板中单击 Attendance Management Services 磁贴时，应该会自动登录 Attendance Management Services 应用程序。
-有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
+有关访问面板的详细信息，请参阅[访问面板简介](../user-help/active-directory-saas-access-panel-introduction.md)。 
 
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](tutorial-list.md)
-* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
+* [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

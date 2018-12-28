@@ -1,13 +1,12 @@
 ---
 title: 复制他人的数据科学示例 - Azure 机器学习工作室 | Microsoft Docs
-description: 数据科学的商业机密：让他人完成工作。 从 Azure AI 库获取机器学习示例。
+description: 数据科学的商业机密：让他人为你完成工作。 从 Azure AI 库获取机器学习示例。
 keywords: 数据科学示例, 机器学习示例, 聚类分析算法, 聚类分析算法示例
 services: machine-learning
 documentationcenter: na
-author: ericlicoding
-ms.custom: (previous ms.author=hshapiro, author=heatherbshapiro)
-ms.author: amlstudiodocs
-manager: hjerez
+author: garyericson
+ms.custom: seodec18
+ms.author: garye
 editor: cjgronlund
 ms.assetid: ec2be823-c325-4ad8-b8b2-3e664f1a44b4
 ms.service: machine-learning
@@ -17,12 +16,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/05/2018
-ms.openlocfilehash: e573a0394fa47cd6325fe582366242644232cf3d
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: acd0899396ac5a47dade5fac16e451b2029ec0c2
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52313769"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53260372"
 ---
 # <a name="copy-other-peoples-work-to-do-data-science"></a>复制其他人的工作以执行数据科研
 ## <a name="video-5-data-science-for-beginners-series"></a>视频 5：适合初学者的数据科学系列
@@ -42,13 +41,13 @@ ms.locfileid: "52313769"
 ## <a name="other-videos-in-this-series"></a>本系列中的其他视频
 “适合初学者的数据科学”对数据科学进行简要介绍，共五个短视频。
 
-* 视频 1：[数据科学解答的 5 个问题](data-science-for-beginners-the-5-questions-data-science-answers.md)（5 分 14 秒）
+* 视频 1：[数据科学可解答的 5 个问题](data-science-for-beginners-the-5-questions-data-science-answers.md)（5 分 14 秒）
 * 视频 2：[数据是否可用于数据科学？](data-science-for-beginners-is-your-data-ready-for-data-science.md) （4 分 56 秒）
-* 视频 3：[提出数据方面的可解答问题](data-science-for-beginners-ask-a-question-you-can-answer-with-data.md)（4 分 17 秒）
+* 视频 3：[提出可用数据回答的问题](data-science-for-beginners-ask-a-question-you-can-answer-with-data.md)（4 分钟 17 秒）
 * 视频 4：[使用简单的模型预测答案](data-science-for-beginners-predict-an-answer-with-a-simple-model.md)（7 分 42 秒）
-* 视频 5：复制他人的工作以执行数据科研
+* 视频 5：复制其他人的工作以执行数据科研
 
-## <a name="transcript-copy-other-peoples-work-to-do-data-science"></a>抄本：复制他人的工作以执行数据科研
+## <a name="transcript-copy-other-peoples-work-to-do-data-science"></a>脚本：复制其他人的工作以执行数据科研
 欢迎观看“适合初学者的数据科学”系列中的第五个视频。
 
 在本视频中，将发现一个可查找示例的位置，可以在其中查找可借用来作为自己工作起点的示例。 如果先观看了本系列先前的视频，可能会更充分地利用此视频。

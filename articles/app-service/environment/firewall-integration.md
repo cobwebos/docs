@@ -1,5 +1,5 @@
 ---
-title: 锁定 Azure 应用服务环境出站流量
+title: 锁定应用服务环境出站流量 - Azure
 description: 介绍如何集成 Azure 防火墙以保护出站流量
 services: app-service
 documentationcenter: na
@@ -13,12 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/24/2018
 ms.author: ccompy
-ms.openlocfilehash: ce0123528b3fb2454d8b83d59b5916363ae0e944
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.custom: seodec18
+ms.openlocfilehash: 52051ea221a3d49d86cc6b95e020e1075ce8cba2
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51251570"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53275544"
 ---
 # <a name="locking-down-an-app-service-environment"></a>锁定应用服务环境
 

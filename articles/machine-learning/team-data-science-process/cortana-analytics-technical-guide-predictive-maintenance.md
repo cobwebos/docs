@@ -1,5 +1,5 @@
 ---
-title: 借助 Azure 的航天工业预见性维护 - Cortana Intelligence 解决方案技术指南 | Microsoft Docs
+title: 航天工业预见性维护指南 - Team Data Science Process
 description: 在航天工业、实用工具和运输业中用于预见性维护的 Microsoft Cortana Intelligence 解决方案模板的技术指南。
 services: machine-learning
 author: marktab
@@ -10,15 +10,15 @@ ms.component: team-data-science-process
 ms.topic: article
 ms.date: 03/15/2017
 ms.author: tdsp
-ms.custom: (previous author=fboylu, ms.author=fboylu)
-ms.openlocfilehash: 904e9c22f23255f1bee7f532d7f577c7cd457778
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec18, previous-author=fboylu, previous-ms.author=fboylu
+ms.openlocfilehash: d7acb24a6fef0435d59e5a07f5312f1e6368fe52
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52443740"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53140177"
 ---
-# <a name="technical-guide-to-the-cortana-intelligence-solution-template-for-predictive-maintenance-in-aerospace-and-other-businesses"></a>在航天工业及其它业务中用于预见性维护的 Cortana Intelligence 解决方案模板技术指南
+# <a name="technical-guide-to-the-cortana-intelligence-solution-template-for-predictive-maintenance-in-aerospace"></a>在航天工业中用于预见性维护的 Cortana Intelligence 解决方案模板技术指南
 
 >[!Important]
 此文已弃用。 讨论仍与航天工业的预测性维护相关，但如果需要最新信息，请参阅[面向商业受众的解决方案概述](https://github.com/Azure/cortana-intelligence-predictive-maintenance-aerospace)。
@@ -162,7 +162,7 @@ Azure 事件中心支持丰富的格式，可以使用 CSV 或 JSON 格式将数
 ### <a name="set-up-the-cold-path-dashboard"></a>设置冷路径仪表板
 在冷路径数据管道中，目标是完成航班后获取每个飞机引擎的预测 RUL（剩余使用寿命）（周期）。 预测结果每 3 小时更新一次，预测过去 3 小时内已结束航班的的飞机引擎。
 
-Power BI 将连接到充当其数据源、用于存储预测结果的 Azure SQL 数据库。 注意：1）部署解决方案后，预测会在 3 小时内在数据库中显示。
+Power BI 将连接到充当其数据源、用于存储预测结果的 Azure SQL 数据库。 注意：1) 部署解决方案后，预测会在 3 小时内在数据库中显示。
 生成器下载附带的 pbix 文件包含某些种子数据，因此需要立即创建 Power BI 仪表板。 2) 此步骤的先决条件是下载并安装免费软件 [Power BI desktop](https://powerbi.microsoft.com/documentation/powerbi-desktop-get-the-desktop/)。
 
 以下步骤介绍如何将 pbix 文件连接到解决方案部署包含可视化数据时启动的 SQL 数据库（例如预测结果）。
@@ -210,7 +210,7 @@ Power BI 将连接到充当其数据源、用于存储预测结果的 Azure SQL 
 
 1. 在 Azure 流分析 (ASA) 中添加 Power BI 输出。
    
-   * 必须根据 [Azure 流分析和 Power BI：用于实时查看流数据的分析仪表板](../../stream-analytics/stream-analytics-power-bi-dashboard.md)中的说明，将 Azure 流分析作业的输出设置为 Power BI 仪表板。
+   * 必须按照 [Azure 流分析和 Power BI：用于实时查看流数据的分析仪表板](../../stream-analytics/stream-analytics-power-bi-dashboard.md)中的说明操作，将 Azure 流分析作业的输出设置为 Power BI 仪表板。
    * ASA 查询具有三个输出，分别为 **aircraftmonitor**、**aircraftalert** 和 **flightsbyhour**。 可通过单击查询选项卡查看查询。需要根据相应的表将输出添加到 ASA。 添加第一个输出时 (**aircraftmonitor**)，请确保“输出别名”、“数据集名称”和“表名称”都相同 (**aircraftmonitor**)。 重复以上步骤为 **aircraftalert** 和 **flightsbyhour** 添加输出。 将三个输出表全部添加完成并启动 ASA 作业后，应收到一条确认消息（“成功启动流分析作业 maintenancesa02asapbi”）。
 2. 登录到 [Power BI online](http://www.powerbi.com)
    
@@ -218,7 +218,7 @@ Power BI 将连接到充当其数据源、用于存储预测结果的 Azure SQL 
    * 确保“可视化效果”窗格已打开，并显示在屏幕的右侧。
 3. 将数据传输到 Power BI 后，可开始可视化流式处理数据。 下面是固定了一些热路径可视化效果的仪表板示例。 根据相应的数据集可创建其他仪表板磁贴。 根据运行数据生成器的时间，可视化效果上的数字可能会不同。
 
-    ![仪表板视图](media\cortana-analytics-technical-guide-predictive-maintenance\dashboard-view.png)
+    ![仪表板视图](media/cortana-analytics-technical-guide-predictive-maintenance/dashboard-view.png)
 
 1. 下面为创建以上磁贴之一的步骤 – “传感器 11 车队视图与阈值 48.26”磁贴：
    

@@ -12,23 +12,27 @@ ms.workload: ''
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: article
-ms.date: 09/28/2018
+ms.date: 12/04/2018
 ms.author: pbutlerm
-ms.openlocfilehash: d3682d18fb849b2d851bae0986f9e61f216aaf2c
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.openlocfilehash: d51fffad897ba2658c7bee51c26e7e3be9f10e88
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49638874"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53188752"
 ---
 # <a name="virtual-machine-offer"></a>虚拟机套餐
 
-本部分概述发布虚拟机 (VM) 的要素，旨在指导用户在 [Azure 市场](https://azuremarketplace.microsoft.com)中发布套餐。  从此角度来看，此过程主要划分为以下组成部分：
+|    |    |
+|-----------------------------------------------------------------|------------------------------------------|
+| 本部分介绍如何将新的虚拟机产品/服务发布到 [Azure 市场](https://azuremarketplace.microsoft.com)。 支持基于 Windows 和基于 Linux 的虚拟机（包含操作系统虚拟硬盘 (VHD) 以及零个或多个数据虚拟硬盘）。 | ![虚拟机图标](./media/virtual-machine-icon.png)  |
 
-- [先决条件](./cpp-prerequisites.md) - 列出创建或发布 VM 套餐之前所要满足的技术和业务要求
-- [创建 VM 套餐](./cpp-create-offer.md) - 列出使用[云合作伙伴门户](https://cloudpartner.azure.com)创建新 VM 套餐项所要执行的步骤。
-- [创建 VM 技术资产](./cpp-create-technical-assets.md) - 如何为 VM 解决方案创建技术资产，以及如何将此包配置为 Azure 市场中的 VM 套餐
-- [发布 VM 套餐](./cpp-publish-offer.md) - 如何提交套餐，以便发布 Azure 市场
+
+## <a name="publishing-overview"></a>发布概述
+
+视频 [Optimize Your Azure Marketplace Offer](https://channel9.msdn.com/Events/Build/2017/P4026?ocid=player)（优化 Azure 市场套餐）详细概述了 Azure 市场，包括如何在该市场（使用虚拟机解决方案）进行发布、如何使用产品页面和可选的“体验版”体验优化用户体验、如何生成用户引导和使用用户引导，以及如何优化客户参与。
+
+> [!VIDEO https://channel9.msdn.com/Events/Build/2017/P4026]
 
 
 ## <a name="vm-publishing-process-flow"></a>VM 发布流程

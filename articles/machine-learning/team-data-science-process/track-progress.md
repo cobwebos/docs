@@ -1,6 +1,6 @@
 ---
-title: 数据科学项目的执行 - Azure 机器学习 | Microsoft Docs
-description: 数据科学家如何跟踪数据科学项目的进度。
+title: 跟踪数据科学项目的进度 - Team Data Science Process
+description: 数据科学组管理员、团队主管和项目主管如何跟踪数据科学项目的进度。
 author: marktab
 manager: cgronlun
 editor: cgronlun
@@ -9,15 +9,15 @@ ms.component: team-data-science-process
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: tdsp
-ms.custom: (previous author=deguhath, ms.author=deguhath)
-ms.openlocfilehash: 202ac89b8a281012dbcf5f4c4df11e97ba2c8c65
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: a9616a4f80a3105118b82ce3f4106a65fdd9ddfe
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52441462"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53134295"
 ---
-# <a name="track-progress-of-data-science-projects"></a>跟踪数据科学项目的进度
+# <a name="tracking-the-progress-of-data-science-projects"></a>跟踪数据科学项目的进度
 
 数据科学组管理员、团队主管和项目主管需要跟踪项目的进度、已完成了哪些工作及是由谁完成的、待办事项列表上还剩下哪些工作。 
 
@@ -39,7 +39,7 @@ ms.locfileid: "52441462"
 
 剩余面板显示项目的累积流图 (CFD)、燃尽和燃起图：
 
-- **左下角**：CFD 中某一给定状态的工作的数量显示为灰色，蓝色提交并在完成为绿色批准。
+- **左下角**：处于给定状态的工作的数量 CFD，灰色表示“已批准”，蓝色表示“已提交”，绿色表示“已完成”。
 - **右上角**：燃尽图有待与剩余时间完成的工作。
 - **右下角**：燃起图的工作已完成工作的总量。
 

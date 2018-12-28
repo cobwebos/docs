@@ -4,16 +4,17 @@ description: 本文介绍如何在 Azure 流分析中分析诊断日志。
 services: stream-analytics
 author: jseb225
 ms.author: jeanb
-manager: kfile
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 04/20/2017
-ms.openlocfilehash: 9001a2962806ee3e691fa448dde162d12c6ecdd2
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.date: 12/07/2018
+ms.custom: seodec18
+ms.openlocfilehash: db3c9874676e3240f6896c1e1ff8f873360c20d5
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53090816"
 ---
 # <a name="troubleshoot-azure-stream-analytics-by-using-diagnostics-logs"></a>使用诊断日志对 Azure 流分析进行故障排除
 
@@ -35,15 +36,15 @@ ms.lasthandoff: 04/06/2018
 
 1.  登录 Azure 门户，转到“流式处理作业”边栏选项卡。 在“监视”下，选择“诊断日志”。
 
-    ![在边栏选项卡中导航到诊断日志](./media/stream-analytics-job-diagnostic-logs/image1.png)  
+    ![在边栏选项卡中导航到诊断日志](./media/stream-analytics-job-diagnostic-logs/diagnostic-logs-monitoring.png)  
 
 2.  选择“启用诊断”。
 
-    ![启用诊断日志](./media/stream-analytics-job-diagnostic-logs/image2.png)
+    ![启用流分析诊断日志](./media/stream-analytics-job-diagnostic-logs/turn-on-diagnostic-logs.png)
 
 3.  在“诊断设置”页上，针对“状态”选择“打开”。
 
-    ![更改诊断日志的状态](./media/stream-analytics-job-diagnostic-logs/image3.png)
+    ![更改诊断日志的状态](./media/stream-analytics-job-diagnostic-logs/save-diagnostic-log-settings.png)
 
 4.  设置所需的存档目标（存储帐户、事件中心、Log Analytics）。 然后选择要收集的日志类别（“执行”、“创作”）。 
 
@@ -51,7 +52,7 @@ ms.lasthandoff: 04/06/2018
 
 该诊断配置需耗时 10 分钟才会生效。 在此之后，日志将开始在已配置的存档目标（可在“诊断日志”页面中查看）中显示：
 
-![在边栏选项卡中导航到诊断日志 - 存档目标](./media/stream-analytics-job-diagnostic-logs/image4.png)
+![在边栏选项卡中导航到诊断日志 - 存档目标](./media/stream-analytics-job-diagnostic-logs/view-diagnostic-logs-page.png)
 
 有关配置诊断的详细信息，请参阅[从 Azure 资源收集和使用诊断数据](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)。
 
@@ -71,12 +72,12 @@ ms.lasthandoff: 04/06/2018
 
 所有日志均以 JSON 格式存储。 每个项目均具有以下常见字符串字段：
 
-名称 | 说明
+名称 | Description
 ------- | -------
 time | 日志时间戳（采用 UTC）。
 resourceId | 发生操作的资源的 ID，采用大写格式。 其中包括订阅 ID、资源组和作业名称。 例如，**/SUBSCRIPTIONS/6503D296-DAC1-4449-9B03-609A1F4A1C87/RESOURCEGROUPS/MY-RESOURCE-GROUP/PROVIDERS/MICROSOFT.STREAMANALYTICS/STREAMINGJOBS/MYSTREAMINGJOB**。
 category | 日志类别，“执行”或“创作”。
-operationName | 被记录的操作的名称。 例如，“发送事件: SQL 输出写入到 mysqloutput 失败”。
+operationName | 被记录的操作的名称。 例如，**发送事件：SQL 输出写入到 mysqloutput 失败**。
 status | 操作的状态。 例如，“失败”或“成功”。
 级别 | 日志级别。 例如，“错误”、“警告”或“信息性消息”。
 属性 | 日志项目的具体详细信息；序列化为 JSON 字符串。 有关详细信息，请参阅以下部分。
@@ -89,28 +90,28 @@ status | 操作的状态。 例如，“失败”或“成功”。
 
 作业处理数据期间出现的任何错误都在此日志类别中。 这些日志通常创建于读取数据、序列化和写入操作期间。 这些日志不包括连接错误。 连接错误被视为泛型事件。
 
-名称 | 说明
+名称 | Description
 ------- | -------
-Source | 发生错误的作业输入或输出的名称。
+源 | 发生错误的作业输入或输出的名称。
 消息 | 与错误关联的消息。
-Type | 错误类型。 例如，DataConversionError、CsvParserError 和 ServiceBusPropertyColumnMissingError 。
+类型 | 错误类型。 例如，DataConversionError、CsvParserError 和 ServiceBusPropertyColumnMissingError 。
 数据 | 包含用于准确找到错误起源的数据。 会根据数据大小截断数据。
 
 数据错误根据 operationName 值采用以下架构：
 * 序列化事件。 事件读取操作期间发生序列化事件。 当输入的数据由以下任一原因而不满足查询架构时会发生此类事件：
-    * 事件序列化（反序列化）期间类型不匹配：标识导致出错的字段。
-    * 无法读取事件，序列化无效：列出输入数据中发生错误的相关位置信息。 包括用于 blob 输入的 blob 名称、偏移量和数据示例。
+    * *事件序列化/反序列化期间类型不匹配*：标识导致出错的字段。
+    * *无法读取事件，序列化无效*：列出输入数据中发生错误的相关位置信息。 包括用于 blob 输入的 blob 名称、偏移量和数据示例。
 * 发送事件。 写入操作期间发生发送事件。 它们标识导致错误的流式处理事件。
 
 ### <a name="generic-events"></a>泛型事件
 
 泛型事件包含其他所有情况。
 
-名称 | 说明
+名称 | Description
 -------- | --------
 错误 | （可选）错误信息。 通常，这是异常信息（如果存在）。
 消息| 日志消息。
-Type | 消息类型。 映射到错误的内部分类。 例如，JobValidationError 或 BlobOutputAdapterInitializationFailure。
+类型 | 消息类型。 映射到错误的内部分类。 例如，JobValidationError 或 BlobOutputAdapterInitializationFailure。
 相关性 ID | 用于唯一标识作业执行的 [GUID](https://en.wikipedia.org/wiki/Universally_unique_identifier)。 从作业开始到作业停止期间所有的执行日志条目具有相同的“相关 ID”值。
 
 ## <a name="next-steps"></a>后续步骤

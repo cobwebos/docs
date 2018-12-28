@@ -4,17 +4,17 @@ description: 本文介绍如何将 Azure 流分析与 Azure 机器学习一起�
 services: stream-analytics
 author: dubansal
 ms.author: dubansal
-manager: kfile
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 04/09/2018
-ms.openlocfilehash: 3f6d6f700ccf232dacb512f22dd1f9fb5d870740
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.date: 12/07/2018
+ms.custom: seodec18
+ms.openlocfilehash: df1010be8c9f41684af806885db7587bfcf1c540
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51567037"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53091214"
 ---
 # <a name="anomaly-detection-in-azure-stream-analytics"></a>Azure 流分析中的异常检测
 
@@ -95,7 +95,7 @@ AnomalyDetection 运算符返回一个包含所有三种评分的记录作为输
 
 步骤图示如下： 
 
-![训练模型](media/stream-analytics-machine-learning-anomaly-detection/training_model.png)
+![机器学习训练模型](media/stream-analytics-machine-learning-anomaly-detection/machine-learning-training-model.png)
 
 |**Model** | **训练开始时间** | **开始使用模型评分的时间** |
 |---------|---------|---------|
@@ -126,7 +126,7 @@ AnomalyDetection 运算符返回一个包含所有三种评分的记录作为输
    - 如果斜率为正，则为斜率  
    - 否则为 0 
 
-3. **慢速负趁势：** 根据历史记录窗口中的事件值计算趋势线，并且该操作将查找该线中的负趋势。 奇异值计算方式为： 
+3. **慢速负趋势：** 根据历史记录窗口中的事件值计算趋势线，并且该操作将查找该线中的负趋势。 奇异值计算方式为： 
 
    - 如果斜率为负，则为斜率  
    - 否则为 0  
@@ -145,15 +145,15 @@ AnomalyDetection 运算符返回一个包含所有三种评分的记录作为输
 
    下图 1 和 2 使用上限更改显示了此方案（相同的逻辑适用于下限更改）。 在这两个示意图中，波形表示异常级别更改。 橙色竖线表示跃点边界，跃点大小与 AnomalyDetection 运算符中指定的检测窗口相同。 绿线表示训练窗口的大小。 在图 1 中，跃点大小与异常持续时间相同。 在图 2 中，跃点大小是异常持续时间的一半。 在所有情况下，都会检测向上更改，因为用于评分的模型是根据正常数据训练的。 但是，根据双向级别更改检测器的工作原理，它必须从为恢复正常状态评分的模型的训练窗口中排除正常值。 在图 1 中，评分模型的训练包括一些正常事件，因此无法检测恢复正常状态。 但在图 2 中，训练仅包括异常部分，因此可确保检测恢复正常状态。 出于相同的原因，任何小于一半的项目也适用，而任何更大的项目最终会包括一部分正常事件。 
 
-   ![窗口大小等于异常长度的 AD](media/stream-analytics-machine-learning-anomaly-detection/windowsize_equal_anomaly_length.png)
+   ![窗口大小等于异常长度的 AD](media/stream-analytics-machine-learning-anomaly-detection/windowsize-equal-anomaly-length.png)
 
-   ![窗口大小等于异常长度一半的 AD](media/stream-analytics-machine-learning-anomaly-detection/windowsize_equal_half_anomaly_length.png)
+   ![窗口大小等于异常长度一半的 AD](media/stream-analytics-machine-learning-anomaly-detection/windowsize-equal-half-anomaly-length.png)
 
 2. 如果无法预测异常的长度，则此探测器会尽最大努力检测。 但是，选择较窄的时间窗口会限制训练数据，从而提高检测到恢复正常状态的概率。 
 
 3. 在以下方案中，检测不到较长持续时间的异常，因为训练窗口已包括具有相同高值的异常。 
 
-   ![大小相同的异常](media/stream-analytics-machine-learning-anomaly-detection/anomalies_with_same_length.png)
+   ![检测到大小相同的异常](media/stream-analytics-machine-learning-anomaly-detection/anomalies-with-same-length.png)
 
 ## <a name="example-query-to-detect-anomalies"></a>用于检测异常的示例查询 
 

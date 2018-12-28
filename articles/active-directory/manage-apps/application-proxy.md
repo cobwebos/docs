@@ -15,12 +15,12 @@ ms.date: 01/31/2018
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 428f094dae2b9a69b58912190d2959a7dfc467ec
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: ec5c75b5de912988efeb5167107f6d0dfe07da2e
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39365256"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53139941"
 ---
 # <a name="how-to-provide-secure-remote-access-to-on-premises-applications"></a>如何提供对本地应用程序的安全远程访问
 
@@ -59,16 +59,16 @@ Azure AD 应用程序代理的特性：
 * 与 Active Directory 身份验证库 (ADAL) 集成的富客户端应用
 
 ## <a name="how-does-application-proxy-work"></a>应用程序代理的工作原理是什么？
-需要配置以下两个组件才能使应用程序代理正常工作：连接器和外部终结点。 
+需要配置以下两个组件才能使应用程序代理正常工作：连接器和终结点。 
 
 连接器是网络中 Windows Server 上的轻型代理。 连接器可帮助流量从云中的应用程序代理服务流向本地应用程序。 它只使用出站连接，因此不需要开放任何入站端口，或在外围网络中放置任何对象。 连接器是无状态的，可根据需要从云中提取信息。 有关连接器的详细信息（例如，它们如何均衡负载和执行身份验证），请参阅[了解 Azure AD 应用程序代理连接器](application-proxy-connectors.md)。 
 
-网络外部的用户通过外部终结点访问应用程序。 他们可以直接转到指定的外部 URL，或者通过 MyApps 门户访问应用程序。 当用户转到其中一个终结点时，将在 Azure AD 中进行身份验证，并通过连接器路由到本地应用程序。
+终结点可以是 URL 或[最终用户门户](end-user-experiences.md)。 用户可通过访问外部 URL 访问位于你网络外部的应用程序。 网络内的用户可以通过 URL 或最终用户门户访问应用程序。 当用户转到其中一个终结点时，将在 Azure AD 中进行身份验证，并通过连接器路由到本地应用程序。
 
  ![AzureAD 应用程序代理关系图](./media/application-proxy/azureappproxxy.png)
 
-1. 用户通过应用程序代理服务访问应用程序，然后定向到 Azure AD 登录页进行身份验证。
-2. 成功登录之后，系统将生成令牌并发送给客户端设备。
+1. 在用户通过终结点访问应用程序后，将其定向到 Azure AD 登录页面。 
+2. 成功登录之后，系统生成令牌并发送给用户的客户端设备。
 3. 客户端将令牌发送到应用程序代理服务，该服务检索令牌中的用户主体名称 (UPN) 和安全主体名称 (SPN)，然后将请求定向到应用程序代理连接器。
 4. 如果已配置单一登录，则连接器代表用户执行所需的任何其他身份验证。
 5. 连接器将请求发送到本地应用程序。  
@@ -88,8 +88,8 @@ Azure AD 应用程序代理针对使用集成 Windows 身份验证 (IWA) 的应�
 
 通过两个步骤开始使用应用程序代理：
 
-1. [启用应用程序代理并配置连接器](application-proxy-enable.md)。    
-2. [发布应用程序](application-proxy-publish-azure-portal.md) - 使用快速方便的向导发布本地应用，即可远程访问。
+1. [启用应用程序代理并配置连接器](application-proxy-add-on-premises-application.md)。    
+2. [发布应用程序](application-proxy-add-on-premises-application.md) - 使用快速方便的向导发布本地应用，即可远程访问。
 
 ## <a name="whats-next"></a>后续步骤
 发布第一个应用后，还可以使用应用程序代理执行其他许多操作：
@@ -100,5 +100,5 @@ Azure AD 应用程序代理针对使用集成 Windows 身份验证 (IWA) 的应�
 * [使用现有的本地代理服务器](application-proxy-configure-connectors-with-proxy-servers.md) 
 * [设置自定义主页](application-proxy-configure-custom-home-page.md)
 
-有关最新新闻和更新，请参阅 [应用程序代理博客](http://blogs.technet.com/b/applicationproxyblog/)
+有关最新新闻和更新，请参阅 [应用程序代理博客](https://blogs.technet.com/b/applicationproxyblog/)
 

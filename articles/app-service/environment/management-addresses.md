@@ -1,5 +1,5 @@
 ---
-title: Azure 应用服务环境管理地址
+title: 应用服务环境管理地址 - Azure
 description: 列出用于监管应用服务环境的管理地址
 services: app-service
 documentationcenter: na
@@ -13,12 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/29/2018
 ms.author: ccompy
-ms.openlocfilehash: 590679daff20f9c469fb8fcfcc0fbbad77f91b5b
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.custom: seodec18
+ms.openlocfilehash: 7fb39886b19a2229188821eb39d4fb8a5928bb43
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47162843"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53276672"
 ---
 # <a name="app-service-environment-management-addresses"></a>应用服务环境管理地址
 
@@ -46,7 +47,7 @@ ms.locfileid: "47162843"
 
 API 返回一个 JSON 文档，其中包含 ASE 的所有入站地址。 地址列表包括管理地址、ASE 使用的 VIP 和 ASE 子网地址范围本身。  
 
-若要使用 [armclient](http://github.com/projectkudu/ARMClient) 调用此 API，请使用以下命令，但请替换为你的订阅 ID、资源组和 ASE 名称。  
+若要使用 [armclient](https://github.com/projectkudu/ARMClient) 调用此 API，请使用以下命令，但请替换为你的订阅 ID、资源组和 ASE 名称。  
 
     armclient login
     armclient get /subscriptions/<subscription ID>/resourceGroups/<resource group>/providers/Microsoft.Web/hostingEnvironments/<ASE Name>/inboundnetworkdependenciesendpoints?api-version=2016-09-01

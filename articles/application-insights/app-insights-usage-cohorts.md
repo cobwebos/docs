@@ -8,24 +8,23 @@ manager: carmonm
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
-ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 04/10/2018
 ms.reviewer: mbullwin
 ms.pm_owner: daviste;NumberByColors
 ms.author: daviste
-ms.openlocfilehash: d8bb7a975bd5bab8698d20e5d21514b79945eac6
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: 4a7b5cd925bd4b66e25754c30de5cbaf866dab0b
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51564912"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52970614"
 ---
 # <a name="application-insights-cohorts"></a>Application Insights 队列
 
 队列是具有某种共性的用户、会话、事件或操作集。 在 Azure Application Insights 中，队列由 Analytics 查询定义。 如果你要反复分析特定的用户或事件集，队列可让你更灵活地准确表达所需的集。
 
-![队列窗格](.\media\app-insights-usage-cohorts\001.png)
+![队列窗格](./media/app-insights-usage-cohorts/001.png)
 
 ## <a name="cohorts-versus-basic-filters"></a>队列与基本筛选器
 
@@ -53,14 +52,14 @@ ms.locfileid: "51564912"
 
 4. 请将 **UsedAtLeastCustom** 更改为 **5 天以上**，并将 **Period** 保留为默认 28 天。
 
-    ![参与用户](.\media\app-insights-usage-cohorts\003.png)
+    ![参与用户](./media/app-insights-usage-cohorts/003.png)
 
     现在，此队列代表在过去 28 天内 5 个独立的日期通过任何自定义事件或页面视图发送的所有用户 ID。
 
 5. 选择“保存”。
 
    > [!TIP]
-   >  为队列命名，例如“Engaged Users (5+ Days)”。 根据是否希望对此 Application Insights 资源拥有访问权限的其他人查看此队列，将此队列保存到“我的报告”或“共享报告”中。
+   > 为队列命名，例如“Engaged Users (5+ Days)”。 根据是否希望对此 Application Insights 资源拥有访问权限的其他人查看此队列，将此队列保存到“我的报告”或“共享报告”中。
 
 6. 选择“返回库”。
 
@@ -70,9 +69,10 @@ ms.locfileid: "51564912"
 
 现已根据此用户队列筛选“用户”工具：
 
-![根据特定的队列筛选“用户”窗格](.\media\app-insights-usage-cohorts\004.png)
+![根据特定的队列筛选“用户”窗格](./media/app-insights-usage-cohorts/004.png)
 
 需要注意几个要点：
+
 * 不能通过普通的筛选器创建此集。 日期逻辑更高级。
 * 可以使用“用户”工具中的正常筛选器进一步筛选此队列。 因此，尽管该队列是基于 28 天期限定义的，但仍可以在“用户”工具中将时间范围调整为 30、60 或 90 天。
 
@@ -88,7 +88,7 @@ ms.locfileid: "51564912"
 
 3. 选择“事件选取器”。
 
-    ![事件选取器的屏幕截图](.\media\app-insights-usage-cohorts\006.png)
+    ![事件选取器的屏幕截图](./media/app-insights-usage-cohorts/006.png)
 
 4. 在“活动”下拉框中，选择想要添加到队列中的事件。
 
@@ -98,11 +98,11 @@ ms.locfileid: "51564912"
 
 前面两个队列是使用下拉框定义的。 但是，我们也可以使用 Analytics 查询来定义队列，以获得全面灵活性。 让我们探讨如何为英国的用户创建队列。
 
-![演练“队列”工具用法的动画](.\media\app-insights-usage-cohorts\cohorts0001.gif)
+![演练“队列”工具用法的动画](./media/app-insights-usage-cohorts/cohorts0001.gif)
 
 1. 打开“队列”工具，依次选择“模板库”选项卡、“空白用户队列”。
 
-    ![空白用户队列](.\media\app-insights-usage-cohorts\001.png)
+    ![空白用户队列](./media/app-insights-usage-cohorts/001.png)
 
     有三个部分：
     * 一个 Markdown 文本部分，可在其中为其他团队成员更详细地描述该队列。
@@ -137,7 +137,8 @@ _我已定义某些国家/地区的用户的队列。当我在“用户”工具
 * 筛选器版本只显示来自英国的事件。 不过，如果按国家或地区拆分，则只会看到“英国”。
 
 ## <a name="learn-more"></a>了解详细信息
-- [Analytics 查询语言](https://go.microsoft.com/fwlink/?linkid=856587)
-- [用户、会话、事件](app-insights-usage-segmentation.md)
-- [用户流](app-insights-usage-flows.md)
-- [使用情况概述](app-insights-usage-overview.md)
+
+* [Analytics 查询语言](https://go.microsoft.com/fwlink/?linkid=856587)
+* [用户、会话、事件](app-insights-usage-segmentation.md)
+* [用户流](app-insights-usage-flows.md)
+* [使用情况概述](app-insights-usage-overview.md)

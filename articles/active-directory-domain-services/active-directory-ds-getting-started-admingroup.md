@@ -15,17 +15,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: ergreenl
-ms.openlocfilehash: cac1814057b5adbb75d9484b332bd3f8aaa31a18
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.openlocfilehash: ec51ba28c81e2aa2dbfe2a3dc55d9940c74ff673
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52446852"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52959846"
 ---
 # <a name="enable-azure-active-directory-domain-services-using-the-azure-portal"></a>使用 Azure 门户启用 Azure Active Directory 域服务
 
-
 ## <a name="task-3-configure-administrative-group"></a>任务 3：配置管理组
+
 在此配置任务中，会在 Azure AD 目录中创建管理组。 此特殊管理组称为 *AAD DC 管理员*。 此组的成员在已加入托管域的计算机上拥有管理权限。 在已加入域的计算机上，此组将添加到管理员组。 此外，此组的成员可以使用远程桌面远程连接到已加入域的计算机。
 
 > [!NOTE]
@@ -49,14 +49,14 @@ Azure AD 域服务允许完全同步 Azure AD 中可用的所有用户和组，�
 ### <a name="full-synchronization"></a>完全同步
 
 1. 若要进行完全同步，只需要单击屏幕底部的“确定”，因为已选择了完全同步。
-    ![完全同步](./media\active-directory-domain-services-admin-guide\create-sync-all.PNG)
+    ![完全同步](./media/active-directory-domain-services-admin-guide/create-sync-all.PNG)
 
 ### <a name="scoped-synchronization"></a>具有作用域的同步
 
 1. 将同步按钮切换到“具有作用域的”，此时将出现“选择组”页面。 从此页面中，可以看到已选择将哪些组同步到你的托管域。
-    ![具有作用域的同步](media\active-directory-domain-services-admin-guide\create-sync-scoped.PNG)
+    ![具有作用域的同步](media/active-directory-domain-services-admin-guide/create-sync-scoped.PNG)
 2. 单击顶部导航栏中的“选择组”。 从此处，将在一侧弹出组选取器。 可以使用它选择要同步到 Azure AD 域服务的任何其他组。 完成后，单击“选择”以关闭组选取器并将那些组添加到选定列表。
-    ![具有作用域的同步选择组](media\active-directory-domain-services-admin-guide\create-sync-scoped-groupselect.PNG)
+    ![具有作用域的同步选择组](media/active-directory-domain-services-admin-guide/create-sync-scoped-groupselect.PNG)
 3. 单击“确定”以移动到摘要页。
 
 ## <a name="deploy-your-managed-domain"></a>部署托管域
@@ -69,8 +69,8 @@ Azure AD 域服务允许完全同步 Azure AD 中可用的所有用户和组，�
 
     ![通知 - 部署正在进行](./media/getting-started/domain-services-blade-deployment-in-progress.png)
 
-
 ## <a name="check-the-deployment-status-of-your-managed-domain"></a>检查托管域的部署状态
+
 预配托管域的过程可能最多需要一小时。
 
 1. 在部署正在进行时，可以在“搜索资源”搜索框中搜索“域服务”。 从搜索结果中“选择 Azure AD 域服务”。 “Azure AD 域服务”边栏选项卡会列出正在预配的托管域。
@@ -96,10 +96,10 @@ Azure AD 域服务允许完全同步 Azure AD 中可用的所有用户和组，�
 
     ![完全预配后的“域服务 - 属性”选项卡](./media/getting-started/domain-services-provisioned-properties.png)
 
-
 ## <a name="need-help"></a>需要帮助？
+
 预配托管域的两个域控制器可能需要一个或两个小时。 如果部署失败或好几个小时停滞在“挂起”状态，请随意[联系产品团队以寻求帮助](active-directory-ds-contact-us.md)。
 
-
 ## <a name="next-step"></a>后续步骤
+
 [任务 4：更新 Azure 虚拟网络的 DNS 设置](active-directory-ds-getting-started-dns.md)

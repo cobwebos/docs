@@ -1,5 +1,5 @@
 ---
-title: Azure 搜索中的全文搜索引擎 (Lucene) 体系结构 | Microsoft Docs
+title: 全文搜索引擎 (Lucene) 体系结构 - Azure 搜索
 description: 解释与 Azure 搜索相关的全文搜索的 Lucene 查询处理和文档检索概念。
 manager: jlembicz
 author: yahnoosh
@@ -9,12 +9,13 @@ ms.devlang: NA
 ms.topic: conceptual
 ms.date: 04/20/2018
 ms.author: jlembicz
-ms.openlocfilehash: 55d361e90dbc5fe48bc118088a6f859d096048ff
-ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
+ms.custom: seodec2018
+ms.openlocfilehash: 8ca9fe72e4bd5272a5303b3bacd8c0960504789d
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39036864"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53315786"
 ---
 # <a name="how-full-text-search-works-in-azure-search"></a>Azure 搜索中全文搜索的工作原理
 
@@ -262,7 +263,7 @@ Spacious,||air-condition*+"Ocean view"
 | resort | 3 |
 | retreat | 4 |
 
-在标题字段中，只有 *hotel* 显示在以下两个文档中：1 和 3。
+在标题字段中，只有“酒店”显示在以下两个文档中：1、3。
 
 对于**说明**字段，索引如下所示：
 

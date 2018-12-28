@@ -1,22 +1,20 @@
 ---
-title: Azure Cosmos DB 帐户的 MongoDB 连接字符串 | Microsoft Docs
+title: Azure Cosmos DB 帐户的 MongoDB 连接字符串
 description: 了解如何使用 MongoDB 连接字符串，将 MongoDB 应用连接到 Azure Cosmos DB 帐户。
 keywords: mongodb 连接字符串
 services: cosmos-db
 author: slyons
-manager: kfile
 ms.service: cosmos-db
 ms.component: cosmosdb-mongo
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/19/2017
 ms.author: sclyon
-ms.openlocfilehash: ad8d6fe36c289c4c9e37689e1c7d755dc3bf9048
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: a78a77e16e9a810c0be03656aa48b02cc8e6e5e6
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "40038083"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52849252"
 ---
 # <a name="connect-a-mongodb-application-to-azure-cosmos-db"></a>将 MongoDB 应用程序连接到 Azure Cosmos DB
 了解如何使用 MongoDB 连接字符串，将 MongoDB 应用连接到 Azure Cosmos DB 帐户。 然后，可使用 Azure Cosmos DB 数据库作为 MongoDB 应用的数据存储。 
@@ -54,13 +52,13 @@ ms.locfileid: "40038083"
 >
 >
 
-Azure Cosmos DB 支持标准 MongoDB 连接字符串 URI 格式，但要满足几个具体的要求：Azure Cosmos DB 帐户需要通过 SSL 进行身份验证和安全通信。 因此，连接字符串格式为：
+Azure Cosmos DB 支持标准的 MongoDB 连接字符串 URI 格式，但要满足几个具体的要求：Azure Cosmos DB 帐户需要通过 SSL 进行身份验证和安全通信。 因此，连接字符串格式为：
 
     mongodb://username:password@host:port/[database]?ssl=true
 
 此字符串的值可用于前面显示的“连接字符串”边栏选项卡：
 
-* 用户名称（必需）：Azure Cosmos DB 帐户名称。
+* 用户名（必需）：Azure Cosmos DB 帐户名称。
 * 密码（必需）：Azure Cosmos DB 帐户密码。
 * 主机（必需）：Azure Cosmos DB 帐户的 FQDN。
 * 端口（必需）：10255。

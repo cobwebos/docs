@@ -1,26 +1,21 @@
 ---
-title: 在 Azure 存储资源管理器中管理 Azure Cosmos DB
-description: 了解如何在 Azure 存储资源管理器中管理 Azure Cosmos DB。
-Keywords: Azure Cosmos DB, Azure Storage Explorer, MongoDB
-services: cosmos-db
+title: 使用 Azure 存储资源管理器管理 Azure Cosmos DB 资源
+description: 了解如何使用 Azure 存储资源管理器连接到 Azure Cosmos DB 并管理其资源。
 author: Jejiang
-manager: kfile
-editor: ''
 tags: Azure Cosmos DB
 ms.service: cosmos-db
-ms.custom: Azure Cosmos DB active
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/20/2018
+ms.date: 12/07/2018
 ms.author: jejiang
-ms.openlocfilehash: 4a50809c48ba03b7a12689d905e704d3f820ca8a
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.custom: seodec18
+ms.openlocfilehash: 1ce483a88c1f57912dfe30efa98f46335e97c01c
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52162369"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53138120"
 ---
-# <a name="manage-azure-cosmos-db-in-azure-storage-explorer"></a>在 Azure 存储资源管理器中管理 Azure Cosmos DB
+# <a name="manage-azure-cosmos-db-resources-using-azure-storage-explorer"></a>使用 Azure 存储资源管理器管理 Azure Cosmos DB 资源
 
 通过在 Azure 存储资源管理器中使用 Azure Cosmos DB，用户可以管理 Azure Cosmos DB 实体、操作数据、更新存储过程和触发器以及其他 Azure 实体（如存储 blob 和队列）。 现在可以使用相同工具在一个位置管理不同 Azure 实体。 目前，Azure 存储资源管理器支持 SQL、MongoDB、Graph 和表帐户。
 
@@ -31,7 +26,7 @@ ms.locfileid: "52162369"
 
 ## <a name="installation"></a>安装
 
-在此处安装最新的 Azure 存储资源管理器版本：[Azure 存储资源管理器](https://azure.microsoft.com/features/storage-explorer/)，现在我们支持 Windows、Linux 和 MAC 版本。
+在此处安装最新 Azure 存储资源管理器 BITS：[Azure 存储资源管理器](https://azure.microsoft.com/features/storage-explorer/)，现在我们支持 Windows、Linux 和 MAC 版本。
 
 ## <a name="connect-to-an-azure-subscription"></a>连接到 Azure 订阅
 
@@ -229,7 +224,7 @@ ms.locfileid: "52162369"
      - [Windows](https://slproweb.com/products/Win32OpenSSL.html)（任意轻量版本均可）
      - Mac 和 Linux：应包含在操作系统中
 2. 运行 Open SSL
-    - Windows：转到安装目录，然后转到“/bin/”，然后双击“openssl.exe”。
+    - Windows:转到安装目录，然后转到“/bin/”，然后双击“openssl.exe”。
     - Mac 和 Linux：从终端执行“openssl”
 3. 执行 `s_client -showcerts -connect microsoft.com:443`
 4. 查找自签名证书。 若不确定哪个证书为自签名，则请查找使用者（“s:”）和证书颁发者（“i:”）相同的任意位置。
@@ -242,11 +237,11 @@ ms.locfileid: "52162369"
 
 若成功登录后无法检索订阅，请执行以下操作：
 
-- 通过登录 [Azure 门户](http://portal.azure.com/)验证帐户是否有权访问该订阅
-- 请确保使用正确的环境登录（[Azure](http://portal.azure.com/)、[Azure 中国](https://portal.azure.cn/)、[Azure 德国](https://portal.microsoftazure.de/)、[Azure 美国政府](http://portal.azure.us/)或自定义环境/Azure Stack）
+- 通过登录 [Azure 门户](https://portal.azure.com/)验证帐户是否有权访问该订阅
+- 请确保使用正确的环境登录（[Azure](https://portal.azure.com/)、[Azure 中国](https://portal.azure.cn/)、[Azure 德国](https://portal.microsoftazure.de/)、[Azure 美国政府](https://portal.azure.us/)或自定义环境/Azure Stack）
 - 如果使用代理，请确保已正确配置存储资源管理器代理
 - 尝试移除并重新添加帐户
-- 尝试从主目录（例如：C:\Users\ContosoUser）删除以下文件，然后重新添加帐户：
+- 尝试从主目录删除以下文件（例如：C:\Users\ContosoUser），然后重新添加帐户：
   - .adalcache
   - .devaccounts
   - .extaccounts

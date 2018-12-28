@@ -1,5 +1,5 @@
 ---
-title: Azure 应用服务环境的网络注意事项
+title: 应用服务环境的网络注意事项 - Azure
 description: 介绍 ASE 网络流量，以及如何在 ASE 中设置 NSG 和 UDR
 services: app-service
 documentationcenter: na
@@ -13,12 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/29/2018
 ms.author: ccompy
-ms.openlocfilehash: 535f70658593ff5a9ae1642ae7a97646e3fefb63
-ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.custom: seodec18
+ms.openlocfilehash: d9a0ab84e133863092f68cc949c2b7933bc5da31
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51288248"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53271005"
 ---
 # <a name="networking-considerations-for-an-app-service-environment"></a>应用服务环境的网络注意事项 #
 
@@ -26,8 +27,8 @@ ms.locfileid: "51288248"
 
  Azure [应用服务环境][Intro]是指将 Azure App Service 部署到 Azure 虚拟网络 (VNet) 的子网中。 应用服务环境 (ASE) 具有两种部署类型：
 
-- 外部 ASE：在 Internet 可访问的 IP 地址上公开 ASE 托管的应用。 有关详细信息，请参阅[创建外部 ASE][MakeExternalASE]。
-- ILB ASE：在 VNet 中的 IP 地址上公开 ASE 托管的应用。 内部终结点是一个内部负载均衡器 (ILB)，因此该类部署被称为 ILB ASE。 有关详细信息，请参阅[创建和使用 ILB ASE][MakeILBASE]。
+- **外部 ASE**：在 Internet 可访问的 IP 地址上公开 ASE 托管的应用。 有关详细信息，请参阅[创建外部 ASE][MakeExternalASE]。
+- **ILB ASE**：在 VNet 中的 IP 地址上公开 ASE 托管的应用。 内部终结点是一个内部负载均衡器 (ILB)，因此该类部署被称为 ILB ASE。 有关详细信息，请参阅[创建和使用 ILB ASE][MakeILBASE]。
 
 应用服务环境有两个版本：ASEv1 和 ASEv2。 有关 ASEv1 的信息，请参阅[应用服务环境 v1 简介][ASEv1Intro]。 可在经典 VNet 或资源管理器 VNet 中部署 ASEv1。 而 ASEv2 只能部署到资源管理器 VNet 中。
 
@@ -136,12 +137,12 @@ ASE 入站访问依赖项如下：
 
 ASE 具有一些需要注意的 IP 地址。 它们是：
 
-- 公共入站 IP 地址：用于外部 ASE 中的应用流量，以及外部 ASE 和 ILB ASE 中的管理流量。
-- 出站公共 IP：用作 ASE 发出、离开 VNet 且不经过 VPN 的出站连接的“来源”IP。
-- ILB IP 地址：如果使用 ILB ASE。
-- 应用分配的基于 IP 的 SSL 地址：仅当配置了基于 IP 的 SSL 时在外部 ASE 上使用。
+- **公共入站 IP 地址**：用于外部 ASE 中的应用流量，以及外部 ASE 和 ILB ASE 中的管理流量。
+- **出站公共 IP**：用作 ASE 发出、离开 VNet 且不经过 VPN 的出站连接的“来源”IP。
+- **ILB IP 地址**：如果使用 ILB ASE。
+- **应用分配的基于 IP 的 SSL 地址**：仅当配置了基于 IP 的 SSL 时在外部 ASE 上使用。
 
-在 ASE UI 上的 Azure 门户中的 ASEv2 内可以轻松查看所有这些 IP 地址。 若使用 ILB ASE，将列出 ILB 的 IP。
+在 Azure 门户中的 ASEv2 内，可从 ASE UI 轻松查看所有这些 IP 地址。 若使用 ILB ASE，将列出 ILB 的 IP。
 
    > [!NOTE]
    > 只要 ASE 处于启动和运行状态，这些 IP 地址就不会更改。  如果 ASE 变成暂停和还原状态，ASE 所使用的地址就会更改。 ASE 变成暂停状态的通常原因是阻止了入站管理访问或阻止了对 ASE 依赖项的访问。 
@@ -234,10 +235,10 @@ ASE 具有一些需要注意的 IP 地址。 它们是：
 [ASEv1Intro]: app-service-app-service-environment-intro.md
 [mobileapps]: ../../app-service-mobile/app-service-mobile-value-prop.md
 [Functions]: ../../azure-functions/index.yml
-[Pricing]: http://azure.microsoft.com/pricing/details/app-service/
+[Pricing]: https://azure.microsoft.com/pricing/details/app-service/
 [ARMOverview]: ../../azure-resource-manager/resource-group-overview.md
 [ConfigureSSL]: ../web-sites-purchase-ssl-web-site.md
-[Kudu]: http://azure.microsoft.com/resources/videos/super-secret-kudu-debug-console-for-azure-web-sites/
+[Kudu]: https://azure.microsoft.com/resources/videos/super-secret-kudu-debug-console-for-azure-web-sites/
 [ASEWAF]: app-service-app-service-environment-web-application-firewall.md
 [AppGW]: ../../application-gateway/application-gateway-web-application-firewall-overview.md
 [ASEManagement]: ./management-addresses.md

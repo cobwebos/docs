@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 01/07/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 93c3bd3f902f08c8f019744b3f30745c1fd9fa01
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 15526cc829d556457a7069df613bb6a8d2a2b23b
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37442417"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52847654"
 ---
 # <a name="azure-ad-b2c-secure-a-web-api-by-using-nodejs"></a>Azure AD B2C：使用 Node.js 保护 Web API
 <!-- TODO [AZURE.INCLUDE [active-directory-b2c-devquickstarts-web-switcher](../../includes/active-directory-b2c-devquickstarts-web-switcher.md)]-->
@@ -47,7 +47,7 @@ ms.locfileid: "37442417"
 * 复制分配给应用的 **应用程序 ID** 。 稍后需要此数据。
 
 ## <a name="create-your-policies"></a>创建策略
-在 Azure AD B2C 中，每个用户体验由 [策略](active-directory-b2c-reference-policies.md)定义。 此应用包含两种标识体验：注册和登录。 需要按 [策略参考文章](active-directory-b2c-reference-policies.md#create-a-sign-up-policy)中所述，为每个类型创建一个策略。  创建三个策略时，请务必：
+在 Azure AD B2C 中，每个用户体验由 [策略](active-directory-b2c-reference-policies.md)定义。 此应用包含两种标识体验：注册和登录。 需要按 [策略参考文章](active-directory-b2c-reference-policies.md#create-a-sign-up-user-flow)中所述，为每个类型创建一个策略。  创建三个策略时，请务必：
 
 * 在注册策略中，选择“显示名称”和其他注册属性。
 * 在每个策略中，选择“显示名称”和“对象 ID”应用程序声明。  也可以选择其他声明。
@@ -71,12 +71,12 @@ git clone --branch skeleton https://github.com/AzureADQuickStarts/B2C-WebAPI-Nod
 ## <a name="download-nodejs-for-your-platform"></a>下载适用于平台的 Node.js
 若要成功使用本示例，需要正确安装 Node.js。
 
-从 [nodejs.org](http://nodejs.org)安装 Node.js。
+从 [nodejs.org](https://nodejs.org)安装 Node.js。
 
 ## <a name="install-mongodb-for-your-platform"></a>为平台安装 MongoDB
 若要成功使用本示例，需要正确安装 MongoDB。 将使用 MongoDB 来使 REST API 持久保留在服务器实例之间。
 
-从 [mongodb.org](http://www.mongodb.org)安装 MongoDB。
+从 [mongodb.org](https://www.mongodb.org)安装 MongoDB。
 
 > [!NOTE]
 > 本演练假设对 MongoDB 使用默认的安装和服务器终结点，在编写本文时，该终结点为 `mongodb://localhost`。

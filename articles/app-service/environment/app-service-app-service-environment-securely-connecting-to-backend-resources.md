@@ -1,5 +1,5 @@
 ---
-title: 从应用服务环境安全连接到后端资源
+title: 从应用服务环境安全地连接到后端资源 - Azure
 description: 了解如何从应用服务环境安全连接到后端资源。
 services: app-service
 documentationcenter: ''
@@ -14,14 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/04/2016
 ms.author: stefsch
-ms.openlocfilehash: 1732e6778febac60a25da74c330cb3d3da94154d
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.custom: seodec18
+ms.openlocfilehash: aea51234d26e5dbaef836419c2a13a12f8083e6f
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45580024"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53315853"
 ---
-# <a name="securely-connecting-to-backend-resources-from-an-app-service-environment"></a>从应用服务环境安全连接到后端资源
+# <a name="connect-securely-to-back-end-resources-from-an-app-service-environment"></a>从应用服务环境安全地连接到后端资源
 ## <a name="overview"></a>概述
 由于应用服务环境始终创建于 Azure 资源管理器虚拟网络**或**经典部署模型[虚拟网络][virtualnetwork]中，因此从应用服务环境发往其他后端资源的出站连接可以独占方式通过虚拟网络发送。  随着 2016 年 6 月的最新更改，可以将 ASE 部署到使用公用地址范围或 RFC1918 地址空间（即，专用地址）的虚拟网络中。  
 
@@ -95,7 +96,7 @@ ms.locfileid: "45580024"
 [virtualnetwork]: https://azure.microsoft.com/documentation/articles/virtual-networks-faq/
 [ControlInboundTraffic]:  app-service-app-service-environment-control-inbound-traffic.md
 [SiteToSite]: https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-multi-site
-[ExpressRoute]: http://azure.microsoft.com/services/expressroute/
+[ExpressRoute]: https://azure.microsoft.com/services/expressroute/
 [NetworkAccessControlLists]: https://azure.microsoft.com/documentation/articles/virtual-networks-acl/
 [NetworkSecurityGroups]: https://azure.microsoft.com/documentation/articles/virtual-networks-nsg/
 [IntroToAppServiceEnvironment]:  app-service-app-service-environment-intro.md

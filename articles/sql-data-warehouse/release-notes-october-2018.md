@@ -7,15 +7,15 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: manage
-ms.date: 11/14/2018
+ms.date: 12/04/2018
 ms.author: mausher
 ms.reviewer: twounder
-ms.openlocfilehash: 1edac9f7eac1f47974f4c94f3cae5bb3451f92fd
-ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
+ms.openlocfilehash: e67edf382a49839d890d2c1dec50c44bbb19705a
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51705372"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52966817"
 ---
 # <a name="whats-new-in-azure-sql-data-warehouse-october-2018"></a>Azure SQL 数据仓库中的新增功能 2018 年 10 月
 Azure SQL 数据仓库持续得到改进。 本文介绍了 2018 年 10 月发行的版本中所引入的新功能和所做的更改。
@@ -62,6 +62,7 @@ Azure SQL 数据仓库 (SQL DW) 现在已与 Azure Data Lake Storage Gen2 进行
 | 针对 DW2000 及以上数据仓库小型资源类中的 CETAS 到 Parquet 故障 | 此修补程序在“Create External Table As”到“Parquet”代码路径中正确标识了空引用。 |
 |在某些 CTAS 操作中，标识列值可能会丢失 | CTAS 到其他表时，标识列的值可能不会保留。 在博客中报告：[https://blog.westmonroepartners.com/azure-sql-dw-identity-column-bugs/](https://blog.westmonroepartners.com/azure-sql-dw-identity-column-bugs/)。 |
 | 在某些情况下，在查询仍在运行时终止会话会产生内部错误 | 如果在查询仍在运行时终止会话，则此修补程序会触发 InvalidOperationException。 |
+| （部署于 2018 年 11 月）尝试使用 Polybase 从 ADLS (Gen1) 加载多个小文件时，客户体验的性能不佳。 | 在 AAD 安全令牌验证期间，系统性能出现瓶颈。 通过启用安全令牌的缓存来缓解性能问题。 |
 
 
 ## <a name="next-steps"></a>后续步骤

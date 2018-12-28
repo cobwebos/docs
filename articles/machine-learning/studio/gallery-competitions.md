@@ -1,12 +1,11 @@
 ---
-title: Azure AI 库竞赛 | Microsoft Docs
-description: 在 Azure AI 库中发现竞赛。
+title: 库竞赛 - Azure 机器学习工作室 | Microsoft Docs
+description: 在 Azure AI 库中发现竞赛。 提供了与数据科学家社区竞争的绝佳机会，看谁能解决复杂的问题。
 services: machine-learning
 documentationcenter: ''
 author: ericlicoding
-ms.custom: (previous ms.author=yahajiza, author=YasinMSFT)
+ms.custom: seodec18
 ms.author: amlstudiodocs
-manager: hjerez
 editor: cgronlun
 ms.assetid: ef74f411-bce4-4b02-aa34-902fc8d7b519
 ms.service: machine-learning
@@ -16,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2017
-ms.openlocfilehash: a209b53893da8f0c7e86102a703334091f982c78
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: 5d38205ca614fef2ea9c10e9ad2fb94bdf3481cc
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52260659"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53277779"
 ---
 # <a name="discover-competitions-in-the-azure-ai-gallery"></a>在 Azure AI 库中发现竞赛
 
@@ -53,5 +52,5 @@ ms.locfileid: "52260659"
 
 **[将我转到库 >>](http://gallery.cortanaintelligence.com)**
 
-[!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
+
 

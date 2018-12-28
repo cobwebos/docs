@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 12e2f96e66305370499fbacf9ae6a834a22eb504
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: fec5ef3ef190270d22e9a7d0306eb9477b39a8c8
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50412493"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53095222"
 ---
 # <a name="integrate-azure-vpn-gateway-radius-authentication-with-nps-server-for-multi-factor-authentication"></a>将 Azure VPN 网关 RADIUS 身份验证与 NPS 服务器集成实现多重身份验证 
 
@@ -55,10 +55,10 @@ ms.locfileid: "50412493"
 2. 打开 NSP 控制台，右键单击“RADUIS 客户端”，然后选择“新建”。 通过指定以下设置创建 RADUIS 客户端：
 
     - **友好名称**：键入任何名称。
-    - **地址(IP 或 DNS)**：键入在步骤 1 中创建的网关子网。
+    - **地址（IP 或 DNS）**：键入在步骤 1 中创建的网关子网。
     - **共享机密**：键入任何密钥，并记住它以供将来使用。
 
-    ![有关 RADUIS 客户端设置的图像](./media/vpn-gateway-radiuis-mfa-nsp/create-radius-client1.png)
+      ![有关 RADUIS 客户端设置的图像](./media/vpn-gateway-radiuis-mfa-nsp/create-radius-client1.png)
 
  
 3.  在“高级”选项卡上，将供应商名称设置为“RADIUS Standard”并确保未选中“其他选项”复选框。
@@ -77,7 +77,7 @@ ms.locfileid: "50412493"
     - **身份验证类型**：选择“RADIUS 身份验证”。
     - **服务器 IP 地址**：键入 NPS 服务器的 IP 地址。
 
-    ![有关点到站点设置的图像](./media/vpn-gateway-radiuis-mfa-nsp/configure-p2s.png)
+      ![有关点到站点设置的图像](./media/vpn-gateway-radiuis-mfa-nsp/configure-p2s.png)
 
 ## <a name="next-steps"></a>后续步骤
 

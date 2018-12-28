@@ -1,5 +1,5 @@
 ---
-title: 识别 Azure 机器学习的高级分析方案 | Microsoft 文档
+title: 确定 Azure 机器学习场景 - Team Data Science Process
 description: 选择适当的方案，用于执行具有团队数据科学过程的高级预测分析。
 services: machine-learning
 author: marktab
@@ -10,13 +10,13 @@ ms.component: team-data-science-process
 ms.topic: article
 ms.date: 11/13/2017
 ms.author: tdsp
-ms.custom: (previous author=deguhath, ms.author=deguhath)
-ms.openlocfilehash: 16d8457e5605ce0e3c10ed95296b5a883a4c602c
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: 88c3be12647bd73296c214390d3d2fb1fe79ccb4
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52444828"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53138885"
 ---
 # <a name="scenarios-for-advanced-analytics-in-azure-machine-learning"></a>用于 Azure 机器学习中高级分析的方案
 本文概述了各种示例数据源和可通过[团队数据科学过程 (TDSP)](overview.md) 处理的目标场景。 TDSP 为团队提供了一个系统性方法，可协作构建智能应用程序。 此处介绍的情景说明了数据处理工作流中的可用选项，具体取决于 Azure 中的数据特征、源位置和目标存储库。
@@ -75,7 +75,7 @@ ms.locfileid: "52444828"
 1. 使用[导入数据][import-data]模块从 Azure blob 中读取数据。
 1. 开始使用引入的数据集生成 Azure 机器学习实验流。
 
-## <a name="smalllocaltodb"></a>方案 \#4：本地文件中针对 Azure 虚拟机中 SQL Server 的小型到中型数据集
+## <a name="smalllocaltodb"></a>场景 \#4：本地文件中针对 Azure 虚拟机中 SQL Server 的小型到中型数据集
 ![Azure 中 SQL DB 的小型到中型本地文件][4]
 
 #### <a name="additional-azure-resources-azure-virtual-machine-sql-server--ipython-notebook-server"></a>其他 Azure 资源：Azure 虚拟机（SQL Server/IPython Notebook 服务器）
@@ -197,7 +197,7 @@ ms.locfileid: "52444828"
 ## <a name="largedbtohive"></a>场景 \#7：本地文件中针对 Azure HDInsight Hadoop 群集中 Hive 数据库的大数据
 ![本地目标 Hive 中的大数据][9]
 
-#### <a name="additional-azure-resources-azure-hdinsight-hadoop-cluster-and-azure-virtual-machine-ipython-notebook-server"></a>其他 Azure 资源：Azure HDInsight Hadoop 群集和Azure 虚拟机（IPython Notebook 服务器）
+#### <a name="additional-azure-resources-azure-hdinsight-hadoop-cluster-and-azure-virtual-machine-ipython-notebook-server"></a>其他 Azure 资源：Azure HDInsight Hadoop 群集和 Azure 虚拟机（IPython Notebook 服务器）
 1. 创建运行 IPython Notebook 的 Azure 虚拟机服务器。
 1. 创建 Azure HDInsight Hadoop 群集。
 1. （可选）预处理并清理数据。

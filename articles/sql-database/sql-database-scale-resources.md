@@ -12,12 +12,12 @@ ms.author: jovanpop
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 10/05/2018
-ms.openlocfilehash: ede96607e14a43e85c3605e2d710c15ef0495c1f
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: 5e3c282c198b6a1290e724549a4af30119f9cb04
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48868167"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53251209"
 ---
 # <a name="dynamically-scale-database-resources-with-minimal-downtime"></a>以最短的停机时间动态缩放数据库资源
 
@@ -35,8 +35,8 @@ Azure SQL 数据库允许以最短的停机时间向数据库动态添加更多�
 
 Azure SQL 数据库提供[基于 DTU 的购买模型](sql-database-service-tiers-dtu.md)和[基于 vCore 的购买模型](sql-database-service-tiers-vcore.md)。
 
-- [基于 DTU 的购买模型](sql-database-service-tiers-dtu.md)在三个服务层中提供包括计算、内存和 IO 资源在内的各种内容，支持轻型到重型数据库工作负荷：基本、标准、高级。 每个层中的不同性能级别提供这些资源的不同组合，你可以向其添加更多的存储资源。
-- [基于 vCore 的购买模型](sql-database-service-tiers-vcore.md)允许选择 vCore 数、内存容量，以及存储的容量和速度。 此购买模型提供三个服务层：常规用途、业务关键和超大规模（预览）。
+- [基于 DTU 的购买模型](sql-database-service-tiers-dtu.md)在以下三个服务层中提供包括计算、内存和 IO 资源在内的各种内容，以支持轻型到重型数据库工作负荷：基本、标准和高级。 每个层中的不同性能级别提供这些资源的不同组合，你可以向其添加更多的存储资源。
+- [基于 vCore 的购买模型](sql-database-service-tiers-vcore.md)允许选择 vCore 数、内存容量，以及存储的容量和速度。 此采购模式提供三个服务层：常规用途、业务关键和超大规模（预览版）。
 
 可以在小型单一数据库中构建你的第一个应用，每个月只需在“基本”、“标准”或“常规用途”服务层中花费少量资金。然后可以根据解决方案的需要，随时手动或以编程方式将服务层更改为“高级”或“业务关键”服务层。 可在不给应用或客户造成停机的情况下调整性能。 动态可伸缩性可让数据库以透明方式响应快速变化的资源要求，使用户只需为用到的资源付费。
 

@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 09/17/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 83820440a6304886785a175b27614b45fdb98b13
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: a0e0000c4baa22ccc1c26c0e40ec62bb277104af
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51252218"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52993904"
 ---
 # <a name="deploy-a-windows-hybrid-runbook-worker"></a>部署 Windows 混合 Runbook 辅助角色
 
@@ -53,12 +53,12 @@ Windows 混合 Runbook 辅助角色的最低要求如下：
 
    在执行期间，New-OnPremiseHybridWorker.ps1 脚本需要以下参数：
 
-   * AutomationAccountName（必需）：自动化帐户的名称。
-   * AAResourceGroupName（必需）：与自动化帐户关联的资源组的名称。
-   * OMSResourceGroupName（可选）：Log Analytics 工作区的资源组名称。 如果未指定此资源组，则使用 AAResourceGroupName。
-   * HybridGroupName（必需）：混合 Runbook 辅助角色组的名称，可将其指定为支持此方案的 Runbook 的目标。
-   * SubscriptionID（必需）：包含自动化帐户的 Azure 订阅 ID。
-   * WorkspaceName（可选）：Log Analytics 工作区名称。 如果没有 Log Analytics 工作区，该脚本会创建并配置一个。
+   * *AutomationAccountName*（必需）：自动化帐户的名称。
+   * *AAResourceGroupName*（必需）：与自动化帐户关联的资源组的名称。
+   * *OMSResourceGroupName*（可选）：Log Analytics 工作区的资源组的名称。 如果未指定此资源组，则使用 AAResourceGroupName。
+   * *HybridGroupName*（必需）：混合 Runbook 辅助角色组的名称，可将其指定为支持此方案的 runbook 的目标。
+   * *SubscriptionID*（必需）：包含自动化帐户的 Azure 订阅 ID。
+   * *WorkspaceName*（可选）：Log Analytics 工作区名称。 如果没有 Log Analytics 工作区，该脚本会创建并配置一个。
 
      > [!NOTE]
      > 目前可与 Log Analytics 集成的自动化区域仅限：澳大利亚东南部、美国东部 2、东南亚以及西欧。 如果自动化帐户不在其中的某个区域，脚本会创建 Log Analytics 工作区，但会警告用户：无法将这些区域链接到一起。
@@ -85,7 +85,7 @@ Windows 混合 Runbook 辅助角色的最低要求如下：
 
 #### <a name="1-create-a-log-analytics-workspace"></a>1.创建 Log Analytics 工作区
 
-如果尚无 Log Analytics 工作区，请按照[管理工作区](../log-analytics/log-analytics-manage-access.md)中的说明创建工作区。 如果已经有一个工作区，则可以使用现有的。
+如果尚无 Log Analytics 工作区，请按照[管理工作区](../azure-monitor/platform/manage-access.md)中的说明创建工作区。 如果已经有一个工作区，则可以使用现有的。
 
 #### <a name="2-add-the-automation-solution-to-the-log-analytics-workspace"></a>2.向 Log Analytics 工作区添加自动化解决方案
 

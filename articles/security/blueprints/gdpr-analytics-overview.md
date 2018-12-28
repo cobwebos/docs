@@ -8,14 +8,14 @@ ms.service: security
 ms.topic: article
 ms.date: 05/14/2018
 ms.author: jomolesk
-ms.openlocfilehash: 3d15e747c129d2591f4cc70030d1cf858bcee49e
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 8e4245de5d6a025fa87c8644678896596b07c49e
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51237648"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "53001136"
 ---
-# <a name="azure-security-and-compliance-blueprint-analytics-for-gdpr"></a>Azure 安全性和合规性蓝图：用于 GDPR 的分析
+# <a name="azure-security-and-compliance-blueprint-analytics-for-gdpr"></a>Azure 安全性与合规性蓝图：用于 GDPR 的分析
 
 ## <a name="overview"></a>概述
 一般数据保护条例 (GDPR) 包含许多有关收集、存储和使用个人信息的要求，包括组织如何识别和保护个人数据、满足透明度要求、检测和报告个人数据泄露以及培训隐私人员和其他员工。 GDPR 使个人可以更好地控制其个人数据，并对收集、处理或分析个人数据的组织赋予许多新义务。 GDPR 针对向欧盟 (EU) 居民提供产品及服务，或收集和分析欧盟居民相关信息的组织制定了新的规则。 无论组织位于何处，均需遵守 GDPR。
@@ -75,8 +75,8 @@ Azure 为客户提供各种各样的客户报告和分析服务；但是，此�
 **Azure Functions**
 [Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-overview) 是一个无服务器计算服务，用户可以使用它按需运行代码，而无需显式预配或管理基础结构。 使用 Azure Functions 可以运行脚本或代码片段，以响应各种事件。
 
-**Azure 机器学习**
-[Azure 机器学习](https://docs.microsoft.com/azure/machine-learning/preview/)是一项数据科研技术，可以让计算机根据现有的数据来预测将来的行为、结果和趋势。
+**Azure 机器学习服务**
+[Azure 机器学习](https://docs.microsoft.com/azure/machine-learning/service/)是一项数据科研技术，可让计算机根据现有的数据来预测将来的行为、结果和趋势。
 
 **Azure 数据目录**：[数据目录](https://docs.microsoft.com/azure/data-catalog/data-catalog-what-is-data-catalog)可帮助管理数据的用户更轻松地发现和理解数据源。 常见的数据源可以针对个人数据进行注册、标记和搜索。 数据将保留在现有位置，但其元数据的副本将连同数据源位置的引用一起添加到数据目录。 此元数据还会编制索引，方便通过搜索功能轻松发现每个数据源，并让发现数据源的用户理解该数据源。
 
@@ -91,7 +91,7 @@ Azure 为客户提供各种各样的客户报告和分析服务；但是，此�
   - [诊断日志和事件](https://docs.microsoft.com/azure/virtual-network/virtual-network-nsg-manage-log)已启用并存储在存储帐户中
   - 已将 Log Analytics 连接到 [NSG 的诊断功能](https://github.com/krnese/AzureDeploy/blob/master/AzureMgmt/AzureMonitor/nsgWithDiagnostics.json)
 
-**子网**：每个子网都与其相应的 NSG 相关联。
+**子网**：每个子网与其相应的 NSG 关联。
 
 ### <a name="data-in-transit"></a>传输中的数据
 默认情况下，Azure 会加密与 Azure 数据中心之间的所有通信。 通过 Azure 门户到 Azure 存储的所有事务均通过 HTTPS 进行。
@@ -139,20 +139,20 @@ Azure 为客户提供各种各样的客户报告和分析服务；但是，此�
 ### <a name="logging-and-auditing"></a>日志记录和审核
 
 [Log Analytics](https://docs.microsoft.com/azure/security/azure-security-disk-encryption) 可广泛记录系统和用户活动以及系统运行状况。 [Log Analytics](https://azure.microsoft.com/services/log-analytics/) 解决方案收集并分析 Azure 和本地环境中的资源生成的数据。
-- **活动日志**：[活动日志](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs)提供针对订阅中资源执行的操作的深入信息。 活动日志可帮助确定操作的发起方、发生的时间和状态。
+- **活动日志**：[活动日志](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs)提供针对订阅中资源执行的操作见解。 活动日志可帮助确定操作的发起方、发生的时间和状态。
 - **诊断日志**：[诊断日志](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)包括每个资源发出的所有日志。 这些日志包括 Windows 事件系统日志，以及 Azure Blob 存储、表和队列的日志。
 - **日志存档**：所有诊断日志写入到集中式的加密 Azure 存储帐户，并根据定义的保留期（2 天）存档。 这些日志连接到 Azure Log Analytics 进行处理、存储和仪表板报告。
 
 此外，以下监视解决方案作为此体系结构的一部分包括在内：
 -   [AD 评估](https://docs.microsoft.com/azure/log-analytics/log-analytics-ad-assessment)：Active Directory 运行状况检查解决方案按固定时间间隔评估服务器环境的风险和运行状况，并且提供特定于部署服务器基础结构的优先建议列表。
--   [反恶意软件评估](https://docs.microsoft.com/azure/log-analytics/log-analytics-malware)：反恶意软件解决方案报告恶意软件、威胁和防护状态。
--   [Azure 自动化](https://docs.microsoft.com/azure/automation/automation-hybrid-runbook-worker)：Azure 自动化解决方案存储、运行和管理 Runbook。
+-   [反恶意软件评估](https://docs.microsoft.com/azure/log-analytics/log-analytics-malware)：反恶意软件解决方案用于报告恶意软件、威胁和防护状态。
+-   [Azure 自动化](https://docs.microsoft.com/azure/automation/automation-hybrid-runbook-worker)：Azure 自动化解决方案用于存储、运行和管理 runbook。
 -   [安全和审核](https://docs.microsoft.com/azure/operations-management-suite/oms-security-getting-started)：“安全和审核”仪表板通过提供有关安全域、值得注意的问题、检测、威胁智能和常见安全性查询的指标，提供对资源安全状态的高级见解。
--   [SQL 评估](https://docs.microsoft.com/azure/log-analytics/log-analytics-sql-assessment)：SQL 运行状况检查解决方案定期评估服务器环境的风险和运行状况，并且为客户提供特定于已部署服务器基础结构的优先建议列表。
--   [更新管理](https://docs.microsoft.com/azure/operations-management-suite/oms-solution-update-management)：“更新管理”解决方案允许客户管理操作系统安全更新，包括可用更新的状态以及安装所需更新的过程。
--   [代理运行状况](https://docs.microsoft.com/azure/operations-management-suite/oms-solution-agenthealth)：“代理运行状况”解决方案报告已部署代理的数量及其地理分布，以及无响应的代理数量和提交操作数据的代理数量。
+-   [SQL 评估](https://docs.microsoft.com/azure/log-analytics/log-analytics-sql-assessment)：SQL 运行状况检查解决方案按固定时间间隔评估服务器环境的风险和运行状况，并为客户提供特定于部署服务器基础结构的优先建议列表。
+-   [更新管理](https://docs.microsoft.com/azure/operations-management-suite/oms-solution-update-management)：更新管理解决方案允许客户管理操作系统安全更新，包括可用更新的状态以及安装所需更新的过程。
+-   [代理运行状况](https://docs.microsoft.com/azure/operations-management-suite/oms-solution-agenthealth)：代理运行状况解决方案报告已部署代理的数量及其地理分布，以及无响应的代理数量和提交操作数据的代理数量。
 -   [Azure 活动日志](https://docs.microsoft.com/azure/log-analytics/log-analytics-activity)：Activity Log Analytics 解决方案可帮助分析客户的所有 Azure 订阅的 Azure 活动日志。
--   [更改跟踪](https://docs.microsoft.com/azure/automation/automation-change-tracking)：“更改跟踪”解决方案使得客户能够轻松识别环境中的更改。
+-   [更改跟踪](https://docs.microsoft.com/azure/automation/automation-change-tracking)：更改跟踪解决方案使得客户能够轻松识别环境中的更改。
 
 **Azure Monitor**
 [Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/) 通过使客户能够审核、创建警报和存档数据（包括在客户的 Azure 资源中跟踪 API 调用），帮助用户跟踪性能、维护安全性和确定趋势。

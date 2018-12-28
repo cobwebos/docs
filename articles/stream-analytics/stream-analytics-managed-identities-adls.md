@@ -1,20 +1,21 @@
 ---
-title: 使用托管标识在 Azure Data Lake Storage Gen1 输出（预览版）中对 Azure 流分析作业进行身份验证
-description: ''
+title: 在 Azure Data Lake Storage Gen1 输出中对 Azure 流分析作业进行身份验证
+description: 本文介绍如何使用托管标识在 Azure Data Lake Storage Gen1 输出中对 Azure 流分析作业进行身份验证。
 services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 09/27/2018
-ms.openlocfilehash: 41b3dcc03f7cfbfee11798738a3b2daaf5e96741
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.date: 12/07/2018
+ms.custom: seodec18
+ms.openlocfilehash: bb25f237450a83a34645ad4dfd9a2839c5525c6f
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49365282"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53090425"
 ---
-# <a name="use-managed-identities-to-authenticate-azure-stream-analytics-jobs-to-azure-data-lake-storage-gen1-output-preview"></a>使用托管标识在 Azure Data Lake Storage Gen1 输出（预览版）中对 Azure 流分析作业进行身份验证
+# <a name="authenticate-stream-analytics-to-azure-data-lake-storage-gen1-using-managed-identities-preview"></a>使用托管标识在 Azure Data Lake Storage Gen1 中对流分析进行身份验证（预览）
 
 Azure 流分析支持使用 Azure Data Lake Storage (ADLS) Gen1 输出进行托管标识身份验证。 标识是 Azure Active Directory 中注册的表示给定流分析作业的托管应用程序，可用于对目标资源进行身份验证。 托管标识消除了基于用户的身份验证方法的如下限制：发生密码更改或用户令牌过期（每隔 90 天过期）时需要重新进行身份验证。 此外，托管标识有助于将输出到 Azure Data Lake Storage Gen1 的流分析作业部署自动化。
 
@@ -32,7 +33,7 @@ Azure 流分析支持使用 Azure Data Lake Storage (ADLS) Gen1 输出进行托�
 
    保存配置后，服务主体的对象 ID (OID) 将列为主体 ID，如下所示：
 
-   ![流分析主体 ID](./media/stream-analytics-managed-identities-adls/stream-analytics-principal-id.png)
+   ![流分析服务主体 ID](./media/stream-analytics-managed-identities-adls/stream-analytics-principal-id.png)
  
    服务主体与流分析作业同名。 例如，如果作业的名称是 **MyASAJob**，则创建的服务主体的名称也是 **MyASAJob**。
 
@@ -56,11 +57,11 @@ Azure 流分析支持使用 Azure Data Lake Storage (ADLS) Gen1 输出进行托�
  
 8. 在“权限”窗格中，选中“写入”和“执行”权限并将其分配到“此文件夹和所有子文件夹”。 然后单击“确定”。
 
-   ![选择权限](./media/stream-analytics-managed-identities-adls/stream-analytics-select-permissions.png)
+   ![选择写入和执行权限](./media/stream-analytics-managed-identities-adls/stream-analytics-select-permissions.png)
  
 9. 该服务主体将列在“访问”窗格中“分配的权限”下面，如下所示。 现在，可以返回并启动流分析作业。
 
-   ![访问列表](./media/stream-analytics-managed-identities-adls/stream-analytics-access-list.png)
+   ![门户中的流分析访问列表](./media/stream-analytics-managed-identities-adls/stream-analytics-access-list.png)
 
    若要详细了解 Data Lake Storage Gen1 文件系统权限，请参阅 [Azure Data Lake Storage Gen1 中的访问控制](../data-lake-store/data-lake-store-access-control.md)。
 

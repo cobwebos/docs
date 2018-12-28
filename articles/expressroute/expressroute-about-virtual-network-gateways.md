@@ -1,21 +1,22 @@
 ---
-title: 关于 Azure ExpressRoute 虚拟网络网关 | Microsoft Docs
-description: 了解 ExpressRoute 的虚拟网络网关。
+title: 关于 ExpressRoute 虚拟网络网关 - Azure | Microsoft Docs
+description: 了解 ExpressRoute 的虚拟网络网关。 本文包含有关网关 SKU 和类型的信息。
 services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: mialdrid
-ms.openlocfilehash: df0d9c91d1d4f120f934c7375d0c517e3869834e
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.custom: seodec18
+ms.openlocfilehash: dcae78e507597ae2b7f79cc1d6cbb326ee535696
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51684760"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53076587"
 ---
 # <a name="about-virtual-network-gateways-for-expressroute"></a>关于 ExpressRoute 的虚拟网络网关
-虚拟网络网关用于在 Azure 虚拟网络和本地位置之间发送网络流量。 可以使用虚拟网络网关发送 ExpressRoute 流量或 VPN 流量。 本文重点介绍 ExpressRoute 虚拟网络网关。
+虚拟网络网关用于在 Azure 虚拟网络和本地位置之间发送网络流量。 可以使用虚拟网络网关发送 ExpressRoute 流量或 VPN 流量。 本文重点介绍 ExpressRoute 虚拟网络网关，并且包含了有关 SKU、按 SKU 预估的性能和网关类型的信息。
 
 ## <a name="gateway-types"></a>网关类型
 

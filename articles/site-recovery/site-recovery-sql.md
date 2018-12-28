@@ -6,14 +6,14 @@ author: sujayt
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 07/22/2018
+ms.date: 11/27/2018
 ms.author: sutalasi
-ms.openlocfilehash: 46f5f73293875cd89036eb615e7bd81188bc4c67
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: d4be7b9c7774163aed8c0efb3414dbd6a794cf7f
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50210255"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52847790"
 ---
 # <a name="set-up-disaster-recovery-for-sql-server"></a>为 SQL Server 设置灾难恢复 
 
@@ -27,8 +27,8 @@ ms.locfileid: "50210255"
 许多工作负载使用 SQL Server 作为基础。可将 SQL Server 与 SharePoint、Dynamics 和 SAP 等应用集成来实现数据服务。  可通过多种方式部署 SQL Server：
 
 * **独立 SQL Server**：SQL Server 和所有数据库都托管在一台计算机（物理或虚拟）上。 当虚拟化时，主机群集用于本地高可用性。 不会实现来宾级别的高可用性。
-* **SQL Server 故障转移群集实例 (Always On FCI)**：在一个 Windows 故障转移群集中配置两个或更多个运行带共享磁盘的 SQL Server 实例的节点。 如果某个节点关闭，群集可将 SQL Server 故障转移到其他实例。 此设置通常用于在主站点上实现高可用性。 此部署不能防止共享存储层中出现故障或中断。 共享磁盘可以使用 iSCSI、光纤通道或共享 vhdx 来实现。
-* **SQL Always On 可用性组**：使用同步复制与自动故障转移在可用性组中配置 SQL Server 数据库时，在不共享任何内容的群集中设置两个或更多个节点。
+* **SQL Server 故障转移群集实例 (AlwaysOn FCI)**：在一个 Windows 故障转移群集中配置两个或更多个运行带共享磁盘的 SQL Server 实例的节点。 如果某个节点关闭，群集可将 SQL Server 故障转移到其他实例。 此设置通常用于在主站点上实现高可用性。 此部署不能防止共享存储层中出现故障或中断。 共享磁盘可以使用 iSCSI、光纤通道或共享 vhdx 来实现。
+* **SQL AlwaysOn 可用性组**：使用同步复制与自动故障转移在可用性组中配置 SQL Server 数据库时，在不共享任何内容的群集中设置两个或更多个节点。
 
  本文利用以下本机 SQL 灾难恢复技术将数据库恢复到远程站点：
 

@@ -1,5 +1,5 @@
 ---
-title: 监视 Azure Kubernetes 群集 - 操作管理
+title: （已弃用）监视 Azure Kubernetes 群集 - 操作管理
 description: 使用 Log Analytics 在 Azure 容器服务中监视 Kubernetes 群集
 services: container-service
 author: bburns
@@ -9,16 +9,19 @@ ms.topic: article
 ms.date: 12/09/2016
 ms.author: bburns
 ms.custom: mvc
-ms.openlocfilehash: a353fe3803b2d93c151559076960df06eb260bfe
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 8010d7cbf960c3e2f6528687be97a47d31270696
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49426407"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52997199"
 ---
-# <a name="monitor-an-azure-container-service-cluster-with-log-analytics"></a>使用 Log Analytics 监视 Azure 容器服务群集
+# <a name="deprecated-monitor-an-azure-container-service-cluster-with-log-analytics"></a>（已弃用）使用 Log Analytics 监视 Azure 容器服务群集
 
-[!INCLUDE [aks-preview-redirect.md](../../../includes/aks-preview-redirect.md)]
+> [!TIP]
+> 有关使用 Azure Kubernetes 服务的此文章的更新版本，请参阅[用于容器的 Azure Monitor](../../azure-monitor/insights/container-insights-overview.md)。
+
+[!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
 ## <a name="prerequisites"></a>先决条件
 本演练假定用户已[使用 Azure 容器服务创建 Kubernetes 群集](container-service-kubernetes-walkthrough.md)，
@@ -59,11 +62,11 @@ az acs kubernetes get-credentials --resource-group=$RESOURCE_GROUP --name=$CLUST
 
 ## <a name="monitoring-containers-with-log-analytics"></a>使用 Log Analytics 监视容器
 
-Log Analytics 是 Microsoft 的基于云的 IT 管理解决方案，可帮助你管理和保护本地和云基础结构。 容器解决方案是 Log Analytics 中的一种解决方案，有助于查看单个位置中的容器库存、性能和日志。 通过查看集中位置中的日志，可以审核、排查容器问题，并查找主机上干扰性消耗过多的容器。
+Log Analytics 是 Microsoft 的基于云的 IT 管理解决方案，可帮助你管理和保护本地和云基础结构。 容器解决方案是 Log Analytics 中的一种解决方案，有助于查看单个位置中的容器库存、性能和日志。 通过查看集中位置中的日志，可以审核、排查容器问题，并查找主机上干扰性消耗过多的容器。
 
 ![](media/container-service-monitoring-oms/image1.png)
 
-有关容器解决方案的详细信息，请参阅[容器解决方案 Log Analytics](../../log-analytics/log-analytics-containers.md)。
+有关容器解决方案的详细信息，请参阅[容器解决方案 Log Analytics](../../azure-monitor/insights/containers.md)。
 
 ## <a name="installing-log-analytics-on-kubernetes"></a>在 Kubernetes 上安装 Log Analytics
 

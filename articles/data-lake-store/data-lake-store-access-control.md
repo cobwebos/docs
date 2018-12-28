@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: nitinme
-ms.openlocfilehash: 08991829c9c3d628b5028e04dbd4836647d94826
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: eaabb29a492ec6a0ef4c85afe839a9df5f588958
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51567479"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53087161"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen1"></a>Azure Data Lake Storage Gen1 中的访问控制
 
@@ -71,15 +71,15 @@ Azure Data Lake Storage Gen1 实现派生自 HDFS 的访问控制模型，而 HD
 
 以下常见方案可帮助你了解对 Data Lake Storage Gen1 帐户执行特定操作所需的权限。
 
-|    Operation             |    /    | Seattle/ | Portland/ | Data.txt     |
-|--------------------------|---------|----------|-----------|--------------|
-| Read Data.txt            |   `--X`   |   `--X`    |  `--X`      | `R--`          |
-| Append to Data.txt       |   `--X`   |   `--X`    |  `--X`      | `RW-`          |
-| Delete Data.txt          |   `--X`   |   `--X`    |  `-WX`      | `---`          |
-| Create Data.txt          |   `--X`   |   `--X`    |  `-WX`      | `---`          |
-| List /                   |   `R-X`   |   `---`    |  `---`      | `---`          |
-| List /Seattle/           |   `--X`   |   `R-X`    |  `---`      | `---`          |
-| List /Seattle/Portland/  |   `--X`   |   `--X`    |  `R-X`      | `---`          |
+| Operation | 对象              |    /      | Seattle/   | Portland/   | Data.txt       |
+|-----------|---------------------|-----------|------------|-------------|----------------|
+| 读取      | Data.txt            |   `--X`   |   `--X`    |  `--X`      | `R--`          |
+| 追加到 | Data.txt            |   `--X`   |   `--X`    |  `--X`      | `RW-`          |
+| 删除    | Data.txt            |   `--X`   |   `--X`    |  `-WX`      | `---`          |
+| 创建    | Data.txt            |   `--X`   |   `--X`    |  `-WX`      | `---`          |
+| 列出      | /                   |   `R-X`   |   `---`    |  `---`      | `---`          |
+| 列出      | /Seattle/           |   `--X`   |   `R-X`    |  `---`      | `---`          |
+| 列出      | /Seattle/Portland/  |   `--X`   |   `--X`    |  `R-X`      | `---`          |
 
 
 > [!NOTE]
@@ -132,8 +132,8 @@ Azure Data Lake Storage Gen1 实现派生自 HDFS 的访问控制模型，而 HD
 
 **为新文件或文件夹分配拥有组**
 
-* **案例 1**：根文件夹“/”。 此文件夹是创建 Data Lake Storage Gen1 帐户时创建的。 在这种情况下，拥有组设置为全零 GUID。  此值不允许任何访问。  在分配组之前，它是一个占位符。
-* **案例 2**（任何其他案例）：创建新项时，从父文件夹复制拥有组。
+* **情况 1**：根文件夹“/”。 此文件夹是创建 Data Lake Storage Gen1 帐户时创建的。 在这种情况下，拥有组设置为全零 GUID。  此值不允许任何访问。  在分配组之前，它是一个占位符。
+* **情况 2**（所有其他情况）：创建新项时，从父文件夹复制拥有组。
 
 **更改负责人组**
 

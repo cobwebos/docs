@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/14/2018
 ms.author: subsarma
-ms.openlocfilehash: 53e3a298dd8a3eebca1943d9bade51187f14d722
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: 17bcc7ada244484c2c2df5bd81c82f695a8b5342
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "40037936"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52969901"
 ---
 # <a name="name-resolution-for-resources-in-azure-virtual-networks"></a>Azure 虚拟网络中资源的名称解析
 
@@ -125,7 +125,7 @@ options timeout:1 attempts:5
 resolv.conf 文件通常是自动生成的，不应进行编辑。 添加 *options* 行的具体步骤因发行版而异：
 
 * **Ubuntu**（使用 resolvconf）：
-  1. 将 *options* 行添加到 **/etc/resolveconf/resolv.conf.d/head**。
+  1. 将 options 行添加到 /etc/resolveconf/resolv.conf.d/tail。
   2. 运行 `resolvconf -u` 以进行更新。
 * **SUSE**（使用 netconf）：
   1. 将“timeout:1 attempts:5”添加到“/etc/sysconfig/network/config”中的 NETCONFIG_DNS_RESOLVER_OPTIONS="" 参数。 

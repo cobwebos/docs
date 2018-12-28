@@ -7,15 +7,15 @@ manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 03/06/2017
+ms.date: 11/30/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 716cf9e47cd71d003513066d390f9dccb5c83dcb
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: a5bf15289e91cc568524e8110702b5608118bc2d
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43344120"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52833918"
 ---
 # <a name="azure-ad-b2c-sign-in-using-an-android-application"></a>Azure AD B2C：使用 Android 应用程序登录
 
@@ -40,17 +40,17 @@ Microsoft 标识平台使用开放式标准，例如 OAuth2 和 OpenID Connect�
 * 复制分配给应用的 **应用程序 ID** 。 稍后需要此项。
 * 设置本机客户端**重定向 URI**（例如 com.onmicrosoft.fabrikamb2c.exampleapp://oauth/redirect）。 稍后也需要用到此信息。
 
-## <a name="create-your-policies"></a>创建策略
+## <a name="create-your-user-flows"></a>创建用户流
 
-在 Azure AD B2C 中，每个用户体验由 [策略](active-directory-b2c-reference-policies.md)定义。 此应用包含一个标识体验：合并的登录和注册。 需要根据[策略参考文章](active-directory-b2c-reference-policies.md#create-a-sign-up-policy)中所述创建此策略。 创建策略时，请务必：
+在 Azure AD B2C 中，每个用户体验都是由[用户流](active-directory-b2c-reference-policies.md)定义的，这是一组控制 Azure AD 行为的策略。 此应用包含一个标识体验：合并的登录和注册用户流。 需要按照[用户流参考文章](active-directory-b2c-reference-policies.md#create-a-sign-up-user-flow)中的说明创建此用户流。 创建用户流时，请务必：
 
-* 选择“显示名称”作为策略中的注册属性。
-* 在每个策略中，选择“显示名称”和“对象 ID”应用程序声明。 也可以选择其他声明。
-* 创建每个策略后，请复制策略的 **名称** 。 其前缀应为 `b2c_1_`。  稍后需要用到策略名称。
+* 选择“显示名称”作为用户流中的注册属性。
+* 在每个用户流中，选择“显示名称”和“对象 ID”应用程序声明。 也可以选择其他声明。
+* 创建用户流后，请复制每个用户流的名称。 其前缀应为 `b2c_1_`。  稍后需要用户流名称。
 
 [!INCLUDE [active-directory-b2c-devquickstarts-policy](../../includes/active-directory-b2c-devquickstarts-policy.md)]
 
-创建策略后，可以开始构建应用。
+创建用户流后，可以开始构建应用。
 
 ## <a name="download-the-sample-code"></a>下载示例代码
 
@@ -69,7 +69,7 @@ Microsoft 标识平台使用开放式标准，例如 OAuth2 和 OpenID Connect�
 可以通过指定发现 URI 或者指定授权终结点和令牌终结点 URI，来配置与 Azure AD B2C 的通信。 在任一情况下，都需要提供以下信息：
 
 * 租户 ID（例如 contoso.onmicrosoft.com）
-* 策略名称（例如 B2C\_1\_SignUpIn）
+* 用户流名称（例如 B2C\_1\_SignUpIn）
 
 如果选择自动发现授权和令牌终结点 URI，需要从发现 URI 中提取信息。 可以通过替换以下 URL 中的 Tenant\_ID 和 Policy\_Name 来生成发现 URI：
 

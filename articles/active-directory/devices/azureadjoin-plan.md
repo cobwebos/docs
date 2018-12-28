@@ -16,14 +16,14 @@ ms.topic: article
 ms.date: 11/21/2018
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: 34b2658ef4b25b3d545932ceffd2f3cf8969034e
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 3154d5401389d46eb1b9fad335aa18362c5f21f7
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52309356"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53310362"
 ---
-# <a name="how-to-plan-your-azure-ad-join-implementation"></a>操作方法：计划 Azure AD 联接实现
+# <a name="how-to-plan-your-azure-ad-join-implementation"></a>如何：计划 Azure AD 加入实现
 
 
 通过 Azure AD 联接，可在保持用户高效、安全的同时，也将设备直接与 Azure AD 相联接，而无需与本地 Active Directory 相联接。 Azure AD 联接面向企业大规模和大范围的部署。   
@@ -155,7 +155,7 @@ Azure AD 联接设备的设备管理基于 MDM 平台（如 Intune）和 MDM CSP
 
 通过共同管理，可以使用 SCCM 来管理设备的某些特性，同时通过 MDM 平台提供策略。 Microsoft Intune 通过 SCCM 启用共同管理。 有关详细信息，请参阅[适用于 Windows 10 设备的共同管理](https://docs.microsoft.com/sccm/core/clients/manage/co-management-overview)。 如果使用除 Intune 之外的 MDM 产品，请与 MDM 提供商联系，了解适用的共同管理方案。
 
-**建议：** 请考虑用于 Azure AD 联接设备的仅限 MDM 管理。
+**建议：** 对于 Azure AD 联接设备的管理，请考虑使用“仅限 MDM 管理”这一种方法。
 
 
 
@@ -213,7 +213,7 @@ Azure AD 联接设备不支持依赖计算机身份验证的本地应用程序�
 
 ### <a name="remote-desktop-services"></a>远程桌面服务
 
-Azure AD 联接设备的远程桌面连接需要主机是 Azure AD 联接或混合 Azure AD 联接。 不支持未联接设备或非 Windows 设备的远程桌面。 有关详细信息，请参阅 [Connect to remote Azure Active Directory-joined PC](https://docs.microsoft.com/en-us/windows/client-management/connect-to-remote-aadj-pc)（连接到远程 Azure AD 联接电脑）
+Azure AD 联接设备的远程桌面连接需要主机是 Azure AD 联接或混合 Azure AD 联接。 不支持未联接设备或非 Windows 设备的远程桌面。 有关详细信息，请参阅 [Connect to remote Azure Active Directory-joined PC](https://docs.microsoft.com/windows/client-management/connect-to-remote-aadj-pc)（连接到远程 Azure AD 联接电脑）
 
 
 ## <a name="understand-your-provisioning-options"></a>了解预配选项

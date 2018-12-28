@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/26/2016
 ms.author: juliako
-ms.openlocfilehash: 36cdd944dd33f9aa9ae1c805011df23fc864c345
-ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
+ms.openlocfilehash: de084b2139bcc3ddef09b4438f8774df177b6f3c
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51705984"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53315932"
 ---
 # <a name="inserting-ads-on-the-client-side"></a>在客户端上插入广告
 本文包含有关如何在客户端上插入各种类型的广告的信息。
@@ -94,7 +94,7 @@ VAST 文件指定要显示的广告。 以下 XML 是线性广告 VAST 文件的
     </VAST>
 ```
 
-通过 <**Linear**> 元素描述线性广告。 它指定广告的持续时间、跟踪事件、点击行为、点击跟踪和许多 **MediaFile** 元素。 在 <**TrackingEvents**> 元素内指定跟踪事件，并允许广告服务器跟踪在观看广告时发生的各种事件。 在这种情况下将跟踪开始、中点、完成和展开事件。 于显示广告时发生开始事件。 已观看至少 50% 的广告时间线时发生中点事件。 广告结束时发生完成事件。 用户将视频播放器展开为全屏时发生展开事件。 “点击”是使用 <**ClickThrough**> 元素在 <**VideoClicks**> 元素内指定的，指定用户点击广告时要显示的资源的 URI。 “点击跟踪”是在 <**ClickTracking**> 元素中提定的，也在 <**VideoClicks**> 元素中指定，指定用户点击广告时要请求的播放器的跟踪资源。 <**MediaFile**> 元素指定有关广告特定编码的信息。 如果存在多个 <**MediaFile**> 元素，则视频播放器可以选择适用于该平台的最佳编码。 
+通过 <**Linear**> 元素描述线性广告。 它指定广告的持续时间、跟踪事件、点击行为、点击跟踪和许多 **MediaFile** 元素。 在 <**TrackingEvents**> 元素内指定跟踪事件，并允许广告服务器跟踪在观看广告时发生的各种事件。 在这种情况下将跟踪开始、中点、完成和展开事件。 于显示广告时发生开始事件。 已观看至少 50% 的广告时间线时发生中点事件。 广告结束时发生完成事件。 用户将视频播放器展开为全屏时发生展开事件。 “点击”是使用 <**ClickThrough**> 元素在 <**VideoClicks**> 元素内指定的，指定用户点击广告时要显示的资源的 URI。 “点击跟踪”是在 <**ClickTracking**> 元素中提定的，也在 <**VideoClicks**> 元素中指定，指定用户点击广告时要请求的播放器的跟踪资源。 <**MediaFile**> 元素指定有关广告特定编码的信息。 如果存在多个 <**MediaFile**> 元素，则视频播放器可以选择适用于该平台的最佳编码。
 
 可以按指定顺序显示线性广告。 若要执行此操作，请向 VAST 文件添加其他 <Ad> 元素，并使用 sequence 属性指定顺序。 以下示例对此进行了说明：
 
@@ -325,16 +325,16 @@ MAST 文件允许指定定义何时显示广告的触发器。 以下是一个�
 ```
 
 
-MAST 文件以 **MAST** 元素开头，该元素包含一个 **triggers** 元素。 <triggers> 元素包含一个或多个定义应何时播放广告的 **trigger** 元素。 
+MAST 文件以 **MAST** 元素开头，该元素包含一个 **triggers** 元素。 <triggers> 元素包含一个或多个定义应何时播放广告的 **trigger** 元素。
 
-**trigger** 元素包含一个 **startConditions** 元素，后者指定应开始播放广告的时间。 **startConditions** 元素包含一个或多个 <condition> 元素。 每个 <condition> 评估结果为 true 时，将启动或撤销一个触发器，具体取决于 <condition> 是否分别包含在 **startConditions** 或 **endConditions** 元素中。 有多个 <condition> 元素时，将它们视为隐式 OR，任何评估结果为 true 的条件均将导致触发器启动。 <condition> 元素可以嵌套。 预设了子 <condition> 元素时，将它们视为隐式 AND；要启动触发器，则所有条件的评估结果必须都为 true。 <condition> 元素包含定义条件的以下属性： 
+**trigger** 元素包含一个 **startConditions** 元素，后者指定应开始播放广告的时间。 **startConditions** 元素包含一个或多个 <condition> 元素。 每个 <condition> 评估结果为 true 时，将启动或撤销一个触发器，具体取决于 <condition> 是否分别包含在 **startConditions** 或 **endConditions** 元素中。 有多个 <condition> 元素时，将它们视为隐式 OR，任何评估结果为 true 的条件均将导致触发器启动。 <condition> 元素可以嵌套。 预设了子 <condition> 元素时，将它们视为隐式 AND；要启动触发器，则所有条件的评估结果必须都为 true。 <condition> 元素包含定义条件的以下属性：
 
 1. **type** - 指定条件、事件或属性的类型
 2. **name** - 要在评估过程中使用的属性或事件的名称
 3. **value** - 将针对其进行评估的属性的值
-4. **operator** - 要在评估期间使用的操作符：EQ（等于）、NEQ（不等于）、GTR（大于）、GEQ（大于或等于）、LT（小于）、LEQ（小于或等于）、MOD（取模）
+4. **operator** - 要在评估期间使用的运算符：EQ（等于）、NEQ（不等于）、GTR（大于）、GEQ（大于或等于）、LT（小于）、LEQ（小于或等于）、MOD（取模）
 
-**endConditions** 也包含 <condition> 元素。 当某个条件的计算结果为 true 时，该触发器将重置。 <trigger> 元素还包含 <sources> 元素，后者包含一个或多个 <source> 元素。 <source> 元素定义广告响应的 URI 和广告响应的类型。 在此示例中，向 VAST 响应提供了一个 URI。 
+**endConditions** 也包含 <condition> 元素。 当某个条件的计算结果为 true 时，该触发器将重置。 <trigger> 元素还包含 <sources> 元素，后者包含一个或多个 <source> 元素。 <source> 元素定义广告响应的 URI 和广告响应的类型。 在此示例中，向 VAST 响应提供了一个 URI。
 
 ```xml
     <trigger id="postroll" description="postroll"  >
@@ -352,7 +352,7 @@ MAST 文件以 **MAST** 元素开头，该元素包含一个 **triggers** 元素
 ### <a name="using-video-player-ad-interface-definition-vpaid"></a>使用视频播放器广告接口定义 (VPAID)
 VPAID 是用于使可执行广告单元能够与视频播放器进行通信的 API。 这可实现高度交互的广告体验。 用户可以与广告交互；广告可以对查看者采取的操作做出响应。 例如，广告可能会显示允许用户查看详细信息或更长时间版广告的按钮。 视频播放器必须支持 VPAID API 且可执行广告必须实现该 API。 当播放机从广告服务器请求广告时，服务器可能使用包含 VPAID 广告的 VAST 响应进行响应。
 
-在必须于运行时环境（例如 Adobe Flash™ 或可以在 Web 浏览器中执行的 JavaScript）中执行的代码中创建可执行广告。 当广告服务器返回包含 VPAID 广告的 VAST 响应时，<MediaFile> 元素中 apiFramework 属性的值必须为“VPAID”。 此属性指定所含广告为 VPAID 可执行广告。 类型属性必须设置为可执行文件（如“application/x-shockwave-flash”或“application/x-javascript”）的 MIME 类型。 以下 XML 代码片段演示包含 VPAID 可执行广告的 VAST 响应中的 <MediaFile> 元素。 
+在必须于运行时环境（例如 Adobe Flash™ 或可以在 Web 浏览器中执行的 JavaScript）中执行的代码中创建可执行广告。 当广告服务器返回包含 VPAID 广告的 VAST 响应时，<MediaFile> 元素中 apiFramework 属性的值必须为“VPAID”。 此属性指定所含广告为 VPAID 可执行广告。 类型属性必须设置为可执行文件（如“application/x-shockwave-flash”或“application/x-javascript”）的 MIME 类型。 以下 XML 代码片段演示包含 VPAID 可执行广告的 VAST 响应中的 <MediaFile> 元素。
 
 ```xml
     <MediaFiles>
@@ -366,7 +366,7 @@ VPAID 是用于使可执行广告单元能够与视频播放器进行通信的 A
 可以使用 VAST 响应中 <Linear> 或 <NonLinear> 元素内的 <AdParameters> 元素来初始化可执行广告。 有关 <AdParameters> 元素的详细信息，请参阅 [VAST 3.0](http://www.iab.net/media/file/VASTv3.0.pdf)。 有关 VPAID API 的详细信息，请参阅 [VPAID 2.0](http://www.iab.net/media/file/VPAID_2.0_Final_04-10-2012.pdf)。
 
 ## <a name="implementing-a-windows-or-windows-phone-8-player-with-ad-support"></a>实现带有支持广告的 Windows 或 Windows Phone 8 播放器
-Microsoft Media Platform：适用于 Windows 8 和 Windows Phone 8 的播放器框架包含示例应用程序集合，这些示例应用程序展示如何使用该框架实现视频播放器应用程序。 可以从[适用于 Windows 8 和 Windows Phone 8 的播放器框架](https://playerframework.codeplex.com)下载播放器框架和示例。
+Microsoft 媒体平台：适用于 Windows 8 和 Windows Phone 8 的播放器框架包含示例应用程序集合，这些示例应用程序展示如何使用该框架来实现视频播放器应用程序。 可以从[适用于 Windows 8 和 Windows Phone 8 的播放器框架](https://playerframework.codeplex.com)下载播放器框架和示例。
 
 打开 Microsoft.PlayerFramework.Xaml.Samples 解决方案时，将看到项目中的多个文件夹。 Advertising 文件夹包含与创建具有广告支持的视频播放器相关的示例代码。 Advertising 文件夹中有多个 XAML/cs 文件，每一个均显示如何以不同的方式插入广告。 以下列表对每个文件进行描述：
 
@@ -586,7 +586,7 @@ ProgrammaticAdPage.xaml.cs 文件创建 AdHandlerPlugin，添加 TimelineMarker 
 ```
 
 ## <a name="implementing-an-ios-video-player-with-ad-support"></a>实现带有广告支持的 iOS 视频播放器
-Microsoft Media Platform：适用于 iOS 的播放器框架包含示例应用程序集合，这些示例应用程序展示如何使用该框架实现视频播放器应用程序。 可以从 [Azure 媒体播放器框架](https://github.com/Azure/azure-media-player-framework)下载播放器框架和示例。 GitHub 页面具有指向 Wiki（含有关播放器框架的其他信息）的链接和播放器示例简介：[Azure 媒体播放器 Wiki](https://github.com/Azure/azure-media-player-framework/wiki/How-to-use-Azure-media-player-framework)。
+Microsoft 媒体平台：适用于 iOS 的播放器框架包含示例应用程序集合，这些示例应用程序展示如何使用该框架来实现视频播放器应用程序。 可以从 [Azure 媒体播放器框架](https://github.com/Azure/azure-media-player-framework)下载播放器框架和示例。 GitHub 页面具有指向 Wiki（含有关播放器框架的其他信息和播放器示例简介）的链接：[Azure Media Player Wiki](https://github.com/Azure/azure-media-player-framework/wiki/How-to-use-Azure-media-player-framework)。
 
 ### <a name="scheduling-ads-with-vmap"></a>使用 VMAP 安排广告
 以下示例演示如何使用 VMAP 文件安排广告。
@@ -605,7 +605,7 @@ Microsoft Media Platform：适用于 iOS 的播放器框架包含示例应用程
                 if (![framework scheduleVMAPWithManifest:manifest])
                 {
                     [self logFrameworkError];
-                }          
+                }
             }
 ```
 

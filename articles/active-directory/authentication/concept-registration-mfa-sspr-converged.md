@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.component: authentication
 ms.topic: conceptual
-ms.date: 08/01/2018
+ms.date: 12/10/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry, michmcla
-ms.openlocfilehash: 44a5b32b68b0365e957d97a516f0d767e6501c0f
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: dbced5cfa2a47dc2fdcf630d62104bb7ba8e7bc0
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45630318"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53186644"
 ---
 # <a name="converged-registration-for-self-service-password-reset-and-azure-multi-factor-authentication-public-preview"></a>针对自助密码重置和 Azure 多重身份验证的聚合式注册（公共预览）
 
@@ -74,6 +74,8 @@ ms.locfileid: "45630318"
 要查看这一新体验的审核日志，请查看审核日志的身份验证方法类别。  
 
 ## <a name="known-issues"></a>已知问题
+
+已确定一个聚合注册 bug：启用了聚合注册的 B2B 访客用户无法注册 MFA。 将用户定向到注册页面时，页面会出错。开发人员已注意到此问题，正在努力提供解决方案。 目前，建议创建一个组并从该组中排除任何 B2B 用户。
 
 **用户使用短信注册电话时，默认的 MFA 方法设置为“电话”**
 

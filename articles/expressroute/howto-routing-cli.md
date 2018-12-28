@@ -1,30 +1,23 @@
 ---
-title: 如何为 Azure ExpressRoute 线路配置路由：CLI | Microsoft Docs
+title: 如何配置线路的对等互连 - ExpresssRoute：Azure CLI | Microsoft Docs
 description: 本文介绍如何创建和预配 ExpressRoute 线路的专用、公共和 Microsoft 对等互连。 本文还介绍了如何检查状态，以及如何更新或删除线路的对等互连。
-documentationcenter: na
 services: expressroute
 author: cherylmc
-manager: timlt
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: expressroute
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
+ms.topic: conceptual
 ms.date: 10/23/2018
 ms.author: cherylmc
-ms.openlocfilehash: 3a4fecfdcfa13453959b442d801cfb578843505e
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.custom: seodec18
+ms.openlocfilehash: 683a05c39b73f51d6eb2c81b8afbb32c7daf6bfc
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51237702"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53104571"
 ---
-# <a name="create-and-modify-routing-for-an-expressroute-circuit-using-cli"></a>使用 CLI 为 ExpressRoute 线路创建和修改路由
+# <a name="create-and-modify-peering-for-an-expressroute-circuit-using-cli"></a>使用 CLI 创建和修改 ExpressRoute 线路的对等互连
 
-本文介绍如何使用 CLI 在资源管理器部署模型中创建和管理 ExpressRoute 线路的路由配置。 还可以检查状态，以及更新、删除和取消预配 ExpressRoute 线路的对等互连。 如果想使用不同的方法处理线路，请从以下列表中选择一篇文章进行参阅：
+本文介绍如何使用 CLI 在资源管理器部署模型中创建和管理 ExpressRoute 线路的路由配置/对等互连。 还可以检查状态，以及更新、删除和取消预配 ExpressRoute 线路的对等互连。 如果想使用不同的方法处理线路，请从以下列表中选择一篇文章进行参阅：
 
 > [!div class="op_single_selector"]
 > * [Azure 门户](expressroute-howto-routing-portal-resource-manager.md)
@@ -59,20 +52,20 @@ ms.locfileid: "51237702"
 
 1. 安装最新版本的 Azure CLI。 请使用最新版本的 Azure 命令行接口 (CLI)。* 在开始配置前，请查看[先决条件](expressroute-prerequisites.md)和[工作流](expressroute-workflows.md)。
 
-  ```azurecli
+  ```azurecli-interactive
   az login
   ```
 
   选择要为其创建 ExpressRoute 线路的订阅。
 
-  ```azurecli
+  ```azurecli-interactive
   az account set --subscription "<subscription ID>"
   ```
 2. 创建 ExpressRoute 线路。 请按说明创建 [ExpressRoute 线路](howto-circuit-cli.md) ，并由连接服务提供商进行预配。 如果连接服务提供商提供第 3 层托管服务，可以请求连接服务提供商启用 Microsoft 对等互连。 在此情况下，不需要遵循后续部分中所列的说明。 但是，如果连接服务提供商不为你管理路由，请在创建线路后按照后续步骤继续配置。 
 
 3. 检查 ExpressRoute 线路以确保它已预配并已启用。 使用以下示例：
 
-  ```azurecli
+  ```azurecli-interactive
   az network express-route list
   ```
 
@@ -114,13 +107,13 @@ ms.locfileid: "51237702"
   * 用于建立此对等互连的有效 VLAN ID。 请确保线路中没有其他对等互连使用同一个 VLAN ID。
   * 对等互连的 AS 编号。 可以使用 2 字节和 4 字节 AS 编号。
   * 播发的前缀：必须提供要通过 BGP 会话播发的所有前缀列表。 只接受公共 IP 地址前缀。 如果打算发送一组前缀，可以发送逗号分隔列表。 这些前缀必须已在 RIR/IRR 中注册。
-  * **可选** - 客户 ASN：如果要播发的前缀未注册到对等互连 AS 编号，可以指定它们要注册到的 AS 编号。
+  * “可选”- 客户 ASN：如果要播发的前缀未注册到对等互连 AS 编号，可以指定它们要注册到的 AS 编号。
   * 路由注册表名称：可以指定 AS 编号和前缀要注册到的 RIR/IRR。
   * **可选** - MD5 哈希（如果选择使用）。
 
    运行以下示例为线路配置 Microsoft 对等互连：
 
-  ```azurecli
+  ```azurecli-interactive
   az network express-route peering create --circuit-name MyCircuit --peer-asn 100 --primary-peer-subnet 123.0.0.0/30 -g ExpressRouteResourceGroup --secondary-peer-subnet 123.0.0.4/30 --vlan-id 300 --peering-type MicrosoftPeering --advertised-public-prefixes 123.1.0.0/24
   ```
 
@@ -128,7 +121,7 @@ ms.locfileid: "51237702"
 
 可以使用以下示例来获取配置详细信息：
 
-```azurecli
+```azurecli-interactive
 az network express-route peering show -g ExpressRouteResourceGroup --circuit-name MyCircuit --name AzureMicrosoftPeering
 ```
 
@@ -170,13 +163,13 @@ az network express-route peering show -g ExpressRouteResourceGroup --circuit-nam
 
 可以更新配置的任何部分。 在以下示例中，线路的播发前缀将从 123.1.0.0/24 更新为124.1.0.0/24：
 
-```azurecli
+```azurecli-interactive
 az network express-route peering update --circuit-name MyCircuit -g ExpressRouteResourceGroup --peering-type MicrosoftPeering --advertised-public-prefixes 124.1.0.0/24
 ```
 
 ### <a name="addIPv6msft"></a>将 IPv6 Microsoft 对等互连设置添加到现有的 IPv4 配置
 
-```azurecli
+```azurecli-interactive
 az network express-route peering update -g ExpressRouteResourceGroup --circuit-name MyCircuit --peering-type MicrosoftPeering --ip-version ipv6 --primary-peer-subnet 2002:db00::/126 --secondary-peer-subnet 2003:db00::/126 --advertised-public-prefixes 2002:db00::/126
 ```
 
@@ -184,7 +177,7 @@ az network express-route peering update -g ExpressRouteResourceGroup --circuit-n
 
 可以运行以下示例来删除对等互连配置：
 
-```azurecli
+```azurecli-interactive
 az network express-route peering delete -g ExpressRouteResourceGroup --circuit-name MyCircuit --name MicrosoftPeering
 ```
 
@@ -196,20 +189,20 @@ az network express-route peering delete -g ExpressRouteResourceGroup --circuit-n
 
 1. 安装最新版本的 Azure CLI。 必须使用最新版本的 Azure 命令行接口 (CLI)。* 在开始配置前，请查看[先决条件](expressroute-prerequisites.md)和[工作流](expressroute-workflows.md)。
 
-  ```azurecli
+  ```azurecli-interactive
   az login
   ```
 
   选择要创建 ExpressRoute 线路的订阅
 
-  ```azurecli
+  ```azurecli-interactive
   az account set --subscription "<subscription ID>"
   ```
 2. 创建 ExpressRoute 线路。 请按说明创建 [ExpressRoute 线路](howto-circuit-cli.md) ，并由连接服务提供商进行预配。 如果连接服务提供商提供第 3 层托管服务，可以请求连接服务提供商启用 Azure 专用对等互连。 在此情况下，不需要遵循后续部分中所列的说明。 但是，如果连接服务提供商不为你管理路由，请在创建线路后按照后续步骤继续配置。
 
 3. 检查 ExpressRoute 线路以确保它已预配并已启用。 使用以下示例：
 
-  ```azurecli
+  ```azurecli-interactive
   az network express-route show --resource-group ExpressRouteResourceGroup --name MyCircuit
   ```
 
@@ -254,13 +247,13 @@ az network express-route peering delete -g ExpressRouteResourceGroup --circuit-n
 
   使用以下示例为线路配置 Azure 专用对等互连：
 
-  ```azurecli
+  ```azurecli-interactive
   az network express-route peering create --circuit-name MyCircuit --peer-asn 100 --primary-peer-subnet 10.0.0.0/30 -g ExpressRouteResourceGroup --secondary-peer-subnet 10.0.0.4/30 --vlan-id 200 --peering-type AzurePrivatePeering
   ```
 
   如果选择使用 MD5 哈希，请使用以下示例：
 
-  ```azurecli
+  ```azurecli-interactive
   az network express-route peering create --circuit-name MyCircuit --peer-asn 100 --primary-peer-subnet 10.0.0.0/30 -g ExpressRouteResourceGroup --secondary-peer-subnet 10.0.0.4/30 --vlan-id 200 --peering-type AzurePrivatePeering --SharedKey "A1B2C3D4"
   ```
 
@@ -273,7 +266,7 @@ az network express-route peering delete -g ExpressRouteResourceGroup --circuit-n
 
 可以使用以下示例来获取配置详细信息：
 
-```azurecli
+```azurecli-interactive
 az network express-route peering show -g ExpressRouteResourceGroup --circuit-name MyCircuit --name AzurePrivatePeering
 ```
 
@@ -309,7 +302,7 @@ az network express-route peering show -g ExpressRouteResourceGroup --circuit-nam
 
 可以使用以下示例来更新配置的任何部分。 在此示例中，线路的 VLAN ID 将从 100 更新为 500。
 
-```azurecli
+```azurecli-interactive
 az network express-route peering update --vlan-id 500 -g ExpressRouteResourceGroup --circuit-name MyCircuit --name AzurePrivatePeering
 ```
 
@@ -322,7 +315,7 @@ az network express-route peering update --vlan-id 500 -g ExpressRouteResourceGro
 > 
 > 
 
-```azurecli
+```azurecli-interactive
 az network express-route peering delete -g ExpressRouteResourceGroup --circuit-name MyCircuit --name AzurePrivatePeering
 ```
 
@@ -334,20 +327,20 @@ az network express-route peering delete -g ExpressRouteResourceGroup --circuit-n
 
 1. 安装最新版本的 Azure CLI。 必须使用最新版本的 Azure 命令行接口 (CLI)。* 在开始配置前，请查看[先决条件](expressroute-prerequisites.md)和[工作流](expressroute-workflows.md)。
 
-  ```azurecli
+  ```azurecli-interactive
   az login
   ```
 
   选择要为其创建 ExpressRoute 线路的订阅。
 
-  ```azurecli
+  ```azurecli-interactive
   az account set --subscription "<subscription ID>"
   ```
 2. 创建 ExpressRoute 线路。  请按说明创建 [ExpressRoute 线路](howto-circuit-cli.md) ，并由连接服务提供商进行预配。 如果连接服务提供商提供第 3 层托管服务，可以请求连接服务提供商启用 Azure 公共对等互连。 在此情况下，不需要遵循后续部分中所列的说明。 但是，如果连接服务提供商不为你管理路由，请在创建线路后按照后续步骤继续配置。
 
 3. 检查 ExpressRoute 线路以确保它已预配并已启用。 使用以下示例：
 
-  ```azurecli
+  ```azurecli-interactive
   az network express-route list
   ```
 
@@ -392,13 +385,13 @@ az network express-route peering delete -g ExpressRouteResourceGroup --circuit-n
 
   运行以下示例为线路配置 Azure 公共对等互连：
 
-  ```azurecli
+  ```azurecli-interactive
   az network express-route peering create --circuit-name MyCircuit --peer-asn 100 --primary-peer-subnet 12.0.0.0/30 -g ExpressRouteResourceGroup --secondary-peer-subnet 12.0.0.4/30 --vlan-id 200 --peering-type AzurePublicPeering
   ```
 
   如果选择使用 MD5 哈希，请使用以下示例：
 
-  ```azurecli
+  ```azurecli-interactive
   az network express-route peering create --circuit-name MyCircuit --peer-asn 100 --primary-peer-subnet 12.0.0.0/30 -g ExpressRouteResourceGroup --secondary-peer-subnet 12.0.0.4/30 --vlan-id 200 --peering-type AzurePublicPeering --SharedKey "A1B2C3D4"
   ```
 
@@ -444,7 +437,7 @@ az network express-route peering show -g ExpressRouteResourceGroup --circuit-nam
 
 可以使用以下示例来更新配置的任何部分。 在此示例中，线路的 VLAN ID 将从 200 更新为 600。
 
-```azurecli
+```azurecli-interactive
 az network express-route peering update --vlan-id 600 -g ExpressRouteResourceGroup --circuit-name MyCircuit --name AzurePublicPeering
 ```
 
@@ -452,7 +445,7 @@ az network express-route peering update --vlan-id 600 -g ExpressRouteResourceGro
 
 可以运行以下示例来删除对等互连配置：
 
-```azurecli
+```azurecli-interactive
 az network express-route peering delete -g ExpressRouteResourceGroup --circuit-name MyCircuit --name AzurePublicPeering
 ```
 

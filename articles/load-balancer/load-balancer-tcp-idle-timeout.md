@@ -1,11 +1,11 @@
 ---
-title: 配置负载均衡器 TCP 空闲超时 | Microsoft Docs
+title: 在 Azure 中配置负载均衡器 TCP 空闲超时
+titlesuffix: Azure Load Balancer
 description: 配置负载均衡器 TCP 空闲超时
 services: load-balancer
 documentationcenter: na
 author: kumudd
-manager: timlt
-ms.assetid: 4625c6a8-5725-47ce-81db-4fa3bd055891
+ms.custom: seodec18
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: f19ac77f7c7f7d4ab8909d628f9dcce08c07c928
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 24a7d2354693e362d7709b8817c438555caae0e3
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23020902"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53256190"
 ---
 # <a name="configure-tcp-idle-timeout-settings-for-azure-load-balancer"></a>为 Azure 负载均衡器配置 TCP 空闲超时设置
 
@@ -26,7 +26,7 @@ ms.locfileid: "23020902"
 
 在默认配置中，Azure 负载均衡器的空闲超时设置为 4 分钟。 如果处于非活动状态的时间超过超时值，则不能保证在客户端和云服务之间保持 TCP 或 HTTP 会话。
 
-当连接关闭时，客户端应用程序可能收到以下错误消息：“基础连接已关闭: 应保持连接状态的连接已由服务器关闭”。
+当连接关闭时，客户端应用程序可能会收到以下错误消息：“The underlying connection was closed:A connection that was expected to be kept alive was closed by the server.”（基础连接已关闭: 服务器关闭了应保持连接状态的连接。）
 
 常见的做法是使用 TCP 保持连接状态。 这种做法可以将连接状态保持更长时间。 有关详细信息，请参阅 [.NET 示例](https://msdn.microsoft.com/library/system.net.servicepoint.settcpkeepalive.aspx)。 在启用保持连接状态的情况下，在连接处于非活动状态时发送数据包。 这些用于保持连接状态的数据包可以确保始终达不到空闲超时值，于是就可以长时间维持连接。
 

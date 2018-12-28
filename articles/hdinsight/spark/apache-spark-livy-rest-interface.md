@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: 6a0a2dec6beeecca3779f4b047d3b5fe6295a1e6
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 999b5ca1f229677b9e11068f4beaa6e2704afd3d
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52495306"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53012566"
 ---
 # <a name="use-apache-spark-rest-api-to-submit-remote-jobs-to-an-hdinsight-spark-cluster"></a>使用 Apache Spark REST API 将远程作业提交到 HDInsight Spark 群集
 
@@ -26,7 +26,7 @@ ms.locfileid: "52495306"
 
 * HDInsight 上的 Apache Spark 群集。 有关说明，请参阅[在 Azure HDInsight 中创建 Apache Spark 群集](apache-spark-jupyter-spark-sql.md)。
 
-* [cURL](http://curl.haxx.se/)。 本文使用 cURL 演示如何对 HDInsight Spark 群集发出 REST API 调用。
+* [cURL](https://curl.haxx.se/)。 本文使用 cURL 演示如何对 HDInsight Spark 群集发出 REST API 调用。
 
 ## <a name="submit-an-apache-livy-spark-batch-job"></a>提交 Apache Livy Spark 批处理作业
 在提交批处理作业之前，必须将应用程序 jar 上传到与群集关联的群集存储。 可以使用命令行实用工具 [**AzCopy**](../../storage/common/storage-use-azcopy.md) 来执行此操作。 可以使用其他各种客户端来上传数据。 有关详细信息，请参阅[在 HDInsight 中上传 Apache Hadoop 作业的数据](../hdinsight-upload-data.md)。

@@ -6,14 +6,14 @@ author: Rajeswari-Mamilla
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 11/18/2018
-ms.author: ramamill
-ms.openlocfilehash: 8b67947412055d0c0b9f39cb49961e435393cec9
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.date: 12/11/2018
+ms.author: mayg
+ms.openlocfilehash: 58d45036cac6ad985b7b1ffb2736a500fdcb5ce2
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52162596"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53251022"
 ---
 # <a name="deploy-a-configuration-server"></a>部署配置服务器
 
@@ -148,6 +148,9 @@ ms.locfileid: "52162596"
 7. 在哪里可以下载保管库注册密钥？
 
     在“恢复服务保管库”中，“管理” > “Site Recovery 基础结构” > “配置服务器”。 在“服务器”中，选择“下载注册密钥”以下载保管库凭据文件。
+8. 是否可以克隆现有配置服务器并将其用于复制业务流程？
+
+    **不能**，不支持使用克隆的配置服务器组件。 
 
 ## <a name="troubleshoot-deployment-issues"></a>排查部署问题
 

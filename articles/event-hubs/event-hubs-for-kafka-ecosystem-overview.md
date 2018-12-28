@@ -1,24 +1,24 @@
 ---
-title: 适用于 Apache Kafka 的 Azure 事件中心 | Microsoft Docs
-description: 概述并介绍启用 Kafka 的 Azure 事件中心
+title: 使用 Apache Kafka 应用中的事件中心 - Azure 事件中心 | Microsoft Docs
+description: 本文介绍有关 Azure 事件中心提供的 Apache Kafka 支持的信息。
 services: event-hubs
 documentationcenter: .net
 author: basilhariri
 manager: timlt
 ms.service: event-hubs
 ms.topic: article
-ms.date: 11/07/2018
+ms.custom: seodec18
+ms.date: 12/06/2018
 ms.author: bahariri
-ms.openlocfilehash: 7f452fe9797e688dc05b644c003117461b4f8bb9
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 1c484b6418fd5a453713bc464fff690ef444f109
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51277488"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53091180"
 ---
-# <a name="azure-event-hubs-for-apache-kafka"></a>适用于 Apache Kafka 的 Azure 事件中心 
-
-事件中心提供 Kafka 终结点，现有的基于 Kafka 的应用程序可将该终结点用作运行你自己的 Kafka 群集的替代方案。 事件中心支持 [Apache Kafka 协议 1.0 及更高版本](https://kafka.apache.org/documentation/)，并且可与现有 Kafka 应用程序（包括 MirrorMaker）配合使用。 
+# <a name="use-azure-event-hubs-from-apache-kafka-applications"></a>使用 Apache Kafka 应用程序中的 Azure 事件中心
+事件中心提供 Kafka 终结点，现有的基于 Kafka 的应用程序可将该终结点用作运行你自己的 Kafka 群集的替代方案。 事件中心支持 [Apache Kafka 协议 1.0 及更高版本](https://kafka.apache.org/documentation/)，并且可与现有 Kafka 应用程序（包括 MirrorMaker）配合使用。  
 
 ## <a name="what-does-event-hubs-for-kafka-provide"></a>适用于 Kafka 的事件中心可提供什么？
 

@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2018
-ms.openlocfilehash: 1571480540baedd5910c4153caf23e0687d48922
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: e448b367e574b044762fb1ee7eaa30e1bb3e1f8b
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51684971"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53011726"
 ---
 # <a name="use-sqoop-with-hadoop-in-hdinsight"></a>将 Sqoop 与 HDInsight 中的 Hadoop 配合使用
 [!INCLUDE [sqoop-selector](../../../includes/hdinsight-selector-use-sqoop.md)]
@@ -78,12 +78,12 @@ HDInsight 群集带有某些示例数据。 可使用以下两个示例：
     - **订阅**：输入 Azure 订阅。
     - **资源组**：创建新的 Azure 资源组或选择现有资源组。  资源组用于管理目的。  它是用于对象的容器。
     - **位置**：选择区域。
-    - **群集名称**：输入 Hadoop 群集的名称。
-    - **群集登录名和密码**：默认登录名是 admin。
+    - **clusterName**：输入 Hadoop 群集的名称。
+    - **群集登录名和密码**：默认登录名是“admin”。
     - **SSH 用户名和密码**。
     - **SQL 数据库服务器登录名和密码**。
     - **_artifacts 位置**：使用默认值（除非想要在其他位置使用自己的 backpac 文件）。
-    - **_artifacts 位置 Sas 令牌**：将其留空。
+    - **_artifacts 位置 Sas 令牌**：将此字段留空。
     - **Bacpac 文件名**：使用默认值（除非想要使用自己的 backpac 文件）。
      
         以下值在变量部分中硬编码：
@@ -99,7 +99,7 @@ HDInsight 群集带有某些示例数据。 可使用以下两个示例：
 
 如果选择使用现有的 Azure SQL 数据库或 Microsoft SQL Server
 
-* **Azure SQL 数据库**：用户必须为 Azure SQL 数据库服务器配置防火墙规则以允许从工作站进行访问。 有关创建 Azure SQL 数据库和配置防火墙的说明，请参阅 [开始使用 Azure SQL 数据库][sqldatabase-get-started]。 
+* **Azure SQL 数据库**：必须为 Azure SQL 数据库服务器配置防火墙规则以允许从工作站进行访问。 有关创建 Azure SQL 数据库和配置防火墙的说明，请参阅 [开始使用 Azure SQL 数据库][sqldatabase-get-started]。 
   
   > [!NOTE]
   > 默认情况下，可以从 Azure HDInsight 这样的 Azure 服务连接 Azure SQL 数据库。 如果禁用了此防火墙设置，则需要从 Azure 门户启用它。 有关创建 Azure SQL 数据库和配置防火墙规则的说明，请参阅[创建和配置 SQL 数据库][sqldatabase-create-configure]。
@@ -214,7 +214,7 @@ PowerShell 示例将执行以下步骤：
    > [!NOTE]
    > 除了连接字符串信息，此节中的步骤还应适用于 Azure SQL 数据库或 SQL Server。 这些步骤已使用以下配置测试过：
    > 
-   > * **Azure 虚拟网络点到站点配置**：虚拟网络已将 HDInsight 群集连接到专用数据中心的 SQL Server。 有关详细信息，请参阅[在管理门户中配置点到站点 VPN](../../vpn-gateway/vpn-gateway-point-to-site-create.md)。
+   > * **Azure 虚拟网络点到站点 VPN 配置**：虚拟网络已将 HDInsight 群集连接到专用数据中心的 SQL Server。 有关详细信息，请参阅[在管理门户中配置点到站点 VPN](../../vpn-gateway/vpn-gateway-point-to-site-create.md)。
    > * **Azure HDInsight**：有关在虚拟网络上创建群集的信息，请参阅[使用自定义选项在 HDInsight 中创建 Hadoop 群集](../hdinsight-hadoop-provision-linux-clusters.md)。
    > * **SQL Server 2014**：已配置为允许身份验证和运行 VPN 客户端配置包，可以安全地连接到虚拟网络。
    > 
@@ -638,8 +638,8 @@ Get-AzureRmHDInsightJobOutput `
 [sqldatabase-get-started]: ../../sql-database/sql-database-get-started.md
 [sqldatabase-create-configure]: ../../sql-database/sql-database-get-started.md
 
-[powershell-start]: http://technet.microsoft.com/library/hh847889.aspx
+[powershell-start]: https://technet.microsoft.com/library/hh847889.aspx
 [powershell-install]: /powershell/azureps-cmdlets-docs
-[powershell-script]: http://technet.microsoft.com/library/ee176949.aspx
+[powershell-script]: https://technet.microsoft.com/library/ee176949.aspx
 
 [sqoop-user-guide-1.4.4]: https://sqoop.apache.org/docs/1.4.4/SqoopUserGuide.html

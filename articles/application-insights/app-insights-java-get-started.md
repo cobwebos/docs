@@ -9,16 +9,15 @@ ms.assetid: 051d4285-f38a-45d8-ad8a-45c3be828d91
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/09/2018
 ms.author: lagayhar
-ms.openlocfilehash: 2538bbf32b41e51796e333c11b7af6c091a71ede
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 9f58c8c99fa48c0ffb4c76dd9752993b5e7d092e
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52309083"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52994389"
 ---
 # <a name="get-started-with-application-insights-in-a-java-web-project"></a>Java Web 项目中的 Application Insights 入门
 
@@ -75,7 +74,7 @@ Application Insights 支持 Linux、Unix 或 Windows 上运行的 Java 应用。
     </dependencies>
 ```
 
-* *发生了生成或校验和验证错误？* 尝试使用特定版本，例如：`<version>2.0.n</version>`。 可以在 [SDK release notes](https://github.com/Microsoft/ApplicationInsights-Java#release-notes)（SDK 发行说明）或 [Maven artifacts](http://search.maven.org/#search%7Cga%7C1%7Capplicationinsights)（Maven 项目）中找到最新版本。
+* *发生了生成或校验和验证错误？* 尝试使用特定版本，例如：`<version>2.0.n</version>`。 可以在 [SDK release notes](https://github.com/Microsoft/ApplicationInsights-Java#release-notes)（SDK 发行说明）或 [Maven artifacts](https://search.maven.org/#search%7Cga%7C1%7Capplicationinsights)（Maven 项目）中找到最新版本。
 * *需要更新到新 SDK？*  请刷新项目的依赖项。
 
 #### <a name="if-youre-using-gradle-a-namegradle-setup-"></a>如果使用 Gradle... <a name="gradle-setup" />
@@ -98,7 +97,7 @@ Application Insights 支持 Linux、Unix 或 Windows 上运行的 Java 应用。
 #### <a name="if-youre-using-eclipse-to-create-a-dynamic-web-project-"></a>如果使用 Eclipse 创建动态 Web 项目...
 使用[用于 Java 的 Application Insights SDK 插件][eclipse]。 注意：虽然使用此插件可以通过 Application Insights 更快地完成启动和运行操作（假定未使用 Maven/Gradle），但它不是一个依赖项管理系统。 因此，更新此插件不会自动更新项目中的 Application Insights 库。
 
-* *发生了生成或校验和验证错误？* 尝试使用特定版本，例如：`version:'2.0.n'`。 可以在 [SDK release notes](https://github.com/Microsoft/ApplicationInsights-Java#release-notes)（SDK 发行说明）或 [Maven artifacts](http://search.maven.org/#search%7Cga%7C1%7Capplicationinsights)（Maven 项目）中找到最新版本。
+* *发生了生成或校验和验证错误？* 尝试使用特定版本，例如：`version:'2.0.n'`。 可以在 [SDK release notes](https://github.com/Microsoft/ApplicationInsights-Java#release-notes)（SDK 发行说明）或 [Maven artifacts](https://search.maven.org/#search%7Cga%7C1%7Capplicationinsights)（Maven 项目）中找到最新版本。
 * *若要更新到新的 SDK*，请刷新项目的依赖项。
 
 #### <a name="otherwise-if-you-are-manually-managing-dependencies-"></a>否则，如果是手动管理依赖项...

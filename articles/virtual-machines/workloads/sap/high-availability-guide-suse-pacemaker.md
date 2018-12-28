@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/16/2018
 ms.author: sedusch
-ms.openlocfilehash: 9d3d1e5ba7ebc7e2afefb31df3be9f2a8f43e153
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: c6dee6fc26f540ad93f5a4b4e6e2f9432f757a6c
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51685389"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53076349"
 ---
 # <a name="setting-up-pacemaker-on-suse-linux-enterprise-server-in-azure"></a>在 Azure 中的 SUSE Linux Enterprise Server 上设置 Pacemaker
 
@@ -436,7 +436,7 @@ o- / ...........................................................................
    <pre><code>sudo vi /etc/corosync/corosync.conf
    </code></pre>
 
-   如果值不存在或不同，请将以下粗体显示的内容添加到文件。 请确保将令牌更改为 30000，以允许内存保留维护。 有关详细信息，请参阅这篇适用于 [Linux][virtual-machines-linux-maintenance] 或 [Windows][virtual-machines-windows-maintenance] 的文章。
+   如果值不存在或不同，请将以下粗体显示的内容添加到文件。 请确保将令牌更改为 30000，以允许内存保留维护。 有关详细信息，请参阅这篇适用于 [Linux][virtual-machines-linux-maintenance] 或 [Windows][virtual-machines-windows-maintenance] 的文章。 此外，请务必删除参数 mcastaddr。
 
    <pre><code>[...]
      <b>token:          30000
@@ -449,6 +449,8 @@ o- / ...........................................................................
         [...] 
      }
      <b>transport:      udpu</b>
+     # remove parameter mcastaddr
+     <b># mcastaddr: IP</b>
    } 
    <b>nodelist {
      node {
@@ -527,10 +529,10 @@ STONITH 设备使用服务主体对 Microsoft Azure 授权。 请按照以下步
 1. 打开“所有资源”边栏选项卡
 1. 选择第一个群集节点的虚拟机
 1. 选择“访问控制(IAM)”
-1. 单击“添加”
+1. 单击“添加角色分配”
 1. 选择角色“Linux 隔离代理角色”
 1. 输入前面创建的应用程序名称
-1. 单击“确定”
+1. 点击“保存”
 
 为第二个群集节点重复上述步骤。
 

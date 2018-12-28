@@ -3,7 +3,7 @@ title: 在扩展云数据库之间移动数据 | Microsoft 文档
 description: 介绍如何使用弹性数据库 API 通过自托管服务来操作分片和移动数据。
 services: sql-database
 ms.service: sql-database
-ms.subservice: elastic-scale
+ms.subservice: scale-out
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 10/15/2018
-ms.openlocfilehash: fb87a67d84588b5199a5d31530530d5afb7985e7
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: 0f5dc5cc7d981eb162ba101671b1e967ddf4bfff
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49353676"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52868457"
 ---
 # <a name="moving-data-between-scaled-out-cloud-databases"></a>在扩展云数据库之间移动数据
 
@@ -212,7 +212,7 @@ ms.locfileid: "49353676"
 
 ### <a name="azure-diagnostics"></a>Azure 诊断
 
-拆分/合并服务使用基于 Azure SDK 2.5 的 Azure Diagnostics 进行监视与诊断。 可以根据此处所述控制诊断配置：[在 Azure 云服务和虚拟机器中启用诊断](../cloud-services/cloud-services-dotnet-diagnostics.md)。 下载包包含两个诊断配置 – 一个用于 Web 角色，另一个用于辅助角色。 它包括用于记录性能计数器、IIS 日志、Windows 事件日志和拆分/合并应用程序事件日志的定义。
+拆分/合并服务使用基于 Azure SDK 2.5 的 Azure Diagnostics 进行监视与诊断。 可以按照此处的说明控制诊断配置：[在 Azure 云服务和虚拟机中启用诊断](../cloud-services/cloud-services-dotnet-diagnostics.md) 下载包包含两个诊断配置 – 一个用于 Web 角色，另一个用于辅助角色。 它包括用于记录性能计数器、IIS 日志、Windows 事件日志和拆分/合并应用程序事件日志的定义。
 
 ## <a name="deploy-diagnostics"></a>部署诊断
 
@@ -230,7 +230,7 @@ ms.locfileid: "49353676"
     Set-AzureServiceDiagnosticsExtension -StorageContext $storageContext -DiagnosticsConfigurationPath $config_path -ServiceName $service_name -Slot Production -Role "SplitMergeWorker"
 ```
 
-可以在此处找到有关如何配置和部署诊断设置的详细信息：[在 Azure 云服务和虚拟机中启用诊断](../cloud-services/cloud-services-dotnet-diagnostics.md)。
+可以在此处找到有关如何配置和部署诊断设置的详细信息：[在 Azure 云服务和虚拟机中启用诊断](../cloud-services/cloud-services-dotnet-diagnostics.md)
 
 ## <a name="retrieve-diagnostics"></a>检索诊断信息
 

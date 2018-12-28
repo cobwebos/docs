@@ -8,21 +8,20 @@ manager: carmonm
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/10/2018
+ms.date: 12/08/2018
 ms.reviewer: pharring
 ms.author: mbullwin
-ms.openlocfilehash: 9d0cb566ffb8fbec4b99b0f0eeca79b21d1b0dde
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.openlocfilehash: a92b54a80de645dda8ea0cc0259bd07f72330204
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52335123"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53136709"
 ---
 # <a name="debug-snapshots-on-exceptions-in-net-apps"></a>.NET 应用中发生异常时的调试快照
 
-发生异常时，可自动从实时 Web 应用程序收集调试快照。 快照显示发生异常时源代码和变量的状态。 [Azure Application Insights](app-insights-overview.md) 中的快照调试程序（预览版）可监视来自 Web 应用的异常遥测数据。 它可收集常出现的异常的调试快照，为诊断生产中的问题提供所需信息。 请将[快照收集器 NuGet 包](http://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector)添加到应用程序，并按需在 [ApplicationInsights.config](app-insights-configuration-with-applicationinsights-config.md) 中配置收集参数。快照显示在 Application Insights 门户中的[异常](app-insights-asp-net-exceptions.md)区域中。
+发生异常时，可自动从实时 Web 应用程序收集调试快照。 快照显示发生异常时源代码和变量的状态。 [Azure Application Insights](app-insights-overview.md) 中的快照调试程序（预览版）可监视来自 Web 应用的异常遥测数据。 它可收集常出现的异常的调试快照，为诊断生产中的问题提供所需信息。 请将[快照收集器 NuGet 包](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector)添加到应用程序，并按需在 [ApplicationInsights.config](app-insights-configuration-with-applicationinsights-config.md) 中配置收集参数。快照显示在 Application Insights 门户中的[异常](app-insights-asp-net-exceptions.md)区域中。
 
 可在门户中查看调试快照，查看调用堆栈并检查每个调用堆栈帧中的变量。 若要获取更强大的调试体验与源代码，请在 Visual Studio 2017 Enterprise 中打开快照。 在 Visual Studio 中，还可以[将快照设置为以交互方式拍摄快照](https://aka.ms/snappoint)，而无需等待异常。
 
@@ -46,7 +45,7 @@ ms.locfileid: "52335123"
 
 1. 如果尚未启用，请[在 Web 应用中启用 Application Insights](app-insights-asp-net.md)。
 
-2. 将 [Microsoft.ApplicationInsights.SnapshotCollector](http://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) NuGet 包添加到应用。
+2. 将 [Microsoft.ApplicationInsights.SnapshotCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) NuGet 包添加到应用。
 
 3. 查看该包在 [ApplicationInsights.config](app-insights-configuration-with-applicationinsights-config.md) 中添加的默认选项：
 
@@ -69,7 +68,7 @@ ms.locfileid: "52335123"
         <!-- How often to reset problem counters. -->
         <ProblemCounterResetInterval>1.00:00:00</ProblemCounterResetInterval>
         <!-- The maximum number of snapshots allowed in ten minutes.The default value is 1. -->
-        <SnapshotsPerTenMinutesLimit>1</SnapshotsPerTenMinutesLimit>
+        <SnapshotsPerTenMinutesLimit>3</SnapshotsPerTenMinutesLimit>
         <!-- The maximum number of snapshots allowed per day. -->
         <SnapshotsPerDayLimit>30</SnapshotsPerDayLimit>
         <!-- Whether or not to collect snapshot in low IO priority thread. The default value is true. -->
@@ -92,7 +91,7 @@ ms.locfileid: "52335123"
     > [!NOTE]
     > 请确保应用程序引用 2.1.1 版或更新版本的 Microsoft.ApplicationInsights.AspNetCore 包。
 
-2. 将 [Microsoft.ApplicationInsights.SnapshotCollector](http://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) NuGet 包添加到应用。
+2. 将 [Microsoft.ApplicationInsights.SnapshotCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) NuGet 包添加到应用。
 
 3. 修改应用程序的 `Startup` 类，添加并配置快照收集器的遥测处理器。
 
@@ -169,7 +168,7 @@ ms.locfileid: "52335123"
 
 1. 如果尚未在 Application Insights 上检测到你的应用程序，请先[启用 Application Insights 并设置检测密钥](app-insights-windows-desktop.md)。
 
-2. 将 [Microsoft.ApplicationInsights.SnapshotCollector](http://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) NuGet 包添加到应用。
+2. 将 [Microsoft.ApplicationInsights.SnapshotCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) NuGet 包添加到应用。
 
 3. 仅当向 Application Insights 报告了异常时，才收集快照。 可能需要修改代码才能报告。 异常处理代码取决于应用程序的结构，示例如下：
     ```csharp
@@ -202,7 +201,7 @@ ms.locfileid: "52335123"
 
 1. 在 Azure 门户中导航到 Application Insights 资源。
 1. 单击“访问控制(IAM)”。
-1. 单击“+添加”按钮。
+1. 单击“+添加角色分配”按钮。
 1. 从“角色”下拉列表中，选择“Application Insights 快照调试程序”。
 1. 搜索并输入要添加的用户的名称。
 1. 单击“保存”按钮将用户添加到角色。
@@ -226,7 +225,7 @@ ms.locfileid: "52335123"
 ## <a name="debug-snapshots-with-visual-studio-2017-enterprise"></a>使用 Visual Studio 2017 Enterprise 调试快照
 1. 单击“下载快照”按钮，下载可在 Visual Studio 2017 Enterprise 中打开的 `.diagsession` 文件。
 
-2. 若要打开 `.diagsession` 文件，需要安装 Snapshot Debugger VS 组件。 Snapshot Debugger 组件是 VS 中 ASP.net 工作负载的必需组件，可以从 VS 安装程序中的单独组件列表中选择。 如果你使用的是 15.5 之前的 Visual Studio 版本，则需要从 [VS Marketplace](http://aka.ms/snapshotdebugger) 安装扩展。
+2. 若要打开 `.diagsession` 文件，需要安装 Snapshot Debugger VS 组件。 Snapshot Debugger 组件是 VS 中 ASP.net 工作负载的必需组件，可以从 VS 安装程序中的单独组件列表中选择。 如果你使用的是 15.5 之前的 Visual Studio 版本，则需要从 [VS Marketplace](https://aka.ms/snapshotdebugger) 安装扩展。
 
 3. 打开快照文件后，将出现 Visual Studio 中的“小型转储调试”页面。 单击“调试托管代码”开始调试快照。 快照将打开到引发异常的代码行，以便可以调试进程的当前状态。
 

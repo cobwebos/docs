@@ -1,6 +1,7 @@
 ---
-title: 对必应缩略图执行重设大小和裁剪 - 必应图像搜索 API
-description: 了解如何对来自必应图像搜索 API 的响应中包含的缩略图重设大小和裁剪。
+title: 对缩略图图像执行重设大小和裁剪 - 必应图像搜索 API
+titleSuffix: Azure Cognitive Services
+description: 对来自必应图像搜索 API 的响应中包含的缩略图图像重设大小和裁剪。
 services: cognitive-services
 author: swhite-msft
 manager: cgronlun
@@ -10,14 +11,15 @@ ms.component: bing-image-search
 ms.topic: conceptual
 ms.date: 04/15/2017
 ms.author: scottwhi
-ms.openlocfilehash: de82cc5554af91294dda3826dfb394cc94dbf3d0
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.custom: seodec2018
+ms.openlocfilehash: 3bb360cd95dcbfb95464b2b259dcebfce7065256
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46296221"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53256378"
 ---
-# <a name="resizing-and-cropping-thumbnail-images"></a>对缩略图执行重设大小和裁剪
+# <a name="resize-and-crop-thumbnail-images"></a>调整和裁剪缩略图图像
 
 在处理搜索查询时，必应将为其[响应](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/concepts/bing-image-search-get-images#bing-image-search-response-format)中的所有图像生成缩略图信息。 此信息可用于显示所有或部分返回的缩略图。 如果显示一部分缩略图，请提供查看剩余图像的选项。
 

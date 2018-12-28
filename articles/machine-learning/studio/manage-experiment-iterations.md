@@ -1,12 +1,11 @@
 ---
 title: 在机器学习工作室中管理试验迭代 - Azure | Microsoft Docs
-description: 如何在 Azure机器学习工作室中管理试验迭代
+description: 如何在 Azure机器学习工作室中管理试验迭代。 可以在任何时候复查前面运行的试验，以便质询、回顾并最终确认或优化以前的假设。
 services: machine-learning
 documentationcenter: ''
 author: ericlicoding
-ms.custom: (previous ms.author=hshapiro, author=heatherbshapiro)
+ms.custom: seodec18
 ms.author: amlstudiodocs
-manager: hjerez
 editor: cgronlun
 ms.assetid: 6a53530f-20d5-40ae-9b49-7b499ccb44b7
 ms.service: machine-learning
@@ -16,17 +15,17 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2017
-ms.openlocfilehash: b96ab59db8c4586304a864ee432dbd1c74b25fd6
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: ebcae3e8e8f13904936dbe122f285a01a2a71459
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52313531"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53270444"
 ---
 # <a name="manage-experiment-iterations-in-azure-machine-learning-studio"></a>在 Azure机器学习工作室中管理试验迭代
 开发预测分析模型是一个迭代过程 - 在修改试验的各种函数和参数时，结果会不断聚合，直到对经过培训的有效模型感到满意为止。 此过程的关键是跟踪试验参数和配置的各种迭代。
 
-[!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
+
 
 可以在任何时候复查前面运行的试验，以便质询、回顾并最终确认或优化以前的假设。 在运行试验时，机器学习工作室会保留一份运行历史记录，包括数据集、 模块以及端口连接数和参数。 此历史记录还会捕获结果和运行时信息，如启动和停止时间、日志消息和执行状态。 可以在任何时候回头查看这些运行，以复查实验和中间结果的时间顺序。 在创建简单、复杂，甚至建模解决方案的过程中，甚至可以使用上一次运行的试验来启动新一阶段的查询和探索。
 

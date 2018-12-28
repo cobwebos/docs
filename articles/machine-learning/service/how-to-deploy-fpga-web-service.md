@@ -1,6 +1,7 @@
 ---
-title: 使用 Azure 机器学习将模型部署为 FPGA 上的 Web 服务
-description: 了解如何使用 Azure 机器学习通过在 FPGA 上运行模型部署 Web 服务。
+title: 在 FPGA 上部署模型
+titleSuffix: Azure Machine Learning service
+description: 了解如何使用 Azure 机器学习服务通过在 FPGA 上运行模型部署 Web 服务来实现超低延迟推断。
 services: machine-learning
 ms.service: machine-learning
 ms.component: core
@@ -8,21 +9,22 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 ms.author: tedway
 author: tedway
-ms.date: 10/29/2018
-ms.openlocfilehash: c6bf3c50958085f45c52ec2fa3cbdfba8adbe35f
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.date: 12/06/2018
+ms.custom: seodec18
+ms.openlocfilehash: 3148d4d63ad1464dbd45c361237ac9cd4ffd485a
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51711712"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53268234"
 ---
-# <a name="deploy-a-model-as-a-web-service-on-an-fpga-with-azure-machine-learning"></a>使用 Azure 机器学习将模型部署为 FPGA 上的 Web 服务
+# <a name="deploy-a-model-as-a-web-service-on-an-fpga-with-azure-machine-learning-service"></a>使用 Azure 机器学习服务将模型部署为 FPGA 上的 Web 服务
 
 可在[现场可编程门阵列 (FPGA)](concept-accelerate-with-fpgas.md) 上将模型部署为 Web 服务。  使用 FPGA 可实现超低的延迟推断，即使只有一个批数据大小。   
 
 ## <a name="prerequisites"></a>先决条件
 
-- Azure 订阅。 如果还没有该订阅，可以在开始前创建一个[免费帐户](https://aka.ms/AMLfree)。
+- 如果还没有 Azure 订阅，请在开始前创建免费帐户。 立即试用 [Azure 机器学习服务免费版或付费版](http://aka.ms/AMLFree)。
 
 - 已安装 Azure 机器学习服务工作区，以及适用于 Python 的 Azure 机器学习 SDK。 了解如何通过[如何配置开发环境](how-to-configure-environment.md)一文满足这些先决条件。
  
@@ -165,14 +167,6 @@ registered_model.delete()
 
 在 FPGA 上运行的 Azure 机器学习模型提供 SSL 支持和基于密钥的身份验证。 这样可以限制对服务的访问权限并保护由客户端提交的数据。 [了解如何保护 Web 服务](how-to-secure-web-service.md)。
 
-
-## <a name="sample-notebook"></a>示例 Notebook
-
-本文中的概念在 [project-brainwave/project-brainwave-quickstart.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/project-brainwave/project-brainwave-quickstart.ipynb) 笔记本中演示。
-
-获取此笔记本：
-
-[!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-for-examples.md)]
 
 ## <a name="next-steps"></a>后续步骤
 

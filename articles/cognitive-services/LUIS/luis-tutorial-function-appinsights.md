@@ -1,23 +1,24 @@
 ---
-title: 使用 Node.js 从 LUIS 获取 Application Insights 数据
+title: Application Insights，Node.js
 titleSuffix: Azure Cognitive Services
 description: 使用 Node.js 生成与 LUIS 应用程序和 Application Insights 集成的机器人。
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 09/24/2018
 ms.author: diberry
-ms.openlocfilehash: 6199e4a681f7f58ea0cf57b575afb2a63d160eee
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: 4f1372f8b15670472146efc1c4f3a341f4a97c71
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49321948"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53255595"
 ---
-# <a name="add-luis-results-to-application-insights"></a>将 LUIS 结果添加到 Application Insights
+# <a name="add-luis-results-to-application-insights-and-azure-functions"></a>将 LUIS 结果添加到 Application Insights 和 Azure 函数
 本教程将 LUIS 请求和响应信息添加到 [Application Insights](https://azure.microsoft.com/services/application-insights/) 遥测数据存储。 添加该数据后，可使用 Kusto 语言进行查询，或使用 PowerBi 对陈述的意向和实体进行实时分析、聚合和报告。 此分析有助于确定是否应添加或编辑 LUIS 应用的意向和实体。
 
 该机器人是使用 Bot Framework 3.x 和 Azure Web 应用机器人生成的。
@@ -34,9 +35,9 @@ ms.locfileid: "49321948"
 * 使用[上一教程](luis-nodejs-tutorial-build-bot-framework-sample.md)中已启用 Application Insights 的 LUIS Web 应用机器人。 
 
 > [!Tip]
-> 如果没有订阅，可以注册一个[免费帐户](https://azure.microsoft.com/free/)。
+> 如果尚无订阅，可注册[免费帐户](https://azure.microsoft.com/free/)。
 
-本教程中的所有代码均位于 [LUIS 示例 github 存储库](https://github.com/Microsoft/LUIS-Samples/tree/master/documentation-samples/tutorial-web-app-bot-application-insights/nodejs)中，并且与本教程关联的每行均注释有 `//APPINSIGHT:`。 
+本教程中的所有代码均可在 [LUIS 示例 GitHub 存储库](https://github.com/Microsoft/LUIS-Samples/tree/master/documentation-samples/tutorial-web-app-bot-application-insights/nodejs)中找到，并且与本教程关联的每行均注释有 `//APPINSIGHT:`。 
 
 ## <a name="web-app-bot-with-luis"></a>Web 应用机器人与 LUIS
 本教程假定你有如下代码或已完成[其他教程](luis-nodejs-tutorial-build-bot-framework-sample.md)： 
@@ -58,7 +59,7 @@ ms.locfileid: "49321948"
 
 3. 在控制台中输入以下命令，安装 Application Insights 和 Underscore 包：
 
-    ```
+    ```console
     cd site\wwwroot && npm install applicationinsights && npm install underscore
     ```
 
@@ -66,7 +67,7 @@ ms.locfileid: "49321948"
 
     等待这些包安装完成：
 
-    ```
+    ```console
     luisbot@1.0.0 D:\home\site\wwwroot
     `-- applicationinsights@1.0.1 
       +-- diagnostic-channel@0.2.0 
@@ -142,7 +143,7 @@ Application Insights 支持查询使用 [Kusto](https://docs.microsoft.com/azure
 
 3. 若要拉取首要意向、评分和陈述，请在查询窗口的最后一行上方添加以下内容：
 
-    ```SQL
+    ```kusto
     | extend topIntent = tostring(customDimensions.LUIS_intent_intent)
     | extend score = todouble(customDimensions.LUIS_intent_score)
     | extend utterance = tostring(customDimensions.LUIS_text)

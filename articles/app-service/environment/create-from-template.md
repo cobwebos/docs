@@ -1,5 +1,5 @@
 ---
-title: 使用资源管理器模板创建 Azure 应用服务环境
+title: 使用资源管理器模板创建应用服务环境 - Azure
 description: 阐释如何使用资源管理器模板创建外部或 ILB Azure 应用服务环境
 services: app-service
 documentationcenter: na
@@ -13,12 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/13/2017
 ms.author: ccompy
-ms.openlocfilehash: 62eecaba261ac2478ab6d1c7d47067f43a58d976
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.custom: seodec18
+ms.openlocfilehash: 9056abdd57640026d04779a3c5c3a201095ea045
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50231349"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53277465"
 ---
 # <a name="create-an-ase-by-using-an-azure-resource-manager-template"></a>使用 Azure 资源管理器模板创建 ASE
 
@@ -49,9 +50,9 @@ ms.locfileid: "50231349"
 
 要创建 ILB ASE，请使用这些资源管理器模板[示例][quickstartilbasecreate]。 它们适用于该用例。 azuredeploy.parameters.json 文件中的大部分参数常用于创建 ILB ASE 和外部 ASE。 创建 ILB ASE 时，以下列表会调出特殊注释的参数或唯一的参数：
 
-* *internalLoadBalancingMode*：此属性多数情况下设置为 3，这表示端口 80/443 上的 HTTP/HTTPS 流量以及 ASE 上的 FTP 服务所侦听的控制/数据通道端口将绑定到 ILB 分配的虚拟网络内部地址。 如果此属性设置为 2，则仅将与 FTP 服务相关的端口（包括控制和数据信道）绑定至 ILB 地址。 HTTP/HTTPS 流量保留在公共 VIP 中。
+* internalLoadBalancingMode：此属性多数情况下设置为 3，这表示端口 80/443 上的 HTTP/HTTPS 流量以及 ASE 上的 FTP 服务所侦听的控制/数据通道端口将绑定到 ILB 分配的虚拟网络内部地址。 如果此属性设置为 2，则仅将与 FTP 服务相关的端口（包括控制和数据信道）绑定至 ILB 地址。 HTTP/HTTPS 流量保留在公共 VIP 中。
 * dnsSuffix：此参数定义要分配给 ASE 的默认根域。 在 Azure 应用服务的公共变体中，所有 Web 应用的默认根域均为 *azurewebsites.net*。 由于 ILB ASE 位于客户虚拟网络的内部，因此不适合使用公共服务的默认根域。 而应当具有适合在公司的内部虚拟网络中使用的默认根域。 例如，Contoso Corporation 可能会将 internal-contoso.com 的默认根域用于只能在 Contoso 虚拟网络内解析和访问的应用。 
-* ipSslAddressCount：在 azuredeploy.json 文件中，此参数的值自动默认为 0，因为 ILB ASE 只有一个 ILB 地址。 ILB ASE 没有显式 IP-SSL 地址。 因此，ILB ASE 的 IP-SSL 地址池应设置为零。 否则将出现预配错误。 
+* ipSslAddressCount：在“azuredeploy.json”文件中，此参数的值自动默认为 0，因为 ILB ASE 只有一个 ILB 地址。 ILB ASE 没有显式 IP-SSL 地址。 因此，ILB ASE 的 IP-SSL 地址池应设置为零。 否则将出现预配错误。 
 
 在填充 azuredeploy.parameters.json 文件后，使用 PowerShell 代码片段来创建 ASE。 更改文件路径，以匹配资源管理器模板文件在计算机上的位置。 切记提供自己的资源管理器部署名称值和资源组名称值：
 
@@ -69,8 +70,8 @@ SSL 证书必须与 ASE 关联，作为用于建立应用的 SSL 连接的“默
 
 可通过三种方式获取有效的 SSL 证书：使用内部证书颁发机构、向外部颁发者购买证书或使用自签名证书。 无论 SSL 证书的来源如何，都需要正确配置以下证书属性：
 
-* 使用者：此属性必须设置为 *.your-root-domain-here.com。
-* 使用者可选名称：此属性必须同时包含 *.your-root-domain-here.com 和 *scm.your-root-domain-here.com。 使用 your-app-name.scm.your-root-domain-here.com 形式的地址，建立与每个应用关联的 SCM/Kudu 站点的 SSL 连接。
+* **使用者**：此属性必须设置为 *“your-root-domain-here.com”。
+* **使用者可选名称**：此属性必须同时包含 *“your-root-domain-here.com” 和 *“scm.your-root-domain-here.com”。 使用 your-app-name.scm.your-root-domain-here.com 形式的地址，建立与每个应用关联的 SCM/Kudu 站点的 SSL 连接。
 
 备妥有效的 SSL 证书还需要两个额外的准备步骤。 将 SSL 证书转换/保存为 .pfx 文件。 请记住，.pfx 文件必须包括所有的中间和根证书。 使用密码进行保护。
 
@@ -104,7 +105,7 @@ $fileContentEncoded | set-content ($fileName + ".b64")
 azuredeploy.parameters.json 文件中的参数如下所列：
 
 * appServiceEnvironmentName：要配置的 ILB ASE 的名称。
-* existingAseLocation：包含 ILB ASE 部署所在的 Azure 区域的文本字符串。  例如“美国中南部”。
+* existingAseLocation：包含 ILB ASE 部署所在的 Azure 区域的文本字符串。  例如：“美国中南部”。
 * pfxBlobString：.pfx 文件的 based64 编码字符串表示形式。 使用先前所示的代码片段并复制“exportedcert.pfx.b64”中包含的字符串。 将其作为 pfxBlobString 属性的值进行粘贴。
 * password：用于保护 .pfx 文件的密码。
 * certificateThumbprint：证书的指纹。 如果从 Powershell 中检索到此值（例如先前代码片段中的 $certificate.Thumbprint），可按原样使用此值。 如果从 Windows 证书对话框复制此值，请记得去除多余的空格。 certificateThumbprint 应如下所示：AF3143EB61D43F6727842115BB7F17BBCECAECAE。
@@ -114,7 +115,7 @@ azuredeploy.parameters.json 的缩写示例如下所示：
 
 ```json
 {
-  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json",
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json",
   "contentVersion": "1.0.0.0",
   "parameters": {
     "appServiceEnvironmentName": {
@@ -165,11 +166,11 @@ ASEv1 使用与 ASEv2 不同的定价模型。 在 ASEv1 中，需要为分配�
 
 
 <!--Links-->
-[quickstartilbasecreate]: http://azure.microsoft.com/documentation/templates/201-web-app-asev2-ilb-create
-[quickstartasev2create]: http://azure.microsoft.com/documentation/templates/201-web-app-asev2-create
-[quickstartconfiguressl]: http://azure.microsoft.com/documentation/templates/201-web-app-ase-ilb-configure-default-ssl
-[quickstartwebapponasev2create]: http://azure.microsoft.com/documentation/templates/201-web-app-asp-app-on-asev2-create
-[examplebase64encoding]: http://powershellscripts.blogspot.com/2007/02/base64-encode-file.html 
+[quickstartilbasecreate]: https://azure.microsoft.com/documentation/templates/201-web-app-asev2-ilb-create
+[quickstartasev2create]: https://azure.microsoft.com/documentation/templates/201-web-app-asev2-create
+[quickstartconfiguressl]: https://azure.microsoft.com/documentation/templates/201-web-app-ase-ilb-configure-default-ssl
+[quickstartwebapponasev2create]: https://azure.microsoft.com/documentation/templates/201-web-app-asp-app-on-asev2-create
+[examplebase64encoding]: https://powershellscripts.blogspot.com/2007/02/base64-encode-file.html 
 [configuringDefaultSSLCertificate]: https://azure.microsoft.com/documentation/templates/201-web-app-ase-ilb-configure-default-ssl/
 [Intro]: ./intro.md
 [MakeExternalASE]: ./create-external-ase.md
@@ -183,10 +184,10 @@ ASEv1 使用与 ASEv2 不同的定价模型。 在 ASEv1 中，需要为分配�
 [ASEv1Intro]: app-service-app-service-environment-intro.md
 [mobileapps]: ../../app-service-mobile/app-service-mobile-value-prop.md
 [Functions]: ../../azure-functions/index.yml
-[Pricing]: http://azure.microsoft.com/pricing/details/app-service/
+[Pricing]: https://azure.microsoft.com/pricing/details/app-service/
 [ARMOverview]: ../../azure-resource-manager/resource-group-overview.md
 [ConfigureSSL]: ../../app-service/web-sites-purchase-ssl-web-site.md
-[Kudu]: http://azure.microsoft.com/resources/videos/super-secret-kudu-debug-console-for-azure-web-sites/
+[Kudu]: https://azure.microsoft.com/resources/videos/super-secret-kudu-debug-console-for-azure-web-sites/
 [ASEWAF]: app-service-app-service-environment-web-application-firewall.md
 [AppGW]: ../../application-gateway/application-gateway-web-application-firewall-overview.md
 [ILBASEv1Template]: app-service-app-service-environment-create-ilb-ase-resourcemanager.md

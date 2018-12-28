@@ -1,7 +1,7 @@
 ---
 title: LUIS 和 QnAMaker - 机器人集成
 titleSuffix: Azure Cognitive Services
-description: 有关在机器人中集成 QnA Maker 和 LUIS 的分步教程。
+description: 随着 QnA Maker 知识库变得越来越大，将其作为单个整体集进行维护变得困难，并且需要将知识库分成更小的逻辑块。
 services: cognitive-services
 author: diberry
 manager: cgronlun
@@ -10,14 +10,15 @@ ms.component: qna-maker
 ms.topic: article
 ms.date: 09/28/2018
 ms.author: diberry
-ms.openlocfilehash: 27f60f9624af2819663990aeba99b4044045540b
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.custom: seodec18
+ms.openlocfilehash: f2d6f956564f01c14edb213f0bc5ae709892c542
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51687361"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53163304"
 ---
-# <a name="integrate-qna-maker-and-luis-to-distribute-your-knowledge-base"></a>集成 QnA Maker 和 LUIS 以分发知识库
+# <a name="use-bot-with-qna-maker-and-luis-to-distribute-your-knowledge-base"></a>将机器人与 QnA Maker 和 LUIS 结合使用以分发知识库
 随着 QnA Maker 知识库变得越来越大，将其作为单个整体集进行维护变得困难，并且需要将知识库分成更小的逻辑块。
 
 虽然在 QnA Maker 中创建多个知识库很简单，但你需要一些逻辑来将传入的问题路由到适当的知识库。 可以使用 LUIS 来完成此操作。

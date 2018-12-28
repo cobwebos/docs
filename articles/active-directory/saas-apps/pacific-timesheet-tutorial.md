@@ -1,5 +1,5 @@
 ---
-title: 教程：Azure Active Directory 与 Pacific Timesheet 集成 | Microsoft 文档
+title: 教程：Azure Active Directory 与 Pacific Timesheet 集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 和 Pacific Timesheet 之间配置单一登录。
 services: active-directory
 documentationCenter: na
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/28/2017
 ms.author: jeedes
-ms.openlocfilehash: 051e39d0e7a58c79eb00bc3dfb73eaf5389617c8
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 8b821da194ce41fc419e769336eeeb5927306684
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39448357"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52843642"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-pacific-timesheet"></a>教程：Azure Active Directory 与 Pacific Timesheet 的集成
 
@@ -112,12 +112,12 @@ ms.locfileid: "39448357"
 
     ![配置单一登录](./media/pacific-timesheet-tutorial/tutorial_pacifictimesheet_url.png)
 
-    a. 在“标识符”文本框中，使用以下模式键入 URL：`https://<InstanceID>.pacifictimesheet.com/timesheet/home.do`
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“标识符”文本框中，使用以下模式键入 URL：`https://<InstanceID>.pacifictimesheet.com/timesheet/home.do`
 
     b. 在 **“回复 URL”** 文本框中，使用以下模式键入 URL：`https://<InstanceID>.pacifictimesheet.com/timesheet/home.do`
 
     > [!NOTE] 
-    > 这些不是实际值。 请使用实际标识符和回复 URL 更新这些值。 请联系 [Pacific Timesheet 客户端支持团队](http://www.pacifictimesheet.com/support)获取这些值。
+    > 这些不是实际值。 请使用实际标识符和回复 URL 更新这些值。 请联系 [Pacific Timesheet 客户端支持团队](https://www.pacifictimesheet.com/support)获取这些值。
  
 1. 在“SAML 签名证书”部分中，单击“证书(base64)”，并在计算机上保存证书文件。
 
@@ -131,10 +131,10 @@ ms.locfileid: "39448357"
 
     ![配置单一登录](./media/pacific-timesheet-tutorial/tutorial_pacifictimesheet_configure.png) 
 
-1. 若要在 Pacific Timesheet 端配置单一登录，需要将下载的证书 (Base64)、SAML 单一登录服务 URL 和 SAML 实体 ID 发送给 [Pacific Timesheet 支持团队](http://www.pacifictimesheet.com/support)。 他们会对此进行设置，使 SAML SSO 连接在两端均正确设置。
+1. 若要在 Pacific Timesheet 端配置单一登录，需要将下载的证书 (Base64)、SAML 单一登录服务 URL 和 SAML 实体 ID 发送给 [Pacific Timesheet 支持团队](https://www.pacifictimesheet.com/support)。 他们会对此进行设置，使 SAML SSO 连接在两端均正确设置。
 
 > [!TIP]
-> 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[ Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
+> 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
 ### <a name="creating-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
@@ -160,7 +160,7 @@ ms.locfileid: "39448357"
  
     ![创建 Azure AD 测试用户](./media/pacific-timesheet-tutorial/create_aaduser_04.png) 
 
-    a. 在“名称”文本框中，键入 **BrittaSimon**。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
 
     b. 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
@@ -170,7 +170,7 @@ ms.locfileid: "39448357"
  
 ### <a name="creating-a-pacific-timesheet-test-user"></a>创建 Pacific Timesheet 测试用户
 
-本部分需在 Pacific Timesheet 中创建名为“Britta Simon”的用户。 请在 [Pacific Timesheet 支持团队](http://www.pacifictimesheet.com/support)的协助下，在应用程序中创建用户。
+本部分需在 Pacific Timesheet 中创建名为“Britta Simon”的用户。 请在 [Pacific Timesheet 支持团队](https://www.pacifictimesheet.com/support)的协助下，在应用程序中创建用户。
 
 ### <a name="assigning-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
@@ -211,7 +211,7 @@ ms.locfileid: "39448357"
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](tutorial-list.md)
-* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
+* [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
 
 

@@ -10,12 +10,12 @@ ms.component: bing-news-search
 ms.topic: conceptual
 ms.date: 04/15/2017
 ms.author: scottwhi
-ms.openlocfilehash: c6ecb7d4c1e5b648373fcaa3f44c6294329d33c2
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 565c0ed877cf4500131f7ad3099f3c7d3f1a1220
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48801159"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52955031"
 ---
 # <a name="news-search-api-upgrade-guide"></a>新闻搜索 API 升级指南
 
@@ -25,7 +25,7 @@ ms.locfileid: "48801159"
 
 ### <a name="endpoints"></a>终结点
 
-- 终结点的版本号已从 v5 更改为 v7。 例如， https://api.cognitive.microsoft.com/bing/\*\*v7.0\*\*/news/search。
+- 终结点的版本号已从 v5 更改为 v7。 例如， https://api.cognitive.microsoft.com/bing/v7.0/news/search。
 
 ### <a name="error-response-objects-and-error-codes"></a>错误响应对象和错误代码
 
@@ -34,7 +34,6 @@ ms.locfileid: "48801159"
 - 已将以下字段添加到 `Error` 对象。  
   - `subCode`&mdash;如果可能，将错误代码分入各个独立桶中
   - `moreDetails`&mdash;有关 `message` 字段中错误的更多信息
-   
 
 - 已将 v5 错误代码替换为以下可取的 `code` 和 `subCode` 值。
 
@@ -77,18 +76,18 @@ InsufficientScope|InsufficientAuthorization
 
 ### <a name="query-parameters"></a>查询参数
 
-- 已将 Products 添加为可以将 [category](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#category) 查询参数设置为的可取值。 请参阅[按市场划分的类别](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#categories-by-market)。  
-    
-- 已添加 [SortBy](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#sortby) 查询参数，它返回按日期排序的热门主题（最新主题排在最前面）。  
-  
+- 已将 Products 添加为可以将 [category](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#category) 查询参数设置为的可取值。 请参阅[按市场划分的类别](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#categories-by-market)。
+
+- 已添加 [SortBy](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#sortby) 查询参数，它返回按日期排序的热门主题（最新主题排在最前面）。
+
 - 已添加 [Since](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#since) 查询参数，它返回必应在指定 Unix 时间戳期间或之后发现的热门主题。
 
 ### <a name="object-changes"></a>对象变化
 
-- 已将 `mentions` 字段添加到 [NewsArticle](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#newsarticle) 对象。 `mentions` 字段包含在文章中找到的实体（人员或位置）列表。  
-  
-- 已将 `video` 字段添加到 [NewsArticle](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#newsarticle) 对象。 `video` 字段包含与新闻文章相关的视频。 视频要么是可以嵌入的 \<iframe\>，要么是动作缩略图。   
-  
-- 已将 `sort` 字段添加到 [News](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#news) 对象。 `sort` 字段显示文章排序顺序。 例如，文章按相关性（默认设置）或日期排序。  
-  
+- 已将 `mentions` 字段添加到 [NewsArticle](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#newsarticle) 对象。 `mentions` 字段包含在文章中找到的实体（人员或位置）列表。
+
+- 已将 `video` 字段添加到 [NewsArticle](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#newsarticle) 对象。 `video` 字段包含与新闻文章相关的视频。 视频要么是可以嵌入的 \<iframe\>，要么是动作缩略图。
+
+- 已将 `sort` 字段添加到 [News](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#news) 对象。 `sort` 字段显示文章排序顺序。 例如，文章按相关性（默认设置）或日期排序。
+
 - 已添加 [SortValue](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#sortvalue) 对象，用于定义排序顺序。 `isSelected` 字段指明响应是否使用了排序顺序。 如果为 true，表明响应使用了排序顺序。 如果 `isSelected` 为 false，可以使用 `url` 字段中的 URL 来请求获取其他排序顺序。

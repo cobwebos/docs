@@ -4,9 +4,8 @@ description: 有关 Net# 神经网络规范语言的语法，以及如何使用 
 services: machine-learning
 documentationcenter: ''
 author: ericlicoding
-ms.custom: (previous ms.author=hshapiro, author=heatherbshapiro)
+ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.author: amlstudiodocs
-manager: hjerez
 editor: cgronlun
 ms.assetid: cfd1454b-47df-4745-b064-ce5f9b3be303
 ms.service: machine-learning
@@ -16,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
 ms.date: 03/01/2018
-ms.openlocfilehash: 3aa364e92dd7ce3742d28ac2b36d9a7f16cbebbf
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: fb6efad1f1c06349adb877516f5323d8b9ee45e8
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52315301"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53272229"
 ---
 # <a name="guide-to-net-neural-network-specification-language-for-azure-machine-learning-studio"></a>有关 Azure 机器学习工作室的 Net# 神经网络规范语言的指南
 
@@ -29,7 +28,7 @@ Net# 是由 Microsoft 开发的一种用于定义神经网络体系结构的语�
 
 在下列上下文中，可以使用 Net# 体系结构规范：
 
-+ Microsoft Azure 机器学习工作室中的所有网络模块：[多类神经网络](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/multiclass-neural-network)、[两类神经网络](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/two-class-neural-network)和[神经网络回归](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/neural-network-regression)
++ Microsoft Azure 机器学习工作室中的所有神经网络模块：[多类神经网络](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/multiclass-neural-network)[双类神经网络](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/two-class-neural-network)和[神经网络回归](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/neural-network-regression)
 + MicrosoftML 中的神经网络函数：R 语言的 [NeuralNet](https://docs.microsoft.com/machine-learning-server/r-reference/microsoftml/neuralnet) 和 [rxNeuralNet](https://docs.microsoft.com/machine-learning-server/r-reference/microsoftml/rxneuralnet)，以及 Python 的 [rx_neural_network](https://docs.microsoft.com/machine-learning-server/python-reference/microsoftml/rx-neural-network)。
 
 
@@ -39,7 +38,7 @@ Net# 是由 Microsoft 开发的一种用于定义神经网络体系结构的语�
 + Net# 规范语言的语法和关键字
 + 使用 Net# 创建的自定义神经网络的示例 
 
-[!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
+
 
 ## <a name="neural-network-basics"></a>神经网络基础知识
 
@@ -53,7 +52,7 @@ Net # 支持各种类型的连接捆绑，可自定义映射到隐藏层和映�
 
 此外，Net# 支持以下四种高级连接捆绑：
 
-+ **筛选捆绑**。 用户可通过使用源层节点和目标层节点的位置来定义一个谓词。 每当谓词为 True，节点即连接。
++ **筛选捆绑**。 用户可通过使用源层节点和目标层节点的位置来定义一个谓词。 每当谓词为 Ture，节点即连接。
 
 + **卷积捆绑**。 用户可在源层中定义节点的小范围邻域。 目标层中的每个节点连接到源层中节点的一个邻域。
 
@@ -219,7 +218,7 @@ hidden ByCol[5, 20] from Pixels where (s,d) => abs(s[1] - d[1]) <= 1;
     
     如果维度值为 False，则将定义内核，使留出的每个端上的节点数都相同（最大差值为 1）。 此属性的默认值为一个元组，其所有组件都等于 False。
 
-+ **UpperPad** 和 **LowerPad**：（可选）对大量要使用的填充提供更好的控制。 **重要提示：** 当且仅当***没有***定义上述的 **Padding** 属性时，才能定义这些属性。 值必须是正整数值的元组，其长度为绑定的实参数量。 指定这些属性后，“虚拟”节点将添加到输入层的每个维度的上下两端。 每个维度的上下两端添加的节点数分别由 **LowerPad**[i] 和 **UpperPad**[i] 确定。 
++ **UpperPad** 和 **LowerPad**：（可选）对大量要使用的填充提供更好的控制。 **重要提示：** 当且仅当“没有”定义上述的“Padding”属性时，才能定义这些属性。 值必须是正整数值的元组，其长度为绑定的实参数量。 指定这些属性后，“虚拟”节点将添加到输入层的每个维度的上下两端。 每个维度的上下两端添加的节点数分别由 **LowerPad**[i] 和 **UpperPad**[i] 确定。 
 
     若要确保内核只对应“真实”节点而不是“虚拟”节点，则必须符合以下条件：
       - **LowerPad** 的每个组件必须严格小于 `KernelShape[d]/2`。 

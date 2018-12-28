@@ -1,6 +1,7 @@
 ---
-title: Azure 机器学习服务的已知问题和故障排除
-description: 获取已知问题、解决方法和故障排除的列表
+title: 已知问题与故障排除
+titleSuffix: Azure Machine Learning service
+description: 获取 Azure 机器学习服务的已知问题、解决方法和故障排除的列表。
 services: machine-learning
 author: j-martens
 ms.author: jmartens
@@ -8,13 +9,14 @@ ms.reviewer: mldocs
 ms.service: machine-learning
 ms.component: core
 ms.topic: article
-ms.date: 10/01/2018
-ms.openlocfilehash: 02cee5a3e088c919ec94aee6f46ef6f428b9bb48
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.date: 12/04/2018
+ms.custom: seodec18
+ms.openlocfilehash: 4a4f1691162ab9c9fbd5bc8802ecf7ebc4894d74
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48249411"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53193665"
 ---
 # <a name="known-issues-and-troubleshooting-azure-machine-learning-service"></a>Azure 机器学习服务的已知问题和故障排除
  
@@ -24,17 +26,17 @@ ms.locfileid: "48249411"
 
 **错误消息：无法卸载 'PyYAML'** 
 
-PyYAML 是 distutils 安装的项目。 因此，在部分卸载的情况下，我们无法准确确定哪些文件属于它。 若要在忽略此错误的同时继续安装 SDK，请使用：
+适用于 Python 的 Azure 机器学习 SDK：PyYAML 是 distutils 安装的项目。 因此，在部分卸载的情况下，我们无法准确确定哪些文件属于它。 若要在忽略此错误的同时继续安装 SDK，请使用：
 ```Python 
 pip install --upgrade azureml-sdk[notebooks,automl] --ignore-installed PyYAML
 ```
 
+## <a name="trouble-creating-azure-machine-learning-compute"></a>创建 Azure 机器学习计算时发生故障
+如果用户在 GA 发布之前已通过 Azure 门户创建了自己的 Azure 机器学习工作区，则他们很可能无法在该工作区中创建 Azure 机器学习计算。 可对服务提出支持请求，也可通过门户或 SDK 创建新的工作区以立即解除锁定。 
+
 ## <a name="image-building-failure"></a>映像生成失败
 
 部署 Web 服务时映像生成失败。 解决方法是将“pynacl==1.2.1”作为 pip 依赖项添加到 Conda 文件以进行映像配置。  
-
-## <a name="pipelines"></a>管道
-在不更改脚本或参数的情况下，连续多次调用 PythonScriptStep 时发生错误。 解决方法是重新生成 PipelineData 对象。
 
 ## <a name="fpgas"></a>FPGA
 你将无法在 FPGA 上部署模型，直到已请求并获得 FPGA 配额批准为止。 若要请求访问权限，请填写配额请求表单： https://aka.ms/aml-real-time-ai
@@ -47,12 +49,20 @@ Databricks 和 Azure 机器学习问题。
    
    使用 Python 3 创建版本为 4.x 的 Azure Databricks 群集。 我们建议使用高并发群集。
  
-1. 安装更多程序包时，AML SDK 会在 Databricks 上安装失败。
+2. 安装更多程序包时，AML SDK 会在 Databricks 上安装失败。
 
-   某些包（如 `psutil upgrade libs`）可能会导致冲突。 为了避免安装错误，请通过冻结 lib 版本来安装包。 此问题与 Databricks 有关，与 AML SDK 无关。 示例：
+   某些包（如 `psutil`）可能会导致冲突。 为了避免安装错误，请通过冻结 lib 版本来安装包。 此问题与 Databricks 有关，与 Azure 机器学习 SDK 无关 - 你可能还会遇到其他库。 示例：
    ```python
-   pstuil cryptography==1.5 pyopenssl==16.0.0 ipython=2.2.0
+   pstuil cryptography==1.5 pyopenssl==16.0.0 ipython==2.2.0
    ```
+   或者，如果一直面临 Python 库的安装问题，可以使用 init 脚本。 这种方法不是官方支持的方法。 可参考[此文档](https://docs.azuredatabricks.net/user-guide/clusters/init-scripts.html#cluster-scoped-init-scripts)。
+
+3. 在 Databricks 上使用自动机器学习时，如果看到 `Import error: numpy.core.multiarray failed to import`
+
+   解决方法：使用创建库以[安装并附加](https://docs.databricks.com/user-guide/libraries.html#create-a-library)，将 Python 库 `numpy==1.14.5` 导入 Databricks 群集。
+
+## <a name="azure-portal"></a>Azure 门户
+如果直接通过 SDK 或门户的共享链接查看工作区，则将无法在扩展程序中查看包含订阅信息的常规概述页。 也将无法切换到另一个工作区。 如果需要查看其他工作区，解决方法是直接转到 [Azure 门户](https://portal.azure.com)并搜索工作区名称。
 
 ## <a name="diagnostic-logs"></a>诊断日志
 如果在请求帮助时可以提供诊断信息，有时会很有帮助。 下面是日志文件所在的位置：

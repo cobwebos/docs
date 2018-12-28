@@ -1,5 +1,5 @@
 ---
-title: 执行数据科学任务 - Azure 机器学习 | Microsoft Docs
+title: 执行数据科学任务 - Team Data Science Process
 description: 数据科学家如何以可跟踪的协作型版本控制方式执行数据科学项目。
 author: marktab
 manager: cgronlun
@@ -9,13 +9,13 @@ ms.component: team-data-science-process
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: tdsp
-ms.custom: (previous author=deguhath, ms.author=deguhath)
-ms.openlocfilehash: 7e25e2c95f377b1ad40cba24b29ababd0561e32a
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: e8167361f3b541b613d453ade473880ec97a56dc
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52495684"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53134805"
 ---
 # <a name="execute-data-science-tasks-exploration-modeling-and-deployment"></a>执行数据科学任务：探索、建模和部署
 

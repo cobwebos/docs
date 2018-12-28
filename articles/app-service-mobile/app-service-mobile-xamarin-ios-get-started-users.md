@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 07/05/2017
 ms.author: crdun
-ms.openlocfilehash: be6ee88f43254ec3075a64299005d3597af968e7
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: 31e02cd931b3c9ab2cc55a540841969488c0c5f7
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39224759"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52997531"
 ---
 # <a name="add-authentication-to-your-xamarinios-app"></a>向 Xamarin.iOS 应用添加身份验证
 [!INCLUDE [app-service-mobile-selector-get-started-users](../../includes/app-service-mobile-selector-get-started-users.md)]
@@ -79,7 +79,7 @@ ms.locfileid: "39224759"
             }
         }
 
-    >[AZURE.NOTE] 如果使用的标识提供者不是 Facebook，请将传递给上述 **LoginAsync** 方法的值更改为下列其中一项：_MicrosoftAccount_、_Twitter_、_Google_ 或 _WindowsAzureActiveDirectory_。
+    >[AZURE.NOTE] 如果使用 Google 以外的标识提供程序，请将以上传递至 LoginAsync 的值更改为以下值之一：MicrosoftAccount、Twitter、Google 或 WindowsAzureActiveDirectory。
 
 3. 打开 **QSTodoListViewController.cs**。 修改 **ViewDidLoad** 的方法定义，删除接近结尾处对 **RefreshAsync()** 的调用：
    
@@ -122,6 +122,6 @@ ms.locfileid: "39224759"
     通过向下拉动项列表来执行刷新笔势，这会导致显示登录屏幕。 成功输入有效的凭据后，应用会显示待办事项列表，用户可以对数据进行更新。
 
 <!-- URLs. -->
-[Submit an app page]: http://go.microsoft.com/fwlink/p/?LinkID=266582
-[My Applications]: http://go.microsoft.com/fwlink/p/?LinkId=262039
+[Submit an app page]: https://go.microsoft.com/fwlink/p/?LinkID=266582
+[My Applications]: https://go.microsoft.com/fwlink/p/?LinkId=262039
 [创建 Xamarin.iOS 应用]: app-service-mobile-xamarin-ios-get-started.md

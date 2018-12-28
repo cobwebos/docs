@@ -10,12 +10,12 @@ ms.component: qna-maker
 ms.topic: article
 ms.date: 09/12/2018
 ms.author: tulasim88
-ms.openlocfilehash: eef26cf1f5a11d7dcd1fdc41747aac675e0bc528
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 97fb59a9a483753c6c2b5a4ae027bb358f7050e1
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47031078"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53166585"
 ---
 # <a name="using-metadata-and-the-generateanswer-api"></a>配合使用元数据与 GenerateAnswer API
 
@@ -57,8 +57,8 @@ ms.locfileid: "47031078"
     - **Knowledge base ID**（字符串）：知识库的 GUID。
     - **QnAMaker endpoint**（字符串）：部署在 Azure 订阅中的终结点的主机名。
 - **请求标头**
-    - **Content-Type**（字符串）：发送到 API 的正文媒体类型。
-    - **授权**（字符串）：终结点密钥 (EndpointKey xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx)。
+    - **Content-Type**（字符串）：发送到 API 的正文的媒体类型。
+    - **Authorization**（字符串）：终结点密钥 (EndpointKey xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx)。
 - **请求正文**
     - **question**（字符串）：要针对知识库查询的用户问题。
     - **top**（可选，整数）：要包含在输出中的排序结果数。 默认值为 1。
@@ -88,7 +88,7 @@ ms.locfileid: "47031078"
         - **metadata**：与答案关联的元数据。
             - name：元数据名称。 （字符串，最大长度：100，必填）
             - value：元数据值。 （字符串，最大长度：100，必填）
-        - **Id**：分配给答案的唯一 ID。
+        - **id**：分配给答案的唯一 ID。
     ```json
     {
         "answers": [
@@ -167,6 +167,8 @@ ms.locfileid: "47031078"
 此信息可用于记录之前对话的上下文，供后续对话使用。 
 
 ## <a name="next-steps"></a>后续步骤
+
+发布页还提供了使用 [Postman](../Quickstarts/get-answer-from-kb-using-postman.md) 和 [cURL](../Quickstarts/get-answer-from-kb-using-curl.md) 生成答案的信息。 
 
 > [!div class="nextstepaction"]
 > [创建知识库](./create-knowledge-base.md)

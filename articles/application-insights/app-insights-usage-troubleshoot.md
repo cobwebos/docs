@@ -8,21 +8,20 @@ manager: carmonm
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
-ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 07/11/2018
 ms.reviewer: mbullwin
 ms.pm_owner: daviste;NumberByColors
 ms.author: daviste
-ms.openlocfilehash: c1e5b420c4821732aa8cc19328b0955070100926
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: 7da0717273892893bec03c164b9b297f28e5218d
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50138481"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52995548"
 ---
 # <a name="troubleshoot-user-behavior-analytics-tools-in-application-insights"></a>Application Insights 中用户行为分析工具的故障排除
-是否对 [Application Insights 中的用户行为分析工具](app-insights-usage-overview.md)：[用户、会话、事件](app-insights-usage-segmentation.md)、[漏斗图](usage-funnels.md)、[用户流](app-insights-usage-flows.md)、[保留期](app-insights-usage-retention.md)或队列存在疑问？ 请参考下面的解答。
+如果对 [Application Insights 中的用户行为分析工具](app-insights-usage-overview.md)有疑问：[用户、会话、活动](app-insights-usage-segmentation.md)，[漏斗图](usage-funnels.md)，[用户流](app-insights-usage-flows.md)，[保留期](app-insights-usage-retention.md)或队列？ 请参考下面的解答。
 
 ## <a name="counting-users"></a>对用户进行计数
 **用户行为分析工具显示我的应用具有一个用户/会话，但我的应用实际具有多个用户/会话。应如何校正这些错误的计数？**
@@ -57,5 +56,5 @@ Application Insights 中的所有遥测事件都具有[匿名用户 ID](applicat
 * [用户行为分析工具概述](app-insights-usage-overview.md)
 
 ## <a name="get-help"></a>获取帮助
-* [Stack Overflow](http://stackoverflow.com/questions/tagged/ms-application-insights)
+* [Stack Overflow](https://stackoverflow.com/questions/tagged/ms-application-insights)
 

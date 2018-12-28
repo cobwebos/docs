@@ -1,5 +1,5 @@
 ---
-title: 应用服务和 Azure Functions 中的 Key Vault 引用 | Microsoft Docs
+title: Key Vault 引用 - Azure 应用服务 | Microsoft Docs
 description: Azure 应用服务和 Azure Functions 中的 Azure Key Vault 引用的概念性引用和安装指南
 services: app-service
 author: mattchenderson
@@ -11,12 +11,13 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 11/20/2018
 ms.author: mahender
-ms.openlocfilehash: 6f7a05638e9893c989276c61355a301e4a67a6ed
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec18
+ms.openlocfilehash: 8add470048d3ead3f75ff85dd6f489d798af5e29
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52447551"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53253436"
 ---
 # <a name="use-key-vault-references-for-app-service-and-azure-functions-preview"></a>使用应用服务和 Azure Functions 的 Key Vault 引用（预览版）
 

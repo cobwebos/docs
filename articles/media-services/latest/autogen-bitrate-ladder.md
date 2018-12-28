@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure 媒体服务中的标准编码器，通过自动生成的比特率阶梯对视频进行编码 | Microsoft Docs
-description: 本主题介绍如何基于输入分辨率和比特率，使用媒体服务中的标准编码器并通过自动生成的比特率阶梯对输入视频进行编码。 不会超过输入分辨率和比特率。 例如，如果输入在 3Mbps 时为 720p，则输出最多会保持 720p，并且会以低于 3Mbps 的速率开始。
+title: 使用媒体服务中的标准编码器对视频进行编码 - Azure | Microsoft Docs
+description: 本主题介绍如何基于输入分辨率和比特率，使用媒体服务中的标准编码器并通过自动生成的比特率阶梯对输入视频进行编码。
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -11,14 +11,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/15/2018
+ms.date: 12/08/2018
 ms.author: juliako
-ms.openlocfilehash: ec1b4b88e5b9639c3ee9debbd8ac7d48544344dc
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.custom: seodec18
+ms.openlocfilehash: 976e1ea013c6a30615bdc742ed79e76ec35258a1
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49378952"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53132800"
 ---
 #  <a name="encode-with-an-auto-generated-bitrate-ladder"></a>使用自动生成的比特率阶梯进行编码
 

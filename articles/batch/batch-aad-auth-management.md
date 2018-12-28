@@ -15,12 +15,12 @@ ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 04/27/2017
 ms.author: danlep
-ms.openlocfilehash: a52dbdad3842760c447e22f4274ab944750840e7
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: b2ab2ad1c31337e006b613ad7f17b4ad22495893
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48816780"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52870413"
 ---
 # <a name="authenticate-batch-management-solutions-with-active-directory"></a>使用 Active Directory 对 Batch 管理解决方案进行身份验证
 

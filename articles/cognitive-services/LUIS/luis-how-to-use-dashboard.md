@@ -1,23 +1,24 @@
 ---
-title: 语言理解应用的应用程序仪表板
-titleSuffix: Azure Cognitive Services
+title: 应用仪表板
+titleSuffix: Language Understanding - Azure Cognitive Services
 description: 了解应用程序仪表板，它是一种可视化报表工具，可让你一目了然地监视应用。
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 11/26/2018
 ms.author: diberry
-ms.openlocfilehash: 0daf25b3c7edc69ada57fb3ce2b8dbb7e50e5aed
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.openlocfilehash: 6f6de278e802b83623413b0bf70e556d083818c8
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52335004"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53140602"
 ---
-# <a name="application-dashboard"></a>应用程序仪表板
+# <a name="model-and-usage-statistics-in-the-dashboard"></a>仪表板中的模型和使用情况统计信息
 应用仪表板可让你一目了然地监视应用。 通过单击“我的应用”页中的应用程序名称打开应用，然后选择顶部面板中的“仪表板”，仪表板将随即显示。 
 
 > [!CAUTION]
@@ -70,7 +71,7 @@ ms.locfileid: "52335004"
 
 若要控制是否基于已标记表述数或终结点命中数进行细分：
 
-1. 单击“其他设置”![“其他设置”按钮](./media/luis-how-to-use-dashboard/Dashboard-Settings-btn.png)以访问列表，如下图所示：
+1. 单击“其他设置”![用于访问列表的“其他设置”按钮](./media/luis-how-to-use-dashboard/Dashboard-Settings-btn.png)以访问列表，如下图所示：
 
     ![意向细分列表](./media/luis-how-to-use-dashboard/intent-breakdown-based-on.png)
 2. 从列表中选择一个值，然后单击返回箭头 ![返回箭头](./media/luis-how-to-use-dashboard/Dashboard-backArrow.png) 以显示图表。
@@ -82,7 +83,7 @@ ms.locfileid: "52335004"
 
 若要控制是否基于已标记表述数或终结点命中数进行细分：
 
-1. 单击“其他设置”![“其他设置”按钮](./media/luis-how-to-use-dashboard/Dashboard-Settings-btn.png)以访问列表，如下图所示：
+1. 单击“其他设置”![用于获取列表的“其他设置”按钮](./media/luis-how-to-use-dashboard/Dashboard-Settings-btn.png)以访问列表，如下图所示：
 
     ![实体细分列表](./media/luis-how-to-use-dashboard/entity-breakdown-based-on.png)
 2. 从列表中选择一个值，然后单击返回箭头 ![返回箭头](./media/luis-how-to-use-dashboard/Dashboard-backArrow.png) 以显示相应图表。

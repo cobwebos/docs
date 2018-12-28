@@ -1,5 +1,5 @@
 ---
-title: 如何为 Web 应用配置 TLS 相互身份验证
+title: 配置 TLS 相互身份验证 - Azure 应用服务
 description: 了解如何将 Web 应用配置为使用 TLS 客户端证书身份验证。
 services: app-service
 documentationcenter: ''
@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/08/2016
 ms.author: naziml
-ms.openlocfilehash: 894a77be05de131ab122f18c62d209e9829357f9
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.custom: seodec18
+ms.openlocfilehash: f08e8f60f0e23cce9546e45dcf7b249d38224736
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39056202"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53252875"
 ---
 # <a name="how-to-configure-tls-mutual-authentication-for-web-app"></a>如何为 Web 应用配置 TLS 相互身份验证
 ## <a name="overview"></a>概述

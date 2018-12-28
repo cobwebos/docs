@@ -1,28 +1,22 @@
 ---
-title: 验证连接：Azure ExpressRoute 故障排除指南 | Microsoft Docs
+title: 验证连接 - ExpressRoute 故障排除指南：Azure | Microsoft Docs
 description: 本页说明如何对 ExpressRoute 线路的端到端连接进行故障排除和验证。
-documentationcenter: na
 services: expressroute
 author: rambk
-manager: tracsman
-editor: ''
-ms.assetid: ''
 ms.service: expressroute
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
 ms.date: 09/26/2017
-ms.author: cherylmc
-ms.openlocfilehash: 10d4779d05d95822ffd487db1ce8992d199c495f
-ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
+ms.author: rambala
+ms.custom: seodec18
+ms.openlocfilehash: a64aa59b205e8986b80a575c50041f826606e16f
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36753433"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53272798"
 ---
 # <a name="verifying-expressroute-connectivity"></a>验证 ExpressRoute 连接
-ExpressRoute 可以通过经连接提供商加速的专用连接将本地网络扩展到 Microsoft 云中，涉及以下三个不同的网络区域：
+本文可帮助验证 ExpressRoute 连接并对其进行故障排除。 ExpressRoute 可以通过经连接提供商加速的专用连接将本地网络扩展到 Microsoft 云中，涉及以下三个不同的网络区域：
 
 -   客户网络
 -   提供商网络
@@ -161,7 +155,7 @@ ExpressRoute 可以通过经连接提供商加速的专用连接将本地网络�
     Sku                              : Standard
     Status                           : Enabled
 
-若要确认 ExpressRoute 线路是否正常运行，请特别注意以下字段：ServiceProviderProvisioningState：已预配 状态：已启用
+若要确认 ExpressRoute 线路是否正常运行，请特别注意以下字段：ServiceProviderProvisioningState：预配状态：已启用
 
 >[!NOTE]
 >如果“状态”不是“已启用”，请与 [Microsoft 支持部门][Support]联系。 如果“ServiceProviderProvisioningState”不是“已预配”，请与服务提供商联系。
@@ -169,7 +163,7 @@ ExpressRoute 可以通过经连接提供商加速的专用连接将本地网络�
 >
 
 ## <a name="validate-peering-configuration"></a>验证对等互连配置
-在服务提供商完成对 ExpressRoute 线路的预配以后，即可基于 MSEE-PR (4) 和 MSEE (5) 之间的 ExpressRoute 线路创建路由配置。 每个 ExpressRoute 线路可以启用一个、两个或三个路由上下文：Azure 专用对等互连（流量通往 Azure 中的专用虚拟网络）、Azure 公共对等互连（流量通往 Azure 中的公共 IP 地址）、以及 Microsoft 对等互连（流量通往 Office 365 和 Dynamics 365）。 有关如何创建和修改路由配置的详细信息，请参阅[创建和修改 ExpressRoute 线路的路由][CreatePeering]一文。
+在服务提供商完成对 ExpressRoute 线路的预配以后，即可基于 MSEE-PR (4) 和 MSEE (5) 之间的 ExpressRoute 线路创建路由配置。 每条 ExpressRoute 线路可以启用一个、两个或三个路由上下文：Azure 专用对等互连（流量通往 Azure 中的专用虚拟网络）、Azure 公共对等互连（流量通往 Azure 中的公共 IP 地址）、以及 Microsoft 对等互连（流量通往 Office 365 和 Dynamics 365）。 有关如何创建和修改路由配置的详细信息，请参阅[创建和修改 ExpressRoute 线路的路由][CreatePeering]一文。
 
 ### <a name="verification-via-the-azure-portal"></a>通过 Azure 门户进行验证
 

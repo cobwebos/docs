@@ -15,17 +15,17 @@ ms.topic: article
 ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 3fd0dfb327e925ecb28a7ca12e03b79c873118dc
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: a0cfd65aa2444956336e5363d20acab61a404c68
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52309338"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53309172"
 ---
 # <a name="azure-active-directory-device-management-faq"></a>Azure Active Directory 设备管理常见问题解答
 
-**问：我最近注册了设备，但为什么在 Azure 门户中我的用户信息下看不到该设备？或者为什么将加入混合 Azure AD 的设备的设备所有者标记为“不适用”？**
-**答：** 加入混合 Azure AD 的 Windows 10 设备不会显示在“用户设备”下。
+**问：我最近注册了设备。但为什么在 Azure 门户中我的用户信息下看不到该设备？或对于加入混合 Azure AD 的设备，为什么设备所有者标记为 N/A？**
+答：已加入混合 Azure AD 的 Windows 10 设备不显示在 USER 设备下。
 需要使用 Azure 门户中的“所有设备”视图。 还可以使用 PowerShell [Get-MsolDevice](/powershell/module/msonline/get-msoldevice?view=azureadps-1.0) cmdlet。
 
 USER 设备下面只会列出以下设备：
@@ -36,7 +36,7 @@ USER 设备下面只会列出以下设备：
 
 --- 
 
-**问：如何了解客户端的设备注册状态？**
+问：如何了解客户端的设备注册状态？
 
 **答：** 可以使用 Azure 门户，转到“所有设备”并使用设备 ID 搜索设备。 检查“联接类型”列下的值。 有时，设备可能已重置或重置映像。 因此，还必须检查设备上的设备注册状态：
 
@@ -45,13 +45,13 @@ USER 设备下面只会列出以下设备：
 
 ---
 
-**问：我在 Azure 门户中的“用户信息”下看到了设备记录，设备状态为已在设备上注册。我的设置是否正确，可以使用条件访问？**
+问：**我在 Azure 门户中的“用户信息”下看到了设备记录，设备状态为已在设备上注册。我的设置是否正确，可以使用条件访问？**
 
 **答：** deviceID 所反映的设备加入状态必须与 Azure AD 上的状态相符，并且必须符合条件性访问的任何评估条件。 有关详细信息，请参阅[通过条件访问要求使用受管理设备进行云应用访问](../conditional-access/require-managed-devices.md)。
 
 ---
 
-**问：我已通过 Azure 门户或使用 Windows PowerShell 删除，但设备上的本地状态仍然显示它已注册？**
+问：我已通过 Azure 门户或使用 Windows PowerShell 删除，但设备上的本地状态仍然显示它已注册？
 
 **答：** 这是设计使然。 该设备无权访问云中的资源。 
 
@@ -73,7 +73,7 @@ USER 设备下面只会列出以下设备：
 
 ---
 
-**问：Azure 门户中为何出现重复的设备条目？**
+问：Azure 门户中为何出现重复的设备条目？
 
 **答：**
 
@@ -87,7 +87,7 @@ USER 设备下面只会列出以下设备：
 
 ---
 
-**问：用户为什么仍然可以通过我在 Azure 门户中禁用的设备访问资源？**
+问：用户为什么仍然可以通过我在 Azure 门户中禁用的设备访问资源？
 
 **答：** 最长可能需要花费一小时才能应用吊销。
 
@@ -96,9 +96,9 @@ USER 设备下面只会列出以下设备：
 
 ---
 
-# <a name="azure-ad-join-faq"></a>加入 Azure AD 常见问题解答
+## <a name="azure-ad-join-faq"></a>加入 Azure AD 常见问题解答
 
-**问：如何在设备上本地取消与 Azure AD 联接设备的联接？**
+问：如何在设备上本地取消加入已加入 Azure AD 的设备？
 
 **答：** 
 - 对于已加入混合 Azure AD 的设备，请确保关闭自动注册，以便计划任务不会再次注册该设备。 接下来，以管理员身份打开命令提示符并键入 `dsregcmd.exe /debug /leave`。 或者，可以将该命令作为脚本跨多个设备运行，以批量取消加入。
@@ -107,44 +107,44 @@ USER 设备下面只会列出以下设备：
 
 ---
 
-**问：我的用户是否可以登录到已在 Azure AD 中删除或禁用的已加入 Azure AD 的设备？**
-**答：** 是。 Windows 具有缓存的登录功能，允许以前登录过的用户快速访问桌面，甚至可以在无网络连接的情况下访问。 当某台设备在 Azure AD 中被删除或禁用时，Windows 设备不会知道此情况。 因此，以前登录过的用户可以使用缓存的登录继续访问桌面。 但是，当设备被删除或禁用时，用户无法访问由基于设备的条件访问保护的任何资源。 
+问：我的用户是否可以登录到已在 Azure AD 中删除或禁用的已加入 Azure AD 的设备？
+答：是的。 Windows 具有缓存的登录功能，允许以前登录过的用户快速访问桌面，甚至可以在无网络连接的情况下访问。 当某台设备在 Azure AD 中被删除或禁用时，Windows 设备不会知道此情况。 因此，以前登录过的用户可以使用缓存的登录继续访问桌面。 但是，当设备被删除或禁用时，用户无法访问由基于设备的条件访问保护的任何资源。 
 
 尚未登录过的用户无法访问设备，因为不存在为它们启用的缓存登录。 
 
 ---
 
-**问：已禁用或删除的用户是否可以登录到已加入 Azure AD 的设备？**
-**答：** 可以，但时间有限。 当某个用户已在 Azure AD 中删除或禁用时，Windows 设备不会立即知道该设备。 因此，以前登录过的用户可以使用缓存的登录访问桌面。 当设备知道用户状态后（通常不到 4 小时便会知道），Windows 会阻止那些用户访问桌面。 由于用户在 Azure AD 中被删除或禁用，其所有令牌都将被撤销，因此他们无法访问任何资源。 
+问：已禁用或删除的用户是否可以登录到已加入 Azure AD 的设备？
+答：可以，但时间有限。 当某个用户已在 Azure AD 中删除或禁用时，Windows 设备不会立即知道该设备。 因此，以前登录过的用户可以使用缓存的登录访问桌面。 当设备知道用户状态后（通常不到 4 小时便会知道），Windows 会阻止那些用户访问桌面。 由于用户在 Azure AD 中被删除或禁用，其所有令牌都将被撤销，因此他们无法访问任何资源。 
 
 以前未登录过的已删除或已禁用用户无法访问设备，因为不存在为它们启用的缓存登录。 
 
 ---
 
-**问：我的用户无法从 Azure AD 联接设备中搜索打印机。如何从 Azure AD 联接设备启用打印？**
+**问：我的用户无法从加入 Azure AD 的设备中搜索打印机。如何从已加入 Azure AD 的设备启用打印？**
 
-**答：** 有关为 Azure AD 联接设备部署打印机的信息，请参阅[混合云打印](https://docs.microsoft.com/windows-server/administration/hybrid-cloud-print/hybrid-cloud-print-deploy)。 需要安装本地 Windows Server 才能部署混合云打印。 当前，无法使用基于云的打印服务。 
-
----
-
-**问：如何连接到已加入 Azure AD 的远程设备？**
-**答：** 有关详细信息，请参阅文章 https://docs.microsoft.com/windows/client-management/connect-to-remote-aadj-pc。
+**答：** 有关为已加入 Azure AD 的设备部署打印机的信息，请参阅[混合云打印](https://docs.microsoft.com/windows-server/administration/hybrid-cloud-print/hybrid-cloud-print-deploy)。 需要安装本地 Windows Server 才能部署混合云打印。 当前，无法使用基于云的打印服务。 
 
 ---
 
-**问：用户为什么会看到“无法从这个位置访问那个位置”？**
+问：如何连接到已加入 Azure AD 的远程设备？
+答：有关详细信息，请参阅文章 https://docs.microsoft.com/windows/client-management/connect-to-remote-aadj-pc。
+
+---
+
+问：用户为什么会看到“无法从此处进行访问”？
 
 **答：** 如果已配置特定的条件访问规则来要求设备保持特定的状态，但设备并不满足该条件，则用户会被阻止并会看到此消息。 请评估条件性访问策略规则，确保设备能够满足条件，避免出现此消息。
 
 ---
 
-**问：为什么我的一些用户无法在 Azure AD 联接设备上获得 MFA 提示？**
+问：为什么我的一些用户无法在加入 Azure AD 的设备上获得 MFA 提示？
 
-**答：** 如果用户通过使用多重身份验证的 Azure AD 联接或注册设备，该设备本身将成为该特定用户的受信任第二个因数。 随后，每次同一用户登录到该设备并访问应用程序时，Azure AD 都会将该设备视为第二个因素，使该用户可无缝地访问他们的应用程序，而无需其他 MFA 提示。 此行为对登录到该设备的任何其他用户都不适用，因此访问该设备的所有其他用户仍将在访问要求 MFA 的应用程序之前收到相关的 MFA 提示。
+**答：** 如果用户通过使用多重身份验证将设备加入或注册到 Azure AD，该设备本身将成为该特定用户的受信任第二个因数。 随后，每次同一用户登录到该设备并访问应用程序时，Azure AD 都会将该设备视为第二个因素，使该用户可无缝地访问他们的应用程序，而无需其他 MFA 提示。 此行为对登录到该设备的任何其他用户都不适用，因此访问该设备的所有其他用户仍将在访问要求 MFA 的应用程序之前收到相关的 MFA 提示。
 
 ---
 
-**问：刚刚加入 Azure AD 的设备中为何会显示“用户名或密码不正确”消息？**
+问：刚刚加入 Azure AD 的设备中为何会显示“用户名或密码不正确”消息？
 
 **答：** 出现这种情况的常见原因包括：
 
@@ -158,38 +158,38 @@ USER 设备下面只会列出以下设备：
 
 ---
 
-**问：尝试在电脑上加入 Azure AD 时，为何会出现“哎呀...发生了错误!”对话框？**
+问：尝试在电脑上加入 Azure AD 时，为何会出现“哎呀...发生了错误!”对话框？
 
-**答：** 这是使用 Intune 设置 Azure Active Directory 注册的结果。 请确保尝试进行 Azure AD 加入的用户已分配了正确的 Intune 许可证。 有关详细信息，请参阅 [Set up Windows device management](https://docs.microsoft.com/intune/deploy-use/set-up-windows-device-management-with-microsoft-intune#azure-active-directory-enrollment)（设置 Windows 设备管理）。  
+**答：** 这是使用 Intune 设置 Azure Active Directory 注册的结果。 请确保尝试进行 Azure AD 加入的用户已获得了正确的 Intune 许可证。 有关详细信息，请参阅 [Set up Windows device management](https://docs.microsoft.com/intune/deploy-use/set-up-windows-device-management-with-microsoft-intune#azure-active-directory-enrollment)（设置 Windows 设备管理）。  
 
 ---
 
-**问：我没有收到任何错误信息，但尝试将电脑加入 Azure AD 为何会失败？**
+问：我没有收到任何错误信息，但尝试将电脑加入 Azure AD 为何会失败？
 
 **答：** 一个可能的原因是用户使用本地内置管理员帐户登录到设备。 请在使用 Azure Active Directory Join 之前创建一个不同的本地帐户以完成设置。 
 
 ---
 
-# <a name="hybrid-azure-ad-join-faq"></a>加入混合 Azure AD 常见问题解答
+## <a name="hybrid-azure-ad-join-faq"></a>加入混合 Azure AD 常见问题解答
 
-**问：在哪里可以找到用于诊断加入混合 Azure AD 失败的故障排除信息？**
+问：在哪里可以找到用于诊断加入混合 Azure AD 失败的故障排除信息？
 
 **答：** 有关故障排除信息，请参阅：
 
 - [排查已加入 Azure AD 域的计算机的自动注册问题 - Windows 10 和 Windows Server 2016](troubleshoot-hybrid-join-windows-current.md)
 
-- 请参阅[排查已加入 Azure AD 域的计算机的自动注册问题 - Windows 下层客户端](troubleshoot-hybrid-join-windows-legacy.md)
+- [排查已加入 Azure AD 域的计算机的自动注册问题 - Windows 下层客户端](troubleshoot-hybrid-join-windows-legacy.md)
  
 
 ---
 
-# <a name="azure-ad-register-faq"></a>Azure AD 注册常见问题解答
+## <a name="azure-ad-register-faq"></a>Azure AD 注册常见问题解答
 
-**问：我可以注册 Android 或 iOS BYOD 设备吗？**
+问：我可以注册 Android 或 iOS BYOD 设备吗？
 
 **答：** 可以，但只有使用 Azure 设备注册服务的混合客户才能注册。 不支持使用 AD FS 中的本地设备注册服务进行注册。
 
-**问：如何注册 macOS 设备？**
+问：如何注册 macOS 设备？
 
 **答：** 注册 macOS 设备的具体步骤：
 

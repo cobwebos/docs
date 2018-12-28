@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 07/12/2018
 ms.author: v-shysun
-ms.openlocfilehash: edfd2e9e03aefa4833c8472a43d4857f08b95780
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 0956d9bdbf6390f2d64f15ca267545ca15289a46
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52495480"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53339393"
 ---
 # <a name="frequently-asked-questions-for-sql-server-running-on-windows-virtual-machines-in-azure"></a>Azure 的 Windows 虚拟机上运行的 SQL Server 常见问题解答
 
@@ -112,7 +112,7 @@ ms.locfileid: "52495480"
 
 1. **是否可以将自行部署的 SQL Server VM 注册到 SQL VM 资源提供程序？**
 
-   是的。 如果从自己的媒体部署 SQL Server，则可将 SQL VM 注册到资源提供程序，以便获取 SQL IaaS 扩展提供的可管理性权益。 但是，不能将自行部署的 SQL VM 转换为 PAYG。 
+   是的。 如果从自己的媒体部署 SQL Server，并安装 SQL IaaS 扩展，则可将 SQL Server VM 注册到资源提供程序，以便获取 SQL IaaS 扩展提供的可管理性权益。 但是，不能将自行部署的 SQL VM 转换为即用即付。  
 
 ## <a name="administration"></a>管理
 
@@ -122,7 +122,7 @@ ms.locfileid: "52495480"
 
 1. **是否可以卸载 SQL Server 的默认实例？**
 
-   可以，但需注意以下事项。 如前面的解答中所述，依赖于 [SQL Server IaaS 代理扩展](virtual-machines-windows-sql-server-agent-extension.md)的功能仅对默认实例起作用。 卸载默认实例后，该扩展会继续查找默认实例并可能生成事件日志错误。 这些错误来自以下两个来源：**Microsoft SQL Server 凭据管理**和 **Microsoft SQL Server IaaS 代理**。 其中一个错误可能类似于以下内容：
+   可以，但需注意以下事项。 如前面的解答中所述，依赖于 [SQL Server IaaS 代理扩展](virtual-machines-windows-sql-server-agent-extension.md)的功能仅对默认实例起作用。 卸载默认实例后，该扩展会继续查找默认实例并可能生成事件日志错误。 这些错误来自以下两个源：Microsoft SQL Server 凭据管理和 Microsoft SQL Server IaaS 代理。 其中一个错误可能类似于以下内容：
 
       建立与 SQL Server 的连接时，出现网络相关或特定于实例的错误。 找不到或无法访问服务器。
 

@@ -9,27 +9,26 @@ ms.assetid: 84017a48-1cb3-40c8-aab1-ff68d65e2128
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/24/2016
 ms.author: mbullwin
-ms.openlocfilehash: 30983e283f47761d103829f02b02bc281bd785ee
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: a62c6cbb6594aaf7c2c57d7efee1832d7b1430b7
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47091926"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "53000727"
 ---
 # <a name="monitor-dependencies-caught-exceptions-and-method-execution-times-in-java-web-apps"></a>监视 Java Web 应用中的依赖项、捕获的异常和方法执行时间
 
 
 如果已[使用 Application Insights 检测了 Java Web 应用][java]，则无需更改任何代码，就能使用 Java 代理来获取更深入的见解：
 
-* **依赖项：** 有关应用程序对其他组件的调用的数据，包括：
+* **依赖项：** 有关应用程序对其他组件的调用数据，包括：
   * 已捕获通过 HttpClient、OkHttp 和 RestTemplate (Spring) 发出的 REST 调用。
   * 已捕获通过 Jedis 客户端发出的 Redis 调用。
-  * **[JDBC 调用](http://docs.oracle.com/javase/7/docs/technotes/guides/jdbc/)** - 会自动捕获 MySQL、SQL Server 和 Oracle DB 命令。 对于 MySQL，如果调用时间长于 10 秒，代理将报告查询计划。
-* **捕获的异常：** 代码处理的异常相关信息。
+  * **[JDBC 调用](https://docs.oracle.com/javase/7/docs/technotes/guides/jdbc/)** - 会自动捕获 MySQL、SQL Server 和 Oracle DB 命令。 对于 MySQL，如果调用时间长于 10 秒，代理将报告查询计划。
+* **捕获异常：** 代码处理的异常相关信息。
 * **方法执行时间：** 有关执行特定方法所花费的时间的信息。
 
 若要使用 Java 代理，请在服务器上安装该代理。 必须使用 [Application Insights Java SDK][java] 检测 Web 应用。 

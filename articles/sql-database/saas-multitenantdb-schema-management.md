@@ -12,15 +12,15 @@ ms.author: genemi
 ms.reviewer: billgib
 manager: craigg
 ms.date: 09/19/2018
-ms.openlocfilehash: e7aeb273d4ae276d3460c3de1f404230276cffb7
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.openlocfilehash: 14183475fcca0e12c56f009f105e77aaf11b0c98
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47056635"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53315197"
 ---
 # <a name="manage-schema-in-a-saas-application-that-uses-sharded-multi-tenant-sql-databases"></a>在使用分片多租户 SQL 数据库的 SaaS 应用程序中管理架构
- 
+
 本教程探讨在软件即服务 (SaaS) 应用程序中维护大批量数据库时存在的挑战。 介绍有关跨大批量数据库规划架构更改的解决方案。
 
 与任何应用程序一样，Wingtip Tickets SaaS 应用也会随时间不断改进，并且会不时需要对数据库进行更改。 这些更改可能会影响架构或引用数据，或需要实施数据库维护任务。 如果 SaaS 应用程序使用“每租户一个数据库”模式，则有可能必须在数目庞大的租户数据库中协调更改。 此外，必须将这些更改并入数据库预配过程，以确保新数据库在创建时便包含这些更改。
@@ -64,12 +64,12 @@ ms.locfileid: "47056635"
 ## <a name="elastic-jobs-limited-preview"></a>弹性作业有限预览版
 
 有一个新版的弹性作业，该作业现为 Azure SQL 数据库的集成功能。 此新版弹性作业目前为有限预览版。 有限预览版目前支持使用 PowerShell 创建作业代理，同时支持使用 T-SQL 创建和管理作业。
-> [!NOTE] 
+> [!NOTE]
 > 本教程使用的是有限预览版（弹性数据库作业）中 SQL 数据库服务的功能。 如果希望完成本教程，请将订阅 ID 提供给 SaaSFeedback@microsoft.com，并在邮件主题中注明“Elastic Jobs Preview”。 收到订阅已启用的确认邮件后，即可下载并安装最新的预发行作业 cmdlet。 此预览版的功能有限，如果有相关问题或者需要支持，请联系 SaaSFeedback@microsoft.com。
 
 ## <a name="get-the-wingtip-tickets-saas-multi-tenant-database-application-source-code-and-scripts"></a>获取 Wingtip Tickets SaaS 多租户数据库应用程序源代码和脚本
 
-可在 GitHub 上的 [WingtipTicketsSaaS-MultiTenantDB](https://github.com/microsoft/WingtipTicketsSaaS-MultiTenantDB) 存储库中查看 Wingtip Tickets SaaS 多租户数据库脚本和应用程序源代码。 有关下载和取消阻止 Wingtip Tickets SaaS 脚本的步骤，请参阅[常规指南](saas-tenancy-wingtip-app-guidance-tips.md)。 
+可在 GitHub 上的 [WingtipTicketsSaaS-MultiTenantDB](https://github.com/microsoft/WingtipTicketsSaaS-MultiTenantDB) 存储库中查看 Wingtip Tickets SaaS 多租户数据库脚本和应用程序源代码。 有关下载和取消阻止 Wingtip Tickets SaaS 脚本的步骤，请参阅[常规指南](saas-tenancy-wingtip-app-guidance-tips.md)。
 
 ## <a name="create-a-job-agent-database-and-new-job-agent"></a>创建作业代理数据库和新的作业代理
 
@@ -84,9 +84,9 @@ Demo-SchemaManagement.ps1 脚本调用 Deploy-SchemaManagement.ps1 脚本，目�
 
 #### <a name="prepare"></a>准备
 
-每个租户数据库在 VenueTypes 表中包含一组地点类型。 每个地点类型用于定义可在某个地点托管的事件种类。 这些地点类型对应于在租户事件应用中看到的背景图。  在本练习中，将一个更新部署到所有数据库，以便添加两种额外的地点类型：“赛车”和“游泳俱乐部”。 
+每个租户数据库在 VenueTypes 表中包含一组地点类型。 每个地点类型用于定义可在某个地点托管的事件种类。 这些地点类型对应于在租户事件应用中看到的背景图。  在本练习中，将一个更新部署到所有数据库，以便添加两种额外的地点类型：“摩托车赛”和“游泳俱乐部”。
 
-首先，查看每个租户数据库中包含的地点类型。 连接 SQL Server Management Studio (SSMS) 中的一个租户数据库，并检查 VenueTypes 表。  还可在通过数据库页访问的 Azure 门户的查询编辑器中查询此表。 
+首先，查看每个租户数据库中包含的地点类型。 连接 SQL Server Management Studio (SSMS) 中的一个租户数据库，并检查 VenueTypes 表。  还可在通过数据库页访问的 Azure 门户的查询编辑器中查询此表。
 
 1. 打开 SSMS 并连接到租户服务器：*tenants1-dpt-&lt;user&gt;.database.windows.net*
 1. 浏览到 tenants1-dpt-&lt;user&gt; 服务器上的 contosoconcerthall 数据库，查询 VenueTypes 表以确认“赛车”和“游泳俱乐部”不在结果列表中。

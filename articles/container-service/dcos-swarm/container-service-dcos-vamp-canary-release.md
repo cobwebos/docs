@@ -1,5 +1,5 @@
 ---
-title: 在 Azure DC/OS 群集上使用 Vamp 进行 Canary 发布
+title: （已弃用）在 Azure DC/OS 群集上使用 Vamp 进行 Canary 发布
 description: 如何在 Azure 容器服务 DC/OS 群集上使用 Vamp 通过 Canary 发布服务以及应用智能流量筛选
 services: container-service
 author: gggina
@@ -9,14 +9,16 @@ ms.topic: article
 ms.date: 04/17/2017
 ms.author: rasquill
 ms.custom: mvc
-ms.openlocfilehash: 116f8ad1760f8e61c70b34d614a0265d11e3ae65
-ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
+ms.openlocfilehash: 7ab63b869d9cd8a5b1f2b60429c5b54d0da5761f
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2018
-ms.locfileid: "51975850"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "53002070"
 ---
-# <a name="canary-release-microservices-with-vamp-on-an-azure-container-service-dcos-cluster"></a>在 Azure 容器服务 DC/OS 群集上使用 Vamp 通过 Canary 发布微服务
+# <a name="deprecated-canary-release-microservices-with-vamp-on-an-azure-container-service-dcos-cluster"></a>（已弃用）在 Azure 容器服务 DC/OS 群集上使用 Vamp 通过 Canary 发布微服务
+
+[!INCLUDE [ACS deprecation](../../../includes/container-service-deprecation.md)]
 
 本演练在包含 DC/OS 群集的 Azure 容器服务上设置 Vamp。 我们将通过 Canary 发布 Vamp 演示服务“sava”，并通过应用智能流量筛选解决该服务与 Firefox 不兼容的问题。 
 

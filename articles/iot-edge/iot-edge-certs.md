@@ -1,6 +1,6 @@
 ---
-title: 了解 Azure IoT Edge 证书 | Microsoft Docs
-description: 了解有关 Azure IoT Edge 证书以及如何使用该证书的信息。
+title: 设备安全性证书 - Azure IoT Edge | Microsoft Docs
+description: Azure IoT Edge 使用证书来验证设备、模块和叶节点设备，并在它们之间建立安全连接。
 author: stevebus
 manager: philmea
 ms.author: stevebus
@@ -8,12 +8,12 @@ ms.date: 09/13/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 5ff85f2c9ef708c7cbac9be4933541f063a6c95b
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: 1cf1411e227363e7dc9d54f04d0c630341f55a6e
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51568584"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53099872"
 ---
 # <a name="azure-iot-edge-certificate-usage-detail"></a>Azure IoT Edge 证书使用详细信息
 
@@ -51,7 +51,7 @@ IoT Edge 证书用于模块和下游 IoT 设备，可验证它们连接的 [ 中
 
 ### <a name="device-ca-certificate"></a>设备 CA 证书
 
-设备 CA 证书由流程中的最终中间 CA 证书生成并签名。 此证书安装在 Edge 设备上，最好安装在硬件安全模块 (HSM) 的安全存储中。 此外，设备 CA 证书可唯一标识 IoT Edge 设备。 对于 IoT Edge，设备 CA 证书能够颁发其他证书。 例如，设备 CA 证书颁发叶设备证书，用于在 [Azure IoT 设备预配服务](..\iot-dps\about-iot-dps.md)中对设备进行身份验证。
+设备 CA 证书由流程中的最终中间 CA 证书生成并签名。 此证书安装在 Edge 设备上，最好安装在硬件安全模块 (HSM) 的安全存储中。 此外，设备 CA 证书可唯一标识 IoT Edge 设备。 对于 IoT Edge，设备 CA 证书能够颁发其他证书。 例如，设备 CA 证书颁发叶设备证书，用于在 [Azure IoT 设备预配服务](../iot-dps/about-iot-dps.md)中对设备进行身份验证。
 
 ### <a name="iot-edge-workload-ca"></a>IoT Edge 工作负载 CA
 

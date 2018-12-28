@@ -15,12 +15,12 @@ ms.date: 11/08/2018
 ms.author: barbkess
 ms.reviewer: japere
 ms.custom: it-pro
-ms.openlocfilehash: b4476579665b0e6b574827d1bec06233560038a8
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: a73e652c74f9d88f1e066de190834fc033c13cf0
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51621082"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53135520"
 ---
 # <a name="how-to-enable-native-client-apps-to-interact-with-proxy-applications"></a>如何使本机客户端应用与代理应用程序交互
 
@@ -35,7 +35,7 @@ ms.locfileid: "51621082"
 本文引导读者完成使用应用程序代理和 Azure AD 身份验证库发布本机应用程序的四个步骤。 
 
 ## <a name="step-1-publish-your-application"></a>步骤 1：发布应用程序
-像发布任何其他应用程序一样发布代理应用程序，并分配可访问该应用程序的用户。 有关详细信息，请参阅[使用应用程序代理发布应用程序](application-proxy-publish-azure-portal.md)。
+像发布任何其他应用程序一样发布代理应用程序，并分配可访问该应用程序的用户。 有关详细信息，请参阅[使用应用程序代理发布应用程序](application-proxy-add-on-premises-application.md)。
 
 ## <a name="step-2-configure-your-application"></a>步骤 2：配置应用程序
 按如下方式配置本机应用程序：
@@ -55,8 +55,8 @@ ms.locfileid: "51621082"
 使本机应用程序可以向目录中的其他应用程序公开：
 
 1. 仍在“应用注册”中，选择刚创建的新本机应用程序。
-2. 选择“所需权限”。
-3. 选择 **添加** 。
+2. 选择“API 权限”。
+3. 选择“添加权限”。
 4. 打开第一个步骤，即“选择 API”。
 5. 使用搜索栏查找在第一部分中发布的应用程序代理应用。 选择该应用并单击“选择”。 
 

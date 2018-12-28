@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 9/4/2018
 ms.author: shtabriz
-ms.openlocfilehash: ac1b9dbbb5739dd015c0bda5f1ea82fe26bb0c70
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: dcc978c8e169cca2e2cd91a63ef1814a8c3bd87c
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51625940"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53184085"
 ---
 # <a name="configure-resource-health-alerts-using-resource-manager-templates"></a>使用资源管理器模板创建资源运行状况警报
 
@@ -32,7 +32,7 @@ ms.locfileid: "51625940"
 若要按本页中的说明操作，需事先进行几项设置：
 
 1. 安装 [Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-azurerm-ps) (`AzureRm`)
-2. [创建或重新使用](../monitoring-and-diagnostics/monitoring-action-groups.md)配置为向你发出通知的操作组
+2. [创建或重新使用](../azure-monitor/platform/action-groups.md)配置为向你发出通知的操作组
 
 ## <a name="instructions"></a>说明
 1. 使用 PowerShell，使用你的帐户登录到 Azure，并选择需与之交互的订阅
@@ -435,4 +435,4 @@ Azure 资源运行状况可通过使用测试运行器持续监控资源，向�
 -  [可通过 Azure 资源运行状况使用的资源类型和运行状况检查](resource-health-checks-resource-types.md)
 
 创建服务运行状况警报：
--  [配置服务运行状况的警报](../monitoring-and-diagnostics/monitoring-activity-log-alerts-on-service-notifications.md) 
+-  [配置服务运行状况的警报](../azure-monitor/platform/alerts-activity-log-service-notifications.md) 

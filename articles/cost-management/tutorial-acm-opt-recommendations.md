@@ -5,19 +5,19 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 09/21/2018
+ms.date: 12/07/2018
 ms.topic: conceptual
 ms.service: cost-management
 manager: dougeby
-ms.custom: ''
-ms.openlocfilehash: 4d9e47d6da45eaba19cbe089de3fdf053c36046a
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.custom: seodec18
+ms.openlocfilehash: 2b9702dbae0414ba597b6e1f6080d9de86f624fc
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47030671"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53077064"
 ---
-# <a name="tutorial-optimize-costs-from-recommendations"></a>教程：通过建议优化成本
+# <a name="tutorial-optimize-costs-from-recommendations"></a>教程：根据建议优化成本
 
 Azure 成本管理与 Azure 顾问相结合，可以提供成本优化建议。 Azure 顾问通过识别闲置和未充分利用的资源来优化和提高效率。 本教程通过一个示例逐步讲解如何识别未充分利用的 Azure 资源，并采取措施来降低成本。
 
@@ -43,7 +43,7 @@ Azure 成本管理与 Azure 顾问相结合，可以提供成本优化建议。 
 
 在 Azure 门户中，单击服务列表中的“成本管理 + 计费”。 然后，在“成本管理”下面的列表中，选择“顾问建议”。 此时会显示顾问成本建议。
 
-![顾问建议](./media/tutorial-acm-opt-recommendations/advisor-recommendations.png)
+![在 Azure 门户中显示的成本管理顾问建议](./media/tutorial-acm-opt-recommendations/advisor-recommendations.png)
 
 建议列表会指明低效使用情况，或显示可帮助你节省更多资金的采购建议。 “潜在年度节省”合计值显示在关闭或解除分配所有符合建议规则的 VM 的情况下，可以节省的总金额。 如果不想要关闭这些 VM，应考虑将其大小调整为费用更低的 VM SKU。
 
@@ -59,20 +59,20 @@ Azure 顾问会监视虚拟机 14 天的使用情况，并识别利用不足的�
 
 在建议列表中，单击“适当调整大小或关闭未充分利用的虚拟机”建议。 在虚拟机候选项列表中，选择要调整大小的虚拟机并单击它。 随后会显示该虚拟机的详细信息，可在其中检查利用率指标。 “潜在年度节省”值是在关闭或删除该 VM 的情况下可以节省的金额。 调整 VM 大小也许能够节省一定的资金，但不能节省“潜在年度节省”中所列的全额。
 
-![建议详细信息](./media/tutorial-acm-opt-recommendations/recommendation-details.png)
+![建议详细信息示例](./media/tutorial-acm-opt-recommendations/recommendation-details.png)
 
 在 VM 详细信息中，检查虚拟机的利用率，以确认它是否适合调整大小。
 
-![VM 详细信息](./media/tutorial-acm-opt-recommendations/vm-details.png)
+![示例 VM 详细信息显示了历史利用率](./media/tutorial-acm-opt-recommendations/vm-details.png)
 
 注意当前虚拟机的大小。 确认应该调整该虚拟机的大小后，关闭 VM 详细信息以查看虚拟机列表。
 
 在要关闭或调整大小的候选项列表中，选择“调整虚拟机大小”。
-![调整虚拟机大小](./media/tutorial-acm-opt-recommendations/resize-vm.png)
+![具有调整虚拟机大小选项的示例建议](./media/tutorial-acm-opt-recommendations/resize-vm.png)
 
 接下来，会看到可用调整大小选项的列表。 选择能够为方案实现最佳性能和成本效益的选项。 在以下示例中，所选的选项将 VM 大小从 **DS14\_V2** 调整为 **DS13\_V2**。 遵照建议可以节省 551.30 美元/月，或 6,615.60 美元/年。
 
-![选择大小](./media/tutorial-acm-opt-recommendations/choose-size.png)
+![可以在其中选择一个大小的可用 VM 大小示例列表](./media/tutorial-acm-opt-recommendations/choose-size.png)
 
 选择合适的大小后，单击“选择”开始执行调整大小的操作。
 
@@ -82,7 +82,7 @@ Azure 顾问会监视虚拟机 14 天的使用情况，并识别利用不足的�
 
 成功完成 VM 大小调整后，会显示 Azure 通知。
 
-![调整大小后的通知](./media/tutorial-acm-opt-recommendations/resized-notification.png)
+![已成功调整大小的虚拟机通知](./media/tutorial-acm-opt-recommendations/resized-notification.png)
 
 ## <a name="next-steps"></a>后续步骤
 

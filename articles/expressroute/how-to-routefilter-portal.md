@@ -1,30 +1,23 @@
 ---
-title: 配置用于 Azure ExpressRoute Microsoft 对等互连的路由筛选器：门户 | Microsoft Docs
-description: 本文介绍如何使用 Azure 门户配置用于 Microsoft 对等互连的路由筛选器
-documentationcenter: na
+title: 配置用于 Microsoft 对等互连的路由筛选器：Azure ExpressRoute - 门户 | Microsoft Docs
+description: 本文介绍如何使用 Azure 门户配置用于 Microsoft 对等互连的路由筛选器。
 services: expressroute
 author: ganesr
-manager: rossort
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: expressroute
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 09/26/2017
+ms.date: 09/26/2018
 ms.author: ganesr
-ms.openlocfilehash: ab0cd45334581f6f5c6dd6e86939e018df5de074
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.custom: seodec18
+ms.openlocfilehash: 0515b5e85c3bcf56f1f238620d6036d1be0bec7e
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
-ms.locfileid: "29387721"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53104197"
 ---
 # <a name="configure-route-filters-for-microsoft-peering-azure-portal"></a>配置用于 Microsoft 对等互连的路由筛选器：Azure 门户
 > [!div class="op_single_selector"]
-> * [在 Azure 应用服务中创建 Java Web 应用](how-to-routefilter-portal.md)
+> * [Azure 门户](how-to-routefilter-portal.md)
 > * [Azure PowerShell](how-to-routefilter-powershell.md)
 > * [Azure CLI](how-to-routefilter-cli.md)
 > 
@@ -88,40 +81,40 @@ Dynamics 365 服务、Office 365 服务（例如 Exchange Online、SharePoint On
 
 列出要在路由筛选器中使用的 BGP 团体值列表。 例如，用于 Dynamics 365 服务的 BGP 团体值为 12076:5040。
 
-## <a name="filter"></a>步骤 2：创建路由筛选器和筛选规则
+## <a name="filter"></a>步骤 2：创建路由筛选器和筛选器规则
 
 1 个路由筛选器只能有 1 个规则，并且规则类型必须是“允许”。 此规则可以有与之关联的 BGP 团体值列表。
 
 ### <a name="1-create-a-route-filter"></a>1.创建路由筛选器
 可以通过选择创建新资源的选项来创建路由筛选器。 单击“创建资源” > “网络” > “RouteFilter”，如下图所示：
 
-![创建路由筛选器](.\media\how-to-routefilter-portal\CreateRouteFilter1.png)
+![创建路由筛选器](./media/how-to-routefilter-portal/CreateRouteFilter1.png)
 
 必须将路由筛选器放置在资源组中。 
 
-![创建路由筛选器](.\media\how-to-routefilter-portal\CreateRouteFilter.png)
+![创建路由筛选器](./media/how-to-routefilter-portal/CreateRouteFilter.png)
 
 ### <a name="2-create-a-filter-rule"></a>2.创建筛选器规则
 
 可通过选择管理规则选项卡添加和更新路由筛选器规则。
 
-![创建路由筛选器](.\media\how-to-routefilter-portal\ManageRouteFilter.png)
+![创建路由筛选器](./media/how-to-routefilter-portal/ManageRouteFilter.png)
 
 
 可从下拉列表中选择希望连接的服务，并在完成后保存规则。
 
-![创建路由筛选器](.\media\how-to-routefilter-portal\AddRouteFilterRule.png)
+![创建路由筛选器](./media/how-to-routefilter-portal/AddRouteFilterRule.png)
 
 
 ## <a name="attach"></a>步骤 3：将路由筛选器附加到 ExpressRoute 线路
 
 可通过选择“添加电路”按钮并从下拉列表中选择 ExpressRoute 线路将路由筛选器附加到线路。
 
-![创建路由筛选器](.\media\how-to-routefilter-portal\AddCktToRouteFilter.png)
+![创建路由筛选器](./media/how-to-routefilter-portal/AddCktToRouteFilter.png)
 
 如果连接服务提供商为 ExpressRoute 线路配置了对等互连，请先从 ExpressRoute 线路边栏选项卡中刷新线路，再选择“添加线路”按钮。
 
-![创建路由筛选器](.\media\how-to-routefilter-portal\RefreshExpressRouteCircuit.png)
+![创建路由筛选器](./media/how-to-routefilter-portal/RefreshExpressRouteCircuit.png)
 
 ## <a name="tasks"></a>常见任务
 
@@ -129,7 +122,7 @@ Dynamics 365 服务、Office 365 服务（例如 Exchange Online、SharePoint On
 
 在门户中打开资源时，可以查看路由筛选器的属性。
 
-![创建路由筛选器](.\media\how-to-routefilter-portal\ViewRouteFilter.png)
+![创建路由筛选器](./media/how-to-routefilter-portal/ViewRouteFilter.png)
 
 
 ### <a name="updateproperties"></a>更新路由筛选器的属性
@@ -137,23 +130,23 @@ Dynamics 365 服务、Office 365 服务（例如 Exchange Online、SharePoint On
 可通过选择“管理规则”按钮更新附加到线路的 BGP 社区值列表。
 
 
-![创建路由筛选器](.\media\how-to-routefilter-portal\ManageRouteFilter.png)
+![创建路由筛选器](./media/how-to-routefilter-portal/ManageRouteFilter.png)
 
-![创建路由筛选器](.\media\how-to-routefilter-portal\AddRouteFilterRule.png) 
+![创建路由筛选器](./media/how-to-routefilter-portal/AddRouteFilterRule.png) 
 
 
 ### <a name="detach"></a>从 ExpressRoute 线路分离路由筛选器
 
 若要从路由筛选器中分离线路，请右键单击线路并单击“取消关联”。
 
-![创建路由筛选器](.\media\how-to-routefilter-portal\DetachRouteFilter.png) 
+![创建路由筛选器](./media/how-to-routefilter-portal/DetachRouteFilter.png) 
 
 
 ### <a name="delete"></a>删除路由筛选器
 
 可通过选择“删除”按钮删除路由筛选器。 
 
-![创建路由筛选器](.\media\how-to-routefilter-portal\DeleteRouteFilter.png) 
+![创建路由筛选器](./media/how-to-routefilter-portal/DeleteRouteFilter.png) 
 
 ## <a name="next-steps"></a>后续步骤
 

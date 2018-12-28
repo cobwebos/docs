@@ -15,12 +15,12 @@ ms.component: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 0ee756828a50cdf62471923614afbe88e238b9ef
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 7535aad95f7410d25ada232b4946fe52ebc4ba67
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51624551"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52961954"
 ---
 # <a name="tutorial-get-data-using-the-azure-active-directory-reporting-api-with-certificates"></a>教程：使用证书通过 Azure Active Directory 报告 API 获取数据
 
@@ -39,9 +39,7 @@ ms.locfileid: "51624551"
     - 使用 ADAL 的用户、应用程序密钥和证书中的访问令牌
     - 处理分页结果的图形 API
 
-4. 如果是首次使用模块，请运行 Install-MSCloudIdUtilsModule，否则使用 Import-Module Powershell 命令将其导入。 会话应如以下屏幕所示：
-
-        ![Windows Powershell](./media/tutorial-access-api-with-certificates/module-install.png)
+4. 如果是首次使用模块，请运行 Install-MSCloudIdUtilsModule，否则使用 Import-Module Powershell 命令将其导入。 会话应如以下屏幕所示：![Windows Powershell](./media/tutorial-access-api-with-certificates/module-install.png)
   
 5. 使用 New-SelfSignedCertificate Powershell commandlet 创建测试证书。
 

@@ -1,5 +1,5 @@
 ---
-title: 单个参与者的 Team Data Science Process 任务 - Azure  | Microsoft Docs
+title: Team Data Science Process 中单个参与者的任务
 description: 数据科学团队项目的单个参与者的任务概述。
 author: marktab
 manager: cgronlun
@@ -9,15 +9,15 @@ ms.component: team-data-science-process
 ms.topic: article
 ms.date: 11/13/2017
 ms.author: tdsp
-ms.custom: (previous author=deguhath, ms.author=deguhath)
-ms.openlocfilehash: d8e51dcf8434508664801f53391592aab34d7e4a
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: 6684cc9a0166df9c6d230f6b2a8c05acec5f91b3
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52447055"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53136755"
 ---
-# <a name="individual-contributor-tasks"></a>单个参与者的任务
+# <a name="tasks-for-an-individual-contributor-in-the-team-data-science-process"></a>Team Data Science Process 中单个参与者的任务
 
 本主题概述了数据科学团队的单个参与者应该完成的任务。 目标在于创建致力于标准化 [Team Data Science Process](overview.md) (TDSP) 的协作型团队环境。 有关致力于标准化此过程的数据科学团队处理的人员角色及其相关任务的概述，请参阅 [Team Data Science Process 角色和任务](roles-tasks.md)。
 
@@ -37,15 +37,15 @@ ms.locfileid: "52447055"
 
 本教程使用存储库和目录的缩写名称。 这些名称可便于掌握存储库和目录之间的操作。 以下部分使用了此表示法（**R** 表示 Git 存储库，**D** 表示 DSVM 上的本地目录）：
 
-- R2：你的组管理员已在 Azure DevOps 组服务器上设置的 Git 上的 GroupUtilities 存储库。
-- R4：你的团队主管设置的 Git 上的 TeamUtilities 存储库。
-- R5：项目主管设置的 Git 项目存储库。
-- D2：从 R2 克隆的本地目录。
-- D4：从 R4 克隆的本地目录。
-- D5：从 R5 克隆的本地目录。
+- **R2**：组管理员已在 Azure DevOps 组服务器上设置的 Git 上的 GroupUtilities 存储库。
+- **R4**：团队主管设置的 Git 上的 TeamUtilities 存储库。
+- **R5**：项目主管设置的 Git 项目存储库。
+- **D2**：从 R2 克隆的本地目录。
+- **D4**：从 R4 克隆的本地目录。
+- **D5**：从 R5 克隆的本地目录。
 
 
-## <a name="step-0-prerequisites"></a>准备步骤：先决条件
+## <a name="step-0-prerequisites"></a>步骤 0：先决条件
 
 通过完成[数据科学团队组管理员的任务](group-manager-tasks.md)中介绍的分配给组管理员的任务来满足先决条件。 此处进行了归纳，即开始完成团队主管的任务前需要满足以下要求： 
 - 你的组管理员已设置 GroupUtilities 存储库（如果有）。 

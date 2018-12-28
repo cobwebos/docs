@@ -1,5 +1,5 @@
 ---
-title: 在 Azure 虚拟网络中设置 HBase 群集复制
+title: 在 Azure 虚拟网络中设置 HBase 群集复制 - Azure HDInsight
 description: 了解如何设置从一个 HDInsight 版本到另一个版本的 HBase 复制，以实现负载均衡、高可用性、在不造成停机的情况下进行迁移和更新，以及灾难恢复。
 services: hdinsight,virtual-network
 author: hrasheed-msft
@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/15/2018
-ms.openlocfilehash: 44ed4075af290e3253b3d8f090c289ceba9750a6
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: b03cffe35337ee5720944dc4cfe88c17c3b5b748
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52584173"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53163821"
 ---
 # <a name="set-up-apache-hbase-cluster-replication-in-azure-virtual-networks"></a>在 Azure 虚拟网络中设置 Apache HBase 群集复制
 
@@ -263,9 +263,9 @@ sudo service bind9 status
 - **资源组名称**：使用的资源组名称与创建虚拟网络时所用的相同。
 - **群集类型**：HBase
 - **版本**：HBase 1.1.2 (HDI 3.6)
-- **位置**：与虚拟网络使用同一位置。  默认情况下，vnet1 为“美国西部”，vnet2 为“美国东部”。
+- **位置**：使用与虚拟网络相同的位置。  默认情况下，vnet1 为“美国西部”，vnet2 为“美国东部”。
 - **存储**：为群集创建新的存储帐户。
-- **虚拟网络**（在门户的“高级”设置中）：选择在上一过程中创建的 vnet1。
+- **虚拟网络**（在门户的“高级设置”中）：选择在上一过程中创建的 vnet1。
 - **子网**：模板中所用的默认名称为 **subnet1**。
 
 若要确保正确配置环境，必须能够在两个群集之间 ping 头节点的 FQDN。
@@ -274,7 +274,7 @@ sudo service bind9 status
 
 复制群集时，必须指定要复制的表。 在本节中，要将一些数据载入源群集。 在下一部分，会在两个群集之间启用复制。
 
-若要创建一个“联系人”表并在其中插入一些数据，请遵照 [Apache HBase 教程：开始在 HDInsight 中使用 Apache HBase](apache-hbase-tutorial-get-started-linux.md) 中的说明。
+若要创建一个“联系人”表并在其中插入一些数据，请按照 [Apache HBase 教程：开始在 HDInsight 中使用 Apache HBase](apache-hbase-tutorial-get-started-linux.md) 中的说明进行操作。
 
 ## <a name="enable-replication"></a>启用复制
 

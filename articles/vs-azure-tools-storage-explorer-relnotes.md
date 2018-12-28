@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/12/2018
 ms.author: cawa
-ms.openlocfilehash: 608dd6067e5c9d31f720b97453615a3e8ead0a85
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: 956482a30d383df558eee775b9d89c211bc53e61
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51038614"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53101409"
 ---
 # <a name="microsoft-azure-storage-explorer-release-notes"></a>Microsoft Azure 存储资源管理器发行说明
 
@@ -165,9 +165,9 @@ ms.locfileid: "51038614"
 * 尽管 Azure Stack 当前不支持文件共享，但附加 Azure Stack 存储帐户下仍会显示“文件共享”节点。
 * 存储资源管理器使用的 Electron shell 在进行某项 GPU（图形处理单元）硬件加速时出现问题。 如果存储资源管理器显示了一个空白（空的）主窗口，则可以尝试从命令行启动存储资源管理器，并通过添加 `--disable-gpu` 开关禁用 GPU 加速。
 
-```
-./StorageExplorer.exe --disable-gpu
-```
+    ```
+    ./StorageExplorer.exe --disable-gpu
+    ```
 
 * 对于 Linux 用户，需要安装 [.NET Core 2.0](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x)。
 * 对于 Ubuntu 14.04 用户，需确保 GCC 是最新版本 - 为此，可运行以下命令并重启计算机：
@@ -221,9 +221,9 @@ ms.locfileid: "51038614"
 * 尽管 Azure Stack 当前不支持文件共享，但附加 Azure Stack 存储帐户下仍会显示“文件共享”节点。
 * 存储资源管理器使用的 Electron shell 在进行某项 GPU（图形处理单元）硬件加速时出现问题。 如果存储资源管理器显示了一个空白（空的）主窗口，则可以尝试从命令行启动存储资源管理器，并通过添加 `--disable-gpu` 开关禁用 GPU 加速。
 
-```
-./StorageExplorer.exe --disable-gpu
-```
+    ```
+    ./StorageExplorer.exe --disable-gpu
+    ```
 
 * 对于 Linux 用户，需要安装 [.NET Core 2.0](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x)。
 * 对于 Ubuntu 14.04 用户，需确保 GCC 是最新版本 - 为此，可运行以下命令并重启计算机：
@@ -276,9 +276,9 @@ ms.locfileid: "51038614"
 * 尽管 Azure Stack 当前不支持文件共享，但附加 Azure Stack 存储帐户下仍会显示“文件共享”节点。
 * 存储资源管理器使用的 Electron shell 在进行某项 GPU（图形处理单元）硬件加速时出现问题。 如果存储资源管理器显示了一个空白（空的）主窗口，则可以尝试从命令行启动存储资源管理器，并通过添加 `--disable-gpu` 开关禁用 GPU 加速。
 
-```
-./StorageExplorer.exe --disable-gpu
-```
+    ```
+    ./StorageExplorer.exe --disable-gpu
+    ```
 
 * 对于 Linux 用户，需要安装 [.NET Core 2.0](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x)。
 * 对于 Ubuntu 14.04 用户，需确保 GCC 是最新版本 - 为此，可运行以下命令并重启计算机：
@@ -336,9 +336,9 @@ ms.locfileid: "51038614"
 * 尽管 Azure Stack 当前不支持文件共享，但附加 Azure Stack 存储帐户下仍会显示“文件共享”节点。
 * 存储资源管理器使用的 Electron shell 在进行某项 GPU（图形处理单元）硬件加速时出现问题。 如果存储资源管理器显示了一个空白（空的）主窗口，则可以尝试从命令行启动存储资源管理器，并通过添加 `--disable-gpu` 开关禁用 GPU 加速。
 
-```
-./StorageExplorer.exe --disable-gpu
-```
+    ```
+    ./StorageExplorer.exe --disable-gpu
+    ```
 
 * 对于 Linux 用户，需要安装 [.NET Core 2.0](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x)。
 * 对于 Ubuntu 14.04 用户，需确保 GCC 是最新版本 - 为此，可运行以下命令并重启计算机：
@@ -363,7 +363,7 @@ ms.locfileid: "51038614"
 * 现在支持访问静态网站使用的 $web 容器。 这使你可以轻松上传和管理网站使用的文件和文件夹。 [#223](https://github.com/Microsoft/AzureStorageExplorer/issues/223)
 * macOS 上的应用栏已经重新组织。 更改包括“文件”菜单、一些快捷键更改以及应用菜单下的几个新命令。 [#99](https://github.com/Microsoft/AzureStorageExplorer/issues/99)
 * 用于登录到 Azure 美国政府的颁发机构终结点已更改为 https://login.microsoftonline.us/
-* 可访问性：当屏幕阅读器处于活动状态时，键盘导航现在可以与用于在右侧显示项目的表格配合使用。 可以使用箭头键在行和列中导航，使用 Enter 调用默认操作，使用上下文菜单键打开项目的上下文菜单，使用 Shift 或 Control 进行多选。 [#103](https://github.com/Microsoft/AzureStorageExplorer/issues/103)
+* 辅助功能：当屏幕阅读器处于活动状态时，键盘导航现在可以与用于在右侧显示项目的表格配合使用。 可以使用箭头键在行和列中导航，使用 Enter 调用默认操作，使用上下文菜单键打开项目的上下文菜单，使用 Shift 或 Control 进行多选。 [#103](https://github.com/Microsoft/AzureStorageExplorer/issues/103)
 
 ### <a name="fixes"></a>修复项
 *  在某些计算机上，子进程需要很长时间才能启动。 当发生这种情况时，会出现“子进程无法及时启动”错误。 分配给子进程用于启动的时间现在已经从 20 秒增加到 90 秒。 如果仍然受此问题影响，请对链接的 GitHub 问题发表评论。 [#281](https://github.com/Microsoft/AzureStorageExplorer/issues/281)
@@ -371,11 +371,11 @@ ms.locfileid: "51038614"
 * 为容器设置公共访问级别将删除所有访问策略，反之亦然。 现在，在设置两者中的任何一个时，都会保留公共访问级别和访问策略。 [#197](https://github.com/Microsoft/AzureStorageExplorer/issues/197)
 * “AccessTierChangeTime”在“属性”对话框中被截断。 此问题已解决。 [#145](https://github.com/Microsoft/AzureStorageExplorer/issues/145)
 * “创建新目录”对话框中缺少“Microsoft Azure 存储资源管理器 -”前缀。 此问题已解决。 [#299](https://github.com/Microsoft/AzureStorageExplorer/issues/299)
-* 可访问性：使用 VoiceOver 时很难在“添加实体”对话框中导航。 已进行改进。 [#206](https://github.com/Microsoft/AzureStorageExplorer/issues/206)
-* 可访问性：“操作和属性”窗格的“折叠/展开”按钮的背景颜色与“高对比度黑色”主题中的类似 UI 控件不一致。 颜色已更改。 [#123](https://github.com/Microsoft/AzureStorageExplorer/issues/123)
-* 可访问性：在“高对比度黑色”主题中，“属性”对话框中“X”按钮的焦点样式不可见。 此问题已解决。 [#243](https://github.com/Microsoft/AzureStorageExplorer/issues/243)
-* 可访问性：“操作”和“属性”选项卡缺少几个 aria 值，这导致了低于标准的屏幕阅读器体验。 现在已经添加了缺失的 aria 值。 [#316](https://github.com/Microsoft/AzureStorageExplorer/issues/316)
-* 可访问性：左侧的折叠树节点未被赋予 aria 扩展值 false。 此问题已解决。 [#352](https://github.com/Microsoft/AzureStorageExplorer/issues/352)
+* 辅助功能：使用 VoiceOver 时很难在“添加实体”对话框中导航。 已进行改进。 [#206](https://github.com/Microsoft/AzureStorageExplorer/issues/206)
+* 辅助功能：“操作和属性”窗格的“折叠/展开”按钮的背景颜色与“高对比度黑色”主题中的类似 UI 控件不一致。 颜色已更改。 [#123](https://github.com/Microsoft/AzureStorageExplorer/issues/123)
+* 辅助功能：在“高对比度黑色”主题中，“属性”对话框中“X”按钮的焦点样式不可见。 此问题已解决。 [#243](https://github.com/Microsoft/AzureStorageExplorer/issues/243)
+* 辅助功能：“操作”和“属性”选项卡缺少几个 aria 值，这导致了低于标准的屏幕阅读器体验。 现在已经添加了缺失的 aria 值。 [#316](https://github.com/Microsoft/AzureStorageExplorer/issues/316)
+* 辅助功能：左侧的折叠树节点未被赋予 aria 扩展值 false。 此问题已解决。 [#352](https://github.com/Microsoft/AzureStorageExplorer/issues/352)
 
 ### <a name="known-issues"></a>已知问题
 * 从通过 SAS URI 附加的资源（例如 Blob 容器）进行分离可能会导致一个错误，该错误会阻止其他附件正确显示。 若要解决此问题，只需刷新组节点。 有关详细信息，请参阅[此问题](https://github.com/Microsoft/AzureStorageExplorer/issues/537)。
@@ -393,9 +393,9 @@ ms.locfileid: "51038614"
    * 软删除
 * 存储资源管理器使用的 Electron shell 在进行某项 GPU（图形处理单元）硬件加速时出现问题。 如果存储资源管理器显示了一个空白（空的）主窗口，则可以尝试从命令行启动存储资源管理器，并通过添加 `--disable-gpu` 开关禁用 GPU 加速。
 
-```
-./StorageExplorer.exe --disable-gpu
-```
+    ```
+    ./StorageExplorer.exe --disable-gpu
+    ```
 
 * 对于 Linux 用户，需要安装 [.NET Core 2.0](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x)。
 * 对于 Ubuntu 14.04 用户，需确保 GCC 是最新版本 - 为此，可运行以下命令并重启计算机：
@@ -450,9 +450,9 @@ ms.locfileid: "51038614"
 * 尽管 Azure Stack 当前不支持文件共享，但附加 Azure Stack 存储帐户下仍会显示“文件共享”节点。
 * 存储资源管理器使用的 Electron shell 在进行某项 GPU（图形处理单元）硬件加速时出现问题。 如果存储资源管理器显示了一个空白（空的）主窗口，则可以尝试从命令行启动存储资源管理器，并通过添加 `--disable-gpu` 开关禁用 GPU 加速。
 
-```
-./StorageExplorer.exe --disable-gpu
-```
+    ```
+    ./StorageExplorer.exe --disable-gpu
+    ```
 
 * 对于 Linux 用户，需要安装 [.NET Core 2.0](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x)。
 * 对于 Ubuntu 14.04 用户，需确保 GCC 是最新版本 - 为此，可运行以下命令并重启计算机：
@@ -504,9 +504,9 @@ ms.locfileid: "51038614"
 * 尽管 Azure Stack 当前不支持文件共享，但附加 Azure Stack 存储帐户下仍会显示“文件共享”节点。
 * 存储资源管理器使用的 Electron shell 在进行某项 GPU（图形处理单元）硬件加速时出现问题。 如果存储资源管理器显示了一个空白（空的）主窗口，则可以尝试从命令行启动存储资源管理器，并通过添加 `--disable-gpu` 开关禁用 GPU 加速。
 
-```
-./StorageExplorer.exe --disable-gpu
-```
+    ```
+    ./StorageExplorer.exe --disable-gpu
+    ```
 
 * 对于 Linux 用户，需要安装 [.NET Core 2.0](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x)。
 * 对于 Ubuntu 14.04 用户，需确保 GCC 是最新版本 - 为此，可运行以下命令并重启计算机：
@@ -570,9 +570,9 @@ ms.locfileid: "51038614"
 * 尽管 Azure Stack 当前不支持文件共享，但附加 Azure Stack 存储帐户下仍会显示“文件共享”节点。
 * 存储资源管理器使用的 Electron shell 在进行某项 GPU（图形处理单元）硬件加速时出现问题。 如果存储资源管理器显示了一个空白（空的）主窗口，则可以尝试从命令行启动存储资源管理器，并通过添加 `--disable-gpu` 开关禁用 GPU 加速。
 
-```
-./StorageExplorer.exe --disable-gpu
-```
+    ```
+    ./StorageExplorer.exe --disable-gpu
+    ```
 
 * 对于 Linux 用户，需要安装 [.NET Core 2.0](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x)。
 * 对于 Ubuntu 14.04 用户，需确保 GCC 是最新版本 - 为此，可运行以下命令并重启计算机：
@@ -607,9 +607,9 @@ ms.locfileid: "51038614"
 * 尽管 Azure Stack 当前不支持文件共享，但附加 Azure Stack 存储帐户下仍会显示“文件共享”节点。
 * 存储资源管理器使用的 Electron shell 在进行某项 GPU（图形处理单元）硬件加速时出现问题。 如果存储资源管理器显示了一个空白（空的）主窗口，则可以尝试从命令行启动存储资源管理器，并通过添加 `--disable-gpu` 开关禁用 GPU 加速。
 
-```
-./StorageExplorer.exe --disable-gpu
-```
+    ```
+    ./StorageExplorer.exe --disable-gpu
+    ```
 
 * 对于 Ubuntu 14.04 用户，需确保 GCC 是最新版本 - 为此，可运行以下命令并重启计算机：
 
@@ -656,9 +656,9 @@ ms.locfileid: "51038614"
 * 尽管 Azure Stack 当前不支持文件共享，但附加 Azure Stack 存储帐户下仍会显示“文件共享”节点。
 * 存储资源管理器使用的 Electron shell 在进行某项 GPU（图形处理单元）硬件加速时出现问题。 如果存储资源管理器显示了一个空白（空的）主窗口，则可以尝试从命令行启动存储资源管理器，并通过添加 `--disable-gpu` 开关禁用 GPU 加速。
 
-```
-./StorageExplorer.exe --disable-gpu
-```
+    ```
+    ./StorageExplorer.exe --disable-gpu
+    ```
 
 * 对于 Ubuntu 14.04 用户，需确保 GCC 是最新版本 - 为此，可运行以下命令并重启计算机：
 
@@ -702,9 +702,11 @@ ms.locfileid: "51038614"
 * 重命名 blob（单独地或在已重命名的 blob 容器中）不保留快照。 重命名期间保留 blob、文件和实体的所有其他属性和元数据。
 * 尽管 Azure Stack 当前不支持文件共享，但附加 Azure Stack 存储帐户下仍会显示“文件共享”节点。
 * 存储资源管理器使用的 Electron shell 在进行某项 GPU（图形处理单元）硬件加速时出现问题。 如果存储资源管理器显示了一个空白（空的）主窗口，则可以尝试从命令行启动存储资源管理器，并通过添加 `--disable-gpu` 开关禁用 GPU 加速。
-```
-./StorageExplorer --disable-gpu
-```
+
+    ```
+    ./StorageExplorer --disable-gpu
+    ```
+
 * 对于 Ubuntu 14.04 用户，需确保 GCC 是最新版本 - 为此，可运行以下命令并重启计算机：
 
     ```
@@ -764,9 +766,11 @@ ms.locfileid: "51038614"
 * 重命名 blob（单独地或在已重命名的 blob 容器中）不保留快照。 重命名期间保留 blob、文件和实体的所有其他属性和元数据。
 * 尽管 Azure Stack 当前不支持文件共享，但附加 Azure Stack 存储帐户下仍会显示“文件共享”节点。
 * 存储资源管理器使用的 Electron shell 在进行某项 GPU（图形处理单元）硬件加速时出现问题。 如果存储资源管理器显示了一个空白（空的）主窗口，则可以尝试从命令行启动存储资源管理器，并通过添加 `--disable-gpu` 开关禁用 GPU 加速。
-```
-./StorageExplorer --disable-gpu
-```
+
+    ```
+    ./StorageExplorer --disable-gpu
+    ```
+
 * 对于 Ubuntu 14.04 用户，需确保 GCC 是最新版本 - 为此，可运行以下命令并重启计算机：
 
     ```
@@ -818,9 +822,11 @@ ms.locfileid: "51038614"
 * 重命名 blob（单独地或在已重命名的 blob 容器中）不保留快照。 重命名期间保留 blob、文件和实体的所有其他属性和元数据。
 * 尽管 Azure Stack 当前不支持文件共享，但附加 Azure Stack 存储帐户下仍会显示“文件共享”节点。
 * 存储资源管理器使用的 Electron shell 在进行某项 GPU（图形处理单元）硬件加速时出现问题。 如果存储资源管理器显示了一个空白（空的）主窗口，则可以尝试从命令行启动存储资源管理器，并通过添加 `--disable-gpu` 开关禁用 GPU 加速。
-```
-./StorageExplorer --disable-gpu
-```
+
+    ```
+    ./StorageExplorer --disable-gpu
+    ```
+
 * 对于 Ubuntu 14.04 用户，需确保 GCC 是最新版本 - 为此，可运行以下命令并重启计算机：
 
     ```
@@ -913,7 +919,7 @@ ms.locfileid: "51038614"
 
 #### <a name="fixes"></a>修复项
 
-* 已修复：文件上传很可能导致内存不足错误
+* 已修复：文件上传很可能导致内存不足的错误
 * 已修复：现可使用 PIN/智能卡登录
 * 已修复：在门户中打开现适用于 Azure China、Azure Germany、Azure US Government 和 Azure Stack
 * 已修复：将文件夹上传到 blob 容器中时，“非法操作”错误时有发生
@@ -1064,7 +1070,7 @@ ms.locfileid: "51038614"
 #### <a name="fixes"></a>修复项
 
 * 已修复：屏幕死机问题
-* 已修复：安全性已增强
+* 已修复：增强的安全性
 * 已修复：有时可能会出现重复的附加帐户
 * 已修复：具有未定义内容类型的 blob 可能产生异常
 * 已修复：不能在空表上打开“查询面板”
@@ -1214,7 +1220,7 @@ ms.locfileid: "51038614"
 
 #### <a name="known-issues"></a>已知问题
 
-* 表：添加、编辑或导入具有不明确数值（如“1”或“1.0”）的属性的实体，并且用户尝试将其作为 `Edm.String` 发送，该值将通过客户端 API 作为 Edm.Double 返回
+* 表：添加、编辑或导入其属性具有不明确数值（如“1”或“1.0”）的实体，并且用户尝试将其作为 `Edm.String` 发送，该值将通过客户端 API 作为 Edm.Double 返回
 
 2016/03/31
 

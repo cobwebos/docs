@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: jeedes
-ms.openlocfilehash: b10f9cc5c766796b61e3c56da943e92e84d17488
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: dae953276fb89b798ff0a152994dc19f1e7c85a5
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39442578"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52834229"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-merchlogix"></a>教程：Azure Active Directory 与 Merchlogix 的集成
 
@@ -110,12 +110,12 @@ ms.locfileid: "39442578"
 
     ![Merchlogix 域和 URL 单一登录信息](./media/merchlogix-tutorial/tutorial_merchlogix_url.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL： `https://<DOMAIN>/login.php?saml=true`
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“登录 URL”文本框中，使用以下模式键入 URL： `https://<DOMAIN>/login.php?saml=true`
 
     b. 在“标识符”文本框中，使用以下模式键入 URL：`https://<DOMAIN>/simplesaml/module.php/saml/sp/metadata.php/<SAML_NAME>`
     
     > [!NOTE]
-    > 这些不是实际值。 必须使用实际登录 URL 和标识符更新这些值。 请联系 [Merchlogix 支持团队](http://www.merchlogix.com/contact/)获取这些值。
+    > 这些不是实际值。 必须使用实际登录 URL 和标识符更新这些值。 请联系 [Merchlogix 支持团队](https://www.merchlogix.com/contact/)获取这些值。
 
 1. 在“SAML 签名证书”部分中，单击“证书(base64)”，并在计算机上保存证书文件。
 
@@ -129,10 +129,10 @@ ms.locfileid: "39442578"
 
     ![Merchlogix 配置](./media/merchlogix-tutorial/tutorial_merchlogix_configure.png) 
 
-1. 若要在 Merchlogix 端配置单一登录，需要将下载的证书 (Base64)、注销 URL、SAML 实体 ID 和 SAML 单一登录服务 URL 发送给 [Merchlogix 支持团队](http://www.merchlogix.com/contact/)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
+1. 若要在 Merchlogix 端配置单一登录，需要将下载的证书 (Base64)、注销 URL、SAML 实体 ID 和 SAML 单一登录服务 URL 发送给 [Merchlogix 支持团队](https://www.merchlogix.com/contact/)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
 
 > [!TIP]
-> 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[ Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
+> 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
@@ -159,7 +159,7 @@ ms.locfileid: "39442578"
 
     ![“用户”对话框](./media/merchlogix-tutorial/create_aaduser_04.png)
 
-    a. 在“姓名”框中，键入“BrittaSimon”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“姓名”框中，键入“BrittaSimon”。
 
     b. 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
 
@@ -169,7 +169,7 @@ ms.locfileid: "39442578"
  
 ### <a name="create-a-merchlogix-test-user"></a>创建 Merchlogix 测试用户
 
-在本部分中，将在 Merchlogix 中创建一个名为“Britta Simon”的用户。 与 [Merchlogix 支持团队](http://www.merchlogix.com/contact/)协作，将用户添加到 Merchlogix 平台中。
+在本部分中，将在 Merchlogix 中创建一个名为“Britta Simon”的用户。 与 [Merchlogix 支持团队](https://www.merchlogix.com/contact/)协作，将用户添加到 Merchlogix 平台中。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
@@ -206,12 +206,12 @@ ms.locfileid: "39442578"
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 单击访问面板中的 Merchlogix 磁贴时，应当会自动登录到 Merchlogix 应用程序。
-有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
+有关访问面板的详细信息，请参阅[访问面板简介](../user-help/active-directory-saas-access-panel-introduction.md)。 
 
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](tutorial-list.md)
-* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
+* [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
 
 

@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 07/19/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: c0729fd4c6d5e387b38c310a708505c3395ea41f
-ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
+ms.openlocfilehash: 7f4750dd527aa53624fa977115a120911511b7d5
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52284874"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53185063"
 ---
 # <a name="azure-active-directory-pass-through-authentication-security-deep-dive"></a>Azure Active Directory 直通身份验证安全性深入研究
 
@@ -41,7 +41,7 @@ ms.locfileid: "52284874"
 - 从身份验证代理到 Azure AD 的出站通信仅使用标准端口（80 和 443）。 不需打开防火墙上的入站端口。 
   - 端口 443 用于所有经过身份验证的出站通信。
   - 端口 80 仅用于下载证书吊销列表 (CRL)，以确保未吊销此功能所用的任何证书。
-  - 如需网络安全的完整列表，请参阅 [Azure Active Directory 直通身份验证：快速入门](how-to-connect-pta-quick-start.md#step-1-check-the-prerequisites)。
+  - 有关网络要求的完整列表，请参阅 [Azure Active Directory 传递身份验证：快速入门](how-to-connect-pta-quick-start.md#step-1-check-the-prerequisites)。
 - 用户在登录期间提供的密码将在云中加密，再由本地身份验证代理接受，通过 Active Directory 进行验证。
 - 通过相互进行身份验证保护 Azure AD 和本地身份验证代理之间的 HTTPS 通道。
 - 可通过与 [Azure AD 条件访问策略](../active-directory-conditional-access-azure-portal.md)（包括多重身份验证 (MFA)、[阻止旧式身份验证](../conditional-access/conditions.md)）无缝协作，也可通过[筛选暴力破解密码攻击](../authentication/howto-password-smart-lockout.md)来保护用户帐户。
@@ -49,11 +49,11 @@ ms.locfileid: "52284874"
 ## <a name="components-involved"></a>涉及的组件
 
 有关 Azure AD 操作、服务和数据安全性的常规详细信息，请参阅[信任中心](https://azure.microsoft.com/support/trust-center/)。 使用直通身份验证进行用户登录时，会涉及以下组件：
-- **Azure AD STS**：一项无状态安全令牌服务 (STS)，它根据需要处理登录请求，并向用户的浏览器、客户端或服务发布安全令牌。
-- Azure 服务总线：可在云端使用企业消息传递进行通信，也可采用中继进行通信，帮助将本地解决方案与云端连接。
-- **Azure AD Connect 身份验证代理**：用于侦听和响应密码验证请求的本地组件。
+- **Azure AD STS**：无状态安全令牌服务 (STS)，用于处理登录请求以及根据需要向用户的浏览器、客户端或服务颁发安全令牌。
+- **Azure 服务总线**：可在云中使用企业消息传递进行通信，也可采用中继进行通信，帮助将本地解决方案与云连接。
+- **Azure AD Connect 身份验证代理**：一种本地组件，用于侦听和响应密码验证请求。
 - **Azure SQL 数据库**：保存有关租户身份验证代理的信息，包括其元数据和加密密钥。
-- **Active Directory**：用于存储用户帐户及其密码的本地 Active Directory。
+- **Active Directory 域服务**：本地 Active Directory 域服务，用于存储用户帐户及其密码。
 
 ## <a name="installation-and-registration-of-the-authentication-agents"></a>安装和注册身份验证代理
 
@@ -97,8 +97,8 @@ ms.locfileid: "52284874"
 5. 然后，Azure AD 对数字标识证书签名，并将其发送回身份验证代理。
     - Azure AD 中的根 CA 用于证书签名。 
 
-     >[!NOTE]
-     > 此 CA 不在 Windows 的受信任根证书颁发机构存储中。
+      > [!NOTE]
+      > 此 CA 不在 Windows 的受信任根证书颁发机构存储中。
     - 此 CA 仅由直通身份验证功能使用。 CA 仅在身份验证代理注册过程中用于签署 CSR。
     -  没有任何其他 Azure AD 服务使用此 CA。
     - 证书主题（可分辨名称或 DN）将设置为租户 ID。 此 DN 是唯一标识租户的 GUID。 此 DN 将此证书限制为仅用于租户。
@@ -208,10 +208,10 @@ Azure AD 以已签名 Windows Installer 程序包 (MSI) 的形式，托管该软
 
 ## <a name="next-steps"></a>后续步骤
 - [当前限制](how-to-connect-pta-current-limitations.md)：了解支持和不支持的方案。
-- [快速入门](how-to-connect-pta-quick-start.md)：快速了解 Azure AD 直通身份验证。
+- [快速入门](how-to-connect-pta-quick-start.md)：快速启动并运行 Azure AD 传递身份验证。
 - [从 AD FS 迁移到传递身份验证](https://aka.ms/adfstoptadpdownload) - 从 AD FS（或其他联合技术）迁移到传递身份验证的详细指南。
 - [智能锁定](../authentication/howto-password-smart-lockout.md)：在租户中配置智能锁定功能以保护用户帐户。
-- [工作原理](how-to-connect-pta-how-it-works.md)：了解 Azure AD 直通身份验证的基本工作原理。
-- [常见问题解答](how-to-connect-pta-faq.md)：查找常见问题的解答。
-- [故障诊断](tshoot-connect-pass-through-authentication.md)：了解如何解决直通身份验证功能的常见问题。
-- [Azure AD 无缝 SSO](how-to-connect-sso.md)：深入了解此补充功能。
+- [工作原理](how-to-connect-pta-how-it-works.md)：了解 Azure AD 传递身份验证的基本工作原理。
+- [常见问题](how-to-connect-pta-faq.md)：查看有关常见问题的解答。
+- [故障排除](tshoot-connect-pass-through-authentication.md)：了解如何解决传递身份验证功能的常见问题。
+- [Azure AD 无缝 SSO](how-to-connect-sso.md)：详细了解此补充功能。

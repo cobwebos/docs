@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 09/18/2018
+ms.date: 12/07/2018
 ms.topic: conceptual
 ms.service: cost-management
 manager: benshy
-ms.custom: ''
-ms.openlocfilehash: b4e1ffa0b7bd524fc9029b21e77b09ea07e1f202
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.custom: seodec18
+ms.openlocfilehash: 10a8d434df376749b76e2cf90212d872f705b209
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52276646"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53103415"
 ---
 # <a name="understanding-cloudyn-cost-management-reports"></a>了解 Cloudyn 成本管理报表
 
@@ -25,7 +25,7 @@ ms.locfileid: "52276646"
 
 下面我们来看看时段成本报表示例。 大多数 Cloudyn 报表的布局都比较相似。
 
-![示例报表](./media/understanding-cost-reports/sample-report.png)
+![编号区域与描述相对应的“时段成本”示例报告](./media/understanding-cost-reports/sample-report.png)
 
 上图中每个带有相应编号的区域在以下信息中进行了详细说明：
 
@@ -47,11 +47,11 @@ ms.locfileid: "52276646"
 
     使用“标记”区域以按标记类别分组。 菜单中列出的标记是 Azure 部门或成本中心标记，或者它们是 Cloudyn 的成本实体和订阅标记。 选择标记来筛选结果。 你也可以键入要筛选结果的标记名称（关键字）。
 
-    ![选择选项](./media/understanding-cost-reports/select-options.png)
+    ![用于筛选结果的标记列表示例](./media/understanding-cost-reports/select-options.png)
 
     单击“添加”以添加新的筛选器。
 
-    ![添加筛选器](./media/understanding-cost-reports/add-filter.png)
+    ![添加筛选器框，其中显示有筛选选项和条件](./media/understanding-cost-reports/add-filter.png)
 
     标记分组或筛选与 Azure 资源或资源组标记无关。
 
@@ -61,9 +61,9 @@ ms.locfileid: "52276646"
 
     使用“成本分析”报表中的组可显示报表中帐单数据的标准明细类别。  但是，成本分摊报表中的组可以显示基于标记的视图类别。 基于标记的类别是在成本分摊模型中定义的，属于帐单数据中的标准明细类别。
 
-    ![组标记](./media/understanding-cost-reports/groups-tags01.png)
+    ![用于分组的首个标记列表示例](./media/understanding-cost-reports/groups-tags01.png)
 
-    ![组标记](./media/understanding-cost-reports/groups-tags02.png)
+    ![用于分组的第二个标记列表示例](./media/understanding-cost-reports/groups-tags02.png)
 
     在成本分摊报表中，基于标记的组类别中的组可能包括：
       - 标记
@@ -166,7 +166,7 @@ ms.locfileid: "52276646"
 
     使用“显示格式”可选择各种图或表格视图。
 
-    ![显示格式](./media/understanding-cost-reports/display-formats.png)
+    ![可选择的显示格式的符号](./media/understanding-cost-reports/display-formats.png)
 
 13. **多色**
 

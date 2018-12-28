@@ -2,18 +2,18 @@
 title: 监视 Azure 虚拟机的备份警报
 description: 监视 Azure 虚拟机备份作业的事件和警报。 基于警报发送电子邮件。
 services: backup
-author: markgalioto
+author: rayne-wiselman
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
 ms.date: 02/23/2018
-ms.author: markgal
-ms.openlocfilehash: 3783014738ec4e8f185531773b1259dc63e7f49f
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.author: raynew
+ms.openlocfilehash: 0cfbb258364ed684ff38b2be9f998d8ff0656251
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34606301"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52864530"
 ---
 # <a name="monitor-alerts-for-azure-virtual-machine-backups"></a>监视 Azure 虚拟机备份的警报
 警报是服务发出的响应，指出已达到或超过了某个事件阈值。 了解问题何时开始出现可能是控制业务成本的关键所在。 警报通常不会按计划发生，因此在警报发生后尽快知晓将很有用。 例如，当备份或还原作业失败时，在失败后的 5 分钟内发生警报。 在保管库仪表板中，“备份警报”磁贴显示了“关键”和“警告”级别的事件。 在“备份警报”设置中，可以查看所有事件。 但是，如果在处理某个单独的问题时发生警报，该怎么办呢？ 如果不知道警报何时发生，则无法确定相关的问题只是一个小小的麻烦，还是会导致数据透露。 为了确保适当的人员能够意识到发生了警报（何时发生警报），可以将服务配置为通过电子邮件发送警报通知。 有关设置电子邮件通知的详细信息，请参阅 [Configure notifications](backup-azure-monitor-vms.md#configure-notifications)（配置通知）。
@@ -124,6 +124,6 @@ ms.locfileid: "34606301"
 ## <a name="next-steps"></a>后续步骤
 有关如何从恢复点重新创建虚拟机的信息，请查看 [Restore Azure VMs](backup-azure-arm-restore-vms.md)（还原 Azure VM）。
 
-如果需要有关如何保护虚拟机的信息，请参阅 [First look: Back up VMs to a Recovery Services vault](backup-azure-vms-first-look-arm.md)（初步了解：将 VM 备份到恢复服务保管库）。 
+如果需要有关如何保护虚拟机的信息，请参阅[初步了解：将 VM 备份到恢复服务保管库](backup-azure-vms-first-look-arm.md)。 
 
 有关 VM 备份管理任务的详细信息，请参阅[管理 Azure 虚拟机备份](backup-azure-manage-vms.md)。

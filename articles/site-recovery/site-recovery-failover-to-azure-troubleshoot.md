@@ -8,18 +8,17 @@ manager: abhemraj
 editor: ''
 ms.assetid: ''
 ms.service: site-recovery
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 11/27/2018
+ms.date: 12/11/2018
 ms.author: mayg
-ms.openlocfilehash: 1e7486dc646843c473cfb355445e194893934a1a
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.openlocfilehash: 742e7891ec9c7151f23f1ad6eb57e728dd2a1ddd
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52447140"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53255085"
 ---
 # <a name="troubleshoot-errors-when-failing-over-a-virtual-machine-to-azure"></a>解决从虚拟机到 Azure 的故障转移时出现的错误
 
@@ -29,7 +28,7 @@ ms.locfileid: "52447140"
 
 Site Recovery 无法在 Azure 中创建故障转移的虚拟机。 以下其中一个原因也可能导致此情况的发生：
 
-* 创建虚拟机的可用配额不足：你可以通过转到“订阅” -> “使用情况 + 配额”来检查可用配额。 可以打开 [新的支持请求](http://aka.ms/getazuresupport) 来增加此配额。
+* 没有足够的可用配额来创建虚拟机：可以通过转到“订阅” -> “使用情况 + 配额”来检查可用配额。 可以打开 [新的支持请求](http://aka.ms/getazuresupport) 来增加此配额。
 
 * 尝试在同一个可用性集中故障转移不同大小系列的虚拟机。 确保在同一个可用性集中选择相同大小系列的所有虚拟机。 可以转到虚拟机的“计算和网络”设置来更改大小，然后重试故障转移。
 
@@ -95,14 +94,14 @@ Site Recovery 无法在 Azure 中创建故障转移的虚拟机。 发生此情�
 2. 如果虚拟机中的应用程序未启动，请尝试故障转移到应用一致的恢复点。
 3. 如果虚拟机已加入域，请确保域控制器正确运行。 可以按照下面给出的步骤执行此操作：
 
-    a. 在同一网络中创建新的虚拟机。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在同一网络中创建新的虚拟机。
 
     b.  确保能够加入其中应启动故障转移的虚拟机的同一域。
 
     c. 如果域控制器**未**正确运行，请尝试使用本地管理员帐户登录到故障转移的虚拟机。
 4. 如果使用自定义 DNS 服务器，请确保可以访问该服务器。 可以按照下面给出的步骤执行此操作：
 
-    a. 在同一网络中创建新的虚拟机；
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在同一网络中创建新的虚拟机；
 
     b. 检查虚拟机是否能够使用自定义 DNS 服务器解析名称
 
@@ -114,9 +113,6 @@ Site Recovery 无法在 Azure 中创建故障转移的虚拟机。 发生此情�
 在故障转移后启动 Windows VM 时，如果在恢复的 VM 上收到一条有关意外关闭的消息，则表明在用于故障转移的恢复点中未捕获 VM 关闭状态。 如果恢复到某个点，在这个点 VM 尚未完全关闭，则会发生这种情况。
 
 对于计划外故障转移，这通常不需要担心，通常可以忽略。 对于计划内故障转移，请确保在故障转移之前 VM 正常关闭，并提供足够的时间让待发送的本地复制数据发送到 Azure。 然后使用[“故障转移”屏幕](site-recovery-failover.md#run-a-failover)上的“最新”选项，将 Azure 上的任何待处理数据处理到一个恢复点中，随后用于 VM 故障转移。
-
-## <a name="retaining-drive-letter-after-failover"></a>在故障转移后保留驱动器号
-若要在故障转移后保留虚拟机上的驱动器号，可将本地虚拟机的“SAN 策略”设置为 **OnlineAll**。 [了解详细信息](https://support.microsoft.com/help/3031135/how-to-preserve-the-drive-letter-for-protected-virtual-machines-that-are-failed-over-or-migrated-to-azure)。
 
 ## <a name="next-steps"></a>后续步骤
 - 排查[通过 RDP 连接到 Windows VM](../virtual-machines/windows/troubleshoot-rdp-connection.md) 的问题
