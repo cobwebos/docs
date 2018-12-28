@@ -1,21 +1,22 @@
 ---
-title: 将 LUIS 应用发布到预测终结点
+title: 发布应用
 titleSuffix: Azure Cognitive Services
 description: 当完成生成和测试活动 LUIS 应用时，可通过将其发布到终结点使其可用于客户端应用程序。
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: conceptual
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: 6eb48fd0f3290fbc3a249bc3880c809ace9f9ddb
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: 73788b05cad3abac19b1ef509f1250542d10dba2
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48886456"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53136641"
 ---
 # <a name="publish-your-trained-app"></a>发布已训练的应用
 
@@ -37,7 +38,7 @@ ms.locfileid: "48886456"
 
 成功发布应用后，浏览器顶部会显示一个表示成功的绿色通知。 绿色通知栏还包含指向终结点的链接。 
 
-![“发布”弹出窗口](./media/luis-how-to-publish-app/publish-success.png)
+![“发布”弹出窗口，其中包含指向终结点的链接](./media/luis-how-to-publish-app/publish-success.png)
 
 如果需要终结点 URL，请选择该链接。 还可以通过在顶部菜单中选择“管理”，然后在左侧菜单中选择“密钥和终结点”来访问终结点 URL。 
 
