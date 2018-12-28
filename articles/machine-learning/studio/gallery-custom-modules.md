@@ -1,12 +1,11 @@
 ---
 title: Azure AI 库自定义模块 - Azure 机器学习工作室 | Microsoft Docs
-description: 在 Azure AI 库中发现自定义机器学习模块。
+description: 在 Azure AI 库中发现自定义机器学习模块。 自定义模块可扩展 Azure 机器学习工作室的功能。
 services: machine-learning
 documentationcenter: ''
 author: ericlicoding
-ms.custom: (previous ms.author=yahajiza, author=YasinMSFT)
+ms.custom: seodec18
 ms.author: amlstudiodocs
-manager: hjerez
 editor: cgronlun
 ms.assetid: 16037a84-dad0-4a8c-9874-a1d3bd551cf0
 ms.service: machine-learning
@@ -16,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/14/2017
-ms.openlocfilehash: a504bcfbbcd70c1d6fc8402d4c232e7e8a5476b0
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 92067a93a1f67711df0312f4daf484a577ff14d1
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52313735"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53273183"
 ---
 # <a name="machine-learning-studio-discover-custom-machine-learning-modules-in-azure-ai-gallery"></a>机器学习工作室：在 Azure AI 库中发现自定义机器学习模块
 
@@ -94,5 +93,5 @@ Azure AI 库提供两种方法来导入模块的副本：
 
 **[转到库](http://gallery.cortanaintelligence.com)**
 
-[!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
+
 

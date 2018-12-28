@@ -1,6 +1,6 @@
 ---
-title: 将数据移动到 Azure SQL 数据库以便在 Azure 机器学习中处理 | Microsoft Docs
-description: 创建 SQL 表并将数据加载到 SQL 表
+title: 将数据移到 Azure SQL 数据库 - Team Data Science Process
+description: 将数据从平面文件（CSV 或 TSV 格式）或从本地 SQL Server 中存储的数据移到 Azure SQL 数据库。
 services: machine-learning
 author: marktab
 manager: cgronlun
@@ -8,15 +8,15 @@ editor: cgronlun
 ms.service: machine-learning
 ms.component: team-data-science-process
 ms.topic: article
-ms.date: 5/04/2018
+ms.date: 05/04/2018
 ms.author: tdsp
-ms.custom: (previous author=deguhath, ms.author=deguhath)
-ms.openlocfilehash: 1c65e2b622d9c70626411f470593730570de813b
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: 680a47dae057b68957c58bbaab1ec35407d67952
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52445339"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53268626"
 ---
 # <a name="move-data-to-an-azure-sql-database-for-azure-machine-learning"></a>将数据转移到 Azure SQL 数据库以便在 Azure 机器学习中处理
 

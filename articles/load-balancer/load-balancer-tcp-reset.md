@@ -1,26 +1,24 @@
 ---
-title: 负载均衡器空闲情况下的 TCP 重置 | Microsoft Docs
+title: Azure 中的负载均衡器空闲情况下的 TCP 重置
+titlesuffix: Azure Load Balancer
 description: 具有空闲超时情况下发送双向 TCP RST 数据包功能的负载均衡器
 services: load-balancer
 documentationcenter: na
 author: KumudD
-manager: timlt
-editor: ''
-tags: azure-resource-manager
-ms.assetid: 46b152c5-6a27-4bfc-bea3-05de9ce06a57
+ms.custom: seodec18
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/08/2018
+ms.date: 12/03/2018
 ms.author: kumud
-ms.openlocfilehash: 9aa3811eb03d38a4c6ab8203512f3e6699098122
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: 0b3e8fc72eb22a67c0672be19f60d4956d3377b7
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48883629"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53257279"
 ---
 # <a name="load-balancer-with-tcp-reset-on-idle-public-preview"></a>负载均衡器空闲情况下的 TCP 重置（公共预览版）
 
@@ -76,7 +74,17 @@ ms.locfileid: "48883629"
 | 区域 |
 |---|
 | 亚洲东南部 |
+| 巴西南部 |
+| 加拿大中部 |
 | 西欧 |
+| 印度中部 |
+| 印度西部 |
+| 日本西部 |
+| 韩国中部 |
+| 韩国南部 |
+| 英国北部 |
+| 英国南部 2 |
+| 美国东部 |
 | 美国东部 2 |
 | 英国北部 |
 | 美国西部 |

@@ -1,22 +1,23 @@
 ---
-title: 具有企业安全性套餐的 Azure HDInsight 群集中的 Apache Hadoop Oozie 工作流
-description: 在基于 Linux 的 HDInsight 企业安全性套餐中使用 Hadoop Oozie。 了解如何定义 Oozie 工作流，并提交 Oozie 作业。
+title: 使用企业安全性套餐保护 Apache Oozie 工作流 - Azure HDInsight
+description: 使用 Azure HDInsight 企业安全性套餐保护 Apache Oozie 工作流。 了解如何定义 Oozie 工作流，并提交 Oozie 作业。
 services: hdinsight
 ms.service: hdinsight
 author: omidm1
 ms.author: omidm
 ms.reviewer: mamccrea
-ms.custom: hdinsightactive
+ms.custom: hdinsightactive,seodec18
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 298277b720045c06d78f1c4964de2246dac22f08
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: 0ab225d3579ed6a56c753f0c581709408c65f358
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51633659"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53436273"
 ---
 # <a name="run-apache-oozie-in-hdinsight-hadoop-clusters-with-enterprise-security-package"></a>在具有企业安全性套餐的 HDInsight Hadoop 群集中运行 Apache Oozie
+
 Apache Oozie 是一个管理 Apache Hadoop 作业的工作流和协调系统。 Oozie 与 Hadoop 堆栈集成，并支持以下作业：
 - Apache MapReduce
 - Apache Pig
@@ -26,10 +27,11 @@ Apache Oozie 是一个管理 Apache Hadoop 作业的工作流和协调系统。 
 还可以使用 Oozie 来计划特定于某系统的作业，例如 Java 程序或 shell 脚本
 
 ## <a name="prerequisite"></a>先决条件
+
 - 具有企业安全性套餐 (ESP) 的 Azure HDInsight Hadoop 群集。 请参阅[配置具有 ESP 的 HDInsight 群集](./apache-domain-joined-configure-using-azure-adds.md)。
 
-    > [!NOTE]
-    > 有关在非 ESP 群集中使用 Oozie 的详细说明，请参阅[在基于 Linux 的 Azure HDInsight 中使用 Hadoop Oozie 工作流](../hdinsight-use-oozie-linux-mac.md)。
+    > [!NOTE]  
+    > 有关在非 ESP 群集中使用 Oozie 的详细说明，请参阅[在基于 Linux 的 Azure HDInsight 中使用 Apache Oozie 工作流](../hdinsight-use-oozie-linux-mac.md)。
 
 ## <a name="connect-to-an-esp-cluster"></a>连接到 ESP 群集
 
@@ -50,7 +52,7 @@ ssh [DomainUserName]@<clustername>-ssh.azurehdinsight.net
     状态响应代码 **200 OK** 表示注册成功。 如果收到未经授权的响应（如 401），请检查用户名和密码。
 
 ## <a name="define-the-workflow"></a>定义工作流
-Oozie 工作流定义是用 Hadoop 过程定义语言 (hPDL) 编写的。 hPDL 是一种 XML 过程定义语言。 按照以下步骤定义工作流：
+Oozie 工作流定义是用 Apache Hadoop 过程定义语言 (hPDL) 编写的。 hPDL 是一种 XML 过程定义语言。 按照以下步骤定义工作流：
 
 1.  设置域用户的工作区：
  ```bash
@@ -224,8 +226,11 @@ nano workflow.xml
    运行 Oozie 作业时，必须在本地提供此属性文件。
 
 ## <a name="create-custom-hive-scripts-for-oozie-jobs"></a>为 Oozie 作业创建自定义 Hive 脚本
+
 可以为 Hive server 1 和 Hive server 2 创建这两个 Hive 脚本，如以下各节中所示。
+
 ### <a name="hive-server-1-file"></a>Hive server 1 文件
+
 1.  创建和编辑 Hive server 1 操作文件：
     ```bash
     nano countrowshive1.hql
@@ -238,12 +243,13 @@ nano workflow.xml
     select devicemake from hivesampletable limit 2;
     ```
 
-3.  将文件保存到 Hadoop 分布式文件系统 (HDFS)：
+3.  将文件保存到 Apache Hadoop 分布式文件系统 (HDFS)：
     ```bash
     hdfs dfs -put countrowshive1.hql countrowshive1.hql
     ```
 
 ### <a name="hive-server-2-file"></a>Hive server 2 文件
+
 1.  创建和编辑 Hive server 2 操作字段：
     ```bash
     nano countrowshive2.hql
@@ -262,12 +268,14 @@ nano workflow.xml
     ```
 
 ## <a name="submit-oozie-jobs"></a>提交 Oozie 作业
+
 为 ESP 群集提交 Oozie 作业与在非 ESP 群集中提交 Oozie 作业类似。
 
-有关详细信息，请参阅[在基于 Linux 的 Azure HDInsight 中将 Oozie 与 Hadoop 配合使用以定义和运行工作流](../hdinsight-use-oozie-linux-mac.md)。
+有关详细信息，请参阅[在基于 Linux 的 Azure HDInsight 中将 Apache Oozie 与 Apache Hadoop 配合使用以定义和运行工作流](../hdinsight-use-oozie-linux-mac.md)。
 
 ## <a name="results-from-an-oozie-job-submission"></a>Oozie 作业提交结果
-Oozie 作业为用户而运行。 因此，Apache YARN 和 Apache Ranger 审核日志会显示正在以被模拟用户身份运行的作业。 Oozie 作业的命令行界面输出如以下代码所示：
+Oozie 作业为用户而运行。 因此，Apache Hadoop YARN 和 Apache Ranger 审核日志会显示正在以被模拟用户身份运行的作业。 Oozie 作业的命令行界面输出如以下代码所示：
+
 
 
 ```bash
@@ -304,13 +312,15 @@ Oozie 作业为用户而运行。 因此，Apache YARN 和 Apache Ranger 审核�
 Hive server 2 操作的 Ranger 审核日志显示 Oozie 为用户运行操作。 Ranger 和 YARN 视图仅对群集管理员可见。
 
 ## <a name="configure-user-authorization-in-oozie"></a>在 Oozie 中配置用户授权
+
 Oozie 本身具有用户授权配置，可以阻止用户停止或删除其他用户的作业。 若要启用此配置，请将 `oozie.service.AuthorizationService.security.enabled` 设置为 `true`。 
 
-有关详细信息，请参阅 [Oozie Installation and Configuration](https://oozie.apache.org/docs/3.2.0-incubating/AG_Install.html)（Oozie 安装和配置）。
+有关详细信息，请参阅 [Apache Oozie Installation and Configuration](https://oozie.apache.org/docs/3.2.0-incubating/AG_Install.html)（Apache Oozie 安装和配置）。
 
 对于不提供或不支持 Ranger 插件的组件（如 Hive server 1），只能进行粗粒度的 HDFS 授权。 细粒度授权只能通过 Ranger 插件进行。
 
 ## <a name="get-the-oozie-web-ui"></a>获取 Oozie Web UI
+
 Oozie Web UI 提供基于 Web 的视图来显示群集上 Oozie 作业的状态。 若要获取 Web UI，请在 ESP 群集中执行以下步骤：
 
 1. 添加[边缘节点](../hdinsight-apps-use-edge-node.md)并启用 [SSH Kerberos 身份验证](../hdinsight-hadoop-linux-use-ssh-unix.md)。
@@ -318,6 +328,6 @@ Oozie Web UI 提供基于 Web 的视图来显示群集上 Oozie 作业的状态�
 2. 按照 [Oozie Web UI](../hdinsight-use-oozie-linux-mac.md) 步骤启用 SSH 隧道以连接到边缘节点并访问 Web UI。
 
 ## <a name="next-steps"></a>后续步骤
-* [在基于 Linux 的 Azure HDInsight 中将 Oozie 与 Hadoop 配合使用以定义和运行工作流](../hdinsight-use-oozie-linux-mac.md)。
-* [使用基于时间的 Oozie 协调器](../hdinsight-use-oozie-coordinator-time.md)。
-* [使用 SSH 连接到 HDInsight (Hadoop)](../hdinsight-hadoop-linux-use-ssh-unix.md#domainjoined)。
+* [在基于 Linux 的 Azure HDInsight 中将 Apache Oozie 与 Apache Hadoop 配合使用以定义和运行工作流](../hdinsight-use-oozie-linux-mac.md)。
+* [使用基于时间的 Apache Oozie 协调器](../hdinsight-use-oozie-coordinator-time.md)。
+* [使用 SSH 连接到 HDInsight (Apache Hadoop)](../hdinsight-hadoop-linux-use-ssh-unix.md#domainjoined)。

@@ -13,12 +13,12 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 10/15/2018
-ms.openlocfilehash: 74e963abe5d2798f72bce8212c9f761f8f3297d1
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: e0a3f5239e9d0f16312894dee598c0fc490f1e73
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51256929"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53270002"
 ---
 # <a name="the-azure-sql-database-service"></a>Azure SQL 数据库服务
 
@@ -60,7 +60,7 @@ SQL 数据库通过多个资源类型、服务层和计算大小提供可预测�
 
 SQL 数据库提供[基于 DTU 的购买模型](sql-database-service-tiers-dtu.md)或[基于 vCore 的购买模型](sql-database-service-tiers-vcore.md)。
 
-- 基于 DTU 的购买模型在三个服务层中提供包括计算、内存和 IO 资源在内的各种内容，支持轻型到重型数据库工作负荷：基本、标准、高级。 每个层中的不同计算大小提供这些资源的不同组合，你可以向其添加更多的存储资源。
+- 基于 DTU 的购买模型在以下三个服务层中提供包括计算、内存和 IO 资源在内的各种内容，以支持轻型到重型数据库工作负荷：基本、标准和高级。 每个层中的不同计算大小提供这些资源的不同组合，你可以向其添加更多的存储资源。
 - 基于 vCore 的购买模型允许选择 vCore 数、内存容量，以及存储的容量和速度。
 
 可以在小型单一数据库中构建你的第一个应用，每个月只需在“常规用途”服务层中花费少量资金。然后可以根据解决方案的需要，随时手动或以编程方式将服务层更改为“业务关键”服务层。 可在不给应用或客户造成停机的情况下调整性能。 动态可伸缩性可让数据库以透明方式响应快速变化的资源要求，使用户只需为用到的资源付费。
@@ -93,8 +93,8 @@ SQL 数据库提供[基于 DTU 的购买模型](sql-database-service-tiers-dtu.m
 
 此外，SQL 数据库可[发出指标和诊断日志](sql-database-metrics-diag-logging.md)，以便更轻松地监视。 可配置 SQL 数据库，将资源使用情况、辅助角色和会话以及连接性存储到以下 Azure 资源之一：
 
-- Azure 存储：用于低价存档大量遥测
-- Azure 事件中心：用于将 SQL 数据库遥测与自定义监视解决方案或热门管道集成
+- **Azure 存储**：用于低价存档大量遥测
+- **Azure 事件中心**：用于将 SQL 数据库遥测与自定义监视解决方案或热门管道集成
 - **Azure Log Analytics**：用于具有报告、警报和缓解功能的内置监视解决方案。
 
     ![体系结构](./media/sql-database-metrics-diag-logging/architecture.png)
@@ -109,10 +109,10 @@ Azure 行业领先的 99.99% 可用性服务级别协议 [(SLA)](https://azure.m
 - **[时间点还原](sql-database-recovery-using-backups.md)**：
 
   SQL 数据库支持恢复到自动备份保留期内的任何时间点。
-- **[活动异地复制](sql-database-geo-replication-overview.md)**：
+- **[活动异地复制](sql-database-active-geo-replication.md)**：
 
   SQL 数据库允许在同一或全局分发的 Azure 数据中心配置至多 4 个可读的辅助数据库。  例如，如果有一个 SaaS 应用程序，其中的目录数据库包含大量并发只读事务，请使用活动异地复制来启用全局读取缩放并删除主数据库上因读取工作负荷产生的瓶颈。
-- **[故障转移组](sql-database-geo-replication-overview.md)**：
+- **[自动故障转移组](sql-database-auto-failover-group.md)**：
 
   通过 SQL 数据库，可实现高可用性和全局范围内的负载均衡，包括透明异地复制和大型数据库集和弹性池故障转移。 通过故障转移组和活动异地复制，能够以最小管理开销创建全局分发式 SaaS 应用程序，将所有复杂监视、路由和故障转移业务流程留给 SQL 数据库。
 - **[区域冗余数据库](sql-database-high-availability.md)**：

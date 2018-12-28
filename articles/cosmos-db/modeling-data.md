@@ -1,23 +1,22 @@
 ---
-title: NoSQL 数据库的文档数据建模 | Microsoft Docs
-description: 了解有关 NoSQL 数据库的数据建模的信息
-keywords: 数据建模
-services: cosmos-db
+title: 在 NoSQL 数据库中对文档数据进行建模
+titleSuffix: Azure Cosmos DB
+description: 了解 NoSQL 数据库中的数据建模，在关系数据库中与在文档数据库中对数据进行建模的区别。
 author: aliuy
-manager: kfile
 ms.service: cosmos-db
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/29/2016
+ms.date: 12/06/2018
 ms.author: andrl
-ms.openlocfilehash: c577c9734490e3aacc148153f550162371ae482e
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.custom: seodec18
+ms.openlocfilehash: 5b75f620194a58aa7801fe390148a327a319c4a3
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "40037931"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53166636"
 ---
 # <a name="modeling-document-data-for-nosql-databases"></a>NoSQL 数据库的文档数据建模
+
 尽管无架构的数据库（如 Azure Cosmos DB）能够非常容易地接受对数据模型的更改，但你仍需花一些时间来研究数据。 
 
 将如何存储数据？ 应用程序将如何检索和查询数据？ 应用程序是读取频繁，还是写入频繁？ 
@@ -82,7 +81,7 @@ ms.locfileid: "40037931"
 ### <a name="when-to-embed"></a>何时嵌入
 通常在下列情况下使用嵌入式数据模型：
 
-* 实体之间存在**包含**关系。
+* 实体之间存在“包含”** 关系。
 * 实体之间存在**一对多**关系。
 * 嵌入式数据**不经常更改**。
 * 嵌入式数据不会在**没有限制**的情况下不断增长。
@@ -341,9 +340,9 @@ ms.locfileid: "40037931"
         "countOfBooks": 3,
          "books": ["b1", "b2", "b3"],
         "images": [
-            {"thumbnail": "http://....png"}
-            {"profile": "http://....png"}
-            {"large": "http://....png"}
+            {"thumbnail": "https://....png"}
+            {"profile": "https://....png"}
+            {"large": "https://....png"}
         ]
     },
     {
@@ -353,7 +352,7 @@ ms.locfileid: "40037931"
         "countOfBooks": 1,
         "books": ["b1"],
         "images": [
-            {"thumbnail": "http://....png"}
+            {"thumbnail": "https://....png"}
         ]
     }
 
@@ -362,15 +361,15 @@ ms.locfileid: "40037931"
         "id": "b1",
         "name": "Azure Cosmos DB 101",
         "authors": [
-            {"id": "a1", "name": "Thomas Andersen", "thumbnailUrl": "http://....png"},
-            {"id": "a2", "name": "William Wakefield", "thumbnailUrl": "http://....png"}
+            {"id": "a1", "name": "Thomas Andersen", "thumbnailUrl": "https://....png"},
+            {"id": "a2", "name": "William Wakefield", "thumbnailUrl": "https://....png"}
         ]
     },
     {
         "id": "b2",
         "name": "Azure Cosmos DB for RDBMS Users",
         "authors": [
-            {"id": "a1", "name": "Thomas Andersen", "thumbnailUrl": "http://....png"},
+            {"id": "a1", "name": "Thomas Andersen", "thumbnailUrl": "https://....png"},
         ]
     }
 
@@ -380,7 +379,7 @@ ms.locfileid: "40037931"
 
 当然，如果作者的姓名发生更改，或者他们想要更新自己的照片，那么我们必须更新他们曾经出版的每本书，但对于我们的应用程序来说，基于作者不会经常更改他们的姓名的假设，这是一个可接受的设计决策。  
 
-在示例中**预先计算的汇总**值可在读取操作上节省高昂的处理成本。 在本例中，作者文档中嵌入的一些数据为在运行时计算的数据。 每当出版了一本新书，就会创建一个书籍文档**并且**将 countOfBooks 字段设置为基于特定作者的现有书籍文档数的计算值。 这种优化对于读取频繁的系统来说是有益的，为了优化读取，我们可以对写入操作执行更多计算。
+在示例中**预先计算的聚合**值可在读取操作上节省高昂的处理成本。 在本例中，作者文档中嵌入的一些数据为在运行时计算的数据。 每当出版了一本新书，就会创建一个书籍文档**并且**将 countOfBooks 字段设置为基于特定作者的现有书籍文档数的计算值。 这种优化对于读取频繁的系统来说是有益的，为了优化读取，我们可以对写入操作执行更多计算。
 
 因为 Azure Cosmos DB 支持**多文档事务**，所以构建一个具有预先计算字段的模型是可能的。 许多 NoSQL 存储无法跨文档执行事务，正是因为该限制，所以提倡诸如“始终嵌入所有数据”的设计决策。 在 Azure Cosmos DB 中，可以使用服务器端触发器或存储过程在一个 ACID 事务中插入书籍和更新作者信息等。 现在**无需**将所有数据嵌入一个文档，只需确保数据保持一致性。
 

@@ -1,5 +1,5 @@
 ---
-title: 什么是团队数据科学过程？ | Microsoft Docs
+title: 什么是团队数据科学过程？
 description: 提供数据科学方法来交付预测分析解决方案和智能应用程序。
 services: machine-learning
 author: marktab
@@ -10,13 +10,13 @@ ms.component: team-data-science-process
 ms.topic: article
 ms.date: 10/20/2017
 ms.author: tdsp
-ms.custom: (previous author=deguhath, ms.author=deguhath)
-ms.openlocfilehash: 44da452b0ec07eaa1b1446de5dab5bedaac3bc30
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: 94728bbc74d1864c76aa801628fcbfb133b97abd
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52446834"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53435984"
 ---
 # <a name="what-is-the-team-data-science-process"></a>什么是团队数据科学过程？
 
@@ -79,7 +79,7 @@ Team Data Science Process (TDSP) 提供用于构建数据科学项目开发的�
 
 [ ![TDSP-directories](./media/overview/tdsp-dir-structure.png) ](./media/overview/tdsp-dir-structure.png#lightbox)
 
-可以从 [Github](https://github.com/Azure/Azure-TDSP-ProjectTemplate) 克隆目录结构。
+可以从 [GitHub](https://github.com/Azure/Azure-TDSP-ProjectTemplate) 克隆目录结构。
 
 ## <a name="infrastructure-and-resources-for-data-science-projects"></a>数据科学项目的基础结构和资源  
 
@@ -99,7 +99,7 @@ TDSP 提供有关管理共享分析和存储基础结构的建议，例如：
 
 ## <a name="tools-and-utilities-for-project-execution"></a>用于项目执行的工具和实用程序
 
-在大多数组织中引入过程很有难度。 TDSP 提供了工具用于实现数据科学过程和生命周期，帮助削减屏障，提高客户的采用一致性。 TDSP 提供了一套初始工具和脚本，帮助在团队中快速采用 TDSP。 另外，它还帮助自动完成数据科学生命周期中的某些常见任务，例如数据探索和基线建模。 它为个人提供一个完善定义的结构，以便在团队的共享代码存储库中贡献共享的工具和实用程序。 然后，这些资源可由团队或组织中的其他项目利用。 TDSP 还计划为向整个社区贡献工具和实用程序提供支持。 可从 [Github](https://github.com/Azure/Azure-TDSP-Utilities) 克隆 TDSP 实用程序。
+在大多数组织中引入过程很有难度。 TDSP 提供了工具用于实现数据科学过程和生命周期，帮助削减屏障，提高客户的采用一致性。 TDSP 提供了一套初始工具和脚本，帮助在团队中快速采用 TDSP。 另外，它还帮助自动完成数据科学生命周期中的某些常见任务，例如数据探索和基线建模。 它为个人提供一个完善定义的结构，以便在团队的共享代码存储库中贡献共享的工具和实用程序。 然后，这些资源可由团队或组织中的其他项目利用。 TDSP 还计划为向整个社区贡献工具和实用程序提供支持。 可从 [GitHub](https://github.com/Azure/Azure-TDSP-Utilities) 克隆 TDSP 实用程序。
 
 
 ## <a name="next-steps"></a>后续步骤

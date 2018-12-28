@@ -1,10 +1,10 @@
 ---
-title: 机器学习 Web 服务的 Excel 外接程序 | Microsoft Docs
+title: 适用于 Web 服务的 Excel 加载项 - Azure 机器学习工作室 | Microsoft Docs
 description: 如何在 Excel 中直接使用 Azure 机器学习 Web 服务，而无需编写任何代码。
 services: machine-learning
 documentationcenter: ''
 author: ericlicoding
-ms.custom: (previous ms.author=marthalc, author=marthalc)
+ms.custom: seodec18
 ms.author: amlstudiodocs
 ms.assetid: 9618079d-502f-4974-a3e2-8f924042a23f
 ms.service: machine-learning
@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
-ms.date: 2/1/2018
-ms.openlocfilehash: debe3165a60cd0da866842a425c1ca8c52eab644
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.date: 02/01/2018
+ms.openlocfilehash: e836323ad452b86d89eee62936b574b2cc9d0337
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52262017"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53269479"
 ---
 # <a name="excel-add-in-for-azure-machine-learning-studio-web-services"></a>适用于 Azure 机器学习工作室 Web 服务的 Excel 加载项
 Excel 可以直接轻松调用 Web 服务，而无需编写任何代码。

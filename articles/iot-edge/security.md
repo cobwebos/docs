@@ -1,6 +1,6 @@
 ---
-title: Azure IoT Edge 中的安全性 | Microsoft Docs
-description: 安全性、身份验证和 IoT Edge 设备的授权
+title: 安全框架 - Azure IoT Edge | Microsoft Docs
+description: 了解用于开发 Azure IoT Edge 的安全标准、身份验证标准和授权标准，在设计解决方案时应考虑这些标准
 author: kgremban
 manager: philmea
 ms.author: kgremban
@@ -8,14 +8,15 @@ ms.date: 10/05/2017
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 4292dc3abf775d48ee33cc7a48793d080156efb1
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.custom: seodec18
+ms.openlocfilehash: 1042f53147122a7370b464f6bfc892dcee70fe70
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51568931"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53100134"
 ---
-# <a name="securing-azure-iot-edge"></a>确保 Azure IoT Edge 安全
+# <a name="security-standards-for-azure-iot-edge"></a>Azure IoT Edge 的安全标准
 
 对于让人们充满信心地执行端到端 IoT 解决方案而言，确保智能边缘的安全性非常必要。 Azure IoT Edge 专为安全性设计，可扩展到不同的风险状况、部署方案，并且提供期望 Azure 服务提供的相同保护。
 

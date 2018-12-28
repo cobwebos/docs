@@ -5,9 +5,8 @@ keywords: 试验, 线性回归, 机器学习算法, 机器学习教程, 预测�
 services: machine-learning
 documentationcenter: ''
 author: ericlicoding
-ms.custom: (previous ms.author=haining, author=hning86)
+ms.custom: previous-ms.author=haining, previous-author=hning86
 ms.author: amlstudiodocs
-manager: mwinkle
 editor: cgronlun
 ms.assetid: a9001cc2-3aa0-47e1-b175-1f76408ba1d1
 ms.service: machine-learning
@@ -17,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/15/2017
-ms.openlocfilehash: 3191ff845f72c87b85fdd414716ed9a00b022d06
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 6539ec36c23feccfa52c8214784590106fa5a01e
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52312021"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53257516"
 ---
 # <a name="powershell-module-for-azure-machine-learning-studio"></a>Azure 机器学习工作室 PowerShell 模块
 Azure 机器学习的 PowerShell 模块是一个功能强大的工具，使你可以使用 Windows PowerShell 来管理工作区、试验、数据集、经典 Web 服务等。
@@ -54,7 +53,7 @@ Azure 机器学习的 PowerShell 模块是一个功能强大的工具，使你�
         #Run the Experiment
         Start-AmlExperiment -ExperimentId $exp.ExperimentId 
 
-若要深入了解使用案例，请参阅此文章了解如何使用 PowerShell 模块自动执行普遍请求的任务：[使用 PowerShell 从一个试验中创建许多机器学习模型和 Web 服务终结点](create-models-and-endpoints-with-powershell.md)。
+若要深入了解用例，请参阅此文章了解如何使用 PowerShell 模块自动执行普遍请求的任务：[使用 PowerShell 从一个试验中创建许多机器学习模型和 Web 服务终结点](create-models-and-endpoints-with-powershell.md)。
 
 ## <a name="how-do-i-get-started"></a>如何入门？
 若要开始使用机器学习 PowerShell，请从 GitHub 下载[发行包](https://github.com/hning86/azuremlps/releases)并按照[安装说明](https://github.com/hning86/azuremlps/blob/master/README.md)执行操作。 这些说明解释了如何取消阻止已下载/解压缩的 DLL，然后将它导入到 PowerShell 环境。 大多数 cmdlet 都要求提供工作区 ID、工作区授权令牌和工作区所在的 Azure 区域。 提供值最简单的方法是通过默认的 config.json 文件。 这些说明也解释了如何配置此文件。 

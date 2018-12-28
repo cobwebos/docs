@@ -1,5 +1,5 @@
 ---
-title: Azure IoT Edge 模块组合 | Microsoft 文档
+title: 使用部署清单声明模块和路由 - Azure IoT Edge | Microsoft Docs
 description: 了解部署清单如何声明要部署的模块、如何部署这些模块以及如何在它们之间创建消息路由。
 author: kgremban
 manager: philmea
@@ -8,12 +8,13 @@ ms.date: 11/28/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 106ad5d4649b2845327eadd99972d56f1503b3e4
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.custom: seodec18
+ms.openlocfilehash: 0b221274923a6270e980d027aadc58154c7054b9
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52584802"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53099964"
 ---
 # <a name="learn-how-to-deploy-modules-and-establish-routes-in-iot-edge"></a>了解如何在 IoT Edge 中部署模块和建立路由
 

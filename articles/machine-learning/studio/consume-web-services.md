@@ -1,12 +1,11 @@
 ---
-title: 如何使用 Azure 机器学习工作室 Web 服务 | Microsoft Docs
+title: 使用 Web 服务 - Azure 机器学习工作室 | Microsoft Docs
 description: 从 Azure 机器学习工作室部署机器学习服务后，即可将 RESTFul Web 服务用作实时请求响应服务或批处理执行服务。
 services: machine-learning
 documentationcenter: ''
 author: ericlicoding
-ms.custom: (previous ms.author=yahajiza, author=YasinMSFT)
+ms.custom: seodec18
 ms.author: amlstudiodocs
-manager: hjerez
 editor: cgronlun
 ms.assetid: 804f8211-9437-4982-98e9-ca841b7edf56
 ms.service: machine-learning
@@ -16,12 +15,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 06/02/2017
-ms.openlocfilehash: df837c64cf0e40f3bfc1c596b2950a9d23c74a90
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: d7a48dcb56d2bed0e84714087bb9fda3fae65fc1
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52309100"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53273776"
 ---
 # <a name="how-to-consume-an-azure-machine-learning-studio-web-service"></a>如何使用 Azure 机器学习工作室 Web 服务
 
@@ -33,7 +32,7 @@ ms.locfileid: "52309100"
 * 有关如何部署 Web 服务的详细信息，请参阅 [Deploy a Machine Learning web service](publish-a-machine-learning-web-service.md)（部署机器学习 Web 服务）。
 * 有关机器学习的概括信息，请访问[机器学习文档中心](https://azure.microsoft.com/documentation/services/machine-learning/)。
 
-[!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
+
 
 ## <a name="overview"></a>概述
 外部应用程序可使用 Azure 机器学习 Web 服务实时与机器学习服务工作流评分模型通信。 机器学习 Web 服务调用将预测结果返回到外部应用程序。 若要执行机器学习 Web 服务调用，可以传递部署 Web 服务时创建的 API 密钥。 机器学习 Web 服务基于 REST（流行的 Web 编程项目体系结构）。
@@ -102,13 +101,13 @@ Azure 机器学习有两种类型的服务：
 
 **在 Visual Studio 中安装 Microsoft.AspNet.WebApi.Client NuGet**
 
-1. 发布 UCI 下载数据集：成人 2 类数据集 Web 服务。
+1. 从 UCI 发布下载数据集：成人 2 类数据集 Web 服务。
 2. 单击“工具” > “NuGet 包管理器” > “包管理器控制台”。
 3. 选择 **Microsoft.AspNet.WebApi.Client 安装包**。
 
 **运行代码示例**
 
-1. 发布“示例 1：从 UCI 下载数据集：成人 2 类数据集”实验、机器学习示例集合的一部分。
+1. 发布“示例 1：从 UCI 下载数据集：成人 2 类数据集”实验（机器学习示例集合的一部分）。
 2. 使用 Web 服务密钥分配 API 密钥。 请参阅上方的**获取 Azure 机器学习授权密钥**。
 3. 使用请求 URI 分配服务 URI。
 
@@ -204,7 +203,7 @@ namespace CallRequestResponseService
 
 **运行代码示例**
 
-1. 部署“示例 1：从 UCI 下载数据集：成人 2 类数据集”实验、机器学习示例集合的一部分。
+1. 部署“示例 1：从 UCI 下载数据集：成人 2 类数据集”实验（机器学习示例集合的一部分）。
 2. 使用 Web 服务密钥分配 API 密钥。 请参阅本文开始处附近的**获取 Azure 机器学习授权密钥**部分。
 3. 使用请求 URI 分配服务 URI。
 

@@ -1,26 +1,19 @@
 ---
-title: 将虚拟网络链接到 ExpressRoute 线路：Azure 门户 | Microsoft Docs
+title: 将虚拟网络链接到线路 - ExpressRoute：Azure 门户 | Microsoft Docs
 description: 将 VNet 连接到 Azure ExpressRoute 线路。 操作步骤。
 services: expressroute
-documentationcenter: na
 author: cherylmc
-manager: timlt
-editor: ''
-tags: azure-resource-manager
-ms.assetid: f5cb5441-2fba-46d9-99a5-d1d586e7bda4
 ms.service: expressroute
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 03/08/2018
+ms.topic: conceptual
+ms.date: 12/07/2018
 ms.author: cherylmc
-ms.openlocfilehash: 47c0db66889dae5d74e2fcf46a27ec1397930e53
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.custom: seodec18
+ms.openlocfilehash: 16d85510efb055d7d564ffadb9fff2b200771bc6
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51256776"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53438823"
 ---
 # <a name="connect-a-virtual-network-to-an-expressroute-circuit-using-the-portal"></a>使用门户将虚拟网络连接到 ExpressRoute 线路
 > [!div class="op_single_selector"]
@@ -77,7 +70,7 @@ ms.locfileid: "51256776"
 
 - 大型云中的每个较小云用于表示属于组织中不同部门的订阅。
 - 组织中的每个部门可以使用自己的订阅部署其服务，但可以共享单个 ExpressRoute 线路以连接回本地网络。
-- 单个部门（在此示例中为 IT 部门）可以拥有 ExpressRoute 线路。 组织内的其他订阅可以使用 ExpressRoute 线路和关联到该线路的授权，包括链接到其他 Azure Active Directory 租户和企业协议合约的订阅。
+- 一个部门（此示例中为：IT 部门）可以拥有 ExpressRoute 线路。 组织内的其他订阅可以使用 ExpressRoute 线路和关联到该线路的授权，包括链接到其他 Azure Active Directory 租户和企业协议合约的订阅。
 
   > [!NOTE]
   > 专用线路的连接和带宽费用将应用于 ExpressRoute 线路所有者。 所有虚拟网络共享相同的带宽。
@@ -95,6 +88,10 @@ ms.locfileid: "51256776"
 **若要创建连接授权**
 
 线路所有者创建授权。 这样即可创建授权密钥，供线路用户用来将其虚拟网络网关连接到 ExpressRoute 线路。 一个授权只可用于一个连接。
+
+> [!NOTE]
+> 每个连接都需要单独授权。
+>
 
 1. 在 ExpressRoute 页面中，单击“授权”，键入授权的**名称**并单击“保存”。
 

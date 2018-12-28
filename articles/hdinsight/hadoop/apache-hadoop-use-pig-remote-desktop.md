@@ -9,22 +9,22 @@ ms.topic: conceptual
 ms.date: 01/17/2017
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: 9ab3c5399263e301760b7822488fe00145149d2a
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: 69eeadd8252d20dd25ac6d0abbbf0c6c158383d5
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51633336"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53438619"
 ---
 # <a name="run-apache-pig-jobs-from-a-remote-desktop-connection"></a>从远程桌面连接运行 Apache Pig 作业
 [!INCLUDE [pig-selector](../../../includes/hdinsight-selector-use-pig.md)]
 
 本文档演练了如何使用 Apache Pig 命令从与基于 Windows 的 HDInsight 群集的远程桌面连接运行 Pig Latin 语句。 Pig Latin 可让你通过描述数据转换来创建 MapReduce 应用程序，而不是创建映射和化简函数。
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > 远程桌面只能在使用 Windows 作为操作系统的 HDInsight 群集上使用。 Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight 在 Windows 上停用](../hdinsight-component-versioning.md#hdinsight-windows-retirement)。
 >
-> 有关 HDInsight 3.4 或更高版本，请参阅[将 Pig 与 HDInsight 和 SSH 配合使用](apache-hadoop-use-pig-ssh.md)，了解如何通过命令行直接在群集上以交互方式运行 Pig 作业。
+> 有关 HDInsight 3.4 或更高版本，请参阅[将 Apache Pig 与 HDInsight 和 SSH 配合使用](apache-hadoop-use-pig-ssh.md)，了解如何通过命令行直接在群集上以交互方式运行 Pig 作业。
 
 ## <a id="prereq"></a>先决条件
 要完成本文中的步骤，需要：
@@ -78,7 +78,7 @@ ms.locfileid: "51633336"
 
         STORE RESULT into 'wasb:///example/data/pigout'
 
-   > [!NOTE]
+   > [!NOTE]  
    > 数据将存储到指定目录中名为 **part-nnnnn** 的文件中。 如果该目录已存在，则会收到错误消息。
    >
    >
@@ -119,9 +119,9 @@ ms.locfileid: "51633336"
 ## <a id="nextsteps"></a>后续步骤
 有关 HDInsight 中的 Pig 的一般信息：
 
-* [将 Pig 与 Hadoop on HDInsight 配合使用](hdinsight-use-pig.md)
+* [将 Apache Pig 与 Apache Hadoop on HDInsight 配合使用](hdinsight-use-pig.md)
 
 有关 HDInsight 上的 Hadoop 的其他使用方法的信息：
 
-* [将 Hive 与 Hadoop on HDInsight 配合使用](hdinsight-use-hive.md)
-* [将 MapReduce 与 HDInsight 上的 Hadoop 配合使用](hdinsight-use-mapreduce.md)
+* [将 Apache Hive 与 Apache Hadoop on HDInsight 配合使用](hdinsight-use-hive.md)
+* [将 MapReduce 与 Apache Hadoop on HDInsight 配合使用](hdinsight-use-mapreduce.md)

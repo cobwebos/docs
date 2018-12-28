@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/10/2018
 ms.author: jdial
-ms.openlocfilehash: 7d0f0367a4126e7cecd34b39e6e5065e7d4fd90a
-ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
+ms.openlocfilehash: 429f7862901814fbd2017c395706fbfa2c345f72
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43287101"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53434573"
 ---
 # <a name="role-based-access-control-permissions-required-to-use-network-watcher-capabilities"></a>使用网络观察程序功能所需的基于角色的访问控制权限
 
@@ -44,6 +44,7 @@ ms.locfileid: "43287101"
 
 | 操作                                                              | 名称                                                           |
 | ---------                                                           | -------------                                                  |
+| Microsoft.Network/networkWatchers/connectivityCheck/action          | 启动连接故障排除测试
 | Microsoft.Network/networkWatchers/queryTroubleshootResult/action    | 连接故障排除测试的查询结果                |
 | Microsoft.Network/networkWatchers/troubleshoot/action               | 运行连接故障排除测试                             |
 
@@ -102,15 +103,19 @@ ms.locfileid: "43287101"
 
 网络观察程序功能还需要以下操作：
 
-- Microsoft.Storage/Read
-- Microsoft.Authorization/Read
+- Microsoft.Authorization/\*/Read
 - Microsoft.Resources/subscriptions/resourceGroups/Read
+- Microsoft.Storage/storageAccounts/Read
 - Microsoft.Storage/storageAccounts/listServiceSas/Action
 - Microsoft.Storage/storageAccounts/listAccountSas/Action
 - Microsoft.Storage/storageAccounts/listKeys/Action
 - Microsoft.Compute/virtualMachines/Read
 - Microsoft.Compute/virtualMachines/Write
+- Microsoft.Compute/virtualMachines/extensions/Read
+- Microsoft.Compute/virtualMachines/extensions/Write
 - Microsoft.Compute/virtualMachineScaleSets/Read
 - Microsoft.Compute/virtualMachineScaleSets/Write
+- Microsoft.Compute/virtualMachineScaleSets/extensions/Read
+- Microsoft.Compute/virtualMachineScaleSets/extensions/Write
 - Microsoft.Insights/alertRules/*
 - Microsoft.Support/*

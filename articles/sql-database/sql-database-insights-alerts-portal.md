@@ -3,7 +3,7 @@ title: 使用 Azure 门户创建 SQL 数据库警报 | Microsoft 文档
 description: 使用 Azure 门户创建 SQL 数据库警报，可在满足指定条件时触发通知或自动化。
 services: sql-database
 ms.service: sql-database
-ms.subservice: performance
+ms.subservice: monitor
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -12,12 +12,12 @@ ms.author: aamalvea
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 11/02/2018
-ms.openlocfilehash: 11777013eca0ba3a759635ef99c2cfa04104e24b
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
+ms.openlocfilehash: a48bd66c335981a76a67206f840f4be69aaa8af1
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50978989"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53273334"
 ---
 # <a name="use-azure-portal-to-create-alerts-for-azure-sql-database-and-data-warehouse"></a>使用 Azure 门户为 Azure SQL 数据库和数据仓库创建警报
 
@@ -38,8 +38,8 @@ ms.locfileid: "50978989"
 可使用以下项配置并获取有关警报规则的信息
 
 * [Azure 门户](../monitoring-and-diagnostics/insights-alerts-portal.md)
-* [PowerShell](../monitoring-and-diagnostics/insights-alerts-powershell.md)
-* [命令行接口 (CLI)](../monitoring-and-diagnostics/insights-alerts-command-line-interface.md)
+* [PowerShell](../azure-monitor/platform/alerts-classic-portal.md)
+* [命令行接口 (CLI)](../azure-monitor/platform/alerts-classic-portal.md)
 * [Azure 监视器 REST API](https://msdn.microsoft.com/library/azure/dn931945.aspx)
 
 ## <a name="create-an-alert-rule-on-a-metric-with-the-azure-portal"></a>使用 Azure 门户创建指标的警报规则
@@ -48,7 +48,7 @@ ms.locfileid: "50978989"
    
      ![监视](../monitoring-and-diagnostics/media/insights-alerts-portal/AlertsClassicButton.JPG)
   
-   - **仅限 SQL DW** ：单击“DWU 使用情况”图表。 选择“查看经典警报”
+   - **仅 SQL DW**：单击“DWU 使用情况”图表。 选择“查看经典警报”
 
 3. 选择“添加指标警报(经典)”按钮，并填写字段。
    
@@ -116,6 +116,6 @@ ms.locfileid: "50978989"
 
 ## <a name="next-steps"></a>后续步骤
 * [获取 Azure 监视概述](../monitoring-and-diagnostics/monitoring-overview.md)，包括可收集和监视的信息的类型。
-* 了解[在警报中配置 Webhook](../monitoring-and-diagnostics/insights-webhooks-alerts.md)的详细信息。
+* 了解[在警报中配置 Webhook](../azure-monitor/platform/alerts-webhooks.md)的详细信息。
 * 获取[诊断日志概述](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md)收集有关服务的详细高频率指标。
 * 获取[指标集合概述](../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md)以确保服务可用且响应迅速。

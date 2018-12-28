@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: article
 ms.date: 10/17/2018
 ms.author: alkohli
-ms.openlocfilehash: 6978360769ba350d85a06116bfee6db9f80b0607
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: da22c09a227069af0eeb42ab67a59189ae494185
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50157354"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53256666"
 ---
 # <a name="azure-data-box-gateway-system-requirements-preview"></a>Azure Data Box Gateway 系统要求（预览版）
 
@@ -26,6 +26,19 @@ Data Box Gateway 虚拟设备的系统要求包括：
 
 > [!IMPORTANT]
 > Data Box Gateway 以预览版提供。 在部署此解决方案之前，请查看[预览版的使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。 
+
+## <a name="specifications-for-the-virtual-device"></a>虚拟设备的规范
+
+Data Box Gateway 的基础主机系统可以提供以下资源来预配虚拟设备：
+
+| 规范                                          | Description              |
+|---------------------------------------------------------|--------------------------|
+| 虚拟处理器（核心数）   | 最低为 4 核 |            
+| 内存  | 最低为 8 GB|
+| 可用性|单节点|
+| 磁盘| OS 磁盘：250 GB <br> 数据磁盘：最低为 2 TB、预配精简，并且必须由 SSD 提供支持|
+| 网络接口|1 个或多个虚拟网络接口|
+
 
 ## <a name="supported-os-for-clients-connected-to-device"></a>连接到设备的客户端支持的 OS
 

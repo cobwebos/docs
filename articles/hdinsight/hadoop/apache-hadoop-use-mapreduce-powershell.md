@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/09/2018
 ms.author: hrasheed
-ms.openlocfilehash: 753a0ad72e1d4b60a93daa570ceecc25d21bb228
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: 6f1620c9977f997b4037fbf3f823c429e43b4f6a
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51634135"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53436256"
 ---
 # <a name="run-mapreduce-jobs-with-apache-hadoop-on-hdinsight-using-powershell"></a>使用 PowerShell 通过 HDInsight 上的 Apache Hadoop 运行 MapReduce 作业
 
@@ -26,7 +26,7 @@ ms.locfileid: "51634135"
 
 * **Azure HDInsight（HDInsight 上的 Hadoop）群集**
 
-  > [!IMPORTANT]
+  > [!IMPORTANT]  
   > Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight 在 Windows 上停用](../hdinsight-component-versioning.md#hdinsight-windows-retirement)。
 
 * **配备 Azure PowerShell 的工作站**。
@@ -39,7 +39,7 @@ Azure PowerShell 提供 *cmdlet*，可在 HDInsight 上远程运行 MapReduce �
 
 * **Connect-AzureRmAccount**：在 Azure 订阅中进行 Azure PowerShell 身份验证。
 
-* **New-AzureRmHDInsightMapReduceJobDefinition**：使用指定的 MapReduce 信息创建新的*作业定义*。
+* **New-AzureRmHDInsightMapReduceJobDefinition**：使用指定的 MapReduce 信息创建新的作业定义。
 
 * **Start-AzureRmHDInsightJob**：将作业定义发送到 HDInsight 并启动作业。 将返回作业对象。
 
@@ -73,7 +73,7 @@ Azure PowerShell 提供 *cmdlet*，可在 HDInsight 上远程运行 MapReduce �
 
     此输出指示作业已成功完成。
 
-    > [!NOTE]
+    > [!NOTE]  
     > 如果 **ExitCode** 的值不是 0，请参阅[故障排除](#troubleshooting)。
 
     此示例还会将下载的文件存储到从中运行脚本的目录中的 **output.txt** 文件。
@@ -82,7 +82,7 @@ Azure PowerShell 提供 *cmdlet*，可在 HDInsight 上远程运行 MapReduce �
 
 若要查看作业生成的单词和计数，请在文本编辑器中打开 output.txt 文件。
 
-> [!NOTE]
+> [!NOTE]  
 > MapReduce 作业的输出文件是固定不变的。 因此，如果重新运行此示例，将需要更改输出文件的名称。
 
 ## <a id="troubleshooting"></a>故障排除
@@ -113,5 +113,5 @@ Get-AzureRmHDInsightJobOutput `
 
 有关 HDInsight 上的 Hadoop 的其他使用方法的信息：
 
-* [将 Hive 与 Hadoop on HDInsight 配合使用](hdinsight-use-hive.md)
-* [将 Pig 与 Hadoop on HDInsight 配合使用](hdinsight-use-pig.md)
+* [将 Apache Hive 与 Apache Hadoop on HDInsight 配合使用](hdinsight-use-hive.md)
+* [将 Apache Pig 与 Apache Hadoop on HDInsight 配合使用](hdinsight-use-pig.md)

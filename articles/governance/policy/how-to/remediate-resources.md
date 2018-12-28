@@ -1,28 +1,29 @@
 ---
-title: 修正 Azure Policy 中的不符合资源
+title: 修正不符合资源
 description: 本操作说明将指导你完成修正 Azure Policy 中不符合策略的资源的过程。
 services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 09/25/2018
+ms.date: 12/06/2018
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: adba2322bce5f0884cba51078e65feeaeaf193d9
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.custom: seodec18
+ms.openlocfilehash: 093b49bea167efb12b941f8f0baff6fbdae5be25
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47392682"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53312640"
 ---
 # <a name="remediate-non-compliant-resources-with-azure-policy"></a>修正 Azure Policy 中的不符合资源
 
-不符合 deployIfNotExists 策略的资源可以通过修正置于符合状态。 可以通过指示 Policy 在现有资源上运行已分配策略的 deployIfNotExists 影响来完成修正。 本操作说明指导你完成实现此目的所需的步骤。
+不符合 deployIfNotExists 策略的资源可以通过修正置于符合状态。 可以通过指示 Policy 在现有资源上运行已分配策略的 deployIfNotExists 影响来完成修正。 本文介绍了使用 Policy 了解并完成修正需要执行的步骤。
 
 ## <a name="how-remediation-security-works"></a>修正安全的工作原理
 
 当 Policy 在 deployIfNotExists 策略定义中运行模板时，它使用[托管标识](../../../active-directory/managed-identities-azure-resources/overview.md)来执行此操作。
-Policy 为你创建每个分配的托管标识，而必须向它提供有关哪些角色授予托管标识的详细信息。 如果托管标识缺少角色，这将显示在策略分配或包含策略的计划分配过程中。 使用门户时，一旦启动分配，Policy 将自动授予托管标识所列的角色。
+Policy 为每个分配创建一个托管标识，但是必须向它提供有关哪些角色授予托管标识的详细信息。 如果托管标识缺少角色，则在分配策略或计划期间会显示此错误。 使用门户时，一旦启动分配，Policy 将自动授予托管标识所列的角色。
 
 ![托管标识 - 缺少角色](../media/remediate-resources/missing-role.png)
 
@@ -31,8 +32,7 @@ Policy 为你创建每个分配的托管标识，而必须向它提供有关哪�
 
 ## <a name="configure-policy-definition"></a>配置策略定义
 
-第一步是定义 deployIfNotExists 在策略定义中需要的角色，以成功部署所包含模板的内容。 在“details”属性下，添加“roleDefinitionIds”属性。 这是一组与环境中的角色相匹配的字符串。
-有关完整示例，请参阅 [deployIfNotExists 示例](../concepts/effects.md#deployifnotexists-example)。
+第一步是定义 deployIfNotExists 在策略定义中需要的角色，以成功部署所包含模板的内容。 在“details”属性下，添加“roleDefinitionIds”属性。 此属性是与环境中的角色相匹配的一组字符串。 有关完整示例，请参阅 [deployIfNotExists 示例](../concepts/effects.md#deployifnotexists-example)。
 
 ```json
 "details": {
@@ -123,13 +123,13 @@ if ($roleDefinitionIds.Count -gt 0)
 
 1. 导航到需要手动添加角色定义的资源或资源父容器（资源组、订阅、管理组）。
 
-1. 单击资源页中的“访问控制 (IAM)”链接，然后单击访问控制页顶部的“+ 添加”。
+1. 单击资源页中的“访问控制 (IAM)”链接，然后单击访问控制页顶部的“+ 添加角色分配”。
 
 1. 从策略定义中选择匹配 roleDefinitionIds 的合适角色。 将“分配访问权限至”设置保留为默认设置“Azure AD 用户、组或应用程序”。 在“选择”框中，粘贴或键入先前找到的分配资源 ID 部分。 完成搜索后，单击具有相同名称的对象来选择 ID，然后单击“保存”。
 
 ## <a name="create-a-remediation-task"></a>创建修正任务
 
-在评估期间，带 deployIfNotExists 效果的策略分配确定是否存在不符合资源。 当发现不符合资源时，将在“修正”页上提供详细信息。 具有不符合资源的策略列表也可以用来触发修正任务。 这促使从 deployIfNotExists 模板创建部署。
+在评估期间，带 deployIfNotExists 效果的策略分配确定是否存在不符合资源。 当发现不符合资源时，将在“修正”页上提供详细信息。 具有不符合资源的策略列表也可以用来触发修正任务。 此选项用于基于 **deployIfNotExists** 模板创建部署。
 
 若要创建修正任务，请执行以下步骤：
 
@@ -156,11 +156,11 @@ if ($roleDefinitionIds.Count -gt 0)
 
 1. 单击“策略符合性”页中的“修正任务”以获取有关进度的详细信息。 任务所使用的筛选与正在修正的资源列表一同显示。
 
-1. 从“修正任务”页，右键单击资源以查看修正任务的部署或资源。 在行末尾，单击“相关事件”以查看诸如错误消息之类的详细信息。
+1. 从“修正任务”页中，右键单击资源以查看修正任务的部署或资源。 在行末尾，单击“相关事件”以查看诸如错误消息之类的详细信息。
 
    ![修正 - 资源任务上下文菜单](../media/remediate-resources/resource-task-context-menu.png)
 
-通过“修正任务”部署的资源将在短时间延迟后添加到“策略符合性”页上的“部署的资源”选项卡。
+通过“修正任务”部署的资源将添加到“策略符合性”页上的“部署的资源”选项卡。
 
 ## <a name="next-steps"></a>后续步骤
 

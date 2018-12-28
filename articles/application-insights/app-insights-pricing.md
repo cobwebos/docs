@@ -9,27 +9,26 @@ ms.assetid: ebd0d843-4780-4ff3-bc68-932aa44185f6
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
-ms.devlang: na
 ms.topic: conceptual
 ms.reviewer: Dale.Koetke
 ms.date: 08/11/2018
 ms.author: mbullwin
-ms.openlocfilehash: 4407322dd415a7c8b2ef8b7ff470a247b8d68f69
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: 8a0acbfa18053b6b50bd872d109b02d556a6f5f3
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49319449"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53436053"
 ---
 # <a name="manage-pricing-and-data-volume-in-application-insights"></a>在 Application Insights 中管理定价和数据量
 
 > [!NOTE]
 > 本文介绍如何在 Application Insights 中分析数据使用情况。  相关信息请参阅以下文章。
-> - [监视使用情况及预估成本](../monitoring-and-diagnostics/monitoring-usage-and-estimated-costs.md)介绍了如何针对不同的定价模型查看多个 Azure 监视功能的使用情况及预估成本。 它还介绍了如何更改定价模型。
+> - [监视使用情况及预估成本](../azure-monitor/platform/usage-estimated-costs.md)介绍了如何针对不同的定价模型查看多个 Azure 监视功能的使用情况及预估成本。 它还介绍了如何更改定价模型。
 
 [Azure Application Insights][start] 的定价以每个应用程序的数据量为基础。 每个 Application Insights 资源作为独立服务计费，并在 Azure 订阅的帐单中产生相应费用。
 
-Application Insights 提供两种定价计划：基本和企业计划。 基本定价计划是默认计划。 它包括所有企业计划功能，不另外收费。 基本计划帐单主要针对引入的数据量。 
+Application Insights 有两个定价计划：基本计划和企业计划。 基本定价计划是默认计划。 它包括所有企业计划功能，不另外收费。 基本计划帐单主要针对引入的数据量。 
 
 企业计划按节点收费，每个节点会收到每日数据限额。 在企业定价计划中，需要为引入数据中超出规定限额的数据支付费用。 如果使用 Operations Management Suite，应选择企业计划。 
 
@@ -87,8 +86,8 @@ Application Insights 费用将添加到 Azure 帐单。 可以在 Azure 门户�
 ## <a name="data-rate"></a>数据速率
 通过三种方式限制发送数据量：
 
-* **采样：** 可以使用采样减少从服务器和客户端应用发送的遥测量，同时最大程度减小指标失真。 采样是你可用来调整发送数据量的主要工具。 了解有关[采样功能](app-insights-sampling.md)的详细信息。 
-* **每日上限：** 在 Azure 门户中创建 Application Insights 资源时，每日上限设置为 100 GB/天。 在 Visual Studio 中创建 Application Insights 资源时，默认值很小（只有 32.3 MB/天）。 设置每日上限默认值，以便进行测试。 可预期用户在将应用部署到生产环境之前，会提高每日上限。 
+* **采样**：可以使用采样减少从服务器和客户端应用发送的遥测量，同时最大程度减小指标失真。 采样是你可用来调整发送数据量的主要工具。 了解有关[采样功能](app-insights-sampling.md)的详细信息。 
+* **每日上限**：在 Azure 门户中创建 Application Insights 资源时，每日上限设置为 100 GB/天。 在 Visual Studio 中创建 Application Insights 资源时，默认值很小（只有 32.3 MB/天）。 设置每日上限默认值，以便进行测试。 可预期用户在将应用部署到生产环境之前，会提高每日上限。 
 
     除非为高流量应用程序请求了更高的最大值，否则最大上限是 1000 GB/天。 
 
@@ -171,4 +170,4 @@ Application Insights 费用将添加到 Azure 帐单。 可以在 Azure 门户�
 [api]: app-insights-api-custom-events-metrics.md
 [apiproperties]: app-insights-api-custom-events-metrics.md#properties
 [start]: app-insights-overview.md
-[pricing]: http://azure.microsoft.com/pricing/details/application-insights/
+[pricing]: https://azure.microsoft.com/pricing/details/application-insights/

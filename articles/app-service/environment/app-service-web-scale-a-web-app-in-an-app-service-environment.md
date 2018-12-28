@@ -1,5 +1,5 @@
 ---
-title: 如何在应用服务环境中缩放 Web 应用
+title: 如何在应用服务环境中缩放应用 - Azure
 description: 在应用服务环境中缩放 Web 应用
 services: app-service
 documentationcenter: ''
@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/17/2016
 ms.author: ccompy
-ms.openlocfilehash: d04a5fce920dae25507cdf2f64832574e24c51dd
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.custom: seodec18
+ms.openlocfilehash: c94e7f761dcbc7e05965e359d7f9a864335c9c6b
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "22986312"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53269339"
 ---
 # <a name="scaling-apps-in-an-app-service-environment"></a>在应用服务环境中缩放应用
 在 Azure 应用服务中，通常有三项内容可以扩展：
@@ -39,14 +40,14 @@ ms.locfileid: "22986312"
 
 ![][1]
 
-无法将 ASP 增加到超出 ASP 所在辅助角色池中可用的计算资源数。  如果需要该辅助池中的计算资源，需让 ASE 管理员进行添加。  有关重新配置 ASE 的信息，请阅读此处的信息：[如何配置应用服务环境][HowtoConfigureASE]。  还可以利用 ASE 自动缩放功能来根据计划或指标增加容量。  若要获取有关配置 ASE 环境本身自动缩放的更多详细信息，请参阅[如何配置应用服务环境的自动缩放][ASEAutoscale]。
+无法将 ASP 扩展到超出 ASP 所在辅助角色池中可用的计算资源数。  如果需要该辅助池中的计算资源，需让 ASE 管理员进行添加。  有关重新配置 ASE 的信息，请阅读此处的信息：[如何配置应用服务环境][HowtoConfigureASE]。  还可以利用 ASE 自动缩放功能来根据计划或指标增加容量。  若要获取有关配置 ASE 环境本身自动缩放的更多详细信息，请参阅[如何配置应用服务环境的自动缩放][ASEAutoscale]。
 
 可以使用来自不同辅助池或相同辅助池的计算资源，创建多个应用服务计划。  例如，如果在辅助池 1 中有 (10) 个可用的计算资源，可以选择使用 (6) 个计算资源创建一个应用服务计划，而第二个应用服务计划使用 (4) 个计算资源。
 
 ### <a name="scaling-the-number-of-instances"></a>扩展实例数
 首次在应用服务环境中创建 Web 应用时，它会从 1 个实例开始。  可以再扩大至其他实例，为应用提供额外的计算资源。   
 
-如果 ASE 具有足够的容量，那么此步骤非常简单。  转到包含你想要增加的站点的应用服务计划，并选择“扩展”。  这会打开 UI，可以在其中为 ASP 手动设置缩放或设置自动缩放规则。  要手动缩放应用，只需将“缩放依据”设置为“手动输入的实例计数”。  从此处将滑块拖到所需的数量，或者在滑块旁边的框中输入所需的数量。  
+如果 ASE 具有足够的容量，那么此步骤非常简单。  转到包含你想要扩展的站点的应用服务计划，并选择“扩展”。  这会打开 UI，可以在其中为 ASP 手动设置缩放或设置自动缩放规则。  要手动缩放应用，只需将“缩放依据”设置为“手动输入的实例计数”。  从此处将滑块拖到所需的数量，或者在滑块旁边的框中输入所需的数量。  
 
 ![][2] 
 
@@ -79,7 +80,7 @@ ASE 中的 ASP 自动缩放规则与一般运行方式相同。  可以选择“
 [HowtoConfigureASE]: app-service-web-configure-an-app-service-environment.md
 [CreateWebappinASE]: app-service-web-how-to-create-a-web-app-in-an-ase.md
 [Appserviceplans]: ../azure-web-sites-web-hosting-plans-in-depth-overview.md
-[AppServicePricing]: http://azure.microsoft.com/pricing/details/app-service/ 
+[AppServicePricing]: https://azure.microsoft.com/pricing/details/app-service/ 
 [ASEAutoscale]: app-service-environment-auto-scale.md
 [AppScale]: ../web-sites-scale.md
-[AppWarmup]: http://ruslany.net/2015/09/how-to-warm-up-azure-web-app-during-deployment-slots-swap/
+[AppWarmup]: https://ruslany.net/2015/09/how-to-warm-up-azure-web-app-during-deployment-slots-swap/

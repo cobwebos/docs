@@ -1,5 +1,5 @@
 ---
-title: 为 Azure 应用服务购买和配置 SSL 证书 | Microsoft Docs
+title: 从 Azure 购买和配置 SSL 证书 - 应用服务 | Microsoft Docs
 description: 了解如何购买应用服务证书并将其绑定到应用服务应用
 services: app-service
 documentationcenter: .net
@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/16/2018
 ms.author: apurvajo;cephalin
-ms.openlocfilehash: c775798591a3063fdfe6d399c8337aac2e2f207e
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.custom: seodec18
+ms.openlocfilehash: ff2fd2c9b66cc9c80087ab5009ee65c0ba73714b
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49351348"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53268710"
 ---
 # <a name="buy-and-configure-an-ssl-certificate-for-azure-app-service"></a>为 Azure 应用服务购买和配置 SSL 证书
 
@@ -80,7 +81,7 @@ ms.locfileid: "49351348"
 
 ## <a name="verify-domain-ownership"></a>验证域所有权
 
-在上一步骤中所用的同一“证书配置”页面中，单击“步骤 2: 验证”。
+在上一步中所用的同一“证书配置”页中，单击“步骤 2: 验证”。
 
 ![](./media/app-service-web-purchase-ssl-web-site/verify-domain.png)
 
@@ -114,7 +115,7 @@ ms.locfileid: "49351348"
 |-|-|
 | 主机名 | 要为其添加 SSL 绑定的域名。 |
 | 私有证书指纹 | 要绑定的证书。 |
-| SSL 类型 | <ul><li>**SNI SSL** - 可添加多个基于 SNI 的 SSL 绑定。 选择此选项可以使用多个 SSL 证书来保护同一 IP 地址上的多个域。 大多数新式浏览器（包括 Internet Explorer、Chrome、Firefox 和 Opera）都支持 SNI（在[服务器名称指示](http://wikipedia.org/wiki/Server_Name_Indication)中了解更全面的浏览器支持信息）。</li><li>基于 IP 的 SSL - 只能添加一个基于 IP 的 SSL 绑定。 选择此选项只能使用一个 SSL 证书来保护专用公共 IP 地址。 配置绑定后，请按照[重新映射 IP SSL 的 A 记录](app-service-web-tutorial-custom-ssl.md#remap-a-record-for-ip-ssl)中的步骤进行操作。 </li></ul> |
+| SSL 类型 | <ul><li>**SNI SSL** - 可添加多个基于 SNI 的 SSL 绑定。 选择此选项可以使用多个 SSL 证书来保护同一 IP 地址上的多个域。 大多数新式浏览器（包括 Internet Explorer、Chrome、Firefox 和 Opera）都支持 SNI（在[服务器名称指示](https://wikipedia.org/wiki/Server_Name_Indication)中了解更全面的浏览器支持信息）。</li><li>基于 IP 的 SSL - 只能添加一个基于 IP 的 SSL 绑定。 选择此选项只能使用一个 SSL 证书来保护专用公共 IP 地址。 配置绑定后，请按照[重新映射 IP SSL 的 A 记录](app-service-web-tutorial-custom-ssl.md#remap-a-record-for-ip-ssl)中的步骤进行操作。 </li></ul> |
 
 ## <a name="verify-https-access"></a>验证 HTTPS 访问
 
@@ -147,11 +148,11 @@ ms.locfileid: "49351348"
 
 ### <a name="azure-cli"></a>Azure CLI
 
-[!code-azurecli[main](../../cli_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.sh?highlight=3-5 "Bind a custom SSL certificate to a web app")] 
+[!code-azurecli[main](../../cli_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.sh?highlight=3-5 "Bind a custom SSL certificate to a web app")] 
 
 ### <a name="powershell"></a>PowerShell
 
-[!code-powershell[main](../../powershell_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.ps1?highlight=1-3 "Bind a custom SSL certificate to a web app")]
+[!code-powershell[main](../../powershell_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.ps1?highlight=1-3 "Bind a custom SSL certificate to a web app")]
 
 ## <a name="more-resources"></a>更多资源
 

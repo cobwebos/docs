@@ -4,9 +4,8 @@ description: Azure 机器学习模型如何从开发实验逐步进展为运营 
 services: machine-learning
 documentationcenter: ''
 author: ericlicoding
-ms.custom: (previous ms.author=yahajiza, author=YasinMSFT)
+ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.author: amlstudiodocs
-manager: hjerez
 editor: cgronlun
 ms.assetid: 25e0c025-f8b0-44ab-beaf-d0f2d485eb91
 ms.service: machine-learning
@@ -16,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2017
-ms.openlocfilehash: 1254f41d4961956acc8f7abc7d5490fedbb8c5d0
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 5cfa11042d269353cf33f99d1238265ff9657853
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52310093"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53253861"
 ---
 # <a name="how-a-machine-learning-studio-model-progresses-from-an-experiment-to-an-operationalized-web-service"></a>机器学习工作室模型如何从实验逐步变为运营 Web 服务
 Azure 机器学习工作室提供交互式画布，允许开发、运行、测试和迭代表示预测分析模型的***实验***。 有大量各种不同的模块可用于：
@@ -95,7 +94,7 @@ Web 服务现已部署，并且可以像预测的 Web 服务一样对其进行�
 
 如果不更改该模型，而只是更改 Web 服务处理数据的方式，则可以编辑预测试验，然后单击“部署 Web 服务”，再次选择“部署 Web 服务[经典]”或“部署 Web 服务[新]”。 Web 服务将停止，会对更新的预测实验进行部署，并重新启动 Web 服务。
 
-以下是一个示例：假设预测实验返回输入数据的整个行与预测结果。 可能决定想要 Web 服务只返回结果。 那么，可以在预测实验中添加**项目列**，紧接在输出端口前，以排除除了结果之外的列。 单击“**部署 Web 服务**”时，并再次选择“**部署 Web 服务[经典]**”或“**部署 Web 服务[新]**”，Web 服务将更新。
+下面是一个示例：假设预测试验返回输入数据的整个行与预测结果。 可能决定想要 Web 服务只返回结果。 那么，可以在预测实验中添加**项目列**，紧接在输出端口前，以排除除了结果之外的列。 单击“**部署 Web 服务**”时，并再次选择“**部署 Web 服务[经典]**”或“**部署 Web 服务[新]**”，Web 服务将更新。
 
 **想要使用新数据重新训练模型**
 
@@ -119,6 +118,6 @@ Web 服务现已部署，并且可以像预测的 Web 服务一样对其进行�
 
 有关整个过程的示例，请参阅：
 
-* [机器学习教程：在 Azure 机器学习工作室中创建第一个实验](create-experiment.md)
+* [机器学习教程：在 Azure 机器学习工作室中创建第一个试验](create-experiment.md)
 * [演练：在 Azure 机器学习中为信用风险评估开发预测分析解决方案](walkthrough-develop-predictive-solution.md)
 

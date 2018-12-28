@@ -1,33 +1,23 @@
 ---
-title: 将 Azure ExpressRoute 上的公共对等互连移动到 Microsoft 对等互连 | Microsoft 文档
+title: 将公共对等互连移动到 Microsoft 对等互连 - Azure ExpressRoute | Microsoft Docs
 description: 本文介绍了在 ExpressRoute 上将公共对等互连移动到 Microsoft 对等互连的步骤。
 services: expressroute
-documentationcenter: na
 author: cherylmc
-manager: timlt
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: expressroute
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
 ms.date: 03/12/2018
 ms.author: cherylmc
-ms.openlocfilehash: f34fabc95d5b56edc6e37c323bebf60bd98c8b90
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.custom: seodec18
+ms.openlocfilehash: 6b2bce6b488698db0a72c9a17f67c2555c6afa5b
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2018
-ms.locfileid: "30314293"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53100015"
 ---
 # <a name="move-a-public-peering-to-microsoft-peering"></a>将公共对等互连移动到 Microsoft 对等互连
 
-ExpressRoute 支持将 Microsoft 对等互连与 Azure PaaS 服务的路由筛选器结合使用，例如 Azure 存储和 Azure SQL 数据库。 你现在仅需要一个路由域即可访问 Microsoft PaaS 和 SaaS 服务。 可以利用路由筛选器为要使用的 Azure 区域选择性地播发 PaaS 服务前缀。
-
-本文可帮助你在不停机的情况下将公共对等互连配置移动到 Microsoft 对等互连。 有关路由域和对等互连的详细信息，请参阅 [ExpressRoute 线路和路由域](expressroute-circuit-peerings.md)。
-
+本文可帮助你在不停机的情况下将公共对等互连配置移动到 Microsoft 对等互连。 ExpressRoute 支持将 Microsoft 对等互连与 Azure PaaS 服务的路由筛选器结合使用，例如 Azure 存储和 Azure SQL 数据库。 你现在仅需要一个路由域即可访问 Microsoft PaaS 和 SaaS 服务。 可以利用路由筛选器为要使用的 Azure 区域选择性地播发 PaaS 服务前缀。 有关路由域和对等互连的详细信息，请参阅 [ExpressRoute 线路和路由域](expressroute-circuit-peerings.md)。
 
 ## <a name="before"></a>准备工作
 
@@ -57,7 +47,7 @@ ExpressRoute 支持将 Microsoft 对等互连与 Azure PaaS 服务的路由筛�
 
 默认情况下，新的 Microsoft 对等互连不播发任何前缀，直至路由筛选器连接到线路。 创建路由筛选器规则时，可以为要用于 Azure PaaS 服务的 Azure 区域指定服务社区列表，如以下屏幕截图所示：
 
-![合并公共对等互连](.\media\how-to-move-peering\public.png)
+![合并公共对等互连](./media/how-to-move-peering/public.png)
 
 使用以下任一文章配置路由筛选器：
 

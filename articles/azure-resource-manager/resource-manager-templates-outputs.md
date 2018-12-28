@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/14/2017
+ms.date: 12/07/2018
 ms.author: tomfitz
-ms.openlocfilehash: e3c5a581b02f1dd7b7415ebd93de0e425ac2f8ae
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 85aab429fd59afd36cd026e6d8aef2b7e6f6e122
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34358359"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53140449"
 ---
 # <a name="outputs-section-in-azure-resource-manager-templates"></a>Azure 资源管理器模板中的 Outputs 节
 在 Outputs 节中，可以指定从部署返回的值。 例如，可能会返回用于访问已部署资源的 URI。
@@ -48,7 +48,9 @@ ms.locfileid: "34358359"
 az group deployment show -g <resource-group-name> -n <deployment-name> --query properties.outputs.resourceID.value
 ```
 
-可以使用 [reference](resource-group-template-functions-resource.md#reference) 函数从链接模板中检索输出值。 若要从链接模板中获取输出值，请使用如下所示的语法检索属性值：`"[reference('<name-of-deployment>').outputs.<property-name>.value]"`。
+可以使用 [reference](resource-group-template-functions-resource.md#reference) 函数从链接模板中检索输出值。 若要从链接模板中获取输出值，请使用如下所示的语法检索属性值：`"[reference('deploymentName').outputs.propertyName.value]"`。
+
+从链接模板获取输出属性时，属性名称不能包含短划线。
 
 例如，可以通过从链接模板中检索值，设置负载均衡器上的 IP 地址。
 
@@ -73,7 +75,7 @@ az group deployment show -g <resource-group-name> -n <deployment-name> --query p
 }
 ```
 
-| 元素名称 | 必选 | 说明 |
+| 元素名称 | 必选 | Description |
 |:--- |:--- |:--- |
 | outputName |是 |输出值的名称。 必须是有效的 JavaScript 标识符。 |
 | type |是 |输出值的类型。 输出值支持的类型与模板输入参数相同。 |
@@ -99,7 +101,7 @@ az group deployment show -g <resource-group-name> -n <deployment-name> --query p
 ## <a name="example-templates"></a>示例模板
 
 
-|模板  |说明  |
+|模板  |Description  |
 |---------|---------|
 |[复制变量](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/copyvariables.json) | 创建复杂变量，并输出这些值。 不部署任何资源。 |
 |[公共 IP 地址](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip.json) | 创建公共 IP 地址并输出资源 ID。 |

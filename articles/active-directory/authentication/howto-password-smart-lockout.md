@@ -5,30 +5,32 @@ services: active-directory
 ms.service: active-directory
 ms.component: authentication
 ms.topic: conceptual
-ms.date: 11/12/2018
+ms.date: 12/14/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: rogoya
-ms.openlocfilehash: 957aa05efab68f9531fb6576de775aa9901ab44d
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: 9f701f0f6d00d2913eaf5b237435fd375b2030e0
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51685797"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53435270"
 ---
 # <a name="azure-active-directory-smart-lockout"></a>Azure Active Directory 智能锁定
 
-智能锁定功能使用云智能锁定试图猜测用户密码或使用暴力访问方式的不良参与者。 该智能可识别来自有效用户的登录，还能将其与攻击者和其他未知来源的登录区别对待。 智能锁定会锁定攻击者，同时让你的用户能够继续访问其帐户并提高效率。
+智能锁定功能可帮助锁定那些试图猜测用户密码或使用暴力方法进入的不良参与者。 它可识别来自有效用户的登录，还能将其与攻击者和其他未知来源的登录区别对待。 智能锁定会锁定攻击者，同时让你的用户能够继续访问其帐户并提高效率。
 
 默认情况下，智能锁定会在 10 次尝试失败后锁定帐户，使其在一分钟内无法进行登录尝试。 在每次后续登录尝试失败后，帐户会再次锁定，第一次锁定一分钟，后续尝试失败会锁定更长时间。
 
-* 智能锁定跟踪最后三个错误的密码哈希，以避免重新增大锁定计数器。 如果有人多次输入同一个错误密码，此行为不会导致帐户被锁定。
-   * 对于启用了直通身份验证的客户，此功能不可用。
+智能锁定跟踪最后三个错误的密码哈希，以避免重新增大锁定计数器。 如果有人多次输入同一个错误密码，此行为不会导致帐户被锁定。
+
+ > [!NOTE]
+ > 对于启用了直通身份验证的客户，哈希跟踪功能不可用，因为身份验证是在本地而不是在云中进行的。
 
 智能锁定始终对所有 Azure AD 客户启用，其这些默认设置提供了合适的安全性和可用性组合。 要使用组织特定的值自定义智能锁定设置，需要向用户提供 Azure AD Basic 或更高版本的许可证。
 
-使用智能锁定不保证真正的用户永远不会被锁定。当智能锁定锁定用户帐户时，我们会尽最大努力来确保不锁定真正的用户。 锁定服务会尽力确保不良参与者无法访问真正用户的帐户。  
+使用智能锁定不保证真正的用户永远不会被锁定。当智能锁定锁定用户帐户时，我们会尽最大努力来确保不锁定真正的用户。 锁定服务会尽力确保不良参与者无法访问真正的用户帐户。  
 
 * 每个 Azure Active Directory 数据中心都会独立地跟踪锁定。 如果用户访问每个数据中心，则用户将具有 (threshold_limit * datacenter_count) 次尝试。
 * 智能锁定使用熟悉的位置与不熟悉的位置来区分不良参与者与真正的用户。 不熟悉的位置和熟悉的位置都将具有独立的锁定计数器。

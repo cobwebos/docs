@@ -1,20 +1,21 @@
 ---
-title: 为 Windows IaaS VM 启用 Azure 磁盘加密 | Microsoft Docs
+title: 为 Windows IaaS VM 启用 Azure 磁盘加密
 description: 本文提供有关如何为 Windows IaaS VM 启用 Microsoft Azure 磁盘加密的说明。
 author: mestew
 ms.service: security
 ms.subservice: Azure Disk Encryption
 ms.topic: article
 ms.author: mstewart
-ms.date: 10/12/2018
-ms.openlocfilehash: 545723a020609766b9556746e6547eb8b93e5de9
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.date: 12/12/2018
+ms.custom: seodec18
+ms.openlocfilehash: 4c053ec5fdf895c04abafc103778c86d02a8735c
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51687514"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53312674"
 ---
-# <a name="enable-azure-disk-encryption-for-windows-iaas-vms"></a>为 Windows IaaS VM 启用 Azure 磁盘加密 
+# <a name="enable-azure-disk-encryption-for-windows-iaas-vms"></a>为 Windows IaaS VM 启用 Azure 磁盘加密
 
 可启用多种磁盘加密方案，具体步骤因方案而异。 以下部分更详细介绍了适用于 Windows IaaS VM 的方案。 在使用磁盘加密之前，需要先完成 [Azure 磁盘加密先决条件](../security/azure-security-disk-encryption-prerequisites.md)。 
 
@@ -122,7 +123,7 @@ ms.locfileid: "51687514"
 
 下表列出了现有或正在运行的 VM 的资源管理器模板参数：
 
-| 参数 | Description |
+| 参数 | 说明 |
 | --- | --- |
 | vmName | 运行加密操作的 VM 的名称。 |
 | KeyVaultName | BitLocker 密钥应上传到的 Key Vault 的名称。 可以使用 cmdlet `(Get-AzureRmKeyVault -ResourceGroupName <MyResourceGroupName>). Vaultname` 或 Azure CLI 命令 `az keyvault list --resource-group "MySecureGroup" 获取该名称 |ConvertFrom-JSON`|
@@ -134,6 +135,7 @@ ms.locfileid: "51687514"
 | 位置 | 所有资源的位置。 |
 
 ## <a name="encrypt-virtual-machine-scale-sets"></a>加密虚拟机规模集
+
 使用 [Azure 虚拟机规模集](../virtual-machine-scale-sets/overview.md)可以创建并管理一组完全相同的、负载均衡的 VM。 可以根据需求或定义的计划自动增减 VM 实例的数目。 使用 CLI 或 Azure PowerShell 加密虚拟机规模集。
 
 
@@ -194,13 +196,13 @@ Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Compute
 
 ### <a name="register-for-disk-encryption-preview-using-azure-cli"></a>使用 Azure CLI 注册磁盘加密预览版
 
-要对虚拟机规模集预览版使用 Azure 磁盘加密功能，需要使用 [az feature register](/cli/azure/feature#az_feature_register) 自行注册订阅。 只需在首次使用磁盘加密预览版功能时执行以下步骤：
+要对虚拟机规模集预览版使用 Azure 磁盘加密功能，需要使用 [az feature register](/cli/azure/feature#az-feature-register) 自行注册订阅。 只需在首次使用磁盘加密预览版功能时执行以下步骤：
 
 ```azurecli-interactive
 az feature register --name UnifiedDiskEncryption --namespace Microsoft.Compute
 ```
 
-传播注册请求最多可能需要 10 分钟。 可以通过 [az feature show](/cli/azure/feature#az_feature_show) 查看注册状态。 `State` 报告“已注册”时，请使用 [az provider register](/cli/azure/provider#az_provider_register) 重新注册 Mirosoft.Compute 提供程序：
+传播注册请求最多可能需要 10 分钟。 可以通过 [az feature show](/cli/azure/feature#az-feature-show) 查看注册状态。 `State` 报告“已注册”时，请使用 [az provider register](/cli/azure/provider#az-provider-register) 重新注册 Mirosoft.Compute 提供程序：
 
 ```azurecli-interactive
 az provider register --namespace Microsoft.Compute
@@ -233,7 +235,20 @@ az provider register --namespace Microsoft.Compute
      az vmss encryption disable --resource-group "MySecureRG" --name "MySecureVmss"
     ```
 
+### <a name="azure-resource-manager-templates-for-windows-virtual-machine-scale-sets"></a>适用于 Windows 虚拟机规模集的 Azure 资源管理器模板
+
+若要加密或解密 Windows 虚拟机规模集，请使用以下 Azure 资源管理器模板和说明：
+
+- [在 Windows 虚拟机规模集上启用加密](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-vmss-windows)
+- [使用 jumpbox 部署 Windows VM 的 VM 规模集，并在 Windows VM 规模集上启用加密](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-vmss-windows-jumpbox)
+- [在 Windows VM 规模集上禁用加密](https://github.com/Azure/azure-quickstart-templates/tree/master/201-decrypt-vmss-windows)
+
+     1. 单击 **“部署到 Azure”**。
+     2. 填写必填字段，然后同意条款和条件。
+     3. 单击“购买”以部署模板。
+
 ## <a name="bkmk_VHDpre"></a>通过客户加密的 VHD 和加密密钥新建的 IaaS VM
+
 在此方案中，可以使用 PowerShell cmdlet 或 CLI 命令启用加密。 
 
 参考附录中的说明来准备可在 Azure 中使用的预加密映像。 创建映像后，可使用下一部分中的步骤创建加密的 Azure VM。

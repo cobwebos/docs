@@ -1,5 +1,5 @@
 ---
-title: 在 Azure 应用服务中配置 Web 应用
+title: 配置 Web 应用 - Azure 应用服务
 description: 如何在 Azure 应用服务中配置 Web 应用
 services: app-service\web
 documentationcenter: ''
@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/25/2017
 ms.author: cephalin
-ms.openlocfilehash: 73d2da542c4f7da0933187d800f562de76bfb3e6
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec18
+ms.openlocfilehash: 4286aa9cbaf07743c1d420fb1f5caace91bab7ee
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52443502"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53269424"
 ---
 # <a name="configure-web-apps-in-azure-app-service"></a>在 Azure 应用服务中配置 Web 应用
 
@@ -39,9 +40,9 @@ ms.locfileid: "52443502"
 **框架版本**。 如果应用程序使用下列任一框架，请设置这些选项： 
 
 * **.NET Framework**：设置 .NET Framework 版本。 
-* **PHP**：设置 PHP 版本或设为“关”以禁用 PHP。 
-* **Java**：选择 Java 版本或设为“关”以禁用 Java。 利用“Web 容器”选项来选择 Tomcat 或 Jetty 版本。
-* **Python**：选择 Python 版本，或设为“关闭”以禁用 Python。
+* **PHP**：设置 PHP 版本，或设为“关”以禁用 PHP。 
+* **Java**：选择 Java 版本，或设为“关”以禁用 Java。 利用“Web 容器”选项来选择 Tomcat 或 Jetty 版本。
+* **Python**：选择 Python 版本，或设为“关”以禁用 Python。
 
 出于技术原因，为应用启用 Java 会禁用 .NET、PHP 和 Python 选项。
 
@@ -164,10 +165,10 @@ Web 应用可能会使用根据 URL 路由的模块，而不是提供静态内�
 ### <a name="monitoring"></a>监视
 在“基本”或“标准”模式下，可以测试 HTTP 或 HTTPS 终结点的可用性，最多可测试三个地理分散的位置。 如果 HTTP 响应码为错误（4xx 或 5xx），或者响应时间超过 30 秒，则表示监视测试失败。 如果从所有指定的位置监视测试均成功，则终结点被视为可用。 
 
-有关详细信息，请参阅[如何监视 Web 终结点状态]。
+有关更多信息，请参阅[如何：监视 Web 终结点状态]。
 
 > [!NOTE]
-> 如果想要在注册 Azure 帐户之前开始使用 Azure 应用服务，请转到[试用应用服务]，可以通过该页面在应用服务中立即创建一个生存期较短的入门 Web 应用。 不需要使用信用卡，也不需要做出承诺。
+> 如果要在注册 Azure 帐户之前开始使用 Azure 应用服务，请转到[试用应用服务]，可以在应用服务中立即创建一个生存期较短的入门 Web 应用。 不需要使用信用卡，也不需要做出承诺。
 > 
 > 
 
@@ -179,14 +180,14 @@ Web 应用可能会使用根据 URL 路由的模块，而不是提供静态内�
 
 <!-- URL List -->
 
-[ASP.NET SignalR]: http://www.asp.net/signalr
+[ASP.NET SignalR]: https://www.asp.net/signalr
 [Azure 门户]: https://portal.azure.com/
 [在 Azure 应用服务中配置自定义域名]: ./app-service-web-tutorial-custom-domain.md
 [为 Azure 应用服务中的 Web 应用部署到过渡环境]: ./web-sites-staged-publishing.md。
 [为 Azure 应用服务中的应用启用 HTTPS]: ./app-service-web-tutorial-custom-ssl.md
-[如何监视 Web 终结点状态]: http://go.microsoft.com/fwLink/?LinkID=279906
+[如何：监视 Web 终结点状态]: https://go.microsoft.com/fwLink/?LinkID=279906
 [Azure 应用服务中 Web 应用的监视基础知识]: ./web-sites-monitor.md
-[管道模式]: http://www.iis.net/learn/get-started/introduction-to-iis/introduction-to-iis-architecture#Application
+[管道模式]: https://www.iis.net/learn/get-started/introduction-to-iis/introduction-to-iis-architecture#Application
 [在 Azure 应用服务中缩放 Web 应用]: ./web-sites-scale.md
 [试用应用服务]: https://azure.microsoft.com/try/app-service/
 

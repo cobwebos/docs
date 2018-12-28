@@ -4,9 +4,8 @@ description: 本文演示了如何在 Azure 机器学习工作室中评估模型
 services: machine-learning
 documentationcenter: ''
 author: ericlicoding
-ms.custom: (previous ms.author=hshapiro, author=heatherbshapiro)
+ms.custom: seodec18, previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.author: amlstudiodocs
-manager: hjerez
 editor: cgronlun
 ms.assetid: 5dc5348a-4488-4536-99eb-ff105be9b160
 ms.service: machine-learning
@@ -16,21 +15,22 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2017
-ms.openlocfilehash: de013f8deb5e64077aad96bd34d64135f981166d
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 501a9834e598fc8b1c11a86ef0ae9db1c19a66a7
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52311480"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53269934"
 ---
-# <a name="how-to-evaluate-model-performance-in-azure-machine-learning"></a>如何在 Azure 机器学习中评估模型性能
+# <a name="how-to-evaluate-model-performance-in-azure-machine-learning-studio"></a>如何在 Azure 机器学习工作室中评估模型性能
+
 本文演示了如何在 Azure 机器学习工作室中评估模型的性能，并提供可用于此任务的指标的简短说明。 显示了三个常见的监督学习方案： 
 
 * 回归
 * 二元分类 
 * 多类分类
 
-[!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
+
 
 评估模型性能是数据科学过程的核心阶段之一。 它指示训练的模型为某个数据集评分的成功程度。 
 

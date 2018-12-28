@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 07/19/2018
 ms.author: wgries
 ms.component: files
-ms.openlocfilehash: f32dd0fb1ffd1bbd2c58f187b2dbc310a48f65ff
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: ee0d46cd07de4e9b123357bcc4ee9d1e51926f49
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51011062"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53312964"
 ---
 # <a name="deploy-azure-file-sync"></a>部署 Azure 文件同步
 使用 Azure 文件同步，即可将组织的文件共享集中在 Azure 文件中，同时又不失本地文件服务器的灵活性、性能和兼容性。 Azure 文件同步可将 Windows Server 转换为 Azure 文件共享的快速缓存。 可以使用 Windows Server 上可用的任意协议本地访问数据，包括 SMB、NFS 和 FTPS。 并且可以根据需要在世界各地具有多个缓存。
@@ -136,10 +136,10 @@ Azure 文件同步的部署过程首先会将一个“存储同步服务”资�
 
 在打开的窗格中，输入以下信息：
 
-- 名称：存储同步服务的唯一名称（按订阅）。
-- 订阅：需要在其中创建存储同步服务的订阅。 根据组织的配置策略，可能有权访问一个或多个订阅。 Azure 订阅是对每项云服务（如 Azure 文件）计费的最基本容器。
-- 资源组：资源组是 Azure 资源（如存储帐户或存储同步服务）的逻辑组。 可以为 Azure 文件同步创建新的资源组，也可对其使用现有资源组。（建议使用资源组作为用于从逻辑上隔离组织资源的容器，例如对 HR 资源或特定项目资源进行分组。）
-- 位置：要在其中部署 Azure 文件同步的区域。此列表仅提供支持的区域。
+- **名称**：存储同步服务的唯一名称（按订阅）。
+- **订阅**：需要在其中创建存储同步服务的订阅。 根据组织的配置策略，可能有权访问一个或多个订阅。 Azure 订阅是对每项云服务（如 Azure 文件）计费的最基本容器。
+- **资源组**：资源组是 Azure 资源（如存储帐户或存储同步服务）的逻辑组。 可以为 Azure 文件同步创建新的资源组，也可对其使用现有资源组。（建议使用资源组作为用于从逻辑上隔离组织资源的容器，例如对 HR 资源或特定项目资源进行分组。）
+- **位置**：要在其中部署 Azure 文件同步的区域。此列表仅提供支持的区域。
 
 完成后，选择“创建”部署存储同步服务。
 
@@ -201,7 +201,7 @@ if ($resourceGroups -notcontains $resourceGroup) {
 # it enables subsequent AFS cmdlets to be executed with minimal 
 # repetition of parameters or separate authentication 
 Login-AzureRmStorageSync `
-    –SubscriptionId $subID `
+    -SubscriptionId $subID `
     -ResourceGroupName $resourceGroup `
     -TenantId $tenantID `
     -Location $region
@@ -223,15 +223,15 @@ New-AzureRmStorageSyncService -StorageSyncServiceName $storageSyncName
 > 服务器注册使用你的 Azure 凭据在存储同步服务与 Windows Server 之间创建信任关系，但是，服务器随后会创建并使用自身有效的标识，前提是该服务器保持已注册状态，并且当前的共享访问签名令牌（存储 SAS）有效。 取消注册服务器后，无法将新的 SAS 令牌颁发给服务器，因此，服务器无法访问 Azure 文件共享，并停止任何同步。
 
 # <a name="portaltabportal"></a>[门户](#tab/portal)
-服务器注册 UI 应在 Azure 文件同步代理安装后自动打开。 如果没有打开，可以手动从其文件位置 C:\Program Files\Azure\StorageSyncAgent\ServerRegistration.exe 打开。 服务器注册 UI 打开时，请选择“登录”开始操作。
+服务器注册 UI 应在 Azure 文件同步代理安装后自动打开。 如果没有，可以从其文件位置手动将其打开：C:\Program Files\Azure\StorageSyncAgent\ServerRegistration.exe。 服务器注册 UI 打开时，请选择“登录”开始操作。
 
 登录后，系统会提示输入以下信息：
 
 ![服务器注册 UI 的屏幕快照](media/storage-sync-files-deployment-guide/register-server-scubed-1.png)
 
-- Azure 订阅：包含存储同步服务的订阅（请参阅[部署存储同步服务](#deploy-the-storage-sync-service)）。 
-- 资源组：包含存储同步服务的资源组。
-- 存储同步服务：想要向其注册的存储同步服务的名称。
+- **Azure 订阅**：包含存储同步服务的订阅（请参阅[部署存储同步服务](#deploy-the-storage-sync-service)）。 
+- **资源组**：包含存储同步服务的资源组。
+- **存储同步服务**：想要向其注册的存储同步服务的名称。
 
 选择相应的信息之后，选择“注册”完成服务器注册。 在注册过程中，系统会提示进行其他登录。
 
@@ -245,7 +245,7 @@ $registeredServer = Register-AzureRmStorageSyncServer -StorageSyncServiceName $s
 ## <a name="create-a-sync-group-and-a-cloud-endpoint"></a>创建同步组和云终结点
 同步组定义一组文件的同步拓扑。 同步组中的终结点保持彼此同步。 同步组中必须包含一个表示 Azure 文件共享的云终结点，以及一个或多个服务器终结点。 服务器终结点表示已注册的服务器上的路径。 服务器可以包含多个同步组中的服务器终结点。 可以创建任意数量的同步组，以适当地描述所需的同步拓扑。
 
-云终结点是指向 Azure 文件共享的指针。 所有服务器终结点将与某个云终结点同步，使该云终结点成为中心。 Azure 文件共享的存储帐户必须位于存储同步服务所在的同一个区域。 将同步整个 Azure 文件共享，但存在一种例外情况：将预配一个特殊的文件夹，它相当于 NTFS 卷上的“System Volume Information”隐藏文件夹。 此目录名为“.SystemShareInformation”。 其中包含不会同步到其他终结点的重要同步元数据。 请不要使用或删除它！
+云终结点是指向 Azure 文件共享的指针。 所有服务器终结点将与某个云终结点同步，使该云终结点成为中心。 Azure 文件共享的存储帐户必须位于存储同步服务所在的同一个区域。 将同步整个 Azure 文件共享，但有一个例外：将预配一个特殊的文件夹，它相当于 NTFS 卷上的“System Volume Information”隐藏文件夹。 此目录名为“.SystemShareInformation”。 其中包含不会同步到其他终结点的重要同步元数据。 请不要使用或删除它！
 
 > [!Important]  
 > 可对同步组中的任何云终结点或服务器终结点进行更改，并将文件同步到同步组中的其他终结点。 如果直接对云终结点（Azure 文件分享）进行更改，首先需要通过 Azure 文件同步更改检测作业来发现更改。 每 24 小时仅针对云终结点启动一次更改检测作业。 有关详细信息，请参阅 [Azure 文件常见问题解答](storage-files-faq.md#afs-change-detection)。
@@ -258,8 +258,8 @@ $registeredServer = Register-AzureRmStorageSyncServer -StorageSyncServiceName $s
 在打开的窗格中输入以下信息，创建具有云终结点的同步组：
 
 - **同步组名称**：要创建的同步组的名称。 此名称在存储同步服务内必须是唯一的，但可以是符合逻辑的任何名称。
-- 订阅：在[部署存储同步服务](#deploy-the-storage-sync-service)中用于部署存储同步服务的订阅。
-- 存储帐户：如果选择“选择存储账户”，另一个窗格随即出现，可在其中选择包含要同步的 Azure 文件共享的存储帐户。
+- **订阅**：在[部署存储同步服务](#deploy-the-storage-sync-service)中用于部署存储同步服务的订阅。
+- **存储帐户**：如果选择“选择存储账户”，另一个窗格随即出现，可在其中选择包含要同步的 Azure 文件共享的存储帐户。
 - **Azure 文件共享**：要与其同步的 Azure 文件共享的名称。
 
 # <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
@@ -303,7 +303,7 @@ if ($fileShare -eq $null) {
 New-AzureRmStorageSyncCloudEndpoint `
     -StorageSyncServiceName $storageSyncName `
     -SyncGroupName $syncGroupName ` 
-    -StorageAccountResourceId $storageAccount.Id
+    -StorageAccountResourceId $storageAccount.Id `
     -StorageAccountShareName $fileShare.Name
 ```
 
@@ -321,7 +321,7 @@ New-AzureRmStorageSyncCloudEndpoint `
 
 - **已注册的服务器**：想要创建服务器终结点的服务器或群集的名称。
 - **路径**：要作为同步组一部分进行同步的 Windows Server 路径。
-- 云分层：启用或禁用云分层的开关。 通过云分层可以将不常使用或访问的文件分层到 Azure 文件。
+- **云分层**：启用或禁用云分层的开关。 通过云分层可以将不常使用或访问的文件分层到 Azure 文件。
 - **卷可用空间**：要在服务器终结点所在的卷上保留的可用空间量。 例如，如果有一个服务器终结点的卷上的卷可用空间设置为 50%，则约有一半数据会分层为 Azure 文件。 不管是否启用云分层，Azure 文件共享在同步组中始终具有完整的数据副本。
 
 要添加服务器终结点，请选择“创建”。 现在，文件在 Azure 文件共享和 Windows Server 之间保持保存。 

@@ -11,19 +11,19 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 10/15/2018
-ms.openlocfilehash: 83db2bcfe21edc9f8f2649ef8c2b3a23e412e39d
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.date: 10/19/2018
+ms.openlocfilehash: fb9332832f46dc5c39bf932ce91cd3d3f3d7354f
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49353979"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53269611"
 ---
 # <a name="azure-sql-database-logical-servers-and-their-management"></a>Azure SQL 数据库逻辑服务器及其管理
 
 ## <a name="what-is-an-azure-sql-logical-server"></a>什么是 Aure SQL 逻辑服务器
 
-逻辑服务器用作多个单一或[已共用](sql-database-elastic-pool.md)数据库的中心管理点，包括[登录名](sql-database-manage-logins.md)[防火墙规则](sql-database-firewall-configure.md)[审核规则](sql-database-auditing.md)[威胁检测策略](sql-database-threat-detection.md)和[故障转移组](sql-database-geo-replication-overview.md)。 逻辑服务器可以与其资源组位于不同的区域。 必须先创建逻辑服务器，然后才能创建 Azure SQL 数据库。 服务器上的所有数据库都在逻辑服务器所在的同一区域内创建而成。
+逻辑服务器用作多个单一数据库或[入池](sql-database-elastic-pool.md)数据库的中心管理点，包括[登录名](sql-database-manage-logins.md)、[防火墙规则](sql-database-firewall-configure.md)、[审核规则](sql-database-auditing.md)、[威胁检测策略](sql-database-threat-detection.md)和[故障转移组](sql-database-auto-failover-group.md)。逻辑服务器可以位于与其资源组不同的区域。 必须先创建逻辑服务器，然后才能创建 Azure SQL 数据库。 服务器上的所有数据库都在逻辑服务器所在的同一区域内创建而成。
 
 逻辑服务器是一种逻辑构造，它不同于在本地环境中可能已熟悉的 SQL Server 实例。 具体而言，SQL 数据库服务不保证数据库相对于其逻辑服务器的位置，并且不公开实例级访问权限或功能。 相反，SQL 数据库托管实例中的服务器与你可能熟悉的本地环境中的 SQL Server 实例相似。
 
@@ -170,22 +170,22 @@ Azure 数据库逻辑服务器：
 
 | 命令 | Description |
 | --- | --- |
-|[Servers - Create Or Update](https://docs.microsoft.com/rest/api/sql/servers/servers_createorupdate/rest/api)|创建或更新新服务器。|
-|[Servers - Delete](https://docs.microsoft.com/rest/api/sql/servers/servers_delete)|删除 SQL Server。|
-|[Servers - Get](https://docs.microsoft.com/rest/api/sql/servers/servers_get)|获取服务器。|
-|[Servers - List](https://docs.microsoft.com/rest/api/sql/servers/servers_list)|返回服务器的列表。|
-|[Servers - List By Resource Group](https://docs.microsoft.com/rest/api/sql/servers/servers_listbyresourcegroup)|返回资源组中服务器的列表。|
-|[Servers - Update](https://docs.microsoft.com/rest/api/sql/servers/servers_update)|更新现有服务器。|
-|[数据库 - 创建或更新](https://docs.microsoft.com/rest/api/sql/databases/databases_createorupdate)|创建新数据库或更新现有数据库。|
-|[数据库 - 删除](https://docs.microsoft.com/rest/api/sql/databases/databases_delete)|删除数据库。|
-|[数据库 - 获取](https://docs.microsoft.com/rest/api/sql/databases/databases_get)|获取数据库。|
-|[数据库 - 按弹性池列出](https://docs.microsoft.com/rest/api/sql/databases/databases_listbyelasticpool)|返回弹性池中数据库的列表。|
-|[数据库 - 按服务器列出](https://docs.microsoft.com/rest/api/sql/databases/databases_listbyserver)|返回服务器中的数据库列表。|
-|[数据库 - 更新](https://docs.microsoft.com/rest/api/sql/databases/databases_update)|更新现有的数据库。|
-|[Firewall Rules - Create Or Update](https://docs.microsoft.com/rest/api/sql/firewallrules/firewallrules_createorupdate)|创建或更新防火墙规则。|
-|[Firewall Rules - Delete](https://docs.microsoft.com/rest/api/sql/firewallrules/firewallrules_delete)|删除防火墙规则。|
-|[Firewall Rules - Get](https://docs.microsoft.com/rest/api/sql/firewallrules/firewallrules_get)|获取防火墙规则。|
-|[Firewall Rules - List By Server](https://docs.microsoft.com/rest/api/sql/firewallrules/firewallrules_listbyserver)|返回防火墙规则的列表。|
+|[Servers - Create Or Update](https://docs.microsoft.com/rest/api/sql/servers/createorupdate)|创建或更新新服务器。|
+|[Servers - Delete](https://docs.microsoft.com/rest/api/sql/servers/delete)|删除 SQL Server。|
+|[Servers - Get](https://docs.microsoft.com/rest/api/sql/servers/get)|获取服务器。|
+|[Servers - List](https://docs.microsoft.com/rest/api/sql/servers/list)|返回服务器的列表。|
+|[Servers - List By Resource Group](https://docs.microsoft.com/rest/api/sql/servers/listbyresourcegroup)|返回资源组中服务器的列表。|
+|[Servers - Update](https://docs.microsoft.com/rest/api/sql/servers/update)|更新现有服务器。|
+|[数据库 - 创建或更新](https://docs.microsoft.com/rest/api/sql/databases/createorupdate)|创建新数据库或更新现有数据库。|
+|[数据库 - 删除](https://docs.microsoft.com/rest/api/sql/databases/delete)|删除数据库。|
+|[数据库 - 获取](https://docs.microsoft.com/rest/api/sql/databases/get)|获取数据库。|
+|[数据库 - 按弹性池列出](https://docs.microsoft.com/rest/api/sql/databases/listbyelasticpool)|返回弹性池中数据库的列表。|
+|[数据库 - 按服务器列出](https://docs.microsoft.com/rest/api/sql/databases/listbyserver)|返回服务器中的数据库列表。|
+|[数据库 - 更新](https://docs.microsoft.com/rest/api/sql/databases/update)|更新现有的数据库。|
+|[Firewall Rules - Create Or Update](https://docs.microsoft.com/rest/api/sql/firewallrules/createorupdate)|创建或更新防火墙规则。|
+|[Firewall Rules - Delete](https://docs.microsoft.com/rest/api/sql/firewallrules/delete)|删除防火墙规则。|
+|[Firewall Rules - Get](https://docs.microsoft.com/rest/api/sql/firewallrules/get)|获取防火墙规则。|
+|[Firewall Rules - List By Server](https://docs.microsoft.com/rest/api/sql/firewallrules/listbyserver)|返回防火墙规则的列表。|
 
 ## <a name="next-steps"></a>后续步骤
 

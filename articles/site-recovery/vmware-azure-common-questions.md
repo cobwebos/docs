@@ -4,15 +4,15 @@ description: 本文汇总了使用 Azure Site Recovery 设置将本地 VMware VM
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
-ms.date: 11/19/2018
+ms.date: 12/11/2018
 ms.topic: conceptual
-ms.author: raynew
-ms.openlocfilehash: 248b2a748088330f91b3cc76564d5d8743f04411
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.author: mayg
+ms.openlocfilehash: d7b3919d0f970190238dbc5899a20f2d9e7d8cd4
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52162477"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53256498"
 ---
 # <a name="common-questions---vmware-to-azure-replication"></a>常见问题 - VMware 到 Azure 的复制
 
@@ -74,7 +74,7 @@ ms.locfileid: "52162477"
 Site Recovery 通过公共终结点或使用 ExpressRoute 公共对等互连将数据从本地复制到 Azure 存储。 不支持通过站点到站点 VPN 网络进行的复制。
 
 ### <a name="can-i-replicate-to-azure-with-expressroute"></a>是否可以使用 ExpressRoute 复制到 Azure？
-可以使用 ExpressRoute 将 VM 复制到 Azure。 Site Recovery 通过公共终结点将数据复制到 Azure 存储帐户。需要设置[公共对等互连](../expressroute/expressroute-circuit-peerings.md#azure-public-peering)才能进行 Site Recovery 复制。 将 VM 故障转移到 Azure 虚拟网络后，可以使用[专用对等互连](../expressroute/expressroute-circuit-peerings.md#azure-private-peering)访问这些 VM。
+可以使用 ExpressRoute 将 VM 复制到 Azure。 Site Recovery 通过公共终结点将数据复制到 Azure 存储帐户。需要设置[公共对等互连](../expressroute/expressroute-circuit-peerings.md#publicpeering)才能进行 Site Recovery 复制。 将 VM 故障转移到 Azure 虚拟网络后，可以使用[专用对等互连](../expressroute/expressroute-circuit-peerings.md#privatepeering)访问这些 VM。
 
 
 ### <a name="why-cant-i-replicate-over-vpn"></a>为何不能通过 VPN 复制？
@@ -146,11 +146,14 @@ Site Recovery 通过公共终结点或使用 ExpressRoute 公共对等互连将�
 ### <a name="can-i-avoid-downloading-mysql-but-let-site-recovery-install-it"></a>我是否可以避免下载 MySQL 但让 Site Recovery 安装它？
 是的。 请下载 MySQL 安装程序并将其置于 **C:\Temp\ASRSetup** 文件夹中。  在设置配置服务器 VM 时，接受条款并单击“下载并安装”后，门户将使用你添加的安装程序来安装 MySQL。
  
-### <a name="canl-i-use-the-configuration-server-vm-for-anything-else"></a>是否可以将配置服务器 VM 用于任何其他项？
+### <a name="can-i-use-the-configuration-server-vm-for-anything-else"></a>是否可以将配置服务器 VM 用于任何其他项？
 否，只能将该 VM 用于配置服务器。 
 
+### <a name="can-i-clone-a-configuration-server-and-use-it-for-orchestration"></a>是否可以克隆配置服务器并将其用于业务流程？
+否，应设置新配置服务器以避免注册问题。
+
 ### <a name="can-i-change-the-vault-registered-in-the-configuration-server"></a>是否可以更改在配置服务器中注册的保管库？
-不是。 将保管库注册到配置服务器后，它无法更改。
+不是。 将保管库注册到配置服务器后，它无法更改。 请查看[此文](vmware-azure-manage-configuration-server.md#register-a-configuration-server-with-a-different-vault)以了解重新注册步骤。
 
 ### <a name="can-i-use-the-same-configuration-server-for-disaster-recovery-of-both-vmware-vms-and-physical-servers"></a>是否可以将同一配置服务器同时用于 VMware VM 和物理服务器的灾难恢复？
 可以，但请注意，物理计算机仅可故障回复到 VMware VM。
