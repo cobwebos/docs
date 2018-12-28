@@ -10,19 +10,19 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/21/2018
 ms.author: hrasheed
-ms.openlocfilehash: f92100e6e4dd7569a109aa01f3c998777568cce3
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 6b835dc300808453240dd3b9fe47957bd5feab9b
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51004578"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53435219"
 ---
 # <a name="use-multiple-hdinsight-clusters-with-an-azure-data-lake-store-account"></a>通过一个 Azure Data Lake Store 帐户使用多个 HDInsight 群集
 
 从 HDInsight 版本 3.5 开始，可以创建将 Azure Data Lake Store 用作默认文件系统的 HDInsight 群集。
 Data Lake Store 支持无限存储，因此不仅非常适合用于托管大量数据，而且还适合用于托管共享单个 Data Lake Store 帐户的多个 HDInsight 群集。 有关如何创建使用 Data Lake Store 作为存储的 HDInsight 群集的说明，请参阅[快速入门：在 HDInsight 中设置群集](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)。
 
-本文向 Data Lake Store 管理员提供有关设置可在多个**活动** HDInsight 群集之间使用的单个和共享 Data Lake Store 帐户的建议。 这些建议适用于在共享的 Data Lake Store 帐户中托管多个安全以及不安全的 Hadoop 群集。
+本文向 Data Lake Store 管理员提供有关设置可在多个**活动** HDInsight 群集之间使用的单个和共享 Data Lake Store 帐户的建议。 这些建议适用于在共享的 Data Lake Store 帐户中托管多个安全以及不安全的 Apache Hadoop 群集。
 
 
 ## <a name="data-lake-store-file-and-folder-level-acls"></a>Data Lake Store 文件级和文件夹级 ACL
@@ -78,7 +78,7 @@ Data Lake Store 支持无限存储，因此不仅非常适合用于托管大量�
 
 本部分列出有关将 HDInsight 与 Data Lake Store 配合使用的已知问题及其解决方法。
 
-### <a name="publicly-visible-localized-yarn-resources"></a>公开可见的本地化 YARN 资源
+### <a name="publicly-visible-localized-apache-hadoop-yarn-resources"></a>公开可见的本地化 Apache Hadoop YARN 资源
 
 创建新的 Azure Data Lake Store 帐户时，会自动预配访问 ACL 权限位设置为 770 的根目录。 根文件夹的拥有用户设置为创建帐户的用户（Data Lake Store 管理员），拥有组设置为创建帐户的用户的主要组。 不会为“其他对象”提供任何访问权限。
 

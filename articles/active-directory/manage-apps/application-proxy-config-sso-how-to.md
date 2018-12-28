@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 10/22/2018
 ms.author: barbkess
 ms.reviewer: asteen
-ms.openlocfilehash: 91bbbf6cced8dc3ade4906961d68a99f810d9fd9
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: c27649bc92b9874c6a669911d2b86273cf7adf0f
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49956980"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53136318"
 ---
 # <a name="how-to-configure-single-sign-on-to-an-application-proxy-application"></a>如何配置应用程序代理应用程序的单一登录
 
@@ -29,7 +29,7 @@ ms.locfileid: "49956980"
 ## <a name="how-to-configure-single-sign-on"></a>如何配置单一登录
 若要配置 SSO，请先确保应用程序已配置为通过 Azure Active Directory 进行预身份验证。 要执行此配置，请转到“Azure Active Directory” -&gt;“企业应用程序” -&gt;“所有应用程序” -&gt;“你的应用程序”-&gt;“应用程序代理”。 在此页上，会看到“预身份验证”字段，确保将该字段设置为“Azure Active Directory”。 
 
-有关预身份验证方法的详细信息，请参阅[应用发布文档](application-proxy-publish-azure-portal.md)的步骤 4。
+有关预身份验证方法的详细信息，请参阅[应用发布文档](application-proxy-add-on-premises-application.md)的步骤 4。
 
    ![Azure 门户中的预身份验证方法](./media/application-proxy-config-sso-how-to/app-proxy.png)
 

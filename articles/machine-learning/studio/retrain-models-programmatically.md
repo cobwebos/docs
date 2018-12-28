@@ -1,12 +1,11 @@
 ---
 title: 以编程方式重新训练机器学习工作室模型 - Azure | Microsoft Docs
-description: 了解如何以编程方式重新训练模型并更新 Web 服务以使用 Azure 机器学习中的最新训练模型。
+description: 了解如何使用 C# 和机器学习批处理执行服务以编程方式重新训练模型。
 services: machine-learning
 documentationcenter: ''
 author: ericlicoding
-ms.custom: (previous ms.author=yahajiza, author=YasinMSFT)
+ms.custom: seodec18
 ms.author: amlstudiodocs
-manager: hjerez
 editor: cgronlun
 ms.assetid: 7ae4f977-e6bf-4d04-9dde-28a66ce7b664
 ms.service: machine-learning
@@ -16,14 +15,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
-ms.openlocfilehash: b38143fe6f1f1cf3e65a2989e1b0a71c28530b2a
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 7a1381ce43056607486a27710cd6ee6181b9a5c1
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52313379"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53257387"
 ---
-# <a name="retrain-machine-learning-studio-models-programmatically"></a>以编程方式重新训练机器学习工作室模型
+# <a name="retrain-azure-machine-learning-studio-models-programmatically"></a>以编程方式重新训练 Azure 机器学习工作室模型
 在本演练中，学习如何使用 C# 和机器学习批处理执行服务以编程方式重新训练 Azure 机器学习工作室 Web 服务。
 
 重新训练模型之后，下面的演练显示了如何更新预测 Web 服务中的模型：
@@ -36,14 +35,14 @@ ms.locfileid: "52313379"
 如果想从基于现有的新 Azure 资源管理器的 Web 服务开始，请参阅[重新训练现有预测 Web 服务](retrain-existing-resource-manager-based-web-service.md)。
 
 ## <a name="create-a-training-experiment"></a>创建训练实验
-对于此示例，将使用来自 Microsoft Azure 机器学习示例中的“示例 5：训练、测试、评估二元分类：成人数据集”。 
+对于此示例，将使用来自 Microsoft Azure 机器学习示例的“示例 5：训练、测试、评估二元分类：成人数据集”。 
 
 若要创建此实验：
 
 1. 登录 Microsoft Azure 机器学习工作室。 
 2. 在仪表板的右下角底部，单击“**新建**”。
 3. 从 Microsoft 示例中，选择示例 5。
-4. 若要重命名此实验，在实验画布顶部选择实验名称“示例 5：训练，测试、评估二元分类：成人数据集”。
+4. 若要重命名此实验，请在实验画布顶部选择实验名称“示例 5：训练、测试、评估二元分类：成人数据集”。
 5. 键入“人口普查模型”。
 6. 在实验画布的底部，单击“**运行**”。
 7. 单击“设置 Web 服务”，并选择“重新训练 Web 服务”。 

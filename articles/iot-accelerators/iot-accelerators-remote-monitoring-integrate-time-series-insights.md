@@ -8,12 +8,12 @@ ms.date: 09/12/2018
 ms.topic: conceptual
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.openlocfilehash: 3ae41ff4cf501a58668d25b16027029f6bae4749
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: e6dcbf9d185b45c18261e47e9d575adf40812611
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52317478"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53253810"
 ---
 # <a name="integrate-azure-time-series-insights-with-remote-monitoring"></a>将 Azure 时序见解与远程监视集成
 
@@ -212,7 +212,7 @@ docker pull azureiotpcs/pcs-remote-monitoring-webui:1.0.2
 
 1. 导航到“设置” > “密钥”并为应用程序创建新密钥。 请确保将密钥值复制到安全位置。
 
-1. 使用最新标记在 Github 存储库中拉取[最新 docker compose yaml 文件](https://github.com/Azure/pcs-cli/tree/5a9b4e0dbe313172eff19236e54a4d461d4f3e51/solutions/remotemonitoring/single-vm)。 
+1. 使用最新标记从 GitHub 存储库中拉取[最新 docker compose yaml 文件](https://github.com/Azure/pcs-cli/tree/5a9b4e0dbe313172eff19236e54a4d461d4f3e51/solutions/remotemonitoring/single-vm)。 
 
 1. 按照[如何创建和使用 SSH 密钥](https://docs.microsoft.com/azure/virtual-machines/linux/ssh-from-windows)中列出的步骤将 SSH 添加到 VM。
 

@@ -4,14 +4,16 @@ ms.service: container-service
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: danlep
-ms.openlocfilehash: f4acec3db7d74b969c55e725d9ec1c5f063b552c
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: cc72fb39bf62915be10493a780538121f26ca835
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51628098"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "53002265"
 ---
-# <a name="securing-docker-containers-in-azure-container-service"></a>保护 Azure 容器服务中的 Docker 容器
+# <a name="deprecated-securing-docker-containers-in-azure-container-service"></a>（已弃用）保护 Azure 容器服务中的 Docker 容器
+
+[!INCLUDE [ACS deprecation](container-service-deprecation.md)]
 
 本文介绍有关保护 Azure 容器服务中部署的 Docker 容器的注意事项和建议。 其中的许多注意事项一般也适用于 Azure 或其他环境中部署的 Docker 容器。 
 

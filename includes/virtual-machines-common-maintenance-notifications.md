@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/02/2018
 ms.author: shants
 ms.custom: include file
-ms.openlocfilehash: b8d759c7b55608be780389991e6bb393f4f3fe9f
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
+ms.openlocfilehash: 609389460ab18ba947130e64dbe7b599574816a5
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50981317"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53215992"
 ---
 ## <a name="view-vms-scheduled-for-maintenance-in-the-portal"></a>在门户中查看计划用于维护的虚拟机
 
@@ -29,7 +29,7 @@ ms.locfileid: "50981317"
 
 4. 选择并添加以下列：
 
-   维护：显示 VM 的维护状态。 下面是可能的值：
+   **维护**：显示 VM 的维护状态。 下面是可能的值：
       
       | 值 | Description |
       |-------|-------------|
@@ -41,15 +41,15 @@ ms.locfileid: "50981317"
       | - | 计划内维护流程不处理你的 VM。 |
       
 
-   维护 - 自助服务时段：显示可以自行启动 VM 维护的时间范围。
+   **维护 - 自助时段**：显示可以自行启动 VM 维护的时间范围。
    
-   维护 - 计划的时段：显示 Azure 维护你的 VM 以完成维护的时间范围。 
+   **维护 - 计划时段**：显示 Azure 将维护 VM 以完成维护的时间范围。 
 
 
 
 ## <a name="notification-and-alerts-in-the-portal"></a>门户中的通知和警报
 
-Azure 通过向订阅所有者和共有者组发送电子邮件来传达计划维护的安排。 可以通过创建 Azure 活动日志警报，为此通信添加其他收件人和频道。 有关详细信息，请参阅[创建有关服务通知的活动日志警报](../articles/monitoring-and-diagnostics/monitoring-activity-log-alerts-on-service-notifications.md)。
+Azure 通过向订阅所有者和共有者组发送电子邮件来传达计划维护的安排。 可以通过创建 Azure 活动日志警报，为此通信添加其他收件人和频道。 有关详细信息，请参阅[创建有关服务通知的活动日志警报](../articles/azure-monitor/platform/alerts-activity-log-service-notifications.md)。
 
 请确保将“事件类型”设置为“计划内维护”，将“服务”设置为“虚拟机规模集”和/或“虚拟机”
     

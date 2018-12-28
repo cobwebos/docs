@@ -9,16 +9,15 @@ ms.assetid: 051d4285-f38a-45d8-ad8a-45c3be828d91
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/01/2018
 ms.author: lagayhar
-ms.openlocfilehash: 25ee061f489df0a666d59871661478f987b28e3f
-ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
+ms.openlocfilehash: 378516066e3b4a3436a2952616ea877d9a49d5d4
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51344801"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53255306"
 ---
 # <a name="how-to-use-micrometer-with-azure-application-insights-java-sdk"></a>如何将 Micrometer 与 Azure Application Insights Java SDK 配合使用
 Micrometer 应用程序监视功能可以度量基于 JVM 的应用程序代码的指标，并可用于将数据导出到偏爱的监视系统。 本文介绍如何对 Spring Boot 和非 Spring Boot 应用程序配合使用 Micrometer 与 Application Insights。
@@ -229,7 +228,7 @@ Steps
 
 若要详细了解指标，请参阅 [Micrometer 文档](https://micrometer.io/docs/)。
 
-有关演示如何创建不同类型的指标的其他示例代码，请参阅[官方的 Micrometer Github 存储库](https://github.com/micrometer-metrics/micrometer/tree/master/samples/micrometer-samples-core/src/main/java/io/micrometer/core/samples)。
+有关演示如何创建不同类型的指标的其他示例代码，请参阅[官方的 Micrometer GitHub 存储库](https://github.com/micrometer-metrics/micrometer/tree/master/samples/micrometer-samples-core/src/main/java/io/micrometer/core/samples)。
 
 ## <a name="how-to-bind-additional-metrics-collection"></a>如何绑定其他指标集合
 
@@ -243,7 +242,7 @@ Steps
         Return new GuavaCacheMetrics();
     }
 ```
-有多个指标默认未启用，但可按上述方式绑定。 有关完整列表，请参阅[官方的 Micrometer Github 存储库](https://github.com/micrometer-metrics/micrometer/tree/master/micrometer-core/src/main/java/io/micrometer/core/instrument/binder )。
+有多个指标默认未启用，但可按上述方式绑定。 有关完整列表，请参阅[官方的 Micrometer GitHub 存储库](https://github.com/micrometer-metrics/micrometer/tree/master/micrometer-core/src/main/java/io/micrometer/core/instrument/binder )。
 
 ### <a name="non-spring-apps"></a>非 Spring 应用
 将以下绑定代码添加到配置文件：

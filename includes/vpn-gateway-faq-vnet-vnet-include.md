@@ -5,29 +5,29 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 04/05/2018
+ms.date: 12/03/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 66ff1e2e02728e05cb0aeedce90de1882a8804ce
-ms.sourcegitcommit: baed5a8884cb998138787a6ecfff46de07b8473d
+ms.openlocfilehash: 72ddd0b6cd6c3e12417d3698c403f89312b531f4
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "30921302"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53111712"
 ---
-VNet 到 VNet 连接常见问题解答适用于 VPN 网关连接。 若要了解 VNet 对等互连，请参阅[虚拟网络对等互连](../articles/virtual-network/virtual-network-peering-overview.md)
+VNet 到 VNet 连接常见问题解答适用于 VPN 网关连接。 有关 VNet 对等互连的信息，请参阅[虚拟网络对等互连](../articles/virtual-network/virtual-network-peering-overview.md)。
 
 ### <a name="does-azure-charge-for-traffic-between-vnets"></a>Azure 会对 VNet 之间的流量收费吗？
 
-当使用 VPN 网关连接时，同一区域中的 VNet 到 VNet 流量双向均免费。 跨区域 VNet 到 VNet 出口流量根据源区域的出站 VNet 间数据传输费率收费。 有关详细信息，请参阅 [VPN 网关定价页](https://azure.microsoft.com/pricing/details/vpn-gateway/)。 如果使用 VNet 对等互连而非 VPN 网关连接 VNet，请参阅[虚拟网络定价页](https://azure.microsoft.com/pricing/details/virtual-network/)。
+当使用 VPN 网关连接时，同一区域中的 VNet 到 VNet 流量双向均免费。 跨区域 VNet 到 VNet 传出流量根据源区域的出站 VNet 间数据传输费率收费。 有关详细信息，请参阅 [VPN 网关定价](https://azure.microsoft.com/pricing/details/vpn-gateway/)。 如果你使用 VNet 对等互连而非 VPN 网关连接 VNet，请参阅[虚拟网络定价](https://azure.microsoft.com/pricing/details/virtual-network/)。
 
 ### <a name="does-vnet-to-vnet-traffic-travel-across-the-internet"></a>VNet 到 VNet 流量是否流经 Internet？
 
 不是。 VNet 到 VNet 流量通过 Microsoft Azure 主干而不是 Internet 传输。
 
-### <a name="can-i-establish-a-vnet-to-vnet-connection-across-aad-tenants"></a>是否可以跨 AAD 租户建立 VNet 到 VNet 连接？
+### <a name="can-i-establish-a-vnet-to-vnet-connection-across-azure-active-directory-aad-tenants"></a>是否可以跨 Azure Active Directory (AAD) 租户建立 VNet 到 VNet 连接？
 
-是的。可以使用 Azure VPN 网关跨 AAD 租户进行 VNet 到 VNet 连接。
+是的。使用 Azure VPN 网关的 VNet 到 VNet 连接可以跨 AAD 租户工作。
 
 ### <a name="is-vnet-to-vnet-traffic-secure"></a>VNet 到 VNet 通信安全吗？
 
@@ -35,19 +35,19 @@ VNet 到 VNet 连接常见问题解答适用于 VPN 网关连接。 若要了解
 
 ### <a name="do-i-need-a-vpn-device-to-connect-vnets-together"></a>是否需要 VPN 设备将 VNet 连接到一起？
 
-不是。 将多个 Azure 虚拟网络连接在一起不需要 VPN 设备，除非需要跨界连接。
+否。 将多个 Azure 虚拟网络连接在一起不需要 VPN 设备，除非需要跨界连接。
 
 ### <a name="do-my-vnets-need-to-be-in-the-same-region"></a>我的 VNet 是否需要位于同一区域？
 
-不是。 虚拟网络可以在相同或不同的 Azure 区域（位置）中。
+否。 虚拟网络可以在相同或不同的 Azure 区域（位置）中。
 
-### <a name="if-the-vnets-are-not-in-the-same-subscription-do-the-subscriptions-need-to-be-associated-with-the-same-ad-tenant"></a>如果 VNet 不在同一订阅中，订阅是否需要与相同的 AD 租户相关联？
+### <a name="if-the-vnets-arent-in-the-same-subscription-do-the-subscriptions-need-to-be-associated-with-the-same-active-directory-tenant"></a>如果 VNet 不在同一订阅中，订阅是否需要与同一 Active Directory 租户相关联？
 
-不是。
+否。
 
 ### <a name="can-i-use-vnet-to-vnet-to-connect-virtual-networks-in-separate-azure-instances"></a>能否在单独的 Azure 实例中使用 VNet 到 VNet 通信来连接虚拟网络？ 
 
-不是。 VNet 到 VNet 通信支持在同一 Azure 实例中连接虚拟网络。 例如，不能在公共 Azure 和中国/德国/美国政府 Azure 实例之间创建连接。 对于上述情形，可考虑使用站点到站点 VPN 连接。
+否。 VNet 到 VNet 通信支持在同一 Azure 实例中连接虚拟网络。 例如，不能在全球 Azure 和中国/德国/美国政府 Azure 实例之间创建连接。 对于上述情形，请考虑使用站点到站点 VPN 连接。
 
 ### <a name="can-i-use-vnet-to-vnet-along-with-multi-site-connections"></a>能否将 VNet 到 VNet 用于多站点连接？
 
@@ -59,15 +59,15 @@ VNet 到 VNet 连接常见问题解答适用于 VPN 网关连接。 若要了解
 
 ### <a name="can-i-use-vnet-to-vnet-to-connect-vms-or-cloud-services-outside-of-a-vnet"></a>能否使用 VNet 到 VNet 来连接 VNet 外部的 VM 或云服务？
 
-不是。 VNet 到 VNet 通信支持连接虚拟网络。 它不支持连接不在虚拟网络中的虚拟机或云服务。
+否。 VNet 到 VNet 通信支持连接虚拟网络。 它不支持连接不在虚拟网络中的虚拟机或云服务。
 
 ### <a name="can-a-cloud-service-or-a-load-balancing-endpoint-span-vnets"></a>云服务或负载均衡终结点能否跨 VNet？
 
-不是。 云服务或负载均衡终结点不能跨虚拟网络，即使它们连接在一起，也是如此。
+否。 云服务或负载均衡终结点不能跨虚拟网络，即使它们连接在一起，也是如此。
 
-### <a name="can-i-used-a-policybased-vpn-type-for-vnet-to-vnet-or-multi-site-connections"></a>能否将 PolicyBased VPN 类型用于 VNet 到 VNet 连接或多站点连接？
+### <a name="can-i-use-a-policybased-vpn-type-for-vnet-to-vnet-or-multi-site-connections"></a>能否将 PolicyBased VPN 类型用于 VNet 到 VNet 连接或多站点连接？
 
-不是。 VNet 到 VNet 连接和多站点连接需要 RouteBased（以前称为动态路由）VPN 类型的 Azure VPN 网关。
+否。 VNet 到 VNet 连接和多站点连接需要 RouteBased（以前称为动态路由）VPN 类型的 Azure VPN 网关。
 
 ### <a name="can-i-connect-a-vnet-with-a-routebased-vpn-type-to-another-vnet-with-a-policybased-vpn-type"></a>是否可以将 RouteBased VPN 类型的 VNet 连接到另一个 PolicyBased VPN 类型的 VNet？
 

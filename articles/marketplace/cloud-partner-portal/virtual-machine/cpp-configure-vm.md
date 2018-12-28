@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 10/19/2018
 ms.author: pbutlerm
-ms.openlocfilehash: c1db8c99b1bd3f9bbb768572ca1f5f7a4e1e0de4
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.openlocfilehash: 5ccfef8a6ad367e8fac100217713cd323341a535
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49638878"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53183465"
 ---
 # <a name="configure-the-azure-hosted-vm"></a>配置 Azure 托管的 VM
 
@@ -28,14 +28,14 @@ ms.locfileid: "49638878"
 
 ## <a name="sizing-the-vhds"></a>调整 VHD 大小
 
-<!--TD: Check if the following assertion is true. I didn't understand the original content. --> 如果选择了一个已预配置操作系统（以及可选的其他服务）的 VM，则已经选取了[虚拟机“SKU”选项卡](./cpp-skus-tab.md)中所述的一种标准 Azure VM 大小。这是建议的做法。  但是，若要手动安装 OS，则必须在 VM 映像中调整主要 VHD 的大小：
+<!--TD: Check if the following assertion is true. I didn't understand the original content. --> 如果选择了一个已预配置操作系统（以及可选的其他服务）的 VM，则已经选取了[虚拟机“SKU”选项卡](./cpp-skus-tab.md)中所述的一种标准 Azure VM 大小。使用预先配置的 OS 启动解决方案是建议的方法。  但是，若要手动安装 OS，则必须在 VM 映像中调整主要 VHD 的大小：
 
 - 对于 Windows，操作系统 VHD 应创建为 127-128 GB 的固定格式 VHD。 
 - 对于 Linux，此 VHD 应创建为 30-50 GB 的固定格式 VHD。
 
 如果物理大小小于 127-128GB，则 VHD 应是稀疏的磁盘。 提供的基本 Windows 和 SQL Server 映像已满足这些要求；请不要更改获取的 VHD 的格式或大小。 
 
-数据磁盘可以大至 1TB。 决定磁盘大小时，请记住，客户无法在部署时对映像中的 VHD 调整大小。 数据磁盘 VHD 应创建为固定格式 VHD。 它们还应是稀疏的。 数据磁盘最初可以是空的或包含数据。
+数据磁盘可以大至 1TB。 决定其大小时，请记住，客户无法在部署时对映像中的 VHD 调整大小。 数据磁盘 VHD 应创建为固定格式 VHD。 它们还应是稀疏的。 数据磁盘最初可以是空的或包含数据。
 
 
 ## <a name="install-the-most-current-updates"></a>安装最新的更新
@@ -49,7 +49,7 @@ ms.locfileid: "49638878"
 
 ## <a name="perform-additional-security-checks"></a>执行附加的安全检查
 
-应该为 Azure 市场中的解决方案映像保持高级别的安全性。  以下文章提供了有助于实现此目标的安全配置和过程查检表：[适用于 Azure 市场映像的安全建议](https://docs.microsoft.com/azure/security/security-recommendations-azure-marketplace-images)。  其中的某些建议特定于基于 Linux 的映像，但大部分建议适用于任何 VM 映像。 
+应该为 Azure 市场中的解决方案映像保持高级别的安全性。  以下文章提供了有助于实现此目标的安全配置和过程的清单：[适用于 Azure 市场映像的安全建议](https://docs.microsoft.com/azure/security/security-recommendations-azure-marketplace-images)。  其中的某些建议特定于基于 Linux 的映像，但大部分建议适用于任何 VM 映像。 
 
 
 ## <a name="perform-custom-configuration-and-scheduled-tasks"></a>执行自定义配置和计划任务

@@ -1,24 +1,24 @@
 ---
-title: Azure 专用 HSM 常见问题解答 | Microsoft Docs
-description: Azure 专用 HSM 在 Azure 中提供符合 FIPS 140-2 级别 3 认证要求的密钥存储功能
+title: 常见问题 - Azure 专用 HSM | Microsoft Docs
+description: 涵盖了有关 Azure 专用 HSM 的各种主题的常见问题
 services: dedicated-hsm
 author: barclayn
 manager: mbaldwin
 tags: azure-resource-manager
+ms.custom: mvc
 ms.service: key-vault
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: concepts
-ms.custom: mvc
-ms.date: 11/19/2018
+ms.date: 12/11/2018
 ms.author: barclayn
-ms.openlocfilehash: 3179fd3cf7a595b4491aec77e221aca3960c8ecb
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 44507e919b7ed827eb3c08101a04849faf92293c
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52319036"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53310220"
 ---
 # <a name="frequently-asked-questions-faq"></a>常见问题 (FAQ)
 
@@ -30,11 +30,11 @@ ms.locfileid: "52319036"
 
 硬件安全模块 (HSM) 是用于保护和管理加密密钥的物理计算设备。 HSM 中存储的密钥可用于加密操作。 密钥材料安全保存在防篡改的硬件模块中。 HSM 仅允许经过身份验证和授权的应用程序使用密钥。 密匙材料永远不会离开 HSM 保护边界。
 
-### <a name="q-what-is-azure-dedicated-hsm-offering"></a>问：什么是 Azure 专用 HSM 产品/服务？
+### <a name="q-what-is-the-azure-dedicated-hsm-offering"></a>问：什么是 Azure 专用 HSM 产品/服务？
 
 Azure 专用 HSM 是一种基于云的服务，提供由可直接连接到客户虚拟网络的 Azure 数据中心托管的 HSM。 这些 HSM 是专用的网络设备（Gemalto 的 SafeNet Network HSM 7 型号 A790）。 它们直接部署到客户的专用 IP 地址空间，Microsoft 没有任何权限访问 HSM 的加密功能。 只有客户才对这些设备拥有完全的管理和加密控制权。 客户负责设备的管理，他们可以直接从设备获取完整的活动日志。 专用 HSM 可帮助客户满足合规性/法规要求，例如 FIPS 140-2 级别 3、HIPAA、PCI-DSS、eIDAS 等。
 
-## <a name="what-hardware-is-used-for-dedicated-hsm"></a>专用 HSM 使用哪些硬件？
+### <a name="q-what-hardware-is-used-for-dedicated-hsm"></a>问：专用 HSM 使用哪些硬件？
 
 Microsoft 与 Gemalto 合作提供 Azure 专用 HSM 服务。 使用的特定设备是 [SafeNet Luna Network HSM 7 型号 A790](https://safenet.gemalto.com/data-encryption/hardware-security-modules-hsms/safenet-network-hsm/)。 此设备不仅提供 FIPS 140-2 级别 3 验证的固件，而且还通过 10 个分区提供低延迟、高性能和高容量。 
 
@@ -49,6 +49,18 @@ HSM 用于存储以下加密功能使用的加密密钥，这些功能包括 SSL
 ### <a name="q-what-software-is-provided-with-the-dedicated-hsm-service"></a>问：专用 HSM 服务提供哪些软件？
 
 经过 Microsoft 预配后，Gemalto 将提供 HSM 设备的所有软件。 在 [Gemalto 客户支持门户](https://supportportal.gemalto.com/csm/)中可以获取这些软件。 使用专用 HSM 服务的客户需要注册 Gemalto 支持并获取一个客户 ID，这样才能访问和下载相关软件。 支持的客户端软件是与 FIPS 140-2 级别 3 验证的固件版本 7.0.3 兼容的版本 7.2。 
+
+### <a name="q-does-azure-dedicated-hsm-offer-password-based-and-ped-based-authentication"></a>问：Azure 专用 HSM 是否提供了基于密码的和基于 PED 的身份验证？
+
+目前，Azure 专用 HSM 仅为 HSM 提供了基于密码的身份验证。
+
+### <a name="q-will-azure-dedicated-hsm-host-my-hsms-for-me"></a>问：Azure 专用 HSM 是否将承载我的 HSM？
+
+Microsoft 通过专用 HSM 服务仅提供 Gemalto SafeNet Luna 网络 HSM，不能承载客户提供的任何设备。
+
+### <a name="q-does-azure-dedicated-hsm-support-pinetf-features-or-meet-pci-hsm-v1-or-v2-certification-requirements"></a>问：Azure 专用 HSM 是否支持 PIN/ETF 功能或者满足 PCI HSM v1 或 v2 认证要求？
+
+Azure 专用 HSM 服务使用 SafeNet Luna Network HSM 7（型号 A790）设备。 这些设备不支持付款 HSM 特定功能（例如 PIN 或 ETF）或认证。 如果你希望 Azure 专用 HSM 服务将来支持付款 HSM，请在下方提供反馈。
 
 ## <a name="interoperability"></a>互操作性
 
@@ -66,7 +78,7 @@ HSM 用于存储以下加密功能使用的加密密钥，这些功能包括 SSL
 
 ### <a name="q-can-i-encrypt-data-used-by-other-azure-services-using-keys-stored-in-dedicated-hsm"></a>问：是否可以使用专用 HSM 中存储的密钥来加密其他 Azure 服务所用的数据？
 
-不是。 只能从虚拟网络内部访问 Azure 专用 HSM。
+否。 只能从虚拟网络内部访问 Azure 专用 HSM。
 
 ### <a name="q-can-i-import-keys-from-an-existing-on-premises-hsm-to-dedicated-hsm"></a>问：是否可将现有本地 HSM 中的密钥导入到专用 HSM？
 
@@ -126,7 +138,7 @@ Microsoft 对 HSM 没有任何管理或加密控制权。 但 Microsoft 确实�
 
 ### <a name="q-can-microsoft-or-anyone-at-microsoft-access-keys-in-my-dedicated-hsm"></a>问：Microsoft 或 Microsoft 的任何员工是否可以访问我的专用 HSM 中的密钥？
 
-不是。 Microsoft 对客户分配的专用 HSM 中存储的密钥没有任何访问权限。
+否。 Microsoft 对客户分配的专用 HSM 中存储的密钥没有任何访问权限。
 
 ### <a name="q-can-i-upgrade-softwarefirmware-on-hsms-allocated-to-me"></a>问：是否可以在分配给我的 HSM 上升级软件/固件？
 
@@ -184,7 +196,7 @@ Azure 数据中心提供全面的物理和程序性安全控制。 除此之外�
 
 我们强烈建议使用本地 HSM 备份设备定期备份 HSM，以实现灾难恢复。 需要与连接到 HSM 备份设备的本地工作站建立对等连接或站点到站点 VPN 连接。
 
-### <a name="q-how-do-i-get-support-for-dedicated-hsm"></a>问：如何获取专用 HSM 的支持？
+### <a name="q-how-do-i-get-support-for-dedicated-hsm"></a>问：如何获取对专用 HSM 的支持？
 
 方法与获取其他所有 Azure 服务的支持一样。 根据具体的案例，在必要的情况下，Azure 支持团队会向 Gemalto 支持部门呈报问题。
 
@@ -204,7 +216,7 @@ Microsoft 无法连接到分配给客户的 HSM。 客户必须自行升级和�
 
 ### <a name="q-what-cryptographic-keys-and-algorithms-are-supported-by-dedicated-hsm"></a>问：专用 HSM 支持哪些加密密钥和算法？
 
-专用 HSM 服务将预配 SafeNet Network HSM 7 设备。 这些设备支持多种加密密钥类型和算法，包括完全支持 Suite B
+专用 HSM 服务将预配 SafeNet Network HSM 7 设备。 这些设备支持多种加密密钥类型和算法，包括：完全支持 Suite B
 
 * 非对称：
   * RSA
@@ -244,9 +256,9 @@ Microsoft 无法连接到分配给客户的 HSM。 客户必须自行升级和�
 
 专用 HSM 将预配 SafeNet Network HSM 7 设备（型号 A790）。 下面是某些操作的最大性能摘要： 
 
-* RSA-2048：每秒 10,000 个事务
-* ECC P256：每秒 20,000 个事务
-* AES-GCM：每秒 17,000 个事务
+* RSA-2048：10,000 个事务/秒
+* ECC P256：20,000 个事务/秒
+* AES-GCM：17,000 个事务/秒
 
 ### <a name="q-how-many-partitions-can-be-created-in-dedicated-hsm"></a>问：在专用 HSM 中可以创建多少个分区？
 

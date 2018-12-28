@@ -1,5 +1,5 @@
 ---
-title: 如何向 Azure 时序见解环境添加参考数据集
+title: Azure 时序见解参考数据 - 如何向 Azure 时序见解环境添加参考数据集 | Microsoft Docs
 description: 本文介绍了如何添加参考数据集来增强 Azure 时序见解环境中的数据。
 ms.service: time-series-insights
 services: time-series-insights
@@ -10,12 +10,13 @@ ms.reviewer: jasonh, kfile, anshan
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 02/15/2018
-ms.openlocfilehash: 45520a556d109158987dd47e33a1efb52a1cd356
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.custom: seodec18
+ms.openlocfilehash: de5f4735e7dde7a3e631d14c83d42ccb9fd5c9db
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46364731"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53273827"
 ---
 # <a name="create-a-reference-data-set-for-your-time-series-insights-environment-using-the-azure-portal"></a>使用 Azure 门户为时序见解环境创建引用数据集
 

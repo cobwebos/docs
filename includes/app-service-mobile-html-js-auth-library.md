@@ -4,12 +4,12 @@ ms.service: app-service-mobile
 ms.topic: include
 ms.date: 08/23/2018
 ms.author: crdun
-ms.openlocfilehash: 5f7cbdd98d25855e9b8bb102413bd71148193318
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: 488fbb2acbf43ac092a7834fc25f433ef09d2b00
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50133545"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52973232"
 ---
 ### <a name="server-auth"></a>如何：使用提供程序（服务器流）进行身份验证
 要让移动应用管理应用中的身份验证过程，必须将应用注册到标识提供者。 然后，需要在 Azure App Service 中配置提供者提供的应用程序 ID 和机密。
@@ -53,28 +53,7 @@ client.login(
 ```
 此示例假定由相应的提供程序 SDK 提供的令牌存储在令牌变量中。
 
-#### <a name="microsoft-account-example"></a>Microsoft 帐户示例
-
-以下示例使用 Live SDK，该 SDK 使用 Microsoft 帐户来支持 Windows 应用商店应用程序的单一登录：
-
-```
-WL.login({ scope: "wl.basic"}).then(function (result) {
-      client.login(
-            "microsoftaccount",
-            {"authenticationToken": result.session.authentication_token})
-      .done(function(results){
-            alert("You are now signed in as: " + results.userId);
-      },
-      function(error){
-            alert("Error: " + err);
-      });
-});
-
-```
-
-这个示例将从 Live Connect 获取一个令牌，并通过调用 login 函数将该令牌提供给应用服务。
-
-### <a name="auth-getinfo"></a>如何：获取已经过身份验证的用户相关信息
+### <a name="auth-getinfo"></a>如何：获取已经过身份验证的用户的相关信息
 
 可以结合任何 AJAX 库使用 HTTP 调用，从 `/.auth/me` 终结点检索身份验证信息。  确保将 `X-ZUMO-AUTH` 标头设置为身份验证令牌。  身份验证令牌存储在 `client.currentUser.mobileServiceAuthenticationToken` 中。  例如，若要使用提取 API：
 
