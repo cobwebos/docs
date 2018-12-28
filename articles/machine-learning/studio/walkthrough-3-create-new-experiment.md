@@ -1,12 +1,11 @@
 ---
-title: 步骤 3：创建新的机器学习工作室试验 - Azure | Microsoft Docs
-description: 开发预测解决方案演练的步骤 3：在 Azure 机器学习工作室中创建新的训练实验。
+title: 步骤 3：创建新的机器学习工作室实验 - Azure | Microsoft Docs
+description: 开发预测解决方案演练的步骤 3：在Azure 机器学习工作室中创建新的训练实验。
 services: machine-learning
 documentationcenter: ''
-author: ericlicoding
-ms.custom: (previous ms.author=hshapiro, author=heatherbshapiro)
-ms.author: amlstudiodocs
-manager: hjerez
+author: garyericson
+ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
+ms.author: garye
 editor: cgronlun
 ms.assetid: 660e3c27-55ef-4c33-a4e9-dff4d1224630
 ms.service: machine-learning
@@ -16,14 +15,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/23/2017
-ms.openlocfilehash: a6f12c536cfc18ed0be55ec1755c7fe5179006ba
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 5f3f73e2c2cb281887e795d974403a17cffd5978
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52317522"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53260780"
 ---
-# <a name="walkthrough-step-3-create-a-new-azure-machine-learning-studio-experiment"></a>演练步骤 3：创建新的 Azure 机器学习工作室试验
+# <a name="walkthrough-step-3-create-a-new-azure-machine-learning-studio-experiment"></a>演练步骤 3：创建新的 Azure 机器学习工作室实验
 这是演练的第三步，[在 Azure 机器学习中开发预测分析解决方案](walkthrough-develop-predictive-solution.md)
 
 1. [创建机器学习工作区](walkthrough-1-create-ml-workspace.md)
@@ -56,9 +55,9 @@ ms.locfileid: "52317522"
     ![将数据集添加到实验][7]
 
 ## <a name="prepare-the-data"></a>准备数据
-可以通过以下方法查看整个数据集的前 100 行数据和一些统计信息：单击数据集的输出端口（底部的小圆圈）并选择“可视化”。  
+可以查看前 100 行数据和整个数据集的一些统计信息：单击数据集的输出端口（底部的小圆圈），然后选择“可视化”。  
 
-因为数据文件没有列标题，所以工作室提供了通用标题（Col1、Col2 等）。 好标题不是创建模型的关键，但它们使实验中的数据处理变得更加容易。 此外，当我们最终在 Web 服务中发布此模型时，标题将有助于识别服务用户的列。  
+因为数据文件没有列标题，所以工作室提供了通用标题（Col1、Col2 等）。 好标题不是创建模型的关键，但它们使得处理实验中的数据变得更容易。 此外，当我们最终在 Web 服务中发布此模型时，标题将有助于识别服务用户的列。  
 
 可以使用[编辑元数据][edit-metadata]模块来添加列标题。
 可以使用[编辑元数据][edit-metadata]模块来更改与数据集关联的元数据。 在本例中，我们使用它来为列标题提供更友好的名称。 
@@ -112,7 +111,7 @@ ms.locfileid: "52317522"
 
 1. 找到[拆分数据][split]模块，将其拖动到画布上，并将其连接到[编辑元数据][edit-metadata]模块。
 
-2. 默认情况下，拆分比为 0.5，并且设置了“随机拆分”参数。 这意味着，随机的一半数据通过[拆分数据][split]模块的一个端口输出，另一半通过另一个端口输出。 可以调整这些参数，以及“随机种子”参数，以更改训练和测试数据之间的拆分。 在本例中，我们将其保持不变。
+2. 默认情况下，拆分比为 0.5，并且设置了“随机拆分”参数。 这意味着，随机的一半数据通过[拆分数据][split]模块的一个端口输出，另一半通过另一个端口输出。 可以调整这些参数，以及“随机种子”参数，以更改训练和测试数据之间的拆分。 在本例中，我们将其保持原样。
    
    > [!TIP]
    > **第一个输出数据集中行的分数**属性决定了通过*左*输出端口输出的数据量。 例如，如果将比率设置为 0.7，则 70% 的数据将通过左端口输出，30% 通过右端口输出。  
@@ -123,7 +122,7 @@ ms.locfileid: "52317522"
 
 我们可以使用[拆分数据][split]模块的输出，但我们选择使用左输出作为训练数据，右输出作为测试数据。  
 
-如[上一步骤](walkthrough-2-upload-data.md)中所述，将高信贷风险错误分类为低的成本比将低信用风险错误分类为高的成本高五倍。 考虑到这一点，我们生成一个新的数据集来反映这个成本函数。 在新数据集中，每个高风险示例会复制五次，而每个低风险示例则不复制。   
+如[上一步骤](walkthrough-2-upload-data.md)中所述，将高信用风险错误分类为低的成本比将低信用风险错误分类为高的成本高五倍。 考虑到这一点，我们生成一个反映此成本函数的新数据集。 在新数据集中，每个高风险示例会复制五次，而每个低风险示例则不复制。   
 
 我们可以使用 R 代码进行此复制：  
 
@@ -164,7 +163,7 @@ ms.locfileid: "52317522"
 
 有关在实验中使用 R 脚本的详细信息，请参阅[使用 R 扩展实验](extend-your-experiment-with-r.md)。
 
-**下一步：[训练和评估模型](walkthrough-4-train-and-evaluate-models.md)**
+**下一步：[和评估模型](walkthrough-4-train-and-evaluate-models.md)**
 
 [0]: ./media/walkthrough-3-create-new-experiment/create-new-experiment.png
 [5]: ./media/walkthrough-3-create-new-experiment/rename-experiment.png

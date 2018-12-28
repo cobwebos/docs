@@ -1,7 +1,7 @@
 ---
-title: 获取 .gif 图像 - 必应图像搜索 API
+title: 使用必应图像搜索 API 搜索 .gif 图像
 titleSuffix: Azure Cognitive Services
-description: 如何使用必应图像搜索 API 获取有关 .gif 图像的详细信息。
+description: 使用必应图像搜索 API 在 Web 中搜索 GIF 图像。
 services: cognitive-services
 author: MikeDodaro
 manager: cgronlun
@@ -10,16 +10,17 @@ ms.component: bing-image-search
 ms.topic: article
 ms.date: 04/24/2018
 ms.author: rosh
-ms.openlocfilehash: 82a096ccc1ead9bfb542663ae193539fc227c1fb
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.custom: seodec2018
+ms.openlocfilehash: 7536452d3ed0030b34e4f30deba56d6d8ae1957c
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48870241"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53249305"
 ---
-# <a name="search-for-gif-images-using-the-bing-image-search-api"></a>使用必应图像搜索 API 搜索 .gif 图像
+# <a name="search-for-gif-images"></a>搜索 .gif 图像 
 
-借助必应图像搜索 API，还可以在整个 Web 上搜索最相关的 .gif 图像。  开发人员可以在各种会话场景中集成动人的 GIF。 
+借助必应图像搜索 API，还可以在整个 Web 上搜索最相关的 .gif 图像。  开发人员可以在各种会话场景中集成动人的 GIF。 
 
 以下 URL 是对动态 .gif 图像的查询。
 ````
