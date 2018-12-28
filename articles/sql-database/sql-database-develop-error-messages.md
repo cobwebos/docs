@@ -13,12 +13,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 10/31/2018
-ms.openlocfilehash: 71a23e982f1e4ae5609d4f9a160cd1861e043ea1
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 00fe4e109df2ac8954e657a1a567842ec5eb7d37
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51251809"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53317451"
 ---
 # <a name="sql-error-codes-for-sql-database-client-applications-database-connection-errors-and-other-issues"></a>SQL 数据库客户端应用程序的 SQL 错误代码：数据库连接错误和其他问题
 
@@ -37,7 +37,7 @@ Azure 基础结构能够在 SQL 数据库服务中出现大量工作负荷时动
 * 服务器 &lt;Azure_instance&gt; 上的数据库 &lt;db_name&gt; 当前不可用。 请稍后重试连接。 如果问题仍然存在，请与客户支持人员联系，并向其提供会话跟踪 ID &lt;session_id&gt;
 * 服务器 &lt;Azure_instance&gt; 上的数据库 &lt;db_name&gt; 当前不可用。 请稍后重试连接。 如果问题仍然存在，请与客户支持人员联系，并向其提供会话跟踪 ID &lt;session_id&gt;。 （Microsoft SQL Server，错误：40613）
 * 远程主机强行关闭了现有连接。
-* System.Data.Entity.Core.EntityCommandExecutionException：执行命令定义时出错。 有关详细信息，请参阅“内部异常”。 ---> System.Data.SqlClient.SqlException：在接收来自服务器的结果时发生传输级错误。 （提供程序：会话提供程序，错误：19 - 物理连接不可用）
+* System.Data.Entity.Core.EntityCommandExecutionException：执行命令定义时出错了。 有关详细信息，请参阅“内部异常”。 ---> System.Data.SqlClient.SqlException：在接收来自服务器的结果时发生传输级错误。 （提供程序：会话提供程序，错误：19 - 物理连接不可用）
 * 到辅助数据库的连接尝试失败，因为该数据库正处于重新配置过程中，并且当在主数据库上进行活动的事务时，它正忙于应用新页。 
 
 有关重试逻辑的代码示例，请参阅：
@@ -90,12 +90,12 @@ Azure 基础结构能够在 SQL 数据库服务中出现大量工作负荷时动
 
 相关主题：
 
-* 以下位置提供了更多详细信息：[Azure SQL 数据库资源限制](sql-database-service-tiers-dtu.md)。
+* 有关更多详细信息，请参阅此处：[Azure SQL 数据库资源限制](sql-database-service-tiers-dtu.md)。
 
 | 错误代码 | 严重性 | Description |
 | ---:| ---:|:--- |
-| 10928 |20 |资源 ID：%d。 数据库的 %s 限制是 %d 且已达到该限制。 有关详细信息，请参阅 [http://go.microsoft.com/fwlink/?LinkId=267637](https://go.microsoft.com/fwlink/?LinkId=267637)。<br/><br/>资源 ID 指示已达到限制的资源。 对于工作线程，资源 ID = 1。 对于会话，资源 ID = 2。<br/><br/>有关此错误以及如何解决此错误的详细信息，请参阅：<br/>• [Azure SQL 数据库资源限制](sql-database-service-tiers-dtu.md)。 |
-| 10929 |20 |资源 ID：%d。 %s 最小保证为 %d，最大限制为 %d，数据库的当前使用率为 %d。 但是，服务器当前太忙，无法支持针对该数据库的数目大于 %d 的请求。 有关详细信息，请参阅 [http://go.microsoft.com/fwlink/?LinkId=267637](https://go.microsoft.com/fwlink/?LinkId=267637)。 否则，请稍后重试。<br/><br/>资源 ID 指示已达到限制的资源。 对于工作线程，资源 ID = 1。 对于会话，资源 ID = 2。<br/><br/>有关此错误以及如何解决此错误的详细信息，请参阅：<br/>• [Azure SQL 数据库资源限制](sql-database-service-tiers-dtu.md)。 |
+| 10928 |20 |资源 ID：%d。 数据库的 %s 限制是 %d 且已达到该限制。 有关详细信息，请参阅[单一数据库和入池数据库的 SQL 数据库资源限制](https://docs.microsoft.com/azure/sql-database/sql-database-resource-limits-logical-server)。<br/><br/>资源 ID 指示已达到限制的资源。 对于工作线程，资源 ID = 1。 对于会话，资源 ID = 2。<br/><br/>有关此错误以及如何解决此错误的详细信息，请参阅：<br/>• [Azure SQL 数据库资源限制](sql-database-service-tiers-dtu.md)。 |
+| 10929 |20 |资源 ID：%d。 %s 最小保证为 %d，最大限制为 %d，数据库的当前使用率为 %d。 但是，服务器当前太忙，无法支持针对该数据库的数目大于 %d 的请求。 有关详细信息，请参阅[单一数据库和入池数据库的 SQL 数据库资源限制](https://docs.microsoft.com/azure/sql-database/sql-database-resource-limits-logical-server)。 否则，请稍后重试。<br/><br/>资源 ID 指示已达到限制的资源。 对于工作线程，资源 ID = 1。 对于会话，资源 ID = 2。<br/><br/>有关此错误以及如何解决此错误的详细信息，请参阅：<br/>• [Azure SQL 数据库资源限制](sql-database-service-tiers-dtu.md)。 |
 | 40544 |20 |数据库已达到大小配额。 请将数据分区或删除、删除索引或查阅文档以找到可能的解决方案。 |
 | 40549 |16 |由于有长时间运行的事务，已终止会话。 请尝试缩短事务运行时间。 |
 | 40550 |16 |由于会话获取的锁过多，已终止该会话。 请尝试在单个事务中读取或修改更少的行。 |
@@ -109,7 +109,7 @@ Azure 基础结构能够在 SQL 数据库服务中出现大量工作负荷时动
 | 错误代码 | 严重性 | Description | 纠正措施 |
 |:--- |:--- |:--- |:--- |
 | 1132 | 17 |弹性池已达到其存储限制。 弹性池的存储使用不能超过 (%d) MB。 达到弹性池的存储限制时，尝试向数据库写入数据。 |在可能的情况下，考虑增加弹性池的 DTU 数并/或将存储添加到弹性池，以便提高其存储限制、减少弹性池中各数据库使用的存储，或者从弹性池中删除数据库。 |
-| 10929 | 16 |%s 最小保证为 %d，最大限制为 %d，数据库的当前使用率为 %d。 但是，服务器当前太忙，无法支持针对该数据库的数目大于 %d 的请求。 请参阅 [http://go.microsoft.com/fwlink/?LinkId=267637](https://go.microsoft.com/fwlink/?LinkId=267637) 以获取帮助。 否则，请稍后重试。 每个数据库的 DTU/vCore 最小值；每个数据库的 DTU/vCore 最大值。 弹性池中所有数据库上尝试的并发辅助进程（请求）总数超过池限制。 |在可能的情况下，考虑增加弹性池的 DTU 数或 vCores 数，以便提高其辅助角色限制，或者从弹性池中删除数据库。 |
+| 10929 | 16 |%s 最小保证为 %d，最大限制为 %d，数据库的当前使用率为 %d。 但是，服务器当前太忙，无法支持针对该数据库的数目大于 %d 的请求。 如需帮助，请参阅[单一数据库和入池数据库的 SQL 数据库资源限制](https://docs.microsoft.com/azure/sql-database/sql-database-resource-limits-logical-server)。 否则，请稍后重试。 每个数据库的 DTU/vCore 最小值；每个数据库的 DTU/vCore 最大值。 弹性池中所有数据库上尝试的并发辅助进程（请求）总数超过池限制。 |在可能的情况下，考虑增加弹性池的 DTU 数或 vCores 数，以便提高其辅助角色限制，或者从弹性池中删除数据库。 |
 | 40844 | 16 |弹性池中数据库“%ls”（位于服务器“%ls”上）是“%ls”版本的数据库，不能有连续的复制关系。  |不适用 |
 | 40857 | 16 |找不到服务器“%ls”的弹性池，弹性池名称：“%ls”。 指定的弹性池在指定的服务器中不存在。 | 提供有效的弹性池名称。 |
 | 40858 | 16 |弹性池“%ls”已存在于服务器“%ls”中。 指定的弹性池已存在于指定的逻辑服务器中。 | 提供新弹性池名称。 |

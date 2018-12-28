@@ -17,14 +17,14 @@ ms.date: 10/27/2017
 ms.author: celested
 ms.reviewer: andret
 ms.custom: aaddev
-ms.openlocfilehash: 60186d44437a866793b40c9d6f0263235803475f
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 7374b3f71474cb4d4e59e9d81ab1de7bea265483
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52422433"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53337132"
 ---
-# <a name="support-and-help-options-for-developers"></a>开发人员的支持和帮助选项 
+# <a name="support-and-help-options-for-developers"></a>开发人员的支持和帮助选项
 
 不管是刚刚开始与 Azure Active Directory、Microsoft 标识或 Microsoft 图形 API 集成，还是正在应用程序中实现新功能，有时，都需要从社区获得帮助，或了解开发人员可用的支持选项。 本文帮助开发人员了解这些选项，摘要如下：
 
@@ -38,7 +38,7 @@ ms.locfileid: "52422433"
 
 ## <a name="search"></a>搜索
 
-如果遇到开发相关的问题，也许能够在我们的文档、[github 示例](https://github.com/azure-samples)或 [Stack Overflow](https://www.stackoverflow.com) 问题解答中找到所需的答案。
+如果遇到开发相关的问题，也许能够在我们的文档、[GitHub 示例](https://github.com/azure-samples)或 [Stack Overflow](https://www.stackoverflow.com) 问题解答中找到所需的答案。
 
 ### <a name="scoped-search"></a>范围搜索
 为了更快地找到结果，请在[偏好的搜索引擎](https://bing.com)中使用以下语句，将搜索范围限定为 Stack Overflow、我们的文档和我们的代码示例：
@@ -76,7 +76,7 @@ Stack Overflow 是解决开发相关问题的首选渠道 - 社区成员和 Micr
 |与身份验证或授权主题相关的其他任何方面 |[[azure-active-directory]](https://stackoverflow.com/questions/tagged/azure-active-directory)
 <br/>
 > [!TIP]
-> Stack Overflow 中的以下文章包含有关如何提问以及添加源代码的提示 - 遵循这些准则有助于提高社区成员快速评估和回复问题的可能性：  
+> Stack Overflow 中的以下文章包含有关如何提问以及添加源代码的提示 - 遵循这些准则有助于提高社区成员快速评估和回复问题的可能性：
 > - [如何正确提问](https://stackoverflow.com/help/how-to-ask)
 > - [如何创建最小、完整且可验证的示例](https://stackoverflow.com/help/mcve)
 

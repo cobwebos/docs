@@ -9,16 +9,16 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/05/2018
-ms.openlocfilehash: 1136d97ad1c1d02320331e6d2013b68526d5abb4
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: f76dfc8499d294c2c682c4d9c4cf2cd2f858432f
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51277884"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53408848"
 ---
-# <a name="use-spark-to-read-and-write-hbase-data"></a>使用 Spark 读取和写入 HBase 数据
+# <a name="use-apache-spark-to-read-and-write-apache-hbase-data"></a>使用 Apache Spark 读取和写入 Apache HBase 数据
 
-通常使用 Apache HBase 的低级别 API（扫描、获取和放置）或者通过 Phoenix 使用 SQL 语法来查询 Apache HBase。 Apache 还提供 Spark HBase 连接器，这是一个查询并修改 HBase 存储的数据的方便且有效的替代方案。
+通常使用 Apache HBase 的低级别 API（扫描、获取和放置）或者通过 Apache Phoenix 使用 SQL 语法来查询 Apache HBase。 Apache 还提供 Apache Spark HBase 连接器，这是一个查询并修改 HBase 存储的数据的方便且高效的替代方案。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -38,9 +38,9 @@ ms.locfileid: "51277884"
 5. 定义将架构从 Spark 映射到 HBase 的目录。
 6. 使用 RDD 或 DataFrame API 与 HBase 数据进行交互。
 
-## <a name="prepare-sample-data-in-hbase"></a>在 HBase 中准备示例数据
+## <a name="prepare-sample-data-in-apache-hbase"></a>在 Apache HBase 中准备示例数据
 
-此步骤中，在 HBase 中创建并填充一个简单的表，然后可使用 Spark 来查询。
+此步骤中，在 Apache HBase 中创建并填充一个简单的表，然后可使用 Spark 来查询。
 
 1. 使用 SSH 连接到 HBase 集群的头节点。 有关详细信息，请参阅[使用 SSH 连接到 HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md)。
 2. 运行 HBase shell：
@@ -132,7 +132,7 @@ ms.locfileid: "51277884"
 
 ## <a name="define-a-catalog-and-query"></a>定义目录和查询
 
-在此步骤中，定义一个将架构从 Spark 映射到 HBase 的目录对象。 
+在此步骤中，定义一个将架构从 Apache Spark 映射到 Apache HBase 的目录对象。 
 
 1. 在打开的 Spark Shell 中，运行以下 `import` 语句：
 
@@ -244,4 +244,4 @@ ms.locfileid: "51277884"
 
 ## <a name="next-steps"></a>后续步骤
 
-* [Spark HBase 连接器](https://github.com/hortonworks-spark/shc)
+* [Apache Spark HBase 连接器](https://github.com/hortonworks-spark/shc)

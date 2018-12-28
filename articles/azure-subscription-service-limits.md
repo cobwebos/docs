@@ -8,14 +8,14 @@ tags: billing
 ms.assetid: 60d848f9-ff26-496e-a5ec-ccf92ad7d125
 ms.service: billing
 ms.topic: article
-ms.date: 11/05/2018
+ms.date: 12/10/2018
 ms.author: byvinyal
-ms.openlocfilehash: bd20ea58c7693b3be8f583810384aa26dde572d8
-ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
+ms.openlocfilehash: eb93dfae91ee84400c32af7b662c69aefda979d2
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51219556"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53409167"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Azure 订阅和服务限制、配额和约束
 本文列出了一些最常见的 Microsoft Azure 限制，有时也称为配额。 本文当前并不涵盖所有 Azure 服务。 随着时间的推移，此列表将得以展开并更新，以便涵盖更多平台。
@@ -54,10 +54,9 @@ ms.locfileid: "51219556"
 * [Azure Maps](#azure-maps-limits)
 * [Azure Monitor](#monitor-limits)
 * [Azure Policy](#azure-policy-limits)
-* [Azure Redis 缓存](#azure-redis-cache-limits)
+* [用于 Redis 的 Azure 缓存](#azure-redis-cache-limits)
 * [备份](#backup-limits)
 * [批处理](#batch-limits)
-* [Batch AI](#batch-ai-limits)
 * [BizTalk 服务](#biztalk-services-limits)
 * [CDN](#cdn-limits)
 * [云服务](#cloud-services-limits)
@@ -220,9 +219,6 @@ ms.locfileid: "51219556"
 ### <a name="batch-limits"></a>Batch 限制
 [!INCLUDE [azure-batch-limits](../includes/azure-batch-limits.md)]
 
-### <a name="batch-ai-limits"></a>Batch AI 限制
-[!INCLUDE [azure-batch-ai-limits](../includes/azure-batch-ai-limits.md)]
-
 ### <a name="biztalk-services-limits"></a>BizTalk 服务限制
 下表显示了 Azure BizTalk 服务的限制。
 
@@ -329,7 +325,7 @@ Azure Cosmos DB 是全局缩放数据库，可对吞吐量和存储进行缩放�
 ### <a name="api-management-limits"></a>API 管理限制
 [!INCLUDE [api-management-service-limits](../includes/api-management-service-limits.md)]
 
-### <a name="azure-redis-cache-limits"></a>Azure Redis 缓存限制
+### <a name="azure-cache-for-redis-limits"></a>Azure Redis 缓存限制
 [!INCLUDE [redis-cache-service-limits](../includes/redis-cache-service-limits.md)]
 
 ### <a name="key-vault-limits"></a>密钥保管库限制

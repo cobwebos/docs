@@ -15,14 +15,17 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 06/08/2018
 ms.author: danlep
-ms.openlocfilehash: c5e4c1569464d2e204edf13fe7534d80780524e8
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ROBOTS: NOINDEX
+ms.openlocfilehash: 75a9a5e9bafd62b320397c00ef6574b7536d9e09
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36294952"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53407774"
 ---
 # <a name="migrate-to-the-updated-batch-ai-api"></a>迁移到更新后的 Batch AI API
+
+[!INCLUDE [batch-ai-retiring](../../includes/batch-ai-retiring.md)]
 
 Batch AI REST API 版本 2018-05-01 和相关的 Batch AI SDK 和工具中引入了重大更改和新功能。
 

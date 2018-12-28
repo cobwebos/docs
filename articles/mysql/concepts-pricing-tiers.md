@@ -8,22 +8,22 @@ manager: kfile
 editor: jasonwhowell
 ms.service: mysql
 ms.topic: article
-ms.date: 10/10/2018
-ms.openlocfilehash: e3d0e54c32a08c613407f1a90c78cc63be929078
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.date: 12/11/2018
+ms.openlocfilehash: 644a3a2fe6bce6ccc99b0c1c99ea07b129676653
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49091787"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53320840"
 ---
 # <a name="azure-database-for-mysql-pricing-tiers"></a>Azure Database for MySQL 定价层
 
-在“基本”、“常规用途”和“内存优化”这三个不同的定价层中，Azure Database for MySQL 服务器可以在其中的一个定价层中创建。 定价层的差异表现在可以预配的 vCore 中的计算量、每个 vCore 的内存，以及用于存储数据的存储技术。 所有资源都在 MySQL 服务器级别预配。 一个服务器可以有一个或多个数据库。
+可以在以下三个不同的定价层之一中创建 Azure Database for MySQL 服务器：“基本”、“常规用途”和“内存优化”。 定价层的差异表现在可以预配的 vCore 中的计算量、每个 vCore 的内存，以及用于存储数据的存储技术。 所有资源都在 MySQL 服务器级别预配。 一个服务器可以有一个或多个数据库。
 
 |    | **基本** | **常规用途** | **内存优化** |
 |:---|:----------|:--------------------|:---------------------|
 | 计算的代 | 第 4 代、第 5 代 | 第 4 代、第 5 代 | 第 5 代 |
-| vCore 数 | 1, 2 | 2, 4, 8, 16, 32 |2, 4, 8, 16 |
+| vCore 数 | 1, 2 | 2, 4, 8, 16, 32, 64 |2, 4, 8, 16, 32 |
 | 每个 vCore 的内存 | 2 GB | 5 GB | 10 GB |
 | 存储大小 | 5 GB 到 1 TB | 5GB 到 4TB | 5GB 到 4TB |
 | 存储类型 | Azure 标准存储 | Azure 高级存储 | Azure 高级存储 |
@@ -42,6 +42,9 @@ ms.locfileid: "49091787"
 ## <a name="compute-generations-and-vcores"></a>计算代数和 vCore 数
 
 计算资源以 vCore 的形式提供，代表基础硬件的逻辑 CPU。 目前提供两代计算（第 4 代和第 5 代）供你选择。 第 4 代逻辑 CPU 基于 Intel E5-2673 v3 (Haswell) 2.4-GHz 处理器。 第 5 代逻辑 CPU 基于 Intel E5-2673 v4 (Broadwell) 2.3-GHz 处理器。 可在以下区域获取第 4 代和第 5 代（“X”表示可用）。
+
+> [!IMPORTANT]
+> 从 2018 年 12 月 12 日开始，新客户将无法在巴西南部、加拿大中部、加拿大东部、东亚、美国东部 2、印度中部、印度西部、日本西部、美国中北部、美国西部预配第 4 计算代系服务器。 从 2019 年 2 月 1 日起，这些区域中此前创建的第 4 计算代系服务器将迁移到第 5 计算代系。
 
 | **Azure 区域** | **第 4 代** | **第 5 代** |
 |:---|:----------:|:--------------------:|

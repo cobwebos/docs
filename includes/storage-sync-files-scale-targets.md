@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/18/2018
 ms.author: wgries
 ms.custom: include file
-ms.openlocfilehash: 03fe587ede297ac7dea90b7a5fb2d5323f60659e
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 00124562d3bc21f9139ae54f022d7893a4eaf11c
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51628096"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53326481"
 ---
 | 资源 | 目标 | 硬限制 |
 |----------|--------------|------------|
@@ -22,7 +22,7 @@ ms.locfileid: "51628096"
 | 每个存储同步服务的已注册服务器 | 99 台服务器 | 是 |
 | 每个同步组的云终结点数 | 1 个云终结点 | 是 |
 | 每个同步组的服务器终结点数 | 50 个服务器终结点 | 否 |
-| 每个服务器的服务器终结点数 | 33 到 99 个服务器终结点 | 是，但根据配置（CPU、内存、卷、文件改动项、文件计数等）而有所不同 |
+| 每个服务器的服务器终结点数 | 30 个服务器终结点 | 是 |
 | 终结点大小 | 4 TiB | 否 |
 | 每个同步组的文件系统对象数（目录和文件） | 2500 万个对象 | 否 |
 | 目录中的最大文件系统对象（目录和文件）数 | 200,000 个对象 | 是 |

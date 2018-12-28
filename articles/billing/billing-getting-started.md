@@ -15,22 +15,22 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/24/2018
 ms.author: cwatson
-ms.openlocfilehash: c19769dda281f4346c23b823ea00eac83790b618
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: a110d14293b391a6856b56d0d8a84a24a90d33e1
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52582524"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53341654"
 ---
 # <a name="prevent-unexpected-charges-with-azure-billing-and-cost-management"></a>通过 Azure 计费和成本管理来防止意外费用
 
-注册 Azure 时，可以做几件事情，以便更好地了解费用。 [定价计算器](https://azure.microsoft.com/pricing/calculator/)可在创建 Azure 资源之前提供成本估计。 [Azure 门户](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)可提供订阅的当前成本细分和预测。 如果要对不同项目或团队的成本进行分组和了解，请查看[资源标记](../azure-resource-manager/resource-group-using-tags.md)。 如果组织有希望使用的报告系统，请查看[计费 API](billing-usage-rate-card-overview.md)。 
+注册 Azure 时，可以做几件事情，以便更好地了解费用。 [定价计算器](https://azure.microsoft.com/pricing/calculator/)可在创建 Azure 资源之前提供成本估计。 [Azure 门户](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)可提供订阅的当前成本细分和预测。 如果要对不同项目或团队的成本进行分组和了解，请查看[资源标记](../azure-resource-manager/resource-group-using-tags.md)。 如果组织有希望使用的报告系统，请查看[计费 API](billing-usage-rate-card-overview.md)。
 
 - 如果订阅是企业协议 (EA)，则可在 Azure 门户中通过公共预览查看费用。 如果订阅通过云解决方案提供商 (CSP) 或 Azure 赞助，则以下某些功能可能不适用。 有关详细信息，请参阅[适用于 EA、CSP 和赞助的其他资源](#other-offers)。
 
 - 如果订阅是免费试用版 [Visual Studio](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)、Azure 开放许可 (AIO) 或 BizSpark，则使用所有信用额度后，订阅将被自动禁用。 了解[支出限制](#spending-limit)，避免意外禁用订阅。
 
-- 如果已注册 [Azure 免费帐户](https://azure.microsoft.com/free/)，[则可免费使用某些最常用的 Azure 服务 12 个月](billing-create-free-services-included-free-account.md)。 请参考下面列出的建议，同时请参阅[避免为免费帐户付费](billing-avoid-charges-free-account.md)。
+- 如果已注册了 [Azure 免费帐户](https://azure.microsoft.com/free/)，[则可免费使用某些最常用的 Azure 服务 12 个月](billing-create-free-services-included-free-account.md)。 请参考下面列出的建议，同时请参阅[避免为免费帐户付费](billing-avoid-charges-free-account.md)。
 
 > [!div class="nextstepaction"]
 > [帮助改进 Azure 计费文档](https://go.microsoft.com/fwlink/p/?linkid=2010091) 
@@ -75,17 +75,17 @@ ms.locfileid: "52582524"
 
 ![显示在门户中设置标记的屏幕截图](./media/billing-getting-started/tags.PNG)
 
-各标记显示了完全不同的成本报告视图。 例如，在[成本分析视图](#costs)中可立即查看，而在[详细使用情况.csv](#invoice-and-usage) 中则需在第一个计费期之后才能查看。
+各标记显示了完全不同的成本报告视图。 例如，在[成本分析视图](#costs)中可立即查看，而在详细使用情况 .csv 中则需在第一个计费期之后才能查看。
 
 有关详细信息，请参阅[使用标记来组织 Azure 资源](../azure-resource-manager/resource-group-using-tags.md)。
 
 ### <a name="costs"></a>定期查看门户中的成本明细和消耗率
 
-服务开始运行后，请定期查看其费用。 可在 Azure 门户中查看当前费用和消耗率。 
+服务开始运行后，请定期查看其费用。 可在 Azure 门户中查看当前费用和消耗率。
 
-1. 访问 [Azure 门户中的订阅边栏选项卡](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)并选择订阅。
+1. 访问 [Azure 门户中的“订阅”](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)并选择一个订阅。
 
-2. 应该在弹出边栏选项卡中查看成本明细和消耗率。 产品/服务可能不支持此项（此时会在顶部附近显示一条警告）。
+2. 如果你的订阅支持该功能，则可以查看成本明细和消耗率。
 
     ![Azure 门户中消耗率和明细的屏幕截图](./media/billing-getting-started/burn-rate.PNG)
 
@@ -99,15 +99,15 @@ ms.locfileid: "52582524"
 
     ![Azure 门户中费用历史记录视图的屏幕截图](./media/billing-getting-started/costhistory.PNG)
 
-建议对比选择服务时看到的预计值查看现在的费用。 如果成本和预计值相差很大，请再次查看之前为资源选择的定价计划（例如 A1 或 A0 VM）。 
+建议将你看到的成本与你之前选择了服务时看到的估计值进行对比。 如果成本和估计值相差很大，请再次查看之前为资源选择的定价计划。
 
-### <a name="consider-enabling-cost-cutting-features-like-auto-shutdown-for-vms"></a>针对 VM，建议启用自动关闭等降低成本的功能
+### <a name="consider-enabling-cost-cutting-features-like-auto-shutdown-for-vms"></a>对于 VM，建议启用自动关闭等降低成本的功能
 
-可在 Azure 门户中为 VM 配置自动关闭，具体视方案而定。 有关详细信息，请参阅[使用 Azure 资源管理器的 VM 的自动关闭功能](https://azure.microsoft.com/blog/announcing-auto-shutdown-for-vms-using-azure-resource-manager/)。
+可在 Azure 门户中为 VM 配置自动关闭，具体视方案而定。 有关详细信息，请参阅[使用 Azure 资源管理器为 VM 设置自动关闭功能](https://azure.microsoft.com/blog/announcing-auto-shutdown-for-vms-using-azure-resource-manager/)。
 
 ![门户中的自动关闭选项的屏幕截图](./media/billing-getting-started/auto-shutdown.PNG)
 
-自动关闭与使用电源选项在 VM 中进行关闭不同。 自动关闭会停止并解除分配 VM，以便停止额外使用费。 有关详细信息，请参阅 [Linux VM](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) 和 [Windows VM](https://azure.microsoft.com/pricing/details/virtual-machines/windows/) 有关 VM 状态的定价常见问题解答。
+自动关闭与在 VM 中使用电源选项进行关闭不同。 自动关闭会停止并解除分配 VM，以便停止额外的使用费。 有关详细信息，请参阅 [Linux VM](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) 和 [Windows VM](https://azure.microsoft.com/pricing/details/virtual-machines/windows/) 有关 VM 状态的定价常见问题解答。
 
 有关开发和测试环境的更多降低成本功能，请参阅 [Azure 开发测试实验室](https://azure.microsoft.com/services/devtest-lab/)。
 
@@ -147,28 +147,29 @@ ms.locfileid: "52582524"
 #### <a name="EA"></a>在 Azure 门户中预览“企业协议”成本视图 
 
 企业成本视图目前为公共预览版。 注意事项：
-- 订阅费用基于使用情况，且独立于预付金额、超额用量、已包含数量、调整和税。 实际费用按注册级计算。 
-- 与企业门户中的值相比，Azure 门户中显示的数量可能会存在延迟。  
-- 如果未看见费用，可能是以下几种原因之一所致：
-    - 你在订阅级别的 RBAC 权限不足。 若要查看企业成本视图，必须在订阅级别是账单读者、读者、参与者或所有者。
+
+- 订阅费用基于使用情况，并且不包括预付金额、超额用量、已包含数量、调整和税。 实际费用按注册级计算。
+- Azure 门户中显示的金额可能不同于企业门户中显示的金额。 企业门户中的更新可能要花费几分钟时间来完成，之后，更改才会显示在 Azure 门户中。
+- 如果未看到成本，可能是以下几种原因之一所致：
+    - 你在订阅级别没有权限。 若要查看企业成本视图，必须在订阅级别是账单读者、读者、参与者或所有者。
     - 你是帐户所有者且你的注册管理员已禁用“AO 查看费用”设置。  请联系你的注册管理员以获取费用访问权限。 
-    - 你是部门管理员且你的注册管理员已禁用“DA 查看费用”设置。  请联系注册管理员以获取访问权限。 
-    - 是通过一个通道合作伙伴购买的 Azure，而该合作伙伴尚未发布定价信息。  
-- 与费用访问相关的设置在企业门户中更新后，Azure 门户几分钟后才会反映相应更改。
+    - 你是部门管理员且你的注册管理员已禁用“DA 查看费用”设置。  联系你的注册管理员以获取访问权限。
+    - 你是从某个渠道合作伙伴购买的 Azure，而该合作伙伴未发布定价信息。  
+- 如果你在企业门户中更新与成本访问相关的设置，则更改过几分钟后才会显示在 Azure 门户中。
 - 支出限制和发票指南不适用于 EA 订阅。
 
 ### <a name="check-your-subscription-and-access"></a>查看订阅和访问权限
 
-查看成本需要[对计费信息具有订阅级别访问权限](billing-manage-access.md)，但只有帐户管理员可以访问[帐户中心](https://account.azure.com/Subscriptions)、更改计费信息和管理订阅。 帐户管理员是完成注册过程的人员。 有关详细信息，请参阅[添加或更改管理订阅或服务的 Azure 管理员角色](billing-add-change-azure-subscription-administrator.md)。
+若要查看成本，必须具有[对计费信息的订阅级访问权限](billing-manage-access.md)。 只有帐户管理员可以访问[帐户中心](https://account.azure.com/Subscriptions)、更改计费信息以及管理订阅。 帐户管理员是完成注册过程的人员。 有关详细信息，请参阅[添加或更改管理订阅或服务的 Azure 管理员角色](billing-add-change-azure-subscription-administrator.md)。
 
-要查看你是否是帐户管理员，请转到 [Azure 门户中的订阅边栏选项卡](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)，并查看你有权访问的订阅列表。 在“我的角色”下查看。 如果显示*帐户管理员*，则可以进行操作。 如果显示所有者等其他信息，则表示没有完全权限。
+若要查看你是否为帐户管理员，请转到 [Azure 门户中的“订阅”](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)。 查看你有权访问的订阅的列表。 在“我的角色”下查看。 如果显示*帐户管理员*，则可以进行操作。 如果显示所有者等其他信息，则表示没有完全权限。
 
 ![Azure 门户中订阅视图中的角色的屏幕截图](./media/billing-getting-started/sub-blade-view.PNG)
 
-如果不是帐户管理员，则其他人可以通过 [Azure Active Directory 基于角色的访问控制](../role-based-access-control/role-assignments-portal.md) (RBAC) 授予部分访问权限。 要管理订阅和更改计费信息，请[查找帐户管理员](billing-subscription-transfer.md#whoisaa)，请其执行该任务或请其[将订阅转交给你](billing-subscription-transfer.md)。
+如果你不是帐户管理员，则某人也许可以使用 [Azure Active Directory 基于角色的访问控制](../role-based-access-control/role-assignments-portal.md) (RBAC) 向你授予部分访问权限。 若要管理订阅以及更改计费信息，请[查找帐户管理员](billing-subscription-transfer.md#whoisaa)。请求帐户管理员来执行任务，或者[将订阅转让给你](billing-subscription-transfer.md)。
 
 当帐户管理员不再属于组织，并且需要管理帐单时，请[联系我们](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)。
 
 ## <a name="need-help-contact-us"></a>需要帮助？ 请联系我们。
 
-如果你有任何疑问或需要帮助，请[创建支持请求](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)。
+如有任何疑问或需要帮助，请[创建支持请求](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)。

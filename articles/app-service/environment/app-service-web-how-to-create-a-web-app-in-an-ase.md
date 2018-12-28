@@ -1,5 +1,5 @@
 ---
-title: 在应用服务环境 v1 中创建 Web 应用
+title: 在应用服务环境 v1 中创建 Web 应用 - Azure
 description: 了解如何在应用服务环境 v1 中创建 Web 应用和应用服务计划
 services: app-service
 documentationcenter: ''
@@ -12,14 +12,15 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 7/11/2017
+ms.date: 07/11/2017
 ms.author: ccompy
-ms.openlocfilehash: 1e8540409c6174ad02bd2d9d57c53e0279f49871
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.custom: seodec18
+ms.openlocfilehash: 84a8a0687a1da0eaf7842a9bf6115c1d0f5d3fd1
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
-ms.locfileid: "29386905"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53338135"
 ---
 # <a name="create-a-web-app-in-an-app-service-environment-v1"></a>在应用服务环境 v1 中创建 Web 应用
 
@@ -112,4 +113,4 @@ ms.locfileid: "29386905"
 [HowtoScale]: app-service-web-scale-a-web-app-in-an-app-service-environment.md
 [HowtoConfigureASE]: app-service-web-configure-an-app-service-environment.md
 [ResourceGroups]: ../../azure-resource-manager/resource-group-overview.md
-[AzurePowershell]: http://azure.microsoft.com/documentation/articles/powershell-install-configure/
+[AzurePowershell]: https://azure.microsoft.com/documentation/articles/powershell-install-configure/

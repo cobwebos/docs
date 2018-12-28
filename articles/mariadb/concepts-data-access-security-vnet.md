@@ -8,12 +8,12 @@ services: mariadb
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 11/19/2018
-ms.openlocfilehash: 31eec9e146c64e2310ab27414952593140f11cb2
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.openlocfilehash: 8c4f14849c39414217837a3c86fb6e067cd87c90
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52276858"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53434335"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-database-for-mariadb"></a>对 Azure Database for MariaDB 使用虚拟网络服务终结点和规则
 
@@ -33,11 +33,11 @@ ms.locfileid: "52276858"
 
 ## <a name="terminology-and-description"></a>术语和说明
 
-虚拟网络：可以让虚拟网络与 Azure 订阅相关联。
+**虚拟网络：** 可以让虚拟网络与 Azure 订阅相关联。
 
-子网：虚拟网络包含子网。 你所拥有的任何 Azure 虚拟机 (VM) 都会分配到子网。 一个子网可能包含多个 VM 或其他计算节点。 虚拟网络之外的计算节点不能访问虚拟网络，除非已将安全性配置为允许这样的访问。
+**子网：** 虚拟网络包含**子网**。 你所拥有的任何 Azure 虚拟机 (VM) 都会分配到子网。 一个子网可能包含多个 VM 或其他计算节点。 虚拟网络之外的计算节点不能访问虚拟网络，除非已将安全性配置为允许这样的访问。
 
-虚拟网络服务终结点：[虚拟网络服务终结点][vm-virtual-network-service-endpoints-overview-649d]是一个子网，其属性值包括一个或多个正式的 Azure 服务类型名称。 本文介绍 **Microsoft.Sql** 的类型名称，即名为“SQL 数据库”的 Azure 服务。 此服务标记也适用于 Azure Database for MariaDB、Azure Database for MySQL 和 Azure Database for PostgreSQL 服务。 务必要注意的一点是，将 Microsoft.Sql 服务标记应用到 VNet 服务终结点时，它将为子网上的所有 Azure SQL 数据库、Azure Database for MariaDB、Azure Database for MySQL 和 Azure Database for PostgreSQL 服务器配置服务终结点通信。
+**虚拟网络服务终结点：**[虚拟网络服务终结点][vm-virtual-network-service-endpoints-overview-649d]是一个子网，其属性值包括一个或多个正式的 Azure 服务类型名称。 本文介绍 **Microsoft.Sql** 的类型名称，即名为“SQL 数据库”的 Azure 服务。 此服务标记也适用于 Azure Database for MariaDB、Azure Database for MySQL 和 Azure Database for PostgreSQL 服务。 务必要注意的一点是，将 Microsoft.Sql 服务标记应用到 VNet 服务终结点时，它将为子网上的所有 Azure SQL 数据库、Azure Database for MariaDB、Azure Database for MySQL 和 Azure Database for PostgreSQL 服务器配置服务终结点通信。
 
 **虚拟网络规则：** 适用于 Azure Database for MariaDB 服务器的虚拟网络规则是一个子网，该子网列在 Azure Database for MariaDB 服务器的访问控制列表 (ACL) 中。 该子网必须包含 Microsoft.Sql 类型名称才会列在 Azure Database for MariaDB 服务器的 ACL 中。
 
@@ -93,8 +93,8 @@ ms.locfileid: "52276858"
 
 在管理虚拟网络服务终结点时，安全角色是分开的。 下述每个角色都需要进行操作：
 
-- 网络管理员：&nbsp;启用终结点。
-- 数据库管理员：&nbsp;更新访问控制列表 (ACL)，将给定的子网添加到 Azure Database for MariaDB 服务器。
+- **网络管理员：**&nbsp; 启用终结点。
+- **数据库管理员：**&nbsp; 更新访问控制列表 (ACL)，将给定的子网添加到 Azure Database for MariaDB 服务器。
 
 RBAC 备用：
 
@@ -117,7 +117,7 @@ RBAC 备用：
 
 - 虚拟网络规则仅适用于 Azure 资源管理器虚拟网络，不适用于[经典部署模型][resource-manager-deployment-model-568f]网络。
 
-- 使用 Microsoft.Sql 服务标记为 Azure Database for MariaDB 启用虚拟网络服务终结点也会为所有 Azure 数据库服务（Azure Database for MariaDB、Azure Database for MySQL、Azure Database for PostgreSQL、Azure SQL 数据库和 Azure SQL 数据仓库）启用终结点。
+- 使用 **Microsoft.Sql** 服务标记为 Azure Database for MariaDB 启用虚拟网络服务终结点也会为以下所有 Azure 数据库服务启用终结点：Azure Database for MariaDB、Azure Database for MySQL、Azure Database for PostgreSQL、Azure SQL 数据库和 Azure SQL 数据仓库。
 
 - 只有常规用途和内存优化服务器才支持 VNet 服务终结点。
 
@@ -149,7 +149,7 @@ RBAC 备用：
 - [Create and manage Azure Database for MariaDB VNet rules using Azure CLI](howto-manage-vnet-using-cli.md)
 -->
 
-<!-- Link references, to text, Within this same Github repo. -->
+<!-- Link references, to text, Within this same GitHub repo. -->
 [resource-manager-deployment-model-568f]: ../azure-resource-manager/resource-manager-deployment-model.md
 
 [vm-virtual-network-overview]: ../virtual-network/virtual-networks-overview.md

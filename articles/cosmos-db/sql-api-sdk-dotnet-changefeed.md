@@ -1,21 +1,20 @@
 ---
-title: Azure Cosmos DB：.NET 更改源处理器 API、SDK 和资源 | Microsoft Docs
+title: Azure Cosmos DB：.NET 更改源处理器 API、SDK 和资源
 description: 了解有关更改源处理器 API 和 SDK 的全部信息，包括发布日期、停用日期和 .NET 更改源处理器 SDK 各版本之间所做的更改。
 services: cosmos-db
 author: ealsur
-manager: kfile
 ms.service: cosmos-db
 ms.component: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: reference
 ms.date: 10/24/2018
 ms.author: maquaran
-ms.openlocfilehash: 327873d228fe92a9da495f802c97eb73612caef9
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 7b6fefd575901648a99bb3a67a05e705622bb74a
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52632477"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53407858"
 ---
 # <a name="net-change-feed-processor-sdk-download-and-release-notes"></a>.NET 更改源处理器 SDK：下载和发行说明
 > [!div class="op_single_selector"]
@@ -28,7 +27,7 @@ ms.locfileid: "52632477"
 > * [Python](sql-api-sdk-python.md)
 > * [REST](https://docs.microsoft.com/rest/api/cosmos-db/)
 > * [REST 资源提供程序](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/)
-> * [SQL](https://msdn.microsoft.com/library/azure/dn782250.aspx)
+> * [SQL](sql-api-query-reference.md)
 > * [BulkExecutor - .NET](sql-api-sdk-bulk-executor-dot-net.md)
 > * [BulkExecutor - Java](sql-api-sdk-bulk-executor-java.md)
 
@@ -42,6 +41,10 @@ ms.locfileid: "52632477"
 ## <a name="release-notes"></a>发行说明
 
 ### <a name="v2-builds"></a>v2 版本
+
+### <a name="a-name225225"></a><a name="2.2.5"/>2.2.5
+* 添加了对使用共享数据库吞吐量的拆分集合的处理支持。
+  * 此版本修复了使用共享数据库吞吐量的拆分集合可能发生的问题，即在拆分导致分区重新平衡时仅创建一个子分区键范围，而不是两个。 发生这种情况时，更改源处理器可能会在删除旧分区键范围的租约时卡住，而无法创建新租约。 此版本中已修复了此问题。
 
 ### <a name="a-name224224"></a><a name="2.2.4"/>2.2.4
 * 添加了新属性 ChangeFeedProcessorOptions.StartContinuation 来支持从请求继续标记开始更改源。 只有当租约集合为空或者租约未设置 ContinuationToken 时才使用此属性。 对于租约集合中设置了 ContinuationToken 的租约，将使用 ContinuationToken 并忽略 ChangeFeedProcessorOptions.StartContinuation。
@@ -155,6 +158,10 @@ Microsoft 至少会在停用 SDK 的 **12 个月**之前发出通知，以便顺
 
 | 版本 | 发布日期 | 停用日期 |
 | --- | --- | --- |
+| [2.2.5](#2.2.5) |2018 年 12 月 13 日 |--- |
+| [2.2.4](#2.2.4) |2018 年 11 月 29 日 |--- |
+| [2.2.3](#2.2.3) |2018 年 11 月 19 日 |--- |
+| [2.2.2](#2.2.2) |2018 年 10 月 31 日 |--- |
 | [2.2.1](#2.2.1) |2018 年 10 月 24 日 |--- |
 | [1.3.3](#1.3.3) |2018 年 5 月 8 日 |--- |
 | [1.3.2](#1.3.2) |2018 年 4 月 18 日 |--- |

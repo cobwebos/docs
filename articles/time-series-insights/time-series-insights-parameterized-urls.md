@@ -1,5 +1,5 @@
 ---
-title: 通过参数化 URL 共享 Azure 时序见解自定义视图 | Microsoft Docs
+title: Azure 时序见解 URL - 通过参数化 URL 共享 Azure 时序见解自定义视图 | Microsoft Docs
 description: 本文介绍如何在 Azure 时序见解中生成参数化 URL，以便轻松共享自定义视图。
 ms.service: time-series-insights
 services: time-series-insights
@@ -10,12 +10,13 @@ ms.reviewer: v-mamcge, jasonh, kfile, anshan
 ms.topic: conceptual
 ms.workload: big-data
 ms.date: 11/21/2017
-ms.openlocfilehash: dbd717d79230c5dc2fc823484376267e7b7b8ab1
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.custom: seodec18
+ms.openlocfilehash: 5b43ba4c3f88c678b160e8aec442fa92b4822a3d
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39628794"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53274354"
 ---
 # <a name="share-a-custom-view-using-a-parameterized-url"></a>通过参数化 URL 共享自定义视图
 
@@ -70,7 +71,7 @@ ms.locfileid: "39628794"
   - 度量值的列名。
 - "predicate":"<string>"
   - 用于服务器端筛选的 where 子句。
--  "useSum":"true"
+- "useSum":"true"
   - 这是一个可选参数，指定对度量值使用总和。  注意，如果所选度量值为“事件”，则默认选择计数。  如果未选择“事件”，则默认选择平均值。  
 
 “multiChartStack=<true/false>”参数可以启用图表中的堆叠，“multiChartSameScale=<true/false>”参数允许在可选参数的多个条件中使用同一 Y 轴比例。  

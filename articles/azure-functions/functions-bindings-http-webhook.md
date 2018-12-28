@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 11/21/2017
 ms.author: cshoe
-ms.openlocfilehash: a20dec67201cb7d8b7ccd3a7662438f2afabfe63
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.openlocfilehash: acd2d5a3448d805b8b3c741139fc5f9a79c40ed2
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52446783"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53317434"
 ---
 # <a name="azure-functions-http-triggers-and-bindings"></a>Azure Functions HTTP 触发器和绑定
 
@@ -30,19 +30,19 @@ HTTP 触发器可进行自定义以响应 [Webhook](https://en.wikipedia.org/wik
 
 ## <a name="packages---functions-1x"></a>包 - Functions 1.x
 
-[Microsoft.Azure.WebJobs.Extensions.Http](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Http) NuGet 包 1.x 版本中提供了 HTTP 绑定。 [azure-webjobs-sdk-extensions](https://github.com/Azure/azure-webjobs-sdk-extensions/tree/v2.x/src/WebJobs.Extensions.Http) GitHub 存储库中提供了此包的源代码。
+[Microsoft.Azure.WebJobs.Extensions.Http](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Http) NuGet 包 1.x 版本中提供了 HTTP 绑定。 [azure-webjobs-sdk-extensions](https://github.com/Azure/azure-webjobs-sdk-extensions/tree/v2.x/src/WebJobs.Extensions.Http) GitHub 存储库中提供了此包的源代码。
 
 [!INCLUDE [functions-package-auto](../../includes/functions-package-auto.md)]
 
 ## <a name="packages---functions-2x"></a>包 - Functions 2.x
 
-[Microsoft.Azure.WebJobs.Extensions.Http](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Http) NuGet 包 3.x 版本中提供了 HTTP 绑定。 [azure-webjobs-sdk-extensions](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.Http/) GitHub 存储库中提供了此包的源代码。
+[Microsoft.Azure.WebJobs.Extensions.Http](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Http) NuGet 包 3.x 版本中提供了 HTTP 绑定。 [azure-webjobs-sdk-extensions](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.Http/) GitHub 存储库中提供了此包的源代码。
 
 [!INCLUDE [functions-package](../../includes/functions-package-auto.md)]
 
 ## <a name="trigger"></a>触发器
 
-借助 HTTP 触发器，可以使用 HTTP 请求调用函数。 可以使用 HTTP 触发器生成无服务器 API 和响应 Webhook。 
+借助 HTTP 触发器，可以使用 HTTP 请求调用函数。 可以使用 HTTP 触发器生成无服务器 API 和响应 Webhook。
 
 默认情况下，在 Functions 1.x 中，HTTP 触发器返回“HTTP 200 正常”和空的正文；在 Functions 2.x 中返回“HTTP 204 无内容”和空的正文。 若要修改该响应，请配置 [HTTP 输出绑定](#output)。
 
@@ -53,8 +53,9 @@ HTTP 触发器可进行自定义以响应 [Webhook](https://en.wikipedia.org/wik
 * [C#](#trigger---c-example)
 * [C# 脚本 (.csx)](#trigger---c-script-example)
 * [F#](#trigger---f-example)
-* [JavaScript](#trigger---javascript-example)
 * [Java](#trigger---java-example)
+* [JavaScript](#trigger---javascript-example)
+* [Python](#trigger---python-example)
 
 ### <a name="trigger---c-example"></a>触发器 - C# 示例
 
@@ -276,6 +277,61 @@ module.exports = function(context, req) {
 };
 ```
 
+### <a name="trigger---python-example"></a>触发器 - Python 示例
+
+以下示例演示 function.json 文件中的一个触发器绑定以及使用该绑定的 [Python 函数](functions-reference-python.md)。 该函数在查询字符串或 HTTP 请求的正文中查找 `name` 参数。
+
+function.json 文件如下所示：
+
+```json
+{
+    "scriptFile": "__init__.py",
+    "disabled": false,    
+    "bindings": [
+        {
+            "authLevel": "function",
+            "type": "httpTrigger",
+            "direction": "in",
+            "name": "req"
+        },
+        {
+            "type": "http",
+            "direction": "out",
+            "name": "res"
+        }
+    ]
+}
+```
+
+[配置](#trigger---configuration)部分解释了这些属性。
+
+下面是 Python 代码：
+
+```python
+import logging
+import azure.functions as func
+
+def main(req: func.HttpRequest) -> func.HttpResponse:
+    logging.info('Python HTTP trigger function processed a request.')
+
+    name = req.params.get('name')
+    if not name:
+        try:
+            req_body = req.get_json()
+        except ValueError:
+            pass
+        else:
+            name = req_body.get('name')
+
+    if name:
+        return func.HttpResponse(f"Hello {name}!")
+    else:
+        return func.HttpResponse(
+            "Please pass a name on the query string or in the request body",
+            status_code=400
+        )
+```
+
 ### <a name="trigger---java-example"></a>触发器 - Java 示例
 
 以下示例演示 function.json 文件中的一个触发器绑定以及使用该绑定的 [Java 函数](functions-reference-java.md)。 该函数返回一个 HTTP 状态代码 200 响应，其中请求正文在触发请求正文前面加上“Hello,”问候语。
@@ -307,7 +363,7 @@ function.json 文件如下所示：
 ```java
 @FunctionName("hello")
 public HttpResponseMessage<String> hello(@HttpTrigger(name = "req", methods = {"post"}, authLevel = AuthorizationLevel.ANONYMOUS), Optional<String> request,
-                        final ExecutionContext context) 
+                        final ExecutionContext context)
     {
         // default HTTP 200 response code
         return String.format("Hello, %s!", request);
@@ -352,12 +408,11 @@ public static HttpResponseMessage Run(
 
 对于 JavaScript 函数，Functions 运行时提供请求正文而不是请求对象。 有关详细信息，请参阅 [JavaScript 触发器示例](#trigger---javascript-example)。
 
-
 ### <a name="customize-the-http-endpoint"></a>自定义 HTTP 终结点
 
 默认情况下，创建 HTTP 触发器的函数时，可通过以下格式的路由对该函数进行寻址：
 
-    http://<yourapp>.azurewebsites.net/api/<funcname> 
+    http://<yourapp>.azurewebsites.net/api/<funcname>
 
 在 HTTP 触发器的输入绑定中，可以使用可选 `route` 属性自定义此路由。 例如，以下 function.json 文件定义了 HTTP 触发器的 `route` 属性：
 
@@ -389,7 +444,7 @@ http://<yourapp>.azurewebsites.net/api/products/electronics/357
 这使得函数代码可以支持地址中的两个参数：“category”和“id”。可以将任何 [Web API 路由约束](https://www.asp.net/web-api/overview/web-api-routing-and-actions/attribute-routing-in-web-api-2#constraints)与参数配合使用。 以下 C# 函数代码使用了这两个参数。
 
 ```csharp
-public static Task<HttpResponseMessage> Run(HttpRequestMessage req, string category, int? id, 
+public static Task<HttpResponseMessage> Run(HttpRequestMessage req, string category, int? id,
                                                 ILogger log)
 {
     if (id == null)
@@ -421,7 +476,7 @@ module.exports = function (context, req) {
     }
 
     context.done();
-} 
+}
 ```
 
 默认情况下，所有函数路由的前缀均为 api。 还可以使用 [host.json](functions-host-json.md) 文件中的 `http.routePrefix` 属性自定义或删除前缀。 以下示例通过将空字符串用于 host.json 文件中的前缀删除 api 路由前缀。
@@ -440,7 +495,7 @@ module.exports = function (context, req) {
 
 还可从绑定数据中读取此信息。 此功能仅可用于 Functions 2.x 运行时， 而且它目前仅可用于 .NET 语言。
 
-在 .NET 语言中，此信息以 [ClaimsPrincipal](https://docs.microsoft.com/en-us/dotnet/api/system.security.claims.claimsprincipal?view=netstandard-2.0) 的形式提供。 ClaimsPrincipal 作为请求上下文的一部分提供，如以下示例中所示：
+在 .NET 语言中，此信息以 [ClaimsPrincipal](https://docs.microsoft.com/dotnet/api/system.security.claims.claimsprincipal?view=netstandard-2.0) 的形式提供。 ClaimsPrincipal 作为请求上下文的一部分提供，如以下示例中所示：
 
 ```csharp
 using System.Net;
@@ -533,17 +588,15 @@ Functions 允许使用密钥使其难以在开发过程中访问 HTTP 函数终�
 ### <a name="webhooks"></a>Webhook
 
 > [!NOTE]
-> Webhook 模式仅适用于 1.x 版 Functions 运行时。
+> Webhook 模式仅适用于 1.x 版 Functions 运行时。 进行此更改是为了提高 2.x 版中 HTTP 触发器的性能。
 
-Webhook 模式提供了有关 Webhook 有效负载的其他验证。 在 2.x 版中，基本 HTTP 触发器仍正常工作，且是针对 Webhook 的推荐方法。
+在 1.x 版中，Webhook 模板为 Webhook 有效负载提供了额外的验证。 在 2.x 版中，基本 HTTP 触发器仍正常工作，且是针对 Webhook 的推荐方法。 
 
 #### <a name="github-webhooks"></a>GitHub Webhook
 
 要响应 GitHub webhook，首先请创建包含 HTTP 触发器的函数，并将 webHookType 属性设置为 `github`。 然后将其 URL 和 API 密钥复制到 GitHub 存储库的“添加 Webhook”页。 
 
 ![](./media/functions-bindings-http-webhook/github-add-webhook.png)
-
-有关示例，请参阅[创建由 GitHub webhook 触发的函数](functions-create-github-webhook-triggered-function.md)。
 
 #### <a name="slack-webhooks"></a>Slack Webhook
 
@@ -554,13 +607,13 @@ Slack webhook 为用户生成令牌，而非让用户指定它，所以必须使
 Webhook 授权由属于 HTTP 触发器的 webhook 接收器组件处理，其机制因 webhook 类型而异。 每种机制都依赖于一个密钥。 默认情况下，使用名为“default”的函数密钥。 要使用其他密钥，请将 webhook 提供程序配置为使用以下方式之一的请求发送密钥名称：
 
 * **查询字符串**：提供程序通过 `clientid` 查询字符串参数（例如，`https://<yourapp>.azurewebsites.net/api/<funcname>?clientid=<keyname>`）传递密钥名称。
-* **请求头**：提供程序通过 `x-functions-clientid` 头传递密钥名称。
+* **请求标头**：提供程序通过 `x-functions-clientid` 标头传递密钥名称。
 
 ## <a name="trigger---limits"></a>触发器 - 限制
 
 HTTP 请求长度限制为 100 MB（104,857,600 字节），并且 URL 长度限制为 4 KB（4,096 字节）。 这些限制由运行时的 [Web.config 文件](https://github.com/Azure/azure-webjobs-sdk-script/blob/v1.x/src/WebJobs.Script.WebHost/Web.config)的 `httpRuntime` 元素指定。
 
-如果使用 HTTP 触发器的函数未在大约 2.5 分钟内完成，网关将超时并返回 HTTP 502 错误。 该函数将继续运行，但将无法返回 HTTP 响应。 对于长时间运行的函数，我们建议你遵循异步模式，并返回可以 ping 通请求状态的位置。 有关函数可以运行多长时间的信息，请参阅[缩放和托管 - 消耗计划](functions-scale.md#consumption-plan)。 
+如果使用 HTTP 触发器的函数未在大约 2.5 分钟内完成，网关将超时并返回 HTTP 502 错误。 该函数将继续运行，但将无法返回 HTTP 响应。 对于长时间运行的函数，我们建议你遵循异步模式，并返回可以 ping 通请求状态的位置。 有关函数可以运行多长时间的信息，请参阅[缩放和托管 - 消耗计划](functions-scale.md#consumption-plan)。
 
 ## <a name="trigger---hostjson-properties"></a>触发器 - host.json 属性
 
@@ -574,7 +627,7 @@ HTTP 请求长度限制为 100 MB（104,857,600 字节），并且 URL 长度限
 
 ## <a name="output---configuration"></a>输出 - 配置
 
-下表解释了在 function.json 文件中设置的绑定配置属性。 在 C# 类库中，没有与这些 function.json 属性对应的属性。 
+下表解释了在 function.json 文件中设置的绑定配置属性。 在 C# 类库中，没有与这些 function.json 属性对应的属性。
 
 |属性  |说明  |
 |---------|---------|

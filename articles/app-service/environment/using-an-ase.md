@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 应用服务环境
+title: 使用应用服务环境 - Azure
 description: 如何在 Azure 应用服务环境中创建、发布和缩放应用
 services: app-service
 documentationcenter: na
@@ -13,12 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/13/2017
 ms.author: ccompy
-ms.openlocfilehash: 80abe29c80898b691aa6e5e47bf068a9e69e50e4
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.custom: seodec18
+ms.openlocfilehash: eca6f7996b05e58614c8f15067dacabb13730396
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44303364"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53274711"
 ---
 # <a name="use-an-app-service-environment"></a>使用应用服务环境 #
 
@@ -51,7 +52,7 @@ Azure 应用服务环境指将 Azure 应用服务部署到客户 Azure 虚拟网
 
 1. 选择“创建资源” > “Web + 移动” > “Web 应用”。
 
-1. 输入 Web 应用的名称。 如果已在 ASE 中选择了应用服务计划，则应用的域名会反映 ASE 的域名。
+2. 输入 Web 应用的名称。 如果已在 ASE 中选择了应用服务计划，则应用的域名会反映 ASE 的域名。
 
     ![Web 应用名称选择][1]
 
@@ -66,11 +67,11 @@ Azure 应用服务环境指将 Azure 应用服务部署到客户 Azure 虚拟网
 
 1. 在 ASE 中选择现有的应用服务计划，或遵循以下步骤创建一个新的计划：
 
-    a. 选择“新建”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 选择“新建”。
 
     b. 输入应用服务计划的名称。
 
-    c. 在“位置”下拉列表中选择自己的 ASE。 在 ASE 中托管 Linux 应用的功能目前仅在 6 个区域中启用：**美国西部、美国东部、西欧、北欧、澳大利亚东部、东南亚**。 
+    c. 在“位置”下拉列表中选择自己的 ASE。 在 ASE 中托管 Linux 应用仅在 6 个区域中启用，这 6 个区域目前为：**美国西部、美国东部、西欧、北欧、澳大利亚东部、东南亚。** 
 
     d. 选择“隔离”定价层。 选择“选择”。
 
@@ -82,7 +83,7 @@ Azure 应用服务环境指将 Azure 应用服务部署到客户 Azure 虚拟网
     > Linux Web 应用和 Windows Web 应用不能位于同一应用服务计划中，但可以位于同一应用服务环境中。 
     >
 
-1. 选择**创建**。
+1. 选择“创建”。
 
 ## <a name="how-scale-works"></a>缩放的工作原理 ##
 
@@ -182,10 +183,10 @@ ILB ASE 中应用的发布终结点使用创建该 ILB ASE 所用的域。 可�
 [ConfigureASEv1]: app-service-web-configure-an-app-service-environment.md
 [ASEv1Intro]: app-service-app-service-environment-intro.md
 [Functions]: ../../azure-functions/index.yml
-[Pricing]: http://azure.microsoft.com/pricing/details/app-service/
+[Pricing]: https://azure.microsoft.com/pricing/details/app-service/
 [ARMOverview]: ../../azure-resource-manager/resource-group-overview.md
 [ConfigureSSL]: ../web-sites-purchase-ssl-web-site.md
-[Kudu]: http://azure.microsoft.com/resources/videos/super-secret-kudu-debug-console-for-azure-web-sites/
+[Kudu]: https://azure.microsoft.com/resources/videos/super-secret-kudu-debug-console-for-azure-web-sites/
 [AppDeploy]: ../app-service-deploy-local-git.md
 [ASEWAF]: app-service-app-service-environment-web-application-firewall.md
 [AppGW]: ../../application-gateway/application-gateway-web-application-firewall-overview.md

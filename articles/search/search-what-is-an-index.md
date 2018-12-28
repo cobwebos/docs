@@ -1,6 +1,6 @@
 ---
-title: Azure 搜索中的索引 | Microsoft Docs
-description: 了解 Azure 搜索中的索引概念以及如何使用索引。
+title: 索引定义和概念 - Azure 搜索
+description: Azure 搜索中的索引概念简介以及索引的使用方式。
 author: brjohnstmsft
 manager: jlembicz
 ms.author: brjohnst
@@ -8,12 +8,13 @@ services: search
 ms.service: search
 ms.topic: conceptual
 ms.date: 11/08/2017
-ms.openlocfilehash: cc2c56d4463203aa2561e820540acdfff651d80a
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.custom: seodec2018
+ms.openlocfilehash: e1ff28434dab4e63e10d6b14eb671260650d4ada
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31793396"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53317060"
 ---
 # <a name="indexes-in-azure-search"></a>Azure 搜索中的索引
 > [!div class="op_single_selector"]
@@ -32,7 +33,7 @@ ms.locfileid: "31793396"
 定义架构时，必须在索引中指定每个字段的名称、类型和属性。 字段类型的作用是对该字段中存储的数据进行分类。 对各个字段设置属性的目的是指定字段的使用方式。 下表枚举了可以指定的类型和属性。
 
 ### <a name="field-types"></a>字段类型
-| Type | 说明 |
+| 类型 | Description |
 | --- | --- |
 | *Edm.String* |全文搜索可以选择性地标记化（断词、词干提取等）的文本。 |
 | *Collection(Edm.String)* |全文搜索可以选择性标记化的字符串列表。 理论上，集合中的项目数没有上限，但集合的有效负载大小上限为 16 MB。 |
@@ -46,7 +47,7 @@ ms.locfileid: "31793396"
 若要深入了解 Azure 搜索支持的数据类型，请参阅[此处](https://docs.microsoft.com/rest/api/searchservice/Supported-data-types)。
 
 ### <a name="field-attributes"></a>字段属性
-| 属性 | 说明 |
+| 属性 | Description |
 | --- | --- |
 | *Key* |为每个文档提供唯一 ID 用于查找文档的字符串。 每个索引必须有一个 key。 只有一个字段可以是 key，并且此字段类型必须设置为 Edm.String。 |
 | *Retrievable* |指定是否可以在搜索结果中返回字段。 |

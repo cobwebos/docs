@@ -9,31 +9,31 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: hrasheed
-ms.openlocfilehash: 1c8c63e10e62af60e09af729b115cc675dae7205
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 3500a29c1cdd8b1997f67a3cf1918090dc4ca812
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51009396"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53383589"
 ---
-# <a name="install-and-use-solr-on-hdinsight-hadoop-clusters"></a>在 HDInsight Hadoop 群集上安装并使用 Solr
+# <a name="install-and-use-apache-solr-on-hdinsight-hadoop-clusters"></a>在 HDInsight Hadoop 群集上安装并使用 Apache Solr
 
-了解如何使用脚本操作在 Azure HDInsight 上安装 Solr。 Solr 是一种功能强大的搜索平台，提供了企业级搜索功能，用于搜索由 Hadoop 管理的数据。
+了解如何使用脚本操作在 Azure HDInsight 上安装 Apache Solr。 Solr 是一种功能强大的搜索平台，提供了企业级搜索功能，用于搜索由 Hadoop 管理的数据。
 
-> [!IMPORTANT]
-    > 本文档中的步骤需要使用 Linux 的 HDInsight 群集。 Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight 在 Windows 上停用](hdinsight-component-versioning.md#hdinsight-windows-retirement)。
+> [!IMPORTANT]  
+> 本文档中的步骤需要使用 Linux 的 HDInsight 群集。 Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight 在 Windows 上停用](hdinsight-component-versioning.md#hdinsight-windows-retirement)。
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > 本文档中使用的示例脚本通过特定配置安装 Solr 4.9。 如果要使用不同集合、分片、架构、副本等配置 Solr 群集，必须修改脚本和 Solr 二进制文件。
 
 ## <a name="whatis"></a>什么是 Solr
 
 [Apache Solr](http://lucene.apache.org/solr/features.html) 是一种企业搜索平台，用于对数据实现功能强大的全文搜索。 虽然 Hadoop 可用于存储和管理大量数据，但是，Apache Solr 提供了快速检索数据的搜索功能。
 
-> [!WARNING]
+> [!WARNING]   
 > Microsoft 完全支持 HDInsight 群集提供的组件。
 >
-> 自定义组件（如 Solr）可获得合理范围的支持，以帮助进一步排查问题。 Microsoft 支持可能无法解决与自定义组件有关的问题。 用户可能需要寻求开源社区的帮助。 有许多可以使用的社区站点，例如：[HDInsight 的 MSDN 论坛](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hdinsight)和 [http://stackoverflow.com](http://stackoverflow.com)。 此外，Apache 项目在 [http://apache.org](http://apache.org) 上提供了项目站点，例如 [Hadoop](http://hadoop.apache.org/)。
+> 自定义组件（如 Solr）可获得合理范围的支持，以帮助进一步排查问题。 Microsoft 支持可能无法解决与自定义组件有关的问题。 用户可能需要寻求开源社区的帮助。 例如，有许多可以使用的社区站点，例如：[面向 HDInsight 的 MSDN 论坛](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hdinsight)、[http://stackoverflow.com](http://stackoverflow.com)。 此外，Apache 项目在 [http://apache.org](http://apache.org) 上有项目站点，例如：[Hadoop](http://hadoop.apache.org/)。
 
 ## <a name="what-the-script-does"></a>脚本功能
 
@@ -67,7 +67,7 @@ ms.locfileid: "51009396"
 
 ## <a name="usesolr"></a>如何在 HDInsight 中使用 Solr
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > 本节中的步骤将演示基本 Solr 功能。 有关使用 Solr 的详细信息，请参阅 [Apache Solr 站点](http://lucene.apache.org/solr/)。
 
 ### <a name="index-data"></a>索引数据
@@ -76,7 +76,7 @@ ms.locfileid: "51009396"
 
 1. 使用 SSH 连接到 HDInsight 群集：
 
-    > [!NOTE]
+    > [!NOTE]  
     > 将 `sshuser` 替换为群集的 SSH 用户。 将 `clustername` 替换为群集的名称。
 
     ```bash
@@ -85,7 +85,7 @@ ms.locfileid: "51009396"
 
     有关详细信息，请参阅 [Use SSH with HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md)（对 HDInsight 使用 SSH）。
 
-     > [!IMPORTANT]
+     > [!IMPORTANT]  
      > 本文档中的后续步骤使用 SSH 隧道连接到 Solr Web UI。 要使用这些步骤，必须建立 SSH 隧道，并将浏览器配置为使用该隧道。
      >
      > 有关详细信息，请参阅[将 SSH 隧道与 HDInsight 配合使用](hdinsight-linux-ambari-ssh-tunnel.md)文档。
@@ -316,11 +316,11 @@ sudo start solr
     hdfs dfs -put snapshot.20150806185338855.tgz /example/data
     ```
 
-有关使用 Solr 备份和还原的详细信息，请参阅 [https://cwiki.apache.org/confluence/display/solr/Making+and+Restoring+Backups](https://cwiki.apache.org/confluence/display/solr/Making+and+Restoring+Backups)。
+有关如何使用 Apache Solr 备份和还原的详细信息，请参阅 [https://cwiki.apache.org/confluence/display/solr/Making+and+Restoring+Backups](https://cwiki.apache.org/confluence/display/solr/Making+and+Restoring+Backups)。
 
 ## <a name="next-steps"></a>后续步骤
 
-* [在 HDInsight 群集上安装 Giraph](hdinsight-hadoop-giraph-install-linux.md)。 使用群集自定义在 HDInsight Hadoop 群集上安装 Giraph。 Giraph 可让你通过使用 Hadoop 执行图形处理，并可以在 Azure HDInsight 上使用。
+* [在 HDInsight 群集上安装 Apache Giraph](hdinsight-hadoop-giraph-install-linux.md)。 使用群集自定义在 HDInsight Hadoop 群集上安装 Giraph。 Giraph 可让你通过使用 Hadoop 执行图形处理，并可以在 Azure HDInsight 上使用。
 
 * [在 HDInsight 群集上安装 Hue](hdinsight-hadoop-hue-linux.md)。 使用群集自定义在 HDInsight Hadoop 群集上安装 Hue。 Hue 是一组 Web 应用程序，用来与 Hadoop 群集交互。
 

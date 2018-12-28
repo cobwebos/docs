@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/03/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 56a36e61bb9938ceb7e3cdaf2676c24c037b1d16
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: a5f1e728f7a13f763367abc3f380fb9fbdb67b5c
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52585641"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53326604"
 ---
 # <a name="frequently-asked-questions-about-azure-iaas-vm-disks-and-managed-and-unmanaged-premium-disks"></a>有关 Azure IaaS VM 磁盘以及托管和非托管高级磁盘的常见问题解答
 
@@ -85,9 +85,9 @@ ms.locfileid: "52585641"
 
 托管磁盘支持三个密钥默认角色：
 
-* 所有者：可管理所有内容，包括访问权限
-* 参与者：可管理除访问权限以外的所有内容
-* 读者：可查看所有内容，但不能进行更改
+* 所有者：可管理一切内容（包括访问权限）
+* 参与者：可管理除访问权限以外的一切内容
+* 读者：可查看一切内容，但不可作出更改
 
 是否可将托管磁盘复制或导出到专用存储帐户？
 
@@ -137,9 +137,9 @@ Azure 托管磁盘当前仅支持本地冗余存储托管磁盘。
 
 对于托管磁盘，无法对其进行重命名。 但是，可以对非托管磁盘进行重命名，只要它当前未附加到 VHD 或 VM。
 
-可否在 Azure 磁盘上使用 GBT 分区？
+**可否在 Azure 磁盘上使用 GPT 分区？**
 
-GBT 分区仅可在数据磁盘上使用，而不可在操作系统磁盘上使用。 操作系统磁盘必须使用 MBR 分区样式。
+GPT 分区仅可在数据磁盘上使用，而不可在操作系统磁盘上使用。 操作系统磁盘必须使用 MBR 分区样式。
 
 ## <a name="standard-ssd-disks"></a>标准 SSD 盘
 
@@ -188,6 +188,10 @@ Azure 标准 SSD 盘是什么？
 不是，标准 SSD 没有单实例 VM SLA。 将高级 SSD 磁盘用于单实例 VM SLA。
 
 ## <a name="migrate-to-managed-disks"></a>迁移到托管磁盘
+
+**迁移对托管磁盘性能是否有影响？
+
+迁移涉及将磁盘从一个存储位置移动到另一个存储位置。 这是通过在后台复制数据来安排的，可能需要花费数个小时才能完成，通常少于 24 个小时，具体取决于磁盘中的数据量。 在此期间，由于一些读取可能被重定向到原始位置，所以应用程序可能会经历比平常更高的读取延迟，并且可能需要花费更长时间才能完成。 在此期间，对写入延迟没有影响。  
 
 迁移到托管磁盘之前/之后，需要在现有的 Azure 备份服务配置中进行哪些更改？
 
@@ -339,7 +343,7 @@ Azure 备份和 Azure Site Recovery 服务支持的最大磁盘大小为 4 TiB�
 
 **标准 SSD 和标准 HDD 磁盘大磁盘大小 (>4TiB) 用于实现优化磁盘 IOPS 和带宽建议的 VM 大小是多少？**
 
-要实现标准 SSD 和标准 HDD 磁盘大磁盘大小 (>4TB) 的磁盘吞吐量超过 500 IOPS 和 60 MiB/秒，应使用以下一种 VM 大小来优化性能：B 系列、DSv2 系列、Dsv3 系列、ESv3 系列、Fs 系列、Fsv2 系列、M 系列、GS 系列、NCv2 系列、NCv3 系列或 Ls 系列 VM。
+要使标准 SSD 和标准 HDD 大型磁盘大小 (>4TB) 的磁盘吞吐量超过 500 IOPS 和 60 MiB/秒，应当使用下列 VM 大小之一来优化性能：B 系列、DSv2 系列、Dsv3 系列、ESv3 系列、Fs 系列、Fsv2 系列、M 系列、GS 系列、NCv2 系列、NCv3 系列或 Ls 系列 VM。
 
 **哪些区域中支持大于 4 TiB 的托管磁盘大小？**
 

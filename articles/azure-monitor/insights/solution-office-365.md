@@ -9,16 +9,15 @@ editor: ''
 ms.service: operations-management-suite
 ms.workload: tbd
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 08/15/2018
 ms.author: bwren
-ms.openlocfilehash: 14e89d5eab058b9fa42c20811df9c5ac0ceca44a
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 54fda4852e986749499b7fc8717308edf81915b2
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52633191"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53338477"
 ---
 # <a name="office-365-management-solution-in-azure-preview"></a>Azure 中的 Office 365 管理解决方案（预览版）
 
@@ -30,7 +29,7 @@ ms.locfileid: "52633191"
 - 监视管理员活动，以跟踪配置更改或高特权操作。
 - 检测并调查多余的用户行为，此操作可根据组织需求进行自定义。
 - 演示审核和符合性。 例如，可监视对机密文件的文件访问操作，这对审核和符合性进程有所帮助。
-- 通过对组织的 Office 365 活动数据使用[日志搜索](../../log-analytics/log-analytics-queries.md)，执行操作故障排除。
+- 通过对组织的 Office 365 活动数据使用[日志搜索](../../azure-monitor/log-query/log-query-overview.md)，执行操作故障排除。
 
 ## <a name="prerequisites"></a>先决条件
 需要以下各项才能安装和配置此解决方案。
@@ -41,7 +40,7 @@ ms.locfileid: "52633191"
  
 
 ## <a name="management-packs"></a>管理包
-此解决方案不会在[连接的管理组](../../log-analytics/log-analytics-om-agents.md)中安装任何管理包。
+此解决方案不会在[连接的管理组](../../azure-monitor/platform/om-agents.md)中安装任何管理包。
   
 ## <a name="install-and-configure"></a>安装和配置
 首先，[将 Office 365 解决方案添加到你的订阅](solutions.md#install-a-management-solution)。 添加后，必须执行本部分中的配置步骤来向其授予对你的 Office 365 订阅的访问权限。
@@ -60,7 +59,7 @@ ms.locfileid: "52633191"
 - 用户名：管理帐户的电子邮件地址。
 - 租户 ID：Office 365 订阅的唯一 ID。
 - 客户端 ID：一个 16 字符的字符串，表示 Office 365 客户端。
-- 客户端机密：进行身份验证所需的已加密字符串。
+- 客户端密码：进行身份验证所需的已加密字符串。
 
 ### <a name="create-an-office-365-application-in-azure-active-directory"></a>在 Azure Active Directory 中创建一个 Office 365 应用程序
 第一步是在 Azure Active Directory 中创建管理解决方案将用来访问 Office 365 解决方案的应用程序。
@@ -709,6 +708,6 @@ Active Directory 用户尝试登录时，将创建这些记录。
 
 
 ## <a name="next-steps"></a>后续步骤
-* 使用 [Log Analytics](../../log-analytics/log-analytics-queries.md) 中的日志搜索可查看详细的更新数据。
+* 使用 [Log Analytics](../../azure-monitor/log-query/log-query-overview.md) 中的日志搜索可查看详细的更新数据。
 * [创建自己的仪表板](../../azure-monitor/platform/dashboards.md)，显示最喜欢的 Office 365 搜索查询。
-* [创建警报](../../monitoring-and-diagnostics/monitoring-overview-alerts.md)，主动接收重要的 Office 365 活动通知。  
+* [创建警报](../../azure-monitor/platform/alerts-overview.md)，主动接收重要的 Office 365 活动通知。  

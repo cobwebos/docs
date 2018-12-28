@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: hrasheed
-ms.openlocfilehash: 2c4730b3ec84ca14bcc3e93ed82faf37b15970d7
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 0d27b16690516becc586678f8cf3edea234feeea
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51010365"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53383388"
 ---
 # <a name="understand-and-resolve-errors-received-from-webhcat-on-hdinsight"></a>了解和解决从 HDInsight 上的 WebHCat 收到的错误
 
@@ -22,18 +22,18 @@ ms.locfileid: "51010365"
 
 ## <a name="what-is-webhcat"></a>什么是 WebHCat
 
-[WebHCat](https://cwiki.apache.org/confluence/display/Hive/WebHCat) 是适用于 [HCatalog](https://cwiki.apache.org/confluence/display/Hive/HCatalog) 的 REST API，是针对 Hadoop 的表和存储管理层。 WebHCat 默认情况下在 HDInsight 群集上处于启用状态，可供各种工具在执行提交作业、获取作业状态等操作时使用，无需登录到群集中。
+[WebHCat](https://cwiki.apache.org/confluence/display/Hive/WebHCat) 是适用于 [HCatalog](https://cwiki.apache.org/confluence/display/Hive/HCatalog) 的 REST API，是针对 Apache Hadoop 的表和存储管理层。 WebHCat 默认情况下在 HDInsight 群集上处于启用状态，可供各种工具在执行提交作业、获取作业状态等操作时使用，无需登录到群集中。
 
 ## <a name="modifying-configuration"></a>修改配置
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > 本文档中列出的几大错误之所以发生，是因为超出了配置的最大值。 当解决步骤提到可以更改一个值时，必须使用下列选项之一来执行更改：
 
 * 对于 **Windows** 群集：使用脚本操作在群集创建过程中配置值。 有关详细信息，请参阅[开发脚本操作](hdinsight-hadoop-script-actions.md)。
 
-* 对于 **Linux** 群集：使用 Ambari（Web 或 REST API）修改值。 有关详细信息，请参阅[使用 Ambari 管理 HDInsight](hdinsight-hadoop-manage-ambari.md)
+* 对于 **Linux** 群集：使用 Apache Ambari（Web 或 REST API）修改值。 有关详细信息，请参阅[使用 Apache Ambari 管理 HDInsight](hdinsight-hadoop-manage-ambari.md)
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight 在 Windows 上停用](hdinsight-component-versioning.md#hdinsight-windows-retirement)。
 
 ### <a name="default-configuration"></a>默认配置

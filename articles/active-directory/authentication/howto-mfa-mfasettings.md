@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: michmcla
-ms.openlocfilehash: e0c612407047a51c4e3d4101a0ee192f55458afe
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 7bd63dc991500f1d7f68169342b9612c1b303a07
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52497008"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53320652"
 ---
 # <a name="configure-azure-multi-factor-authentication-settings"></a>配置 Azure 多重身份验证设置
 
@@ -29,7 +29,7 @@ ms.locfileid: "52497008"
 
 这些设置中的一部分适用于 MFA 服务器和/或 Azure MFA。
 
-| Feature | Description |
+| Feature | 说明 |
 | ------- | ----------- |
 | 帐户锁定 | 如果连续有过多的身份验证尝试遭到拒绝，则将暂时在多重身份验证服务中锁定帐户。 此功能仅适用于输入 PIN 进行身份验证的用户。 （MFA 服务器） |
 | [阻止/解除阻止用户](#block-and-unblock-users) | 用于阻止 MFA 服务器（本地）上的特定用户，使之无法接收多重身份验证请求。 自动拒绝任何针对受阻止用户的身份验证尝试。 用户将在阻止日起 90 天内受到阻止。 |
@@ -43,7 +43,7 @@ ms.locfileid: "52497008"
 
 此部分的设置仅适用于 MFA 服务器。
 
-| Feature | Description |
+| Feature | 说明 |
 | ------- | ----------- |
 | 服务器设置 | 下载 MFA 服务器并生成激活凭据，以便初始化环境 |
 | [免验证一次](#one-time-bypass) | 在有限的时间内，允许用户在不执行双重验证的情况下进行身份验证。 |
@@ -87,8 +87,8 @@ ms.locfileid: "52497008"
 
 ### <a name="configuration-options"></a>配置选项
 
-* **报告欺诈时阻止用户** - 如果用户报告欺诈，那么他们的帐户将被阻止 90 天，或者直到管理员解除阻止他们的帐户。 管理员可以使用登录报表查看登录并采取相应的操作阻止将来的欺诈。 然后管理员可以[解除阻止](#unblock-a-user)用户帐户。
-* **初始问候期间报告欺诈的代码** - 当用户接收电话呼叫来执行双重验证时，他们通常按 **#** 来确认其登录。 如果他们想要报告欺诈，则可在按 **#** 之前输入代码。 此代码默认为 **0**，但可以自定义此代码。
+* **在收到欺诈报告时阻止用户**：如果用户报告了欺诈，那么他们的帐户将被阻止 90 天，或者直到管理员解除阻止他们的帐户。 管理员可以使用登录报表查看登录并采取相应的操作阻止将来的欺诈。 然后管理员可以[解除阻止](#unblock-a-user)用户帐户。
+* **初始问候期间报告欺诈的代码**：当用户接收电话呼叫来执行双重验证时，他们通常按 **#** 来确认其登录。 如果他们想要报告欺诈，则可在按 **#** 之前输入代码。 此代码默认为 **0**，但可以自定义此代码。
 
    >[!NOTE]
    >Microsoft 的默认问候语音将指示用户按 0# 以提交欺诈警报。 如果要使用 0 以外的代码，请录制并上传自定义语音问候，为用户提供相应指示。
@@ -257,12 +257,15 @@ Azure AD 支持通过联合或单一登录使用本地 Windows Server Active Dir
 
 托管或联合租户的管理员可使用 Azure 多重身份验证的“受信任 IP”功能。 此功能将为从公司 Intranet 登录的用户绕过双重验证。 Azure 多重身份验证的完整版本中为管理员提供了此功能，免费版本中没有提供。 有关如何获取 Azure 多重身份验证的完整版本的详细信息，请参阅 [Azure 多重身份验证](multi-factor-authentication.md)。
 
+> [!NOTE]
+> MFA 受信任的 IP 和条件访问已命名的位置仅适用于 IPV4 地址。
+
 如果你的组织部署 NPS 扩展，向本地应用程序提供 MFA，请注意源 IP 地址将始终显示为身份验证尝试流经的 NPS 服务器。
 
 | Azure AD 租户类型 | 受信任的 IP 功能选项 |
 |:--- |:--- |
-| 托管 |**特定 IP 地址范围**：由管理员指定一组 IP 地址范围，以便为从公司 Intranet 登录的用户绕过双重验证。|
-| 联合 |**所有联合用户**：从组织内部登录的所有联合用户都可绕过双重验证。 用户使用由 Active Directory 联合身份验证服务 (AD FS) 颁发的声明绕过验证。<br/>**特定 IP 地址范围**：由管理员指定一组 IP 地址范围，以便为从公司 Intranet 登录的用户绕过双重验证。 |
+| 托管 |**特定 IP 地址范围**：由管理员指定一组 IP 地址范围，可以用来为从公司 Intranet 登录的用户绕过双重验证。|
+| 联合 |**所有联合用户**：从组织内部登录的所有联合用户都可绕过双重验证。 用户使用由 Active Directory 联合身份验证服务 (AD FS) 颁发的声明绕过验证。<br/>**特定 IP 地址范围**：由管理员指定一组 IP 地址范围，可以用来为从公司 Intranet 登录的用户绕过双重验证。 |
 
 绕过受信任的 IP 仅在公司 Intranet 内有效。 如果选择“所有联合用户”选项，则用户从公司 Intranet 外部登录时，必须使用双重验证进行身份验证。 即使用户提供了 AD FS 声明，验证过程也相同。 
 
@@ -293,7 +296,7 @@ Azure AD 支持通过联合或单一登录使用本地 Windows Server Active Dir
 3. 选择“配置 MFA 受信任的 IP”。
 4. 在“服务设置”页的“受信任的 IP”下，从以下两个选项中进行选择：
 
-   * **对于联合用户从我的 Intranet 发起的请求**：选中此复选框以选择此选项。 所有从公司网络登录的联合用户均可使用 AD FS 发布的声明免除双重验证。 请确保 AD FS 具有可将 intranet 声明添加到相应流量的规则。 如果规则不存在，请在 AD FS 中创建以下规则：
+   * **对于联合用户从我的 Intranet 发起的请求**：若要选择此选项，请选中复选框。 所有从公司网络登录的联合用户均可使用 AD FS 发布的声明免除双重验证。 请确保 AD FS 具有可将 intranet 声明添加到相应流量的规则。 如果规则不存在，请在 AD FS 中创建以下规则：
 
       `c:[Type== "http://schemas.microsoft.com/ws/2012/01/insidecorporatenetwork"] => issue(claim = c);`
 
@@ -312,7 +315,7 @@ Azure AD 支持通过联合或单一登录使用本地 Windows Server Active Dir
 4. 在“多重身份验证”下，选择“服务设置”。
 5. 在“服务设置”页的“受信任的 IP”下，选择以下两个选项中的一个（或两个）：
 
-   * **对于来自我的 Intranet 的联合用户请求**：选中此复选框以选择此选项。 所有从公司网络登录的联合用户均可使用 AD FS 发布的声明免除双重验证。 请确保 AD FS 具有可将 intranet 声明添加到相应流量的规则。 如果规则不存在，请在 AD FS 中创建以下规则：
+   * **对于我的 Intranet 上的联合用户发出的请求**：若要选择此选项，请选中复选框。 所有从公司网络登录的联合用户均可使用 AD FS 发布的声明免除双重验证。 请确保 AD FS 具有可将 intranet 声明添加到相应流量的规则。 如果规则不存在，请在 AD FS 中创建以下规则：
 
       `c:[Type== "http://schemas.microsoft.com/ws/2012/01/insidecorporatenetwork"] => issue(claim = c);`
 
@@ -329,7 +332,7 @@ Azure AD 支持通过联合或单一登录使用本地 Windows Server Active Dir
 
 用户为其帐户注册 Azure 多重身份验证时，可从你启用的选项中选择其首选验证方法。 [为我的帐户设置双重验证帐户](../user-help/multi-factor-authentication-end-user-first-time.md)中提供了用户注册过程指导。
 
-| 方法 | Description |
+| 方法 | 说明 |
 |:--- |:--- |
 | 拨打电话 |拨打自动语音电话。 用户接听电话，并按电话键盘上的 # 进行身份验证。 此电话号码不会同步到本地 Active Directory。 |
 | 向手机发送短信 |发送包含验证码的短信。 系统会提示用户在登录界面中输入验证代码。 此过程称为单向短信。 双向短信意味着用户必须短信回复一个特定代码。 已弃用双向短信，2018 年 11 月 14 日后不再受到支持。 届时，配置为使用双向短信的用户会自动切换到“电话呼叫”验证。|
@@ -384,3 +387,7 @@ Azure AD 支持通过联合或单一登录使用本地 Windows Server Active Dir
 ### <a name="mark-a-device-as-trusted"></a>将设备标记为受信任的
 
 启用“记住多重身份验证”功能后，用户可在登录时选择“不再询问”，将设备标记为信任。
+
+## <a name="next-steps"></a>后续步骤
+
+[修改 Azure AD 登录页品牌打造](../fundamentals/customize-branding.md)

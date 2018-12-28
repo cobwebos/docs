@@ -1,18 +1,18 @@
 ---
-title: 使用重启策略在 Azure 容器实例中运行容器化任务
+title: 对 Azure 容器实例中的容器化任务使用重启策略
 description: 了解如何使用 Azure 容器实例来执行一直要运行到完成的任务，例如生成、测试渲染作业或制作其映像。
 services: container-instances
 author: dlepow
 ms.service: container-instances
 ms.topic: article
-ms.date: 07/26/2018
+ms.date: 12/10/2018
 ms.author: danlep
-ms.openlocfilehash: c9e3fadd5164ca0d770f36ba95c30db933efcd39
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: b254adb050aa9826170c0849c3811380db6d9b38
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48853874"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53321027"
 ---
 # <a name="run-containerized-tasks-with-restart-policies"></a>使用重启策略运行容器化任务
 
@@ -24,9 +24,9 @@ ms.locfileid: "48853874"
 
 ## <a name="container-restart-policy"></a>容器重启策略
 
-在 Azure 容器实例中创建容器时，可以指定三个重启策略设置中的一个。
+在 Azure 容器实例中创建[容器组](container-instances-container-groups.md)时，可以指定三个重启策略设置中的一个。
 
-| 重启策略   | Description |
+| 重启策略   | 说明 |
 | ---------------- | :---------- |
 | `Always` | 始终重启容器组中的容器。 如果在创建容器时未指定重启策略，则会应用此**默认**设置。 |
 | `Never` | 永远不重启容器组中的容器。 容器最多运行一次。 |
@@ -93,6 +93,24 @@ az container logs --resource-group myResourceGroup --name mycontainer
 
 此示例显示了由脚本发送到 STDOUT 的输出。 但是，容器化任务可能会将其输出写入到持久性存储供以后检索。 例如，写入到 [Azure 文件共享](container-instances-mounting-azure-files-volume.md)。
 
+## <a name="manually-stop-and-start-a-container-group"></a>手动停止和启动容器组
+
+无论为[容器组](container-instances-container-groups.md)配置的重启策略如何，你都可能希望手动停止或启动容器组。
+
+* **停止** - 随时都可以手动停止正在运行的容器组 - 例如，通过使用 [az container stop][az-container-stop] 命令。 对于某些容器工作负荷，你可能希望在经过规定的一段时间后停止容器组，以便节省成本。 
+
+  停止某个容器组会终止并回收该组中的容器；它不保留容器状态。 
+
+* **启动** - 当容器组停止时（因为容器自行终止或者你手动停止了组），你可以使用[容器启动 API](/rest/api/container-instances/containergroups/start) 或 Azure 门户手动启动组中的容器。 如果更新了任何容器的容器映像，则会拉取一个新映像。 
+
+  启动容器组会使用相同的容器配置开始一个新部署。 此操作可帮助你快速重复使用按预期方式工作的已知容器组配置。 你无需创建新的容器组便可运行相同的工作负荷。
+
+* **重启** - 可以在容器组正在运行时将其重启 - 例如，通过使用 [az container restart][az-container-restart] 命令。 此操作会重启容器组中的所有容器。 如果更新了任何容器的容器映像，则会拉取一个新映像。 
+
+  如果你想要排查部署问题，则重启容器组会有所帮助。 例如，如果临时资源限制阻止了你的容器成功运行，则重启组可能会解决此问题。
+
+手动启动或重启容器组后，容器组将根据所配置的重启策略运行。
+
 ## <a name="configure-containers-at-runtime"></a>在运行时配置容器
 
 创建容器实例时，可设置其**环境变量**，并指定一个要在启动容器时执行的自定义**命令行**。 可以在批处理作业中使用这些设置，以使用特定于任务的配置准备每个容器。
@@ -105,7 +123,7 @@ az container logs --resource-group myResourceGroup --name mycontainer
 
 *NumWords*：发送到 STDOUT 的单词数。
 
-*MinLength*：单词中最少包含几个字符才将它统计为一个单词。 如果指定较大的数字，将会忽略“of”和“the”等常见单词。
+*MinLength*：单词中最少包含几个字符才将它计为一个单词。 如果指定较大的数字，将会忽略“of”和“the”等常见单词。
 
 ```azurecli-interactive
 az container create \
@@ -131,6 +149,8 @@ az container logs --resource-group myResourceGroup --name mycontainer2
  ('ROSENCRANTZ', 69),
  ('GUILDENSTERN', 54)]
 ```
+
+
 
 ## <a name="command-line-override"></a>命令行重写
 
@@ -174,5 +194,7 @@ az container logs --resource-group myResourceGroup --name mycontainer3
 <!-- LINKS - Internal -->
 [az-container-create]: /cli/azure/container?view=azure-cli-latest#az-container-create
 [az-container-logs]: /cli/azure/container?view=azure-cli-latest#az-container-logs
+[az-container-restart]: /cli/azure/container?view=azure-cli-latest#az-container-restart
 [az-container-show]: /cli/azure/container?view=azure-cli-latest#az-container-show
+[az-container-stop]: /cli/azure/container?view=azure-cli-latest#az-container-stop
 [azure-cli-install]: /cli/azure/install-azure-cli

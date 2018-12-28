@@ -1,6 +1,7 @@
 ---
-title: Azure 机器学习新增功能
-description: 本文档详细说明了 Azure 机器学习的更新。
+title: 版本新增内容
+titleSuffix: Azure Machine Learning service
+description: 了解 Azure 机器学习服务的最新更新。
 services: machine-learning
 ms.service: machine-learning
 ms.component: core
@@ -8,17 +9,85 @@ ms.topic: reference
 author: hning86
 ms.author: haining
 ms.reviewer: j-martens
-ms.date: 10/24/2018
-ms.openlocfilehash: 6007a7e32e168ada529feb6aa24b8d572671d835
-ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
+ms.date: 12/04/2018
+ms.custom: seodec18
+ms.openlocfilehash: 34d084bc4115d0abf8f57c576c16330611f3a21b
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2018
-ms.locfileid: "52291334"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53409864"
 ---
 # <a name="azure-machine-learning-service-release-notes"></a>Azure 机器学习服务发行说明
 
 本文介绍 Azure 机器学习服务版本。 
+
+## <a name="2018-12-04-general-availability"></a>2018-12-04：正式版
+
+Azure 机器学习服务现已公开发布。
+
+### <a name="azure-machine-learning-compute"></a>Azure 机器学习计算
+在此版本中，我们将宣告一个通过 [Azure 机器学习计算](how-to-set-up-training-targets.md#amlcompute)获得的全新托管计算体验。 此计算可以用于训练和批量推断，属于单节点到多节点计算，为用户进行群集管理和作业计划。 它会默认自动缩放，提供对 CPU 和 GPU 资源的支持，并且还允许使用低优先级 VM 以减少成本。 它替换适用于 Azure 机器学习的 Batch AI 计算。
+  
+可以通过 Python、Azure 门户或 CLI 来创建 Azure 机器学习计算。 它必须在工作区的区域中创建，不能附加到任何其他工作区。 此计算使用适用于运行的 Docker 容器，并将依赖项打包，以便跨所有节点复制同一环境。
+
+> [!Warning]
+> 建议创建一个新工作区来使用 Azure 机器学习计算。 尝试从现有工作区创建 Azure 机器学习计算的用户可能会看到一个错误，但这种可能性很小。 工作区中的现有计算可以继续使用，不受影响。
+
+### <a name="azure-machine-learning-sdk-for-python-v102"></a>适用于 Python 的 Azure 机器学习 SDK v1.0.2
++ **重大更改**
+  + 此版本不再支持从 Azure 机器学习创建 VM。 仍可以附加现有的云 VM 或远程本地服务器。 
+  + 我们还将删除对 BatchAI 的支持，所有这些现在由 Azure 机器学习计算提供支持。
+
++ **New**
+  + 适用于机器学习管道：
+    + [EstimatorStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.estimator_step.estimatorstep?view=azure-ml-py)
+    + [HyperDriveStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.hyper_drive_step.hyperdrivestep?view=azure-ml-py)
+    + [MpiStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.mpi_step.mpistep?view=azure-ml-py)
+
+
++ **已更新**
+  + 适用于机器学习管道：
+    + [DatabricksStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.databricks_step.databricksstep?view=azure-ml-py) 现在接受 runconfig
+    + [DataTransferStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.data_transfer_step.datatransferstep?view=azure-ml-py) 现在可以通过 SQL 数据源进行复制
+    + SDK 中的计划功能，用于创建和更新用于运行已发布管道的计划
+
+<!--+ **Bugs fixed**-->
+
+### <a name="azure-machine-learning-data-prep-sdk-v052"></a>Azure 机器学习数据准备 SDK v0.5.2
++ **重大更改** 
+  * `SummaryFunction.N` 已重命名为 `SummaryFunction.Count`。
+  
++ **Bug 修复**
+  * 通过远程运行对数据存储进行读取和写入操作时，使用最新的 AML 运行令牌。 以前，如果在 Python 中更新 AML 运行令牌，则不会使用更新的 AML 运行令牌来更新数据准备运行时。
+  * 其他更清晰的错误消息
+  * 当 Spark 使用 Kryo 序列化时，to_spark_dataframe() 将不再崩溃
+  * 值计数检查器现在可以显示超过 1000 个唯一值
+  * 在原始数据流没有名称的情况下，随机拆分不再失败  
+
++ **详细信息**
+  * [Azure 机器学习数据准备 SDK](https://aka.ms/data-prep-sdk)
+
+### <a name="docs-and-notebooks"></a>文档和笔记本
++ ML 管道
+  + 全新的和更新的笔记本，适用于管道、批量范围确定和样式传输示例的入门： https://aka.ms/aml-pipeline-notebooks
+  + 了解如何[创建你的第一个管道](how-to-create-your-first-pipeline.md)
+  + 了解如何[使用管道运行批量预测](how-to-run-batch-predictions.md)
++ Azure 机器学习计算
+  + [示例笔记本] (https://aka.ms/aml-notebooks)现已更新，可以使用这个新的托管计算。
+  + [了解此计算](how-to-set-up-training-targets.md#amlcompute)
+
+### <a name="azure-portal-new-features"></a>Azure 门户：新功能
++ 在门户中创建和管理 [Azure 机器学习计算](how-to-set-up-training-targets.md#amlcompute)类型。
++ 针对 Azure 机器学习计算监视配额使用情况和[请求配额](how-to-manage-quotas.md)。
++ 实时查看 Azure 机器学习计算群集状态。
++ 增加了虚拟网络支持，方便创建 Azure 机器学习计算和 Azure Kubernetes 服务。
++ 使用现有参数重新运行已发布的管道。
++ 新的[自动化机器学习图表](how-to-track-experiments.md#auto)适用于分类模型（带模型解释功能的提升、增益、校准功能重要性图表）和回归模型（带模型解释功能的残差和功能重要性图表）。 
++ 可以在 Azure 门户中查看管道
+
+
+
 
 ## <a name="2018-11-20"></a>2018-11-20
 
@@ -181,7 +250,7 @@ Azure 机器学习服务的 Azure 门户具有以下更新：
   + [预测](../desktop-workbench/how-to-build-deploy-forecast-models.md)
 
 ### <a name="2018-03-sprint-4"></a>2018-03（冲刺 (sprint) 4）
-**版本号**：0.1.1801.24353 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（[查找版本](../desktop-workbench/known-issues-and-troubleshooting-guide.md#find-the-workbench-build-number)）
+**版本号**：0.1.1801.24353 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（[查找你的版本](../desktop-workbench/known-issues-and-troubleshooting-guide.md#find-the-workbench-build-number)）
 
 
 下面的许多更新就是针对你的反馈的直接结果。 请持续关注！
@@ -235,7 +304,7 @@ Azure 机器学习服务的 Azure 门户具有以下更新：
 
 
 ### <a name="2018-01-sprint-3"></a>2018-01（冲刺 (sprint) 3） 
-版本号：0.1.1712.18263 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（[查找版本](../desktop-workbench/known-issues-and-troubleshooting-guide.md#find-the-workbench-build-number)）
+**版本号**：0.1.1712.18263 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（[查找你的版本](../desktop-workbench/known-issues-and-troubleshooting-guide.md#find-the-workbench-build-number)）
 
 下面是此冲刺 (sprint) 中的更新和改进。 其中许多更新是用户反馈的直接结果。 
 
@@ -270,7 +339,7 @@ Azure 机器学习服务的 Azure 门户具有以下更新：
   - 为免费订阅启用了本地环境设置 
 
 ### <a name="2017-12-sprint-2-qfe"></a>2017-12（冲刺 (sprint) 2 QFE） 
-版本号：0.1.1711.15323 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（[查找版本](../desktop-workbench/known-issues-and-troubleshooting-guide.md#find-the-workbench-build-number)）
+**版本号**：0.1.1711.15323 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（[查找你的版本](../desktop-workbench/known-issues-and-troubleshooting-guide.md#find-the-workbench-build-number)）
 
 这是 QFE（快速修补工程）版本，为次版本。 它解决了几个遥测问题，可帮助产品团队更好地了解产品使用情况。 将来可利用这些信息改善产品体验。 
 
@@ -280,7 +349,7 @@ Azure 机器学习服务的 Azure 门户具有以下更新：
 - 在命令行工具中，再也不需要以 Azure 订阅所有者的身份来预配机器学习计算 ACS 群集。 
 
 ### <a name="2017-12-sprint-2"></a>2017-12（冲刺 (Sprint) 2）
-版本号：0.1.1711.15263 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（[查找版本](../desktop-workbench/known-issues-and-troubleshooting-guide.md#find-the-workbench-build-number)）
+**版本号**：0.1.1711.15263 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（[查找你的版本](../desktop-workbench/known-issues-and-troubleshooting-guide.md#find-the-workbench-build-number)）
 
 欢迎使用 Azure 机器学习的第三个更新。 此更新包括 Workbench 应用、命令行接口 (CLI) 以及后端服务中的改进。 非常感谢你向我们发送微笑和哭脸。 下面的许多更新就是针对你的反馈的直接结果。 
 
@@ -379,12 +448,12 @@ Azure 机器学习服务的 Azure 门户具有以下更新：
     - `az ml computetarget attach --type cluster` 现为 `az ml computetarget attach cluster`
 
 ### <a name="2017-11-sprint-1"></a>2017-11（冲刺 (sprint) 1） 
-版本号：0.1.1710.31013 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（[查找版本](../desktop-workbench/known-issues-and-troubleshooting-guide.md#find-the-workbench-build-number)）
+**版本号**：0.1.1710.31013 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（[查找你的版本](../desktop-workbench/known-issues-and-troubleshooting-guide.md#find-the-workbench-build-number)）
 
 在此版本中，我们改进了 Workbench 应用、CLI 及后端服务层中的安全性、稳定性及可维护性。 非常感谢向我们发送微笑和哭脸。 下面的许多更新就是你反馈的直接结果。 请持续关注！
 
 #### <a name="notable-new-features"></a>值得注意的新功能
-- 现在有两个新的 Azure 区域可提供 Azure ML：西欧和东南亚。 这两个区域加上以前的区域：“美国东部 2”、“美国中西部”和“澳大利亚东部”，使得部署区域的总数达到 5 个。
+- Azure ML 现已在两个新的 Azure 区域中可用：**西欧**和**东南亚**。 这两个区域加上以前的区域：“美国东部 2”、“美国中西部”和“澳大利亚东部”，使得部署区域的总数达到 5 个。
 - 我们在 Workbench 应用中启用了 Python 代码语法突出显示功能，便于读取和编辑 Python 源代码。 
 - 现在，你可以直接从文件中启动你喜欢的 IDE，而不是从整个项目中启动。  在 Workbench 中打开一个文件，然后单击“编辑”，即可启动当前文件和项目的 IDE（当前支持 VS Code 和 PyCharm）。  此外，也可以单击“编辑”按钮旁边的箭头，在 Workbench 文本编辑器中编辑文件。  文件在你单击“编辑”之前是只读的，用以防止意外更改。
 - 常用的绘图库 `matplotlib` 版本 2.1.0 现在随 Workbench 应用一起提供。
@@ -501,7 +570,7 @@ Azure 机器学习服务的 Azure 门户具有以下更新：
 
 
 ### <a name="2017-10-sprint-0"></a>2017-10（冲刺 (sprint) 0） 
-版本号：0.1.1710.31013 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（[查找版本](../desktop-workbench/known-issues-and-troubleshooting-guide.md#find-the-workbench-build-number)）
+**版本号**：0.1.1710.31013 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（[查找你的版本](../desktop-workbench/known-issues-and-troubleshooting-guide.md#find-the-workbench-build-number)）
 
 欢迎使用自 Microsoft Ignite 2017 大会发布 Azure Machine Learning Workbench 初始公共预览版以来的首个更新。 此发行版中的主要更新是可靠性和稳定性修复。  我们已解决的一些严重问题包括：
 

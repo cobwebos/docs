@@ -1,5 +1,5 @@
 ---
-title: 针对预测性维护解决方案的 Azure AI 指南 | Microsoft Docs
+title: 针对预测性维护解决方案 (Team Data Science Process) 的 Azure AI 指南
 description: 有关增强多个垂直行业预测性维护解决方案的数据科学的全面说明。
 services: machine-learning
 author: marktab
@@ -10,13 +10,13 @@ ms.component: team-data-science-process
 ms.topic: article
 ms.date: 05/11/2018
 ms.author: tdsp
-ms.custom: (previous author=fboylu, ms.author=fboylu)
-ms.openlocfilehash: 1538357a744e4a2c885b6552ca94efc6642d2880
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec18, previous-author=fboylu, previous-ms.author=fboylu
+ms.openlocfilehash: 8d2a16047a741daf484d6ccdc48453d49355d443
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52444913"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53135673"
 ---
 # <a name="azure-ai-guide-for-predictive-maintenance-solutions"></a>针对预测性维护解决方案的 Azure AI 指南
 
@@ -88,7 +88,7 @@ BDM 内容并不要求读者事先拥有数据科学方面的知识。 若要学
 |:-----------------|-------------------|
 |**航空**      |                   |
 |机械问题导致航班延误和取消。 无法及时修复的故障可能导致航班取消，并中断日程安排和运营。 |PdM 解决方案可以预测机械故障导致航班延误或取消的概率。|
-|飞机引擎部件故障：在航空行中，飞机引擎部件更换属于最常见的维护任务。 维护解决方案要求仔细管理组件库存可用性、交付和计划。|能够收集组件可靠性的智能可以大大降低投资成本。|
+|飞机引擎部件故障：在航空业中，飞机引擎部件更换属于最常见的维护任务。 维护解决方案要求仔细管理组件库存可用性、交付和计划。|能够收集组件可靠性的智能可以大大降低投资成本。|
 |**金融** |                         |
 |ATM 故障是银行业中的一个常见问题。 此处的问题是报告提款机发生卡纸或部件故障导致 ATM 提现交易中断的概率。 根据交易故障的预测，可以提前维修 ATM，以防止发生故障。| 所需的替代方案是防止交易中途机器发生故障，并根据预测设定机器程序以拒绝服务。|
 |**能源** |                          |
@@ -117,7 +117,7 @@ BDM 内容并不要求读者事先拥有数据科学方面的知识。 若要学
 首先，数据必须与问题相关。 以前面所述的“车轮故障”用例为例 - 训练数据应包含与车轮的运行相关的特征。 如果问题是预测牵引系统的故障，则训练数据必须包含牵引系统的所有不同组件。 第一种情况针对特定的组件，而第二种情况针对更大子系统的故障。 一般的建议是围绕特定的组件而不是更大子系统设计预测系统，因为后者的数据更分散。 领域专家（参阅[符合预防性维护条件的问题](#Qualifying-problems-for-predictive-maintenance)）应帮助选择用于分析的最相关数据子集。 [预防性维护的数据准备](#Data-preparation-for-predictive-maintenance)中更详细介绍了相关数据源。
 
 ### <a name="sufficient-data"></a>充足的数据
-在故障历史记录数据方面，我们经常会提出两个问题：(1)“训练一个模型需要多少个故障事？” (2)“多少条记录被视为‘足够’？”这些问题没有绝对的答案，而只能凭经验法则来解答。 对于问题 (1)，故障事件越多，则模型质量就越好。 对于问题 (2)，故障事件的确切数目取决于所要解决的问题的数据和上下文。 但另一方面，如果某台机器过于频繁地发生故障，在这种情况下企业会将其更换，这样就会减少故障实例。 同样，领域专家的指导非常重要。 但是，可以通过某些方法来处理罕见事件的问题。 [处理不平衡的数据](#Handling-imbalanced-data)部分对此做了介绍。
+在故障历史记录数据方面，我们经常会提出两个问题：(1)“训练一个模型需要多少个故障事件？” (2)“多少条记录被视为‘足够’？”这些问题没有绝对的答案，而只能凭经验法则来解答。 对于问题 (1)，故障事件越多，则模型质量就越好。 对于问题 (2)，故障事件的确切数目取决于所要解决的问题的数据和上下文。 但另一方面，如果某台机器过于频繁地发生故障，在这种情况下企业会将其更换，这样就会减少故障实例。 同样，领域专家的指导非常重要。 但是，可以通过某些方法来处理罕见事件的问题。 [处理不平衡的数据](#Handling-imbalanced-data)部分对此做了介绍。
 
 ### <a name="quality-data"></a>数据质量
 数据的质量至关重要 - 与目标变量值相结合时，每个预测器属性值必须准确。 在统计和数据管理学科中，数据质量已有全面的研究，本指南不会予以阐述。
@@ -241,7 +241,7 @@ PdM 中的另一个有用技术是使用检测数据异常的算法来捕获趋�
 > [!IMPORTANT]
 > 若要获得成功的 PdM 解决方案，数据准备和特征工程与建模技术同等重要。 领域专家和实践者应投入大量的时间来获得适当的特征和模型数据。 下面列出了许多书籍中有关特征工程的简短示例：
 > - 1999 年 Pyle, D. 发表的“Data Preparation for Data Mining (The Morgan Kaufmann Series in Data Management Systems)”（数据挖掘的数据准备（数据管理系统中的 Morgan Kaufmann 系列））
-> - 2018 年 Zheng, A. 和 Casari, A. 在 O'Reilly 上发表的“Feature Engineering for Machine Learning: Principles and Techniques for Data Scientists”（机器学习的特征工程：面向数据科学家的原理和技术）
+> - 2018 年 Zheng, A. 和 Casari, A. 在 O'Reilly 上发表的“Feature Engineering for Machine Learning: Principles and Techniques for Data Scientists”（机器学习的特征工程：面向数据科学家的原理和技术）。
 > - 2018 年 Dong, G. 和 Liu, H.（编辑）在 CRC Press 上发表的“Feature Engineering for Machine Learning and Data Analytics (Chapman & Hall/CRC Data Mining and Knowledge Discovery Series)”（机器学习和数据分析的特征工程（Chapman 和 Hall/CRC 数据挖掘与知识探索系列））
 
 ## <a name="modeling-techniques-for-predictive-maintenance"></a>预防性维护的建模技术
@@ -289,11 +289,11 @@ PdM 中的另一个有用技术是使用检测数据异常的算法来捕获趋�
 #### <a name="label-construction-for-multi-class-classification"></a>多类分类的标签构造
 此处的问题是：“资产在将来的 _nZ_（其中的 _n_ 是时段数目）个时间单位内发生故障的概率是多少？” 若要回答此问题，请使用时间桶 (3Z, 2Z, Z) 标记资产故障之前的 nZ 条记录。 将其他所有记录标记为“正常”（标签 = 0）。 在此方法中，目标变量保存分类值。 （参阅图 5）。
 
-![图 5. 用于故障时间预测的多类分类的标签](./media/cortana-analytics-playbook-predictive-maintenance/labelling-for-multiclass-classification-for-failure-time-prediction.png) 图 5. 用于故障时间预测的多类分类的标签
+![图 5. 多类分类的故障时间预测标签](./media/cortana-analytics-playbook-predictive-maintenance/labelling-for-multiclass-classification-for-failure-time-prediction.png) 图 5. 用于故障时间预测的多类分类的标签
 
 此处的问题是：“根本原因/问题 _P<sub>i</sub>_ 导致资产在将来的 X 个时间单位内发生故障的概率是多少？” 其中的 _i_ 是可能根本原因的数目。 若要回答此问题，请将资产故障前面的 X 条记录标记为“根本原因 _P<sub>i</sub>_ 即将导致故障”（标签 = _P<sub>i</sub>_）。 将其他所有记录标记为“正常”（标签 = 0）。 在此方法中，标签也可分类（参阅图 6）。
 
-![图 6. 用于根本原因预测的多类分类的标签](./media/cortana-analytics-playbook-predictive-maintenance/labelling-for-multiclass-classification-for-root-cause-prediction.png) 图 6. 用于根本原因预测的多类分类的标签
+![图 6. 多类分类的根本原因预测标签](./media/cortana-analytics-playbook-predictive-maintenance/labelling-for-multiclass-classification-for-root-cause-prediction.png) 图 6. 用于根本原因预测的多类分类的标签
 
 模型根据每个 _P<sub>i</sub>_ 分配故障概率以及不发生故障的概率。 这些概率可以按度量值排序，以允许预测最可能在未来发生的问题。
 

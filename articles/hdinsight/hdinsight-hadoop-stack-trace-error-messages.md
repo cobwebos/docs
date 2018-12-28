@@ -10,26 +10,26 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/14/2018
-ms.openlocfilehash: 880f5fc44978a6b46b3cbaefe41296903617b4e6
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 371685ba8a65fe3ca9d8835f4afcacc8ff2e07ed
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51011402"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53383247"
 ---
-# <a name="index-of-hadoop-in-hdinsight-troubleshooting-articles"></a>HDInsight 中的 Hadoop 索引疑难解答文章
+# <a name="index-of-apache-hadoop-in-hdinsight-troubleshooting-articles"></a>HDInsight 中的 Apache Hadoop 索引故障排除文章
 这些文章已按错误类型进行组织。
 
 ## <a name="out-of-memory-error"></a>内存不足错误
-* [修复 HDInsight 中 Hive 内存不足错误](hdinsight-hadoop-hive-out-of-memory-error-oom.md)：修复来自 Hive 查询的内存不足错误 (OOM)。 客户方案包括跨多个大型表运行的查询。
+* [解决 HDInsight 中的 Apache Hive 内存不足错误](hdinsight-hadoop-hive-out-of-memory-error-oom.md)：解决运行 Hive 查询时内存不足 (OOM) 错误。 客户方案包括跨多个大型表运行的查询。
 
-## <a name="hive-query-performance"></a>Hive 查询性能
-* [在 HdInsight 中优化 Hadoop 的 Hive 查询](hdinsight-hadoop-optimize-hive-query.md)：本文介绍可对 Hive 查询应用的几种最常见 Hive 性能优化方法。
-* [排查 HDInsight Hadoop 群集中的 Hive 查询性能问题](https://blogs.msdn.microsoft.com/bigdatasupport/2015/08/13/troubleshooting-hive-query-performance-in-hdinsight-hadoop-cluster/)。
+## <a name="apache-hive-query-performance"></a>Apache Hive 查询性能
+* [在 HDInsight 中优化 Apache Hadoop 的 Apache Hive 查询](hdinsight-hadoop-optimize-hive-query.md)：本文介绍可应用于 Hive 查询的一些最常见 Hive 性能优化方法。
+* [排查 HDInsight Hadoop 群集中的 Apache Hive 查询性能问题](https://blogs.msdn.microsoft.com/bigdatasupport/2015/08/13/troubleshooting-hive-query-performance-in-hdinsight-hadoop-cluster/)。
 
 ## <a name="more-troubleshooting-articles"></a>更多疑难解答文章
 * [有关在 Linux 上使用 HDInsight 的信息](hdinsight-hadoop-linux-information.md)
-* [在 HDInsight 上基于 Linux 的 Hadoop 中访问 YARN 应用程序日志](hdinsight-hadoop-access-yarn-app-logs-linux.md)
-* [在基于 Linux 的 HDInsight 上为 Hadoop 服务启用堆转储](hdinsight-hadoop-collect-debug-heap-dump-linux.md)
-* [Azure HDInsight 上的 Hadoop 组件发行说明](hdinsight-release-notes.md)
+* [在基于 Linux 的 Hadoop on HDInsight 上访问 Apache Hadoop YARN 应用程序日志](hdinsight-hadoop-access-yarn-app-logs-linux.md)
+* [在基于 Linux 的 HDInsight 上为 Apache Hadoop 服务启用堆转储](hdinsight-hadoop-collect-debug-heap-dump-linux.md)
+* [Azure HDInsight 上的 Apache Hadoop 组件发行说明](hdinsight-release-notes.md)
 

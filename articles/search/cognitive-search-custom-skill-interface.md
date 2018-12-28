@@ -1,5 +1,5 @@
 ---
-title: 认知搜索管道中自定义技能的接口定义（Azure 搜索）| Microsoft Docs
+title: 认知搜索管道中自定义技能的接口定义 - Azure 搜索
 description: Azure 搜索的认知搜索管道中的 web-api 自定义技能的自定义数据提取接口。
 manager: pablocas
 author: luiscabrer
@@ -9,12 +9,13 @@ ms.devlang: NA
 ms.topic: conceptual
 ms.date: 08/14/2018
 ms.author: luisca
-ms.openlocfilehash: 2218a96702a02a32df18da9640ea9946d05acdb1
-ms.sourcegitcommit: 1aedb52f221fb2a6e7ad0b0930b4c74db354a569
+ms.custom: seodec2018
+ms.openlocfilehash: 1df2a565b1c9e8bd2bea75ce78abc84608c89eea
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42145691"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53314646"
 ---
 # <a name="how-to-add-a-custom-skill-to-a-cognitive-search-pipeline"></a>如何将自定义技能添加到认知搜索管道
 
@@ -149,6 +150,6 @@ Web API 必须接受要处理的一组记录。 每条记录都必须包含一�
 ## <a name="next-steps"></a>后续步骤
 
 + [示例：为翻译文本 API 创建自定义技能](cognitive-search-create-custom-skill-example.md)
-+ [如何定义技能组合](cognitive-search-defining-skillset.md)
++ [如何定义技能集](cognitive-search-defining-skillset.md)
 + [创建技能组合 (REST)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)
 + [如何映射扩充的域](cognitive-search-output-field-mapping.md)

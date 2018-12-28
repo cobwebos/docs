@@ -9,37 +9,38 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/10/2018
 ms.author: hrasheed
-ms.openlocfilehash: cb96933569c18b8c70d8991c9ba19f9f3e1243e6
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: 855ee1b7396be97c6529480b8fa8200bb8167ee6
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51633693"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53433999"
 ---
-# <a name="run-pig-jobs-with-apache-hadoop-on-hdinsight-by-using-rest"></a>使用 REST 通过 HDInsight 上的 Apache Hadoop 运行 Pig 作业
+# <a name="run-apache-pig-jobs-with-apache-hadoop-on-hdinsight-by-using-rest"></a>使用 REST 通过 HDInsight 上的 Apache Hadoop 运行 Apache Pig 作业
 
 [!INCLUDE [pig-selector](../../../includes/hdinsight-selector-use-pig.md)]
 
 了解如何通过向 Azure HDInsight 群集发出 REST 请求运行 Apache Pig Latin 作业。 Curl 用于演示如何使用 WebHCat REST API 与 HDInsight 交互。
 
-> [!NOTE]
+> [!NOTE]  
 > 如果已熟悉如何使用基于 Linux 的 Apache Hadoop 服务器，但刚接触 HDInsight，请参阅[基于 Linux 的 HDInsight 提示](../hdinsight-hadoop-linux-information.md)。
 
 ## <a id="prereq"></a>先决条件
 
 * Azure HDInsight（HDInsight 上的 Hadoop）群集（基于 Linux 或 Windows）
 
-  > [!IMPORTANT]
+  > [!IMPORTANT]  
   > Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight 在 Windows 上停用](../hdinsight-component-versioning.md#hdinsight-windows-retirement)。
 
-* [Curl](http://curl.haxx.se/)
+* [Curl](https://curl.haxx.se/)
 
-* [jq](http://stedolan.github.io/jq/)
+* [jq](https://stedolan.github.io/jq/)
 
-## <a id="curl"></a>通过使用 Curl 运行 Pig 作业
+## <a id="curl"></a>使用 Curl 运行 Apache Pig 作业
+
 
 > [!NOTE]
-> REST API 通过[基本访问身份验证](http://en.wikipedia.org/wiki/Basic_access_authentication)进行保护。 始终使用安全 HTTP (HTTPS) 发出请求，以确保安全地将凭据发送到服务器。
+> REST API 通过[基本访问身份验证](https://en.wikipedia.org/wiki/Basic_access_authentication)进行保护。 始终使用安全 HTTP (HTTPS) 发出请求，以确保安全地将凭据发送到服务器。
 >
 > 使用本部分中的命令时，请将 `USERNAME` 替换为要向群集进行身份验证的用户，并将 `PASSWORD` 替换为用户帐户的密码。 将 `CLUSTERNAME` 替换为群集的名称。
 >
@@ -57,7 +58,7 @@ ms.locfileid: "51633693"
 
     此命令中使用的参数如下：
 
-    * **-u**：用于对请求进行身份验证的用户名和密码
+    * **-u**：用来对请求进行身份验证的用户名和密码
     * **-G**：指示此请求是 GET 请求
 
      URL 的开头 (**https://CLUSTERNAME.azurehdinsight.net/templeton/v1**) 对于所有请求都是相同的。 路径 **/status** 指示请求是要返回服务器的 WebHCat（也称为 Templeton）状态。
@@ -76,7 +77,7 @@ ms.locfileid: "51633693"
     * **execute**：要执行的 Pig Latin 语句
     * **statusdir**：此作业的状态要写入到的目录
 
-    > [!NOTE]
+    > [!NOTE]  
     > 请注意，在与 Curl 配合使用时，将使用 `+` 字符替换 Pig Latin 语句中的空格。
 
     此命令应会返回可用来检查作业状态的作业 ID，例如：
@@ -93,14 +94,14 @@ ms.locfileid: "51633693"
 
     如果作业已完成，状态将是 **SUCCEEDED**。
 
-    > [!NOTE]
+    > [!NOTE]  
     > 此 Curl 请求返回具有作业相关信息的 JavaScript 对象表示法 (JSON) 文档；使用 jq 可以仅检索状态值。
 
 ## <a id="results"></a>查看结果
 
 当作业的状态更改为“成功”后，可检索作业结果。 随查询一起传递的 `statusdir` 参数包含输出文件的位置；在本例中，该位置为 `/example/pigcurl`。
 
-HDInsight 可以使用 Azure 存储或 Azure Data Lake Store 作为默认数据存储。 有多种方法可访问数据，具体取决于使用哪种存储。 有关详细信息，请参阅[基于 Linux 的 HDInsight 信息](../hdinsight-hadoop-linux-information.md#hdfs-azure-storage-and-data-lake-store)文档的存储部分。
+HDInsight 可以使用 Azure 存储或 Azure Data Lake Storage 作为默认数据存储。 有多种方法可访问数据，具体取决于使用哪种存储。 有关详细信息，请参阅[基于 Linux 的 HDInsight 信息](../hdinsight-hadoop-linux-information.md#hdfs-azure-storage-and-data-lake-store)文档的存储部分。
 
 ## <a id="summary"></a>摘要
 
@@ -112,9 +113,9 @@ HDInsight 可以使用 Azure 存储或 Azure Data Lake Store 作为默认数据�
 
 有关 HDInsight 上的 Pig 的一般信息：
 
-* [将 Pig 与 Hadoop on HDInsight 配合使用](hdinsight-use-pig.md)
+* [将 Apache Pig 与 Apache Hadoop on HDInsight 配合使用](hdinsight-use-pig.md)
 
 有关 HDInsight 上的 Hadoop 的其他使用方法的信息：
 
-* [将 Hive 与 Hadoop on HDInsight 配合使用](hdinsight-use-hive.md)
-* [将 MapReduce 与 HDInsight 上的 Hadoop 配合使用](hdinsight-use-mapreduce.md)
+* [将 Apache Hive 与 Apache Hadoop on HDInsight 配合使用](hdinsight-use-hive.md)
+* [将 MapReduce 与 HDInsight 上的 Apache Hadoop 配合使用](hdinsight-use-mapreduce.md)

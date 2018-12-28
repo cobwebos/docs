@@ -9,14 +9,14 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: ebbb12a6454a093ad0ac3b3cc30eb489eeef21ec
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: 57e23c55342ee397ecb8590dd6da639ba766f351
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51687208"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53385425"
 ---
-# <a name="optimize-hive-queries-in-azure-hdinsight"></a>优化 Azure HDInsight 中的 Hive 查询
+# <a name="optimize-apache-hive-queries-in-azure-hdinsight"></a>优化 Azure HDInsight 中的 Apache Hive 查询
 
 在 Azure HDInsight 中，有多种群集类型和技术可以运行 Apache Hive 查询。 创建 HDInsight 群集时，选择适当的群集类型有助于根据工作负荷的需求优化性能。 
 
@@ -38,9 +38,9 @@ ms.locfileid: "51687208"
 
 有关缩放 HDInsight 的详细信息，请参阅[缩放 HDInsight 群集](hdinsight-scaling-best-practices.md)
 
-## <a name="use-tez-instead-of-map-reduce"></a>使用 Tez 而不是映射化简
+## <a name="use-apache-tez-instead-of-map-reduce"></a>使用 Apache Tez 而不是 Map Reduce
 
-[Apache Tez](http://hortonworks.com/hadoop/tez/) 是 MapReduce 引擎的替代执行引擎。 基于 Linux 的 HDInsight 群集在默认情况下会启用 Tez。
+[Apache Tez](https://hortonworks.com/hadoop/tez/) 是 MapReduce 引擎的替代执行引擎。 基于 Linux 的 HDInsight 群集在默认情况下会启用 Tez。
 
 ![tez_1][image-hdi-optimize-hive-tez_1]
 
@@ -52,7 +52,7 @@ Tez 速度更快，因为：
 * **重复使用容器**。 Tez 会尽可能地重复使用容器，以确保降低由于启动容器而产生的延迟。
 * **连续优化技术**。 传统上，优化是在编译阶段完成的。 但是，这可以提供有关输入的详细信息，以便在运行时更好地进行优化。 Tez 使用连续优化技术，从而可以在运行时阶段进一步优化计划。
 
-有关这些概念的详细信息，请参阅 [Apache TEZ](http://hortonworks.com/hadoop/tez/)。
+有关这些概念的详细信息，请参阅 [Apache TEZ](https://hortonworks.com/hadoop/tez/)。
 
 可以使用以下 set 命令设置查询的前缀，来执行 Tez 支持的任何 Hive 查询：
 
@@ -124,16 +124,16 @@ Hive 分区的实现方法是将原始数据重新组织成新目录。 每个�
 ## <a name="use-the-orcfile-format"></a>使用 ORCFile 格式
 Hive 支持不同的文件格式。 例如：
 
-* **文本**：默认的文件格式，适用于大多数情况
-* **Avro**：非常适合互操作方案
-* **ORC/Parquet**：最适合用于提高性能
+* **文本**：默认的文件格式，适用于大多数情况。
+* **Avro**：非常适合互操作性方案。
+* **ORC/Parquet**：最适合用于提高性能。
 
 ORC（优化行纵栏式）格式是存储 Hive 数据的高效方式。 与其他格式相比，ORC 具有以下优点：
 
-* 支持复杂类型（包括 DateTime）和复杂的半结构化类型
-* 高达 70% 的压缩率
-* 每 10,000 行编制一次索引并允许跳过行
-* 大幅减少运行时执行时间
+* 支持复杂类型（包括 DateTime）和复杂的半结构化类型。
+* 高达 70% 的压缩率。
+* 每 10,000 行编制一次索引并允许跳过行。
+* 大幅减少运行时执行时间。
 
 若要启用 ORC 格式，请先使用 *Stored as ORC* 子句创建一个表：
 
@@ -171,7 +171,7 @@ ORC（优化行纵栏式）格式是存储 Hive 数据的高效方式。 与其�
     FROM lineitem;
    ```
    
-可在 [Hive 语言手册](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+ORC)中阅读有关 ORC 格式的详细信息。
+可在 [Apache Hive 语言手册](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+ORC)中阅读有关 ORC 格式的详细信息。
 
 ## <a name="vectorization"></a>向量化
 
@@ -196,10 +196,10 @@ ORC（优化行纵栏式）格式是存储 Hive 数据的高效方式。 与其�
 在本文中，已学习了几种常见的 Hive 查询优化方法。 若要了解更多信息，请参阅下列文章：
 
 * [使用 HDInsight 中的 Apache Hive](hadoop/hdinsight-use-hive.md)
-* [使用 HDInsight 中的 Hive 分析航班延误数据](hdinsight-analyze-flight-delay-data.md)
-* [使用 HDInsight 中的 Hive 分析 Twitter 数据](hdinsight-analyze-twitter-data.md)
-* [使用 HDInsight 中 Hadoop上的 Hive 查询控制台分析传感器数据](hadoop/apache-hive-analyze-sensor-data.md)
-* [将 Hive 与 HDInsight 配合使用来分析来自网站的日志](hadoop/apache-hive-analyze-website-log.md)
+* [使用 HDInsight 中的 Apache Hive 分析航班延误数据](hdinsight-analyze-flight-delay-data.md)
+* [使用 HDInsight 中的 Apache Hive 分析 Twitter 数据](hdinsight-analyze-twitter-data.md)
+* [使用 HDInsight 中 Apache Hadoop上的 Apache Hive 查询控制台分析传感器数据](hadoop/apache-hive-analyze-sensor-data.md)
+* [将 Apache Hive 与 HDInsight 配合使用来分析来自网站的日志](hadoop/apache-hive-analyze-website-log.md)
 
 [image-hdi-optimize-hive-scaleout_1]: ./media/hdinsight-hadoop-optimize-hive-query/scaleout_1.png
 [image-hdi-optimize-hive-scaleout_2]: ./media/hdinsight-hadoop-optimize-hive-query/scaleout_2.png

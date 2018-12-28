@@ -1,25 +1,23 @@
 ---
-title: Azure Cosmos DB：SQL Python API、SDK 和资源 | Microsoft Docs
+title: Azure Cosmos DB：SQL Python API、SDK 和资源
 description: 了解有关 SQL Python API 和 SDK 的全部信息，包括发布日期、停用日期和 Azure Cosmos DB Python SDK 各版本之间所做的更改。
 services: cosmos-db
 author: rnagpal
-manager: kfile
-editor: cgronlun
 ms.service: cosmos-db
 ms.component: cosmosdb-sql
 ms.devlang: python
 ms.topic: reference
-ms.date: 9/24/2018
+ms.date: 11/29/2018
 ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 75b5fd2f586a9122aa1248ba88d7ceab59b13215
-ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
+ms.openlocfilehash: cf796466d8d4156eb442e6b0d1b51cb70d0d30f3
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48269286"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53337081"
 ---
-# <a name="azure-cosmos-db-python-sdk-for-sql-api-release-notes-and-resources"></a>用于 SQL API 的 Azure Cosmos DB Python SDK：发行说明和资源
+# <a name="azure-cosmos-db-python-sdk-for-sql-api-release-notes-and-resources"></a>适用于 SQL API 的 Azure Cosmos DB Python SDK：发行说明和资源
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-sdk-dotnet.md)
 > * [.NET 更改源](sql-api-sdk-dotnet-changefeed.md)
@@ -30,7 +28,7 @@ ms.locfileid: "48269286"
 > * [Python](sql-api-sdk-python.md)
 > * [REST](https://docs.microsoft.com/rest/api/cosmos-db/)
 > * [REST 资源提供程序](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/)
-> * [SQL](https://msdn.microsoft.com/library/azure/dn782250.aspx)
+> * [SQL](sql-api-query-reference.md)
 > * [BulkExecutor - .NET](sql-api-sdk-bulk-executor-dot-net.md)
 > * [BulkExecutor - Java](sql-api-sdk-bulk-executor-java.md)
 
@@ -51,10 +49,28 @@ ms.locfileid: "48269286"
 
 ## <a name="release-notes"></a>发行说明
 
+### <a name="a-name302302"></a><a name="3.0.2"/>3.0.2
+* 添加了对 MultiPolygon 数据类型的支持
+* 修复了会话读取重试策略中的 Bug
+* 针对解码 base64 字符串时的不正确填充问题修复了 Bug
+
+### <a name="a-name301301"></a><a name="3.0.1"/>3.0.1
+* 修复了 LocationCache 中的 Bug
+* 修复了终结点重试逻辑 Bug
+* 修正了文档
+
 ### <a name="a-name300300"></a><a name="3.0.0"/>3.0.0
 * 支持多区域写入。
 * 命名空间已更改为 azure.cosmos。
 * 集合和文档概念已重命名为 container 和 item，document_client 已重命名为 cosmos_client。 
+
+### <a name="a-name233233"></a><a name="2.3.3"/>2.3.3
+* 添加了对代理的支持
+* 添加了对读取更改源的支持
+* 添加了对集合配额标头的支持
+* 针对大型会话令牌问题修复了 Bug
+* 修复了 ReadMedia API 的 Bug
+* 修复了分区键范围缓存中的 Bug
 
 ### <a name="a-name232232"></a><a name="2.3.2"/>2.3.2
 * 添加了对连接问题的默认重试的支持。
@@ -145,6 +161,9 @@ Microsoft 至少会在停用 SDK 前提前 12 个月发出通知，以便顺利�
 
 | 版本 | 发布日期 | 停用日期 |
 | --- | --- | --- |
+| [3.0.2](#3.0.2) |2018 年 11 月 15 日 |--- |
+| [3.0.1](#3.0.1) |2018 年 10 月 4 日 |--- |
+| [2.3.3](#2.3.3) |2018 年 9 月 8 日 |--- |
 | [2.3.2](#2.3.2) |2018 年 5 月 8 日 |--- |
 | [2.3.1](#2.3.1) |2017 年 12 月 21 日 |--- |
 | [2.3.0](#2.3.0) |2017 年 11 月 10 日 |--- |

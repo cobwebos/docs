@@ -8,20 +8,20 @@ ms.service: active-directory
 ms.component: app-mgmt
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 11/12/2018
+ms.date: 12/07/2018
 ms.author: barbkess
 ms.reviewer: arvindh
-ms.openlocfilehash: 3012f07d8c56f2581a087bc8e43aa4a089bf9589
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: 627bd114504de20517abcd05f45dc6c58fe80117
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51633506"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53322698"
 ---
 # <a name="single-sign-on-to-applications-in-azure-active-directory"></a>单一登录到 Azure Active Directory 中的应用程序
 了解如何在 Azure Active Directory (Azure AD) 中配置应用程序时选择最合适的单一登录方法。 
 
-- 使用单一登录，用户只需使用一个帐户登录一次，即可访问加入域的设备、公司资源、软件即服务 (SaaS) 应用程序和 Web 应用程序。 登录后，用户可以从 Office 365 门户或 Azure AD MyApps 访问面板启动应用程序。管理员可以集中管理用户帐户，并根据组成员身份自动添加或删除用户对应用程序的访问权限。  
+- 使用单一登录，用户可以使用一个帐户登录一次，即可访问加入域的设备、公司资源、软件即服务 (SaaS) 应用程序和 Web 应用程序。 登录后，用户可以从 Office 365 门户或 Azure AD MyApps 访问面板启动应用程序。 管理员可以集中管理用户帐户，并根据组成员身份自动添加或删除用户对应用程序的访问权限。 
 
 - 不使用单一登录，用户必须记住特定于应用程序的密码并登录每个应用程序。 IT 人员需要为每个应用程序（如 Office 365、Box 和 Salesforce）创建和更新用户帐户。 用户需要记住他们的密码，并且花时间登录每个应用程序。
 
@@ -29,10 +29,10 @@ ms.locfileid: "51633506"
 
 ## <a name="choosing-a-single-sign-on-method"></a>选择单一登录方法
 
-可以通过几种方法来配置应用程序以实现单一登录。选择应用程序的单一登录方法取决于应用程序配置的身份验证方式。除非已禁用，否则所有单一登录方法都会自动将用户登录到应用程序，而无需再次登录。
+有几种方法可以配置应用程序以实现单一登录。 选择应用程序的单一登录方法取决于应用程序配置的身份验证方式。 除非已禁用，否则所有单一登录方法都会自动将用户登录到应用程序，而无需再次登录。  
 
 - 云应用程序可以使用 SAML、基于密码、链接或禁用的方法进行单一登录。 SAML 是最安全的单一登录方法。
-- 本地应用程序可以使用基于密码、集成的 Windows 身份验证、基于标头、链接或已禁用的方法进行单一登录。当应用程序配置为应用程序代理时，本地选项适用。 
+- 本地应用程序可以使用基于密码、集成身份验证、基于标头、链接或已禁用的方法进行单一登录。 当应用程序配置为应用程序代理时，本地选项适用。 
 
 此流程图有助于确定哪种单一登录方法最适合你的情况。 
 
@@ -61,14 +61,13 @@ ms.locfileid: "51633506"
 
 - SAML 2.0
 - WS 联合身份验证
-- OpenID 连接
 
 要将应用程序配置为基于 SAML 的单一登录，请参阅[配置基于 SAML 的单一登录](configure-single-sign-on-portal.md)。 此外，许多应用程序都有[特定于应用程序的教程](../saas-apps/tutorial-list.md)，这将逐步指导为特定应用程序配置基于 SAML 的单一登录。 
 
 有关 SAML 协议的工作原理的详细信息，请参阅[单一登录 SAML 协议](../develop/single-sign-on-saml-protocol.md)。
 
 ## <a name="password-based-sso"></a>基于密码的 SSO
-使用基于密码的登录，应用程序使用用户名和密码对应用程序进行身份验证。 最终用户在首次访问应用程序时登录该应用程序。 首次登录后，Azure Active Directory 会为应用程序提供用户名和密码。 
+使用基于密码的登录时，最终用户在首次访问应用程序时使用用户名和密码登录。 首次登录后，Azure Active Directory 会为应用程序提供用户名和密码。 
 
 基于密码的单一登录使用应用程序提供的现有身份验证过程。 为应用程序启用密码单一登录时，Azure AD 会收集并安全地存储应用程序的用户名和密码。 用户凭据以加密状态存储在目录中。 
 
@@ -178,6 +177,6 @@ Azure AD 应用程序代理针对使用[集成身份验证 (IWA)](/aspnet/web-ap
 * [用于将 SaaS 应用程序与 Azure Active Directory 集成的教程](../saas-apps/tutorial-list.md)
 * [用于配置单一登录的教程](configure-single-sign-on-portal.md)
 * [管理对应用程序的访问简介](what-is-access-management.md)
-* 下载链接：[单一登录部署计划](http://aka.ms/SSODeploymentPlan)。
+* 下载链接：[单一登录部署计划](https://aka.ms/SSODeploymentPlan)。
 
 

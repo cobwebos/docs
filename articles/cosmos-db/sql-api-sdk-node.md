@@ -1,9 +1,8 @@
 ---
-title: Azure Cosmos DB：SQL Node.js API、SDK 和资源 | Microsoft Docs
+title: Azure Cosmos DB：SQL Node.js API、SDK 和资源
 description: 了解有关 SQL Node.js API 和 SDK 的全部信息，包括发布日期、停用日期和 Azure Cosmos DB Node.js SDK 各版本之间所做的更改。
 services: cosmos-db
 author: deborahc
-editor: cgronlun
 ms.service: cosmos-db
 ms.component: cosmosdb-sql
 ms.devlang: nodejs
@@ -11,14 +10,14 @@ ms.topic: reference
 ms.date: 09/24/2018
 ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b5ba00376e40b92a217bddd5b27c53dbe30c3cf3
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: 08e928143e8e54797869a06f4f7b99fd89cdcacc
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51687497"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53343983"
 ---
-# <a name="azure-cosmos-db-nodejs-sdk-for-sql-api-release-notes-and-resources"></a>用于 SQL API 的 Azure Cosmos DB Node.js SDK：发行说明和资源
+# <a name="azure-cosmos-db-nodejs-sdk-for-sql-api-release-notes-and-resources"></a>适用于 SQL API 的 Azure Cosmos DB Node.js SDK：发行说明和资源
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-sdk-dotnet.md)
 > * [.NET 更改源](sql-api-sdk-dotnet-changefeed.md)
@@ -29,7 +28,7 @@ ms.locfileid: "51687497"
 > * [Python](sql-api-sdk-python.md)
 > * [REST](https://docs.microsoft.com/rest/api/cosmos-db/)
 > * [REST 资源提供程序](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/)
-> * [SQL](https://msdn.microsoft.com/library/azure/dn782250.aspx)
+> * [SQL](sql-api-query-reference.md)
 > * [BulkExecutor - .NET](sql-api-sdk-bulk-executor-dot-net.md)
 > * [BulkExecutor - Java](sql-api-sdk-bulk-executor-java.md)
 
@@ -107,8 +106,8 @@ ms.locfileid: "51687497"
 ### <a name="1.12.1"/>1.12.1</a>
 * 修复了 executeStoredProcedure 中的一个 bug，其中涉及的文档具有特殊 Unicode 字符（LS、PS）。
 * 修复了在分区键中处理含 Unicode 字符的文档时的 bug。
-* 修复使用名称媒体创建集合的支持。 Github 问题 #114。
-* 修复了权限授权令牌的支持。 Github 问题 #178。
+* 修复使用名称媒体创建集合的支持。 GitHub 问题 #114。
+* 修复了权限授权令牌的支持。 GitHub 问题 #178。
 
 ### <a name="1.12.0"/>1.12.0</a>
 * 添加了对名为 ConsistentPrefix 的新[一致性级别](consistency-levels.md)的支持。
@@ -120,8 +119,8 @@ ms.locfileid: "51687497"
 * 现可控制跨分区查询的并行度。
 * Azure Cosmos DB 模拟器运行时，添加了禁用 SSL 验证的选项。
 * 将分区集合上的最小吞吐量从 10,100 RU/s 降低到 2500 RU/s。
-* 修复了针对单分区集合的继续标记 bug。 Github 问题 #107。
-* 修复了将 0 处理成单个参数时出现的 executeStoredProcedure bug。 Github 问题 #155。
+* 修复了针对单分区集合的继续标记 bug。 GitHub 问题 #107。
+* 修复了将 0 处理成单个参数时出现的 executeStoredProcedure bug。 GitHub 问题 #155。
 
 ### <a name="1.10.2"/>1.10.2</a>
 * 修复了 user-agent 标头，使之包括 SDK 版本。
@@ -153,10 +152,10 @@ ms.locfileid: "51687497"
 * 修复了 RangePartitionResolver.resolveForRead Bug，其会由于结果的错误 concat，它不返回链接。
 
 ### <a name="1.5.5"/>1.5.5</a>
-* 修复了 hashPartitionResolver resolveForRead()：当没有提供分区键时，抛出异常，而不是返回所有已注册链接的列表。
+* 修复了 hashPartitionResolver resolveForRead()：当没有提供分区键时抛出异常，而不是返回所有已注册链接的列表。
 
 ### <a name="1.5.4"/>1.5.4</a>
-* 修复问题 [#100](https://github.com/Azure/azure-documentdb-node/issues/100) - 专用 HTTPS 代理：避免因 Azure Cosmos DB 用途而修改全局代理。 对所有 lib 的请求均使用专用代理。
+* 修复了问题 [#100](https://github.com/Azure/azure-documentdb-node/issues/100) - 专用 HTTPS 代理：避免因 Azure Cosmos DB 用途而修改全局代理。 对所有 lib 的请求均使用专用代理。
 
 ### <a name="1.5.3"/>1.5.3</a>
 * 修复了问题 [#81](https://github.com/Azure/azure-documentdb-node/issues/81) - 正确处理媒体 ID 中的短划线。

@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.component: users-groups-roles
 ms.topic: article
-ms.date: 05/21/2018
+ms.date: 12/11/2018
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
-ms.openlocfilehash: 2857f95eff0b2d039a1a3c7bbe566a8ed3ca4fea
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 3368133dec82d946318a755dc98b068a048b9e83
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50243123"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53275102"
 ---
 # <a name="enforce-a-naming-policy-for-office-365-groups-in-azure-active-directory-preview"></a>在 Azure Active Directory 中为 Office 365 组实施命名策略（预览版）
 
@@ -58,6 +58,7 @@ ms.locfileid: "50243123"
 阻止的字词列表是要在组名和组别名中阻止的短语的逗号分隔列表。 未执行任何子字符串搜索。 组名与一个或多个自定义阻止字词之间完全匹配才会触发失败。 不会执行子字符串搜索，因此用户可使用“Class”甚至是“lass”等作为阻止词。
 
 阻止的字词列表规则：
+
 - 阻止的字词不区分大小写。
 - 当用户在组名中输入阻止的字词时，会看到错误消息以及阻止的字词。
 - 对于阻止的字词，没有字符限制。
@@ -120,7 +121,7 @@ ms.locfileid: "50243123"
   
 ### <a name="set-the-naming-policy-and-custom-blocked-words"></a>设置命名策略和自定义阻止字词
 
-1. 在 Azure AD PowerShell 中设置组名前缀和后缀。
+1. 在 Azure AD PowerShell 中设置组名前缀和后缀。 要使功能正常工作，必须在设置中包含 [GroupName]。
   
   ````
   $Setting["PrefixSuffixNamingRequirement"] =“GRP_[GroupName]_[Department]"
@@ -166,6 +167,27 @@ $Settings["CustomBlockedWordsList"] = $BadWords
 $Settings["EnableMSStandardBlockedWords"] = $True
 Set-AzureADDirectorySetting -Id $Settings.Id -DirectorySetting $Settings 
 ````
+
+## <a name="remove-the-naming-policy"></a>删除命名策略
+
+1. 清空 Azure AD PowerShell 中的组名前缀和后缀。
+  
+  ````
+  $Setting["PrefixSuffixNamingRequirement"] =""
+  ````
+  
+2. 清空自定义阻止字词。 
+  
+  ````
+  $Setting["CustomBlockedWordsList"]=""
+  ````
+  
+3. 保存设置。
+  
+  ````
+  Set-AzureADDirectorySetting -Id (Get-AzureADDirectorySetting | where -Property DisplayName -Value "Group.Unified" -EQ).id -DirectorySetting $Setting
+  ````
+
 
 ## <a name="naming-policy-experiences-across-office-365-apps"></a>跨 Office 365 应用的命名策略体验
 

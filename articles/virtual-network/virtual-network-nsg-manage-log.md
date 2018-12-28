@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/04/2018
 ms.author: jdial
-ms.openlocfilehash: bf7f1f58250d94d821e6ec41266b518d7ebe105b
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: ee1e70e58c2f6dd15ae48c15373d4b1dc58f9328
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52427542"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53384983"
 ---
 # <a name="diagnostic-logging-for-a-network-security-group"></a>网络安全组的诊断日志记录
 
@@ -88,7 +88,7 @@ Set-AzureRmDiagnosticSetting `
   -Enabled $true
 ```
 
-若要记录其中一个类别的数据而不是两个类别都记录，请将 `-Categories` 选项添加到前一命令，后跟 *NetworkSecurityGroupEvent* 或 *NetworkSecurityGroupRuleCounter*。 若要记录到 Log Analytics 工作区之外的[目标](#log-destinations)，请使用适合 Azure [存储帐户](../monitoring-and-diagnostics/monitoring-archive-diagnostic-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json)或[事件中心](../monitoring-and-diagnostics/monitoring-stream-diagnostic-logs-to-event-hubs.md?toc=%2fazure%2fvirtual-network%2ftoc.json)的参数。
+若要记录其中一个类别的数据而不是两个类别都记录，请将 `-Categories` 选项添加到前一命令，后跟 *NetworkSecurityGroupEvent* 或 *NetworkSecurityGroupRuleCounter*。 若要记录到 Log Analytics 工作区之外的[目标](#log-destinations)，请使用适合 Azure [存储帐户](../azure-monitor/platform/archive-diagnostic-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json)或[事件中心](../monitoring-and-diagnostics/monitoring-stream-diagnostic-logs-to-event-hubs.md?toc=%2fazure%2fvirtual-network%2ftoc.json)的参数。
 
 查看和分析日志。 有关详细信息，请参阅[查看和分析日志](#view-and-analyze-logs)。
 
@@ -121,18 +121,18 @@ az monitor diagnostic-settings create \
   --resource-group myWorkspaces
 ```
 
-如果没有现成的工作区，则可以使用 [Azure 门户](../log-analytics/log-analytics-quick-create-workspace.md?toc=%2fazure%2fvirtual-network%2ftoc.json)或 [PowerShell](/powershell/module/azurerm.operationalinsights/new-azurermoperationalinsightsworkspace) 创建一个。 可以为日志启用两种类别的日志记录。 
+如果没有现成的工作区，则可以使用 [Azure 门户](../azure-monitor/learn/quick-create-workspace.md?toc=%2fazure%2fvirtual-network%2ftoc.json)或 [PowerShell](/powershell/module/azurerm.operationalinsights/new-azurermoperationalinsightsworkspace) 创建一个。 可以为日志启用两种类别的日志记录。 
 
-如果只想记录一种类别或另一种类别的数据，请在上一个命令中删除不想记录其数据的类别。 若要记录到 Log Analytics 工作区之外的[目标](#log-destinations)，请使用适合 Azure [存储帐户](../monitoring-and-diagnostics/monitoring-archive-diagnostic-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json)或[事件中心](../monitoring-and-diagnostics/monitoring-stream-diagnostic-logs-to-event-hubs.md?toc=%2fazure%2fvirtual-network%2ftoc.json)的参数。
+如果只想记录一种类别或另一种类别的数据，请在上一个命令中删除不想记录其数据的类别。 若要记录到 Log Analytics 工作区之外的[目标](#log-destinations)，请使用适合 Azure [存储帐户](../azure-monitor/platform/archive-diagnostic-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json)或[事件中心](../monitoring-and-diagnostics/monitoring-stream-diagnostic-logs-to-event-hubs.md?toc=%2fazure%2fvirtual-network%2ftoc.json)的参数。
 
 查看和分析日志。 有关详细信息，请参阅[查看和分析日志](#view-and-analyze-logs)。
 
 ## <a name="log-destinations"></a>日志目标
 
 诊断数据可以：
-- [写入到 Azure 存储帐户](../monitoring-and-diagnostics/monitoring-archive-diagnostic-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json)，以便进行审核或手动检查。 可以使用“资源诊断设置”指定保留时间（天）。
+- [写入到 Azure 存储帐户](../azure-monitor/platform/archive-diagnostic-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json)，以便进行审核或手动检查。 可以使用“资源诊断设置”指定保留时间（天）。
 - [流式传输到事件中心](../monitoring-and-diagnostics/monitoring-stream-diagnostic-logs-to-event-hubs.md?toc=%2fazure%2fvirtual-network%2ftoc.json)，方便第三方服务或自定义分析解决方案（例如 PowerBI）引入。
-- [写入到 Azure Log Analytics](../log-analytics/log-analytics-azure-storage.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-diagnostics-direct-to-log-analytics)。
+- [写入到 Azure Log Analytics](../azure-monitor/platform/collect-azure-metrics-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-diagnostics-direct-to-log-analytics)。
 
 ## <a name="log-categories"></a>日志类别
 

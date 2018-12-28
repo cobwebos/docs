@@ -2,28 +2,30 @@
 author: tamram
 ms.service: storage
 ms.topic: include
-ms.date: 10/26/2018
+ms.date: 12/11/2018
 ms.author: tamram
-ms.openlocfilehash: 80bb07d850628f07ebc37a39da1294399804d8f5
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: b099f5ff7e43f2deeb3b8c41adcb802cd431a65a
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50165971"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53286097"
 ---
 Azure 文件同步代理将定期更新，以便添加新功能和解决问题。 建议配置 Microsoft 更新，以便在 Azure 文件同步代理更新发布时获得这些更新。
 
 #### <a name="major-vs-minor-agent-versions"></a>主要与次要代理版本
-* 主要代理版本通常包含新的功能，并且版本号的第一个组成部分会递增。 例如：*2.\*.\**
+* 主要代理版本通常包含新的功能，并且版本号的第一个组成部分会递增。 例如：2.\*.\*
 * 次要代理版本也称为“修补”，其发布频率高于主要版本。 它们通常包含 bug 修复和小幅的改进，但不包含新功能。 例如：*\*.3.\**
 
 #### <a name="upgrade-paths"></a>升级路径
-可以通过三种经过批准和测试的方法来安装 Azure 文件同步代理更新。 这些更新路径适用于主要版本和次要版本。
+可以通过四种经过批准和测试的方法来安装 Azure 文件同步代理更新。 
 1. **（首选）将 Microsoft 更新配置为自动下载并安装代理更新。**  
     我们始终建议安装每项 Azure 文件同步更新，确保能够访问服务器代理的最新修补程序。 Microsoft 更新会自动下载并安装这些更新，以无缝完成此过程。
-2. **使用 Microsoft 更新修补文件或 .msp 可执行文件修补现有的 Azure 文件同步代理。可以从 [Microsoft 更新目录](https://www.catalog.update.microsoft.com/Search.aspx?q=Azure%20File%20Sync)下载最新的 Azure 文件同步更新包。**  
+2. **使用 AfsUpdater.exe 下载并安装代理更新。**  
+    AfsUpdater.exe 位于代理安装目录中。 双击可执行文件可下载并安装代理更新。 
+3. **使用 Microsoft 更新修补文件或 .msp 可执行文件修补现有的 Azure 文件同步代理。可以从 [Microsoft 更新目录](https://www.catalog.update.microsoft.com/Search.aspx?q=Azure%20File%20Sync)下载最新的 Azure 文件同步更新包。**  
     运行 .msp 可执行文件将会升级 Azure 文件同步安装，所用的方法与上述升级路径中 Microsoft 更新使用的自动方法相同。 应用 Microsoft 更新修补程序会就地升级 Azure 文件同步安装。
-3. **从[Microsoft 下载中心](https://go.microsoft.com/fwlink/?linkid=858257)下载最新的 Azure 文件同步代理安装程序。下载的安装程序是 Microsoft 安装程序包或 .msi 可执行文件。**  
+4. **从[Microsoft 下载中心](https://go.microsoft.com/fwlink/?linkid=858257)下载最新的 Azure 文件同步代理安装程序。下载的安装程序是 Microsoft 安装程序包或 .msi 可执行文件。**  
     若要升级现有的 Azure 文件同步代理安装，请卸载旧版本，然后使用下载的安装程序安装最新版本。 服务器注册、同步组和其他任何设置由 Azure 文件同步安装程序维护。
 
 #### <a name="agent-lifecycle-and-change-management-guarantees"></a>代理生命周期和变更管理保证

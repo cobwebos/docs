@@ -1,18 +1,19 @@
 ---
-title: 适用于 Linux IaaS VM 的 Azure 磁盘加密 | Microsoft Docs
+title: 为 Linux IaaS VM 启用 Azure 磁盘加密
 description: 本文提供有关如何为 Linux IaaS VM 启用 Microsoft Azure 磁盘加密的说明。
 author: mestew
 ms.service: security
 ms.subservice: Azure Disk Encryption
 ms.topic: article
 ms.author: mstewart
-ms.date: 09/19/2018
-ms.openlocfilehash: 8806d2b1848064c48615aed653c69c2df9b1949f
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.date: 12/12/2018
+ms.custom: seodec18
+ms.openlocfilehash: d0c9d2084e3dd6b0b6b4bd85a60ad998b54f45a7
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51685457"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53317485"
 ---
 # <a name="enable-azure-disk-encryption-for-linux-iaas-vms"></a>为 Linux IaaS VM 启用 Azure 磁盘加密 
 
@@ -147,13 +148,13 @@ key-encryption-key 参数值的语法是 KEK 的完整 URI，其格式为： htt
 
 ### <a name="register-for-disk-encryption-preview-using-azure-cli"></a>使用 Azure CLI 注册磁盘加密预览版
 
-要对虚拟机规模集预览版使用 Azure 磁盘加密功能，需要使用 [az feature register](/cli/azure/feature#az_feature_register) 自行注册订阅。 只需在首次使用磁盘加密预览版功能时执行以下步骤：
+要对虚拟机规模集预览版使用 Azure 磁盘加密功能，需要使用 [az feature register](/cli/azure/feature#az-feature-register) 自行注册订阅。 只需在首次使用磁盘加密预览版功能时执行以下步骤：
 
 ```azurecli-interactive
 az feature register --name UnifiedDiskEncryption --namespace Microsoft.Compute
 ```
 
-传播注册请求最多可能需要 10 分钟。 可以通过 [az feature show](/cli/azure/feature#az_feature_show) 查看注册状态。 `State` 报告“已注册”时，请使用 [az provider register](/cli/azure/provider#az_provider_register) 重新注册 Mirosoft.Compute 提供程序：
+传播注册请求最多可能需要 10 分钟。 可以通过 [az feature show](/cli/azure/feature#az-feature-show) 查看注册状态。 `State` 报告“已注册”时，请使用 [az provider register](/cli/azure/provider#az-provider-register) 重新注册 Mirosoft.Compute 提供程序：
 
 ```azurecli-interactive
 az provider register --namespace Microsoft.Compute
@@ -198,7 +199,8 @@ Get-AzureRmProviderFeature -ProviderNamespace "Microsoft.Compute" -FeatureName "
 Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Compute
 ```
 
-###  <a name="encrypt-virtual-machine-scale-sets-with-azure-powershell"></a>使用 Azure PowerShell 加密虚拟机规模集
+### <a name="encrypt-virtual-machine-scale-sets-with-azure-powershell"></a>使用 Azure PowerShell 加密虚拟机规模集
+
 使用 [Set-AzureRmVmssDiskEncryptionExtension](/powershell/module/azurerm.compute/set-azurermvmssdiskencryptionextension) cmdlet 在 Windows 虚拟机规模集上启用加密。 先决条件是事先创建资源组、VM 和密钥保管库。
 
 -  **加密正在运行的虚拟机规模集**：
@@ -236,7 +238,17 @@ Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Compute
     Disable-AzureRmVmssDiskEncryption -ResourceGroupName "MySecureRG" -VMScaleSetName "MySecureVmss"
     ```
 
+### <a name="azure-resource-manager-templates-for-linux-virtual-machine-scale-sets"></a>适用于 Linux 虚拟机规模集的 Azure 资源管理器模板
 
+若要加密或解密 Linux 虚拟机规模集，请使用以下 Azure 资源管理器模板和说明：
+
+- [在 Linux 虚拟机规模集上启用加密](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-vmss-linux)
+- [使用 jumpbox 部署 Linux VM 的 VM 规模集，并在 Linux VM 规模集上启用加密](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-vmss-linux-jumpbox)
+- [在 Linux VM 规模集上禁用加密](https://github.com/Azure/azure-quickstart-templates/tree/master/201-decrypt-vmss-linux)
+
+     1. 单击 **“部署到 Azure”**。
+     2. 填写必填字段，然后同意条款和条件。
+     3. 单击“购买”以部署模板。
 
 ## <a name="bkmk_EFA"></a>对 Linux IaaS VM 上的数据磁盘使用 EncryptFormatAll 功能
 **EncryptFormatAll** 参数可以减少加密 Linux 数据磁盘所需的时间。 满足特定条件的分区将格式化（使用其当前文件系统）。 然后，将它们重新装回到执行命令之前所在的位置。 如果想要排除某个符合条件的数据磁盘，可以在运行命令之前卸载该磁盘。
@@ -270,7 +282,7 @@ Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Compute
 ### <a name="bkmk_EFAPSH"></a>结合 PowerShell cmdlet 使用 EncryptFormatAll 参数
 结合 [EncryptFormatAll 参数](https://www.powershellgallery.com/packages/AzureRM/5.0.0)使用 [Set-AzureRmVMDiskEncryptionExtension](/powershell/module/azurerm.compute/set-azurermvmdiskencryptionextension) cmdlet。 
 
-**使用 EncryptFormatAll 加密正在运行的 VM：** 例如，以下脚本初始化变量，并结合 EncryptFormatAll 参数运行 Set-AzureRmVMDiskEncryptionExtension cmdlet。 先决条件是事先创建资源组、VM 和密钥保管库。 将 MySecureRg、MySecureVM 和 MySecureVault 替换为你的值。
+**使用 EncryptFormatAll 加密正在运行的 VM：** 例如，以下脚本会初始化变量，并结合 EncryptFormatAll 参数运行 Set-AzureRmVMDiskEncryptionExtension cmdlet。 先决条件是事先创建资源组、VM 和密钥保管库。 将 MySecureRg、MySecureVM 和 MySecureVault 替换为你的值。
   
    ```azurepowershell-interactive
      $rgName = 'MySecureRg';
@@ -407,7 +419,7 @@ New-AzureRmVM -VM $VirtualMachine -ResourceGroupName "MySecureRG"
      ```azurecli-interactive
      az vm encryption disable --name "MySecureVM" --resource-group "MySecureRg" --volume-type [ALL, DATA, OS]
      ```
-- **使用资源管理器模板禁用加密：** 使用[在正在运行的 Linux VM 上禁用加密](https://github.com/Azure/azure-quickstart-templates/tree/master/201-decrypt-running-linux-vm-without-aad)模板来禁用加密。
+- **使用资源管理器模板禁用加密：** 使用[在正在运行的 Linux VM 上禁用加密](https://github.com/Azure/azure-quickstart-templates/tree/master/201-decrypt-running-linux-vm-without-aad)模板禁用加密。
      1. 单击 **“部署到 Azure”**。
      2. 选择订阅、资源组、位置、VM、法律条款和协议。
      3.  单击“购买”，在正在运行的 Windows VM 上禁用磁盘加密。 

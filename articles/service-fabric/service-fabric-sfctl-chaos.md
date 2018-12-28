@@ -12,14 +12,14 @@ ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 07/31/2018
+ms.date: 12/06/2018
 ms.author: bikang
-ms.openlocfilehash: 1e77dfdec902b64f2524c790bda6742eaa1105fc
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: 697815aeca9b8a07e3cece877d610436b2b8ac83
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43669168"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53278281"
 ---
 # <a name="sfctl-chaos"></a>sfctl chaos
 启动、停止和报告混沌测试服务。
@@ -47,9 +47,9 @@ ms.locfileid: "43669168"
 |参数|Description|
 | --- | --- |
 | --continuation-token | 继续标记参数用于获取下一组结果。 如果单个响应无法容纳来自系统的结果，则 API 响应中包括含有非空值的继续标记。 当此值传递到下一个 API 调用时，API 返回下一组结果。 如果没有更多结果，则该继续标记不包含值。 不应将此参数的值进行 URL 编码。 |
-| --end-time-utc | Windows 文件时间，表示要生成 Chaos 报告的时间范围的结束时间。 有关详细信息，请参阅 [DateTime.ToFileTimeUtc 方法](https://docs.microsoft.com/dotnet/api/system.datetime.tofiletimeutc?redirectedfrom=MSDN&view=netframework-4.7.2#System_DateTime_ToFileTimeUtc)。 |
+| --end-time-utc | Windows 文件时间，表示要生成 Chaos 报告的时间范围的结束时间。 有关详细信息，请参阅 [DateTime.ToFileTimeUtc 方法](https\://msdn.microsoft.com/library/system.datetime.tofiletimeutc(v=vs.110).aspx)。 |
 | --max-results | 作为分页查询的一部分返回的最大结果数。 此参数定义返回结果数的上限。 如果根据配置中定义的最大消息大小限制，无法将这些结果容纳到消息中，则返回的结果数可能小于指定的最大结果数。 如果此参数为零或者未指定，则分页查询包含返回消息中最多可容纳的结果数。 |
-| --start-time-utc | Windows 文件时间，表示要生成 Chaos 报告的时间范围的开始时间。 有关详细信息，请参阅 [DateTime.ToFileTimeUtc 方法](https://docs.microsoft.com/dotnet/api/system.datetime.tofiletimeutc?redirectedfrom=MSDN&view=netframework-4.7.2#System_DateTime_ToFileTimeUtc)。 |
+| --start-time-utc | Windows 文件时间，表示要生成 Chaos 报告的时间范围的开始时间。 有关详细信息，请参阅 [DateTime.ToFileTimeUtc 方法](https\://msdn.microsoft.com/library/system.datetime.tofiletimeutc(v=vs.110).aspx)。 |
 | --timeout -t | 服务器超时，以秒为单位。  默认值\: 60。 |
 
 ### <a name="global-arguments"></a>全局参数
@@ -104,7 +104,7 @@ ms.locfileid: "43669168"
 | --timeout -t | 服务器超时，以秒为单位。  默认值\: 60。 |
 | --wait-time-between-faults | 单次迭代中发生连续错误的间隔等待时间（以秒为单位）。  默认值\: 20。 <br><br> 值越大越低错误和更简单之间重叠的状态的序列转换群集内通过。 建议是从开始向上移动时的 1 和 5 和练习请小心之间的值。 |
 | --wait-time-between-iterations | Chaos 的每两次连续迭代的间隔时间（以秒为单位）。 值越大，故障注入率越低。  默认值\: 30。 |
-| --warning-as-error | 将运行状况策略设置为将警告视为错误。 |
+| --warning-as-error | 指示是否将警告的严重性视为与错误相同。 |
 
 ### <a name="global-arguments"></a>全局参数
 
@@ -136,6 +136,7 @@ ms.locfileid: "43669168"
 | --output -o | 输出格式。  允许的值\: json、jsonc、table、tsv。  默认值\: json。 |
 | --query | JMESPath 查询字符串。 有关详细信息和示例，请参阅 http\://jmespath.org/。 |
 | --verbose | 提高日志记录详细程度。 使用 --debug 可获取完整的调试日志。 |
+
 
 ## <a name="next-steps"></a>后续步骤
 - [安装](service-fabric-cli.md) Service Fabric CLI。

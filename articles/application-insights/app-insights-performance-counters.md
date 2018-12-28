@@ -9,41 +9,46 @@ ms.assetid: 5b816f4c-a77a-4674-ae36-802ee3a2f56d
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/11/2016
+ms.date: 12/13/2018
 ms.author: mbullwin
-ms.openlocfilehash: 92cbd3570d48bf12d603f68593465aafed62985c
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.openlocfilehash: feb2e2f9f36ab20c0b96fab9432df41faf4f9569
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51852310"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53407923"
 ---
 # <a name="system-performance-counters-in-application-insights"></a>Application Insights 中的系统性能计数器
-Windows 提供了各种[性能计数器](http://www.codeproject.com/Articles/8590/An-Introduction-To-Performance-Counters)，例如 CPU 占用、内存、磁盘和网络使用情况。 也可以自行定义。 如果应用程序在对其具有管理访问权限的本地主机或虚拟机的 IIS 下运行，[Application Insights](app-insights-overview.md) 可以显示这些性能计数器。 图表指示实时应用程序可用的资源，并有助于确定服务器实例之间的不平衡负载。
 
-性能计数器将出现在“服务器”边栏选项卡中，其中包括按服务器实例进行分段的表格。
-
-![Application Insights 中报告的性能计数器](./media/app-insights-performance-counters/counters-by-server-instance.png)
-
-（性能计数器不适用于 Azure Web 应用。 但是可以[将 Azure 诊断发送到 Application Insights](../monitoring-and-diagnostics/azure-diagnostics-configure-application-insights.md)。）
+Windows 提供了各种[性能计数器](https://docs.microsoft.com/windows/desktop/PerfCtrs/about-performance-counters)，例如 CPU 占用、内存、磁盘和网络使用情况。 你还可以定义自己的性能计数器。 只要应用程序在你对其具有管理访问权限的本地主机或虚拟机上的 IIS 下运行即可。
 
 ## <a name="view-counters"></a>查看计数器
-“服务器”边栏选项卡显示一组默认的性能计数器。 
 
-要查看其他计数器，则编辑“服务器”边栏选项卡上的图表，或打开新的[指标资源管理器](app-insights-metrics-explorer.md)边栏选项卡，并添加新图表。 
+“指标”窗格显示了一组默认的性能计数器。
 
-编辑图表时，可用的计数器以指标形式列出。
+![Application Insights 中报告的性能计数器](./media/app-insights-performance-counters/performance-counters.png)
 
-![Application Insights 中报告的性能计数器](./media/app-insights-performance-counters/choose-performance-counters.png)
+为 .NET Web 应用程序收集的当前默认计数器包括：
+
+         - % Process\\Processor Time
+         - % Process\\Processor Time Normalized
+         - Memory\\Available Bytes
+         - ASP.NET Requests/Sec
+         - .NET CLR Exceptions Thrown / sec
+         - ASP.NET ApplicationsRequest Execution Time
+         - Process\\Private Bytes
+         - Process\\IO Data Bytes/sec
+         - ASP.NET Applications\\Requests In Application Queue
+         - Processor(_Total)\\% Processor Time
 
 要在某一位置查看所有最有用的图表，请创建[仪表板](app-insights-dashboards.md)并将图表固定到它。
 
 ## <a name="add-counters"></a>添加计数器
-如果所需的性能计数器未显示在指标列表中，这是因为 Application Insights SDK 未在 Web 服务器中收集它。 可以将它配置为执行此操作。
 
-1. 通过在服务器上使用此 PowerShell 命令，了解服务器中有哪些计数器可用：
+如果你需要的性能计数器未包括在指标列表中，则你可以添加它。
+
+1. 通过在本地服务器上使用此 PowerShell 命令，了解服务器中有哪些计数器可用：
    
     `Get-Counter -ListSet *`
    
@@ -65,7 +70,7 @@ Windows 提供了各种[性能计数器](http://www.codeproject.com/Articles/859
 
 ```
 
-可以捕获标准计数器以及已自行实现的计数器。 `\Objects\Processes` 是标准计数器的一个示例，可在所有 Windows 系统上使用。 `\Sales(photo)\# Items Sold` 是自定义计数器的一个示例，可在 Web 服务中实现。 
+可以捕获标准计数器以及你自己实现的计数器。 `\Objects\Processes` 是标准计数器的一个示例，可在所有 Windows 系统上使用。 `\Sales(photo)\# Items Sold` 是自定义计数器的一个示例，可在 Web 服务中实现。 
 
 格式为 `\Category(instance)\Counter"`，而对于不具有实例的类别，仅为 `\Category\Counter`。
 
@@ -114,13 +119,14 @@ Windows 提供了各种[性能计数器](http://www.codeproject.com/Articles/859
 *异常率和异常指标之间的区别是什么？*
 
 * *异常率*是系统性能计数器。 CLR 会对所有引发的已处理和未经处理异常进行计数，并将总采样间隔除以间隔长度。 Application Insights SDK 会收集此结果，并将其发送到门户。
+
 * *异常*是在图表的采样间隔内门户所接收的 TrackException 报告的计数。 它仅包括已将 TrackException 调用写入代码的已处理异常，并不包括所有[未经处理的异常](app-insights-asp-net-exceptions.md)。 
 
-## <a name="performance-counters-in-aspnet-core-applications"></a>Asp.Net Core 应用程序中的性能计数器
+## <a name="performance-counters-in-aspnet-core-applications"></a>ASP.Net Core 应用程序中的性能计数器
 仅当应用程序针对完整的.NET Framework 时，才支持性能计数器。 无法收集 .Net Core 应用程序的性能计数器。
 
 ## <a name="alerts"></a>警报
-与其他指标一样，可以[设置警报](app-insights-alerts.md)以便在性能计数器超出指定的限制时收到警报。 打开“警报”边栏选项卡，并单击“添加警报”。
+与其他指标一样，可以[设置警报](app-insights-alerts.md)以便在性能计数器超出指定的限制时收到警报。 打开“警报”窗格，并单击“添加警报”。
 
 ## <a name="next"></a>后续步骤
 * [依赖关系跟踪](app-insights-asp-net-dependencies.md)

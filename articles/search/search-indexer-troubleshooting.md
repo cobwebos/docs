@@ -1,6 +1,6 @@
 ---
-title: 排查 Azure 搜索中的常见索引器问题 | Microsoft Docs
-description: 修复 Azure 搜索中索引器的常见问题
+title: 排查常见的搜索索引器问题 - Azure 搜索
+description: 修复 Azure 搜索中索引器的错误和常见问题，包括数据源连接、防火墙和丢失的文档。
 author: mgottein
 manager: cgronlun
 services: search
@@ -9,12 +9,13 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/19/2018
 ms.author: magottei
-ms.openlocfilehash: 6c64cf066651c403136bba97c8d1e1230162dbb4
-ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
+ms.custom: seodec2018
+ms.openlocfilehash: 7696f1628edd3b81568382fd7892a877c6f54ef7
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52619518"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53312385"
 ---
 # <a name="troubleshooting-common-indexer-issues-in-azure-search"></a>排查 Azure 搜索中的常见索引器问题
 

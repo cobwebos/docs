@@ -1,5 +1,5 @@
 ---
-title: 如何使用 Azure WebJobs SDK
+title: 如何使用 WebJobs SDK - Azure
 description: 详细了解如何为 WebJobs SDK 编写代码。 创建事件驱动的后台处理作业，用于访问 Azure 服务和第三方服务中的数据。
 services: app-service\web, storage
 documentationcenter: .net
@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 04/27/2018
 ms.author: glenga
-ms.openlocfilehash: 2266f63f9689ec4d22659eb4a7c4876e25fa08b1
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.openlocfilehash: f6d343d42bf9d918bf23c9f5f442d977a5caca96
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52335208"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53343711"
 ---
 # <a name="how-to-use-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>如何使用 Azure WebJobs SDK 进行事件驱动的后台处理
 
@@ -450,7 +450,7 @@ WebJobs SDK 在幕后使用 [Azure Blob 租约](../storage/common/storage-concur
 
 计时器触发器会自动确保只会运行计时器的一个实例，因此，在给定的计划时间，不会运行多个函数实例。
 
-如果要确保即使有多个主机 Web 应用的实例，也只有一个函数实例运行，可以使用 [Singleton](#singleton) 特性。
+如果要确保即使有多个主机 Web 应用的实例，也只有一个函数实例运行，可以使用 [Singleton 特性](#singleton-attribute)。
     
 ## <a name="filters"></a>筛选器 
 
@@ -498,7 +498,7 @@ config.LoggerFactory = new LoggerFactory()
 
 ### <a name="custom-telemetry-for-application-insights"></a>Application Insights 的自定义遥测
 
-Application Insights 提供程序为 WebJobs SDK 创建的 `TelemetryClient` 在内部使用 [ServerTelemetryChannel](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/develop/src/ServerTelemetryChannel/ServerTelemetryChannel.cs)。 当 Application Insights 终结点时不可用或限制传入请求时，此通道会[在 Web 应用的文件系统中保存请求，并稍后提交这些请求](http://apmtips.com/blog/2015/09/03/more-telemetry-channels)。
+Application Insights 提供程序为 WebJobs SDK 创建的 `TelemetryClient` 在内部使用 [ServerTelemetryChannel](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/develop/src/ServerTelemetryChannel/ServerTelemetryChannel.cs)。 当 Application Insights 终结点时不可用或限制传入请求时，此通道会[在 Web 应用的文件系统中保存请求，并稍后提交这些请求](https://apmtips.com/blog/2015/09/03/more-telemetry-channels)。
 
 `TelemetryClient` 是实现 `ITelemetryClientFactory` 的类创建的。 默认情况下，此类为 [DefaultTelemetryClientFactory](https://github.com/Azure/azure-webjobs-sdk/blob/dev/src/Microsoft.Azure.WebJobs.Logging.ApplicationInsights/DefaultTelemetryClientFactory.cs)。
 

@@ -8,14 +8,14 @@ author: dharmeshkakadia
 ms.author: dharmeshkakadia
 ms.topic: conceptual
 ms.date: 11/2/2017
-ms.openlocfilehash: 832fab6c4f183ddad512c5e6e4309d70938a316b
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: 150f920fb1371eb64181ff69fdad054f989c0845
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39600017"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53407010"
 ---
-# <a name="troubleshoot-hive-by-using-azure-hdinsight"></a>使用 Azure HDInsight 对 Hive 进行故障排除
+# <a name="troubleshoot-apache-hive-by-using-azure-hdinsight"></a>使用 Azure HDInsight 对 Apache Hive 进行故障排除
 
 了解处理 Apache Ambari 中的 Apache Hive 有效负载时的最常见问题及其解决方法。
 
@@ -104,7 +104,7 @@ ms.locfileid: "39600017"
 - [Hive 配置属性](https://cwiki.apache.org/confluence/display/Hive/Configuration+Properties)
 
 
-## <a name="how-do-i-analyze-tez-dag-data-on-a-cluster-critical-path"></a>如何在群集关键路径上分析 Tez DAG 数据？
+## <a name="how-do-i-analyze-tez-dag-data-on-a-cluster-critical-path"></a>如何在群集关键路径上分析 Apache Tez DAG 数据？
 
 
 ### <a name="resolution-steps"></a>解决步骤
@@ -136,7 +136,7 @@ ms.locfileid: "39600017"
     - **SlowestVertexAnalyzer**：列显 DAG 中的最慢顶点详细信息
     - **SpillAnalyzer**：列显 DAG 中的溢出详细信息
     - **TaskConcurrencyAnalyzer**：列显 DAG 中的任务并发性详细信息
-    - **VertexLevelCriticalPathAnalyzer**：查找 DAG 中顶点级别的关键路径
+    - **VertexLevelCriticalPathAnalyzer**：在 DAG 中查找顶点级别的关键路径
 
 
 ### <a name="additional-reading"></a>其他阅读材料

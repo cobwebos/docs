@@ -13,16 +13,16 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 11/28/2018
 ms.author: juliako
-ms.openlocfilehash: 5de7496d73ebe1c89ce27ef27df73b197f34e7c7
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 8df43a9b2c518e77d14dd5cb392b042b0b4846e2
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52636982"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53407960"
 ---
 # <a name="using-a-cloud-dvr"></a>使用云 DVR
 
-使用 [LiveOutput](https://docs.microsoft.com/rest/api/media/liveoutputs) 可以控制传出实时流的属性，例如，记录的流数量（如云 DVR 的容量），以及观看者是否可以开始观看实时流。 **LiveEvent** 及其 **LiveOutput** 之间的关系类似于传统的电视广播，其中的频道 (**LiveEvent**) 表示恒定的视频流，录制 (**LiveOutput**) 限定为特定的时间分段（例如，下午 6:30 到 7:00 的晚间新闻）。 可以使用数字视频录像机 (DVR) 录制电视节目 – LiveEvents 中的等效功能是通过 ArchiveWindowLength 属性管理的。 它是一个 ISO-8601 时间跨度持续时间（例如 PTHH:MM:SS），指定 DVR 的容量，最小可设置为 3 分钟，最大为 25 小时。
+使用 [LiveOutput](https://docs.microsoft.com/rest/api/media/liveoutputs) 可以控制传出实时流的属性，例如，记录的流数量（如云 DVR 的容量），以及观看者是否可以开始观看实时流。 **LiveEvent** 及其 **LiveOutput** 之间的关系类似于传统的电视广播，其中的频道 (**LiveEvent**) 表示恒定的视频流，录制 (**LiveOutput**) 限定为特定的时间段（例如，下午 6:30 到 7:00 的晚间新闻）。 可以使用数字视频录像机 (DVR) 录制电视节目 – LiveEvents 中的等效功能是通过 ArchiveWindowLength 属性管理的。 它是一个 ISO-8601 时间跨度持续时间（例如 PTHH:MM:SS），指定 DVR 的容量，最小可设置为 3 分钟，最大为 25 小时。
 
 ## <a name="liveoutput"></a>LiveOutput
 

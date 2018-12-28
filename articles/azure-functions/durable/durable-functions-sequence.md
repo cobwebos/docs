@@ -8,14 +8,14 @@ keywords: ''
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: conceptual
-ms.date: 09/06/2018
+ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: ca6eefa6ccba3fabebd125d88010817c66db52ab
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 14d50a17cf7816cb8e792128f8dd3965781657e5
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52637532"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53339580"
 ---
 # <a name="function-chaining-in-durable-functions---hello-sequence-sample"></a>Durable Functions 中的函数链 - Hello 序列示例
 
@@ -27,15 +27,16 @@ ms.locfileid: "52637532"
 
 本文介绍示例应用中的以下函数：
 
-* `E1_HelloSequence`：在一个序列中多次调用 `E1_SayHello` 的 orchestrator 函数。 它存储来自 `E1_SayHello` 调用的输出并记录结果。
+* `E1_HelloSequence`：在一个序列中多次调用 `E1_SayHello` 的业务流程协调程序函数。 它存储来自 `E1_SayHello` 调用的输出并记录结果。
 * `E1_SayHello`：在字符串前添加“Hello”的活动函数。
 
 以下各部分介绍了用于 C# 脚本和 JavaScript 的配置和代码。 文章末尾展示了用于 Visual Studio 开发的代码。
 
 > [!NOTE]
-> 只有在 v2 Functions 运行时中，Durable Functions 在 JavaScript 中才可用。
+> JavaScript Durable Functions 仅适用于 Functions 2.x 运行时。
 
 ## <a name="e1hellosequence"></a>E1_HelloSequence
+
 ### <a name="functionjson-file"></a>function.json 文件
 
 如果使用 Visual Studio Code 或 Azure 门户进行开发，则此处为用于业务流程协调程序函数的 function.json 文件的内容。 大多数 orchestrator function.json 文件的内容都与以下内容相似。
@@ -47,7 +48,7 @@ ms.locfileid: "52637532"
 > [!WARNING]
 > 为遵守 orchestrator 函数的“无 I/O”规则，在使用 `orchestrationTrigger` 触发器绑定时不要使用任何输入或输出绑定。  如果需要其他输入或输出绑定，则应改为在业务流程协调程序调用的 `activityTrigger` 函数的上下文中使用。
 
-### <a name="c-script-visual-studio-code-and-azure-portal-sample-code"></a>C# 脚本（Visual Studio Code 和 Azure 门户的示例代码） 
+### <a name="c-script-visual-studio-code-and-azure-portal-sample-code"></a>C# 脚本（Visual Studio Code 和 Azure 门户的示例代码）
 
 下面是源代码：
 
@@ -63,15 +64,16 @@ ms.locfileid: "52637532"
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E1_HelloSequence/index.js)]
 
-所有 JavaScript 业务流程函数都必须包括 `durable-functions` 模块。 这是一个 JavaScript 库，它将业务流程函数的操作转换为进程外语言的 Durable Functions 执行协议。 业务流程函数与其他 JavaScript 函数之间有三个明显差异：
+所有 JavaScript 业务流程函数都必须包括 [`durable-functions` 模块](https://www.npmjs.com/package/durable-functions)。 这是一个库，可用于以 JavaScript 编写 Durable Functions。 业务流程函数与其他 JavaScript 函数之间有三个明显差异：
 
 1. 此函数是一个[生成器函数](https://docs.microsoft.com/scripting/javascript/advanced/iterators-and-generators-javascript)。
-2. 此函数包装在对 `durable-functions` 模块的调用（此处为 `df`）中。
-3. 此函数通过调用 `return` 而非 `context.done` 结束。
+2. 此函数包装在对 `durable-functions` 模块的 `orchestrator` 方法的调用（此处为 `df`）中。
+3. 此函数必须是同步的。 因为“orchestrator”方法处理“context.done”的调用，所以此函数应该只是“return”。
 
-`context` 对象包含一个 `df` 对象，可使用其 `callActivityAsync` 方法调用其他活动函数并传递输入参数。 该代码按顺序采用不同的参数值三次调用 `E1_SayHello`，使用 `yield` 指示执行应当等待异步活动函数调用返回。 每个调用的返回值都会添加到 `outputs` 列表，函数末尾会返回该列表。
+`context` 对象包含一个 `df` 对象，可使用其 `callActivity` 方法调用其他活动函数并传递输入参数。 该代码按顺序采用不同的参数值三次调用 `E1_SayHello`，使用 `yield` 指示执行应当等待异步活动函数调用返回。 每个调用的返回值都会添加到 `outputs` 列表，函数末尾会返回该列表。
 
 ## <a name="e1sayhello"></a>E1_SayHello
+
 ### <a name="functionjson-file"></a>function.json 文件
 
 活动函数 `E1_SayHello` 的 function.json 文件类似于 `E1_HelloSequence` 的 function.json 文件，只不过前者使用 `activityTrigger` 绑定类型而非 `orchestrationTrigger` 绑定类型。
@@ -93,7 +95,7 @@ ms.locfileid: "52637532"
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E1_SayHello/index.js)]
 
-与 JavaScript 业务流程函数不同，JavaScript 活动函数不需要特殊设置。 业务流程协调程序函数传递给它的输入位于 `context.bindings` 对象上，在 `activitytrigger` 绑定的名称下，在本例中为 `context.bindings.name`。 绑定名称可以设置为导出函数的参数并且可以直接访问，这是示例代码所做的事情。
+与 JavaScript 业务流程函数不同，活动函数不需要特殊设置。 业务流程协调程序函数传递给它的输入位于 `context.bindings` 对象上，在 `activityTrigger` 绑定的名称下，在本例中为 `context.bindings.name`。 绑定名称可以设置为导出函数的参数并且可以直接访问，这是示例代码所做的事情。
 
 ## <a name="run-the-sample"></a>运行示例
 
@@ -150,7 +152,7 @@ Content-Type: application/json; charset=utf-8
 
 ## <a name="next-steps"></a>后续步骤
 
-此示例演示了简单的函数链业务流程。 下一示例演示如何实现扇出/扇入模式。 
+此示例演示了简单的函数链业务流程。 下一示例演示如何实现扇出/扇入模式。
 
 > [!div class="nextstepaction"]
 > [运行扇出/扇入示例](durable-functions-cloud-backup.md)

@@ -3,7 +3,7 @@ title: SQL Server VM 的 Azure 备份故障排除指南 | Microsoft Docs
 description: 有关将 SQL Server VM 备份到 Azure 的故障排除信息。
 services: backup
 documentationcenter: ''
-author: markgalioto
+author: rayne-wiselman
 manager: carmonm
 editor: ''
 keywords: ''
@@ -11,17 +11,16 @@ ms.assetid: ''
 ms.service: backup
 ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 06/19/2018
-ms.author: markgal;anuragm
+ms.author: anuragm
 ms.custom: ''
-ms.openlocfilehash: 1c87382c2aae70b022fb391f80f7c75b0a4e5fe6
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.openlocfilehash: 89344b6e06dbc62fe56c0aebc30a049aebf5c097
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36296954"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53339512"
 ---
 # <a name="troubleshoot-back-up-sql-server-on-azure"></a>排查在 Azure 上备份 SQL Server 的问题
 
@@ -79,13 +78,13 @@ ms.locfileid: "36296954"
 | 错误消息 | 可能的原因 | 建议的操作 |
 |---|---|---|
 | 由于数据源的事务日志已满，无法创建备份。 | 数据库事务日志空间已满。 | 若要解决此问题，请参阅 [SQL 文档](https://docs.microsoft.com/sql/relational-databases/errors-events/mssqlserver-9002-database-engine-error)。 |
-| 此 SQL 数据库不支持所请求的备份类型。 | Always On AG 次要副本不支持完整备份和差异备份。 | <ul><li>如果触发了临时备份，请在主节点上触发备份。</li><li>如果备份是由策略计划的，请确保已注册主节点。 若要注册节点，[请遵循发现 SQL Server 数据库的步骤](backup-azure-sql-database.md#discover-sql-server-databases)。</li></ul> | 
+| 此 SQL 数据库不支持所请求的备份类型。 | Always On AG 次要副本不支持完整备份和差异备份。 | <ul><li>如果触发了临时备份，请在主节点上触发备份。</li><li>如果备份是由策略计划的，请确保已注册主节点。 若要注册节点，[请遵循发现 SQL Server 数据库的步骤](backup-azure-sql-database.md#discover-sql-server-databases)。</li></ul> |
 
 ## <a name="restore-failures"></a>还原失败
 
 还原作业失败时显示以下错误代码。
 
-### <a name="usererrorcannotrestoreexistingdbwithoutforceoverwrite"></a>UserErrorCannotRestoreExistingDBWithoutForceOverwrite 
+### <a name="usererrorcannotrestoreexistingdbwithoutforceoverwrite"></a>UserErrorCannotRestoreExistingDBWithoutForceOverwrite
 
 | 错误消息 | 可能的原因 | 建议的操作 |
 |---|---|---|
@@ -108,7 +107,7 @@ ms.locfileid: "36296954"
 
 以下错误代码表示注册失败。
 
-### <a name="fabricsvcbackuppreferencecheckfailedusererror"></a>FabricSvcBackupPreferenceCheckFailedUserError 
+### <a name="fabricsvcbackuppreferencecheckfailedusererror"></a>FabricSvcBackupPreferenceCheckFailedUserError
 
 | 错误消息 | 可能的原因 | 建议的操作 |
 |---|---|---|
@@ -125,6 +124,16 @@ ms.locfileid: "36296954"
 | 错误消息 | 可能的原因 | 建议的操作 |
 |---|---|---|
 | Azure 备份服务使用 Azure VM 来宾代理执行备份，但来宾代理在目标服务器上不可用。 | 来宾代理未启用或不正常 | 手动[安装 VM 来宾代理](../virtual-machines/extensions/agent-windows.md)。 |
+
+## <a name="configure-backup-failures"></a>配置备份失败
+
+以下错误代码用于配置备份失败。
+
+### <a name="autoprotectioncancelledornotvalid"></a>AutoProtectionCancelledOrNotValid
+
+| 错误消息 | 可能的原因 | 建议的操作 |
+|---|---|---|
+| 自动保护意向被删除或不再有效。 | 在 SQL 实例上启用自动保护时，将为该实例中的所有数据库运行“配置备份”作业。 如果在作业运行时禁用自动保护，则会使用此错误代码取消**正在进行的**作业。 | 重新启用自动保护可保护所有剩余的数据库。 |
 
 ## <a name="next-steps"></a>后续步骤
 

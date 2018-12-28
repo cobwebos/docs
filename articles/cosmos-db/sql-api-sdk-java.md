@@ -1,25 +1,23 @@
 ---
-title: Azure Cosmos DB：SQL Java API、SDK 和资源 | Microsoft Docs
+title: Azure Cosmos DB：SQL Java API、SDK 和资源
 description: 了解有关 SQL Java API 和 SDK 的所有信息，包括发布日期、停用日期和 Azure Cosmos DB SQL Java SDK 各版本之间所做的更改。
 services: cosmos-db
 author: rnagpal
-manager: kfile
-editor: cgronlun
 ms.service: cosmos-db
 ms.component: cosmosdb-sql
 ms.devlang: java
 ms.topic: reference
-ms.date: 11/21/2018
+ms.date: 11/29/2018
 ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4c58c1972fee782a93f9641d00376db916021f95
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: e5c733ecd65482e4b02a5d4e28784e84e63f2231
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52634483"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53340515"
 ---
-# <a name="azure-cosmos-db-java-sdk-for-sql-api-release-notes-and-resources"></a>用于 SQL API 的 Azure Cosmos DB Java SDK：发行说明和资源
+# <a name="azure-cosmos-db-java-sdk-for-sql-api-release-notes-and-resources"></a>适用于 SQL API 的 Azure Cosmos DB Java SDK：发行说明和资源
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-sdk-dotnet.md)
 > * [.NET 更改源](sql-api-sdk-dotnet-changefeed.md)
@@ -30,7 +28,7 @@ ms.locfileid: "52634483"
 > * [Python](sql-api-sdk-python.md)
 > * [REST](https://docs.microsoft.com/rest/api/cosmos-db/)
 > * [REST 资源提供程序](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/)
-> * [SQL](https://msdn.microsoft.com/library/azure/dn782250.aspx)
+> * [SQL](sql-api-query-reference.md)
 > * [BulkExecutor - .NET](sql-api-sdk-bulk-executor-dot-net.md)
 > * [BulkExecutor - Java](sql-api-sdk-bulk-executor-java.md)
 
@@ -38,7 +36,7 @@ SQL API Java SDK 支持同步操作。 如需异步支持，请使用 [SQL API A
 
 <table>
 
-<tr><td>**SDK 下载**</td><td>[Maven](http://search.maven.org/#search%7Cgav%7C1%7Cg%3A%22com.microsoft.azure%22%20AND%20a%3A%22azure-documentdb%22)</td></tr>
+<tr><td>**SDK 下载**</td><td>[Maven](https://search.maven.org/#search%7Cgav%7C1%7Cg%3A%22com.microsoft.azure%22%20AND%20a%3A%22azure-documentdb%22)</td></tr>
 
 <tr><td>**API 文档**</td><td>[Java API 参考文档](/java/api/com.microsoft.azure.documentdb)</td></tr>
 
@@ -52,6 +50,23 @@ SQL API Java SDK 支持同步操作。 如需异步支持，请使用 [SQL API A
 </table></br>
 
 ## <a name="release-notes"></a>发行说明
+
+### <a name="a-name210210"></a><a name="2.1.0"/>2.1.0
+* 为直接模式添加了多区域写入支持。
+* 添加了对处理从代理作为 ServiceUnavailable 异常引发的 IOExceptions 的支持。
+* 修复了终结点发现重试策略中的 bug。
+* 修复了 bug，以确保 BaseDatabaseAccountConfigurationProvider 不会引发空指针异常。
+* 修复了 bug，以确保查询迭代器不会返回 null 值。
+* 修复了 bug，以确保允许较大的 PartitionKey
+
+### <a name="a-name200200"></a><a name="2.0.0"/>2.0.0
+* 为网关模式添加了多区域写入支持。
+
+### <a name="a-name11641164"></a><a name="1.16.4"/>1.16.4
+* 修复了读取查询的分区键范围时的 bug。
+
+### <a name="a-name11631163"></a><a name="1.16.3"/>1.16.3
+* 修复了在 DirectHttps 模式下设置继续标记标头大小时的 bug。
 
 ### <a name="a-name11621162"></a><a name="1.16.2"/>1.16.2
 * 添加了流式故障转移支持。
@@ -205,6 +220,10 @@ Microsoft 至少会在停用 SDK 的 **12 个月**之前发出通知，以便顺
 
 | 版本 | 发布日期 | 停用日期 |
 | --- | --- | --- |
+| [2.1.1](#2.1.1) |2018 年 11 月 21 日 |--- |
+| [2.0.0](#2.0.0) |2018 年 9 月 21 日 |--- |
+| [1.16.4](#1.16.4) |2018 年 9 月 10 日 |--- |
+| [1.16.3](#1.16.3) |2018 年 9 月 9 日 |--- |
 | [1.16.2](#1.16.2) |2018 年 6 月 29日 |--- |
 | [1.16.1](#1.16.1) |2018 年 5 月 16日 |--- |
 | [1.16.0](#1.16.0) |2018 年 3 月 15 日 |--- |

@@ -6,14 +6,14 @@ author: banisadr
 manager: timlt
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 11/01/2018
+ms.date: 12/06/2018
 ms.author: babanisa
-ms.openlocfilehash: fe13c424a3da91e92a04cceb807b98fd1ffe4db0
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
+ms.openlocfilehash: db6db54d362e7ef6373271e238fdb1cf543a142e
+ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50914033"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53413471"
 ---
 # <a name="event-grid-security-and-authentication"></a>事件网格安全和身份验证 
 
@@ -25,26 +25,28 @@ Azure 事件网格包含三种类型的身份验证：
 
 ## <a name="webhook-event-delivery"></a>WebHook 事件传送
 
-Webhook 是从 Azure 事件网格接收事件的多种方式之一。 当新事件准备就绪时，EventGrid 服务会向已配置的终结点 POST HTTP 请求，并在请求正文中包含该事件。
+Webhook 是从 Azure 事件网格接收事件的多种方式之一。 当新事件准备就绪时，事件网格服务会向已配置的终结点 POST HTTP 请求，并在请求正文中包含该事件。
 
-与众多支持 Webhook 的其他服务一样，EventGrid 需要你证明对 Webhook 的“所有权”，然后才能开始向该终结点传送事件。 此要求是为了防止意外的终结点成为来自 EventGrid 的事件传送的目标终结点。 但是，如果使用下面列出的三项 Azure 服务中的任何一项，Azure 基础结构将自动进行此验证：
+与众多支持 Webhook 的其他服务一样，事件网格需要你证明对 Webhook 的所有权，然后才能开始向该终结点传送事件。 此要求可防止恶意用户用大量事件淹没你的终结点。 如果使用下面列出的三项 Azure 服务中的任何一项，Azure 基础结构将自动进行此验证：
 
 * Azure 逻辑应用，
 * Azure 自动化，
-* 适用于 EventGrid 的 Azure Functions 触发器。
+* 适用于事件网格触发器的 Azure Functions。
 
-如果使用其他任何类型的终结点（例如基于 HTTP 触发器的 Azure 函数），终结点代码需要参与 EventGrid 的验证握手。 EventGrid 支持两种不同的验证握手模型：
+如果使用其他任何类型的终结点（例如基于 HTTP 触发器的 Azure 函数），终结点代码需要参与事件网格的验证握手。 事件网格支持通过两种方式来验证订阅。
 
-1. **ValidationCode 握手**：创建事件订阅时，EventGrid 将向终结点 POST“订阅验证事件”。 此事件的架构类似于其他任何 EventGridEvent，并且此事件的数据部分包括 `validationCode` 属性。 应用程序确认验证请求针对预期的事件订阅后，应用程序代码需要通过将验证代码回显回 EventGrid 以进行响应。 所有 EventGrid 版本均都支持此握手机制。
+1. **ValidationCode 握手（编程式）**：如果你控制终结点的源代码，建议使用此方式。 在创建事件订阅时，事件网格会将一个订阅验证事件发送到终结点。 此事件的架构与任何其他事件网格事件类似。 此事件的数据部分包括一个 `validationCode` 属性。 你的应用程序将确认验证请求是针对预期的事件订阅的，并将验证码回送给事件网格。 所有事件网格版本都支持此握手机制。
 
-2. **ValidationURL 握手（手动握手）**：在某些情况下，可能无法控制终结点源代码，以便能够实现基于 ValidationCode 的握手。 如果使用第三方服务（例如 [Zapier](https://zapier.com) 或 [IFTTT](https://ifttt.com/)），则无法以编程方式使用验证码回应。 从版本 2018-05-01-preview 开始，EventGrid 现在支持手动验证握手。 如果你在创建事件订阅时使用的 SDK 或工具使用了 API 版本 2018-05-01-preview 或更高版本，则 EventGrid 将在订阅验证事件的数据部分中发送 `validationUrl` 属性。 若要完成握手，只需通过 REST 客户端或使用 Web 浏览器对该 URL 执行 GET 请求。 提供的验证 URL 有效时间仅 10 分钟左右。 在该时间内，事件订阅的预配状态为 `AwaitingManualAction`。 如果在 10 分钟内未完成手动验证，则配置状态被设为 `Failed`。 你将必须在开始手动验证之前重新创建事件订阅。
+2. **ValidationURL 握手（手动）**：在某些情况下，无法访问终结点的源代码来实现 ValidationCode 握手。 如果使用第三方服务（例如 [Zapier](https://zapier.com) 或 [IFTTT](https://ifttt.com/)），则无法以编程方式使用验证码进行响应。
 
-“手动验证”机制处于预览状态。 若要使用它，必须安装用于 [Azure CLI](/cli/azure/install-azure-cli) 的[事件网格扩展](/cli/azure/azure-cli-extensions-list)。 可使用 `az extension add --name eventgrid` 进行安装。 如果使用的是 REST API，请确保使用的是 `api-version=2018-05-01-preview`。
+   从版本 2018-05-01-preview 开始，事件网格支持手动验证握手。 如果你在创建事件订阅时使用的 SDK 或工具使用了 API 版本 2018-05-01-preview 或更高版本，则事件网格将在订阅验证事件的数据部分中发送 `validationUrl` 属性。 若要完成握手，请在事件数据中找到该 URL 并向其发送一个 GET 请求。 你可以使用 REST 客户端或 Web 浏览器。
+
+   所提供的 URL 的有效期为 10 分钟。 在该时间内，事件订阅的预配状态为 `AwaitingManualAction`。 如果在 10 分钟内未完成手动验证，则配置状态被设为 `Failed`。 你将必须在开始手动验证之前重新创建事件订阅。
 
 ### <a name="validation-details"></a>验证详细信息
 
-* 在创建/更新事件订阅时，事件网格会将“订阅验证”事件发送到目标终结点。 
-* 该事件包含标头值“aeg-event-type: SubscriptionValidation”。
+* 在创建/更新事件订阅时，事件网格会将一个订阅验证事件发送到目标终结点。 
+* 该事件包含标头值“aeg-event-type:SubscriptionValidation”。
 * 事件正文具有与其他事件网格事件相同的架构。
 * 该事件的 eventType 属性是 `Microsoft.EventGrid.SubscriptionValidationEvent`。
 * 该事件的 data 属性包括一个 `validationCode` 属性，其中含有随机生成的字符串。 例如，“validationCode: acb13…”。
@@ -78,9 +80,11 @@ Webhook 是从 Azure 事件网格接收事件的多种方式之一。 当新事�
 }
 ```
 
+你必须返回 HTTP 200 OK 响应状态代码。 HTTP 202 Accepted 未被识别为有效的事件网格订阅验证响应。
+
 另外，还可以通过将 GET 请求发送到验证 URL 来手动验证订阅。 事件订阅将一直处于挂起状态，直到得到验证。
 
-若要查找演示如何处理订阅验证握手的 C# 示例，请访问 https://github.com/Azure-Samples/event-grid-dotnet-publish-consume-events/blob/master/EventGridConsumer/EventGridConsumer/Function1.cs。
+有关处理订阅验证握手的示例，请参阅 [C# 示例](https://github.com/Azure-Samples/event-grid-dotnet-publish-consume-events/blob/master/EventGridConsumer/EventGridConsumer/Function1.cs)。
 
 ### <a name="checklist"></a>清单
 
@@ -93,7 +97,7 @@ Webhook 是从 Azure 事件网格接收事件的多种方式之一。 当新事�
 
 ### <a name="event-delivery-security"></a>事件传递安全性
 
-在创建事件订阅时，可以通过向 Webhook URL 中添加查询参数来保护 Webhook 终结点。 将这些查询参数之一设置为某个机密，例如[访问令牌](https://en.wikipedia.org/wiki/Access_token)。 Webhook 可用于识别该事件是否来自具有有效权限的事件网格。 事件网格会在前往 Webhook 的每个事件传递中包括这些查询参数。
+在创建事件订阅时，可以通过向 Webhook URL 中添加查询参数来保护 Webhook 终结点。 将这些查询参数之一设置为某个机密，例如[访问令牌](https://en.wikipedia.org/wiki/Access_token)。 Webhook 可以使用该机密来识别事件是否来自具有有效权限的事件网格。 事件网格会在前往 Webhook 的每个事件传递中包括这些查询参数。
 
 编辑事件订阅时，除非在 Azure [CLI](https://docs.microsoft.com/cli/azure?view=azure-cli-latest) 中使用了 [--include-full-endpoint-url](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription?view=azure-cli-latest#az-eventgrid-event-subscription-show) 参数，否则，不会显示或返回查询参数。
 
@@ -269,7 +273,7 @@ static string BuildSharedAccessSignature(string resource, DateTime expirationUtc
 
 下面是允许用户采取不同操作的示例事件网格角色定义。 这些自定义角色与内置角色不同，因为它们授予比只是事件订阅更广泛的访问权限。
 
-EventGridReadOnlyRole.json：仅允许只读操作。
+**EventGridReadOnlyRole.json**：仅允许只读操作。
 
 ```json
 {
@@ -288,7 +292,7 @@ EventGridReadOnlyRole.json：仅允许只读操作。
 }
 ```
 
-EventGridNoDeleteListKeysRole.json：允许受限制的发布操作但禁止删除操作。
+**EventGridNoDeleteListKeysRole.json**：允许受限制的发布操作但禁止删除操作。
 
 ```json
 {
@@ -311,7 +315,7 @@ EventGridNoDeleteListKeysRole.json：允许受限制的发布操作但禁止删�
 }
 ```
 
-EventGridContributorRole.json：允许所有事件网格操作。
+**EventGridContributorRole.json**：允许所有事件网格操作。
 
 ```json
 {

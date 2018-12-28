@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 01/29/2018
 ms.author: elioda
-ms.openlocfilehash: 558bf0eb6ab4abb4ad16910ebe36fdb7c1e19374
-ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
+ms.openlocfilehash: 7f66c87322aadafaa7167dff4190de6d08e5d18d
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2018
-ms.locfileid: "49310923"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53338407"
 ---
 # <a name="understand-and-use-device-twins-in-iot-hub"></a>了解并在 IoT 中心内使用设备孪生
 
@@ -382,4 +382,4 @@ IoT 中心开发人员指南中的其他参考主题包括：
 
 * [如何使用设备孪生](iot-hub-node-node-twin-getstarted.md)
 * [如何使用设备孪生属性](tutorial-device-twins.md)
-* [使用用于 VS Code 的 Azure IoT 工具包进行设备管理](iot-hub-device-management-iot-toolkit.md)
+* [使用用于 VS Code 的 Azure IoT 中心工具包进行设备管理](iot-hub-device-management-iot-toolkit.md)

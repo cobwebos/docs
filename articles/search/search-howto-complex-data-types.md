@@ -1,5 +1,5 @@
 ---
-title: 如何在 Azure 搜索中为复杂数据类型建模 | Microsoft Docs
+title: 如何为复杂数据类型建模 - Azure 搜索
 description: 可以在 Azure 搜索索引中使用平展行集和集合数据类型对嵌套或分层数据结构建模。
 author: brjohnstmsft
 manager: jlembicz
@@ -9,12 +9,13 @@ services: search
 ms.service: search
 ms.topic: conceptual
 ms.date: 05/01/2017
-ms.openlocfilehash: 81298bedd43a89ea948753dffc5f80248f5429ca
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.custom: seodec2018
+ms.openlocfilehash: 973623d6c4cb57518af2012bccf67c969146d23c
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31799067"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53311977"
 ---
 # <a name="how-to-model-complex-data-types-in-azure-search"></a>如何在 Azure 搜索中为复杂数据类型建模
 用于填充 Azure 搜索索引的外部数据集有时包括分层或嵌套子结构，此种结构无法整齐地分解为表格行集。 此类结构可能包括单个客户的多个位置和电话号码、单个 SKU 的多个颜色和大小、一本书籍的多位作者等等。 在建模术语中，可能会看到称为*复杂数据类型*、*复合数据类型*、*复合数据类型*或*聚合数据类型*，仅举几例。
@@ -65,7 +66,7 @@ Azure 搜索本身并不支持复杂数据类型，但经验证的解决方法�
 > 
 > 
 
-## <a name="part-1-flatten-the-array-into-individual-fields"></a>第 1 部分：将数组平展为个别字段
+## <a name="part-1-flatten-the-array-into-individual-fields"></a>第 1 部分：将数组平展为单个字段
 若要创建适合此数据集的 Azure 搜索，请为嵌套子结构创建个别字段：`locationsID` 和 `locationsDescription`（数据类型为[集合](https://msdn.microsoft.com/library/azure/dn798938.aspx)或字符串数组）。 在这些字段中，将值“1”和“2”索引到 John Smith 的 `locationsID` 字段，将值“3”和“4”索引到 Jen Campbell 的 `locationsID` 字段。  
 
 Azure 搜索中的数据将如下所示： 

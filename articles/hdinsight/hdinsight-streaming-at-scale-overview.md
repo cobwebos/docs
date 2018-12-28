@@ -8,18 +8,18 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/19/2018
-ms.openlocfilehash: 6588d65a4f19c06e3ee4990aba226dbd11119c91
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: a86902d772226be136778d200a37c451b7b7e9a5
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51016244"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53407246"
 ---
 # <a name="streaming-at-scale-in-hdinsight"></a>HDInsight 中的大规模流式处理
 
 实时大数据解决方案可以处理动态数据。 通常，这些数据在抵达时的作用最大。 如果传入的数据流比当时可处理的大小更大，则可能需要限制资源。 或者，可以按需添加节点，根据流式处理解决方案的需要纵向扩展 HDInsight 群集。
 
-在流式处理应用程序中，一个或多个数据源会生成事件（有时达到每秒几百万个事件），此时，需要在不丢弃任何有用信息的情况下快速引入这些事件。 [Kafka](kafka/apache-kafka-introduction.md) 或[事件中心](https://azure.microsoft.com/services/event-hubs/)等服务使用流缓冲（也称为事件队列）来处理传入的事件。 收集事件后，可以使用流处理层中的实时分析系统（例如 [Storm](storm/apache-storm-overview.md) 或 [Spark Streaming](spark/apache-spark-streaming-overview.md)）来分析数据。 处理的数据可存储在长期存储系统（例如 [Azure Data Lake Store](https://azure.microsoft.com/services/data-lake-store/)）中，并实时显示在商业智能仪表板（例如 [Power BI](https://powerbi.microsoft.com)、Tableau）或自定义的网页上。
+在流式处理应用程序中，一个或多个数据源会生成事件（有时达到每秒几百万个事件），此时，需要在不丢弃任何有用信息的情况下快速引入这些事件。 [Apache Kafka](kafka/apache-kafka-introduction.md) 或[事件中心](https://azure.microsoft.com/services/event-hubs/)等服务使用流缓冲（也称为事件队列）来处理传入的事件。 收集事件后，可以使用流处理层中的实时分析系统（例如 [Apache Storm](storm/apache-storm-overview.md) 或 [Apache Spark Streaming](spark/apache-spark-streaming-overview.md)）来分析数据。 处理的数据可存储在长期存储系统（例如 [Azure Data Lake Store](https://azure.microsoft.com/services/data-lake-store/)）中，并实时显示在商业智能仪表板（例如 [Power BI](https://powerbi.microsoft.com)、Tableau）或自定义的网页上。
 
 ![HDInsight Streaming 模式](./media/hdinsight-streaming-at-scale-overview/HDInsight-streaming-patterns.png)
 
@@ -39,7 +39,7 @@ Apache Storm 是经过优化的分布式容错开源计算系统，可以配合 
 
 Spark Streaming 是 Spark 的一个扩展，可让你重复使用执行批处理时所用的相同代码。 可以在同一个应用程序中结合使用批处理和交互式查询。 与 Storm 不同，Spark Streaming 提供有状态的“恰好一次”处理语义。 将 Spark Streaming 与 [Kafka Direct API](http://spark.apache.org/docs/latest/streaming-kafka-integration.html)（确保 Spark Streaming 接收所有 Kafka 数据恰好一次）结合使用时，可以实现端到端的“恰好一次”处理保证。 Spark Streaming 的优点之一体现在其容错功能。在群集中使用多个节点时，它可以快速恢复有故障的节点。
 
-有关详细信息，请参阅[什么是 Spark Streaming？](hdinsight-spark-streaming-overview.md)。
+有关详细信息，请参阅[什么是 Apache Spark Streaming？](hdinsight-spark-streaming-overview.md)。
 
 ## <a name="scaling-a-cluster"></a>缩放群集
 
@@ -65,5 +65,5 @@ Apache Spark 根据应用程序的要求使用三个关键参数来配置其环�
 
 * [HDInsight 上的 Apache Storm 入门](storm/apache-storm-tutorial-get-started-linux.md)
 * [HDInsight 上的 Apache Storm 的示例拓扑](storm/apache-storm-example-topology.md)
-* [HDInsight 上的 Spark 简介](spark/apache-spark-overview.md)
+* [HDInsight 上的 Apache Spark 简介](spark/apache-spark-overview.md)
 * [HDInsight 上的 Apache Kafka 入门](kafka/apache-kafka-get-started.md)

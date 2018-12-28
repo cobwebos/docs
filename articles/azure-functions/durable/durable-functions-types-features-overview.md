@@ -8,18 +8,18 @@ keywords: ''
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: conceptual
-ms.date: 07/04/2018
+ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 265314ebf2568bd586934d371e1e6c1d74e0b9bb
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 359594ab91b903033ecc303eccd270988be19810
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52637012"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53336520"
 ---
 # <a name="overview-of-function-types-and-features-for-durable-functions-azure-functions"></a>Durable Functions 的函数类型和功能概述 (Azure Functions)
 
-Azure Durable Functions 提供函数执行的状态性业务流程。 Durable Function 是由不同 Azure Functions 组成的解决方案。 每一个函数都可以在业务流程中扮演不同的角色。 以下文档概述了 Durable Function 业务流程中涉及的函数类型。 还介绍了一些将函数连接在一起的常见模式。  若要立即开始使用，请用 [C#](durable-functions-create-first-csharp.md) 或 [JavaScript](quickstart-js-vscode.md) 创建第一个 Durable Function。
+Durable Functions 提供函数执行的有状态业务流程。 Durable Function 是由不同 Azure Functions 组成的解决方案。 每一个函数都可以在业务流程中扮演不同的角色。 以下文档概述了 Durable Function 业务流程中涉及的函数类型。 还介绍了一些将函数连接在一起的常见模式。  若要立即开始使用，请用 [C#](durable-functions-create-first-csharp.md) 或 [JavaScript](quickstart-js-vscode.md) 创建第一个 Durable Function。
 
 ![Durable Functions 的类型][1]  
 
@@ -27,9 +27,11 @@ Azure Durable Functions 提供函数执行的状态性业务流程。 Durable Fu
 
 ### <a name="activity-functions"></a>活动函数
 
-活动函数是持久业务流程中的基本工作单元。  活动函数是流程中安排的函数和任务。  例如，可以创建一个 Durable Function 来处理订单，这包括检查库存、向客户收费和创建装运作业。  以上每一个任务都是一个活动函数。  活动函数对于可在其中执行的工作类型没有任何限制。  可以使用 Azure Functions 支持的任何语言编写这类函数。  持久任务框架可保证在业务流程期间每个调用的活动函数至少执行一次。
+活动函数是持久业务流程中的基本工作单元。  活动函数是流程中安排的函数和任务。  例如，可以创建一个 Durable Function 来处理订单，这包括检查库存、向客户收费和创建装运作业。  以上每一个任务都是一个活动函数。  活动函数对于可在其中执行的工作类型没有任何限制。  可以使用 [Durable Functions 支持的任何语言](durable-functions-overview.md#language-support)编写这类函数。 持久任务框架可保证在业务流程期间每个调用的活动函数至少执行一次。
 
-活动函数必须由[活动触发器](durable-functions-bindings.md#activity-triggers)触发。  此函数将接收 [DurableActivityContext](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableActivityContext.html) 作为参数。 还可以将触发器绑定到任何其他对象，从而将输入传递给函数。  活动函数还可以将值返回到业务流程协调程序。  如果从活动函数发送或返回多个值，则可以[利用元组或数组](durable-functions-bindings.md#passing-multiple-parameters)。  只能从业务流程实例触发活动函数。  虽然某些代码可以在活动函数和另一个函数（如 HTTP 触发器函数）之间共享，但每个函数只能有一个触发器。
+活动函数必须由[活动触发器](durable-functions-bindings.md#activity-triggers)触发。  .NET 函数将接收 [DurableActivityContext](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableActivityContext.html) 作为参数。 还可以将触发器绑定到任何其他对象，从而将输入传递给函数。 在 JavaScript 中，可以通过 [`context.bindings` 对象](../functions-reference-node.md#bindings)上的 `<activity trigger binding name>` 属性访问输入。
+
+活动函数还可以将值返回到业务流程协调程序。  如果从活动函数发送或返回多个值，则可以[利用元组或数组](durable-functions-bindings.md#passing-multiple-parameters)。  只能从业务流程实例触发活动函数。  虽然某些代码可以在活动函数和另一个函数（如 HTTP 触发器函数）之间共享，但每个函数只能有一个触发器。
 
 可参阅 [Durable Functions 绑定文章](durable-functions-bindings.md#activity-triggers)了解更多信息和示例。
 
@@ -79,7 +81,9 @@ Durable Function 业务流程采用代码实现，并可使用编程语言的错
 
 虽然持久业务流程通常位于单个函数应用的上下文中，但可通过某些模式跨多个函数应用协调业务流程。  尽管可以通过 HTTP 进行跨应用通信，但为每个活动使用持久框架意味着还可以跨两个应用维护持久进程。
 
-下面提供了 C# 中跨函数应用业务流程的示例。  一项活动将启动外部业务流程。 然后，另一个活动检索并返回状态。  业务流程协调程序将等待状态完成后再继续。
+下面提供了 C# 和 JavaScript 中的跨函数应用业务流程示例。  一项活动将启动外部业务流程。 然后，另一个活动检索并返回状态。  业务流程协调程序将等待状态完成后再继续。
+
+#### <a name="c"></a>C#
 
 ```csharp
 [FunctionName("OrchestratorA")]
@@ -128,6 +132,64 @@ public static async Task<bool> CheckIsComplete([ActivityTrigger] string statusUr
         return response.StatusCode == HttpStatusCode.OK;
     }
 }
+```
+
+#### <a name="javascript-functions-2x-only"></a>JavaScript（仅限 Functions 2.x）
+
+```javascript
+const df = require("durable-functions");
+const moment = require("moment");
+
+module.exports = df.orchestrator(function*(context) {
+    // Do some work...
+
+    // Call a remote orchestration
+    const statusUrl = yield context.df.callActivity("StartRemoteOrchestration", "OrchestratorB");
+
+    // Wait for the remote orchestration to complete
+    while (true) {
+        const isComplete = yield context.df.callActivity("CheckIsComplete", statusUrl);
+        if (isComplete) {
+            break;
+        }
+
+        const waitTime = moment(context.df.currentUtcDateTime).add(1, "m").toDate();
+        yield context.df.createTimer(waitTime);
+    }
+
+    // B is done. Now go do more work...
+});
+```
+
+```javascript
+const request = require("request-promise-native");
+
+module.exports = async function(context, orchestratorName) {
+    const options = {
+        method: "POST",
+        uri: `https://appB.azurewebsites.net/orchestrations/${orchestratorName}`,
+        body: ""
+    };
+
+    const statusUrl = await request(options);
+    return statusUrl;
+};
+```
+
+```javascript
+const request = require("request-promise-native");
+
+module.exports = async function(context, statusUrl) {
+    const options = {
+        method: "GET",
+        uri: statusUrl,
+        resolveWithFullResponse: true,
+    };
+
+    const response = await request(options);
+    // 200 = Complete, 202 = Running
+    return response.statusCode === 200;
+};
 ```
 
 ## <a name="next-steps"></a>后续步骤

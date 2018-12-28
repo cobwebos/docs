@@ -5,18 +5,19 @@ services: service-fabric-mesh
 keywords: ''
 author: chackdan
 ms.author: chackdan
-ms.date: 06/25/2018
+ms.date: 12/12/2018
 ms.topic: troubleshooting
 ms.service: service-fabric-mesh
-manager: timlt
-ms.openlocfilehash: f80f61cbfc1f7b719e73d7d29c6948bebe84aa6c
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+manager: jeanpaul.connock
+ms.openlocfilehash: 7103557d19b367be0b9f0aa6f4a4642800c14558
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51278304"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53314819"
 ---
 # <a name="commonly-asked-service-fabric-mesh-questions"></a>有关 Service Fabric 网格的常见问题
+
 Azure Service Fabric 网格是一个完全托管的服务，由此开发者可部署微服务应用程序，而无需管理虚拟机、存储或网络。 本文提供常见问题的解答。
 
 ## <a name="how-do-i-report-an-issue-or-ask-a-question"></a>如何报告问题或提问？
@@ -25,31 +26,33 @@ Azure Service Fabric 网格是一个完全托管的服务，由此开发者可�
 
 ## <a name="quota-and-cost"></a>配额和成本
 
-**参与预览版的成本是多少？**
+### <a name="what-is-the-cost-of-participating-in-the-preview"></a>参与预览版的成本是多少？
 
 当前，将应用程序或容器部署到网格预览版不收取任何费用。 但是，建议删除你部署的资源，不要让它们保持运行，除非正在主动测试这些资源。
 
-**内核和 RAM 的数量是否有配额限制？**
+### <a name="is-there-a-quota-limit-of-the-number-of-cores-and-ram"></a>内核和 RAM 的数量是否有配额限制？
 
-是的，每个订阅的配额设置如下：
+是的。 每个订阅的配额是：
 
-- 应用程序数量 - 5 
-- 每个应用程序的核心数 - 12 
-- 每个应用程序的总内存 - 48 GB 
-- 网络和入口终结点 - 5  
-- 可以附加的 Azure 卷 - 10 
-- 服务副本数 - 3 
-- 可以部署的最大容器限制为 4 个内核、16GB RAM。
+- 应用程序数量：5
+- 每个应用程序的核心数：12
+- 每个应用程序的总内存：48 GB
+- 网络和入口终结点：5
+- 可以附加的 Azure 卷：10
+- 服务副本数：3
+- 可以部署的最大容器限制为 4 个内核，16GB RAM。
 - 可以将部分核心以 0.5 个核心的增量分配给容器（最多 6 个核心）。
 
-**我可以将我的已部署应用程序保留多长时间？**
+### <a name="how-long-can-i-leave-my-application-deployed"></a>可以将已部署应用程序保留多长时间？
 
-当前，我们将应用程序的生存期限制为两天。 这是为了充分利用分配给预览版的空闲核心。 因此，仅允许你将给定的部署持续运行 48 小时，经过该时间量后，系统会关闭该部署。 如果看到此情况发生，可以通过在 Azure CLI 中运行 `az mesh app show` 命令并检查是否返回了 `"status": "Failed", "statusDetails": "Stopped resource due to max lifetime policies for an application during preview. Delete the resource to continue."` 来验证系统是否已将其关闭。 
+当前，我们将应用程序的生存期限制为两天。 这是为了充分利用分配给预览版的空闲核心。 因此，仅允许你将给定的部署持续运行 48 小时，经过该时间量后，就会关闭该部署。
+
+如果看到此情况发生，可以通过在 Azure CLI 中运行 `az mesh app show` 命令来验证系统是否已将其关闭。 检查是否返回了 `"status": "Failed", "statusDetails": "Stopped resource due to max lifetime policies for an application during preview. Delete the resource to continue."` 
 
 例如： 
 
 ```cli
-chackdan@Azure:~$ az mesh app show --resource-group myResourceGroup --name helloWorldApp
+~$ az mesh app show --resource-group myResourceGroup --name helloWorldApp
 {
   "debugParams": null,
   "description": "Service Fabric Mesh HelloWorld Application!",
@@ -72,28 +75,73 @@ chackdan@Azure:~$ az mesh app show --resource-group myResourceGroup --name hello
 }
 ```
 
-若要继续将同一应用程序部署到网格，应当删除与应用程序关联的资源组，或者单独删除应用程序和所有相关的网格资源（包括网络）。 
-
-若要删除资源组，请使用 `az group delete <nameOfResourceGroup>` 命令。 
+若要删除资源组，请使用 `az group delete <nameOfResourceGroup>` 命令。
 
 ## <a name="supported-container-os-images"></a>支持的容器 OS 映像
-部署服务时，可使用以下容器 OS 映像。
+
+如果是在 Windows Fall Creators Update（版本 1709）计算机上进行开发，则只能使用 Windows 1709 版本的 Docker 映像。
+
+如果是在 Windows 10 April 2018 Update（版本 1803）计算机上进行开发，则可以使用 Windows 1709 或 Windows 1803 版本的 Docker 映像。
+
+以下容器 OS 映像可以用来部署服务：
 
 - Windows - windowsservercore 和 nanoserver
-    - Windows Server 2016
     - Windows Server 版本 1709
+    - Windows Server 版本 1803
 - Linux
     - 无已知限制
 
-## <a name="features-gaps-and-known-issues"></a>功能差距和已知问题
+## <a name="developer-experience-issues"></a>开发人员体验问题
 
-**部署应用程序后，与其相关联的网络资源似乎不是 IP 地址**
+### <a name="dns-resolution-from-an-outbound-container-doesnt-work"></a>出站容器中的 DNS 解决方法无效
 
-目前，存在一个已知问题 - IP 地址在延迟后出现。 几分钟后检查网络资源的状态，查看相关的 IP 地址。
+某些情况下，服务到服务通信可能会失败。 正在调查此问题。 缓解措施：
 
-**应用程序无法访问正确的网络/卷资源**
+- 使用 Windows Fall Creators 更新（版本 1709）或更高版本作为基容器映像。
+- 如果单独的服务名称无效，请尝试完全限定的名称：ServiceName.ApplicationName。
+- 在服务的 Docker 文件中添加 `EXPOSE <port>`，其中的端口是在其上公开服务的端口。 例如：
 
-在应用程序模型中，需要使用网络和卷的完整资源 ID 才可访问相关资源。 快速入门示例中的情况如下所示：
+```
+EXPOSE 80
+```
+
+### <a name="dns-does-not-work-the-same-as-it-does-for-service-fabric-development-clusters-and-in-mesh"></a>DNS 的工作方式不同于 Service Fabric 开发群集的以及网格中的工作方式
+
+可能需要在本地开发群集和 Azure 网格中以不同的方式引用服务。
+
+在本地开发群集中，请使用 `{serviceName}.{applicationName}`。 在 Azure Service Fabric 网格中，请使用 `{servicename}`。 
+
+Azure 网格目前不支持跨应用程序进行 DNS 解析。
+
+有关在 Windows 10 上运行 Service Fabric 开发群集的其他已知 DNS 问题，请参阅：[调试 Windows 容器](/azure/service-fabric/service-fabric-how-to-debug-windows-containers)和[已知的 DNS 问题](https://docs.microsoft.com/azure/service-fabric/service-fabric-dnsservice#known-issues)。
+
+### <a name="networking"></a>网络
+
+在本地计算机上运行应用时，ServiceFabric 网络 NAT 可能会消失。 若要诊断是否发生了这种情况，请从命令提示符处运行以下命令：
+
+`docker network ls`，然后注意 `servicefabric_nat` 是否已列出。  如果没有列出，则请运行以下命令：`docker network create -d=nat --subnet 10.128.0.0/24 --gateway 10.128.0.1 servicefabric_nat`
+
+这样就可以解决问题，即使应用已部署到本地且处于不正常状态。
+
+### <a name="issues-running-multiple-apps"></a>运行多个应用的问题
+
+可能会遇到需要跨所有应用程序解决的 CPU 可用性和限制问题。 缓解措施：
+- 创建一个五节点群集。
+- 在已部署应用中，减少服务的 CPU 使用量。 例如，在服务的 service.yaml 文件中，将 `cpu: 1.0` 更改为 `cpu: 0.5`
+
+不能将多个应用程序部署到一个单节点群集。 缓解措施：
+- 将多个应用部署到一个本地群集时，请使用一个五节点群集。
+- 删除当前未测试的应用。
+
+## <a name="feature-gaps-and-other-known-issues"></a>功能差距和其他已知问题
+
+### <a name="after-deploying-my-application-the-network-resource-associated-with-it-does-not-have-an-ip-address"></a>部署应用程序后，与其相关联的网络资源没有 IP 地址
+
+有一个已知的问题，即 IP 地址不会立即变得可用。 几分钟后检查网络资源的状态，查看相关的 IP 地址。
+
+### <a name="my-application-fails-to-access-the-right-networkvolume-resource"></a>应用程序无法访问正确的网络/卷资源
+
+在应用程序模型中，请使用网络和卷的完整资源 ID 来访问相关资源。 下面是快速入门示例中的一个示例：
 
 ```json
 "networkRefs": [
@@ -103,49 +151,9 @@ chackdan@Azure:~$ az mesh app show --resource-group myResourceGroup --name hello
 ]
 ```
 
-**看不到当前应用程序模型支持加密机密的方法**
+### <a name="when-i-scale-out-all-of-my-containers-are-affected-including-running-ones"></a>向外扩展时，所有的容器都受到影响，包括正在运行的容器
 
-是的，当前个人预览版中不支持加密机密。 
-
-**DNS 在 Service Fabric 开发群集和网格中的工作方式不同**
-
-存在一个已知问题，在此情况下，可能必须在本地开发群集和 Azure 网格中以不同的方式引用服务。 在本地开发群集中使用 {serviceName}.{applicationName}。 在 Azure Service Fabric 网格中使用 {servicename}。 Azure 网格目前不支持跨应用程序进行 DNS 解析。
-
-有关在 Windows 10 上运行 Service Fabric 开发群集的其他已知 DNS 问题，请参阅此处：[调试 Windows 容器](/azure/service-fabric/service-fabric-how-to-debug-windows-containers)。
-
-**使用 CLI 模块时遇到了此错误“ImportError: 无法导入名称 'sdk_no_wait'”**
-
-如果使用的 CLI 版本早于 2.0.30，则可能会出现此错误 -
-
-```
-cannot import name 'sdk_no_wait'
-Traceback (most recent call last):
-File "C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2\lib\site-packages\knack\cli.py", line 193, in invoke cmd_result = self.invocation.execute(args)
-File "C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2\lib\site-packages\azure\cli\core\commands_init_.py", line 241, in execute self.commands_loader.load_arguments(command)
-File "C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2\lib\site-packages\azure\cli\core_init_.py", line 201, in load_arguments self.command_table[command].load_arguments() # this loads the arguments via reflection
-File "C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2\lib\site-packages\azure\cli\core\commands_init_.py", line 142, in load_arguments super(AzCliCommand, self).load_arguments()
-File "C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2\lib\site-packages\knack\commands.py", line 76, in load_arguments cmd_args = self.arguments_loader()
-File "C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2\lib\site-packages\azure\cli\core_init_.py", line 332, in default_arguments_loader op = handler or self.get_op_handler(operation)
-File "C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2\lib\site-packages\azure\cli\core_init_.py", line 375, in get_op_handler op = import_module(mod_to_import)
-File "C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2\lib\importlib_init_.py", line 126, in import_module return _bootstrap._gcd_import(name[level:], package, level)
-File "", line 978, in _gcd_import
-File "", line 961, in _find_and_load
-File "", line 950, in _find_and_load_unlocked
-File "", line 655, in _load_unlocked
-File "", line 678, in exec_module
-File "", line 205, in _call_with_frames_removed
-File "C:\Users\annayak.azure\cliextensions\azure-cli-sbz\azext_sbz\custom.py", line 18, in 
-from azure.cli.core.util import get_file_json, shell_safe_json_parse, sdk_no_wait
-ImportError: cannot import name 'sdk_no_wait'.
-```
-
-**安装 CLI 扩展包时，出现不匹配的分发名称错误**
-
-这并不意味着扩展没有安装。 应该仍然可以毫无问题地使用 CLI 命令。
-
-**向外扩展时，看到所有的容器都受到影响，包括正在运行的容器**
-
-这是一个 bug，应可在下次运行时刷新时得到修复。
+这是一个 Bug，目前我们正在实现一个修复程序。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -1,5 +1,5 @@
 ---
-title: 适用于 Azure Marketplace 映像的安全建议 | Microsoft Docs
+title: 适用于 Azure 市场映像的安全建议 | Microsoft Docs
 description: 本文将提供适用于市场映像的安全建议
 services: security
 documentationcenter: na
@@ -11,18 +11,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/18/2017
 ms.author: barclayn
-ms.openlocfilehash: 4ae36f87c29975c82bb99f713893a9dc78a249e6
-ms.sourcegitcommit: d6ad3203ecc54ab267f40649d3903584ac4db60b
+ms.openlocfilehash: 9c02dc386852a32814669d38df6260822a5e4f99
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2017
-ms.locfileid: "23465402"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53308783"
 ---
-# <a name="security-recommendations-for-azure-marketplace-images"></a>适用于 Azure Marketplace 映像的安全建议
+# <a name="security-recommendations-for-azure-marketplace-images"></a>适用于 Azure 市场映像的安全建议
 
-我们建议每个解决方案都遵守以下安全配置建议。 这些建议不仅有助于为 Azure Marketplace 中的合作伙伴解决方案映像保持高级别的安全性。
+我们建议每个解决方案都遵守以下安全配置建议。 这些建议不仅有助于为 Azure 市场中的合作伙伴解决方案映像保持高级别的安全性。
 
-而且对于在 Azure Marketplace 中没有映像的组织也很有帮助。 你可能希望根据下表中的准则检查公司的 Windows 和 Linux 映像配置。
+而且对于在 Azure 市场中没有映像的组织也很有帮助。 你可能希望根据下表中的准则检查公司的 Windows 和 Linux 映像配置。
 
 ## <a name="open-source-based-images"></a>打开基于源的映像
 
@@ -39,9 +39,9 @@ ms.locfileid: "23465402"
 | 安全                                                     | 不推荐使用 LVM。                                                                                                                                                                                                                                            |
 | 安全                                                     | 所需库的最新版本应包括： </br> - OpenSSL v1.0 或更高版本 </br> - Python 2.5 或更高版本（强烈建议使用 Python 2.6+） </br> - Python pyasn1 包（如果尚未安装） </br> - d.OpenSSL v 1.0 或更高版本                                                                |
 | 安全                                                     | 必须清除 Bash/Shell 历史记录                                                                                                                                                                                                                                             |
-| 联网                                                   | 默认情况下，应包括 SSH 服务器。 请通过以下选项为 sshd 配置设置 SSH 保持连接时间：ClientAliveInterval 180                                                                                                                                                        |
-| 联网                                                   | 映像不应包含任何自定义网络配置。 删除 resolv.conf：`rm /etc/resolv.conf`                                                                                                                                                                                |
-| 部署                                                   | 应安装最新的 Azure Linux 代理 </br> - 应使用 RPM 或 Deb 包安装代理。  </br> - 也可使用手动安装进程，但建议首选安装包。 </br> - 如果从 github 存储库手动安装代理，首先请将 `waagent` 文件复制到 `/usr/sbin` 中并（作为根）运行： </br>`# chmod 755 /usr/sbin/waagent` </br>`# /usr/sbin/waagent -install` </br>代理配置文件将放置在 `/etc/waagent.conf` 中。    |
+| 网络                                                   | 默认情况下，应包括 SSH 服务器。 使用以下选项将 SSH 保持活动时间设置到 sshd 配置：ClientAliveInterval 180                                                                                                                                                        |
+| 网络                                                   | 映像不应包含任何自定义网络配置。 删除 resolv.conf：`rm /etc/resolv.conf`                                                                                                                                                                                |
+| 部署                                                   | 应安装最新的 Azure Linux 代理 </br> - 应使用 RPM 或 Deb 包安装代理。  </br> - 也可使用手动安装进程，但建议首选安装包。 </br> - 如果要从 GitHub 存储库手动安装代理，首先请将 `waagent` 文件复制到 `/usr/sbin` 中并（以 root 身份）运行： </br>`# chmod 755 /usr/sbin/waagent` </br>`# /usr/sbin/waagent -install` </br>代理配置文件将放置在 `/etc/waagent.conf` 中。    |
 | 部署                                                   | 确保 Azure 支持可在需要时为合作伙伴提供串行控制台输出，并为从云存储装载的 OS 磁盘提供足够的超时时间。 映像必须将以下参数添加到内核引导行：`console=ttyS0 earlyprintk=ttyS0 rootdelay=300` |
 | 部署                                                   | OS 磁盘上无需交换分区。 可通过 Linux 代理在本地资源磁盘上请求创建交换。         |
 | 部署                                                   | 建议为 OS 磁盘创建单个根分区。      |

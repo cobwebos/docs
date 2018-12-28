@@ -9,27 +9,26 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: 0d76aa5091e77d8713290e6da8908e15ad3ef995
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: 69a2e189fc425369e357fd52685c2f48609e947b
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51684561"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53386921"
 ---
 # <a name="use-data-lake-store-with-azure-hdinsight-clusters"></a>配合使用 Data Lake Store 和 HDInsight 群集
 
 若要分析 HDInsight 群集中的数据，可将数据存储在 [Azure 存储](../storage/common/storage-introduction.md)和/或 [Azure Data Lake Store](../data-lake-store/data-lake-store-overview.md) 中。 这两个存储选项都允许安全地删除用于计算的 HDInsight 群集，而不会丢失用户数据。
 
-本文介绍如何配合使用 Data Lake Store和 HDInsight 群集。 若要了解如何配合使用 Azure 存储和 HDInsight 群集，请参阅[配合使用 Azure 存储和 Azure HDInsight 群集](hdinsight-hadoop-use-blob-storage.md)。 若要深入了解如何创建 HDInsight 群集，请参阅[在 HDInsight 中创建 Hadoop 群集](hdinsight-hadoop-provision-linux-clusters.md)。
+本文介绍如何配合使用 Data Lake Store和 HDInsight 群集。 若要了解如何配合使用 Azure 存储和 HDInsight 群集，请参阅[配合使用 Azure 存储和 Azure HDInsight 群集](hdinsight-hadoop-use-blob-storage.md)。 若要深入了解如何创建 HDInsight 群集，请参阅[在 HDInsight 中创建 Apache Hadoop 群集](hdinsight-hadoop-provision-linux-clusters.md)。
 
-> [!NOTE]
+> [!NOTE]  
 > 因为始终需要通过安全通道访问 Data Lake Store，因此没有 `adls` 文件系统方案名称。 始终使用 `adl`。
-> 
 
 
 ## <a name="availability-for-hdinsight-clusters"></a>HDInsight 群集的可用性
 
-Hadoop 支持默认文件系统的概念。 默认文件系统意指默认方案和授权。 它还可用于解析相对路径。 在 HDInsight 群集创建过程中，可指定 Azure 存储中的 Blob 容器作为默认文件系统，或者可借助 HDInsight 3.5 和更新版本，选择 Azure 存储或 Azure Data Lake Store 作为默认文件系统，但有一些例外。 
+Apache Hadoop 支持默认文件系统的概念。 默认文件系统意指默认方案和授权。 它还可用于解析相对路径。 在 HDInsight 群集创建过程中，可指定 Azure 存储中的 Blob 容器作为默认文件系统，或者可借助 HDInsight 3.5 和更新版本，选择 Azure 存储或 Azure Data Lake Store 作为默认文件系统，但有一些例外。 
 
 HDInsight 群集可通过以下两种方式使用 Data Lake Store：
 
@@ -47,7 +46,7 @@ HDInsight 群集可通过以下两种方式使用 Data Lake Store：
 | HDInsight 版本 3.2 | 否 | 是 | |
 | Storm | | |可使用 Data Lake Store 从 Storm 拓扑写入数据。 对于可由 Storm 拓扑读取的引用数据，也可以使用 Data Lake Store。|
 
-> [!WARNING]
+> [!WARNING]  
 > Azure Data Lake Storage Gen 1 不支持 HDInsight HBase
 
 使用 Data Lake Store 作为附加存储帐户不会影响从群集读取或写入数据到 Azure 存储的性能或能力。
@@ -96,7 +95,7 @@ HDInsight 群集可通过以下两种方式使用 Data Lake Store：
 
 若要从 HDInsight 群集配置 Data Lake Store 访问，必须具有 Azure Active Directory (Azure AD) 服务主体。 只有 Azure AD 管理员才能创建服务主体。 必须使用证书创建服务主体。 有关详细信息，请参阅[快速入门：在 HDInsight 中设置群集](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)以及[使用自签名证书创建服务主体](../active-directory/develop/howto-authenticate-service-principal-powershell.md#create-service-principal-with-self-signed-certificate)。
 
-> [!NOTE]
+> [!NOTE]  
 > 若要将 Azure Data Lake Store 用作 HDInsight 群集的额外存储，强烈建议在创建群集时按本文说明进行操作。 将 Azure Data Lake Store 作为额外存储添加到现有 HDInsight 群集是不受支持的方案。
 >
 
@@ -193,8 +192,8 @@ Invoke-AzureRmResourceAction `
 * [快速入门：在 HDInsight 中设置群集](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)
 * [通过 Azure PowerShell 创建使用 Data Lake Store 的 HDInsight 群集](../data-lake-store/data-lake-store-hdinsight-hadoop-use-powershell.md)
 * [将数据上传到 HDInsight][hdinsight-upload-data]
-* [将 Hive 与 HDInsight 配合使用][hdinsight-use-hive]
-* [将 Pig 与 HDInsight 配合使用][hdinsight-use-pig]
+* [将 Apache Hive 和 HDInsight 配合使用][hdinsight-use-hive]
+* [将 Apache Pig 和 HDInsight 配合使用][hdinsight-use-pig]
 * [使用 Azure 存储共享访问签名来限制使用 HDInsight 访问数据][hdinsight-use-sas]
 
 [hdinsight-use-sas]: hdinsight-storage-sharedaccesssignature-permissions.md
@@ -205,7 +204,7 @@ Invoke-AzureRmResourceAction `
 [hdinsight-use-hive]:hadoop/hdinsight-use-hive.md
 [hdinsight-use-pig]:hadoop/hdinsight-use-pig.md
 
-[blob-storage-restAPI]: http://msdn.microsoft.com/library/windowsazure/dd135733.aspx
+[blob-storage-restAPI]: https://msdn.microsoft.com/library/windowsazure/dd135733.aspx
 [azure-storage-create]:../storage/common/storage-create-storage-account.md
 
 [img-hdi-powershell-blobcommands]: ./media/hdinsight-hadoop-use-blob-storage/HDI.PowerShell.BlobCommands.png

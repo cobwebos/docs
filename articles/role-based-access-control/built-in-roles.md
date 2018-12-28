@@ -11,16 +11,16 @@ ms.devlang: ''
 ms.topic: reference
 ms.tgt_pltfrm: ''
 ms.workload: identity
-ms.date: 11/26/2018
+ms.date: 12/05/2018
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: 58bec272733d0ad83665f4e06f37ae528eb2f8b9
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: d6696d9bdd69b085b9c9ac0804da68cd91612f35
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52499659"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53386955"
 ---
 # <a name="built-in-roles-for-azure-resources"></a>Azure 资源的内置角色
 [基于角色的访问控制 (RBAC)](overview.md) 拥有多个内置角色定义，可将其分配给用户、组和服务主体。 角色分配是控制对 Azure 资源的访问的方式。 如果内置角色不能满足组织的特定需求，则你可以创建自己的[自定义角色](custom-roles.md)。
@@ -92,13 +92,13 @@ ms.locfileid: "52499659"
 | [托管的标识操作员](#managed-identity-operator) | 读取和分配用户分配的标识 |
 | [管理组参与者](#management-group-contributor) | 管理组参与者角色 |
 | [管理组读取者](#management-group-reader) | 管理组读取者角色 |
-| [监视参与者](#monitoring-contributor) | 可以读取所有监视数据和编辑监视设置。 另请参阅 [Azure Monitor 的角色、权限和安全入门](../monitoring-and-diagnostics/monitoring-roles-permissions-security.md#built-in-monitoring-roles)。 |
+| [监视参与者](#monitoring-contributor) | 可以读取所有监视数据和编辑监视设置。 另请参阅 [Azure Monitor 的角色、权限和安全入门](../azure-monitor/platform/roles-permissions-security.md#built-in-monitoring-roles)。 |
 | [监视指标发布者](#monitoring-metrics-publisher) | 允许针对 Azure 资源发布指标 |
-| [监视查阅者](#monitoring-reader) | 可以读取所有监视数据（指标、日志等）。 另请参阅 [Azure Monitor 的角色、权限和安全入门](../monitoring-and-diagnostics/monitoring-roles-permissions-security.md#built-in-monitoring-roles)。 |
+| [监视查阅者](#monitoring-reader) | 可以读取所有监视数据（指标、日志等）。 另请参阅 [Azure Monitor 的角色、权限和安全入门](../azure-monitor/platform/roles-permissions-security.md#built-in-monitoring-roles)。 |
 | [网络参与者](#network-contributor) | 允许管理网络，但不允许访问这些网络。 |
 | [New Relic APM 帐户参与者](#new-relic-apm-account-contributor) | 允许管理 New Relic 应用程序性能管理帐户和应用程序，但不允许访问它们。 |
 | [读取器和数据访问](#reader-and-data-access) | 允许查看所有内容，但不允许删除或创建存储帐户或包含的资源。 它还允许使用存储帐户密钥对存储帐户中包含的所有数据进行读/写访问。 |
-| [Redis 缓存参与者](#redis-cache-contributor) | 允许管理 Redis 缓存，但不允许访问这些缓存。 |
+| [Azure Redis 缓存参与者](#redis-cache-contributor) | 允许管理 Azure Redis 缓存，但不能访问它们。 |
 | [资源策略参与者（预览）](#resource-policy-contributor-preview) | （预览）通过 EA 回填的 用户，具有创建/修改资源策略、创建支持票证和读取资源/层次结构的权限。 |
 | [计划程序作业集合参与者](#scheduler-job-collections-contributor) | 允许管理计划程序作业集合，但不允许访问这些集合。 |
 | [搜索服务参与者](#search-service-contributor) | 允许管理搜索服务，但不允许访问这些服务。 |
@@ -114,6 +114,7 @@ ms.locfileid: "52499659"
 | [存储帐户参与者](#storage-account-contributor) | 允许管理存储帐户，但不允许对其进行访问。 |
 | [存储帐户密钥操作员服务角色](#storage-account-key-operator-service-role) | 允许存储帐户密钥操作员在存储帐户上列出和重新生成密钥 |
 | [存储 Blob 数据参与者（预览）](#storage-blob-data-contributor-preview) | 授予对 Azure 存储 blob 容器和数据的读取、写入和删除权限 |
+| [存储 Blob 数据所有者（预览）](#storage-blob-data-owner-preview) | 授予对 Azure 存储 blob 容器和数据的读取、写入、删除和 POSIX 超级用户访问权限 |
 | [存储 Blob 数据读者（预览）](#storage-blob-data-reader-preview) | 授予对 Azure 存储 blob 容器和数据的读取权限 |
 | [存储队列数据参与者（预览）](#storage-queue-data-contributor-preview) | 授予对 Azure 存储队列和队列消息的读取、写入和删除权限 |
 | [存储队列数据读者（预览）](#storage-queue-data-reader-preview) | 授予对 Azure 存储队列和队列消息的读取权限 |
@@ -1193,7 +1194,7 @@ ms.locfileid: "52499659"
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **说明** | 可以读取所有监视数据和编辑监视设置。 另请参阅 [Azure Monitor 的角色、权限和安全入门](../monitoring-and-diagnostics/monitoring-roles-permissions-security.md#built-in-monitoring-roles)。 |
+> | **说明** | 可以读取所有监视数据和编辑监视设置。 另请参阅 [Azure Monitor 的角色、权限和安全入门](../azure-monitor/platform/roles-permissions-security.md#built-in-monitoring-roles)。 |
 > | **Id** | 749f88d5-cbae-40b8-bcfc-e573ddc772fa |
 > | **操作** |  |
 > | */read | 读取除密码外的所有类型的资源。 |
@@ -1237,7 +1238,7 @@ ms.locfileid: "52499659"
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **说明** | 可以读取所有监视数据（指标、日志等）。 另请参阅 [Azure Monitor 的角色、权限和安全入门](../monitoring-and-diagnostics/monitoring-roles-permissions-security.md#built-in-monitoring-roles)。 |
+> | **说明** | 可以读取所有监视数据（指标、日志等）。 另请参阅 [Azure Monitor 的角色、权限和安全入门](../azure-monitor/platform/roles-permissions-security.md#built-in-monitoring-roles)。 |
 > | **Id** | 43d0d8ad-25c7-4714-9337-8ba259a9fe05 |
 > | **操作** |  |
 > | */read | 读取除密码外的所有类型的资源。 |
@@ -1284,15 +1285,15 @@ ms.locfileid: "52499659"
 > | Microsoft.Storage/storageAccounts/listKeys/action | 返回指定存储帐户的访问密钥。 |
 > | Microsoft.Storage/storageAccounts/read | 返回存储帐户的列表，或获取指定存储帐户的属性。 |
 
-## <a name="redis-cache-contributor"></a>Redis Cache 参与者
+## <a name="azure-cache-for-redis-contributor"></a>Azure Redis 缓存参与者
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **说明** | 允许管理 Redis 缓存，但不允许访问这些缓存。 |
+> | **说明** | 允许管理 Azure Redis 缓存，但不能访问它们。 |
 > | **Id** | e0f68234-74aa-48ed-b826-c38b57376e17 |
 > | **操作** |  |
 > | Microsoft.Authorization/*/read | 读取角色和角色分配 |
-> | Microsoft.Cache/redis/* | 创建和管理 Redis 缓存 |
+> | Microsoft.Cache/redis/* | 创建和管理 Azure Redis 缓存 |
 > | Microsoft.Insights/alertRules/* | 创建和管理警报规则 |
 > | Microsoft.ResourceHealth/availabilityStatuses/read | 获取指定范围内所有资源的可用性状态 |
 > | Microsoft.Resources/deployments/* | 创建和管理资源组部署 |
@@ -1687,6 +1688,21 @@ ms.locfileid: "52499659"
 > | --- | --- |
 > | **说明** | 授予对 Azure 存储 blob 容器和数据的读取、写入和删除权限 |
 > | **Id** | ba92f5b4-2d11-453d-a403-e96b0029c9fe |
+> | **操作** |  |
+> | Microsoft.Storage/storageAccounts/blobServices/containers/delete | 返回删除容器的结果 |
+> | Microsoft.Storage/storageAccounts/blobServices/containers/read | 返回容器或容器列表 |
+> | Microsoft.Storage/storageAccounts/blobServices/containers/write | 返回放置或租用 blob 容器的结果 |
+> | **DataActions** |  |
+> | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/delete | 返回删除 blob 的结果 |
+> | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read | 返回 blob 或 blob 列表 |
+> | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/write | 返回写入 blob 的结果 |
+
+## <a name="storage-blob-data-owner-preview"></a>存储 Blob 数据所有者（预览）
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **说明** | 授予对 Azure 存储 blob 容器和数据的读取、写入、删除和 POSIX 超级用户访问权限 |
+> | **Id** | b7e6dc6d-f1e8-4753-8033-0f276bb0955b |
 > | **操作** |  |
 > | Microsoft.Storage/storageAccounts/blobServices/containers/delete | 返回删除容器的结果 |
 > | Microsoft.Storage/storageAccounts/blobServices/containers/read | 返回容器或容器列表 |

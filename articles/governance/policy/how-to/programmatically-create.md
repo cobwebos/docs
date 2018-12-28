@@ -1,19 +1,20 @@
 ---
-title: 使用 Azure Policy 以编程方式创建策略和查看符合性数据
+title: 以编程方式创建策略和查看符合性数据
 description: 本文逐步讲解如何以编程方式创建和管理适用于 Azure Policy 的策略。
 services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 10/30/2018
+ms.date: 12/06/2018
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: d72c9c1747bb697f66fa53489636b1726053060c
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.custom: seodec18
+ms.openlocfilehash: 3c8fd185feff9a580e2d23926dcf60cb33121122
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50242616"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53312470"
 ---
 # <a name="programmatically-create-policies-and-view-compliance-data"></a>以编程方式创建策略和查看符合性数据
 
@@ -29,7 +30,7 @@ ms.locfileid: "50242616"
 
 1. 将 AzureRM PowerShell 模块更新到最新版本。 有关最新版本的详细信息，请参阅 [Azure PowerShell](https://github.com/Azure/azure-powershell/releases)。
 
-1. 使用 Azure PowerShell 注册策略见解资源提供程序，以确保订阅可使用资源提供程序。 若要注册资源提供程序，必须具有为资源提供程序执行注册操作的权限。 此操作包含在“参与者”和“所有者”角色中。 运行以下命令，注册资源提供程序：
+1. 使用 Azure PowerShell 注册策略见解资源提供程序，以确认订阅可使用资源提供程序正常工作。 若要注册资源提供程序，必须具有为资源提供程序运行注册操作所需的权限。 此操作包含在“参与者”和“所有者”角色中。 运行以下命令，注册资源提供程序：
 
    ```azurepowershell-interactive
    Register-AzureRmResourceProvider -ProviderNamespace 'Microsoft.PolicyInsights'

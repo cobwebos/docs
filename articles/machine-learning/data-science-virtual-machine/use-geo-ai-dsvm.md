@@ -1,11 +1,12 @@
 ---
 title: 使用地理人工智能数据科学虚拟机 - Azure | Microsoft Docs
-description: 如何使用 Azure 上的地理 AI 虚拟机。
+description: 了解如何使用地理 AI Data Science Virtual Machine 分析数据并根据地理空间数据构建模型。
 keywords: 深度学习, AI, 数据科学工具, 数据科学虚拟机, 地理空间分析
 services: machine-learning
 documentationcenter: ''
 author: gopitk
 manager: cgronlun
+ms.custom: seodec18
 ms.assetid: ''
 ms.service: machine-learning
 ms.component: data-science-vm
@@ -15,11 +16,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/05/2018
 ms.author: gokuma
-ms.openlocfilehash: f346b086a0269f247d64edf9346b01849ba3d0ee
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 872bfdfdef28dbb88861b723bd3186faea461cad
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53410000"
 ---
 # <a name="using-the-geo-artificial-intelligence-data-science-virtual-machine"></a>使用地理人工智能数据科学虚拟机
 
@@ -41,11 +43,11 @@ ArcGIS 的 R 桥作为名为 [arcgisbinding](https://github.com/R-ArcGIS/r-bridg
 除了基础数据科学 VM 提供的基于机器学习和深度学习框架的示例外，地理 AI 数据科学 VM 还提供了一组地理空间示例。 这些示例可以帮助你使用地理空间数据和 ArcGIS 软件快速开始 AI 应用程序开发。 
 
 
-1. [使用 Python 进行地理空间分析入门](https://github.com/Azure/DataScienceVM/blob/master/Notebooks/ArcGIS/Python%20walkthrough%20ArcGIS%20Data%20analysis%20and%20ML.ipynb)：一个简介性的示例，展示了如何使用 [arcpy](http://pro.arcgis.com/en/pro-app/arcpy/main/arcgis-pro-arcpy-reference.htm) 库提供的到 ArcGIS 的 Python 接口来处理地理空间数据。 它还展示了如何将传统的机器学习与地理空间数据组合使用，并在 ArcGIS 中在地图上以可视化方式呈现结果。 
+1. [使用 Python 进行地理空间分析入门](https://github.com/Azure/DataScienceVM/blob/master/Notebooks/ArcGIS/Python%20walkthrough%20ArcGIS%20Data%20analysis%20and%20ML.ipynb)：一个简介性的示例，展示了如何使用 [arcpy](http://pro.arcgis.com/en/pro-app/arcpy/main/arcgis-pro-arcpy-reference.htm) 库提供的与 ArcGIS 的 Python 接口来处理地理空间数据。 它还展示了如何将传统的机器学习与地理空间数据组合使用，并在 ArcGIS 中在地图上以可视化方式呈现结果。 
 
-2. [使用 R 进行地理空间分析入门](https://github.com/Azure/DataScienceVM/blob/master/Notebooks/ArcGIS/R%20walkthrough%20ArcGIS%20Data%20analysis%20and%20ML.ipynb)：一个简介性的示例，展示了如何使用 [arcgisbinding](https://github.com/R-ArcGIS/r-bridge) 库提供的到 ArcGIS 的 R 接口来处理地理空间数据。 
+2. [使用 R 进行地理空间分析入门](https://github.com/Azure/DataScienceVM/blob/master/Notebooks/ArcGIS/R%20walkthrough%20ArcGIS%20Data%20analysis%20and%20ML.ipynb)：一个简介性的示例，展示了如何使用 [arcgisbinding](https://github.com/R-ArcGIS/r-bridge) 库提供的与 ArcGIS 的 R 接口来处理地理空间数据。 
 
-3. [像素级土地利用分类](https://github.com/Azure/pixel_level_land_classification)：该教程展示了如何创建深度神经网络模型，使该模型接受航拍图像作为输入并返回土地覆盖标签。 土地覆盖标签的示例有“森林”和“水”。 模型会为图像中的每个像素返回这样的标签。 模型是使用 Microsoft 的开源 [Cognitive Toolkit (CNTK)](https://www.microsoft.com/en-us/cognitive-toolkit/) 深度学习框架构建的。 该示例还展示了如何在 [Azure Batch AI](https://docs.microsoft.com/azure/batch-ai/) 上横向扩展训练以及如何在 ArcGIS Pro 软件中使用模型预测。 
+3. [像素级土地利用分类](https://github.com/Azure/pixel_level_land_classification)：该教程展示了如何创建深度神经网络模型，使该模型接受航拍图像作为输入并返回土地覆盖标签。 土地覆盖标签的示例有“森林”和“水”。 模型会为图像中的每个像素返回这样的标签。 模型是使用 Microsoft 的开源 [Cognitive Toolkit (CNTK)](https://www.microsoft.com/en-us/cognitive-toolkit/) 深度学习框架构建的。 
 
 
 ## <a name="next-steps"></a>后续步骤

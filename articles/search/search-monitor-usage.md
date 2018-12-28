@@ -1,5 +1,5 @@
 ---
-title: 监视 Azure 搜索服务中的使用情况和统计信息 | Microsoft Docs
+title: 监视搜索服务的使用情况和统计信息 - Azure 搜索
 description: 跟踪 Azure 搜索（在 Microsoft Azure 上托管的云搜索服务）的资源消耗和索引大小。
 author: HeidiSteen
 manager: cgronlun
@@ -10,14 +10,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/09/2017
 ms.author: heidist
-ms.openlocfilehash: 286569eef8e17909ecab017b67b0ffc044a4bfe4
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.custom: seodec2018
+ms.openlocfilehash: 584d1d8ce3285f9f5fb986c9779d3c403ce13d1b
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31795103"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53314153"
 ---
-# <a name="monitoring-an-azure-search-service"></a>监视 Azure 搜索服务
+# <a name="monitor-an-azure-search-service-in-azure-portal"></a>在 Azure 门户中监视 Azure 搜索服务
 
 Azure 搜索提供用于跟踪搜索服务使用情况和性能的各种资源。 它提供对 Power BI 上指标、日志、索引统计信息和扩展的监视功能的访问。 本文介绍如何启用不同的监视策略以及如何解释生成的数据。
 
@@ -71,7 +72,7 @@ Azure 搜索 REST API 和 .NET SDK 支持采用编程方式访问服务指标。
 ### <a name="enabling-monitoring"></a>启用监视
 在 [Azure 门户](http://portal.azure.com)中的“启用监视”选项下打开 Azure 搜索服务。
 
-选择想要导出的数据：日志和/或指标。 可将数据复制到存储帐户，将其发送到事件中心，或将其导出到 Log Analytics。
+选择要导出的数据：日志和/或指标。 可将数据复制到存储帐户，将其发送到事件中心，或将其导出到 Log Analytics。
 
 ![如何在门户中启用监视][3]
 
@@ -92,28 +93,30 @@ Azure 搜索 REST API 和 .NET SDK 支持采用编程方式访问服务指标。
 每个 Blob 具有一个名为 **records** 的根对象，该对象包含一组日志对象。
 每个 blob 会记录同一小时内发生的所有操作。
 
-| 名称 | Type | 示例 | 说明 |
+| 名称 | 类型 | 示例 | 说明 |
 | --- | --- | --- | --- |
 | time |datetime |“2015-12-07T00:00:43.6872559Z” |操作的时间戳 |
 | resourceId |字符串 |“/SUBSCRIPTIONS/11111111-1111-1111-1111-111111111111/<br/>RESOURCEGROUPS/DEFAULT/PROVIDERS/<br/> MICROSOFT.SEARCH/SEARCHSERVICES/SEARCHSERVICE” |ResourceId |
 | operationName |字符串 |“Query.Search” |操作的名称 |
 | operationVersion |字符串 |"2015-02-28" |使用的 api-version |
 | category |字符串 |“OperationLogs” |常量 |
-| resultType |字符串 |“Success” |可能的值：成功或失败 |
+| resultType |字符串 |“Success” |可能的值：Success 或 Failure |
 | resultSignature |int |200 |HTTP 结果代码 |
 | durationMS |int |50 |操作持续时间，以毫秒为单位 |
 | 属性 |对象 |请参阅下表 |包含特定于操作的数据的对象 |
 
 **属性架构**
-| 名称 | Type | 示例 | 说明 |
+
+| 名称 | 类型 | 示例 | 说明 |
 | --- | --- | --- | --- |
-| 说明 |字符串 |“GET /indexes('content')/docs” |操作的终结点 |
+| Description |字符串 |“GET /indexes('content')/docs” |操作的终结点 |
 | 查询 |字符串 |"?search=AzureSearch&$count=true&api-version=2015-02-28" |查询参数 |
 | 文档 |int |42 |处理的文档数目 |
 | IndexName |字符串 |“testindex” |与操作关联的索引名称 |
 
 #### <a name="metrics-schema"></a>度量值架构
-| 名称 | Type | 示例 | 说明 |
+
+| 名称 | 类型 | 示例 | 说明 |
 | --- | --- | --- | --- |
 | resourceId |字符串 |“/SUBSCRIPTIONS/11111111-1111-1111-1111-111111111111/<br/>RESOURCEGROUPS/DEFAULT/PROVIDERS/<br/>MICROSOFT.SEARCH/SEARCHSERVICES/SEARCHSERVICE” |资源 ID |
 | metricName |字符串 |“Latency” |度量值名称 |

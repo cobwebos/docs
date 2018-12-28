@@ -1,5 +1,5 @@
 ---
-title: 在门户中将数据导入 Azure 搜索 | Microsoft 文档
+title: 使用 Azure 门户将数据导入搜索索引 -  Azure 搜索
 description: 了解如何使用 Azure 门户中的“导入数据”向导从 Cosmos DB、Blob 存储、表存储、SQL 数据库和 Azure VM 上的 SQL Server 抓取 Azure 数据。
 author: HeidiSteen
 manager: cgronlun
@@ -8,12 +8,13 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 07/10/2018
 ms.author: heidist
-ms.openlocfilehash: dcdc0501d94191cf2c281a4f880ddab3db023fc0
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.custom: seodec2018
+ms.openlocfilehash: ceca9b8e89a963cd9a9226be143d24ed5429747b
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39004930"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53316466"
 ---
 # <a name="how-to-import-data-into-azure-search-index-using-the-azure-portal"></a>如何使用 Azure 门户将数据导入 Azure 搜索索引
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2018
 ms.author: rkarlin
-ms.openlocfilehash: d1e7046ed1fc87a85a08b21a48accaaf3b5087b9
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 454478fa02b8f4e71bc4efb61e1b8c194b927bc6
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52316644"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53340821"
 ---
 # <a name="protecting-your-machines-and-applications-in-azure-security-center"></a>在 Azure 安全中心保护计算机和应用程序
 Azure 安全中心可分析 Azure 资源的安全状态。 在安全中心识别潜在的安全漏洞时，它会创建一些建议，这些建议会指导完成配置所需控件的过程。 建议适用于以下 Azure 资源类型：虚拟机 (VM) 和计算机、应用程序、网络、SQL，以及“标识和访问”。
@@ -59,7 +59,7 @@ Azure 安全中心可分析 Azure 资源的安全状态。 在安全中心识别
 ### 不受监视的 VM 和计算机 <a name="unmonitored-vms-and-computers"></a>
 如果某个 VM 或计算机未运行 Microsoft Monitoring Agent 扩展，则它不受安全中心的监视。 计算机上可能已安装了本地代理，例如 OMS 直接代理或 SCOM 代理。 装有这些代理的计算机被标识为未受监视，因为安全中心不完全支持这些代理。 若要充分利用安全中心的所有功能，需要使用 Microsoft Monitoring Agent 扩展。
 
-除了已安装的本地代理，还可以在未受监视的 VM 或计算机上安装该扩展。 对两个代理进行相同的配置，将二者连接到同一工作区。 这样，安全中心就能与 Microsoft Monitoring Agent 扩展交互并收集数据。 请参阅[启用 VM 扩展](../log-analytics/log-analytics-quick-collect-azurevm.md)，获取如何安装 Microsoft Monitoring Agent 扩展的说明。
+除了已安装的本地代理，还可以在未受监视的 VM 或计算机上安装该扩展。 对两个代理进行相同的配置，将二者连接到同一工作区。 这样，安全中心就能与 Microsoft Monitoring Agent 扩展交互并收集数据。 请参阅[启用 VM 扩展](../azure-monitor/learn/quick-collect-azurevm.md)，获取如何安装 Microsoft Monitoring Agent 扩展的说明。
 
 请参阅[监视代理运行状况问题](security-center-troubleshooting-guide.md#mon-agent)，详细了解安全中心无法成功监视那些已针对自动预配初始化的 VM 和计算机的原因。
 
@@ -74,20 +74,20 @@ Azure 安全中心可分析 Azure 资源的安全状态。 在安全中心识别
 
 “应用系统更新”以图形格式汇总了关键更新，分别适用于 Windows 和 Linux。 第二部分有一个表，其中包含以下信息：
 
-- 名称：所缺更新的名称。
-- **VM 和计算机数：缺少该更新的 VM 和计算机的总数。
+- **名称**：所缺更新的名称。
+- **VM 和和计算机的数量**：缺少此更新的 VM 和计算机的总数。
 - **更新严重性**：描述该特定建议的严重性：
 
-    - **关键**：重要资源（应用程序、虚拟机或网络安全组）存在漏洞，需要引起注意。
+    - **严重**：重要资源（应用程序、虚拟机或网络安全组）存在漏洞，需要引起注意。
     - **重要**：需要采取非关键步骤或额外步骤来完成某个过程或消除某个漏洞。
-    - **中**：应解决漏洞，但不需要立即处理。 （默认情况下，不显示严重性低的建议，但如果用户需要查看这些建议，可以将其筛选出来。）
+    - **中等**：漏洞需要解决，但不需立即处理。 （默认情况下，不显示严重性低的建议，但如果用户需要查看这些建议，可以将其筛选出来。）
 
 
-- **状态**：该建议的当前状态：
+- **状态**：此建议的当前状态：
 
-    - **未解决**：建议尚未得到处理。
-    - **正在进行**：目前已将建议应用到相关资源，不需用户采取行动。
-    - **已解决**：已完成建议。 （解决问题后，此条目将变暗）。
+    - **未解决**：此建议尚未得到处理。
+    - **正在进行**：目前已将此建议应用到相关资源，不需要你采取行动。
+    - **已解决**：已完成此建议。 （解决问题后，此条目将变暗）。
 
 若要查看建议详细信息，请单击列表中缺失更新的名称。
 
@@ -249,7 +249,7 @@ Azure 安全中心可分析 Azure 资源的安全状态。 在安全中心识别
 
 若要了解有关安全中心的详细信息，请参阅以下文章：
 
-* [在 Azure 安全中心中设置安全策略](security-center-azure-policy.md) - 了解如何配置 Azure 订阅和资源组的安全策略。
+* [在 Azure 安全中心中设置安全策略](tutorial-security-policy.md) - 了解如何配置 Azure 订阅和资源组的安全策略。
 * [管理和响应 Azure 安全中心的安全警报](security-center-managing-and-responding-alerts.md) -- 了解如何管理和响应安全警报。
 * [Azure 安全中心常见问题解答](security-center-faq.md) - 查找有关使用服务的常见问题。
 

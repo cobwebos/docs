@@ -1,6 +1,6 @@
 ---
-title: 为 Azure 搜索的 Azure Cosmos DB 数据源编制索引 | Microsoft Docs
-description: 本文演示如何使用 Azure Cosmos DB 数据源创建 Azure 搜索索引器。
+title: 为 Azure Cosmos DB 数据源编制索引 - Azure 搜索
+description: 在 Azure 搜索中抓取 Azure Cosmos DB 数据源并通过全文可搜索索引引入数据。 索引器可自动为所选数据源（如 Azure Cosmos DB）引入数据。
 ms.date: 10/17/2018
 author: mgottein
 manager: cgronlun
@@ -10,12 +10,13 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 robot: noindex
-ms.openlocfilehash: 07768ee1590fa087a1eb1486cb59ab0f57d02b64
-ms.sourcegitcommit: 6678e16c4b273acd3eaf45af310de77090137fa1
+ms.custom: seodec2018
+ms.openlocfilehash: 80759394ac920907c74f67cf9ee6dfcb52bfd9a8
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50747535"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53311807"
 ---
 # <a name="connecting-cosmos-db-with-azure-search-using-indexers"></a>使用索引器连接 Cosmos DB 和 Azure 搜索
 
@@ -96,10 +97,10 @@ ms.locfileid: "50747535"
 请求正文包含数据源定义，其中应包括以下字段：
 
 * **名称**：选择任意名称来表示你的数据库。
-* **类型**：必须为 `documentdb`。
+* **类型**：必须是 `documentdb`。
 * **凭据**：
   
-  * **connectionString**：必需。 按以下格式指定 Azure Cosmos DB 数据库的连接信息：`AccountEndpoint=<Cosmos DB endpoint url>;AccountKey=<Cosmos DB auth key>;Database=<Cosmos DB database id>`；对于 MongoDB 集合，将 **ApiKind=MongoDb** 添加到连接字符串：`AccountEndpoint=<Cosmos DB endpoint url>;AccountKey=<Cosmos DB auth key>;Database=<Cosmos DB database id>;ApiKind=MongoDb`
+  * **connectionString**：必需。 采用以下格式指定 Azure Cosmos DB 数据库的连接信息：`AccountEndpoint=<Cosmos DB endpoint url>;AccountKey=<Cosmos DB auth key>;Database=<Cosmos DB database id>` 对于 MongoDB 集合，将 **ApiKind=MongoDb** 添加到连接字符串：`AccountEndpoint=<Cosmos DB endpoint url>;AccountKey=<Cosmos DB auth key>;Database=<Cosmos DB database id>;ApiKind=MongoDb`
   避免在终结点 URL 中包含端口号。 如果包含端口号，Azure 搜索将无法为 Azure Cosmos DB 数据库编制索引。
 * **容器**：
   
@@ -187,7 +188,7 @@ ms.locfileid: "50747535"
 | String |Edm.String |
 | 基元类型的数组，如 ["a", "b", "c"] |集合 (Edm.String) |
 | 类似于日期的字符串 |Edm.DateTimeOffset、Edm.String |
-| GeoJSON 对象，如 { "type": "Point", "coordinates": [long, lat] } |Edm.GeographyPoint |
+| GeoJSON 对象，例如 { "type":"Point", "coordinates": [long, lat] } |Edm.GeographyPoint |
 | 其他 JSON 对象 |不适用 |
 
 <a name="CreateIndexer"></a>

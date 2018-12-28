@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: troubleshooting
 ms.date: 08/13/2018
 ms.author: saudas
-ms.openlocfilehash: 1fd8f7c8499b7f9223939b8d426f274e79fd190e
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: c20f2cc03565ce861dfc6317be8459fdafeef0bf
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50025320"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53384099"
 ---
 # <a name="aks-troubleshooting"></a>AKS 疑难解答
 在创建或管理 AKS 群集时，可能偶尔会遇到问题。 本文详细介绍了一些常见问题及其排查步骤。
@@ -59,8 +59,31 @@ ms.locfileid: "50025320"
 
 请确保默认 NSG 未被修改并且端口 22 已打开以连接到 API 服务器。 请检查 tunnelfront pod 是否正在 kube-system 命名空间中运行。 如果未运行，请强制删除，它会随即重启。
 
-### <a name="i-am-trying-to-upgrade-or-scale-and-am-getting-message-changing-property-imagereference-is-not-allowed-error--how-do-i-fix-this-issue"></a>我正在尝试升级或缩放，但收到“禁止更改属性'imageReference'”消息。 错误。  如何修复此问题？
+### <a name="i-am-trying-to-upgrade-or-scale-and-am-getting-message-changing-property-imagereference-is-not-allowed-error--how-do-i-fix-this-issue"></a>我在尝试进行升级或缩放，并收到以下消息：“不允许更改属性‘imageReference’。” 错误。  如何修复此问题？
 
 你收到此错误的原因可能是，你修改了 AKS 群集内代理节点中的标记。 如果修改和删除 MC_* 资源组中资源的标记和其他属性，可能会导致意外结果。 修改 AKS 群集中 MC_* 下的资源会中断 SLO。
 
+### <a name="how-do-i-renew-the-service-principal-secret-on-my-aks-cluster"></a>如何续订我的 AKS 群集上的服务主体机密？
 
+默认情况下，使用服务主体创建的 AKS 群集具有为期一年的有效期。 在一年有效期即将结束时，你可以重置凭据来将服务主体延长额外的一段时间。
+
+以下示例将执行下列步骤：
+
+1. 使用 [az aks show](/cli/azure/aks#az-aks-show) 命令获取你的群集的服务主体 ID。
+1. 使用 [az ad sp credential list](/cli/azure/ad/sp/credential#az-ad-sp-credential-list) 列出服务主体客户端机密。
+1. 使用 [az ad sp credential-reset](/cli/azure/ad/sp/credential#az-ad-sp-credential-reset) 命令将服务主体再延长一年。 服务主体客户端机密必须保持不变，AKS 群集才能正常运行。
+
+```azurecli
+# Get the service principal ID of your AKS cluster
+sp_id=$(az aks show -g myResourceGroup -n myAKSCluster \
+    --query servicePrincipalProfile.clientId -o tsv)
+
+# Get the existing service principal client secret
+key_secret=$(az ad sp credential list --id $sp_id --query [].keyId -o tsv)
+
+# Reset the credentials for your AKS service principal and extend for 1 year
+az ad sp credential reset \
+    --name $sp_id \
+    --password $key_secret \
+    --years 1
+```

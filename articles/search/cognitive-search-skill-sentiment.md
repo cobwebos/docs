@@ -1,6 +1,6 @@
 ---
-title: 情绪认知搜索技能（Azure 搜索）| Microsoft Docs
-description: 从 Azure 搜索扩充管道中的文本提取情绪。
+title: 情绪认知搜索技能 - Azure 搜索
+description: 从 Azure 搜索扩充管道中的文本提取积极-消极情绪分数。
 services: search
 manager: pablocas
 author: luiscabrer
@@ -11,19 +11,22 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.date: 05/01/2018
 ms.author: luisca
-ms.openlocfilehash: 1e4028c3a810de41efe217e6dd4347fc3bc6bf16
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.custom: seodec2018
+ms.openlocfilehash: 4b8913d64a3df8799ba1d73972121ef331aaac81
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45730877"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53314068"
 ---
 #   <a name="sentiment-cognitive-skill"></a>情绪认知技能
 
 情绪技能可沿着一个积极-消极连续统评估非结构化文本，对于每个记录，会返回一个介于 0 和 1 之间的数字评分。 评分接近 1 代表积极的情绪，评分接近 0 代表消极的情绪。
 
 > [!NOTE]
-> Azure 搜索目前提供公共预览版。 技能集执行以及图像的提取和规范化目前免费提供。 我们日后会公布这些功能的定价。 
+> 自 2018 年 12 月 21 日起，你可将认知服务资源与 Azure 搜索技能集进行关联。 这将使我们能够开始收取技能集执行的费用。 在此日期，我们还会开始将图像提取视为文档破解阶段的一部分进行计费。 我们将继续提供文档文本提取服务（不收取额外费用）。
+>
+> 内置技能的执行将按现有的[认知服务即用即付价格](https://azure.microsoft.com/pricing/details/cognitive-services/)进行计费。 图像提取费用将按预览版定价进行计费，详见 [Azure 搜索定价页面](https://go.microsoft.com/fwlink/?linkid=2042400)。 了解[详细信息](cognitive-search-attach-cognitive-services.md)。
 
 ## <a name="odatatype"></a>@odata.type  
 Microsoft.Skills.Text.SentimentSkill

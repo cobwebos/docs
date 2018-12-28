@@ -1,19 +1,19 @@
 ---
 title: 如何管理 Azure Maps 帐户和密钥 | Microsoft Docs
 description: 可以使用 Azure 门户管理 Azure Maps 帐户和访问密钥。
-author: dsk-2015
-ms.author: dkshir
-ms.date: 09/11/2018
+author: walsehgal
+ms.author: v-musehg
+ms.date: 12/12/2018
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 29fd63139d31d146cfc67153f35bd57650b08cfa
-ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
+ms.openlocfilehash: 351bc26d6c5b3dcfa9479138f2bd523f64a2912a
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45541613"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53335806"
 ---
 # <a name="how-to-manage-your-azure-maps-account-and-keys"></a>如何管理 Azure Maps 帐户和密钥
 
@@ -53,5 +53,10 @@ ms.locfileid: "45541613"
 
 ## <a name="next-steps"></a>后续步骤
 
-* 请在[搜索地址](./how-to-search-for-address.md)中了解如何使用 Azure Maps 搜索 API。
-* 了解如何使用 Azure Maps [JavaScript 地图控件](./how-to-use-map-control.md)。
+了解如何管理 Azure Maps 帐户定价层：
+> [!div class="nextstepaction"]
+> [管理定价层](./how-to-manage-pricing-tier.md)
+
+了解如何查看 Azure Maps 帐户的 API 使用情况指标：
+> [!div class="nextstepaction"]
+> [查看使用情况指标](./how-to-view-api-usage.md)

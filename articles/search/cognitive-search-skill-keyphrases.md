@@ -1,5 +1,5 @@
 ---
-title: 关键短语提取认知搜索技能（Azure 搜索）| Microsoft Docs
+title: 关键短语提取认知搜索技能 - Azure 搜索
 description: 计算非结构化的文本，并针对每个记录返回 Azure 搜索扩充管道中的关键短语列表。
 services: search
 manager: pablocas
@@ -10,12 +10,13 @@ ms.workload: search
 ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: luisca
-ms.openlocfilehash: 694271115626c652523be34160ad6a07053f6387
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.custom: seodec2018
+ms.openlocfilehash: 570aa0c9946910f70fe80ed2f7ebc064431d9643
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45735792"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53314629"
 ---
 #   <a name="key-phrase-extraction-cognitive-skill"></a>关键短语提取认知技能
 
@@ -24,7 +25,9 @@ ms.locfileid: "45735792"
 如果你需要快速确定记录中的谈话要点，此功能十分有用。 例如，给定输入文本“The food was delicious and there were wonderful staff”，服务会返回“food”和“wonderful staff”。
 
 > [!NOTE]
-> Azure 搜索目前以公共预览版提供。 技能集执行以及图像的提取和规范化目前免费提供。 我们日后会公布这些功能的定价。 
+> 自 2018 年 12 月 21 日起，你可将认知服务资源与 Azure 搜索技能集进行关联。 这将使我们能够开始收取技能集执行的费用。 在此日期，我们还会开始将图像提取视为文档破解阶段的一部分进行计费。 我们将继续提供文档文本提取服务（不收取额外费用）。
+>
+> 内置技能的执行将按现有的[认知服务即用即付价格](https://azure.microsoft.com/pricing/details/cognitive-services/)进行计费。 图像提取费用将按预览版定价进行计费，详见 [Azure 搜索定价页面](https://go.microsoft.com/fwlink/?linkid=2042400)。 了解[详细信息](cognitive-search-attach-cognitive-services.md)。
 
 ## <a name="odatatype"></a>@odata.type  
 Microsoft.Skills.Text.KeyPhraseExtractionSkill 
@@ -119,5 +122,5 @@ Microsoft.Skills.Text.KeyPhraseExtractionSkill
 
 ## <a name="see-also"></a>另请参阅
 
-+ [预定义的技能](cognitive-search-predefined-skills.md)
-+ [如何定义技能组合](cognitive-search-defining-skillset.md)
++ [预定义技能](cognitive-search-predefined-skills.md)
++ [如何定义技能集](cognitive-search-defining-skillset.md)

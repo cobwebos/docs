@@ -1,5 +1,5 @@
 ---
-title: Azure 搜索的简单查询示例 | Microsoft Docs
+title: 简单的查询示例 - Azure 搜索
 description: 用于查询 Azure 搜索索引的全文搜索、筛选搜索、地理搜索、分面搜索和其他搜索字符串的简单查询示例。
 author: HeidiSteen
 manager: cgronlun
@@ -9,12 +9,13 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 08/09/2018
 ms.author: heidist
-ms.openlocfilehash: 2d9e69a900f6665aa0ee3034cd6f9d7c394e8f0b
-ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
+ms.custom: seodec2018
+ms.openlocfilehash: 9697b88e23fea0cb06ab0c4a6197b5255e7076bf
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/15/2018
-ms.locfileid: "42146121"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53316261"
 ---
 # <a name="simple-syntax-query-examples-for-building-queries-in-azure-search"></a>有关在 Azure 搜索中生成查询的简单语法查询示例
 
@@ -62,7 +63,7 @@ URL 组合具备以下元素：
 
 查询字符串 `search=*` 是一个未指定的搜索，它与 NULL 或空搜索等效。 它的用处不大，但却是你能执行的最简单的搜索。
 
-可选择将 `$count=true` 添加到 URL，以便返回一个符合搜索条件的文档的计数。 在空搜索字符串上，这是索引（在 NYC 作业的情况下约为 2800）中的所有文档。
+可选择将 `$count=true` 添加到 URL，以便返回一个符合搜索条件的文档的计数。 在空搜索字符串上，这就是索引中的所有文档（在“纽约工作岗位”例子中，数量约为 2800）。
 
 ## <a name="how-to-invoke-simple-query-parsing"></a>如何调用简单查询分析
 
@@ -70,9 +71,9 @@ URL 组合具备以下元素：
 
 ## <a name="example-1-field-scoped-query"></a>示例 1：字段范围查询
 
-第一个示例不是特定于分析器，但我们会引导它引入第一个基本查询概念：包含。 这个示例范围是查询执行和对几个特定字段的响应。 所需的工具是 Postman 或搜索资源管理器时，了解如何构建可读的 JSON 响应非常重要。 
+第一个示例并未特定于分析器，但我们将先使用它来介绍第一个基本查询概念，即“包含”。 本示例显示查询执行情况以及对几个特定字段的响应。 当你的工具是 Postman 或搜索资源管理器时，了解如何构建可读的 JSON 响应非常重要。 
 
-出于简洁目的，该查询仅针对 business_title 字段并指定仅返回职位。 语法是使用 **searchFields** 将查询执行限制为 business_title 字段，并使用 **select** 指定响应中包含的字段。
+出于简洁目的，该查询仅针对 business_title 字段并指定仅返回职位。 语法是 searchFields 和 select，前者将查询执行限制为只执行 business_title 字段，后者指定响应中包含哪些字段。
 
 ```http
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&$count=true&searchFields=business_title&$select=business_title&search=*
@@ -82,7 +83,7 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-
 
   ![Postman 示例响应](media/search-query-lucene-examples/postman-sample-results.png)
 
-你可能已注意到响应中的搜索评分。 由于搜索不是全文搜索或者没有应用条件，因此不存在排名时评分统统为 1。 对于没有条件的空搜索，按任意顺序返回行。 包括实际条件时，会看到搜索评分演变成有意义的值。
+你可能已经注意到响应中的搜索分数。 由于搜索不是全文搜索或者没有应用条件，因此不存在排名时评分统统为 1。 对于不带条件的空搜索，按任意顺序返回行。 包括实际条件时，能看到搜索分数变成有意义的值。
 
 ## <a name="example-2-look-up-by-id"></a>示例 2：按 ID 查找
 
@@ -224,7 +225,7 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&$count=true&search="fire department"
 ```
 
-## <a name="example-7-booleans-with-searchmode"></a>示例 7：结合布尔值与 searchMode
+## <a name="example-7-booleans-with-searchmode"></a>示例 7：使用 searchMode 的布尔值
 
 简单语法支持字符形式的布尔运算符 (`+, -, |`) 。 searchMode 参数用于在精准率和召回率之间做出权衡，其中 `searchMode=any` 倾向于召回率（符合任何条件的文档都能进入结果集），而 `searchMode=all` 倾向于精准率（符合所有条件的文档才能进入结果集）。 默认为 `searchMode=any`；在使用多个运算符堆叠查询并获取更广泛而不是更窄的结果时，这可能会产生混淆。 在使用 NOT 时尤为如此，该运算符导致结果包括所有“不含”特定字词的文档。
 

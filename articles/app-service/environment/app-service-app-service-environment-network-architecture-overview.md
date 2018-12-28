@@ -1,5 +1,5 @@
 ---
-title: 应用服务环境的网络体系结构概述
+title: 应用服务环境的网络体系结构概述 - Azure
 description: 应用服务网络拓扑的体系结构概述。
 services: app-service
 documentationcenter: ''
@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/04/2016
 ms.author: stefsch
-ms.openlocfilehash: 3362a55524da42914681db06b8d2c0da8df773d8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.custom: seodec18
+ms.openlocfilehash: 0d7d4af46e54ad89e0d084cb15af13e56115e996
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "22986772"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53274156"
 ---
 # <a name="network-architecture-overview-of-app-service-environments"></a>应用服务环境的网络体系结构概述
 ## <a name="introduction"></a>介绍
@@ -86,7 +87,7 @@ ms.locfileid: "22986772"
 此[文章][ExpressRoute]介绍了有关使用用户定义路由来授予对应用服务环境的出站 Internet 访问权限的详细信息。 
 
 <!-- LINKS -->
-[virtualnetwork]: http://azure.microsoft.com/services/virtual-network/
+[virtualnetwork]: https://azure.microsoft.com/services/virtual-network/
 [controllinginboundtraffic]:  app-service-app-service-environment-control-inbound-traffic.md
 [ExpressRoute]:  app-service-app-service-environment-network-configuration-expressroute.md
 

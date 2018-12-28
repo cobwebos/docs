@@ -9,16 +9,16 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: hrasheed
-ms.openlocfilehash: e6204933d6b9a4a6b296a141520fc8887c9181f1
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 22e15f58f3d4e7f4db3ac3bd519dbb286a36ef95
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51279685"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53384133"
 ---
-# <a name="ports-used-by-hadoop-services-on-hdinsight"></a>HDInsight 上的 Hadoop 服务所使用的端口
+# <a name="ports-used-by-apache-hadoop-services-on-hdinsight"></a>HDInsight 上的 Apache Hadoop 服务所使用的端口
 
-本文档提供在基于 Linux 的 HDInsight 群集上运行的 Hadoop 服务使用的端口列表。 此外，还提供了用于通过 SSH 连接到群集的端口的信息。
+本文档提供在基于 Linux 的 HDInsight 群集上运行的 Apache Hadoop 服务使用的端口列表。 此外，还提供了用于通过 SSH 连接到群集的端口的信息。
 
 ## <a name="public-ports-vs-non-public-ports"></a>公共端口与非公共端口
 
@@ -26,7 +26,7 @@ ms.locfileid: "51279685"
 
 在内部，HDInsight 由在 Azure 虚拟网络上运行的多个 Azure 虚拟机（群集内的节点）实现。 从虚拟网络内部可以访问不是通过 Internet 公开的端口。 例如，如果使用 SSH 连接到某个头节点，则可以从该头节点直接访问群集节点上运行的服务。
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > 如果尚未指定某个 Azure 虚拟网络作为 HDInsight 的配置选项，系统会自动创建一个 Azure 虚拟网络。 但无法将其他计算机（例如其他 Azure 虚拟机或客户端开发计算机）加入到此虚拟网络中。
 
 
@@ -41,20 +41,20 @@ HDInsight 群集中的所有节点都在 Azure 虚拟网络中，无法直接从
 | sshd |22 |SSH |将客户端连接到主头节点上的 sshd。 有关详细信息，请参阅 [Use SSH with HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md)（对 HDInsight 使用 SSH）。 |
 | sshd |22 |SSH |将客户端连接到边缘节点上的 sshd。 有关详细信息，请参阅 [Use SSH with HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md)（对 HDInsight 使用 SSH）。 |
 | sshd |23 |SSH |将客户端连接到辅助头节点上的 sshd。 有关详细信息，请参阅 [Use SSH with HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md)（对 HDInsight 使用 SSH）。 |
-| Ambari |443 |HTTPS |Ambari Web UI。 请参阅[使用 Ambari Web UI 管理 HDInsight](hdinsight-hadoop-manage-ambari.md) |
-| Ambari |443 |HTTPS |Ambari REST API。 请参阅[使用 Ambari REST API 管理 HDInsight](hdinsight-hadoop-manage-ambari-rest-api.md) |
-| WebHCat |443 |HTTPS |HCatalog REST API。 请参阅[将 Hive 与 Curl 配合使用](hadoop/apache-hadoop-use-pig-curl.md)、[将 Pig 与 Curl 配合使用](hadoop/apache-hadoop-use-pig-curl.md)、[将 MapReduce 与 Curl 配合使用](hadoop/apache-hadoop-use-mapreduce-curl.md) |
+| Ambari |443 |HTTPS |Ambari Web UI。 请参阅[使用 Apache Ambari Web UI 管理 HDInsight](hdinsight-hadoop-manage-ambari.md) |
+| Ambari |443 |HTTPS |Ambari REST API。 请参阅[使用 Apache Ambari REST API 管理 HDInsight](hdinsight-hadoop-manage-ambari-rest-api.md) |
+| WebHCat |443 |HTTPS |HCatalog REST API。 请参阅[将 Apache Hive 与 Curl 配合使用](hadoop/apache-hadoop-use-pig-curl.md)、[将 Apache Pig 与 Curl 配合使用](hadoop/apache-hadoop-use-pig-curl.md)、[将 MapReduce 与 Curl 配合使用](hadoop/apache-hadoop-use-mapreduce-curl.md) |
 | HiveServer2 |443 |ODBC |使用 ODBC 连接到 Hive。 请参阅[使用 Microsoft ODBC 驱动程序将 Excel 连接到 HDInsight](hadoop/apache-hadoop-connect-excel-hive-odbc-driver.md)。 |
-| HiveServer2 |443 |JDBC |使用 JDBC 连接到 Hive。 请参阅[使用 Hive JDBC 驱动程序连接到 HDInsight 上的 Hive](hadoop/apache-hadoop-connect-hive-jdbc-driver.md) |
+| HiveServer2 |443 |JDBC |使用 JDBC 连接到 Apache Hive。 请参阅[使用 Hive JDBC 驱动程序连接到 HDInsight 上的 Apache Hive](hadoop/apache-hadoop-connect-hive-jdbc-driver.md) |
 
 以下各项适用于特定的群集类型：
 
 | 服务 | 端口 | 协议 | 群集类型 | Description |
 | --- | --- | --- | --- | --- |
-| Stargate |443 |HTTPS |HBase |HBase REST API。 请参阅[开始使用 HBase](hbase/apache-hbase-tutorial-get-started-linux.md) |
-| Livy |443 |HTTPS |Spark |Spark REST API。 请参阅[使用 Livy 远程提交 Spark 作业](spark/apache-spark-livy-rest-interface.md) |
-| Spark Thrift 服务器 |443 |HTTPS |Spark |用来提交 Hive 查询的 Spark Thrift 服务器。 请参阅[在 HDInsight 上将 Beeline 与 Hive 配合使用](hadoop/apache-hadoop-use-hive-beeline.md) |
-| Storm |443 |HTTPS |Storm |Storm Web UI。 请参阅[在 HDInsight 上部署和管理 Storm 拓扑](storm/apache-storm-deploy-monitor-topology-linux.md) |
+| Stargate |443 |HTTPS |HBase |HBase REST API。 请参阅[开始使用 Apache HBase](hbase/apache-hbase-tutorial-get-started-linux.md) |
+| Livy |443 |HTTPS |Spark |Spark REST API。 请参阅[使用 Apache Livy 远程提交 Apache Spark 作业](spark/apache-spark-livy-rest-interface.md) |
+| Spark Thrift 服务器 |443 |HTTPS |Spark |用来提交 Hive 查询的 Spark Thrift 服务器。 请参阅[在 HDInsight 上将 Beeline 与 Apache Hive 配合使用](hadoop/apache-hadoop-use-hive-beeline.md) |
+| Storm |443 |HTTPS |Storm |Storm Web UI。 请参阅[在 HDInsight 上部署和管理 Apache Storm 拓扑](storm/apache-storm-deploy-monitor-topology-linux.md) |
 
 ### <a name="authentication"></a>身份验证
 
@@ -67,10 +67,10 @@ HDInsight 群集中的所有节点都在 Azure 虚拟网络中，无法直接从
 
 ## <a name="non-public-ports"></a>非公共端口
 
-> [!NOTE]
+> [!NOTE]  
 > 某些服务仅适用于特定的群集类型。 例如，HBase 仅适用于 HBase 群集类型。
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > 某些服务仅在一个头节点上运行一次。 如果尝试连接到主头节点上的服务并收到错误，请重试使用辅助头节点。
 
 ### <a name="ambari"></a>Ambari

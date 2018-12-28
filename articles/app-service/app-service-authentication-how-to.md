@@ -1,5 +1,5 @@
 ---
-title: Azure 应用服务中的身份验证和授权的高级用法 | Microsoft Docs
+title: 身份验证和授权的高级用法 - Azure 应用服务 | Microsoft Docs
 description: 介绍如何在应用服务中自定义身份验证和授权，以及获取用户声明和不同的令牌。
 services: app-service
 documentationcenter: ''
@@ -13,12 +13,13 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 11/08/2018
 ms.author: cephalin
-ms.openlocfilehash: e1109ec8cc98c7e5fc72d7f56ade19968b0056cc
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.custom: seodec18
+ms.openlocfilehash: 931c1bc68c4e357432081dbfa2df685fcf9fc96d
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51685321"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53409745"
 ---
 # <a name="advanced-usage-of-authentication-and-authorization-in-azure-app-service"></a>Azure 应用服务中的身份验证和授权的高级用法
 
@@ -28,11 +29,11 @@ ms.locfileid: "51685321"
 
 * [教程：在 Azure 应用服务 (Windows) 中对用户进行端到端身份验证和授权](app-service-web-tutorial-auth-aad.md)
 * [教程：在适用于 Linux 的 Azure 应用服务中对用户进行端到端身份验证和授权](containers/tutorial-auth-aad.md)
-* [如何将应用配置为使用 Azure Active Directory 登录](app-service-mobile-how-to-configure-active-directory-authentication.md)
-* [如何将应用配置为使用 Facebook 登录](app-service-mobile-how-to-configure-facebook-authentication.md)
-* [如何将应用配置为使用 Google 登录](app-service-mobile-how-to-configure-google-authentication.md)
-* [如何将应用配置为使用 Microsoft 帐户登录](app-service-mobile-how-to-configure-microsoft-authentication.md)
-* [如何将应用配置为使用 Twitter 登录](app-service-mobile-how-to-configure-twitter-authentication.md)
+* [如何将应用配置为使用 Azure Active Directory 登录](configure-authentication-provider-aad.md)
+* [如何将应用配置为使用 Facebook 登录](configure-authentication-provider-facebook.md)
+* [如何将应用配置为使用 Google 登录](configure-authentication-provider-google.md)
+* [如何将应用配置为使用 Microsoft 帐户登录](configure-authentication-provider-microsoft.md)
+* [如何将应用配置为使用 Twitter 登录](configure-authentication-provider-twitter.md)
 
 ## <a name="use-multiple-sign-in-providers"></a>使用多个登录提供程序
 
@@ -181,9 +182,9 @@ az webapp config appsettings set --name <app_name> --resource-group <group_name>
 
 - **Google**：将一个 `access_type=offline` 查询字符串参数追加到 `/.auth/login/google` API 调用。 如果使用移动应用 SDK，可将该参数添加到 `LogicAsync` 重载之一（请参阅 [Google 刷新令牌](https://developers.google.com/identity/protocols/OpenIDConnect#refresh-tokens)）。
 - **Facebook**：不提供刷新令牌。 生存期较长的令牌在 60 天后过期（请参阅 [Facebook 访问令牌的过期和延期](https://developers.facebook.com/docs/facebook-login/access-tokens/expiration-and-extension)）。
-- **Twitter**：访问令牌不会过期（请参阅 [Twitter OAuth 常见问题解答](https://developer.twitter.com/en/docs/basics/authentication/guides/oauth-faq)）。
-- **Microsoft 帐户**：[配置 Microsoft 帐户身份验证设置](app-service-mobile-how-to-configure-microsoft-authentication.md)时，请选择 `wl.offline_access` 范围。
-- **Azure Active Directory**：在 [https://resources.azure.com](https://resources.azure.com) 中执行以下步骤：
+- **Twitter**：访问令牌不会过期（请参阅 [Twitter OAuth 常见问题解答](https://developer.twitter.com/en/docs/basics/authentication/FAQ)）。
+- **Microsoft 帐户**：[配置 Microsoft 帐户身份验证设置](configure-authentication-provider-microsoft.md)时，请选择 `wl.offline_access` 范围。
+- **Azure Active Directory**：在 [https://resources.azure.com](https://resources.azure.com) 中，执行以下步骤：
     1. 在页面顶部，选择“读/写”。
     1. 在左侧浏览器中，导航到 **subscriptions** > **_\<subscription\_name_** > **resourceGroups** > _**\<resource\_group\_name>**_ > **providers** > **Microsoft.Web** > **sites** > _**\<app\_name>**_ > **config** > **authsettings**。 
     1. 单击“编辑”。

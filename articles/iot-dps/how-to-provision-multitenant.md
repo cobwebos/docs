@@ -8,20 +8,20 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
-ms.openlocfilehash: 73ff58148ac68b7aeb782b77385f9f971e02edb5
-ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
+ms.openlocfilehash: 9b1d3506c400a3a2d8002feed0181deac39b3821
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49457385"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53344085"
 ---
 # <a name="how-to-provision-for-multitenancy"></a>如何预配多租户 
 
 由预配服务定义的分配策略支持各种不同的分配方案。 两个常见的方案是：
 
-* 地理位置/GeoLatency：当设备在两位置之间移动时，通过将设备预配到距离每个位置最近的 IoT 中心来改善网络延迟。 在此方案中，为注册选择跨越区域的一组 IoT 中心。 为这些注册选择“最低延迟”分配策略。 此策略会使设备预配服务评估设备延迟，并从一组 IoT 中心确定最接近的 IoT 中心。 
+* **地理位置/GeoLatency**：当设备在两位置之间移动时，通过将设备预配到距离每个位置最近的 IoT 中心来改善网络延迟。 在此方案中，为注册选择跨越区域的一组 IoT 中心。 为这些注册选择“最低延迟”分配策略。 此策略会使设备预配服务评估设备延迟，并从一组 IoT 中心确定最接近的 IoT 中心。 
 
-* 多租户：IoT 解决方案中使用的设备可能需要被分配到一个特定 IoT 中心或一组 IoT 中心。 解决方案可能要求特定租户的所有设备与一组特定的 IoT 中心进行通信。 在某些情况下，租户可能拥有 IoT 中心并要求设备被分配到其 IoT 中心。
+* **多租户**：IoT 解决方案中使用的设备可能需要被分配到一个特定 IoT 中心或一组 IoT 中心。 解决方案可能要求特定租户的所有设备与一组特定的 IoT 中心进行通信。 在某些情况下，租户可能拥有 IoT 中心并要求设备被分配到其 IoT 中心。
 
 通常会将这两种方案结合使用。 例如，多租户 IoT 解决方案通常使用跨区域分散的一组 IoT 中心来分配租户设备。 这些租户设备可被分配到基于地理位置具有最低延迟的组中的 IoT 中心。
 
@@ -92,24 +92,24 @@ ms.locfileid: "49457385"
 
 3. 在“添加注册组”中输入以下信息，然后单击“保存”按钮。
 
-    组名称：输入 contoso-us-devices。
+    **组名称**：输入 **contoso-us-devices**。
 
-    证明类型：选择“对称密钥”。
+    **证明类型**：选择“对称密钥”。
 
-    自动生成密钥：此复选框应已处于选中状态。
+    **自动生成密钥**：此复选框应已处于选中状态。
 
-    选择要如何将设备分配到中心：选择“最低延迟”。
+    **选择要如何将设备分配到中心**：选择“最低延迟”。
 
     ![为对称密钥证明添加多租户注册组](./media/how-to-provision-multitenant/create-multitenant-enrollment.png)
 
 
 4. 在“添加注册组”上，单击“链接新的 IoT 中心”，以链接这两个区域中心。
 
-    订阅：如果你有多个订阅，请选择创建区域 IoT 中心的订阅。
+    **订阅**：如果你有多个订阅，请选择你在其中创建了区域 IoT 中心的订阅。
 
-    IoT 中心：选择你创建的区域中心之一。
+    **IoT 中心**：选择你创建的区域中心之一。
 
-    访问策略：选择“iothubowner”。
+    **访问策略**：选择“iothubowner”。
 
     ![使用预配服务链接区域 IoT 中心](./media/how-to-provision-multitenant/link-regional-hubs.png)
 
@@ -130,16 +130,16 @@ ms.locfileid: "49457385"
 
 1. 在 Azure Cloud Shell 中，在命令中更改以下参数后，执行该命令以创建美国东部区域 VM：
 
-    --name：为美国东部区域设备 VM 输入一个唯一名称。 
+    **--name**：为“美国东部”区域设备 VM 输入一个唯一名称。 
 
-    --admin-username：使用你自己的管理员用户名称。
+    **--admin-username**：使用你自己的管理员用户名称。
 
-    --admin-password：使用你自己的管理员密码。
+    **--admin-password**：使用你自己的管理员密码。
 
     ```azurecli-interactive
     az vm create \
     --resource-group contoso-us-resource-group \
-    --name ContosoSimDeviceEest \
+    --name ContosoSimDeviceEast \
     --location eastus \
     --image Canonical:UbuntuServer:18.04-LTS:18.04.201809110 \
     --admin-username contosoadmin \
@@ -151,11 +151,11 @@ ms.locfileid: "49457385"
 
 1. 在 Azure Cloud Shell 中，在命令中更改以下参数后，执行该命令以创建美国西部区域 VM：
 
-    --name：为美国西部区域设备 VM 输入一个唯一名称。 
+    **--name**：为“美国西部”区域设备 VM 输入一个唯一名称。 
 
-    --admin-username：使用你自己的管理员用户名称。
+    **--admin-username**：使用你自己的管理员用户名称。
 
-    --admin-password：使用你自己的管理员密码。
+    **--admin-password**：使用你自己的管理员密码。
 
     ```azurecli-interactive
     az vm create \
@@ -220,7 +220,7 @@ ms.locfileid: "49457385"
 1. 对于这两个 VM，运行以下命令，生成特定于你的开发客户端平台的 SDK 版本。 
 
     ```bash
-    cmake -Dhsm_type_symm_key:BOOL=ON ..
+    cmake -Dhsm_type_symm_key:BOOL=ON -Duse_prov_client:BOOL=ON  ..
     ```
 
     生成成功后，最后的几个输出行如下所示：
@@ -327,28 +327,28 @@ J5n4NY2GiBYy7Mp4lDDa5CbEe6zDU/c62rhjCuFWxnc=
     hsm_type = SECURE_DEVICE_TYPE_SYMMETRIC_KEY;
     ```
 
-
-1. 在这两个 VM 上打开 ~/azure-iot-sdk-c/provisioning\_client/adapters/hsm\_client\_key.c。 
-
-    ```bash
-     vi ~/azure-iot-sdk-c/provisioning_client/adapters/hsm_client_key.c
-    ```
-
-1. 找到 `REGISTRATION_NAME` 和 `SYMMETRIC_KEY_VALUE` 常量的声明。 对这两个区域 VM 上的文件进行以下更改并保存。
-
-    使用设备唯一注册 ID 更新 `REGISTRATION_NAME` 常量的值。
-    
-    使用派生的设备密钥更新 `SYMMETRIC_KEY_VALUE` 常量的值。
+1. 在两个 VM 上，在 **prov\_dev\_client\_sample.c** 中找到已注释掉的对 `prov_dev_set_symmetric_key_info()` 的调用。
 
     ```c
-    static const char* const REGISTRATION_NAME = "contoso-simdevice-east";
-    static const char* const SYMMETRIC_KEY_VALUE = "p3w2DQr9WqEGBLUSlFi1jPQ7UWQL4siAGy75HFTFbf8=";
+    // Set the symmetric key if using they auth type
+    //prov_dev_set_symmetric_key_info("<symm_registration_id>", "<symmetric_Key>");
     ```
 
+    取消注释这些函数调用，并将占位符值（包括尖括号）替换为每个设备的唯一注册 ID 以及派生设备密钥。 下面显示的密钥仅用作示例。 请使用你之前生成的密钥。
+
+    美国东部：
     ```c
-    static const char* const REGISTRATION_NAME = "contoso-simdevice-west";
-    static const char* const SYMMETRIC_KEY_VALUE = "J5n4NY2GiBYy7Mp4lDDa5CbEe6zDU/c62rhjCuFWxnc=";
+    // Set the symmetric key if using they auth type
+    prov_dev_set_symmetric_key_info("contoso-simdevice-east", "p3w2DQr9WqEGBLUSlFi1jPQ7UWQL4siAGy75HFTFbf8=");
     ```
+
+    美国西部：
+    ```c
+    // Set the symmetric key if using they auth type
+    prov_dev_set_symmetric_key_info("contoso-simdevice-west", "J5n4NY2GiBYy7Mp4lDDa5CbEe6zDU/c62rhjCuFWxnc=");
+    ```
+
+    保存文件。
 
 1. 在这两个 VM 上，导航到以下所示的示例文件夹，并生成示例。
 
@@ -358,6 +358,13 @@ J5n4NY2GiBYy7Mp4lDDa5CbEe6zDU/c62rhjCuFWxnc=
     ```
 
 1. 成功生成后，在这两个 VM 上运行 prov\_dev\_client\_sample.exe，以模拟来自每个区域的租户设备。 请注意，每个设备将被分配到最邻近模拟设备区域的租户 IoT 中心。
+
+    运行模拟：
+    ```bash
+    ~/azure-iot-sdk-c/cmake/provisioning_client/samples/prov_dev_client_sample/prov_dev_client_sample
+    ```
+
+    来自美国东部 VM 的示例输出：
 
     ```bash
     contosoadmin@ContosoSimDeviceEast:~/azure-iot-sdk-c/cmake/provisioning_client/samples/prov_dev_client_sample$ ./prov_dev_client_sample
@@ -374,6 +381,7 @@ J5n4NY2GiBYy7Mp4lDDa5CbEe6zDU/c62rhjCuFWxnc=
 
     ```
 
+    来自美国西部 VM 的示例输出：
     ```bash
     contosoadmin@ContosoSimDeviceWest:~/azure-iot-sdk-c/cmake/provisioning_client/samples/prov_dev_client_sample$ ./prov_dev_client_sample
     Provisioning API Version: 1.2.9

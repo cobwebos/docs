@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/24/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: b28830ac2634ad2238d834238de83c9184bcd6f0
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: ec8fa6c06dff0091627a800c895d45fd3b0e778e
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47010385"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53381377"
 ---
 # <a name="enabling-azure-ultra-ssds"></a>启用 Azure 超级 SSD
 
@@ -31,7 +31,7 @@ CLI：`az vm list-skus --resource-type disks --query “[?name==’UltraSSD_LRS�
 
 |ResourceType  |名称  |位置  |区域  |限制  |功能  |值  |
 |---------|---------|---------|---------|---------|---------|---------|
-|磁盘     |UltraSSD_LRS         |eastus2         |X         |         |         |         |
+|disks     |UltraSSD_LRS         |eastus2         |X         |         |         |         |
 
 如果命令没有返回任何响应，这表示你对使用此功能的注册还处于等待处理状态或者尚未获得批准。
 
@@ -81,9 +81,9 @@ CLI：`az vm list-skus --resource-type disks --query “[?name==’UltraSSD_LRS�
 
 - 在 VM 创建期间，也可以隐式创建超级 SSD。 但是，这些磁盘将收到 IOPS (500) 和吞吐量（8 MiB/秒）的默认值。
 - 其他超级 SSD 可以附加到兼容超级 SSD 的 VM 上。
-- 超级 SSD 支持在运行时调整磁盘性能属性（IOPS 和吞吐量），而无需从虚拟机拆离磁盘。 在对磁盘进行磁盘性能重新调整操作后，更改可能需要多达 1 个小时才能真正生效。
+- 超级 SSD 支持在运行时调整磁盘性能属性（IOPS 和吞吐量），而无需从虚拟机拆离磁盘。 在对磁盘上发出磁盘性能调整大小操作后，更改实际上可能最多需要一个小时才能生效。
 - 增加磁盘容量需要释放虚拟机。
 
-# <a name="next-steps"></a>后续步骤
+## <a name="next-steps"></a>后续步骤
 
 如果想尝试新的磁盘类型并且尚未注册预览版，可以[通过此调查请求访问](https://aka.ms/UltraSSDPreviewSignUp)。

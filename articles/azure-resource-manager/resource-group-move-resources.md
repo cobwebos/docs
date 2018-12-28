@@ -10,14 +10,14 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/23/2018
+ms.date: 12/12/2018
 ms.author: tomfitz
-ms.openlocfilehash: 15ec028046b7c2b21f1892c460d53c73499680fe
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: c589d1a11903f761fa791f36014fe235c1973514
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52312531"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53386891"
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>将资源移到新资源组或订阅中
 
@@ -58,7 +58,7 @@ ms.locfileid: "52312531"
   * [将 Azure 订阅所有权转让给其他帐户](../billing/billing-subscription-transfer.md)
   * [如何将 Azure 订阅关联或添加到 Azure Active Directory](../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)
 
-1. 必须针对要移动的资源的资源提供程序注册目标订阅。 否则会出现错误“未针对资源类型注册订阅”。 将资源移到新的订阅时，可能会遇到此问题，但该订阅从未配合该资源类型使用。
+1. 必须针对要移动的资源的资源提供程序注册目标订阅。 否则会出现错误“未针对资源类型注册订阅”。 将资源移到新的订阅时，可能会看到此错误，但该订阅从未配合该资源类型使用。
 
   对于 PowerShell，请使用以下命令来获取注册状态：
 
@@ -93,7 +93,7 @@ ms.locfileid: "52312531"
 
 1. 在移动资源之前，请检查要将资源移动到的订阅的订阅配额。 如果移动资源意味着订阅将超出其限制，则需要检查是否可以请求增加配额。 有关限制的列表及如何请求增加配额的信息，请参阅 [Azure 订阅和服务限制、配额与约束](../azure-subscription-service-limits.md)。
 
-1. 在可能的情况下，将大型移动分为单独的移动操作。 在一次操作中尝试移动超过 800 项资源，资源管理器将立即失败。 但是，移动 800 项以下的资源也可能因超时而失败。
+1. 在可能的情况下，将大型移动分为单独的移动操作。 在一次操作中有 800 多项资源时，资源管理器会立即返回错误。 但是，移动 800 项以下的资源也可能因超时而失败。
 
 1. 该服务必须支持移动资源的功能。 若要确定移动是否会成功，[验证你的移动请求](#validate-move)。 请参阅本文中的以下部分，了解[支持对资源进行移动的服务](#services-that-can-be-moved)和[不支持对资源进行移动的服务](#services-that-cannot-be-moved)。
 
@@ -130,7 +130,7 @@ Content-type: application/json
 
 ```json
 {
- "resources": ['<resource-id-1>', '<resource-id-2>'],
+ "resources": ["<resource-id-1>", "<resource-id-2>"],
  "targetResourceGroup": "/subscriptions/<subscription-id>/resourceGroups/<target-group>"
 }
 ```
@@ -169,7 +169,7 @@ Authorization: Bearer <access-token>
 * Analysis Services
 * API 管理
 * 应用服务应用（Web 应用）- 请参阅[应用服务限制](#app-service-limitations)
-* 应用服务证书
+* 应用服务证书 - 请参阅[应用服务证书限制](#app-service-certificate-limitations)
 * Application Insights
 * 自动化
 * Azure Active Directory B2C
@@ -215,7 +215,8 @@ Authorization: Bearer <access-token>
 * 门户仪表板
 * Power BI - Power BI Embedded 和 Power BI 工作区集合
 * 公共 IP - 请参阅[公共 IP 限制](#pip-limitations)
-* Redis 缓存 - 如果 Redis 缓存实例配置了虚拟网络，则实例无法被移动到其他订阅。 请参阅[虚拟网络限制](#virtual-networks-limitations)。
+* 恢复服务保管库 - 必须注册专用预览版。 请参阅[恢复服务限制](#recovery-services-limitations)。
+* Azure Redis 缓存 - 如果 Azure Redis 缓存实例配置了虚拟网络，则实例无法被移动到其他订阅。 请参阅[虚拟网络限制](#virtual-networks-limitations)。
 * 计划程序
 * 搜索
 * 服务总线
@@ -244,7 +245,6 @@ Authorization: Bearer <access-token>
 * Azure 数据库迁移
 * Azure Databricks
 * Azure Migrate
-* Batch AI
 * 证书 - 应用服务证书可以移动，但上传的证书存在[限制](#app-service-limitations)。
 * 容器实例
 * 容器服务
@@ -259,7 +259,6 @@ Authorization: Bearer <access-token>
 * Microsoft 基因组学
 * NetApp
 * 公共 IP - 请参阅[公共 IP 限制](#pip-limitations)
-* 恢复服务保管库 - 此外，也不可以移动与恢复服务保管库关联的计算、网络和存储资源，请参阅[恢复服务限制](#recovery-services-limitations)。
 * Azure 上的 SAP HANA
 * 安全
 * Site Recovery
@@ -312,15 +311,7 @@ Authorization: Bearer <access-token>
 以下是尚不支持的约束：
 
 * 证书存储在 Key Vault 中的虚拟机可以移动到同一订阅中的新资源组，但无法跨订阅进行移动。
-* 使用 Azure 备份配置的虚拟机。 使用以下解决方法移动这些虚拟机
-  * 找到虚拟机的位置。
-  * 找到含有以下命名模式的资源组：`AzureBackupRG_<location of your VM>_1` 例如，AzureBackupRG_westus2_1
-  * 如果在 Azure 门户中，则查看“显示隐藏的类型”
-  * 如果在 PowerShell 中，则使用 `Get-AzureRmResource -ResourceGroupName AzureBackupRG_<location of your VM>_1` cmdlet
-  * 如果在 CLI 中，则使用 `az resource list -g AzureBackupRG_<location of your VM>_1`
-  * 现在，使用类型 `Microsoft.Compute/restorePointCollections` 找到具有命名模式 `AzureBackup_<name of your VM that you're trying to move>_###########` 的资源
-  * 删除此资源
-  * 删除完成后，即可移动虚拟机
+* 如果虚拟机进行了备份配置，则请参阅[恢复服务限制](#recovery-services-limitations)。
 * 无法移动具有标准 SKU 负载均衡器或标准 SKU 公共 IP 的虚拟机规模集
 * 无法跨资源组或订阅移动基于附加了计划的市场资源创建的虚拟机。 在当前订阅中取消预配虚拟机，并在新的订阅中重新部署虚拟机。
 
@@ -330,23 +321,21 @@ Authorization: Bearer <access-token>
 
 若要移动对等的虚拟网络，必须首先禁用虚拟网络对等互连。 在禁用后，可以移动虚拟网络。 在移动后，重新启用虚拟网络对等互连。
 
-如果虚拟网络的任何子网包含资源导航链接，则无法将虚拟网络移动到其他订阅。 例如，如果 Redis 缓存资源部署到某个子网，则该子网具有资源导航链接。
+如果虚拟网络的任何子网包含资源导航链接，则无法将虚拟网络移动到其他订阅。 例如，如果 Azure Redis 缓存资源部署到某个子网，则该子网具有资源导航链接。
 
 ## <a name="app-service-limitations"></a>应用服务限制
 
-移动应用服务资源的限制各不相同，具体取决于是在订阅内移动资源，还是将应用服务资源移到新的订阅。
-
-这些部分中所述的限制适用于已上传的证书，不适用于应用服务证书。 可将应用服务证书移动到新的资源组或订阅，且不会存在任何限制。 如果你有多个使用相同应用服务证书的 Web 应用，请先移动所有这些 Web 应用，然后再移动证书。
+移动应用服务资源的限制各不相同，具体取决于是在订阅内移动资源，还是将应用服务资源移到新的订阅。 如果 Web 应用使用应用服务证书，请参阅[应用服务证书限制](#app-service-certificate-limitations)
 
 ### <a name="moving-within-the-same-subscription"></a>在同一订阅中移动
 
-_在同一订阅中_移动 Web 应用时，无法移动已上传的 SSL 证书。 不过，可以将 Web 应用移动到新的资源组而不移动其已上传的 SSL 证书，并且，应用的 SSL 功能仍然可以工作。
+在同一订阅中移动 Web 应用时，无法移动第三方 SSL 证书。 不过，可以将 Web 应用移动到新的资源组而不移动其第三方证书，并且，应用的 SSL 功能仍然可以工作。
 
 如果希望随 Web 应用移动 SSL 证书，请执行以下步骤：
 
-1. 从 Web 应用中删除已上传的证书
+1. 从 Web 应用中删除第三方证书，但保留证书的副本
 2. 移动 Web 应用。
-3. 将证书上传到移动后的 Web 应用。
+3. 将第三方证书上传到移动后的 Web 应用。
 
 ### <a name="moving-across-subscriptions"></a>跨订阅移动
 
@@ -359,6 +348,10 @@ _在订阅之间_移动 Web 应用时存在以下限制：
     - 应用服务环境
 - 资源组中的所有应用服务资源必须一起移动。
 - 只能从最初创建应用服务资源的资源组中移动它们。 如果某个应用服务资源不再位于其原始资源组中，则必须首先将其移动回该原始资源组，然后才能将其在订阅之间移动。
+
+## <a name="app-service-certificate-limitations"></a>应用服务证书限制
+
+可将应用服务证书移动到新的资源组或订阅。 如果应用服务证书已绑定到某个 Web 应用，必须先执行一些步骤，然后才能将资源移到新的订阅中。 移动资源之前，请在 Web 应用中删除 SSL 绑定和专用证书。 应用服务证书不需删除，只需删除 Web 应用中的专用证书。
 
 ## <a name="classic-deployment-limitations"></a>经典部署限制
 
@@ -446,15 +439,23 @@ _在订阅之间_移动 Web 应用时存在以下限制：
 
 ## <a name="recovery-services-limitations"></a>恢复服务限制
 
-移动不支持用于使用 Azure Site Recovery 设置灾难恢复的“存储”、“网络”或“计算”资源。
+若要移动恢复服务保管库，必须注册专用预览版。 若要试用，请发邮件至 AskAzureBackupTeam@microsoft.com。
 
-例如，假设已设置将本地计算机复制到存储帐户 (Storage1)，并且想要受保护的计算机在故障转移到 Azure 之后显示为连接到虚拟网络 (Network1) 的虚拟机 (VM1)。 不能在同一订阅中的资源组之间或在订阅之间移动这些 Azure 资源 - Storage1、VM1 和 Network1。
+目前，每个区域一次可以移动一个恢复服务保管库。 不能移动在 IaaS 虚拟机中备份 Azure 文件、Azure 文件同步或 SQL 的保管库。 
 
-若要在资源组之间移动在 Azure 备份中注册的 VM：
- 1. 暂时停止备份并保留备份数据
- 2. 将 VM 移至目标资源组
- 3. 在相同/新保管库中对其进行重新保护，用户可以从在移动操作之前创建的可用还原点进行还原。
-如果用户跨订阅移动备份 VM，则步骤 1 和步骤 2 保持相同。 在步骤 3 中，用户需要在目标订阅中存在/创建的新保管库下保护 VM。 恢复服务保管库不支持跨订阅备份。
+如果虚拟机不随保管库移动，则当前虚拟机恢复点会保留在保管库中，直至过期。 不管虚拟机是否随保管库移动，均可根据保管库的备份历史记录还原虚拟机。
+
+恢复服务保管库不支持跨订阅备份。 如果跨订阅移动保管库和虚拟机备份数据，则必须将虚拟机移到同一订阅，并使用同一目标资源组来继续备份。
+
+在保管库移动后，会保留为保管库定义的备份策略。 在移动后，必须再次为保管库设置报告和监视功能。
+
+若要将虚拟机移到新的订阅而不移动恢复服务保管库，请执行以下操作：
+
+ 1. 暂时停止备份
+ 2. 将虚拟机移到新的订阅
+ 3. 在该订阅的新保管库中对其重新进行保护
+
+移动不支持用于使用 Azure Site Recovery 设置灾难恢复的“存储”、“网络”或“计算”资源。 例如，假设已设置将本地计算机复制到存储帐户 (Storage1)，并且想要受保护的计算机在故障转移到 Azure 之后显示为连接到虚拟网络 (Network1) 的虚拟机 (VM1)。 不能在同一订阅中的资源组之间或在订阅之间移动这些 Azure 资源 - Storage1、VM1 和 Network1。
 
 ## <a name="hdinsight-limitations"></a>HDInsight 限制
 
@@ -464,7 +465,7 @@ _在订阅之间_移动 Web 应用时存在以下限制：
 
 ## <a name="search-limitations"></a>搜索限制
 
-不能同时移动置于不同区域中的多个搜索资源。
+不能同时移动不同区域中的多个搜索资源。
 在这种情况下，需要分别移动它们。
 
 ## <a name="lb-limitations"></a> 负载均衡器限制
@@ -479,7 +480,7 @@ _在订阅之间_移动 Web 应用时存在以下限制：
 
 ## <a name="use-portal"></a>使用门户
 
-要移动资源，请选择包含这些资源的资源组，并选择“移动”按钮。
+若要移动资源，请选择包含这些资源的资源组，然后选择“移动”按钮。
 
 ![移动资源](./media/resource-group-move-resources/select-move.png)
 

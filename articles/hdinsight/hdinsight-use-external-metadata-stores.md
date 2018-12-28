@@ -9,16 +9,16 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/14/2018
-ms.openlocfilehash: 288ee46e9a5741a49ddcec1ef155c6f08b7b6cbc
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 9c35a4a811925abaf8dcb64d3e7060bbb1f91cce
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51016160"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53408317"
 ---
 # <a name="use-external-metadata-stores-in-azure-hdinsight"></a>使用外部元数据存储 - Azure HDInsight
 
-HDInsight 中的 Hive 元存储是 Hadoop 体系结构的必备部分。 元存储是可供其他大数据访问工具（例如 Spark、交互式查询 (LLAP)、Presto 或 Pig）使用的集中型架构知识库。 HDInsight 使用 Azure SQL 数据库作为 Hive 元存储。
+HDInsight 中的 Apache Hive 元存储是 Apache Hadoop 体系结构的必备部分。 元存储是可供其他大数据访问工具（例如 Apache Spark、交互式查询 (LLAP)、Presto 或 Apache Pig）使用的中央架构存储库。 HDInsight 使用 Azure SQL 数据库作为 Hive 元存储。
 
 ![HDInsight Hive 元数据存储体系结构](./media/hdinsight-use-external-metadata-stores/metadata-store-architecture.png)
 
@@ -72,12 +72,12 @@ HDInsight 还支持自定义元存储，建议对生产群集使用此项：
 - 对现有的自定义元存储数据库创建更高版本的新 Azure HDInsight 时，系统会升级元存储的架构，这是不可逆转的，无法从备份还原数据库。
 - 如果在多个群集之间共享元存储，请确保所有群集都采用相同的 HDInsight 版本。 不同的 Hive 版本使用不同的元存储数据库架构。 例如，无法在 Hive 1.2 和 Hive 2.1 这两个版本的群集之间共享元存储。 
 
-## <a name="oozie-metastore"></a>Oozie 云存储
+##  <a name="apache-oozie-metastore"></a>Apache Oozie 元存储
 
 Apache Oozie 是一个管理 Hadoop 作业的工作流协调系统。  Oozie 支持对 Apache MapReduce、Pig 和 Hive 等模型执行 Hadoop 作业。  Oozie 使用元存储来存储当前工作流及历史工作流的相关详细信息。 可使用 Azure SQL 数据库作为自定义元存储，提高使用 Oozie 时的性能。 删除群集后，还可通过云存储访问 Oozie 作业数据。
 
-若要了解如何使用 Azure SQL 数据库创建 Oozie 元存储，请参阅[使用 Oozie 处理工作流](hdinsight-use-oozie-linux-mac.md)。
+若要了解如何使用 Azure SQL 数据库创建 Oozie 元存储，请参阅[使用 Apache Oozie 处理工作流](hdinsight-use-oozie-linux-mac.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
-- [使用 Hadoop、Spark、Kafka 等在 HDInsight 中设置群集](./hdinsight-hadoop-provision-linux-clusters.md)
+- [使用 Apache Hadoop、Apache Spark、Apache Kafka 及其他组件在 HDInsight 中设置群集](./hdinsight-hadoop-provision-linux-clusters.md)

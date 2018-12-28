@@ -1,22 +1,21 @@
 ---
-title: 预付 Azure Cosmos DB 资源费用以节省资金 | Microsoft Docs
+title: 使用保留容量优化 Azure Cosmos DB 资源的成本
 description: 了解如何购买 Azure Cosmos DB 预留容量以节省计算成本。
 services: cosmos-db
 author: rimman
-manager: kfile
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: d389b3b7e50c83246542fd6b446827055a5a002a
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: a1f5db6428a892e10a3591edb7542996ad1b3319
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52583460"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53386802"
 ---
-# <a name="prepay-for-azure-cosmos-db-resources-with-reserved-capacity"></a>通过预留容量预付 Azure Cosmos DB 资源费用
+# <a name="optimize-cost-of-azure-cosmos-db-resources-with-reserved-capacity"></a>使用保留容量优化 Azure Cosmos DB 资源的成本
 
 Azure Cosmos DB 预留容量有助于通过预付为期一年或三年的 Azure Cosmos DB 资源费用为你省钱。 使用 Azure Cosmos DB 预留容量，可以获得为 Cosmos DB 资源预配的吞吐量的折扣。 资源示例包括数据库和容器（表、集合和图）。
 
@@ -87,5 +86,5 @@ Azure Cosmos DB 预留容量涵盖为资源预配的吞吐量的费用。 但它
 
 ## <a name="need-help-contact-us"></a>需要帮助？ 请联系我们。
 
-如果你有任何疑问或需要帮助，请[创建支持请求](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)。
+如有任何疑问或需要帮助，请[创建支持请求](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)。
 

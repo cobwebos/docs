@@ -8,22 +8,22 @@ keywords: ''
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: conceptual
-ms.date: 04/20/2018
+ms.date: 12/07/2018
 ms.author: glenga
-ms.openlocfilehash: 00735293d8fa8c6056f1ecf89fd312fe4b90bcac
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 78011e799fb4ddaf89fb1fd24c1f2a313ef49ba5
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52637572"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53338101"
 ---
 # <a name="durable-functions-publishing-to-azure-event-grid-preview"></a>从 Durable Functions 发布到 Azure 事件网格（预览）
 
-本文介绍如何设置 Azure Durable Functions，以便将业务流程生命周期事件（例如“已创建”、“已完成”和“失败”）发布到自定义的 [Azure 事件网格主题](https://docs.microsoft.com/azure/event-grid/overview)。 
+本文介绍了如何设置 Durable Functions，以便将业务流程生命周期事件（例如“已创建”、“已完成”和“失败”）发布到自定义的 [Azure 事件网格主题](https://docs.microsoft.com/azure/event-grid/overview)。
 
 此功能在以下场景中非常有用：
 
-* **蓝/绿部署等 DevOps 场景**：在实施[并列部署策略](https://docs.microsoft.com/azure/azure-functions/durable-functions-versioning#side-by-side-deployments)之前，你可能想要了解是否有任何任务正在运行。
+* **蓝/绿部署等 DevOps 场景**：在实施[并列部署策略](durable-functions-versioning.md#side-by-side-deployments)之前，你可能想要了解是否有任何任务正在运行。
 
 * **高级监视和诊断支持**：可以在针对查询优化的外部存储（例如 SQL 数据库或 CosmosDB）中跟踪业务流程状态信息。
 
@@ -39,12 +39,12 @@ ms.locfileid: "52637572"
 
 创建事件网格主题，以便从 Durable Functions 发送事件。 以下说明介绍如何使用 Azure CLI 创建主题。 有关如何使用 PowerShell 或 Azure 门户执行此操作的信息，请参阅以下文章：
 
-* [事件网格快速入门：创建自定义事件 - PowerShell](https://docs.microsoft.com/azure/event-grid/custom-event-quickstart-powershell)
-* [事件网格快速入门：创建自定义事件 - Azure 门户](https://docs.microsoft.com/azure/event-grid/custom-event-quickstart-portal)
+* [EventGrid 快速入门：创建自定义事件 - PowerShell](https://docs.microsoft.com/azure/event-grid/custom-event-quickstart-powershell)
+* [EventGrid 快速入门：创建自定义事件 - Azure 门户](https://docs.microsoft.com/azure/event-grid/custom-event-quickstart-portal)
 
 ### <a name="create-a-resource-group"></a>创建资源组
 
-使用 `az group create` 命令创建资源组。 目前，事件网格不支持所有区域。 有关支持哪些区域的信息，请参阅[事件网格概述](https://docs.microsoft.com/azure/event-grid/overview)。 
+使用 `az group create` 命令创建资源组。 目前，事件网格不支持所有区域。 有关支持哪些区域的信息，请参阅[事件网格概述](https://docs.microsoft.com/azure/event-grid/overview)。
 
 ```bash
 az group create --name eventResourceGroup --location westus2
@@ -55,7 +55,7 @@ az group create --name eventResourceGroup --location westus2
 事件网格主题提供用户定义的终结点，可向该终结点发布事件。 用主题的唯一名称替换 `<topic_name>`。 主题名称必须唯一，因为它将用作 DNS 条目。
 
 ```bash
-az eventgrid topic create --name <topic_name> -l westus2 -g eventResourceGroup 
+az eventgrid topic create --name <topic_name> -l westus2 -g eventResourceGroup
 ```
 
 ## <a name="get-the-endpoint-and-key"></a>获取终结点和密钥
@@ -119,7 +119,7 @@ az eventgrid topic key list --name <topic_name> -g eventResourceGroup --query "k
 
 ### <a name="create-an-event-grid-trigger-function"></a>创建事件网格触发器函数
 
-创建用于接收生命周期事件的函数。 选择“自定义函数”。 
+创建用于接收生命周期事件的函数。 选择“自定义函数”。
 
 ![选择“创建自定义函数”。](./media/durable-functions-event-publishing/functions-portal.png)
 
@@ -131,7 +131,7 @@ az eventgrid topic key list --name <topic_name> -g eventResourceGroup --query "k
 
 ![创建事件网格触发器。](./media/durable-functions-event-publishing/eventgrid-trigger-creation.png)
 
-创建包含以下代码的函数： 
+创建包含以下代码的函数：
 
 ```csharp
 #r "Newtonsoft.Json"
@@ -153,11 +153,11 @@ public static void Run(JObject eventGridEvent, ILogger log)
 
 ![创建事件网格订阅。](./media/durable-functions-event-publishing/eventsubscription.png)
 
-现已准备好接收生命周期事件。 
+现已准备好接收生命周期事件。
 
-## <a name="create-durable-functions-to-send-the-events"></a>创建用于发送事件的 Durable Functions。
+## <a name="create-durable-functions-to-send-the-events"></a>创建用于发送事件的 Durable Functions
 
-在本地计算机上，在 Durable Functions 项目中开始调试。  以下代码与 Durable Functions 的模板代码相同。 已在本地计算机上配置 `host.json` 和 `local.settings.json`。 
+在本地计算机上，在 Durable Functions 项目中开始调试。  以下代码与 Durable Functions 的模板代码相同。 已在本地计算机上配置 `host.json` 和 `local.settings.json`。
 
 ```csharp
 using System.Collections.Generic;
@@ -217,7 +217,7 @@ namespace LifeCycleEventSpike
 ```
 2018-04-20T09:28:21.041 [Info] Function started (Id=3301c3ef-625f-40ce-ad4c-9ba2916b162d)
 2018-04-20T09:28:21.104 [Info] {
-    "id": "054fe385-c017-4ce3-b38a-052ac970c39d",    
+    "id": "054fe385-c017-4ce3-b38a-052ac970c39d",
     "subject": "durable/orchestrator/Running",
     "data": {
         "hubName": "DurableFunctionsHub",
@@ -261,11 +261,11 @@ namespace LifeCycleEventSpike
 * **id**：事件网格事件的唯一标识符。
 * **subject**：事件主题的路径。 `durable/orchestrator/{orchestrationRuntimeStatus}`。 `{orchestrationRuntimeStatus}` 为 `Running`、`Completed`、`Failed` 和 `Terminated`。  
 * **data**：Durable Functions 特定的参数。
-    * **hubName**：[任务中心](https://docs.microsoft.com/azure/azure-functions/durable-functions-task-hubs)名称。
-    * **functionName**：业务流程协调程序函数名称。
-    * **instanceId**：Durable Functions instanceId。
-    * **reason**：与跟踪事件关联的其他数据。 有关详细信息，请参阅 [Durable Functions 中的诊断 (Azure Functions)](https://docs.microsoft.com/azure/azure-functions/durable-functions-diagnostics)
-    * **runtimeStatus**：业务流程运行时状态。 值为 Running、Completed、Failed 和 Canceled。 
+  * **hubName**：[任务中心](durable-functions-task-hubs.md)名称。
+  * **functionName**：业务流程协调程序函数名称。
+  * **instanceId**：Durable Functions instanceId。
+  * **reason**：与跟踪事件关联的其他数据。 有关详细信息，请参阅 [Durable Functions 中的诊断 (Azure Functions)](durable-functions-diagnostics.md)
+  * **runtimeStatus**：业务流程运行时状态。 值为 Running、Completed、Failed 和 Canceled。
 * **eventType**："orchestratorEvent"
 * **eventTime**：事件时间 (UTC)。
 * **dataVersion**：生命周期事件架构的版本。

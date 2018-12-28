@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/18/2018
+ms.date: 12/06/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: a8d6080b573cbad1004166f28a3e6596560241be
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: f3a3261fa1b7aa2075a05d7b87ea3fc29c5b9fab
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49426509"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53385867"
 ---
 # <a name="setup-diagnostic-logging"></a>设置诊断日志记录
 
@@ -82,7 +82,7 @@ ms.locfileid: "49426509"
 
     * **存档到存储帐户**。 要使用此选项，需要一个可连接到的现有存储帐户。 请参阅[创建存储帐户](../storage/common/storage-create-storage-account.md)。 按照说明创建一个资源管理器常规用途帐户，然后返回到门户中的此页面来选择存储帐户。 新创建的存储帐户可能几分钟后才会显示在下拉菜单中。
     * **流式传输到事件中心**。 要使用此选项，需要一个可连接到的现有事件中心命名空间和事件中心。 若要了解详细信息，请参阅[使用 Azure 门户创建事件中心命名空间和事件中心](../event-hubs/event-hubs-create.md)。 然后在门户中返回到此页，选择事件中心命名空间和策略名称。
-    * **发送到 Log Analytics**。 若要使用此选项，请使用现有的工作区，或遵循[创建新工作区](../log-analytics/log-analytics-quick-collect-azurevm.md#create-a-workspace)的步骤在门户中创建新的 Log Analytics 工作区。 有关在 Log Analytics 中查看日志的详细信息，请参阅[在 Log Analytics 中查看日志](#view-in-loganalytics)。
+    * **发送到 Log Analytics**。 若要使用此选项，请使用现有的工作区，或遵循[创建新工作区](../azure-monitor/learn/quick-collect-azurevm.md#create-a-workspace)的步骤在门户中创建新的 Log Analytics 工作区。 有关在 Log Analytics 中查看日志的详细信息，请参阅本文中的[在 Log Analytics 中查看日志](#view-logs-in-log-analytics)。
 
     * **引擎** 选择此选项以记录 Xevent。 若要存档到存储帐户，可以选择诊断日志的保留期。 保留期到期后自动删除日期。
     * **服务**。 选择此选项以记录服务级别事件。 若要存档到存储帐户，可以选择诊断日志的保留期。 保留期到期后自动删除日期。
@@ -136,11 +136,11 @@ ms.locfileid: "49426509"
 
 ### <a name="rest-api"></a>REST API
 
-了解如何[使用 Azure Monitor REST API 更改诊断设置](https://msdn.microsoft.com/library/azure/dn931931.aspx)。 
+了解如何[使用 Azure Monitor REST API 更改诊断设置](https://docs.microsoft.com/rest/api/monitor/)。 
 
 ### <a name="resource-manager-template"></a>资源管理器模板
 
-了解如何[在创建资源时使用资源管理器模板启用诊断设置](../monitoring-and-diagnostics/monitoring-enable-diagnostic-logs-using-template.md)。 
+了解如何[在创建资源时使用资源管理器模板启用诊断设置](../azure-monitor/platform/diagnostic-logs-stream-template.md)。 
 
 ## <a name="manage-your-logs"></a>管理日志
 

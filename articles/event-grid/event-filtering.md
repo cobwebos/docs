@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 11/05/2018
 ms.author: tomfitz
-ms.openlocfilehash: fd33ca723bd00b4a9c25009ef5b4f444487244f0
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 973b5d3f40968790dc6153ae91d1638cb83202ee
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51281942"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53384371"
 ---
 # <a name="understand-event-filtering-for-event-grid-subscriptions"></a>了解事件网格订阅的事件筛选
 
@@ -47,7 +47,7 @@ ms.locfileid: "51281942"
 
 ```json
 "filter": {
-  "subjectBeginsWith": "blobServices/default/containers/mycontainer/log",
+  "subjectBeginsWith": "/blobServices/default/containers/mycontainer/log",
   "subjectEndsWith": ".jpg"
 }
 

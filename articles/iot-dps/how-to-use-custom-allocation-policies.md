@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
-ms.openlocfilehash: f2c9194b07774443a70eef8e879d895efeb338e9
-ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
+ms.openlocfilehash: 0229b83a1b19e422954879ea9660373a34b18002
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49458184"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53340041"
 ---
 # <a name="how-to-use-custom-allocation-policies"></a>如何使用自定义分配策略
 
@@ -27,8 +27,8 @@ ms.locfileid: "49458184"
 
 本文演示使用 C# 编写的 Azure 函数的自定义分配策略。 创建了两个新的 IoT 中心，分别表示 Contoso 烤箱分区和 Contoso 热泵分区。 请求预配的设备必须具有含以下后缀之一的注册 ID 才能被接受进行预配：
 
-- -contoso-tstrsd-007：Contoso 烤箱分区
-- -contoso-hpsd-088：Contoso 热泵分区
+- **-contoso-tstrsd-007**：Contoso 烤箱分区
+- **-contoso-hpsd-088**：Contoso 热泵分区
 
 将基于注册 ID 上这些所需的后缀之一对设备进行预配。 将使用 [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) 中包含的预配示例对这些设备进行模拟。 
 
@@ -96,13 +96,13 @@ ms.locfileid: "49458184"
 
 3. 在“添加注册组”中输入以下信息，然后单击“保存”按钮。
 
-    组名称：输入 contoso-custom-allocated-devices。
+    **组名称**：输入 **contoso-custom-allocated-devices**。
 
-    证明类型：选择“对称密钥”。
+    **证明类型**：选择“对称密钥”。
 
-    自动生成密钥：此复选框应已处于选中状态。
+    **自动生成密钥**：此复选框应已处于选中状态。
 
-    选择要如何将设备分配到中心：选择“自定义(使用 Azure 函数)”。
+    **选择要如何将设备分配到中心**：选择“自定义(使用 Azure Function)”。
 
     ![为对称密钥证明添加自定义分配注册组](./media/how-to-use-custom-allocation-policies/create-custom-allocation-enrollment.png)
 
@@ -111,11 +111,11 @@ ms.locfileid: "49458184"
 
     必须为这两个分区 IoT 中心执行此步骤。
 
-    订阅：如果你有多个订阅，请选择创建分区 IoT 中心的订阅。
+    **订阅**：如果你有多个订阅，请选择创建分区 IoT 中心的订阅。
 
-    IoT 中心：选择你创建的分区中心之一。
+    **IoT 中心**：选择你创建的分区中心之一。
 
-    访问策略：选择“iothubowner”。
+    **访问策略**：选择“iothubowner”。
 
     ![使用预配服务链接分区 IoT 中心](./media/how-to-use-custom-allocation-policies/link-divisional-hubs.png)
 
@@ -129,11 +129,11 @@ ms.locfileid: "49458184"
 
 7. 在打开的“函数应用”创建页上，为新函数输入以下设置，然后单击“创建”。
 
-    应用名称：输入唯一函数应用名称。 contoso-function-app-1098 作为示例显示。
+    **应用名称**：输入唯一函数应用名称。 contoso-function-app-1098 作为示例显示。
 
-    资源组：选择“使用现有”和“contoso-us-resource-group”以将本文中创建的所有资源保留在一起。
+    **资源组**：选择“使用现有”和“contoso-us-resource-group”以将本文中创建的所有资源保留在一起。
 
-    Application Insights：对于此练习，可以关闭该功能。
+    **Application Insights**：对于此练习，可以关闭该功能。
 
     ![创建函数应用](./media/how-to-use-custom-allocation-policies/function-app-create.png)
 
@@ -390,7 +390,7 @@ ms.locfileid: "49458184"
 4. 运行以下命令，生成特定于你的开发客户端平台的 SDK 版本。 将在 `cmake` 目录中生成模拟设备的 Visual Studio 解决方案。 
 
     ```cmd
-    cmake -Dhsm_type_symm_key:BOOL=ON ..
+    cmake -Dhsm_type_symm_key:BOOL=ON -Duse_prov_client:BOOL=ON  ..
     ```
     
     如果 `cmake` 找不到 C++ 编译器，则可能会在运行以上命令时出现生成错误。 如果出现这种情况，请尝试在 [Visual Studio 命令提示符](https://docs.microsoft.com/dotnet/framework/tools/developer-command-prompt-for-vs)窗口中运行该命令。 
@@ -398,7 +398,7 @@ ms.locfileid: "49458184"
     生成成功后，最后的几个输出行如下所示：
 
     ```cmd/sh
-    $ cmake -Dhsm_type_symm_key:BOOL=ON ..
+    $ cmake -Dhsm_type_symm_key:BOOL=ON -Duse_prov_client:BOOL=ON  ..
     -- Building for: Visual Studio 15 2017
     -- Selecting Windows SDK version 10.0.16299.0 to target Windows 10.0.17134.
     -- The C compiler identification is MSVC 19.12.25835.0
@@ -449,20 +449,24 @@ ms.locfileid: "49458184"
 
 6. 右键单击“prov\_dev\_client\_sample”项目，然后选择“设为启动项目”。 
 
+
 #### <a name="simulate-the-contoso-toaster-device"></a>模拟 Contoso 烤箱设备
 
-1. 在 Visual Studio 的“解决方案资源管理器”窗口中，导航到“hsm\_security\_client”项目并展开它。 展开“源文件”，然后打开“hsm\_client\_key.c”。 
-
-    找到 `REGISTRATION_NAME` 和 `SYMMETRIC_KEY_VALUE` 常量的声明。 对文件进行以下更改并保存该文件。
-
-    使用烤箱设备的注册 ID breakroom499-contoso-tstrsd-007`REGISTRATION_NAME`**来更新** 常量的值。
-    
-    使用为烤箱设备生成的设备密钥来更新 `SYMMETRIC_KEY_VALUE` 常量的值。 值 JC8F96eayuQwwz+PkE7IzjH2lIAjCUnAa61tDigBnSs= 仅作为示例提供。
+1. 若要模拟烤箱设备，请在 **prov\_dev\_client\_sample.c** 中找到已注释掉的对 `prov_dev_set_symmetric_key_info()` 的调用。
 
     ```c
-    static const char* const REGISTRATION_NAME = "breakroom499-contoso-tstrsd-007";
-    static const char* const SYMMETRIC_KEY_VALUE = "JC8F96eayuQwwz+PkE7IzjH2lIAjCUnAa61tDigBnSs=";
+    // Set the symmetric key if using they auth type
+    //prov_dev_set_symmetric_key_info("<symm_registration_id>", "<symmetric_Key>");
     ```
+
+    取消注释该函数调用，并将占位符值（包括尖括号）替换为烤箱注册 ID 以及之前生成的派生设备密钥。 下面显示的密钥值 **JC8F96eayuQwwz+PkE7IzjH2lIAjCUnAa61tDigBnSs=** 仅作为示例提供。
+
+    ```c
+    // Set the symmetric key if using they auth type
+    prov_dev_set_symmetric_key_info("breakroom499-contoso-tstrsd-007", "JC8F96eayuQwwz+PkE7IzjH2lIAjCUnAa61tDigBnSs=");
+    ```
+   
+    保存文件。
 
 2. 在 Visual Studio 菜单中，选择“调试” > “开始执行(不调试)”以运行该解决方案。 在重新生成项目的提示中单击“是”，以便在运行项目之前重新生成项目。
 
@@ -485,20 +489,16 @@ ms.locfileid: "49458184"
 
 #### <a name="simulate-the-contoso-heat-pump-device"></a>模拟 Contoso 热泵设备
 
-1. 回到 Visual Studio 的“解决方案资源管理器”窗口，导航到“hsm\_security\_client”项目并展开它。 展开“源文件”，然后打开“hsm\_client\_key.c”。 
-
-    找到 `REGISTRATION_NAME` 和 `SYMMETRIC_KEY_VALUE` 常量的声明。 对文件进行以下更改并保存该文件。
-
-    使用热泵设备的注册 ID mainbuilding167-contoso-hpsd-088 来更新 `REGISTRATION_NAME` 常量的值。
-    
-    使用为烤箱设备生成的设备密钥来更新 `SYMMETRIC_KEY_VALUE` 常量的值。 值 6uejA9PfkQgmYylj8Zerp3kcbeVrGZ172YLa7VSnJzg= 仅做示例提供。
+1. 若要模拟热泵设备，请使用热泵注册 ID 和之前生成的派生设备密钥更新 **prov\_dev\_client\_sample.c** 中的 `prov_dev_set_symmetric_key_info()` 调用。 下面显示的密钥值 **6uejA9PfkQgmYylj8Zerp3kcbeVrGZ172YLa7VSnJzg=** 也仅作为示例提供。
 
     ```c
-    static const char* const REGISTRATION_NAME = "mainbuilding167-contoso-hpsd-088";
-    static const char* const SYMMETRIC_KEY_VALUE = "6uejA9PfkQgmYylj8Zerp3kcbeVrGZ172YLa7VSnJzg=";
+    // Set the symmetric key if using they auth type
+    prov_dev_set_symmetric_key_info("mainbuilding167-contoso-hpsd-088", "6uejA9PfkQgmYylj8Zerp3kcbeVrGZ172YLa7VSnJzg=");
     ```
+   
+    保存文件。
 
-7. 在 Visual Studio 菜单中，选择“调试” > “开始执行(不调试)”以运行该解决方案。 在重新生成项目的提示中单击“是”，以便在运行项目之前重新生成项目。
+2. 在 Visual Studio 菜单中，选择“调试” > “开始执行(不调试)”以运行该解决方案。 在重新生成项目的提示中单击“是”，以便在运行项目之前重新生成项目。
 
     以下输出是模拟热泵设备成功启动并连接到预配服务实例以通过自定义分配策略分配到 Contoso 热泵 IoT 中心的一个示例：
 
@@ -517,8 +517,6 @@ ms.locfileid: "49458184"
     ```
 
 
-
-
 ## <a name="troubleshooting-custom-allocation-policies"></a>自定义分配策略疑难解答
 
 下表显示了预期方案和你可能遇到的结果错误代码。 使用此表来帮助你解决使用 Azure 函数时自定义分配策略失败的问题。
@@ -527,11 +525,11 @@ ms.locfileid: "49458184"
 | 场景 | 预配服务的注册结果 | 预配 SDK 结果 |
 | -------- | --------------------------------------------- | ------------------------ |
 | Webhook 返回 200 OK，其中“iotHubHostName”被设置为有效的 IoT 中心主机名 | 结果状态：已分配  | SDK 返回 PROV_DEVICE_RESULT_OK 和中心信息 |
-| Webhook 返回 200 OK，其中在响应中显示“iotHubHostName”，但被设置为空字符串或 null | 结果状态：失败<br><br> 错误代码：CustomAllocationIotHubNotSpecified (400208) | SDK 返回 PROV_DEVICE_RESULT_HUB_NOT_SPECIFIED |
-| Webhook 返回 401 未授权 | 结果状态：失败<br><br>错误代码：CustomAllocationUnauthorizedAccess (400209) | SDK 返回 PROV_DEVICE_RESULT_UNAUTHORIZED |
+| Webhook 返回 200 OK，其中在响应中显示“iotHubHostName”，但被设置为空字符串或 null | 结果状态：已失败<br><br> 错误代码：CustomAllocationIotHubNotSpecified (400208) | SDK 返回 PROV_DEVICE_RESULT_HUB_NOT_SPECIFIED |
+| Webhook 返回 401 未授权 | 结果状态：已失败<br><br>错误代码：CustomAllocationUnauthorizedAccess (400209) | SDK 返回 PROV_DEVICE_RESULT_UNAUTHORIZED |
 | 创建了个人注册，以禁用设备 | 结果状态：已禁用 | SDK 返回 PROV_DEVICE_RESULT_DISABLED |
 | Webhook 返回错误代码 > = 429 | DPS 业务流程将多次重试。 重试策略当前：<br><br>&nbsp;&nbsp;- 重试计数：10<br>&nbsp;&nbsp;- 初始时间间隔：1 秒<br>&nbsp;&nbsp;- 增量：9 秒 | SDK 将忽略错误并在指定时间提交另一个获取状态消息 |
-| Webhook 返回任何其他状态代码 | 结果状态：失败<br><br>错误代码：CustomAllocationFailed (400207) | SDK 返回 PROV_DEVICE_RESULT_DEV_AUTH_ERROR |
+| Webhook 返回任何其他状态代码 | 结果状态：已失败<br><br>错误代码：CustomAllocationFailed (400207) | SDK 返回 PROV_DEVICE_RESULT_DEV_AUTH_ERROR |
 
 
 ## <a name="clean-up-resources"></a>清理资源

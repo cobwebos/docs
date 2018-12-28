@@ -1,5 +1,5 @@
 ---
-title: 在门户中创建 Azure 搜索索引 | Microsoft Docs
+title: 在 Azure 门户中创建 Azure 搜索索引 - Azure 搜索
 description: 了解如何使用内置门户索引设计器为 Azure 搜索创建索引。
 manager: cgronlun
 author: heidisteen
@@ -9,12 +9,13 @@ ms.devlang: NA
 ms.topic: conceptual
 ms.date: 07/10/2018
 ms.author: heidist
-ms.openlocfilehash: bb1ba5e860dab237b3f6e16205b5e4cbad45e6e3
-ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.custom: seodec2018
+ms.openlocfilehash: 4bba8b41418dadad1b241d60ab0b7aeee4c046d7
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38990840"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53316703"
 ---
 # <a name="how-to-create-an-azure-search-index-using-the-azure-portal"></a>如何使用 Azure 门户创建 Azure 搜索索引
 
@@ -95,7 +96,7 @@ Azure 搜索 API 文档包括了代码示例，其中采用了简单的 *hotels*
 
 在创建 Azure 搜索索引后，可以前进到下一步骤：[将可搜索数据上传到索引中](search-what-is-data-import.md)。
 
-另外，也可以更深入地了解索引。 除了字段集合之外，索引还指定分析器、建议器、评分配置文件和 CORS 设置。 门户中提供了用于定义最常用元素（字段、分析器和建议器）的选项卡式页面。 若要创建或修改其他元素，可以使用 REST API 或 .NET SDK。
+另外，也可以更深入地了解索引。 除了字段集合之外，索引还指定分析器、建议器、评分配置文件和 CORS 设置。 门户提供了用于定义以下最常用元素的选项卡式页面：字段、分析器和建议器。 若要创建或修改其他元素，可以使用 REST API 或 .NET SDK。
 
 ## <a name="see-also"></a>另请参阅
 

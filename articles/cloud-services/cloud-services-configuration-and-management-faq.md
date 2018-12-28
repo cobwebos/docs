@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/23/2018
 ms.author: genli
-ms.openlocfilehash: 81e41ce6818a6f56ba5e6e888480f8b25979fb81
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
+ms.openlocfilehash: ce171aa32e4f17e974a6d8a9752189ac78bf73fe
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50979193"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53386989"
 ---
-# <a name="configuration-and-management-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Azure 云服务配置和管理问题：常见问题解答 (FAQ)
+# <a name="configuration-and-management-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Azure 云服务配置和管理问题：常见问题 (FAQ)
 
 本文包括一些关于 [Microsoft Azure 云服务](https://azure.microsoft.com/services/cloud-services)配置和管理的常见问题解答。 还可以参阅[云服务 VM 大小页面](cloud-services-sizes-specs.md)，了解大小信息。
 
@@ -242,9 +242,9 @@ Azure 订阅对可使用的核心数量有限制。 如果已使用所有可用�
 
 若要解决此问题，可以使用 Application Insights。 自动缩放支持将 Application Insights 作为指标源，可以基于“内存”等来宾指标缩放角色实例计数。  必须在云服务项目包文件 (*.cspkg) 中配置 Application Insights 并对该服务启用 Azure 诊断扩展，才能实现此功能。
 
-有关如何在云服务上通过 Application Insights 利用自定义指标来配置自动缩放的更多详细信息，请参阅[在 Azure 中根据自定义指标自动缩放入门](../monitoring-and-diagnostics/monitoring-autoscale-scale-by-custom-metric.md)
+有关如何在云服务上通过 Application Insights 利用自定义指标来配置自动缩放的更多详细信息，请参阅[在 Azure 中根据自定义指标自动缩放入门](../azure-monitor/platform/autoscale-custom-metric.md)
 
-有关如何针对云服务将 Azure 诊断与 Application Insights 集成的详细信息，请参阅[将云服务、虚拟机或 Service Fabric 诊断数据发送到 Application Insights](../monitoring-and-diagnostics/azure-diagnostics-configure-application-insights.md)
+有关如何针对云服务将 Azure 诊断与 Application Insights 集成的详细信息，请参阅[将云服务、虚拟机或 Service Fabric 诊断数据发送到 Application Insights](../azure-monitor/platform/diagnostics-extension-to-application-insights.md)
 
 有关如何为云服务启用 Application Insights 的详细信息，请参阅[适用于 Azure 云服务的 Application Insights](https://docs.microsoft.com/azure/application-insights/app-insights-cloudservices)
 

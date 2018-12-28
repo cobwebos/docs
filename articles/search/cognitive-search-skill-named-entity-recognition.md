@@ -1,5 +1,5 @@
 ---
-title: 命名实体识别认知搜索技能（Azure 搜索）| Microsoft Docs
+title: 命名实体识别认知搜索技能 - Azure 搜索
 description: 从 Azure 搜索认知搜索管道中的文本中提取人员、位置和组织的命名实体。
 services: search
 manager: pablocas
@@ -10,12 +10,13 @@ ms.workload: search
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: luisca
-ms.openlocfilehash: f9ff3f66f3a73fbaf1a4c2ca280c85f4bde65444
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec2018
+ms.openlocfilehash: e63354152f8821c5ce975563639c8b87fb332bd4
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52442023"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53313983"
 ---
 #    <a name="named-entity-recognition-cognitive-skill"></a>命名实体识别认知技能
 
@@ -23,8 +24,10 @@ ms.locfileid: "52442023"
 
 > [!NOTE]
 > <ul>
-> <li>Azure 搜索目前提供公共预览版。 技能集执行以及图像的提取和规范化目前免费提供。 我们日后会公布这些功能的定价。 </li>
-> <li> 命名实体识别技能被视为“已弃用”，自 2019 年 2 月 15 日起将不再受到正式支持。 按照<a href="cognitive-search-skill-deprecated.md">弃用的认知搜索技能</a>页面中列出的建议，迁移到支持的技能</li>
+> <li>
+> 自 2018 年 12 月 21 日起，你可将认知服务资源与 Azure 搜索技能集进行关联。 这将使我们能够开始收取技能集执行的费用。 在此日期，我们还会开始将图像提取视为文档破解阶段的一部分进行计费。 我们将继续提供文档文本提取服务（不收取额外费用）。>
+> 内置技能的执行将按现有的[认知服务即用即付价格](https://azure.microsoft.com/pricing/details/cognitive-services/)进行计费。 图像提取费用将按预览版定价进行计费，详见 [Azure 搜索定价页面](https://go.microsoft.com/fwlink/?linkid=2042400)。 了解[详细信息](cognitive-search-attach-cognitive-services.md)。</li>
+> <li> 命名实体识别技能被视为“已弃用”，自 2019 年 2 月 15 日起将不再受到正式支持。 按照<a href="cognitive-search-skill-deprecated.md">已弃用的认知搜索技能</a>页中列出的建议，迁移到支持的技能</li>
 
 ## <a name="odatatype"></a>@odata.type  
 Microsoft.Skills.Text.NamedEntityRecognitionSkill
@@ -149,7 +152,7 @@ Microsoft.Skills.Text.NamedEntityRecognitionSkill
 
 
 ## <a name="error-cases"></a>错误案例
-如果不支持文档的语言代码，则返回错误，并且不提取任何实体。
+如果文档的语言代码不受支持，则返回错误，并且不提取任何实体。
 
 ## <a name="see-also"></a>另请参阅
 

@@ -1,18 +1,19 @@
 ---
-title: Azure ExpressRoute 路由要求 | Microsoft 文档
+title: 路由要求 - ExpressRoute：Azure | Microsoft Docs
 description: 本页提供有关为 ExpressRoute 线路配置和管理路由的详细要求。
 services: expressroute
 author: ganesr
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 11/05/2018
+ms.date: 12/13/2018
 ms.author: ganesr
-ms.openlocfilehash: cb48a9470a39cbe152f821333050e3dd5a28e1ca
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.custom: seodec18
+ms.openlocfilehash: 73dc4b14214c10966dca1a6cd7ebd41af019f640
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51230934"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53406549"
 ---
 # <a name="expressroute-routing-requirements"></a>ExpressRoute 路由要求
 若要使用 ExpressRoute 连接到 Microsoft 云服务，需要设置并管理路由。 某些连接服务提供商以托管服务形式提供路由的设置和管理。 请咨询连接服务提供商，以确定他们是否提供此类服务。 如果不提供，则必须遵守以下要求：
@@ -100,7 +101,7 @@ ms.locfileid: "51230934"
 专用 AS 编号可以用于 Microsoft 对等互连，但也需手动验证。 此外，对于收到的前缀，我们会删除 AS PATH 中的专用 AS 数字。 因此，无法在 AS PATH 中追加专用 AS 数字来[影响 Microsoft 对等互连的路由](expressroute-optimize-routing.md)。 
 
 > [!IMPORTANT]
-> 不要将相同的公共 IP 路由播发到公共 Internet 和通过 ExpressRoute 播发。 我们强烈建议你通过 ExpressRoute 播发更具体的路由，而将更一般的路由播发到 Internet 上进行 [NAT](expressroute-nat.md)。 除了要进行 NAT 的公共路由外，还可以在本地网络中通过 ExpressRoute 播发与 Microsoft 中的 Office 365 终结点通信的服务器使用的公共 IP 地址。 
+> 不要将相同的公共 IP 路由播发到公共 Internet 和通过 ExpressRoute 播发。 为了降低错误配置导致不对称路由的风险，我们强烈建议通过 ExpressRoute 播发到 Microsoft 的 [NAT IP 地址](expressroute-nat.md)应该来自完全没有播发到 Internet 的范围。 如果无法实现这一点，则必须确保通过 ExpressRoute 播发的范围比 Internet 连接上的范围更具体。 除了要进行 NAT 的公共路由外，还可以在本地网络中通过 ExpressRoute 播发与 Microsoft 中的 Office 365 终结点通信的服务器使用的公共 IP 地址。 
 > 
 > 
 

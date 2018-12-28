@@ -1,5 +1,5 @@
 ---
-title: 实体识别认知搜索技能（Azure 搜索）| Microsoft Docs
+title: 实体识别认知搜索技能 - Azure 搜索
 description: 从 Azure 搜索认知搜索管道中的文本提取各种类型的实体。
 services: search
 manager: pablocas
@@ -10,19 +10,23 @@ ms.workload: search
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: luisca
-ms.openlocfilehash: 7599ab7eb7a6ff247548d988c57bdc6c501a5a6b
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec2018
+ms.openlocfilehash: 9745934891cd7ba99fa821377318e38134b7d2a5
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52447542"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53311858"
 ---
 #    <a name="entity-recognition-cognitive-skill"></a>实体识别认知技能
 
 **实体识别**技能从文本中提取各种类型的实体。 
 
 > [!NOTE]
-> Azure 搜索目前为公共预览版。 技能集执行以及图像的提取和规范化目前免费提供。 我们日后会公布这些功能的定价。 
+> 自 2018 年 12 月 21 日起，你可将认知服务资源与 Azure 搜索技能集进行关联。 这将使我们能够开始收取技能集执行的费用。 在此日期，我们还会开始将图像提取视为文档破解阶段的一部分进行计费。 我们将继续提供文档文本提取服务（不收取额外费用）。
+>
+> 内置技能的执行将按现有的[认知服务即用即付价格](https://azure.microsoft.com/pricing/details/cognitive-services/)进行计费。 图像提取费用将按预览版定价进行计费，详见 [Azure 搜索定价页面](https://go.microsoft.com/fwlink/?linkid=2042400)。 了解[详细信息](cognitive-search-attach-cognitive-services.md)。
+
 
 ## <a name="odatatype"></a>@odata.type  
 Microsoft.Skills.Text.EntityRecognitionSkill
@@ -56,15 +60,15 @@ Microsoft.Skills.Text.EntityRecognitionSkill
 
 | 输出名称     | 说明                   |
 |---------------|-------------------------------|
-| persons      | 一个字符串数组，其中，一个字符串表示一个人员名称。 |
-| locations  | 一个字符串数组，其中，一个字符串表示一个位置。 |
-| organizations  | 一个字符串数组，其中，一个字符串表示一个组织。 |
+| 人员      | 一个字符串数组，其中，一个字符串表示一个人员名称。 |
+| 位置  | 一个字符串数组，其中，一个字符串表示一个位置。 |
+| 组织  | 一个字符串数组，其中，一个字符串表示一个组织。 |
 | quantities  | 一个字符串数组，其中，每个字符串都表示一个数量。 |
 | dateTimes  | 一个字符串数组，其中，每个字符串都表示一个日期时间（因为它以文本形式显示）值。 |
 | urls | 一个字符串数组，其中，每个字符串都表示一个 URL |
 | emails | 一个字符串数组，其中，每个字符串都表示一个电子邮件地址 |
-| namedEntities | 复杂类型的数组，包含以下字段： <ul><li>category</li> <li>value（实际实体名称）</li><li>offset（在文本中找到它的位置）</li><li>confidence（现在未使用。 将设置为值为 -1）</li></ul> |
-| entities | 一个复杂类型数组，包含有关从文本提取的实体的丰富信息，具有以下字段 <ul><li> name（实际实体名称。 这表示一个“规范化”窗体）</li><li> wikipediaId</li><li>wikipediaLanguage</li><li>wikipediaUrl（实体的 Wikipedia 页面的链接）</li><li>bingId</li><li>type（识别的实体的类别）</li><li>subType（仅适用于某些类别，这提供实体类型的更精细视图）</li><li> matches（包含的复杂集合）<ul><li>text（实体的原始文本）</li><li>offset（找到它的位置）</li><li>length（原始实体文本的长度）</li></ul></li></ul> |
+| namedEntities | 复杂类型的数组，包含以下字段： <ul><li>category</li> <li>值（实际实体名称）</li><li>偏移（在文本中找到它的位置）</li><li>confidence（现在未使用。 将设置为值为 -1）</li></ul> |
+| 实体 | 一个复杂类型数组，包含有关从文本提取的实体的丰富信息，具有以下字段 <ul><li> name（实际实体名称。 这表示一个“规范化”窗体）</li><li> wikipediaId</li><li>wikipediaLanguage</li><li>wikipediaUrl（实体的 Wikipedia 页面的链接）</li><li>bingId</li><li>type（识别的实体的类别）</li><li>subType（仅适用于某些类别，这提供实体类型的更精细视图）</li><li> matches（包含的复杂集合）<ul><li>text（实体的原始文本）</li><li>offset（找到它的位置）</li><li>length（原始实体文本的长度）</li></ul></li></ul> |
 
 ##  <a name="sample-definition"></a>示例定义
 
