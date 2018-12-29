@@ -1,18 +1,19 @@
 ---
-title: Azure ExpressRoute 常见问题解答 | Microsoft 文档
+title: 常见问题解答 - Azure ExpressRoute | Microsoft Docs
 description: ExpressRoute 常见问题包含有关支持的 Azure 服务、费用、数据和连接、SLA、提供程序和位置、带宽的信息和其他技术详细信息。
 services: expressroute
-author: cherylmc
+author: jaredr80
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 10/23/2018
-ms.author: cherylmc
-ms.openlocfilehash: 8cde172207717aca2af5dfa706f7d9c6d290c36e
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.date: 10/28/2018
+ms.author: jaredro
+ms.custom: seodec18
+ms.openlocfilehash: 0621c2d1632dead41463810b9e71ebf0404a8cbe
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51239196"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53077743"
 ---
 # <a name="expressroute-faq"></a>ExpressRoute 常见问题
 
@@ -26,7 +27,7 @@ ExpressRoute 连接不通过公共 Internet 。 与通过 Internet 的典型连�
 
 ### <a name="where-is-the-service-available"></a>哪里提供该服务？
 
-参阅 [ExpressRoute 合作伙伴和位置](expressroute-locations.md)了解服务上市区域和可用性。
+请参阅此页面以了解服务位置和可用性：[ExpressRoute 合作伙伴和位置](expressroute-locations.md)。
 
 ### <a name="how-can-i-use-expressroute-to-connect-to-microsoft-if-i-dont-have-partnerships-with-one-of-the-expressroute-carrier-partners"></a>我如果未与 ExpressRoute 运营商合作伙伴之一建立合作伙伴关系，则如何使用 ExpressRoute 连接到 Microsoft？
 
@@ -42,7 +43,7 @@ ExpressRoute 连接不通过公共 Internet 。 与通过 Internet 的典型连�
 
 ### <a name="if-i-pay-for-an-expressroute-circuit-of-a-given-bandwidth-do-i-have-the-ability-to-burst-up-to-higher-speeds-if-necessary"></a>如果我购买了具有给定带宽的 ExpressRoute 线路，是否可以根据需要提升到更高的速度？
 
-是的。 ExpressRoute 线路的配置允许免费将速度提升到所购带宽限制的两倍。 请咨询你的服务提供商，确定他们是否支持此功能。
+ 是的。 ExpressRoute 线路的配置允许免费将速度提升到所购带宽限制的两倍。 请咨询你的服务提供商，确定他们是否支持此功能。
 
 ### <a name="can-i-use-the-same-private-network-connection-with-virtual-network-and-other-azure-services-simultaneously"></a>能否同时与虚拟网络和其他 Azure 服务使用同一专用网络连接？
 
@@ -68,8 +69,8 @@ ExpressRoute 对各种服务类型支持[三个路由域](expressroute-circuit-p
 
 * Power BI
 * Dynamics 365 for Finance and Operations（以前称为 Dynamics AX Online）
-* 支持大多数 Azure 服务。 请直接对要使用的服务进行确认来验证是否支持。<br>
-  不支持以下服务：
+* 支持大多数 Azure 服务。 请直接对要使用的服务进行确认来验证是否支持。<br><br>
+  **不支持以下服务**：
     * CDN
     * 多重身份验证
     * 流量管理器
@@ -81,7 +82,7 @@ ExpressRoute 对各种服务类型支持[三个路由域](expressroute-circuit-p
 * Power BI
 * Azure Active Directory
 * [Azure DevOps](https://blogs.msdn.microsoft.com/devops/2018/10/23/expressroute-for-azure-devops/)（Azure 全球服务社区）
-* 支持大多数 Azure 服务。 请直接对要使用的服务进行确认来验证是否支持。<br>不支持以下服务：
+* 支持大多数 Azure 服务。 请直接对要使用的服务进行确认来验证是否支持。<br><br>**不支持以下服务**：
     * CDN
     * 多重身份验证
     * 流量管理器
