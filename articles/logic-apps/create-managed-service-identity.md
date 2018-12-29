@@ -9,12 +9,12 @@ ms.service: logic-apps
 ms.suite: integration
 ms.topic: article
 ms.date: 10/05/2018
-ms.openlocfilehash: 84529e1097678ba7a039ffaeec57a9293c93dafd
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 19e6693de673eae6fe0b885580975c4cefc35d60
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50229633"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52725142"
 ---
 # <a name="authenticate-and-access-resources-with-managed-identities-in-azure-logic-apps"></a>使用 Azure 逻辑应用中的托管标识进行身份验证并访问资源
 
@@ -128,13 +128,13 @@ ms.locfileid: "50229633"
 
 1. 在 Azure 门户中，转到你要在其中为托管标识分配访问权限的 Azure 资源。 
 
-1. 从该资源的菜单中，选择“访问控制(标识和访问管理)”，然后选择“添加”。 
+1. 从该资源的菜单中，选择“访问控制(IAM)”，然后选择“添加角色分配”。 
 
-   ![添加权限](./media/create-managed-service-identity/add-permissions-logic-app.png)
+   ![添加角色分配](./media/create-managed-service-identity/add-permissions-logic-app.png)
 
-1. 在“添加权限”下，选择该标识所需的**角色**。 
+1. 在“添加角色分配”下，选择该标识所需的“角色”。 
 
-1. 在“分配其访问权限”属性中，选择“Azure AD 用户、组或应用程序”（如果尚未选择）。
+1. 在“分配其访问权限”属性中，选择“Azure AD 用户、组或服务主体”（如果尚未选择）。
 
 1. 在“选择”框中，从逻辑应用名称中的第一个字符开始，输入你的逻辑应用的名称。 当你的逻辑应用出现时，选择该逻辑应用。
 

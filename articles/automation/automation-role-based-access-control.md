@@ -10,12 +10,12 @@ ms.author: gwallace
 ms.date: 05/17/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: fe35f26fe73661901fa85da65e353fe66adf5d47
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 538208c39d6436c15b95760133e00c980e2e8277
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47094211"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52727896"
 ---
 # <a name="role-based-access-control-in-azure-automation"></a>Azure 自动化中基于角色的访问控制
 
@@ -274,12 +274,13 @@ Log Analytics 读者可以查看和搜索所有监视数据并查看监视设置
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)，然后从“自动化帐户”页打开自动化帐户。
 2. 单击右上角的“访问控制(IAM)”控件。 此时会打开“访问控制(IAM)”页，可以在其中添加新的用户、组和应用程序，以便管理自动化帐户并查看可以为自动化帐户配置的现有角色。
+3. 单击“角色分配”选项卡。
 
    ![访问按钮](media/automation-role-based-access-control/automation-01-access-button.png)
 
 #### <a name="add-a-new-user-and-assign-a-role"></a>添加新用户并分配角色
 
-1. 在“访问控制(IAM)”页中，单击“添加”打开“添加权限”页，以便添加用户、组或应用程序并向其分配角色。
+1. 在“访问控制(IAM)”页中，单击“+ 添加角色分配”打开“添加角色分配”页，以便添加用户、组或应用程序并向其分配角色。
 
 2. 从可用角色列表中选择一个角色。 可以选择自动化帐户所支持的任何可用的内置角色，或者定义的任何自定义角色。
 

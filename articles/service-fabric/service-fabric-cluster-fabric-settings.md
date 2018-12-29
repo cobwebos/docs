@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/13/2018
 ms.author: aljo
-ms.openlocfilehash: 9da213525a5921295d6271adfd473b7a05a049a4
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 14513e23aafd05796767e1ae08d4d4c14cecdfbc
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52497923"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52728304"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>自定义 Service Fabric 群集设置
 本文介绍可以自定义的 Service Fabric 群集的各种结构设置。 对于 Azure 中托管的群集，可以通过 [Azure 门户](https://portal.azure.com)或使用 Azure 资源管理器模板自定义设置。 有关详细信息，请参阅[升级 Azure 群集配置](service-fabric-cluster-config-upgrade-azure.md)。 对于独立群集，可通过更新 ClusterConfig.json 文件并对群集执行配置升级来自定义设置。 有关详细信息，请参阅[升级独立群集的配置](service-fabric-cluster-config-upgrade-windows-server.md)。
@@ -41,7 +41,7 @@ ms.locfileid: "52497923"
 |DefaultHttpRequestTimeout |以秒为单位的时间。 默认值为 120 |动态|指定以秒为单位的时间范围。  提供用于 http 应用网关中正在处理的 http 请求的默认请求超时时间。 |
 |ForwardClientCertificate|bool，默认值为 FALSE|动态|如果设置为 false，反向代理不会请求客户端证书。如果设置为 true，反向代理将在 SSL 握手期间请求客户端证书，并将 base64 编码的 PEM 格式字符串转发到名为 X-Client-Certificate 的标头中的服务。检查证书数据后，服务可能无法处理请求，并返回相应的状态代码。 如果此参数为 true 并且客户端不提供证书，反向代理将转发空标头，并让服务处理该情况。 反向代理将充当透明层。 若要了解详细信息，请参阅[设置客户端证书身份验证](service-fabric-reverseproxy-configure-secure-communication.md#setting-up-client-certificate-authentication-through-the-reverse-proxy)。 |
 |GatewayAuthCredentialType |string，默认值为“None” |静态| 指示在 http 应用网关终结点处使用的安全凭据的类型，有效值为 "None/X509。 |
-|GatewayX509CertificateFindType |string，默认值为“FindByThumbprint” |动态| 指示如何在由 GatewayX509CertificateStoreName 支持的值（FindByThumbprint、FindBySubjectName）指定的存储中搜索证书。 |
+|GatewayX509CertificateFindType |string，默认值为“FindByThumbprint” |动态| 指示如何在由 GatewayX509CertificateStoreName（FindByThumbprint；FindBySubjectName）支持的值指定的存储中搜索证书。 |
 |GatewayX509CertificateFindValue | string，默认值为“” |动态| 用于查找 http 应用网关证书的搜索筛选器值。 此证书在 https 终结点上配置，并且如果服务需要，还可用于验证应用的标识。 首先查找 FindValue；如果其不存在，再查找 FindValueSecondary。 |
 |GatewayX509CertificateFindValueSecondary | string，默认值为“” |动态|用于查找 http 应用网关证书的搜索筛选器值。 此证书在 https 终结点上配置，并且如果服务需要，还可用于验证应用的标识。 首先查找 FindValue；如果其不存在，再查找 FindValueSecondary。|
 |GatewayX509CertificateStoreName |string，默认值为“My” |动态| 包含 http 应用网关证书的 X.509 证书存储的名称。 |
@@ -139,6 +139,13 @@ ms.locfileid: "52497923"
 |PartitionPrefix|string，默认值为“--”|静态|控制对分区服务的 DNS 查询中的分区前缀字符串值。 值： <ul><li>应符合 RFC，因为它将是 DNS 查询的一部分。</li><li>不能包含句点“.”，因为句点会干扰 DNS 后缀行为。</li><li>长度不能超过 5 个字符。</li><li>不能为空字符串。</li><li>如果重写 PartitionPrefix 设置，则必须重写 PartitionSuffix，反之亦然。</li></ul>有关详细信息，请参阅 [Service Fabric DNS 服务](service-fabric-dnsservice.md)。|
 |PartitionSuffix|string，默认值为“”|静态|控制对分区服务的 DNS 查询中的分区后缀字符串值。值： <ul><li>应符合 RFC，因为它将是 DNS 查询的一部分。</li><li>不能包含句点“.”，因为句点会干扰 DNS 后缀行为。</li><li>长度不能超过 5 个字符。</li><li>如果重写 PartitionPrefix 设置，则必须重写 PartitionSuffix，反之亦然。</li></ul>有关详细信息，请参阅 [Service Fabric DNS 服务](service-fabric-dnsservice.md)。 |
 
+## <a name="eventstore"></a>EventStore
+| **Parameter** | **允许的值** | **升级策略** | **指导或简短说明** |
+| --- | --- | --- | --- |
+|MinReplicaSetSize|int，默认值为 0|静态|EventStore 服务的 MinReplicaSetSize |
+|PlacementConstraints|string，默认值为“”|静态|  EventStore 服务的 PlacementConstraints |
+|TargetReplicaSetSize|int，默认值为 0|静态| EventStore 服务的 TargetReplicaSetSize |
+
 ## <a name="fabricclient"></a>FabricClient
 | **Parameter** | **允许的值** | **升级策略** | **指导或简短说明** |
 | --- | --- | --- | --- |
@@ -168,16 +175,16 @@ ms.locfileid: "52497923"
 ## <a name="fabricnode"></a>FabricNode
 | **Parameter** | **允许的值** | **升级策略** | **指导或简短说明** |
 | --- | --- | --- | --- |
-|ClientAuthX509FindType |string，默认值为“FindByThumbprint” |动态|指示如何在由 ClientAuthX509StoreName 支持的值（FindByThumbprint、FindBySubjectName）指定的存储中搜索证书。 |
+|ClientAuthX509FindType |string，默认值为“FindByThumbprint” |动态|指示如何在由 ClientAuthX509StoreName（FindByThumbprint；FindBySubjectName）支持的值指定的存储中搜索证书：。 |
 |ClientAuthX509FindValue |string，默认值为“” | 动态|用于查找默认管理员角色 FabricClient 的证书的搜索筛选器值。 |
 |ClientAuthX509FindValueSecondary |string，默认值为“” |动态|用于查找默认管理员角色 FabricClient 的证书的搜索筛选器值。 |
 |ClientAuthX509StoreName |string，默认值为“My” |动态|X.509 证书存储的名称，包含默认管理员角色 FabricClient 的证书。 |
-|ClusterX509FindType |string，默认值为“FindByThumbprint” |动态|指示如何在由 ClusterX509StoreName 支持的值（“FindByThumbprint”和“FindBySubjectName”）指定的存储中搜索群集证书。使用“FindBySubjectName”时，如果有多个匹配项，使用到期时间最远的那一个。 |
+|ClusterX509FindType |string，默认值为“FindByThumbprint” |动态|指示如何在由 ClusterX509StoreName 支持的值（“FindByThumbprint”；“FindBySubjectName”）指定的存储中搜索群集证书。使用“FindBySubjectName”时，如果有多个匹配项，使用到期时间最远的那一个。 |
 |ClusterX509FindValue |string，默认值为“” |动态|用于查找群集证书的搜索筛选器值。 |
 |ClusterX509FindValueSecondary |string，默认值为“” |动态|用于查找群集证书的搜索筛选器值。 |
 |ClusterX509StoreName |string，默认值为“My” |动态|X.509 证书存储的名称，该存储包含用于保护群集内部通信的群集证书。 |
 |EndApplicationPortRange |Int，默认值为 0 |静态|由宿主子系统管理的应用程序端口的结束位置（不含）。 当托管中的 EndpointFilteringEnabled 为 true 时为必需。 |
-|ServerAuthX509FindType |string，默认值为“FindByThumbprint” |动态|指示如何在由 ServerAuthX509StoreName 支持的值（FindByThumbprint、FindBySubjectName）指定的存储中搜索服务器证书。 |
+|ServerAuthX509FindType |string，默认值为“FindByThumbprint” |动态|指示如何在由 ServerAuthX509StoreName 支持的值（FindByThumbprint；FindBySubjectName）指定的存储中搜索服务器证书。 |
 |ServerAuthX509FindValue |string，默认值为“” |动态|用于查找服务器证书的搜索筛选器值。 |
 |ServerAuthX509FindValueSecondary |string，默认值为“” |动态|用于查找服务器证书的搜索筛选器值。 |
 |ServerAuthX509StoreName |string，默认值为“My” |动态|X.509 证书存储的名称，包含用于准入服务的服务器证书。 |
@@ -491,7 +498,7 @@ ms.locfileid: "52497923"
 |MoveParentToFixAffinityViolation | Bool，默认值为 false |动态| 该设置决定是否可通过移动父副本来修复相关性约束。|
 |PartiallyPlaceServices | Bool，默认值为 true |动态| 决定在给定有限的适当节点的情况下，是否“全部或完全不”放置群集中的所有服务副本。|
 |PlaceChildWithoutParent | Bool，默认值为 true | 动态|该设置决定如果没启用父副本，是否可以放置子服务副本。 |
-|PlacementConstraintPriority | Int，默认值为 0 | 动态|决定放置约束的优先级：0：硬；1：软；负值：忽略。 |
+|PlacementConstraintPriority | Int，默认值为 0 | 动态|确定放置约束的优先级：0：硬；1：软；负值：忽略。 |
 |PlacementConstraintValidationCacheSize | Int，默认值为 10000 |动态| 限制用于快速验证和缓存放置约束表达式的表格的大小。 |
 |PlacementSearchTimeout | 以秒为单位的时间，默认值为 0.5 |动态| 指定以秒为单位的时间范围。 这是放置服务时，返回结果之前可搜索的最长时间。 |
 |PLBRefreshGap | 以秒为单位的时间，默认值为 1 |动态| 指定以秒为单位的时间范围。 定义 PLB 再次刷新状态之前必须经过的最短时间。 |

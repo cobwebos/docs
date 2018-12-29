@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: e2dabc66a906d35525f51bf9a1c09b62430ded55
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: a1e9647e64556a7c7f2444fa2711a2eb61d230a3
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47434001"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52874559"
 ---
 # <a name="azure-logging-and-auditing"></a>Azure 日志记录和审核
 
@@ -147,7 +147,7 @@ Azure AD 审核报告中的事件将保留 180 天。
 
 ![使用 Azure 诊断的虚拟机日志](./media/azure-log-audit/azure-log-audit-fig3.png)
 
-### <a name="azure-virtual-machineshttpsazuremicrosoftcomdocumentationlearning-pathsvirtual-machines-that-are-running-microsoft-windows-and-service-fabrichttpsdocsmicrosoftcomazureservice-fabricservice-fabric-overview"></a>运行 Microsoft Windows 和 [Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-overview) 的 [Azure 虚拟机](https://azure.microsoft.com/documentation/learning-paths/virtual-machines/)。
+### <a name="azure-virtual-machineslearnpathsdeploy-a-website-with-azure-virtual-machines-that-are-running-microsoft-windows-and-service-fabrichttpsdocsmicrosoftcomazureservice-fabricservice-fabric-overview"></a>运行 Microsoft Windows 和 [Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-overview) 的 [Azure 虚拟机](/learn/paths/deploy-a-website-with-azure-virtual-machines/)。
 
 可以通过以下方式在虚拟机上启用 Azure 诊断：
 
@@ -225,13 +225,13 @@ Azure 中的网络日志记录和监视是一个综合性的功能，包括两�
 
 * [IP 流验证](https://docs.microsoft.com/azure/network-watcher/network-watcher-ip-flow-verify-overview)：根据流信息 5 元组数据包参数（即目标 IP、源 IP、目标端口、源端口和协议）检查数据包是被允许还是被拒绝。 如果数据包被安全组拒绝，则返回拒绝数据包的规则和组。
 
-* [下一跃点](https://docs.microsoft.com/azure/network-watcher/network-watcher-next-hop-overview)：确定 Azure 网络结构中路由的数据包的下一跃点，以便诊断任何配置不正确的用户定义的路由。
+* [下一跃点](https://docs.microsoft.com/azure/network-watcher/network-watcher-next-hop-overview)：确定 Azure 网络结构中路由的数据包的下一跃点，以便能够诊断任何配置不正确的用户定义的路由。
 
 * [安全组视图](https://docs.microsoft.com/azure/network-watcher/network-watcher-security-group-view-overview)：获取在 VM 上应用的有效安全规则。
 
 * [虚拟网络网关和连接故障排除](https://docs.microsoft.com/azure/network-watcher/network-watcher-troubleshoot-manage-rest)：帮助排查虚拟网络网关和连接问题。
 
-* [网络订阅限制](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview#network-subscription-limits)：可查看网络资源用量与限制。
+* [网络订阅限制](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview#network-subscription-limits)：用于查看网络资源用量与限制。
 
 ### <a name="application-insights"></a>Application Insights
 
@@ -263,7 +263,7 @@ Application Insights 主要面向开发团队，旨在帮助用户了解应用�
 
 * **诊断跟踪日志**：获取应用中的数据，以便能够将跟踪事件与请求相关联。
 
-* **自定义事件和指标**：获取你在客户端或服务器代码中自行写入的数据，以跟踪业务事件（例如销售的商品或赢得的游戏）。
+* **自定义事件和指标**：获取在客户端或服务器代码中自行写入的数据，以跟踪业务事件（例如销售的商品或赢得的游戏）。
 
 下表列出并描述了集成方案：
 
@@ -367,24 +367,24 @@ Log Analytics 的中心是托管在 Azure 中的 Log Analytics 工作区。 Log 
 |诊断日志（资源日志）|  是|
 |VM 日志|   是，通过转发的事件，而不是通过 JSON|
 
-[Azure 日志集成入门](https://docs.microsoft.com/azure/security/security-azure-log-integration-get-started)：此教程逐步讲解如何安装 Azure 日志集成，以及如何集成来自 Azure 存储的日志、Azure 活动日志、Azure 安全中心警报和 Azure AD 审核日志。
+[Azure 日志集成入门](https://docs.microsoft.com/azure/security/security-azure-log-integration-get-started)：本教程逐步讲解如何安装 Azure 日志集成，以及如何集成来自 Azure 存储的日志、Azure 活动日志、Azure 安全中心警报和 Azure AD 审核日志。
 
 SIEM 的集成方案：
 
 * [合作伙伴配置步骤](https://blogs.msdn.microsoft.com/azuresecurity/2016/08/23/azure-log-siem-configuration-steps/)：此博客文章介绍如何配置 Azure 日志集成，以使用 Splunk、HP ArcSight 和 IBM QRadar 合作伙伴解决方案。
 
-* [Azure 日志集成常见问题解答](https://docs.microsoft.com/azure/security/security-azure-log-integration-faq)：本文回答有关 Azure 日志集成的问题。
+* [Azure 日志集成常见问题解答](https://docs.microsoft.com/azure/security/security-azure-log-integration-faq)：本文回答了关于 Azure 日志的问题。
 
-* [集成安全中心警报与 Azure 日志集成](https://docs.microsoft.com/azure/security-center/security-center-integrating-alerts-with-log-integration)：此文介绍如何将安全中心警报、Azure 诊断和 Azure 审核日志收集的虚拟机安全事件与 Log Analytics 或 SIEM 解决方案同步。
+* [使用 Azure 日志集成来集成 Azure 安全中心警报](https://docs.microsoft.com/azure/security-center/security-center-integrating-alerts-with-log-integration)：本文介绍如何将安全中心警报、Azure 诊断和 Azure 审核日志收集的虚拟机安全事件与 Log Analytics 或 SIEM 解决方案同步。
 
 ## <a name="next-steps"></a>后续步骤
 
-- [审核与日志记录](https://docs.microsoft.com/azure/security/security-management-and-monitoring-overview)：通过维护可视性和快速响应及时安全警报来保护数据。
+- [审核和日志记录](https://docs.microsoft.com/azure/security/security-management-and-monitoring-overview)：通过维护可视性和快速响应及时安全警报来保护数据。
 
 - [Azure 中的安全日志记录和审核日志收集](https://azure.microsoft.com/resources/videos/security-logging-and-audit-log-collection/)：实施这些设置可确保 Azure 实例收集正确的安全和审核日志。
 
 - [配置网站集的审核设置](https://support.office.com/article/Configure-audit-settings-for-a-site-collection-A9920C97-38C0-44F2-8BCB-4CF1E2AE22D2?ui=&rs=&ad=US)：如果你是网站集管理员，请检索单个用户的操作历史记录，以及在特定日期范围内执行的操作的历史记录。 
 
-- [在 Office 365 安全与合规中心搜索审核日志](https://support.office.com/article/Search-the-audit-log-in-the-Office-365-Security-Compliance-Center-0d4d0f35-390b-4518-800e-0c7ec95e946c?ui=&rs=&ad=US)：使用 Office 365 安全与合规中心搜索统一的审核日志，并查看 Office 365 组织中的用户和管理员活动。
+- [在 Office 365 安全与合规中心中搜索审核日志](https://support.office.com/article/Search-the-audit-log-in-the-Office-365-Security-Compliance-Center-0d4d0f35-390b-4518-800e-0c7ec95e946c?ui=&rs=&ad=US)：使用 Office 365 安全与合规中心搜索统一的审核日志，并查看 Office 365 组织中的用户和管理员活动。
 
 

@@ -13,15 +13,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 11/06/2018
+ms.date: 12/04/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: bed053f812cc5c14e6cfe76b8a08b1ffe0cadcb3
-ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.openlocfilehash: 05e0ae8f19e9609bd1ddd05082ead025058f92c1
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51289115"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52966001"
 ---
 # <a name="considerations-for-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>部署适用于 SAP 工作负荷的 Azure 虚拟机 DBMS 的注意事项
 [1114181]:https://launchpad.support.sap.com/#/notes/1114181
@@ -58,7 +58,7 @@ ms.locfileid: "51289115"
 ## <a name="definitions-upfront"></a>定义预释
 整个文档使用以下术语：
 
-* IaaS：服务架构。
+* IaaS：基础结构即服务。
 * PaaS：平台即服务。
 * SaaS：软件即服务。
 * SAP 组件：单个 SAP 应用程序，例如 ECC、BW、Solution Manager 或 EP。  SAP 组件可以基于传统的 ABAP 或 Java 技术，也可以是不基于 NetWeaver 的应用程序，例如业务对象。
@@ -86,9 +86,9 @@ ms.locfileid: "51289115"
 | [1999351] |适用于 SAP 的增强型 Azure 监视故障排除 |
 | [2178632] |Microsoft Azure 上的 SAP 关键监视度量值 |
 | [1409604] |Windows 上的虚拟化：增强型监视 |
-| [2191498] |使用 Azure 的 Linux 上的 SAP：增强型监视 |
+| [2191498] |Azure 的 Linux 上的 SAP：增强型监视 |
 | [2039619] |Microsoft Azure 上使用 Oracle 数据库的 SAP 应用程序：支持的产品和版本 |
-| [2233094] |DB6：Azure 上使用 IBM DB2 for Linux、UNIX 和 Windows 的 SAP 应用程序 — 附加信息 |
+| [2233094] |DB6：Azure 上使用 IBM DB2 for Linux、UNIX 和 Windows 的 SAP 应用程序 - 附加信息 |
 | [2243692] |Microsoft Azure (IaaS) VM 上的 Linux：SAP 许可证问题 |
 | [1984787] |SUSE LINUX Enterprise Server 12：安装说明 |
 | [2002167] |Red Hat Enterprise Linux 7.x：安装和升级 |
@@ -279,7 +279,11 @@ Azure 平台提供 VM 的不同 SLA。 有关详细信息，可在[虚拟机的 
 
 
 > [!IMPORTANT]
-> 出于功能原因，但更重要的是出于性能原因，不支持在 SAP 应用程序与 SAP NetWeaver、Hybris 或基于 S/4HANA 的 SAP 系统的 DBMS 层之间的通信路径中配置 [Azure 网络虚拟设备](https://azure.microsoft.com/solutions/network-appliances/)。 更多不支持 NVA 的场景出现在代表 Linux Pacemaker 群集节点的 Azure VM 与 SBD 设备之间的通信路径中（如[SUSE Linux Enterprise Server for SAP applications 上的 Azure VM 上 SAP NetWeaver 的高可用性](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse)所述）。 或者是在按[使用 Azure 中的文件共享在 Windows 故障转移群集上群集化 SAP ASCS/SCS 实例](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-guide-wsfc-file-share)所述设置的 Azure VM 与 Windows Server SOFS 之间的通信路径中。 通信路径中的 NVA 可能容易导致两个通信合作伙伴之间的网络延迟加倍，可能会限制 SAP 应用程序层与 DBMS 层之间的重要路径中的吞吐量。 在客户遇到的某些场景中，当 Linux Pacemaker 群集节点之间的通信需要通过 NVA 与 SBD 设备进行通信时，NVA 可能会导致 Pacemaker Linux 群集失败。   
+> 出于功能原因，但更重要的是出于性能原因，不支持在 SAP 应用程序与 SAP NetWeaver、Hybris 或基于 S/4HANA 的 SAP 系统的 DBMS 层之间的通信路径中配置 [Azure 网络虚拟设备](https://azure.microsoft.com/solutions/network-appliances/)。 SAP 应用程序层与 DBMS 层之间的通信必须为直接通信。 只要 [Azure ASG 和 NSG 规则](https://docs.microsoft.com/azure/virtual-network/security-overview)允许进行直接通信，限制就不包括这些规则。 更多不支持 NVA 的场景出现在代表 Linux Pacemaker 群集节点的 Azure VM 与 SBD 设备之间的通信路径中（如 [SUSE Linux Enterprise Server for SAP Applications 上的 Azure VM 上 SAP NetWeaver 的高可用性](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse)所述）。 或者是在按[使用 Azure 中的文件共享在 Windows 故障转移群集上群集化 SAP ASCS/SCS 实例](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-guide-wsfc-file-share)所述设置的 Azure VM 与 Windows Server SOFS 之间的通信路径中。 通信路径中的 NVA 可能容易导致两个通信合作伙伴之间的网络延迟加倍，可能会限制 SAP 应用程序层与 DBMS 层之间的重要路径中的吞吐量。 在客户遇到的某些场景中，当 Linux Pacemaker 群集节点之间的通信需要通过 NVA 与 SBD 设备进行通信时，NVA 可能会导致 Pacemaker Linux 群集失败。  
+> 
+
+> [!IMPORTANT]
+> 另一个不受支持的设计是将 SAP 应用程序层和 DBMS 层分到相互不[对等互连](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview)的不同 Azure 虚拟网络。 建议使用 Azure 虚拟网络中的子网（而不是使用其他 Azure 虚拟网络）将 SAP 应用程序层与 DBMS 层隔离开来。 如果决定不遵循建议，而是将两个层分到不同的虚拟网络，则这两个虚拟网络必须[对等互连](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview)。 请注意，两个[对等互连](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview)的 Azure 虚拟网络之间的网络流量视传输费用而定。 由于 SAP 应用程序层与 DBMS 层之间交换了数 TB 的数据，因此如果将 SAP 应用程序层和 DBMS 层分到两个对等互连的 Azure 虚拟网络，则可以累计大笔费用。  
 
 在 Azure 可用性集中将两个 VM 用于生产 DBMS 部署，以及 SAP 应用程序层的单独路由和两个 DBMS VM 的管理和操作流量，大概的关系图如下：
 

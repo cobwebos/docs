@@ -12,12 +12,12 @@ ms.author: xiwu
 ms.reviewer: douglasl
 manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: 0a130613d6d2086fda55ca015b1c0ca77c909e3d
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: d6a1f2829352e8589c8d132a195a425edcbe62c3
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51684607"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52872929"
 ---
 # <a name="monitor-sql-data-sync-with-log-analytics"></a>使用 Log Analytics 监视 SQL 数据同步 
 
@@ -97,7 +97,7 @@ ms.locfileid: "51684607"
 
     2.  同步组信息。
 
-    3.  Log Analytics 信息。 在 Azure 门户 | 设置 | 连接的源中查找此信息。 有关将数据发送到 Log Analytics 的详细信息，请参阅[使用 HTTP 数据收集器 API（预览版）将数据发送到 Log Analytics](../log-analytics/log-analytics-data-collector-api.md)。
+    3.  Log Analytics 信息。 在 Azure 门户 | 设置 | 连接的源中查找此信息。 有关将数据发送到 Log Analytics 的详细信息，请参阅[使用 HTTP 数据收集器 API（预览版）将数据发送到 Log Analytics](../azure-monitor/platform/data-collector-api.md)。
 
 11. 在“测试”窗格中运行 runbook。 检查以确保它已运行成功。
 
@@ -181,9 +181,9 @@ ms.locfileid: "51684607"
 
 在大多数情况下，此解决方案是免费的。
 
-Azure 自动化：Azure 自动化帐户可能会产生成本，具体要取决于你的使用情况。 每月前 500 分钟的作业运行时间是免费的。 在大多数情况下，此解决方案预计每个月使用不到 500 分钟。 为了避免收费，请计划 Runbook 以两个小时或更长的间隔运行。 有关详细信息，请参阅[自动化定价](https://azure.microsoft.com/pricing/details/automation/)。
+**Azure 自动化：** Azure 自动化帐户可能会产生成本，具体取决于使用情况。 每月前 500 分钟的作业运行时间是免费的。 在大多数情况下，此解决方案预计每个月使用不到 500 分钟。 为了避免收费，请计划 Runbook 以两个小时或更长的间隔运行。 有关详细信息，请参阅[自动化定价](https://azure.microsoft.com/pricing/details/automation/)。
 
-**Log Analytics：** 可能会有与 Log Analytics 相关的成本，具体要取决于你的使用情况。 免费层包括每日 500 MB 的引入数据。 在大多数情况下，此解决方案预计每天引入的数据不超过 500 MB。 若要减少使用，请使用 runbook 中包含的“仅失败筛选”。 如果你每天使用的数据超过 500 MB，请升级到付费层，以避免在达到此限制时停止分析的风险。 有关详细信息，请参阅[Log Analytics 定价](https://azure.microsoft.com/pricing/details/log-analytics/)。
+**Log Analytics：** 可能会有与 Log Analytics 相关的成本，具体取决于使用情况。 免费层包括每日 500 MB 的引入数据。 在大多数情况下，此解决方案预计每天引入的数据不超过 500 MB。 若要减少使用，请使用 runbook 中包含的“仅失败筛选”。 如果你每天使用的数据超过 500 MB，请升级到付费层，以避免在达到此限制时停止分析的风险。 有关详细信息，请参阅[Log Analytics 定价](https://azure.microsoft.com/pricing/details/log-analytics/)。
 
 ## <a name="code-samples"></a>代码示例
 

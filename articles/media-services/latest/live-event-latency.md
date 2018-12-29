@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 11/16/2018
 ms.author: juliako
-ms.openlocfilehash: a74f2e53127b506f42ff49018c3df2985396646d
-ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
+ms.openlocfilehash: b167d3424d520cf8be515eec9d495164dd9785ab
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52619804"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52682089"
 ---
 # <a name="liveevent-latency-in-media-services"></a>媒体服务中的 LiveEvent 延迟
 
@@ -43,28 +43,37 @@ LiveEvent liveEvent = new LiveEvent(
             streamOptions: new List<StreamOptionsFlag?>()
             {
                 // Set this to Default or Low Latency
-                // To use low latency optimally, you should tune your encoder settings down to 1 second GOP size instead of 2 seconds.
+                // To use low latency optimally, you should tune your encoder settings down to 1 second "Group Of Pictures" (GOP) length instead of 2 seconds.
                 StreamOptionsFlag.LowLatency
             }
         );
 ```                
 
-参阅完整示例：[MediaV3LiveApp](https://github.com/Azure-Samples/media-services-v3-dotnet-core-tutorials/blob/master/NETCore/Live/MediaV3LiveApp/Program.cs#L126)。
+查看完整示例：[MediaV3LiveApp](https://github.com/Azure-Samples/media-services-v3-dotnet-core-tutorials/blob/master/NETCore/Live/MediaV3LiveApp/Program.cs#L126)。
 
-## <a name="pass-through-liveevents-latency"></a>直通 LiveEvents 延迟
+## <a name="liveevents-latency"></a>LiveEvents 延迟
 
-下表显示了媒体服务中的延迟的典型结果（当启用了 LowLatency 标志时），延迟指的是从贡献源到达服务之时到播放器可以请求回放之时之间的时间。
+下表显示了媒体服务中的延迟的典型结果（当启用了 LowLatency 标志时），延迟指的是从贡献源到达服务之时到查看者看到播放器上的回放之时之间的时间。 若要以最佳方式使用低延迟，应将编码器设置下调至 1 秒“图片组”(GOP) 长度。 当使用较高的 GOP 长度时，可以在相同帧速率下最小化带宽消耗并降低比特率。 在动作较少的视频中特别有用。
+
+### <a name="pass-through"></a>直通 
 
 ||启用 2 秒 GOP 低延迟|启用 1 秒 GOP 低延迟|
 |---|---|---|
 |AMP 中的 DASH|10 秒|8 秒|
 |本机 iOS 播放器上的 HLS|14 秒|10 秒|
 
+### <a name="live-encoding"></a>实时编码
+
+||启用 2 秒 GOP 低延迟|启用 1 秒 GOP 低延迟|
+|---|---|---|
+|AMP 中的 DASH|14 秒|10 秒|
+|本机 iOS 播放器上的 HLS|18 秒|13 秒|
+
 > [!NOTE]
 > 根据本地网络状况以及是否引入了 CDN 缓存层，端到端延迟可能有所不同。 应当测试你的确切配置。
 
 ## <a name="next-steps"></a>后续步骤
 
-- [实时流式处理概述](live-streaming-overview.md)
+- [实时传送视频流概述](live-streaming-overview.md)
 - [实时传送视频流教程](stream-live-tutorial-with-api.md)
 

@@ -7,15 +7,15 @@ manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 11/01/2018
+ms.date: 11/30/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 7671a0a99e12463fcce5ff33fbcba7e8677dde05
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 91102b9fe57b2291ce1d1678b71b3a8b0b834864
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51006188"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52721963"
 ---
 # <a name="applications-types-that-can-be-used-in-active-directory-b2c"></a>可在 Azure Active Directory B2C 中使用的应用程序类型
 
@@ -26,7 +26,7 @@ Azure Active Directory (Azure AD) B2C 支持各种新式应用程序体系结构
 * 用于唯一标识应用程序的应用程序 ID。
 * 可用于将响应定向回应用程序的**回复 URL**。
 
-发送到 Azure AD B2C 的每个请求都指定了一个 **策略**。 策略控制 Azure AD 的行为。 也可以使用这些终结点来创建一系列高度可自定义的用户体验。 常见的策略包括注册、登录和配置文件编辑策略。 如果不熟悉策略，请先了解 Azure AD B2C 的 [可扩展策略框架](active-directory-b2c-reference-policies.md) ，再继续下一步。
+发送到 Azure AD B2C 的每个请求都指定了一个用户流，这个用户流是一个策略，用于控制 Azure AD 的行为。 也可以使用这些终结点来创建一系列高度可自定义的用户体验。 我们提供一组用户流，以便帮助用户设置常见策略，包括注册、登录和配置文件编辑策略。 但用户也可以创建自己的自定义策略。 如果不熟悉策略，请先了解 Azure AD B2C 的 [可扩展策略框架](active-directory-b2c-reference-policies.md) ，再继续下一步。
 
 每个应用程序的交互遵循类似的高级模式：
 

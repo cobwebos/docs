@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/18/2018
 ms.author: hrasheed
-ms.openlocfilehash: 77f1d0f9d1f9ad07b977750e7701b660781d63e5
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: c615188e5f198cb8707b12643e0942e8d8821983
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52499379"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52725176"
 ---
 # <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>使用 Azure 门户管理 HDInsight 中的 Apache Hadoop 群集
 
@@ -64,7 +64,7 @@ HDInsight 使用各种 Hadoop 组件。 有关已验证和支持的组件的列�
     1. 登录到 [Azure 门户](https://portal.azure.com)。
     2. 从左侧菜单中单击“资源组”以列出资源组。
     3. 单击要用于创建 HDInsight 群集的资源组。
-    4. 单击“访问控制(IAM)”，并确认你（或你所属的组）至少对该资源组具有“参与者”访问权限。
+    4. 单击“访问控制(IAM)”和“角色分配”，并确认你（或你所属的组）至少对该资源组具有“参与者”访问权限。
 
 如果收到 NoRegisteredProviderFound 错误或 MissingSubscriptionRegistration 错误，请参阅[排查使用 Azure 资源管理器时的常见 Azure 部署错误](../azure-resource-manager/resource-manager-common-deployment-errors.md)。
 
@@ -76,7 +76,7 @@ HDInsight 使用各种 Hadoop 组件。 有关已验证和支持的组件的列�
 
     ![Azure 门户 HDInsight 群集概要](./media/hdinsight-administer-use-portal-linux/hdinsight-essentials.png)概述菜单：
     * **仪表板**：打开群集的 Ambari Web UI。
-    * **安全外壳**：显示使用安全 Shell (SSH) 连接与群集建立连接的说明。
+    * **安全外壳**：显示使用安全外壳 (SSH) 连接与群集建立连接的说明。
     * **缩放群集**：可更改此群集的辅助角色节点数。
     * **移动**：将群集移至其他资源组或其他订阅。
     * **删除**：删除群集。
@@ -85,45 +85,45 @@ HDInsight 使用各种 Hadoop 组件。 有关已验证和支持的组件的列�
     * **活动日志**：显示和查询活动日志。
     * **访问控制 (IAM)**：使用角色分配。  请参阅[使用角色分配管理对 Azure 订阅资源的访问权限](../role-based-access-control/role-assignments-portal.md)。
     * **标记**：允许设置键/值对，以定义云服务的自定义分类。 例如，可以创建名为 **project** 的键，并对与特定项目关联的所有服务使用一个公用值。
-* **诊断并解决问题**：显示疑难解答信息。
+* **诊断并解决问题**：显示故障排除信息。
     * **快速入门**：显示可帮助你开始使用 HDInsight 的信息。
     * **适用于 HDInsight 的工具**：HDInsight 相关工具的帮助信息。
 **设置**
-* **群集大小**：检查、增加和减少群集工作节点的数量。 请参阅[缩放群集](hdinsight-administer-use-management-portal.md#scale-clusters)。
+* **群集大小**：检查、增加和减少群集辅助角色节点的数量。 请参阅[缩放群集](hdinsight-administer-use-management-portal.md#scale-clusters)。
     * **配额限制**：显示订阅的已使用和可用核心数。
     * **SSH + 群集登录**：显示使用安全外壳 (SSH) 连接与群集建立连接的说明。 有关详细信息，请参阅 [Use SSH with HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md)（对 HDInsight 使用 SSH）。
-* **Data Lake Store Gen1**：配置对 Data Lake Store Gen1 的访问权限。  请参阅[快速入门：在 HDInsight 中设置群集](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)。
+* **Data Lake Store Gen1**：配置 Data Lake Store Gen1 访问。  请参阅[快速入门：在 HDInsight 中设置群集](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)。
     * **存储帐户**：查看存储帐户和密钥。 存储帐户在群集创建过程中配置。
     * **应用程序**：添加/删除 HDInsight 应用程序。  请参阅[安装自定义 HDInsight 应用程序](hdinsight-apps-install-custom-applications.md)。
     * **脚本操作**：在群集上运行 Bash 脚本。 请参阅[使用脚本操作自定义基于 Linux 的 HDInsight 群集](hdinsight-hadoop-customize-cluster-linux.md)。
-    * **HDInsight 合作伙伴**：添加/删除当前的 HDInsight 合作伙伴。
+    * **HDInsight 合作伙伴**：添加/删除当前 HDInsight 合作伙伴。
     * **属性**：查看群集属性。
-* 锁定：添加锁防止群集遭到修改或删除。
+* **锁定**：添加锁定以防止群集遭到修改或删除。
     * **自动化脚本**：为群集显示并导出 Azure 资源管理器模板。 当前，只能导出相关的 Azure 存储帐户。 请参阅[使用 Azure 资源管理器模板在 HDInsight 中创建基于 Linux 的 Apache Hadoop 群集](hdinsight-hadoop-create-linux-clusters-arm-templates.md)。
 **监视**
-* **更改**：管理警报和操作。
+* **更改**:管理警报和操作。
     * **指标**：监视 Azure Log Analytics 中的群集指标。
 * **诊断设置**：存储诊断指标的位置设置 **支持 + 故障排除**
     * **资源运行状况**：请参阅 [Azure 资源运行状况概述](../service-health/resource-health-overview.md)。
     * **新的支持请求**：允许对 Microsoft 支持创建支持票证。
-
+    
 6. 单击“属性”：
 
     属性包括：
 
    * **主机名**：群集名称。
-   * 群集 URL：Ambari Web 界面的 URL。
-   * 安全外壳 (SSH)：用于通过 SSH 访问群集的用户名和主机名。
-   * 状态：包括 Aborted、Accepted、ClusterStorageProvisioned、AzureVMConfiguration、HDInsightConfiguration、Operational、Running、Error、Deleting、Deleted、Timedout、DeleteQueued、DeleteTimedout、DeleteError、PatchQueued、CertRolloverQueued、ResizeQueued、ClusterCustomization。
+   * **群集 URL**：Ambari Web 界面的 URL。
+   * **安全外壳 (SSH)**：用于通过 SSH 访问群集的用户名和主机名。
+   * **状态**：为以下之一：Aborted、Accepted、ClusterStorageProvisioned、AzureVMConfiguration、HDInsightConfiguration、Operational、Running、Error、Deleting、Deleted、Timedout、DeleteQueued、DeleteTimedout、DeleteError、PatchQueued、CertRolloverQueued、ResizeQueued 或 ClusterCustomization。
    * **区域**：Azure 位置。 有关受支持的 Azure 位置的列表，请参阅 [HDInsight 定价](https://azure.microsoft.com/pricing/details/hdinsight/)中的“区域”下拉列表框。
-   * 创建日期：部署群集的日期。
-   * **操作系统**：**Windows** 或 **Linux**。
+   * **创建日期**：部署群集的日期。
+   * **操作系统**：可以是 Windows 或 Linux。
    * **类型**：Hadoop、HBase、Storm、Spark。
    * **版本**。 请参阅 [HDInsight 版本](hdinsight-component-versioning.md)。
    * **订阅**：订阅名称。
    * **默认数据源**：默认的群集文件系统。
-   * 辅助角色节点大小：辅助角色节点的所选 VM 大小。
-   * 头节点大小：头节点的所选 VM 大小。
+   * **辅助角色节点大小**：辅助角色节点的所选 VM 大小。
+   * **头节点大小**：头节点的所选 VM 大小。
    * **虚拟网络**：群集将要部署到的虚拟网络的名称（如果已在部署时选择）。
 
 ## <a name="delete-clusters"></a>删除群集

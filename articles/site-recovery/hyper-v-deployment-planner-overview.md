@@ -5,14 +5,14 @@ author: nsoneji
 manager: garavd
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 10/11/2018
+ms.date: 11/27/2018
 ms.author: nisoneji
-ms.openlocfilehash: ae93611bfe5dd11bea8bc0327868c2865b36b713
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 7c5a5cddca2aa8e459bde711465425bdd32c669e
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50210663"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52964010"
 ---
 # <a name="about-the-azure-site-recovery-deployment-planner-for-hyper-v-disaster-recovery-to-azure"></a>关于用于将 Hyper-V 灾难恢复到 Azure 的 Azure Site Recovery 部署规划器
 
@@ -84,7 +84,7 @@ Azure Site Recovery 部署规划器是一个命令行工具，适用于 Hyper-V 
 
 | 服务器要求 | Description |
 |---|---|
-|获取 VM 列表、分析和吞吐量测量 |<ul><li>操作系统：Microsoft Windows Server 2016 或 Microsoft Windows Server 2012 R2 </li><li>计算机配置：8 个 vCPU，16 GB RAM，300 GB HDD</li><li>[Microsoft .NET Framework 4.5](https://aka.ms/dotnet-framework-45)</li><li>[Microsoft Visual C++ Redistributable for Visual Studio 2012](https://aka.ms/vcplusplus-redistributable)</li><li>可在此服务器中通过 Internet 访问 Azure</li><li>Azure 存储帐户</li><li>服务器上的管理员访问权限</li><li>至少 100 GB 的可用磁盘空间（假定有 1000 个 VM，每个平均包含 3 个磁盘，分析时间为 30 天）</li><li>必须将从其运行 Azure Site Recovery 部署规划器工具的 VM 添加到包含所有 Hyper-V 服务器的 TrustedHosts 列表。</li><li>所有 Hyper-V 服务器的需要进行分析的 VM 都必须添加到 TrustedHosts 列表，其中包含从其运行此工具的客户端 VM。 [详细了解如何将服务器添加到 TrustedHosts 列表中](#steps-to-add-servers-into-trustedhosts-list)。 </li><li> 应从客户端上的 PowerShell 或命令行控制台使用管理特权运行此工具</ul></ul>|
+|获取 VM 列表、分析和吞吐量测量 |<ul><li>操作系统：Microsoft Windows Server 2016 或 Microsoft Windows Server 2012 R2 </li><li>计算机配置：8 个 vCPU、16 GB RAM、300 GB HDD</li><li>[Microsoft .NET Framework 4.5](https://aka.ms/dotnet-framework-45)</li><li>[Microsoft Visual C++ Redistributable for Visual Studio 2012](https://aka.ms/vcplusplus-redistributable)</li><li>可在此服务器中通过 Internet 访问 Azure</li><li>Azure 存储帐户</li><li>服务器上的管理员访问权限</li><li>至少 100 GB 的可用磁盘空间（假定有 1000 个 VM，每个平均包含 3 个磁盘，分析时间为 30 天）</li><li>必须将从其运行 Azure Site Recovery 部署规划器工具的 VM 添加到包含所有 Hyper-V 服务器的 TrustedHosts 列表。</li><li>所有 Hyper-V 服务器的需要进行分析的 VM 都必须添加到 TrustedHosts 列表，其中包含从其运行此工具的客户端 VM。 [详细了解如何将服务器添加到 TrustedHosts 列表中](#steps-to-add-servers-into-trustedhosts-list)。 </li><li> 应从客户端上的 PowerShell 或命令行控制台使用管理特权运行此工具</ul></ul>|
 | 报告生成 | 装有 Microsoft Excel 2013 或更高版本的 Windows 电脑或 Windows Server |
 | 用户权限 | 在“获取 VM 列表”和“分析”操作过程中用于访问 Hyper-V 群集/Hyper-V 主机的管理员帐户。<br>所有需要进行分析的主机都应有一个使用相同凭据（即用户名和密码）的域管理员帐户
  |
@@ -110,14 +110,14 @@ Azure Site Recovery 部署规划器是一个命令行工具，适用于 Hyper-V 
 该工具已打包到 .zip 文件夹中。 同一工具支持 VMware 到 Azure 与 Hyper-V 到 Azure 灾难恢复方案。 也可将此工具用于 Hyper-V 到辅助站点灾难恢复方案，但请忽略报表中的 Azure 基础结构建议。
 
 1.  将 .zip 文件夹复制到要在其上运行该工具的 Windows Server。 可以在 Windows Server 2012 R2 或 Windows Server 2016 上运行此工具。 服务器必须具有相应的网络访问权限，能够连接到 Hyper-V 群集或 Hyper-V 主机，其中有需要分析的 VM。 建议将要运行此工具的 VM 的硬件配置设置为与需要保护的 Hyper-V 服务器的硬件配置相同。 此类配置可确保该工具所报告的已实现吞吐量与 Azure Site Recovery 在复制过程中能够达到的实际吞吐量相符。 吞吐量计算取决于服务器上的可用网络带宽和服务器的硬件配置（CPU、存储等）。 计算的是从运行此工具的服务器到 Azure 的吞吐量。 如果该服务器的硬件配置不同于 Hyper-V 服务器的硬件配置，该工具所报告的已实现吞吐量将不准确。
-VM 的推荐配置：8 vCPU，16 GB RAM，300 GB HDD。
+VM 的推荐配置：8 个 vCPU、16 GB RAM、300 GB HDD。
 
 1.  解压缩 .zip 文件夹。
 该文件夹包含多个文件和子文件夹。 可执行文件是父文件夹中的 ASRDeploymentPlanner.exe。
 
-示例：将 .zip 文件复制到 E:\ 驱动器并将它解压缩。 E:\ASR Deployment Planner_v2.2.zip
+示例：将 .zip 文件复制到 E:\ 驱动器并将它解压缩。 E:\ASR Deployment Planner_v2.3.zip
 
-E:\ASR Deployment Planner_v2.2\ASRDeploymentPlanner.exe
+E:\ASR Deployment Planner_v2.3\ASRDeploymentPlanner.exe
 
 ### <a name="updating-to-the-latest-version-of-deployment-planner"></a>更新至最新版本的部署规划器
 如果部署规划器为旧版，请执行以下操作之一：
@@ -132,7 +132,7 @@ E:\ASR Deployment Planner_v2.2\ASRDeploymentPlanner.exe
   >每个新的 Deployment Planner 都是 .zip 文件的累积更新。 不需将最新文件复制到旧文件夹。 可以创建和使用新文件夹。
 
 ## <a name="version-history"></a>版本历史记录
-最新的 ASR 部署规划器工具版本为 2.2。
+最新的 ASR 部署规划器工具版本为 2.3。
 请参阅 [ASR 部署规划器版本历史记录](https://social.technet.microsoft.com/wiki/contents/articles/51049.asr-deployment-planner-version-history.aspx)页，了解每个更新中增加的修补程序。
 
 

@@ -15,12 +15,12 @@ ms.component: compliance
 ms.date: 11/19/2018
 ms.author: rolyon
 ms.reviewer: mwahl
-ms.openlocfilehash: fe51419106f1164f9a9b5993261c61bad63333b5
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: ecaceea42d64ab15676a9cb5a42ee8659e40d517
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52262952"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52847280"
 ---
 # <a name="what-are-azure-ad-access-reviews"></a>什么是 Azure AD 访问评审？
 
@@ -45,9 +45,9 @@ Azure AD 支持在组织内进行内部协作和与外部组织的用户（例�
 - **自动化不可行：** 可针对安全组或 Office 365 组中的动态成员资格创建规则，但如果人力资源数据不在 Azure AD 中或者如果用户在离开组后仍需访问权限来培训其接任者应该怎么办？ 对于此类情况，可以对该组创建评审，确保仍需访问权限的用户能够继续获得访问权限。
 - **将组用于新用途：** 如果要将组同步到 Azure AD，或计划为所有销售团队组成员启用 Salesforce 应用程序，则要求组所有者在将组用于其他风险内容前评审组成员资格会非常有用。
 - **业务关键数据访问权限：** 对于特定资源，可能出于审核目的要求 IT 以外的人员定期注销并提供需要访问权限的正当理由。
-- **维护策略的例外列表：** 在理想情况下，所有用户都会遵循访问策略来保护对组织资源的访问。 但是，有时，某些业务案例要求例外处理。 IT 管理员可以管理此任务、避免忽视策略例外情况，为审核员提供定期评审这些例外情况的证明。
-- **要求组所有者确认其组中仍需要来宾：** 可以使用一些本地 IAM 自动处理员工的访问权限，但不适用于受邀来宾。 如果组为来宾授予了业务敏感内容的访问权限，则由组所有者负责确认来宾是否仍有对访问权限的合法业务需求。
-- **定期重复评审：** 可以设置按设定频率（例如每周、每月、每季度或每年）定期对用户进行访问评审，审阅者者将在每次评审开始前收到通知。 审阅者可以借助友好界面和智能建议的帮助，批准或拒绝访问权限。
+- **要维护策略的例外列表：** 在理想情况下，所有用户都会遵循访问策略来保护对组织资源的访问。 但是，有时，某些业务案例要求例外处理。 IT 管理员可以管理此任务、避免忽视策略例外情况，为审核员提供定期评审这些例外情况的证明。
+- **要求组所有者确认他们在组中是否仍需要来宾：** 员工访问可能会通过一些本地 IAM 自动执行，但不会邀请来宾。 如果组为来宾授予了业务敏感内容的访问权限，则由组所有者负责确认来宾是否仍有对访问权限的合法业务需求。
+- **定期重复评审：** 可以设置按设定频率（例如每周、每月、每季度或每年）定期对用户进行访问评审，审阅者将在每次评审开始前收到通知。 审阅者可以借助友好界面和智能建议的帮助，批准或拒绝访问权限。
 
 ## <a name="where-do-you-create-reviews"></a>在哪里创建评审？
 
@@ -67,7 +67,7 @@ Azure AD 支持在组织内进行内部协作和与外部组织的用户（例�
 - Azure AD Premium P2
 - 企业移动性 + 安全性 (EMS) E5 许可证
 
-有关详细信息，请参阅[操作指南：注册 Azure Active Directory Premium](../fundamentals/active-directory-get-started-premium.md) 或[企业移动性 + 安全性 E5 试用版](http://aka.ms/emse5trial)。
+有关更多信息，请参阅[如何：注册 Azure Active Directory Premium](../fundamentals/active-directory-get-started-premium.md) 或[企业移动性 + 安全性 E5 试用版](https://aka.ms/emse5trial)。
 
 ## <a name="get-started-with-access-reviews"></a>访问评审入门
 

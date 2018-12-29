@@ -7,15 +7,15 @@ manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 03/07/2017
+ms.date: 11/30/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 5f95b71497b59eafff09d4add2b4bb1c20656592
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: 9dbe88e1e179df4560d5094cf3f58ca770541323
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43339352"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52842266"
 ---
 # <a name="azure-ad-b2c-sign-in-using-an-ios-application"></a>Azure AD B2C：使用 iOS 应用程序登录
 
@@ -38,16 +38,16 @@ Microsoft 标识平台使用开放式标准，例如 OAuth2 和 OpenID Connect�
 * 复制分配给应用的 **应用程序 ID** 。 稍后需要用到此 GUID。
 * 使用自定义方案（例如 com.onmicrosoft.fabrikamb2c.exampleapp://oauth/redirect）设置“重定向 URI”。 稍后需要用到此 URI。
 
-## <a name="create-your-policies"></a>创建策略
-在 Azure AD B2C 中，每个用户体验由 [策略](active-directory-b2c-reference-policies.md)定义。 此应用包含一个标识体验：合并的登录和注册。 根据[策略参考文章](active-directory-b2c-reference-policies.md#create-a-sign-up-policy)中所述创建此策略。 创建策略时，请务必：
+## <a name="create-your-user-flows"></a>创建用户流
+在 Azure AD B2C 中，每个用户体验由[用户流](active-directory-b2c-reference-policies.md)定义。 此应用包含一个标识体验：合并的登录和注册。 按照[用户流参考文章](active-directory-b2c-reference-policies.md#create-a-sign-up-user-flow)中的说明创建此用户流。 创建用户流时，请务必：
 
 * 在“注册属性”下，选择“显示名称”属性。  还可选择其他属性。
 * 在“应用程序声明”下，选择“显示名称”和“用户的对象 ID”声明。 也可选择其他声明。
-* 创建每个策略后，请复制策略的 **名称** 。 保存策略时，策略名称带有前缀 `b2c_1_`。  稍后需要用到该策略名称。
+* 创建用户流后，请复制每个用户流的名称。 保存用户流时，用户流名称带有前缀 `b2c_1_`。  稍后需要用户流名称。
 
 [!INCLUDE [active-directory-b2c-devquickstarts-policy](../../includes/active-directory-b2c-devquickstarts-policy.md)]
 
-创建策略后，可以开始构建应用。
+创建用户流后，可以开始构建应用。
 
 ## <a name="download-the-sample-code"></a>下载示例代码
 我们[在 GitHub 上](https://github.com/Azure-Samples/active-directory-ios-native-appauth-b2c)提供了有关将 AppAuth 与 Azure AD B2C 配合使用的实践示例。 可以下载该代码并运行它。 若要使用自己的 Azure AD B2C 租户，请遵循 [README.md](https://github.com/Azure-Samples/active-directory-ios-native-appauth-b2c/blob/master/README.md) 中的说明。
@@ -64,7 +64,7 @@ Microsoft 标识平台使用开放式标准，例如 OAuth2 和 OpenID Connect�
 
 可以通过指定授权终结点和令牌终结点 URI，来配置与 Azure AD B2C 的通信。  若要生成这些 URI，需要提供以下信息：
 * 租户 ID（例如 contoso.onmicrosoft.com）
-* 策略名称（例如 B2C\_1\_SignUpIn）
+* 用户流名称（例如 B2C\_1\_SignUpIn）
 
 可以通过替换以下 URL 中的 Tenant\_ID 和 Policy\_Name 来生成令牌终结点 URI：
 

@@ -3,7 +3,7 @@ title: 将弹性数据库客户端库与实体框架配合使用 | Microsoft 文
 description: 将弹性数据库客户端库和实体框架用于数据库编码
 services: sql-database
 ms.service: sql-database
-ms.subservice: elastic-scale
+ms.subservice: scale-out
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: 58b109651408a51ca7505c92d3875de63aae2cc6
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 030ec9db16f90430a544ca8715a4e1dea02e2c62
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51261921"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52873234"
 ---
 # <a name="elastic-database-client-library-with-entity-framework"></a>将弹性数据库客户端库与实体框架配合使用
 此文档介绍与[弹性数据库工具](sql-database-elastic-scale-introduction.md)集成所需的实体框架应用程序中的更改。 重点是使用 Entity Framework **Code First** 方法撰写[分片映射管理](sql-database-elastic-scale-shard-map-management.md)和[数据相关路由](sql-database-elastic-scale-data-dependent-routing.md)。 EF 的 [Code First – 新数据库](https://msdn.microsoft.com/data/jj193542.aspx)教程在本文档中充当运行示例。 本文档附带的示例代码是 Visual Studio 代码示例中弹性数据库工具示例的一部分。
@@ -42,7 +42,7 @@ ms.locfileid: "51261921"
 ## <a name="entity-framework-workflows"></a>实体框架工作流
 实体框架开发人员依靠以下四个工作流之一构建应用程序并确保应用程序对象的持久性： 
 
-* **Code First（新数据库）**：EF 开发人员在应用程序代码中创建模型，然后 EF 从其生成数据库。 
+* **Code First（新数据库）**：EF 开发人员在应用程序代码中创建模型，然后 EF 从中生成数据库。 
 * **Code First（现有数据库）**：开发人员让 EF 从现有数据库生成模型的应用程序代码。
 * **Model First**：开发人员在 EF 设计器中创建模型，EF 从该模型创建数据库。
 * **Database First**：开发人员使用 EF 工具从现有数据库推断模型。 
@@ -59,8 +59,8 @@ ms.locfileid: "51261921"
 ## <a name="requirements"></a>要求
 在使用弹性数据库客户端库和 Entity Framework API 时，会希望保留以下属性： 
 
-* **向外缩放**：我们需要根据应用程序的容量需求，在分片应用程序的数据层中添加或删除数据库。 这意味着可以控制数据库的创建和删除，以及使用弹性数据库分片映射管理器 API 管理数据库和 shardlet 的映射。 
-* 一致性：应用程序利用分片，并且使用客户端库的数据依赖型路由功能。 若要避免损坏或错误的查询结果，连接通过分片映射管理器进行代理。 此操作还会保留验证和一致性。
+* **向外缩放**：需要根据应用程序的容量需求，在分片应用程序的数据层中添加或删除数据库。 这意味着可以控制数据库的创建和删除，以及使用弹性数据库分片映射管理器 API 管理数据库和 shardlet 的映射。 
+* **一致性**：应用程序利用分片，并且使用客户端库的数据依赖型路由功能。 若要避免损坏或错误的查询结果，连接通过分片映射管理器进行代理。 此操作还会保留验证和一致性。
 * **Code First**：保留 EF 的 Code First 范例的便利性。 在“代码优先”中，应用程序中的类透明映射到基础数据库结构。 应用程序代码与 DbSet 交互以为基础数据处理中涉及的大部分方面提供掩码。
 * **架构**：实体框架通过迁移处理初始数据库架构创建和后续架构演变。 通过保留这些功能，随着数据的演变调整应用会很容易。 
 

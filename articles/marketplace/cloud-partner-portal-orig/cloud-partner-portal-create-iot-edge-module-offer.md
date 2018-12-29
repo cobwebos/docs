@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/19/2018
 ms.author: pbutlerm
-ms.openlocfilehash: d3cc1a09963c5f7fee613af24c63fd15b1cfffee
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: bf7d639c682e443f29b31b3c6d7438e89c406fde
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48805235"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52838627"
 ---
 # <a name="how-to-publish-a-new-iot-edge-module-in-the-cloud-partner-portal"></a>如何在云合作伙伴门户中发布新的 IoT Edge 模块
 
@@ -39,7 +39,7 @@ ms.locfileid: "48805235"
 
     -   说明（基本 HTML 格式）
 
-    -   采用 png 图像格式并且大小为 40 x 40、90 x 90、115 x 115 或 255 x 115 像素的徽标。
+    -   采用 png 图像格式并且大小为以下像素的徽标40 x 40、90 x 90、115 x 115 或 255 x 115 像素。
 
     -   使用条款和隐私政策
 
@@ -53,7 +53,7 @@ ms.locfileid: "48805235"
 -   登录到 [CPP 帐户](https://cloudpartner.azure.com/)。
 
 >[!Note]
->有关云合作伙伴门户的一般信息，可以查看[学习文档](https://cloudpartner.azure.com/#learn)
+>有关云合作伙伴门户的一般信息，可以查看[学习文档](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-getting-started-with-the-cloud-partner-portal)
 
 -   依次选择“新建套餐”、“IoT Edge 模块”。
 

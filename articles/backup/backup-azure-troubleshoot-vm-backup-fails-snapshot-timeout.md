@@ -1,5 +1,5 @@
 ---
-title: Azure 备份故障排除：客户代理状态不可用
+title: 对 Azure 备份失败进行故障排除：来宾部署状态不可用
 description: 与代理、扩展和磁盘相关的 Azure 备份失败的症状、原因及解决方法。
 services: backup
 author: genlin
@@ -7,16 +7,16 @@ manager: cshepard
 keywords: Azure 备份；VM 代理；网络连接；
 ms.service: backup
 ms.topic: troubleshooting
-ms.date: 10/30/2018
+ms.date: 12/03/2018
 ms.author: genli
-ms.openlocfilehash: d8b78551a762b4388344aaf3b44e7472127737ae
-ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
+ms.openlocfilehash: 9f26a51a8da2c3fec3ff180dbc8c8de08bb0a93a
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2018
-ms.locfileid: "51977108"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52833867"
 ---
-# <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Azure 备份故障排除：代理或扩展的问题
+# <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>对 Azure 备份失败进行故障排除：代理或扩展的问题
 
 本文提供故障排查步骤，可帮助解决与 VM 代理和扩展通信相关的 Azure 备份错误。
 
@@ -25,7 +25,7 @@ ms.locfileid: "51977108"
 ## <a name="UserErrorGuestAgentStatusUnavailable-vm-agent-unable-to-communicate-with-azure-backup"></a>UserErrorGuestAgentStatusUnavailable - VM 代理无法与 Azure 备份通信
 
 **错误代码**：UserErrorGuestAgentStatusUnavailable <br>
-**错误消息**：VM 代理无法与 Azure 备份通信<br>
+**错误消息**：VM 代理无法与 Azure 备份进行通信<br>
 
 注册并计划备份服务的 VM 后，备份将通过与 VM 代理进行通信获取时间点快照，从而启动作业。 以下任何条件都可能阻止快照的触发。 如果未触发快照，则备份可能失败。 请按所列顺序完成以下故障排除步骤，然后重试操作：<br>
 **原因 1：[代理安装在 VM 中，但无响应（针对 Windows VM）](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)**    
@@ -55,7 +55,7 @@ ms.locfileid: "51977108"
 若要解决此问题，请删除资源组中的锁，并重试触发清理的操作。
 
 > [!NOTE]
-    > 备份服务将创建一个单独的资源组而非 VM 的资源组来存储还原点集合。 建议客户不要锁定为备份服务使用而创建的资源组。 备份服务创建的资源组的命名格式为：AzureBackupRG_`<Geo>`_`<number>`，例如 AzureBackupRG_northeurope_1
+    > 备份服务将创建一个单独的资源组而非 VM 的资源组来存储还原点集合。 建议客户不要锁定为备份服务使用而创建的资源组。 备份服务创建的资源组的命名格式为：AzureBackupRG_`<Geo>`_`<number>` 例如：AzureBackupRG_northeurope_1
 
 **步骤 1：[删除还原点资源组中的锁](#remove_lock_from_the_recovery_point_resource_group)** <br>
 **步骤 2：[清理还原点集合](#clean_up_restore_point_collection)**<br>
@@ -63,14 +63,14 @@ ms.locfileid: "51977108"
 ## <a name="usererrorkeyvaultpermissionsnotconfigured---backup-doesnt-have-sufficient-permissions-to-the-key-vault-for-backup-of-encrypted-vms"></a>UserErrorKeyvaultPermissionsNotConfigured - 备份服务对密钥保管库没有足够的权限，无法备份已加密的 VM。
 
 **错误代码**：UserErrorKeyvaultPermissionsNotConfigured <br>
-**错误消息**：备份服务对密钥保管库没有足够的权限，无法备份已加密的 VM。 <br>
+**错误消息**：备份服务对 Key Vault 没有足够的权限，无法备份已加密的 VM。 <br>
 
 要使备份操作在加密的 VM 上成功，该服务必须具有访问密钥保管库的权限。 这可以使用 [Azure 门户](https://docs.microsoft.com/azure/backup/backup-azure-vms-encryption#provide-permissions-to-backup)或通过 [PowerShell](https://docs.microsoft.com/azure/backup/backup-azure-vms-automation#enable-protection) 来完成
 
 ## <a name="ExtensionSnapshotFailedNoNetwork-snapshot-operation-failed-due-to-no-network-connectivity-on-the-virtual-machine"></a>ExtensionSnapshotFailedNoNetwork - 由于虚拟机上无网络连接，快照操作失败
 
 **错误代码**：ExtensionSnapshotFailedNoNetwork<br>
-**错误消息**：由于虚拟机未建立网络连接，快照操作失败<br>
+**错误消息**：由于虚拟机上无网络连接，快照操作失败<br>
 
 注册和计划 Azure 备份服务的 VM 后，备份将通过与 VM 备份扩展进行通信获取时间点快照，从而启动作业。 以下任何条件都可能阻止快照的触发。 如果未触发快照，则备份可能失败。 请按所列顺序完成以下故障排除步骤，然后重试操作：    
 **原因 1：[无法检索快照状态或无法创建快照](#the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken)**  
@@ -91,7 +91,7 @@ ms.locfileid: "51977108"
 ## <a name="backupoperationfailed--backupoperationfailedv2---backup-fails-with-an-internal-error"></a>BackUpOperationFailed/BackUpOperationFailedV2 - 备份失败并出现内部错误
 
 **错误代码**：BackUpOperationFailed/BackUpOperationFailedV2 <br>
-**错误消息**：备份失败并出现内部错误 - 请在几分钟后重试操作 <br>
+**错误消息**：发生内部错误，备份失败 - 请在几分钟后重试操作 <br>
 
 注册和计划 Azure 备份服务的 VM 后，备份将通过与 VM 备份扩展进行通信获取时间点快照，从而启动作业。 以下任何条件都可能阻止快照的触发。 如果未触发快照，则备份可能失败。 请按所列顺序完成以下故障排除步骤，然后重试操作：  
 **原因 1：[代理安装在 VM 中，但无响应（针对 Windows VM）](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)**  
@@ -156,11 +156,11 @@ VM 无法根据部署要求访问 Internet。 或者现有的限制阻止访问 
 #### <a name="solution"></a>解决方案
 VM 代理可能已损坏或服务可能已停止。 重新安装 VM 代理可帮助获取最新版本。 此外，还有助于与服务重新开始通信。
 
-1. 确定 Windows 来宾代理服务是否在 VM 服务 (services.msc) 中运行。 尝试重启 Windows 来宾代理服务并启动备份。    
-2. 如果“服务”中未显示 Windows 来宾代理服务，请在控制面板中转到“程序和功能”，确定是否已安装 Windows 来宾代理服务。
-4. 如果“程序和功能”中显示了 Windows 来宾代理，请将其卸载。
+1. 确定 Windows Azure 来宾代理服务是否在 VM 服务 (services.msc) 中运行。 尝试重启 Windows Azure 来宾代理服务并启动备份。    
+2. 如果服务中未显示 Windows Azure 来宾代理服务，请在“控制面板”中转到“程序和功能”，确定是否已安装 Windows Azure 来宾代理服务。
+4. 如果“程序和功能”中显示了 Windows Azure 来宾代理，请将其卸载。
 5. 下载并安装[最新版本的代理 MSI](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409)。 必须拥有管理员权限才能完成安装。
-6. 检查能否在服务中看到 Windows 来宾代理服务。
+6. 检查服务中是否显示了 Windows Azure 来宾代理服务。
 7. 运行按需备份：
     * 在门户中，选择“立即备份”。
 

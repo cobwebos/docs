@@ -1,5 +1,5 @@
 ---
-title: 使用动态管理视图监视 Azure SQL 数据库 | Microsoft 文档
+title: 使用 DMV 监视性能 Azure SQL 数据库 | Microsoft Docs
 description: 了解如何通过使用动态管理视图检测常见性能问题来监视 Microsoft Azure SQL 数据库。
 services: sql-database
 ms.service: sql-database
@@ -12,14 +12,14 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 10/22/2018
-ms.openlocfilehash: c690e9b864d4b2b378814b478ea4918a9f75fbba
-ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.openlocfilehash: 88e0ad847d8d779bd769ed73d4f0393ddfb65588
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51288521"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52876307"
 ---
-# <a name="monitoring-azure-sql-database-using-dynamic-management-views"></a>使用动态管理视图监视 Azure SQL 数据库
+# <a name="monitoring-performance-azure-sql-database-using-dynamic-management-views"></a>使用动态管理视图监视性能 Azure SQL 数据库
 
 Microsoft Azure SQL 数据库支持通过一部分动态管理视图来诊断性能问题，这些问题可能由查询受阻或长时间运行、资源瓶颈、不良查询计划等原因造成。 本主题提供有关如何通过使用动态管理视图检测常见性能问题的信息。
 
@@ -574,7 +574,7 @@ ORDER BY start_time DESC
     ORDER BY start_time DESC;
     ```
 
-2. 若要评估工作负荷与计算大小的适合程度，需要向下钻取资源指标的每个方面：CPU、读取数、写入数、辅助进程数和会话数。 下面是使用 **sys.resource_stats** 的修订查询，用于报告这些资源度量值的平均值和最大值：
+2. 若要评估工作负载与计算大小的适合程度，需要向下钻取资源指标的每个方面：CPU、读取数、写入数、辅助进程数和会话数。 下面是使用 **sys.resource_stats** 的修订查询，用于报告这些资源度量值的平均值和最大值：
 
     ```sql
     SELECT

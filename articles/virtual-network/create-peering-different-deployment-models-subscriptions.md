@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/15/2017
 ms.author: jdial;anavin
-ms.openlocfilehash: 34c11c911b6c2ffbc4d4800cd7203a8d430814fb
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 666e4c434d05bb953950893f32c262183055becd
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52311239"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52728155"
 ---
 # <a name="create-a-virtual-network-peering---different-deployment-models-and-subscriptions"></a>创建虚拟网络对等互连 - 不同部署模型和不同订阅
 
@@ -51,13 +51,13 @@ ms.locfileid: "52311239"
     - **地址空间**：*10.0.0.0/16*
     - **子网名称**：默认值
     - **子网地址范围**：*10.0.0.0/24*
-    - 订阅：选择订阅 A。
-    - 资源组：选择“新建”并输入 myResourceGroupA
-    - **位置**：美国东部
+    - **订阅**：选择订阅 A。
+    - **资源组**：选择“新建”，然后输入 myResourceGroupA
+    - **位置**：*美国东部*
 4. 在门户顶部的“搜索资源”框中键入 myVnetA。 单击出现在搜索结果中的“myVnetA”。 随即显示“myVnetA”虚拟网络的边栏选项卡。
 5. 在显示的“myVnetA”边栏选项卡中，单击左侧垂直选项列表中的“访问控制(IAM)”。
-6. 在显示的“myVnetA - 访问控制(IAM)”边栏选项卡中，单击“+ 添加”。
-7. 在显示的“添加权限”边栏选项卡上的“角色”框中，选择“网络参与者”。
+6. 在显示的“myVnetA - 访问控制(IAM)”边栏选项卡中，单击“+ 添加角色分配”。
+7. 在显示的“添加角色分配”边栏选项卡中，选择“角色”框中的“网络参与者”。
 8. 在“选择”框中，选择用户 B，或者键入用户 B 的电子邮件地址来搜索用户名。 显示的用户列表来自要为其设置对等互连的虚拟网络所在的同一个 Azure Active Directory 租户。 单击出现在列表中的用户 B。
 9. 单击“ **保存**”。
 10. 以用户 A 的身份注销门户，然后以用户 B 的身份登录。
@@ -66,12 +66,12 @@ ms.locfileid: "52311239"
 13.   在显示的“创建虚拟网络(经典)”边栏选项卡中，输入以下值：
 
     - 名称：myVnetB
-    - **地址空间**：*10.1.0.0/16*
+    - **地址空间**：10.1.0.0/16
     - **子网名称**：默认值
-    - **子网地址范围**：*10.1.0.0/24*
-    - 订阅：选择订阅 B。
-    - 资源组：选择“新建”并输入 myResourceGroupB
-    - **位置**：美国东部
+    - **子网地址范围**：10.1.0.0/24
+    - **订阅**：选择订阅 B。
+    - **资源组**：选择“新建”，然后输入 myResourceGroupB
+    - **位置**：*美国东部*
 
 14. 在门户顶部的“搜索资源”框中键入 myVnetB。 单击出现在搜索结果中的“myVnetB”。 随即显示“myVnetB”虚拟网络的边栏选项卡。
 15. 在显示的“myVnetB”边栏选项卡中，单击左侧垂直选项列表中的“属性”。 复制“资源 ID”，在稍后的步骤中使用。 资源 ID 类似于以下示例：/subscriptions/<Susbscription ID>/resourceGroups/myResoureGroupB/providers/Microsoft.ClassicNetwork/virtualNetworks/myVnetB
@@ -85,15 +85,15 @@ ms.locfileid: "52311239"
      - 名称：myVnetAToMyVnetB
      - **虚拟网络部署模型**：选择“经典”。
      - **我知道我的资源 ID**：选中此框。
-     - 资源 ID：输入步骤 15 中 myVnetB 的资源 ID。
+     - **资源 ID**：输入步骤 15 中 myVnetB 的资源 ID。
      - **允许虚拟网络访问：** 确保选择“已启用”。
     本教程不使用其他任何设置。 若要了解所有对等互连设置，请参阅[管理虚拟网络对等互连](virtual-network-manage-peering.md#create-a-peering)。
 23. 在上一步骤中单击“确定”后，“添加对等互连”边栏选项卡将会关闭，并再次显示“myVnetA - 对等互连”边栏选项卡。 几秒钟后，创建的对等互连将显示在该边栏选项卡中。 所创建的 myVnetAToMyVnetB 对等互连的“对等互连状态”列中列出了“已连接”。 现已建立对等互连。 无需将虚拟网络（经典）与虚拟网络 (Resource Manager) 进行对等。
 
     在任一虚拟网络中创建的任何 Azure 资源现在都可通过其 IP 地址相互通信。 如果为虚拟网络使用默认的 Azure 名称解析，则虚拟网络中的资源无法跨虚拟网络解析名称。 若要跨对等互连中的虚拟网络解析名称，必须创建自己的 DNS 服务器。 了解如何[使用自己的 DNS 服务器进行名称解析](virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server)。
 
-24. **可选**：尽管本教程未介绍如何创建虚拟机，但你可以在每个虚拟网络中创建一个虚拟机并将其相互连接，以验证连接性。
-25. **可选：** 若要删除在本教程中创建的资源，请完成本文的[删除资源](#delete-portal)部分中所述的步骤。
+24. **可选**：尽管本教程未介绍如何创建虚拟机，但可以在每个虚拟网络中创建一个虚拟机并将其相互连接，以验证连接性。
+25. **可选**：若要删除在本教程中创建的资源，请完成本文的[删除资源](#delete-portal)部分中所述的步骤。
 
 ## <a name="cli"></a>创建对等互连 - Azure CLI
 
@@ -176,7 +176,7 @@ ms.locfileid: "52311239"
 
     在任一虚拟网络中创建的任何 Azure 资源现在都可通过其 IP 地址相互通信。 如果为虚拟网络使用默认的 Azure 名称解析，则虚拟网络中的资源无法跨虚拟网络解析名称。 若要跨对等互连中的虚拟网络解析名称，必须创建自己的 DNS 服务器。 了解如何[使用自己的 DNS 服务器进行名称解析](virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server)。
 
-10. **可选**：尽管本教程未介绍如何创建虚拟机，但你可以在每个虚拟网络中创建一个虚拟机并将其相互连接，以验证连接性。
+10. **可选**：尽管本教程未介绍如何创建虚拟机，但可以在每个虚拟网络中创建一个虚拟机并将其相互连接，以验证连接性。
 11. **可选**：若要删除在本教程中创建的资源，请完成本文的[删除资源](#delete-cli)中所述的步骤。
 
 ## <a name="powershell"></a>创建对等互连 - PowerShell
@@ -266,7 +266,7 @@ ms.locfileid: "52311239"
 
     在任一虚拟网络中创建的任何 Azure 资源现在都可通过其 IP 地址相互通信。 如果为虚拟网络使用默认的 Azure 名称解析，则虚拟网络中的资源无法跨虚拟网络解析名称。 若要跨对等互连中的虚拟网络解析名称，必须创建自己的 DNS 服务器。 了解如何[使用自己的 DNS 服务器进行名称解析](virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server)。
 
-12. **可选**：尽管本教程未介绍如何创建虚拟机，但你可以在每个虚拟网络中创建一个虚拟机并将其相互连接，以验证连接性。
+12. **可选**：尽管本教程未介绍如何创建虚拟机，但可以在每个虚拟网络中创建一个虚拟机并将其相互连接，以验证连接性。
 13. **可选**：若要删除在本教程中创建的资源，请完成本文的[删除资源](#delete-powershell)中所述的步骤。
 
 ## <a name="delete"></a>删除资源

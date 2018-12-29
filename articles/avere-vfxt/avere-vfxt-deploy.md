@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 10/31/2018
 ms.author: v-erkell
-ms.openlocfilehash: d7c207f89b9cb50f940f071fbbf6ee81b4d44976
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: 8e265f2bed480f7b40476e09ab8f442aedcc9dd4
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52164314"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52999456"
 ---
 # <a name="deploy-the-vfxt-cluster"></a>部署 vFXT 群集
 
@@ -306,6 +306,15 @@ RESOURCE_GROUP=
 
 ![脚本的命令行输出，在接近结尾的位置显示管理 IP 地址](media/avere-vfxt-mgmt-ip.png)
 
+> [!IMPORTANT] 
+> 如果创建了新的 Blob 容器，则可能会使用未在群集外部保存的默认密钥加密该容器。 在将数据存储在该容器上之前，必须下载密钥恢复文件或创建你自己的加密密钥并将其恢复文件保存在永久位置中。 
+> 
+> 如果在未下载恢复文件的情况下使用默认密钥，则在 vFXT 群集损坏或丢失时可能无法访问 Blob 核心文件管理器中的加密数据。
+>
+> 如果脚本显示 `WARNING` 消息（如以下屏幕截图中带圆圈的消息），请按照[配置存储](avere-vfxt-add-storage.md)中的说明下载密钥文件或为 Blob 容器创建新密钥。 使用群集配置工具，即 Avere 控制面板。
+
+![脚本的命令行输出显示有关创建新的加密密钥的警告消息](media/avere-vfxt-key-warning.png)
+
 ## <a name="next-step"></a>后续步骤
 
-现在群集正在运行，并且你已知道其管理 IP 地址，可以[连接到群集配置工具](avere-vfxt-cluster-gui.md)，以便根据需要启用支持和添加存储。
+现在群集正在运行，并且已知道其管理 IP 地址，可以[连接到群集配置工具](avere-vfxt-cluster-gui.md)启用支持，根据需要添加存储，或在新的 Blob 存储上使用默认加密密钥。

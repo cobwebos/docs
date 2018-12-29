@@ -1,21 +1,22 @@
 ---
 title: 配置容器
-titlesuffix: Face - Cognitive Services - Azure
+titlesuffix: Face - Azure Cognitive Services
 description: 容器配置设置。
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: text-analytics
 ms.topic: conceptual
 ms.date: 11/14/2018
 ms.author: diberry
-ms.openlocfilehash: bfda7a82aeff97f560377864769a4c5dd6c03ff3
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: 30546d31e96d7d7fa1009f16a50fe8fda12ead67
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51634883"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53105098"
 ---
 # <a name="configure-containers"></a>配置容器
 
@@ -37,13 +38,13 @@ ms.locfileid: "51634883"
 
 可以使用[环境变量](#configuration-settings-as-environment-variables)或[命令行参数](#configuration-settings-as-command-line-arguments)在实例化人脸容器时指定配置设置。
 
-环境变量值替代命令行参数值，而这些参数值又替代容器映像的默认值。 换言之，如果在环境变量和命令行参数中为同一配置设置（例如 `Logging:Disk:LogLevel`）指定不同的值，然后实例化容器，则实例化容器将使用环境变量中的值。
+环境变量值替代命令行参数值，而这些参数值又替代容器映像的默认值。 换言之，如果在环境变量和命令行参数中为同一配置设置（例如 `Logging:Disk:LogLevel`）指定不同的值，然后实例化容器，则实例化的容器将使用环境变量中的值。
 
 ### <a name="configuration-settings-as-environment-variables"></a>作为环境变量的配置设置
 
 可以使用 [ASP.NET Core 环境变量语法](https://docs.microsoft.com/aspnet/core/fundamentals/configuration/?view=aspnetcore-2.1&tabs=basicconfiguration#configuration-by-environment)来指定配置设置。
 
-容器在实例化时读取用户环境变量。 如果存在环境变量，则环境变量的值将替代指定配置设置的默认值。 使用环境变量的好处是可以在实例化容器之前设置多个配置设置，并且多个容器可以自动使用同一组配置设置。
+容器在实例化时读取用户环境变量。 如果存在环境变量，则环境变量的值将替代指定的配置设置的默认值。 使用环境变量的好处是可以在实例化容器之前设置多个配置设置，并且多个容器可以自动使用同一组配置设置。
 
 例如，以下命令使用环境变量将控制台日志记录级别配置为 [LogLevel.Information](https://msdn.microsoft.com)，然后从人脸容器映像实例化容器。 环境变量的值将替代默认配置设置。
 
@@ -56,7 +57,7 @@ ms.locfileid: "51634883"
 
 可以使用 [ASP.NET Core 命令行参数语法](https://docs.microsoft.com/aspnet/core/fundamentals/configuration/?view=aspnetcore-2.1&tabs=basicconfiguration#arguments)来指定配置设置。
 
-可以在 [docker run](https://docs.docker.com/engine/reference/commandline/run/) 命令的可选 `ARGS` 参数中指定配置设置，该命令用于从下载的容器映像实例化容器。 使用命令行参数的好处是每个容器都可以使用不同的自定义配置设置集。
+可以在 [docker run](https://docs.docker.com/engine/reference/commandline/run/) 命令的可选 `ARGS` 参数（用于从下载的容器映像实例化容器）中指定配置设置。 使用命令行参数的好处是每个容器都可以使用不同的自定义配置设置集。
 
 例如，以下命令从人脸容器映像实例化容器，并将控制台日志记录级别配置为 LogLevel.Information，从而替代默认配置设置。
 
@@ -73,7 +74,7 @@ ms.locfileid: "51634883"
 
 ## <a name="applicationinsights-configuration-settings"></a>ApplicationInsights 配置设置
 
-`ApplicationInsights` 部分中的配置设置允许向容器添加 [Azure Application Insights](https://docs.microsoft.com/azure/application-insights) 遥测支持。 Application Insights 提供对容器深入至代码级别的监视。 可以轻松监视容器的可用性、性能和使用情况。 还可以快速确定并诊断容器中的错误，而无需等待用户报告这些错误。
+`ApplicationInsights` 部分中的配置设置允许向容器添加 [Azure Application Insights](https://docs.microsoft.com/azure/application-insights) 遥测支持。 Application Insights 提供对容器深入至代码级别的监视。 可以轻松监视容器的可用性、性能和使用情况。 还可以快速识别和诊断容器中的错误，而无需等待用户报告这些错误。
 
 下表描述了 `ApplicationInsights` 节支持的配置设置。
 
@@ -91,7 +92,7 @@ ms.locfileid: "51634883"
 
 ## <a name="billing-configuration-setting"></a>Billing 配置设置
 
-`Billing` 配置设置指定 Azure 上用于跟踪容器的账单信息的人脸资源的终结点 URI。 必须为此配置设置指定值，并且该值必须是 Azure 上人脸资源的有效终结点 URI。
+`Billing` 配置设置指定 Azure 上用于计量容器的账单信息的人脸资源的终结点 URI。 必须为此配置设置指定值，并且该值必须是 Azure 上人脸资源的有效终结点 URI。
 
 > [!IMPORTANT]
 > [`ApiKey`](#apikey-configuration-setting)、[`Billing`](#billing-configuration-setting) 和 [`Eula`](#eula-configuration-setting) 配置设置一起使用。必须为所有三个设置提供有效值，否则容器将无法启动。 有关使用这些配置设置实例化容器的详细信息，请参阅[计费](face-how-to-install-containers.md#billing)。
@@ -128,13 +129,13 @@ ms.locfileid: "51634883"
 例如，以下命令指定 Azure 存储方案，并为用于存储人脸容器数据的 Azure 存储和 Cosmos DB 资源提供示例连接字符串。
 
   ```Docker
-  docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 containerpreview.azurecr.io/microsoft/cognitive-services-face Eula=accept Billing=https://westcentralus.api.cognitive.microsoft.com/face/v1.0 ApiKey=0123456789 CloudAI:Storage:StorageScenario=Azure CloudAI:Storage:ConnectionStringOfCosmosMongo="DefaultEndpointsProtocol=https;AccountName=sampleazurestorage;AccountKey=0123456789;EndpointSuffix=core.windows.net" CloudAI:Storage:ConnectionStringOfAzureStorage="mongodb://samplecosmosdb:0123456789@samplecosmosdb.documents.azure.com:10255/?ssl=true&replicaSet=globaldb"
+  docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 containerpreview.azurecr.io/microsoft/cognitive-services-face Eula=accept Billing=https://westcentralus.api.cognitive.microsoft.com/face/v1.0 ApiKey=0123456789 CloudAI:Storage:StorageScenario=Azure CloudAI:Storage:ConnectionStringOfCosmosMongo="mongodb://samplecosmosdb:0123456789@samplecosmosdb.documents.azure.com:10255/?ssl=true&replicaSet=globaldb" CloudAI:Storage:ConnectionStringOfAzureStorage="DefaultEndpointsProtocol=https;AccountName=sampleazurestorage;AccountKey=0123456789;EndpointSuffix=core.windows.net"
   ```
 
 存储方案的处理是与输入装入点和输出装入点的处理分开的。 可以为单个容器指定这些功能的组合。 例如，以下命令在主机上的 `D:\Output` 文件夹中定义一个 Docker 绑定装入点作为输出装入点，然后从人脸容器映像实例化容器，并将 JSON 格式的日志文件保存到输出装入点。 以下命令还指定 Azure 存储方案，并为用于存储人脸容器数据的 Azure 存储和 Cosmos DB 资源提供示例连接字符串。
 
   ```Docker
-  docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 --mount type=bind,source=D:\Output,destination=/output containerpreview.azurecr.io/microsoft/cognitive-services-face Eula=accept Billing=https://westcentralus.api.cognitive.microsoft.com/face/v1.0 ApiKey=0123456789 Logging:Disk:Format=json CloudAI:Storage:StorageScenario=Azure CloudAI:Storage:ConnectionStringOfCosmosMongo="DefaultEndpointsProtocol=https;AccountName=sampleazurestorage;AccountKey=0123456789;EndpointSuffix=core.windows.net" CloudAI:Storage:ConnectionStringOfAzureStorage="mongodb://samplecosmosdb:0123456789@samplecosmosdb.documents.azure.com:10255/?ssl=true&replicaSet=globaldb"
+  docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 --mount type=bind,source=D:\Output,destination=/output containerpreview.azurecr.io/microsoft/cognitive-services-face Eula=accept Billing=https://westcentralus.api.cognitive.microsoft.com/face/v1.0 ApiKey=0123456789 Logging:Disk:Format=json CloudAI:Storage:StorageScenario=Azure CloudAI:Storage:ConnectionStringOfCosmosMongo="mongodb://samplecosmosdb:0123456789@samplecosmosdb.documents.azure.com:10255/?ssl=true&replicaSet=globaldb" CloudAI:Storage:ConnectionStringOfAzureStorage="DefaultEndpointsProtocol=https;AccountName=sampleazurestorage;AccountKey=0123456789;EndpointSuffix=core.windows.net"
   ```
 
 ## <a name="eula-configuration-setting"></a>Eula 配置设置
@@ -143,6 +144,8 @@ ms.locfileid: "51634883"
 
 > [!IMPORTANT]
 > [`ApiKey`](#apikey-configuration-setting)、[`Billing`](#billing-configuration-setting) 和 [`Eula`](#eula-configuration-setting) 配置设置一起使用。必须为所有三个设置提供有效值，否则容器将无法启动。 有关使用这些配置设置实例化容器的详细信息，请参阅[计费](face-how-to-install-containers.md#billing)。
+
+根据管理 Azure 使用的[协议](https://go.microsoft.com/fwlink/?linkid=2018657)授予认知服务容器许可。 如果没有管理 Azure 使用的现有协议，则表示同意管理 Azure 使用的协议是 [Microsoft 在线订阅协议](https://go.microsoft.com/fwlink/?linkid=2018755)（其中包含[联机服务条款](https://go.microsoft.com/fwlink/?linkid=2018760)）。 对于预览版，还应同意 [Microsoft Azure 预览版补充使用条款](https://go.microsoft.com/fwlink/?linkid=2018815)。 使用容器即表示同意这些条款。
 
 ## <a name="fluentd-configuration-settings"></a>Fluentd 配置设置
 

@@ -1,6 +1,6 @@
 ---
-title: Azure Active Directory - 常见问题解答 | Microsoft Docs
-description: 了解有关 Azure 和 Azure Active Directory、密码管理以及应用程序访问的常见问题和解答。
+title: 常见问题解答 (FAQ) - Azure Active Directory | Microsoft Docs
+description: 有关 Azure 和 Azure Active Directory、密码管理以及应用程序访问的常见问题和解答。
 services: active-directory
 author: eross-msft
 manager: mtillman
@@ -11,14 +11,15 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/12/2018
 ms.author: lizross
-ms.openlocfilehash: b004968fc53e368497632cb18d6bb7a254d347e6
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.custom: it-pro, seodec18
+ms.openlocfilehash: a3571ff24c36b7f2129f60348414d4d178ef30d1
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51621745"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53084084"
 ---
-# <a name="azure-active-directory-faq"></a>Azure Active Directory 常见问题
+# <a name="frequently-asked-questions-about-azure-active-directory"></a>有关 Azure Active Directory 的常见问题
 Azure Active Directory (Azure AD) 是综合性的标识即服务 (IDaaS) 解决方案，涉及到标识、访问管理和安全的方方面面。
 
 有关详细信息，请参阅[什么是 Azure Active Directory？](active-directory-whatis.md)。
@@ -34,7 +35,7 @@ Azure Active Directory (Azure AD) 是综合性的标识即服务 (IDaaS) 解决�
 * [Azure 订阅与 Azure Active Directory 的关联方式](active-directory-how-subscriptions-associated-directory.md)
 
 - - -
-**问：Azure AD、Office 365 与 Azure 之间有哪种关系？**
+**问：Azure AD、Office 365 与 Azure 之间的关系是什么？**
 
 **答：** Azure AD 为所有 Web 服务提供通用的标识和访问功能。 不管使用的是 Office 365、Microsoft Azure、Intune 还是其他服务，都是在使用 Azure AD 为上述所有服务启用登录和访问管理。
 
@@ -44,9 +45,9 @@ Azure AD 付费型服务（例如企业移动性 + 安全性）可通过综合�
 
 - - -
 
-问：所有者与全局管理员之间的差异是什么？
+**问：所有者与全局管理员之间的差异是什么？**
 
-答：默认情况下，系统会将注册 Azure 订阅的人员指派为 Azure 资源的所有者角色。 所有者可以使用 Microsoft 帐户，也可以使用 Azure 订阅与之关联的目录中的工作或学校帐户。  此角色有权管理 Azure 门户中的服务。
+**答：** 默认情况下，系统会将注册 Azure 订阅的人员指派为 Azure 资源的所有者角色。 所有者可以使用 Microsoft 帐户，也可以使用 Azure 订阅与之关联的目录中的工作或学校帐户。  此角色有权管理 Azure 门户中的服务。
 
 如果其他人需要使用同一个订阅登录和访问服务，则可向他们分配相应的[内置角色](../../role-based-access-control/built-in-roles.md)。 有关其他信息，请参阅[使用 RBAC 和 Azure 门户管理访问权限](../../role-based-access-control/role-assignments-portal.md)。
 
@@ -57,7 +58,7 @@ Azure AD 付费型服务（例如企业移动性 + 安全性）可通过综合�
 - - -
 **问：是否可以通过报表来查看我的 Azure AD 用户许可证何时会过期？**
 
-**答：** 否。  此功能目前不可用。
+**答：** 不是。  此功能目前不可用。
 
 - - -
 
@@ -86,14 +87,14 @@ Azure AD 付费型服务（例如企业移动性 + 安全性）可通过综合�
 - - -
 **问：Azure AD 是否为组织中的用户提供自助服务门户？**
 
-**答：** 是的，Azure AD 提供 [Azure AD 访问面板](https://myapps.microsoft.com) ，方便用户使用自助服务以及进行应用程序访问。 如果是 Office 365 客户，可以在 Office 365 门户中找到许多相同的功能。
+**答：** 是的，Azure AD 提供 [Azure AD 访问面板](https://myapps.microsoft.com)，方便用户使用自助服务以及进行应用程序访问。 如果是 Office 365 客户，可以在 Office 365 门户中找到许多相同的功能。
 
 有关详细信息，请参阅[访问面板简介](../user-help/active-directory-saas-access-panel-introduction.md)。
 
 - - -
 **问：Azure AD 是否可以帮助我管理本地基础结构？**
 
-**答：** 可以。 Azure AD Premium Edition 提供 Azure AD Connect Health。 Azure AD Connect Health 可帮助你监视和深入了解本地标识基础结构和同步服务。  
+**答：** 是的。 Azure AD Premium Edition 提供 Azure AD Connect Health。 Azure AD Connect Health 可帮助你监视和深入了解本地标识基础结构和同步服务。  
 
 有关详细信息，请参阅[在云中监视本地标识基础结构和同步服务](../hybrid/whatis-hybrid-identity-health.md)。  
 
@@ -176,7 +177,7 @@ Azure AD 付费型服务（例如企业移动性 + 安全性）可通过综合�
 - - -
 **问：Azure AD 可通过哪些不同的方式来启用对应用程序的身份验证和单一登录？**
 
-**答：** Azure AD 支持使用多种标准化协议（例如 SAML 2.0、OpenID Connect、OAuth 2.0 和 WS-Federation）进行身份验证和授权。 对于仅支持基于窗体的身份验证的应用程序，Azure AD 还支持密码保管和自动化登录功能。  
+**答：** Azure AD 支持使用多种标准化协议（例如 SAML 2.0、OpenID Connect、OAuth 2.0 和 WS 联合身份验证）进行身份验证和授权。 对于仅支持基于窗体的身份验证的应用程序，Azure AD 还支持密码保管和自动化登录功能。  
 
 有关详细信息，请参阅：
 
@@ -199,7 +200,7 @@ Azure AD 付费型服务（例如企业移动性 + 安全性）可通过综合�
 有关详细信息，请参阅[保护对 Office 365 和其他连接到 Azure Active Directory 的应用的访问](../active-directory-conditional-access-azure-portal.md)。
 
 - - -
-**问：SaaS 应用的自动用户预配是什么？**
+**问：什么是 SaaS 应用的自动化用户预配？**
 
 **答：** 使用 Azure AD 可以在许多流行的云 (SaaS) 应用中自动创建、维护和删除用户标识。
 
@@ -208,4 +209,4 @@ Azure AD 付费型服务（例如企业移动性 + 安全性）可通过综合�
 - - -
 **问：是否可以通过 Azure AD 设置安全的 LDAP 连接？**
 
-**答：** 否。 Azure AD 不支持 LDAP 协议。 但是，可以使用 Azure AD 域服务配置安全 LDAP。
+**答：** 不是。 Azure AD 不支持 LDAP 协议。 但是，可以使用 Azure AD 域服务配置安全 LDAP。

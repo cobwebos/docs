@@ -8,14 +8,15 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: conceptual
-ms.date: 11/13/2018
+ms.date: 12/13/2018
 ms.author: erhopf
-ms.openlocfilehash: ce9b3df5093d51eac0a151269b486b5f1310700c
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.custom: seodec18
+ms.openlocfilehash: 0b38c61f4fe884137204cba6d99d5e383b3259a0
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52584853"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53338884"
 ---
 # <a name="speech-service-rest-apis"></a>语音服务 REST API
 
@@ -33,7 +34,7 @@ ms.locfileid: "52584853"
 | 支持的授权标头 | 语音转文本 | 文本转语音 |
 |------------------------|----------------|----------------|
 | Ocp-Apim-Subscription-Key | 是 | 否 |
-| 授权：持有者 | 是 | 是 |
+| Authorization:持有者 | 是 | 是 |
 
 使用 `Ocp-Apim-Subscription-Key` 标头时，只需提供订阅密钥。 例如：
 
@@ -260,8 +261,8 @@ public class Authentication
 | 参数 | Description | 必需/可选 |
 |-----------|-------------|---------------------|
 | `language` | 标识所要识别的口语。 请参阅[支持的语言](language-support.md#speech-to-text)。 | 必选 |
-| `format` | 指定结果格式。 接受的值为 `simple` 和 `detailed`。 简单结果包括 `RecognitionStatus`、`DisplayText`、`Offset` 和 `Duration`。 详细响应包括多个具有置信度值的结果，以及四种不同的表示形式。 默认设置为 `simple`。 | 可选 |
-| `profanity` | 指定如何处理识别结果中的亵渎内容。 接受的值为 `masked`（将亵渎内容替换为星号）、`removed`（删除结果中的所有亵渎内容）或 `raw`（包含结果中的亵渎内容）。 默认设置为 `masked`。 | 可选 |
+| `format` | 指定结果格式。 接受的值为 `simple` 和 `detailed`。 简单结果包括 `RecognitionStatus`、`DisplayText`、`Offset` 和 `Duration`。 详细响应包括多个具有置信度值的结果，以及四种不同的表示形式。 默认设置是 `simple`。 | 可选 |
+| `profanity` | 指定如何处理识别结果中的不雅内容。 接受的值为 `masked`（将亵渎内容替换为星号）、`removed`（删除结果中的所有亵渎内容）或 `raw`（包含结果中的亵渎内容）。 默认设置是 `masked`。 | 可选 |
 
 ### <a name="request-headers"></a>请求标头
 
@@ -321,9 +322,20 @@ Expect: 100-continue
 此代码示例演示如何以块的形式发送音频。 只有第一个区块应该包含音频文件的标头。 `request` 是连接到相应 REST 终结点的 HTTPWebRequest 对象。 `audioFile` 是音频文件在磁盘上的路径。
 
 ```csharp
+
+    HttpWebRequest request = null;
+    request = (HttpWebRequest)HttpWebRequest.Create(requestUri);
+    request.SendChunked = true;
+    request.Accept = @"application/json;text/xml";
+    request.Method = "POST";
+    request.ProtocolVersion = HttpVersion.Version11;
+    request.Host = host;
+    request.ContentType = @"audio/wav; codec=""audio/pcm""; samplerate=16000";
+    request.Headers["Ocp-Apim-Subscription-Key"] = args[1];
+    request.AllowWriteStreamBuffering = false;
+
 using (fs = new FileStream(audioFile, FileMode.Open, FileAccess.Read))
 {
-
     /*
     * Open a request stream and write 1024 byte chunks in the stream one at a time.
     */
@@ -423,20 +435,10 @@ using (fs = new FileStream(audioFile, FileMode.Open, FileAccess.Read))
 
 ## <a name="text-to-speech-api"></a>文本转语音 API
 
-使用 REST API 的文本转语音支持以下区域。 请务必选择与订阅区域匹配的终结点。
+文本转语音 REST API 支持神经和标准文本转语音，每种语音支持区域设置标识的特定语言和方言。
 
-[!INCLUDE [](../../../includes/cognitive-services-speech-service-endpoints-text-to-speech.md)]
-
-语音服务支持 24-KHz 音频输出，此外还支持必应语音所支持的 16-Khz 输出。 支持四种 24-KHz 输出格式和两种 24-KHz 语音。
-
-### <a name="voices"></a>语音
-
-| 区域设置 | 语言   | 性别 | 映射 |
-|--------|------------|--------|---------|
-| en-US  | 美式英语 | 女 | “Microsoft 服务器语音的文本转语音（en-US，Jessa24kRUS）” |
-| en-US  | 美式英语 | 男   | “Microsoft 服务器语音的文本转语音（en-US，Guy24kRUS）” |
-
-有关可用语音的完整列表，请参阅[支持的语言](language-support.md#text-to-speech)。
+* 有关语音的完整列表，请参阅[语言支持](language-support.md#text-to-speech)。
+* 有关区域可用性的信息，请参阅[区域](regions.md#text-to-speech)。
 
 ### <a name="request-headers"></a>请求标头
 
@@ -451,7 +453,7 @@ using (fs = new FileStream(audioFile, FileMode.Open, FileAccess.Read))
 
 ### <a name="audio-outputs"></a>音频输出
 
-这是在每个请求中作为 `X-Microsoft-OutputFormat` 标头发送的受支持音频格式的列表。 每种格式合并了比特率和编码类型。
+这是在每个请求中作为 `X-Microsoft-OutputFormat` 标头发送的受支持音频格式的列表。 每种格式合并了比特率和编码类型。 语音服务支持 24 KHz 和 16 KHz 音频输出。
 
 |||
 |-|-|

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/16/2017
 ms.author: jeedes
-ms.openlocfilehash: 1f6c2c9b01a2f861214240eca054242ec73f3929
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: ecb73e4b520936b573254f2cf209d4a02c0fdd32
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39442694"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52848742"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ideascale"></a>教程：Azure Active Directory 与 IdeaScale 集成
 
@@ -112,7 +112,7 @@ ms.locfileid: "39442694"
 
     ![配置单一登录](./media/ideascale-tutorial/tutorial_ideascale_url.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL： `https://<companyname>.ideascale.com`
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“登录 URL”文本框中，使用以下模式键入 URL： `https://<companyname>.ideascale.com`
 
     b. 在“标识符”文本框中，使用以下模式键入 URL：
     | |
@@ -121,7 +121,7 @@ ms.locfileid: "39442694"
     | `https://<companyname>.ideascale.com` |
 
     > [!NOTE] 
-    > 这些不是实际值。 必须使用实际登录 URL 和标识符更新这些值。 请联系 [IdeaScale 客户端支持团队](http://support.ideascale.com/)获取这些值。 
+    > 这些不是实际值。 必须使用实际登录 URL 和标识符更新这些值。 请联系 [IdeaScale 客户端支持团队](https://support.ideascale.com/)获取这些值。 
  
 1. 在“SAML 签名证书”部分中，单击“元数据 XML”，并在计算机上保存元数据文件。
 
@@ -153,7 +153,7 @@ ms.locfileid: "39442694"
    
     ![单一登录设置](./media/ideascale-tutorial/ic790850.png "Single Signon Settings")
    
-    a. 在“SAML IdP 实体 ID”文本框中，粘贴从 Azure 门户复制的“SAML 实体 ID”值。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“SAML IdP 实体 ID”文本框中，粘贴从 Azure 门户复制的“SAML 实体 ID”值。
 
     b. 从 Azure 门户复制下载的元数据文件内容，然后将其粘贴到“SAML IdP 元数据”文本框。
 
@@ -162,7 +162,7 @@ ms.locfileid: "39442694"
     d. 单击“保存更改”。
 
 > [!TIP]
-> 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[ Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
+> 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
 ### <a name="creating-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
@@ -188,7 +188,7 @@ ms.locfileid: "39442694"
  
     ![创建 Azure AD 测试用户](./media/ideascale-tutorial/create_aaduser_04.png) 
 
-    a. 在“名称”文本框中，键入 **BrittaSimon**。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
 
     b. 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
@@ -218,7 +218,7 @@ ms.locfileid: "39442694"
    
     ![添加新成员](./media/ideascale-tutorial/ic790853.png "Add New Member")
    
-    a. 在“电子邮件地址”文本框中，键入要预配的有效 AAD 帐户的电子邮件地址。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“电子邮件地址”文本框中，键入要预配的有效 AAD 帐户的电子邮件地址。
    
     b. 单击“保存更改”。 
    
@@ -269,7 +269,7 @@ ms.locfileid: "39442694"
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](tutorial-list.md)
-* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
+* [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
 
 

@@ -12,12 +12,12 @@ ms.workload: identity
 ms.component: pim
 ms.date: 10/30/2018
 ms.author: rolyon
-ms.openlocfilehash: 5f0b5d1695603a7cd2a3c7ac1dbc484e44257d88
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: 2b099e1377536b46229b75f25d04ab2c1beb5c11
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50249605"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52724938"
 ---
 # <a name="assign-azure-ad-directory-roles-in-pim"></a>在 PIM 中分配 Azure AD 目录角色
 
@@ -125,13 +125,15 @@ Azure AD Privileged Identity Management (PIM) 服务还允许特权角色管理�
 
 1. 选择订阅。
 
-1. 选择“访问控制(IAM)”，在订阅范围查看角色分配的当前列表。
+1. 选择“访问控制(IAM)”。
+
+1. 选择“角色分配”，以在订阅范围查看角色分配的当前列表。
 
    ![订阅的“访问控制(IAM)”边栏选项卡](./media/pim-how-to-add-role-to-user/ms-pim-access-control.png)
 
 1. 检查 **MS-PIM** 服务主体是否已分配有“用户访问管理员”角色。
 
-1. 如果没有，请选择“添加”以打开“添加权限”窗格。
+1. 如果不是，则选择“添加角色分配”以打开“添加角色分配”窗格。
 
 1. 在“角色”下拉列表中，选择“用户访问管理员”角色。
 

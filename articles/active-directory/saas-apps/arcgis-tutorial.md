@@ -1,5 +1,5 @@
 ---
-title: 教程：Azure Active Directory 与 ArcGIS Online 集成 | Microsoft 文档
+title: 教程：Azure Active Directory 与 ArcGIS Online 集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 和 ArcGIS Online 之间配置单一登录。
 services: active-directory
 documentationCenter: na
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/03/2018
 ms.author: jeedes
-ms.openlocfilehash: 12ab224481c519db36ae21dd11916649ff0bfbe3
-ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
+ms.openlocfilehash: 3284202ffaa6767a8dd4a6a5050dbdc928075237
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48269028"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52846108"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-arcgis-online"></a>教程：Azure Active Directory 与 ArcGIS Online 集成
 
@@ -126,7 +126,7 @@ ms.locfileid: "48269028"
     ![图像](./media/arcgis-tutorial/b1-domains_and_urls.png)
 
     > [!NOTE] 
-    > 这些不是实际值。 必须使用实际登录 URL 和标识符更新这些值。 若要获取这些值，请与 [ArcGIS Online 客户端支持团队](http://support.esri.com/en/)联系。
+    > 这些不是实际值。 必须使用实际登录 URL 和标识符更新这些值。 若要获取这些值，请与 [ArcGIS Online 客户端支持团队](https://support.esri.com/en/)联系。
 
 6. 在“SAML 签名证书”部分中，单击“下载”以下载“联合元数据 XML”，然后将 xml 文件保存在计算机上。
 
@@ -249,7 +249,7 @@ ms.locfileid: "48269028"
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 当在访问面板中单击“ArcGIS Online”磁贴时，应该会自动登录“ArcGIS Online”应用程序。
-有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md)（访问面板简介）。
+有关访问面板的详细信息，请参阅[访问面板简介](../user-help/active-directory-saas-access-panel-introduction.md)。
 
 ## <a name="additional-resources"></a>其他资源
 

@@ -14,21 +14,26 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/21/2018
 ms.author: srrengar
-ms.openlocfilehash: cd58e24a51b153d6bf217f7d32a82e882183ed73
-ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
+ms.openlocfilehash: b66373b6847b96a4fcbc1a0c9da42d285d089a9d
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2018
-ms.locfileid: "52290665"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52727879"
 ---
 # <a name="eventstore-service-overview"></a>事件存储服务概述
 
+>[!NOTE]
+>从 Service Fabric 版本 6.4 开始。 EventStore API 仅可用于在 Azure 上运行的 Windows 群集。 我们正在将此功能移植到 Linux 以及我们的独立群集。
+
 ## <a name="overview"></a>概述
 
-EventStore 服务是在版本 6.2 中引入的，它是 Service Fabric 中的一个监视选项，提供了一种方法来了解群集或工作负荷在任意给定时间点的状态。 EventStore 服务通过一组 API（可通过 REST 端点或客户端库进行访问）公开 Service Fabric 事件。 这些 EventStore API 允许直接查询群集来获取关于群集中的任何实体的诊断数据，并且应当用来帮助执行以下操作：
+EventStore 服务是从版本 6.2 中引入的，它是 Service Fabric 中的监视选项。 EventStore 提供了在给定时间点中了解群集或工作负载的状态的方法。 EventStore 是有状态 Service Fabric 服务，它维护群集中的事件。 事件通过 Service Fabric Explorer、REST 和 API 公开。 EventStore 直接查询群集来获取关于群集中的任何实体的诊断数据，并且应当用来帮助执行以下操作：
 
 * 在开发或测试时或者当可能使用监视管道时对问题进行诊断
-* 确认群集在正确处理你对群集执行的管理操作
+* 确认正在正确处理对群集执行的管理操作
+* 获取 Service Fabric 如何与特定实体进行交互的“快照”
+
 
 若要查看 EventStore 中可用的事件的完整列表，请参阅 [Service Fabric 事件](service-fabric-diagnostics-event-generation-operational.md)。
 
@@ -36,25 +41,81 @@ EventStore 服务是在版本 6.2 中引入的，它是 Service Fabric 中的一
 >从 Service Fabric 版本 6.2 开始。 EventStore API 当前为预览版，仅可用于在 Azure 中运行的 Windows 群集。 我们正在将此功能移植到 Linux 以及我们的独立群集。
 
 可以向 EventStore 服务查询可用于群集中的每个实体和实体类型的事件。 这意味着可以在以下级别查询事件：
-* 群集：所有群集级事件
+* 群集：特定于群集本身的事件（例如群集升级）
 * 多节点：所有节点级事件
-* 节点：特定于一个节点的事件，基于 `nodeName`
+* 节点：特定于一个节点的事件，由 `nodeName` 标识
 * 多应用程序：所有应用程序级事件
-* 应用程序：特定于一个应用程序的事件
+* 应用程序：特定于一个应用程序的事件，由 `applicationId` 标识
 * 多服务：来自群集中所有服务的事件
-* 服务：来自特定服务的事件
+* 服务：来自特定服务的事件，由 `serviceId` 标识
 * 多分区：来自所有分区的事件
-* 分区：来自特定分区的事件
-* 多副本：来自所有副本 / 实例的事件
-* 副本：来自特定副本 / 实例的事件
+* 分区：来自特定分区的事件，由 `partitionId` 标识
+* 分区副本：来自所有副本的事件/特定分区中的实例，由 `partitionId` 标识
+* 分区副本：来自特定副本的事件/实例，由 `replicaId` 和 `partitionId` 标识
 
+若要了解有关 API 的详细信息，请查看 [EventStore API 参考]((https://docs.microsoft.com/rest/api/servicefabric/sfclient-index-eventsstore)。
 
-EventStore 服务还能够将群集中的事件相关联。 通过查看在同一时间从可能已相互影响的不同实体写入的事件，EventStore 服务能够将这些事件进行关联来帮助查明群集中发生各项活动的原因。 例如，如果某个应用程序变得不正常且没有诱发任何变化，则 EventStore 将查看由平台公开的其他事件并且可能会将此情况与 `NodeDown` 事件相关联。 这有助于更快地进行故障检测和根本原因分析。
+EventStore 服务还能够将群集中的事件相关联。 通过查看在同一时间从可能已相互影响的不同实体写入的事件，EventStore 服务能够将这些事件进行关联来帮助查明群集中发生各项活动的原因。 例如，如果某个应用程序变得不正常且没有诱发任何变化，则 EventStore 将查看由平台公开的其他事件并且可能会将此情况与 `Error` 或 `Warning` 事件相关联。 这有助于更快地进行故障检测和根本原因分析。
 
-我们建议使用 EventStore 进行快速分析，以获取关于群集运行状况的快照，并了解事情是否按预期发生。
+## <a name="enable-eventstore-on-your-cluster"></a>在群集上启用 EventStore
 
-若要开始使用 EventStore 服务，请参阅[通过 EventStore API 查询群集事件](service-fabric-diagnostics-eventstore-query.md)。
+### <a name="local-cluster"></a>本地群集
+
+在[群集中的 fabricSettings.json](service-fabric-cluster-fabric-settings.md) 中，添加 EventStoreService 作为 addOn 功能，并执行群集升级。
+
+```json
+    "addOnFeatures": [
+        "EventStoreService"
+    ],
+```
+
+### <a name="azure-cluster"></a>Azure 群集
+
+在群集的 Azure 模板中，可以通过执行[群集配置升级](service-fabric-cluster-config-upgrade-azure.md)并添加以下代码来启用 EventStore 服务。 `upgradeDescription` 部分配置配置升级，以触发节点上的重新启动。 可以在其他更新中删除该部分。
+
+```json
+    "fabricSettings": [
+          …
+          …
+          …,
+         {
+            "name": "EventStoreService",
+            "parameters": [
+              {
+                "name": "TargetReplicaSetSize",
+                "value": "3"
+              },
+              {
+                "name": "MinReplicaSetSize",
+                "value": "1"
+              }
+            ]
+          }
+        ],
+        "upgradeDescription": {
+          "forceRestart": true,
+          "upgradeReplicaSetCheckTimeout": "10675199.02:48:05.4775807",
+          "healthCheckWaitDuration": "00:01:00",
+          "healthCheckStableDuration": "00:01:00",
+          "healthCheckRetryTimeout": "00:5:00",
+          "upgradeTimeout": "1:00:00",
+          "upgradeDomainTimeout": "00:10:00",
+          "healthPolicy": {
+            "maxPercentUnhealthyNodes": 100,
+            "maxPercentUnhealthyApplications": 100
+          },
+          "deltaHealthPolicy": {
+            "maxPercentDeltaUnhealthyNodes": 0,
+            "maxPercentUpgradeDomainDeltaUnhealthyNodes": 0,
+            "maxPercentDeltaUnhealthyApplications": 0
+          }
+        }
+```
+
 
 ## <a name="next-steps"></a>后续步骤
+* 开始使用 EventStore API - [在 Azure Service Fabric 群集中使用 EventStore API](service-fabric-diagnostics-eventstore-query.md)
+* 详细了解有关 EventStore 提供的事件的列表 - [Service Fabric 事件](service-fabric-diagnostics-event-generation-operational.md)
 * Service Fabric 中的监视和诊断概述 - [Service Fabric 的监视和诊断](service-fabric-diagnostics-overview.md)
+* 查看 API 调用的完整列表 - [EventStore REST API 参考](https://docs.microsoft.com/rest/api/servicefabric/sfclient-index-eventsstore)
 * 了解有关监视群集的详细信息 - [监视群集和平台](service-fabric-diagnostics-event-generation-infra.md)。

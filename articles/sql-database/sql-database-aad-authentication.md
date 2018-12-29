@@ -11,17 +11,17 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto, carlrab
 manager: craigg
-ms.date: 10/05/2018
-ms.openlocfilehash: 86e60f339af3d6d467b68d5d3b27d77a9861add1
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.date: 12/03/2018
+ms.openlocfilehash: ff9011dda4a94f323b430a3860eadc8d970a23f7
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51244062"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52838610"
 ---
 # <a name="use-azure-active-directory-authentication-for-authentication-with-sql"></a>使用 Azure Active Directory 身份验证进行 SQL 身份验证
 
-Azure Active Directory 身份验证是使用 Azure Active Directory (Azure AD) 中的标识连接到 Azure [SQL 数据库](sql-database-technical-overview.md)和 [SQL 数据仓库](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md)的一种机制。 
+Azure Active Directory 身份验证是使用 Azure Active Directory (Azure AD) 中的标识连接到 Azure [SQL 数据库](sql-database-technical-overview.md)、[托管实例](sql-database-managed-instance.md)和 [SQL 数据仓库](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md)的一种机制。 
 
 > [!NOTE]
 > 本主题适用于 Azure SQL 服务器，同时也适用于在 Azure SQL 服务器中创建的 SQL 数据库和 SQL 数据仓库数据库。 为简单起见，在提到 SQL 数据库和 SQL 数据仓库时，本文统称 SQL 数据库。
@@ -84,15 +84,7 @@ Azure Active Directory 身份验证是使用 Azure Active Directory (Azure AD) �
 - 作为本机或联合域成员从其他 Azure AD 导入的成员。
 - 以安全组形式创建的 Active Directory 组。
 
-与托管实例相关的 Azure AD 限制：
-
-- 只有 Azure AD 管理员才能创建数据库，Azure AD 用户的作用域为单个数据库，并且不具有此权限
-- 数据库所有权：
-  - Azure AD 主体不能更改数据库（更改数据库授权）的所有权，并且不能设为所有者。
-  - 由 Azure AD 管理员创建的数据库不设置所有权（sys.sysdatabases 中的 owner_sid 字段为 0x1）。
-- 使用 Azure AD 主体登录时，无法管理 SQL 代理。
-- 使用 EXECUTE AS 不能模拟 Azure AD 管理员
-- Azure AD 主体不支持 DAC 连接。
+Azure AD 登录名和用户作为[托管实例](sql-database-managed-instance.md)的预览功能受到支持
 
 这些系统函数在 Azure AD 主体下执行时，返回 NULL 值：
 

@@ -2,26 +2,26 @@
 title: 使用 PowerShell 部署和管理 Resource Manager 部署型 VM 的备份
 description: 使用 PowerShell 在 Azure 中部署和管理 Resource Manager 部署型 VM 的备份
 services: backup
-author: markgalioto
+author: rayne-wiselman
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
 ms.date: 10/20/2018
-ms.author: markgal
+ms.author: raynew
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 855a046425f051739f61c74b551d4ffea7b9120a
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 814afb8731f8e4da3d3cbc75ef69c3b5da487914
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51252354"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52877855"
 ---
 # <a name="use-powershell-to-back-up-and-restore-virtual-machines"></a>使用 PowerShell 备份和还原虚拟机
 
 本文说明如何使用 Azure PowerShell cmdlet 从恢复服务保管库备份和恢复 Azure 虚拟机 (VM)。 恢复服务保管库是一种 Azure 资源管理器资源，用于保护 Azure 备份和 Azure Site Recovery 服务中的数据与资产。 
 
 > [!NOTE]
-> Azure 有两种用于创建和使用资源的部署模型： [资源管理器部署模型和经典部署模型](../azure-resource-manager/resource-manager-deployment-model.md)。 本文的内容与使用 Resource Manager 模型创建的 VM 有关。
+> Azure 有两种用于创建和使用资源的部署模型：[资源管理器部署模型和经典部署模型](../azure-resource-manager/resource-manager-deployment-model.md)。 本文的内容与使用 Resource Manager 模型创建的 VM 有关。
 >
 >
 
@@ -40,7 +40,7 @@ ms.locfileid: "51252354"
 
 开始时，请执行以下操作：
 
-1. [下载最新版本的 PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps)（所需的最低版本为 1.4.0）
+1. [下载最新版本的 PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps)（所需的最低版本为1.4.0）
 
 2. 键入以下命令查找可用的 Azure 备份 PowerShell cmdlet：
    
