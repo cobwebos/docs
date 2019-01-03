@@ -56,6 +56,12 @@ items:
   items:
   - name: SSH 故障排除
     href: troubleshoot-ssh-connection.md
+  - name: 排查文件系统错误
+    href: https://support.microsoft.com/help/3213321
+  - name: 排查与内核相关的启动问题
+    href: https://support.microsoft.com/help/4091524
+  - name: 排查 fstab 错误
+    href: https://support.microsoft.com/help/3206699
   - name: 详细的 SSH 故障排除
     href: detailed-troubleshoot-ssh-connection.md
 - name: 常见错误消息
@@ -105,6 +111,8 @@ items:
   href: unexpected-reboots-attached-vhds.md
 - name: Windows 激活问题
   href: troubleshoot-activation-problems.md
+- name: 强制隧道的激活问题
+  href: custom-routes-enable-kms-activation.md
 - name: 应用程序访问问题
   href: troubleshoot-app-connection.md
 - name: 新建 VM 部署
@@ -162,9 +170,9 @@ items:
   href: understand-vm-reboot.md
 - name: 远程故障排除工具
   href: remote-tools-troubleshoot-azure-vm-issues.md
-ms.openlocfilehash: af1f284108a326b3ce099ee49cb15a8f51cc61af
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: b745b9e42c700ea446d934df7d2e3201b555f075
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53434846"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53976318"
