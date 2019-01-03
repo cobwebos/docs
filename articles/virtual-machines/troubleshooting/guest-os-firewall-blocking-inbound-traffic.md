@@ -102,7 +102,7 @@ ms.locfileid: "53134431"
 
 #### <a name="mitigation-2"></a>缓解措施 2
 
-1.  查询防火墙配置文件，确定入站防火墙策略是否设置为“BlockInboundAlways” **：
+1.  查询防火墙配置文件，确定入站防火墙策略是否设置为“ *BlockInboundAlways*”：
 
     ```cmd
     netsh advfirewall show allprofiles | more
@@ -115,7 +115,7 @@ ms.locfileid: "53134431"
     >    * *BlockInbound*：除非存在有效规则允许该流量，否则将阻止所有入站流量。
     >    * *BlockInboundAlways*：忽略所有防火墙规则，并阻止所有流量。
 
-2.  编辑“DefaultInboundAction”，将这些配置文件设置为“允许”流量 **  **** 。 为此，请运行以下命令：
+2.  编辑“ *DefaultInboundAction*” ，将这些配置文件设置为“ **允许**”流量 。 为此，请运行以下命令：
 
     ```cmd
     netsh advfirewall set allprofiles firewallpolicy allowinbound,allowoutbound
@@ -138,7 +138,7 @@ ms.locfileid: "53134431"
 
 2.  开始与恢复 VM 建立远程桌面连接。
 
-3.  确保在磁盘管理控制台中将该磁盘标记为“联机” **** 。 请留意分配给附加系统磁盘的驱动器号。
+3.  确保在磁盘管理控制台中将该磁盘标记为“ **联机**” 。 请留意分配给附加系统磁盘的驱动器号。
 
 #### <a name="mitigation-1"></a>缓解措施 1
 
@@ -150,7 +150,7 @@ ms.locfileid: "53134431"
 
 2.  开始与恢复 VM 建立远程桌面连接。
 
-3.  将系统磁盘附加到恢复 VM 后，请确保在磁盘管理控制台中将该磁盘标记为“联机” **** 。 请注意分配给附加的 OS 磁盘的驱动器号。
+3.  将系统磁盘附加到恢复 VM 后，请确保在磁盘管理控制台中将该磁盘标记为“ **联机**” 。 请注意分配给附加的 OS 磁盘的驱动器号。
 
 4.  打开提升后的 CMD 实例，然后运行以下脚本：
 
