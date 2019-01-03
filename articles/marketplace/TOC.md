@@ -196,10 +196,6 @@
 #### [“店面详细信息”选项卡](./cloud-partner-portal/consulting-services/cpp-consulting-service-storefront-details.md)
 ### [发布咨询服务产品](./cloud-partner-portal/consulting-services/cpp-consulting-service-publish-offer.md) 
 
-## [管理发布者个人资料](./cloud-partner-portal-orig/cloud-partner-portal-manage-publisher-profile.md)
-## [管理用户](./cloud-partner-portal-orig/cloud-partner-portal-manage-users.md)
-## [GDPR 符合性](./cloud-partner-portal-orig/cloud-partner-portal-gdpr.md)
-
 ## 体验版
 ### [什么是体验版？](./cloud-partner-portal-orig/what-is-test-drive.md)
 ### [Azure 资源管理器体验版](./cloud-partner-portal-orig/azure-resource-manager-test-drive.md)

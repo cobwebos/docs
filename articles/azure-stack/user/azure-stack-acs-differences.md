@@ -14,12 +14,12 @@ ms.topic: get-started-article
 ms.date: 12/03/2018
 ms.author: mabrigg
 ms.reviwer: xiaofmao
-ms.openlocfilehash: 1d1811549978d78a8dddad8e89895fdf605ed02b
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 1393dd32aea8cb6d348092ea1fc56752f659beab
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53341892"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53717858"
 ---
 # <a name="azure-stack-storage-differences-and-considerations"></a>Azure Stack 存储：差异和注意事项
 
@@ -29,13 +29,13 @@ Azure Stack 存储是存储在 Microsoft Azure Stack 中的云服务的组。 Az
 
 本文汇总了 Azure Stack 存储与 Azure 存储服务之间的已知差异。 它还列出了部署 Azure Stack 时要考虑的事项。 若要了解全球 Azure 与 Azure Stack 之间的大致差异，请参阅[重要注意事项](azure-stack-considerations.md)一文。
 
-## <a name="cheat-sheet-storage-differences"></a>备忘单：存储的差异
+## <a name="cheat-sheet-storage-differences"></a>速查表：存储的差异
 
 | Feature | Azure（公有云） | Azure Stack |
 | --- | --- | --- |
 |文件存储|支持基于云的 SMB 文件共享|尚不支持
-|静态数据的 Azure 存储服务加密|256 位 AES 加密|BitLocker 128 位 AES 加密
-|存储帐户类型|常规用途和 Azure Blob 存储帐户|仅限常规用途。
+|静态数据的 Azure 存储服务加密|256 位 AES 加密。 支持使用 Key Vault 中客户托管密钥的加密。|BitLocker 128 位 AES 加密。 使用客户托管密钥的加密不受支持。
+|存储帐户类型|常规用途 V1 和 V2 和 Blob 存储帐户|常规用途 V1。
 |复制选项|本地冗余存储、异地冗余存储、读取访问异地冗余存储和区域冗余存储|本地冗余存储。
 |高级存储|完全支持|可预配，但无性能限制或保证。
 |托管磁盘|支持高级和标准版|使用版本 1808 或更高版本时支持。
@@ -44,11 +44,14 @@ Azure Stack 存储是存储在 Microsoft Azure Stack 中的云服务的组。 Az
 |页 Blob 快照复制|支持备份已附加到运行中 VM 的 Azure 非托管 VM 磁盘|尚不支持。
 |页 Blob 增量快照复制|支持高级和标准 Azure 页 Blob|尚不支持。
 |适用于 Blob 存储的存储层|热存储层、冷存储层和存档存储层。|尚不支持。
-适用于 Blob 存储的软删除|预览|尚不支持。
+|适用于 Blob 存储的软删除|常规可用|尚不支持。
 |页 Blob 大小上限|8 TB|1 TB
 |页 Blob 页面大小|512 字节|4 KB
 |表分区键和行键大小|1,024 个字符（2,048 字节）|400 个字符（800 字节）
-|Blob 快照|一个 blob 的最大快照数不受限制。|一个 blob 的最大快照数为 1,000。|
+|Blob 快照|一个 blob 的最大快照数不受限制。|一个 blob 的最大快照数为 1,000。
+|有关存储的 azure AD 身份验证|预览中|尚不支持。
+|不可变的 Blob|常规可用|尚不支持。
+|防火墙和存储的虚拟网络规则|常规可用|尚不支持。|
 
 存储指标也有一些差异：
 
@@ -61,7 +64,17 @@ Azure Stack 存储是存储在 Microsoft Azure Stack 中的云服务的组。 Az
 
 Azure 存储服务 API：
 
-1802 更新或更高版本：
+1811 更新或更高版本：
+
+ - [2017-11-09](https://docs.microsoft.com/rest/api/storageservices/version-2017-11-09)
+ - [2017-07-29](https://docs.microsoft.com/rest/api/storageservices/version-2017-07-29)
+ - [2017-04-17](https://docs.microsoft.com/rest/api/storageservices/version-2017-04-17)
+ - [2016-05-31](https://docs.microsoft.com/rest/api/storageservices/version-2016-05-31)
+ - [2015-12-11](https://docs.microsoft.com/rest/api/storageservices/version-2015-12-11)
+ - [2015-07-08](https://docs.microsoft.com/rest/api/storageservices/version-2015-07-08)
+ - [2015-04-05](https://docs.microsoft.com/rest/api/storageservices/version-2015-04-05)
+
+1809 更新到 1802年更新：
 
 - [2017-04-17](https://docs.microsoft.com/rest/api/storageservices/version-2017-04-17)
 - [2016-05-31](https://docs.microsoft.com/rest/api/storageservices/version-2016-05-31)
@@ -79,6 +92,12 @@ Azure 存储服务管理 API：
 - [2015-06-15](https://docs.microsoft.com/rest/api/storagerp/?redirectedfrom=MSDN)
 - [2016-01-01](https://docs.microsoft.com/rest/api/storagerp/?redirectedfrom=MSDN)
 
+以前的版本：
+
+ - [2016-01-01](https://docs.microsoft.com/rest/api/storagerp/?redirectedfrom=MSDN)
+ - [2015-06-15](https://docs.microsoft.com/rest/api/storagerp/?redirectedfrom=MSDN)
+ - [2015-05-01-preview](https://docs.microsoft.com/rest/api/storagerp/?redirectedfrom=MSDN)
+ 
 ## <a name="sdk-versions"></a>SDK 版本
 
 Azure Stack 存储支持以下客户端库：

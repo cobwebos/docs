@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 11/07/2018
 ms.author: mabrigg
 ms.reviewer: Anjay.Ajodha
-ms.openlocfilehash: 36637137741aef6b34ab8e70109d692f5399043a
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 12f9ed6d5b5d4c8dc7e5b0b68a0a394749cc72bd
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52967055"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53714604"
 ---
 # <a name="tutorial-deploy-apps-to-azure-and-azure-stack"></a>教程：将应用部署到 Azure 和 Azure Stack
 
@@ -72,7 +72,7 @@ ms.locfileid: "52967055"
 ### <a name="azure-requirements"></a>Azure 要求
 
 * 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
-* 在 Azure 中创建 [Web 应用](https://docs.microsoft.com/azure/app-service/app-service-web-overview)。 记下需在本教程中使用的 Web 应用 URL。
+* 在 Azure 中创建 [Web 应用](https://docs.microsoft.com/azure/app-service/overview)。 记下需在本教程中使用的 Web 应用 URL。
 
 ### <a name="azure-stack-requirements"></a>Azure Stack 要求
 
@@ -180,9 +180,7 @@ Azure DevOps 服务作为服务终结点配置的一部分，需要**租户 ID**
 
 3. 在 Visual Studio Enterprise 中选择“访问控制(IAM)”。
 
-    ![访问控制(IAM)](media/azure-stack-solution-hybrid-pipeline/000_12.png)
-
-4. 选择 **添加** 。
+4. 选择“添加角色分配”。
 
     ![添加](media/azure-stack-solution-hybrid-pipeline/000_13.png)
 
@@ -282,7 +280,7 @@ Azure DevOps 服务作为服务终结点配置的一部分，需要**租户 ID**
 
 可以创建服务连接，使用以下映射：
 
-| 名称 | 示例 | 说明 |
+| 名称 | 示例 | 描述 |
 | --- | --- | --- |
 | 连接名称 | Azure Stack Azure AD | 连接的名称。 |
 | 环境 | AzureStack | 你的环境的名称。 |
@@ -293,7 +291,7 @@ Azure DevOps 服务作为服务终结点配置的一部分，需要**租户 ID**
 | 服务主体客户端 ID | FF74AACF-XXXX-4776-93 FC-C63E6E021D59 | 中的主体 ID[这](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-solution-pipeline#create-a-service-principal)这篇文章中的部分。 |
 | 服务主体键 | THESCRETGOESHERE = | 从同一篇文章 （或如果使用脚本的密码） 键。 |
 | 租户 ID | D073C21E-XXXX-4AD0-B77E-8364FCA78A94 | 以下处的指令检索租户 ID[获取租户 ID](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-solution-pipeline#get-the-tenant-id)。  |
-| 连接： | 未验证 | 验证到服务主体的连接设置。 |
+| 连接:  | 未验证 | 验证到服务主体的连接设置。 |
 
 现在，创建端点时，Azure Stack 连接到 DevOps 是可供使用。 在 Azure Stack 中的生成代理从 DevOps，获取说明和代理然后传达与 Azure Stack 进行通信的终结点信息。
 
@@ -307,7 +305,7 @@ Azure DevOps 的最新更新，即可创建使用服务主体使用证书进行�
 
 可以创建服务连接，使用以下映射：
 
-| 名称 | 示例 | 说明 |
+| 名称 | 示例 | 描述 |
 | --- | --- | --- |
 | 连接名称 | Azure Stack ADFS | 连接的名称。 |
 | 环境 | AzureStack | 你的环境的名称。 |
@@ -318,7 +316,7 @@ Azure DevOps 的最新更新，即可创建使用服务主体使用证书进行�
 | 服务主体客户端 ID | FF74AACF-XXXX-4776-93 FC-C63E6E021D59 | 为 AD FS 创建从服务主体的客户端 ID。 |
 | 证书 | `<certificate>` |  将证书文件从 PFX 转换为 PEM。 将证书 PEM 文件内容粘贴到此字段。 <br> 将 PFX 转换为 PEM:<br>`openssl pkcs12 -in file.pfx -out file.pem -nodes -password pass:<password_here>` |
 | 租户 ID | D073C21E-XXXX-4AD0-B77E-8364FCA78A94 | 以下处的指令检索租户 ID[获取租户 ID](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-solution-pipeline#get-the-tenant-id)。 |
-| 连接： | 未验证 | 验证到服务主体的连接设置。 |
+| 连接:  | 未验证 | 验证到服务主体的连接设置。 |
 
 现在，创建端点时，Azure Stack 连接到 Azure DevOps 是可供使用。 在 Azure Stack 中的生成代理从 Azure DevOps，获取说明和代理然后传达与 Azure Stack 进行通信的终结点信息。
 
@@ -350,7 +348,7 @@ Azure DevOps 的最新更新，即可创建使用服务主体使用证书进行�
 
 ### <a name="create-self-contained-web-app-deployment-for-app-services-in-both-clouds"></a>为这两个云中的应用服务创建独立的 Web 应用部署
 
-1. 编辑 **WebApplication.csproj** 文件：选择 **Runtimeidentifier**，然后添加 `win10-x64.`。有关详细信息，请参阅[独立部署](https://docs.microsoft.com/dotnet/core/deploying/#self-contained-deployments-scd)文档。
+1. 编辑 **WebApplication.csproj** 文件：选择**Runtimeidentifier** ，然后添加`win10-x64.`的详细信息，请参阅[独立的部署](https://docs.microsoft.com/dotnet/core/deploying/#self-contained-deployments-scd)文档。
 
     ![配置 Runtimeidentifier](media/azure-stack-solution-hybrid-pipeline/019_runtimeidentifer.png)
 
@@ -372,7 +370,7 @@ Azure DevOps 的最新更新，即可创建使用服务主体使用证书进行�
 
 ### <a name="use-an-azure-hosted-build-agent"></a>使用 Azure 托管生成代理
 
-使用 Azure DevOps 服务中的托管的生成代理是一个方便的选项，用于构建和部署 web 应用。 Microsoft Azure，从而使连续和不间断地开发周期自动执行代理维护和升级。
+使用 Azure DevOps 服务中的托管的生成代理是一个方便的选项，用于构建和部署 web 应用。 Microsoft Azure 会自动执行代理维护和升级，使开发周期持续而不间断。
 
 ### <a name="configure-the-continuous-deployment-cd-process"></a>配置持续部署 (CD) 过程
 

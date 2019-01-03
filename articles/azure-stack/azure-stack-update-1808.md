@@ -12,19 +12,19 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/08/2018
+ms.date: 12/22/2018
 ms.author: sethm
 ms.reviewer: justini
-ms.openlocfilehash: 7979bbafda6373c7f25c6e9c7d5cd997fbf5c3eb
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 86f4e99401278d13a17f40c4c021060e8bd15f8a
+ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53098084"
+ms.lasthandoff: 12/22/2018
+ms.locfileid: "53754537"
 ---
 # <a name="azure-stack-1808-update"></a>Azure Stack 1808 更新
 
-*适用于：Azure Stack 集成系统*
+适用于：Azure Stack 集成系统
 
 本文介绍 1808 更新包的内容。 此更新包包含此版 Azure Stack 的改进、修复和已知问题。 本文还包含一个用于下载更新的链接。 已知问题分为与更新过程直接相关的问题，以及内部版本（安装后）的问题。
 
@@ -64,7 +64,7 @@ Azure Stack 1808 更新内部版本号为 **1.1808.0.97**。
 - **Kubernetes 市场项**。 现在可以使用 [Kubernetes 市场项](azure-stack-solution-template-kubernetes-cluster-add.md)来部署 Kubernetes 群集。 用户可以选择 Kubernetes 项并填充一些参数，以便将 Kubernetes 群集部署到 Azure Stack。 模板的用途是方便用户在几个步骤中设置开发/测试型 Kubernetes 部署。
 
 <!-- | IS ASDK--> 
-- **Blockchain 模板**。 现在可以在 Azure Stack 上执行[以太坊联盟部署](user/azure-stack-ethereum.md)。 您可以找到三个新模板中的[Azure Stack 快速入门模板](https://github.com/Azure/AzureStack-QuickStart-Templates)。 有了这些模板，用户不需多少 Azure 和以太坊知识即可部署和配置多成员联盟以太坊网络。 模板的用途是方便用户在几个步骤中设置开发/测试型 Blockchain 部署。
+- **Blockchain 模板**。 现在可以在 Azure Stack 上执行[以太坊联盟部署](user/azure-stack-ethereum.md)。 可以在 [Azure Stack 快速入门模板](https://github.com/Azure/AzureStack-QuickStart-Templates)中找到三个新的模板。 有了这些模板，用户不需多少 Azure 和以太坊知识即可部署和配置多成员联盟以太坊网络。 模板的用途是方便用户在几个步骤中设置开发/测试型 Blockchain 部署。
 
 <!-- | IS ASDK--> 
 - **API 版本配置文件 2017-03-09-profile 已更新到 2018-03-01-hybrid**。 API 配置文件指定 Azure 资源提供程序和 Azure REST 终结点的 API 版本。 有关配置文件的详细信息，请参阅[在 Azure Stack 中管理 API 版本配置文件](/azure/azure-stack/user/azure-stack-version-profiles)。
@@ -160,7 +160,7 @@ Azure Stack 1808 更新内部版本号为 **1.1808.0.97**。
 ### <a name="post-update-steps"></a>更新后步骤
 
 > [!Important]  
-> 获取 Azure Stack 部署的扩展主机准备就绪。 使用以下指南对系统进行准备[准备适用于 Azure Stack 扩展主机](azure-stack-extension-host-prepare.md)。
+> 让 Azure Stack 部署准备好使用扩展主机。 遵照[为 Azure Stack 准备扩展主机](azure-stack-extension-host-prepare.md)中的指导准备系统。
 
 安装此更新之后，请安装所有适用的修补程序。 有关详细信息，请查看以下知识库文章，以及我们的[服务策略](azure-stack-servicing-policy.md)。 
 - [KB 4481066 – Azure Stack 修补程序 Azure Stack 修补程序 1.1808.9.117](https://support.microsoft.com/help/4481066/)
@@ -220,7 +220,7 @@ Azure Stack 1808 更新内部版本号为 **1.1808.0.97**。
    
   请运行 [Test-AzureStack](azure-stack-diagnostic-test.md) cmdlet 来验证基础结构角色实例和缩放单元节点的运行状况。 如果 [Test-AzureStack](azure-stack-diagnostic-test.md) 未检测到问题，则可以忽略这些警报。 如果检测到问题，则可以尝试使用管理门户或 PowerShell 启动基础结构角色实例或节点。
 
-  最新版本中修复此问题[1808年修补程序版本](https://support.microsoft.com/help/4481066/)，因此请确保安装此修补程序，如果遇到此问题。
+  此问题已在最新的 [1808 修补程序版本](https://support.microsoft.com/help/4481066/)中修复，因此如果遇到此问题，请务必安装此修补程序。
 
 <!-- 1264761 - IS ASDK --> 
 - 可能会看到包含以下详细信息的“运行状况控制器”组件的警报：  
@@ -235,7 +235,7 @@ Azure Stack 1808 更新内部版本号为 **1.1808.0.97**。
    - 名称：基础结构角色不正常
    - 严重性：警告
    - 组件：运行状况控制器
-   - 说明：运行状况控制器故障扫描仪不可用。 这可能会影响运行状况报告和指标。
+   - 说明：运行状况控制器故障扫描程序不可用。 这可能会影响运行状况报告和指标。
 
   可以放心忽略这两条警报，它们在一段时间后会自动关闭。  
 
@@ -243,24 +243,23 @@ Azure Stack 1808 更新内部版本号为 **1.1808.0.97**。
 <!-- 2812138 | IS --> 
 - 可能会看到包含以下详细信息的**存储**组件警报：
 
-   - 名称: 存储服务内部通信错误  
+   - 名称：存储服务内部通信错误  
    - 严重性：严重  
-   - 组件: 存储  
-   - 说明: 将请求发送到以下节点时发生存储服务内部通信错误。  
+   - 组件：存储  
+   - 说明：将请求发送到以下节点时发生存储服务内部通信错误。  
 
     可以放心地忽略此警报，但需手动关闭它。
 
 <!-- 2368581 - IS. ASDK --> 
 - 如果 Azure Stack 操作员收到内存不足的警报，并且租户虚拟机无法部署并出现“Fabric VM 创建错误”，则可能表示 Azure Stack 模组的可用内存不足。 请使用 [Azure Stack 容量规划工具](https://gallery.technet.microsoft.com/Azure-Stack-Capacity-24ccd822)来充分了解可供工作负荷使用的容量。
 
-
 ### <a name="compute"></a>计算
 
 <!-- 3164607 – IS, ASDK -->
-- 如重新附加到同一虚拟机 (VM) 具有相同名称和 LUN 分离的磁盘失败并出现错误**不能将数据磁盘 datadisk 附加到 VM vm1**。 因为当前正在分离磁盘或最后一个分离操作失败，发生此错误。 请等到磁盘完全分离然后重试或删除/分离磁盘显式试。 解决方法是使用不同的名称，或不同的 LUN 上重新附加它。 
+- 将分离的磁盘重新附加到具有相同名称和 LUN 的同一虚拟机 (VM) 失败，并发生类似于“无法将数据磁盘 'datadisk' 附加到 VM 'vm1'”的错误。 之所以发生该错误，是原因该磁盘目前已分离，或上次分离操作失败。 请等到磁盘完全分离后重试，或再次显式删除/分离磁盘。 解决方法是使用其他名称，或者在其他 LUN 上重新附加磁盘。 
 
 <!-- 3099544 – IS, ASDK --> 
-- 美元/月列时创建新的 VM 使用 Azure Stack 门户中，并选择 VM 大小，将显示的**不可用**消息。 此列不应显示；Azure Stack 不支持显示 VM 定价列。
+- 使用 Azure Stack 门户创建新的 VM 并选择 VM 大小时，“美元/月”列在显示时会出现“不可用”消息。 此列不应显示；Azure Stack 不支持显示 VM 定价列。
 
 <!-- 3090289 – IS, ASDK --> 
 - 应用 1808 更新后，可能会在通过托管磁盘部署 VM 时遇到以下问题：
@@ -273,7 +272,7 @@ Azure Stack 1808 更新内部版本号为 **1.1808.0.97**。
       2. 执行[此文](azure-stack-enable-multitenancy.md#registering-azure-stack-with-the-guest-directory)中的步骤，重新配置每个来宾目录。
       
 <!-- 3179561 - IS --> 
-- 托管的磁盘使用情况报告以小时为单位，如中所述[Azure Stack 使用情况常见问题解答](azure-stack-usage-related-faq.md#managed-disks)。 但是，Azure Stack 计费使用每月价格而因此您可能会错误地收费的托管磁盘使用情况或之前年 9 月 27。 我们具有暂停，费用为托管磁盘后年 9 月 27 之前解决该计费问题。 如果你具有已收费的不正确的托管磁盘使用情况，请联系 Microsoft 计费支持。
+- 根据 [Azure Stack 使用情况常见问题解答](azure-stack-usage-related-faq.md#managed-disks)中所述，数小时内会报告托管磁盘的使用情况。 但是，Azure Stack 计费使用每月价格，因此，在 9 月 27 日或之前向你收取的托管磁盘使用费可能有误。 我们具有暂停，费用为托管磁盘后年 9 月 27 之前解决该计费问题。 如果你具有已收费的不正确的托管磁盘使用情况，请联系 Microsoft 计费支持。
 从 Azure Stack 用量 Api 生成的使用情况报告显示正确的数量和可用。
 
 <!-- 3507629 - IS, ASDK --> 
@@ -283,17 +282,17 @@ Azure Stack 1808 更新内部版本号为 **1.1808.0.97**。
    - 如果您更新的配额值为 0，相当于 GiB 的默认值。 作为一种解决方法，设置为 1 的配额值。
 
 <!-- 2869209 – IS, ASDK --> 
-- 使用 [**Add-AzsPlatformImage** cmdlet](https://docs.microsoft.com/powershell/module/azs.compute.admin/add-azsplatformimage?view=azurestackps-1.4.0) 时，必须使用 **-OsUri** 参数作为存储帐户 URI（在其中上传磁盘）。 如果使用磁盘的本地路径，则此 cmdlet 会失败并显示以下错误：长时间运行的操作失败，状态为“失败”。 
+- 使用 [**Add-AzsPlatformImage** cmdlet](https://docs.microsoft.com/powershell/module/azs.compute.admin/add-azsplatformimage?view=azurestackps-1.4.0) 时，必须使用 **-OsUri** 参数作为存储帐户 URI（在其中上传磁盘）。 如果使用磁盘的本地路径，则此 cmdlet 会失败并显示以下错误：长时间运行的操作失败，状态为 'Failed'。 
 
 <!--  2966665 – IS, ASDK --> 
-- 将 SSD 数据磁盘附加到“高级”大小托管磁盘虚拟机（DS、DSv2、Fs、Fs_V2）失败，出现以下错误：无法更新虚拟机 ‘vmname’ 的磁盘。错误: 请求的操作无法执行，因为 VM 大小 ‘Standard_DS/Ds_V2/FS/Fs_v2’ 不支持存储帐户类型 ‘Premium_LRS’
+- 将 SSD 数据磁盘附加到高级大小的托管磁盘虚拟机（DS、DSv2、Fs、Fs_V2）失败并出现以下错误：无法更新虚拟机 ‘vmname’ 的磁盘。错误:由于 VM 大小 ‘Standard_DS/Ds_V2/FS/Fs_v2’ 不支持存储帐户类型 ‘Premium_LRS’，因此请求的操作无法执行
 
    若要解决此问题，请使用 *Standard_LRS* 数据磁盘而不是 *Premium_LRS* 磁盘。 使用 *Standard_LRS* 数据磁盘不会造成 IOPS 或账单费用变化。 
 
 <!--  2795678 – IS, ASDK --> 
 - 通过门户创建“高级”VM 大小（DS、Ds_v2、FS、FSv2）的虚拟机 (VM) 时，该 VM 在标准存储帐户中创建。 在标准存储帐户中创建不影响功能、IOPS 或计费。 
 
-   可以放心地忽略以下内容的警告：*在 VM 大小需要高级磁盘的情况下，你选择了使用标准磁盘。这可能影响操作系统性能，建议不要这样做。考虑改用高级存储(SSD)。*
+   可以放心忽略带有以下字样的警告：*在 VM 大小需要高级磁盘的情况下，你选择了使用标准磁盘。这可能影响操作系统性能，建议不要这样做。考虑改用高级存储(SSD)。*
 
 <!-- 2967447 - IS, ASDK --> 
 - 虚拟机规模集 (VMSS) 创建体验提供基于 CentOS 的 7.2 作为部署选项。 由于该映像在 Azure Stack 上不可用，因此请为部署选择另一 OS，或者使用一个 Azure 资源管理器模板，指定另一个已在部署之前由操作员从市场下载的 CentOS 映像。  
@@ -315,7 +314,7 @@ Azure Stack 1808 更新内部版本号为 **1.1808.0.97**。
 
    若要查找 VM 的“CPU 百分比”图表，请转到“指标”边栏选项卡并查看所有受支持的 Windows VM 来宾指标。
 
-
+- 创建具有 SSH 授权启用的 Ubuntu 18.04 VM 将不允许要使用 SSH 密钥登录。 解决此问题，请使用 VM 访问 for Linux 扩展预配后，实现 SSH 密钥，或使用基于密码的身份验证。
 
 ### <a name="networking"></a>网络  
 
@@ -361,8 +360,10 @@ Azure Stack 1808 更新内部版本号为 **1.1808.0.97**。
 
 
 ## <a name="download-the-update"></a>下载更新
-可从[此处](https://aka.ms/azurestackupdatedownload)下载 Azure Stack 1808 更新包。
-  
+
+可从[此处](https://aka.ms/azurestackupdatedownload)下载 Azure Stack 1808 更新包。 
+
+在连接的方案，Azure Stack 部署定期检查受保护的终结点，并自动通知你是否可以更新，可用于你的云。 有关详细信息，请参阅[适用于 Azure Stack 中管理更新](azure-stack-updates.md)。
 
 ## <a name="next-steps"></a>后续步骤
 - 若要查看 Azure Stack 集成系统的服务策略，以及必须如何做才能使系统保持在受支持的状态，请参阅 [Azure Stack 服务策略](azure-stack-servicing-policy.md)。  

@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/26/2018
+ms.date: 12/27/2018
 ms.author: sethm
 ms.reviewer: ''
-ms.openlocfilehash: be4d9b3ea7e5715d7c3a4df11b7e8bab4d1d4ca5
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 056c44de4f89b04149c275b1508c7ea8f397d6e6
+ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47405591"
+ms.lasthandoff: 12/28/2018
+ms.locfileid: "53810773"
 ---
 # <a name="guest-operating-systems-supported-on-azure-stack"></a>Azure Stack 支持的来宾操作系统
 
@@ -30,7 +30,7 @@ ms.locfileid: "47405591"
 
 Azure Stack 支持下表中列出的 Windows 来宾操作系统：
 
-| 操作系统 | 说明 | 在市场中可用 |
+| 操作系统 | 描述 | 在市场中可用 |
 | --- | --- | --- | --- | --- | --- |
 | Windows Server，版本 1709 | 64 位 | 包含容器的核心 |
 | Windows Server 2016 | 64 位 |  数据中心、数据中心核心、包含容器的数据中心 |
@@ -41,7 +41,7 @@ Azure Stack 支持下表中列出的 Windows 来宾操作系统：
 | Windows 10 *（请参见注释 1）* | 64 位，Pro 和 Enterprise | 自带映像 |
 
 > [!NOTE]
-> 若要部署 Azure Stack 上的 Windows 10 客户端操作系统，必须具有[Windows 每用户授权](https://www.microsoft.com/en-us/Licensing/product-licensing/windows10.aspx)或者通过合格多租户托管商购买 ([QMTH](https://www.microsoft.com/en-us/CloudandHosting/licensing_sca.aspx))。
+> 若要在 Azure Stack 上部署 Windows 10 客户端操作系统，必须具备 [Windows 每用户授权](https://www.microsoft.com/en-us/Licensing/product-licensing/windows10.aspx)，或者通过合格多租户托管商 ([QMTH](https://www.microsoft.com/en-us/CloudandHosting/licensing_sca.aspx)) 购买。
 
 市场映像可用于即用即付或 BYOL (EA/SPLA) 授权。 不支持在单个 Azure Stack 实例上同时使用这两者。 在部署期间，Azure Stack 会将适当版本的来宾代理注入到映像中。
 
@@ -56,7 +56,7 @@ Datacenter 版本可在市场中下载；客户可以自带包含其他版本的
 >
 > 目前 Azure Stack 不支持 [cloud-init](https://cloud-init.io/)。
 
-| 分发 | 说明 | 发布者 | 市场 |
+| 分发 | 描述 | 发布者 | 市场 |
 | --- | --- | --- | --- | --- | --- |
 | 基于 CentOS 的 6.9 | 64 位 | Rogue Wave | 是 |
 | 基于 CentOS 的 7.4 | 64 位 | Rogue Wave | 是 |
@@ -71,11 +71,11 @@ Datacenter 版本可在市场中下载；客户可以自带包含其他版本的
 | Ubuntu 16.04-LTS | 64 位 | Canonical | 是 |
 | Ubuntu 18.04-LTS | 64 位 | Canonical | 是 |
 
-有关 Red Hat Enterprise Linux 支持信息，请参阅 [Red Hat 和 Azure Stack：常见问题解答](https://access.redhat.com/articles/3413531)。
+Red Hat Enterprise Linux 支持信息，请参阅[Red Hat 和 Azure Stack:Frequently Asked Questions](https://access.redhat.com/articles/3413531)。
 
 ## <a name="next-steps"></a>后续步骤
 
-有关 Azure Stack Marketplace 的详细信息，请参阅以下文章：
+有关 Azure Stack 市场的详细信息，请参阅以下文章：
 
-[下载市场项](azure-stack-download-azure-marketplace-item.md)  
-[创建和发布市场项](azure-stack-create-and-publish-marketplace-item.md)
+- [下载市场项](azure-stack-download-azure-marketplace-item.md)  
+- [创建和发布市场项](azure-stack-create-and-publish-marketplace-item.md)

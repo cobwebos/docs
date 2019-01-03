@@ -12,15 +12,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/10/2018
+ms.date: 12/12/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: 10ae943711fcd7516b0fdbe982fd5d9e09227bdc
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 22032f9d2e60d3c51546c32df8b98f9633c95535
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52864972"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53726523"
 ---
 # <a name="azure-stack-deployment-planning-considerations"></a>Azure Stack 部署规划注意事项
 在部署 Azure Stack 开发工具包 (ASDK) 之前，请确保开发工具包主机满足本文中所述的要求。
@@ -29,17 +29,17 @@ ms.locfileid: "52864972"
 ## <a name="hardware"></a>硬件
 | 组件 | 最小值 | 建议 |
 | --- | --- | --- |
-| 磁盘驱动器：操作系统 |1 块 OS 磁盘，至少 200 GB 用于系统分区（SSD 或 HDD） |1 块 OS 磁盘，至少 200 GB 用于系统分区（SSD 或 HDD） |
-| 磁盘驱动器：常规开发工具包数据<sup>*</sup>  |4 块磁盘。 每个磁盘提供至少 140 GB 的容量（SSD 或 HDD）。 将使用所有可用的磁盘。 |4 块磁盘。 每个磁盘提供至少 250 GB 的容量（SSD 或 HDD）。 将使用所有可用的磁盘。 |
-| 计算：CPU |双插槽：12 个物理核心（总计） |双插槽：16 个物理核心（总计） |
-| 计算：内存 |96 GB RAM |128 GB RAM（这是支持 PaaS 资源提供程序所需的最低设置。）|
+| 磁盘驱动器：操作系统 |1 个操作系统磁盘的最小值为 200 GB 用于系统分区 （SSD 或 HDD） |1 块 OS 磁盘，至少 200 GB 用于系统分区（SSD 或 HDD） |
+| 磁盘驱动器：常规开发工具包数据<sup>*</sup>  |4 块磁盘。 每个磁盘提供至少 240 GB 的容量 （SSD 或 HDD）。 将使用所有可用的磁盘。 |4 块磁盘。 每个磁盘提供至少为 400 GB 的容量 （SSD 或 HDD）。 将使用所有可用的磁盘。 |
+| 计算：CPU |双插槽：16 个物理核心 （总计） |双插槽：20 个物理核心 （总计） |
+| 计算：内存 |192 GB RAM |256 GB RAM |
 | 计算：BIOS |Hyper-V 已启用（提供 SLAT 支持） |Hyper-V 已启用（提供 SLAT 支持） |
-| 网络：NIC |NIC 必须经过 Windows Server 2012 R2 认证，此外在功能上没有特定要求 |NIC 必须经过 Windows Server 2012 R2 认证，此外在功能上没有特定要求 |
+| 网络：NIC |Windows Server 2012 R2 认证。 没有所需的专用的功能 |Windows Server 2012 R2 认证。 没有所需的专用的功能 |
 | 硬件徽标认证 |[针对 Windows Server 2012 R2 的认证](http://windowsservercatalog.com/results.aspx?&chtext=&cstext=&csttext=&chbtext=&bCatID=1333&cpID=0&avc=79&ava=0&avq=0&OR=1&PGS=25&ready=0) |[Windows Server 2016 认证](http://windowsservercatalog.com/results.aspx?&chtext=&cstext=&csttext=&chbtext=&bCatID=1333&cpID=0&avc=79&ava=0&avq=0&OR=1&PGS=25&ready=0) |
 
 <sup>*</sup>如果计划从 Azure 添加多个[市场项](asdk-marketplace-item.md)，则需要的容量比这个建议的容量要大。
 
-**数据磁盘驱动器配置：** 所有数据驱动器的类型都必须相同（全部为 SAS、全部为 SATA 或全部为 NVMe）且容量也必须相同。 如果使用 SAS 磁盘驱动器，则这些磁盘驱动器必须通过单个路径来附加（不提供 MPIO 多路径支持）。
+**数据磁盘驱动器配置：** 所有数据驱动器必须都是相同的类型 （全部为 SAS、 全部为 SATA 或全部为 NVMe） 和容量。 如果使用 SAS 磁盘驱动器，则这些磁盘驱动器必须通过单个路径来附加（不提供 MPIO 多路径支持）。
 
 **HBA 配置选项**
 
@@ -59,7 +59,7 @@ ms.locfileid: "52864972"
 
 <sup>*</sup> 没有直通功能的 RAID 控制器无法识别此介质类型。 此类控制器会将 HDD 和 SSD 都标记为“未指定”。 在这种情况下，SSD 将用作持久存储而不是缓存设备。 因此，可以在这些 SSD 上部署开发工具包。
 
-**实例 HBA**：LSI 9207-8i、LSI-9300-8i 或 LSI-9265-8i（在直通模式下）
+**实例 Hba**:LSI 9207 8i、 LSI 9300 8i 或 LSI 9265-8i 在直通模式下
 
 提供了示例 OEM 配置。
 
