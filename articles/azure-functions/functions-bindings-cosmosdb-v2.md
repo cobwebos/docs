@@ -20,7 +20,7 @@ ms.locfileid: "53344340"
 ---
 # <a name="azure-cosmos-db-bindings-for-azure-functions-2x"></a>适用于 Azure Functions 2.x 的 Azure Cosmos DB 绑定
 
-> [!div class="op_single_selector" title1="Select the version of the Azure Functions runtime you are using: "]
+> [!div class="op_single_selector" title1="选择您正在使用的Azure Functions运行时的版本: "]
 > * [版本 1](functions-bindings-cosmosdb.md)
 > * [第 2 版](functions-bindings-cosmosdb-v2.md)
 
