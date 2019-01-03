@@ -451,7 +451,7 @@ test custom activity Microsoft test custom activity Microsoft
 4. 单击命令栏上的“部署”，部署链接服务。
 
 #### <a name="create-azure-batch-linked-service"></a>创建 Azure Batch 链接服务
-1. 在“数据工厂编辑器”中，单击命令栏上的“...**更多”**，单击“新建计算”****，并从菜单中选择“Azure Batch”****。
+1. 在“数据工厂编辑器”中，单击命令栏上的“...**更多”**，单击“新建计算”，并从菜单中选择“Azure Batch”。
 
     ![新建计算 - Azure Batch](media/data-factory-use-custom-activities/new-azure-compute-batch.png)
 2. 对 JSON 脚本进行以下更改：
@@ -566,7 +566,7 @@ test custom activity Microsoft test custom activity Microsoft
 3. 若要部署 **OutputDataset**，请在命令栏上单击“部署”。
 
 ### <a name="create-and-run-a-pipeline-that-uses-the-custom-activity"></a>创建并运行使用自定义活动的管道
-1. 在“数据工厂编辑器”中，单击“...**更多”**，并在命令栏上选择“新建管道”****。 
+1. 在“数据工厂编辑器”中，单击“...**更多”**，并在命令栏上选择“新建管道”。 
 2. 将右窗格中的 JSON 替换为以下 JSON 脚本：
 
     ```JSON
