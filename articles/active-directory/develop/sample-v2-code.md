@@ -17,12 +17,12 @@ ms.date: 10/26/2018
 ms.author: celested
 ms.reviewer: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 6b6dd80f649b0c92aacdb5711e88d7710db5f51b
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 50d071c420eec106f5ab28530aa7b2ff9a55fe4a
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52424436"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53558747"
 ---
 # <a name="azure-active-directory-code-samples-v20-endpoint"></a>Azure Active Directory 代码示例（v2.0 终结点）
 
@@ -62,8 +62,8 @@ ms.locfileid: "52424436"
 
  平台 | 仅让用户登录 | 让用户登录并调用 Microsoft Graph
  -------- | ------------------- | ---------------------------------
-![ASP.NET Core](media/sample-v2-code/logo_NETcore.png)<p/>ASP.NET Core 2.1 | [aspnetcore-webapp-openidconnect-v2](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2) | [aspnetcore2-2-signInAndCallGraph](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/aspnetcore2-2-signInAndCallGraph) 分支中的相同示例
-![ASP.NET](media/sample-v2-code/logo_NETframework.png)<p/> ASP.NET | [ASP.NET 快速入门](https://GitHub.com/AzureAdQuickstarts/AppModelv2-WebApp-OpenIDConnect-DotNet) <p/> [dotnet-webapp-openidconnect-v2](https://GitHub.com/azure-samples/active-directory-dotnet-webapp-openidconnect-v2)  |  [dotnet-admin-restricted-scopes-v2](https://github.com/azure-samples/active-directory-dotnet-admin-restricted-scopes-v2) <p/>[msgraph-training-aspnetmvcapp](https://github.com/microsoftgraph/msgraph-training-aspnetmvcapp)
+![ASP.NET Core](media/sample-v2-code/logo_NETcore.png)</p>ASP.NET Core 2.1 | [aspnetcore-webapp-openidconnect-v2](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2) | [aspnetcore2-2-signInAndCallGraph](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/aspnetcore2-2-signInAndCallGraph) 分支中的相同示例
+![ASP.NET](media/sample-v2-code/logo_NETframework.png)</p> ASP.NET | [ASP.NET 快速入门](https://github.com/AzureAdQuickstarts/AppModelv2-WebApp-OpenIDConnect-DotNet) </p> [dotnet-webapp-openidconnect-v2](https://github.com/azure-samples/active-directory-dotnet-webapp-openidconnect-v2)  |  [dotnet-admin-restricted-scopes-v2](https://github.com/azure-samples/active-directory-dotnet-admin-restricted-scopes-v2) </p>[msgraph-training-aspnetmvcapp](https://github.com/microsoftgraph/msgraph-training-aspnetmvcapp)
 ![Node.js](media/sample-v2-code/logo_nodejs.png)  |                   | [Node.js 快速入门](https://github.com/azureadquickstarts/appmodelv2-webapp-openidconnect-nodejs)
 ![Ruby](media/sample-v2-code/logo_ruby.png) |                   | [msgraph-training-rubyrailsapp](https://github.com/microsoftgraph/msgraph-training-rubyrailsapp)
 
@@ -73,12 +73,12 @@ ms.locfileid: "52424436"
 
 客户端应用程序 | 平台 | 流/授权 | 调用 Microsoft Graph | 调用 ASP.NET Core 2.0 Web API
 ------------------ | -------- |  ----------| ---------- | -------------------------
-桌面 (WPF)      | ![.NET/C#](media/sample-v2-code/logo_NET.png) | 交互式 | [dotnet-desktop-msgraph-v2](https://github.com/azure-samples/active-directory-dotnet-desktop-msgraph-v2) | [dotnet-native-aspnetcore-v2](https://GitHub.com/azure-samples/active-directory-dotnet-native-aspnetcore-v2)
+桌面 (WPF)      | ![.NET/C#](media/sample-v2-code/logo_NET.png) | 交互式 | [dotnet-desktop-msgraph-v2](https://github.com/azure-samples/active-directory-dotnet-desktop-msgraph-v2) | [dotnet-native-aspnetcore-v2](https://github.com/azure-samples/active-directory-dotnet-native-aspnetcore-v2)
 桌面（控制台）   | ![.NET/C#（桌面）](media/sample-v2-code/logo_NET.png) | Windows 集成身份验证 |[dotnet-iwa-v2](https://github.com/azure-samples/active-directory-dotnet-iwa-v2)
 桌面（控制台）   | ![.NET/C#（桌面）](media/sample-v2-code/logo_NETcore.png) | 用户名/密码 |[dotnetcore-up-v2](https://github.com/azure-samples/active-directory-dotnetcore-console-up-v2)
 移动 (UWP)   | ![.NET/C# (UWP)](media/sample-v2-code/logo_windows.png) | 交互式 |[dotnet-native-uwp-v2](https://github.com/azure-samples/active-directory-dotnet-native-uwp-v2) |
-移动（Android、iOS、UWP）   | ![.NET/C# (Xamarin)](media/sample-v2-code/logo_xamarin.png) | 交互式 |[xamarin-native-v2](https://Github.com/azure-samples/active-directory-xamarin-native-v2) |
-移动 (iOS)       | ![iOS / Objective C 或 swift](media/sample-v2-code/logo_iOS.png) | 交互式 |[ios-swift-native-v2](https://github.com/azure-samples/active-directory-ios-swift-native-v2) <p/> [ios-native-nxoauth2-v2](https://github.com/azure-samples/active-directory-ios-native-nxoauth2-v2) |
+移动（Android、iOS、UWP）   | ![.NET/C# (Xamarin)](media/sample-v2-code/logo_xamarin.png) | 交互式 |[xamarin-native-v2](https://github.com/azure-samples/active-directory-xamarin-native-v2) |
+移动 (iOS)       | ![iOS / Objective C 或 swift](media/sample-v2-code/logo_iOS.png) | 交互式 |[ios-swift-native-v2](https://github.com/azure-samples/active-directory-ios-swift-native-v2) </p> [ios-native-nxoauth2-v2](https://github.com/azure-samples/active-directory-ios-native-nxoauth2-v2) |
 移动 (Android)   | ![Android / Java](media/sample-v2-code/logo_Android.png) | 交互式 |  [android-native-v2](https://github.com/azure-samples/active-directory-android-native-v2 ) |
 
 ## <a name="daemon-applications"></a>守护程序应用程序
@@ -87,8 +87,8 @@ ms.locfileid: "52424436"
 
 客户端应用程序 | 平台 | 流/授权 | 调用 Microsoft Graph
 ------------------ | -------- | ---------- | --------------------
-控制台 | ![.NET Core](media/sample-v2-code/logo_NETcore.png)<p/> ASP.NET  | 客户端凭据 | [dotnetcore-daemon-v2](https://github.com/azure-samples/active-directory-dotnetcore-daemon-v2)
-Web 应用 | ![ASP.NET](media/sample-v2-code/logo_NETframework.png)<p/> ASP.NET  | 客户端凭据 | [dotnet-daemon-v2](https://github.com/azure-samples/active-directory-dotnet-daemon-v2)
+控制台 | ![.NET Core](media/sample-v2-code/logo_NETcore.png)</p> ASP.NET  | 客户端凭据 | [dotnetcore-daemon-v2](https://github.com/azure-samples/active-directory-dotnetcore-daemon-v2)
+Web 应用 | ![ASP.NET](media/sample-v2-code/logo_NETframework.png)</p> ASP.NET  | 客户端凭据 | [dotnet-daemon-v2](https://github.com/azure-samples/active-directory-dotnet-daemon-v2)
 
 ## <a name="headless-applications"></a>无外设应用程序
 
@@ -104,7 +104,7 @@ Web 应用 | ![ASP.NET](media/sample-v2-code/logo_NETframework.png)<p/> ASP.NET 
 
 平台 | 示例
  -------- | -------------------
-![.NET/C#](media/sample-v2-code/logo_NET.png) | [dotnet-native-aspnetcore-v2](https://GitHub.com/azure-samples/active-directory-dotnet-native-aspnetcore-v2) 的 WebAPI（服务）
+![.NET/C#](media/sample-v2-code/logo_NET.png) | [dotnet-native-aspnetcore-v2](https://github.com/azure-samples/active-directory-dotnet-native-aspnetcore-v2) 的 WebAPI（服务）
 
 ## <a name="other-microsoft-graph-samples"></a>其他 Microsoft Graph 示例
 

@@ -1,19 +1,17 @@
 ---
 title: Azure Database for PostgreSQL 中的服务器概念
 description: 本文提供配置和管理 Azure Database for PostgreSQL 服务器的注意事项和指南。
-services: postgresql
 author: rachel-msft
 ms.author: raagyema
-editor: jasonwhowell
 ms.service: postgresql
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/07/2018
-ms.openlocfilehash: b482a43236885f4b5574a9ba3319f74b083df33a
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: a5b6db9f4bfbe9a11119270e9236580b41fae8c7
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51281254"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53540854"
 ---
 # <a name="azure-database-for-postgresql-servers"></a>Azure Database for PostgreSQL 服务器
 本文提供使用 Azure Database for PostgreSQL 服务器的注意事项和指南。

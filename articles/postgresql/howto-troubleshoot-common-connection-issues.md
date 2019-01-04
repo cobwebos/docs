@@ -1,21 +1,18 @@
 ---
-title: 排查 Azure Databases for PostgreSQL 的连接问题 | Microsoft Docs
+title: 排查 Azure Databases for PostgreSQL 的连接问题
 description: 了解如何排查 Azure Databases for PostgreSQL 的连接问题。
 keywords: postgresql 连接, 连接字符串, 连接问题, 暂时性错误, 连接错误
-services: postgresql
 author: jan-eng
 ms.author: janeng
-manager: kfile
-editor: jasonwhowell
 ms.service: postgresql
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/09/2018
-ms.openlocfilehash: 67383db4bd1d57d194e10de2dc1964532b3619a4
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: 1a7f58960111b3fba6283830b262a9b901b8e2fd
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53160805"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53546226"
 ---
 # <a name="troubleshoot-connection-issues-to-azure-database-for-postgresql"></a>排查 Azure Databases for PostgreSQL 的连接问题
 

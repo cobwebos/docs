@@ -7,15 +7,15 @@ manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 10/23/2018
+ms.date: 12/18/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: b0e24da86d253139a85e792bf3c59d777cf5db6a
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: cc96da060a7a91e0e3118c436a93bdafca3b0372
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52833935"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53633004"
 ---
 # <a name="customize-the-user-interface-of-your-application-using-a-custom-policy-in-azure-active-directory-b2c"></a>使用 Azure Active Directory B2C 中的自定义策略自定义应用程序的用户界面
 
@@ -50,9 +50,6 @@ ms.locfileid: "52833935"
    </body>
    </html>
    ```
-
-   >[!NOTE]
-   >出于安全原因，目前会阻止使用 JavaScript 进行自定义。
 
 2. 将复制的代码段粘贴到文本编辑器中，然后将文件保存为 *customize-ui.html*。
 
@@ -124,7 +121,7 @@ ms.locfileid: "52833935"
 3. 打开扩展文件， 例如，TrustFrameworkExtensions.xml。 搜索 BuildingBlocks 元素。 如果该元素不存在，请添加该元素。
 4. 粘贴作为 BuildingBlocks 元素的子元素复制的 ContentDefinitions 元素的全部内容。 
 5. 在复制的 XML 中搜索包含 `Id="api.signuporsignin"` 的 ContentDefinition 元素。
-6. 将 LoadUri 的值更改为上传到存储的 HTML 文件的 URL。 例如， https://mystore1.azurewebsites.net/b2c/customize-ui.html。
+6. 将 LoadUri 的值更改为上传到存储的 HTML 文件的 URL。 例如， https://your-storage-account.blob.core.windows.net/your-container/customize-ui.html。
     
     自定义策略应如下所示：
 

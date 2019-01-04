@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 12/10/2018
 ms.author: routlaw
 ms.custom: seodec18
-ms.openlocfilehash: 6a9f3fcb372606e7f608b5137fb1ed15376d72d9
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: 6f6dac37d1114e8a9faa16c07fd5c14a90a5b0fb
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53407331"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53976726"
 ---
 # <a name="java-developers-guide-for-app-service-on-linux"></a>Linux 上的应用服务的 Java 开发人员指南
 
@@ -28,7 +28,7 @@ Linux 上的 Azure 应用服务可让 Java 开发人员在完全托管的基于 
 
 ## <a name="logging-and-debugging-apps"></a>日志记录和调试应用
 
-可以通过 Azure 门户对每个应用使用性能报告、流量可视化和运行状况检查。 请参阅 [Azure 应用服务诊断概述](/azure/app-service/app-service-diagnostics)来详细了解如何访问和使用这些诊断工具。
+可以通过 Azure 门户对每个应用使用性能报告、流量可视化和运行状况检查。 请参阅 [Azure 应用服务诊断概述](/azure/app-service/overview-diagnostics)来详细了解如何访问和使用这些诊断工具。
 
 ## <a name="application-performance-monitoring"></a>应用程序性能监视
 
@@ -54,11 +54,11 @@ az webapp log config --name ${WEBAPP_NAME} \
 az webapp log tail --name webappname --resource-group myResourceGroup
 ```
 
-有关详细信息，请参阅[使用 Azure CLI 流式传输日志](../web-sites-enable-diagnostic-log.md#streaming-with-azure-cli)。
+有关详细信息，请参阅[使用 Azure CLI 流式传输日志](../troubleshoot-diagnostic-logs.md#streaming-with-azure-cli)。
 
 ### <a name="app-logging"></a>应用日志记录
 
-通过 Azure 门户或 [Azure CLI](/cli/azure/webapp/log#az-webapp-log-config) 启用[应用程序日志记录](/azure/app-service/web-sites-enable-diagnostic-log#enablediag)，以将应用服务配置为向本地文件系统或 Azure Blob 存储写入应用程序的标准控制台输出和标准控制台错误流。 在完成配置并经过 12 个小时后，将禁用记录到应用服务本地文件系统实例。 如果需要保留日志更长时间，请将应用程序配置为向 Blob 存储容器写入输出。
+通过 Azure 门户或 [Azure CLI](/cli/azure/webapp/log#az-webapp-log-config) 启用[应用程序日志记录](/azure/app-service/troubleshoot-diagnostic-logs#enablediag)，以将应用服务配置为向本地文件系统或 Azure Blob 存储写入应用程序的标准控制台输出和标准控制台错误流。 在完成配置并经过 12 个小时后，将禁用记录到应用服务本地文件系统实例。 如果需要保留日志更长时间，请将应用程序配置为向 Blob 存储容器写入输出。
 
 如果应用程序使用 [Logback](https://logback.qos.ch/) 或 [Log4j](https://logging.apache.org/log4j) 进行跟踪，则你可以遵照[在 Application Insights 中浏览 Java 跟踪日志](/azure/application-insights/app-insights-java-trace-logs)中的日志记录框架配置说明，将这些用于审查的跟踪写入到 Azure Application Insights。 
 
@@ -173,9 +173,6 @@ az webapp start -n ${WEBAPP_NAME} -g ${WEBAPP_RESOURCEGROUP_NAME}
 
 或者在 Azure 门户中的“应用程序设置”边栏选项卡中设置环境变量。
 
->[!NOTE]
-> 如果你使用的是 Azure Database for Postgres，请在 JDBC 连接字符串中将 `ssl=true` 替换为 `sslmode=require`。
-
 接下来，确定数据源应当供一个应用程序使用，还是供在 Tomcat servlet 上运行的所有应用程序使用。
 
 #### <a name="for-application-level-data-sources"></a>对于应用程序级的数据源： 
@@ -259,7 +256,7 @@ az webapp start -n ${WEBAPP_NAME} -g ${WEBAPP_RESOURCEGROUP_NAME}
 
     3. 使用 SFTP 客户端连接到本地隧道端口，并将文件上传到 `/home/tomcat/lib` 文件夹。
 
-    另外，也可以使用某个 FTP 客户端上传 JDBC 驱动程序。 请遵循这些[用于获取 FTP 凭据的说明](https://docs.microsoft.com/azure/app-service/app-service-deployment-credentials)。
+    另外，也可以使用某个 FTP 客户端上传 JDBC 驱动程序。 请遵循这些[用于获取 FTP 凭据的说明](https://docs.microsoft.com/azure/app-service/deploy-configure-credentials)。
 
 2. 如果你创建了服务器级数据源，请重启应用服务 Linux 应用程序。 Tomcat 会将 `CATALINA_HOME` 重置为 `/home/tomcat/conf`，并使用更新后的配置。
 

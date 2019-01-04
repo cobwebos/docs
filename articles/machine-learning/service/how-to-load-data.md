@@ -12,12 +12,12 @@ manager: cgronlun
 ms.reviewer: jmartens
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 9d3b72e62c778d02b25b082643e0de4c6cc09a60
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 86823579286ac0b8fae39c265b387ea6b4ad99ee
+ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53190758"
+ms.lasthandoff: 12/22/2018
+ms.locfileid: "53755234"
 ---
 # <a name="load-and-read-data-with-azure-machine-learning"></a>使用 Azure 机器学习加载和读取数据
 
@@ -139,7 +139,7 @@ dataflow.head(5)
 输出显示第二个工作表中的数据在标头前有三个空行。 `read_excel()` 函数包含用于跳过行和使用标头的可选参数。 运行以下代码以跳过前三行，并将第四行用作标头。
 
 ```python
-dataflow = dprep.read_excel(path='./data/excel.xlsx', sheet_name='Sheet2', use_header=True, skip_rows=3)
+dataflow = dprep.read_excel(path='./data/excel.xlsx', sheet_name='Sheet2', use_column_headers=True, skip_rows=3)
 ```
 
 ||Rank|标题|工作室|全球|国内 / %|Column1|海外 / %|Column2|年份^|

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 09/05/2017
 ms.author: fryu
 ms.component: common
-ms.openlocfilehash: 27523a3746e3afe649df3fcf78975b501a922ff8
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 51c0fefc0d18127da1f5fc513b493407510a071b
+ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52957293"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53994430"
 ---
 # <a name="azure-storage-metrics-in-azure-monitor"></a>Azure Monitor 中的 Azure 存储指标
 
@@ -25,7 +25,7 @@ Azure Monitor 提供统一的用户界面用于监视不同的 Azure 服务。 �
 
 Azure Monitor 提供多种访问指标的方法。 可从 [Azure 门户](https://portal.azure.com)、Azure Monitor API（REST 和 .Net）以及分析解决方案（例如事件中心）访问指标。 有关详细信息，请参阅 [Azure Monitor 指标](../../monitoring-and-diagnostics/monitoring-overview-metrics.md)。
 
-默认情况下，已启用指标，并且可访问过去 93 天的数据。 如需将数据保留更长一段时间，可将指标数据存档到 Azure 存储帐户。 可在 Azure Monitor 的 [诊断设置](../../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md) 中完成这种配置。
+默认情况下，已启用指标，并且可访问过去 93 天的数据。 如需将数据保留更长一段时间，可将指标数据存档到 Azure 存储帐户。 可在 Azure Monitor 的 [诊断设置](../../azure-monitor/platform/diagnostic-logs-overview.md) 中完成这种配置。
 
 ### <a name="access-metrics-in-the-azure-portal"></a>在 Azure 门户中访问指标
 
@@ -332,14 +332,14 @@ Azure 存储在 Azure Monitor 中提供以下容量指标。
 
 | 指标名称 | Description |
 | ------------------- | ----------------- |
-| UsedCapacity | 存储帐户使用的存储量。 对于标准存储帐户，该指标是 Blob、表、文件和队列使用的容量总和。 对于高级存储帐户和 Blob 存储帐户，它与 BlobCapacity 相同。 <br/><br/> 单位：字节 <br/> 聚合类型：总计 <br/> 值示例：1024 |
+| UsedCapacity | 存储帐户使用的存储量。 对于标准存储帐户，该指标是 Blob、表、文件和队列使用的容量总和。 对于高级存储帐户和 Blob 存储帐户，它与 BlobCapacity 相同。 <br/><br/> 单位：字节 <br/> 聚合类型：平均值 <br/> 值示例：1024 |
 
 ### <a name="blob-storage"></a>Blob 存储
 
 | 指标名称 | Description |
 | ------------------- | ----------------- |
-| BlobCapacity | 存储帐户中使用的 Blob 存储总计。 <br/><br/> 单位：字节 <br/> 聚合类型：总计 <br/> 值示例：1024 <br/> 维度：BlobType（[定义](#metrics-dimensions)） |
-| BlobCount    | 在存储帐户中存储的 Blob 对象数。 <br/><br/> 单位：Count <br/> 聚合类型：总计 <br/> 值示例：1024 <br/> 维度：BlobType（[定义](#metrics-dimensions)） |
+| BlobCapacity | 存储帐户中使用的 Blob 存储总计。 <br/><br/> 单位：字节 <br/> 聚合类型：平均值 <br/> 值示例：1024 <br/> 维度：BlobType（[定义](#metrics-dimensions)） |
+| BlobCount    | 在存储帐户中存储的 Blob 对象数。 <br/><br/> 单位：Count <br/> 聚合类型：平均值 <br/> 值示例：1024 <br/> 维度：BlobType（[定义](#metrics-dimensions)） |
 | ContainerCount    | 存储帐户中的容器数。 <br/><br/> 单位：Count <br/> 聚合类型：平均值 <br/> 值示例：1024 |
 
 ### <a name="table-storage"></a>表存储

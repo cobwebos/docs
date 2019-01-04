@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/21/2018
-ms.openlocfilehash: 83adec0c3127e87da9871e294026fd467199c720
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 0571347b7b44d6f6836d4dec1ebcf9b752d8fa8f
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53012872"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53634433"
 ---
 # <a name="use-apache-zeppelin-notebooks-with-apache-spark-cluster-on-azure-hdinsight"></a>在 Azure HDInsight 上的 Apache Spark 群集中使用 Apache Zeppelin 笔记本
 
@@ -28,12 +28,11 @@ HDInsight Spark 群集包括可用于运行 [Apache Spark](https://spark.apache.
 ## <a name="launch-an-apache-zeppelin-notebook"></a>启动 Apache Zeppelin 笔记本
 1. 在 Spark 群集边栏选项卡中单击“群集仪表板”，并单击“Zeppelin 笔记本”。 出现提示时，请输入群集的管理员凭据。
    
-   > [!NOTE]
+   > [!NOTE]  
    > 也可以在浏览器中打开以下 URL 来访问群集的 Zeppelin 笔记本。 将 **CLUSTERNAME** 替换为群集的名称：
    > 
    > `https://CLUSTERNAME.azurehdinsight.net/zeppelin`
-   > 
-   > 
+
 1. 创建新的笔记本。 在标题窗格中单击“笔记本”，并单击“创建新笔记”。
    
     ![创建新的 Zeppelin 笔记本](./media/apache-spark-zeppelin-notebook/hdinsight-create-zeppelin-notebook.png "创建新的 Zeppelin 笔记本")
@@ -74,9 +73,8 @@ HDInsight Spark 群集包括可用于运行 [Apache Spark](https://spark.apache.
    
     也可以为每个段落提供标题。 在右下角单击“设置”图标，并单击“显示标题”。
 
-> [!NOTE]
+> [!NOTE]  
 > 所有 HDInsight 版本中的 Zeppelin 笔记本均不支持 %spark2 解释器，HDInsight 4.0 及更高版本不支持 %sh 解释器。
->
 
 1. 现在可以针对 **hvac** 表运行 Spark SQL 语句。 将以下查询粘贴到新段落中。 该查询将检索建筑物 ID，以及在给定日期当天每栋建筑物的目标温度与实际温度之间的差异。 按 **Shift + Enter**。
    
@@ -108,9 +106,9 @@ HDInsight Spark 群集包括可用于运行 [Apache Spark](https://spark.apache.
     ![重启 Livy 解释程序](./media/apache-spark-zeppelin-notebook/hdinsight-zeppelin-restart-interpreter.png "重启 Zeppelin 解释程序")
 
 ## <a name="how-do-i-use-external-packages-with-the-notebook"></a>如何将外部包与笔记本配合使用？
-可在 HDInsight (Linux) 上的 Apache Spark 群集中配置 Zeppelin 笔记本，以使用未现成包含在群集中的、由社区贡献的外部包。 可以搜索 [Maven 存储库](http://search.maven.org/)获取可用包的完整列表。 也可以从其他源获取可用包的列表。 例如，[Spark 包](http://spark-packages.org/)中提供了社区贡献包的完整列表。
+可在 HDInsight (Linux) 上的 Apache Spark 群集中配置 Zeppelin 笔记本，以使用未现成包含在群集中的、由社区贡献的外部包。 可以搜索 [Maven 存储库](https://search.maven.org/)获取可用包的完整列表。 也可以从其他源获取可用包的列表。 例如，[Spark 包](https://spark-packages.org/)中提供了社区贡献包的完整列表。
 
-本文介绍如何将 [spark-csv](http://search.maven.org/#artifactdetails%7Ccom.databricks%7Cspark-csv_2.10%7C1.4.0%7Cjar) 包与 Jupyter 笔记本配合使用。
+本文介绍如何将 [spark-csv](https://search.maven.org/#artifactdetails%7Ccom.databricks%7Cspark-csv_2.10%7C1.4.0%7Cjar) 包与 Jupyter 笔记本配合使用。
 
 1. 打开解释程序设置。 在右上角单击已登录的用户名，并单击“解释程序”。
    
@@ -118,14 +116,14 @@ HDInsight Spark 群集包括可用于运行 [Apache Spark](https://spark.apache.
 1. 滚动到 Livy 解释程序设置，并单击“编辑”。
    
     ![更改解释程序设置](./media/apache-spark-zeppelin-notebook/zeppelin-use-external-package-1.png "更改解释程序设置")
-1. 添加名为 **livy.spark.jars.packages** 的新键并将其值设置为 `group:id:version` 格式。 因此，如果要使用 [spark csv](http://search.maven.org/#artifactdetails%7Ccom.databricks%7Cspark-csv_2.10%7C1.4.0%7Cjar) 包，必须将密钥的值设置为 `com.databricks:spark-csv_2.10:1.4.0`。
+1. 添加名为 **livy.spark.jars.packages** 的新键并将其值设置为 `group:id:version` 格式。 因此，如果要使用 [spark csv](https://search.maven.org/#artifactdetails%7Ccom.databricks%7Cspark-csv_2.10%7C1.4.0%7Cjar) 包，必须将密钥的值设置为 `com.databricks:spark-csv_2.10:1.4.0`。
    
     ![更改解释程序设置](./media/apache-spark-zeppelin-notebook/zeppelin-use-external-package-2.png "更改解释程序设置")
    
     单击“保存”，并重新启动 Livy 解释程序。
 1. **提示**：要了解如何访问上面输入的键的值，请查看以下内容。
    
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在 Maven 存储库中找出该包。 在本教程中，使用了 [spark-csv](http://search.maven.org/#artifactdetails%7Ccom.databricks%7Cspark-csv_2.10%7C1.4.0%7Cjar)。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在 Maven 存储库中找出该包。 在本教程中，使用了 [spark-csv](https://search.maven.org/#artifactdetails%7Ccom.databricks%7Cspark-csv_2.10%7C1.4.0%7Cjar)。
    
     b. 从存储库中收集 **GroupId**、**ArtifactId** 和 **Version** 的值。
    

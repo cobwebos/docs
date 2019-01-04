@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/18/2018
 ms.author: barclayn
-ms.openlocfilehash: d4a2daf10fd864f13982f4d327868ad62d1309b3
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: 42958576a127fee5e0a275e53203edd4e4dee6f9
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53321454"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53540245"
 ---
 # <a name="security-best-practices-for-iaas-workloads-in-azure"></a>Azure 中 IaaS 工作负荷的安全性最佳实践
 
@@ -137,7 +137,7 @@ Microsoft 反恶意软件包括实时保护、计划扫描、恶意软件修正�
 
 我们还建议使用 [Azure Monitor](../monitoring-and-diagnostics/monitoring-overview-metrics.md) 来洞察资源的运行状况。 Azure Monitor 功能：
 
-- [资源诊断日志文件](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md)：监视 VM 资源并识别可能会损害性能与可用性的潜在问题。
+- [资源诊断日志文件](../azure-monitor/platform/diagnostic-logs-overview.md)：监视 VM 资源并识别可能会损害性能与可用性的潜在问题。
 - [Azure 诊断扩展](../azure-monitor/platform/diagnostics-extension-overview.md)：在 Windows VM 上提供监视和诊断功能。 在 [Azure 资源管理器模板](../virtual-machines/windows/extensions-diagnostics-template.md)中包含该扩展即可启用这些功能。
 
 不监视 VM 性能的组织无法确定性能模式的某些变化是正常还是异常。 若 VM 消耗的资源超过平常，可能意味着存在来自外部资源的攻击，或者此 VM 中有不安全的进程正在运行。

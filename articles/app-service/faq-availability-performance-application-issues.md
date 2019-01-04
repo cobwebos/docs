@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
 ms.custom: seodec18
-ms.openlocfilehash: 3a0b92e2c2a588fa8ef7edcddaa8c692780814f0
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 471bb1b3fb17adc9e06dba591663ee20dd9d8baf
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53388156"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53721557"
 ---
 # <a name="application-performance-faqs-for-web-apps-in-azure"></a>Azure 中的 Web 应用的应用程序性能常见问题解答
 
@@ -163,7 +163,7 @@ ms.locfileid: "53388156"
 
 Azure 负载均衡器的默认空闲超时设置为四分钟。 这通常是针对 Web 请求的合理响应时间限制。 如果你的 Web 应用需要后台处理，则建议使用 Azure Web 作业。 Azure Web 应用可以调用 Web 作业，并在后台处理完成时收到通知。 可以在多种 Web 作业使用方法（包括队列和触发器）中进行选择。
 
-Web 作业旨在用于后台处理。 可以在 Web 作业中根据需要执行后台处理。 有关 Web 作业的详细信息，请参阅[使用 Web 作业运行后台任务](web-sites-create-web-jobs.md)。
+Web 作业旨在用于后台处理。 可以在 Web 作业中根据需要执行后台处理。 有关 Web 作业的详细信息，请参阅[使用 Web 作业运行后台任务](webjobs-create.md)。
 
 ## <a name="aspnet-core-applications-that-are-hosted-in-app-service-sometimes-stop-responding-how-do-i-fix-this-issue"></a>在应用服务中承载的 ASP.NET Core 应用程序有时会停止响应。 如何修复此问题？
 

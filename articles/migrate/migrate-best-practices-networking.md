@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 12/04/2018
 ms.author: raynew
-ms.openlocfilehash: 1493eb6978b00771aa8ed4d8cfc28c37a9dde5b6
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: c6a995c20beefb3a939aa1421eed537137037922
+ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53139735"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53994957"
 ---
 # <a name="best-practices-to-set-up-networking-for-workloads-migrated-to-azure"></a>为迁移到 Azure 的工作负荷设置网络的最佳做法
 
@@ -118,7 +118,7 @@ DEV-DB-EUS2 | 10.245.24.0/23 | 507 | 数据库 VM
 
 **了解更多：**
 - [了解](https://docs.microsoft.com/azure/migrate/contoso-migration-infrastructure)使用自己的 DNS 服务器时的名称解析。
-- [了解](https://docs.microsoft.com/en-us/azure/architecture/best-practices/naming-conventions?toc=%2fazure%2fvirtual-network%2ftoc.json#naming-subscriptions) DNS 命名规则和限制。
+- [了解](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions?toc=%2fazure%2fvirtual-network%2ftoc.json#naming-subscriptions) DNS 命名规则和限制。
 
 
 ## <a name="best-practice-set-up-availability-zones"></a>最佳做法：设置可用性区域
@@ -336,7 +336,7 @@ BGP 社区优化的连接**
 
 **了解更多：**
 
-- [阅读有关](https://docs.microsoft.com/en-us/azure/virtual-network/security-overview) NSG 的信息。
+- [阅读有关](https://docs.microsoft.com/azure/virtual-network/security-overview) NSG 的信息。
 - [查看](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags) NSG 的可用服务标记。
 
 

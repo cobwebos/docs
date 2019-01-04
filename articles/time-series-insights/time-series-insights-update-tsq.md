@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 48a9a1d0f79a7a36b90fa87651a5283cba87de20
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 7885473d029556e10663675a9886c7ea3b9c709c
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53275799"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53555415"
 ---
 # <a name="data-querying"></a>数据查询
 

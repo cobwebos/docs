@@ -15,12 +15,12 @@ ms.devlang: powershell
 ms.topic: sample
 ms.date: 11/07/2017
 ms.author: tamram
-ms.openlocfilehash: f6f421e780bfbb7922a4b11f758330f2a9a0b84b
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: b41366b89a0598d52ae973e2a6d27e60ed548765
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2017
-ms.locfileid: "24814569"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53634450"
 ---
 # <a name="calculate-the-size-of-a-blob-storage-container"></a>计算 Blob 存储容器的大小
 
@@ -42,7 +42,7 @@ ms.locfileid: "24814569"
 运行以下命令来删除资源组、容器和所有相关资源。
 
 ```powershell
-Remove-AzureRmResourceGroup -Name bloblisttestrg
+Remove-AzResourceGroup -Name bloblisttestrg
 ```
 
 ## <a name="script-explanation"></a>脚本说明
@@ -51,8 +51,8 @@ Remove-AzureRmResourceGroup -Name bloblisttestrg
 
 | 命令 | 说明 |
 |---|---|
-| [Get-AzureRmStorageAccount](/powershell/module/azurerm.storage/get-azurermstorageaccount) | 获取资源组或订阅中的指定存储帐户或所有存储帐户。 |
-| [Get-AzureStorageBlob](/powershell/module/azure.storage/get-azurestorageblob) | 列出容器中的 Blob。 ||
+| [Get-AzStorageAccount](/powershell/module/az.storage/get-azstorageaccount) | 获取资源组或订阅中的指定存储帐户或所有存储帐户。 |
+| [Get-AzStorageBlob](/powershell/module/azure.storage/get-AzStorageblob) | 列出容器中的 Blob。 ||
 
 ## <a name="next-steps"></a>后续步骤
 

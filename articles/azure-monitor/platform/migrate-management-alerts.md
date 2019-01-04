@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 08/14/2017
 ms.author: johnkem
 ms.component: alerts
-ms.openlocfilehash: e3159ac4074e7ff437e052e0e2c1ae7d31378abe
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 8fd7161208f6303e03deaacca6a1e2fad24ec45e
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53344948"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53580870"
 ---
 # <a name="migrate-azure-alerts-on-management-events-to-activity-log-alerts"></a>将管理事件的 Azure 警报迁移到活动日志警报
 
@@ -110,9 +110,9 @@ ResourceUri          : /subscriptions/<subscription-id>/resourceGroups/<resource
 
 ## <a name="next-steps"></a>后续步骤
 
-* 详细了解[活动日志](../../monitoring-and-diagnostics/monitoring-overview-activity-logs.md)
+* 详细了解[活动日志](../../azure-monitor/platform/activity-logs-overview.md)
 * [通过 Azure 门户配置活动日志警报](../../azure-monitor/platform/activity-log-alerts.md)
 * [通过 Resource Manager 配置活动日志警报](../../azure-monitor/platform/alerts-activity-log.md)
 * 查看[活动日志警报 webhook 架构](../../azure-monitor/platform/activity-log-alerts-webhook.md)
-* 详细了解[服务通知](../../monitoring-and-diagnostics/monitoring-service-notifications.md)
+* 详细了解[服务通知](../../azure-monitor/platform/service-notifications.md)
 * 详细了解[操作组](../../azure-monitor/platform/action-groups.md)

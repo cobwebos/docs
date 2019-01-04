@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
 ms.author: wesmc
-ms.openlocfilehash: 5ab2f1df72f04b6456f1083de6870fb86bad6616
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: e6292c97d3e7bbbe74477188586257b4fbf91218
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53438267"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53582705"
 ---
 # <a name="how-to-monitor-azure-cache-for-redis"></a>如何监视用于 Redis 的 Azure 缓存
 用于 Redis 的 Azure 缓存使用 [Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/) 提供用于监视缓存实例的几个选项。 可以查看度量值、将度量值图表固定到启动面板、自定义监视图表的日期和时间范围、在图表中添加和删除度量值，以及设置符合特定条件时发出的警报。 借助这些工具，可以监视 Azure Redis 缓存实例的运行状况，以及管理缓存应用程序。
@@ -79,7 +79,7 @@ ms.locfileid: "53438267"
 >
 >
 
-若要访问指标，可按前文所述在 Azure 门户中查看它们，还可以使用 [Azure Monitor 指标 REST API](../monitoring-and-diagnostics/monitor-stream-monitoring-data-event-hubs.md) 对其进行访问。
+若要访问指标，可按前文所述在 Azure 门户中查看它们，还可以使用 [Azure Monitor 指标 REST API](../azure-monitor/platform/stream-monitoring-data-event-hubs.md) 对其进行访问。
 
 > [!NOTE]
 > 如果更改存储帐户，以前配置的存储帐户中的数据仍可供下载，但并不会显示在 Azure 门户中。  
@@ -96,7 +96,7 @@ ms.locfileid: "53438267"
 > 
 > 
 
-| 指标 | 说明 |
+| 指标 | Description |
 | --- | --- |
 | 缓存命中数 |在指定的报告间隔期间，成功的键查找次数。 此值映射到 Redis [INFO](http://redis.io/commands/info) 命令输出中的 `keyspace_hits`。 |
 | 缓存延迟（预览） | 基于缓存的节点间延迟计算缓存的延迟。 该指标以微秒为单位，具有三个维度：“Avg”、“Min”和“Max”，分别表示指定的报告间隔期间缓存的平均延迟、最小延迟和最大延迟。 |
@@ -142,7 +142,7 @@ ms.locfileid: "53438267"
 
 若要查看缓存的活动日志，从“资源菜单”单击“活动日志”。
 
-有关活动日志的详细信息，请参阅 [Azure 活动日志概述](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md)。
+有关活动日志的详细信息，请参阅 [Azure 活动日志概述](../azure-monitor/platform/activity-logs-overview.md)。
 
 
 

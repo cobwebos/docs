@@ -1,5 +1,5 @@
 ---
-title: Azure 时序见解 C# 查询 - 使用 C# 代码查询 Azure 时序见解环境中的数据 | Microsoft Docs
+title: 使用 C# 代码查询 Azure 时序见解环境中的数据 | Microsoft Docs
 description: 本文介绍如何通过编码以 C# (C-sharp) .NET 语言编写的自定义应用来查询 Azure 时序见解环境中的数据。
 ms.service: time-series-insights
 services: time-series-insights
@@ -12,12 +12,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 03/23/2018
 ms.custom: seodec18
-ms.openlocfilehash: 82a3d4527d241aba80eb471508c99c7781dd4a41
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 07d1b7f801639ca6b4e314f13fbf564c0d525345
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53277942"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53555344"
 ---
 # <a name="query-data-from-the-azure-time-series-insights-environment-using-c"></a>使用 C# 查询 Azure 时序见解环境中的数据
 

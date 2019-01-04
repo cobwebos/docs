@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 12/05/2018
 ms.author: hrasheed
-ms.openlocfilehash: 5e00c52c17eac92edc3273e2d765d6c5fd76f59b
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 1601663266f59668918e6799b5c4a7ff606431c4
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52970663"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53600006"
 ---
 # <a name="debug-apache-spark-jobs-running-on-azure-hdinsight"></a>调试 Azure HDInsight 中运行的 Apache Spark 作业
 
@@ -32,10 +32,9 @@ ms.locfileid: "52970663"
    
     ![启动 YARN UI](./media/apache-spark-job-debugging/launch-yarn-ui.png)
    
-   > [!TIP]
-   > 或者，也可以从 Ambari UI 启动 YARN UI。 若要启动 Ambari UI，请在“群集仪表板”下单击“Ambari 主页”。 在 Ambari UI 中依次单击“YARN”、“快速链接”、活动的资源管理器和“资源管理器 UI”。    
-   > 
-   > 
+   > [!TIP]  
+   > 或者，也可以从 Ambari UI 启动 YARN UI。 若要启动 Ambari UI，请在“群集仪表板”下单击“Ambari 主页”。 在 Ambari UI 中依次单击“YARN”、“快速链接”、活动的资源管理器和“资源管理器 UI”。 
+
 2. 由于 Spark 作业是使用 Jupyter 笔记本启动的，因此应用程序的名称为 **remotesparkmagics**（这是从笔记本启动的所有应用程序的名称）。 单击应用程序名称旁边的应用程序 ID，以获取有关该作业的详细信息。 此时会启动应用程序视图。
    
     ![查找 Spark 应用程序 ID](./media/apache-spark-job-debugging/find-application-id.png)
@@ -72,10 +71,9 @@ ms.locfileid: "52970663"
    
     此时以时间线形式显示 Spark 事件。 时间线视图提供三个级别：跨作业、作业内和阶段内。 上图中捕获了指定阶段的时间线视图。
    
-   > [!TIP]
+   > [!TIP]  
    > 如果选中“启用缩放”复选框，则可以在时间线视图中左右滚动。
-   > 
-   > 
+
 6. Spark UI 中的其他选项卡也提供了有关 Spark 实例的有用信息。
    
    * “存储”选项卡 - 如果应用程序创建了 RDD，可以在“存储”选项卡中找到相关信息。
@@ -92,10 +90,9 @@ ms.locfileid: "52970663"
    
     ![启动 Spark History Server](./media/apache-spark-job-debugging/launch-spark-history-server.png)
    
-   > [!TIP]
+   > [!TIP]  
    > 或者，也可以从 Ambari UI 启动 Spark History Server UI。 要启动 Ambari UI，请在“概述”边栏选项卡的“群集仪表板”下单击“Ambari 主页”。 在 Ambari UI 中，依次单击“Spark”、“快速链接”和“Spark History Server UI”。
-   > 
-   > 
+
 2. 随后会看到已列出所有已完成的应用程序。 单击应用程序 ID 可深入到该应用程序以获取更多信息。
    
     ![启动 Spark History Server](./media/apache-spark-job-debugging/view-completed-applications.png)

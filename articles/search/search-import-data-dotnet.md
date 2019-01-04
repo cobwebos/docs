@@ -10,12 +10,12 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 01/13/2017
 ms.custom: seodec2018
-ms.openlocfilehash: ae723e07f92a05f128ca78a7c5974cd0ebc55ac6
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: a34a48f8816315602fc497d4f39dcfee7fe2b032
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53313286"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53634892"
 ---
 # <a name="upload-data-to-azure-search-using-the-net-sdk"></a>使用 .NET SDK 将数据上传到 Azure 搜索
 > [!div class="op_single_selector"]
@@ -208,11 +208,11 @@ public partial class Hotel
 首先要注意的是 `Hotel` 的每个公共属性都对应于索引定义中的一个字段，但有一个重要差异：每个字段的名称以小写字母开头（“骆驼拼写法”），而 `Hotel` 的每个公共属性的名称以大写字母开头（“帕斯卡拼写法”）。 在执行目标架构不受应用程序开发人员控制的数据绑定的 .NET 应用程序中，这种情况很常见。 不必违反 .NET 命名准则将属性名设为 camel 大小写，而可以使用 `[SerializePropertyNamesAsCamelCase]` 属性指示 SDK 将属性名自动映射到 camel 大小写。
 
 > [!NOTE]
-> Azure 搜索 .NET SDK 使用 [NewtonSoft JSON.NET](http://www.newtonsoft.com/json/help/html/Introduction.htm) 库将自定义模型对象序列化为 JSON 和从 JSON 反序列化。 如果需要，可以自定义此序列化。 可在[使用 JSON.NET 的自定义序列](search-howto-dotnet-sdk.md#JsonDotNet)中了解更多详细信息。 此类的一个示例是对上面的示例代码中的 `DescriptionFr` 属性使用 `[JsonProperty]` 特性。
+> Azure 搜索 .NET SDK 使用 [NewtonSoft JSON.NET](https://www.newtonsoft.com/json/help/html/Introduction.htm) 库将自定义模型对象序列化为 JSON 和从 JSON 反序列化。 如果需要，可以自定义此序列化。 可在[使用 JSON.NET 的自定义序列](search-howto-dotnet-sdk.md#JsonDotNet)中了解更多详细信息。 此类的一个示例是对上面的示例代码中的 `DescriptionFr` 属性使用 `[JsonProperty]` 特性。
 > 
 > 
 
-有关 `Hotel` 类的第二个重要问题是公共属性的数据类型。 这些属性的 .NET 类型映射到它们在索引定义中的等效字段类型。 例如，`Category` 字符串属性映射到 `DataType.String` 类型的 `category` 字段。 `bool?` 和 `DataType.Boolean`、`DateTimeOffset?`和 `DataType.DateTimeOffset` 等之间存在相似的类型映射。 [Azure 搜索 .NET SDK 参考](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.idocumentsoperations#Microsoft_Azure_Search_IDocumentsOperations_GetWithHttpMessagesAsync__1_System_String_System_Collections_Generic_IEnumerable_System_String__Microsoft_Azure_Search_Models_SearchRequestOptions_System_Collections_Generic_Dictionary_System_String_System_Collections_Generic_List_System_String___System_Threading_CancellationToken_)中的 `Documents.Get` 方法记录了类型映射的具体规则。
+有关 `Hotel` 类的第二个重要问题是公共属性的数据类型。 这些属性的 .NET 类型映射到它们在索引定义中的等效字段类型。 例如，`Category` 字符串属性映射到 `DataType.String` 类型的 `category` 字段。 `bool?` 和 `DataType.Boolean`、`DateTimeOffset?`和 `DataType.DateTimeOffset` 等之间存在相似的类型映射。 [Azure 搜索 .NET SDK 参考](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.documentsoperationsextensions.get)中的 `Documents.Get` 方法记录了类型映射的具体规则。
 
 使用自己的类作为文档的这种功能可以在这两个方向上正常工作；此外，还可以检索搜索结果，并使用 SDK 自动将结果反序列化为所选类型，如 [下一篇文章](search-query-dotnet.md)中所示。
 

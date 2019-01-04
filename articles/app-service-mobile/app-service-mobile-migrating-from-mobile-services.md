@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/03/2016
 ms.author: crdun
-ms.openlocfilehash: 7fdbbee27f83a4583390158e456270324967b28a
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 17fbaa7efcdd9e0de675defb3958a61f29bbc3fe
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52961597"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53714315"
 ---
 # <a name="article-top"></a>将现有的 Azure 移动服务迁移到 Azure 应用服务
 借助 [Azure 应用服务正式版]，可轻松就地迁移 Azure 移动服务站点，使用 Azure 应用服务的所有功能。  本文档说明将站点从 Azure 移动服务迁移到 Azure 应用服务时的情形。
@@ -376,25 +376,25 @@ Azure 应用服务中通常会禁用诊断日志记录。  若要启用诊断日
 [应用服务定价]: https://azure.microsoft.com/pricing/details/app-service/
 [Application Insights]: ../application-insights/app-insights-overview.md
 [自动缩放]: ../app-service/web-sites-scale.md
-[Azure 应用服务]: ../app-service/app-service-web-overview.md
+[Azure 应用服务]: ../app-service/overview.md
 [Azure 经典门户]: https://manage.windowsazure.com
 [Azure 门户]: https://portal.azure.com
 [Azure Region]: https://azure.microsoft.com/regions/
 [Azure 计划程序计划]: ../scheduler/scheduler-plans-billing.md
-[连续部署]: ../app-service/app-service-continuous-deployment.md
+[连续部署]: ../app-service/deploy-continuous-deployment.md
 [转换混合命名空间]: https://azure.microsoft.com/blog/updates-from-notification-hubs-independent-nuget-installation-model-pmt-and-more/
 [curl]: https://curl.haxx.se/
 [自定义域名]: ../app-service/app-service-web-tutorial-custom-domain.md
 [Fiddler]: https://www.telerik.com/fiddler
 [Azure 应用服务正式版]: https://azure.microsoft.com/blog/announcing-general-availability-of-app-service-mobile-apps/
 [Hybrid Connections]: ../app-service/app-service-hybrid-connections.md
-[日志记录]: ../app-service/web-sites-enable-diagnostic-log.md
+[日志记录]: ../app-service/troubleshoot-diagnostic-logs.md
 [移动应用 Node.js SDK]: https://github.com/azure/azure-mobile-apps-node
 [Mobile Services vs.App Service]: app-service-mobile-value-prop-migration-from-mobile-services.md
 [通知中心]: ../notification-hubs/notification-hubs-push-notification-overview.md
 [性能监视]: ../app-service/web-sites-monitor.md
 [Postman]: https://www.getpostman.com/
-[过渡槽]: ../app-service/web-sites-staged-publishing.md
+[过渡槽]: ../app-service/deploy-staging-slots.md
 [VNet]: ../app-service/web-sites-integrate-with-vnet.md
 [XDT 转换示例]: https://github.com/projectkudu/kudu/wiki/Xdt-transform-samples
 [函数]: ../azure-functions/functions-overview.md

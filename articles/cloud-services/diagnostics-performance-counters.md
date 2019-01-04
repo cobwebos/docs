@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/02/18
 ms.author: jeconnoc
-ms.openlocfilehash: b288c6a64572287c460e82cd8746a8504d264933
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: d332a792f693b099ce925e9b5705f09e52507522
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53322937"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "54000234"
 ---
 # <a name="collect-performance-counters-for-your-azure-cloud-service"></a>收集 Azure 云服务的性能计数器
 
@@ -84,7 +84,7 @@ Get-Counter -ListSet * | Where-Object CounterSetName -eq "Processor" | Select -E
 
 ### <a name="application-insights"></a>Application Insights
 
-使用适用于云服务的 Azure Application Insights 可以指定要收集的性能计数器。 将 [Application Insights 添加到项目](../application-insights/app-insights-cloudservices.md#sdk)之后，名为 **ApplicationInsights.config** 的配置文件将添加到 Visual Studio 项目。 此配置文件定义 Application Insights 要收集并发送到 Azure 的信息类型。
+使用适用于云服务的 Azure Application Insights 可以指定要收集的性能计数器。 将 [Application Insights 添加到项目](../azure-monitor/app/cloudservices.md#sdk)之后，名为 **ApplicationInsights.config** 的配置文件将添加到 Visual Studio 项目。 此配置文件定义 Application Insights 要收集并发送到 Azure 的信息类型。
 
 打开 **ApplicationInsights.config** 文件并找到 **ApplicationInsights** > **TelemetryModules** 元素。 每个 `<Add>` 子元素定义要收集的一种遥测类型及其配置。 性能计数器遥测模块类型为 `Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector.PerformanceCollectorModule, Microsoft.AI.PerfCounterCollector`。 如果已定义此元素，请不要再次添加它。 要收集的每个性能计数器在名为 `<Counters>` 的节点下定义。 下面是收集驱动器性能计数器的示例：
 
@@ -116,7 +116,7 @@ Application Insights 会自动收集以下性能计数器：
 * \Process(??APP_WIN32_PROC??)\IO Data Bytes/sec
 * \Processor(_Total)\% 处理器时间
 
-有关详细信息，请参阅 [Application Insights 中的系统性能计数器](../application-insights/app-insights-performance-counters.md)和[适用于 Azure 云服务的 Application Insights](../application-insights/app-insights-cloudservices.md#performance-counters)。
+有关详细信息，请参阅 [Application Insights 中的系统性能计数器](../azure-monitor/app/performance-counters.md)和[适用于 Azure 云服务的 Application Insights](../azure-monitor/app/cloudservices.md#performance-counters)。
 
 ### <a name="azure-diagnostics"></a>Azure 诊断
 
@@ -294,7 +294,7 @@ counterServiceUsed.Increment();
 
 ## <a name="more-information"></a>详细信息
 
-- [适用于 Azure 云服务的 Application Insights](../application-insights/app-insights-cloudservices.md#performance-counters)
-- [Application Insights 中的系统性能计数器](../application-insights/app-insights-performance-counters.md)
+- [适用于 Azure 云服务的 Application Insights](../azure-monitor/app/cloudservices.md#performance-counters)
+- [Application Insights 中的系统性能计数器](../azure-monitor/app/performance-counters.md)
 - [指定计数器路径](https://msdn.microsoft.com/library/windows/desktop/aa373193(v=vs.85))
 - [Azure 诊断架构 - 性能计数器](../azure-monitor/platform/diagnostics-extension-schema-1dot3.md#performancecounters-element)

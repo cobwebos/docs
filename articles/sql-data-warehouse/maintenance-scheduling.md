@@ -10,12 +10,12 @@ ms.component: design
 ms.date: 11/27/2018
 ms.author: anvang
 ms.reviewer: igorstan
-ms.openlocfilehash: d626fd9b083b9ca2c55c286a1dd806620a639434
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 0f9188ba26c818ce21e0951fad5b54c2ea5a893e
+ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52498015"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53994906"
 ---
 # <a name="use-maintenance-schedules-to-manage-service-updates-and-maintenance"></a>使用维护计划管理服务更新和维护
 
@@ -51,7 +51,7 @@ ms.locfileid: "52498015"
 - [详细了解](changing-maintenance-schedule.md)如何更改维护计划。
 - [详细了解](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitor-alerts-unified-usage)如何使用 Azure Monitor 创建、查看和管理警报。
 - [详细了解](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitor-alerts-unified-log-webhook)用于日志警报规则的 Webhook 操作。
-- [深入了解](https://docs.microsoft.com/en-us/azure/monitoring-and-diagnostics/monitoring-action-groups)创建和管理操作组。
+- [深入了解](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups)创建和管理操作组。
 - [详细了解](https://docs.microsoft.com/azure/service-health/service-health-overview) Azure 服务运行状况。
 
 

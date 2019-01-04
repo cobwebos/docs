@@ -10,12 +10,12 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: c73a802cd67c9ecb94482cfcd6aac51fc8bbc19e
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: d90a4272f843cc9f2b66aa202ddefe54e7b1a361
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53317468"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53632155"
 ---
 # <a name="indexing-documents-in-azure-blob-storage-with-azure-search"></a>使用 Azure 搜索为 Azure Blob 存储中的文档编制索引
 本文说明如何使用 Azure 搜索服务为存储在 Azure Blob 存储中的文档（例如 PDF、Microsoft Office 文档和其他多种常用格式的文档）编制索引。 首先，本文说明了设置和配置 Blob 索引器的基础知识。 其次，本文更加深入地探讨了你可能会遇到的行为和场景。
@@ -334,7 +334,7 @@ Blob 编制索引可能是一个耗时的过程。 如果有几百万个 Blob �
 
 你可能希望从索引中的多个源“组装”文档。 例如，你可能希望将 blob 中的文本与 Cosmos DB 中存储的其他元数据进行合并。 甚至可以将推送索引 API 与各种索引器一起使用来基于多个部件搭建搜索文档。 
 
-若要使此方式可行，所有索引器和其他组件需要针对文档键达成一致。 有关详细演练，请参阅外部文章：[将文档与 Azure 搜索中的其他数据结合在一起](http://blog.lytzen.name/2017/01/combine-documents-with-other-data-in.html)。
+若要使此方式可行，所有索引器和其他组件需要针对文档键达成一致。 有关详细演练，请参阅外部文章：[将文档与 Azure 搜索中的其他数据结合在一起](https://blog.lytzen.name/2017/01/combine-documents-with-other-data-in.html)。
 
 <a name="IndexingPlainText"></a>
 ## <a name="indexing-plain-text"></a>为纯文本编制索引 

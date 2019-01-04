@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: apimpm
-ms.openlocfilehash: 48b0085e52c1752c0b5ecc89ce229a5a82f74345
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 52bdeb5fe517430497c57a5c34b822df5933e3ff
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53310430"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53608879"
 ---
 # <a name="api-management-caching-policies"></a>API 管理缓存策略
 本主题提供以下 API 管理策略的参考。 有关添加和配置策略的信息，请参阅 [API 管理中的策略](https://go.microsoft.com/fwlink/?LinkID=398186)。  
@@ -118,8 +118,8 @@ ms.locfileid: "53310430"
 | cache-preference               | 在以下属性值之间进行选择：<br />- `internal` 使用内置的 API 管理缓存；<br />- `external` 使用外部缓存，如[在 Azure API 管理中使用外部 Azure Redis 缓存](api-management-howto-cache-external.md)中所述，<br />- `prefer-external` 如果外部缓存已配置，则使用外部缓存，否则使用内部缓存。 | 否       | `prefer-external` |
 | downstream-caching-type        | 此属性必须设置为以下值之一。<br /><br /> -   none - 不允许下游缓存。<br />-   private - 允许下游专用缓存。<br />-   public - 允许专用和共享下游缓存。                                                                                                          | 否       | 无              |
 | must-revalidate                | 启用下游缓存时，此属性会启用或关闭网关响应中的 `must-revalidate` 缓存控制指令。                                                                                                                                                                                                                      | 否       | true              |
-| vary-by-developer              | 设置为 `true` 即可按[订阅密钥](https://docs.microsoft.com/azure/api-management/api-management-subscriptions#what-is-subscriptions)缓存响应。                                                                                                                                                                                                                                                                                                         | 是      |                   |
-| vary-by-developer-groups       | 设置为 `true` 即可按[用户组](https://docs.microsoft.com/azure/api-management/api-management-howto-create-groups)缓存响应。                                                                                                                                                                                                                                                                                                             | 是      |                   |  
+| vary-by-developer              | 设置为 `true` 即可按[订阅密钥](https://docs.microsoft.com/azure/api-management/api-management-subscriptions#what-is-subscriptions)缓存响应。                                                                                                                                                                                                                                                                                                         | 是      |         False          |
+| vary-by-developer-groups       | 设置为 `true` 即可按[用户组](https://docs.microsoft.com/azure/api-management/api-management-howto-create-groups)缓存响应。                                                                                                                                                                                                                                                                                                             | 是      |       False            |  
 
 ### <a name="usage"></a>使用情况  
  此策略可在以下策略[段](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[范围](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)中使用。  

@@ -7,12 +7,12 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 09/15/2018
 ms.author: vinagara
-ms.openlocfilehash: 5657cfb40e9017918f5842c573895872940b307a
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 6d0c8f62d109d07a9f08e5190a5a2caa0d66a0c1
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53273692"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53579322"
 ---
 # <a name="create-view-and-manage-activity-log-alerts-using-azure-monitor"></a>使用 Azure Monitor 创建、查看和管理活动日志警报  
 
@@ -96,7 +96,7 @@ ms.locfileid: "53273692"
     可以启用、禁用、编辑或删除规则。 [详细了解](#view-and-manage-activity-log-alert-rules-in-azure-portal)如何管理活动日志规则。
 
 
-另外，可以通过简单的类比来理解在活动日志上创建警报规则时可以基于的条件，那就是通过 [Azure 门户中的活动日志](../../monitoring-and-diagnostics/monitoring-overview-activity-logs.md#query-the-activity-log-in-the-azure-portal)浏览或筛选事件。 在 Azure Monitor - 活动日志中，可以筛选或查找所需的事件，然后使用“添加活动日志警报”按钮创建警报，然后按照教程中上文所述的步骤 4 继续前进。
+另外，可以通过简单的类比来理解在活动日志上创建警报规则时可以基于的条件，那就是通过 [Azure 门户中的活动日志](../../azure-monitor/platform/activity-logs-overview.md#query-the-activity-log-in-the-azure-portal)浏览或筛选事件。 在 Azure Monitor - 活动日志中，可以筛选或查找所需的事件，然后使用“添加活动日志警报”按钮创建警报，然后按照教程中上文所述的步骤 4 继续前进。
     
  ![ 从活动日志添加警报](media/alerts-activity-log/add-activity-log.png)
     
@@ -223,4 +223,4 @@ az group deployment create --resource-group myRG --template-file sampleActivityL
 - [活动日志的 Webhook 架构](../../azure-monitor/platform/activity-log-alerts-webhook.md)
 - [活动日志概述](../../azure-monitor/platform/activity-log-alerts.md) 
 - 详细了解[操作组](../../azure-monitor/platform/action-groups.md)。  
-- 了解[服务运行状况通知](../../monitoring-and-diagnostics/monitoring-service-notifications.md)。
+- 了解[服务运行状况通知](../../azure-monitor/platform/service-notifications.md)。

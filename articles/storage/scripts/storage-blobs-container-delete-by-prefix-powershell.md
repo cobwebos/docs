@@ -15,12 +15,12 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.date: 06/13/2017
 ms.author: tamram
-ms.openlocfilehash: 629189b9dbe2327763d364abc95f49539a312c53
-ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
+ms.openlocfilehash: 18ca854f1e04127a900c1b753245ed6e2a331d68
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2017
-ms.locfileid: "25983892"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53628162"
 ---
 # <a name="delete-containers-based-on-container-name-prefix"></a>根据容器名称前缀删除容器
 
@@ -39,7 +39,7 @@ ms.locfileid: "25983892"
 运行以下命令，删除资源组、其余容器和所有相关资源。
 
 ```powershell
-Remove-AzureRmResourceGroup -Name containerdeletetestrg
+Remove-AzResourceGroup -Name containerdeletetestrg
 ```
 
 ## <a name="script-explanation"></a>脚本说明
@@ -48,9 +48,9 @@ Remove-AzureRmResourceGroup -Name containerdeletetestrg
 
 | 命令 | 说明 |
 |---|---|
-| [Get-AzureRmStorageAccount](/powershell/module/azurerm.storage/get-azurermstorageaccount) | 获取资源组或订阅中的指定存储帐户或所有存储帐户。 |
-| [Get-AzureStorageContainer](/powershell/module/azure.storage/get-azurestoragecontainer) | 列出与存储帐户关联的存储容器。 |
-| [Remove-AzureStorageContainer](/powershell/module/azure.storage/remove-azurestoragecontainer) | 删除指定的存储容器。 |
+| [Get-AzStorageAccount](/powershell/module/az.storage/get-azstorageaccount) | 获取资源组或订阅中的指定存储帐户或所有存储帐户。 |
+| [Get-AzStorageContainer](/powershell/module/azure.storage/get-AzStoragecontainer) | 列出与存储帐户关联的存储容器。 |
+| [Remove-AzStorageContainer](/powershell/module/azure.storage/remove-AzStoragecontainer) | 删除指定的存储容器。 |
 
 ## <a name="next-steps"></a>后续步骤
 

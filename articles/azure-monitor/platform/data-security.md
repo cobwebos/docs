@@ -11,14 +11,14 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 09/19/2018
+ms.date: 12/19/2018
 ms.author: magoedte
-ms.openlocfilehash: fa7d89d749d50d62ce54ea71d604831e8919b454
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 581d5ddc0930a84bad4dd74a0e8dbcc3787f1a16
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53189840"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53652058"
 ---
 # <a name="log-analytics-data-security"></a>Log Analytics 数据安全
 本文档旨在提供特定于 Azure Log Analytics 的信息（Azure Monitor 的功能），用于补充有关 [Azure 信任中心](../../security/security-microsoft-trust-center.md)的信息。  
@@ -60,7 +60,7 @@ Log Analytics 服务引入数据后，数据将在该服务的每个组件上都
 ## <a name="data-retention"></a>数据保留
 编入索引的日志搜索数据基于定价计划进行存储和保留。 有关详细信息，请参阅 [Log Analytics 定价](https://azure.microsoft.com/pricing/details/log-analytics/)。
 
-在履行[订阅协议](https://azure.microsoft.com/support/legal/subscription-agreement/)的过程中，Microsoft 会根据协议条款保留数据。  删除数据时，Microsoft 也会删除承载该数据的 Azure 存储帐户。  在删除客户数据时，不会销毁任何物理驱动器。  
+在履行[订阅协议](https://azure.microsoft.com/support/legal/subscription-agreement/)的过程中，Microsoft 会根据协议条款保留数据。  在删除客户数据时，不会销毁任何物理驱动器。  
 
 下表列出了可用的一些解决方案并提供了它们会收集的数据类型示例。
 
@@ -150,7 +150,7 @@ Azure Log Analytics 满足以下要求：
 * [组织 ID](../../active-directory/fundamentals/sign-up-organization.md)
 * [Microsoft 帐户 - Outlook、Office Live、MSN](https://account.microsoft.com/account)
 
-在 Log Analytics 工作区中对数据进行收集、聚合、分析和呈现。 工作区主要用作划分数据的一种方式，每个工作区都是唯一的。 例如，可能希望生产数据受一个工作区管理，测试数据受另一个工作区管理。 工作区还有助于管理员控制用户对数据的访问。 每个工作区可以有多个与它关联的用户帐户，每个用户帐户可以访问多个 Log Analytics 工作区。 基于数据中心区域创建工作区。 会将每个工作区复制到区域中的其他数据中心，主用于实现 Log Analytics 服务可用性。
+在 Log Analytics 工作区中对数据进行收集、聚合、分析和呈现。 工作区主要用作划分数据的一种方式，每个工作区都是唯一的。 例如，可能希望生产数据受一个工作区管理，测试数据受另一个工作区管理。 工作区还有助于管理员控制用户对数据的访问。 每个工作区可以有多个与它关联的用户帐户，每个用户帐户可以访问多个 Log Analytics 工作区。 基于数据中心区域创建工作区。
 
 对于 Operations Manager，Manager 管理组会与 Log Analytics 服务建立连接。 然后，可以配置允许管理组中的哪些代理托管系统收集数据以及向服务发送数据。 根据已启用的解决方案，这些解决方案的数据可直接从 Operations Manager 管理服务器发送到 Log Analytics 服务，或者出于在代理管理系统上收集的数据量，直接从代理发送到服务。 对于不受 Operations Manager 监视的系统，每个系统可以安全地直接连接到 Log Analytics 服务。
 

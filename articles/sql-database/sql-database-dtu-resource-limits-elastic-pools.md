@@ -3,7 +3,7 @@ title: Azure SQL 数据库中弹性池的基于 DTU 的资源限制 | Microsoft 
 description: 本页介绍了 Azure SQL 数据库中弹性池的一些常见资源限制（基于 DTU）。
 services: sql-database
 ms.service: sql-database
-ms.subservice: elastic-poolss
+ms.subservice: elastic-pools
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -12,12 +12,12 @@ ms.author: sachinp
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 09/20/2018
-ms.openlocfilehash: a31a2bc3fa1edc0f4424dde4b5c8934e26669fc0
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: e3b46620d15f8c08d0da69aef3d8c0920e5ad4ec
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52873438"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53653045"
 ---
 # <a name="resources-limits-for-elastic-pools-using-the-dtu-based-purchasing-model"></a>使用基于 DTU 的购买模型的弹性池的资源限制 
 

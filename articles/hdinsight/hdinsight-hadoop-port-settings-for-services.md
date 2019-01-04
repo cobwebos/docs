@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: hrasheed
-ms.openlocfilehash: 22e15f58f3d4e7f4db3ac3bd519dbb286a36ef95
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: be264be41b198e95dae64730ef31f431ec06a2e7
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53384133"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53715454"
 ---
 # <a name="ports-used-by-apache-hadoop-services-on-hdinsight"></a>HDInsight 上的 Apache Hadoop 服务所使用的端口
 
@@ -157,7 +157,7 @@ HDInsight 群集中的所有节点都在 Azure 虚拟网络中，无法直接从
 
 | 服务 | Nodes | 端口 | 协议 | Description |
 | --- | --- | --- | --- | --- |
-| 代理 |辅助角色节点 |9092 |[Kafka Wire Protocol](http://kafka.apache.org/protocol.html)（Kafka 线路协议） |用于客户端通信 |
+| 代理 |辅助角色节点 |9092 |[Kafka Wire Protocol](https://kafka.apache.org/protocol.html)（Kafka 线路协议） |用于客户端通信 |
 | &nbsp; |Zookeeper 节点 |2181 |&nbsp; |客户端用来连接 Zookeeper 的端口 |
 
 ### <a name="spark-ports"></a>Spark 端口

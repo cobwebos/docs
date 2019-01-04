@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: robb
 ms.component: autoscale
-ms.openlocfilehash: adeb2d1f1268ed3f933a340c184a531510a7ff88
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 85a93746f3d10c5b4dae4f50cd539d515960bd54
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53437425"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53584320"
 ---
 # <a name="overview-of-autoscale-in-microsoft-azure-virtual-machines-cloud-services-and-web-apps"></a>Microsoft Azure 虚拟机、云服务和 Web 应用自动缩放概述
 本文介绍了 Microsoft Azure 自动缩放是什么、其对用户的好处，以及如何开始使用它。  
@@ -97,7 +97,7 @@ Azure Monitor 自动缩放仅适用于[虚拟机规模集](https://azure.microso
 可以通过以下方式设置自动缩放：
 
 * [Azure 门户](../../azure-monitor/platform/autoscale-get-started.md)
-* [PowerShell](../../monitoring-and-diagnostics/insights-powershell-samples.md#create-and-manage-autoscale-settings)
+* [PowerShell](../../azure-monitor/platform/powershell-quickstart-samples.md#create-and-manage-autoscale-settings)
 * [跨平台的命令行接口 (CLI)](../../azure-monitor/platform/cli-samples.md#autoscale)
 * [Azure 监视器 REST API](https://msdn.microsoft.com/library/azure/dn931953.aspx)
 

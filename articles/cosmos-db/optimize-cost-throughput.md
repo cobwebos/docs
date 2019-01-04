@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: rimman
-ms.openlocfilehash: 501fe1d2da89b6968f5a3619fc8e02b01b1abd7a
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: f0d0442a8640a75b21e95e3ae024fd7994602b51
+ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53263432"
+ms.lasthandoff: 12/28/2018
+ms.locfileid: "53807935"
 ---
 # <a name="optimizing-throughput-cost-in-azure-cosmos-db"></a>在 Azure Cosmos DB 中优化吞吐量成本
 
@@ -56,7 +56,7 @@ ms.locfileid: "53263432"
 |API|对于**共享**吞吐量，请配置 |对于**专用**吞吐量，请配置 |
 |----|----|----|
 |SQL API|数据库|容器|
-|MongoDB API|数据库|集合|
+|Azure Cosmos DB 的用于 MongoDB 的 API|数据库|集合|
 |Cassandra API|密钥空间|表|
 |Gremlin API|数据库帐户|图形|
 |表 API|数据库帐户|表|
@@ -179,10 +179,10 @@ connectionPolicy.RetryOptions.MaxRetryWaitTimeInSeconds = 60;
 
 接下来，可通过以下文章详细了解 Azure Cosmos DB 中的成本优化：
 
-* 详细了解如何[进行开发和测试优化](optimize-dev-test.md)
+* 详细了解[开发和测试优化](optimize-dev-test.md)
 * 详细了解 [Azure Cosmos DB 帐单](understand-your-bill.md)
 * 详细了解如何[优化存储成本](optimize-cost-storage.md)
 * 详细了解如何[优化读取和写入成本](optimize-cost-reads-writes.md)
 * 详细了解如何[优化查询成本](optimize-cost-queries.md)
-* 详细了解如何[优化多区域 Azure Cosmos 帐户的成本](optimize-cost-regions.md)
+* 详细了解[优化多区域 Azure Cosmos 帐户的成本](optimize-cost-regions.md)
 

@@ -14,17 +14,17 @@ ms.topic: article
 ms.date: 04/04/2018
 ms.author: aelnably;nicking
 ms.custom: seodec18
-ms.openlocfilehash: 174fbd8f3e4c652c25a78911185ef8a98a80bb50
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: ab1ae63352e66da557cad49bf5f320b577055877
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53260032"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53726555"
 ---
 # <a name="restore-an-app-in-azure-from-a-snapshot"></a>在 Azure 中从快照还原应用
-本文介绍如何在 [Azure 应用服务](../app-service/app-service-web-overview.md)中从快照还原应用。 可以根据应用的某个快照将应用还原到以前的状态。 不需启用快照备份，平台会自动保存所有应用的快照，用于数据恢复。
+本文介绍如何在 [Azure 应用服务](../app-service/overview.md)中从快照还原应用。 可以根据应用的某个快照将应用还原到以前的状态。 不需启用快照备份，平台会自动保存所有应用的快照，用于数据恢复。
 
-快照为增量影子副本，与常规[备份](web-sites-backup.md)相比有多项优势：
+快照为增量影子副本，与常规[备份](manage-backup.md)相比有多项优势：
 - 不会因文件锁定而造成文件复制错误。
 - 没有存储大小限制。
 - 不需配置。

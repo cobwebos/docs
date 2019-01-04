@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 07/24/2018
-ms.openlocfilehash: 5ad49c8e28f0e91b18af6dc485489d11464fbc0d
-ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
+ms.openlocfilehash: 15c0a3d90b4a6493c49b67058f1d989a4ab72346
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53413381"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53726844"
 ---
 # <a name="create-apache-hadoop-cluster-with-secure-transfer-storage-accounts-in-azure-hdinsight"></a>在 Azure HDInsight 中使用安全传输存储帐户创建 Apache Hadoop 群集
 
@@ -78,7 +78,7 @@ ms.locfileid: "53413381"
 
 若要详细了解如何创建或管理 HDInsight 群集，请参阅以下文章：
 
-* 若要了解如何管理基于 Linux 的 HDInsight 群集，请参阅 [Manage HDInsight clusters using Ambari](hdinsight-hadoop-manage-ambari.md)（使用 Ambari 管理 HDInsight 群集）。
+* 要了解如何管理基于 Linux 的 HDInsight 群集，请参阅[使用 Apache Ambari 管理 HDInsight 群集](hdinsight-hadoop-manage-ambari.md)。
 * 有关可用于创建 HDInsight 群集的选项的详细信息，请参阅 [Creating HDInsight on Linux using custom options](hdinsight-hadoop-provision-linux-clusters.md)（使用自定义选项在 Linux 上创建 HDInsight）。
 * 如果已熟悉 Linux 和 Apache Hadoop，但想要了解有关 HDInsight 上的 Hadoop 的具体信息，请参阅[在 Linux 上使用 HDInsight](hdinsight-hadoop-linux-information.md)。 此文提供了如下所述信息：
 

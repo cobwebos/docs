@@ -8,12 +8,12 @@ ms.author: hrasheed
 ms.custom: hdinsightactive, seodec18
 ms.topic: conceptual
 ms.date: 12/06/2018
-ms.openlocfilehash: b39c01e76ba3ec21f0cd2d16b86da5664e1d5002
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 4f6f6042eaacc809b9d413ef01883987bd558507
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53014661"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53651599"
 ---
 # <a name="troubleshoot-apache-hbase-by-using-azure-hdinsight"></a>使用 Azure HDInsight 对 Apache HBase 进行故障排除
 
@@ -314,7 +314,7 @@ Linux 群集上可能会出现一条消息，指出 *hbase: meta* 表未联机�
 
 ### <a name="additional-reading"></a>其他阅读材料
 
-[无法处理 HBase 表](http://stackoverflow.com/questions/4794092/unable-to-access-hbase-table)
+[无法处理 HBase 表](https://stackoverflow.com/questions/4794092/unable-to-access-hbase-table)
 
 
 ### <a name="error"></a>错误

@@ -12,16 +12,16 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 05/15/2017
 ms.author: mbullwin
-ms.openlocfilehash: 850ff2cfb02b5a968a40e0cd43b5c65d9d4e3490
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: b760780912642dac664f68c1f2b9d8d4ebf8cbde
+ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53001725"
+ms.lasthandoff: 12/28/2018
+ms.locfileid: "53809890"
 ---
 # <a name="manually-configure-application-insights-for-net-applications"></a>为 .NET 应用程序手动配置 Application Insights
 
-可以对 [Application Insights](app-insights-overview.md) 进行配置，以便监视各种应用程序或应用程序角色、组件或微服务。 对于 Web 应用和服务，Visual Studio 提供[单步配置](app-insights-asp-net.md)。 对于其他类型的 .NET 应用程序，例如后端服务器角色或桌面应用程序，可以手动配置 Application Insights。
+可以对 [Application Insights](app-insights-overview.md) 进行配置，以便监视各种应用程序或应用程序角色、组件或微服务。 对于 Web 应用和服务，Visual Studio 提供[单步配置](../azure-monitor/app/asp-net.md)。 对于其他类型的 .NET 应用程序，例如后端服务器角色或桌面应用程序，可以手动配置 Application Insights。
 
 ![性能监视图表示例](./media/app-insights-windows-services/10-perf.png)
 
@@ -90,7 +90,7 @@ Application Insights 程序包的安装和配置因使用的平台而异。
 * 在代码中设置检测密钥，例如，在 `main()`中： 
   
     `TelemetryConfiguration.Active.InstrumentationKey = "` *你的密钥* `";` 
-* [使用 API 编写自己的遥测](app-insights-api-custom-events-metrics.md#ikey)。
+* [使用 API 编写自己的遥测](../azure-monitor/app/api-custom-events-metrics.md#ikey)。
 
 **如果安装了其他 Application Insights 包，** 可以视需要使用 .config 文件来设置检测密钥：
 
@@ -119,7 +119,7 @@ Application Insights 程序包的安装和配置因使用的平台而异。
 
 ### <a name="no-data"></a>没有数据？
 * 使用应用程序打开不同的页面，以生成一些遥测。
-* 打开 [“搜索”](app-insights-diagnostic-search.md) 磁贴，查看每个事件。 有时，事件会需要较长的时间才能通过指标管道。
+* 打开 [“搜索”](../azure-monitor/app/diagnostic-search.md) 磁贴，查看每个事件。 有时，事件会需要较长的时间才能通过指标管道。
 * 请等待几秒钟，并单击“刷新” 。 图表会定期刷新本身，但如果正在等待某些数据显示，则可以手动刷新。
 * 请参阅 [疑难解答](app-insights-troubleshoot-faq.md)。
 
@@ -134,7 +134,7 @@ Application Insights 程序包的安装和配置因使用的平台而异。
 在服务器的防火墙中打开出口流量的端口。 若要获取所需地址的列表，请参阅[此页](https://docs.microsoft.com/azure/application-insights/app-insights-ip-addresses) 
 
 ### <a name="trouble-on-your-build-server"></a>生成服务器遇到问题？
-请参阅 [此疑难解答项](app-insights-asp-net-troubleshoot-no-data.md#NuGetBuild)。
+请参阅 [此疑难解答项](../azure-monitor/app/asp-net-troubleshoot-no-data.md#NuGetBuild)。
 
 > [!NOTE]
 > 如果应用生成大量遥测，自适应采样模块将通过仅发送具有代表性的事件部分自动减少发送到门户的量。 但是，以组为单位选择或取消选择与同一请求相关的事件，以便可以在相关事件之间浏览。 
@@ -147,5 +147,5 @@ Application Insights 程序包的安装和配置因使用的平台而异。
 > [!VIDEO https://channel9.msdn.com/events/Connect/2016/100/player]
 
 ## <a name="next-steps"></a>后续步骤
-* [添加更多遥测](app-insights-asp-net-more.md) ，获取应用程序的 360 度完整视图。
+* [添加更多遥测](../azure-monitor/app/asp-net-more.md) ，获取应用程序的 360 度完整视图。
 

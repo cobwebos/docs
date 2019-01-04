@@ -12,18 +12,18 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 05/15/2017
 ms.author: mbullwin
-ms.openlocfilehash: 77c0baba1c30153730e87181e24137d9a20ea6b1
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: a1ca63007a9b0f733f2cf06022a0db98ac7e9e7d
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53012464"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "54002155"
 ---
 # <a name="separating-telemetry-from-development-test-and-production"></a>分隔开发、测试和生产阶段的遥测
 
 部署 Web 应用程序的下一个版本时，不希望将新版本和已发布的版本中的 [Application Insights](app-insights-overview.md) 遥测混合使用。 为避免混淆，请使用不同的检测密钥 (ikey) 将遥测数据从不同的开发阶段发送到不同的 Application Insights 资源。 为了在版本从一个阶段移动到另一个阶段时更轻松地更改检测密钥，在代码中而非在配置文件中设置 ikey 可能比较有用。 
 
-（如果系统是 Azure 云服务，有[另一种方法可以设置单独 ikey](app-insights-cloudservices.md)。）
+（如果系统是 Azure 云服务，有[另一种方法可以设置单独 ikey](../azure-monitor/app/cloudservices.md)。）
 
 ## <a name="about-resources-and-instrumentation-keys"></a>关于资源和检测密钥
 
@@ -32,7 +32,7 @@ ms.locfileid: "53012464"
 在不同的方案中，通常选择使用不同的资源或使用单个共享资源：
 
 * 不同的独立应用程序 - 为每个应用使用不同的资源和 ikey。
-* 单个业务应用程序的多个组件或角色 - 为所有组件应用使用[单个共享资源](app-insights-app-map.md)。 可以按 cloud_RoleName 属性对遥测数据进行筛选或分段。
+* 单个业务应用程序的多个组件或角色 - 为所有组件应用使用[单个共享资源](../azure-monitor/app/app-map.md)。 可以按 cloud_RoleName 属性对遥测数据进行筛选或分段。
 * 开发、测试和发布 - 在各个生产“戳记”或生产阶段中为系统的不同版本使用不同的资源和 ikey。
 * A | B 测试 - 使用单个资源 创建遥测初始值设定项来向遥测添加用于标识各个变体的属性。
 
@@ -56,7 +56,7 @@ ms.locfileid: "53012464"
 在此示例中，不同资源的 ikey 放置在 Web 配置文件的不同版本中。 通过交换 Web 配置文件（可作为发布脚本的一部分执行），将交换目标资源。
 
 ### <a name="web-pages"></a>网页
-通过[从快速启动边栏选项卡获取的脚本](app-insights-javascript.md)，iKey 也在应用的网页中使用。 从服务器状态生成它，而不是逐字将其编码到脚本中。 例如，在 ASP.NET 应用中：
+通过[从快速启动边栏选项卡获取的脚本](../azure-monitor/app/javascript.md)，iKey 也在应用的网页中使用。 从服务器状态生成它，而不是逐字将其编码到脚本中。 例如，在 ASP.NET 应用中：
 
 *使用 Razor 的 JavaScript*
 
@@ -78,7 +78,7 @@ ms.locfileid: "53012464"
 
 ![依次单击“新建”、“Application Insights”](./media/app-insights-separate-resources/01-new.png)
 
-* **应用程序类型**会影响在概述边栏选项卡上看到的内容和[指标资源管理器](app-insights-metrics-explorer.md)中的可用属性。 如果未看到应用类型，请选择网页的 Web 类型之一。
+* **应用程序类型**会影响在概述边栏选项卡上看到的内容和[指标资源管理器](../azure-monitor/app/metrics-explorer.md)中的可用属性。 如果未看到应用类型，请选择网页的 Web 类型之一。
 * **资源组**便于管理[访问控件](app-insights-resources-roles-access-control.md)之类的属性。 可为开发、测试和生产使用单独的资源组。
 * **订阅**是 Azure 中的付款帐户。
 * **位置**是保留数据的位置。 当前无法更改它。 
@@ -86,7 +86,7 @@ ms.locfileid: "53012464"
 
 创建资源需要几秒钟。 完成后，会看到警报。
 
-（可编写 [PowerShell 脚本](app-insights-powershell-script-create-resource.md)，自动创建资源。）
+（可编写 [PowerShell 脚本](../azure-monitor/app/powershell-script-create-resource.md)，自动创建资源。）
 
 ### <a name="getting-the-instrumentation-key"></a>获取检测密钥
 检测密钥标识所创建的资源。 
@@ -98,7 +98,7 @@ ms.locfileid: "53012464"
 ## <a name="filter-on-build-number"></a>按版本号筛选
 发布新应用版本时，我们希望能够将不同版本的遥测数据分开。
 
-可以设置“应用程序版本”属性，这样便可以筛选[搜索](app-insights-diagnostic-search.md)和[指标资源管理器](app-insights-metrics-explorer.md)结果。
+可以设置“应用程序版本”属性，这样便可以筛选[搜索](../azure-monitor/app/diagnostic-search.md)和[指标资源管理器](../azure-monitor/app/metrics-explorer.md)结果。
 
 ![按属性进行筛选](./media/app-insights-separate-resources/050-filter.png)
 
@@ -107,7 +107,7 @@ ms.locfileid: "53012464"
 * 直接设置：
 
     `telemetryClient.Context.Component.Version = typeof(MyProject.MyClass).Assembly.GetName().Version;`
-* 在[遥测初始值设定项](app-insights-api-custom-events-metrics.md#defaults)中将该行换行，确保以一致的方式设置所有 TelemetryClient 实例。
+* 在[遥测初始值设定项](../azure-monitor/app/api-custom-events-metrics.md#defaults)中将该行换行，确保以一致的方式设置所有 TelemetryClient 实例。
 * [ASP.NET] 在 `BuildInfo.config` 中设置版本。 Web 模块将从 BuildLabel 节点选择版本。 在项目中包含此文件，并记得在解决方案资源管理器中设置“始终复制”属性。
 
     ```XML
@@ -148,15 +148,15 @@ ms.locfileid: "53012464"
     </PropertyGroup>
 ```
 
-当它具有内部信息时，Application Insights Web 模块自动将**应用程序版本**作为属性添加到每个遥测项。 这样，便可以在执行[诊断搜索](app-insights-diagnostic-search.md)或[浏览指标](app-insights-metrics-explorer.md)时按版本进行筛选。
+当它具有内部信息时，Application Insights Web 模块自动将**应用程序版本**作为属性添加到每个遥测项。 这样，便可以在执行[诊断搜索](../azure-monitor/app/diagnostic-search.md)或[浏览指标](../azure-monitor/app/metrics-explorer.md)时按版本进行筛选。
 
 但请注意，内部版本号只能由 Microsoft 生成引擎生成，而不能由 Visual Studio 中的开发人员生成引擎生成。
 
 ### <a name="release-annotations"></a>版本注释
-如果使用 Azure DevOps，则可以在每次发布新版本时将[批注标记](app-insights-annotations.md)添加到图表中。 下图显示了此标记的形式。
+如果使用 Azure DevOps，则可以在每次发布新版本时将[批注标记](../azure-monitor/app/annotations.md)添加到图表中。 下图显示了此标记的形式。
 
 ![图表中示例版本批注的屏幕截图](media/app-insights-separate-resources/release-annotation.png)
 ## <a name="next-steps"></a>后续步骤
 
-* [多个角色的共享资源](app-insights-monitor-multi-role-apps.md)
-* [创建遥测初始值设定项来区分 A|B 变体](app-insights-api-filtering-sampling.md#add-properties)
+* [多个角色的共享资源](../azure-monitor/app/app-map.md)
+* [创建遥测初始值设定项来区分 A|B 变体](../azure-monitor/app/api-filtering-sampling.md#add-properties)

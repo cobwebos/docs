@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/09/2018
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 0ce230bc6a926229ed383c828f83aafd60117471
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 962c1cff91a5ac3f52dc67c30bd2c7a4e2e22b9d
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53317146"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53631832"
 ---
 # <a name="lucene-syntax-query-examples-for-building-advanced-queries-in-azure-search"></a>在 Azure 搜索中生成高级查询的 Lucene 语法查询示例
 在构造 Azure 搜索的查询时，可以将默认的[简单查询分析器](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search)替换为更全面的 [Azure 搜索中的 Lucene 查询分析器](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search)，以便制定专用的高级查询定义。 
@@ -174,7 +174,7 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-
 
 ## <a name="example-6-regex"></a>示例 6：正则表达式
 
-正则表达式搜索基于正斜杠“/”之间的内容查找匹配项，如在 [RegExp 类](http://lucene.apache.org/core/4_10_2/core/org/apache/lucene/util/automaton/RegExp.html)中所记录的那样。
+正则表达式搜索基于正斜杠“/”之间的内容查找匹配项，如在 [RegExp 类](https://lucene.apache.org/core/4_10_2/core/org/apache/lucene/util/automaton/RegExp.html)中所记录的那样。
 
 在此查询中，搜索包含术语“Senior”或“Junior”的作业：`search=business_title:/(Sen|Jun)ior/``。
 

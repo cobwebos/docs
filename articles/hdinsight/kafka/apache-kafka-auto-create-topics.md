@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/18/2018
-ms.openlocfilehash: e78f0d2012cf4f6152e69fff1bab04f827c0eef7
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: b9f17ad0ccfd5e58d5b93bde91e6f9c537a15fa6
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52310882"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53606888"
 ---
 # <a name="how-to-configure-apache-kafka-on-hdinsight-to-automatically-create-topics"></a>如何将 Apache Kafka on HDInsight 配置为自动创建主题
 
@@ -55,7 +55,7 @@ ms.locfileid: "52310882"
 
     ![重启选择的图像](./media/apache-kafka-auto-create-topics/restart-all-affected.png)
 
-> [!NOTE]
+> [!NOTE]  
 > 也可通过 Ambari REST API 设置 Ambari 值。 这通常更为困难，因为需进行多次 REST 调用来检索并修改当前配置以及执行其他操作。有关详细信息，请参阅[使用 Apache Ambari REST API 管理 HDInsight 群集](../hdinsight-hadoop-manage-ambari-rest-api.md)文档。
 
 ## <a name="resource-manager-templates"></a>资源管理器模板

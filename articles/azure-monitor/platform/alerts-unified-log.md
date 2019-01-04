@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.date: 10/01/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: 6a1b9c110c79e428ab0cc182d0da370e59bc4f30
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: b3949fefac1cc230a98687b3b5ff9c7a01c6a0e9
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53386207"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53789569"
 ---
 # <a name="log-alerts-in-azure-monitor"></a>Azure Monitor 中的日志警报
 本文提供日志警报的详细信息，该警报是 [Azure 警报](../../azure-monitor/platform/alerts-overview.md)中支持的警报类型之一，允许用户使用 Azure 分析平台作为警报的基础。
 
-日志警报包含为 [Azure Log Analytics](../../azure-monitor/learn/tutorial-viewdata.md) 或 [Application Insights](../../application-insights/app-insights-cloudservices.md#view-azure-diagnostic-events) 创建的日志搜索规则。 若要详细了解其用法，请参阅[在 Azure 中创建日志警报](../../azure-monitor/platform/alerts-log.md)
+日志警报包含为 [Azure Log Analytics](../../azure-monitor/learn/tutorial-viewdata.md) 或 [Application Insights](../../azure-monitor/app/cloudservices.md#view-azure-diagnostic-events) 创建的日志搜索规则。 若要详细了解其用法，请参阅[在 Azure 中创建日志警报](../../azure-monitor/platform/alerts-log.md)
 
 > [!NOTE]
 > [Azure Log Analytics](../../azure-monitor/learn/tutorial-viewdata.md) 中的常见日志数据现在也可以在 Azure Monitor 中的指标平台上查看。 有关详细信息，请查看[日志的指标警报](../../azure-monitor/platform/alerts-metric-logs.md)
@@ -38,7 +38,7 @@ ms.locfileid: "53386207"
 - **频率**。  指定应运行查询的频率。 可以是介于 5 分钟到 24 小时之间的任何值。 应等于或小于时间段。  如果该值大于时间段，则会有记录缺失的风险。<br>*例如，假设时间段为 30 分钟，频率为 60 分钟。如果查询在下午 1:00 运行，则会返回中午 12:30 和下午 1:00 之间的记录。下次运行查询的时间是下午 2:00，会返回下午 1:30 到 2:00 之间的记录。在下午 1:00 和 1:30 之间创建的任何记录不会获得评估。*
 - **阈值**。  对日志搜索的结果进行评估，确定是否应创建警报。  不同类型的日志搜索警报规则的阈值不同。
 
-针对 [Azure Log Analytics](../../azure-monitor/learn/tutorial-viewdata.md) 或 [Application Insights](../../application-insights/app-insights-cloudservices.md#view-azure-diagnostic-events) 的日志搜索规则可以分为两种类型。 这些类型中的每一种都在随后的相应部分进行了详细介绍。
+针对 [Azure Log Analytics](../../azure-monitor/learn/tutorial-viewdata.md) 或 [Application Insights](../../azure-monitor/app/cloudservices.md#view-azure-diagnostic-events) 的日志搜索规则可以分为两种类型。 这些类型中的每一种都在随后的相应部分进行了详细介绍。
 
 - **[结果数](#number-of-results-alert-rules)**。 当日志搜索返回的记录数超出指定数目时，将创建单个警报。
 - **[指标度量值](#metric-measurement-alert-rules)**。  为日志搜索结果中其值超出指定阈值的每个对象创建警报。
@@ -121,5 +121,5 @@ ms.locfileid: "53386207"
 * 了解如何[在 Azure 中创建日志警报](../../azure-monitor/platform/alerts-log.md)。
 * 了解 [Azure 日志警报中的 Webhook](alerts-log-webhook.md)。
 * 了解 [Azure 警报](../../azure-monitor/platform/alerts-overview.md)。
-* 详细了解 [Application Insights](../../application-insights/app-insights-analytics.md)。
+* 详细了解 [Application Insights](../../azure-monitor/app/analytics.md)。
 * 详细了解 [Log Analytics](../../azure-monitor/log-query/log-query-overview.md)。    

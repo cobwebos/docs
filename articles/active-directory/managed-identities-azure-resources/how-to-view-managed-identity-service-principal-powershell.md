@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/29/2018
 ms.author: daveba
-ms.openlocfilehash: 0e8558d96803e15da355f083c6d1988d5ee6cb68
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 0ad3a52b837a5f79c9976c4c509e0a8516de1e7d
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52884610"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53714097"
 ---
 # <a name="view-the-service-principal-of-a-managed-identity-using-powershell"></a>使用 PowerShell 查看托管标识的服务主体
 
@@ -31,7 +31,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 
 - 如果不熟悉 Azure 资源的托管标识，请查阅[概述部分](overview.md)。
 - 如果还没有 Azure 帐户，请[注册免费帐户](https://azure.microsoft.com/free/)。
-- 在[虚拟机](/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm#system-assigned-managed-identity)或[应用程序](/azure/app-service/app-service-managed-service-identity#adding-a-system-assigned-identity)上启用系统分配的标识。
+- 在[虚拟机](/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm#system-assigned-managed-identity)或[应用程序](/azure/app-service/overview-managed-identity#adding-a-system-assigned-identity)上启用系统分配的标识。
 - 如果选择在本地安装并使用 PowerShell，则本教程需要 Azure PowerShell 模块 5.7.0 或更高版本。 运行 ` Get-Module -ListAvailable AzureRM` 即可查找版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-azurerm-ps)。 
 - 如果在本地运行 PowerShell，则还需要： 
     - 运行 `Login-AzureRmAccount`，创建与 Azure 的连接。

@@ -9,15 +9,15 @@ ms.devlang: ''
 ms.topic: conceptual
 author: VanMSFT
 ms.author: vanto
-ms.reviewer: ''
+ms.reviewer: sstein
 manager: craigg
 ms.date: 12/04/2018
-ms.openlocfilehash: 06e9b443c5b0dc1c23b325c7127511f8542a1a11
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: de758d38626107f28211f79a4772c3e887085776
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52964826"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53599819"
 ---
 # <a name="split-merge-security-configuration"></a>拆分/合并安全配置
 若要使用拆分/合并服务，必须正确配置安全性。 该服务是 Microsoft Azure SQL 数据库弹性扩展功能的一部分。 有关详细信息，请参阅[弹性缩放拆分和合并服务教程](sql-database-elastic-scale-configure-deploy-split-and-merge.md)。

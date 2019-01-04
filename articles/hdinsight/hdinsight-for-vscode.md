@@ -10,12 +10,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/27/2017
-ms.openlocfilehash: fe186966dbddb5aa743e465f897aa5a1a0e07db1
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 23cbdb4d72a6b88563d9d2c2bd0e4e3c8223377f
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52840193"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53723665"
 ---
 # <a name="use-azure-hdinsight-tools-for-visual-studio-code"></a>使用用于 Visual Studio Code 的 Azure HDInsight 工具
 
@@ -30,7 +30,7 @@ ms.locfileid: "52840193"
 
 - HDInsight 群集。 若要创建群集，请参阅 [HDInsight 入门](hadoop/apache-hadoop-linux-tutorial-get-started.md)。
 - [Visual Studio Code](https://www.visualstudio.com/products/code-vs.aspx)。
-- [Mono](http://www.mono-project.com/docs/getting-started/install/)。 只有 Linux 和 macOS 需要 Mono。
+- [Mono](https://www.mono-project.com/docs/getting-started/install/)。 只有 Linux 和 macOS 需要 Mono。
 
 ## <a name="install-the-hdinsight-tools"></a>安装 HDInsight 工具
    
@@ -87,7 +87,7 @@ ms.locfileid: "52840193"
 
     连接后，VS Code 窗口左下角的状态栏上会显示 Azure 帐户名称。 
 
-    > [!NOTE]
+    > [!NOTE]  
     > 由于已知的 Azure 身份验证问题，需要以专用模式或匿名模式打开浏览器。 如果 Azure 帐户已启用双重身份验证，我们建议使用手机身份验证，而不要使用 PIN 身份验证。
   
 
@@ -113,7 +113,7 @@ ms.locfileid: "52840193"
    
    ![“链接群集”对话框](./media/hdinsight-for-vscode/link-cluster-process.png)
 
-   > [!NOTE]
+   > [!NOTE]  
    > 如果群集已登录到 Azure 订阅中并且已链接群集，则使用链接用户名和密码。 
    
 3. 可以使用命令“列出群集”来查看链接的群集。 现在可以将脚本提交到此链接群集。
@@ -187,9 +187,9 @@ ms.locfileid: "52840193"
 
    ![交互式 Hive 结果](./media/hdinsight-for-vscode/interactive-hive-result.png)
 
-    - 结果面板：可以将整个结果作为 CSV、JSON、Excel 保存到本地路径，也可以只选择多个行。
+    - “结果”面板：可以将整个结果作为 CSV、JSON、Excel 保存到本地路径，也可以只选择多个行。
 
-    - 消息面板：选择“行”号会跳转到运行的脚本的第一行。
+    - “消息”面板：选择“行”号会跳转到运行的脚本的第一行。
 
 ## <a name="submit-interactive-pyspark-queries"></a>提交交互式 PySpark 查询
 
@@ -231,7 +231,7 @@ ms.locfileid: "52840193"
 
    ![提交 python 作业结果](./media/hdinsight-for-vscode/pyspark-ineteractive-select-result.png)运行查询时，提交状态将显示在底部状态栏的左侧。 当状态为“PySpark 内核(忙)”时，请不要提交其他查询。 
 
->[!NOTE]
+>[!NOTE]  
 >群集可以保留会话信息。 定义的变量、函数和相应值将保留在会话中，因此，可在针对同一群集发出的多个服务调用中引用这些信息。 
 
 ### <a name="to-disable-environment-check"></a>禁用环境检查
@@ -407,7 +407,7 @@ Azure HDInsight 已添加到左侧面板。 可以直接浏览和管理群集。
 
 ### <a name="scenarios"></a>方案
 * [Apache Spark 与 BI：将 HDInsight 中的 Spark 与 BI 工具配合使用来执行交互式数据分析](spark/apache-spark-use-bi-tools.md)
-* [Apache Spark 与机器学习：利用 HDInsight 中的 Spark 来使用 HVAC 数据分析建筑物温度](spark/apache-spark-ipython-notebook-machine-learning.md)
+* [Apache Spark 与机器学习：使用 HDInsight 中的 Spark 来通过 HVAC 数据分析建筑物温度](spark/apache-spark-ipython-notebook-machine-learning.md)
 * [Apache Spark 与机器学习：使用 HDInsight 中的 Spark 预测食品检验结果](spark/apache-spark-machine-learning-mllib-ipython.md)
 * [使用 HDInsight 中的 Apache Spark 分析网站日志](spark/apache-spark-custom-library-website-log-analysis.md)
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/30/2018
 ms.author: robb
 ms.component: alerts
-ms.openlocfilehash: cf01ddd53741a77df61e3dc1946eb836640034d0
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: b24b98760e276c207bb360687f32ae902b3306fb
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53344971"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53976947"
 ---
 # <a name="overview-of-alerts-in-microsoft-azure"></a>Microsoft Azure 中的警报概述 
 
@@ -56,7 +56,7 @@ ms.locfileid: "53344971"
 
 ## <a name="what-you-can-alert-on"></a>可以报警的内容
 
-可以按照[监视数据源](../../monitoring-and-diagnostics/monitoring-data-sources.md)中的说明，针对指标和日志发出警报。 这些检查包括但不限于：
+可以按照[监视数据源](../../azure-monitor/platform/data-sources-reference.md)中的说明，针对指标和日志发出警报。 这些检查包括但不限于：
 - 指标值
 - 日志搜索查询
 - 活动日志事件
@@ -131,7 +131,7 @@ ms.locfileid: "53344971"
 | **监视器源** | **信号类型**  | **说明** | 
 |-------------|----------------|-------------|
 | 服务运行状况 | 活动日志  | 不支持。 请参阅[创建有关服务通知的活动日志警报](../../azure-monitor/platform/alerts-activity-log-service-notifications.md)。  |
-| Application Insights | Web 可用性测试 | 不支持。 请参阅 [Web 测试警报](../../application-insights/app-insights-monitor-web-app-availability.md)。 适用于任何经检测可将数据发送到 Application Insights 的网站。 网站的可用性或响应度低于预期时，就会收到通知。 |
+| Application Insights | Web 可用性测试 | 不支持。 请参阅 [Web 测试警报](../../azure-monitor/app/monitor-web-app-availability.md)。 适用于任何经检测可将数据发送到 Application Insights 的网站。 网站的可用性或响应度低于预期时，就会收到通知。 |
 
 
 ## <a name="all-alerts-page"></a>“所有警报”页 

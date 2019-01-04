@@ -10,12 +10,12 @@ ms.reviewer: klam, LADocs
 ms.topic: article
 ms.assetid: 85928ec6-d7cb-488e-926e-2e5db89508ee
 ms.date: 10/18/2016
-ms.openlocfilehash: ffa619351ca4a4bfd3a812775ee7ff6cd71ddea4
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: c953d4635ce43ee05fe7c507076c5bd11e9d8c81
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53089695"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "54000557"
 ---
 # <a name="create-azure-resource-manager-templates-for-deploying-logic-apps"></a>使用 Azure 资源管理器模板部署逻辑应用
 
@@ -187,7 +187,7 @@ Visual Studio 工具生成可跨任何订阅或位置使用的有效部署模板
 <a name="team-services"></a>
 ## <a name="azure-devops-azure-pipelines"></a>Azure DevOps Azure Pipelines
 
-部署和管理环境的一个常用方案是将 Azure DevOps 中诸如 Azure Pipelines 之类的工具与逻辑应用部署模板配合使用。 Azure DevOps 包括可以添加到任何内部版本或发布管道的[部署 Azure 资源组](https://github.com/Microsoft/vsts-tasks/tree/master/Tasks/DeployAzureResourceGroup)任务。 授权需要有[服务主体](https://blogs.msdn.microsoft.com/visualstudioalm/2015/10/04/automating-azure-resource-group-deployment-using-a-service-principal-in-visual-studio-online-buildrelease-management/)才能部署，并生成发布管道。
+部署和管理环境的一个常用方案是将 Azure DevOps 中诸如 Azure Pipelines 之类的工具与逻辑应用部署模板配合使用。 Azure DevOps 包括可以添加到任何内部版本或发布管道的[部署 Azure 资源组](https://github.com/Microsoft/azure-pipelines-tasks/tree/master/Tasks/AzureResourceGroupDeploymentV2)任务。 授权需要有[服务主体](https://blogs.msdn.microsoft.com/visualstudioalm/2015/10/04/automating-azure-resource-group-deployment-using-a-service-principal-in-visual-studio-online-buildrelease-management/)才能部署，并生成发布管道。
 
 1. 在 Azure Pipelines 中，选择“空”以便创建一个空管道。
 

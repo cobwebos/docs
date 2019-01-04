@@ -1,20 +1,17 @@
 ---
 title: 在 Azure Database for MySQL 中进行导入和导出
 description: 本文介绍使用 MySQL Workbench 等工具在 Azure Database for MySQL 导入和导出数据库的常用方法。
-services: mysql
 author: ajlam
 ms.author: andrela
-manager: kfile
-editor: jasonwhowell
 ms.service: mysql
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/01/2018
-ms.openlocfilehash: ee291f24a1ad77f84e7cdb8cf4c687af7dfa3f17
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: fa72037c8f54271f5651667765c5d5e2e9c03619
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49986213"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53545512"
 ---
 # <a name="migrate-your-mysql-database-by-using-import-and-export"></a>使用导入和导出迁移 MySQL 数据库
 本文介绍通过使用 MySQL Workbench 将数据导入和导出到 Azure Database for MySQL 服务器的两种常用方法。 

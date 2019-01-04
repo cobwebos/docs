@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: c1f48e3273ac0a237c72565acf25049b763dba8a
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 0ea9d8be9bf341c77c993bc04d438953241915c2
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51246661"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53544829"
 ---
 # <a name="understand-a-system-reboot-for-azure-vm"></a>了解 Azure VM 的系统重启
 
@@ -64,7 +64,7 @@ Microsoft Azure 在全球范围内定期执行更新，提高 VM 所基于主机
     
 ### <a name="user-initiated-reboot-or-shutdown-actions"></a>用户发起的重启或关闭操作
  
-如果从 Azure 门户、Azure PowerShell、 命令行接口或重置 API 执行重启，则可在 [Azure 活动日志](../../monitoring-and-diagnostics/monitoring-overview-activity-logs.md)中找到该事件。
+如果从 Azure 门户、Azure PowerShell、 命令行接口或重置 API 执行重启，则可在 [Azure 活动日志](../../azure-monitor/platform/activity-logs-overview.md)中找到该事件。
 
 如果在 VM 的操作系统中执行该操作，则可在系统日志中找到该事件。
 

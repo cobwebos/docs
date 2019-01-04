@@ -9,15 +9,15 @@ ms.devlang: ''
 ms.topic: conceptual
 author: danimir
 ms.author: danil
-ms.reviewer: carlrab
+ms.reviewer: jrasnik, carlrab
 manager: craigg
 ms.date: 10/05/2018
-ms.openlocfilehash: 573e0dd1bae584b12cfd3859fe63d7ca20bb7b52
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 6969744ff52e9aff9d486d2eab6fffc2c3ac8b74
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53278128"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53607994"
 ---
 # <a name="intelligent-insights-using-ai-to-monitor-and-troubleshoot-database-performance"></a>智能见解：使用 AI 监视数据库性能并对其进行故障排除
 
@@ -97,7 +97,7 @@ Azure SQL Analytics 解决方案提供图形用户界面、有关数据库性能
 
 ### <a name="set-up-with-event-hubs"></a>通过事件中心进行设置
 
-若要将 Intelligent Insights 与事件中心配合使用，配置要流式传输到事件中心的 Intelligent Insights 日志数据，请参阅[将 Azure 诊断日志流式传输到事件中心](../monitoring-and-diagnostics/monitoring-stream-diagnostic-logs-to-event-hubs.md)。
+若要将 Intelligent Insights 与事件中心配合使用，配置要流式传输到事件中心的 Intelligent Insights 日志数据，请参阅[将 Azure 诊断日志流式传输到事件中心](../azure-monitor/platform/diagnostic-logs-stream-event-hubs.md)。
 
 若要使用事件中心设置自定义监视和警报，请参阅[如何在事件中心处理指标和诊断日志](sql-database-metrics-diag-logging.md#what-to-do-with-metrics-and-diagnostics-logs-in-event-hubs)。
 
@@ -180,4 +180,4 @@ Intelligent Insights 日志输出出错请求计数。 它会指示性能降低�
 - 了解如何[使用 Intelligent Insights 排查 SQL 数据库性能问题](sql-database-intelligent-insights-troubleshoot-performance.md)。
 - 使用 [Intelligent Insights SQL 数据库性能诊断日志](sql-database-intelligent-insights-use-diagnostics-log.md)。
 - 了解如何[使用 SQL Analytics 监视 SQL 数据库](../azure-monitor/insights/azure-sql.md)。
-- 了解如何[从 Azure 资源收集和使用日志数据](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md)。
+- 了解如何[从 Azure 资源收集和使用日志数据](../azure-monitor/platform/diagnostic-logs-overview.md)。

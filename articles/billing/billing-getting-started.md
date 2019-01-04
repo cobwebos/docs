@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/24/2018
 ms.author: cwatson
-ms.openlocfilehash: a110d14293b391a6856b56d0d8a84a24a90d33e1
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 98ce2127cc9f60128767f8e4409134f2393ac84f
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53341654"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53582416"
 ---
 # <a name="prevent-unexpected-charges-with-azure-billing-and-cost-management"></a>通过 Azure 计费和成本管理来防止意外费用
 
@@ -31,9 +31,6 @@ ms.locfileid: "53341654"
 - 如果订阅是免费试用版 [Visual Studio](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)、Azure 开放许可 (AIO) 或 BizSpark，则使用所有信用额度后，订阅将被自动禁用。 了解[支出限制](#spending-limit)，避免意外禁用订阅。
 
 - 如果已注册了 [Azure 免费帐户](https://azure.microsoft.com/free/)，[则可免费使用某些最常用的 Azure 服务 12 个月](billing-create-free-services-included-free-account.md)。 请参考下面列出的建议，同时请参阅[避免为免费帐户付费](billing-avoid-charges-free-account.md)。
-
-> [!div class="nextstepaction"]
-> [帮助改进 Azure 计费文档](https://go.microsoft.com/fwlink/p/?linkid=2010091) 
 
 ## <a name="get-estimated-costs-before-adding-azure-services"></a>在添加 Azure 服务之前获取估计成本
 

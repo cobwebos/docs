@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/11/2018
 ms.author: lakasa
 ms.component: common
-ms.openlocfilehash: 5ef9c15d4edf62ef63b16765f16971a9be5ca58b
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: e2497233ec97ffc88bf13797f62d601d4da373a1
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52970699"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53628487"
 ---
 # <a name="storage-service-encryption-using-customer-managed-keys-in-azure-key-vault"></a>Azure Key Vault 中使用客户托管密钥的存储服务加密
 
@@ -32,6 +32,8 @@ Azure Blob 存储和 Azure 文件存储的 SSE 与 Azure Key Vault 集成，因�
 
 若要将客户托管密钥用于 SSE，可以创建新的 Key Vault 和密钥，或者使用现有的 Key Vault 和密钥。 存储帐户和 Key Vault 必须在同一个区域中，但可以在不同的订阅中。
 
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
 ### <a name="step-1-create-a-storage-account"></a>步骤 1：创建存储帐户
 
 首先，如果还没有存储帐户，请创建存储帐户。 有关详细信息，请参阅[创建存储帐户](storage-quickstart-create-account.md)。
@@ -45,7 +47,7 @@ Azure Blob 存储和 Azure 文件存储的 SSE 与 Azure Key Vault 集成，因�
 若要将客户托管密钥用于 SSE，必须向存储帐户分配存储帐户标识。 可以通过执行以下 PowerShell 或 Azure CLI 命令设置标识：
 
 ```powershell
-Set-AzureRmStorageAccount -ResourceGroupName \$resourceGroup -Name \$accountName -AssignIdentity
+Set-AzStorageAccount -ResourceGroupName \$resourceGroup -Name \$accountName -AssignIdentity
 ```
 
 ```azurecli-interactive
@@ -58,18 +60,18 @@ az storage account \
 可以通过执行以下 PowerShell 或 Azure CLI 命令启用软删除和不清除：
 
 ```powershell
-($resource = Get-AzureRmResource -ResourceId (Get-AzureRmKeyVault -VaultName
+($resource = Get-AzResource -ResourceId (Get-AzKeyVault -VaultName
 $vaultName).ResourceId).Properties | Add-Member -MemberType NoteProperty -Name
 enableSoftDelete -Value 'True'
 
-Set-AzureRmResource -resourceid $resource.ResourceId -Properties
+Set-AzResource -resourceid $resource.ResourceId -Properties
 $resource.Properties
 
-($resource = Get-AzureRmResource -ResourceId (Get-AzureRmKeyVault -VaultName
+($resource = Get-AzResource -ResourceId (Get-AzKeyVault -VaultName
 $vaultName).ResourceId).Properties | Add-Member -MemberType NoteProperty -Name
 enablePurgeProtection -Value 'True'
 
-Set-AzureRmResource -resourceid $resource.ResourceId -Properties
+Set-AzResource -resourceid $resource.ResourceId -Properties
 $resource.Properties
 ```
 
@@ -121,11 +123,11 @@ az resource update \
 可以使用以下 PowerShell 命令将上述密钥与现有存储帐户相关联：
 
 ```powershell
-$storageAccount = Get-AzureRmStorageAccount -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount"
-$keyVault = Get-AzureRmKeyVault -VaultName "mykeyvault"
+$storageAccount = Get-AzStorageAccount -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount"
+$keyVault = Get-AzKeyVault -VaultName "mykeyvault"
 $key = Get-AzureKeyVaultKey -VaultName $keyVault.VaultName -Name "keytoencrypt"
-Set-AzureRmKeyVaultAccessPolicy -VaultName $keyVault.VaultName -ObjectId $storageAccount.Identity.PrincipalId -PermissionsToKeys wrapkey,unwrapkey,get
-Set-AzureRmStorageAccount -ResourceGroupName $storageAccount.ResourceGroupName -AccountName $storageAccount.StorageAccountName -KeyvaultEncryption -KeyName $key.Name -KeyVersion $key.Version -KeyVaultUri $keyVault.VaultUri
+Set-AzKeyVaultAccessPolicy -VaultName $keyVault.VaultName -ObjectId $storageAccount.Identity.PrincipalId -PermissionsToKeys wrapkey,unwrapkey,get
+Set-AzStorageAccount -ResourceGroupName $storageAccount.ResourceGroupName -AccountName $storageAccount.StorageAccountName -KeyvaultEncryption -KeyName $key.Name -KeyVersion $key.Version -KeyVaultUri $keyVault.VaultUri
 ```
 
 ### <a name="step-5-copy-data-to-storage-account"></a>步骤 5：将数据复制到存储帐户
@@ -154,7 +156,7 @@ Set-AzureRmStorageAccount -ResourceGroupName $storageAccount.ResourceGroupName -
 Azure 磁盘加密在基于 OS 的解决方案（例如 BitLocker、DM-Crypt 和 Azure KeyVault）之间提供集成。 存储服务加密在虚拟机下面的 Azure 存储平台层上提供本机加密。
 
 **是否可以吊销加密密钥的访问权限？**
-是，随时可以吊销访问权限。 可通过多种方式吊销对密钥的访问权限。 有关详细信息，请参阅 [Azure Key Vault PowerShell](https://docs.microsoft.com/powershell/module/azurerm.keyvault/) 和 [Azure Key Vault CLI](https://docs.microsoft.com/cli/azure/keyvault)。 吊销访问权限会实际阻止对存储帐户中所有 Blob 的访问权限，因为 Azure 存储帐户无法访问帐户加密密钥。
+是，随时可以吊销访问权限。 可通过多种方式吊销对密钥的访问权限。 有关详细信息，请参阅 [Azure Key Vault PowerShell](https://docs.microsoft.com/powershell/module/az.keyvault/) 和 [Azure Key Vault CLI](https://docs.microsoft.com/cli/azure/keyvault)。 吊销访问权限会实际阻止对存储帐户中所有 Blob 的访问权限，因为 Azure 存储帐户无法访问帐户加密密钥。
 
 **是否可以在不同的区域创建存储帐户和密钥？**  
 不可以，存储帐户和 Azure Key Vault 和密钥需在同一个区域。

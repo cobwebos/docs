@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 11/21/2017
 ms.author: cshoe
-ms.openlocfilehash: acd2d5a3448d805b8b3c741139fc5f9a79c40ed2
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 8d2bd74609447463b7ff857aa1037eaf5b6e3abb
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53317434"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53726997"
 ---
 # <a name="azure-functions-http-triggers-and-bindings"></a>Azure Functions HTTP 触发器和绑定
 
@@ -491,7 +491,7 @@ module.exports = function (context, req) {
 
 ### <a name="working-with-client-identities"></a>使用客户端标识
 
-如果函数应用使用[应用服务身份验证/授权](../app-service/app-service-authentication-overview.md)，则可通过代码查看有关已验证身份的客户端的信息。 此信息以[平台注入的请求标头](../app-service/app-service-authentication-how-to.md#access-user-claims)的形式提供。 
+如果函数应用使用[应用服务身份验证/授权](../app-service/overview-authentication-authorization.md)，则可通过代码查看有关已验证身份的客户端的信息。 此信息以[平台注入的请求标头](../app-service/app-service-authentication-how-to.md#access-user-claims)的形式提供。 
 
 还可从绑定数据中读取此信息。 此功能仅可用于 Functions 2.x 运行时， 而且它目前仅可用于 .NET 语言。
 
@@ -577,7 +577,7 @@ Functions 允许使用密钥使其难以在开发过程中访问 HTTP 函数终�
 
 若要全面保护生产环境中的函数终结点，应考虑实现以下函数应用级别的安全选项之一：
 
-* 打开函数应用的“应用服务身份验证/授权”。 应用服务平台允许使用 Azure Active Directory (AAD) 和多个第三方标识提供者对客户端进行身份验证。 可以使用此函数来实现函数的自定义授权规则，并且可以从函数代码处理用户信息。 若要了解详细信息，请参阅 [Azure 应用服务中的身份验证和授权](../app-service/app-service-authentication-overview.md)以及[使用客户端标识](#working-with-client-identities)。
+* 打开函数应用的“应用服务身份验证/授权”。 应用服务平台允许使用 Azure Active Directory (AAD) 和多个第三方标识提供者对客户端进行身份验证。 可以使用此函数来实现函数的自定义授权规则，并且可以从函数代码处理用户信息。 若要了解详细信息，请参阅 [Azure 应用服务中的身份验证和授权](../app-service/overview-authentication-authorization.md)以及[使用客户端标识](#working-with-client-identities)。
 
 * 使用 Azure API 管理 (APIM) 对请求进行身份验证。 APIM 为传入请求提供了各种 API 安全选项。 若要了解详细信息，请参阅 [API 管理身份验证策略](../api-management/api-management-authentication-policies.md)。 有了 APIM，可以配置函数应用以接受仅来自 APIM 实例 IP 地址的请求。 若要了解详细信息，请参阅 [IP 地址限制](ip-addresses.md#ip-address-restrictions)。
 

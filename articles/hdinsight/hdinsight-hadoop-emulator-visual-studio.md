@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/07/2018
 ms.author: hrasheed
-ms.openlocfilehash: c2fd32ad15366c76c061ba42fa0a59d43a317b43
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 7c2a1c586b4d6f5f9f6e34a091702a35f994544f
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53012753"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53726623"
 ---
 # <a name="use-the-azure-data-lake-tools-for-visual-studio-with-the-hortonworks-sandbox"></a>将针对 Visual Studio 的 Azure Data Lake 工具与 Hortonworks 沙盒配合使用
 
@@ -60,13 +60,13 @@ Azure Data Lake 包含用于处理常规 Apache Hadoop 群集的工具。 本文
 
     ![突出显示“更新”按钮的对话框屏幕截图](./media/hdinsight-hadoop-emulator-visual-studio/fail-and-update.png)
 
-    > [!NOTE]
+    > [!NOTE]  
     > 更新过程使用 Ambari 将 Hortonworks 沙盒配置修改为针对 Visual Studio 的 Data Lake 工具所需的配置。
 
 6. 验证完成后，选择“完成”以完成配置。
     ![突出显示“完成”按钮的对话框屏幕截图](./media/hdinsight-hadoop-emulator-visual-studio/finished-connect.png)
 
-     >[!NOTE]
+     >[!NOTE]  
      > 根据开发环境的速度以及分配给虚拟机的内存量，可能需要几分钟时间才能完成服务的配置和验证。
 
 完成这些步骤后，服务器资源管理器中的“HDInsight”部分下面会出现“HDInsight 本地群集”项。
@@ -99,7 +99,7 @@ Hive 提供类似于 SQL 的查询语言 (HiveQL) 来处理结构化数据。 �
 
     “作业状态”更改为“已完成”后，会显示有向无环图 (DAG)。 此图描述 Tez 处理 Hive 查询时确定的执行路径。 Tez 是用于本地群集上 Hive 的默认执行引擎。
 
-    > [!NOTE]
+    > [!NOTE]  
     > 使用基于 Linux 的 HDInsight 群集时，Apache Tez 也是默认引擎。 它不是基于 Windows 的 HDInsight 上的默认引擎。 若要在这种群集上使用 Tez，必须在 Hive 查询的开头处添加 `set hive.execution.engine = tez;` 行。
 
     使用“作业输出”链接查看输出。 在本例中，输出为 823，即 sample_08 表中的行数。 可以使用“作业日志”和“下载 YARN 日志”链接查看有关作业的诊断信息。
@@ -110,7 +110,7 @@ Hive 提供类似于 SQL 的查询语言 (HiveQL) 来处理结构化数据。 �
 
     交互式查询会将处理期间生成的输出日志流式传输到“HiveServer2 输出”窗口。
 
-    > [!NOTE]
+    > [!NOTE]  
     > 此信息与完成作业后使用“作业日志”链接所看到的信息相同。
 
     ![输出日志的屏幕截图](./media/hdinsight-hadoop-emulator-visual-studio/hiveserver2-output.png)

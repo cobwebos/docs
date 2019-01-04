@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/29/2018
 ms.author: daveba
-ms.openlocfilehash: 123cd1c808ad833d9b10148e4cb292b335075a8d
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: c61220242a5a2ff84204c84b11aa132d00279e49
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52884384"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53726589"
 ---
 # <a name="view-the-service-principal-of-a-managed-identity-in-the-azure-portal"></a>在 Azure 门户中查看托管标识的服务主体
 
@@ -31,7 +31,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 
 - 如果不熟悉 Azure 资源的托管标识，请查阅[概述部分](overview.md)。
 - 如果还没有 Azure 帐户，请[注册免费帐户](https://azure.microsoft.com/free/)。
-- 在[虚拟机](/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm#system-assigned-managed-identity)或[应用程序](/azure/app-service/app-service-managed-service-identity#adding-a-system-assigned-identity)上启用系统分配的标识。
+- 在[虚拟机](/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm#system-assigned-managed-identity)或[应用程序](/azure/app-service/overview-managed-identity#adding-a-system-assigned-identity)上启用系统分配的标识。
 
 ## <a name="view-the-service-principal"></a>查看服务主体
 

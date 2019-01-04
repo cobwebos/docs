@@ -11,12 +11,12 @@ ms.component: text-analytics
 ms.topic: article
 ms.date: 11/14/2018
 ms.author: diberry
-ms.openlocfilehash: 556cf755890f49e540afe64de6e485d9ebde2147
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: ac273ac7d4c6c371670e6b8a8170274602a5318b
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53086430"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53536536"
 ---
 # <a name="install-and-run-containers"></a>安装和运行容器
 
@@ -30,7 +30,7 @@ ms.locfileid: "53086430"
 
 使用“人脸”容器之前，必须满足以下先决条件：
 
-**Docker 引擎**：必须在本地安装 Docker 引擎。 Docker 提供用于在 [macOS](https://docs.docker.com/docker-for-mac/)、[Linux](https://docs.docker.com/engine/installation/#supported-platforms) 和 [Windows](https://docs.docker.com/docker-for-windows/) 上配置 Docker 环境的包。 在 Windows 上，必须将 Docker 配置为支持 Linux 容器。 还可直接将 Docker 容器部署到 [Azure Kubernetes 服务](/azure/aks/)、[Azure 容器实例](/azure/container-instances/)，或部署到 [Azure Stack](/azure/azure-stack/) 的 [Kubernetes](https://kubernetes.io/) 集群。 有关将 Kubernetes 部署到 Azure Stack 的详细信息，请参阅[将 Kubernetes 部署到 Azure Stack](/azure/azure-stack/user/azure-stack-solution-template-kubernetes-deploy)。
+**Docker 引擎**：必须在本地安装 Docker 引擎。 Docker 提供用于在 [macOS](https://docs.docker.com/docker-for-mac/)、[Linux](https://docs.docker.com/engine/installation/#supported-platforms) 和 [Windows](https://docs.docker.com/docker-for-windows/) 上配置 Docker 环境的包。 在 Windows 上，必须将 Docker 配置为支持 Linux 容器。 还可直接将 Docker 容器部署到 [Azure Kubernetes 服务](../../aks/index.yml)、[Azure 容器实例](../../container-instances/index.yml)，或部署到 [Azure Stack](../../azure-stack/index.yml) 的 [Kubernetes](https://kubernetes.io/) 集群。 有关将 Kubernetes 部署到 Azure Stack 的详细信息，请参阅[将 Kubernetes 部署到 Azure Stack](../../azure-stack/user/azure-stack-solution-template-kubernetes-deploy.md)。
 
 必须将 Docker 配置为允许容器连接 Azure 并向其发送账单数据。
 

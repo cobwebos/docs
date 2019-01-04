@@ -8,12 +8,12 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 12/11/2018
-ms.openlocfilehash: f47c9ee85348cc96915a0fa637b06b0a73059351
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: 7f33742fc5e765aa5ab0c66d13e844b3be2bab9e
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53322288"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53599870"
 ---
 # <a name="access-grafana-in-azure-hdinsight"></a>在 Azure HDInsight 中访问 Grafana
 
@@ -34,7 +34,7 @@ ms.locfileid: "53322288"
 
 2. 按以下屏幕截图所示输入或选择值：
 
-    > [!NOTE]
+    > [!NOTE]  
     > 提供的值必须唯一，并应遵循命名指南。 模板不会执行验证检查。 如果提供的值已被使用，或不遵循指南，则提交模板后可能会出错。       
     > 
     >
@@ -66,10 +66,8 @@ ms.locfileid: "53322288"
 5. 该磁贴还列出了与群集关联的默认存储。 每个群集都有一个 [Azure 存储帐户](../hdinsight-hadoop-use-blob-storage.md)或 [Azure Data Lake 帐户](../hdinsight-hadoop-use-data-lake-store.md)依赖项。 该帐户称为默认存储帐户。 HDInsight 群集及其默认存储帐户必须共存于同一个 Azure 区域中。 删除群集不会删除存储帐户。
     
 
-> [!NOTE]
-> 如需其他群集创建方法或要了解本教程中使用的属性，请参阅 [Create HDInsight clusters](../hdinsight-hadoop-provision-linux-clusters.md)（创建 HDInsight 群集）。       
-> 
->
+> [!NOTE]  
+> 如需其他群集创建方法或要了解本教程中使用的属性，请参阅 [Create HDInsight clusters](../hdinsight-hadoop-provision-linux-clusters.md)（创建 HDInsight 群集）。 
 
 ## <a name="access-the-grafana-dashboard"></a>访问 Grafana 仪表板
 
@@ -94,10 +92,8 @@ ms.locfileid: "53322288"
 ## <a name="clean-up-resources"></a>清理资源
 完成本文后，可以删除群集。 有了 HDInsight，便可以将数据存储在 Azure 存储中，因此可以在群集不用时安全地删除群集。 此外，还需要为 HDInsight 群集付费，即使不用也是如此。 由于群集费用数倍于存储空间费用，因此在群集不用时删除群集可以节省费用。 
 
-> [!NOTE]
+> [!NOTE]  
 > 如果立即进行下一教程，了解如何使用 Hadoop on HDInsight 运行 ETL 操作，建议保持群集运行。 这是因为该教程中必须再次创建 Hadoop 群集。 但是，如果不立即学习下一教程，则必须立即删除该群集。
-> 
-> 
 
 **删除群集和/或默认存储帐户**
 
@@ -124,7 +120,7 @@ ms.locfileid: "53322288"
 
 * 若要详细了解如何将 Hive 与 HDInsight 配合使用（包括如何从 Visual Studio 中执行 Hive 查询），请参阅[将 Apache Hive 与 HDInsight 配合使用](../hdinsight-use-hive.md)。
 * 若要了解 Pig（一种用于转换数据的语言），请参阅[将 Apache Pig 与 HDInsight 配合使用](../hdinsight-use-pig.md)。
-* 若要了解 Apache Hadoop MapReduce（在 Hadoop 中处理数据的程序编写方式），请参阅[将 Apache Hadoop MapReduce 与 HDInsight 配合使用](../hdinsight-use-mapreduce.md)。
+* 若要了解 MapReduce（在 Hadoop 中处理数据的程序编写方式），请参阅[将 MapReduce 与 HDInsight 配合使用](../hdinsight-use-mapreduce.md)。
 * 若要了解如何使用用于 Visual Studio 的 HDInsight 工具来分析 HDInsight 数据，请参阅 [Get started using Visual Studio Hadoop tools for HDInsight](../hadoop/apache-hadoop-visual-studio-tools-get-started.md)（用于 HDInsight 的 Visual Studio Hadoop 工具入门）。
 
 

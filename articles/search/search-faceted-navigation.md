@@ -6,15 +6,15 @@ manager: cgronlun
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 3/10/2017
+ms.date: 03/10/2017
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 337ee5259e980509c73099f0e3417bb31ec3276d
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 67cc955e4a265a2b29893bd0484dd905f4f2c2b2
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53313932"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53632427"
 ---
 # <a name="how-to-implement-faceted-navigation-in-azure-search"></a>如何在 Azure 搜索中实现分面导航
 分面导航是一种筛选机制，用于在搜索应用程序中提供自定向的深化导航。 术语“分面导航”可能让人觉得陌生，但我们以前也许用过它。 如以下示例所示，分面导航就是用于筛选结果的类别。
@@ -34,7 +34,7 @@ ms.locfileid: "53313932"
 ## <a name="sample-code-and-demo"></a>代码示例和演示
 本文使用作业搜索门户作为示例。 该示例作为 ASP.NET MVC 应用程序实现。
 
--   请参阅并测试 [Azure 搜索作业门户演示](http://azjobsdemo.azurewebsites.net/)中的在线实践演示。
+-   请参阅并测试 [Azure 搜索作业门户演示](https://azjobsdemo.azurewebsites.net/)中的在线实践演示。
 
 -   从 [GitHub 上的 Azure 示例存储库](https://github.com/Azure-Samples/search-dotnet-asp-net-mvc-jobs)中下载代码。
 
@@ -371,7 +371,7 @@ Azure 搜索中有两个地理空间函数：**geo.distance** 和 **geo.intersec
 ## <a name="try-the-demo"></a>尝试演示
 Azure 搜索作业门户演示包含本文中参考的示例。
 
--   请参阅并测试 [Azure 搜索作业门户演示](http://azjobsdemo.azurewebsites.net/)中的在线实践演示。
+-   请参阅并测试 [Azure 搜索作业门户演示](https://azjobsdemo.azurewebsites.net/)中的在线实践演示。
 
 -   从 [GitHub 上的 Azure 示例存储库](https://github.com/Azure-Samples/search-dotnet-asp-net-mvc-jobs)中下载代码。
 
@@ -396,12 +396,12 @@ Azure 搜索作业门户演示包含本文中参考的示例。
 <a name="nextstep"></a>
 
 ## <a name="learn-more"></a>了解详细信息
-观看 [Azure 搜索深入研究](http://channel9.msdn.com/Events/TechEd/Europe/2014/DBI-B410)。 在 45:25，演示了如何实现分面。
+观看 [Azure 搜索深入研究](https://channel9.msdn.com/Events/TechEd/Europe/2014/DBI-B410)。 在 45:25，演示了如何实现分面。
 
 有关分面导航设计准则的更多见解，建议查看以下链接：
 
 * [针对分面搜索进行设计](http://www.uie.com/articles/faceted_search/)
-* [设计模式：分面导航](http://alistapart.com/article/design-patterns-faceted-navigation)
+* [设计模式：分面导航](https://alistapart.com/article/design-patterns-faceted-navigation)
 
 
 <!--Anchors-->
@@ -431,7 +431,7 @@ Azure 搜索作业门户演示包含本文中参考的示例。
 
 <!--Link references-->
 [Designing for Faceted Search]: http://www.uie.com/articles/faceted_search/
-[Design Patterns: Faceted Navigation]: http://alistapart.com/article/design-patterns-faceted-navigation
+[Design Patterns: Faceted Navigation]: https://alistapart.com/article/design-patterns-faceted-navigation
 [Create your first application]: search-create-first-solution.md
 [OData expression syntax (Azure Search)]: https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search
 [Azure Search Adventure Works Demo]: https://azuresearchadventureworksdemo.codeplex.com/

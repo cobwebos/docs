@@ -16,16 +16,16 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 10/12/2016
 ms.author: kasing
-ms.openlocfilehash: 942141fad09e6233efc7f850212a73f8a39c163c
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: b7fafa148417ba1667ec0277b414105f95e428ce
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2018
-ms.locfileid: "30918299"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53971778"
 ---
 # <a name="manage-your-virtual-machines-by-using-azure-powershell"></a>使用 Azure PowerShell 管理虚拟机
 > [!IMPORTANT] 
-> Azure 提供两个不同的部署模型用于创建和处理资源：[资源管理器和经典模型](../../../resource-manager-deployment-model.md)。 本文介绍如何使用经典部署模型。 Microsoft 建议大多数新部署使用资源管理器模型。 有关使用 Resource Manager 模型的常见 PowerShell 命令，请参阅[此处](../../virtual-machines-windows-ps-common-ref.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
+> Azure 具有用于创建和处理资源的两个不同部署模型：[资源管理器部署模型和经典部署模型](../../../resource-manager-deployment-model.md)。 本文介绍如何使用经典部署模型。 Microsoft 建议大多数新部署使用资源管理器模型。 有关使用 Resource Manager 模型的常见 PowerShell 命令，请参阅[此处](../../virtual-machines-windows-ps-common-ref.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
 
 每天执行的许多管理 VM 的任务都可通过使用 Azure PowerShell cmdlet 自动执行。 本文提供较简单任务的示例命令，并提供演示更复杂任务的命令的文章链接。
 
@@ -42,7 +42,7 @@ ms.locfileid: "30918299"
 
 若要获取有关 VM 的信息，请运行此命令，并替换引号内的所有内容（包括 < 和 > 字符）：
 
-     Get-AzureVM -ServiceName "<cloud service name>" -Name "<virtual machine name>"
+    Get-AzureVM -ServiceName "<cloud service name>" -Name "<virtual machine name>"
 
 要将输出存储在 $vm 变量中，请运行：
 
@@ -54,7 +54,7 @@ ms.locfileid: "30918299"
 > [!NOTE]
 > 可以从显示的 **Get-AzureVM** 命令中获取虚拟机和云服务名称。
 > 
-> $svcName = "<cloud service name>" $vmName = "<virtual machine name>" $localPath = "<用于存储下载的 RDP 文件的驱动器和文件夹位置，示例：c:\temp>" $localFile = $localPath + "\" + $vmname + ".rdp" Get-AzureRemoteDesktopFile -ServiceName $svcName -Name $vmName -LocalPath $localFile -Launch
+> $svcName = `"<cloud service name>"` $vmName = `"<virtual machine name>"` $localPath = `"<drive and folder location to store the downloaded RDP file, example: c:\temp >"` $localFile = $localPath + "\" + $vmname + ".rdp" Get-AzureRemoteDesktopFile -ServiceName $svcName -Name $vmName -LocalPath $localFile -Launch
 > 
 > 
 

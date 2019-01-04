@@ -12,16 +12,16 @@ ms.topic: conceptual
 ms.reviewer: cawa
 ms.date: 08/06/2018
 ms.author: mbullwin
-ms.openlocfilehash: b98c75c1fb42c6eec2473dee1d6661d86138bd7a
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 9b7af9650e52a4cac74939bf55b15982be674df8
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52725669"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53604222"
 ---
 # <a name="profile-web-apps-running-on-an-azure-virtual-machine-or-virtual-machine-scale-set-with-application-insights-profiler"></a>使用 Application Insights Profiler 探查在 Azure 虚拟机或虚拟机规模集上运行的 Web 应用
 还可以在以下服务上部署 Application Insights Profiler：
-* [Azure Web 应用](app-insights-profiler.md?toc=/azure/azure-monitor/toc.json)
+* [Azure 应用服务](app-insights-profiler.md?toc=/azure/azure-monitor/toc.json)
 * [云服务](app-insights-profiler-cloudservice.md?toc=/azure/azure-monitor/toc.json)
 * [Service Fabric](app-insights-profiler-vm.md?toc=/azure/azure-monitor/toc.json)
 

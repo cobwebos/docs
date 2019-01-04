@@ -10,12 +10,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 03/22/2018
 ms.author: hrasheed
-ms.openlocfilehash: 41c8315bab1b716f79b47afb77c6d371a757691d
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 89878b2774727d49d81ebec4c2a3c2cee355d8e8
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53386421"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53743657"
 ---
 # <a name="availability-and-reliability-of-apache-hadoop-clusters-in-hdinsight"></a>HDInsight 中的 Apache Hadoop 群集的可用性和可靠性
 
@@ -47,7 +47,7 @@ Apache Storm 群集提供了 Nimbus 节点。 Nimbus 节点通过在辅助角色
 
 ### <a name="apache-zookeeper-nodes"></a>Apache Zookeeper 节点
 
-[ZooKeeper](http://zookeeper.apache.org/) 节点用于为头节点上的主服务进行领导选拨。 它们还用来确保服务、数据（辅助角色）节点和网关知道主服务在哪个头节点上处于活动状态。 默认情况下，HDInsight 提供三个 ZooKeeper 节点。
+[ZooKeeper](https://zookeeper.apache.org/) 节点用于为头节点上的主服务进行领导选拨。 它们还用来确保服务、数据（辅助角色）节点和网关知道主服务在哪个头节点上处于活动状态。 默认情况下，HDInsight 提供三个 ZooKeeper 节点。
 
 ### <a name="worker-nodes"></a>辅助角色节点
 
@@ -192,7 +192,7 @@ Ambari REST API 可以通过 Internet 使用。 HDInsight 公共网关处理以�
 有关可用命令的列表，请在 `sftp>` 提示符下输入 `help`。
 
 > [!NOTE]  
-> 使用 SFTP 连接时，还会出现一个图形界面用于可视化文件系统。 例如，通过 [MobaXTerm](http://mobaxterm.mobatek.net/) 可以使用类似于 Windows 资源管理器的界面浏览文件系统。
+> 使用 SFTP 连接时，还会出现一个图形界面用于可视化文件系统。 例如，通过 [MobaXTerm](https://mobaxterm.mobatek.net/) 可以使用类似于 Windows 资源管理器的界面浏览文件系统。
 
 ### <a name="ambari"></a>Ambari
 

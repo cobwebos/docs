@@ -1,19 +1,17 @@
 ---
 title: Azure Database for MySQL 中的只读副本。
 description: 本文介绍 Azure Database for MySQL 的只读副本。
-services: mysql
 author: ajlam
 ms.author: andrela
-editor: jasonwhowell
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 11/13/2018
-ms.openlocfilehash: 82f80fc1342f0c76cb880b020dcd835a23635b0a
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: 1c05203de694cde882277bf269f3ff87438f9f26
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51632554"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53547722"
 ---
 # <a name="read-replicas-in-azure-database-for-mysql"></a>Azure Database for MySQL 中的只读副本
 

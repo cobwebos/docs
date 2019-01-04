@@ -7,16 +7,16 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 06/07/2018
 ms.author: johnkem
-ms.component: activitylog
-ms.openlocfilehash: 19f97d097c47229038595b202e82ccf41dfbfefc
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.component: logs
+ms.openlocfilehash: 9714cb8ce1c3380ac74150148c8d84bd410e3fc4
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53434913"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53715201"
 ---
 # <a name="archive-the-azure-activity-log"></a>存档 Azure 活动日志
-本文介绍如何使用 Azure 门户、PowerShell Cmdlet 或跨平台 CLI 将 [**Azure 活动日志**](../../monitoring-and-diagnostics/monitoring-overview-activity-logs.md)存档到存储帐户中。 此选项适用于对保留时长超过 90 天的活动日志进行审核、静态分析或备份（对保留策略具备完全控制权限）。 如果只需将事件保留 90 天或更短的时间，则不需设置到存储帐户的存档，因为在不启用存档的情况下，活动日志事件保留在 Azure 平台中的时间是 90 天。
+本文介绍如何使用 Azure 门户、PowerShell Cmdlet 或跨平台 CLI 将 [**Azure 活动日志**](../../azure-monitor/platform/activity-logs-overview.md)存档到存储帐户中。 此选项适用于对保留时长超过 90 天的活动日志进行审核、静态分析或备份（对保留策略具备完全控制权限）。 如果只需将事件保留 90 天或更短的时间，则不需设置到存储帐户的存档，因为在不启用存档的情况下，活动日志事件保留在 Azure 平台中的时间是 90 天。
 
 > [!WARNING]
 > 存储帐户中日志数据的格式将在 2018 年 11 月 1 日更改为 JSON Lines。 [请参阅此文章来了解此影响，以及如何通过更新工具来处理新格式。](./../../azure-monitor/platform/diagnostic-logs-append-blobs.md) 
@@ -30,7 +30,7 @@ ms.locfileid: "53434913"
 >  目前无法将数据存档到在受保护虚拟网络后台创建的存储帐户。
 
 ## <a name="log-profile"></a>日志配置文件
-若要使用下述任意方法存档活动日志，可为订阅设置**日志配置文件**。 日志配置文件定义已存储或流式传输的事件的类型，以及输出 - 存储帐户和/或事件中心。 它还定义存储在存储帐户中的事件的保留策略（需保留的天数）。 如果将保留策略设置为零，事件将无限期存储。 如果不想让事件无限期存储，可将保留策略设置为 1 到 2147483647 之间的任何值。 保留策略按天应用，因此在一天结束时 (UTC)，会删除当天已超过保留策略期限的日志。 例如，假设保留策略的期限为一天，则在今天开始时，会删除前天的日志。 删除过程从 UTC 晚上 12 点开始，但请注意，可能需要最多 24 小时才能将日志从存储帐户中删除。 [可在此处了解日志配置文件的详细信息](../../monitoring-and-diagnostics/monitoring-overview-activity-logs.md#export-the-activity-log-with-a-log-profile)。 
+若要使用下述任意方法存档活动日志，可为订阅设置**日志配置文件**。 日志配置文件定义已存储或流式传输的事件的类型，以及输出 - 存储帐户和/或事件中心。 它还定义存储在存储帐户中的事件的保留策略（需保留的天数）。 如果将保留策略设置为零，事件将无限期存储。 如果不想让事件无限期存储，可将保留策略设置为 1 到 2147483647 之间的任何值。 保留策略按天应用，因此在一天结束时 (UTC)，会删除当天已超过保留策略期限的日志。 例如，假设保留策略的期限为一天，则在今天开始时，会删除前天的日志。 删除过程从 UTC 晚上 12 点开始，但请注意，可能需要最多 24 小时才能将日志从存储帐户中删除。 [可在此处了解日志配置文件的详细信息](../../azure-monitor/platform/activity-logs-overview.md#export-the-activity-log-with-a-log-profile)。 
 
 ## <a name="archive-the-activity-log-using-the-portal"></a>使用门户存档活动日志
 1. 在门户中，单击左侧导航中的“活动日志”链接。 如果看不到活动日志的链接，请先单击“所有服务”链接。
@@ -182,6 +182,6 @@ insights-operational-logs/name=default/resourceId=/SUBSCRIPTIONS/s1id1234-5679-0
 
 ## <a name="next-steps"></a>后续步骤
 * [下载 blob 进行分析](../../storage/blobs/storage-quickstart-blobs-dotnet.md)
-* [将活动日志流式传输到事件中心](../../monitoring-and-diagnostics/monitoring-stream-activity-logs-event-hubs.md)
-* [详细了解活动日志](../../monitoring-and-diagnostics/monitoring-overview-activity-logs.md)
+* [将活动日志流式传输到事件中心](../../azure-monitor/platform/activity-logs-stream-event-hubs.md)
+* [详细了解活动日志](../../azure-monitor/platform/activity-logs-overview.md)
 

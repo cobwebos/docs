@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 09/20/2018
 ms.author: robb
 ms.component: diagnostic-extension
-ms.openlocfilehash: 3b7b06b7ab9076b992e6e3349763d633f9b255ef
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: dc8b8e37224201062d0cf53174f3248f04ca0cc3
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53338152"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53789750"
 ---
 # <a name="what-is-azure-diagnostics-extension"></a>什么是 Azure 诊断扩展
 Azure 诊断扩展是 Azure 中可对部署的应用程序启用诊断数据收集的代理。 可以使用于自许多不同源的诊断扩展。 目前支持 Azure 云服务（经典）Web 和辅助角色、虚拟机、虚拟机规模集，以及 Service Fabric。 其他 Azure 服务具有不同的诊断方法。 请参阅 [Azure 中的监控概述](../../azure-monitor/overview.md)。
@@ -42,7 +42,7 @@ Azure 诊断扩展可收集以下类型的数据：
 ## <a name="data-storage"></a>数据存储
 该扩展将其数据存储在你指定的 [Azure 存储帐户](diagnostics-extension-to-storage.md)中。
 
-也可将其发送到 [Application Insights](../../application-insights/app-insights-cloudservices.md)。 还可将其流式传输到[事件中心](../../event-hubs/event-hubs-about.md)，然后就可将其发送到非 Azure 监控服务。
+也可将其发送到 [Application Insights](../../azure-monitor/app/cloudservices.md)。 还可将其流式传输到[事件中心](../../event-hubs/event-hubs-about.md)，然后就可将其发送到非 Azure 监控服务。
 
 ### <a name="azure-monitor"></a>Azure Monitor
 你还可以将数据发送到 Azure Monitor。 此时，该接收器仅适用于性能计数器。 由此，可将在 VM、VMSS 或云服务上收集的性能计数器作为自定义指标发送到 Azure Monitor。 Azure Monitor 接收器支持：
@@ -66,7 +66,7 @@ Azure 诊断扩展可收集以下类型的数据：
 
 有关更高级主题，请参阅
 
-* [将 Azure 诊断与适用于云服务的 Application Insights 配合使用](../../application-insights/app-insights-cloudservices.md)
+* [将 Azure 诊断与适用于云服务的 Application Insights 配合使用](../../azure-monitor/app/cloudservices.md)
 * [使用 Azure 诊断跟踪云服务应用程序的流](../../cloud-services/cloud-services-dotnet-diagnostics-trace-flow.md)
 * [使用 PowerShell 在云服务上设置诊断](../../virtual-machines/extensions/diagnostics-windows.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 

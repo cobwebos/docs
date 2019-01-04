@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/03/2016
 ms.author: manayar
-ms.openlocfilehash: b961dadbe8743f1485ef0d13a44a1bb0f3ce32b5
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: 6cd42675fa70f338fd4e1223d6a48bf8c6773915
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53321369"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53579305"
 ---
 # <a name="vertical-autoscale-with-virtual-machine-scale-sets"></a>使用虚拟机规模集垂直自动缩放
 本文介绍如何使用或不使用重新设置对 Azure [虚拟机规模集](https://azure.microsoft.com/services/virtual-machine-scale-sets/)进行垂直缩放。 有关不在规模集中的 VM 的垂直缩放，请参阅[使用 Azure 自动化垂直缩放 Azure 虚拟机](../virtual-machines/windows/vertical-scaling-automation.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
@@ -119,7 +119,7 @@ Add-AzureRmMetricAlertRule  -Name  $alertName `
 
 有关如何创建警报的详细信息，请参阅以下文章：
 
-* [Azure Monitor PowerShell 快速入门示例](../monitoring-and-diagnostics/insights-powershell-samples.md)
+* [Azure Monitor PowerShell 快速入门示例](../azure-monitor/platform/powershell-quickstart-samples.md)
 * [Azure Monitor 跨平台 CLI 快速入门示例](../azure-monitor/platform/cli-samples.md)
 
 ## <a name="summary"></a>摘要

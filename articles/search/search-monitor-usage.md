@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 11/09/2017
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 584d1d8ce3285f9f5fb986c9779d3c403ce13d1b
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: aaeb24b836b47f72d0be299738e6c90f599f8d1f
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53314153"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53631884"
 ---
 # <a name="monitor-an-azure-search-service-in-azure-portal"></a>在 Azure 门户中监视 Azure 搜索服务
 
@@ -70,7 +70,7 @@ Azure 搜索 REST API 和 .NET SDK 支持采用编程方式访问服务指标。
 
 
 ### <a name="enabling-monitoring"></a>启用监视
-在 [Azure 门户](http://portal.azure.com)中的“启用监视”选项下打开 Azure 搜索服务。
+在 [Azure 门户](https://portal.azure.com)中的“启用监视”选项下打开 Azure 搜索服务。
 
 选择要导出的数据：日志和/或指标。 可将数据复制到存储帐户，将其发送到事件中心，或将其导出到 Log Analytics。
 

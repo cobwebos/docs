@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 08/16/2018
 ms.author: mamccrea
-ms.openlocfilehash: 06135ff77cb9c2a5b8fa2ae674206406469ed293
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 52f67d21c3a130df4d85c220baca9c6af8eb06c1
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52870599"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53793472"
 ---
 # <a name="create-linux-based-clusters-in-hdinsight-using-the-net-sdk"></a>使用 .NET SDK 在 HDInsight 中创建基于 Linux 的群集
 
@@ -23,7 +23,7 @@ ms.locfileid: "52870599"
 
 了解如何使用 .NET SDK 在 Azure HDInsight 群集中创建 [Apache Hadoop](https://hadoop.apache.org/) 群集。
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > 本文中的步骤创建了包含一个工作节点的群集。 如果计划使用 32 个以上的工作节点（在创建群集时或是在创建之后通过扩展群集进行），则需要选择至少具有 8 个核心和 14GB RAM 的头节点大小。
 >
 > 有关节点大小和相关费用的详细信息，请参阅 [HDInsight 定价](https://azure.microsoft.com/pricing/details/hdinsight/)。
@@ -367,7 +367,7 @@ static void Main(string[] args)
 
 ## <a name="troubleshoot"></a>故障排除
 
-如果在创建 HDInsight 群集时遇到问题，请参阅[访问控制要求](hdinsight-administer-use-portal-linux.md#create-clusters)。
+如果在创建 HDInsight 群集时遇到问题，请参阅[访问控制要求](hdinsight-hadoop-create-linux-clusters-portal.md)。
 
 ## <a name="next-steps"></a>后续步骤
 成功创建 HDInsight 群集后，请参考以下主题来了解如何使用群集。 
@@ -375,7 +375,7 @@ static void Main(string[] args)
 ### <a name="apache-hadoop-clusters"></a>Apache Hadoop 群集
 * [将 Apache Hive 和 HDInsight 配合使用](hadoop/hdinsight-use-hive.md)
 * [将 Apache Pig 和 HDInsight 配合使用](hadoop/hdinsight-use-pig.md)
-* [将 Apache Hadoop MapReduce 与 HDInsight 配合使用](hadoop/hdinsight-use-mapreduce.md)
+* [将 MapReduce 与 HDInsight 配合使用](hadoop/hdinsight-use-mapreduce.md)
 
 ### <a name="apache-hbase-clusters"></a>Apache HBase 群集
 * [HDInsight 中的 Apache HBase 入门](hbase/apache-hbase-tutorial-get-started-linux.md)

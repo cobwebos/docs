@@ -8,12 +8,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/14/2018
 ms.author: maquaran
-ms.openlocfilehash: 669cfdc59fc0b2f509db704afa4867d8f55d86f8
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 494566cc7d49d502fd0bd864e70b338b8d6e0788
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53083965"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53726776"
 ---
 # <a name="going-social-with-azure-cosmos-db"></a>使用 Azure Cosmos DB 进行社交
 
@@ -100,7 +100,7 @@ Azure Cosmos DB 的自动索引功能可确保为所有属性都编制索引。 
 
 可拥有“最新”的流，其中包含按创建日期排序的帖子。 或者可拥有一个“最热门”的流，其中包含过去 24 小时内点赞数较多的帖子。 甚至可以根据关注者和兴趣等逻辑为每个用户实现自定义流。 它仍然是一个帖子列表。 虽然如何生成这些列表还是一个问题，但读取性能不会受到阻碍。 在获得其中一个列表之后，使用 [IN 运算符](how-to-sql-query.md#WhereClause)向 Cosmos DB 发布单个查询以一次性获取帖子的所有页面。
 
-可以使用 [Azure 应用服务](https://azure.microsoft.com/services/app-service/) 的后台进程 - [Webjobs](../app-service/web-sites-create-web-jobs.md) - 来构建源流。 创建一个帖子后，可以通过使用 [Azure 存储](https://azure.microsoft.com/services/storage/)[队列](../storage/queues/storage-dotnet-how-to-use-queues.md)和 Web 作业（通过 [Azure Webjobs SDK](https://github.com/Azure/azure-webjobs-sdk/wiki) 触发）触发后台处理，从而根据自己的自定义逻辑实现流内的帖子传播。
+可以使用 [Azure 应用服务](https://azure.microsoft.com/services/app-service/) 的后台进程 - [Webjobs](../app-service/webjobs-create.md) - 来构建源流。 创建一个帖子后，可以通过使用 [Azure 存储](https://azure.microsoft.com/services/storage/)[队列](../storage/queues/storage-dotnet-how-to-use-queues.md)和 Web 作业（通过 [Azure Webjobs SDK](https://github.com/Azure/azure-webjobs-sdk/wiki) 触发）触发后台处理，从而根据自己的自定义逻辑实现流内的帖子传播。
 
 通过使用这种相同的技术创建最终一致性环境还可以以延迟方式处理评分和点赞。
 

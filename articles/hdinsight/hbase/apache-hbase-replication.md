@@ -9,20 +9,20 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/15/2018
-ms.openlocfilehash: b03cffe35337ee5720944dc4cfe88c17c3b5b748
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: 933506e732926b0f3827f039a65e78acd3a6932b
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53163821"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53653809"
 ---
 # <a name="set-up-apache-hbase-cluster-replication-in-azure-virtual-networks"></a>在 Azure 虚拟网络中设置 Apache HBase 群集复制
 
-了解如何在 Azure 中的一个虚拟网络内部或者在两个虚拟网络之间设置 [Apache HBase](http://hbase.apache.org/) 复制。
+了解如何在 Azure 中的一个虚拟网络内部或者在两个虚拟网络之间设置 [Apache HBase](https://hbase.apache.org/) 复制。
 
 群集复制使用源推送方法。 HBase 群集可以是一个源或一个目标，也可以同时充当这两个角色。 复制是异步的。 复制的目标是保持最终一致性。 在启用复制的情况下，当源接收到对列系列的编辑时，该编辑将传播到所有目标群集。 当数据从一个群集复制到另一个群集，会跟踪源群集和所有已使用数据的群集，防止复制循环。
 
-本教程介绍如何设置源-目标复制。 对于其他群集拓扑，请参阅 [Apache HBase 参考指南](http://hbase.apache.org/book.html#_cluster_replication)。
+本教程介绍如何设置源-目标复制。 对于其他群集拓扑，请参阅 [Apache HBase 参考指南](https://hbase.apache.org/book.html#_cluster_replication)。
 
 下面是单个虚拟网络的 HBase 复制用例：
 
@@ -121,7 +121,7 @@ ms.locfileid: "53163821"
 
     将 `sshuser` 替换为创建 DNS 虚拟机时指定的 SSH 用户帐户。
 
-    > [!NOTE]
+    > [!NOTE]  
     > 可通过多种方法获取 `ssh` 实用工具。 在 Linux、Unix 和 macOS 上，操作系统会附带此实用工具。 如果使用的是 Windows，请考虑以下选项之一：
     >
     > * [Azure Cloud Shell](../../cloud-shell/quickstart.md)
@@ -162,7 +162,7 @@ ms.locfileid: "53163821"
     };
     ```
     
-    > [!IMPORTANT]
+    > [!IMPORTANT]  
     > 将 `goodclients` 节中的值替换为两个虚拟网络的 IP 地址范围。 本部分定义此 DNS 服务器从其中接受请求的地址。
 
     若要编辑此文件，请使用以下命令：
@@ -197,7 +197,7 @@ ms.locfileid: "53163821"
     };
     ```
 
-    > [!IMPORTANT]
+    > [!IMPORTANT]  
     > 必须将 `v5ant3az2hbe1edzthhvwwkcse.bx.internal.cloudapp.net` 替换为另一个虚拟网络的 DNS 后缀。 转发器 IP 是另一虚拟网络中 DNS 服务器的专用 IP 地址。
 
     若要编辑此文件，请使用以下命令：
@@ -221,7 +221,7 @@ ms.locfileid: "53163821"
     nslookup vnet2dns.v5ant3az2hbe1edzthhvwwkcse.bx.internal.cloudapp.net
     ```
 
-    > [!IMPORTANT]
+    > [!IMPORTANT]  
     > 将 `vnet2dns.v5ant3az2hbe1edzthhvwwkcse.bx.internal.cloudapp.net` 替换为另一网络中 DNS 虚拟机的完全限定的域名 (FQDN)。
     >
     > 将 `10.2.0.4` 替换为另一虚拟网络中自定义 DNS 服务器的内部 IP 地址。
@@ -258,7 +258,7 @@ sudo service bind9 status
 
 ## <a name="create-apache-hbase-clusters"></a>创建 Apache HBase 群集
 
-使用以下配置在这两个虚拟网络的每一个中创建 [Apache HBase](http://hbase.apache.org/) 群集：
+使用以下配置在这两个虚拟网络的每一个中创建 [Apache HBase](https://hbase.apache.org/) 群集：
 
 - **资源组名称**：使用的资源组名称与创建虚拟网络时所用的相同。
 - **群集类型**：HBase
@@ -289,14 +289,13 @@ sudo service bind9 status
 5. 选择或输入以下信息：
 
   1. **名称**：输入“启用复制”。
-  2. **Bash 脚本 URL**：输入 **https://raw.githubusercontent.com/Azure/hbase-utils/master/replication/hdi_enable_replication.sh**。
+  2. **Bash 脚本 URL**：输入 https://raw.githubusercontent.com/Azure/hbase-utils/master/replication/hdi_enable_replication.sh**。
   3.  **头**：确保已选定。 清除其他节点类型。
   4. **参数**：以下示例参数将对所有现有表启用复制，并将源群集中的所有数据复制到目标群集：
 
           -m hn1 -s <source hbase cluster name> -d <destination hbase cluster name> -sp <source cluster Ambari password> -dp <destination cluster Ambari password> -copydata
     
-    >[!note]
-    >
+    > [!NOTE]
     > 对源和目标群集 DNS 名称使用主机名而不是 FQDN。
 
 6. 选择“创建”。 该脚本可能会运行一段时间，尤其是在使用 **-copydata** 参数的情况下。

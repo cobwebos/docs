@@ -9,12 +9,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.date: 10/23/2018
-ms.openlocfilehash: d7a32abe52e6f1109becc18c84b19d0ccd69719c
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: d5425cf7c2ea39770bbc3e9368f34d57d7279842
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53385459"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53534870"
 ---
 # <a name="monitor-b2b-messages-with-azure-log-analytics-in-azure-logic-apps"></a>使用 Azure 逻辑应用中的 Azure Log Analytics 监视 B2B 消息
 
@@ -122,7 +122,7 @@ ms.locfileid: "53385459"
 结合使用 Azure Log Analytics 后，可以扩展将逻辑应用的诊断数据用于其他 Azure 服务的方式，例如： 
 
 * [在 Azure 存储中存档 Azure 诊断日志](../azure-monitor/platform/archive-diagnostic-logs.md)
-* [将 Azure 诊断日志流式传输到 Azure 事件中心](../monitoring-and-diagnostics/monitoring-stream-diagnostic-logs-to-event-hubs.md) 
+* [将 Azure 诊断日志流式传输到 Azure 事件中心](../azure-monitor/platform/diagnostic-logs-stream-event-hubs.md) 
 
 然后，可通过使用其他服务（如 [Azure 流分析](../stream-analytics/stream-analytics-introduction.md)和 [Power BI](../azure-monitor/platform/powerbi.md)）的遥测数据和分析来进行实时监视。 例如：
 

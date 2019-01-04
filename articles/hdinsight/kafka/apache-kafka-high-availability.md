@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/01/2018
-ms.openlocfilehash: e39829d4fa08e466f98930becc831c6f4b551aed
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 3d048618fef04b630366b3f575e420b329f102cb
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52315828"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53597658"
 ---
 # <a name="high-availability-of-your-data-with-apache-kafka-on-hdinsight"></a>通过 Apache Kafka on HDInsight 实现数据的高可用性
 
@@ -26,7 +26,7 @@ ms.locfileid: "52315828"
 
 每个 Azure 区域都有特定数量的容错域。 如需域的列表及其所含容错域的数目，请参阅[可用性集](../../virtual-machines/windows/regions-and-availability.md#availability-sets)文档。
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Kafka 不识别容错域。 在 Kafka 中创建主题时，可能会将所有分区副本存储在同一容错域中。 为了解决此问题，HDInsight 提供了 [Kafka 分区重新均衡工具](https://github.com/hdinsight/hdinsight-kafka-tools)。
 
 ## <a name="when-to-rebalance-partition-replicas"></a>何时重新均衡分区副本
@@ -39,7 +39,7 @@ ms.locfileid: "52315828"
 
 ## <a name="replication-factor"></a>复制因子
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > 建议使用包含三个容错域的 Azure 区域，并使用 3 作为复制因子。
 
 如果必须使用只包含两个容错域的区域，请使用 4 作为复制因子，将副本均衡地分布到两个容错域中。

@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: jamesbak
-ms.openlocfilehash: f1c42a3e091bc4b3804edfe835e521a99fcee880
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 95aff0bb37a91c1e2ac117f2f3b90c726e9f88d8
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52976215"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53792879"
 ---
 # <a name="quickstart-set-up-clusters-in-hdinsight"></a>快速入门：在 HDInsight 中设置群集
 
@@ -239,7 +239,7 @@ HDInsight 应用程序是用户可以在基于 Linux 的 HDInsight 群集上安�
 
 ## <a name="troubleshoot-access-control-issues"></a>排查访问控制问题
 
-如果在创建 HDInsight 群集时遇到问题，请参阅[访问控制要求](../../hdinsight/hdinsight-administer-use-portal-linux.md#create-clusters)。
+如果在创建 HDInsight 群集时遇到问题，请参阅[访问控制要求](../../hdinsight/hdinsight-hadoop-create-linux-clusters-portal.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

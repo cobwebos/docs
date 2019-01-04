@@ -9,15 +9,15 @@ ms.devlang: ''
 ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
-ms.reviewer: carlrab
+ms.reviewer: sstein, carlrab
 manager: craigg
 ms.date: 12/05/2018
-ms.openlocfilehash: 16737ed525147968c97ca20a9f4e674a0dee34fc
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: e0a5d6180c7dfa94abf8dd738c8017a3b332dfd8
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52955048"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53598798"
 ---
 # <a name="use-read-only-replicas-to-load-balance-read-only-query-workloads-preview"></a>使用只读副本对只读的查询工作负荷进行负载均衡（预览版）
 

@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/16/2018
 ms.author: dech
-ms.openlocfilehash: 6e1317084ce60fb8dce64ccd7d1d93fe1ae1d9e9
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: c1af73d57255b3c74bbab4c69767d1756b24a6da
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53140744"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53541568"
 ---
 # <a name="use-azure-cosmos-db-explorer-to-manage-your-data"></a>使用 Azure Cosmos DB 资源管理器管理数据 
 
@@ -51,4 +51,4 @@ Azure Cosmos DB Gremlin 和 Table API 帐户目前尚不支持允许共享临时
 ## <a name="next-steps"></a>后续步骤
 现已了解了如何开始使用 Azure Cosmos DB 资源管理器来管理数据，接下来可以：
 
-* 开始使用 SQL 语法定义[查询](sql-api-query-reference.md)，并使用存储过程、UDF 和触发器执行[服务器端编程](programming.md)。 
+* 开始使用 SQL 语法定义[查询](sql-api-query-reference.md)，并使用存储过程、UDF 和触发器执行[服务器端编程](stored-procedures-triggers-udfs.md)。 

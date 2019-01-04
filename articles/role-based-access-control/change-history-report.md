@@ -15,16 +15,16 @@ ms.date: 05/23/2018
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c1ba7798fd8c1a18bc84aeb9ab8c4c2e0ff718cc
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: f8c3c770cb7e30bda16b4857d5b337923d2417d2
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52967889"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53541551"
 ---
 # <a name="view-activity-logs-for-rbac-changes"></a>查看 RBAC 更改的活动日志
 
-有时需要了解基于角色的访问控制 (RBAC) 更改，如出于审核或故障排除目的。 只要有人更改了你订阅中的角色分配或角色定义，这些更改就会被记录到 [Azure 活动日志](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md)中。 可以查看活动日志，了解在过去 90 天内发生的所有 RBAC 更改。
+有时需要了解基于角色的访问控制 (RBAC) 更改，如出于审核或故障排除目的。 只要有人更改了你订阅中的角色分配或角色定义，这些更改就会被记录到 [Azure 活动日志](../azure-monitor/platform/activity-logs-overview.md)中。 可以查看活动日志，了解在过去 90 天内发生的所有 RBAC 更改。
 
 ## <a name="operations-that-are-logged"></a>记录的操作
 

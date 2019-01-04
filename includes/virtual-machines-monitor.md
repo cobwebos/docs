@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
-ms.openlocfilehash: a65dbbcfddf33692ee179755b4306019ffa8863e
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 3c2924380ef5175b330deb5052a962bfecf820ae
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53399794"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53594162"
 ---
 通过收集、查看和分析诊断与日志数据，可以利用很多机会来监视 VM。 若要执行简单的 VM [监视](../articles/azure-monitor/overview.md)，可以在 Azure 门户中使用 VM 的“概述”屏幕。 可以使用[扩展](../articles/virtual-machines/windows/extensions-features.md)配置 VM 的诊断以收集更多指标数据。 还可以使用更多高级监视选项，如 [Application Insights](../articles/application-insights/app-insights-overview.md) 和 [Log Analytics](../articles/azure-monitor/log-query/log-query-overview.md)。
 
@@ -43,23 +43,23 @@ ms.locfileid: "53399794"
 
 ## <a name="logs"></a>日志
 
-[Azure 活动日志](../articles/monitoring-and-diagnostics/monitoring-overview-activity-logs.md) 是一种方便用户深入了解 Azure 中发生的订阅级别事件的订阅日志。 该日志包括从 Azure 资源管理器操作数据到服务运行状况事件更新的一系列数据。 可以在 Azure 门户中单击“活动日志”查看 VM 的日志。
+[Azure 活动日志](../articles/azure-monitor/platform/activity-logs-overview.md) 是一种方便用户深入了解 Azure 中发生的订阅级别事件的订阅日志。 该日志包括从 Azure 资源管理器操作数据到服务运行状况事件更新的一系列数据。 可以在 Azure 门户中单击“活动日志”查看 VM 的日志。
 
 可以对活动日志执行的部分操作包括：
 
-- [根据活动日志事件创建警报](../articles/monitoring-and-diagnostics/monitoring-overview-activity-logs.md)。
-- [将活动日志流式传输到事件中心](../articles/monitoring-and-diagnostics/monitoring-stream-activity-logs-event-hubs.md)，方便第三方服务或自定义分析解决方案（例如 PowerBI）引入。
+- [根据活动日志事件创建警报](../articles/azure-monitor/platform/activity-logs-overview.md)。
+- [将活动日志流式传输到事件中心](../articles/azure-monitor/platform/activity-logs-stream-event-hubs.md)，方便第三方服务或自定义分析解决方案（例如 PowerBI）引入。
 - 在 PowerBI 中使用 [PowerBI 内容包](https://powerbi.microsoft.com/documentation/powerbi-content-pack-azure-audit-logs/)分析活动日志。
 - [将活动日志保存到存储帐户](../articles/azure-monitor/platform/archive-activity-log.md)进行存档或手动检查。 可以使用“日志配置文件”指定保留时间（天）。
 
 还可以通过使用 [Azure PowerShell](https://docs.microsoft.com/powershell/module/azurerm.insights/)、[Azure CLI](https://docs.microsoft.com/cli/azure/monitor) 或[监视 REST API](https://docs.microsoft.com/rest/api/monitor/) 访问活动日志数据。
 
-[Azure 诊断日志](../articles/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md)是 VM 发出的日志，其中提供与该 VM 的操作相关的各种频繁生成的数据。 不同于活动日志，诊断日志提供有关在 VM 中执行的操作的见解。
+[Azure 诊断日志](../articles/azure-monitor/platform/diagnostic-logs-overview.md)是 VM 发出的日志，其中提供与该 VM 的操作相关的各种频繁生成的数据。 不同于活动日志，诊断日志提供有关在 VM 中执行的操作的见解。
 
 可以对诊断日志执行的部分操作包括：
 
 - 将诊断日志保存到[存储帐户](../articles/azure-monitor/platform/archive-diagnostic-logs.md)进行审核或手动检查。 可以使用“资源诊断设置”指定保留时间（天）。
-- [将诊断日志流式传输到事件中心](../articles/monitoring-and-diagnostics/monitoring-stream-diagnostic-logs-to-event-hubs.md)，方便第三方服务或自定义分析解决方案（例如 PowerBI）引入。
+- [将诊断日志流式传输到事件中心](../articles/azure-monitor/platform/diagnostic-logs-stream-event-hubs.md)，方便第三方服务或自定义分析解决方案（例如 PowerBI）引入。
 - 使用 [OMS Log Analytics](../articles/log-analytics/log-analytics-azure-storage.md) 对诊断日志进行分析。
 
 ## <a name="advanced-monitoring"></a>高级监视

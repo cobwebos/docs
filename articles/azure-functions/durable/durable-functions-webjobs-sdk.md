@@ -10,16 +10,16 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 04/25/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 18c35070707408f43fd0e5dfc5e3330ef62a914d
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: c1a778a006c7743b6ea19062d79cff3cfeaba3d8
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53343150"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53713262"
 ---
 # <a name="how-to-run-durable-functions-as-webjobs"></a>如何以 WebJobs 的形式运行 Durable Functions
 
-[Azure Functions](../functions-overview.md) 和 [Durable Functions](durable-functions-overview.md) 扩展构建在 [WebJobs SDK](../../app-service/web-sites-create-web-jobs.md) 基础之上。 WebJobs SDK 中的 `JobHost` 是 Azure Functions 中的运行时。 如果需要以 Azure Functions 中做不到的方式控制 `JobHost` 的行为，可以使用 WebJobs SDK 自行开发并运行 Durable Functions。 然后，可以在 Azure WebJob 或运行控制台应用程序的任何位置运行 Durable Functions。
+[Azure Functions](../functions-overview.md) 和 [Durable Functions](durable-functions-overview.md) 扩展构建在 [WebJobs SDK](../../app-service/webjobs-create.md) 基础之上。 WebJobs SDK 中的 `JobHost` 是 Azure Functions 中的运行时。 如果需要以 Azure Functions 中做不到的方式控制 `JobHost` 的行为，可以使用 WebJobs SDK 自行开发并运行 Durable Functions。 然后，可以在 Azure WebJob 或运行控制台应用程序的任何位置运行 Durable Functions。
 
 WebJobs SDK 版本中提供了有关链接 Durable Functions 的示例：下载或克隆 [Durable Functions 存储库](https://github.com/azure/azure-functions-durable-extension/)，并导航到 *samples\\webjobssdk\\chaining* 文件夹。
 

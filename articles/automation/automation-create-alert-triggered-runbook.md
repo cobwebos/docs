@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 09/18/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 6a099fe371198da7d3cda3146bbd9668c4d49285
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: d35d2bfdf379d5bf02ebb4b2fd71fb85519c741a
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53343643"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53581636"
 ---
 # <a name="use-an-alert-to-trigger-an-azure-automation-runbook"></a>使用警报触发 Azure 自动化 Runbook
 
@@ -33,7 +33,7 @@ ms.locfileid: "53343643"
 |---------|---------|---------|
 |[经典指标警报](../monitoring-and-diagnostics/insights-alerts-portal.md?toc=%2fazure%2fautomation%2ftoc.json)    |任何平台级指标满足特定条件时，就会发送通知。 例如，VM 上的“CPU 百分比”在过去 5 分钟内大于 **90** 时。| [类指标警报有效负载架构](../azure-monitor/platform/alerts-webhooks.md?toc=%2fazure%2fautomation%2ftoc.json#payload-schema)         |
 |[活动日志警报](../azure-monitor/platform/activity-log-alerts.md?toc=%2fazure%2fautomation%2ftoc.json)    |当 Azure 活动日志中的任何新事件符合特定条件时，就会发送通知。 例如，当 **myProductionResourceGroup** 中出现 `Delete VM` 操作或出现状态为 **Active** 的新 Azure 服务运行状况事件时。| [活动日志警报有效负载架构](../azure-monitor/platform/activity-log-alerts-webhook.md)        |
-|[准实时指标警报](../monitoring-and-diagnostics/monitoring-near-real-time-metric-alerts.md?toc=%2fazure%2fautomation%2ftoc.json)    |当一个或多个平台级指标满足指定条件时，就会以快于指标警报的速度发送通知。 例如，当 VM 的“CPU 百分比”大于 **90** 并且过去 5 分钟“网络传入”大于 **500 MB** 时。| [准实时指标警报有效负载架构](../azure-monitor/platform/alerts-webhooks.md?toc=%2fazure%2fautomation%2ftoc.json#payload-schema)          |
+|[准实时指标警报](../azure-monitor/platform/alerts-metric-near-real-time.md?toc=%2fazure%2fautomation%2ftoc.json)    |当一个或多个平台级指标满足指定条件时，就会以快于指标警报的速度发送通知。 例如，当 VM 的“CPU 百分比”大于 **90** 并且过去 5 分钟“网络传入”大于 **500 MB** 时。| [准实时指标警报有效负载架构](../azure-monitor/platform/alerts-webhooks.md?toc=%2fazure%2fautomation%2ftoc.json#payload-schema)          |
 
 由于每种警报提供的数据不同，因此需要以不同的方式处理每种警报。 下一部分将介绍如何创建 Runbook 来处理不同类型的警报。
 

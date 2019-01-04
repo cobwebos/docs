@@ -9,18 +9,18 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: hrasheed
-ms.openlocfilehash: 312b476f8809d1d6375cc20035901d8d11c32173
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 9b8b92b7a672a4d344b17d4ade497749766f8a91
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53012345"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53719687"
 ---
 # <a name="use-apache-ambari-views-to-debug-apache-tez-jobs-on-hdinsight"></a>使用 Apache Ambari 视图来调试 HDInsight 上的 Apache Tez 作业
 
 适用于 HDInsight 的 [Apache Ambari](https://ambari.apache.org/) Web UI 所含的 [Apache TEZ](https://tez.apache.org/) 视图可用于了解和调试使用 Tez 的作业。 利用 Tez 视图，可以将作业显示为包含已连接项目的图形，深入了解每个项目并检索统计信息和日志记录信息。
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > 本文档中的步骤需要使用 Linux 的 HDInsight 群集。 Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight 组件版本控制](hdinsight-component-versioning.md#hdinsight-windows-retirement)。
 
 ## <a name="prerequisites"></a>先决条件

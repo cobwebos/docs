@@ -9,15 +9,15 @@ ms.devlang: ''
 ms.topic: conceptual
 author: bonova
 ms.author: bonova
-ms.reviewer: carlrab
+ms.reviewer: jrasnik, carlrab
 manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: 8795930c6b676e7e710f112e8d9eedd6ab9084b5
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: cf5035d4dd1c58baff66bd5edbdac42c08d6baab
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47164559"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53600164"
 ---
 # <a name="operating-the-query-store-in-azure-sql-database"></a>在 Azure SQL 数据库中操作 Query Store
 Azure 中的 Query Store 是完全托管的数据库功能，可持续收集和提供有关所有查询的详细历史信息。 可以将 Query Store 视为一个航班数据记录器，它可以大幅简化云与本地客户的查询性能故障排除。 本文说明在 Azure 中操作 Query Store 的具体方法。 使用这些预先收集的查询数据，可以快速诊断并解决性能问题，因此将更多的时间投入到业务上。 

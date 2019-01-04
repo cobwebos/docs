@@ -13,12 +13,12 @@ ms.date: 01/24/2018
 ms.reviewer: mbullwin
 ms.pm_owner: daviste;NumberByColors
 ms.author: daviste
-ms.openlocfilehash: 6a7f62d4018e5a8bd39cbf2bb2b1418137d93638
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 16795ce1fd53b9634dbc2ff7513d1c39752b8848
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52720141"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53974584"
 ---
 # <a name="users-sessions-and-events-analysis-in-application-insights"></a>在 Application Insights 中进行用户、会话和事件分析
 
@@ -36,9 +36,9 @@ ms.locfileid: "52720141"
 
 * **“用户”工具**：多少人使用了应用及其功能。  将使用浏览器 cookie 中存储的匿名 ID 对用户进行计数。 使用不同浏览器或计算机的单个用户会被计为多个用户。
 * **“会话”工具**：用户活动的多少会话包括了应用的特定页面和功能。 会话是在用户处于不活动状态半小时后或者在连续使用 24 小时后进行计数的。
-* **“事件”工具**：应用的特定页面和功能是以何频率使用的。 当浏览器加载了应用中的页面时会计入一次页面查看，前提是已[检测到此操作](app-insights-javascript.md)。 
+* **“事件”工具**：应用的特定页面和功能是以何频率使用的。 当浏览器加载了应用中的页面时会计入一次页面查看，前提是已[检测到此操作](../azure-monitor/app/javascript.md)。 
 
-    自定义事件表示应用中发生的某个事件的一次出现，通常是一项用户交互，例如单击按钮或某项任务完成。 可以在应用中插入代码来[生成自定义事件](app-insights-api-custom-events-metrics.md#trackevent)。
+    自定义事件表示应用中发生的某个事件的一次出现，通常是一项用户交互，例如单击按钮或某项任务完成。 可以在应用中插入代码来[生成自定义事件](../azure-monitor/app/api-custom-events-metrics.md#trackevent)。
 
 ## <a name="querying-for-certain-users"></a>查询特定用户
 

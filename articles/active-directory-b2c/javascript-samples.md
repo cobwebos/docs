@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 12/05/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: fbfa310114defea44d1c2b4ee5433658fc4db8c2
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 4a8d036ff2f36b75df17029c8f00edce25c49e65
+ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53110562"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53994311"
 ---
 # <a name="javascript-samples-for-use-in-azure-active-directory-b2c"></a>用于 Azure Active Directory B2C 中的 JavaScript 示例
 
@@ -129,7 +129,7 @@ function addTermsOfUseLink() {
     var termsLabelText = termsOfUseLabel.innerHTML;
       
     // create a new <a> element with the same inner text 
-    var termsOfUseUrl = 'https://docs.microsoft.com/en-us/legal/termsofuse';
+    var termsOfUseUrl = 'https://docs.microsoft.com/legal/termsofuse';
     var termsOfUseLink = document.createElement('a');
     termsOfUseLink.setAttribute('href', termsOfUseUrl);
     termsOfUseLink.setAttribute('target', '_blank');
@@ -144,5 +144,5 @@ function addTermsOfUseLink() {
 
 ## <a name="next-steps"></a>后续步骤
 
-有关如何自定义应用程序用户界面的详细信息，请参阅[使用 Azure Active Directory B2C 中的自定义策略自定义应用程序的用户界面](active-directory-b2c-ui-customization-custom.md)。
+有关如何自定义应用程序用户界面的详细信息，请参阅[在 Azure Active Directory B2C 中使用自定义策略自定义应用程序的用户界面](active-directory-b2c-ui-customization-custom.md)。
 

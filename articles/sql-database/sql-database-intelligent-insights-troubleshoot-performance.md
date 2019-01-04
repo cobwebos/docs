@@ -9,19 +9,19 @@ ms.devlang: ''
 ms.topic: conceptual
 author: danimir
 ms.author: danil
-ms.reviewer: carlrab
+ms.reviewer: jrasnik, carlrab
 manager: craigg
 ms.date: 09/20/2018
-ms.openlocfilehash: ae6ddea3860c7fc636e071b3c39c418ff4a10272
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: ad7d56b3a23d163cfbc6c9ca14c2788c5f96486b
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53273929"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53600856"
 ---
 # <a name="troubleshoot-azure-sql-database-performance-issues-with-intelligent-insights"></a>使用 Intelligent Insights 排查 Azure SQL 数据库性能问题
 
-本页提供有关通过 [Intelligent Insights](sql-database-intelligent-insights.md) 数据库性能诊断日志检测到的 Azure SQL 数据库和托管实例性能问题的信息。 可将诊断日志遥测数据流式传输到 [Azure Log Analytics](../azure-monitor/insights/azure-sql.md)、[Azure 事件中心](../monitoring-and-diagnostics/monitoring-stream-diagnostic-logs-to-event-hubs.md)、[Azure 存储](sql-database-metrics-diag-logging.md#stream-into-storage)或第三方解决方案，用于自定义 DevOps 警报和报告功能。
+本页提供有关通过 [Intelligent Insights](sql-database-intelligent-insights.md) 数据库性能诊断日志检测到的 Azure SQL 数据库和托管实例性能问题的信息。 可将诊断日志遥测数据流式传输到 [Azure Log Analytics](../azure-monitor/insights/azure-sql.md)、[Azure 事件中心](../azure-monitor/platform/diagnostic-logs-stream-event-hubs.md)、[Azure 存储](sql-database-metrics-diag-logging.md#stream-into-storage)或第三方解决方案，用于自定义 DevOps 警报和报告功能。
 
 > [!NOTE]
 > 有关通过 Intelligent Insights 快速排查 SQL 数据库性能问题的指导，请参阅本文档中的[建议的故障排除流程](sql-database-intelligent-insights-troubleshoot-performance.md#recommended-troubleshooting-flow)流程图。
@@ -332,4 +332,4 @@ Intelligent Insights 通常需要花费一小时来针对性能问题执行根�
 - 了解 [Intelligent Insights](sql-database-intelligent-insights.md) 概念。
 - 使用 [Intelligent Insights Azure SQL 数据库性能诊断日志](sql-database-intelligent-insights-use-diagnostics-log.md)。
 - [使用 Azure SQL Analytics 监视 Azure SQL 数据库](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-sql)。
-- 了解如何[从 Azure 资源收集和使用日志数据](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md)。
+- 了解如何[从 Azure 资源收集和使用日志数据](../azure-monitor/platform/diagnostic-logs-overview.md)。

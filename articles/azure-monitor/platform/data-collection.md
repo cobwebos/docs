@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/05/2018
 ms.author: bwren
-ms.openlocfilehash: fdf8d8977651c868c9f534dc61e3d1a77a43e672
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 84ab63d145d9726fad83b7b2337542fef5c8743d
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53435935"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53718956"
 ---
 # <a name="monitoring-data-collected-by-azure-monitor"></a>Azure Monitor 收集的监视数据
 [Azure Monitor](../overview.md) 是可以帮助你监视应用程序及其依赖的资源的服务。 存储来自受监视源的遥测数据和其他数据是此功能的核心所在。 本文提供有关 Azure Monitor 如何存储和使用此类数据的完整说明。
@@ -86,7 +86,7 @@ Azure Monitor 从三个基本源收集指标。 所有这些指标将在指标�
 **应用程序指标**由 Application Insights 为受监视的应用程序创建，可帮助检测性能问题，以及跟踪应用程序的用法趋势。 此类指标包括“服务器响应时间”和“浏览器异常”等值。
 
 **自定义指标**是在自动提供的标准指标之外定义的指标。 只能针对该资源所在的同一区域中的单个资源创建自定义指标。 可使用以下方法创建自定义指标：
-    - 在 Application Insights 监视的[应用程序中定义自定义指标](../../application-insights/app-insights-api-custom-events-metrics.md)。 这些指标是对标准应用程序指标集的补充。
+    - 在 Application Insights 监视的[应用程序中定义自定义指标](../../azure-monitor/app/api-custom-events-metrics.md)。 这些指标是对标准应用程序指标集的补充。
     - 使用 [Windows 诊断扩展 (WAD)](../../azure-monitor/platform/diagnostics-extension-overview.md) 从 Windows 虚拟机发布自定义指标。
     - 使用 [InfluxData Telegraf 代理](https://www.influxdata.com/time-series-platform/telegraf/)从 Linux 虚拟机发布自定义指标。
     - 使用自定义指标 API 在 Azure 服务中编写自定义指标。
@@ -100,8 +100,8 @@ Azure Monitor 从三个基本源收集指标。 所有这些指标将在指标�
 - 配置指标[警报规则](alerts-metric.md)，以便在指标超过阈值时发送通知或执行[自动化操作](action-groups.md)。
 - 根据超过阈值的指标，使用[自动缩放](../../azure-monitor/platform/autoscale-overview.md)来增加或减少资源。
 - 将指标连同日志数据一起路由到 Log Analytics 以分析指标数据，并可将指标值存储 93 天以上。 
-- 将指标流式传输到[事件中心](../../monitoring-and-diagnostics/monitor-stream-monitoring-data-event-hubs.md)，以便路由到 [Azure 流分析](../../stream-analytics/stream-analytics-introduction.md)或外部系统。
-- 出于符合性、审核或脱机报告目的，对资源的性能或运行状况历史记录进行 [存档](../../monitoring-and-diagnostics/monitor-tutorial-archive-monitoring-data.md)。
+- 将指标流式传输到[事件中心](../../azure-monitor/platform/stream-monitoring-data-event-hubs.md)，以便路由到 [Azure 流分析](../../stream-analytics/stream-analytics-introduction.md)或外部系统。
+- 出于符合性、审核或脱机报告目的，对资源的性能或运行状况历史记录进行 [存档](../../azure-monitor/learn/tutorial-archive-data.md)。
 - 使用 [PowerShell cmdlet](https://docs.microsoft.com/powershell/module/azurerm.insights/?view=azurermps-6.7.0) 或 [REST API](../../azure-monitor/platform/rest-api-walkthrough.md) 从命令行或自定义应用程序访问指标值。
 
 
@@ -129,7 +129,7 @@ Azure Monitor 中的指标存储在一个经优化的时序数据库中，支持
 ### <a name="sources-of-log-data"></a>日志数据的源
 Azure Monitor 可从 Azure 和本地资源中的各种源收集日志数据。 日志数据的来源包括：
 
-- 来自 Azure 资源的[活动日志](collect-activity-logs.md)（包括有关资源配置和运行状况的信息）和[诊断日志](../../monitoring-and-diagnostics/monitor-stream-diagnostic-logs-log-analytics.md)（提供资源操作的见解）。
+- 来自 Azure 资源的[活动日志](collect-activity-logs.md)（包括有关资源配置和运行状况的信息）和[诊断日志](../../azure-monitor/platform/diagnostic-logs-stream-log-store.md)（提供资源操作的见解）。
 - [Windows](agent-windows.md) 和 [Linux](../learn/quick-collect-linux-computer.md) 虚拟机上的代理会根据所配置的[数据源](data-sources.md)，将遥测数据从来宾操作系统和应用程序发送到 Azure Monitor。
 - [Application Insights](https://docs.microsoft.com/azure/application-insights/) 收集的应用程序数据。
 - 针对[监视解决方案](../insights/solutions.md)中特定的应用程序或服务，或者 Container Insights、VM Insights 或 Resource Group Insights 等功能提供见解的数据。
@@ -156,7 +156,7 @@ Azure Monitor 可从 Azure 和本地资源中的各种源收集日志数据。 �
 Azure Monitor 中的所有日志数据都是使用以[数据资源管理器查询语言](../log-query/get-started-queries.md)编写的[日志查询](../log-query/log-query-overview.md)检索的，这使得你可以快速检索、合并和分析所收集的数据。 可以在 Azure 门户中使用 [Log Analytics](../log-query/portals.md) 编写和测试查询。 可以通过交互方式使用结果，也可以将其固定到某个仪表板，与其他可视化效果一起查看。 还可以使用 [Azure 监视 REST API](../../monitoring-and-diagnostics/monitoring-rest-api-walkthrough.md) 来检索日志。
 
 > [!IMPORTANT]
-> 来自 Application Insights 的数据存储在一个单独的分区中，与 Azure Monitor 中的其他日志数据相隔离。 这样，便可以支持针对其他日志数据所用的相同功能，但必须使用 [Application Insights 控制台](/application-insights/app-insights-analytics.md)或 [Application Insights API](https://dev.applicationinsights.io/) 访问这些数据。 可以使用[跨资源查询](../log-query/cross-workspace-query.md)，连同其他日志数据一起分析应用程序数据。
+> 来自 Application Insights 的数据存储在一个单独的分区中，与 Azure Monitor 中的其他日志数据相隔离。 这样，便可以支持针对其他日志数据所用的相同功能，但必须使用 [Application Insights 控制台](/azure-monitor/app/analytics.md)或 [Application Insights API](https://dev.applicationinsights.io/) 访问这些数据。 可以使用[跨资源查询](../log-query/cross-workspace-query.md)，连同其他日志数据一起分析应用程序数据。
 
 ![日志](media/data-collection/logs.png)
 
@@ -176,7 +176,7 @@ Azure Monitor 中的所有日志数据都是使用以[数据资源管理器查�
 ## <a name="stream-data-to-external-systems"></a>将数据流式传输到外部系统
 除了使用 Azure 中的工具分析监视数据以外，可能还需要将这些数据转发到外部工具，例如某个安全信息和事件管理 (SIEM) 产品。 通常，这种转发是通过 [Azure 事件中心](https://docs.microsoft.com/azure/event-hubs/)直接从受监视资源完成的。 
 
-若要了解不同类型的监视数据，可参阅[将 Azure 监视数据流式传输到事件中心供外部工具使用](../../monitoring-and-diagnostics/monitor-stream-monitoring-data-event-hubs.md)。
+若要了解不同类型的监视数据，可参阅[将 Azure 监视数据流式传输到事件中心供外部工具使用](../../azure-monitor/platform/stream-monitoring-data-event-hubs.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

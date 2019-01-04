@@ -8,17 +8,17 @@ ms.subservice: migration
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: CarlRabeler
-ms.author: carlrab
-ms.reviewer: ''
+author: douglaslMS
+ms.author: douglasl
+ms.reviewer: carlrab
 manager: craigg
 ms.date: 10/15/2018
-ms.openlocfilehash: e87f8a0d168db02bf0e93216991767f5a9be584c
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 89cf69ba8bc88a40582ea795b6a17fab4f286d64
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52863510"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53651974"
 ---
 # <a name="sql-server-database-migration-to-azure-sql-database"></a>将 SQL Server 数据库迁移到 Azure SQL 数据库
 
@@ -35,7 +35,7 @@ ms.locfileid: "52863510"
 
 ## <a name="method-1-migration-with-downtime-during-the-migration"></a>方法 1：在迁移过程中需停机的迁移
 
- 如果可以承受一定的停机时间，或者正在针对以后的迁移执行生产数据库的测试迁移，请使用此方法迁移到单个或共用数据库。 有关教程，请参阅[迁移 SQL Server 数据库](sql-database-migrate-your-sql-server-database.md)。
+ 如果可以承受一定的停机时间，或者正在针对以后的迁移执行生产数据库的测试迁移，请使用此方法迁移到单个或共用数据库。 有关教程，请参阅[迁移 SQL Server 数据库](../dms/tutorial-sql-server-to-azure-sql.md)。
 
 下面的列表包含使用此方法将 SQL Server 数据库迁移到单个或共用数据库的常规工作流。 有关迁移到托管实例的信息，请参阅[迁移到托管实例](sql-database-managed-instance-migrate.md)。
 

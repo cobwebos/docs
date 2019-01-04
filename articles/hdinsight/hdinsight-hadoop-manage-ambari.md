@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: hrasheed
-ms.openlocfilehash: eee37f5a77331b78aa587ba2e3eb61132d7d6adc
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 738ef5df0b2e2a7f31a7316a1d2ef4395168d41e
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53385561"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53722016"
 ---
 # <a name="manage-hdinsight-clusters-by-using-the-apache-ambari-web-ui"></a>使用 Apache Ambari Web UI 管理 HDInsight 群集
 
@@ -26,7 +26,7 @@ Apache Ambari 提供简单易用的 Web UI 和 REST API 来简化 Apache Hadoop 
 
 ## <a id="whatis"></a>什么是 Apache Ambari？
 
-[Apache Ambari](http://ambari.apache.org) 通过提供易于使用的 Web UI 简化了 Hadoop 管理。 可以使用 Ambari 来管理和监视 Hadoop 群集。 开发人员可以使用 [Ambari REST API](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md) 在其应用程序中集成这些功能。
+[Apache Ambari](https://ambari.apache.org) 通过提供易于使用的 Web UI 简化了 Hadoop 管理。 可以使用 Ambari 来管理和监视 Hadoop 群集。 开发人员可以使用 [Ambari REST API](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md) 在其应用程序中集成这些功能。
 
 使用 Linux 操作系统的 HDInsight 群集已按默认提供 Ambari Web UI。
 
@@ -181,12 +181,12 @@ Apache Ambari 提供简单易用的 Web UI 和 REST API 来简化 Apache Hadoop 
 
    * **停用** - 从群集中删除主机。
 
-     > [!NOTE]
+     > [!NOTE]  
      > 请勿在 HDInsight 群集上使用此操作。
 
    * **重用** - 以前已停用的主机添加到群集中。
 
-     > [!NOTE]
+     > [!NOTE]  
      > 请勿在 HDInsight 群集上使用此操作。
 
 ### <a id="service"></a>服务

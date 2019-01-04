@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/14/2018
 ms.author: hrasheed
-ms.openlocfilehash: c8b54631f0d37e0e90135dd9e23ff85591cead1b
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 90ba4f2197dc1b00ad2a3d234f3e81e529ae7e4f
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52495371"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53653911"
 ---
 # <a name="publish-an-hdinsight-application-in-the-azure-marketplace"></a>在 Azure 市场中发布 HDInsight 应用程序
 可在基于 Linux 的 HDInsight 群集上安装 Azure HDInsight 应用程序。 在本文中，你将了解如何在 Azure 市场中发布 HDInsight 应用程序。 有关在 Azure 市场中发布的一般信息，请参阅[在 Azure 市场中发布产品/服务](../marketplace/marketplace-publishers-guide.md)。
@@ -53,7 +53,7 @@ HDInsight 应用程序使用自带许可 (BYOL) 模型。 在 BYOL 方案中，�
 ## <a name="application-installation-script"></a>应用程序安装脚本
 在群集（现有群集或新群集）上安装应用程序时，将创建边缘节点。 应用程序安装脚本在边缘节点上运行。
 
-  > [!IMPORTANT]
+  > [!IMPORTANT]  
   > 应用程序安装脚本的名称对特定群集必须唯一。 脚本名称必须具有以下格式：
   > 
   > "name": "[concat('hue-install-v0','-' ,uniquestring(‘applicationName’)]"
@@ -81,9 +81,8 @@ HDInsight 应用程序使用自带许可 (BYOL) 模型。 在 BYOL 方案中，�
 * mainTemplate.json（有关示例，请参阅[安装自定义 HDInsight 应用程序](hdinsight-apps-install-custom-applications.md)。）
 * 所有必需的脚本
 
-> [!NOTE]
+> [!NOTE]  
 > 可以在任何可公开访问的终结点上托管应用程序文件（包括任何 Web 应用文件）。
-> 
 
 ## <a name="publish-the-application"></a>发布应用程序
 要发布 HDInsight 应用程序：

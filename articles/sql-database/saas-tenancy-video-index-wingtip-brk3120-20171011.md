@@ -9,22 +9,22 @@ ms.devlang: ''
 ms.topic: conceptual
 author: MightyPen
 ms.author: genemi
-ms.reviewer: billgib
+ms.reviewer: billgib, sstein
 manager: craigg
 ms.date: 05/14/2018
-ms.openlocfilehash: ec3f286791a3a2c7a3bebd84ba17a11571e389f8
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: ad1ae537038c84aac7bebe40a1db124521933f3d
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53163967"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53608896"
 ---
 # <a name="video-indexed-and-annotated-for-multi-tenant-saas-app-using-azure-sql-database"></a>关于使用 Azure SQL 数据库的多租户 SaaS 应用的视频，包含索引和批注
 
 本文是有关 SaaS 租户模型或模式的 81 分钟视频的时间位置批注索引。 可以在本文中向后跳转或向前跳转至视频中感兴趣的部分。 视频介绍 Azure SQL 数据库上多租户数据库应用程序的主要设计选项。 该视频包括演示和管理代码演练，有时甚至可以通过实际操作提供比书面文档更加详细的信息。
 
 该视频扩充了以下书面文档中的信息： 
-- *概念：*[多租户 SaaS 数据库租户模式][saas-concept-design-patterns-563e]
+- *概念：* 多租户 SaaS 数据库租户模式[saas-concept-design-patterns-563e]
 - *教程：*[Wingtip Tickets SaaS 应用程序][saas-how-welcome-wingtip-app-679t]
 
 视频和文章描述在云中的 Azure SQL 数据库上创建多租户应用程序的多个阶段。 Azure SQL 数据库的特殊功能使多租户应用更易于开发、实施和管理且性能可靠。
@@ -294,7 +294,7 @@ ms.locfileid: "53163967"
 
 - [博客文章，2017 年 5 月 22 日][resource-blog-saas-patterns-app-dev-sql-db-768h]
 
-- *概念：*[多租户 SaaS 数据库租户模式][saas-concept-design-patterns-563e]
+- *概念：* 多租户 SaaS 数据库租户模式[saas-concept-design-patterns-563e]
 
 - *教程：*[Wingtip Tickets SaaS 应用程序][saas-how-welcome-wingtip-app-679t]
 

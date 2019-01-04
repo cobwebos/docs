@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/21/2018
 ms.author: hrasheed
-ms.openlocfilehash: af6915a522788f95aaac8ec1b690a7e53b31aac6
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 54dbeeede58116b01f21db784b3e34970ace029f
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52863425"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53792141"
 ---
 # <a name="create-linux-based-clusters-in-hdinsight-using-azure-powershell"></a>使用 Azure PowerShell 在 HDInsight 中创建基于 Linux 的群集
 
@@ -22,7 +22,7 @@ ms.locfileid: "52863425"
 
 Azure PowerShell 是强大的脚本环境，可以用于在 Microsoft Azure 中控制和自动执行工作负荷的部署和管理。 本文档介绍如何使用 Azure PowerShell 创建基于 Linux 的 HDInsight 群集。 此外，还提供了示例脚本。
 
-> [!NOTE]
+> [!NOTE]  
 > Azure PowerShell 仅在 Windows 客户端上可用。 如果使用的是 Linux、Unix 或 Mac OS X 客户端，请参阅[使用 Azure 经典 CLI 创建基于 Linux 的 HDInsight 群集](hdinsight-hadoop-create-linux-clusters-azure-cli.md)，了解如何使用经典 CLI 创建群集。
 
 ## <a name="prerequisites"></a>先决条件
@@ -31,7 +31,7 @@ Azure PowerShell 是强大的脚本环境，可以用于在 Microsoft Azure 中�
 * Azure 订阅。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)。
 * [Azure PowerShell](/powershell/azure/install-azurerm-ps)
 
-    > [!IMPORTANT]
+    > [!IMPORTANT]  
     > 使用 Azure Service Manager 管理 HDInsight 资源的 Azure PowerShell 支持**已弃用**，已在 2017 年 1 月 1 日删除。 本文档中的步骤使用的是与 Azure 资源管理器兼容的新 HDInsight cmdlet。
     >
     > 请按照[安装 Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps) 中的步骤安装最新版本的 Azure PowerShell。 如果脚本需要修改后才能使用与 Azure 资源管理器兼容的新 cmdlet，请参阅[迁移到适用于 HDInsight 群集的基于 Azure 资源管理器的开发工具](hdinsight-hadoop-development-using-azure-resource-manager.md)，了解详细信息。
@@ -55,7 +55,7 @@ Azure PowerShell 是强大的脚本环境，可以用于在 Microsoft Azure 中�
 
 为 SSH 用户指定的值用于创建群集的 SSH 用户。 使用此帐户在群集上启动远程 SSH 会话和运行作业。 有关详细信息，请参阅[将 SSH 与 HDInsight 配合使用](hdinsight-hadoop-linux-use-ssh-unix.md)文档。
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > 如果计划使用 32 个以上的辅助角色节点（在创建群集时配置或者是在创建之后通过扩展群集来配置），则还必须指定至少具有 8 个核心和 14 GB RAM 的头节点大小。
 >
 > 有关节点大小和相关费用的详细信息，请参阅 [HDInsight 定价](https://azure.microsoft.com/pricing/details/hdinsight/)。
@@ -70,7 +70,7 @@ Azure PowerShell 是强大的脚本环境，可以用于在 Microsoft Azure 中�
 
 [!code-powershell[main](../../powershell_scripts/hdinsight/create-cluster/create-cluster-with-config.ps1?range=59-98)]
 
-> [!WARNING]
+> [!WARNING]  
 > 不支持在 HDInsight 群集之外的其他位置使用存储帐户。 使用此示例时，请在与服务器相同的位置上创建其他存储帐户。
 
 ## <a name="customize-clusters"></a>自定义群集
@@ -84,7 +84,7 @@ Azure PowerShell 是强大的脚本环境，可以用于在 Microsoft Azure 中�
 
 ## <a name="troubleshoot"></a>故障排除
 
-如果在创建 HDInsight 群集时遇到问题，请参阅[访问控制要求](hdinsight-administer-use-portal-linux.md#create-clusters)。
+如果在创建 HDInsight 群集时遇到问题，请参阅[访问控制要求](hdinsight-hadoop-create-linux-clusters-portal.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -94,7 +94,7 @@ Azure PowerShell 是强大的脚本环境，可以用于在 Microsoft Azure 中�
 
 * [将 Apache Hive 和 HDInsight 配合使用](hadoop/hdinsight-use-hive.md)
 * [将 Apache Pig 和 HDInsight 配合使用](hadoop/hdinsight-use-pig.md)
-* [将 Apache HAdoop MapReduce 与 HDInsight 配合使用](hadoop/hdinsight-use-mapreduce.md)
+* [将 MapReduce 与 HDInsight 配合使用](hadoop/hdinsight-use-mapreduce.md)
 
 ### <a name="apache-hbase-clusters"></a>Apache HBase 群集
 

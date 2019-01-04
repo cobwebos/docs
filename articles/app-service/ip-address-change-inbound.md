@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 06/28/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 2a494b318011d601609033bc877134f0b0eeff09
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: aaa89b5a3bb1af6878ed21e0160a534a1c989228
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53249322"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53721353"
 ---
 # <a name="how-to-prepare-for-an-inbound-ip-address-change"></a>如何为入站 IP 地址更改做准备
 
@@ -50,4 +50,4 @@ ms.locfileid: "53249322"
 
 ## <a name="next-steps"></a>后续步骤
 
-本文介绍了如何对 Azure 发起的 IP 地址更改做好准备。 有关 Azure 应用服务中的 IP 地址的详细信息，请参阅 [Azure 应用服务中的入站和出站 IP 地址](app-service-ip-addresses.md)。
+本文介绍了如何对 Azure 发起的 IP 地址更改做好准备。 有关 Azure 应用服务中的 IP 地址的详细信息，请参阅 [Azure 应用服务中的入站和出站 IP 地址](overview-inbound-outbound-ips.md)。

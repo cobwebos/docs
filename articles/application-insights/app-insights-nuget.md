@@ -10,12 +10,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: reference
 ms.date: 10/16/2018
 ms.author: mbullwin
-ms.openlocfilehash: 76cdd4bd4d95c7c11906f9c02a0f5cfa2326390e
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: d8d48a41f9100abc3bc8ba306c766d9511f80026
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53000777"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53972067"
 ---
 # <a name="application-insights-nuget-packages"></a>Application Insights NuGet 包
 
@@ -70,7 +70,7 @@ ms.locfileid: "53000777"
 | Microsoft.ApplicationInsights.Agent_x64 | 2.2.1 |  为 x64 应用程序启用运行时数据收集功能 | [下载包](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Agent_x64/) |
 | Microsoft.ApplicationInsights.Agent_x86 | 2.2.1 |  为 x86 应用程序启用运行时数据收集功能。 | [下载包](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Agent_x86/) |
 
-这些包属于[状态监视器](app-insights-monitor-performance-live-website-now.md)中运行时监视的核心功能。 无需直接下载这些包，只需使用状态监视器安装程序即可。 如果要详细了解这些包如何在后台工作，请参阅我们的一位开发人员撰写的这篇[博客文章](https://apmtips.com/blog/2016/11/18/how-application-insights-status-monitor-not-monitors-dependencies/)。
+这些包属于[状态监视器](../azure-monitor/app/monitor-performance-live-website-now.md)中运行时监视的核心功能。 无需直接下载这些包，只需使用状态监视器安装程序即可。 如果要详细了解这些包如何在后台工作，请参阅我们的一位开发人员撰写的这篇[博客文章](https://apmtips.com/blog/2016/11/18/how-application-insights-status-monitor-not-monitors-dependencies/)。
 
 ## <a name="additional-packages"></a>其他包
 
@@ -81,6 +81,6 @@ ms.locfileid: "53000777"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 监视 [ASP.NET Core](app-insights-asp-net-core.md)。
+- 监视 [ASP.NET Core](../azure-monitor/app/asp-net-core.md)。
 - 分析 ASP.NET Core [Azure Linux Web 应用](app-insights-profiler-aspnetcore-linux.md)。
 - 调试 ASP.NET [快照](app-insights-snapshot-debugger.md)。

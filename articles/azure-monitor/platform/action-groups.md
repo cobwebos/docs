@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: dukek
 ms.component: alerts
-ms.openlocfilehash: 432f1a89979829bd43596d0d6a3ab7a2a3bfb996
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 2b427669fe692704343d5a3c2096df92cffb8d76
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53336459"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53583980"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>在 Azure 门户中创建和管理器操作组
 ## <a name="overview"></a>概述 ##
@@ -51,7 +51,7 @@ ms.locfileid: "53336459"
 
 1. 通过为每个操作提供以下项来定义操作列表：
 
-    a. **名称**：输入此操作的唯一标识符。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 **名称**：输入此操作的唯一标识符。
 
     b. **操作类型**：选择电子邮件/短信/推送/语音、逻辑应用、Webhook、ITSM 或自动化 Runbook。
 
@@ -98,7 +98,7 @@ ms.locfileid: "53336459"
     - 13.106.38.148
     - 13.106.57.196
 
-若要接收有关这些 IP 地址更改的更新，建议配置监视有关操作组服务的信息通知的[服务运行状况警报](./../../monitoring-and-diagnostics/monitoring-service-notifications.md)。
+若要接收有关这些 IP 地址更改的更新，建议配置监视有关操作组服务的信息通知的[服务运行状况警报](./../../azure-monitor/platform/service-notifications.md)。
 
 
 ## <a name="next-steps"></a>后续步骤 ##

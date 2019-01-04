@@ -1,20 +1,17 @@
 ---
 title: Azure Database for PostgreSQL 的定价层
 description: 本文介绍 Azure Database for PostgreSQL 的定价层。
-services: postgresql
 author: jan-eng
 ms.author: janeng
-manager: kfile
-editor: jasonwhowell
 ms.service: postgresql
-ms.topic: article
+ms.topic: conceptual
 ms.date: 10/10/2018
-ms.openlocfilehash: a57e481093bca12a1726a4cc16fa090aa158c1d8
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: 3760e2a5ccae1d21574412ec223cade03bebda1e
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53320877"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53548919"
 ---
 # <a name="azure-database-for-postgresql-pricing-tiers"></a>Azure Database for PostgreSQL 定价层
 
