@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 01/29/2018
 ms.author: dobett
-ms.openlocfilehash: ac25fa1bcca9a49054f37d8799511fbc7d95645b
-ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
+ms.openlocfilehash: 247c12fb15fe8aa82c3a29c4c2d1e704db40e424
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2018
-ms.locfileid: "47584092"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53141493"
 ---
 # <a name="azure-iot-hub-pricing-information"></a>Azure IoT 中心定价信息
 
@@ -35,6 +35,7 @@ ms.locfileid: "47584092"
 | 设备和模块孪生查询 | 查询被视作消息，根据结果大小以 512 字节块大小为单位收费。 |
 | 作业操作 <br/> （创建、更新、列表、删除） | 不收费。 |
 | 作业的每设备操作数 | 作业操作（例如孪生更新和方法）正常收费。 例如，如果一个作业生成 1000 个方法调用以及 1KB 的请求和正文为空的响应，则按 1000 条消息收费。 |
+| 连接保持的消息 | 使用 AMQP 或 MQTT 协议时，为建立连接而交换的消息和协商中交换的消息不收费。 |
 
 > [!NOTE]
 > 所有大小均按以字节为单位的有效负载大小进行计算（忽略协议组帧）。 对于具有属性和正文的消息，大小以无关协议的方式计算。 有关详细信息，请参阅 [IoT 中心消息格式](iot-hub-devguide-messages-construct.md)。

@@ -7,17 +7,17 @@ ms.subservice: security
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: ronitr
-ms.author: ronitr
+author: vainolo
+ms.author: vainolo
 ms.reviewer: vanto
 manager: craigg
 ms.date: 10/25/2018
-ms.openlocfilehash: fc82fa592a513d735d4adc602bedaf8e492af13b
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: e947c284843074cf36c2d85dd240df23a1958cd5
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50092945"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52971515"
 ---
 # <a name="get-started-with-sql-database-auditing"></a>SQL 数据库审核入门
 
@@ -39,8 +39,6 @@ ms.locfileid: "50092945"
 - **保留**选定事件的审核痕迹。 可以定义要审核的数据库操作的类别。
 - **报告**数据库活动。 可以使用预配置的报告和仪表板快速开始使用活动和事件报告。
 - **分析**报告。 可以查找可疑事件、异常活动和趋势。
-
-可按[为数据库设置审核](#subheading-2)部分中所述，为不同类型的事件类别配置审核。
 
 > [!IMPORTANT]
 > 审核日志会写入 Azure 订阅的 Azure Blob 存储中的追加 Blob。
@@ -177,7 +175,7 @@ ms.locfileid: "50092945"
 
 通过异地复制数据库，在主数据库上启用审核时，辅助数据库将有相同的审核策略。 还可以在独立于主数据库的“辅助服务器”上启用审核，从而在辅助数据库上设置审核。
 
-- 服务器级（推荐）：同时在主服务器和辅助服务器上启用审核 - 基于各自的服务器级策略，将分别对主数据库和辅助数据库进行审核。
+- 服务器级（推荐）：服务器级（推荐）：同时在主服务器和辅助服务器上启用审核 - 基于各自的服务器级策略，将分别对主数据库和辅助数据库进行审核。
 - 数据库级：辅助数据库的数据库级审核只能从主数据库审核设置进行配置。
   - 必须在主数据库本身上启用审核，而不是在服务器上启用。
   - 在主数据库上启用审核后，也会在辅助数据库上启用审核。

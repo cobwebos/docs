@@ -1,12 +1,11 @@
 ---
-title: 在一个实验中创建多个模型 - Azure 机器学习工作室 | Microsoft Docs
+title: 从一个工作室试验创建多个模型 - Azure 机器学习工作室 | Microsoft Docs
 description: 使用 PowerShell 创建多个具有相同算法和不同训练数据集的机器学习模型和 Web 服务终结点。
 services: machine-learning
 documentationcenter: ''
 author: ericlicoding
-ms.custom: (previous ms.author=haining, author=hning86)
+ms.custom: seodec18
 ms.author: amlstudiodocs
-manager: mwinkle
 editor: cgronlun
 ms.assetid: 1076b8eb-5a0d-4ac5-8601-8654d9be229f
 ms.service: machine-learning
@@ -16,16 +15,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/04/2017
-ms.openlocfilehash: e1a6eb4f61869c3c6299011c46a5953f93cc7305
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: f54f9f9ff4b55ef1e2e68f61b709cef6635dc231
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52316559"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53250257"
 ---
-# <a name="azure-machine-learning-studio-use-powershell-to-create-many-models-and-web-service-endpoints-from-one-experiment"></a>Azure 机器学习工作室：使用 PowerShell 在一个实验中创建多个模型和 Web 服务终结点
+# <a name="use-powershell-to-create-studio-models-and-web-service-endpoints-from-one-experiment"></a>使用 PowerShell 从一个试验创建多个工作室模型和 Web 服务终结点
 
-这是常见的机器学习问题：你需要创建具有相同训练工作流并使用相同算法的多个模型， 但是需要它们使用不同的训练数据集作为输入。 本文将演示如何使用单个实验在 Azure 机器学习工作室的范围中执行此操作。
+这是一个常见的机器学习问题：你需要创建具有相同训练工作流并使用相同算法的多个模型， 但是需要它们使用不同的训练数据集作为输入。 本文将演示如何使用单个实验在 Azure 机器学习工作室的范围中执行此操作。
 
 例如，假设用户拥有全球自行车租赁特许经营业务。 想要生成回归模型以预测基于历史数据的租赁需求。 你在全世界有 1,000 个租赁位置，并为每个位置收集了一个数据集。 它们包括特定于每个位置的重要功能，例如日期、时间、天气、交通。
 

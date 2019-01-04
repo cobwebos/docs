@@ -1,5 +1,5 @@
 ---
-title: 使用用于容器的 Azure Monitor（预览版）监视 AKS 群集性能 | Microsoft Docs
+title: 使用适用于容器的 Azure Monitor 监视 AKS 群集性能 | Microsoft Docs
 description: 本文介绍如何使用适用于容器的 Azure Monitor 查看和分析性能和日志数据。
 services: azure-monitor
 documentationcenter: ''
@@ -8,47 +8,52 @@ manager: carmonm
 editor: ''
 ms.assetid: ''
 ms.service: azure-monitor
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/19/2018
+ms.date: 12/06/2018
 ms.author: magoedte
-ms.openlocfilehash: 705f3f9246c2a09ded9c5c34dd5d98ecd59d5e51
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.openlocfilehash: 47d597188c761921817bf7e2155548157e0d2eb3
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51713936"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53185420"
 ---
-# <a name="understand-aks-cluster-performance-with-azure-monitor-for-containers-preview"></a>使用用于容器的 Azure Monitor（预览版）了解 AKS 群集性能
-可以使用适用于容器的 Azure Monitor 从两个角度查看 Azure Kubernetes 服务 (AKS) 群集的性能，一是直接从 AKS 群集查看，二是从 Azure Monitor 查看订阅中的所有 AKS 群集。 
+# <a name="understand-aks-cluster-performance-with-azure-monitor-for-containers"></a>使用适用于容器的 Azure Monitor 了解 AKS 群集性能 
+借助适用于容器的 Azure Monitor，可以使用性能图表和运行状况从两个角度（直接从 AKS 群集查看，或是从 Azure Monitor 查看订阅中的所有 AKS 群集）查看 Azure Kubernetes 服务 (AKS) 群集的工作负载。 在监视特定 AKS 群集时，还可以查看 Azure 容器实例 (ACI)。
 
-可以通过本文了解这两个角度的不同体验，以及如何快速评估、调查和解决检测到的问题。
+可以通过本文了解这两个角度的不同体验，以及如何有助于快速评估、调查和解决检测到的问题。
 
 若要了解如何启用适用于容器的 Azure Monitor，请参阅[载入适用于容器的 Azure Monitor](container-insights-onboard.md)。
 
-Azure Monitor 提供一个多群集视图，显示在订阅中跨资源组部署的所有受监视 AKS 群集以及不受此解决方案监视的 AKS 群集的运行状况。  可以即时了解群集运行状况，并且可以从这里向下钻取到节点和控制器性能页，或者可以通过导航来查看群集的性能图表。  对于发现的标识为“不受监视”的 AKS 群集，可以随时选择为该群集启用监视功能。  
+Azure Monitor 提供一个多群集视图，显示在订阅中跨资源组部署的所有受监视 AKS 群集的运行状况。  它显示发现的不受解决方案监视的 AKS 群集。 可以即时了解群集运行状况，并且可以从这里向下钻取到节点和控制器性能页，或者进行导航来查看群集的性能图表。  对于发现的标识为“不受监视”的 AKS 群集，可以随时为该群集启用监视功能。  
 
 ## <a name="sign-in-to-the-azure-portal"></a>登录到 Azure 门户
 登录到 [Azure 门户](https://portal.azure.com)。 
 
 ## <a name="multi-cluster-view-from-azure-monitor"></a>从 Azure Monitor 获得的多群集视图 
-若要查看已部署的所有 AKS 群集的运行状况，请在 Azure 门户的左窗格中选择“监视”。  在“见解”部分，选择“容器(预览)”。  
+若要查看已部署的所有 AKS 群集的运行状况，请在 Azure 门户的左窗格中选择“监视”。  在“见解”部分，选择“容器”。  
 
-![Azure Monitor 多群集仪表板示例](./media/container-insights-analyze/azmon-containers-multiview.png)
+![Azure Monitor 多群集仪表板示例](./media/container-insights-analyze/azmon-containers-multiview-1018.png)
 
 在“受监视的群集”选项卡上，可以了解以下情况：
 
 1. 多少群集处于严重或不正常状态？多少群集处于正常或未报告状态（也称未知状态）？
-2. 每个群集部署了多少节点、用户和系统 Pod？  
+1. 我的所有 [Azure Kubernetes 引擎（AKS 引擎）](https://github.com/Azure/aks-engine)部署是否都正常？
+1. 每个群集部署了多少节点、用户和系统 Pod？  
 
-定义的运行状况如下： 
+包含的运行状况有： 
 
-1. **正常** - VM 没有检测到任何问题，并且按要求运行。 
-2. **严重** - 检测到一个或多个严重问题，需要解决这些问题才能按预期还原正常操作状态。
-3. **警告** - 检测到一个或多个需要解决的问题，不解决这些问题可能会导致运行状况变得严重。
-4. **未知** - 如果服务无法与节点或 Pod 建立连接，则状态将更改为未知状态。
+* **正常** - VM 没有检测到任何问题，并且按要求运行。 
+* **严重** - 检测到一个或多个严重问题，需要解决这些问题才能按预期还原正常操作状态。
+* **警告** - 检测到一个或多个需要解决的问题，不解决这些问题可能会导致运行状况变得严重。
+* **未知** - 如果服务无法与节点或 Pod 建立连接，则状态将更改为未知状态。
+* **找不到** - 工作区、资源组或包含此解决方案的工作区的订阅已删除。
+* **未授权** - 用户没有读取工作区中的数据所需的权限。
+*  - 尝试从工作区中读取数据时发生错误。
+* **配置不正确** - 未在指定工作区中正确配置适用于容器的 Azure Monitor。
+* **没有数据** - 在过去 30 分钟内未向工作区报告数据。
 
 在进行运行状况计算时，会将这三种状况中“最差”的一种视为群集的总体状况，唯一的例外是 - 如果这三种状况中的任何一种为“未知”，则群集总体状况会显示为“未知”。  
 
@@ -75,29 +80,29 @@ Azure Monitor 提供一个多群集视图，显示在订阅中跨资源组部署
 在群集列表中，可以通过单击群集名称向下钻取到“群集”页，通过单击该特定群集的“节点”列中的节点汇总向下钻取到“节点”性能页，或者通过单击“用户 Pod”或“系统 Pod”列的汇总向下钻取到“控制器”性能页。   
 
 ## <a name="view-performance-directly-from-an-aks-cluster"></a>直接从 AKS 群集查看性能
-可以直接从 AKS 群集访问适用于容器的 Azure Monitor，只需从左窗格中选择“见解(预览)”即可。 分四个视角查看有关 AKS 群集的信息：
+可以直接从 AKS 群集访问适用于容器的 Azure Monitor，只需从左窗格中选择“见解”即可。 分四个视角查看有关 AKS 群集的信息：
 
 - 群集
 - Nodes 
 - 控制器  
 - 容器
 
-单击“见解(预览)”时打开的默认页为“群集”，其中包括四个性能折线图，显示群集的主要性能指标。 
+单击“见解”时打开的默认页为“群集”，其中包括四个性能折线图，显示群集的主要性能指标。 
 
 ![“群集”选项卡上的性能图表示例](./media/container-insights-analyze/containers-cluster-perfview.png)
 
 性能图表显示四个性能指标：
 
-- **节点 CPU 利用率 &nbsp;(%)**：从聚合视角反映整个群集的 CPU 利用率。 若要筛选出相关结果的时间范围，可通过图表上的百分位选择器选择“Avg”、“Min”、“Max”、“50th”、“90th”、“95th”（单选或复选均可）。 
-- **节点内存利用率 &nbsp;(%)**：从聚合视角反映整个群集的内存利用率。 若要筛选出相关结果的时间范围，可通过图表上的百分位选择器选择“Avg”、“Min”、“Max”、“50th”、“90th”、“95th”（单选或复选均可）。 
-- **节点数**：Kubernetes 提供的节点计数和状态。 表示的群集节点状态为“全部”、“就绪”和“未就绪”，可通过图表上的选择器单独筛选或以组合方式进行筛选。 
+- **节点 CPU 利用率&nbsp;%**：从聚合视角反映整个群集的 CPU 利用率。 若要筛选出相关结果的时间范围，可通过图表上的百分位选择器选择“Avg”、“Min”、“Max”、“50th”、“90th”、“95th”（单选或复选均可）。 
+- **节点内存利用率&nbsp;%**：提供整个群集的内存利用率的聚合视角。 若要筛选出相关结果的时间范围，可通过图表上的百分位选择器选择“Avg”、“Min”、“Max”、“50th”、“90th”、“95th”（单选或复选均可）。 
+- **节点计数**：Kubernetes 提供的节点计数和状态。 表示的群集节点状态为“全部”、“就绪”和“未就绪”，可通过图表上的选择器单独筛选或以组合方式进行筛选。 
 - **活动 Pod 计数**：Kubernetes 提供的 Pod 计数和状态。 表示的 Pod 状态为“全部”、“挂起”、“正在运行”和“未知”，可通过图表上的选择器单独筛选或以组合方式进行筛选。 
 
 切换到“节点”、“控制器”和“容器”选项卡时，页面右侧会自动显示“属性”窗格。  它显示所选项的属性，包括定义用于组织 Kubernetes 对象的标签。 单击窗格中的 >> 链接以查看\隐藏窗格。  
 
 ![示例 Kubernetes 透视属性窗格](./media/container-insights-analyze/perspectives-preview-pane-01.png)
 
-在层次结构中展开对象时，属性窗格将根据所选对象进行更新。 在窗格中，还可通过单击窗格顶部的“查看 Kubernetes 事件日志”链接，查看具有预定义日志搜索的 Kubernetes 事件。 有关查看 Kubernetes 日志数据的其他信息，请参阅[搜索日志以分析数据](#search-logs-to-analyze-data)。
+在层次结构中展开对象时，属性窗格将根据所选对象进行更新。 在窗格中，还可通过单击窗格顶部的“查看 Kubernetes 事件日志”链接，查看具有预定义日志搜索的 Kubernetes 事件。 有关查看 Kubernetes 日志数据的详细信息，请参阅[搜索日志以分析数据](#search-logs-to-analyze-data)。 在“容器”视图中检查容器时，可以实时查看容器日志。 有关此功能以及授予和控制访问权限所需的配置的详细信息，请参阅[如何使用适用于容器的 Azure Monitor 实时查看日志](container-insights-live-logs.md)。 
 
 请使用页面顶部的“+ 添加筛选器”选项，按“服务”、“节点”或“命名空间”筛选视图的结果。在选择筛选器范围以后，请从“选择值”字段显示的值中选择一个。  筛选器在配置后会在用户查看任何视角的 AKS 群集时进行全局应用。  公式只支持等号。  可以在第一个筛选器的基础上添加更多的筛选器，进一步缩小结果范围。  例如，如果指定了一个按“节点”筛选的筛选器，则第二个筛选器只能选择“服务”或“命名空间”。  
 
@@ -109,8 +114,11 @@ Azure Monitor 提供一个多群集视图，显示在订阅中跨资源组部署
 
 ![性能视图中的示例 Kubernetes 节点层次结构](./media/container-insights-analyze/containers-nodes-view.png)
 
-从展开的节点中，你可以从在节点上运行的 pod 或容器向下钻取到控制器来查看针对该控制器筛选的性能数据。 单击特定节点的“控制器”列下的值。   
+运行 Linux 操作系统的 Azure 容器实例虚拟节点显示在列表中最后一个 AKS 群集节点之后。  展开 ACI 虚拟节点时，可以查看在节点上运行的一个或多个 ACI Pod 和容器。  不会为节点（只为 Pod）收集和报告指标。
 
+![列出了容器实例的示例节点层次结构](./media/container-insights-analyze/nodes-view-aci.png)
+
+从展开的节点中，你可以从在节点上运行的 pod 或容器向下钻取到控制器来查看针对该控制器筛选的性能数据。 单击特定节点的“控制器”列下的值。   
 ![性能视图中从节点到控制器的示例向下钻取](./media/container-insights-analyze/drill-down-node-controller.png)
 
 可从页面顶部选择控制器或容器，查看这些对象的状态和资源使用率。  如果想要查看内存利用率，可在“指标”下拉列表中选择“内存 RSS”或“内存工作集”。 仅 Kubernetes 1.8 版和更高版本支持**内存 RSS**。 否则，看到的 **Min&nbsp;%** 值会显示为 *NaN&nbsp;%*，它表示未定义或无法表示的值的数值数据类型值。 
@@ -121,9 +129,13 @@ Azure Monitor 提供一个多群集视图，显示在订阅中跨资源组部署
 
 ![用于数据筛选的百分位选择](./media/container-insights-analyze/containers-metric-percentile-filter.png)
 
-在以下示例中，请注意节点 *aks-nodepool1-*，其“容器”的值为 14，表示部署的容器总数。
+当鼠标悬停在“趋势”列下的条形图上方时，每一条都显示 15 分钟示例期间内的 CPU 或内存使用情况（具体取决于所选指标）。  
 
-![各节点容器数汇总示例](./media/container-insights-analyze/containers-nodes-containerstotal.png)
+![“趋势”条形图悬停示例](./media/container-insights-analyze/containers-metric-trend-bar-01.png)    
+
+在下一个示例中，请注意列表中的第一项 - 节点 aks-nodepool1-，其“容器”的值为 9，表示部署的容器汇总总数。
+
+![单节点容器数汇总示例](./media/container-insights-analyze/containers-nodes-containerstotal.png)
 
 它有助于快速确定群集中节点间的容器是否适当均衡。 
 
@@ -138,17 +150,21 @@ Azure Monitor 提供一个多群集视图，显示在订阅中跨资源组部署
 | 容器 | 容器数量。 |
 | 运行时间 | 表示节点启动或重启后的时间。 |
 | 控制器 | 仅适用于容器和 Pod。 它显示驻留的控制器。 并非所有 Pod 都在控制器中，因此有些 Pod 可能会显示 **N/A**。 | 
-| 趋势 Avg&nbsp;%、Min&nbsp;%、Max&nbsp;%、50th&nbsp;%、90th&nbsp;% | 显示控制器的百分位指标百分比的条形图趋势。 |
+| 趋势 Avg&nbsp;%、Min&nbsp;%、Max&nbsp;%、50th&nbsp;%、90th&nbsp;% | 条形图趋势表示控制器的平均百分位指标百分比。 |
 
 在选择器中，选择“控制器”。
 
 ![选择控制器视图](./media/container-insights-analyze/containers-controllers-tab.png)
 
-可查看控制器的性能运行状况。
+可以在此处查看控制器和 ACI 虚拟节点控制器或未连接到控制器的虚拟节点 Pod 的性能运行状况。
 
 ![<名称>控制器性能视图](./media/container-insights-analyze/containers-controllers-view.png)
 
-行层次结构以控制器开始，当展开控制器时，可以查看一个或多个 pod。  展开 Pod，最后一行显示分组到 Pod 的容器。 从展开的控制器中，你可以向下钻取到运行它的节点来查看针对该节点筛选的性能数据。 单击特定控制器的“节点”列下的值。   
+行层次结构以控制器开始，当展开控制器时，可以查看一个或多个 pod。  展开 Pod，最后一行显示分组到 Pod 的容器。 从展开的控制器中，你可以向下钻取到运行它的节点来查看针对该节点筛选的性能数据。 未连接到控制器的 ACI Pod 在列表中最后列出。
+
+![列出了容器实例 Pod 的示例控制器层次结构](./media/container-insights-analyze/controllers-view-aci.png)
+
+单击特定控制器的“节点”列下的值。   
 
 ![性能视图中从节点到控制器的示例向下钻取](./media/container-insights-analyze/drill-down-controller-node.png)
 
@@ -164,7 +180,7 @@ Azure Monitor 提供一个多群集视图，显示在订阅中跨资源组部署
 | 重启数 | 容器重启计数汇总。 |
 | 运行时间 | 表示容器启动后的时间。 |
 | 节点 | 仅适用于容器和 Pod。 它显示驻留的控制器。 | 
-| 趋势 Avg&nbsp;%、Min&nbsp;%、Max&nbsp;%、50th&nbsp;%、90th&nbsp;%| 表示控制器的百分位指标的条形图趋势。 |
+| 趋势 Avg&nbsp;%、Min&nbsp;%、Max&nbsp;%、50th&nbsp;%、90th&nbsp;%| 条形图趋势表示控制器的平均百分位指标。 |
 
 状态字段中的图标指示容器的联机状态：
  
@@ -181,7 +197,7 @@ Azure Monitor 提供一个多群集视图，显示在订阅中跨资源组部署
 
 ![选择容器视图](./media/container-insights-analyze/containers-containers-tab.png)
 
-可查看 Azure Kubernetes 容器的性能运行状况。  
+在此处可查看 Azure Kubernetes 和 Azure 容器实例容器的性能运行状况。  
 
 ![<名称>控制器性能视图](./media/container-insights-analyze/containers-containers-view.png)
 
@@ -201,7 +217,7 @@ Azure Monitor 提供一个多群集视图，显示在订阅中跨资源组部署
 | 节点 |  容器驻留的节点。 | 
 | 重启数 | 表示容器启动后的时间。 |
 | 运行时间 | 表示容器启动或重启后的时间。 |
-| 趋势 Avg&nbsp;%、Min&nbsp;%、Max&nbsp;%、50th&nbsp;%、90th&nbsp;% | 表示容器的平均指标百分比的条形图趋势。 |
+| 趋势 Avg&nbsp;%、Min&nbsp;%、Max&nbsp;%、50th&nbsp;%、90th&nbsp;% | 条形图趋势表示容器的平均百分位指标百分比。 |
 
 状态字段中的图标指示 Pod 的联机状态，如下表所述：
  
@@ -212,6 +228,7 @@ Azure Monitor 提供一个多群集视图，显示在订阅中跨资源组部署
 | ![“上次报告正在运行”状态图标](./media/container-insights-analyze/containers-grey-icon.png) | 上次报告正在运行但已超过 30 分钟未响应|  
 | ![“已终止”状态图标](./media/container-insights-analyze/containers-terminated-icon.png) | 成功停止或无法停止|  
 | ![“已失败”状态图标](./media/container-insights-analyze/containers-failed-icon.png) | “已失败”状态 |  
+
 
 ## <a name="container-data-collection-details"></a>容器数据收集详细信息
 容器见解从容器主机和容器收集各种性能指标和日志数据。 每隔三分钟收集数据。
@@ -253,5 +270,8 @@ Log Analytics 有助于查找趋势、诊断瓶颈、预测或关联有助于确
 | ContainerInventory<br> &#124; project Computer, Name, Image, ImageTag, ContainerState, CreatedTime, StartedTime, FinishedTime<br> &#124; render table | 列出容器的所有生命周期信息| 
 | KubeEvents_CL<br> &#124; where not(isempty(Namespace_s))<br> &#124; sort by TimeGenerated desc<br> &#124; render table | Kubernetes 事件|
 | ContainerImageInventory<br> &#124; summarize AggregatedValue = count() by Image, ImageTag, Running | 映像清单 | 
-| **在高级分析中，选择折线图**：<br> 性能<br> &#124; where ObjectName == "Container" and CounterName == "% Processor Time"<br> &#124; summarize AvgCPUPercent = avg(CounterValue) by bin(TimeGenerated, 30m), InstanceName | 容器 CPU | 
-| **在高级分析中，选择折线图**：<br> Perf &#124; where ObjectName == "Container" and CounterName == "Memory Usage MB"<br> &#124; summarize AvgUsedMemory = avg(CounterValue) by bin(TimeGenerated, 30m), InstanceName | 容器内存 |
+| 选择“折线图”显示选项：<br> 性能<br> &#124; where ObjectName == "K8SContainer" and CounterName == "cpuUsageNanoCores" &#124; summarize AvgCPUUsageNanoCores = avg(CounterValue) by bin(TimeGenerated, 30m), InstanceName | 容器 CPU | 
+| 选择“折线图”显示选项：<br> 性能<br> &#124; where ObjectName == "K8SContainer" and CounterName == "memoryRssBytes" &#124; summarize AvgUsedRssMemoryBytes = avg(CounterValue) by bin(TimeGenerated, 30m), InstanceName | 容器内存 |
+
+## <a name="alerting"></a>警报
+适用于容器的 Azure Monitor 不包括可以复制并根据支持过程和步骤进行修改的预定义警报集。 在此期间，查看[使用 Azure Monitor 创建日志警报](../../azure-monitor/platform/alerts-log.md?toc=/azure/azure-monitor/toc.json)并了解如何创建您自己的警报集。  

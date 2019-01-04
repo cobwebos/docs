@@ -3,7 +3,7 @@ title: 使用 Transact-SQL (T-SQL) 创建和管理 Azure SQL 弹性数据库作�
 description: 使用 Transact-SQL (T-SQL) 通过弹性数据库作业跨多个数据库运行脚本。
 services: sql-database
 ms.service: sql-database
-ms.subservice: operations
+ms.subservice: scale-out
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -12,12 +12,12 @@ author: jaredmoo
 ms.reviewer: ''
 manager: craigg
 ms.date: 06/14/2018
-ms.openlocfilehash: 49fe1fc79ac94b798cb257b961c36a6258fb00d9
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.openlocfilehash: 3c40c6721651864b9e0d64d4eeda415bfd3e181a
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47056781"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53164511"
 ---
 # <a name="use-transact-sql-t-sql-to-create-and-manage-elastic-database-jobs"></a>使用 Transact-SQL (T-SQL) 创建和管理弹性数据库作业
 
@@ -210,9 +210,9 @@ EXEC jobs.sp_add_jobstep
 @credential_name='myjobcred',
 @target_group_name='PoolGroup',
 @output_type='SqlDatabase',
-@output_credential_name=’myjobcred’,
-@output_server_name=’server1.database.windows.net',
-@output_database_name=’<resultsdb>',
+@output_credential_name='myjobcred',
+@output_server_name='server1.database.windows.net',
+@output_database_name='<resultsdb>',
 @output_table_name='<resutlstable>'
 Create a job to monitor pool performance
 --Connect to the job database specified when creating the job agent
@@ -257,8 +257,8 @@ SELECT elastic_pool_name , end_time, elastic_pool_dtu_limit, avg_cpu_percent, av
 @target_group_name='MasterGroup',
 @output_type='SqlDatabase',
 @output_credential_name='myjobcred',
-@output_server_name=’server1.database.windows.net',
-@output_database_name=’resultsdb',
+@output_server_name='server1.database.windows.net',
+@output_database_name='resultsdb',
 @output_table_name='resutlstable'
 ```
 
@@ -330,7 +330,7 @@ EXEC jobs.sp_update_job
 ```sql
 --Connect to the job database specified when creating the job agent
 
---View top-level execution status for the job named ‘ResultsPoolJob’
+--View top-level execution status for the job named 'ResultsPoolJob'
 SELECT * FROM jobs.job_executions 
 WHERE job_name = 'ResultsPoolsJob' and step_id IS NULL
 ORDER BY start_time DESC
@@ -339,7 +339,7 @@ ORDER BY start_time DESC
 SELECT * FROM jobs.job_executions WHERE step_id IS NULL
 ORDER BY start_time DESC
 
---View all execution statuses for job named ‘ResultsPoolsJob’
+--View all execution statuses for job named 'ResultsPoolsJob'
 SELECT * FROM jobs.job_executions 
 WHERE job_name = 'ResultsPoolsJob' 
 ORDER BY start_time DESC
@@ -644,10 +644,10 @@ sp_add_job 必须从创建作业代理时指定的作业代理数据库运行。
 [ **@command =** ] 'command'  
 命令必须是有效的 T-SQL 脚本，然后才能通过此作业步骤执行该命令。 command 为 nvarchar(max)，默认值为 NULL。
 
-[ **@credential_name =** ] ‘credential_name’  
+[ @credential_name = ] 'credential_name'  
 存储在此作业控制数据库中的数据库范围的凭据的名称，此控制数据库用于在执行此步骤时连接到目标组中的每个目标数据库。 credential_name 为 nvarchar(128)。
 
-[ **@target_group_name =** ] ‘target-group_name'  
+[ @target_group_name = ] 'target-group_name'  
 包含目标数据库（作业步骤将在其上执行）的目标组的名称。 target_group_name 为 nvarchar(128)。
 
 [ **@initial_retry_interval_seconds =** ] initial_retry_interval_seconds  
@@ -774,10 +774,10 @@ sp_add_job 必须从创建作业代理时指定的作业代理数据库运行。
 [ **@command =** ] 'command'  
 命令必须是有效的 T-SQL 脚本，然后才能通过此作业步骤执行该命令。 command 为 nvarchar(max)，默认值为 NULL。
 
-[ **@credential_name =** ] ‘credential_name’  
+[ @credential_name = ] 'credential_name'  
 存储在此作业控制数据库中的数据库范围的凭据的名称，此控制数据库用于在执行此步骤时连接到目标组中的每个目标数据库。 credential_name 为 nvarchar(128)。
 
-[ **@target_group_name =** ] ‘target-group_name'  
+[ @target_group_name = ] 'target-group_name'  
 包含目标数据库（作业步骤将在其上执行）的目标组的名称。 target_group_name 为 nvarchar(128)。
 
 [ **@initial_retry_interval_seconds =** ] initial_retry_interval_seconds  
@@ -1011,14 +1011,14 @@ sp_add_job 必须从创建作业代理时指定的作业代理数据库运行。
 
 ```sql
 [jobs].sp_add_target_group_member [ @target_group_name = ] 'target_group_name'
-         [ @membership_type = ] ‘membership_type’ ]   
-        [ , [ @target_type = ] ‘target_type’ ]   
-        [ , [ @refresh_credential_name = ] ‘refresh_credential_name’ ]   
-        [ , [ @server_name = ] ‘server_name’ ]   
-        [ , [ @database_name = ] ‘database_name’ ]   
-        [ , [ @elastic_pool_name = ] ‘elastic_pool_name’ ]   
-        [ , [ @shard_map_name = ] ‘shard_map_name’ ]   
-        [ , [ @target_id = ] ‘target_id’ OUTPUT ]
+         [ @membership_type = ] 'membership_type' ]   
+        [ , [ @target_type = ] 'target_type' ]   
+        [ , [ @refresh_credential_name = ] 'refresh_credential_name' ]   
+        [ , [ @server_name = ] 'server_name' ]   
+        [ , [ @database_name = ] 'database_name' ]   
+        [ , [ @elastic_pool_name = ] 'elastic_pool_name' ]   
+        [ , [ @shard_map_name = ] 'shard_map_name' ]   
+        [ , [ @target_id = ] 'target_id' OUTPUT ]
 ```
 
 #### <a name="arguments"></a>参数
@@ -1040,10 +1040,10 @@ sp_add_job 必须从创建作业代理时指定的作业代理数据库运行。
 [ **@database_name =** ] 'database_name'  
 应添加到指定目标组的数据库的名称。 当 target_type 为 ‘SqlDatabase’ 时，应指定 database_name。 database_name 为 nvarchar(128)，没有默认值。
 
-[ **@elastic_pool_name =** ] ‘elastic_pool_name'  
+[ @elastic_pool_name = ] 'elastic_pool_name'  
 应添加到指定目标组的弹性池的名称。 当 target_type 为 ‘SqlElasticPool’ 时，应指定 elastic_pool_name。 elastic_pool_name 为 nvarchar(128)，没有默认值。
 
-[ **@shard_map_name =** ] ‘shard_map_name'  
+[ @shard_map_name = ] 'shard_map_name'  
 应添加到指定目标组的分片映射池的名称。 当 target_type 为 ‘SqlSqlShardMap’ 时，应指定 elastic_pool_name。 shard_map_name 为 nvarchar(128)，没有默认值。
 
 [ **@target_id =** ] target_group_id OUTPUT  
@@ -1101,7 +1101,7 @@ GO
 
 ```sql
 [jobs].sp_delete_target_group_member [ @target_group_name = ] 'target_group_name'
-        [ , [ @target_id = ] ‘target_id’]
+        [ , [ @target_id = ] 'target_id']
 ```
 
 
@@ -1219,7 +1219,7 @@ GO
 |**job_version**    |int    |作业的版本（每次修改作业时自动更新）。
 |**step_id**    |int|   步骤的唯一（就此作业来说）标识符。 NULL 指示这是父作业执行操作。
 |**is_active**| bit |指示信息是处于活动状态还是非活动状态。 1 指示作业处于活动状态，0 指示作业处于非活动状态。
-|**lifecycle**| nvarchar(50)|指示作业状态的值：‘Created’、‘In Progress’、‘Failed’、‘Succeeded’、‘Skipped’、'SucceededWithSkipped’|
+|**lifecycle**| nvarchar(50)|指示作业状态的值：“已创建”、“处理中”、“失败”、“成功”、“跳过”、“SucceededWithSkipped”|
 |**create_time**|   datetime2(7)|   作业的创建日期和时间。
 |**start_time** |datetime2(7)|  作业开始执行的日期和时间。 如果作业尚未执行，则为 NULL。
 |**end_time**|  datetime2(7)    |作业执行完毕的日期和时间。 如果作业尚未执行或尚未执行完毕，则为 NULL。

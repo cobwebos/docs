@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 04/24/2015
 ms.author: MicrosoftHelp@twilio.com
-ms.openlocfilehash: 087dcfd10b191dcd80ec4a70be8eb2e373e1d56b
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 254128d212dec3e6f51a98dc4435894e08377eb0
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52427533"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52955218"
 ---
 # <a name="how-to-use-twilio-for-voice-and-sms-capabilities-from-azure"></a>如何在 Azure 中使用 Twilio 实现语音和短信功能
 本指南演示如何在 Azure 中使用 Twilio API 服务执行常见编程任务。 所涉及的任务包括发起电话呼叫和发送短信服务 (SMS) 消息。 有关 Twilio 以及在应用程序中使用语音和短信的详细信息，请参阅[后续步骤](#NextSteps)部分。
@@ -115,7 +115,7 @@ Twilio 为 .NET 开发人员提供了 5 个库：
 5. 在联机搜索框中，键入 *twilio*。
 6. 单击 Twilio 程序包对应的“安装”。
 
-## <a id="howto_make_call"></a>如何拨打传出呼叫
+## <a id="howto_make_call"></a>如何：发起传出呼叫
 以下代码演示如何使用 **CallResource** 类发起传出呼叫。 此代码还使用 Twilio 提供的网站返回 Twilio 标记语言 (TwiML) 响应。 用自己的值替换“被呼叫方”和“呼叫方”电话号码，并确保在运行代码之前验证 Twilio 帐户的“呼叫方”电话号码。
 
 ```csharp
@@ -143,9 +143,9 @@ var call = CallResource.Create(
 
 有关传入 **CallResource.Create** 方法的参数的详细信息，请参阅 [https://www.twilio.com/docs/api/rest/making-calls][twilio_rest_making_calls]。
 
-如前所述，此代码使用 Twilio 提供的网站返回 TwiML 响应。 可以改用自己的站点来提供 TwiML 响应。 有关详细信息，请参阅[如何：从自己的网站提供 TwiML 响应](#howto_provide_twiml_responses)。
+如前所述，此代码使用 Twilio 提供的网站返回 TwiML 响应。 可以改用自己的站点来提供 TwiML 响应。 有关更多信息，请参阅[如何：从自己的网站提供 TwiML 响应](#howto_provide_twiml_responses)。
 
-## <a id="howto_send_sms"></a>如何发送短信
+## <a id="howto_send_sms"></a>如何：发送短信
 以下屏幕截图演示如何使用 **MessageResource** 类发送短信。 “呼叫方”号码由 Twilio 提供，供试用帐户用来发送短信。 在运行代码前，必须验证 Twilio 帐户的“被呼叫方”号码。
 
 ```csharp
@@ -172,7 +172,7 @@ catch (TwilioException ex)
 }
 ```
 
-## <a id="howto_provide_twiml_responses"></a>如何：从你自己的网站提供 TwiML 响应
+## <a id="howto_provide_twiml_responses"></a>如何：从自己的网站提供 TwiML 响应
 当应用程序启动对 Twilio API 的调用时（例如通过 **CallResource.Create** 方法），Twilio 会将请求发送到应该返回 TwiML 响应的 URL。 [如何：发起传出呼叫](#howto_make_call)中的示例使用 Twilio 提供的 URL [https://twimlets.com/message][twimlet_message_url] 返回该响应。
 
 > [!NOTE]
@@ -277,7 +277,7 @@ var call = CallResource.Create(
 
 [twilio_rest_making_calls]: https://www.twilio.com/docs/api/rest/making-calls
 
-[vs_project]:https://msdn.microsoft.com/library/windowsazure/ee405487.aspx
+[vs_project]:https://docs.microsoft.com/visualstudio/azure/vs-azure-tools-azure-project-create
 [nuget]:https://nuget.org/
 [twilio_github_repo]:https://github.com/twilio/twilio-csharp
 

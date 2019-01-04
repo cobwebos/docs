@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: hrasheed
-ms.openlocfilehash: e1a6b453bb92ca57a1c9be9bff958ac0780ea12e
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 47a634ca1c4e904cc1054db3a834483489ade0ec
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52498043"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53093550"
 ---
 # <a name="install-third-party-apache-hadoop-applications-on-azure-hdinsight"></a>在 Azure HDInsight 上安装第三方 Apache Hadoop 应用程序
 
@@ -28,8 +28,8 @@ HDInsight 应用程序是用户可以在 HDInsight 群集上安装的应用程�
 * **Cask CDAP for HDInsight** 为大数据提供首个统一的集成平台，可将数据应用程序和 Data Lake 的生产时间缩短 80%。 此应用程序仅支持标准 HBase 3.4 群集。
 * **DATAIKU DDS on HDInsight**，利用此应用程序，数据专家可以对针对性很强的服务进行原型、生成和部署方面的操作，将原始数据转换成有影响力的业务预测。
 * **Datameer** 是一个自助的可缩放平台，用于准备、浏览和管理要分析的数据，可以加速将复杂的多源数据转变为有价值的可用于业务的信息，在企业级别提供更快更智能的见解。
-* **用于 HDInsight 的 H2O 人工智能（Beta 版本）** H2O Sparkling Water 支持以下分布式算法：GLM、Naïve Bayes、分布式随机森林、梯度增强机、深度神经网络、深度学习、K-means、PCA、广义低阶模型、异常情况检测和自编码器。
-* **Kyligence Enterprise** 是基于 Apache Kylin 的企业级智能大数据分析平台，可为用户提供 PB 级数据集上的亚秒级查询能力，并引入了大量机器学习技术，提供自动建模等智能化功能，大大提升了企业大数据分析生产力。 
+* **用于 HDInsight 的 H2O 人工智能（Beta 版本）**：H2O Sparkling Water 支持以下分布式算法：GLM、Naïve Bayes、分布式随机森林、梯度增强机、深度神经网络、深度学习、K-means、PCA、广义低阶模型、异常情况检测和自编码器。
+* **Kyligence Enterprise** 由 Apache Kylin 提供支持，可为业务用户和数据分析师针对大型数据集提供即时见解。 凭借领先的机器学习技术和智能数据建模功能，它极大地提高了大数据分析的工作效率。 
 * **Paxata 自助服务数据准备**
 * **Spark Job Server for KNIME Spark Executor** Spark Job Server for KNIME Spark Executor 用于将 KNIME Analytics Platform 连接到 HDInsight 群集。
 * **Starburst Presto** Presto 是一个快速的可缩放分布式 SQL 查询引擎。 Presto 针对存储和计算的分离进行了架构设计，非常适用于查询 Azure Data Lake Storage、Azure Blob 存储、SQL 和 NoSQL 数据库以及其他数据源中的数据。

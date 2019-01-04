@@ -9,18 +9,18 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/19/2018
 ms.author: ashishth
-ms.openlocfilehash: d86600dd000d3e9c71a38b632aa75e82239401dd
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 86b10d65ecaa52055244f3530f91c1cabbe219e0
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43104573"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53435542"
 ---
 # <a name="apache-phoenix-in-hdinsight"></a>HDInsight 中的 Apache Phoenix
 
-[Apache Phoenix](http://phoenix.apache.org/) 是构建在 [HBase](hbase/apache-hbase-overview.md) 基础之上的开源大规模并行关系数据库层。 Phoenix 允许通过 HBase 使用类似于 SQL 的查询。 Phoenix 在幕后使用 JDBC 驱动程序，可让用户创建、删除和更改 SQL 表、索引、视图与序列，以及单独或批量更新插入行。 Phoenix 使用 noSQL 本机编译而不是 MapReduce 来编译查询，可让用户在 HBase 的顶层创建低延迟的应用程序。 Phoenix 添加了协处理器，支持在服务器的地址空间中运行客户端提供的代码，执行与数据共置的代码。 此方法可将客户端/服务器数据传输延迟降到最低。
+[Apache Phoenix](http://phoenix.apache.org/) 是构建在 [Apache HBase](hbase/apache-hbase-overview.md) 基础之上的开源大规模并行关系数据库层。 Phoenix 允许通过 HBase 使用类似于 SQL 的查询。 Phoenix 在幕后使用 JDBC 驱动程序，可让用户创建、删除和更改 SQL 表、索引、视图与序列，以及单独或批量更新插入行。 Phoenix 使用 noSQL 本机编译而不是 MapReduce 来编译查询，可让用户在 HBase 的顶层创建低延迟的应用程序。 Phoenix 添加了协处理器，支持在服务器的地址空间中运行客户端提供的代码，执行与数据共置的代码。 此方法可将客户端/服务器数据传输延迟降到最低。
 
-非开发人员可以借助 Apache Phoenix 创建大数据查询，并在其中使用类似于 SQL 的语法，而无需编程。 与 [Hive](hadoop/hdinsight-use-hive.md) 和 Spark SQL 等其他工具不同，Phoenix 已针对 HBase 高度优化。 开发人员可以利用它来编写高性能的查询，同时大大减少代码量。
+非开发人员可以借助 Apache Phoenix 创建大数据查询，并在其中使用类似于 SQL 的语法，而无需编程。 与 [Hive](hadoop/hdinsight-use-hive.md) 和 Apache Spark SQL 等其他工具不同，Phoenix 已针对 HBase 高度优化。 开发人员可以利用它来编写高性能的查询，同时大大减少代码量。
 <!-- [Spark SQL](spark/apache-spark-sql-with-hdinsight.md)  -->
 
 提交 SQL 查询时，Phoenix 会将该查询编译到 HBase 本机调用，然后并行运行扫描（或计划）以进行优化。 此抽象层使得开发人员无需编写 MapReduce 作业，让他们专注于围绕 Phoenix 的大数据存储构建应用程序的业务逻辑和工作流。
@@ -122,7 +122,7 @@ CREATE TABLE Saltedweblogs (
     shippingamount DOUBLE NULL) SALT_BUCKETS=4;
 ```
 
-## <a name="enable-and-tune-phoenix-with-ambari"></a>使用 Ambari 启用和优化 Phoenix
+## <a name="enable-and-tune-phoenix-with-apache-ambari"></a>使用 Apache Ambari 启用和优化 Phoenix
 
 HDInsight HBase 群集提供 [Ambari UI](hdinsight-hadoop-manage-ambari.md) 用于进行配置更改。
 

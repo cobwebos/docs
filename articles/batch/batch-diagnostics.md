@@ -12,26 +12,26 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: big-compute
-ms.date: 04/05/2018
+ms.date: 12/05/2018
 ms.author: danlep
 ms.custom: ''
-ms.openlocfilehash: 61db5e9eedc57ef6316cb760499362ed856e38c6
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: 8efa8088bca3eb6221c49ec5f14334342149795d
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51822749"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53438432"
 ---
 # <a name="batch-metrics-alerts-and-logs-for-diagnostic-evaluation-and-monitoring"></a>用于诊断评估和监视的 Batch 指标、警报和日志
 
  
-本文介绍如何使用 [Azure Monitor](../azure-monitor/overview.md) 的功能监视 Batch 帐户。 Azure Monitor 收集 Batch 帐户中资源的[指标](../azure-monitor/platform/data-collection.md#metrics)和[诊断日志](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md)。 以各种方法收集和使用此数据可以监视 Batch 帐户及诊断问题。 还可以配置[指标警报](../monitoring-and-diagnostics/monitoring-overview-alerts.md)，以便在某项指标达到指定值时收到通知。 
+本文介绍如何使用 [Azure Monitor](../azure-monitor/overview.md) 的功能监视 Batch 帐户。 Azure Monitor 收集 Batch 帐户中资源的[指标](../azure-monitor/platform/data-collection.md#metrics)和[诊断日志](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md)。 以各种方法收集和使用此数据可以监视 Batch 帐户及诊断问题。 还可以配置[指标警报](../azure-monitor/platform/alerts-overview.md)，以便在某项指标达到指定值时收到通知。 
 
 ## <a name="batch-metrics"></a>Batch 指标
 
 指标是 Azure Monitor 服务使用的 Azure 资源发出的 Azure 遥测数据（也称为性能计数器）。 Batch 帐户中的指标示例包括：“池创建事件”、“低优先级节点计数”和“任务完成事件”。 
 
-请参阅[支持的 Batch 指标列表](../monitoring-and-diagnostics/monitoring-supported-metrics.md#microsoftbatchbatchaccounts)。
+请参阅[支持的 Batch 指标列表](../azure-monitor/platform/metrics-supported.md#microsoftbatchbatchaccounts)。
 
 指标：
 
@@ -53,11 +53,17 @@ ms.locfileid: "51822749"
 
 若要以编程方式检索指标，请使用 Azure Monitor API。 有关示例，请参阅[使用 .NET 检索 Azure Monitor 指标](https://azure.microsoft.com/resources/samples/monitor-dotnet-metrics-api/)。
 
+## <a name="batch-metric-reliability"></a>Batch 指标可靠性
+
+指标用于确定趋势和进行数据分析。 指标不保证送达，并且可能会出现乱序送达、数据丢失和/或数据重复。 建议不要使用单一事件来发出警报或触发函数。 有关如何为警报设置阈值的更多详细信息，请参阅 [Batch 指标警报](#batch-metric-alerts)部分。
+
+过去 3 分钟内发出的指标可能仍在聚合。 在此时间范围内，指标值可能会被少报。
+
 ## <a name="batch-metric-alerts"></a>Batch 指标警报
 
-（可选）配置准实时指标警报。当指定指标的值超过分配的阈值时，会触发这些警报。 当警报状态为“已激活”（超过阈值并满足警报条件）以及“已解决”（再次超过阈值，并且不再满足条件）时，警报将生成所选的[通知](../monitoring-and-diagnostics/insights-alerts-portal.md)。 
+（可选）配置准实时指标警报。当指定指标的值超过分配的阈值时，会触发这些警报。 当警报状态为“已激活”（超过阈值并满足警报条件）以及“已解决”（再次超过阈值，并且不再满足条件）时，警报将生成所选的[通知](../monitoring-and-diagnostics/insights-alerts-portal.md)。 建议不要使用基于单一数据点的警报，因为指标可能会出现乱序送达、数据丢失和/或数据重复。 警报应当使用阈值来应对这些不一致。
 
-例如，你可能想要配置一个当低优先级核心计数降到特定级别时触发的指标警报，以便能够调整池的组成部分。
+例如，你可能想要配置一个当低优先级核心计数降到特定级别时触发的指标警报，以便能够调整池的组成部分。 建议设置 10 分钟或 10 分钟以上的周期，如果平均低优先级核心计数在整个周期内低于阈值，则触发警报。 建议不要基于 1-5 分钟的周期发出警报，因为指标可能仍在聚合。
 
 在门户中配置指标警报：
 
@@ -65,7 +71,7 @@ ms.locfileid: "51822749"
 2. 在“监视”下，单击“警报规则” > “添加指标警报”。
 3. 选择一个指标、一个警报条件（例如，在某个时间段内当某个指标超过特定的值时）和一个或多个通知。
 
-还可以使用 [REST API](https://docs.microsoft.com/rest/api/monitor/) 配置准实时警报。 有关详细信息，请参阅[警报概述](../monitoring-and-diagnostics/monitoring-overview-alerts.md)
+还可以使用 [REST API](https://docs.microsoft.com/rest/api/monitor/) 配置准实时警报。 有关详细信息，请参阅[警报概述](../azure-monitor/platform/alerts-overview.md)
 
 ## <a name="batch-diagnostics"></a>Batch 诊断
 
@@ -103,7 +109,7 @@ ms.locfileid: "51822749"
 
     ![Batch 诊断](media/batch-diagnostics/diagnostics-portal.png)
 
-用于启用日志收集的其他选项包括：在门户中使用 Azure Monitor 配置诊断设置、使用[资源管理器模板](../monitoring-and-diagnostics/monitoring-enable-diagnostic-logs-using-template.md)，或者使用 Azure PowerShell 或 Azure CLI。 请参阅[从 Azure 资源收集和使用日志数据](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md#how-to-enable-collection-of-diagnostic-logs)。
+用于启用日志收集的其他选项包括：在门户中使用 Azure Monitor 配置诊断设置、使用[资源管理器模板](../azure-monitor/platform/diagnostic-logs-stream-template.md)，或者使用 Azure PowerShell 或 Azure CLI。 请参阅[从 Azure 资源收集和使用日志数据](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md#how-to-enable-collection-of-diagnostic-logs)。
 
 
 ### <a name="access-diagnostics-logs-in-storage"></a>访问存储中的诊断日志
@@ -127,7 +133,7 @@ BATCHACCOUNTS/MYBATCHACCOUNT/y=2018/m=03/d=05/h=22/m=00/PT1H.json
 每个 PT1H.json Blob 文件包含 JSON 格式的事件，这些事件是在 Blob URL 中指定的小时（例如 h=12）内发生的。 在当前的小时内发生的事件将附加到 PT1H.json 文件。 分钟值始终为 00 (m=00)，因为诊断日志事件按小时细分成单个 blob。 （所有时间均是 UTC 时间。）
 
 
-有关存储帐户中诊断日志的架构的详细信息，请参阅[存档 Azure 诊断日志](../monitoring-and-diagnostics/monitoring-archive-diagnostic-logs.md#schema-of-diagnostic-logs-in-the-storage-account)。
+有关存储帐户中诊断日志的架构的详细信息，请参阅[存档 Azure 诊断日志](../azure-monitor/platform/archive-diagnostic-logs.md#schema-of-diagnostic-logs-in-the-storage-account)。
 
 若要以编程方式访问存储帐户中的日志，请使用存储 API。 
 

@@ -4,15 +4,15 @@ description: 请阅读本文了解在使用 Azure Site Recovery 设置 VMware VM
 author: nsoneji
 manager: garavd
 ms.service: site-recovery
-ms.date: 10/28/2018
+ms.date: 12/11/2018
 ms.topic: conceptual
-ms.author: nisoneji
-ms.openlocfilehash: c6ec47017d944a206642932223ebb1d9df9cf942
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.author: mayg
+ms.openlocfilehash: f724837e8cce733680b98a5df5690e6a8dfbf6ee
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51011725"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53258842"
 ---
 # <a name="plan-capacity-and-scaling-for-vmware-disaster-recovery-to-azure"></a>规划容量和缩放以便将 VMware 灾难恢复到 Azure
 
@@ -81,7 +81,7 @@ CPU | **内存** | **缓存磁盘大小** | **数据更改率** | **受保护的
 
 ### <a name="throttle-bandwidth"></a>限制带宽
 
-1. 在作为进程服务器的计算机上打开 Azure 备份 MMC 管理单元。 默认情况下，备份的快捷方式位于桌面上或在以下文件夹中：C:\Program Files\Microsoft Azure Recovery Services Agent\bin\wabadmin 中。
+1. 在作为进程服务器的计算机上打开 Azure 备份 MMC 管理单元。 默认情况下，备份的快捷方式位于桌面上或在以下文件夹中：C:\Program Files\Microsoft Azure Recovery Services Agent\bin。
 2. 在管理单元中，单击“更改属性”。
 
     ![Azure 备份 MMC 管理单元选项（用于更改属性）的屏幕截图](./media/site-recovery-vmware-to-azure/throttle1.png)

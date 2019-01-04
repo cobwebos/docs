@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 10/23/2018
 ms.author: raynew
-ms.openlocfilehash: 1092f5e21eab1e037c360408f17548b544a9e922
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: d24b2773aa056b33a4067d5d84677d186d25b195
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52422790"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53255068"
 ---
 # <a name="prepare-to-back-up-azure-vms"></a>准备备份 Azure VM
 
@@ -34,7 +34,7 @@ ms.locfileid: "52422790"
 
 ## <a name="supported-operating-systems-for-backup"></a>支持用于备份的操作系统
 
- * **Linux**：Azure 备份支持 [Azure 认可的分发版列表](../virtual-machines/linux/endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)，但 CoreOS Linux 和 32 位操作系统除外。 有关支持还原文件的 Linux 操作系统的列表，请参阅[从虚拟机备份恢复文件](backup-azure-restore-files-from-vm.md#for-linux-os)。
+ * Linux：Azure 备份支持 [Azure 认可的分发版列表](../virtual-machines/linux/endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)，但 CoreOS Linux 和 32 位操作系统除外。 有关支持还原文件的 Linux 操作系统的列表，请参阅[从虚拟机备份恢复文件](backup-azure-restore-files-from-vm.md#for-linux-os)。
 
     > [!NOTE]
     > 只要虚拟机上装有 VM 代理且支持 Python，其他自带 Linux 发行版应该也能正常运行。 但是，不支持这些发行版。
@@ -177,14 +177,14 @@ ms.locfileid: "52422790"
 
 以下信息适用于不是使用从 Azure 市场创建的 VM 的情况。 **例如，你从本地数据中心迁移了某个 VM。在这种情况下，需要安装 VM 代理才能保护该虚拟机。**
 
-**请注意**：安装 VM 代理以后，还必须使用 Azure PowerShell 更新 ProvisionGuestAgent 属性，以告知 Azure VM 已安装代理。
+**注意**：安装 VM 代理以后，还必须使用 Azure PowerShell 更新 ProvisionGuestAgent 属性，以告知 Azure VM 已安装代理。
 
 如果在备份 Azure VM 时遇到问题，请使用下表检查是否已在虚拟机上正确安装 Azure VM 代理。 该表提供了适用于 Windows 和 Linux VM 的 VM 代理的其他信息。
 
 | **操作** | **Windows** | **Linux** |
 | --- | --- | --- |
-| 安装 VM 代理 |下载并安装 [代理 MSI](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409)。 需要有管理员权限才能完成安装。 |<li> 安装最新的 [Linux 代理](../virtual-machines/extensions/agent-linux.md)。 需要有管理员权限才能完成安装。 我们建议从分发存储库安装代理。 我们**不建议**直接从 github 安装 Linux VM 代理。  |
-| 更新 VM 代理 |更新 VM 代理与重新安装 [VM 代理二进制文件](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409)一样简单。 <br>确保在更新 VM 代理时，没有任何正在运行的备份操作。 |按照[更新 Linux VM 代理](../virtual-machines/linux/update-agent.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)中的说明进行操作。 我们建议从分发存储库更新代理。 我们**不建议**直接从 github 更新 Linux VM 代理。<br>确保在更新 VM 代理时，没有任何正在运行的备份操作。 |
+| 安装 VM 代理 |下载并安装 [代理 MSI](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409)。 需要有管理员权限才能完成安装。 |<li> 安装最新的 [Linux 代理](../virtual-machines/extensions/agent-linux.md)。 需要有管理员权限才能完成安装。 我们建议从分发存储库安装代理。 我们不建议直接从 GitHub 安装 Linux VM 代理。  |
+| 更新 VM 代理 |更新 VM 代理与重新安装 [VM 代理二进制文件](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409)一样简单。 <br>确保在更新 VM 代理时，没有任何正在运行的备份操作。 |按照[更新 Linux VM 代理](../virtual-machines/linux/update-agent.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)中的说明进行操作。 我们建议从分发存储库更新代理。 我们不建议直接从 GitHub 更新 Linux VM 代理。<br>确保在更新 VM 代理时，没有任何正在运行的备份操作。 |
 | 验证 VM 代理安装 |<li>导航到 Azure VM 中的 *C:\WindowsAzure\Packages* 文件夹。 <li>应会发现 WaAppAgent.exe 文件已存在。<li> 右键单击该文件，转到“**属性**”，并选择“**详细信息**”选项卡。“产品版本”字段应为 2.6.1198.718 或更高。 |不适用 |
 
 ### <a name="backup-extension"></a>备份扩展

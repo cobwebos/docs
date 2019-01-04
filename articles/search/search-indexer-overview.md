@@ -1,5 +1,5 @@
 ---
-title: Azure 搜索中的索引器 | Microsoft Docs
+title: 用于在编制索引期间抓取数据源的索引器 - Azure 搜索
 description: 对 Azure SQL 数据库、Azure Cosmos DB 或 Azure 存储爬网，提取可搜索的数据并填充 Azure 搜索索引。
 author: HeidiSteen
 manager: cgronlun
@@ -9,12 +9,13 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/17/2017
 ms.author: heidist
-ms.openlocfilehash: 2164e0b7cc973969e39f5708bb6509c1ed5f636a
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.custom: seodec2018
+ms.openlocfilehash: 8dae593dea36944f8db037803c0dfac68cbac7c8
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "34641129"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53384898"
 ---
 # <a name="indexers-in-azure-search"></a>Azure 搜索中的索引器
 
@@ -46,7 +47,8 @@ Azure 搜索中的*索引器*是一种爬网程序，它从外部 Azure 数据�
 * [Azure SQL](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
 * [Azure Cosmos DB](search-howto-index-cosmosdb.md)
 * [Azure Blob 存储](search-howto-indexing-azure-blob-storage.md)
-* [Azure 表存储](search-howto-indexing-azure-tables.md)
+* [Azure 表存储](search-howto-indexing-azure-tables.md) 
+    * 请注意，[认知搜索](cognitive-search-concept-intro.md)不支持 Azure 表存储
 
 
 ## <a name="basic-configuration-steps"></a>基本配置步骤

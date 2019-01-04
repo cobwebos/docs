@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 媒体服务设计带访问控制的多 DRM 内容保护系统 | Microsoft Docs
+title: 设计带访问控制的多 DRM 内容保护系统 - Azure 媒体服务 | Microsoft Docs
 description: 了解如何为 Microsoft 平滑流式处理客户端移植工具包授权。
 services: media-services
 documentationcenter: ''
@@ -11,14 +11,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/15/2018
+ms.date: 12/08/2018
 ms.author: willzhan
-ms.openlocfilehash: d65007ed2a0ce5a827eadca31dd9df8704e2c905
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.custom: seodec18
+ms.openlocfilehash: ec354cc91b22905c399d7bb19107db1b94e9925f
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49958187"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53136267"
 ---
 # <a name="design-of-a-multi-drm-content-protection-system-with-access-control"></a>设计带访问控制的多 DRM 内容保护系统 
 
@@ -28,7 +29,7 @@ ms.locfileid: "49958187"
 
 本文档的目标读者是使用 OTT 或在线流/多屏解决方案的 DRM 子系统的工程师，或对于 DRM 子系统有兴趣的读者。 假设读者熟悉市场上的至少一种 DRM 技术，例如 PlayReady、Widevine、FairPlay 或 Adobe Access。
 
-在本次讨论中，，我们通过多重 DRM 加入了 Azure 媒体服务支持的 3 个 DRM：适用于 PlayReady 和 Widevine 的通用加密 (CENC)、FairPlay 以及 AES-128 明文密钥加密。 在线流和 OTT 行业中的主要趋势是在各种客户端平台上使用原生 DRM。 这是从以前对于各种客户端平台使用单个 DRM 及其客户端 SDK 的趋势变化而来的。 使用 CENC 与多重原生 DRM 时，PlayReady 和 Widevine 都按照[通用加密 (ISO/IEC 23001-7 CENC)](http://www.iso.org/iso/home/store/catalogue_ics/catalogue_detail_ics.htm?csnumber=65271/) 规范加密。
+在本次讨论中，借助多 DRM，我们介绍 Azure 媒体服务支持的 3 个 DRM：PlayReady 和 Widevine 的通用加密 (CENC)、FairPlay 以及 AES-128 明文密钥加密。 在线流和 OTT 行业中的主要趋势是在各种客户端平台上使用原生 DRM。 这是从以前对于各种客户端平台使用单个 DRM 及其客户端 SDK 的趋势变化而来的。 使用 CENC 与多重原生 DRM 时，PlayReady 和 Widevine 都按照[通用加密 (ISO/IEC 23001-7 CENC)](http://www.iso.org/iso/home/store/catalogue_ics/catalogue_detail_ics.htm?csnumber=65271/) 规范加密。
 
 使用原生多重 DRM 保护内容的好处包括：
 
@@ -118,11 +119,11 @@ DRM 子系统可能包含以下组件：
 
 如果针对许可证传送使用公有云，持久性和非持久性许可证对于许可证传送成本有直接影响。 下面演示了两种不同的设计方案：
 
-* 每月订阅：使用永久性许可证，以及一对多内容密钥到资产映射。 例如，对于所有儿童影片，使用单个内容密钥进行加密。 在这种情况下：
+* 月度订阅：使用永久性许可证，以及一对多内容密钥到资产映射。 例如，对于所有儿童影片，使用单个内容密钥进行加密。 在这种情况下：
 
     所有儿童影片/设备的许可证总数 = 1
 
-* 每月订阅：在内容密钥与资产之间使用非永久性许可证以及一对一映射。 在这种情况下：
+* 月度订阅：在内容密钥与资产之间使用非永久性许可证以及一对一映射。 在这种情况下：
 
     所有儿童影片/设备的许可证总数 = [观看影片数] x [会话数]
 
@@ -246,7 +247,7 @@ DRM 子系统可能包含以下组件：
 
 * 授予组成员资格声明权限。 确保 Azure AD 应用程序清单文件中包含以下内容： 
 
-    "groupMembershipClaims": "All"（默认值为 null）
+    "groupMembershipClaims":"All"   （默认值为 null）
 
 * 创建限制要求时，请设置适当的 TokenType。
 
@@ -326,7 +327,7 @@ DRM 许可证传送服务始终会检查来自 Azure AD 的当前/有效公钥�
 
 2. 为资源应用添加新的密钥。
 
-3. 更新应用程序清单文件，使 groupMembershipClaims 属性具有值 "groupMembershipClaims": "All"。
+3. 更新应用程序清单文件，使 groupMembershipClaims 属性具有值 "groupMembershipClaims":"All"。
 
 4. 在指向播放器 Web 应用的 Azure AD 应用中，在“对其他应用程序的权限”部分添加步骤 1 中添加的资源应用。 在“委派权限”下面选择“访问 [资源名称]”。 此选项可授予 Web 应用创建访问令牌的权限以访问资源应用。 如果使用 Visual Studio 和 Azure Web 应用进行开发，请对本地版本和已部署版本的 Web 应用执行此操作。
 
@@ -365,7 +366,7 @@ Azure AD 颁发的 JWT 是用于访问此指针资源的访问令牌。
 > [!NOTE]
 > 如果使用 .NET Framework/C# 作为开发平台，用于非对称安全密钥的 X509 证书的密钥长度必须至少为 2048。 这是 .NET Framework 中 System.IdentityModel.Tokens.X509AsymmetricSecurityKey 类的要求。 否则，将引发以下异常：
 
-> IDX10630: 用于签名的 'System.IdentityModel.Tokens.X509AsymmetricSecurityKey' 不能小于 '2048' 位。
+> IDX10630:用于签名的 'System.IdentityModel.Tokens.X509AsymmetricSecurityKey' 不能小于 '2048' 位。
 
 ## <a name="the-completed-system-and-test"></a>完成的系统和测试
 本部分逐步讲解如何在完成的端到端系统中完成以下方案，让读者在获取登录帐户之前对该行为有个基本印象。
@@ -401,15 +402,15 @@ Azure AD 颁发的 JWT 是用于访问此指针资源的访问令牌。
 
 **自定义 Azure AD 租户域帐户**：自定义 Azure AD 租户域的自定义登录页。
 
-![自定义 Azure AD 租户域帐户](./media/design-multi-drm-system-with-access-control/media-services-ad-tenant-domain1.png)
+![自定义 Azure AD 租户域帐户 1](./media/design-multi-drm-system-with-access-control/media-services-ad-tenant-domain1.png)
 
 **采用智能卡的 Microsoft 域帐户**：由 Microsoft 公司 IT 部门自定义的、采用双重身份验证的登录页。
 
-![自定义 Azure AD 租户域帐户](./media/design-multi-drm-system-with-access-control/media-services-ad-tenant-domain2.png)
+![自定义 Azure AD 租户域帐户 2](./media/design-multi-drm-system-with-access-control/media-services-ad-tenant-domain2.png)
 
 **Microsoft 帐户**：使用者的 Microsoft 帐户登录页。
 
-![自定义 Azure AD 租户域帐户](./media/design-multi-drm-system-with-access-control/media-services-ad-tenant-domain3.png)
+![自定义 Azure AD 租户域帐户 3](./media/design-multi-drm-system-with-access-control/media-services-ad-tenant-domain3.png)
 
 ### <a name="use-encrypted-media-extensions-for-playready"></a>使用 PlayReady 的加密媒体扩展
 在支持 PlayReady 加密媒体扩展 (EME) 的新式浏览器（例如 Windows 8.1 和更高版本上的 Internet Explorer 11，以及 Windows 10 上的 Microsoft Edge 浏览器）上，PlayReady 是 EME 的基本 DRM。

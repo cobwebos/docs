@@ -10,12 +10,12 @@ ms.service: azure-portal
 ms.custom: ''
 manager: dougeby
 ms.author: cwatson
-ms.openlocfilehash: b2bf674dbb253c7ec698b18776d8752ed6a4c1c8
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: 8bbba504f95233db7cf65556b57148771962f507
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47394067"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53308577"
 ---
 # <a name="export-or-delete-settings-in-the-azure-portal"></a>导出或删除 Azure 门户中的设置
 可以从 Azure 门户设置菜单中导出并删除以下设置：
@@ -29,7 +29,7 @@ ms.locfileid: "47394067"
 
 **导出或删除门户设置**
 
-1. 登录到 [Azure 门户](http://portal.azure.com)。
+1. 登录到 [Azure 门户](https://portal.azure.com)。
 2. 在门户的右上角，选择“设置”。
 
     ![显示门户设置齿轮的屏幕截图](media/azure-portal-export-delete-settings/azure-portal-settings-icon.png)

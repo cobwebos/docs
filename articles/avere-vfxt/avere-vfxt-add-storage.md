@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: procedural
 ms.date: 10/31/2018
 ms.author: v-erkell
-ms.openlocfilehash: cd868996066110c8d0457b177e60523886912dd8
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: d38fe1cab27cfade3e6e4d2f6764f455896ac470
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52163165"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "53001975"
 ---
 # <a name="configure-storage"></a>配置存储
 
@@ -19,6 +19,12 @@ ms.locfileid: "52163165"
 
 > [!TIP]
 > 如果使用了 `create-cloudbacked-cluster` 原型脚本与 Avere vFXT 群集一起创建新的 Blob 容器，则该容器已进行了设置并可供使用，无需添加存储。
+>
+> 但是，如果使用默认加密密钥加密了新的 Blob 容器，则必须从群集中下载密钥恢复文件或者在存储数据前使用新密钥替换默认密钥。 默认密钥仅保存在群集中，而如果群集丢失或变得不可用，就无法检索默认密钥。
+>
+> 连接到 Avere 控制面板后，单击“设置”，然后选择“核心文件管理器” > “云加密设置”。 在“本地密钥存储”部分中，选择以下选项之一： 
+> * 使用“重新下载恢复文件”按钮获取现有密钥的恢复文件。 恢复文件是使用群集管理密码加密的。 请务必将文件保存在可靠的位置。 
+> * 按照页面“生成新主密钥”部分的说明，新建一个由你控制的加密密钥。 此选项可用于指定唯一的密码，并且它要求你上传并重新下载恢复文件以验证密码文件对。
 
 如果为群集使用了 `create-minimal-cluster` 原型脚本，或者想要添加其他硬件或基于云的存储系统，请按照这些说明进行操作。
 

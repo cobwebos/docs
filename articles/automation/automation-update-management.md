@@ -6,21 +6,21 @@ ms.service: automation
 ms.component: update-management
 author: georgewallace
 ms.author: gwallace
-ms.date: 11/28/2018
+ms.date: 12/11/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: caa1b6f31325cd67aad106f7829bd32a5e7aeb53
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 06006456a08c5eb499eff504fea5dcffdc11d662
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52635809"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53342385"
 ---
 # <a name="update-management-solution-in-azure"></a>Azure 中的更新管理解决方案
 
 可以使用 Azure 自动化中的更新管理解决方案，为部署在 Azure、本地环境或其他云提供程序中的 Windows 和 Linux 计算机管理操作系统更新。 可以快速评估所有代理计算机上可用更新的状态，并管理为服务器安装所需更新的过程。
 
-可以直接通过 Azure 自动化帐户为虚拟机启用更新管理。 若要了解如何通过自动化帐户为虚拟机启用更新管理，请参阅[管理多个虚拟机的更新](manage-update-multi.md)。 还可以通过 Azure 门户中的虚拟机窗格为单个虚拟机启用更新管理。 此方案适用于 [Linux](../virtual-machines/linux/tutorial-monitoring.md#enable-update-management) 和 [Windows](../virtual-machines/windows/tutorial-monitoring.md#enable-update-management) 虚拟机。
+可以直接通过 Azure 自动化帐户为虚拟机启用更新管理。 若要了解如何通过自动化帐户为虚拟机启用更新管理，请参阅[管理多个虚拟机的更新](manage-update-multi.md)。 还可以通过 Azure 门户中的虚拟机页面为虚拟机启用更新管理。 此方案适用于 [Linux](../virtual-machines/linux/tutorial-monitoring.md#enable-update-management) 和 [Windows](../virtual-machines/windows/tutorial-monitoring.md#enable-update-management) 虚拟机。
 
 ## <a name="solution-overview"></a>解决方案概述
 
@@ -52,7 +52,7 @@ ms.locfileid: "52635809"
 
 可以通过创建计划的部署，在需要更新的计算机上部署和安装软件更新。 归类为“可选”的更新不包括在 Windows 计算机的部署范围内。 只有必需的更新会包括在部署范围内。 
 
-计划的部署会通过显式指定计算机或通过根据特定的一组计算机的日志搜索结果来选择[计算机组](../log-analytics/log-analytics-computer-groups.md)，来定义哪些目标计算机接收适用更新。 也可以指定一个计划来批准并设置可以安装更新的一个时段。
+计划的部署会通过显式指定计算机或通过根据特定的一组计算机的日志搜索结果来选择[计算机组](../azure-monitor/platform/computer-groups.md)，来定义哪些目标计算机接收适用更新。 也可以指定一个计划来批准并设置可以安装更新的一个时段。
 
 通过 Azure 自动化中的 runbook 安装更新。 你无法查看这些 runbook，它们不需要任何配置。 创建更新部署时，更新部署会创建一个计划，该计划在指定的时间为所包括的计算机启动主更新 Runbook。 此主 Runbook 会在每个代理上启动一个子 Runbook 来安装必需的更新。
 
@@ -120,7 +120,7 @@ Windows 代理必须配置为与 WSUS 服务器通信或必须有权访问 Micro
 * Microsoft.IntelligencePack.UpdateAssessment.Configuration (Microsoft.IntelligencePack.UpdateAssessment.Configuration)
 * 更新部署 MP
 
-有关如何更新解决方案管理包的详细信息，请参阅[将 Operations Manager 连接到 Log Analytics](../log-analytics/log-analytics-om-agents.md)。
+有关如何更新解决方案管理包的详细信息，请参阅[将 Operations Manager 连接到 Log Analytics](../azure-monitor/platform/om-agents.md)。
 
 > [!NOTE]
 > 对于使用 Operations Manger 代理的系统，若要能够由更新管理完全托管，需要将代理更新为 Microsoft Monitoring Agent。 若要了解如何更新代理，请参阅[如何升级 Operations Manager 代理](https://docs.microsoft.com/system-center/scom/deploy-upgrade-agents)。
@@ -145,7 +145,7 @@ Heartbeat
 
 在 Windows 计算机上，可以通过查看以下信息来验证代理与 Log Analytics 的连接：
 
-1. 在控制面板中，打开 **Microsoft Monitoring Agent**。 在“Azure Log Analytics”选项卡上，代理会显示以下消息：“Microsoft Monitoring Agent 已成功连接到 Log Analytics”。
+1. 在控制面板中，打开 **Microsoft Monitoring Agent**。 在“Azure Log Analytics”选项卡上，代理会显示以下消息：“Microsoft Monitoring Agent 已成功连接到 Log Analytics。”
 2. 打开“Windows 事件日志”。 转到“应用程序和服务日志\Operations Manager”，搜索来自“服务连接器”源的事件 ID 3000 和事件 ID 5002。 这些事件指示计算机已注册到 Log Analytics 工作区并且正在接收配置。
 
 如果代理无法与 Log Analytics 通信且已配置为通过防火墙或代理服务器与 Internet 通信，请确认防火墙或代理服务器是否已正确配置。 若要了解如何验证防火墙或代理服务器是否已正确配置，请参阅 [Windows 代理的网络配置](../azure-monitor/platform/agent-windows.md)或 [Linux 代理的网络配置](../log-analytics/log-analytics-agent-linux.md)。
@@ -158,7 +158,7 @@ Heartbeat
 
 执行评估后，新添加的 Linux 代理会显示状态“已更新”。 此过程可能需要长达 6 小时的时间。
 
-若要确认 Operations Manager 管理组是否正在与 Log Analytics 通信，请参阅[验证 Operations Manager 与 Log Analytics 的集成](../log-analytics/log-analytics-om-agents.md#validate-operations-manager-integration-with-log-analytics)。
+若要确认 Operations Manager 管理组是否正在与 Log Analytics 通信，请参阅[验证 Operations Manager 与 Log Analytics 的集成](../azure-monitor/platform/om-agents.md#validate-operations-manager-integration-with-log-analytics)。
 
 ## <a name="data-collection"></a>数据收集
 
@@ -166,7 +166,7 @@ Heartbeat
 
 下表介绍了该解决方案支持的连接的源：
 
-| 连接的源 | 支持 | Description |
+| 连接的源 | 支持 | 说明 |
 | --- | --- | --- |
 | Windows 代理 |是 |该解决方案从 Windows 代理收集有关系统更新的信息，然后开始安装必需的更新。 |
 | Linux 代理 |是 |该解决方案从 Linux 代理收集有关系统更新的信息，然后开始在受支持的发行版上安装必需的更新。 |
@@ -192,7 +192,7 @@ Heartbeat
 
 ## <a name="install-updates"></a>安装更新
 
-对工作区中的所有 Linux 和 Windows 计算机进行更新评估后，可以通过创建“更新部署”安装必需的更新。 更新部署是为一台或多台计算机计划的必需更新安装。 应当指定部署日期和时间，以及要在部署范围中包括的计算机或计算机组。 若要详细了解计算机组，请参阅 [Log Analytics 中的计算机组](../log-analytics/log-analytics-computer-groups.md)。
+对工作区中的所有 Linux 和 Windows 计算机进行更新评估后，可以通过创建“更新部署”安装必需的更新。 更新部署是为一台或多台计算机计划的必需更新安装。 应当指定部署日期和时间，以及要在部署范围中包括的计算机或计算机组。 若要详细了解计算机组，请参阅 [Log Analytics 中的计算机组](../azure-monitor/platform/computer-groups.md)。
 
  在更新部署中包括计算机组时，只会在创建计划时对组成员身份评估一次。 不会反映对组所做的后续更改。 若要避免使用[动态组](#using-dynamic-groups)，在部署时将解析这些组并由查询进行定义。
 
@@ -205,12 +205,12 @@ Heartbeat
 
 若要创建新的更新部署，请选择“计划更新部署”。 此时将打开“新建更新部署”窗格。 为下表中介绍的属性输入值，然后单击“创建”：
 
-| 属性 | Description |
+| 属性 | 说明 |
 | --- | --- |
 | 名称 |用于标识更新部署的唯一名称。 |
 |操作系统| Linux 或 Windows|
 | 要更新的组（预览）|定义基于一组订阅、资源组、位置和标记的查询，生成要在部署中包含的 Azure VM 动态组。 有关详细信息，请参阅[动态组](automation-update-management.md#using-dynamic-groups)|
-| 要更新的计算机 |选择已保存的搜索、已导入的组或者从下拉列表中选择“计算机”并选择单个计算机。 如果选择“计算机”，则计算机的准备情况将显示在“更新代理准备”列中。</br> 要了解在 Log Analytics 中创建计算机组的不同方法，请参阅 [Log Analytics 中的计算机组](../log-analytics/log-analytics-computer-groups.md) |
+| 要更新的计算机 |选择已保存的搜索、已导入的组或者从下拉列表中选择“计算机”并选择单个计算机。 如果选择“计算机”，则计算机的准备情况将显示在“更新代理准备”列中。</br> 要了解在 Log Analytics 中创建计算机组的不同方法，请参阅 [Log Analytics 中的计算机组](../azure-monitor/platform/computer-groups.md) |
 |更新分类|选择所需的所有更新分类|
 |包括/排除更新|这将打开“包括/排除”页。 要包含或排除的更新位于单独的选项卡上。 有关如何处理包含的详细信息，请参阅[包含行为](automation-update-management.md#inclusion-behavior) |
 |计划设置|选择启动时间，然后选择任“一次”或“重复”|
@@ -219,6 +219,21 @@ Heartbeat
 | 重新启动控制| 确定应如何处理重新启动。 可用选项包括：</br>需要时重新启动(默认)</br>始终重新启动</br>从不重新启动</br>仅重启 - 不安装更新|
 
 此外，能够以编程方式创建更新部署。 若要了解如何使用 REST API 创建更新部署，请参阅[软件更新配置 - 创建](/rest/api/automation/softwareupdateconfigurations/create)。 此外，还有一个示例 Runbook，可用于创建每周更新部署。 若要了解有关此 Runbook 的详细信息，请参阅[为资源组中的一个或多个 VM 创建每周更新部署](https://gallery.technet.microsoft.com/scriptcenter/Create-a-weekly-update-2ad359a1)。
+
+### <a name="multi-tenant"></a>跨租户更新部署
+
+如果你在向“更新管理”进行报告的另一个 Azure 租户中存在需要修补的计算机，则需要使用以下解决方法来计划它们。 你可以使用 [New-AzureRmAutomationSchedule](/powershell/module/azurerm.automation/new-azurermautomationschedule?view=azurermps-6.13.0) cmdlet 和开关 `-ForUpdate` 来创建计划，然后使用 [New-AzureRmAutomationSoftwareUpdateConfiguration](/powershell/module/azurerm.automation/new-azurermautomationsoftwareupdateconfiguration?view=azurermps-6.13.0
+) cmdlet 并将另一个租户中的计算机传递给 `-NonAzureComputer` 参数。 以下示例展示了如何执行此操作：
+
+```azurepowershell-interactive
+$nonAzurecomputers = @("server-01", "server-02")
+
+$startTime = ([DateTime]::Now).AddMinutes(10)
+
+$s = New-AzureRmAutomationSchedule -ResourceGroupName mygroup -AutomationAccountName myaccount -Name myupdateconfig -Description test-OneTime -OneTime -StartTime $startTime -ForUpdate
+
+New-AzureRmAutomationSoftwareUpdateConfiguration  -ResourceGroupName $rg -AutomationAccountName $aa -Schedule $s -Windows -AzureVMResourceId $azureVMIdsW -NonAzureComputer $nonAzurecomputers -Duration (New-TimeSpan -Hours 2) -IncludedUpdateClassification Security,UpdateRollup -ExcludedKbNumber KB01,KB02 -IncludedKbNumber KB100
+```
 
 ## <a name="view-missing-updates"></a>查看缺少的更新
 
@@ -238,7 +253,7 @@ Heartbeat
 
 ### <a name="windows"></a>Windows
 
-|分类  |Description  |
+|分类  |说明  |
 |---------|---------|
 |关键更新     | 解决关键、非安全相关错误的特定问题的更新。        |
 |安全更新     | 产品特定、安全相关问题的更新。        |
@@ -251,7 +266,7 @@ Heartbeat
 
 ### <a name="linux"></a>Linux
 
-|分类  |Description  |
+|分类  |说明  |
 |---------|---------|
 |关键和安全更新     | 特定问题或产品特定、安全相关问题的更新。         |
 |其他更新     | 本质上不是关键更新或不是安全更新的所有其他更新。        |
@@ -282,7 +297,7 @@ $WUSettings.Save()
 
 ### <a name="enable-updates-for-other-microsoft-products"></a>启用其他 Microsoft 产品的更新
 
-默认情况下，Windows 更新仅为 Windows 提供更新。 如果启用“更新 Windows 时提供其他 Microsoft 产品的更新”，将提供其他产品的更新，包括 SQL Server 或其他第一方软件的安全修补程序。 不能通过组策略配置此选项。 在你想要启用其他第一方修补程序的系统上运行以下 PowerShell，更新管理将支持此设置。
+默认情况下，Windows 更新仅为 Windows 提供更新。 如果你启用了“更新 Windows 时提供其他 Microsoft 产品的更新”，将为你提供其他产品的更新，包括 SQL Server 或其他第一方软件的安全修补程序。 不能通过组策略配置此选项。 在你想要启用其他第一方修补程序的系统上运行以下 PowerShell，更新管理将支持此设置。
 
 ```powershell
 $ServiceManager = (New-Object -com "Microsoft.Update.ServiceManager")
@@ -290,6 +305,11 @@ $ServiceManager.Services
 $ServiceID = "7971f918-a847-4430-9279-4a52d1efe18d"
 $ServiceManager.AddService2($ServiceId,7,"")
 ```
+
+## <a name="third-party"></a> Windows 上的第三方修补程序
+
+更新管理依赖于 WSUS 或 Windows 更新来修补受支持的 Windows 系统。 可以使用 [System Center Updates Publisher](/sccm/sum/tools/updates-publisher
+) (Updates Publisher) 之类的工具将自定义更新发布到 WSUS 中。 在这种情况下，允许更新管理使用第三方软件来修补使用 WSUS 作为其更新存储库的计算机。 若要了解如何配置 Updates Publisher，请参阅[安装 Updates Publisher](/sccm/sum/tools/install-updates-publisher)。
 
 ## <a name="ports"></a>网络规划
 
@@ -304,7 +324,7 @@ $ServiceManager.AddService2($ServiceId,7,"")
 
 有关混合 Runbook 辅助角色所需端口的详细信息，请参阅[混合辅助角色端口](automation-hybrid-runbook-worker.md#hybrid-worker-role)。
 
-建议在定义例外时使用列出的地址。 对于 IP 地址，可以下载 [Microsoft Azure 数据中心 IP 范围](https://www.microsoft.com/download/details.aspx?id=41653)。 此文件每周更新一次，反映当前已部署的范围和任何即将对 IP 范围进行的更改。
+建议在定义异常时使用列出的地址。 对于 IP 地址，可以下载 [Microsoft Azure 数据中心 IP 范围](https://www.microsoft.com/download/details.aspx?id=41653)。 此文件每周更新一次，反映当前已部署的范围和任何即将对 IP 范围进行的更改。
 
 ## <a name="search-logs"></a>搜索日志
 
@@ -569,7 +589,7 @@ Update
 
 但是，更新管理仍可能报告该计算机不合规，因为其中包含有关更新的其他信息。
 
-按更新分类部署更新在 CentOS 上无法现成地运行。 对于 SUSE，如果首先需要与 zypper（包管理器）或其依赖项相关的安全更新，则仅选择“其他更新”作为分类可能会导致同时安装某些安全更新。 这是 zypper 的一项限制。 某些情况下，可能需要重新运行更新部署来验证检查更新日志。
+按更新分类部署更新在 CentOS 上无法现成地运行。 对于 SUSE，如果首先需要与 zypper（包管理器）或其依赖项相关的安全更新，则仅选择“其他更新”作为分类可能会导致同时安装某些安全更新。 此行为是 zypper 的一项限制。 某些情况下，可能需要重新运行更新部署。 若要验证，请检查更新日志。
 
 ## <a name="troubleshoot"></a>故障排除
 
@@ -583,6 +603,6 @@ Update
 > [管理 Azure Windows VM 的更新和修补程序](automation-tutorial-update-management.md)
 
 * 使用 [Log Analytics](../log-analytics/log-analytics-log-searches.md) 中的日志搜索来查看详细的更新数据。
-* 当检测到计算机缺少关键更新或计算机禁用了自动更新时[创建警报](../monitoring-and-diagnostics/monitoring-overview-alerts.md)。
+* 针对更新部署状态[创建警报](automation-tutorial-update-management.md#configure-alerts)。
 
 * 若要了解如何通过 REST API 与更新部署交互，请参阅[软件更新配置](/rest/api/automation/softwareupdateconfigurations)

@@ -8,14 +8,14 @@ keywords: ''
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: conceptual
-ms.date: 09/29/2017
+ms.date: 12/07/2017
 ms.author: azfuncdf
-ms.openlocfilehash: 7a6346e594c5a7cc4cf02f3ea658aac4977e641a
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 4e48956e42942761abec0143ba2849601dbb1cf4
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52637452"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53336894"
 ---
 # <a name="task-hubs-in-durable-functions-azure-functions"></a>Durable Functions 中的任务中心 (Azure Functions)
 
@@ -27,7 +27,7 @@ ms.locfileid: "52637452"
 
 ## <a name="azure-storage-resources"></a>Azure 存储资源
 
-任务中心包含以下存储资源： 
+任务中心包含以下存储资源：
 
 * 一个或多个控制队列。
 * 一个工作项队列。
@@ -41,7 +41,8 @@ ms.locfileid: "52637452"
 
 任务中心由 *host.json* 文件中声明的名称标识，如以下示例所示：
 
-### <a name="hostjson-functions-v1"></a>host.json (Functions v1)
+### <a name="hostjson-functions-1x"></a>host.json (Functions 1.x)
+
 ```json
 {
   "durableTask": {
@@ -49,7 +50,9 @@ ms.locfileid: "52637452"
   }
 }
 ```
-### <a name="hostjson-functions-v2"></a>host.json (Functions v2)
+
+### <a name="hostjson-functions-2x"></a>host.json (Functions 2.x)
+
 ```json
 {
   "version": "2.0",
@@ -60,9 +63,11 @@ ms.locfileid: "52637452"
   }
 }
 ```
+
 还可以使用应用设置配置任务中心，如以下 *host.json* 示例文件所示：
 
-### <a name="hostjson-functions-v1"></a>host.json (Functions v1)
+### <a name="hostjson-functions-1x"></a>host.json (Functions 1.x)
+
 ```json
 {
   "durableTask": {
@@ -70,7 +75,9 @@ ms.locfileid: "52637452"
   }
 }
 ```
-### <a name="hostjson-functions-v2"></a>host.json (Functions v2)
+
+### <a name="hostjson-functions-2x"></a>host.json (Functions 2.x)
+
 ```json
 {
   "version": "2.0",
@@ -81,14 +88,46 @@ ms.locfileid: "52637452"
   }
 }
 ```
+
 任务中心名称将设置为 `MyTaskHub` 应用设置的值。 以下 `local.settings.json` 演示了如何将 `MyTaskHub` 设置定义为 `samplehubname`：
 
 ```json
 {
   "IsEncrypted": false,
   "Values": {
-    "MyTaskHub" :  "samplehubname" 
+    "MyTaskHub" : "samplehubname"
   }
+}
+```
+
+这是一个预编译的 C# 示例，说明如何编写这样一个函数，该函数使用 [OrchestrationClientBinding](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.OrchestrationClientAttribute.html) 来处理配置为应用设置的任务中心：
+
+```csharp
+[FunctionName("HttpStart")]
+public static async Task<HttpResponseMessage> Run(
+    [HttpTrigger(AuthorizationLevel.Function, methods: "post", Route = "orchestrators/{functionName}")] HttpRequestMessage req,
+    [OrchestrationClient(TaskHub = "%MyTaskHub%")] DurableOrchestrationClientBase starter,
+    string functionName,
+    ILogger log)
+{
+    // Function input comes from the request content.
+    dynamic eventData = await req.Content.ReadAsAsync<object>();
+    string instanceId = await starter.StartNewAsync(functionName, eventData);
+
+    log.LogInformation($"Started orchestration with ID = '{instanceId}'.");
+
+    return starter.CreateCheckStatusResponse(req, instanceId);
+}
+```
+
+下面是 JavaScript 所需的配置。 `function.json` 文件中的任务中心属性通过应用设置进行设置：
+
+```json
+{
+    "name": "input",
+    "taskHub": "%MyTaskHub%",
+    "type": "orchestrationClient",
+    "direction": "in"
 }
 ```
 

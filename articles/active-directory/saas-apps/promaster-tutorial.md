@@ -1,5 +1,5 @@
 ---
-title: 教程：Azure Active Directory 与 ProMaster (by Inlogik) 的集成 | Microsoft Docs
+title: 教程：Azure Active Directory 与 ProMaster (by Inlogik) 集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 和 ProMaster (by Inlogik) 之间配置单一登录。
 services: active-directory
 documentationCenter: na
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/30/2018
 ms.author: jeedes
-ms.openlocfilehash: 13bb128836590fb43e0c6a2f7131f83a99a23eaf
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: 871abffc07ee29df388205395110e89a85dd7344
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39507798"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53017648"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-promaster-by-inlogik"></a>教程：Azure Active Directory 与 ProMaster (by Inlogik) 的集成
+# <a name="tutorial-azure-active-directory-integration-with-promaster-by-inlogik"></a>教程：Azure Active Directory 与 ProMaster (by Inlogik) 集成
 
 本教程介绍如何将 ProMaster (by Inlogik) 与 Azure Active Directory (Azure AD) 进行集成。
 
@@ -110,7 +110,8 @@ ms.locfileid: "39507798"
 
     ![ProMaster (by Inlogik) 域和 URL 单一登录信息](./media/promaster-tutorial/tutorial_promaster_url1.png)
 
-    a. 在“标识符”文本框中，使用以下任一 URL 模式：
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“标识符”文本框中，使用以下任一 URL 模式：
+
     | |
     | - |-|
     |  `https://secure.inlogik.com/<COMPANYNAME>`|
@@ -118,6 +119,7 @@ ms.locfileid: "39507798"
     | |
 
     b. 在“回复 URL”文本框中，使用以下任一 URL 模式：
+
     | |
     | - |-|
     | `https://secure.inlogik.com/<COMPANYNAME>/saml/acs`|
@@ -129,6 +131,7 @@ ms.locfileid: "39507798"
     ![ProMaster (by Inlogik) 域和 URL 单一登录信息](./media/promaster-tutorial/tutorial_promaster_url2.png)
 
     在“登录 URL”文本框中，使用以下任一 URL 模式：
+
     | |
     | - |-|
     | `https://secure.inlogik.com/<COMPANYNAME>/saml/acs `|
@@ -172,7 +175,7 @@ ms.locfileid: "39507798"
 
     ![“用户”对话框](./media/promaster-tutorial/create_aaduser_04.png)
 
-    a. 在“姓名”框中，键入“BrittaSimon”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“姓名”框中，键入“BrittaSimon”。
 
     b. 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
 
@@ -182,7 +185,7 @@ ms.locfileid: "39507798"
 
 ### <a name="create-a-promaster-by-inlogik-test-user"></a>创建 ProMaster (by Inlogik) 测试用户
 
-本部分需在 ProMaster (by Inlogik) 中创建名为“Britta Simon”的用户。 与 [ProMaster (by Inlogik) 支持团队](mailto:michael.boldiston@inlogik.com)合作，在 ProMaster (by Inlogik) 平台中添加用户。 使用单一登录前，必须先创建并激活用户。
+本部分需在 ProMaster (by Inlogik) 中创建名为“Britta Simon”的用户。 联系  [ProMaster (by Inlogik) 支持团队](mailto:michael.boldiston@inlogik.com) 以在 ProMaster (by Inlogik) 平台中添加用户。 使用单一登录前，必须先创建并激活用户。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
@@ -224,7 +227,7 @@ ms.locfileid: "39507798"
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](tutorial-list.md)
-* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
+* [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

@@ -1,5 +1,5 @@
 ---
-title: 将认知搜索扩充输入字段映射到 Azure 搜索索引中的输出字段 | Microsoft Docs
+title: 将认知搜索扩充输入字段映射到输出字段 - Azure 搜索
 description: 提取并扩充源数据字段，然后映射到 Azure 搜索索引中的输出字段。
 manager: pablocas
 author: luiscabrer
@@ -9,12 +9,13 @@ ms.devlang: NA
 ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: luisca
-ms.openlocfilehash: 77e7a1cc725dc56ee20d3c1999cfb7cf0039d67f
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.custom: seodec2018
+ms.openlocfilehash: a662558deeeb09849a23a361aabea962eb633cd7
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47094455"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53314663"
 ---
 # <a name="how-to-map-enriched-fields-to-a-searchable-index"></a>如何将扩充字段映射到可搜索索引
 

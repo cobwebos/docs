@@ -3,23 +3,22 @@ title: 创建 Azure Stack 的服务主体 | Microsoft Docs
 description: 介绍了如何创建服务主体，并在 Azure 资源管理器中将此服务主体与基于角色的访问控制配合使用以管理对资源的访问权限。
 services: azure-resource-manager
 documentationcenter: na
-author: sethmanheim
+author: mattbriggs
 manager: femila
-ms.assetid: 7068617b-ac5e-47b3-a1de-a18c918297b6
 ms.service: azure-resource-manager
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/22/2018
-ms.author: sethm
+ms.date: 12/12/2018
+ms.author: mabrigg
 ms.reviewer: thoroet
-ms.openlocfilehash: a32327109bc71a41f871682936c5f27ed490975c
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 4c205055239b7bf16bbb73448c21818de419e623
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49958308"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53715813"
 ---
 # <a name="give-applications-access-to-azure-stack-resources-by-creating-service-principals"></a>通过创建服务主体向应用程序授予对 Azure Stack 资源的访问权限
 
@@ -52,7 +51,7 @@ ms.locfileid: "49958308"
 
 将服务主体分配到角色的步骤对于 Azure AD 和 AD FS 是相同的。 创建服务主体后，可以通过将其分配到某个角色来[委派权限](azure-stack-create-service-principals.md#assign-role-to-service-principal)。
 
-## <a name="create-a-service-principal-for-azure-ad"></a>创建适用于 Azure AD 的服务主体
+## <a name="create-service-principal-for-azure-ad"></a>为 Azure AD 创建服务主体
 
 如果你的 Azure Stack 使用 Azure AD 作为标识存储，则可以通过 Azure 门户使用与 Azure 中相同的步骤来创建服务主体。
 
@@ -95,7 +94,7 @@ ms.locfileid: "49958308"
 * 将服务主体分配到某个角色。
 * 使用服务主体的标识进行登录。
 
-有关如何创建服务主体的详细信息，请参阅[为 AD FS 创建服务主体](../azure-stack-create-service-principals.md#create-service-principal-for-ad-fs)。
+有关如何创建服务主体的详细信息，请参阅[为 AD FS 创建服务主体](../azure-stack-create-service-principals.md#manage-service-principal-for-ad-fs)。
 
 ## <a name="assign-the-service-principal-to-a-role"></a>将服务主体分配到某个角色
 
@@ -114,9 +113,7 @@ ms.locfileid: "49958308"
 
 3. 选择该订阅的“访问控制(标识和访问管理)”。
 
-     ![选择“访问控制”](./media/azure-stack-create-service-principal/image17.png)
-
-4. 选择 **添加** 。
+4. 选择“添加角色分配”。
 
 5. 选择要分配到应用程序的角色。
 

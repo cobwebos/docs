@@ -1,10 +1,8 @@
 ---
-title: Azure Cosmos DB：SQL .NET Core API、SDK 和资源 | Microsoft Docs
+title: Azure Cosmos DB：SQL .NET Core API、SDK 和资源
 description: 了解有关 SQL .NET Core API 和 SDK 的所有信息，包括发布日期、停用日期和 Azure Cosmos DB .NET Core SDK 各版本之间所做的更改。
 services: cosmos-db
 author: rnagpal
-manager: kfile
-editor: cgronlun
 ms.service: cosmos-db
 ms.component: cosmosdb-sql
 ms.devlang: dotnet
@@ -12,14 +10,14 @@ ms.topic: reference
 ms.date: 03/22/2018
 ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d5216a4a21fbbded4a10429c658f4842db225657
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: d947974575cf996ed880f2c1b5f8f7700b81ffd3
+ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52161712"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53413500"
 ---
-# <a name="azure-cosmos-db-net-core-sdk-for-sql-api-release-notes-and-resources"></a>用于 SQL API 的 Azure Cosmos DB .NET Core SDK：发行说明和资源
+# <a name="azure-cosmos-db-net-core-sdk-for-sql-api-release-notes-and-resources"></a>适用于 SQL API 的 Azure Cosmos DB .NET Core SDK：发行说明和资源
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-sdk-dotnet.md)
 > * [.NET 更改源](sql-api-sdk-dotnet-changefeed.md)
@@ -30,7 +28,7 @@ ms.locfileid: "52161712"
 > * [Python](sql-api-sdk-python.md)
 > * [REST](https://docs.microsoft.com/rest/api/cosmos-db/)
 > * [REST 资源提供程序](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/)
-> * [SQL](https://msdn.microsoft.com/library/azure/dn782250.aspx)
+> * [SQL](sql-api-query-reference.md)
 > * [BulkExecutor - .NET](sql-api-sdk-bulk-executor-dot-net.md)
 > * [BulkExecutor - Java](sql-api-sdk-bulk-executor-java.md)
 
@@ -52,6 +50,23 @@ ms.locfileid: "52161712"
 ## <a name="release-notes"></a>发行说明
 
 Azure Cosmos DB .NET Core SDK 具有与最新版 [Azure Cosmos DB .NET SDK](sql-api-sdk-dotnet.md) 相同的功能。
+
+### <a name="a-name3001-preview3001-preview"></a><a name="3.0.0.1-preview"/>3.0.0.1-preview
+* .NET SDK [版本 3.0.0](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/) 的预览版 1（公共预览版）。
+* 针对 .NET Standard，后者支持 .NET framework 4.6.1+ 和 .NET Core 2.0+
+* 新对象模型，使用顶级 CosmosClient 和方法拆分成相关的 CosmosDatabases、CosmosContainers 和 CosmosItems 类。
+* 支持流。
+* 从服务器更新了 CosmosResponseMessage 以返回状态代码，并且仅在未返回响应时引发异常。
+
+### <a name="a-name220220"></a><a name="2.2.0"/>2.2.0
+
+* 对于直接/TCP 传输诊断，添加了 TransportException，这是该 SDK 的内部异常类型。 出现在异常消息中时，此类型会输出附加信息，以便排查客户端连接问题。
+
+* 添加了新的构造函数重载，它采用 HttpMessageHandler，后者是用于发送 HttpClient 请求的 HTTP 处理程序堆栈（例如，HttpClientHandler）。
+
+* 修复了无法正确处理带有空值的标头的 bug。
+
+* 改进了集合缓存验证。
 
 ### <a name="a-name213213"></a><a name="2.1.3"/>2.1.3
 
@@ -104,7 +119,7 @@ Azure Cosmos DB .NET Core SDK 具有与最新版 [Azure Cosmos DB .NET SDK](sql-
 
 ### <a name="a-name182182"></a><a name="1.8.2"/>1.8.2
 
-* 修复了在某些争用情况下出现的 bug，该 bug 导致在使用会话一致性级别时出现间歇性错误“Microsoft.Azure.Documents.NotFoundException: 读取会话不可用于输入会话令牌”。
+* 修复了在某些争用情况下出现的 bug，该 bug 在使用会话一致性级别时导致间歇性错误“Microsoft.Azure.Documents.NotFoundException: 读取会话不可用于输入会话令牌”。
 
 ### <a name="a-name181181"></a><a name="1.8.1"/>1.8.1
 
@@ -121,7 +136,7 @@ Azure Cosmos DB .NET Core SDK 具有与最新版 [Azure Cosmos DB .NET SDK](sql-
 
 ### <a name="a-name170170"></a><a name="1.7.0"/>1.7.0
  
- * 在 API 参考文档、程序集中的元数据信息和 NuGet 包中品牌从 Azure DocumentDB 更改为 Azure Cosmos DB。 
+ * 在 API 参考文档、程序集中的元数据信息和 NuGet 包中品牌从 Azure DocumentDB 更改为 Azure Cosmos DB。
  * 通过以直接连接模式发送的请求的响应公开诊断信息和延迟。 在 ResourceResponse 类中属性名称是 RequestDiagnosticsString 和 RequestLatency。
  * 此 SDK 版本需要最新版本的 Azure Cosmos DB 模拟器（可从 https://aka.ms/cosmosdb-emulator 下载）。
  
@@ -135,8 +150,8 @@ Azure Cosmos DB .NET Core SDK 具有与最新版 [Azure Cosmos DB .NET SDK](sql-
 
 ### <a name="a-name150150"></a><a name="1.5.0"/>1.5.0 
 
-* 添加了 PartitionKeyRangeId 的支持作为 FeedOption，将查询结果限定在某个特定分区键范围值。 
-* 添加了 StartTime 的支持作为 ChangeFeedOption，以开始查找该时间后的更改。 
+* 添加了 PartitionKeyRangeId 的支持作为 FeedOption，将查询结果限定在某个特定分区键范围值。
+* 添加了 StartTime 的支持作为 ChangeFeedOption，以开始查找该时间后的更改。
 
 ### <a name="a-name141141"></a><a name="1.4.1"/>1.4.1
 
@@ -177,7 +192,7 @@ Azure Cosmos DB .NET Core SDK 具有与最新版 [Azure Cosmos DB .NET SDK](sql-
 
 ### <a name="a-name112112"></a><a name="1.1.2"/>1.1.2
 
-* 修复偶尔导致 WebException 的问题：无法解析远程名称。
+* 修复程序，用于解决偶尔导致“WebException: 无法解析远程名称”的问题。
 * 通过向 ReadDocumentAsync API 添加新重载，添加了对直接读取类型化文档的支持。
 
 ### <a name="a-name111111"></a><a name="1.1.1"/>1.1.1
@@ -201,17 +216,18 @@ Azure Cosmos DB .NET Core SDK 具有与最新版 [Azure Cosmos DB .NET SDK](sql-
 通过 Azure Cosmos DB .NET Core Preview SDK，可构建能在 Windows、Mac 和 Linux 上快速运行的跨平台 [ASP.NET Core](https://www.asp.net/core) 和 [.NET Core](https://www.microsoft.com/net/core#windows) 应用。
 
 Azure Cosmos DB .NET Core 预览版 SDK 与最新版 [Azure Cosmos DB .NET SDK](sql-api-sdk-dotnet.md) 功能相同，并支持以下内容：
-* 所有[连接模式](performance-tips.md#networking)：网关模式、Direct TCP 和 Direct HTTP。 
+* 所有[连接模式](performance-tips.md#networking)：网关模式、Direct TCP 和 Direct HTTP。
 * 所有[一致性级别](consistency-levels.md)：强一致性、会话一致性、有限过期一致性和最终一致性。
-* [已分区集合](partition-data.md)。 
+* [已分区集合](partition-data.md)。
 * [多区域数据库帐户和异地复制](distribute-data-globally.md)。
 
-若有与此 SDK 相关的问题，请发布到 [StackOverflow](http://stackoverflow.com/questions/tagged/azure-documentdb)，或在 [github 存储库](https://github.com/Azure/azure-documentdb-dotnet/issues)中提出问题。 
+若有与此 SDK 相关的问题，请发布到 [StackOverflow](https://stackoverflow.com/questions/tagged/azure-documentdb)，或在 [GitHub 存储库](https://github.com/Azure/azure-documentdb-dotnet/issues)中提出问题。
 
 ## <a name="release--retirement-dates"></a>发布和停用日期
 
 | 版本 | 发布日期 | 停用日期 |
 | --- | --- | --- |
+| [2.2.0](#2.2.0) |2018 年 12 月 7 日 |--- |
 | [2.1.3](#2.1.3) |2018 年 10 月 15 日 |--- |
 | [2.1.2](#2.1.2) |2018 年 10 月 4 日 |--- |
 | [2.1.1](#2.1.1) |2018 年 9 月 27 日 |--- |
@@ -240,5 +256,5 @@ Azure Cosmos DB .NET Core 预览版 SDK 与最新版 [Azure Cosmos DB .NET SDK](
 | [0.1.0-preview](#0.1.0-preview) |2016 年 11 月 15 日 |2016 年 12 月 31 日 |
 
 ## <a name="see-also"></a>另请参阅
-若要了解有关 Cosmos DB 的详细信息，请参阅 [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) 服务页。 
+若要了解有关 Cosmos DB 的详细信息，请参阅 [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) 服务页。
 

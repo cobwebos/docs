@@ -1,13 +1,12 @@
 ---
-title: 通过 Web 应用模板使用机器学习 Web 服务 - Azure 机器学习工作室 | Microsoft Docs
+title: 通过 Web 应用模板使用工作室 Web 服务 - Azure 机器学习工作室 | Microsoft Docs
 description: 利用 Azure 市场中的 web 应用模板来是使用 Azure 机器学习中的预测 web 服务。
 keywords: web 服务，操作化，REST API，机器学习
 services: machine-learning
 documentationcenter: ''
 author: ericlicoding
-ms.custom: (previous ms.author=yahajiza, author=YasinMSFT)
+ms.custom: seodec18
 ms.author: amlstudiodocs
-manager: hjerez
 editor: cgronlun
 ms.assetid: e0d71683-61b9-4675-8df5-09ddc2f0d92d
 ms.service: machine-learning
@@ -17,14 +16,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2017
-ms.openlocfilehash: 2c0bba4a442b73b82ebc271c3516f65954d6d8a4
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 6a6da1af937338637cd875abe4e9d539b2e2b6e2
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52311562"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53273878"
 ---
-# <a name="consume-an-azure-machine-learning-web-service-by-using-a-web-app-template"></a>通过使用 Web 应用模板来使用机器学习 Web 服务
+# <a name="consume-an-azure-machine-learning-studio-web-service-by-using-a-web-app-template"></a>通过 Web 应用模板使用 Azure 机器学习工作室 Web 服务
 
 可开发一个预测模型，并将其部署为 Azure Web 服务，方法是使用：
 - Azure 机器学习工作室。
@@ -36,7 +35,7 @@ ms.locfileid: "52311562"
 
 但访问 Web 服务最简单快捷的方法是通过 [Azure 市场](https://azure.microsoft.com/marketplace/web-applications/all/)提供的 Web 应用模板。
 
-[!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
+
 
 ## <a name="azure-machine-learning-web-app-templates"></a>Azure 机器学习 Web 应用模板
 Azure 市场提供的 web 应用模板可创建自定义 web 应用，该应用了解 web 服务的输入数据及所需结果。 所需操作就是授予 web 应用访问 web 服务和数据的权限，余下操作由模板完成。

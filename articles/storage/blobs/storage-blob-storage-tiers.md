@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/18/2018
 ms.author: kuhussai
 ms.component: blobs
-ms.openlocfilehash: 3a980abc7b9611cfd6a3933a54505b0208b67f50
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: e12e29a5a627110ce845cd44be6dd97b717f9b26
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51253714"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53014491"
 ---
 # <a name="azure-blob-storage-premium-preview-hot-cool-and-archive-storage-tiers"></a>Azure Blob 存储：高级（预览版）、热、冷、存档存储层
 
@@ -62,7 +62,7 @@ Blob 存储和 GPv2 帐户在帐户级别公开“访问层”属性，方便你
 在预览版期间，高级访问层：
 
 - 作为本地冗余存储 (LRS) 提供
-- 仅在以下地区提供：美国东部 2、美国中部和美国西部
+- 仅在以下区域中提供：美国东部 2、美国中部和美国西部
 - 不支持自动分层和数据生命周期管理
 
 若要了解如何注册高级访问层预览版，请参阅 [Azure 高级 Blob 存储简介](https://aka.ms/premiumblob)。
@@ -113,7 +113,7 @@ Blob 存储和 GPv2 帐户在帐户级别公开“访问层”属性，方便你
 存储在高级访问层中的数据无法使用[设置 Blob 层](/rest/api/storageservices/set-blob-tier)或使用 Azure Blob 存储生命周期管理分层到热、冷或存档访问层。 若要移动数据，必须使用[通过 URL 放置块 API](/rest/api/storageservices/put-block-from-url) 或支持此 API 的 AzCopy 版本，将 blob 从高级访问层同步复制到热访问层。 *通过 URL 放置块* API 同步复制服务器上的数据，这意味着只有在所有数据都从原服务器位置移动到目标位置后，调用才会完成。
 
 ### <a name="blob-lifecycle-management"></a>Blob 生命周期管理
-Blob 存储生命周期管理（预览版）提供丰富的基于规则的策略，用于将数据转移到最适合的访问层，并在数据的生命周期结束时使数据过期。 请参阅[管理 Azure Blob 存储生命周期](https://docs.microsoft.com/azure/storage/common/storage-lifecycle-managment-concepts)来了解详细信息。  
+Blob 存储生命周期管理（预览版）提供丰富的基于规则的策略，用于将数据转移到最适合的访问层，并在数据的生命周期结束时使数据过期。 请参阅[管理 Azure Blob 存储生命周期](storage-lifecycle-management-concepts.md)来了解详细信息。  
 
 ### <a name="blob-level-tiering-billing"></a>Blob 级别分层计费
 
@@ -157,7 +157,7 @@ Blob 存储生命周期管理（预览版）提供丰富的基于规则的策略
 
 3. 在“设置”边栏选项卡中，单击“ **配置** ”以查看和/或更改帐户配置。
 
-4. 根据需要选择正确的存储层：将“访问层”设置为“冷”或“热”。
+4. 根据需求选择合适的存储层：将“访问层”设置为“冷”或“热”。
 
 5. 单击边栏选项卡顶部的“保存”。
 
@@ -245,7 +245,7 @@ Azure 门户、PowerShell 和 CLI 工具以及 .NET、Java、Python 和 Node.js 
 
 [按区域查看热层、冷层和存档层](https://azure.microsoft.com/regions/#services)
 
-[管理 Azure Blob 存储生命周期](https://docs.microsoft.com/azure/storage/common/storage-lifecycle-managment-concepts)
+[管理 Azure Blob 存储生命周期](storage-lifecycle-management-concepts.md)
 
 [通过启用 Azure 存储度量值来评估当前存储帐户的使用情况](../common/storage-enable-and-view-metrics.md)
 

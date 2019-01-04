@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/31/2018
+ms.date: 12/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 02d21db5c5fadb65ec63e41cbd9e2db8869ed2e7
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 8c3210a560c079f66cd21dbb30be4a4b823a6502
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50415825"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53078202"
 ---
 # <a name="copy-data-from-marketo-using-azure-data-factory-preview"></a>使用 Azure 数据工厂（预览版）从 Marketo 复制数据
 
@@ -34,7 +34,7 @@ ms.locfileid: "50415825"
 Azure 数据工厂提供内置的驱动程序用于启用连接，因此无需使用此连接器手动安装任何驱动程序。
 
 >[!NOTE]
->此 Marketo 连接器基于 Marketo REST API 构建。 请注意，Marketo 在服务端具有[并发请求限制](http://developers.marketo.com/rest-api/)。 如果出现错误消息“尝试使用 REST API 时出现错误: 在 20 秒内超出最大速率限制‘100’ (606)”或“尝试使用 REST API 时出现错误: 达到并发访问限制‘10’(615)”，则请考虑减少并发复制活动运行以减少对服务的请求数量。
+>此 Marketo 连接器基于 Marketo REST API 构建。 请注意，Marketo 在服务端具有[并发请求限制](http://developers.marketo.com/rest-api/)。 如果遇到错误消息“尝试使用 REST API 时出现错误：在 20 秒内超过最大速率限制 100 (606)”或“尝试使用 REST API 时出现错误：达到并发访问限制 10 (615)”，请考虑减少并发复制活动运行以减少对服务的请求数。
 
 ## <a name="getting-started"></a>入门
 
@@ -48,7 +48,7 @@ Marketo 链接服务支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
-| type | type 属性必须设置为 Marketo | 是 |
+| type | type 属性必须设置为：**Marketo** | 是 |
 | endpoint | Marketo 服务器的终结点。 （即 123-ABC-321.mktorest.com）  | 是 |
 | clientId | Marketo 服务的客户端 ID。  | 是 |
 | clientSecret | Marketo 服务的客户端密码。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 是 |
@@ -79,7 +79,12 @@ Marketo 链接服务支持以下属性：
 
 有关可用于定义数据集的各部分和属性的完整列表，请参阅[数据集](concepts-datasets-linked-services.md)一文。 本部分提供 Marketo 数据集支持的属性列表。
 
-若要从 Marketo 复制数据，请将数据集的 type 属性设置为“MarketoObject”。 此类型的数据集中没有任何其他特定于类型的属性。
+若要从 Marketo 复制数据，请将数据集的 type 属性设置为“MarketoObject”。 支持以下属性：
+
+| 属性 | 说明 | 必选 |
+|:--- |:--- |:--- |
+| type | 数据集的 type 属性必须设置为：**MarketoObject** | 是 |
+| tableName | 表名称。 | 否（如果指定了活动源中的“query”） |
 
 **示例**
 
@@ -91,7 +96,8 @@ Marketo 链接服务支持以下属性：
         "linkedServiceName": {
             "referenceName": "<Marketo linked service name>",
             "type": "LinkedServiceReference"
-        }
+        },
+        "typeProperties": {}
     }
 }
 ```
@@ -100,14 +106,14 @@ Marketo 链接服务支持以下属性：
 
 有关可用于定义活动的各部分和属性的完整列表，请参阅[管道](concepts-pipelines-activities.md)一文。 本部分提供 Marketo 源支持的属性列表。
 
-### <a name="marketosource-as-source"></a>以 MarketoSource 作为源
+### <a name="marketo-as-source"></a>Marketo 作为源
 
 若要从 Marketo 复制数据，请将复制活动中的源类型设置为“MarketoSource”。 复制活动源部分支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
-| type | 复制活动源的 type 属性必须设置为 MarketoSource | 是 |
-| query | 使用自定义 SQL 查询读取数据。 例如：`"SELECT * FROM Activitiy_Types"`。 | 是 |
+| type | 复制活动源的 type 属性必须设置为：**MarketoSource** | 是 |
+| query | 使用自定义 SQL 查询读取数据。 例如：`"SELECT * FROM Activitiy_Types"`。 | 否（如果指定了数据集中的“tableName”） |
 
 **示例：**
 

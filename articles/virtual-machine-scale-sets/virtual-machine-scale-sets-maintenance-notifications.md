@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/09/2018
 ms.author: shants
-ms.openlocfilehash: 82a3ce9f899e94a1cc737f2ca2dc1dc79688a224
-ms.sourcegitcommit: 7b845d3b9a5a4487d5df89906cc5d5bbdb0507c8
+ms.openlocfilehash: 4e30b143a11e35fc83103abfa03e3fb7f29cf9dc
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2018
-ms.locfileid: "42140008"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53270121"
 ---
 # <a name="planned-maintenance-notifications-for-virtual-machine-scale-sets"></a>虚拟机规模集的计划内维护通知
 
@@ -101,11 +101,11 @@ Azure 通过向订阅所有者和共有者组发送电子邮件来传达计划�
 2. 在左侧菜单中，选择“监视”。 
 3. 在“监视 - 警报(经典)”窗格中，选择“+添加活动日志警报”。
 4. 在“添加活动日志警报”页面中，选择或输入要求的信息。 在“条件”中，确保设置以下值：
-   - 事件类别：选择“服务运行状况”。
-   - 服务：选择“虚拟机规模集和虚拟机”。
-   - 类型：选择“计划内维护”。 
+   - **事件类别**：选择“服务运行状况”。
+   - **服务**：选择“虚拟机规模集和虚拟机”。
+   - **类型**：选择“计划内维护”。 
     
-要详细了解如何配置活动日志警报，请参阅[创建活动日志警报](../monitoring-and-diagnostics/monitoring-activity-log-alerts.md)
+要详细了解如何配置活动日志警报，请参阅[创建活动日志警报](../azure-monitor/platform/activity-log-alerts.md)
     
     
 ## <a name="start-maintenance-on-your-virtual-machine-scale-set-from-the-portal"></a>从门户中开始维护虚拟机规模集

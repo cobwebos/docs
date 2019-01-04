@@ -9,17 +9,16 @@ ms.assetid: 015ab744-d514-42c0-8553-8410eef00368
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/02/2018
 ms.reviewer: vitalyg
 ms.author: mbullwin
-ms.openlocfilehash: 7fca6ffa9efa3eed9f7c74ee89ad8bb9651494bb
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 103f4b10d5fbb7fbcf9c3721a82fe4075abe0dc4
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48044699"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52877609"
 ---
 # <a name="sampling-in-application-insights"></a>在 Application Insights 中采样
 
@@ -35,7 +34,7 @@ ms.locfileid: "48044699"
 * 还可以在门户中的“使用情况和预估成本”页面、config 文件的 ASP.NET SDK 或 ApplicationInsights.xml 文件的 Java SDK 中手动设置采样，以便同时减少网络流量。
 * 如果记录自定义事件，并且想要确定事件集是一同保留还是丢弃，请确保它们的 OperationId 值相同。
 * 采样除数 *n* 会在每个记录的属性 `itemCount` 中报告，在“搜索”中它出现在友好名称“请求计数”或“事件计数”下。 如果采样不在运行，则 `itemCount==1`。
-* 如果要编写分析查询，应[考虑采样](../log-analytics/query-language/aggregations.md)。 特别是，应使用 `summarize sum(itemCount)`，而不是仅对记录进行计数。
+* 如果要编写分析查询，应[考虑采样](../azure-monitor/log-query/aggregations.md)。 特别是，应使用 `summarize sum(itemCount)`，而不是仅对记录进行计数。
 
 ## <a name="types-of-sampling"></a>采样类型
 有三种备用采样方法：
@@ -264,7 +263,7 @@ ms.locfileid: "48044699"
         <IncludedType>Exception</IncludedType>
     </IncludedTypes>
 ```
-可在采样中包括或排除的遥测类型为：Dependency、Event、Exception、PageView、Request 和 Trace。
+可以在采样中包含或排除的遥测类型是：Dependency、Event、Exception、PageView、Request 和 Trace。
 
 > [!NOTE]
 > 对于采样百分比，请选择一个接近于 100/N 的百分比，其中 N 是整数。  当前采样不支持其他值。

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/19/2018
 ms.author: cwatson
-ms.openlocfilehash: 2380cd3712c47ca08e9b9b3597f09f4119238af3
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: 53cecc845ed8bd15311e1bcec3ec9b36db8f5c2c
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52581607"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52727862"
 ---
 # <a name="add-or-change-azure-subscription-administrators"></a>添加或更改 Azure 订阅管理员
 
@@ -42,10 +42,10 @@ Azure 有几个不同的角色。 若要管理对资源的访问权限，可以�
 1. 请访问 [Azure 门户中的“订阅”](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)。
 2. 选择要提供访问权限的订阅。
 3. 选择列表中的“访问控制(IAM)”。
-4. 选择 **添加** 。
-   （如果缺少“添加”按钮，则表示无权添加权限。）
+4. 选择“添加角色分配”。
+   （如果缺少“添加角色分配”按钮，则表示无权添加权限。）
 5. 在“角色”框中，选择“所有者”。 
-6. 在“分配其访问权限”框中，选择“Azure AD 用户、组或应用程序”。 
+6. 在“分配访问权限至”框中，选择“Azure AD 用户、组或服务主体”。 
 7. 在“选择”框中，键入要添加为“所有者”的用户的电子邮件地址。 选择用户，再选择“保存”。
 
     ![显示所选所有者角色的屏幕截图](./media/billing-add-change-azure-subscription-administrator/add-role.png)
@@ -129,4 +129,4 @@ Azure 有几个不同的角色。 若要管理对资源的访问权限，可以�
 
 ## <a name="need-help-contact-us"></a>需要帮助？ 请联系我们。
 
-如果你有任何疑问或需要帮助，请[创建支持请求](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)。
+如有任何疑问或需要帮助，请[创建支持请求](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)。

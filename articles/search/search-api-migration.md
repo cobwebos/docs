@@ -1,6 +1,6 @@
 ---
-title: 升级到最新的 Azure 搜索服务 REST API 版本 | Microsoft 文档
-description: 升级到最新的 Azure 搜索服务 REST API 版本
+title: 升级到最新的 Azure 搜索服务 REST API 版本 - Azure 搜索
+description: 查看 API 版本的差异，了解将现有代码迁移到最新 Azure 搜索服务 REST API 版本所需的操作。
 author: brjohnstmsft
 manager: jlembicz
 services: search
@@ -9,14 +9,15 @@ ms.devlang: rest-api
 ms.topic: conceptual
 ms.date: 04/20/2018
 ms.author: brjohnst
-ms.openlocfilehash: 2efe7769f68988f3c0d52c8806b78c1b96d8c639
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.custom: seodec2018
+ms.openlocfilehash: f19d584932be6b6706d6f7b03622303f68f08f91
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39620223"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53312181"
 ---
-# <a name="upgrading-to-the-latest-azure-search-service-rest-api-version"></a>升级到最新的 Azure 搜索服务 REST API 版本
+# <a name="upgrade-to-the-latest-azure-search-service-rest-api-version"></a>升级到最新的 Azure 搜索服务 REST API 版本
 如果使用的是早期版本的 [Azure 搜索服务 REST API](https://docs.microsoft.com/rest/api/searchservice/)，本文有助于升级应用程序，以便使用正式发布的最新 API 版本：2017-11-11。
 
 REST API 的版本 2017-11-11 包含某些针对早期版本进行的更改。 这些更改主要涉及向后兼容性，因此更改代码只需最小的工作量，具体取决于之前使用的是哪个版本。 请参阅[升级步骤](#UpgradeSteps)，获取有关如何更改代码以使用新 API 版本的说明。

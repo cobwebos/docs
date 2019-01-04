@@ -1,5 +1,6 @@
 ---
-title: 使用 SSL 保护 Azure 机器学习 Web 服务
+title: 使用 SSL 保护 Web 服务
+titleSuffix: Azure Machine Learning service
 description: 了解如何保护使用 Azure 机器学习服务部署的 Web 服务。 可以使用安全套接字层 (SSL) 和基于密钥的身份验证来限制对 Web 服务的访问并保护客户端提交的数据。
 services: machine-learning
 ms.service: machine-learning
@@ -9,14 +10,15 @@ ms.reviewer: jmartens
 ms.author: aashishb
 author: aashishb
 ms.date: 10/02/2018
-ms.openlocfilehash: ec7b956f080837b297bac56e6237ac0672601ce7
-ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
+ms.custom: seodec18
+ms.openlocfilehash: 14350a04326ba22dcc5c8608b6ac6b9180666832
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51344478"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53101165"
 ---
-# <a name="secure-azure-machine-learning-web-services-with-ssl"></a>使用 SSL 保护 Azure 机器学习 Web 服务
+# <a name="use-ssl-to-secure-web-services-with-azure-machine-learning-service"></a>通过 Azure 机器学习服务使用 SSL 保护 Web 服务
 
 在本文中，你将了解如何保护使用 Azure 机器学习服务部署的 Web 服务。 可以使用安全套接字层 (SSL) 和基于密钥的身份验证来限制对 Web 服务的访问并保护客户端提交的数据。
 
@@ -118,7 +120,7 @@ SSL 会对在客户端和 Web 服务之间发送的数据进行加密。 客户�
 
   在 AKS 群集的“公用 IP 地址”的“配置”选项卡下更新 DNS，如下图中所示。 可以在包含 AKS 代理节点和其他网络资源的资源组下找到公用 IP 地址，它是该资源组中创建的资源类型之一。
 
-  ![Azure 机器学习服务：使用 SSL 保护 Web 服务](./media/how-to-secure-web-service/aks-public-ip-address.png)self-
+  ![Azure 机器学习服务：使用 SSL 保护 Web 服务](./media/how-to-secure-web-service/aks-public-ip-address.png)
 
 ## <a name="next-steps"></a>后续步骤
 

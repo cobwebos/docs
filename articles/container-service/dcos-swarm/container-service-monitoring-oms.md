@@ -1,5 +1,5 @@
 ---
-title: 监视 Azure DC/OS 群集 - 操作管理
+title: （已弃用）监视 Azure DC/OS 群集 - 操作管理
 description: 使用 Log Analytics 监视 Azure 容器服务 DC/OS 群集。
 services: container-service
 author: keikhara
@@ -9,20 +9,22 @@ ms.topic: article
 ms.date: 11/17/2016
 ms.author: keikhara
 ms.custom: mvc
-ms.openlocfilehash: 4576d9decc6ba1e01ef39abdb8a3ef89461196e8
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: b5c1596066b02d5ad4f59ed553408d263acc825c
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49407786"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52993566"
 ---
-# <a name="monitor-an-azure-container-service-dcos-cluster-with-log-analytics"></a>使用 Log Analytics 监视 Azure 容器服务 DC/OS 群集
+# <a name="deprecated-monitor-an-azure-container-service-dcos-cluster-with-log-analytics"></a>（已弃用）使用 Log Analytics 监视 Azure 容器服务 DC/OS 群集
 
-Log Analytics 是 Microsoft 的基于云的 IT 管理解决方案，可帮助你管理和保护本地和云基础结构。 容器解决方案是 Log Analytics 中的一种解决方案，有助于查看单个位置中的容器库存、性能和日志。 通过查看集中位置中的日志，可以审核、排查容器问题，并查找主机上干扰性消耗过多的容器。
+[!INCLUDE [ACS deprecation](../../../includes/container-service-deprecation.md)]
+
+Log Analytics 是 Microsoft 的基于云的 IT 管理解决方案，可帮助你管理和保护本地和云基础结构。 容器解决方案是 Log Analytics 中的一种解决方案，有助于查看单个位置中的容器库存、性能和日志。 通过查看集中位置中的日志，可以审核、排查容器问题，并查找主机上干扰性消耗过多的容器。
 
 ![](media/container-service-monitoring-oms/image1.png)
 
-有关容器解决方案的详细信息，请参阅[容器解决方案 Log Analytics](../../log-analytics/log-analytics-containers.md)。
+有关容器解决方案的详细信息，请参阅[容器解决方案 Log Analytics](../../azure-monitor/insights/containers.md)。
 
 ## <a name="setting-up-log-analytics-from-the-dcos-universe"></a>从 DC/OS“通用”中设置 Log Analytics
 
@@ -74,7 +76,7 @@ Log Analytics 是 Microsoft 的基于云的 IT 管理解决方案，可帮助你
 
 ![](media/container-service-monitoring-oms/image11.png)
 
-有关 Log Analytics 容器解决方案的详细信息，请参阅[容器解决方案 Log Analytics](../../log-analytics/log-analytics-containers.md)。
+有关 Log Analytics 容器解决方案的详细信息，请参阅[容器解决方案 Log Analytics](../../azure-monitor/insights/containers.md)。
 
 ### <a name="how-to-scale-log-analytics-agent-with-acs-dcos"></a>如何使用 ACS DC/OS 缩放 Log Analytics 代理 
 
@@ -99,4 +101,4 @@ $ dcos package uninstall msoms
 
 ## <a name="next-steps"></a>后续步骤
 
- 现在已完成设置，可使用 Log Analytics 监视容器，请[查看容器仪表板](../../log-analytics/log-analytics-containers.md)。
+ 现在已完成设置，可使用 Log Analytics 监视容器，请[查看容器仪表板](../../azure-monitor/insights/containers.md)。

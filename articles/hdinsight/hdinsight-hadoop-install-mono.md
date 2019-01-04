@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 04/10/2018
 ms.author: hrasheed
 ms.custom: hdinsightactive
-ms.openlocfilehash: 9daf0d45c9bb24192750991e7bf84fa3614c970d
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 4f51de6ded29f93d29dbf80dd68715f621b5cb06
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51011028"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53384609"
 ---
 # <a name="install-or-update-mono-on-hdinsight"></a>在 HDInsight 上安装或更新 Mono
 
@@ -52,7 +52,7 @@ __要求__：
 
 若要指定要安装的 Mono 版本，请在 __Parameters__ 字段中使用版本号。 例如，输入 `5.4` 以安装 Mono 5.4。
 
-> [!NOTE]
+> [!NOTE]  
 > 使用此脚本配置 HDInsight 时，请将此脚本标记为 __Persisted__。 此设置允许 HDInsight 将脚本应用于通过缩放操作添加的工作节点。
 
 ## <a name="next-steps"></a>后续步骤
@@ -60,8 +60,8 @@ __要求__：
 已学习如何在 HDInsight 上升级或安装 Mono 的特定版本。 有关如何将 .NET 应用程序与 HDInsight 上的 Mono 配合使用的详细信息，请参阅以下文档：
 
 * [使用 .NET 流式处理 HDInsight 上的 MapReduce](hadoop/apache-hadoop-dotnet-csharp-mapreduce-streaming.md)
-* [在 HDInsight 中将 .NET 与 Hive 和 Pig 配合使用](hadoop/apache-hadoop-hive-pig-udf-dotnet-csharp.md)
-* [使用 HDInsight 上的 Storm 开发 C# 解决方案](storm/apache-storm-develop-csharp-visual-studio-topology.md)
+* [将 .NET 与 Apache Hive 和 Apache Pig on HDInsight 配合使用](hadoop/apache-hadoop-hive-pig-udf-dotnet-csharp.md)
+* [使用 Apache Storm on HDInsight 开发 C# 解决方案](storm/apache-storm-develop-csharp-visual-studio-topology.md)
 * [将 .NET 解决方案迁移到基于 Linux 的 HDInsight](hdinsight-hadoop-migrate-dotnet-to-linux.md)
 
-有关使用脚本操作的详细信息，请参阅[使用脚本操作自定义基于 Linux 的 HDInsight 群集](hdinsight-hadoop-customize-cluster-linux.md)
+有关使用脚本操作的详细信息，请参阅[使用脚本操作自定义基于 Linux 的 HDInsight 群集](hdinsight-hadoop-customize-cluster-linux.md)。

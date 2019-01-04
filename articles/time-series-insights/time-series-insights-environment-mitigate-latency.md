@@ -1,5 +1,5 @@
 ---
-title: 如何在 Azure 时序见解中监视和降低限制 | Microsoft Docs
+title: Azure 时序见解的性能和限制 - 如何在 Azure 时序见解中监视和降低限制 | Microsoft Docs
 description: 本文介绍如何监视、诊断并减少导致 Azure 时序见解延迟和限制的性能问题。
 ms.service: time-series-insights
 services: time-series-insights
@@ -11,12 +11,13 @@ ms.devlang: csharp
 ms.workload: big-data
 ms.topic: troubleshooting
 ms.date: 11/27/2017
-ms.openlocfilehash: e301afaa2fed2b00599fbdde8178203965280c0d
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.custom: seodec18
+ms.openlocfilehash: 34f7128a6ab86a23d911f9bc92908102df4dee92
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46364972"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53278417"
 ---
 # <a name="monitor-and-mitigate-throttling-to-reduce-latency-in-azure-time-series-insights"></a>监视并缩减限制，以减少 Azure 时序见解中的延迟
 传入数据量超过环境配置时，Azure 时序见解中可能会出现延迟或限制。
@@ -56,9 +57,9 @@ ms.locfileid: "46364972"
 |入口收到的无效消息数     | 从所有 Azure 事件中心或 Azure IoT 中心事件源读取的无效消息的计数。      |
 |入口收到的消息数   | 从所有事件中心或 IoT 中心事件源读取的消息的计数。        |
 |入口存储的字节数     | 已存储且可用于查询的事件的总大小。 仅根据属性值计算大小。        |
-|入口存储的事件数     |   已存储并可供查询的平展事件计数。      |
-|**入口收到消息时间延迟**    |  消息在事件源中排队的时间与消息在入口中处理之间的时间差（以秒为单位）。      |
-|**入口收到消息数计数延迟**    |  上次排队的消息在事件源分区中的序列号与在入口中进行处理的消息的序列号之间的差异。      |
+|**入口存储的事件数**     |   已存储并可供查询的平展事件计数。      |
+|**入口收到消息时间延迟**    |  消息在事件源中排队的时间与消息在入口中处理之间的时间差（以秒为单位）。      |
+|**入口收到消息计数延迟**    |  上次排队的消息在事件源分区中的序列号与在入口中进行处理的消息的序列号之间的差异。      |
 
 
 ![Latency](media/environment-mitigate-latency/latency.png)

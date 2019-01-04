@@ -16,12 +16,12 @@ ms.date: 07/23/2018
 ms.component: hybrid
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: bcb448296313eedebb8f8389b320c5da5f1a80dd
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: ef86c9ee00fdd4673774640d33eec93e2ead876d
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46305646"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53193087"
 ---
 # <a name="user-privacy-and-azure-active-directory-pass-through-authentication"></a>用户隐私和 Azure Active Directory 直通身份验证
 
@@ -72,7 +72,7 @@ Foreach ($file in $Files) {
 
 ### <a name="delete-authentication-agent-trace-log-files"></a>删除身份验证代理跟踪日志文件
 
-应该每隔 48 小时定期检查 **%ProgramData%\Microsoft\Azure AD Connect Authentication Agent\Trace\** 的内容，并删除此文件夹的内容。 
+应每隔 48 小时定期检查 <strong>%ProgramData%\Microsoft\Azure AD Connect Authentication Agent\Trace\< 的内容，并删除此文件夹的内容。 
 
 >[!IMPORTANT]
 >如果身份验证代理服务正在运行，则无法删除此文件夹中的当前日志文件。 重试之前请停止该服务。 为避免用户登录失败，应事先配置直通身份验证以实现[高可用性](how-to-connect-pta-quick-start.md#step-4-ensure-high-availability)。

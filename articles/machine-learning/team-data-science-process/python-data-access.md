@@ -1,5 +1,5 @@
 ---
-title: 通过机器学习 Python 客户端库访问数据集 | Microsoft Docs
+title: 通过 Python 客户端库访问数据集 - Team Data Science Process
 description: 安装并使用 Python 客户端库以从本地 Python 环境安全访问和管理 Azure 机器学习数据。
 services: machine-learning
 author: marktab
@@ -10,13 +10,13 @@ ms.component: team-data-science-process
 ms.topic: article
 ms.date: 11/13/2017
 ms.author: tdsp
-ms.custom: (previous author=deguhath, ms.author=deguhath)
-ms.openlocfilehash: 43812b68b10f9e4f8510d24cb08c8bb368b3b8f8
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: 630961954a235efd5f0cef92dd6a2525ae316838
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52445749"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53140024"
 ---
 # <a name="access-datasets-with-python-using-the-azure-machine-learning-python-client-library"></a>使用 Azure 机器学习 Python 客户端库通过 Python 访问数据集
 Microsoft Azure 机器学习 Python 客户端库的预览可允许从本地 Python 环境安全访问 Azure 机器学习数据集，以及允许在工作区创建并管理数据集。
@@ -61,7 +61,7 @@ Microsoft Azure 机器学习 Python 客户端库的预览可允许从本地 Pyth
 ## <a name="datasetAccess"></a>使用 Studio 代码片段以访问数据集
 通过 Python 客户端库，能够以编程方式从已运行的实验中访问现有的数据集。
 
-从 Studio Web 界面，可生成代码片段，其中包括所有下载和反序列化数据集作为位置计算机上 pandas DataFrame 对象的必要信息。
+从 Studio Web 界面，可生成代码片段，其中包括下载和反序列化数据集作为本地计算机上 pandas DataFrame 对象的所有必要信息。
 
 ### <a name="security"></a>数据访问的安全
 Studio 提供的用于 Python 客户端库的代码片段包括工作区 ID 和授权令牌。 这些将提供工作区的完全访问，必须受到保护，如密码。
@@ -92,10 +92,10 @@ Studio 提供的用于 Python 客户端库的代码片段包括工作区 ID 和�
     ![数据集][datasets]
 4. 从显示的窗口中选择代码片段，并将其复制到剪贴板。
    
-    ![访问代码][dataset-access-code]
+    ![“生成数据访问代码”按钮][dataset-access-code]
 5. 将代码粘贴到本地 Python 应用程序的 Notebook 中。
    
-    ![Notebook][ipython-dataset]
+    ![将代码粘贴到笔记本中][ipython-dataset]
 
 ## <a name="accessingIntermediateDatasets"></a>从机器学习试验访问中间数据集
 在机器学习工作室中运行实验之后，就可以从模块的输出节点中访问中间数据集。 中间数据集是指模型工具运行后，已创建并用于中间步骤的数据。
@@ -133,10 +133,10 @@ Studio 提供的用于 Python 客户端库的代码片段包括工作区 ID 和�
     ![上下文菜单][experiment]
 8. 从显示的窗口中选择代码片段，并将其复制到剪贴板。
    
-    ![访问代码][intermediate-dataset-access-code]
+    ![从上下文菜单生成访问代码][intermediate-dataset-access-code]
 9. 将代码粘贴到 Notebook 中。
    
-    ![Notebook][ipython-intermediate-dataset]
+    ![将代码粘贴到笔记本中][ipython-intermediate-dataset]
 10. 可使用 matplotlib 将数据可视化。 这会在直方图的年龄列中显示：
     
     ![直方图][ipython-histogram]

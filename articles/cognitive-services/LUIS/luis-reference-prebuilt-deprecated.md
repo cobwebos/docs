@@ -1,28 +1,29 @@
 ---
-title: LUIS 预构建已弃用的实体参考 - Azure | Microsoft Docs
+title: 已弃用的预生成实体
 titleSuffix: Azure
 description: 本文包含了语言理解 (LUIS) 中已弃用的预构建实体的信息。
 services: cognitive-services
 author: diberry
+ms.custom: seodec18
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 11/26/2018
 ms.author: diberry
-ms.openlocfilehash: 5f722e9eae45f2df86b8c0831ffd33ad3edd8e5b
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.openlocfilehash: 7b294b9c528d0b7a93a3e287b37124a26d0851dd
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52334102"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53138052"
 ---
-# <a name="deprecated-entities"></a>已弃用的实体
+# <a name="deprecated-prebuilt-entities-in-a-luis-app"></a>LUIS 应用中已弃用的预生成实体
 以下预构建实体已被弃用，不能添加到新的 LUIS 应用中。
 
-* **Datetime**：使用 **datetime** 的现有 LUIS 应用应当迁移到 **datetimeV2**，虽然 datetime 实体在使用它的现存应用中可以继续工作。
-* **Geography**：使用 **geography** 的现有 LUIS 应用在 2018 年 12 月之前一直受支持。
-* **Encyclopedia**：使用 **encyclopedia** 的现有 LUIS 应用在 2018 年 12 月之前一直受支持。
+* **Datetime**：使用 datetime 的现有 LUIS 应用应当迁移到 datetimeV2，虽然 datetime 实体在使用它的现存应用中可以继续工作。
+* **Geography**：使用 geography 的现有 LUIS 应用在 2018 年 12 月之前一直受支持。
+* **Encyclopedia**：使用 encyclopedia 的现有 LUIS 应用在 2018 年 12 月之前一直受支持。
 
 ## <a name="geography-culture"></a>Geography 语言区域
 **Geography** 仅在 `en-us` 区域设置中可用。
@@ -42,9 +43,9 @@ ms.locfileid: "52334102"
 **Encyclopedia** 仅在 `en-US` 区域设置中可用。
 
 #### <a name="encyclopedia-subtypes"></a>Encyclopedia 子类型
-Encyclopedia 内置实体包括下表中的 100 多个子类型；此外，encyclopedia 实体通常映射到多个类型。 例如，查询 Ronald Reagan 产生以下项： 
+Encyclopedia 内置实体包括下表中的 100 多个子类型：此外，encyclopedia 实体经常映射到多种类型。 例如，查询 Ronald Reagan 产生以下项： 
 
-```JSON
+```json
 {
       "entity": "ronald reagan",
       "type": "builtin.encyclopedia.people.person"

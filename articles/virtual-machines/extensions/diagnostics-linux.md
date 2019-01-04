@@ -7,14 +7,14 @@ manager: sankalpsoni
 ms.service: virtual-machines-linux
 ms.tgt_pltfrm: vm-linux
 ms.topic: article
-ms.date: 05/09/2017
+ms.date: 12/13/2018
 ms.author: agaiha
-ms.openlocfilehash: ac09754876d52798add58d9e0752d776ca29f247
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 1aa9c6da2d59294c5791d65a0943bfce497f9be4
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46994796"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53387040"
 ---
 # <a name="use-linux-diagnostic-extension-to-monitor-metrics-and-logs"></a>使用 Linux 诊断扩展监视指标和日志
 
@@ -38,9 +38,7 @@ Linux 诊断扩展可帮助用户监视 Microsoft Azure 上运行的 Linux VM �
 
 ## <a name="installing-the-extension-in-your-vm"></a>在 VM 中安装扩展
 
-可以使用 Azure PowerShell cmdlet、Azure CLI 脚本或 Azure 部署模板启用此扩展。 有关详细信息，请参阅[扩展功能](features-linux.md)。
-
-Azure 门户不能用于启用或配置 LAD 3.0。 相反，它可用于安装并配置 2.3 版。 Azure 门户图形和警报可处理来自两个扩展版本的数据。
+可以使用 Azure PowerShell cmdlet、Azure CLI 脚本、ARM 模板或 Azure 门户启用此扩展。 有关详细信息，请参阅[扩展功能](features-linux.md)。
 
 这些安装说明和[可下载示例配置](https://raw.githubusercontent.com/Azure/azure-linux-extensions/master/Diagnostic/tests/lad_2_3_compatible_portal_pub_settings.json)会将 LAD 3.0 配置为：
 
@@ -55,7 +53,7 @@ Azure 门户不能用于启用或配置 LAD 3.0。 相反，它可用于安装�
 
 * Azure Linux 代理 2.2.0 版或更高版本。 大部分 Azure VM Linux 库映像包含 2.2.7 版或更高版本。 运行 `/usr/sbin/waagent -version` 以确认 VM 上安装的版本。 如果 VM 正在运行较早版本的来宾代理，请按照[以下说明](https://docs.microsoft.com/azure/virtual-machines/linux/update-agent)将其更新。
 * **Azure CLI**。 在计算机上[设置 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) 环境。
-* wget 命令（如尚无，请运行 `sudo apt-get install wget`）。
+* wget 命令（如果尚无此命令，请运行 `sudo apt-get install wget`）。
 * 现有 Azure 订阅以及其中用于存储数据的现有存储帐户。
 * 有关支持的 Linux 分发列表，请访问 https://github.com/Azure/azure-linux-extensions/tree/master/Diagnostic#supported-linux-distributions
 

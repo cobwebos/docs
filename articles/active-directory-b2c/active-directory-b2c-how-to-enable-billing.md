@@ -7,25 +7,25 @@ manager: mtillman
 ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 12/05/2017
+ms.date: 12/07/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 80ba42d7eab1726c7add6c4c9426b7dde3b55480
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 1486e303e4e94ee6140bcd6ed4f52bc433b9aae6
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37445921"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53100049"
 ---
 # <a name="linking-an-azure-subscription-to-an-azure-ad-b2c-tenant"></a>将 Azure 订阅链接到 Azure AD B2C 租户
 
 > [!IMPORTANT]
-> 有关 Azure AD B2C 用量计费和定价的最新信息，请参阅以下网页：[Azure AD B2C 定价](https://azure.microsoft.com/pricing/details/active-directory-b2c/)
+> 有关 Azure AD B2C 使用计费和定价的最新信息，请参阅以下网页：[Azure AD B2C 定价](https://azure.microsoft.com/pricing/details/active-directory-b2c/)
 
 将在 Azure 订阅中计收 Azure AD B2C 的使用费。 创建 Azure AD B2C 租户后，租户管理员需要将 Azure AD B2C 租户显式链接到 Azure 订阅。 本文介绍相关实现方法。
 
 > [!NOTE]
-> 链接到 Azure AD B2C 租户的订阅只可用于 Azure AD B2C 用量计费。 不能使用该订阅在 Azure AD B2C 租户中添加其他 Azure 服务或 Office 365 许可证。
+> 链接到 Azure AD B2C 租户的订阅可用于对 Azure AD B2C 使用情况或其他 Azure 资源（包括其他 Azure AD B2C 资源）进行计费。  不能使用该订阅在 Azure AD B2C 租户中添加其他基于 Azure 许可证的服务或 Office 365 许可证。
 
  订阅链接是通过在目标 Azure 订阅中创建 Azure AD B2C“资源”实现的。 可在单个 Azure 订阅中创建许多 Azure AD B2C“资源”以及其他 Azure 资源（例如 VM、数据存储和逻辑应用）。 转到与订阅关联到的 Azure AD 租户，即可查看该订阅中的所有资源。
 

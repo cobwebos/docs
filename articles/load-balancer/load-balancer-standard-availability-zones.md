@@ -1,12 +1,11 @@
 ---
-title: Azure 标准负载均衡器和可用性区域 | Microsoft Docs
+title: Azure 标准负载均衡器和可用性区域
+titlesuffix: Azure Load Balancer
 description: 标准负载均衡器和可用性区域
 services: load-balancer
 documentationcenter: na
 author: KumudD
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
+ms.custom: seodec18
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
@@ -14,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/08/2018
 ms.author: kumud
-ms.openlocfilehash: 1f34a9319b8bbfba3f4a6f7446f949fc576aa4fa
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: d157c331b633617bacfb5cc7254d188516f10ad7
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48869051"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53187052"
 ---
 # <a name="standard-load-balancer-and-availability-zones"></a>标准负载均衡器和可用性区域
 

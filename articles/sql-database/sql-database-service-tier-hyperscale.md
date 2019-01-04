@@ -12,21 +12,26 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 10/17/2018
-ms.openlocfilehash: 526b6ac9c510b13461181d76c0032602d8f3f435
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: 80e807a8fcbd6c087ad0995a4481180fa28ef42f
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49377976"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52872877"
 ---
 # <a name="hyperscale-service-tier-preview-for-up-to-100-tb"></a>支持高达 100 TB 的超大规模服务层（预览版）
+
+Azure SQL 数据库基于 SQL Server 数据库引擎体系结构，该体系结构已根据云环境做出调整，以确保即使在发生基础结构故障时，也仍能提供 99.99% 的可用性。 Azure SQL 数据库中使用了三种体系结构模型：
+- 常规用途/标准 
+- 业务关键/高级
+- 超大规模
 
 Azure SQL 数据库中的超大规模服务层是基于 vCore 的采购模型中的最新服务层。 此服务层是一个高度可缩放的存储和计算性能层，它利用 Azure 体系结构来扩大 Azure SQL 数据库的存储和计算资源，远远超出了常规用途和业务关键服务层的可用限制。
 
 > [!IMPORTANT]
 > 超大规模服务层目前提供公共预览版，仅可在有限的 Azure 区域中使用。 要获取完整的区域列表，请参阅[超大规模服务层可用区域](#available-regions)。 我们尚不建议在超大规模数据库中运行任何生产工作负荷。 无法将超大规模数据库更新为其他服务层。 出于测试目的，我们建议创建当前数据库的副本，并将副本更新为超大规模服务层。
 > [!NOTE]
-> 有关基于 vCore 的购买模型中的常规用途服务层和业务关键服务层的详细信息，请参阅[常规用途服务层和业务关键服务层](sql-database-service-tiers-general-purpose-business-critical.md)。 有关基于 vCore 购买模型与基于 DTU 购买模型的比较，请参阅 [Azure SQL 数据库购买模型和资源](sql-database-service-tiers.md)。
+> 有关基于 vCore 的购买模型中的常规用途服务层和业务关键服务层的详细信息，请参阅[常规用途](sql-database-service-tier-general-purpose.md)服务层和[业务关键](sql-database-service-tier-business-critical.md)服务层。 有关基于 vCore 购买模型与基于 DTU 购买模型的比较，请参阅 [Azure SQL 数据库购买模型和资源](sql-database-service-tiers.md)。
 > [!IMPORTANT]
 > 超大规模服务层目前提供公共预览版。 我们尚不建议在超大规模数据库中运行任何生产工作负荷。 无法将超大规模数据库更新为其他服务层。 出于测试目的，我们建议创建当前数据库的副本，并将副本更新为超大规模服务层。
 
@@ -159,6 +164,6 @@ Server=tcp:<myserver>.database.windows.net;Database=<mydatabase>;ApplicationInte
 
 - 有关超大规模层的常见问题，请参阅[超大规模层常见问题解答](sql-database-service-tier-hyperscale-faq.md)。
 - 有关服务层的信息，请参阅[服务层](sql-database-service-tiers.md)
-- 有关服务器和订阅级别限制的信息，请参阅 [逻辑服务器上的资源限制概述](sql-database-resource-limits-logical-server.md)。
+- 有关服务器和订阅级别限制的信息，请参阅[逻辑服务器上的资源限制概述](sql-database-resource-limits-logical-server.md)。
 - 有关单一数据库的购买模型限制的信息，请参阅 [适用于单一数据库的 Azure SQL 数据库基于 vCore 的购买模型限制](sql-database-vcore-resource-limits-single-databases.md)。
 - 有关功能和比较列表，请参阅 [SQL 常用功能](sql-database-features.md)。

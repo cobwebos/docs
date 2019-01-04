@@ -12,14 +12,14 @@ ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 07/31/2018
+ms.date: 12/06/2018
 ms.author: bikang
-ms.openlocfilehash: 176b04b9bb16b5f183298c75f16bceb5e885e293
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.openlocfilehash: 665fbbc8668e465c78d93b134f6a314d58791490
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39492234"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53276445"
 ---
 # <a name="sfctl-chaos-schedule"></a>sfctl chaos schedule
 获取和设置 Chaos Schedule。
@@ -29,7 +29,7 @@ ms.locfileid: "39492234"
 |命令|Description|
 | --- | --- |
 | get | 获取定义何时以及如何运行 Chaos 的 Chaos Schedule。 |
-| set | 设置要由 Chaos 使用的 Chaos Schedule。 |
+| set | 设置 Chaos 使用的计划。 |
 
 ## <a name="sfctl-chaos-schedule-get"></a>sfctl chaos schedule get
 获取定义何时以及如何运行 Chaos 的 Chaos Schedule。
@@ -53,9 +53,9 @@ ms.locfileid: "39492234"
 | --verbose | 提高日志记录详细程度。 使用 --debug 可获取完整的调试日志。 |
 
 ## <a name="sfctl-chaos-schedule-set"></a>sfctl chaos schedule set
-设置要由 Chaos 使用的 Chaos Schedule。
+设置 Chaos 使用的计划。
 
-设置当前正在由 Chaos 使用的 Chaos Schedule。 Chaos 将自动基于 Chaos Schedule 来计划运行。 提供的输入计划中的版本必须与服务器上的 Chaos Schedule 版本匹配。 如果提供的版本与服务器上的版本不匹配，则不会更新 Chaos Schedule。 如果提供的版本与服务器上的版本相匹配，则会更新 Chaos Schedule，服务器上的 Chaos Schedule 版本将递增 1 并将在达到 2,147,483,647 后回到 0。 如果在进行此调用时正在运行 Chaos，则此调用将失败。
+Chaos 将自动基于 Chaos Schedule 来计划运行。 提供的输入计划中的版本必须与服务器上的 Chaos Schedule 版本匹配。 如果提供的版本与服务器上的版本不匹配，则不会更新 Chaos Schedule。 如果提供的版本与服务器上的版本相匹配，则会更新 Chaos Schedule，服务器上的 Chaos Schedule 版本将递增 1 并将在达到 2,147,483,647 后回到 0。 如果在进行此调用时正在运行 Chaos，则此调用将失败。
 
 ### <a name="arguments"></a>参数
 
@@ -143,6 +143,7 @@ ms.locfileid: "39492234"
         ]
     }
     ]
+
 
 ## <a name="next-steps"></a>后续步骤
 - [安装](service-fabric-cli.md) Service Fabric CLI。

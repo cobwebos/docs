@@ -10,12 +10,12 @@ ms.date: 10/12/2018
 ms.topic: conceptual
 manager: carmonm
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2678b9a1b80b1c9de6f1b554ce43bcd4f2dd5d50
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: 27bacb12c66ac57a0bf1aea88a447d395b6dde8c
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49166995"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53408912"
 ---
 # <a name="track-changes-in-your-environment-with-the-change-tracking-solution"></a>使用更改跟踪解决方案跟踪环境中的更改
 
@@ -63,7 +63,7 @@ Windows 代理官方支持以下版本的 Windows 操作系统：
 
 ## <a name="configuring-change-tracking-and-inventory"></a>配置更改跟踪和库存
 
-若要了解如何将计算机载入到解决方案中，请访问：[载入自动化解决方案](automation-onboard-solutions-from-automation-account.md)。 有了通过更改跟踪和库存解决方案载入的计算机后，便可以配置要跟踪的项了。启用的新文件或注册表项来跟踪时，将会为更改跟踪和库存启用它。
+若要了解如何将计算机加入到解决方案中，请访问：[加入自动化解决方案](automation-onboard-solutions-from-automation-account.md)。 有了通过更改跟踪和库存解决方案载入的计算机后，便可以配置要跟踪的项了。启用的新文件或注册表项来跟踪时，将会为更改跟踪和库存启用它。
 
 若要跟踪 Windows 和 Linux 上文件中的更改，请使用文件的 MD5 哈希。 然后使用这些哈希检测自上一个库存以来是否进行了更改。
 
@@ -85,7 +85,7 @@ Windows 代理官方支持以下版本的 Windows 操作系统：
 |递归     | 在查找要跟踪的项时，确定是否使用递归。        |
 |使用 Sudo     | 此设置确定在检查该项时是否使用 Sudo。         |
 |链接     | 此设置确定在遍历目录时如何处理符号链接。<br> **忽略** - 忽略符号链接，不包括引用的文件/目录。<br>**追随** - 在递归期间追随符号链接，并且包含引用的文件/目录。<br>**管理** - 追随符号链接并允许更改返回的内容。     |
-|上传所有设置的文件内容| 针对已跟踪的更改启用或关闭文件内容上传功能。 可用选项：“True”或“False”。|
+|上传所有设置的文件内容| 针对已跟踪的更改启用或关闭文件内容上传功能。 可用选项：**True** 或 **False**。|
 
 > [!NOTE]
 > 不建议使用“管理”链接选项。 不支持文件内容检索。
@@ -105,7 +105,7 @@ Windows 代理官方支持以下版本的 Windows 操作系统：
 |组     | 用于对文件进行逻辑分组的组名。        |
 |输入路径     | 用于查看文件的路径，例如：“c:\temp\\\*.txt”<br>还可以使用环境变量，例如“%winDir%\System32\\\*.*”       |
 |递归     | 在查找要跟踪的项时，确定是否使用递归。        |
-|上传所有设置的文件内容| 针对已跟踪的更改启用或关闭文件内容上传功能。 可用选项：“True”或“False”。|
+|上传所有设置的文件内容| 针对已跟踪的更改启用或关闭文件内容上传功能。 可用选项：**True** 或 **False**。|
 
 ## <a name="wildcard-recursion-and-environment-settings"></a>通配符、递归和环境设置
 
@@ -171,6 +171,17 @@ Windows 代理官方支持以下版本的 Windows 操作系统：
 | Linux 守护程序 | 5 分钟 |
 | Windows 软件 | 30 分钟 |
 | Linux 软件 | 5 分钟 |
+
+下表显示了用于更改跟踪的每台计算机的跟踪项限制。
+
+| **资源** | **限制**| **说明** |
+|---|---|---|
+|文件|500||
+|注册表|250||
+|Windows 软件|250|不包括软件更新|
+|Linux 包|1250||
+|服务|250||
+|守护程序|250||
 
 ### <a name="windows-service-tracking"></a>Windows 服务跟踪
 

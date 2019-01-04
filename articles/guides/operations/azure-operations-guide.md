@@ -15,12 +15,12 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 08/24/2018
 ms.author: mibender
-ms.openlocfilehash: 07faf5efd1c7eec3e209a5d971185655cc949bb9
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 4ced3aa9b7d37543b4942bbfa9a5605058a614d8
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51250775"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53014729"
 ---
 # <a name="get-started-for-azure-it-operators"></a>Azure IT 操作人员入门
 
@@ -71,7 +71,7 @@ Azure 提供了多个 IaaS 解决方案，包括虚拟机、虚拟机规模集�
 
 Azure 提供了多个 PaaS 计算服务，包括 Azure 应用服务和 Azure 云服务的 Web 应用功能（Web 角色和辅助角色）。 在任一情况下，开发者都可通过多种方式来部署应用程序，而无需了解支持该应用程序的任何具体细节。 开发者不必创建虚拟机 (VM)，无需使用远程桌面协议 (RDP) 登录每个虚拟机，也不必安装应用程序。 他们只需点击按钮（或者靠近它），Microsoft 提供的工具就会预配 VM，然后在其中部署并安装应用程序。
 
-#### <a name="saas-software-as-a-service"></a>SaaS：服务型软件
+#### <a name="saas-software-as-a-service"></a>SaaS：软件即服务
 
 SaaS 是集中托管和管理的软件。 它通常基于多租户体系结构 - 所有客户使用的单一版本的应用程序。 可以扩大到多个实例，确保在所有位置都达到最佳性能。 SaaS 软件通常通过月度订阅或年度订阅获得许可。 SaaS 软件通常通过月度订阅或年度订阅获得许可。 SaaS 软件供应商负责软件堆栈的所有组件，因此你只需要管理所提供的服务。
 
@@ -107,7 +107,7 @@ Azure 在其云计算平台中提供多种服务。 这些服务包括：
 
 - Microsoft Azure StorSimple
 
-- Azure Redis 缓存
+- 用于 Redis 的 Azure 缓存
 
 ### <a name="application-services"></a>应用程序服务
 
@@ -191,7 +191,7 @@ Azure 是基于一组支持 Azure 门户 UI 的 REST API 构建的。 其中大�
 
 需要订阅之后才能使用 Azure 服务。 可以使用多种订阅类型。
 
-**免费帐户**：注册免费帐户的链接位于 [Azure网站](https://azure.microsoft.com/)。 这可以提供 30 天试用期和相应信用额度，用于尝试 Azure 中的任何资源组合。 超出信用额度后，帐户将被暂停。 试用期结束时，服务将被停用，不再工作。 可随时升级到即用即付订阅。
+**免费帐户**：注册免费帐户的链接位于 [Azure 网站](https://azure.microsoft.com/)。 这可以提供 30 天试用期和相应信用额度，用于尝试 Azure 中的任何资源组合。 超出信用额度后，帐户将被暂停。 试用期结束时，服务将被停用，不再工作。 可随时升级到即用即付订阅。
 
 **MSDN 订阅**：如果有 MSDN 订阅，每月可以获得特定金额的 Azure 信用额度。 例如，如果有 Microsoft Visual Studio Enterprise with MSDN 订阅，则每月可获得 \$150 美元的 Azure 信用额度。
 
@@ -287,7 +287,7 @@ Azure 资源管理器是用于 Azure 资源的部署、管理和组织机制。 
 
 - **资源依赖关系**：部署多个资源时，某些资源对其他资源具有依赖关系。 为了方便部署，可以使用资源依赖关系声明，先部署依赖资源，然后再部署其他资源。
 
-- **模版链接**：可从一个资源管理器模板中链接到另一个模板。 这允许将部署分解成一组具有特定用途的定向模板。
+- **模板链接**：可从一个资源管理器模板中链接到另一个模板。 这允许将部署分解成一组具有特定用途的定向模板。
 
 可在任何文本编辑器中生成资源管理器模板。 但是，用于 Visual Studio 的 Azure SDK 包括的工具可提供帮助。 通过使用 Visual Studio，可以通过向导向模板添加资源，然后直接从 Visual Studio 中部署和调试模板。 有关详细信息，请参阅[创作 Azure 资源管理器模板](../../resource-group-authoring-templates.md)。
 
@@ -305,13 +305,13 @@ Azure 资源管理器是用于 Azure 资源的部署、管理和组织机制。 
 
 - **读者**：具有此角色的用户可以读取所有类型的资源（机密除外），但不能进行更改。
 
-- 虚拟机参与者：具有此角色的用户可以管理虚拟机，但不能管理其连接的虚拟网络或 VHD 文件所在的存储帐户。
+- **虚拟机参与者**：具有此角色的用户可以管理虚拟机，但不能管理其连接的虚拟网络或 VHD 文件所在的存储帐户。
 
-- SQL DB 参与者：具有此角色的用户可以管理 SQL 数据库，而不是与安全性相关的策略。
+- **SQL DB 参与者**：具有此角色的用户可以管理 SQL 数据库，而不是与安全性相关的策略。
 
-- SQL 安全管理器：具有此角色的用户可以管理 SQL 服务器和数据库与安全性相关的策略。
+- **SQL 安全管理器**：具有此角色的用户可以管理 SQL 服务器和数据库与安全性相关的策略。
 
-- 存储帐户参与者：具有此角色的用户可以管理存储帐户，但不能管理对存储帐户的访问权限。
+- **存储帐户参与者**：具有此角色的用户可以管理存储帐户，但不能管理对存储帐户的访问权限。
 
 有关详细信息，请参阅[使用 RBAC 和 Azure 门户管理访问权限](../../role-based-access-control/role-assignments-portal.md)。
 
@@ -483,7 +483,7 @@ Azure 队列存储用于在应用程序组件之间进行云消息传送。 设�
 
 >**何时使用**：无论何时使用 Azure 中的 VM，都将使用虚拟网络。 这允许将 VM 分段为类似本地数据中心的面向公众子网和专用子网。
 
->**开始行动**：要使用 Azure 门户部署 Azure 虚拟网络，只需要一个有效的 Azure 订阅，以及对 Web 浏览器的访问权限。 可将新的虚拟网络部署到新的或现有资源组中。 从门户创建新的虚拟机时，可选择现有虚拟网络或创建一个新的虚拟网络。 开始行动并[使用 Azure 门户创建虚拟网络](../../virtual-network/quick-create-portal.md)。
+>**入门**：要使用 Azure 门户部署 Azure 虚拟网络，只需要具有一个有效的 Azure 订阅，以及对 Web 浏览器的访问权限。 可将新的虚拟网络部署到新的或现有资源组中。 从门户创建新的虚拟机时，可选择现有虚拟网络或创建一个新的虚拟网络。 开始行动并[使用 Azure 门户创建虚拟网络](../../virtual-network/quick-create-portal.md)。
 
 ### <a name="access-and-security-for-virtual-networks"></a>虚拟网络的访问和安全性
 

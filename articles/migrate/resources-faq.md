@@ -4,14 +4,14 @@ description: 解答有关 Azure Migrate 的常见问题
 author: snehaamicrosoft
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 09/21/2018
+ms.date: 12/05/2018
 ms.author: snehaa
-ms.openlocfilehash: 2f04fe103d010a64a77b7d80730cf80007c3c126
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: ebc4393341341b3b73165a166a650ae1a6f431ff
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51256369"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53257788"
 ---
 # <a name="azure-migrate---frequently-asked-questions-faq"></a>Azure Migrate - 常见问题解答 (FAQ)
 
@@ -44,11 +44,16 @@ Azure Migrate 是一个迁移规划工具，而 Azure Site Recovery 部署规划
 
 **从 Hyper-V 迁移到 Azure**：Azure Migrate 目前仅支持评估要迁移到 Azure 的 VMware 虚拟机。 Azure Migrate 对 Hyper-V 的支持已在规划中。 在此期间，可以使用 Site Recovery 部署规划器。 在 Azure Migrate 实现 Hyper-V 支持后，可以使用 Azure Migrate 来规划 Hyper-V 工作负荷的迁移。
 
-将 VMware/Hyper-V 灾难恢复到 Azure：如果想要使用 Azure Site Recovery (Site Recovery) 在 Azure 中实现灾难恢复 (DR)，请使用 Site Recovery 部署规划器进行 DR 规划。 Site Recovery 部署规划器会针对本地环境执行深度的、特定于 ASR 的评估。 它会提供所需的建议，让 Site Recovery 成功执行复制、虚拟机故障转移等 DR 操作。  
+**从 VMware/Hyper-V 到 Azure 的灾难恢复**：如果想要使用 Azure Site Recovery (Site Recovery) 在 Azure 中实现灾难恢复 (DR)，请使用 Site Recovery 部署规划器进行 DR 规划。 Site Recovery 部署规划器会针对本地环境执行深度的、特定于 ASR 的评估。 它会提供所需的建议，让 Site Recovery 成功执行复制、虚拟机故障转移等 DR 操作。  
 
-### <a name="which-azure-regions-are-supported-by-azure-migrate"></a>Azure Migrate 支持哪些 Azure 区域？
+### <a name="which-azure-geographies-are-supported-by-azure-migrate"></a>Azure Migrate 支持哪些 Azure 地域？
 
-Azure Migrate 当前支持“美国东部”和“美国中西部”作为迁移项目位置。 即使只能在美国中西部和美国东部创建迁移项目，也仍可以评估[多个目标位置](https://docs.microsoft.com/azure/migrate/how-to-modify-assessment#edit-assessment-properties)的计算机。 项目位置仅用于存储已发现的数据。
+Azure Migrate 当前支持将美国和 Azure 政府作为项目地域。 即使只能在这些地域创建迁移项目，也仍可以针对[多个目标位置](https://docs.microsoft.com/azure/migrate/how-to-modify-assessment#edit-assessment-properties)评估计算机。 项目地域仅用于存储已发现的元数据。
+
+**地域** | **元数据存储位置**
+--- | ---
+美国 | 美国中西部或美国东部
+Azure Government  | 美国政府弗吉尼亚州
 
 ### <a name="how-does-the-on-premises-site-connect-to-azure-migrate"></a>本地站点如何连接到 Azure Migrate？
 
@@ -134,12 +139,15 @@ Azure Migrate 支持两种发现：基于设备的发现和基于代理的发现
 
 ### <a name="does-azure-migrate-support-enterprise-agreement-ea-based-cost-estimation"></a>Azure Migrate 是否支持基于企业协议 (EA) 的成本估计？
 
-Azure Migrate 目前不支持[企业协议产品/服务](https://azure.microsoft.com/offers/enterprise-agreement-support/)的成本估计。 解决方法是指定即用即付作为产品/服务，并在评估属性的“折扣”字段中手动指定折扣百分比（适用于订阅）。
+Azure Migrate 目前不支持[企业协议套餐](https://azure.microsoft.com/offers/enterprise-agreement-support/)的成本估计。 解决方法是指定即用即付作为套餐，并在评估属性的“折扣”字段中手动指定折扣百分比（适用于订阅）。
 
   ![折扣](./media/resources-faq/discount.png)
-  
+
 
 ## <a name="dependency-visualization"></a>依赖项可视化
+
+> [!NOTE]
+> 依赖项可视化功能在 Azure 政府中不可用。
 
 ### <a name="what-is-dependency-visualization"></a>什么是依赖项可视化？
 
@@ -151,7 +159,7 @@ Azure Migrate 目前不支持[企业协议产品/服务](https://azure.microsoft
 
 ### <a name="do-i-need-to-install-anything-for-dependency-visualization"></a>要实现依赖项可视化，是否需要安装任何软件？
 
-若要使用依赖项可视化，你需要在要评估的每台本地计算机上下载并安装代理。 
+若要使用依赖项可视化，你需要在要评估的每台本地计算机上下载并安装代理。
 
 - 需要在每台计算机上安装 [Microsoft Monitoring Agent (MMA)](https://docs.microsoft.com/azure/log-analytics/log-analytics-agent-windows)。
 - 需要在每台计算机上安装[依赖项代理](https://docs.microsoft.com/azure/monitoring/monitoring-service-map-configure)。

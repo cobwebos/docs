@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 11/13/2018
 ms.author: mathoma
-ms.openlocfilehash: 44aee447c7f935cd67ca55902c53c5f6f9eb6fda
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 52036d8f5d25fc4a4f2d1b602428e9cba4762b7f
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52576944"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52993140"
 ---
 # <a name="sql-server-on-azure-virtual-machine-release-notes"></a>Azure 虚拟机上的 SQL Server 发行说明
 
@@ -28,7 +28,7 @@ Azure 允许你使用内置的 SQL Server 映像部署虚拟机。 本文列出�
 
 
 ## <a name="november-2018"></a>2018 年 11 月
-- **新的 SQL 资源提供程序**：为 SQL VM 添加了一个新的资源提供程序，可用来更好地管理 VM。 有关注册 VM 的详细信息，请参阅[将旧 SQL VM 注册到新的资源提供程序](virtual-machines-windows-sql-ahb.md#register-legacy-sql-vm-with-new-resource-provider)。
+- **新的 SQL 资源提供程序**：为 SQL VM 添加了一个新的资源提供程序，可用来更好地管理 VM。 有关注册 VM 的详细信息，请参阅[将现有 SQL VM 注册到新的资源提供程序](virtual-machines-windows-sql-ahb.md#register-existing-sql-vm-with-new-resource-provider)。
 - **切换许可模型**：你现在可以使用 Azure CLI 或 Powershell 在“按使用情况付费”与“自带许可证”模型之间切换。 有关详细信息，请参阅[如何更改 SQL VM 的许可模型](virtual-machines-windows-sql-ahb.md)
 
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: timlt
-ms.openlocfilehash: 7b2dd4e97d23f37c8261e51f3f65e78436493ddc
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 7e90fb6bcfa1bfab59177cbc6c717fefc163a67a
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51238721"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52960087"
 ---
 # <a name="device-connectivity-in-azure-iot-central"></a>Azure IoT Central 中的设备连接
 
@@ -44,17 +44,17 @@ Azure IoT Central 使用 [Azure IoT 中心设备预配服务 (DPS)](https://docs
 1. 在 Device Explorer 中添加真实设备，单击“+新增”>“真实设备”以添加真实设备。
     * 输入设备 ID<span style="color:Red">（须小写）</span>或使用所建议的设备 ID。
     * 输入设备名或使用建议名称   
-    ![添加设备](media\concepts-connectivity\add-device.png)
+    ![添加设备](media/concepts-connectivity/add-device.png)
 1. 通过单击设备页上的“连接”，获取已添加设备的作用域 ID、设备 ID 和主键等连接详细信息。
     * [作用域 ID](https://docs.microsoft.com/azure/iot-dps/concepts-device#id-scope) 为每个 IoT Central 应用一个，且由 DPS 生成，用于确保应用内的唯一设备 ID。
     * “设备 ID”对每个应用都是唯一的，设备需要在注册调用过程中发送设备 ID。   
     * “主键”是 SAS 令牌，是 IoT Central 为此特定设备生成的。 
-    ![连接详细信息](media\concepts-connectivity\device-connect.PNG)
+    ![连接详细信息](media/concepts-connectivity/device-connect.PNG)
 1. 在设备代码中使用以下连接详细信息：设备标识、设备名称和设备主键，用于预配和连接设备并即时查看数据流。 如果使用 MxChip 设备，请按照[此处的逐步说明](howto-connect-devkit.md#add-a-real-device)，从“准备 DevKit 设备”部分开始。   
 
     下面是你可能想要使用的其他语言的参考。
 
-    *   **C 语言：** 如果使用 C，请按照[此 C 示例设备客户端](https://github.com/Azure/azure-iot-sdk-c/blob/dps_symm_key/provisioning_client/devdoc/using_provisioning_client.md)，连接到示例设备。 在示例中使用以下设置。   
+    *   **C 语言：** 如果使用的是 C，请按照[此 C 示例设备客户端](https://github.com/Azure/azure-iot-sdk-c/blob/dps_symm_key/provisioning_client/devdoc/using_provisioning_client.md)来连接示例设备。 在示例中使用以下设置。   
 
          ```
          hsm_type = SECURE_DEVICE_TYPE_SYMMETRIC_KEY;
@@ -64,7 +64,7 @@ Azure IoT Central 使用 [Azure IoT 中心设备预配服务 (DPS)](https://docs
          static const char* const REGISTRATION_NAME = "Enter Device Id here";
         ```
 
-    *   **Node.js：** 如果想要使用 Node.js，请[使用此处的分步说明](tutorial-add-device.md#prepare-the-client-code)，从“准备客户端代码”部分开始。
+    *   **Node.js：** 如果要使用 Node.js，请[使用此处的分步说明](tutorial-add-device.md#prepare-the-client-code)，从“准备客户端代码”部分开始。
 
 
 
@@ -102,7 +102,7 @@ CSV 文件要求：该 CSV 文件应包含以下列（和标头）
 1.  选择想要导出的设备，然后单击“导出”操作。
 1.  一旦导出完成，将显示一条成功消息，并提供一个用来下载生成文件的链接。
 1.  单击“成功消息”将文件下载到磁盘上的本地文件夹。
-1.  导出的 CSV 文件将包含以下列信息：设备 ID、设备名称、设备主/辅助密钥和主要/辅助证书指纹
+1.  导出的 CSV 文件将具有以下列信息：设备 ID、设备名称、设备主/辅助密钥以及主/次要证书指纹
     *   IOTC_DEVICEID
     *   IOTC_DEVICENAME
     *   IOTC_SASKEY_PRIMARY
@@ -118,14 +118,14 @@ CSV 文件要求：该 CSV 文件应包含以下列（和标头）
 
 下面是你可能想要使用的其他语言的参考。
 
-   *   **C 语言：** 如果使用的是 C，请按照[此 C 示例设备客户端](https://github.com/Azure/azure-iot-sdk-c/blob/dps_symm_key/provisioning_client/devdoc/using_provisioning_client.md)，连接到示例设备。 在示例中使用以下设置。   
+   *   **C 语言：** 如果使用的是 C，请按照[此 C 示例设备客户端](https://github.com/Azure/azure-iot-sdk-c/blob/dps_symm_key/provisioning_client/devdoc/using_provisioning_client.md)来连接示例设备。 在示例中使用以下设置。   
          ```
          hsm_type = SECURE_DEVICE_TYPE_SYMMETRIC_KEY;
 
          static const char* const SYMMETRIC_KEY_VALUE = "Enter Primary Symmetric key here";
          static const char* const REGISTRATION_NAME = "Enter Device Id here";
         ```
-    * **Node.js：** 如果想要使用 Node.js，请[使用此处的分步说明](tutorial-add-device.md#prepare-the-client-code)，从“准备客户端代码”部分开始。
+    * **Node.js：** 如果要使用 Node.js，请[使用此处的分步说明](tutorial-add-device.md#prepare-the-client-code)，从“准备客户端代码”部分开始。
 
 
 ## <a name="connect-devices-using-x509-certificates"></a>使用 X509 证书连接设备
@@ -137,14 +137,14 @@ CSV 文件要求：该 CSV 文件应包含以下列（和标头）
 
     *   添加正在使用的 X509 根或中间证书，以生成叶设备证书。 转到“管理”>“设备连接”>“证书”。 
     
-        ![连接设置](media\concepts-connectivity\connection-settings.PNG)
-    *   **证书验证：** 验证证书所有权可以确保证书上传者拥有该证书的私钥。 验证证书
+        ![连接设置](media/concepts-connectivity/connection-settings.PNG)
+    *   **证书验证：** 验证证书所有权可以确保证书的上传者拥有此证书的私钥。 验证证书
         *  生成验证码，单击验证码字段旁边的按钮以生成验证码。 
         *  使用验证码，创建 X.509 验证证书，将证书保存为.cer 文件。 
         *  上传已签名的验证证书，并单击验证。
 
-        ![连接设置](media\concepts-connectivity\verify-cert.png)
-    *   **辅助证书：** 在 IoT 解决方案的生命周期内，需要滚动更新证书。 滚动更新证书的两个主要原因是出现安全违规和证书过期。 辅助证书用于减少更新主证书时，因设备尝试预配而出现的停机时间。
+        ![连接设置](media/concepts-connectivity/verify-cert.png)
+    *   **次要证书：** 在 IoT 解决方案的生命周期内，需要滚动更新证书。 滚动更新证书的两个主要原因是出现安全违规和证书过期。 辅助证书用于减少更新主证书时，因设备尝试预配而出现的停机时间。
 
     **仅用于测试目的** 
     
@@ -160,7 +160,7 @@ CSV 文件要求：该 CSV 文件应包含以下列（和标头）
 
 1. 通过 CSV 文件将设备导入 IoT Central，对其进行注册。
 
-1. **设备安装程序**：生成使用已上传根证书的叶证书。 请确保在叶证书中使用设备 ID 作为 CNAME，并且采用小写形式。 下面是一个[命令行工具](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md )，以生成叶/设备证书，仅用于测试目的。
+1. **设备设置**：使用上传的根证书生成叶证书。 请确保在叶证书中使用设备 ID 作为 CNAME，并且采用小写形式。 下面是一个[命令行工具](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md )，以生成叶/设备证书，仅用于测试目的。
 
     使用预配服务信息对设备进行编程，使其能够在设备开启时获取连接详细信息和 IoT Central 应用分配。    
 
@@ -180,15 +180,15 @@ IoT Central 支持的重要场景之一是使 OEM 批量生产设备，并在工
 
 下面是使用此功能连接设备的流程
 
-![连接设置](media\concepts-connectivity\device-connection-flow.PNG)
+![连接设置](media/concepts-connectivity/device-connection-flow.PNG)
 
 
 根据所选设备身份验证方案 (X509/SAS)，执行以下步骤
 
 1. **连接设置** 
-    * **X509 证书**：[验证根/中间证书](#connect-devices-using-x509-certificates)并在下一步中用其生成设备证书。
-    * **SAS：** 复制主键（此键是此 IoT Central 应用程序的组 SAS 密钥），并在下一步中用其生成设备的 SAS 密钥。 
-![连接设置 SAS](media\concepts-connectivity\connection-settings-sas.png)
+    * **X509 证书：**[添加和验证根/中间证书](#connect-devices-using-x509-certificates)，并在下一步中用它来生成设备证书。
+    * **SAS：** 复制主密钥（此密钥是此 IoT Central 应用程序的组 SAS 密钥），并在下一步中用它来生成设备 SAS 密钥。 
+![连接设置 SAS](media/concepts-connectivity/connection-settings-sas.png)
 
 1. **生成设备凭据** 
     *   **证书 X509：** 使用已添加到此应用中的根/中间证书为设备生成叶证书。 请确保在叶证书中使用设备 ID 作为 CNAME，并且应<span style="color:Red">采用小写形式</span>。 下面是一个[命令行工具](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md )，以生成叶/设备证书，用于测试。
@@ -210,13 +210,13 @@ IoT Central 支持的重要场景之一是使 OEM 批量生产设备，并在工
     
      使用作用域 ID、设备 ID 和设备证书/SAS 密钥闪刷设备，然后开启设备，以连接到 IoT Central 应用。
 
-1. **连接到 IoT Central：** 启用时，设备将连接到 DPS/IoT Central 进行注册。
+1. **将设备连接到 IoT 中心：** 一旦打开，设备将连接到 DPS/IoT Central 进行注册。
 
-1. **将设备与模板关联：** 已连接设备将在 Device Explorer 中的未关联设备下显示。 设备预配状态为“已注册”。 将设备与相应的设备模板相关联，并批准设备连接到 IoT Central 应用。 设备将获取 IoT Central 应用的连接详细信息，它将连接并开始发送数据。 设备预配现已完成，而“预配状态”变为“已预配”。
+1. **将设备关联到模板：** 连接的设备将在“Device Explorer”中的“未关联设备”下显示。 设备预配状态为“已注册”。 将设备与相应的设备模板相关联，并批准设备连接到 IoT Central 应用。 设备将获取 IoT Central 应用的连接详细信息，它将连接并开始发送数据。 设备预配现已完成，而“预配状态”变为“已预配”。
 
 ## <a name="device-provisioning-status"></a>设备预配状态
 将真实设备连接到 Azure IoT Central 时，包含一系列步骤 
-1. **已注册**：首先注册该设备，这意味着设备在 IoT Central 创建，并且具有设备的设备 ID。
+1. **已注册**：此设备是第一次注册，这意味着此设备在 IoT Central 中创建，并且具有设备的设备 ID。
 出现以下情况时，设备已注册：  
     *   资源管理器中已添加新的真实设备
     *   在资源管理器中使用“导入”添加一组设备
@@ -224,15 +224,15 @@ IoT Central 支持的重要场景之一是使 OEM 批量生产设备，并在工
 
     在上述所有情况下，“预配状态”均为“已注册”
 
-1. **已预配**：下一步是设备使用有效的凭据连接时，IoT Central 将完成预配步骤（通过在 IoT 中心 创建设备）。 然后将向设备返回连接字符串，以连接和开始发送数据。 现在设备的“预配状态”将从“已注册”变为“已预配”。
+1. **已预配**：下一步是设备使用有效的凭据连接时，IoT Central 将完成预配步骤（通过在 IoT 中心创建此设备）。 然后将向设备返回连接字符串，以连接和开始发送数据。 现在设备的“预配状态”将从“已注册”变为“已预配”。
 
-1.  **已阻止**：操作员可以阻止某台设备，一旦设备被阻止，就不能将数据发送到 IoT 中心，并且需要重置。 被阻止的设备的“预配状态”为“已阻止”。 操作员还可以取消阻止设备。 取消阻止设备后，设备的“预配状态”将返回其之前的“预配状态”（“已注册”或“已预配”）。 
+1.  **已阻止**：操作员可以阻止某台设备，一旦设备被阻止，它就不能将数据发送到 IoT 中心，并且需要重置。 被阻止的设备的“预配状态”为“已阻止”。 操作员还可以取消阻止设备。 取消阻止设备后，设备的“预配状态”将返回其之前的“预配状态”（“已注册”或“已预配”）。 
 
 ## <a name="getting-device-connection-string"></a>获取设备连接字符串
 可以通过以下步骤，获取指向 Azure IoT 中心的 IoT 中心设备连接字符串 
 1. 从设备页（转到“设备”页并单击“连接”）中获取作用域 ID、设备 ID 和主键等连接详细信息 
 
-    ![连接详细信息](media\concepts-connectivity\device-connect.PNG)
+    ![连接详细信息](media/concepts-connectivity/device-connect.PNG)
 
 1. 使用下述命令行工具获取设备连接字符串。
     通过下述说明获取设备连接字符串  

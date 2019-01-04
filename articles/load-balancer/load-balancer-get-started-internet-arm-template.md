@@ -1,5 +1,6 @@
 ---
-title: 创建公共负载均衡器 - Azure 模板 | Microsoft Docs
+title: 创建公共负载均衡器 - Azure 模板
+titlesuffix: Azure Load Balancer
 description: 了解如何使用模板在资源管理器中创建公共负载均衡器
 services: load-balancer
 documentationcenter: na
@@ -7,16 +8,17 @@ author: KumudD
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
+ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: af638c01121aa3a7f1d533cd8b50403f909d6b8e
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: c77cdf23e73a174ca68744ea543a41ce0a1de9f7
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51235609"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53095697"
 ---
 # <a name="creating-a-public-load-balancer-using-a-template"></a>使用模板创建公共负载均衡器
 

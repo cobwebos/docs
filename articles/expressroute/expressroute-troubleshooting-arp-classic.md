@@ -1,29 +1,23 @@
 ---
-title: 获取 ARP 表：经典：Azure ExpressRoute 故障排除 | Microsoft 文档
-description: 此页说明了如何为 ExpressRoute 线路获取 ARP 表。
-documentationcenter: na
+title: 获取 ARP 表 - ExpressRoute 故障排除：经典：Azure | Microsoft Docs
+description: 此页说明了如何为 ExpressRoute 线路获取 ARP 表 - 经典部署模型。
 services: expressroute
 author: ganesr
-manager: carolz
-editor: tysonn
-ms.assetid: b5856acf-03c2-4933-8111-6ce12998d92a
 ms.service: expressroute
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
 ms.date: 01/30/2017
 ms.author: ganesr
-ms.openlocfilehash: fcc847b7e30fd55ca759830e0254ab7542e7663e
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.custom: seodec18
+ms.openlocfilehash: 367a79b04a8736e2eafb6851b682f2c244e80522
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2017
-ms.locfileid: "23013162"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53272280"
 ---
 # <a name="getting-arp-tables-in-the-classic-deployment-model"></a>在经典部署模型中获取 ARP 表
 > [!div class="op_single_selector"]
-> * [PowerShell - Resource Manager](expressroute-troubleshooting-arp-resource-manager.md)
+> * [PowerShell - 资源管理器](expressroute-troubleshooting-arp-resource-manager.md)
 > * [PowerShell - 经典](expressroute-troubleshooting-arp-classic.md)
 > 
 > 

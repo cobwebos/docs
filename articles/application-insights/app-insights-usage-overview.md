@@ -8,18 +8,17 @@ manager: carmonm
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
-ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 10/10/2017
 ms.pm_owner: daviste;NumberByColors
 ms.reviewer: mbullwin
 ms.author: daviste
-ms.openlocfilehash: 968c5fb093f3ebdb6ce7eb239f79573f19b89e0f
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 2ccb4d2ff7beeeac53bafe726122c3b47682db03
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51278627"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52955423"
 ---
 # <a name="usage-analysis-with-application-insights"></a>Application Insights 使用分析
 
@@ -33,7 +32,7 @@ Web 或移动应用有哪些最热门的功能？ 用户是否使用应用实现
 
     * 不想安装服务器代码？只需[创建 Azure Application Insights 资源](app-insights-create-new-resource.md)。
 
-2. **网页代码：** 打开 [Azure 门户](https://portal.azure.com)，然后打开应用的 Application Insights 资源，再依次打开“入门”>“监视和诊断客户端”。 
+2. **网页代码**：打开 [Azure 门户](https://portal.azure.com)，然后打开应用的 Application Insights 资源，再依次打开“入门”>“监视和诊断客户端”。 
 
     ![将脚本复制到主网页的开头。](./media/app-insights-usage-overview/02-monitor-web-page.png)
 
@@ -61,26 +60,6 @@ Web 或移动应用有哪些最热门的功能？ 用户是否使用应用实现
 * “会话”报告统计访问站点的用户会话数。 会话是指某个用户的活动时段，如果有半个小时以上处于非活动状态，会话会被终止。
 
 [有关用户、会话和事件工具的详细信息](app-insights-usage-segmentation.md)  
-
-## <a name="page-views"></a>页面视图
-
-在“使用情况”边栏选项卡中，单击“页面视图”磁贴可获取最热门页面的细目分类：
-
-![从“概述”边栏选项卡单击页面视图图表](./media/app-insights-usage-overview/05-games.png)
-
-上面的示例取自某个游戏网站。 从图表中可以清楚看到：
-
-* 使用情况在上周未改善。 或许我们应该考虑搜索引擎优化？
-* “Tennis”是最受欢迎的游戏页面。 我们重点看一看对此页面的进一步改进。
-* 平均而言，用户访问“Tennis”页面的频率约为每周三次。 （会话次数大约是用户数的三倍。）
-* 大多数用户在美国工作日和工作时间访问该网站。 或许我们应该在网页上提供一个“快速隐藏”按钮。
-* 图表上的[注释](app-insights-annotations.md)显示部署网站新版本的时间。 最近的部署没有一个对使用情况有明显的影响。
-
-如果想要更详细地调查发往站点的流量，例如，根据站点在其页面视图遥测数据中发送的自定义属性拆分流量，该怎样做？
-
-1. 在 Application Insights 资源菜单中打开“事件”工具。 使用此工具可以根据各种筛选、队列和分段选项，分析从应用发送的页面视图和自定义事件数目。
-2. 在“使用者”下拉列表中选择“任何页面视图”。
-3. 在“拆分依据”下拉列表中，选择拆分页面视图遥测数据所依据的属性。
 
 ## <a name="retention---how-many-users-come-back"></a>保留 - 有多少个回头用户？
 

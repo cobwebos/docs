@@ -1,0 +1,145 @@
+---
+title: 使用 Azure DevOps Projects 创建 CI/CD 管道 - Azure IoT Edge | Microsoft Docs
+description: 可以通过 Azure DevOps Projects 轻松地在 Azure 上开始操作。 使用它可以快速启动所选的 Azure IoT Edge 应用。
+author: shizn
+manager: ''
+ms.author: xshi
+ms.date: 12/04/2018
+ms.topic: conceptual
+ms.service: iot-edge
+services: iot-edge
+ms.custom: seodec18
+ms.openlocfilehash: ebb7e515f9d9205f364d50b3d686c68a2988f86a
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53074208"
+---
+# <a name="create-a-cicd-pipeline-for-iot-edge-with-azure-devops-projects-preview"></a>使用 Azure DevOps Projects 为 IoT Edge 创建 CI/CD 管道（预览版）
+
+使用 DevOps Projects 为 IoT Edge 应用程序配置持续集成 (CI) 和持续交付 (CD)。 DevOps Projects 可以简化 Azure Pipelines 中生成和发布管道的初始配置。
+
+如果没有可用的 Azure 订阅，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free)。
+
+## <a name="sign-in-to-the-azure-portal"></a>登录到 Azure 门户
+
+DevOps Projects 在 Azure DevOps 中创建 CI/CD 管道。 可以创建新的 Azure DevOps 组织，或使用现有的组织。 DevOps Projects 还可以在所选的 Azure 订阅中创建 Azure 资源。
+
+1. 登录到 [Microsoft Azure 门户](https://portal.azure.com)。
+
+1. 在左窗格的左导航栏中选择“创建资源”图标，然后搜索“DevOps Projects”。  
+
+1.  选择“创建”。
+
+## <a name="select-a-sample-application-and-azure-service"></a>选择示例应用程序和 Azure 服务
+
+1. 可以用 [C#](tutorial-csharp-module.md)、[Node.js](tutorial-node-module.md)、[Python](tutorial-python-module.md)、[C](tutorial-c-module.md) 和 [Java](tutorial-java-module.md) 编写 Azure IoT Edge 模块。 选择用于启动新应用程序的首选语言。 相应地，可以选择“.NET”、“Node.js”、“Python”、“C”或“Java”，然后单击“下一步”。
+
+    ![选择用于创建新应用程序的语言](./media/how-to-devops-project/select-language.png)
+
+2. 选择“简单 IoT(预览版)”，然后单击“下一步”。
+
+    ![选择简单 IoT 框架](media/how-to-devops-project/select-iot.png)
+
+3. 选择“IoT Edge”，然后单击“下一步”。
+
+    ![选择 IoT Edge 服务](media/how-to-devops-project/select-iot-edge.png)
+
+## <a name="configure-azure-devops-and-an-azure-subscription"></a>配置 Azure DevOps 和 Azure 订阅
+
+1. 创建新的免费 Azure DevOps 组织，或选择现有的组织。
+
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 为项目选择一个名称。 
+
+    b. 依次选择 Azure 订阅和位置、应用程序的名称、“完成”。  
+
+    ![命名并创建应用程序](media/how-to-devops-project/select-devops.png)
+
+1. 几分钟后，DevOps Projects 仪表板会显示在 Azure 门户中。 首先会在 Azure DevOps 组织的存储库中设置示例 IoT Edge 应用程序，然后执行生成并将应用程序部署到 IoT Edge 设备。 可以通过此仪表板查看代码存储库、CI/CD 管道以及 Azure 中的应用程序。
+
+    ![在 DevOps 门户中查看应用程序](./media/how-to-devops-project/devops-portal.png)
+
+
+## <a name="commit-code-changes-and-execute-cicd"></a>提交代码更改并执行 CI/CD
+
+DevOps Projects 在 Azure Repos 或 GitHub 中创建了一个 Git 存储库。 要查看存储库并对应用程序进行代码更改，请执行以下步骤：
+
+1. 在 DevOps Projects 仪表板的左侧，选择 **master** 分库的链接。  
+该链接会打开新建 Git 存储库的视图。
+
+1. 若要查看存储库克隆 URL，请在浏览器右上角选择“克隆”。 可以用 VS Code 或其他首选工具克隆 Git 存储库。 在后续几个步骤中，可以使用 Web 浏览器直接对 master 分库进行代码更改并提交所做的更改。
+
+    ![克隆 git 存储库](media/how-to-devops-project/clone.png)
+
+1. 在浏览器的左侧，请转到 modules/FilterModule/module.json 文件。
+
+1. 选择“编辑”，然后在 `"tag"` 下对 `"version"` 进行更改。 例如，将其更新为 `"version": "${BUILD_BUILDID}"`，以使用 [Azure DevOps 生成变量](https://docs.microsoft.com/azure/devops/pipelines/build/variables?view=vsts#build-variables)作为 Azure IoT Edge 模块映像标记的一部分。
+
+    ![编辑版本以接受生成变量](media/how-to-devops-project/update-module-json.png)
+
+1. 选择“提交”并保存更改。
+
+1. 在浏览器中，转到“Azure DevOps Projects”仪表板。  此时会看到一个生成正在进行。 所做的更改会自动通过 CI/CD 管道进行生成和部署。
+
+    ![查看正在进行的状态](media/how-to-devops-project/ci-cd-in-progress.png)
+
+## <a name="examine-the-cicd-pipeline"></a>检查 CI/CD 管道
+
+在上一步中，Azure DevOps Projects 自动为 IoT Edge 应用程序配置了完整的 CI/CD 管道。 根据需要浏览和自定义管道。 请执行以下步骤，自行熟悉 Azure DevOps 的生成和发布管道。
+
+1. 在 DevOps Projects 仪表板顶部，选择“生成管道”。  
+此链接会打开一个浏览器标签页，并打开新项目的 Azure DevOps 生成管道。
+
+1. 选择“编辑”。
+
+    ![编辑生成管道](media/how-to-devops-project/click-edit-button.png)
+
+1. 在此窗格中，可以检查生成管道的各种任务。 该生成会执行各种任务，例如，从 Git 存储库提取源、生成 IoT Edge 模块映像、推送 IoT Edge 模块以及发布用于部署的已使用的输出。 要了解有关 CI 的 Azure IoT Edge 任务的详细信息，可以访问[配置 Azure 管道以进行持续集成](https://docs.microsoft.com/azure/iot-edge/how-to-ci-cd#configure-azure-pipelines-for-continuous-integration)。
+
+    ![查看持续集成任务](media/how-to-devops-project/ci.png)
+
+1. 在生成管道的顶部，选择生成管道名称。
+
+1. 将生成管道的名称更改为更具描述性的名称，选择“保存并排队”，然后选择“保存”。
+
+1. 在生成管道名称下，选择“历史记录”。   
+在“历史记录”窗格中，此时会看到最近针对生成所做的更改的审核线索。  Azure Pipelines 会跟踪对生成管道所做的任何更改，并允许进行版本比较。
+
+1. 选择“触发器”。 DevOps Projects 自动创建了一个 CI 触发器，每次向存储库提交内容都会启动新的生成。  可以选择在 CI 过程中包括或排除分库。
+
+1. 选择“保留期”。 可以根据方案指定策略，以保留或删除特定数目的生成。
+
+1. 在“管道”下选择“发布”。 DevOps Projects 会创建一个发布管道，用于管理到 Azure IoT Edge 的部署。
+
+    ![查看发布管道](media/how-to-devops-project/release-pipeline.png)
+
+1. 选择“编辑”。 发布管道包含一个管道，用于定义发布过程。  
+
+1. 在“项目”下选择“删除”。 在前述步骤中检查过的生成管道生成用于项目的输出。 
+
+1. 在“删除”图标的旁边，选择“持续部署触发器”。  
+此发布管道有一个启用的 CD 触发器，每次有新的生成项目可用时，此触发器就会运行部署。 （可选）可以禁用此触发器，这样就需要手动执行部署。  
+
+1. 在左侧，选择“任务”。 这些任务是部署过程执行的活动。 在此示例中，已创建一个用于将模块映像部署到 Azure IoT Edge 的任务。 要了解有关 CD 的 Azure IoT Edge 任务的详细信息，可以访问[配置 Azure 管道以进行持续部署](https://docs.microsoft.com/azure/iot-edge/how-to-ci-cd#configure-azure-pipelines-for-continuous-deployment)。
+
+    ![查看持续部署任务](media/how-to-devops-project/dev-release.png)
+
+1. 在右侧，选择“查看发布”。 此视图显示发布历史记录。
+
+1. 选择某个发布旁边的省略号 (...)，然后选择“打开”。  
+可以浏览多个菜单，例如“发布摘要”、“关联的工作项”、“测试”。
+
+1. 选择“提交”。 此视图显示与特定部署相关联的代码提交。 
+
+1. 选择“日志”。 日志包含有关部署过程的有用信息。 日志可以在部署过程中以及部署以后查看。
+
+
+## <a name="clean-up-resources"></a>清理资源
+
+不再需要创建的 Azure 应用服务和其他相关资源时，可将其删除。 请使用 DevOps Projects 仪表板上的“删除”功能。
+
+## <a name="next-steps"></a>后续步骤
+* 在[向 Azure IoT Edge 进行持续集成和持续部署](how-to-ci-cd.md)中详细了解 Azure DevOps 中的 Azure IoT Edge 任务
+* 在[了解单设备 IoT Edge 部署或大规模 IoT Edge 部署](module-deployment-monitoring.md)中了解 IoT Edge 部署
+* 阅读[大规模地部署和监视 IoT Edge 模块](how-to-deploy-monitor.md)，详细了解创建、更新或删除部署的步骤。

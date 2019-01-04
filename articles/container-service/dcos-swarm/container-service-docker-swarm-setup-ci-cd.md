@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 容器服务和 Swarm 的 CI/CD
+title: （已弃用）使用 Azure 容器服务和 Swarm 的 CI/CD
 description: 使用包含 Docker Swarm 的 Azure 容器服务、Azure 容器注册表和 Azure DevOps 持续交付多容器 .NET Core 应用程序
 services: container-service
 author: jcorioland
@@ -9,14 +9,16 @@ ms.topic: article
 ms.date: 12/08/2016
 ms.author: jucoriol
 ms.custom: mvc
-ms.openlocfilehash: 3b91c269104e740add1d3a5b8ecaee93ca269188
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: db0a16fa44dd23cbc32159889fe8b8ec28c77a5f
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44302820"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52992546"
 ---
-# <a name="full-cicd-pipeline-to-deploy-a-multi-container-application-on-azure-container-service-with-docker-swarm-using-azure-devops-services"></a>用于通过 Azure DevOps Services 在包含 Docker Swarm 的 Azure 容器服务中部署多容器应用程序的完整 CI/CD 管道
+# <a name="deprecated-full-cicd-pipeline-to-deploy-a-multi-container-application-on-azure-container-service-with-docker-swarm-using-azure-devops-services"></a>（已弃用）用于通过 Azure DevOps Services 在包含 Docker Swarm 的 Azure 容器服务中部署多容器应用程序的完整 CI/CD 管道
+
+[!INCLUDE [ACS deprecation](../../../includes/container-service-deprecation.md)]
 
 开发适用于云环境的新型应用程序时，最大的挑战之一是持续交付这些应用程序。 本文介绍如何使用包含 Docker Swarm 的 Azure 容器服务、Azure 容器注册表和 Azure Pipelines 管理，实现完整的持续集成与持续部署 (CI/CD) 管道。
 
@@ -160,7 +162,7 @@ Microsoft 提供一个 Azure DevOps Services 扩展用于在 Azure Pipelines 流
 
 1. 为每个映像（共五个）配置生成和推送步骤后，请在生成工作流中另外添加两个步骤。
 
-    a. 一个命令行任务，使用 Bash 脚本将 docker-compose.yml 文件中出现的 BuildNumber 替换为当前生成 ID。请参阅以下屏幕截图中的详细信息。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 一个命令行任务，使用 Bash 脚本将 docker-compose.yml 文件中出现的 BuildNumber 替换为当前生成 ID。请参阅以下屏幕截图中的详细信息。
 
     ![Azure DevOps Services - 更新 Compose 文件](./media/container-service-docker-swarm-setup-ci-cd/vsts-build-replace-build-number.png)
 

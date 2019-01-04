@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/9/2017
 ms.author: jeedes
-ms.openlocfilehash: 1b6527207793558c132be4cf004b7d6fdde14a90
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: 8bdf49f4cea7c6f0ff30e37bcf1cf2fed3abc2bb
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52584105"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52963804"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-mobileiron"></a>教程：Azure Active Directory 与 MobileIron 集成
+# <a name="tutorial-azure-active-directory-integration-with-mobileiron"></a>教程：Azure Active Directory 与 MobileIron 的集成
 
 在本教程中，了解如何将 MobileIron 与 Azure Active Directory (Azure AD) 集成。
 
@@ -50,24 +50,27 @@ ms.locfileid: "52584105"
 - 如果没有 Azure AD 试用环境，可以[获取一个月的试用版](https://azure.microsoft.com/pricing/free-trial/)。
 
 ## <a name="scenario-description"></a>方案描述
-在本教程中，将在测试环境中测试 Azure AD 单一登录。 本教程中概述的方案包括两个主要构建基块：
+
+在本教程中，将在测试环境中测试 Azure AD 单一登录。
+本教程中概述的方案包括两个主要构建基块：
 
 1. 从库添加 MobileIron
 1. 配置和测试 Azure AD 单一登录
 
 ## <a name="adding-mobileiron-from-the-gallery"></a>从库添加 MobileIron
+
 要配置 MobileIron 与 Azure AD 的集成，需要从库中将 MobileIron 添加到托管 SaaS 应用列表。
 
 **若要从库中添加 MobileIron，请执行以下步骤：**
 
-1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”图标。 
+1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”图标。
 
     ![“Azure Active Directory”按钮][1]
 
 1. 导航到“企业应用程序”。 然后转到“所有应用程序”。
 
     ![“企业应用程序”边栏选项卡][2]
-    
+
 1. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
 
     ![“新增应用程序”按钮][3]
@@ -103,7 +106,7 @@ ms.locfileid: "52584105"
     ![配置单一登录链接][4]
 
 1. 在“单一登录”对话框中，选择“基于 SAML 的单一登录”作为“模式”以启用单一登录。
- 
+
     ![“单一登录”对话框](./media/mobileiron-tutorial/tutorial_mobileiron_samlbase.png)
 
 1. 若要在“IDP” 发起的模式下配置应用程序，请在“MobileIron 域和 URL”部分中，执行以下步骤 ****：
@@ -119,12 +122,13 @@ ms.locfileid: "52584105"
     ![MobileIron 域和 URL 单一登录](./media/mobileiron-tutorial/tutorial_mobileiron_url1.png)
 
     在“登录 URL” **** 文本框中，使用以下模式键入 URL： `https://<host>.mobileiron.com/user/login.html`
-    
-    > [!NOTE]  这些不是实际值。 请使用实际的“标识符”、“回复 URL”和“登录 URL”更新这些值。 可从 MobileIron 的管理门户中获取该密钥和主机的值，本教程稍后会做介绍。
+
+    > [!NOTE]
+    > 这些不是实际值。 请使用实际的“标识符”、“回复 URL”和“登录 URL”更新这些值。 可从 MobileIron 的管理门户中获取该密钥和主机的值，本教程稍后会做介绍。
 
 1. 在“SAML 签名证书”部分中，单击“元数据 XML”，并在计算机上保存元数据文件。
 
-    ![证书下载链接](./media/mobileiron-tutorial/tutorial_mobileiron_certificate.png) 
+    ![证书下载链接](./media/mobileiron-tutorial/tutorial_mobileiron_certificate.png)
 
 1. 单击“保存”按钮。
 
@@ -134,7 +138,7 @@ ms.locfileid: "52584105"
 
 1. 转到“管理” > “标识”。
 
-   * 在“有关云 IDP 设置的信息”字段中选择“AAD”选项。
+   - 在“有关云 IDP 设置的信息”字段中选择“AAD”选项。
 
     ![配置单一登录管理按钮](./media/mobileiron-tutorial/tutorial_mobileiron_admin.png)
 
@@ -143,11 +147,11 @@ ms.locfileid: "52584105"
     ![配置单一登录管理按钮](./media/mobileiron-tutorial/key.png)
 
 1. 在“从 AAD 导出元数据文件并导入到 MobileIron 云字段”中，单击“选择文件”从 Azure 门户上传已下载的元数据。 上传完成后，单击“完成”。
- 
+
     ![配置单一登录管理元数据按钮](./media/mobileiron-tutorial/tutorial_mobileiron_adminmetadata.png)
 
 > [!TIP]
-> 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[ Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
+> 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 
@@ -203,20 +207,20 @@ ms.locfileid: "52584105"
     1. 在“名字”文本框中，输入用户的名字，例如 Britta。
 
     1. 在“姓氏”文本框中，输入用户的姓氏，例如 Simon。
-    
-    1. 单击“完成”。  
+
+    1. 单击“完成”。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
 在本部分中，通过授予 Britta Simon 访问 MobileIron 的权限，允许她使用 Azure 单一登录。
 
-![分配用户角色][200] 
+![分配用户角色][200]
 
 **若要将 Britta Simon 分配到 MobileIron，请执行以下步骤：**
 
 1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，并单击“所有应用程序”。
 
-    ![分配用户][201] 
+    ![分配用户][201]
 
 1. 在应用程序列表中，选择“MobileIron”。
 
@@ -235,19 +239,18 @@ ms.locfileid: "52584105"
 1. 在“用户和组”对话框中单击“选择”按钮。
 
 1. 在“添加分配”对话框中单击“分配”按钮。
-    
+
 ### <a name="test-single-sign-on"></a>测试单一登录
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 当在访问面板中单击 MobileIron 磁贴时，应会自动登录到 MobileIron 应用程序。
-有关访问面板的详细信息，请参阅[访问面板简介](../user-help/active-directory-saas-access-panel-introduction.md)。 
+有关访问面板的详细信息，请参阅[访问面板简介](../user-help/active-directory-saas-access-panel-introduction.md)。
 
 ## <a name="additional-resources"></a>其他资源
 
-* [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](tutorial-list.md)
-* [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
-
+- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](tutorial-list.md)
+- [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 
@@ -262,4 +265,3 @@ ms.locfileid: "52584105"
 [201]: ./media/mobileiron-tutorial/tutorial_general_201.png
 [202]: ./media/mobileiron-tutorial/tutorial_general_202.png
 [203]: ./media/mobileiron-tutorial/tutorial_general_203.png
-

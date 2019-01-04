@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/20/2018
 ms.author: jeedes
-ms.openlocfilehash: 9908dae627ae11a42e8e01a9a4f4d11f35ce0f8d
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 1fe0db2f0c7fea4b24cc23aaa52deb16376012b2
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39422954"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53092003"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-the-cloud-security-fabric"></a>教程：Azure Active Directory 与 Cloud Security Fabric 集成
 
@@ -107,13 +107,15 @@ ms.locfileid: "39422954"
 
     ![Cloud Security Fabric 域和 URL 单一登录信息](./media/ciscocloudlock-tutorial/tutorial_ciscocloudlock_url.png)
 
-    a. 在“登录 URL”文本框中，键入 URL：
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“登录 URL”文本框中，键入 URL：
+
     | |
     |--|
     | `https://platform.cloudlock.com` |
     | `https://app.cloudlock.com` |
 
     b. 在“标识符”文本框中，使用以下模式键入 URL：
+    
     | |
     |--|
     | `https://platform.cloudlock.com/gate/saml/sso/<subdomain>` |
@@ -156,7 +158,7 @@ ms.locfileid: "39422954"
 
     ![“用户”对话框](./media/ciscocloudlock-tutorial/create_aaduser_04.png)
 
-    a. 在“姓名”框中，键入“BrittaSimon”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“姓名”框中，键入“BrittaSimon”。
 
     b. 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
 
@@ -166,7 +168,7 @@ ms.locfileid: "39422954"
 
 ### <a name="create-a-the-cloud-security-fabric-test-user"></a>创建 Cloud Security Fabric 用户
 
-在本部分中，将在 Cloud Security Fabric 中创建一个名为 Britta Simon 的用户。 与 [Cloud Security Fabric 支持团队](mailto:support@cloudlock.com)协作，在 Cloud Security Fabric 平台中添加用户。 使用单一登录前，必须先创建并激活用户。 
+在本部分中，将在 Cloud Security Fabric 中创建一个名为 Britta Simon 的用户。 与  [Cloud Security Fabric 支持团队](mailto:support@cloudlock.com) 协作，在 Cloud Security Fabric 平台中添加用户。 使用单一登录前，必须先创建并激活用户。 
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
@@ -203,12 +205,12 @@ ms.locfileid: "39422954"
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 在访问面板中单击 Cloud Security Fabric 磁贴时，应该会自动登录 Cloud Security Fabric 应用程序。
-有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md)（访问面板简介）。
+有关访问面板的详细信息，请参阅[访问面板简介](../user-help/active-directory-saas-access-panel-introduction.md)。
 
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](tutorial-list.md)
-* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
+* [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

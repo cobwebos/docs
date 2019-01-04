@@ -1,11 +1,13 @@
 ---
-title: Azure 上数据科学虚拟机的十大功能 | Microsoft Docs
+title: 使用 Data Science Virtual Machine 进行数据探索和建模
+titleSuffix: Azure
 description: 在数据科研虚拟机上执行各种数据探索和建模任务。
 services: machine-learning
 documentationcenter: ''
 author: gopitk
 manager: cgronlun
 editor: cgronlun
+ms.custom: seodec18
 ms.assetid: 145dfe3e-2bd2-478f-9b6e-99d97d789c62
 ms.service: machine-learning
 ms.component: data-science-vm
@@ -15,12 +17,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: gokuma
-ms.openlocfilehash: df9edfee9d8a6a0736a040924bac736cfcb3633c
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 52f0a298b1a9e9f3f209f51c1bc0362b8ddf2c4e
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51250911"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53075671"
 ---
 # <a name="ten-things-you-can-do-on-the-windows-data-science-virtual-machine"></a>Windows 数据科学虚拟机的十大功能
 
@@ -62,7 +64,7 @@ Windows 数据科学虚拟机 (DSVM) 是一个功能强大的数据科研开发�
 
 以下是自定义环境设置在 Visual Studio 中的外观。
 
-![PTVS 设置](./media/vm-do-ten-things/PTVSSetup.png)
+![Visual Studio 的屏幕截图，其中选择了针对 Visual Studio 的 Python 工具](./media/vm-do-ten-things/PTVSSetup.png)
 
 有关如何创建 Python 环境的更多详细信息，请参阅 [PTVS 文档](https://aka.ms/ptvsdocs)。
 
@@ -249,7 +251,7 @@ DSVM 已在命令行以及 GUI 上加载了用于访问 GitHub 存储库的客�
 
 在 Visual Studio 中，可以执行相同的克隆操作。 以下屏幕截图演示了如何在 Visual Studio 中访问 Git 和 GitHub 工具。
 
-![Visual Studio 中的 Git](./media/vm-do-ten-things/VSGit.PNG)
+![Visual Studio 的屏幕截图，其中显示了 GitHub 连接](./media/vm-do-ten-things/VSGit.PNG)
 
 可以从 github.com 上提供的多种资源中找到有关使用 Git 操作 GitHub 存储库的更多信息。 [备忘单](https://services.github.com/on-demand/downloads/github-git-cheat-sheet.pdf)是一个有用的参考。
 
@@ -261,14 +263,14 @@ Azure Blob 是适合大小数据的经济可靠云存储。 本部分介绍如�
 
 * **从 [Azure 门户](https://portal.azure.com)创建 Azure Blob 存储帐户。**
 
-![Create_Azure_Blob](./media/vm-do-ten-things/Create_Azure_Blob.PNG)
+![Azure 门户中存储帐户创建流程的屏幕截图](./media/vm-do-ten-things/Create_Azure_Blob.PNG)
 
 * 确认在 ```C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\azcopy.exe``` 找到了预安装的命令行工具 AzCopy。 PATH 环境变量中包含 azcopy.exe 的目录现已可用，以避免在运行此工具时键入完整的命令路径。 有关 AzCopy 工具的详细信息，请参阅 [AzCopy 文档](../../storage/common/storage-use-azcopy.md)
 * 启动 Azure 存储资源管理器工具。 可以从 [Microsoft Azure 存储资源管理器](http://storageexplorer.com/)下载该工具。 
 
-![AzureStorageExplorer_v4](./media/vm-do-ten-things/AzureStorageExplorer_v4.png)
+![Azure 存储资源管理器访问存储帐户时的屏幕截图](./media/vm-do-ten-things/AzureStorageExplorer_v4.png)
 
-**将数据从 VM 移动到 Azure Blob：AzCopy**
+将数据从 VM 移动到 Azure Blob：AzCopy
 
 若要在本地文件和 Blob 存储之间移动数据，可以在命令行或 PowerShell 中使用 AzCopy：
 
@@ -276,7 +278,7 @@ Azure Blob 是适合大小数据的经济可靠云存储。 本部分介绍如�
 
 将 **C:\myfolder** 替换为存储有文件的路径、将 **mystorageaccount** 替换为 Blob 存储帐户名称、将 **mycontainer** 替换为容器名称、将 **storage account key** 替换为 Blob 存储访问密钥。 可以在 [Azure 门户](https://portal.azure.com)中找到存储帐户凭据。
 
-![StorageAccountCredential_v2](./media/vm-do-ten-things/StorageAccountCredential_v2.png)
+![Azure 门户中的存储帐户密钥和容器信息的屏幕截图](./media/vm-do-ten-things/StorageAccountCredential_v2.png)
 
 在 PowerShell 中或从命令提示符下，运行 AzCopy 命令。 以下是 AzCopy 命令的一些使用示例：
 
@@ -291,22 +293,22 @@ Azure Blob 是适合大小数据的经济可靠云存储。 本部分介绍如�
 
 执行 AzCopy 命令以复制到 Azure 存储之后，会看到文件立即出现在 Azure 存储资源管理器中。
 
-![AzCopy_run_finshed_Storage_Explorer_v3](./media/vm-do-ten-things/AzCopy_run_finshed_Storage_Explorer_v3.png)
+![存储帐户的屏幕截图，其中显示了上传的 CSV 文件](./media/vm-do-ten-things/AzCopy_run_finshed_Storage_Explorer_v3.png)
 
-**将数据从 VM 移动到 Azure Blob：Azure 存储资源管理器**
+将数据从 VM 移动到 Azure Blob：Azure 存储资源管理器
 
 还可以在 VM 中使用 Azure 存储资源管理器上传本地文件中的数据：
 
-* 要将数据上传到容器，请选择目标容器，然后单击“上传”按钮。![在存储资源管理器中上传](./media/vm-do-ten-things/storage-accounts.png)
-* 单击“文件”框右侧的“...”，选择要从文件系统上传的一个或多个文件，并单击“上传”开始上传文件。![将文件上传到 Blob](./media/vm-do-ten-things/upload-files-to-blob.png)
+* 要将数据上传到容器，请选择目标容器，然后单击“上传”按钮。![Azure 存储资源管理器中的上传按钮的屏幕截图](./media/vm-do-ten-things/storage-accounts.png)
+* 单击“文件”框右侧的“...”，选择要从文件系统上传的一个或多个文件，然后单击“上传”开始上传文件。![上传文件对话框的屏幕截图](./media/vm-do-ten-things/upload-files-to-blob.png)
 
-**从 Azure Blob 读取数据：机器学习读取器模块**
+读取 Azure Blob 中的数据：机器学习阅读器模块
 
 在 Azure 机器学习工作室中，可以使用“导入数据模块”读取 Blob 中的数据。
 
-![AML_ReaderBlob_Module_v3](./media/vm-do-ten-things/AML_ReaderBlob_Module_v3.png)
+![机器学习工作室中的导入数据模块的屏幕截图](./media/vm-do-ten-things/AML_ReaderBlob_Module_v3.png)
 
-**读取 Azure Blob 中的数据：Python ODBC**
+读取 Azure Blob 中的数据：Python ODBC
 
 在 Jupyter Notebook 或 Python 程序中，可以使用 **BlobService** 库直接读取 Blob 中的数据。
 
@@ -352,7 +354,7 @@ Azure Blob 是适合大小数据的经济可靠云存储。 本部分介绍如�
 
 数据作为数据帧读入：
 
-![IPNB_data_readin](./media/vm-do-ten-things/IPNB_data_readin.PNG)
+![前 10 行数据的屏幕截图](./media/vm-do-ten-things/IPNB_data_readin.PNG)
 
 ### <a name="azure-data-lake"></a>Azure Data Lake
 Azure Data Lake 存储是一个超大规模存储库，适用于大数据分析工作负荷，并且与 Hadoop 分布式文件系统 (HDFS) 兼容。 它适用于 Hadoop、Spark 和 Azure Data Lake Analytics。 本部分将介绍如何将数据移动到 Azure Data Lake Store，以及如何使用 Azure Data Lake Analytics 执行分析。
@@ -361,29 +363,29 @@ Azure Data Lake 存储是一个超大规模存储库，适用于大数据分析�
 
 * 在 [Azure 门户](https://portal.azure.com)中创建 Azure Data Lake Analytics。
 
-![Azure_Data_Lake_Create_v2](./media/vm-do-ten-things/Azure_Data_Lake_Create_v2.png)
+![在 Azure 门户中创建 Data Lake Analytics 的屏幕截图](./media/vm-do-ten-things/Azure_Data_Lake_Create_v2.png)
 
 * 在此[链接](https://www.microsoft.com/download/details.aspx?id=49504)处找到的 Visual Studio 中的 Azure Data Lake 工具，已安装在虚拟机上的 Visual Studio Community Edition 中。 在启动 Visual Studio 并登录 Azure 订阅后，应当会在 Visual Studio 的左侧看到 Azure Data Analytics 帐户和存储。
 
-![Azure_Data_Lake_PlugIn_v2](./media/vm-do-ten-things/Azure_Data_Lake_PlugIn_v2.PNG)
+![Visual Studio 中的 Data Lake 工具的屏幕截图](./media/vm-do-ten-things/Azure_Data_Lake_PlugIn_v2.PNG)
 
-**将数据从 VM 移动到 Data Lake：Azure Data Lake 资源管理器**
+将数据从 VM 移动到 Data Lake：Azure Data Lake 资源管理器
 
 可以使用 **Azure Data Lake 资源管理器**将虚拟机的本地文件中的数据上传到 Data Lake 存储。
 
-![Azure_Data_Lake_UploadData](./media/vm-do-ten-things/Azure_Data_Lake_UploadData.PNG)
+![使用 Data Lake 资源管理器上传文件的屏幕截图](./media/vm-do-ten-things/Azure_Data_Lake_UploadData.PNG)
 
 还可以使用 [Azure 数据工厂 (ADF)](https://azure.microsoft.com/services/data-factory/) 生成用于实现与 Azure Data Lake 之间移动数据操作的数据管道。 有关介绍如何生成数据管道的步骤，请参阅此[文章](https://azure.microsoft.com/blog/creating-big-data-pipelines-using-azure-data-lake-and-azure-data-factory/)。
 
-**将数据从 Azure Blob 读取到 Data Lake：U-SQL**
+将数据从 Azure Blob 读取到 Data Lake：U-SQL
 
 如果数据驻留在 Azure Blob 存储中，可以使用 U-SQL 查询直接读取 Azure 存储 Blob 中的数据。 编写 U-SQL 查询之前，确保 Blob 存储帐户已链接到 Azure Data Lake。 转到 **Azure 门户**、找到 Azure Data Lake Analytics 仪表板、单击“添加数据源”、选择 **Azure 存储**的存储类型，并插入你的 Azure 存储帐户名称和密钥。 然后，你将能够引用存储帐户中存储的数据。
 
-![输入存储帐户和密钥](./media/vm-do-ten-things/Link_Blob_to_ADLA_v2.PNG)
+![“添加数据源”对话框的屏幕截图](./media/vm-do-ten-things/Link_Blob_to_ADLA_v2.PNG)
 
 在 Visual Studio 中，可以读取 Blob 存储中的数据、执行一些数据操作、特征工程，以及将生成的数据输出到 Azure Data Lake 或 Azure Blob 存储。 在引用 Blob 存储中的数据时，请使用 **wasb://**；在引用 Azure Data Lake 中的数据时，请使用 **swbhdfs://**
 
-![数据帧](./media/vm-do-ten-things/USQL_Read_Blob_v2.PNG)
+![突出显示 WASB 条目的查询的屏幕截图](./media/vm-do-ten-things/USQL_Read_Blob_v2.PNG)
 
 在 Visual Studio 中，可以使用以下 U-SQL 查询：
 
@@ -429,19 +431,19 @@ Azure Data Lake 存储是一个超大规模存储库，适用于大数据分析�
 
 将查询提交到服务器后，会显示一个图表，其中显示了作业状态。
 
-![作业状态关系图](./media/vm-do-ten-things/USQL_Job_Status.PNG)
+![作业对话框状态的屏幕截图](./media/vm-do-ten-things/USQL_Job_Status.PNG)
 
-**查询 Data Lake 中的数据：U-SQL**
+查询 Data Lake 中的数据：U-SQL
 
 在数据集引入 Azure Data Lake 后，即可使用 [U-SQL 语言](../../data-lake-analytics/data-lake-analytics-u-sql-get-started.md)查询和浏览数据。 U-SQL 语言与 T-SQL 类似，但结合了 C＃ 的一些功能，以便用户可以编写自定义的模块、用户定义的函数等。可以使用上一步骤中的脚本。
 
 在将查询提交到服务器后，可以很快在 **Azure Data Lake 资源管理器**中找到 tripdata_summary.CSV，可以通过右键单击该文件来预览数据。
 
-![Azure Data Lake 资源管理器中的文件](./media/vm-do-ten-things/USQL_create_summary.png)
+![Data Lake 资源管理器中 csv 文件的屏幕截图](./media/vm-do-ten-things/USQL_create_summary.png)
 
 若要查看文件信息，请执行以下步骤：
 
-![文件摘要](./media/vm-do-ten-things/USQL_tripdata_summary.png)
+![文件摘要信息的屏幕截图](./media/vm-do-ten-things/USQL_tripdata_summary.png)
 
 ### <a name="hdinsight-hadoop-clusters"></a>HDInsight Hadoop 群集
 Azure HDInsight 是云上托管的 Apache Hadoop、Spark、HBase 和 Storm 服务。 可以轻松使用数据科研虚拟机中的 Azure HDInsight 群集。
@@ -450,7 +452,7 @@ Azure HDInsight 是云上托管的 Apache Hadoop、Spark、HBase 和 Storm 服�
 
 * 从 [Azure 门户](https://portal.azure.com)创建 Azure Blob 存储帐户。 此存储帐户用于存储 HDInsight 群集的数据。
 
-![创建 Azure Blob 存储帐户](./media/vm-do-ten-things/Create_Azure_Blob.PNG)
+![从 Azure 门户创建 HDInsight 的屏幕截图](./media/vm-do-ten-things/Create_Azure_Blob.PNG)
 
 * 从 [Azure 门户](../team-data-science-process/customize-hadoop-cluster.md)自定义 Azure HDInsight Hadoop 群集
   
@@ -460,7 +462,7 @@ Azure HDInsight 是云上托管的 Apache Hadoop、Spark、HBase 和 Storm 服�
 
 * 创建群集后，启用对其头节点的远程访问。 请记住你在此处指定的远程访问凭据，你在后续步骤中将会用到它们。
 
-![启用远程访问](./media/vm-do-ten-things/Create_HDI_dashboard_v3.PNG)
+![启用对 HDInsight 群集的远程访问](./media/vm-do-ten-things/Create_HDI_dashboard_v3.PNG)
 
 * 创建 Azure 机器学习工作区。 机器学习实验存储在此机器学习工作区中。 选择门户中突出显示的选项，如以下屏幕截图中所示：
 
@@ -569,7 +571,7 @@ Azure HDInsight 是云上托管的 Apache Hadoop、Spark、HBase 和 Storm 服�
 
 在数据加载到 HDI 群集后，可以在 Azure 存储资源管理器中检查数据。 并且在 HDI 群集中创建数据库 nyctaxidb。
 
-**数据探索：Python 中的 Hive 查询**
+数据浏览：Python 中的 Hive 查询
 
 由于数据在 Hadoop 群集中，因此可以 pyodbc 包连接到 Hadoop 群集并使用 Hive 查询数据库，以执行探索和特征工程。 可以查看我们在先决条件步骤中创建的现有表。
 
@@ -638,7 +640,7 @@ Azure HDInsight 是云上托管的 Apache Hadoop、Spark、HBase 和 Storm 服�
     results.head(5)
 
 
-![上车和下车表](./media/vm-do-ten-things/Exploration_compute_pickup_dropoff_distance_v2.PNG)
+![上车和下车表的前几行](./media/vm-do-ten-things/Exploration_compute_pickup_dropoff_distance_v2.PNG)
 
     results.columns = ['pickup_longitude', 'pickup_latitude', 'dropoff_longitude',
                        'dropoff_latitude', 'trip_distance', 'trip_time_in_secs', 'direct_distance']
@@ -782,7 +784,7 @@ Azure HDInsight 是云上托管的 Apache Hadoop、Spark、HBase 和 Storm 服�
     pd.read_sql(queryString,connection)
 
 
-![数据表](./media/vm-do-ten-things/DownSample_Data_For_Modeling_v2.PNG)
+![表中前几行的数据](./media/vm-do-ten-things/DownSample_Data_For_Modeling_v2.PNG)
 
 **使用机器学习从 HDI 读取数据：读取器模块**
 

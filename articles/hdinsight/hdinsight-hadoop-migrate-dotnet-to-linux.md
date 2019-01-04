@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: hrasheed
-ms.openlocfilehash: dc7cfb4df768fb7554bc7b5c772a6a778a8a793a
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 3681f87780f1ef2a6b42e33bcd6fc2d761994d5c
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51008107"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53384186"
 ---
 # <a name="migrate-net-solutions-for-windows-based-hdinsight-to-linux-based-hdinsight"></a>将基于 Windows 的 HDInsight 的 .NET 解决方案迁移到基于 Linux 的 HDInsight
 
@@ -26,7 +26,7 @@ HDInsight 版本 3.6 附带了 Mono 版本 4.2.1。 有关包含在 HDInsight �
 
 有关 Mono 与 .NET 间兼容性的详细信息，请参阅 [Mono 兼容性 (http://www.mono-project.com/docs/about-mono/compatibility/)](http://www.mono-project.com/docs/about-mono/compatibility/) 文档。
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > SCP.NET 框架与 Mono 兼容。 有关将 SCP.NET 与 Mono 配合使用的详细信息，请参阅[使用 Visual Studio 为 HDInsight 上的 Apache Storm 开发 C# 拓扑](storm/apache-storm-develop-csharp-visual-studio-topology.md)。
 
 ## <a name="automated-portability-analysis"></a>自动可移植性分析
@@ -47,7 +47,7 @@ HDInsight 版本 3.6 附带了 Mono 版本 4.2.1。 有关包含在 HDInsight �
 
     ![可移植性分析器结果对话框](./media/hdinsight-hadoop-migrate-dotnet-to-linux/portability-analyzer-results.png)
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > 分析器无法捕获解决方案的每个问题。 例如，如果 Mono 在 Windows 上运行，文件路径 `c:\temp\file.txt` 视为有效。 同一路径在 Linux 平台上无效。
 
 ## <a name="manual-portability-analysis"></a>手动可移植性分析
@@ -64,12 +64,12 @@ HDInsight 版本 3.6 附带了 Mono 版本 4.2.1。 有关包含在 HDInsight �
 
 有关访问日志的详细信息，请参阅以下文档：
 
-* [在基于 Linux 的 HDInsight 上访问 YARN 应用程序日志](hdinsight-hadoop-access-yarn-app-logs-linux.md)
+* [在基于 Linux 的 HDInsight 上访问 Apache Hadoop YARN 应用程序日志](hdinsight-hadoop-access-yarn-app-logs-linux.md)
 
 ## <a name="next-steps"></a>后续步骤
 
 * [在 HDInsight 上将 C# 与 MapReduce 配合使用](hadoop/apache-hadoop-dotnet-csharp-mapreduce-streaming.md)
 
-* [将 C# 用户定义函数与 Hive 和 Pig 配合使用](hadoop/apache-hadoop-hive-pig-udf-dotnet-csharp.md)
+* [将 C# 用户定义函数与 Apache Hive 和 Apache Pig 配合使用](hadoop/apache-hadoop-hive-pig-udf-dotnet-csharp.md)
 
-* [为 HDInsight 上的 Storm 开发 C# 拓扑](storm/apache-storm-develop-csharp-visual-studio-topology.md)
+* [为 Apache Storm on HDInsight 开发 C# 拓扑](storm/apache-storm-develop-csharp-visual-studio-topology.md)

@@ -1,7 +1,7 @@
 ---
-title: 搜索 Web 上的热门图像 - 必应图像搜索 API
+title: 使用必应图像搜索 API 获取热门图像
 titleSuffix: Azure Cognitive Services
-description: 了解如何使用必应图像搜索 API 搜索 Web 中的热门图像。
+description: 使用必应图像搜索 API 从 Web 搜索目前的热门图像。
 services: cognitive-services
 author: swhite-msft
 manager: cgronlun
@@ -11,14 +11,15 @@ ms.component: bing-image-search
 ms.topic: conceptual
 ms.date: 04/15/2017
 ms.author: scottwhi
-ms.openlocfilehash: 00d992da1d061ddbbee59e93898a92b6701f1ffb
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.custom: seodec2018
+ms.openlocfilehash: 8d58c188275dc6b546d418b51835514c99f25d28
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46296305"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53258961"
 ---
-# <a name="get-trending-images-from-the-bing-image-search-api"></a>通过必应图像搜索 API 获取热门图像
+# <a name="get-trending-images-from-the-web"></a>从 Web 获取热门图像
 
 要获取今天的热门图像，请发送以下 GET 请求：  
 

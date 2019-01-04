@@ -10,23 +10,24 @@ ms.component: qna-maker
 ms.topic: article
 ms.date: 09/12/2018
 ms.author: tulasim
-ms.openlocfilehash: 6ce3fc774d23914ab150e1dc1371391fc9fc548b
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.custom: seodec18
+ms.openlocfilehash: 5b0dfe1753686015c88bdc1214273354dd00c958
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47034379"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53086296"
 ---
-# <a name="test-your-knowledge-base"></a>测试知识库
+# <a name="test-your-knowledge-base-interactively-in-qna-maker"></a>在 QnA Maker 中以交互方式测试知识库
 
 测试 QnA Maker 知识库是迭代过程的重要部分，可以提高返回响应的准确性。 可以通过增强的聊天界面测试知识库，该界面还允许你进行编辑。
 
 ## <a name="test-answer-matching"></a>测试答案匹配
 
-1.  通过在“我的知识库”页上选择知识库名称来访问知识库。
-2.  若要访问“测试”滑出面板，请在应用程序的顶部面板中选择“测试”。
+1.  通过在“我的知识库” **** 页上选择知识库名称来访问知识库。
+2.  若要访问“测试”滑出面板，请在应用程序的顶部面板中选择“测试” **** 。
 
-    ![访问测试](../media/qnamaker-how-to-test-kb/access-test.png)
+    ![访问测试面板](../media/qnamaker-how-to-test-kb/access-test.png)
 
 3.  在文本框中输入查询，然后选择 Enter。
 
@@ -34,17 +35,17 @@ ms.locfileid: "47034379"
 
 ## <a name="clear-test-panel"></a>清除测试面板
 
-若要从测试控制台中清除所有输入的测试查询及其结果，请选择“测试”面板左上角的“重新开始”。
+若要从测试控制台中清除所有输入的测试查询及其结果，请选择“测试”面板左上角的“重新开始” **** 。
 
 ## <a name="close-test-panel"></a>关闭测试面板
 
-若要关闭“测试”面板，请再次选择“测试”按钮。 当“测试”面板处于打开状态时，无法编辑知识库内容。
+若要关闭“测试”面板，请再次选择“测试” **** 按钮。 当“测试”面板处于打开状态时，无法编辑知识库内容。
 
 ## <a name="inspect-score"></a>检查分数
 
 在“检查”面板中检查测试结果的详细信息。
 
-1.  打开“测试”滑出面板后，选择“检查”以获取有关该响应的更多详细信息。
+1.  打开“测试”滑出面板后，选择“检查” **** 以获取有关该响应的更多详细信息。
 
     ![检查响应](../media/qnamaker-how-to-test-kb/inspect.png)
 
@@ -54,13 +55,13 @@ ms.locfileid: "47034379"
 
 如果评分最高的答案不正确，请从列表中选择正确答案，然后选择“保存并训练”。
 
-![访问测试](../media/qnamaker-how-to-test-kb/choose-answer.png)
+![更正评分最高的答案](../media/qnamaker-how-to-test-kb/choose-answer.png)
 
 ## <a name="add-alternate-questions"></a>添加替代问题
 
 可以将问题的替代形式添加到给定答案中。 在文本框中键入备用答案，然后单击 Enter 以添加它们。 选择“保存并训练”以存储更新。
 
-![访问测试](../media/qnamaker-how-to-test-kb/add-alternate-question.png)
+![添加替代问题](../media/qnamaker-how-to-test-kb/add-alternate-question.png)
 
 ## <a name="add-a-new-answer"></a>添加新答案
 
@@ -68,7 +69,7 @@ ms.locfileid: "47034379"
 
 选择“保存并训练”保存此答案。 现在，新的问答对已添加到知识库中。
 
-![访问测试](../media/qnamaker-how-to-test-kb/add-answer.png)
+![添加新的问答对](../media/qnamaker-how-to-test-kb/add-answer.png)
 
 > [!NOTE]
 > 只有在按下“保存并训练”按钮时，才会保存对知识库的所有编辑。

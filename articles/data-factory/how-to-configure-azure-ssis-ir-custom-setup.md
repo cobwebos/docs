@@ -8,17 +8,17 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/31/2018
+ms.date: 12/3/2018
 author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: df020fc3a4e2f57730dea7329b08e1e46660e610
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: fab03f12f4099fe2df2525cb3a6fa093170d1c79
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51037033"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52850170"
 ---
 # <a name="customize-setup-for-the-azure-ssis-integration-runtime"></a>自定义 Azure-SSIS 集成运行时的安装
 
@@ -131,7 +131,7 @@ Azure-SSIS 集成运行时的自定义安装界面提供了一个界面，用于
 
     c. 选择已连接的公共预览版容器，并双击 `CustomSetupScript` 文件夹。 此文件夹包含以下项：
 
-       1. 一个 `Sample` 文件夹，其中包含用于在 Azure-SSIS IR 的每个节点上安装基本任务的自定义安装程序。 该任务不会执行任何操作，而是休眠几秒。 该文件夹还包含 `gacutil` 文件夹，其中包含 `gacutil.exe`。 此外，`main.cmd` 包含用于保存访问凭据以进行文件共享的注释。
+       1. 一个 `Sample` 文件夹，其中包含用于在 Azure-SSIS IR 的每个节点上安装基本任务的自定义安装程序。 该任务不会执行任何操作，而是休眠几秒。 该文件夹还包含 `gacutil` 文件夹，其整个内容（`gacutil.exe`、`gacutil.exe.config` 和 `1033\gacutlrc.dll`）都可以按原样复制到容器中。 此外，`main.cmd` 包含用于保存访问凭据以进行文件共享的注释。
 
        1. 一个 `UserScenarios` 文件夹，其中包含用于实际用户方案的多个自定义设置。
 
@@ -146,8 +146,6 @@ Azure-SSIS 集成运行时的自定义安装界面提供了一个界面，用于
        1. 一个 `BCP` 文件夹，其中包含用于在 Azure-SSIS IR 的每个节点上安装 SQL Server 命令行实用工具 (`MsSqlCmdLnUtils.msi`)（包括批量复制程序 (`bcp`)）的自定义安装程序。
 
        1. 一个 `EXCEL` 文件夹，其中包含用于在 Azure-SSIS IR 的每个节点上安装开源程序集（`DocumentFormat.OpenXml.dll`、`ExcelDataReader.DataSet.dll` 和 `ExcelDataReader.dll`）的自定义安装程序。
-
-       1. 一个 `MSDTC` 文件夹，其中包含用于在 Azure-SSIS IR 的每个节点上修改 Microsoft 分布式事务处理协调器 (MSDTC) 服务的网络和安全配置的自定义安装。 若要确保 MSDTC 已启动，请在包中控制流开头添加 Execute Process Task 以执行以下命令：`%SystemRoot%\system32\cmd.exe /c powershell -Command "Start-Service MSDTC"` 
 
        1. 一个 `ORACLE ENTERPRISE` 文件夹，其中包含用于在 Azure-SSIS IR 企业版的每个节点上安装 Oracle 连接器和 OCI 驱动程序的自定义安装脚本 (`main.cmd`) 和无提示安装配置文件 (`client.rsp`)。 此安装程序允许使用 Oracle 连接管理器、源和目标。 首先，从 [Microsoft 下载中心](https://www.microsoft.com/en-us/download/details.aspx?id=55179)下载适用于 Oracle 的 Microsoft 连接器 v5.0 （`AttunitySSISOraAdaptersSetup.msi` 和 `AttunitySSISOraAdaptersSetup64.msi`），并从 [Oracle](http://www.oracle.com/technetwork/database/enterprise-edition/downloads/database12c-win64-download-2297732.html) 下载最新的 Oracle 客户端，例如 `winx64_12102_client.zip`，然后将它们连同 `main.cmd` 和 `client.rsp` 一起上传到你的容器中。 如果使用 TNS 连接到 Oracle，则还需要下载 `tnsnames.ora`，对其进行编辑，然后将其上传到容器，以便在安装期间将其复制到 Oracle 安装文件夹中。
 

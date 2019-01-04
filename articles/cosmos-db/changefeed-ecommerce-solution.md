@@ -1,20 +1,19 @@
 ---
-title: 使用 Azure Cosmos DB 更改源将实时数据分析可视化 | Microsoft Docs
+title: 使用 Azure Cosmos DB 更改源将实时数据分析可视化
 description: 本文介绍零售公司如何使用更改源来了解用户模式，以及执行实时数据分析和可视化。
 services: cosmos-db
 author: SnehaGunda
-manager: kfile
 ms.service: cosmos-db
 ms.devlang: java
 ms.topic: conceptual
 ms.date: 08/12/2018
 ms.author: sngun
-ms.openlocfilehash: 03fb56125bcc4133dd87a1dc76d4d6811ebb8f40
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: e663a7b8f68c43ebf4c562dd67630db5d113e979
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51685491"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53090748"
 ---
 # <a name="use-azure-cosmos-db-change-feed-to-visualize-real-time-data-analytics"></a>使用 Azure Cosmos DB 更改源将实时数据分析可视化
 
@@ -43,13 +42,13 @@ Azure Cosmos DB 更改源是在 Azure Cosmos DB 容器中创建或修改记录�
    }
    ```
 
-2. **Cosmos DB：** 生成的数据存储在 Azure Cosmos DB 集合中的。  
+2. **Cosmos DB：** 生成的数据存储在 Azure Cosmos DB 集合中。  
 
 3. **更改源：** 更改源将侦听 Azure Cosmos DB 集合发生的更改。 每次将新文档添加到集合时（即，发生了用户查看商品、将商品添加到购物车或购买商品等事件时），更改源将触发一个 [Azure 函数](../azure-functions/functions-overview.md)。  
 
 4. **Azure 函数：** Azure 函数处理新数据，并将其发送到 [Azure 事件中心](../event-hubs/event-hubs-about.md)。  
 
-5. **事件中心：** Azure 事件中心存储这些事件，并将其发送到 [Azure 流分析](../stream-analytics/stream-analytics-introduction.md)以执行进一步的分析。  
+5. **事件中心：** Azure 事件中心存储这些事件，并将其发送到 [Azure 流分析](../stream-analytics/stream-analytics-introduction.md)以执行进一步分析。  
 
 6. **Azure 流分析：** Azure 流分析定义查询来处理事件和执行实时数据分析。 然后，将此数据发送到 [Microsoft Power BI](https://docs.microsoft.com/power-bi/desktop-what-is-desktop)。  
 
@@ -95,13 +94,12 @@ Azure Cosmos DB 更改源是在 Azure Cosmos DB 容器中创建或修改记录�
 
 现在，请创建一个集合用于保存电子商务站点事件。 当某个用户查看商品、将商品添加到购物车或购买商品时，该集合将会收到一条记录，其中包含操作（“已查看”、“已添加”或“已购买”）、涉及的商品名称、涉及的商品价格和涉及的用户购物车的 ID 编号。
 
-1. 转到 [Azure 门户](http://portal.azure.com/)并找到模板部署创建的 **Azure Cosmos DB 帐户**。  
+1. 转到 [Azure 门户](https://portal.azure.com/)并找到模板部署创建的 **Azure Cosmos DB 帐户**。  
 
 2. 在“数据资源管理器”窗格中，选择“新建集合”并在表单中填写以下详细信息：  
 
    * 对于“数据库 ID”字段，请选择“新建”，然后输入 **changefeedlabdatabase**。 将“预配数据库吞吐量”框保留未选中状态。  
    * 对于“集合 ID”字段，请输入 **changefeedlabcollection**。  
-   * 对于“存储容量”，请选择“无限制”。  
    * 对于“分区键”字段，请输入 **/Item**。 此值区分大小写，因此请务必正确输入。  
    * 对于“吞吐量”字段，请输入 **10000**。  
    * 选择“确定”按钮。  
@@ -120,7 +118,7 @@ Azure Cosmos DB 更改源是在 Azure Cosmos DB 容器中创建或修改记录�
 
 ### <a name="get-the-azure-cosmos-db-connection-string"></a>获取 Azure Cosmos DB 连接字符串
 
-1. 转到 [Azure 门户](http://portal.azure.com/)并找到模板部署创建的 **Azure Cosmos DB 帐户**。  
+1. 转到 [Azure 门户](https://portal.azure.com/)并找到模板部署创建的 **Azure Cosmos DB 帐户**。  
 
 2. 导航到“密钥”窗格，将“主连接字符串”复制到记事本，或复制到可在整个实验室中访问的另一个文档。 应将其标记为“Cosmos DB 连接字符串”。 稍后需要将此字符串复制到代码中，因此请将其记下，并记住其存储位置。
 
@@ -180,7 +178,7 @@ Azure 事件中心接收事件数据，并存储、处理和转发这些数据�
  
 6. 等待程序运行。 出现星星表示数据正在传入！ 让程序保持运行 - 必须收集大量的数据。  
 
-7. 如果依次导航到 [Azure 门户](http://portal.azure.com/)、资源组中的 Cosmos DB 帐户、“数据资源管理器”，则会看到 **changefeedlabcollection** 中导入的随机化数据。
+7. 如果依次导航到 [Azure 门户](https://portal.azure.com/)、资源组中的 Cosmos DB 帐户、“数据资源管理器”，则会看到 **changefeedlabcollection** 中导入的随机化数据。
  
    ![门户中生成的数据](./media/changefeed-ecommerce-solution/data-generated-in-portal.png)
 
@@ -188,7 +186,7 @@ Azure 事件中心接收事件数据，并存储、处理和转发这些数据�
 
 Azure 流分析是实时处理流数据的完全托管式云服务。 在此实验室中，我们将使用流分析来处理事件中心发来的新事件（即，查看了商品、将商品添加到了购物车，或购买了商品）、将这些事件合并到实时数据分析，然后将其发送到 Power BI 进行可视化。
 
-1. 在 [Azure 门户](http://portal.azure.com/)中，依次导航到资源组和“streamjob1”（前面在实验室中创建的流分析作业）。  
+1. 在 [Azure 门户](https://portal.azure.com/)中，依次导航到资源组和“streamjob1”（前面在实验室中创建的流分析作业）。  
 
 2. 按如下所示选择“输入”。  
 
@@ -323,11 +321,11 @@ Power BI 是一套商业分析工具，可以分析数据和分享见解。 在�
 
 现在，我们知道可以如何使用新的数据分析工具来连接实际的电子商务站点。 若要构建电子商务站点，请使用 Azure Cosmos DB 数据库来存储产品类别（女用、男用、不分性别）列表、产品目录和最受欢迎商品的列表。
 
-1. 依次导航到 [Azure 门户](http://portal.azure.com/)、**Cosmos DB 帐户**、“数据资源管理器”。  
+1. 依次导航到 [Azure 门户](https://portal.azure.com/)、**Cosmos DB 帐户**、“数据资源管理器”。  
 
    在“changefeedlabdatabase  -  产品和类别”下添加具有“固定”存储容量的两个集合。
 
-   在“changefeedlabdatabase”下添加名为 **topItems**、具有“无限制”存储容量的另一个集合。 写入 **/Item** 作为分区键。
+   在 changefeedlabdatabase 的 topItems 和 /Item 下添加另一个集合作为分区键。
 
 2. 选择“topItems”集合，然后在“规模和设置”下，将“生存时间”设置为“30 秒”，使 topItems 每隔 30 秒更新一次。
 
@@ -393,7 +391,7 @@ Power BI 是一套商业分析工具，可以分析数据和分享见解。 在�
 
 ## <a name="delete-the-resources"></a>删除资源
 
-若要删除在此实验室中创建的资源，请在 [Azure 门户](http://portal.azure.com/)中导航到资源组，从页面顶部的菜单中选择“删除资源组”，然后遵照提供的说明操作。
+若要删除在此实验室中创建的资源，请在 [Azure 门户](https://portal.azure.com/)中导航到资源组，从页面顶部的菜单中选择“删除资源组”，然后遵照提供的说明操作。
 
 ## <a name="next-steps"></a>后续步骤 
   

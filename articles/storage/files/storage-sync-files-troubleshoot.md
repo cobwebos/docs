@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 09/06/2018
 ms.author: jeffpatt
 ms.component: files
-ms.openlocfilehash: 507bbc9013d8b02084b639f8d9fac0c7d97503f4
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 0f6075bcbaae14fc60df6f33f4e65cd4abcec731
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51014272"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53409456"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>对 Azure 文件同步进行故障排除
 使用 Azure 文件同步，即可将组织的文件共享集中在 Azure 文件中，同时又不失本地文件服务器的灵活性、性能和兼容性。 Azure 文件同步可将 Windows Server 转换为 Azure 文件共享的快速缓存。 可以使用 Windows Server 上可用的任意协议本地访问数据，包括 SMB、NFS 和 FTPS。 并且可以根据需要在世界各地具有多个缓存。
@@ -38,9 +38,9 @@ StorageSyncAgent.msi /l*v AFSInstaller.log
 查看 installer.log 确定安装失败的原因。
 
 <a id="agent-installation-on-DC"></a>**Active Directory 域控制器上的代理安装失败**  
-如果尝试在 Active Directory 域控制器上安装同步代理，且该控制器中 PDC 角色所有者位于 Windows Server 2008R2 上或更低的 OS 版本上，则可能遇到同步代理安装失败的问题。
+如果尝试在 Active Directory 域控制器上安装同步代理，且该控制器中 PDC 角色所有者位于 Windows Server 2008 R2 上或更低的 OS 版本上，则可能遇到同步代理安装失败的问题。
 
-要解决此问题，请将 PDC 角色转移到另一运行 Windows Server 2012R2 或更高版本的域控制器，然后安装同步。
+要解决此问题，请将 PDC 角色转移到另一运行 Windows Server 2012 R2 或更高版本的域控制器，然后安装同步。
 
 <a id="server-registration-missing"></a>**服务器未在 Azure 门户中的“已注册的服务器”下列出**  
 如果对于存储同步服务，服务器未在“已注册的服务器”下列出：
@@ -96,8 +96,9 @@ Reset-StorageSyncServer
 若要确定自己的用户帐户角色否具有适当的权限，请执行以下操作：  
 1. 在 Azure 门户中，选择“资源组”。
 2. 选择存储帐户所在的资源组，再选择“访问控制(IAM)”。
-3. 选择用户帐户的**角色**（如“所有者”或“参与者”）。
-4. 在“资源提供程序”列表中，选择“Microsoft 授权”。 
+3. 选择“角色分配”选项卡。
+4. 为用户帐户选择**角色**（例如“所有者”或“参与者”）。
+5. 在“资源提供程序”列表中，选择“Microsoft 授权”。 
     * “角色分配”应具有“读取”和“写入”权限。
     * “角色定义”应具有“读取”和“写入”权限。
 
@@ -131,7 +132,7 @@ Set-AzureRmStorageSyncServerEndpoint `
 
 若要解决此问题，请执行以下步骤：
 
-1. 在服务器上打开任务管理器，并验证存储同步监视器 (AzureStorageSyncMonitor.exe) 进程是否正在运行。 如果该进程未运行，请首先尝试重启服务器。 如果重新启动服务器无法解决此问题，如当前未安装，请将 Azure 文件同步代理升级到版本[3.3.0.0]( https://support.microsoft.com/help/4457484/update-rollup-for-azure-file-sync-agent-september-2018)。
+1. 在服务器上打开任务管理器，并验证存储同步监视器 (AzureStorageSyncMonitor.exe) 进程是否正在运行。 如果该进程未运行，请首先尝试重启服务器。 如果重启服务器无法解决此问题，请升级到最新的 Azure 文件同步[代理版本](https://docs.microsoft.com/azure/storage/files/storage-files-release-notes)。
 2. 验证是否正确配置了防火墙和代理设置：
     - 如果服务器位于防火墙后面，请验证端口 443 是否允许出站。 如果防火墙限制到特定域的流量，请确认可以访问防火墙[文档](https://docs.microsoft.com/azure/storage/files/storage-sync-files-firewall-and-proxy#firewall)中列出的域。
     - 如果服务器位于代理后面，请按照代理[文档](https://docs.microsoft.com/azure/storage/files/storage-sync-files-firewall-and-proxy#proxy)中的步骤配置适用于整个计算机或特定于应用的代理设置。
@@ -467,20 +468,17 @@ PerItemErrorCount: 1006.
 | **错误字符串** | ECS_E_SERVER_CREDENTIAL_NEEDED |
 | **所需的补救措施** | 是 |
 
-此错误的常见原因是服务器时间不正确，或者用于身份验证的证书已过期。 如果服务器时间正确，请执行以下步骤删除已过期的证书（如果已过期），并重置服务器注册状态：
+此错误的常见原因是服务器时间不正确，或者用于身份验证的证书已过期。 如果服务器时间正确，请执行以下步骤来续订过期的证书：
 
 1. 打开“证书”MMC 管理单元，选择“计算机帐户”，然后导航到“证书(本地计算机)”\“个人”\“证书”。
-2. 删除客户端身份验证证书（如果已过期），并关闭“证书”MMC 管理单元。
-3. 打开注册表编辑器，删除注册表中的 ServerSetting 项：HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Azure\StorageSync\ServerSetting
-4. 在 Azure 门户中，导航到存储同步服务的“已注册服务器”部分。 右键单击具有过期证书的服务器，然后单击“取消注册服务器”。
-5. 在服务器上运行以下 PowerShell 命令：
+2. 检查客户端身份验证证书是否过期。 如果证书已过期，请关闭证书 MMC 管理单元并继续执行剩余步骤。 
+3. 验证是否已安装了 Azure 文件同步代理版本 4.0.1.0 或更高版本。
+4. 在服务器上运行以下 PowerShell 命令：
 
     ```PowerShell
-    Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
-    Reset-StorageSyncServer
+    Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.PowerShell.Cmdlets.dll"
+    Reset-AzureRmStorageSyncServerCertificate -SubscriptionId <guid> -ResourceGroupName <string> -StorageSyncServiceName <string>
     ```
-
-6. 运行 ServerRegistration.exe（默认位置为 C:\Program Files\Azure\StorageSyncAgent）以重新注册服务器。
 
 <a id="-1906441711"></a><a id="-2134375654"></a><a id="doesnt-have-enough-free-space"></a>**服务器终结点所在卷的磁盘空间不足。**  
 | | |
@@ -705,8 +703,9 @@ if ($fileShare -eq $null) {
 
 <a id="troubleshoot-rbac"></a>**确保 Azure 文件同步有权访问存储帐户。**  
 # <a name="portaltabportal"></a>[门户](#tab/portal)
-1. 在左侧目录中单击“访问控制(IAM)”，导航到有权访问你的存储帐户的用户和应用程序（服务主体）列表。
-2. 检查“混合文件同步服务”是否与“读取器和数据访问”角色一起显示在列表中。 
+1. 在左侧的目录上单击“访问控制(IAM)”。
+1. 单击“角色分配”选项卡以列出有权访问你的存储帐户的用户和应用程序（*服务主体*）。
+1. 检查“混合文件同步服务”是否与“读取器和数据访问”角色一起显示在列表中。 
 
     ![存储帐户访问控制选项卡中的“混合文件同步服务”服务主体的屏幕截图](media/storage-sync-files-troubleshoot/file-share-inaccessible-3.png)
 

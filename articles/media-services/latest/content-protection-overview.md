@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 媒体服务来保护内容 | Microsoft 文档
+title: 使用媒体服务来保护内容 - Azure | Microsoft Docs
 description: 本文概述了如何使用媒体服务来保护内容。
 services: media-services
 documentationcenter: ''
@@ -11,18 +11,19 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/15/2018
+ms.date: 12/08/2018
 ms.author: juliako
-ms.openlocfilehash: 1c7454aead07c728d55ff2c309cca83a792aac88
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.custom: seodec18
+ms.openlocfilehash: cb7e867ea4304cf8b8741eac183e60d325c752c7
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51238343"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53141843"
 ---
 # <a name="content-protection-overview"></a>内容保护概述
 
-可以使用 Azure 媒体服务在媒体从计算机离开到存储、处理和传送的整个过程中确保其安全。 借助媒体服务，可以传送使用高级加密标准 (AES-128) 或三个主要数字版权管理 (DRM) 系统（Microsoft PlayReady、Google Widevine 和 Apple FairPlay）中任意一个动态加密的实时和请求内容。 媒体服务还提供了用于向已授权客户端传送 AES 密钥和 DRM（PlayReady、Widevine 和 FairPlay）许可证的服务。 
+可以使用 Azure 媒体服务在媒体从计算机离开到存储、处理和传送的整个过程中确保其安全。 借助媒体服务，可以传送使用高级加密标准 (AES-128) 或以下三个主要数字版权管理 (DRM) 系统中任意一个动态加密的实时和请求内容：Microsoft PlayReady、Google Widevine 和 Apple FairPlay。 媒体服务还提供了用于向已授权客户端传送 AES 密钥和 DRM（PlayReady、Widevine 和 FairPlay）许可证的服务。 
 
 下图阐释了媒体服务内容保护工作流： 
 
@@ -52,14 +53,14 @@ ms.locfileid: "51238343"
 
 2. 使用 AES 或 DRM 客户端的播放器。 基于播放器 SDK 的视频播放器应用（本机或基于浏览器）需要满足以下要求：
   * 播放器 SDK 支持所需的 DRM 客户端
-  * 播放器 SDK 支持所需的流式处理协议：平滑流、DASH 和/或 HLS
+  * 播放器 SDK 支持所需的流式处理协议：平滑流式处理、DASH 和/或 HLS
   * 播放器 SDK 需要能够处理许可证获取请求中 JWT 令牌的传递
   
     可以使用 [Azure Media Player API](http://amp.azure.net/libs/amp/latest/docs/) 创建播放器。 通过 [Azure 媒体播放器的 ProtectionInfo API](http://amp.azure.net/libs/amp/latest/docs/) 指定要在不同的 DRM 平台上使用哪种 DRM 技术。
 
     若要测试 AES 或 CENC (Widevine 和/或 PlayReady) 加密内容，可以使用 [Azure Media Player](https://ampdemo.azureedge.net/azuremediaplayer.html)。 请务必单击“高级选项”，并选择加密选项。
 
-    若要测试 FairPlay 加密内容，请使用[此测试播放器](https://aka.ms/amtest)。 该播放器支持 Widevine、PlayReady 和 FairPlay DRM，以及 AES-128 明文密钥加密。 需要选择适当的浏览器来测试不同的 DRM：适用于 Widevine 的 Chrome/Opera/Firefox、适用于 PlayReady 的 MS Edge/IE11、适用于 FairPlay 的 Safari on macOS。
+    若要测试 FairPlay 加密内容，请使用[此测试播放器](https://aka.ms/amtest)。 该播放器支持 Widevine、PlayReady 和 FairPlay DRM，以及 AES-128 明文密钥加密。 需要选择适当的浏览器来测试不同的 DRM：使用 Chrome/Opera/Firefox 测试 Widevine，使用 MS Edge/IE11 测试 PlayReady，使用 macOS 版 Safari 测试 FairPlay。
 
 3. 安全令牌服务 (STS)，颁发 JSON Web 令牌 (JWT) 作为用于访问后端资源的访问令牌。 可以使用 AMS 许可证传送服务作为后端资源。 STS 必须定义以下信息：
 
@@ -79,10 +80,10 @@ ms.locfileid: "51238343"
 
 |协议|容器格式|加密方案|
 |---|---|---|---|
-|MPEG-DASH|全部|AES|
+|MPEG-DASH|All|AES|
 ||CSF(fmp4) |CENC (Widevine + PlayReady) |
 ||CMAF(fmp4)|CENC (Widevine + PlayReady)|
-|HLS|全部|AES|
+|HLS|All|AES|
 ||MPG2-TS |CBCS (Fairplay) |
 ||MPG2-TS |CENC (PlayReady) |
 ||CMAF(fmp4) |CENC (PlayReady) |

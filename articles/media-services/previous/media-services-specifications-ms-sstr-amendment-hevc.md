@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/07/2018
 ms.author: johndeu;
-ms.openlocfilehash: 6330de2aa67fd83a5d4762c2c13d4916f642743d
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 038eee18adf94f34a2e10d9ff7be76409c8c4322
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51250928"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53317407"
 ---
 # <a name="smooth-streaming-protocol-ms-sstr-amendment-for-hevc"></a>HEVC 的平滑流式处理协议 (MS-SSTR) 修正
 
@@ -58,14 +58,13 @@ ms.locfileid: "51250928"
 
 >   **可以、应该、必须、不应、不得：** 这些术语的用法符合 [[RFC2119]](https://go.microsoft.com/fwlink/?LinkId=90317) 中的描述。 所有可选行为的陈述使用“可以”、“应该”或“不应”。
 
-## <a name="12-references"></a>1.2 参考 
------------
+## <a name="12-references"></a>1.2 参考
 
 >   对 Microsoft 开放规范文档的参考不包括发布年份，因为链接指向最新版本的文档，而这些文档经常更新。 对其他文档的参考包括发布年份（如果已提供）。
 
- ### <a name="121-normative-references"></a>1.2.1 规范参考 
+### <a name="121-normative-references"></a>1.2.1 规范参考 
 
->  [MS SSTR] 平滑流式处理协议 v20140502 [http://download.microsoft.com/download/9/5/E/95EF66AF-9026-4BB0-A41D-A4F81802D92C/[MS SSTR].pdf](https://download.microsoft.com/download/9/5/E/95EF66AF-9026-4BB0-A41D-A4F81802D92C/%5bMS-SSTR%5d.pdf)
+>  [MS SSTR] 平滑流式处理协议 *v20140502* [https://msdn.microsoft.com/library/ff469518.aspx](https://msdn.microsoft.com/library/ff469518.aspx)
 
 >   [ISO/IEC 14496-12] 国际标准化组织编写的“信息技术 -- 音频-视频对象编码 -- 第 12 部分：ISO 基本媒体文件格式”，ISO/IEC 14496-12:2014 版本 4，以及勘误 1、修正 1 和 2。
 >   <http://standards.iso.org/ittf/PubliclyAvailableStandards/c061988_ISO_IEC_14496-12_2012.zip>
@@ -93,24 +92,18 @@ ms.locfileid: "51250928"
 
 
 ## <a name="13-overview"></a>1.3 概述 
----------
 
 >   下面指定了传送 HEVC 之前需要对平滑流式处理规范所做的唯一几处更改。 此处列出的小节标题未发生变化，目的是保留所参考的平滑流式处理规范 [MS-SSTR] 中的相应位置。
 
 ## <a name="14-relationship-to-other-protocols"></a>1.4 与其他协议之间的关系 
---------------------------------
 
 ## <a name="15-prerequisitespreconditions"></a>1.5 先决条件/前提条件 
-----------------------------
 
 ## <a name="16-applicability-statement"></a>1.6 适用性声明 
-------------------------
 
 ## <a name="17-versioning-and-capability-negotiation"></a>1.7 版本控制和功能协商 
---------------------------------------
 
 ## <a name="18-vendor-extensible-fields"></a>1.8 供应商可扩展的字段 
--------------------------
 
 >   应使用以下方法来识别采用 HEVC 视频格式的流：
 
@@ -118,15 +111,12 @@ ms.locfileid: "51250928"
 >   实现者可以根据 [[ISO/IEC-14496-12]](https://go.microsoft.com/fwlink/?LinkId=183695) 中的指定，将扩展代码注册到 MPEG4-RA，来确保扩展不会发生冲突
 
 ## <a name="19-standards-assignments"></a>1.9 标准分配 
-----------------------
 
-# <a name="2-messages"></a>2 消息 
+## <a name="2-messages"></a>2 消息 
 
-## <a name="21-transport"></a>2.1 传输 
-----------
+## <a name="21-transport"></a>2.1 传输
 
 ## <a name="22-message-syntax"></a>2.2 消息语法 
----------------
 
 ### <a name="221-manifest-request"></a>2.2.1 清单请求 
 
@@ -157,7 +147,7 @@ ms.locfileid: "51250928"
 
 >   **FourCC（变量）：** 由四个字符组成的代码，用于确定对每个样本使用了哪种媒体格式。 以下值范围是保留的，其语义含义如下：
 
->  * "hev1"：此轨迹的视频样本使用 HEVC 视频，并采用 [ISO/IEC-14496-15] 中指定的“hev1”样本说明格式。
+>  * "hev1”：此轨迹的视频样本使用 HEVC 视频，并采用 [ISO/IEC-14496-15] 中指定的“hev1”样本说明格式。
 
 >   **CodecPrivateData（变量）：** 指定特定于媒体格式的参数，并在轨迹的所有样本中通用的数据，以十六进制编码字节的字符串表示。 字节序列的格式和语义含义根据 **FourCC** 字段的值而异，如下所述：
 
@@ -273,7 +263,7 @@ ms.locfileid: "51250928"
 
 ### <a name="228-server-to-server-ingest"></a>2.2.8 服务器到服务器的引入 
 
-# <a name="3-protocol-details"></a>3 协议详细信息 
+## <a name="3-protocol-details"></a>3 协议详细信息 
 
 
 ## <a name="31-client-details"></a>3.1 客户端详细信息 
@@ -299,7 +289,7 @@ ms.locfileid: "51250928"
     MajorVersion = 2
     MinorVersion = 2
 
->   LookaheadCount = 0（注意：Boxes 已弃用）
+>   LookaheadCount = 0（注意：框已弃用）
 
 >   呈现内容还应设置：
 
@@ -354,19 +344,17 @@ ms.locfileid: "51250928"
 
 ## <a name="33-live-encoder-details"></a>3.3 实时编码器详细信息 
 
-# <a name="4-protocol-examples"></a>4 协议示例 
+## <a name="4-protocol-examples"></a>4 协议示例 
 
-# <a name="5-security"></a>5 安全性 
+## <a name="5-security"></a>5 安全性 
 
-## <a name="51-security-considerations-for-implementers"></a>5.1 实现者的安全注意事项 
------------------------------------------
+## <a name="51-security-considerations-for-implementers"></a>5.1 实现者的安全注意事项
 
 >   如果使用此协议传输的内容具有较高的商业价值，则应使用内容保护系统来防止未经授权使用内容。 可以使用 **ProtectionElement** 来承载与内容保护系统的用法相关的元数据。 应该根据 MPEG 通用加密第二版：2015 [ISO/IEC 23001-7] 中的指定加密受保护的音频和视频内容。
 
 >   **注意**：对于 HEVC 视频，只会加密 VCL NAL 中的切片数据。 在解密之前，呈现应用程序可以访问切片标头和其他 NAL。 呈现应用程序无法使用安全视频路径的加密信息。
 
-# <a name="52-index-of-security-parameters"></a>5.2 安全参数的索引 
------------------------------
+## <a name="52-index-of-security-parameters"></a>5.2 安全参数的索引 
 
 
 | **安全参数**  | **节**         |
@@ -374,8 +362,7 @@ ms.locfileid: "51250928"
 | ProtectionElement       | *2.2.2.2*           |
 | 通用加密框 | *[ISO/IEC 23001-7]* |
 
-# <a name="53-common-encryption-boxes"></a>5.3 通用加密框
------------------------
+## <a name="53-common-encryption-boxes"></a>5.3 通用加密框
 
 如果已应用通用加密并且在 [ISO/IEC 23001-7] 或 [ISO/IEC 14496-12] 中指定了片段响应，则可以在片段响应中呈现以下框：
 

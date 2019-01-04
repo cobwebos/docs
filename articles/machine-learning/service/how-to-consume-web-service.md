@@ -1,20 +1,22 @@
 ---
-title: 如何使用 Web 服务部署 - Azure 机器学习
-description: 了解如何使用通过部署 Azure 机器学习模型创建的 Web 服务。 部署 Azure 机器学习模型可以创建公开 REST API 的 Web 服务。 可以使用所选的编程语言为此 API 创建客户端。 本文档介绍如何使用 Python 和 C# 访问 API。
+title: 创建客户端以使用部署的 Web 服务
+titleSuffix: Azure Machine Learning service
+description: 了解如何使用在通过 Azure 机器学习模型部署模型时生成的 Web 服务（该 Web 服务公开一个 REST API）。 使用所选的编程语言为此 API 创建客户端。
 services: machine-learning
 ms.service: machine-learning
 ms.component: core
 ms.topic: conceptual
-ms.author: raymondl
-author: raymondlaghaeian
+ms.author: aashishb
+author: aashishb
 ms.reviewer: larryfr
-ms.date: 10/30/2018
-ms.openlocfilehash: 58c1b53a4b97aad7b916e593fd4d6b52b51b7a52
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.date: 12/03/2018
+ms.custom: seodec18
+ms.openlocfilehash: fc1f472cec1b1da26456924885d7905ab2458e14
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52262887"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53251124"
 ---
 # <a name="consume-an-azure-machine-learning-model-deployed-as-a-web-service"></a>使用部署为 Web 服务的 Azure 机器学习模型
 
@@ -100,7 +102,7 @@ REST API 预期请求正文是采用以下结构的 JSON 文档：
 > [!IMPORTANT]
 > 数据结构需要符合服务中评分脚本和模型的预期。 评分脚本在将数据传递到模型之前可以修改数据。
 
-例如，[在笔记本中训练](https://github.com/Azure/MachineLearningNotebooks/tree/master/01.getting-started/01.train-within-notebook)示例中的模型预期存在由 10 个数字构成的数组。 此示例的评分脚本从请求创建一个 Numpy 数组，并将其传递给模型。 以下示例演示此服务预期的数据：
+例如，[在笔记本中训练](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-within-notebook/train-within-notebook.ipynb)示例中的模型预期存在由 10 个数字构成的数组。 此示例的评分脚本从请求创建一个 Numpy 数组，并将其传递给模型。 以下示例演示此服务预期的数据：
 
 ```json
 {
@@ -124,9 +126,46 @@ REST API 预期请求正文是采用以下结构的 JSON 文档：
 
 Web 服务可以接受一个请求中的多个数据集。 它会返回包含响应数组的 JSON 文档。
 
+### <a name="binary-data"></a>二进制数据
+
+如果模型接受二进制数据（如映像），则必须修改用于部署的 `score.py` 文件以接受原始 HTTP 请求。 下面是 `score.py` 示例，它接受二进制数据，并返回 POST 请求的反向字节。 对于 GET 请求，它在响应正文中返回完整 URL：
+
+```python 
+from azureml.contrib.services.aml_request  import AMLRequest, rawhttp
+from azureml.contrib.services.aml_response import AMLResponse
+
+def init():
+    print("This is init()")
+
+@rawhttp
+def run(request):
+    print("This is run()")
+    print("Request: [{0}]".format(request))
+    if request.method == 'GET':
+        respBody = str.encode(request.full_path)
+        return AMLResponse(respBody, 200)
+    elif request.method == 'POST':
+        reqBody = request.get_data(False)
+        respBody = bytearray(reqBody)
+        respBody.reverse()
+        respBody = bytes(respBody)
+        return AMLResponse(respBody, 200)
+    else:
+        return AMLResponse("bad request", 500)
+```
+
+> [!IMPORTANT]
+> `azureml.contrib` 命名空间中的内容会频繁更改，因为我们致力于改进服务。 因此，此命名空间中的任何内容都应被视为预览版，Microsoft 并不完全支持。
+>
+> 如果需要在本地开发环境中对此进行测试，可以使用以下命令安装 contrib 命名空间中的组件：
+> 
+> ```shell
+> pip install azureml-contrib-services
+> ```
+
 ## <a name="call-the-service-c"></a>调用服务 (C#)
 
-此示例演示如何使用 C# 调用[在笔记本中训练](https://github.com/Azure/MachineLearningNotebooks/tree/master/01.getting-started/01.train-within-notebook)示例创建的 Web 服务：
+此示例演示如何使用 C# 调用[在笔记本中训练](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-within-notebook/train-within-notebook.ipynb)示例创建的 Web 服务：
 
 ```csharp
 using System;
@@ -215,7 +254,7 @@ namespace MLWebServiceClient
 
 ## <a name="call-the-service-go"></a>调用服务 (Go)
 
-此示例演示如何使用 Go 调用[在笔记本中训练](https://github.com/Azure/MachineLearningNotebooks/tree/master/01.getting-started/01.train-within-notebook)示例创建的 Web 服务：
+此示例演示如何使用 Go 调用[在笔记本中训练](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-within-notebook/train-within-notebook.ipynb)示例创建的 Web 服务：
 
 ```go
 package main
@@ -307,7 +346,7 @@ func main() {
 
 ## <a name="call-the-service-java"></a>调用服务 (Java)
 
-此示例演示如何使用 Java 调用[在笔记本中训练](https://github.com/Azure/MachineLearningNotebooks/tree/master/01.getting-started/01.train-within-notebook)示例创建的 Web 服务：
+此示例演示如何使用 Java 调用[在笔记本中训练](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-within-notebook/train-within-notebook.ipynb)示例创建的 Web 服务：
 
 ```java
 import java.io.IOException;
@@ -387,7 +426,7 @@ public class App {
 
 ## <a name="call-the-service-python"></a>调用服务 (Python)
 
-此示例演示如何使用 Python 调用[在笔记本中训练](https://github.com/Azure/MachineLearningNotebooks/tree/master/01.getting-started/01.train-within-notebook)示例创建的 Web 服务：
+此示例演示如何使用 Python 调用[在笔记本中训练](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-within-notebook/train-within-notebook.ipynb)示例创建的 Web 服务：
 
 ```python
 import requests
@@ -446,7 +485,3 @@ print(resp.text)
 ```JSON
 [217.67978776218715, 224.78937091757172]
 ```
-
-## <a name="next-steps"></a>后续步骤
-
-了解如何为已部署的模型创建客户端后，接下来请了解如何[将模型部署到 IoT Edge 设备](how-to-deploy-to-iot.md)。

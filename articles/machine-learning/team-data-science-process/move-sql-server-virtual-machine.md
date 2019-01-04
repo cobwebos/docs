@@ -1,5 +1,5 @@
 ---
-title: 将数据移到 Azure 虚拟机上的 SQL Server | Microsoft Docs
+title: 将数据移动到 SQL Server 虚拟机 - Team Data Science Process
 description: 将数据从平面文件或本地 SQL Server 移到 Azure 虚拟机上的 SQL Server。
 services: machine-learning
 author: marktab
@@ -10,13 +10,13 @@ ms.component: team-data-science-process
 ms.topic: article
 ms.date: 11/04/2017
 ms.author: tdsp
-ms.custom: (previous author=deguhath, ms.author=deguhath)
-ms.openlocfilehash: 649c98c235adc2435840c6c43d3e2f9d5755265f
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: fbc23d53687b908245ffe25bdd418cbe64af080b
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52446188"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53136182"
 ---
 # <a name="move-data-to-sql-server-on-an-azure-virtual-machine"></a>将数据移到 Azure 虚拟机上的 SQL Server
 
@@ -26,7 +26,7 @@ ms.locfileid: "52446188"
 
 下表汇总了用于将数据移到 Azure 虚拟机上的 SQL Server 的选项。
 
-| <b>源</b> | <b>目标：Azure 虚拟机上的 SQL Server</b> |
+| <b>源</b> | <b>目标：Azure VM 上的 SQL Server</b> |
 | --- | --- |
 | <b>平面文件</b> |1.<a href="#insert-tables-bcp">命令行大容量复制实用程序 (BCP)</a><br> 2.<a href="#insert-tables-bulkquery">批量插入 SQL 查询</a><br> 3.<a href="#sql-builtin-utilities">SQL Server 中的图形内置实用程序</a> |
 | <b>本地 SQL Server</b> |1.<a href="#deploy-a-sql-server-database-to-a-microsoft-azure-vm-wizard">将 SQL Server 数据库部署到 Microsoft Azure 虚拟机向导</a><br> 2.<a href="#export-flat-file">导出到平面文件</a><br> 3.<a href="#sql-migration">SQL 数据库迁移向导</a> <br> 4.<a href="#sql-backup">数据库备份和还原</a><br> |

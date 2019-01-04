@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: article
 ms.date: 11/16/2017
 ROBOTS: NOINDEX
-ms.openlocfilehash: 07a9d46dff17b43d01a6b411292cf240c32476f3
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 0117a08c76288cda25da2196ec18433b3678e24b
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46983712"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52724632"
 ---
 # <a name="roaming-and-collaboration-in-azure-machine-learning-workbench"></a>Azure Machine Learning Workbench 中的漫游和协作
 
@@ -124,9 +124,9 @@ az role assignment create --assignee bob@contoso.com --role Owner --scope <works
 ### <a name="use-the-azure-portal-to-add-users"></a>使用 Azure 门户添加用户
 <a name="portal"></a>
 
-机器学习试验帐户、工作区和项目都是 Azure 资源管理器资源。 可以使用 [Azure 门户](https://portal.azure.com)中的“访问控制”链接分配角色。 
+机器学习试验帐户、工作区和项目都是 Azure 资源管理器资源。 可以使用 [Azure 门户](https://portal.azure.com)中的“访问控制(IAM)”链接分配角色。 
 
-在“所有资源”视图中找到想要将用户添加到的资源。 选择“访问控制 (IAM)”链接，然后选择“添加用户”。 
+在“所有资源”视图中找到想要将用户添加到的资源。 选择“访问控制(IAM)”链接，然后选择“添加角色分配”。 
 
 <img src="./media/roaming-and-collaboration/iam.png" width="320px">
 

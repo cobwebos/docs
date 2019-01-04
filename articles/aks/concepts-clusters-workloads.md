@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 10/16/2018
 ms.author: iainfou
-ms.openlocfilehash: 1b0b3d0db2067a492905d8f828934f0b63fb8f54
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: f5695e52528c3384c46c49c5c5ec2e451bd0be7c
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50155977"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52998096"
 ---
 # <a name="kubernetes-core-concepts-for-azure-kubernetes-service-aks"></a>Azure Kubernetes 服务 (AKS) 的 Kubernetes 核心概念
 
@@ -28,7 +28,7 @@ Kubernetes 是一个快速发展的平台，用于管理基于容器的应用程
 
 作为开放平台，Kubernetes 可使用首选的编程语言、OS、库或消息总线生成应用程序。 现有的持续集成和持续交付 (CI/CD) 工具可以与 Kubernetes 集成，以计划和部署版本。
 
-Azure Kubernetes 服务 (AKS) 提供托管 Kubernetes 服务，可简化部署和核心管理任务，包括协调升级。 Azure 平台可托管 AKS 群集主机，你只需为运行应用程序的 AKS 节点付费。 AKS 建立在开放源代码 Azure 容器服务引擎 (acs-engine) 的基础之上。
+Azure Kubernetes 服务 (AKS) 提供托管 Kubernetes 服务，可简化部署和核心管理任务，包括协调升级。 Azure 平台可托管 AKS 群集主机，你只需为运行应用程序的 AKS 节点付费。 AKS 建立在开放源代码 Azure Kubernetes 服务引擎 (aks-engine) 的基础之上。
 
 ## <a name="kubernetes-cluster-architecture"></a>Kubernetes 群集体系结构
 
@@ -54,7 +54,7 @@ AKS 为单租户群集主机提供专用 API 服务器、计划程序等。定�
 
 此托管群集主机意味着无需配置高可用性 etcd 存储等组件，但这也意味着无法直接访问群集主机。 通过 Azure CLI 或 Azure 门户安排 Kubernetes 升级，后者先升级群集主机，然后升级节点。 要解决可能出现的问题，可以通过 Azure Log Analytics 查看群集主日志。
 
-如果需要以特定方式配置群集主机或直接对其进行访问，可以使用 [acs-engine][acs-engine] 部署自己的 Kubernetes 群集。
+如果需要以特定方式配置群集主机或直接对其进行访问，可以使用 [aks-engine][aks-engine] 部署自己的 Kubernetes 群集。
 
 ## <a name="nodes-and-node-pools"></a>节点和节点池
 
@@ -70,7 +70,7 @@ AKS 为单租户群集主机提供专用 API 服务器、计划程序等。定�
 
 在 AKS 中，群集中节点的 VM 映像当前基于 Ubuntu Linux。 创建 AKS 群集或纵向扩展节点数时，Azure 平台会创建所请求数量的 VM 并对其进行配置。 无需执行手动配置。
 
-如果需要使用不同的主机 OS、容器运行时或包含自定义程序包，可以使用 [acs-engine][acs-engine] 部署自己的 Kubernetes 群集。 上游 `acs-engine` 正式在 AKS 群集中受支持之前会发布功能并提供配置选项。 例如，如果要使用 Windows 容器或 Docker 之外的容器运行时，可以使用 `acs-engine` 来配置和部署满足当前需求的 Kubernetes 群集。
+如果需要使用不同的主机 OS、容器运行时或包含自定义程序包，可以使用 [aks-engine][aks-engine] 部署自己的 Kubernetes 群集。 上游 `aks-engine` 正式在 AKS 群集中受支持之前会发布功能并提供配置选项。 例如，如果要使用 Windows 容器或 Docker 之外的容器运行时，可以使用 `aks-engine` 来配置和部署满足当前需求的 Kubernetes 群集。
 
 ### <a name="resource-reservations"></a>资源预留
 
@@ -218,7 +218,7 @@ Kubernetes 资源（如 Pod 和部署）以逻辑方式分组到命名空间中�
 - [Kubernetes/AKS 规模][aks-concepts-scale]
 
 <!-- EXTERNAL LINKS -->
-[acs-engine]: https://github.com/Azure/acs-engine
+[aks-engine]: https://github.com/Azure/aks-engine
 [kubernetes-pods]: https://kubernetes.io/docs/concepts/workloads/pods/pod-overview/
 [kubernetes-pod-lifecycle]: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/
 [kubernetes-deployments]: https://kubernetes.io/docs/concepts/workloads/controllers/deployment/

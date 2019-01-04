@@ -1,19 +1,18 @@
 ---
-title: Azure Cosmos DB NoSQL 迁移和应用程序开发合作伙伴 | Microsoft Docs
+title: Azure Cosmos DB NoSQL 迁移和应用程序开发合作伙伴
 description: 列出提供支持 Azure Cosmos DB 的迁移解决方案的 Microsoft 合作伙伴。
 services: cosmos-db
 author: SnehaGunda
 ms.author: sngun
-manager: kfile
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/07/2018
-ms.openlocfilehash: 1e52c6eb96b98db76628a3a77ce1ef95bd58f837
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: c241232de33d4371456a374f8bc511211b3e9449
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48872033"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53082396"
 ---
 # <a name="azure-cosmos-db-nosql-migration-and-application-development-partners"></a>Azure Cosmos DB NoSQL 迁移和应用程序开发合作伙伴
 
@@ -30,18 +29,34 @@ ms.locfileid: "48872033"
 
 |**合作伙伴**  |**功能和体验**  |**支持的国家/地区**  |**联系人**  |
 |---------|---------|---------|---------|
-|![Altoros][3]    |  NoSQL 迁移、 <br/> 应用创新（现有应用）、 <br/> 新应用开发 |     美国、欧洲    |  [网站](http://www.altoros.com/)       |
-|![Attunix][4]     |   NoSQL 迁移、 <br/> 应用创新（现有应用）、 <br/> 新应用开发      |    USA     |  [网站](http://www.attunix.com/)       |
-|![Bluemetal][5]     |  NoSQL 迁移、 <br/> 应用创新（现有应用）、 <br/> 新应用开发       |    北美、亚太     |  [网站](http://www.bluemetal.com/)       |
-|![Capax Global][6]     |  NoSQL 迁移、 <br/> 应用创新（现有应用）、 <br/> 新应用开发       |    USA     |  [网站](http://www.capaxglobal.com/)       |
+| ![10thMagnitude][13] | NoSQL 迁移；新应用开发 | USA | [网站](https://www.10thmagnitude.com/)|
+|![Altoros Development LLC][3]    |  NoSQL 迁移、 <br/> 应用创新（现有应用）、 <br/> 新应用开发 |   美国、挪威、芬兰、白俄罗斯、阿根廷 |  [网站](http://www.altoros.com/)     |
+|![Attunix Redapt][4]     |   NoSQL 迁移、 <br/> 应用创新（现有应用）、 <br/> 新应用开发      |    USA     |  [网站](http://www.attunix.com/)       |
+| ![Avanade][26] | 新应用开发、 <br/> 应用创新（现有应用） | 奥地利、德国、瑞士、意大利、挪威、西班牙、英国 | [网站](https://www.avanade.com/)
+|![Bluemetal Architects][5]     |  NoSQL 迁移、 <br/> 应用创新（现有应用）、 <br/> 新应用开发       |    北美、亚太     |  [网站](http://www.bluemetal.com/)       |
+|![Capax Global LLC][6]     |  NoSQL 迁移、 <br/> 应用创新（现有应用）、 <br/> 新应用开发       |    USA     |  [网站](http://www.capaxglobal.com/)       |
+| ![Capgemini][14] | NoSQL 迁移、应用创新（现有应用）、新应用开发 | 美国、法国、英国、荷兰、芬兰  | [网站](https://www.capgemini.com/) | 
 |![Coeo][7]     |   应用创新（现有应用）、 <br/> 新应用开发 |    英国     |  [网站](http://www.coeo.com/)       |
+| ![Cognizant][15] | NoSQL 迁移 |美国、加拿大、英国、丹麦、荷兰、瑞士、澳大利亚、日本 | [网站](https://www.cognizant.com/)|
 |![Infosys][8]     |  NoSQL 迁移       |    全局     |  [网站](http://www.infosys.com/)       |
+| ![Lagash][16] | NoSQL 迁移、 <br/> 新应用开发 | 阿根廷、智利、哥伦比亚、墨西哥| [网站](https://lagash.com/)|
+| ![Lambda3 Informatics][17] | NoSQL 迁移、 <br/> 新应用开发 | 巴西| [网站](https://www.lambda3.com.br/)|
 |![Neal Analytics][9]     |     应用开发（新应用）    |    USA     |  [网站](http://www.nealanalytics.com/)       |
-|![Pragmatic Works][10]    |   NoSQL 迁移      |   USA      |  [网站](http://www.pragmaticworks.com/)       |
+|![Pragmatic Works Software Inc][10]    |   NoSQL 迁移      |   USA      |  [网站](http://www.pragmaticworks.com/)       |
+| ![Ricoh Global][18] | NoSQL 迁移、 <br/> 应用创新（现有应用）| 英国  | [网站](https://www.ricoh.com/)|
+| ![SNP Technologies][19] | NoSQL 迁移| 美国 | [网站](https://www.snp.com/)|
+| ![Solidsoft Reply][20] | NoSQL 迁移 | 克罗地亚、瑞典、丹麦、爱尔兰、保加利亚语、斯洛文尼亚、塞浦路斯、马耳他、立陶宛、捷克共和国、冰岛、瑞士和列支敦士登| [网站](https://www.reply.com/solidsoft-reply/)|
+| ![Spanish Point Technologies][21] | NoSQL 迁移| 爱尔兰| [网站](https://www.spanishpoint.ie/)|
+| ![Syone][22] | NoSQL 迁移| 葡萄牙| [网站](https://www.syone.com/)|
 |![Tallan][11]    |  NoSQL 迁移、 <br/> 应用创新（现有应用）、 <br/> 新应用开发       |    USA     |  [网站](http://www.tallan.com/)       |
+| ![TCS][23] | 应用创新（现有应用）、 <br/> 新应用开发 | 美国、英国、法国、马来西亚、丹麦、挪威、瑞典| [网站](https://www.tcs.com/)|
 |![VTeamLabs][12]    | NoSQL 迁移       |  USA      | [网站](http://www.vteamlabs.com/)       |
+| ![White Duck][24] |NoSQL 迁移、 <br/> 新应用开发 | 德国 | [网站](https://whiteducksoftware.com/)|
+| ![Xpand IT][25] | 新应用开发 | 葡萄牙、英国| [网站](https://www.xpand-it.com/)|
+
 
 ## <a name="next-steps"></a>后续步骤
+
 若要详细了解 Microsoft 的其他一些合作伙伴，请参阅 [Microsoft 合作伙伴网站](https://partner.microsoft.com/en-US/)。
 
 <!--Image references-->
@@ -57,3 +72,17 @@ ms.locfileid: "48872033"
 [10]: ./media/partners-migration-cosmosdb/pragmaticworks_logo.png
 [11]: ./media/partners-migration-cosmosdb/tallan_logo.png
 [12]: ./media/partners-migration-cosmosdb/vteamlabs_logo.png
+[13]: ./media/partners-migration-cosmosdb/10thmagnitude_logo.png
+[14]: ./media/partners-migration-cosmosdb/capgemini_logo.png
+[15]: ./media/partners-migration-cosmosdb/cognizant_logo.png
+[16]: ./media/partners-migration-cosmosdb/laglash_logo.png
+[17]: ./media/partners-migration-cosmosdb/lambda3_logo.png
+[18]: ./media/partners-migration-cosmosdb/ricoh_logo.png
+[19]: ./media/partners-migration-cosmosdb/snp_technologies_logo.png
+[20]: ./media/partners-migration-cosmosdb/solidsoft_reply_logo.png
+[21]: ./media/partners-migration-cosmosdb/spanish_point_logo.png
+[22]: ./media/partners-migration-cosmosdb/syone_logo.png
+[23]: ./media/partners-migration-cosmosdb/tcs_logo.png
+[24]: ./media/partners-migration-cosmosdb/whiteduck_logo.png
+[25]: ./media/partners-migration-cosmosdb/xpandit_logo.png
+[26]: ./media/partners-migration-cosmosdb/avanade_logo.png

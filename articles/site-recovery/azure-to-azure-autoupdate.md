@@ -6,14 +6,14 @@ author: rajani-janaki-ram
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 10/19/2018
+ms.date: 11/27/2018
 ms.author: rajanaki
-ms.openlocfilehash: 06a7e23eb16cf6296a8997273ea8d554851600c3
-ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
+ms.openlocfilehash: 275dd48e08aa74d84b0e1b91d5df9599ce524489
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49456484"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52957685"
 ---
 # <a name="automatic-update-of-the-mobility-service-in-azure-to-azure-replication"></a>Azure 到 Azure 复制中的移动服务自动更新
 
@@ -66,11 +66,11 @@ Azure Site Recovery 每月发布一次，增加对现有功能或新功能的增
 
 1. 如果 Azure VM 上安装的移动服务有可用的新更新，则会显示“新 Site Recovery 复制代理更新可用”的通知。 单击可安装。”
 
-     ![“复制的项”窗口](.\media\vmware-azure-install-mobility-service\replicated-item-notif.png)
+     ![“复制的项”窗口](./media/vmware-azure-install-mobility-service/replicated-item-notif.png)
 3. 选择通知以打开虚拟机选择页面。
 4. 选择要升级移动服务的虚拟机，然后选择“确定”。
 
-     ![“复制的项”VM 列表](.\media\vmware-azure-install-mobility-service\update-okpng.png)
+     ![“复制的项”VM 列表](./media/vmware-azure-install-mobility-service/update-okpng.png)
 
 将为所选的每个虚拟机启动“更新移动服务”作业。
 
@@ -81,7 +81,7 @@ Azure Site Recovery 每月发布一次，增加对现有功能或新功能的增
 
 如果尝试启用自动更新但操作失败，请参阅以下内容进行故障排除。
 
-**错误**：没有权限创建 Azure 运行方式帐户（服务主体）并向服务主体授予参与者角色。 
+**错误**：你没有权限创建 Azure 运行方式帐户（服务主体）并向服务主体授予参与者角色。 
 - 建议的操作：请确保已为登录的帐户分配“参与者”角色，然后重试操作。 有关分配正确权限的详细信息，请参阅[此](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal#required-permissions)文档。
  
 启用自动更新后，Site Recovery 服务可修复大部分问题，这需要单击“修复”按钮。

@@ -1,5 +1,5 @@
 ---
-title: 启用对 Azure DC/OS 容器应用的访问
+title: （已弃用）启用对 Azure DC/OS 容器应用的访问
 description: 如何启用对 Azure 容器服务中 DC/OS 容器的公共访问。
 services: container-service
 author: sauryadas
@@ -9,14 +9,16 @@ ms.topic: article
 ms.date: 08/26/2016
 ms.author: saudas
 ms.custom: mvc
-ms.openlocfilehash: aedc97335a0b9ad00cf653477b62bf530b556900
-ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
+ms.openlocfilehash: 3e4ba15fa1925ca40ad7760acbd14331fbdd1343
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2017
-ms.locfileid: "26332273"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52996601"
 ---
-# <a name="enable-public-access-to-an-azure-container-service-application"></a>启用对 Azure 容器服务应用程序的公共访问
+# <a name="deprecated-enable-public-access-to-an-azure-container-service-application"></a>（已弃用）启用对 Azure 容器服务应用程序的公共访问
+
+[!INCLUDE [ACS deprecation](../../../includes/container-service-deprecation.md)]
 
 ACS [公共代理池](container-service-mesos-marathon-ui.md#deploy-a-docker-formatted-container)中的任何 DC/OS 容器会自动公开到 Internet。 默认情况下，端口 **80**、**443**、**8080** 处于打开状态，且可访问任何在这些端口上侦听的（公用）容器。 本文介绍如何在 Azure 容器服务中打开更多端口供应用程序使用。
 
@@ -33,9 +35,9 @@ ACS [公共代理池](container-service-mesos-marathon-ui.md#deploy-a-docker-for
     ![Azure 容器服务负载均衡器探测](./media/container-service-enable-public-access/add-probe.png)
 5. 填写探测窗体，并单击“确定”。
    
-   | 字段 | 说明 |
+   | 字段 | Description |
    | --- | --- |
-   | Name |探测的描述性名称。 |
+   | 名称 |探测的描述性名称。 |
    | 端口 |要测试的容器端口。 |
    | 路径 |（处于 HTTP 模式时）探测的相对网站路径。 不支持 HTTPS。 |
    | 时间间隔 |探测尝试之间的时间量（秒）。 |
@@ -45,9 +47,9 @@ ACS [公共代理池](container-service-mesos-marathon-ui.md#deploy-a-docker-for
     ![Azure 容器服务负载均衡器规则](./media/container-service-enable-public-access/add-balancer-rule.png)
 7. 填写负载均衡器窗体，并单击“确定”。
    
-   | 字段 | 说明 |
+   | 字段 | Description |
    | --- | --- |
-   | Name |负载均衡器的描述性名称。 |
+   | 名称 |负载均衡器的描述性名称。 |
    | 端口 |公共传入端口。 |
    | 后端端口 |要将流量路由到其中的容器的内部公共端口。 |
    | 后端池 |此池中的容器将面向此负载均衡器。 |
@@ -68,10 +70,10 @@ ACS [公共代理池](container-service-mesos-marathon-ui.md#deploy-a-docker-for
     ![Azure 容器服务网络安全组规则](./media/container-service-enable-public-access/add-firewall-rule.png)
 5. 填写防火墙规则以允许公共端口，并单击“确定”。
    
-   | 字段 | 说明 |
+   | 字段 | Description |
    | --- | --- |
-   | Name |防火墙规则的描述性名称。 |
-   | Priority |规则的优先级等级。 编号越低，优先级越高。 |
+   | 名称 |防火墙规则的描述性名称。 |
+   | 优先度 |规则的优先级等级。 编号越低，优先级越高。 |
    | 源 |限制此规则允许或拒绝的传入 IP 地址范围。 使用“任何”，不指定限制。 |
    | 服务 |选择一组此安全规则适用的预定义服务。 否则，可使用“自定义”，创建自己的限制。 |
    | 协议 |基于 **TCP** 或 **UDP** 限制流量。 使用“任何”，不指定限制。 |

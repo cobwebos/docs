@@ -10,16 +10,16 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: hrasheed
-ms.openlocfilehash: 2f09bd7055b987a8647a24d4ebb6ea5a27888a53
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 56747179c69e6495e9a764f81e0827e29cb077e6
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51015581"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53017400"
 ---
 # <a name="use-hdinsight-tools-for-intellij-with-hortonworks-sandbox"></a>将用于 IntelliJ 的 HDInsight 工具与 Hortonworks 沙盒配合使用
 
-了解如何通过用于 IntelliJ 的 HDInsight 工具开发 Apache Scala 应用程序，并在计算机上运行的 [Hortonworks 沙盒](http://hortonworks.com/products/sandbox/)上测试应用程序。 
+了解如何通过用于 IntelliJ 的 HDInsight 工具开发 Apache Scala 应用程序，并在计算机上运行的 [Hortonworks 沙盒](https://hortonworks.com/products/sandbox/)上测试应用程序。 
 
 [IntelliJ IDEA](https://www.jetbrains.com/idea/) 是一种 Java 集成开发环境 (IDE)，用于开发计算机软件。 在 Hortonworks 沙盒上开发并测试应用程序以后，即可将应用程序移至 [Azure HDInsight](apache-hadoop-introduction.md)。
 
@@ -29,7 +29,7 @@ ms.locfileid: "51015581"
 
 - 基于 Hortonworks 沙盒的 Hortonworks 数据平台 (HDP) 2.4，运行在本地计算机中。 若要设置 HDP，请参阅[通过虚拟机上的 Hadoop 沙盒了解 Hadoop 生态系统](apache-hadoop-emulator-get-started.md)。 
     > [!NOTE]
-    > 用于 IntelliJ 的 HDInsight 工具只使用 HDP 2.4 测试过。 若要获取 HDP 2.4，请在 [Hortonworks 沙盒下载站点](http://hortonworks.com/downloads/#sandbox)中，展开 **Hortonworks 沙盒存档**。
+    > 用于 IntelliJ 的 HDInsight 工具只使用 HDP 2.4 测试过。 若要获取 HDP 2.4，请在 [Hortonworks 沙盒下载站点](https://hortonworks.com/downloads/#sandbox)中，展开 **Hortonworks 沙盒存档**。
 
 - [Java 开发人员工具包 (JDK) 1.8 或更高版本](https://aka.ms/azure-jdks)。 用于 IntelliJ 的 Azure 工具包需要 JDK。
 

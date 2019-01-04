@@ -1,5 +1,5 @@
 ---
-title: 数据科学项目的敏捷开发 - Azure 机器学习 | Microsoft Docs
+title: 数据科学项目的敏捷开发 - Team Data Science Process
 description: 介绍开发人员如何使用 Team Data Science Process 在项目团队中以系统化的协作型版本控制方式执行数据科学项目。
 author: marktab
 manager: cgronlun
@@ -9,13 +9,13 @@ ms.component: team-data-science-process
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: tdsp
-ms.custom: (previous author=deguhath, ms.author=deguhath)
-ms.openlocfilehash: 9fd8714e4c9fdc89036a3b05ba835b140363c0e3
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: ee8e3e3ef33a8b09b92d4dfc262fce26dd60abb3
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52443358"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53134397"
 ---
 # <a name="agile-development-of-data-science-projects"></a>数据科学项目的敏捷开发
 
@@ -40,18 +40,18 @@ ms.locfileid: "52443358"
 
 在 TDSP 冲刺规划框架中，有四种频繁使用的工作项类型：功能、用户情景、任务和 Bug。 每个项目都维护一个针对所有工作项的积压工作。 在项目下的 git 存储库级别没有积压工作。 以下是它们的定义：
 
-- 功能：一个功能对应一个项目协定。 将客户端的不同协定视为不同的功能。 同样，最好将客户端的项目的不同阶段视为不同的功能。 如果选择类似 ClientName-EngagementName 的架构为功能命名，则可以通过名称轻松识别出项目/协定的上下文。
-- 情景：情景是端到端完成功能（项目）所需的不同工作项。 情景示例包括：
+- **功能**：一个功能对应一个项目协定。 将客户端的不同协定视为不同的功能。 同样，最好将客户端的项目的不同阶段视为不同的功能。 如果选择类似 ClientName-EngagementName 的架构为功能命名，则可以通过名称轻松识别出项目/协定的上下文。
+- **情景**：情景是端到端完成功能（项目）所需的不同工作项。 情景示例包括：
     - 获取数据 
     - 浏览数据 
     - 生成功能
     - 构建模型
     - 实施模型 
     - 重新定型模型
-- 任务：任务是完成特定情景需要执行的可赋值代码、文档工作项或其他活动。 例如，获取数据情景中的任务可能是：
+- **任务**：任务是完成特定情景需要执行的可赋值代码、文档工作项或其他活动。 例如，获取数据情景中的任务可能是：
     -  获取 SQL Server 的凭据 
     -  将数据上传到 SQL 数据仓库。 
-- Bug：Bug 通常指需要对完成任务时完成的现有代码或文档执行的修复。 如果此 bug 是由缺少阶段或任务引起的，则它可分别升级为情景或任务。 
+- **Bug**：Bug 通常指需要对完成任务时完成的现有代码或文档执行的修复。 如果此 bug 是由缺少阶段或任务引起的，则它可分别升级为情景或任务。 
 
 > [!NOTE]
 > 数据科学中要使用的一些概念借用了软件代码管理 (SCM) 中的功能、情景、任务和 bug。 它们可能与其传统意义上的 SCM 定义略有不同。

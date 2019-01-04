@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.date: 03/02/2018
 ms.author: barbkess
-ms.openlocfilehash: b799a3947770b44752b599dbb2c47cbf1cfbcda2
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 7657ac2e2d5a169607c73b8934328ce41ecea78e
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49959054"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53141928"
 ---
 # <a name="move-applications-from-ad-fs-to-azure-ad"></a>将应用程序从 AD FS 移到 Azure AD 
 
@@ -82,7 +82,7 @@ ms.locfileid: "49959054"
 
 ### <a name="non-federated-apps"></a>非联合应用
 可以使用 Azure AD 应用程序代理和相关功能将非联合应用与 Azure AD 集成。 非联合应用包括：
-- 将 Windows 集成身份验证直接与 Active Directory 配合使用的应用。 可以通过 [Azure AD 应用程序代理](application-proxy-publish-azure-portal.md)将这些应用与 Azure AD 集成。
+- 将 Windows 集成身份验证直接与 Active Directory 配合使用的应用。 可以通过 [Azure AD 应用程序代理](application-proxy-add-on-premises-application.md)将这些应用与 Azure AD 集成。
 - 通过代理与单一登录提供程序集成并使用标头进行授权的应用。 可以对使用已安装代理进行登录并使用基于标头的授权的本地应用进行配置，以便将 Azure AD 应用程序代理与 [Ping Access for Azure AD](https://blogs.technet.microsoft.com/enterprisemobility/2017/06/15/ping-access-for-azure-ad-is-now-generally-available-ga/) 配合使用，实现基于 Azure AD 的登录。
 
 ## <a name="translating-on-premises-federated-apps-to-azure-ad"></a>将本地联合应用转换为 Azure AD 
@@ -124,7 +124,7 @@ AD FS 和 Azure AD 的工作原理类似，因此配置信任、登录和注销 
 |IdP </br>注销 </br>代码|从应用的角度来看，IdP 的注销 URL（当用户选择注销应用时将用户重定向到其中的位置）。|对于 AD FS，注销 URL 是与登录 URL 相同的 URL，或者是附加了“wa=wsignout1.0”的同一 URL。 例如：https&#58;//fs.contoso.com/adfs/ls/?wa=wsignout1.0|Azure AD 的相应值取决于应用是否支持 SAML 2.0 注销。</br></br>如果应用支持 SAML 注销，则该值遵循以下模式，其中，{tenant-id} 的值将替换为租户 ID。 该 ID 在 Azure 门户中的“Azure Active Directory” > “属性”下显示为“目录 ID”：https&#58;//login.microsoftonline.com/{tenant-id}/saml2</br></br>如果应用不支持 SAML 注销：https&#58;//login.microsoftonline.com/common/wsfederation?wa=wsignout1.0|
 |令牌 </br>签名 </br>证书|一种证书，IdP 使用其私钥来签署颁发的令牌。 它可以验证令牌是否来自已配置应用所信任的 IdP。|AD FS 令牌签名证书位于 AD FS 管理中的“证书”下。|在 Azure AD 中，令牌签名证书位于 Azure 门户中，具体说来是在应用程序的“单一登录”属性中的“SAML 签名证书”标头下， 可以在其中下载要上传到应用的证书。</br></br> 如果应用程序有多个证书，则可在联合元数据 XML 文件中找到所有证书。|
 |标识符/</br>“颁发者”|从应用的角度来看，IdP 的标识符（有时称为“颁发者 ID”）。</br></br>在 SAML 令牌中，此值显示为 **Issuer** 元素。|AD FS 的标识符通常是 AD FS 管理中的联合身份验证服务标识符，位于“服务” > “编辑联合身份验证服务属性”下。 例如：http&#58;//fs.contoso.com/adfs/services/trust|Azure AD 的相应值遵循以下模式，其中的 {tenant-id} 值将替换为租户 ID。 该 ID 在 Azure 门户中的“Azure Active Directory” > “属性”下显示为“目录 ID”：https&#58;//sts.windows.net/{tenant-id}/|
-|IdP </br>联合 </br>metadata|IdP 的公开提供的联合元数据的位置。 （某些应用使用联合元数据来分别代替管理员配置 URL、标识符、令牌签名证书。）|AD FS 联合元数据 URL 位于 AD FS 管理中的“服务” > “终结点” > “元数据” > “类型: 联合元数据”下。 例如：https&#58;//fs.contoso.com/FederationMetadata/2007-06/FederationMetadata.xml|Azure AD 的相应值遵循 https&#58;//login.microsoftonline.com/{TenantDomainName}/FederationMetadata/2007-06/FederationMetadata.xml 模式。 {TenantDomainName} 的值将替换为“contoso.onmicrosoft.com”格式的租户名称。 </br></br>有关详细信息，请参阅[联合元数据](../develop/azure-ad-federation-metadata.md)。
+|IdP </br>联合 </br>metadata|IdP 的公开提供的联合元数据的位置。 （某些应用使用联合元数据来分别代替管理员配置 URL、标识符、令牌签名证书。）|AD FS 联合元数据 URL 位于 AD FS 管理中的“服务” > “终结点” > “元数据” > “类型:联合元数据”下。 例如：https&#58;//fs.contoso.com/FederationMetadata/2007-06/FederationMetadata.xml|Azure AD 的相应值遵循 https&#58;//login.microsoftonline.com/{TenantDomainName}/FederationMetadata/2007-06/FederationMetadata.xml 模式。 {TenantDomainName} 的值将替换为“contoso.onmicrosoft.com”格式的租户名称。 </br></br>有关详细信息，请参阅[联合元数据](../develop/azure-ad-federation-metadata.md)。
 
 ## <a name="moving-saas-apps"></a>移动 SaaS 应用
 目前，将 SaaS 应用从 AD FS 或其他标识提供者移到 Azure AD 需要手动进行。 如需特定于应用的指南，请查看[介绍如何集成市场中的 SaaS 应用的教程的列表](../saas-apps/tutorial-list.md)。
@@ -203,7 +203,7 @@ SAML 2.0 应用程序可以通过市场中的 Azure AD 应用程序库与 Azure 
 
 ![“添加分配”窗格](media/migrate-adfs-apps-to-azure/migrate7.png)
 
-用户应该在登录时在[访问面板](../user-help/active-directory-saas-access-panel-introduction.md)中看到 SaaS 应用，这样才能验证访问权限。 可以在 http://myapps.microsoft.com 找到访问面板。 在此示例中，已成功向用户分配 Salesforce 和 ServiceNow 的访问权限。
+用户应该在登录时在[访问面板](../user-help/active-directory-saas-access-panel-introduction.md)中看到 SaaS 应用，这样才能验证访问权限。 可以在 https://myapps.microsoft.com 找到访问面板。 在此示例中，已成功向用户分配 Salesforce 和 ServiceNow 的访问权限。
 
 ![包含 Salesforce 和 ServiceNow 应用的示例访问面板](media/migrate-adfs-apps-to-azure/migrate8.png)
 
@@ -214,7 +214,7 @@ SAML 2.0 应用程序可以通过市场中的 Azure AD 应用程序库与 Azure 
     
    答：决定使用支持多个 IdP 的 SaaS 应用更改登录体验之前，可以先输入有关新 IdP（在我们的示例中为 Azure AD）的所有信息， 然后再在完成配置之后切换应用的身份验证配置，使之指向 Azure AD。
 
-   **问：为什么 SaaS 应用能否支持多个 IdP 很重要？**
+   **问：：为什么 SaaS 应用能否支持多个 IdP 很重要？**
 
    答：如果不支持多个 IdP，则管理员必须留出一个短的时段（表现为服务性或维护性中断），在此时段内将 Azure AD 配置为应用的新 IdP。 在此中断期间，系统会向用户发出无法登录帐户的通知。
 

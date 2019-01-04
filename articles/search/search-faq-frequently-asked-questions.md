@@ -1,6 +1,6 @@
 ---
-title: 有关 Azure 搜索的常见问题解答 (FAQ) | Microsoft Docs
-description: 获取有关 Microsoft Azure 搜索服务的常见问题的答案
+title: 常见问题解答 (FAQ) - Azure 搜索
+description: 获取有关 Microsoft Azure 搜索服务（Microsoft Azure 上的云托管搜索服务）的常见问题的解答。
 author: HeidiSteen
 manager: cgronlun
 services: search
@@ -8,12 +8,13 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 08/03/2017
 ms.author: heidist
-ms.openlocfilehash: 1491fdb0f208100619e569f9a74d5e697a0065a6
-ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
+ms.custom: seodec2018
+ms.openlocfilehash: 9ea4e4ec78e5613758bd9e5ff7a4fbd3273208c6
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "43841671"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53312810"
 ---
 # <a name="azure-search---frequently-asked-questions-faq"></a>Azure 搜索 - 常见问题解答 (FAQ)
 

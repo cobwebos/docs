@@ -2,25 +2,25 @@
 title: Azure 备份服务器可保护系统状态并还原为裸机
 description: 使用 Azure 备份服务器可备份系统状态并提供裸机恢复 (BMR) 保护。
 services: backup
-author: markgalioto
+author: rayne-wiselman
 manager: carmonm
 keywords: ''
 ms.service: backup
 ms.topic: conceptual
 ms.date: 05/15/2017
-ms.author: markgal
-ms.openlocfilehash: 7cb87847d6a1e191fb20dfa9cdf263066704eb6d
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.author: raynew
+ms.openlocfilehash: 35ab150670cdc27efcedca233928e0c2184aeca6
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51238805"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52880091"
 ---
 # <a name="back-up-system-state-and-restore-to-bare-metal-with-azure-backup-server"></a>使用 Azure 备份服务器备份系统状态并还原为裸机
 
 Azure 备份服务器可备份系统状态并提供裸机恢复 (BMR) 保护。
 
-*   **系统状态备份**：备份操作系统文件，以便可以在计算机启动，但是系统文件和注册表丢失时进行恢复。 系统状态备份包括：
+*   **系统状态备份**：备份操作系统文件，以便可以在计算机启动时进行恢复，但是系统文件和注册表会丢失。 系统状态备份包括：
     * 域成员：启动文件、COM+ 类注册数据库、注册表
     * 域控制器：Windows Server Active Directory (NTDS)、启动文件、COM+ 类注册数据库、注册表、系统卷 (SYSVOL)
     * 运行群集服务的计算机：群集服务器元数据

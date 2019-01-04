@@ -40,35 +40,33 @@ items:
   items:
   - name: 构建应用
     items:
-    - name: 1. 确定用户意图
+    - name: 确定用户意图
       href: luis-quickstart-intents-only.md
-    - name: 2. 识别常见意向
+    - name: 使用预生成的模型标识常见用户数据
       href: luis-tutorial-prebuilt-intents-entities.md
-    - name: 3. 提取格式正确的数据
-      href: luis-quickstart-intents-regex-entity.md
-    - name: 4. 提取确切的文本匹配项
-      href: luis-quickstart-intent-and-list-entity.md
-    - name: 5. 提取与上下文相关的数据
-      href: luis-quickstart-intent-and-hier-entity.md
-    - name: 6. 对相关的数据进行分组和提取
-      href: luis-tutorial-composite-entity.md
-    - name: 7. 提取名称
-      href: luis-quickstart-primary-and-secondary-data.md
-    - name: 8. 提取关键短语
-      href: luis-quickstart-intent-and-key-phrase.md
-    - name: 9. 提取情绪
+    - name: 从用户话语获取情绪
       href: luis-quickstart-intent-and-sentiment-analysis.md
+    - name: 通过正则表达式获取具有严格格式的数据
+      href: luis-quickstart-intents-regex-entity.md
+    - name: 通过列表获取确切的文本匹配项
+      href: luis-quickstart-intent-and-list-entity.md
+    - name: 通过分层实体获取与上下文相关的数据
+      href: luis-quickstart-intent-and-hier-entity.md
+    - name: 通过复合实体将相关的数据分组并进行提取
+      href: luis-tutorial-composite-entity.md
+    - name: 通过简单实体获取名称
+      href: luis-quickstart-primary-and-secondary-data.md
   - name: 改进应用
     items:
-    - name: 1. 修复不确定的预测
+    - name: 修复不确定的预测
       href: luis-tutorial-review-endpoint-utterances.md
-    - name: 2. 成批测试数据集
+    - name: 成批测试数据集
       href: luis-tutorial-batch-testing.md
-    - name: 3. 添加常见话语格式
+    - name: 添加常见话语格式
       href: luis-tutorial-pattern.md
-    - name: 4. 提取与上下文相关的模式
+    - name: 提取与上下文相关的模式
       href: luis-tutorial-pattern-roles.md
-    - name: 5. 提取自由格式数据
+    - name: 提取自由格式数据
       href: luis-tutorial-pattern-any.md
   - name: 使用机器人
     items:
@@ -401,9 +399,9 @@ items:
     href: https://blog.botframework.com/category/luis/
   - name: 知识库
     href: https://cognitive.uservoice.com/knowledgebase/topics/127872-luis-language-understanding-intelligent-service
-ms.openlocfilehash: e43547c994be9beac717b2644817d9749b298b03
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: eee038c67b910c7bf54e6aa361806c1ef04675ae
+ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53723869"
+ms.lasthandoff: 12/22/2018
+ms.locfileid: "53753227"

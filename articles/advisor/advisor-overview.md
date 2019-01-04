@@ -3,22 +3,21 @@ title: Azure 顾问简介 | Microsoft Docs
 description: 使用 Azure 顾问优化 Azure 部署。
 services: advisor
 documentationcenter: NA
-author: manbeenkohli
+author: kasparks
 manager: ''
 ms.assetid: ''
 ms.service: advisor
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/16/2016
-ms.author: makohli
-ms.openlocfilehash: e1d7edef304dc91829066f19b6974f0bcf0be0a5
-ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
+ms.author: kasparks
+ms.openlocfilehash: 747ce8dc4a4e4c8ac1e26e5b051a431176096d71
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "42145475"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53015970"
 ---
 # <a name="introduction-to-azure-advisor"></a>Azure 顾问简介
 
@@ -36,10 +35,10 @@ ms.locfileid: "42145475"
 
 顾问仪表板显示针对所有订阅的个性化建议。  可为特定的订阅和资源类型应用筛选器，以显示相关建议。  建议分为四类： 
 
-* **高可用性**：确保并提高关键业务应用程序的连续性。 有关详细信息，请参阅[顾问高可用性建议](advisor-high-availability-recommendations.md)。
+* **高可用性**：确保并提高业务关键应用程序的连续性。 有关详细信息，请参阅[顾问高可用性建议](advisor-high-availability-recommendations.md)。
 * **安全性**：检测可能引起安全问题的威胁和漏洞。 有关详细信息，请参阅[顾问安全性建议](advisor-security-recommendations.md)。
 * **性能**：提高应用程序的速度。 有关详细信息，请参阅[顾问性能建议](advisor-performance-recommendations.md)。
-* 成本：优化并降低 Azure 总支出。 有关详细信息，请参阅[顾问成本建议](advisor-cost-recommendations.md)。
+* **成本**：优化并降低 Azure 总支出。 有关详细信息，请参阅[顾问成本建议](advisor-cost-recommendations.md)。
 
   ![顾问建议类型](./media/advisor-overview/advisor-dashboard.png)
 
@@ -64,7 +63,7 @@ ms.locfileid: "42145475"
 
 ### <a name="what-resources-does-advisor-provide-recommendations-for"></a>顾问为哪些资源提供建议？
 
-顾问可提供有关虚拟机、可用性集、应用程序网关、应用服务、SQL 服务器和 Redis Cache 的建议。
+顾问可提供有关虚拟机、可用性集、应用程序网关、应用服务、SQL 服务器和用于 Redis 的 Azure 缓存的建议。
 
 ### <a name="can-i-postpone-or-dismiss-a-recommendation"></a>是否可以推迟或消除建议？
 

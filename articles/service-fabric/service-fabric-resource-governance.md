@@ -14,29 +14,30 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 8/9/2017
 ms.author: twhitney, subramar
-ms.openlocfilehash: f2898de030a70d578eb45e81c9ccbef90bce96c8
-ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.openlocfilehash: 66f651f921773f638b4493be70319d5d80b122db
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51300466"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52956834"
 ---
-# <a name="resource-governance"></a>资源调控 
+# <a name="resource-governance"></a>资源调控
 
 在同一节点或群集上运行多个服务时，其中一个服务可能会占用更多资源，导致相应流程中的其他服务缺少资源。 这种问题称为“邻近干扰”问题。 借助 Azure Service Fabric，开发者可以为每个服务指定资源保留和限制，从而保证并限制资源使用。
 
 > 继续阅读本文之前，建议先熟悉 [Service Fabric 应用程序模型](service-fabric-application-model.md)和 [Service Fabric 托管模型](service-fabric-hosting-model.md)。
 >
 
-## <a name="resource-governance-metrics"></a>资源调控指标 
+## <a name="resource-governance-metrics"></a>资源调控指标
 
 根据[服务包](service-fabric-application-model.md)，Service Fabric 支持资源治理。 可以在代码包之间进一步划分分配到服务包的资源。 指定的资源限制也意味着资源保留。 Service Fabric 支持使用两个内置[指标](service-fabric-cluster-resource-manager-metrics.md)，为每个服务包指定 CPU 和内存：
 
-* CPU（指标名称 `servicefabric:/_CpuCores`）：主机计算机上可用的逻辑内核。 所有节点上的全部内核都进行了相同的加权。
+* *CPU*（指标名称 `servicefabric:/_CpuCores`）：主机计算机上可用的逻辑内核。 所有节点上的全部内核都进行了相同的加权。
 
-* 内存（指标名称 `servicefabric:/_MemoryInMB`）：内存以 MB 为单位，映射到计算机上可用的物理内存。
+* *内存*（指标名称 `servicefabric:/_MemoryInMB`）：内存以 MB 为单位，映射到计算机上可用的物理内存。
 
 对于这两个指标，[群集资源管理器](service-fabric-cluster-resource-manager-cluster-description.md)跟踪总群集容量、群集中每个节点上的负载以及群集中剩余的资源。 这两个指标等同于其他任何用户指标或自定义指标。 现有全部功能都可以与它们结合使用：
+
 * 群集可根据这两个指标进行[均衡](service-fabric-cluster-resource-manager-balancing.md)（默认行为）。
 * 群集可根据这两个指标进行[碎片整理](service-fabric-cluster-resource-manager-defragmentation-metrics.md)。
 * [描述群集](service-fabric-cluster-resource-manager-cluster-description.md)时，可为这两个指标设置缓冲容量。
@@ -55,17 +56,17 @@ Service Fabric 运行时当前不提供资源保留。 当进程或容器打开�
 
 不过，在两种情况下，其他进程可能会争用 CPU。 在这种情况下，示例中的进程和容器可能会遇到邻近干扰问题：
 
-* 混用治理和非治理服务和容器：如果用户创建服务时没有指定任何资源治理，运行时将它视为不占用任何资源，能够将它放置在示例中的节点上。 在这种情况下，这一新进程实际上会占用部分 CPU，占用的是已在节点上运行的服务的份额。 此问题有两种解决方案。 在同一群集中不混用治理和非治理服务，或使用[放置约束](service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies.md)，阻止这两种类型的服务最终位于同一组节点上。
+* *混用治理和非治理服务和容器*：如果用户创建服务时没有指定任何资源治理，运行时将它视为不占用任何资源，能够将它放置在示例中的节点上。 在这种情况下，这一新进程实际上会占用部分 CPU，占用的是已在节点上运行的服务的份额。 此问题有两种解决方案。 在同一群集中不混用治理和非治理服务，或使用[放置约束](service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies.md)，阻止这两种类型的服务最终位于同一组节点上。
 
-* 其他进程在 Service Fabric 外的节点上启动（例如，OS 服务）：在这种情况下，Service Fabric 外的进程也会与现有服务争用 CPU。 此问题的解决方案是，考虑 OS 开销以正确设置节点容量，如下一部分中所示。
+* *其他进程在 Service Fabric 外的节点上启动（例如，OS 服务）*：在这种情况下，Service Fabric 外的进程也会与现有服务争用 CPU。 此问题的解决方案是，考虑 OS 开销以正确设置节点容量，如下一部分中所示。
 
 ## <a name="cluster-setup-for-enabling-resource-governance"></a>启用资源治理所需的群集设置
 
-当节点启动并加入群集时，Service Fabric 会先检测可用内存量和可用内核数，再设置这两个资源的节点容量。 
+当节点启动并加入群集时，Service Fabric 会先检测可用内存量和可用内核数，再设置这两个资源的节点容量。
 
-为了给操作系统以及可能在节点上运行的其他进程留出缓冲空间，Service Fabric 只使用节点上 80% 的可用资源。 此百分比可进行配置，并且可在群集清单中进行更改。 
+为了给操作系统以及可能在节点上运行的其他进程留出缓冲空间，Service Fabric 只使用节点上 80% 的可用资源。 此百分比可进行配置，并且可在群集清单中进行更改。
 
-以下示例介绍如何指示 Service Fabric 使用 50% 的可用 CPU 和 70% 的可用内存： 
+以下示例介绍如何指示 Service Fabric 使用 50% 的可用 CPU 和 70% 的可用内存：
 
 ```xml
 <Section Name="PlacementAndLoadBalancing">
@@ -75,7 +76,7 @@ Service Fabric 运行时当前不提供资源保留。 当进程或容器打开�
 </Section>
 ```
 
-如果需要完全手动设置节点容量，可以使用常规机制来描述群集中的节点。 下面的示例展示了如何设置有四个内核和 2GB 内存的节点： 
+如果需要完全手动设置节点容量，可以使用常规机制来描述群集中的节点。 下面的示例展示了如何设置有四个内核和 2GB 内存的节点：
 
 ```xml
     <NodeType Name="MyNodeType">
@@ -87,6 +88,7 @@ Service Fabric 运行时当前不提供资源保留。 当进程或容器打开�
 ```
 
 如果已启用自动检测可用资源，并在群集清单中手动定义了节点容量，Service Fabric 会检查节点中的资源是否足以支持用户定义的容量：
+
 * 如果清单中定义的节点容量小于或等于节点上的可用资源，Service Fabric 使用清单中指定的容量。
 
 * 如果清单中定义的节点容量大于可用资源，Service Fabric 使用可用资源作为节点容量。
@@ -99,17 +101,16 @@ Service Fabric 运行时当前不提供资源保留。 当进程或容器打开�
 </Section>
 ```
 
-为了获得最佳性能，还应在群集清单中打开以下设置： 
+为了获得最佳性能，还应在群集清单中打开以下设置：
 
 ```xml
 <Section Name="PlacementAndLoadBalancing">
-    <Parameter Name="PreventTransientOvercommit" Value="true" /> 
+    <Parameter Name="PreventTransientOvercommit" Value="true" />
     <Parameter Name="AllowConstraintCheckFixesDuringApplicationUpgrade" Value="true" />
 </Section>
 ```
 
-
-## <a name="specify-resource-governance"></a>指定资源治理 
+## <a name="specify-resource-governance"></a>指定资源治理
 
 应用程序清单（ServiceManifestImport 部分）中指定了资源调控限制，如以下示例所示：
 
@@ -131,8 +132,8 @@ Service Fabric 运行时当前不提供资源保留。 当进程或容器打开�
     </Policies>
   </ServiceManifestImport>
 ```
-  
-在此示例中，服务包 ServicePackageA 在驻留的节点上拥有一个内核的资源。 此服务包有两个代码包（CodeA1 和 CodeA2），并且都指定了 `CpuShares` 参数。 CpuShares 512:256 的比例将核心划分到两个代码包中。 
+
+在此示例中，服务包 ServicePackageA 在驻留的节点上拥有一个内核的资源。 此服务包有两个代码包（CodeA1 和 CodeA2），并且都指定了 `CpuShares` 参数。 CpuShares 512:256 的比例将核心划分到两个代码包中。
 
 因此，在此示例中，CodeA1 分得三分之二个内核，CodeA2 分得三分之一个内核（和相同的软保证保留）。 如果没有为代码包指定 CpuShares，Service Fabric 会在这两个代码包之间平分内核。
 
@@ -164,7 +165,7 @@ Service Fabric 运行时当前不提供资源保留。 当进程或容器打开�
   </ServiceManifestImport>
 ```
 
-在此示例中，会为生产环境设置默认参数，其中每个服务包具有 4 核和 2 GB 内存。 可使用应用程序参数文件更改默认值。 在此示例中，一个参数文件可以用来本地测试应用程序，其中它获得的资源将少于生产中所得： 
+在此示例中，会为生产环境设置默认参数，其中每个服务包具有 4 核和 2 GB 内存。 可使用应用程序参数文件更改默认值。 在此示例中，一个参数文件可以用来本地测试应用程序，其中它获得的资源将少于生产中所得：
 
 ```xml
 <!-- ApplicationParameters\Local.xml -->
@@ -180,20 +181,21 @@ Service Fabric 运行时当前不提供资源保留。 当进程或容器打开�
 </Application>
 ```
 
-> [!IMPORTANT]  从 Service Fabric 6.1 版开始，可使用应用程序参数指定资源调控。<br> 
+> [!IMPORTANT]
+> 从 Service Fabric 6.1 版开始，可使用应用程序参数指定资源调控。<br>
 >
-> 使用应用程序参数指定资源调控时，Service Fabric 无法降级到 6.1 之前的版本。 
-
+> 使用应用程序参数指定资源调控时，Service Fabric 无法降级到 6.1 之前的版本。
 
 ## <a name="other-resources-for-containers"></a>容器的其他资源
-除了 CPU 和内存之外，还可以为容器指定其他资源限制。 这些限制是在代码包一级指定，并在容器启动时应用。 这些资源与 CPU 和内存不同，群集资源管理器不会注意到它们，也不会针对它们进行任何容量检查或负载均衡。 
 
-* MemorySwapInMB：容器可使用的交换内存量。
-* MemoryReservationInMB：内存治理软限制，仅当在节点上检测到内存争用时，才强制执行此限制。
-* CpuPercent：容器可使用的 CPU 百分比。 如果为服务包指定了 CPU 限制，将有效忽略此参数。
-* MaximumIOps：容器可使用（读取和写入）的最大 IOPS。
-* MaximumIOBytesps：容器可使用（读取和写入）的最大 IO（字节/秒）。
-* BlockIOWeight：相对于其他容器的块 IO 权重。
+除了 CPU 和内存之外，还可以为容器指定其他资源限制。 这些限制是在代码包一级指定，并在容器启动时应用。 这些资源与 CPU 和内存不同，群集资源管理器不会注意到它们，也不会针对它们进行任何容量检查或负载均衡。
+
+* *MemorySwapInMB*：容器可使用的交换内存量。
+* *MemoryReservationInMB*：内存治理软限制，仅当在节点上检测到内存争用时，才强制执行此限制。
+* *CpuPercent*：容器可使用的 CPU 百分比。 如果为服务包指定了 CPU 限制，将有效忽略此参数。
+* *MaximumIOps*：容器可使用（读取和写入）的最大 IOPS。
+* *MaximumIOBytesps*：容器可使用（读取和写入）的最大 IO（字节/秒）。
+* *BlockIOWeight*：相对于其他容器的块 IO 权重。
 
 这些资源可与 CPU 和内存组合。 以下示例显示如何为容器指定其他资源：
 
@@ -208,5 +210,6 @@ Service Fabric 运行时当前不提供资源保留。 当进程或容器打开�
 ```
 
 ## <a name="next-steps"></a>后续步骤
+
 * 若要详细了解群集资源管理器，请阅读 [Service Fabric 群集资源管理器简介](service-fabric-cluster-resource-manager-introduction.md)。
 * 若要详细了解应用程序模型、服务包、代码包以及如何将副本映射到它们，请阅读 [Service Fabric 中的应用程序建模](service-fabric-application-model.md)。

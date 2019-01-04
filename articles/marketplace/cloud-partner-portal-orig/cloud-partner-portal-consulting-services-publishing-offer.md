@@ -14,19 +14,19 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 11/01/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 43f1e71486cedbeccb2c02388147a68756581e50
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: 7ea4a58f072071f60cf87d1e8817ae19658be5fb
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51037750"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53310413"
 ---
 # <a name="azure-and-dynamics-365-consulting-service-offer"></a>Azure 和 Dynamics 365 咨询服务套餐
 
 <table> <tr> <td>本部分介绍如何将咨询服务发布到 Microsoft <a href="https://azuremarketplace.microsoft.com">Azure 市场</a>或 <a href="https://appsource.microsoft.com">AppSource 市场</a>。 基于 Microsoft <a href="https://dynamics.microsoft.com">Dynamics 365</a>、<a href="https://products.office.com">Office 365</a>、<a href="https://powerbi.microsoft.com">Power BI</a> 和 <a href="https://powerapps.microsoft.com">PowerApps</a> 的解决方案有资格在 AppSource 中列出。 基于其他 Microsoft <a href="https://azure.microsoft.com/services">Azure 服务</a>的其他套餐有资格在 Azure 市场中列出。 </td> <td><img src="./media/consulting-services-publishing-offer/consulting-icon1.png"  alt="Microsoft consulting icon" /></td> </tr> </table>
 
 
-# <a name="publishing-benefits"></a>发布的好处
+## <a name="publishing-benefits"></a>发布的好处
 
 发布到上述任一 Microsoft 市场可以获得巨大的好处：
 
@@ -36,13 +36,11 @@ ms.locfileid: "51037750"
 - 通过 Microsoft 现场和远程销售团队推广你的服务。
 
 
-<a name="define-your-consulting-services-offer"></a>定义咨询服务套餐
--------------------------------------
+## <a name="define-your-consulting-services-offer"></a>定义咨询服务套餐
 
 定义打包的咨询服务套餐。 侧重于提供给单个客户的固定范围、固定持续时间、估算价格、固定价格（或免费），以及主要面向售前服务的套餐。 选择热门的且能有效促成新业务的可重复打包互动功能。
 
-<a name="publish-a-consulting-service-offer"></a>发布咨询服务套餐
-----------------------------------
+## <a name="publish-a-consulting-service-offer"></a>发布咨询服务套餐
 
 以下部分介绍发布咨询服务套餐的过程
 
@@ -80,7 +78,7 @@ ms.locfileid: "51037750"
 
 此字符串是显示在 AppSource 或 Azure 市场中的套餐名称。
 
-**重要说明：** 此处只能输入实际服务的名称。 不要包含服务的持续时间和类型。
+**重要提示：** 此处只能输入实际服务的名称。 不要包含服务的持续时间和类型。
 
 以下 Edgewater Fullscope 示例演示了如何组合套餐名称。 套餐名称显示为：
 
@@ -97,15 +95,15 @@ ms.locfileid: "51037750"
 
 -   专业服务基础知识：1 小时简报
 -   云迁移平台：1 小时简报
--   PowerApps 和 Microsoft Flow：1 天研讨会
--   Azure 机器学习服务：3 周概念证明
+-   PowerApps 和 Microsoft Flow：1 日研讨会
+-   Azure 机器学习服务：3 周 PoC
 -   实体与虚拟零售解决方案：1 小时简报
 -   自带数据：1 周研讨会
--   云分析：3 天研讨会
--   Power BI 培训：3 天研讨会
--   销售管理解决方案：1 周实施
--   CRM 快速入门：1 天研讨会
--   Dynamics 365 for Sales：2 天评估
+-   云分析：3 日研讨会
+-   Power BI 培训：3 日研讨会
+-   销售管理解决方案：1 周实现
+-   CRM 快速入门：1 日研讨会
+-   Dynamics 365 销售版：2 日评估
 
 完成“套餐设置”选项卡中的操作后，可以保存提交内容。 现在，套餐名称会显示在编辑器的上方，并且可以在“所有套餐”中找到它。
 
@@ -131,28 +129,28 @@ ms.locfileid: "51037750"
 
 *示例 1*
 
--   **套餐名称：** 云分析：3 天研讨会
+-   **套餐名称：** 云分析：3 日研讨会
 -   **套餐摘要：** Microsoft Azure 和 Power BI、当前环境评估与微型 POC 的概述。
 
 *示例 2*
 
--   **套餐名称：** 工业 Azure IoT：30 天概念证明
--   **套餐摘要：** 创建工业联网试点产品，以便将现场设备安全连接到提供仪表板、报告和通知的 Azure IoT 中心解决方案。
+-   **套餐名称：** 行业 Azure IoT：30 日概念证明
+-   **套餐摘要：** 创建行业联网试点产品，以便将现场设备安全连接到提供仪表板、报告和通知的 Azure IoT 中心解决方案。
 
 *示例 3*
 
 -   **套餐名称：** 专业服务：1 小时简报
--   **套餐摘要：** 可为专业服务提供增强的项目、计费和资源管理的预配置扩展型 Dynamics 365 for Operations 解决方案的概述与演示。
+-   **套餐摘要：** 预配置扩展型 Dynamics 365 运营版解决方案的概述和演示，此版本可为专业服务提供增强的项目、计费和资源管理。
 
 *示例 4*
 
--   **套餐名称：** 你心目中的 Power BI：4 小时研讨会
--   **套餐摘要：** 正常运行第一个仪表板并学习最佳做法。 现场举行，参与者不超过 12 名学生。
+-   **套餐名称：** Your World 中的 power BI：4 小时研讨会
+-   **套餐摘要：** 开始运行第一个仪表板并了解最佳做法。 现场举行，参与者不超过 12 名学生。
 
 *示例 5*
 
--   **套餐名称：** 动态和项目：3 天评估
--   **套餐摘要：** 为专业服务公司和项目驱动型企业设计的 ERP 解决方案的要求收集与评估。
+-   **套餐名称：** Dynamics 和项目：3 日评估
+-   **套餐摘要：** 针对 ERP 解决方案的需求收集与评估，该解决方案专为专业服务公司和项目驱动型而企业设计。
 
 ##### <a name="offer-description"></a>套餐说明
 
@@ -168,7 +166,7 @@ ms.locfileid: "51037750"
 
 以下示例演示了一段适当编写的套餐说明及其相关名称和摘要：
 
-**套餐名称：** 云分析：3 天研讨会
+**套餐名称：** 云分析：3 日研讨会
 
 **套餐摘要：** Microsoft Azure 和 Power BI、当前环境评估与微型 POC 的概述。
 
@@ -237,7 +235,7 @@ Microsoft 专门注重提供给单个客户的固定范围、固定持续时间�
 包括以下五种类型的套餐：
 
 -   **评估：** 评估客户的环境，以确定解决方案的适用性，并提供成本和时间估算。
--   **简介：** 使用框架、演示和客户示例介绍解决方案或咨询服务，以吸引客户的兴趣。 简报必须在现场开展。
+-   **简报：** 使用框架、演示和客户示例介绍解决方案或咨询服务，以吸引客户的兴趣。 简报必须在现场开展。
 -   **实施：** 进行完整安装，以实施完全正常运行的解决方案。 对于此试点套餐，Microsoft 建议限制为可在一周或更短时间内实施的解决方案。
 -   **概念证明：** 进行有限范围的实施，以确定解决方案是否满足客户的要求。
 -   **研讨会：** 在客户现场开展的互动活动，可包括培训会议、简报、评估，或根据客户数据或环境制作的演示。

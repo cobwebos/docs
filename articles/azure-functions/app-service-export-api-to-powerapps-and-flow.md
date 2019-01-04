@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/15/2017
 ms.author: glenga
 ms.reviewer: sunayv
-ms.openlocfilehash: ceb0b1ce0d04c15a5b949519caad65d2c33b40ed
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: c9ff4332a10247787e3b11c5508d0d94a1f1c8ba
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44092439"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53410459"
 ---
 # <a name="exporting-an-azure-hosted-api-to-powerapps-and-microsoft-flow"></a>将 Azure 托管的 API 导出到 PowerApps 和 Microsoft Flow
 
@@ -25,7 +25,7 @@ ms.locfileid: "44092439"
 同样，希望在组织内较大范围公开其 API 的开发人员可向应用和流生成器提供其 API。 本主题说明如何导出使用 [Azure Functions](../azure-functions/functions-overview.md) 或 [Azure App Service](../app-service/app-service-web-overview.md) 生成的 API。 导出的 API 将成为自定义连接器，它在 PowerApps 和 Microsoft Flow 中的用法与内置连接器类似。
 
 ## <a name="create-and-export-an-api-definition"></a>创建并导出 API 定义
-导出 API 前，必须使用 OpenAPI 定义（以前称为 [Swagger](http://swagger.io/) 文件）描述 API。 此定义中包含的信息涉及 API 中哪些操作可用，以及 API 的请求和响应数据应采用怎样的结构。 PowerApps 和 Microsoft Flow 可为任意 OpenAPI 2.0 定义创建自定义连接器。 Azure Functions 和 Azure App Service 具有内置支持，用于创建、托管和管理 OpenAPI 定义。 有关详细信息，请参阅[在 Azure 应用服务中使用 CORS 托管 RESTful API](../app-service/app-service-web-tutorial-rest-api.md)。
+导出 API 前，必须使用 OpenAPI 定义（以前称为 [Swagger](https://swagger.io/) 文件）描述 API。 此定义中包含的信息涉及 API 中哪些操作可用，以及 API 的请求和响应数据应采用怎样的结构。 PowerApps 和 Microsoft Flow 可为任意 OpenAPI 2.0 定义创建自定义连接器。 Azure Functions 和 Azure App Service 具有内置支持，用于创建、托管和管理 OpenAPI 定义。 有关详细信息，请参阅[在 Azure 应用服务中使用 CORS 托管 RESTful API](../app-service/app-service-web-tutorial-rest-api.md)。
 
 > [!NOTE]
 > 也可以在 PowerApps 和 Microsoft Flow UI 中生成自定义连接器，而不使用 OpenAPI 定义。 有关详细信息，请参阅[注册并使用自定义连接器 (PowerApps)](https://powerapps.microsoft.com/tutorials/register-custom-api/) 以及[注册并使用自定义连接器 (Microsoft Flow)](https://flow.microsoft.com/documentation/register-custom-api/)。
@@ -154,7 +154,7 @@ PowerApps 和 Microsoft Flow 支持一系列标识提供程序，它们都可为
 ### <a name="azure-active-directory-azure-ad"></a>Azure Active Directory (Azure AD)
 使用 Azure AD 时，需要两次注册 Azure AD 应用程序：一次注册 API 本身，一次注册自定义连接器：
 
-- 若要配置 API 注册，请使用[应用服务身份验证/授权](../app-service/app-service-mobile-how-to-configure-active-directory-authentication.md)功能。
+- 若要配置 API 注册，请使用[应用服务身份验证/授权](../app-service/configure-authentication-provider-aad.md)功能。
 
 - 若要配置连接器注册，请执行[添加 Azure AD 应用程序](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications#adding-an-application)中的步骤。 该注册必须对你的 API 拥有委派访问权限，并且其答复 URL 应为 `https://msmanaged-na.consent.azure-apim.net/redirect`。 
 

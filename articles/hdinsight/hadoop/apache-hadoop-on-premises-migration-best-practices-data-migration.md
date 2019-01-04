@@ -9,23 +9,23 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/25/2018
 ms.author: hrasheed
-ms.openlocfilehash: 492087f7eeca8628ac6ac9a9e42f355a9356f1ce
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: 5d0259726a45346f1e9b891cb235531d6c24d4a2
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52584700"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53433417"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---data-migration-best-practices"></a>将本地 Apache Hadoop 群集迁移到 Azure HDInsight - 数据迁移最佳做法
 
 本文提供有关将数据迁移到 Azure HDInsight 的建议。 本文是帮助用户将本地 Apache Hadoop 系统迁移到 Azure HDInsight 的最佳做法系列教程中的其中一篇。
 
-## <a name="migrate-data-from-on-premises-to-azure"></a>将数据从本地迁移到 Azure
+## <a name="migrate-on-premises-data-to-azure"></a>将本地数据迁移到 Azure
 
 有两个主要选项可将数据从本地迁移到 Azure 环境：
 
 1.  使用 TLS 通过网络传输数据
-    1. 通过 Internet - 可以使用以下多个工具中的任意一个将数据通过 Internet 传输到 Azure 存储：Azure 存储资源管理器、AzCopy、Azure Powershell 和 Azure CLI。  有关详细信息，请参阅[将数据移入和移出 Azure 存储](../../storage/common/storage-moving-data.md)。
+    1. 通过 Internet - 可以使用以下多个工具中的任意一个将数据通过常规 Internet 连接传输到 Azure 存储：Azure 存储资源管理器、AzCopy、Azure Powershell 和 Azure CLI。  有关详细信息，请参阅[将数据移入和移出 Azure 存储](../../storage/common/storage-moving-data.md)。
     2. Express Route - ExpressRoute 是一项 Azure 服务，允许在 Microsoft 数据中心与本地环境或共同租用设施中的基础结构之间创建专用连接。 ExpressRoute 连接不通过公共 Internet，与通过 Internet 的典型连接相比，提供更高的安全性、可靠性、速度和更低的延迟。 有关详细信息，请参阅[创建和修改 ExpressRoute 线路](../../expressroute/expressroute-howto-circuit-portal-resource-manager.md)。
     1. Data Box 联机数据传输 - Data Box Edge 和 Data Box Gateway 是联机数据传输产品，它们用作网络存储网关来管理站点和 Azure 之间的数据。 Data Box Edge 是一种本地网络设备，可将数据传入和传出 Azure，并使用支持人工智能 (AI) 的边缘计算来处理数据。 Data Box Gateway 是具有存储网关功能的虚拟设备。 有关详细信息，请参阅 [Azure Data Box 文档 - 联机传输](https://docs.microsoft.com/azure/databox-online/)。
 1.  脱机寄送数据
@@ -47,9 +47,11 @@ ms.locfileid: "52584700"
 |1 PB|6 年|3 年|97 天|10 天|
 |2 PB|12 年|5 年|194 天|19 天|
 
-可以使用 Azure 的本机工具（例如 DistCp、Azure 数据工厂和 AzureCp）通过网络传输数据。 也可以使用第三方工具 WANDisco 实现相同的目的。 使用 Kafka Mirrormaker 和 Sqoop 可以持续将数据从本地传输到 Azure 存储系统。
+可以使用 Azure 的本机工具（例如 Apache Hadoop DistCp、Azure 数据工厂和 AzureCp）通过网络传输数据。 也可以使用第三方工具 WANDisco 实现相同的目的。 使用 Apache Kafka Mirrormaker 和 Apache Sqoop 可以持续将数据从本地传输到 Azure 存储系统。
 
-## <a name="performance-considerations-when-using-apache-distcp"></a>使用 Apache DistCp 时的性能注意事项
+
+## <a name="performance-considerations-when-using-apache-hadoop-distcp"></a>使用 Apache Hadoop DistCp 时的性能注意事项
+
 
 DistCp 是一个 Apache 项目，它使用 MapReduce 映射作业来传输数据、处理错误以及从这些错误中恢复。 它将源文件列表分配到每个映射任务。 然后，映射任务将其所有已分配的文件复制到目标。 可通过多种方法来提高 DistCp 的性能。
 
@@ -86,27 +88,27 @@ hadoop distcp -Dmapreduce.fileoutputcommitter.algorithm.version=2 -numListstatus
 
 ## <a name="metadata-migration"></a>元数据迁移
 
-### <a name="hive"></a>Hive
+### <a name="apache-hive"></a>Apache Hive
 
 可以使用脚本或数据库复制来迁移 Hive 元存储。
 
 #### <a name="hive-metastore-migration-using-scripts"></a>使用脚本迁移 Hive 元存储
 
-1. 从本地 Hive 元存储生成 Hive DDL。 可以使用 [包装器 bash 脚本](https://github.com/hdinsight/hdinsight.github.io/blob/master/hive/hive-export-import-metastore.md) 完成此步骤
-1. 编辑生成的 DDL，将 HDFS URL 替换为 WASB/ADLS/ABFS URL
-1. 针对 HDInsight 群集中的元存储运行更新的 DDL
-1. 确保本地与云之间的 Hive 元存储版本兼容
+1. 从本地 Hive 元存储生成 Hive DDL。 可以使用[包装器 bash 脚本](https://github.com/hdinsight/hdinsight.github.io/blob/master/hive/hive-export-import-metastore.md)完成此步骤。
+1. 编辑生成的 DDL，将 HDFS URL 替换为 WASB/ADLS/ABFS URL。
+1. 针对 HDInsight 群集中的元存储运行更新的 DDL。
+1. 确保本地与云之间的 Hive 元存储版本兼容。
 
 #### <a name="hive-metastore-migration-using-db-replication"></a>使用数据库复制迁移 Hive 元存储
 
-- 在本地 Hive 元存储数据库与 HDInsight 元存储数据库之间设置数据库复制
+- 在本地 Hive 元存储 DB 与 HDInsight 元存储 DB 之间设置数据库复制。
 - 使用“Hive MetaTool”将 HDFS URL 替换为 WASB/ADLS/ABFS URL，例如：
 
 ```bash
 ./hive --service metatool -updateLocation hdfs://nn1:8020/ wasb://<container_name>@<storage_account_name>.blob.core.windows.net/
 ```
 
-### <a name="ranger"></a>Ranger
+### <a name="apache-ranger"></a>Apache Ranger
 
 - 将本地 Ranger 策略导出到 XML 文件。
 - 使用 XSLT 等工具将基于 HDFS 的本地特定路径转换为 WASB/ADLS。

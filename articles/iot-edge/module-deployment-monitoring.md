@@ -1,6 +1,6 @@
 ---
-title: 部署 Azure IoT Edge 模块 | Microsoft Docs
-description: 了解如何将模块部署到边缘设备
+title: 设备组的自动部署 - Azure IoT Edge | Microsoft Docs
+description: 使用 Azure IoT Edge 中的自动部署来管理基于共享标记的设备组
 author: kgremban
 manager: philmea
 ms.author: kgremban
@@ -8,12 +8,13 @@ ms.date: 09/27/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: cd077c1a552a14582fce48bbe60f56ef08e5a4d7
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.custom: seodec18
+ms.openlocfilehash: 18cd27ae8bf0a395fa351cf283bc1d40f94dac53
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52584836"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53100100"
 ---
 # <a name="understand-iot-edge-automatic-deployments-for-single-devices-or-at-scale"></a>了解单设备或大规模的 IoT Edge 自动部署
 

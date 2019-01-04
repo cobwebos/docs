@@ -8,14 +8,14 @@ keywords: ''
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: conceptual
-ms.date: 07/11/2018
+ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 7bc9341d7e078b0ae69cc9a734c02f257df6d96a
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: beb6650125bdf7526b8167ba0f076b079e4e84a8
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52638502"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53342861"
 ---
 # <a name="human-interaction-in-durable-functions---phone-verification-sample"></a>Durable Functions 中的人机交互 - 电话验证示例
 
@@ -45,8 +45,8 @@ ms.locfileid: "52638502"
 * E4_SendSmsChallenge
 
 以下各部分介绍了用于 C# 脚本和 JavaScript 的配置和代码。 文章末尾展示了用于 Visual Studio 开发的代码。
- 
-## <a name="the-sms-verification-orchestration-visual-studio-code-and-azure-portal-sample-code"></a>SMS 验证业务流程（Visual Studio Code 和 Azure 门户的示例代码） 
+
+## <a name="the-sms-verification-orchestration-visual-studio-code-and-azure-portal-sample-code"></a>SMS 验证业务流程（Visual Studio Code 和 Azure 门户的示例代码）
 
 E4_SmsPhoneVerification 函数对业务流程协调程序函数使用标准的 function.json。
 
@@ -58,7 +58,7 @@ E4_SmsPhoneVerification 函数对业务流程协调程序函数使用标准的 f
 
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/E4_SmsPhoneVerification/run.csx)]
 
-### <a name="javascript-functions-v2-only"></a>JavaScript（仅限 Functions v2）
+### <a name="javascript-functions-2x-only"></a>JavaScript（仅限 Functions 2.x）
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E4_SmsPhoneVerification/index.js)]
 
@@ -72,7 +72,7 @@ E4_SmsPhoneVerification 函数对业务流程协调程序函数使用标准的 f
 用户会收到一条含 4 位数代码的短信。 用户需要在 90 秒内将相同的 4 位数代码发送回业务流程协调程序函数实例，以便完成验证过程。 如果提交的代码不正确，可额外尝试 3 次进行更正（在相同的 90 秒时间段内）。
 
 > [!NOTE]
-> 起初可能并不明显，但这个业务流程协调程序函数是完全确定的函数。 这是因为 `CurrentUtcDateTime` 属性用于计算计时器到期时间，且此属性在每次在业务流程协调程序代码中的此时点进行重播均返回相同的值。 必须确保对 `winner` 的每次重复调用均产生相同的 `Task.WhenAny` 结果。
+> 起初可能并不明显，但这个业务流程协调程序函数是完全确定的函数。 这是因为 `CurrentUtcDateTime` (.NET) 和 `currentUtcDateTime` (JavaScript) 属性用于计算计时器到期时间，并且就目前来说，这些属性在业务流程协调程序代码中每次进行重播时均返回相同的值。 必须确保对 `Task.WhenAny` (.NET) 或 `context.df.Task.any` (JavaScript) 的每次重复调用均产生相同的 `winner` 结果。
 
 > [!WARNING]
 > 如果不再需要计时器到期，请务必[取消计时器](durable-functions-timers.md)，正如在上面的示例中收到质询响应后一样。
@@ -89,7 +89,7 @@ E4_SendSmsChallenge 函数使用 Twilio 绑定向最终用户发送包含 4 位�
 
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/E4_SendSmsChallenge/run.csx)]
 
-### <a name="javascript-functions-v2-only"></a>JavaScript（仅限 Functions v2）
+### <a name="javascript-functions-2x-only"></a>JavaScript（仅限 Functions 2.x）
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E4_SendSmsChallenge/index.js)]
 
@@ -106,6 +106,7 @@ Content-Type: application/json
 
 "+1425XXXXXXX"
 ```
+
 ```
 HTTP/1.1 202 Accepted
 Content-Length: 695
@@ -115,12 +116,9 @@ Location: http://{host}/admin/extensions/DurableTaskExtension/instances/741c6565
 {"id":"741c65651d4c40cea29acdd5bb47baf1","statusQueryGetUri":"http://{host}/admin/extensions/DurableTaskExtension/instances/741c65651d4c40cea29acdd5bb47baf1?taskHub=DurableFunctionsHub&connection=Storage&code={systemKey}","sendEventPostUri":"http://{host}/admin/extensions/DurableTaskExtension/instances/741c65651d4c40cea29acdd5bb47baf1/raiseEvent/{eventName}?taskHub=DurableFunctionsHub&connection=Storage&code={systemKey}","terminatePostUri":"http://{host}/admin/extensions/DurableTaskExtension/instances/741c65651d4c40cea29acdd5bb47baf1/terminate?reason={text}&taskHub=DurableFunctionsHub&connection=Storage&code={systemKey}"}
 ```
 
-   > [!NOTE]
-   > 目前，JavaScript 业务流程启动器函数不能返回实例管理 URI。 此功能将在以后的版本中添加。
-
 业务流程协调程序函数可接收提供的电话号码，并立即向其发送一条短信，其中包含随机生成的 4 位数验证代码 &mdash; 例如，2168。 然后函数等待 90 秒，获取响应。
 
-若要使用该代码进行答复，可使用另一函数中的 `RaiseEventAsync`，或调用上面的 202 响应中引用的 sendEventUrl HTTP POST webhook，同时将 `{eventName}` 替换为事件的名称 `SmsChallengeResponse`：
+若要使用该代码进行答复，可使用另一函数中的 [`RaiseEventAsync` (.NET) 或 `raiseEvent` (JavaScript)](durable-functions-instance-management.md#sending-events-to-instances)，或调用上面的 202 响应中引用的 **sendEventUrl** HTTP POST webhook，同时将 `{eventName}` 替换为事件的名称 `SmsChallengeResponse`：
 
 ```
 POST http://{host}/admin/extensions/DurableTaskExtension/instances/741c65651d4c40cea29acdd5bb47baf1/raiseEvent/SmsChallengeResponse?taskHub=DurableFunctionsHub&connection=Storage&code={systemKey}
@@ -135,6 +133,7 @@ Content-Type: application/json
 ```
 GET http://{host}/admin/extensions/DurableTaskExtension/instances/741c65651d4c40cea29acdd5bb47baf1?taskHub=DurableFunctionsHub&connection=Storage&code={systemKey}
 ```
+
 ```
 HTTP/1.1 200 OK
 Content-Length: 144

@@ -3,7 +3,7 @@ title: Azure SQL 数据库基于 vCore 的资源限制 - 弹性池 | Microsoft D
 description: 本页介绍 Azure SQL 数据库中弹性池的一些常见基于 vCore 的资源限制。
 services: sql-database
 ms.service: sql-database
-ms.subservice: elastic-pool
+ms.subservice: elastic-pools
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -12,12 +12,12 @@ ms.author: moslake
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 10/15/2018
-ms.openlocfilehash: 6673fa9d377400d7e80fc95dc7d0ce12f4b2e60e
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: f41974c6e2b2b0565f0a2703cfd638777a6bb9eb
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49354166"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52878017"
 ---
 # <a name="azure-sql-database-vcore-based-purchasing-model-limits-for-elastic-pools"></a>Azure SQL 数据库基于 vCore 的购买模型针对弹性池的限制
 
@@ -85,7 +85,7 @@ ms.locfileid: "49354166"
 |随附的备份存储|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|
 |||
 
-## <a name="business-critical-service-tier-storage-sizes-and-compute-sizes"></a>业务关键服务层：存储大小和计算大小
+## <a name="business-critical-service-tier-storage-sizes-and-compute-sizes"></a>“业务关键”服务层：存储大小和计算大小
 
 ### <a name="generation-4-compute-platform"></a>第 4 代计算平台
 

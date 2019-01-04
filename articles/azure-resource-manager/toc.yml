@@ -20,6 +20,8 @@ items:
     href: resource-manager-tutorial-create-encrypted-storage-accounts.md
   - name: 创建多个实例
     href: resource-manager-tutorial-create-multiple-instances.md
+  - name: 移动资源
+    href: resource-manager-tutorial-move-resources.md
   - name: 设置资源部署顺序
     href: resource-manager-tutorial-create-templates-with-dependent-resources.md
   - name: 使用条件
@@ -44,9 +46,10 @@ items:
     href: https://azure.microsoft.com/resources/samples/?sort=0&service=azure-resource-manager
 - name: 概念
   items:
-  - name: 模板结构
-    href: resource-group-authoring-templates.md
+  - name: 模板
     items:
+    - name: 模板文件结构
+      href: resource-group-authoring-templates.md
     - name: parameters
       href: resource-manager-templates-parameters.md
     - name: 变量
@@ -57,17 +60,21 @@ items:
       href: resource-manager-templates-resources.md
     - name: Outputs
       href: resource-manager-templates-outputs.md
+  - name: 指南
+    items:
+    - name: 模板最佳实践
+      href: template-best-practices.md
+    - name: 订阅监管
+      href: /azure/architecture/cloud-adoption/appendix/azure-scaffold
+      maintainContext: true
+    - name: 用于提供云一致性的模板
+      href: templates-cloud-consistency.md
   - name: 资源提供程序和类型
     href: resource-manager-supported-services.md
   - name: 管理组
     href: management-groups-overview.md
   - name: 部署管理器
     href: deployment-manager-overview.md
-  - name: 订阅监管
-    href: /azure/architecture/cloud-adoption-guide/subscription-governance
-    maintainContext: true
-  - name: 用于提供云一致性的模板
-    href: templates-cloud-consistency.md
   - name: 部署模式
     href: deployment-modes.md
   - name: 资源的删除
@@ -78,6 +85,8 @@ items:
   items:
   - name: 创建模板
     items:
+    - name: 创建模板
+      href: how-to-create-template.md
     - name: 在订阅级别创建资源组和资源
       href: deploy-to-subscription.md
     - name: 定义资源依赖关系
@@ -235,9 +244,9 @@ items:
     href: resource-manager-personal-data.md
   - name: 视频
     href: https://azure.microsoft.com/documentation/videos/index/?services=azure-resource-manager
-ms.openlocfilehash: 47766ce1bd0250c1eeaa269c4bc2436a2e117f02
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 3cdd48bf83de29a294c5c4b7bcebc6caf36862d5
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53600936"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53742433"

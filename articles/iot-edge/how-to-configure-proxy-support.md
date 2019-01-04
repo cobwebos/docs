@@ -1,5 +1,5 @@
 ---
-title: 为网络代理配置 Azure IoT Edge 设备 | Microsoft 文档
+title: 为设备配置网络代理 - Azure IoT Edge | Microsoft Docs
 description: 如何将 Azure IoT Edge 运行时和所有面向 Internet 的 IoT Edge 模块配置为通过代理服务器进行通信。
 author: kgremban
 manager: ''
@@ -8,12 +8,13 @@ ms.date: 11/01/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 72855058c5e8294eece55f8dbcdc501025c9aabf
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
+ms.custom: seodec18
+ms.openlocfilehash: a7d32c98b77568e02fa14b70e969eeb254989062
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50913217"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53100437"
 ---
 # <a name="configure-an-iot-edge-device-to-communicate-through-a-proxy-server"></a>将 IoT Edge 设备配置为通过代理服务器进行通信
 
@@ -173,7 +174,7 @@ UpstreamProtocol: "AmqpWs"
 
 将 https_proxy 环境变量添加到 Edge 代理和 Edge 中心模块定义。 如果在 IoT Edge 设备的 config.yaml 文件中包括 UpstreamProtocol 环境变量，也请将其添加到 Edge 代理模块定义。 
 
-![设置环境变量。](./media/how-to-configure-proxy-support/edgehub-environmentvar.png)
+![设置 https_proxy 环境变量](./media/how-to-configure-proxy-support/edgehub-environmentvar.png)
 
 添加到部署清单的所有其他模块都遵循相同的模式。 在设置模块名称和映像的页面中，具有环境变量部分。
 

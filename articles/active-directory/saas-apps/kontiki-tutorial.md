@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/22/2017
 ms.author: jeedes
-ms.openlocfilehash: e5f29a12de5f82fa13c0c61462db00b2906fdca7
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: e5733547aa9b8b8d0c5aa0ce033d00f8c94b3d21
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39444447"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52842843"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-kontiki"></a>教程：Azure Active Directory 与 Kontiki 的集成
 
@@ -115,7 +115,7 @@ ms.locfileid: "39444447"
      在“登录 URL”文本框中，使用以下模式键入 URL： `https://<companyname>.mc.eval.kontiki.com`
 
     > [!NOTE] 
-    > 此值不是真实值。 请使用实际登录 URL 更新此值。 请联系 [Kontiki 客户端支持团队](http://customersupport.kontiki.com/enterprise/contactsupport.html)获取该值。 
+    > 此值不是真实值。 请使用实际登录 URL 更新此值。 请联系 [Kontiki 客户端支持团队](https://customersupport.kontiki.com/enterprise/contactsupport.html)获取该值。 
  
 1. 在“SAML 签名证书”部分中，单击“元数据 XML”，并在计算机上保存元数据文件。
 
@@ -125,10 +125,10 @@ ms.locfileid: "39444447"
 
     ![配置单一登录](./media/kontiki-tutorial/tutorial_general_400.png) 
 
-1. 若要在 Kontiki 端配置单一登录，需要将下载的元数据 XML 发送给 [Kontiki 支持团队](http://customersupport.kontiki.com/enterprise/contactsupport.html)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
+1. 若要在 Kontiki 端配置单一登录，需要将下载的元数据 XML 发送给 [Kontiki 支持团队](https://customersupport.kontiki.com/enterprise/contactsupport.html)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
 
 > [!TIP]
-> 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[ Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
+> 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
 ### <a name="creating-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
@@ -154,7 +154,7 @@ ms.locfileid: "39444447"
  
     ![创建 Azure AD 测试用户](./media/kontiki-tutorial/create_aaduser_04.png) 
 
-    a. 在“名称”文本框中，键入 **BrittaSimon**。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
 
     b. 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
@@ -209,7 +209,7 @@ ms.locfileid: "39444447"
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](tutorial-list.md)
-* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
+* [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
 
 

@@ -12,18 +12,29 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/23/2018
+ms.date: 12/18/2018
 ms.author: sethm
 ms.reviewer: harik
-ms.openlocfilehash: 0bbe2ee7436cc03a3780da096a498769d66eb505
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 1865b4fa03f774fb4cbe69a5c8b17b096981ebc8
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51277930"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53632783"
 ---
 # <a name="azure-stack-servicing-policy"></a>Azure Stack 服务策略
+
 本文介绍 Azure Stack 集成系统的服务策略，以及必须如何做才能使系统保持在受支持的状态。 
+
+## <a name="download-update-packages-for-integrated-systems"></a>下载集成系统的更新包
+
+Microsoft 将发布完整每月的更新包以及解决特定问题的修补程序程序包。 
+
+每月的更新程序包托管在安全的 Azure 终结点。 您可以下载这些使用手动[Azure Stack 更新程序下载程序工具](http://aka.ms/azurestackupdatedownload)。 如果缩放单位已连接，更新会自动出现在管理员门户中，如下**可用更新**。 Full、 每月的更新包了每个版本。 有关每个版本的详细信息，可以单击从任何版本[更新包发布频率](#update-package-release-cadence)本文的部分。
+
+修补程序更新程序包托管在同一个安全 Azure 终结点。 您可以下载这些手动在每个相应的修补程序知识库文章; 中使用的嵌入的链接例如， [Azure Stack 修补程序 1.1809.12.114](https://support.microsoft.com/help/4481548/azure-stack-hotfix-1-1809-12-114)。 与完整、 每月的更新包类似，Azure Stack 操作员可以下载的.xml、.bin 和.exe 文件和它们的过程中导入[在 Azure Stack 中应用更新](azure-stack-apply-updates.md)。 与已连接的缩放单位的 azure Stack 操作员将看到修补程序都自动显示在管理员门户中的消息**可用更新**。
+
+如果未连接缩放单位，并且你想要获得有关每个修补程序版本的通知，订阅[RSS](https://support.microsoft.com/app/content/api/content/feeds/sap/en-us/32d322a8-acae-202d-e9a9-7371dccf381b/rss … )或[ATOM](https://support.microsoft.com/app/content/api/content/feeds/sap/en-us/32d322a8-acae-202d-e9a9-7371dccf381b/atom …)记下每个版本中的源。  
 
 ## <a name="update-package-types"></a>更新包类型
 
@@ -55,7 +66,7 @@ Microsoft 偶尔会提供 Azure Stack 的修补程序（通常是预防性或时
 
 例如，如果最新发布的更新版本为 1805，在此之前的两个更新包为版本 1804 和 1803，则 1803 和 1804 仍受支持， 但 1802 不受支持。 即使最近一到两个月没有发布任何版本，此策略也有效。 例如，如果最新版本为 1805，但没有版本 1804，则此前的两个更新包（1803 和 1802）仍可获得支持。
 
-Microsoft 软件更新包是非累积，需要前一个更新包或修补程序的必备组件。 如果决定延后一个或多个更新，则要使用最新版本，请考虑整体运行时。 
+Microsoft 软件更新包是非累积性的，其先决条件是需要前一个更新包或修补程序。 如果决定延后一个或多个更新，则要使用最新版本，请考虑整体运行时。 
 
 ## <a name="get-support"></a>获取支持
 Azure Stack 遵循与 Azure 相同的支持过程。 企业客户可以按照中所述的过程[如何创建 Azure 支持请求](/azure/azure-supportability/how-to-create-azure-support-request)。 如果你是云服务提供商 (CSP) 的客户，请联系 CSP 获得支持。  有关详细信息，请参阅 [Azure 支持常见问题解答](https://azure.microsoft.com/support/faq/)。 

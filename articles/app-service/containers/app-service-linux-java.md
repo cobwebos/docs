@@ -1,6 +1,6 @@
 ---
-title: Linux 上的 Azure 应用服务的 Java 语言支持 | Microsoft Docs
-description: 有关如何使用 Linux 上的 Azure 应用服务部署 Java 应用的开发人员指南。
+title: Linux 上的应用服务的 Java 开发人员指南 - Azure | Microsoft Docs
+description: 了解如何配置在 Linux 上的 Azure 应用服务中运行的 Java 应用。
 keywords: azure 应用服务, web 应用, linux, oss, java
 services: app-service
 author: rloutlaw
@@ -10,14 +10,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: java
 ms.topic: article
-ms.date: 08/29/2018
+ms.date: 12/10/2018
 ms.author: routlaw
-ms.openlocfilehash: 8d15aeb92911a26a9a42a0449a24e8c0fee4467b
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.custom: seodec18
+ms.openlocfilehash: 6a9f3fcb372606e7f608b5137fb1ed15376d72d9
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52497338"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53407331"
 ---
 # <a name="java-developers-guide-for-app-service-on-linux"></a>Linux 上的应用服务的 Java 开发人员指南
 
@@ -53,7 +54,7 @@ az webapp log config --name ${WEBAPP_NAME} \
 az webapp log tail --name webappname --resource-group myResourceGroup
 ```
 
-有关详细信息，请参阅[使用 Azure CLI 流式传输日志](/azure/app-service/web-sites-enable-diagnostic-log#streaming-with-azure-command-line-interface)。
+有关详细信息，请参阅[使用 Azure CLI 流式传输日志](../web-sites-enable-diagnostic-log.md#streaming-with-azure-cli)。
 
 ### <a name="app-logging"></a>应用日志记录
 
@@ -134,7 +135,7 @@ az webapp start -n ${WEBAPP_NAME} -g ${WEBAPP_RESOURCEGROUP_NAME}
 
 ### <a name="authenticate-users"></a>对用户进行身份验证
 
-在 Azure 门户中使用“身份验证和授权”选项设置应用身份验证。 在此处，可以使用 Azure Active Directory 或社交登录名（例如 Facebook、Google、或 GitHub）启用身份验证。 仅当配置单个身份验证提供程序时，Azure 门户配置才起作用。  有关详细信息，请参阅[将应用服务应用配置为使用 Azure Active Directory 登录](/azure/app-service/app-service-mobile-how-to-configure-active-directory-authentication)，以及其他标识提供者的相关文章。
+在 Azure 门户中使用“身份验证和授权”选项设置应用身份验证。 在此处，可以使用 Azure Active Directory 或社交登录名（例如 Facebook、Google、或 GitHub）启用身份验证。 仅当配置单个身份验证提供程序时，Azure 门户配置才起作用。  有关详细信息，请参阅[将应用服务应用配置为使用 Azure Active Directory 登录](/azure/app-service/configure-authentication-provider-aad)，以及其他标识提供者的相关文章。
 
 如果需要启用多个登录提供程序，请遵照[自定义应用服务身份验证](https://docs.microsoft.com/azure/app-service/app-service-authentication-how-to)一文中的说明。
 
@@ -151,36 +152,47 @@ az webapp start -n ${WEBAPP_NAME} -g ${WEBAPP_RESOURCEGROUP_NAME}
 >[!NOTE]
 > 如果应用程序使用 Spring Framework 或 Spring Boot，你可以在 [应用程序的 properties 文件] 中将 Spring Data JPA 的数据库连接信息设置为环境变量。 然后在 Azure 门户或 CLI 中使用[应用设置](/azure/app-service/web-sites-configure#app-settings)来为应用程序定义这些值。
 
-本节中的示例配置片段使用 MySQL 数据库。 有关其他信息，请参阅 [MySQL](https://dev.mysql.com/doc/connector-j/8.0/en/connector-j-usagenotes-tomcat.html)、[SQL Server JDBC](https://docs.microsoft.com/sql/connect/jdbc/microsoft-jdbc-driver-for-sql-server?view=sql-server-2017) 和 [PostgreSQL](https://jdbc.postgresql.org/documentation/head/index.html) 的配置文档。
+这些说明适用于所有数据库连接。 你需要使用你选择的数据库的驱动程序类名称和 JAR 文件来填充占位符。 下面提供了一个表，其中包含了常见数据库的类名称和驱动程序下载。
 
-若要使用 Java 数据库连接 (JDBC) 或 Java 持久性 API (JPA) 将 Tomcat 配置为使用数据库的托管连接，请先自定义 Tomcat 在启动时要读取的 CATALINA_OPTS 环境变量。 在应用服务 Maven 插件中通过某个应用设置来设置这些值：
+| 数据库   | 驱动程序类名称                             | JDBC 驱动程序                                                                      |
+|------------|-----------------------------------------------|------------------------------------------------------------------------------------------|
+| PostgreSQL | `org.postgresql.Drvier`                        | [下载](https://jdbc.postgresql.org/download.html)                                    |
+| MySQL      | `com.mysql.jdbc.Driver`                        | [下载](https://dev.mysql.com/downloads/connector/j/)（选择“独立于平台”） |
+| SQL Server | `com.microsoft.sqlserver.jdbc.SQLServerDriver` | [下载](https://docs.microsoft.com/sql/connect/jdbc/download-microsoft-jdbc-driver-for-sql-server?view=sql-server-2017#available-downloads-of-jdbc-driver-for-sql-server)                                                           |
+
+若要将 Tomcat 配置为使用 Java 数据库连接 (JDBC) 或 Java 持久性 API (JPA)，请先自定义在启动时由 Tomcat 读取的 `CATALINA_OPTS` 环境变量。 在[应用服务 Maven 插件](https://github.com/Microsoft/azure-maven-plugins/blob/develop/azure-webapp-maven-plugin/README.md)中通过某个应用设置来设置这些值：
 
 ```xml
 <appSettings> 
     <property> 
         <name>CATALINA_OPTS</name> 
-        <value>"$CATALINA_OPTS -Dmysqluser=${mysqluser} -Dmysqlpass=${mysqlpass} -DmysqlURL=${mysqlURL}"</value> 
+        <value>"$CATALINA_OPTS -Ddbuser=${DBUSER} -Ddbpassword=${DBPASSWORD} -DconnURL=${CONNURL}"</value> 
     </property> 
 </appSettings> 
 ```
 
-或者使用 Azure 门户中类似的应用服务设置。
+或者在 Azure 门户中的“应用程序设置”边栏选项卡中设置环境变量。
 
-接下来，确定是要将数据源提供给一个应用程序，还是提供给应用服务计划中运行的所有应用程序。
+>[!NOTE]
+> 如果你使用的是 Azure Database for Postgres，请在 JDBC 连接字符串中将 `ssl=true` 替换为 `sslmode=require`。
 
-对于应用程序级的数据源： 
+接下来，确定数据源应当供一个应用程序使用，还是供在 Tomcat servlet 上运行的所有应用程序使用。
 
-1. 将 `context.xml` 文件添加到 Web 应用程序（如果该文件不存在），并在生成项目时将该文件添加到 WAR 文件所在的 `META-INF` 目录。
+#### <a name="for-application-level-data-sources"></a>对于应用程序级的数据源： 
 
-2. 在此文件中添加 `Context` 路径项，以将数据源链接到 JNDI 地址。
+1. 在项目的 `META-INF/` 目录中创建 `context.xml` 文件。 如果 `META-INF/` 目录不存在，则创建它。
+
+2. 在 `context.xml` 中，添加一个 `Context` 元素以将数据源链接到 JNDI 地址。 将 `driverClassName` 占位符替换为上表中你的驱动程序的类名称。
 
     ```xml
     <Context>
         <Resource
-            name="jdbc/mysqldb" type="javax.sql.DataSource"
-            url="${mysqlURL}"
-            driverClassName="com.mysql.jdbc.Driver"
-            username="${mysqluser}" password="${mysqlpass}"
+            name="jdbc/dbconnection" 
+            type="javax.sql.DataSource"
+            url="${dbuser}"
+            driverClassName="<insert your driver class name>"
+            username="${dbpassword}" 
+            password="${connURL}"
         />
     </Context>
     ```
@@ -189,38 +201,50 @@ az webapp start -n ${WEBAPP_NAME} -g ${WEBAPP_RESOURCEGROUP_NAME}
 
     ```xml
     <resource-env-ref>
-        <resource-env-ref-name>jdbc/mysqldb</resource-env-ref-name>
+        <resource-env-ref-name>jdbc/dbconnection</resource-env-ref-name>
         <resource-env-ref-type>javax.sql.DataSource</resource-env-ref-type>
     </resource-env-ref>
     ```
 
-对于共享服务器级的资源：
+#### <a name="for-shared-server-level-resources"></a>对于共享服务器级的资源：
 
 1. 如果尚未进行相关的配置，请使用 SSH 将 `/usr/local/tomcat/conf` 的内容复制到应用服务 Linux 实例上的 `/home/tomcat/conf` 中。
+    ```
+    mkdir -p /home/tomcat
+    cp -a /usr/local/tomcat/conf /home/tomcat/conf
+    ```
 
-2. 将上下文添加到 `server.xml`
+2. 在 `server.xml` 中的 `<Server>` 元素内添加一个 Context 元素。
 
     ```xml
+    <Server>
+    ...
     <Context>
         <Resource
-            name="jdbc/mysqldb" type="javax.sql.DataSource"
-            url="${mysqlURL}"
-            driverClassName="com.mysql.jdbc.Driver"
-            username="${mysqluser}" password="${mysqlpass}"
+            name="jdbc/dbconnection" 
+            type="javax.sql.DataSource"
+            url="${dbuser}"
+            driverClassName="<insert your driver class name>"
+            username="${dbpassword}" 
+            password="${connURL}"
         />
     </Context>
+    ...
+    </Server>
     ```
 
 3. 更新应用程序的 `web.xml`，以便在应用程序中使用该数据源。
 
     ```xml
     <resource-env-ref>
-        <resource-env-ref-name>jdbc/mysqldb</resource-env-ref-name>
+        <resource-env-ref-name>jdbc/dbconnection</resource-env-ref-name>
         <resource-env-ref-type>javax.sql.DataSource</resource-env-ref-type>
     </resource-env-ref>
     ```
 
-4. 将 JDBC 驱动程序文件放入 `/home/tomcat/lib` 目录，确保它们可供 Tomcat 类加载器使用。 若要将这些文件上传到应用服务实例，请执行以下步骤：  
+#### <a name="finally-place-the-driver-jars-in-the-tomcat-classpath-and-restart-your-app-service"></a>最后，将驱动程序 JAR 放置在 Tomcat 类路径中并重启你的应用服务： 
+
+1. 将 JDBC 驱动程序文件放入 `/home/tomcat/lib` 目录，确保它们可供 Tomcat 类加载器使用。 （如果此目录尚未存在，请创建它。）若要将这些文件上传到应用服务实例，请执行以下步骤：  
     1. 安装 Azure 应用服务 webpp 扩展：
 
       ```azurecli-interactive
@@ -235,7 +259,9 @@ az webapp start -n ${WEBAPP_NAME} -g ${WEBAPP_RESOURCEGROUP_NAME}
 
     3. 使用 SFTP 客户端连接到本地隧道端口，并将文件上传到 `/home/tomcat/lib` 文件夹。
 
-5. 重启应用服务 Linux 应用程序。 Tomcat 会将 `CATALINA_HOME` 重置为 `/home/tomcat/conf`，并使用更新的配置和类。
+    另外，也可以使用某个 FTP 客户端上传 JDBC 驱动程序。 请遵循这些[用于获取 FTP 凭据的说明](https://docs.microsoft.com/azure/app-service/app-service-deployment-credentials)。
+
+2. 如果你创建了服务器级数据源，请重启应用服务 Linux 应用程序。 Tomcat 会将 `CATALINA_HOME` 重置为 `/home/tomcat/conf`，并使用更新后的配置。
 
 ## <a name="docker-containers"></a>Docker 容器
 
@@ -245,7 +271,7 @@ az webapp start -n ${WEBAPP_NAME} -g ${WEBAPP_RESOURCEGROUP_NAME}
 
 适用于 Linux 的应用服务支持对 Java Web 应用程序的托管主机使用两个运行时：
 
-- [Tomcat servlet 容器](http://tomcat.apache.org/)：用于运行打包为 Web 存档 (WAR) 文件的应用程序。 支持的版本为 8.5 和 9.0。
+- [Tomcat servlet 容器](https://tomcat.apache.org/)：用于运行打包为 Web 存档 (WAR) 文件的应用程序。 支持的版本为 8.5 和 9.0。
 - Java SE 运行时环境：用于运行打包为 Java 存档 (JAR) 文件的应用程序。 唯一支持的主版本为 Java 8。
 
 ## <a name="java-runtime-statement-of-support"></a>Java 运行时支持声明 

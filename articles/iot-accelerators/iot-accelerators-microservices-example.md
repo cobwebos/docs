@@ -7,16 +7,16 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 04/19/2018
 ms.topic: conceptual
-ms.openlocfilehash: 0b206d7b56fc8a65c422a4ce22b2f5585e71c8da
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 20e86220fffe95fc38b5fa15dd5603db4331203f
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47219408"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53315751"
 ---
 # <a name="customize-and-redeploy-a-microservice"></a>自定义和重新部署微服务
 
-本教程介绍如何编辑远程监视解决方案中的微服务之一、生成微服务的映像、将映像部署到 Docker 中心，然后在远程监视解决方案中使用该映像。 为了介绍此概念，本教程使用了一个简单场景：在其中调用微服务 API，并将状态消息从“Alive and Well”更改为“New Edits Made Here!”
+本教程介绍如何编辑远程监视解决方案中的[微服务](http://azure.com/microservices)之一、生成微服务的映像、将映像部署到 Docker 中心，然后在远程监视解决方案中使用该映像。 为了介绍此概念，本教程使用了一个简单场景：在其中调用微服务 API，并将状态消息从“Alive and Well”更改为“New Edits Made Here!”
 
 远程监视解决方案使用基于 Docker 映像生成的微服务，这些映像是从 Docker 中心提取的。 
 
@@ -45,7 +45,7 @@ ms.locfileid: "47219408"
 1. 确保远程监视解决方案在计算机本地运行。
 2. 找到下载的 Postman 并打开它。
 3. 在 Postman 中的 GET 内输入以下内容： http://localhost:8080/iothubmanager/v1/status。
-4. 查看返回的结果，应会看到 "Status": "OK:Alive and Well"。
+4. 查看返回的结果，应会看到 "Status":"OK:Alive and Well"。
 
     ![Alive and Well Postman 消息](./media/iot-accelerators-microservices-example/postman-alive-well.png)
 
@@ -54,25 +54,31 @@ ms.locfileid: "47219408"
 现在，将 Iot 中心管理器微服务的状态消息更改为“New Edits Made Here!”， 然后使用此新状态重新生成 Docker 映像。 如果在此处遇到问题，请参阅[故障排除](#Troubleshoot)部分。
 
 1. 确保终端处于打开状态，切换到远程监视解决方案所克隆到的目录。 
-2. 将目录切换到“azure-iot-pcs-remote-monitoring-dotnet/services/iothub-manager/WebService/v1/Controllers”。
-3. 在任何文本编辑器或偏好的 IDE 中打开 StatusController.cs。 
-4. 找到以下代码：
+1. 将目录切换到“azure-iot-pcs-remote-monitoring-dotnet/services/iothub-manager/Services”。
+1. 在任何文本编辑器或偏好的 IDE 中打开 StatusService.cs。 
+1. 找到以下代码：
 
     ```csharp
-    return new StatusApiModel(true, "Alive and well");
+    var result = new StatusServiceModel(true, "Alive and well!");
     ```
 
     将其更改为以下代码并保存。
 
     ```csharp
-    return new StatusApiModel(true, "New Edits Made Here!");
+    var result = new StatusServiceModel(true, "New Edits Made Here!");
     ```
 
 5. 返回终端，但这次请切换到以下目录：“azure-iot-pcs-remote-monitoring-dotnet/services/iothub-manager/scripts/docker”。
 6. 若要生成新的 Docker 映像，请键入
 
-    ```cmd/sh
+    ```sh
     sh build
+    ```
+    
+    或在 Windows 上：
+    
+    ```
+    ./build.cmd
     ```
 
 7. 若要验证是否已成功创建新映像，请键入
@@ -138,7 +144,7 @@ ms.locfileid: "47219408"
     ```
 
 3. 找到下载的 Postman 并打开它。
-4. 在 Postman 中的 GET 内输入以下请求： http://localhost:8080/iothubmanager/v1/status。 现在应会看到 "Status": "OK: New Edits Made Here!"。
+4. 在 Postman 中的 GET 内输入以下请求： http://localhost:8080/iothubmanager/v1/status。 现在应看到，"Status":"OK:New Edits Made Here!"。
 
 ![New Edits Made Here Postman 消息](./media/iot-accelerators-microservices-example/new-postman-message.png)
 

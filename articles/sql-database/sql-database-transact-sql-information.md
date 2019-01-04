@@ -11,13 +11,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 10/15/2018
-ms.openlocfilehash: fc8336a46f61a7c9ab7c174b5f24d907369f481c
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.date: 12/03/2018
+ms.openlocfilehash: 48f8bb2e8251191fac456549cfca7a37e75d7f8c
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51567564"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52997686"
 ---
 # <a name="resolving-transact-sql-differences-during-migration-to-sql-database"></a>解析迁移到 SQL 数据库的过程中的 Transact-SQL 差异
 
@@ -45,25 +45,37 @@ Microsoft SQL Server 和 Azure SQL 数据库都完全支持应用程序使用的
 
 除了与  [Azure SQL 数据库功能比较](sql-database-features.md)中所述的不支持功能相关的 Transact-SQL 语句外，也不支持以下语句和语句组。 因此，如果要迁移的数据库使用以下任一功能，请重新设计 T-SQL 以消除这些 T-SQL 功能和语句。
 
-- 系统对象的排序规则 - 连接相关的：终结点语句。 SQL 数据库不支持 Windows 身份验证，但支持类似的 Azure Active Directory 身份验证。 某些身份验证类型要求使用最新版本的 SSMS。 有关详细信息，请参阅 [使用 Azure Active Directory 身份验证连接到 SQL 数据库或 SQL 数据仓库](sql-database-aad-authentication.md)。
-- 使用三个或四个部分名称的跨数据库查询。 （只读跨数据库查询由 [弹性数据库查询](sql-database-elastic-query-overview.md)提供支持。）- 跨数据库所有权链接、 `TRUSTWORTHY` 设置 - `EXECUTE AS LOGIN` 请改用“EXECUTE AS USER”。
-- 支持加密，但可扩展密钥管理除外 - 事件处理：事件、事件通知、查询通知 - 文件定位：与数据库文件定位、大小以及 Microsoft Azure 自动管理的数据库文件相关的语法。
+- 系统对象的排序规则
+- 相关连接：终结点语句。 SQL 数据库不支持 Windows 身份验证，但支持类似的 Azure Active Directory 身份验证。 某些身份验证类型要求使用最新版本的 SSMS。 有关详细信息，请参阅[使用 Azure Active Directory 身份验证连接到 SQL 数据库或 SQL 数据仓库](sql-database-aad-authentication.md)。
+- 使用三个或四个部分名称的跨数据库查询。 （使用[弹性数据库查询](sql-database-elastic-query-overview.md)支持只读跨数据库查询。）
+- 跨数据库所有权链接, `TRUSTWORTHY` 设置
+- `EXECUTE AS LOGIN` 改用“EXECUTE AS USER”。
+- 支持加密，但可扩展密钥管理除外
+- 事件：事件、事件通知、查询通知
+- 文件位置：与数据库文件定位、大小以及 Microsoft Azure 自动管理的数据库文件相关的语法。
 - 高可用性：与通过 Microsoft Azure 帐户管理的高可用性相关的语法。 这包括备份、还原、Always On、数据库镜像、日志传送、恢复模式的语法。
-- 日志读取器：依赖于在 SQL 数据库上不可用的日志读取器的语法：推送复制、更改数据捕获。 SQL 数据库可以是推送复制项目的订阅服务器。
-- 函数： `fn_get_sql`、 `fn_virtualfilestats`、 `fn_virtualservernodes` - 硬件：与硬件相关的服务器设置（例如，内存、工作线程、CPU 相关性、跟踪标志）有关的语法。 请改用服务层和计算大小。
-- `KILL STATS JOB`
-- `OPENQUERY`、 `OPENROWSET`、 `OPENDATASOURCE` 和由四部分构成的名称 - .NET Framework：与 SQL Server 的 CLR 集成 - 语义搜索 - 服务器凭据：请改用[数据库范围的凭据](https://msdn.microsoft.com/library/mt270260.aspx)。
-- 服务器级项目：服务器角色、 `sys.login_token`。 `GRANT`、`REVOKE` 和 `DENY` 的服务器级权限不可用，某些权限已替换为数据库级权限。 一些有用的服务器级 DMV 具有等效的数据库级 DMV。
-- `SET REMOTE_PROC_TRANSACTIONS`
-- `SHUTDOWN`
-- `sp_addmessage`
-- `sp_configure` 选项和 `RECONFIGURE`。 可以通过  [ALTER DATABASE SCOPED CONFIGURATION](https://msdn.microsoft.com/library/mt629158.aspx) 使用某些选项。
-- `sp_helpuser`
-- `sp_migrate_user_to_contained`
+- 日志读取器：依赖于在 SQL 数据库上不可用的日志读取器的语法：推送复制、更改数据捕获。 SQL 数据库可以是推送复制项目的订阅服务器。
+- 函数：`fn_get_sql`、`fn_virtualfilestats`、`fn_virtualservernodes`
+- 硬件：与硬件相关的服务器设置（例如，内存、工作线程、CPU 相关性、跟踪标志）有关的语法。 请改用服务层和计算大小。
+- `KILL STATS JOB`
+- `OPENQUERY`、`OPENROWSET`、`OPENDATASOURCE` 和由四部分构成的名称
+- .NET Framework：CLR 与 SQL Server 集成
+- 语义搜索
+- 服务器凭据：改用[数据库范围的凭据](https://msdn.microsoft.com/library/mt270260.aspx)。
+- 服务器级别项：服务器角色，`sys.login_token`。 `GRANT`、`REVOKE` 和 `DENY` 的服务器级权限不可用，某些权限已替换为数据库级权限。 一些有用的服务器级 DMV 具有等效的数据库级 DMV。
+- `SET REMOTE_PROC_TRANSACTIONS`
+- `SHUTDOWN`
+- `sp_addmessage`
+- `sp_configure` 选项和 `RECONFIGURE`。 可以通过 [ALTER DATABASE SCOPED CONFIGURATION](https://msdn.microsoft.com/library/mt629158.aspx) 使用某些选项。
+- `sp_helpuser`
+- `sp_migrate_user_to_contained`
 - SQL Server 代理：依赖于 SQL Server 代理或 MSDB 数据库的语法：警报、运算符、中央管理服务器。 改用脚本，如 Azure PowerShell。
-- SQL Server 审核：请改用 SQL 数据库审核。
-- SQL Server 跟踪 - 跟踪标志：某些跟踪标志项已移至兼容模式。
-- Transact-SQL 调试 - 触发器：服务器作用域的或登录触发器 - `USE` 语句：要将数据库上下文更改为不同的数据库，必须与新数据库建立新连接。
+- SQL Server 审核：改用 SQL 数据库审核。
+- SQL Server 跟踪
+- 跟踪标志：某些跟踪标志项已移至兼容模式。
+- Transact-SQL 调试
+- 触发器：服务器作用域或登录触发器
+- `USE` 语句：要将数据库上下文更改为不同的数据库，必须与新数据库建立新连接。
 
 ## <a name="full-transact-sql-reference"></a>完整的 Transact-SQL 引用
 

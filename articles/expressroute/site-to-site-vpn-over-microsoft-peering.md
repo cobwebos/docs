@@ -1,5 +1,5 @@
 ---
-title: 通过 Azure ExpressRoute Microsoft 对等互连配置站点到站点的 VPN | Microsoft Docs
+title: 通过 Microsoft 对等互连配置站点到站点的 VPN - ExpressRoute - Azure | Microsoft Docs
 description: 使用站点到站点的 VPN 网关，通过 ExpressRoute Microsoft 对等互连线路配置到 Azure 的 IPsec/IKE 连接。
 services: expressroute
 author: cherylmc
@@ -7,25 +7,25 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: cherylmc
-ms.openlocfilehash: 5fb4a4034a744b8b2b769a1cfd2d9df12ea90dde
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.custom: seodec18
+ms.openlocfilehash: 3ba9d7ab9e05c3c5480e1832cc5ddd0ce91a3ae1
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50240897"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53094196"
 ---
 # <a name="configure-a-site-to-site-vpn-over-expressroute-microsoft-peering"></a>通过 ExpressRoute Microsoft 对等互连配置站点到站点的 VPN
 
-本文帮助你通过 ExpressRoute 专用连接在本地网络与 Azure 虚拟网络 (VNet) 间配置安全的加密连接。 通过 ExpressRoute 配置安全隧道，即可机密、真实、完整地交换数据，不会出现重播。
+本文帮助你通过 ExpressRoute 专用连接在本地网络与 Azure 虚拟网络 (VNet) 间配置安全的加密连接。 可使用 Microsoft 对等互连在所选本地网络和 Azure VNet 间建立站点到站点的 IPsec/IKE VPN 隧道。 通过 ExpressRoute 配置安全隧道，即可机密、真实、完整地交换数据，不会出现重播。
 
-## <a name="architecture"></a>体系结构
-
-可利用 Microsoft 对等互连在所选本地网络和 Azure VNet 间建立站点到站点的 IPsec/IKE VPN 隧道。
-
-  >[!NOTE]
+>[!NOTE]
 >通过 Microsoft 对等互连设置站点到站点 VPN 时，需为 VPN 网关和 VPN 出口付费。 有关详细信息，请参阅 [VPN 网关定价](https://azure.microsoft.com/pricing/details/vpn-gateway)。
 >
 >
+
+## <a name="architecture"></a>体系结构
+
 
   ![连接概述](./media/site-to-site-vpn-over-microsoft-peering/IPsecER_Overview.png)
 

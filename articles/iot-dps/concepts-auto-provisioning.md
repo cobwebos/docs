@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
-ms.openlocfilehash: 025e447995d302c24ab2a7d1c8668857cb47ffdd
-ms.sourcegitcommit: 0fcd6e1d03e1df505cf6cb9e6069dc674e1de0be
+ms.openlocfilehash: 10648551728e4f3cb41b82433e4cd0d442f9daeb
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2018
-ms.locfileid: "42140418"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52679250"
 ---
 # <a name="auto-provisioning-concepts"></a>自动预配的概念
 
@@ -63,6 +63,33 @@ ms.locfileid: "42140418"
 
 > [!NOTE]
 > （可选）制造商还可以使用设备预配服务 API（而不是通过操作员）执行“登记设备标识”操作。 有关此顺序和其他要素的详细讨论，请观看[自动将设备注册到 Azure IoT](https://youtu.be/cSbDRNg72cU?t=2460) 视频（从 41:00 标记处开始）
+
+## <a name="roles-and-azure-accounts"></a>角色和 Azure 帐户
+
+每个角色映射到 Azure 帐户的方式取决于方案，而涉及的方案可能有很多。 可以通过下面的常见模式大致了解角色通常情况下是如何映射到 Azure 帐户的。
+
+#### <a name="chip-manufacturer-provides-security-services"></a>芯片制造商提供安全服务
+
+在此方案中，制造商为一级客户管理安全。 一级客户可能首选此方案，因为不需管理详细的安全性。 
+
+制造商将安全性引入硬件安全模块 (HSM)。 此安全性可能包括制造商从可能的客户处获取密钥、证书等，这些客户已经设置 DPS 实例和注册组。 制造商也可以为其客户生成此安全信息。
+
+在此方案中，可能涉及两个 Azure 帐户：
+
+- **帐户 1**：可能在操作员和开发人员角色之间存在某种程度的共享。 该方可能从制造商处购买 HSM 芯片。 这些芯片指向与帐户 1 关联的 DPS 实例。 使用 DPS 注册，该方可以将设备租赁给多个二级客户，只需在 DPS 中重新配置设备注册设置即可。 该方还可能为最终用户后端系统分配了可以连接的 IoT 中心，用于访问设备遥测数据等内容。如果是后一种情况，则可能不需要第二个帐户。
+
+- **帐户 2**：最终用户（二级客户）可以有自己的 IoT 中心。 与帐户 1 相关联的一方可以直接将租赁的设备指向此帐户中的正确中心。 此配置要求跨 Azure 帐户链接 DPS 和 IoT 中心，该操作可以通过 Azure 资源管理器模板来完成。
+
+#### <a name="all-in-one-oem"></a>一体化 OEM
+
+制造商可能是“一体化 OEM”，只需一个制造商帐户。 制造商负责端到端的安全性和预配。
+
+制造商可能为购买设备的客户提供基于云的应用程序。 此应用程序会与制造商分配的 IoT 中心连接。
+
+售货机或自动咖啡机是此方案的示例。
+
+
+
 
 ## <a name="next-steps"></a>后续步骤
 

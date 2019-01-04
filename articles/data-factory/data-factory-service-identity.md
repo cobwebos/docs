@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/28/2018
 ms.author: jingwang
-ms.openlocfilehash: 892fa32f73cec86e5d10a0d67da3d80bedd539aa
-ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
+ms.openlocfilehash: 67fc3d733062867086cb4c208f2997d3490452bb
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52619855"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52681919"
 ---
 # <a name="azure-data-factory-service-identity"></a>Azure 数据工厂服务标识
 
@@ -45,7 +45,7 @@ ms.locfileid: "52619855"
 
 - [使用 PowerShell 生成服务标识](#generate-service-identity-using-powershell)
 - [使用 REST API 生成服务标识](#generate-service-identity-using-rest-api)
-- [使用 Azure 资源管理器模板生成服务标识](#generate-service-identity-using-resource-management-template)
+- [使用 Azure 资源管理器模板生成服务标识](#generate-service-identity-using-azure-resource-manager-template)
 - [使用 SDK 生成服务标识](#generate-service-identity-using-sdk)
 
 >[!NOTE]
@@ -77,7 +77,7 @@ ProvisioningState : Succeeded
 PATCH https://management.azure.com/subscriptions/<subsID>/resourceGroups/<resourceGroupName>/providers/Microsoft.DataFactory/factories/<data factory name>?api-version=2017-09-01-preview
 ```
 
-**请求正文**：添加 "identity": { "type": "SystemAssigned" }。
+**请求正文**：add "identity": { "type":"SystemAssigned" }。
 
 ```json
 {
@@ -115,7 +115,7 @@ PATCH https://management.azure.com/subscriptions/<subsID>/resourceGroups/<resour
 
 ### <a name="generate-service-identity-using-an-azure-resource-manager-template"></a>使用 Azure 资源管理器模板生成服务标识
 
-**模版**：添加 "identity": { "type": "SystemAssigned" }。
+**模板**：add "identity": { "type":"SystemAssigned" }。
 
 ```json
 {

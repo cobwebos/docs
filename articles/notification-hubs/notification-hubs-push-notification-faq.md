@@ -15,14 +15,14 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 10/14/2018
 ms.author: dimazaid
-ms.openlocfilehash: cec57f2dafaddfa2ebc492f0cb92755b1f65607f
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: 140994de4b1be61f16593e450d156b81727a9f52
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50251016"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53437827"
 ---
-# <a name="push-notifications-with-azure-notification-hubs-frequently-asked-questions"></a>使用 Azure 通知中心推送通知：常见问题解答
+# <a name="push-notifications-with-azure-notification-hubs-frequently-asked-questions"></a>使用 Azure 通知中心推送通知：常见问题
 ## <a name="general"></a>常规
 ### <a name="what-is-the-resource-structure-of-notification-hubs"></a>通知中心的资源结构是怎样的？
 
@@ -35,11 +35,11 @@ Azure 通知中心有两个资源级别：中心和命名空间。 中心是单�
 
 * **免费**：此层是探索推送功能的极佳起点。 不建议对生产应用使用此层。 在每个命名空间中，每个月可以预配 500 个设备和执行 100 万次推送，但无法享受服务级别协议 (SLA) 保证。
 * **基本**：建议将此层（或标准层）用于较小型的生产应用。 在每个命名空间中，每个月可以预配 200,000 个设备和执行 1000 万次推送（基准）。 提供配额增长选项。
-* **标准：** 建议将此层用于中型、大型生产应用。 在每个命名空间中，每个月可以预配 1000 万个设备和执行 1000 万次推送（基准）。 提供配额增长选项，以及丰富的遥测功能。
+* **标准**：建议将此层用于中型到大型生产应用。 在每个命名空间中，每个月可以预配 1000 万个设备和执行 1000 万次推送（基准）。 提供配额增长选项，以及丰富的遥测功能。
 
 标准层功能：
-* **丰富的遥测功能**：可以使用通知中心的消息遥测来跟踪所有推送请求和用于调试的平台通知系统反馈。
-* **多租户**：可在命名空间级别与平台通知系统凭据一起使用。 此选项可让你轻松地将租户拆分到相同命名空间内的中心。
+* **丰富的遥测功能**：可以根据消息遥测使用通知中心来跟踪任何推送请求和平台通知系统反馈，以便进行调试。
+* **多租户**：可在命名空间级别使用平台通知系统凭据。 此选项可让你轻松地将租户拆分到相同命名空间内的中心。
 * **计划推送**：可以计划随时发出通知。
 
 ### <a name="what-is-the-notification-hubs-sla"></a>什么是通知中心 SLA？
@@ -56,7 +56,7 @@ Azure 通知中心有两个资源级别：中心和命名空间。 中心是单�
 * Seattle Times：[案例研究：Seattle Times]
 * Mural.ly：[案例研究：Mural.ly]
 * 7Digital：[案例研究：7Digital]
-* 必应应用：数千万台设备，每天发送 300 万条以上的通知。
+* 必应应用：数千万台设备，每天发送 300 万条通知。
 
 ### <a name="how-do-i-upgrade-or-downgrade-my-hub-or-namespace-to-a-different-tier"></a>如何将中心升级或降级到不同层的命名空间？
 转到 **[Azure 门户]** > **通知中心命名空间**或**通知中心**。 选择要更新的资源，转到“定价层”。 请注意以下要求：
@@ -213,7 +213,7 @@ Azure 通知中心支持在 [Azure 门户]中查看遥测数据。 可以在[通
 [通知中心安全模型]: https://msdn.microsoft.com/library/azure/dn495373.aspx
 [通知中心安全推送教程]: http://azure.microsoft.com/documentation/articles/notification-hubs-aspnet-backend-ios-secure-push/
 [通知中心故障排除]: http://azure.microsoft.com/documentation/articles/notification-hubs-diagnosing/
-[通知中心指标]: ../monitoring-and-diagnostics/monitoring-supported-metrics.md#microsoftnotificationhubsnamespacesnotificationhubs
+[通知中心指标]: ../azure-monitor/platform/metrics-supported.md#microsoftnotificationhubsnamespacesnotificationhubs
 [通知中心指标示例]: https://github.com/Azure/azure-notificationhubs-samples/tree/master/FetchNHTelemetryInExcel
 [注册信息导出/导入]: https://msdn.microsoft.com/library/dn790624.aspx
 [Azure 门户]: https://portal.azure.com

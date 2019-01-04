@@ -1,6 +1,6 @@
 ---
-title: 收集和分析 Azure Log Analytics 中的性能计数器 | Microsoft 文档
-description: 性能计数器由 Log Analytics 收集，用于分析 Windows 和 Linux 代理的性能。  本文介绍了如何为 Windows 和 Linux 代理配置性能计数器收集、这些性能计数器在工作区中的存储详情和如何在 Azure 门户中对其进行分析。
+title: 在 Azure Monitor 中收集和分析性能计数器 | Microsoft Docs
+description: 性能计数器由 Azure Monitor 收集，用于分析 Windows 和 Linux 代理的性能。  本文介绍了如何为 Windows 和 Linux 代理配置性能计数器收集、这些性能计数器在工作区中的存储详情和如何在 Azure 门户中对其进行分析。
 services: log-analytics
 documentationcenter: ''
 author: mgoedtel
@@ -8,33 +8,31 @@ manager: carmonm
 editor: tysonn
 ms.assetid: 20e145e4-2ace-4cd9-b252-71fb4f94099e
 ms.service: log-analytics
-ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/19/2017
+ms.date: 11/28/2018l
 ms.author: magoedte
-ms.component: ''
-ms.openlocfilehash: ffc3443c0c4bca214cc576e1345ad09874287426
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.openlocfilehash: f6b6d04df3e3b705fd57e7dffe1570a5e10adb5d
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52336377"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53438364"
 ---
-# <a name="windows-and-linux-performance-data-sources-in-log-analytics"></a>Log Analytics 中的 Windows 和 Linux 性能数据源
-Windows 和 Linux 中的性能计数器提供对硬件组件、操作系统和应用程序性能的见解。  除聚合性能数据以用于长期分析和报告外，Log Analytics 还可以定期收集性能计数器以进行近实时 (NRT) 分析。
+# <a name="windows-and-linux-performance-data-sources-in-azure-monitor"></a>Azure Monitor 中的 Windows 和 Linux 性能数据源
+Windows 和 Linux 中的性能计数器提供对硬件组件、操作系统和应用程序性能的见解。  除聚合性能数据以用于长期分析和报告外，Azure Monitor 还可以定期收集性能计数器以进行近实时 (NRT) 分析。
 
 ![性能计数器](media/data-sources-performance-counters/overview.png)
 
 ## <a name="configuring-performance-counters"></a>配置性能计数器
-通过 [Log Analytics 设置中的“数据”菜单](agent-data-sources.md#configuring-data-sources)配置性能计数器。
+通过[“高级设置”中的“数据”菜单](agent-data-sources.md#configuring-data-sources)配置性能计数器。
 
-首次为新的 Log Analytics 工作区配置 Windows 或 Linux 性能计数器时，可以选择快速创建多个常用计数器。  将这些计数器在一个复选框中依次列出。  请确保已选中所有想要首先创建的计数器，并单击“**添加选定的性能计数器**。
+首次为新的工作区配置 Windows 或 Linux 性能计数器时，可以选择快速创建几个通用的计数器。  将这些计数器在一个复选框中依次列出。  请确保已选中所有想要首先创建的计数器，并单击“**添加选定的性能计数器**。
 
 对于 Windows 性能计数器，可以为每个性能计数器选择一个特定实例。 对于 Linux 性能计数器，选择的每个计数器的实例会应用于父计数器的所有子计数器。 下表显示 Linux 和 Windows 性能计数器的可用通用实例。
 
-| 实例名称 | Description |
+| 实例名称 | 说明 |
 | --- | --- |
 | \_Total |所有实例的总计 |
 | \* |所有实例 |
@@ -82,7 +80,7 @@ Windows 和 Linux 中的性能计数器提供对硬件组件、操作系统和�
 
 下表介绍了此元素中的参数。
 
-| parameters | Description |
+| 参数 | 说明 |
 |:--|:--|
 | object\_name | 收集的对象名称。 |
 | instance\_regex |  用于定义要收集的实例的*正则表达式*。 值 `.*` 指定所有实例。 要仅收集 \_Total 实例的处理器指标，可以指定 `_Total`。 要仅收集 crond 或 sshd 实例的进程指标，可以指定 `(crond\|sshd)`。 |
@@ -90,7 +88,7 @@ Windows 和 Linux 中的性能计数器提供对硬件组件、操作系统和�
 | interval | 收集对象计数器时采用的频率。 |
 
 
-下表列出了可以在配置文件中指定的对象和计数器。  如[在 Log Analytics 中收集 Linux 应用程序的性能计数器](data-sources-linux-applications.md)中所述，对于某些应用程序，还有其他计数器可用。
+下表列出了可以在配置文件中指定的对象和计数器。  如[在 Azure Monitor 中收集 Linux 应用程序的性能计数器](data-sources-linux-applications.md)中所述，对于某些应用程序，还有其他计数器可用。
 
 | 对象名称 | 计数器名称 |
 |:--|:--|
@@ -184,12 +182,12 @@ Windows 和 Linux 中的性能计数器提供对硬件组件、操作系统和�
     </source>
 
 ## <a name="data-collection"></a>数据收集
-Log Analytics 以指定的采样间隔在已安装相应计数器的所有代理上收集所有指定的性能计数器。  数据未聚合，原始数据在订阅指定的持续时间内在所有日志搜索视图中提供。
+Azure Monitor 以指定的采样间隔在已安装相应计数器的所有代理上收集所有指定的性能计数器。  数据未聚合，原始数据在订阅指定的持续时间内在所有日志查询视图中提供。
 
 ## <a name="performance-record-properties"></a>性能记录属性
 性能记录具有 **Perf** 类型，并且具有下表中的属性。
 
-| 属性 | Description |
+| 属性 | 说明 |
 |:--- |:--- |
 | Computer |从中收集事件的计算机。 |
 | CounterName |性能计数器的名称 |
@@ -205,10 +203,10 @@ Log Analytics 以指定的采样间隔在已安装相应计数器的所有代理
 
     1 MB x (number of counters) x (number of agents) x (number of instances)
 
-## <a name="log-searches-with-performance-records"></a>含有性能记录的日志搜索
-下表提供了检索性能记录的不同日志搜索的示例。
+## <a name="log-queries-with-performance-records"></a>使用性能记录的日志查询
+下表提供了检索性能记录的不同日志查询的示例。
 
-| Query | Description |
+| 查询 | 说明 |
 |:--- |:--- |
 | 性能 |所有性能数据 |
 | Perf &#124; where Computer == "MyComputer" |特定计算机中的所有性能数据 |
@@ -227,5 +225,5 @@ Log Analytics 以指定的采样间隔在已安装相应计数器的所有代理
 
 ## <a name="next-steps"></a>后续步骤
 * [从 Linux 应用程序收集性能计数器](data-sources-linux-applications.md)，包括 MySQL 和 Apache HTTP Server。
-* 了解[日志搜索](../../log-analytics/log-analytics-queries.md)以便分析从数据源和解决方案中收集的数据。  
-* 将收集的数据导出到 [Power BI](../../log-analytics/log-analytics-powerbi.md) 以进行其他可视化操作和分析。
+* 了解[日志查询](../log-query/log-query-overview.md)以便分析从数据源和解决方案中收集的数据。  
+* 将收集的数据导出到 [Power BI](powerbi.md) 以进行其他可视化操作和分析。

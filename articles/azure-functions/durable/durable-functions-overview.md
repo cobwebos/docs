@@ -8,14 +8,14 @@ keywords: ''
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: conceptual
-ms.date: 10/23/2018
+ms.date: 12/7/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 5ca551c3d85f4f68de4169653452b3cd6faa4c35
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 14e959e4aa26b04ec70cbb03ea3feaf0e93f31c1
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52638552"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53344170"
 ---
 # <a name="durable-functions-overview"></a>Durable Functions 概述
 
@@ -32,7 +32,7 @@ Durable Functions 是 [Azure Functions](../functions-overview.md) 和 [Azure Web
 
 Durable Functions 的主要用例是简化无服务器应用程序中出现的复杂的有状态协调问题。 以下各节介绍可受益于 Durable Functions 的部分典型应用程序模式。
 
-## <a name="pattern-1-function-chaining"></a>模式 1：函数链
+## <a name="pattern-1-function-chaining"></a>模式 #1：函数链
 
 函数链是指以特定顺序执行一系列函数的模式。 通常需要将一个函数的输出应用于另一函数的输入。
 
@@ -40,17 +40,17 @@ Durable Functions 的主要用例是简化无服务器应用程序中出现的�
 
 借助 Durable Functions，可在代码中简明地实现此模式。
 
-#### <a name="c-script"></a>C# 脚本
+### <a name="c-script"></a>C# 脚本
 
 ```cs
-public static async Task<object> Run(DurableOrchestrationContext ctx)
+public static async Task<object> Run(DurableOrchestrationContext context)
 {
     try
     {
-        var x = await ctx.CallActivityAsync<object>("F1");
-        var y = await ctx.CallActivityAsync<object>("F2", x);
-        var z = await ctx.CallActivityAsync<object>("F3", y);
-        return  await ctx.CallActivityAsync<object>("F4", z);
+        var x = await context.CallActivityAsync<object>("F1");
+        var y = await context.CallActivityAsync<object>("F2", x);
+        var z = await context.CallActivityAsync<object>("F3", y);
+        return  await context.CallActivityAsync<object>("F4", z);
     }
     catch (Exception)
     {
@@ -58,27 +58,31 @@ public static async Task<object> Run(DurableOrchestrationContext ctx)
     }
 }
 ```
+
 > [!NOTE]
 > 编写 C# 预编译 Durable 函数与之前所示的 C# 脚本示例存在细微差别。 C# 预编译函数需要使用相应的属性来修饰 durable 参数。 例如，使用 `[OrchestrationTrigger]` 属性修饰 `DurableOrchestrationContext` 参数。 如果未正确修饰参数，则运行时将无法将变量插入到函数，并将引发错误。 有关更多示例，请访问[示例](https://github.com/Azure/azure-functions-durable-extension/blob/master/samples)。
 
-#### <a name="javascript-functions-v2-only"></a>JavaScript（仅限 Functions v2）
+### <a name="javascript-functions-2x-only"></a>JavaScript（仅限 Functions 2.x）
 
 ```js
 const df = require("durable-functions");
 
-module.exports = df.orchestrator(function*(ctx) {
-    const x = yield ctx.df.callActivity("F1");
-    const y = yield ctx.df.callActivity("F2", x);
-    const z = yield ctx.df.callActivity("F3", y);
-    return yield ctx.df.callActivity("F4", z);
+module.exports = df.orchestrator(function*(context) {
+    const x = yield context.df.callActivity("F1");
+    const y = yield context.df.callActivity("F2", x);
+    const z = yield context.df.callActivity("F3", y);
+    return yield context.df.callActivity("F4", z);
 });
 ```
 
 值“F1”、“F2”、“F3”和“F4”是函数应用中其他函数的名称。 控制流通过使用常规命令性编码构造实现。 即代码从上至下执行，并且可能涉及现有语言控制流语义，如条件语句和循环语句。  try/catch/finally 块中可包含错误处理逻辑。
 
-`ctx` 参数 ([DurableOrchestrationContext](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html)) 提供按名称、传递参数和返回函数输出调用其他函数的方法。 每当代码调用 `await` 时，Durable Functions 框架都会对当前函数实例的进度执行检查点操作。 如果在执行中途回收进程或 VM，函数实例从上一个 `await` 调用恢复。 后文详细介绍了这一重启行为。
+`context` 参数 ([DurableOrchestrationContext](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html)) (.NET) 和 `context.df` 对象 (JavaScript) 提供了用于通过名称调用其他函数、传递参数并返回函数输出的方法。 每当代码调用 `await` (C#) 或 `yield` (JavaScript) 时，Durable Functions 框架都会对当前函数实例的进度执行检查点操作。 如果在执行中途回收进程或 VM，则函数实例从上一个 `await` 或 `yield` 调用继续执行。 后文详细介绍了这一重启行为。
 
-## <a name="pattern-2-fan-outfan-in"></a>模式 2：扇出/扇入
+> [!NOTE]
+> JavaScript 中的 `context` 对象表示 [整个函数上下文]，而非表示 DurableOrchestrationContext.(../functions-reference-node.md#context-object)。
+
+## <a name="pattern-2-fan-outfan-in"></a>模式 #2：扇出/扇入
 
 扇出/扇入是指并行执行多个函数，并等待所有执行完成的模式。  通常会对这些函数返回的结果执行一些聚合操作。
 
@@ -86,62 +90,62 @@ module.exports = df.orchestrator(function*(ctx) {
 
 对于普通函数，可通过使函数向一个队列发送多条消息来完成扇出。 但是，扇入回来更具挑战性。 需要编写代码，跟踪队列触发的函数何时结束，并存储函数输出。 Durable Functions 扩展可使用相对简单的代码处理这种模式。
 
-#### <a name="c-script"></a>C# 脚本
+### <a name="c-script"></a>C# 脚本
 
 ```cs
-public static async Task Run(DurableOrchestrationContext ctx)
+public static async Task Run(DurableOrchestrationContext context)
 {
     var parallelTasks = new List<Task<int>>();
- 
+
     // get a list of N work items to process in parallel
-    object[] workBatch = await ctx.CallActivityAsync<object[]>("F1");
+    object[] workBatch = await context.CallActivityAsync<object[]>("F1");
     for (int i = 0; i < workBatch.Length; i++)
     {
-        Task<int> task = ctx.CallActivityAsync<int>("F2", workBatch[i]);
+        Task<int> task = context.CallActivityAsync<int>("F2", workBatch[i]);
         parallelTasks.Add(task);
     }
- 
+
     await Task.WhenAll(parallelTasks);
- 
+
     // aggregate all N outputs and send result to F3
     int sum = parallelTasks.Sum(t => t.Result);
-    await ctx.CallActivityAsync("F3", sum);
+    await context.CallActivityAsync("F3", sum);
 }
 ```
 
-#### <a name="javascript-functions-v2-only"></a>JavaScript（仅限 Functions v2）
+### <a name="javascript-functions-2x-only"></a>JavaScript（仅限 Functions 2.x）
 
 ```js
 const df = require("durable-functions");
 
-module.exports = df.orchestrator(function*(ctx) {
+module.exports = df.orchestrator(function*(context) {
     const parallelTasks = [];
 
     // get a list of N work items to process in parallel
-    const workBatch = yield ctx.df.callActivity("F1");
+    const workBatch = yield context.df.callActivity("F1");
     for (let i = 0; i < workBatch.length; i++) {
-        parallelTasks.push(ctx.df.callActivity("F2", workBatch[i]));
+        parallelTasks.push(context.df.callActivity("F2", workBatch[i]));
     }
 
-    yield ctx.df.task.all(parallelTasks);
+    yield context.df.Task.all(parallelTasks);
 
     // aggregate all N outputs and send result to F3
     const sum = parallelTasks.reduce((prev, curr) => prev + curr, 0);
-    yield ctx.df.callActivity("F3", sum);
+    yield context.df.callActivity("F3", sum);
 });
 ```
 
-扇出操作会分发到函数 `F2` 的多个实例中，并且可通过使用动态任务列表跟踪这些操作。 将调用 .NET `Task.WhenAll` API，等待所有调用的函数完成。 然后，从动态任务列表聚合 `F2` 函数输出，并将这些输出传递给 `F3` 函数。
+扇出操作会分发到函数 `F2` 的多个实例中，并且可通过使用动态任务列表跟踪这些操作。 将调用 .NET `Task.WhenAll` API 或 JavaScript `context.df.Task.all` API，等待所有调用的函数完成。 然后，从动态任务列表聚合 `F2` 函数输出，并将这些输出传递给 `F3` 函数。
 
-在对 `Task.WhenAll` 进行 `await` 调用处自动执行的检查点操作可确保中途出现的任何崩溃或重启均无需重启已完成的任务。
+在 `Task.WhenAll` 或 `context.df.Task.all` 上进行 `await` 或 `yield` 调用时自动执行的检查点操作可确保中途出现的任何崩溃或重启均无需重启已完成的任务。
 
-## <a name="pattern-3-async-http-apis"></a>模式 3：异步 HTTP API
+## <a name="pattern-3-async-http-apis"></a>模式 #3：异步 HTTP API
 
 第三种模式全部关于使用外部客户端协调长时间运行的操作的状态时出现的问题。 实现此模式的常用方式是由 HTTP 调用触发长时间运行的操作，然后将客户端重定向到状态终结点，可对该终结点进行轮询，以了解操作完成的时间。
 
 ![HTTP API 图](./media/durable-functions-overview/async-http-api.png)
 
-Durable Functions 提供内置 API，可简化为与长时间运行的函数执行进行交互而编写的代码。 [快速入门示例](durable-functions-create-first-csharp.md)演示了可用于启动新业务流程协调程序函数实例的简单 REST 命令。 启动实例后，扩展会公开 webhook HTTP API，查询业务流程协调程序函数状态。 以下示例演示用于启动业务流程协调程序和查询其状态的 REST 命令。 为清楚起见，实例中省略了某些细节。
+Durable Functions 提供内置 API，可简化为与长时间运行的函数执行进行交互而编写的代码。 快速入门示例（[C#](durable-functions-create-first-csharp.md)、[JavaScript](quickstart-js-vscode.md)）展示了可用于启动新业务流程协调程序函数实例的简单 REST 命令。 启动实例后，扩展会公开 webhook HTTP API，查询业务流程协调程序函数状态。 以下示例演示用于启动业务流程协调程序和查询其状态的 REST 命令。 为清楚起见，实例中省略了某些细节。
 
 ```
 > curl -X POST https://myfunc.azurewebsites.net/orchestrators/DoWork -H "Content-Length: 0" -i
@@ -168,7 +172,9 @@ Content-Type: application/json
 
 因为状态由 Durable Functions 运行时托管，因此无需实施自己的状态跟踪机制。
 
-即使 Durable Functions 扩展拥有内置的 webhook 可用于管理长时间运行的业务流程，仍可使用自己的函数触发器（如 HTTP、队列或事件中心）和 `orchestrationClient` 绑定来自行实现此模式。 例如，可以使用队列消息触发终止。  或者，可以使用受 Azure Active Directory 身份验证策略保护的 HTTP 触发器，而不是使用利用生成的密钥进行身份验证的内置 webhook。 
+即使 Durable Functions 扩展拥有内置的 webhook 可用于管理长时间运行的业务流程，仍可使用自己的函数触发器（如 HTTP、队列或事件中心）和 `orchestrationClient` 绑定来自行实现此模式。 例如，可以使用队列消息触发终止。  或者，可以使用受 Azure Active Directory 身份验证策略保护的 HTTP 触发器，而不是使用利用生成的密钥进行身份验证的内置 webhook。
+
+### <a name="c"></a>C#
 
 ```cs
 // HTTP-triggered function to start a new orchestrator function instance.
@@ -182,18 +188,43 @@ public static async Task<HttpResponseMessage> Run(
     // Function input comes from the request content.
     dynamic eventData = await req.Content.ReadAsAsync<object>();
     string instanceId = await starter.StartNewAsync(functionName, eventData);
-    
+
     log.LogInformation($"Started orchestration with ID = '{instanceId}'.");
-    
+
     return starter.CreateCheckStatusResponse(req, instanceId);
 }
 ```
 
-[DurableOrchestrationClient](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html) `starter` 参数是 `orchestrationClient` 输出绑定中的值，该绑定是 Durable Functions 扩展的一部分。 它提供用于启用、终止和查询新的或现有业务流程协调程序函数实例以及向这些实例发送事件的方法。 在上一示例中，HTTP 触发的函数采用传入的 URL 中的 `functionName` 值，并将该值传递给 [StartNewAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_StartNewAsync_)。 然后，此绑定 API 返回包含 `Location` 标头和有关实例的其他信息的响应，这些信息稍后可用于查找已启动实例的状态或终止实例。
+### <a name="javascript-functions-2x-only"></a>JavaScript（仅限 Functions 2.x）
+
+```javascript
+// HTTP-triggered function to start a new orchestrator function instance.
+const df = require("durable-functions");
+
+module.exports = async function (context, req) {
+    const client = df.getClient(context);
+
+    // Function name comes from the request URL.
+    // Function input comes from the request content.
+    const eventData = req.body;
+    const instanceId = await client.startNew(req.params.functionName, undefined, eventData);
+
+    context.log(`Started orchestration with ID = '${instanceId}'.`);
+
+    return client.createCheckStatusResponse(req, instanceId);
+};
+```
+
+> [!WARNING]
+> 在 JavaScript 中进行本地开发时，需将环境变量 `WEBSITE_HOSTNAME` 设置为 `localhost:<port>`（例如， 设置为 `localhost:7071`），以便使用 `DurableOrchestrationClient` 上的方法。 有关此要求的详细信息，请参阅 [GitHub 问题](https://github.com/Azure/azure-functions-durable-js/issues/28)。
+
+在 .NET 中，[DurableOrchestrationClient](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html) `starter` 参数是 `orchestrationClient` 输出绑定中的值，该绑定是 Durable Functions 扩展的一部分。 在 JavaScript 中，此对象是通过调用 `df.getClient(context)` 返回的。 这些对象提供了用于启用、终止和查询新的或现有业务流程协调程序函数实例以及向这些实例发送事件的方法。
+
+在上一示例中，HTTP 触发的函数采用传入的 URL 中的 `functionName` 值，并将该值传递给 [StartNewAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_StartNewAsync_)。 然后，[CreateCheckStatusResponse](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_CreateCheckStatusResponse_System_Net_Http_HttpRequestMessage_System_String_) 绑定 API 返回包含 `Location` 标头和有关实例的其他信息的响应，这些信息稍后可用于查找已启动实例的状态或终止实例。
 
 ## <a name="pattern-4-monitoring"></a>模式 #4：监视
 
-监视模式是指工作流中灵活的重复过程 - 例如，反复轮询，直到满足特定的条件为止。 常规计时器触发器可以解决简单方案（如定期清理作业），但其时间间隔是静态的，管理实例生存期会变得复杂。 Durable Functions 可实现灵活的重复间隔、任务生存期管理，并可以从单个业务流程创建多个监视器进程。
+监视模式是工作流中灵活的重复过程 - 例如，反复轮询，直到满足特定的条件为止。 常规[计时器触发器](../functions-bindings-timer.md)可以解决简单方案（如定期清理作业），但其时间间隔是静态的，管理实例生存期会变得复杂。 Durable Functions 可实现灵活的重复间隔、任务生存期管理，并可以从单个业务流程创建多个监视器进程。
 
 下面的示例会完全改变前面的异步 HTTP API 方案。 不是公开终结点供外部客户端监视长时间运行的操作，而是让长时间运行的监视器使用外部终结点，等待某个状态更改。
 
@@ -201,65 +232,65 @@ public static async Task<HttpResponseMessage> Run(
 
 使用 Durable Functions，可以通过几行代码创建观察任意终结点的多个监视器。 当某个条件满足时，监视器可以结束执行或由 [DurableOrchestrationClient](durable-functions-instance-management.md) 终止，可以基于某个条件更改其等待间隔（即指数回退）。下面的代码实现了基本的监视器。
 
-#### <a name="c-script"></a>C# 脚本
+### <a name="c-script"></a>C# 脚本
 
 ```cs
-public static async Task Run(DurableOrchestrationContext ctx)
+public static async Task Run(DurableOrchestrationContext context)
 {
-    int jobId = ctx.GetInput<int>();
+    int jobId = context.GetInput<int>();
     int pollingInterval = GetPollingInterval();
     DateTime expiryTime = GetExpiryTime();
-    
-    while (ctx.CurrentUtcDateTime < expiryTime) 
+
+    while (context.CurrentUtcDateTime < expiryTime)
     {
-        var jobStatus = await ctx.CallActivityAsync<string>("GetJobStatus", jobId);
+        var jobStatus = await context.CallActivityAsync<string>("GetJobStatus", jobId);
         if (jobStatus == "Completed")
         {
             // Perform action when condition met
-            await ctx.CallActivityAsync("SendAlert", machineId);
+            await context.CallActivityAsync("SendAlert", machineId);
             break;
         }
 
         // Orchestration will sleep until this time
-        var nextCheck = ctx.CurrentUtcDateTime.AddSeconds(pollingInterval);
-        await ctx.CreateTimer(nextCheck, CancellationToken.None);
+        var nextCheck = context.CurrentUtcDateTime.AddSeconds(pollingInterval);
+        await context.CreateTimer(nextCheck, CancellationToken.None);
     }
 
     // Perform further work here, or let the orchestration end
 }
 ```
 
-#### <a name="javascript-functions-v2-only"></a>JavaScript（仅限 Functions v2）
+### <a name="javascript-functions-2x-only"></a>JavaScript（仅限 Functions 2.x）
 
 ```js
 const df = require("durable-functions");
 const moment = require("moment");
 
-module.exports = df.orchestrator(function*(ctx) {
-    const jobId = ctx.df.getInput();
+module.exports = df.orchestrator(function*(context) {
+    const jobId = context.df.getInput();
     const pollingInternal = getPollingInterval();
     const expiryTime = getExpiryTime();
 
-    while (moment.utc(ctx.df.currentUtcDateTime).isBefore(expiryTime)) {
-        const jobStatus = yield ctx.df.callActivity("GetJobStatus", jobId);
+    while (moment.utc(context.df.currentUtcDateTime).isBefore(expiryTime)) {
+        const jobStatus = yield context.df.callActivity("GetJobStatus", jobId);
         if (jobStatus === "Completed") {
             // Perform action when condition met
-            yield ctx.df.callActivity("SendAlert", machineId);
+            yield context.df.callActivity("SendAlert", machineId);
             break;
         }
 
         // Orchestration will sleep until this time
-        const nextCheck = moment.utc(ctx.df.currentUtcDateTime).add(pollingInterval, 's');
-        yield ctx.df.createTimer(nextCheck.toDate());
+        const nextCheck = moment.utc(context.df.currentUtcDateTime).add(pollingInterval, 's');
+        yield context.df.createTimer(nextCheck.toDate());
     }
 
     // Perform further work here, or let the orchestration end
 });
 ```
 
-收到请求时，会为该作业 ID 创建新的业务流程实例。 该实例会一直轮询状态，直到满足条件退出循环。 持久计时器用于控制轮询间隔。 然后可以执行进一步的工作，也可以结束业务流程。 当 `ctx.CurrentUtcDateTime` 超过 `expiryTime` 时，监视结束。
+收到请求时，会为该作业 ID 创建新的业务流程实例。 该实例会一直轮询状态，直到满足条件退出循环。 持久计时器用于控制轮询间隔。 然后可以执行进一步的工作，也可以结束业务流程。 当 `context.CurrentUtcDateTime` (.NET) 或 `context.df.currentUtcDateTime` (JavaScript) 超出了 `expiryTime` 时，监视将结束。
 
-## <a name="pattern-5-human-interaction"></a>模式 5：人机交互
+## <a name="pattern-5-human-interaction"></a>模式 #5：人机交互
 
 许多过程均涉及某种类型的人机交互。 在自动化过程中，人机交互让人很棘手的就是人的可用性和响应性并不总是与云服务一样高。 自动化过程必须考虑到这一点，这通常可通过使用超时和补偿逻辑来实现。
 
@@ -269,54 +300,54 @@ module.exports = df.orchestrator(function*(ctx) {
 
 可使用业务流程协调程序函数实现此模式。 业务流程协调程序使用[持久计时器](durable-functions-timers.md)来请求审批，并在发生超时的情况下进行上报。 该程序等待一个[外部事件](durable-functions-external-events.md)，该事件为某个人机交互生成的通知。
 
-#### <a name="c-script"></a>C# 脚本
+### <a name="c-script"></a>C# 脚本
 
 ```cs
-public static async Task Run(DurableOrchestrationContext ctx)
+public static async Task Run(DurableOrchestrationContext context)
 {
-    await ctx.CallActivityAsync("RequestApproval");
+    await context.CallActivityAsync("RequestApproval");
     using (var timeoutCts = new CancellationTokenSource())
     {
-        DateTime dueTime = ctx.CurrentUtcDateTime.AddHours(72);
-        Task durableTimeout = ctx.CreateTimer(dueTime, timeoutCts.Token);
+        DateTime dueTime = context.CurrentUtcDateTime.AddHours(72);
+        Task durableTimeout = context.CreateTimer(dueTime, timeoutCts.Token);
 
-        Task<bool> approvalEvent = ctx.WaitForExternalEvent<bool>("ApprovalEvent");
+        Task<bool> approvalEvent = context.WaitForExternalEvent<bool>("ApprovalEvent");
         if (approvalEvent == await Task.WhenAny(approvalEvent, durableTimeout))
         {
             timeoutCts.Cancel();
-            await ctx.CallActivityAsync("ProcessApproval", approvalEvent.Result);
+            await context.CallActivityAsync("ProcessApproval", approvalEvent.Result);
         }
         else
         {
-            await ctx.CallActivityAsync("Escalate");
+            await context.CallActivityAsync("Escalate");
         }
     }
 }
 ```
 
-#### <a name="javascript-functions-v2-only"></a>JavaScript（仅限 Functions v2）
+### <a name="javascript-functions-2x-only"></a>JavaScript（仅限 Functions 2.x）
 
 ```js
 const df = require("durable-functions");
 const moment = require('moment');
 
-module.exports = df.orchestrator(function*(ctx) {
-    yield ctx.df.callActivity("RequestApproval");
+module.exports = df.orchestrator(function*(context) {
+    yield context.df.callActivity("RequestApproval");
 
-    const dueTime = moment.utc(ctx.df.currentUtcDateTime).add(72, 'h');
-    const durableTimeout = ctx.df.createTimer(dueTime.toDate());
+    const dueTime = moment.utc(context.df.currentUtcDateTime).add(72, 'h');
+    const durableTimeout = context.df.createTimer(dueTime.toDate());
 
-    const approvalEvent = ctx.df.waitForExternalEvent("ApprovalEvent");
-    if (approvalEvent === yield ctx.df.Task.any([approvalEvent, durableTimeout])) {
+    const approvalEvent = context.df.waitForExternalEvent("ApprovalEvent");
+    if (approvalEvent === yield context.df.Task.any([approvalEvent, durableTimeout])) {
         durableTimeout.cancel();
-        yield ctx.df.callActivity("ProcessApproval", approvalEvent.result);
+        yield context.df.callActivity("ProcessApproval", approvalEvent.result);
     } else {
-        yield ctx.df.callActivity("Escalate");
+        yield context.df.callActivity("Escalate");
     }
 });
 ```
 
-持久计时器通过调用 `ctx.CreateTimer` 创建。 通知由 `ctx.WaitForExternalEvent` 接收。 还将调用 `Task.WhenAny`，确定是上报（首先发生超时）还是处理审批（超时前收到审批）。
+持久计时器是通过调用 `context.CreateTimer` (.NET) 或 `context.df.createTimer` (JavaScript) 创建的。 通知由 `context.WaitForExternalEvent` (.NET) 或 `context.df.waitForExternalEvent` (JavaScript) 接收。 还将调用 `Task.WhenAny` (.NET) 或 `context.df.Task.any` (JavaScript)，确定是上报（首先发生超时）还是处理审批（超时前收到审批）。
 
 外部客户端可以使用[内置 HTTP API](durable-functions-http-api.md#raise-event) 或通过另一个函数使用 [DurableOrchestrationClient.RaiseEventAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_RaiseEventAsync_System_String_System_String_System_Object_) API 将事件通知传递给正在等待的业务流程协调程序函数：
 
@@ -328,6 +359,16 @@ public static async Task Run(string instanceId, DurableOrchestrationClient clien
 }
 ```
 
+```javascript
+const df = require("durable-functions");
+
+module.exports = async function (context) {
+    const client = df.getClient(context);
+    const isApproved = true;
+    await client.raiseEvent(instanceId, "ApprovalEvent", isApproved);
+};
+```
+
 ## <a name="the-technology"></a>技术
 
 在后台，Durable Functions 扩展在 [Durable Task Framework](https://github.com/Azure/durabletask) 的基础上生成，后者是 GitHub 上用于生成持久任务业务流程的开源库。 与 Azure Functions 是 Azure WebJobs 的无服务器演进非常相似，Durable Functions 也是 Durable Task Framework 的无服务器演进。 Durable Task Framework 大量用于 Microsoft 内外，以及自动处理任务关键型过程。 它天生就很适合无服务器 Azure Functions 环境。
@@ -336,7 +377,7 @@ public static async Task Run(string instanceId, DurableOrchestrationClient clien
 
 Orchestrator 函数使用称为[事件溯源](https://docs.microsoft.com/azure/architecture/patterns/event-sourcing)的设计模式，可靠地维护自身的执行状态。 持久扩展使用仅限追加的存储来记录函数业务流程执行的一系列完整操作，而非直接存储业务流程的当前状态。 与“转储”完整的运行时状态相比，这具有诸多优点，包括提升性能、可伸缩性和响应能力。 其他优点包括确保事务数据的最终一致性，保持完整的审核线索和历史记录。 审核线索本身可实现可靠的补偿操作。
 
-此扩展使用“事件溯源”的过程是透明的。 事实上，业务流程协调程序函数中的 `await` 运算符将对业务流程协调程序线程的控制权让回给 Durable Task Framework 调度程序。 然后，该调度程序向存储提交业务流程协调程序函数计划的任何新操作（如调用一个或多个子函数或计划持久计时器）。 这个透明的提交操作会追加到业务流程实例的执行历史记录中。 历史记录存储在存储表中。 然后，提交操作向队列添加消息，以计划实际工作。 此时，可从内存中卸载业务流程协调程序函数。 如果正在使用 Azure Functions 消耗计划，将停止对其计费。  如果需要完成其他工作，可重启该函数并重新构造其状态。
+此扩展使用“事件溯源”的过程是透明的。 事实上，业务流程协调程序函数中的 `await` (C#) 或 `yield` (JavaScript) 运算符将对业务流程协调程序线程的控制权让回给 Durable Task Framework 调度程序。 然后，该调度程序向存储提交业务流程协调程序函数计划的任何新操作（如调用一个或多个子函数或计划持久计时器）。 这个透明的提交操作会追加到业务流程实例的执行历史记录中。 历史记录存储在存储表中。 然后，提交操作向队列添加消息，以计划实际工作。 此时，可从内存中卸载业务流程协调程序函数。 如果正在使用 Azure Functions 消耗计划，将停止对其计费。  如果需要完成其他工作，可重启该函数并重新构造其状态。
 
 如果业务流程函数需要执行其他工作（例如，收到响应消息或持久计时器到期），业务流程协调程序再次唤醒，并从头开始重新执行整个函数，以便重新生成本地状态。 如果代码在此重播过程中尝试调用函数（或执行任何其他异步工作），Durable Task Framework 会查询当前业务流程的执行历史记录。 如果该扩展发现[活动函数](durable-functions-types-features-overview.md#activity-functions)已执行并已生成某种结果，则会回放该函数的结果并且业务流程协调程序代码继续运行。 在函数代码完成或计划了新的异步工作前，此过程一直继续。
 
@@ -346,7 +387,7 @@ Orchestrator 函数使用称为[事件溯源](https://docs.microsoft.com/azure/a
 
 ## <a name="language-support"></a>语言支持
 
-Durable Functions 当前仅支持以下语言：C#（Functions v1 和 v2）、F# 和 JavaScript（仅限 Functions v2）。 这包括业务流程协调程序函数和活动函数。 将来，我们将添加对 Azure Functions 支持的所有语言的支持。 若要查看其它语言支持工作的最新状态，请参阅 Azure Functions [GitHub 存储库问题列表](https://github.com/Azure/azure-functions-durable-extension/issues)。
+Durable Functions 当前仅支持以下语言：C#（Functions 1.x 和 2.x）、F# 和 JavaScript（仅 Functions 2.x、Durable Functions 1.7.0 或更高版本）。 这包括业务流程协调程序函数和活动函数。 将来，我们将添加对 Azure Functions 支持的所有语言的支持。 若要查看其它语言支持工作的最新状态，请参阅 Azure Functions [GitHub 存储库问题列表](https://github.com/Azure/azure-functions-durable-extension/issues)。
 
 ## <a name="monitoring-and-diagnostics"></a>监视和诊断
 
@@ -368,7 +409,7 @@ Durable Functions 扩展使用 Azure 存储队列、表和 Blob 来持久保存�
 
 业务流程协调程序函数通过内部队列消息计划活动函数和接收这些函数的响应。 如果在 Azure Functions 消耗计划中运行函数应用，这些队列由 [Azure Functions 缩放控制器](../functions-scale.md#how-the-consumption-plan-works)进行监视，并根据需要添加新的计算实例。 如果扩大到多个 VM，则业务流程协调程序函数可能在一个 VM 上运行，而它调用的活动函数则在多个不同的 VM 上运行。 可在[性能和缩放](durable-functions-perf-and-scale.md)中找到关于 Durable Functions 的缩放行为的更多详细信息。
 
-表存储用于存储业务流程协调程序帐户的执行历史记录。 每当有实例在特定 VM 上解除冻结时，该实例都可从表存储中获取其执行历史记录，以便可重新生成本地状态。 在表存储中提供历史记录的一项便利是可使用 [Microsoft Azure 存储资源管理器](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer)等工具查看业务流程的历史记录。
+表存储用于存储业务流程协调程序帐户的执行历史记录。 每当有实例在特定 VM 上解除冻结时，该实例都可从表存储中获取其执行历史记录，以便可重新生成本地状态。 在表存储中提供历史记录的一项便利是可使用 [Microsoft Azure 存储资源管理器](../../vs-azure-tools-storage-manage-with-storage-explorer.md)等工具查看业务流程的历史记录。
 
 存储 blob 主要用作租用机制，用于跨多个 VM 协调业务流程实例的横向扩展。 它们还用于保留无法直接存储在表或队列中的大型消息的数据。
 

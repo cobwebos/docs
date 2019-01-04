@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 04/12/2017
 ms.author: cshoe
-ms.openlocfilehash: 5566ea8b21682c5023afc4af357e1a80e1d37384
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: 62924488b776a1a89e1abf492db1881a44585b1a
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50248465"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52997810"
 ---
 # <a name="external-table-binding-for-azure-functions-experimental"></a>Azure Functions 的外部表绑定（实验性）
 
@@ -49,7 +49,7 @@ ms.locfileid: "50248465"
 |[Salesforce](https://docs.microsoft.com/azure/connectors/connectors-create-api-salesforce)||x|x
 |[SharePoint](https://docs.microsoft.com/azure/connectors/connectors-create-api-sharepointonline)||x|x
 |[SQL Server](https://docs.microsoft.com/azure/connectors/connectors-create-api-sqlazure)||x|x
-|[Teradata](http://www.teradata.com/products-and-services/azure/products/)||x|x
+|[Teradata](https://www.teradata.com/products-and-services/azure/products/)||x|x
 |UserVoice||x|x
 |Zendesk||x|x
 
@@ -166,7 +166,7 @@ GO
 
 ### <a name="google-sheets-data-source"></a>Google Sheets 数据源
 
-若要在 Google Docs 中创建要用于此示例的表，请创建具有名为 `Contact` 的工作表的电子表格。 连接器不能使用电子表格显示名称。 需要将内部名称（以粗体显示）作为 dataSetName，例如：`docs.google.com/spreadsheets/d/`**`1UIz545JF_cx6Chm_5HpSPVOenU4DZh4bDxbFgJOSMz0`** 将列名称 `Id`、`LastName`、`FirstName` 添加到第一行，然后填充后续行的数据。
+若要在 Google Docs 中创建要用于此示例的表，请创建具有名为 `Contact` 的工作表的电子表格。 连接器不能使用电子表格显示名称。 内部名称（以粗体显示）需要用作 dataSetName，例如：`docs.google.com/spreadsheets/d/`**`1UIz545JF_cx6Chm_5HpSPVOenU4DZh4bDxbFgJOSMz0`** 将列名称 `Id`、`LastName`、`FirstName` 添加到第一行，然后在后续行中填充数据。
 
 ### <a name="salesforce"></a>Salesforce
 

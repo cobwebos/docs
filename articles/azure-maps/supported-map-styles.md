@@ -8,15 +8,15 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: c8edaba8de597e3e76e760e1f5109006338a663c
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: 2f426ab85d9ab15dd080a487337b8d48358ed040
+ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48238814"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52888454"
 ---
 # <a name="azure-maps-supported-map-styles"></a>Azure Maps 支持的地图样式
-Azure Maps 支持四种不同的内置地图样式。 下面列出了样式及其说明。
+Azure Maps 支持几种不同的内置地图样式，如下所述。
 
 ## <a name="road"></a>道路
 **道路**地图是一个标准地图，可显示道路、自然特征和人工特征以及这些特征的标签。
@@ -49,6 +49,14 @@ Azure Maps 支持四种不同的内置地图样式。 下面列出了样式及�
 **灰度深色**是道路地图样式的深色版本。
 
 ![gray_scale](./media/supported-map-styles/grayscale_dark.png)
+
+**适用 API：**
+* JS 地图控件 
+
+## <a name="night"></a>夜间
+夜间是包含彩色道路和符号的道路地图样式的深色版本。
+
+![夜间](./media/supported-map-styles/night.PNG)
 
 **适用 API：**
 * JS 地图控件 

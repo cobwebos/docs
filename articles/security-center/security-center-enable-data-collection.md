@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/2/2018
+ms.date: 12/2/2018
 ms.author: rkarlin
-ms.openlocfilehash: f6a818e0f628924342ddd50322bb54bf1d1d6079
-ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
+ms.openlocfilehash: 40f3275b2f16a80f1199afdc0d7965cbd4433f50
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2018
-ms.locfileid: "51976651"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53082437"
 ---
 # <a name="data-collection-in-azure-security-center"></a>Azure 安全中心中的数据收集
 安全中心从 Azure 虚拟机 (VM) 和非 Azure 计算机收集数据以监视安全漏洞和威胁。 数据是使用 Microsoft Monitoring Agent 收集的，它从计算机中读取各种安全相关的配置和事件日志，然后将数据复制到工作区以进行分析。 此类数据的示例包括：操作系统类型和版本、操作系统日志（Windows 事件日志）、正在运行的进程、计算机名称、IP 地址和已登录的用户。 Microsoft Monitoring Agent 还将故障转储文件复制到工作区。
@@ -261,7 +261,7 @@ ms.locfileid: "51976651"
     a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。  [安装适用于 Windows 的 OMS 虚拟机扩展](../virtual-machines/extensions/oms-windows.md)
     
     b.  [安装适用于 Linux 的 OMS 虚拟机扩展](../virtual-machines/extensions/oms-linux.md)
-5.  若要在现有 VM 上部署扩展，请遵照[收集有关 Azure 虚拟机的数据](../log-analytics/log-analytics-quick-collect-azurevm.md)中的说明。
+5.  若要在现有 VM 上部署扩展，请遵照[收集有关 Azure 虚拟机的数据](../azure-monitor/learn/quick-collect-azurevm.md)中的说明。
 
   > [!NOTE]
   > “收集事件和性能数据”部分是可选的。

@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 11/01/2018
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: ebf5a23743d1fdd9553b391bb0518c2887ddb096
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: b22f79195a7246c87a8d5d5b4b5e012cc30a62dd
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50959981"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53274558"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>如何规划混合 Azure Active Directory 加入实现
 
@@ -112,7 +112,6 @@ Windows 下层设备的混合 Azure AD 加入：
 
 混合 Azure AD 加入是自动将已加入域的本地设备注册到 Azure AD 的过程。 在某些情况下，你并不希望自动注册所有设备。 如果遇到这种情况，请参阅[如何控制设备的混合 Azure AD 加入](hybrid-azuread-join-control.md)。
 
-
 ## <a name="review-how-to-control-the-hybrid-azure-ad-join-of-your-devices"></a>查看如何控制设备的混合 Azure AD 加入
 
 混合 Azure AD 联接是自动将已加入域的本地设备注册到 Azure AD 的过程。 在某些情况下，你并不希望自动注册所有设备。 例如，在初始部署期间验证一切是否都按预期运行时，这一点就非常必要。
@@ -130,9 +129,9 @@ Windows 下层设备的混合 Azure AD 加入：
 
 如果环境包含托管域，则混合 Azure AD 加入支持：
 
-- 使用无缝单一登录 (SSO) 的直通身份验证 (PTA) 
+- 直通身份验证 (PTA)
 
-- 使用无缝单一登录 (SSO) 的密码哈希同步 (PHS) 
+- 密码哈希同步 (PHS)
 
 自版本 1.1.819.0 起，Azure AD Connect 提供了混合 Azure AD 联接的配置向导。 该向导可让你显著简化配置过程。 有关详细信息，请参阅：
 
@@ -145,7 +144,22 @@ Windows 下层设备的混合 Azure AD 加入：
  如果无法安装所需版本的 Azure AD Connect，请参阅[如何手动配置设备注册](../device-management-hybrid-azuread-joined-devices-setup.md)。 
 
 
+## <a name="alternate-login-id-support-in-hybrid-azure-ad-join"></a>混合 Azure AD 加入中的备用登录 ID 支持
 
+Windows 10 混合 Azure AD 加入根据备用登录 ID 的类型、[身份验证方法](https://docs.microsoft.com/en-us/azure/security/azure-ad-choose-authn)、域类型和 Windows 10 版本对[备用登录 ID](https://docs.microsoft.com/en-us/windows-server/identity/ad-fs/operations/configuring-alternate-login-id) 提供有限支持。 你的环境中可以存在两种类型的备用登录 ID。
+
+ - 可路由的备用登录 ID：可路由的备用登录 ID 具有向域注册机构注册的有效已验证域。 例如，如果 contoso.com 是主域，则 contoso.org 和 contoso.co.uk 是 Contoso拥有的且[已在 Azure AD 中验证的](https://docs.microsoft.com/en-us/azure/active-directory/fundamentals/add-custom-domain)有效域。
+ 
+ - 非可路由的备用登录 ID：非可路由的备用登录 ID 没有已验证域。 它仅在组织的专用网络内适用。 例如，如果 contoso.com 是主域，则 contoso.local 在 Internet 中不是可验证的域，但可在 Contoso 的网络内使用。
+ 
+下表提供了 Windows 10 混合 Azure AD 加入中对这两种备用登录 ID 的支持的详细信息
+
+|备用登录 ID 的类型|域类型|Windows 10 版本|说明|
+|-----|-----|-----|-----|
+|可路由的|联合 |从 1703 版本开始|正式发布|
+|可路由的|托管|从 1709 版本开始|当前为个人预览版。 不支持 Azure AD SSPR |
+|非可路由的|联合|从 1803 版本开始|正式发布|
+|非可路由的|托管|不支持||
 
 
 

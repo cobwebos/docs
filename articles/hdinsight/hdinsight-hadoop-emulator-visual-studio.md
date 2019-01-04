@@ -9,16 +9,16 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/07/2018
 ms.author: hrasheed
-ms.openlocfilehash: e6a3fab0e6b3b092ddb55043882c4d284268abfc
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: c2fd32ad15366c76c061ba42fa0a59d43a317b43
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51006835"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53012753"
 ---
 # <a name="use-the-azure-data-lake-tools-for-visual-studio-with-the-hortonworks-sandbox"></a>将针对 Visual Studio 的 Azure Data Lake 工具与 Hortonworks 沙盒配合使用
 
-Azure Data Lake 包含用于处理常规 Hadoop 群集的工具。 本文档提供将 Data Lake 工具与本地虚拟机上运行的 Hortonworks 沙盒配合使用所要执行的步骤。
+Azure Data Lake 包含用于处理常规 Apache Hadoop 群集的工具。 本文档提供将 Data Lake 工具与本地虚拟机上运行的 Hortonworks 沙盒配合使用所要执行的步骤。
 
 借助 Hortonworks 沙盒可以在开发环境本地使用 Hadoop。 开发一个解决方案后，如果想要大规模部署该解决方案，可以转移到 HDInsight 群集。
 
@@ -34,7 +34,7 @@ Azure Data Lake 包含用于处理常规 Hadoop 群集的工具。 本文档提�
 
 ## <a name="configure-passwords-for-the-sandbox"></a>配置沙盒的密码
 
-确保 Hortonworks 沙盒正在运行。 然后按照 [Hortonworks 沙盒入门](hadoop/apache-hadoop-emulator-get-started.md#set-sandbox-passwords)文档中的步骤进行操作。 这些步骤配置 SSH `root` 帐户和 Ambari `admin` 帐户的密码。 从 Visual Studio 连接到沙盒时，将使用这些密码。
+确保 Hortonworks 沙盒正在运行。 然后按照 [Hortonworks 沙盒入门](hadoop/apache-hadoop-emulator-get-started.md#set-sandbox-passwords)文档中的步骤进行操作。 这些步骤配置 SSH `root` 帐户和 Apache Ambari `admin` 帐户的密码。 从 Visual Studio 连接到沙盒时，将使用这些密码。
 
 ## <a name="connect-the-tools-to-the-sandbox"></a>将工具连接到沙盒
 
@@ -71,7 +71,7 @@ Azure Data Lake 包含用于处理常规 Hadoop 群集的工具。 本文档提�
 
 完成这些步骤后，服务器资源管理器中的“HDInsight”部分下面会出现“HDInsight 本地群集”项。
 
-## <a name="write-a-hive-query"></a>编写 Hive 查询
+## <a name="write-an-apache-hive-query"></a>编写 Apache Hive 查询
 
 Hive 提供类似于 SQL 的查询语言 (HiveQL) 来处理结构化数据。 按照以下步骤了解如何针对本地群集运行按需查询。
 
@@ -100,7 +100,7 @@ Hive 提供类似于 SQL 的查询语言 (HiveQL) 来处理结构化数据。 �
     “作业状态”更改为“已完成”后，会显示有向无环图 (DAG)。 此图描述 Tez 处理 Hive 查询时确定的执行路径。 Tez 是用于本地群集上 Hive 的默认执行引擎。
 
     > [!NOTE]
-    > 使用基于 Linux 的 HDInsight 群集时，Tez 也是默认引擎。 它不是基于 Windows 的 HDInsight 上的默认引擎。 若要在这种群集上使用 Tez，必须在 Hive 查询的开头处添加 `set hive.execution.engine = tez;` 行。
+    > 使用基于 Linux 的 HDInsight 群集时，Apache Tez 也是默认引擎。 它不是基于 Windows 的 HDInsight 上的默认引擎。 若要在这种群集上使用 Tez，必须在 Hive 查询的开头处添加 `set hive.execution.engine = tez;` 行。
 
     使用“作业输出”链接查看输出。 在本例中，输出为 823，即 sample_08 表中的行数。 可以使用“作业日志”和“下载 YARN 日志”链接查看有关作业的诊断信息。
 
@@ -127,7 +127,7 @@ Hive 提供类似于 SQL 的查询语言 (HiveQL) 来处理结构化数据。 �
 
 **Hive 示例**项目包含两个脚本：**WebLogAnalysis.hql** 和 **SensorDataAnalysis.hql**。 可以使用窗口顶部的同一个“提交”按钮提交这些脚本。
 
-## <a name="create-a-pig-project"></a>创建 Pig 项目
+## <a name="create-an-apache-pig-project"></a>创建 Apache Pig 项目
 
 Hive 提供了类似 SQL 的语言用于处理结构化数据，Pig 通过对数据执行转换来工作。 Pig 提供了一种语言 (Pig Latin)，可用于开发转换管道。 若要在本地群集上使用 Pig，请执行以下步骤：
 
@@ -200,5 +200,5 @@ Hive 提供了类似 SQL 的语言用于处理结构化数据，Pig 通过对数
 
 ## <a name="next-steps"></a>后续步骤
 
-* [学习 Hortonworks 沙盒的重要知识](http://hortonworks.com/hadoop-tutorial/learning-the-ropes-of-the-hortonworks-sandbox/)
-* [Hadoop 教程 - HDP 入门](http://hortonworks.com/hadoop-tutorial/hello-world-an-introduction-to-hadoop-hcatalog-hive-and-pig/)
+* [学习 Hortonworks 沙盒的重要知识](https://hortonworks.com/hadoop-tutorial/learning-the-ropes-of-the-hortonworks-sandbox/)
+* [Apache Hadoop 教程 - HDP 入门](https://hortonworks.com/hadoop-tutorial/hello-world-an-introduction-to-hadoop-hcatalog-hive-and-pig/)

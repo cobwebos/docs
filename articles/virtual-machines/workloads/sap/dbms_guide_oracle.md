@@ -13,15 +13,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 11/07/2018
+ms.date: 12/14/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8e2d0d5073ffbeaed1c0215386a0c2c9f22a67d9
-ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.openlocfilehash: 8686130e3b10ece605a6e648badf9aa1dae5e071
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51288639"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53435678"
 ---
 # <a name="oracle-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>适用于 SAP 工作负荷的 Oracle Azure 虚拟机 DBMS 部署
 
@@ -325,7 +325,7 @@ ms.locfileid: "51288639"
 | [2015553] |Microsoft Azure 上的 SAP：支持先决条件 |
 | [1999351] |适用于 SAP 的增强型 Azure 监视故障排除 |
 | [2178632] |Microsoft Azure 上的 SAP 关键监视度量值 |
-| [2191498] |使用 Azure 的 Linux 上的 SAP：增强型监视 |
+| [2191498] |Azure 的 Linux 上的 SAP：增强型监视 |
 | [2039619] |Microsoft Azure 上使用 Oracle 数据库的 SAP 应用程序：支持的产品和版本 |
 | [2243692] |Microsoft Azure (IaaS) VM 上的 Linux：SAP 许可证问题 |
 | [2069760] |Oracle Linux 7.x SAP 安装和升级 |
@@ -428,7 +428,9 @@ Oracle 支持在 Oracle Linux 作为来宾 OS 的 Microsoft Azure 上运行 Orac
 
 ### <a name="storage-configuration"></a>存储配置
 
-Azure 上的 Oracle Database 文件支持 ext4 或 xfs 或 Oracle ASMOnly 的文件系统。 所有数据库文件都必须存储在基于 VHD 或托管磁盘的这些文件系统上。 这些磁盘装载到 Azure VM，基于 Azure 页 BLOB 存储 (<https://docs.microsoft.com/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs>) 或 [Azure 托管磁盘](https://docs.microsoft.com/azure/storage/storage-managed-disks-overview)。 
+Azure 上的 Oracle 数据库文件支持 ext4 或 xfs 或 Oracle ASM 的文件系统。 所有数据库文件都必须存储在基于 VHD 或托管磁盘的这些文件系统上。 这些磁盘装载到 Azure VM，基于 Azure 页 BLOB 存储 (<https://docs.microsoft.com/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs>) 或 [Azure 托管磁盘](https://docs.microsoft.com/azure/storage/storage-managed-disks-overview)。 
+
+对于 Oracle Linux UEK 内核，支持 [Azure 高级存储](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage#premium-storage-for-linux-vms)至少需要 UEK 版本 4。
 
 强烈建议使用 [Azure 托管磁盘](https://docs.microsoft.com/azure/storage/storage-managed-disks-overview)。 另外，还强烈建议使用 [Azure 高级存储](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage)进行 Oracle Database 部署。
 
@@ -493,7 +495,7 @@ Azure 上的 Oracle Database 文件支持 ext4 或 xfs 或 Oracle ASMOnly 的文
 有关在 Azure 环境下的 Oracle Database 数据库灾难恢复方面的信息，请参阅[在 Azure 环境下的 Oracle Database 12c 数据库灾难恢复](https://docs.microsoft.com/azure/virtual-machines/workloads/oracle/oracle-disaster-recovery)。
 
 ### <a name="accelerated-networking"></a>加速网络
-Oracle Linux 7 更新 5 (Oracle Linux 7.5) 提供对 Oracle Linux 中 Azure 加速网络的支持。 如果无法升级到最新的 Oracle Linux 7.5 版本，可能的解决方法是，使用 RedHat 兼容内核 (RHCK) 而不是 Oracle UEK 内核。 根据 SAP 说明 [#1565179](https://launchpad.support.sap.com/#/notes/1565179)，支持在 Oracle Linux 内使用 RHEL 内核。 对于 Azure 加速网络，最小 RHCKL 内核版本必须是 3.10.0-862.13.1.el7。
+Oracle Linux 7 更新 5 (Oracle Linux 7.5) 提供对 Oracle Linux 中 Azure 加速网络的支持。 如果无法升级到最新的 Oracle Linux 7.5 版本，可能的解决方法是，使用 RedHat 兼容内核 (RHCK) 而不是 Oracle UEK 内核。 根据 SAP 说明 [#1565179](https://launchpad.support.sap.com/#/notes/1565179)，支持在 Oracle Linux 内使用 RHEL 内核。 对于 Azure 加速网络，最小 RHCKL 内核版本必须是 3.10.0-862.13.1.el7。 要在 Oracle Linux 中结合 [Azure 加速网络](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/)使用 UEK 内核，需要使用 Oracle UEK 内核版本 5。
 
 如果不从不基于 Azure 市场的映像部署 VM，则需要通过执行以下命令将其他配置文件复制到 VM： 
 <pre><code># Copy settings from github to correct place in VM

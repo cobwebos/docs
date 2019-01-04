@@ -1,5 +1,5 @@
 ---
-title: 创建内部负载均衡器并将其与应用服务环境搭配使用 | Microsoft Docs
+title: 在应用服务环境中创建和使用内部负载均衡器 - Azure | Microsoft Docs
 description: 创建 ASE 并将其与 ILB 搭配使用
 services: app-service
 documentationcenter: ''
@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: ccompy
-ms.openlocfilehash: f7c94b790c6aa7c75c62fd05671f016b7185b2a2
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.custom: seodec18
+ms.openlocfilehash: 88f100bc780d8df0202cfcce9b390085a71fc905
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
-ms.locfileid: "29388809"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53310464"
 ---
 # <a name="using-an-internal-load-balancer-with-an-app-service-environment"></a>搭配应用服务环境使用内部负载均衡器
 
@@ -27,7 +28,7 @@ ms.locfileid: "29388809"
 > 本文介绍应用服务环境 v1。 应用服务环境有一个较新版本，此版本更易于使用并在更强大的基础结构上运行。 若要深入了解新版本，请先参阅[应用服务环境简介](intro.md)。
 >
 
-应用服务环境 (ASE) 功能是 Azure App Service 的一个高级服务选项，可提供多租户戳记中不会提供的增强型配置功能。 ASE 功能实质上是在 Azure 虚拟网络 (VNet) 中部署 Azure 应用服务。 若要更好地理解应用服务环境所提供的功能，请阅读文档：[什么是应用服务环境][WhatisASE]。 如果不了解在 VNet 中操作的优点，请阅读 [Azure 虚拟网络常见问题解答][virtualnetwork]。 
+应用服务环境 (ASE) 功能是 Azure App Service 的一个高级服务选项，可提供多租户戳记中不会提供的增强型配置功能。 ASE 功能实质上是在 Azure 虚拟网络 (VNet) 中部署 Azure 应用服务。 若要更好地理解应用服务环境所提供的功能，请阅读文档： [什么是应用服务环境][WhatisASE] 。 如果不了解在 VNet 中操作的优点，请阅读 [Azure 虚拟网络常见问题解答][virtualnetwork]。 
 
 ## <a name="overview"></a>概述
 可以使用可访问 Internet 的终结点或 VNet 中的 IP 地址部署 ASE。 要将 IP 地址设置为 VNet 地址，需搭配内部负载均衡器 (ILB) 来部署 ASE。 使用 ILB 配置 ASE 时，需提供：
@@ -100,8 +101,8 @@ ILB ASE 与非 ILB ASE 稍有不同。 如先前所述，除了管理自己的 D
 4. 创建后，在 ASE 中创建 Web 应用。 
 5. 如果该 VNET 中没有 VM，则创建一个（不是在与 ASE 相同的子网中，否则会无法运作）。
 6. 设置子域的 DNS。 可以在 DNS 中将通配符与子域结合使用，或者如果想要执行一些简单测试，可编辑 VM 上的主机文件，将 Web 应用名称设置为 VIP IP 地址。 如果 ASE 的子域名称为 .ilbase.com，而 Web 应用名称为 mytestapp，则 mytestapp.ilbase.com 为寻址地址，请在主机文件中进行相应的设置。 （在 Windows 上，主机文件位于 C:\Windows\System32\drivers\etc\)
-7. 在该 VM 上使用浏览器转到 http://mytestapp.ilbase.com（或者任何 Web 应用名称与子域组成的地址）。
-8. 在该 VM 上使用浏览器转到 https://mytestapp.ilbase.com  。如果使用自签名证书，则必须接受安全性不足的缺点。 
+7. 在该 VM 上使用浏览器并转到 https://mytestapp.ilbase.com（或者任何 Web 应用名称与子域组成的地址）。
+8. 在该 VM 上使用浏览器并转到 https://mytestapp.ilbase.com。 如果使用自签名证书，则必须接受安全性不足的缺点。 
 
 ILB 的 IP 地址在“属性”中列为“虚拟 IP 地址”。
 
@@ -147,8 +148,8 @@ ILB 的 IP 地址在“属性”中列为“虚拟 IP 地址”。
 [HowtoCreateASE]: app-service-web-how-to-create-an-app-service-environment.md
 [ControlInbound]: app-service-app-service-environment-control-inbound-traffic.md
 [virtualnetwork]: https://azure.microsoft.com/documentation/articles/virtual-networks-faq/
-[AppServicePricing]: http://azure.microsoft.com/pricing/details/app-service/
+[AppServicePricing]: https://azure.microsoft.com/pricing/details/app-service/
 [ASEAutoscale]: app-service-environment-auto-scale.md
 [ExpressRoute]: app-service-app-service-environment-network-configuration-expressroute.md
-[vnetnsgs]: http://azure.microsoft.com/documentation/articles/virtual-networks-nsg/
+[vnetnsgs]: https://azure.microsoft.com/documentation/articles/virtual-networks-nsg/
 [ASEConfig]: app-service-web-configure-an-app-service-environment.md

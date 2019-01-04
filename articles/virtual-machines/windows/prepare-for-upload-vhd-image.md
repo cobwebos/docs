@@ -13,14 +13,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: troubleshooting
-ms.date: 10/10/2018
+ms.date: 12/13/2018
 ms.author: genli
-ms.openlocfilehash: 4d30cca0106e52706326bfd91a2d0dfb0a64ca04
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 74132c436670247f3eb84859216274d3e1363d07
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51258443"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53338696"
 ---
 # <a name="prepare-a-windows-vhd-or-vhdx-to-upload-to-azure"></a>准备好要上传到 Azure 的 Windows VHD 或 VHDX
 在将 Windows 虚拟机 (VM) 从本地上传到 Microsoft Azure 之前，必须准备好虚拟硬盘（VHD 或 VHDX）。 Azure 仅支持采用 VHD 文件格式且具有固定大小磁盘的**第 1 代 VM**。 VHD 允许的最大大小为 1,023 GB。 可以将第 1 代 VM 从 VHDX 文件系统转换成 VHD 文件系统，以及从动态扩展磁盘转换成固定大小磁盘， 但无法更改 VM 的代次。 有关详细信息，请参阅 [Should I create a generation 1 or 2 VM in Hyper-V?](https://technet.microsoft.com/windows-server-docs/compute/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v)（我应该在 Hyper-V 中创建第 1 代还是第 2 代 VM？）。
@@ -73,6 +73,16 @@ Convert-VHD –Path c:\test\MY-VM.vhdx –DestinationPath c:\test\MY-NEW-VM.vhd 
     ```PowerShell
     netsh winhttp reset proxy
     ```
+
+    如果 VM 需要使用任何特定代理，则必须向 Azure IP 地址 ([168.63.129.16](https://blogs.msdn.microsoft.com/mast/2015/05/18/what-is-the-ip-address-168-63-129-16/
+)) 添加代理例外，以便 VM 可以连接到 Azure：
+    ```
+    $proxyAddress="<your proxy server>"
+    $proxyBypassList="<your list of bypasses>;168.63.129.16"
+
+    netsh winhttp set proxy $proxyAddress $proxyBypassList
+    ```
+
 3. 将磁盘 SAN 策略设置为 [Onlineall](https://technet.microsoft.com/library/gg252636.aspx)：
    
     ```PowerShell
@@ -283,7 +293,7 @@ Set-Service -Name RemoteRegistry -StartupType Automatic
     ```PowerShell
     winmgmt /verifyrepository
     ```
-    如果存储库已损坏，请参阅 [WMI: Repository Corruption, or Not](https://blogs.technet.microsoft.com/askperf/2014/08/08/wmi-repository-corruption-or-not)（WMI：存储库是否损坏？）。
+    如果存储库已损坏，请参阅 [WMI：存储库是否损坏](https://blogs.technet.microsoft.com/askperf/2014/08/08/wmi-repository-corruption-or-not)。
 
 5. 确保任何其他应用程序未使用端口 3389。 此端口用于 Azure 中的 RDP 服务。 可以通过运行 netstat -anob 来查看哪些端口在 VM 上处于使用状态：
 
@@ -377,7 +387,7 @@ Sysprep 是一个可以在 Windows 安装过程中运行的进程，它会重置
 - [从专用磁盘创建 VM](create-vm-specialized.md)
 - [Create a VM from a specialized VHD disk](https://docs.microsoft.com/azure/virtual-machines/windows/create-vm-specialized-portal?branch=master)（从专用 VHD 磁盘创建 VM）
 
-若要创建通用化映像，则需运行 sysprep。 有关 Sysprep 的详细信息，请参阅 [How to Use Sysprep: An Introduction](https://technet.microsoft.com/library/bb457073.aspx)（如何使用 Sysprep：简介）。 
+若要创建通用化映像，则需运行 sysprep。 有关 Sysprep 的更多信息，请参见[如何使用 Sysprep：简介](https://technet.microsoft.com/library/bb457073.aspx)。 
 
 并非每个安装在基于 Windows 的计算机上的角色或应用程序都支持该通用化。 因此，在运行此过程之前，请参阅以下文章，确保该计算机的角色受 sysprep 的支持。 有关详细信息，请参阅 [Sysprep Support for Server Roles](https://msdn.microsoft.com/windows/hardware/commercialize/manufacture/desktop/sysprep-support-for-server-roles)（Sysprep 对服务器角色的支持）。
 
@@ -409,7 +419,7 @@ Sysprep 是一个可以在 Windows 安装过程中运行的进程，它会重置
 *  在 Azure 中创建 VM 以后，建议将 pagefile 置于“临时驱动器”卷以改进性能。 可以将其设置如下：
 
     ```PowerShell
-    Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management' -name "PagingFiles" -Value "D:\pagefile" -Type MultiString -force
+    Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management' -name "PagingFiles" -Value "D:\pagefile.sys" -Type MultiString -force
     ```
 如果有数据磁盘附加到了 VM，则临时驱动器卷的驱动器号通常为“D”。 此指定可能会有所不同，具体取决于可用驱动器数以及所做的设置。
 

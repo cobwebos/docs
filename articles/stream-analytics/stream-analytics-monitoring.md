@@ -1,30 +1,31 @@
 ---
 title: 了解 Azure 流分析中的作业监视
-description: 本文介绍如何在 Azure 流分析中监视作业
+description: 本文介绍如何在 Azure 门户中监视 Azure 流分析作业。
 services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 11/21/2018
-ms.openlocfilehash: 200df7602f94f70f3fb9c62ad81a0710923184c7
-ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
+ms.date: 12/07/2018
+ms.custom: seodec18
+ms.openlocfilehash: 656f749fd2a930c51bfd7d1a99642fae87694846
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2018
-ms.locfileid: "52291391"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53096572"
 ---
 # <a name="understand-stream-analytics-job-monitoring-and-how-to-monitor-queries"></a>了解流分析作业监视以及如何监视查询
 
-## <a name="introduction-the-monitor-page"></a>简介：“监视”页
+## <a name="introduction-the-monitor-page"></a>简介：监视页
 Azure 门户提供了可用于监视和排查查询和作业性能问题的关键性能指标。 要查看这些指标，请浏览到感兴趣的想要查看其指标的流分析作业，并查看“概览”页面上的“监视”部分。  
 
-![监视链接](./media/stream-analytics-monitoring/02-stream-analytics-monitoring-block.png)
+![流分析作业监视链接](./media/stream-analytics-monitoring/02-stream-analytics-monitoring-block.png)
 
 此窗口如下所示：
 
-![监视作业仪表板](./media/stream-analytics-monitoring/01-stream-analytics-monitoring.png)  
+![流分析作业监视仪表板](./media/stream-analytics-monitoring/01-stream-analytics-monitoring.png)  
 
 ## <a name="metrics-available-for-stream-analytics"></a>可用于流分析的指标
 | 指标                 | 定义                               |
@@ -49,7 +50,7 @@ Azure 门户提供了可用于监视和排查查询和作业性能问题的关�
 ## <a name="customizing-monitoring-in-the-azure-portal"></a>在 Azure 门户中自定义监视
 可以在“编辑图表”设置中调整图表类型、显示的指标和时间范围。 有关详细信息，请参阅[如何自定义监视](../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md)。
 
-  ![查询监视器时间关系图](./media/stream-analytics-monitoring/08-stream-analytics-monitoring.png)  
+  ![流分析查询监视器时间图](./media/stream-analytics-monitoring/08-stream-analytics-monitoring.png)  
 
 
 ## <a name="latest-output"></a>最新的输出

@@ -3,7 +3,7 @@ title: 如何卸载弹性数据库作业工具
 description: 了解如何使用 PowerShell 的 Azure 门户卸载弹性数据库作业组件。
 services: sql-database
 ms.service: sql-database
-ms.subservice: operations
+ms.subservice: elastic-scale
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 06/14/2018
-ms.openlocfilehash: 15313bf0d2d152a8295fb831e62452f8ad63bbeb
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: f717c0c656c5a80b14ef09a10cda18bd12500eeb
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50242443"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52869018"
 ---
 # <a name="uninstall-elastic-database-jobs-components"></a>卸载弹性数据库作业组件
 
@@ -35,7 +35,7 @@ ms.locfileid: "50242443"
 5. 删除该资源组。
 
 ## <a name="uninstall--elastic-database-jobs-components-using-powershell"></a>使用 PowerShell 卸载弹性数据库作业组件
-1. 启动 Microsoft Azure PowerShell 命令窗口，并导航到 Microsoft.Azure.SqlDatabase.Jobs.x.x.xxxx.x 文件夹下的 tools 子目录：键入 **cd tools**
+1. 启动 Microsoft Azure PowerShell 命令窗口，并导航到 Microsoft.Azure.SqlDatabase.Jobs.x.x.xxx.x 文件夹下的 tools 子目录：键入“cd tools”。
    
      PS C:\*Microsoft.Azure.SqlDatabase.Jobs.x.x.xxxx.x*>cd tools
 2. 执行.\UninstallElasticDatabaseJobs.ps1 PowerShell 脚本。

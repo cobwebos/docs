@@ -10,17 +10,15 @@ ms.assetid: ae9a1623-d2ba-41d3-bd97-36e65d3ca119
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/02/2018
 ms.author: magoedte
-ms.component: ''
-ms.openlocfilehash: 5e19c7c1ed15183fdb796a6fa4e537da946b40b9
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 5236cff7a4afe508a8e11c6d75484fcdc9d43f91
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52637332"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53194226"
 ---
 # <a name="connect-computers-without-internet-access-using-the-log-analytics-gateway"></a>使用 Log Analytics 网关连接无法访问 Internet 的计算机
 本文档介绍直接连接或 Operations Manager 监视的计算机无法访问 Internet 时，如何使用 Log Analytics 网关，配置与 Azure 自动化和 Log Analytics 的通信。  Log Analytics 网关是使用 HTTP CONNECT 命令，支持 HTTP 隧道的 HTTP 转发代理，它可以收集数据，然后代表这些设备将数据发送到 Azure 自动化和 Log Analytics。  
@@ -82,15 +80,15 @@ Log Analytics 网关提供了以下语言：
 - 西班牙语(国际)
 
 ### <a name="supported-encryption-protocols"></a>支持的加密协议
-Log Analytics 网关仅支持传输层安全性 (TLS) 1.0、1.1 和 1.2。  它不支持安全套接字层 (SSL)。  为确保传输到 Log Analytics 的数据的安全性，强烈建议将网关配置为至少使用传输层安全性 (TLS) 1.2。 我们发现旧版 TLS/安全套接字层 (SSL) 容易受到攻击，尽管目前出于向后兼容，这些协议仍可正常工作，但我们**不建议使用**。  有关其他信息，请查看[使用 TLS 1.2 安全地发送数据](../../log-analytics/log-analytics-data-security.md#sending-data-securely-using-tls-12)。 
+Log Analytics 网关仅支持传输层安全性 (TLS) 1.0、1.1 和 1.2。  它不支持安全套接字层 (SSL)。  为确保传输到 Log Analytics 的数据的安全性，强烈建议将网关配置为至少使用传输层安全性 (TLS) 1.2。 我们发现旧版 TLS/安全套接字层 (SSL) 容易受到攻击，尽管目前出于向后兼容，这些协议仍可正常工作，但我们**不建议使用**。  有关其他信息，请查看[使用 TLS 1.2 安全地发送数据](../../azure-monitor/platform/data-security.md#sending-data-securely-using-tls-12)。 
 
 ### <a name="supported-number-of-agent-connections"></a>支持的代理连接数
 下表突出显示了支持与网关服务器通信的代理数量。  支持基于代理每 6 秒上传 200KB 数据计算。 测试的每个代理的数据量约为每天 2.7GB。
 
 |网关 |支持的代理近似数量|  
 |--------|----------------------------------|  
-|- CPU: Intel XEON CPU E5-2660 v3 \@ 2.6GHz 双核<br> - 内存：4 GB<br> - 网络带宽：1 Gbps| 600|  
-|- CPU: Intel XEON CPU E5-2660 v3 \@ 2.6GHz 四核<br> - 内存：8 GB<br> - 网络带宽：1 Gbps| 1000|  
+|- CPU：Intel XEON CPU E5-2660 v3 \@ 2.6GHz 双核<br> - 内存：4 GB<br> - 网络带宽：1 Gbps| 600|  
+|- CPU：Intel XEON CPU E5-2660 v3 \@ 2.6GHz 四核<br> - 内存：8 GB<br> - 网络带宽：1 Gbps| 1000|  
 
 ## <a name="download-the-log-analytics-gateway"></a>下载 Log Analytics 网关
 
@@ -142,7 +140,7 @@ Log Analytics 网关仅支持传输层安全性 (TLS) 1.0、1.1 和 1.2。  它�
 以下部分包含有关如何使用 Log Analytics 网关配置直接连接的 Log Analytics 代理、Operations Manager 管理组或 Azure 自动化混合 Runbook 辅助角色，使其与 Azure 自动化或 Log Analytics 通信的步骤。  
 
 ### <a name="configure-standalone-log-analytics-agent"></a>配置独立的 Log Analytics 代理
-若要了解有关在直接连接到 Log Analytics 的 Windows 计算机上如何安装 Log Analytics 代理的要求和步骤，请参阅[将 Windows 计算机连接到 Log Analytics](agent-windows.md)；对于 Linux 计算机，请参阅[将 Linux 计算机连接到 Log Analytics](../../log-analytics/log-analytics-quick-collect-linux-computer.md)。 不是在配置代理时指定代理服务器，而是将该值替换为 Log Analytics 网关服务器的 IP 地址及其端口号。  如果在网络负载均衡器后面部署了多个网关服务器，Log Analytics 代理的代理配置为 NLB 的虚拟 IP 地址。  
+若要了解有关在直接连接到 Log Analytics 的 Windows 计算机上如何安装 Log Analytics 代理的要求和步骤，请参阅[将 Windows 计算机连接到 Log Analytics](agent-windows.md)；对于 Linux 计算机，请参阅[将 Linux 计算机连接到 Log Analytics](../../azure-monitor/learn/quick-collect-linux-computer.md)。 不是在配置代理时指定代理服务器，而是将该值替换为 Log Analytics 网关服务器的 IP 地址及其端口号。  如果在网络负载均衡器后面部署了多个网关服务器，Log Analytics 代理的代理配置为 NLB 的虚拟 IP 地址。  
 
 有关自动化混合 Runbook 辅助角色的信息，请参阅[部署混合 Runbook 辅助角色](../../automation/automation-hybrid-runbook-worker.md)。
 
@@ -183,7 +181,7 @@ Log Analytics 网关仅支持传输层安全性 (TLS) 1.0、1.1 和 1.2。  它�
 1. 打开 Operations Manager 控制台并选择“创作”工作区。  
 1. 在“创作”工作区中选择“规则”，并单击 Operations Manager 工具栏上的“范围”按钮。 如果此按钮不可用，请确保已在“监视”窗格中选择了一个对象而不是文件夹。 “范围管理包对象”对话框显示了通用目标类、组或对象的列表。 
 1. 在“查找”字段中键入“Health Service”，然后从列表中将其选中。  单击“确定”。  
-1. 在 Operations 控制台工具栏上搜索规则“顾问代理设置规则”，单击“重写”，然后指向“重写规则”>“针对类: Health Service 的特定对象”并从列表中选择特定的对象。  或者，可以创建一个自定义组并在其中包含要将此重写应用到的服务器的 Health Service 对象，然后向该组应用该重写。
+1. 在 Operations 控制台工具栏上搜索规则“顾问代理设置规则”，单击“重写”，然后指向“重写规则”>“针对类 Health Service 的特定对象”并从列表中选择特定的对象。  或者，可以创建一个自定义组并在其中包含要将此重写应用到的服务器的运行状况服务对象，然后向该组应用该重写。
 1. 在“重写属性”对话框中，勾选“WebProxyAddress”参数旁边的“重写”列。  在“重写值”字段中，输入 Log Analytics 网关服务器的 URL，请确保以 `http://` 前缀开头。  
 
     >[!NOTE]
@@ -256,7 +254,7 @@ Log Analytics 网关仅支持传输层安全性 (TLS) 1.0、1.1 和 1.2。  它�
 1. 如果上一步骤未发生错误，则表示该模块已成功导入，可以使用 cmdlet。 键入 `Get-Module OMSGateway`
 1. 使用 cmdlet 做出更改后，请务必重新启动网关服务。
 
-如果步骤 3 出错，则表示该模块未导入。 出错的原因可能是 PowerShell 找不到模块。 可在网关的安装路径中找到该模块：*C:\Program Files\Microsoft OMS Gateway\PowerShell\OmsGateway*。
+如果步骤 3 出错，则表示该模块未导入。 出错的原因可能是 PowerShell 找不到模块。 可以在网关的安装路径中找到它：*C:\Program Files\Microsoft OMS Gateway\PowerShell\OmsGateway*。
 
 | **Cmdlet** | **参数** | **说明** | **示例** |
 | --- | --- | --- | --- |  
@@ -290,7 +288,7 @@ Log Analytics 网关仅支持传输层安全性 (TLS) 1.0、1.1 和 1.2。  它�
 | 103 |已从客户端收到 HTTP CONNECT 命令 |
 | 104 |不是 HTTP CONNECT 命令 |
 | 105 |目标服务器不在允许列表中，或者目标端口不是安全端口 (443) <br> <br> 请确保网关服务器上的 MMA 代理以及与网关通信的代理已连接到同一个 Log Analytics 工作区。 |
-| 105 |ERROR TcpConnection – 客户端证书无效: CN=网关 <br><br> 请确保： <br>    <br> &#149; 使用版本号为 1.0.395.0 或更高的网关。 <br> &#149; 网关服务器上的 MMA 代理以及与网关通信的代理已连接到同一个 Log Analytics 工作区。 |
+| 105 |ERROR TcpConnection – 客户端证书无效：CN=Gateway <br><br> 请确保： <br>    <br> &#149; 使用版本号为 1.0.395.0 或更高的网关。 <br> &#149; 网关服务器上的 MMA 代理以及与网关通信的代理已连接到同一个 Log Analytics 工作区。 |
 | 106 |Log Analytics 网关仅支持 TLS 1.0、TLS 1.1 和 1.2。  它不支持 SSL。 对于任何不支持的 TLS/SSL 协议版本，Log Analytics 网关将生成事件 ID 106。|
 | 107 |已验证 TLS 会话 |
 

@@ -5,16 +5,15 @@ services: site-recovery
 author: sujayt
 manager: rochakm
 ms.service: site-recovery
-ms.devlang: na
 ms.topic: article
-ms.date: 08/09/2018
+ms.date: 11/27/2018
 ms.author: sujayt
-ms.openlocfilehash: 7d11460fd1db5ba92725567a41aaaeab9e752adb
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 84462b98e1006cadf34adecf948efd39ad4f69d6
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52308114"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53313966"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-replication-issues"></a>Azure 到 Azure VM 复制问题故障排除
 
@@ -38,7 +37,7 @@ ms.locfileid: "52308114"
 
 **错误代码** | **可能的原因** | **建议**
 --- | --- | ---
-151066<br></br>**消息**：Site Recovery configuration failed.（Site Recovery 配置失败。） | 计算机上没有授权和身份验证所需的受信任的根证书。 | - 对于运行 Windows 操作系统的 VM，请确保虚拟机上存在受信任的根证书。 有关信息，请参阅[配置受信任的根和不允许的证书](https://technet.microsoft.com/library/dn265983.aspx)。<br></br>- 对于运行 Linux 操作系统的 VM，请按照 Linux 操作系统版本分销商发布的受信任根证书指南操作。
+151066<br></br>**消息**：Site Recovery 配置失败。 | 计算机上没有授权和身份验证所需的受信任的根证书。 | - 对于运行 Windows 操作系统的 VM，请确保虚拟机上存在受信任的根证书。 有关信息，请参阅[配置受信任的根和不允许的证书](https://technet.microsoft.com/library/dn265983.aspx)。<br></br>- 对于运行 Linux 操作系统的 VM，请按照 Linux 操作系统版本分销商发布的受信任根证书指南操作。
 
 ### <a name="fix-the-problem"></a>解决问题
 **Windows**
@@ -61,37 +60,37 @@ ms.locfileid: "52308114"
 
       ``# cd /etc/ssl/certs``
 
-3. 检查 Symantec 根 CA 证书是否存在。
+1. 检查 Symantec 根 CA 证书是否存在。
 
       ``# ls VeriSign_Class_3_Public_Primary_Certification_Authority_G5.pem``
 
-4. 如果未找到 Symantec 根 CA 证书，则运行以下命令下载文件。 检查是否有任何错误，对于网络故障执行建议的操作。
+2. 如果未找到 Symantec 根 CA 证书，则运行以下命令下载文件。 检查是否有任何错误，对于网络故障执行建议的操作。
 
       ``# wget https://www.symantec.com/content/dam/symantec/docs/other-resources/verisign-class-3-public-primary-certification-authority-g5-en.pem -O VeriSign_Class_3_Public_Primary_Certification_Authority_G5.pem``
 
-5. 检查 Baltimore 根 CA 证书是否存在。
+3. 检查 Baltimore 根 CA 证书是否存在。
 
       ``# ls Baltimore_CyberTrust_Root.pem``
 
-6. 如果未找到 Baltimore 根 CA 证书，则下载该证书。  
+4. 如果未找到 Baltimore 根 CA 证书，则下载该证书。  
 
     ``# wget http://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem -O Baltimore_CyberTrust_Root.pem``
 
-7. 检查 DigiCert_Global_Root_CA 证书是否存在。
+5. 检查 DigiCert_Global_Root_CA 证书是否存在。
 
     ``# ls DigiCert_Global_Root_CA.pem``
 
-8. 如果未找到 DigiCert_Global_Root_CA，则运行以下命令下载该证书。
+6. 如果未找到 DigiCert_Global_Root_CA，则运行以下命令下载该证书。
 
     ``# wget http://www.digicert.com/CACerts/DigiCertGlobalRootCA.crt``
 
     ``# openssl x509 -in DigiCertGlobalRootCA.crt -inform der -outform pem -out DigiCert_Global_Root_CA.pem``
 
-9. 运行 rehash 脚本更新新下载的证书的证书使用者哈希。
+7. 运行 rehash 脚本更新新下载的证书的证书使用者哈希。
 
     ``# c_rehash``
 
-10. 检查是否已为证书创建使用者哈希作为符号链接。
+8.  检查是否已为证书创建使用者哈希作为符号链接。
 
     - 命令
 
@@ -120,11 +119,11 @@ ms.locfileid: "52308114"
       ``lrwxrwxrwx 1 root root   27 Jan  8 09:48 399e7759.0 -> DigiCert_Global_Root_CA.pem
       -rw-r--r-- 1 root root 1380 Jun  5  2014 DigiCert_Global_Root_CA.pem``
 
-11. 使用文件名 b204d74a.0 创建文件 VeriSign_Class_3_Public_Primary_Certification_Authority_G5.pem 的副本
+9.  使用文件名 b204d74a.0 创建文件 VeriSign_Class_3_Public_Primary_Certification_Authority_G5.pem 的副本
 
     ``# cp VeriSign_Class_3_Public_Primary_Certification_Authority_G5.pem b204d74a.0``
 
-12. 使用文件名 653b494a.0 创建文件 Baltimore_CyberTrust_Root.pem 的副本
+10. 使用文件名 653b494a.0 创建文件 Baltimore_CyberTrust_Root.pem 的副本
 
     ``# cp Baltimore_CyberTrust_Root.pem 653b494a.0``
 
@@ -168,7 +167,7 @@ ms.locfileid: "52308114"
 - **解决方法**
   - Azure Site Recovery 需要具有对 Office 365 IP 范围的访问权限来进行身份验证。
     如果你使用 Azure 网络安全组 (NSG) 规则/防火墙代理控制 VM 上的出站网络连接，请确保允许到 O365 IP 范围的通信。 创建一个基于 [Azure Active Directory (AAD) 服务标记](../virtual-network/security-overview.md#service-tags)的 NSG 规则以允许访问与 AAD 对应的所有 IP 地址
-        - 如果将来向 Azure Active Directory (AAD) 添加新地址，则需要创建新的 NSG 规则。
+        - 如果将来要向 Azure Active Directory (AAD) 添加新地址，则需要创建新的 NSG 规则。
 
 
 ### <a name="issue-3-site-recovery-configuration-failed-151197"></a>问题 3：Site Recovery 配置失败 (151197)
@@ -185,15 +184,16 @@ ms.locfileid: "52308114"
 
 
  - **解决方法**
-  1.    移动服务代理通过 Windows 上的 IE 和 Linux 上的 /etc/environment 检测代理设置。
-  2.  如果只想对 ASR 移动服务设置代理，可在位于以下路径的 ProxyInfo.conf 中提供代理详细信息：</br>
-      - ***Linux*** 上的 ``/usr/local/InMage/config/``
-      - ***Windows*** 上的 ``C:\ProgramData\Microsoft Azure Site Recovery\Config``
-  3.    ProxyInfo.conf 应包含采用以下 INI 格式的代理设置。 </br>
+   1.   移动服务代理通过 Windows 上的 IE 和 Linux 上的 /etc/environment 检测代理设置。
+   2.  如果只想对 ASR 移动服务设置代理，可在位于以下路径的 ProxyInfo.conf 中提供代理详细信息：</br>
+       - ***Linux*** 上的 ``/usr/local/InMage/config/``
+       - ***Windows*** 上的 ``C:\ProgramData\Microsoft Azure Site Recovery\Config``
+   3.   ProxyInfo.conf 应包含采用以下 INI 格式的代理设置。</br>
                    *[proxy]*</br>
                    *Address=http://1.2.3.4*</br>
                    *Port=567*</br>
-  4. ASR 移动服务代理仅支持***未经身份验证的代理***。
+   4. ASR 移动服务代理仅支持***未经身份验证的代理***。
+ 
 
 ### <a name="fix-the-problem"></a>解决问题
 若要将[所需的 URL](azure-to-azure-about-networking.md#outbound-connectivity-for-urls) 或[所需的 IP 范围](azure-to-azure-about-networking.md#outbound-connectivity-for-ip-address-ranges)加入允许列表，请按照[网络指南文档](site-recovery-azure-to-azure-networking-guidance.md)中的步骤执行操作。
@@ -204,12 +204,12 @@ ms.locfileid: "52308114"
 
 **错误代码** | **可能的原因** | **建议**
 --- | --- | ---
-150039<br></br>**消息**：Azure data disk (DiskName) (DiskURI) with logical unit number (LUN) (LUNValue) was not mapped to a corresponding disk being reported from within the VM that has the same LUN value.（具有逻辑单元号 [LUN] [LUNValue] 的 Azure 数据磁盘 [DiskName] [DiskURI] 未映射到具有相同 LUN 值的 VM 报告的相应磁盘。） | - 新数据磁盘已附加到 VM，但该磁盘未初始化。</br></br>- VM 内的数据磁盘未正确报告磁盘附加到 VM 时的 LUN 值。| 请确保数据磁盘已初始化，然后重试操作。</br></br>对于 Windows：[附加并初始化新磁盘](https://docs.microsoft.com/azure/virtual-machines/windows/attach-managed-disk-portal)。</br></br>对于 Linux：[在 Linux 中初始化新数据磁盘](https://docs.microsoft.com/azure/virtual-machines/linux/add-disk)。
+150039<br></br>**消息**：Azure data disk (DiskName) (DiskURI) with logical unit number (LUN) (LUNValue) was not mapped to a corresponding disk being reported from within the VM that has the same LUN value.（具有逻辑单元号 (LUN) (LUNValue) 的 Azure 数据磁盘 (DiskName) (DiskURI) 未映射到具有相同 LUN 值的 VM 报告的相应磁盘。） | - 新数据磁盘已附加到 VM，但该磁盘未初始化。</br></br>- VM 内的数据磁盘未正确报告磁盘附加到 VM 时的 LUN 值。| 请确保数据磁盘已初始化，然后重试操作。</br></br>对于 Windows：[附加并初始化新的磁盘](https://docs.microsoft.com/azure/virtual-machines/windows/attach-managed-disk-portal)。</br></br>对于 Linux：[在 Linux 中初始化新的数据磁盘](https://docs.microsoft.com/azure/virtual-machines/linux/add-disk)。
 
 ### <a name="fix-the-problem"></a>解决问题
 请确保数据磁盘已初始化，然后重试操作：
 
-- 对于 Windows：[附加并初始化新磁盘](https://docs.microsoft.com/azure/virtual-machines/windows/attach-managed-disk-portal)。
+- 对于 Windows：[附加并初始化新的磁盘](https://docs.microsoft.com/azure/virtual-machines/windows/attach-managed-disk-portal)。
 - 对于 Linux：[在 Linux 中添加新数据磁盘](https://docs.microsoft.com/azure/virtual-machines/linux/add-disk)。
 
 如果问题持续出现，请联系支持人员。

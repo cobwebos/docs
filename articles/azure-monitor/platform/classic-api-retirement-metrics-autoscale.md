@@ -7,13 +7,12 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 11/19/2018
 ms.author: robb
-ms.component: ''
-ms.openlocfilehash: 450eac3613df18997c5b0f9189555555da20cfcf
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: ce54b63aa7831ed40a8592d536c43fc83fdc5567
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52585380"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53433080"
 ---
 # <a name="azure-monitor-retirement-of-classic-deployment-model-apis-for-metrics-and-autoscale"></a>Azure Monitor 即将停用指标和自动缩放的经典部署模型 API
 
@@ -25,7 +24,7 @@ ms.locfileid: "52585380"
 
 如果你是通过 Azure 门户、[新的 Azure Monitor SDK](https://www.nuget.org/packages/Microsoft.Azure.Management.Monitor/)、PowerShell、CLI 或资源管理器模板管理自动缩放，则不需要采取任何措施。  
 
-如果你是通过 Azure 门户或各种[监视合作伙伴服务](../../monitoring-and-diagnostics/monitoring-partners.md)使用指标，则不需要采取任何措施。 Microsoft 正在配合监视合作伙伴迁移到新的 API。
+如果你是通过 Azure 门户或各种[监视合作伙伴服务](../../azure-monitor/platform/partners.md)使用指标，则不需要采取任何措施。 Microsoft 正在配合监视合作伙伴迁移到新的 API。
 
 ## <a name="who-is-affected"></a>哪些用户受影响
 
@@ -76,9 +75,9 @@ ms.locfileid: "52585380"
 
 对前面所列的经典 API 发出任何调用将会失败，并返回如下所示的错误消息：
 
-自动缩放：“此 API 已弃用。请使用 Azure 门户、Azure Monitor SDK、PowerShell、CLI 或资源管理器模板管理自动缩放设置。”  
+对于自动缩放：“此 API 已弃用。请使用 Azure 门户、Azure Monitor SDK、PowerShell、CLI 或资源管理器模板管理自动缩放设置。”  
 
-指标：“此 API 已弃用。请使用 Azure 门户、Azure Monitor SDK、PowerShell 或 CLI 查询指标。”
+对于指标：“此 API 已弃用。请使用 Azure 门户、Azure Monitor SDK、PowerShell 或 CLI 查询指标。”
 
 ## <a name="email-notifications"></a>电子邮件通知
 

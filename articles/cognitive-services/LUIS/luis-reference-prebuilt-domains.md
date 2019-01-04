@@ -1,23 +1,24 @@
 ---
-title: 预构建的域参考 - Azure | Microsoft Docs
+title: 预构建的域参考
 titleSuffix: Azure
 description: 预构建的域参考，这些参考是语言理解智能服务 (LUIS) 中意向和实体的预构建集合。
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 11/26/2018
+ms.date: 12/07/2018
 ms.author: diberry
-ms.openlocfilehash: 287a0986d921798bc7735e5a75d279f010712b16
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.openlocfilehash: 3cb85a48a881545e9b2a0df29c35218b999fdbf0
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52335617"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53140959"
 ---
-# <a name="prebuilt-domain-reference"></a>预构建的域参考
+# <a name="prebuilt-domain-reference-for-your-luis-app"></a>LUIS 应用的预构建的域参考
 此参考提供有关[预构建的域](luis-how-to-use-prebuilt-domains.md)的信息，这些参考是 LUIS 提供的意向和实体的预构建集合。
 
 相比之下，[自定义域](luis-how-to-start-new-app.md)从无意向和模型开始。 可将任何预构建的域意向和实体添加到自定义模型中。
@@ -241,11 +242,12 @@ LUIS 提供 20 个预构建的域。
 电影票域提供与在电影院预订电影票相关的意向和实体。
 
 ### <a name="examples"></a>示例
-```
-Book me two tickets for Captain Omar and the two Musketeers
-Cancel tickets
-When is Captain Omar showing?
-```
+
+|示例|
+|--|
+|为我预订两张 Captain Omar and the two musketeers 的电影票|
+|取消票证|
+|Captain Omar 什么时候开始放映？|
 
 ### <a name="intents"></a>意向
 | 意向名称 | Description | 示例 |
@@ -266,11 +268,12 @@ When is Captain Omar showing?
 音乐域提供与在音乐播放器上播放音乐相关的意向和实体。
 
 ### <a name="examples"></a>示例
-```
-play Beethoven
-Increase track volume
-Skip to the next song
-```
+
+|示例|
+|--|
+|播放 Beethoven|
+|增加曲目音量|
+|跳到下一首歌|
 
 ### <a name="intents"></a>意向
 | 意向名称 | Description | 示例 |
@@ -297,11 +300,12 @@ Skip to the next song
 注释域提供与创建、编辑和查找注释相关的意向和实体。
 
 ### <a name="examples"></a>示例
-```
-Add to my groceries note lettuce tomato bread coffee
-Check off bananas from my grocery list
-Remove all items from my vacation list
-```
+
+|示例|
+|--|
+|将生菜番茄面包咖啡添加到购物清单中|
+|核对购物清单上的香蕉|
+|从假期清单中删除所有项|
 
 ### <a name="intents"></a>意向
 | 意向名称 | Description | 示例 |
@@ -330,11 +334,13 @@ Remove all items from my vacation list
 OnDevice 域提供与控制设备相关的意向和实体。
 
 ### <a name="examples"></a>示例
-```
-Close video player
-Cancel playback
-Can you make the screen brighter?
-```
+
+|示例|
+|--|
+|关闭视频播放器|
+|取消播放|
+|你能否调亮屏幕？|
+
 
 ### <a name="intents"></a>意向
 | 意向名称 | Description | 示例 |
@@ -381,11 +387,13 @@ Can you make the screen brighter?
 地点域提供了处理与商家、机构、餐馆、公共场所和地址等地点相关的查询的意向。
 
 ### <a name="examples"></a>示例
-```
-Save this location to my favorites
-How far away is Holiday Inn?
-At what time does Safeway close?
-```
+
+|示例|
+|--|
+|将此地点保存到我的收藏夹|
+|距离假日酒店有多远？|
+|西夫韦什么时候打烊？|
+
 
 ### <a name="intents"></a>意向
 | 意向名称 | Description | 示例 |
@@ -450,11 +458,13 @@ restart|
 提醒域提供用于创建、编辑和查找提醒的意向和实体。
 
 ### <a name="examples"></a>示例
-```
-Change my interview to 9 am tomorrow
-Remind me to buy milk on my way back home
-Can you check if I have a reminder about Christine's birthday?
-```
+
+|示例|
+|--|
+|把我的采访改为明天上午 9 点|
+|提醒我在回家的路上买牛奶|
+|你能检查我是否有关于 Christine 生日的提醒吗？|
+
 
 ### <a name="intents"></a>意向
 | 意向名称 | Description | 示例 |
@@ -473,11 +483,12 @@ Can you check if I have a reminder about Christine's birthday?
 餐位预订域提供与管理餐位预订相关的意向和实体。
 
 ### <a name="examples"></a>示例
-```
-Reserve at Zucca for two for tonight
-Book a table at BJ's for tomorrow
-Table for 3 in Palo Alto at 7
-```
+
+|示例|
+|--|
+|今晚在 Zucca 预订两人位|
+|在 BJ's 预订明天的座位|
+|7 点在帕洛阿尔托的三人位|
 
 ### <a name="intents"></a>意向
 | 意向名称 | Description | 示例 |
@@ -502,11 +513,12 @@ Table for 3 in Palo Alto at 7
 出租车域提供用于创建和管理出租车预约的意向和实体。
 
 ### <a name="examples"></a>示例
-```
-Get me a cab at 3 pm
-How much longer do I have to wait for my taxi?
-Cancel my Uber
-```
+
+|示例|
+|--|
+|下午 3 点帮我叫一辆出租车|
+|我还要等多久出租车才能到？|
+|取消我预约的 Uber|
 
 ### <a name="intents"></a>意向
 | 意向名称 | Description | 示例 |
@@ -531,11 +543,13 @@ Cancel my Uber
 翻译域提供与将文本翻译成目标语言相关的意向和实体。
 
 ### <a name="examples"></a>示例
-```
-Translate to French
-Translate hello to German
-Translate this sentence to English
-```
+
+|示例|
+|--|
+|翻译为法语|
+|将 hello 翻译为德语|
+|将这句话翻译为英语|
+
 
 ### <a name="intents"></a>意向
 | 意向名称 | Description | 示例 |
@@ -554,11 +568,12 @@ Translate this sentence to English
 电视域提供用于控制电视的意向和实体。
 
 ### <a name="examples"></a>示例
-```
-Switch channel to BBC
-Show TV guide
-Watch National Geographic
-```
+
+|示例|
+|--|
+|将频道切换到 BBC|
+|显示电视指南|
+|观看《国家地理》|
 
 ### <a name="intents"></a>意向
 | 意向名称 | Description | 示例 |
@@ -576,11 +591,13 @@ Watch National Geographic
 实用程序域为许多任务共有的任务提供意向，例如问候、取消、确认、帮助、重复、导航、启动和停止。
 
 ### <a name="examples"></a>示例
-```
-Go back to Twitter
-Please help
-Repeat last question please
-```
+
+|示例|
+|--|
+|返回到 Twitter|
+|请帮助|
+|请重复上一个问题|
+
 
 ### <a name="intents"></a>意向
 | 意向名称 | Description | 示例 |
@@ -600,11 +617,13 @@ Repeat last question please
 天气域提供用于获取天气报告和预测的意向和实体。
 
 ### <a name="examples"></a>示例
-```
-weather in London in september
-What?s the 10 day forecast?
-What's the average temperature in India in september?
-```
+
+|示例|
+|--|
+|伦敦九月的天气|
+|10 天天气预测是什么？|
+|九月份印度的平均气温是多少？|
+
 
 ### <a name="intents"></a>意向
 | 意向名称 | Description | 示例 |
@@ -621,11 +640,12 @@ What's the average temperature in India in september?
 Web 域提供导航到网站的意向。
 
 ### <a name="examples"></a>示例
-```
-Navigate to facebook.com
-Go to www.twitter.com
-Navigate to www.bing.com
-```
+
+|示例|
+|--|
+|导航到 facebook.com|
+|转到 www.twitter.com|
+|导航到 www.bing.com|
 
 ### <a name="intents"></a>意向
 | 意向名称 | Description | 示例 |

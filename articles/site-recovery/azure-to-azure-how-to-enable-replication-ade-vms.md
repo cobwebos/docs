@@ -6,14 +6,14 @@ author: sujayt
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 09/28/2018
+ms.date: 11/27/2018
 ms.author: sutalasi
-ms.openlocfilehash: 6d47fe29dab37523913b96ebae0ef3ef31d11210
-ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.openlocfilehash: 5d992d13a67c7b01f82b615e7131a20b84dec9e8
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51300568"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52851005"
 ---
 # <a name="replicate-azure-disk-encryption-ade-enabled-virtual-machines-to-another-azure-region"></a>将启用了 Azure 磁盘加密 (ADE) 的虚拟机复制到另一个 Azure 区域
 
@@ -87,9 +87,9 @@ ms.locfileid: "51300568"
     - **目标订阅**：用于灾难恢复的目标订阅。 默认情况下，目标订阅将与源订阅相同。
     - **目标资源组**：所有复制虚拟机所属的资源组。 默认情况下，Azure Site Recovery 会在目标位置中创建一个名称带有“asr”后缀的新资源组。 如果 Azure Site recovery 创建的资源组已存在，则会重复使用。 还可以选择对其进行自定义，如以下部分中所示。 目标资源组的位置可以是除托管源虚拟机区域以外的任何 Azure 区域。
     - **目标虚拟网络**：默认情况下，Site Recovery 会在目标区域中创建一个名称带有“asr”后缀的新虚拟网络。 这会映射到源网络并会用于任何将来的保护。 [详细了解](site-recovery-network-mapping-azure-to-azure.md)网络映射。
-    - **目标存储帐户（如果源 VM 不使用托管磁盘）**：默认情况下，Site Recovery 会创建模拟源 VM 存储配置的新目标存储帐户。 如果存储帐户已存在，则重复使用。
-    - **托管磁盘副本（如果源 VM 使用托管磁盘）**：Site Recovery 在目标区域新建托管磁盘副本，以生成和源 VM 的托管磁盘存储类型一致（标准或高级）的镜像磁盘。
-    - **缓存存储帐户**：Site Recovery 需要源区域中称为“缓存存储”的额外存储帐户。 在复制到目标位置前，系统会跟踪源 VM 上发生的所有更改并发送到缓存存储帐户。
+    - **目标存储帐户(如果源 VM 不使用托管磁盘)**：默认情况下，Site Recovery 会创建模拟源 VM 存储配置的新目标存储帐户。 如果存储帐户已存在，则重复使用。
+    - **副本托管磁盘(如果源 VM 使用托管磁盘)**：Site Recovery 在目标区域中创建新的副本托管磁盘，以生成和源 VM 的托管磁盘存储类型一致（标准或高级）的镜像磁盘。
+    - **缓存存储帐户**：Site Recovery 需要源区域中称为缓存存储的额外存储帐户。 在复制到目标位置前，系统会跟踪源 VM 上发生的所有更改并发送到缓存存储帐户。
     - **可用性集**：默认情况下，Azure Site Recovery 会在目标区域中创建一个名称带有“asr”后缀的新可用性集。 如果 Azure Site Recovery 创建的可用性集已存在，则会重复使用。
     - **磁盘加密密钥保管库**：默认情况下，Azure Site Recovery 会在目标区域中创建新的密钥保管库，其名称具有基于源 VM 磁盘加密密钥的“asr”后缀。 如果 Azure Site recovery 创建的密钥保管库已存在，则会重复使用。
     - **密钥加密密钥保管库**：默认情况下，Azure Site Recovery 会在目标区域中创建新的密钥保管库，其名称具有基于源 VM 密钥加密密钥的“asr”后缀。 如果 Azure Site recovery 创建的密钥保管库已存在，则会重复使用。

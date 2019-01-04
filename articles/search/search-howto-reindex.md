@@ -1,5 +1,5 @@
 ---
-title: 重新生成 Azure 搜索索引或刷新可搜索内容 | Microsoft Docs
+title: 重新生成 Azure 搜索索引或刷新可搜索内容 - Azure 搜索
 description: 添加新元素、更新现有元素或文档，或删除完整重新生成或部分增量索引中的过时文档，以刷新 Azure 搜索索引。
 services: search
 author: HeidiSteen
@@ -8,12 +8,13 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: heidist
-ms.openlocfilehash: 374e7601169647f0eb7d3a214cf15567b7b11090
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.custom: seodec2018
+ms.openlocfilehash: 9c9af69e45af6a70c5327393a1c10385ba2c2aed
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "34641418"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53316889"
 ---
 # <a name="how-to-rebuild-an-azure-search-index"></a>如何重新生成 Azure 搜索索引
 

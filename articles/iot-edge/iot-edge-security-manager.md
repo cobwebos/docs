@@ -1,5 +1,5 @@
 ---
-title: Azure IoT Edge 安全管理器 | Microsoft Docs
+title: 了解安全管理器如何保护设备和软件 - Azure IoT Edge | Microsoft Docs
 description: 管理 IoT Edge 设备安全性情况和安全服务的完整性。
 services: iot-edge
 keywords: 安全性, 安全元素, enclave, TEE, IoT Edge
@@ -9,12 +9,13 @@ ms.author: eustacea
 ms.date: 07/30/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 6231f50134f7dcfd29e8754841847beb69570204
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.custom: seodec18
+ms.openlocfilehash: eda572c0f4abedd59c912dcf1de2cf3c6e226b5c
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51567683"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53091918"
 ---
 # <a name="azure-iot-edge-security-manager"></a>Azure IoT Edge 安全管理器
 
@@ -33,7 +34,7 @@ IoT Edge 安全管理器的职责包括（但不限于）：
 * 通过公证服务作为设备硬件信任根的网关守卫。
 * 监视运行时 IoT Edge 操作的完整性。
 
-IoT Edge 安全管理器包含三个主要组件：
+IoT Edge 安全管理器包含三个组件：
 
 * IoT Edge 安全守护程序。
 * 硬件安全模块平台抽象层 (HSM PAL)。

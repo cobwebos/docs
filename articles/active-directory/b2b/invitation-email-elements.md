@@ -10,12 +10,12 @@ ms.author: mimart
 author: msmimart
 manager: mtillman
 ms.reviewer: sasubram
-ms.openlocfilehash: cbb81f62bcea43c3c30abff6b5f76e3a89347813
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: 8b6edcb70bca480ebe0d53c061c6461745f189e8
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45985390"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53321283"
 ---
 # <a name="the-elements-of-the-b2b-collaboration-invitation-email---azure-active-directory"></a>B2B 协作邀请电子邮件的元素 - Azure Active Directory
 
@@ -40,7 +40,7 @@ ms.locfileid: "45985390"
 
 ### <a name="call-to-action"></a>行动号召
 行动号召由两个部分组成：解释收件人为什么会收到该邮件，请求收件人采取哪种行动。
-- 可以使用以下模式填写“为什么”部分：诚邀你访问 &lt;tenantname&gt; 组织中的应用程序
+- “为什么”部分可以使用以下模式进行处理：我们已邀请你访问 &lt;tenantname&gt; 组织中的应用程序
 
 - “请求你采取哪种行动”部分可通过提供“开始”按钮来指明。 如果无需发出邀请即会添加收件人，则不显示此按钮。
 
@@ -52,7 +52,7 @@ ms.locfileid: "45985390"
   ![显示邀请方的姓名首字母缩写](media/invitation-email-elements/inviters-initials.png)
 
 ### <a name="body"></a>Body
-正文包含邀请方撰写的或通过邀请 API 传递的消息。 这是文本区域，因此出于安全原因不会处理 HTML 标记。
+正文包含邀请者在[使用邀请 API](customize-invitation-api.md) [邀请来宾用户访问目录、组或应用](add-users-administrator.md)时撰写的消息。 这是文本区域，因此出于安全原因不会处理 HTML 标记。
 
 ### <a name="footer-section"></a>页脚部分
 页脚包含 Microsoft 公司品牌徽标，告知收件人该电子邮件是否从未受监视的别名中发出。 特殊情况：

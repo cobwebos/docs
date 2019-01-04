@@ -1,25 +1,19 @@
 ---
-title: ExpressRoute 连接模型：通过网络服务提供商、交换和以太网提供商连接到 Microsoft Azure | Microsoft 文档
+title: ExpressRoute 连接模型：Azure | Microsoft Docs
 description: 本文介绍客户的网络与 Microsoft Azure、Office 365 和 Dynamics 365 服务之间的不同连接模式。 客户可以使用 MPLS 提供程序、云交换和以太网提供商。
-documentationcenter: na
 services: expressroute
 author: cherylmc
-manager: timlt
-editor: ''
-ms.assetid: ''
 ms.service: expressroute
-ms.devlang: na
-ms.topic: get-started-article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 02/09/2017
+ms.topic: conceptual
+ms.date: 12/06/2018
 ms.author: cherylmc
-ms.openlocfilehash: 00f97da2189491103c461b49ac82feb92d8f4b9b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.custom: seodec18
+ms.openlocfilehash: ef53f9d3cefa35624d6f94dc98db4ebe8b6646cd
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "22709889"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53078899"
 ---
 # <a name="expressroute-connectivity-models"></a>ExpressRoute 连接模型
 在本地网络和 Microsoft 云之间创建连接时，可以采用三种不同的方式：[CloudExchange 归置](#CloudExchange)、[点到点以太网连接](#Ethernet)、[任意位置之间的 (IPVPN) 连接](#IPVPN)。 连接服务提供商可以提供一个或多个连接模型。 可以咨询连接服务提供商以选择最合适的模型。
@@ -34,7 +28,7 @@ ms.locfileid: "22709889"
 可以通过点到点以太网链路，将本地数据中心/办公室连接到 Microsoft 云。 点到点以太网提供商可以在站点与 Microsoft 云之间提供第 2 层连接或托管的第 3 层连接。
 
 ## <a name="IPVPN"></a>任意位置之间的 (IPVPN) 网络
-可以将 WAN 集成到 Microsoft 云。 IPVPN 提供商（通常提供 MPLS VPN）可在分支机构与数据中心之间提供任意位置之间的连接。 Microsoft 云可与 WAN 互连，就如同它是其他任何一个分支机构。 WAN 提供商通常提供托管的第 3 层连接。 在上述所有连接模型中，ExpressRoute 功能与特性完全相同。 
+可以将 WAN 集成到 Microsoft 云。 IPVPN 提供商（通常为 MPLS VPN）可在分支机构与数据中心之间提供任意位置之间的连接。 Microsoft 云可与 WAN 互连，就如同它是其他任何一个分支机构。 WAN 提供商通常提供托管的第 3 层连接。 在上述所有连接模型中，ExpressRoute 功能与特性完全相同。 
 
 ## <a name="next-steps"></a>后续步骤
 * 了解 ExpressRoute 连接和路由域。 请参阅 [ExpressRoute 线路和路由域](expressroute-circuit-peerings.md)。

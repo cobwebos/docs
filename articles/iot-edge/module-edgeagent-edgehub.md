@@ -1,5 +1,5 @@
 ---
-title: Azure IoT EdgeAgent 和 EdgeHub 参考 | Microsoft Docs
+title: EdgeAgent 和 EdgeHub 所需属性参考 - Azure IoT Edge | Microsoft Docs
 description: 查看 edgeAgent 和 edgeHub 模块孪生的特定属性及其值
 author: kgremban
 manager: philmea
@@ -8,12 +8,13 @@ ms.date: 09/21/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 01e1942b12de126aa34130f5a4b77dd0fb958aa6
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.custom: seodec18
+ms.openlocfilehash: a0834e5886a1a088486109f967baf357e375ad05
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51568914"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53100250"
 ---
 # <a name="properties-of-the-edge-agent-and-edge-hub-module-twins"></a>Edge 代理和 Edge 中心模块孪生的属性
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: 924584a77d36ec41488d8c76d9631baf484ff494
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 48a835bf8c63ffa5512173b600fb85abd5c6cb45
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44346383"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52840344"
 ---
 # <a name="tutorial-configure-g-suite-for-automatic-user-provisioning"></a>教程：为 G Suite 配置自动用户预配
 
@@ -67,7 +67,7 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 > [!NOTE]
 > 将用户自动预配到 G Suite 的另一种可行方法是使用 [Google Apps Directory Sync (GADS)](https://support.google.com/a/answer/106368?hl=en)。 GADS 将本地 Active Directory 身份预配到 G Suite。 与此相反，本教程中的解决方案会将 Azure Active Directory（云）用户和启用电子邮件的组预配到 G Suite。 
 
-1. 使用管理员帐户登录到 [Google Apps 管理员控制台](http://admin.google.com/)，然后选择“安全”。 如果没有看到该链接，它可能被隐藏在屏幕底部的“其他控件”菜单下。
+1. 使用管理员帐户登录到 [Google Apps 管理员控制台](https://admin.google.com/)，然后选择“安全”。 如果没有看到该链接，它可能被隐藏在屏幕底部的“其他控件”菜单下。
    
     ![选择“安全”。][10]
 
@@ -84,7 +84,7 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
       
 1. 如果尚未向 Azure Active Directory 添加自定义域名，请按照以下步骤操作：
   
-    a. 在 [Azure 门户](https://portal.azure.com)的左侧导航窗格中，选择“Active Directory”。 在目录列表中，选择目录。 
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在 [Azure 门户](https://portal.azure.com)的左侧导航窗格中，选择“Active Directory”。 在目录列表中，选择目录。 
 
     b. 选择左侧导航窗格中的“域名”，然后单击“添加”。
      
@@ -110,7 +110,7 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 
 1. 向 Azure AD 验证完所有域后，必须再次向 Google Apps 验证这些域。 对于每个尚未向 Google 注册的域，请执行以下步骤：
    
-    a. 在 [Google Apps 管理员控制台](http://admin.google.com/)中，选择“域”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在 [Google Apps 管理员控制台](https://admin.google.com/)中，选择“域”。
      
      ![选择域][20]
 
@@ -129,7 +129,7 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
      > [!WARNING]
      > 如果更改了 G Suite 租户的主域并且已配置 Azure AD 单一登录，则必须重复[步骤 2：启用单一登录](#step-two-enable-single-sign-on)下的步骤 3。
        
-1. 在 [Google Apps 管理员控制台](http://admin.google.com/)中，选择“管理员角色”。
+1. 在 [Google Apps 管理员控制台](https://admin.google.com/)中，选择“管理员角色”。
    
      ![选择 Google Apps][26]
 
@@ -177,7 +177,7 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 ## <a name="additional-resources"></a>其他资源
 
 * [管理企业应用的用户帐户预配](tutorial-list.md)
-* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
+* [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 * [配置单一登录](google-apps-tutorial.md)
 
 

@@ -66,30 +66,32 @@ items:
       href: face-resource-container-config.md
   - name: 使用人脸 API 连接服务
     href: vs-face-connected-service.md
+- name: 示例
+  items:
+  - name: 代码示例
+    href: https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=Face
 - name: 引用
   items:
   - name: 人脸 API
     href: APIReference.md
-  - name: 术语表
-    href: Glossary.md
   - name: SDK
     items:
-    - name: Windows
-      href: https://github.com/Microsoft/Cognitive-Face-Windows
+    - name: .NET
+      href: https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/face?view=azure-dotnet
     - name: Node.js
-      href: https://docs.microsoft.com/javascript/api/overview/azure/cognitive-services?view=azure-node-latest#vision-modules
+      href: https://docs.microsoft.com/javascript/api/azure-cognitiveservices-face/?view=azure-node-latest
     - name: Python
-      href: https://github.com/Microsoft/Cognitive-Face-Python
+      href: https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-face/?view=azure-python
     - name: Go
-      href: https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices/v1.0/face
-    - name: Android
-      href: https://github.com/Microsoft/Cognitive-Face-Android
+      href: https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/face
+    - name: Android (Java)
+      href: https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/faceapi?view=azure-java-stable
     - name: iOS
       href: https://github.com/Microsoft/Cognitive-Face-iOS
 - name: 资源
   items:
-  - name: 示例
-    href: https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=Face
+  - name: 术语表
+    href: Glossary.md
   - name: 常见问题解答
     href: FAQ.md
   - name: 定价和限制
@@ -104,9 +106,9 @@ items:
     href: https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services
   - name: 发行说明
     href: ReleaseNotes.md
-ms.openlocfilehash: 24b12b969e95e3e48a2e448e97789fbb2ba3ca9a
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.openlocfilehash: e243a711fd08cbefcb397c5571a824a90fc1292f
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52274528"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53742535"

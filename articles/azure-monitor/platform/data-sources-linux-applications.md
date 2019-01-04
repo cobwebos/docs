@@ -1,5 +1,5 @@
 ---
-title: 在 Log Analytics 中收集 Linux 应用程序性能数据 | Microsoft Docs
+title: 在 Azure Monitor 中收集 Linux 应用程序性能数据 | Microsoft Docs
 description: 本文提供了有关对 Log Analytics Linux 代理进行配置以收集 MySQL 和 Apache HTTP Server 的性能计数器的详细信息。
 services: log-analytics
 documentationcenter: ''
@@ -8,23 +8,21 @@ manager: carmonm
 editor: tysonn
 ms.assetid: f1d5bde4-6b86-4b8e-b5c1-3ecbaba76198
 ms.service: log-analytics
-ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/04/2017
 ms.author: magoedte
-ms.component: ''
-ms.openlocfilehash: fe5c355054aab483a7ee8e68305473b7b840779d
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.openlocfilehash: 824d3f2402861ed8a54a29c9571654cc581e4c5e
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52336385"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53434624"
 ---
-# <a name="collect-performance-counters-for-linux-applications-in-log-analytics"></a>在 Log Analytics 中收集 Linux 应用程序的性能计数器 
+# <a name="collect-performance-counters-for-linux-applications-in-azure-monitor"></a>在 Azure Monitor 中收集 Linux 应用程序的性能计数器 
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]
-本文提供了有关对[ Log Analytics Linux 代理](https://github.com/Microsoft/OMS-Agent-for-Linux)进行配置以收集特定应用程序的性能计数器的详细信息。  本文中包括的应用程序有：  
+本文详细介绍了如何配置[适用于 Linux 的 Log Analytics 代理](https://github.com/Microsoft/OMS-Agent-for-Linux)以将特定应用程序的性能计数器收集到 Azure Monitor 日志中。  本文中包括的应用程序有：  
 
 - [MySQL](#MySQL)
 - [Apache HTTP Server](#apache-http-server)
@@ -116,7 +114,7 @@ MySQL 用户还需要对以下默认表具有 SELECT 访问权限。
 
 ### <a name="define-performance-counters"></a>定义性能计数器
 
-将 Log Analytics Linux 代理配置为将数据发送到 Log Analytics 后，必须配置要收集的性能计数器。  请对下表中的计数器使用 [Log Analytics 中的 Windows 和 Linux 性能数据来源](data-sources-windows-events.md)中所述的过程。
+将适用于 Linux 的 Log Analytics 代理配置为将数据发送到 Azure Monitor 后，必须配置要收集的性能计数器。  请对下表中的计数器使用 [Azure Monitor 中的 Windows 和 Linux 性能数据来源](data-sources-performance-counters.md)中所述的过程。
 
 | 对象名称 | 计数器名称 |
 |:--|:--|
@@ -152,7 +150,7 @@ sudo /opt/microsoft/apache-cimprov/bin/apache_config.sh -u
 
 ### <a name="define-performance-counters"></a>定义性能计数器
 
-将 Log Analytics Linux 代理配置为将数据发送到 Log Analytics 后，必须配置要收集的性能计数器。  请对下表中的计数器使用 [Log Analytics 中的 Windows 和 Linux 性能数据来源](data-sources-windows-events.md)中所述的过程。
+将适用于 Linux 的 Log Analytics 代理配置为将数据发送到 Azure Monitor 后，必须配置要收集的性能计数器。  请对下表中的计数器使用 [Azure Monitor 中的 Windows 和 Linux 性能数据来源](data-sources-performance-counters.md)中所述的过程。
 
 | 对象名称 | 计数器名称 |
 |:--|:--|
@@ -170,4 +168,4 @@ sudo /opt/microsoft/apache-cimprov/bin/apache_config.sh -u
 
 ## <a name="next-steps"></a>后续步骤
 * 从 Linux 代理[收集性能计数器](data-sources-performance-counters.md)。
-* 了解[日志搜索](../../log-analytics/log-analytics-queries.md)以便分析从数据源和解决方案中收集的数据。 
+* 了解[日志查询](../../log-analytics/log-analytics-queries.md)以便分析从数据源和解决方案中收集的数据。 

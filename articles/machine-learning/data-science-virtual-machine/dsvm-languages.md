@@ -1,11 +1,13 @@
 ---
-title: Azure 上的数据科学虚拟机的语言 | Microsoft Docs
-description: Azure 上的数据科学虚拟机的语言
+title: Data Science Virtual Machine 支持的语言
+titleSuffix: Azure
+description: 了解 Data Science Virtual Machine 上预安装的程序语言和相关工具。
 keywords: 数据科学工具, 数据科学虚拟机, 数据科学工具, Linux 数据科学
 services: machine-learning
 documentationcenter: ''
 author: gopitk
 manager: cgronlun
+ms.custom: seodec18
 ms.assetid: ''
 ms.service: machine-learning
 ms.component: data-science-vm
@@ -15,12 +17,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/11/2017
 ms.author: gokuma
-ms.openlocfilehash: 411729155f5135c7e45588b69995274c9cac1315
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 8cc5d1a2d78179624ee1ba17482e9d1892625d6f
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31418309"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53104282"
 ---
 # <a name="languages-supported-on-the-data-science-virtual-machine"></a>数据科学虚拟机支持的语言 
 
@@ -191,7 +193,7 @@ R 安装在所有用户均可访问的全局环境中的 DSVM 上。 但只有�
 | ------------- | ------------- |
 | 支持的语言版本 | 0.6 |
 | 支持的 DSVM 版本      | Linux、Windows     |
-| 如何在 DSVM 上配置 /安装它？  | Windows：安装位置 `C:\JuliaPro-VERSION`<br /> Linux：安装位置 `/opt/JuliaPro-VERSION`    |
+| 如何在 DSVM 上配置/安装它？  | Windows:已安装到 `C:\JuliaPro-VERSION`<br /> Linux：已安装到 `/opt/JuliaPro-VERSION`    |
 | 示例链接      | 适用于 Julia 的示例 Jupyter 笔记本包括在内     |
 | DSVM 上的相关工具      | Python、R      |
 ### <a name="how-to-use--run-it"></a>如何使用/运行它？    
@@ -232,12 +234,12 @@ Linux：
 
 ## <a name="other-languages"></a>其他语言
 
-C#：在 Windows 上可用，并可通过 Visual Studio Community Edition 进行访问，或在 `Developer Command Prompt for Visual Studio` 中只需运行 `csc` 命令即可进行访问。 
+**C#**：在 Windows 上可用，并可通过 Visual Studio Community Edition 访问，或在 `Developer Command Prompt for Visual Studio` 上只需运行 `csc` 命令即可进行访问。 
 
-Java：OpenJDK 在 Linux 和 Windows 版本的 DSVM 上均可使用，并在路径上进行设置。 你可以在 Windows 中的命令提示符或 Linux 中的 bash shell 上键入 `javac` 或 `java` 命令来使用 Java。 
+**Java**：OpenJDK 在 Linux 和 Windows 版本的 DSVM 上均可使用，并在路径上进行设置。 你可以在 Windows 中的命令提示符或 Linux 中的 bash shell 上键入 `javac` 或 `java` 命令来使用 Java。 
 
 node.js：node.js 在 Linux 和 Windows 版本的 DSVM 上均可使用，并在路径上进行设置。 你可以在 Windows 中的命令提示符或 Linux 中的 bash shell 上键入 `node` 或 `npm` 命令来使用 node.js。 在 Windows 上，安装了用于 Visual Studio 扩展的 Node.js 工具，以提供图形化 IDE 来开发 node.js 应用程序。 
 
-F#：在 Windows 上可用，并可通过 Visual Studio Community Edition 访问，或在 `Developer Command Prompt for Visual Studio` 上只需运行 `fsc` 命令即可进行访问。 
+**F#**：在 Windows 上可用，并可通过 Visual Studio Community Edition 访问，或在 `Developer Command Prompt for Visual Studio` 上只需运行 `fsc` 命令即可进行访问。 
 
 

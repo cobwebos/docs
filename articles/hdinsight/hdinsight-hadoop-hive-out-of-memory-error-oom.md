@@ -10,16 +10,16 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/14/2018
 ms.author: hrasheed
-ms.openlocfilehash: 90bf59dd7733864c345bbbb59b6236ae7b9a9c36
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 3b49959d167dbb735ebb9be9c75e91ef257c6a70
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51248295"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53383827"
 ---
-# <a name="fix-a-hive-out-of-memory-error-in-azure-hdinsight"></a>解决 Azure HDInsight 中的 Hive 内存不足错误
+# <a name="fix-an-apache-hive-out-of-memory-error-in-azure-hdinsight"></a>解决 Azure HDInsight 中的 Apache Hive 内存不足错误
 
-了解处理大型表时如何通过配置 Hive 内存设置解决 Hive 内存不足错误。
+了解处理大型表时如何通过配置 Hive 内存设置解决 Apache Hive 内存不足 (OOM) 错误。
 
 ## <a name="run-hive-query-against-large-tables"></a>针对大型表运行 Hive 查询
 
@@ -52,7 +52,7 @@ Hive 查询在 24 节点 A3 HDInsight 群集上用了 26 分钟才完成。 客�
     Warning: Map Join MAPJOIN[428][bigTable=?] in task 'Stage-21:MAPRED' is a cross product
     Warning: Shuffle Join JOIN[8][tables = [t1933775, t1932766]] in Stage 'Stage-4:MAPRED' is a cross product
 
-通过使用 Tez 执行引擎， 相同的查询运行了 15 分钟，并引发以下错误：
+通过使用 Apache Tez 执行引擎， 相同的查询运行了 15 分钟，并引发以下错误：
 
     Status: Failed
     Vertex failed, vertexName=Map 5, vertexId=vertex_1443634917922_0008_1_05, diagnostics=[Task failed, taskId=task_1443634917922_0008_1_05_000006, diagnostics=[TaskAttempt 0 failed, info=[Error: Failure while running task:java.lang.RuntimeException: java.lang.OutOfMemoryError: Java heap space
@@ -105,7 +105,7 @@ hive-site.xml 文件中的 **Hive.auto.convert.join.noconditionaltask** 已设�
 
 如该博客文章中所述，以下两项内存设置定义了堆的容器内存：**hive.tez.container.size** 和 **hive.tez.java.opts**。 从我们的经验来看，内存不足异常并不意味着容器太小， 而是表示 Java 堆大小 (hive.tez.java.opts) 太小。 因此，每当看到内存不足时，可尝试增大 **hive.tez.java.opts**。 必要时，可能需要增大 **hive.tez.container.size**。 **java.opts** 设置应该大约为 **container.size** 的 80%。
 
-> [!NOTE]
+> [!NOTE]  
 > **hive.tez.java.opts** 设置必须始终小于 **hive.tez.container.size**。
 > 
 > 
@@ -119,4 +119,4 @@ hive-site.xml 文件中的 **Hive.auto.convert.join.noconditionaltask** 已设�
 
 ## <a name="next-steps"></a>后续步骤
 
-遇到 OOM 错误不一定表示容器太小。 相反地，应该配置内存设置，以便将堆大小增加为至少是容器内存大小的 80%。 有关优化 Hive 查询，请参阅[在 HDInsight 中优化 Hadoop 的 Hive 查询](hdinsight-hadoop-optimize-hive-query.md)。
+遇到 OOM 错误不一定表示容器太小。 相反地，应该配置内存设置，以便将堆大小增加为至少是容器内存大小的 80%。 有关优化 Hive 查询，请参阅[在 HDInsight 中优化 Apache Hadoop 的 Apache Hive 查询](hdinsight-hadoop-optimize-hive-query.md)。

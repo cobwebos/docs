@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/24/2018
 ms.author: jeedes
-ms.openlocfilehash: b288bcbe14050c0f764f348d5e20186570e32866
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 34de89123e75f0c760fbcefa633b9aadf8d2b997
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39442194"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52878596"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-foresee-cx-suite"></a>教程：Azure Active Directory 与 ForeSee CX Suite 的集成
 
@@ -109,13 +109,13 @@ ms.locfileid: "39442194"
 
     ![ForeSee CX Suite 域和 URL 单一登录信息](./media/foreseecxsuite-tutorial/upload.png)
 
-    a. 单击“上传元数据文件”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 单击“上传元数据文件”。
 
     ![ForeSee CX Suite 域和 URL 单一登录信息](./media/foreseecxsuite-tutorial/tutorial_foreseen_uploadconfig.png)
 
     b. 单击“文件夹徽标”来选择元数据文件并单击“上传”。
 
-    c. 成功完成**服务提供程序元数据文件**的上传后，**标识**值将自动填充在“ForeSee CX Suite 域和 URL”部分的文本框中，如下所示：
+    c. 成功完成服务提供程序元数据文件的上传后，标识值将自动填充在“ForeSee CX Suite 域和 URL”部分的文本框中，如下所示：
 
     ![ForeSee CX Suite 域和 URL 单一登录信息](./media/foreseecxsuite-tutorial/urlupload.png)
 
@@ -123,7 +123,7 @@ ms.locfileid: "39442194"
 
     ![ForeSee CX Suite 域和 URL 单一登录信息](./media/foreseecxsuite-tutorial/tutorial_foreseecxsuite_url.png)
 
-    a. 在“登录 URL”文本框中，键入 URL：`https://cxsuite.foresee.com/`
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“登录 URL”文本框中，键入 URL：`https://cxsuite.foresee.com/`
 
     b. 在“标识符”文本框中，使用以下模式键入 URL：`https://www.okta.com/saml2/service-provider/<UniqueID>`
 
@@ -164,7 +164,7 @@ ms.locfileid: "39442194"
 
     ![“用户”对话框](./media/foreseecxsuite-tutorial/create_aaduser_04.png)
 
-    a. 在“姓名”框中，键入“BrittaSimon”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“姓名”框中，键入“BrittaSimon”。
 
     b. 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
 
@@ -211,12 +211,12 @@ ms.locfileid: "39442194"
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 单击访问面板中的 ForeSee CX Suite 磁贴时，应当会自动登录到 ForeSee CX Suite 应用程序。
-有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md)（访问面板简介）。
+有关访问面板的详细信息，请参阅[访问面板简介](../user-help/active-directory-saas-access-panel-introduction.md)。
 
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](tutorial-list.md)
-* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
+* [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

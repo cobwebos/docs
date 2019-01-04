@@ -1,12 +1,11 @@
 ---
-title: Azure 机器学习工作室中的本地 SQL Server | Microsoft Docs
+title: 本地 SQL Server - Azure 机器学习工作室 | Microsoft Docs
 description: 在 Azure 机器学习工作室中使用本地 SQL Server 数据库中的数据执行高级分析。
 services: machine-learning
 documentationcenter: ''
 author: ericlicoding
-ms.custom: (previous ms.author=hshapiro, author=heatherbshapiro)
+ms.custom: seodec18
 ms.author: amlstudiodocs
-manager: hjerez
 editor: cgronlun
 ms.assetid: 08e4610d-02b6-4071-aad7-a2340ad8e2ea
 ms.service: machine-learning
@@ -16,14 +15,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/13/2017
-ms.openlocfilehash: d28c39ef909cffdc1ed907e05b60e61f02353710
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: dccea7c5d7967af2e81ab4728704a5a104a007b5
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52310950"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53269269"
 ---
-# <a name="perform-advanced-analytics-with-azure-machine-learning-using-data-from-an-on-premises-sql-server-database"></a>在 Azure 机器学习中使用本地 SQL Server 数据库中的数据执行高级分析
+# <a name="perform-analytics-with-azure-machine-learning-studio-using-an-on-premises-sql-server-database"></a>在 Azure 机器学习工作室中使用本地 SQL Server 数据库执行分析
 
 通常，使用本地数据的企业希望利用云的规模和灵活性来平衡其机器学习工作负荷。 但他们并不希望在将企业的本地数据移动到云时中断其当前业务处理和工作流。 Azure 机器学习现在支持从本地 SQL Server 数据库读取数据，并使用该数据训练和评分模型。 再也不必在云和本地服务器之间手动复制并同步数据。 相反，Azure 机器学习工作室中的**导入数据**模块现在可以为训练和评分作业直接从本地 SQL Server 数据库中读取。
 
@@ -36,7 +35,7 @@ ms.locfileid: "52310950"
 
 <!-- -->
 
-[!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
+
 
 ## <a name="install-the-data-factory-self-hosted-integration-runtime"></a>安装数据工厂自承载集成运行时
 若要在 Azure 机器学习中访问本地 SQL Server 数据库，需要下载并安装数据工厂自承载集成运行时（之前称为数据管理网关）。 在机器学习工作室中配置连接时，将有机会使用如下所述的“下载并注册数据网关”对话框下载并安装集成运行时 (IR)。

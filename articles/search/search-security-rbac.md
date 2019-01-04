@@ -1,6 +1,6 @@
 ---
-title: 在门户中针对 Azure 搜索管理访问权限设置 RBAC 角色 | Microsoft Docs
-description: Azure 门户中基于角色的管理控制。
+title: 在门户中针对 Azure 管理访问权限设置 RBAC 角色 - Azure 搜索
+description: Azure 门户中基于角色的管理控制 (RBAC)，用于控制和委派 Azure 搜索管理的管理任务。
 author: HeidiSteen
 manager: cgronlun
 services: search
@@ -8,12 +8,13 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 03/20/2018
 ms.author: heidist
-ms.openlocfilehash: 1a463c9eb52ffe2a667cdeace7478e67233a0806
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.custom: seodec2018
+ms.openlocfilehash: 38b8e8a0e413f367d34a4ccf5dbd87817891b8ea
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31792920"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53313014"
 ---
 # <a name="set-rbac-roles-for-administrative-access"></a>针对管理访问权限设置 RBAC 角色
 

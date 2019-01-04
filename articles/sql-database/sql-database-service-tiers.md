@@ -11,19 +11,22 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 10/19/2018
-ms.openlocfilehash: 102a00ac79c91ac4d571c0254570f14e8f2af46f
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.date: 12/10/2018
+ms.openlocfilehash: d801ed309b0d79dd6655c7dd59ebd17bd37de222
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51239077"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53164392"
 ---
 # <a name="azure-sql-database-purchasing-models"></a>Azure SQL 数据库购买模型
 
 使用 Azure SQL 数据库，可以轻松购买适合你的性能和成本要求的完全托管的 PaaS 数据库引擎。 你可以根据 Azure SQL 数据库的部署模型选择适合你的需求的购买模型：
+- [基于 vCore 的购买模型](sql-database-service-tiers-vcore.md)（推荐），可选择确切的存储容量以及计算工作负载所需的容量。
+- [基于 DTU 的购买模型](sql-database-service-tiers-dtu.md)，可选择针对常见工作负载均衡的捆绑计算和存储包。
 
-- [Azure SQL 数据库](sql-database-technical-overview.md)中的[逻辑服务器](sql-database-logical-servers.md)为计算、存储和 IO 资源提供了两种购买模型：[基于 DTU 的购买模型](sql-database-service-tiers-dtu.md)和[基于 vCore 的购买模型](sql-database-service-tiers-vcore.md)。 在此购买模型中，可以选择[单一数据库](sql-database-single-databases-manage.md)或[弹性池](sql-database-elastic-pool.md)。
+Azure SQL 数据库部署模型中提供了不同的购买模型：
+- [Azure SQL 数据库](sql-database-technical-overview.md)中的[逻辑服务器](sql-database-logical-servers.md)同时提供[基于 DTU 的购买模型](sql-database-service-tiers-dtu.md)和[基于 vCore 的购买模型](sql-database-service-tiers-vcore.md)。 在此购买模型中，可以选择[单一数据库](sql-database-single-databases-manage.md)或[弹性池](sql-database-elastic-pool.md)。
 - Azure SQL 数据库中的[托管实例](sql-database-managed-instance.md)仅提供了[基于 vCore 的购买模型](sql-database-service-tiers-vcore.md)。
 
 > [!IMPORTANT]
@@ -51,7 +54,7 @@ ms.locfileid: "51239077"
 
 > [!IMPORTANT]
 > 计算、IO、数据和日志存储按数据库或弹性池收费。 备份存储按每个数据库收费。 有关托管实例费用的详细信息，请参阅 [Azure SQL 数据库托管实例](sql-database-managed-instance.md)。
-> **区域限制：** 基于 vCore 的购买模型在以下区域尚不可用：西欧、法国中部、英国南部、英国西部和澳大利亚东南部。
+> 区域限制：基于 vCore 的购买模型尚未在以下区域提供：西欧、法国中部、英国南部、英国西部和澳大利亚东南部。
 
 如果数据库或弹性池消耗的 DTU 超过 300 个，则转换到 vCore 可以降低成本。 可以使用所选的 API 或 Azure 门户进行转换，无需停机。 但是，不一定非要转换。 如果 DTU 购买模型满足性能和业务需求，应继续使用它。 如果决定从 DTU 模型转换到 vCore 模型，则应该根据以下经验法则选择计算大小：标准层中的每 100 个 DTU 至少需要常规用途层中的 1 个 vCore，高级层中的每 125 个 DTU 至少需要业务关键层中的 1 个 vCore。
 

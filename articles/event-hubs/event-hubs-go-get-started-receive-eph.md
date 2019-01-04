@@ -1,20 +1,21 @@
 ---
-title: 使用 Go 从 Azure 事件中心接收事件 | Microsoft Docs
-description: 使用 Go 从 Azure 事件中心接收事件入门
+title: 使用 Go 接收事件 - Azure 事件中心 | Microsoft Docs
+description: 本文提供了一个演练，说明如何创建从 Azure 事件中心接收事件的 Go 应用程序。
 services: event-hubs
 author: ShubhaVijayasarathy
 manager: kamalb
 ms.service: event-hubs
 ms.workload: core
 ms.topic: article
-ms.date: 07/23/2018
+ms.custom: seodec18
+ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 0a8cb349be0ffefecb07bc705391684dc57f1b96
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: db952b82172928e42e951563d98bb32b275e8af7
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50239485"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53084985"
 ---
 # <a name="receive-events-from-event-hubs-using-go"></a>使用 Go 从事件中心接收事件
 
@@ -80,7 +81,7 @@ import (
 
 ## <a name="create-service-principal"></a>创建服务主体
 
-按照[使用 Azure CLI 2.0 创建 Azure 服务主体](/cli/azure/create-an-azure-service-principal-azure-cli)中的说明创建新的服务主体。 使用以下名称将提供的凭据保存在环境中：Azure SDK for Go 和事件中心包都已预先配置为查找这些变量名称。
+按照[使用 Azure CLI 2.0 创建 Azure 服务主体](/cli/azure/create-an-azure-service-principal-azure-cli)中的说明创建新的服务主体。 使用以下名称将提供的凭据保存在环境中：预先配置了 Azure SDK for Go 和事件中心包，以便查找这些变量名称。
 
 ```bash
 export AZURE_CLIENT_ID=
@@ -194,7 +195,7 @@ if err != nil {
 
 ## <a name="notes"></a>说明
 
-本教程使用单个 **EventProcessorHost** 实例。 若要增加吞吐量和可靠性，应在不同系统上运行多个 EventProcessorHost 实例。 租用系统可确保仅关联一个接收器，并且接收指定时间指定分区中的消息。
+本教程使用单个 **EventProcessorHost 实例**。 若要增加吞吐量和可靠性，应在不同系统上运行多个 EventProcessorHost 实例。 租用系统可确保仅关联一个接收器，并且接收指定时间指定分区中的消息。
 
 ## <a name="next-steps"></a>后续步骤
 在本快速入门中，你已创建从事件中心接收消息的 Go 应用程序。 要了解如何使用 Go 将事件发送到事件中心，请参阅[从事件中心发送事件 - Go](event-hubs-go-get-started-send.md)。

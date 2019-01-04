@@ -1,5 +1,5 @@
 ---
-title: Azure 机器学习异常情况检测 API | Microsoft 文档
+title: Azure 机器学习异常情况检测 API - Team Data Science Process
 description: 异常情况检测 API 是一个示例，它使用 Microsoft Azure 机器学习，检测时序数据和均匀分布在时间中的数值的异常情况。
 services: machine-learning
 author: marktab
@@ -10,13 +10,13 @@ ms.component: team-data-science-process
 ms.topic: article
 ms.date: 06/05/2017
 ms.author: tdsp
-ms.custom: (previous author=alokkirpal, ms.author=alok)
-ms.openlocfilehash: 485cf6af9f019bc43ee862627db8549240690247
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec18, previous-author=alokkirpal, previous-ms.author=alok
+ms.openlocfilehash: de625e7cc394d1b292f9876a1b4cdd3fb0daeaa8
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52443914"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53134788"
 ---
 # <a name="machine-learning-anomaly-detection-api"></a>机器学习异常情况检测 API
 ## <a name="overview"></a>概述
@@ -25,8 +25,8 @@ ms.locfileid: "52443914"
 此 API 可以检测时序数据中以下类型的异常模式：
 
 * **正值和负值趋势**：例如，监视计算向上趋势过程中的内存使用率可能会很有趣，因为可能会显示内存泄漏，
-* **值在动态范围内的更改**：例如，在监视云服务引发的异常情况时，值在动态范围内的任何更改可能表示该服务的运行状况不稳定，
-* **峰值和低值**：例如，监视服务中的登录失败次数或电子商务网站中的签出数，其峰值和 dip 可以预测非正常行为。
+* **值的动态范围的更改**：例如，在监视云服务引发的异常情况时，值在动态范围内的任何更改可能表示该服务的运行状况不稳定，
+* **峰值和低值**：例如，监视服务中的登录失败次数或电子商务网站中的签出数，其峰值和低值可以预测非正常行为。
 
 这些机器学习检测程序跟踪值的更改，并将正在进行的更改报告为异常分数。 它们不需要临时阈值优化，分数可用于控制误报率。 API 在几种情形中非常有用：通过跟踪 KPI 的服务监视、通过度量值（如大量搜索、点击）监视使用情况和通过计数器（如内存、CPU、文件读取等）监视性能。
 
@@ -37,9 +37,9 @@ ms.locfileid: "52443914"
 > [!NOTE]
 > 请尝试由 [此 API](https://gallery.cortanaintelligence.com/MachineLearningAPI/Anomaly-Detection-2) 提供的“IT 异常 Insights 解决方案”
 > 
-> 若要获取部署到 Azure 订阅的端到端解决方案 <a href="https://gallery.cortanaintelligence.com/Solution/Anomaly-Detection-Pre-Configured-Solution-1" target="_blank">**从这里开始>**</a>
-> 
->
+<!-- This Solution is no longer available
+> To get this end to end solution deployed to your Azure subscription <a href="https://gallery.cortanaintelligence.com/Solution/Anomaly-Detection-Pre-Configured-Solution-1" target="_blank">**Start here >**</a>
+--> 
 
 ## <a name="api-deployment"></a>API 部署
 要使用 API，必须将其部署到 Azure 订阅，在该订阅中它将作为 Azure 机器学习 Web 服务进行托管。  可以从 [Azure AI 库](https://gallery.cortanaintelligence.com/MachineLearningAPI/Anomaly-Detection-2)执行此操作。  这会将两个 AzureML Web 服务（及其相关资源）部署到 Azure 订阅 - 一个用于异常情况检测（包含季节性检测），另一个不包含季节性检测。  部署完成后，便能从 [AzureML Web 服务](https://services.azureml.net/webservices/)页管理 API。  在该页中，能够查找终结点位置、API 密钥以及调用 API 的示例代码。  [此处](https://docs.microsoft.com/azure/machine-learning/machine-learning-manage-new-webservice)提供了更详细的说明。
@@ -108,10 +108,10 @@ Score API 用于运行非季节性时序数据的异常情况检测。 Score API
 
 | 检测程序类别 | 检测程序 | Description | 输入参数 | Outputs |
 | --- | --- | --- | --- | --- |
-| 峰值检测程序 |TSpike 检测程序 |根据值与第一个和第三个四分位数的距离，检测峰值和低值 |*tspikedetector.sensitivity：* 采用 1-10 中的整数值、默认值：3；较高的值会捕获多个极值，从而使敏感度降低 |TSpike：二进制值 – 如果检测到峰值或低值，显示“1”，否则为“0” |
-| 峰值检测程序 | ZSpike 检测程序 |根据数据点与平均值的距离，检测峰值和低值 |*tspikedetector.sensitivity：* 采用 1-10 范围内的整数值，默认值为 3；值越大，捕获的值更极端，使敏感程度降低 |TSpike：二进制值 – 如果检测到峰值或低值，显示“1”，否则为“0” | |
-| 慢速趋势检测程序 |慢速趋势检测程序 |根据每组的敏感度，检测慢速正面发展趋势 |*trenddetector.sensitivity：* 检测程序分数上的阈值（默认值：3.25，3.25 – 5 是合理的选择范围；值越高敏感性越低） |tscore：浮动数字，表示趋势的异常分数 |
-| 级别更改检测程序 | 双向级别更改检测程序 |根据每组的敏感度，检测向下和向上级别的更改 |*bileveldetector.sensitivity：* 检测程序分数上的阈值（默认值：3.25，3.25 – 5 是合理的选择范围；值越高敏感性越低） |rpscore：浮动数字，表示向上和向下级别更改的异常分数 | |
+| 峰值检测程序 |TSpike 检测程序 |根据值与第一个和第三个四分位数的距离，检测峰值和低值 |tspikedetector.sensitivity：取 1-10 范围内的整数值，默认值：3；更高的值会捕获更多极值，从而使敏感度降低 |TSpike：二进制值 – 如果检测到峰值或低值，显示“1”，否则为“0” |
+| 峰值检测程序 | ZSpike 检测程序 |根据数据点与平均值的距离，检测峰值和低值 |spikedetector.sensitivity：取 1-10 范围内的整数值，默认值：3；更高的值会捕获更多极值，从而使敏感度降低 |TSpike：二进制值 – 如果检测到峰值或低值，显示“1”，否则为“0” | |
+| 慢速趋势检测程序 |慢速趋势检测程序 |根据每组的敏感度，检测慢速正面发展趋势 |trenddetector.sensitivity：检测程序分数的阈值（默认值：3.25，3.25 – 5 是合理的取值范围；值越高敏感度越低） |tscore：浮动数字，表示趋势的异常分数 |
+| 级别更改检测程序 | 双向级别更改检测程序 |根据每组的敏感度，检测向下和向上级别的更改 |bileveldetector.sensitivity：检测程序分数的阈值（默认值：3.25，3.25 – 5 是合理的取值范围；值越高敏感度越低） |rpscore：浮动数字，表示向上和向下级别更改的异常分数 | |
 
 ### <a name="parameters"></a>parameters
 下表中列出了这些输入参数的更多详细信息：

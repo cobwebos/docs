@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 11/15/2018
 ms.author: glenga
-ms.openlocfilehash: 9fb25f21e9ff54baf0e297fad1601018af45e476
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: aba3d9f33d179c09708464975fa2a929a8bb68d0
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52497247"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52876513"
 ---
 # <a name="monitor-azure-functions"></a>监视 Azure Functions
 
@@ -158,7 +158,7 @@ requests
 * **requests** - 一个请求用于一个函数调用。
 * **exceptions** - 由运行时引发的任何异常。
 * **customMetrics** - 成功和失败调用的计数、成功率、持续时间。
-* **customEvents** - 由运行时跟踪的事件，例如：触发函数的 HTTP 请求。
+* **customEvents** - 运行时跟踪的事件，例如：触发函数的 HTTP 请求。
 * **performanceCounters** - 有关运行函数的服务器的性能的信息。
 
 其他表适用于可用性测试以及客户端/浏览器遥测。 可以实现自定义遥测以向其中添加数据。
@@ -330,6 +330,21 @@ v2.x 运行时使用 [.NET Core 日志记录筛选器层次结构](https://docs.
 ## <a name="configure-sampling"></a>配置采样
 
 Application Insights 具有[采样](../application-insights/app-insights-sampling.md)功能，可以防止在峰值负载时生成太多的遥测数据。 当传入遥测的速率超过指定的阈值时，Application Insights 开始随机忽略某些传入项。 默认的每秒最大项数设置为 5。 可以在 [host.json](functions-host-json.md) 中配置采样。  下面是一个示例：
+
+### <a name="version-2x"></a>版本 2.x 
+
+```json
+{
+  "logging": {
+    "applicationInsights": {
+      "samplingSettings": {
+        "isEnabled": true,
+        "maxTelemetryItemsPerSecond" : 5
+      }
+    }
+  }
+}
+```
 
 ### <a name="version-1x"></a>版本 1.x 
 

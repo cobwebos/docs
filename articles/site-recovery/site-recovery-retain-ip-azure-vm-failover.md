@@ -2,16 +2,16 @@
 title: 使用 Azure Site Recovery 在 Azure VM 故障转移期间保留 IP 地址 | Microsoft Docs
 description: 介绍如何在使用 Azure Site Recovery 将用于灾难恢复的 Azure VM 故障转移到次要区域时保留 IP 地址
 ms.service: site-recovery
-ms.date: 10/16/2018
+ms.date: 11/27/2018
 author: mayurigupta13
 ms.topic: conceptual
 ms.author: mayg
-ms.openlocfilehash: 4e75ba210e12a39d2c4cfb9753bbc2da2893746b
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: f7b546e8a0ca52fd2037e471f01787bb64db032d
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51567394"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52842741"
 ---
 # <a name="retain-ip-addresses-during-failover"></a>在故障转移期间保留 IP 地址
 
@@ -43,7 +43,7 @@ ms.locfileid: "51567394"
         - 东亚包含的一个 VNet（源 VNet）的地址空间为 10.1.0.0/16。
         - 东亚的工作负荷拆分在 VNet 中的三个子网中：
             - **子网 1**：10.1.1.0/24
-            - **子网 2**：10.1.2.0/24
+            - **子网 2**：10.1.2.0/24，
             - **子网 3**：10.1.3.0/24
     - 次要（目标）区域是“Azure 东南亚”
         - 东南亚具有与“源 VNet”相同的恢复 VNet（名为“恢复 VNet”）。
@@ -85,8 +85,8 @@ ms.locfileid: "51567394"
 故障转移前，体系结构如下所示：
 
 - 应用程序 VM 托管在主要的 Azure 东亚区域中：
-    - App1 VM 位于 VNet“源 VNet1”10.1.0.0/16 中。
-    - App2 VM 位于 VNet “源 VNet 2”10.2.0.0/16 中。
+    - App1 VM 位于 VNet 源 VNet 1 中：10.1.0.0/16。
+    - App2 VM 位于 VNet 源 VNet 2 中：10.2.0.0/16。
     - 源 VNet 1 包含两个子网。
     - 源 VNet 2 包含两个子网。
 - 次要（目标）区域为“Azure 东南亚”- 东南亚具有与源 VNet 1 和源 VNet 2 相同的恢复 VNet（恢复 VNet 1 和恢复 VNet 2）。
@@ -131,7 +131,7 @@ ms.locfileid: "51567394"
 -  东亚包含的一个 VNet（源 VNet）的地址空间为 10.1.0.0/16。
     - 东亚的工作负荷拆分在源 VNet 中中的三个子网中：
         - **子网 1**：10.1.1.0/24
-        - **子网 2**：10.1.2.0/24
+        - **子网 2**：10.1.2.0/24，
         - **子网 3**：10.1.3.0/24（使用地址空间为 10.1.0.0/16 的 Azure 虚拟网络）。 此虚拟网络名为“源 VNet”
  - 次要（目标）区域是“Azure 东南亚”：
     - 东南亚具有与“源 VNet”相同的恢复 VNet（名为“恢复 VNet”）。

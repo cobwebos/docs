@@ -1,6 +1,6 @@
 ---
-title: 使用用于容器的 Web 应用从 Docker 容器注册表进行持续部署 - Azure | Microsoft Docs
-description: 如何在用于容器的 Web 应用中设置从 Docker 容器注册表进行的持续部署。
+title: 用于容器的 Web 应用的持续部署 - Azure 应用服务 | Microsoft Docs
+description: 如何在用于容器的 Web 应用中设置持续部署。
 keywords: azure 应用服务, linux, docker, acr,oss
 services: app-service
 documentationcenter: ''
@@ -14,13 +14,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/08/2018
-ms.author: msangapu;yili
-ms.openlocfilehash: b26366edddc223b842cc5d38473bda42422f1840
-ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.author: yili
+ms.custom: seodec18
+ms.openlocfilehash: 4acadc4c08ef50e7d52303689c38c43f81187669
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51298520"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53315516"
 ---
 # <a name="continuous-deployment-with-web-app-for-containers"></a>使用用于容器的 Web 应用进行持续部署
 

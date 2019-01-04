@@ -1,5 +1,5 @@
 ---
-title: Team Data Science Process 生命周期的建模阶段 - Azure | Microsoft Docs
+title: Team Data Science Process 生命周期建模阶段
 description: 你的数据科学项目建模阶段的目标、任务和可交付结果
 services: machine-learning
 author: marktab
@@ -10,15 +10,15 @@ ms.component: team-data-science-process
 ms.topic: article
 ms.date: 11/04/2017
 ms.author: tdsp
-ms.custom: (previous author=deguhath, ms.author=deguhath)
-ms.openlocfilehash: b486083e4dc76f6d9ebc5e24e7d52b5ef3b99f3a
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: dac686878ff128e3d556c0dbd7e9a2d51ac1756d
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52442399"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53139940"
 ---
-# <a name="modeling"></a>建模
+# <a name="modeling-stage-of-the-team-data-science-process-lifecycle"></a>Team Data Science Process 生命周期建模阶段
 
 本文概述了与 Team Data Science Process (TDSP) 的建模阶段相关联的目标、任务和可交付结果。 此过程提供可用于构建数据科学项目的建议生命周期。 该生命周期概述了项目通常执行的主要阶段（通常以迭代方式进行）：
 
@@ -41,7 +41,7 @@ ms.locfileid: "52442399"
 ## <a name="how-to-do-it"></a>如何执行
 在此阶段中解决了三个主要任务：
 
-  * **功能设计**：从原始数据创建数据功能，以实现模型定型。
+  * **特征工程**：从原始数据创建数据特征，以实现模型定型。
   * **模型定型**：通过比较模型的成功指标，找出最能准确回答问题的模型。
   * 确定模型是否适用于生产。
 

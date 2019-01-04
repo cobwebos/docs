@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: hrasheed
-ms.openlocfilehash: 4b565252c78bfe2194530d840651a57df2686728
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: a7b657d11e829d636063639e26a90d671a5d1473
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51633167"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53438347"
 ---
 # <a name="run-apache-sqoop-jobs-with-hadoop-in-hdinsight-with-curl"></a>使用 Curl 通过 HDInsight 中的 Hadoop 运行 Apache Sqoop 作业
 [!INCLUDE [sqoop-selector](../../../includes/hdinsight-selector-use-sqoop.md)]
@@ -26,17 +26,19 @@ ms.locfileid: "51633167"
 ## <a name="prerequisites"></a>先决条件
 要完成本文中的步骤，需要：
 
-* 完成[在 HDInsight 中将 Sqoop 与 Hadoop 配合使用](hdinsight-use-sqoop.md#create-cluster-and-sql-database)，配置具有 HDInsight 群集和 Azure SQL 数据库的环境。
-* [Curl](http://curl.haxx.se/). Curl 是一种将数据传入或传出 HDInsight 群集的工具。
-* [jq](http://stedolan.github.io/jq/). jq 实用工具用于处理从 REST 请求返回的 JSON 数据。
 
-## <a name="submit-sqoop-jobs-by-using-curl"></a>使用 Curl 提交 Sqoop 作业
-> [!NOTE]
+* 完成[在 HDInsight 中将 Apache Sqoop 与 Hadoop 配合使用](hdinsight-use-sqoop.md#create-cluster-and-sql-database)，以配置具有 HDInsight 群集和 Azure SQL 数据库的环境。
+* [Curl](https://curl.haxx.se/). Curl 是一种将数据传入或传出 HDInsight 群集的工具。
+* [jq](https://stedolan.github.io/jq/). jq 实用工具用于处理从 REST 请求返回的 JSON 数据。
+
+
+## <a name="submit-apache-sqoop-jobs-by-using-curl"></a>使用 Curl 提交 Apache Sqoop 作业
+> [!NOTE]  
 > 使用 Curl 或者与 WebHCat 进行任何其他形式的 REST 通信时，必须提供 HDInsight 群集管理员用户名和密码对请求进行身份验证。 此外，还必须使用群集名称作为用来向服务器发送请求的统一资源标识符 (URI) 的一部分。
 > 
 > 对本部分中的所有命令，请将 **USERNAME**替换为在群集上进行身份验证的用户，并将 **PASSWORD** 替换为用户帐户的密码。 将 **CLUSTERNAME** 替换为群集名称。
 > 
-> REST API 通过 [基本身份验证](http://en.wikipedia.org/wiki/Basic_access_authentication)进行保护。 始终应该使用安全 HTTP (HTTPS) 来发出请求，以确保安全地将凭据发送到服务器。
+> REST API 通过 [基本身份验证](https://en.wikipedia.org/wiki/Basic_access_authentication)进行保护。 始终应该使用安全 HTTP (HTTPS) 来发出请求，以确保安全地将凭据发送到服务器。
 > 
 > 
 
@@ -88,10 +90,9 @@ ms.locfileid: "51633167"
 
     如果作业已完成，状态将是 **SUCCEEDED**。
    
-   > [!NOTE]
+   > [!NOTE]  
    > 此 Curl 请求返回具有作业相关信息的 JavaScript 对象表示法 (JSON) 文档；使用 jq 可以仅检索状态值。
-   > 
-   > 
+
 4. 在作业的状态更改为“SUCCEEDED”后，可以从 Azure Blob 存储中检索作业的结果。 随查询一起传递的 `statusdir` 参数包含输出文件的位置；在本例中，位置为 wasb:///example/data/sqoop/curl。 此地址会将作业的输出存储在 HDInsight 群集所用的默认存储容器的 example/data/sqoop/curl 目录中。
    
     可使用 Azure 门户访问 stderr 和 stdout blob。  还可使用 Microsoft SQL Server Management Studio 检查上传到 log4jlogs 表的数据。
@@ -103,25 +104,25 @@ ms.locfileid: "51633167"
 ## <a name="summary"></a>摘要
 如本文档中所示，可以使用原始 HTTP 请求来运行、监视和查看 HDInsight 群集上的 Sqoop 作业的结果。
 
-有关本文中使用的 REST 接口的详细信息，请参阅 <a href="https://sqoop.apache.org/docs/1.99.3/RESTAPI.html" target="_blank">Sqoop REST API 指南</a>。
+有关本文中使用的 REST 接口的详细信息，请参阅 <a href="https://sqoop.apache.org/docs/1.99.3/RESTAPI.html" target="_blank">Apache Sqoop REST API 指南</a>。
 
 ## <a name="next-steps"></a>后续步骤
 有关将 Hive 与 HDInsight 配合使用的一般信息：
 
-* [将 Sqoop 与 HDInsight 上的 Hadoop 配合使用](hdinsight-use-sqoop.md)
+* [将 Apache Sqoop 与 Apache Hadoop on HDInsight 配合使用](hdinsight-use-sqoop.md)
 
 有关 HDInsight 上的 Hadoop 的其他使用方法的信息：
 
-* [将 Hive 与 Hadoop on HDInsight 配合使用](hdinsight-use-hive.md)
-* [将 Pig 与 Hadoop on HDInsight 配合使用](hdinsight-use-pig.md)
-* [将 MapReduce 与 HDInsight 上的 Hadoop 配合使用](hdinsight-use-mapreduce.md)
+* [将 Apache Hive 与 Apache Hadoop on HDInsight 配合使用](hdinsight-use-hive.md)
+* [将 Apache Pig 与 Apache Hadoop on HDInsight 配合使用](hdinsight-use-pig.md)
+* [将 MapReduce 与 Apache Hadoop on HDInsight 配合使用](hdinsight-use-mapreduce.md)
 
 涉及 curl 的其他 HDInsight 文章:
  
-* [使用 Azure REST API 创建 Hadoop 群集](../hdinsight-hadoop-create-linux-clusters-curl-rest.md)
-* [使用 REST 在 HDInsight 中通过 Hadoop 运行 Hive 查询](apache-hadoop-use-hive-curl.md)
-* [使用 REST 在 HDInsight 上通过 Hadoop 运行 MapReduce 作业](apache-hadoop-use-mapreduce-curl.md)
-* [使用 cURL 配合 HDInsight 上的 Hadoop 运行 Pig 作业](apache-hadoop-use-pig-curl.md)
+* [使用 Azure REST API 创建 Apache Hadoop 群集](../hdinsight-hadoop-create-linux-clusters-curl-rest.md)
+* [使用 REST 在 HDInsight 中通过 Apache Hadoop 运行 Apache Hive 查询](apache-hadoop-use-hive-curl.md)
+* [使用 REST 通过 Apache Hadoop on HDInsight 运行 MapReduce 作业](apache-hadoop-use-mapreduce-curl.md)
+* [使用 cURL 通过 Apache Hadoop on HDInsight 运行 Apache Pig 作业](apache-hadoop-use-pig-curl.md)
 
 
 

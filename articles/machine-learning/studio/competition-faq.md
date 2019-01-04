@@ -1,12 +1,11 @@
 ---
-title: Cortana Intelligence Competition 常见问题解答 | Microsoft Docs
+title: Cortana Intelligence Competition 常见问题解答 - Azure 机器学习工作室 | Microsoft Docs
 description: 有关 Microsoft Cortana Intelligence Competition 的常见问题。
 services: machine-learning
 documentationcenter: ''
 author: ericlicoding
-ms.custom: (previous ms.author=haining, author=hning86)
+ms.custom: seodec18
 ms.author: amlstudiodocs
-manager: mwinkle
 editor: cgronlun
 ms.assetid: 9bac5154-a56c-4e78-9d67-34368b9d1624
 ms.service: machine-learning
@@ -16,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/18/2017
-ms.openlocfilehash: 8782af26056f8341ee68ed87f003bc585e0c4e69
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: fe4da412aa779e9861446f8dcbb8a807c282c7c6
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52265095"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53268897"
 ---
 # <a name="microsoft-cortana-intelligence-competitions-faq"></a>Microsoft Cortana Intelligence Competition 常见问题
 **什么是 Cortana Intelligence Competition？**
@@ -70,7 +69,7 @@ Microsoft Cortana Intelligence Competitions 要求数据爱好者们共同解决
 
 无需付费便可参与竞赛。 但是，参与竞赛需要访问 Azure 机器学习工作区。 只需使用有效的 Microsoft 帐户或 Office 365 帐户登录，即可创建免费的工作区，无需使用信用卡。 如果已经是 Azure 或 Cortana Intelligence 套件客户，可以在同一 Azure 订阅下创建并使用标准工作区。 如果要购买 Azure 订阅，请转到 [Azure 定价](https://azure.microsoft.com/pricing)页。 请注意，使用标准工作区来构造试验时，则会采用标准费率。 有关详细信息，请参阅 [Azure 机器学习定价信息](https://azure.microsoft.com/pricing/details/machine-learning/)。 
 
-[!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
+
 
 **公共分数和专用分数是什么？**
 

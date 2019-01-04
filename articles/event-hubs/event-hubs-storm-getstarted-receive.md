@@ -1,6 +1,6 @@
 ---
-title: 使用 Apache Storm 从 Azure 事件中心接收事件 | Microsoft 文档
-description: 使用 Apache Storm 从事件中心接收事件入门
+title: 使用 Apache Storm 接收事件 - Azure 事件中心 | Microsoft 文档
+description: 本文提供有关如何使用 Apache Storm 从 Azure 事件中心接收事件的信息。
 services: event-hubs
 documentationcenter: ''
 author: ShubhaVijayasarathy
@@ -12,14 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: java
 ms.devlang: multiple
 ms.topic: article
-ms.date: 08/16/2018
+ms.custom: seodec18
+ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: c70096796bb038c27d18bb3467d7c425dafd5c5b
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: 3c50916f648a2bce634f7aeb109147a873de1de6
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42141897"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53094604"
 ---
 # <a name="receive-events-from-event-hubs-using-apache-storm"></a>使用 Apache Storm 从事件中心接收事件
 
@@ -40,7 +41,7 @@ ms.locfileid: "42141897"
     ```
 4. 在 Eclipse 中创建一个新的 Maven 项目（依次单击“文件”、“新建”、“项目”）。
    
-    ![][12]
+    ![“文件”>“新建”>“项目”][12]
 5. 选择“使用默认工作区位置”，并单击“下一步”
 6. 选择“maven-archetype-quickstart”原型，并单击“下一步”
 7. 插入 **GroupId** 和 **ArtifactId**，并单击“完成”

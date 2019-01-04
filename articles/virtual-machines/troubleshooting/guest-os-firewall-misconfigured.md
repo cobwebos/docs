@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 11/22/2018
 ms.author: delhan
-ms.openlocfilehash: ad659cfcf1bfdad440968da5568b993724a5f351
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: cd45220326221490b461c5706620df2aab55a5d6
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52319176"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53137831"
 ---
 # <a name="azure-vm-guest-os-firewall-is-misconfigured"></a>Azure VM 来宾 OS 防火墙配置不正确
 
@@ -33,29 +33,29 @@ ms.locfileid: "52319176"
 
 ## <a name="cause"></a>原因
 
-来宾系统防火墙配置不正确可能会阻止部分或所有类型的网络流量发往 VM。 
+来宾系统防火墙配置不正确可能会阻止部分或所有类型的网络流量发往 VM。
 
 ## <a name="solution"></a>解决方案
 
-在执行这些步骤之前，创建受影响 VM 的系统磁盘的快照作为备份。 有关详细信息，请参阅[拍摄磁盘快照](../windows/snapshot-copy-managed-disk.md)。
+在执行这些步骤之前，请创建受影响 VM 的系统磁盘快照作为备份。 有关详细信息，请参阅[拍摄磁盘快照](../windows/snapshot-copy-managed-disk.md)。
 
 若要排查此问题，请使用串行控制台，或通过将 VM 的系统磁盘附加到恢复 VM 来[脱机修复 VM](troubleshoot-rdp-internal-error.md#repair-the-vm-offline)。
 
 ## <a name="online-mitigations"></a>联机缓解措施
 
-连接到[串行控制台并打开 PowerShell 实例](serial-console-windows.md#open-cmd-or-powershell-in-serial-console)。 如果 VM 上未启用串行控制台，请转到以下 Azure 文章的“脱机修复 VM”部分：
+连接到[串行控制台并打开 PowerShell 实例](serial-console-windows.md#use-cmd-or-powershell-in-serial-console)。 如果 VM 上未启用串行控制台，请转到以下 Azure 文章的“脱机修复 VM”部分：
 
  [尝试通过远程桌面连接到 Azure VM 时发生内部错误](troubleshoot-rdp-internal-error.md#repair-the-vm-offline)
 
-可以编辑以下规则，以便启用对 VM 的访问（通过 RDP）或提供更轻松的故障排除体验： 
+可以编辑以下规则，以便启用对 VM 的访问（通过 RDP）或提供更轻松的故障排除体验：
 
-*   远程桌面 (TCP-In)：这是标准规则，提供对 VM 的主要访问，其方法是允许在 Azure 中使用 RDP。
+*   远程桌面 (TCP-IN)：这是标准规则，提供对 VM 的主要访问，其方法是允许在 Azure 中使用 RDP。
 
 *   Windows 远程管理 (HTTP-In)：此规则允许通过 PowerShell 连接到 VM。在 Azure 中，可以通过这种类型的访问权限使用远程脚本和故障排除的脚本方面的功能。
 
 *   文件和打印机共享 (SMB-In)：可以通过此规则以故障排除选项的方式进行网络共享访问。
 
-*   文件和打印机共享（回应请求 - ICMPv4-In）：可以通过此规则 ping VM。 
+*   文件和打印机共享（回显请求 - ICMPv4-In）：可使用此规则对 VM 执行 ping 操作。
 
 在“串行控制台访问”实例中，可以查询防火墙规则的当前状态。
 
@@ -83,7 +83,7 @@ ms.locfileid: "52319176"
     netsh advfirewall firewall set rule name="<RULE NAME>" new enable=yes
     ```
 
-*   若要进行故障排除，可将防火墙配置文件设置为 OFF： 
+*   若要进行故障排除，可将防火墙配置文件设置为 OFF：
 
     ```cmd
     netsh advfirewall set allprofiles state off

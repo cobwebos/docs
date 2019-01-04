@@ -1,19 +1,19 @@
 ---
-title: 配置可以并存的 ExpressRoute 连接和站点到站点 VPN 连接：PowerShell：Azure | Microsoft Docs
-description: 本文介绍如何使用 PowerShell 为资源管理器模型配置可共存的 ExpressRoute 连接和站点到站点 VPN 连接
+title: 配置 ExpressRoute 和站点到站点 VPN 连接 - 并存：PowerShell：Azure | Microsoft Docs
+description: 使用 PowerShell 为资源管理器模型配置可共存的 ExpressRoute 连接和站点到站点 VPN 连接。
 services: expressroute
 author: charwen
-manager: rossort
 ms.service: expressroute
 ms.topic: conceptual
 ms.date: 11/05/2018
 ms.author: charwen
-ms.openlocfilehash: 96e2eb85bc96075e0673359910522f8e35bf5a5c
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.custom: seodec18
+ms.openlocfilehash: 1aeb5ca447a3058962483b640f742e4a7ec4a414
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51243805"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53104027"
 ---
 # <a name="configure-expressroute-and-site-to-site-coexisting-connections-using-powershell"></a>使用 PowerShell 配置 ExpressRoute 和站点到站点共存连接
 > [!div class="op_single_selector"]
@@ -21,6 +21,9 @@ ms.locfileid: "51243805"
 > * [PowerShell - 经典](expressroute-howto-coexist-classic.md)
 > 
 > 
+
+
+本文有助于配置可共存的 ExpressRoute 和站点到站点 VPN 连接。 能够配置站点到站点 VPN 和 ExpressRoute 具有多项优势。 可以将站点到站点 VPN 配置为 ExpressRoute 的安全故障转移路径，或者使用站点到站点 VPN 连接到不是通过 ExpressRoute 进行连接的站点。 我们会在本文中介绍这两种方案的配置步骤。 本文适用于 Resource Manager 部署模型。
 
 配置站点到站点 VPN 和 ExpressRoute 共存连接具有多项优势：
 

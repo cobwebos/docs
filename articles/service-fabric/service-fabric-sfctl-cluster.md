@@ -12,14 +12,14 @@ ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 07/31/2018
+ms.date: 12/06/2018
 ms.author: bikang
-ms.openlocfilehash: 4b0491d59e4ac495750a338ad743aab69ff47a4e
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.openlocfilehash: cf283803dfa45c362330ccf73fc5eea198d3a5e2
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39494237"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53278638"
 ---
 # <a name="sfctl-cluster"></a>sfctl cluster
 选择、管理和操作 Service Fabric 群集。
@@ -142,7 +142,7 @@ ms.locfileid: "39494237"
 
 以下 API 启动可以使用 CancelOperation 取消的错误操作：StartDataLoss、StartQuorumLoss、StartPartitionRestart、StartNodeTransition。 如果 force 为 false，则会正常停止并清理用户造成的指定操作。  如果 force 为 true，则会中止命令，并可能留下一些内部状态。  请谨慎将 force 指定为 true。 除非先在 force 设置为 false 的情况下对相同的 test 命令调用此 API，或者 test 命令已包含值为 OperationState.RollingBack 的 OperationState，否则，不允许在 force 设置为 true 的情况下调用此 API。 
 
- 澄清\: OperationState.RollingBack 表示系统将会/正在清理由于执行该命令而导致的内部系统状态。 如果 test 命令导致数据丢失，则系统不会还原数据。  例如，如果先调用 StartDataLoss，再调用此 API，则系统只会清理由于运行该命令而导致的内部状态。 如果命令的执行时间很长，导致数据丢失，则系统不会还原目标分区的数据。 
+澄清\: OperationState.RollingBack 表示系统将会/正在清理由于执行该命令而导致的内部系统状态。  如果 test 命令导致数据丢失，则系统不会还原数据。  例如，如果先调用 StartDataLoss，再调用此 API，则系统只会清理由于运行该命令而导致的内部状态。 如果命令的执行时间很长，导致数据丢失，则系统不会还原目标分区的数据。 
 
 > [!NOTE]
 > 如果在 force==true 的情况下调用此 API，则可能会留下内部状态。
@@ -243,9 +243,9 @@ ms.locfileid: "39494237"
 | --- | --- |
 | --health-property [必需] | 运行状况信息的属性。 <br><br> 一个实体可以有不同属性的运行状况报告。 该属性是一个字符串，不是固定的枚举，因此可使报告器灵活地对触发报告的状态条件进行分类。 例如，SourceId 为“LocalWatchdog”的报告器可以监视节点上的可用磁盘的状态，因此它可以报告该节点的“AvailableDisk”属性。 同一报告器可以监视节点连接，因此它可以报告同一节点的“Connectivity”属性。 在运行状况存储中，这些报告均被视为指定节点的单独运行状况事件。 与 SourceId 一起，该属性唯一地标识运行状况信息。 |
 | --health-state    [必需] | 可能的值包括\:“Invalid”、“Ok”、“Warning”、“Error”、“Unknown”。 |
-| --source-id       [必需] | 用于标识生成了运行状况信息的客户端/监视程序/系统组件的源名称。 |
+| --source-id       [必需] | 标识已生成运行状况信息的客户端/监视程序/系统组件的源名称。 |
 | --description | 运行状况信息的说明。 <br><br> 它表示用于添加有关该报告的用户可读信息的自定义文本。 该说明的最大字符串长度为 4096 个字符。 如果所提供字符串的长度大于该值，它将被自动截断。 截断时，该说明的末尾字符包含一个标记“[Truncated]”，并且总字符串大小为 4096 个字符。 该标记的存在向用户指示截断已发生。 请注意，当截断时，该说明包含来自原始字符串的 4096 个以内的字符。 |
-| --immediate | 用于指示是否应立即发送报告的标志。 <br><br> 运行状况报告将发送到 Service Fabric 网关应用程序，后者会将其转发到运行状况存储。 如果 Immediate 设置为 true，则报告将立即从 HTTP 网关发送至运行状况存储，而无论 HTTP 网关应用程序使用的 Fabric 客户端设置如何。 这对于应尽快发送的关键报告十分有用。 由于计时和其他情况，发送报告可能仍会失败，例如，在 HTTP 网关已关闭或消息无法到达网关的情况下。 如果 Immediate 设置为 false，则报告将基于来自 HTTP 网关的运行状况客户端设置发送。 因此，系统将根据 HealthReportSendInterval 配置对其进行批处理。 这是建议的设置，因为它可让运行状况客户端优化发往运行状况存储的运行状况报告消息以及运行状况报告处理。 默认情况下，报告不立即发送。 |
+| --immediate | 一个用于指示是否应立即发送报告的标志。 <br><br> 运行状况报告将发送到 Service Fabric 网关应用程序，后者会将其转发到运行状况存储。 如果 Immediate 设置为 true，则报告将立即从 HTTP 网关发送至运行状况存储，而无论 HTTP 网关应用程序使用的 Fabric 客户端设置如何。 这对于应尽快发送的关键报告十分有用。 由于计时和其他情况，发送报告可能仍会失败，例如，在 HTTP 网关已关闭或消息无法到达网关的情况下。 如果 Immediate 设置为 false，则报告将基于来自 HTTP 网关的运行状况客户端设置发送。 因此，系统将根据 HealthReportSendInterval 配置对其进行批处理。 这是建议的设置，因为它可让运行状况客户端优化发往运行状况存储的运行状况报告消息以及运行状况报告处理。 默认情况下，报告不立即发送。 |
 | --remove-when-expired | 该值指示是否在报告过期时从运行状况存储删除该报告。 <br><br> 如果设置为 true，报告在过期后将从运行状况存储中删除。 如果设置为 false，报告在过期时将被视为错误。 此属性的值在默认情况下为 false。 当客户端定期报告时，它们应将 RemoveWhenExpired 设置为 false（默认值）。 这样，如果报告器有问题（例如死锁）并且无法报告，那么在运行状况报告过期时该实体就会被评估为处于错误状态。 这会将该实体标记为处于“Error”运行状况状态。 |
 | --sequence-number | 此运行状况报告的序列号（采用数字字符串形式）。 <br><br> 报告序列号由运行状况存储用来检测过时的报告。 如果未指定，序列号将在报告被添加时由运行状况客户端自动生成。 |
 | --timeout -t | 服务器超时，以秒为单位。  默认值\: 60。 |
@@ -264,7 +264,7 @@ ms.locfileid: "39494237"
 ## <a name="sfctl-cluster-select"></a>sfctl cluster select
 连接到 Service Fabric 群集终结点。
 
-如果连接到安全群集，请指定证书 (.crt) 和密钥文件 (.key) 的绝对路径，或指定包含此两者的单个文件 (.pem)。 不要同时指定上述两项。 （可选）如果连接到安全群集，则还要指定 CA 捆绑文件的绝对路径，或受信任 CA 证书的目录。
+如果连接到安全群集，请指定证书 (.crt) 和密钥文件 (.key) 的绝对路径，或指定包含此两者的单个文件 (.pem)。 不要同时指定上述两项。 （可选）如果连接到安全群集，则还要指定 CA 捆绑文件的绝对路径，或受信任 CA 证书的目录。 如果使用 CA 证书目录，则必须首先运行 OpenSSL 提供的 `c_rehash <directory>` 以计算证书哈希值并创建相应的符号链接。
 
 ### <a name="arguments"></a>参数
 
@@ -340,19 +340,19 @@ ms.locfileid: "39494237"
 | --delta-health-evaluation | 每个升级域完成后，启用增量运行状况评估，而不是绝对运行状况评估。 |
 | --delta-unhealthy-nodes | 群集升级过程中允许的节点运行状况降级最大百分比。  默认值\: 10。 <br><br> 在开始升级时的节点状态与运行状况评估时的节点状态之间测得的增量值。 每个升级域升级完成后执行检查，确保群集的全局状态在允许的限制内。 |
 | --failure-action | 可能的值包括\:“Invalid”、“Rollback”和“Manual”。 |
-| --force-restart | 强制重启。 |
-| --health-check-retry | 运行状况检查重试超时时间，以毫秒为单位。 |
-| --health-check-stable | 运行状况检查稳定持续时间，以毫秒为单位。 |
-| --health-check-wait | 运行状况检查等待持续时间，以毫秒为单位。 |
-| --replica-set-check-timeout | 升级副本集检查超时时间，以秒为单位。 |
+| --force-restart | 即使代码版本没有改变，也在升级过程中强制重新启动进程。 <br><br> 升级仅更改配置或数据。 |
+| --health-check-retry | 应用程序或群集不正常时尝试执行运行状况检查所间隔的时间长度。 |
+| --health-check-stable | 升级继续到下一升级域之前，应用程序或群集必须保持正常的时长。 <br><br> 首先，会将其解释为表示 ISO 8601 持续时间的一个字符串。 如果那失败，则会将其解释为表示总毫秒数的一个数字。 |
+| --health-check-wait | 启动运行状况检查进程之前，完成升级域后等待的时间长度。 |
+| --replica-set-check-timeout | 出现意外问题时，阻止处理升级域并防止可用性丢失的最大时长。 <br><br> 当此超时到期时，无论是否存在可用性丢失问题，都将继续处理升级域。 每个升级域启动时重置超时。 有效值介于 0 和 42949672925（含）之间。 |
 | --rolling-upgrade-mode | 可能的值包括\:“Invalid”、“UnmonitoredAuto”、“UnmonitoredManual”和“Monitored”。  默认值\: UnmonitoredAuto。 |
 | --timeout -t | 服务器超时，以秒为单位。  默认值\: 60。 |
 | --unhealthy-applications | 报告错误之前允许的最大不正常应用程序百分比。 <br><br> 例如，若要允许 10% 的应用程序处于不正常状态，此值为 10。 该百分比表示在将群集视为出错之前可处于不正常状态的应用程序的最大容许百分比。 如果未超过该百分比，但至少存在一个不正常的应用程序，则将运行状况评估为 Warning。 该百分比的计算方式是将不正常的应用程序数除以群集中的应用程序实例总数，不包括 ApplicationTypeHealthPolicyMap 中包含的应用程序类型的应用程序。 计算结果调高为整数，以便容忍少量应用程序出现一次失败。 |
 | --unhealthy-nodes | 报告错误之前允许的最大不正常节点百分比。 <br><br> 例如，若要允许 10% 的节点处于不正常状态，此值为 10。 该百分比表示在将群集视为出错之前可处于不正常状态的节点的最大容许百分比。 如果未超过该百分比，但至少存在一个不正常的节点，则将运行状况评估为警告。 该百分比的计算方式是将不正常的节点数除以群集中的节点总数。 计算结果调高为整数，以便容忍少量节点上出现一次失败。 在大型群集中，始终会有一些要关闭或需要修复的节点，因此应配置此百分比以便容忍这种情况。 |
 | --upgrade-domain-delta-unhealthy-nodes | 群集升级过程中允许的升级域节点运行状况降级最大百分比。  默认值\: 15。 <br><br> 在开始升级时的升级域节点状态与运行状况评估时的升级域节点状态之间测得的增量值。 每个升级域升级完成后对所有已完成的升级域执行检查，以便确保升级域的状态在允许的限制内。 |
-| --upgrade-domain-timeout | 升级域超时时间，以毫秒为单位。 |
-| --upgrade-timeout | 升级超时时间，以毫秒为单位。 |
-| --warning-as-error | 将警告的严重性视为与错误相同。 |
+| --upgrade-domain-timeout | 执行 FailureAction 前，每个升级域需等待的时长。 <br><br> 首先，会将其解释为表示 ISO 8601 持续时间的一个字符串。 如果那失败，则会将其解释为表示总毫秒数的一个数字。 |
+| --upgrade-timeout | 执行 FailureAction 前，完成整个升级需等待的时长。 <br><br> 首先，会将其解释为表示 ISO 8601 持续时间的一个字符串。 如果那失败，则会将其解释为表示总毫秒数的一个数字。 |
+| --warning-as-error | 指示是否将警告的严重性视为与错误相同。 |
 
 ### <a name="global-arguments"></a>全局参数
 
@@ -440,20 +440,20 @@ ms.locfileid: "39494237"
 | --delta-health-evaluation | 每个升级域完成后，启用增量运行状况评估，而不是绝对运行状况评估。 |
 | --delta-unhealthy-nodes | 群集升级过程中允许的节点运行状况降级最大百分比。  默认值\: 10。 <br><br> 在开始升级时的节点状态与运行状况评估时的节点状态之间测得的增量值。 每个升级域升级完成后执行检查，确保群集的全局状态在允许的限制内。 |
 | --failure-action | 可能的值包括\:“Invalid”、“Rollback”和“Manual”。 |
-| --force-restart | 强制重启。 |
-| --health-check-retry | 运行状况检查重试超时时间，以毫秒为单位。 |
-| --health-check-stable | 运行状况检查稳定持续时间，以毫秒为单位。 |
-| --health-check-wait | 运行状况检查等待持续时间，以毫秒为单位。 |
-| --replica-set-check-timeout | 升级副本集检查超时时间，以秒为单位。 |
+| --force-restart | 即使代码版本没有改变，也在升级过程中强制重新启动进程。 <br><br> 升级仅更改配置或数据。 |
+| --health-check-retry | 应用程序或群集不正常时尝试执行运行状况检查所间隔的时间长度。 |
+| --health-check-stable | 升级继续到下一升级域之前，应用程序或群集必须保持正常的时长。 <br><br> 首先，会将其解释为表示 ISO 8601 持续时间的一个字符串。 如果那失败，则会将其解释为表示总毫秒数的一个数字。 |
+| --health-check-wait | 启动运行状况检查进程之前，完成升级域后等待的时间长度。 |
+| --replica-set-check-timeout | 出现意外问题时，阻止处理升级域并防止可用性丢失的最大时长。 <br><br> 当此超时到期时，无论是否存在可用性丢失问题，都将继续处理升级域。 每个升级域启动时重置超时。 有效值介于 0 和 42949672925（含）之间。 |
 | --rolling-upgrade-mode | 可能的值包括\:“Invalid”、“UnmonitoredAuto”、“UnmonitoredManual”和“Monitored”。  默认值\: UnmonitoredAuto。 |
 | --timeout -t | 服务器超时，以秒为单位。  默认值\: 60。 |
 | --unhealthy-applications | 报告错误之前允许的最大不正常应用程序百分比。 <br><br> 例如，若要允许 10% 的应用程序处于不正常状态，此值为 10。 该百分比表示在将群集视为出错之前可处于不正常状态的应用程序的最大容许百分比。 如果未超过该百分比，但至少存在一个不正常的应用程序，则将运行状况评估为 Warning。 该百分比的计算方式是将不正常的应用程序数除以群集中的应用程序实例总数，不包括 ApplicationTypeHealthPolicyMap 中包含的应用程序类型的应用程序。 计算结果调高为整数，以便容忍少量应用程序出现一次失败。 |
 | --unhealthy-nodes | 报告错误之前允许的最大不正常节点百分比。 <br><br> 例如，若要允许 10% 的节点处于不正常状态，此值为 10。 该百分比表示在将群集视为出错之前可处于不正常状态的节点的最大容许百分比。 如果未超过该百分比，但至少存在一个不正常的节点，则将运行状况评估为警告。 该百分比的计算方式是将不正常的节点数除以群集中的节点总数。 计算结果调高为整数，以便容忍少量节点上出现一次失败。 在大型群集中，始终会有一些要关闭或需要修复的节点，因此应配置此百分比以便容忍这种情况。 |
 | --upgrade-domain-delta-unhealthy-nodes | 群集升级过程中允许的升级域节点运行状况降级最大百分比。  默认值\: 15。 <br><br> 在开始升级时的升级域节点状态与运行状况评估时的升级域节点状态之间测得的增量值。 每个升级域升级完成后对所有已完成的升级域执行检查，以便确保升级域的状态在允许的限制内。 |
-| --upgrade-domain-timeout | 升级域超时时间，以毫秒为单位。 |
+| --upgrade-domain-timeout | 执行 FailureAction 前，每个升级域需等待的时长。 <br><br> 首先，会将其解释为表示 ISO 8601 持续时间的一个字符串。 如果那失败，则会将其解释为表示总毫秒数的一个数字。 |
 | --upgrade-kind | 可能的值包括\:“Invalid”、“Rolling”、“Rolling_ForceRestart”。  默认值\: Rolling。 |
-| --upgrade-timeout | 升级超时时间，以毫秒为单位。 |
-| --warning-as-error | 将警告的严重性视为与错误相同。 |
+| --upgrade-timeout | 执行 FailureAction 前，完成整个升级需等待的时长。 <br><br> 首先，会将其解释为表示 ISO 8601 持续时间的一个字符串。 如果那失败，则会将其解释为表示总毫秒数的一个数字。 |
+| --warning-as-error | 指示是否将警告的严重性视为与错误相同。 |
 
 ### <a name="global-arguments"></a>全局参数
 
@@ -464,6 +464,7 @@ ms.locfileid: "39494237"
 | --output -o | 输出格式。  允许的值\: json、jsonc、table、tsv。  默认值\: json。 |
 | --query | JMESPath 查询字符串。 有关详细信息和示例，请参阅 http\://jmespath.org/。 |
 | --verbose | 提高日志记录详细程度。 使用 --debug 可获取完整的调试日志。 |
+
 
 ## <a name="next-steps"></a>后续步骤
 - [安装](service-fabric-cli.md) Service Fabric CLI。

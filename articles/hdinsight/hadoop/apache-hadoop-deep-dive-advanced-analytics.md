@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/14/2017
 ms.author: ashishth
-ms.openlocfilehash: 40536aae15f2ae9fa5e186cdbea1f75f7d264437
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: c6a47448fc99c2f58b315898c1b6af65f894da8d
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43047134"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53436681"
 ---
 # <a name="deep-dive---advanced-analytics"></a>深入探讨 - 高级分析
 
@@ -56,14 +56,16 @@ HDInsight 提供可从大量结构化、非结构化和快速移动的数据中�
 
 HDInsight 提供多个适用于高级分析工作流的机器学习选项：
 
-* [机器学习和 Spark](#machine-learning-and-spark)
+* [机器学习和 Apache Spark](#machine-learning-and-spark)
 * [R 和 ML Services](#r-and-r-server)
-* [Azure 机器学习和 Hive](#azure-machine-learning-and-hive)
-* [Spark 和深度学习](#spark-and-deep-learning)
+* [Azure 机器学习和 Apache Hive](#azure-machine-learning-and-hive)
+* [Apache Spark 和深度学习](#spark-and-deep-learning)
 
-### <a name="machine-learning-and-spark"></a>机器学习和 Spark
+### <a name="machine-learning-and-apache-spark"></a>机器学习和 Apache Spark
 
-[HDInsight Spark](../spark/apache-spark-overview.md) 是 Azure 托管的 [Spark](http://spark.apache.org/) 产品，它是统一的开源并行数据处理框架，使用内存中处理来大幅提升大数据分析性能。 Spark 处理引擎是专为速度、易用性和复杂分析打造的产品。 Spark 的内存中分布式计算功能使其成为机器学习和图形计算中使用的迭代算法的最佳选择。 
+
+[HDInsight Spark](../spark/apache-spark-overview.md) 是 Azure 托管的 [Apache Spark](https://spark.apache.org/) 产品/服务，它是统一的开源并行数据处理框架，使用内存中处理来大幅提升大数据分析性能。 Spark 处理引擎是专为速度、易用性和复杂分析打造的产品。 Spark 的内存中分布式计算功能使其成为机器学习和图形计算中使用的迭代算法的最佳选择。 
+
 
 有三个可缩放的机器学习库向此分布式环境引入了算法建模功能。
 
@@ -75,11 +77,11 @@ HDInsight 提供多个适用于高级分析工作流的机器学习选项：
 
 可以使用 HDInsight 随附的 [ML Services](../r-server/r-server-overview.md) 创建随时可与大型数据集和模型配合使用的 HDInsight 群集。 这项新功能为数据科学家和统计学家提供了通过 HDInsight 可按需缩放的熟悉 R 界面，并消除了群集设置和维护方面的开销。
 
-### <a name="azure-machine-learning-and-hive"></a>Azure 机器学习和 Hive
+### <a name="azure-machine-learning-and-apache-hive"></a>Azure 机器学习和 Apache Hive
 
 [Azure 机器学习工作室](https://studio.azureml.net/)不仅提供预测分析建模工具，还提供完全托管的服务，可以通过此服务将预测模型部署为随时可用的 Web 服务。 Azure 机器学习提供可在云中创建完整预测分析解决方案的工具，用于快速创建、测试、操作和管理预测模型。 可以从大型算法库中进行选择、使用基于 Web 的工作室来构建模型，然后将模型轻松部署为 Web 服务。
 
-### <a name="spark-and-deep-learning"></a>Spark 和深度学习
+### <a name="apache-spark-and-deep-learning"></a>Apache Spark 和深度学习
 
 [深度学习](https://www.microsoft.com/research/group/dltc/)是机器学习的一个分支，使用以人类大脑的生物学流程为灵感的*深度神经网络* (DNN)。 许多研究人员将深度学习视为有前景的人工智能方法。 深度学习的例子包括口译工具、图像识别系统和计算机推理。 为了帮助推进自身在深度学习方面的工作，Microsoft 开发了免费、易用的开源 [Microsoft 认知工具包](https://www.microsoft.com/en-us/cognitive-toolkit/)。 各种 Microsoft 产品、世界各地需要大规模部署深度学习的公司，以及对最新算法和技术感兴趣的学生都在广泛使用该工具包。 
 
@@ -118,16 +120,16 @@ HDInsight 提供多个适用于高级分析工作流的机器学习选项：
 
 ## <a name="next-steps"></a>后续步骤
 
-Hive 和 Azure 机器学习
+Apache Hive 和 Azure 机器学习
 
-* [Hive 和 Azure 机器学习端到端教程](../../machine-learning/team-data-science-process/hive-walkthrough.md)
+* [Apache Hive 和 Azure 机器学习端到端教程](../../machine-learning/team-data-science-process/hive-walkthrough.md)
 * [针对 1 TB 数据集使用 Azure HDInsight Hadoop 群集](../../machine-learning/team-data-science-process/hive-criteo-walkthrough.md)
 
-Spark 和 MLLib
+Apache Spark 和 MLLib
 
-* [在 Spark on HDInsight 中使用机器学习](../../machine-learning/team-data-science-process/spark-overview.md)
-* [Spark 和机器学习：使用 HDInsight 中的 Spark 对使用 HVAC 数据生成温度进行分析](../spark/apache-spark-ipython-notebook-machine-learning.md)
-* [Spark 和机器学习：使用 HDInsight 中的 Spark 预测食品检查结果](../spark/apache-spark-machine-learning-mllib-ipython.md)
+* [在 Apache Spark on HDInsight 中使用机器学习](../../machine-learning/team-data-science-process/spark-overview.md)
+* [Apache Spark 与机器学习：使用 HDInsight 中的 Apache Spark 来通过 HVAC 数据分析建筑物温度](../spark/apache-spark-ipython-notebook-machine-learning.md)
+* [Apache Spark 与机器学习：使用 HDInsight 中的 Apache Spark 预测食品检验结果](../spark/apache-spark-machine-learning-mllib-ipython.md)
 
 深度学习、认知工具包和其他技术
 

@@ -1,6 +1,6 @@
 ---
-title: 用于实现云一致性的 Azure 资源管理器模板 | Microsoft Docs
-description: 开发用于实现云一致性的 Azure 资源管理器模板。 创建适用于 Azure Stack 的新模板或更新现有模板。
+title: 跨云重复使用模板 - Azure 资源管理器
+description: 开发可针对不同的云环境一致地工作的 Azure 资源管理器模板。 创建适用于 Azure Stack 的新模板或更新现有模板。
 services: azure-resource-manager
 documentationcenter: na
 author: marcvaneijk
@@ -9,14 +9,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/05/2018
+ms.date: 12/09/2018
 ms.author: mavane
-ms.openlocfilehash: f1ff151c0b8d89910949d961b732c10901f19293
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.custom: seodec18
+ms.openlocfilehash: 28542bb66fe1e523201967a9dd67fd7e41fed7a0
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38723369"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53135621"
 ---
 # <a name="develop-azure-resource-manager-templates-for-cloud-consistency"></a>开发用于实现云一致性的 Azure 资源管理器模板
 
@@ -434,7 +435,7 @@ API 配置文件可确保 API 版本可跨位置使用，因此不需要手动�
 以下两个示例是在创建资源时需要显式指定的常见终结点命名空间：
 
 * 存储帐户（blob、队列、表和文件）
-* 数据库和 Redis 缓存的连接字符串
+* 数据库和 Azure Redis 缓存的连接字符串
 
 终结点命名空间还可在模板输出中用作部署完成时发送给用户的信息。 以下为常见示例：
 

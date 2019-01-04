@@ -1,20 +1,20 @@
 ---
-title: Java HBase 客户端 - Azure HDInsight
+title: 使用 Apache Maven 构建 Java HBase 客户端 - Azure HDInsight
 description: 了解如何使用 Apache Maven 构建基于 Java 的 Apache HBase 应用程序，然后将其部署到 Azure HDInsight 上的 HBase。
 services: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
+ms.custom: hdinsightactive,seodec18
 ms.topic: conceptual
 ms.date: 11/27/2018
-ms.openlocfilehash: 721e37349b406705a2cdfb52c64b5796cb590d78
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.openlocfilehash: dbcb031b49c529bc2b2524cd0984bbef1945d485
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52445645"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53164052"
 ---
 # <a name="build-java-applications-for-apache-hbase"></a>构建适用于 Apache HBase 的 Java 应用程序
 
@@ -57,7 +57,7 @@ ms.locfileid: "52445645"
     此命令使用与 **artifactID** 参数相同的名称（此示例中为 **hbaseapp**）创建目录。此目录包含以下项：
 
    * **pom.xml**：项目对象模型 ([POM](http://maven.apache.org/guides/introduction/introduction-to-the-pom.html))，其中包含用于生成项目的信息和配置详细信息。
-   * **src**：包含 **main/java/com/microsoft/examples** 目录的目录，用户会在其中创作应用程序。
+   * **src**：包含 main/java/com/microsoft/examples 目录的目录，用户会在其中创作应用程序。
 
 3. 删除 `src/test/java/com/microsoft/examples/apptest.java` 文件， 此示例不使用该文件。
 

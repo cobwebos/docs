@@ -3,15 +3,15 @@ title: 使用 Azure Site Recovery 为 VMware 灾难恢复启用 VMware VM 复制
 description: 本文介绍如何使用 Azure Site Recovery 启用 VMware VM 复制以便灾难恢复到 Azure。
 author: asgang
 ms.service: site-recovery
-ms.date: 07/06/2018
+ms.date: 11/27/2018
 ms.topic: conceptual
 ms.author: asgang
-ms.openlocfilehash: c6c5aeece9e49a44654d63a7dc243991a62f2d9a
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: 51470e9f8e0bffe18d1dc4007433246d084a5cb2
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51566346"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52846651"
 ---
 # <a name="enable-replication-to-azure-for-vmware-vms"></a>为 VMware VM 启用到 Azure 的复制
 
@@ -39,7 +39,7 @@ ms.locfileid: "51566346"
 
 ## <a name="enable-replication"></a>启用复制
 
-1. 单击“步骤 2: 复制应用程序” > “源”。 首次启用复制后，请在保管库中单击“+复制”，对其他计算机启用复制。
+1. 单击“步骤 2：复制应用程序” > “源”。 首次启用复制后，请在保管库中单击“+复制”，对其他计算机启用复制。
 2. 在“源”页 >“源”中，选择配置服务器。
 3. 在“计算机类型”中，选择“虚拟机”或“物理机”。
 4. 在“vCenter/vSphere 虚拟机监控程序”中，选择管理 vSphere 主机的 vCenter 服务器，或选择该主机。 如果要复制物理机，则此设置无关紧要。

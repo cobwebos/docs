@@ -16,12 +16,12 @@ ms.date: 05/30/2018
 ms.component: hybrid
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: 5aeefe82255d40938eff09d7920e2fd5aca94c95
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 9cfd3f32f6293d5760c4a4ddcf40428a2b9b70f8
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46308296"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52999089"
 ---
 # <a name="define-a-hybrid-identity-adoption-strategy"></a>定义混合标识采用策略
 在此任务中，你将根据所述的业务要求，为混合标识解决方案定义混合标识采用策略：
@@ -92,7 +92,7 @@ Microsoft 有三个主要集成方案，分别为云标识、同步标识和联�
 * Office 转换为被动身份验证可让它们支持纯 SAML 2.0 IdP，但支持仍然因客户端而异
 
 > [!NOTE]
-> 有关最新列表，请阅读文章 https://aka.ms/ssoproviders。
+> 有关最新列表，请阅读 [Azure AD 联合身份验证兼容性列表](how-to-connect-fed-compatibility.md)一文。
 > 
 > 
 

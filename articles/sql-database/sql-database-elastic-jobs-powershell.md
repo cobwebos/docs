@@ -3,21 +3,21 @@ title: 使用 PowerShell 创建和管理弹性作业 | Microsoft Docs
 description: 使用 PowerShell 管理 Azure SQL 数据库池
 services: sql-database
 ms.service: sql-database
-ms.subservice: operations
+ms.subservice: scale-out
 ms.custom: ''
-ms.devlang: pwershell
+ms.devlang: powershell
 ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 06/14/2018
-ms.openlocfilehash: 9ed5026211bec11b510d095decac25f8d4b8a52a
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: de395dc4f862e57030fba1d77de78eabe44a3da8
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50243191"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53278451"
 ---
 # <a name="create-and-manage-sql-database-elastic-jobs-using-powershell-preview"></a>使用 PowerShell 创建和管理 SQL 数据库弹性作业（预览）
 
@@ -31,10 +31,10 @@ ms.locfileid: "50243191"
 * Azure 订阅。 如需免费试用，请参阅[免费试用一个月](https://azure.microsoft.com/pricing/free-trial/)。
 * 使用弹性数据库工具创建的一组数据库。 请参阅[弹性数据库工具入门](sql-database-elastic-scale-get-started.md)。
 * Azure PowerShell。 有关详细信息，请参阅 [如何安装和配置 Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview)。
-* **弹性数据库作业** PowerShell 包：请参阅[安装弹性数据库作业](sql-database-elastic-jobs-service-installation.md)
+* **弹性数据库作业** PowerShell 程序包：请参阅[安装弹性数据库作业](sql-database-elastic-jobs-service-installation.md)
 
 ### <a name="select-your-azure-subscription"></a>选择 Azure 订阅
-要选择订阅，需要提供订阅 ID (**-SubscriptionId**) 或订阅名称 (**-SubscriptionName**)。 如果有多个订阅，可以运行 **Get-AzureRmSubscription** cmdlet，并从结果集中复制所需的订阅信息。 获得订阅信息后，请运行下面的 commandlet 将此订阅设置为默认值，即创建和管理作业的目标：
+要选择订阅，需要提供订阅 ID (**-SubscriptionId**) 或订阅名称 (**-SubscriptionName**)。 如果有多个订阅，可以运行 **Get-AzureRmSubscription** cmdlet，并从结果集中复制所需的订阅信息。 获得订阅信息后，请运行下面的 cmdlet 将此订阅设置为默认值，即创建和管理作业的目标：
 
     Select-AzureRmSubscription -SubscriptionId {SubscriptionID}
 
@@ -46,7 +46,7 @@ ms.locfileid: "50243191"
 <table style="width:100%">
   <tr>
     <th>对象类型</th>
-    <th>Description</th>
+    <th>说明</th>
     <th>相关的 PowerShell API</th>
   </tr>
   <tr>
@@ -194,7 +194,7 @@ ms.locfileid: "50243191"
 有两种可以创建的组类型： 
 
 * [分片映射](sql-database-elastic-scale-shard-map-management.md)组：提交以分片映射为目标的作业时，该作业会通过查询分片映射来确定其当前的分片集，并为分片映射中的每个分片创建子作业。
-* 自定义集合组：一种自定义数据库集。 当作业以自定义集合为目标时，它会针对当前位于自定义集合中的每个数据库创建子作业。
+* 自定义集合组：自定义的一组数据库。 当作业以自定义集合为目标时，它会针对当前位于自定义集合中的每个数据库创建子作业。
 
 ## <a name="to-set-the-elastic-database-jobs-connection"></a>设置弹性数据库作业连接
 在使用作业 API 之前，需设置作业*控制数据库*连接。 如果运行此 cmdlet，则会在安装弹性数据库作业时触发一个弹出式凭据窗口，请求用户提供已创建的用户名/密码。 本主题中的所有示例都假设已执行了第一步。
@@ -417,9 +417,9 @@ ms.locfileid: "50243191"
 * 名称：执行策略的标识符。
 * 作业超时：弹性数据库作业取消作业之前的总时间。
 * 初始重试间隔：第一次重试之前等待的间隔。
-* 最大重试间隔：要使用的重试间隔上限。
-* 重试间隔回退系数：用于计算每两次重试的下一个间隔系数。  使用以下公式：(初始重试间隔) * Math.pow((间隔回退指数),(重试次数) - 2)。 
-* 最大尝试次数：重试在作业中执行的最大次数。
+* 最大重试间隔：要使用的重试间隔的上限。
+* 重试间隔回退系数：用于计算两次重试之间的下一个间隔的系数。  使用以下公式：(初始重试间隔) * Math.pow((间隔回退指数), (重试次数) - 2)。 
+* 最大尝试次数：要在作业中执行的最大重试尝试次数。
 
 默认的执行策略使用以下值：
 

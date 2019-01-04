@@ -1,5 +1,5 @@
 ---
-title: 如何使用 Azure 资源管理器模板管理 Azure 时序见解环境 | Microsoft Docs
+title: Azure 时序见解模板管理 - 如何使用 Azure 资源管理器模板管理 Azure 时序见解环境 | Microsoft Docs
 description: 本文介绍如何使用 Azure 资源管理器以编程方式管理 Azure 时序见解环境。
 ms.service: time-series-insights
 services: time-series-insights
@@ -10,12 +10,13 @@ ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 12/08/2017
-ms.openlocfilehash: 3ca9af8c2c504f75322e00fdaaeac9a3e727a820
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.custom: seodec18
+ms.openlocfilehash: 70f82c19bced7618027379fcf9451348ac2591eb
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39627121"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53270614"
 ---
 # <a name="create-time-series-insights-resources-using-azure-resource-manager-templates"></a>使用 Azure 资源管理器模板创建时序见解资源
 
@@ -91,7 +92,7 @@ GitHub 上已发布 [201-timeseriesinsights-environment-with-eventhub](https://g
    | --- | --- |
    | eventHubNamespaceName | 源事件中心的命名空间。 |
    | eventHubName | 源事件中心的名称。 |
-   | consumerGroupName | 由时序见解服务用来从事件中心读取数据的使用者组的名称。 **注意：** 为了避免资源争用，此使用者组必须专门用于时序见解服务，而不能与其他读取者共享。 |
+   | consumerGroupName | 由时序见解服务用来从事件中心读取数据的使用者组的名称。 **注意：** 为了避免资源争用，此使用者组必须专门用于时序见解服务，而不能与其他读者共享。 |
    | environmentName | 环境的名称。 此名称不能包含：'<', '>', '%', '&', ':', '\\', '?', '/' 和任何控制字符。 允许其他所有字符。|
    | eventSourceName | 事件源子资源的名称。 此名称不能包含：'<', '>', '%', '&', ':', '\\', '?', '/' 和任何控制字符。 允许其他所有字符。 |
 

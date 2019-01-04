@@ -1,5 +1,5 @@
 ---
-title: 弃用的认知技能（Azure 搜索）| Microsoft Docs
+title: 已弃用的认知技能 - Azure 搜索
 description: 此页包含一系列被视为已弃用的认知搜索技能，这些技能在不久的将来将不再获得支持。
 services: search
 manager: pablocas
@@ -10,21 +10,22 @@ ms.workload: search
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: luisca
-ms.openlocfilehash: 6bd364ea9923b1c8cdd7c96fc29cb91dff88ec95
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec2018
+ms.openlocfilehash: 85f02acf05e89db3e22dd24ecd0e100a9ec4af6f
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52447541"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53311722"
 ---
-#    <a name="deprecated-cognitive-seach-skills"></a>已弃用的认知搜索技能
+#    <a name="deprecated-cognitive-search-skills"></a>已弃用的认知搜索技能
 
 本文档介绍别视为已弃用的认知技能。 对内容使用以下指南：
 
 * 技能名称：将要弃用的技能的名称，映射到 @odata.type 属性。
 * 最后一个可用的 API 版本：Azure 搜索公共 API 的最后一个版本，通过它可以创建/更新技能集，其中包含相应的已弃用技能。
 * 结束支持：支持的最后一天，这一天过后相应的技能会被视为不受支持的技能。 以前创建的技能集应该仍然可以继续使用，但建议用户不要使用已弃用的技能。
-* 建议：通过前向迁移路径来使用支持的技能。 建议用户按照建议来继续接受支持。
+* 建议：通过向前迁移路径来使用支持的技能。 建议用户按照建议来继续接受支持。
 
 ## <a name="microsoftskillstextnamedentityrecognitionskill"></a>Microsoft.Skills.Text.NamedEntityRecognitionSkill
 
@@ -42,7 +43,7 @@ ms.locfileid: "52447541"
 
 若要迁移到[实体识别技能](cognitive-search-skill-entity-recognition.md)，需对技能定义进行下述一个或多个更改。 可以使用[更新技能集 API](https://docs.microsoft.com/rest/api/searchservice/update-skillset) 更新技能定义。
 
-注意：目前不支持作为概念的置信度分数。 不久的将来会支持它。 `minimumPrecision` 参数存在于 `EntityRecognitionSkill` 上，可供将来使用，并可实现后向兼容。
+_注意_：目前不支持作为概念的置信度分数。 不久的将来会支持它。 `minimumPrecision` 参数存在于 `EntityRecognitionSkill` 上，可供将来使用，并可实现后向兼容。
 
 1. （必需）将 `@odata.type` 从 `"#Microsoft.Skills.Text.NamedEntityRecognitionSkill"` 更改为 `"#Microsoft.Skills.Text.EntityRecognitionSkill"`。
 

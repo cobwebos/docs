@@ -1,5 +1,5 @@
 ---
-title: Java 中的 Azure 搜索入门 | Microsoft Docs
+title: Java 中的 Azure 搜索入门 - Azure 搜索
 description: 如何使用 Java 作为编程语言在 Azure 上生成托管云搜索应用程序。
 services: search
 author: jj09
@@ -8,12 +8,13 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 08/26/2018
 ms.author: jjed
-ms.openlocfilehash: d1ca905d415eb8ab49c449a69707c56d5c717081
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.custom: seodec2018
+ms.openlocfilehash: d74c9c30932bd2db9059738c8dfbc21e4b1b046a
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50419293"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53316946"
 ---
 # <a name="get-started-with-azure-search-in-java"></a>Java 中的 Azure 搜索入门
 > [!div class="op_single_selector"]
@@ -51,7 +52,7 @@ ms.locfileid: "50419293"
 * SearchServiceHelper.java：一个提供静态方法的帮助器类
 * Document.java：提供数据模型
 * config.properties：设置搜索服务 URL 和 API 密钥
-* pom.xml：Maven 依赖关系
+* pom.xml：Maven 依赖项
 
 <a id="sub-2"></a>
 

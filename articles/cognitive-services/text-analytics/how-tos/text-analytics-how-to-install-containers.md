@@ -1,33 +1,34 @@
 ---
 title: 安装和运行容器
-titleSuffix: Text Analytics - Cognitive Services - Azure
+titleSuffix: Text Analytics -  Azure Cognitive Services
 description: 通过本演练教程了解如何下载、安装和运行文本分析容器。
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: text-analytics
 ms.topic: article
 ms.date: 11/14/2018
 ms.author: diberry
-ms.openlocfilehash: 99bdb42d9a0d86d0d2acc4a6272e0c802042e6b5
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: 11798c3bfd4032ad10c738032a816a2a0488ce67
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51634885"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53090527"
 ---
 # <a name="install-and-run-containers"></a>安装和运行容器
 
-容器化是一种软件分发方法，其中应用程序或服务被打包成容器映像。 容器映像中包含应用程序或服务的配置和依赖项。 然后可以几乎不进行修改，就将容器映像部署在容器主机上。 容器彼此隔离并与底层操作系统隔离，内存占用小于虚拟机。 容器可以从容器映像中实例化以用于短期任务，并在不再需要时将其删除。
+容器化是一种软件分发方法，其中应用程序或服务被打包成容器映像。 容器映像中包含应用程序或服务的配置和依赖项。 然后可以几乎不进行修改，就将容器映像部署在容器主机上。 容器彼此隔离并与基础操作系统隔离，内存占用小于虚拟机。 容器可以从容器映像中实例化以用于短期任务，并在不再需要时将其删除。
 
 文本分析提供以下 Docker 容器集，其中每个容器包含功能的子集：
 
 | 容器| Description |
 |----------|-------------|
-|关键短语提取 | 提取关键短语，以标识主要点。 例如，针对输入文本“The food was delicious and there were wonderful staff”，该 API 会返回谈话要点：“food”和“wonderful staff”。 |
+|关键短语提取 | 提取关键短语，以标识要点。 例如，针对输入文本“The food was delicious and there were wonderful staff”，该 API 会返回谈话要点：“food”和“wonderful staff”。 |
 |语言检测 | 针对多达 120 种语言，检测并报告输入文本是使用哪种语言编写的。 容器将报告请求中包含的每个文档的单个语言代码。 语言代码与表示评分强度的评分相搭配。 |
-|情绪分析 | 分析原本文本，获取正面或负面情绪的线索。 此 API 针对每个文档返回介于 0 和 1 之间的情绪评分，1 是最积极的评分。 分析模型已使用 Microsoft 提供的大量文本正文和自然语言技术进行预先训练。 对于[选定的语言](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages.md)，该 API 可以分析和评分提供的任何原始文本，并直接将结果返回给调用方应用程序。 |
+|情绪分析 | 分析原始文本，获取正面或负面情绪的线索。 此 API 针对每个文档返回介于 0 和 1 之间的情绪评分，1 是最积极的评分。 分析模型已使用 Microsoft 提供的大量文本正文和自然语言技术进行预先训练。 对于[选定的语言](../language-support.md)，该 API 可以分析和评分提供的任何原始文本，并直接将结果返回给调用方应用程序。 |
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
@@ -35,15 +36,15 @@ ms.locfileid: "51634885"
 
 使用文本分析容器之前，必须满足以下先决条件：
 
-**Docker 引擎**：必须本地安装 Docker 引擎。 Docker 提供用于在 [macOS](https://docs.docker.com/docker-for-mac/)、[Linux](https://docs.docker.com/engine/installation/#supported-platforms) 和 [Windows](https://docs.docker.com/docker-for-windows/) 上配置 Docker 环境的包。 在 Windows 上，必须将 Docker 配置为支持 Linux 容器。 还可直接将 Docker 容器部署到 [Azure Kubernetes 服务](/azure/aks/)、[Azure 容器实例](/azure/container-instances/)，或部署到 [Azure Stack](/azure/azure-stack/) 中部署的 [Kubernetes](https://kubernetes.io/) 群集。 有关将 Kubernetes 部署到 Azure Stack 的详细信息，请参阅[将 Kubernetes 部署到 Azure Stack](/azure/azure-stack/user/azure-stack-solution-template-kubernetes-deploy)。
+**Docker 引擎**：必须在本地安装 Docker 引擎。 Docker 提供用于在 [macOS](https://docs.docker.com/docker-for-mac/)、[Linux](https://docs.docker.com/engine/installation/#supported-platforms) 和 [Windows](https://docs.docker.com/docker-for-windows/) 上配置 Docker 环境的包。 在 Windows 上，必须将 Docker 配置为支持 Linux 容器。 还可直接将 Docker 容器部署到 [Azure Kubernetes 服务](/azure/aks/)、[Azure 容器实例](/azure/container-instances/)，或部署到 [Azure Stack](/azure/azure-stack/) 的 [Kubernetes](https://kubernetes.io/) 集群。 有关将 Kubernetes 部署到 Azure Stack 的详细信息，请参阅[将 Kubernetes 部署到 Azure Stack](/azure/azure-stack/user/azure-stack-solution-template-kubernetes-deploy)。
 
-必须配置 Docker 才能让容器连接到 Azure 并向其发送账单数据。
+必须将 Docker 配置为允许容器连接 Azure 并向其发送账单数据。
 
-**熟悉 Microsoft 容器注册表和 Docker**：应该大致了解 Microsoft 容器注册表和 Docker 概念（例如注册表、存储库、容器和容器映像）以及基本的 `docker` 命令。  
+**熟悉 Microsoft 容器注册表和 Docker**：应对 Microsoft 容器注册表和 Docker 概念有基本的了解，例如注册表、存储库、容器和容器映像，以及基本的 `docker` 命令的知识。  
 
 有关 Docker 和容器的基础知识，请参阅 [Docker 概述](https://docs.docker.com/engine/docker-overview/)。
 
-### <a name="server-requirements-and-recommendations"></a>服务器要求和建议
+### <a name="container-requirements-and-recommendations"></a>容器要求和建议
 
 下表描述了每个文本分析容器的 CPU 和内存配置，其中包括要分配的最少和建议 CPU 核心数（至少 2.6 GHz）和内存量 (GB)。
 
@@ -51,7 +52,7 @@ ms.locfileid: "51634885"
 |-----------|---------|-------------|
 |关键短语提取 | 单核，2 GB 内存 | 单核，4 GB 内存 |
 |语言检测 | 单核，2 GB 内存 | 单核，4 GB 内存 |
-|情绪分析 | 单核，8 GB 内存 | 单核，8 GB 内存 |
+|情绪分析 | 单核，2 GB 内存 | 单核，4 GB 内存 |
 
 ## <a name="download-container-images-from-microsoft-container-registry"></a>从 Microsoft 容器注册表下载容器映像
 
@@ -76,7 +77,7 @@ docker pull mcr.microsoft.com/azure-cognitive-services/keyphrase:latest
 * [情绪分析](https://go.microsoft.com/fwlink/?linkid=2018654)
 
 > [!TIP]
-> 可以使用 [docker images](https://docs.docker.com/engine/reference/commandline/images/) 命令列出下载的容器映像。 例如，以下命令以表格表格列出每个下载的容器映像的 ID、存储库和标记：
+> 可以使用 [docker images](https://docs.docker.com/engine/reference/commandline/images/) 命令列出下载的容器映像。 例如，以下命令以表格列出每个下载的容器映像的 ID、存储库和标记：
 >
 >  ```Docker
 >  docker images --format "table {{.ID}}\t{{.Repository}}\t{{.Tag}}"
@@ -149,11 +150,13 @@ POST http://localhost:5000/text/analytics/v2.0/keyPhrases
 在本文中，我们已学习相关的概念，以及文本分析容器的下载、安装和运行工作流。 综上所述：
 
 * 文本分析提供三个适用于 Docker 的 Linux 容器，用于封装关键短语提取、语言检测和情绪分析。
-* 从 Azure 中的专用容器注册表中下载容器映像。
+* 从 Azure 中的 Microsoft 容器注册表 (MCR) 下载容器映像。
 * 容器映像在 Docker 中运行。
 * 可以使用 REST API 或 SDK 通过指定容器的主机 URI 来调用文本分析容器中的操作。
 * 必须在实例化容器时指定账单信息。
-* **如果未连接到 Azure 进行计量，则无法授权并运行认知服务容器。 客户需要始终让容器向计量服务传送账单信息。 认知服务容器不会将客户数据（例如，正在分析的图像或文本）发送给 Microsoft。  
+
+> [!IMPORTANT]
+> 如果未连接到 Azure 进行计量，则无法授权并运行认知服务容器。 客户需要始终让容器向计量服务传送账单信息。 认知服务容器不会将客户数据（例如，正在分析的图像或文本）发送给 Microsoft。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -4,25 +4,25 @@ description: 了解如何排查更新管理代理问题。
 services: automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 10/25/2018
+ms.date: 12/14/2018
 ms.topic: conceptual
 ms.service: automation
 ms.component: update-management
 manager: carmonm
-ms.openlocfilehash: 61ff50cda6ec523964ccf8f885f07c39020fbc88
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.openlocfilehash: 4540de7acd89614152c7331b17ba752f4032bf1a
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52335140"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53434760"
 ---
 # <a name="understand-the-windows-agent-check-results-in-update-management"></a>了解更新管理中的 Windows 代理检查结果
 
-Azure 计算机不能在 Azure 更新管理中显示“就绪”状态的原因有多种。 在更新管理中，可以检查混合辅助角色代理的运行状况以确定潜在问题。 本文介绍如何从 Azure 门户和脱机方案中运行更新管理故障排除。
+可能会有许多原因导致计算机在更新管理中不显示“就绪”。 在更新管理中，可以检查混合辅助角色代理的运行状况以确定潜在问题。 本文介绍如何从 Azure 门户为 Azure 计算机运行故障排除，以及如何为[离线场景](#troubleshoot-offline)下的非 Azure 计算机运行故障排除。
 
 ## <a name="start-the-troubleshooter"></a>启动“故障排除”
 
-在 Azure 门户中，“更新代理故障排除”页显示代理存在的问题。 该页有一个指向本文的链接，有助于排查并解决问题。 要转到“更新代理故障排除”页面，请在“更新代理准备”列中选择“故障排除”链接。
+对于 Azure 计算机，通过单击门户中“更新代理准备”列下的“故障排除”链接，可以启动“更新代理故障排除”页。 对于非 Azure 计算机，该链接会转到本文。 请参阅[离线说明](#troubleshoot-offline)来排查非 Azure 计算机问题。
 
 ![虚拟机更新管理列表](../media/update-agent-issues/vm-list.png)
 
@@ -82,7 +82,7 @@ WMF 检查，用于验证系统是否具有所需的 Windows Management Framewor
 
 若要详细了解如何对服务进行故障排查，请参阅 [Microsoft Monitoring Agent 未运行](hybrid-runbook-worker.md#mma-not-running)。
 
-若要重新安装 Microsoft Monitoring Agent，请参阅[安装和配置 Microsoft Monitoring Agent](../../log-analytics/log-analytics-quick-collect-windows-computer.md#install-the-agent-for-windows)。
+若要重新安装 Microsoft Monitoring Agent，请参阅[安装和配置 Microsoft Monitoring Agent](../../azure-monitor/learn/quick-collect-windows-computer.md#install-the-agent-for-windows)。
 
 ### <a name="monitoring-agent-service-events"></a>监视代理服务事件
 
@@ -96,7 +96,7 @@ WMF 检查，用于验证系统是否具有所需的 Windows Management Framewor
 
 Crypto 文件夹访问检查确定本地系统帐户是否有权访问 C:\ProgramData\Microsoft\Crypto\RSA。
 
-## <a name="troubleshoot-offline"></a>脱机使用故障排除
+## <a name="troubleshoot-offline"></a>脱机进行故障排除
 
 可以通过在本地运行脚本，在混合 Runbook 辅助角色上脱机使用故障排除。 可在 PowerShell 库中获得 [Troubleshoot-WindowsUpdateAgentRegistration](https://www.powershellgallery.com/packages/Troubleshoot-WindowsUpdateAgentRegistration) 脚本。 此脚本的输出如以下示例所示：
 

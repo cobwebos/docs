@@ -10,14 +10,15 @@ ms.component: qna-maker
 ms.topic: article
 ms.date: 11/08/2018
 ms.author: tulasim
-ms.openlocfilehash: fa5b5e1998d54c7b22d01e7cc70e84059d482cfb
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.custom: seodec18
+ms.openlocfilehash: d40886f54083a1619635f31af57841138f1706d1
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51623540"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53086600"
 ---
-# <a name="edit-a-knowledge-base"></a>编辑知识库
+# <a name="edit-a-knowledge-base-in-qna-maker"></a>在 QnA Maker 中编辑知识库
 
 QnA Maker 允许你通过提供易于使用的编辑体验来管理知识库的内容。
 
@@ -44,7 +45,7 @@ QnA Maker 允许你通过提供易于使用的编辑体验来管理知识库的�
 
 1. 完成对知识库的更改后，选择页面右上角的“保存并训练”以保留更改。    
 
-    ![保存并训练](../media/qnamaker-how-to-edit-kb/save-and-train.png)
+    ![保存和训练](../media/qnamaker-how-to-edit-kb/save-and-train.png)
 
     >[!CAUTION]
     >如果在选择“保存并训练”前离开页面，则所有更改都将丢失。

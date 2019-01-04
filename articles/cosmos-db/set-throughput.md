@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/25/2018
 ms.author: andrl
-ms.openlocfilehash: a97032344b904442ed3606c6297251578c3b4ff7
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: e866b205fb5cdd65dc690101503613714271e36c
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52263887"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53075346"
 ---
 # <a name="provision-throughput-on-azure-cosmos-containers-and-databases"></a>在 Azure Cosmos 容器和数据库上预配吞吐量
 
@@ -19,7 +19,7 @@ Azure Cosmos 数据库是一组容器的管理单元。 数据库包含一组不
 
 Azure Cosmos DB 允许以两种粒度配置吞吐量 - “Azure Cosmos 容器”和“Azure Cosmos 数据库”。
 
-# <a name="setting-throughput-on-a-azure-cosmos-container"></a>对 Azure Cosmos 容器设置吞吐量  
+## <a name="setting-throughput-on-a-container"></a>对容器设置吞吐量  
 
 对 Azure Cosmos 容器预配的吞吐量专门保留给容器使用。 容器始终可获得预配的吞吐量。 对容器预配的吞吐量有 SLA 提供的经济保障。 若要对容器配置吞吐量，请参阅[如何对 Azure Cosmos 容器预配吞吐量](how-to-provision-container-throughput.md)。
 
@@ -31,9 +31,9 @@ Azure Cosmos DB 允许以两种粒度配置吞吐量 - “Azure Cosmos 容器”
 
 ![资源分区](./media/set-throughput/resource-partition.png)
 
-# <a name="setting-throughput-on-a-azure-cosmos-database"></a>对 Azure Cosmos 数据库设置吞吐量
+## <a name="setting-throughput-on-a-database"></a>对数据库设置吞吐量
 
-对 Azure Cosmos 数据库预配吞吐量时，除非对特定的容器指定了预配吞吐量，否则，吞吐量将在在该数据库中的所有容器之间共享。 在容器之间共享数据库吞吐量相当于在计算机群集上托管数据库。 由于数据库中的所有容器共享一台计算机上的可用资源，因此，任何特定容器的性能自然不可预测。 若要对数据库配置吞吐量，请参阅[如何对 Azure Cosmos 数据库配置预配吞吐量](how-to-provision-database-throughput.md)。
+对 Azure Cosmos 数据库预配吞吐量时，除非对特定的容器指定了预配吞吐量，否则在该数据库中的所有容器之间共享吞吐量。 在容器之间共享数据库吞吐量相当于在计算机群集上托管数据库。 由于数据库中的所有容器共享一台计算机上的可用资源，因此，任何特定容器的性能自然不可预测。 若要对数据库配置吞吐量，请参阅[如何对 Azure Cosmos 数据库配置预配吞吐量](how-to-provision-database-throughput.md)。
 
 对 Azure Cosmos 数据库设置吞吐量可保证随时能够获得预配的吞吐量。 由于数据库中的所有容器共享预配的吞吐量，因此，Azure Cosmos DB 不会针对该数据库中的特定容器提供任何可预测的吞吐量保证。 特定容器可获得的吞吐量部分取决于：
 
@@ -53,7 +53,7 @@ Azure Cosmos DB 允许以两种粒度配置吞吐量 - “Azure Cosmos 容器”
 
 ![资源分区](./media/set-throughput/resource-partition2.png)
 
-## <a name="setting-throughput-on-a-azure-cosmos-database-and-a-container"></a>对 Azure Cosmos 数据库和容器设置吞吐量
+## <a name="setting-throughput-on-a-database-and-a-container"></a>对数据库和容器设置吞吐量
 
 可以合并两个模型，并同时对数据库和容器预配吞吐量。 以下示例演示如何对 Azure Cosmos 数据库和容器预配吞吐量：
 
@@ -67,7 +67,7 @@ Azure Cosmos DB 允许以两种粒度配置吞吐量 - “Azure Cosmos 容器”
 
 |**配额**  |**对数据库的预配吞吐量**  |**对容器预配的吞吐量**|
 |---------|---------|---------|
-|最小 RU 数 |400 |400|
+|最小 RU 数 |400（前四个容器之后的每个容器均需要至少 100 RU/秒。） |400|
 |每个容器的最小 RU 数|100|400|
 |使用 1 GB 存储所需的最小 RU 数|40|40|
 |最大 RU 数|对于数据库无限|对于容器无限|

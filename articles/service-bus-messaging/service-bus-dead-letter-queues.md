@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/26/2018
 ms.author: spelluru
-ms.openlocfilehash: df69406bd0a6e09f66262ce66f8eeb7cada2422a
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: eb4057b4cfc6a68fb3489a7ab6fb1ee6b5f41d7d
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47393972"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53338456"
 ---
 # <a name="overview-of-service-bus-dead-letter-queues"></a>服务总线死信队列概述
 
@@ -76,7 +76,7 @@ Azure 服务总线队列和主题订阅提供一个名为“死信队列 (DLQ)�
 
 在下列情况下，消息将发送到传输死信队列：
 
-- 消息传过 3 个以上[链接在一起](service-bus-auto-forwarding.md)的队列或主题。
+- 消息传递 4 个以上[链接在一起](service-bus-auto-forwarding.md)的队列或主题。
 - 目标队列或主题被禁用或删除。
 - 目标队列或主题超出最大实体大小。
 

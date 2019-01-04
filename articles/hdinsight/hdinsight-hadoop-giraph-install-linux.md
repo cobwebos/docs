@@ -9,14 +9,14 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/23/2018
 ms.author: hrasheed
-ms.openlocfilehash: 202a68d219bec3a70e50afa68228cbc6bf453518
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 6cedc269e279a9154e63bae241f02e766e06ec96
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51011657"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53383895"
 ---
-# <a name="install-giraph-on-hdinsight-hadoop-clusters-and-use-giraph-to-process-large-scale-graphs"></a>在 HDInsight Hadoop 群集上安装 Giraph 并使用 Giraph 处理大型图形
+# <a name="install-apache-giraph-on-hdinsight-hadoop-clusters-and-use-giraph-to-process-large-scale-graphs"></a>在 HDInsight Hadoop 群集上安装 Apache Giraph 并使用 Giraph 处理大型图形
 
 了解如何在 HDInsight 群集上安装 Apache Giraph。 HDInsight 的脚本操作功能允许通过运行 bash 脚本来自定义群集。 可以在创建群集期间或之后使用脚本来自定义群集。
 
@@ -33,10 +33,10 @@ ms.locfileid: "51011657"
 
 * 计算网页的排名。
 
-> [!WARNING]
+> [!WARNING]  
 > 随 HDInsight 群集提供的组件享有完全支持权利 - Microsoft 支持部门将帮助找出并解决与这些组件相关的问题。
 >
-> 自定义组件（如 Giraph）可获得合理范围的支持，以帮助你进一步排查问题。 Microsoft 支持部门也许能够解决问题。 如果不能，必须去开源社区查阅资料，可以在那里找到关于该技术的深层专业知识。 有许多可以使用的社区站点，例如：[HDInsight 的 MSDN 论坛](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hdinsight)和 [http://stackoverflow.com](http://stackoverflow.com)。 此外，Apache 项目在 [http://apache.org](http://apache.org) 上提供了项目站点，例如 [Hadoop](http://hadoop.apache.org/)。
+> 自定义组件（如 Giraph）可获得合理范围的支持，以帮助你进一步排查问题。 Microsoft 支持部门也许能够解决问题。 如果不能，必须去开源社区查阅资料，可以在那里找到关于该技术的深层专业知识。 例如，有许多可以使用的社区站点，例如：[面向 HDInsight 的 MSDN 论坛](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hdinsight)、[http://stackoverflow.com](http://stackoverflow.com)。 此外，Apache 项目在 [http://apache.org](http://apache.org) 上有项目站点，例如：[Hadoop](http://hadoop.apache.org/)。
 
 
 ## <a name="what-the-script-does"></a>脚本功能
@@ -72,13 +72,13 @@ ms.locfileid: "51011657"
 
    * **脚本 URI**： https://hdiconfigactions.blob.core.windows.net/linuxgiraphconfigactionv01/giraph-installer-v01.sh
 
-   * **标头**：选中此项
+   * **标头**：选中此项。
 
-   * **辅助角色**：将此项保留未选中状态
+   * **辅助角色**：将此项保留未选中状态。
 
-   * **ZOOKEEPER**：将此项保留未选中状态
+   * **ZOOKEEPER**：将此项保留未选中状态。
 
-   * **参数**：将此字段留空
+   * **参数**：将此字段留空。
 
 3. 在“脚本操作”的底部，使用“选择”按钮保存配置。 最后，使用“可选配置”部分底部的“选择”按钮保存可选配置信息。
 
@@ -172,4 +172,4 @@ ms.locfileid: "51011657"
 
 * [在 HDInsight 群集上安装并使用 Hue](hdinsight-hadoop-hue-linux.md)。
 
-* [在 HDInsight 群集上安装 Solr](hdinsight-hadoop-solr-install-linux.md)。
+* [在 HDInsight 群集上安装 Apache Solr](hdinsight-hadoop-solr-install-linux.md)。

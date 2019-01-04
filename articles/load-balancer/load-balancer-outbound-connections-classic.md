@@ -1,22 +1,24 @@
 ---
-title: Azure 中的出站连接（经典）| Microsoft Docs
+title: Azure 中的出站连接（经典）
+titlesuffix: Azure Load Balancer
 description: 本文介绍 Azure 如何让云服务与公共 Internet 服务通信。
 services: load-balancer
 documentationcenter: na
 author: KumudD
 ms.service: load-balancer
+ms.custom: seodec18
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/13/2018
 ms.author: kumud
-ms.openlocfilehash: 5cb0647148d2cd90ad4cce6e16de30b72fff8429
-ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
+ms.openlocfilehash: 006d8e28413e0893cafe351577f8a018d13fd268
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51219658"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53189993"
 ---
 # <a name="outbound-connections-classic"></a>出站连接（经典）
 
@@ -62,7 +64,7 @@ Azure 提供三种不同的方法来实现出站连接经典部署。  并非所
 
 如果应用程序启动很多出站流，并且遇到 SNAT 端口耗尽的情况，可以考虑分配 [ILPIP 以缓解 SNAT 约束](#assignilpip)。 请查看[管理 SNAT 耗尽](#snatexhaust)。
 
-### <a name="publiclbendpoint"></a>方案2：公共负载均衡终结点
+### <a name="publiclbendpoint"></a>方案 2：公共负载均衡终结点
 
 在此方案中，VM 或 Web 辅助角色通过负载均衡的终结点来与公共 IP 地址关联。 没有分配给 VM 的公共 IP 地址。 
 

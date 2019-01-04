@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 06/20/2018
 ms.author: dlap
-ms.openlocfilehash: d52785dd7569560f4b6986080b14723762537ec8
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: b1a406c15377cb6931f92594f5ce1526a2f2ab99
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49388291"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53017093"
 ---
 # <a name="trusted-internet-connections-guidance"></a>受信任 Internet 连接指南
 
@@ -124,8 +124,8 @@ Azure 网络观察程序提供了多种审核 TIC 符合性的工具。 有关�
 
 当 Azure PaaS 服务与虚拟网络集成时，可从该虚拟网络私密访问该服务。 可通过用户定义的路由或 BGP 为 0.0.0.0/0 应用自定义路由。 自定义路由确保所本地有 Internet 绑定流量路由都可以遍历 TIC。 使用以下模式将 Azure 服务集成到虚拟网络中：
 
-- 部署专用服务实例：越来越多的 PaaS 服务可部署为具有虚拟网络附加终结点的专用实例。 可在“独立”模式下为 PowerApps 部署应用服务环境，以允许将网络终结点限于虚拟网络。 然后，应用服务环境可以托管许多 Azure PaaS 服务，例如 Azure Web 应用、Azure API 管理和 Azure Functions。
-- 使用虚拟网络服务终结点：越来越多的 PaaS 服务允许选项将其终结点移动到虚拟网络专有 IP，而不是公共地址。
+- **部署专用服务实例**：越来越多的 PaaS 服务可部署为具有虚拟网络附加终结点的专用实例。 可在“独立”模式下为 PowerApps 部署应用服务环境，以允许将网络终结点限于虚拟网络。 然后，应用服务环境可以托管许多 Azure PaaS 服务，例如 Azure Web 应用、Azure API 管理和 Azure Functions。
+- **使用虚拟网络服务终结点**：越来越多的 PaaS 服务允许选项将其终结点移动到虚拟网络专有 IP，而不是公共地址。
 
 下表列出了自 2018 年 5 月起支持将专用实例部署到虚拟网络或使用服务终结点的服务。
 
@@ -157,7 +157,7 @@ Azure 网络观察程序提供了多种审核 TIC 符合性的工具。 有关�
 |Azure Active Directory                | GA               |
 |Azure 批处理                           | GA               |
 |应用服务环境               | GA               |
-|Azure Redis 缓存                     | GA               |
+|用于 Redis 的 Azure 缓存                     | GA               |
 |Azure HDInsight                       | GA               |
 |虚拟机规模集             | GA               |
 |Azure 云服务                  | GA               |
@@ -165,7 +165,7 @@ Azure 网络观察程序提供了多种审核 TIC 符合性的工具。 有关�
 
 ### <a name="virtual-network-integration-details"></a>虚拟网络集成详细信息
 
-下图显示了访问 PaaS 服务的常规网络流。 显示了从虚拟网络注入和虚拟网络服务隧道进行的访问。 有关网络服务网关、虚拟网络和服务标记的详细信息，请参阅[网络和应用程序安全组：服务标记](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags)。
+下图显示了访问 PaaS 服务的常规网络流。 显示了从虚拟网络注入和虚拟网络服务隧道进行的访问。 有关网络服务网关、虚拟网络和服务标记的详细信息，请参阅[网络和应用程序安全组：服务标记](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags)
 
 ![TIC 的 PaaS 连接选项](media/tic-diagram-e.png)
 
@@ -247,7 +247,7 @@ Azure Policy 以订阅级别为目标。 该服务提供了一个集中的接口
 
 ## <a name="appendix-trusted-internet-connections-patterns-for-common-workloads"></a>附录：常见工作负载的受信任 Internet 连接模式
 
-| 类别 | 工作负载 | IaaS | 专用 PaaS /虚拟网络注入  | 服务终结点  |
+| 类别 | 工作负荷 | IaaS | 专用 PaaS /虚拟网络注入  | 服务终结点  |
 |---------|---------|---------|---------|--------|
 | 计算 | Azure Linux 虚拟机 | 是 | | |
 | 计算 | Azure Windows 虚拟机 | 是 | | |
@@ -263,7 +263,7 @@ Azure Policy 以订阅级别为目标。 该服务提供了一个集中的接口
 | 数据库 | Azure Database for PostgreSQL | | | 是 |
 | 数据库 | Azure SQL 数据仓库 | | | 是 |
 | 数据库 | Azure Cosmos DB | | | 是 |
-| 数据库 | Azure Redis 缓存 | | 是 | |
+| 数据库 | 用于 Redis 的 Azure 缓存 | | 是 | |
 | 存储 | Azure Blob 存储 | 是 | | |
 | 存储 | Azure 文件 | 是 | | |
 | 存储 | Azure 队列存储 | 是 | | |

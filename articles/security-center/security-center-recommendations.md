@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/18/2018
 ms.author: rkarlin
-ms.openlocfilehash: 3e8333b521832579a942d3fffb06103ad0431acc
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: d0c61f6e905ca109f3f178996a08f353c36e7880
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52316611"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53337200"
 ---
 # <a name="managing-security-recommendations-in-azure-security-center"></a>管理 Azure 安全中心的安全建议
 本文档介绍如何使用 Azure 安全中心中的建议帮助你保护 Azure 资源。
@@ -34,13 +34,13 @@ ms.locfileid: "52316611"
 
 ## <a name="implementing-security-recommendations"></a>实施安全性建议
 ### <a name="set-recommendations"></a>设置建议
-在[设置 Azure 安全中心的安全策略](security-center-azure-policy.md)中，了解到：
+在[设置 Azure 安全中心的安全策略](tutorial-security-policy.md)中，了解到：
 
 * 配置安全策略。
 * 启用数据收集。
 * 选择视作安全策略的一部分的建议。
 
-当前的策略建议以系统更新、基线规则、反恶意程序、子网和网络接口的[网络安全组](../virtual-network/security-overview.md)、SQL 数据库审核、SQL 数据库透明数据加密和 Web 应用程序防火墙为中心。  [设置安全策略](security-center-azure-policy.md)提供每个建议选项的说明。
+当前的策略建议以系统更新、基线规则、反恶意程序、子网和网络接口的[网络安全组](../virtual-network/security-overview.md)、SQL 数据库审核、SQL 数据库透明数据加密和 Web 应用程序防火墙为中心。  [设置安全策略](tutorial-security-policy.md)提供每个建议选项的说明。
 
 ### <a name="monitor-recommendations"></a>监视建议
 设置安全策略之后，安全中心将分析资源的安全状态，以识别潜在的漏洞。 通过“概述”下的“建议”磁贴，可以知道安全中心定义的建议总数。
@@ -57,12 +57,12 @@ ms.locfileid: "52316611"
 
 * **说明**：解释建议以及处理此建议所需执行的操作。
 * **资源**：列出了此建议适用的资源。
-* **状态**：描述该建议的当前状态：
-  * **未解决**：建议尚未得到处理。
-  * **正在进行**：目前已将建议应用到相关资源，不需用户采取行动。
+* **状态**：描述此建议的当前状态：
+  * **未解决**：此建议尚未得到处理。
+  * **正在进行**：目前已将此建议应用到相关资源，不需要你采取行动。
   * **已解决**：已完成处理此建议（在这种情况下，该行将灰显）。
 * **严重性**：描述该特定建议的严重性：
-  * **高**：重要资源（如应用程序、VM、网络安全组）存在漏洞，需要提请注意。
+  * **高**：重要资源（如应用程序、VM 或网络安全组）存在漏洞，需要提请注意。
   * **中**：存在漏洞，需要采取非关键步骤或额外步骤来消除它或完成某个过程。
   * **低**：存在需要解决的漏洞，但不需立即处理。 （默认情况下，不显示严重性低的建议，但如果用户需要查看这些建议，可以将其筛选出来。）
 
@@ -135,7 +135,7 @@ ms.locfileid: "52316611"
 ## <a name="next-steps"></a>后续步骤
 在本文档中，已向你介绍安全中心的安全建议。 若要了解有关安全中心的详细信息，请参阅以下文章：
 
-* [在 Azure 安全中心中设置安全策略](security-center-azure-policy.md) - 了解如何配置 Azure 订阅和资源组的安全策略。
+* [在 Azure 安全中心中设置安全策略](tutorial-security-policy.md) - 了解如何配置 Azure 订阅和资源组的安全策略。
 * [Security health monitoring in Azure Security Center](security-center-monitoring.md) （Azure 安全中心的安全运行状况监视）- 了解如何监视 Azure 资源的运行状况。
 * [在 Azure 安全中心管理和响应安全警报](security-center-managing-and-responding-alerts.md) — 了解如何管理和响应安全警报。
 * [通过 Azure 安全中心监视合作伙伴解决方案](security-center-partner-solutions.md) - 了解如何监视合作伙伴解决方案的运行状态。

@@ -13,12 +13,12 @@ ms.devlang: java
 ms.topic: article
 ms.date: 10/01/2016
 ms.author: crdun
-ms.openlocfilehash: 152702bed0ea061c3cb86e2ff6f88bf204f9d243
-ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
+ms.openlocfilehash: a20c79acce8c9dc9051651a0473fd07b8e62f5de
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2018
-ms.locfileid: "27594179"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52960339"
 ---
 # <a name="enable-offline-sync-for-your-android-mobile-app"></a>为 Android 移动应用启用脱机同步
 [!INCLUDE [app-service-mobile-selector-offline](../../includes/app-service-mobile-selector-offline.md)]
@@ -93,7 +93,7 @@ ms.locfileid: "27594179"
 
 ## <a name="additional-resources"></a>其他资源
 * [Azure 移动应用中的脱机数据同步]
-* [云覆盖：Azure 移动服务中的脱机同步]\(注意：此视频中是有关移动服务的内容，但是脱机同步在 Azure 移动应用中的工作原理与其类似\)
+* [云覆盖：Azure 移动服务中的脱机同步] \(注意：此视频中是有关移动服务的内容，但是脱机同步在 Azure 移动应用中的工作原理与其类似\)
 
 <!-- URLs. -->
 
@@ -101,6 +101,6 @@ ms.locfileid: "27594179"
 
 [创建 Android 应用]: app-service-mobile-android-get-started.md
 
-[云覆盖：Azure 移动服务中的脱机同步]: http://channel9.msdn.com/Shows/Cloud+Cover/Episode-155-Offline-Storage-with-Donna-Malayeri
-[Azure Friday: Offline-enabled apps in Azure Mobile Services]: http://azure.microsoft.com/documentation/videos/azure-mobile-services-offline-enabled-apps-with-donna-malayeri/
+[云覆盖：Azure 移动服务中的脱机同步]: https://channel9.msdn.com/Shows/Cloud+Cover/Episode-155-Offline-Storage-with-Donna-Malayeri
+[Azure Friday: Offline-enabled apps in Azure Mobile Services]: https://azure.microsoft.com/documentation/videos/azure-mobile-services-offline-enabled-apps-with-donna-malayeri/
 

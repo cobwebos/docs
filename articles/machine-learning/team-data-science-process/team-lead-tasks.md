@@ -1,6 +1,6 @@
 ---
-title: Team Data Science Process 团队主管任务 - Azure | Microsoft Docs
-description: 数据科学团队项目的团队主管任务概述。
+title: Team Data Science Process Team 中团队主管的任务
+description: 某数据科学团队项目的团队主管需为其数据科学团队完成的任务的概述。
 author: marktab
 manager: cgronlun
 editor: cgronlun
@@ -9,15 +9,15 @@ ms.component: team-data-science-process
 ms.topic: article
 ms.date: 11/13/2017
 ms.author: tdsp
-ms.custom: (previous author=deguhath, ms.author=deguhath)
-ms.openlocfilehash: 2004396266d4bde9f3be540408524b668bbb863d
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: faf0e06a0649c31cec840a5043a11af601ba5c47
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52443843"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53139633"
 ---
-# <a name="team-lead-tasks"></a>团队主管任务
+# <a name="tasks-for-the-team-lead-in-the-team-data-science-process-team"></a>Team Data Science Process Team 中团队主管的任务
 
 本主题概述了数据科学团队的团队主管应该完成的任务。 目标在于创建致力于标准化 [Team Data Science Process](overview.md) (TDSP) 的协作型团队环境。 TDSP 是一种敏捷的迭代式数据科学方法，可有效交付预测分析解决方案和智能应用程序。 它设计用于帮助改进协作和团队学习。 该过程对 Microsoft 和行业实行的最佳做法和结构进行升华，是成功实现数据科学计划以帮助公司充分发挥其分析程序的优势所必需的。 有关致力于标准化此流程的数据科学团队要处理的人员角色及其相关任务的概述，请参阅[团队数据科学流程角色和任务](roles-tasks.md)。
 
@@ -46,8 +46,8 @@ ms.locfileid: "52443843"
 本主题使用了存储库和目录的缩写名称。 使用这些名称，更易于跟踪存储库和目录之间的操作。 以下部分使用了此表示法（**R** 表示 Git 存储库，**D** 表示 DSVM 上的本地目录）：
 
 - **R1**：组管理员在 Git 上在 Azure DevOps 组服务器上设置的 **GroupProjectTemplate** 存储库。
-- **R3**：你在 Git 上设置的团队 **ProjectTemplate** 存储库。
-- **R4**：你在 Git 上设置的 **TeamUtilities** 存储库。
+- **R3**：你在 Git 上设置的团队 ProjectTemplate 存储库。
+- **R4**：你在 Git 上设置的 TeamUtilities 存储库。
 - **D1**：从 R1 克隆的并复制到 D3 的本地目录。
 - **D3**：从 R3 克隆的、进行了自定义并复制回 R3 的本地目录。
 - **D4**：从 R4 克隆的、进行了自定义并复制回 R4 的本地目录。
@@ -142,7 +142,7 @@ ms.locfileid: "52443843"
 - 将团队存储库克隆到本地目录中：团队 R3 和 R4 - 克隆到 -> 本地 D3 和 D4
 - 将组项目模板内容复制到本地团队文件夹：D1 - 内容复制到 -> D3
 - （可选）自定义本地 D3 和 D4
-- 将本地目录内容推送到团队存储库：D3 和 D4 - 内容添加到 -> 团队 R3 和 R4
+- 将本地目录内容推送到团队存储库：D3 和 D4 - 添加内容到 -> 团队 R3 和 R4
 
 
 ### <a name="initialize-the-team-repositories"></a>初始化团队存储库
@@ -157,8 +157,8 @@ ms.locfileid: "52443843"
 开始此过程：
 
 - 在本地计算机上创建目录：
-    - 对于 **Windows**：**C:\GitRepos\GroupCommon** 和 **C:\GitRepos\MyTeam**
-    - 对于 **Linux**：在主目录中创建 **GitRepos\GroupCommon** 和 **GitRepos\MyTeam** 
+    - 对于 **Windows**：C:\GitRepos\GroupCommon 和 C:\GitRepos\MyTeam
+    - 对于 **Linux**：在主目录中创建 GitRepos\GroupCommon 和 GitRepos\MyTeam 
 - 更改到 **GitRepos\GroupCommon** 目录。
 - 根据情况，在本地计算机的操作系统上运行以下命令。
 

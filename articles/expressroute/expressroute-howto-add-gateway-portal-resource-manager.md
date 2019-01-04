@@ -1,26 +1,19 @@
 ---
-title: 将虚拟网络网关添加到 ExpressRoute 的 VNet：门户：Azure | Microsoft Docs
+title: 将网关添加到 ExpressRoute 的 Azure VNet：门户 | Microsoft Docs
 description: 本文演示如何将虚拟网络网关添加到已为 ExpressRoute 创建的 Resource Manager VNet。
-documentationcenter: na
 services: expressroute
 author: cherylmc
-manager: timlt
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: expressroute
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 04/17/2017
+ms.date: 12/06/2018
 ms.author: cherylmc
-ms.openlocfilehash: 6198c8723ccbb225a4cc60526e66f4651390b26c
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.custom: seodec18
+ms.openlocfilehash: 37fe2e2adb947e2e9ddc86a34baf6994b5771be6
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51255687"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53091197"
 ---
 # <a name="configure-a-virtual-network-gateway-for-expressroute-using-the-azure-portal"></a>使用 Azure 门户配置 ExpressRoute 的虚拟网络网关
 > [!div class="op_single_selector"]
@@ -46,7 +39,7 @@ ms.locfileid: "51255687"
     * 子网地址范围 =“192.168.1.0/24”
 * 资源组 = “TestRG”
 * 位置 =“美国东部”
-* 网关子网名称：“GatewaySubnet”必须始终将网关子网命名为 *GatewaySubnet*。
+* 网关子网名称：“GatewaySubnet”必须始终将网关子网命名为“GatewaySubnet”。
     * 网关子网地址空间 = “192.168.200.0/26”
 * 网关名称 =“ERGW”
 * 网关 IP 名称 =“MyERGWVIP”
@@ -77,7 +70,7 @@ ms.locfileid: "51255687"
 3. **名称**：为网关命名。 这与为网关子网命名不同。 它是要创建的网关对象的名称。
 4. **网关类型**：选择“ExpressRoute”。
 5. **SKU**：从下拉列表中选择网关 SKU。
-6. **位置**：调整“位置”字段，使其指向虚拟网络所在的位置。 如果该位置未指向虚拟网络所在的区域，该虚拟网络将不会显示在“选择虚拟网络”下拉列表中。
+6. **位置**：调整“位置”  字段，使其指向虚拟网络所在的位置。 如果该位置未指向虚拟网络所在的区域，该虚拟网络将不会显示在“选择虚拟网络”下拉列表中。
 7. 选择要将此网关添加到其中的虚拟网络。 单击“虚拟网络”打开“选择虚拟网络”边栏选项卡。 选择 VNet。 如果看不到 VNet，请确保“位置”字段指向虚拟网络所在的区域。
 9. 选择公共 IP 地址。 单击“公共 IP 地址”打开“选择公共 IP 地址”边栏选项卡。 单击“+新建”打开“创建公共 IP 地址”边栏选项卡。 输入公共 IP 地址的名称。 此边栏选项卡会创建一个公共 IP 地址对象，将向其动态分配公共 IP 地址。 单击“确定”保存对此边栏选项卡所做的更改。
 10. **订阅**：确保选择正确的订阅。

@@ -1,10 +1,8 @@
 ---
-title: 用于 Java 的 Azure Cosmos DB 表 API | Microsoft Docs
+title: 用于 Java 的 Azure Cosmos DB 表 API
 description: 了解有关 Azure Cosmos DB 表 API 的全部信息，包括发布日期、停用日期和各版本之间进行的更改。
 services: cosmos-db
 author: yarong
-manager: kfile
-editor: ''
 ms.service: cosmos-db
 ms.component: cosmosdb-table
 ms.devlang: java
@@ -12,12 +10,12 @@ ms.topic: reference
 ms.date: 11/20/2017
 ms.author: yaronyg
 ms.custom: ''
-ms.openlocfilehash: 3bb4a433b06deff27ce80ab1fb631efde29a3f83
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: 54fad2e830ae7ff1d07cc8f67e50d2b5bc4fe8a7
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49465570"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53096551"
 ---
 # <a name="azure-cosmos-db-table-api-for-java-release-notes-and-resources"></a>用于 Java 的 Azure Cosmos DB 表 API：发行说明和资源
 > [!div class="op_single_selector"]
@@ -31,7 +29,7 @@ ms.locfileid: "49465570"
 |   |   |
 |---|---|
 |**SDK 下载**|[下载选项](https://github.com/azure/azure-storage-java#download)|
-|**API 文档**|[Java API 参考文档](http://azure.github.io/azure-storage-java/)|
+|**API 文档**|[Java API 参考文档](https://azure.github.io/azure-storage-java/)|
 |**参与 SDK**|[GitHub](https://github.com/Azure/azure-storage-java#contribute-code-or-provide-feedback)|
 
 > [!IMPORTANT]

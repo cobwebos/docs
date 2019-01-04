@@ -1,30 +1,26 @@
 ---
-title: 将 Azure DNS 用于专用域 | Microsoft Docs
+title: 将 Azure DNS 用于专用域
 description: Microsoft Azure 上的专用 DNS 托管服务概述。
 services: dns
-documentationcenter: na
 author: vhorne
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
 ms.service: dns
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 03/15/2018
+ms.date: 012/5/2018
 ms.author: victorh
-ms.openlocfilehash: 2ab7070a4cf46dae543af8d3e1d688e12ec1eb2a
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: 4d817e71cffd782bdcfdfb91492dbd5d08fb8479
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39173636"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52967089"
 ---
 # <a name="use-azure-dns-for-private-domains"></a>将 Azure DNS 用于专用域
-域名系统（或称为 DNS）负责将服务名称转换（或解析）为其 IP 地址。 Azure DNS 是 DNS 域的托管服务，它使用 Microsoft Azure 基础结构提供名称解析。 除了支持面向 Internet 的 DNS 域之外，作为一项预览版功能，Azure DNS 现在还支持专用 DNS 域。 
- 
+
+域名系统（或称为 DNS）负责将服务名称转换（或解析）为其 IP 地址。 Azure DNS 是 DNS 域的托管服务，它使用 Microsoft Azure 基础结构提供名称解析。 除了支持面向 Internet 的 DNS 域之外，作为一项预览版功能，Azure DNS 现在还支持专用 DNS 域。
+
 Azure DNS 提供了可靠、安全的 DNS 服务来管理和解析虚拟网络中的域名，无需添加自定义 DNS 解决方案。 借助专用 DNS 区域，可以使用自定义域名而不使用当前可用的由 Azure 提供的名称。 使用自定义域名可帮助你定制虚拟网络体系结构以便最好地满足组织需求。 它在虚拟网络内以及在虚拟网络之间针对虚拟机 (VM) 提供名称解析。 除此之外，还可以通过水平分割视图配置区域名称，从而允许专用和公用 DNS 区域共享相同的名称。
+
+如果指定了注册虚拟网络，则无法通过 Azure Powershell 和 Azure CLI API 查看或检索注册到专用区域的虚拟网络中的 VM 的 DNS 记录，但是，VM 记录确实已注册并且会成功解析。
 
 ![DNS 概述](./media/private-dns-overview/scenario.png)
 
@@ -46,22 +42,22 @@ Azure DNS 提供以下优势：
 
 * **水平分割 DNS 支持**。 借助 Azure DNS，可以使用相同的名称创建在虚拟网络内与在公共 Internet 内分别解析为不同结果的区域。 水平分割 DNS 的典型方案是提供一个专用服务版本以在虚拟网络内部使用。
 
-* **在所有 Azure 区域中可用**。 Azure 公有云中的所有 Azure 区域均已推出 Azure DNS 专用区域功能。 
-
+* **在所有 Azure 区域中可用**。 Azure 公有云中的所有 Azure 区域均已推出 Azure DNS 专用区域功能。
 
 ## <a name="capabilities"></a>功能
 
 Azure DNS 提供以下功能：
- 
+
 * **将链接到专用区域的单个虚拟网络中的虚拟机自动注册为一个“注册”虚拟网络**。 虚拟机将作为指向其专用 IP 的 A 记录注册（添加）到专用区域。 在删除注册虚拟网络中的虚拟机后，Azure 还会从所链接的专用区域中删除对应的 DNS 记录。 
 
+  默认情况下，“注册”虚拟网络还默认充当“解析”虚拟网络，因为针对该区域的 DNS 解析将从该“注册”虚拟网络中的任何虚拟机进行。
+
   > [!NOTE]
-  > 默认情况下，“注册”虚拟网络还默认充当“解析”虚拟网络，因为针对该区域的 DNS 解析将从该“注册”虚拟网络中的任何虚拟机进行。 
+  > 如果指定了注册虚拟网络，则无法通过 Azure Powershell 和 Azure CLI API 查看或检索注册到专用区域的虚拟网络中的 VM 的 DNS 记录。 VM 记录确实已注册并且会成功解析。
 
 * **在作为“解析”虚拟网络链接到专用区域的虚拟网络之间支持正向 DNS 解析**。 对于跨虚拟网络 DNS 解析，不会明确要求虚拟网络彼此对等互连。 不过，对于其他场景（例如 HTTP 流量），客户可能希望将虚拟网络对等互连。
 
-* **在虚拟网络范围内支持反向 DNS 查找**。 对分配到专用区域的虚拟网络中的专用 IP 进行反向 DNS 查找将返回 FQDN，其中包括主机/记录名称以及作为后缀的区域名称。 
-
+* **在虚拟网络范围内支持反向 DNS 查找**。 对分配到专用区域的虚拟网络中的专用 IP 进行反向 DNS 查找将返回 FQDN，其中包括主机/记录名称以及作为后缀的区域名称。
 
 ## <a name="limitations"></a>限制
 
@@ -71,19 +67,17 @@ Azure DNS 存在以下限制：
 * 最多允许在每个专用区域中使用 10 个“解析”虚拟网络。
 * 一个特定的虚拟网络只能作为注册虚拟网络链接到 1 个专用区域。
 * 一个特定的虚拟网络可以作为解析虚拟网络链接到最多 10 个专用区域。
-* 如果指定了注册虚拟网络，则无法通过 Azure Powershell 和 Azure CLI API 查看或检索注册到专用区域的虚拟网络中的 VM 的 DNS 记录，但是，VM 记录确实已注册并且会成功解析。
+* 如果指定了注册虚拟网络，则无法通过 Azure Powershell 和 Azure CLI API 查看或检索注册到专用区域的虚拟网络中的 VM 的 DNS 记录。 VM 记录确实已注册并且会成功解析。
 * 反向 DNS 仅适用于注册虚拟网络中的专用 IP 空间。
-* 未注册到专用区域中的专用 IP（例如，作为解析虚拟网络链接到专用区域的虚拟网络中的虚拟机专用 IP）的反向 DNS 将返回 *internal.cloudapp.net* 作为 DNS 后缀。 但此后缀不可解析。 
-* 在最初（即首次） 作为“注册”或“解析”虚拟网络链接到专用区域时，虚拟网络需要是空的（即没有 VM 记录）。 但是，以后作为注册或解析虚拟网络链接到其他专用区域时，虚拟网络可以是非空的。 
+* 未注册到专用区域中的专用 IP（例如，作为解析虚拟网络链接到专用区域的虚拟网络中的虚拟机专用 IP）的反向 DNS 将返回 *internal.cloudapp.net* 作为 DNS 后缀。 但此后缀不可解析。
+* 在最初（即首次） 作为“注册”或“解析”虚拟网络链接到专用区域时，虚拟网络需要是空的（即没有 VM 记录）。 但是，以后作为注册或解析虚拟网络链接到其他专用区域时，虚拟网络可以是非空的。
 * 目前不支持条件转发（例如，为了启用 Azure 与本地网络之间的解析）。 有关客户可以如何通过其他机制实现此方案的信息，请参阅 [VM 和角色实例的名称解析](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md)。
 
 有关 Azure DNS 中的专用区域的一些常见问题和解答，包括对于某些类型的操作可以期待的特定 DNS 注册和解析行为，请参阅[常见问题解答](./dns-faq.md#private-dns)。  
 
-
 ## <a name="pricing"></a>定价
 
 在公共预览期，专用 DNS 区域功能免费。 在公式版发布后，此功能将提供基于用量的定价模型，这与现有的 Azure DNS 产品/服务类似。 
-
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -95,5 +89,4 @@ Azure DNS 存在以下限制：
 
 访问 [DNS 区域和记录概述](dns-zones-records.md)，了解 DNS 区域和记录。
 
-了解 Azure 的一些其他关键[网络功能](../networking/networking-overview.md)。 
-
+了解 Azure 的一些其他关键[网络功能](../networking/networking-overview.md)。

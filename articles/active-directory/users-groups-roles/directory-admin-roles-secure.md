@@ -13,12 +13,12 @@ ms.workload: identity
 ms.component: users-groups-roles
 ms.custom: it-pro
 ms.reviewer: martincoetzer, MarkMorow
-ms.openlocfilehash: d62559561bf7e8e2dc2a882543d7fa7fc45a7499
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: da53fa7d20c66b09e06c70222f29f060fa5803c8
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51821050"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53387074"
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>确保 Azure AD 中混合部署和云部署的特权访问安全性
 
@@ -66,7 +66,7 @@ Microsoft 建议你制定并遵循一个路线图，防止特权访问受到网�
 
 * 阶段 2（2-4 周）：减轻最常用攻击手段的危害
 
-* 阶段 3（1-3 月）：构建管理活动的可见性和完全控制
+* 阶段 3 （1-3 个月）：构建管理活动的可见性和完全控制
 
 * 阶段 4（至少六个月）：继续构建防御措施，进一步强化安全平台
 
@@ -121,7 +121,7 @@ Azure AD Privileged Identity Management 包括在 Azure AD Premium P2 或 EMS E5
 
 #### <a name="turn-on-multi-factor-authentication-and-register-all-other-highly-privileged-single-user-non-federated-admin-accounts"></a>启用多重身份验证，并注册所有其他的特许权限高的单用户非联合管理员帐户 
 
-对于所有永久分配了一个或多个 Azure AD 管理员角色（全局管理员、特权角色管理员、Exchange Online 管理员和 SharePoint Online 管理员）的单个用户，要求在登录时进行 Azure 多重身份验证 (MFA)。 根据指南启用[针对管理员帐户的多重身份验证 (MFA)](../authentication/howto-mfa-userstates.md)，确保所有这些用户都已注册到 [https://aka.ms/mfasetup](https://aka.ms/mfasetup)。 有关详细信息，可参阅[保护对 Office 365 中数据和服务的访问权限](https://support.office.com/article/Protect-access-to-data-and-services-in-Office-365-a6ef28a4-2447-4b43-aae2-f5af6d53c68e)指南的步骤 2 和步骤 3。 
+对于永久分配给一个或多个 Azure AD 管理员角色的所有个人用户，要求其在登录时进行多重身份验证 (MFA)：全局管理员、特权角色管理员、Exchange Online 管理员和 SharePoint Online 管理员。 根据指南启用[针对管理员帐户的多重身份验证 (MFA)](../authentication/howto-mfa-userstates.md)，确保所有这些用户都已注册到 [https://aka.ms/mfasetup](https://aka.ms/mfasetup)。 有关详细信息，可参阅[保护对 Office 365 中数据和服务的访问权限](https://support.office.com/article/Protect-access-to-data-and-services-in-Office-365-a6ef28a4-2447-4b43-aae2-f5af6d53c68e)指南的步骤 2 和步骤 3。 
 
 ## <a name="stage-2-mitigate-the-most-frequently-used-attack-techniques"></a>阶段 2：减轻最常用攻击手段的危害
 
@@ -210,7 +210,7 @@ Azure AD Identity Protection 是一种基于算法的监视和报告工具，可
 
 #### <a name="monitor-azure-activity"></a>监视 Azure 活动
 
-Azure 活动日志提供 Azure 中订阅级别事件的历史记录。 它提供的信息涉及谁创建、更新和删除了什么资源，以及这些事件的发生时间。 有关详细信息，请参阅[审核和接收关于 Azure 订阅中重要操作的通知](../../monitoring-and-diagnostics/monitor-quick-audit-notify-action-in-subscription.md)。
+Azure 活动日志提供 Azure 中订阅级别事件的历史记录。 它提供的信息涉及谁创建、更新和删除了什么资源，以及这些事件的发生时间。 有关详细信息，请参阅[审核和接收关于 Azure 订阅中重要操作的通知](../../azure-monitor/platform/quick-audit-notify-action-subscription.md)。
 
 
 ### <a name="additional-steps-for-organizations-managing-access-to-other-cloud-apps-via-azure-ad"></a>组织通过 Azure AD 管理其他云应用的访问权限时所需的其他步骤 
@@ -247,7 +247,7 @@ Azure 活动日志提供 Azure 中订阅级别事件的历史记录。 它提供
 
 #### <a name="review-national-institute-of-standards-and-technology-recommendations-for-handling-incidents"></a>查看美国国家标准与技术协会提供的有关如何处理事件的建议 
 
-国家标准与技术协会 (NIST) 提供处理事件的指南，尤其是分析事件相关数据并确定每个事件的适当响应的指南。 有关详细信息，请参阅 [The (NIST) Computer Security Incident Handling Guide (SP 800-61, Revision 2)](http://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-61r2.pdf)（(NIST) 计算机安全事件处理指南（SP 800-61，修订版 2））。
+国家标准与技术协会 (NIST) 提供处理事件的指南，尤其是分析事件相关数据并确定每个事件的适当响应的指南。 有关详细信息，请参阅 [The (NIST) Computer Security Incident Handling Guide (SP 800-61, Revision 2)](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-61r2.pdf)（(NIST) 计算机安全事件处理指南（SP 800-61，修订版 2））。
 
 #### <a name="implement-privileged-identity-management-pim-for-jit-to-additional-administrative-roles"></a>对其他管理角色实施适用于 JIT 的 Privileged Identity Management (PIM)
 
@@ -398,7 +398,7 @@ Cloud App Security SIEM 代理将 Cloud App Security 与 SIEM 服务器集成，
 **答：** 定义至少两个“不受限”帐户，指定对特权管理员帐户实施 MFA，并将用户帐户与全局管理员帐户分开。
 
 
-**文：** 在遭到攻击后，首先需要解决的最重要问题是什么？
+**问：** 在遭到攻击后，首先需要解决的最重要问题是什么？
 
 **答：** 务必要求对身份暴露可能性高的个人进行最强的身份验证。
 

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 09/05/2018
 ms.author: sethm
 ms.reviewer: jiahan
-ms.openlocfilehash: 9eed4c4bd8cd6290bd2126c91bcf4e37c1b0fa0b
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 4bad339ca704f14f57c120db5e731d0dbfeb8d59
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53341939"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53793423"
 ---
 # <a name="azure-stack-managed-disks-differences-and-considerations"></a>Azure Stack 托管磁盘：差异和注意事项
 本文总结了 Azure Stack 托管磁盘和 Azure 托管磁盘之间的已知差异。 有关 Azure Stack 与 Azure 之间的大致差异的详细信息，请参阅[重要注意事项](azure-stack-considerations.md)一文。
@@ -31,7 +31,7 @@ ms.locfileid: "53341939"
 > 可从 1808 Azure Stack 上的托管的磁盘。
   
 
-## <a name="cheat-sheet-managed-disk-differences"></a>备忘单：托管磁盘的差异
+## <a name="cheat-sheet-managed-disk-differences"></a>速查表：托管磁盘的差异
 
 | Feature | Azure（公有云） | Azure Stack |
 | --- | --- | --- |
@@ -61,6 +61,14 @@ ms.locfileid: "53341939"
 ## <a name="api-versions"></a>API 版本
 Azure Stack 托管磁盘支持以下 API 版本：
 - 2017-03-30
+
+## <a name="known-issues"></a>已知问题
+更新应用 1809年后，部署包含托管磁盘的 Vm 时，您可能会遇到以下问题：
+
+   - 如果 1808年更新，使用托管磁盘部署 VM 之前创建的订阅可能会失败并显示内部错误消息。 若要解决此错误，请针对每个订阅执行以下步骤：
+      1. 在租户门户中转到“订阅”，找到相应订阅。 依次单击“资源提供程序”、“Microsoft.Compute”、“重新注册”。
+      2. 在同一订阅下，转到“访问控制(标识和访问管理)”，验证“Azure Stack - 托管磁盘”是否已列出。
+   - 如果已配置多租户环境中，在与来宾目录关联的订阅中部署虚拟机内部的错误消息可能会失败。 若要解决此错误，请按照中的步骤[这篇文章](../azure-stack-enable-multitenancy.md#registering-azure-stack-with-the-guest-directory)重新配置每个来宾目录。
 
 
 ## <a name="next-steps"></a>后续步骤

@@ -1,6 +1,6 @@
 ---
 title: 可视化 Azure Monitor 中的数据 | Microsoft 文档
-description: 简要介绍可视化 Azure Monitor 中所存储数据（包括来自指标存储和 Log Analytics 中的数据）的可用方法。
+description: 概述了将 Azure Monitor 中存储的指标和日志数据可视化时可使用的方法。
 author: bwren
 manager: carmonm
 editor: ''
@@ -9,19 +9,18 @@ documentationcenter: azure-monitor
 ms.service: azure-monitor
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 09/15/2018
+ms.date: 11/24/2018
 ms.author: bwren
-ms.openlocfilehash: 4200accee94840a8a4455308f24a857fd5d7034a
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 76e3a219d440bab4c6e277887aabb1e01f5e1d9c
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52632970"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53435440"
 ---
 # <a name="visualizing-data-from-azure-monitor"></a>可视化 Azure Monitor 中的数据
-本文概述可视化 Azure Monitor 中所存储数据的可用方法。 具体数据包括 [Azure 指标存储中的指标](../azure-monitor/platform/data-collection.md#metrics)和 [Log Analytics 中的日志数据](../azure-monitor/platform/data-collection.md#logs)。 
+本文概述了将 Azure Monitor 中存储的日志和指标数据可视化时可使用的方法。
 
 图表和图形等可视化效果有助于你分析监视数据，从而深入了解问题并识别模式。 根据使用的工具，你还可以选择与组织内外的其他用户共享可视化效果。
 
@@ -31,9 +30,9 @@ ms.locfileid: "52632970"
 ![仪表板](media/visualizations/dashboard.png)
 
 ### <a name="advantages"></a>优点
-- 深度集成到 Azure 中。 可视化效果可以固定到多个 Azure 页面的仪表板，包括指标资源管理器、Log Analytics 和 Application Insights。
+- 深度集成到 Azure 中。 可视化效果可以固定到多个 Azure 页面的仪表板，包括指标分析、Log Analytics 和 Application Insights。
 - 支持指标和日志。
-- 合并来自多个源的数据，包括来自[指标资源管理器](../monitoring-and-diagnostics/monitoring-metric-charts.md)、[Log Analytics 查询](../log-analytics/log-analytics-queries.md)及 Application Insights 中[映射](../application-insights/app-insights-app-map.md)和[可用性]()的输出。
+- 合并来自多个源的数据，包括来自[指标资源管理器](../azure-monitor/platform/metrics-charts.md)、[Log Analytics 查询](../azure-monitor/log-query/log-query-overview.md)及 Application Insights 中[映射](../application-insights/app-insights-app-map.md)和[可用性]()的输出。
 - 包含个人或共享仪表板的选项。 与 Azure [基于角色的身份验证 (RBAC)](../role-based-access-control/overview.md) 集成。
 - 自动刷新。 指标刷新的时间范围至少为 5 分钟。 以 1 分钟为间隔刷新日志。
 - 带有时间戳和自定义参数的参数化指标仪表板。
@@ -42,23 +41,23 @@ ms.locfileid: "52632970"
 
 
 ### <a name="limitations"></a>限制
-- 有限控制不支持数据表的 Log Analytics 可视化效果。 数据系列总数限制为 10，其他数据系列在“其他” Bucket 下进行分组。
-- 无自定义参数支持 Log Analytics 图表。
-- Log Analytics 图表仅限于过去 30 天。
-- Log Analytics 图表只能固定到共享仪表板。
+- 对日志可视化效果具有有限控制，不支持数据表。 数据系列总数限制为 10，其他数据系列在“其他” Bucket 下进行分组。
+- 对于日志图表，不支持自定义参数。
+- 日志图表仅限于过去 30 天。
+- 日志图表只能固定到共享仪表板。
 - 没有与仪表板数据的交互操作。
 - 上下文向下钻取受限。
 
 ## <a name="azure-monitor-views"></a>Azure Monitor 视图
-借助 [Azure Monitor 中的视图](../azure-monitor/platform/view-designer.md)，可以使用 Log Analytics 中存储的日志数据创建自定义可视化效果。 它们由[监视解决方案](../azure-monitor/insights/solutions.md)用于呈现所收集的数据。
+借助 [Azure Monitor 中的视图](../log-analytics/log-analytics-view-designer.md)，可以使用日志数据创建自定义可视化效果。 它们由[监视解决方案](insights/solutions.md)用于呈现所收集的数据。
 
 ![查看](media/visualizations/view.png)
 
 ### <a name="advantages"></a>优点
-- Log Analytics 数据丰富的可视化效果。
+- 为日志数据提供了丰富的可视化效果。
 - 导出和导入视图可以将其传输到其他资源组和订阅。
 - 通过工作区和监视解决方案集成到 Log Analytic 管理模型中。
-- 用于自定义参数的[筛选器](../azure-monitor/platform/view-designer-filters.md)。
+- 用于自定义参数的[筛选器](platform/view-designer-filters.md)。
 - 具有交互性，支持多级钻取（一个视图钻取到另一个视图）
 
 ### <a name="limitations"></a>限制
@@ -66,7 +65,7 @@ ms.locfileid: "52632970"
 - 无个人视图。 适用于有权限访问工作区的所有用户。
 - 无自动刷新。
 - 布局选项有限。
-- 不支持跨 Log Analytics 工作区和 Application Insights 应用程序进行查询。
+- 不支持跨多个工作区或 Application Insights 应用程序进行查询。
 - 查询的响应大小限制为 8MB，查询的执行时间限制为 110 秒。
 
 
@@ -90,7 +89,7 @@ ms.locfileid: "52632970"
 
 
 ## <a name="power-bi"></a>Power BI
-[Power BI](https://powerbi.microsoft.com/documentation/powerbi-service-get-started/) 对于创建以业务为中心的仪表板和报表，以及用于分析长期 KPI 趋势的报表特别有用。 你可以将 [Log Analytics 查询结果导入 Power BI 数据集](../log-analytics/log-analytics-powerbi.md)，以便利用其各项功能，例如合并不同来源的数据和在 Web 和移动设备上共享报表。
+[Power BI](https://powerbi.microsoft.com/documentation/powerbi-service-get-started/) 对于创建以业务为中心的仪表板和报表，以及用于分析长期 KPI 趋势的报表特别有用。 你可以[将日志查询结果导入 Power BI 数据集](../log-analytics/log-analytics-powerbi.md)，以便利用其各项功能，例如合并不同来源的数据和在 Web 和移动设备上共享报表。
 
 ![Power BI](media/visualizations/power-bi.png)
 
@@ -110,7 +109,7 @@ ms.locfileid: "52632970"
 
 
 ## <a name="grafana"></a>Grafana
-[Grafana](https://grafana.com/) 是一个适用于操作仪表板的开放平台。 它尤其适用于检测、隔离和归类操作事件。 你可以将 [Grafana Azure Monitor 数据源插件](../monitoring-and-diagnostics/monitor-send-to-grafana.md)添加到 Azure 订阅中，使其可视化 Azure 指标数据。
+[Grafana](https://grafana.com/) 是一个适用于操作仪表板的开放平台。 它尤其适用于检测、隔离和归类操作事件。 你可以将 [Grafana Azure Monitor 数据源插件](../azure-monitor/platform/grafana-plugin.md)添加到 Azure 订阅中，使其可视化 Azure 指标数据。
 
 ![Grafana](media/visualizations/grafana.png)
 
@@ -127,7 +126,7 @@ ms.locfileid: "52632970"
 
 
 ## <a name="build-your-own-custom-application"></a>生成自己的自定义应用程序
-你可以使用任何 REST 客户端通过其 API 访问 Azure 指标和 Log Analytics 中的数据，从而可以生成自己的自定义网站和应用程序。
+你可以使用任何 REST 客户端通过其 API 访问 Azure Monitor 中的日志和指标数据，从而可以生成自己的自定义网站和应用程序。
 
 ### <a name="advantages"></a>优点
 - 在 UI、可视化效果、交互性和功能方面具有完全的灵活性。
@@ -138,9 +137,10 @@ ms.locfileid: "52632970"
 
 
 ## <a name="next-steps"></a>后续步骤
-- 了解[由 Azure Monitor 收集的数据](../azure-monitor/platform/data-collection.md)。
+- 了解[由 Azure Monitor 收集的数据](platform/data-collection.md)。
 - 了解 [Azure 仪表板](../azure-portal/azure-portal-dashboards.md)。
-- 了解 [Azure Monitor 中的视图](../azure-monitor/platform/view-designer.md)。
+- 了解 [Azure Monitor 中的视图](platform/view-designer.md)。
 - 了解 [Application Insights 中的工作簿](../application-insights/app-insights-usage-workbooks.md)。
-- 了解如何[将日志数据导入 Power BI](../log-analytics/log-analytics-powerbi.md)。
-- 了解 [Grafana Azure Monitor 数据源插件](../monitoring-and-diagnostics/monitor-send-to-grafana.md)。
+- 了解如何[将日志数据导入 Power BI](../azure-monitor/platform/powerbi.md)。
+- 了解 [Grafana Azure Monitor 数据源插件](../azure-monitor/platform/grafana-plugin.md)。
+

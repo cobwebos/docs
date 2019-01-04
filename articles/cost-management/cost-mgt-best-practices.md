@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 01/09/2018
+ms.date: 12/07/2018
 ms.topic: conceptual
 ms.service: cost-management
 manager: vitavor
-ms.custom: ''
-ms.openlocfilehash: 0adc821f7a3d5b059d549509b7ed18cda95b86bc
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.custom: seodec18
+ms.openlocfilehash: 77a5b455e3ef86484119983af24b6461a2fba229
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52273793"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53074480"
 ---
 # <a name="how-to-optimize-your-cloud-investment-with-azure-cost-management"></a>如何通过 Azure 成本管理优化云投资
 
@@ -64,7 +64,7 @@ ms.locfileid: "52273793"
 
 组织中的每个人必须加入到成本管理生命周期中。 他们需要对优化成本保持持续关注。 对此迭代过程应持严谨态度，将其作为组织中负责任的云监管的关键原则。
 
-![关键原则](./media/cost-mgt-best-practices/principles.png)
+![显示可见性、问责制和优化的关键原则图](./media/cost-mgt-best-practices/principles.png)
 
 ## <a name="plan-with-cost-in-mind"></a>在计划时考虑成本
 
@@ -140,7 +140,7 @@ Azure Migrate 服务可以评估本地数据中心中的组织当前工作负载
 
 ### <a name="export-billing-data-on-a-schedule"></a>按计划导出账单数据
 
-是否需要将账单数据导入外部系统，例如仪表板或财务系统？ 可以计划每日自动生成报表，从而避免每月手动下载文件。 可以将账单数据导出到 Azure 存储帐户，并使用[操作组](../monitoring-and-diagnostics/monitoring-action-groups.md)获得通知。 然后可以使用 Azure 数据，将其与可在你自己系统中使用的自定义数据结合。
+是否需要将账单数据导入外部系统，例如仪表板或财务系统？ 可设置为自动导出到 Azure 存储，避免每月手动下载文件。 然后便可轻松地设置与其他系统的自动集成，使帐单数据保持同步。
 
 要详细了解如何导出账单数据，请参阅[创建和管理导出的数据](tutorial-export-acm-data.md)。
 

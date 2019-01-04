@@ -5,14 +5,15 @@ author: Rajeswari-Mamilla
 manager: rochakm
 ms.service: site-recovery
 ms.workload: storage-backup-recovery
-ms.date: 10/11/2018
+ms.date: 11/27/2018
 ms.author: ramamill
-ms.openlocfilehash: 667cbbbcc0a74550b389d7a75e17cecd00b88d06
-ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
+ms.topic: conceptual
+ms.openlocfilehash: af610aaec238e1b2ae8ec2387e5a8f71225cab8c
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2018
-ms.locfileid: "51976601"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52848155"
 ---
 # <a name="exclude-disks-from-replication-of-vmware-vms-to-azure"></a>在从 VMware VM 到 Azure 的复制中排除磁盘
 
@@ -55,8 +56,8 @@ ms.locfileid: "51976601"
 > * 只能从复制中排除基本磁盘。 不能排除操作系统磁盘或动态磁盘。
 > * 启用复制后，无法添加或删除要复制的磁盘。 如果想要添加或排除磁盘，需要禁用计算机保护，并重新启用保护。
 > * 如果排除的磁盘是某个应用程序正常运行所必需的，则故障转移到 Azure 之后，需要在 Azure 中手动创建该磁盘，以便复制的应用程序可以运行。 或者，可以将 Azure 自动化集成到恢复计划中，以便在故障转移计算机期间创建磁盘。
-> * Windows 虚拟机：在 Azure 中手动创建的磁盘不会执行故障回复。 例如，如果在 Azure 虚拟机中故障转移三个磁盘并直接创建两个磁盘，则只会故障回复完成故障转移的三个磁盘。 不能包括在故障回复过程中或从本地到 Azure 的反向保护过程中手动创建的磁盘。
-> * Linux 虚拟机：在 Azure 中手动创建的磁盘会执行故障回复。 例如，如果要故障转移三个磁盘，并直接在 Azure 虚拟机中创建两个磁盘，则会故障回复所有五个磁盘。 无法从故障回复中排除手动创建的磁盘。
+> * Windows 虚拟机：在 Azure 中手动创建的磁盘不会故障回复。 例如，如果在 Azure 虚拟机中故障转移三个磁盘并直接创建两个磁盘，则只会故障回复完成故障转移的三个磁盘。 不能包括在故障回复过程中或从本地到 Azure 的反向保护过程中手动创建的磁盘。
+> * Linux 虚拟机：在 Azure 中手动创建的磁盘可以故障回复。 例如，如果要故障转移三个磁盘，并直接在 Azure 虚拟机中创建两个磁盘，则会故障回复所有五个磁盘。 无法从故障回复中排除手动创建的磁盘。
 >
 
 

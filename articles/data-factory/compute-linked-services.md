@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 07/31/2018
 ms.author: douglasl
-ms.openlocfilehash: 127438e1e65400daac75cec525197a5cfc8cd46a
-ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
+ms.openlocfilehash: 110005469d5ff42af10b29fcee97c2f130ecdc2d
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39390205"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52873813"
 ---
 # <a name="compute-environments-supported-by-azure-data-factory"></a>Azure 数据工厂支持的计算环境
 本文介绍可用于处理或转换数据的不同计算环境。 同时还详细介绍了配置将这些计算环境链接到 Azure 数据工厂的链接服务时，数据工厂所支持的不同配置（按需和自带）。
@@ -48,11 +48,7 @@ Azure 数据工厂服务可自动创建按需 HDInsight 群集，以处理数据
 * 按需 HDInsight 群集在 Azure 订阅下创建。 当群集启动并运行时，你可以在 Azure 门户中查看群集。 
 * 在按需 HDInsight 群集上运行的作业日志将复制到与 HDInsight 群集相关联的存储帐户。 在链接的服务定义中定义的 clusterUserName、clusterPassword、clusterSshUserName、clusterSshPassword 用于登录到群集，以便在群集的生命周期内进行深入故障排除。 
 * 仅对 HDInsight 群集启动并运行作业的时间进行收费。
-* 不能对 Azure HDInsight 按需链接服务使用脚本操作。 例如，如果需要安装其他依赖项，请考虑使用 Azure 自动化来运行执行以下操作的 PowerShell 脚本：  
-  a. 创建 HDInsight 群集。  
-  b. 运行脚本操作来安装其他依赖项，例如。  
-  c. 运行数据工厂管道。  
-  d. 删除群集。  
+* Azure HDInsight 按需链接服务现在支持脚本操作。  
 
 > [!IMPORTANT]
 > 按需预配 Azure HDInsight 群集通常需要 **20 分钟**或更长时间。
@@ -113,9 +109,9 @@ Azure 数据工厂服务可自动创建按需 HDInsight 群集，以处理数据
 | clusterNamePrefix           | HDI 群集名称的前缀，将自动在群集名称末尾追加时间戳| 否       |
 | sparkVersion                 | 群集类型为“Spark”时的 spark 版本 | 否       |
 | additionalLinkedServiceNames | 指定 HDInsight 链接服务的其他存储帐户，使数据工厂服务能够代为注册它们。 这些存储帐户必须与 HDInsight 群集位于同一区域中，该群集是在与 linkedServiceName 指定的存储帐户相同的区域中创建的。 | 否       |
-| osType                       | 操作系统的类型。 允许的值为：Linux 和 Windows（仅适用于 HDInsight 3.3）。 默认值为 Linux。 | 否       |
+| osType                       | 操作系统的类型。 允许值包括：Linux 和 Windows（仅适用于 HDInsight 3.3）。 默认值为 Linux。 | 否       |
 | hcatalogLinkedServiceName    | 指向 HCatalog 数据库的 Azure SQL 链接服务的名称。 将 Azure SQL 数据库用作元存储以创建按需 HDInsight 群集。 | 否       |
-| connectVia                   | 用于将活动分发到此 HDInsight 链接服务的集成运行时。 对于按需的 HDInsight 链接服务，它仅支持 Azure 集成运行时。 如果未指定，则使用默认 Azure 集成运行时。 | 否       |
+| connectVia                   | 用于将活动分发到此 HDInsight 链接服务的集成运行时。 对于按需的 HDInsight 链接服务，它仅支持 Azure 集成运行时。 如果未指定，则使用默认 Azure Integration Runtime。 | 否       |
 | clusterUserName                   | 用于访问群集的用户名。 | 否       |
 | clusterPassword                   | 用于访问群集的安全字符串类型密码。 | 否       |
 | clusterSshUserName         | 用于 SSH 远程连接到群集节点的用户名（适用于 Linux）。 | 否       |
@@ -244,7 +240,7 @@ Azure 数据工厂服务可自动创建按需 HDInsight 群集，以处理数据
 "dataNodeSize": "Standard_D4",
 ```
 
-如果为这些属性指定了错误的值，则可能会收到以下**错误：** 未能创建群集。 异常: 无法完成群集创建操作。 操作失败，代码为 '400'。 群集保持为 'Error' 状态。 消息: “PreClusterCreationValidationFailure”。 收到此错误时，请确保使用的是[虚拟机的大小](../virtual-machines/linux/sizes.md)一文中的表中的 **CMDLET 和 API** 名称。        
+如果为这些属性指定了错误的值，则可能会收到以下错误：未能创建群集。 异常：无法完成群集创建操作。 操作失败，代码为 '400'。 群集保持为 'Error' 状态。 消息：'PreClusterCreationValidationFailure'。 收到此错误时，请确保使用的是[虚拟机的大小](../virtual-machines/linux/sizes.md)一文中的表中的 **CMDLET 和 API** 名称。        
 
 ## <a name="bring-your-own-compute-environment"></a>自带计算环境
 在此类型的配置中，用户可在数据工厂中将现有的计算环境注册为链接服务。 该计算环境由用户进行管理，数据工厂服务用它来执行活动。
@@ -295,7 +291,7 @@ Azure 数据工厂服务可自动创建按需 HDInsight 群集，以处理数据
 | username          | 指定用于连接到现有 HDInsight 群集的用户的名称。 | 是      |
 | password          | 指定用户帐户的密码。   | 是      |
 | linkedServiceName | Azure 存储链接服务（指 HDInsight 群集使用的 Azure Blob 存储）的名称。 <p>目前，不能为此属性指定 Azure Data Lake Store 链接服务。 如果 HDInsight 群集有权访问 Data Lake Store，则可从 Hive/Pig 脚本访问 Azure Data Lake Store 中的数据。 </p> | 是      |
-| connectVia        | 用于将活动分发到此链接服务的集成运行时。 可以使用 Azure 集成运行时或自托管集成运行时。 如果未指定，则使用默认 Azure 集成运行时。 | 否       |
+| connectVia        | 用于将活动分发到此链接服务的集成运行时。 可以使用 Azure 集成运行时或自托管集成运行时。 如果未指定，则使用默认 Azure Integration Runtime。 | 否       |
 
 > [!IMPORTANT]
 > HDInsight 支持多个可部署的 Hadoop 群集版本。 每个版本选项创建 Hortonworks 数据平台 (HDP) 分发的特定版本和该分发内包含的一组组件。 支持的 HDInsight 版本列表会不断更新，以提供最新的 Hadoop 生态系统组件和修补程序。 请确保始终参考[支持的 HDInsight 版本和操作系统类型](../hdinsight/hdinsight-component-versioning.md#supported-hdinsight-versions)的最新信息，以确保使用的是受支持的 HDInsight 版本。 
@@ -353,7 +349,7 @@ Azure 数据工厂服务可自动创建按需 HDInsight 群集，以处理数据
 | batchUri          | 指向 Azure Batch 帐户的 URL，格式为 https://*batchaccountname.region*.batch.azure.com。 | 是      |
 | poolName          | 虚拟机的池名称。    | 是      |
 | linkedServiceName | 与此 Azure Batch 链接服务相关联的 Azure 存储链接服务的名称。 此链接服务用于暂存运行活动所需的文件。 | 是      |
-| connectVia        | 用于将活动分发到此链接服务的集成运行时。 可以使用 Azure 集成运行时或自托管集成运行时。 如果未指定，则使用默认 Azure 集成运行时。 | 否       |
+| connectVia        | 用于将活动分发到此链接服务的集成运行时。 可以使用 Azure 集成运行时或自托管集成运行时。 如果未指定，则使用默认 Azure Integration Runtime。 | 否       |
 
 ## <a name="azure-machine-learning-linked-service"></a>Azure 机器学习链接服务
 可以创建 Azure 机器学习链接服务，以向数据工厂注册机器学习批处理计分终结点。
@@ -383,14 +379,14 @@ Azure 数据工厂服务可自动创建按需 HDInsight 群集，以处理数据
 ### <a name="properties"></a>属性
 | 属性               | 说明                              | 必选                                 |
 | ---------------------- | ---------------------------------------- | ---------------------------------------- |
-| Type                   | 类型属性应设置为 **AzureML**。 | 是                                      |
+| 类型                   | 类型属性应设置为：AzureML。 | 是                                      |
 | mlEndpoint             | 批处理计分 URL。                   | 是                                      |
 | apiKey                 | 已发布的工作区模型的 API。     | 是                                      |
 | updateResourceEndpoint | Azure ML Web 服务终结点的更新资源 URL 用于使用经过训练的模型文件更新预测性 Web 服务 | 否                                       |
 | servicePrincipalId     | 指定应用程序的客户端 ID。     | 如果已指定 updateResourceEndpoint，则为必需 |
 | servicePrincipalKey    | 指定应用程序的密钥。           | 如果已指定 updateResourceEndpoint，则为必需 |
 | tenant                 | 指定应用程序的租户信息（域名或租户 ID）。 可将鼠标悬停在 Azure 门户右上角进行检索。 | 如果已指定 updateResourceEndpoint，则为必需 |
-| connectVia             | 用于将活动分发到此链接服务的集成运行时。 可以使用 Azure 集成运行时或自托管集成运行时。 如果未指定，则使用默认 Azure 集成运行时。 | 否                                       |
+| connectVia             | 用于将活动分发到此链接服务的集成运行时。 可以使用 Azure 集成运行时或自托管集成运行时。 如果未指定，则使用默认 Azure Integration Runtime。 | 否                                       |
 
 ## <a name="azure-data-lake-analytics-linked-service"></a>Azure Data Lake Analytics 链接服务
 创建 **Azure Data Lake Analytics** 链接服务将 Azure Data Lake Analytics 计算服务链接到 Azure 数据工厂。 管道中的 Data Lake Analytics U-SQL 活动是指此链接服务。 
@@ -426,7 +422,7 @@ Azure 数据工厂服务可自动创建按需 HDInsight 群集，以处理数据
 
 | 属性             | 说明                              | 必选                                 |
 | -------------------- | ---------------------------------------- | ---------------------------------------- |
-| type                 | 类型属性应设置为 **AzureDataLakeAnalytics**。 | 是                                      |
+| type                 | 类型属性应设置为：AzureDataLakeAnalytics。 | 是                                      |
 | accountName          | Azure Data Lake Analytics 帐户名。  | 是                                      |
 | dataLakeAnalyticsUri | Azure Data Lake Analytics URI。           | 否                                       |
 | subscriptionId       | Azure 订阅 ID                    | 否                                       |
@@ -434,7 +430,7 @@ Azure 数据工厂服务可自动创建按需 HDInsight 群集，以处理数据
 | servicePrincipalId   | 指定应用程序的客户端 ID。     | 是                                      |
 | servicePrincipalKey  | 指定应用程序的密钥。           | 是                                      |
 | tenant               | 指定应用程序的租户信息（域名或租户 ID）。 可将鼠标悬停在 Azure 门户右上角进行检索。 | 是                                      |
-| connectVia           | 用于将活动分发到此链接服务的集成运行时。 可以使用 Azure 集成运行时或自托管集成运行时。 如果未指定，则使用默认 Azure 集成运行时。 | 否                                       |
+| connectVia           | 用于将活动分发到此链接服务的集成运行时。 可以使用 Azure 集成运行时或自托管集成运行时。 如果未指定，则使用默认 Azure Integration Runtime。 | 否                                       |
 
 
 
@@ -487,7 +483,7 @@ Azure 数据工厂服务可自动创建按需 HDInsight 群集，以处理数据
 | 属性             | 说明                              | 必选                                 |
 | -------------------- | ---------------------------------------- | ---------------------------------------- |
 | 名称                 | 链接服务的名称               | 是   |
-| type                 | 类型属性应设置为 **AzureDatabricks**。 | 是                                      |
+| type                 | 类型属性应设置为：AzureDatabricks。 | 是                                      |
 | 域               | 根据 Databricks 工作区的区域相应地指定 Azure 区域。 示例： https://eastus.azuredatabricks.net | 是                                 |
 | accessToken          | 数据工厂通过 Azure Databricks 进行身份验证时，必须使用访问令牌。 需从 Databricks 工作区生成访问令牌。 [此处](https://docs.azuredatabricks.net/api/latest/authentication.html#generate-token)提供了查找访问令牌的更多详细步骤  | 是                                       |
 | existingClusterId    | 现有群集的群集 ID，用于在其上运行所有作业。 该群集应该是已创建的交互式群集。 如果群集停止响应，则可能需要手动重启该群集。 Databricks 建议在新群集上运行作业，以提高可靠性。 可以通过 Databricks 工作区 ->“群集”->“交互式群集名称”->“配置”->“标记”找到交互式群集的群集 ID。 [更多详细信息](https://docs.databricks.com/user-guide/clusters/tags.html) | 否 

@@ -1,21 +1,22 @@
 ---
-title: 如何安装和运行容器
-titlesuffix: Face - Cognitive Services - Azure
+title: 安装、运行容器
+titlesuffix: Face - Azure Cognitive Services
 description: 通过本演练教程了解如何下载、安装和运行“人脸”容器。
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: text-analytics
 ms.topic: article
 ms.date: 11/14/2018
 ms.author: diberry
-ms.openlocfilehash: 1d13e2ccbbc1d5c1bc80dffc260a3759fe378d7d
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 556cf755890f49e540afe64de6e485d9ebde2147
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52634534"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53086430"
 ---
 # <a name="install-and-run-containers"></a>安装和运行容器
 
@@ -29,7 +30,7 @@ ms.locfileid: "52634534"
 
 使用“人脸”容器之前，必须满足以下先决条件：
 
-**Docker 引擎**：必须本地安装 Docker 引擎。 Docker 提供用于在 [macOS](https://docs.docker.com/docker-for-mac/)、[Linux](https://docs.docker.com/engine/installation/#supported-platforms) 和 [Windows](https://docs.docker.com/docker-for-windows/) 上配置 Docker 环境的包。 在 Windows 上，必须将 Docker 配置为支持 Linux 容器。 还可直接将 Docker 容器部署到 [Azure Kubernetes 服务](/azure/aks/)、[Azure 容器实例](/azure/container-instances/)，或部署到 [Azure Stack](/azure/azure-stack/) 的 [Kubernetes](https://kubernetes.io/) 集群。 有关将 Kubernetes 部署到 Azure Stack 的详细信息，请参阅[将 Kubernetes 部署到 Azure Stack](/azure/azure-stack/user/azure-stack-solution-template-kubernetes-deploy)。
+**Docker 引擎**：必须在本地安装 Docker 引擎。 Docker 提供用于在 [macOS](https://docs.docker.com/docker-for-mac/)、[Linux](https://docs.docker.com/engine/installation/#supported-platforms) 和 [Windows](https://docs.docker.com/docker-for-windows/) 上配置 Docker 环境的包。 在 Windows 上，必须将 Docker 配置为支持 Linux 容器。 还可直接将 Docker 容器部署到 [Azure Kubernetes 服务](/azure/aks/)、[Azure 容器实例](/azure/container-instances/)，或部署到 [Azure Stack](/azure/azure-stack/) 的 [Kubernetes](https://kubernetes.io/) 集群。 有关将 Kubernetes 部署到 Azure Stack 的详细信息，请参阅[将 Kubernetes 部署到 Azure Stack](/azure/azure-stack/user/azure-stack-solution-template-kubernetes-deploy)。
 
 必须将 Docker 配置为允许容器连接 Azure 并向其发送账单数据。
 
@@ -37,7 +38,7 @@ ms.locfileid: "52634534"
 
 有关 Docker 和容器的基础知识，请参阅 [Docker 概述](https://docs.docker.com/engine/docker-overview/)。
 
-### <a name="server-requirements-and-recommendations"></a>服务器要求和建议
+### <a name="container-requirements-and-recommendations"></a>容器要求和建议
 
 “人脸”容器至少需要 2.6 GHz 的单核 CPU 和 4 GB分配内存，但我们建议至少使用双核 CPU 和 6 GB 分配内存。
 
@@ -167,7 +168,9 @@ POST http://localhost:5000/face/v1.0/detect
 * 容器映像在 Docker 中运行。
 * 可以使用 REST API 或 SDK 通过指定容器的主机 URI 来调用“人脸”容器中的操作。
 * 必须在实例化容器时指定账单信息。
-* **如果认知服务容器未连接到 Azure 进行计量，则不对其授权以运行。 客户需要始终让容器向计量服务传送账单信息。 认知服务容器不会将客户数据（例如，正在分析的图像或文本）发送给 Microsoft。  
+
+> [!IMPORTANT]
+> 如果未连接到 Azure 进行计量，则无法授权并运行认知服务容器。 客户需要始终让容器向计量服务传送账单信息。 认知服务容器不会将客户数据（例如，正在分析的图像或文本）发送给 Microsoft。
 
 ## <a name="next-steps"></a>后续步骤
 

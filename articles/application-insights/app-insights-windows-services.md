@@ -9,16 +9,15 @@ ms.assetid: 106ba99b-b57a-43b8-8866-e02f626c8190
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/15/2017
 ms.author: mbullwin
-ms.openlocfilehash: 461b1f4e72f0a47da4ccb560bfb4cfb7d0f3ccd2
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 850ff2cfb02b5a968a40e0cd43b5c65d9d4e3490
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47096429"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "53001725"
 ---
 # <a name="manually-configure-application-insights-for-net-applications"></a>为 .NET 应用程序手动配置 Application Insights
 
@@ -30,14 +29,14 @@ ms.locfileid: "47096429"
 
 需要：
 
-* [Microsoft Azure](http://azure.com) 订阅。 如果团队或组织拥有 Azure 订阅，则所有者可以使用 [Microsoft 帐户](http://live.com)你将加入其中。
+* [Microsoft Azure](https://azure.com) 订阅。 如果团队或组织拥有 Azure 订阅，则所有者可以使用 [Microsoft 帐户](https://live.com)你将加入其中。
 * Visual Studio 2013 或更高版本。
 
 ## <a name="add"></a>1.选择 Application Insights 资源
 
 “资源”是指收集数据并在 Azure 门户中显示的地方。 需要决定，是创建新资源，还是共享现有资源。
 
-### <a name="part-of-a-larger-app-use-existing-resource"></a>更大型应用的一部分：使用现有资源
+### <a name="part-of-a-larger-app-use-existing-resource"></a>更大应用的一部分：使用现有资源
 
 如果 Web 应用程序有多个组件（例如，一个前端 Web 应用，以及一个或多个后端服务），则应将遥测从所有组件发送至同一资源。 这样可以让它们显示在单个“应用程序映射”中，从而跟踪从一个组件到另一个组件的请求。
 
@@ -45,7 +44,7 @@ ms.locfileid: "47096429"
 
 在 [Azure 门户](https://portal.azure.com/)中打开资源。 
 
-### <a name="self-contained-app-create-a-new-resource"></a>自包含应用：创建新资源
+### <a name="self-contained-app-create-a-new-resource"></a>独立应用：创建新资源
 
 如果新应用与其他应用程序无关，则应有其自己的资源。
 

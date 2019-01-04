@@ -9,16 +9,15 @@ ms.assetid: 479522a9-ff5c-471e-a405-b8fa221aedb3
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
-ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 03/14/2017
 ms.author: mbullwin
-ms.openlocfilehash: 521bf044f280b91f668d42d760ba2a726b555f12
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: bf096032d0ab429a5c6c06d5ada568c4bfb56d9f
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51822664"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52994421"
 ---
 # <a name="deep-diagnostics-for-web-apps-and-services-with-application-insights"></a>使用 Application Insights 对 Web 应用和服务进行深度诊断
 ## <a name="why-do-i-need-application-insights"></a>为什么需要 Application Insights？
@@ -80,7 +79,7 @@ Web 系统中的故障通常由配置问题或系统中许多组件之间的交�
 * 用于调试的日志跟踪。
 
 ## <a name="case-study-real-madrid-fc"></a>案例研究：皇家马德里足球俱乐部
-[皇家马德里足球俱乐部](http://www.realmadrid.com/)的 Web 服务为全球各地大约 4.5 亿球迷提供服务。 球迷可通过 Web 浏览器和俱乐部的移动应用来访问此服务。 球迷不仅可以预订门票，还能访问比赛结果、球员以及即将举行的比赛相关信息和视频剪辑。 他们可以使用进球数等筛选条件进行搜索。 另外，该服务还提供社交媒体链接。 用户体验已高度个性化，旨在增进球迷的双向沟通。
+[皇家马德里足球俱乐部](https://www.realmadrid.com/)的 Web 服务为全球各地大约 4.5 亿球迷提供服务。 球迷可通过 Web 浏览器和俱乐部的移动应用来访问此服务。 球迷不仅可以预订门票，还能访问比赛结果、球员以及即将举行的比赛相关信息和视频剪辑。 他们可以使用进球数等筛选条件进行搜索。 另外，该服务还提供社交媒体链接。 用户体验已高度个性化，旨在增进球迷的双向沟通。
 
 该解决方案是 [Microsoft Azure 上的一个服务与应用程序系统](https://www.microsoft.com/inculture/sports/real-madrid/)。 可伸缩性是关键要求：流量变化无常，可能在比赛期间和接近比赛时达到高峰。
 

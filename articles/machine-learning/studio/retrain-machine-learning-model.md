@@ -4,9 +4,8 @@ description: 了解如何重新训练模型并更新 Web 服务以使用 Azure �
 services: machine-learning
 documentationcenter: ''
 author: ericlicoding
-ms.custom: (previous ms.author=yahajiza, author=YasinMSFT)
+ms.custom: seodec18
 ms.author: amlstudiodocs
-manager: hjerez
 editor: cgronlun
 ms.assetid: d1cb6088-4f7c-4c32-94f2-f7523dad9059
 ms.service: machine-learning
@@ -16,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
-ms.openlocfilehash: 1f2505eda232c518ccb24b32fad91fb36dd11b01
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 614a342dd28b711e3030c19f347fa432e3994a86
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52317919"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53257574"
 ---
 # <a name="retrain-an-azure-machine-learning-studio-model"></a>重新训练 Azure 机器学习工作室模型
 作为 Azure 机器学习中机器学习模型操作过程的一部分，模型被训练并保存。 然后使用它来创建预测 Web 服务。 然后可以在网站、仪表板和移动应用中使用 Web 服务。 
@@ -43,7 +42,7 @@ ms.locfileid: "52317919"
 > 
 
 ## <a name="end-to-end-workflow"></a>端到端工作流
-该过程包括以下组件：作为 Web 服务发布的训练实验和预测实验。 若要启用已训练模型的重新训练，训练实验必须作为具有训练模型输出的 Web 服务发布。 这使 API 能够访问模型以进行重新训练。 
+该过程涉及以下组件：作为 Web 服务发布的训练实验和预测实验。 若要启用已训练模型的重新训练，训练实验必须作为具有训练模型输出的 Web 服务发布。 这使 API 能够访问模型以进行重新训练。 
 
 以下步骤适用于新版和经典 Web 服务：
 

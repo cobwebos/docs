@@ -1,6 +1,6 @@
 ---
-title: 注册新 Azure IoT Edge 设备 (VS Code) | Microsoft Docs
-description: 使用 Visual Studio Code 在 Azure IoT 中心中创建新的 IoT Edge 设备
+title: 通过 Visual Studio Code 注册新设备 - Azure IoT Edge | Microsoft Docs
+description: 使用 Visual Studio Code 在 Azure IoT 中心中创建新的 IoT Edge 设备并检索连接字符串
 author: kgremban
 manager: philmea
 ms.author: kgremban
@@ -8,12 +8,13 @@ ms.date: 06/14/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: cf9603c65454f076a494789e784c9352fb7bef33
-ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
+ms.custom: seodec18
+ms.openlocfilehash: cc812cc7f628f533cbf342edee66e01ce703678f
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51578699"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53099760"
 ---
 # <a name="register-a-new-azure-iot-edge-device-from-visual-studio-code"></a>通过 Visual Studio Code 注册新 Azure IoT Edge 设备
 
@@ -35,7 +36,7 @@ ms.locfileid: "51578699"
 
 2. 在资源管理器底部，展开“Azure IoT 中心设备”部分。 
 
-   ![展开 Azure IoT 中心设备](./media/how-to-register-device-vscode/azure-iot-hub-devices.png)
+   ![展开“Azure IoT 中心设备”部分](./media/how-to-register-device-vscode/azure-iot-hub-devices.png)
 
 3. 单击“Azure IoT 中心设备”部分标题中的“...”。 如果没有看到省略号，请单击标题或将鼠标指针悬停在标题上。 
 
@@ -63,7 +64,7 @@ ms.locfileid: "51578699"
 
 Visual Studio Code 资源管理器的“Azure IoT 中心设备”部分列出了连接到 IoT 中心的所有设备。 可通过不同的图标区分 IoT Edge 设备和非 Edge 设备，并且可展开设备以显示部署至各设备的模块。 
 
-   ![在 VS Code 中查看设备](./media/how-to-register-device-vscode/view-devices.png)
+   ![查看 IoT 中心中所有的 IoT Edge 设备](./media/how-to-register-device-vscode/view-devices.png)
 
 ## <a name="retrieve-the-connection-string"></a>检索连接字符串
 

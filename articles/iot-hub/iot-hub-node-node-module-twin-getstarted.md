@@ -9,12 +9,12 @@ ms.devlang: node
 ms.topic: conceptual
 ms.date: 04/26/2018
 ms.author: menchi
-ms.openlocfilehash: fa77e117b8045be4ef0566e388c4e8df08c95fe2
-ms.sourcegitcommit: 7b845d3b9a5a4487d5df89906cc5d5bbdb0507c8
+ms.openlocfilehash: 4016471be05c1062eb389ab4851330f3a80dbcb2
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2018
-ms.locfileid: "42142249"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52969020"
 ---
 # <a name="get-started-with-iot-hub-module-identity-and-module-twin-using-nodejs-back-end-and-nodejs-device"></a>使用 Node.js 后端和 Node.js 设备创建 IoT 中心模块标识和模块孪生入门
 
@@ -35,19 +35,18 @@ ms.locfileid: "42142249"
 * IoT 中心。
 * 安装最新的 [Node.js SDK](https://github.com/Azure/azure-iot-sdk-node)。
 
-
 现已创建 IoT 中心，因此已获得完成本教程的其余部分所需的主机名和 IoT 中心连接字符串。
 
 ## <a name="create-a-device-identity-and-a-module-identity-in-iot-hub"></a>在 IoT 中心中创建设备标识和模块标识
 
 本部分将创建一个 Node.js 应用，用于在 IoT 中心的标识注册表中创建设备标识和模块标识。 设备或模块无法连接到 IoT 中心，除非它在标识注册表中具有条目。 有关详细信息，请参阅 [IoT 中心开发人员指南][lnk-devguide-identity]中的“标识注册表”部分。 运行此控制台应用时，它会为设备和模块生成唯一的 ID 和密钥。 设备和模块在向 IoT 中心发送设备到云的消息时，使用这些值来标识自身。 ID 区分大小写。
 
-1.  创建目录以保存代码。
-2. 在该目录中，首先运行 npm init -y 使用默认值创建一个空的 package.json。 这是代码的项目文件。
-3. 运行 npm install -S azure-iothub@modules-preview 在 node_modules 子目录中安装服务 SDK。 
+1. 创建目录以保存代码。
+2. 在该目录中，首先运行“npm init -y” ，使用默认值创建一个空的 package.json ****。 这是代码的项目文件。
+3. 运行“npm install -S azure-iothub@modules-preview”，在“node_modules” 子目录中安装服务 SDK **** ****。
 
-    > [!NOTE] 
-    > 子目录名称 node_modules 使用字模块来表示“节点库”。 此处的术语与 IoT 中心模块无关。
+    > [!NOTE]
+    > 子目录名称 node_modules 使用字“模块”来表示“节点库”。 此处的术语与 IoT 中心模块无关。
 
 4. 在目录中创建以下 .js 文件。 将它命名为 add.js。 复制并粘贴中心连接字符串和中心名称。
 
@@ -126,7 +125,7 @@ ms.locfileid: "42142249"
     > [!NOTE]
     > npm install 命令可能有点慢。 请耐心等待，它正在从包存储库中提取大量代码。
 
-    > [!NOTE] 
+    > [!NOTE]
     > 如果看到错误 npm ERR! 分析 json 时出现注册表错误，可以安全忽略。 如果看到错误 npm ERR! 分析 json 时出现注册表错误，可以安全忽略。
 
 3. 创建名为 twin.js 的文件。 复制并粘贴模块标识字符串。
@@ -180,7 +179,7 @@ ms.locfileid: "42142249"
     });
     ```
 
-2. 现在请使用命令 node twin.js 来运行它。
+2. 现在请使用命令“node twin.js”来运行它 ****。
 
     ```
     F:\temp\module_twin>node twin.js
@@ -200,9 +199,8 @@ ms.locfileid: "42142249"
 * [设备管理入门][lnk-device-management]
 * [IoT 边缘入门][lnk-iot-edge]
 
-
 <!-- Images. -->
-[15]: ./media\iot-hub-csharp-csharp-module-twin-getstarted/module-detail.JPG
+[15]: ./media/iot-hub-csharp-csharp-module-twin-getstarted/module-detail.JPG
 <!-- Links -->
 [lnk-hub-sdks]: iot-hub-devguide-sdks.md
 [lnk-free-trial]: http://azure.microsoft.com/pricing/free-trial/

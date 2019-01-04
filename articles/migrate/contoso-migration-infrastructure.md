@@ -8,12 +8,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 10/1/2018
 ms.author: raynew
-ms.openlocfilehash: 2210aaa5d4d0ba9d730e5aee97972565ea0c1090
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: 32a489ee6266018ef1160a0870fe236cc6a72d36
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49092962"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52726978"
 ---
 # <a name="contoso---deploy-a-migration-infrastructure"></a>Contoso - 部署迁移基础结构
 
@@ -33,7 +33,7 @@ ms.locfileid: "49092962"
 [文章 4：在 Azure VM 和 SQL 数据库托管实例上重新托管应用](contoso-migration-rehost-vm-sql-managed-instance.md) | Contoso 将其本地 SmartHotel360 应用直接迁移到 Azure。 Contoso 使用 [Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/site-recovery-overview) 迁移应用前端 VM。 Contoso 使用 [Azure 数据库迁移服务](https://docs.microsoft.com/azure/dms/dms-overview)将应用数据库迁移到 Azure SQL 数据库托管实例。 | 可用   
 [文章 5：在 Azure VM 上重新托管应用](contoso-migration-rehost-vm.md) | Contoso 使用 Site Recovery 服务将其 SmartHotel360 应用 VM 迁移到 Azure VM。 | 可用
 [文章 6：在 Azure VM 和 SQL Server AlwaysOn 可用性组中重新托管应用](contoso-migration-rehost-vm-sql-ag.md) | Contoso 使用 Site Recovery 来迁移应用 VM，同时使用数据库迁移服务将应用数据库迁移到受 AlwaysOn 可用性组保护的 SQL Server 群集，从而迁移应用。 | 可用
-[文章 7：将 Linux 应用重新托管到 Azure VM](contoso-migration-rehost-linux-vm.md) | Contoso 使用 Site Recovery 服务将其 Linux osTicket 应用直接迁移到 Azure VM。 | 可用
+[文章 7：在 Azure VM 上重新托管 Linux 应用](contoso-migration-rehost-linux-vm.md) | Contoso 使用 Site Recovery 服务将其 Linux osTicket 应用直接迁移到 Azure VM。 | 可用
 [文章 8：在 Azure VM 和 Azure Database for MySQL 上重新托管 Linux 应用](contoso-migration-rehost-linux-vm-mysql.md) | Contoso 使用 Site Recovery 将其 Linux osTicket 应用迁移到 Azure VM。 它使用 MySQL Workbench 将应用数据库迁移到 Azure Database for MySQL。 | 可用
 [文章 9：在 Azure Web 应用和 Azure SQL 数据库中重构应用](contoso-migration-refactor-web-app-sql.md) | Contoso 将其 SmartHotel360 应用迁移到 Azure Web 应用，并使用数据库迁移助手将应用数据库迁移到 Azure SQL Server 实例。 | 可用    
 [文章 10：在 Azure Web 应用和 Azure Database for MySQL 中重构 Linux 应用](contoso-migration-refactor-linux-app-service-mysql.md) | Contoso 将其 Linux osTicket 应用迁移到多个站点中的 Azure Web 应用。 该 Web 应用与 GitHub 集成以便持续交付。 Contoso 将应用数据库迁移到 Azure Database for MySQL 实例。 | 可用
@@ -49,12 +49,12 @@ ms.locfileid: "49092962"
 
 在迁移到 Azure 之前，准备 Azure 基础结构至关重要。  通常需要考虑五个主要方面：
 
-**步骤 1：Azure 订阅**：如何购买 Azure，以及如何与 Azure 平台和服务交互？  
+**步骤 1：Azure 订阅**：Contoso 如何购买 Azure，以及如何与 Azure 平台和服务交互？  
 **步骤 2：混合标识**：如何在迁移后管理和控制对本地和 Azure 资源的访问权限？ Contoso 如何将标识管理扩展或迁移到云？  
-**步骤 3：灾难恢复和复原能力**：如何确保在出现中断和灾难后复原应用和基础结构？  
+**步骤 3：灾难恢复和恢复能力**：Contoso 如何确保在出现中断和灾难后复原应用和基础结构？  
 **步骤 4：网络**：应如何设计网络基础结构，建立本地数据中心与 Azure 之间的连接？  
 **步骤 5：安全性**：如何保护其混合/Azure 部署？  
-**步骤 6：监管**：如何使其部署保持符合安全性和监管要求？
+**步骤 6：监管**：Contoso 如何使其部署保持符合安全性和监管要求？
 
 ## <a name="before-you-start"></a>开始之前
 
@@ -256,8 +256,8 @@ Azure [基于角色的访问控制 (RBAC)](https://docs.microsoft.com/azure/role
 
 现在，Contoso 管理员将从本地同步的角色分配到 AD 组。
 
-1. 在 ControlCobRG 资源组中，单击“访问控制 (IAM)” > “添加”。
-2. 在“添加权限” > “角色”>“参与者”中，从列表中选择“ContosoCobRG”AD 组。 该组随即出现在“所选成员”列表中。 
+1. 在 ControlCobRG 资源组中，单击“访问控制 (IAM)” > “添加角色分配”。
+2. 在“添加角色分配” > “角色”>“参与者”中，从列表中选择“ContosoCobRG”AD 组。 该组随即出现在“所选成员”列表中。 
 3. 通过将“参与者”权限添加到与资源组匹配的 AD 帐户，使用相同的权限对其他资源组重复此过程（“ContosoAzureAdmins”除外）。
 4. 对于“ContosoAzureAdmins”AD 组，分配“所有者”角色。
 
@@ -298,12 +298,12 @@ Contoso 已决定采取折中的方式。 Contoso 将应用和资源部署在主
 由于应用需要可伸缩性、高可用性和复原能力，Contoso 将部署可用性区域。 [了解详细信息](https://docs.microsoft.com/azure/availability-zones/az-overview)。 
 
 
-## <a name="step-4-design-a-network-infrastructure"></a>步骤 4：计划网络基础结构
+## <a name="step-4-design-a-network-infrastructure"></a>步骤 4：设计网络基础结构
 
 完成区域设计后，Contoso 已准备好考虑网络策略。 需要考虑本地数据中心和 Azure 如何相互连接和通信，以及如何在 Azure 中设计网络基础结构。 具体而言，Contoso 需要：
 
 - **规划混合网络连接**：确定如何跨本地和 Azure 连接网络。
-- **设计 Azure 网络基础结构**：确定如何在不同的区域部署网络。 如何在同一区域内部和跨区域进行网络通信？
+- **设计 Azure 网络基础结构**：决定如何在区域部署网络。 如何在同一区域内部和跨区域进行网络通信？
 - **设计和设置 Azure 网络**：设置 Azure 网络和子网，并决定其中驻留的内容。
 
 ### <a name="plan-hybrid-network-connectivity"></a>规划混合网络连接
@@ -461,7 +461,7 @@ Azure IaaS 组件位于生产网络中。 每个应用层都有自己的子网�
 
 美国中部是 Contoso 的次要区域。 下面是 Contoso 在该区域架构网络的方式：
 
-- 中心：美国东部 2 的中心 VNet 是本地数据中心的中心连接点，美国东部 2 的分支 VNet 可用于隔离工作负载（如果需要），独立于其他分支 VNet 进行管理。
+- **中心**：美国东部 2 的中心 VNet 是本地数据中心的中心连接点，美国东部 2 的分支 VNet 可用于隔离工作负载（如果需要），独立于其他分支 VNet 进行管理。
 - **VNet**：Contoso 在美国中部有两个 VNet：
     - VNET-PROD-CUS。 此 VNet 是生产网络，类似于 VNET-PROD_EUS2。 
     - VNET-ASR-CUS。 此 VNet 用作从本地故障转移后创建 VM 的位置，或进行从主要区域到次要区域的故障转移后，Azure VM 的位置。 此网络类似于生产网络，但其中没有任何域控制器。
@@ -640,7 +640,7 @@ Azure 提供了一系列跨服务和 Azure 平台的管理控制。 [详细了�
 
 - **策略**：Azure 中的策略对资源应用并强制实施规则和效果，以便资源始终符合公司要求和 SLA。
 - **锁定**：Azure 允许锁定订阅、资源组和其他资源，以便只有获得授权的用户才可进行修改。
-- **标记**：看通过标记控制、审核和管理资源。 标记可将元数据附加到资源，提供有关资源或所有者的信息。
+- **标记**：可通过标记来控制、审核和管理资源。 标记可将元数据附加到资源，提供有关资源或所有者的信息。
 
 ### <a name="set-up-policies"></a>设置策略
 

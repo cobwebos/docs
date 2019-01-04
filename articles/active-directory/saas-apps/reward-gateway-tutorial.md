@@ -1,5 +1,5 @@
 ---
-title: 教程：Azure Active Directory 与 Reward Gateway 集成 | Microsoft 文档
+title: 教程：Azure Active Directory 与 Reward Gateway 集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 和 Reward Gateway 之间配置单一登录。
 services: active-directory
 documentationCenter: na
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/30/2017
 ms.author: jeedes
-ms.openlocfilehash: d5cda8830b480e9ef9dff18cb3d7b99e1db55590
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 0339889228c80cc3675fd7fde52e75cb84521ab6
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39442789"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52840174"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-reward-gateway"></a>教程：Azure Active Directory 与 Reward Gateway 集成
 
@@ -112,7 +112,7 @@ ms.locfileid: "39442789"
 
     ![配置单一登录](./media/reward-gateway-tutorial/tutorial_rewardgateway_url.png)
 
-    a. 在“标识符”文本框中，使用以下模式键入 URL：
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“标识符”文本框中，使用以下模式键入 URL：
     | |
     |--|
     | `https://<companyname>.rewardgateway.com` |
@@ -129,7 +129,7 @@ ms.locfileid: "39442789"
     | `https://<companyname>.rewardgateway.com.au/Authentication/EndLogin?idp=<Unique Id>` |
 
     > [!NOTE] 
-    > 这些不是实际值。 请使用实际标识符和回复 URL 更新这些值。 若要获取这些值，请在 Reward Manager 门户中启动集成设置。 可以在 http://success.rewardgateway.com/it-implementation/293968-how-to-configure-a-sso-integration 上找到详细信息
+    > 这些不是实际值。 请使用实际标识符和回复 URL 更新这些值。 若要获取这些值，请在 Reward Manager 门户中启动集成设置。 可以在 https://success.rewardgateway.com/it-implementation/293968-how-to-configure-a-sso-integration 上找到详细信息
  
 1. 在“SAML 签名证书”部分中，单击“元数据 XML”，并在计算机上保存元数据文件。
 
@@ -139,10 +139,10 @@ ms.locfileid: "39442789"
 
     ![配置单一登录](./media/reward-gateway-tutorial/tutorial_general_400.png)
 
-1. 若要在 **Reward Gateway** 端配置单一登录，请在 Reward Manager 门户中启动集成设置。 在配置过程中使用下载的元数据获取签名证书并将其上传。 可以在 http://success.rewardgateway.com/it-implementation/293968-how-to-configure-a-sso-integration 上找到详细信息
+1. 若要在 **Reward Gateway** 端配置单一登录，请在 Reward Manager 门户中启动集成设置。 在配置过程中使用下载的元数据获取签名证书并将其上传。 可以在 https://success.rewardgateway.com/it-implementation/293968-how-to-configure-a-sso-integration 上找到详细信息
 
 > [!TIP]
-> 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[ Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
+> 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
 ### <a name="creating-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
@@ -168,7 +168,7 @@ ms.locfileid: "39442789"
  
     ![创建 Azure AD 测试用户](./media/reward-gateway-tutorial/create_aaduser_04.png) 
 
-    a. 在“名称”文本框中，键入 **BrittaSimon**。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
 
     b. 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
@@ -219,7 +219,7 @@ ms.locfileid: "39442789"
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](tutorial-list.md)
-* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
+* [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
 
 

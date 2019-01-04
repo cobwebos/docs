@@ -5,15 +5,15 @@ services: storage
 author: wmgries
 ms.service: storage
 ms.topic: article
-ms.date: 11/13/2018
+ms.date: 12/10/2018
 ms.author: wgries
 ms.component: files
-ms.openlocfilehash: 45f77c3065feeb011a10bc345c22082b6a89529c
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: 5bea4c655e9a8970d8d0d946827cc3e46e7efa7a
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52582806"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53255153"
 ---
 # <a name="release-notes-for-the-azure-file-sync-agent"></a>Azure 文件同步代理发行说明
 借助 Azure 文件同步，既可将组织的文件共享集中在 Azure 文件中，又不失本地文件服务器的灵活性、性能和兼容性。 Windows Server 安装可转换为 Azure 文件共享的快速缓存。 可以使用 Windows Server 上提供的任意协议（包括 SMB、NFS 和 FTPS）以本地方式访问数据， 并且可以根据需要在世界各地设置多个缓存。
@@ -25,7 +25,9 @@ ms.locfileid: "52582806"
 
 | 里程碑 | 代理版本号 | 发行日期 | 状态 |
 |----|----------------------|--------------|------------------|
-| V4 版本 | 4.0.1.0 | 2018 年 11 月 13 日 | 支持（建议的版本） |
+| 12 月更新汇总 - [KB4459990](https://support.microsoft.com/help/4459990)| 4.2.0.0 | 2018 年 12 月 10 日 | 支持（建议的版本） |
+| 12 月更新汇总 | 4.1.0.0 | 2018 年 12 月 4 日 | 支持 |
+| V4 版本 | 4.0.1.0 | 2018 年 11 月 13 日 | 支持 |
 | 9 月更新汇总 | 3.3.0.0 | 2018 年 9 月 24 日 | 支持 |
 | 8 月更新汇总 | 3.2.0.0 | 2018 年 8 月 15 日 | 支持 |
 | 正式版 | 3.1.0.0 | 2018 年 7 月 19日 | 支持 |
@@ -42,6 +44,22 @@ ms.locfileid: "52582806"
 
 ### <a name="azure-file-sync-agent-update-policy"></a>Azure 文件同步代理更新策略
 [!INCLUDE [storage-sync-files-agent-update-policy](../../../includes/storage-sync-files-agent-update-policy.md)]
+
+## <a name="agent-version-4200"></a>代理版本 4.2.0.0
+以下发行说明适用于 Azure 文件同步代理版本 4.2.0.0（2018 年 12 月 10 日发布）。 这些说明是对针对版本 4.0.1.0 列出的发行说明的补充。
+
+此版本修复的问题列表：  
+- 创建 VSS 快照时，可能会发生停止错误 0x3B 或停止错误 0x1E。  
+- 启用云分层时，可能会发生内存泄漏  
+
+## <a name="agent-version-4100"></a>代理版本 4.1.0.0
+以下发行说明适用于 Azure 文件同步代理版本 4.1.0.0（2018 年 12 月 4 日发布）。 这些说明是对针对版本 4.0.1.0 列出的发行说明的补充。
+
+此版本修复的问题列表：  
+- 服务器可能因云分层内存泄漏而无响应。  
+- 代理安装失败，显示以下错误：错误 1921。 无法停止服务“存储同步代理”(FileSyncSvc)。  请确保有足够的权限停止系统服务。  
+- 内存使用率很高时，存储同步代理 (FileSyncSvc) 服务可能会崩溃。  
+- 针对云分层和同步的其他可靠性改进。
 
 ## <a name="agent-version-4010"></a>代理版本 4.0.1.0
 以下发行说明适用于 Azure 文件同步代理版本 4.0.1.0（2018 年 11 月 13 日发布）。
@@ -107,10 +125,10 @@ ms.locfileid: "52582806"
 ## <a name="agent-version-3300"></a>代理版本 3.3.0.0
 以下发行说明适用于 Azure 文件同步代理版本 3.3.0.0（2018 年 9 月 24 日发布）。 这些说明是对针对版本 3.1.0.0 列出的发行说明的补充。
 
-此版本包括以下修复：
+此版本修复的问题列表：
 - Azure 文件同步代理升级到版本 3.1 或 3.2 后，已注册的服务器状态为“出现脱机”。
 - 由于文件路径长，存储同步代理 (FileSyncSvc) 服务崩溃。
-- 服务器注册失败，出现错误：无法加载文件或程序集 Kailani.Afs.StorageSyncProtocol.V3。
+- 服务器注册失败，显示错误：无法加载文件或程序集 Kailani.Afs.StorageSyncProtocol.V3。
 
 ## <a name="agent-version-3200"></a>代理版本 3.2.0.0
 以下发行说明适用于 Azure 文件同步代理版本 3.2.0.0（2018 年 8 月 15 日发布）。 这些说明是对针对版本 3.1.0.0 列出的发行说明的补充。

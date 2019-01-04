@@ -12,14 +12,14 @@ ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 07/31/2018
+ms.date: 12/06/2018
 ms.author: bikang
-ms.openlocfilehash: 27108d27ee27346e4cba44e6778faff56df70a36
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.openlocfilehash: 455b2a70568566bff5b1ea4c185568a1758f7db3
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39495122"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53274898"
 ---
 # <a name="sfctl-container"></a>sfctl container
 在群集节点上运行与容器相关的命令。
@@ -28,22 +28,22 @@ ms.locfileid: "39495122"
 
 |命令|Description|
 | --- | --- |
-| invoke-api | 调用容器 REST API。 |
-| 日志 | 检索容器日志。 |
+| invoke-api | 在 Service Fabric 节点上部署的容器上调用给定代码包的容器 API。 |
+| 日志 | 获取给定代码包的 Service Fabric 节点上部署的容器的容器日志。 |
 
 ## <a name="sfctl-container-invoke-api"></a>sfctl container invoke-api
-调用容器 REST API。
+在 Service Fabric 节点上部署的容器上调用给定代码包的容器 API。
 
 ### <a name="arguments"></a>参数
 
 |参数|Description|
 | --- | --- |
-| --application-id           [必需] | 应用程序标识。 |
-| --code-package-instance-id [必需] | 代码包实例 ID，可以通过“service code-package-list”来检索。 |
-| --code-package-name        [必需] | 代码包名称。 |
+| --application-id           [必需] | 应用程序的标识。 <br><br> 这通常是不带“fabric\:”URI 方案的应用程序全名。 从版本 6.0 开始，分层名称以“\~”字符隔开。 例如，如果应用程序名称为“fabric\:/myapp/app1”，则 6.0 及更高版本中的应用程序标识为“myapp\~app1”，在以前的版本中为“myapp/app1”。 |
+| --code-package-instance-id [必需] | 唯一标识 Service Fabric 节点上部署的代码包实例的 ID。 <br><br> 可以使用“service code-package-list”检索。 |
+| --code-package-name        [必需] | 在 Service Fabric 群集中注册为应用程序类型一部分的服务清单中指定的代码包的名称。 |
 | --container-api-uri-path   [必需] | 容器 REST API URI 路径，使用“{ID}”代替容器名称/ID。 |
 | --node-name                [必需] | 节点的名称。 |
-| --service-manifest-name    [必需] | 服务清单名称。 |
+| --service-manifest-name    [必需] | 在 Service Fabric 群集中注册为应用程序类型一部分的服务清单的名称。 |
 | --container-api-body | 容器 REST API 的 HTTP 请求正文。 |
 | --container-api-content-type | 容器 REST API 的内容类型，默认为“application/json”。 |
 | --container-api-http-verb | 容器 REST API 的 HTTP 谓词，默认为 GET。 |
@@ -60,18 +60,18 @@ ms.locfileid: "39495122"
 | --verbose | 提高日志记录详细程度。 使用 --debug 可获取完整的调试日志。 |
 
 ## <a name="sfctl-container-logs"></a>sfctl container logs
-检索容器日志。
+获取给定代码包的 Service Fabric 节点上部署的容器的容器日志。
 
 ### <a name="arguments"></a>参数
 
 |参数|Description|
 | --- | --- |
-| --application-id           [必需] | 应用程序标识。 |
+| --application-id           [必需] | 应用程序的标识。 <br><br> 这通常是不带“fabric\:”URI 方案的应用程序全名。 从版本 6.0 开始，分层名称以“\~”字符隔开。 例如，如果应用程序名称为“fabric\:/myapp/app1”，则 6.0 及更高版本中的应用程序标识为“myapp\~app1”，在以前的版本中为“myapp/app1”。 |
 | --code-package-instance-id [必需] | 代码包实例 ID，可以通过“service code-package-list”来检索。 |
-| --code-package-name        [必需] | 代码包名称。 |
+| --code-package-name        [必需] | 在 Service Fabric 群集中注册为应用程序类型一部分的服务清单中指定的代码包的名称。 |
 | --node-name                [必需] | 节点的名称。 |
-| --service-manifest-name    [必需] | 服务清单名称。 |
-| --tail | 仅从日志的末尾返回此数量的日志行。 指定为整数，或指定为“all”以输出所有日志行。 默认为“all”。 |
+| --service-manifest-name    [必需] | 在 Service Fabric 群集中注册为应用程序类型一部分的服务清单的名称。 |
+| --tail | 从日志末尾显示的行数。 默认值为 100。 “all”表示显示完整日志。 |
 | --timeout -t | 服务器超时，以秒为单位。  默认值\: 60。 |
 
 ### <a name="global-arguments"></a>全局参数

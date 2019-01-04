@@ -1,11 +1,11 @@
 ---
-title: Linux 上的 Azure 应用服务部署 - 自定义映像、多容器还是内置平台映像？  | Microsoft Docs
+title: 部署自定义映像、多容器或内置映像 - Azure 应用服务 | Microsoft Docs
 description: 对于 Linux 上的应用服务，如何在自定义 Docker 容器部署、多容器和内置应用程序框架之间做出选择
 keywords: azure 应用服务, web 应用, linux, oss
 services: app-service
 documentationCenter: ''
 authors: msangapu
-manager: cfowler
+manager: jeconnoc
 editor: ''
 ms.assetid: ''
 ms.service: app-service
@@ -15,12 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2018
 ms.author: msangapu
-ms.openlocfilehash: c619ae164f8f8b6e94d9061c4346de58bd6cb795
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.custom: seodec18
+ms.openlocfilehash: d53fc8b3971a1003b4f5d9b9e52f86ee73829cc2
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49319432"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53315788"
 ---
 # <a name="custom-image-multi-container-or-built-in-platform-image"></a>自定义映像、多容器还是内置平台映像？
 

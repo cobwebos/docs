@@ -5,15 +5,15 @@ author: alkohli
 services: storage
 ms.service: storage
 ms.topic: include
-ms.date: 05/22/2018
+ms.date: 12/13/2018
 ms.author: alkohli
 ms.custom: include file
-ms.openlocfilehash: 104fe53271e04980f2bd68876e0edb22f76a1d8c
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: f907e8c0d10c2972bde852192883e7268f78baaa
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34684476"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53387788"
 ---
 可以使用 FedEx、UPS 或 DHL 将包裹寄送到 Azure 数据中心。 
 
@@ -23,3 +23,4 @@ ms.locfileid: "34684476"
     - 将驱动器从亚洲和澳大利亚寄回时，推荐使用 DHL 账号。 
     - 如果还没有帐户编号，请创建一个 [FedEx](http://www.fedex.com/us/oadr/) 或 [DHL](http://www.dhl.com/) 快递商帐户。
 - 寄送包裹时，必须遵循 [Microsoft Azure 服务条款](https://azure.microsoft.com/support/legal/services-terms/)。
+- 正确地打包磁盘以避免潜在的损坏和处理延迟。

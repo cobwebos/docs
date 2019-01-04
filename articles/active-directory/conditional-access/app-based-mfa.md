@@ -13,15 +13,15 @@ ms.topic: article
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 06/13/2018
+ms.date: 12/14/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: f27ced5c67c5124d0792c5ce3884c88473fba056
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.openlocfilehash: 1c61286a24c3562e32cb4c734ea081526d38837a
+ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45604189"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53413143"
 ---
 # <a name="quickstart-require-mfa-for-specific-apps-with-azure-active-directory-conditional-access"></a>快速入门：要求使用 Azure Active Directory 条件访问对特定应用进行 MFA 
 
@@ -85,11 +85,11 @@ ms.locfileid: "45604189"
 
     ![Azure Active Directory](./media/app-based-mfa/02.png)
 
-3. 在“Azure Active Directory”页的“管理”部分，单击“条件性访问”。
+3. 在“Azure Active Directory”页的“安全性”部分中，单击“条件访问”。
 
     ![条件性访问](./media/app-based-mfa/03.png)
  
-4. 在“条件性访问”页顶部的工具栏中，单击“添加”。
+4. 在“条件访问”页顶部的工具栏中，单击“新建策略”。
 
     ![添加](./media/app-based-mfa/04.png)
 
@@ -105,7 +105,7 @@ ms.locfileid: "45604189"
 
     ![用户和组](./media/app-based-mfa/24.png)
 
-    a. 单击“选择用户和组”，然后选择“用户和组”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 单击“选择用户和组”，然后选择“用户和组”。
 
     b. 单击“选择”。
 
@@ -121,7 +121,7 @@ ms.locfileid: "45604189"
 
     ![选择云应用](./media/app-based-mfa/26.png)
 
-    a. 单击“选择应用”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 单击“选择应用”。
 
     b. 单击“选择”。
 
@@ -138,7 +138,7 @@ ms.locfileid: "45604189"
 
     ![授权](./media/app-based-mfa/11.png)
 
-    a. 选择“授予访问权限”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 选择“授予访问权限”。
 
     a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 选择“需要多重身份验证”。
 
@@ -171,7 +171,7 @@ ms.locfileid: "45604189"
 
 **若要评估条件访问策略，请执行以下操作：**
 
-1. 在 [条件访问 - 策略](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ConditionalAccessBlade/Policies) 页上，单击顶部菜单中的 What If。  
+1. 在[条件访问 - 策略](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ConditionalAccessBlade/Policies)页上，单击顶部菜单中的“What If”。  
  
     ![What If](./media/app-based-mfa/14.png)
 

@@ -1,5 +1,5 @@
 ---
-title: 对 Linux 上的 Azure 应用服务的 SSH 支持 | Microsoft Docs
+title: 对 Linux 上的应用服务的 SSH 支持 - Azure | Microsoft Docs
 description: 了解如何将 SSH 与 Linux 上的 Azure 应用服务配合使用。
 keywords: azure 应用服务, web 应用, linux, oss
 services: app-service
@@ -15,12 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/25/2017
 ms.author: wesmc
-ms.openlocfilehash: 631933647e27428349fc1efeb17f62f4614f7f64
-ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
+ms.custom: seodec18
+ms.openlocfilehash: ff5c18b08a2921efe72a35b9bd982986c1867812
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47423300"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53251284"
 ---
 # <a name="ssh-support-for-azure-app-service-on-linux"></a>对 Linux 上的 Azure 应用服务的 SSH 支持
 
@@ -66,7 +67,7 @@ https://<app_name>.scm.azurewebsites.net/webssh/host
         && echo "root:Docker!" | chpasswd
     ```
 
-1. 向 Dockerfile 中添加一条 [`COPY` 指令](https://docs.docker.com/engine/reference/builder/#copy)以将 [sshd_config](http://man.openbsd.org/sshd_config) 文件复制到 */etc/ssh/* 目录中。 配置文件应当以[此处](https://github.com/Azure-App-Service/node/blob/master/8.2.1/sshd_config)的 Azure-App-Service GitHub 存储库中的 sshd_config 文件为基础。
+2. 向 Dockerfile 中添加一条 [`COPY` 指令](https://docs.docker.com/engine/reference/builder/#copy)以将 [sshd_config](https://man.openbsd.org/sshd_config) 文件复制到 */etc/ssh/* 目录中。 配置文件应当以[此处](https://github.com/Azure-App-Service/node/blob/master/8.2.1/sshd_config)的 Azure-App-Service GitHub 存储库中的 sshd_config 文件为基础。
 
     > [!NOTE]
     > *sshd_config* 文件必须包括以下项，否则连接会失败： 
@@ -77,13 +78,13 @@ https://<app_name>.scm.azurewebsites.net/webssh/host
     COPY sshd_config /etc/ssh/
     ```
 
-1. 在 Dockerfile 的 [`EXPOSE` 指令](https://docs.docker.com/engine/reference/builder/#expose)中包括端口 2222。 虽然根密码已知，但无法从 Internet 访问端口 2222。 它是一个仅供内部使用的端口，仅可供专用虚拟网络的桥网络中的容器访问。
+3. 在 Dockerfile 的 [`EXPOSE` 指令](https://docs.docker.com/engine/reference/builder/#expose)中包括端口 2222。 虽然根密码已知，但无法从 Internet 访问端口 2222。 它是一个仅供内部使用的端口，仅可供专用虚拟网络的桥网络中的容器访问。
 
     ```docker
     EXPOSE 2222 80
     ```
 
-1. 请确保使用 shell 脚本启动 SSH 服务（请参见 [init_container.sh](https://github.com/Azure-App-Service/node/blob/master/6.9.3/startup/init_container.sh) 中的示例）。
+4. 请确保使用 shell 脚本启动 SSH 服务（请参见 [init_container.sh](https://github.com/Azure-App-Service/node/blob/master/6.9.3/startup/init_container.sh) 中的示例）。
 
     ```bash
     #!/bin/bash

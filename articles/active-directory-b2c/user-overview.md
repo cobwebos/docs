@@ -7,15 +7,15 @@ manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 08/27/2018
+ms.date: 11/30/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 2354bf02b47c9fbc74dbc0dab07e30ca321279cf
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: f517754a8076fc18ed29f7db49f6ff9bfc6c7b3d
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43670087"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52725754"
 ---
 # <a name="overview-of-user-accounts-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 中的用户帐户概述
 
@@ -25,7 +25,7 @@ ms.locfileid: "43670087"
 
 - 工作帐户 - 工作帐户可以访问租户中的资源，并且通过管理员角色可以管理租户。
 - 来宾帐户 - 来宾帐户只能是一个 Microsoft 帐户或可用于访问应用程序或管理租户的 Azure Active Directory 用户。 
-- 使用者帐户 - 通过执行 Azure AD B2C 应用程序中的注册策略或使用 Azure AD Graph API 创建使用者帐户，并由注册 Azure AD B2C 的应用程序的用户使用。 
+- **使用者帐户** - 通过执行 Azure AD B2C 应用程序中的注册用户流或使用 Azure AD Graph API 创建使用者帐户，并由注册 Azure AD B2C 的应用程序的用户使用。 
 
 ## <a name="work-account"></a>工作帐户
 
@@ -73,7 +73,7 @@ ms.locfileid: "43670087"
 
 ## <a name="consumer-user"></a>使用者用户
 
-使用者用户可以登录受 Azure AD B2C 保护的应用程序，但无法访问 Azure 门户等 Azure 资源。  使用者用户可以使用本地帐户或联合帐户，例如 Facebook 或 Twitter。 使用[注册或登录策略](../active-directory-b2c/active-directory-b2c-reference-policies.md)创建使用者帐户。
+使用者用户可以登录受 Azure AD B2C 保护的应用程序，但无法访问 Azure 门户等 Azure 资源。  使用者用户可以使用本地帐户或联合帐户，例如 Facebook 或 Twitter。 使用[注册或登录用户流](../active-directory-b2c/active-directory-b2c-reference-policies.md)创建使用者帐户。
 
 可以指定使用自定义用户属性创建使用者用户帐户时收集的数据。 有关详细信息，请参阅在[在 Azure Active Directory B2C 中定义自定义属性](../active-directory-b2c/active-directory-b2c-reference-custom-attr.md)。
 

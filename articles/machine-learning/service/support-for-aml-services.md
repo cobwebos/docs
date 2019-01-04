@@ -1,5 +1,6 @@
 ---
-title: 获取 Azure 机器学习服务的支持和培训
+title: 可用支持和培训
+titleSuffix: Azure Machine Learning service
 description: 本文介绍如何获取 Azure 机器学习服务的支持和培训
 services: machine-learning
 ms.service: machine-learning
@@ -9,12 +10,13 @@ ms.reviewer: jmartens
 author: j-martens
 ms.author: jmartens
 ms.date: 09/24/2018
-ms.openlocfilehash: a857b813cee86079b96cd2bca297c1cf098819f5
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.custom: seodec18
+ms.openlocfilehash: cbf245b27bc6df9933a4786def42d85f848e09d7
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49113897"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53192084"
 ---
 # <a name="get-support-and-training-for-azure-machine-learning-service"></a>获取 Azure 机器学习服务的支持和培训
 
@@ -35,9 +37,9 @@ ms.locfileid: "49113897"
 
 请查看这些支持资源：
 
-+ 技术支持：访问 [Azure 技术支持](https://azure.microsoft.com/support/options/)，然后选择“机器学习”。 
++ **技术支持**：访问 [Azure 技术支持](https://azure.microsoft.com/support/options/)，然后选择“机器学习”。 
 
-+ 用户论坛：在 [MSDN 上的 Azure 机器学习服务支持论坛](https://aka.ms/aml-forum-service)中提出问题、回答问题并与其他用户交流。
++ **用户论坛**：在 [MSDN 上的 Azure 机器学习服务支持论坛](https://aka.ms/aml-forum-service)中提出问题、回答问题并与其他用户交流。
 
 + **Stack Overflow**：访问 [StackOverflow](https://stackoverflow.com/questions/tagged/azure-machine-learning) 上标记为“Azure-Machine-Learning”的 Azure 机器学习社区。
 

@@ -10,25 +10,29 @@ ms.workload: data-services
 ms.tgt_pltfrm: ''
 ms.devlang: powershell
 ms.topic: conceptual
-ms.date: 06/21/2018
+ms.date: 12/11/2018
 ms.author: douglasl
-ms.openlocfilehash: 3c829819748309ecbca248afe35cd59f54b202a6
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.openlocfilehash: d2000e626166304e92556e3c965df175a27046ad
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50085404"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53321061"
 ---
 # <a name="enable-azure-active-directory-authentication-for-the-azure-ssis-integration-runtime"></a>为 Azure-SSIS 集成运行时启用 Azure Active Directory 身份验证
 
 本文展示了如何使用 Azure 数据工厂标识创建 Azure-SSIS IR。 可以针对 Azure 数据工厂的托管标识使用 Azure Active Directory (Azure AD) 身份验证而不是 SQL 身份验证，以创建 Azure-SSIS 集成运行时。
 
-有关 ADF 的托管标识的详细信息，请参阅 [Azure 数据工厂服务标识](https://docs.microsoft.com/azure/data-factory/data-factory-service-identity)。
+有关数据工厂的托管标识的详细信息，请参阅 [Azure 数据工厂服务标识](https://docs.microsoft.com/azure/data-factory/data-factory-service-identity)。
 
 > [!NOTE]
 > 如果已创建了使用 SQL 身份验证的 Azure-SSIS 集成运行时，则此时无法通过 PowerShell 将 IR 重新配置为使用 Azure AD 身份验证。
 
-## <a name="create-a-group-in-azure-ad-and-make-the-managed-identity-for-your-adf-a-member-of-the-group"></a>在 Azure AD 中创建一个组，并将 ADF 的托管标识设为该组的成员
+## <a name="enable-azure-ad-on-azure-sql-database"></a>在 Azure SQL 数据库上启用 Azure AD
+
+Azure SQL 数据库支持使用 Azure AD 用户创建数据库。 因此，你可以将 Azure AD 用户设置为 Active Directory 管理员，然后使用该 Azure AD 用户登录到 SQL Server Management Studio (SSMS)。 然后，可为 Azure AD 组创建一个包含的用户，使 IR 能够在服务器上创建 SQL Server Integration Services (SSIS) 目录。
+
+### <a name="create-a-group-in-azure-ad-and-make-the-managed-identity-for-your-data-factory-a-member-of-the-group"></a>在 Azure AD 中创建一个组，并使数据工厂的托管标识成为该组的成员
 
 可以使用现有的 Azure AD 组，使用 Azure AD PowerShell 创建新组。
 
@@ -53,7 +57,7 @@ ms.locfileid: "50085404"
     6de75f3c-8b2f-4bf4-b9f8-78cc60a18050 SSISIrGroup
     ```
 
-3.  将 ADF 的托管标识添加到该组。 可以根据 [Azure Data Factory 服务标识](https://docs.microsoft.com/azure/data-factory/data-factory-service-identity)获取主体服务标识 ID（例如 765ad4ab-XXXX-XXXX-XXXX-51ed985819dc，但不要将服务标识应用程序 ID 用于此目的）。
+3.  将数据工厂的托管标识添加到该组。 可以根据 [Azure Data Factory 服务标识](https://docs.microsoft.com/azure/data-factory/data-factory-service-identity)获取主体服务标识 ID（例如 765ad4ab-XXXX-XXXX-XXXX-51ed985819dc，但不要将服务标识应用程序 ID 用于此目的）。
 
     ```powershell
     Add-AzureAdGroupMember -ObjectId $Group.ObjectId -RefObjectId 765ad4ab-XXXX-XXXX-XXXX-51ed985819dc
@@ -64,10 +68,6 @@ ms.locfileid: "50085404"
     ```powershell
     Get-AzureAdGroupMember -ObjectId $Group.ObjectId
     ```
-
-## <a name="enable-azure-ad-on-azure-sql-database"></a>在 Azure SQL 数据库上启用 Azure AD
-
-Azure SQL 数据库支持使用 Azure AD 用户创建数据库。 因此，你可以将 Azure AD 用户设置为 Active Directory 管理员，然后使用该 Azure AD 用户登录到 SSMS。 然后，可为 Azure AD 组创建一个包含的用户，使 IR 能够在服务器上创建 SQL Server Integration Services (SSIS) 目录。
 
 ### <a name="enable-azure-ad-authentication-for-the-azure-sql-database"></a>为 Azure SQL 数据库启用 Azure AD 身份验证
 
@@ -121,21 +121,52 @@ Azure SQL 数据库支持使用 Azure AD 用户创建数据库。 因此，你�
 
 ## <a name="enable-azure-ad-on-azure-sql-database-managed-instance"></a>在 Azure SQL 数据库托管实例上启用 Azure AD
 
-Azure SQL 数据库托管实例不支持使用 AD 管理员之外的任何 Azure AD 用户创建数据库。因此，你必须将 Azure AD 组设置为 Active Directory 管理员。你不需要创建内含用户。
+Azure SQL 数据库托管实例支持直接使用 MSI 创建数据库。 你不需要将数据工厂 MSI 加入到 AD 组，也不需要在 MI 中创建包含的用户。
 
-可以使用以下步骤 [为 SQL 数据库托管实例服务器配置 Azure AD 身份验证](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication-configure)：
+### <a name="enable-azure-ad-authentication-for-the-azure-sql-database-managed-instance"></a>为 Azure SQL 数据库托管实例启用 Azure AD 身份验证
 
-7.  在 Azure 门户中，从左侧导航栏中选择“所有服务” -> “SQL 服务器”。 **** 
+1.   在 Azure 门户中，从左侧导航栏中选择“所有服务” -> “SQL 服务器”。
 
-8.  选择要启用 Azure AD 身份验证的 SQL 服务器。
+1.   选择要启用 Azure AD 身份验证的 SQL 服务器。
 
-9.  在边栏选项卡的“设置”部分中，选择“Active Directory 管理员”。 ****  ****
+1.   在边栏选项卡的“设置”部分中，选择“Active Directory 管理员”。
 
-10. 在命令栏中，选择“设置管理员” ****。
+1.   在命令栏中，选择“设置管理员”。
 
-11. 搜索并选择 Azure AD 组（例如 SSISIrGroup），然后选择“选择”。 ****
+1.   选择要设为服务器管理员的 Azure AD 用户帐户，然后选择“选择”。
 
-12. 在命令栏中，选择“保存”。 ****
+1.   在命令栏中，选择“保存”。
+
+### <a name="add-data-factory-msi-as-a-user-to-the-azure-sql-database-managed-instance"></a>将数据工厂 MSI 作为用户添加到 Azure SQL 数据库托管实例
+
+1.  启动 SQL Server Management Studio。
+
+2.  以 SQL 管理员帐户或 Active Directory 管理员帐户进行登录。
+
+3.  在“对象资源管理器”中，展开“数据库”->“系统数据库”文件夹。
+
+4.  右键单击 master 数据库并选择“新建查询”。
+
+5.  可以按照 [Azure 数据工厂服务标识](data-factory-service-identity.md)一文来获取主体服务标识应用程序 ID。 （对于此用途，请不要使用服务标识 ID。）
+
+6.  在查询窗口中，运行以下脚本将服务标识应用程序 ID 转换为二进制类型：
+
+    ```sql
+    DECLARE @applicationId uniqueidentifier = {your service identity application id}
+    select CAST(@applicationId AS varbinary)
+    ```
+
+7.  可以从结果窗口中获取值。
+
+8.  清除查询窗口，并运行以下脚本：
+
+    ```sql
+    CREATE LOGIN [{MSI name}] FROM EXTERNAL PROVIDER with SID ={your service identity application id in binary type}, TYPE = E
+    ALTER SERVER ROLE [dbcreator] ADD MEMBER [{MSI name}]
+    ALTER SERVER ROLE [securityadmin] ADD MEMBER [{MSI name}]
+    ```
+
+9.  命令已成功完成。
 
 ## <a name="provision-the-azure-ssis-ir-in-the-portal"></a>在门户中预配 Azure-SSIS IR
 

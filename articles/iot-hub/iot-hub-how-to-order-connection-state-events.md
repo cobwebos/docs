@@ -7,12 +7,12 @@ author: ash2017
 ms.topic: conceptual
 ms.date: 07/06/2018
 ms.author: asrastog
-ms.openlocfilehash: 77615705ade42a2afcc8e3a9f662b0551a2411fd
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: daf4a6142c0e30fa7b8534e5598cec39c69079c0
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52582439"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53184043"
 ---
 # <a name="order-device-connection-events-from-azure-iot-hub-using-azure-cosmos-db"></a>使用 Azure Cosmos DB 将来自 Azure IoT 中心的设备连接事件排序
 
@@ -200,11 +200,11 @@ ms.locfileid: "52582439"
 
 2. 按如下所示填写条件，以便仅对“设备已连接”和“设备已断开连接”事件执行此操作：
 
-  * 选择值：**eventType**
-  * 将“等于”更改为“结尾是”
-  * 选择值：**nected**
+   * 选择值：**eventType**
+   * 将“等于”更改为“结尾是”
+   * 选择值：**nected**
 
-   ![填写条件](./media/iot-hub-how-to-order-connection-state-events/condition-detail.png)
+     ![填写条件](./media/iot-hub-how-to-order-connection-state-events/condition-detail.png)
 
 3. 如果条件为 true，请单击“添加操作”。
   

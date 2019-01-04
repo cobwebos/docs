@@ -1,12 +1,11 @@
 ---
-title: 重新训练现有预测 Web 服务 - Azure 机器学习工作室 | Microsoft Docs
+title: 重新训练现有预测性工作室 Web 服务 - Azure 机器学习工作室 | Microsoft Docs
 description: 了解如何重新训练模型和更新 Web 服务以在 Azure 机器学习工作室中使用最新经过训练的模型。
 services: machine-learning
 documentationcenter: ''
 author: ericlicoding
-ms.custom: (previous ms.author=yahajiza, author=YasinMSFT)
+ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.author: amlstudiodocs
-manager: hjerez
 editor: cgronlun
 ms.assetid: cc4c26a2-5672-4255-a767-cfd971e46775
 ms.service: machine-learning
@@ -16,14 +15,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/07/2017
-ms.openlocfilehash: 8da3c5d5c79ce52f1f5176a8b3317ce2a0e0bc5f
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: d24cfd8dce42ee920c87fa2c3593a860468a6160
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52311290"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53250546"
 ---
-# <a name="retrain-an-existing-predictive-web-service"></a>重新训练现有预测 Web 服务
+# <a name="retrain-an-existing-predictive-azure-machine-learning-studio-web-service"></a>重新训练现有预测性 Azure 机器学习工作室 Web 服务
+
 本文档介绍了以下方案的重新训练流程：
 
 * 具有训练实验以及已部署为运营 Web 服务的预测实验。

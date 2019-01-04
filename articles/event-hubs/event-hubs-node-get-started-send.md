@@ -1,20 +1,21 @@
 ---
-title: 使用 Node.js 将事件发送到 Azure 事件中心 | Microsoft Docs
-description: 使用 Node.js 将事件发送到事件中心入门。
+title: 使用 Node.js 发送事件 - Azure 事件中心 | Microsoft Docs
+description: 本文提供了一个演练，说明如何创建从 Azure 事件中心发送事件的 Node.js 应用程序。
 services: event-hubs
 author: ShubhaVijayasarathy
 manager: kamalb
 ms.service: event-hubs
 ms.workload: core
 ms.topic: article
-ms.date: 10/18/2018
+ms.custom: seodec18
+ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 14ea98b9d31bee08b962e8b3801ed507472ba692
-ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
+ms.openlocfilehash: c75d4404cb0892c3d90261af2fb4982ac84041c4
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49455787"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53163780"
 ---
 # <a name="send-events-to-azure-event-hubs-using-nodejs"></a>使用 Node.js 将事件发送到 Azure 事件中心
 
@@ -35,8 +36,10 @@ Azure 事件中心是一个大数据流式处理平台和事件引入服务，�
 ## <a name="create-an-event-hubs-namespace-and-an-event-hub"></a>创建事件中心命名空间和事件中心
 第一步是使用 [Azure 门户](https://portal.azure.com)创建事件中心类型的命名空间，并获取应用程序与事件中心进行通信所需的管理凭据。 若要创建命名空间和事件中心，请按照[本文](event-hubs-create.md)中的步骤进行操作，然后继续执行本教程的以下步骤。
 
+按照以下文章中的说明获取事件中心命名空间的连接字符串：[获取连接字符串](event-hubs-get-connection-string.md#get-connection-string-from-the-portal)。 本教程后面的步骤将使用此连接字符串。
+
 ## <a name="clone-the-sample-git-repository"></a>克隆示例 Git 存储库
-将示例 Git 存储库从 [Github](https://github.com/Azure/azure-event-hubs-node) 克隆到计算机。 
+将示例 Git 存储库从 [GitHub](https://github.com/Azure/azure-event-hubs-node) 克隆到计算机。 
 
 ## <a name="install-nodejs-package"></a>安装 Node.js 程序包
 在计算机上安装适用于 Azure 事件中心的 Node.js 程序包。 
@@ -46,7 +49,7 @@ npm install @azure/event-hubs
 ```
 
 ## <a name="clone-the-git-repository"></a>克隆 Git 存储库
-从 Github 下载或克隆[示例](https://github.com/Azure/azure-event-hubs-node/tree/master/client/examples)。 
+从 GitHub 下载或克隆[示例](https://github.com/Azure/azure-event-hubs-node/tree/master/client/examples)。 
 
 ## <a name="send-events"></a>发送事件
 你克隆的 SDK 包含了多个示例，其中展示了如何使用 node.js 将事件发送到事件中心。 在本快速入门中，你将使用 **simpleSender.js** 示例。 若要观察正在接收的事件，请打开另一个终端，并使用[接收示例](event-hubs-node-get-started-receive.md)来接收事件。

@@ -2,22 +2,22 @@
 title: 在 Azure 中计划 VM 备份基础结构
 description: 规划在 Azure 中备份虚拟机时的重要注意事项
 services: backup
-author: markgalioto
+author: rayne-wiselman
 manager: carmonm
 keywords: 备份 vm, 备份虚拟机
 ms.service: backup
 ms.topic: conceptual
 ms.date: 8/29/2018
-ms.author: markgal
-ms.openlocfilehash: ae02a1bcbf00a022cfd884b02141ce084f1fffa8
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.author: raynew
+ms.openlocfilehash: e38f245197f2b1bdb22a2866028ad10f4ec39ec1
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51232454"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53343490"
 ---
 # <a name="plan-your-vm-backup-infrastructure-in-azure"></a>在 Azure 中计划 VM 备份基础结构
-本文提供性能和资源建议，帮助规划 VM 备份基础结构。 文中还定义了备份服务的主要方面；这些方面对于决定体系结构、容量规划和计划安排至关重要。 如果已[准备好环境](backup-azure-arm-vms-prepare.md)，请首先进行此规划，再开始[备份 VM](backup-azure-arm-vms.md)。 如需有关 Azure 虚拟机的详细信息，请参阅[虚拟机文档](https://azure.microsoft.com/documentation/services/virtual-machines/)。 
+本文提供性能和资源建议，帮助规划 VM 备份基础结构。 文中还定义了备份服务的主要方面；这些方面对于决定体系结构、容量规划和计划安排至关重要。 如果已[准备好环境](backup-azure-arm-vms-prepare.md)，请首先进行此规划，再开始[备份 VM](backup-azure-arm-vms.md)。 如需有关 Azure 虚拟机的详细信息，请参阅[虚拟机文档](https://azure.microsoft.com/documentation/services/virtual-machines/)。
 
 > [!NOTE]
 > 本文用于托管和非托管磁盘。 如果使用非托管磁盘，我们提供了存储帐户建议。 如果使用 [Azure 托管磁盘](../virtual-machines/windows/managed-disks-overview.md)，无需担心性能或资源利用率问题。 Azure 可优化存储利用率。
@@ -96,7 +96,19 @@ Azure 备份提供一个脚本框架，用于控制备份工作流和环境。 �
 
 ### <a name="why-are-backup-times-longer-than-12-hours"></a>为什么备份时间超过 12 个小时？
 
-备份包含两个阶段：获取快照和将快照传输到保管库。 备份服务针对存储进行相关优化。 将快照数据传输到保管库时，服务仅传输上一个快照的增量更改。  为确定增量更改，服务会计算块的校验和。 如果一个块发生更改，则该块会被标识为要发送到保管库的块。 然后服务进一步钻取到每个已标识块，寻找机会尽量减少要传输的数据。 评估所有已更改块后，服务将联合更改并将其发送到保管库。 在一些旧版应用程序中，存储不适合小的分段写入。 如果快照包含很多小的分段写入，则服务会花费额外时间处理应用程序写入的数据。 对于在 VM 内部运行的应用程序，建议的应用程序写入块的最小值是 8 KB。 如果应用程序使用大小小于 8 KB 的块，则备份性能会受影响。 有关调整应用程序以提高备份性能的帮助信息，请参阅[调整应用程序以实现 Azure 存储的最佳性能](../virtual-machines/windows/premium-storage-performance.md)。 尽管有关备份性能的本文使用了高级存储示例，但是本指南同样适用于标准存储磁盘。
+备份包含两个阶段：获取快照和将快照传输到保管库。 备份服务针对存储进行相关优化。 将快照数据传输到保管库时，服务仅传输上一个快照的增量更改。  为确定增量更改，服务会计算块的校验和。 如果一个块发生更改，则该块会被标识为要发送到保管库的块。 然后服务进一步钻取到每个已标识块，寻找机会尽量减少要传输的数据。 评估所有已更改块后，服务将联合更改并将其发送到保管库。 在一些旧版应用程序中，存储不适合小的分段写入。 如果快照包含很多小的分段写入，则服务会花费额外时间处理应用程序写入的数据。 对于在 VM 内部运行的应用程序，建议的应用程序写入块的最小值是 8 KB。 如果应用程序使用大小小于 8 KB 的块，则备份性能会受影响。 有关调整应用程序以提高备份性能的帮助信息，请参阅[调整应用程序以实现 Azure 存储的最佳性能](../virtual-machines/windows/premium-storage-performance.md)。 尽管有关备份性能的本文使用了高级存储示例，但是本指南同样适用于标准存储磁盘。<br>
+备份时间较长可能有多种原因：
+  1. **新添加到已受保护 VM 的磁盘的第一次备份** <br>
+    如果 VM 已完成初始备份并且在执行增量备份。 添加新磁盘可能会失去 1 天的 SLA，具体取决于新磁盘的大小。
+  2. **碎片** <br>
+    如果在 VM 上运行的工作负荷（应用程序）执行较小的碎片化写入，则它可能会对备份性能造成不利影响。 <br>
+  3. **存储帐户超载** <br>
+      a. 如果备份安排在应用程序使用高峰期进行。  
+      b. 如果同一存储帐户承载了 5 到 10 个以上的磁盘。<br>
+  4. **一致性检查 (CC) 模式** <br>
+      对于 > 1TB 的磁盘，如果备份由于下面提到的原因在 CC 模式下进行：<br>
+        a. 托管磁盘在 VM 重新启动过程中进行移动。<br>
+        b. 将快照提升到基础 blob。<br>
 
 ## <a name="total-restore-time"></a>总还原时间
 

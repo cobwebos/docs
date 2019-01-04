@@ -6,14 +6,14 @@ manager: camerons
 ms.author: timlav
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.date: 09/12/2018
+ms.date: 11/20/2018
 ms.topic: conceptual
-ms.openlocfilehash: 94641796fa77e03efc7158bc3aaf4bde9385c899
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: 20af014e5a59cb526d5b96e543b10d5b2b6d6937
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51824262"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52679590"
 ---
 # <a name="remote-monitoring-architectural-choices"></a>远程监视体系结构选择
 
@@ -25,7 +25,7 @@ Azure IoT 远程监视解决方案加速器是 MIT 许可的开放源代码解�
 
 远程监视解决方案遵循建议的 [Azure IoT 参考体系结构](https://aka.ms/iotrefarchitecture)。
 
-本文介绍了每个远程监视子系统中所做的体系结构和技术选择以及所考虑的备选方案。 但是，Microsoft 在远程监视解决方案中所做的技术选择不是实现远程监视 IoT 解决方案的唯一方法。 应将技术实现视为生成成功的应用程序的基准且应对其进行修改，以便：
+本文介绍了每个远程监视子系统中所做的主要体系结构和技术选择。 但是，Microsoft 在远程监视解决方案中所做的技术选择不是实现远程监视 IoT 解决方案的唯一方法。 应将技术实现视为生成成功的应用程序的基准且应对其进行修改，以便：
 
 - 适应组织中的可用技能和经验。
 - 满足你的垂直应用程序需求。
@@ -52,7 +52,8 @@ Microsoft 建议用于 IoT 应用程序的体系结构的基础是云原生、�
 对 IoT 设备进行连接，可以使用：
 
 - [IoT 中心设备 SDK](../iot-hub/iot-hub-devguide-sdks.md#azure-iot-device-sdks) 为设备实现本机客户端应用程序。 这些 SDK 提供 IoT 中心 REST API 的包装器，并处理包括重试在内的各种方案。
-- 在解决方案加速器中与 Azure IoT Edge 集成，以部署和管理在设备上的容器中运行的自定义模块。
+- 与 Azure IoT Edge 集成，以部署和管理在设备上的容器中运行的自定义模块。
+- 与 IoT 中心内的自动设备管理集成，以批量管理已连接的设备。
 
 ### <a name="stream-processing"></a>流处理
 
@@ -62,7 +63,7 @@ Microsoft 建议用于 IoT 应用程序的体系结构的基础是云原生、�
 
 远程监控解决方案加速器在存储方面使用 Azure 时序见解和 Azure Cosmos DB。 Azure 时序见解存储来自所连接设备的 IoT Hub 消息。 解决方案加速器将 Azure Cosmos DB 用于所有其他存储，例如冷存储、规则定义、警报和配置设置。
 
-Azure Cosmos DB 是建议用于 IoT 应用程序的常规用途暖存储解决方案，虽然 Azure 时序见解和 Azure Data Lake 等解决方案也适用于许多情况。 借助 Azure 时序见解，可以通过发现趋势和异常情况来深入了解时序传感器数据。 此功能可以进行根本原因分析并避免成本高昂的故障时间。
+Azure Cosmos DB 是建议用于 IoT 应用程序的常规用途暖存储解决方案。 但是，Azure 时序见解和 Azure Data Lake 等解决方案适用于多个用例。 借助 Azure 时序见解，可以通过发现趋势和异常情况来深入了解时序传感器数据。 此功能可以进行根本原因分析并避免成本高昂的故障时间。
 
 > [!NOTE]
 > 时序见解目前在 Azure 中国云中不可用。 Azure 中国云中的新远程监视解决方案加速器部署使用 Cosmos DB 进行所有存储。

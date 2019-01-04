@@ -3,7 +3,7 @@ title: 保护 Azure 安全中心的 Azure SQL 服务和数据 | Microsoft Docs
 description: 本文档介绍了 Azure 安全中心提供的建议，这些建议有助于保护数据和 Azure SQL 服务，并遵守安全策略。
 services: security-center
 documentationcenter: na
-author: TerryLanfear
+author: rkarlin
 manager: MBaldwin
 editor: ''
 ms.assetid: bcae6987-05d0-4208-bca8-6a6ce7c9a1e3
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2018
-ms.author: terrylan
-ms.openlocfilehash: ea014aae49ec322e9a1f1222c881885b84e87584
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.author: rkarlin
+ms.openlocfilehash: 977c464e0c172a25d069fa7db55d8aefb78d89d9
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52311766"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53339087"
 ---
 # <a name="protecting-azure-sql-service-and-data-in-azure-security-center"></a>在 Azure 安全中心保护 Azure SQL 服务和数据
 Azure 安全中心可分析 Azure 资源的安全状态。 在安全中心识别潜在的安全漏洞时，它会创建一些建议，这些建议会指导完成配置所需控件的过程。  适用于 Azure 资源类型的建议：虚拟机 (VM)、网络、SQL 和数据，以及应用程序。
@@ -54,7 +54,7 @@ Azure 安全中心可分析 Azure 资源的安全状态。 在安全中心识别
 |资源类型|安全功能分数|建议|Description|
 |----|----|----|----|
 |存储帐户|20|需要安全传输到存储帐户|安全传输选项会强制存储帐户仅接受来自安全连接 (HTTPS) 的请求。 使用 HTTPS 可确保服务器和服务之间的身份验证并保护传输中的数据免受中间人攻击、窃听攻击和会话劫持等网络层攻击。|
-|Redis|20|仅启用到 Redis 缓存的安全连接|仅启用通过 SSL 来与 Redis 缓存建立连接。 使用安全连接可确保服务器和服务之间的身份验证并保护传输中的数据免受中间人攻击、窃听攻击和会话劫持等网络层攻击。|
+|Redis|20|仅启用与 Azure Redis 缓存的安全连接|仅启用通过 SSL 来与 Azure Redis 缓存建立连接。 使用安全连接可确保服务器和服务之间的身份验证并保护传输中的数据免受中间人攻击、窃听攻击和会话劫持等网络层攻击。|
 |SQL|15|启用 SQL 数据库的透明数据加密|启用透明数据加密以保护静态数据并满足合规性要求。|
 |SQL|15|对 SQL 服务器启用审核|启用 Azure SQL 服务器的审核。 （仅 Azure SQL 服务。 不包括在虚拟机上运行的 SQL。）|
 |SQL|15|对 SQL 数据库启用审核|启用 Azure SQL 数据库的审核。 （仅 Azure SQL 服务。 不包括在虚拟机上运行的 SQL。）|
@@ -79,6 +79,6 @@ Azure 安全中心可分析 Azure 资源的安全状态。 在安全中心识别
 
 若要了解有关安全中心的详细信息，请参阅以下文章：
 
-* [在 Azure 安全中心中设置安全策略](security-center-azure-policy.md) - 了解如何配置 Azure 订阅和资源组的安全策略。
+* [在 Azure 安全中心中设置安全策略](tutorial-security-policy.md) - 了解如何配置 Azure 订阅和资源组的安全策略。
 * [管理和响应 Azure 安全中心的安全警报](security-center-managing-and-responding-alerts.md) -- 了解如何管理和响应安全警报。
 * [Azure 安全中心常见问题解答](security-center-faq.md) - 查找有关使用服务的常见问题。

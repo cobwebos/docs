@@ -8,14 +8,14 @@ keywords: ''
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: conceptual
-ms.date: 10/23/2018
+ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: ce930adc4cb2c635b54b3d41ea4a3ac272541698
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 5d2cf4d76ce6f44cb31f05d45f2ccbceccbe9c10
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52638232"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53339359"
 ---
 # <a name="checkpoints-and-replay-in-durable-functions-azure-functions"></a>Durable Functions 中的检查点和重播 (Azure Functions)
 
@@ -27,7 +27,7 @@ Durable Functions 的关键属性之一是**可靠执行**。 业务流程协调
 
 假设有以下业务流程协调程序函数：
 
-#### <a name="c"></a>C#
+### <a name="c"></a>C#
 
 ```csharp
 [FunctionName("E1_HelloSequence")]
@@ -45,7 +45,7 @@ public static async Task<List<string>> Run(
 }
 ```
 
-#### <a name="javascript-functions-v2-only"></a>JavaScript（仅限 Functions v2）
+### <a name="javascript-functions-2x-only"></a>JavaScript（仅限 Functions 2.x）
 
 ```javascript
 const df = require("durable-functions");
@@ -56,6 +56,7 @@ module.exports = df.orchestrator(function*(context) {
     output.push(yield context.df.callActivity("E1_SayHello", "Seattle"));
     output.push(yield context.df.callActivity("E1_SayHello", "London"));
 
+    // returns ["Hello Tokyo!", "Hello Seattle!", "Hello London!"]
     return output;
 });
 ```
@@ -77,47 +78,48 @@ module.exports = df.orchestrator(function*(context) {
 
 完成后，前面所示的函数历史记录在 Azure 表存储中如下所示（为方便演示，此处采用了缩写）：
 
-| PartitionKey (InstanceId)                     | EventType             | Timestamp               | 输入 | 名称             | 结果                                                    | 状态 | 
-|----------------------------------|-----------------------|----------|--------------------------|-------|------------------|-----------------------------------------------------------|---------------------| 
-| eaee885b | OrchestratorStarted   | 2017-05-05T18:45:32.362Z |       |                  |                                                           |                     | 
-| eaee885b | ExecutionStarted      | 2017-05-05T18:45:28.852Z | Null  | E1_HelloSequence |                                                           |                     | 
-| eaee885b | TaskScheduled         | 2017-05-05T18:45:32.670Z |       | E1_SayHello      |                                                           |                     | 
-| eaee885b | OrchestratorCompleted | 2017-05-05T18:45:32.670Z |       |                  |                                                           |                     | 
-| eaee885b | OrchestratorStarted   | 2017-05-05T18:45:34.232Z |       |                  |                                                           |                     | 
-| eaee885b | TaskCompleted         | 2017-05-05T18:45:34.201Z |       |                  | """Hello Tokyo!"""                                        |                     | 
-| eaee885b | TaskScheduled         | 2017-05-05T18:45:34.435Z |       | E1_SayHello      |                                                           |                     | 
-| eaee885b | OrchestratorCompleted | 2017-05-05T18:45:34.435Z |       |                  |                                                           |                     | 
-| eaee885b | OrchestratorStarted   | 2017-05-05T18:45:34.857Z |       |                  |                                                           |                     | 
-| eaee885b | TaskCompleted         | 2017-05-05T18:45:34.763Z |       |                  | """Hello Seattle!"""                                      |                     | 
-| eaee885b | TaskScheduled         | 2017-05-05T18:45:34.857Z |       | E1_SayHello      |                                                           |                     | 
-| eaee885b | OrchestratorCompleted | 2017-05-05T18:45:34.857Z |       |                  |                                                           |                     | 
-| eaee885b | OrchestratorStarted   | 2017-05-05T18:45:35.032Z |       |                  |                                                           |                     | 
-| eaee885b | TaskCompleted         | 2017-05-05T18:45:34.919Z |       |                  | """Hello London!"""                                       |                     | 
-| eaee885b | ExecutionCompleted    | 2017-05-05T18:45:35.044Z |       |                  | "[""Hello Tokyo!"",""Hello Seattle!"",""Hello London!""]" | 已完成           | 
-| eaee885b | OrchestratorCompleted | 2017-05-05T18:45:35.044Z |       |                  |                                                           |                     | 
+| PartitionKey (InstanceId)                     | EventType             | Timestamp               | 输入 | 名称             | 结果                                                    | 状态 |
+|----------------------------------|-----------------------|----------|--------------------------|-------|------------------|-----------------------------------------------------------|---------------------|
+| eaee885b | OrchestratorStarted   | 2017-05-05T18:45:32.362Z |       |                  |                                                           |                     |
+| eaee885b | ExecutionStarted      | 2017-05-05T18:45:28.852Z | Null  | E1_HelloSequence |                                                           |                     |
+| eaee885b | TaskScheduled         | 2017-05-05T18:45:32.670Z |       | E1_SayHello      |                                                           |                     |
+| eaee885b | OrchestratorCompleted | 2017-05-05T18:45:32.670Z |       |                  |                                                           |                     |
+| eaee885b | OrchestratorStarted   | 2017-05-05T18:45:34.232Z |       |                  |                                                           |                     |
+| eaee885b | TaskCompleted         | 2017-05-05T18:45:34.201Z |       |                  | """Hello Tokyo!"""                                        |                     |
+| eaee885b | TaskScheduled         | 2017-05-05T18:45:34.435Z |       | E1_SayHello      |                                                           |                     |
+| eaee885b | OrchestratorCompleted | 2017-05-05T18:45:34.435Z |       |                  |                                                           |                     |
+| eaee885b | OrchestratorStarted   | 2017-05-05T18:45:34.857Z |       |                  |                                                           |                     |
+| eaee885b | TaskCompleted         | 2017-05-05T18:45:34.763Z |       |                  | """Hello Seattle!"""                                      |                     |
+| eaee885b | TaskScheduled         | 2017-05-05T18:45:34.857Z |       | E1_SayHello      |                                                           |                     |
+| eaee885b | OrchestratorCompleted | 2017-05-05T18:45:34.857Z |       |                  |                                                           |                     |
+| eaee885b | OrchestratorStarted   | 2017-05-05T18:45:35.032Z |       |                  |                                                           |                     |
+| eaee885b | TaskCompleted         | 2017-05-05T18:45:34.919Z |       |                  | """Hello London!"""                                       |                     |
+| eaee885b | ExecutionCompleted    | 2017-05-05T18:45:35.044Z |       |                  | "[""Hello Tokyo!"",""Hello Seattle!"",""Hello London!""]" | 已完成           |
+| eaee885b | OrchestratorCompleted | 2017-05-05T18:45:35.044Z |       |                  |                                                           |                     |
 
 有关列值的一些注释：
+
 * **PartitionKey**：包含业务流程的实例 ID。
 * **EventType**：表示事件的类型。 可为以下类型之一：
-    * **OrchestrationStarted**：业务流程协调程序函数已从 await（等待）状态恢复，或者正在首次运行。 `Timestamp` 列用于填充 [CurrentUtcDateTime](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_CurrentUtcDateTime) API 的确定性值。
-    * **ExecutionStarted**：业务流程协调程序函数已开始首次执行。 此事件也包含 `Input` 列中输入的函数。
-    * **TaskScheduled**：已计划活动函数。 `Name` 列中已捕获该活动函数的名称。
-    * **TaskCompleted**：已完成活动函数。 `Result` 列中提供了该函数的结果。
-    * **TimerCreated**：已创建持久计时器。 `FireAt` 列包含计时器过期时的 UTC 计划时间。
-    * **TimerFired**：持久计时器已触发。
-    * **EventRaised**：已将外部事件发送到业务流程实例。 `Name` 列捕获事件的名称，`Input` 列捕获事件的有效负载。
-    * **OrchestratorCompleted**：业务流程协调程序函数处于等待状态。
-    * **ContinueAsNew**：业务流程协调程序函数已完成，并已使用新状态重启自身。 `Result` 列包含用作已重启实例中的输入的值。
-    * **ExecutionCompleted**：业务流程协调程序函数已运行并已完成（或失败）。 该函数的输出或错误详细信息存储在 `Result` 列中。
+  * **OrchestrationStarted**：业务流程协调程序函数已从等待状态恢复，或者正首次运行。 `Timestamp` 列用于填充 [CurrentUtcDateTime](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_CurrentUtcDateTime) API 的确定性值。
+  * **ExecutionStarted**：业务流程协调程序函数已开始首次执行。 此事件也包含 `Input` 列中输入的函数。
+  * **TaskScheduled**：已计划活动函数。 `Name` 列中已捕获该活动函数的名称。
+  * **TaskCompleted**：已完成活动函数。 `Result` 列中提供了该函数的结果。
+  * **TimerCreated**：已创建持久计时器。 `FireAt` 列包含计时器过期时的 UTC 计划时间。
+  * **TimerFired**：已触发持久计时器。
+  * **EventRaised**：已将外部事件发送到业务流程实例。 `Name` 列捕获事件的名称，`Input` 列捕获事件的有效负载。
+  * **OrchestratorCompleted**：处于等待状态的业务流程协调程序函数。
+  * **ContinueAsNew**：业务流程协调程序函数已完成，并已使用新状态重启自身。 `Result` 列包含用作已重启实例中的输入的值。
+  * **ExecutionCompleted**：业务流程协调程序函数已运行并已完成（或失败）。 该函数的输出或错误详细信息存储在 `Result` 列中。
 * **Timestamp**：历史记录事件的 UTC 时间戳。
 * **Name**：调用的函数的名称。
-* **Input**：函数的 JSON 格式输入。
+* **输入**：函数的 JSON 格式的输入。
 * **Result**：函数的输出，即其返回值。
 
 > [!WARNING]
 > 尽管此表可以用作有效的调试工具，但不要对它有任何依赖。 它可能会随着 Durable Functions 扩展的演变而变化。
 
-每当函数从 `await` 状态恢复时，Durable Task Framework 会从头开始重新运行业务流程协调程序函数。 每次重新运行时，它会查询执行历史记录，确定当前的异步操作是否已发生。  如果该操作已发生，该框架会立即重播该操作的输出，并转到下一个 `await`。 此过程会持续到整个历史记录被重播为止，此后，业务流程协调程序函数中的所有本地变量会还原到其先前值。
+每当函数从 `await` (C#) 或 `yield` (JavaScript) 恢复时，Durable Task Framework 会从头开始重新运行业务流程协调程序函数。 每次重新运行时，它会查询执行历史记录，确定当前的异步操作是否已发生。  如果该操作已发生，该框架会立即重播该操作的输出，并转到下一个 `await` (C#) 或 `yield` (JavaScript)。 此过程会持续到整个历史记录被重播为止，此后，业务流程协调程序函数中的所有本地变量会还原到其先前值。
 
 ## <a name="orchestrator-code-constraints"></a>业务流程协调程序代码约束
 
@@ -125,26 +127,36 @@ module.exports = df.orchestrator(function*(context) {
 
 * 业务流程协调程序代码必须是**确定性的**。 该代码将被重播多次，每次必须生成相同的结果。 例如，不能通过直接调用来获取当前日期/时间、获取随机数、生成随机 GUID 或调入远程终结点。
 
-  如果业务流程协调程序代码需要获取当前日期/时间，应使用可安全重播的 [CurrentUtcDateTime](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_CurrentUtcDateTime) API。
+  如果业务流程协调程序代码需要获取当前日期/时间，应使用可安全重播的 [CurrentUtcDateTime](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_CurrentUtcDateTime) (.NET) 或 `currentUtcDateTime` (JavaScript) API。
 
-  如果业务流程协调程序代码需要生成随机 GUID，则应使用 [NewGuid](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_NewGuid) API，它对于重播是安全的。
+  如果业务流程协调程序代码需生成随机 GUID，则应使用可安全重播的 [NewGuid](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_NewGuid) (.NET) API，或将 GUID 生成委托给活动函数 (JavaScript)，如下例所示：
+
+  ```javascript
+  const uuid = require("uuid/v1");
+
+  module.exports = async function(context) {
+    return uuid();
+  }
+  ```
 
   不确定性的操作必须在活动函数中执行。 这包括与其他输入或输出绑定之间的任何交互。 这可以确保在完成首次执行之后立即生成所有不确定性值并将其保存到执行历史记录。 然后，后续执行会自动使用保存的值。
 
-* 业务流程协调程序代码应是**非阻塞性的**。 例如，这意味着没有 I/O 并且未调用 `Thread.Sleep` 或等效 API。
+* 业务流程协调程序代码应是**非阻塞性的**。 例如，这就意味着没有 I/O 并且未调用 `Thread.Sleep` (.NET) 或等效 API。
 
-  如果业务流程协调程序需要延迟，可以使用 [CreateTimer](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_CreateTimer_) API。
+  如果业务流程协调程序需要延迟，可以使用 [CreateTimer](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_CreateTimer_) (.NET) 或 `createTimer` (JavaScript) API。
 
-* 除非使用 [DurableOrchestrationContext](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html) API，否则业务流程协调程序**不得发起任何异步操作**。 例如，不能使用 `Task.Run`、`Task.Delay` 或 `HttpClient.SendAsync`。 Durable Task Framework 在单个线程上执行业务流程协调程序代码，不能与可由其他异步 API 计划的其他任何线程交互。
+* 除非使用 [DurableOrchestrationContext](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html) API 或 `context.df` 对象的 API，否则业务流程协调程序不得发起任何异步操作。 例如，.NET 中没有 `Task.Run`、`Task.Delay` 或 `HttpClient.SendAsync`，JavaScript 中没有 `setTimeout()` 和 `setInterval()`。 Durable Task Framework 在单个线程上执行业务流程协调程序代码，不能与可由其他异步 API 计划的其他任何线程交互。
 
-* 在业务流程协调程序代码中，**应避免无限循环**。 由于 Durable Task Framework 在业务流程函数的执行过程中会保存执行历史记录，无限循环可能会导致业务流程协调程序实例耗尽内存。 对于无限循环方案，可使用 [ContinueAsNew](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_ContinueAsNew_) 等 API 来重启函数执行，并丢弃以前的执行历史记录。
+* 在业务流程协调程序代码中，**应避免无限循环**。 由于 Durable Task Framework 在业务流程函数的执行过程中会保存执行历史记录，无限循环可能会导致业务流程协调程序实例耗尽内存。 对于无限循环方案，可使用 [ContinueAsNew](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_ContinueAsNew_) (.NET) 或 `continueAsNew` (JavaScript) 等 API 来重启函数执行，并丢弃以前的执行历史记录。
+
+* JavaScript 业务流程协调程序函数不能是 `async`。 函数必须声明为同步的生成器函数。
 
 尽管这些约束在乍看之下让人心虚，但其实并不难遵守。 Durable Task Framework 会尝试检测上述规则的冲突，并引发 `NonDeterministicOrchestrationException`。 但是，这种检测行为是尽力而为的，请不要对它有依赖。
 
 > [!NOTE]
 > 所有这些规则只会应用到 `orchestrationTrigger` 绑定触发的函数。 `activityTrigger` 绑定触发的活动函数以及使用 `orchestrationClient` 绑定的函数没有此类限制。
 
-## <a name="durable-tasks"></a>持久任务
+## <a name="durable-tasks-net"></a>持久任务 (.NET)
 
 > [!NOTE]
 > 本部分介绍 Durable Task Framework 的内部实现详细信息。 在不了解这些信息的情况下也可以使用 Durable Functions。 本部分旨在帮助读者了解重播行为。

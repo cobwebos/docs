@@ -5,14 +5,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 10/29/2018
+ms.date: 11/27/2018
 ms.author: raynew
-ms.openlocfilehash: fe6199aea91bbb7518ccdbfe640848a59edcee49
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 2198d7520d660904423eabbec8df71e55e3011dd
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50215457"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53338628"
 ---
 # <a name="set-up-disaster-recovery-of-on-premises-vmware-virtual-machines-or-physical-servers-to-a-secondary-site"></a>将本地 VMware 虚拟机或物理服务器的灾难恢复设置到辅助站点
 
@@ -97,18 +97,18 @@ Azure Site Recovery 为 VMware 和 Hyper-V 客户提供一流的无缝 DRaaS 解
   - UA_Windows_8.0.5.0_GA_Update_5_11525802_20Apr17.exe
   - UA_RHEL6-64_8.0.4.0_GA_Update_4_9035261_26Sep16.tar.gz
   - vCon_Windows_8.0.6.0_GA_Update_6_11525767_21Sep17.exe
-  - 对于 RHEL5、OL5、OL6、SUSE 10、SUSE 11 的 UA update4 位：UA_<Linux OS>_8.0.4.0_GA_Update_4_9035261_26Sep16.tar.gz
+  - RHEL5、OL5、OL6、SUSE 10、SUSE 11 的 UA update4 位：UA_<Linux OS>_8.0.4.0_GA_Update_4_9035261_26Sep16.tar.gz
 1. 解压缩 .zip 文件。
-2. RX 服务器：将 RX_8.0.4.0_GA_Update_4_8725872_16Sep16.tar.gz 复制到 RX 服务器并将其解压缩。 在解压缩的文件夹中运行 **/Install**。
-3. 配置服务器和进程服务器：将 CX_Windows_8.0.6.0_GA_Update_6_13746667_18Sep17.exe 复制到配置服务器和进程服务器。 双击以运行该文件。<br>
-4. Windows 主目标服务器：要更新统一代理，请将 UA_Windows_8.0.5.0_GA_Update_5_11525802_20Apr17.exe 复制到该服务器。 双击以运行该文件。 相同的统一代理更新也适用于源服务器。 如果源尚未更新到 Update 4，则应更新统一代理。
+2. **RX 服务器**：将 RX_8.0.4.0_GA_Update_4_8725872_16Sep16.tar.gz 复制到 RX 服务器并将其解压缩。 在解压缩的文件夹中运行 **/Install**。
+3. **配置服务器和进程服务器**：将 **CX_Windows_8.0.6.0_GA_Update_6_13746667_18Sep17.exe** 复制到配置服务器和进程服务器。 双击以运行该文件。<br>
+4. **Windows 主目标服务器**：若要更新统一代理，请将 **UA_Windows_8.0.5.0_GA_Update_5_11525802_20Apr17.exe** 复制到服务器。 双击以运行该文件。 相同的统一代理更新也适用于源服务器。 如果源尚未更新到 Update 4，则应更新统一代理。
   更新不需要应用于备有 InMage_Scout_vContinuum_MT_8.0.1.0_Windows_GA_10Oct2017_release.exe 的主目标服务器，因为这是拥有所有最新更改的新 GA 安装程序。
-5. vContinuum 服务器：将 vCon_Windows_8.0.6.0_GA_Update_6_11525767_21Sep17.exe 复制到该服务器。  确保已关闭 vContinuum 向导。 双击以运行该文件。
+5. **vContinuum 服务器**：将 **vCon_Windows_8.0.6.0_GA_Update_6_11525767_21Sep17.exe** 复制到该服务器。  确保已关闭 vContinuum 向导。 双击以运行该文件。
     更新不需要应用于备有 InMage_Scout_vContinuum_MT_8.0.1.0_Windows_GA_10Oct2017_release.exe 的主目标服务器，因为这是拥有所有最新更改的新 GA 安装程序。
-6. Linux 主目标服务器：要更新统一代理，请将 UA_RHEL6-64_8.0.4.0_GA_Update_4_9035261_26Sep16.tar.gz 复制到主目标服务器并将其解压缩。 在解压缩的文件夹中运行 **/Install**。
-7. Windows 源服务器：要更新统一代理，请将 UA_Windows_8.0.5.0_GA_Update_5_11525802_20Apr17.exe 复制到该源服务器。 双击以运行该文件。 
+6. **Linux 主目标服务器**：要更新统一代理，请将 **UA_RHEL6-64_8.0.4.0_GA_Update_4_9035261_26Sep16.tar.gz** 复制到主目标服务器并将其解压缩。 在解压缩的文件夹中运行 **/Install**。
+7. **Windows 源服务器**：要更新统一代理，请将 **UA_Windows_8.0.5.0_GA_Update_5_11525802_20Apr17.exe** 复制到源服务器。 双击以运行该文件。 
     如果源服务器已更新到 Update 4 或源代理已安装有最新的基本安装程序 InMage_UA_8.0.1.0_Windows_GA_28Sep2017_release.exe，则不需要在源服务器上安装 Update 5 代理。
-8. Linux 源服务器：要更新统一代理，请将相应版本的统一代理文件复制到 Linux 服务器并将其解压缩。 在解压缩的文件夹中运行 **/Install**。  示例：对于 RHEL 6.7 64 位服务器，将 UA_RHEL6-64_8.0.4.0_GA_Update_4_9035261_26Sep16.tar.gz 复制到该服务器并进行文件提取。 在解压缩的文件夹中运行 **/Install**。
+8. **Linux 源服务器**：要更新统一代理，请将相应版本的统一代理文件复制到 Linux 服务器并将其解压缩。 在解压缩的文件夹中运行 **/Install**。  示例：对于 RHEL 6.7 64 位服务器，将 **UA_RHEL6-64_8.0.4.0_GA_Update_4_9035261_26Sep16.tar.gz** 复制到该服务器并将其解压缩。 在解压缩的文件夹中运行 **/Install**。
 
 ## <a name="enable-replication"></a>启用复制
 
@@ -124,7 +124,7 @@ Azure Site Recovery 为 VMware 和 Hyper-V 客户提供一流的无缝 DRaaS 解
 ## <a name="updates"></a>更新
 
 ### <a name="site-recovery-scout-801-update-6"></a>Site Recovery Scout 8.0.1 Update 6 
-更新时间：2017 年 10 月 12 日
+更新日期：2017 年 10 月12 日
 
 下载 [Scout Update 6](https://aka.ms/asr-scout-update6)。
 
@@ -142,7 +142,7 @@ Scout Update 6 是累积更新。 其中包含从 Update 1 到 Update 5 的所�
 > [!NOTE]
 > * 已刷新面向 Windows 的基本统一代理 (UA) 安装程序，以支持 Windows Server 2016。 新的安装程序 InMage_UA_8.0.1.0_Windows_GA_28Sep2017_release.exe 与基本 Scout GA 程序包一起打包 (InMage_Scout_Standard_8.0.1 GA-Oct17.zip)。 相同的安装程序将用于所有受支持的 Windows 版本。 
 > * 已刷新基本 Windows vContinuum 和主目标安装程序来支持 Windows Server 2016。 新的安装程序 InMage_Scout_vContinuum_MT_8.0.1.0_Windows_GA_10Oct2017_release.exe 与基本 Scout GA 程序包一起打包 (InMage_Scout_Standard_8.0.1 GA-Oct17.zip)。 相同的安装程序将用于部署 Windows 2016 主目标和 Windows 2012R2 主目标。
-> * 从门户中下载 GA 包，如[创建保管库](#create-a-vault)中所述。
+> * ASR Scout 不支持物理服务器上的 Windows Server 2016。 它仅支持 Windows Server 2016 VMware VM。 
 >
 
 #### <a name="bug-fixes-and-enhancements"></a>Bug 修复和增强功能
@@ -203,7 +203,7 @@ Scout Update 4 是累积更新。 其中包含从 Update 1 到 Update 3 的所�
 * 在故障转移和灾难恢复演练期间，针对网络配置更改添加了其他检查和日志。
 * 修复了导致保留信息无法报告给配置服务器的问题。  
 * 对于物理群集，修复了在 vContinuum 向导中收缩源卷时导致卷大小调整失败的问题。
-* 修复了当群集磁盘为 PRDM 磁盘时，群集保护失败并出现“未能找到磁盘签名”错误的问题。
+* 修复了当群集磁盘为 PRDM 磁盘时发生的一个群集保护失败问题，该问题显示以下错误：“未能找到磁盘签名”。
 * 修复了 cxps 传输服务器由于超出范围的异常而崩溃的问题。
 * 在 vContinuum 向导的“推送安装”页面中，现在可对服务器名称列和 IP 地址列的大小进行调整。
 * RX API 的增强功能：
@@ -246,7 +246,7 @@ Update 3 修复了以下问题：
   * CentOS 6 Update 7
 * 配置服务器和 RX 控制台现在显示进入位图模式的对的通知。
 * 已将以下安全修复程序添加到 RX 中：
-    * 通过参数篡改绕过授权：已将访问权限限制为不适用的用户。
+    * 通过篡改参数绕过授权：已将访问权限限制为不适用的用户。
     * 跨网站请求伪造：实现页令牌概念，将为每一页随机生成。 这意味着同一用户只有一个登录实例，并且页面刷新不起作用。 相反，它将重定向到仪表板。
     * 恶意文件上传：限制文件使用特定的扩展名：z、aiff、asf、avi、bmp、csv、doc、docx、fla、flv、gif、gz、gzip、jpeg、jpg、log、mid、mov、mp3、mp4、mpc、mpeg、mpg、ods、odt、pdf、png、ppt、pptx、pxd、qt、ram、rar、rm、rmi、rmvb、rtf、sdc、sitd、swf、sxc、sxw、tar、tgz、tif、tiff、txt、vsd、wav、wma、wmv、xls、xlsx、xml 和 zip。
     * 持久性跨站点脚本：添加了输入验证。
@@ -255,8 +255,8 @@ Update 3 修复了以下问题：
 
 Update 2 中的修复包括：
 
-* 配置服务器：在将配置服务器注册到 Azure Site Recovery 保管库时阻止 31 天免费计量功能正常使用的问题。
-* 统一代理：修复了 Update 1 中导致从版本 8.0 升级到 8.0.1 期间，更新无法安装在主目标服务器上的问题。
+* **配置服务器**：在将配置服务器注册到 Azure Site Recovery 保管库时阻止 31 天免费计量功能正常使用的问题。
+* **统一代理**：修复了 Update 1 中导致从版本 8.0 升级到 8.0.1 期间，更新无法安装在主目标服务器上的问题。
 
 ### <a name="azure-site-recovery-scout-801-update-1"></a>Azure Site Recovery Scout 8.0.1 Update 1
 Update 1 包含以下 bug 修复和新功能：

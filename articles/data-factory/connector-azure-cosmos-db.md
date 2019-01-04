@@ -1,5 +1,5 @@
 ---
-title: 使用数据工厂在 Azure Cosmos DB 中复制或粘贴数据 | Microsoft Docs
+title: 使用数据工厂在 Azure Cosmos DB (SQL API) 中复制或粘贴数据 | Microsoft Docs
 description: 了解如何使用数据工厂将数据从受支持的源数据存储复制到 Azure Cosmos DB，或从 Azure Cosmos DB 复制到受支持的接收器存储。
 services: data-factory, cosmosdb
 documentationcenter: ''
@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/19/2018
 ms.author: jingwang
-ms.openlocfilehash: c10a933f371bfc84b863413134f2fdf5ff9c0e34
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: 16c02f1f47f556f550519feec78e7dd26b302e18
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52161831"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53103789"
 ---
-# <a name="copy-data-to-or-from-azure-cosmos-db-by-using-azure-data-factory"></a>使用 Azure 数据工厂在 Azure Cosmos DB 中复制或粘贴数据
+# <a name="copy-data-to-or-from-azure-cosmos-db-sql-api-by-using-azure-data-factory"></a>使用 Azure 数据工厂在 Azure Cosmos DB (SQL API) 中复制或粘贴数据
 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [版本 1](v1/data-factory-azure-documentdb-connector.md)
@@ -39,6 +39,9 @@ ms.locfileid: "52161831"
 - 按原样导入和导出 JSON 文档，或在表格数据集中复制或粘贴数据。 示例包括 SQL 数据库和 CSV 文件。 若要在 JSON 文件或另一个 Azure Cosmos DB 集合中按原样复制或粘贴文档，请参阅[导入或导出 JSON 文档](#importexport-json-documents)。
 
 数据工厂与 [Azure Cosmos DB 批量执行程序库](https://github.com/Azure/azure-cosmosdb-bulkexecutor-dotnet-getting-started)集成，以便在写入 Azure Cosmos DB 时提供最佳性能。
+
+>[!NOTE]
+>此连接器仅支持向/从 Cosmos DB SQL API 复制数据。
 
 > [!TIP]
 > [数据迁移视频](https://youtu.be/5-SRNiC_qOU)将指导你完成将数据从 Azure Blob 存储复制到 Azure Cosmos DB 的步骤。 该视频还介绍了在一般情况下将数据引入 Azure Cosmos DB 的性能优化注意事项。

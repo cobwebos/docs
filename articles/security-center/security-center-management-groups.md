@@ -3,7 +3,7 @@ title: 在 Azure 安全中心内实现租户级公开范围 | Microsoft Docs
 description: 了解如何在 Azure 安全中心内实现租户级公开范围。
 services: security-center
 documentationcenter: na
-author: TerryLanfear
+author: rkarlin
 manager: MBaldwin
 editor: ''
 ms.assetid: b85c0e93-9982-48ad-b23f-53b367f22b10
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/22/2018
-ms.author: terrylan
-ms.openlocfilehash: caab7e3d15f6d82ee4daf6eb343601ff849bfde5
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.author: rkarlin
+ms.openlocfilehash: cb70c99d56cb1d09e561a44a90fd6c007ea9b59f
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44298772"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52964111"
 ---
 # <a name="gain-tenant-wide-visibility-for-azure-security-center"></a>在 Azure 安全中心内实现租户级公开范围
 本文介绍了如何执行一些操作来最大限度地利用 Azure 安全中心提供的优势，从而帮助读者入门。 执行这些操作，可以在所有与 Azure Active Directory 租户相关联的 Azure 订阅中实现公开范围，并能以聚合方式跨多个订阅应用安全策略，从而大规模、有效地管理组织的安全状态。
@@ -93,13 +93,16 @@ Azure Active Directory 租户管理员无权直接访问 Azure 订阅。 不过�
 #### <a name="assign-rbac-roles-to-users-through-the-azure-portal"></a>通过 Azure 门户向用户分配 RBAC 角色： 
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。 
-2. 若要查看管理组，请在 Azure 主菜单下选择“所有服务”，然后选择“管理组”。
-3.  选择一个管理组，然后单击“详细信息”。
+1. 若要查看管理组，请在 Azure 主菜单下选择“所有服务”，然后选择“管理组”。
+1.  选择一个管理组，然后单击“详细信息”。
 
     ![管理组详细信息屏幕截图](./media/security-center-management-groups/management-group-details.PNG)
  
-4. 单击“访问控制(标识和访问管理)”，然后单击“添加”。
-5. 选择要分配的角色和用户，然后单击“保存”。  
+1. 单击“访问控制(IAM)”，然后单击“角色分配”。
+
+1. 单击“添加角色分配”。
+
+1. 选择要分配的角色和用户，然后单击“保存”。  
    
    ![添加安全读者角色屏幕截图](./media/security-center-management-groups/asc-security-reader.png)
 

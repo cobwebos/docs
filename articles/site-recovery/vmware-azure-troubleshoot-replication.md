@@ -5,14 +5,14 @@ author: Rajeswari-Mamilla
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 10/29/2018
+ms.date: 11/27/2018
 ms.author: ramamill
-ms.openlocfilehash: 915f7d7d2d6be02dfef0cd6bb9a2fa156ed565bc
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: ae2f32a02005bc015d2521e576ea5625bef2d377
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50214726"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52846005"
 ---
 # <a name="troubleshoot-replication-issues-for-vmware-vms-and-physical-servers"></a>解决 VMware VM 和物理服务器的复制问题
 
@@ -59,7 +59,7 @@ ms.locfileid: "50214726"
 
 * **检查进程服务器是否能通过端口 443 连接到 Azure 公共 IP 地址**
 
-从 `%programfiles%\Microsoft Azure Recovery Services Agent\Temp` 打开最新的 CBEngineCurr.errlog，然后搜索 :443 和失败的连接尝试。
+从 `%programfiles%\Microsoft Azure Recovery Services Agent\Temp` 打开最新的 CBEngineCurr.errlog，然后搜索：443 和失败的连接尝试。
 
 ![启用复制](./media/vmware-azure-troubleshoot-replication/logdetails1.png)
 

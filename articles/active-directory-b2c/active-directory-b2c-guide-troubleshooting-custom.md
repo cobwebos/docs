@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 05/07/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 32692cbe7959650d5181c9e9dfcd7dd5ee55a46e
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: 8bb95ae776c329e67e9f9936213a9f4c2a0c8f62
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50024575"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52842588"
 ---
 # <a name="troubleshoot-azure-ad-b2c-custom-policies-and-identity-experience-framework"></a>Azure AD B2C 自定义策略和标识体验框架故障排除
 
@@ -56,11 +56,11 @@ XML 架构验证在上传 XML 文件之前会识别错误。 在初学者包的�
 ## <a name="troubleshoot-the-runtime"></a>运行时故障排除
 
 * 使用 `Run Now` 和 `https://jwt.io` 独立于 Web 应用程序或移动应用程序测试策略。 此网站的作用类似于信赖方应用程序。 它显示 Azure AD B2C 策略生成的 JSON Web 令牌 (JWT) 的内容。 若要在标识体验框架中创建测试应用程序，请使用以下值：
-    * 名称：TestApp
+    * 姓名：TestApp
     * Web 应用/Web API：否
     * 本机客户端：否
 
-* 若要跟踪客户端浏览器与 Azure AD B2C 之间的消息交换，请使用 [Fiddler](http://www.telerik.com/fiddler)。 通过它可以了解用户旅程在业务流程步骤中的哪个环节失败。
+* 若要跟踪客户端浏览器与 Azure AD B2C 之间的消息交换，请使用 [Fiddler](https://www.telerik.com/fiddler)。 通过它可以了解用户旅程在业务流程步骤中的哪个环节失败。
 
 * 在“开发模式”下，使用 **Application Insights** 跟踪标识体验框架用户旅程的活动。 在“开发模式”下，可以观察标识体验框架与技术配置文件定义的各种声明提供程序（例如标识提供者、基于 API 的服务、Azure AD B2C 用户目录以及 Azure 多重身份验证等其他服务）之间的声明交换。  
 

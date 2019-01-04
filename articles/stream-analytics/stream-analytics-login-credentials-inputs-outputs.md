@@ -2,19 +2,19 @@
 title: 在 Azure 流分析作业中轮换登录凭据
 description: 本文介绍如何在 Azure 流分析作业中更新输入和输出接收器的凭据。
 services: stream-analytics
-author: jasonwhowell
+author: mamccrea
 ms.author: mamccrea
-manager: kfile
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 01/11/2018
-ms.openlocfilehash: 362fdca3b9a54ea0a8785ae37b32b88cbe0f67ba
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
+ms.date: 12/07/2018
+ms.custom: seodec18
+ms.openlocfilehash: 14e24c1e9a61eb7ea73a949e17ffbf8c5b768f05
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50978755"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53099063"
 ---
 # <a name="rotate-login-credentials-for-inputs-and-outputs-of-a-stream-analytics-job"></a>轮转流分析作业的输入和输出的登录凭据
 
@@ -27,20 +27,20 @@ ms.locfileid: "50978755"
 ### <a name="blob-storagetable-storage"></a>Blob 存储/表存储
 1. 登录 Azure 门户，浏览用作流分析作业输入/输出的存储帐户。    
 2. 从设置部分打开“访问密钥”。 在两个默认密钥（key1、key2）中选择作业不使用的那个密钥，并重新生成该密钥：  
-   ![重新生成存储帐户的密钥](media/stream-analytics-login-credentials-inputs-outputs/image1.png)
+   ![重新生成存储帐户的密钥](media/stream-analytics-login-credentials-inputs-outputs/regenerate-storage-keys.png)
 3. 复制新生成的密钥。    
 4. 从 Azure 门户中，浏览流分析作业>选择“停止”并等待作业停止。    
 5. 找到要更新凭据的 Blob/表存储输入/输出。    
 6. 找到“存储帐户密钥”字段，在其中粘贴新生成的密钥，然后单击“保存”。    
 7. 保存更改后将自动开始进行连接测试，可在通知选项卡上查看。有两种通知：一种对应于保存更新，另一种对应于测试连接：  
-   ![编辑密钥后的通知](media/stream-analytics-login-credentials-inputs-outputs/image4.png)
+   ![编辑密钥后的通知](media/stream-analytics-login-credentials-inputs-outputs/edited-key-notifications.png)
 8. 进行至[从上次停止的时间启动作业](#start-your-job-from-the-last-stopped-time)部分。
 
 ### <a name="event-hubs"></a>事件中心
 
 1. 登录 Azure 门户，浏览用作流分析作业输入/输出的事件中心。    
 2. 从设置部分中，打开“共享的访问策略”，并选择所需访问策略。 在“主密钥”和“辅助密钥”中，选择作业不使用的那个密钥，并重新生成该密钥：  
-   ![重新生成事件中心的密钥](media/stream-analytics-login-credentials-inputs-outputs/image2.png)
+   ![重新生成事件中心的密钥](media/stream-analytics-login-credentials-inputs-outputs/regenerate-event-hub-keys.png)
 3. 复制新生成的密钥。    
 4. 从 Azure 门户中，浏览流分析作业>选择“停止”并等待作业停止。    
 5. 找到需要更新凭据的事件中心输入/输出。    
@@ -54,7 +54,7 @@ ms.locfileid: "50978755"
 
 1. 登录 Azure 门户，浏览用作流分析作业输出的 SQL 数据库。    
 2. 从“数据资源管理器”中，登录/连接到数据库 > 选择“SQL server 身份验证”作为“授权类型”> 在“登录”和“密码”中键入相应详细信息>选择“确定”。  
-   ![重新生成 SQL 数据库凭据](media/stream-analytics-login-credentials-inputs-outputs/image3.png)
+   ![重新生成 SQL 数据库凭据](media/stream-analytics-login-credentials-inputs-outputs/regenerate-sql-credentials.png)
 
 3. 在查询选项卡中，通过运行以下查询（确保使用用户名替换 `<user_name>`，使用新密码替换 `<new_password>`）更改其中一个用户的密码：  
 
@@ -79,7 +79,7 @@ ms.locfileid: "50978755"
 
 1. 导航到作业的“概述”窗格 > 选择“启动”以启动作业。    
 2. 选择“上次停止时”> 单击“启动”。 请注意“上次停止时”选项仅在之前运行过作业且生成了输出的情况下出现。 作业的重启基于上次输出值的时间。
-   ![启动作业](media/stream-analytics-login-credentials-inputs-outputs/image5.png)
+   ![启动流分析作业](media/stream-analytics-login-credentials-inputs-outputs/start-stream-analytics-job.png)
 
 ## <a name="next-steps"></a>后续步骤
 * [Azure 流分析简介](stream-analytics-introduction.md)

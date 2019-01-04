@@ -1,10 +1,9 @@
 ---
-title: 如何将 Web 服务部署到多个区域 - Azure 机器学习工作室 | Microsoft Docs
-description: 将新的 Web 服务部署（复制）到其他区域的步骤。
+title: 将工作室 Web 服务部署到多个区域 - Azure 机器学习工作室 | Microsoft Docs
+description: 将新的 Web 服务部署（复制）到其他区域的步骤。 无需多个订阅或工作区即可轻松地将 Web 服务部署到多个区域。
 services: machine-learning
 documentationcenter: ''
 author: ericlicoding
-manager: hjerez
 editor: cgronlun
 ms.assetid: 36c60411-f2db-4ee2-9b66-b1f1d77a8f44
 ms.service: machine-learning
@@ -14,17 +13,18 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
-ms.custom: (previous ms.author=aashishb, author=aashishb)
+ms.custom: seodec18
 ms.author: amlstudiodocs
-ms.openlocfilehash: ab28cce0f973c4798bfd6995cc275c4724b7bcc9
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 742f462ebc3bd191a045be2a0213b1d8bc52adc5
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52308013"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53252671"
 ---
-# <a name="azure-machine-learning-studio-deploy-a-web-service-to-multiple-regions"></a>Azure 机器学习工作室：将 Web 服务部署到多个区域
-借助新的 Azure Web 服务，无需多个订阅或工作区即可轻松地将 Web 服务部署到多个区域。 
+# <a name="deploy-an-azure-machine-learning-studio-web-service-to-multiple-regions"></a>将 Azure 机器学习工作室 Web 服务部署到多个区域
+
+借助新的 Azure Web 服务，无需多个订阅或工作区即可轻松地将 Azure 机器学习工作室 Web 服务部署到多个区域。 
 
 定价因区域而异，因此必须要部署 Web 服务的每个区域定义收费计划。
 

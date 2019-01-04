@@ -1,6 +1,6 @@
 ---
-title: 如何在 Azure Active Directory 中添加或删除用户 | Microsoft Docs
-description: 学习如何使用 Azure Active Directory 添加新用户或删除现有用户。
+title: 添加或删除用户 - Azure Active Directory | Microsoft Docs
+description: 有关如何使用 Azure Active Directory 添加新用户或删除现有用户的说明。
 services: active-directory
 author: eross-msft
 manager: mtillman
@@ -11,19 +11,19 @@ ms.topic: conceptual
 ms.date: 09/04/2018
 ms.author: lizross
 ms.reviewer: jeffsta
-ms.custom: it-pro
-ms.openlocfilehash: 782363144a6b1dd87aff515c38588b6ce70b61bd
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.custom: it-pro, seodec18
+ms.openlocfilehash: dd4a9132d5f04870239be3127f723afb60b3ecef
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46295098"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53104673"
 ---
-# <a name="how-to-add-or-delete-users-using-azure-active-directory"></a>如何：使用 Azure Active Directory 添加或删除用户
-使用 Azure AD 在 Azure Active Directory (Azure AD) 租户中添加新用户或删除现有用户。
+# <a name="add-or-delete-users-using-azure-active-directory"></a>使用 Azure Active Directory 添加或删除用户
+在 Azure Active Directory (Azure AD) 租户中添加新用户或删除现有用户。
 
 ## <a name="add-a-new-user"></a>添加新用户
-可使用 Azure Active Directory 创建新用户。
+可使用 Azure Active Directory 门户创建新用户。
 
 ### <a name="to-add-a-new-user"></a>要添加新用户
 1. 以目录全局管理员或用户管理员身份登录到 [Azure 门户](https://portal.azure.com/)。
@@ -58,7 +58,7 @@ ms.locfileid: "46295098"
 若环境同时具有 Azure Active Directory（云）和 Windows Server Active Directory（内部部署），则可以通过同步现有用户帐户数据来添加新用户。 有关混合环境和用户的详细信息，请参阅[将本地目录与 Azure Active Directory 进行集成](../hybrid/whatis-hybrid-identity.md)。
 
 ## <a name="delete-a-user"></a>删除用户
-可使用 Azure Active Directory 删除现有用户。
+可使用 Azure Active Directory 门户删除现有用户。
 
 ### <a name="to-delete-a-user"></a>删除用户
 1. 使用目录的全局管理员帐户登录到 [Azure 门户](https://portal.azure.com/)。

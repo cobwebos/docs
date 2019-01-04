@@ -11,15 +11,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/19/2018
+ms.date: 11/28/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: 84924900403a4aa2a65143c65a0b26f2c95a1e5b
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 00c4d750d0617d36ab476719ce31c8038065511c
+ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52962641"
+ms.lasthandoff: 12/28/2018
+ms.locfileid: "53807204"
 ---
 # <a name="azure-stack-registration"></a>Azure Stack 注册
 可将 Azure Stack 开发工具包 (ASDK) 安装注册到 Azure，以便从 Azure 下载市场项，并设置向 Microsoft 报告商务数据的功能。 需要注册才能支持完整的 Azure Stack 功能，包括市场联合。 之所以建议注册，是因为这样可以测试重要的 Azure Stack 功能，例如市场联合和使用情况报告。 注册 Azure Stack 之后，使用情况将报告给 Azure 商业组件。 用于注册的订阅下会显示此信息。 但是，ASDK 用户无需付费，不管他们报告的用量是多少。
@@ -74,14 +74,14 @@ $ExecutionContext.SessionState.LanguageMode
     ![环境现已注册](media/asdk-register/1.PNG)
 
 
-## <a name="register-in-disconnected-environments"></a>在断开连接的环境中注册
-如果 （未连接到 internet)，要在连接断开的环境中注册 Azure Stack，则需要从 Azure Stack 环境获取注册令牌，然后在可以连接到 Azure 以注册并创建激活的计算机上使用该令牌ASDK 环境的资源。
+## <a name="register-in-disconnected-environments"></a>在离线环境中注册
+若要在离线环境（未建立 Internet 连接）中注册 Azure Stack，需要从 Azure Stack 环境获取注册令牌，然后在可连接到 Azure 的计算机上使用该令牌，并为 ASDK 环境创建激活资源。
  
  > [!IMPORTANT]
- > 在之前使用这些说明来注册 Azure Stack，请确保已安装了适用于 Azure Stack 的 PowerShell 并下载 Azure Stack 工具，如中所述[部署后配置](asdk-post-deploy.md)ASDK 主机上的文章计算机和用于连接到 Azure 并注册的 internet 访问的计算机。
+ > 在遵照这些说明注册 Azure Stack 之前，请确保根据[部署后的配置](asdk-post-deploy.md)一文中所述，在 ASDK 主机以及可访问 Internet 的、用于连接到 Azure 和注册的计算机上，安装适用于 Azure Stack 的 PowerShell 并下载 Azure Stack 工具。
 
 ### <a name="get-a-registration-token-from-the-azure-stack-environment"></a>从 Azure Stack 环境获取注册令牌
-在 ASDK 主机计算机上以管理员身份启动 PowerShell 并导航到**注册**中的文件夹**AzureStack 工具主**时下载 Azure Stack 工具创建的目录。 使用以下 PowerShell 命令来导入**RegisterWithAzure.psm1**模块，然后使用**Get AzsRegistrationToken** cmdlet 来获取注册令牌：  
+在 ASDK 主机上，以管理员身份启动 PowerShell，并导航到下载 Azure Stack 工具时所创建的 **AzureStack-Tools-master** 目录中的 **Registration** 文件夹。 使用以下 PowerShell 命令导入 **RegisterWithAzure.psm1** 模块，然后使用 **Get-AzsRegistrationToken** cmdlet 获取注册令牌：  
 
    ```PowerShell  
    # Import the registration module that was downloaded with the GitHub tools
@@ -99,7 +99,7 @@ $ExecutionContext.SessionState.LanguageMode
    -TokenOutputFilePath $FilePathForRegistrationToken
    ```
 
-将使用此注册令牌保存在连接 internet 的计算机上。 可从由 $FilePathForRegistrationToken 参数创建的文件将该文件或文本。
+保存此注册令牌，以便在连接到 Internet 的计算机上使用。 可从由 $FilePathForRegistrationToken 参数创建的文件将该文件或文本。
 
 ### <a name="connect-to-azure-and-register"></a>连接到 Azure 并注册
 在 internet 上连接的计算机，使用以下 PowerShell 命令来导入**RegisterWithAzure.psm1**模块，然后使用**Register-azsenvironment** cmdlet 将注册到 Azure 中使用你刚刚创建的注册令牌和唯一注册名称：  
@@ -126,7 +126,7 @@ $ExecutionContext.SessionState.LanguageMode
   -RegistrationName $RegistrationName
   ```
 
-或者，可以使用**Get-content** cmdlet 以指向文件，其中包含您的注册令牌：
+或者，可以使用 **Get-Content** cmdlet 指向包含注册令牌的文件：
 
   ```PowerShell  
   # Add the Azure cloud subscription environment name. 
@@ -154,13 +154,13 @@ $ExecutionContext.SessionState.LanguageMode
 > [!IMPORTANT]
 > 不要关闭 PowerShell 窗口。 
 
-保存注册令牌并注册资源名称以供将来参考。
+保存注册令牌和注册资源名称，供以后参考。
 
 ### <a name="retrieve-an-activation-key-from-the-azure-registration-resource"></a>从 Azure 注册资源检索激活密钥
 
 仍在使用连接到 internet 的计算机**和相同的 PowerShell 控制台窗口**，从注册到 Azure 时创建的注册资源检索激活密钥。
 
-若要获取激活密钥，请运行以下 PowerShell 命令，使用上一步中注册到 Azure 时提供相同的唯一注册名称值：  
+若要获取激活密钥，请运行以下 PowerShell 命令，使用在上一步骤中注册到 Azure 时提供的同一个唯一注册名称值：  
 
   ```Powershell
   $RegistrationResourceName = "<unique-registration-name>"
@@ -171,7 +171,7 @@ $ExecutionContext.SessionState.LanguageMode
   ```
 ### <a name="create-an-activation-resource-in-azure-stack"></a>在 Azure Stack 中创建激活资源
 
-与文件返回到 Azure Stack 环境或从创建的激活密钥中的文本**Get AzsActivationKey**。 运行以下 PowerShell 命令，在使用该激活密钥的 Azure Stack 中创建激活资源：   
+使用 **Get-AzsActivationKey** 从创建的激活密钥中获取文件或文本后，返回到 Azure Stack 环境。 运行以下 PowerShell 命令，使用该激活密钥在 Azure Stack 中创建激活资源：   
 
   ```Powershell
   # Import the registration module that was downloaded with the GitHub tools
@@ -184,7 +184,7 @@ $ExecutionContext.SessionState.LanguageMode
   -ActivationKey $ActivationKey
   ```
 
-或者，可以使用**Get-content** cmdlet 以指向文件，其中包含您的注册令牌：
+或者，可以使用 **Get-Content** cmdlet 指向包含注册令牌的文件：
 
   ```Powershell
   # Import the registration module that was downloaded with the GitHub tools
@@ -201,21 +201,21 @@ $ExecutionContext.SessionState.LanguageMode
 激活完成后，你应看到一条消息类似于**您的环境已完成的注册和激活过程。**
 
 ## <a name="verify-the-registration-was-successful"></a>验证注册是否成功
-请按照下列步骤以验证 ASDK 注册到 Azure**连接的环境中**是否成功。
+
+可以使用**区域管理**磁贴，以验证 Azure Stack 注册是否成功。 在管理员门户中的默认仪表板上提供了此磁贴。
 
 1. 登录到 [Azure Stack 管理门户](https://adminportal.local.azurestack.external)。
 
-2. 单击“市场管理” > “从 Azure 添加”。
+2. 从仪表板中，选择**区域管理**。
 
-    ![](media/asdk-register/2.PNG)
+    [ ![区域管理磁贴](media/asdk-register/admin1sm.png "区域管理磁贴") ](media/asdk-register/admin1.png#lightbox)
 
-3. 如果看到 Azure 提供的项列表，则表示激活成功。
-
-    ![](media/asdk-register/3.PNG)
+3. 选择“属性”。 此边栏选项卡显示的状态和你的环境的详细信息。 状态可以是**Registered**或**未注册**。 如果注册，它还显示的 Azure 订阅 ID，用于注册 Azure Stack，以及注册的资源组和名称。
 
 ## <a name="move-a-registration-resource"></a>移动注册资源
 支持在同一订阅下的资源组之间移动注册资源。 有关将资源移到新的资源组的详细信息，请参阅[将资源移到新的资源组或订阅](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources)。
 
 
 ## <a name="next-steps"></a>后续步骤
-[添加 Azure Stack 市场项](../azure-stack-marketplace.md)
+
+- [添加 Azure Stack 市场项](../azure-stack-marketplace.md)

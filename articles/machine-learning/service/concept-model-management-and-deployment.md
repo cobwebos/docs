@@ -1,26 +1,28 @@
 ---
-title: 在 Azure 机器学习服务中管理和部署模型
+title: 管理、注册、部署和监视 ML 模型
+titleSuffix: Azure Machine Learning service
 description: 了解如何使用 Azure 机器学习服务来部署、管理和监视模型，以便不断改进它们。 可以在本地计算机上或从其他源部署使用 Azure 机器学习服务训练的模型。
 services: machine-learning
 ms.service: machine-learning
 ms.component: core
 ms.topic: conceptual
 ms.reviewer: jmartens
-author: hjerez
-ms.author: hjerez
+author: chris-lauren
+ms.author: clauren
 ms.date: 09/24/2018
-ms.openlocfilehash: b09ef259d73744612c41adc4fc40ea0235da9bcb
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.custom: seodec18
+ms.openlocfilehash: 25f149ad4df43a7e5b443d6abd72be91072cb47f
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48885061"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53250191"
 ---
 # <a name="manage-deploy-and-monitor-models-with-azure-machine-learning-service"></a>使用 Azure 机器学习服务管理、部署和监视模型
 
 本文介绍如何使用 Azure 机器学习服务来部署、管理和监视模型，以便不断改进它们。 可以在本地计算机上部署通过 Azure 机器学习训练的模型，也可从其他源进行部署。 
 
-下图演示完整的部署工作流：[ ![Azure 机器学习的部署工作流](media/concept-model-management-and-deployment/deployment-pipeline.png) ](media/concept-model-management-and-deployment/deployment-pipeline.png#lightbox)
+下图演示了完整的部署工作流：[ ![Azure 机器学习的部署工作流](media/concept-model-management-and-deployment/deployment-pipeline.png) ](media/concept-model-management-and-deployment/deployment-pipeline.png#lightbox)
 
 部署工作流包括以下步骤：
 1. 在 Azure 机器学习服务工作区中托管的注册表中**注册模型**

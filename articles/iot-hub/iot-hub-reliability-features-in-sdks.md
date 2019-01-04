@@ -12,12 +12,12 @@ documentationcenter: ''
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: 64bd250f324bed53a9f33aa72f6b1daa48e0dc86
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 8951680ca9488dabffd02ee084e3f6827122276e
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52424640"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52957446"
 ---
 # <a name="manage-connectivity-and-reliable-messaging-by-using-azure-iot-hub-device-sdks"></a>使用 Azure IoT 中心设备 SDK 管理连接和可靠的消息传送
 
@@ -115,9 +115,8 @@ SDK 提供三种重试策略：
 - [Node SDK](https://github.com/Azure/azure-iot-sdk-node/wiki/Connectivity-and-Retries#types-of-errors-and-how-to-detect-them)
 
 ## <a name="next-steps"></a>后续步骤
-
-- [使用设备和服务 SDK](.\iot-hub-devguide-sdks.md)
-- [使用适用于 C 的 IoT 设备 SDK](.\iot-hub-device-sdk-c-intro.md)
-- [针对受约束设备进行开发](.\iot-hub-devguide-develop-for-constrained-devices.md)
-- [为移动设备进行开发](.\iot-hub-how-to-develop-for-mobile-devices.md)
+- [使用设备和服务 SDK](./iot-hub-devguide-sdks.md)
+- [使用适用于 C 的 IoT 设备 SDK](./iot-hub-device-sdk-c-intro.md)
+- [针对受约束设备进行开发](./iot-hub-devguide-develop-for-constrained-devices.md)
+- [为移动设备进行开发](./iot-hub-how-to-develop-for-mobile-devices.md)
 - [排查设备断开连接问题](iot-hub-troubleshoot-connectivity.md)

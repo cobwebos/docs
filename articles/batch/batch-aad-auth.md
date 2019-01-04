@@ -15,12 +15,12 @@ ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 04/18/2018
 ms.author: danlep
-ms.openlocfilehash: 67f8b49cd2205403dec8843beebb92c9f41f6e37
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 964ef3bd988d71bfb90dbaa473b4b259769064b3
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49955790"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52722049"
 ---
 # <a name="authenticate-batch-service-solutions-with-active-directory"></a>使用 Active Directory 对 Batch 服务解决方案进行身份验证
 
@@ -139,9 +139,10 @@ Azure Batch 资源终结点用于获取对 Batch 服务的请求进行身份验�
 
 1. 在 Azure 门户中，导航到应用程序使用的 Batch 帐户。
 2. 在 Batch 帐户的“设置”边栏选项卡中，选择“访问控制(IAM)”。
-3. 单击“添加”按钮。 
-4. 在“角色”下拉列表中，为应用程序选择参与者或读者角色。 有关这些角色的详细信息，请参阅 [Azure 门户中基于角色的访问控制入门](../role-based-access-control/overview.md)。  
-5. 在“选择”字段中，输入应用程序的名称。 从列表中选择你的应用程序，并单击“保存”。
+3. 单击“角色分配”选项卡。
+4. 单击“添加角色分配”按钮。 
+5. 在“角色”下拉列表中，为应用程序选择参与者或读者角色。 有关这些角色的详细信息，请参阅 [Azure 门户中基于角色的访问控制入门](../role-based-access-control/overview.md)。  
+6. 在“选择”字段中，输入应用程序的名称。 从列表中选择你的应用程序，并单击“保存”。
 
 现在，应用程序应出现在访问控制设置中，同时已分配有 RBAC 角色。 
 

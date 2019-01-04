@@ -1,5 +1,5 @@
 ---
-title: Azure Active Directory 域服务：将 Windows Server VM 加入托管域 | Microsoft 文档
+title: Azure Active Directory 域服务：将 Windows Server VM 加入托管域 | Microsoft Docs
 description: 将 Windows Server 虚拟机加入 Azure AD DS
 services: active-directory-ds
 documentationcenter: ''
@@ -15,22 +15,22 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/21/2018
 ms.author: ergreenl
-ms.openlocfilehash: 753818526ad637db0baa13c92e92d2725b19dbf8
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 748345bf89e7f746b8ef388ad5cabc987a07d1f8
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50158308"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52957659"
 ---
 # <a name="join-a-windows-server-virtual-machine-to-a-managed-domain"></a>将 Windows Server 虚拟机加入托管域
 本文展示了如何使用 Azure 门户部署 Windows Server 虚拟机。 它还展示了如何将虚拟机加入 Azure Active Directory 域服务 (Azure AD DS) 托管域。
 
 [!INCLUDE [active-directory-ds-prerequisites.md](../../includes/active-directory-ds-prerequisites.md)]
 
-## <a name="step-1-create-a-windows-server-virtual-machine"></a>步骤 1：创建 Windows Server 虚拟机。
+## <a name="step-1-create-a-windows-server-virtual-machine"></a>步骤 1：创建 Windows Server 虚拟机
 若要创建 Windows 虚拟机，并将其加入已在其中启用了 Azure AD DS 的虚拟网络，请执行以下步骤：
 
-1. 登录到 [Azure 门户](http://portal.azure.com)。
+1. 登录到 [Azure 门户](https://portal.azure.com)。
 2. 在左窗格的顶部，选择“新建”。
 3. 选择“计算”，然后选择“Windows Server 2016 Datacenter”。
 

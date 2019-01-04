@@ -1,5 +1,5 @@
 ---
-title: 如何配置应用服务环境 v1
+title: 如何配置应用服务环境 v1 - Azure
 description: 应用服务环境 v1 的配置、管理和监视
 services: app-service
 documentationcenter: ''
@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: ccompy
-ms.openlocfilehash: 34fb3f15c03a3d3ef5f0a27081539bf0a6d19c5f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.custom: seodec18
+ms.openlocfilehash: 85353b68673ea91711e0c3d93e68bec662f406df
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "22987862"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53272127"
 ---
 # <a name="configuring-an-app-service-environment-v1"></a>配置应用服务环境 v1
 
@@ -44,14 +45,14 @@ ms.locfileid: "22987862"
 但是可以设置资源池的数量和大小。 在 ASE 中，有四个大小选项，标记为 P1 到 P4。 有关这些大小及其定价的详细信息，请参阅[应用服务定价](https://azure.microsoft.com/pricing/details/app-service/)。
 更改数量或大小的操作称为缩放操作。  一次只能执行一项缩放操作。
 
-**前端**：前端是保留在 ASE 中的应用的 HTTP/HTTPS 终结点。 不能在前端运行工作负荷。
+前端：前端是 ASE 中保存的应用的 HTTP/HTTPS 端点。 不能在前端运行工作负荷。
 
 * ASE 以两个 P2 开始，这对于开发/测试工作负荷和低级生产工作负荷而言已经足够。 强烈建议针对中型到重型生产工作负荷使用 P3。
 * 对于中型到重型生产工作负荷，建议至少有四个 P3，以确保在计划的维护开始运行时有足够的前端在运行。 计划的维护活动一次会关闭一个前端。 这会减少维护活动期间可用的前端总容量。
 * 前端预配可能需要多达一小时。 
 * 要进一步微调，应监视前端池的 CPU 百分比、内存百分比和活动请求等度量值。 如果运行 P3 时 CPU 或内存百分比超出 70%，请添加更多前端。 如果每个前端的活动请求数目平均达到 15,000 到 20,000 个请求，也应该添加更多前端。 总体目标是在运行 P3 时，将 CPU 和内存百分比维持在 70% 以下，将每个前端的活动请求平均数维持在 15,000 个请求以下。  
 
-**辅助角色**：辅助角色是实际运行应用的位置。 增加应用服务计划时，将用尽关联辅助角色池中的辅助角色。
+辅助角色：辅助角色是实际运行应用的位置。 扩展应用服务计划时，将用尽关联辅助角色池中的辅助角色。
 
 * 无法立即添加辅助角色。 其预配可能需要多达一小时。
 * 缩放任何池的计算资源大小时，每个更新域都需要将近 1 小时来完成缩放。 ASE 中有 20 个更新域。 如果缩放包含 10 个实例的辅助角色池的计算大小，可能需要多达 10 小时才能完成。
@@ -68,7 +69,7 @@ ms.locfileid: "22987862"
 * 将需要更大大小且托管应用的应用服务计划重新分配到新配置的辅助角色池。 这是一个快速操作，在一分钟内应可完成。  
 * 如果不再需要那些未使用的实例，请缩减第一个辅助角色池。 此操作需要数分钟才能完成。
 
-**自动缩放**：可帮助管理计算资源消耗的工具之一。 可以针对前端或辅助角色池执行自动缩放。 可以执行以下操作：早上增加任何池类型的实例，而晚上减少实例。 或者，可以在辅助角色池中可用的辅助角色数目低于特定阈值时添加实例。
+自动缩放：可帮助管理计算资源消耗的工具之一。 可以针对前端或辅助角色池执行自动缩放。 可以执行以下操作：早上增加任何池类型的实例，而晚上减少实例。 或者，可以在辅助角色池中可用的辅助角色数目低于特定阈值时添加实例。
 
 如果想要设置有关计算资源池度量值的自动缩放规则，请记得考虑预配所需的时间。 有关自动调整应用服务环境规模的详细信息，请参阅[如何配置应用服务环境中的自动调整规模][ASEAutoscale]。
 
@@ -138,7 +139,7 @@ ASE 边栏选项卡中有一个包含几项重要功能的“设置”部分：
 
 “设置” > “IP 地址”：在 ASE 中创建 IP 安全套接字层 (SSL) 应用时，需要有一个 IP SSL 地址。 要获取该地址，ASE 需要拥有一些可分配的 IP SSL 地址。 创建的 ASE 最初有一个 IP SSL 地址用于此目的，但可以添加更多地址。 额外的 IP SSL 地址需要付费，如[应用服务定价][AppServicePricing]（在有关 SSL 连接的一节中）所述。 额外的价格是 IP SSL 价格。
 
-**设置** > **前端池** / **辅助角色池**：其中的每个资源池边栏选项卡可让用户查看仅与该资源池有关的信息，并获得全面缩放该资源池所需的控制权。  
+“设置” > “前端池” / “辅助角色池”：其中的每个资源池边栏选项卡可让用户查看仅与该资源池有关的信息，并获得全面缩放该资源池所需的控制权。  
 
 每个资源池的基本边栏选项卡分别提供一个图表，其中包含该资源池的度量值。 就像 ASE 边栏选项卡中的图表一样，可以进入该图表并设置所需的警报。 从 ASE 边栏选项卡为特定的资源池设置警报，效果等同于从资源池进行设置。 在辅助角色池的“设置”边栏选项卡中，有权访问在此辅助角色池中运行的所有应用或应用服务计划。
 
@@ -214,7 +215,7 @@ ASE 边栏选项卡中有一个包含几项重要功能的“设置”部分：
 [HowtoScale]: app-service-web-scale-a-web-app-in-an-app-service-environment.md
 [ControlInbound]: app-service-app-service-environment-control-inbound-traffic.md
 [virtualnetwork]: https://azure.microsoft.com/documentation/articles/virtual-networks-faq/
-[AppServicePricing]: http://azure.microsoft.com/pricing/details/app-service/
+[AppServicePricing]: https://azure.microsoft.com/pricing/details/app-service/
 [ASEAutoscale]: app-service-environment-auto-scale.md
 [ExpressRoute]: app-service-app-service-environment-network-configuration-expressroute.md
 [ILBASE]: app-service-environment-with-internal-load-balancer.md

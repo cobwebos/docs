@@ -1,7 +1,7 @@
 ---
 title: 常见问题解答 - QnA Maker
 titleSuffix: Azure Cognitive Services
-description: QnA Maker 服务的常见问题解答列表
+description: 关于 QnA Maker 服务的常见问题解答特选列表有助于快速利用此服务，并获得更理想的结果。
 services: cognitive-services
 author: tulasim88
 manager: cgronlun
@@ -10,14 +10,17 @@ ms.component: qna-maker
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: tulasim
-ms.openlocfilehash: 28153e71ba6f2336398517454a81cfce39b93956
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.custom: seodec18
+ms.openlocfilehash: 529c130f5694856f99f5d49e5b2f3628a4c3818f
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52496341"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53074979"
 ---
-# <a name="frequently-asked-questions"></a>常见问题
+# <a name="frequently-asked-questions-for-qna-maker"></a>QnA Maker 常见问题解答
+
+关于 QnA Maker 服务的常见问题解答特选列表有助于快速利用此服务，并获得更理想的结果。
 
 ## <a name="manage-the-knowledge-base"></a>管理知识库
 

@@ -7,19 +7,19 @@ editor: jasonwhowell
 services: mariadb
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 09/24/2018
-ms.openlocfilehash: ac05a2dcee3adaa93d31e28e5597a788c0159ddd
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.date: 12/03/2018
+ms.openlocfilehash: 4fb774341b19034d3905341a99be2114a0d1e18b
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46955429"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52835703"
 ---
 # <a name="limitations-in-azure-database-for-mariadb"></a>Azure Database for MariaDB 中的限制
-Azure Database for MariaDB 服务目前为公共预览版。 以下各部分介绍了数据库服务中的容量、存储引擎支持、特权支持、数据操作语句支持和功能限制。
+以下各部分介绍了数据库服务中的容量、存储引擎支持、特权支持、数据操作语句支持和功能限制。
 
 ## <a name="maximum-connections"></a>最大连接数
-在预览版期间，每个定价层的最大连接数和 vCore 数如下所示：
+每个定价层的最大连接数和 vCore 数如下所示：
 
 |**定价层**|**vCore(s)**| 最大连接数|
 |---|---|---|
@@ -36,7 +36,7 @@ Azure Database for MariaDB 服务目前为公共预览版。 以下各部分介�
 |内存优化| 16| 5000|
 
 当连接数超出限制时，可能会收到以下错误：
-> 错误 1040 (08004): 连接过多
+> 错误 1040 (08004)：连接过多
 
 ## <a name="storage-engine-support"></a>存储引擎支持
 

@@ -9,14 +9,14 @@ items:
     items:
     - name: 最新更新
       href: azure-stack-servicing-policy.md#update-package-release-cadence
+    - name: 1811 更新
+      href: azure-stack-update-1811.md
     - name: 1809 更新
       href: azure-stack-update-1809.md
     - name: 1808 更新
       href: azure-stack-update-1808.md
     - name: 1807 更新
       href: azure-stack-update-1807.md
-    - name: 1805 更新
-      href: azure-stack-update-1805.md
 - name: 快速入门
   items:
   - name: 评估 Azure Stack
@@ -46,6 +46,7 @@ items:
     - name: Azure Stack Capacity Planner
       href: capacity-planning-spreadsheet.md
   - name: 数据中心集成
+    href: azure-stack-customer-journey.md
     items:
     - name: 有关 Azure Stack 集成的一般注意事项
       href: azure-stack-datacenter-integration.md
@@ -78,7 +79,7 @@ items:
         href: azure-stack-validate-identity.md
       - name: 验证 ADFS 集成
         href: azure-stack-validate-adfs.md
-      - name: 验证 graph 集成
+      - name: 验证图形集成
         href: azure-stack-validate-graph.md
     - name: Azure Stack 部署 PKI 要求
       href: azure-stack-pki-certs.md
@@ -208,6 +209,8 @@ items:
         href: Azure-stack-create-service-principals.md
       - name: 启用多租户
         href: azure-stack-enable-multitenancy.md
+    - name: 静态数据加密
+      href: azure-stack-security-bitlocker.md
     - name: 轮换机密
       href: azure-stack-rotate-secrets.md
     - name: 更新防病毒定义
@@ -230,7 +233,7 @@ items:
       href: azure-stack-add-vm-image.md
     - name: 提供虚拟机规模集
       href: azure-stack-compute-add-scalesets.md
-    - name: Marketplace 常见问题解答中的 Windows Server
+    - name: 市场中的 Windows Server 常见问题解答
       href: azure-stack-windows-server-faq.md
     - name: 提供 Linux 虚拟机
       href: azure-stack-linux.md
@@ -307,7 +310,7 @@ items:
         href: azure-stack-app-service-release-notes-update-two.md
       - name: 基于 Azure Stack 的应用服务 Update 3 发行说明
         href: azure-stack-app-service-release-notes-update-three.md
-      - name: 应用服务在 Azure Stack update 4 发行说明
+      - name: 基于 Azure Stack 的应用服务 Update 4 发行说明
         href: azure-stack-app-service-release-notes-update-four.md
   - name: 创建计划、套餐和配额
     items:
@@ -398,9 +401,9 @@ items:
     href: http://stackoverflow.com/questions/tagged/azure-stack
   - name: 培训和认证
     href: https://docs.microsoft.com/azure/azure-stack/azure-stack-train-and-cert
-ms.openlocfilehash: 032235db8278fca319fe43e100570d0ff165294b
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: 3d24dc847d6ca1e842cd86ff9192d43f9006d53d
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53079562"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53723257"

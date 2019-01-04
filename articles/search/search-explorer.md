@@ -1,6 +1,6 @@
 ---
-title: 用于在 Azure 搜索中查询索引的搜索浏览器 | Microsoft Docs
-description: 了解如何使用搜索浏览器在 Azure 搜索中查询索引。
+title: Azure 门户中用于查询索引的搜索浏览器 - Azure 搜索
+description: 使用搜索浏览器等 Azure 门户工具在 Azure 搜索中查询索引。 使用高级语法输入搜索词或完全限定的搜索字符串。
 manager: cgronlun
 author: HeidiSteen
 services: search
@@ -8,12 +8,13 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 07/10/2018
 ms.author: heidist
-ms.openlocfilehash: 520d9e7b1899c54d922ff6fb77e0901f9609b029
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.custom: seodec2018
+ms.openlocfilehash: 11f102fcb2a24f9062313f9a3234c29e70a3dfe0
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39004127"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53315651"
 ---
 # <a name="how-to-use-search-explorer-to-query-indexes-in-azure-search"></a>如何使用搜索浏览器在 Azure 搜索中查询索引 
 

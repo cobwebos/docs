@@ -7,12 +7,12 @@ author: bryanla
 ms.author: bryanla
 manager: mbaldwin
 ms.date: 11/28/2018
-ms.openlocfilehash: 280d3a7783d689c6174ecf6d2b29e52bdbc42417
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 7effcc82a737fd2914f06a2c475cece94adc84f3
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52634653"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52841789"
 ---
 # <a name="azure-key-vault-managed-storage-account---powershell"></a>Azure Key Vault 托管存储帐户 - PowerShell
 
@@ -43,8 +43,10 @@ Key Vault 托管存储帐户功能代你执行多种管理功能：
 
 ## <a name="authorize-key-vault-to-access-to-your-storage-account"></a>授权 Key Vault 访问存储帐户
 
-> [!TIP]
-> Azure AD 为每个已注册的应用程序提供充当应用程序标识的**[服务主体](/azure/active-directory/develop/developer-glossary#service-principal-object)**。 然后，通过基于角色的访问控制 (RBAC) 授权该服务主体访问其他 Azure 资源，例如 Key Vault。 由于 Key Vault 是一个 Microsoft 应用程序，因此它已预先注册到应用程序 ID“cfa8b339-82a2-471a-a3c9-0fc0be7a4093”下的所有 Azure AD 租户中。
+> [!IMPORTANT]
+> Azure AD 租户为每个已注册的应用程序提供充当应用程序标识的[服务主体](/azure/active-directory/develop/developer-glossary#service-principal-object)。 通过基于角色的访问控制 (RBAC) 授权该服务主体访问其他 Azure 资源时，将使用它的应用程序 ID。 由于 Key Vault 是一个 Microsoft 应用程序，因此它已预先注册到每个 Azure 云内同一个应用程序 ID 下的所有 Azure AD 租户中：
+> - Azure 政府云中的 Azure AD 租户使用应用程序 ID `7e7c393b-45d0-48b1-a35e-2905ddf8183c`。
+> - Azure 公有云及所有其他云中的 Azure AD 租户使用应用程序 ID `cfa8b339-82a2-471a-a3c9-0fc0be7a4093`。
 
 只有在授权 Key Vault 访问你的存储帐户之后，它才可以访问和管理存储帐户密钥。 Key Vault 应用程序标识需要有权列出和重新生成存储帐户的密钥。 可通过内置的 RBAC 角色[存储帐户密钥操作员服务角色](/azure/role-based-access-control/built-in-roles#storage-account-key-operator-service-role)启用这些权限。 
 
@@ -56,6 +58,7 @@ $resourceGroupName = "rgContoso"
 $storageAccountName = "sacontoso"
 $storageAccountKey = "key1"
 $keyVaultName = "kvContoso"
+$keyVaultSpAppId = "cfa8b339-82a2-471a-a3c9-0fc0be7a4093" # See "IMPORTANT" block above for information on Key Vault Application IDs
 
 # Authenticate your PowerShell session with Azure AD, for use with Azure Resource Manager cmdlets
 $azureProfile = Connect-AzureRmAccount
@@ -64,7 +67,7 @@ $azureProfile = Connect-AzureRmAccount
 $storageAccount = Get-AzureRmStorageAccount -ResourceGroupName $resourceGroupName -StorageAccountName $storageAccountName
 
 # Assign RBAC role "Storage Account Key Operator Service Role" to Key Vault, limiting the access scope to your storage account. For a classic storage account, use "Classic Storage Account Key Operator Service Role." 
-New-AzureRmRoleAssignment -ApplicationId “cfa8b339-82a2-471a-a3c9-0fc0be7a4093” -RoleDefinitionName 'Storage Account Key Operator Service Role' -Scope $storageAccount.Id
+New-AzureRmRoleAssignment -ApplicationId $keyVaultSpAppId -RoleDefinitionName 'Storage Account Key Operator Service Role' -Scope $storageAccount.Id
 ```
 
 成功完成角色分配后，应会看到类似于以下示例的输出：
@@ -102,7 +105,6 @@ Set-AzureRmKeyVaultAccessPolicy -VaultName $keyVaultName -UserPrincipalName $azu
 使用同一 PowerShell 会话，在 Key Vault 实例中创建托管存储帐户。 `-DisableAutoRegenerateKey` 开关指定不重新生成存储帐户密钥。
 
 ```azurepowershell-interactive
-
 # Add your storage account to your Key Vault's managed storage accounts
 Add-AzureKeyVaultManagedStorageAccount -VaultName $keyVaultName -AccountName $storageAccountName -AccountResourceId $storageAccount.Id -ActiveKeyName $storageAccountKey -DisableAutoRegenerateKey
 ```
@@ -129,8 +131,6 @@ Tags                :
 
 ```azurepowershell-interactive
 $regenPeriod = [System.Timespan]::FromDays(3)
-$accountName = $storage.StorageAccountName
-
 Add-AzureKeyVaultManagedStorageAccount -VaultName $keyVaultName -AccountName $storageAccountName -AccountResourceId $storageAccount.Id -ActiveKeyName $storageAccountKey -RegenerationPeriod $regenPeriod
 ```
 

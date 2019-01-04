@@ -5,14 +5,14 @@ author: Rajeswari-Mamilla
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 11/04/2018
+ms.date: 11/27/2018
 ms.author: ramamill
-ms.openlocfilehash: efbbe048456c969f0045a0588bc5b64d1138ee15
-ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
+ms.openlocfilehash: e3967319cd41399209bd50886bce88efc8ba6ba6
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2018
-ms.locfileid: "51976955"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52956509"
 ---
 # <a name="about-the-mobility-service-for-vmware-vms-and-physical-servers"></a>关于适用于 VMware VM 和物理服务器的移动服务
 
@@ -56,11 +56,11 @@ Microsoft-ASR_UA\*DEBIAN8-64\*release.tar.gz | Debian 8
 2. 在门户中打开保管库 >“复制的项”。
 3. 如果配置服务器是最新版本，则会看到一条通知，指出“新的 Site Recovery 复制代理更新已可用。 单击可安装。”
 
-     ![“复制的项”窗口](.\media\vmware-azure-install-mobility-service\replicated-item-notif.png)
+     ![“复制的项”窗口](./media/vmware-azure-install-mobility-service/replicated-item-notif.png)
 
 4. 单击该通知，并在“代理更新”中选择要在其上升级移动服务的计算机。 然后单击“确定”。
 
-     ![“复制的项”VM 列表](.\media\vmware-azure-install-mobility-service\update-okpng.png)
+     ![“复制的项”VM 列表](./media/vmware-azure-install-mobility-service/update-okpng.png)
 
 5. 将为所选的每台计算机启动“更新移动服务”作业。
 

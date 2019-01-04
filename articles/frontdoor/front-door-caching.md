@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
-ms.openlocfilehash: 6c62e2e559749ae8dc29e86d9c2414c28b487995
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 97c02726c7e359195c6bf4ea793404562f2acccf
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46965613"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "53001949"
 ---
 # <a name="caching-with-azure-front-door-service"></a>使用 Azure Front Door 服务进行缓存
 下列文档详细说明了在具有已启用缓存的路由规则时 Front Door 的行为。
@@ -26,7 +26,7 @@ Azure Front Door 服务可交付大型文件而不限制文件大小。 Front Do
 
 </br>区块到达 Front Door 环境后，会进行缓存并立即提供给用户。 然后，Front Door 会并行预提取下一个区块。 此预提取可确保内容始终先于用户一个区块，从而减少延迟。 此过程将继续，直到整个文件下载完成（如果已请求），所有字节范围都可用（如果已请求），或客户端终止连接。
 
-</br>有关字节范围请求的详细信息，请阅读 [RFC 7233](http://www.rfc-base.org/rfc-7233.html)。
+</br>有关字节范围请求的详细信息，请阅读 [RFC 7233](https://web.archive.org/web/20171009165003/ http://www.rfc-base.org/rfc-7233.html)。
 Front Door 会在收到任何区块时将其缓存，因此整个文件无需在 Front Door 缓存中进行缓存。 后续的文件或字节范围请求将从该缓存提供。 如果未缓存部分区块，将通过预提取从后端请求区块。 该项优化取决于后端能否支持字节范围请求；如果后端不支持字节范围请求，则此优化无效。
 
 ## <a name="file-compression"></a>文件压缩

@@ -1,5 +1,5 @@
 ---
-title: Azure 搜索的搜索流量分析 | Microsoft Docs
+title: 搜索流量分析 - Azure 搜索
 description: 为 Azure 搜索（Microsoft Azure 上云托管的搜索服务）启用搜索流量分析，以解锁有关用户和数据的洞察力。
 author: HeidiSteen
 manager: cgronlun
@@ -8,12 +8,13 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 04/05/2017
 ms.author: heidist
-ms.openlocfilehash: 4b40e8c9f681b7489c0ab2ffe7b369cc869c73e2
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.custom: seodec2018
+ms.openlocfilehash: 4cc7434508e49715e95c87421db2bbed7e20de05
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33777253"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53310226"
 ---
 # <a name="what-is-search-traffic-analytics"></a>搜索流量分析是什么
 搜索流量分析是用于为搜索服务实现反馈循环的模式。 此模式描述必需的数据以及如何使用 Application Insights（用于监视多个平台中的服务的行业领导者）收集这些数据。

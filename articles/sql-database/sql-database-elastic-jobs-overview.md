@@ -3,7 +3,7 @@ title: 管理扩展云仪表板 | Microsoft 文档
 description: 使用弹性数据库作业服务跨一组数据库执行脚本。
 services: sql-database
 ms.service: sql-database
-ms.subservice: operations
+ms.subservice: scale-out
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 10/22/2018
-ms.openlocfilehash: f5878c510e048bea2ce1aedaf4e0e5dbb4611caf
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 9647522f4b3990d065f292f05934b8d19c691454
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50242511"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52865516"
 ---
 # <a name="managing-scaled-out-cloud-databases"></a>管理扩大的云数据库
 
@@ -81,7 +81,7 @@ ms.locfileid: "50242511"
 2. 使用 PowerShell API 可以访问更多功能，例如创建自定义数据库集合、添加计划和/或收集结果集。 使用门户可方便安装并将创建/监视限制为针对“弹性池”执行的作业。
 3. 针对作业执行创建加密的凭据，并将[用户（或角色）添加到组中的每个数据库](sql-database-security-overview.md)。
 4. 创建可针对组中每个数据库运行的幂等 T-SQL 脚本。
-5. 使用 Azure 门户遵循以下步骤来创建作业：[创建和管理弹性数据库作业](sql-database-elastic-jobs-create-and-manage.md)。
+5. 请按照下列步骤使用 Azure 门户创建作业：[创建和管理弹性数据库作业](sql-database-elastic-jobs-create-and-manage.md)。
 6. 或使用 PowerShell 脚本：[使用 PowerShell 创建和管理 SQL 数据库弹性数据库作业（预览版）](sql-database-elastic-jobs-powershell.md)。
 
 ## <a name="idempotent-scripts"></a>幂等脚本

@@ -1,6 +1,6 @@
 ---
-title: 将 Azure 开发测试实验室集成到 VSTS 持续集成和交付管道 | Microsoft Docs
-description: 了解如何将 Azure 开发测试实验室集成到 VSTS 持续集成和交付管道
+title: 将 Azure 开发测试实验室集成到 Azure 管道持续集成和交付管道 | Microsoft Docs
+description: 了解如何将 Azure 开发测试实验室集成到 Azure 管道持续集成和交付管道
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
-ms.openlocfilehash: b7ce07547eccd52a8b10d4cffecaf1456778da4a
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 459b06df954d9cc913b6d1503c9f876f93b494e9
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44301202"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53082945"
 ---
 # <a name="integrate-azure-devtest-labs-into-your-azure-devops-continuous-integration-and-delivery-pipeline"></a>将 Azure 开发测试实验室集成到 Azure DevOps 持续集成和交付管道
 可使用 Azure DevOps 中安装的 *Azure 开发测试实验室任务*扩展，将 CI/CD 生成与发布管道与 Azure 开发测试实验室轻松集成。 该扩展将安装三个任务： 
@@ -96,7 +96,7 @@ ms.locfileid: "44301202"
 1. 在新发布管道中，选择环境名称旁边的省略号 (...)，然后选择“配置变量”，可打开快捷菜单。 
 1. 在“配置 - 环境”窗口中，对于在发布管道中使用的变量，输入以下值：
 
-   a. 对于 vmName，输入在 Azure 门户中创建资源管理器模板时分配给 VM 的名称。
+   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 对于 vmName，输入在 Azure 门户中创建资源管理器模板时分配给 VM 的名称。
 
    b. 对于 userName，输入在 Azure 门户中创建资源管理器模板时分配给 VM 的用户名。
 
@@ -112,7 +112,7 @@ ms.locfileid: "44301202"
    > [!NOTE]
    > 若要创建 VM 以用于后续部署，请参阅 [Azure 开发测试实验室任务](https://marketplace.visualstudio.com/items?itemName=ms-azuredevtestlabs.tasks)。
 
-   a. 对于“Azure RM 订阅”，从“可用 Azure 服务连接”列表中选择连接，或创建到 Azure 订阅的限制更严格的权限连接。 有关详细信息，请参阅 [Azure 资源管理器服务终结点](https://docs.microsoft.com/azure/devops/pipelines/library/service-endpoints#sep-azure-rm)。
+   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 对于“Azure RM 订阅”，从“可用 Azure 服务连接”列表中选择连接，或创建到 Azure 订阅的限制更严格的权限连接。 有关详细信息，请参阅 [Azure 资源管理器服务终结点](https://docs.microsoft.com/azure/devops/pipelines/library/service-endpoints#sep-azure-rm)。
 
    b. 对于“实验室名称”，选择之前创建的实例的名称。
 
@@ -138,9 +138,9 @@ ms.locfileid: "44301202"
 1. 在发布管道中，选择“添加任务”，然后在“部署选项卡”上添加“Azure PowerShell”任务。 对任务进行如下配置：
 
    > [!NOTE]
-   > 若要收集开发测试实验室 VM 的详细信息，请参阅[部署：Azure PowerShell](https://github.com/Microsoft/vsts-tasks/tree/master/Tasks/AzurePowerShell) 并执行脚本。
+   > 若要收集开发测试实验室 VM 的详细信息，请参阅[部署：Azure PowerShell](https://github.com/Microsoft/azure-pipelines-tasks/tree/master/Tasks/AzurePowerShellV3) 并执行脚本。
 
-   a. 对于“Azure 连接类型”，选择“Azure 资源管理器”。
+   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 对于“Azure 连接类型”，选择“Azure 资源管理器”。
 
    b. 对于“Azure RM 订阅”，从“可用 Azure 服务连接”列表之下选择连接，或创建到 Azure 订阅的限制更严格的权限连接。 有关详细信息，请参阅 [Azure 资源管理器服务终结点](https://docs.microsoft.com/azure/devops/pipelines/library/service-endpoints#sep-azure-rm)。
 
@@ -169,7 +169,7 @@ ms.locfileid: "44301202"
    > [!NOTE]
    > 若要创建映像，请参阅 [Azure 开发测试实验室任务](https://marketplace.visualstudio.com/items?itemName=ms-azuredevtestlabs.tasks)。
 
-   a. 对于“Azure RM 订阅”，从“可用 Azure 服务连接”列表中选择连接，或创建到 Azure 订阅的限制更严格的权限连接。 有关详细信息，请参阅 [Azure 资源管理器服务终结点](https://docs.microsoft.com/azure/devops/pipelines/library/service-endpoints#sep-azure-rm)。
+   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 对于“Azure RM 订阅”，从“可用 Azure 服务连接”列表中选择连接，或创建到 Azure 订阅的限制更严格的权限连接。 有关详细信息，请参阅 [Azure 资源管理器服务终结点](https://docs.microsoft.com/azure/devops/pipelines/library/service-endpoints#sep-azure-rm)。
 
    b. 对于“实验室名称”，选择之前创建的实例的名称。
 
@@ -190,7 +190,7 @@ ms.locfileid: "44301202"
       > [!NOTE]
       > 若要删除 VM，请参阅 [Azure 开发测试实验室任务](https://marketplace.visualstudio.com/items?itemName=ms-azuredevtestlabs.tasks)。
 
-   a. 对于“Azure RM 订阅”，从“可用 Azure 服务连接”列表中选择连接，或创建到 Azure 订阅的限制更严格的权限连接。 有关详细信息，请参阅 [Azure 资源管理器服务终结点](https://docs.microsoft.com/azure/devops/pipelines/library/service-endpoints#sep-azure-rm)。
+   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 对于“Azure RM 订阅”，从“可用 Azure 服务连接”列表中选择连接，或创建到 Azure 订阅的限制更严格的权限连接。 有关详细信息，请参阅 [Azure 资源管理器服务终结点](https://docs.microsoft.com/azure/devops/pipelines/library/service-endpoints#sep-azure-rm)。
  
    b. 对于“源实验室 VM ID”，如果更改了在之前的任务中自动填充了实验室 VM ID 的环境变量的默认名称，请在此处对其进行编辑。 默认值为 $(labVMId)。
 

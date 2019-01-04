@@ -1,21 +1,22 @@
 ---
-title: 了解如何在基于模式的实体中使用角色
+title: 实体角色
 titleSuffix: Azure Cognitive Services
-description: 角色是仅在模式中使用的实体的已命名上下文子类型。 例如，在购买从纽约到伦敦的车票的话语中，纽约和伦敦都是城市，但是两者在句中的含义不同。 纽约为出发城市，伦敦为目标城市。
+description: 角色是仅在模式中使用的实体的已命名上下文子类型。 例如，在表述 `buy a ticket from New York to London` 中，纽约和伦敦都是城市，但是两者在句中的含义不同。 纽约为出发城市，伦敦为目标城市。
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: conceptual
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: f5f790d4cdba8b6ebc1ed2694cb4552cb565f676
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: dd11c2c7062d09c522c46770e8dba6d6eb0ac1e9
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52427210"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53105558"
 ---
 # <a name="entity-roles-in-patterns-are-contextual-subtypes"></a>模式中的实体角色是上下文子类型
 角色是仅在[模式](luis-concept-patterns.md)中使用的实体的已命名上下文子类型。

@@ -1,5 +1,5 @@
 ---
-title: 使用 PowerShell 克隆 Web 应用
+title: 使用 PowerShell 克隆应用 - Azure 应用服务
 description: 了解如何使用 PowerShell 将 Web 应用克隆到新的 Web 应用。
 services: app-service\web
 documentationcenter: ''
@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/14/2016
 ms.author: aelnably
-ms.openlocfilehash: 30817a1a6a8079e7a896305ab0b59e48fad4d644
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.custom: seodec18
+ms.openlocfilehash: 87bae4db64c0a22790b7f52f919601f82aa548df
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/18/2018
-ms.locfileid: "27867464"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53261861"
 ---
 # <a name="azure-app-service-app-cloning-using-powershell"></a>使用 PowerShell 克隆 Azure 应用服务应用
 在发行的 Microsoft Azure PowerShell 版本 1.1.0 中，为 `New-AzureRMWebApp` 添加了新选项，可让用户将现有 Web 应用克隆到不同区域或相同区域中的新建应用。 使用此选项，客户可跨不同区域快速轻松地部署多个应用。
@@ -97,14 +98,14 @@ $destapp = New-AzureRmWebApp -ResourceGroupName DestinationAzureResourceGroup -N
 通过创建多区域 Web 应用和配置 Azure 流量管理器来将流量路由到所有这些 Web 应用是一个重要的方案，可确保客户应用的高可用性。 克隆现有 Web 应用时，可以选择将两个 Web 应用都连接到新的或现有的流量管理器配置文件。 仅支持 Azure 资源管理器版本的流量管理器。
 
 ### <a name="creating-a-new-traffic-manager-profile-while-cloning-an-app"></a>在克隆应用时创建新的流量管理器配置文件
-场景：用户想要将 Web 应用克隆到另一个区域，同时配置包含两个 Web 应用的 Azure 资源管理器流量管理器配置文件。 以下命令演示如何在新 Web 应用中创建源 Web 应用的克隆，同时配置新的流量管理器配置文件：
+场景：用户想要将 Web 应用克隆到另一个区域，同时配置包含这两个 Web 应用的 Azure 资源管理器流量管理器配置文件。 以下命令演示如何在新 Web 应用中创建源 Web 应用的克隆，同时配置新的流量管理器配置文件：
 
 ```PowerShell
 $destapp = New-AzureRmWebApp -ResourceGroupName DestinationAzureResourceGroup -Name dest-webapp -Location "South Central US" -AppServicePlan DestinationAppServicePlan -SourceWebApp $srcapp -TrafficManagerProfileName newTrafficManagerProfile
 ```
 
 ### <a name="adding-new-cloned-web-app-to-an-existing-traffic-manager-profile"></a>将新克隆的 Web 应用添加到现有的流量管理器配置文件
-场景：用户已有一个 Azure 资源管理器流量管理器配置文件，现在想要将两个 Web 应用添加为终结点。 要执行此操作，首先需要组合现有流量管理器配置文件 ID。 需要订阅 ID、资源组名称和现有流量管理器配置文件名称。
+场景：用户已有一个 Azure 资源管理器流量管理器配置文件，现在想要将两个 Web 应用都添加为终结点。 要执行此操作，首先需要组合现有流量管理器配置文件 ID。 需要订阅 ID、资源组名称和现有流量管理器配置文件名称。
 
 ```PowerShell
 $TMProfileID = "/subscriptions/<Your subscription ID goes here>/resourceGroups/<Your resource group name goes here>/providers/Microsoft.TrafficManagerProfiles/ExistingTrafficManagerProfileName"
@@ -127,7 +128,7 @@ $destapp = New-AzureRmWebApp -ResourceGroupName <Resource group name> -Name dest
 * 不会克隆 Kudu 扩展
 * 不会克隆 TiP 规则
 * 不会克隆数据库内容
-* 如果克隆到不同的缩放单位，出站 IP 地址会更改
+* 如果克隆到不同的缩放单元，出站 IP 地址会更改
 
 ### <a name="references"></a>参考
 * [Web 应用克隆](app-service-web-app-cloning.md)

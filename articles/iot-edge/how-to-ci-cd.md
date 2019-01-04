@@ -1,47 +1,46 @@
 ---
-title: Azure IoT Edge 持续集成和持续部署 | Microsoft Docs
-description: Azure IoT Edge 持续集成和持续部署的概述
+title: 持续集成和持续部署 - Azure IoT Edge | Microsoft Docs
+description: 设置持续集成和持续部署 - Azure IoT Edge 以及 Azure DevOps、Azure Pipelines
 author: shizn
-manager: ''
+manager: philmea
 ms.author: xshi
-ms.date: 11/29/2018
+ms.date: 12/12/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 16dac996f871241b8c9b5e4c1b797d07d79aeb79
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.custom: seodec18
+ms.openlocfilehash: a714cec5ce05473887f9f06d47c75563bf878081
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52632556"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53386819"
 ---
 # <a name="continuous-integration-and-continuous-deployment-to-azure-iot-edge"></a>向 Azure IoT Edge 进行持续集成和持续部署
 
-借助 Azure Pipelines 中的内置 Azure IoT Edge 任务或 Jenkins 服务器上[适用于 Jenkins 的 Azure IoT Edge 插件](https://plugins.jenkins.io/azure-iot-edge)，可以轻松地在 Azure IoT Edge 应用程序中采用 DevOps。 本文演示如何使用 Azure Pipelines 和 Azure DevOps Server 的持续集成和持续部署功能，快速高效地生成和测试应用程序并将其部署到 Azure IoT Edge。 
+借助 Azure Pipelines 中的内置 Azure IoT Edge 任务或 Jenkins 服务器上[适用于 Jenkins 的 Azure IoT Edge 插件](https://plugins.jenkins.io/azure-iot-edge)，可以轻松地在 Azure IoT Edge 应用程序中采用 DevOps。 本文演示了如何使用 Azure Pipelines 的持续集成和持续部署功能，快速高效地生成和测试应用程序并将其部署到 Azure IoT Edge。 
 
 本文介绍如何执行以下操作：
 * 创建并签入示例 IoT Edge 解决方案。
 * 配置持续集成 (CI) 以生成解决方案。
 * 配置持续部署 (CD) 以部署解决方案并查看响应。
 
-完成本文中的步骤需要 20 分钟。
-
-![CI 和 CD](./media/how-to-ci-cd/cd.png)
+![示意图 - 用于开发和生产的 CI 和 CD 分支](./media/how-to-ci-cd/cd.png)
 
 
 ## <a name="create-a-sample-azure-iot-edge-solution-using-visual-studio-code"></a>使用 Visual Studio Code 创建示例 Azure IoT Edge 解决方案
 
-在本部分中，创建一个示例 IoT Edge 解决方案，其中包含可在生成过程中执行的单元测试。 在按照本部分中的指导进行操作之前，请先完成[使用 Visual Studio Code 中的多个模块开发 IoT Edge 解决方案](tutorial-multiple-modules-in-vscode.md)中的步骤。
+在本部分中，创建一个示例 IoT Edge 解决方案，其中包含可在生成过程中执行的单元测试。 在按照本部分中的指导进行操作之前，请先完成[使用 Visual Studio Code 中的多个模块开发 IoT Edge 解决方案](how-to-develop-multiple-modules-vscode.md)中的步骤。
 
-1. 在 VS Code 命令面板中，键入并运行“Azure IoT Edge: New IoT Edge Solution”命令。 然后，选择你的工作区文件夹，提供解决方案名称（默认名称为 EdgeSolution），并创建一个 C# 模块 (FilterModule) 作为此解决方案中的第一个用户模块。 还需要为你的第一个模块指定 Docker 映像存储库。 默认映像存储库基于本地 Docker 注册表 (`localhost:5000/filtermodule`)。 为了进一步的持续集成，请将其更改为 Azure 容器注册表 (`<your container registry address>/filtermodule`) 或 Docker 中心。
+1. 在 VS Code 命令面板中，键入并运行 **Azure IoT Edge:New IoT Edge solution** 命令。 然后，选择你的工作区文件夹，提供解决方案名称（默认名称为 EdgeSolution），并创建一个 C# 模块 (FilterModule) 作为此解决方案中的第一个用户模块。 还需要为你的第一个模块指定 Docker 映像存储库。 默认映像存储库基于本地 Docker 注册表 (`localhost:5000/filtermodule`)。 为了进一步的持续集成，请将其更改为 Azure 容器注册表 (`<your container registry address>/filtermodule`) 或 Docker 中心。
 
-    ![设置 ACR](./media/how-to-ci-cd/acr.png)
+    ![设置 Azure 容器注册表](./media/how-to-ci-cd/acr.png)
 
-2. VS Code 窗口将加载你的 IoT Edge 解决方案空间。 可选择键入并运行“Azure IoT Edge: Add IoT Edge module”以添加更多模块。 根文件夹中有一个 `modules` 文件夹、一个 `.vscode` 文件夹和一个部署清单模板文件。 所有用户模块代码都将成为文件夹 `modules` 下的子文件夹。 `deployment.template.json` 是部署清单模板。 此文件中的某些参数将通过 `module.json` 进行分析，它存在于每个模块文件夹中。
+2. VS Code 窗口将加载你的 IoT Edge 解决方案空间。 还可以键入并运行 **Azure IoT Edge:Add IoT Edge module** 来添加更多模块。 根文件夹中有一个 `modules` 文件夹、一个 `.vscode` 文件夹和一个部署清单模板文件。 所有用户模块代码都将成为文件夹 `modules` 下的子文件夹。 `deployment.template.json` 是部署清单模板。 此文件中的某些参数将通过 `module.json` 进行分析，它存在于每个模块文件夹中。
 
 3. 现在，示例 IoT Edge 解决方案已准备就绪。 默认 C# 模块充当管道消息模块。 在 `deployment.template.json` 中，你将看到此解决方案包含两个模块。 消息将从 `tempSensor` 模块生成，并且将通过 `FilterModule` 直接输送，然后发送到 IoT 中心。
 
-4. 保存这些项目，然后将其签入 Azure Repos 或 Azure DevOps Server 存储库。
+4. 保存这些项目，然后将其提交到 Azure Repos。
     
 > [!NOTE]
 > 若要详细了解如何使用 Azure 存储库，请参阅 [Share your code with Visual Studio and Azure Repos](https://docs.microsoft.com/azure/devops/repos/git/share-your-code-in-git-vs?view=vsts)（与 Visual Studio 和 Azure 存储库共享代码）。
@@ -52,19 +51,19 @@ ms.locfileid: "52632556"
 
 1. 登录 Azure DevOps 组织 (https://dev.azure.com/{your organization}/) 并打开签入了示例应用的项目。
 
-    ![签入代码](./media/how-to-ci-cd/init-project.png)
+    ![将代码签入到 Azure Pipelines](./media/how-to-ci-cd/init-project.png)
 
 1. 在 Azure Pipelines 中打开“生成”选项卡，选择“+ 新建管道”。 或者，如果已有生成管道，则选择“+ 新建”按钮。 然后选择“新建生成管道”。
 
-    ![新建管道](./media/how-to-ci-cd/add-new-build.png)
+    ![创建新的生成管道](./media/how-to-ci-cd/add-new-build.png)
 
-1. 若出现提示，请选择“Azure DevOps Git”源类型。 然后选择代码所在的项目、存储库和分支。 选择“继续”。
+1. 在出现提示时，选择源的 Azure Repos。 然后选择代码所在的项目、存储库和分支。 选择“继续”。
 
-    ![选择 git](./media/how-to-ci-cd/select-vsts-git.png)
+    ![选择 Azure Repos Git](./media/how-to-ci-cd/select-vsts-git.png)
 
     在“选择模板”窗口中选择“从空进程开始”。
 
-    ![选择模板](./media/how-to-ci-cd/start-with-empty.png)
+    ![从空进程开始](./media/how-to-ci-cd/start-with-empty.png)
 
 1. 在管道编辑器中，选择代理池。 
     
@@ -72,27 +71,27 @@ ms.locfileid: "52632556"
     * 若要在用于 Windows 容器的 amd64 平台中生成模块，请选择“托管 VS2017” 
     * 若要在用于 Linux 容器的 arm32v7 平台中生成模块，则需要通过单击“管理”按钮来设置自己的生成代理。
     
-    ![配置生成代理](./media/how-to-ci-cd/configure-env.png)
+    ![配置生成代理池](./media/how-to-ci-cd/configure-env.png)
 
 1. 在代理作业中单击“+”，以在生成管道中添加三个任务。 头两个任务来自“Azure IoT Edge”。 第三个任务来自“发布生成项目”
     
-    ![添加任务](./media/how-to-ci-cd/add-tasks.png)
+    ![将任务添加到生成管道](./media/how-to-ci-cd/add-tasks.png)
 
 1. 在第一个 Azure IoT Edge 任务中，将“显示名称”更新为“Azure IoT Edge - 生成模块映像”，并在“操作”下拉列表中选择“生成模块映像”。 在 **.template.json 文件**控件中，选择 **deployment.template.json** 文件，该文件描述 IoT Edge 解决方案。 然后选择“默认平台”，确保选择与 IoT Edge 设备相同的平台。 此任务会通过指定的目标平台生成解决方案中的所有模块。 另外还会生成 **deployment.json** 文件，可以在“输出变量”中找到文件路径。 对于此变量，请将别名设置为 `edge`。
     
-    ![生成并推送](./media/how-to-ci-cd/build-and-push.png)
+    ![配置“生成模块映像”任务](./media/how-to-ci-cd/build-and-push.png)
 
 1. 在第二个 Azure IoT Edge 任务中，将“显示名称”更新为“Azure IoT Edge - 推送模块映像”，并在“操作”下拉列表中选择“推送模块映像”。 选择“容器注册表类型”，确保在代码中配置并选择相同的注册表 (module.json)。 在 **.template.json 文件**控件中，选择 **deployment.template.json** 文件，该文件描述 IoT Edge 解决方案。 然后选择“默认平台”，确保为已生成的模块映像选择相同的平台。 此任务会将所有模块映像推送到所选容器注册表。 另外还会在 **deployment.json** 文件中添加容器注册表凭据，可以在“输出变量”中找到文件路径。 对于此变量，请将别名设置为 `edge`。 如果有多个用于托管模块映像的容器注册表，则需重复此任务，选择其他容器注册表，并使用高级设置中的“绕过模块”来绕过不适用于此特定注册表的映像。
 
-    ![推送](./media/how-to-ci-cd/push.png)
+    ![配置“推送模块映像”任务](./media/how-to-ci-cd/push.png)
 
 1. 在“发布生成项目”任务中，将指定生成任务生成的部署文件。 将“要发布的路径”设置为 `$(edge.DEPLOYMENT_FILE_PATH)`。
 
-    ![发布项目](./media/how-to-ci-cd/publish-build-artifacts.png)
+    ![配置“发布项目”任务](./media/how-to-ci-cd/publish-build-artifacts.png)
 
 1. 打开“触发器”选项卡并开启“持续集成”触发器。 确保包含代码的分支已包括在内。
 
-    ![配置触发器](./media/how-to-ci-cd/configure-trigger.png)
+    ![开启“持续集成”触发器](./media/how-to-ci-cd/configure-trigger.png)
 
     保存新的生成管道。 单击“保存”按钮  。
 
@@ -100,7 +99,7 @@ ms.locfileid: "52632556"
 ## <a name="configure-azure-pipelines-for-continuous-deployment"></a>配置 Azure Pipelines，以进行持续部署
 在本部分中，将创建一个发布管道，此管道配置为在生成管道放置项目时自动运行，并且它将在 Azure Pipelines 中显示部署日志。
 
-1. 在“发布”选项卡上，选择“+ 新键管道”。 或者，如果已有发布管道，则选择“+ 新建”按钮。  
+1. 在“发布”选项卡上，选择“+ 新建管道”。 或者，如果已有发布管道，则选择“+ 新建”按钮并单击“+ 新建发布管道”。  
 
     ![添加发布管道](./media/how-to-ci-cd/add-release-pipeline.png)
 
@@ -108,9 +107,9 @@ ms.locfileid: "52632556"
 
     ![从空作业开始](./media/how-to-ci-cd/start-with-empty-job.png)
 
-2. 然后发布管道将初始化一个阶段：阶段 1。 将“阶段 1”重命名为“QA”，并将其视为测试环境。 在典型的持续部署管道中，它通常存在多个阶段，你可以根据 DevOps 实践创建更多阶段。
+2. 然后发布管道将初始化一个阶段：**阶段 1**。 将“阶段 1”重命名为“QA”，并将其视为测试环境。 在典型的持续部署管道中，它通常存在多个阶段，你可以根据 DevOps 实践创建更多阶段。
 
-    ![创建阶段](./media/how-to-ci-cd/QA-env.png)
+    ![“创建测试环境”阶段](./media/how-to-ci-cd/QA-env.png)
 
 3. 将发布链接到生成项目。 在项目区域中，单击“添加”。
 
@@ -118,11 +117,11 @@ ms.locfileid: "52632556"
     
     在“添加项目”页中，选择源类型“生成”。 然后选择项目和创建的生成管道。 然后单击“添加”。
 
-    ![添加项目](./media/how-to-ci-cd/add-an-artifact.png)
+    ![添加生成项目](./media/how-to-ci-cd/add-an-artifact.png)
 
     打开持续部署触发器，以便在每次新的生成可用时创建新发布。
 
-    ![配置触发器](./media/how-to-ci-cd/add-a-trigger.png)
+    ![配置“持续部署”触发器](./media/how-to-ci-cd/add-a-trigger.png)
 
 4. 导航到 QA 阶段，并配置处于此阶段的任务。
 

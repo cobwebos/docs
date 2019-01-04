@@ -1,5 +1,5 @@
 ---
-title: 创建外部 Azure 应用服务环境
+title: 创建外部应用服务环境 - Azure
 description: 阐释如何在创建应用或独立项时，创建应用服务环境
 services: app-service
 documentationcenter: na
@@ -13,12 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/13/2017
 ms.author: ccompy
-ms.openlocfilehash: 0ee2654b313f453f7485c89c789edc8efc068d7b
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.custom: seodec18
+ms.openlocfilehash: 98d534e20b8e4c6bf6bcc3f483f59b796dc85073
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39442643"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53274458"
 ---
 # <a name="create-an-external-app-service-environment"></a>创建外部应用服务环境 #
 
@@ -64,29 +65,29 @@ Azure 应用服务环境是指将 Azure App Service 部署到 Azure 虚拟网络
 
     ![创建 Web 应用][1]
 
-1. 选择订阅。 在相同订阅中创建应用和 ASE。
+2. 选择订阅。 在相同订阅中创建应用和 ASE。
 
-1. 选择或创建资源组。 使用资源组，可以单位形式管理相关的 Azure 资源。 为应用建立基于角色的访问控制 (RBAC) 规则时，资源组也可发挥作用。 有关详细信息，请参阅 [Azure 资源管理器概述][ARMOverview]。
+3. 选择或创建资源组。 使用资源组，可以单位形式管理相关的 Azure 资源。 为应用建立基于角色的访问控制 (RBAC) 规则时，资源组也可发挥作用。 有关详细信息，请参阅 [Azure 资源管理器概述][ARMOverview]。
 
-1. 选择操作系统（Windows、Linux 或 Docker）。 
+4. 选择操作系统（Windows、Linux 或 Docker）。 
 
-1. 选择应用服务计划，然后选择“新建”。 Linux Web 应用和 Windows Web 应用不能位于同一应用服务计划中，但可以位于同一应用服务环境中。 
+5. 选择应用服务计划，然后选择“新建”。 Linux Web 应用和 Windows Web 应用不能位于同一应用服务计划中，但可以位于同一应用服务环境中。 
 
     ![新建应用服务计划][2]
 
-1. 在“位置”下拉列表中，选择要创建 ASE 的区域。 如果选择现有 ASE，则不会新建 ASE。 应用服务计划将在所选 ASE 中进行创建。 
+6. 在“位置”下拉列表中，选择要创建 ASE 的区域。 如果选择现有 ASE，则不会新建 ASE。 应用服务计划将在所选 ASE 中进行创建。 
 
-1. 选择“定价层”，然后选择其中一个“独立”定价 SKU。 如果选择独立 SKU 卡和非 ASE 的位置，则会在该位置新建一个 ASE。 若要开始创建 ASE 的过程，请选择“选择”。 独立 SKU 仅能与 ASE 结合使用。 此外，仅可在独立 ASE 中使用任何其他定价 SKU。 
+7. 选择“定价层”，然后选择其中一个“独立”定价 SKU。 如果选择独立 SKU 卡和非 ASE 的位置，则会在该位置新建一个 ASE。 若要开始创建 ASE 的过程，请选择“选择”。 独立 SKU 仅能与 ASE 结合使用。 此外，仅可在独立 ASE 中使用任何其他定价 SKU。 
 
     ![定价层选择][3]
 
-1. 输入你的 ASE 的名称。 此名称在应用的可寻址名称中使用。 如果 ASE 名称为 appsvcenvdemo，则域名为 .appsvcenvdemo.p.azurewebsites.net。 如果创建名为 mytestapp 的应用，则可在 mytestapp.appsvcenvdemo.p.azurewebsites.net 中访问它。 不能在名称中使用空格。 如果使用大写字符，则域名为该名称的全小写形式。
+8. 输入你的 ASE 的名称。 此名称在应用的可寻址名称中使用。 如果 ASE 名称为 appsvcenvdemo，则域名为 .appsvcenvdemo.p.azurewebsites.net。 如果创建名为 mytestapp 的应用，则可在 mytestapp.appsvcenvdemo.p.azurewebsites.net 中访问它。 不能在名称中使用空格。 如果使用大写字符，则域名为该名称的全小写形式。
 
     ![新建应用服务计划名称][4]
 
-1. 指定 Azure 虚拟网络详细信息。 选择“新建”或“选择现有”。 只有所选区域中具有 VNet 时，才可使用选择现有 VNet 选项。 如果选择“新建”，需输入 VNet 的名称。 随即创建带有该名称的新资源管理器 VNet。 它使用所选区域中的地址空间 `192.168.250.0/23`。 如果选择“选择现有”，则需要：
+9. 指定 Azure 虚拟网络详细信息。 选择“新建”或“选择现有”。 只有所选区域中具有 VNet 时，才可使用选择现有 VNet 选项。 如果选择“新建”，需输入 VNet 的名称。 随即创建带有该名称的新资源管理器 VNet。 它使用所选区域中的地址空间 `192.168.250.0/23`。 如果选择“选择现有”，则需要：
 
-    a. 选择 VNet 地址块（若有多个）。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 选择 VNet 地址块（若有多个）。
 
     b. 输入新的子网名称。
 
@@ -94,7 +95,7 @@ Azure 应用服务环境是指将 Azure App Service 部署到 Azure 虚拟网络
 
     d. 选择子网 IP 范围。
 
-1. 选择“创建”以创建 ASE。 此过程还会创建应用服务计划和应用。 ASE、应用服务计划和应用都位于同一订阅和同一资源组中。 如果 ASE 需要单独的资源组，或者你需要 ILB ASE，请按照以下步骤自动创建 ASE。
+10. 选择“创建”以创建 ASE。 此过程还会创建应用服务计划和应用。 ASE、应用服务计划和应用都位于同一订阅和同一资源组中。 如果 ASE 需要单独的资源组，或者你需要 ILB ASE，请按照以下步骤自动创建 ASE。
 
 ## <a name="create-an-ase-and-a-linux-web-app-using-a-custom-docker-image-together"></a>使用自定义 Docker 映像创建一个 ASE 和一个 Linux Web 应用
 
@@ -122,7 +123,7 @@ Azure 应用服务环境是指将 Azure App Service 部署到 Azure 虚拟网络
 
 1. 指定 Azure 虚拟网络详细信息。 选择“新建”或“选择现有”。 只有所选区域中具有 VNet 时，才可使用选择现有 VNet 选项。 如果选择“新建”，需输入 VNet 的名称。 随即创建带有该名称的新资源管理器 VNet。 它使用所选区域中的地址空间 `192.168.250.0/23`。 如果选择“选择现有”，则需要：
 
-    a. 选择 VNet 地址块（若有多个）。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 选择 VNet 地址块（若有多个）。
 
     b. 输入新的子网名称。
 
@@ -199,5 +200,5 @@ Azure 应用服务环境是指将 Azure App Service 部署到 Azure 虚拟网络
 [webapps]: ../app-service-web-overview.md
 [mobileapps]: ../../app-service-mobile/app-service-mobile-value-prop.md
 [Functions]: ../../azure-functions/index.yml
-[Pricing]: http://azure.microsoft.com/pricing/details/app-service/
+[Pricing]: https://azure.microsoft.com/pricing/details/app-service/
 [ARMOverview]: ../../azure-resource-manager/resource-group-overview.md

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: big-compute
 ms.date: 07/22/2016
 ms.author: danlep
-ms.openlocfilehash: 9032a0b68c4c8789010b0304b64a63d4924521fb
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: a8744afe3ec3e83e4a543942441118356730347c
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42140626"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52957235"
 ---
 # <a name="run-openfoam-with-microsoft-hpc-pack-on-a-linux-rdma-cluster-in-azure"></a>在 Azure 中的 Linux RDMA 群集上运行 OpenFoam 和 Microsoft HPC Pack
 本文介绍在 Azure 虚拟机中运行 OpenFoam 的一种方法。 此处，会在 Azure 上部署一个具有 Linux 计算节点的 Microsoft HPC Pack 群集，并使用 Intel MPI 来运行 [OpenFoam](http://openfoam.com/) 作业。 可以使用支持 RDMA 的 Azure VM 作为计算节点，使计算节点能够通过 Azure RDMA 网络进行通信。 在 Azure 中运行 OpenFoam 的其他方法包括使用市场中提供的经过完全配置的商用映像（例如 UberCloud 的 [OpenFoam 2.3 on CentOS 6](https://azuremarketplace.microsoft.com/marketplace/apps/cfd-direct.cfd-direct-from-the-cloud)），以及在 [Azure Batch](https://blogs.technet.microsoft.com/windowshpc/2016/07/20/introducing-mpi-support-for-linux-on-azure-batch/) 上运行该产品。 
@@ -46,7 +46,7 @@ Microsoft HPC Pack 可提供在 Microsoft Azure 虚拟机群集上运行大型 H
   * 部署 Linux 节点后，请通过 SSH 建立连接，执行其他任何管理任务。 可以在 Azure 门户中找到每个 Linux VM 的 SSH 连接详细信息。  
 * **Intel MPI** - 若要在 Azure 中的 SLES 12 HPC 计算节点上运行 OpenFOAM，需要从 [Intel.com 站点](https://software.intel.com/en-us/intel-mpi-library/)安装 Intel MPI Library 5 运行时。 （基于 CentOS 的 HPC 映像中已预装 Intel MPI 5）。在后面的步骤中，可以根据需要在 Linux 计算节点上安装 Intel MPI。 为此，向 Intel 注册后，请点击确认电子邮件中的链接转到相关网页。 然后，复制相应 Intel MPI 版本对应的 .tgz 文件的下载链接。 本文基于 Intel MPI 版本 5.0.3.048。
 * **OpenFOAM Source Pack** - 从 [OpenFOAM Foundation 站点](http://openfoam.org/download/2-3-1-source/)下载 Linux 版 OpenFOAM Source Pack 软件。 本文基于 2.3.1 版的 Source Pack（以 OpenFOAM-2.3.1.tgz 形式供用户下载）。 请按本文后面的说明，在 Linux 计算节点上对 OpenFOAM 进行解包和编译。
-* **EnSight**（可选）- 若要查看 OpenFOAM 模拟结果，请下载并安装 [EnSight](https://ensighttransfe.wpengine.com/direct-access-downloads/) 可视化和分析程序。 EnSight 站点提供了许可和下载信息。
+* **EnSight**（可选）- 若要查看 OpenFOAM 模拟结果，请下载并安装 [EnSight](https://www.ansys.com/products/platform/ansys-ensight/data-interfaces) 可视化和分析程序。 EnSight 站点提供了许可和下载信息。
 
 ## <a name="set-up-mutual-trust-between-compute-nodes"></a>在计算节点之间建立互信关系
 在多个 Linux 节点上运行跨节点作业需要节点彼此信任（通过 **rsh** 或 **ssh**）。 使用 Microsoft HPC Pack IaaS 部署脚本创建 HPC Pack 群集时，此脚本会自动为指定的管理员帐户建立永久性互信关系。 对于在群集域中创建的非管理员用户，分配作业时必须在节点之间建立临时互信关系，并在作业完成后销毁互信关系。 若要为每个用户建立信任，请向群集提供一个 HPC Pack 用来建立信任关系的 RSA 密钥对。
@@ -226,7 +226,7 @@ clusrun /nodegroup:LinuxNodes cp /openfoam/settings.sh /etc/profile.d/
 4. 使用此示例的默认参数时，可能需要数十分钟或更长的运行时间，因此可能需要修改部分参数，使其运行速度加快。 一种简单的方法是修改 system/controlDict 文件中的时间步长变量 deltaT 和 writeInterval。 此文件存储与时间控制以及解决方案数据的读取和写入相关的所有输入数据。 例如，可以将 deltaT 的值从 0.05 更改为 0.5，将 writeInterval 的值从 0.05 更改为 0.5。
    
    ![修改步骤变量][step_variables]
-5. 在 system/decomposeParDict 文件中指定变量的所需值。 此示例使用两个 Linux 节点，每个节点 8 个内核，因此可将 numberOfSubdomains 设置为 16，将 hierarchicalCoeffs 的 n 设置为 (1 1 16)，这表示使用 16 个流程并行运行 OpenFOAM。 有关详细信息，请参阅 [OpenFOAM User Guide: 3.4 Running applications in parallel](http://cfd.direct/openfoam/user-guide/running-applications-parallel/#x12-820003.4)（OpenFOAM 用户指南：3.4 并行运行应用程序）。
+5. 在 system/decomposeParDict 文件中指定变量的所需值。 此示例使用两个 Linux 节点，每个节点 8 个内核，因此可将 numberOfSubdomains 设置为 16，将 hierarchicalCoeffs 的 n 设置为 (1 1 16)，这表示使用 16 个流程并行运行 OpenFOAM。 有关详细信息，请参阅 [OpenFOAM 用户指南：3.4 并行运行应用程序](http://cfd.direct/openfoam/user-guide/running-applications-parallel/#x12-820003.4)。
    
    ![对过程进行分解][decompose]
 6. 从 sloshingTank3D 目录运行以下命令，对示例数据进行准备。
@@ -362,7 +362,7 @@ clusrun /nodegroup:LinuxNodes cp /openfoam/settings.sh /etc/profile.d/
 10. 作业结束时，可在 C:\OpenFoam\sloshingTank3D 下的文件夹中找到作业结果，在 C:\OpenFoam 中找到日志文件。
 
 ## <a name="view-results-in-ensight"></a>在 EnSight 中查看结果
-（可选）使用 [EnSight](http://www.ensight.com/) 将 OpenFOAM 作业的结果可视化并对其进行分析。 有关在 EnSight 中实现可视化和动画效果的详细信息，请参阅此[视频指南](http://www.ensight.com/ensight.com/envideo/)。
+（可选）使用 [EnSight](http://www.ensight.com/) 将 OpenFOAM 作业的结果可视化并对其进行分析。 
 
 1. 在头节点上安装 EnSight 后，启动它。
 2. 打开 C:\OpenFoam\sloshingTank3D\EnSight\sloshingTank3D.case。

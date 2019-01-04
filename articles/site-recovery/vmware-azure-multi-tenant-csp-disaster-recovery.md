@@ -5,14 +5,14 @@ author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 10/16/2018
+ms.date: 11/27/2018
 ms.author: mayg
-ms.openlocfilehash: c26421f848cf25e391589fa791f801e30fd14797
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 77b64f09b7fd1429eb23c4407c729dfc0aafdf2b
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50208895"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52842350"
 ---
 # <a name="set-up-vmware-disaster-recovery-in-a-multi-tenancy-environment-with-the-cloud-solution-provider-csp-program"></a>使用云解决方案提供商 (CSP) 计划在多租户环境中设置 VMware 灾难恢复
 
@@ -39,7 +39,7 @@ ms.locfileid: "50208895"
 
     ![“帐户信息”页](./media/vmware-azure-multi-tenant-csp-disaster-recovery/customer-add-filled.png)
 
-5. 然后单击“下一步: 订阅”。
+5. 然后单击“下一步:订阅”。
 6. 在订阅选择页上，选中“Microsoft Azure”复选框。 可以现在就添加其他订阅，也可以选择在其他时间添加。
 7. 在“审阅”页上，确认租户详细信息，然后单击“提交”。
 8. 创建租户帐户以后，会显示确认页，其中显示默认帐户的详细信息，以及该订阅的密码。 保存信息，以后可根据需要通过 Azure 门户登录页更改密码。
@@ -72,9 +72,13 @@ ms.locfileid: "50208895"
 
       ![租户的 CSP 订阅页](./media/vmware-azure-multi-tenant-csp-disaster-recovery/users-and-licences.png)
 
-      b) 现在可以创建新的用户，只需输入相关详细信息并选择权限，或者通过 CSV 文件上传用户列表即可。
+    b) 现在可以创建新的用户，只需输入相关详细信息并选择权限，或者通过 CSV 文件上传用户列表即可。
+    
     c) 创建新用户后，返回到 Azure 门户。 在“订阅”页上，选择相关的订阅。
-    d) 选择“访问控制(IAM)”，然后单击“添加”以添加具有相关访问级别的用户。 通过 CSP 门户创建的用户会自动显示在单击一种访问级别后打开的页面上。
+
+    d) 选择“访问控制(IAM)”，然后单击“角色分配”。
+
+    e) 单击“添加角色分配”以添加具有相关访问级别的用户。 通过 CSP 门户创建的用户会显示在“角色分配”选项卡上。
 
       ![添加用户](./media/vmware-azure-multi-tenant-csp-disaster-recovery/add-user-subscription.png)
 

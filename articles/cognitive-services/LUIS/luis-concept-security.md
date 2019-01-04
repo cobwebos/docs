@@ -1,21 +1,22 @@
 ---
-title: 了解 LUIS 应用程序访问权限
-titleSuffix: Azure Cognitive Services
-description: 所有者和协作者具有创作访问权限。 对于专用应用，所有者和协作者具有终结点访问权限。 对于公共应用，任何具有 LUIS 帐户和公共应用 ID 的人员均具有终结点访问权限。
+title: 与他人协作
+titleSuffix: Language Understanding - Azure Cognitive Services
+description: 所有者和协作者具有创作访问权限。 对于专用应用，所有者和协作者具有终结点访问权限。
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: conceptual
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: d0f9d0834cffd642961b2c49d5d252a665b49e73
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.openlocfilehash: 533854b723dc5fc9e2406b492a60692f25c33257
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49637404"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53132582"
 ---
 # <a name="authoring-and-endpoint-user-access"></a>创作和终结点用户访问权限
 所有者和协作者具有创作访问权限。 对于专用应用，所有者和协作者具有终结点访问权限。 对于公共应用，任何具有 LUIS 帐户和公共应用 ID 的人员均具有终结点访问权限。 

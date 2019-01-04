@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure CLI 创建 Azure 媒体服务帐户 | Microsoft Docs
+title: 使用 Azure CLI 创建媒体服务帐户 - Azure | Microsoft Docs
 description: 按照本快速入门的步骤，创建 Azure 媒体服务帐户。
 services: media-services
 documentationcenter: ''
@@ -9,20 +9,19 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.custom: ''
-ms.date: 11/11/2018
+ms.custom: seodec18
+ms.date: 12/08/2018
 ms.author: juliako
-ms.openlocfilehash: cb49b642137517c0ceef7d2fa01994a554db1f4e
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: fc80e2c540279c0a0c8acb575c9e5b1478a46cf8
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51613153"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53133360"
 ---
 # <a name="create-an-azure-media-services-account"></a>创建 Azure 媒体服务帐户
 
 若要开始加密、编码、分析、管理和流式处理 Azure 中的媒体内容，需要创建媒体服务帐户。 创建媒体服务帐户时，还会在此帐户所在的地理区域内创建一个关联的媒体服务帐户（或使用现有存储帐户）。
-
 本文介绍使用 Azure CLI 创建新 Azure 媒体服务帐户的步骤。  
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]

@@ -1,23 +1,25 @@
 ---
-title: 将 Visual Studio Code Tools for AI 扩展用于 Azure 机器学习
-description: 了解 Visual Studio Code Tools for AI，以及如何在 VS Code 中通过 Azure 机器学习服务开始定型和部署机器学习和深度学习模型。
+title: 从 VS Code 训练和部署模型
+titleSuffix: Azure Machine Learning service
+description: 了解 Azure Machine Learning for Visual Studio Code，以及如何在 Visual Studio Code 中通过 Azure 机器学习服务开始训练和部署机器学习和深度学习模型。
 services: machine-learning
 ms.service: machine-learning
 ms.component: core
 ms.topic: conceptual
 ms.author: shwinne
 author: swinner95
-ms.reviewer: jmartens
-ms.date: 10/1/2018
-ms.openlocfilehash: 377a4bbf359b2c65136625fcef8a1093e49da728
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.date: 12/04/2018
+ms.custom: seodec18
+ms.openlocfilehash: 0910cce92c410a68dce6e2c44d29e72e594cd153
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51854299"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53271702"
 ---
-# <a name="vs-code-tools-for-ai-train-and-deploy-ml-models-from-vs-code"></a>VS Code Tools for AI：在 VS Code 中定型和部署 ML 模型
-本文将介绍如何使用 VS Code Tools for AI 扩展，在 VS Code 中通过 Azure 机器学习服务定型和部署机器学习和深度学习模型。
+# <a name="use-visual-studio-code-to-train-and-deploy-machine-learning-models"></a>使用 Visual Studio Code 训练和部署机器学习模型
+
+在本文中，你将了解如何使用 **Azure Machine Learning for Visual Studio Code** 扩展，在 Visual Studio Code (VS Code) 中通过 Azure 机器学习服务训练和部署机器学习和深度学习模型。
 
 Azure 机器学习支持在本地和远程计算目标上运行试验。 对于每个试验，可跟踪多次运行，因为通常需要以迭代方式尝试不同的技术、超参数等。 Azure 机器学习可用于跟踪自定义指标和试验运行，以确保数据科学可再现性和可审核性。
 
@@ -25,15 +27,15 @@ Azure 机器学习支持在本地和远程计算目标上运行试验。 对于�
 
 ## <a name="prerequisites"></a>先决条件
 
-+ 创建了适用于 Azure 机器学习的 [VS Code Tools for AI](how-to-vscode-tools.md)。
++ 如果还没有 Azure 订阅，请在开始前创建免费帐户。 立即试用 [Azure 机器学习服务免费版或付费版](http://aka.ms/AMLFree)。
+
++ 安装 [Azure Machine Learning for VS Code](how-to-vscode-tools.md) 扩展。
 
 + 随 VS Code 一起安装了[适用于 Python 的 Azure 机器学习 SDK](how-to-vscode-tools.md)。
 
-+ 如果还没有 Azure 订阅，可以在开始前创建一个[免费帐户](https://aka.ms/AMLfree)。
-
 ## <a name="create-and-manage-compute-targets"></a>创建和管理计算目标
 
-使用 Visual Studio Code Tools for AI，可以准备数据、定型模型，并能在本地和远程计算目标上部署模型。
+使用 Azure Machine Learning for VS Code，可以准备数据、训练模型，以及在本地和远程计算目标上部署模型。
 
 此扩展支持多个不同的 Azure 机器学习远程计算目标。 请参阅 Azure 机器学习[支持的计算目标的完整列表](how-to-set-up-training-targets.md)。
 
@@ -41,21 +43,19 @@ Azure 机器学习支持在本地和远程计算目标上运行试验。 对于�
 
 **若要创建计算目标，请执行以下操作：**
 
-1. 单击 Visual Studio Code 活动栏中的 Azure 图标。 此时，“Azure:机器学习”边栏显示。
+1. 单击 Visual Studio Code 活动栏中的 Azure 图标。 此时将显示“Azure：机器学习”边栏。
 
-2. 在树视图中，展开 Azure 订阅和 Azure 机器学习服务工作区。 在动画图像中，订阅名称是“OpenMind Studio”，工作区是“MyWorkspace”。 
+2. 在树视图中，展开 Azure 订阅和 Azure 机器学习服务工作区。 在动画图像中，订阅名称是“Free Trial”，工作区是“TeamWorkspace”。 
 
 3. 在工作区节点下，右键单击“计算”节点，再选择“创建计算”。
 
 4. 从列表中选择计算目标类型。 
 
-5. 在字段中，输入此计算目标的唯一名称，并指定虚拟机大小。
+5. 指定在新标签页内打开的 JSON 配置文件中的所有高级属性。可以在此文件中指定计算目标的唯一名称。
 
-6. 指定在新标签页内打开的 JSON 配置文件中的所有高级属性。 
+6. 配置完计算目标后，单击右下方的“提交”。
 
-7. 配置完计算目标后，单击右下方的“完成”。
-
-下面的示例展示了 Azure Batch AI：[![在 VS Code 中创建 Azure Batch AI 计算](./media/vscode-tools-for-ai/createcompute.gif)](./media/vscode-tools-for-ai/createcompute.gif#lightbox)
+下面是 Azure 机器学习计算（AMLCompute）的一个示例：[![在 VS Code 中创建 AML 计算](./media/vscode-tools-for-ai/CreateAMLCompute.gif)](./media/vscode-tools-for-ai/CreateAMLCompute.gif#lightbox)
 
 ### <a name="use-remote-computes-for-experiments-in-vs-code"></a>在 VS Code 中使用远程计算目标进行试验
 
@@ -113,21 +113,19 @@ dependencies:
 
 ## <a name="train-and-tune-models"></a>定型和优化模型
 
-在 VS Code 中使用 Azure 机器学习，可快速循环访问代码、单步执行和调试，并能使用选定源代码管理解决方案。 
+使用 Azure Machine Learning for VS Code（预览版），可快速循环访问代码、单步执行和调试，并能使用选定源代码管理解决方案。 
 
 **若要使用 Azure 机器学习运行试验，请执行以下操作：**
 
-1. 单击 Visual Studio Code 活动栏中的 Azure 图标。 此时，“Azure:机器学习”边栏显示。
+1. 单击 Visual Studio Code 活动栏中的 Azure 图标。 此时将显示“Azure：机器学习”边栏。
 
-1. 在树视图中，展开 Azure 订阅和 Azure 机器学习服务工作区。 在动画图像中，订阅名称是“OpenMind Studio”，工作区是“MyWorkspace”。 
+1. 在树视图中，展开 Azure 订阅和 Azure 机器学习服务工作区。 
 
 1. 在工作区节点下，展开“计算”节点，再右键单击要使用的计算的“运行配置”。 
 
 1. 选择“运行试验”。
 
 1. 单击“查看试验运行”，以查看集成的 Azure 机器学习门户，从而监视运行并查看已定型模型。
-
-   [![在 VS Code 中运行机器学习试验](./media/vscode-tools-for-ai/runexperiment.gif)](./media/vscode-tools-for-ai/runexperiment.gif#lightbox)
 
 ## <a name="deploy-and-manage-models"></a>部署和管理模型
 使用 Azure 机器学习，可以在云中和 Edge 上部署和管理机器学习模型。 
@@ -139,7 +137,7 @@ dependencies:
 
 **若要注册模型，请执行以下操作：**
 
-1. 单击 Visual Studio Code 活动栏中的 Azure 图标。 此时，“Azure:机器学习”边栏显示。
+1. 单击 Visual Studio Code 活动栏中的 Azure 图标。 此时将显示“Azure：机器学习”边栏。
 
 1. 在树视图中，展开 Azure 订阅和 Azure 机器学习服务工作区。
 
@@ -147,12 +145,11 @@ dependencies:
 
 1. 在列表中，选择是要上传“模型文件”（对于单个模型），还是要上传“模型文件夹”（对于包含多个文件的模型，如 Tensorflow）。 
 
-1. 使用文件选择器对话框选择文件或文件夹。
+1. 选择你的文件夹或文件。
 
-   [![计算](./media/vscode-tools-for-ai/registermodel.gif)](./media/vscode-tools-for-ai/registermodel.gif#lightbox)
+1. 配置完模型属性后，单击右下方的“提交”。 
 
-> [!Warning]
-> 目前，请从生成的 json 文件中删除标记。
+
 
 ### <a name="deploy-your-service-from-vs-code"></a>在 VS Code 中部署服务
 
@@ -166,7 +163,7 @@ dependencies:
 
 **若要部署 Web 服务，请执行以下操作：**
 
-1. 单击 Visual Studio Code 活动栏中的 Azure 图标。 此时，“Azure:机器学习”边栏显示。
+1. 单击 Visual Studio Code 活动栏中的 Azure 图标。 此时将显示“Azure：机器学习”边栏。
 
 1. 在树视图中，展开 Azure 订阅和 Azure 机器学习服务工作区。
 
@@ -174,26 +171,20 @@ dependencies:
 
 1. 右键单击要部署的模型，并从关联菜单中选择“部署已注册模型中的服务”命令。
 
-1. 在 VS Code 命令面板中，选择要部署到列表中的哪个计算目标。 
+1. 在命令面板中，从列表中选择要部署到的计算目标。 
 
 1. 在字段中，输入此服务的名称。 
 
-1. 在右下角中的对话框中，单击“浏览”，并选择评分脚本。 此时，对话框关闭。
+1. 在命令面板中，在键盘上按 Enter 键以浏览并选择脚本文件。
 
-1. 如果有本地 Docker 文件，请在随即显示的第二个对话框中单击“浏览”。 
+1. 在命令面板中，在键盘上按 Enter 键以浏览并选择 Conda 依赖项文件。
 
-   如果你取消对话框且未指定本地 Docker 文件，系统默认使用的是“Azure 机器学习”。
-
-1. 在随即显示的第三个对话框中，单击“浏览”，并选择本地 conda 文件路径，或稍后在 json 编辑器中输入文件路径。
-
-1. 如果有要使用的 schema.json 文件，请在随即显示的第四个对话框中单击“浏览”，并选择此文件。
+1. 配置完服务属性后，单击右下方的“提交”。 在此服务属性文件中，可以指定可能要使用的本地 Docker 文件或 schema.json 文件。
 
 此时，Web 服务已部署。
 
-下面的示例展示了部署到 Azure 容器实例：[![在 VS Code 中部署到 Azure 容器实例](./media/vscode-tools-for-ai/deploy.gif)](./media/vscode-tools-for-ai/deploy.gif#lightbox)
-
 ## <a name="next-steps"></a>后续步骤
 
-有关在 VS Code 外使用机器学习进行定型的演练，请阅读[教程：使用 Azure 机器学习定型模型](tutorial-train-models-with-aml.md)。
+有关在 VS Code 外使用机器学习进行训练的演练，请阅读[教程：使用 Azure 机器学习训练模型](tutorial-train-models-with-aml.md)。
 
 有关在本地编辑、运行和调试代码的演练，请参阅 [Python Hello World 教程](https://code.visualstudio.com/docs/python/python-tutorial)

@@ -4,16 +4,16 @@ description: 了解如何解决 Azure 自动化 Runbook 的问题
 services: automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 10/17/2018
+ms.date: 12/04/2018
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 532d3d73c939a44678091734f2bbff22267ab6b7
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: 41eb31ecabb20ec9eec3db13d5eda9f9cfbe6c69
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50094858"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53015460"
 ---
 # <a name="troubleshoot-errors-with-runbooks"></a>Runbook 错误故障排除
 
@@ -123,11 +123,11 @@ Add-AzureAccount: AADSTS50079: Strong authentication enrollment (proof-up) is re
 
 #### <a name="resolution"></a>解决方法
 
-要将证书用于 Azure 经典部署模型 cmdlet，请参阅[创建并添加管理 Azure 服务所需的证书](http://blogs.technet.com/b/orchestrator/archive/2014/04/11/managing-azure-services-with-the-microsoft-azure-automation-preview-service.aspx)。 要将服务主体用于 Azure 资源管理器 cmdlet，请参阅[使用 Azure 门户创建服务主体](../../active-directory/develop/howto-create-service-principal-portal.md)和[通过 Azure 资源管理器对服务主体进行身份验证](../../active-directory/develop/howto-authenticate-service-principal-powershell.md)。
+要将证书用于 Azure 经典部署模型 cmdlet，请参阅[创建并添加管理 Azure 服务所需的证书](https://blogs.technet.com/b/orchestrator/archive/2014/04/11/managing-azure-services-with-the-microsoft-azure-automation-preview-service.aspx)。 要将服务主体用于 Azure 资源管理器 cmdlet，请参阅[使用 Azure 门户创建服务主体](../../active-directory/develop/howto-create-service-principal-portal.md)和[通过 Azure 资源管理器对服务主体进行身份验证](../../active-directory/develop/howto-authenticate-service-principal-powershell.md)。
 
 ## <a name="common-errors-when-working-with-runbooks"></a>使用 Runbook 时的常见错误
 
-### <a name="task-was-cancelled"></a>场景：Runbook 失败且出现错误：取消了一个任务
+### <a name="task-was-cancelled"></a>场景：Runbook 失败并显示错误：任务已取消
 
 #### <a name="issue"></a>问题
 
@@ -308,7 +308,7 @@ Runbook 作业失败并显示错误：
 * 如果存在名称冲突且 cmdlet 可在两个不同的模块中使用，则可使用 cmdlet 的完全限定名称来解决此问题。 例如，可以使用 **ModuleName\CmdletName**。  
 * 如果是在本地执行混合辅助角色组中的 runbook，则请确保模块和 cmdlet 已安装在托管混合辅助角色的计算机上。
 
-### <a name="long-running-runbook"></a>方案：长时间运行的 runbook 无法完成
+### <a name="long-running-runbook"></a>场景：长时间运行的 Runbook 无法完成
 
 #### <a name="issue"></a>问题
 
@@ -338,6 +338,45 @@ Runbook 超出了 Azure 沙盒中公平份额允许的 3 小时限制。
 
 [Get-AzureRmAutomationJob](/powershell/module/azurerm.automation/get-azurermautomationjob) - 在子 runbook 完成后，如果需要执行操作，可使用此 cmdlet 检查每个子 runbook 的作业状态。
 
+### <a name="expired webhook"></a>场景：状态：请求时调用 Webhook 时显示 400 错误
+
+#### <a name="issue"></a>问题
+
+在尝试调用 Azure 自动化 Runbook 的 Webhook 时，收到以下错误。
+
+```error
+400 Bad Request : This webhook has expired or is disabled
+```
+
+#### <a name="cause"></a>原因
+
+尝试调用的 Webhook 已禁用，或者已过期。
+
+#### <a name="resolution"></a>解决方法
+
+如果 Webhook 处于禁用状态，可以通过 Azure 门户重新启用 Webhook。 如果 Webhook 已过期，需要删除并重新创建 Webhook。 如果尚未过期，只能[续订 Webhook](../automation-webhooks.md#renew-webhook)。
+
+### <a name="429"></a>场景：429：当前的请求速率过大。 请重试
+
+#### <a name="issue"></a>问题
+
+在运行 `Get-AzureRmAutomationJobOutput` cmdlet 时收到以下错误消息：
+
+```
+429: The request rate is currently too large. Please try again
+```
+
+#### <a name="cause"></a>原因
+
+从具有多个[详细流](../automation-runbook-output-and-messages.md#verbose-stream)的 Runbook 中检索作业输出时，可能发生此错误。
+
+#### <a name="resolution"></a>解决方法
+
+可通过两种方法来解决此错误：
+
+* 编辑 Runbook，并减少它发出的作业流数量。
+* 减少运行 cmdlet 时要检索的流数量。 若要执行此操作，可以向 `Get-AzureRmAutomationJobOutput` cmdlet 指定 `-Stream Output` 参数以仅检索输出流。 
+
 ## <a name="common-errors-when-importing-modules"></a>导入模块时的常见错误
 
 ### <a name="module-fails-to-import"></a>场景：模块无法导入，或者 cmdlet 在导入后无法执行
@@ -359,7 +398,7 @@ Runbook 超出了 Azure 沙盒中公平份额允许的 3 小时限制。
 
 下述解决方案中的任何一种都可以解决此问题：
 
-* 确保该模块遵循以下格式：模块名称.Zip **->** 模块名称或版本号 **->**（模块名称.psm1、模块名称.psd1）
+* 请确保该模块遵循以下格式：ModuleName.Zip **->** 模块名称或版本号 **->** (ModuleName.psm1, ModuleName.psd1)
 * 打开 .psd1 文件，看模块是否有任何依赖项。 如果有，则将这些模块上传到自动化帐户。
 * 确保任何引用的 .dll 都存在于模块文件夹中。
 

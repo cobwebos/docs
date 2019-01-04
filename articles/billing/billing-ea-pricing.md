@@ -1,6 +1,6 @@
 ---
 title: 查看适用于你的企业的 Azure 定价 | Microsoft Docs
-description: ''
+description: 了解如何使用企业协议定价查看和下载定价或估计成本。
 services: ''
 documentationcenter: ''
 author: adpick
@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: cwatson
-ms.openlocfilehash: 8e7c3542a6c97e06eeeedc60b285c1aee1cad075
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.custom: seodec18
+ms.openlocfilehash: b1f3d6ec2a8563ccfffd1e1c3c7cf1869a42769a
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52576957"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53090850"
 ---
 # <a name="view-your-organizations-azure-enterprise-agreement-pricing"></a>查看你的组织的 Azure 企业协议定价 
 

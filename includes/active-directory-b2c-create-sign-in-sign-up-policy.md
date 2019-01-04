@@ -2,48 +2,56 @@
 author: PatAltimore
 ms.service: active-directory-b2c
 ms.topic: include
-ms.date: 11/03/2016
+ms.date: 11/30/2018
 ms.author: patricka
-ms.openlocfilehash: 3485cc96ad1d9ab8f89facf33687a7ab2be43b1e
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: f23d2b02bc2a23c5333a48a50532c03f3aa6a031
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50134034"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52742530"
 ---
 [!INCLUDE [active-directory-b2c-portal-navigate-b2c-service](active-directory-b2c-portal-navigate-b2c-service.md)]
 
-在设置的策略部分，选择“注册或登录策略”，然后单击“+ 添加”。
+在“管理”下，选择“用户流”，单击“+ 新建用户流”。
 
-![选择注册或登录策略，然后单击“添加”按钮](media/active-directory-b2c-create-sign-in-sign-up-policy/add-b2c-signup-signin-policy.png)
+![选择“新建用户流”](media/active-directory-b2c-create-sign-in-sign-up-policy/add-b2c-signup-signin-user-flow.png)
 
-输入供应用程序引用的策略名称。 例如，输入 `SiUpIn`。
+在“建议”选项卡上，选择“注册和登录”。
 
-选择“标识提供者”，然后选中“电子邮件注册”。 或者，也可以选择社交标识提供者（如果已配置）。 单击“确定”。
+![选择“注册和登录”用户流](media/active-directory-b2c-create-sign-in-sign-up-policy/add-b2c-signup-signin-user-flow-type.png)
 
-![以标识提供者身份选择“电子邮件注册”，然后单击“确定”按钮](media/active-directory-b2c-create-sign-in-sign-up-policy/add-b2c-signup-signin-identity-providers.png)
+输入供你的应用程序引用的用户流名称。 例如，输入 `SiUpIn`。
 
-选择“注册属性”。 选择要在注册期间从使用者收集的属性。 例如，选中“国家/地区”、“显示名称”和“邮政编码”。 单击“确定”。
+在“标识提供者”下，选中“电子邮件注册”。 或者，也可以选择社交标识提供者（如果已配置）。
 
-![选择某些属性，然后单击“确定”按钮](media/active-directory-b2c-create-sign-in-sign-up-policy/add-b2c-signup-signin-sign-up-attributes.png)
+在“多重身份验证”下，选择“启用”或“禁用”。
 
-选择“应用程序声明”。 选择需要在授权令牌中返回的声明，该令牌在你成功获得注册或登录体验后会发回到应用程序。 例如，选择“显示名称”、“标识提供者”、“邮政编码”、“用户是新用户”和“用户的对象 ID”。
+![输入一个名称并选择“电子邮件注册”作为标识提供者](media/active-directory-b2c-create-sign-in-sign-up-policy/add-b2c-signup-signin-name-identity-providers.png)
 
-![选择一些应用程序声明，然后单击“确定”按钮](media/active-directory-b2c-create-sign-in-sign-up-policy/add-b2c-signup-signin-application-claims.png)
+在“用户特性和声明”下，选择“显示更多”以查看你可以从中进行选择的特性和声明的完整列表。
 
-单击“创建”添加策略。 策略被列为 B2C_1_SiUpIn。 B2C_1_ 前缀追加到名称。
+在“收集特性”列中，选择要在注册期间从客户收集的特性。 例如，选中“国家/地区”、“显示名称”和“邮政编码”。
 
-通过选择“B2C_1_SiUpIn”打开策略。 验证表中指定的设置，然后单击“现在运行”。
+在“返回声明”列中选择需要在授权令牌中返回的声明，该令牌在成功获得注册或登录体验后会发回到应用程序。 例如，选择“显示名称”、“标识提供者”、“邮政编码”、“用户是新用户”和“用户的对象 ID”。
 
-![选择并运行策略](media/active-directory-b2c-create-sign-in-sign-up-policy/run-b2c-signup-signin-policy.png)
+单击“确定”。
+
+![选择一些用户特性和声明，然后单击“确定”按钮](media/active-directory-b2c-create-sign-in-sign-up-policy/add-b2c-signup-signin-sign-up-all-attributes.png)
+
+单击“创建”以添加用户流。 该用户流将列出为 **B2C_1_SiUpIn**。 B2C_1_ 前缀追加到名称。
+
+选择“运行用户流”。 验证在表中指定的设置，然后单击“运行用户流”。
+
+![选择“运行用户流”](media/active-directory-b2c-create-sign-in-sign-up-policy/run-user-flow-b2c-signup-signin.png)
 
 | 设置      | 值  |
 | ------------ | ------ |
 | **应用程序** | Contoso B2C 应用 |
-| 选择回复 url | `https://localhost:44316/` |
+| 回复 URL | `https://localhost:44316/` |
 
 此时会打开新的浏览器选项卡，可以根据配置验证“注册或登录”用户体验。
 
 > [!NOTE]
-> 策略创建和更新最多需要一分钟才能生效。
+> 用户流创建和更新最多需要一分钟才能生效。
 >

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: jeedes
-ms.openlocfilehash: 48b1e47befa647a9d221e5cdf5bf0485c3b66028
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 588e56c9ae22578c08dbca07c7c576fe8b577b58
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39423821"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53012328"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-small-improvements"></a>教程：Azure Active Directory 与 Small Improvements 集成
 
@@ -112,7 +112,7 @@ ms.locfileid: "39423821"
 
     ![配置单一登录](./media/smallimprovements-tutorial/tutorial_smallimprovements_url.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL： `https://<subdomain>.small-improvements.com`
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“登录 URL”文本框中，使用以下模式键入 URL： `https://<subdomain>.small-improvements.com`
 
     b. 在“标识符”文本框中，使用以下模式键入 URL：`https://<subdomain>.small-improvements.com`
 
@@ -145,7 +145,7 @@ ms.locfileid: "39423821"
    
     ![配置单一登录](./media/smallimprovements-tutorial/tutorial_smallimprovements_08.png)  
 
-    a. 在“HTTP 终结点”文本框中，粘贴从 Azure 门户复制的“SAML 单一登录服务 URL”值。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“HTTP 终结点”文本框中，粘贴从 Azure 门户复制的“SAML 单一登录服务 URL”值。
 
     b. 在记事本中打开下载的证书，复制其内容，并将其粘贴到“x509 证书”文本框中。 
 
@@ -156,7 +156,7 @@ ms.locfileid: "39423821"
     e. 单击“ **保存**”。
 
 > [!TIP]
-> 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[ Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
+> 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
 ### <a name="creating-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
@@ -182,7 +182,7 @@ ms.locfileid: "39423821"
  
     ![创建 Azure AD 测试用户](./media/smallimprovements-tutorial/create_aaduser_04.png) 
 
-    a. 在“名称”文本框中，键入 **BrittaSimon**。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
 
     b. 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
@@ -212,7 +212,7 @@ ms.locfileid: "39423821"
 
     ![创建 Azure AD 测试用户](./media/smallimprovements-tutorial/tutorial_smallimprovements_12.png)
     
-    a. 输入用户的名字，如 Britta。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 输入用户的名字，如 Britta。
 
     b. 输入用户的姓氏，如 Simon。
 
@@ -261,7 +261,7 @@ ms.locfileid: "39423821"
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](tutorial-list.md)
-* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
+* [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
 
 

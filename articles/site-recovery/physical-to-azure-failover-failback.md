@@ -5,14 +5,14 @@ services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: article
-ms.date: 10/28/2018
+ms.date: 11/27/2018
 ms.author: raynew
-ms.openlocfilehash: 309da6f7753d95bc6830d61ecca7d86e002ddedf
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: d105968d13960409a60e2fde9c811a042f444d8f
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50214828"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52848623"
 ---
 # <a name="fail-over-and-fail-back-physical-servers-replicated-to-azure"></a>对复制到 Azure 的物理服务器进行故障转移和故障回复
 
@@ -26,7 +26,7 @@ ms.locfileid: "50214828"
 
 1. **故障转移到 Azure**：将计算机从本地站点故障转移到 Azure。
 2. **重新保护 Azure VM**：重新保护 Azure VM，使之开始复制回本地 VMware VM。
-3. 故障转移到本地：运行故障转移以从 Azure 进行故障回复。
+3. **故障转移到本地**：运行故障转移以从 Azure 进行故障回复。
 4. **重新保护本地 VM**：对数据进行故障回复以后，对故障回复到的本地 VMware VM 进行重新保护，使之开始复制到 Azure。
 
 ## <a name="verify-server-properties"></a>验证服务器属性
@@ -47,7 +47,7 @@ ms.locfileid: "50214828"
    - **最新**：此选项会首先处理发送到 Site Recovery 的所有数据。 它提供最低的 RPO（恢复点对象），因为故障转移后创建的 Azure VM 具有触发故障转移时复制到 Site Recovery 的所有数据。
    - **最新处理**：此选项将计算机故障转移到由 Site Recovery 处理的最新恢复点。 此选项提供低 RTO（恢复时间目标），因为无需费时处理未经处理的数据。
    - **最新的应用一致**：此选项将计算机故障转移到由 Site Recovery 处理的最新应用一致恢复点。
-   - 自定义：指定恢复点。
+   - **自定义**：指定恢复点。
 
 3. 如果希望 Site Recovery 在触发故障转移之前尝试关闭源计算机，请选择“在开始故障转移前关闭计算机”。 即使关机失败，故障转移也仍会继续。 可以在“作业”页上跟踪故障转移进度。
 4. 如果已准备好连接到 Azure VM，请进行连接，以在故障转移后对其进行验证。

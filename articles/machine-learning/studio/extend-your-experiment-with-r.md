@@ -4,9 +4,8 @@ description: 如何使用执行 R 脚本模块通过 R 语言扩展 Azure 机器
 services: machine-learning
 documentationcenter: ''
 author: ericlicoding
-ms.custom: (previous ms.author=hshapiro, author=heatherbshapiro)
+ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.author: amlstudiodocs
-manager: hjerez
 editor: cgronlun
 ms.assetid: 2c038a45-ba4d-42ea-9a88-e67391ef8c0a
 ms.service: machine-learning
@@ -16,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2017
-ms.openlocfilehash: df6453f1cf6e8b372239d528067a7258d645518d
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 74f08421de893a4fe8916a052f8a32134cd222a5
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52311002"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53272059"
 ---
 # <a name="azure-machine-learning-studio-extend-your-experiment-with-r"></a>Azure 机器学习工作室：使用 R 扩展试验 
 如何使用[执行 R 脚本][execute-r-script]模块通过 R 语言扩展 Azure 机器学习工作室的功能。
@@ -58,7 +57,7 @@ For convenience, here is the [current full list with version numbers in Excel fo
 
 其中 `my_favorite_package.zip` 文件包含包。
 
-[!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
+
 
 
 <!-- Module References -->

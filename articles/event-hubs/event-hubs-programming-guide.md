@@ -1,22 +1,22 @@
 ---
-title: Azure 事件中心编程指南 | Microsoft Docs
-description: 使用 Azure.NET SDK 编写 Azure 事件中心代码。
+title: 编程指南 - Azure 事件中心 | Microsoft Docs
+description: 本文介绍如何使用 Azure .NET SDK 为 Azure 事件中心编写代码。
 services: event-hubs
 documentationcenter: na
 author: ShubhaVijayasarathy
 ms.service: event-hubs
+ms.custom: seodec18
 ms.topic: article
-ms.date: 08/12/2018
+ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: bfb2db8a4a0091e26cc2b893e615ba831da30ac7
-ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
+ms.openlocfilehash: 3aa5a1c640cc46d677a66f5179f9f07a81e62b15
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2018
-ms.locfileid: "42746318"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53138069"
 ---
-# <a name="event-hubs-programming-guide"></a>事件中心编程指南
-
+# <a name="programming-guide-for-azure-event-hubs"></a>Azure 事件中心编程指南
 本文介绍使用 Azure 事件中心编写代码时的一些常见情况。 它假设你对事件中心已有初步的了解。 有关事件中心的概念概述，请参阅 [事件中心概述](event-hubs-what-is-event-hubs.md)。
 
 ## <a name="event-publishers"></a>事件发布者
@@ -55,7 +55,7 @@ eventHubClient = EventHubClient.CreateFromConnectionString(connectionStringBuild
 
 ## <a name="send-events-to-an-event-hub"></a>将事件发送到事件中心
 
-可通过以下方式将事件发送到事件中心：创建一个 [EventHubClient][] 实例并通过 [SendAsync](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.sendasync) 方法异步发送该实例。 此方法采用单个 [EventData][] 实例参数，并将其同步发送到事件中心。
+可通过以下方式将事件发送到事件中心：创建一个 [EventHubClient][] 实例并通过 [SendAsync](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.sendasync) 方法异步发送该实例。 此方法采用单个 [EventData][] 实例参数，并以异步方式将其发送至事件中心。
 
 ## <a name="event-serialization"></a>事件序列化
 
@@ -76,7 +76,7 @@ for (var i = 0; i < numMessagesToSend; i++)
 
 ### <a name="availability-considerations"></a>可用性注意事项
 
-可以选择使用分区键，应仔细考虑是否使用分区键。 在许多情况下，如果事件排序较为重要，使用分区键将是一个不错的选择。 使用分区键时，这些分区需要单个节点上的可用性，并且可能会随时间推移发生故障；例如，在计算节点重启和修补时。 因此，如果设置了分区 ID，并且由于某种原因该分区变得不可用，则对该分区中的数据的访问尝试会失败。 如果高可用性是最重要的，请不要指定分区键；在这种情况下，将使用前述的轮循机制模型将事件发送到分区。 在这种情况下，需在可用性（无分区 ID）和一致性（将事件固定到分区 ID）之间做出明确选择。
+可以选择使用分区键，应仔细考虑是否使用分区键。 如果在发布事件时未指定分区键，则会使用循环分配。 在许多情况下，如果事件排序较为重要，使用分区键将是一个不错的选择。 使用分区键时，这些分区需要单个节点上的可用性，并且可能会随时间推移发生故障；例如，在计算节点重启和修补时。 因此，如果设置了分区 ID，并且由于某种原因该分区变得不可用，则对该分区中的数据的访问尝试会失败。 如果高可用性是最重要的，请不要指定分区键；在这种情况下，将使用前述的轮循机制模型将事件发送到分区。 在这种情况下，需在可用性（无分区 ID）和一致性（将事件固定到分区 ID）之间做出明确选择。
 
 另一个注意事项是处理事件处理中的延迟。 在某些情况下，丢弃数据并重试可能比尝试跟上处理要更好，后者可能会进而导致下游处理延迟。 例如，在拥有股票行情自动收报机的情况下，最好等待接收到完整的最新数据，但在实时聊天或 VOIP 的情况下，则更希望能快速获得数据，即使数据不完整。
 

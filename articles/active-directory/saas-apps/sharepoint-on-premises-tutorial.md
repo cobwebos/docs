@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/21/2018
 ms.author: jeedes
-ms.openlocfilehash: 954eec8566173dd4707926d5f713a5cd509bdd9b
-ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
+ms.openlocfilehash: 9c63808af8d883badd379cf8bc3372a1d65d6624
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52620058"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52968642"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sharepoint-on-premises"></a>教程：Azure Active Directory 与本地 SharePoint 的集成
 
@@ -76,7 +76,7 @@ ms.locfileid: "52620058"
 
 4. 在搜索框中键入“本地 SharePoint”，在结果面板中选择“本地 SharePoint”，然后单击“添加”按钮添加该应用程序。
 
-    ![结果列表中的“本地 SharePoint”](./media\sharepoint-on-premises-tutorial/tutorial_sharepointonpremises_addfromgallery.png)
+    ![结果列表中的“本地 SharePoint”](./media/sharepoint-on-premises-tutorial/tutorial_sharepointonpremises_addfromgallery.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
 
@@ -104,11 +104,11 @@ ms.locfileid: "52620058"
 
 2. 在“单一登录”对话框中，选择“基于 SAML 的单一登录”作为“模式”以启用单一登录。
 
-    ![“单一登录”对话框](./media\sharepoint-on-premises-tutorial/tutorial_sharepointonpremises_samlbase.png)
+    ![“单一登录”对话框](./media/sharepoint-on-premises-tutorial/tutorial_sharepointonpremises_samlbase.png)
 
 3. 在“本地 SharePoint 域和 URL”部分执行以下步骤：
 
-    ![本地 SharePoint 域和 URL 单一登录信息](./media\sharepoint-on-premises-tutorial/tutorial_sharepointonpremises_url1.png)
+    ![本地 SharePoint 域和 URL 单一登录信息](./media/sharepoint-on-premises-tutorial/tutorial_sharepointonpremises_url1.png)
 
     a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“登录 URL”文本框中，使用以下模式键入 URL： `https://<YourSharePointServerURL>/_trust/default.aspx`
 
@@ -118,21 +118,21 @@ ms.locfileid: "52620058"
 
 4. 在“SAML 签名证书”部分中，单击“证书(base64)”，并在计算机上保存证书文件。
 
-    ![证书下载链接](./media\sharepoint-on-premises-tutorial/tutorial_sharepointonpremises_certificate.png)
+    ![证书下载链接](./media/sharepoint-on-premises-tutorial/tutorial_sharepointonpremises_certificate.png)
 
     > [!Note]
     > 请记下你将证书文件下载到的文件路径，因为稍后需要在用于配置的 PowerShell 脚本中使用它。
 
 5. 单击“保存”按钮。
 
-    ![配置单一登录“保存”按钮](./media\sharepoint-on-premises-tutorial/tutorial_general_400.png)
+    ![配置单一登录“保存”按钮](./media/sharepoint-on-premises-tutorial/tutorial_general_400.png)
 
 6. 在“本地 SharePoint 配置”部分，单击“配置本地 SharePoint”打开“配置登录”窗口。 从“快速参考”部分复制“SAML 实体 ID”。 对于“单一登录服务 URL”，请使用采用以下模式的值：`https://login.microsoftonline.com/_my_directory_id_/wsfed` 
 
     > [!Note]
     > _my_directory_id_ 是 Azure AD 订阅的租户 ID。
 
-    ![本地 SharePoint 配置](./media\sharepoint-on-premises-tutorial/tutorial_sharepointonpremises_configure.png)
+    ![本地 SharePoint 配置](./media/sharepoint-on-premises-tutorial/tutorial_sharepointonpremises_configure.png)
 
     > [!NOTE]
     > 本地 SharePoint 应用程序使用 SAML 1.1 令牌，因此，Azure AD 预期 WS 联合身份验证请求来自 SharePoint 服务器；身份验证后，它会颁发 SAML 1.1 令牌。
@@ -171,7 +171,7 @@ ms.locfileid: "52620058"
 
     e. 单击“确定”。
 
-    ![配置身份验证提供程序](./media\sharepoint-on-premises-tutorial/fig10-configauthprovider.png)
+    ![配置身份验证提供程序](./media/sharepoint-on-premises-tutorial/fig10-configauthprovider.png)
 
     > [!NOTE]
     > 某些外部用户将不能使用此单一登录集成，因为其 UPN 将具有扭曲的值，例如 `MYEMAIL_outlook.com#ext#@TENANT.onmicrosoft.com`。 不久，我们将允许客户应用配置如何根据用户类型来处理 UPN。 在那之后，所有来宾用户应当都能够与组织员工一样无缝地使用 SSO。
@@ -186,19 +186,19 @@ ms.locfileid: "52620058"
 
 1. 在 Azure 门户的左窗格中，单击“Azure Active Directory”按钮。
 
-    ![“Azure Active Directory”按钮](./media\sharepoint-on-premises-tutorial/create_aaduser_01.png)
+    ![“Azure Active Directory”按钮](./media/sharepoint-on-premises-tutorial/create_aaduser_01.png)
 
 2. 若要显示用户列表，请转到“用户和组”，然后单击“所有用户”。
 
-    ![“用户和组”以及“所有用户”链接](./media\sharepoint-on-premises-tutorial/create_aaduser_02.png)
+    ![“用户和组”以及“所有用户”链接](./media/sharepoint-on-premises-tutorial/create_aaduser_02.png)
 
 3. 若要打开“用户”对话框，在“所有用户”对话框顶部单击“添加”。
 
-    ![“添加”按钮](./media\sharepoint-on-premises-tutorial/create_aaduser_03.png)
+    ![“添加”按钮](./media/sharepoint-on-premises-tutorial/create_aaduser_03.png)
 
 4. 在“用户”对话框中，执行以下步骤：
 
-    ![“用户”对话框](./media\sharepoint-on-premises-tutorial/create_aaduser_04.png)
+    ![“用户”对话框](./media/sharepoint-on-premises-tutorial/create_aaduser_04.png)
 
     a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“姓名”框中，键入“BrittaSimon”。
 
@@ -220,7 +220,7 @@ ms.locfileid: "52620058"
 
 4. 在“Web 应用程序的策略”中，单击“添加用户”。
 
-    ![按名称声明搜索用户](./media\sharepoint-on-premises-tutorial/fig11-searchbynameclaim.png)
+    ![按名称声明搜索用户](./media/sharepoint-on-premises-tutorial/fig11-searchbynameclaim.png)
 
 5. 在“添加用户”对话框中的“区域”内单击相应的区域，然后单击“下一步”。
 
@@ -232,7 +232,7 @@ ms.locfileid: "52620058"
 
 9. 在“权限”中，单击“完全控制”。
 
-    ![向声明用户授予完全控制权限](./media\sharepoint-on-premises-tutorial/fig12-grantfullcontrol.png)
+    ![向声明用户授予完全控制权限](./media/sharepoint-on-premises-tutorial/fig12-grantfullcontrol.png)
 
 10. 依次单击“完成”、“确定”。
 
@@ -263,7 +263,7 @@ ms.locfileid: "52620058"
 
 现在，用户可以使用 Azure AD 中的标识登录到 SharePoint 2016，但仍有机会改进用户体验。 例如，搜索某个用户会在人员选取器中显示多个搜索结果。 声明映射中创建的 3 个声明类型各有一个搜索结果。 若要使用人员选取器选择某个用户，必须准确键入其用户名，并选择“名称”声明结果。
 
-![声明搜索结果](./media\sharepoint-on-premises-tutorial/fig16-claimssearchresults.png)
+![声明搜索结果](./media/sharepoint-on-premises-tutorial/fig16-claimssearchresults.png)
 
 系统不会验证要搜索的值，因此，可能会出现拼写错误，或者用户意外选择分配错误的声明类型，例如 **SurName** 声明。 这可能会导致用户无法成功访问资源。
 
@@ -283,7 +283,7 @@ ms.locfileid: "52620058"
 
 2. 在应用程序列表中，选择“本地 SharePoint”。
 
-    ![应用程序列表中的“SharePoint”链接](./media\sharepoint-on-premises-tutorial/tutorial_sharepointonpremises_app.png)
+    ![应用程序列表中的“SharePoint”链接](./media/sharepoint-on-premises-tutorial/tutorial_sharepointonpremises_app.png)
 
 3. 在左侧菜单中，单击“用户和组”。
 

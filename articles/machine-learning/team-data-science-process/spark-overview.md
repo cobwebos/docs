@@ -1,5 +1,5 @@
 ---
-title: 有关在 Azure HDInsight 上使用 Spark 展开数据科研的概述 | Microsoft Docs
+title: 在 Azure HDInsight 上使用 Spark 的数据科学 - Team Data Science Process
 description: Spark MLlib 工具包向分布式 HDInsight 环境引入了大量机器学习建模功能。
 services: machine-learning
 author: marktab
@@ -10,13 +10,13 @@ ms.component: team-data-science-process
 ms.topic: article
 ms.date: 11/13/2017
 ms.author: tdsp
-ms.custom: (previous author=deguhath, ms.author=deguhath)
-ms.openlocfilehash: c8bd44ddc6f4996982a32385b36d24c0531dc0aa
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: b61c66dbb152914fcacb9020deab0cc4b76a6bc0
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52446307"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53139412"
 ---
 # <a name="overview-of-data-science-using-spark-on-azure-hdinsight"></a>有关在 Azure HDInsight 上使用 Spark 展开数据科研的概述
 
@@ -34,9 +34,9 @@ ms.locfileid: "52446307"
 ### <a name="spark-16-notebooks"></a>Spark 1.6 笔记本
 这些笔记本将要在 Jupyter 笔记本服务器的 pySpark 内核中运行。
 
-- [pySpark-machine-learning-data-science-spark-data-exploration-modeling.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark1.6/pySpark-machine-learning-data-science-spark-data-exploration-modeling.ipynb)：提供有关如何执行数据探索、建模和评分与多种不同算法的信息。
-- [pySpark-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark1.6/pySpark-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb)：包含笔记本 #1 中的主题，以及使用超参数优化和交叉验证进行模型开发的说明。
-- [pySpark-machine-learning-data-science-spark-model-consumption.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark1.6/pySpark-machine-learning-data-science-spark-model-consumption.ipynb)：说明如何使用 HDInsight 群集上的 Python 实施已保存的模型。
+- [pySpark-machine-learning-data-science-spark-data-exploration-modeling.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark1.6/pySpark-machine-learning-data-science-spark-data-exploration-modeling.ipynb)：提供有关如何使用多种不同算法执行数据探索、建模和评分的信息。
+- [pySpark-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark1.6/pySpark-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb)：包括笔记本 #1 中的主题，以及使用超参数优化和交叉验证的模型开发。
+- [pySpark-machine-learning-data-science-spark-model-consumption.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark1.6/pySpark-machine-learning-data-science-spark-model-consumption.ipynb)：演示如何在 HDInsight 群集上使用 Python 操作已保存的模型。
 
 ### <a name="spark-20-notebooks"></a>Spark 2.0 笔记本
 这些笔记本将要在 Jupyter 笔记本服务器的 pySpark3 内核中运行。
@@ -61,7 +61,7 @@ ms.locfileid: "52446307"
 <!-- -->
 
 > [!NOTE]
-有关 NYC 出租车和飞机航班延迟数据集的 Spark 2.0 笔记本可能需要 10 分钟或更长时间运行（具体取决于 HDI 群集大小）。 以上列表中的第一个笔记本显示了一个笔记本中数据浏览、可视化和 ML 模型训练的许多方面，该笔记本使用向下采样的 NYC 数据集（其中已预先联接出租车和费用文件）运行，其运行所花费的时间更短：[Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb) 此笔记本完成运行的时间短得多（2-3 分钟），对于快速浏览我们为 Spark 2.0 提供的代码而言，此笔记本可能是一个很好的起点。 
+有关 NYC 出租车和飞机航班延迟数据集的 Spark 2.0 笔记本可能需要 10 分钟或更长时间运行（具体取决于 HDI 群集大小）。 以上列表中的第一个笔记本全面显示了数据探索、可视化和 ML 模型训练的许多方面，该笔记本使用下采样的 NYC 数据集（其中已预先联接出租车和费用文件）运行时所花费的时间更短：[Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb) 此笔记本完成运行的时间短得多（2-3 分钟），对于实现快速浏览我们为 Spark 2.0 提供的代码这一目的，此笔记本可能是一个很好的起点。 
 
 <!-- -->
 
@@ -178,9 +178,9 @@ NYC 出租车行程数据是大约 20 GB（未压缩时约为 48 GB）的压缩�
 ## <a name="whats-next"></a>后续步骤
 现在，已完成 HDInsight Spark 群集设置并且上传了 Jupyter 笔记本，可以随时完成对应于这三个 PySpark 笔记本的主题。 它们介绍了如何浏览数据以及如何创建和使用模型。 高级数据浏览和建模笔记本介绍了如何包括交叉验证、超参数扫描和模型评估。 
 
-**使用 Spark 进行数据浏览和建模：** 通过完成[使用 Spark MLlib 工具包为数据创建二元分类和回归模型](spark-data-exploration-modeling.md)主题，浏览数据集并创建、评分和评估机器学习模型。
+**使用 Spark 进行数据探索和建模：** 通过完成[使用 Spark MLlib 工具包为数据创建二元分类和回归模型](spark-data-exploration-modeling.md)主题，探索数据集并创建、评分和评估机器学习模型。
 
-**模型使用：** 若要了解如何评分在本主题中创建的分类和回归模型，请参阅[评分和评估 Spark 生成的机器学习模型](spark-model-consumption.md)。
+**使用模型：** 若要了解如何评分在本主题中创建的分类和回归模型，请参阅[评分和评估 Spark 生成的机器学习模型](spark-model-consumption.md)。
 
-**交叉验证和超参数扫描**：请参阅[使用 Spark 进行高级数据浏览和建模](spark-advanced-data-exploration-modeling.md)，了解如何使用交叉验证和超参数扫描训练模型
+**交叉验证和超参数扫描**：请参阅[使用 Spark 进行高级数据探索和建模](spark-advanced-data-exploration-modeling.md)，了解如何使用交叉验证和超参数扫描训练模型
 

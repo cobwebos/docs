@@ -4,14 +4,14 @@ description: 概述 Azure Migrate 服务中的已知问题，并针对常见错�
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 10/31/2018
+ms.date: 12/05/2018
 ms.author: raynew
-ms.openlocfilehash: 0b2954ddfda0ab4c94ddf6176d76d8bcd937fa42
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 4ebd6eb860a6b102d1a3b12642510c429c18baa7
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50413327"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53259148"
 ---
 # <a name="troubleshoot-azure-migrate"></a>排查 Azure Migrate 问题
 
@@ -19,15 +19,15 @@ ms.locfileid: "50413327"
 
 [Azure Migrate](migrate-overview.md) 会评估要迁移到 Azure 的本地工作负载。 使用本文内容来排查在部署和使用 Azure Migrate 期间出现的问题。
 
-### <a name="i-am-using-the-continuous-discovery-ova-but-vms-that-are-deleted-in-my-on-premises-environment-are-still-being-shown-in-the-portal"></a>我使用了持续发现 OVA，但在本地环境中删除的 VM 仍然显示在门户中。
+### <a name="i-am-using-the-ova-that-continuously-discovers-my-on-premises-environment-but-the-vms-that-are-deleted-in-my-on-premises-environment-are-still-being-shown-in-the-portal"></a>我正在使用持续发现本地环境的 OVA，但在本地环境中删除的 VM 仍在门户中显示。
 
 持续发现设备仅持续收集性能数据，它不会检测本地环境中的任何配置更改（即 VM 添加、删除、磁盘添加等）。 如果本地环境中存在配置更改，可以执行以下操作以在门户中反映更改：
 
-- 添加项（VM、磁盘、核心等）：若要在 Azure 门户中反映这些更改，可以从设备停止发现，然后重新启动设备。 这可确保在 Azure Migrate 项目中更新更改。
+- 添加项（VM、磁盘、核心等）：若要在 Azure 门户中反映这些更改，可以从设备停止发现，然后重启发现。 这可确保在 Azure Migrate 项目中更新更改。
 
    ![停止发现](./media/troubleshooting-general/stop-discovery.png)
 
-- 删除 VM：由于设备的设计方式，即使停止并启动发现，也不会反映 VM 的删除。 这是因为后续发现的数据会追加到较旧的发现后，而不是进行覆盖。 在这种情况下，可以通过从组中删除 VM 并重新计算评估来直接忽略门户中的 VM。
+- 删除 VM：由于设备的设计方式，即使停止并启动发现，也不会反映出 VM 已删除这一更改。 这是因为后续发现的数据会追加到较旧的发现后，而不是进行覆盖。 在这种情况下，可以通过从组中删除 VM 并重新计算评估来直接忽略门户中的 VM。
 
 ### <a name="migration-project-creation-failed-with-error-requests-must-contain-user-identity-headers"></a>无法创建迁移项目，错误消息为“请求必须包含用户标识头”
 
@@ -35,15 +35,44 @@ ms.locfileid: "50413327"
 
 收到邀请电子邮件后，需要打开电子邮件，并单击电子邮件中的链接来接受邀请。 完成此操作后，需要注销 Azure 门户并重新登录，刷新浏览器并不起作用。 然后，可以尝试创建迁移项目。
 
+### <a name="i-am-unable-to-export-the-assessment-report"></a>无法导出评估报告
+
+如果无法从门户导出评估报告，请尝试使用以下 REST API 来获取评估报告的下载 URL。
+
+1. 在计算机上安装“armclient”（如果尚未安装）：
+
+  a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在管理员命令提示符窗口中，运行以下命令：```@powershell -NoProfile -ExecutionPolicy Bypass -Command "iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))" && SET "PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin"```
+
+  b. 在管理员 Windows PowerShell 窗口中，运行以下命令：```choco install armclient```
+
+2.  使用 Azure Migrate REST API 获取评估报告的下载 URL
+
+  a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。    在管理员 Windows PowerShell 窗口中，运行以下命令：```armclient login```
+
+  此操作将打开 Azure 登录弹出窗口，你需要在此窗口中登录 Azure。
+
+  b.    在同一 PowerShell 窗口中，请运行以下命令以获取评估报告的下载 URL（使用适当的值替换 URI 参数，下面是示例 API 请求）
+
+       ```armclient POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/projects/{projectName}/groups/{groupName}/assessments/{assessmentName}/downloadUrl?api-version=2018-02-02```
+
+       示例请求和输出：
+
+       ```PS C:\WINDOWS\system32> armclient POST https://management.azure.com/subscriptions/8c3c936a-c09b-4de3-830b-3f5f244d72e9/r
+esourceGroups/ContosoDemo/providers/Microsoft.Migrate/projects/Demo/groups/contosopayroll/assessments/assessment_11_16_2
+018_12_16_21/downloadUrl?api-version=2018-02-02
+{
+  "assessmentReportUrl": "https://migsvcstoragewcus.blob.core.windows.net/4f7dddac-f33b-4368-8e6a-45afcbd9d4df/contosopayrollassessment_11_16_2018_12_16_21?sv=2016-05-31&sr=b&sig=litQmHuwi88WV%2FR%2BDZX0%2BIttlmPMzfVMS7r7dULK7Oc%3D&st=2018-11-20T16%3A09%3A30Z&se=2018-11-20T16%3A19%3A30Z&sp=r",
+  "expirationTime": "2018-11-20T22:09:30.5681954+05:30"```
+
+3. 复制响应中的 URL，并在浏览器中打开它以下载评估报告。
+
+4. 下载报告后，使用 Excel 浏览到下载的文件夹，然后在 Excel 中打开文件进行查看。
+
 ### <a name="performance-data-for-disks-and-networks-adapters-shows-as-zeros"></a>磁盘和网络适配器的性能数据显示为零
 
 如果在 vCenter 服务器上的统计信息设置级别设置为小于 3，便会出现此问题。 在级别 3 或更高级别上，vCenter 存储有关计算、存储和网络的 VM 性能历史记录。 如果小于级别 3，vCenter 将不会存储存储器和网络数据，而只存储 CPU 和内存数据。 在此方案中，性能数据在 Azure Migrate 中显示为零，而 Azure Migrate 根据从本地计算机上收集的元数据，为磁盘和网络提供大小建议。
 
 若要启用磁盘和网络性能数据收集，请将统计信息设置级别更改为 3。 然后，至少等待一天来发现环境并进行评估。
-
-### <a name="i-installed-agents-and-used-the-dependency-visualization-to-create-groups-now-post-failover-the-machines-show-install-agent-action-instead-of-view-dependencies"></a>我已安装代理并使用依赖项可视化效果创建组。 现在，在执行故障转移后，计算机显示“安装代理”操作，而不是“查看依赖项”
-* 发布计划或计划外故障转移，本地计算机将处于关闭状态，而等效计算机会在 Azure 中处于启动状态。 这些计算机将获得一个不同的 MAC 地址。 它们可能会根据用户是否选择保留本地 IP 地址而获得不同的 IP 地址。 如果 MAC 和 IP 地址不同，Azure Migrate 则不会将本地计算机与任何服务映射依赖项数据关联起来，同时会要求用户安装代理，而不是查看依赖项。
-* 发布测试故障转移，本地计算机会按预期保持开启状态。 在 Azure 中启动的等效计算机将获取不同的 MAC 地址，并且可能会获取不同的 IP 地址。 除非用户阻止从这些计算机输出 Log Analytics 流量，否则 Azure Migrate 不会将本地计算机与任何服务映射依赖项数据关联起来，同时会要求用户安装代理，而不是查看依赖项。
 
 ### <a name="i-specified-an-azure-geography-while-creating-a-migration-project-how-do-i-find-out-the-exact-azure-region-where-the-discovered-metadata-would-be-stored"></a>创建迁移项目时，我已指定 Azure 地理位置，如何找到将存储所发现元数据的确切 Azure 区域？
 
@@ -53,7 +82,7 @@ ms.locfileid: "50413327"
 
 ## <a name="collector-errors"></a>收集器错误
 
-### <a name="deployment-of-azure-migrate-collector-failed-with-the-error-the-provided-manifest-file-is-invalid-invalid-ovf-manifest-entry"></a>Azure Migrate 收集器部署失败并出现错误：提供的清单文件无效：OVF 清单条目无效。
+### <a name="deployment-of-azure-migrate-collector-failed-with-the-error-the-provided-manifest-file-is-invalid-invalid-ovf-manifest-entry"></a>Azure Migrate 收集器的部署失败，并显示以下错误：提供的清单文件无效：OVF 清单条目无效。
 
 1. 通过检查其哈希值，验证是否已正确下载 Azure Migrate 收集器 OVA 文件。 请参阅[本文](https://docs.microsoft.com/azure/migrate/tutorial-assessment-vmware#verify-the-collector-appliance)来验证哈希值。 如果哈希值不匹配，请再次下载 OVA 文件并重试部署。
 2. 如果仍然失败，并且使用的是 VMware vSphere 客户端来部署 OVF，请尝试通过 vSphere Web 客户端对其进行部署。 如果仍然失败，请尝试使用其他 Web 浏览器。
@@ -107,7 +136,7 @@ Azure Migrate 收集器下载 PowerCLI，并在设备上安装它。 无法安�
 2. 转到目录 C:\ProgramFiles\ProfilerService\VMWare\Scripts\
 3. 运行脚本 InstallPowerCLI.ps1
 
-### <a name="error-unhandledexception-internal-error-occured-systemiofilenotfoundexception"></a>UnhandledException 错误 发生内部错误: System.IO.FileNotFoundException
+### <a name="error-unhandledexception-internal-error-occured-systemiofilenotfoundexception"></a>发生 UnhandledException 内部错误：System.IO.FileNotFoundException
 
 出现此问题可能是由于存在 VMware PowerCLI 安装问题。 请遵循以下步骤来解决该问题：
 
@@ -117,7 +146,7 @@ Azure Migrate 收集器下载 PowerCLI，并在设备上安装它。 无法安�
 
 ### <a name="error-unabletoconnecttoserver"></a>UnableToConnectToServer 错误
 
-无法连接到 vCenter Server“Servername.com:9443”，因为存在以下错误：在可以接受消息的 https://Servername.com:9443/sdk 上没有终结点在侦听。
+由于错误，无法连接到 vCenter Server“Servername.com:9443”： https://Servername.com:9443/sdk 处没有可接受消息的终结点侦听。
 
 检查要运行的收集器设备是否是最新版本。如果不是，将设备升级到[最新版本](https://docs.microsoft.com/azure/migrate/concepts-collector#how-to-upgrade-collector)。
 
@@ -128,7 +157,11 @@ Azure Migrate 收集器下载 PowerCLI，并在设备上安装它。 无法安�
 3. 确定可连接到 vCenter 的正确端口号。
 4. 最后检查 vCenter Server 是否已启动并运行。
 
-## <a name="troubleshoot-dependency-visualization-issues"></a>排查依赖项可视化问题
+## <a name="dependency-visualization-issues"></a>依赖项可视化效果问题
+
+### <a name="i-am-unable-to-find-the-dependency-visualization-functionality-for-azure-government-projects"></a>找不到 Azure 政府项目的依赖项可视化效果功能。
+
+Azure Migrate 取决于服务映射以获取依赖项可视化效果功能，并且由于服务映射当前在 Azure 政府中不可用，因此 Azure 政府中不提供此功能。
 
 ### <a name="i-installed-the-microsoft-monitoring-agent-mma-and-the-dependency-agent-on-my-on-premises-vms-but-the-dependencies-are-now-showing-up-in-the-azure-migrate-portal"></a>我本地的 VM 上安装了 Microsoft Monitoring Agent (MMA) 和依赖项代理，但依赖项现在显示在 Azure Migrate 门户中。
 
@@ -159,7 +192,11 @@ Azure Migrate 允许可视化依赖项最多持续一小时的时间。 尽管 A
 ### <a name="i-am-unable-to-visualize-dependencies-for-groups-with-more-than-10-vms"></a>我无法可视化具有 10 个以上 VM 的组的依赖项？
 你可以[可视化依赖项的组最多只能有 10 个 VM](https://docs.microsoft.com/azure/migrate/how-to-create-group-dependencies)，如果某个组的 VM 超过 10 个，建议先将该组拆分成较小的组，然后再可视化依赖项。
 
-## <a name="troubleshoot-readiness-issues"></a>排查就绪性问题
+### <a name="i-installed-agents-and-used-the-dependency-visualization-to-create-groups-now-post-failover-the-machines-show-install-agent-action-instead-of-view-dependencies"></a>我已安装代理并使用依赖项可视化效果创建组。 现在，在执行故障转移后，计算机显示“安装代理”操作，而不是“查看依赖项”
+* 发布计划或计划外故障转移，本地计算机将处于关闭状态，而等效计算机会在 Azure 中处于启动状态。 这些计算机将获得一个不同的 MAC 地址。 它们可能会根据用户是否选择保留本地 IP 地址而获得不同的 IP 地址。 如果 MAC 和 IP 地址不同，Azure Migrate 则不会将本地计算机与任何服务映射依赖项数据关联起来，同时会要求用户安装代理，而不是查看依赖项。
+* 发布测试故障转移，本地计算机会按预期保持开启状态。 在 Azure 中启动的等效计算机将获取不同的 MAC 地址，并且可能会获取不同的 IP 地址。 除非用户阻止从这些计算机输出 Log Analytics 流量，否则 Azure Migrate 不会将本地计算机与任何服务映射依赖项数据关联起来，同时会要求用户安装代理，而不是查看依赖项。
+
+## <a name="troubleshoot-azure-readiness-issues"></a>排查 Azure 迁移就绪性问题
 
 **问题** | **修补程序**
 --- | ---
@@ -173,7 +210,6 @@ Azure Migrate 允许可视化依赖项最多持续一小时的时间。 尽管 A
 需要 Visual Studio 订阅。 | 计算机中运行了一个仅在 Visual Studio 订阅中受支持的 Windows 客户端 OS。
 未找到所需存储性能的 VM。 | 计算机所需的存储性能（IOPS/吞吐量）超出了 Azure VM 支持范围。 在迁移之前，减少计算机的存储需求。
 未找到具有所需网络性能的 VM。 | 计算机所需的网络性能（输入/输出）超出了 Azure VM 支持。 减少计算机的网络要求。
-在指定的定价层未找到 VM。 | 如果定价层设置为“标准”，请考虑在迁移到 Azure 之前缩小 VM。 如果大小调整为“基本”，请考虑将评估的定价层更改为“标准”。
 未在指定位置找到 VM。 | 在迁移之前使用不同目标位置。
 存在一个或多个不合适磁盘。 | 附加到 VM 的一个或多个磁盘不符合 Azure 要求。 对于附加到 VM 的每个磁盘，请确保磁盘的大小 < 4 TB，如果不是，请在迁移到 Azure 之前缩小磁盘大小。 请确保 Azure [托管虚拟机磁盘](https://docs.microsoft.com/azure/azure-subscription-service-limits#storage-limits)支持每个磁盘所需的性能（IOPS/吞吐量）。   
 存在一个或多个不合适网络适配器。 | 在迁移之前从计算机中删除未使用的网络适配器。

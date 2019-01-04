@@ -1,26 +1,18 @@
 ---
-title: 创建和修改 Azure ExpressRoute 线路：CLI | Microsoft Docs
+title: 创建和修改 ExpressRoute 线路：Azure CLI | Microsoft Docs
 description: 本文介绍如何使用 CLI 创建、预配、验证、更新、删除和取消预配 ExpressRoute 线路。
-documentationcenter: na
 services: expressroute
 author: cherylmc
-manager: timlt
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: expressroute
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 10/19/2017
+ms.topic: conceptual
+ms.date: 12/07/2018
 ms.author: anzaman;cherylmc
-ms.openlocfilehash: a53fe43365100c6d71fcc2b9e0944a221adf188d
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 2013b3b96fddd32f01245655c1feb600bc426e2a
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51249228"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53084135"
 ---
 # <a name="create-and-modify-an-expressroute-circuit-using-cli"></a>使用 CLI 创建和修改 ExpressRoute 线路
 
@@ -44,7 +36,7 @@ ms.locfileid: "51249228"
 
 ### <a name="1-sign-in-to-your-azure-account-and-select-your-subscription"></a>1.登录到 Azure 帐户，然后选择订阅
 
-要开始配置，请登录到 Azure 帐户。 使用以下示例来帮助连接：
+要开始配置，请登录到 Azure 帐户。 如果使用 CloudShell“试用”，则会自动登录。 使用以下示例来帮助连接：
 
 ```azurecli
 az login
@@ -52,13 +44,13 @@ az login
 
 检查该帐户的订阅。
 
-```azurecli
+```azurecli-interactive
 az account list
 ```
 
 选择要为其创建 ExpressRoute 线路的订阅。
 
-```azurecli
+```azurecli-interactive
 az account set --subscription "<subscription ID>"
 ```
 
@@ -66,7 +58,7 @@ az account set --subscription "<subscription ID>"
 
 在创建 ExpressRoute 线路之前，需要支持的连接服务提供商、位置和带宽选项的列表。 CLI 命令“az network express-route list-service-providers”会返回此信息，在随后的步骤中将使用此信息：
 
-```azurecli
+```azurecli-interactive
 az network express-route list-service-providers
 ```
 
@@ -140,7 +132,7 @@ az network express-route list-service-providers
 
 如果尚未有资源组，则在创建 ExpressRoute 线路之前，必须先创建一个资源组。 可以运行以下命令来创建资源组：
 
-```azurecli
+```azurecli-interactive
 az group create -n ExpressRouteResourceGroup -l "West US"
 ```
 
@@ -154,7 +146,7 @@ az group create -n ExpressRouteResourceGroup -l "West US"
 
 从发布服务密钥的那一刻起，将对 ExpressRoute 线路进行计费。 以下是请求新的服务密钥的示例：
 
-```azurecli
+```azurecli-interactive
 az network express-route create --bandwidth 200 -n MyCircuit --peering-location "Silicon Valley" -g ExpressRouteResourceGroup --provider "Equinix" -l "West US" --sku-family MeteredData --sku-tier Standard
 ```
 
@@ -164,7 +156,7 @@ az network express-route create --bandwidth 200 -n MyCircuit --peering-location 
 
 若要获取已创建的所有 ExpressRoute 线路的列表，请运行“az network express-route list”命令。 可以随时使用此命令检索此信息。 若要列出所有线路，请进行不带任何参数的调用。
 
-```azurecli
+```azurecli-interactive
 az network express-route list
 ```
 
@@ -201,7 +193,7 @@ az network express-route list
 
 可以通过使用“-h”参数运行以下命令获取所有参数的详细说明。
 
-```azurecli
+```azurecli-interactive
 az network express-route list -h
 ```
 
@@ -211,21 +203,21 @@ az network express-route list -h
 
 创建新的 ExpressRoute 线路时，线路将为以下状态：
 
-```azurecli
+```azurecli-interactive
 "serviceProviderProvisioningState": "NotProvisioned"
 "circuitProvisioningState": "Enabled"
 ```
 
 当连接服务提供商正在为你启用线路时，线路将更改为以下状态：
 
-```azurecli
+```azurecli-interactive
 "serviceProviderProvisioningState": "Provisioning"
 "circuitProvisioningState": "Enabled"
 ```
 
 只有 ExpressRoute 线路处于以下状态时，才能使用它。
 
-```azurecli
+```azurecli-interactive
 "serviceProviderProvisioningState": "Provisioned"
 "circuitProvisioningState": "Enabled
 ```
@@ -234,7 +226,7 @@ az network express-route list -h
 
 检查线路密钥的状态，可以通过此状态了解提供商何时启用了线路。 配置线路后，“ServiceProviderProvisioningState” 会显示为“Provisioned”，如以下示例所示：
 
-```azurecli
+```azurecli-interactive
 az network express-route show --resource-group ExpressRouteResourceGroup --name MyCircuit
 ```
 
@@ -297,7 +289,7 @@ az network express-route show --resource-group ExpressRouteResourceGroup --name 
 
 可以使用以下命令为现有线路启用 ExpressRoute 高级版外接程序：
 
-```azurecli
+```azurecli-interactive
 az network express-route update -n MyCircuit -g ExpressRouteResourceGroup --sku-tier Premium
 ```
 
@@ -318,7 +310,7 @@ az network express-route update -n MyCircuit -g ExpressRouteResourceGroup --sku-
 
 可以使用以下示例为现有线路禁用 ExpressRoute 高级版外接程序：
 
-```azurecli
+```azurecli-interactive
 az network express-route update -n MyCircuit -g ExpressRouteResourceGroup --sku-tier Standard
 ```
 
@@ -334,7 +326,7 @@ az network express-route update -n MyCircuit -g ExpressRouteResourceGroup --sku-
 
 确定所需的大小后，可以使用以下命令调整线路的大小：
 
-```azurecli
+```azurecli-interactive
 az network express-route update -n MyCircuit -g ExpressRouteResourceGroup --bandwidth 1000
 ```
 
@@ -344,7 +336,7 @@ az network express-route update -n MyCircuit -g ExpressRouteResourceGroup --band
 
 可以通过使用以下示例更改 ExpressRoute 线路的 SKU：
 
-```azurecli
+```azurecli-interactive
 az network express-route update -n MyCircuit -g ExpressRouteResourceGroup --sku-family UnlimitedData
 ```
 
@@ -362,7 +354,7 @@ az network express-route update -n MyCircuit -g ExpressRouteResourceGroup --sku-
 
 可以通过运行以下命令来删除 ExpressRoute 线路：
 
-```azurecli
+```azurecli-interactive
 az network express-route delete  -n MyCircuit -g ExpressRouteResourceGroup
 ```
 

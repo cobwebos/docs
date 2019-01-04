@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 10/25/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 8e1c58f2d60ee95189fb583e032d8748fedb88d4
-ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
+ms.openlocfilehash: 2ba34a6d1ecc33e8a4d355aeacb0da8a764a784d
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52620211"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52679515"
 ---
 # <a name="manage-updates-for-multiple-machines"></a>管理多个计算机的更新
 
@@ -84,9 +84,9 @@ Linux 代理必须具有访问更新存储库的权限。
 
 - **符合**：计算机不缺少关键更新或安全更新。
 
-- **不符合** - 计算机缺少至少一项关键更新或安全更新。
+- **不符合**：计算机缺少至少一项关键更新或安全更新。
 
-- **未评估** - 未在预期的时间范围内收到计算机的更新评估数据。 对于 Linux 计算机，预期的时间范围是过去 3 小时内。 对于 Windows 计算机，预期的时间范围是过去 12 小时内。
+- **未评估**：未在预期的时间范围内收到计算机的更新评估数据。 对于 Linux 计算机，预期的时间范围是过去 3 小时内。 对于 Windows 计算机，预期的时间范围是过去 12 小时内。
 
 若要查看代理的状态，请选择“更新代理准备”列中的链接。 选择此选项将打开“混合辅助角色”窗格，并且将显示混合辅助角色的状态。 下图显示了长时间未连接到“更新管理”的代理的示例。
 
@@ -126,13 +126,13 @@ Linux 代理必须具有访问更新存储库的权限。
 在“新建更新部署”窗格中，指定以下信息：
 
 - **名称**：输入用于标识更新部署的唯一名称。
-- **操作系统**：选择 **Windows** 或 **Linux**。
-- **要更新的组（预览）**：定义基于一组订阅、资源组、位置和标记的查询，生成要在部署中包含的 Azure VM 动态组。 有关详细信息，请参阅[动态组](automation-update-management.md#using-dynamic-groups)
-- **要更新的计算机**：选择“已保存的搜索”、“已导入的组”或“计算机”，进而选择要更新的计算机。 如果选择“计算机”，则计算机的就绪状态将在“更新代理商准备情况”列中显示。 可以在计划更新部署之前查看计算机的运行状况状态。 要了解在 Log Analytics 中创建计算机组的不同方法，请参阅 [Log Analytics 中的计算机组](../log-analytics/log-analytics-computer-groups.md)
+- **操作系统**：选择“Windows”或“Linux”。
+- **要更新的组(预览版)**：定义基于一组订阅、资源组、位置和标记的查询，生成要在部署中包含的 Azure VM 动态组。 有关详细信息，请参阅[动态组](automation-update-management.md#using-dynamic-groups)
+- **要更新的计算机**：选择“已保存的搜索”、“已导入的组”或“计算机”，进而选择要更新的计算机。 如果选择“计算机”，则计算机的就绪状态将在“更新代理商准备情况”列中显示。 可以在计划更新部署之前查看计算机的运行状况状态。 要了解在 Log Analytics 中创建计算机组的不同方法，请参阅 [Log Analytics 中的计算机组](../azure-monitor/platform/computer-groups.md)
 
   ![“新建更新部署”窗格](./media/manage-update-multi/update-select-computers.png)
 
-- **更新分类**：选择要在更新部署包括的软件的类型。 有关分类类型的说明，请参阅[更新分类](automation-update-management.md#update-classifications)。 分类类型：
+- **更新分类**：选择要在更新部署中包括的软件的类型。 有关分类类型的说明，请参阅[更新分类](automation-update-management.md#update-classifications)。 分类类型：
   - 关键更新
   - 安全更新
   - 更新汇总

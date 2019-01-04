@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/15/2017
 ms.author: jeedes
-ms.openlocfilehash: b2a5050960eee55a7edbdc6048ee717e8345cb2e
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 1a179751cb8919e260c58564be6e14303f4d3f41
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39420285"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52845444"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-encompass"></a>教程：Azure Active Directory 与 Encompass 的集成
 
@@ -110,12 +110,12 @@ ms.locfileid: "39420285"
 
     ![Encompass 域和 URL 单一登录信息](./media/encompass-tutorial/tutorial_encompass_url.png)
 
-    a. 在“标识符”文本框中，提供客户特定的值。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“标识符”文本框中，提供客户特定的值。
 
     b. 在 **“回复 URL”** 文本框中，使用以下模式键入 URL：`https://<subdomain>.voxmobile.com/voxportal/ws/saml/consume`
 
     > [!NOTE] 
-    > 这些不是实际值。 请使用实际标识符和回复 URL 更新这些值。 若要获取这些值，请联系 [Encompass 支持团队](http://www.voxmobile.com/contact/)。
+    > 这些不是实际值。 请使用实际标识符和回复 URL 更新这些值。 若要获取这些值，请联系 [Encompass 支持团队](https://www.voxmobile.com/contact/)。
 
 1. 在“SAML 签名证书”部分中，单击“证书(base64)”，并在计算机上保存证书文件。
 
@@ -129,10 +129,10 @@ ms.locfileid: "39420285"
 
     ![Encompass 配置](./media/encompass-tutorial/tutorial_encompass_configure.png) 
 
-1. 若要在 **Encompass** 端配置单一登录，需将下载的**证书 (Base64)、注销 URL 和 SAML 单一登录服务 URL** 发送给 [Encompass 支持团队](http://www.voxmobile.com/contact/)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
+1. 若要在 **Encompass** 端配置单一登录，需将下载的**证书 (Base64)、注销 URL 和 SAML 单一登录服务 URL** 发送给 [Encompass 支持团队](https://www.voxmobile.com/contact/)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
 
 > [!TIP]
-> 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[ Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
+> 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 
@@ -158,7 +158,7 @@ ms.locfileid: "39420285"
 
     ![“用户”对话框](./media/encompass-tutorial/create_aaduser_04.png)
 
-    a. 在“姓名”框中，键入“BrittaSimon”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“姓名”框中，键入“BrittaSimon”。
 
     b. 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
 
@@ -168,7 +168,7 @@ ms.locfileid: "39420285"
   
 ### <a name="create-a-encompass-test-user"></a>创建 Encompass 测试用户
 
-本部分的内容是在 Encompass 中创建名为“Britta Simon”的用户。 请与 [Encompass 支持团队](http://www.voxmobile.com/contact/)协作在 Encompass 平台中添加用户。 使用单一登录前，必须先创建并激活用户。 
+本部分的内容是在 Encompass 中创建名为“Britta Simon”的用户。 请与 [Encompass 支持团队](https://www.voxmobile.com/contact/)协作在 Encompass 平台中添加用户。  使用单一登录前，必须先创建并激活用户。 
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
@@ -205,12 +205,12 @@ ms.locfileid: "39420285"
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 在访问面板中单击 Encompass 磁贴时，应会自动登录到 Encompass 应用程序。
-有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
+有关访问面板的详细信息，请参阅[访问面板简介](../user-help/active-directory-saas-access-panel-introduction.md)。 
 
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](tutorial-list.md)
-* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
+* [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
 
 

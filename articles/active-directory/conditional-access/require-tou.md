@@ -13,15 +13,15 @@ ms.topic: article
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 06/13/2018
+ms.date: 12/14/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: e121cfddf8dc598771d630e011b4410217f5e92b
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: 3cb403b7f2ac529c79af5f83a1cbe436dc670a25
+ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48901869"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53413364"
 ---
 # <a name="quickstart-require-terms-of-use-to-be-accepted-before-accessing-cloud-apps"></a>快速入门：在访问云应用之前要求接受使用条款 
 
@@ -78,7 +78,7 @@ ms.locfileid: "48901869"
 
     ![Azure Active Directory](./media/require-tou/02.png)
 
-5. 在“Azure Active Directory”页的“管理”部分，单击“条件性访问”。
+5. 在“Azure Active Directory”页的“安全性”部分中，单击“条件性访问”。
 
     ![条件性访问](./media/require-tou/03.png) 
 

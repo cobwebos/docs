@@ -12,15 +12,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/04/2018
+ms.date: 12/28/2018
 ms.author: jeffgilb
 ms.reviewer: brbartle
-ms.openlocfilehash: 58dfb3f02b338d62fcfb10e4d8c1bc492cdacbda
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.openlocfilehash: b036f0b1c38222b6bb3ebee1a3fab0d1613260f7
+ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52890545"
+ms.lasthandoff: 12/28/2018
+ms.locfileid: "53811012"
 ---
 # <a name="register-azure-stack-with-azure"></a>将 Azure Stack 注册到 Azure
 
@@ -125,7 +125,7 @@ Run: get-azurestackstampinformation
       Add-AzureRmAccount -EnvironmentName "<environment name>"
    ```
 
-   | 参数 | 说明 |  
+   | 参数 | 描述 |  
    |-----|-----|
    | EnvironmentName | Azure 云订阅环境名称。 受支持的环境名称**AzureCloud**， **AzureUSGovernment**，或使用中国 Azure 订阅，如果**AzureChinaCloud**。  |
 
@@ -153,7 +153,7 @@ Run: get-azurestackstampinformation
       Add-AzureRmAccount -EnvironmentName "<environment name>"
    ```
 
-   | 参数 | 说明 |  
+   | 参数 | 描述 |  
    |-----|-----|
    | EnvironmentName | Azure 云订阅环境名称。 受支持的环境名称**AzureCloud**， **AzureUSGovernment**，或使用中国 Azure 订阅，如果**AzureChinaCloud**。  |
 
@@ -189,7 +189,7 @@ Run: get-azurestackstampinformation
       Add-AzureRmAccount -EnvironmentName "<environment name>"
    ```
 
-   | 参数 | 说明 |  
+   | 参数 | 描述 |  
    |-----|-----|
    | EnvironmentName | Azure 云订阅环境名称。 受支持的环境名称**AzureCloud**， **AzureUSGovernment**，或使用中国 Azure 订阅，如果**AzureChinaCloud**。  |
 
@@ -300,15 +300,15 @@ Run: get-azurestackstampinformation
 
 ## <a name="verify-azure-stack-registration"></a>验证 Azure Stack 注册
 
-使用以下步骤来验证 Azure Stack 是否已成功注册到 Azure。
+可以使用**区域管理**磁贴，以验证 Azure Stack 注册是否成功。 在管理员门户中的默认仪表板上提供了此磁贴。 可以注册，或未注册状态。 如果注册，它还显示的 Azure 订阅 ID，用于注册 Azure Stack 以及注册的资源组和名称。
 
-1. 登录到 Azure Stack[管理门户](https://docs.microsoft.com/azure/azure-stack/azure-stack-manage-portals#access-the-administrator-portal): https&#58;/ / adminportal。*&lt;区域 >。&lt;fqdn >*。
-2. 选择“所有服务”，然后在“管理”类别下，选择“市场管理” > “从 Azure 添加”。
+1. 登录到 [Azure Stack 管理门户](https://adminportal.local.azurestack.external)。
 
-如果看到 Azure 提供的项列表（例如 WordPress），则表示激活成功。 但是，在离线环境中，Azure Stack 市场不会显示 Azure 市场项。
+2. 从仪表板中，选择**区域管理**。
 
-> [!Note]  
-> 完成注册后，将不再显示提示未注册的活动警告。
+    [ ![区域管理磁贴](media/azure-stack-registration/admin1sm.png "区域管理磁贴") ](media/azure-stack-registration/admin1.png#lightbox)
+
+3. 选择“属性”。 此边栏选项卡显示的状态和你的环境的详细信息。 状态可以是**Registered**或**未注册**。 如果注册，它还显示的 Azure 订阅 ID，用于注册 Azure Stack，以及注册的资源组和名称。
 
 ## <a name="renew-or-change-registration"></a>续订或更改注册
 
@@ -427,16 +427,16 @@ Run: get-azurestackstampinformation
     <String>] [<CommonParameters>]
    ```
 
-| 参数 | 类型 | 说明 |
+| 参数 | 类型 | 描述 |
 |-------------------------------|--------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | PrivilegedEndpointCredential | PSCredential | 用于[访问特权终结点](azure-stack-privileged-endpoint.md#access-the-privileged-endpoint)的凭据。 用户名采用 **AzureStackDomain\CloudAdmin** 格式。 |
 | PrivilegedEndpoint | String | 预先配置的远程 PowerShell 控制台，提供的功能包括日志收集和其他部署后任务。 有关详细信息，请参阅[使用特权终结点](azure-stack-privileged-endpoint.md#access-the-privileged-endpoint)一文。 |
 | AzureContext | PSObject |  |
 | ResourceGroupName | String |  |
 | ResourceGroupLocation | String |  |
-| BillingModel | String | 订阅使用的计费模型。 此参数允许的值：Capacity、PayAsYouUse 和 Development。 |
-| MarketplaceSyndicationEnabled | True/False | 确定 marketplace 管理功能是在门户中可用。 如果，设置为 true 注册连接到 internet。 如果注册在连接断开的环境，设置为 false。 断开连接注册[脱机联合工具](azure-stack-download-azure-marketplace-item.md#disconnected-or-a-partially-connected-scenario)可用于下载 marketplace 项。 |
-| UsageReportingEnabled | True/False | 默认情况下，Azure Stack 报告使用情况指标。 使用容量或支持断开连接的环境的操作员需关闭使用情况报告功能。 此参数的允许值：True、False。 |
+| BillingModel | String | 订阅使用的计费模型。 此参数允许的值为：Capacity、PayAsYouUse 和 Development。 |
+| MarketplaceSyndicationEnabled | True/False | 确定市场管理功能在门户中是否可用。 如果通过 Internet 连接进行注册，请设置为 true。 如果在断开连接的环境中进行注册，请设置为 false。 对于断开连接的注册，可以使用[脱机联合工具](azure-stack-download-azure-marketplace-item.md#disconnected-or-a-partially-connected-scenario)下载市场项。 |
+| UsageReportingEnabled | True/False | 默认情况下，Azure Stack 报告使用情况指标。 使用容量或支持断开连接的环境的操作员需关闭使用情况报告功能。 此参数允许的值为：True、False。 |
 | AgreementNumber | String |  |
 | RegistrationName | String | 如果在多个使用同一 Azure 订阅 ID 的 Azure Stack 实例上运行注册脚本，请为注册设置唯一名称。 参数的默认值为 **AzureStackRegistration**。 但是，如果在多个 Azure Stack 实例上使用同一名称，脚本会失败。 |
 
@@ -449,16 +449,16 @@ Get-AzsRegistrationToken 会根据输入参数生成注册令牌。
     [-BillingModel] <String> [[-TokenOutputFilePath] <String>] [-UsageReportingEnabled] [[-AgreementNumber] <String>]
     [<CommonParameters>]
 ```
-| 参数 | 类型 | 说明 |
+| 参数 | 类型 | 描述 |
 |-------------------------------|--------------|-------------|
 | PrivilegedEndpointCredential | PSCredential | 用于[访问特权终结点](azure-stack-privileged-endpoint.md#access-the-privileged-endpoint)的凭据。 用户名采用 **AzureStackDomain\CloudAdmin** 格式。 |
 | PrivilegedEndpoint | String |  预先配置的远程 PowerShell 控制台，提供的功能包括日志收集和其他部署后任务。 有关详细信息，请参阅[使用特权终结点](azure-stack-privileged-endpoint.md#access-the-privileged-endpoint)一文。 |
 | AzureContext | PSObject |  |
 | ResourceGroupName | String |  |
 | ResourceGroupLocation | String |  |
-| BillingModel | String | 订阅使用的计费模型。 此参数允许的值：Capacity、PayAsYouUse 和 Development。 |
+| BillingModel | String | 订阅使用的计费模型。 此参数允许的值为：Capacity、PayAsYouUse 和 Development。 |
 | MarketplaceSyndicationEnabled | True/False |  |
-| UsageReportingEnabled | True/False | 默认情况下，Azure Stack 报告使用情况指标。 使用容量或支持断开连接的环境的操作员需关闭使用情况报告功能。 此参数的允许值：True、False。 |
+| UsageReportingEnabled | True/False | 默认情况下，Azure Stack 报告使用情况指标。 使用容量或支持断开连接的环境的操作员需关闭使用情况报告功能。 此参数允许的值为：True、False。 |
 | AgreementNumber | String |  |
 
 

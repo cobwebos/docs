@@ -1,18 +1,19 @@
 ---
-title: 如何配置 Azure ExpressRoute Direct | Microsoft Docs
-description: 本页面帮助你配置 ExpressRoute Direct（预览版）
+title: 配置 ExpressRoute Direct - Azure | Microsoft Docs
+description: 本页面帮助你配置 ExpressRoute Direct（预览版）。
 services: expressroute
 author: jaredr80
 ms.service: expressroute
 ms.topic: conceptual
 ms.date: 11/02/2018
 ms.author: jaredro
-ms.openlocfilehash: 857602cf9c3c743e91ea6dace64e71e03cdd879b
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.custom: seodec18
+ms.openlocfilehash: 9dadd61c8c4c2d1cd2305aa852e4528bfb9a1421
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50959659"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53076604"
 ---
 # <a name="how-to-configure-expressroute-direct-preview"></a>如何配置 ExpressRoute Direct（预览版）
 
@@ -228,7 +229,7 @@ ms.locfileid: "50959659"
 
 默认情况下，可以在 ExpressRoute Direct 资源所在的订阅中创建 10 条线路。 可以联系支持人员来提高此限额。 你负责跟踪预配的和已利用的带宽。 预配的带宽是 ExpressRoute Direct 资源上所有线路的带宽总和，已利用的带宽是基础物理接口的物理利用率。
 
-有额外的线路带宽可以在 ExpressRoute Direct 上使用，仅用于支持上面概述的场景。 它们是：40Gbps 和 100Gbps。
+有额外的线路带宽可以在 ExpressRoute Direct 上使用，仅用于支持上面概述的场景。 其中包括：40Gbps 和 100Gbps。
 
 可以创建标准或高级线路。 标准线路包括在成本中，而高级线路具有基于所选带宽的成本。 线路只能创建为计量式的，因为 ExpressRoute Direct 上不支持“无限制”。
 

@@ -1,5 +1,5 @@
 ---
-title: 选择 Azure 搜索服务的定价层或 SKU | Microsoft Docs
+title: 选择 Azure 搜索服务的定价层或 SKU - Azure 搜索
 description: Azure 搜索可在以下 SKU 上进行预配：“免费”、“基本”和“标准”，其中“标准”在各种资源配置和容量级别中均可用。
 services: search
 author: HeidiSteen
@@ -9,12 +9,13 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 09/25/2018
 ms.author: heidist
-ms.openlocfilehash: 0e1a0d299fb794c3aa937cb62dba9a6ce12c0570
-ms.sourcegitcommit: 4edf9354a00bb63082c3b844b979165b64f46286
+ms.custom: seodec2018
+ms.openlocfilehash: 3c5e4d568e7118d50ce8779402526fca77ccdda7
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48785301"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53315547"
 ---
 # <a name="choose-a-pricing-tier-for-azure-search"></a>选择 Azure 搜索的定价层
 
@@ -43,7 +44,7 @@ The purpose of this article is to help you choose a tier. It supplements the [pr
 
 SU 是服务使用的副本数和分区数的乘积：**`(R X P = SU)`**
 
-每个服务至少从 1 个 SU（1 个分区乘以 1 个副本）开始。 任何服务的最大 SU 值为 36，这可以通过多种方式来实现：6 个分区 x 6 个副本，或 3 个分区 x 12 个副本，等等。 
+每个服务至少从 1 个 SU（1 个分区乘以 1 个副本）开始。 所有服务的最大 SU 值均为 36，这可以通过多种方式来实现：6 个分区 x 6 个副本，或 3 个分区 x 12 个副本，等等。 
 
 通常使用小于总容量的值。 例如，3 副本、3 分区的服务按 9 个 SU 计费。 
 

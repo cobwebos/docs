@@ -15,20 +15,22 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2018
 ms.author: szark
-ms.openlocfilehash: 171180eb373553dfa0c971b22e3cf62e450829ed
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: a46f2b4ed1bb3fc5fff65a627bd3d808ed85ffce
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51233592"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52967276"
 ---
 # <a name="prepare-a-centos-based-virtual-machine-for-azure"></a>为 Azure 准备基于 CentOS 的虚拟机
+
 * [为 Azure 准备 CentOS 6.x 虚拟机](#centos-6x)
 * [为 Azure 准备 CentOS 7.0+ 虚拟机](#centos-70)
 
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
 
 ## <a name="prerequisites"></a>先决条件
+
 本文假设已在虚拟硬盘中安装了 CentOS（或类似的衍生产品）Linux 操作系统。 存在多个用于创建 .vhd 文件的工具，例如 Hyper-V 等虚拟化解决方案。 有关说明，请参阅[安装 Hyper-V 角色和配置虚拟机](https://technet.microsoft.com/library/hh846766.aspx)。
 
 **CentOS 安装说明**
@@ -48,16 +50,16 @@ ms.locfileid: "51233592"
 2. 单击“连接”打开该虚拟机的控制台窗口。
 
 3. 在 CentOS 6 中，NetworkManager 可能会干扰 Azure Linux 代理。 运行以下命令卸载此包：
-   
+
         # sudo rpm -e --nodeps NetworkManager
 
 4. 创建或编辑文件 `/etc/sysconfig/network` 并添加以下文本：
-   
+
         NETWORKING=yes
         HOSTNAME=localhost.localdomain
 
 5. 创建或编辑文件 `/etc/sysconfig/network-scripts/ifcfg-eth0` 并添加以下文本：
-   
+
         DEVICE=eth0
         ONBOOT=yes
         BOOTPROTO=dhcp
@@ -67,12 +69,12 @@ ms.locfileid: "51233592"
         IPV6INIT=no
 
 6. 修改 udev 规则，以避免产生以太网接口的静态规则。 在 Microsoft Azure 或 Hyper-V 中克隆虚拟机时，这些规则可能会引发问题：
-   
+
         # sudo ln -s /dev/null /etc/udev/rules.d/75-persistent-net-generator.rules
         # sudo rm -f /etc/udev/rules.d/70-persistent-net.rules
 
 7. 通过运行以下命令，确保网络服务会在引导时启动：
-   
+
         # sudo chkconfig network on
 
 8. 如果要使用 Azure 数据中心托管的 OpenLogic 镜像，则将 `/etc/yum.repos.d/CentOS-Base.repo` 文件替换为以下存储库。  这还会添加包含 Azure Linux 代理等其他包的 **[openlogic]** 存储库：
@@ -82,14 +84,14 @@ ms.locfileid: "51233592"
         baseurl=http://olcentgbl.trafficmanager.net/openlogic/$releasever/openlogic/$basearch/
         enabled=1
         gpgcheck=0
-        
+
         [base]
         name=CentOS-$releasever - Base
         #mirrorlist=http://mirrorlist.centos.org/?release=$releasever&arch=$basearch&repo=os&infra=$infra
         baseurl=http://olcentgbl.trafficmanager.net/centos/$releasever/os/$basearch/
         gpgcheck=1
         gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-6
-        
+
         #released updates
         [updates]
         name=CentOS-$releasever - Updates
@@ -97,7 +99,7 @@ ms.locfileid: "51233592"
         baseurl=http://olcentgbl.trafficmanager.net/centos/$releasever/updates/$basearch/
         gpgcheck=1
         gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-6
-        
+
         #additional packages that may be useful
         [extras]
         name=CentOS-$releasever - Extras
@@ -114,7 +116,7 @@ ms.locfileid: "51233592"
         gpgcheck=1
         enabled=0
         gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-6
-        
+
         #contrib - packages by Centos Users
         [contrib]
         name=CentOS-$releasever - Contrib
@@ -124,16 +126,15 @@ ms.locfileid: "51233592"
         enabled=0
         gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-6
 
-    >[!Note]
-    本指南的余下部分假设你至少会使用 `[openlogic]` 存储库，下面将使用该存储库安装 Azure Linux 代理。
-
+    > [!Note]
+    > 本指南的余下部分假设你至少会使用 `[openlogic]` 存储库，下面将使用该存储库安装 Azure Linux 代理。
 
 9. 将下列行添加到 /etc/yum.conf：
-    
+
         http_caching=packages
 
 10. 运行以下命令清除当前 yum 元数据并使用最新包更新系统：
-    
+
         # yum clean all
 
     除非要创建较旧版本的 CentOS 的映像，否则建议将所有包更新到最新：
@@ -143,43 +144,42 @@ ms.locfileid: "51233592"
     运行此命令后，可能需要重新启动。
 
 11. （可选）安装适用于 Linux Integration Services (LIS) 的驱动程序。
-   
-    >[!IMPORTANT]
-    此步骤对于 CentOS 6.3 和更早版本是**必需**的，对于之后的版本是可选的。
+
+    > [!IMPORTANT]
+    > 此步骤对于 CentOS 6.3 和更早版本是**必需**的，对于之后的版本是可选的。
 
         # sudo rpm -e hypervkvpd  ## (may return error if not installed, that's OK)
         # sudo yum install microsoft-hyper-v
 
     此外，可以按照 [LIS 下载页](https://go.microsoft.com/fwlink/?linkid=403033)上的手动安装说明操作将 RPM 安装到 VM 中。
- 
+
 12. 安装 Azure Linux 代理和依赖项：
-    
+
         # sudo yum install python-pyasn1 WALinuxAgent
-    
+
     如果没有按步骤 3 中所述删除 NetworkManager 包和 NetworkManager-gnome 包，则安装 WALinuxAgent 包时会删除它们。
 
-
 13. 在 grub 配置中修改内核引导行，以使其包含 Azure 的其他内核参数。 为此，请在文本编辑器中打开 `/boot/grub/menu.lst`，并确保默认内核包含以下参数：
-    
+
         console=ttyS0 earlyprintk=ttyS0 rootdelay=300
-    
+
     这还将确保所有控制台消息都发送到第一个串行端口，从而可以协助 Azure 支持人员调试问题。
-    
+
     除此之外，建议*删除*以下参数：
-    
+
         rhgb quiet crashkernel=auto
-    
+
     图形引导和无人参与引导不适用于云环境，在该环境中我们想要将所有日志都发送到串行端口。  根据需要可以配置 `crashkernel` 选项，但请注意此参数会使虚拟机中的可用内存量减少 128MB 或更多，这在较小的虚拟机上可能会出现问题。
 
-    >[!Important]
-    CentOS 6.5 和更早版本还必须设置内核参数 `numa=off`。 请参阅 Red Hat [KB 436883](https://access.redhat.com/solutions/436883)。
+    > [!Important]
+    > CentOS 6.5 和更早版本还必须设置内核参数 `numa=off`。 请参阅 Red Hat [KB 436883](https://access.redhat.com/solutions/436883)。
 
 14. 请确保已安装 SSH 服务器且已将其配置为在引导时启动。  这通常是默认设置。
 
 15. 不要在 OS 磁盘上创建交换空间。
-    
+
     Azure Linux 代理可使用在 Azure 上设置后附加到虚拟机的本地资源磁盘自动配置交换空间。 请注意，本地资源磁盘是*临时*磁盘，并可能在取消预配 VM 时被清空。 在安装 Azure Linux 代理（请参见前一步骤）后，相应地在 `/etc/waagent.conf` 中修改以下参数：
-    
+
         ResourceDisk.Format=y
         ResourceDisk.Filesystem=ext4
         ResourceDisk.MountPoint=/mnt/resource
@@ -187,16 +187,17 @@ ms.locfileid: "51233592"
         ResourceDisk.SwapSizeMB=2048    ## NOTE: set this to whatever you need it to be.
 
 16. 运行以下命令可取消对虚拟机的设置并且对其进行准备以便在 Azure 上进行设置：
-    
+
         # sudo waagent -force -deprovision
         # export HISTSIZE=0
         # logout
 
 17. 在 Hyper-V 管理器中单击“操作”->“关闭”。 Linux VHD 现已准备好上传到 Azure。
 
-
 - - -
+
 ## <a name="centos-70"></a>CentOS 7.0+
+
 **CentOS 7（和类似衍生产品）中的更改**
 
 为 Azure 准备 CentOS 7 虚拟机非常类似于 CentOS 6，但有几个值得注意的重要区别：
@@ -212,12 +213,12 @@ ms.locfileid: "51233592"
 2. 单击“连接”打开该虚拟机的控制台窗口。
 
 3. 创建或编辑文件 `/etc/sysconfig/network` 并添加以下文本：
-   
+
         NETWORKING=yes
         HOSTNAME=localhost.localdomain
 
 4. 创建或编辑文件 `/etc/sysconfig/network-scripts/ifcfg-eth0` 并添加以下文本：
-   
+
         DEVICE=eth0
         ONBOOT=yes
         BOOTPROTO=dhcp
@@ -228,24 +229,24 @@ ms.locfileid: "51233592"
         NM_CONTROLLED=no
 
 5. 修改 udev 规则，以避免产生以太网接口的静态规则。 在 Microsoft Azure 或 Hyper-V 中克隆虚拟机时，这些规则可能会引发问题：
-   
+
         # sudo ln -s /dev/null /etc/udev/rules.d/75-persistent-net-generator.rules
 
 6. 如果要使用 Azure 数据中心托管的 OpenLogic 镜像，则将 `/etc/yum.repos.d/CentOS-Base.repo` 文件替换为以下存储库。  这还会添加包含 Azure Linux 代理包的 **[openlogic]** 存储库：
-   
+
         [openlogic]
         name=CentOS-$releasever - openlogic packages for $basearch
         baseurl=http://olcentgbl.trafficmanager.net/openlogic/$releasever/openlogic/$basearch/
         enabled=1
         gpgcheck=0
-        
+
         [base]
         name=CentOS-$releasever - Base
         #mirrorlist=http://mirrorlist.centos.org/?release=$releasever&arch=$basearch&repo=os&infra=$infra
         baseurl=http://olcentgbl.trafficmanager.net/centos/$releasever/os/$basearch/
         gpgcheck=1
         gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7
-        
+
         #released updates
         [updates]
         name=CentOS-$releasever - Updates
@@ -253,7 +254,7 @@ ms.locfileid: "51233592"
         baseurl=http://olcentgbl.trafficmanager.net/centos/$releasever/updates/$basearch/
         gpgcheck=1
         gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7
-        
+
         #additional packages that may be useful
         [extras]
         name=CentOS-$releasever - Extras
@@ -261,7 +262,7 @@ ms.locfileid: "51233592"
         baseurl=http://olcentgbl.trafficmanager.net/centos/$releasever/extras/$basearch/
         gpgcheck=1
         gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7
-        
+
         #additional packages that extend functionality of existing packages
         [centosplus]
         name=CentOS-$releasever - Plus
@@ -271,11 +272,11 @@ ms.locfileid: "51233592"
         enabled=0
         gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7
 
-    >[!Note]
-    本指南的余下部分假设你至少会使用 `[openlogic]` 存储库，下面将使用该存储库安装 Azure Linux 代理。
+    > [!Note]
+    > 本指南的余下部分假设你至少会使用 `[openlogic]` 存储库，下面将使用该存储库安装 Azure Linux 代理。
 
 7. 运行以下命令以清除当前 yum 元数据并安装所有更新：
-   
+
         # sudo yum clean all
 
     除非要创建较旧版本的 CentOS 的映像，否则建议将所有包更新到最新：
@@ -285,27 +286,27 @@ ms.locfileid: "51233592"
     运行此命令后，可能需要重新启动。
 
 8. 在 grub 配置中修改内核引导行，以使其包含 Azure 的其他内核参数。 为此，请在文本编辑器中打开 `/etc/default/grub` 并编辑 `GRUB_CMDLINE_LINUX` 参数，例如：
-   
+
         GRUB_CMDLINE_LINUX="rootdelay=300 console=ttyS0 earlyprintk=ttyS0 net.ifnames=0"
-   
+
    这还将确保所有控制台消息都发送到第一个串行端口，从而可以协助 Azure 支持人员调试问题。 此外，还会关闭 NIC 的新 CentOS 7 命名约定。 除此之外，建议*删除*以下参数：
-   
+
         rhgb quiet crashkernel=auto
-   
+
     图形引导和无人参与引导不适用于云环境，在该环境中我们想要将所有日志都发送到串行端口。 根据需要可以配置 `crashkernel` 选项，但请注意此参数会使虚拟机中的可用内存量减少 128MB 或更多，这在较小的虚拟机上可能会出现问题。
 
 9. 按照上面所示完成编辑 `/etc/default/grub` 后，运行以下命令以重新生成 grub 配置：
-   
+
         # sudo grub2-mkconfig -o /boot/grub2/grub.cfg
 
-10. 如果要从 **VMware、VirtualBox 或 KVM** 生成映像：请确保 initramfs 中包含 Hyper-V 驱动程序：
-   
+10. 如果从 VMware、VirtualBox 或 KVM 生成映像：请确保 initramfs 中包含 HYPER-V 驱动程序：
+
    编辑 `/etc/dracut.conf`，添加内容：
-   
+
         add_drivers+=”hv_vmbus hv_netvsc hv_storvsc”
-   
+
    重新生成 initramfs：
-   
+
         # sudo dracut -f -v
 
 11. 安装 Azure Linux 代理和依赖项：
@@ -314,9 +315,9 @@ ms.locfileid: "51233592"
         # sudo systemctl enable waagent
 
 12. 不要在 OS 磁盘上创建交换空间。
-   
+
    Azure Linux 代理可使用在 Azure 上设置后附加到虚拟机的本地资源磁盘自动配置交换空间。 请注意，本地资源磁盘是*临时*磁盘，并可能在取消预配 VM 时被清空。 在安装 Azure Linux 代理（请参见前一步骤）后，相应地在 `/etc/waagent.conf` 中修改以下参数：
-   
+
         ResourceDisk.Format=y
         ResourceDisk.Filesystem=ext4
         ResourceDisk.MountPoint=/mnt/resource
@@ -324,7 +325,7 @@ ms.locfileid: "51233592"
         ResourceDisk.SwapSizeMB=2048    ## NOTE: set this to whatever you need it to be.
 
 13. 运行以下命令可取消对虚拟机的设置并且对其进行准备以便在 Azure 上进行设置：
-   
+
         # sudo waagent -force -deprovision
         # export HISTSIZE=0
         # logout
@@ -332,5 +333,5 @@ ms.locfileid: "51233592"
 14. 在 Hyper-V 管理器中单击“操作”->“关闭”。 Linux VHD 现已准备好上传到 Azure。
 
 ## <a name="next-steps"></a>后续步骤
-现在，可以使用 CentOS Linux 虚拟硬盘在 Azure 中创建新的 Azure 虚拟机。 如果是首次将 .vhd 文件上传到 Azure，请参阅[从自定义磁盘创建 Linux VM](upload-vhd.md#option-1-upload-a-vhd)。
 
+现在，可以使用 CentOS Linux 虚拟硬盘在 Azure 中创建新的 Azure 虚拟机。 如果是首次将 .vhd 文件上传到 Azure，请参阅[从自定义磁盘创建 Linux VM](upload-vhd.md#option-1-upload-a-vhd)。

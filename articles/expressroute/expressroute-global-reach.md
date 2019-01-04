@@ -1,19 +1,19 @@
 ---
-title: 关于 ExpressRoute Global Reach | Microsoft Docs
-description: 本文介绍什么是 ExpressRoute Global Reach。
-documentationcenter: na
+title: 使用 Global Reach 将本地网络连接到 Microsoft 云 - Azure ExpressRoute |Microsoft Docs
+description: 本文介绍 ExpressRoute Global Reach。
 services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
 ms.date: 11/14/2018
 ms.author: cherylmc
-ms.openlocfilehash: 23f3d2c4a53e05d962fdc7da72b336cc66f21306
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.custom: seodec18
+ms.openlocfilehash: 8ee57bf101b432049d895b65a1dc7641653c7f21
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51683057"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53105440"
 ---
 # <a name="expressroute-global-reach-preview"></a>ExpressRoute Global Reach（预览版）
 ExpressRoute 是用来将本地网络连接到 Microsoft 云的一种专用且可复原的方式。 可以从专用数据中心或公司网络访问许多 Microsoft 云服务，例如 Azure、Office 365 和 Dynamics 365。 例如，你可能在旧金山有一家分公司，其 ExpressRoute 线路位于硅谷，在伦敦有另一家分公司，其 ExpressRoute 线路位于同一城市。 这两个分公司都可以与美国西部和英国南部的 Azure 资源高速连接。 但是，分公司不能直接相互交换数据。 换句话说，10.0.1.0/24 可以将数据发送到 10.0.3.0/24 和 10.0.4.0/24，但不能发送到 10.0.2.0/24。

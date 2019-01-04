@@ -1,11 +1,13 @@
 ---
-title: Azure 上的 Linux 数据科学虚拟机中的数据科学 | Microsoft Docs
+title: 了解如何使用 Linux Data Science Virtual Machine
+titleSuffix: Azure
 description: 如何通过 Linux 数据科研 VM 执行几个常见的数据科学任务。
 services: machine-learning
 documentationcenter: ''
 author: gopitk
 manager: cgronlun
 editor: cgronlun
+ms.custom: seodec18
 ms.assetid: 34ef0b10-9270-474f-8800-eecb183bbce4
 ms.service: machine-learning
 ms.component: data-science-vm
@@ -15,12 +17,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/16/2018
 ms.author: gokuma
-ms.openlocfilehash: 49956234c00129508254b96d7d63a4b30af3ad55
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: fafa680f877060f1e7d96c60f52e3033eeb38553
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51037577"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53190629"
 ---
 # <a name="data-science-with-a-linux-data-science-virtual-machine-on-azure"></a>Azure 上的 Linux 数据科学虚拟机中的数据科学
 本演练显示如何通过 Linux 数据科研 VM 执行几个常见的数据科学任务。 Linux 数据科研虚拟机 (DSVM) 是 Azure 提供的虚拟机映像，其中预安装了一组常用于执行数据分析和机器学习的工具。 [预配 Linux 数据科研虚拟机](linux-dsvm-intro.md)主题中逐项列出了主要的软件组件。 VM 映像允许在几分钟之内轻松开始执行数据科学任务，而无需逐个安装和配置每个工具。 如有必要，可以轻松扩展 VM，并在不使用时停止 VM。 因此，此资源既具有弹性，又具有成本效益。
@@ -316,19 +318,19 @@ ms.locfileid: "51037577"
 
 > [!NOTE]
 > 若要在当前内核中从 Jupyter Notebook 使用 Python 包管理器（通过 `pip` 命令），可以在代码单元中使用以下命令，例如：
-```python
+  ```python
    import sys
    ! {sys.executable} -m pip install numpy -y
-```
+  ```
 >
 >
 
 > [!NOTE]
 > 若要在当前内核中从 Jupyter Notebook 使用 Conda 安装程序（通过 `conda` 命令），可以在代码单元中使用以下命令，例如：
-```python
+  ```python
    import sys
    ! {sys.prefix}/bin/conda install --yes --prefix {sys.prefix} numpy
-```
+  ```
 >
 >
 
@@ -357,7 +359,7 @@ VM 上已安装了几个示例 Notebook：
 >
 >
 
-Rattle 使用一个基于选项卡的接口。 大部分选项卡与 [Data Science Process](https://azure.microsoft.com/documentation/learning-paths/data-science-process/) 中的步骤相对应，如加载数据或浏览数据等。 数据科学过程从左到由通过选项卡流动。 但是，最后一个选项卡包含 Rattle 所运行的 R 命令日志。
+Rattle 使用一个基于选项卡的接口。 大部分选项卡与 [Data Science Process](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/) 中的步骤相对应，如加载数据或浏览数据等。 数据科学过程从左到由通过选项卡流动。 但是，最后一个选项卡包含 Rattle 所运行的 R 命令日志。
 
 要加载和配置数据集：
 

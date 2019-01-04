@@ -1,5 +1,6 @@
 ---
-title: 使用 Azure 机器学习数据准备 SDK 加载数据 - Python
+title: 加载：数据准备 Python SDK
+titleSuffix: Azure Machine Learning service
 description: 了解如何使用 Azure 机器学习数据准备 SDK 加载数据。 可以加载不同类型的输入数据，指定数据文件类型和参数，或使用 SDK 智能读取功能自动检测文件类型。
 services: machine-learning
 ms.service: machine-learning
@@ -9,13 +10,14 @@ ms.author: cforbe
 author: cforbe
 manager: cgronlun
 ms.reviewer: jmartens
-ms.date: 11/20/2018
-ms.openlocfilehash: 208d6958b56dafbfacc45ecb05a71c14ac024ab4
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.date: 12/04/2018
+ms.custom: seodec18
+ms.openlocfilehash: 9d3b72e62c778d02b25b082643e0de4c6cc09a60
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52309856"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53190758"
 ---
 # <a name="load-and-read-data-with-azure-machine-learning"></a>使用 Azure 机器学习加载和读取数据
 

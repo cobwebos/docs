@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure AD-DS 配置具有企业安全性套餐的 HDInsight 群集
+title: 使用 Azure Active Directory 域服务配置企业安全性套餐 - Azure HDInsight
 description: 了解如何使用 Azure Active Directory 域服务设置和配置 HDInsight 企业安全性套餐群集。
 services: hdinsight
 ms.service: hdinsight
@@ -7,13 +7,14 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: hrasheed
 ms.topic: conceptual
-ms.date: 10/9/2018
-ms.openlocfilehash: 8b92191b60f8eb7e3c63f465926b434e205ef1b4
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.date: 10/09/2018
+ms.custom: seodec18
+ms.openlocfilehash: ced7964fc96138ad7b18ab72d6c479e8db7eab8a
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51684731"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53436212"
 ---
 # <a name="configure-a-hdinsight-cluster-with-enterprise-security-package-by-using-azure-active-directory-domain-services"></a>使用 Azure Active Directory 域服务配置具有企业安全性套餐的 HDInsight 群集
 
@@ -21,13 +22,13 @@ ms.locfileid: "51684731"
 
 本文介绍如何使用 Azure Active Directory 域服务 (Azure AD-DS) 配置具有 ESP 的 HDInsight 群集。
 
->[!NOTE]
->ESP 在适用于 Spark、Interactive 和 Apache Hadoop 的 HDI 3.6 中为正式发布版。 HBase 和 Kafka 群集类型的 ESP 为预览版。
+>[!NOTE]  
+>ESP 在适用于 Apache Spark、Interactive 和 Apache Hadoop 的 HDI 3.6 中为正式发布版。 Apache HBase 和 Apache Kafka 群集类型的 ESP 为预览版。
 
 ## <a name="enable-azure-ad-ds"></a>启用 Azure AD-DS
 
-> [!NOTE]
-> 只有租户管理员有权启用 Azure AD-DS。 如果群集存储是 Azure Data Lake Store (ADLS) Gen1 或 Gen2，则只对需要访问群集的用户禁用多重身份验证 (MFA)。 如果群集存储是 Azure Blob 存储 (WASB)，请不要禁用 MFA。
+> [!NOTE]  
+> 只有租户管理员有权启用 Azure AD-DS。 如果群集存储是 Azure Data Lake Storage (ADLS) Gen1 或 Gen2，则只对需要访问群集的用户禁用多重身份验证 (MFA)。 如果群集存储是 Azure Blob 存储 (WASB)，请不要禁用 MFA。
 
 要想能够创建具有 ESP 的 HDInsight 群集，必须先启用 Azure AD-DS。 有关详细信息，请参阅[使用 Azure 门户启用 Azure Active Directory 域服务](../../active-directory-domain-services/active-directory-ds-getting-started.md)。 
 
@@ -65,7 +66,7 @@ New-SelfSignedCertificate -Subject contoso100.onmicrosoft.com `
 
 ## <a name="networking-considerations"></a>网络注意事项
 
-> [!NOTE]
+> [!NOTE]  
 > Azure AD-DS 必须部署在基于 Azure 资源管理器 (ARM) 的 vNET 中。 Azure AD-DS 不支持经典虚拟网络。 有关更多详细信息，请参阅[使用 Azure 门户启用 Azure Active Directory 域服务](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-getting-started-network)。
 
 启用 Azure AD-DS 后，本地域名服务 (DNS) 服务器将在 AD 虚拟机 (VM) 上运行。 配置 Azure AD-DS 虚拟网络 (VNET) 来使用这些自定义 DNS 服务器。 若要找到正确的 IP 地址，请选择“管理”类别下的“属性”，然后查看“虚拟网络上的 IP 地址”下列出的 IP 地址。
@@ -113,5 +114,5 @@ VNET 对等后，配置 HDInsight VNET 以使用自定义 DNS 服务器并输入
 
 
 ## <a name="next-steps"></a>后续步骤
-* 有关配置 Hive 策略和运行 Hive 查询的信息，请参阅[为具有 ESP 的 HDInsight 群集配置 Hive 策略](apache-domain-joined-run-hive.md)。
-* 有关使用 SSH 连接到具有 ESP 的 HDInsight 群集，请参阅[在 Linux、Unix 或 OS X 中的 HDInsight 上将 SSH 与基于 Linux 的 Hadoop 配合使用](../hdinsight-hadoop-linux-use-ssh-unix.md#domainjoined)。
+* 有关如何配置 Hive 策略和运行 Hive 查询的信息，请参阅[为具有 ESP 的 HDInsight 群集配置 Apache Hive 策略](apache-domain-joined-run-hive.md)。
+* 有关如何使用 SSH 连接到具有 ESP 的 HDInsight 群集，请参阅[在 Linux、Unix 或 OS X 中的 HDInsight 上将 SSH 与基于 Linux 的 Apache Hadoop 配合使用](../hdinsight-hadoop-linux-use-ssh-unix.md#domainjoined)。

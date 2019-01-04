@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/16/2018
 ms.author: daveba
-ms.openlocfilehash: 2f2f338f7c4ddb885bc909f49815783e616b94c8
-ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.openlocfilehash: d54820acf8742ad2f95e8cc8527d9e252ffe3c30
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51300449"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52720112"
 ---
 # <a name="create-list-delete-or-assign-a-role-to-a-user-assigned-managed-identity-using-the-azure-portal"></a>使用 Azure 门户创建、列出和删除用户分配的托管标识以及为其分配角色
 
@@ -69,18 +69,18 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 
 ![删除用户分配的托管标识](./media/how-to-manage-ua-identity-portal/delete-user-assigned-managed-identity-portal.png)
 
-## <a name="assign-a-role-to-a-user-assigned-managed-identity"></a>为用户分配的托管标识分配角色
+## <a name="assign-a-role-to-a-user-assigned-managed-identity"></a>为用户分配的托管标识分配角色 
 
 若要为用户分配的托管标识分配角色，你的帐户需要[用户访问管理员](/azure/role-based-access-control/built-in-roles#user-access-administrator)角色分配。
 
 1. 使用与 Azure 订阅关联的帐户登录 [Azure 门户](https://portal.azure.com)，以列出用户分配的托管标识。
 2. 在搜索框中，键入托管标识，然后在“服务”下单击“托管标识”。
 3. 这会返回一个列表，其中包含订阅中的用户分配的托管标识。  选择要为其分配角色的用户分配托管标识。
-4. 选择“访问控制(IAM)”，并选择“添加”。
+4. 依次选择“访问控制(IAM)”、“添加角色分配”。
 
    ![用户分配的托管标识启动](./media/how-to-manage-ua-identity-portal/assign-role-screenshot1.png)
 
-5. 在“添加权限”边栏选项卡中，配置以下值，然后单击“保存”：
+5. 在“添加角色分配”边栏选项卡中，配置以下值，然后单击“保存”：
    - **角色** - 要分配的角色
    - **将访问权限分配到** - 要将用户分配的托管标识分配到的资源
    - **选择** - 要将访问权限分配到的成员

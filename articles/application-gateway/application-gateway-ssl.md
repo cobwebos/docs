@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/23/2017
 ms.author: victorh
-ms.openlocfilehash: 782e5c4b33cc62ab5af80e823dc63b3e79a707b3
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 89a88d79b6b93a233dbd4f335d0eb449e49d5289
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46980519"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "53001781"
 ---
 # <a name="configure-an-application-gateway-for-ssl-offload-by-using-the-classic-deployment-model"></a>使用经典部署模型配置应用程序网关以进行 SSL 卸载
 
@@ -99,17 +99,17 @@ State..........: Provisioned
 
 有效值为：
 
-* 后端服务器池：后端服务器的 IP 地址列表。 列出的 IP 地址应属于虚拟网络子网，或者是公共 IP 或 VIP 地址。
-* 后端服务器池设置：每个池都有一些设置，例如端口、协议和基于 Cookie 的相关性。 这些设置绑定到池，并会应用到池中的所有服务器。
-* 前端端口：此端口是应用程序网关上打开的公共端口。 流量将抵达此端口，并重定向到后端服务器之一。
-* 侦听器：侦听器具有前端端口、协议（Http 或 Https；这些值区分大小写）和 SSL 证书名称（如果要配置 SSL 卸载）。
-* 规则：规则会绑定侦听器和后端服务器池，并定义当流量抵达特定侦听器时要定向到的后端服务器池。 目前仅支持 *基本* 规则。 *基本* 规则是一种轮循负载分发模式。
+* **后端服务器池**：后端服务器的 IP 地址列表。 列出的 IP 地址应属于虚拟网络子网，或者是公共 IP 或 VIP 地址。
+* **后端服务器池设置**：每个池具有端口、协议和基于 Cookie 的相关性等设置。 这些设置绑定到池，并会应用到池中的所有服务器。
+* **前端端口**：此端口是应用程序网关上打开的公共端口。 流量将抵达此端口，并重定向到后端服务器之一。
+* **侦听器**：侦听器具有前端端口、协议（Http 或 Https；这些值区分大小写）和 SSL 证书名称（如果要配置 SSL 卸载）。
+* **规则**：规则会绑定侦听器和后端服务器池，并定义当流量抵达特定侦听器时要将流量定向到的后端服务器池。 目前仅支持 *基本* 规则。 *基本* 规则是一种轮循负载分发模式。
 
 **其他配置说明**
 
 对于 SSL 证书配置， **HttpListener** 中的协议应更改为 **Https** （区分大小写）。 需要将“SslCert”元素添加到“HttpListener”，其值设置为[上传 SSL 证书](#upload-ssl-certificates)部分中使用的名称。 前端端口应更新为 443。
 
-启用基于 Cookie 的相关性：可以配置应用程序网关，以确保来自客户端会话的请求始终定向到 Web 场中的同一 VM。 这种情况可通过插入允许网关适当定向流量的会话 Cookie 实现。 要启用基于 Cookie 的相关性，请在 **BackendHttpSettings** 元素中将 **CookieBasedAffinity** 设置为 **Enabled**。
+**启用基于 Cookie 的相关性**：可以配置应用程序网关，以确保来自客户端会话的请求始终被定向到 Web 场中的同一 VM。 这种情况可通过插入允许网关适当定向流量的会话 Cookie 实现。 要启用基于 Cookie 的相关性，请在 **BackendHttpSettings** 元素中将 **CookieBasedAffinity** 设置为 **Enabled**。
 
 可以通过创建配置对象或使用配置 XML 文件来构造配置。
 若要使用配置 XML 文件构造配置，请输入以下示例：
@@ -117,7 +117,7 @@ State..........: Provisioned
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
-<ApplicationGatewayConfiguration xmlns:i="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/windowsazure">
+<ApplicationGatewayConfiguration xmlns:i="https://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/windowsazure">
     <FrontendIPConfigurations />
     <FrontendPorts>
         <FrontendPort>

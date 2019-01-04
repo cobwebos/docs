@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/20/2018
 ms.author: barclayn
-ms.openlocfilehash: 4bd2b72596912d968ad6fc323ce32e620336d932
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 1109e72d00ccddd6fc0f120ee71c88adaae72fed
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52316984"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53337591"
 ---
 # <a name="windows-defender-advanced-threat-protection-with-azure-security-center"></a>Windows Defender 高级威胁防护与 Azure 安全中心
 
@@ -27,19 +27,19 @@ Azure 安全中心通过与 [Windows Defender 高级威胁防护](https://www.mi
 
 Azure 安全中心客户现在可以使用 Windows Defender ATP 的功能：
 
-- **下一代后期安全漏洞检测传感器**：Windows 服务器的 Windows Defender ATP 传感器收集各种各样的行为信号。
+- **下一代入侵后检测传感器**：Windows 服务器的 Windows Defender ATP 传感器收集各种各样的行为信号。
 
-- **基于分析的由云支持的后期安全漏洞检测**：Windows Defender ATP 能够快速适应不断变化的威胁。 它使用高级分析和大数据。 Windows Defender ATP 借助 Intelligent Security Graph 的强大功能得以增强，并结合 Windows、Azure 和 Office 中的信号来检测未知威胁。 它提供可以采取措施的警报，并可让你快速做出响应。
+- **基于分析的、由云提供支持的入侵后检测**：Windows Defender ATP 可快速应对不断变化的威胁。 它使用高级分析和大数据。 Windows Defender ATP 借助 Intelligent Security Graph 的强大功能得以增强，并结合 Windows、Azure 和 Office 中的信号来检测未知威胁。 它提供可以采取措施的警报，并可让你快速做出响应。
 
 - **威胁智能**：Windows Defender ATP 可识别攻击者使用的工具、方法和过程。 检测这些信息后，它会生成警报。 它使用 Microsoft 威胁猎人和安全团队生成的，并由合作伙伴提供的情报补充的数据。
 
 以下功能现已在 Azure 安全中心推出：
 
-- **自动载入**：对于载入 Azure 安全中心的 Windows 服务器，将自动启用 Windows Defender ATP 传感器。
+- **自动加入**：对于加入 Azure 安全中心的 Windows 服务器，将自动启用 Windows Defender ATP 传感器。
 
-- **单一监视视图**：Azure 安全中心控制台显示 Windows Defender ATP 警报。
+- **单一虚拟管理平台**：Azure 安全中心控制台显示 Windows Defender ATP 警报。
 
-- **详细的机器调查**：Azure 安全中心客户可以访问 Windows Defender ATP 控制台来执行详细调查，以发现安全漏洞的范围。
+- **详细的计算机调查**：Azure 安全中心客户可以访问 Windows Defender ATP 控制台来执行详细调查，以发现入侵的范围。
 
 ![Azure 安全中心，其中显示了警报列表以及有关每条警报的一般信息](media/security-center-wdatp/image1.png)
 
@@ -105,6 +105,6 @@ Azure 安全中心客户现在可以使用 Windows Defender ATP 的功能：
 
 ## <a name="next-steps"></a>后续步骤
 
-- [在 Azure 安全中心设置安全策略](security-center-azure-policy.md)：了解如何配置 Azure 订阅和资源组的安全策略。
-- [在 Azure 安全中心管理安全建议](security-center-recommendations.md)：了解安全建议如何帮助保护 Azure 资源。
-- [Azure 安全中心的安全性运行状况监视](security-center-monitoring.md)：了解如何监视 Azure 资源的运行状况。
+- [在 Azure 安全中心设置安全策略](tutorial-security-policy.md)：了解如何为 Azure 订阅和资源组配置安全策略。
+- [管理 Azure 安全中心的安全建议](security-center-recommendations.md)：了解建议如何帮助你保护 Azure 资源。
+- [在 Azure 安全中心进行安全运行状况监视](security-center-monitoring.md)：了解如何监视 Azure 资源的运行状况。

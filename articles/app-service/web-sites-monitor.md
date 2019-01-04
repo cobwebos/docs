@@ -1,5 +1,5 @@
 ---
-title: 在 Azure 应用服务中监视应用 | Microsoft Docs
+title: 监视应用 - Azure 应用服务 | Microsoft Docs
 description: 了解如何使用 Azure 门户在 Azure 应用服务中监视应用。
 services: app-service
 documentationcenter: ''
@@ -14,14 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: byvinyal
-ms.openlocfilehash: 9c58e5c64ea3689634d7afb4c5fef08c9b21798c
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.custom: seodec18
+ms.openlocfilehash: 103b5c1d2bc70f187b6e65a9fa9d80a35ad8e0c1
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51244366"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53321573"
 ---
-# <a name="how-to-monitor-apps-in-azure-app-service"></a>如何：在 Azure 应用服务中监视 Web 应用
+# <a name="how-to-monitor-apps-in-azure-app-service"></a>如何：监视 Azure 应用服务中的应用
 [应用服务](https://go.microsoft.com/fwlink/?LinkId=529714)在 [Azure 门户](https://portal.azure.com)中提供了内置监视功能。
 在 Azure 门户中，可以查看应用的**配额**和**指标**以及应用服务计划、设置**警报**，甚至基于这些指标自动**缩放**。
 
@@ -141,26 +142,26 @@ ms.locfileid: "51244366"
 可以在 [Azure 门户](https://portal.azure.com)中查看影响应用程序的各种**配额**和**指标**。
 
 可以在“设置”>**配额** 下找到 ![][quotas]
-**配额** 。 在 UX 中可以查看：(1) 配额名称、(2) 配额重置时间间隔、(3) 配额当前限制和 (4) 当前值。
+**配额** 。 UX 允许查看：(1) 配额名称、(2) 配额重置时间间隔、(3) 配额当前限制和 (4) 当前值。
 
 可以直接从资源页访问![][metrics]
-**指标**。 还可以通过以下操作自定义图表：(1) **单击**图表，并选择 (2)“编辑图表”。
+**指标**。 还可以通过以下方式自定义图表：(1) **单击**它，然后选择 (2)“编辑图表”。
 可在此处更改要显示的 (3) **时间范围**、(4) **图表类型**和 (5) **度量值**。  
 
-可以在此处了解有关度量值的详细信息：[监视服务度量值](../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md)。
+可以在此处详细了解指标：[监视服务指标](../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md)。
 
 ## <a name="alerts-and-autoscale"></a>警报和自动缩放
 可将应用或应用服务计划的指标挂接到警报。 有关详细信息，请参阅[接收警报通知](../monitoring-and-diagnostics/insights-alerts-portal.md)。
 
-托管在基本、标准或高级应用服务计划中的应用服务应用支持**自动缩放**。 使用自动缩放可以配置监视应用服务计划指标的规则。 规则可以增加或减少实例计数，并根据需要提供更多的资源。 规则还有助于避免应用程序过度预配，从而节省资金。 可以在此处了解有关自动缩放的详细信息：[如何缩放](../monitoring-and-diagnostics/insights-how-to-scale.md)以及 [Azure 监视器自动缩放的最佳做法](../monitoring-and-diagnostics/insights-autoscale-best-practices.md)
+托管在基本、标准或高级应用服务计划中的应用服务应用支持**自动缩放**。 使用自动缩放可以配置监视应用服务计划指标的规则。 规则可以增加或减少实例计数，并根据需要提供更多的资源。 规则还有助于避免应用程序过度预配，从而节省资金。 可以在此处详细了解自动缩放：[如何缩放](../monitoring-and-diagnostics/insights-how-to-scale.md)以及 [Azure Monitor 自动缩放的最佳做法](../azure-monitor/platform/autoscale-best-practices.md)
 
 > [!NOTE]
 > 如果要在注册 Azure 帐户之前开始使用 Azure 应用服务，请转到[试用应用服务](https://azure.microsoft.com/try/app-service/)，可以在应用服务中立即创建一个生存期较短的入门 Web 应用。 不需要使用信用卡，也不需要做出承诺。
 > 
 > 
 
-[fzilla]:http://go.microsoft.com/fwlink/?LinkId=247914
-[vmsizes]:http://go.microsoft.com/fwlink/?LinkID=309169
+[fzilla]:https://go.microsoft.com/fwlink/?LinkId=247914
+[vmsizes]:https://go.microsoft.com/fwlink/?LinkID=309169
 
 
 

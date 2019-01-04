@@ -1,24 +1,26 @@
 ---
-title: 使用 Azure 门户通过区域冗余的公共 IP 地址前端创建公共负载均衡器标准 | Microsoft Docs
-description: 了解如何使用 Azure 门户通过区域冗余的公共 IP 地址前端创建公共负载均衡器标准
+title: 使用 Azure 门户通过区域冗余的前端创建标准负载均衡器
+titlesuffix: Azure Load Balancer
+description: 了解如何使用 Azure 门户通过区域冗余的公共 IP 地址前端创建公共标准负载均衡器
 services: load-balancer
 documentationcenter: na
 author: KumudD
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
+ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/22/2018
 ms.author: kumud
-ms.openlocfilehash: 70514433d11bbe7606d75a3e2c1f6dffc251621f
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.openlocfilehash: fc5dcd76ca8ecfb820a8d157fee9cc0a92bd2d5b
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50740937"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53135674"
 ---
-#  <a name="create-a-public-load-balancer-standard-with-zone-redundant-public-ip-address-frontend-using-azure-portal"></a>使用 Azure 门户通过区域冗余的公共 IP 地址前端创建公共负载均衡器标准
+#  <a name="create-a-public-standard-load-balancer-with-zone-redundant-frontend-using-azure-portal"></a>使用 Azure 门户通过区域冗余的前端创建公共标准负载均衡器
 
 本文指导逐步通过区域冗余前端使用公共 IP 标准地址创建公共[负载均衡器标准](https://aka.ms/azureloadbalancerstandard)。 默认情况下，标准负载均衡器中的单个前端 IP 地址具有区域冗余性。
 

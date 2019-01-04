@@ -1,5 +1,5 @@
 ---
-title: 为 Windows 主机配置 IPsec 传输模式 - Azure ExpressRoute 专用对等互连 | Microsoft Docs
+title: 配置 Windows 主机的 IPsec 传输模式 - 专用对等互连：ExpressRoute：Azure | Microsoft Docs
 description: 如何使用 GPO 和 OU 通过 ExpressRoute 专用对等互连在 Azure Windows VM 和本地 Windows 主机之间启用 IPsec 传输模式。
 services: expressroute
 author: fabferri
@@ -7,12 +7,13 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 10/17/2018
 ms.author: fabferri
-ms.openlocfilehash: 1b228f0238c678c0cea4a6be2a6c3e0b929ed4d6
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.custom: seodec18
+ms.openlocfilehash: 39bbe8a0ec11b90d506ce0d1c0bad37ddba46a5d
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49394315"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53139107"
 ---
 # <a name="configure-ipsec-transport-mode-for-expressroute-private-peering"></a>配置 ExpressRoute 专用对等互连的 IPsec 传输模式
 
@@ -42,7 +43,7 @@ ms.locfileid: "49394315"
 ### <a name="working-with-ipsec-policy"></a>使用 IPsec 策略
 
 在 Windows 中，加密是与 IPsec 策略相关联的。 IPsec 策略确定哪些 IP 流量是受保护的，以及应用于 IP 数据包的安全机制。
-IPSec 策略由以下各项组成：筛选器列表、筛选器操作和安全规则。
+**IPSec 策略**由以下各项组成：“筛选器列表”、“筛选器操作”和“安全规则”。
 
 在配置 IPsec 策略时，请务必了解以下 IPsec 策略术语：
 
@@ -143,7 +144,7 @@ IPSec 策略由以下各项组成：筛选器列表、筛选器操作和安全�
 7. 在“IP 流量和安全性”页上，选择“自定义”，然后单击“设置...”。
 
   [![21]][21]
-8. 在“自定义安全方法设置”页上，选择“数据完整性和加密 (ESP): SHA1、3DES”。 然后单击“确定”。
+8. 在“自定义安全方法设置”页上，选择“数据完整性和加密 (ESP)**：SHA1、3DES”**。 然后单击“确定”。
 
   [![22]][22]
 9. 在“管理筛选器操作”页上，可以看到“myEncryption”筛选器已成功添加。 单击“关闭”。

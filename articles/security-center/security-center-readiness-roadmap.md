@@ -3,7 +3,7 @@ title: Azure 安全中心就绪情况路线图 | Microsoft Docs
 description: 本文档提供了 Azure 安全中心的就绪情况路线图。
 services: security-center
 documentationcenter: na
-author: terrylan
+author: rkarlin
 manager: ndicola
 editor: ''
 ms.assetid: fece670cc-df70-445d-9773-b32cbaba8d4a
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/03/2018
 ms.author: yurid
-ms.openlocfilehash: 099d3fcac5d7574f744ab1bb00dd636b8d867fa9
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 56d18b7ec44e979bee48c3598286a461199e1005
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49408435"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52958195"
 ---
 # <a name="azure-security-center-readiness-roadmap"></a>Azure 安全中心就绪情况路线图
 本文档提供的就绪情况路线图有助于 Azure 安全中心入门。
@@ -107,7 +107,7 @@ Azure VM 可以充分利用安全中心的高级云防御功能。 这些功能�
 
 * [安全中心动手实验](https://www.microsoft.com/handsonlabs/SelfPacedLabs/?storyGuid=78871abf-6f35-4aa0-840f-d801f5cdbd72)
 * [安全中心的 Web 应用程序防火墙 (WAF) 建议攻略](https://gallery.technet.microsoft.com/ASC-Playbook-Protect-38bd47ff)
-* [Azure Security Center Playbook: Security Alerts](https://gallery.technet.microsoft.com/Azure-Security-Center-f621a046)（Azure 安全中心 Playbook：安全警报）
+* [Azure 安全中心 Playbook：安全警报](https://gallery.technet.microsoft.com/Azure-Security-Center-f621a046)
 
 ## <a name="additional-resources"></a>其他资源
 * [安全中心文档页](https://docs.microsoft.com/azure/security-center/)

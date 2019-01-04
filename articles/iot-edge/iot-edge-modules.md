@@ -1,6 +1,6 @@
 ---
-title: 了解 Azure IoT Edge 模块 | Microsoft 文档
-description: 了解有关 Azure IoT Edge 模块以及如何进行配置的信息
+title: 了解模块在设备上运行逻辑的方式 - Azure IoT Edge | Microsoft Docs
+description: Azure IoT Edge 模块是容器化的逻辑单元，可以远程部署和管理，以便可以在 IoT Edge 设备上运行业务逻辑
 author: kgremban
 manager: philmea
 ms.author: kgremban
@@ -8,12 +8,13 @@ ms.date: 09/21/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 3d76f5931e3636f19c2030c4090116a0791db819
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.custom: seodec18
+ms.openlocfilehash: 90fb6eadb2edb92d4516d8565d8c2c2bd5120c05
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51567326"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53094179"
 ---
 # <a name="understand-azure-iot-edge-modules"></a>了解 Azure IoT Edge 模块
 
@@ -31,7 +32,7 @@ IoT Edge 模块映像包含能够充分利用 IoT Edge 运行时的管理、安�
 
 每当将模块映像部署到设备上，并由 IoT Edge 运行时启动时，就会创建该模块的一个新实例。 世界不同地区的两台设备可以使用相同的模块映像；但是，当模块在设备上启动时，每个模块都有其自己的模块实例。 
 
-![云中的模块映像 - 设备上模块实例](./media/iot-edge-modules/image_instance.png)
+![关系图 - 云中的模块映像，设备上的模块实例](./media/iot-edge-modules/image_instance.png)
 
 在实现中，模块映像作为存储库中的容器映像存在，而模块实例则是设备上的容器。 
 
@@ -46,7 +47,7 @@ As use cases for Azure IoT Edge grow, new types of module images and instances w
 
 很显然，当需要在同一设备上多次部署一个模块映像时，可以使用不同的名称多次部署相同的映像。
 
-![模块标识是唯一的](./media/iot-edge-modules/identity.png)
+![关系图 - 模块标识在设备中和设备之间具有唯一性](./media/iot-edge-modules/identity.png)
 
 ## <a name="module-twins"></a>模块孪生
 

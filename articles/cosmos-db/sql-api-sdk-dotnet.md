@@ -1,10 +1,7 @@
 ---
-title: Azure Cosmos DB：SQL .NET API、SDK 和资源 | Microsoft Docs
+title: Azure Cosmos DB：SQL .NET API、SDK 和资源
 description: 了解有关 SQL .NET API 和 SDK 的所有信息，包括发布日期、停用日期和 Azure Cosmos DB .NET SDK 各版本之间所做的更改。
-services: cosmos-db
 author: rnagpal
-manager: kfile
-editor: cgronlun
 ms.service: cosmos-db
 ms.component: cosmosdb-sql
 ms.devlang: dotnet
@@ -12,14 +9,14 @@ ms.topic: reference
 ms.date: 03/09/2018
 ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f7f8af635eb7d5449a242f3a7708d865c13bb448
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: 715d67a30bbf2c6d1f50ed7c10a013c0d421f48b
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52162800"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53337931"
 ---
-# <a name="azure-cosmos-db-net-sdk-for-sql-api-download-and-release-notes"></a>Azure Cosmos DB .NET SDK for SQL API：下载和发行说明
+# <a name="azure-cosmos-db-net-sdk-for-sql-api-download-and-release-notes"></a>适用于 SQL API 的 Azure Cosmos DB .NET SDK：下载和发行说明
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-sdk-dotnet.md)
 > * [.NET 更改源](sql-api-sdk-dotnet-changefeed.md)
@@ -30,7 +27,7 @@ ms.locfileid: "52162800"
 > * [Python](sql-api-sdk-python.md)
 > * [REST](https://docs.microsoft.com/rest/api/cosmos-db/)
 > * [REST 资源提供程序](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/)
-> * [SQL](https://msdn.microsoft.com/library/azure/dn782250.aspx)
+> * [SQL](sql-api-query-reference.md)
 > * [BulkExecutor - .NET](sql-api-sdk-bulk-executor-dot-net.md)
 > * [BulkExecutor - Java](sql-api-sdk-bulk-executor-java.md)
 
@@ -50,6 +47,24 @@ ms.locfileid: "52162800"
 </table></br>
 
 ## <a name="release-notes"></a>发行说明
+
+### <a name="a-name3001-preview3001-preview"></a><a name="3.0.0.1-preview"/>3.0.0.1-preview
+* .NET SDK [版本 3.0.0](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/) 的预览版 1（公共预览版）。
+* 适用于 .NET Standard，.NET Standard 支持 .NET Framework 4.6.1+ 和 .NET Core 2.0+
+* 新对象模型，使用顶级 CosmosClient 和方法拆分成相关的 CosmosDatabases、CosmosContainers 和 CosmosItems 类。 
+* 支持流。 
+* 对来自服务器的 CosmosResponseMessage 进行了更新以返回状态代码，并且仅在未返回响应时引发异常。 
+
+### <a name="a-name220220"></a><a name="2.2.0"/>2.2.0
+
+* 对于直接/TCP 传输诊断，添加了 TransportException，这是该 SDK 的一个内部异常类型。 出现在异常消息中时，此类型会输出附加信息，以便排查客户端连接问题。
+
+* 添加了新的构造函数重载，它采用 HttpMessageHandler，后者是用于发送 HttpClient 请求的 HTTP 处理程序堆栈（例如，HttpClientHandler）。
+
+* 修复了无法正确处理带有空值的标头的 bug。
+
+* 改进了集合缓存验证。
+
 ### <a name="a-name213213"></a><a name="2.1.3"/>2.1.3
 
 * 更新到 4.3.2 版 System.Net.Security。
@@ -101,7 +116,7 @@ ms.locfileid: "52162800"
 
 ### <a name="a-name12021202"></a><a name="1.20.2"/>1.20.2
 
-* 修复了在某些争用情况下出现的 bug，该 bug 导致在使用会话一致性级别时出现间歇性错误“Microsoft.Azure.Documents.NotFoundException: 读取会话不可用于输入会话令牌”。
+* 修复了在某些争用情况下出现的 bug，该 bug 在使用会话一致性级别时导致间歇性错误“Microsoft.Azure.Documents.NotFoundException:读取会话不可用于输入会话令牌”。
 
 ### <a name="a-name12011201"></a><a name="1.20.1"/>1.20.1
 
@@ -172,7 +187,7 @@ ms.locfileid: "52162800"
 * 修复程序，用于使 SDK 更具弹性，以便在某些情况下自动故障转移。
 
 ### <a name="a-name11221122"></a><a name="1.12.2"/>1.12.2
-* 修复偶尔导致 WebException 的问题：无法解析远程名称。
+* 修复了偶尔会导致“WebException:无法解析远程名称”的问题。
 * 通过向 ReadDocumentAsync API 添加新重载，添加了对直接读取类型化文档的支持。
 
 ### <a name="a-name11211121"></a><a name="1.12.1"/>1.12.1
@@ -205,7 +220,7 @@ ms.locfileid: "52162800"
 * 支持新类和方法，可处理集合内的文档[更改源](change-feed.md)。
 * 支持跨分区查询延续和跨分区查询的一些性能改进。
 * 添加 CreateDatabaseIfNotExistsAsync 和 CreateDocumentCollectionIfNotExistsAsync 方法。
-* 针对系统函数 IsDefined、IsNull 和 IsPrimitive 的 LINQ 支持。
+* 针对以下系统函数提供了 LINQ 支持：IsDefined、IsNull 和 IsPrimitive。
 * 修复了将 Nuget 包与具有 project.json 工具的项目搭配使用时，自动将 Microsoft.Azure.Documents.ServiceInterop.dll 和 DocumentDB.Spatial.Sql.dll 程序集自动 binplace 到应用程序的 bin 文件夹中的问题。
 * 支持发出客户端侧 ETW 跟踪，这对调试方案很有用。
 
@@ -217,7 +232,7 @@ ms.locfileid: "52162800"
 * 各种 SDK bug 修复。
 
 ### <a name="a-name195195"></a><a name="1.9.5"/>1.9.5
-* 解决了导致以下 NotFoundException 的问题：读取会话不可用于输入会话令牌。 在地理分散的帐户的读取区域查询时，在某些情况下会发生此异常。
+* 修复了导致以下 NotFoundException 的问题：读取会话不可用于输入会话令牌。 在地理分散的帐户的读取区域查询时，在某些情况下会发生此异常。
 * 已公开 ResourceResponse 类中的 ResponseStream 属性，使用该属性可直接访问响应中的基础流。
 
 ### <a name="a-name194194"></a><a name="1.9.4"/>1.9.4
@@ -225,7 +240,7 @@ ms.locfileid: "52162800"
 * 解决了使用自定义 JsonSerializerSettings 对象序列化数据时导致格式错误的分区键标头的问题。
 
 ### <a name="a-name193193"></a><a name="1.9.3"/>1.9.3
-* 解决了导致长时间运行的查询失败并出现错误：“授权令牌当前无效”的问题。
+* 修复了一个问题，该问题导致长时间运行的查询失败并显示以下错误：授权令牌当前无效。
 * 解决了从跨分区 top/order-by 查询中删除了原始 SqlParameterCollection 的问题。
 
 ### <a name="a-name192192"></a><a name="1.9.2"/>1.9.2
@@ -260,7 +275,7 @@ ms.locfileid: "52162800"
 * 实现了[分区集合](partition-data.md)和[用户定义的性能级别](performance-levels.md)。 
 
 ### <a name="a-name153153"></a><a name="1.5.3"/>1.5.3
-* **[已修复]** 查询 Azure Cosmos DB 终结点时引发：“System.Net.Http.HttpRequestException: 将内容复制到流时出错”。
+* **[已修复]** 查询 Azure Cosmos DB 终结点引发以下异常：“System.Net.Http.HttpRequestException:将内容复制到流时出错”。
 
 ### <a name="a-name152152"></a><a name="1.5.2"/>1.5.2
 * 扩展了 LINQ 支持，包括用于分页、条件表达式和范围比较的新运算符。
@@ -335,6 +350,7 @@ Microsoft 至少会在停用 SDK 前提前 12 个月发出通知，以便顺利�
 
 | 版本 | 发布日期 | 停用日期 |
 | --- | --- | --- |
+| [2.2.0](#2.2.0) |2018 年 12 月 7 日 |--- |
 | [2.1.3](#2.1.3) |2018 年 10 月 15 日 |--- |
 | [2.1.2](#2.1.2) |2018 年 10 月 4 日 |--- |
 | [2.1.1](#2.1.1) |2018 年 9 月 27 日 |--- |

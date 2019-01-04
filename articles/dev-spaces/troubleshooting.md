@@ -10,12 +10,12 @@ ms.date: 09/11/2018
 ms.topic: article
 description: 在 Azure 中使用容器和微服务快速开发 Kubernetes
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes 服务, 容器
-ms.openlocfilehash: 36516030741678ec66b4211f49ede35cfdb98605
-ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
+ms.openlocfilehash: 9973635593f7a8143ac1f3980b6e09caba44710b
+ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51706443"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53413602"
 ---
 # <a name="troubleshooting-guide"></a>故障排除指南
 
@@ -75,6 +75,7 @@ azds up --verbose --output json
 
     ![“工具选项”对话框的屏幕截图](media/common/VerbositySetting.PNG)
     
+### <a name="multi-stage-dockerfiles"></a>多阶段 Dockerfile：
 尝试使用多阶段 Dockerfile 时，可能会看到此错误。 详细输出如下所示：
 
 ```cmd
@@ -91,6 +92,21 @@ Service cannot be started.
 ```
 
 这是因为 AKS 节点运行的旧版 Docker 不支持多阶段生成。 需重写 Dockerfile 以避免多阶段生成。
+
+### <a name="re-running-a-service-after-controller-re-creation"></a>在重新创建控制器后重新运行服务
+在删除并重新创建与此群集关联的 Azure Dev Spaces 控制器后尝试重新运行某个服务时可能会看到此错误。 详细输出如下所示：
+
+```cmd
+Installing Helm chart...
+Release "azds-33d46b-default-webapp1" does not exist. Installing it now.
+Error: release azds-33d46b-default-webapp1 failed: services "webapp1" already exists
+Helm install failed with exit code '1': Release "azds-33d46b-default-webapp1" does not exist. Installing it now.
+Error: release azds-33d46b-default-webapp1 failed: services "webapp1" already exists
+```
+
+这是因为删除 Dev Spaces 控制器不会删除该控制器以前安装的服务。 因为旧服务仍然存在，所以在重新创建控制器后尝试使用新控制器运行服务会失败。
+
+若要解决此问题，请使用 `kubectl delete` 命令手动从群集中删除旧服务，然后重新运行 Dev Spaces 来安装新服务。
 
 ## <a name="dns-name-resolution-fails-for-a-public-url-associated-with-a-dev-spaces-service"></a>对与 Dev Spaces 服务关联的公用 URL 进行 DNS 名称解析失败
 
@@ -121,6 +137,18 @@ kubectl delete pod -n kube-system -l app=addon-http-application-routing-nginx-in
 ### <a name="try"></a>请尝试：
 
 从已正确设置 PATH 环境变量的命令提示符启动 VS Code。
+
+## <a name="error-required-tools-to-build-and-debug-projectname-are-out-of-date"></a>错误“用来生成和调试 ‘projectname’ 的必需工具已过期。”
+
+如果 Azure Dev Spaces 的 VS Code 扩展的版本较新但 Azure Dev Spaces CLI 的版本较旧，则会在 Visual Studio Code 中看到此错误。
+
+### <a name="try"></a>尝试
+
+下载并安装最新版本的 Azure Dev Spaces CLI：
+
+* [Windows](http://aka.ms/get-azds-windows)
+* [Mac](http://aka.ms/get-azds-mac)
+* [Linux](https://aka.ms/get-azds-linux)
 
 ## <a name="error-azds-is-not-recognized-as-an-internal-or-external-command-operable-program-or-batch-file"></a>错误“azds”未识别为内部或外部命令、可运行程序或批处理文件
  
@@ -196,6 +224,15 @@ Azure Dev Spaces 为 C# 和 Node.js 提供本机支持。 在包含以下列语�
 ### <a name="try"></a>请尝试：
 安装[适用于 Azure Dev Spaces 的 VS Code 扩展](get-started-netcore.md)。
 
+## <a name="debugging-error-invalid-cwd-value-src-the-system-cannot-find-the-file-specified-or-launch-program-srcpath-to-project-binary-does-not-exist"></a>调试错误“无效的 'cwd' 值 '/src'。 系统找不到指定的文件。” 或者“launch: program‘/src/[项目二进制文件的路径]’不存在”
+运行 VS Code 调试程序报告了错误 `Invalid 'cwd' value '/src'. The system cannot find the file specified.` 和/或 `launch: program '/src/[path to project executable]' does not exist`
+
+### <a name="reason"></a>原因
+默认情况下，VS Code 扩展使用 `src` 作为项目在容器上的工作目录。 如果你已更新了 `Dockerfile` 来指定一个不同的工作目录，则可能会看到此错误。
+
+### <a name="try"></a>请尝试：
+更新项目文件夹的 `.vscode` 子目录下的 `launch.json` 文件。 更改 `configurations->cwd` 指令，以指向与在项目的 `Dockerfile` 中定义的 `WORKDIR` 相同的目录。 可能还需要更新 `configurations->program` 指令。
+
 ## <a name="the-type-or-namespace-name-mylibrary-could-not-be-found"></a>找不到类型或命名空间名称“MyLibrary”。
 
 ### <a name="reason"></a>原因 
@@ -236,7 +273,7 @@ az provider register --namespace Microsoft.DevSpaces
 ### <a name="reason"></a>原因
 在 AKS 群集中的某个命名空间上启用 Dev Spaces 时，会在该命名空间内运行的每个 Pod 中安装一个名为 _mindaro-proxy_ 的附加容器。 此容器会拦截对 Pod 中服务的调用，这是 Dev Spaces 团队开发功能不可或缺的一部分。
 
-遗憾的是，它可能会干扰在这些 Pod 中运行的某些服务。 具体来说，它会干扰运行 Redis 缓存的 Pod，从而导致主/从通信中出现连接错误和故障。
+遗憾的是，它可能会干扰在这些 Pod 中运行的某些服务。 具体来说，它会干扰运行用于 Redis 的 Azure 缓存的 Pod，从而导致主/从通信中出现连接错误和故障。
 
 ### <a name="try"></a>请尝试：
 可以将受影响的 Pod 移动到_未_启用 Dev Spaces 的群集内的命名空间，同时继续在启用 Dev Spaces 的命名空间内运行应用程序的其余部分。 Dev Spaces 不会在未启用 Dev Spaces 的命名空间内安装 _mindaro-proxy_ 容器。

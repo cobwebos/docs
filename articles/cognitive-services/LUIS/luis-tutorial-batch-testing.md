@@ -1,23 +1,24 @@
 ---
-title: '教程 2：使用一组 1000 条话语进行批处理测试 '
+title: 批处理测试
 titleSuffix: Azure Cognitive Services
 description: 本教程演示如何使用批处理测试在应用中查找话语预测问题并进行修复。
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: e5155caa26669cd98b679eec611334ee5c048fca
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 06981972dbdb95b8597bab5028c2d86e0594caf3
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47162526"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53106033"
 ---
-# <a name="tutorial-2-batch-test-data-sets"></a>教程 2：对数据集进行批处理测试
+# <a name="tutorial-2-batch-test-data-sets"></a>教程 2：成批测试数据集
 
 本教程演示如何使用批处理测试在应用中查找话语预测问题并进行修复。  
 

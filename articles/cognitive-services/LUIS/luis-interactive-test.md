@@ -1,23 +1,24 @@
 ---
-title: 在 LUIS 门户中测试 LUIS 应用
-titleSuffix: Azure Cognitive Services
+title: 在 LUIS 门户中测试应用
+titleSuffix: Language Understanding - Azure Cognitive Services
 description: 使用语言理解 (LUIS) 持续优化应用程序并改进其语言理解能力。
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 09/06/2018
 ms.author: diberry
-ms.openlocfilehash: 6bb03975e36e93c2496eb4c6013be21ebc891ed1
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 836449dad621cf6a0efe6c8534edc9f3982869b3
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47039695"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53141571"
 ---
-# <a name="test-your-luis-app"></a>测试 LUIS 应用
+# <a name="test-your-luis-app-in-the-luis-portal"></a>在 LUIS 门户中测试 LUIS 应用
 对应用进行<a name="train-your-app"></a>
 [测试](luis-concept-test.md)是一个迭代过程。 训练 LUIS 应用后，采用示例陈述来对应用进行测试，查看应用是否能准确地识别意向和实体。 如果未能准确识别，请对 LUIS 应用进行更新和训练，然后再次测试。 
 

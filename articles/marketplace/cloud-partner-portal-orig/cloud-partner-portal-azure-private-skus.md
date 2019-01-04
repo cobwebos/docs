@@ -1,5 +1,5 @@
 ---
-title: 专用 SKU | Microsoft Docs
+title: 专用 SKU 和计划 | Microsoft Docs
 description: 如何使用专用 SKU 来管理套餐可用性。
 services: Azure, Marketplace, Cloud Partner Portal,
 documentationcenter: ''
@@ -14,14 +14,14 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 28fe85c6443701d5fb40d4f90dbec9ba445a234d
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 519f0354f2a19e106ca1072170721b27357d173e
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51230234"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52849201"
 ---
-<a name="private-skus"></a>专用 SKU
+<a name="private-skus-and-plans"></a>专用 SKU 和计划
 ============
 
 使用专用 SKU 可以限制为只有特定的客户才能使用 SKU。 将某个 SKU 标记为专用后，不会在任何公共目录中提供该 SKU，包括 [Azure 市场](https://azuremarketplace.microsoft.com)和 [Azure 门户](http://portal.azure.com)。 在 Azure 门户中，只有有权访问该 SKU 的客户才能看到它。 此外，这些客户的权限将会提升，有权访问专用的套餐。
@@ -90,6 +90,11 @@ ms.locfileid: "51230234"
             SubscriptionId,7738d703-3135-4e8d-8b81-1e70379abd9d,Private Customer
 
 从手动输入切换为 CSV 上传视图，或者从 CSV 切换为手动输入时，不会保留有权访问 SKU 的订阅 ID 的旧列表。 此时会显示一条警告，并且只会在保存套餐时才覆盖该列表。
+
+<a name="sync-private-subscriptions"></a>同步专用订阅
+-------------------------
+
+使用专用 SKU 或计划将订阅添加到已发布的套餐时，无需重新发布该套餐来添加受众信息。 只需使用 Azure 订阅 ID（计划和 SKU）或租户 ID（仅计划）即可添加受众。
 
 <a name="previewing-private-offers"></a>预览专用套餐
 -------------------------

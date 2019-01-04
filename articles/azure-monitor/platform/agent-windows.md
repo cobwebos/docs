@@ -10,17 +10,15 @@ ms.assetid: ''
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/28/2018
 ms.author: magoedte
-ms.component: ''
-ms.openlocfilehash: 7474d76537111ebc9f34bb2632a899b7ceb4e50a
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 1c90c85f667e18a80c4673a73867ee2d6b3b6294
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52638192"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53189891"
 ---
 # <a name="connect-windows-computers-to-the-log-analytics-service-in-azure"></a>将 Windows 计算机连接到 Azure 中的 Log Analytics 服务
 
@@ -180,7 +178,7 @@ ms.locfileid: "52638192"
 
 代理安装完毕后，可通过两种方式来验证是否成功连接和完成报告。  
 
-在计算机的“控制面板”中，找到“Microsoft Monitoring Agent”项。  选择此项，代理应会在“Azure Log Analytics”选项卡上显示一条消息，指出：“Microsoft Monitoring Agent 已成功连接到 Microsoft Operations Management Suite 服务”。<br><br> ![MMA 与 Log Analytics 的连接状态](media/agent-windows/log-analytics-mma-laworkspace-status.png)
+在计算机的“控制面板”中，找到“Microsoft Monitoring Agent”项。  选择该项，在“Azure Log Analytics”选项卡上，代理应显示一条消息：“Microsoft Monitoring Agent 已成功连接到Microsoft Operations Management Suite 服务”。<br><br> ![MMA 与 Log Analytics 的连接状态](media/agent-windows/log-analytics-mma-laworkspace-status.png)
 
 还可在 Azure 门户中执行简单的日志搜索。  
 

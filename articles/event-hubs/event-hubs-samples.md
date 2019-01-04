@@ -1,6 +1,6 @@
 ---
-title: Azure 事件中心示例 | Microsoft 文档
-description: Azure 事件中心示例
+title: 示例 - Azure 事件中心 | Microsoft Docs
+description: 本文提供了 GitHub 上 Azure 事件中心的示例列表。
 services: event-hubs
 documentationcenter: na
 author: ShubhaVijayasarathy
@@ -8,20 +8,21 @@ manager: timlt
 editor: ''
 ms.assetid: ''
 ms.service: event-hubs
+ms.custom: seodec18
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/17/2018
+ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 3db77a31dfe92e16d2ec145cc0be595082d0d927
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 7231b6a33c94dfe029f41f034c7674b386090d7a
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51279375"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53104044"
 ---
-# <a name="event-hubs-samples"></a>事件中心示例 
+# <a name="git-repositories-with-samples-for-azure-event-hubs"></a>带有 Azure 事件中心示例的 Git 存储库 
 可以在 [GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples) 上找到事件中心示例。 这些示例演示了 [Azure 事件中心](/azure/event-hubs/)的主要功能。 本文分类并介绍了可用的示例，每个示例均具有链接。
 
 ## <a name="net-samples"></a>.NET 示例

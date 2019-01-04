@@ -8,14 +8,14 @@ keywords: ''
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: conceptual
-ms.date: 10/23/2018
+ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 3a7701dacece515bb24567ff6117c183bfe2b526
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: d3dfcb74852f90615af90f9eab3711b1b235c53e
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52638092"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53341382"
 ---
 # <a name="fan-outfan-in-scenario-in-durable-functions---cloud-backup-example"></a>Durable Functions 中的扇出/扇入方案 - 云备份示例
 
@@ -55,7 +55,7 @@ Durable Functions 方法提供前面所述的所有优势，并且其系统开�
 
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/E2_BackupSiteContent/run.csx)]
 
-### <a name="javascript-functions-v2-only"></a>JavaScript（仅限 Functions v2）
+### <a name="javascript-functions-2x-only"></a>JavaScript（仅限 Functions 2.x）
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E2_BackupSiteContent/index.js)]
 
@@ -67,9 +67,10 @@ Durable Functions 方法提供前面所述的所有优势，并且其系统开�
 4. 等待所有上传完成。
 5. 返回已上传到 Azure Blob 存储的总字节数。
 
-请注意 `await Task.WhenAll(tasks);` (C#) 和 `yield context.df.Task.all(tasks);` (JS) 所在的行。 对 `E2_CopyFileToBlob` 函数的所有调用未进入等待状态。 这是有意而为的，目的是让这些调用同时运行。 将此任务数组传递给 `Task.WhenAll` 时，会获得所有复制操作完成之前不会完成的任务。 如果熟悉 .NET 中的任务并行库 (TPL) 的话，则对此过程也不会陌生。 差别在于，这些任务可在多个 VM 上同时运行，Durable Functions 扩展可确保端到端执行能够弹性应对进程回收。
+请注意 `await Task.WhenAll(tasks);` (C#) 和 `yield context.df.Task.all(tasks);` (JavaScript) 所在的行。 对 `E2_CopyFileToBlob` 函数的所有单个调用都未处于等待状态。 这是有意而为的，目的是让这些调用同时运行。 将此任务数组传递给 `Task.WhenAll` (C#) 或 `context.df.Task.all` (JavaScript) 时，会获得所有复制操作完成之前不会完成的任务。 如果熟悉 .NET 中的任务并行库 (TPL) 或 JavaScript 中的 [`Promise.all`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/all)，则对此过程也不会陌生。 差别在于，这些任务可在多个 VM 上同时运行，Durable Functions 扩展可确保端到端执行能够弹性应对进程回收。
 
-这些任务非常类似于 JavaScript promise 的概念。 但是，`Promise.all` 与 `Task.WhenAll` 有一些差异。 `Task.WhenAll` 的概念已移植到 `durable-functions` JavaScript 模块并专用于它。
+> [!NOTE]
+> 虽然任务在概念上类似于 JavaScript 承诺，但业务流程协调程序函数应使用 `context.df.Task.all` 和 `context.df.Task.any`（而不是 `Promise.all` 和 `Promise.race`）来管理任务并行化。
 
 完成 `Task.WhenAll` 并进入等待中状态（或从 `context.df.Task.all` 输出）后，我们知道所有函数调用都已完成，并已收到返回值。 每次调用 `E2_CopyFileToBlob` 都会返回已上传字节数，因此，将所有这些返回值相加就能计算出字节数总和。
 
@@ -85,7 +86,7 @@ Durable Functions 方法提供前面所述的所有优势，并且其系统开�
 
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/E2_GetFileList/run.csx)]
 
-### <a name="javascript-functions-v2-only"></a>JavaScript（仅限 Functions v2）
+### <a name="javascript-functions-2x-only"></a>JavaScript（仅限 Functions 2.x）
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E2_GetFileList/index.js)]
 
@@ -104,7 +105,7 @@ C# 实现也十分直截了当。 本示例恰好使用了 Azure Functions 绑�
 
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/E2_CopyFileToBlob/run.csx)]
 
-### <a name="javascript-functions-v2-only"></a>JavaScript（仅限 Functions v2）
+### <a name="javascript-functions-2x-only"></a>JavaScript（仅限 Functions 2.x）
 
 JavaScript 实现无法访问 Azure Functions 的 `Binder` 功能，因此[用于 Node 的 Azure 存储 SDK](https://github.com/Azure/azure-storage-node) 将取而代之。
 

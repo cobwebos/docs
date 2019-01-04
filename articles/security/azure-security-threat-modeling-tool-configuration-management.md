@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: fe6251f70ae62440bbbefc8c3aa5d92d934d8ba0
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: b24d32afed5acfd846f9a8e8316339665524ad2e
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51249347"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52849753"
 ---
 # <a name="security-frame-configuration-management--mitigations"></a>安全框架：配置管理 | 缓解措施 
 | 产品/服务 | 文章 |
@@ -85,7 +85,7 @@ Example: var str="alert(1)"; eval(str);
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
-| **参考**              | [ASP.NET 调试概述](http://msdn2.microsoft.com/library/ms227556.aspx)、[ASP.NET 跟踪概述](http://msdn2.microsoft.com/library/bb386420.aspx)、[如何：为 ASP.NET 应用程序启用跟踪](http://msdn2.microsoft.com/library/0x5wc973.aspx)、[如何：为 ASP.NET 应用程序启用调试](http://msdn2.microsoft.com/library/e8z01xdh(VS.80).aspx) |
+| **参考**              | [ASP.NET 调试概览](http://msdn2.microsoft.com/library/ms227556.aspx)、[ASP.NET 跟踪概览](http://msdn2.microsoft.com/library/bb386420.aspx)、[如何：启用 ASP.NET 应用程序跟踪](http://msdn2.microsoft.com/library/0x5wc973.aspx)、[如何：启用 ASP.NET 应用程序调试](http://msdn2.microsoft.com/library/e8z01xdh(VS.80).aspx) |
 | **步骤** | 为页面启用跟踪后，请求该页面的每个浏览器也会获取包含有关内部服务器状态和工作流的数据的跟踪信息。 该信息可能是安全敏感信息。 为页面启用调试后，服务器上发生的错误会导致向浏览器提供完整的堆栈跟踪数据。 该数据可能会透露有关服务器工作流的安全敏感信息。 |
 
 ## <a id="js-trusted"></a>仅从受信任源访问第三方 JavaScript
@@ -431,7 +431,7 @@ public void Configure(IApplicationBuilder app)
 }
 ```
 
-**方式 2** 在 MVC 中启用 CORS：开发人员也可以使用 MVC 按操作、按控制器，或者针对所有控制器全局应用特定的 CORS。
+**方式 2** 在 MVC 中启用 CORS：开发人员也可以使用 MVC 按操作、按控制器或者针对所有控制器全局应用特定的 CORS。
 
 ### <a name="example"></a>示例
 按操作：要为特定的操作指定 CORS 策略，请将 [EnableCors] 特性添加到该操作。 指定策略名称。 
@@ -507,7 +507,7 @@ public void ConfigureServices(IServiceCollection services)
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
-| **参考**              | [在 Windows 10 IoT Core 上启用安全启动和 bit-locker 设备加密](https://developer.microsoft.com/windows/iot/win10/sb_bl) |
+| **参考**              | [在 Windows 10 IoT Core 上启用安全启动和 bit-locker 设备加密](https://docs.microsoft.com/windows/iot-core/secure-your-device/securebootandbitlocker) |
 | **步骤** | UEFI 安全启动会将系统限制为只允许执行指定的颁发机构签名的二进制文件。 此功能可防止在平台上执行未知的代码，潜在地削弱这种代码的安全风险。 启用 UEFI 安全启动，并限制受信任的、可为代码签名的证书颁发机构列表。 使用受信任的颁发机构之一为设备上部署的所有代码签名。 |
 
 ## <a id="partition-iot"></a>使用 bit-locker 加密 IoT 设备的 OS 和其他分区

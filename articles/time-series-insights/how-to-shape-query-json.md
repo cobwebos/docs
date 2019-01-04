@@ -1,6 +1,6 @@
 ---
-title: 有关在 Azure 时序见解查询中塑造 JSON 的最佳做法。
-description: 了解如何提高时序见解查询的效率。
+title: Azure 时序见解 JSON - 在 Azure 时序见解查询中塑造 JSON 的最佳做法 | Microsoft Docs
+description: 了解如何提高 Azure 时序见解查询的效率。
 services: time-series-insights
 author: ashannon7
 manager: cshankar
@@ -8,12 +8,13 @@ ms.service: time-series-insights
 ms.topic: article
 ms.date: 05/24/2018
 ms.author: anshan
-ms.openlocfilehash: b9d5e922a9a0a5f50e2ced896f5957fbc90d7eb4
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.custom: seodec18
+ms.openlocfilehash: 284bbf435c7940658753e7bbf1daff00a79d57a1
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46364357"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53273836"
 ---
 # <a name="how-to-shape-json-to-maximize-query-performance"></a>如何塑造 JSON 以最大化查询性能 
 
@@ -25,7 +26,7 @@ ms.locfileid: "46364357"
 
 > [!VIDEO https://www.youtube.com/embed/b2BD5hwbg5I]
 
-## <a name="best-practices"></a>最佳实践
+## <a name="best-practices"></a>最佳做法
 
 必须考虑如何将事件发送到时序见解。 也就是说，始终应该：
 

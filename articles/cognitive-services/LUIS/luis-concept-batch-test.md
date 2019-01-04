@@ -1,23 +1,24 @@
 ---
-title: 对 LUIS 应用进行批处理测试 - 语言理解
-titleSuffix: Azure Cognitive Services
+title: 批处理测试
+titleSuffix: Language Understanding - Azure Cognitive Services
 description: 使用批处理测试持续优化应用程序并改进其语言理解能力。
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: conceptual
-ms.date: 10/24/2018
+ms.date: 12/07/2018
 ms.author: diberry
-ms.openlocfilehash: 44abadc653c4679f37152e6592c882475b139bdd
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.openlocfilehash: c050c8ed338a019b34302e87a53d4a40306f9a22
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52333898"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53133140"
 ---
-# <a name="batch-testing-in-luis"></a>LUIS 中的批处理测试
+# <a name="batch-testing-with-1000-utterances-in-luis-portal"></a>对 LUIS 门户中的 1000 个话语执行批处理测试
 
 批处理测试验证你的[活动](luis-concept-version.md#active-version)定型模型，以判断其预测准确性。 批处理测试可帮助你在图表中查看当前定型的模型中的每个意向和实体的准确性。 查看批处理测试结果，以采取适当操作来提升准确性，例如，如果应用经常无法标识正确意向，则向意向添加更多示例表达。
 

@@ -10,12 +10,12 @@ ms.component: translator-speech
 ms.topic: conceptual
 ms.date: 05/18/18
 ms.author: v-jansko
-ms.openlocfilehash: b7005811898df9132be6bc199e26f6c6dc358618
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: aa0af6f0c075dc555757a9c716a1d0569197287d
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49345197"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53256382"
 ---
 # <a name="translator-speech-api-languages"></a>语音翻译 API：语言
 
@@ -23,7 +23,7 @@ ms.locfileid: "49345197"
 
 语音翻译不断扩展其服务支持的语言列表。 使用此 API 可以发现当前可用于语音翻译服务的语言集。
 
-可以从 [Microsoft Translator Github 站点](https://github.com/MicrosoftTranslator)获得演示如何使用 API 获取可用语言的代码示例。
+可以从 [Microsoft Translator GitHub 站点](https://github.com/MicrosoftTranslator)获得演示如何使用 API 获取可用语言的代码示例。
 
 ## <a name="implementation-notes"></a>实现说明
 
@@ -131,7 +131,7 @@ Langagues { speech (object, optional), text (object, optional), tts (object, opt
 
 ### <a name="headers"></a>标头
 
-|标头|Description|Type|
+|标头|Description|类型|
 :--|:--|:--|
 X-RequestId|服务器生成的值，用于标识请求并用于故障排除目的。|字符串|
 

@@ -1,21 +1,22 @@
 ---
-title: 使用 LUIS 生成应用的最佳做法 - 语言理解
-titleSuffix: Azure Cognitive Services
-description: 学习 LUIS 最佳做法以获取最佳结果。
+title: 最佳做法
+titleSuffix: Language Understanding - Azure Cognitive Services
+description: 学习 LUIS 最佳做法以从 LUIS 应用的模型中获取最佳结果。
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: conceptual
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: 6b7b9c8a2a3e7da1628ef3e6f93a4b632ce38615
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.openlocfilehash: e63d6ed584c0e8afc823bbcdc6e70ceabbf43db6
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49637774"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53085274"
 ---
 # <a name="best-practices-for-building-a-language-understanding-app-with-cognitive-services"></a>使用认知服务生成语言理解应用的最佳做法
 使用应用创作进程生成 LUIS 应用。 
@@ -50,10 +51,10 @@ ms.locfileid: "49637774"
 
 请考虑以下话语示例：
 
-```
-Book a flight
-Book a hotel
-```
+|示例陈述|
+|--|
+|预订航班|
+|预订酒店|
 
 “预订航班”和“预订酒店”使用了同样的词汇“预订”。 这就是重叠的情况，所以它应为同一意向，只是分别带有提取了“航班”和“酒店”两个不同词语的实体。 
 

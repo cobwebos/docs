@@ -1,5 +1,5 @@
 ---
-title: Azure 搜索的 Lucene 查询示例 | Microsoft Docs
+title: Lucene 查询示例 - Azure 搜索
 description: 在 Azure 搜索服务中进行模糊搜索、邻近搜索、术语提升、正则表达式搜索和通配符搜索的 Lucene 查询语法。
 author: HeidiSteen
 manager: cgronlun
@@ -9,12 +9,13 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 08/09/2018
 ms.author: heidist
-ms.openlocfilehash: b5a3e2eac218ba2aa6958ffc56bd59f5b513cf48
-ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
+ms.custom: seodec2018
+ms.openlocfilehash: 0ce230bc6a926229ed383c828f83aafd60117471
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2018
-ms.locfileid: "42140417"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53317146"
 ---
 # <a name="lucene-syntax-query-examples-for-building-advanced-queries-in-azure-search"></a>在 Azure 搜索中生成高级查询的 Lucene 语法查询示例
 在构造 Azure 搜索的查询时，可以将默认的[简单查询分析器](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search)替换为更全面的 [Azure 搜索中的 Lucene 查询分析器](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search)，以便制定专用的高级查询定义。 
@@ -91,7 +92,7 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-
 
   ![Postman 示例响应](media/search-query-lucene-examples/postman-sample-results.png)
 
-你可能已经注意到响应中的搜索分数。 当搜索不是全文搜索或者没有要应用的条件时，则不存在排名，分数统统为 1。 对于不带条件的空搜索，按任意顺序返回行。 包括实际条件时，能看到搜索分数变成有意义的值。
+你可能已经注意到响应中的搜索分数。 由于搜索不是全文搜索或者没有应用条件，因此不存在排名时评分统统为 1。 对于不带条件的空搜索，按任意顺序返回行。 包括实际条件时，能看到搜索分数变成有意义的值。
 
 ## <a name="example-2-intra-field-filtering"></a>示例 2：字段内筛选
 
@@ -190,7 +191,7 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-
 ## <a name="example-7-wildcard-search"></a>示例 7：通配符搜索
 可将通常可识别的语法用于多个 (\*) 或单个 (?) 字符通配符搜索。 请注意，Lucene 查询分析器支持将这些符号与单个术语一起使用，但不能与短语一起使用。
 
-在此查询中，搜索包含前缀“prog”的作业，这会包含带有术语“编程”和“程序员”的职位。 不得将 * 或 ? 符号用作搜索的第一个字符。
+在此查询中，搜索包含前缀“prog”的作业，这会包含带有术语“编程”和“程序员”的职位。 不得将 * 或 ?  符号用作搜索的第一个字符。
 
 ```GET
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&$count=true&searchFields=business_title&$select=business_title&queryType=full&search=business_title:prog*

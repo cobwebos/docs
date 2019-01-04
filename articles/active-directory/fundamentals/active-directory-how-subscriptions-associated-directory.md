@@ -1,6 +1,6 @@
 ---
-title: 如何将现有 Azure 订阅添加到 Azure Active Directory 租户 | Microsoft Docs
-description: 了解如何将现有 Azure 订阅添加到 Azure Active Directory 租户。
+title: 将现有 Azure 订阅添加到租户 - Azure Active Directory | Microsoft Docs
+description: 有关将现有 Azure 订阅添加到 Azure Active Directory 租户的说明。
 services: active-directory
 author: eross-msft
 manager: mtillman
@@ -11,15 +11,15 @@ ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: lizross
 ms.reviewer: jeffsta
-ms.custom: it-pro
-ms.openlocfilehash: dd62b22eca40a214c5b08a9bc48815e40fe90e47
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.custom: it-pro, seodec18
+ms.openlocfilehash: 4e4d4d9f34c8220ba70c64f073557f0293881c3e
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45984063"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53083863"
 ---
-# <a name="how-to-associate-or-add-an-azure-subscription-to-azure-active-directory"></a>如何：将 Azure 订阅关联或添加到 Azure Active Directory
+# <a name="associate-or-add-an-azure-subscription-to-your-azure-active-directory-tenant"></a>将 Azure 订阅关联或添加到 Azure Active Directory 租户
 Azure 订阅与 Azure Active Directory (Azure AD) 建立了信任关系，即该订阅信任 Azure AD 对用户、服务和设备进行身份验证。 多个订阅可以信任同一个 Azure AD 目录，但每个订阅只能信任一个目录。
 
 如果订阅过期，则将失去与该订阅关联的所有其他资源的访问权限。 但是，Azure AD Directory 仍保留在 Azure 中，可使用不同的 Azure 订阅关联和管理目录。

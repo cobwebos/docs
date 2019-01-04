@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/17/2018
 ms.author: cynthn
-ms.openlocfilehash: 4f86dee539e3cc5a90db828ed11dbd225a00555d
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.openlocfilehash: e75758c5a4171adc7af56581026a727db2ef4740
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52334629"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52850969"
 ---
 # <a name="log-in-to-a-linux-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>使用 Azure Active Directory 身份验证（预览版）登录到 Azure 中的 Linux 虚拟机
 
@@ -96,8 +96,8 @@ az vm extension set \
 
 Azure 基于角色的访问控制 (RBAC) 策略决定了谁能登录到 VM。 使用两个 RBAC 角色来授权 VM 登录：
 
-- **虚拟机管理员登录名**：分配了此角色的用户可以使用 Windows 管理员或 Linux root 用户权限登录到 Azure 虚拟机。
-- **虚拟机用户登录名**：分配了此角色的用户可以使用常规用户权限登录到 Azure 虚拟机。
+- **虚拟机管理员登录**：分配了此角色的用户可以使用 Windows 管理员或 Linux 根用户权限登录到 Azure 虚拟机。
+- **虚拟机用户登录**：分配了此角色的用户可以使用常规用户权限登录到 Azure 虚拟机。
 
 > [!NOTE]
 > 若要允许用户通过 SSH 登录到 VM，必须分配“虚拟机管理员登录名”或“虚拟机用户登录名”角色。 分配了 VM“所有者”或“参与者”角色的 Azure 用户不会自动获得通过 SSH 登录到 VM 的权限。
@@ -129,7 +129,7 @@ az role assignment create \
 az vm show --resource-group myResourceGroup --name myVM -d --query publicIps -o tsv
 ```
 
-使用 Azure AD 凭据登录到 Azure Linux 虚拟机。 可以通过 `-l` 参数指定自己的 Azure AD 帐户地址。 将 VM 的公共 IP 地址指定为上一命令中的输出：
+使用 Azure AD 凭据登录到 Azure Linux 虚拟机。 可以通过 `-l` 参数指定自己的 Azure AD 帐户地址。 应以全小写的形式输入帐户地址。 使用上一个命令中的 VM 的公共 IP 地址：
 
 ```azurecli-interactive
 ssh -l azureuser@contoso.onmicrosoft.com publicIps

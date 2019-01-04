@@ -1,5 +1,6 @@
 ---
-title: 迁移到 Azure 机器学习服务
+title: 从 Workbench 迁移
+titleSuffix: Azure Machine Learning service
 description: 了解如何从早期版本升级或迁移到最新版本的 Azure 机器学习服务。
 services: machine-learning
 ms.service: machine-learning
@@ -9,16 +10,16 @@ ms.reviewer: jmartens
 ms.author: haining
 author: haining
 ms.date: 09/24/2018
-ms.openlocfilehash: e2b3545c020f41f25f19843eab158cfb1b419164
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 22e7e513c7ec015b070ae37c1dbdd168404ee768
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51253442"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53140738"
 ---
-# <a name="migrate-to-the-latest-version-of-azure-machine-learning-service"></a>迁移到最新版本的 Azure 机器学习服务 
+# <a name="migrate-from-workbench-to-the-latest-version-of-azure-machine-learning-service"></a>从 Workbench 迁移到最新版本的 Azure 机器学习服务 
 
-**如果已经安装 Workbench（预览版）应用程序和/或拥有试验和模型管理预览帐户，请使用本文迁移到最新版本。**  如果没有安装预览版 Workbench，或者没有试验和/或模型管理帐户，则无需进行任何迁移。
+**如果已经安装 Workbench 应用程序和/或拥有试验和模型管理预览帐户，请按本文所述迁移到最新版本。**  如果没有安装预览版 Workbench，或者没有试验和/或模型管理帐户，则无需进行任何迁移。
 
 ## <a name="what-can-i-migrate"></a>我可以迁移什么？
 在 Azure 机器学习服务的第一个预览中创建的大多数项目都存储在你自己的本地存储或云存储中。 这些项目不会消失。 要进行迁移，请使用更新的 Azure 机器学习服务再次注册这些项目。 
@@ -75,11 +76,10 @@ run = exp.submit(source_directory = script_folder, script = 'train.py', run_conf
 
 若要迁移 Web 服务，请使用新 SDK 或 CLI 将模型重新部署到新的部署目标。 无需更改原始评分文件、模型文件依赖项文件、环境文件和架构文件。 
 
-在最新版本中，模型作为 Web 服务部署到 [Azure 容器实例](how-to-deploy-to-aci.md) (ACI) 或 [Azure Kubernetes 服务](how-to-deploy-to-aks.md) (AKS) 群集。 
+在最新版本中，模型作为 Web 服务部署到 Azure 容器实例 (ACI) 或 Azure Kubernetes 服务 (AKS) 群集。 
 
 通过以下文章，了解详细信息：
-+ [部署到 ACI](how-to-deploy-to-aci.md)
-+ [部署到 AKS](how-to-deploy-to-aks.md)
++ [部署方式和部署位置](how-to-deploy-and-where.md)
 + [教程：使用 Azure 机器学习服务部署模型](tutorial-deploy-models-with-aml.md)
 
 [对以前 CLI 的支持结束](overview-what-happened-to-workbench.md#timeline)后，你将无法管理最初使用模型管理帐户部署的 Web 服务。 但是，只要仍支持 Azure 容器服务 (ACS)，这些 Web 服务就将继续有效。
@@ -108,7 +108,7 @@ az ml history download
 <a name="dataprep"></a>
 
 ## <a name="data-preparation-files"></a>数据准备文件
-没有 Workbench，数据准备文件不可移植。 但你仍可以使用新的 Azure 机器学习数据准备 SDK 准备任意大小的数据集进行建模，或者使用 Azure Databricks 来处理大数据集。  [了解如何获取数据准备 SDK](how-to-data-prep.md)。 
+没有 Workbench，数据准备文件不可移植。 但你仍可以使用新的 Azure 机器学习数据准备 SDK 准备任意大小的数据集进行建模，或者使用 Azure Databricks 来处理大数据集。 [了解如何获取数据准备 SDK](https://aka.ms/data-prep-sdk)。
 
 ## <a name="next-steps"></a>后续步骤
 

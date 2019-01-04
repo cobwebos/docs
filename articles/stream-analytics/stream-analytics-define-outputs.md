@@ -7,13 +7,14 @@ ms.author: mamccrea
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 11/21/2018
-ms.openlocfilehash: 869941781643d3486506b5a3caed4006019fb3b7
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.date: 12/06/2018
+ms.custom: seodec18
+ms.openlocfilehash: 555a2bdfe3997114c1aaa202a89d650287f27c0e
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52310028"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53091622"
 ---
 # <a name="understand-outputs-from-azure-stream-analytics"></a>了解 Azure 流分析的输出
 本文将介绍适用于 Azure 流分析作业的不同类型的输出。 输出可帮助存储和保存流分析作业的结果。 使用输出数据，可进一步进行业务分析和数据的数据仓储。 
@@ -34,13 +35,13 @@ ms.locfileid: "52310028"
 
 1. 当选择 Data Lake 存储作为 Azure 门户的输出时，系统会提示对现有 Data Lake Store 的连接进行授权。  
 
-   ![授权 Data Lake Store](./media/stream-analytics-define-outputs/06-stream-analytics-define-outputs.png)  
+   ![授权连接到 Data Lake Store](./media/stream-analytics-define-outputs/06-stream-analytics-define-outputs.png)  
 
 2. 如果已有权访问 Data Lake Store，请选择“立即授权”，此时弹出一个页面，指示“正在重定向到授权”。 授权成功后，会显示一个页面，用于配置 Data Lake Store 输出。
 
 3. Data Lake Store 帐户身份验证完成后，可以为自己的 Data Lake Store 输出配置属性。 下表列出了用于配置 Data Lake Store 输出的属性名称及其说明。
 
-   ![授权 Data Lake Store](./media/stream-analytics-define-outputs/07-stream-analytics-define-outputs.png)  
+   ![将 Data Lake Store 定义为流分析输出](./media/stream-analytics-define-outputs/07-stream-analytics-define-outputs.png)  
 
 | 属性名称 | 说明 | 
 | --- | --- |
@@ -59,7 +60,7 @@ ms.locfileid: "52310028"
 
 若要续订授权，请“停止”作业，转到 Data Lake Store 输出，单击“续订授权”链接，在很短的时间内会弹出一个页面，指示“正在重定向到授权...”。该页会自动关闭，成功后指示“授权已成功续订”。 然后需要单击该页底部的“保存”，并通过从“上次停止的时间”重新启动作业来继续，以避免数据丢失。
 
-![授权 Data Lake Store](./media/stream-analytics-define-outputs/08-stream-analytics-define-outputs.png)  
+![在输出中续订 Data Lake Store 授权](./media/stream-analytics-define-outputs/08-stream-analytics-define-outputs.png)  
 
 ## <a name="sql-database"></a>SQL 数据库
 可以将 [Azure SQL 数据库](https://azure.microsoft.com/services/sql-database/)用作本质上为关系型数据的输出，也可以将其用于所依赖的内容在关系数据库中托管的应用程序。 流分析作业将写入到 Azure SQL 数据库的现有表中。  请注意表架构必须与字段及其正从作业输出的类型完全匹配。 [Azure SQL 数据仓库](https://azure.microsoft.com/documentation/services/sql-data-warehouse/)也可以通过 SQL 数据库输出选项指定为输出。 若要了解提高写入吞吐量的方法，请参阅[以 Azure SQL DB 作为输出的流分析](stream-analytics-sql-output-perf.md)一文。 下表列出了属性名称和用于创建 SQL 数据库输出的属性说明。
@@ -133,11 +134,11 @@ Blob 存储提供了一种经济高效且可扩展的解决方案，用于在云
 ### <a name="authorize-a-power-bi-account"></a>向 Power BI 帐户授权
 1. 当 Power BI 被选为 Azure 门户中的输出时，会提示向现有的 Power BI 用户授权或创建新的 Power BI 帐户。  
    
-   ![向 Power BI 用户授权](./media/stream-analytics-define-outputs/01-stream-analytics-define-outputs.png)  
+   ![授权 Power BI 用户配置输出](./media/stream-analytics-define-outputs/01-stream-analytics-define-outputs.png)  
 
 2. 如果还没有帐户，请创建一个新帐户，并单击“立即授权”。  显示以下页面：
    
-   ![Azure 帐户的 Power BI](./media/stream-analytics-define-outputs/02-stream-analytics-define-outputs.png)  
+   ![从 Azure 帐户进行 Power BI 身份验证](./media/stream-analytics-define-outputs/02-stream-analytics-define-outputs.png)  
 
 3. 在此步骤中，提供用于授权 Power BI 输出的工作或学校帐户。 如果还没有注册 Power BI，请选择“立即注册”。 用于 Power BI 的工作或学校帐户可能不同于当前登录时所用的 Azure 订阅帐户。
 
@@ -190,11 +191,11 @@ Datetime | String | String |  Datetime | String
 ### <a name="renew-power-bi-authorization"></a>续订 Power BI 授权
 如果流分析作业创建或最后一次进行身份验证之后，Power BI 帐户密码发生了更改，则需要重新对流分析进行身份验证。 如果在 Azure Active Directory (AAD) 租户上配置了多重身份验证 (MFA)，还需要每 2 周续订一次 Power BI 授权。 此问题的症状是没有作业输出，并且操作日志存在“验证用户错误”：
 
-  ![Power BI 刷新令牌错误](./media/stream-analytics-define-outputs/03-stream-analytics-define-outputs.png)  
+  ![Power BI 验证用户错误](./media/stream-analytics-define-outputs/03-stream-analytics-define-outputs.png)  
 
 要解决此问题，请停止正在运行的作业并转到 Power BI 输出。  选择“续订授权”链接，并在“上次停止时间”重新启动工作以避免数据丢失。
 
-  ![Power BI 续订授权](./media/stream-analytics-define-outputs/04-stream-analytics-define-outputs.png)  
+  ![续订 Power BI 授权以获得输出](./media/stream-analytics-define-outputs/04-stream-analytics-define-outputs.png)  
 
 ## <a name="table-storage"></a>表存储
 [Azure 表存储](../storage/common/storage-introduction.md)提供了具有高可用性且可大规模缩放的存储，因此应用程序可以自动缩放以满足用户需求。 表存储是 Microsoft 推出的 NoSQL 键/属性存储，适用于对架构的约束性较少的结构化数据。 Azure 表存储可用于持久地存储数据，方便进行高效的检索。

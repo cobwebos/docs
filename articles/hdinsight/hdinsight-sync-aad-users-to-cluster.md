@@ -9,12 +9,12 @@ ms.reviewer: mamccrea
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: b63f2566220d556f9695687dc743a7d47e27acf1
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: ebb1e3614309f92fc21442100a13c53291b3acbb
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46984307"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53407281"
 ---
 # <a name="synchronize-azure-active-directory-users-to-an-hdinsight-cluster"></a>将 Azure Active Directory 用户同步到 HDInsight 群集
 
@@ -38,13 +38,13 @@ ms.locfileid: "46984307"
 
     ![“新建用户”窗格](./media/hdinsight-sync-aad-users-to-cluster/aad-new-user.png)
 
-4. 选择**创建**。
+4. 选择“创建”。
 
-## <a name="use-the-ambari-rest-api-to-synchronize-users"></a>使用 Ambari REST API 来同步用户
+## <a name="use-the-apache-ambari-rest-api-to-synchronize-users"></a>使用 Apache Ambari REST API 来同步用户
 
 在群集创建过程中指定的用户组是在创建时同步的。 用户同步每小时自动进行一次。 若要立即同步用户，或者要同步的组不是群集创建过程中指定的组，请使用 Ambari REST API。
 
-以下方法通过 Ambari REST API 使用 POST。 有关详细信息，请参阅[使用 Ambari REST API 管理 HDInsight 群集](hdinsight-hadoop-manage-ambari-rest-api.md)。
+以下方法通过 Ambari REST API 使用 POST。 有关详细信息，请参阅[使用 Apache Ambari REST API 管理 HDInsight 群集](hdinsight-hadoop-manage-ambari-rest-api.md)。
 
 1. [使用 SSH 连接到群集](hdinsight-hadoop-linux-use-ssh-unix.md)。 在 Azure 门户中，从群集的概览窗格选择“安全外壳(SSH)”按钮。
 
@@ -123,12 +123,12 @@ ms.locfileid: "46984307"
 
 5. 此结果显示，状态为“完成”，创建了一个新用户且为该用户指定了成员身份。 在此示例中，用户分配到“HiveUsers”同步的 LDAP 组，因为用户已在 Azure AD 中添加到该组。
 
-> [!NOTE]
+> [!NOTE]  
 > 前一方法仅同步创建群集时在域设置的“访问用户组”属性中指定的 Azure AD 组。 有关详细信息，请参阅[创建 HDInsight 群集](domain-joined/apache-domain-joined-configure.md)。
 
 ## <a name="verify-the-newly-added-azure-ad-user"></a>验证新添加的 Azure AD 用户
 
-打开 [Ambari Web UI](hdinsight-hadoop-manage-ambari.md)，验证新的 Azure AD 用户是否已添加。 浏览到 **`https://<YOUR CLUSTER NAME>.azurehdinsight.net`**，对 Ambari Web UI 进行访问。 输入群集管理员用户名和密码。
+打开 [Apache Ambari Web UI](hdinsight-hadoop-manage-ambari.md)，验证新的 Azure AD 用户是否已添加。 浏览到 **`https://<YOUR CLUSTER NAME>.azurehdinsight.net`**，对 Ambari Web UI 进行访问。 输入群集管理员用户名和密码。
 
 1. 在 Ambari 仪表板中，选择“管理”菜单下的“管理 Ambari”。
 
@@ -148,6 +148,6 @@ ms.locfileid: "46984307"
 
 ## <a name="see-also"></a>另请参阅
 
-* [使用 ESP 在 HDInsight 中配置 Hive 策略](hdinsight-domain-joined-run-hive.md)
-* [管理使用 ESP 的 HDInsight 群集](hdinsight-domain-joined-manage.md)
-* [授权用户访问 Ambari](hdinsight-authorize-users-to-ambari.md)
+* [使用 ESP 在 HDInsight 中配置 Apache Hive 策略](hdinsight-domain-joined-run-hive.md)
+* [管理 ESP HDInsight 群集](hdinsight-domain-joined-manage.md)
+* [授权用户访问 Apache Ambari](hdinsight-authorize-users-to-ambari.md)

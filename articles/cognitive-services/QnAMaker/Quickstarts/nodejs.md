@@ -10,14 +10,15 @@ ms.component: qna-maker
 ms.topic: article
 ms.date: 10/19/2018
 ms.author: diberry
-ms.openlocfilehash: cd3d159e4482b43c6356ab7b657a79fa59159c60
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.custom: seodec18
+ms.openlocfilehash: 2f57a5ddfdf18214e927a8a903fda54872900375
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50214981"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53166466"
 ---
-# <a name="qna-maker-rest-api-with-nodejs"></a>QnA Maker REST API 与 Node.js 
+# <a name="how-to-use-the-qna-maker-rest-api-with-nodejs"></a>如何将 QnA Maker REST API 与 Node.js 配合使用 
 <a name="HOLTop"></a>
 
 本文介绍如何将 [Microsoft QnA Maker API](../Overview/overview.md)  与 Node.js 配合使用来执行下列操作。
@@ -37,7 +38,7 @@ ms.locfileid: "50214981"
 - [获取当前的字变更集。](#GetAlterations)
 - [替换当前的字变更集。](#PutAlterations)
 
-[!INCLUDE [Code is available in Azure-Samples Github repo](../../../../includes/cognitive-services-qnamaker-nodejs-repo-note.md)]
+[!INCLUDE [Code is available in Azure-Samples GitHub repo](../../../../includes/cognitive-services-qnamaker-nodejs-repo-note.md)]
 
 ## <a name="prerequisites"></a>先决条件
 

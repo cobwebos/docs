@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/08/2018
 ms.author: dharmas
 ms.reviewer: sngun
-ms.openlocfilehash: d834b7f43d961400e2d5080a46cf921d719f3393
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: 39de7453c9d3b0335748cd37e4b1eef91b64b207
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51684845"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53409535"
 ---
 # <a name="working-with-azure-cosmos-databases-containers-and-items"></a>使用 Azure Cosmos 数据库、容器和项
 
@@ -26,10 +26,10 @@ ms.locfileid: "51684845"
 
 | **Azure Cosmos 实体** | **SQL API** | **Cassandra API** | **MongoDB API** | **Gremlin API** | **表 API** |
 | --- | --- | --- | --- | --- | --- |
-|Azure Cosmos 数据库 | 数据库 | 密钥空间 | 数据库 | NA | NA |
+|Azure Cosmos 数据库 | 数据库 | 密钥空间 | 数据库 | 数据库 | NA |
 
 > [!NOTE]
-> 使用 Gremlin 和表 API 帐户，会在创建第一个图表或表时自动在 Azure Cosmos 帐户中创建默认数据库。
+> 使用表 API 帐户，会在创建第一个表时自动在 Azure Cosmos 帐户中创建默认数据库。
 
 ### <a name="operations-on-an-azure-cosmos-database"></a>对 Azure Cosmos 数据库执行的操作
 
@@ -49,11 +49,11 @@ Azure Cosmos 容器是预配的吞吐量和项目存储的缩放单元。 容器
 
 在创建 Azure Cosmos 容器时，会在以下某个模式中配置吞吐量：
 
-* **专用预配吞吐量**模式：针对容器预配的吞吐量是专门为其保留的，且由 SLA 支持。 有关详细信息，请参阅[如何对 Azure Cosmos 容器预配吞吐量](how-to-provision-container-throughput.md)。
+* **专用预配吞吐量**模式：针对容器预配的吞吐量是专门为其保留的，且由 SLA 提供支持。 有关详细信息，请参阅[如何对 Azure Cosmos 容器预配吞吐量](how-to-provision-container-throughput.md)。
 
-* **共享预配吞吐量**模式：这些容器与同一数据库中的其他容器共享预配吞吐量（不包含已预配专用预配吞吐量的容器）。 也就是说，针对该数据库预配的吞吐量是与所有“共享”容器共享的。 有关详细信息，请参阅[如何对 Azure Cosmos 数据库配置预配吞吐量](how-to-provision-database-throughput.md)。
+* **共享预配吞吐量**模式：这些容器与同一数据库中的其他容器共享预配吞吐量（不包含已配置专用预配吞吐量的容器）。 也就是说，针对该数据库预配的吞吐量是与所有“共享”容器共享的。 有关详细信息，请参阅[如何对 Azure Cosmos 数据库配置预配吞吐量](how-to-provision-database-throughput.md)。
 
-无论使用“共享”还是“专用”预配吞吐量模式创建容器，Azure Cosmos 容器都可以灵活缩放，也就是说它们可拥有无限的存储和预配吞吐量。  
+无论使用“共享”还是“专用”预配吞吐量模式创建容器，Azure Cosmos 容器都可以灵活缩放。
 
 Azure Cosmos 容器是与架构无关的项容器。 容器中的项可以具备任意架构。 例如，如果容器中有表示人员的项，那么该容器也能包含表示汽车的项。 默认情况下，添加到容器的所有项都会自动编入索引，不需要任何显式索引或架构管理工作。 通过在容器上配置的索引策略，可以自定义索引行为。 
 
@@ -69,7 +69,7 @@ Azure Cosmos 容器专用于特定于 API 的实体，如下所示：
 
 | **Azure Cosmos 实体** | **SQL API** | **Cassandra API** | **MongoDB API** | **Gremlin API** | **表 API** |
 | --- | --- | --- | --- | --- | --- |
-|Azure Cosmos 容器 | 容器 | 表 | 集合 | 图形 | 表 |
+|Azure Cosmos 容器 | 集合 | 表 | 集合 | 图形 | 表 |
 
 ### <a name="properties-of-an-azure-cosmos-container"></a>Azure Cosmos 容器的属性
 
@@ -105,7 +105,7 @@ Azure Cosmos 容器支持使用任何 Azure Cosmos API 执行的以下操作。
 
 | **Cosmos 实体** | **SQL API** | **Cassandra API** | **MongoDB API** | **Gremlin API** | **表 API** |
 | --- | --- | --- | --- | --- | --- |
-|Azure Cosmos 项 | Item | 行 | 文档 | 节点或边缘 | Item |
+|Azure Cosmos 项 | 文档 | 行 | 文档 | 节点或边缘 | Item |
 
 ### <a name="properties-of-an-item"></a>项的属性
 

@@ -2,18 +2,18 @@
 title: 将备份保管库升级到恢复服务保管库
 description: 将 Azure 备份保管库升级到恢复服务保管库的说明和支持信息。
 services: backup
-author: markgalioto
+author: rayne-wiselman
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
 ms.date: 1/4/2018
 ms.author: sogup
-ms.openlocfilehash: 431ca75a653b93342b61a9b39dc42a93270519f1
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 41a826304af338814666e80dfaf584021809dbb0
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51228515"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52880040"
 ---
 # <a name="upgrade-a-backup-vault-to-a-recovery-services-vault"></a>将备份保管库升级到恢复服务保管库
 
@@ -37,9 +37,9 @@ ms.locfileid: "51228515"
 
 将备份保管库升级到恢复服务保管库之前，请检查以下问题。
 
-- 最低代理版本：若要升级保管库，请确保 Microsoft Azure 恢复服务 (MARS) 代理的版本至少为 2.0.9083.0。 如果 MARS 代理版本低于 2.0.9083.0，请在启动升级过程之前更新该代理。
+- **最低代理版本**：若要升级保管库，请确保 Microsoft Azure 恢复服务 (MARS) 代理的版本至少为 2.0.9083.0。 如果 MARS 代理版本低于 2.0.9083.0，请在启动升级过程之前更新该代理。
 - **基于实例的计费模型**：恢复服务保管库仅支持基于实例的计费模型。 如果备份保管库使用旧式基于存储的计费模型，请在升级期间转换计费模型。
-- **没有正在进行的备份配置操作**：升级期间，对管理平面的访问将受到限制。 完成所有管理平面操作，然后开始升级。
+- **没有正在进行的备份配置操作**：在升级期间，对管理平面的访问受到限制。 完成所有管理平面操作，然后开始升级。
 
 ## <a name="using-powershell-scripts-to-upgrade-your-vaults"></a>使用 PowerShell 脚本升级保管库
 
@@ -81,7 +81,7 @@ PowerShell 脚本会提示输入凭据。 请输入凭据两次：一次是输�
 输入 Azure 凭据后，Azure 会检查环境是否满足以下先决条件：
 
 - 最低代理版本 - 将备份保管库升级到恢复服务保管库要求 MARS 代理版本至少为 2.0.9083.0。 如果使用版本低于 2.0.9083.0 的代理将项注册到了备份保管库，先决条件检查会失败。 如果先决条件检查失败，请更新代理，并重试升级保管库。 可以从 [http://download.microsoft.com/download/F/4/B/F4B06356-150F-4DB0-8AD8-95B4DB4BBF7C/MARSAgentInstaller.exe](https://download.microsoft.com/download/F/4/B/F4B06356-150F-4DB0-8AD8-95B4DB4BBF7C/MARSAgentInstaller.exe) 下载代理的最新版本。
-- **正在进行的配置作业**：如果某人正在针对设置为要升级的备份保管库配置作业，或者正在注册某个项，先决条件检查会失败。 请先完成配置或完成项的注册，再启动保管库升级过程。
+- **执行中的配置作业**：如果某人正在针对设置为要升级的备份保管库配置作业，或者正在注册某个项，先决条件检查会失败。 请先完成配置或完成项的注册，再启动保管库升级过程。
 - **基于存储的计费模型**：恢复服务保管库支持基于实例的计费模型。 如果在使用基于存储的计费模型的备份保管库上运行保管库升级，系统会提示连同保管库一起升级计费模型。 否则，可以先更新计费模型，再运行保管库升级。
 - 标识恢复服务保管库的资源组。 若要利用 Resource Manager 部署功能，必须在资源组中放置一个恢复服务保管库。 如果不知道要使用哪个资源组，请提供一个名称，然后，升级过程会创建该资源组。 升级过程还会将保管库与新资源组相关联。
 
@@ -136,7 +136,7 @@ PowerShell 脚本会提示输入凭据。 请输入凭据两次：一次是输�
 **升级后是否可以查看经典保管库？**</br>
 不是。 升级后无法查看或管理经典保管库。 只能使用新式 Azure 门户针对保管库执行所有管理操作。
 
-升级失败，但保存需要升级的代理的计算机不再存在。对于这种情况，该怎么办？**</br>
+升级失败，但保存需要升级的代理的计算机不再存在。对于这种情况，该怎么办？</br>
 如果需要存储此计算机的备份以便长期保留，则无法升级保管库。 在将来版本中，我们将添加对升级此类保管库的支持。
 如果不再需要存储此计算机的备份，请从保管库中注销此计算机，并重试升级。
 

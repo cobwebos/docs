@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/25/2017
 ms.author: cwatson
-ms.openlocfilehash: cb3584101dea4dc8d8d888632175415480a6a1b3
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: b37626fe899bf7ee49bd71021631e21dc36b3963
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52581522"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53315605"
 ---
 # <a name="check-usage-of-free-services-included-with-your-azure-free-account"></a>检查 Azure 免费帐户中包含的免费服务的使用情况 
 
@@ -27,7 +27,7 @@ ms.locfileid: "52581522"
 
 ## <a name="check-usage-on-the-azure-portal"></a>在 Azure 门户中检查使用情况
 
-1.  登录到 [Azure 门户]( http://portal.azure.com)。
+1.  登录到 [Azure 门户](https://portal.azure.com)。
 
 2.  在左侧的导航区域中，选择“所有服务”。
 
@@ -49,9 +49,9 @@ ms.locfileid: "52581522"
 
     ![显示免费服务使用情况的屏幕截图](./media/billing-check-usage-of-free-services/subscription-usage-free-services.png)
 
-    该表包含以下列：
+    该表具有以下列：
 
-* **测定仪名称：** 确定要使用的测定仪的度量单位。 若要了解有关服务测定仪映射的信息，请参阅[了解免费服务测定仪映射](billing-understand-free-service-meter-mapping.md)。 
+* **测定仪名称：** 确定要使用的测定仪的度量单位。 若要了解有关服务测定仪映射的信息，请参阅[了解免费服务测定仪映射](billing-understand-free-service-meter-mapping.md)。
 * **使用情况/限值：** 当前月份的测定仪使用情况和限值。 还可在状态栏中找到此信息。
 * **状态：** 测定仪的使用状态。 根据使用模式，可能会具有以下其中一种状态。
   * **未使用：** 未使用测定仪或测定仪的使用情况尚未提交至计费系统。
@@ -59,15 +59,14 @@ ms.locfileid: "52581522"
   * **不可能超过：** 不太可能超过测定仪的限值。
   * **于 \<Date> 超过：** 可能会于 \<Date> 超过测定仪限值。
 
-
 ## <a name="check-usage-through-the-usage-file"></a>通过使用文件检查使用情况
 
-使用文件提供有关 Azure 订阅的详尽信息。 可从 Azure 帐户中心下载每月和每日使用文件。 若要了解如何下载使用文件并了解所需的访问权限，请参阅[获取发票和使用情况](billing-download-azure-invoice-daily-usage-date.md)。 若要了解有关使用文件中列的信息，请参阅[了解有关使用情况的术语](billing-understand-your-usage.md)。 
+使用文件提供有关 Azure 订阅的详尽信息。 可从 Azure 帐户中心下载每月和每日使用文件。 若要了解如何下载使用文件并了解所需的访问权限，请参阅[获取发票和使用情况](billing-download-azure-invoice-daily-usage-date.md)。 若要了解有关使用文件中列的信息，请参阅[了解有关使用情况的术语](billing-understand-your-usage.md)。
 
-使用文件包含免费服务和付费服务的使用情况信息。 免费服务测定仪在测定仪名称末尾附加 **Free**。 若要查找免费测定仪，请在 Excel 中打开文件并筛选“测定仪类别列”，获取包含文本“**- Free**”的单元格（使用文本筛选器 &rarr; 包含筛选器）&nbsp;
+使用文件具有免费服务和付费服务的使用情况信息。 免费服务测定仪在测定仪名称末尾附加 **Free**。 若要查找免费测定仪，请在 Excel 中打开文件并筛选“测定仪类别列”，获取具有文本“- Free”的单元格（使用文本筛选器 &rarr; 包含筛选器）&nbsp;
 
 ![显示免费服务使用情况的屏幕截图](./media/billing-check-usage-of-free-services/free-services-usage-csv.png)
 
 ## <a name="need-help-contact-us"></a>需要帮助？ 请联系我们。
 
-如果你有任何疑问或需要帮助，请[创建支持请求](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)。
+如有任何疑问或需要帮助，请[创建支持请求](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)。

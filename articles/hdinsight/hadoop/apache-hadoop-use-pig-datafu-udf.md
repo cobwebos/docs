@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/16/2018
 ms.author: hrasheed
-ms.openlocfilehash: 0c7e8b7ab10771c611f80d36fb1c9ed0cf3e6f1b
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: 982ed4533c34cd4a6613d289ef4712001977538f
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51632350"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53436205"
 ---
 # <a name="use-apache-datafu-pig-with-apache-pig-on-hdinsight"></a>将 Apache DataFu Pig 与 Apache Pig on HDInsight 配合使用
 
@@ -29,21 +29,21 @@ Apache DataFu Pig 是适用于 Apache Hadoop 上的 Apache Pig 的开源库集�
 
 * Azure HDInsight 群集（基于 Linux 或 Windows）
 
-  > [!IMPORTANT]
+  > [!IMPORTANT]  
   > Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight 在 Windows 上停用](../hdinsight-component-versioning.md#hdinsight-windows-retirement)。
 
-* 基本熟悉[在 HDInsight 上使用 Pig](hdinsight-use-pig.md)
+* 基本熟悉[在 HDInsight 上使用 Apache Pig](hdinsight-use-pig.md)
 
 ## <a name="install-datafu-on-linux-based-hdinsight"></a>在基于 Linux 的 HDInsight 上安装 DataFu
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > DataFu 安装在基于 Linux 的群集版本 3.3 和更高版本上，以及基于 Windows 的群集上。 该程序未安装在早于 3.3 的基于 Linux 的群集上。
 >
 > 如果使用的是基于 Windows 的群集，或基于 Linux 的群集（3.3 以上版本），请跳过本部分。
 
 可从 Maven 存储库下载和安装 DataFu。 使用以下步骤查找所需版本，并将其添加到 HDInsight 群集：
 
-> [!WARNING]
+> [!WARNING]  
 > HDInsight 可能不满足 DataFu 版本的某些要求。 例如，如果使用较早版本的 DataFu，可能要求使用与 HDInsight 中不同的 Pig 版本。
 
 ### <a name="find-a-version"></a>查找版本
@@ -62,30 +62,30 @@ Apache DataFu Pig 是适用于 Apache Hadoop 上的 Apache Pig 的开源库集�
 
 2. 使用以下命令下载使用 wget 实用工具的 DataFu jar 文件：
 
-    > [!IMPORTANT]
+    > [!IMPORTANT]  
     > 将命令中的链接替换为之前复制的 URL。
 
     ```
-    wget http://central.maven.org/maven2/org/apache/datafu/datafu-pig/1.4.0/datafu-pig-1.4.0.jar
+    wget https://central.maven.org/maven2/org/apache/datafu/datafu-pig/1.4.0/datafu-pig-1.4.0.jar
     ```
 
 3. 然后，将文件上传到 HDInsight 群集的默认存储。 通过将文件放置在默认存储中，使其可供群集中的所有节点使用。
 
-    > [!IMPORTANT]
+    > [!IMPORTANT]  
     > 将文件名中的版本号替换为下载的版本。
 
     ```
     hdfs dfs -put datafu-pig-1.4.0.jar /example/jars
     ```
 
-    > [!NOTE]
+    > [!NOTE]  
     > 前一命令将 jar 存储在 `/example/jars` 中，因为此目录已存在于群集存储上。 可使用 HDInsight 群集存储上的任意位置。
 
 ## <a name="use-datafu-with-pig"></a>通过 Pig 使用 DataFu
 
 本部分中的步骤假定你熟悉如何在 HDInsight 上使用 Pig。 有关将 Pig 与 HDInsight 配合使用的详细信息，请参阅[将 Pig 与 HDInsight 配合使用](hdinsight-use-pig.md)。
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > 如果使用上一节中的步骤手动安装了 DataFu，则必须先注册，再使用。
 >
 > * 如果群集使用 Azure 存储，请使用 `wasb://` 路径。 例如，`register wasb:///example/jars/datafu-pig-1.4.0.jar`。
@@ -140,4 +140,4 @@ DUMP mask;
 有关 DataFu 或 Pig 的详细信息，请参阅以下文档：
 
 * [Apache DataFu Pig 入门](https://datafu.apache.org/docs/datafu/getting-started.html).
-* [将 Pig 与 HDInsight 配合使用](hdinsight-use-pig.md)
+* [将 Apache Pig 和 HDInsight 配合使用](hdinsight-use-pig.md)

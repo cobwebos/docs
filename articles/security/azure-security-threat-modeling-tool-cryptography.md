@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: 4128d113535c67c0b440dc3fb275af05b5c1c1ae
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: 79803a749b6d08c94bcbf5f3ca66aac8b7294fa3
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43306139"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52844645"
 ---
 # <a name="security-frame-cryptography--mitigations"></a>安全框架：加密 | 缓解措施 
 | 产品/服务 | 文章 |
@@ -172,8 +172,8 @@ ms.locfileid: "43306139"
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 设备 OS - Windows IoT Core、设备连接、Azure IoT 设备 SDK |
-| **参考**              | [Windows IoT Core 上的 TPM](https://developer.microsoft.com/windows/iot/docs/tpm)、[设置 Windows IoT Core 上的 TPM](https://developer.microsoft.com/windows/iot/win10/setuptpm)、[Azure IoT 设备 SDK TPM](https://github.com/Azure/azure-iot-hub-vs-cs/wiki/Device-Provisioning-with-TPM) |
-| **步骤** | 对称或证书私钥安全存储在受硬件保护的存储（如 TPM 或智能卡芯片）中。 Windows 10 IoT Core 支持 TPM 用户，另外还可以使用多个兼容的 TPM： https://developer.microsoft.com/windows/iot/win10/tpm。 建议使用固件或离散 TPM。 软件 TPM 只应该用于开发和测试目的。 获取 TPM 并在其中预配密钥后，应该编写生成令牌的代码，但不要对令牌中的任何敏感信息进行硬编码。 | 
+| **参考**              | [Windows IoT Core 上的 TPM](https://developer.microsoft.com/windows/iot/docs/tpm)、[设置 Windows IoT Core 上的 TPM](https://docs.microsoft.com/windows/iot-core/secure-your-device/setuptpm)、[Azure IoT 设备 SDK TPM](https://github.com/Azure/azure-iot-hub-vs-cs/wiki/Device-Provisioning-with-TPM) |
+| **步骤** | 对称或证书私钥安全存储在受硬件保护的存储（如 TPM 或智能卡芯片）中。 Windows 10 IoT Core 支持 TPM 用户，另外还可以使用多个兼容的 TPM： https://docs.microsoft.com/windows/iot-core/secure-your-device/tpm#discrete-tpm-dtpm。 建议使用固件或离散 TPM。 软件 TPM 只应该用于开发和测试目的。 获取 TPM 并在其中预配密钥后，应该编写生成令牌的代码，但不要对令牌中的任何敏感信息进行硬编码。 | 
 
 ### <a name="example"></a>示例
 ```

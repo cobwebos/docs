@@ -1,5 +1,5 @@
 ---
-title: 将 ILB 应用服务环境与 Azure 应用程序网关集成
+title: 将 ILB 应用服务环境与应用程序网关集成 - Azure
 description: 有关如何将 ILB 应用服务环境中的应用与应用程序网关集成的演练
 services: app-service
 documentationcenter: na
@@ -13,12 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/03/2018
 ms.author: ccompy
-ms.openlocfilehash: 749b554b8cf99ce849e0e3ab7b3a9478d8705e54
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.custom: seodec18
+ms.openlocfilehash: ea46b5e57e4e508a3311de8633ae61d346b574eb
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39422988"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53273810"
 ---
 # <a name="integrate-your-ilb-app-service-environment-with-the-azure-application-gateway"></a>将 ILB 应用服务环境与 Azure 应用程序网关集成 #
 
@@ -64,9 +65,9 @@ Azure 应用程序网关是一个虚拟设备，可提供第 7 层负载均衡�
 
 1. 在 Azure 门户 中，转到“新建” > “网络” > “应用程序网关”。
 
-1. 在“基本信息”区域中：
+2. 在“基本信息”区域中：
 
-   a. 对于“名称”，输入应用程序网关的名称。
+   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 对于“名称”，输入应用程序网关的名称。
 
    b. 对于“层级”，选择“WAF”。
 
@@ -78,9 +79,9 @@ Azure 应用程序网关是一个虚拟设备，可提供第 7 层负载均衡�
 
    ![新应用程序网关创建基本信息][2]
 
-1. 在“设置”区域中：
+3. 在“设置”区域中：
 
-   a. 对于“虚拟网络”，选择应用服务环境虚拟网络。
+   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 对于“虚拟网络”，选择应用服务环境虚拟网络。
 
    b. 对于“子网”，选择需要将应用程序网关部署到的子网。 请勿使用 GatewaySubnet，因为它会阻止创建 VPN 网关。
 
@@ -94,25 +95,25 @@ Azure 应用程序网关是一个虚拟设备，可提供第 7 层负载均衡�
 
    ![新应用程序网关创建设置][3]
     
-1. 在“摘要”部分中，查看设置并选择“确定”。 应用程序网关安装程序可能需要 30 多分钟才能完成。  
+4. 在“摘要”部分中，查看设置并选择“确定”。 应用程序网关安装程序可能需要 30 多分钟才能完成。  
 
-1. 在应用程序网关安装完成后，转到你的应用程序网关门户。 选择“后端池”。 添加 ILB 应用服务环境的 ILB 地址。
+5. 在应用程序网关安装完成后，转到你的应用程序网关门户。 选择“后端池”。 添加 ILB 应用服务环境的 ILB 地址。
 
    ![配置后端池][4]
 
-1. 后端池配置过程完成后，选择“运行状况探测”。 为想用于应用的域名创建运行状况探测。 
+6. 后端池配置过程完成后，选择“运行状况探测”。 为想用于应用的域名创建运行状况探测。 
 
    ![配置运行状况探测][5]
     
-1. 运行状况探测配置过程完成后，选择“HTTP 设置”。 编辑现有设置，选择“使用自定义探测”，然后选择你配置的探测。
+7. 运行状况探测配置过程完成后，选择“HTTP 设置”。 编辑现有设置，选择“使用自定义探测”，然后选择你配置的探测。
 
    ![配置 HTTP 设置][6]
     
-1. 转到应用程序网关的“概述”部分，并复制应用程序网关使用的公用 IP 地址。 将该 IP 地址设置为应用域名的 A 记录，或在 CNAME 记录中使用该地址的 DNS 名称。 从公用 IP 地址 UI 选择公用 IP 地址并复制此地址，比从应用程序网关的“概述”部分上的链接进行复制更为简单。 
+8. 转到应用程序网关的“概述”部分，并复制应用程序网关使用的公用 IP 地址。 将该 IP 地址设置为应用域名的 A 记录，或在 CNAME 记录中使用该地址的 DNS 名称。 从公用 IP 地址 UI 选择公用 IP 地址并复制此地址，比从应用程序网关的“概述”部分上的链接进行复制更为简单。 
 
    ![应用程序网关门户][7]
 
-1. 为 ILB 应用服务环境中的应用设置自定义域名。 转到门户中的应用，并在“设置”下选择“自定义域”。
+9. 为 ILB 应用服务环境中的应用设置自定义域名。 转到门户中的应用，并在“设置”下选择“自定义域”。
 
    ![在该应用上设置自定义域名][8]
 
@@ -133,6 +134,6 @@ Azure 应用程序网关是一个虚拟设备，可提供第 7 层负载均衡�
 [9]: ./media/integrate-with-application-gateway/appgw-iplist.png
 
 <!--LINKS-->
-[appgw]: http://docs.microsoft.com/azure/application-gateway/application-gateway-introduction
+[appgw]: https://docs.microsoft.com/azure/application-gateway/application-gateway-introduction
 [custom-domain]: ../app-service-web-tutorial-custom-domain.md
 [ilbase]: ./create-ilb-ase.md

@@ -1,10 +1,12 @@
 ---
-title: 在 Azure 上预配 Linux CentOS 数据科学虚拟机 | Microsoft Docs
+title: 创建 CentOS Linux Data Science Virtual Machine
+titleSuffix: Azure
 description: 在 Azure 上配置和创建 Linux 数据科学虚拟机，用于进行分析和机器学习。
 services: machine-learning
 documentationcenter: ''
 author: gopitk
 manager: cgronlun
+ms.custom: seodec18
 ms.assetid: 3bab0ab9-3ea5-41a6-a62a-8c44fdbae43b
 ms.service: machine-learning
 ms.component: data-science-vm
@@ -14,18 +16,18 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/16/2018
 ms.author: gokuma
-ms.openlocfilehash: ca3a0e9a8c63ddc9a5c2ca34faffc683d0324321
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: 253934d450619ca67e429fbf396a5fed5b71a267
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52262547"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53081857"
 ---
 # <a name="provision-a-linux-centos-data-science-virtual-machine-on-azure"></a>在 Azure 上预配 Linux CentOS 数据科学虚拟机
 
 Linux 数据科学虚拟机是基于 CentOS 的 Azure 虚拟机，附带一组预安装的工具。 这些工具通常用于进行数据分析和机器学习。 所含关键软件组件包括：
 
-* 操作系统： Linux CentOS 分发版。
+* 操作系统：Linux CentOS 分发版。
 * Microsoft R Server Developer Edition
 * Anaconda Python 分发版（2.7 和 3.5 版），包括常用数据分析库
 * JuliaPro - 具有常用科学和数据分析库的 Julia 语言的特选分发
@@ -35,10 +37,10 @@ Linux 数据科学虚拟机是基于 CentOS 的 Azure 虚拟机，附带一组�
 * 用于管理 Azure 资源的 Azure 命令行接口 (CLI)
 * PostgresSQL 数据库
 * 机器学习工具
-  * [认知工具包](https://github.com/Microsoft/CNTK)：Microsoft Research 的深度学习软件工具包。
+  * [Cognitive Toolkit](https://github.com/Microsoft/CNTK)：Microsoft Research 提供的深度学习软件工具包。
   * [Vowpal Wabbit](https://github.com/JohnLangford/vowpal_wabbit)：一种快速机器学习系统，支持在线、哈希、allreduce、缩减、learning2search、主动和交互式学习等技术。
   * [XGBoost](https://xgboost.readthedocs.org/en/latest/)：一种提供快速、准确的提升树实现的工具。
-  * [Rattle](https://togaware.com/rattle/) (R Analytical Tool To Learn Easily)（用于实现轻松学习的 R 分析工具）：该工具使在 R 中开始数据分析和机器学习变得简单，支持基于 GUI 的数据浏览和使用自动 R 代码生成进行建模。
+  * [Rattle](https://togaware.com/rattle/)（用于实现轻松学习的 R 分析工具）：该工具使在 R 中开始数据分析和机器学习变得简单，支持基于 GUI 的数据浏览和使用自动 R 代码生成进行建模。
 * Java、Python、node.js、Ruby 和 PHP 中的 Azure SDK
 * R 和 Python 中的库，供 Azure 机器学习和其他 Azure 服务使用
 * 开发工具和编辑器（RStudio、PyCharm、IntelliJ、Emacs、gedit、vi）
@@ -62,7 +64,7 @@ Linux 数据科学虚拟机可大大减轻这种负担。 使用它快速开始�
 ## <a name="prerequisites"></a>先决条件
 创建 Linux 数据科学虚拟机之前，必须具备以下条件：
 
-* **Azure 订阅**：若要获取订阅，请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/free/)。
+* **Azure 订阅**：若要获取一项订阅，请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/free/)。
 * **Azure 存储帐户**：若要创建帐户，请参阅[创建 Azure 存储帐户](../../storage/common/storage-quickstart-create-account.md)。 或者，如果不想使用现有帐户，可以在创建 VM 过程中创建存储帐户。
 
 ## <a name="create-your-linux-data-science-virtual-machine"></a>创建 Linux 数据科学虚拟机
@@ -75,11 +77,11 @@ Linux 数据科学虚拟机可大大减轻这种负担。 使用它快速开始�
    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 **基本信息**：
    
    * **名称**：待创建的数据科学服务器的名称。
-   * **用户名称**：第一个帐户登录 ID。
-   * **密码**：第一个帐户密码（可以使用 SSH 公钥代替密码）。
+   * **用户名**：第一个帐户登录 ID。
+   * **密码**：第一个帐户密码（可以使用 SSH 公钥而非密码）。
    * **订阅**：如果有多个订阅，请选择要在其上创建虚拟机并对其计费的订阅。 必须具有此订阅的资源创建权限。
    * **资源组**：可以创建新组或使用现有组。
-   * **位置**：选择最适合的数据中心。 通常，最合适的数据中心应拥有大部分数据，或者最接近物理位置以实现最快的网络访问。
+   * **位置**：选择最合适的数据中心。 通常，最合适的数据中心应拥有大部分数据，或者最接近物理位置以实现最快的网络访问。
    
    b. **大小**：
    
@@ -87,8 +89,8 @@ Linux 数据科学虚拟机可大大减轻这种负担。 使用它快速开始�
    
    c. **设置**：
    
-   * 磁盘类型：如果喜欢固态硬盘 (SSD)，请选择“高级”。 否则，请选择“标准”。
-   * **存储帐户**：可以在订阅中创建新的 Azure 存储帐户，或者使用位于与向导的**基本信息**步骤中选择的相同位置的现有帐户。
+   * **磁盘类型**：如果喜欢固态硬盘 (SSD)，请选择“高级”。 否则，请选择“标准”。
+   * **存储帐户**：可以在订阅中创建新的 Azure 存储帐户，或者使用位于与向导的“基本信息”步骤中选择的相同位置的现有帐户。
    * **其他参数**：大多数情况下，只需使用默认值。 若考虑使用非默认值，请将鼠标悬停在信息链接上获取特定字段的帮助。
    
    d. **汇总**：
@@ -115,10 +117,10 @@ Linux VM 已通过 X2Go 服务器进行预配并且可接受客户端连接。 �
 1. 从 [X2Go ](http://wiki.x2go.org/doku.php/doc:installation:x2goclient) 为客户端平台下载并安装 X2Go 客户端。    
 1. 运行 X2Go 客户端，并选择“新建会话”。 这会打开具有多个选项卡的配置窗口。 输入下列配置参数:
    * **会话选项卡**：
-     * **主机**：主机名或 Linux 数据科学 VM 的 IP 地址。
+     * **主机**：Linux Data Science VM 的主机名或 IP 地址。
      * **登录名**：Linux VM 上的用户名。
      * **SSH 端口**：保留默认值 22。
-     * **会话类型**：将值更改为 XFCE。 Linux VM 目前仅支持 XFCE 桌面。
+     * **会话类型**：将值更改为“XFCE”。 Linux VM 目前仅支持 XFCE 桌面。
    * **媒体选项卡**：如果无需使用声音支持和客户端打印功能，则可将其关闭。
    * **共享文件夹**：如果希望将目录从客户端计算机装入 Linux VM，则在此选项卡上添加要与 VM 共享的客户端计算机目录。
 
@@ -254,9 +256,9 @@ VM 上安装有以下 Azure 工具：
 
 * **Azure 命令行接口**：Azure CLI 允许通过 shell 命令创建和管理 Azure 资源。 若要调用 Azure 工具，只需键入 **azure 帮助**。 有关详细信息，请参阅 [Azure CLI 文档页](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2)。
 * **Microsoft Azure 存储资源管理器**：Microsoft Azure 存储资源管理器是一个图形工具，用于浏览在 Azure 存储帐户中存储的对象，以及将数据上传到 Azure Blob 和从中下载数据。 可通过桌面快捷方式图标访问存储资源管理器。 可以通过键入 **StorageExplorer** 从 shell 提示符调用。 需从 X2Go 客户端登录，或者安装 X11 转发。
-* **Azure 库**：以下是一些预安装库。
+* **Azure 库**：下面是一些预安装的库。
   
-  * **Python**： Python 中的已安装 Azure 相关库包括 **azure** **azureml**、**pydocumentdb** 和 **pyodbc**。 使用前三个库，可以访问 Azure 存储服务、Azure 机器学习和 Azure Cosmos DB（Azure 上的 NoSQL 数据库）。 使用第四个库 pyodbc（以及 SQL Server 的 Microsoft ODBC 驱动程序），可以通过使用 ODBC 接口从 Python 访问 SQL Server、Azure SQL 数据库和 Azure SQL 数据仓库。 输入 **pip 列表**查看所有列出的库。 请确保在 Python 2.7 和 3.5 环境中都运行此命令。
+  * **Python**：Python 中已安装的 Azure 相关库包括 **azure**、**azureml**、**pydocumentdb** 和 **pyodbc**。 使用前三个库，可以访问 Azure 存储服务、Azure 机器学习和 Azure Cosmos DB（Azure 上的 NoSQL 数据库）。 使用第四个库 pyodbc（以及 SQL Server 的 Microsoft ODBC 驱动程序），可以通过使用 ODBC 接口从 Python 访问 SQL Server、Azure SQL 数据库和 Azure SQL 数据仓库。 输入 **pip 列表**查看所有列出的库。 请确保在 Python 2.7 和 3.5 环境中都运行此命令。
   * **R**：R 中的已安装 Azure 相关库包括 **AzureML** 和 **RODBC**。
   * **Java**：可在 VM 上的 **/dsvm/sdk/AzureSDKJava** 目录中找到 Azure Java 库列表。 密钥库是 Azure 存储和用于 SQL Server 的管理 API、Azure Cosmos DB 和 JDBC 驱动程序。  
 
@@ -280,7 +282,7 @@ Azure 机器学习是完全托管的云服务，允许构建、部署和共享�
 VM 附带一些已经预编译并已在本地预安装的机器学习工具和算法。 其中包括：
 
 * **Microsoft 认知工具包**：深度学习工具包。
-* **Vowpal Wabbit**：快速在线学习算法。
+* **Vowpal Wabbit**：一种快速的在线学习算法。
 * **xgboost**：提供经过优化的提升树算法的工具。
 * **Python**：Anaconda Python 附带机器学习算法，这些算法含有库（如 Scikit-learn）。 可以通过使用 `pip install` 命令安装其他库。
 * **R**：有可供 R 使用的丰富的机器学习函数库。一些预安装的库包括lm、glm、randomForest 和 rpart。 可通过运行以下内容安装其他库：

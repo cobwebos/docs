@@ -12,19 +12,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/14/2018
+ms.date: 12/9/2018
 ms.author: rkarlin
-ms.openlocfilehash: f46837751901015fd80d3ecc7a620878cadb3f12
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: b38ba140a1e2b853c07e1ffe53405b58663653b5
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52317868"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53343864"
 ---
 # <a name="protect-app-service-with-azure-security-center"></a>使用 Azure 安全中心保护应用服务
 本文帮助你使用 Azure 安全中心来监视和保护在应用服务上运行的应用程序。
 
-应用服务允许采用所选编程语言生成和托管 Web 应用程序，无需管理基础结构。 应用服务提供自动缩放和高可用性，支持 Windows 和 Linux，以及从 GitHub、Visual Studio Team Services 或任何 Git 存储库进行的自动部署。 
+应用服务允许采用所选编程语言生成和托管 Web 应用程序，无需管理基础结构。 应用服务提供自动缩放和高可用性，支持 Windows 和 Linux，以及从 GitHub、Azure DevOps 或任何 Git 存储库进行的自动部署。 
 
 攻击者经常利用 Web 应用程序中的漏洞，因为这些应用程序在 Internet 上几乎为每家组织提供一个通用动态接口。 向应用服务上运行的应用程序发出的请求将会通过全球 Azure 数据中心部署的多个网关发送。这些网关负责将每个请求路由到其相应的应用程序。 
 
@@ -34,7 +34,7 @@ Azure 安全中心可以在 VM 或按需实例的沙盒中运行评估，并针�
 
 ## <a name="prerequisites"></a>先决条件
 
-若要监视和保护应用服务，必须创建一个与专用计算机关联的应用服务计划。 这些计划包括：“基本”、“标准”、“高级”、“隔离”或“Linux”。 Azure 安全中心不支持“免费”、“共享”或“消耗”计划。 有关详细信息，请参阅[应用服务计划](https://azure.microsoft.com/pricing/details/app-service/plans/)。
+若要监视和保护应用服务，必须创建一个与专用计算机关联的应用服务计划。 这些计划包括：“基本”、“标准”、“高级”、“独立”或“Linux”。 Azure 安全中心不支持“免费”、“共享”或“消耗”计划。 有关详细信息，请参阅[应用服务计划](https://azure.microsoft.com/pricing/details/app-service/plans/)。
 
 ## <a name="security-center-protection"></a>安全中心保护
 
@@ -63,8 +63,8 @@ Azure 安全中心保护运行应用服务的 VM 实例以及管理接口。 此
 ## <a name="see-also"></a>另请参阅
 本文介绍了如何使用 Azure 安全中心的监视功能。 若要了解更多有关 Azure 安全中心的详细信息，请参阅以下内容：
 
-* [在 Azure 安全中心设置安全策略](security-center-azure-policy.md)：了解如何在 Azure 安全中心配置安全设置。
+* [在 Azure 安全中心设置安全策略](tutorial-security-policy.md)：了解如何在 Azure 安全中心配置安全设置。
 * [管理和响应 Azure 安全中心的安全警报](security-center-managing-and-responding-alerts.md)：了解如何管理和响应安全警报。
-* [通过 Azure 安全中心监视合作伙伴解决方案](security-center-partner-solutions.md)：了解如何监视合作伙伴解决方案的运行状态。
-* [Azure 安全中心常见问题](security-center-faq.md)：查找有关使用服务的常见问题。
-* [Azure 安全性博客](http://blogs.msdn.com/b/azuresecurity/):.查找关于 Azure 安全性及合规性的博客文章
+* [通过 Azure 安全中心监视合作伙伴解决方案](security-center-partner-solutions.md)：了解如何监视合作伙伴解决方案的运行状况。
+* [Azure 安全中心常见问题解答](security-center-faq.md)：查找有关如何使用服务的常见问题。
+* [Azure 安全性博客](http://blogs.msdn.com/b/azuresecurity/)：查找关于 Azure 安全性及合规性的博客文章。

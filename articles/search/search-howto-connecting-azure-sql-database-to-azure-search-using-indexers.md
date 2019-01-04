@@ -1,6 +1,6 @@
 ---
-title: 使用索引器将 Azure SQL 数据库连接到 Azure 搜索 | Microsoft Docs
-description: 了解如何使用索引器将数据从 Azure SQL 数据库提取到 Azure 搜索索引。
+title: 使用索引器连接 Azure SQL 数据库并为其内容编制索引 - Azure 搜索
+description: 了解如何使用索引器抓取 Azure SQL 数据库中的数据，以便在 Azure 搜索中进行全文搜索。 本文介绍连接、索引器配置和数据引入。
 ms.date: 10/17/2018
 author: mgottein
 manager: cgronlun
@@ -9,14 +9,15 @@ services: search
 ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
-ms.openlocfilehash: ba2ce12fcfad14b0910144b1a95efd44be54811f
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.custom: seodec2018
+ms.openlocfilehash: 28b72f63360b4ce323c1cd82b11c2798b1fbc2ff
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51245641"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53313388"
 ---
-# <a name="connecting-azure-sql-database-to-azure-search-using-indexers"></a>使用索引器将 Azure SQL 数据库连接到 Azure 搜索
+# <a name="connect-to-and-index-azure-sql-database-content-using-azure-search-indexers"></a>使用 Azure 搜索索引器连接 Azure SQL 数据库并为其内容编制索引
 
 必须先使用数据填充 [Azure 搜索索引](search-what-is-an-index.md)，然后才能对其进行查询。 如果数据驻留在 Azure SQL 数据库中，则 **Azure SQL 数据库的 Azure 搜索索引器**（或简称 **Azure SQL 索引器**）可自动执行索引编制过程，这意味着需要编写的代码更少且需要考虑的基础结构更少。
 
@@ -314,15 +315,15 @@ SQL 索引器公开多个配置设置：
 
 ## <a name="faq"></a>常见问题解答
 
-**问：是否可以将 Azure SQL 索引器与在 Azure 中的 IaaS VM 上运行的 SQL 数据库配合使用？**
+**问：是否可以将 Azure SQL 索引器与在 Azure 中 IaaS VM 上运行的 SQL 数据库配合使用？**
 
 是的。 但是，需要允许搜索服务连接到数据库。 有关详细信息，请参阅[配置从 Azure 搜索索引器到 Azure VM 上 SQL Server 的连接](search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md)。
 
-**问：是否可以将 Azure SQL 索引器与在本地运行的 SQL 数据库配合使用？**
+**问：是否可以将 Azure SQL 索引器与本地运行的 SQL 数据库配合使用？**
 
 无法直接配合使用。 我们不建议使用也不支持直接连接，因为这样做需要使用 Internet 流量打开数据库。 对于此方案，客户已使用诸如 Azure 数据工厂之类的桥技术取得了成功。 有关详细信息，请参阅[使用 Azure 数据工厂将数据推送到 Azure 搜索索引](https://docs.microsoft.com/azure/data-factory/data-factory-azure-search-connector)。
 
-**问：是否可以将 Azure SQL 索引器与在 Azure 上的 IaaS 中运行的除 SQL Server 之外的其他数据库配合使用？**
+**问：是否可以将 Azure SQL 索引器与在 Azure 上 IaaS 中运行的非 SQL Server 数据库配合使用？**
 
 不是。 我们不支持此方案，因为我们尚未使用除 SQL Server 以外的任何数据库测试该索引器。  
 
@@ -334,11 +335,11 @@ SQL 索引器公开多个配置设置：
 
 是的。 索引器在搜索服务中的一个节点上运行，该节点的资源在编制查询流量索引并进行处理和其他 API 请求之间共享。 如果运行密集型编制索引和查询工作负荷，并频繁遇到 503 错误或响应时间增加，请考虑[纵向扩展搜索服务](search-capacity-planning.md)。
 
-**问：是否可以将[故障转移群集](https://docs.microsoft.com/azure/sql-database/sql-database-geo-replication-overview)中的辅助副本用作数据源？**
+**问：是否可以将[故障转移群集](https://docs.microsoft.com/azure/sql-database/sql-database-geo-replication-overview)中的次要副本用作数据源？**
 
 视情况而定。 对于表或视图的完整索引编制，可以使用辅助副本。 
 
-对于增量索引编制，Azure 搜索支持两个更改检测策略：SQL 集成的更改跟踪和高使用标记。
+对于增量索引编制，Azure 搜索支持两个更改检测策略：SQL 集成的更改跟踪策略和高使用标记策略。
 
 在只读副本上，SQL 数据库不支持集成的更改跟踪。 因此，必须使用高使用标记策略。 
 

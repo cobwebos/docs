@@ -1,5 +1,5 @@
 ---
-title: Azure 搜索中认知搜索的故障排除提示 | Microsoft Docs
+title: 认知搜索的故障排除提示 - Azure 搜索
 description: 在 Azure 搜索中设置认知搜索管道的提示和故障排除。
 services: search
 manager: pablocas
@@ -10,18 +10,19 @@ ms.workload: search
 ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: luisca
-ms.openlocfilehash: 3d0d468674a2284e9925c1410f2bb8bcbde8f73f
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.custom: seodec2018
+ms.openlocfilehash: 5f21fe3c65e37d3fee4043526762a7fafdea5cc4
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45575283"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53316288"
 ---
 # <a name="troubleshooting-tips-for-cognitive-search"></a>认知搜索故障排除提示
 
 本文包含一系列提示和窍门，帮助你完成 Azure 搜索中认知搜索功能的入门。 
 
-仔细阅读[教程：如何调用认知搜索 API](cognitive-search-quickstart-blob.md)，练习如何将认知搜索扩充项应用到 Blob 数据源（如果尚未这样做）。
+仔细阅读[教程：了解如何调用认知搜索 API](cognitive-search-quickstart-blob.md)，练习如何将认知搜索扩充项应用到 Blob 数据源（如果尚未这样做）。
 
 ## <a name="tip-1-start-with-a-small-dataset"></a>提示 1：从小数据集开始
 若要快速查找问题，最好的方式是提高解决问题的速度。 若要缩短索引时间，最好的方式是减少要索引的文档数。 

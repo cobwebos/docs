@@ -1,11 +1,12 @@
 ---
 title: Data Science Virtual Machine 示例和演练 - Azure | Microsoft Docs
-description: Data Science Virtual Machine 示例和演练。
+description: 了解介绍如何使用 Data Science Virtual Machine 完成常见任务和方案的示例和演练。
 keywords: 数据科学工具, 数据科学虚拟机, 数据科学工具, Linux 数据科学
 services: machine-learning
 documentationcenter: ''
 author: gopitk
 manager: cgronlun
+ms.custom: seodec18
 ms.assetid: ''
 ms.service: machine-learning
 ms.component: data-science-vm
@@ -15,12 +16,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: gokuma
-ms.openlocfilehash: 74d5893a377fb67dbec7b185525e74ac248deede
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: 64be6af340aa02c6c0b094013d2cbd286286aca7
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48902750"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53101977"
 ---
 # <a name="samples-on-data-science-virtual-machines"></a>Data Science Virtual Machine 示例
 

@@ -10,50 +10,66 @@ items:
   expanded: true
 - name: 快速入门
   items:
-  - name: 识别语音
+  - name: SDK 中 IsInRole 中的声明
     items:
-    - name: 使用 C#（Windows 上的 .NET）
-      displayName: recognize speech, speech recognition, speech to text, stt
-      href: quickstart-csharp-dotnet-windows.md
-    - name: 使用 C#（Windows 上的 .NET Core）
-      displayName: recognize speech, speech recognition, speech to text, stt
-      href: quickstart-csharp-dotnetcore-windows.md
-    - name: 使用 C#（通用 Windows 平台）
-      displayName: recognize speech, speech recognition, speech to text, stt, C#, UWP
-      href: quickstart-csharp-uwp.md
-    - name: 使用 C++ (Windows)
-      displayName: recognize speech, speech recognition, speech to text, stt
-      href: quickstart-cpp-windows.md
-    - name: 使用 C++ (Linux)
-      displayName: recognize speech, speech recognition, speech to text, stt
-      href: quickstart-cpp-linux.md
-    - name: 使用 Java (Android)
-      displayName: recognize speech, speech recognition, speech to text, stt
-      href: quickstart-java-android.md
-    - name: 使用 Java（Windows 或 Linux）
-      displayName: recognize speech, speech recognition, speech to text, stt, jre, jvm
-      href: quickstart-java-jre.md
-    - name: 使用 JavaScript（浏览器）
-      displayName: recognize speech, speech recognition, speech to text, stt
-      href: quickstart-js-browser.md
-    - name: 使用 JavaScript (Node.js)
-      displayName: recognize speech, speech recognition, speech to text, stt
-      href: quickstart-js-node.md
-    - name: 使用 Objective-C (iOS)
-      displayName: recognize speech, speech recognition, speech to text, stt, xcode
-      href: quickstart-objectivec-ios.md
-    - name: 使用 Python
-      displayName: recognize speech, speech recognition, speech to text, stt, python
-      href: quickstart-python.md
-  - name: 文本转语音
+    - name: 识别语音
+      items:
+      - name: C# (.NET Framework Windows)
+        displayName: recognize speech, speech recognition, speech to text, stt
+        href: quickstart-csharp-dotnet-windows.md
+      - name: C# (.NET Core Windows)
+        displayName: recognize speech, speech recognition, speech to text, stt
+        href: quickstart-csharp-dotnetcore-windows.md
+      - name: C# (UWP)
+        displayName: recognize speech, speech recognition, speech to text, stt, C#, universal windows platform
+        href: quickstart-csharp-uwp.md
+      - name: C++ (Windows)
+        displayName: recognize speech, speech recognition, speech to text, stt
+        href: quickstart-cpp-windows.md
+      - name: C++ (Linux)
+        displayName: recognize speech, speech recognition, speech to text, stt
+        href: quickstart-cpp-linux.md
+      - name: Java (Android)
+        displayName: recognize speech, speech recognition, speech to text, stt
+        href: quickstart-java-android.md
+      - name: Java (Windows、Linux)
+        displayName: recognize speech, speech recognition, speech to text, stt, jre, jvm
+        href: quickstart-java-jre.md
+      - name: JavaScript (Browser)
+        href: quickstart-js-browser.md
+      - name: JavaScript (Node.js)
+        displayName: recognize speech, speech recognition, speech to text, stt
+        href: quickstart-js-node.md
+      - name: Objective-C (iOS)
+        displayName: recognize speech, speech recognition, speech to text, stt, xcode
+        href: quickstart-objectivec-ios.md
+      - name: Python
+        displayName: recognize speech, speech recognition, speech to text, stt
+        href: quickstart-python.md
+    - name: 翻译语音
+      items:
+      - name: C# (.NET Core Windows)
+        href: quickstart-translate-speech-dotnetcore-windows.md
+      - name: C# (.NET Framework Windows)
+        href: quickstart-translate-speech-dotnetframework-windows.md
+      - name: C# (UWP)
+        displayName: recognize speech, speech recognition, speech to text, stt, C#, universal windows platform
+        href: quickstart-translate-speech-uwp.md
+      - name: C++ (Windows)
+        href: quickstart-translate-speech-cpp-windows.md
+      - name: Java (Windows、Linux)
+        href: quickstart-translate-speech-java-jre.md
+  - name: REST API
     items:
-    - name: 使用C#、REST
-      href: quickstart-dotnet-text-to-speech.md
-    - name: 使用 Node.js、REST
-      href: quickstart-nodejs-text-to-speech.md
-    - name: 使用 Python、REST
-      href: quickstart-python-text-to-speech.md
-  - name: 语音设备 SDK 入门
+    - name: 将文本转换到语音
+      items:
+      - name: C# (.NET Core)
+        href: quickstart-dotnet-text-to-speech.md
+      - name: Node.js
+        href: quickstart-nodejs-text-to-speech.md
+      - name: Python
+        href: quickstart-python-text-to-speech.md
+  - name: 语音设备 SDK
     displayName: roobo, speech devices sdk
     href: speech-devices-sdk-qsg.md
 - name: 教程
@@ -135,7 +151,7 @@ items:
   - name: 语音翻译
     displayName: translate speech, speech translation, translator, s2s, speech to speech
     href: speech-translation.md
-- name: 引用
+- name: 参考
   items:
   - name: PowerShell
     href: https://aka.ms/azure-powershell-cognitiveservices
@@ -210,9 +226,9 @@ items:
     href: https://azure.microsoft.com/roadmap/?category=ai-machine-learning
   - name: 隐私和 Cookie
     href: https://privacy.microsoft.com/privacystatement
-ms.openlocfilehash: 47335f2e0b09f797b01bfcbcc876f9a09dc57ecc
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 16459f36ce6c65199fb609310ceac0a8863a6324
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53605817"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53715029"

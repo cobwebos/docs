@@ -12,92 +12,97 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 04/25/2018
+ms.date: 10/23/2018
 ms.author: dekapur
-ms.openlocfilehash: 03dac03405588ba00a0f8ca5b127956c40853e36
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: a568fc6316211755fabc15ab3cf0227e3a87cb01
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48868507"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52727332"
 ---
 # <a name="list-of-service-fabric-events"></a>Service Fabric 事件列表 
 
-Service Fabric 公开一组主要的群集事件，以通知群集的状态为 [Service Fabric 事件](service-fabric-diagnostics-events.md)。 这些事件基于 Service Fabric 在节点上执行的操作和群集所有者/操作员所做的群集或管理决策。 可以通过在群集中查询 [EventStore](service-fabric-diagnostics-eventstore.md) 或通过操作通道来访问这些事件。 在 Windows 计算机上，操作通道还与 EventLog 相连接 - 因此可以在“事件查看器”中查看 Service Fabric 事件。 
+Service Fabric 公开一组主要的群集事件，以通知群集的状态为 [Service Fabric 事件](service-fabric-diagnostics-events.md)。 这些事件基于 Service Fabric 在节点上执行的操作和群集所有者/操作员所做的群集或管理决策。 可以通过多种方式访问这些事件，包括[使用群集配置 Log Analytics](service-fabric-diagnostics-oms-setup.md)，或查询 [EventStore](service-fabric-diagnostics-eventstore.md)。 在 Windows 计算机上，这些事件被传输到 EventLog - 因此可以在“事件查看器”中查看 Service Fabric 事件。 
 
->[!NOTE]
->对于 6.2 以下版本中的群集的 Service Fabric 事件列表，请参阅以下部分。 
+下面是这些事件的一些特征
+* 每个事件被绑定到群集中的特定实体，例如应用程序、服务、节点、副本。
+* 每个事件都包含一组常见的字段：EventInstanceId、EventName 和 Category。
+* 每个事件都包含一些字段，这些字段将事件绑定回与之关联的实体。 例如，ApplicationCreated 事件将具有标识创建的应用程序名称的字段。
+* 事件以此方式构建，因此，可以在各种工具中使用它们来执行进一步分析。 此外，事件的相关详细信息被定义为单独的属性，而不是一个长字符串。 
+* 事件由 Service Fabric 中的不同子系统编写，由下面的源（任务）标识。 有关这些子系统的详细信息，请参阅 [Service Fabric 体系结构](service-fabric-architecture.md)和 [Service Fabric 技术概览](service-fabric-technical-overview.md)。
 
-以下是平台中所有可用事件的列表，按事件映射到的实体排序。
+下面是这些按实体组织的 Service Fabric 事件的列表。
 
 ## <a name="cluster-events"></a>群集事件
 
 **群集升级事件**
 
-| EventId | 名称 | Description |源（任务） | 级别 | 版本 |
-| --- | --- | --- | --- | --- | --- |
-| 29627 | ClusterUpgradeStarted | 群集升级已启动 | CM | 信息性 | 1 |
-| 29628 | ClusterUpgradeCompleted | 群集升级已完成| CM | 信息性 | 1 |
-| 29629 | ClusterUpgradeRollbackStarted | 群集升级已开始回退 | CM | 信息性 | 1 |
-| 29630 | ClusterUpgradeRollbackCompleted | 群集升级已完成回退 | CM | 信息性 | 1 |
-| 29631 | ClusterUpgradeDomainCompleted | 域升级已在群集升级过程中完成 | CM | 信息性 | 1 |
+有关群集升级的详细信息，请参阅[此处](service-fabric-cluster-upgrade-windows-server.md)。
+
+| EventId | 名称 | 类别 | Description |源（任务） | 级别 | 
+| --- | --- | --- | --- | --- | --- | 
+| 29627 | ClusterUpgradeStarted | 升级 | 群集升级已启动 | CM | 信息性 |
+| 29628 | ClusterUpgradeCompleted | 升级 | 群集升级已完成 | CM | 信息性 | 
+| 29629 | ClusterUpgradeRollbackStarted | 升级 | 群集升级已开始回退  | CM | 警告 | 
+| 29630 | ClusterUpgradeRollbackCompleted | 升级 | 群集升级已完成回退 | CM | 警告 | 
+| 29631 | ClusterUpgradeDomainCompleted | 升级 | 升级域在群集升级期间已完成升级 | CM | 信息性 | 
 
 ## <a name="node-events"></a>节点事件
 
 **节点生命周期事件** 
 
-| EventId | 名称 | Description |源（任务） | 级别 | 版本 |
-| --- | --- | ---| --- | --- | --- |
-| 18602 | NodeDeactivateCompleted | 节点停用已完成 | FM | 信息性 | 1 |
-| 18603 | NodeUp | 群集检测到节点已启动 | FM | 信息性 | 1 |
-| 18604 | NodeDown | 群集检测到节点已关闭 |  FM | 信息性 | 1 |
-| 18605 | NodeAddedToCluster | 新节点已添加到群集 | FM | 信息性 | 1 |
-| 18606 | NodeRemovedFromCluster | 从群集中删除了一个节点 | FM | 信息性 | 1 |
-| 18607 | NodeDeactivateStarted | 节点停用已启动 | FM | 信息性 | 1 |
-| 25620 | NodeOpening | 一个节点正在启动。 节点生命周期的第一阶段 | FabricNode | 信息性 | 1 |
-| 25621 | NodeOpenSucceeded | 节点已成功启动 | FabricNode | 信息性 | 1 |
-| 25622 | NodeOpenFailed | 节点未能启动 | FabricNode | 信息性 | 1 |
-| 25623 | NodeClosing | 节点正在关闭。 节点生命周期的最后阶段开始 | FabricNode | 信息性 | 1 |
-| 25624 | NodeClosed | 节点已成功关闭 | FabricNode | 信息性 | 1 |
-| 25625 | NodeAborting | 一个节点正在开始以非正常方式关闭 | FabricNode | 信息性 | 1 |
-| 25626 | NodeAborted | 一个节点已经以非正常方式关闭 | FabricNode | 信息性 | 1 |
+| EventId | 名称 | 类别 | Description |源（任务） | 级别 |
+| --- | --- | ---| --- | --- | --- | 
+| 18602 | NodeDeactivateCompleted | StateTransition | 节点停用已完成 | FM | 信息性 | 
+| 18603 | NodeUp | StateTransition | 群集检测到节点已启动 | FM | 信息性 | 
+| 18604 | NodeDown | StateTransition | 群集检测到节点已关闭。 在节点重新启动时，将看到后跟 NodeUp 事件的 NodeDown 事件 |  FM | 错误 | 
+| 18605 | NodeAddedToCluster | StateTransition |  一个新节点已添加到群集，Service Fabric 可以将应用程序部署到此节点 | FM | 信息性 | 
+| 18606 | NodeRemovedFromCluster | StateTransition |  从群集中删除了一个节点。 Service Fabric 将无法再将应用程序部署到此节点 | FM | 信息性 | 
+| 18607 | NodeDeactivateStarted | StateTransition |  节点停用已启动 | FM | 信息性 | 
+| 25621 | NodeOpenSucceeded | StateTransition |  节点已成功启动 | FabricNode | 信息性 | 
+| 25622 | NodeOpenFailed | StateTransition |  节点未能启动并加入环 | FabricNode | 错误 | 
+| 25624 | NodeClosed | StateTransition |  节点已成功关闭 | FabricNode | 信息性 | 
+| 25626 | NodeAborted | StateTransition |  一个节点已经以非正常方式关闭 | FabricNode | 错误 | 
 
 ## <a name="application-events"></a>应用程序事件
 
 **应用程序生命周期事件**
 
-| EventId | 名称 | Description |源（任务） | 级别 | 版本 |
-| --- | --- | ---| --- | --- | --- |
-| 29620 | ApplicationCreated | 新应用程序已创建 | CM | 信息性 | 1 |
-| 29625 | ApplicationDeleted | 一个现有的应用程序已删除 | CM | 信息性 | 1 |
-| 23083 | ApplicationProcessExited | 应用程序中的一个进程已退出 | Hosting | 信息性 | 1 |
+| EventId | 名称 | 类别 | Description |源（任务） | 级别 | 
+| --- | --- | --- | --- | --- | --- | 
+| 29620 | ApplicationCreated | LifeCycle | 新应用程序已创建 | CM | 信息性 | 
+| 29625 | ApplicationDeleted | LifeCycle | 一个现有的应用程序已删除 | CM | 信息性 | 
+| 23083 | ApplicationProcessExited | LifeCycle | 应用程序中的一个进程已退出 | Hosting | 信息性 | 
 
 **应用程序升级事件**
 
-| EventId | 名称 | Description |源（任务） | 级别 | 版本 |
-| --- | --- | ---| --- | --- | --- |
-| 29621 | ApplicationUpgradeStarted | 应用程序升级已启动 | CM | 信息性 | 1 |
-| 29622 | ApplicationUpgradeCompleted | 应用程序升级已完成 | CM | 信息性 | 1 |
-| 29623 | ApplicationUpgradeRollbackStarted | 应用程序升级已开始回退 |CM | 信息性 | 1 |
-| 29624 | ApplicationUpgradeRollbackCompleted | 应用程序升级已完成回退 | CM | 信息性 | 1 |
-| 29626 | ApplicationUpgradeDomainCompleted | 域升级已在应用程序升级过程中完成 | CM | 信息性 | 1 |
+有关应用程序升级的详细信息，请参阅[此处](service-fabric-application-upgrade.md)。
+
+| EventId | 名称 | 类别 | Description |源（任务） | 级别 | 
+| --- | --- | ---| --- | --- | --- | 
+| 29621 | ApplicationUpgradeStarted | 升级 | 应用程序升级已启动 | CM | 信息性 | 
+| 29622 | ApplicationUpgradeCompleted | 升级 | 应用程序升级已完成 | CM | 信息性 | 
+| 29623 | ApplicationUpgradeRollbackStarted | 升级 | 应用程序升级已开始回退 |CM | 警告 | 
+| 29624 | ApplicationUpgradeRollbackCompleted | 升级 | 应用程序升级已完成回退 | CM | 警告 | 
+| 29626 | ApplicationUpgradeDomainCompleted | 升级 | 升级域在应用程序升级期间已完成升级 | CM | 信息性 | 
 
 ## <a name="service-events"></a>服务事件
 
 **服务生命周期事件**
 
-| EventId | 名称 | Description |源（任务） | 级别 | 版本 |
+| EventId | 名称 | 类别 | Description |源（任务） | 级别 | 
 | --- | --- | ---| --- | --- | --- |
-| 18657 | ServiceCreated | 已创建新服务 | FM | 信息性 | 1 |
-| 18658 | ServiceDeleted | 已删除一个现有的服务 | FM | 信息性 | 1 |
+| 18657 | ServiceCreated | LifeCycle | 已创建新服务 | FM | 信息性 | 
+| 18658 | ServiceDeleted | LifeCycle | 已删除一个现有的服务 | FM | 信息性 | 
 
 ## <a name="partition-events"></a>分区事件
 
 **分区移动事件**
 
-| EventId | 名称 | Description |源（任务） | 级别 | 版本 |
+| EventId | 名称 | 类别 | Description |源（任务） | 级别 | 
 | --- | --- | ---| --- | --- | --- |
-| 18940 | PartitionReconfigured | 分区重新配置已完成 | RA | 信息性 | 1 |
+| 18940 | PartitionReconfigured | LifeCycle | 分区重新配置已完成 | RA | 信息性 | 
 
 ## <a name="container-events"></a>容器事件
 
@@ -110,6 +115,12 @@ Service Fabric 公开一组主要的群集事件，以通知群集的状态为 [
 | 23082 | ContainerExited | 容器已退出 - 请检查 UnexpectedTermination 标志 | Hosting | 信息性 | 1 |
 
 ## <a name="health-reports"></a>运行状况报告
+
+[Service Fabric 运行状况模型](service-fabric-health-introduction.md)提供丰富、灵活且可扩展的运行状况评估和报告。 从 Service Fabric 版本 6.2 开始，运行状况数据将作为平台事件写入，以提供运行状况历史记录。 为保持较低的运行状况事件数量，我们只将以下内容作为 Service Fabric 事件编写：
+
+* 所有 `Error` 或 `Warning` 运行状况报告
+* 转换期间的 `Ok` 运行状况报告
+* 当 `Error` 或 `Warning` 运行状况事件过期。 这可以用于确定一个实体不正常的时间
 
 **群集运行状况报告事件**
 
@@ -238,6 +249,7 @@ Service Fabric 公开一组主要的群集事件，以通知群集的状态为 [
 
 ## <a name="next-steps"></a>后续步骤
 
-* 详细了解 Service Fabric 中的[平台级总体事件生成情况](service-fabric-diagnostics-event-generation-infra.md)
+* 大致了解 [Service Fabric 中的诊断](service-fabric-diagnostics-overview.md)
+* 有关 EventStore 的详细信息，请参阅 [Service Fabric Eventstore 概述](service-fabric-diagnostics-eventstore.md)
 * 将 [Azure 诊断](service-fabric-diagnostics-event-aggregation-wad.md)配置修改为收集更多日志
 * [设置 Application Insights](service-fabric-diagnostics-event-analysis-appinsights.md) 以查看操作通道日志

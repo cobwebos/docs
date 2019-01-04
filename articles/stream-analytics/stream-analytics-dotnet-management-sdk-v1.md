@@ -4,19 +4,19 @@ description: 流分析管理 .NET SDK 入门。 了解如何设置和运行分�
 services: stream-analytics
 author: jseb225
 ms.author: jeanb
-manager: kfile
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 03/06/2017
-ms.openlocfilehash: f47b2192ab7eead79267b2ae2364ffa7087143ee
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.date: 12/06/2018
+ms.custom: seodec18
+ms.openlocfilehash: 0f9e889a15933953af275460ba12906db6f3adec
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49987097"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53106526"
 ---
-# <a name="management-net-sdk-v1x-set-up-and-run-analytics-jobs-using-the-azure-stream-analytics-api-for-net"></a>Management .NET SDK v1.x：使用用于 .NET 的 Azure 流分析 API 设置和运行分析作业
+# <a name="set-up-and-run-analytics-jobs-using-azure-stream-analytics-api-for-net"></a>使用用于 .NET 的 Azure 流分析 API 设置和运行分析作业
 了解如何通过 Management .NET SDK 使用用于 .NET 的流分析 API 设置和运行分析作业。 设置项目、创建输入和输出源、转换，以及开始和停止作业。 就分析作业来说，可以从 Blob 存储或事件中心流式传输数据。
 
 请参阅 [.NET 版流分析 API 的管理参考文档](https://msdn.microsoft.com/library/azure/dn889315.aspx)。
@@ -33,18 +33,16 @@ Azure 流分析是一种完全托管的服务，可以在云中通过流式数�
 * 下载并安装 [Azure .NET SDK](https://azure.microsoft.com/downloads/)。
 * 在订阅中创建 Azure 资源组。 下面是 Azure PowerShell 脚本示例。 有关 Azure PowerShell 的信息，请参阅[安装和配置 Azure PowerShell](/powershell/azure/overview)；  
 
-        # Log in to your Azure account
-        Add-AzureAccount
-
-        # Select the Azure subscription you want to use to create the resource group
-        Select-AzureSubscription -SubscriptionName <subscription name>
-
-            # If Stream Analytics has not been registered to the subscription, remove the remark symbol (#) to run the Register-AzureRMProvider cmdlet to register the provider namespace
-            #Register-AzureRMProvider -Force -ProviderNamespace 'Microsoft.StreamAnalytics'
-
-        # Create an Azure resource group
-        New-AzureResourceGroup -Name <YOUR RESOURCE GROUP NAME> -Location <LOCATION>
-
+   ```powershell
+   # Log in to your Azure account
+   Add-AzureAccount
+   # Select the Azure subscription you want to use to create the resource group
+   Select-AzureSubscription -SubscriptionName <subscription name>
+       # If Stream Analytics has not been registered to the subscription, remove the remark symbol (#) to run the    Register-AzureRMProvider cmdlet to register the provider namespace
+       #Register-AzureRMProvider -Force -ProviderNamespace 'Microsoft.StreamAnalytics'
+   # Create an Azure resource group
+   New-AzureResourceGroup -Name <YOUR RESOURCE GROUP NAME> -Location <LOCATION>
+   ```
 
 * 设置作业要连接到的输入源和输出目标。
 
@@ -53,21 +51,26 @@ Azure 流分析是一种完全托管的服务，可以在云中通过流式数�
 
 1. 创建 Visual Studio C# .NET 控制台应用程序。
 2. 在程序包管理器控制台中运行以下命令以安装 NuGet 包。 第一个是 Azure 流分析管理 .NET SDK。 第二个是用于进行身份验证的 Azure Active Directory 客户端。
-   
-        Install-Package Microsoft.Azure.Management.StreamAnalytics -Version 1.8.3
-        Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory -Version 2.28.4
+
+```powershell
+Install-Package Microsoft.Azure.Management.StreamAnalytics -Version 1.8.3
+Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory -Version 2.28.4
+```
+
 3. 将下面的 **appSettings** 部分添加到 App.config 文件：
-   
-        <appSettings>
-          <!--CSM Prod related values-->
-          <add key="ActiveDirectoryEndpoint" value="https://login.microsoftonline.com/" />
-          <add key="ResourceManagerEndpoint" value="https://management.azure.com/" />
-          <add key="WindowsManagementUri" value="https://management.core.windows.net/" />
-          <add key="AsaClientId" value="1950a258-227b-4e31-a9cf-717495945fc2" />
-          <add key="RedirectUri" value="urn:ietf:wg:oauth:2.0:oob" />
-          <add key="SubscriptionId" value="YOUR AZURE SUBSCRIPTION" />
-          <add key="ActiveDirectoryTenantId" value="YOU TENANT ID" />
-        </appSettings>
+
+   ```csharp
+   <appSettings>
+     <!--CSM Prod related values-->
+     <add key="ActiveDirectoryEndpoint" value="https://login.microsoftonline.com/" />
+     <add key="ResourceManagerEndpoint" value="https://management.azure.com/" />
+     <add key="WindowsManagementUri" value="https://management.core.windows.net/" />
+     <add key="AsaClientId" value="1950a258-227b-4e31-a9cf-717495945fc2" />
+     <add key="RedirectUri" value="urn:ietf:wg:oauth:2.0:oob" />
+     <add key="SubscriptionId" value="YOUR AZURE SUBSCRIPTION" />
+     <add key="ActiveDirectoryTenantId" value="YOU TENANT ID" />
+   </appSettings>
+   ```
 
     将 **SubscriptionId** 和 **ActiveDirectoryTenantId** 的值替换为 Azure 订阅 ID 和租户 ID。 可以通过运行以下 Azure PowerShell cmdlet 来获取这些值：
 
@@ -75,21 +78,26 @@ Azure 流分析是一种完全托管的服务，可以在云中通过流式数�
 
 4. 在 .csproj 文件中添加以下引用：
 
-        <Reference Include="System.Configuration" />
+   ```csharp
+   <Reference Include="System.Configuration" />
+   ```
 
 1. 将以下 **using** 语句添加到项目中的源文件 (Program.cs)：
-   
-        using System;
-        using System.Configuration;
-        using System.Threading.Tasks;
-        
-        using Microsoft.Azure;
-        using Microsoft.Azure.Management.StreamAnalytics;
-        using Microsoft.Azure.Management.StreamAnalytics.Models;
-        using Microsoft.IdentityModel.Clients.ActiveDirectory;
+
+```csharp
+using System;
+using System.Configuration;
+using System.Threading.Tasks;
+
+using Microsoft.Azure;
+using Microsoft.Azure.Management.StreamAnalytics;
+using Microsoft.Azure.Management.StreamAnalytics.Models;
+using Microsoft.IdentityModel.Clients.ActiveDirectory;
+```
+
 2. 添加一个身份验证帮助器方法：
 
-   ```   
+   ```csharp
    private static async Task<string> GetAuthorizationHeader()
    {
        var context = new AuthenticationContext(
@@ -114,19 +122,19 @@ Azure 流分析是一种完全托管的服务，可以在云中通过流式数�
 
 将以下代码添加到 **Main** 方法的开头：
 
-    string resourceGroupName = "<YOUR AZURE RESOURCE GROUP NAME>";
-    string streamAnalyticsJobName = "<YOUR STREAM ANALYTICS JOB NAME>";
-    string streamAnalyticsInputName = "<YOUR JOB INPUT NAME>";
-    string streamAnalyticsOutputName = "<YOUR JOB OUTPUT NAME>";
-    string streamAnalyticsTransformationName = "<YOUR JOB TRANSFORMATION NAME>";
-
-    // Get authentication token
-    TokenCloudCredentials aadTokenCredentials = new TokenCloudCredentials(
-        ConfigurationManager.AppSettings["SubscriptionId"],
-        GetAuthorizationHeader().Result);
-
-    // Create Stream Analytics management client
-    StreamAnalyticsManagementClient client = new StreamAnalyticsManagementClient(aadTokenCredentials);
+   ```csharp
+   string resourceGroupName = "<YOUR AZURE RESOURCE GROUP NAME>";
+   string streamAnalyticsJobName = "<YOUR STREAM ANALYTICS JOB NAME>";
+   string streamAnalyticsInputName = "<YOUR JOB INPUT NAME>";
+   string streamAnalyticsOutputName = "<YOUR JOB OUTPUT NAME>";
+   string streamAnalyticsTransformationName = "<YOUR JOB TRANSFORMATION NAME>";
+   // Get authentication token
+   TokenCloudCredentials aadTokenCredentials = new TokenCloudCredentials(
+       ConfigurationManager.AppSettings["SubscriptionId"],
+       GetAuthorizationHeader().Result);
+   // Create Stream Analytics management client
+   StreamAnalyticsManagementClient client = new StreamAnalyticsManagementClient(aadTokenCredentials);
+   ```
 
 resourceGroupName 变量的值应该与你在先决条件步骤中创建或选取的资源组的名称相同。
 
@@ -137,135 +145,142 @@ resourceGroupName 变量的值应该与你在先决条件步骤中创建或选�
 ## <a name="create-a-stream-analytics-job"></a>创建流分析作业
 下面的代码会在你所定义的资源组下创建流分析作业。 将在以后向作业添加输入、输出和转换。
 
-    // Create a Stream Analytics job
-    JobCreateOrUpdateParameters jobCreateParameters = new JobCreateOrUpdateParameters()
-    {
-        Job = new Job()
-        {
-            Name = streamAnalyticsJobName,
-            Location = "<LOCATION>",
-            Properties = new JobProperties()
-            {
-                EventsOutOfOrderPolicy = EventsOutOfOrderPolicy.Adjust,
-                Sku = new Sku()
-                {
-                    Name = "Standard"
-                }
-            }
-        }
-    };
-
-    JobCreateOrUpdateResponse jobCreateResponse = client.StreamingJobs.CreateOrUpdate(resourceGroupName, jobCreateParameters);
-
+   ```csharp
+   // Create a Stream Analytics job
+   JobCreateOrUpdateParameters jobCreateParameters = new JobCreateOrUpdateParameters()
+   {
+       Job = new Job()
+       {
+           Name = streamAnalyticsJobName,
+           Location = "<LOCATION>",
+           Properties = new JobProperties()
+           {
+               EventsOutOfOrderPolicy = EventsOutOfOrderPolicy.Adjust,
+               Sku = new Sku()
+               {
+                   Name = "Standard"
+               }
+           }
+       }
+   };
+   JobCreateOrUpdateResponse jobCreateResponse = client.StreamingJobs.CreateOrUpdate(resourceGroupName, jobCreateParameters);
+   ```
 
 ## <a name="create-a-stream-analytics-input-source"></a>创建流分析输入源
 下面的代码将使用 blob 输入源类型和 CSV 序列化创建流分析输入源。 若要创建事件中心输入源，请使用 **EventHubStreamInputDataSource** 而非 **BlobStreamInputDataSource**。 同样，可以自定义输入源的序列化类型。
 
-    // Create a Stream Analytics input source
-    InputCreateOrUpdateParameters jobInputCreateParameters = new InputCreateOrUpdateParameters()
-    {
-        Input = new Input()
-        {
-            Name = streamAnalyticsInputName,
-            Properties = new StreamInputProperties()
-            {
-                Serialization = new CsvSerialization
-                {
-                    Properties = new CsvSerializationProperties
-                    {
-                        Encoding = "UTF8",
-                        FieldDelimiter = ","
-                    }
-                },
-                DataSource = new BlobStreamInputDataSource
-                {
-                    Properties = new BlobStreamInputDataSourceProperties
-                    {
-                        StorageAccounts = new StorageAccount[]
-                        {
-                            new StorageAccount()
-                            {
-                                AccountName = "<YOUR STORAGE ACCOUNT NAME>",
-                                AccountKey = "<YOUR STORAGE ACCOUNT KEY>"
-                            }
-                        },
-                        Container = "samples",
-                        PathPattern = ""
-                    }
-                }
-            }
-        }
-    };
-
-    InputCreateOrUpdateResponse inputCreateResponse =
-        client.Inputs.CreateOrUpdate(resourceGroupName, streamAnalyticsJobName, jobInputCreateParameters);
+   ```csharp
+   // Create a Stream Analytics input source
+   InputCreateOrUpdateParameters jobInputCreateParameters = new InputCreateOrUpdateParameters()
+   {
+       Input = new Input()
+       {
+           Name = streamAnalyticsInputName,
+           Properties = new StreamInputProperties()
+           {
+               Serialization = new CsvSerialization
+               {
+                   Properties = new CsvSerializationProperties
+                   {
+                       Encoding = "UTF8",
+                       FieldDelimiter = ","
+                   }
+               },
+               DataSource = new BlobStreamInputDataSource
+               {
+                   Properties = new BlobStreamInputDataSourceProperties
+                   {
+                       StorageAccounts = new StorageAccount[]
+                       {
+                           new StorageAccount()
+                           {
+                               AccountName = "<YOUR STORAGE ACCOUNT NAME>",
+                               AccountKey = "<YOUR STORAGE ACCOUNT KEY>"
+                           }
+                       },
+                       Container = "samples",
+                       PathPattern = ""
+                   }
+               }
+           }
+       }
+   };
+   InputCreateOrUpdateResponse inputCreateResponse =
+   client.Inputs.CreateOrUpdate(resourceGroupName, streamAnalyticsJobName, jobInputCreateParameters);
+   ```
 
 输入源（不管是来自 Blob 存储还是来自事件中心）将绑定到特定作业。 要将同一输入源用于不同的作业，必须再次调用该方法并指定不同的作业名称。
 
 ## <a name="test-a-stream-analytics-input-source"></a>测试流分析输入源
 **TestConnection** 方法可测试流分析作业是否能够连接到输入源，并测试特定于输入源类型的其他方面。 例如，在 blob 输入源（已在此前的步骤中创建过）中，该方法会检查存储帐户名称和密钥对能否用于连接到存储帐户，并检查指定的容器是否存在。
 
-    // Test input source connection
-    DataSourceTestConnectionResponse inputTestResponse =
-        client.Inputs.TestConnection(resourceGroupName, streamAnalyticsJobName, streamAnalyticsInputName);
+   ```csharp
+   // Test input source connection
+   DataSourceTestConnectionResponse inputTestResponse =
+       client.Inputs.TestConnection(resourceGroupName, streamAnalyticsJobName, streamAnalyticsInputName);
+   ```
 
 ## <a name="create-a-stream-analytics-output-target"></a>创建流分析输出目标
 创建输出目标非常类似于创建流分析输入源。 像输入源一样，输出目标会被绑定到特定的作业。 要将同一输出目标用于不同的作业，必须再次调用该方法并指定不同的作业名称。
 
 下面的代码将创建一个输出目标（Azure SQL 数据库）。 可以自定义输出目标的数据类型和/或序列化类型。
 
-    // Create a Stream Analytics output target
-    OutputCreateOrUpdateParameters jobOutputCreateParameters = new OutputCreateOrUpdateParameters()
-    {
-        Output = new Output()
-        {
-            Name = streamAnalyticsOutputName,
-            Properties = new OutputProperties()
-            {
-                DataSource = new SqlAzureOutputDataSource()
-                {
-                    Properties = new SqlAzureOutputDataSourceProperties()
-                    {
-                        Server = "<YOUR DATABASE SERVER NAME>",
-                        Database = "<YOUR DATABASE NAME>",
-                        User = "<YOUR DATABASE LOGIN>",
-                        Password = "<YOUR DATABASE LOGIN PASSWORD>",
-                        Table = "<YOUR DATABASE TABLE NAME>"
-                    }
-                }
-            }
-        }
-    };
-
-    OutputCreateOrUpdateResponse outputCreateResponse =
-        client.Outputs.CreateOrUpdate(resourceGroupName, streamAnalyticsJobName, jobOutputCreateParameters);
+   ```csharp
+   // Create a Stream Analytics output target
+   OutputCreateOrUpdateParameters jobOutputCreateParameters = new OutputCreateOrUpdateParameters()
+   {
+       Output = new Output()
+       {
+           Name = streamAnalyticsOutputName,
+           Properties = new OutputProperties()
+           {
+               DataSource = new SqlAzureOutputDataSource()
+               {
+                   Properties = new SqlAzureOutputDataSourceProperties()
+                   {
+                       Server = "<YOUR DATABASE SERVER NAME>",
+                       Database = "<YOUR DATABASE NAME>",
+                       User = "<YOUR DATABASE LOGIN>",
+                       Password = "<YOUR DATABASE LOGIN PASSWORD>",
+                       Table = "<YOUR DATABASE TABLE NAME>"
+                   }
+               }
+           }
+       }
+   };
+   OutputCreateOrUpdateResponse outputCreateResponse =
+       client.Outputs.CreateOrUpdate(resourceGroupName, streamAnalyticsJobName, jobOutputCreateParameters);
+   ```
 
 ## <a name="test-a-stream-analytics-output-target"></a>测试流分析输出目标
 流分析输出目标还有一个用于测试连接的 **TestConnection** 方法。
 
-    // Test output target connection
-    DataSourceTestConnectionResponse outputTestResponse =
-        client.Outputs.TestConnection(resourceGroupName, streamAnalyticsJobName, streamAnalyticsOutputName);
+   ```csharp
+   // Test output target connection
+   DataSourceTestConnectionResponse outputTestResponse =
+       client.Outputs.TestConnection(resourceGroupName, streamAnalyticsJobName, streamAnalyticsOutputName);
+   ```
 
 ## <a name="create-a-stream-analytics-transformation"></a>创建流分析转换
 下面的代码将使用查询“select * from Input”创建流分析转换，并通过指定的方式为流分析作业分配一个流式处理单位。 有关如何调整流式处理单位的详细信息，请参阅[缩放 Azure 流分析作业](stream-analytics-scale-jobs.md)。
 
-    // Create a Stream Analytics transformation
-    TransformationCreateOrUpdateParameters transformationCreateParameters = new TransformationCreateOrUpdateParameters()
-    {
-        Transformation = new Transformation()
-        {
-            Name = streamAnalyticsTransformationName,
-            Properties = new TransformationProperties()
-            {
-                StreamingUnits = 1,
-                Query = "select * from Input"
-            }
-        }
-    };
-
-    var transformationCreateResp =
-        client.Transformations.CreateOrUpdate(resourceGroupName, streamAnalyticsJobName, transformationCreateParameters);
+   ```csharp
+   // Create a Stream Analytics transformation
+   TransformationCreateOrUpdateParameters transformationCreateParameters = new TransformationCreateOrUpdateParameters()
+   {
+       Transformation = new Transformation()
+       {
+           Name = streamAnalyticsTransformationName,
+           Properties = new TransformationProperties()
+           {
+               StreamingUnits = 1,
+               Query = "select * from Input"
+           }
+       }
+   };
+   var transformationCreateResp =
+       client.Transformations.CreateOrUpdate(resourceGroupName, streamAnalyticsJobName, transformationCreateParameters);
+   ```
 
 与输入和输出一样，转换也会绑定到在创建时所属的特定流分析作业。
 
@@ -274,26 +289,32 @@ resourceGroupName 变量的值应该与你在先决条件步骤中创建或选�
 
 下面的示例性代码将启动一个流分析作业，其自定义输出开始时间设置为 2012 年 12 月 12 日 12:12:12（UTC 时间）：
 
-    // Start a Stream Analytics job
-    JobStartParameters jobStartParameters = new JobStartParameters
-    {
-        OutputStartMode = OutputStartMode.CustomTime,
-        OutputStartTime = new DateTime(2012, 12, 12, 0, 0, 0, DateTimeKind.Utc)
-    };
-
-    LongRunningOperationResponse jobStartResponse = client.StreamingJobs.Start(resourceGroupName, streamAnalyticsJobName, jobStartParameters);
+   ```csharp
+   // Start a Stream Analytics job
+   JobStartParameters jobStartParameters = new JobStartParameters
+   {
+       OutputStartMode = OutputStartMode.CustomTime,
+       OutputStartTime = new DateTime(2012, 12, 12, 0, 0, 0, DateTimeKind.Utc)
+   };
+   
+   LongRunningOperationResponse jobStartResponse = client.StreamingJobs.Start(resourceGroupName, streamAnalyticsJobName,    jobStartParameters);
+   ```
 
 ## <a name="stop-a-stream-analytics-job"></a>停止流分析作业
 可以通过调用 **Stop** 方法来停止正在运行的流分析作业。
 
-    // Stop a Stream Analytics job
-    LongRunningOperationResponse jobStopResponse = client.StreamingJobs.Stop(resourceGroupName, streamAnalyticsJobName);
+   ```csharp
+   // Stop a Stream Analytics job
+   LongRunningOperationResponse jobStopResponse = client.StreamingJobs.Stop(resourceGroupName, streamAnalyticsJobName);
+   ```
 
 ## <a name="delete-a-stream-analytics-job"></a>删除流分析作业
 **Delete** 方法将删除作业以及基础性的子资源，包括作业的输入、输出和转换。
 
-    // Delete a Stream Analytics job
-    LongRunningOperationResponse jobDeleteResponse = client.StreamingJobs.Delete(resourceGroupName, streamAnalyticsJobName);
+   ```csharp
+   // Delete a Stream Analytics job
+   LongRunningOperationResponse jobDeleteResponse = client.StreamingJobs.Delete(resourceGroupName, streamAnalyticsJobName);
+   ```
 
 ## <a name="get-support"></a>获取支持
 如需进一步的帮助，请试用我们的 [Azure 流分析论坛](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)。

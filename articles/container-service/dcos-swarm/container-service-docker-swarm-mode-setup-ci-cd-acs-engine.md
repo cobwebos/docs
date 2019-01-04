@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 容器服务引擎和 Swarm 模式的 CI/CD
+title: （已弃用）使用 Azure 容器服务引擎和 Swarm 模式的 CI/CD
 description: 使用 Docker Swarm 模式的 Azure 容器服务引擎、Azure 容器注册表和 Azure DevOps 持续交付多容器 .NET Core 应用程序
 services: container-service
 author: diegomrtnzg
@@ -9,14 +9,16 @@ ms.topic: article
 ms.date: 05/27/2017
 ms.author: diegomrtnzg
 ms.custom: mvc
-ms.openlocfilehash: 296c097ee3302eaa39210274b16c6352866eac8a
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 52d20004f43b5c553a17c44f3f35d30fd5693286
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44299570"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52995069"
 ---
-# <a name="full-cicd-pipeline-to-deploy-a-multi-container-application-on-azure-container-service-with-acs-engine-and-docker-swarm-mode-using-azure-devops"></a>用于通过 Azure DevOps 在使用 ACS 引擎和 Docker Swarm 模式的 Azure 容器服务中部署多容器应用程序的完整 CI/CD 管道
+# <a name="deprecated-full-cicd-pipeline-to-deploy-a-multi-container-application-on-azure-container-service-with-acs-engine-and-docker-swarm-mode-using-azure-devops"></a>（已弃用）用于通过 Azure DevOps 在使用 ACS 引擎和 Docker Swarm 模式的 Azure 容器服务中部署多容器应用程序的完整 CI/CD 管道
+
+[!INCLUDE [ACS deprecation](../../../includes/container-service-deprecation.md)]
 
 本文基于[用于通过 Azure DevOps 在包含 Docker Swarm 的 Azure 容器服务中部署多容器应用程序的完整 CI/CD 管道](container-service-docker-swarm-setup-ci-cd.md)文档
 
@@ -106,7 +108,7 @@ ms.locfileid: "44299570"
 
     ![Azure DevOps - 新建空的生成管道](./media/container-service-docker-swarm-mode-setup-ci-cd-acs-engine/create-empty-build-vsts.PNG)
 
-4. 然后单击“变量”选项卡并创建两个新变量：RegistryURL 和 AgentURL。 粘贴注册表和群集代理 DNS 的值。
+4. 然后，单击“变量”选项卡，并创建两个新变量：RegistryURL 和 AgentURL。 粘贴注册表和群集代理 DNS 的值。
 
     ![Azure DevOps - 生成变量配置](./media/container-service-docker-swarm-mode-setup-ci-cd-acs-engine/vsts-build-variables.png)
 

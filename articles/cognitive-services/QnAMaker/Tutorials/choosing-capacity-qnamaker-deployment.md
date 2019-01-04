@@ -1,7 +1,7 @@
 ---
 title: 部署的资源容量 - QnA Maker
 titleSuffix: Azure Cognitive Services
-description: 有关选择 QnA Maker 部署的容量的指南
+description: 在创建 QnA Maker 服务之前，应当决定上述服务的哪个层适合你。
 services: cognitive-services
 author: tulasim88
 manager: cgronlun
@@ -10,12 +10,13 @@ ms.component: qna-maker
 ms.topic: article
 ms.date: 09/12/2018
 ms.author: tulasim
-ms.openlocfilehash: 582ace641cadbc7ad3a622def07f70ed51ccac53
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.custom: seodec18
+ms.openlocfilehash: 9e197929ce08f4e0c665f96d1c4ddbd382fdfb22
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49389796"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53084443"
 ---
 # <a name="choosing-capacity-for-your-qna-maker-deployment"></a>选择 QnA Maker 部署的容量
 
@@ -27,9 +28,9 @@ QnA Maker 服务依赖于三个 Azure 资源：
 在创建 QnA Maker 服务之前，应当决定上述服务的哪个层适合你。 
 
 通常，你需要考虑三个参数：
-1. **你需要的服务吞吐量**：根据需要为你的应用服务选择合适的[应用计划](https://azure.microsoft.com/pricing/details/app-service/plans/)。 可以[纵向扩展](https://docs.microsoft.com/azure/app-service/web-sites-scale)或收缩应用。 这应当也会影响你的 Azure 搜索 SKU 选择，请参阅[此处](https://docs.microsoft.com/azure/search/search-sku-tier)的更多详细信息。
+1. **需要的服务吞吐量**：根据需要为应用服务选择合适的[应用计划](https://azure.microsoft.com/pricing/details/app-service/plans/)。 可以[纵向扩展](https://docs.microsoft.com/azure/app-service/web-sites-scale)或收缩应用。 这应当也会影响你的 Azure 搜索 SKU 选择，请参阅[此处](https://docs.microsoft.com/azure/search/search-sku-tier)的更多详细信息。
 
-2. **知识库的大小和数量**：针对你的方案选择合适的 [Azure 搜索 SKU](https://azure.microsoft.com/pricing/details/search/)。 可以在特定的层中发布 N-1 个知识库，其中，N 是该层中允许的最大索引数。 还需要检查每个层允许的文档最大大小和数量。
+2. **知识库的大小和数量**：为方案选择适当的 [Azure 搜索 SKU](https://azure.microsoft.com/pricing/details/search/)。 可以在特定的层中发布 N-1 个知识库，其中，N 是该层中允许的最大索引数。 还需要检查每个层允许的文档最大大小和数量。
 
 3. **源文档的数量**：QnA Maker 管理服务的免费 SKU 将可以通过门户和 API 管理的文档数限制为 3（每个文档的大小限制为 1 MB）。 标准 SKU 对于可以管理的文档数没有限制。 有关更多详细信息，请参阅[此处](https://aka.ms/qnamaker-pricing)。
 

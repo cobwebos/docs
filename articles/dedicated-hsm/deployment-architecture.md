@@ -1,24 +1,25 @@
 ---
-title: Azure 专用 HSM 部署体系结构 | Microsoft Docs
-description: Azure 专用 HSM 在 Azure 中提供符合 FIPS 140-2 级别 3 认证的密钥存储功能
+title: 部署体系结构 - Azure 专用 HSM | Microsoft Docs
+description: 将 Azure 专用 HSM 用作应用程序体系结构的一部分时的基本设计注意事项
 services: dedicated-hsm
 author: barclayn
 manager: mbaldwin
+ms.custom: mvc, seodec18
 ms.service: key-vault
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/19/2018
+ms.date: 12/07/2018
 ms.author: barclayn
-ms.openlocfilehash: 8481f444464135a24d42612f334ac6096cba7b21
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 913be9d1ee6ce92d71f5f0c7eda46a618483ce8d
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52318986"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53078287"
 ---
-# <a name="deployment-architecture"></a>部署体系结构
+# <a name="azure-dedicated-hsm-deployment-architecture"></a>Azure 专用 HSM 部署体系结构
 
 Azure 专用 HSM 提供 Azure 中的加密密钥存储。 它符合严格的安全要求。 如果客户具备以下条件，将受益于 Azure 专用 HSM：
 

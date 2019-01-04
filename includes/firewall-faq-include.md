@@ -5,15 +5,15 @@ services: firewall
 author: vhorne
 ms.service: ''
 ms.topic: include
-ms.date: 10/20/2018
+ms.date: 12/14/2018
 ms.author: victorh
 ms.custom: include file
-ms.openlocfilehash: e33871f35613fbd5cdc5bf3162855b942056807f
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 7e547f49ec14bdb69a85dd916ef435c3f30f6ef2
+ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50254714"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53413721"
 ---
 ### <a name="what-is-azure-firewall"></a>什么是 Azure 防火墙？
 
@@ -45,8 +45,8 @@ Azure 防火墙支持规则和规则集合。 规则集合是一组共享相同�
 
 有两种类型的规则集合：
 
-* *应用程序规则*：用于配置可从子网访问的完全限定域名 (FQDN)。
-* *网络规则*：用于配置包含源地址、协议、目标端口和目标地址的规则。
+* *应用程序规则*：允许你配置可从子网访问的完全限定域名 (FQDN)。
+* *网络规则*：允许你配置包含源地址、协议、目标端口和目标地址的规则。
 
 ### <a name="does-azure-firewall-support-inbound-traffic-filtering"></a>Azure 防火墙是否支持入站流量筛选？
 
@@ -117,10 +117,14 @@ Set-AzureRmFirewall -AzureFirewall $azfw
 
 能，可以在中心虚拟网络中使用 Azure 防火墙来路由和筛选两个分支虚拟网络之间的流量。 每个分支虚拟网络中的子网必须具有指向 Azure 防火墙的 UDR，作为使此方案正常工作的默认网关。
 
-### <a name="can-azure-firewall-forward-and-filter-network-traffic-between-subnets-in-the-same-virtual-network"></a>Azure 防火墙能否转发并筛选同一虚拟网络中子网之间的网络流量？
+### <a name="can-azure-firewall-forward-and-filter-network-traffic-between-subnets-in-the-same-virtual-network-or-peered-virtual-networks"></a>Azure 防火墙能否转发和筛选同一虚拟网络或对等互连虚拟网络中子网之间的网络流量？
 
 即使 UDR 指向作为默认网关的 Azure 防火墙，也会直接路由同一虚拟网络或直接对等互连虚拟网络中的子网之间的流量。 建议的内部网络分段方法是使用网络安全组。 若要在此方案中将子网到子网流量发送到防火墙，UDR 必须在这两个子网上显式地包含目标子网网络前缀。
 
 ### <a name="are-there-any-firewall-resource-group-restrictions"></a>是否有任何防火墙资源组限制？
 
 是的。 防火墙、子网、VNet 和公共 IP 地址都必须位于同一资源组中。
+
+### <a name="when-configuring-dnat-for-inbound-network-traffic-do-i-also-need-to-configure-a-corresponding-network-rule-to-allow-that-traffic"></a>为入站网络流量配置 DNAT 时，是否还需要配置相应的网络规则以允许该流量？
+
+不是。 NAT 规则会隐式添加一个对应的网络规则来允许转换后的流量。 可以通过以下方法替代此行为：显式添加一个网络规则集合并在其中包含将匹配转换后流量的拒绝规则。 若要详细了解 Azure 防火墙规则处理逻辑，请参阅 [Azure 防火墙规则处理逻辑](../articles/firewall/rule-processing.md)。

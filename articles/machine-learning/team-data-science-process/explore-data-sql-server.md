@@ -1,6 +1,6 @@
 ---
-title: 浏览 Azure 上 SQL Server 虚拟机中的数据 | Microsoft Docs
-description: 如何浏览存储在 Azure 上 SQL Server VM 中的数据。
+title: 浏览 SQL Server 虚拟机中的数据 - Team Data Science Process
+description: 如何使用 SQL 或编程语言（如 Python）浏览 Azure 上的 SQL Server VM 中存储的数据。
 services: machine-learning
 author: marktab
 manager: cgronlun
@@ -10,13 +10,13 @@ ms.component: team-data-science-process
 ms.topic: article
 ms.date: 11/09/2017
 ms.author: tdsp
-ms.custom: (previous author=deguhath, ms.author=deguhath)
-ms.openlocfilehash: da01a1a386e1ffc590f4cbbb85d9d50a180d4973
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: 45b842f7ff136f2d53b7724c11141f6b9104ebd7
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52442924"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53140109"
 ---
 # <a name="explore-data-in-sql-server-virtual-machine-on-azure"></a>浏览 Azure 上 SQL Server 虚拟机中的数据
 

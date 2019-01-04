@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 10/29/2018
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.openlocfilehash: 5573c7f122360b3bd3adeb9dcca1c827a1933f70
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 07cacc4a127c333e4c19c4979b7520226919c14b
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52959455"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53722390"
 ---
 # <a name="deploy-kubernetes-to-azure-stack"></a>将 Kubernetes 部署到 Azure Stack
 
@@ -101,7 +101,7 @@ ms.locfileid: "52959455"
 
 1. 选择你的操作员创建的用于使用 Kubernetes 群集的订阅。
 
-1. 选择“访问控制(IAM)”，然后选择“+ 添加”。
+1. 选择**访问控制 (IAM)** > 选择**添加的角色分配**。
 
 1. 选择“参与者”角色。
 

@@ -12,12 +12,12 @@ ms.author: bonova
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 10/15/2018
-ms.openlocfilehash: 6868b842f22a6d107936fcb1e49c46b0c1f58469
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 3808511e588ba4284dee16cf7ca88bfd5a382c3a
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49345299"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53337472"
 ---
 # <a name="sql-server-instance-migration-to-azure-sql-database-managed-instance"></a>将 SQL Server 实例迁移到 Azure SQL 数据库托管实例
 
@@ -60,7 +60,7 @@ ms.locfileid: "49345299"
 若要了解如何创建 VNet 基础结构和托管实例，请参阅[创建托管实例](sql-database-managed-instance-get-started.md)。
 
 > [!IMPORTANT]
-> 必须始终根据[托管实例的 VNet 要求](sql-database-managed-instance-vnet-configuration.md#requirements)保留目标 VNet 和子网。 任何不兼容性问题都可能导致无法创建新实例或使用已创建的实例。
+> 必须始终根据[托管实例的 VNet 要求](sql-database-managed-instance-connectivity-architecture.md#network-requirements)保留目标 VNet 和子网。 任何不兼容性问题都可能导致无法创建新实例或使用已创建的实例。 详细了解如何[新建](sql-database-managed-instance-create-vnet-subnet.md)网络和[配置现有](sql-database-managed-instance-configure-vnet-subnet.md)网络。
 
 ## <a name="select-migration-method-and-migrate"></a>选择迁移方法，然后迁移
 
@@ -117,8 +117,7 @@ ms.locfileid: "49345299"
 
 为了减少迁移风险，请只在完成性能监视之后更改数据库兼容级别。 在更改数据库兼容级别之前和之后，请根据[在升级到较新 SQL Server 版本期间保持性能稳定性](https://docs.microsoft.com/sql/relational-databases/performance/query-store-usage-scenarios#CEUpgrade)中所述，使用 Query Store 作为最佳工具来获取有关工作负荷性能的信息。
 
-转到完全托管的平台后，便可以利用 SQL 数据库服务自动提供的优势。 例如，无需在托管实例上创建备份 - 服务会自动执行备份。 不再需要考虑计划、创建和管理备份。 在托管实例中，可以使用[时间点恢复 (PITR)](sql-database-recovery-using-backups.md#point-in-time-restore) 还原到此保留期内的任意时间点。 公共预览版中的保留期固定为七天。
-此外，无需考虑设置高可用性，因为系统中内置了[高可用性](sql-database-high-availability.md)。
+转到完全托管的平台后，便可以利用 SQL 数据库服务自动提供的优势。 例如，无需在托管实例上创建备份 - 服务会自动执行备份。 不再需要考虑计划、创建和管理备份。 在托管实例中，可以使用[时间点恢复 (PITR)](sql-database-recovery-using-backups.md#point-in-time-restore) 还原到此保留期内的任意时间点。 此外，无需考虑设置高可用性，因为系统中内置了[高可用性](sql-database-high-availability.md)。
 
 若要增强安全性，请考虑使用某些可用功能：
 

@@ -1,6 +1,6 @@
 ---
-title: Azure Web 应用上节点应用程序的最佳做法和故障排除指南
-description: 了解 Azure Web 应用上节点应用程序的最佳做法和故障排除步骤。
+title: Node.js 的最佳做法和故障排除 - Azure 应用服务
+description: 了解 Azure 应用服务上节点应用程序的最佳做法和故障排除步骤。
 services: app-service\web
 documentationcenter: nodejs
 author: ranjithr
@@ -14,14 +14,15 @@ ms.devlang: nodejs
 ms.topic: article
 ms.date: 11/09/2017
 ms.author: ranjithr
-ms.openlocfilehash: 860874ed49056e6b4695c060b06bf061820c390e
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.custom: seodec18
+ms.openlocfilehash: 5a8760bc67125f857998f23ca33733a62a0d8fb5
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31789667"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53315717"
 ---
-# <a name="best-practices-and-troubleshooting-guide-for-node-applications-on-azure-web-apps"></a>Azure Web 应用上节点应用程序的最佳做法和故障排除指南
+# <a name="best-practices-and-troubleshooting-guide-for-node-applications-on-azure-app-service-windows"></a>Azure 应用服务 Windows 版上节点应用程序的最佳做法和故障排除指南
 
 本文介绍 Azure Web 应用上运行的 [node 应用程序](app-service-web-get-started-nodejs.md)的最佳实践和故障排除步骤（使用 [iisnode](https://github.com/azure/iisnode)）。
 
@@ -62,11 +63,11 @@ ms.locfileid: "31789667"
 
 ### <a name="debuggerextensiondll"></a>debuggerExtensionDll
 
-此设置控制 iisnode 在调试 node 应用程序时使用的节点检查器版本。 iisnode-inspector-0.7.3.dll 和 iisnode-inspector.dll 目前是此设置仅有的两个有效值。 默认值为 iisnode-inspector-0.7.3.dll。 iisnode-inspector-0.7.3.dll 版本使用 node-inspector-0.7.3 并使用 Web 套接字。 在 Azure Web 应用中启用 Web 套接字以使用此版本。 有关如何将 iisnode 配置为使用新 node-inspector 的更多详细信息，请参阅 <http://ranjithblogs.azurewebsites.net/?p=98>。
+此设置控制 iisnode 在调试 node 应用程序时使用的节点检查器版本。 iisnode-inspector-0.7.3.dll 和 iisnode-inspector.dll 目前是此设置仅有的两个有效值。 默认值为 iisnode-inspector-0.7.3.dll。 iisnode-inspector-0.7.3.dll 版本使用 node-inspector-0.7.3 并使用 Web 套接字。 在 Azure Web 应用中启用 Web 套接字以使用此版本。 有关如何将 iisnode 配置为使用新 node-inspector 的更多详细信息，请参阅 <https://ranjithblogs.azurewebsites.net/?p=98>。
 
 ### <a name="flushresponse"></a>flushResponse
 
-IIS 的默认行为是在刷新之前或直到响应结束时（以较早出现者为准），缓冲最多 4 MB 的响应数据。 iisnode 会提供配置设置来替代此行为：要在 iisnode 从 node.exe 收到响应实体主体片段时立刻刷新该片段，需在 web.config 中将 iisnode/@flushResponse 属性设置为“true”：
+IIS 的默认行为是在刷新之前或直到响应结束时（以较早出现者为准），缓冲最多 4 MB 的响应数据。 iisnode 会提供配置设置来替代此行为：若要在 iisnode 从 node.exe 收到响应实体主体片段时立刻刷新该片段，需在 web.config 中将 iisnode/@flushResponse 属性设置为“true”：
 
 ```xml
 <configuration>

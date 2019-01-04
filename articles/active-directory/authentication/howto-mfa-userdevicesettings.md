@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: michmcla
-ms.openlocfilehash: cf470ad14c27fd36cf60bb540e823b15fc58eded
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 8d3ffa2664c747f5fbbd4269b23ae54850e0d750
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52496899"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53320993"
 ---
 # <a name="manage-user-settings-with-azure-multi-factor-authentication-in-the-cloud"></a>管理云中 Azure 多重身份验证的用户设置
 
@@ -30,8 +30,8 @@ ms.locfileid: "52496899"
 
 ### <a name="how-to-require-users-to-provide-contact-methods-again"></a>如何要求用户再次提供联系方法
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-2. 在左侧，选择“Azure Active Directory” > “用户和组” > “所有用户”。
-3. 选择“多重身份验证”。 多重身份验证页面将打开。 
+2. 在左侧，选择“Azure Active Directory” > “用户” > “所有用户”。
+3. 在右侧，选择工具栏上的“多重身份验证”。 多重身份验证页面将打开。 
 4. 选中要管理的用户或用户旁的框。 右侧将显示快速步骤选项列表。 
 5. 选择“管理用户设置”。
 6. 选中“要求选定用户重新提供的联系方式”框。
@@ -44,8 +44,8 @@ ms.locfileid: "52496899"
 
 ### <a name="how-to-delete-users-existing-app-passwords"></a>如何删除用户现有的应用密码
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-2. 在左侧，选择“Azure Active Directory” > “用户和组” > “所有用户”。
-3. 选择“多重身份验证”。 多重身份验证页面将打开。 
+2. 在左侧，选择“Azure Active Directory” > “用户” > “所有用户”。
+3. 在右侧，选择工具栏上的“多重身份验证”。 多重身份验证页面将打开。 
 6. 选中要管理的用户或用户旁的框。 右侧将显示快速步骤选项列表。 
 7. 选择“管理用户设置”。
 8. 选中“删除选定用户生产的所有现有应用密码”框。
@@ -62,8 +62,8 @@ Azure 多重身份验证的可配置功能之一是为用户提供将设备标�
 
 ### <a name="how-to-restore-mfa-on-all-suspended-devices-for-a-user"></a>如何还原用户所有已暂停设备上的 MFA
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-2. 在左侧，选择“Azure Active Directory” > “用户和组” > “所有用户”。
-3. 选择“多重身份验证”。 多重身份验证页面将打开。 
+2. 在左侧，选择“Azure Active Directory” > “用户” > “所有用户”。
+3. 在右侧，选择工具栏上的“多重身份验证”。 多重身份验证页面将打开。 
 6. 选中要管理的用户或用户旁的框。 右侧将显示快速步骤选项列表。 
 7. 选择“管理用户设置”。
 8. 选中“还原所有已记住设置的多重身份验证”框

@@ -1,5 +1,5 @@
 ---
-title: Azure Active Directory 域服务：挂起的域 | Microsoft Docs
+title: Azure Active Directory 域服务：已挂起的域 | Microsoft Docs
 description: 托管域的挂起和删除
 services: active-directory-ds
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/20/2018
 ms.author: ergreenl
-ms.openlocfilehash: 31e7307e427b175eb7424ecaee380bd90ce8150e
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.openlocfilehash: 161a9f1ac517d372884e7606dbd2ef30c910bf6b
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52443392"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52968094"
 ---
 # <a name="suspended-domains"></a>挂起的域
 当 Azure Active Directory 域服务 (Azure AD DS) 长时间无法为托管域提供服务时，它会将托管域置于挂起状态。 本文解释了托管域挂起的原因，以及如何修正挂起的域。
@@ -28,7 +28,7 @@ ms.locfileid: "52443392"
 
 ## <a name="states-your-managed-domain-can-be-in"></a>托管域可能处于的状态
 
-![挂起的域的时间线](media\active-directory-domain-services-suspension\suspension-timeline.PNG)
+![挂起的域的时间线](media/active-directory-domain-services-suspension/suspension-timeline.PNG)
 
 上图概述了 Azure AD DS 托管域可能处于的状态。
 
@@ -67,7 +67,7 @@ ms.locfileid: "52443392"
 由于以下原因，托管域处于“挂起”状态：
 
 * 一个或多个严重警报未在 15 天内得到解决。 严重警报可能由阻止访问 Azure AD DS 所需资源的错误配置引起。
-    * 例如，如果托管域中的警报 [AADDS104: 网络错误](active-directory-ds-troubleshoot-nsg.md)超过 15 天未解决。
+    * 例如，托管域中的警报 [AADDS104: 网络错误](active-directory-ds-troubleshoot-nsg.md)超过 15 天未解决。
 * Azure 订阅存在计费问题，或者 Azure 订阅已过期。
 
 当 Microsoft 无法持续管理、监视、修补或备份托管域时，托管域将被挂起。

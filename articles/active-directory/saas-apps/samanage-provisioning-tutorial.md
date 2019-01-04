@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/28/2018
 ms.author: v-wingf-msft
-ms.openlocfilehash: 53b78231dba4f525410f53dc1ae60901c67f043d
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: d3442710e1e1327dcafc1b4ed6617aeb7ff1bf0f
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52634500"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53322424"
 ---
 # <a name="tutorial-configure-samanage-for-automatic-user-provisioning"></a>教程：为 Samanage 配置自动用户预配
 
@@ -76,7 +76,9 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 
 ### <a name="important-tips-for-assigning-users-to-samanage"></a>将用户分配到 Samanage 的重要提示
 
-*   建议将单个 Azure AD 用户分配到 Samanage 来测试自动用户预配配置。 其他用户和/或组可以稍后分配。
+*    现在，Samanage 角色将在 Azure 门户 UI 中自动动态填充。 在将 Samanage 角色分配给用户之前，请确保针对 Samanage 完成初始同步，以检索 Samanage 租户中的最新角色。
+
+*    建议将单个 Azure AD 用户分配到 Samanage 来测试初始自动用户预配配置。 测试成功后，可以稍后分配其他用户和/或组。
 
 *   如果将用户分配到 Samanage，必须在分配对话框中选择任何特定于应用程序的有效角色（如果可用）。 具有“默认访问权限”角色的用户排除在预配之外。
 

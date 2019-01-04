@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 数据工厂将数据从本地 SQL Server 移到 SQL Azure | Microsoft Docs
+title: 使用 Azure 数据工厂将 SQL Server 数据移动到 SQL Azure - Team Data Science Process
 description: 设置一个 ADF 管道，它由两个数据迁移活动组成，这两个活动每天共同在本地和云中的数据库之间移动数据。
 services: machine-learning
 author: marktab
@@ -10,13 +10,13 @@ ms.component: team-data-science-process
 ms.topic: article
 ms.date: 11/04/2017
 ms.author: tdsp
-ms.custom: (previous author=deguhath, ms.author=deguhath)
-ms.openlocfilehash: bddb54d9a00c5ec88fcebe498d7f959c0f8e3dbf
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: a1bb841c1218be0a418583af8ca95b2dff2f67d9
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52447030"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53309495"
 ---
 # <a name="move-data-from-an-on-premises-sql-server-to-sql-azure-with-azure-data-factory"></a>使用 Azure 数据工厂将数据从本地 SQL 服务器移到 SQL Azure
 
@@ -43,7 +43,7 @@ ADF 允许使用简单的 JSON 脚本计划和监视作业，JSON 脚本可定�
 * 从 Azure Blob 存储帐户将数据复制到 Azure SQL 数据库。
 
 > [!NOTE]
-> 此处介绍的步骤源于 ADF 团队所提供的更详细的教程：[使用数据管理网关在本地源和云之间移动数据](../../data-factory/tutorial-hybrid-copy-portal.md) 在适当的时候，将提供该主题相关部分的引用。
+> 此处所示的步骤改编自 ADF 团队提供的更详细教程：[将数据从本地 SQL Server 数据库复制到 Azure Blob 存储](https://docs.microsoft.com/azure/data-factory/tutorial-hybrid-copy-portal/) 在适当时候提供了对该主题相关部分的引用。
 >
 >
 
@@ -68,15 +68,10 @@ ADF 允许使用简单的 JSON 脚本计划和监视作业，JSON 脚本可定�
 ## <a name="create-adf"></a>创建 Azure 数据工厂
 [创建 Azure 数据工厂](../../data-factory/tutorial-hybrid-copy-portal.md#create-a-data-factory)中提供了在 [Azure 门户](https://portal.azure.com/)中创建新的 Azure 数据工厂和资源组的相关说明。 将新的 ADF 实例命名为 *adfdsp*，将创建的资源组命名为 *adfdsprg*。
 
-## <a name="install-and-configure-up-the-data-management-gateway"></a>安装和配置数据管理网关
-若要使 Azure 数据工厂中的管道适用于本地 SQL Server，请将其作为链接服务添加到数据工厂。 若要创建适用于本地 SQL Server 的链接服务，必须执行以下操作：
+## <a name="install-and-configure-azure-data-factory-integration-runtime"></a>安装和配置 Azure 数据工厂集成运行时 
+集成运行时是 Azure 数据工厂用于在不同的网络环境之间提供数据集成功能的客户托管数据集成。 此运行时以前称为“数据管理网关”。 
 
-* 下载 Microsoft 数据管理网关，并安装到本地计算机。
-* 为本地数据源配置链接服务以使用网关。
-
-数据管理网关在托管其的计算机上对源和接收器数据进行序列化和反序列化。
-
-有关设置说明和数据管理网关的详细信息，请参阅[使用数据管理网关在本地源和云之间移动数据](../../data-factory/tutorial-hybrid-copy-portal.md)
+若要进行设置，请[按照有关创建管道的说明进行操作](https://docs.microsoft.com/azure/data-factory/tutorial-hybrid-copy-portal#create-a-pipeline)
 
 ## <a name="adflinkedservices"></a>创建链接服务以连接到数据资源
 链接服务定义 Azure 数据工厂连接到数据资源所需的信息。 在此方案中，我们有三个需要链接服务的资源：

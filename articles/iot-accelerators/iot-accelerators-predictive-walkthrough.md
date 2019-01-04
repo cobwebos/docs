@@ -8,16 +8,18 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 10/26/2018
 ms.author: dobett
-ms.openlocfilehash: 61a4e3700e88efba1ea9cea876b19e2f7ed4168b
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: b76bea6207cd6ac5d2ed570cf54dde7c52d5ff97
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50137064"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53309614"
 ---
 # <a name="predictive-maintenance-solution-accelerator-overview"></a>预测性维护解决方案加速器概述
 
 预测性维护解决方案加速器是一个用于商业应用场景的端到端解决方案，可预测可能发生故障的时间点。 可以主动对优化维护等活动运用此解决方案加速器。 解决方案结合了关键的 Azure IoT 解决方案加速器服务，例如 IoT 中心和 [Azure 机器学习][lnk-machine-learning]工作区。 此工作区包含基于公用示例数据集的模型，用于预测飞机引擎的剩余使用寿命 (RUL)。 此解决方案全面实施了完整的 loT 商业应用场景作为规划和实施解决方案的起点，以满足自己特定的业务需求。
+
+预测性维护解决方案加速器[代码可 GitHub 上获取](https://github.com/Azure/azure-iot-predictive-maintenance)。
 
 ## <a name="logical-architecture"></a>逻辑体系结构
 
@@ -51,7 +53,7 @@ ms.locfileid: "50137064"
 
 模拟设备可以处理在解决方案中通过 IoT 中心发送的以下命令：
 
-| 命令 | 说明 |
+| 命令 | Description |
 | --- | --- |
 | StartTelemetry |控制模拟的状态。<br/>使设备开始发送遥测 |
 | StopTelemetry |控制模拟的状态。<br/>使设备停止发送遥测 |
@@ -60,9 +62,9 @@ IoT 中心会提供设备命令确认。
 
 ## <a name="azure-stream-analytics-job"></a>Azure 流分析作业
 
-**作业: 遥测**会使用两个语句来操作传入设备遥测流：
+**作业：遥测**会使用两个语句来操作传入设备遥测流：
 
-* 第一个语句会从设备选择所有遥测，然后将这些数据发送到 blob 存储。 从该存储中，数据在 Web 应用中进行可视化。
+* 第一个语句会从设备选择所有遥测，然后将这些数据 从该存储中，数据在 Web 应用中进行可视化。
 * 第二个语句会通过两分钟的滑动窗口计算平均传感器值，然后通过事件中心将这些数据发送到事件处理器。
 
 ## <a name="event-processor"></a>事件处理器

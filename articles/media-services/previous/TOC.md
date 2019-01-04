@@ -139,7 +139,7 @@
 ### [AES-128 加密](media-services-protect-with-aes128.md)
 ### [适用于流式处理的 PlayReady/Widevine](media-services-protect-with-playready-widevine.md)
 ### [适用于流式处理的 FairPlay](media-services-protect-hls-with-fairplay.md)
-### [适用于 Windows 10 的脱机 PlayReady](https://blogs.msdn.microsoft.com/playready4/2016/10/26/does-azure-media-services-support-offline-mode/)
+### [适用于 Windows 10 的脱机 PlayReady](offline-playready-streaming-windows-10.md)
 ### [适用于 iOS 的脱机 FairPlay](media-services-protect-hls-with-offline-fairplay.md)
 ### [适用于 Android 的脱机 Widevine](offline-widevine-for-android.md)
 ### [在 Azure 门户中配置](media-services-portal-protect-content.md)

@@ -1,23 +1,24 @@
 ---
-title: LUIS 中的数据提取概念 - 语言理解
-titleSuffix: Azure Cognitive Services
+title: 数据提取
+titleSuffix: Language Understanding - Azure Cognitive Services
 description: 了解可以从语言理解智能服务 (LUIS) 中提取什么类型的数据
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: conceptual
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: 284cc8ec6c2325df069d06039a6a22169c3107e7
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.openlocfilehash: d8d12662552eaf2d566eebd773c69dfb9817d874
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49638335"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53098635"
 ---
-# <a name="data-extraction"></a>数据提取
+# <a name="data-extraction-from-intents-and-entities"></a>从意向和实体中提取数据
 使用 LUIS 可以从用户的自然语言陈述中获取信息。 信息以一种程序、应用程序或聊天机器人能够使用其来采取操作的方式进行提取。 在以下部分中，通过 JSON 示例了解从意向和实体返回了什么数据。
 
 最难提取的数据是机器学习的数据，因为它不是确切的文本匹配。 机器学习[实体](luis-concept-entity-types.md)的数据提取需要作为[创作周期](luis-concept-app-iteration.md)的一部分，直到你确信已接收到所期望的数据。
@@ -74,7 +75,7 @@ HTTPS 响应包含 LUIS 可基于当前发布的暂存或生产终结点的模�
 
 意向按评分从高到低排序。
 
-|数据对象|数据类型|数据位置|值|得分|
+|数据对象|数据类型|数据位置|值|Score|
 |--|--|--|--|:--|
 |意向|String|intents[0].intent|"GetStoreInfo"|0.984749258|
 |意向|String|intents[1].intent|"None"|0.0168218873|

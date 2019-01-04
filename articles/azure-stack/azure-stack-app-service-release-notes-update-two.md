@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 05/18/2018
 ms.author: anwestg
 ms.reviewer: sethm
-ms.openlocfilehash: 9f320f508fd45b6ad70b1357e873663796825621
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: f40d88df7a46c73981b6f20bee0b119743c08257
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49078783"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53714485"
 ---
 # <a name="app-service-on-azure-stack-update-2-release-notes"></a>基于 Azure Stack 的应用服务 Update 2 发行说明
 
@@ -66,7 +66,7 @@ ms.locfileid: "49078783"
   - 更新了 .Net Core 组件，使其与公有云中的 Azure 应用服务保持一致。
   - 更新了 Kudu
 
-- 启用了部署槽位自动交换功能 - [配置自动交换](https://docs.microsoft.com/azure/app-service/web-sites-staged-publishing#configure-auto-swap)
+- 启用了部署槽位自动交换功能 - [配置自动交换](https://docs.microsoft.com/azure/app-service/deploy-staging-slots#configure-auto-swap)
 
 - 启用了在生产中测试功能 - [在生产中测试简介](https://azure.microsoft.com/resources/videos/introduction-to-azure-websites-testing-in-production-with-galin-iliev/)
 
@@ -83,7 +83,7 @@ ms.locfileid: "49078783"
 - 当应用服务部署在现有虚拟网络中并且文件服务器仅在专用网络上可用时，工作人员将无法访问文件服务器。
 
 如果选择部署到现有虚拟网络和内部 IP 地址以连接到文件服务器，则必须添加出站安全规则，以便在工作子网和文件服务器之间启用 SMB 流量。 为此，请转到管理门户中的 WorkersNsg 并添加具有以下属性的出站安全规则：
- * 源：任何
+ * 源：任意
  * 源端口范围：*
  * 目标：IP 地址
  * 目标 IP 地址范围：文件服务器的 IP 范围
@@ -91,7 +91,7 @@ ms.locfileid: "49078783"
  * 协议：TCP
  * 操作：允许
  * 优先级：700
- * 名称：Outbound_Allow_SMB445
+ * 姓名：Outbound_Allow_SMB445
 
 ### <a name="known-issues-for-cloud-admins-operating-azure-app-service-on-azure-stack"></a>云管理员在操作基于 Azure Stack 的 Azure 应用服务时的已知问题
 

@@ -15,14 +15,17 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 08/15/2018
 ms.author: danlep
-ms.openlocfilehash: 4a9e3529f9d68ecdc614ea69cffc6897891f4548
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ROBOTS: NOINDEX
+ms.openlocfilehash: 4454448809411c6390bc1f65c33b4abe76094ded
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44056702"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53407739"
 ---
 # <a name="overview-of-resources-in-batch-ai"></a>Batch AI 中的资源概述
+
+[!INCLUDE [batch-ai-retiring](../../includes/batch-ai-retiring.md)]
 
 首次开始使用 Batch AI 服务时，最好是先了解可用的 Batch AI 资源。 与使用其他 Azure 服务时一样，可在一个或多个 Azure 资源组中创建 Batch AI 资源。 在一个资源组中可以创建一个或多个 Batch AI 工作区。 每个工作区包含 Batch AI 群集、文件服务器和试验的混合形式。 Batch AI 试验封装一组作业。
 
@@ -50,7 +53,7 @@ Batch AI 中的群集包含正在运行的作业的计算资源。 群集中的�
 
 ## <a name="job"></a>作业
 
-作业是需要执行的单个任务或脚本，例如，训练深度学习模型。 每个作业在工作区中的一个群集上执行特定的脚本。 （该脚本可能存储在 Batch AI 文件服务器或其他存储解决方案上。）每个 Batch AI 作业具有一个关联的框架类型：TensorFlow、Horovod、CNTK、Caffe、Caffe2、pyTorch、Chainer、自定义 MPI 或自定义。 对于每个框架，Batch AI 服务将设置所需的基础结构并管理作业流程。 每个试验可以包含多个类似的作业，以及对不同的参数所做的一些更改。
+作业是需要执行的单个任务或脚本，例如，训练深度学习模型。 每个作业在工作区中的一个群集上执行特定的脚本。 （该脚本可能存储在 Batch AI 文件服务器或其他存储解决方案上。）每个 Batch AI 作业都有一个与之关联的框架类型：TensorFlow、Horovod、CNTK、Caffe、Caffe2、pyTorch、Chainer、自定义 MPI 或自定义。 对于每个框架，Batch AI 服务将设置所需的基础结构并管理作业流程。 每个试验可以包含多个类似的作业，以及对不同的参数所做的一些更改。
 
 ## <a name="next-steps"></a>后续步骤
 

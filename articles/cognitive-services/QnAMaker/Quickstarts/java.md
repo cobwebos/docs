@@ -10,14 +10,15 @@ ms.component: qna-maker
 ms.topic: article
 ms.date: 10/19/2018
 ms.author: diberry
-ms.openlocfilehash: 70fa8c5af4f00500c39ce3832e182a5532721799
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.custom: seodec18
+ms.openlocfilehash: 1df14d730d83ee367140b4c9a64d0d2bba0aed77
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50419701"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53163882"
 ---
-# <a name="qna-maker-rest-api-with-java"></a>QnA Maker REST API 与 Java 
+# <a name="how-to-use-the-qna-maker-rest-api-with-java"></a>如何将 QnA Maker REST API 与 Java 配合使用 
 <a name="HOLTop"></a>
 
 本文演示如何将 [Microsoft QnA Maker API](../Overview/overview.md)  与 Java 结合使用以执行下列操作。
@@ -37,7 +38,7 @@ ms.locfileid: "50419701"
 - [获取当前的字变更集。](#GetAlterations)
 - [替换当前的字变更集。](#PutAlterations)
 
-[!INCLUDE [Code is available in Azure-Samples Github repo](../../../../includes/cognitive-services-qnamaker-java-repo-note.md)]
+[!INCLUDE [Code is available in Azure-Samples GitHub repo](../../../../includes/cognitive-services-qnamaker-java-repo-note.md)]
 
 ## <a name="prerequisites"></a>先决条件
 

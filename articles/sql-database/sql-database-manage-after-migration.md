@@ -3,7 +3,7 @@ title: 迁移后管理 - Azure SQL 数据库 | Microsoft Docs
 description: 了解如何在迁移到 Azure SQL 数据库后管理数据库。
 services: sql-database
 ms.service: sql-database
-ms.subservice: operations
+ms.subservice: migration
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -12,12 +12,12 @@ ms.author: josack
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 10/05/2018
-ms.openlocfilehash: fd32a00fe83e731321cb5e365f64d0f6acf8732d
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: e4f70521fbd081f7e26f56f4175656cca61887d1
+ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48870972"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52890698"
 ---
 # <a name="new-dba-in-the-cloud--managing-your-database-in-azure-sql-database"></a>云中的新 DBA - 在 Azure SQL 数据库中管理数据库
 
@@ -57,7 +57,7 @@ ms.locfileid: "48870972"
 ### <a name="how-does-my-disaster-recovery-plan-change-from-on-premises-to-sql-database"></a>我的灾难恢复计划如何从本地更改为 SQL 数据库？
 总的来说，传统的本地 SQL Server 安装程序要求使用各种功能（如故障转移群集、数据库镜像、事务复制、日志传送等）主动管理可用性，并维护和管理备份以确保业务连续性。 而使用 SQL 数据库时，该平台可为你管理这些项目，因此你可以专注于开发和优化数据库应用程序，不用担心灾难管理等事项。 你只需配置备份和灾难恢复计划，并且在 Azure 门户上点击几下即可（或者使用 PowerShell API 执行几个命令）。 
 
-要了解有关灾难恢复的详细信息，请参阅：[Azure SQL DB 灾难恢复 101](https://azure.microsoft.com/blog/azure-sql-databases-disaster-recovery-101/)
+若要了解有关灾难恢复的详细信息，请参阅：[Azure SQL DB 灾难恢复 101](https://azure.microsoft.com/blog/azure-sql-databases-disaster-recovery-101/)
 
 ## <a name="security-and-compliance"></a>安全和符合性
 SQL 数据库十分重视安全性和隐私性。 SQL 数据库中的安全性分为数据库级别和平台级别，将安全性分为几层后，就很好理解了。 在每一层，都需要为应用程序控制和提供最佳安全性。 这些层分为：
@@ -116,7 +116,7 @@ SQL 数据库中提供了[两种身份验证方法](sql-database-control-access.
 使用 SQL 数据库，可打开“审核”来跟踪数据库事件。 [SQL 数据库审核](sql-database-auditing.md)可记录数据库事件，并将事件写入 Azure 存储帐户中的审核日志文件。 若要深入了解潜在的违反安全规定和政策的行为，保持合规性等，审核就尤其有用。它允许定义和配置你认为需要审核的某些事件类别，以此获得预配报表和仪表板，大致了解数据库中发生的事件。 可在数据库级或服务器级应用这些审核策略。 有关如何启用服务器/数据库审核的指南，请参阅：[启用 SQL 数据库审核](sql-database-security-tutorial.md#enable-sql-database-auditing-if-necessary)。
 
 #### <a name="threat-detection"></a>威胁检测
-通过[威胁检测](sql-database-threat-detection.md)，可轻松应对“审核”发现的违反安全规定和政策的行为。 即使不是安全专家，也能解决系统中潜在的威胁或违规问题。 威胁检测还具有一些内置功能，如 SQL 注入检测。 SQL 注入会企图改变或破坏数据，是攻击数据库应用程序的一种相当常见的方法。 SQL 数据库威胁检测运行多组算法，这些算法可以检测潜在漏洞和 SQL 注入攻击，以及异常的数据库访问模式（如来自异常位置或不熟悉主体的访问）。 如果在数据库中检测到威胁，安全管理人员或其他指定管理员将收到电子邮件通知。 每个通知都会提供可疑活动的详细信息，以及如何进一步调查和缓解威胁的建议。 要了解如何启用威胁检测，请参阅[启用 SQL 数据库威胁检测](sql-database-security-tutorial.md#enable-sql-database-threat-detection)。 
+通过[威胁检测](sql-database-threat-detection.md)，可轻松应对“审核”发现的违反安全规定和政策的行为。 即使不是安全专家，也能解决系统中潜在的威胁或违规问题。 威胁检测还具有一些内置功能，如 SQL 注入检测。 SQL 注入会企图改变或破坏数据，是攻击数据库应用程序的一种相当常见的方法。 SQL 数据库威胁检测运行多组算法，这些算法可以检测潜在漏洞和 SQL 注入攻击，以及异常的数据库访问模式（如来自异常位置或不熟悉主体的访问）。 如果在数据库中检测到威胁，安全管理人员或其他指定管理员将收到电子邮件通知。 每个通知都会提供可疑活动的详细信息，以及如何进一步调查和缓解威胁的建议。 若要了解如何启用威胁检测，请参阅：[启用 SQL 数据库威胁检测](sql-database-security-tutorial.md#enable-sql-database-threat-detection)。 
 ### <a name="how-do-i-protect-my-data-in-general-on-sql-database"></a>一般情况下如何保护 SQL 数据库中的数据？
 加密为保护敏感数据免受入侵提供了一种强大的机制。 没有解密密钥，入侵者就无法使用加密数据。 它在 SQL 数据库中构建的现有安全层之上增加了一层额外保护。 保护 SQL 数据库中的数据包含两个方面： 
 - 数据和日志文件中的静态数据 
@@ -136,7 +136,7 @@ SQL 数据库中提供了[两种身份验证方法](sql-database-control-access.
 ### <a name="how-can-i-limit-access-to-sensitive-data-in-my-database"></a>如何限制对数据库中敏感数据的访问？
 每个应用程序在数据库中都有一定的敏感数据，需要防止这些数据被所有人查看。 组织内的某些人员需要查看此数据，但其他人员应无法查看此数据。 比如，员工工资。 经理需要查看其直接下属的工资信息，但团队成员应无法查看其同事的工资信息。 另一种情况是，数据开发人员在开发阶段或测试期间可能需要使用敏感数据，例如客户的 SSN。 而此信息后来不再需要向开发人员公开。 在这种情况下，敏感数据要么需要屏蔽，要么完全不公开。 SQL 数据库提供了两种方法来防止未经授权的用户查看敏感数据：
 
-[动态数据掩码](sql-database-dynamic-data-masking-get-started.md)是一种数据屏蔽功能，它通过屏蔽应用程序层上的非特权用户来限制敏感数据的公开。 你可以定义屏蔽规则来创建屏蔽模式（例如，只显示国家 ID 号的最后 4 位数，如 XXX-XX-0000，并将大部分编号标记为 X），并确定哪些用户被排除在屏蔽规则之外。 随时都可能出现屏蔽，有各种屏蔽功能可用于各种数据类别。 通过动态数据屏蔽可以自动检测数据库中的敏感数据，并对其应用屏蔽。
+[动态数据掩码](sql-database-dynamic-data-masking-get-started.md)是一种数据屏蔽功能，它通过屏蔽应用程序层上的非特权用户来限制敏感数据的公开。 可以定义屏蔽规则来创建屏蔽模式（例如，只显示国家/地区 ID 号的最后 4 位数：XXX-XX-0000，并将大部分编号标记为 X），并确定哪些用户被排除在屏蔽规则之外。 随时都可能出现屏蔽，有各种屏蔽功能可用于各种数据类别。 通过动态数据屏蔽可以自动检测数据库中的敏感数据，并对其应用屏蔽。
 
 通过[行级安全性](/sql/relational-databases/security/row-level-security)可以控制行级的访问权限。 也就是说，根据执行查询的用户（组成员或执行上下文）来隐藏数据库表中的某些行。 访问限制是在数据库层上完成的，而不是在应用层，以此简化你的应用逻辑。 首先创建一个筛选器谓词，筛选掉不公开的行，接下来，安全策略定义谁可以访问这些行。 最后，最终用户运行查询，根据用户特权，他们要么能查看受限行，要么根本无法看到这些行。
 
@@ -144,7 +144,7 @@ SQL 数据库中提供了[两种身份验证方法](sql-database-control-access.
 
 有用于 Always Encrypted（客户端加密）和透明数据加密（静态加密）的密钥管理选项。 建议定期轮换加密密钥。 轮换频率应遵循内部组织法规和符合性要求。
 
-透明数据加密 (TDE)：TDE 中有一个双密钥层次结构 — 每个用户数据库中的数据都通过对称 AES-256 数据库唯一的数据库加密密钥 (DEK) 进行加密，该密钥反过来又由服务器唯一的不对称 RSA 2048 主密钥进行加密。 管理主密钥的方法：
+**透明数据加密 (TDE)**：TDE 中有一个双密钥层次结构 – 每个用户数据库中的数据都通过对称 AES-256 数据库唯一的数据库加密密钥 (DEK) 进行加密，该密钥反过来又由服务器唯一的不对称 RSA 2048 主密钥进行加密。 管理主密钥的方法：
 - 由平台（SQL 数据库）自动管理。
 - 或由你使用 [Azure Key Vault](sql-database-always-encrypted-azure-key-vault.md) 作为密钥存储。
 
@@ -164,7 +164,7 @@ SQL 数据库中提供了[两种身份验证方法](sql-database-control-access.
 - [任意位置到任意位置](../expressroute/expressroute-connectivity-models.md#IPVPN)
 - [点到点](../expressroute/expressroute-connectivity-models.md#Ethernet)
 
-Express Route 还允许激增高达 2 倍的带宽限制，无需额外付费。 还可以使用 Express Route 来配置跨区域连接。 要查看 ER 连接提供商列表，请参阅：[Express Route 合作伙伴和对等互连位置](../expressroute/expressroute-locations.md)。 以下文章详细介绍了 Express Route：
+Express Route 还允许激增高达 2 倍的带宽限制，无需额外付费。 还可以使用 Express Route 来配置跨区域连接。 若要查看 ER 连接提供商列表，请参阅：[Express Route 合作伙伴和对等互连位置](../expressroute/expressroute-locations.md)。 以下文章详细介绍了 Express Route：
 - [Express Route 简介](../expressroute/expressroute-introduction.md)
 - [先决条件](../expressroute/expressroute-prerequisites.md)
 - [工作流](../expressroute/expressroute-workflows.md)
@@ -179,13 +179,13 @@ SQL 数据库符合一系列规章遵从性。 要查看符合的最新一组符
 - 安全优化。
 - 成本优化。
 
-性能监视和优化：通过查询性能见解，可获得专门针对数据库工作负载的建议，以便应用程序始终以最佳运行状态。 你也可以进行设置，以自动应用这些建议并且无需执行维护任务。 利用索引顾问，可根据工作负载自动实施索引建议，这就是所谓的自动优化。 这些建议会随着应用程序工作负载的变化而变化，为你提供最相关的建议。 你也可以选择手动查看这些建议并自行应用。  
+**性能监视和优化**：通过查询性能见解，可获得专门针对数据库工作负载的建议，以便应用程序始终以最佳运行状态。 你也可以进行设置，以自动应用这些建议并且无需执行维护任务。 利用索引顾问，可根据工作负载自动实施索引建议，这就是所谓的自动优化。 这些建议会随着应用程序工作负载的变化而变化，为你提供最相关的建议。 你也可以选择手动查看这些建议并自行应用。  
 
-安全优化：SQL 数据库提供可行的安全建议，帮助保护数据，威胁检测可用于识别和调查可能对数据库构成威胁的可疑数据库活动。 [SQL 漏洞评估](sql-vulnerability-assessment.md)是一项数据库扫描和报告服务，允许你大规模监视数据库的安全状态、识别安全风险以及偏离你定义的安全基线的行为。 每次扫描之后，都会提供可行步骤和修正脚本的自定义列表，还会提供可用于帮助满足合规性的评估报告。
+**安全优化**：SQL 数据库提供可行的安全建议，帮助保护数据，威胁检测可用于识别和调查可能对数据库构成威胁的可疑数据库活动。 [SQL 漏洞评估](sql-vulnerability-assessment.md)是一项数据库扫描和报告服务，允许你大规模监视数据库的安全状态、识别安全风险以及偏离你定义的安全基线的行为。 每次扫描之后，都会提供可行步骤和修正脚本的自定义列表，还会提供可用于帮助满足合规性的评估报告。
 
 借助 Azure 安全中心，可以查看全面的安全建议，单击即可应用这些建议。 
 
-成本优化：Azure SQL 平台会分析服务器中数据库的利用率历史记录，作出评估并给出成本优化建议。 这种分析通常需要两周时间来分析和生成可行的建议。 弹性池就这样一个建议。 建议以横幅形式出现在门户上：
+**成本优化**：Azure SQL 平台会分析服务器中数据库的利用率历史记录，作出评估并给出成本优化建议。 这种分析通常需要两周时间来分析和生成可行的建议。 弹性池就这样一个建议。 建议以横幅形式出现在门户上：
 
 ![弹性池建议](./media/sql-database-manage-after-migration/elastic-pool-recommendations.png) 
 
@@ -196,7 +196,7 @@ SQL 数据库符合一系列规章遵从性。 要查看符合的最新一组符
 ### <a name="how-do-i-monitor-the-performance-and-resource-utilization-in-sql-database"></a>如何在 SQL 数据库中监视性能和资源利用率？
 
 在 SQL 数据库中，可利用平台的智能见解来监控性能并做出相应调整。 可以使用以下方法监视 SQL 数据库中的性能和资源利用率：
-- Azure 门户：Azure 门户通过选择数据库并单击“概述”窗格中的图表来显示单个数据库的利用率。 可以修改图表以显示多个指标，包括 CPU 百分比、DTU 百分比、数据 IO 百分比、会话百分比和数据库大小百分比。
+- **Azure 门户**：Azure 门户通过选择数据库并单击“概述”窗格中的图表来显示单个数据库的利用率。 可以修改图表以显示多个指标，包括 CPU 百分比、DTU 百分比、数据 IO 百分比、会话百分比和数据库大小百分比。
 
    ![监视图表](./media/sql-database-manage-after-migration/monitoring-chart.png)
 
@@ -204,12 +204,12 @@ SQL 数据库符合一系列规章遵从性。 要查看符合的最新一组符
 
 在此图表中，还可以按资源配置警报。 这些警报允许使用电子邮件响应资源条件，写入 HTTPS/HTTP 端点或执行操作。 有关详细信息，请参阅[创建警报](sql-database-insights-alerts-portal.md)。
 
-- 动态管理视图：可以查询 [sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) 动态管理视图，以返回最近一个小时的资源使用统计信息历史记录，也可以查询 [sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) 系统目录视图，返回过去 14 天的历史记录。
-- 查询性能见解：可以使用[查询性能见解](sql-database-query-performance.md)查看特定数据库那些排名靠前的资源消耗查询和长时间运行查询的历史记录。 可通过资源利用率、持续时间和执行频率快速找出热门查询。 还可跟踪查询，并检测回归。 此功能需要为数据库启用和激活[查询存储](/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store)。
+- **动态管理视图**：可以查询 [sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) 动态管理视图，以返回最近一个小时的资源使用统计信息历史记录，也可以查询 [sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) 系统目录视图，返回过去 14 天的历史记录。
+- **查询性能见解**：可以使用[查询性能见解](sql-database-query-performance.md)查看特定数据库那些排名靠前的资源消耗查询和长时间运行查询的历史记录。 可通过资源利用率、持续时间和执行频率快速找出热门查询。 还可跟踪查询，并检测回归。 此功能需要为数据库启用和激活[查询存储](/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store)。
 
    ![查询性能见解](./media/sql-database-manage-after-migration/query-performance-insight.png)
 
-- **Log Analytics 中的 Azure SQL Analytics（预览版）**：[Azure Log Analytics](../log-analytics/log-analytics-azure-sql.md) 允许收集和可视化关键的 Azure SQL Azure 性能指标，对于每个工作区，最多支持 150,000 个 SQL 数据库和 5,000 个 SQL 弹性池。 你可以使用它监视并接收通知。 可以跨多个 Azure 订阅和弹性池监视 SQL 数据库和弹性池指标，并可用于识别应用程序堆栈每一层上的问题。
+- **Log Analytics 中的 Azure SQL Analytics（预览版）**：[Azure Log Analytics](../azure-monitor/insights/azure-sql.md) 允许收集和可视化关键的 Azure SQL Azure 性能指标，对于每个工作区，最多支持 150,000 个 SQL 数据库和 5,000 个 SQL 弹性池。 你可以使用它监视并接收通知。 可以跨多个 Azure 订阅和弹性池监视 SQL 数据库和弹性池指标，并可用于识别应用程序堆栈每一层上的问题。
 
 ### <a name="i-am-noticing-performance-issues-how-does-my-sql-database-troubleshooting-methodology-differ-from-sql-server"></a>我注意到了性能问题：我的 SQL 数据库故障排除方法与 SQL Server 有何不同？
 用于诊断查询和数据库性能问题的疑难解答技术的主要部分还是一样的。 毕竟支持云的 SQL Server 引擎是一样的。 但是 Azure SQL DB 平台却内置了“智能”功能。 它可帮助你更轻松地诊断和解决性能问题。 还可代表你执行某些纠正操作，在某些情况下，可自动执行主动修复措施。 
@@ -234,7 +234,7 @@ SQL 数据库提供了各种服务层：基本、标准和高级。 在每个服
 
 为确保处于正确的计算大小，可通过“如何监视 SQL 数据库中的性能和资源利用率”中所述的某种方式来监视查询和数据库资源消耗。 如果发现查询/数据库一直在过度消耗 CPU/内存等，则可考虑纵向扩展到更高的计算大小。 同样，如果你发现，即使在繁忙时间，似乎也没有使用多少资源，则可考虑下调当前计算大小。 
 
-如果有 SaaS 应用模式或数据库整合方案，则考虑使用弹性池进行成本优化。 弹性池非常适合用于整合数据库和优化成本。 要了解有关使用弹性池管理多个数据库的详细信息，请参阅：[管理池和数据库](sql-database-elastic-pool-manage.md#azure-portal-manage-elastic-pools-and-pooled-databases)。 
+如果有 SaaS 应用模式或数据库整合方案，则考虑使用弹性池进行成本优化。 弹性池非常适合用于整合数据库和优化成本。 若要了解有关使用弹性池管理多个数据库的详细信息，请参阅：[管理池和数据库](sql-database-elastic-pool-manage.md#azure-portal-manage-elastic-pools-and-pooled-databases)。 
 
 ### <a name="how-often-do-i-need-to-run-database-integrity-checks-for-my-database"></a>需要多久运行一次数据库完整性检查？
 SQL 数据库使用的某些智能技术可以实现自动处理某些类别的数据损坏，不会出现数据丢失。 这些技术内置于服务中，有需要时，服务会利用这些技术。 通过定期还原数据库备份并对其运行 DBCC CHECKDB，测试整个服务的数据库备份。 如果存在问题，SQL 数据库会主动解决。 [自动页修复](/sql/sql-server/failover-clusters/automatic-page-repair-availability-groups-database-mirroring)用于修复损坏或具有数据完整性问题的页面。 数据库页面始终由验证页面完整性的默认 CHECKSUM 设置进行验证。 SQL 数据库会主动监视和检查数据库的数据完整性，如果存在问题，则以最高优先级解决问题。 除此之外，还可自己选择随时运行完整性检查。  有关详细信息，请参阅 [SQL 数据库中的数据完整性](https://azure.microsoft.com/blog/data-integrity-in-azure-sql-database/)
@@ -243,11 +243,11 @@ SQL 数据库使用的某些智能技术可以实现自动处理某些类别的�
 
 ### <a name="how-do-i-export-and-import-data-as-bacpac-files-from-sql-database"></a>如何从 SQL 数据库将数据作为 BACPAC 文件导出和导入？
 
-- 导出：可以将你的 Azure SQL 数据库作为 BACPAC 文件从 Azure 门户导出
+- **导出**：可以将 Azure SQL 数据库作为 BACPAC 文件从 Azure 门户导出
 
    ![数据库导出](./media/sql-database-export/database-export.png)
 
-- 导入：你还可使用 Azure 门户将数据作为 BACPAC 文件导入到数据库。
+- **导入**：还可使用 Azure 门户将数据作为 BACPAC 文件导入到数据库。
 
    ![数据库导入](./media/sql-database-import/import.png)
 

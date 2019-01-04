@@ -1,5 +1,5 @@
 ---
-title: 从必应图像搜索 API v5 升级到 v7 - 必应图像搜索 API
+title: 从必应图像搜索 API v5 升级到 v7
 titleSuffix: Azure Cognitive Services
 description: 此升级指南介绍必应图像搜索 API 的版本 5 与版本 7 之间的更改。 本指南有助于发现需要更新为使用版本 7 的应用部分。
 services: cognitive-services
@@ -11,14 +11,14 @@ ms.component: bing-image-search
 ms.topic: article
 ms.date: 04/15/2017
 ms.author: scottwhi
-ms.openlocfilehash: 53713a629dbe2682ef393a3a5dbf7845b5075591
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 2192e3d2a344a31717c59c813123ed0c807a2841
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46296356"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53256547"
 ---
-# <a name="image-search-api-upgrade-guide"></a>图像搜索 API 升级指南
+# <a name="bing-image-search-api-upgrade-guide"></a>必应图像搜索 API 升级指南
 
 此升级指南介绍必应图像搜索 API 的版本 5 与版本 7 之间的更改。 本指南有助于发现需要更新为使用版本 7 的应用部分。
 

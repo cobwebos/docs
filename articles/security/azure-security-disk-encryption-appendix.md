@@ -1,20 +1,22 @@
 ---
-title: 适用于 Windows 和 Linux IaaS VM 的 Azure 磁盘加密 | Microsoft Docs
+title: 附录 - 适用于 IaaS VM 的 Azure 磁盘加密 | Microsoft Docs
 description: 本文是“适用于 Windows 和 Linux IaaS VM 的 Microsoft Azure 磁盘加密”的附录。
 author: mestew
 ms.service: security
 ms.subservice: Azure Disk Encryption
 ms.topic: article
 ms.author: mstewart
-ms.date: 11/12/2018
-ms.openlocfilehash: e5c7d51428c66bf9e6c245f28fb13b8d4a316d18
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.date: 12/12/2018
+ms.custom: seodec18
+ms.openlocfilehash: f10a3c02e98db5777b5231aec04951a7ed1ad9ad
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51614662"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53310653"
 ---
 # <a name="appendix-for-azure-disk-encryption"></a>有关 Azure 磁盘加密的附录 
+
 本文是[适用于 IaaS VM 的 Azure 磁盘加密](azure-security-disk-encryption-overview.md)的附录。 请务必先阅读“适用于 IaaS VM 的 Azure 磁盘加密”一文，以理解上下文。 本文介绍如何准备预加密的 VHD 和其他任务。
 
 ## <a name="connect-to-your-subscription"></a>连接到订阅
@@ -57,7 +59,7 @@ ms.locfileid: "51614662"
 
 ### <a name="bkmk_ConnectCLI"></a>使用 Azure CLI 连接到订阅
 
-1. 使用 [az login](/cli/azure/authenticate-azure-cli#interactive-log-in) 登录到 Azure。 
+1. 使用 [az login](/cli/azure/authenticate-azure-cli#sign-in-interactively) 登录到 Azure。 
      
      ```azurecli
      az login
@@ -130,6 +132,20 @@ ms.locfileid: "51614662"
  -  [在正在运行的 Linux VM 上禁用加密](https://github.com/Azure/azure-quickstart-templates/tree/master/201-decrypt-running-linux-vm-without-aad) 
     - 只允许对 Linux VM 的数据卷禁用加密。  
 
+### <a name="encrypt-or-decrypt-vm-scale-sets"></a>加密或解密 VM 规模集
+
+- [在运行的 Linux 虚拟机规模集上启用磁盘加密](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-vmss-linux)
+
+- [在运行的 Windows 虚拟机规模集上启用磁盘加密](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-vmss-windows)
+
+ - [使用 jumpbox 部署 Linux VM 的 VM 规模集，并在 Linux VMSS 上启用加密](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-vmss-linux-jumpbox)
+
+ - [使用 jumpbox 部署 Windows VM 的 VM 规模集，并在 Windows VMSS 上启用加密](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-vmss-windows-jumpbox)
+
+- [在运行的 Linux 虚拟机规模集上禁用磁盘加密](https://github.com/Azure/azure-quickstart-templates/tree/master/201-decrypt-vmss-linux)
+
+- [在运行的 Windows 虚拟机规模集上禁用磁盘加密](https://github.com/Azure/azure-quickstart-templates/tree/master/201-decrypt-vmss-windows)
+
 ### <a name="encrypt-or-decrypt-vms-with-an-azure-ad-app-previous-release"></a>使用 Azure AD 应用加密或解密 VM（以前的版本） 
  
 - [在现有或正在运行的 IaaS Windows VM 上启用磁盘加密](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-windows-vm)
@@ -160,17 +176,7 @@ ms.locfileid: "51614662"
 
 - [使用 Azure AD 客户端证书指纹在运行的 Windows VM 上启用磁盘加密](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-windows-vm-aad-client-cert)
     
-- [在运行的 Linux 虚拟机规模集上启用磁盘加密](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-vmss-linux)
 
-- [在运行的 Windows 虚拟机规模集上启用磁盘加密](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-vmss-windows)
-
- - [使用 jumpbox 部署 Linux VM 的 VM 规模集，并在 Linux VMSS 上启用加密](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-vmss-linux-jumpbox)
-
- - [使用 jumpbox 部署 Windows VM 的 VM 规模集，并在 Windows VMSS 上启用加密](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-vmss-windows-jumpbox)
-
-- [在运行的 Linux 虚拟机规模集上禁用磁盘加密](https://github.com/Azure/azure-quickstart-templates/tree/master/201-decrypt-vmss-linux)
-
-- [在运行的 Windows 虚拟机规模集上禁用磁盘加密](https://github.com/Azure/azure-quickstart-templates/tree/master/201-decrypt-vmss-windows)
 
 ## <a name="bkmk_preWin"></a>准备预加密的 Windows VHD
 以下部分介绍了必要操作，让你在 Azure IaaS 中准备将预加密的 Windows VHD 部署为加密 VHD。 使用该信息在 Azure Site Recovery 或 Azure 上准备和启动全新的 Windows VM (VHD)。 有关如何准备和上传 VHD 的详细信息，请参阅[上传通用化 VHD 并使用它在 Azure 中创建新的 VM](../virtual-machines/windows/upload-generalized-managed.md)。
@@ -189,7 +195,7 @@ ms.locfileid: "51614662"
 
     ServerManagerCmd -install BitLockers
 ### <a name="prepare-the-os-volume-for-bitlocker-by-using-bdehdcfg"></a>使用 `bdehdcfg` 为 BitLocker 准备 OS 卷
-若要压缩 OS 分区并为 BitLocker 准备计算机，请根据需要执行 [bdehdcfg](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-basic-deployment#using-bitlocker-to-encrypt-volumescommand)：
+若要压缩 OS 分区并为 BitLocker 准备计算机，请根据需要执行 [bdehdcfg](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-basic-deployment)：
 
     bdehdcfg -target c: shrink -quiet 
 
@@ -210,7 +216,7 @@ ms.locfileid: "51614662"
 * VM 必须使用与 [Azure 磁盘加密常见问题解答](azure-security-disk-encryption-faq.md#bkmk_LinuxOSSupport)中列出的 OS 磁盘加密兼容的分发版 
 * 必须从 Azure 资源管理器中的市场映像创建 VM。
 * Azure VM，至少具有 4 GB RAM（建议大小为 7 GB）。
-* （针对 RHEL 和 CentOS）禁用 SELinux。 若要禁用 SELinux，请参阅 [SELinux User's and Administrator's Guide](https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/html/SELinux_Users_and_Administrators_Guide/sect-Security-Enhanced_Linux-Working_with_SELinux-Changing_SELinux_Modes.html#sect-Security-Enhanced_Linux-Enabling_and_Disabling_SELinux-Disabling_SELinux)（SELinux 用户和管理员指南）中针对 VM 的“4.4.2. Disabling SELinux（4.4.2. 禁用 SELinux）”。
+* （针对 RHEL 和 CentOS）禁用 SELinux。 若要禁用 SELinux，请参阅  [SELinux User's and Administrator's Guide](https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/html/SELinux_Users_and_Administrators_Guide/sect-Security-Enhanced_Linux-Working_with_SELinux-Changing_SELinux_Modes.html#sect-Security-Enhanced_Linux-Enabling_and_Disabling_SELinux-Disabling_SELinux)（SELinux 用户和管理员指南）中针对 VM 的“4.4.2. Disabling SELinux（4.4.2. 禁用 SELinux）”。
 * 禁用 SELinux 后，重启 VM 至少一次。
 
 ### <a name="steps"></a>Steps
@@ -295,23 +301,23 @@ ms.locfileid: "51614662"
 
 1. 对磁盘进行分区时选择“配置加密卷”。
 
- ![Ubuntu 16.04 安装](./media/azure-security-disk-encryption/ubuntu-1604-preencrypted-fig1.png)
+ ![Ubuntu 16.04 安装 - 配置加密卷](./media/azure-security-disk-encryption/ubuntu-1604-preencrypted-fig1.png)
 
 2. 创建一个单独的不得加密的启动驱动器。 对根驱动器进行加密。
 
- ![Ubuntu 16.04 安装](./media/azure-security-disk-encryption/ubuntu-1604-preencrypted-fig2.png)
+ ![Ubuntu 16.04 安装 - 选择要加密的设备](./media/azure-security-disk-encryption/ubuntu-1604-preencrypted-fig2.png)
 
 3. 提供通行短语。 这是上传到 Key Vault 的通行短语。
 
- ![Ubuntu 16.04 安装](./media/azure-security-disk-encryption/ubuntu-1604-preencrypted-fig3.png)
+ ![Ubuntu 16.04 安装 - 提供通行短语](./media/azure-security-disk-encryption/ubuntu-1604-preencrypted-fig3.png)
 
 4. 完成分区。
 
- ![Ubuntu 16.04 安装](./media/azure-security-disk-encryption/ubuntu-1604-preencrypted-fig4.png)
+ ![Ubuntu 16.04 安装 - 完成分区](./media/azure-security-disk-encryption/ubuntu-1604-preencrypted-fig4.png)
 
 5. 启动 VM 并被要求提供密码时，请使用步骤 3 中提供的密码。
 
- ![Ubuntu 16.04 安装](./media/azure-security-disk-encryption/ubuntu-1604-preencrypted-fig5.png)
+ ![Ubuntu 16.04 安装 - 在启动时提供通行短语](./media/azure-security-disk-encryption/ubuntu-1604-preencrypted-fig5.png)
 
 6. 使用[这些说明](https://azure.microsoft.com/documentation/articles/virtual-machines-linux-create-upload-ubuntu/)准备 VM 以上传到 Azure。 暂时不要运行最后一个步骤（取消预配 VM）。
 
@@ -377,7 +383,7 @@ ms.locfileid: "51614662"
 
 7. 现在可以解除配置 VM。
 
- ![Ubuntu 16.04 安装](./media/azure-security-disk-encryption/ubuntu-1604-preencrypted-fig6.png)
+ ![Ubuntu 16.04 安装 - 更新 initramfs](./media/azure-security-disk-encryption/ubuntu-1604-preencrypted-fig6.png)
 
 8. 继续执行下一步，将 VHD 上传到 Azure 中。
 
@@ -385,11 +391,11 @@ ms.locfileid: "51614662"
 若要在分发版安装期间配置加密，请执行以下步骤：
 1. 对磁盘进行分区时，选择“加密卷组”，并输入密码。 这是要上传到 Key Vault 的密码。
 
- ![openSUSE 13.2 安装](./media/azure-security-disk-encryption/opensuse-encrypt-fig1.png)
+ ![openSUSE 13.2 安装 - 加密卷组](./media/azure-security-disk-encryption/opensuse-encrypt-fig1.png)
 
 2. 使用密码启动 VM。
 
- ![openSUSE 13.2 安装](./media/azure-security-disk-encryption/opensuse-encrypt-fig2.png)
+ ![openSUSE 13.2 安装 - 在启动时提供通行短语](./media/azure-security-disk-encryption/opensuse-encrypt-fig2.png)
 
 3. 遵循 [Prepare a SLES or openSUSE virtual machine for Azure](https://azure.microsoft.com/documentation/articles/virtual-machines-linux-suse-create-upload-vhd/#prepare-opensuse-131)（为 Azure 准备 SLES 或 openSUSE 虚拟机）中的说明准备 VM，以上传到 Azure。 暂时不要运行最后一个步骤（取消预配 VM）。
 
@@ -453,19 +459,19 @@ ms.locfileid: "51614662"
 若要在分发版安装期间配置加密，请执行以下步骤：
 1. 对磁盘进行分区时，选择“加密我的数据”。
 
- ![CentOS 7 安装](./media/azure-security-disk-encryption/centos-encrypt-fig1.png)
+ ![CentOS 7 安装 - 安装目标](./media/azure-security-disk-encryption/centos-encrypt-fig1.png)
 
 2. 确保为根分区选择了“加密”。
 
- ![CentOS 7 安装](./media/azure-security-disk-encryption/centos-encrypt-fig2.png)
+ ![CentOS 7 安装 - 为根分区选择加密](./media/azure-security-disk-encryption/centos-encrypt-fig2.png)
 
 3. 提供通行短语。 这是要上传到 Key Vault 的通行短语。
 
- ![CentOS 7 安装](./media/azure-security-disk-encryption/centos-encrypt-fig3.png)
+ ![CentOS 7 安装 - 提供通行短语](./media/azure-security-disk-encryption/centos-encrypt-fig3.png)
 
 4. 启动 VM 并被要求提供密码时，请使用步骤 3 中提供的密码。
 
- ![CentOS 7 安装](./media/azure-security-disk-encryption/centos-encrypt-fig4.png)
+ ![CentOS 7 安装 - 在启动时输入通行短语](./media/azure-security-disk-encryption/centos-encrypt-fig4.png)
 
 5. 通过 [Prepare a CentOS-based virtual machine for Azure](https://azure.microsoft.com/documentation/articles/virtual-machines-linux-create-upload-centos/#centos-70)（为 Azure 准备基于 CentOS 的虚拟机）中的“CentOS 7.0+”说明准备 VM 以上传到 Azure。 暂时不要运行最后一个步骤（取消预配 VM）。
 
@@ -526,7 +532,7 @@ to
     ```    
 5. 运行“/usr/sbin/dracut -f -v”以更新 initrd。
 
-![CentOS 7 安装](./media/azure-security-disk-encryption/centos-encrypt-fig5.png)
+![CentOS 7 安装 - 运行 /usr/sbin/dracut -f -v](./media/azure-security-disk-encryption/centos-encrypt-fig5.png)
 
 ## <a name="bkmk_UploadVHD"></a>将加密的 VHD 上传到 Azure 存储帐户
 启用 BitLocker 加密或 DM-Crypt 加密后，需要将本地加密的 VHD 上传到存储帐户。

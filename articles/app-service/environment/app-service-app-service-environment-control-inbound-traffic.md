@@ -1,5 +1,5 @@
 ---
-title: 如何控制应用服务环境的入站流量
+title: 控制应用服务环境的入站流量 - Azure
 description: 了解如何配置网络安全规则，以控制发往应用服务环境的入站流量。
 services: app-service
 documentationcenter: ''
@@ -14,16 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/11/2017
 ms.author: stefsch
-ms.openlocfilehash: ed72bf3202d6cb2d2161bc0df693d3e6a1fc58ef
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.custom: seodec18
+ms.openlocfilehash: 84575dcb67845a074ce19cf9d819e1dda3f90e20
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "22987002"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53271950"
 ---
 # <a name="how-to-control-inbound-traffic-to-an-app-service-environment"></a>如何控制应用服务环境的入站流量
 ## <a name="overview"></a>概述
-可以在 Azure Resource Manager 虚拟网络**或**经典部署模型[虚拟网络][virtualnetwork]中创建应用服务环境。  创建应用服务环境时，可以定义新的虚拟网络和新的子网。  或者，可以在预先存在的虚拟网络和预先存在的子网中创建应用服务环境。  2016 年 6 月进行更改以后，也可以将 ASE 部署到使用公用地址范围或 RFC1918 地址空间（即，专用地址）的虚拟网络。  有关创建应用服务环境的更多详细信息，请参阅[如何创建应用服务环境][HowToCreateAnAppServiceEnvironment]。
+可以在 Azure 资源管理器虚拟网络**或**经典部署模型[虚拟网络][virtualnetwork]中创建应用服务环境。  创建应用服务环境时，可以定义新的虚拟网络和新的子网。  或者，可以在预先存在的虚拟网络和预先存在的子网中创建应用服务环境。  2016 年 6 月进行更改以后，也可以将 ASE 部署到使用公用地址范围或 RFC1918 地址空间（即，专用地址）的虚拟网络。  有关创建应用服务环境的更多详细信息，请参阅[如何创建应用服务环境][HowToCreateAnAppServiceEnvironment]。
 
 应用服务环境始终必须在子网中创建，由于子网提供网络边界用于锁定上游设备和服务后面的入站流量，因此只接受来自特定上游 IP 地址的 HTTP 和 HTTPS 流量。
 
@@ -38,10 +39,10 @@ ms.locfileid: "22987002"
 
 以下是应用服务环境使用的端口列表。 所有端口都是 **TCP**，除非另有明确的说明：
 
-* 454：Azure 基础结构用来通过 SSL 管理和维护应用服务环境的**必需端口**。  不要阻止发往此端口的流量。  此端口始终绑定到 ASE 的公共 VIP。
-* 455：Azure 基础结构用来通过 SSL 管理和维护应用服务环境的**必需端口**。  不要阻止发往此端口的流量。  此端口始终绑定到 ASE 的公共 VIP。
-* 80：用于将入站 HTTP 流量发往应用服务环境的应用服务计划中运行的应用的默认端口。  在启用 ILB 的 ASE 中，此端口绑定到 ASE 的 ILB 地址。
-* 443：用于将入站 SSL 流量发往应用服务环境的应用服务计划中运行的应用的默认端口。  在启用 ILB 的 ASE 中，此端口绑定到 ASE 的 ILB 地址。
+* 454：Azure 基础结构用来通过 SSL 管理和维护应用服务环境的“必需端口”。  不要阻止发往此端口的流量。  此端口始终绑定到 ASE 的公共 VIP。
+* 455：Azure 基础结构用来通过 SSL 管理和维护应用服务环境的“必需端口”。  不要阻止发往此端口的流量。  此端口始终绑定到 ASE 的公共 VIP。
+* 80：默认端口，用于将入站 HTTP 流量发往应用服务环境的应用服务计划中运行的应用。  在启用 ILB 的 ASE 中，此端口绑定到 ASE 的 ILB 地址。
+* 443：默认端口，用于将入站 SSL 流量发往应用服务环境的应用服务计划中运行的应用。  在启用 ILB 的 ASE 中，此端口绑定到 ASE 的 ILB 地址。
 * 21：FTP 的控制通道。  如果未使用 FTP，则可以安全地阻止此端口。  在启用 ILB 的 ASE 中，此端口可以绑定到 ASE 的 ILB 地址。
 * 990：FTPS 的控制通道。  如果未使用 FTPS，则可以安全地阻止此端口。  在启用 ILB 的 ASE 中，此端口可以绑定到 ASE 的 ILB 地址。
 * 10001-10020：FTP 的数据通道。  和控制通道一样，如果未使用 FTP，则可以放心地阻止这些端口。  在启用 ILB 的 ASE 中，此端口可以绑定到 ASE 的 ILB 地址。
@@ -59,7 +60,7 @@ ms.locfileid: "22987002"
 ## <a name="creating-a-network-security-group"></a>创建网络安全组
 有关网络安全组工作原理的完整详情，请参阅以下[信息][NetworkSecurityGroups]。  以下 Azure 服务管理示例涉及网络安全组的要点，着重讲解如何配置网络安全组并将其应用到包含应用服务环境的子网。
 
-**注意：** 可以使用 [Azure 门户](https://portal.azure.com)或通过 Azure PowerShell 以图形方式配置网络安全组。
+**注意：** 可使用 [Azure 门户](https://portal.azure.com)或通过 Azure PowerShell 以图形方式配置网络安全组。
 
 网络安全组最初创建为与订阅关联的独立实体。 由于网络安全组是在 Azure 区域中创建的，因此请确保在与应用服务环境相同的区域中创建网络安全组。
 

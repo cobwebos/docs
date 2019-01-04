@@ -1,5 +1,6 @@
 ---
-title: Azure 机器学习服务如何工作？
+title: 云中的机器学习：术语和体系结构
+titleSuffix: Azure Machine Learning service
 description: 了解组成 Azure 机器学习服务的体系结构、术语和概念。 此外，还将了解如何使用该服务的常规工作流，以及 Azure 机器学习服务所使用的 Azure 服务。
 services: machine-learning
 ms.service: machine-learning
@@ -8,13 +9,14 @@ ms.topic: conceptual
 ms.author: haining
 author: hning86
 ms.reviewer: larryfr
-ms.date: 10/24/2018
-ms.openlocfilehash: 0acf41cc0a2673ba665d1815b493df928fa4507d
-ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
+ms.date: 12/04/2018
+ms.custom: seodec18
+ms.openlocfilehash: 3966d4b27f0e3d42f47d84fb5c9f5c8519a27b6c
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51706800"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53184723"
 ---
 # <a name="how-the-azure-machine-learning-service-works-architecture-and-concepts"></a>Azure 机器学习服务的工作方式：体系结构和概念
 
@@ -33,8 +35,6 @@ ms.locfileid: "51706800"
 1. __创建映像__并将其注册在__映像注册表__中。 
 1. 在 Azure 中__将映像部署__为 __Web 服务__。
 
-
-[!INCLUDE [aml-preview-note](../../../includes/aml-preview-note.md)]
 
 > [!NOTE]
 > 虽然本文档定义了 Azure 机器学习使用的术语和概念，但它未定义 Azure 平台的术语和概念。 有关 Azure 平台术语的详细信息，请参阅 [Microsoft Azure 词汇表](https://docs.microsoft.com/azure/azure-glossary-cloud-terminology)。
@@ -65,7 +65,7 @@ ms.locfileid: "51706800"
 
 下图是工作区的分类：
 
-[![工作区分类](./media/concept-azure-machine-learning-architecture/taxonomy.png)](./media/concept-azure-machine-learning-architecture/taxonomy.png#lightbox)
+[![工作区分类](./media/concept-azure-machine-learning-architecture/azure-machine-learning-taxonomy.svg)](./media/concept-azure-machine-learning-architecture/azure-machine-learning-taxonomy.png#lightbox)
 
 ## <a name="model"></a>模型
 
@@ -75,7 +75,7 @@ ms.locfileid: "51706800"
 
 Azure 机器学习服务与框架无关。 创建模型时，你可以使用任何常用机器学习框架，例如 scikit-learn、xgboost、PyTorch、TensorFlow、Chainer 和 CNTK。
 
-有关培训模型的示例，请参阅[快速入门：创建机器学习服务工作区](quickstart-get-started.md)文档。
+如需模型训练的示例，请参阅[快速入门：创建机器学习服务工作区](quickstart-get-started.md)文档。
 
 ### <a name="model-registry"></a>模型注册表
 
@@ -148,13 +148,13 @@ Azure IoT Edge 将确保模块正在运行并且监视托管它的设备。
 
 提交脚本以培训模型时，会生成运行。 运行可以有零次或多次子级运行。 因此，顶级运行可以有两次子级运行，其中每个可以有其自己的子级运行。
 
-有关查看培训模型生成的运行的示例，请参阅[快速入门：开始使用 Azure 机器学习服务](quickstart-get-started.md)文档。
+有关查看由训练模型产生的运行次数的示例，请参阅[快速入门：Azure 机器学习服务入门](quickstart-get-started.md)文档。
 
 ## <a name="experiment"></a>试验
 
 试验是给定脚本中多次运行的分组。 它始终属于工作区。 当你提交运行时，需提供试验名称。 运行的信息存储在该试验下。 如果你提交运行，并指定一个不存在的试验名称，系统将自动创建一个使用该名称的新试验。
 
-有关使用试验的示例，请参阅[快速入门：开始使用 Azure 机器学习服务](quickstart-get-started.md)文档。
+有关使用试验的示例，请参阅[快速入门：Azure 机器学习服务入门](quickstart-get-started.md)文档。
 
 ## <a name="pipeline"></a>管道
 
@@ -169,19 +169,23 @@ Azure IoT Edge 将确保模块正在运行并且监视托管它的设备。
 | 计算目标 | 培训 | 部署 |
 | ---- |:----:|:----:|
 | 本地计算机 | ✓ | &nbsp; |
+| Azure 机器学习计算 | ✓ | &nbsp; |
 | Azure 中的 Linux VM</br>（例如 Data Science Virtual Machine） | ✓ | &nbsp; |
-| Azure Batch AI 群集 | ✓ | &nbsp; |
 | Azure Databricks | ✓ | &nbsp; | &nbsp; |
 | Azure Data Lake Analytics | ✓ | &nbsp; |
 | Apache Spark for HDInsight | ✓ | &nbsp; |
-| Azure 容器实例 | ✓ | ✓ |
+| Azure 容器实例 | &nbsp; | ✓ |
 | Azure Kubernetes 服务 | &nbsp; | ✓ |
 | Azure IoT Edge | &nbsp; | ✓ |
 | Project Brainwave</br>（现场可编程门阵列） | &nbsp; | ✓ |
 
 计算目标附加到工作区。 本地计算机以外的计算目标由工作区的用户共享。
 
-大多数计算目标可以使用 Azure 门户、Azure 机器学习 SDK 或 Azure CLI 通过工作区直接创建。 如果有其他过程（例如，Azure 门户或 Azure CLI）创建的计算目标，可以将其添加（附加）到工作区。 一些计算目标必须在工作区外部创建，然后附加。
+### <a name="managed-and-unmanaged-compute-targets"></a>托管和非托管的计算目标
+
+**托管**计算目标由 Azure 机器学习服务创建和管理。 为 ML 工作负荷优化了这些计算目标。 __Azure 机器学习计算__是当时（2018 年 12 月 4 日）仅有的托管计算目标。 将来可能会添加其他托管计算目标。 可以使用 Azure 门户、Azure 机器学习 SDK 或 Azure CLI 通过工作区直接创建 ML 计算实例。 所有其他计算目标必须在工作区外创建，然后再附加到工作区。
+
+**非托管**计算目标不由 Azure 机器学习服务管理。 你可能需要在 Azure 机器学习外部创建它们，然后在使用前将它们附加到工作区。 这些计算目标可能需要额外的步骤来维护 ML 工作负荷或提高其性能。
 
 有关选择培训的计算目标的信息，请参阅[选择并使用计算目标以培训模型](how-to-set-up-training-targets.md)文档。
 
@@ -224,4 +228,4 @@ Azure IoT Edge 将确保模块正在运行并且监视托管它的设备。
 
 * [什么是 Azure 机器学习服务](overview-what-is-azure-ml.md)
 * [快速入门：使用 Python 创建工作区](quickstart-get-started.md)
-* [教程：定型模型](tutorial-train-models-with-aml.md)
+* [教程：训练模型](tutorial-train-models-with-aml.md)

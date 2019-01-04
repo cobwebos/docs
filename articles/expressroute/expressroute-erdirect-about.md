@@ -1,5 +1,5 @@
 ---
-title: 关于 Azure ExpressRoute Direct | Microsoft Docs
+title: 关于 ExpressRoute Direct - Azure | Microsoft Docs
 description: 本页概述了 ExpressRoute Direct（预览版）
 services: expressroute
 author: mialdrid
@@ -7,16 +7,17 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 11/01/2018
 ms.author: mialdrid
-ms.openlocfilehash: 3b46f24edf10fee7001b35ffdd9fa218aa438e19
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.custom: seodec18
+ms.openlocfilehash: 2f984eb8cb09e5d65c4a366b827f695c739003f3
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50959661"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53163814"
 ---
 # <a name="about-expressroute-direct-preview"></a>关于 ExpressRoute Direct（预览版）
 
-借助 ExpressRoute Direct，用户可直接连接到巧妙分布在全球对等互连位置的 Microsoft 的全球网络。 ExpressRoute Direct 提供双 100 Gbps 连接，支持大规模的主动/主动连接。
+使用 ExpressRoute Direct，可以直接连接到 Microsoft 战略性分布在全球的对等互连位置的的全球网络。 ExpressRoute Direct 提供双 100 Gbps 连接，支持大规模的主动/主动连接。
 
 ExpressRoute Direct 提供的主要功能包括但不限于：
 

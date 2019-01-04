@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 09/19/2018
 ms.author: sethm
 ms.reviewer: alfredo
-ms.openlocfilehash: 6f93a72acdcc249720abeec3fe871b7108e2bb29
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: e319c803b610005bc130e9c5d314d23c48c1e9a3
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52963736"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53717173"
 ---
 # <a name="add-tenant-for-usage-and-billing-to-azure-stack"></a>将租户添加到 Azure Stack 以获取用量和计费信息
 
@@ -53,7 +53,7 @@ CSP 通常向其 Azure Stack 部署中的多个最终客户（租户）提供服
  
 ## <a name="update-the-registration-with-the-end-customer-subscription"></a>更新最终客户订阅中的注册
 
-更新在最终客户订阅中的注册 Azure 将使用合作伙伴中心内的客户标识客户来报告客户的用量。 此步骤可确保在每个客户的个人 CSP 订阅下报告该客户的用量。 这样可以大大简化用户用量跟踪和计费。
+更新在最终客户订阅中的注册 Azure 报告使用合作伙伴中心客户标识客户的使用情况。 此步骤可确保在每个客户的个人 CSP 订阅下报告该客户的用量。 这样可以大大简化用户用量跟踪和计费。
 
 > [!Note]  
 > 若要执行此步骤，必须[注册 Azure Stack](azure-stack-register.md)。
@@ -67,7 +67,7 @@ CSP 通常向其 Azure Stack 部署中的多个最终客户（租户）提供服
     New-AzureRmResource -ResourceId "subscriptions/{registrationSubscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.AzureStack/registrations/{registrationName}/customerSubscriptions/{customerSubscriptionId}" -ApiVersion 2017-06-01 -Properties <PSObject>
 ```
 ### <a name="new-azurermresource-powershell-parameters"></a>New-AzureRmResource PowerShell 参数
-| 参数 | 说明 |
+| 参数 | 描述 |
 | --- | --- | 
 |registrationSubscriptionID | 用于 Azure Stack 初始注册的 Azure 订阅。|
 | customerSubscriptionID | 属于要注册的客户的 Azure 订阅（不是 Azure Stack）。 必须在 CSP 产品中创建；在实践中，这意味着通过合作伙伴中心创建。 如果客户有多个 Azure Active Directory 租户，则必须在用于登录 Azure Stack 的租户中创建此订阅。 客户订阅 ID 必须使用小写字母。 |

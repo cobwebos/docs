@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 11/22/2018
 ms.author: v-jysur
 ms.asset: 0c4127f2-d936-48ef-b430-a9198e425d81
-ms.openlocfilehash: 1d077fc8a853f145d271fa69d453ea2ea70ab696
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 9ff66b386a6293c11ad67ec90e165b927ad6669b
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52319076"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52870548"
 ---
 # <a name="release-notes-for-microsoft-azure-backup-server"></a>Microsoft Azure 备份服务器发行说明
 本文提供了 Microsoft Azure 备份服务器 (MABS) V3 的已知的问题和解决方法。
@@ -23,7 +23,7 @@ ms.locfileid: "52319076"
 
 **说明：** 将 MABS V2 升级到 MABS V3 之后，群集化数据源（例如数据库可用性组 (DAG)中的 Hyper-V 群集或 SQL 群集 (SQL Always On) 或 Exchange）的备份/还原失败。
 
-**解决方法：** 若要防止出现此问题，请打开 SQL Server Management Studio (SSMS)) 并在 DPM DB 上运行以下 SQL 脚本：
+**变通方法：** 若要防止出现此问题，请打开 SQL Server Management Studio (SSMS)) 并在 DPM DB 上运行以下 SQL 脚本：
 
 
     IF EXISTS (SELECT * FROM dbo.sysobjects
@@ -56,7 +56,7 @@ ms.locfileid: "52319076"
 
 **说明：** 从 MABS V2 升级到 MABS V3 在俄罗斯语区域设置中失败并且出现错误代码 **4387**。
 
-**解决方法：** 执行以下步骤以使用俄罗斯语安装包升级到 MABS V3：
+**变通方法：** 执行以下步骤以使用俄罗斯语安装包升级到 MABS V3：
 
 1.  [备份](https://docs.microsoft.com/sql/relational-databases/backup-restore/create-a-full-database-backup-sql-server?view=sql-server-2017#SSMSProcedure)你的 SQL 数据库并卸载 MABS V2（在卸载期间选择保留受保护的数据）。
 2.  在升级过程中升级到 SQL 2017（企业版）并卸载报告功能。
@@ -77,4 +77,4 @@ ms.locfileid: "52319076"
 
 ## <a name="next-steps"></a>后续步骤
 
-[MABS v3 中的新增功能](backup-mabs-whats-new-mabs.md)
+[MABS V3 中的新增功能](backup-mabs-whats-new-mabs.md)

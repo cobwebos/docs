@@ -1,6 +1,6 @@
 ---
-title: 升级到 Azure 搜索 .NET SDK 版本 5 | Microsoft Docs
-description: 升级到 Azure 搜索 .NET SDK 版本 5
+title: 升级到 Azure 搜索 .NET SDK 版本 5 - Azure 搜索
+description: 从旧版本将代码迁移到 Azure 搜索 .NET SDK 版本 5。 了解新增功能和所需的代码更改。
 author: brjohnstmsft
 manager: jlembicz
 services: search
@@ -9,12 +9,13 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: brjohnst
-ms.openlocfilehash: b08507d7685ce87a4c176385f750a72d6ae51ba3
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.custom: seodec2018
+ms.openlocfilehash: 743ac433418386281acc58ad1deef06ee75e38d9
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47091134"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53316858"
 ---
 # <a name="upgrading-to-the-azure-search-net-sdk-version-5"></a>升级到 Azure 搜索 .NET SDK 版本 5
 如果使用的是版本 4.0-preview 或更早版本的 [Azure 搜索 .NET SDK](https://aka.ms/search-sdk)，本文有助于升级应用程序，以便使用版本 5。

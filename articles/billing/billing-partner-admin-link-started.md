@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 1e2492d978073f63c1c9494d652ec35a7d6565b7
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.openlocfilehash: a0dad228f23b055d68009eb737e0347ade49e94b
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52274173"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52968042"
 ---
 # <a name="link-partner-id-to-your-azure-accounts"></a>将合作伙伴 ID 链接到 Azure 帐户
 
@@ -30,7 +30,7 @@ ms.locfileid: "52274173"
 
 - **来宾用户：** 客户可将你添加为来宾用户并分配任何 RBAC 角色。 有关详细信息，请参阅[添加另一个目录中的来宾用户](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b)。
 
-- **目录帐户：** 客户可在其目录中为你的组织创建一个新用户，并分配任何 RBAC 角色。
+- **目录帐户：** 客户可以为你在其自己的目录中创建用户帐户，并分配任何 RBAC 角色。
 
 - **服务主体：** 客户可在其目录中为你的组织添加一个应用或脚本，并分配任何 RBAC 角色。 该应用或脚本的标识称为服务主体。
 

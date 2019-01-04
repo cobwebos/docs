@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/14/2017
 ms.author: ashishth
-ms.openlocfilehash: 17aeb847a2c701abf03b46d47e34d13b6fb27316
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: 205ba822b1221de34f3ee1ae25974a406f2013cb
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51633319"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53438092"
 ---
 # <a name="extract-transform-and-load-etl-at-scale"></a>大规模提取、转换和加载 (ETL)
 
@@ -32,11 +32,11 @@ ms.locfileid: "51633319"
 
 若要在适当的时间运行适当的作业，则需要业务流程。
 
-### <a name="oozie"></a>Oozie
+### <a name="apache-oozie"></a>Apache Oozie
 
-Apache Oozie 是一个管理 Hadoop 作业的工作流协调系统。 Oozie 在 HDInsight 群集中运行，并与 Hadoop 堆栈集成。 Oozie 支持 Apache MapReduce、Apache Pig、Apache Hive 和 Apache Sqoop 的 Hadoop 作业。 Oozie 还可用于安排特定于某系统的作业，例如 Java 程序或 shell 脚本。
+Apache Oozie 是一个管理 Hadoop 作业的工作流协调系统。 Oozie 在 HDInsight 群集中运行，并与 Hadoop 堆栈集成。 Oozie 支持 Apache Hadoop MapReduce、Apache Pig、Apache Hive 和 Apache Sqoop 的 Hadoop 作业。 Oozie 还可用于安排特定于某系统的作业，例如 Java 程序或 shell 脚本。
 
-有关详细信息，请参阅[在 HDInsight 中将 Oozie 与 Hadoop 配合使用以定义和运行工作流](../hdinsight-use-oozie-linux-mac.md)，深入了解如何显示如何使用 Oozie 驱动器端到端管道，请参阅[具有可操作性数据管道](../hdinsight-operationalize-data-pipeline.md)。 
+有关详细信息，请参阅[在 HDInsight 中将 Apache Oozie 与 Apache Hadoop 配合使用以定义和运行工作流](../hdinsight-use-oozie-linux-mac.md)。如需深入演示如何使用 Oozie 驱动端到端管道，请参阅[操作数据管道](../hdinsight-operationalize-data-pipeline.md)。 
 
 ### <a name="azure-data-factory"></a>Azure 数据工厂
 
@@ -52,7 +52,7 @@ Azure 数据工厂以平台即服务的形式提供业务流程功能。 它是�
 
 ## <a name="ingest-file-storage-and-result-storage"></a>提取文件存储和结果存储
 
-源数据文件通常载入 Azure 存储或 Azure Data Lake Store 中的某个位置。 文件可以是任何格式，但通常是 CSV 等平面文件。 
+源数据文件通常载入 Azure 存储或 Azure Data Lake Storage 中的某个位置。 文件可以是任何格式，但通常是 CSV 等平面文件。 
 
 ### <a name="azure-storage"></a>Azure 存储 
 
@@ -66,11 +66,11 @@ Azure 存储还为 Blob 存储提供一个 WebHDFS API 层。  HDInsight 中的�
 
 通常使用 PowerShell、Azure 存储 SDK 或 AZCopy 将数据引入 Azure 存储。
 
-### <a name="azure-data-lake-store"></a>Azure Data Lake Store
+### <a name="azure-data-lake-storage"></a>Azure Data Lake 存储
 
-Azure Data Lake Store (ADLS) 是一个托管的超大规模存储库，适用于与 HDFS 兼容的分析数据。  ADLS 使用类似于 HDFS 的设计范例，并在总容量及单个文件的大小方面提供无限可伸缩性。 ADLS 非常适合与大型文件配合运行，因为大型文件可以跨多个节点存储。  ADLS 中的数据分区在幕后执行。  通过数以千计的并发执行程序，可高效读取和写入数百 TB 的数据，从而可获得极大的吞吐量来运行分析作业。
+Azure Data Lake Storage (ADLS) 是一个托管的超大规模存储库，用于分析与 HDFS 兼容的数据。  ADLS 使用类似于 HDFS 的设计范例，并在总容量及单个文件的大小方面提供无限可伸缩性。 ADLS 非常适合与大型文件配合运行，因为大型文件可以跨多个节点存储。  ADLS 中的数据分区在幕后执行。  通过数以千计的并发执行程序，可高效读取和写入数百 TB 的数据，从而可获得极大的吞吐量来运行分析作业。
 
-通常使用 Azure 数据工厂、ADLS SDK、AdlCopy 服务、Apache DistCp 或 Apache Sqoop 将数据引入 ADLS。  要使用其中的哪些服务在很大程度上取决于数据的所在位置。  如果数据当前在现有的 Hadoop 群集中，则可以使用 Apache DistCp、AdlCopy 服务或 Azure 数据工厂。  如果数据在 Azure Blob 存储中，则可以使用 Azure Data Lake Store .NET SDK、Azure PowerShell 或 Azure 数据工厂。
+通常使用 Azure 数据工厂、ADLS SDK、AdlCopy 服务、Apache DistCp 或 Apache Sqoop 将数据引入 ADLS。  要使用其中的哪些服务在很大程度上取决于数据的所在位置。  如果数据当前在现有的 Hadoop 群集中，则可以使用 Apache DistCp、AdlCopy 服务或 Azure 数据工厂。  如果数据在 Azure Blob 存储中，则可以使用 Azure Data Lake Storage .NET SDK、Azure PowerShell 或 Azure 数据工厂。
 
 ADLS 还针对使用 Azure 事件中心或 Apache Storm 运行的事件引入进行了优化。
 
@@ -80,7 +80,7 @@ ADLS 还针对使用 Azure 事件中心或 Apache Storm 运行的事件引入进
 
 * Azure ExpressRoute：使用 Azure ExpressRoute 可在 Azure 数据中心与本地基础结构之间创建专用连接。 这些连接为传输大量数据提供了可靠选项。 有关详细信息，请参阅[ Azure ExpressRoute 文档](../../expressroute/expressroute-introduction.md)。
 
-* 数据“离线上传”。 可以使用 [Azure 导入/导出服务](../../storage/common/storage-import-export-service.md)将包含数据的硬盘驱动器发送到 Azure 数据中心。 数据会首先上传到 Azure 存储 Blob。 然后可使用 [Azure 数据工厂](../../data-factory/connector-azure-data-lake-store.md)或 [AdlCopy 工具](../../data-lake-store/data-lake-store-copy-data-azure-storage-blob.md)从 Azure 存储 Blob 复制数据到 Data Lake Store。
+* 数据“离线上传”。 可以使用 [Azure 导入/导出服务](../../storage/common/storage-import-export-service.md)将包含数据的硬盘驱动器发送到 Azure 数据中心。 数据会首先上传到 Azure 存储 Blob。 然后可使用 [Azure 数据工厂](../../data-factory/connector-azure-data-lake-store.md)或 [AdlCopy](../../data-lake-store/data-lake-store-copy-data-azure-storage-blob.md) 工具从 Azure 存储 Blob 将数据复制到 Data Lake Storage。
 
 ### <a name="azure-sql-data-warehouse"></a>Azure SQL 数据仓库
 
@@ -88,7 +88,7 @@ Azure SQL DW 是存储已清理且准备好的数据供今后分析的绝佳选�
 
 Azure SQL 数据仓库 (SQL DW) 是已针对分析工作负荷进行优化的关系数据库。  Azure SQL DW 根据分区表进行缩放。  表可以跨多个节点分区。  在创建 Azure SQL DW 节点时便选择了节点。  可以在事后缩放节点，但是，该主动过程可能需要移动数据。 有关详细信息，请参阅 [SQL 数据仓库 - 管理计算](../../sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md)。
 
-### <a name="hbase"></a>HBase
+### <a name="apache-hbase"></a>Apache HBase
 
 Apache HBase 是 Azure HDInsight 中提供的键/值存储。  Apache HBase 是一种开源 NoSQL 数据库，它构建于 Hadoop 基础之上，并基于 Google BigTable 模型化。 HBase 针对按列系列组织的无架构数据库中的大量非结构化和结构化数据提供高性能的随机访问和强一致性。
 
@@ -118,17 +118,17 @@ Azure Analysis Services (AAS) 是用于决策支持和业务分析的分析数�
 
 将数据存储到 Azure 中后，可以使用许多服务将这些数据提取和载入其他产品。  HDInsight 支持 Sqoop 和 Flume。 
 
-### <a name="sqoop"></a>Sqoop
+### <a name="apache-sqoop"></a>Apache Sqoop
 
 Apache Sqoop 是专用于在结构化、半结构化和非结构化数据源之间有效传输数据的工具。 
 
 Sqoop 使用 MapReduce 导入和导出数据，可提供并行操作和容错。
 
-### <a name="flume"></a>Flume
+### <a name="apache-flume"></a>Apache Flume
 
 Apache Flume 是分布式、可靠且高度可用的服务，能够有效地收集、聚合与移动大量日志数据。 Flume 采用基于流式传输数据流的简单弹性体系结构。 Flume 既可靠又能容错，提供可优化的可靠性机制和许多故障转移与恢复机制。 Flume 使用一个允许联机分析应用程序的简单可扩展数据模型。
 
-Apache Flume 无法与 Azure HDInsight 配合使用。  本地 Hadoop 安装可以使用 Flume 将数据发送到 Azure 存储 Blob 或 Azure Data Lake Store。  有关详细信息，请参阅[将 Apache Flume 与 HDInsight 配合使用](https://blogs.msdn.microsoft.com/bigdatasupport/2014/03/18/using-apache-flume-with-hdinsight/)。
+Apache Flume 无法与 Azure HDInsight 配合使用。  本地 Hadoop 安装可以使用 Flume 将数据发送到 Azure 存储 Blob 或 Azure Data Lake Storage。  有关详细信息，请参阅[将 Apache Flume 与 HDInsight 配合使用](https://blogs.msdn.microsoft.com/bigdatasupport/2014/03/18/using-apache-flume-with-hdinsight/)。
 
 ## <a name="transform"></a>转换
 
@@ -136,5 +136,5 @@ Apache Flume 无法与 Azure HDInsight 配合使用。  本地 Hadoop 安装可�
 
 ## <a name="next-steps"></a>后续步骤
 
-* [将 Pig 与 Hadoop on HDInsight 配合使用](hdinsight-use-pig.md)
+* [将 Apache Pig 与 Apache Hadoop on HDInsight 配合使用](hdinsight-use-pig.md)
 * [使用 Apache Hive 作为 ETL 工具](apache-hadoop-using-apache-hive-as-an-etl-tool.md) 

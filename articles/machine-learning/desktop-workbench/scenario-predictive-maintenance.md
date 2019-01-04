@@ -13,12 +13,12 @@ ms.topic: article
 ms.custom: mvc
 ms.date: 10/05/2017
 ROBOTS: NOINDEX
-ms.openlocfilehash: c154b0124acb5bee93211adb611356555526d2c0
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 9c638ed9132612db7b82168d3a57057aba9b2d60
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46996207"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52870328"
 ---
 # <a name="predictive-maintenance-for-real-world-scenarios"></a>实际方案的预测性维护
 
@@ -60,7 +60,7 @@ PM 教程的 Cortana Intelligence Gallery 是一个公共 GitHub 存储库 ([htt
 2.  在“项目”页上选择 **+**，然后选择“新建项目”。
 3.  在“新建项目”窗格中，填写新项目的信息。
 4.  在“搜索项目模板”搜索框中，键入“预测性维护”并选择“预测性维护”模板。
-5.  选择**创建**。
+5.  选择“创建”。
 
 ## <a name="prepare-the-notebook-server-computation-target"></a>准备 Notebook 服务器计算目标
 
@@ -98,13 +98,13 @@ az ml notebook start
 
 ## <a name="data-description"></a>数据说明
 
-[模拟数据](https://github.com/Microsoft/SQL-Server-R-Services-Samples/tree/master/PredictiveMaintanenceModelingGuide/Data)包含五个逗号分隔值 (.csv) 文件。 使用以下链接获取有关数据集的更详细说明。
+[模拟数据](https://github.com/Microsoft/SQL-Server-R-Services-Samples/tree/master/PredictiveMaintanenceModelingGuide)包含以下[五个逗号分隔值 (.csv) 文件](https://github.com/Microsoft/SQL-Server-R-Services-Samples/tree/master/PredictiveMaintanenceModelingGuide/Data)：
 
-* [计算机](https://pdmmodelingguide.blob.core.windows.net/pdmdata/machines.csv)：区分每台计算机的特征，例如，期限和模型。
-* [错误](https://pdmmodelingguide.blob.core.windows.net/pdmdata/errors.csv)：错误日志包含机器仍在运行时引起的不间断错误。 这些错误并不被视为故障，但它们可能是以后发生故障事件的前兆。 由于遥测数据以小时的速率收集，错误的日期时间值将舍入到最接近的小时。
-* [维护](https://pdmmodelingguide.blob.core.windows.net/pdmdata/maint.csv)： 维护日志包含计划性维护和非计划性维护记录。 计划性维护对应于组件的定期检查。 非计划性维护可能源于机械故障或其他性能降低。 由于遥测数据以小时的速率收集，维护的日期时间值将舍入到最接近的小时。
-* [遥测数据](https://pdmmodelingguide.blob.core.windows.net/pdmdata/telemetry.csv)：遥测数据包含来自每台计算机中的多个传感器的时序度量值。 所记录的数据是传感器值在每一小时间隔内的平均值。
-* [故障](https://pdmmodelingguide.blob.core.windows.net/pdmdata/failures.csv)：故障对应于维护日志中的组件更换。 每个记录都包含机器 ID、组件类型以及更换日期和时间。 这些记录用于创建模型尝试预测的机器学习标签。
+* [计算机](https://github.com/Microsoft/SQL-Server-R-Services-Samples/blob/master/PredictiveMaintanenceModelingGuide/Data/machines.csv)：用于区分每台计算机的特征，例如，年限和型号。
+* [错误](https://github.com/Microsoft/SQL-Server-R-Services-Samples/blob/master/PredictiveMaintanenceModelingGuide/Data/errors.csv)：错误日志包含计算机仍在运行时引发的不间断错误。 这些错误并不被视为故障，但它们可能是以后发生故障事件的前兆。 由于遥测数据以小时的速率收集，错误的日期时间值将舍入到最接近的小时。
+* [维护](https://github.com/Microsoft/SQL-Server-R-Services-Samples/blob/master/PredictiveMaintanenceModelingGuide/Data/maint.csv)：维护日志包含计划性维护记录和非计划性维护记录。 计划性维护对应于组件的定期检查。 非计划性维护可能源于机械故障或其他性能降低。 由于遥测数据以小时的速率收集，维护的日期时间值将舍入到最接近的小时。
+* [遥测数据](https://github.com/Microsoft/SQL-Server-R-Services-Samples/blob/master/PredictiveMaintanenceModelingGuide/Data/telemetry.csv)：遥测数据包含来自每台计算机中的多个传感器的时序度量值。 所记录的数据是传感器值在每一小时间隔内的平均值。
+* [故障](https://github.com/Microsoft/SQL-Server-R-Services-Samples/blob/master/PredictiveMaintanenceModelingGuide/Data/failures.csv)：故障对应于维护日志中的组件更换。 每个记录都包含机器 ID、组件类型以及更换日期和时间。 这些记录用于创建模型尝试预测的机器学习标签。
 
 若要从 GitHub 存储库中下载原始数据集并为此分析创建 PySpark 数据集，请参阅 Code 文件夹中的[数据引入](https://github.com/Azure/MachineLearningSamples-PredictiveMaintenance/blob/master/Code/1_data_ingestion.ipynb) Jupyter Notebook 方案。
 
@@ -121,7 +121,7 @@ az ml notebook start
 
 [Code\4_operationalization.ipynb](https://github.com/Azure/MachineLearningSamples-PredictiveMaintenance/blob/master/Code/4_operationalization.ipynb)：此 Notebook 使用已保存到本地（Jupyter Notebook 内核）磁盘的最后一个模型来构建组件，用于将模型部署到 Azure Web 服务。 整个操作资产会压缩到在另一个 Azure Blob 容器中存储的 o16n.zip 文件。 该 zip 文件包含：
 
-* **service_schema.json**：用于部署的架构定义文件。 
+* **service_schema.json**：部署的架构定义文件。 
 * **pdmscore.py**：Azure Web 服务所需的 **init()** 和 **run()** 函数。
 * **pdmrfull.model**：模型定义目录。
     

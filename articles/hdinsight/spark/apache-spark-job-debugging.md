@@ -7,33 +7,33 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 12/20/2017
+ms.date: 12/05/2018
 ms.author: hrasheed
-ms.openlocfilehash: 6afb54caca572988c566ab7c6325d511e77fbd3e
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: 5e00c52c17eac92edc3273e2d765d6c5fd76f59b
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52582082"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52970663"
 ---
 # <a name="debug-apache-spark-jobs-running-on-azure-hdinsight"></a>调试 Azure HDInsight 中运行的 Apache Spark 作业
 
-在本文中，将了解如何使用 [Apache Hadoop YARN](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html) UI、Spark UI 和 Spark 历史记录服务器来跟踪和调试 HDInsight 群集上运行的 [Apache Spark](https://spark.apache.org/) 作业。 将使用 Spark 群集中提供的笔记本启动 Spark 作业，相关信息请参阅“机器学习：使用 MLLib 对食物检测数据进行预测分析”。 也可以执行以下步骤来跟踪使用任何其他方法（例如 spark-submit）提交的应用程序。
+在本文中，将了解如何使用 [Apache Hadoop YARN](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html) UI、Spark UI 和 Spark 历史记录服务器来跟踪和调试 HDInsight 群集上运行的 [Apache Spark](https://spark.apache.org/) 作业。 使用 Spark 群集中提供的笔记本启动 Spark 作业，相关信息请参阅“机器学习：使用 MLLib 对食物检测数据进行预测分析”。 也可以执行以下步骤来跟踪使用任何其他方法（例如 spark-submit）提交的应用程序。
 
 ## <a name="prerequisites"></a>先决条件
 必须满足以下条件：
 
 * Azure 订阅。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)。
 * HDInsight 上的 Apache Spark 群集。 有关说明，请参阅[在 Azure HDInsight 中创建 Apache Spark 群集](apache-spark-jupyter-spark-sql.md)。
-* 应该已开始运行笔记本，相关信息请参阅 **[Machine learning: Predictive analysis on food inspection data using MLLib](apache-spark-machine-learning-mllib-ipython.md)**（机器学习：使用 MLLib 对食品检测数据进行预测分析）。 有关如何运行此笔记本的说明，请单击以下链接。  
+* 你应当已开始运行笔记本，相关信息请参阅[机器学习：使用 MLLib 对食物检测数据进行预测分析](apache-spark-machine-learning-mllib-ipython.md)。 有关如何运行此笔记本的说明，请单击以下链接。  
 
 ## <a name="track-an-application-in-the-yarn-ui"></a>在 YARN UI 中跟踪应用程序
-1. 启动 YARN UI。 单击“群集仪表板”，再单击“YARN”。
+1. 启动 YARN UI。 在“群集仪表板”下单击“Yarn”。
    
     ![启动 YARN UI](./media/apache-spark-job-debugging/launch-yarn-ui.png)
    
    > [!TIP]
-   > 或者，也可以从 Ambari UI 启动 YARN UI。 要启动 Ambari UI，请单击“群集仪表板”，并单击“HDInsight 群集仪表板”。 在 Ambari UI 中依次单击“YARN”、“快速链接”、活动的资源管理器和“资源管理器 UI”。    
+   > 或者，也可以从 Ambari UI 启动 YARN UI。 若要启动 Ambari UI，请在“群集仪表板”下单击“Ambari 主页”。 在 Ambari UI 中依次单击“YARN”、“快速链接”、活动的资源管理器和“资源管理器 UI”。    
    > 
    > 
 2. 由于 Spark 作业是使用 Jupyter 笔记本启动的，因此应用程序的名称为 **remotesparkmagics**（这是从笔记本启动的所有应用程序的名称）。 单击应用程序名称旁边的应用程序 ID，以获取有关该作业的详细信息。 此时会启动应用程序视图。
@@ -88,12 +88,12 @@ ms.locfileid: "52582082"
 ## <a name="find-information-about-completed-jobs-using-the-spark-history-server"></a>使用 Spark History Server 查找有关已完成的作业的信息
 完成某个作业后，有关该作业的信息将保存在 Spark History Server 中。
 
-1. 要启动 Spark History Server，请在群集边栏选项卡中单击“群集仪表板”，并单击“Spark History Server”。
+1. 要启动 Spark History Server，请在“概述”边栏选项卡的“群集仪表板”下单击“Spark History Server”。
    
     ![启动 Spark History Server](./media/apache-spark-job-debugging/launch-spark-history-server.png)
    
    > [!TIP]
-   > 或者，也可以从 Ambari UI 启动 Spark History Server UI。 要启动 Ambari UI，请在群集边栏选项卡中单击“群集仪表板”，并单击“HDInsight 群集仪表板”。 在 Ambari UI 中，依次单击“Spark”、“快速链接”和“Spark History Server UI”。
+   > 或者，也可以从 Ambari UI 启动 Spark History Server UI。 要启动 Ambari UI，请在“概述”边栏选项卡的“群集仪表板”下单击“Ambari 主页”。 在 Ambari UI 中，依次单击“Spark”、“快速链接”和“Spark History Server UI”。
    > 
    > 
 2. 随后会看到已列出所有已完成的应用程序。 单击应用程序 ID 可深入到该应用程序以获取更多信息。
@@ -106,8 +106,8 @@ ms.locfileid: "52582082"
 
 ### <a name="for-data-analysts"></a>适用于数据分析师
 
-* [Apache Spark 和机器学习：使用 HDInsight 中的 Spark 结合 HVAC 数据分析建筑物温度](apache-spark-ipython-notebook-machine-learning.md)
-* [Apache Spark 和机器学习：使用 HDInsight 中的 Spark 预测食品检查结果](apache-spark-machine-learning-mllib-ipython.md)
+* [Apache Spark 与机器学习：使用 HDInsight 中的 Spark 来通过 HVAC 数据分析建筑物温度](apache-spark-ipython-notebook-machine-learning.md)
+* [Apache Spark 与机器学习：使用 HDInsight 中的 Spark 预测食品检验结果](apache-spark-machine-learning-mllib-ipython.md)
 * [使用 HDInsight 中的 Apache Spark 分析网站日志](apache-spark-custom-library-website-log-analysis.md)
 * [使用 HDInsight 中的 Apache Spark 执行 Application Insight 遥测数据分析](apache-spark-analyze-application-insight-logs.md)
 * [使用 Caffe on Azure HDInsight Spark 进行分布式深度学习](apache-spark-deep-learning-caffe.md)
@@ -122,5 +122,3 @@ ms.locfileid: "52582082"
 * [在 HDInsight 的 Apache Spark 群集中可用于 Jupyter Notebook 的内核](apache-spark-jupyter-notebook-kernels.md)
 * [Use external packages with Jupyter notebooks（将外部包与 Jupyter 笔记本配合使用）](apache-spark-jupyter-notebook-use-external-packages.md)
 * [Install Jupyter on your computer and connect to an HDInsight Spark cluster（在计算机上安装 Jupyter 并连接到 HDInsight Spark 群集）](apache-spark-jupyter-notebook-install-locally.md)
-
-

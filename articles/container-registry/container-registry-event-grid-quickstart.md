@@ -7,14 +7,15 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 08/23/2018
 ms.author: danlep
-ms.openlocfilehash: 60248da2bbdac751845a40720f8967203c562b4a
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.custom: seodec18
+ms.openlocfilehash: 48fd64908a5cb2488d58f3c078e0ccb17419352f
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50085728"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53260236"
 ---
-# <a name="quickstart-send-container-registry-events-to-event-grid"></a>快速入门：将容器注册表事件发送到事件网格
+# <a name="quickstart-send-events-from-private-container-registry-to-event-grid"></a>快速入门：将事件从私有容器注册表发送到事件网格
 
 Azure 事件网格是一个完全托管的事件路由服务，可以通过发布-订阅模型提供一致的事件使用数据。 在本快速入门中，我们将使用 Azure CLI 创建容器注册表、订阅注册表事件，然后部署一个示例 Web 应用程序来接收事件。 最后，触发容器映像 `push` 和 `delete` 事件，并在示例应用程序中查看事件负载。
 

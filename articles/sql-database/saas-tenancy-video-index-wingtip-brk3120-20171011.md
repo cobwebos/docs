@@ -12,20 +12,20 @@ ms.author: genemi
 ms.reviewer: billgib
 manager: craigg
 ms.date: 05/14/2018
-ms.openlocfilehash: b472baf77cc8f253337aa0780321a6e7dd3fecac
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.openlocfilehash: ec3f286791a3a2c7a3bebd84ba17a11571e389f8
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47056671"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53163967"
 ---
 # <a name="video-indexed-and-annotated-for-multi-tenant-saas-app-using-azure-sql-database"></a>关于使用 Azure SQL 数据库的多租户 SaaS 应用的视频，包含索引和批注
 
 本文是有关 SaaS 租户模型或模式的 81 分钟视频的时间位置批注索引。 可以在本文中向后跳转或向前跳转至视频中感兴趣的部分。 视频介绍 Azure SQL 数据库上多租户数据库应用程序的主要设计选项。 该视频包括演示和管理代码演练，有时甚至可以通过实际操作提供比书面文档更加详细的信息。
 
 该视频扩充了以下书面文档中的信息： 
-- 概念：[多租户 SaaS 数据库租户模式][saas-concept-design-patterns-563e]
-- 教程：[Wingtip Tickets SaaS 应用程序][saas-how-welcome-wingtip-app-679t]
+- *概念：*[多租户 SaaS 数据库租户模式][saas-concept-design-patterns-563e]
+- *教程：*[Wingtip Tickets SaaS 应用程序][saas-how-welcome-wingtip-app-679t]
 
 视频和文章描述在云中的 Azure SQL 数据库上创建多租户应用程序的多个阶段。 Azure SQL 数据库的特殊功能使多租户应用更易于开发、实施和管理且性能可靠。
 
@@ -63,7 +63,7 @@ ms.locfileid: "47056671"
 - [17.Canonical 混合多租户 SaaS 应用，0:47:33](#anchor-image-wtip-min04733)
 - [18.Wingtip SaaS 示例应用，0:48:10](#anchor-image-wtip-min04810)
 - [19.教程中介绍的方案和模式，0:49:10](#anchor-image-wtip-min04910)
-- [20.教程和 Github 存储库演示，0:50:18](#anchor-image-wtip-min05018)
+- [20.教程和 GitHub 存储库演示，0:50:18](#anchor-image-wtip-min05018)
 - [21.GitHub 存储库 Microsoft/WingtipSaaS，0:50:38](#anchor-image-wtip-min05038)
 - [22.浏览模式，0:56:20](#anchor-image-wtip-min05620)
 - [23.预配租户和载入，0:57:44](#anchor-image-wtip-min05744)
@@ -199,8 +199,8 @@ ms.locfileid: "47056671"
 
 
 &nbsp; <a name="anchor-image-wtip-min05018"/>
-#### <a name="20-demo-of-tutorials-and-github-repository-05012"></a>20.教程和 Github 存储库演示，0:50:12
-[![教程和 Github 存储库演示][image-wtip-min05018-demo-tutorials-github]](https://www.youtube.com/watch?v=jjNmcKBVjrc&t=3012)
+#### <a name="20-demo-of-tutorials-and-github-repository-05012"></a>20.教程和 GitHub 存储库演示，0:50:12
+[![教程和 GitHub 存储库演示][image-wtip-min05018-demo-tutorials-github]](https://www.youtube.com/watch?v=jjNmcKBVjrc&t=3012)
 
 
 &nbsp; <a name="anchor-image-wtip-min05038"/>
@@ -294,9 +294,9 @@ ms.locfileid: "47056671"
 
 - [博客文章，2017 年 5 月 22 日][resource-blog-saas-patterns-app-dev-sql-db-768h]
 
-- 概念：[多租户 SaaS 数据库租户模式][saas-concept-design-patterns-563e]
+- *概念：*[多租户 SaaS 数据库租户模式][saas-concept-design-patterns-563e]
 
-- 教程：[Wingtip Tickets SaaS 应用程序][saas-how-welcome-wingtip-app-679t]
+- *教程：*[Wingtip Tickets SaaS 应用程序][saas-how-welcome-wingtip-app-679t]
 
 - Wingtip Tickets SaaS 租户应用程序风格的 GitHub 存储库：
     - [GitHub 存储库 - 用于独立应用程序模型][github-wingtip-standaloneapp]。
@@ -354,7 +354,7 @@ ms.locfileid: "47056671"
 
 [image-wtip-min04910-scenarios-tutorials]: media/saas-tenancy-video-index-wingtip-brk3120-20171011/wingtip-20171011-min04910-scenarios-patterns-explored-tutorials.png "教程中介绍的方案和模式"
 
-[image-wtip-min05018-demo-tutorials-github]: media/saas-tenancy-video-index-wingtip-brk3120-20171011/wingtip-20171011-min05018-demo-saas-tutorials-github-repo.png "教程演示和 Github 存储库"
+[image-wtip-min05018-demo-tutorials-github]: media/saas-tenancy-video-index-wingtip-brk3120-20171011/wingtip-20171011-min05018-demo-saas-tutorials-github-repo.png "教程和 GitHub 存储库演示"
 
 [image-wtip-min05038-github-wingtipsaas]: media/saas-tenancy-video-index-wingtip-brk3120-20171011/wingtip-20171011-min05038-github-repo-wingtipsaas.png "GitHub 存储库 Microsoft/WingtipSaaS"
 

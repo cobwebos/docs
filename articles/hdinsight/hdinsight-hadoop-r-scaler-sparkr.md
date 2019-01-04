@@ -8,18 +8,18 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/19/2017
-ms.openlocfilehash: da486b25a9a35cb4f00d6e5a4689d5be3d270e36
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: a8b0884486f86f66ae02c7e7a82fecee43d5ffed
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51013269"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53386888"
 ---
 # <a name="combine-scaler-and-sparkr-in-hdinsight"></a>在 HDInsight 中将 ScaleR 和 SparkR 合并
 
 本文档演示如何使用 **ScaleR** 逻辑回归模型来预测航班抵达延误时间。 此示例使用通过 **SparkR** 联接的航班延误数据和天气数据。
 
-尽管这两个包在 Hadoop 的 Spark 执行引擎上运行，但它们需要自身的 Spark 会话，因此无法共享内存中的数据。 在即将发布的 ML Server 版本中解决此问题之前，解决方法是维护不重叠的 Spark 会话，并通过中间文件交换数据。 从此处的说明可以看到，这些要求的实现都相当直截了当。
+尽管这两个包在 Apache Hadoop 的 Spark 执行引擎上运行，但它们需要自身的 Spark 会话，因此无法共享内存中的数据。 在即将发布的 ML Server 版本中解决此问题之前，解决方法是维护不重叠的 Spark 会话，并通过中间文件交换数据。 从此处的说明可以看到，这些要求的实现都相当直截了当。
 
 此示例最初由 Mario Inchiosa 和 Roni Burd 在 Strata 2016 研讨会中分享。 也可在 [Building a Scalable Data Science Platform with R](http://event.on24.com/eventRegistration/console/EventConsoleNG.jsp?uimode=nextgeneration&eventid=1160288&sessionid=1&key=8F8FB9E2EB1AEE867287CD6757D5BD40&contenttype=A&eventuserid=305999&playerwidth=1000&playerheight=650&caller=previewLobby&text_language_id=en&format=fhaudio)（使用 R 构建可缩放的数据科学平台）中找到此研讨会。
 
@@ -506,7 +506,7 @@ plot(logitRoc)
 
 ## <a name="scoring-elsewhere"></a>在其他位置评分
 
-还可以使用该模型在另一个平台上为数据评分： 将数据保存到 RDS 文件，然后将该 RDS 传输并导入到 SQL Server R Services 等目标评分环境。 必须确保要评分的数据的系数级别与构建的模型上的级别匹配。 为此，可以通过 ScaleR 的 `rxCreateColInfo()` 函数来提取并保存与建模数据关联的列信息，然后将该列信息应用到预测用的输入数据源。 下面保存了测试数据集的几行数据，接下来将从此示例中提取列信息并在预测脚本中使用：
+还可以使用该模型在另一个平台上为数据评分： 将数据保存到 RDS 文件，然后将该 RDS 传输并导入到 MIcrosoft SQL Server R Services 等目标评分环境。 必须确保要评分的数据的系数级别与构建的模型上的级别匹配。 为此，可以通过 ScaleR 的 `rxCreateColInfo()` 函数来提取并保存与建模数据关联的列信息，然后将该列信息应用到预测用的输入数据源。 下面保存了测试数据集的几行数据，接下来将从此示例中提取列信息并在预测脚本中使用：
 
 ```
 # save the model and a sample of the test dataset 
@@ -535,7 +535,7 @@ logmsg(paste('Elapsed time=',sprintf('%6.2f',elapsed),'(sec)\n\n'))
 
 ## <a name="next-steps-and-more-information"></a>后续步骤和详细信息
 
-- 有关使用 Spark 上的 ML Server 的详细信息，请参阅[入门指南](https://msdn.microsoft.com/microsoft-r/scaler-spark-getting-started)
+- 有关使用 Apache Spark 上的 ML Server 的详细信息，请参阅[入门指南](https://msdn.microsoft.com/microsoft-r/scaler-spark-getting-started)
 
 - 有关 ML Server 的常规信息，请参阅 [R 入门](https://msdn.microsoft.com/microsoft-r/microsoft-r-get-started-node)一文。
 

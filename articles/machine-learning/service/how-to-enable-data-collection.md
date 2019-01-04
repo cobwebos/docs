@@ -1,5 +1,6 @@
 ---
-title: 为生产环境中的模型启用数据收集 - Azure 机器学习
+title: 在生产模型上收集数据
+titleSuffix: Azure Machine Learning service
 description: 了解如何在 Azure Blob 存储中收集 Azure 机器学习输入模型数据。
 services: machine-learning
 ms.service: machine-learning
@@ -9,12 +10,13 @@ ms.reviewer: jmartens
 ms.author: marthalc
 author: marthalc
 ms.date: 11/08/2018
-ms.openlocfilehash: f4340d1ef30bb4317e658c9a9a936f009054e784
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.custom: seodec18
+ms.openlocfilehash: 2a4f0f1100064010405c3d0bc599e7add1041074
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51710624"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53271566"
 ---
 # <a name="collect-data-for-models-in-production"></a>为生产环境中的模型收集数据
 
@@ -45,18 +47,16 @@ Blob 中输出数据的路径遵循以下语法：
 /modeldata/<subscriptionid>/<resourcegroup>/<workspace>/<webservice>/<model>/<version>/<identifier>/<year>/<month>/<day>/data.csv
 # example: /modeldata/1a2b3c4d-5e6f-7g8h-9i10-j11k12l13m14/myresourcegrp/myWorkspace/aks-w-collv9/best_model/10/inputs/2018/12/31/data.csv
 ```
->[!NOTE]
-> 本文中的代码已使用 Azure 机器学习 SDK 版本 0.1.74 进行测试
 
 ## <a name="prerequisites"></a>先决条件
 
-- Azure 订阅。 如果还没有该订阅，可以在开始前创建一个[免费帐户](https://aka.ms/AMLfree)。
+- 如果还没有 Azure 订阅，请在开始前创建免费帐户。 立即试用 [Azure 机器学习服务免费版或付费版](http://aka.ms/AMLFree)。
 
 - 一个 Azure 机器学习服务工作区、一个包含脚本的本地目录，以及所安装的用于 Python 的 Azure 机器学习 SDK。 了解如何通过[如何配置开发环境](how-to-configure-environment.md)一文满足这些先决条件。
 
 - 要部署到 Azure Kubernetes 服务 (AKS) 的经过训练的机器学习模型。 如果没有模型，请参阅[训练图像分类模型](tutorial-train-models-with-aml.md)教程。
 
-- [AKS 群集](how-to-deploy-to-aks.md)。
+- 一个 Azure Kubernetes 服务群集。 有关如何创建 Azure Kubernetes 服务群集并部署到其中的信息，请参阅[如何部署以及在何处部署](how-to-deploy-and-where.md)文档。
 
 - [设置环境](how-to-configure-environment.md)并安装[监视 SDK](https://aka.ms/aml-monitoring-sdk)。
 
@@ -104,7 +104,7 @@ Blob 中输出数据的路径遵循以下语法：
     aks_config = AksWebservice.deploy_configuration(collect_model_data=True, enable_app_insights=True)
     ``` 
 
-5. [创建新图像并部署服务。](how-to-deploy-to-aks.md) 
+5. 若要创建新映像并部署服务，请参阅[如何部署以及在何处部署](how-to-deploy-and-where.md)文档。
 
 
 如果已在环境文件和评分文件中安装了带有依赖项的服务，请通过以下方式启用数据收集：
@@ -136,7 +136,7 @@ Blob 中输出数据的路径遵循以下语法：
 
   1. 转到“部署” -> “选择服务” -> “编辑”。
 
-    [![编辑服务](media/how-to-enable-data-collection/EditService.PNG)](./media/how-to-enable-data-collection/EditService.PNG#lightbox)
+    [![编辑选项](media/how-to-enable-data-collection/EditService.PNG)](./media/how-to-enable-data-collection/EditService.PNG#lightbox)
 
   1. 在“高级设置”中，取消选中“启用模型数据收集”。 
 
@@ -172,7 +172,7 @@ Blob 中输出数据的路径遵循以下语法：
 
 ### <a name="analyzing-model-data-through-power-bi"></a>通过 Power BI 分析模型数据
 
-1. 下载并打开 [PowerBi Desktop](http://www.powerbi.com)
+1. 下载并打开 [PowerBi Desktop](https://www.powerbi.com)
 
 1. 选择“获取数据”，然后单击“[Azure Blob 存储](https://docs.microsoft.com/power-bi/desktop-data-sources)”。
 
@@ -231,8 +231,6 @@ Blob 中输出数据的路径遵循以下语法：
 
 ## <a name="example-notebook"></a>示例笔记本
 
-[00.Getting Started/12.enable-data-collection-for-models-in-aks.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/01.getting-started/12.enable-data-collection-for-models-in-aks) 笔记本演示了本文所述的概念。  
+[how-to-use-azureml/deployment/enable-data-collection-for-models-in-aks/enable-data-collection-for-models-in-aks.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/deployment/enable-data-collection-for-models-in-aks/enable-data-collection-for-models-in-aks.ipynb) 笔记本演示了本文中的概念。  
 
-获取此笔记本：
- 
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-for-examples.md)]

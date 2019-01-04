@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: include
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 10/30/2018
+ms.date: 12/05/2018
 ms.author: jgao
 ms.custom: include file
-ms.openlocfilehash: 936c9198eebfa229db6ac34426e435c9e6ed96e8
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 46618b76f43247199e85c2023a5391c5566f3394
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50254485"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52978773"
 ---
 ## <a name="quickstarts-and-tutorials"></a>快速入门和教程
 
@@ -45,6 +45,7 @@ ms.locfileid: "50254485"
     |[创建链接模板](../articles/azure-resource-manager/resource-manager-tutorial-create-linked-templates.md)|模块化模板，并从模板中调用其他模板。 在本教程中，将创建虚拟网络、虚拟机和相关资源。  相关存储帐户在链接模板中定义。 |
     |[部署虚拟机扩展](../articles/azure-resource-manager/resource-manager-tutorial-deploy-vm-extensions.md)|使用扩展执行部署后任务。 在本教程中，你将部署客户脚本扩展以在虚拟机上安装 Web 服务器。 |
     |[部署 SQL 扩展](../articles/azure-resource-manager/resource-manager-tutorial-deploy-sql-extensions-bacpac.md)|使用扩展执行部署后任务。 在本教程中，你将部署客户脚本扩展以在虚拟机上安装 Web 服务器。 |
+    |[保护项目](../articles/azure-resource-manager/resource-manager-tutorial-secure-artifacts.md)|保护完成部署所需的项目。 本教程介绍如何保护“部署 SQL 扩展”教程中使用的项目。 |
     |[使用安全部署做法](../articles/azure-resource-manager/deployment-manager-tutorial.md)|使用 Azure 部署管理器。 |
 
 这些教程可以单独使用，也可以作为一系列用于学习主要的资源管理器模板开发概念。

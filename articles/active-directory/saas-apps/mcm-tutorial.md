@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/26/2017
 ms.author: jeedes
-ms.openlocfilehash: 5ddd28838e7db7b7f2798b18028aba56246fda4c
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 8b8ff27413888e1745bd9a83e2e2e8c7b77fba34
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39437784"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52847042"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mcm"></a>教程：Azure Active Directory 与 MCM 的集成
 
@@ -112,12 +112,12 @@ ms.locfileid: "39437784"
 
     ![配置单一登录](./media/mcm-tutorial/tutorial_mcm_url.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL： `https://myaba.co.uk/client-access/<companyname>/saml.php`
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“登录 URL”文本框中，使用以下模式键入 URL： `https://myaba.co.uk/client-access/<companyname>/saml.php`
 
     b. 在“标识符”文本框中，使用以下模式键入 URL：`https://myaba.co.uk/<companyname>`
 
     > [!NOTE] 
-    > 这些不是实际值。 必须使用实际登录 URL 和标识符更新这些值。 请联系 [MCM 客户端支持团队](http://mcmtechnology.com/support/)获取这些值。 
+    > 这些不是实际值。 必须使用实际登录 URL 和标识符更新这些值。 请联系 [MCM 客户端支持团队](https://mcmtechnology.com/support/)获取这些值。 
  
 1. 在“SAML 签名证书”部分中，单击“元数据 XML”，并在计算机上保存元数据文件。
 
@@ -127,10 +127,10 @@ ms.locfileid: "39437784"
 
     ![配置单一登录](./media/mcm-tutorial/tutorial_general_400.png) 
 
-1. 若要在 MCM 端配置单一登录，需要将下载的元数据 XML 发送给 [MCM 支持团队](http://mcmtechnology.com/support/)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
+1. 若要在 MCM 端配置单一登录，需要将下载的元数据 XML 发送给 [MCM 支持团队](https://mcmtechnology.com/support/)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
 
 > [!TIP]
-> 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[ Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
+> 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
 ### <a name="creating-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
@@ -156,7 +156,7 @@ ms.locfileid: "39437784"
  
     ![创建 Azure AD 测试用户](./media/mcm-tutorial/create_aaduser_04.png) 
 
-    a. 在“名称”文本框中，键入 **BrittaSimon**。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
 
     b. 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
@@ -166,7 +166,7 @@ ms.locfileid: "39437784"
  
 ### <a name="creating-a-mcm-test-user"></a>创建 MCM 测试用户
 
-在本部分中，会在 MCM 中创建一个名为 Britta Simon 的用户。 请与 [MCM 支持团队](http://mcmtechnology.com/support/)协作，将用户添加到 MCM 平台中。
+在本部分中，会在 MCM 中创建一个名为 Britta Simon 的用户。 请与 [MCM 支持团队](https://mcmtechnology.com/support/)协作，将用户添加到 MCM 平台中。
 
 > [!NOTE]
 > 可以使用 MCM 提供的任何其他 MCM 用户帐户创建工具或 API 来预配 AAD 用户帐户。
@@ -211,7 +211,7 @@ ms.locfileid: "39437784"
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](tutorial-list.md)
-* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
+* [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
 
 

@@ -1,5 +1,5 @@
 ---
-title: 教程：Azure Active Directory 与 Tableau Server 集成 | Microsoft 文档
+title: 教程：Azure Active Directory 与 Tableau Server 集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 和 Tableau Server 之间配置单一登录。
 services: active-directory
 documentationCenter: na
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/29/2018
 ms.author: jeedes
-ms.openlocfilehash: 9986e7984f24e065886f6d0a8b2d06968f778702
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: 84ea1d999a26ce0ce1d548da92549c6a718d5978
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52582711"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52850357"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-tableau-server"></a>教程：Azure Active Directory 与 Tableau Server 集成
 
@@ -116,7 +116,7 @@ ms.locfileid: "52582711"
     | ---------------| --------------- |    
     | username | user.userprincipalname |
 
-    a. 单击“添加新声明”以打开“管理用户声明”对话框。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 单击“添加新声明”以打开“管理用户声明”对话框。
 
     ![图像](./media/tableauserver-tutorial/tutorial-tableauserver-add-attribute.png)
 
@@ -138,7 +138,7 @@ ms.locfileid: "52582711"
 
 6. 在“基本 SAML 配置”部分中，按照以下步骤操作：
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL： `https://azure.<domain name>.link`
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“登录 URL”文本框中，使用以下模式键入 URL： `https://azure.<domain name>.link`
     
     b. 在“标识符”文本框中，使用以下模式键入 URL：`https://azure.<domain name>.link`
 
@@ -159,7 +159,7 @@ ms.locfileid: "52582711"
    
     ![配置单一登录](./media/tableauserver-tutorial/tutorial-tableauserver-001.png)
 
-    a. 在 Tableau Server 配置中，单击“SAML”选项卡。 
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在 Tableau Server 配置中，单击“SAML”选项卡。 
   
     b. 选中“使用 SAML 进行单一登录”复选框。
    
@@ -175,7 +175,7 @@ ms.locfileid: "52582711"
    
     >[!NOTE] 
     >客户必须上传 Tableau Server SAML SSO 配置中的任何证书，SSO 流程中会将其忽略。
-    >如果需要帮助在 Tableau Server 上配置 SAML，请参阅此文：[配置 SAML](http://onlinehelp.tableau.com/current/server/en-us/config_saml.htm)。
+    >如果需要帮助在 Tableau Server 上配置 SAML，请参阅此文：[配置 SAML](https://onlinehelp.tableau.com/current/server/en-us/config_saml.htm)。
 
 ### <a name="creating-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 
@@ -193,7 +193,7 @@ ms.locfileid: "52582711"
 
     ![创建 Azure AD 测试用户](common/create-aaduser-02.png)
 
-    a. 在“名称”字段中，输入 BrittaSimon。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”字段中，输入 BrittaSimon。
   
     b. 在“用户名”字段中键入 brittasimon@yourcompanydomain.extension  
     例如： BrittaSimon@contoso.com

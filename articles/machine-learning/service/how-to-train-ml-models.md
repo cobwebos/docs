@@ -1,5 +1,6 @@
 ---
-title: 通过 Azure 机器学习使用估算器类训练机器学习模型
+title: 使用估算器训练 ML 模型
+titleSuffix: Azure Machine Learning service
 description: 了解如何使用 Azure 机器学习服务估算器类对传统机器学习和深度学习模型执行单节点和分布式训练
 ms.author: minxia
 author: mx-iao
@@ -8,19 +9,20 @@ ms.service: machine-learning
 ms.component: core
 ms.topic: conceptual
 ms.reviewer: sgilley
-ms.date: 09/24/2018
-ms.openlocfilehash: c47761c184d0e6c091ff49b3eca2fdf89574b49d
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.date: 12/04/2018
+ms.custom: seodec18
+ms.openlocfilehash: 0ebb12df835cf1c32e02419989b21684e9884c18
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49114853"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53184349"
 ---
-# <a name="how-to-train-models-with-azure-machine-learning"></a>如何使用 Azure 机器学习训练模型
+# <a name="train-models-with-azure-machine-learning"></a>使用 Azure 机器学习训练模型
 
 训练机器学习模型（尤其是深度神经网络）通常是时间密集型和计算密集型任务。 编写训练脚本并在本地计算机的一小部分数据上运行后，你可能会希望扩大工作负载。
 
-为了便于训练，Azure 机器学习 Python SDK 提供了高级抽象（即估算器类），支持用户在 Azure 生态系统中轻松训练其模型。 可以创建并使用 `Estimator` 对象来提交希望在远程计算上运行的任何训练代码，无论是单节点运行的训练还是跨 GPU 群集的分布式训练。 对于 PyTorch 和 TensorFlow 作业，Azure 机器学习还提供了相应的自定义 `PyTorch` 和 `TensorFlow` 估算器，以便使用这些框架进行简化。
+为了便于训练，Azure 机器学习 Python SDK 提供了高级抽象（即估算器类），支持用户在 Azure 生态系统中轻松训练其模型。 可以创建并使用 [`Estimator` 对象](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator?view=azure-ml-py)来提交希望在远程计算上运行的任何训练代码，无论是单节点运行的训练还是跨 GPU 群集的分布式训练。 对于 PyTorch 和 TensorFlow 作业，Azure 机器学习还提供了相应的自定义 `PyTorch` 和 `TensorFlow` 估算器，以便使用这些框架进行简化。
 
 ## <a name="train-with-an-estimator"></a>使用估算器进行训练
 
@@ -35,7 +37,7 @@ ms.locfileid: "49114853"
 
 ### <a name="single-node-training"></a>单节点训练
 
-对在 Azure 中的远程计算上为 scikit 学习模型运行的单节点训练使用 `Estimator`。 应已创建[计算目标](how-to-set-up-training-targets.md#batch)对象 `compute_target` 和[数据存储](how-to-access-data.md)对象 `ds`。
+对在 Azure 中的远程计算上为 scikit 学习模型运行的单节点训练使用 `Estimator`。 应已创建[计算目标](how-to-set-up-training-targets.md#amlcompute)对象 `compute_target` 和[数据存储](how-to-access-data.md)对象 `ds`。
 
 ```Python
 from azureml.train.estimator import Estimator
@@ -58,7 +60,7 @@ sk_est = Estimator(source_directory='./my-sklearn-proj',
 --|--
 `source_directory`| 包含训练作业所需的所有代码的本地目录。 此文件夹已从本地计算机复制到远程计算 
 `script_params`| 指定训练脚本 `entry_script` 的命令行参数的字典，格式为 <命令行参数, 值> 对
-`compute_target`| 将运行训练脚本的远程计算，这种情况下为 [Batch AI](how-to-set-up-training-targets.md#batch) 群集
+`compute_target`| 运行训练脚本的远程计算目标，在本例中为 Azure 机器学习计算 ([AmlCompute](how-to-set-up-training-targets.md#amlcompute)) 群集
 `entry_script`| 要在远程计算上运行的训练脚本的文件路径（相对于 `source_directory`）。 此文件以及所依赖的任何其他文件应位于此文件夹中
 `conda_packages`| 要通过训练脚本所需的 conda 安装的 Python 包列表。  
 构造函数具有名为 `pip_packages` 的另一个参数，可以将其用于任何所需的 pip 包
@@ -87,7 +89,7 @@ print(run.get_details().status)
 
 以下代码演示了如何为 CNTK 模型执行分布式训练。 此外，假定使用你自己的自定义 docker 映像进行训练，而不是使用默认的 Azure 机器学习映像。
 
-应已创建[计算目标](how-to-set-up-training-targets.md#batch)对象 `compute_target`。 按如下所示创建估算器：
+应已创建[计算目标](how-to-set-up-training-targets.md#amlcompute)对象 `compute_target`。 按如下所示创建估算器：
 
 ```Python
 from azureml.train.estimator import Estimator
@@ -117,13 +119,11 @@ run = experiment.submit(cntk_est)
 ```
 
 ## <a name="examples"></a>示例
-有关训练 sklearn 模型的教程，请参阅：
-* [tutorials/01.train-models.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/tutorials/01.train-models.ipynb)
+有关训练 sklearn 模型的笔记本，请参见：
+* [tutorials/img-classification-part1-training.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/tutorials/img-classification-part1-training.ipynb)
 
-有关使用自定义 docker 的分布式 CNTK 的教程，请参阅：
-* [training/06.distributed-cntk-with-custom-docker](https://github.com/Azure/MachineLearningNotebooks/blob/master/training/06.distributed-cntk-with-custom-docker)
-
-获取以下笔记本：
+有关分布式深度学习的笔记本，请参阅：
+* [how-to-use-azureml/training-with-deep-learning](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning)
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-for-examples.md)]
 

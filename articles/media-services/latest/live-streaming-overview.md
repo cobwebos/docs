@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 11/26/2018
 ms.author: juliako
-ms.openlocfilehash: 634563a2010562e20691abae132dc7540ef8faf2
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: b51f2850a925fcd9daf3a07d8db66193555df0fa
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52632688"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "53000242"
 ---
 # <a name="live-streaming-with-azure-media-services-v3"></a>使用 Azure 媒体服务 v3 实时传送视频流
 
@@ -34,7 +34,7 @@ ms.locfileid: "52632688"
 
 若要使用媒体服务传送点播流或实时流，至少需要一个 [StreamingEndpoint](https://docs.microsoft.com/rest/api/media/streamingendpoints)。 创建媒体服务帐户时，会将一个处于“已停止”状态的**默认** StreamingEndpoint 添加到帐户。 需要启动该 StreamingEndpoint，然后可从中向观看者流式传输内容。 可以使用默认的 **StreamingEndpoint**，或使用所需的配置和 CDN 设置创建另一个自定义的 **StreamingEndpoint**。 可根据需要启用多个 StreamingEndpoint，其中每个 StreamingEndpoint 面向不同的 CDN，并提供唯一的主机名用于传送内容。 
 
-在媒体服务中，[LiveEvent](https://docs.microsoft.com/rest/api/media/liveevents) 负责引入和处理实时视频源。 创建 LiveEvent 时，会创建一个输入终结点，可以使用它来从远程编码器发送实时信号。 远程实时编码器使用 [RTMP](https://en.wikipedia.org/wiki/Real-Time_Messaging_Protocol) 或[平滑流式处理](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming#Microsoft_Smooth_Streaming)（分段 MP4）协议将贡献源发送到该输入终结点。  
+在媒体服务中，[LiveEvent](https://docs.microsoft.com/rest/api/media/liveevents) 负责引入和处理实时视频源。 创建 LiveEvent 时，会创建一个输入终结点，可以使用它来从远程编码器发送实时信号。 远程实时编码器使用 [RTMP](https://www.adobe.com/devnet/rtmp.html) 或[平滑流式处理](https://msdn.microsoft.com/library/ff469518.aspx)（分段 MP4）协议将贡献源发送到该输入终结点。  
 
 一旦 **LiveEvent** 开始接收贡献源，你就可以使用其预览终结点（预览 URL）进行预览，并在进一步发布之前验证是否可以收到实时流。 确认预览流正常后，可以使用 LiveEvent 来确保可以通过一个或多个（预先创建的）**StreamingEndpoint** 传送实时流。 为此，需针对 **LiveEvent** 创建新的 [LiveOutput](https://docs.microsoft.com/rest/api/media/liveoutputs)。 
 
@@ -42,7 +42,7 @@ ms.locfileid: "52632688"
 
 借助媒体服务可以利用**动态打包**，以便预览和广播要发送到服务的贡献源中采用 [MPEG DASH、HLS 和平滑流式处理格式](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming)的实时流。 观看者可以使用任何与 HLS、DASH 或平滑流式处理兼容的播放器播放实时流。 可以使用 Web 应用程序或移动应用程序中的 [Azure Media Player](http://amp.azure.net/libs/amp/latest/docs/index.html) 传送采用上述任何协议的流。
 
-使用媒体服务，可以传送使用高级加密标准 (AES-128) 或三个主要数字版权管理 (DRM) 系统（Microsoft PlayReady、Google Widevine 和 Apple FairPlay）中的任意一个动态加密（**动态加密**）的内容。 媒体服务还提供用于向已授权客户端传送 AES 密钥和 DRM 许可证的服务。 有关如何使用媒体服务加密内容的详细信息，请参阅[保护内容概述](content-protection-overview.md)
+借助媒体服务，可以传送使用高级加密标准 (AES-128) 或三个主要数字版权管理 (DRM) 系统（Microsoft PlayReady、Google Widevine 和 Apple FairPlay）中的任意一个动态加密（**动态加密**）的内容。 媒体服务还提供用于向已授权客户端传送 AES 密钥和 DRM 许可证的服务。 有关如何使用媒体服务加密内容的详细信息，请参阅[保护内容概述](content-protection-overview.md)
 
 还可根据需要应用动态筛选，以便控制发送到播放器的篇目数目、格式、比特率和呈现时间窗口。 
 

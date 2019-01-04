@@ -17,12 +17,12 @@ ms.date: 10/02/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 878c2596a1d884e26a4b4a4ed4764cfd9ce6b39b
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: e9de2c9b7f79dd6cba3050d84ccfa0795bc2d09a
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52424094"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52962573"
 ---
 # <a name="v20-protocols---spas-using-the-implicit-flow"></a>v2.0 协议 - 使用隐式流的 SPA
 
@@ -36,7 +36,7 @@ ms.locfileid: "52424094"
 
 对于这些应用程序（AngularJS、Ember.js、React.js，等等），Azure Active Directory (Azure AD) 支持 OAuth 2.0 隐式授权流。 有关隐式流的说明，请参阅 [OAuth 2.0 规范](https://tools.ietf.org/html/rfc6749#section-4.2)。 其主要优点是它可让应用程序从 Azure AD 获取令牌，无需要执行后端服务器凭据交换。 这可让应用登录用户、维护会话，并获取客户端 JavaScript 代码中所有其他 Web API 的令牌。 使用隐式流时有几个重要的安全注意事项，具体而言，是关于[客户端](https://tools.ietf.org/html/rfc6749#section-10.3)和[用户模拟](https://tools.ietf.org/html/rfc6749#section-10.3)的注意事项。
 
-如果要使用隐式流和 Azure AD 将身份验证添加到 JavaScript 应用，建议使用开放源代码 JavaScript 库 [msal.js](https://github.com/AzureAD/microsoft-authentication-library-for-js)。 
+如果要使用隐式流和 Azure AD 将身份验证添加到 JavaScript 应用，建议使用开放源代码 JavaScript 库 [msal.js](https://github.com/AzureAD/microsoft-authentication-library-for-js)。
 
 但是，如果不想在单页面应用中使用库，而是要自行发送协议消息，请遵循下面的常规步骤。
 
@@ -54,7 +54,7 @@ ms.locfileid: "52424094"
 要一开始将用户登录到应用，可以发送 [OpenID Connect](v2-protocols-oidc.md) 授权请求，以及从 v2.0 终结点获取 `id_token`：
 
 > [!IMPORTANT]
-> 若要成功请求 ID 令牌，[注册门户](https://apps.dev.microsoft.com)中的应用注册必须已为 Web 客户端启用了“允许隐式流”。 如果未启用，将返回 `unsupported_response` 错误：“输入参数“response_type”提供的值不允许用于此客户端。预期值为“code””
+> 若要成功请求 ID 令牌，[注册门户](https://apps.dev.microsoft.com)中的应用注册必须已为 Web 客户端启用了“允许隐式流”。 如果未启用，将返回 `unsupported_response` 错误：为输入参数“response_type”提供的值不允许用于此客户端。预期值为“code””
 
 ```
 // Line breaks for legibility only
@@ -71,7 +71,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 
 > [!TIP]
 > 若要使用隐式流测试登录，请单击 <a href="https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id=6731de76-14a6-49ae-97bc-6eba6914391e&response_type=id_token&redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F&scope=openid&response_mode=fragment&state=12345&nonce=678910" target="_blank">https://login.microsoftonline.com/common/oauth2/v2.0/authorize..</a>在登录之后，浏览器应重定向到 `https://localhost/myapp/`，并且地址栏中有一个 `id_token`。
-> 
+>
 
 | 参数 |  | Description |
 | --- | --- | --- |

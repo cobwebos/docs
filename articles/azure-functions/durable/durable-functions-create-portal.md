@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 10/23/2018
 ms.author: azfuncdf, glenga
-ms.openlocfilehash: acbba991e6dcce56fad7f27c45f85214cc8fc707
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: a79faa1dc5a28e5e2ac37ea164c341b855b3bb80
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52637002"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53339716"
 ---
 # <a name="create-durable-functions-using-the-azure-portal"></a>使用 Azure 门户创建 Durable Functions
 
@@ -24,17 +24,43 @@ Azure Functions 的 [Durable Functions](durable-functions-overview.md) 扩展是
 >[!NOTE]
 >
 >* 如果在 C# 中开发 Durable Functions，则应改为考虑 [Visual Studio 2017 开发](durable-functions-create-first-csharp.md)。
-* 如果在 JavaScript 中开发 Durable Functions，则应改为考虑 **Visual Studio Code 开发**。
->
->目前尚不支持在门户中使用 JavaScript 创建 Durable Functions。 请改用 Visual Studio Code。
+* 如果在 JavaScript 中开发 Durable Functions，则应改为考虑 [Visual Studio Code 开发](./quickstart-js-vscode.md)。
 
 ## <a name="create-a-function-app"></a>创建函数应用
 
-必须使用函数应用托管任何函数的执行。 函数应用可将函数分组为一个逻辑单元，以便更轻松地管理、部署和共享资源。 必须创建 C# 函数应用，因为 Durable Functions 尚不支持 JavaScript 模板。  
+必须使用函数应用托管任何函数的执行。 函数应用可将函数分组为一个逻辑单元，以便更轻松地管理、部署和共享资源。 你可以创建 .NET 或 JavaScript 应用。
 
 [!INCLUDE [Create function app Azure portal](../../../includes/functions-create-function-app-portal.md)]
 
-默认情况下，创建的函数应用使用 2.x 版 Azure Functions 运行时。 Durable Functions 扩展在 1.x 和 2.x 版 Azure Functions 运行时上均可使用。 但是，只有在以 2.x 版运行时为目标时，才能使用模板。
+默认情况下，创建的函数应用使用 2.x 版 Azure Functions 运行时。 Durable Functions 扩展在 C# 中能够在 1.x 和 2.x 版 Azure Functions 运行时上工作，在 JavaScript 中能够在 2.x 版上工作。 但是，无论选择哪种语言，只有在以 2.x 版运行时为目标时，才能使用模板。
+
+## <a name="install-the-durable-functions-npm-package-javascript-only"></a>安装 Durable Functions npm 程序包（仅限 JavaScript）
+
+如果要创建 JavaScript Durable Functions，需要安装 [`durable-functions` npm 程序包](https://www.npmjs.com/package/durable-functions)。
+
+1. 选择你的函数应用的名称，然后依次选择“平台功能”和“高级工具(Kudu)”。
+
+   ![函数 平台功能 选择 Kudu](./media/durable-functions-create-portal/function-app-platform-features-choose-kudu.png)
+
+2. 在 Kudu 控制台中，选择“调试控制台”，然后选择“CMD”。
+
+   ![Kudu 调试控制台](./media/durable-functions-create-portal/kudu-choose-debug-console.png)
+
+3. 此时应当会显示你的函数应用的文件目录结构。 导航到 `site/wwwroot` 文件夹。 在这里，可以通过将 `package.json` 文件拖放到文件目录窗口中来将其上传。 下面是一个示例 `package.json`：
+
+    ```json
+    {
+      "dependencies": {
+        "durable-functions": "^1.1.2"
+      }
+    }
+    ```
+
+   ![Kudu 上传 package.json](./media/durable-functions-create-portal/kudu-choose-debug-console.png)
+
+4. 上传你的 `package.json` 后，从 Kudu 远程执行控制台中运行 `npm install` 命令。
+
+   ![Kudu 运行 npm install](./media/durable-functions-create-portal/kudu-npm-install.png)
 
 ## <a name="create-an-orchestrator-function"></a>创建一个业务流程协调程序函数
 
@@ -92,7 +118,7 @@ Azure Functions 的 [Durable Functions](durable-functions-overview.md) 扩展是
         }
     ```
 
-1. 继续调用 `statusQueryGetUri` 终结点，直到状态更改为“Completed”，此时会看到一个响应，如以下示例所示： 
+1. 继续调用 `statusQueryGetUri` 终结点，直到状态更改为“Completed”，此时会看到一个响应，如以下示例所示：
 
     ```json
     {

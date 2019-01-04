@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/24/2018
 ms.author: jeedes
-ms.openlocfilehash: 71ecffebe095fd325837aeb1d6e741a2f3321aea
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 88952d09672fb4dd2d31878d56a59cb425f53de2
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39421832"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52850442"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mimecast-personal-portal"></a>教程：Azure Active Directory 与 Mimecast Personal Portal 的集成
 
@@ -108,7 +108,7 @@ ms.locfileid: "39421832"
 
     ![Mimecast Personal Portal 域和 URL 单一登录信息](./media/mimecast-personal-portal-tutorial/tutorial_mimecastpersonalportal_url.png)
 
-    a. 在“登录 URL”文本框中，键入 URL： 
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“登录 URL”文本框中，键入 URL： 
 
     | 区域  |  值 | 
     | --------------- | --------------- | 
@@ -139,7 +139,7 @@ ms.locfileid: "39421832"
     | 海外        | `https://jer-api.mimecast.com/login/saml`|
     
     > [!NOTE] 
-    > 标识符非实际值。 请使用实际标识符更新此值。 请联系 [Mimecast Personal Portal 客户端支持团队](http://www.mimecast.com/customer-success/technical-support/)来获取这些值。 
+    > 标识符非实际值。 请使用实际标识符更新此值。 请联系 [Mimecast Personal Portal 客户端支持团队](https://www.mimecast.com/customer-success/technical-support/)来获取这些值。 
 
 1. 在“SAML 签名证书”部分中，单击“证书(base64)”，并在计算机上保存证书文件。
 
@@ -171,7 +171,7 @@ ms.locfileid: "39421832"
    
     ![身份验证配置文件](./media/mimecast-personal-portal-tutorial/ic795001.png "身份验证配置文件")
    
-    a. 在“描述”文本框中，键入配置名称。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“描述”文本框中，键入配置名称。
    
     b. 选择“对 Mimecast Personal Portal 强制实施 SAML 身份验证”。
    
@@ -213,7 +213,7 @@ ms.locfileid: "39421832"
 
     ![“用户”对话框](./media/mimecast-personal-portal-tutorial/create_aaduser_04.png)
 
-    a. 在“姓名”框中，键入“BrittaSimon”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“姓名”框中，键入“BrittaSimon”。
 
     b. 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
 
@@ -247,7 +247,7 @@ ms.locfileid: "39421832"
    
     ![保存](./media/mimecast-personal-portal-tutorial/ic795006.png "保存")
    
-    a. 在“电子邮件地址”文本框中，将用户的“电子邮件地址”键入为“BrittaSimon@contoso.com”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“电子邮件地址”文本框中，将用户的“电子邮件地址”键入为“BrittaSimon@contoso.com”。
     
     b. 在“全局名称”文本框中，将“用户名”键入为“BrittaSimon”。
 
@@ -293,12 +293,12 @@ ms.locfileid: "39421832"
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 单击访问面板中的“Mimecast Personal Portal”磁贴时，用户应自动登录到 Mimecast Personal Portal 应用程序。
-有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
+有关访问面板的详细信息，请参阅[访问面板简介](../user-help/active-directory-saas-access-panel-introduction.md)。 
 
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](tutorial-list.md)
-* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
+* [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
 
 

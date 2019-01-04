@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 流量管理器控制 Azure 应用服务流量
+title: 使用流量管理器控制流量 - Azure 应用服务
 description: 本文提供了有关 Azure 流量管理器的摘要信息，因为它与 Azure 应用服务相关。
 services: app-service\web
 documentationcenter: ''
@@ -15,12 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/25/2016
 ms.author: cephalin
-ms.openlocfilehash: 5e4dfec4bdc9deaf1a57413c1cba4ceefa5195d6
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.custom: seodec18
+ms.openlocfilehash: 85405a96d141188203ddc88410c96654667fa83a
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51246338"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53270104"
 ---
 # <a name="controlling-azure-app-service-traffic-with-azure-traffic-manager"></a>使用 Azure 流量管理器控制 Azure 应用服务流量
 > [!NOTE]

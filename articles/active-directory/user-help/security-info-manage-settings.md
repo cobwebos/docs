@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/30/2018
 ms.author: lizross
-ms.openlocfilehash: f9a77c1f3fbce295a40db366619d7485d44efc4f
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: 4cd88490118343a9a00dbd919d7820f0334df92e
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44162710"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53016140"
 ---
 # <a name="manage-your-security-info-preview"></a>管理安全信息（预览版）
 
@@ -67,7 +67,7 @@ ms.locfileid: "44162710"
 
 3. 在“管理帐户”区域，选择“在记住的设备上忽略使用 MFA”。
     
-    选择此选项意味着在登录后必须再次完成多重身份验证过程。
+    选择此选项意味着在登录后必须再次完成多重身份验证 (MFA) 过程。
 
     ![“个人资料”屏幕，其中已突出显示“在记住的...”链接](media/security-info/security-info-forget.png)
 
@@ -77,7 +77,7 @@ ms.locfileid: "44162710"
 
 |问题|解决方案|
 |-------|--------|
-|我没有带手机|有可能你的手机不在身边，但仍想登录到工作或学校帐户。 若要解决此问题，可以使用不需要手机的其他身份验证方法登录，例如，使用电子邮件地址或办公电话号码。 若要将其他方法添加到安全信息，可以遵循[更改信息](#change-your-info)部分所述的步骤。|
+|我没有带手机|有可能你的手机不在身边，但仍想登录到工作或学校帐户。 若要解决此问题，可以使用不需要手机的其他身份验证方法登录，例如，使用办公电话号码。 若要将其他方法添加到安全信息，可以遵循[更改信息](#change-your-info)部分所述的步骤。|
 |我的手机已丢失或被盗|不幸地，你的手机可能会遗失或被盗。 在这种情况下，我们强烈建议你告知组织，以便 IT 工作人员重置你的应用密码，并从受信任设备列表中清除所有已记住的设备。 还可以遵循[管理遗失或可能泄密的设备的安全信息](#manage-your-security-info-for-a-lost-or-potentially-compromised-device)部分所述的步骤，来忽略自己的受信任设备。|
 |我买了一个新电话号码|可通过两种方法解决此问题。 可以使用不需要电话号码的备用身份验证方法登录，例如使用电子邮件。如果这种方法不可行，请联系组织的 IT 工作人员，让他们清除设置。 若要将其他方法添加到安全信息，可以遵循[更改信息](#change-your-info)部分所述的步骤。|
 |我的默认方法不正确|可以在安全选项中更新默认方法。 有关具体详细信息，请转到[更改信息](#change-your-info)部分。|

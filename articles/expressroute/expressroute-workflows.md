@@ -1,23 +1,24 @@
 ---
-title: Azure ExpressRoute 线路配置工作流 | Microsoft Docs
-description: 本页指导完成配置 ExpressRoute 线路和对等互连的工作流
+title: 线路配置工作流 - ExpressRoute:Azure | Microsoft Docs
+description: 本页显示配置 ExpressRoute 线路和对等互连的工作流
 services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 08/29/2018
+ms.date: 12/07/2018
 ms.author: cherylmc
-ms.openlocfilehash: 765050c9c21c7ba752535fc391cc9bb7d8ac4083
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.custom: seodec18
+ms.openlocfilehash: 3ffcc5ac2193e607573ceb93717258f5349d1f15
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43301032"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53101681"
 ---
 # <a name="expressroute-workflows-for-circuit-provisioning-and-circuit-states"></a>ExpressRoute 线路预配工作流和线路状态
 本页从较高层面引导完成服务预配和路由配置工作流。
 
-![](./media/expressroute-workflows/expressroute-circuit-workflow.png)
+![线路工作流](./media/expressroute-workflows/expressroute-circuit-workflow.png)
 
 下图和相应的步骤说明了预配端到端 ExpressRoute 线路所要执行的任务。 
 
@@ -35,7 +36,7 @@ ms.locfileid: "43301032"
      > 
      > 
      
-     ![](./media/expressroute-workflows/routing-workflow.png)
+     ![路由工作流](./media/expressroute-workflows/routing-workflow.png)
 5. 将虚拟网络链接到 ExpressRoute 线路 - 可以将虚拟网络链接到 ExpressRoute 线路。 请按照说明[将 VNet 链接](expressroute-howto-linkvnet-arm.md)到用户的线路。 这些 VNet 可以位于 ExpressRoute 线路所在的同一 Azure 订阅中，也可以位于不同的订阅中。
 
 ## <a name="expressroute-circuit-provisioning-states"></a>ExpressRoute 线路预配状态

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/04/2018
 ms.author: jeedes
-ms.openlocfilehash: 470805b2bb77e367887767b95e0f1e04d79c8f9d
-ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
+ms.openlocfilehash: 5b7baffea8e718810a91ea9687a007d36c806aab
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/06/2018
-ms.locfileid: "48830729"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52850000"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-servicenow"></a>教程：Azure Active Directory 与 ServiceNow 集成
 
@@ -41,7 +41,7 @@ ms.locfileid: "48830729"
 - Azure AD 订阅
 - 对于 ServiceNow，需要 Calgary 版本或更高版本的 ServiceNow 实例或租户
 - 对于 ServiceNow Express，需要 Helsinki 版本或更高版本的 ServiceNow Express 实例
-- ServiceNow 租户必须启用[多提供程序单一登录插件](http://wiki.servicenow.com/index.php?title=Multiple_Provider_Single_Sign-On#gsc.tab=0)。 这可以通过[提交服务请求](https://hi.service-now.com)完成。
+- ServiceNow 租户必须启用[多提供程序单一登录插件](https://wiki.servicenow.com/index.php?title=Multiple_Provider_Single_Sign-On#gsc.tab=0)。 这可以通过[提交服务请求](https://hi.service-now.com)完成。
 - 对于自动配置，请为 ServiceNow 启用多提供程序插件。
 
 > [!NOTE]
@@ -113,19 +113,19 @@ ms.locfileid: "48830729"
 
     ![配置单一登录](./media/servicenow-tutorial/tutorial_general_300.png)
 
-3. 在“选择单一登录方法”对话框中，对 SAML 模式单击“选择”以启用单一登录。
+3. 在“选择单一登录方法”对话框中，单击“SAML”模式对应的“选择”，以启用单一登录。
 
     ![配置单一登录](./media/servicenow-tutorial/tutorial_general_301.png)
 
-4. 在“使用 SAML 设置单一登录”页上，单击“编辑”按钮以打开“基本 SAML 配置”对话框。
+4. 在“设置 SAML 单一登录”页上，单击“编辑”按钮，以打开“基本 SAML 配置”对话框。
 
     ![配置单一登录](./media/servicenow-tutorial/tutorial_general_302.png)
 
-5. 在“基本 SAML 配置”部分中，执行以下步骤：
+5. 在“基本 SAML 配置”部分中，按照以下步骤操作：
 
     ![ServiceNow 域和 URL 单一登录信息](./media/servicenow-tutorial/tutorial_servicenow_url.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL： `https://<instance-name>.service-now.com/navpage.do`
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“登录 URL”文本框中，使用以下模式键入 URL： `https://<instance-name>.service-now.com/navpage.do`
 
     b. 在“标识符”文本框中，使用以下模式键入 URL：`https://<instance-name>.service-now.com`
 
@@ -136,7 +136,7 @@ ms.locfileid: "48830729"
 
     ![证书下载链接](./media/servicenow-tutorial/tutorial_servicenow_certificate.png)
 
-    a. 单击“复制”按钮来复制**应用联合元数据 URL** 并将其粘贴到记事本，因为本教程中稍后将使用此应用联合元数据 URL。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 单击“复制”按钮来复制**应用联合元数据 URL** 并将其粘贴到记事本，因为本教程中稍后将使用此应用联合元数据 URL。
 
     b. 单击“下载”以下载“证书(Base64)”，并将证书保存在计算机上。
 
@@ -144,7 +144,7 @@ ms.locfileid: "48830729"
 
 8. 请按照以下步骤操作，激活“集成 - 多提供程序单一登录安装程序”插件：
 
-    a. 在左侧导航窗格中，通过搜索栏搜索“系统定义”部分，单击“插件”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在左侧导航窗格中，通过搜索栏搜索“系统定义”部分，单击“插件”。
 
     ![激活插件](./media/servicenow-tutorial/tutorial_servicenow_03.png "激活插件")
 
@@ -301,19 +301,19 @@ ms.locfileid: "48830729"
 
     ![配置单一登录](./media/servicenow-tutorial/tutorial_general_300.png)
 
-3. 在“选择单一登录方法”对话框中，对 SAML 模式单击“选择”以启用单一登录。
+3. 在“选择单一登录方法”对话框中，单击“SAML”模式对应的“选择”，以启用单一登录。
 
     ![配置单一登录](./media/servicenow-tutorial/tutorial_general_301.png)
 
-4. 在“使用 SAML 设置单一登录”页上，单击“编辑”按钮以打开“基本 SAML 配置”对话框。
+4. 在“设置 SAML 单一登录”页上，单击“编辑”按钮，以打开“基本 SAML 配置”对话框。
 
     ![配置单一登录](./media/servicenow-tutorial/tutorial_general_302.png)
 
-5. 在“基本 SAML 配置”部分中，执行以下步骤：
+5. 在“基本 SAML 配置”部分中，按照以下步骤操作：
 
     ![配置单一登录](./media/servicenow-tutorial/tutorial_servicenow_url.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入值：`https://<instance-name>.service-now.com/navpage.do`
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“登录 URL”文本框中，使用以下模式键入值：`https://<instance-name>.service-now.com/navpage.do`
 
     b. 在“标识符”文本框中，使用以下模式键入 URL：`https://<instance-name>.service-now.com`
 
@@ -342,7 +342,7 @@ ms.locfileid: "48830729"
 
     ![配置应用 URL](./media/servicenow-tutorial/ic7694981ex.png "配置应用 URL")
 
-    a. 将“启用多提供程序 SSO”切换到右侧。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 将“启用多提供程序 SSO”切换到右侧。
 
     b. 将“为多提供程序 SSO 集成启用调试日志记录”切换到右侧。
 
@@ -356,7 +356,7 @@ ms.locfileid: "48830729"
 
     ![配置单一登录](./media/servicenow-tutorial/ic7694975.png "配置单一登录")
 
-    a. 在“名称”文本框中，键入配置名称（例如：**TestSAML2.0**）。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”文本框中，键入配置名称（例如：TestSAML2.0）。
 
     b. 选择“活动”。
 
@@ -376,7 +376,7 @@ ms.locfileid: "48830729"
 
     ![配置单一登录](./media/servicenow-tutorial/ic7694982ex.png "配置单一登录")
 
-    a. 在“名称”文本框中，键入配置名称（例如：**SAML 2.0**）。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”文本框中，键入配置名称（例如：SAML 2.0）。
 
     b. 在“标识提供者 URL”字段中，粘贴从 Azure 门户复制的“标识提供者 ID”的值。
 
@@ -390,7 +390,7 @@ ms.locfileid: "48830729"
 
     ![配置单一登录](./media/servicenow-tutorial/ic7694983ex.png "配置单一登录")
 
-    a. 在“IDP 的 SingleLogoutRequest 协议绑定”文本框中，键入“urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“IDP 的 SingleLogoutRequest 协议绑定”文本框中，键入“urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect”。
 
     b. 在“NameID 策略”文本框中，键入“urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified”。
 
@@ -402,7 +402,7 @@ ms.locfileid: "48830729"
 
     ![配置单一登录](./media/servicenow-tutorial/ic7694984ex.png "配置单一登录")
 
-    a. 在“ServiceNow 主页”文本框中，键入 ServiceNow 实例主页的 URL。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“ServiceNow 主页”文本框中，键入 ServiceNow 实例主页的 URL。
 
     > [!NOTE]
     > ServiceNow 实例主页是 **ServiceNow 租户 URL** 和 **/navpage.do** 的串联（例如：`https://fabrikam.service-now.com/navpage.do`）。
@@ -424,7 +424,7 @@ ms.locfileid: "48830729"
 
 本部分的目的是在 Azure 门户中创建名为 Britta Simon 的测试用户。
 
-1. 在 Azure 门户的左窗格中，依次选择“Azure Active Directory”、“用户”、“所有用户”。
+1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”。
 
     ![创建 Azure AD 用户][100]
 
@@ -432,13 +432,13 @@ ms.locfileid: "48830729"
 
     ![创建 Azure AD 测试用户](./media/servicenow-tutorial/create_aaduser_01.png) 
 
-3. 在“用户属性”中，执行以下步骤。
+3. 在“用户属性”中，按照以下步骤操作。
 
     ![创建 Azure AD 测试用户](./media/servicenow-tutorial/create_aaduser_02.png)
 
-    a. 在“名称”字段中，输入 **BrittaSimon**。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”字段中，输入 BrittaSimon。
   
-    b. 在“用户名”字段中键入 **brittasimon@yourcompanydomain.extension**  
+    b. 在“用户名”字段中键入 brittasimon@yourcompanydomain.extension  
     例如： BrittaSimon@contoso.com
 
     c. 选择“属性”，再选择“显示密码”复选框，然后记下“密码”框中显示的值。
@@ -472,7 +472,7 @@ ms.locfileid: "48830729"
 
     ![“添加分配”窗格][203]
 
-5. 在“用户和组”对话框中，在“用户”列表中选择 Britta Simon，然后单击屏幕底部的“选择”按钮。
+5. 在“用户和组”对话框中，选择“用户”列表中的 Britta Simon，然后单击屏幕底部的“选择”按钮。
 
 6. 在“添加分配”对话框中，选择“分配”按钮。
 

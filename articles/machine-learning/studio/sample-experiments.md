@@ -5,9 +5,8 @@ keywords: 机器学习示例, 示例试验, 示例性机器学习, AI 示例
 services: machine-learning
 documentationcenter: ''
 author: ericlicoding
-ms.custom: (previous ms.author=hshapiro, author=heatherbshapiro)
+ms.custom: seodec18, previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.author: amlstudiodocs
-manager: hjerez
 editor: cgronlun
 ms.assetid: 81e6c1d8-682c-4db3-bfd5-d7bfb1150ff3
 ms.service: machine-learning
@@ -17,14 +16,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/05/2018
-ms.openlocfilehash: 568732c5a1d2abbb9f304b624d885b2a3c692706
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 6b2a07b105252ca1fb5eb37c2571601c3eb74179
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52306674"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53276428"
 ---
-# <a name="create-machine-learning-experiments-from-working-examples-in-azure-ai-gallery"></a>根据 Azure AI 库中的工作示例创建机器学习试验
+# <a name="create-azure-machine-learning-studio-experiments-from-working-examples-in-azure-ai-gallery"></a>根据 Azure AI 库中的工作示例创建 Azure 机器学习工作室试验
 
 了解如何从 [Azure AI 库](https://gallery.cortanaintelligence.com/)中的示例试验开始，而不是从头开始创建机器学习试验。 可以使用这些示例构建自己的机器学习解决方案。
 
@@ -32,7 +31,7 @@ ms.locfileid: "52306674"
 
 若要了解如何使用此库，请观看[适合初学者的数据科学](data-science-for-beginners-the-5-questions-data-science-answers.md)系列中 3 分钟的视频[复制其他人的工作来进行数据科学](data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md)。
 
-[!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
+
 
 ## <a name="find-an-experiment-to-copy-in-azure-ai-gallery"></a>找到一个在 Azure AI 库中进行复制的试验
 要查看哪些试验可用，请转到“ [库](https://gallery.cortanaintelligence.com/) ”，并单击页面顶部的“ **试验** ”。
@@ -46,7 +45,7 @@ ms.locfileid: "52306674"
 1. 请单击页面顶部的“ **浏览全部** ”。
 2. 在左侧“类别”部分的“优化依据”下，选择“试验”以查看库中的所有试验。
 3. 可以通过多种方式找到满足要求的试验︰
-   * **选择左侧的筛选器。** 例如，若要浏览使用基于 PCA 的异常情况检测算法的试验，请在“类别”下单击“试验”。 然后，在“所用算法”下单击“全部显示”，并在对话框中选择“基于 PCA 的异常情况检测”。 可能需要滚动才能看到它。<br></br>
+   * **选择左侧的筛选器。** 例如，若要浏览使用基于 PCA 的异常情况检测算法的试验：请在“类别”下单击“试验”。 然后，在“所用算法”下单击“全部显示”，并在对话框中选择“基于 PCA 的异常情况检测”。 可能需要滚动才能看到它。<br></br>
      ![选择筛选器](./media/sample-experiments/choose-an-algorithm.png)
    * **使用搜索框。**  例如，若要查找由 Microsoft 提供且与使用双类支持向量机算法的数字识别相关的试验，请在搜索框中输入“数字识别”。 然后，选择筛选器“试验”、“仅限 Microsoft 内容”和“双类支持向量机”：<br></br>
      ![使用搜索框](./media/sample-experiments/search-for-experiments.png)

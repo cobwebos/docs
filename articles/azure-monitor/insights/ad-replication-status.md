@@ -10,17 +10,15 @@ ms.assetid: 1b988972-8e01-4f83-a7f4-87f62778f91d
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 01/24/2018
 ms.author: magoedte
-ms.component: ''
-ms.openlocfilehash: d0156ccc3caea2f47296740d57422ccc706f84f1
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: c8cc6ccae59b8ee530ad679c492419a348423553
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52634228"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53184112"
 ---
 # <a name="monitor-active-directory-replication-status-with-log-analytics"></a>使用 Log Analytics 监视 Active Directory 复制状态
 
@@ -33,7 +31,7 @@ AD 复制状态解决方案包定期监视 Active Directory 环境中是否有�
 ## <a name="installing-and-configuring-the-solution"></a>安装和配置解决方案
 使用以下信息安装和配置解决方案。
 
-* 你必须将代理安装在属于要评估的域成员的域控制器上。 或者，你必须在成员服务器上安装代理，并配置代理以将 AD 复制数据发送到 Log Analytics。 要了解如何将 Windows 计算机连接到 Log Analytics，请参阅[将 Windows 计算机连接到 Log Analytics](../../azure-monitor/platform/agent-windows.md)。 如果域控制器已经是你要连接到 Log Analytics 的现有 System Center Operations Manager 环境的一部分，请参阅[将 Operations Manager 连接到 Log Analytics](../../log-analytics/log-analytics-om-agents.md)。
+* 你必须将代理安装在属于要评估的域成员的域控制器上。 或者，你必须在成员服务器上安装代理，并配置代理以将 AD 复制数据发送到 Log Analytics。 要了解如何将 Windows 计算机连接到 Log Analytics，请参阅[将 Windows 计算机连接到 Log Analytics](../../azure-monitor/platform/agent-windows.md)。 如果域控制器已经是你要连接到 Log Analytics 的现有 System Center Operations Manager 环境的一部分，请参阅[将 Operations Manager 连接到 Log Analytics](../../azure-monitor/platform/om-agents.md)。
 * 使用[从解决方案库中添加 Log Analytics 解决方案](../../azure-monitor/insights/solutions.md)中所述的过程，将 Active Directory 复制状况解决方案添加到 Log Analytics 工作区。  无需进一步的配置。
 
 ## <a name="ad-replication-status-data-collection-details"></a>AD 复制状态数据收集详细信息
@@ -48,11 +46,11 @@ AD 复制状态解决方案包定期监视 Active Directory 环境中是否有�
 
 ### <a name="to-enable-a-non-domain-controller-to-send-ad-data-to-log-analytics"></a>启用非域控制器，将 AD 数据发送到 Log Analytics
 1. 确认计算机是你要使用 AD 复制状态解决方案监视的域成员。
-2. 如果该计算机尚未连接，请[将 Windows 计算机连接到 Log Analytics](../../log-analytics/log-analytics-om-agents.md) 或[使用现有 Operations Manager 环境将它连接到 Log Analytics](../../log-analytics/log-analytics-om-agents.md)。
+2. 如果该计算机尚未连接，请[将 Windows 计算机连接到 Log Analytics](../../azure-monitor/platform/om-agents.md) 或[使用现有 Operations Manager 环境将它连接到 Log Analytics](../../azure-monitor/platform/om-agents.md)。
 3. 在该计算机上，设置以下注册表项：
 
-   * 关键值：**HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\HealthService\Parameters\Management Groups\<ManagementGroupName>\Solutions\ADReplication**
-   * 值：**IsTarget**
+   * 注册表项：HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\HealthService\Parameters\Management Groups\<ManagementGroupName>\Solutions\ADReplication
+   * 值：IsTarget
    * 值数据：**true**
 
    > [!NOTE]
@@ -110,7 +108,7 @@ AD 复制状态解决方案包定期监视 Active Directory 环境中是否有�
 
 ![搜索结果中的 AD 复制状态错误](./media/ad-replication-status/oms-ad-replication-search-details.png)
 
-从这里，可以进一步筛选，修改搜索查询，等等。 有关使用日志搜索的详细信息，请参阅[日志搜索](../../log-analytics/log-analytics-queries.md)。
+从这里，可以进一步筛选，修改搜索查询，等等。 有关使用日志搜索的详细信息，请参阅[日志搜索](../../azure-monitor/log-query/log-query-overview.md)。
 
 “**HelpLink**”字段显示了包含该特定错误的其他详细信息的 TechNet 页的 URL。 可以将此链接复制并粘贴到浏览器窗口，以查看有关故障排除和修复该错误的信息。
 
@@ -123,7 +121,7 @@ AD 复制状态解决方案包定期监视 Active Directory 环境中是否有�
 答：信息每 5 天更新一次。
 
 **问：是否有方法来配置此数据的更新频率？**
-答：目前没有。
+答：现在不行。
 
 **问：是否需要将所有域控制器添加到我的 Log Analytics 工作区中以查看复制状态？**
 答：不需要，只需要添加一个域控制器。 如果 Log Analytics 工作区中有多个域控制器，则所有域控制器的数据发送到 Log Analytics。
@@ -131,17 +129,17 @@ AD 复制状态解决方案包定期监视 Active Directory 环境中是否有�
 **问：我不想将任何域控制器添加到我的 Log Analytics 工作区。是否仍可以使用 AD 复制状态解决方案？**
 答：是的。 可以设置注册表项的值来实现此目的。 请参阅[启用非域控制器，将 AD 数据发送到 Log Analytics](#to-enable-a-non-domain-controller-to-send-ad-data-to-oms)。
 
-**问：执行数据收集的进程名称是什么？**
+**问：执行数据收集的进程的名称是什么？**
 答：AdvisorAssessment.exe
 
-**问：收集数据需要花费多长时间？**
+**问：收集数据需要多长时间？**
 答：数据收集时间取决于 Active Directory 环境的大小，但通常不会超过 15 分钟。
 
-**问：收集什么类型的数据？**
+**问：收集的数据类型是什么？**
 答：通过 LDAP 收集复制信息。
 
-**问：是否有方法来配置何时收集数据？**
-答：目前没有。
+**问：是否有某种方法来配置收集数据的时间？**
+答：现在不行。
 
 **问：需要哪些权限才能收集数据？**
 答：针对 Active Directory 的普通用户权限就足够了。
@@ -149,9 +147,9 @@ AD 复制状态解决方案包定期监视 Active Directory 环境中是否有�
 ## <a name="troubleshoot-data-collection-problems"></a>数据收集问题疑难解答
 为了收集数据，AD 复制状态解决方案包需要至少一个域控制器以连接到 Log Analytics 工作区。 直到你连接域控制器，出现一条消息，指示“仍在收集数据”。
 
-如果在连接某个域控制器时需要帮助，可以查看[将 Windows 计算机连接到 Log Analytics](../../log-analytics/log-analytics-om-agents.md) 文档。 或者，如果域控制器已连接到现有 System Center Operations Manager 环境，则可以查看[将 System Center Operations Manager 连接到 Log Analytics](../../log-analytics/log-analytics-om-agents.md) 文档。
+如果在连接某个域控制器时需要帮助，可以查看[将 Windows 计算机连接到 Log Analytics](../../azure-monitor/platform/om-agents.md) 文档。 或者，如果域控制器已连接到现有 System Center Operations Manager 环境，则可以查看[将 System Center Operations Manager 连接到 Log Analytics](../../azure-monitor/platform/om-agents.md) 文档。
 
 如果不希望将任何域控制器直接连接到 Log Analytics 或 System Center Service Manager，请参阅[允许非域控制器将 AD 数据发送到 Log Analytics](#to-enable-a-non-domain-controller-to-send-ad-data-to-oms)。
 
 ## <a name="next-steps"></a>后续步骤
-* 使用 [Log Analytics 中的日志搜索](../../log-analytics/log-analytics-queries.md)查看详细的 Active Directory 复制状态数据。
+* 使用 [Log Analytics 中的日志搜索](../../azure-monitor/log-query/log-query-overview.md)查看详细的 Active Directory 复制状态数据。

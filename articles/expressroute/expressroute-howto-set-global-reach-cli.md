@@ -1,19 +1,19 @@
 ---
-title: 使用 Azure CLI 配置 Azure ExpressRoute Global Reach | Microsoft Docs
+title: 配置 ExpressRoute Global Reach：Azure CLI | Microsoft Docs
 description: 本文介绍了如何将 ExpressRoute 线路链接到一起，以在本地网络之间建立专用网络并启用 Global Reach。
-documentationcenter: na
 services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 11/14/2018
+ms.date: 12/12/2018
 ms.author: cherylmc
-ms.openlocfilehash: 9d41ab26876d464187466f566bbfafc4861c799d
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.custom: seodec18
+ms.openlocfilehash: 9a8e0a5df9383d8e3d7159aa916b0e4fbfeea948
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52333240"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53384034"
 ---
 # <a name="configure-expressroute-global-reach-using-azure-cli-preview"></a>使用 Azure CLI 配置 ExpressRoute Global Reach（预览版）
 本文帮助你使用 Azure CLI 配置 ExpressRoute Global Reach。 有关详细信息，请参阅 [ExpressRouteRoute Global Reach](expressroute-global-reach.md)。
@@ -55,24 +55,22 @@ az account set --subscription <your subscription ID>
 
 ## <a name="enable-connectivity-between-your-on-premises-networks"></a>启用本地网络之间的连接
 
-运行以下 CLI 来连接两个 ExpressRoute 线路。
+运行命令以启用连接时，请考虑以下值：
 
-> [!NOTE]
-> *peer-circuit* 应当是完整的资源 ID，例如
-> ```
-> */subscriptions/{your_subscription_id}/resourceGroups/{your_resource_group}/providers/Microsoft.Network/expressRouteCircuits/{your_circuit_name}*
-> ```
-> 
+* *peer-circuit* 应当是完整的资源 ID。 例如： 
+
+  ```
+  /subscriptions/{your_subscription_id}/resourceGroups/{your_resource_group}/providers/Microsoft.Network/expressRouteCircuits/{your_circuit_name}
+  ```
+* *-AddressPrefix* 必须是一个 /29 IPv4 子网，例如“10.0.0.0/29”。 我们将使用此子网中的 IP 地址在两条 ExpressRoute 线路之间建立连接。 不得在 Azure VNet 或本地网络中使用此子网中的地址。
+
+运行以下 CLI 来连接两个 ExpressRoute 线路。 使用以下示例命令：
 
 ```azurecli
 az network express-route peering connection create -g <ResourceGroupName> --circuit-name <Circuit1Name> --peering-name AzurePrivatePeering -n <ConnectionName> --peer-circuit <Circuit2ResourceID> --address-prefix <__.__.__.__/29>
 ```
 
-> [!IMPORTANT]
-> *-AddressPrefix* 必须是一个 /29 IPv4 子网，例如“10.0.0.0/29”。 我们将使用此子网中的 IP 地址在两条 ExpressRoute 线路之间建立连接。 不得在 Azure VNet 或本地网络中使用此子网中的地址。
-> 
-
-CLI 输出如下所示。
+CLI 输出如以下示例所示：
 
 ```azurecli
 {

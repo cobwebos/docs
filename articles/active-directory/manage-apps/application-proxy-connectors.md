@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 11/15/2018
 ms.author: barbkess
 ms.reviewer: japere
-ms.openlocfilehash: dce9c26d9f836a2238642521be4d88ba089058d7
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.openlocfilehash: 8b410cc85584f45d4a3e9d7bce180a2c6aa46114
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52445952"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53134959"
 ---
 # <a name="understand-azure-ad-application-proxy-connectors"></a>了解 Azure AD 应用程序代理连接器
 
@@ -31,9 +31,9 @@ ms.locfileid: "52445952"
 若要成功部署应用程序代理，至少需要一个连接器，但我们建议部署两个或更多个连接器来提高弹性。 在 Windows Server 2012 R2 或 2016 计算机上安装连接器。 连接器需要能够与应用程序代理服务以及发布的本地应用程序通信。 
 
 ### <a name="windows-server"></a>Windows Server
-需要运行 Windows Server 2012 R2 或更高版本的服务器，可以在该服务器上安装应用程序代理连接器。 该服务器需连接到 Azure 中的应用程序代理服务和你要发布的本地应用程序。
+你需要具有运行 Windows Server 2012 R2 或更高版本的服务器，可以在该服务器上安装应用程序代理连接器。 该服务器需要连接到 Azure 中的应用程序代理服务和你要发布的本地应用程序。
 
-在安装应用程序代理连接器前，Windows Server 需要启用 TLS 1.2。 版本低于 1.5.612.0 的现有连接器继续使用早期版本的 TLS，直到另行通知。 启用 TLS 1.2：
+在安装应用程序代理连接器之前，Windows Server 需要启用 TLS 1.2。 版本低于 1.5.612.0 的现有连接器继续使用早期版本的 TLS，直到另行通知。 若要启用 TLS 1.2，请执行以下操作：
 
 1. 设置以下注册表项：
     
@@ -47,7 +47,7 @@ ms.locfileid: "52445952"
 2. 重启服务器
 
 
-有关连接器服务器的网络要求的详细信息，请参阅[开始使用应用程序代理和安装连接器](application-proxy-enable.md)。
+有关连接器服务器的网络要求的详细信息，请参阅[开始使用应用程序代理和安装连接器](application-proxy-add-on-premises-application.md)。
 
 ## <a name="maintenance"></a>维护
 连接器和服务负责处理所有的高可用性任务。 可以动态添加或删除这些连接器和服务。 每当有新请求抵达时，该请求会路由到当前可用的连接器之一。 如果某个连接器暂时不可用，它不会对此流量做出响应。
@@ -64,7 +64,7 @@ ms.locfileid: "52445952"
 
 ## <a name="automatic-updates"></a>自动更新
 
-Azure AD 为部署的所有连接器提供自动更新。 只要应用程序代理连接器更新程序服务保持运行，连接器就会自动更新。 如果在服务器上未看到连接器更新程序服务，需要[重新安装连接器](application-proxy-enable.md)才能获得所有更新。 
+Azure AD 为部署的所有连接器提供自动更新。 只要应用程序代理连接器更新程序服务保持运行，连接器就会自动更新。 如果在服务器上未看到连接器更新程序服务，需要[重新安装连接器](application-proxy-add-on-premises-application.md)才能获得所有更新。 
 
 如果不想等连接器自动更新，可以执行手动升级。 转到连接器所在服务器上的[连接器下载页](https://download.msappproxy.net/subscription/d3c8b69d-6bf7-42be-a529-3fe9c2e70c90/connector/download)，选择“下载”。 此过程启动本地连接器升级。 
 
@@ -120,7 +120,7 @@ Azure AD 为部署的所有连接器提供自动更新。 只要应用程序代�
 
 影响性能的另一个因素是连接器之间的网络质量，包括： 
 
-* **联机服务**：Azure 中应用程序代理服务的连接速度慢或连接延迟高会影响连接器的性能。 为获得最佳性能，请使用 Express Route 将组织连接到 Azure。 否则，网络团队应确保以尽量高效的方式来处理 Azure 的连接。 
+* **联机服务**：与 Azure 中应用程序代理的连接速度慢或延迟高会影响连接器性能。 为获得最佳性能，请使用 Express Route 将组织连接到 Azure。 否则，网络团队应确保以尽量高效的方式来处理 Azure 的连接。 
 * **后端应用程序**：在某些情况下，连接器与后端应用程序之间存在其他可能会减慢或阻止连接的代理。 若要排查这种情况，请从连接器服务器打开浏览器，并尝试访问应用程序。 如果连接器在 Azure 中运行，而这些应用程序位于本地，则用户的体验可能与期望不符。
 * **域控制器**：如果连接器使用 Kerberos 约束委派执行 SSO，在向后端发送请求之前，它们会联系域控制器。 连接器提供 Kerberos 票证缓存，但在繁忙的环境中，域控制器的响应能力可能会影响性能。 如果连接器在 Azure 中运行但与本地的域控制器通信，则更容易出现此问题。 
 
@@ -136,7 +136,7 @@ Azure AD 为部署的所有连接器提供自动更新。 只要应用程序代�
 
 通常，连接器部署直截了当，无需经过特殊的配置。 但应当考虑一些特殊条件：
 
-* 限制出站流量的组织必须[打开所需端口](application-proxy-enable.md#open-your-ports)。
+* 限制出站流量的组织必须[打开所需端口](application-proxy-add-on-premises-application.md#prepare-your-on-premises-environment)。
 * 符合 FIPS 规范的计算机可能需要更改其配置才能允许连接器进程生成和存储证书。
 * 根据网络请求发出过程锁定其环境的组织必须确保启用这两个连接器服务，以访问全部所需的端口和 IP。
 * 在某些情况下，出站正向代理可能会中断双向证书身份验证，导致通信失败。

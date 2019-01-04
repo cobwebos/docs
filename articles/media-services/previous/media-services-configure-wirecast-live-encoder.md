@@ -14,12 +14,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 01/05/2017
 ms.author: juliako;cenkdin;anilmur
-ms.openlocfilehash: 6cc4c0b01511309766e48c3d671ee897e5d6f326
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: e0e41714f6979a9cd699df70498b9c89a44d5ee1
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43669107"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53138916"
 ---
 # <a name="use-the-wirecast-encoder-to-send-a-single-bitrate-live-stream"></a>使用 Wirecast 编码器发送单比特率实时流
 > [!div class="op_single_selector"]
@@ -69,22 +69,22 @@ ms.locfileid: "43669107"
 >
 >
 
-## <a name="a-idconfigurewirecastrtmp-aconfigure-the-telestream-wirecast-encoder"></a><a id="configure_wirecast_rtmp" /a>配置 Telestream Wirecast 编码器
+## <a name="a-idconfigurewirecastrtmp-configure-the-telestream-wirecast-encoder"></a><a id="configure_wirecast_rtmp" />配置 Telestream Wirecast 编码器
 在本教程中，将使用以下输出设置。 本部分的其余内容介绍更详细的配置步骤。
 
 **视频**：
 
 * 编解码器：H.264
-* 配置文件：高（等级 4.0）
+* 配置文件：高（级别 4.0）
 * 比特率：5000 kbps
 * 关键帧：2 秒（60 秒）
 * 帧速率：30
 
 **音频**：
 
-* 编码解码器：AAC (LC)
+* 编解码器：AAC (LC)
 * 比特率：192 kbps
-* 采样速率：44.1 kHz
+* 采样率：44.1 kHz
 
 ### <a name="configuration-steps"></a>配置步骤
 1. 在所使用的计算机上打开 Telestream Wirecast 应用程序，并针对 RTMP 流式处理进行设置。
@@ -105,14 +105,14 @@ ms.locfileid: "43669107"
 
    * 编码器：MainConcept H.264
    * 每秒帧数：30
-   * 平均比特率：5000 千位/秒（可根据网络限制进行调整）
-   * 配置文件：主
+   * 平均比特率：5000 Kbps/秒（可根据网络限制进行调整）
+   * 配置文件：主要
    * 关键帧间隔：60 帧
 
     **音频**
 
-   * 目标比特率：192 千位/秒
-   * 采样速率：44.100 kHz
+   * 目标比特率：192 kbits/秒
+   * 采样率：44.100 kHz
 
      ![wirecast](./media/media-services-wirecast-live-encoder/media-services-wirecast4.png)
 6. 按“保存”。

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/30/2018
 ms.author: terrylan
-ms.openlocfilehash: fb053cb646d433d1e326747a4b48ed430583b847
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 5e024161b55db9662aa288a4d3ff6a7c2b7e6266
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51259099"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52969679"
 ---
 # <a name="azure-virtual-machines-security-overview"></a>Azure 虚拟机安全概述
 
@@ -53,10 +53,10 @@ Azure 虚拟机可用于灵活地进行虚拟化，而无需购买和维护运�
 * **签名更新**：自动安装最新的保护签名（病毒定义），确保按预定的频率保持最新保护状态。
 * **反恶意软件引擎更新**：自动更新适用于 Azure 的 Microsoft 反恶意软件引擎。
 * **反恶意软件平台更新**：自动更新适用于 Azure 的 Microsoft 反恶意软件平台。
-* **主动保护**：将检测到的威胁和可疑资源的遥测元数据报告到 Azure，确保快速响应。 通过 Microsoft Active Protection System (MAPS) 启用实时同步签名发送。
-* **示例报告**：将示例提供并报告给适用于 Azure 的 Microsoftt 反恶意软件服务，帮助改善服务并实现故障排除。
+* **主动保护**：将有关检测到的威胁和可疑资源的遥测元数据报告给 Azure，确保快速响应。 通过 Microsoft Active Protection System (MAPS) 启用实时同步签名发送。
+* **示例报告**：将示例提供并报告给适用于 Azure 的 Microsoft 反恶意软件服务，帮助改善服务并实现故障排除。
 * **排除项**：允许应用程序和服务管理员配置特定的文件、进程与驱动器，以便出于性能和其他原因将其从保护和扫描中排除。
-* **恶意软件事件收集**：在操作系统事件日志中记录反恶意软件服务的运行状况、可疑活动及采取的补救措施，并将这些数据收集到客户的 Azure 存储帐户。
+* **反恶意软件事件收集**：在操作系统事件日志中记录反恶意软件服务运行状况、可疑活动及采取的补救措施，并将这些数据收集到客户的 Azure 存储帐户。
 
 了解有关反恶意软件的详细信息以保护虚拟机：
 
@@ -103,7 +103,7 @@ Azure 磁盘加密是用于加密 Windows 和 Linux 虚拟机磁盘的新功能�
 了解更多：
 
 * [适用于 IaaS VM 的 Azure 磁盘加密](../security/azure-security-disk-encryption-overview.md)
-* [快速入门：使用 Azure PowerShell 加密 Windows IaaS VM](../security/quick-encrypt-vm-powershell.md)
+* [Quickstart:Encrypt a Windows IaaS VM with Azure PowerShell](../security/quick-encrypt-vm-powershell.md)（快速入门：使用 Azure PowerShell 加密 Windows IaaS VM）
 
 ## <a name="virtual-machine-backup"></a>虚拟机备份
 
@@ -112,7 +112,6 @@ Azure 备份是一种可缩放的解决方案，无需资本投资便可帮助�
 了解更多：
 
 * [什么是 Azure 备份？](../backup/backup-introduction-to-azure-backup.md)
-* [Azure 备份学习路径](https://azure.microsoft.com/documentation/learning-paths/backup/)
 * [Azure 备份服务 - 常见问题解答](../backup/backup-azure-backup-faq.md)
 
 ## <a name="azure-site-recovery"></a>Azure Site Recovery
@@ -124,8 +123,8 @@ Site Recovery：
 * **简化 BCDR 策略**：通过 Site Recovery 可从一个位置轻松处理多个业务工作负荷和应用的复制、故障转移及恢复。 Site Recovery 会协调复制和故障转移，但不会拦截应用程序数据或拥有任何相关信息。
 * **提供灵活的复制**：借助 Site Recovery，可以复制 Hyper-V 虚拟机、VMware 虚拟机和 Windows/Linux 物理服务器上运行的工作负荷。
 * **支持故障转移和恢复**：Site Recovery 提供测试故障转移，既能支持灾难恢复练习，又不会影响生产环境。 也可以运行计划的故障转移，因为是预期中的中断，所以不会丢失任何数据；或是运行非计划的故障转移，以在发生非预期的灾难时会数据损失减到最少（取决于复制频率）。 故障转移之后，可故障回复到主站点。 Site Recovery 提供的恢复计划可包含脚本和 Azure 自动化工作簿，可用于自定义多层应用程序的故障转移和恢复。
-* **消除辅助数据中心**：可复制到辅助本地站点或 Azure。 将 Azure 用作灾难恢复的目标可以消除维护辅助站点的复杂性和成本。 复制的数据存储在 Azure 存储中。
-* **与现有 BCDR 技术集成**：Site Recovery 可与其他应用程序的 BCDR 功能配合使用。 例如，可使用 Site Recovery 来帮助保护公司工作负荷的 SQL Server 后端。 这包括对 SQL Server AlwaysOn 的本机支持以管理可用性组的故障转移。
+* **消除辅助数据中心**：可复制到辅助本地站点，或复制到 Azure。 将 Azure 用作灾难恢复的目标可以消除维护辅助站点的复杂性和成本。 复制的数据存储在 Azure 存储中。
+* **与现有 BCDR 技术集成**：Site Recovery 能够与其他应用程序的 BCDR 功能结合使用。 例如，可使用 Site Recovery 来帮助保护公司工作负荷的 SQL Server 后端。 这包括对 SQL Server AlwaysOn 的本机支持以管理可用性组的故障转移。
 
 了解更多：
 
@@ -166,8 +165,8 @@ Azure 虚拟机已针对 FISMA、FedRAMP、HIPAA、PCI DSS Level 1 和其他关�
 
 了解更多：
 
-* [Microsoft Trust Center: Compliance](https://www.microsoft.com/en-us/trustcenter/compliance)（Microsoft 信任中心：合规性）
-* [Trusted Cloud: Microsoft Azure Security, Privacy, and Compliance](https://download.microsoft.com/download/1/6/0/160216AA-8445-480B-B60F-5C8EC8067FCA/WindowsAzure-SecurityPrivacyCompliance.pdf)（可信云：Microsoft Azure 安全性、隐私和合规性）
+* [Microsoft Trust Center:Compliance](https://www.microsoft.com/en-us/trustcenter/compliance)（Microsoft 信任中心：合规性）
+* [Trusted Cloud:Microsoft Azure Security, Privacy, and Compliance](https://download.microsoft.com/download/1/6/0/160216AA-8445-480B-B60F-5C8EC8067FCA/WindowsAzure-SecurityPrivacyCompliance.pdf)（可信云：Microsoft Azure 安全性、隐私和合规性）
 
 ## <a name="confidential-computing"></a>机密计算
 

@@ -1,13 +1,12 @@
 ---
-title: 数据是否可用于数据科研？ 数据评估 - Azure 机器学习工作室 | Microsoft Docs
+title: 数据评估 - Azure 机器学习工作室 | Microsoft Docs
 description: 数据可用于数据科学需要满足的四个条件。 本视频提供具体示例，帮助了解基本数据评估。
 keywords: 相关数据, 评估数据, 准备数据, 数据条件, 数据就绪情况
 services: machine-learning
 documentationcenter: na
-author: ericlicoding
-ms.custom: (previous ms.author=hshapiro, author=heatherbshapiro)
-ms.author: amlstudiodocs
-manager: hjerez
+author: garyericson
+ms.custom: seodec18
+ms.author: garye
 editor: cjgronlund
 ms.assetid: d502062c-da70-4b21-9054-0bfd9902612e
 ms.service: machine-learning
@@ -17,12 +16,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/03/2018
-ms.openlocfilehash: 5e7949edb13bfec72fa7d80d86d2e77214ceaa37
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 2a9101ed510c617df81f422aea92ca1ef2b28cd8
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52316202"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53261222"
 ---
 # <a name="is-your-data-ready-for-data-science"></a>数据是否可用于数据科研？
 ## <a name="video-2-data-science-for-beginners-series"></a>视频 2：适合初学者的数据科学系列
@@ -39,12 +38,12 @@ ms.locfileid: "52316202"
 “适合初学者的数据科学”对数据科学进行简要介绍，共五个短视频。
 
 * 视频 1：[数据科学可解答的 5 个问题](data-science-for-beginners-the-5-questions-data-science-answers.md)（5 分 14 秒）
-* 视频 2：数据是否可用于数据科学？
+* 视频 2：数据是否可用于数据科研？
 * 视频 3：[提出可用数据回答的问题](data-science-for-beginners-ask-a-question-you-can-answer-with-data.md)（4 分钟 17 秒）
 * 视频 4：[使用简单的模型预测答案](data-science-for-beginners-predict-an-answer-with-a-simple-model.md)（7 分 42 秒）
-* 视频 5：[复制他人的工作以研究数据科学](data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md)（3 分 18 秒）
+* 视频 5：[复制他人的工作以执行数据科学](data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md)（3 分 18 秒）
 
-## <a name="transcript-is-your-data-ready-for-data-science"></a>脚本：数据是否可用于数据科学？
+## <a name="transcript-is-your-data-ready-for-data-science"></a>脚本：数据是否可用于数据科研？
 欢迎观看“数据是否可用于数据科学？” “适合初学者的数据科学”系列中的第二个视频。  
 
 必须先提供一些优质原材料供数据科学分析，它才能提供你所需的答案。 就像做披萨一样，开始制作前准备的原料越好，最终的产品越好。 

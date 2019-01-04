@@ -10,14 +10,15 @@ ms.component: qna-maker
 ms.topic: article
 ms.date: 09/12/2018
 ms.author: tulasim
-ms.openlocfilehash: cb3426a960a6644b3ae149f02055cdb083febca7
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.custom: seodec18
+ms.openlocfilehash: 865525d9c978f3168a4c580dec20f0f91f0a0d16
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47040755"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53074068"
 ---
-# <a name="knowledge-base"></a>知识库
+# <a name="what-is-a-qna-maker-knowledge-base"></a>QnA Maker 知识库是什么？
 
 QnA Maker 知识库包含一组问题/答案 (QnA) 对和与每个 QnA 对关联的可选元数据。
 

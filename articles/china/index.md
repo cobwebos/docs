@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 10/19/2017
 ms.author: carolz
-ms.openlocfilehash: e3816551142cb866a8e2da63226905ada16cc0d7
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 7fe2e0d0732f3b152741bdbd0f575b35cb98e564
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2017
-ms.locfileid: "26408103"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52677616"
 ---
 # <a name="azure-china-21vianet"></a>Azure 中国世纪互联
 
-世纪互联运营的 Microsoft Azure（Azure 中国世纪互联，也称为 Mooncake），是由中国境内的数据受托人运营的云平台，包含不断增长的云服务集合，开发人员和 IT 专业人员可使用这些服务来构建、部署和管理应用程序。 Azure 中国世纪互联是一个主权云 — 即，位于中国大陆的云服务的物理独立实例，其运营和交易由上海蓝云网络科技有限公司（即“世纪互联”）独立进行。 
+由世纪互联运营的 Microsoft Azure 是一个云平台，旨在满足中国的监管要求，其中包含越来越多的集成云服务。 开发人员和 IT 专业人员用于生成、部署和管理应用程序的服务。 Azure 中国世纪互联是一个位于中国大陆的云服务的物理独立实例，其运营和交易由上海蓝云网络科技有限公司（即“世纪互联”）独立进行。
 
 Azure 中国世纪互联提供一流的安全性与<a href="https://www.trustcenter.cn/en-us/">合规的服务</a>，在其体系结构上构建的所有系统和应用程序均符合中国法规要求。 Microsoft 商业云服务遵守中国政府制定的政策和数据处理法规。
 
@@ -64,6 +64,6 @@ Azure 中国世纪互联提供一流的安全性与<a href="https://www.trustcen
     </li>
 </ul>
 
-<h3>Azure 中国世纪互联（中文版）</h3>
-    <a href="https://school.azure.cn/">Azure 学校</a><br>
-    <a href="https://docs.azure.cn/zh-cn/">Azure Docs</a>
+<h3>Azure 中国世纪互联</h3>
+    <a href="https://azure.microsoft.com/en-us/global-infrastructure/services/?products=all&regions=china-non-regional,china-east,china-east-2,china-north,china-north-2">各区域的 Azure 产品可用性</a><br>
+    <a href="https://docs.azure.cn/zh-cn/">Azure Docs（中文）</a>

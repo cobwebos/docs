@@ -1,12 +1,11 @@
 ---
 title: Azure AI 库教程 - Azure 机器学习工作室 | Microsoft Docs
-description: 在 Azure AI 库中发现和共享教程。
+description: 在 Azure AI 库中发现和共享教程。 显示最近添加的教程和热门教程列表。
 services: machine-learning
 documentationcenter: ''
 author: ericlicoding
-ms.custom: (previous ms.author=hshapiro, author=heatherbshapiro)
+ms.custom: seodec18
 ms.author: amlstudiodocs
-manager: hjerez
 editor: cgronlun
 ms.assetid: 70f0eb31-7dca-4907-a5d7-504357dcd889
 ms.service: machine-learning
@@ -16,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2017
-ms.openlocfilehash: ea0b6e3a4275c2d09c76bd57ec4e838413638d6e
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 5dcc8f497a8498b41e6ff7e802fc6e3d80935505
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52311817"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53274864"
 ---
 # <a name="discover-and-share-tutorials-in-azure-ai-gallery"></a>在 Azure AI 库中发现和共享教程
 
@@ -77,5 +76,5 @@ ms.locfileid: "52311817"
 
 **[转到库](http://gallery.cortanaintelligence.com)**
 
-[!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
+
 

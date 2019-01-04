@@ -1,21 +1,22 @@
 ---
-title: 在 LUIS 应用中添加实体
-titleSuffix: Azure Cognitive Services
+title: 添加实体
+titleSuffix: Language Understanding - Azure Cognitive Services
 description: 在语言理解 (LUIS) 应用中添加实体（应用程序域中的关键数据）。
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 10/24/2018
+ms.date: 12/07/2018
 ms.author: diberry
-ms.openlocfilehash: 5beb952c2330d44ffe090fc422afa6da67376b0d
-ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.openlocfilehash: f95d7851241dfd5b077c215e2df893c6ba8ef36c
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51288044"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53139480"
 ---
 # <a name="create-entities-without-utterances"></a>创建不包含话语的实体
 
@@ -156,13 +157,13 @@ ms.locfileid: "51288044"
 
 1. 如果想要更多适用于此列表的规范化项，请选择“建议”，查看[语义字典](luis-glossary.md#semantic-dictionary)的选项。
 
-    ![将 Origin 角色添加到 Location 实体的屏幕截图](./media/add-entities/hr-list-2.png)
+    ![选择推荐功能以查看选项的屏幕截图](./media/add-entities/hr-list-2.png)
 
 
 1. 在建议列表中选择一项添加为规范化值，或者选择“全部添加”添加所有项。 
     可使用以下 JSON 格式将值导入现有列表实体：
 
-    ```
+    ```JSON
     [
         {
             "canonicalForm": "Blue",

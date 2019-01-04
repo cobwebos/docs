@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: a91593c1bae3002be8b7e423b627f1baf19e86e2
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: edbaa8fe42c0e6bfda8558e7d9e5cd0ce42bfcc4
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46129174"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53260695"
 ---
 # <a name="filesystem-operations-on-azure-data-lake-storage-gen1-using-java-sdk"></a>使用 Java SDK 对 Azure Data Lake Storage Gen1 执行的文件系统操作
 > [!div class="op_single_selector"]
@@ -43,7 +43,7 @@ ms.locfileid: "46129174"
 
 1. 在命令行使用 [mvn archetype](https://maven.apache.org/guides/getting-started/maven-in-five-minutes.html) 或通过 IDE 创建一个 Maven 项目。 有关如何使用 IntelliJ 创建 Java 项目的说明，请参阅[此文](https://www.jetbrains.com/help/idea/2016.1/creating-and-running-your-first-java-application.html)。 有关如何使用 Eclipse 创建项目的说明，请参阅[此文](http://help.eclipse.org/mars/index.jsp?topic=%2Forg.eclipse.jdt.doc.user%2FgettingStarted%2Fqs-3.htm)。 
 
-2. 将以下依赖项添加到 Maven **pom.xml** 文件。 在 \</project> 标记前添加以下代码片段：
+2. 将以下依赖项添加到 Maven pom.xml 文件。 在 \</project> 标记前添加以下代码片段：
    
         <dependencies>
           <dependency>
@@ -206,7 +206,7 @@ ms.locfileid: "46129174"
 
 ## <a name="build-and-run-the-application"></a>构建并运行应用程序
 1. 若要从 IDE 内部运行，请找到并按下“运行”按钮。 若要从 Maven 运行，请使用 [exec:exec](http://www.mojohaus.org/exec-maven-plugin/exec-mojo.html)。
-2. 若要生成一个可从命令行运行的独立 jar，请使用 [Maven 程序集插件](http://maven.apache.org/plugins/maven-assembly-plugin/usage.html)生成包含所有依赖项的 jar。 [github 上的示例源代码](https://github.com/Azure-Samples/data-lake-store-java-upload-download-get-started/blob/master/pom.xml)中的 pom.xml 有一个示例。
+2. 若要生成一个可从命令行运行的独立 jar，请使用 [Maven 程序集插件](http://maven.apache.org/plugins/maven-assembly-plugin/usage.html)生成包含所有依赖项的 jar。 [GitHub 上的示例源代码](https://github.com/Azure-Samples/data-lake-store-java-upload-download-get-started/blob/master/pom.xml)中的 pom.xml 列举了相关示例。
 
 ## <a name="next-steps"></a>后续步骤
 * [探索用于 Java SDK 的 JavaDoc](https://azure.github.io/azure-data-lake-store-java/javadoc/)

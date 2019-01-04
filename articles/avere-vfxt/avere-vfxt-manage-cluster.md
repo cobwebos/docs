@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 10/31/2018
 ms.author: v-erkell
-ms.openlocfilehash: 9eba9eef315f1ec6eb25ea21c1d4747ab002d078
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 82b5e175f0340aae7e35b177d9faa4831982984c
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50958910"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52999060"
 ---
 # <a name="manage-the-avere-vfxt-cluster"></a>管理 Avere vFXT 群集
 
@@ -81,7 +81,7 @@ vfxt.py 脚本可用于执行以下群集管理任务：
 
 与 Avere 控制面板一样，vfxt.py 操作试图在关闭或销毁群集或节点前确保将已更改的数据永久存储在后端存储上。 这使得它比 Avere 门户更加安全。
 
-vfxt.py 预安装在群集控制器 VM 上。 <!-- (If you want to install it on another system, refer to http://github.com/Azure/AvereSDK) xxx change when this repo goes  public -->
+vfxt.py 预安装在群集控制器 VM 上。 <!-- (If you want to install it on another system, refer to https://github.com/Azure/AvereSDK) xxx change when this repo goes  public -->
 
 GitHub 上提供了完整 vfxt.py 使用指南：[使用 vfxt.py 管理云群集](https://github.com/azure/averesdk/blob/master/docs/README.md)
 

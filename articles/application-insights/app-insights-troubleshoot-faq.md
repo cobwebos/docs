@@ -9,16 +9,15 @@ ms.assetid: 0e3b103c-6e2a-4634-9e8c-8b85cf5e9c84
 ms.service: application-insights
 ms.workload: mobile
 ms.tgt_pltfrm: ibiza
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/12/2017
 ms.author: mbullwin
-ms.openlocfilehash: 60195f135b8b0e102a36c3573a341432f2e0c784
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 815388db673673a3802f8e5e515b7e16cb180a29
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50959301"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53323348"
 ---
 # <a name="application-insights-frequently-asked-questions"></a>Application Insights：常见问题
 
@@ -27,7 +26,7 @@ ms.locfileid: "50959301"
 
 * [.NET 应用](app-insights-asp-net-troubleshoot-no-data.md)
 * [监视已经在运行的应用](app-insights-monitor-performance-live-website-now.md#troubleshooting-runtime-configuration-of-application-insights)
-* [Azure 诊断](../monitoring-and-diagnostics/azure-diagnostics-configure-application-insights.md)
+* [Azure 诊断](../azure-monitor/platform/diagnostics-extension-to-application-insights.md)
 * [Java Web 应用](app-insights-java-troubleshoot.md)
 
 *我无法从服务器获取任何数据*
@@ -103,7 +102,7 @@ ms.locfileid: "50959301"
 从服务器 Web 应用：
 
 * HTTP 请求
-* [依赖项](app-insights-asp-net-dependencies.md)。 调用: SQL 数据库; 对外部服务的 HTTP 调用; Azure Cosmos DB, 表, blob 存储和队列。 
+* [依赖项](app-insights-asp-net-dependencies.md)。 调用: SQL 数据库; 对外部服务的 HTTP 调用; Azure Cosmos DB、表、blob 存储和队列。 
 * [异常](app-insights-asp-net-exceptions.md)和堆栈跟踪。
 * [性能计数器](app-insights-performance-counters.md) - 如果使用[状态监视器](app-insights-monitor-performance-live-website-now.md)、[Azure 监视](app-insights-azure-web-apps.md)或 [Application Insights 收集编写器](app-insights-java-collectd.md)。
 * [自定义编码的事件和指标](app-insights-api-custom-events-metrics.md)。
@@ -119,7 +118,7 @@ ms.locfileid: "50959301"
 
 从其他源中（如果有配置）：
 
-* [Azure 诊断](../monitoring-and-diagnostics/azure-diagnostics-configure-application-insights.md)
+* [Azure 诊断](../azure-monitor/platform/diagnostics-extension-to-application-insights.md)
 * [Docker 容器](app-insights-docker.md)
 * [将表导入到分析](app-insights-analytics-import.md)
 * [Log Analytics](https://azure.microsoft.com/blog/omssolutionforappinsightspublicpreview/)
@@ -138,10 +137,10 @@ ms.locfileid: "50959301"
 
 使用 [GeoLite2](http://dev.maxmind.com/geoip/geoip2/geolite2/) 查找 Web 客户端的 IP 地址（IPv4 或 IPv6）。
 
-* 浏览器遥测：收集发件人的 IP 地址。
+* 浏览器遥测：收集发送方的 IP 地址。
 * 服务器遥测：Application Insights 模块收集客户端 IP 地址。 如果设置了 `X-Forwarded-For`，则不会进行收集。
 
-可以配置 `ClientIpHeaderTelemetryInitializer`，从不同的标头获取 IP 地址。 例如，在某些系统中，代理、负载均衡器或 CDN 会将其移动到 `X-Originating-IP`。 [了解详细信息](http://apmtips.com/blog/2016/07/05/client-ip-address/)。
+可以配置 `ClientIpHeaderTelemetryInitializer`，从不同的标头获取 IP 地址。 例如，在某些系统中，代理、负载均衡器或 CDN 会将其移动到 `X-Originating-IP`。 [了解详细信息](https://apmtips.com/blog/2016/07/05/client-ip-address/)。
 
 可以[使用 Power BI](app-insights-export-power-bi.md) 在映射中显示请求遥测。
 
@@ -185,7 +184,7 @@ ms.locfileid: "50959301"
 ## <a name="what-are-the-user-and-session-counts"></a>什么是用户和会话计数？
 
 * JavaScript SDK 在 Web 客户端上设置了用于识别返回用户的用户 cookie，以及用于对活动进行分组的会话 cookie。
-* 如果没有客户端脚本，可以[在服务器设置 cookie](http://apmtips.com/blog/2016/07/09/tracking-users-in-api-apps/)。
+* 如果没有客户端脚本，可以[在服务器设置 cookie](https://apmtips.com/blog/2016/07/09/tracking-users-in-api-apps/)。
 * 如果一个真实的用户在不同的浏览器中使用站点，或者使用私密/隐身浏览，或使用不同的计算机，则会进行多次计数。
 * 若要识别跨计算机和浏览器登录的用户，请添加对 [setAuthenticatedUserContext()](app-insights-api-custom-events-metrics.md#authenticated-users) 的调用。
 

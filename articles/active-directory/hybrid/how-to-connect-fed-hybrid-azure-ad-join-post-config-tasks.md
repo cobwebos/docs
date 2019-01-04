@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 08/10/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 2306c03480956a63859355428cbffe0706f43cbc
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 16fc7f1bb69efe94ce87f213627b78a4afa0fcc2
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46306636"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52999239"
 ---
 # <a name="post-configuration-tasks-for-hybrid-azure-ad-join"></a>混合 Azure AD 加入所需的配置后任务
 
@@ -30,7 +30,7 @@ ms.locfileid: "46306636"
 完成所有配置步骤后，运行 Windows 10 和 Windows Server 2016 的所有已加入域的设备会自动注册到 Azure AD。 如果你希望进行受控的实施而不是执行这种自动注册，可以使用组策略有选择地启用或禁用自动实施。  应在启动其他配置步骤之前设置此组策略：Azure AD
 * 在 Active Directory 中创建组策略对象。
 * 将其命名为 (ex- Hybrid Azure AD join)。
-* 编辑策略并转到：“计算机配置”>“策略”>“管理模板”>“Windows 组件”>“设备注册”。
+* 编辑并转到：“计算机配置”>“策略”>“管理模板”>“Windows 组件”>“设备注册”。
 
 >[!NOTE]
 >对于 2012R2，请通过“计算机配置”>“策略”>“管理模板”>“Windows 组件”>“工作区加入”>“自动工作区加入客户端计算机”完成策略设置
@@ -69,15 +69,15 @@ ms.locfileid: "46306636"
 若要注册 Windows 下层设备，需确保 Azure AD 策略允许用户注册设备。 
 
 * 在 Azure 门户中登录到自己的帐户。
-* 转到：“Azure Active Directory”>“设备”>“设备设置”
+* 请转到：“Azure Active Directory”>“设备”>“设备设置”
 * 将“用户可以向 Azure AD 注册其设备”设置为“全部”。
-* 点击“保存”(Save)
+* 点击“保存”
 
 ## <a name="8-add-azure-ad-endpoint-to-windows-down-level-devices"></a>8.将 Azure AD 终结点添加到 Windows 下层设备
 
 将 Azure AD 设备身份验证终结点添加到 Windows 下层设备上的本地 Intranet 区域，避免对设备进行身份验证时出现证书提示： https://device.login.microsoftonline.com 
 
-如果使用[无缝 SSO](https://aka.ms/hybrid/sso)，另请在该区域中启用“允许通过脚本更新状态栏”，并添加以下终结点： https://autologon.microsoftazuread-sso.com 
+如果使用[无缝 SSO](how-to-connect-sso.md)，另请在该区域中启用“允许通过脚本更新状态栏”，并添加以下终结点： https://autologon.microsoftazuread-sso.com 
 
 ## <a name="9-install-microsoft-workplace-join-on-windows-down-level-devices"></a>9.在 Windows 下层设备上安装 Microsoft 工作区加入
 
@@ -87,7 +87,7 @@ ms.locfileid: "46306636"
 
 * 在 Active Directory 中创建组策略对象（如果尚未创建）。
 * 将其命名为 (ex- Hybrid Azure AD join)。
-* 编辑策略并转到：“计算机配置”>“策略”>“管理模板”>“Windows 组件”>“设备注册”
+* 编辑并转到：“计算机配置”>“策略”>“管理模板”>“Windows 组件”>“设备注册”
 * 启用：“将已加入域的计算机注册为设备”
 * 依次单击“应用”、“确定”。
 * 将 GPO 链接到所选的位置（组织单位、安全组或所有设备的域）。

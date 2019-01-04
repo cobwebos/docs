@@ -1,32 +1,33 @@
 ---
-title: LUIS 预构建实体 URL 参考 - Azure | Microsoft Docs
+title: URL 预生成实体
 titleSuffix: Azure
 description: 本文包含语言理解 (LUIS) 中的 URL 预构建实体信息。
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: diberry
-ms.openlocfilehash: 62872a3fd3e6e830e25fc4cdba01d1f32b80db91
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.openlocfilehash: 5a1d86c58b6b6b8b54d170459157371e8e73f0e8
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52446506"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53163661"
 ---
-# <a name="url-entity"></a>URL 实体
+# <a name="url-prebuilt-entity-for-a-luis-app"></a>LUIS 应用的 URL 预生成实体
 URL 实体提取带域名或 IP 地址的 URL。 此实体已定型，因此不需要将包含 URL 的示例陈述添加到应用程序。 仅在 `en-us` 区域性中支持 URL 实体。 
 
 ## <a name="types-of-urls"></a>URL 类型
-URL 托管在 [Recognizers-text](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/Base-URL.yaml) Github 存储库
+URL 托管在 [Recognizers-text](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/Base-URL.yaml) GitHub 存储库
 
 ## <a name="resolution-for-prebuilt-url-entity"></a>预构建 URL 实体解析
 以下示例演示了 builtin.url 实体解析。
 
-```JSON
+```json
 {
   "query": "http://www.luis.ai is a great cognitive services example of artificial intelligence",
   "topScoringIntent": {

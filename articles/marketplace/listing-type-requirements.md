@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: 07a62dfa2d7e1c71daf547c5aa7c8c7d15830bfd
-ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
+ms.openlocfilehash: 1c850b16492f725114fb23a8503f6345e1509212
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36309310"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52868661"
 ---
 # <a name="requirements-by-listing-type"></a>按商品信息类型列出的要求  
 技术和营销内容要求因店面、产品/服务类型和商品信息类型而异。 请查看以下规范，以确认是否合规。  
@@ -31,6 +31,7 @@ ms.locfileid: "36309310"
 
 ## <a name="storefront-requirements-appsource"></a>店面要求：AppSource  
 下表描述了在 AppSource 中发布商品的先决条件要求。  
+
 | 要求 | 详细信息 | 必需还是建议 |  
 |:--- |:--- |:--- |  
 | ***Azure Active Directory (Azure AD)*** | 在已启用许可的情况下，应用须允许使用 Azure Active Directory 联合单一登录（Azure AD 联合 SSO）。<ul> <li>有关启用 Azure AD 联合 SSO 的详细信息，请访问“针对不在 Azure Active Directory 应用程序库中的应用程序配置单一登录”页：[docs.microsoft.com/azure/active-directory/active-directory-saas-custom-apps](https://docs.microsoft.com/azure/active-directory/active-directory-saas-custom-apps)。</li> </ul> | 必选 |   
@@ -45,6 +46,7 @@ ms.locfileid: "36309310"
 
 ## <a name="storefront-requirements-azure-marketplace"></a>店面要求：Azure 市场  
 下面是 Azure 市场中商品类型的先决条件要求。  
+
 | 要求 | 详细信息 | 商品类型 |  
 |:--- |:--- |:--- |  
 | ***参与策略*** | 必须遵循 Azure 市场参与政策。<ul> <li>有关参与政策的详细信息，请访问“Azure 市场参与政策”页：[azure.microsoft.com/support/legal/marketplace/participation-policies](https://azure.microsoft.com/support/legal/marketplace/participation-policies)。</li></ul> | list<br />事务处理<br />试用 |  
@@ -89,18 +91,18 @@ ms.locfileid: "36309310"
 
 | 产品/服务类型 | 店面 | 详细信息 |  
 |:---        |:---        |:---     |  
-| 免费/SaaS 试用 | AppSource | [商品类型要求：试用](#listing-type-requirements-trial) |  
+| 免费/SaaS 试用 | AppSource | [列出的类型要求：试用](#listing-type-requirements-trial) |  
 | 免费/SaaS 试用 | Azure 市场 | [要求：Azure 市场：试用：免费试用/SaaS 试用](#requirements-azure-marketplace-trial-free-trial-/-saas-trial) |  
-| 互动演示 | AppSource | [商品类型要求：试用](#listing-type-requirements-trial) |  
+| 互动演示 | AppSource | [列出的类型要求：试用](#listing-type-requirements-trial) |  
 | 互动演示 | Azure 市场 | [要求：Azure 市场：试用：互动演示](#requirements-azure-marketplace-trial-interactive-demo) |  
-| 体验版 | AppSource | [商品类型要求：试用](#listing-type-requirements-trial) |  
+| 体验版 | AppSource | [列出的类型要求：试用](#listing-type-requirements-trial) |  
 | 体验版 | Azure 市场 | [要求：Azure 市场：试用：体验版](#requirements-azure-marketplace-trial-test-drive) |  
 
 #### <a name="requirements-azure-marketplace-trial"></a>要求：Azure 市场：试用  
 
 | 要求 | 详细信息 |  
 |:--- |:--- |  
-| 免费试用期和试用体验 | 客户可以在有限时间内免费使用你的应用。<br /><br />客户不需要支付产品/服务或应用的任何许可证或订阅费用。 客户不需要支付基础 Microsoft 第一方产品或服务的费用。 所有试用选项部署到 Azure 订阅。 你可以独自控制成本优化和管理功能的试用版。<br /><br />可以选择免费试用、互动演示或体验版。 不管选择哪种，都必须向客户提供规定时间的免费应用试用。<ul> <li>若要开始创建体验版，请向 [amp-testdrive@microsoft.com](mailto:amp-testdrive@microsoft.com) 发送电子邮件。</li> </ul>请注意：Azure 市场 SaaS 试用体验必须允许用户使用工作凭据登录。<ul> <li>有关详细信息，请访问 [docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-appsource-certified#appsource-trial-experiences](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-appsource-certified#appsource-trial-experiences) 上的 AppSource 试用体验部分。</li> </ul> |  
+| 免费试用期和试用体验 | 客户可以在有限时间内免费使用你的应用。<br /><br />客户不需要支付产品/服务或应用的任何许可证或订阅费用。 客户不需要支付基础 Microsoft 第一方产品或服务的费用。 所有试用选项部署到 Azure 订阅。 你可以独自控制成本优化和管理功能的试用版。<br /><br />可以选择免费试用、互动演示或体验版。 不管选择哪种，都必须向客户提供规定时间的免费应用试用。<ul> <li>若要开始创建体验版，请向 [amp-testdrive@microsoft.com](mailto:amp-testdrive@microsoft.com) 发送电子邮件。</li> </ul>注意：Azure 市场 SaaS 试用体验必须允许用户使用工作凭据登录。<ul> <li>有关详细信息，请访问 [docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-appsource-certified#appsource-trial-experiences](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-appsource-certified#appsource-trial-experiences) 上的 AppSource 试用体验部分。</li> </ul> |  
 | 可轻松配置、随时可用的解决方案 | 应用的配置和设置须便捷。 |  
 | 可用性/运行时间 | SaaS 应用或平台的运行时间须不低于 99.9%。 |  
 | Azure Active Directory | 在已启用许可的情况下，产品/服务须允许使用 Azure Active Directory (Azure AD) 联合单一登录 (SSO)（Azure AD 联合 SSO）。 |  

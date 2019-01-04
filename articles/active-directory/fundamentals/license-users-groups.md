@@ -1,6 +1,6 @@
 ---
-title: 如何分配或删除 Azure Active Directory 许可证 | Microsoft Docs
-description: 使用 Azure Active Directory 对用户或组分配或删除 Azure Active Directory 许可证。
+title: 分配或删除许可证 - Azure Active Directory | Microsoft Docs
+description: 关于如何对用户或组分配或删除 Azure Active Directory 许可证的说明。
 services: active-directory
 author: eross-msft
 manager: mtillman
@@ -12,15 +12,15 @@ ms.topic: conceptual
 ms.date: 09/05/2018
 ms.author: lizross
 ms.reviewer: jeffsta
-custom: it-pro
-ms.openlocfilehash: e1b0b2f84c67e30c3bb998554dc662b002744003
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.custom: it-pro, seodec18
+ms.openlocfilehash: 6cf3e9a9b767dfaa6f04d151864f64123e3d6ae7
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45603869"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53077445"
 ---
-# <a name="how-to-assign-or-remove-azure-active-directory-licenses"></a>如何：分配或删除 Azure Active Directory 许可证
+# <a name="assign-or-remove-licenses-using-the-azure-active-directory-portal"></a>使用 Azure Active Directory 门户分配或删除许可证 | Microsoft Docs
 许多 Azure Active Directory (Azure AD) 服务要求激活 Azure AD 产品并且针对该产品向每个用户或组（以及关联成员）授予许可。 只有具有活动许可证的用户才能访问和使用已许可的 Azure AD 服务。
 
 ## <a name="available-product-editions"></a>可用产品版本

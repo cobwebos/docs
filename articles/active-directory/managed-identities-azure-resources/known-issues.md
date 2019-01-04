@@ -15,12 +15,12 @@ ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 12/12/2017
 ms.author: daveba
-ms.openlocfilehash: 256f36ac56126fc76561a6dbe4281ac4975df6e4
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: b535939e200b533c06c97686897e283fb6cf57bc
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52632783"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52720178"
 ---
 # <a name="faqs-and-known-issues-with-managed-identities-for-azure-resources"></a>Azure 资源托管标识的 FAQ 和已知问题
 
@@ -63,13 +63,13 @@ Azure 资源托管标识 VM 扩展目前仍可使用；但在以后，我们会�
 
 ### <a name="will-managed-identities-be-recreated-automatically-if-i-move-a-subscription-to-another-directory"></a>如果我将订阅移动到另一个目录中，是否会自动重新创建托管标识？
 
-否。 如果你将订阅移动到另一个目录中，则必须手动重新创建标识并重新向它们授予 Azure RBAC 角色分配。
+不是。 如果你将订阅移动到另一个目录中，则必须手动重新创建标识并重新向它们授予 Azure RBAC 角色分配。
     - 对于系统分配的托管标识：禁用并重新启用。
     - 对于用户分配的托管标识：删除、重新创建并重新将其附加到所需的资源（例如虚拟机）
 
 ### <a name="can-i-use-a-managed-identity-to-access-a-resource-in-a-different-directorytenant"></a>是否可以使用托管标识来访问不同目录/租户中的资源？
 
-否。 托管标识当前不支持跨目录方案。 
+不是。 托管标识当前不支持跨目录方案。 
 
 ### <a name="what-are-the-supported-linux-distributions"></a>有哪些受支持的 Linux 发行版？
 
@@ -115,7 +115,7 @@ Azure 资源托管标识 VM 扩展（计划在 2019 年 1 月弃用）当前不�
 
 ### <a name="cannot-assign-access-to-virtual-machines-in-the-access-control-iam-blade"></a>无法在“访问控制(IAM)”边栏选项卡中向虚拟机授予访问权限
 
-如果在 Azure 门户中依次转到“访问控制(IAM)” > “添加权限”后，“将访问权限分配给”中没有“虚拟机”选项，表明所在区域的门户中尚未启用 Azure 资源托管标识。 请稍后再看看。  仍可以通过搜索 Azure 资源托管标识服务主体，选择用于角色分配的 VM 的标识。  在“选择”字段中输入 VM 名称，服务主体就会出现在搜索结果中。
+如果在 Azure 门户中依次转到“访问控制(IAM)” > “添加角色分配”后，“将访问权限分配给”中没有“虚拟机”选项，表明所在区域的门户中尚未启用 Azure 资源托管标识。 请稍后再看看。  仍可以通过搜索 Azure 资源托管标识服务主体，选择用于角色分配的 VM 的标识。  在“选择”字段中输入 VM 名称，服务主体就会出现在搜索结果中。
 
 ### <a name="vm-fails-to-start-after-being-moved-from-resource-group-or-subscription"></a>从资源组或订阅迁移后无法启动 VM
 

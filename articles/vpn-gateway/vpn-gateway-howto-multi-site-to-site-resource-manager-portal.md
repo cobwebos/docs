@@ -1,5 +1,5 @@
 ---
-title: 向 VNet 添加多个 VPN 网关站点到站点连接：Azure 门户：Resource Manager | Microsoft Docs
+title: 向 VNet 添加多个 VPN 网关站点到站点连接：Azure 门户：资源管理器 | Microsoft Docs
 description: 将多站点 S2S 连接添加到包含现有连接的 VPN 网关
 services: vpn-gateway
 documentationcenter: na
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/14/2018
 ms.author: cherylmc
-ms.openlocfilehash: a0074cf703c5d30dca3c8353f4821e71684a190c
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: a814834be3225764c3b6f237bd515ca087f975a7
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52164551"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52873115"
 ---
 # <a name="add-a-site-to-site-connection-to-a-vnet-with-an-existing-vpn-gateway-connection"></a>将站点到站点连接添加到包含现有 VPN 网关连接的 VNet
 
@@ -63,7 +63,7 @@ ms.locfileid: "52164551"
 5. 在“添加连接”页面上，填写以下字段：
    
    * **名称：** 想与其建立连接的站点的名称。
-   * **连接类型：** 选择“**站点到站点(IPsec)**”。
+   * **连接类型：** 选择“站点到站点 (IPsec)”。
      
      ![“添加连接”页面](./media/vpn-gateway-howto-multi-site-to-site-resource-manager-portal/addconnectionblade.png "Add connection page")<br>
 
@@ -94,4 +94,4 @@ ms.locfileid: "52164551"
 
 ## <a name="next-steps"></a>后续步骤
 
-连接完成后，即可将虚拟机添加到虚拟网络。 有关详细信息，请参阅虚拟机 [学习路径](https://azure.microsoft.com/documentation/learning-paths/virtual-machines) 。
+连接完成后，即可将虚拟机添加到虚拟网络。 有关详细信息，请参阅[虚拟机的学习路径](/learn/paths/deploy-a-website-with-azure-virtual-machines/)。

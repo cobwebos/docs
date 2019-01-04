@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2018
 ms.author: rkarlin
-ms.openlocfilehash: a0d0cbacfa03080d519e5d9e3592ad01ed58b933
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: f3c055d55da06e6410520084a1c96baa78b91496
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52316577"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53341706"
 ---
 # <a name="apply-system-updates-in-azure-security-center"></a>在 Azure 安全中心应用系统更新
 Azure 安全中心每天对 Windows、Linux 虚拟机 (VM) 和计算机进行监控，以找出缺少的操作系统更新。 安全中心从 Windows 更新或 Windows Server Update Services (WSUS) 检索可用的安全更新和关键更新的列表，具体取决于 Windows 计算机上配置的服务。 安全中心还可以在 Linux 系统中检查最新更新。 如果 VM 或计算机缺少系统更新，安全中心将建议应用系统更新。
@@ -46,12 +46,12 @@ Azure 安全中心每天对 Windows、Linux 虚拟机 (VM) 和计算机进行监
   仪表板底部列出了 VM 和计算机中缺少的所有更新以及缺少更新的严重性。  此列表包括：
 
     - 名称：所缺更新的名称。
-    - VM 和 计算机数：缺少此更新的 VM 和计算机的总数。
-    - 状态：该建议的当前状态：
+    - VM 和 和计算机的数量：缺少此更新的 VM 和计算机的总数。
+    - 状态：此建议的当前状态：
 
-      - 未解决：建议尚未得到处理。
-      - 正在进行：目前已将建议应用到相关资源，无需用户采取行动。
-      - 已解决：已完成建议。 （解决问题后，此条目将变暗）。
+      - 未解决：此建议尚未得到处理。
+      - 正在进行：目前已将此建议应用到相关资源，不需要你采取行动。
+      - 已解决：已完成此建议。 （解决问题后，此条目将变暗）。
 
     - 严重性：描述该特定建议的严重性：
 
@@ -84,7 +84,7 @@ Azure 安全中心每天对 Windows、Linux 虚拟机 (VM) 和计算机进行监
 ## <a name="next-steps"></a>后续步骤
 若要了解有关安全中心的详细信息，请参阅以下文章：
 
-* [在 Azure 安全中心中设置安全策略](security-center-azure-policy.md) - 了解如何配置 Azure 订阅和资源组的安全策略。
+* [在 Azure 安全中心中设置安全策略](tutorial-security-policy.md) - 了解如何配置 Azure 订阅和资源组的安全策略。
 * [在 Azure 安全中心中管理安全建议](security-center-recommendations.md) -- 了解建议如何帮助保护 Azure 资源。
 * [Azure 安全中心的安全性运行状况监视](security-center-monitoring.md) -- 了解如何监视 Azure 资源的运行状况。
 * [管理和响应 Azure 安全中心的安全警报](security-center-managing-and-responding-alerts.md) -- 了解如何管理和响应安全警报。

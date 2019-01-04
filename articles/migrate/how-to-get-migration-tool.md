@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 09/17/2018
 ms.author: raynew
-ms.openlocfilehash: 0b02ae4b75426b379ad7c124f5ddeb053c142ce6
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: 068b55e40afc96dbcfae26c8bf7da8a1b9ea349a
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45730288"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53249764"
 ---
 # <a name="migrate-machines-after-assessment"></a>在评估后迁移计算机
 
@@ -19,6 +19,9 @@ ms.locfileid: "45730288"
 [Azure Migrate](migrate-overview.md) 可评估本地计算机来检查其是否适合迁移到 Azure，并提供在 Azure 中运行计算机的大小和成本估计。 目前，Azure Migrate 仅评估要迁移的计算机。 目前，迁移本身是使用其他 Azure 服务执行的。
 
 本文介绍在运行迁移评估后如何获取有关迁移工具的建议。
+
+> [!NOTE]
+> Azure 政府中不提供迁移工具建议。
 
 ## <a name="migration-tool-suggestion"></a>迁移工具建议
 

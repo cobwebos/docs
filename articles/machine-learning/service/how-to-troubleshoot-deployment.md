@@ -1,6 +1,7 @@
 ---
-title: Azure 机器学习服务部署故障排除指南
-description: 了解如何使用 Azure 机器学习服务规避、解决和排除常见 Docker 部署错误。
+title: 部署故障排除指南
+titleSuffix: Azure Machine Learning service
+description: 了解如何使用 Azure 机器学习服务规避、解决以及排除 AKS 和 ACI 的常见 Docker 部署错误。
 services: machine-learning
 ms.service: machine-learning
 ms.component: core
@@ -8,17 +9,18 @@ ms.topic: conceptual
 ms.author: haining
 author: hning86
 ms.reviewer: jmartens
-ms.date: 10/01/2018
-ms.openlocfilehash: a10b05e95fa719b80775191e48bd4117e3a785fd
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.date: 12/04/2018
+ms.custom: seodec18
+ms.openlocfilehash: 6bd3bc86aa828ab28462de9d45f660889634cbd7
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49321676"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53100508"
 ---
-# <a name="troubleshooting-azure-machine-learning-service-deployments"></a>Azure 机器学习服务部署故障排除
+# <a name="troubleshooting-azure-machine-learning-service-aks-and-aci-deployments"></a>Azure 机器学习服务 AKS 和 ACI 部署故障排除
 
-本文将介绍如何使用 Azure 机器学习服务规避或解决常见 Docker 部署错误。
+本文将介绍如何使用 Azure 机器学习服务规避或解决 Azure 容器实例 (ACI) 和 Azure Kubernetes 服务 (AKS) 的常见 Docker 部署错误。
 
 在 Azure 机器学习服务中部署模型时，系统将执行大量任务。 这是一系列复杂事件，有时会出现问题。 部署任务包括：
 
@@ -117,7 +119,7 @@ print(ws.webservices()['mysvc'].get_logs())
 ```
 
 ### <a name="debug-the-docker-image-locally"></a>本地调试 Docker 映像
-有时 Docker 日志体现的错误相关信息并不充足。 可以进一步操作并提取生成的 Docker 映像，启动本地容器并以交互方式直接在实时容器内进行调试。 若要启动本地容器，必须具有本地运行的 Docker 映像，此外，如果还安装有 [azure-cli](/cli/azure/install-azure-cli?view=azure-cli-latest)，此步骤将容易得多。
+有时 Docker 日志体现的错误相关信息并不充足。 可以进一步操作并提取生成的 Docker 映像，启动本地容器并以交互方式直接在实时容器内进行调试。 若要启动本地容器，必须具有本地运行的 Docker 映像，此外，如果还安装有 [azure-cli](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)，此步骤将容易得多。
 
 首先需要找到映像位置：
 
@@ -216,16 +218,12 @@ def run(input_data):
         # return error message back to the client
         return json.dumps({"error": result})
 ```
-注意：通过 `run(input_data)` 调用返回错误消息应仅用于调试目的。 出于安全原因，在生产环境中执行此操作可能并非上策。
+**注意**：通过 `run(input_data)` 调用返回错误消息应仅用于调试目的。 出于安全原因，在生产环境中执行此操作可能并非上策。
 
 
 ## <a name="next-steps"></a>后续步骤
 
 详细了解部署： 
-* [如何部署到 ACI](how-to-deploy-to-aci.md)
+* [部署方式和部署位置](how-to-deploy-and-where.md)
 
-* [如何部署到 AKS](how-to-deploy-to-aks.md)
-
-* [教程第 1 部分：培训模型](tutorial-train-models-with-aml.md)
-
-* [教程第 2 部分：部署模型](tutorial-deploy-models-with-aml.md)
+* [教程：训练和部署模型](tutorial-train-models-with-aml.md)

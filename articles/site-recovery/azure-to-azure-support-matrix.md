@@ -5,16 +5,15 @@ services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
-ms.devlang: na
 ms.topic: article
-ms.date: 10/28/2018
+ms.date: 12/12/2018
 ms.author: raynew
-ms.openlocfilehash: bc671a598d975fb732b668d579561a253f04ded3
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 50f9027301e4a04cd5624deee084429c803e04f4
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52317715"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53342708"
 ---
 # <a name="support-matrix-for-replicating-from-one-azure-region-to-another"></a>用于在 Azure 区域之间进行复制的支持矩阵
 
@@ -41,9 +40,9 @@ ms.locfileid: "52317715"
 **在受支持的地理群集内跨区域迁移虚拟机（订阅内和跨订阅）** | 在同一 Azure Active Directory 租户中受支持。
 **在同一区域内迁移 VM** | 不支持。
 
-# <a name="region-support"></a>区域支持
+## <a name="region-support"></a>区域支持
 
-可以在同一地理群集中的任意两个区域之间复制和恢复 VM。
+可以在同一地理群集中的任意两个区域之间复制和恢复 VM。 在定义地理群集时请注意数据延迟和主权。
 
 **地理群集** | **Azure 区域**
 -- | --
@@ -53,21 +52,21 @@ ms.locfileid: "52317715"
 澳大利亚   | 澳大利亚东部、澳大利亚东南部、澳大利亚中部、澳大利亚中部 2
 Azure Government     | US Gov 弗吉尼亚州、US Gov 爱荷华州、US Gov 亚利桑那州、US Gov 德克萨斯州、US DOD 东部、US DOD 中部
 德国 | 德国中部、德国东北部
-中国 | 中国东部、中国北部
+中国 | 中国东部、中国北部、中国北部 2、中国东部 2
 
 >[!NOTE]
 >
-> 对于巴西南部区域，可复制和故障转移到以下区域之一：美国中南部、美国中西部、美国东部、美国东部 2、美国西部、美国西部 2 和美国中北部地区。
+> 对于巴西南部区域，可以复制并故障转移到下列区域之一：美国中南部、美国中西部、美国东部、美国东部 2、美国西部、美国西部 2 和美国中北部区域。</br>
+> 应当注意，Site Recovery 仅将“巴西南部”启用为可以在其中保护 VM 的源区域。 它不能用作任何 Azure 区域（例如“美国中南部”）的目标 DR 区域。 看到的延迟是由地理距离导致的，建议选择除了“巴西南部”之外的任何其他美洲区域。  
 
 ## <a name="cache-storage"></a>缓存存储
 
 此表汇总了对复制期间 Site Recovery 使用的缓存存储帐户的支持。
 
-**设置** | **详细信息**
---- | ---
+**设置** | **支持** | **详细信息**
+--- | --- | ---
 常规用途 V2 存储帐户（热存储层和冷存储层） | 不支持。 | 因为 V2 的事务成本远高于 V1 存储帐户，因此缓存存储存在限制。
-虚拟网络的 Azure 存储防火墙  | 否 | 不支持访问用于存储复制数据的缓存存储帐户上特定的 Azure 虚拟网络。
-
+虚拟网络的 Azure 存储防火墙  | 支持 | 如果你使用的是启用了防火墙的缓存存储帐户或目标存储帐户，请确保“[允许受信任的 Microsoft 服务](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions)”。
 
 
 ## <a name="replicated-machine-operating-systems"></a>复制的计算机操作系统
@@ -128,16 +127,16 @@ Debian 8 | 9.17、9.18 | 3.16.0-4-amd64 到 3.16.0-6-amd64、4.9.0-0.bpo.4-amd64
 
 **版本** | **移动服务版本** | **内核版本** |
 --- | --- | --- |
-SUSE Linux Enterprise Server 12（SP1、SP2、SP3） | 9.20 | SP1 3.12.49-11-default 到 3.12.74-60.64.40-default</br></br> SP1(LTSS) 3.12.74-60.64.45-default 到 3.12.74-60.64.107-default</br></br> SP2 4.4.21-69-default 到 4.4.120-92.70-default</br></br>SP2(LTSS) 4.4.121-92.73-default 到 4.4.121-92.98-default</br></br>SP3 4.4.73-5-default 到 4.4.140-94.69-default |
+SUSE Linux Enterprise Server 12（SP1、SP2、SP3） | 9.20 | SP1 3.12.49-11-default 到 3.12.74-60.64.40-default</br></br> SP1(LTSS) 3.12.74-60.64.45-default 到 3.12.74-60.64.107-default</br></br> SP2 4.4.21-69-default 到 4.4.120-92.70-default</br></br>SP2(LTSS) 4.4.121-92.73-default 到 4.4.121-92.98-default</br></br>SP3 4.4.73-5-default 到 4.4.162-94.69-default |
 SUSE Linux Enterprise Server 12（SP1、SP2、SP3） | 9.19 | SP1 3.12.49-11-default 到 3.12.74-60.64.40-default</br></br> SP1(LTSS) 3.12.74-60.64.45-default 到 3.12.74-60.64.93-default</br></br> SP2 4.4.21-69-default 到 4.4.120-92.70-default</br></br>SP2(LTSS) 4.4.121-92.73-default 到 4.4.121-92.80-default</br></br>SP3 4.4.73-5-default 到 4.4.140-94.42-default |
 SUSE Linux Enterprise Server 12（SP1、SP2、SP3） | 9.18 | SP1 3.12.49-11-default 到 3.12.74-60.64.40-default</br></br> SP1(LTSS) 3.12.74-60.64.45-default 到 3.12.74-60.64.93-default</br></br> SP2 4.4.21-69-default 到 4.4.120-92.70-default</br></br>SP2(LTSS) 4.4.121-92.73-default 到 4.4.121-92.80-default</br></br>SP3 4.4.73-5-default 到 4.4.138-94.39-default |
 SUSE Linux Enterprise Server 12（SP1、SP2、SP3） | 9.17 | SP1 3.12.49-11-default 到 3.12.74-60.64.40-default</br></br> SP1(LTSS) 3.12.74-60.64.45-default 到 3.12.74-60.64.88-default</br></br> SP2 4.4.21-69-default 到 4.4.120-92.70-default</br></br>SP2(LTSS) 4.4.121-92.73-default</br></br>SP3 4.4.73-5-default 到 4.4.126-94.22-default |
 
 ## <a name="replicated-machines---linux-file-systemguest-storage"></a>复制的计算机 - Linux 文件系统/来宾存储
 
-* 文件系统：ext3、ext4、ReiserFS（仅限 Suse Linux Enterprise Server）和 XFS
+* 文件系统：ext3、ext4、ReiserFS（仅限 Suse Linux Enterprise Server）和 XFS、BTRFS
 * 卷管理器：LVM2
-* 多路径软件：设备映射程序
+* 多路径软件：设备映射器
 
 
 ## <a name="replicated-machines---compute-settings"></a>复制的计算机 - 计算设置
@@ -146,7 +145,7 @@ SUSE Linux Enterprise Server 12（SP1、SP2、SP3） | 9.17 | SP1 3.12.49-11-def
 --- | --- | ---
 大小 | 具有至少 2 个 CPU 内核和 1 GB RAM 的任意 Azure VM 大小 | 验证 [Azure 虚拟机大小](../virtual-machines/windows/sizes.md)。
 可用性集 | 支持 | 如果启用使用默认选项复制 Azure VM，则会根据源区域设置自动创建可用性集。 可以修改这些设置。
-可用性区域 | 不支持 | 当前无法复制在可用性区域中部署的 VM。
+可用性区域 | 支持 |  
 混合使用权益 (HUB) | 支持 | 如果源 VM 启用了 HUB 许可证，则测试故障转移或故障转移 VM 也使用 HUB 许可证。
 VM 规模集 | 不支持 |
 Azure 库映像 — 由 Microsoft 发布 | 支持 | 如果 VM 在受支持的操作系统上运行，则支持该配置。
@@ -180,6 +179,7 @@ OS 磁盘的最大大小 | 2048 GB | [深入了解 ](../virtual-machines/windows
 数据磁盘 - 高级存储帐户 | 支持 | 如果 VM 将磁盘分散在高级和标准存储帐户上，则可以为每个磁盘选择不同的目标存储帐户，以确保在目标区域中具有相同的存储配置。
 托管磁盘 - 标准 | 在支持 Azure Site Recovery 的 Azure 区域中受支持。 |  
 托管磁盘 - 高级 | 在支持 Azure Site Recovery 的 Azure 区域中受支持。 |
+标准 SSD | 不支持 |
 冗余 | LRS 和 GRS 受支持。<br/><br/> ZRS 不受支持。
 冷存储和热存储 | 不支持 | 冷存储和热存储不支持 VM 磁盘
 存储空间 | 支持 |         
@@ -195,12 +195,24 @@ GRS | 支持 |
 RA-GRS | 支持 |
 ZRS | 不支持 |  
 冷存储和热存储 | 不支持 | 冷存储和热存储不支持虚拟机磁盘
-虚拟网络的 Azure 存储防火墙  | 是 | 若要限制对存储帐户的虚拟网络访问，请确保允许受信任的 Microsoft 服务访问存储帐户。
+虚拟网络的 Azure 存储防火墙  | 支持 | 如果你限制了虚拟网络对存储帐户的访问，请确保“[允许受信任的 Microsoft 服务](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions)”。
 常规用途 V2 存储帐户（冷热存储层） | 否 | 与常规用途 V1 存储帐户相比，事务成本显著增加
 
 >[!IMPORTANT]
 > 确保观察 [Linux](../virtual-machines/linux/disk-scalability-targets.md) 或 [Windows](../virtual-machines/windows/disk-scalability-targets.md) 虚拟机的 VM 磁盘可伸缩性和性能目标，以避免任何性能问题。 如果遵从默认设置，Site Recovery 将基于源配置创建所需的磁盘和存储帐户。 如果自定义和选择自己的设置，请确保遵循源 VM 的磁盘可伸缩性和性能目标。
 
+## <a name="azure-site-recovery-limits-to-replicate-data-change-rates"></a>Azure Site Recovery 对数据更改复制速率的限制
+下表提供了 Azure Site Recovery 限制。 这些限制基于我们的测试，但无法涵盖所有可能的应用程序 I/O 组合。 实际结果可能因应用程序 I/O 组合而异。 我们还应注意，有两个限制需要考虑：每个磁盘的数据变动率，以及每个虚拟机的数据变动率。
+例如，查看下表中的高级 P20 磁盘可以发现，Site Recovery 能够处理每个磁盘的 5 MB/秒的变动率，但由于每个 VM 的总变动率限制为 25 MB/秒，因此，它最多可以处理每个 VM 中 5 个这样的磁盘。
+
+**复制存储目标** | **平均源磁盘 I/O 大小** |**平均源磁盘数据变动量** | **每天的总源磁盘数据变动量**
+---|---|---|---
+标准存储 | 8 KB | 2 MB/秒 | 每个磁盘 168 GB
+高级 P10 或 P15 磁盘 | 8 KB  | 2 MB/秒 | 每个磁盘 168 GB
+高级 P10 或 P15 磁盘 | 16 KB | 4 MB/秒 |  每个磁盘 336 GB
+高级 P10 或 P15 磁盘 | 至少 32 KB | 8 MB/秒 | 每个磁盘 672 GB
+高级 P20、P30、P40 或 P50 磁盘 | 8 KB    | 5 MB/秒 | 每个磁盘 421 GB
+高级 P20、P30、P40 或 P50 磁盘 | 至少 16 KB |10 MB/秒 | 每个磁盘 842 GB
 ## <a name="replicated-machines---networking"></a>复制的计算机 - 网络
 **配置** | **支持** | **详细信息**
 --- | --- | ---

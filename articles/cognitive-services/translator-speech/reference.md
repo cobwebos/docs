@@ -10,12 +10,12 @@ ms.component: translator-speech
 ms.topic: reference
 ms.date: 05/18/2018
 ms.author: v-jansko
-ms.openlocfilehash: 1fc48687141ea8a7e8cb30d3438d81e8f1088e4f
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: dea32146c1e00869de43b50823e81853e6543411
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49340437"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53259420"
 ---
 # <a name="translator-speech-api"></a>语音翻译 API
 
@@ -49,7 +49,7 @@ ms.locfileid: "49340437"
 ## <a name="5-process-the-results"></a>5.处理结果
 **处理从服务流式传输回来的结果。** 部分结果、最终结果和文本转语音音频片段的格式在下面的 `/speech/translate` 操作的文档中介绍。
 
-可以从 [Microsoft Translator Github 站点](https://github.com/MicrosoftTranslator)获得演示如何使用语音翻译 API 的代码示例。
+可以从 [Microsoft Translator GitHub 站点](https://github.com/MicrosoftTranslator)获得演示如何使用语音翻译 API 的代码示例。
 
 ## <a name="implementation-notes"></a>实现说明
 
@@ -88,6 +88,9 @@ GET /speech/translate 建立用于语音翻译的会话
 请注意，总文件大小（4-7 字节）和 "data" 的大小（40-43 字节）设置为零。 对于总大小不一定提前知道的流式传输方案，这是可行的。
 
 发送 WAV (RIFF) 标头以后，客户端发送音频数据区块。 客户端通常会流式传输固定大小的区块，这里的固定大小代表固定时长（例如，一次流式传输 100 毫秒的音频）。
+
+### <a name="signal-the-end-of-the-utterance"></a>陈述结束时发出信号
+发送音频时，语音翻译 API 将返回音频流的脚本和翻译。 仅在陈述结束时，才会向你返回最终脚本、最终翻译和翻译后的音频。 在某些情况下，你可能想要强制结束陈述。 请发送 2.5 秒的无声状态以强制结束陈述。 
 
 ### <a name="final-result"></a>最终结果
 表述结束时会生成最终的语音识别结果。 结果使用类型为“文本”的 WebSocket 消息从服务传输到客户端。 消息内容是使用以下属性对对象进行的 JSON 序列化：

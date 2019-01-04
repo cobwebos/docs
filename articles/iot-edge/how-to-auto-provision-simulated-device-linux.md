@@ -1,6 +1,6 @@
 ---
-title: 使用 DPS 自动预配 Azure IoT Edge 设备 - Linux | Microsoft Docs
-description: 使用 Linux VM 上的模拟 TPM 来测试 Azure IoT Edge 的设备预配
+title: 使用 DPS 自动预配 Linux 设备 - Azure IoT Edge | Microsoft Docs
+description: 使用 Linux VM 上的模拟 TPM 来测试 Azure IoT Edge 的 Azure 设备预配服务
 author: kgremban
 manager: philmea
 ms.author: kgremban
@@ -8,12 +8,13 @@ ms.date: 10/31/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 61da3b8e139cf5091aec4c1ab835c23fe319ea46
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec18
+ms.openlocfilehash: 0550b1765e36d591a1baf34d3c255a252ca5278b
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52446228"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53101749"
 ---
 # <a name="create-and-provision-an-edge-device-with-a-virtual-tpm-on-a-linux-virtual-machine"></a>使用 Linux 虚拟机上的虚拟 TPM 创建和预配 Edge 设备
 
@@ -61,7 +62,7 @@ ms.locfileid: "52446228"
 
 3. 使用以下特定配置完成“新建虚拟机向导”：
 
-   1. **指定代次**：选择“第 2 代”。
+   1. **指定代系**：选择“第 2 代”。
    2. **配置网络**：设置“连接”的值设置为在上一部分创建的虚拟交换机。 
    3. **安装选项**：选择“从可启动映像文件安装操作系统”，并浏览到本地保存的磁盘映像文件。
 

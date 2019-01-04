@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.component: B2B
 ms.topic: conceptual
-ms.date: 05/25/2017
+ms.date: 12/5/2018
 ms.author: mimart
 author: msmimart
 manager: mtillman
 ms.reviewer: sasubram
-ms.openlocfilehash: 5f999a17cd375a3338aa936e2f405c36f6021ebc
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: 01693f16b0af59881c22fefb6ec8abe0c4fb3874
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45984803"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52996627"
 ---
 # <a name="properties-of-an-azure-active-directory-b2b-collaboration-user"></a>Azure Active Directory B2B 协作用户的属性
 
@@ -25,31 +25,43 @@ Azure Active Directory (Azure AD) 企业对企业 (B2B) 协作用户是 UserType
 
 - 状态 1：驻留在 Azure AD 的外部实例中，代表邀请方组织中的来宾用户。 在这种情况下，B2B 用户需使用属于受邀方租户的 Azure AD 帐户进行登录。 如果合作伙伴组织不使用 Azure AD，仍会在 Azure AD 中创建来宾用户。 相应要求是，他们兑换自己的邀请，并由 Azure AD 验证其电子邮件地址。 此安排也称为实时 (JIT) 租户或“促销型”租户。
 
-- 状态 2：驻留在 Microsoft 帐户中，代表宿主组织中的来宾用户。 在这种情况下，来宾用户需使用 Microsoft 帐户登录。 受邀用户的非 Microsoft 帐户社交标识（google.com 或类似项）在兑换产品期间将创建为 Microsoft 帐户。
+- 状态 2：驻留在 Microsoft 或其他帐户中，代表宿主组织中的来宾用户。 这种情况下，来宾用户使用 Microsoft 帐户或社交帐户（google.com 或类似账户）登录。 产品兑换期间，在邀请方组织目录中将受邀用户标识创建为 Microsoft 帐户。
 
-- 状态 3：驻留在组织的本地 Active Directory 中，并且与宿主组织的 Azure AD 同步。 在此版本中，必须使用 PowerShell 手动更改云中的此类用户的 UserType。
+- 状态 3：驻留在宿主组织的本地 Active Directory 中，并且与宿主组织的 Azure AD 同步。 可以使用 Azure AD Connect 将合作伙伴帐户作为 Azure AD B2B 用户（即 UserType = Guest 的用户）同步到云。 请参阅[向本地托管的合作伙伴帐户授予对云资源的访问权限](hybrid-on-premises-to-cloud.md)。
 
 - 状态 4：驻留在宿主组织的 Azure AD 中并且 UserType = Guest，其凭据由宿主组织管理。
 
   ![显示邀请方的姓名首字母缩写](media/user-properties/redemption-diagram.png)
 
 
-现在，让我们看看处于状态 1 的 Azure AD B2B 协作用户在 Azure AD 中的大致情况。
+现在，让我们看看 Azure AD B2B 协作用户在 Azure AD 中的大致情况。
 
 ### <a name="before-invitation-redemption"></a>兑换邀请之前
+
+状态 1 和状态 2 帐户是邀请来宾用户使用来宾用户自己的凭据进行协作的结果。 最初向来宾用户发送邀请时，会在目录中创建帐户。 这个帐户没有与之关联的任何凭据，因为是由来宾用户的标识提供者执行身份验证。 目录中来宾用户帐户的“源”属性设置为“受邀用户”。 
 
 ![兑换产品之前](media/user-properties/before-redemption.png)
 
 ### <a name="after-invitation-redemption"></a>兑换邀请之后
 
-![兑换产品之后](media/user-properties/after-redemption.png)
+来宾用户接受邀请之后，将根据来宾用户的标识提供者更新“源”属性。
+
+对于状态 1 中的来宾用户，“源”为“外部 Azure Active Directory”。
+
+![兑换产品之后，状态 1 的来宾用户](media/user-properties/after-redemption-state1.png)
+
+对于状态 2 中的来宾用户，“源”为“Microsoft 帐户”。
+
+![兑换产品之后，状态 2 的来宾用户](media/user-properties/after-redemption-state2.png)
+
+对于状态 3 和状态 4 中的来宾用户，“源”属性设置为“Azure Active Directory”或“Windows Server Active Directory”，如下一节所述。
 
 ## <a name="key-properties-of-the-azure-ad-b2b-collaboration-user"></a>Azure AD B2B 协作用户的关键属性
 ### <a name="usertype"></a>UserType
 此属性表示用户与宿主租户之间的关系。 此属性可以具有两个值：
 - 成员：此值表示宿主组织的某位员工，即组织的工资单中的某个用户。 例如，此用户应当对仅限内部站点具有访问权限。 此用户不被视为外部协作者。
 
-- 来宾：此值指示不视为公司内部用户的用户，例如外部协作者、合作伙伴、客户或类似的用户。 此类用户不需要接收 CEO 的内部备注，或享受（比如）公司效益。
+- 来宾：此值表示不被视为公司内部成员的用户，例如外部协作者、合作伙伴或客户。 此类用户不会接收 CEO 的内部备注，也不会享受公司福利等。
 
   > [!NOTE]
   > UserType 与用户的登录方式、用户的目录角色等等之间没有关系。 此属性只是指明该用户与宿主组织之间的关系，使该组织能够实施依赖于此属性的策略。
@@ -57,7 +69,7 @@ Azure Active Directory (Azure AD) 企业对企业 (B2B) 协作用户是 UserType
 ### <a name="source"></a>Source
 此属性指示用户如何登录。
 
-- 已邀请用户：此用户已受邀但尚未兑换其邀请。
+- 受邀用户：此用户已受邀但尚未兑换其邀请。
 
 - 外部 Active Directory：此用户驻留在外部组织中，使用属于另一组织的 Azure AD 帐户进行身份验证。 此登录类型对应于状态 1。
 
@@ -77,17 +89,17 @@ Azure Active Directory (Azure AD) 企业对企业 (B2B) 协作用户是 UserType
 ![筛选来宾用户](media/user-properties/filter-guest-users.png)
 
 ## <a name="convert-usertype"></a>转换 UserType
-目前，用户可使用 PowerShell 将 UserType 从 Member 转换为 Guest，反之亦然。 但是，UserType 属性应该表示用户与组织之间的关系。 因此，只有当用户与组织之间的关系发生更改时，才应当更改此属性的值。 如果用户的关系发生更改，是否应当解决诸如用户主体名称 (UPN) 是否应更改之类的问题？ 用户是否应该继续有权访问同样的资源？ 是否应该分配邮箱？ 因此，我们不建议使用 PowerShell 以原子活动的形式更改 UserType。 此外，为防止使用 PowerShell 导致此属性成为不可变的，我们也不建议对此值产生依赖关系。
+可使用 PowerShell 将 UserType 从“成员”转换为“来宾”，反之亦然。 但是，UserType 属性表示用户与组织之间的关系。 因此，只有当用户与组织之间的关系发生更改时，才应当更改此属性。 如果用户的关系发生更改，用户主体名称 (UPN) 是否应该更改？ 用户是否应该继续有权访问同样的资源？ 是否应该分配邮箱？ 我们不建议使用 PowerShell 以原子活动的形式更改 UserType。 此外，为防止使用 PowerShell 导致此属性不可变，我们不建议对此值产生依赖关系。
 
 ## <a name="remove-guest-user-limitations"></a>删除来宾用户限制
 在某些情况下，你可能想要为来宾用户提供更高的特权。 可将来宾用户添加到任何角色，甚至可在目录中删除默认的来宾用户限制，向用户提供与成员相同的特权。
 
-可以禁用默认的来宾用户限制，便于为公司目录中的来宾用户提供与成员用户相同的权限。
+可以禁用默认限制，便于为公司目录中的来宾用户提供与成员用户相同的权限。
 
 ![删除来宾用户限制](media/user-properties/remove-guest-limitations.png)
 
 ## <a name="can-i-make-guest-users-visible-in-the-exchange-global-address-list"></a>能否在 Exchange 全局地址列表中显示来宾用户？
-是的。 默认情况下，来宾对象在组织的全局地址列表中不可见，但你可以使用 Azure Active Directory PowerShell 使其可见。 有关详细信息，请参阅 [Office 365 组中的来宾访问权限](https://support.office.com/article/guest-access-in-office-365-groups-bfc7a840-868f-4fd6-a390-f347bf51aff6#PickTab=FAQ)中的**能否在全局地址列表中显示来宾用户？**。 
+是的。 默认情况下，来宾对象在组织的全局地址列表中不可见，但可使用 Azure Active Directory PowerShell 使其可见。 有关详细信息，请参阅 [Office 365 组中的来宾访问权限](https://support.office.com/article/guest-access-in-office-365-groups-bfc7a840-868f-4fd6-a390-f347bf51aff6#PickTab=FAQ)中的**能否在全局地址列表中显示来宾用户？**。 
 
 ## <a name="next-steps"></a>后续步骤
 

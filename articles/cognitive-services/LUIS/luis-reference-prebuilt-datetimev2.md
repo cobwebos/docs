@@ -1,33 +1,34 @@
 ---
-title: LUIS 预生成实体 datetimeV2 参考 - Azure | Microsoft Docs
+title: DatetimeV2 预生成实体
 titleSuffix: Azure
 description: 本文包含语言理解 (LUIS) 中的 datetimeV2 预生成实体信息。
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 11/26/2018
 ms.author: diberry
-ms.openlocfilehash: bd28981ae0c5b4d6ccff3168f92f0f99be768b10
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.openlocfilehash: 0e2353107d6554a8ecbbd2e4d9850f8d8b5fda5c
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52335770"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53165174"
 ---
-# <a name="datetimev2-entity"></a>DatetimeV2 实体
+# <a name="datetimev2-prebuilt-entity-for-a-luis-app"></a>LUIS 应用的 DatetimeV2 预生成实体
 
 **datetimeV2** 预生成实体提取日期和时间值。 将以标准化格式解析这些值，使客户端程序能够使用它们。 当某条陈述包含不完整的日期或时间时，LUIS 会在终结点响应中包含过去的值和未来的值。 由于此实体已经过训练，因此不需要将包含 datetimeV2 的陈述示例添加到应用程序意向中。 
 
 ## <a name="types-of-datetimev2"></a>datetimeV2 的类型
-通过 [Recognizers-text](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/English/English-DateTime.yaml) Github 存储库管理 DatetimeV2
+通过 [Recognizers-text](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/English/English-DateTime.yaml) GitHub 存储库管理 DatetimeV2
 
 ## <a name="example-json"></a>示例 JSON 
 以下示例 JSON 响应包含子类型为 `datetime` 的 `datetimeV2` 实体。 有关 datetimeV2 实体的其他类型示例，请参阅 [datetimeV2 的子类型](#subtypes-of-datetimev2)</a>。
 
-```JSON
+```json
 "entities": [
   {
     "entity": "8am on may 2nd 2017",
@@ -103,7 +104,7 @@ ms.locfileid: "52335770"
 以下示例显示了实体“5 月 2 日”的解析。 此解析假设今天的日期是 2017 年 5 月 2 日和 2018 年 5 月 1 日之间的某个日期。
 在 `timex` 字段中包含 `X` 的字段是未在陈述中显式指定的日期的一部分。
 
-```JSON
+```json
   "entities": [
     {
       "entity": "may 2nd",
@@ -132,7 +133,7 @@ ms.locfileid: "52335770"
 
 `datetimeV2` 实体提取日期和时间范围。 `start` 和 `end` 字段指定范围的开始和结束。 对于陈述“5 月 2 日到 5 月 5 日”，LUIS 会提供当前年份和下一年份的 **daterange** 值。 在 `timex` 字段中，`XXXX` 值指示年份的歧义性。 `P3D` 指示时间段为三天。
 
-```JSON
+```json
 "entities": [
     {
       "entity": "may 2nd to may 5th",
@@ -163,7 +164,7 @@ ms.locfileid: "52335770"
 
 以下示例演示 LUIS 如何使用 **datetimeV2** 来解析陈述“星期二到星期四”。 在此示例中，当前日期为 6 月 19 日。 LUIS 为当前日期前面和后面的日期范围包含 **daterange** 值。
 
-```JSON
+```json
   "entities": [
     {
       "entity": "tuesday to thursday",
@@ -196,7 +197,7 @@ ms.locfileid: "52335770"
 
 以下示例演示 LUIS 如何使用 **datetimeV2** 来解析包含时间范围的陈述。
 
-```
+```json
   "entities": [
     {
       "entity": "6pm to 7pm",

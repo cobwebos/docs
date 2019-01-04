@@ -1,22 +1,24 @@
 ---
-title: 使用 Azure 门户创建具有区域性公用 IP 地址前端的公用负载均衡器标准 | Microsoft Docs
+title: 创建具有区域性前端 IP 地址的标准负载均衡器 - Azure 门户
+titlesuffix: Azure Load Balancer
 description: 了解如何使用 Azure 门户创建具有区域性公用 IP 地址前端的公用负载均衡器标准
 services: load-balancer
 documentationcenter: na
 author: KumudD
 ms.service: load-balancer
+ms.custom: seodec18
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/26/2018
 ms.author: kumud
-ms.openlocfilehash: cc3d1e9f2d87da1ed7014674877212ea0be81bca
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: e109504fe8657436d73870cc022ed4bc81c559f5
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50416760"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53095304"
 ---
 #  <a name="create-a-public-load-balancer-standard-with-zonal-public-ip-address-frontend-using-azure-portal"></a>使用 Azure 门户创建具有区域性公用 IP 地址前端的公用负载均衡器标准
 

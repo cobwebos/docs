@@ -1,5 +1,5 @@
 ---
-title: 应用服务环境的异地分布式缩放
+title: 应用服务环境的异地分布式缩放 - Azure
 description: 了解如何在流量管理器和应用服务环境中使用异地分布来水平缩放应用。
 services: app-service
 documentationcenter: ''
@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/07/2016
 ms.author: stefsch
-ms.openlocfilehash: bc85139dfa3589baf6505fac2269f8755dcaddc8
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.custom: seodec18
+ms.openlocfilehash: aa9eb0b624df29f6fb86402c06436ed7349fa662
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39213242"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53273861"
 ---
 # <a name="geo-distributed-scale-with-app-service-environments"></a>应用服务环境的异地分布式缩放
 ## <a name="overview"></a>概述
@@ -45,7 +46,7 @@ ms.locfileid: "39213242"
 * **应用的自定义域：** 客户访问应用时使用的自定义域名是什么？  示例应用的自定义域名是 *www.scalableasedemo.com*
 * **流量管理器域：** 创建 [Azure 流量管理器配置文件][AzureTrafficManagerProfile]时需要选择域名。  此名称与 *trafficmanager.net* 后缀相结合，以注册流量管理器所管理的域条目。  就示例应用而言，选择的名称是 *scalable-ase-demo*。  因此，流量管理器所管理的完整域名是 *scalable-ase-demo.trafficmanager.net*。
 * **缩放应用占用空间的策略：** 应用程序占用空间是否分布到单个区域中的多个应用服务环境？  是多个区域吗？  两种方法要混搭使用吗？  决策依据应来自于客户流量的来源位置，以及其余应用的支持后端基础结构的伸缩性。  例如，对于 100% 无状态的应用程序，可以使用每一 Azure 区域多个应用服务环境的组合，乘以跨多个 Azure 区域部署的应用服务环境数，来大幅缩放应用。  由于有 15 个以上的公用 Azure 区域可供选择，客户将可真正构建全球性超高缩放性的应用程序占用空间。  在本文所使用的示例应用中，有三个应用服务环境创建在单个 Azure 区域（美国中南部）。
-* **应用服务环境的命名约定：** 每个应用服务环境都需要唯一名称。  有两个或更多应用服务环境时，命名约定将有助于标识每个应用服务环境。  示例应用中使用了简单的命名约定。  三个应用服务环境的名称分别是 *fe1ase*、*fe2ase* 和 *fe3ase*。
+* **应用服务环境的命名约定：** 每个应用服务环境都需要具有一个唯一名称。  有两个或更多应用服务环境时，命名约定将有助于标识每个应用服务环境。  示例应用中使用了简单的命名约定。  三个应用服务环境的名称分别是 *fe1ase*、*fe2ase* 和 *fe3ase*。
 * **应用的命名约定：** 由于将部署多个应用实例，每个部署的应用实例都要有名称。  有一项鲜为人知、但非常方便的应用服务环境功能，是多个应用服务环境可以使用相同的应用名称。  由于每个应用服务环境都有唯一的域后缀，开发人员可以选择在每个环境中重复使用完全相同的应用名称。  例如，开发人员可以将应用命名如下：*myapp.foo1.p.azurewebsites.net*、*myapp.foo2.p.azurewebsites.net*、*myapp.foo3.p.azurewebsites.net* 等。但示例应用的每个应用实例也都有唯一名称。  所用的应用实例名称是 *webfrontend1*、*webfrontend2* 和 *webfrontend3*。
 
 ## <a name="setting-up-the-traffic-manager-profile"></a>设置流量管理器配置文件

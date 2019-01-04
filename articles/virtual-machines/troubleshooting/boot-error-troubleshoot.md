@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.date: 09/21/2018
+ms.date: 12/12/2018
 ms.author: genli
-ms.openlocfilehash: 8253c4c84e38fc3b8279aa311c1627a540502a6c
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: b467618815f2bad8a6816425764fe60707c1db3d
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49351480"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53308135"
 ---
 # <a name="troubleshoot-azure-virtual-machines-boot-errors"></a>对 Azure 虚拟机启动错误进行故障排除
 
@@ -29,6 +29,10 @@ ms.locfileid: "49351480"
 * [BitLocker 启动错误](troubleshoot-bitlocker-boot-error.md) 
 * [Windows 在启动过程中显示“正在检查文件系统”](troubleshoot-check-disk-boot-error.md)
 * [蓝屏错误](troubleshoot-common-blue-screen-error.md)
+* [VM 启动时停滞，显示消息“正在准备 Windows](troubleshoot-vm-boot-configure-update.md)
+* [蓝色屏幕上出现“关键服务失败”错误](troubleshoot-critical-service-failed-boot-error.md)
+* [重启循环问题](troubleshoot-reboot-loop.md)
+* [VM 启动停滞在 Windows 更新阶段](troubleshoot-stuck-updating-boot-error.md)
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 存储资源管理器将数据移入和移出 Blob 存储 | Microsoft 文档
+title: 使用 Azure 存储资源管理器移动 Blob 存储数据 - Team Data Science Process
 description: 使用 Azure 存储资源管理器将数据移动到 Azure Blob 存储或从中移动数据
 services: machine-learning
 author: marktab
@@ -10,13 +10,13 @@ ms.component: team-data-science-process
 ms.topic: article
 ms.date: 11/04/2017
 ms.author: tdsp
-ms.custom: (previous author=deguhath, ms.author=deguhath)
-ms.openlocfilehash: 7d4fc17c466f9f7187ca28c847631254d6600ead
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: 99c9a86d130989e8c62a948e440b35c928b42299
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52446988"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53134082"
 ---
 # <a name="move-data-to-and-from-azure-blob-storage-using-azure-storage-explorer"></a>使用 Azure 存储资源管理器将数据移入和移出 Azure Blob 存储
 Azure 存储资源管理器是 Microsoft 免费提供的应用，可用于在 Windows、macOS 和 Linux 上处理 Azure 存储数据。 本主题介绍如何使用它从 Azure Blob 存储上传和下载数据。 该工具可以从 [Microsoft Azure 存储资源管理器](http://storageexplorer.com/)下载。
@@ -45,8 +45,8 @@ Azure 存储资源管理器是 Microsoft 免费提供的应用，可用于在 Wi
 
 1. 启动 Microsoft Azure 存储资源管理器
 2. 要打开“**登录到帐户**”向导，请选择“**Azure 帐户设置**”图标，然后选择“**添加帐户**”并输入凭据。 ![添加 Azure 存储帐户](./media/move-data-to-azure-blob-using-azure-storage-explorer/add-an-azure-store-account.png)
-3. 要打开“**连接到 Azure 存储**”向导，请选择“**连接到 Azure 存储**”图标。 ![连接到 Azure 存储](./media/move-data-to-azure-blob-using-azure-storage-explorer/connect-to-azure-storage-1.png)
-4. 在“**连接到 Azure 存储**”向导中，输入 Azure 存储帐户中的访问密钥，然后选择“**下一步**”。 ![连接到 Azure 存储](./media/move-data-to-azure-blob-using-azure-storage-explorer/connect-to-azure-storage-2.png)
+3. 要打开“**连接到 Azure 存储**”向导，请选择“**连接到 Azure 存储**”图标。 ![单击“连接到 Azure 存储”](./media/move-data-to-azure-blob-using-azure-storage-explorer/connect-to-azure-storage-1.png)
+4. 在“**连接到 Azure 存储**”向导中，输入 Azure 存储帐户中的访问密钥，然后选择“**下一步**”。 ![输入 Azure 存储帐户访问密钥](./media/move-data-to-azure-blob-using-azure-storage-explorer/connect-to-azure-storage-2.png)
 5. 在“**帐户名**”框中，输入存储帐户名称，并选择“**下一步**”。 ![附加外部存储](./media/move-data-to-azure-blob-using-azure-storage-explorer/attach-external-storage.png)
 6. 现在应列出添加的存储帐户。 要在存储帐户中创建一个 blob 容器，请用鼠标右键单击帐户中的“**Blob 容器**”节点，选择“**创建 Blob 容器**”，并输入一个名称。
 7. 要将数据上传到容器，请选择目标容器，然后单击“上传”按钮。![存储帐户](./media/move-data-to-azure-blob-using-azure-storage-explorer/storage-accounts.png)

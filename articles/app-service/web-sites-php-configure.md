@@ -1,5 +1,5 @@
 ---
-title: 在 Azure 应用服务 Web 应用中配置 PHP
+title: 配置 PHP 运行时 - Azure 应用服务
 description: 了解如何在 Azure 应用服务中为 Web 应用配置默认 PHP 安装或添加自定义 PHP 安装。
 services: app-service
 documentationcenter: php
@@ -13,12 +13,13 @@ ms.devlang: PHP
 ms.topic: article
 ms.date: 04/11/2018
 ms.author: msangapu
-ms.openlocfilehash: 1e5f7ed2fb4c77e0a738cbe6ee6c84b46bc59bb8
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.custom: seodec18
+ms.openlocfilehash: d5ad7b392029ae33ee7666b80edfe5b4b7555b41
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51230829"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53273182"
 ---
 # <a name="configure-php-in-azure-app-service-web-apps"></a>在 Azure 应用服务 Web 应用中配置 PHP
 
@@ -39,10 +40,10 @@ PHP 7.0 和 PHP 7.2 也可用，但它们在默认情况下不启用。 若要�
 1. 在 [Azure 门户](https://portal.azure.com)中浏览到相应的 Web 应用，并单击“设置”按钮。
 
     ![Web 应用设置][settings-button]
-1. 在“设置”边栏选项卡中选择“应用程序设置”，并选择新的 PHP 版本。
+2. 在“设置”边栏选项卡中选择“应用程序设置”，并选择新的 PHP 版本。
 
     ![应用程序设置][application-settings]
-1. 单击“Web 应用设置”边栏选项卡顶部的“保存”按钮。
+3. 单击“Web 应用设置”边栏选项卡顶部的“保存”按钮。
 
     ![保存配置设置][save-button]
 
@@ -148,7 +149,7 @@ PHP 7.0 和 PHP 7.2 也可用，但它们在默认情况下不启用。 若要�
 
 应用服务 Web 应用可以使用提供的 PHP 运行时（而非默认 PHP 运行时）来执行 PHP 脚本。 提供的运行时可由提供的 `php.ini` 文件配置。 若要在 Web 应用中使用自定义 PHP 运行时，请执行下列步骤。
 
-1. 获取非线程安全、VC9 或 VC11 兼容版本的 PHP for Windows。 可在此处找到 PHP for Windows 最新版本：[http://windows.php.net/download/]。 可在此处的存档中找到旧版本：[http://windows.php.net/downloads/releases/archives/]。
+1. 获取非线程安全、VC9 或 VC11 兼容版本的 PHP for Windows。 可在此处找到 PHP for Windows 最新版本：[https://windows.php.net/download/]。 可在此处的存档中找到旧版本：[https://windows.php.net/downloads/releases/archives/]。
 1. 修改运行时的 `php.ini` 文件。 Web 应用将忽略作为任何仅在系统级别使用的指令的配置设置。 （有关仅在系统级别使用的指令的信息，请参阅 [php.ini 指令的列表]）。
 1. （可选）将扩展添加到 PHP 运行时并在 `php.ini` 文件中启用这些扩展。
 1. 将 `bin` 目录添加到根目录，并将包含 PHP 运行时的目录置于该目录中（例如 `bin\php`）。
@@ -196,7 +197,7 @@ PHP 7.0 和 PHP 7.2 也可用，但它们在默认情况下不启用。 若要�
 >
 
 [免费试用版]: https://www.windowsazure.com/pricing/free-trial/
-[phpinfo()]: http://php.net/manual/en/function.phpinfo.php
+[phpinfo()]: https://php.net/manual/en/function.phpinfo.php
 [select-php-version]: ./media/web-sites-php-configure/select-php-version.png
 [php.ini 指令的列表]: http://www.php.net/manual/en/ini.list.php
 [.user.ini]: http://www.php.net/manual/en/configuration.file.per-user.php
@@ -206,8 +207,8 @@ PHP 7.0 和 PHP 7.2 也可用，但它们在默认情况下不启用。 若要�
 [save-button]: ./media/web-sites-php-configure/save-button.png
 [php-extensions]: ./media/web-sites-php-configure/php-extensions.png
 [handler-mappings]: ./media/web-sites-php-configure/handler-mappings.png
-[http://windows.php.net/download/]: http://windows.php.net/download/
-[http://windows.php.net/downloads/releases/archives/]: http://windows.php.net/downloads/releases/archives/
+[https://windows.php.net/download/]: https://windows.php.net/download/
+[https://windows.php.net/downloads/releases/archives/]: https://windows.php.net/downloads/releases/archives/
 [SETPHPVERCLI]: ./media/web-sites-php-configure/ChangePHPVersion-XPlatCLI.png
 [GETPHPVERCLI]: ./media/web-sites-php-configure/ShowPHPVersion-XplatCLI.png
 [SETPHPVERPS]: ./media/web-sites-php-configure/ChangePHPVersion-PS.png

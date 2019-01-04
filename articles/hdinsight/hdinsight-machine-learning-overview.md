@@ -9,20 +9,20 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/19/2018
 ms.author: hrasheed
-ms.openlocfilehash: 2ac108d65b42221189e50987238ad3d7edad1e30
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 08d0221c785fdaeb18fe9a2999d08ded67d1fa91
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51005322"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53437191"
 ---
 # <a name="machine-learning-on-hdinsight"></a>HDInsight 中的机器学习
 
-可以使用 HDInsight 通过大数据进行机器学习，以便从大量（千万亿字节甚至百亿亿字节）结构化、非结构化和快速移动的数据中获得有价值的见解。 HDInsight 中有多个机器学习选项：SparkML 和 MLlib、R、Hive 以及 Microsoft 认知工具包。
+可以使用 HDInsight 通过大数据进行机器学习，以便从大量（千万亿字节甚至百亿亿字节）结构化、非结构化和快速移动的数据中获得有价值的见解。 在 HDInsight 中有几种机器学习选项：SparkML 和 MLlib、R、Apache Hive 和 Microsoft Cognitive Toolkit。
 
 ## <a name="sparkml-and-mllib"></a>SparkML 和 MLlib
 
-[HDInsight Spark](spark/apache-spark-overview.md) 是 Azure 托管的 [Spark](http://spark.apache.org/) 产品，它是统一的开源并行数据处理框架，支持使用内存中处理来大幅提升大数据分析性能。 Spark 处理引擎是专为速度、易用性和复杂分析打造的产品。 Spark 的内存中分布式计算功能使其成为机器学习和图形计算中使用的迭代算法的最佳选择。 有两个可缩放的机器学习库为此分布式环境带来了算法建模功能，这两个库是：MLlib 和 SparkML。 MLlib 包含构建在 RDD 基础之上的原始 API。 SparkML 是一个较新的包，提供构建在 DataFrames 基础之上的更高级 API，用于构造 ML 管道。 SparkML 目前尚不支持 MLlib 的所有功能，但正在替换 MLlib 的角色，即充当 Spark 的标准机器学习库。
+[HDInsight Spark](spark/apache-spark-overview.md) 是 Azure 托管的 [Apache Spark](http://spark.apache.org/) 产品/服务，它是统一的开源并行数据处理框架，支持使用内存中处理来大幅提升大数据分析性能。 Spark 处理引擎是专为速度、易用性和复杂分析打造的产品。 Spark 的内存中分布式计算功能使其成为机器学习和图形计算中使用的迭代算法的最佳选择。 有两个可缩放的机器学习库向此分布式环境引入了算法建模功能：MLlib 和 SparkML。 MLlib 包含构建在 RDD 基础之上的原始 API。 SparkML 是一个较新的包，提供构建在 DataFrames 基础之上的更高级 API，用于构造 ML 管道。 SparkML 目前尚不支持 MLlib 的所有功能，但正在替换 MLlib 的角色，即充当 Spark 的标准机器学习库。
 
 [MMLSpark](https://github.com/Azure/mmlspark) 是适用于 Apache Spark 的 Microsoft 机器学习库。 该库旨在提升数据科学家在 Spark 上的生产力，它不仅可以提高试验成功率，而且还能在极大型数据集上利用前沿的机器学习技术，包括深度学习。 MMLSpark 在生成可缩放 ML 模型（例如编制字符串的索引、强制数据进入机器学习算法预期的布局中、组合特征矢量）时，可以在 SparkML 的低级别 API 基础上提供一个层。 MMLSpark 库简化了可在 PySpark 中生成模型的这些任务以及其他常见任务。
 
@@ -36,7 +36,7 @@ ms.locfileid: "51005322"
 
 在带 Spark 的 HDInsight 上使用 ML Services 时，可以使用 Spark 计算上下文跨群集的节点进行并行训练。 可以根据需要直接在边缘节点上运行 R 脚本，并行使用所有可用的核心。 也可以在边缘节点中运行代码，开始执行分布在群集的所有节点上的处理任务。 使用带 Spark 的 HDInsight 上的 ML Services，还可以根据需要并行执行开源 R 包中的函数。
 
-## <a name="azure-machine-learning-and-hive"></a>Azure 机器学习和 Hive
+## <a name="azure-machine-learning-and-apache-hive"></a>Azure 机器学习和 Apache Hive
 
 Azure 机器学习不仅提供预测分析建模工具，还提供完全托管的服务，可以通过此服务将预测模型部署为随时可用的 Web 服务。 Azure 机器学习是云中的完整预测分析解决方案，可以用来创建、测试、操作和管理预测模型。 可以从大型算法库中进行选择、使用基于 Web 的工作室来构建模型，然后将模型轻松部署为 Web 服务。
 
@@ -54,14 +54,14 @@ Azure 机器学习不仅提供预测分析建模工具，还提供完全托管�
 
 ### <a name="scenarios"></a>方案
 
-* [Spark 和机器学习：使用 HDInsight 中的 Spark 对使用 HVAC 数据生成温度进行分析](spark/apache-spark-ipython-notebook-machine-learning.md)
-* [Spark 和机器学习：使用 HDInsight 中的 Spark 预测食品检查结果](spark/apache-spark-machine-learning-mllib-ipython.md)
-* [使用 Mahout 生成影片建议](hadoop/apache-hadoop-mahout-linux-mac.md)
-* [Hive 和 Azure 机器学习](../machine-learning/team-data-science-process/create-features-hive.md)
-* [Hive 和 Azure 机器学习端到端教程](../machine-learning/team-data-science-process/hive-walkthrough.md)
-* [在 Spark on HDInsight 中使用机器学习](../machine-learning/team-data-science-process/spark-overview.md)
+* [Apache Spark 与机器学习：使用 HDInsight 中的 Spark 来通过 HVAC 数据分析建筑物温度](spark/apache-spark-ipython-notebook-machine-learning.md)
+* [Apache Spark 与机器学习：使用 HDInsight 中的 Spark 预测食品检验结果](spark/apache-spark-machine-learning-mllib-ipython.md)
+* [使用 Apache Mahout 生成影片推荐](hadoop/apache-hadoop-mahout-linux-mac.md)
+* [Apache Hive 和 Azure 机器学习](../machine-learning/team-data-science-process/create-features-hive.md)
+* [Apache Hive 和 Azure 机器学习端到端教程](../machine-learning/team-data-science-process/hive-walkthrough.md)
+* [在 Apache Spark on HDInsight 中使用机器学习](../machine-learning/team-data-science-process/spark-overview.md)
 
 ### <a name="deep-learning-resources"></a>深度学习资源
 
-* [带 Spark 的深度学习工具包](https://blogs.technet.microsoft.com/machinelearning/2017/04/25/using-microsofts-deep-learning-toolkit-with-spark-on-azure-hdinsight-clusters/)
-* [Embarrassingly parallel image classification with Cognitive toolkit + Tensorflow on Spark](https://blogs.technet.microsoft.com/machinelearning/2017/04/12/embarrassingly-parallel-image-classification-using-cognitive-toolkit-tensorflow-on-azure-hdinsight-spark/)（使用认知工具包和 Tensorflow on Spark 执行易并行图像分类）
+* [带 Apache Spark 的深度学习工具包](https://blogs.technet.microsoft.com/machinelearning/2017/04/25/using-microsofts-deep-learning-toolkit-with-spark-on-azure-hdinsight-clusters/)
+* [Embarrassingly parallel image classification with Cognitive toolkit + Tensorflow on Apache Spark](https://blogs.technet.microsoft.com/machinelearning/2017/04/12/embarrassingly-parallel-image-classification-using-cognitive-toolkit-tensorflow-on-azure-hdinsight-spark/)（使用认知工具包和 Tensorflow on Apache Spark 执行易并行图像分类）

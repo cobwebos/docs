@@ -1,12 +1,11 @@
 ---
-title: 在 Azure 机器学习工作室 Web 服务中使用导入/导出数据 | Microsoft Docs
+title: Web 服务中的“导入/导出数据”- Azure 机器学习工作室 | Microsoft Docs
 description: 了解如何使用导入数据和导出数据模块从 Web 服务发送和接收数据。
 services: machine-learning
 documentationcenter: ''
 author: ericlicoding
-ms.custom: (previous ms.author=yahajiza, author=YasinMSFT)
+ms.custom: seodec18
 ms.author: amlstudiodocs
-manager: hjerez
 editor: cgronlun
 ms.assetid: 3a7ac351-ebd3-43a1-8c5d-18223903d08e
 ms.service: machine-learning
@@ -16,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/28/2017
-ms.openlocfilehash: ee7d0fb4792983099dc6192de8f85338daee357f
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 0f438f59da079633fea54758261ce1bd93a8477b
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52306941"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53251379"
 ---
 # <a name="deploy-azure-machine-learning-studio-web-services-that-use-data-import-and-data-export-modules"></a>部署使用数据导入和数据导出模块的 Azure 机器学习工作室 Web 服务
 
@@ -29,10 +28,10 @@ ms.locfileid: "52306941"
 
 导入数据和导出数据模块可在各个数据位置（如通过 HTTP 的 Web URL、Hive 查询、Azure SQL 数据库、Azure 表存储、Azure Blob 存储、数据源提供或本地 SQL 数据库）中读取和写入数据。
 
-本主题使用“示例 5：二元分类的训练、测试、评估：成人数据集”示例，并假设数据集已加载到名为 censusdata 的 Azure SQL 表中。
+本主题使用“示例 5：二元分类的训练、测试、评估：成人数据集”示例并假设数据集已加载到名为 censusdata 的 Azure SQL 表中。
 
 ## <a name="create-the-training-experiment"></a>创建训练实验
-打开“示例 5：二元分类的训练、测试、评估：成人数据集”示例时，它使用示例成人人口收入二元分类数据集。 画布中的实验将看起来类似于下图：
+打开“示例 5：二元分类的训练、测试、评估：成人数据集”示例时，它使用“成人人口收入二元分类”数据集示例。 画布中的实验将看起来类似于下图：
 
 ![实验的初始配置。](./media/web-services-that-use-import-export-modules/initial-look-of-experiment.png)
 
@@ -104,7 +103,7 @@ ms.locfileid: "52306941"
 2. 当运行已完成时，单击“部署 Web 服务”，并选择“部署 Web 服务 [经典]”。
 3. 在 Web 服务仪表板上，找到 API 密钥。 复制并保存它以供以后使用。
 4. 在“默认终结点”表中，单击“批处理执行”链接打开 API 帮助页。
-5. 在 Visual Studio 中创建 C# 控制台应用程序：“新建” > “项目” > “Visual C#” > “Windows 经典桌面” > “控制台应用(.NET Framework)”。
+5. 在 Visual Studio 中，创建 C# 控制台应用程序：“新建” > “项目” > “Visual C#” > “Windows 经典桌面” > “控制台应用 (.NET Framework)”。
 6. 在 API 帮助页上，找到页面底部的“示例代码”部分。
 7. 将 C# 示例代码复制并粘贴到 Program.cs 文件中，并删除对 blob 存储的所有引用。
 8. 使用之前保存的 API 密钥更新 *apiKey* 变量的值。
@@ -133,7 +132,7 @@ ms.locfileid: "52306941"
 3. 在“部署实验”页上，输入 Web 服务的名称并选择定价计划，并单击“部署”。
 4. 在“快速启动”页上，单击“使用”。
 5. 在“示例代码”部分中，单击“批处理”。
-6. 在 Visual Studio 中创建 C# 控制台应用程序：“新建” > “项目” > “Visual C#” > “Windows 经典桌面” > “控制台应用(.NET Framework)”。
+6. 在 Visual Studio 中，创建 C# 控制台应用程序：“新建” > “项目” > “Visual C#” > “Windows 经典桌面” > “控制台应用 (.NET Framework)”。
 7. 将 C# 示例代码复制并粘贴到 Program.cs 文件中。
 8. 使用位于“基本使用信息”部分中的**主键**替换 *apiKey* 变量的值。
 9. 找到 *scoreRequest* 声明并更新传递到*导入数据*和*导出数据*模块的值。 在此示例中，将使用原始查询，但定义新的表名。

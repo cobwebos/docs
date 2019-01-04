@@ -1,5 +1,5 @@
 ---
-title: 使用 R、Python 和 T-SQL 的 SQL Server 数据科学演练 | Microsoft Docs
+title: 使用 R、Python 和 T-SQL 分析 SQL Server - Team Data Science Process
 description: 演练在 SQL Server 中使用 R、Python 和 T-SQL 进行预测分析的示例。
 services: machine-learning
 author: marktab
@@ -10,13 +10,13 @@ ms.component: team-data-science-process
 ms.topic: article
 ms.date: 09/04/2017
 ms.author: tdsp
-ms.custom: (previous author=deguhath, ms.author=deguhath)
-ms.openlocfilehash: 9c97d38bc278ff3632031138e2ac0326200f741f
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: 5efcf1221fe4bc0e02dd7a35e02ca8b274d5328f
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52442057"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53136471"
 ---
 # <a name="sql-server-data-science-walkthroughs-using-r-python-and-t-sql"></a>使用 R、Python 和 T-SQL 的 SQL Server 数据科学演练
 

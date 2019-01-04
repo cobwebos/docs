@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 46e05ef45cca5accd6af817a06b63861c41aa2b3
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: 11832a3b7fb68dce6fb24f44ceec5ffb9a57eb69
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52160607"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53437548"
 documentType: LandingData
 title: Azure SQL 数据库托管实例
 metadata:
@@ -18,8 +18,8 @@ metadata:
   ms.tgt_pltfrm: na
   ms.devlang: 
   ms.topic: overview
-  ms.date: 11/11/2018
-  ms.author: jovanpop-msft
+  ms.date: 12/14/2018
+  ms.author: jovanpop
 abstract:
   description: Azure SQL 数据库托管实例是托管在 Azure 云中的一个完全托管的 SQL Server 数据库引擎实例。 这是将 SQL Server 数据库迁移到云的最佳 PaaS 选项。 使用快速入门、教程和示例，了解如何创建和使用托管实例。
   aside:
@@ -65,6 +65,20 @@ sections:
     - title: 高级安全
       href: /azure/sql-database/sql-database-security-index
       html: <p>使用内置的 Azure SQL 数据库安全功能保护实例和数据库。<p>
+- title: 新功能和预览版功能
+  items:
+  - type: paragraph
+    text: 我们持续通过新功能来改进托管实例：
+  - type: list
+    style: unordered
+    items:
+    - html: <a href="sql-database-managed-instance#business-critical-service-tier">“业务关键”服务层</a>目前为<a href="https://azure.microsoft.com/blog/migrate-mission-critical-sql-workloads-to-the-most-economical-cloud-destination/">正式发布版 (GA)</a>。
+    - html: （预览版）使用 <a href="https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">CREATE LOGIN FROM EXTERNAL PROVIDER</a> 创建<a href="https://aka.ms/managed-instance-aadlogins">实例级 Azure AD 登录名</a>。
+    - html: （预览版）使用<a href="https://aka.ms/managed-instance-collation">你选择的服务器级排序规则</a>创建实例。
+    - html: 为时间点还原<a href="https://aka.ms/managed-instance-configurable-backup-retention">配置长达 35 天的备份保留期</a>。 请注意，长期备份保留（最长 10 年）仍未启用，你可以使用<a href="https://docs.microsoft.com/sql/relational-databases/backup-restore/copy-only-backups-sql-server">纯副本备份</a>作为替代方法。
+    - html: （预览版）使用<a href="https://aka.ms/managed-instance-failover-groups">地理分布式故障转移组</a>将实例的副本保留在另一个区域中并确保你的数据在发生区域性灾难的情况下仍然可用。
+    - html: （预览版）在迁移已启用了透明数据加密 (TDE) 的本地数据库时<a href="https://aka.ms/managed-instance-tde-byok">自带加密密钥</a>。
+    - html: 托管实例由<a href="sql-database-managed-instance-endpoint-verify-built-in-firewall">内置防火墙</a>提供保护。
 - title: 5 分钟快速入门
   items:
   - type: paragraph
@@ -116,15 +130,16 @@ sections:
   - type: list
     style: ordered
     items:
-    - html: 了解<a href="/azure/sql-database/sql-database-managed-instance-resource-limits">硬件特性和限制</a>以及 <a href="/azure/sql-database/sql-database-managed-instance-transact-sql-information">SQL 语言限制</a>。
+    - html: 了解<a href="/azure/sql-database/sql-database-managed-instance-resource-limits">硬件特性和限制</a>以及 <a href="/azure/sql-database/sql-database-managed-instance-transact-sql-information">Transact-SQL 语言差异</a>。
     - html: 在部署托管实例的位置<a href="https://medium.com/azure-sqldb-managed-instance/the-ultimate-guide-for-creating-and-configuring-azure-sql-managed-instance-environment-91ff58c0be01">配置</a> Azure VNet。
     - html: <a href="https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-vnet-configuration#modify-an-existing-virtual-network-for-managed-instances">验证</a>现有的 Azure VNet 可以用于部署托管实例。
     - html: 使用 <a href="https://blogs.msdn.microsoft.com/sqlserverstorageengine/2018/09/21/the-easiest-way-to-create-azure-vm-that-can-access-your-azure-sql-managed-instance/">Azure 虚拟机</a>、<a href="/azure/sql-database/sql-database-managed-instance-configure-p2s">点到站点连接</a>或<a href="https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-connect-app">应用程序</a>连接到实例。
     - html: 验证可以使用<a href="https://www.microsoft.com/download/details.aspx?id=53595">数据迁移助手</a>或<a href="https://blogs.msdn.microsoft.com/datamigration/2018/08/06/release-database-experimentation-assistant-dea-v2-6/">数据库实验助手</a>迁移数据库。
     - html: 使用<a href="/azure/sql-database/sql-database-managed-instance-get-started-restore">本机还原</a>或<a href="/azure/dms/tutorial-sql-server-managed-instance-online">数据迁移服务</a>将数据库移动到托管实例。
     - html: 将 SSIS 包迁移到 <a href="/azure/data-factory/tutorial-deploy-ssis-packages-azure">Azure 数据工厂</a>，将 SSAS 表格模型迁移到 <a href="https://azure.microsoft.com/resources/videos/azure-analysis-services-moving-models/">Azure 分析服务</a>，并将 SSRS 报表迁移到<a href="https://docs.microsoft.com/business-applications-release-notes/april18/power-bi/service/sql-server-reporting-services-ssrs-reports-power-bi-premium">Power BI Premium</a>。
+    - html: 应用<a href="https://blogs.msdn.microsoft.com/sqlcat/2018/07/20/storage-performance-best-practices-and-considerations-for-azure-sql-db-managed-instance-general-purpose">针对常规用途服务层的存储性能最佳做法和注意事项</a>。
     - html: 找到<a href="https://www.youtube.com/watch?v=vO6k05Ox1iI">保护实例</a>的最佳做法和建议。
-    - html: 使用<a href="/azure/sql-database/replication-with-sql-database-managed-instance">事务复制</a>分发数据。
+    - html: 查找可以帮助你配置托管实例的更多<a href="sql-database-howto-managed-instance.md">操作指南</a>。
 - title: 引用
   items:
   - type: list
@@ -135,3 +150,5 @@ sections:
       html: <p><a href="https://blogs.msdn.microsoft.com/sqlserverstorageengine/tag/managed-instance/">MSDN</a></p><p><a href="https://medium.com/azure-sqldb-managed-instance ">中型</a></p>
     - title: 常见问题
       html: <p><a href="https://stackoverflow.com/questions/tagged/azure-sql-managed-instance">Stack Overflow</a></p>
+    - title: 培训材料
+      html: <p><a href="https://www.microsoft.com/handsonlabs/selfpacedlabs">动手实验</a></p><p><a href="https://www.microsoft.com/handsonlabs/instructorledlabs">教师指导的实验</a></p>

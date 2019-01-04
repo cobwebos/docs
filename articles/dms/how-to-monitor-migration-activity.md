@@ -10,13 +10,13 @@ ms.service: database-migration
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
-ms.date: 10/09/2018
-ms.openlocfilehash: 8c30af5023cb83ee1f9ca0f41db5b7f977cc4bc7
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.date: 12/14/2018
+ms.openlocfilehash: a315e8b42ab8e0df659a3388a50fedf5dd3a54d2
+ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48883901"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53413058"
 ---
 # <a name="monitor-migration-activity"></a>监视迁移活动
 本文介绍如何在数据库级别和表级别监视迁移进度。
@@ -24,7 +24,7 @@ ms.locfileid: "48883901"
 ## <a name="monitor-at-the-database-level"></a>在数据库级别监视
 若要在数据库级别监视活动，请查看数据库级别的边栏选项卡：
 
-![数据库级别的边栏选项卡](media\how-to-monitor-migration-activity\dms-database-level-blade.png)
+![数据库级别的边栏选项卡](media/how-to-monitor-migration-activity/dms-database-level-blade.png)
 
 > [!NOTE]
 > 选择数据库超链接会显示表的列表及其迁移进度。
@@ -104,11 +104,11 @@ ms.locfileid: "48883901"
 
 该边栏选项卡的下半部分列出一些表格，显示迁移进度的快速摘要。
 
-![表级别的边栏选项卡 - 快速摘要](media\how-to-monitor-migration-activity\dms-table-level-blade-summary.png)
+![表级别的边栏选项卡 - 快速摘要](media/how-to-monitor-migration-activity/dms-table-level-blade-summary.png)
 
 下表描述了表级别详细信息中显示的字段。
 
-| 字段名称        | Description       |
+| 字段名        | Description       |
 | ------------- | ------------- |
 | **完整加载已完成**      | 已完成完整数据加载的表数。 |
 | **完整加载已排队**      | 正在排队等待完整加载的表数。      |
@@ -123,20 +123,20 @@ ms.locfileid: "48883901"
 ## <a name="monitor-at-table-level--detailed-summary"></a>表级别的监视 – 详细摘要
 有两个选项卡显示了执行完整加载和增量数据同步时的迁移进度。
     
-![“完整加载”选项卡](media\how-to-monitor-migration-activity\dms-full-load-tab.png)
+![“完整加载”选项卡](media/how-to-monitor-migration-activity/dms-full-load-tab.png)
 
-![“增量数据同步”选项卡](media\how-to-monitor-migration-activity\dms-incremental-data-sync-tab.png)
+![“增量数据同步”选项卡](media/how-to-monitor-migration-activity/dms-incremental-data-sync-tab.png)
 
 下表描述了表级别迁移进度中显示的字段。
 
-| 字段名称        | Description       |
+| 字段名        | Description       |
 | ------------- | ------------- |
 | **状态 - 正在同步**      | 连续同步正在运行。 |
 | **插入**      | 行中已应用到目标的 CDC 插入操作数目。      |
 | **更新** | 行中已应用到目标的 CDC 更新操作数目。      |
 | **删除**      | 行中已应用到目标的 CDC 删除操作数目。 |
 | **已应用的操作总数**      | 行中已应用到目标的 CDC 更新、插入和删除操作总数。 |
-| **数据错误** | 此表中发生的数据错误数。 部分错误示例包括：“511: 无法创建大小为 %d 的行，此大小超过了允许的最大行大小(%d)。8114: 将数据类型 %ls 转换为 %ls 时出错”。  客户应查询 Azure 目标中的 attms_apply_exceptions 表，以查看错误详细信息。    |
+| **数据错误** | 此表中发生的数据错误数。 错误的一些示例包括 *511：无法创建大小为 %d 的行，该行大于允许的最大行大小 %d，8114：将数据类型 %ls 转换为 %ls 时出错。*  客户应查询 Azure 目标中的 dms_apply_exceptions 表，以查看错误详细信息。    |
 
 > [!NOTE]
 > 交接数据库或重新开始迁移后，“插入”、“更新”、“删除”和“已应用的操作总数”的 CDC 值可能会减小。

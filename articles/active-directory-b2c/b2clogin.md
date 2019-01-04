@@ -7,15 +7,15 @@ manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 10/22/2018
+ms.date: 11/30/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 7b460efbdc50c5b243c3ef78bad568b720e75e59
-ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
+ms.openlocfilehash: ffceb8fd6f1afcd054bfc4c4035fb2b8b93ed390
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51635551"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52720535"
 ---
 # <a name="set-redirect-urls-to-b2clogincom-for-azure-active-directory-b2c"></a>将 Azure Active Directory B2C 的重定向 URL 设置为 b2clogin.com
 
@@ -29,7 +29,7 @@ ms.locfileid: "51635551"
 使用 b2clogin.com 时，考虑可能需要更改的这些设置：
 
 - 将标识提供者应用程序中的重定向 URL 设置为使用 b2clogin.com。 
-- 将 Azure AD B2C 应用程序设置为将 b2clogin.com 用于策略引用和令牌终结点。 
+- 将 Azure AD B2C 应用程序设置为将 b2clogin.com 用于用户流引用和令牌终结点。 
 - 如果使用的是 MSAL，则需要将 **ValidateAuthority** 属性设置为 `false`。
 - 请确保更改[用户界面自定义](active-directory-b2c-ui-customization-custom-dynamic.md)的 CORS 设置中定义的任何“允许的源”。  
 
@@ -56,7 +56,7 @@ ms.locfileid: "51635551"
 
 ## <a name="update-your-application"></a>更新应用程序
 
-你的 Azure AD B2C 应用程序可能在多个地方引用了 `login.microsoftonline.com`，例如策略引用和令牌终结点。  请确保授权终结点、令牌终结点和证书颁发者都已更新为使用 `your-tenant-name.b2clogin.com`。  
+Azure AD B2C 应用程序可能在多个地方引用了 `login.microsoftonline.com`，例如用户流引用和令牌终结点。  请确保授权终结点、令牌终结点和证书颁发者都已更新为使用 `your-tenant-name.b2clogin.com`。  
 
 ## <a name="set-the-validateauthority-property"></a>设置 ValidateAuthority 属性
 

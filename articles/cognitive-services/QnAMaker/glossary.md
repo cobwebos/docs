@@ -1,7 +1,7 @@
 ---
 title: 术语表 - QnA Maker
 titleSuffix: Azure Cognitive Services
-description: 术语表
+description: QnA Maker 服务具有许多来自机器学习和自然语言处理以及服务特定术语的新术语。 此列表将帮助你理解这些术语。
 services: cognitive-services
 author: tulasim88
 manager: cgronlun
@@ -10,14 +10,15 @@ ms.component: qna-maker
 ms.topic: article
 ms.date: 09/12/2018
 ms.author: tulasim
-ms.openlocfilehash: b22ec27b2999d322945e37c5a38d2b1d1532e7e3
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.custom: seodec18
+ms.openlocfilehash: 832bf85087b706451a6ee58c538d7a163ef18203
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47166038"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53079936"
 ---
-# <a name="glossary"></a>术语表
+# <a name="glossary-for-qna-maker-knowledge-base-and-service"></a>QnA Maker 知识库和服务的术语表
 
 ## <a name="qna-maker-service"></a>QnA Maker 服务
 QnA Maker 服务是开始使用 QnA Maker 的先决条件。 购买 QnA Maker 层会在 Azure 订阅中设置资源，以创建和管理知识库。 每个 QnA Maker 用户帐户都可以在其 Azure 订阅中创建多个 QnA Maker 服务。
@@ -34,7 +35,7 @@ QnA Maker 服务是开始使用 QnA Maker 的先决条件。 购买 QnA Maker �
 ## <a name="published-knowledge-base"></a>已发布的知识库
 知识库有两种状态 -“测试”和“已发布”。  已发布的知识库是聊天机器人/应用程序中使用的版本。 发布知识库的操作会将测试知识库的内容置于知识库的已发布版本中。 由于已发布的知识库是应用程序通过终结点使用的版本，因此应注意确保内容正确且经过良好测试。
 
-## <a name="query"></a>查询
+## <a name="query"></a>Query
 用户查询是最终用户或测试人员询问的知识库问题。 查询通常采用自然语言格式，或者为表示问题的几个关键字。
 
 ## <a name="response"></a>响应

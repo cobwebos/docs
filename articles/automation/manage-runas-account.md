@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 09/12/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 569efa7fbbd111937f00ba3b1e28219c163e2221
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 7bd84b42cfa61d199d70e02345f9229a45fd7704
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49958153"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52726162"
 ---
 # <a name="manage-azure-automation-run-as-accounts"></a>管理 Azure 自动化运行方式帐户
 
@@ -358,11 +358,11 @@ Azure 自动化中的运行方式帐户用于提供身份验证，以使用 Azur
 
 为了控制针对 Azure 自动化中资源的自动化目标，默认情况下运行方式帐户会被授予订阅中的参与者权限。 如果需要限制运行方式服务主体可以执行的操作，可以从订阅的参与者角色中删除该帐户并将该帐户添加为要指定的资源组的参与者。
 
-在 Azure 门户中，选择“订阅”并选择自动化帐户的订阅。 选择“访问控制(标识和访问管理)”，然后搜索自动化帐户的服务主体（类似于 \<AutomationAccountName\>_唯一标识符）。 选择该帐户，然后单击“删除”以从订阅中将其删除。
+在 Azure 门户中，选择“订阅”并选择自动化帐户的订阅。 依次选择“访问控制(IAM)”、“角色分配”选项卡。搜索自动化帐户的服务主体（类似于 \<AutomationAccountName\>_唯一标识符）。 选择该帐户，然后单击“删除”以从订阅中将其删除。
 
 ![订阅参与者](media/manage-runas-account/automation-account-remove-subscription.png)
 
-若要将服务主体添加到资源组，请在 Azure 门户中选择资源组，然后选择“访问控制(标识和访问管理)”。 选择“添加”，这将打开“添加权限”页。 对于“角色”，选择“参与者”。 在“选择”文本框中，键入运行方式帐户的服务主体名称，并从列表中选择它。 单击“保存”以保存更改。 对要向 Azure 自动化运行方式服务主体授予其访问权限的资源组完成这些步骤。
+若要将服务主体添加到资源组，请在 Azure 门户中选择资源组，然后选择“访问控制(标识和访问管理)”。 选择“添加角色分配”，这将打开“添加角色分配”页面。 对于“角色”，选择“参与者”。 在“选择”文本框中，键入运行方式帐户的服务主体名称，并从列表中选择它。 单击“保存”以保存更改。 对要向 Azure 自动化运行方式服务主体授予其访问权限的资源组完成这些步骤。
 
 ## <a name="misconfiguration"></a>配置错误
 

@@ -14,30 +14,31 @@ ms.devlang: java
 ms.topic: article
 ms.date: 04/14/2018
 ms.author: dimazaid
-ms.openlocfilehash: a7ced71f2d0a8c5d956bbdbcd8fcae485aee3fc6
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 3251e2ecc9171081c5128dd0782eecdf83064114
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51241560"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53312249"
 ---
 # <a name="how-to-use-notification-hubs-from-java"></a>如何通过 Java 使用通知中心
 [!INCLUDE [notification-hubs-backend-how-to-selector](../../includes/notification-hubs-backend-how-to-selector.md)]
 
-本主题介绍完全受支持的全新官方 Azure 通知中心 Java SDK 的关键功能。 此项目为开源项目，可在 [Java SDK] 查看完整的 SDK 代码。 
+本主题介绍完全受支持的全新官方 Azure 通知中心 Java SDK 的关键功能。
+此项目为开源项目，可在 [Java SDK] 查看完整的 SDK 代码。
 
-通常情况下，如 MSDN 主题[通知中心 REST API](https://msdn.microsoft.com/library/dn223264.aspx) 中所述，可以使用通知中心 REST 接口从 Java/PHP/Python/Ruby 后端访问所有通知中心功能。 此 Java SDK 在以 Java 形式表示的 REST 接口上提供瘦包装器。 
+通常情况下，如 MSDN 主题[通知中心 REST API](https://msdn.microsoft.com/library/dn223264.aspx) 中所述，可以使用通知中心 REST 接口从 Java/PHP/Python/Ruby 后端访问所有通知中心功能。 此 Java SDK 在以 Java 形式表示的 REST 接口上提供瘦包装器。
 
 SDK 当前支持：
 
-* 通知中心上的 CRUD 
+* 通知中心上的 CRUD
 * 注册上的 CRUD
 * 安装管理
 * 导入/导出注册
 * 常规发送
 * 计划发送
 * 通过 Java NIO 的异步操作
-* 支持的平台：APNS (iOS)、GCM (Android)、WNS（Windows 应用商店应用）、MPNS (Windows Phone)、ADM (Amazon Kindle Fire)、百度（没有 Google 服务的 Android） 
+* 支持的平台：APNS (iOS)、GCM (Android)、WNS（Windows 应用商店应用）、MPNS (Windows Phone)、ADM (Amazon Kindle Fire)、百度（没有 Google 服务的 Android）
 
 ## <a name="sdk-usage"></a>SDK 用法
 ### <a name="compile-and-build"></a>编译和生成
@@ -85,7 +86,7 @@ SDK 当前支持：
 
     WindowsRegistration reg = new WindowsRegistration(new URI(CHANNELURI));
     reg.getTags().add("myTag");
-    reg.getTags().add("myOtherTag");    
+    reg.getTags().add("myOtherTag");
     hub.createRegistration(reg);
 
 **创建 iOS 注册：**
@@ -122,33 +123,34 @@ SDK 当前支持：
 **查询注册：**
 
 * **获取单个注册：**
-  
+
         hub.getRegistration(regid);
 
 * **获取中心的所有注册：**
-  
+
         hub.getRegistrations();
 
 * **获取具有标记的注册：**
-  
+
         hub.getRegistrationsByTag("myTag");
 
 * **按渠道获取注册：**
-  
+
         hub.getRegistrationsByChannel("devicetoken");
 
 
 所有集合查询都支持 $top 和继续标记。
 
 ### <a name="installation-api-usage"></a>安装 API 用法
-安装 API 是一种注册管理的替代机制。 其现在可以使用“单个”安装对象，而不必维护多个注册，后者不但工作量较大，而且容易出错且效率低下。 安装包含所需一切内容：推送通道（设备标记）、标记、模板、辅助磁贴（用于 WNS 和 APNS）。 不必再调用该服务以获取 ID - 只需生成 GUID 或任何其他标识符，将其保存在设备上并与推送通道（设备标记）一起发送到后端即可。 在后端，应当只做一个调用：CreateOrUpdateInstallation，其完全是幂等的，因此，如果需要，可随时重试。
+安装 API 是一种注册管理的替代机制。 其现在可以使用“单个”安装对象，而不必维护多个注册，后者不但工作量较大，而且容易出错且效率低下。 安装包含所需一切内容：推送通道（设备标记）、标记、模板、辅助磁贴（用于 WNS 和 APNS）。 不必再调用该服务以获取 ID - 只需生成 GUID 或任何其他标识符，将其保存在设备上并与推送通道（设备标记）一起发送到后端即可。
+在后端，应只进行一次调用：CreateOrUpdateInstallation，它完全是幂等的，因此，如果需要，可随时重试。
 
 针对 Amazon Kindle Fire 的示例如下：
 
     Installation installation = new Installation("installation-id", NotificationPlatform.Adm, "adm-push-channel");
     hub.createOrUpdateInstallation(installation);
 
-如果希望进行更新： 
+如果希望进行更新：
 
     installation.addTag("foo");
     installation.addTemplate("template1", new InstallationTemplate("{\"data\":{\"key1\":\"$(value1)\"}}","tag-for-template1"));
@@ -186,7 +188,7 @@ CreateOrUpdate、Patch 和 Delete 最终与 Get 一致。 请求的操作会在�
 **计划 Windows 本机通知：**
 
     Calendar c = Calendar.getInstance();
-    c.add(Calendar.DATE, 1);    
+    c.add(Calendar.DATE, 1);
     Notification n = Notification.createWindowsNotification("WNS body");
     hub.scheduleNotification(n, c.getTime());
 
@@ -216,34 +218,34 @@ CreateOrUpdate、Patch 和 Delete 最终与 Get 一致。 请求的操作会在�
         job = hub.getNotificationHubJob(job.getJobId());
         if(job.getJobStatus() == NotificationHubJobStatus.Completed)
             break;
-    }       
+    }
 
 **获取所有作业：**
 
     List<NotificationHubJob> jobs = hub.getAllNotificationHubJobs();
 
-**使用 SAS 签名的 URI：** 此 URL 是某些 Blob 文件或 Blob 容器的 URL，加上一组参数（例如权限和到期日期），再加上使用帐户的 SAS 密钥生成的所有这些内容的签名。 Azure 存储 Java SDK 具有丰富的功能，包括创建这种类型的 URI。 作为简单的替代，可以考虑使用 ImportExportE2E 测试类（来自 github 位置），其具有基本、精简的签名算法。
+**使用 SAS 签名的 URI：** 此 URL 是某些 Blob 文件或 Blob 容器的 URL，加上一组参数（例如权限和到期时间），再加上使用帐户的 SAS 密钥生成的所有这些内容的签名。 Azure 存储 Java SDK 具有丰富的功能，包括创建这种类型的 URI。 作为简单的替代方案，可以考虑使用 ImportExportE2E 测试类（来自 GitHub 位置），该测试类具有签名算法的基本、精简实现。
 
 ### <a name="send-notifications"></a>发送通知
 通知对象只是一个带标头的正文，而一些实用工具方法有助于构建本机和模板通知对象。
 
 * **Windows 应用商店和 Windows Phone 8.1（非 Silverlight）**
-  
+
         String toast = "<toast><visual><binding template=\"ToastText01\"><text id=\"1\">Hello from Java!</text></binding></visual></toast>";
         Notification n = Notification.createWindowsNotification(toast);
         hub.sendNotification(n);
 * **iOS**
-  
+
         String alert = "{\"aps\":{\"alert\":\"Hello from Java!\"}}";
         Notification n = Notification.createAppleNotification(alert);
         hub.sendNotification(n);
 * **Android**
-  
+
         String message = "{\"data\":{\"msg\":\"Hello from Java!\"}}";
         Notification n = Notification.createGcmNotification(message);
         hub.sendNotification(n);
 * **Windows Phone 8.0 和 8.1 Silverlight**
-  
+
         String toast = "<?xml version=\"1.0\" encoding=\"utf-8\"?>" +
                     "<wp:Notification xmlns:wp=\"WPNotification\">" +
                        "<wp:Toast>" +
@@ -253,7 +255,7 @@ CreateOrUpdate、Patch 和 Delete 最终与 Get 一致。 请求的操作会在�
         Notification n = Notification.createMpnsNotification(toast);
         hub.sendNotification(n);
 * **Kindle Fire**
-  
+
         String message = "{\"data\":{\"msg\":\"Hello from Java!\"}}";
         Notification n = Notification.createAdmNotification(message);
         hub.sendNotification(n);
@@ -263,11 +265,11 @@ CreateOrUpdate、Patch 和 Delete 最终与 Get 一致。 请求的操作会在�
         tags.add("boo");
         tags.add("foo");
         hub.sendNotification(n, tags);
-* **发送到标记表达式**       
-  
+* **发送到标记表达式**
+
         hub.sendNotification(n, "foo && ! bar");
 * **发送模板通知**
-  
+
         Map<String, String> prop =  new HashMap<String, String>();
         prop.put("prop1", "v1");
         prop.put("prop2", "v2");
@@ -279,7 +281,7 @@ CreateOrUpdate、Patch 和 Delete 最终与 Get 一致。 请求的操作会在�
 ## <a name="next-steps"></a>后续步骤
 本主题介绍了如何为通知中心创建简单的 Java REST 客户端。 从这里可以：
 
-* 下载完整的 [Java SDK]，其中包含完整的 SDK 代码。 
+* 下载完整的 [Java SDK]，其中包含完整的 SDK 代码。
 * 播放示例：
   * [通知中心入门]
   * [发送突发新闻]

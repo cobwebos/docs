@@ -1,5 +1,5 @@
 ---
-title: 语音合成标记语言
+title: 语音合成标记语言 - 语音服务
 titleSuffix: Azure Cognitive Services
 description: 使用语音合成标记语言来控制文本到语音转换中的发音和韵律。
 services: cognitive-services
@@ -8,22 +8,26 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: conceptual
-ms.date: 09/08/2018
+ms.date: 12/13/2018
 ms.author: erhopf
-ms.openlocfilehash: b32be520adeee2de50c8f49c2884dc9dc92c0ddd
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.custom: seodec18
+ms.openlocfilehash: f6a2d6a35200bc4dec169aae72415c1c2904c465
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49469276"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53341127"
 ---
 # <a name="speech-synthesis-markup-language"></a>语音合成标记语言
 
-语言合成标记语言 (SSML) 是一种基于 XML 的标记语言，它提供了一种方法来控制文本到语音翻译的发音和“韵律”。 韵律是指语音的节奏和音高 - 其音乐（如果你希望如此）。 你可以按照发音指定单词，提供用于解释数字的提示，插入暂停，控制音高、音量、速度和其他方面。
+语言合成标记语言 (SSML) 是一种基于 XML 的标记语言，它提供了一种方法来控制文本到语音翻译的发音和“韵律”。 韵律是指语音的节奏和音高 - 其音乐（如果你希望如此）。 你可以按照发音指定单词，提供用于解释数字的提示，插入暂停，控制音高、音量、速度和其他方面。 有关详细信息，请参阅[语音合成标记语言 (SSML) 版本 1.0](http://www.w3.org/TR/2009/REC-speech-synthesis-20090303/)。
 
-有关详细信息，请参阅 W3C 的[语言合成标记语言 (SSML) 版本 1.0](http://www.w3.org/TR/2009/REC-speech-synthesis-20090303/)。
+有关支持的语言、区域设置和语音（神经和标准）的完整列表，请参阅[语言支持](language-support.md#text-to-speech)。
 
-以下示例展示了如何使用 SSML 来解决最常见的语音合成需求：
+以下各节提供常见语音合成任务的示例。
+
+>[!IMPORTANT]
+> 目前，韵律标记仅适用于标准语音。
 
 ## <a name="add-a-break"></a>添加停顿
 ```xml
@@ -89,5 +93,4 @@ ms.locfileid: "49469276"
 
 ## <a name="next-steps"></a>后续步骤
 
-* [获取语音试用订阅](https://azure.microsoft.com/try/cognitive-services/)
-* [了解如何在 C# 中识别语音](quickstart-csharp-dotnet-windows.md)
+* [语言支持：语音、区域设置、语言](language-support.md)

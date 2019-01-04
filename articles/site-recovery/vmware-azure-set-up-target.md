@@ -6,14 +6,14 @@ author: Rajeswari-Mamilla
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 10/29/2018
+ms.date: 11/27/2018
 ms.author: ramamill
-ms.openlocfilehash: a6f983b08415659b9a989ebed824cddd210396e1
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: cbf9c1a49481de49fb8d9c6599acec7bc3600df3
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50233423"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52837505"
 ---
 # <a name="prepare-the-target-environment-for-disaster-recovery-of-vmware-vms-or-physical-servers-to-azure"></a>准备目标环境，以便将 VMware VM 或物理服务器灾难恢复到 Azure
 
@@ -27,12 +27,12 @@ ms.locfileid: "50233423"
 
 ## <a name="prepare-target"></a>准备目标
 
-完成“步骤 1：选择保护目标”和“步骤 2：准备源”后，会转到“步骤 3：目标”
+完成“步骤 1：选择保护目标”和“步骤 2：准备源”后，将转到“步骤 3：目标”
 
 ![准备目标](./media/vmware-azure-set-up-target/prepare-target-vmware-to-azure.png)
 
-1. 订阅：从下拉菜单中，选择要将虚拟机或物理服务器复制到的“订阅”。
-2. **部署模型：** 选择部署模型（经典或 Resource Manager）
+1. **订阅：** 从下拉菜单中，选择要将虚拟机或物理服务器复制到的“订阅”。
+2. **部署模型：** 选择部署模型（“经典”或“资源管理器”）
 
 根据选择的部署模型，运行验证以确保目标订阅中至少具有一个兼容的存储帐户和虚拟网络，以将虚拟机或物理服务器复制并故障转移到此目标订阅中。
 
