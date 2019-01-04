@@ -18,7 +18,7 @@ ms.lasthandoff: 12/08/2018
 ms.locfileid: "53103279"
 ---
 # <a name="copy-data-from-amazon-simple-storage-service-using-azure-data-factory"></a>使用 Azure 数据工厂从 Amazon 简单存储服务复制数据
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="选择您正在使用的 Data Factory 服务的版本:"]
 > * [版本 1](v1/data-factory-amazon-simple-storage-service-connector.md)
 > * [当前版本](connector-amazon-simple-storage-service.md)
 
