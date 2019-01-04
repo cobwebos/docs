@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/03/2017
 ms.author: snmuvva
 ms.component: alerts
-ms.openlocfilehash: b1bea9b1a2bdb04a60fa6a8fa1d92bfbaf80c6d6
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: 2df24cfe217a9955a3abb08d042836821b083946
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53320823"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53580631"
 ---
 # <a name="have-a-classic-metric-alert-notify-a-non-azure-system-using-a-webhook"></a>使用 Webhook 让经典指标警报通知非 Azure 系统
 可以使用 Webhook 将 Azure 警报通知路由到其他系统，以便进行后续处理或自定义操作。 可以针对警报使用 Webhook，以将警报路由到可以发送短信的服务，以记录 Bug、通过聊天/消息服务通知团队，或进行各种其他操作。 
@@ -27,7 +27,7 @@ Azure 警报使用 HTTP POST 将警报内容以 JSON 格式发送到创建警报
 
 ![“添加警报规则”窗格](./media/alerts-webhooks/Alertwebhook.png)
 
-还可以使用 [Azure PowerShell cmdlet](../../monitoring-and-diagnostics/insights-powershell-samples.md#create-metric-alerts)、[跨平台 CLI](../../azure-monitor/platform/cli-samples.md#work-with-alerts) 或 [Azure Monitor REST API](https://msdn.microsoft.com/library/azure/dn933805.aspx) 将警报配置为发布到 Webhook URI。
+还可以使用 [Azure PowerShell cmdlet](../../azure-monitor/platform/powershell-quickstart-samples.md#create-metric-alerts)、[跨平台 CLI](../../azure-monitor/platform/cli-samples.md#work-with-alerts) 或 [Azure Monitor REST API](https://msdn.microsoft.com/library/azure/dn933805.aspx) 将警报配置为发布到 Webhook URI。
 
 ## <a name="authenticate-the-webhook"></a>对 webhook 进行身份验证
 Webhook 可使用基于令牌的身份验证进行身份验证。 保存的 Webhook URI 具有令牌 ID。 例如： `https://mysamplealert/webcallback?tokenid=sometokenid&someparameter=somevalue`

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
 ms.date: 03/01/2018
-ms.openlocfilehash: fb6efad1f1c06349adb877516f5323d8b9ee45e8
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: ec33ac469d33a07d00f379beef2db9f4405e4679
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53272229"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53631119"
 ---
 # <a name="guide-to-net-neural-network-specification-language-for-azure-machine-learning-studio"></a>有关 Azure 机器学习工作室的 Net# 神经网络规范语言的指南
 
@@ -388,7 +388,7 @@ output Out [10] sigmoid from H all;
 
 + 第一行定义了输入层（名为 `Data`）。 使用 `auto` 关键字时，神经网络会自动包括输入示例中的所有功能列。 
 + 第二行创建隐藏层。 为该隐藏层指定了名称 `H`，该层有 200 个节点。 这一层完全连接到输入层。
-+ 第三行定义了输出层（名为 `O`），其中包含 10 个输出节点。 如果神经网络用于分类，则每个类有一个输出节点。 关键字 **sigmoid** 指示输出函数将应用于输出层。
++ 第三行定义了输出层（名为 `Out`），其中包含 10 个输出节点。 如果神经网络用于分类，则每个类有一个输出节点。 关键字 **sigmoid** 指示输出函数将应用于输出层。
 
 ### <a name="define-multiple-hidden-layers-computer-vision-example"></a>定义多个隐藏层：计算机影像示例
 

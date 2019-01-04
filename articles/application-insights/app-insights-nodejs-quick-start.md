@@ -10,12 +10,12 @@ ms.service: application-insights
 ms.custom: mvc
 ms.topic: quickstart
 manager: carmonm
-ms.openlocfilehash: 8bc725a5d9e3e9cdf82a01693aed83bff1f16c04
-ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.openlocfilehash: c2202a194c3912bd9a8b8f534df792e6f1a3543b
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38991572"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53998687"
 ---
 # <a name="start-monitoring-your-nodejs-web-application"></a>开始监视 Node.js Web 应用程序
 
@@ -25,7 +25,7 @@ ms.locfileid: "38991572"
 
 ## <a name="prerequisites"></a>先决条件
 
-完成本快速入门教程：
+完成本快速入门教程需要：
 
 - 需要 Azure 订阅和现有 Node.js Web 应用程序。
 
@@ -49,7 +49,7 @@ Application Insights 可以从任何连接 Internet 的应用程序收集遥测�
 
     | 设置        | 值           | 说明  |
    | ------------- |:-------------|:-----|
-   | **Name**      | 全局唯一值 | 标识所监视的应用的名称 |
+   | **名称**      | 全局唯一值 | 标识所监视的应用的名称 |
    | **应用程序类型** | Node.js 应用程序 | 所监视的应用的类型 |
    | **资源组**     | myResourceGroup      | 用于托管 App Insights 数据的新资源组的名称 |
    | **位置** | 美国东部 | 选择离你近的位置或离托管应用的位置近的位置 |
@@ -124,7 +124,7 @@ Application Insights 可以从任何连接 Internet 的应用程序收集遥测�
 
    ![“服务器指标”图](./media/app-insights-nodejs-quick-start/009-Black.png)
 
-若要了解有关监视 Node.js 的详细信息，请查看[其他 App Insights Node.js 文档](app-insights-nodejs.md)。
+若要了解有关监视 Node.js 的详细信息，请查看[其他 App Insights Node.js 文档](../azure-monitor/app/nodejs.md)。
 
 ## <a name="clean-up-resources"></a>清理资源
 

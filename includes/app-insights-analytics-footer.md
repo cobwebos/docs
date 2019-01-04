@@ -4,15 +4,15 @@ ms.service: application-insights
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: mbullwin
-ms.openlocfilehash: edd7492dba1352484e1a1e5c361c8041bcd966b0
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: 669aac4903b2de03fe845193b55e6538a3bf9d6c
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51571817"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53729968"
 ---
 ## <a name="analytics"></a>分析
-* [概述](../articles/application-insights/app-insights-analytics.md)
+* [概述](../articles/azure-monitor/app/analytics.md)
 * [分析导览](../articles/application-insights/app-insights-analytics-tour.md)
   * 从此处开始。 涵盖主要功能的教程。
 * [查询](../articles/application-insights/app-insights-analytics-reference.md)
@@ -25,5 +25,5 @@ ms.locfileid: "51571817"
   * 使用分析。
 * [语言参考](../articles/application-insights/app-insights-analytics-reference.md)
   * 单页参考。
-* [故障排除](../articles/application-insights/app-insights-analytics-troubleshooting.md)
+* [故障排除](../articles/azure-monitor/app/analytics-troubleshooting.md)
 

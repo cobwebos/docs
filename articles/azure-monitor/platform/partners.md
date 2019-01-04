@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/01/2018
 ms.author: johnkem
 ms.component: ''
-ms.openlocfilehash: 07127e8a15626c7eacad925381f92d0a7c94fc96
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 95e4140125f064d4e279c90f60b390c4762e8cf8
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53439624"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53580206"
 ---
 # <a name="azure-monitor-partner-integrations"></a>Azure 监视器合作伙伴集成
 | 合作伙伴 |  |  |
@@ -166,8 +166,8 @@ Turbonomic 为混合云提供工作负荷自动化解决方案，同时实时优
 ## <a name="next-steps"></a>后续步骤
 * [了解有关 Azure Monitor 的详细信息](../../azure-monitor/overview.md)
 * [使用 REST API 访问指标](rest-api-walkthrough.md)
-* [将活动日志流式传输给非 Microsoft 服务](../../monitoring-and-diagnostics/monitoring-stream-activity-logs-event-hubs.md)
-* [将诊断日志流式传输给非 Microsoft 服务](../../monitoring-and-diagnostics/monitoring-stream-diagnostic-logs-to-event-hubs.md)
+* [将活动日志流式传输给非 Microsoft 服务](../../azure-monitor/platform/activity-logs-stream-event-hubs.md)
+* [将诊断日志流式传输给非 Microsoft 服务](../../azure-monitor/platform/diagnostic-logs-stream-event-hubs.md)
 
 <!--Partner Anchors-->
 [alertlogic-anchor]: #alertlogic-log-manager "AlertLogic"

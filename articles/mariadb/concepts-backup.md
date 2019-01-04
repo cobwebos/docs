@@ -3,17 +3,15 @@ title: 在 Azure Database for MariaDB 中进行备份和还原
 description: 了解如何自动备份和还原 Azure Database for MariaDB 服务器。
 author: ajlam
 ms.author: andrela
-editor: jasonwhowell
-services: mariadb
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: c8e671071226b891668e0874d56e2d4685e1d64d
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: e36e718d35f652c139958388491642e98469ecaf
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46958573"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53548834"
 ---
 # <a name="backup-and-restore-in-azure-database-for-mariadb"></a>在 Azure Database for MariaDB 中进行备份和还原
 

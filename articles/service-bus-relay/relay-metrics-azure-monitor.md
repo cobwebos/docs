@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/28/2018
 ms.author: spelluru
-ms.openlocfilehash: 5ca4535afb44238380cb6db55953072598130fae
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: eb71161c9191e29d3248b2c64fd9cc0fa76c92a2
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52582354"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53545138"
 ---
 # <a name="azure-relay-metrics-in-azure-monitor-preview"></a>Azure Monitor 中的 Azure 中继指标（预览版）
 Azure 中继指标提供 Azure 订阅中的资源的状态。 通过一组丰富的指标数据，可在命名空间和实体级别评估中继资源的总体运行状况。 这些统计信息非常重要，因为它们能够帮助监视 Azure 中继的状态。 另外，指标也可帮助解决由根本原因造成的问题，而无需联系 Azure 支持。
@@ -33,7 +33,7 @@ Azure Monitor 提供了统一的用户界面，可用于监视各种 Azure 服�
 
 Azure Monitor 提供多种访问指标的方法。 可从 [Azure 门户](https://portal.azure.com)、Azure Monitor API（REST 和 .Net）与分析解决方案（例如 Operation Management Suite 和事件中心）访问指标。 有关详细信息，请参阅 [Azure Monitor 收集的监视数据](../azure-monitor/platform/data-collection.md)。
 
-默认情况下，已启用指标，并且可访问最近 30 天的数据。 如需将数据保留更长一段时间，可将指标数据存档到 Azure 存储帐户。 可在 Azure Monitor 的 [诊断设置](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md#diagnostic-settings) 中完成这种配置。
+默认情况下，已启用指标，并且可访问最近 30 天的数据。 如需将数据保留更长一段时间，可将指标数据存档到 Azure 存储帐户。 可在 Azure Monitor 的 [诊断设置](../azure-monitor/platform/diagnostic-logs-overview.md#diagnostic-settings) 中完成这种配置。
 
 ## <a name="access-metrics-in-the-portal"></a>在门户中访问指标
 
@@ -60,24 +60,24 @@ Azure Monitor 提供多种访问指标的方法。 可从 [Azure 门户](https:/
 
 | 指标名称 | Description |
 | ------------------- | ----------------- |
-| ListenerConnections-Success（预览版） | 在指定的期间内成功与 Azure 中继建立的侦听器连接数。 <br/><br/> 单位：计数 <br/> 聚合类型：总计 <br/> 维度：EntityName|
-|ListenerConnections-ClientError（预览版）|在指定的期间内在侦听器连接上发生的客户端错误数。<br/><br/> 单位：计数 <br/> 聚合类型：总计 <br/> 维度：EntityName|
-|ListenerConnections-ServerError（预览版）|在指定的期间内在侦听器连接上发生的服务器错误数。<br/><br/> 单位：计数 <br/> 聚合类型：总计 <br/> 维度：EntityName|
-|SenderConnections-Success（预览版）|在指定的期间内成功建立的发送者连接数。<br/><br/> 单位：计数 <br/> 聚合类型：总计 <br/> 维度：EntityName|
-|SenderConnections-ClientError（预览版）|在指定的期间内在发送者连接上发生的客户端错误数。<br/><br/> 单位：计数 <br/> 聚合类型：总计 <br/> 维度：EntityName|
-|SenderConnections-ServerError（预览版）|在指定的期间内在发送者连接上发生的服务器错误数。<br/><br/> 单位：计数 <br/> 聚合类型：总计 <br/> 维度：EntityName|
-|ListenerConnections-TotalRequests（预览版）|指定的期间内的侦听器连接总数<br/><br/> 单位：计数 <br/> 聚合类型：总计 <br/> 维度：EntityName|
-|SenderConnections-TotalRequests（预览版）|在指定的期间内由发送者发出的连接请求数。<br/><br/> 单位：计数 <br/> 聚合类型：总计 <br/> 维度：EntityName|
-|ActiveConnections（预览版）|指定的期间内的活动连接数。<br/><br/> 单位：计数 <br/> 聚合类型：总计 <br/> 维度：EntityName|
-|ActiveListeners（预览版）|指定的期间内的活动侦听器数。<br/><br/> 单位：计数 <br/> 聚合类型：总计 <br/> 维度：EntityName|
-|ListenerDisconnects（预览版）|指定的期间内断开连接的侦听器数。<br/><br/> 单元：字节 <br/> 聚合类型：总计 <br/> 维度：EntityName|
-|SenderDisconnects（预览版）|指定的期间内断开连接的发送者数。<br/><br/> 单元：字节 <br/> 聚合类型：总计 <br/> 维度：EntityName|
+| ListenerConnections-Success（预览版） | 在指定的期间内成功与 Azure 中继建立的侦听器连接数。 <br/><br/> 单位：Count <br/> 聚合类型：总计 <br/> 维度：EntityName|
+|ListenerConnections-ClientError（预览版）|在指定的期间内在侦听器连接上发生的客户端错误数。<br/><br/> 单位：Count <br/> 聚合类型：总计 <br/> 维度：EntityName|
+|ListenerConnections-ServerError（预览版）|在指定的期间内在侦听器连接上发生的服务器错误数。<br/><br/> 单位：Count <br/> 聚合类型：总计 <br/> 维度：EntityName|
+|SenderConnections-Success（预览版）|在指定的期间内成功建立的发送者连接数。<br/><br/> 单位：Count <br/> 聚合类型：总计 <br/> 维度：EntityName|
+|SenderConnections-ClientError（预览版）|在指定的期间内在发送者连接上发生的客户端错误数。<br/><br/> 单位：Count <br/> 聚合类型：总计 <br/> 维度：EntityName|
+|SenderConnections-ServerError（预览版）|在指定的期间内在发送者连接上发生的服务器错误数。<br/><br/> 单位：Count <br/> 聚合类型：总计 <br/> 维度：EntityName|
+|ListenerConnections-TotalRequests（预览版）|指定的期间内的侦听器连接总数<br/><br/> 单位：Count <br/> 聚合类型：总计 <br/> 维度：EntityName|
+|SenderConnections-TotalRequests（预览版）|在指定的期间内由发送者发出的连接请求数。<br/><br/> 单位：Count <br/> 聚合类型：总计 <br/> 维度：EntityName|
+|ActiveConnections（预览版）|指定的期间内的活动连接数。<br/><br/> 单位：Count <br/> 聚合类型：总计 <br/> 维度：EntityName|
+|ActiveListeners（预览版）|指定的期间内的活动侦听器数。<br/><br/> 单位：Count <br/> 聚合类型：总计 <br/> 维度：EntityName|
+|ListenerDisconnects（预览版）|指定的期间内断开连接的侦听器数。<br/><br/> 单位：字节 <br/> 聚合类型：总计 <br/> 维度：EntityName|
+|SenderDisconnects（预览版）|指定的期间内断开连接的发送者数。<br/><br/> 单位：字节 <br/> 聚合类型：总计 <br/> 维度：EntityName|
 
 ## <a name="memory-usage-metrics"></a>内存使用情况指标
 
 | 指标名称 | Description |
 | ------------------- | ----------------- |
-|BytesTransferred（预览版）|在指定的期间内传输的字节数。<br/><br/> 单元：字节 <br/> 聚合类型：总计 <br/> 维度：EntityName|
+|BytesTransferred（预览版）|在指定的期间内传输的字节数。<br/><br/> 单位：字节 <br/> 聚合类型：总计 <br/> 维度：EntityName|
 
 ## <a name="metrics-dimensions"></a>指标维度
 

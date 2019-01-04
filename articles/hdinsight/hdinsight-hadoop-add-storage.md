@@ -9,18 +9,18 @@ ms.topic: conceptual
 ms.date: 04/23/2018
 ms.author: hrasheed
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.openlocfilehash: a75514013a1945d9ca5718be115184f6ba9950d9
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: a86a965a746ed659b73c359ee44fb9be250aae97
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53015749"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53714277"
 ---
 # <a name="add-additional-storage-accounts-to-hdinsight"></a>将其他存储帐户添加到 HDInsight
 
 了解如何使用脚本操作，将其他 Azure 存储帐户添加到 HDInsight。 本文档中的步骤会将存储帐户添加到基于 Linux 的现有 HDInsight 群集。
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > 本文档中的信息介绍在创建群集后，如何将其他存储添加到此群集。 有关如何在创建群集期间添加存储帐户的信息，请参阅[使用 Apache Hadoop、Apache Spark、Apache Kafka 等设置 HDInsight 中的群集](hdinsight-hadoop-provision-linux-clusters.md)。
 
 ## <a name="how-it-works"></a>工作原理
@@ -45,7 +45,7 @@ ms.locfileid: "53015749"
 
 * 停止并重启 [Apache Oozie](https://oozie.apache.org/)、[Apache Hadoop YARN](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html)、[Apache Hadoop MapReduce2](https://hadoop.apache.org/docs/current/hadoop-mapreduce-client/hadoop-mapreduce-client-core/MapReduceTutorial.html) 和 [Apache Hadoop HDFS](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsUserGuide.html) 服务。 通过停止和重启这些服务来使用新的存储帐户。
 
-> [!WARNING]
+> [!WARNING]  
 > 不支持在 HDInsight 群集之外的其他位置使用存储帐户。
 
 ## <a name="the-script"></a>脚本
@@ -60,7 +60,7 @@ __要求__：
 
 可以通过 Azure 门户、Azure PowerShell 或 Azure Classic CLI 使用此脚本。 有关详细信息，请参阅[使用脚本操作自定义基于 Linux 的 HDInsight 群集](hdinsight-hadoop-customize-cluster-linux.md#apply-a-script-action-to-a-running-cluster)文档。
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > 当使用自定义文档中所提供的步骤时，请使用以下信息来应用此脚本：
 >
 > * 将任何示例脚本操作 URI 替换为此脚本的 URI (https://hdiconfigactions.blob.core.windows.net/linuxaddstorageaccountv01/add-storage-account-v01.sh)。
@@ -85,14 +85,14 @@ $respObj = ConvertFrom-Json $resp.Content
 $respObj.items.configurations.properties."fs.azure.account.key.$storageAccountName.blob.core.windows.net"
 ```
 
-> [!NOTE]
+> [!NOTE]  
 > 将 `$clusterName` 设置为 HDInsight 群集的名称。 将 `$storageAccountName` 设置为存储帐户的名称。 出现提示时，输入群集登录名 (admin) 和密码。
 
 ```Bash
 curl -u admin:PASSWORD -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/configurations/service_config_versions?service_name=HDFS&service_config_version=1" | jq '.items[].configurations[].properties["fs.azure.account.key.$STORAGEACCOUNTNAME.blob.core.windows.net"] | select(. != null)'
 ```
 
-> [!NOTE]
+> [!NOTE]  
 > 将 `$PASSWORD` 设置为群集登录（管理员）帐户密码。 将 `$CLUSTERNAME` 设置为 HDInsight 群集的名称。 将 `$STORAGEACCOUNTNAME` 设置为存储帐户的名称。
 >
 > 此示例使用 [curl (https://curl.haxx.se/)](https://curl.haxx.se/) 和 [jq (https://stedolan.github.io/jq/)](https://stedolan.github.io/jq/) 检索和分析 JSON 数据。
@@ -132,14 +132,14 @@ curl -u admin:PASSWORD -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/cluster
 
 如果存储帐户与 HDInsight 群集位于不同的区域，则可能会遇到性能低下问题。 访问不同区域中的数据会在区域 Azure 数据中心之外和公共 Internet 上发送网络流量，这会导致延迟。
 
-> [!WARNING]
+> [!WARNING]  
 > 不支持在 HDInsight 群集之外的其他区域使用存储帐户。
 
 ### <a name="additional-charges"></a>额外费用
 
 如果存储帐户与 HDInsight 群集位于不同的区域，则可能会在 Azure 帐单上发现额外的出口费用。 当数据离开区域数据中心时，将收取出口费用。 即使流量发往另一区域中的另一个 Azure 数据中心，也将收取此费用。
 
-> [!WARNING]
+> [!WARNING]  
 > 不支持在 HDInsight 群集之外的其他区域使用存储帐户。
 
 ## <a name="next-steps"></a>后续步骤

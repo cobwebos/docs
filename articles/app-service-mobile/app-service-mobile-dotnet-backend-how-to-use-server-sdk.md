@@ -15,12 +15,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/01/2016
 ms.author: crdun
-ms.openlocfilehash: bbba7898329af9d9bca9d35883e3cb4097ca3de4
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 33e968ac608c393d65f69bfd6abbc0d205fb9bd9
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52968606"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53718871"
 ---
 # <a name="work-with-the-net-backend-server-sdk-for-azure-mobile-apps"></a>使用适用于 Azure 移动应用的 .NET 后端服务器 SDK
 [!INCLUDE [app-service-mobile-selector-server-sdk](../../includes/app-service-mobile-selector-server-sdk.md)]
@@ -140,7 +140,7 @@ Azure 门户中的服务器快速启动代码调用 **UseDefaultConfiguration()*
 * [Microsoft.Azure.Mobile.Server.Login] 通过 AppServiceLoginHandler.CreateToken() 方法，该方法为静态方法，在自定义身份验证方案下使用。
 
 ## <a name="publish-server-project"></a>如何：发布服务器项目
-本部分说明如何从 Visual Studio 发布 .NET 后端项目。 还可以使用 [Git](../app-service/app-service-deploy-local-git.md) 或该处可用的任何其他方法部署后端项目。
+本部分说明如何从 Visual Studio 发布 .NET 后端项目。 还可以使用 [Git](../app-service/deploy-local-git.md) 或该处可用的任何其他方法部署后端项目。
 
 1. 在 Visual Studio 中，重新生成项目以还原 NuGet 包。
 2. 在“解决方案资源管理器”中，右键单击该项目并单击“发布”。 首次发布时，需要定义发布配置文件。 如果已定义配置文件，可以直接选择该配置文件，并单击“发布”。
@@ -432,15 +432,15 @@ SID 派生自提供程序特定的用户 ID，对于给定的用户和登录提�
 Azure 应用服务提供多种适用于 ASP.NET 应用程序的调试和故障排除方法：
 
 * [监视 Azure 应用服务](../app-service/web-sites-monitor.md)
-* [在 Azure 应用服务中启用诊断日志记录](../app-service/web-sites-enable-diagnostic-log.md)
-* [在 Visual Studio 中对 Azure 应用服务进行故障排除](../app-service/web-sites-dotnet-troubleshoot-visual-studio.md)
+* [在 Azure 应用服务中启用诊断日志记录](../app-service/troubleshoot-diagnostic-logs.md)
+* [在 Visual Studio 中对 Azure 应用服务进行故障排除](../app-service/troubleshoot-dotnet-visual-studio.md)
 
 ### <a name="logging"></a>日志记录
 可以使用标准的 ASP.NET 跟踪写入来写入应用服务诊断日志。 写入日志之前，必须在移动应用后端中启用诊断。
 
 启用诊断并写入日志：
 
-1. 遵循[如何启用诊断](../app-service/web-sites-enable-diagnostic-log.md#enablediag)中的步骤。
+1. 遵循[如何启用诊断](../app-service/troubleshoot-diagnostic-logs.md#enablediag)中的步骤。
 2. 在代码文件中添加以下 using 语句：
 
         using System.Web.Http.Tracing;
@@ -449,7 +449,7 @@ Azure 应用服务提供多种适用于 ASP.NET 应用程序的调试和故障�
         ITraceWriter traceWriter = this.Configuration.Services.GetTraceWriter();
         traceWriter.Info("Hello, World");
 4. 重新发布服务器项目，并访问移动应用后端，结合日志记录执行代码路径。
-5. 根据[如何：下载日志](../app-service/web-sites-enable-diagnostic-log.md#download)中所述下载并评估日志。
+5. 根据[如何：下载日志](../app-service/troubleshoot-diagnostic-logs.md#download)中所述下载并评估日志。
 
 ### <a name="local-debug"></a>使用身份验证进行本地调试
 可以先在本地运行应用程序以测试更改，然后将更改发布到云中。 对于大多数 Azure 移动应用后端，请在 Visual Studio 中按 *F5*。 但是，使用身份验证时需要考虑其他一些事项。

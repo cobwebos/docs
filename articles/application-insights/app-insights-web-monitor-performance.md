@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 05/10/2018
 ms.reviewer: sdash
 ms.author: mbullwin
-ms.openlocfilehash: e11c34b2587dcb7602161d36ba4deda1dca73c82
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 5e5a53027126f96c27a6a6f0abb8aeacb94d7c11
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52720960"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "54000340"
 ---
 # <a name="monitor-performance-in-web-applications"></a>在 Web 应用程序中监视性能
 
@@ -32,11 +32,11 @@ Application Insights 可监视 Java 和 ASP.NET Web 应用程序和服务、WCF 
 ## <a name="setup"></a>设置性能监视
 如果尚未将 Application Insights 添加到项目（即，如果它没有 ApplicationInsights.config），则选择以下方式之一开始操作：
 
-* [ASP.NET Web 应用](app-insights-asp-net.md)
-  * [添加异常监视](app-insights-asp-net-exceptions.md)
-  * [添加依赖项监视](app-insights-monitor-performance-live-website-now.md)
-* [J2EE Web 应用](app-insights-java-get-started.md)
-  * [添加依赖项监视](app-insights-java-agent.md)
+* [ASP.NET Web 应用](../azure-monitor/app/asp-net.md)
+  * [添加异常监视](../azure-monitor/app/asp-net-exceptions.md)
+  * [添加依赖项监视](../azure-monitor/app/monitor-performance-live-website-now.md)
+* [J2EE Web 应用](../azure-monitor/app/java-get-started.md)
+  * [添加依赖项监视](../azure-monitor/app/java-agent.md)
 
 ## <a name="view"></a>探索性能指标
 在 [Azure 门户](https://portal.azure.com)中，浏览到为应用程序设置的 Application Insights 资源。 “概述”边栏选项卡显示基本性能数据：
@@ -152,14 +152,14 @@ HTTP 请求包括对页面、数据和图像的所有 GET 或 POST 请求。
 
 <!--Link references-->
 
-[availability]: app-insights-monitor-web-app-availability.md
-[diagnostic]: app-insights-diagnostic-search.md
-[greenbrown]: app-insights-asp-net.md
+[availability]: ../azure-monitor/app/monitor-web-app-availability.md
+[diagnostic]: ../azure-monitor/app/diagnostic-search.md
+[greenbrown]: ../azure-monitor/app/asp-net.md
 [qna]: app-insights-troubleshoot-faq.md
-[redfield]: app-insights-monitor-performance-live-website-now.md
+[redfield]: ../azure-monitor/app/monitor-performance-live-website-now.md
 [start]: app-insights-overview.md
 [usage]: app-insights-web-track-usage.md
-[livestream]: app-insights-live-stream.md
+[livestream]: ../azure-monitor/app/live-stream.md
 [snapshot]: app-insights-snapshot-debugger.md
 
 

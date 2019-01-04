@@ -1,5 +1,5 @@
 ---
-title: Azure 时序见解资源管理器数据浏览 - 使用 Azure 时序见解资源管理器浏览数据 | Microsoft Docs
+title: 使用 Azure 时序见解资源管理器浏览数据 | Microsoft Docs
 description: 本文介绍如何使用 Web 浏览器中的 Azure 时序见解资源管理器快速查看大数据的全局视图并验证 IoT 环境。
 ms.service: time-series-insights
 services: time-series-insights
@@ -12,12 +12,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 11/30/2017
 ms.custom: seodec18
-ms.openlocfilehash: 7508db8bd4b7f21308f2e7b0e92c44570dfc7b18
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: d65ce83465f54a30b96bc1ee6644319e1b4fb020
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53273130"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53556588"
 ---
 # <a name="azure-time-series-insights-explorer"></a>Azure 时序见解资源管理器
 本文探讨时序见解资源管理器 Web 应用中可用的各种功能和选项。 在 Web 浏览器中使用时序见解资源管理器来创建数据的可视化效果。

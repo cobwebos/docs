@@ -9,12 +9,12 @@ ms.service: application-insights
 ms.custom: mvc
 ms.topic: tutorial
 manager: carmonm
-ms.openlocfilehash: 39e2f136e30ebb6dcfc003c435382f3384af1052
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: 4b608f9237b9f7f98173168e055b5e83635bc2d7
+ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2017
-ms.locfileid: "23659340"
+ms.lasthandoff: 12/22/2018
+ms.locfileid: "53753755"
 ---
 # <a name="monitor-and-alert-on-application-health-with-azure-application-insights"></a>使用 Azure Application Insights 监视和警报应用程序的运行状况
 
@@ -34,11 +34,11 @@ Azure Application Insights 可用于监视应用程序，并在其不可用、�
 - 使用以下工作负荷安装 [Visual Studio 2017](https://www.visualstudio.com/downloads/)：
     - ASP.NET 和 Web 开发
     - Azure 开发
-    - 将 .NET 应用程序部署到 Azure 并[启用 Application Insights SDK](app-insights-asp-net.md)。 
+    - 将 .NET 应用程序部署到 Azure 并[启用 Application Insights SDK](../azure-monitor/app/asp-net.md)。 
 
 
 ## <a name="log-in-to-azure"></a>登录 Azure
-登录 Azure 门户 ([https://portal.azure.com](https://portal.azure.com))。
+通过 [https://portal.azure.com](https://portal.azure.com) 登录到 Azure 门户。
 
 ## <a name="create-availability-test"></a>创建可用性测试
 通过 Application Insights 中的可用性测试，可以从世界各地自动测试应用程序。   在本教程中，你将执行简单测试，以确保应用程序可用。  还可以创建完整的演练以测试其详细运行状况。 
@@ -88,7 +88,7 @@ Azure Application Insights 可用于监视应用程序，并在其不可用、�
 ## <a name="proactively-send-information"></a>主动发送信息
 在应用程序中发现一组特定问题时即会创建警报，通常要对需立即关注的关键条件设置警报。  可以通过按计划自动运行的逻辑应用，主动接收关于应用程序的信息。  例如，可以每天向管理员发送一封邮件，提供需进一步评估的摘要信息。
 
-若要了解如何创建使用 Application Insights 的逻辑应用，请参阅[使用逻辑应用自动执行 Application Insights 进程](automate-with-logic-apps.md)
+若要了解如何创建使用 Application Insights 的逻辑应用，请参阅[使用逻辑应用自动执行 Application Insights 进程](../azure-monitor/app/automate-with-logic-apps.md)
 
 ## <a name="next-steps"></a>后续步骤
 既已了解如何对问题设置警报，可继续学习下一个教程，了解如何分析用户与应用程序的交互。

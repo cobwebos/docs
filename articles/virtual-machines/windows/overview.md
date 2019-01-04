@@ -16,23 +16,23 @@ ms.topic: get-started-article
 ms.date: 10/04/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 6ec151222bda3d87386cc3be4c54821775880795
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: a58644deb8d1325fd466d2a4d3a1fc927c83b685
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48816831"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53720248"
 ---
 # <a name="overview-of-windows-virtual-machines-in-azure"></a>Azure 中的 Windows 虚拟机概述
 
-Azure 虚拟机 (VM) 是 Azure 提供的多种[可缩放按需分配计算资源](../../app-service/choose-web-site-cloud-service-vm.md)之一。 通常情况下，如果需要以更大的力度（相对于其他控制选项）控制计算环境，则应选择 VM。 本文介绍创建 VM 之前的注意事项，以及 VM 的创建方法和管理方式。
+Azure 虚拟机 (VM) 是 Azure 提供的多种[可缩放按需分配计算资源](../../app-service/overview-compare.md)之一。 通常情况下，如果需要以更大的力度（相对于其他控制选项）控制计算环境，则应选择 VM。 本文介绍创建 VM 之前的注意事项，以及 VM 的创建方法和管理方式。
 
 使用 Azure VM 可以灵活进行虚拟化，而无需购买和维护运行 VM 的物理硬件。 不过，仍然需要通过执行任务来维护 VM，例如，配置、修补和安装在 VM 上运行的软件。
 
 可通过多种方式使用 Azure 虚拟机。 下面是一些示例：
 
-* **开发和测试** – 在 Azure VM 上，可以快速轻松地创建具有特定配置的计算机来满足编写代码和应用程序测试的需要。
-* **云中的应用程序** – 由于应用程序的需求会不断变化，在 Azure 中的 VM 上运行应用程序可能会节省成本。 使用 VM 时，需要支付额外的费用；不需要 VM 时，则需要关闭它们。
+* **开发和测试** – 在 Azure VM 上，可以快速轻松地创建具有特定配置的计算机来满足编程和应用程序测试的需要。
+* **云中的应用程序** – 由于应用程序的需求会不断变化，在 Azure 中的 VM 上运行应用程序可能会节省成本。 使用 VM 时，需要支付额外的费用；关闭 VM 时，则无需付费。
 * **扩展的数据中心** – Azure 虚拟网络中的虚拟机可以轻松连接到组织的网络。
 
 应用程序使用的 VM 数可根据你的需要纵向扩展和横向扩展为任意数目。
@@ -43,7 +43,7 @@ Azure 虚拟机 (VM) 是 Azure 提供的多种[可缩放按需分配计算资源
 * 应用程序资源的名称
 * 资源的存储位置
 * VM 的大小
-* 可以创建的 VM 的数目上限
+* 可以创建的 VM 数目上限
 * VM 运行的操作系统
 * VM 在启动后的配置
 * VM 所需的相关资源
@@ -124,7 +124,7 @@ VM 使用下表中的资源，创建 VM 时，这些资源必须存在，否则�
 | REST API |[创建或更新 VM](https://docs.microsoft.com/rest/api/compute/virtualmachines/virtualmachines-create-or-update) |
 | Azure CLI |[使用 Azure CLI 创建 VM](https://docs.microsoft.com/azure/virtual-machines/scripts/virtual-machines-windows-cli-sample-create-vm) |
 
-问题偶尔会不期而至。 如果遇到了问题，请查看 [Troubleshoot Resource Manager deployment issues with creating a Windows virtual machine in Azure](../troubleshooting/troubleshoot-deployment-new-vm-windows.md)（排查在 Azure 中创建 Windows 虚拟机时遇到的资源管理器部署问题）。
+问题偶尔会不期而至。 如果遇到了问题，请查看 [Troubleshoot Resource Manager deployment issues with creating a Windows virtual machine in Azure](../troubleshooting/troubleshoot-deployment-new-vm-windows.md)（排查在 Azure 中创建 Windows 虚拟机时遇到的 Resource Manager 部署问题）。
 
 ## <a name="how-do-i-manage-the-vm-that-i-created"></a>如何管理创建的 VM？
 可以使用基于浏览器的门户、支持脚本的命令行工具或直接通过 API 管理 VM。 可能要执行的一些常见管理任务包括获取有关 VM 的信息、登录到 VM、管理可用性以及执行备份。

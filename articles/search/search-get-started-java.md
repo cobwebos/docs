@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 08/26/2018
 ms.author: jjed
 ms.custom: seodec2018
-ms.openlocfilehash: d74c9c30932bd2db9059738c8dfbc21e4b1b046a
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: d16f20e3c2dfa3d670006e44f0072a3871d41c3f
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53316946"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53629895"
 ---
 # <a name="get-started-with-azure-search-in-java"></a>Java 中的 Azure 搜索入门
 > [!div class="op_single_selector"]
@@ -34,7 +34,7 @@ ms.locfileid: "53316946"
 * [Apache Tomcat 8.5.33](https://tomcat.apache.org/download-80.cgi#8.5.33)
 
 ## <a name="about-the-data"></a>关于数据
-此示例应用程序使用的数据来自 [美国地质调查局 (USGS)](http://geonames.usgs.gov/domestic/download_data.htm)，对罗得岛州进行了筛选以减小数据集大小。 使用此数据生成搜索应用程序，该应用程序返回医院、学校等地标性建筑，以及河流、湖泊和山峰等地质特征。
+此示例应用程序使用的数据来自 [美国地质调查局 (USGS)](https://geonames.usgs.gov/domestic/download_data.htm)，对罗得岛州进行了筛选以减小数据集大小。 使用此数据生成搜索应用程序，该应用程序返回医院、学校等地标性建筑，以及河流、湖泊和山峰等地质特征。
 
 在该应用程序中，**SearchServlet.java** 程序通过使用 [索引器](https://msdn.microsoft.com/library/azure/dn798918.aspx) 构造，并从公共 Azure SQL 数据库检索筛选的 USGS 数据集，生成并加载索引。 程序代码中提供了联机数据源的预定义凭据和连接信息。 在数据访问方面，无需进一步配置。
 
@@ -87,7 +87,7 @@ ms.locfileid: "53316946"
 ## <a name="configure-the-service-url-and-api-key"></a>配置服务 URL 和 API 密钥
 1. 在“项目资源管理器”中，双击 **config.properties** 编辑包含服务器名称和 API 密钥的配置设置。
 2. 请参考本文中前面的步骤，在 [Azure 门户](https://portal.azure.com)中找到服务 URL 和 API 密钥，获取现在会在 **config.properties**中输入的值。
-3. 在 **config.properties**中，将“Api Key”替换为服务的 API 密钥。 接下来，使用服务名称（URL http://servicename.search.windows.net) 的第一部分）替换同一文件中的“service name”。
+3. 在 **config.properties**中，将“Api Key”替换为服务的 API 密钥。 接下来，使用服务名称（URL https://servicename.search.windows.net) 的第一部分）替换同一文件中的“service name”。
    
     ![][5]
 

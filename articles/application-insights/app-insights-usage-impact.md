@@ -13,12 +13,12 @@ ms.date: 01/25/2018
 ms.reviewer: mbullwin
 ms.pm_owner: daviste;NumberByColors
 ms.author: daviste
-ms.openlocfilehash: 6bc18d73f66c1ede777d579b764127f034d9f0ca
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 9b987ccd17f2060eea125a5d384446cec24fb68a
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52725720"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53969159"
 ---
 # <a name="impact-analysis-with-application-insights"></a>Application Insights 中的 Impact 分析功能
 
@@ -35,7 +35,7 @@ Impact 可以分析加载时间和其他属性对应用的各个部件的转换�
 ![浏览器转换屏幕截图](./media/app-insights-usage-impact/0004-browsers.png)
 
 > [!NOTE]
-> Application Insights 资源必须包含页面视图或自定义事件才能使用 Impact 工具。 [了解如何使用 Application Insights JavaScript SDK 将应用设置为自动收集页面访问次数](app-insights-javascript.md)。 另请注意，由于分析的是相关性，因此样本大小非常重要。
+> Application Insights 资源必须包含页面视图或自定义事件才能使用 Impact 工具。 [了解如何使用 Application Insights JavaScript SDK 将应用设置为自动收集页面访问次数](../azure-monitor/app/javascript.md)。 另请注意，由于分析的是相关性，因此样本大小非常重要。
 >
 >
 

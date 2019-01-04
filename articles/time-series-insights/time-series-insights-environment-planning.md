@@ -1,5 +1,5 @@
 ---
-title: Azure 时序见解计划 - 计划 Azure 时序见解环境的缩放 | Microsoft Docs
+title: 计划 Azure 时序见解环境的缩放 | Microsoft Docs
 description: 本文介绍了在计划 Azure 时序见解环境（包括存储容量、数据保留、入口容量、监视和业务灾难恢复 (BCDR)）时如何遵循最佳做法。
 services: time-series-insights
 ms.service: time-series-insights
@@ -12,12 +12,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 11/15/2017
 ms.custom: seodec18
-ms.openlocfilehash: 6541363eb2ac19cfa4359fe85bde5fa39157055e
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: ce31b22dcbf3fbe79192647e9a21983911e77a9c
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53273759"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53556027"
 ---
 # <a name="plan-your-azure-time-series-insights-environment"></a>计划 Azure 时序见解环境
 

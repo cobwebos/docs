@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 11/20/2018
 ms.author: mahender
 ms.custom: seodec18
-ms.openlocfilehash: 8add470048d3ead3f75ff85dd6f489d798af5e29
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: c47de9fbe1b9923ff8ce1c38a9a9695af4311858
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53253436"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53723138"
 ---
 # <a name="use-key-vault-references-for-app-service-and-azure-functions-preview"></a>使用应用服务和 Azure Functions 的 Key Vault 引用（预览版）
 
@@ -32,7 +32,7 @@ ms.locfileid: "53253436"
 
 1. 按照 [Key Vault 快速入门](../key-vault/quick-create-cli.md)中的说明创建一个密钥保管库。
 
-1. 为应用程序创建一个[系统分配托管标识](app-service-managed-service-identity.md)。
+1. 为应用程序创建一个[系统分配托管标识](overview-managed-identity.md)。
 
    > [!NOTE] 
    > Key Vault 引用目前仅支持系统分配托管标识。 不能使用用户分配标识。

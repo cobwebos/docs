@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/10/2018
 ms.author: hrasheed
-ms.openlocfilehash: 855ee1b7396be97c6529480b8fa8200bb8167ee6
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 653d3e357e3a02659a225b4e26c386ca54b6288f
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53433999"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53715420"
 ---
 # <a name="run-apache-pig-jobs-with-apache-hadoop-on-hdinsight-by-using-rest"></a>使用 REST 通过 HDInsight 上的 Apache Hadoop 运行 Apache Pig 作业
 
@@ -101,7 +101,7 @@ ms.locfileid: "53433999"
 
 当作业的状态更改为“成功”后，可检索作业结果。 随查询一起传递的 `statusdir` 参数包含输出文件的位置；在本例中，该位置为 `/example/pigcurl`。
 
-HDInsight 可以使用 Azure 存储或 Azure Data Lake Storage 作为默认数据存储。 有多种方法可访问数据，具体取决于使用哪种存储。 有关详细信息，请参阅[基于 Linux 的 HDInsight 信息](../hdinsight-hadoop-linux-information.md#hdfs-azure-storage-and-data-lake-store)文档的存储部分。
+HDInsight 可以使用 Azure 存储或 Azure Data Lake Storage 作为默认数据存储。 有多种方法可访问数据，具体取决于使用哪种存储。 有关详细信息，请参阅[基于 Linux 的 HDInsight 信息](../hdinsight-hadoop-linux-information.md#hdfs-azure-storage-and-data-lake-storage)文档的存储部分。
 
 ## <a id="summary"></a>摘要
 
