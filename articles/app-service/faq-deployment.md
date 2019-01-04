@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 11/01/2018
 ms.author: genli
 ms.custom: seodec18
-ms.openlocfilehash: 833b655246035fa3eb9a820316a95b73eed5b2bd
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 07d233ba50f4253b4ea3097748b9c58142e08a91
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53388185"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53549422"
 ---
 # <a name="deployment-faqs-for-web-apps-in-azure"></a>Azure 中的 Web 应用的部署常见问题解答
 
@@ -36,7 +36,7 @@ ms.locfileid: "53388185"
 *   使用 Visual Studio 进行部署。 如果具有 Visual Studio 解决方案，则右键单击 Web 应用程序项目，然后选择“发布”。
 *   使用 FTP 客户端进行部署。 在 Azure 门户中，下载要将代码部署到的 Web 应用的发布配置文件。 然后使用相同的发布配置文件 FTP 凭据将文件上传到 \site\wwwroot。
 
-有关详细信息，请参阅[将应用部署到应用服务](app-service-deploy-local-git.md)。
+有关详细信息，请参阅[将应用部署到应用服务](deploy-local-git.md)。
 
 ## <a name="i-see-an-error-message-when-i-try-to-deploy-from-visual-studio-how-do-i-resolve-this"></a>我在尝试从 Visual Studio 进行部署时看到错误消息。 如何解决此问题？
 
@@ -51,7 +51,7 @@ ms.locfileid: "53388185"
 
 ## <a name="what-are-the-different-types-of-deployment-credentials"></a>有哪些不同类型的部署凭据？
 
-应用服务支持两种类型的凭据，这些凭据适用于本地 GIT 部署和 FTP/S 部署。 有关如何配置部署凭据的详细信息，请参阅[为应用服务配置部署凭据](app-service-deployment-credentials.md)。
+应用服务支持两种类型的凭据，这些凭据适用于本地 GIT 部署和 FTP/S 部署。 有关如何配置部署凭据的详细信息，请参阅[为应用服务配置部署凭据](deploy-configure-credentials.md)。
 
 ## <a name="what-is-the-file-or-directory-structure-of-my-app-service-web-app"></a>应用服务 Web 应用的文件或目录结构是怎样的？
 
@@ -63,7 +63,7 @@ ms.locfileid: "53388185"
 
 ## <a name="how-do-i-set-up-continuous-deployment-for-my-app-service-web-app"></a>如何为应用服务 Web 应用程序设置持续部署？
 
-可以从多个资源（包括 Azure DevOps、OneDrive、GitHub、Bitbucket、Dropbox 和其他 Git 存储库）设置持续部署。 这些选项可在门户中使用。 [持续部署到应用服务](app-service-continuous-deployment.md)是很有帮助的教程，其中说明了如何设置持续部署。
+可以从多个资源（包括 Azure DevOps、OneDrive、GitHub、Bitbucket、Dropbox 和其他 Git 存储库）设置持续部署。 这些选项可在门户中使用。 [持续部署到应用服务](deploy-continuous-deployment.md)是很有帮助的教程，其中说明了如何设置持续部署。
 
 ## <a name="how-do-i-troubleshoot-issues-with-continuous-deployment-from-github-and-bitbucket"></a>如何对从 GitHub 和 Bitbucket 进行持续部署的问题进行故障排除？
 
@@ -100,4 +100,4 @@ Azure 快速入门旨在帮助使用部署堆栈和所选方法部署应用。 �
 
 ## <a name="how-do-i-use-ftp-or-ftps-to-deploy-my-app-to-app-service"></a>如何使用 FTP 或 FTPS 将应用部署到应用服务？
 
-有关使用 FTP 或 FTPS 将 Web 应用部署到应用服务的信息，请参阅[使用 FTP/S 将应用部署到应用服务](app-service-deploy-ftp.md)。
+有关使用 FTP 或 FTPS 将 Web 应用部署到应用服务的信息，请参阅[使用 FTP/S 将应用部署到应用服务](deploy-ftp.md)。

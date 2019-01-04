@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/31/2017
 ms.author: johnkem
 ms.component: alerts
-ms.openlocfilehash: 3fb68370f9b26aacc33d0e2e6090fe819010f468
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 0f72097ad9e8b8675d78654c07a62fb6baf90f4a
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53283213"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53582297"
 ---
 # <a name="webhooks-for-azure-activity-log-alerts"></a>Azure 活动日志警报的 Webhook
 作为操作组定义的一部分，可以配置 webhook 终结点以接收活动日志警报通知。 通过 webhook 可以将这些通知路由到其他系统，以便进行后续处理或自定义操作。 本文介绍针对 webhook 发出的 HTTP POST 的有效负载的大致形式。
@@ -161,9 +161,9 @@ Webhook 可以选择使用基于令牌的授权进行身份验证。 保存的 w
 }
 ```
 
-有关服务运行状况通知活动日志警报的特定架构详细信息，请参阅[服务运行状况通知](../../monitoring-and-diagnostics/monitoring-service-notifications.md)。 此外，请了解如何[使用现有的问题管理解决方案配置服务运行状况 Webhook 通知](../../service-health/service-health-alert-webhook-guide.md)。
+有关服务运行状况通知活动日志警报的特定架构详细信息，请参阅[服务运行状况通知](../../azure-monitor/platform/service-notifications.md)。 此外，请了解如何[使用现有的问题管理解决方案配置服务运行状况 Webhook 通知](../../service-health/service-health-alert-webhook-guide.md)。
 
-有关所有其他活动日志警报的特定架构的详细信息，请参阅 [Azure 活动日志概述](../../monitoring-and-diagnostics/monitoring-overview-activity-logs.md)。
+有关所有其他活动日志警报的特定架构的详细信息，请参阅 [Azure 活动日志概述](../../azure-monitor/platform/activity-logs-overview.md)。
 
 | 元素名称 | Description |
 | --- | --- |
@@ -193,10 +193,10 @@ Webhook 可以选择使用基于令牌的授权进行身份验证。 保存的 w
 | operationName |操作的名称。 |
 | 属性 |事件的属性。 |
 | status |字符串。 操作的状态。 常见值包括“Started”、“In Progress”、“Succeeded”、“Failed”、“Active”和“Resolved”。 |
-| subStatus |通常包含对应 REST 调用的 HTTP 状态代码。 它还可能包含描述子状态的其他字符串。 常见子状态值包括“正常(HTTP 状态代码: 200)”、“已创建(HTTP 状态代码: 201)”、“已接受(HTTP 状态代码: 202)”、“无内容(HTTP 状态代码: 204)”、“错误的请求(HTTP 状态代码: 400)”、“找不到(HTTP 状态代码: 404)”、“冲突(HTTP 状态代码: 409)”、“内部服务器错误(HTTP 状态代码: 500)”、“服务不可用(HTTP 状态代码: 503)”和“网关超时(HTTP 状态代码: 504)”。 |
+| subStatus |通常包含对应 REST 调用的 HTTP 状态代码。 它还可能包含描述子状态的其他字符串。 常见子状态值包括“正常(HTTP 状态代码: 200)”、“已创建(HTTP 状态代码: 201)、已接受(HTTP 状态代码:202)、没有任何内容(HTTP 状态代码:204)、错误的请求(HTTP 状态代码:400)、找不到(HTTP 状态代码:404)、冲突(HTTP 状态代码:409)、内部服务器错误(HTTP 状态代码:500)”、“服务不可用(HTTP 状态代码: 503)”和“网关超时(HTTP 状态代码: 504)”。 |
 
 ## <a name="next-steps"></a>后续步骤
-* [了解有关活动日志的更多信息](../../monitoring-and-diagnostics/monitoring-overview-activity-logs.md)。
+* [了解有关活动日志的更多信息](../../azure-monitor/platform/activity-logs-overview.md)。
 * [对 Azure 警报执行 Azure 自动化脚本 (Runbook)](https://go.microsoft.com/fwlink/?LinkId=627081)。
 * [使用逻辑应用通过 Twilio 从 Azure 警报发送短信](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-text-message-with-logic-app)。 本示例适用于度量值警报，但经过修改后可用于活动日志警报。
 * [使用逻辑应用从 Azure 警报发送 Slack 消息](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-slack-with-logic-app)。 本示例适用于度量值警报，但经过修改后可用于活动日志警报。

@@ -1,20 +1,18 @@
 ---
 title: Azure Database for MySQL 服务器 VNet 服务终结点概述 | Microsoft Docs
 description: 介绍了 VNet 服务终结点如何为 Azure Database for MySQL 服务器工作。
-services: mysql
 author: mbolz
 ms.author: mbolz
 manager: jhubbard
-editor: jasonwhowell
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 08/20/2018
-ms.openlocfilehash: 1c159e5c86f713f1f7dbce5cd96cd2ce5d3c22fb
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: af067cabf312ec3c2556b84dc4d739e41ec0aacc
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53437963"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53535265"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-database-for-mysql"></a>对 Azure Database for MySQL 使用虚拟网络服务终结点和规则
 

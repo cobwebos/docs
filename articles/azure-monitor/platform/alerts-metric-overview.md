@@ -7,12 +7,12 @@ ms.date: 9/18/2018
 ms.topic: conceptual
 ms.service: azure-monitor
 ms.component: alerts
-ms.openlocfilehash: cf315718377210e13a6634c0eaf8caab158bcc4d
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 24d0965fa2a88bc844a81c7430d46c071a9b874b
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53342215"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53580036"
 ---
 # <a name="understand-how-metric-alerts-work-in-azure-monitor"></a>了解指标警报在 Azure Monitor 中的工作原理
 
@@ -93,7 +93,7 @@ Azure Monitor 中的指标警报还支持使用一个规则来监视多个维度
 
 ## <a name="supported-resource-types-for-metric-alerts"></a>指标警报支持的资源类型
 
-可在[此文](../../monitoring-and-diagnostics/monitoring-near-real-time-metric-alerts.md#metrics-and-dimensions-supported)中找到受支持资源类型的完整列表。
+可在[此文](../../azure-monitor/platform/alerts-metric-near-real-time.md#metrics-and-dimensions-supported)中找到受支持资源类型的完整列表。
 
 如果你现在使用经典指标警报并且想要了解指标警报是否支持所使用的所有资源类型，则下表显示了经典指标警报支持的资源类型，以及这些资源类型现在是否受到指标警报支持。
 

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 04/20/2018
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: d99196e231d122fcb0e707d30aed4d3b3eb2b89d
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 539a7fc5b9d3038424059f1ee599c6966a968781
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53310345"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53629588"
 ---
 # <a name="filters-in-azure-search"></a>Azure 搜索中的筛选器 
 
@@ -96,7 +96,7 @@ POST https://[service name].search.windows.net/indexes/hotels/docs/search?api-ve
 
 ## <a name="filter-design-patterns"></a>筛选器设计模式
 
-以下示例演示了筛选器方案的多种设计模式。 有关更多思路，请参阅 [OData 表达式语法 > 示例](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search#bkmk_examples)。
+以下示例演示了筛选器方案的多种设计模式。 有关更多思路，请参阅 [OData 表达式语法 > 示例](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search#filter-examples)。
 
 + 单独使用 **$filter** 而不使用查询字符串：如果筛选表达式能够完全限定所需的文档，则此模式很有效。 不使用查询字符串也就不会执行词法或语言分析、评分和排名。 请注意，搜索字符串为空。
 
@@ -192,7 +192,7 @@ search=John Leclerc&$count=true&$select=source,city,postCode,baths,beds&$filter=
 search=John Leclerc&$count=true&$select=source,city,postCode,baths,beds&$filter=city gt 'Seattle'
 ```
 
-若要学习更多示例，请参阅 [OData 筛选表达式语法 > 示例](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search#bkmk_examples)。
+若要学习更多示例，请参阅 [OData 筛选表达式语法 > 示例](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search#filter-examples)。
 
 ## <a name="see-also"></a>另请参阅
 

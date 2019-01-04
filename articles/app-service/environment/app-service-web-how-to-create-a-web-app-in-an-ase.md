@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 84a8a0687a1da0eaf7842a9bf6115c1d0f5d3fd1
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 3e7db670a125f3c5f308107aabfbbab9301b7561
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53338135"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53718089"
 ---
 # <a name="create-a-web-app-in-an-app-service-environment-v1"></a>在应用服务环境 v1 中创建 Web 应用
 
@@ -51,7 +51,7 @@ ms.locfileid: "53338135"
     使用资源组能够以单位形式管理相关的 Azure 资源，并可在为应用创建基于角色的访问控制 (RBAC) 规则时发挥作用。 有关详细信息，请参阅 [Azure 资源管理器概述][ResourceGroups]。 
 4. 选择或创建应用服务计划。
    
-    应用服务计划是一组托管的 Web 应用。  选择定价时，支付的价格通常适用于应用服务计划而不是单个应用。 在 ASE 中，为分配给 ASE 的计算实例而不是向 ASP 列出的内容付费。  要增加 Web 应用的实例数，增加应用服务计划的实例数即可，此操作将影响该计划中的所有 Web 应用。  某些功能（如站点槽位或虚拟网络集成）在计划内也有数量限制。  有关详细信息，请参阅 [Azure 应用服务计划概述](../azure-web-sites-web-hosting-plans-in-depth-overview.md)
+    应用服务计划是一组托管的 Web 应用。  选择定价时，支付的价格通常适用于应用服务计划而不是单个应用。 在 ASE 中，为分配给 ASE 的计算实例而不是向 ASP 列出的内容付费。  要增加 Web 应用的实例数，增加应用服务计划的实例数即可，此操作将影响该计划中的所有 Web 应用。  某些功能（如站点槽位或虚拟网络集成）在计划内也有数量限制。  有关详细信息，请参阅 [Azure 应用服务计划概述](../overview-hosting-plans.md)
    
     可以通过查看计划名称下注释的位置，来识别 ASE 中的应用服务计划。  
    
@@ -108,7 +108,7 @@ ms.locfileid: "53338135"
 
 <!--Links-->
 [WhatisASE]: app-service-app-service-environment-intro.md
-[Appserviceplans]: ../azure-web-sites-web-hosting-plans-in-depth-overview.md
+[Appserviceplans]: ../overview-hosting-plans.md
 [HowtoCreateASE]: app-service-web-how-to-create-an-app-service-environment.md
 [HowtoScale]: app-service-web-scale-a-web-app-in-an-app-service-environment.md
 [HowtoConfigureASE]: app-service-web-configure-an-app-service-environment.md

@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 11/01/2018
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: b22f79195a7246c87a8d5d5b4b5e012cc30a62dd
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: c951d4f646fdaec9731ec4b6320e5f625ad91a42
+ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53274558"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53993275"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>如何规划混合 Azure Active Directory 加入实现
 
@@ -146,15 +146,15 @@ Windows 下层设备的混合 Azure AD 加入：
 
 ## <a name="alternate-login-id-support-in-hybrid-azure-ad-join"></a>混合 Azure AD 加入中的备用登录 ID 支持
 
-Windows 10 混合 Azure AD 加入根据备用登录 ID 的类型、[身份验证方法](https://docs.microsoft.com/en-us/azure/security/azure-ad-choose-authn)、域类型和 Windows 10 版本对[备用登录 ID](https://docs.microsoft.com/en-us/windows-server/identity/ad-fs/operations/configuring-alternate-login-id) 提供有限支持。 你的环境中可以存在两种类型的备用登录 ID。
+Windows 10 混合 Azure AD 加入根据备用登录 ID 的类型、[身份验证方法](https://docs.microsoft.com/azure/security/azure-ad-choose-authn)、域类型和 Windows 10 版本对[备用登录 ID](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configuring-alternate-login-id) 提供有限支持。 你的环境中可以存在两种类型的备用登录 ID。
 
- - 可路由的备用登录 ID：可路由的备用登录 ID 具有向域注册机构注册的有效已验证域。 例如，如果 contoso.com 是主域，则 contoso.org 和 contoso.co.uk 是 Contoso拥有的且[已在 Azure AD 中验证的](https://docs.microsoft.com/en-us/azure/active-directory/fundamentals/add-custom-domain)有效域。
+ - 可路由的备用登录 ID：可路由的备用登录 ID 具有向域注册机构注册的有效已验证域。 例如，如果 contoso.com 是主域，则 contoso.org 和 contoso.co.uk 是 Contoso拥有的且[已在 Azure AD 中验证的](https://docs.microsoft.com/azure/active-directory/fundamentals/add-custom-domain)有效域。
  
  - 非可路由的备用登录 ID：非可路由的备用登录 ID 没有已验证域。 它仅在组织的专用网络内适用。 例如，如果 contoso.com 是主域，则 contoso.local 在 Internet 中不是可验证的域，但可在 Contoso 的网络内使用。
  
 下表提供了 Windows 10 混合 Azure AD 加入中对这两种备用登录 ID 的支持的详细信息
 
-|备用登录 ID 的类型|域类型|Windows 10 版本|说明|
+|备用登录 ID 的类型|域类型|Windows 10 版本|Description|
 |-----|-----|-----|-----|
 |可路由的|联合 |从 1703 版本开始|正式发布|
 |可路由的|托管|从 1709 版本开始|当前为个人预览版。 不支持 Azure AD SSPR |

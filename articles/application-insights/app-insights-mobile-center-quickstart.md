@@ -11,12 +11,12 @@ ms.reviewer: daviste
 ms.custom: mvc
 ms.topic: quickstart
 manager: carmonm
-ms.openlocfilehash: 040e54b02161386dcc16b943956f39b86b264303
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 77fafb3f3a4c834c5a7f185d129a1c651db58089
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46950516"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53719840"
 ---
 # <a name="start-analyzing-your-mobile-app-with-app-center-and-application-insights"></a>开始使用 App Center 和 Application Insights 分析移动应用
 
@@ -76,7 +76,7 @@ Analytics.trackEvent("Video clicked")
 
     | 设置        |  值           | 说明  |
    | ------------- |:-------------|:-----|
-   | **Name**      | 某些全局唯一值，如“myApp-iOS” | 标识所监视的应用的名称 |
+   | **名称**      | 某些全局唯一值，如“myApp-iOS” | 标识所监视的应用的名称 |
    | **应用程序类型** | App Center 应用程序 | 所监视的应用的类型 |
    | **资源组**     | 一个新资源组或菜单中的一个现有资源组 | 在其中创建新 Application Insights 资源的资源组 |
    | **位置** | 菜单中的某个位置 | 选择离你近的位置或离托管应用的位置近的位置 |
@@ -126,7 +126,7 @@ Application Insights 可以查询、分段、筛选和分析来自应用的自�
    1. 通过单击文本编辑器中查询的任意位置，选择此查询。
    2. 然后，单击“运行”运行查询。 
 
-   详细了解有关 [Application Insights 分析](app-insights-analytics.md)和 [Log Analytics 查询语言](https://aka.ms/LogAnalyticsLanguageReference)的信息。
+   详细了解有关 [Application Insights 分析](../azure-monitor/app/analytics.md)和 [Log Analytics 查询语言](https://aka.ms/LogAnalyticsLanguageReference)的信息。
 
 
 2. **分段和筛选自定义事件遥测。** 从 Application Insights“概述”页面上，选择目录中的“用户”。

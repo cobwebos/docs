@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/03/2017
 ms.author: genli
-ms.openlocfilehash: 8690ffdca606bf45f306f9273441aaac52b385c8
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 8b46839d26130f37f4f4ba5559f5699498b0e60f
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51241355"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53599393"
 ---
 # <a name="troubleshooting-degraded-state-on-azure-traffic-manager"></a>Azure 流量管理器上的降级状态故障排除
 
@@ -86,7 +86,7 @@ public class TrustAllCertsPolicy : ICertificatePolicy {
 
 [云服务](https://go.microsoft.com/fwlink/?LinkId=314074)
 
-[Azure Web 应用](https://azure.microsoft.com/documentation/services/app-service/web/)
+[Azure 应用服务](https://azure.microsoft.com/documentation/services/app-service/web/)
 
 [流量管理器上的操作（REST API 参考）](https://go.microsoft.com/fwlink/?LinkId=313584)
 

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 02/05/2016
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: 3f382aab5a00030b922fb890e82110454e7f3839
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: c0f4af863162d004b6a557f8c7a04e31ee66d9b7
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53384490"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53713550"
 ---
 # <a name="install-and-use-apache-solr-on-windows-based-hdinsight-clusters"></a>在基于 Windows 的 HDInsight 群集上安装并使用 Apache Solr
 
@@ -38,7 +38,7 @@ ms.locfileid: "53384490"
 * [为 HDInsight 开发脚本操作脚本](hdinsight-hadoop-script-actions.md)。
 
 ## <a name="what-is-solr"></a>什么是 Solr？
-<a href="http://lucene.apache.org/solr/features.html" target="_blank">Apache Solr</a> 是一种企业搜索平台，用于对数据实现功能强大的全文搜索。 虽然 Hadoop 可用于存储和管理大量数据，但是，Apache Solr 提供了快速检索数据的搜索功能。
+<a href="https://lucene.apache.org/solr/features.html" target="_blank">Apache Solr</a> 是一种企业搜索平台，用于对数据实现功能强大的全文搜索。 虽然 Hadoop 可用于存储和管理大量数据，但是，Apache Solr 提供了快速检索数据的搜索功能。
 
 ## <a name="install-solr-using-portal"></a>使用门户安装 Solr
 1. 按照[在 HDInsight 中创建 Apache Hadoop 群集](hdinsight-provision-clusters.md)中的说明，使用“自定义创建”选项开始创建群集。

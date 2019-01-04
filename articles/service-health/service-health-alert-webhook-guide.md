@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 3/27/2018
 ms.author: shtabriz
-ms.openlocfilehash: 5d32c3539446482f2dcdaeb954bb704dc9b78c58
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 740adefbb8bfa53e96b5ed0e1c7181abf22f1490
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53274915"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53580259"
 ---
 # <a name="configure-health-notifications-for-existing-problem-management-systems-using-a-webhook"></a>使用 Webhook 为现有的问题管理系统配置运行状况通知
 
@@ -119,5 +119,5 @@ https://app.azure.com/h/0DET-URB/bbadb3
 
 ## <a name="next-steps"></a>后续步骤
 - 查看[活动日志警报 webhook 架构](../azure-monitor/platform/activity-log-alerts-webhook.md)。 
-- 了解[服务运行状况通知](../monitoring-and-diagnostics/monitoring-service-notifications.md)。
+- 了解[服务运行状况通知](../azure-monitor/platform/service-notifications.md)。
 - 详细了解[操作组](../azure-monitor/platform/action-groups.md)。

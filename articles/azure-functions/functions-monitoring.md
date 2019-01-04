@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 11/15/2018
 ms.author: glenga
-ms.openlocfilehash: aba3d9f33d179c09708464975fa2a929a8bb68d0
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: da676b5d1cb3c25adc72d04882915ee0440c2d98
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52876513"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "54002325"
 ---
 # <a name="monitor-azure-functions"></a>监视 Azure Functions
 
@@ -28,7 +28,7 @@ Functions 还具有[不使用 Application Insights 的内置监视](#monitoring-
 
 ## <a name="application-insights-pricing-and-limits"></a>Application Insights 定价和限制
 
-可以免费试用 Application Insights 与函数应用的集成。 但是，每日可以免费处理的数据量有限制，在测试期间可能会达到该限制。 当你达到每日限制时，Azure 会提供门户和电子邮件通知。  但是，如果未收到这些警报并达到限制，则新日志不会显示在 Application Insights 查询中。 因此请注意限制，以免在故障排除上花费不必要的时间。 有关详细信息，请参阅[在 Application Insights 中管理定价和数据量](../application-insights/app-insights-pricing.md)。
+可以免费试用 Application Insights 与函数应用的集成。 但是，每日可以免费处理的数据量有限制，在测试期间可能会达到该限制。 当你达到每日限制时，Azure 会提供门户和电子邮件通知。  但是，如果未收到这些警报并达到限制，则新日志不会显示在 Application Insights 查询中。 因此请注意限制，以免在故障排除上花费不必要的时间。 有关详细信息，请参阅[在 Application Insights 中管理定价和数据量](../azure-monitor/app/pricing.md)。
 
 ## <a name="enable-app-insights-integration"></a>启用 App Insights 集成
 
@@ -85,7 +85,7 @@ Functions 还具有[不使用 Application Insights 的内置监视](#monitoring-
 
 1. 定期选择“刷新”，直到显示函数调用列表。
 
-   该列表最长可能需要在 5 分钟之后才显示，因为遥测客户端会通过某种方式批处理数据，以传输到服务器。 （这种延迟不适用于[实时指标流](../application-insights/app-insights-live-stream.md)。 加载页面时，该服务会连接到 Functions 主机，因此，日志会直接流向页面。）
+   该列表最长可能需要在 5 分钟之后才显示，因为遥测客户端会通过某种方式批处理数据，以传输到服务器。 （这种延迟不适用于[实时指标流](../azure-monitor/app/live-stream.md)。 加载页面时，该服务会连接到 Functions 主机，因此，日志会直接流向页面。）
 
    ![调用列表](media/functions-monitoring/monitor-tab-ai-invocations.png)
 
@@ -115,15 +115,15 @@ Functions 还具有[不使用 Application Insights 的内置监视](#monitoring-
 
 有关如何使用 Application Insights 的信息，请参阅 [Application Insights 文档](https://docs.microsoft.com/azure/application-insights/)。 本部分介绍如何在 Application Insights 中查看数据的一些示例。 如果已经熟悉 Application Insights，则可以直接转到[有关配置和自定义遥测数据的部分](#configure-categories-and-log-levels)。
 
-在[指标资源管理器](../application-insights/app-insights-metrics-explorer.md)中，可以基于指标（如函数调用次数、执行时间和成功率）来创建图表和警报。
+在[指标资源管理器](../azure-monitor/app/metrics-explorer.md)中，可以基于指标（如函数调用次数、执行时间和成功率）来创建图表和警报。
 
 ![指标资源管理器](media/functions-monitoring/metrics-explorer.png)
 
-在[失败](../application-insights/app-insights-asp-net-exceptions.md)选项卡上，可以基于函数失败和服务器异常来创建图表和警报。 操作名称是函数名称。 不显示依赖项中的失败，除非为依赖项实现了[自定义遥测](#custom-telemetry-in-c-functions)。
+在[失败](../azure-monitor/app/asp-net-exceptions.md)选项卡上，可以基于函数失败和服务器异常来创建图表和警报。 操作名称是函数名称。 不显示依赖项中的失败，除非为依赖项实现了[自定义遥测](#custom-telemetry-in-c-functions)。
 
 ![失败数](media/functions-monitoring/failures.png)
 
-在[性能](../application-insights/app-insights-performance-counters.md)选项卡上，可以分析性能问题。
+在[性能](../azure-monitor/app/performance-counters.md)选项卡上，可以分析性能问题。
 
 ![性能](media/functions-monitoring/performance.png)
 
@@ -131,13 +131,13 @@ Functions 还具有[不使用 Application Insights 的内置监视](#monitoring-
 
 ![服务器](media/functions-monitoring/servers.png)
 
-[实时指标流](../application-insights/app-insights-live-stream.md)选项卡显示指标数据，因为该数据是实时创建的。
+[实时指标流](../azure-monitor/app/live-stream.md)选项卡显示指标数据，因为该数据是实时创建的。
 
 ![实时流](media/functions-monitoring/live-stream.png)
 
 ## <a name="query-telemetry-data"></a>查询遥测数据
 
-借助 [Application Insights Analytics](../application-insights/app-insights-analytics.md) 可以访问数据库中以表形式存储的所有遥测数据。 Analytics 提供了一种用于提取、处理和可视化数据的查询语言。
+借助 [Application Insights Analytics](../azure-monitor/app/analytics.md) 可以访问数据库中以表形式存储的所有遥测数据。 Analytics 提供了一种用于提取、处理和可视化数据的查询语言。
 
 ![选择 Analytics](media/functions-monitoring/select-analytics.png)
 
@@ -439,7 +439,7 @@ context.log.metric("TestMetric", 1234);
 
 ## <a name="custom-telemetry-in-c-functions"></a>C# 函数中的自定义遥测
 
-可以使用 [Microsoft.ApplicationInsights](https://www.nuget.org/packages/Microsoft.ApplicationInsights/) NuGet 程序包将自定义遥测数据发送到 Application Insights。 以下 C# 示例使用[自定义遥测 API](../application-insights/app-insights-api-custom-events-metrics.md)。 示例针对的是 .NET 类库，但对于 C# 脚本，Application Insights 代码是相同的。
+可以使用 [Microsoft.ApplicationInsights](https://www.nuget.org/packages/Microsoft.ApplicationInsights/) NuGet 程序包将自定义遥测数据发送到 Application Insights。 以下 C# 示例使用[自定义遥测 API](../azure-monitor/app/api-custom-events-metrics.md)。 示例针对的是 .NET 类库，但对于 C# 脚本，Application Insights 代码是相同的。
 
 ### <a name="version-2x"></a>版本 2.x
 
@@ -671,7 +671,7 @@ PS C:\> Get-AzureSubscription -SubscriptionName "<subscription name>" | Select-A
 PS C:\> Get-AzureWebSiteLog -Name <function app name> -Tail
 ```
 
-有关详细信息，请参阅[如何流式传输日志](../app-service/web-sites-enable-diagnostic-log.md#streamlogs)。
+有关详细信息，请参阅[如何流式传输日志](../app-service/troubleshoot-diagnostic-logs.md#streamlogs)。
 
 ### <a name="viewing-log-files-locally"></a>在本地查看日志文件
 

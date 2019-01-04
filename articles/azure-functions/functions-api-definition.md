@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 03/23/2017
 ms.author: alkarche
-ms.openlocfilehash: 763e1d20f707a1db1f559661089b55093f93a632
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: bb1616c7cbf5c9c4620aed3e31896e32fe0163f9
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52999929"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53606208"
 ---
 # <a name="openapi-20-metadata-support-in-azure-functions-preview"></a>Azure Functions 中的 OpenAPI 2.0 元数据支持（预览版）
 Azure Functions 中的 OpenAPI 2.0（以前称为 Swagger）元数据支持一项预览版功能，可用于在 Function App 中编写 OpenAPI 2.0 定义。 随后可使用 Function App 托管该文件。
@@ -23,7 +23,7 @@ Azure Functions 中的 OpenAPI 2.0（以前称为 Swagger）元数据支持一�
 > [!IMPORTANT]
 > OpenAPI 预览功能目前仅在 1.x 运行时可用。 若要了解如何创建 1.x 函数应用，[可参阅此处](./functions-versions.md#creating-1x-apps)。
 
-通过 [OpenAPI 元数据](https://swagger.io/)，大量其他软件可使用托管 REST API 的函数。 此软件包括 Microsoft 产品/服务（如 PowerApps 和 [Azure 应用服务的 API 应用功能](../app-service/app-service-web-overview.md)）、第三方开发人员工具（如 [Postman](https://www.getpostman.com/docs/importing_swagger)，以及[更多大量的程序包](https://swagger.io/tools/)。
+通过 [OpenAPI 元数据](https://swagger.io/)，大量其他软件可使用托管 REST API 的函数。 此软件包括 Microsoft 产品/服务（如 PowerApps 和 [Azure 应用服务的 API 应用功能](../app-service/overview.md)）、第三方开发人员工具（如 [Postman](https://www.getpostman.com/docs/importing_swagger)，以及[更多大量的程序包](https://swagger.io/tools/)。
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 

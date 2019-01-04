@@ -14,12 +14,12 @@ ms.devlang: node
 ms.topic: article
 ms.date: 10/01/2016
 ms.author: crdun
-ms.openlocfilehash: e435baf4a5e3382e3e77195e5315299e3963ff5c
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: 4e478c2559ac534f595393fdc36b95ad8e9c989a
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53409252"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53725025"
 ---
 # <a name="how-to-use-the-mobile-apps-nodejs-sdk"></a>如何使用移动应用 Node.js SDK
 
@@ -153,14 +153,14 @@ Visual Studio 2015 需要使用一个扩展在 IDE 中开发 Node.js 应用程�
 以下过程使用 Git 存储库下载快速入门项目代码：
 
 1. 安装 Git（如果尚未安装）。 安装 Git 所需的步骤因操作系统的不同而异。 有关操作系统特定的分发和安装指南，请参阅[安装 Git](https://git-scm.com/book/en/Getting-Started-Installing-Git)。
-1. 若要启用后端站点的 GIT 存储库，请参阅[准备存储库](../app-service/app-service-deploy-local-git.md#prepare-your-repository)。 记下部署用户名和密码。
-1. 在移动应用后端的窗格中，记下“Git 克隆 URL”设置。
-1. 使用 Git 克隆 URL 执行 `git clone` 命令。 根据需要输入密码，如以下示例所示：
+2. 若要启用后端站点的 GIT 存储库，请参阅[准备存储库](../app-service/deploy-local-git.md#prepare-your-repository)。 记下部署用户名和密码。
+3. 在移动应用后端的窗格中，记下“Git 克隆 URL”设置。
+4. 使用 Git 克隆 URL 执行 `git clone` 命令。 根据需要输入密码，如以下示例所示：
 
         $ git clone https://username@todolist.scm.azurewebsites.net:443/todolist.git
 
-1. 浏览到本地目录（在上述示例中为 `/todolist`），可以看到项目文件已下载。 在 `/tables` 目录中找到 todoitem.json 文件。 此文件定义表上的权限。 另外，在同一目录中找到 todoitem.js 文件。 该文件定义表的 CRUD 操作脚本。
-1. 更改项目文件之后，请运行以下命令添加、提交更改，然后将更改上传到站点：
+5. 浏览到本地目录（在上述示例中为 `/todolist`），可以看到项目文件已下载。 在 `/tables` 目录中找到 todoitem.json 文件。 此文件定义表上的权限。 另外，在同一目录中找到 todoitem.js 文件。 该文件定义表的 CRUD 操作脚本。
+6. 更改项目文件之后，请运行以下命令添加、提交更改，然后将更改上传到站点：
 
         $ git commit -m "updated the table script"
         $ git push origin master
@@ -968,10 +968,10 @@ Node.js 应用程序可访问各种诊断日志工具。 在内部，移动应�
 [配置 Google 身份验证]: ../app-service/configure-authentication-provider-google.md
 [配置 Microsoft 身份验证]: ../app-service/configure-authentication-provider-microsoft.md
 [配置 Twitter 身份验证]: ../app-service/configure-authentication-provider-twitter.md
-[Azure 应用服务部署指南]: ../app-service/app-service-deploy-local-git.md
+[Azure 应用服务部署指南]: ../app-service/deploy-local-git.md
 [监视 Azure 应用服务]: ../app-service/web-sites-monitor.md
-[在 Azure 应用服务中启用诊断日志记录]: ../app-service/web-sites-enable-diagnostic-log.md
-[在 Visual Studio 中对 Azure 应用服务进行故障排除]: ../app-service/web-sites-dotnet-troubleshoot-visual-studio.md
+[在 Azure 应用服务中启用诊断日志记录]: ../app-service/troubleshoot-diagnostic-logs.md
+[在 Visual Studio 中对 Azure 应用服务进行故障排除]: ../app-service/troubleshoot-dotnet-visual-studio.md
 [指定 Node 版本]: ../nodejs-specify-node-version-azure-apps.md
 [使用 Node 模块]: ../nodejs-use-node-modules-azure-apps.md
 [Create a new Azure App Service]: ../app-service/

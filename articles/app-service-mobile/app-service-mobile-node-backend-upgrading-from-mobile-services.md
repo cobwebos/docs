@@ -14,12 +14,12 @@ ms.devlang: node
 ms.topic: article
 ms.date: 10/01/2016
 ms.author: crdun
-ms.openlocfilehash: 71be338aeb6d0234d22d412d6838e36a26797b20
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 5a74097521cc7dceea2c47f78c1dbb2f17e292aa
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53002114"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53726674"
 ---
 # <a name="upgrade-your-existing-nodejs-azure-mobile-service-to-app-service"></a>将现有 Node.js Azure 移动服务升级到应用服务
 应用服务移动应用是使用 Microsoft Azure 生成移动应用程序的新方式。 有关详细信息，请参阅[什么是移动应用？]。
@@ -98,7 +98,7 @@ ms.locfileid: "53002114"
 2. 单击“+新建” > “Web + 移动” > “移动应用”，并提供移动应用后端名称。
 3. 对于“资源组”，请选择现有资源组，或创建新组（使用与应用相同的名称。）
 
-    可以选择其他应用服务计划或创建新的计划。 有关应用服务计划以及如何在不同定价层和所需位置中创建新计划的详细信息，请参阅 [Azure 应用服务计划深入概述](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md)。
+    可以选择其他应用服务计划或创建新的计划。 有关应用服务计划以及如何在不同定价层和所需位置中创建新计划的详细信息，请参阅 [Azure 应用服务计划深入概述](../app-service/overview-hosting-plans.md)。
 4. 对于“应用服务计划”，请选择默认计划（位于 [标准层](https://azure.microsoft.com/pricing/details/app-service/)）。 还可以选择不同的计划，或[创建一个新计划](../app-service/app-service-plan-manage.md#create-an-app-service-plan)。 应用服务计划的设置将确定与应用关联的[位置、功能、成本和计算资源](https://azure.microsoft.com/pricing/details/app-service/)。
 
     做出有关计划的决定后，单击“创建”。 随后将创建移动应用后端。
@@ -162,7 +162,7 @@ Azure 移动应用允许在服务中配置 Azure Active Directory、Facebook、G
 [Migrate your existing Mobile Service to App Service]: app-service-mobile-migrating-from-mobile-services.md
 [应用服务定价]: https://azure.microsoft.com/pricing/details/app-service/
 [.NET server SDK overview]: app-service-mobile-dotnet-backend-how-to-use-server-sdk.md
-[身份验证概念]: ../app-service/app-service-authentication-overview.md
+[身份验证概念]: ../app-service/overview-authentication-authorization.md
 [身份验证快速入门]: app-service-mobile-auth.md
 
 [Azure 门户]: https://portal.azure.com/
