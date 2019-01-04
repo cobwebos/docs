@@ -1,5 +1,5 @@
 ---
-title: Azure 时序见解的性能和限制 - 如何在 Azure 时序见解中监视和降低限制 | Microsoft Docs
+title: 如何在 Azure 时序见解中监视和降低限制 | Microsoft Docs
 description: 本文介绍如何监视、诊断并减少导致 Azure 时序见解延迟和限制的性能问题。
 ms.service: time-series-insights
 services: time-series-insights
@@ -12,12 +12,12 @@ ms.workload: big-data
 ms.topic: troubleshooting
 ms.date: 11/27/2017
 ms.custom: seodec18
-ms.openlocfilehash: 34f7128a6ab86a23d911f9bc92908102df4dee92
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 3a42570b51811cfbdd4329f196b98d75c8cd53f7
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53278417"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53556741"
 ---
 # <a name="monitor-and-mitigate-throttling-to-reduce-latency-in-azure-time-series-insights"></a>监视并缩减限制，以减少 Azure 时序见解中的延迟
 传入数据量超过环境配置时，Azure 时序见解中可能会出现延迟或限制。

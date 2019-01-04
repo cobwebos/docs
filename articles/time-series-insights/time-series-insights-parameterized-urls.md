@@ -1,5 +1,5 @@
 ---
-title: Azure 时序见解 URL - 通过参数化 URL 共享 Azure 时序见解自定义视图 | Microsoft Docs
+title: 通过参数化 URL 共享 Azure 时序见解自定义视图 | Microsoft Docs
 description: 本文介绍如何在 Azure 时序见解中生成参数化 URL，以便轻松共享自定义视图。
 ms.service: time-series-insights
 services: time-series-insights
@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.workload: big-data
 ms.date: 11/21/2017
 ms.custom: seodec18
-ms.openlocfilehash: 5b43ba4c3f88c678b160e8aec442fa92b4822a3d
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 305d81d6614d1f0654e0d96b10f1759498683003
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53274354"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53558458"
 ---
 # <a name="share-a-custom-view-using-a-parameterized-url"></a>通过参数化 URL 共享自定义视图
 
