@@ -13,12 +13,12 @@ ms.topic: quickstart
 ms.date: 10/01/2018
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: bad732132a92c82787309e43b8e56c4a2d2c41e8
-ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
+ms.openlocfilehash: 172ac44855274682953f0fcd59a685eb5a994ba4
+ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52282832"
+ms.lasthandoff: 12/22/2018
+ms.locfileid: "53752582"
 ---
 # <a name="store-unstructured-data-using-azure-functions-and-azure-cosmos-db"></a>使用 Azure Functions 和 Azure Cosmos DB 存储非结构化数据
 
@@ -74,7 +74,7 @@ ms.locfileid: "52282832"
 
 根据你选择的语言将现有函数代码替换为以下代码：
 
-# <a name="ctabcsharp"></a>[C\#](#tab/csharp)
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 将现有 C# 函数替换为以下代码：
 
@@ -111,7 +111,7 @@ public static IActionResult Run(HttpRequest req, out object taskDocument, ILogge
 }
 ```
 
-# <a name="javascripttabnodejs"></a>[JavaScript](#tab/nodejs)
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 将现有 JavaScript 函数替换为以下代码：
 

@@ -9,18 +9,18 @@ ms.topic: tutorial
 ms.date: 05/07/2018
 ms.author: hrasheed
 ms.custom: H1Hack27Feb2017,hdinsightactive,mvc
-ms.openlocfilehash: c0123008e5b15d6d3edce27245a7ed1fa6c431e7
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: e5ee2f40526837fbe0251e1fdda6847db1c51288
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53015035"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53634348"
 ---
 # <a name="tutorial-extract-transform-and-load-data-using-apache-hive-on-azure-hdinsight"></a>教程：使用 Apache Hive on Azure HDInsight 提取、转换和加载数据
 
-在此教程中，需将原始 CSV 数据文件导入 HDInsight 群集存储，然后在 Azure HDInsight 上使用 [Apache Hive](https://hive.apache.org/) 转换数据。 数据转换完毕后，使用 [Apache Sqoop](http://sqoop.apache.org/) 将数据加载到 Azure SQL 数据库。 本文使用公开提供的航班数据。
+在此教程中，需将原始 CSV 数据文件导入 HDInsight 群集存储，然后在 Azure HDInsight 上使用 [Apache Hive](https://hive.apache.org/) 转换数据。 数据转换完毕后，使用 [Apache Sqoop](https://sqoop.apache.org/) 将数据加载到 Azure SQL 数据库。 本文使用公开提供的航班数据。
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > 本文档中的步骤需要使用 Linux 的 HDInsight 群集。 Linux 是 Azure HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight 在 Windows 上停用](hdinsight-component-versioning.md#hdinsight-windows-retirement)。
 
 本教程涵盖以下任务： 
@@ -76,7 +76,7 @@ ms.locfileid: "53015035"
 
     将“FILENAME”替换为 zip 文件的名称。 将 *USERNAME* 替换为 HDInsight 群集的 SSH 登录名。 将 *CLUSTERNAME* 替换为 HDInsight 群集的名称。
 
-   > [!NOTE]
+   > [!NOTE]  
    > 如果使用密码对 SSH 登录名进行身份验证，系统会提示输入密码。 如果使用公钥，可能需要使用 `-i` 参数并指定匹配私钥的路径。 例如，`scp -i ~/.ssh/id_rsa FILENAME.zip USERNAME@CLUSTERNAME-ssh.azurehdinsight.net:`。
 
 2. 上传完成后，使用 SSH 连接到群集。 在命令提示符中输入以下命令：
@@ -212,7 +212,7 @@ ms.locfileid: "53015035"
 
 ![获取 Azure SQL 服务器的详细信息](./media/hdinsight-analyze-flight-delay-data-linux/get-azure-sql-server-details.png "获取 Azure SQL 服务器的详细信息")
 
-> [!NOTE]
+> [!NOTE]  
 > 有多种方法可连接到 SQL 数据库并创建表。 以下步骤从 HDInsight 群集中使用 [FreeTDS](http://www.freetds.org/)。
 
 
@@ -330,7 +330,7 @@ ms.locfileid: "53015035"
 [azure-free-trial]: https://azure.microsoft.com/pricing/free-trial/
 
 
-[rita-website]: http://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236&DB_Short_Name=On-Time
+[rita-website]: https://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236&DB_Short_Name=On-Time
 [cindygross-hive-tables]: https://blogs.msdn.com/b/cindygross/archive/2013/02/06/hdinsight-hive-internal-and-external-tables-intro.aspx
 
 [hdinsight-use-oozie]: hdinsight-use-oozie-linux-mac.md
@@ -346,4 +346,4 @@ ms.locfileid: "53015035"
 
 [hadoop-hiveql]: https://cwiki.apache.org/confluence/display/Hive/LanguageManual+DDL
 
-[technetwiki-hive-error]: http://social.technet.microsoft.com/wiki/contents/articles/23047.hdinsight-hive-error-unable-to-rename.aspx
+[technetwiki-hive-error]: https://social.technet.microsoft.com/wiki/contents/articles/23047.hdinsight-hive-error-unable-to-rename.aspx

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/24/2018
 ms.author: bwren
-ms.openlocfilehash: 76e3a219d440bab4c6e277887aabb1e01f5e1d9c
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 862380a35dcc4d50dce8d709bd1dbea1aa38e37a
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53435440"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53728340"
 ---
 # <a name="visualizing-data-from-azure-monitor"></a>可视化 Azure Monitor 中的数据
 本文概述了将 Azure Monitor 中存储的日志和指标数据可视化时可使用的方法。
@@ -32,7 +32,7 @@ ms.locfileid: "53435440"
 ### <a name="advantages"></a>优点
 - 深度集成到 Azure 中。 可视化效果可以固定到多个 Azure 页面的仪表板，包括指标分析、Log Analytics 和 Application Insights。
 - 支持指标和日志。
-- 合并来自多个源的数据，包括来自[指标资源管理器](../azure-monitor/platform/metrics-charts.md)、[Log Analytics 查询](../azure-monitor/log-query/log-query-overview.md)及 Application Insights 中[映射](../application-insights/app-insights-app-map.md)和[可用性]()的输出。
+- 合并来自多个源的数据，包括来自[指标资源管理器](../azure-monitor/platform/metrics-charts.md)、[Log Analytics 查询](../azure-monitor/log-query/log-query-overview.md)及 Application Insights 中[映射](../azure-monitor/app/app-map.md)和[可用性]()的输出。
 - 包含个人或共享仪表板的选项。 与 Azure [基于角色的身份验证 (RBAC)](../role-based-access-control/overview.md) 集成。
 - 自动刷新。 指标刷新的时间范围至少为 5 分钟。 以 1 分钟为间隔刷新日志。
 - 带有时间戳和自定义参数的参数化指标仪表板。

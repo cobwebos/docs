@@ -10,12 +10,12 @@ ms.service: application-insights
 ms.custom: mvc
 ms.topic: tutorial
 manager: carmonm
-ms.openlocfilehash: d5e97d82a011bc4aba29aa597a7fc6473d17a3b2
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 5a991bf5da6d17aad6b1456e82f6c7795ab67356
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52970784"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53745017"
 ---
 # <a name="use-azure-application-insights-to-understand-how-customers-are-using-your-application"></a>使用 Azure Application Insights 了解客户对应用程序的使用情况
 
@@ -39,7 +39,7 @@ Azure Application Insights 收集使用情况信息，帮助了解用户与应�
     - ASP.NET 和 Web 开发
     - Azure 开发
 - 下载并安装 [Visual Studio Snapshot Debugger](https://aka.ms/snapshotdebugger)。
-- 将 .NET 应用程序部署到 Azure 并[启用 Application Insights SDK](app-insights-asp-net.md)。 
+- 将 .NET 应用程序部署到 Azure 并[启用 Application Insights SDK](../azure-monitor/app/asp-net.md)。 
 - [从应用程序发送遥测数据](app-insights-usage-overview.md#send-telemetry-from-your-app)，添加自定义事件/页面视图
 - 发送[用户上下文](https://docs.microsoft.com/azure/application-insights/app-insights-usage-send-user-context)，跟踪用户在一段时间内执行的操作及充分利用使用情况功能。
 

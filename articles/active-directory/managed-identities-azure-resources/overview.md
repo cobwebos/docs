@@ -14,12 +14,12 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 10/23/2018
 ms.author: daveba
-ms.openlocfilehash: 6b1eb36ae661d758f78f98de37f33c4b56741f89
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: 3b9c8ea3dba5fdbd3e25293873ab1ae6854b3b83
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53320772"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53728102"
 ---
 # <a name="what-is-managed-identities-for-azure-resources"></a>什么是 Azure 资源的托管标识？
 
@@ -122,8 +122,8 @@ Azure Active Directory (Azure AD) 中的 Azure 资源托管标识功能可以解
 
 了解如何将托管标识与其他 Azure 服务配合使用：
 
-* [Azure 应用服务](/azure/app-service/app-service-managed-service-identity)
-* [Azure Functions](/azure/app-service/app-service-managed-service-identity)
+* [Azure 应用服务](/azure/app-service/overview-managed-identity)
+* [Azure Functions](/azure/app-service/overview-managed-identity)
 * [Azure 逻辑应用](/azure/logic-apps/create-managed-service-identity)
 * [Azure 服务总线](../../service-bus-messaging/service-bus-managed-service-identity.md)
 * [Azure 事件中心](../../event-hubs/event-hubs-managed-service-identity.md)

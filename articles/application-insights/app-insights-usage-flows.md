@@ -13,12 +13,12 @@ ms.date: 01/24/2018
 ms.reviewer: mbullwin
 ms.pm_owner: daviste;NumberByColors
 ms.author: daviste
-ms.openlocfilehash: 05853cb494ef6cc615bea7eecb1cfac288b46f3b
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 54155346c7f417be8beb0ced8ef825ec22a08237
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52721946"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53971607"
 ---
 # <a name="analyze-user-navigation-patterns-with-user-flows-in-application-insights"></a>使用 Application Insights 中的用户流分析用户导航模式
 
@@ -34,7 +34,7 @@ ms.locfileid: "52721946"
 用户流工具从你指定的初始页面视图、自定义事件或异常启动。 基于此给定的初始事件，用户流显示用户会话期间发生在其之前和之后的事件。 不同粗细的线显示用户遵循每条路径的次数。 特殊的“会话开始”节点显示后续节点开始会话的位置。 “会话结束”节点显示有多少用户在上一个节点之后没有发送页面视图或自定义事件，并突出显示用户可能离开站点的位置。
 
 > [!NOTE]
-> Application Insights 资源必须包含页面视图或自定义事件才能使用用户流工具。 [了解如何使用 Application Insights JavaScript SDK 将应用设置为自动收集页面访问次数](app-insights-javascript.md)。
+> Application Insights 资源必须包含页面视图或自定义事件才能使用用户流工具。 [了解如何使用 Application Insights JavaScript SDK 将应用设置为自动收集页面访问次数](../azure-monitor/app/javascript.md)。
 >
 >
 
@@ -59,7 +59,7 @@ ms.locfileid: "52721946"
 * 检查“编辑”菜单中的“已排除事件”部分。
 * 使用“其他”节点上的加号按钮在可视化中包括不太频繁发生的事件。
 * 如果用户未频繁发送你预期的页面视图或自定义事件，请尝试在“编辑”菜单中增加可视化的时间范围。
-* 确保将预期的页面视图、自定义事件或异常设置为由站点源代码中的 Application Insights SDK 收集。 [详细了解如何收集自定义事件。](app-insights-api-custom-events-metrics.md)
+* 确保将预期的页面视图、自定义事件或异常设置为由站点源代码中的 Application Insights SDK 收集。 [详细了解如何收集自定义事件。](../azure-monitor/app/api-custom-events-metrics.md)
 
 如果想要查看可视化中的更多步骤，请使用可视化上方的“前面步骤”和“后续步骤”下拉列表。
 
@@ -99,4 +99,4 @@ ms.locfileid: "52721946"
 * [使用情况概述](app-insights-usage-overview.md)
 * [用户、会话和事件](app-insights-usage-segmentation.md)
 * [保留](app-insights-usage-retention.md)
-* [向应用添加自定义事件](app-insights-api-custom-events-metrics.md)
+* [向应用添加自定义事件](../azure-monitor/app/api-custom-events-metrics.md)

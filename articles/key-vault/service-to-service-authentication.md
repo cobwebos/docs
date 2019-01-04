@@ -12,12 +12,12 @@ ms.prod: ''
 ms.service: key-vault
 ms.technology: ''
 ms.assetid: 4be434c4-0c99-4800-b775-c9713c973ee9
-ms.openlocfilehash: 1eadea53dda60ef5ac8bbbc3d9e9cfe4b5b373dc
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 54449e26279e6c6d83a57daa9c8f40819fab4993
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52423586"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53715745"
 ---
 # <a name="service-to-service-authentication-to-azure-key-vault-using-net"></a>使用 .NET 向 Azure Key Vault 进行服务到服务身份验证
 
@@ -234,8 +234,8 @@ az account list
 
 ## <a name="next-steps"></a>后续步骤
 
-- 详细了解 [Azure 资源的托管标识](/azure/app-service/app-service-managed-service-identity)。
+- 详细了解 [Azure 资源的托管标识](/azure/app-service/overview-managed-identity)。
 
-- 了解[对应用进行身份验证和授权](/azure/app-service/app-service-authentication-overview)的不同方式。
+- 了解[对应用进行身份验证和授权](/azure/app-service/overview-authentication-authorization)的不同方式。
 
 - 详细了解 Azure AD [身份验证方案](/azure/active-directory/develop/active-directory-authentication-scenarios#web-browser-to-web-application)。

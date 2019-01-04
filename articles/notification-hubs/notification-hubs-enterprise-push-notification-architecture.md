@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 04/14/2018
 ms.author: dimazaid
-ms.openlocfilehash: 962bc996a86340bb10a28b90ef6340a98c5d9275
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 1c9161f6d31a3fcff8f8926c8bf188f1bdc14799
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39430600"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53725844"
 ---
 # <a name="enterprise-push-architectural-guidance"></a>企业推送架构指南
 当今企业正在逐渐趋向为其最终用户（外部）或员工（内部）创建移动应用程序。 它们已经拥有现成的后端系统，无论是大型机还是一些 LoB 应用程序都必须集成到移动应用程序体系结构中。 本指南介绍如何最好地实现此集成，并针对常见场景建议可能的解决方案。
@@ -63,7 +63,7 @@ ms.locfileid: "39430600"
 
 1. **EnterprisePushBackendSystem**
    
-    a. 此项目使用 WindowsAzure.ServiceBus NuGet 包，并基于[服务总线 Pub/Sub 编程]构建。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 此项目使用 WindowsAzure.ServiceBus NuGet 包，并基于[服务总线 Pub/Sub 编程]构建。
    
     b. 此应用程序是一个简单的 C# 控制台应用，可模拟启动要传送到移动应用的消息的 LoB 系统。
    
@@ -126,7 +126,7 @@ ms.locfileid: "39430600"
         }
 1. **ReceiveAndSendNotification**
    
-    a. 此项目使用 WindowsAzure.ServiceBus 和 Microsoft.Web.WebJobs.Publish NuGet 包，并基于[服务总线 Pub/Sub 编程]构建。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 此项目使用 WindowsAzure.ServiceBus 和 Microsoft.Web.WebJobs.Publish NuGet 包，并基于[服务总线 Pub/Sub 编程]构建。
    
     b. 以下控制台应用作为 [Azure WebJob] 运行，因为它必须连续运行以侦听来自 LoB/后端系统的消息。 此应用程序是移动后端的一部分。
    
@@ -219,7 +219,7 @@ ms.locfileid: "39430600"
     ![][4]
 1. **EnterprisePushMobileApp**
    
-    a. 此应用程序一个 Windows 应用商店应用程序，它从作为移动后端的一部分运行的 WebJob 接收 toast 通知并显示。 此代码基于[通知中心 - Windows 通用教程]构建。  
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 此应用程序一个 Windows 应用商店应用程序，它从作为移动后端的一部分运行的 WebJob 接收 toast 通知并显示。 此代码基于[通知中心 - Windows 通用教程]构建。  
    
     b. 确保应用程序已启用接收 toast 通知。
    
@@ -264,6 +264,6 @@ ms.locfileid: "39430600"
 [Azure 移动服务]: http://azure.microsoft.com/documentation/services/mobile-services/
 [Azure Service Bus]: http://azure.microsoft.com/documentation/articles/fundamentals-service-bus-hybrid-solutions/
 [服务总线 Pub/Sub 编程]: http://azure.microsoft.com/documentation/articles/service-bus-dotnet-how-to-use-topics-subscriptions/
-[Azure WebJob]: ../app-service/web-sites-create-web-jobs.md
+[Azure WebJob]: ../app-service/webjobs-create.md
 [通知中心 - Windows 通用教程]: http://azure.microsoft.com/documentation/articles/notification-hubs-windows-store-dotnet-get-started/
 [Azure 门户]: https://portal.azure.com/

@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 10/26/2018
 ms.author: dobett
-ms.openlocfilehash: e02492b3e80f71b4ae92066e5e4a2baf26818621
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 2b6cb711bf0cd2f0ec7f5633bbb36ebaeb203690
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53316159"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53605528"
 ---
 # <a name="remote-monitoring-solution-accelerator-overview"></a>远程监视解决方案加速器概述
 
@@ -135,7 +135,7 @@ ASA 作业将来自已连接设备的遥测数据提供给时序见解以便进�
 
 ### <a name="authentication-and-authorization-microservice"></a>身份验证和授权微服务
 
-[身份验证和授权微服务](https://github.com/Azure/remote-monitoring-services-dotnet/tree/master/auth)管理被授权访问解决方案加速器的用户。 可以使用任何支持 [OpenId Connect](http://openid.net/connect/) 的标识服务提供程序进行用户管理。
+[身份验证和授权微服务](https://github.com/Azure/remote-monitoring-services-dotnet/tree/master/auth)管理被授权访问解决方案加速器的用户。 可以使用任何支持 [OpenId Connect](https://openid.net/connect/) 的标识服务提供程序进行用户管理。
 
 ### <a name="azure-active-directory"></a>Azure Active Directory
 

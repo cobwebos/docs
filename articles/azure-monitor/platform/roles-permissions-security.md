@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/27/2017
 ms.author: johnkem
 ms.component: ''
-ms.openlocfilehash: 310a349aad4e6626033ca2f378e7c1b0ffa96560
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 47a957453bf5962f59518719895edc0f13fe7dc8
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53388167"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53584371"
 ---
 # <a name="get-started-with-roles-permissions-and-security-with-azure-monitor"></a>Azure Monitor 的角色、权限和安全入门
 很多团队需要严格控制对监视数据和设置的访问。 例如，如果有专门负责监视的团队成员（支持工程师、DevOps 工程师），或者使用托管服务提供程序，则可能希望向他们授予仅访问监视数据的权限，同时限制其创建、修改或删除资源的能力。 本文介绍如何快速地将内置监视 RBAC 角色应用到 Azure 中的用户，或者为需要有限的监视权限的用户构建自己的自定义角色。 然后讨论与 Azure Monitor 相关资源的安全注意事项，以及如何限制对它们所含数据的访问。
@@ -26,10 +26,10 @@ Azure Monitor 的内置角色设计为帮助限制对订阅中资源的访问，
 
 * 在门户中查看监视仪表板和创建自己专用的监视仪表板。
 * 查看 [Azure 警报](../../azure-monitor/platform/alerts-overview.md)中定义的预警规则
-* 使用 [Azure Monitor REST API](https://msdn.microsoft.com/library/azure/dn931930.aspx)、[PowerShell cmdlet](../../monitoring-and-diagnostics/insights-powershell-samples.md) 或 [跨平台 CLI](../../azure-monitor/platform/cli-samples.md) 查询指标。
+* 使用 [Azure Monitor REST API](https://msdn.microsoft.com/library/azure/dn931930.aspx)、[PowerShell cmdlet](../../azure-monitor/platform/powershell-quickstart-samples.md) 或 [跨平台 CLI](../../azure-monitor/platform/cli-samples.md) 查询指标。
 * 使用门户、Azure Monitor REST API、PowerShell cmdlet 或跨平台 CLI 查询活动日志。
-* 查看资源的[诊断设置](../../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md#diagnostic-settings)。
-* 查看订阅的[日志配置文件](../../monitoring-and-diagnostics/monitoring-overview-activity-logs.md#export-the-activity-log-with-a-log-profile)。
+* 查看资源的[诊断设置](../../azure-monitor/platform/diagnostic-logs-overview.md#diagnostic-settings)。
+* 查看订阅的[日志配置文件](../../azure-monitor/platform/activity-logs-overview.md#export-the-activity-log-with-a-log-profile)。
 * 查看自动调整规模设置。
 * 查看警报活动和设置。
 * 访问 Application Insights 数据和在 AI Analytics 中查看数据。
@@ -49,8 +49,8 @@ Azure Monitor 的内置角色设计为帮助限制对订阅中资源的访问，
 分配了监视参与者角色的人员可以查看订阅中的所有监视数据和创建或修改监视设置，但不能修改任何其他资源。 此角色是监视查阅者角色的一个超集，适用于组织的监视团队成员或托管服务提供商，除了上述权限外，他们还需要能够：
 
 * 将监视仪表板发布为共享仪表板。
-* 设置资源的[诊断设置](../../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md#diagnostic-settings)。*
-* 设置订阅的[日志配置文件](../../monitoring-and-diagnostics/monitoring-overview-activity-logs.md#export-the-activity-log-with-a-log-profile)。*
+* 设置资源的[诊断设置](../../azure-monitor/platform/diagnostic-logs-overview.md#diagnostic-settings)。*
+* 设置订阅的[日志配置文件](../../azure-monitor/platform/activity-logs-overview.md#export-the-activity-log-with-a-log-profile)。*
 * 通过 [Azure 警报](../../azure-monitor/platform/alerts-overview.md)设置预警规则活动和设置。
 * 创建 Application Insights Web 测试和组件。
 * 列出 Log Analytics 工作区的共享密钥。

@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: hrasheed
-ms.openlocfilehash: c35082d7aa1e9d669bc9c5b89948f190d3edd2f3
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: e964e00cd326d924a77a53348942f91ebbdbdea4
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53014525"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53630154"
 ---
 # <a name="use-apache-spark-structured-streaming-with-apache-kafka-and-azure-cosmos-db"></a>将 Apache Spark 结构化流式处理与 Apache Kafka 和 Azure Cosmos DB 配合使用
 
@@ -24,7 +24,7 @@ ms.locfileid: "53014525"
 
 Spark 结构化流式处理是建立在 Spark SQL 上的流处理引擎。 这允许以与批量计算相同的方式表达针对静态数据的流式计算。 有关结构化流式处理的详细信息，请参阅 Apache.org 上的 [Structured Streaming Programming Guide](https://spark.apache.org/docs/2.2.0/structured-streaming-programming-guide.html)（结构化流式处理编程指南）。
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > 此示例使用了 Spark 2.2 on HDInsight 3.6。
 >
 > 本文档中的步骤创建了一个包含 Spark on HDInsight 和 Kafka on HDInsight 群集的 Azure 资源组。 这些群集都位于 Azure 虚拟网络中，允许 Spark 群集直接与 Kafka 群集进行通信。
@@ -37,7 +37,7 @@ Apache Kafka on HDInsight 不提供通过公共 Internet 访问 Kafka 中转站�
 
 ![Azure 虚拟网络中的 Spark 和 Kafka 群集图表](./media/hdinsight-apache-spark-with-kafka/spark-kafka-vnet.png)
 
-> [!NOTE]
+> [!NOTE]  
 > Kafka 服务仅限于虚拟网络内的通信。 通过 Internet 可访问群集上的其他服务，例如 SSH 和 Ambari。 有关可用于 HDInsight 的公共端口的详细信息，请参阅 [HDInsight 使用的端口和 URI](hdinsight-hadoop-port-settings-for-services.md)。
 
 尽管可手动创建 Azure 虚拟网络、Kafka 和 Spark 群集，但使用 Azure 资源管理器模板更简单。 使用以下步骤将 Azure 虚拟网络、Kafka 和 Spark 群集部署到 Azure 订阅。
@@ -58,12 +58,12 @@ Apache Kafka on HDInsight 不提供通过公共 Internet 访问 Kafka 中转站�
 
     * 包含 HDInsight 群集的 Azure 虚拟网络。
 
-        > [!NOTE]
+        > [!NOTE]  
         > 通过模板创建的虚拟网络使用 10.0.0.0/16 地址空间。
 
     * Azure Cosmos DB SQL API 数据库。
 
-    > [!IMPORTANT]
+    > [!IMPORTANT]  
     > 本示例使用的结构化流式处理笔记本需要 Spark on HDInsight 3.6。 如果使用早期版本的 Spark on HDInsight，则使用笔记本时会收到错误消息。
 
 2. 使用以下信息填充“自定义部署”部分中的条目：
@@ -82,7 +82,7 @@ Apache Kafka on HDInsight 不提供通过公共 Internet 访问 Kafka 中转站�
 
     * **群集版本**：HDInsight 群集版本。
 
-        > [!IMPORTANT]
+        > [!IMPORTANT]  
         > 此示例使用 HDInsight 3.6 进行测试，可能不适用于其他群集类型。
 
     * **群集登录用户名**：Spark 和 Kafka 群集的管理员用户名。
@@ -97,7 +97,7 @@ Apache Kafka on HDInsight 不提供通过公共 Internet 访问 Kafka 中转站�
 
 4. 最后，选择“购买”。 创建群集大约需要 20 分钟时间。
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > 创建群集、虚拟网络和 Cosmos DB 帐户最多可能需要 45 分钟时间。
 
 ## <a name="create-the-cosmos-db-database-and-collection"></a>创建 Cosmos DB 数据库和集合
@@ -140,7 +140,7 @@ az cosmosdb list-keys --name $name --resource-group $resourceGroupName --query p
 "YqPXw3RP7TsJoBF5imkYR0QNA02IrreNAlkrUMkL8EW94YHs41bktBhIgWq4pqj6HCGYijQKMRkCTsSaKUO2pw=="
 ```
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > 保存终结点和键值，以便用于 Jupyter 笔记本。
 
 ## <a name="get-the-apache-kafka-brokers"></a>获取 Apache Kafka 中转站
@@ -158,7 +158,7 @@ $brokerHosts = $respObj.host_components.HostRoles.host_name[0..1]
 ($brokerHosts -join ":9092,") + ":9092"
 ```
 
-> [!NOTE]
+> [!NOTE]  
 > Bash 示例需要 `$CLUSTERNAME` 包含 Kafka 群集的名称。
 >
 > 本示例使用 [jq](https://stedolan.github.io/jq/) 实用工具来分析 JSON 文档外的数据。
