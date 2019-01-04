@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/20/2018
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: 8c114ed137089e70899e601ebdc1d4d39f562601
-ms.sourcegitcommit: a3a0f42a166e2e71fa2ffe081f38a8bd8b1aeb7b
+ms.openlocfilehash: ab3d4cbe8a200e91d02177e49446065cd9c228df
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2018
-ms.locfileid: "43382933"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53609066"
 ---
 ## <a name="create-a-consumer-group"></a>创建使用者组
 
@@ -41,11 +41,11 @@ ms.locfileid: "43382933"
 
 [Azure 时序见解](../articles/time-series-insights/time-series-insights-overview.md)是一种完全托管的分析、存储和可视化服务，用于管理云中的 IoT 时序数据。 若要创建新的时序见解环境：
 
-1. 登录到 [Azure 门户](http://portal.azure.com/)。
+1. 登录到 [Azure 门户](https://portal.azure.com/)。
 
 1. 选择“创建资源” > “物联网” > “时序见解”：
 
-    ![新时序见解](./media/iot-accelerators-create-tsi/new-time-series-insights.png)
+    ![新建时序见解](./media/iot-accelerators-create-tsi/new-time-series-insights.png)
 
 1. 若要在解决方案加速器所在的同一资源组中创建时序见解环境，请使用下表中的值：
 
@@ -56,7 +56,7 @@ ms.locfileid: "43382933"
     | 资源组 | contoso-simulation。 使用解决方案加速器的名称。 |
     | 位置 | 此示例使用美国东部。 在设备模拟加速器所在的同一区域中创建环境。 |
     | SKU |**S1** |
-    | Capacity | **1** |
+    | 容量 | **1** |
 
     ![创建时序见解](./media/iot-accelerators-create-tsi/new-time-series-insights-create.png)
 
@@ -84,7 +84,7 @@ ms.locfileid: "43382933"
     | 设置 | 值 |
     | ------- | ----- |
     | 事件源名称 | 以下屏幕截图使用名称 contoso-iot-hub。 完成此步骤后，请使用自己的唯一名称。 |
-    | Source | **IoT 中心** |
+    | 源 | **IoT 中心** |
     | 导入选项 | **从可用的订阅使用 IoT 中心** |
     | 订阅 ID | 在下拉列表中选择自己的 Azure 订阅。 |
     | IoT 中心名称 | contoso-simulation7d894。 从设备模拟解决方案加速器中使用 IoT 中心的名称。 |

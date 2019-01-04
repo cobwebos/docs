@@ -3,16 +3,17 @@ title: 在灾难恢复中将恢复计划与 Azure Site Recovery 配合使用 | M
 description: 了解如何通过 Azure Site Recovery 服务使用恢复计划进行灾难恢复。
 author: rayne-wiselman
 manager: carmonm
+services: site-recovery
 ms.service: site-recovery
 ms.topic: article
-ms.date: 11/27/2018
+ms.date: 12/27/2018
 ms.author: raynew
-ms.openlocfilehash: cb68b71eece998fa72fccc00de45f81e6d2d778c
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: c7d66c389958aa3b5274a3d81f27f416308acdee
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52848385"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53975655"
 ---
 # <a name="about-recovery-plans"></a>关于恢复计划
 

@@ -1,19 +1,17 @@
 ---
 title: Azure Database for PostgreSQL 中的服务器日志
 description: 本文介绍 Azure Database for PostgreSQL 如何生成查询和错误日志，以及配置多长时间的保留期。
-services: postgresql
 author: rachel-msft
 ms.author: raagyema
-editor: jasonwhowell
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 10/04/2018
-ms.openlocfilehash: 2ee9f750ff52b8afe4be54233f1374f523a789f4
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 0e2dc2af6b4c7ddf531458136e6bcabb49be3b8f
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52845156"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53538799"
 ---
 # <a name="server-logs-in-azure-database-for-postgresql"></a>Azure Database for PostgreSQL 中的服务器日志 
 Azure Database for PostgreSQL 生成查询和错误日志。 查询和错误日志可用于识别、排除和修复配置错误和性能不佳问题。 （不包括访问事务日志）。 
@@ -30,7 +28,7 @@ Azure Database for PostgreSQL 生成查询和错误日志。 查询和错误日�
 
 
 ## <a name="diagnostic-logs"></a>诊断日志
-Azure Database for PostgreSQL 集成了 Azure Monitor 诊断日志。 在 PostgreSQL 服务器上启用日志后，可以选择将它们发送到 [Log Analytics](../azure-monitor/log-query/log-query-overview.md)、事件中心或 Azure 存储。 若要详细了解如何启用诊断日志，请参阅[诊断日志文档](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md)中的如何操作部分。 
+Azure Database for PostgreSQL 集成了 Azure Monitor 诊断日志。 在 PostgreSQL 服务器上启用日志后，可以选择将它们发送到 [Log Analytics](../azure-monitor/log-query/log-query-overview.md)、事件中心或 Azure 存储。 若要详细了解如何启用诊断日志，请参阅[诊断日志文档](../azure-monitor/platform/diagnostic-logs-overview.md)中的如何操作部分。 
 
 
 下表介绍了每个日志中的内容。 包括的字段以及它们的出现顺序可能有所不同，具体取决于你选择的输出终结点。 

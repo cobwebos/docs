@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/21/2017
-ms.openlocfilehash: 34bf642cbdecce31be1a8119adc483d017686479
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 30ad0c5ee069df4cd58cb76b779f611d0272d571
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53434039"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53741583"
 ---
 # <a name="os-patching-for-hdinsight"></a>针对 HDInsight 的 OS 修补 
 作为托管的 Apache Hadoop 服务，HDInsight 负责修补 HDInsight 群集使用的基础 VM 的 OS。 自 2016 年 8 月 1 日起，我们已经为基于 Linux 的 HDInsight 群集（版本 3.4 或更高版本）更改了来宾 OS 修补策略。 新策略的目标是显著减少由于修补导致的重启次数。 新策略会继续在 Linux 群集上修补虚拟机 (VM)，每周一或周四从 12AM UTC 开始以交错的方式在任意给定群集的节点上进行。 但是由于来宾 OS 修补，任何给定 VM 每 30 天最多重启一次。 此外，自新创建群集的创建日期起 30 天内，该群集不会发生第一次重启。 重启 VM 后，修补程序即可生效。
@@ -33,7 +33,6 @@ ms.locfileid: "53434039"
 
 > [!NOTE]  
 > 此脚本操作仅适用于 2016 年 8 月 1 日后创建的基于 Linux 的 HDInsight 群集。 仅在重启 VM 后，修补程序才生效。 
->
 
 ## <a name="how-to-use-the-script"></a>如何使用脚本 
 

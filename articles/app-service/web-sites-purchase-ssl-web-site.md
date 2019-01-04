@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/16/2018
 ms.author: apurvajo;cephalin
 ms.custom: seodec18
-ms.openlocfilehash: ff2fd2c9b66cc9c80087ab5009ee65c0ba73714b
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 78b7668dee892841ced1a06626ff09a534a88b69
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53268710"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53714294"
 ---
 # <a name="buy-and-configure-an-ssl-certificate-for-azure-app-service"></a>为 Azure 应用服务购买和配置 SSL 证书
 
@@ -35,7 +35,7 @@ ms.locfileid: "53268710"
 按照本操作方法指南操作：
 
 - [创建应用服务应用](/azure/app-service/)
-- [将域名映射到 Web 应用](app-service-web-tutorial-custom-domain.md)或[在 Azure 中购买和配置](custom-dns-web-site-buydomains-web-app.md)
+- [将域名映射到 Web 应用](app-service-web-tutorial-custom-domain.md)或[在 Azure 中购买和配置](manage-custom-dns-buy-domain.md)
 
 [!INCLUDE [Prepare your web app](../../includes/app-service-ssl-prepare-app.md)]
 
@@ -91,7 +91,7 @@ ms.locfileid: "53268710"
 > 支持四种类型的域验证方法： 
 > 
 > - **应用服务验证** - 当域已映射到同一订阅中的应用服务应用时，这是最方便的选项。 它可利用应用服务应用已验证域所有权这一事实。
-> - **域** - 验证[从 Azure 购买的应用服务域](custom-dns-web-site-buydomains-web-app.md)。 Azure 会自动为你添加验证 TXT 记录，并完成该过程。
+> - **域** - 验证[从 Azure 购买的应用服务域](manage-custom-dns-buy-domain.md)。 Azure 会自动为你添加验证 TXT 记录，并完成该过程。
 > - **邮件** - 通过向域管理员发送电子邮件来验证域。 选择此选项时会提供相应说明。
 > - **手动** - 使用 HTML 页（仅标准证书）或 DNS TXT 记录验证域。 选择此选项时会提供相应说明。
 

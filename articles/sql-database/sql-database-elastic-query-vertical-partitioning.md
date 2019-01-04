@@ -9,15 +9,15 @@ ms.devlang: ''
 ms.topic: conceptual
 author: MladjoA
 ms.author: mlandzic
-ms.reviewer: ''
+ms.reviewer: sstein
 manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: 75c021f7b2c2584580f2d9dbf30cbcdf11d3fdc5
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 7bf1a3af7705858432b9ff8caf5064b0794568df
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52875359"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53602454"
 ---
 # <a name="query-across-cloud-databases-with-different-schemas-preview"></a>在具有不同架构的云数据库中进行查询。（预览）
 ![跨不同数据库中的表进行查询][1]

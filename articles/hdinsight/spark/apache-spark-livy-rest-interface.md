@@ -9,16 +9,16 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: 999b5ca1f229677b9e11068f4beaa6e2704afd3d
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 62056b27669f334f1d8007d5284979ac4701f9d9
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53012566"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53650501"
 ---
 # <a name="use-apache-spark-rest-api-to-submit-remote-jobs-to-an-hdinsight-spark-cluster"></a>使用 Apache Spark REST API 将远程作业提交到 HDInsight Spark 群集
 
-了解如何使用 [Apache Livy](https://livy.incubator.apache.org/)，这是 [Apache Spark](https://spark.apache.org/) REST API，用来将远程作业提交到 Azure HDInsight Spark 群集。 有关详细文档，请参阅 [http://livy.incubator.apache.org/](http://livy.incubator.apache.org/)。
+了解如何使用 [Apache Livy](https://livy.incubator.apache.org/)，这是 [Apache Spark](https://spark.apache.org/) REST API，用来将远程作业提交到 Azure HDInsight Spark 群集。 有关详细文档，请参阅 [https://livy.incubator.apache.org/](https://livy.incubator.apache.org/)。
 
 可以使用 Livy 运行交互式 Spark shell，或提交要在 Spark 上运行的批处理作业。 本文介绍如何使用 Livy 提交批处理作业。 本文中的代码片段使用 cURL 向Livy Spark 终结点发出 REST API 调用。
 
@@ -182,7 +182,7 @@ HDInsight 3.5 群集及更高版本群集默认情况下禁止使用本地文件
 
 ## <a name="next-step"></a>后续步骤
 
-* [Apache Livy REST API 文档](http://livy.incubator.apache.org/docs/latest/rest-api.html)
+* [Apache Livy REST API 文档](https://livy.incubator.apache.org/docs/latest/rest-api.html)
 * [管理 Azure HDInsight 中 Apache Spark 群集的资源](apache-spark-resource-manager.md)
 * [Track and debug jobs running on an Apache Spark cluster in HDInsight（跟踪和调试 HDInsight 中的 Apache Spark 群集上运行的作业）](apache-spark-job-debugging.md)
 

@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 04/27/2018
 ms.author: glenga
-ms.openlocfilehash: 034f182cc282f50eb3a4a1de05331f42957f49fe
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 9f3d84b1f2e179d265c811faf2d35bd55bc1410f
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53339801"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53606975"
 ---
 # <a name="get-started-with-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>用于事件驱动的后台处理的 Azure WebJobs SDK 入门
 
@@ -54,7 +54,7 @@ public static void Run(
 
 ## <a name="prerequisites"></a>先决条件
 
-本文假设你已创建一个 [Azure 帐户](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)，并且对 [Azure 应用服务中的应用](app-service-web-overview.md)有一定的经验。 完成本文中的步骤：
+本文假设你已创建一个 [Azure 帐户](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)，并且对 [Azure 应用服务中的应用](overview.md)有一定的经验。 完成本文中的步骤：
 
 * [安装](https://docs.microsoft.com/visualstudio/install/)包含 **Azure 开发**工作负荷的 Visual Studio 2017。 如果已安装 Visual Studio，但未配置该工作负荷，请选择“工具”>“获取工具和功能”添加该工作负荷。
 * [创建应用服务应用](app-service-web-get-started-dotnet-framework.md)。 如果已有一个可在其中部署 WebJob 的应用服务应用，则可以使用该应用，而无需新建。

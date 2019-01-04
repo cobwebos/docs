@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/09/2018
 ms.author: shants
-ms.openlocfilehash: 4e30b143a11e35fc83103abfa03e3fb7f29cf9dc
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 727ae9bbea4cabc5d27c32baff2123a7c03b531c
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53270121"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53546855"
 ---
 # <a name="planned-maintenance-notifications-for-virtual-machine-scale-sets"></a>虚拟机规模集的计划内维护通知
 
@@ -32,7 +32,7 @@ Azure 定期执行更新，以提高虚拟机 (VM) 的主机基础结构的可�
 
 需要重启的计划内维护是按批进行计划的。 每个批具有不同的作用域（区域）：
 
-- 一个批从向客户发送通知开始。 默认情况下，向订阅所有者和共同所有者发送通知。 可以使用 Azure [活动日志警报](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md)，向通知添加收件人和消息发送选项（如电子邮件、短信和 Webhook）。  
+- 一个批从向客户发送通知开始。 默认情况下，向订阅所有者和共同所有者发送通知。 可以使用 Azure [活动日志警报](../azure-monitor/platform/activity-logs-overview.md)，向通知添加收件人和消息发送选项（如电子邮件、短信和 Webhook）。  
 - 出现通知时会提供自助时段。 在该时段内可查看包括在此批中的 VM。 可以根据自身计划需要，主动启动维护。
 - 自助时段过后，就会开始计划内维护时段。 在此时段的某个时刻，Azure 会计划所需的维护，并将其应用于 VM。 
 
@@ -95,7 +95,7 @@ Azure 定期执行更新，以提高虚拟机 (VM) 的主机基础结构的可�
 
 ## <a name="notification-and-alerts-in-the-portal"></a>门户中的通知和警报
 
-Azure 通过向订阅所有者和共有者组发送电子邮件来传达计划维护的安排。 可以通过创建活动日志警报，为此通信添加收件人和通道。 有关详细信息，请参阅[使用 Azure 活动日志监视订阅活动](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md)。
+Azure 通过向订阅所有者和共有者组发送电子邮件来传达计划维护的安排。 可以通过创建活动日志警报，为此通信添加收件人和通道。 有关详细信息，请参阅[使用 Azure 活动日志监视订阅活动](../azure-monitor/platform/activity-logs-overview.md)。
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 2. 在左侧菜单中，选择“监视”。 

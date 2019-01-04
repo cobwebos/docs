@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: b297be16110e24342b224f7f89c2a3c0c44229a9
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 5a09bd8db89f85c785d3d701a3b7180e4616e52c
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53341400"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53713225"
 ---
 # <a name="diagnostics-in-durable-functions-azure-functions"></a>Durable Functions 中的诊断 (Azure Functions)
 
@@ -25,7 +25,7 @@ ms.locfileid: "53341400"
 
 使用 [Application Insights](../../application-insights/app-insights-overview.md) 是在 Azure Functions 中执行诊断和监视的建议方法。 这同样适用于 Durable Functions。 有关如何在函数应用中利用 Application Insights 的概述，请参阅[监视 Azure Functions](../functions-monitoring.md)。
 
-Azure Functions Durable 扩展还会发出跟踪事件，用于跟踪业务流程的端到端执行。 可在 Azure 门户中使用 [Application Insights Analytics](../../application-insights/app-insights-analytics.md) 工具来查找和查询这些事件。
+Azure Functions Durable 扩展还会发出跟踪事件，用于跟踪业务流程的端到端执行。 可在 Azure 门户中使用 [Application Insights Analytics](../../azure-monitor/app/analytics.md) 工具来查找和查询这些事件。
 
 ### <a name="tracking-data"></a>跟踪数据
 

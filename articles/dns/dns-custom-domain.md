@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 1/19/2018
 ms.author: victorh
-ms.openlocfilehash: 9c0ccb7c5ccb3eced32ea5bcd9f1961c5ccd2110
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: 8e8a09ede66213247b306c77938dbff30651fee5
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39173837"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53727142"
 ---
 # <a name="use-azure-dns-to-provide-custom-domain-settings-for-an-azure-service"></a>使用 Azure DNS 为 Azure 服务提供自定义域设置
 
@@ -46,7 +46,7 @@ Azure DNS 为支持自定义域或具有完全限定域名 (FQDN) 的任何 Azur
 |属性  |值  |Description  |
 |---------|---------|---------|
 |名称     | myfunctionapp        | 此值连同域名标签是自定义域名的 FQDN。        |
-|Type     | CNAME        | 使用 CNAME 记录相当于使用别名。        |
+|类型     | CNAME        | 使用 CNAME 记录相当于使用别名。        |
 |TTL     | 1        | 1 表示 1 小时        |
 |TTL 单位     | 小时        | 小时用作时间计量单位         |
 |别名     | adatumfunction.azurewebsites.net        | 为其创建别名的 DNS 名称，在本示例中，为默认提供给函数应用的 adatumfunction.azurewebsites.net DNS 名称。        |
@@ -71,7 +71,7 @@ Azure DNS 为支持自定义域或具有完全限定域名 (FQDN) 的任何 Azur
 |属性  |值  |Description  |
 |---------|---------|---------|
 |名称     | mywebserver        | 此值连同域名标签是自定义域名的 FQDN。        |
-|Type     | A        | 由于资源是 IP 地址，因此应使用 A 记录。        |
+|类型     | A        | 由于资源是 IP 地址，因此应使用 A 记录。        |
 |TTL     | 1        | 1 表示 1 小时        |
 |TTL 单位     | 小时        | 小时用作时间计量单位         |
 |IP 地址     | <your ip address>       | 公共 IP 地址。|
@@ -98,7 +98,7 @@ Azure DNS 为支持自定义域或具有完全限定域名 (FQDN) 的任何 Azur
 |属性  |值  |Description  |
 |---------|---------|---------|
 |名称     | mywebserver        | 此值连同域名标签是自定义域名的 FQDN。        |
-|Type     | CNAME        | 使用 CNAME 记录相当于使用别名。 如果资源使用了 IP 地址，则会使用 A 记录。        |
+|类型     | CNAME        | 使用 CNAME 记录相当于使用别名。 如果资源使用了 IP 地址，则会使用 A 记录。        |
 |TTL     | 1        | 1 表示 1 小时        |
 |TTL 单位     | 小时        | 小时用作时间计量单位         |
 |别名     | webserver.azurewebsites.net        | 为其创建别名的 DNS 名称，在本示例中，为默认提供给 Web 应用的 webserver.azurewebsites.net DNS 名称。        |
@@ -116,7 +116,7 @@ Azure DNS 为支持自定义域或具有完全限定域名 (FQDN) 的任何 Azur
 
 若要详细了解如何将自定义域映射到应用服务，请访问[将现有的自定义 DNS 名称映射到 Azure Web 应用](../app-service/app-service-web-tutorial-custom-domain.md?toc=%dns%2ftoc.json)。
 
-如果需要购买自定义域，请访问[购买 Azure Web 应用的自定义域名](../app-service/custom-dns-web-site-buydomains-web-app.md)来详细了解应用服务域。
+如果需要购买自定义域，请访问[购买 Azure Web 应用的自定义域名](../app-service/manage-custom-dns-buy-domain.md)来详细了解应用服务域。
 
 ## <a name="blob-storage"></a>Blob 存储
 
@@ -132,7 +132,7 @@ Azure DNS 为支持自定义域或具有完全限定域名 (FQDN) 的任何 Azur
 |属性  |值  |Description  |
 |---------|---------|---------|
 |名称     | asverify.mystorageaccount        | 此值连同域名标签是自定义域名的 FQDN。        |
-|Type     | CNAME        | 使用 CNAME 记录相当于使用别名。        |
+|类型     | CNAME        | 使用 CNAME 记录相当于使用别名。        |
 |TTL     | 1        | 1 表示 1 小时        |
 |TTL 单位     | 小时        | 小时用作时间计量单位         |
 |别名     | asverify.adatumfunctiona9ed.blob.core.windows.net        | 为其创建别名的 DNS 名称，在本示例中，为默认提供给存储帐户的 asverify.adatumfunctiona9ed.blob.core.windows.net DNS 名称。        |
@@ -160,7 +160,7 @@ Azure DNS 为支持自定义域或具有完全限定域名 (FQDN) 的任何 Azur
 |属性  |值  |Description  |
 |---------|---------|---------|
 |名称     | cdnverify.mycdnendpoint        | 此值连同域名标签是自定义域名的 FQDN。        |
-|Type     | CNAME        | 使用 CNAME 记录相当于使用别名。        |
+|类型     | CNAME        | 使用 CNAME 记录相当于使用别名。        |
 |TTL     | 1        | 1 表示 1 小时        |
 |TTL 单位     | 小时        | 小时用作时间计量单位         |
 |别名     | cdnverify.adatumcdnendpoint.azureedge.net        | 为其创建别名的 DNS 名称，在本示例中，为默认提供给存储帐户的 cdnverify.adatumcdnendpoint.azureedge.net DNS 名称。        |

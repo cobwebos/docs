@@ -12,16 +12,16 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 05/15/2018
 ms.author: mbullwin
-ms.openlocfilehash: 10044f17baee8fb4d7afe9223abdbb518952e71f
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 52c07ee66e37f6bc14c5c9d6414bc47a1225af65
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52741852"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "54000338"
 ---
 # <a name="monitoring-usage-and-performance-in-classic-windows-desktop-apps"></a>监视经典 Windows 桌面应用中的使用情况和性能
 
-在 Azure 和其他云中本地托管的应用程序都可以利用 Application Insights。 唯一限制是需要[允许与 Application Insights 服务通信](app-insights-ip-addresses.md)。 若要监视通用 Windows 平台 (UWP) 应用程序，我们建议使用 [Visual Studio App Center](app-insights-mobile-center-quickstart.md)。
+在 Azure 和其他云中本地托管的应用程序都可以利用 Application Insights。 唯一限制是需要[允许与 Application Insights 服务通信](../azure-monitor/app/ip-addresses.md)。 若要监视通用 Windows 平台 (UWP) 应用程序，我们建议使用 [Visual Studio App Center](app-insights-mobile-center-quickstart.md)。
 
 ## <a name="to-send-telemetry-to-application-insights-from-a-classic-windows-application"></a>将遥测从经典 Windows 应用程序发送到 Application Insights
 1. 在 [Azure 门户](https://portal.azure.com)中，[创建 Application Insights 资源](app-insights-create-new-resource.md)。 对于应用程序类型，选择 ASP.NET 应用。
@@ -36,7 +36,7 @@ ms.locfileid: "52741852"
     `<InstrumentationKey>`*你的密钥*`</InstrumentationKey>` 
    
     如果使用 ApplicationInsights.config，请确保它在解决方案资源管理器中的属性设置为“生成操作”=“内容”、“复制到输出目录”=“复制”。
-5. [使用 API](app-insights-api-custom-events-metrics.md) 发送遥测。
+5. [使用 API](../azure-monitor/app/api-custom-events-metrics.md) 发送遥测。
 6. 运行应用，并在 Azure 门户中查看所创建的资源中的遥测。
 
 ## <a name="telemetry"></a>示例代码
@@ -77,8 +77,8 @@ ms.locfileid: "52741852"
 ```
 
 ## <a name="next-steps"></a>后续步骤
-* [创建仪表板](app-insights-dashboards.md)
-* [诊断搜索](app-insights-diagnostic-search.md)
-* [探索指标](app-insights-metrics-explorer.md)
-* [编写分析查询](app-insights-analytics.md)
+* [创建仪表板](../azure-monitor/app/app-insights-dashboards.md)
+* [诊断搜索](../azure-monitor/app/diagnostic-search.md)
+* [探索指标](../azure-monitor/app/metrics-explorer.md)
+* [编写分析查询](../azure-monitor/app/analytics.md)
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/17/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: 412ec0a7d2cd8574aadf6e9f104407792ddb29ed
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: a09dcfbffb6daa2ae2514c608e88c8dc475c9676
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53341519"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53581430"
 ---
 # <a name="alerts-on-activity-log"></a>根据活动日志发出警报 
 
@@ -28,11 +28,11 @@ ms.locfileid: "53341519"
 * 对 Azure 订阅中的资源进行特定操作时，通常限于特定资源组或资源。 例如，可能会希望在删除 myProductionResourceGroup 中的任何虚拟机时接收通知。 或者，可能会希望在任何新角色分配到订阅中的用户时接收通知。
 * 发生服务运行状况事件。 服务运行状况事件包括应用于订阅中资源的事件和维护事件的通知。
 
-可以通过简单的类比来理解在活动日志上创建警报规则时可以基于的条件，那就是通过 [Azure 门户中的活动日志](../../monitoring-and-diagnostics/monitoring-overview-activity-logs.md#query-the-activity-log-in-the-azure-portal)浏览或筛选事件。 在 Azure Monitor - 活动日志中，可以筛选或查找所需的事件，然后使用“添加活动日志警报”按钮创建警报。
+可以通过简单的类比来理解在活动日志上创建警报规则时可以基于的条件，那就是通过 [Azure 门户中的活动日志](../../azure-monitor/platform/activity-logs-overview.md#query-the-activity-log-in-the-azure-portal)浏览或筛选事件。 在 Azure Monitor - 活动日志中，可以筛选或查找所需的事件，然后使用“添加活动日志警报”按钮创建警报。
 
 在上述任何情况下，活动日志警报只监视在其中创建该警报的订阅中的事件。
 
-可以基于活动日志事件的 JSON 对象中的任何顶层属性配置活动日志警报。 有关详细信息，请参阅 [Azure 活动日志概述](./../../monitoring-and-diagnostics/monitoring-overview-activity-logs.md#categories-in-the-activity-log)。 若要了解有关服务运行状况事件的详细信息，请参阅[接收有关服务通知的活动日志警报](./../../azure-monitor/platform/alerts-activity-log-service-notifications.md)。 
+可以基于活动日志事件的 JSON 对象中的任何顶层属性配置活动日志警报。 有关详细信息，请参阅 [Azure 活动日志概述](./../../azure-monitor/platform/activity-logs-overview.md#categories-in-the-activity-log)。 若要了解有关服务运行状况事件的详细信息，请参阅[接收有关服务通知的活动日志警报](./../../azure-monitor/platform/alerts-activity-log-service-notifications.md)。 
 
 活动日志警报有几个常见选项：
 
@@ -64,5 +64,5 @@ ms.locfileid: "53341519"
 - 获取[警报概述](../../azure-monitor/platform/alerts-overview.md)。
 - 了解如何[创建和修改活动日志警报](../../azure-monitor/platform/alerts-activity-log.md)。
 - 查看[活动日志警报 webhook 架构](activity-log-alerts-webhook.md)。
-- 了解[服务运行状况通知](../../monitoring-and-diagnostics/monitoring-service-notifications.md)。
+- 了解[服务运行状况通知](../../azure-monitor/platform/service-notifications.md)。
 

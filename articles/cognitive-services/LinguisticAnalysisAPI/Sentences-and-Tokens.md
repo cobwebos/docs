@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/21/2016
 ms.author: davl
 ROBOTS: NOINDEX
-ms.openlocfilehash: 289cab4999276cbfb1fa558f558ebafa8e4e3a30
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: 96c2bd1c11554481e441662a6051620f4b2e2993
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48237868"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53972356"
 ---
 # <a name="sentence-separation-and-tokenization"></a>句子拆分和词汇切分
 
@@ -75,4 +75,4 @@ tokenizer 的目标是，将字符序列切分为字词。
 ## <a name="specification"></a>规格
 
 对于句子和词汇的组成成分，请务必确保所作决定一致。
-我们依赖于 [Penn Treebank](https://catalog.ldc.upenn.edu/ldc99t42) 的规范（一些其他详细信息可以在 ftp://ftp.cis.upenn.edu/pub/treebank/public_html/tokenization.html 上找到）。
+我们依赖于 [Penn Treebank](https://catalog.ldc.upenn.edu/LDC99T42) 的规范（一些其他详细信息可以在 ftp://ftp.cis.upenn.edu/pub/treebank/public_html/tokenization.html 上找到）。

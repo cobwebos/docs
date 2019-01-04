@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/15/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: 3c9514e39e061067b7332570e0eb6273924529e0
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: be86e961d04b600f112a173c041b60cbe50ea00d
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53339206"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53725043"
 ---
 # <a name="create-view-and-manage-log-alerts-using-azure-monitor"></a>使用 Azure Monitor 创建、查看和管理日志警报  
 
@@ -23,7 +23,7 @@ ms.locfileid: "53339206"
 - 条件：特定的条件或逻辑，出现在“信号”中时，应触发操作
 - 操作：发送到通知接收方 - 电子邮件、短信、Webhook 等的特定调用。
 
-术语**日志警报**用来描述警报，其中的信号是基于 [Log Analytics](../../azure-monitor/learn/tutorial-viewdata.md) 或 [Application Insights](../../application-insights/app-insights-analytics.md) 的自定义查询。 从[日志警报 - 概述](../../azure-monitor/platform/alerts-unified-log.md)中详细了解功能、术语和类型。
+术语**日志警报**用来描述警报，其中的信号是基于 [Log Analytics](../../azure-monitor/learn/tutorial-viewdata.md) 或 [Application Insights](../../azure-monitor/app/analytics.md) 的自定义查询。 从[日志警报 - 概述](../../azure-monitor/platform/alerts-unified-log.md)中详细了解功能、术语和类型。
 
 > [!NOTE]
 > [Azure Log Analytics](../../azure-monitor/learn/tutorial-viewdata.md) 中的常见日志数据现在也可以在 Azure Monitor 中的指标平台上查看。 有关详细信息，请查看[日志的指标警报](../../azure-monitor/platform/alerts-metric-logs.md)
@@ -245,6 +245,6 @@ az group deployment create --resource-group myRG --template-file sampleScheduled
 
 * 了解 [Azure 警报中的日志警报](../../azure-monitor/platform/alerts-unified-log.md)
 * 了解[用于日志警报的 Webhook 操作](../../azure-monitor/platform/alerts-log-webhook.md)
-* 详细了解 [Application Insights](../../application-insights/app-insights-analytics.md)
+* 详细了解 [Application Insights](../../azure-monitor/app/analytics.md)
 * 详细了解 [Log Analytics](../../azure-monitor/log-query/log-query-overview.md)。 
 

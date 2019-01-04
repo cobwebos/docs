@@ -9,19 +9,19 @@ ms.topic: conceptual
 ms.date: 10/05/2016
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: aeb0dec07ef9c8fb124089c785929f4e5ce69ffe
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: ad59decab7233c74e13468b0cf0b11fdb5485d07
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52871416"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53722341"
 ---
 # <a name="customize-windows-based-hdinsight-clusters-using-script-action"></a>使用脚本操作自定义基于 Windows 的 HDInsight 群集
 在创建群集的过程中，可以使用**脚本操作**来调用[自定义脚本](hdinsight-hadoop-script-actions.md)，以便在群集上安装其他软件。
 
 本文中的信息特定于基于 Windows 的 HDInsight 群集。 有关基于 Linux 的群集，请参阅[使用脚本操作自定义基于 Linux 的 HDInsight 群集](hdinsight-hadoop-customize-cluster-linux.md)。
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight 在 Windows 上停用](hdinsight-component-versioning.md#hdinsight-windows-retirement)。
 
 也可使用多种其他方法来自定义 HDInsight 群集，例如包含其他 Azure 存储帐户、更改 [Apache Hadoop](https://hadoop.apache.org/) 配置文件（core-site.xml、hive-site.xml 等），或者将共享库（例如 [Apache Hive](https://hive.apache.org/)[Apache Oozie](https://oozie.apache.org/)）添加到群集中的共同位置。 这些自定义可以通过使用 Azure PowerShell、Azure HDInsight .NET SDK 或 Azure 门户来完成。 有关详细信息，请参阅[在 HDInsight 中创建 Apache Hadoop 群集][hdinsight-provision-cluster]。
@@ -35,7 +35,7 @@ ms.locfileid: "52871416"
 
 脚本运行时，群集进入 **ClusterCustomization** 阶段。 在此阶段，脚本在系统管理员帐户下，以并行方式在群集中所有指定的节点上运行，而在节点上提供完全的系统管理员权限。
 
-> [!NOTE]
+> [!NOTE]  
 > 你在 **ClusterCustomization** 阶段中于群集节点上拥有系统管理员权限，所以可使用脚本来运行作业，例如停止和启动服务，包括 Hadoop 相关服务。 因此，在脚本中，必须在脚本完成运行之前，确定 Ambari 服务及其他 Hadoop 相关服务已启动并且正在运行。 这些服务必须在群集创建时，成功地确定群集的运行状况和状态。 如果更改群集上的任何影响这些服务的配置，必须使用所提供的帮助器函数。 有关帮助器函数的详细信息，请参阅[为 HDInsight 开发脚本操作脚本][hdinsight-write-script]。
 >
 >
@@ -288,10 +288,10 @@ HDInsight 服务中有两种类型的开放源代码组件：
 
 完全支持内置组件，Microsoft 支持部门将帮助你找出并解决与这些组件相关的问题。
 
-> [!WARNING]
+> [!WARNING]  
 > 完全支持通过 HDInsight 群集提供的组件，Microsoft 支持部门将帮助你找出并解决与这些组件相关的问题。
 >
-> 自定义组件可获得合理范围的支持，以帮助你进一步排查问题。 这可能导致问题解决，或要求参与可用的开放源代码技术渠道，在该处可找到该技术的深入专业知识。 有许多可以使用的社区站点，例如：[面向 HDInsight 的 MSDN 论坛](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hdinsight)、[http://stackoverflow.com](http://stackoverflow.com)。 此外，Apache 项目在 [http://apache.org](http://apache.org) 上提供了项目站点，例如：[Hadoop](http://hadoop.apache.org/)、[Spark](http://spark.apache.org/)。
+> 自定义组件可获得合理范围的支持，以帮助你进一步排查问题。 这可能导致问题解决，或要求参与可用的开放源代码技术渠道，在该处可找到该技术的深入专业知识。 例如，有许多可以使用的社区站点，例如：[面向 HDInsight 的 MSDN 论坛](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hdinsight)、[https://stackoverflow.com](https://stackoverflow.com)。 此外，Apache 项目在 [https://apache.org](https://apache.org) 上提供了项目站点，例如：[Hadoop](https://hadoop.apache.org/)、[Spark](https://spark.apache.org/)。
 >
 >
 

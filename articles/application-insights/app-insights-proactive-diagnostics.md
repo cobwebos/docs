@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 10/31/2016
 ms.author: mbullwin
-ms.openlocfilehash: b884fc15770e91268d1033dc4bab9bf96766de94
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: af85975fce20a87af8365f8fe6ea73ed1e6e1416
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52868933"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53998908"
 ---
 # <a name="smart-detection-in-application-insights"></a>Application Insights 中的智能检测
  当 Web 应用程序中存在潜在性能问题时，智能检测会自动向你发出警告。 它会对应用发送至 [Application Insights](app-insights-overview.md) 的遥测数据执行主动分析。 如果失败率中存在骤升或者客户端或服务器性能中存在异常模式，将收到警报。 此功能不需要任何配置。 它会在应用程序发送足够的遥测时运行。
@@ -54,12 +54,12 @@ ms.locfileid: "52868933"
 ## <a name="next-steps"></a>后续步骤
 这些诊断工具可帮助检查应用中的遥测数据：
 
-* [指标资源管理器](app-insights-metrics-explorer.md)
-* [搜索资源管理器](app-insights-diagnostic-search.md)
+* [指标资源管理器](../azure-monitor/app/metrics-explorer.md)
+* [搜索资源管理器](../azure-monitor/app/diagnostic-search.md)
 * [分析 - 功能强大的查询语言](../azure-monitor/log-query/get-started-portal.md)
 
 智能检测是完全自动执行的。 但是或许你想要设置更多的警报？
 
-* [手动配置的指标警报](app-insights-alerts.md)
-* [可用性 Web 测试](app-insights-monitor-web-app-availability.md) 
+* [手动配置的指标警报](../azure-monitor/app/alerts.md)
+* [可用性 Web 测试](../azure-monitor/app/monitor-web-app-availability.md) 
 

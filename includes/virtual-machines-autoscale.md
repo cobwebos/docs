@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
-ms.openlocfilehash: 9ad161e3e19a1e546f30a17b38737fa88bc0953a
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 0ccb502cd5ae21468e52bdc4d56202a595cd19ef
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53399799"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53594306"
 ---
 使用[虚拟机规模集](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md)和 [Azure Monitor 的自动缩放功能](../articles/azure-monitor/platform/autoscale-overview.md)时，可以轻松[自动缩放](../articles/azure-monitor/platform/autoscale-best-practices.md)[虚拟机 (VM)](../articles/virtual-machines/windows/overview.md)。 VM 需要成为规模集的成员才能自动缩放。 本文提供了用于更好地了解如何使用自动和手动方法以纵向方式和横向方式缩放 VM 的信息。
 
@@ -29,7 +29,7 @@ Azure Monitor 的自动缩放功能仅以横向方式调整资源的规模，即
 
 自动缩放提供适当数量的 VM 来处理应用程序上的负载。 使用它，可以添加 VM 来处理增加的负载，并可以删除处于空闲状态的 VM 来节省资金。 需要基于一组规则来指定要运行的最小 VM 数目和最大 VM 数目。 设置最小数目可确保应用程序在没有负载的情况下也会运行。 设置最大值是为了限制每小时可能会产生的总成本。
 
-可以在使用 [Azure PowerShell](../articles/monitoring-and-diagnostics/insights-powershell-samples.md#create-and-manage-autoscale-settings) 或[Azure CLI](https://docs.microsoft.com/cli/azure/monitor/autoscale-settings) 创建规模集时启用自动缩放。 也可以在创建规模集后启用自动缩放。 可以使用 [Azure 资源管理器模板](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-windows-autoscale.md)创建规模集、安装扩展以及配置自动缩放。 在 Azure 门户中，可以从 Azure Monitor 启用自动缩放，也可以从规模集设置启用自动缩放。
+可以在使用 [Azure PowerShell](../articles/azure-monitor/platform/powershell-quickstart-samples.md#create-and-manage-autoscale-settings) 或[Azure CLI](https://docs.microsoft.com/cli/azure/monitor/autoscale-settings) 创建规模集时启用自动缩放。 也可以在创建规模集后启用自动缩放。 可以使用 [Azure 资源管理器模板](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-windows-autoscale.md)创建规模集、安装扩展以及配置自动缩放。 在 Azure 门户中，可以从 Azure Monitor 启用自动缩放，也可以从规模集设置启用自动缩放。
 
 ![启用自动缩放](./media/virtual-machines-autoscale/virtual-machines-autoscale-enable.png)
  

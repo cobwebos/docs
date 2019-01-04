@@ -8,12 +8,12 @@ ms.component: cosmosdb-graph
 ms.topic: overview
 ms.date: 09/05/2018
 ms.author: lbosq
-ms.openlocfilehash: e9e0d2f452a21f2da29568b953238318cb4477df
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 833b9e7ce65a566757c739feebdfc8e0f1d268e9
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53077438"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53976335"
 ---
 # <a name="introduction-to-azure-cosmos-db-gremlin-api"></a>Azure Cosmos DB 简介：Gremlin API
 
@@ -24,7 +24,7 @@ ms.locfileid: "53077438"
 ## <a name="what-is-a-graph-database"></a>什么是图形数据库
 现实世界中的数据存在必然的联系。 传统数据建模以实体为重心。 对于许多应用程序，还需要进行建模，或是自然地为实体和关系建模。
 
-[图形](https://mathworld.wolfram.com/Graph.html)是由[顶点](http://mathworld.wolfram.com/GraphVertex.html)和[边缘](http://mathworld.wolfram.com/GraphEdge.html)组成的结构。 顶点和边缘可以包含任意数目的属性。 
+[图形](http://mathworld.wolfram.com/Graph.html)是由[顶点](http://mathworld.wolfram.com/GraphVertex.html)和[边缘](http://mathworld.wolfram.com/GraphEdge.html)组成的结构。 顶点和边缘可以包含任意数目的属性。 
 
 * **顶点** - 顶点表示人员、地点或事件等离散对象。 
 

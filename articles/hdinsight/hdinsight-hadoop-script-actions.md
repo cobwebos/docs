@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 05/25/2017
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: f0d6c22d54de0486ad679f93343f0e7b208f21f4
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 5db4387c2fd610313aaac032c122366aa45dc7f9
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53384033"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53720180"
 ---
 # <a name="develop-script-action-scripts-for-hdinsight-windows-based-clusters"></a>为 HDInsight 基于 Windows 的群集开发脚本操作脚本
 了解如何为 HDInsight 编写脚本操作脚本。 有关如何使用脚本操作脚本的信息，请参阅[使用脚本操作自定义 HDInsight 群集](hdinsight-hadoop-customize-cluster.md)。 有关为基于 Linux 的 HDInsight 群集编写的同一篇文章，请参阅[为 HDInsight 开发脚本操作脚本](hdinsight-hadoop-script-actions-linux.md)。
@@ -32,8 +32,6 @@ ms.locfileid: "53384033"
 > System.Management.Automation.CommandNotFoundException; ExceptionMessage: 无法将 'Save-HDIFile' 一词识别为 cmdlet、函数、脚本文件或可运行程序的名称。 检查名称的拼写，如果包含路径，请验证该路径是否正确，并重试。
 > 
 > 这是你没有包括帮助器方法。  请参阅[自定义脚本的帮助器方法](hdinsight-hadoop-script-actions.md#helper-methods-for-custom-scripts)。
->
->
 
 ## <a name="sample-scripts"></a>示例脚本
 若要在 Windows 操作系统上创建 HDInsight 群集，则脚本操作为 Azure PowerShell 脚本。 以下脚本是用于配置站点配置文件的示例：

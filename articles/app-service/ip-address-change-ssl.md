@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 06/28/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 4de20ba46d3c16d6cd7bde8e17efb0a6212bc771
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 6c8c86ff6212acc31e961d6ae62836ca2b7b7380
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53270784"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53714213"
 ---
 # <a name="how-to-prepare-for-an-ssl-ip-address-change"></a>如何为 SSL IP 地址更改做好准备
 
@@ -52,4 +52,4 @@ ms.locfileid: "53270784"
 
 ## <a name="next-steps"></a>后续步骤
 
-本文介绍了如何对 Azure 发起的 IP 地址更改做好准备。 有关 Azure 应用服务中的 IP 地址的详细信息，请参阅 [Azure 应用服务中的 SSL 和 SSL IP 地址](app-service-ip-addresses.md)。
+本文介绍了如何对 Azure 发起的 IP 地址更改做好准备。 有关 Azure 应用服务中的 IP 地址的详细信息，请参阅 [Azure 应用服务中的 SSL 和 SSL IP 地址](overview-inbound-outbound-ips.md)。

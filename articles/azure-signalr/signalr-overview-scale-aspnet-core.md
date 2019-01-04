@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: overview
 ms.date: 09/13/2018
 ms.author: zhshang
-ms.openlocfilehash: e739f3905ff2bbb60669b1f1e214a4630b896db4
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 695cc2afbfd231758e90889eea2c154fbc16dffb
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53255459"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53602607"
 ---
 # <a name="scale-aspnet-core-signalr-applications-with-azure-signalr-service"></a>使用 Azure SignalR Service 缩放 ASP.NET Core SignalR 应用程序
 
@@ -21,7 +21,7 @@ ms.locfileid: "53255459"
 
 ASP.NET Core SignalR 是以前版本的重写。 因此，ASP.NET Core SignalR 不与早期的 SignalR 版本后向兼容。 API 和行为不同。 ASP.NET Core SignalR SDK 面向 .NET Standard，因此仍可在 .NET Framework 中使用。 但是，必须改用新的 API（而不是旧的 API）。 如果正在使用 SignalR 并且想要迁移到 ASP.NET Core SignalR 或 Azure SignalR 服务，那么需要更改代码来处理 API 差异。
 
-通过 Azure SignalR 服务，ASP.NET Core SignalR 的服务器端组件托管在 Azure 中。 但是，由于该技术构建在 ASP.NET Core 之上，因此可在多个平台（Windows、Linux 和 MacOS）上运行实际 Web 应用程序，同时将其托管在 [Azure 应用服务](../app-service/app-service-web-overview.md)、[IIS](https://docs.microsoft.com/aspnet/core/host-and-deploy/iis/index)、[Nginx](https://docs.microsoft.com/aspnet/core/host-and-deploy/linux-nginx)、[Apache](https://docs.microsoft.com/aspnet/core/host-and-deploy/linux-apache) 和 [Docker](https://docs.microsoft.com/aspnet/core/host-and-deploy/docker/index) 中。 还可以在自己的进程中使用自托管。
+通过 Azure SignalR 服务，ASP.NET Core SignalR 的服务器端组件托管在 Azure 中。 但是，由于该技术构建在 ASP.NET Core 之上，因此可在多个平台（Windows、Linux 和 MacOS）上运行实际 Web 应用程序，同时将其托管在 [Azure 应用服务](../app-service/overview.md)、[IIS](https://docs.microsoft.com/aspnet/core/host-and-deploy/iis/index)、[Nginx](https://docs.microsoft.com/aspnet/core/host-and-deploy/linux-nginx)、[Apache](https://docs.microsoft.com/aspnet/core/host-and-deploy/linux-apache) 和 [Docker](https://docs.microsoft.com/aspnet/core/host-and-deploy/docker/index) 中。 还可以在自己的进程中使用自托管。
 
 如果应用程序的目标包括：支持最新功能，通过实时内容更新实现 Web 客户端更新；跨多个平台（Azure、Windows、Linux 和 macOS）运行；以及在不同环境中进行托管，那么最佳选项是利用 Azure SignalR Service。
 

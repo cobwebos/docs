@@ -10,12 +10,12 @@ ms.service: application-insights
 ms.custom: mvc
 ms.topic: quickstart
 manager: carmonm
-ms.openlocfilehash: 008e61841611f36c440bb4896ae5a85d0bf4d874
-ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.openlocfilehash: 17c1cce5c20570f36505ce67a472280b03ef8f0e
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38991562"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53744508"
 ---
 # <a name="start-monitoring-your-aspnet-core-web-application"></a>开始监视 ASP.NET Core Web 应用程序
 
@@ -25,7 +25,7 @@ ms.locfileid: "38991562"
 
 ## <a name="prerequisites"></a>先决条件
 
-完成本快速入门教程：
+完成本快速入门教程需要：
 
 - 使用以下工作负荷安装 [Visual Studio 2017](https://www.visualstudio.com/downloads/)：
   - ASP.NET 和 Web 开发
@@ -33,7 +33,7 @@ ms.locfileid: "38991562"
 - [安装 .NET Core 2.0 SDK](https://www.microsoft.com/net/core)
 - 将需要 Azure 订阅和现有 .NET Core Web 应用程序。
 
-如果没有 ASP.NET Core Web 应用程序，可以使用分步指南来[创建 ASP.NET Core 应用并添加 Application Insights](app-insights-asp-net-core.md)。
+如果没有 ASP.NET Core Web 应用程序，可以使用分步指南来[创建 ASP.NET Core 应用并添加 Application Insights](../azure-monitor/app/asp-net-core.md)。
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费](https://azure.microsoft.com/free/)帐户。
 
@@ -53,7 +53,7 @@ Application Insights 可以从任何连接 Internet 的应用程序收集遥测�
 
     | 设置        |  值           | 说明  |
    | ------------- |:-------------|:-----|
-   | **Name**      | 全局唯一值 | 标识所监视的应用的名称 |
+   | **名称**      | 全局唯一值 | 标识所监视的应用的名称 |
    | **应用程序类型** | ASP.NET Web 应用程序 | 所监视的应用的类型 |
    | **资源组**     | myResourceGroup      | 用于托管 App Insights 数据的新资源组的名称 |
    | **位置** | 美国东部 | 选择离你近的位置或离托管应用的位置近的位置 |

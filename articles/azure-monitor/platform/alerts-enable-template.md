@@ -7,20 +7,20 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 4/27/2018
 ms.author: johnkem
-ms.component: metric
-ms.openlocfilehash: 4fcde6773bcdfe7ac522c813151518785dc14e25
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.component: metrics
+ms.openlocfilehash: a5e38f1400b99c6030799121d37721c26e16649c
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53383555"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53721132"
 ---
 # <a name="create-a-classic-metric-alert-with-a-resource-manager-template"></a>使用资源管理器模板创建经典指标警报
 本文说明如何使用 [Azure 资源管理器模板](../../azure-resource-manager/resource-group-authoring-templates.md)配置 Azure 指标警报。 这样，便可以在创建资源时自动对资源设置警报，确保正确监视所有资源。
 
 > [!NOTE]
 > 
-> 本文介绍如何使用资源管理器模板创建经典指标警报。 如果你正在寻找使用模板创建[较新指标警报](../../monitoring-and-diagnostics/monitoring-near-real-time-metric-alerts.md)的方法，那么[本文](alerts-metric-create-templates.md)可提供详细信息。
+> 本文介绍如何使用资源管理器模板创建经典指标警报。 如果你正在寻找使用模板创建[较新指标警报](../../azure-monitor/platform/alerts-metric-near-real-time.md)的方法，那么[本文](alerts-metric-create-templates.md)可提供详细信息。
 >
 
 

@@ -9,19 +9,19 @@ ms.devlang: ''
 ms.topic: conceptual
 author: danimir
 ms.author: danil
-ms.reviewer: carlrab
+ms.reviewer: jrasnik, carlrab
 manager: craigg
 ms.date: 04/04/2018
-ms.openlocfilehash: a0eac4344f1294ad2eddd4e05520c1f030a0c4d7
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 1464b2685e0ae084de3679e8a8fea36a3cf19c4b
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53278213"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53599138"
 ---
 # <a name="use-the-intelligent-insights-azure-sql-database-performance-diagnostics-log"></a>使用 Intelligent Insights Azure SQL 数据库性能诊断日志
 
-本页提供有关如何使用 [Intelligent Insights](sql-database-intelligent-insights.md) 生成的 Azure SQL 数据库性能诊断日志、它的格式和它为满足自定义开发需求所包含的数据的信息。 可将此诊断日志发送到 [Azure Log Analytics](../azure-monitor/insights/azure-sql.md)、[Azure 事件中心](../monitoring-and-diagnostics/monitoring-stream-diagnostic-logs-to-event-hubs.md)、[Azure 存储](sql-database-metrics-diag-logging.md#stream-into-storage)或第三方解决方案，以用于自定义 DevOps 警报和报告功能。
+本页提供有关如何使用 [Intelligent Insights](sql-database-intelligent-insights.md) 生成的 Azure SQL 数据库性能诊断日志、它的格式和它为满足自定义开发需求所包含的数据的信息。 可将此诊断日志发送到 [Azure Log Analytics](../azure-monitor/insights/azure-sql.md)、[Azure 事件中心](../azure-monitor/platform/diagnostic-logs-stream-event-hubs.md)、[Azure 存储](sql-database-metrics-diag-logging.md#stream-into-storage)或第三方解决方案，以用于自定义 DevOps 警报和报告功能。
 
 ## <a name="log-header"></a>日志标头
 

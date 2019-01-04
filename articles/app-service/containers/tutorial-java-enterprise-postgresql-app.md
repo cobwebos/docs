@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 11/13/2018
 ms.author: jafreebe
 ms.custom: seodec18
-ms.openlocfilehash: 2a38b117cde6d6b51b101f6b0ef0eb3a19b42ba3
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 3a668783e8257ef9074d12b30ff0afc3a40325f4
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53344221"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53539715"
 ---
 # <a name="tutorial-build-a-java-ee-and-postgres-web-app-in-azure"></a>教程：在 Azure 中生成 Java EE 和 Postgres Web 应用
 
@@ -170,7 +170,7 @@ az postgres server create -n <desired-name> -g <same-resource-group> --sku-name 
 
 ### <a name="ftp-the-configuration-files"></a>通过 FTP 传输配置文件
 
-需将 `wildfly_config/` 的内容通过 FTP 传输到应用服务实例。 若要获取 FTP 凭据，请单击 Azure 门户的应用服务边栏选项卡上的“获取发布配置文件”按钮。 FTP 用户名和密码将出现在已下载的 XML 文档中。 有关发布配置文件的详细信息，请参阅[此文档](https://docs.microsoft.com/azure/app-service/app-service-deployment-credentials)。
+需将 `wildfly_config/` 的内容通过 FTP 传输到应用服务实例。 若要获取 FTP 凭据，请单击 Azure 门户的应用服务边栏选项卡上的“获取发布配置文件”按钮。 FTP 用户名和密码将出现在已下载的 XML 文档中。 有关发布配置文件的详细信息，请参阅[此文档](https://docs.microsoft.com/azure/app-service/deploy-configure-credentials)。
 
 使用所选 FTP 工具，将 `wildfly_config/` 中的四个文件传输到 `/home/site/deployments/tools/`。 （请注意，不应传输目录，只传输文件本身。）
 

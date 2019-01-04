@@ -13,12 +13,12 @@ ms.topic: overview
 ms.date: 10/03/2017
 ms.author: glenga
 ms.custom: H1Hack27Feb2017, mvc
-ms.openlocfilehash: f2890fa4d8260485fa76478571aa66abe1efd35e
-ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
+ms.openlocfilehash: b8d57a2bbaa53a0291dc9c05ab234c3238322a71
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2018
-ms.locfileid: "51515397"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53605438"
 ---
 # <a name="an-introduction-to-azure-functions"></a>Azure Functions 简介  
 Azure Functions 是用于在云中轻松运行小段代码或“函数”的一个解决方案。 用户可以只编写解决现有问题所需的代码，而无需担心要运行该代码的整个应用程序或基础结构。 Functions 可使开发更有效率，并可以使用自己所选的开发语言，例如 C#、F#、Node.js、Java 或 PHP。 只需为代码运行的时间付费，并可信任 Azure 会根据需要进行调整。 使用 Azure Functions，可在 Microsoft Azure 上开发[无服务器](https://azure.microsoft.com/solutions/serverless/)应用程序。
@@ -33,7 +33,7 @@ Azure Functions 是用于在云中轻松运行小段代码或“函数”的一�
 * **引入自己的依赖项** - Functions 支持 NuGet 和 NPM，因此用户可以使用自己的常用库。  
 * **集成安全性** - 使用 OAuth 提供程序（如 Azure Active Directory、Facebook、Google、Twitter 和 Microsoft 帐户）保护 HTTP 触发的函数。  
 * **简化集成** - 轻松利用 Azure 服务和软件即服务 (SaaS) 产品/服务。 有关一些示例，请参阅[集成部分](#integrations)。  
-* **灵活开发** - 直接在门户中编写函数代码，或者通过 [GitHub](../app-service/scripts/app-service-cli-continuous-deployment-github.md)、[Azure DevOps Services](../app-service/scripts/app-service-cli-continuous-deployment-vsts.md) 和其他[受支持的开发工具](../app-service/app-service-deploy-local-git.md)设置持续集成和部署代码。  
+* **灵活开发** - 直接在门户中编写函数代码，或者通过 [GitHub](../app-service/scripts/cli-continuous-deployment-github.md)、[Azure DevOps Services](../app-service/scripts/cli-continuous-deployment-vsts.md) 和其他[受支持的开发工具](../app-service/deploy-local-git.md)设置持续集成和部署代码。  
 * **开放源代码** - Functions 运行时是一个开放源代码， [可在 GitHub 上找到](https://github.com/azure/azure-webjobs-sdk-script)。  
 
 ## <a name="what-can-i-do-with-functions"></a>使用 Functions 可以做什么？
@@ -82,6 +82,6 @@ Azure Functions 有两种定价计划。 请选择最适合自己的那种：
   介绍可用于测试函数的各种工具和技巧。
 * [如何缩放 Azure Functions](functions-scale.md)  
   讨论 Azure Functions 提供的服务计划（包括使用托管计划）以及如何选择合适的计划。 
-* [详细了解 Azure 应用服务](../app-service/app-service-web-overview.md)  
+* [详细了解 Azure 应用服务](../app-service/overview.md)  
   Azure Functions 利用 Azure 应用服务执行核心功能，例如部署、环境变量和诊断。 
 

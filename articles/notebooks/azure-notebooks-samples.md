@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2018
 ms.author: kraigb
-ms.openlocfilehash: 8ba94cd94003ee51a621923d3b1dbf2a402c5cfb
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 238d84c32a145c00648ce3923efaa86a8fa3d08e
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53082317"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53971710"
 ---
 # <a name="discover-and-use-sample-notebooks"></a>发现和使用示例笔记本
 
@@ -37,7 +37,7 @@ Internet 上有很多有趣且有用的 Jupyter Notebook，可以轻松将这些
 - [有趣笔记本的库](https://github.com/ipython/ipython/wiki/A-gallery-of-interesting-IPython-Notebooks)（GitHub 上的 Jupyter 项目）
 - [nbviewer.jupyter.org](https://nbviewer.jupyter.org)
 - [伦敦帝国理工学院物理系](https://notebooks.azure.com/cvanbreu/libraries)的物理指导
-- [Azure 机器学习入门示例](https://notebooks.azure.com/azureml/projects/0f41b597b1ea)
+- [Azure 机器学习入门示例](https://notebooks.azure.com/azureml/projects/azureml-getting-started)
 
 ## <a name="next-steps"></a>后续步骤  
 

@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 10/30/2018
 ms.author: yili
 ms.custom: seodec18
-ms.openlocfilehash: 7fe9fd68e03fc36f5aac5d6c27c07896715af906
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: cdda4b0951edd0d1471113c48a4082dfa7407211
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53261154"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53719076"
 ---
 # <a name="azure-app-service-on-linux-faq"></a>Linux 上的 Azure 应用服务常见问题解答
 
@@ -194,5 +194,5 @@ image: <server-name>.azurecr.io/<image-name>:<tag>
 ## <a name="next-steps"></a>后续步骤
 
 - [什么是 Linux 上的 Azure 应用服务？](app-service-linux-intro.md)
-- [设置 Azure 应用服务中的过渡环境](../../app-service/web-sites-staged-publishing.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)
+- [设置 Azure 应用服务中的过渡环境](../../app-service/deploy-staging-slots.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)
 - [使用用于容器的 Web 应用进行持续部署](./app-service-linux-ci-cd.md)

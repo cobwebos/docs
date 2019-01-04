@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/18/2018
 ms.author: bwren
-ms.openlocfilehash: bc37b3b60a5ad7f4e2b4794e4fcb74c1a5004b75
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 33f8547721f499ed7b9a81088681fc2ade2d030c
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53336877"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53723529"
 ---
 # <a name="analyze-log-analytics-data-in-azure-monitor"></a>在 Azure Monitor 中分析 Log Analytics 数据
 
@@ -95,7 +95,7 @@ union Update, workspace("contoso-workspace").Update
 ## <a name="how-log-analytics-data-is-organized"></a>Log Analytics 数据的组织方式
 生成查询时，首先确定哪些表含要查找的数据。 各种类型的数据被划分到每个 [Log Analytics 工作区](../../azure-monitor/learn/quick-create-workspace.md)中的专用表中。  各种数据源的文档包括其创建的数据类型的名称及其每个属性的说明。  许多查询只需要单个表中的数据，但其他查询可能会使用多种选项以包含多个表中的数据。
 
-虽然 [Application Insights](../../application-insights/app-insights-overview.md) 将诸如请求、异常、跟踪和使用情况之类的应用程序数据存储在 Log Analytics 中，但此数据存储在与其他日志数据不同的分区中。 你可以使用相同的查询语言来访问此数据，但必须使用 [Application Insights 控制台](../../application-insights/app-insights-analytics.md)或 [Application Insights REST API](https://dev.applicationinsights.io/) 来访问它。 可以使用[跨资源查询](../../azure-monitor/log-query/cross-workspace-query.md)来将 Application Insights 数据与 Log Analytics 中的其他数据配合使用。
+虽然 [Application Insights](../../application-insights/app-insights-overview.md) 将诸如请求、异常、跟踪和使用情况之类的应用程序数据存储在 Log Analytics 中，但此数据存储在与其他日志数据不同的分区中。 你可以使用相同的查询语言来访问此数据，但必须使用 [Application Insights 控制台](../../azure-monitor/app/analytics.md)或 [Application Insights REST API](https://dev.applicationinsights.io/) 来访问它。 可以使用[跨资源查询](../../azure-monitor/log-query/cross-workspace-query.md)来将 Application Insights 数据与 Log Analytics 中的其他数据配合使用。
 
 
 ![表](media/log-query-overview/queries-tables.png)

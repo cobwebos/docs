@@ -9,20 +9,18 @@ ms.topic: conceptual
 ms.date: 04/07/2017
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: 062925f7e072651f4b4189cec7ca73144c0cf994
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 7967459e1318e85e1e179e21bc803bf00ee329cd
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53436324"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53743787"
 ---
 # <a name="monitor-apache-hadoop-clusters-in-hdinsight-using-the-apache-ambari-api"></a>使用 Apache Ambari API 在 HDInsight 中监视 Apache Hadoop 群集
 了解如何使用 Apache Ambari API 监视 HDInsight 群集。
 
 > [!NOTE]  
 > 本文中的信息主要针对提供 Ambari REST API 只读版本的基于 Windows 的 HDInsight 群集。 对于基于 Linux 的群集，请参阅[使用 Apache Ambari 管理 Apache Hadoop 群集](hdinsight-hadoop-manage-ambari.md)。
-> 
-> 
 
 ## <a name="what-is-ambari"></a>什么是 Ambari？
 [Apache Ambari][ambari-home] 用于预配、管理和监视 Apache Hadoop 群集。 它包括一系列直观的操作员工具和一组免除 Hadoop 复杂性的可靠 API，可简化群集操作。 有关这些 API 的详细信息，请参阅 [Ambari API 参考][ambari-api-reference]。 
@@ -38,8 +36,7 @@ HDInsight 目前仅支持 Ambari 监视功能。 Ambari API 1.0 受 HDInsight �
   
   > [!NOTE]  
   > 在 Windows 中使用 cURL 命令时，对选项值使用双引号而非单引号。
-  > 
-  > 
+
 * **一个 Azure HDInsight 群集**。 有关群集预配的说明，请参阅[开始使用 HDInsight][hdinsight-get-started] 或[预配 HDInsight 群集][hdinsight-provision]。 需要以下数据才能完成本教程：
   
   | 群集属性 | Azure PowerShell 变量名 | 值 | Description |
@@ -146,13 +143,13 @@ HDInsight 目前仅支持 Ambari 监视功能。 Ambari API 1.0 受 HDInsight �
 * [HDInsight 文档][hdinsight-documentation]
 * [HDInsight 入门][hdinsight-get-started]
 
-[ambari-home]: http://ambari.apache.org/
+[ambari-home]: https://ambari.apache.org/
 [ambari-api-reference]: https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md
 
-[curl]: http://curl.haxx.se
+[curl]: https://curl.haxx.se
 [curl-download]: https://curl.haxx.se/download.html
 
-[microsoft-hadoop-SDK]: http://hadoopsdk.codeplex.com/wikipage?title=Ambari%20Monitoring%20Client
+[microsoft-hadoop-SDK]: https://hadoopsdk.codeplex.com/wikipage?title=Ambari%20Monitoring%20Client
 
 [powershell-install]: /powershell/azureps-cmdlets-docs
 [powershell-script]: https://technet.microsoft.com/library/ee176949.aspx

@@ -9,24 +9,24 @@ ms.topic: conceptual
 ms.date: 02/05/2017
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: a88d4b09178ea32526cb8d035b47e1aef9c19dc3
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: ea2fe0f7e326db00a63529c0279c9c15d30c744c
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53384223"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53744813"
 ---
 # <a name="use-apache-maven-to-build-java-applications-that-use-apache-hbase-with-windows-based-hdinsight-apache-hadoop"></a>借助 Apache Maven 生成可将 Apache HBase 与基于 Windows 的HDInsight (Apache Hadoop) 配合使用的 Java 应用程序
-了解如何通过使用 Apache Maven 在 Java 中创建和构建 [Apache HBase](http://hbase.apache.org/) 应用程序。 然后，将该应用程序用于 Azure HDInsight (Apache Hadoop)。
+了解如何通过使用 Apache Maven 在 Java 中创建和构建 [Apache HBase](https://hbase.apache.org/) 应用程序。 然后，将该应用程序用于 Azure HDInsight (Apache Hadoop)。
 
-[Apache Maven](http://maven.apache.org/) 是一种软件项目管理和综合工具，可用于为 Java 项目构建软件、文档和报告。 本文介绍如何使用 Maven 创建基本 Java 应用程序，该应用程序可在 Azure HDInsight 群集中创建、查询和删除 HBase 表。
+[Apache Maven](https://maven.apache.org/) 是一种软件项目管理和综合工具，可用于为 Java 项目构建软件、文档和报告。 本文介绍如何使用 Maven 创建基本 Java 应用程序，该应用程序可在 Azure HDInsight 群集中创建、查询和删除 HBase 表。
 
 > [!IMPORTANT]  
 > 本文档中的步骤需要使用 Windows 的 HDInsight 群集。 Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight 在 Windows 上停用](hdinsight-component-versioning.md#hdinsight-windows-retirement)。
 
 ## <a name="requirements"></a>要求
 * [Java 平台 JDK](https://aka.ms/azure-jdks) 7 或更高版本
-* [Apache Maven](http://maven.apache.org/)
+* [Apache Maven](https://maven.apache.org/)
 * 装有 HBase 的基于 Windows 的 HDInsight 群集
 
     > [!NOTE]  
@@ -40,7 +40,7 @@ ms.locfileid: "53384223"
 
     此命令将使用 **artifactID** 参数（本示例中的 **hbaseapp**）指定的名称在当前位置创建目录。此目录包含以下项：
 
-   * **pom.xml**：项目对象模型 ([POM](http://maven.apache.org/guides/introduction/introduction-to-the-pom.html))，其中包含用于生成项目的信息和配置详细信息。
+   * **pom.xml**：项目对象模型 ([POM](https://maven.apache.org/guides/introduction/introduction-to-the-pom.html))，其中包含用于生成项目的信息和配置详细信息。
    * **src**：包含 **main\java\com\microsoft\examples** 目录的目录，用户会在其中创作应用程序。
 3. 删除 **src\test\java\com\microsoft\examples\apptest.java** 文件，因为本示例中不使用该文件。
 
@@ -53,7 +53,7 @@ ms.locfileid: "53384223"
           <version>1.1.2</version>
         </dependency>
 
-    本部分会告知 Maven，项目需要 **hbase-client** 版本 **1.1.2**。 在编译时，将从默认的 Maven 存储库下载该依赖项。 可以使用 [Apache Maven 中央存储库搜索](http://search.maven.org/#artifactdetails%7Corg.apache.hbase%7Chbase-client%7C0.98.4-hadoop2%7Cjar)来了解有关此依赖项的详细信息。
+    本部分会告知 Maven，项目需要 **hbase-client** 版本 **1.1.2**。 在编译时，将从默认的 Maven 存储库下载该依赖项。 可以使用 [Apache Maven 中央存储库搜索](https://search.maven.org/#artifactdetails%7Corg.apache.hbase%7Chbase-client%7C0.98.4-hadoop2%7Cjar)来了解有关此依赖项的详细信息。
 
    > [!IMPORTANT]  
    > 版本号必须与 HDInsight 群集随附的 HBase 版本匹配。 可以使用下表来查找正确的版本号。
@@ -127,7 +127,7 @@ ms.locfileid: "53384223"
    >
    >
 
-    `<plugins>` 部分将配置 [Apache Maven 编译器插件](http://maven.apache.org/plugins/maven-compiler-plugin/)和 [Apache Maven 阴影插件](http://maven.apache.org/plugins/maven-shade-plugin/)。 该编译器插件用于编译拓扑。 该阴影插件用于防止在由 Maven 构建的 JAR 程序包中复制许可证。 使用此插件的原因在于，重复的许可证文件会导致 HDInsight 群集在运行时出错。 将 maven-shade-plugin 用于 `ApacheLicenseResourceTransformer` 实现可防止发生此错误。
+    `<plugins>` 部分将配置 [Apache Maven 编译器插件](https://maven.apache.org/plugins/maven-compiler-plugin/)和 [Apache Maven 阴影插件](https://maven.apache.org/plugins/maven-shade-plugin/)。 该编译器插件用于编译拓扑。 该阴影插件用于防止在由 Maven 构建的 JAR 程序包中复制许可证。 使用此插件的原因在于，重复的许可证文件会导致 HDInsight 群集在运行时出错。 将 maven-shade-plugin 用于 `ApacheLicenseResourceTransformer` 实现可防止发生此错误。
 
     maven-shade-plugin 还会生成 uber jar（或 fat jar），其中包含应用程序所需的所有依赖项。
 4. 保存 **pom.xml** 文件。
@@ -147,7 +147,7 @@ ms.locfileid: "53384223"
           * "License"); you may not use this file except in compliance
           * with the License.  You may obtain a copy of the License at
           *
-          *     http://www.apache.org/licenses/LICENSE-2.0
+          *     https://www.apache.org/licenses/LICENSE-2.0
           *
           * Unless required by applicable law or agreed to in writing, software
           * distributed under the License is distributed on an "AS IS" BASIS,

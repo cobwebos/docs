@@ -7,16 +7,16 @@ ms.service: azure-monitor
 ms.topic: reference
 ms.date: 4/12/2018
 ms.author: dukek
-ms.component: activitylog
-ms.openlocfilehash: 9129ccdd66b07fc53fe46aa64317f7f064eb7e0c
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.component: logs
+ms.openlocfilehash: 64b92a758d3d5f713b58a5e310a897ac1f11024d
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53388327"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53714825"
 ---
 # <a name="azure-activity-log-event-schema"></a>Azure 活动日志事件架构
-通过 Azure 活动日志，可以深入了解 Azure 中发生的任何订阅级别事件。 本文介绍了每种数据类别的事件架构。 数据架构各有不同，具体取决于是在门户、PowerShell、CLI，或直接通过 REST API 读取数据，还是[使用日志配置文件将数据流式传输到存储或事件中心](./../../monitoring-and-diagnostics/monitoring-overview-activity-logs.md#export-the-activity-log-with-a-log-profile)。 以下示例显示的是通过门户、PowerShell、CLI 和 REST API 获得的架构。 本文末尾提供了这些属性到 [Azure 诊断日志架构](./tutorial-dashboards.md)的映射。
+通过 Azure 活动日志，可以深入了解 Azure 中发生的任何订阅级别事件。 本文介绍了每种数据类别的事件架构。 数据架构各有不同，具体取决于是在门户、PowerShell、CLI，或直接通过 REST API 读取数据，还是[使用日志配置文件将数据流式传输到存储或事件中心](./../../azure-monitor/platform/activity-logs-overview.md#export-the-activity-log-with-a-log-profile)。 以下示例显示的是通过门户、PowerShell、CLI 和 REST API 获得的架构。 本文末尾提供了这些属性到 [Azure 诊断日志架构](./tutorial-dashboards.md)的映射。
 
 ## <a name="administrative"></a>管理
 此类别包含对通过资源管理器执行的所有创建、更新、删除和操作的记录。 此类别中的事件类型的示例包括“创建虚拟机”和“删除网络安全组”。用户或应用程序通过资源管理器所进行的每一个操作都会作为特定资源类型上的操作建模。 如果操作类型为“写入”、“删除”或“操作”，则该操作的开始、成功或失败记录都会记录在管理类别中。 管理类别还包括任何对订阅中基于角色的访问控制进行的更改。
@@ -191,7 +191,7 @@ ms.locfileid: "53388327"
   }
 }
 ```
-请参阅[服务运行状况通知](./../../monitoring-and-diagnostics/monitoring-service-notifications.md)一文，获取有关属性的值的说明。
+请参阅[服务运行状况通知](./../../azure-monitor/platform/service-notifications.md)一文，获取有关属性的值的说明。
 
 ## <a name="resource-health"></a>资源运行状况
 此类别包含 Azure 资源发生的任何资源运行状况事件的记录。 你将在此类别中看到的事件类型的示例是“虚拟机运行状况已更改为不可用”。 资源运行状况事件可以表示以下四种运行状况状态之一：“Available”、“Unavailable”、“Degraded”和“Unknown”。 此外，资源运行状况事件可以分为“平台启动”或“用户启动”。
@@ -676,5 +676,5 @@ ms.locfileid: "53388327"
 
 
 ## <a name="next-steps"></a>后续步骤
-* [详细了解活动日志（以前称为审核日志）](../../monitoring-and-diagnostics/monitoring-overview-activity-logs.md)
-* [将 Azure 活动日志流式传输到事件中心](../../monitoring-and-diagnostics/monitoring-stream-activity-logs-event-hubs.md)
+* [详细了解活动日志（以前称为审核日志）](../../azure-monitor/platform/activity-logs-overview.md)
+* [将 Azure 活动日志流式传输到事件中心](../../azure-monitor/platform/activity-logs-stream-event-hubs.md)

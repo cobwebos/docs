@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 5a06e2577468baa6f3e46f838db11f1925ec0e1d
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 205e61634a902ef052f665c65f2b67a66e6fe598
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53271600"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53728221"
 ---
 # <a name="introduction-to-app-service-environment-v1"></a>应用服务环境 v1 简介
 
@@ -29,7 +29,7 @@ ms.locfileid: "53271600"
 > 
 
 ## <a name="overview"></a>概述
-应用服务环境是 [Azure 应用服务](../app-service-web-overview.md)的一项[高级][PremiumTier]服务计划选项，可提供完全隔离的专用环境来安全地大规模运行 Azure 应用服务应用，包括 Web 应用、移动应用和 API 应用。  
+应用服务环境是 [Azure 应用服务](../overview.md)的一项[高级][PremiumTier]服务计划选项，可提供完全隔离的专用环境来安全地大规模运行 Azure 应用服务应用，包括 Web 应用、移动应用和 API 应用。  
 
 应用服务环境适用于有以下要求的应用程序工作负荷：
 
@@ -88,7 +88,7 @@ ms.locfileid: "53271600"
 <!-- LINKS -->
 [PremiumTier]: https://azure.microsoft.com/pricing/details/app-service/
 [MoreInfoOnVirtualNetworks]: https://azure.microsoft.com/documentation/articles/virtual-networks-faq/
-[AppServicePlan]: ../azure-web-sites-web-hosting-plans-in-depth-overview.md
+[AppServicePlan]: ../overview-hosting-plans.md
 [HowToCreateAnAppServiceEnvironment]: app-service-web-how-to-create-an-app-service-environment.md
 [LogicApps]: https://azure.microsoft.com/documentation/articles/app-service-logic-what-are-logic-apps/
 [AzureConDeepDive]:  https://azure.microsoft.com/documentation/videos/azurecon-2015-deploying-highly-scalable-and-secure-web-and-mobile-apps/

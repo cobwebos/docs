@@ -11,12 +11,12 @@ ms.service: application-insights
 ms.custom: mvc
 ms.topic: quickstart
 manager: carmonm
-ms.openlocfilehash: 45d1275ac3b78836cbb77c4e1508d0689c215d69
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 98ceaddab192a146aa61223d883c78dc7c6af730
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52998609"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53970366"
 ---
 # <a name="start-monitoring-your-java-web-application"></a>开始监视 Java Web 应用程序
 
@@ -130,7 +130,7 @@ Application Insights 可以从任何连接 Internet 的应用程序收集遥测�
 
    ![“服务器指标”图](./media/app-insights-java-quick-start/livemetricsjava.png)
 
-若要了解有关监视 Java 的详细信息，请查看[其他 App Insights Java 文档](./app-insights-java-get-started.md)。
+若要了解有关监视 Java 的详细信息，请查看[其他 App Insights Java 文档](./../azure-monitor/app/java-get-started.md)。
 
 ## <a name="clean-up-resources"></a>清理资源
 

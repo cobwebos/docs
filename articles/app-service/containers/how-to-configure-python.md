@@ -15,12 +15,12 @@ ms.topic: quickstart
 ms.date: 10/09/2018
 ms.author: astay;cephalin;kraigb
 ms.custom: seodec18
-ms.openlocfilehash: 1d9b0e356f0f65be44a533fe098282084b900d89
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: f7e63fa75f473d5da911fbf845f0662d8eec5c70
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53249628"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53717392"
 ---
 # <a name="configure-your-python-app-for-the-azure-app-service-on-linux"></a>为 Linux 上的 Azure 应用服务配置 Python 应用
 
@@ -132,4 +132,4 @@ gunicorn --bind=0.0.0.0 --timeout 600 --chdir website hello:myapp
 - **浏览器中显示“服务不可用”消息。** 浏览器在等待应用服务的响应时超时，这表示应用服务已启动 Gunicorn 服务器，但指定应用代码的参数不正确。
   - 刷新浏览器，尤其是在应用服务计划中使用最低定价层的情况下。 例如，使用免费层时，应用可能需要较长时间才能启动，并在刷新浏览器后才会做出响应。
   - 检查是否按应用服务的预期方式为 [Django](#django-app) 或 [Flask](#flask-app) 构建了应用，或使用[自定义启动命令](#custom-startup-command)。
-  - 使用 SSH 或 Kudu 控制台连接到应用服务，然后检查 *LogFiles* 文件夹中存储的诊断日志。 有关日志记录的详细信息，请参阅[在 Azure 应用服务中启用 Web 应用的诊断日志记录](../web-sites-enable-diagnostic-log.md)。
+  - 使用 SSH 或 Kudu 控制台连接到应用服务，然后检查 *LogFiles* 文件夹中存储的诊断日志。 有关日志记录的详细信息，请参阅[在 Azure 应用服务中启用 Web 应用的诊断日志记录](../troubleshoot-diagnostic-logs.md)。

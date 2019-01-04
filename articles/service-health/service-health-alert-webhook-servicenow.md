@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/14/2017
 ms.author: shtabriz
-ms.openlocfilehash: 6dc66e551c1bce94b473a356cf4648e5c2353a2b
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 3f8e0e94cf3b63b3ea409b46cb9eec3d5d97eb6f
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53271294"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53580315"
 ---
 # <a name="configure-service-health-alerts-with-servicenow"></a>使用 ServiceNow 配置服务运行状况警报
 
@@ -202,5 +202,5 @@ ms.locfileid: "53271294"
 ## <a name="next-steps"></a>后续步骤
 - 了解如何[为现有问题管理系统配置 Webhook 通知](service-health-alert-webhook-guide.md)。
 - 查看[活动日志警报 webhook 架构](../azure-monitor/platform/activity-log-alerts-webhook.md)。 
-- 了解[服务运行状况通知](../monitoring-and-diagnostics/monitoring-service-notifications.md)。
+- 了解[服务运行状况通知](../azure-monitor/platform/service-notifications.md)。
 - 详细了解[操作组](../azure-monitor/platform/action-groups.md)。

@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: hrasheed
-ms.openlocfilehash: 47a634ca1c4e904cc1054db3a834483489ade0ec
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 993d3dc065b792cc6d4ca0b1321cb1950cea85d8
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53093550"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53652591"
 ---
 # <a name="install-third-party-apache-hadoop-applications-on-azure-hdinsight"></a>在 Azure HDInsight 上安装第三方 Apache Hadoop 应用程序
 
@@ -35,7 +35,7 @@ HDInsight 应用程序是用户可以在 HDInsight 群集上安装的应用程�
 * **Starburst Presto** Presto 是一个快速的可缩放分布式 SQL 查询引擎。 Presto 针对存储和计算的分离进行了架构设计，非常适用于查询 Azure Data Lake Storage、Azure Blob 存储、SQL 和 NoSQL 数据库以及其他数据源中的数据。
 * **Streamsets Data Collector for HDnsight** 提供一个全功能的集成开发环境 (IDE)，可在其中设计、测试、部署和管理汇合流和批处理数据的全面互通引入管道，并提供各种流中转换 - 所有这一切都无需编写自定义代码。 
 * **Striim**（读作“stream”）是一个端到端流式处理数据集成 + 智能平台，可用于实现不同数据流的持续引入、处理和分析。
-* **[Trifacta](http://www.trifacta.com/)** 利用机器学习来提供突破性的用户体验、工作流和体系结构，使得数据工程师和分析师能够更高效地探究和编制当今的各种数据。
+* **[Trifacta](https://www.trifacta.com/)** 利用机器学习来提供突破性的用户体验、工作流和体系结构，使得数据工程师和分析师能够更高效地探究和编制当今的各种数据。
 * **Unifi Data Platform** 是一个无缝集成的自助服务数据工具套件，设计用来使业务用户能够解决推动收入增长、降低成本或运营复杂性的数据难题。 
 * **WANdisco Fusion HDI App** 可随数据更改（无论数据位于何处）提供到数据的连续一致连接。 它支持用户随时随地访问数据，不会出现任何停机或中断情况。
 * **Waterline** 使用 AI 来编录、组织和管理数据以使用业务术语自动标记数据。 Waterline 的商业文献目录是一个用于自助分析、合规性和管理，以及 IT 管理计划的关键成功组件。

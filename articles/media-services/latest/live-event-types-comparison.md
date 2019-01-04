@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: juliako
-ms.openlocfilehash: 2dbc2b4e316155e880d3baa900196d5cdd31be72
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 3ed38ce75e5ee7c9f05533d64b28171482bfec51
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53011770"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53725926"
 ---
 # <a name="liveevent-types-comparison"></a>LiveEvent 类型比较
 
@@ -28,7 +28,7 @@ ms.locfileid: "53011770"
 
 下表比较了两种 LiveEvent 类型的功能。
 
-| Feature | 直通 LiveEvent | 标准（基本）LiveEvent |
+| Feature | 直通 LiveEvent | 标准 LiveEvent |
 | --- | --- | --- |
 | 单比特率输入在云中被编码为多比特率 |否 |是 |
 | 贡献源的最大视频分辨率 |4K（4096x2160，60 帧/秒） |1080p（1920x1088，30 帧/秒）|

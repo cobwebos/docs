@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/11/2018
-ms.openlocfilehash: 787da07c5b8d8610e264963f81d858fce98d304f
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 175fdcc1bf8d28c0eeb6eeccaa54c996c837ef81
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53436154"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53744439"
 ---
 # <a name="operationalize-a-data-analytics-pipeline"></a>使数据分析管道可操作化
 
@@ -551,7 +551,7 @@ day=03
     <coordinator-app ... start="2017-01-01T00:00Z" end="2017-01-05T00:00Z" frequency="${coord:days(1)}" ...>
     ```
 
-    协调器负责按照 `frequency` 属性指定的间隔，在 `start` 和 `end` 日期范围内计划操作。 每个计划的操作反过来按配置运行工作流。 在上面的协调器定义中，协调器被配置为从 2017 年 1 月 1 日到 2017 年 1 月 5 日运行操作。 频率通过 [Oozie 表达式语言](http://oozie.apache.org/docs/4.2.0/CoordinatorFunctionalSpec.html#a4.4._Frequency_and_Time-Period_Representation)频率表达式 `${coord:days(1)}` 设置为 1 天。 通过此操作，协调器会按每天一次的频率计划一个操作（以及工作流）。 对于过去的日期范围，如本示例所示，操作将计划为无延迟运行。 操作运行计划的开始日期称为“名义时间”。 例如，若要处理 2017 年 1 月 1 日的数据，协调器将把操作的名义时间计划为 2017-01-01T00:00:00 GMT。
+    协调器负责按照 `frequency` 属性指定的间隔，在 `start` 和 `end` 日期范围内计划操作。 每个计划的操作反过来按配置运行工作流。 在上面的协调器定义中，协调器被配置为从 2017 年 1 月 1 日到 2017 年 1 月 5 日运行操作。 频率通过 [Oozie 表达式语言](https://oozie.apache.org/docs/4.2.0/CoordinatorFunctionalSpec.html#a4.4._Frequency_and_Time-Period_Representation)频率表达式 `${coord:days(1)}` 设置为 1 天。 通过此操作，协调器会按每天一次的频率计划一个操作（以及工作流）。 对于过去的日期范围，如本示例所示，操作将计划为无延迟运行。 操作运行计划的开始日期称为“名义时间”。 例如，若要处理 2017 年 1 月 1 日的数据，协调器将把操作的名义时间计划为 2017-01-01T00:00:00 GMT。
 
 * 第 2 点：在工作流的日期范围内，`dataset` 元素指定 HDFS 中查找特定日期范围的数据的位置，并配置 Oozie 如何确定数据是否还可进行处理。
 
@@ -651,6 +651,6 @@ sqlDatabaseTableName=dailyflights
 
 ## <a name="next-steps"></a>后续步骤
 
-* [Apache Oozie 文档](http://oozie.apache.org/docs/4.2.0/index.html)
+* [Apache Oozie 文档](https://oozie.apache.org/docs/4.2.0/index.html)
 
 <!-- * Build the same pipeline [using Azure Data Factory](tbd.md).  -->

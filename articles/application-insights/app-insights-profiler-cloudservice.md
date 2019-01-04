@@ -12,17 +12,17 @@ ms.topic: conceptual
 ms.reviewer: cawa
 ms.date: 08/06/2018
 ms.author: mbullwin
-ms.openlocfilehash: 5bb70bf56efac28029401b69ee4f87c2738c52e3
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 28e21180fde50d19154830694cd4959795ae9d5c
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52721844"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53789375"
 ---
 # <a name="profile-live-azure-cloud-services-with-application-insights"></a>使用 Application Insights 探查实时 Azure 云服务
 
 还可以在以下服务上部署 Application Insights Profiler：
-* [Azure Web 应用](app-insights-profiler.md?toc=/azure/azure-monitor/toc.json)
+* [Azure 应用服务](app-insights-profiler.md?toc=/azure/azure-monitor/toc.json)
 * [Service Fabric 应用程序](app-insights-profiler-servicefabric.md?toc=/azure/azure-monitor/toc.json)
 * [虚拟机](app-insights-profiler-vm.md?toc=/azure/azure-monitor/toc.json)
 
@@ -30,7 +30,7 @@ Application Insights Profiler 是随 Windows Azure 诊断 (WAD) 扩展安装的�
 
 ## <a name="enable-profiler-for-your-azure-cloud-service"></a>为 Azure 云服务启用 Profiler
 1. 请检查你使用的是否为 [.NET Framework 4.6.1](https://docs.microsoft.com/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed) 或更高版本。  只需要确认 *ServiceConfiguration.\*.cscfg* 文件的 `osFamily` 值至少为“5”即可。
-1. [将 Application Insights SDK 添加到云服务](app-insights-cloudservices.md?toc=/azure/azure-monitor/toc.json)。
+1. [将 Application Insights SDK 添加到云服务](../azure-monitor/app/cloudservices.md?toc=/azure/azure-monitor/toc.json)。
 1. 使用 Application Insights 跟踪请求：
 
     对于 ASP.Net Web 角色，Application Insights 可以自动跟踪请求。
@@ -63,7 +63,7 @@ Application Insights Profiler 是随 Windows Azure 诊断 (WAD) 扩展安装的�
       </WadCfg>
       ```
 
-    >   **注意：** 如果 *diagnostics.wadcfgx* 文件还包含 `ApplicationInsights` 类型的其他接收器，则以下三个检测密钥都必须匹配：  
+    >   **注意：** 如果 diagnostics.wadcfgx* 文件还包含 `ApplicationInsights` 类型的其他接收器，则以下三个检测密钥都必须匹配：  
     >  * 应用程序使用的密钥。  
     >  * `ApplicationInsights` 接收器使用的密钥。  
     >  * `ApplicationInsightsProfiler` 接收器使用的密钥。  

@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 10/26/2018
 ms.author: dobett
-ms.openlocfilehash: b76bea6207cd6ac5d2ed570cf54dde7c52d5ff97
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: e9ad55c62ae4b53241d366a85f54851fc193f10b
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53309614"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53631033"
 ---
 # <a name="predictive-maintenance-solution-accelerator-overview"></a>预测性维护解决方案加速器概述
 
@@ -92,9 +92,9 @@ Azure IoT 预测性维护解决方案加速器使用通过此模板创建的回�
 [img-machine-learning]: media/iot-accelerators-predictive-walkthrough/machine-learning.png
 
 [lnk-remote-monitoring]: quickstart-predictive-maintenance-deploy.md
-[lnk-cortana-analytics]: http://gallery.cortanaintelligence.com/Collection/Predictive-Maintenance-Template-3
+[lnk-cortana-analytics]: https://gallery.cortanaintelligence.com/Collection/Predictive-Maintenance-Template-3
 [lnk-azureiotsuite]: https://www.azureiotsolutions.com/
 [lnk-faq]: iot-accelerators-faq.md
 [lnk-security-groundup]:/azure/iot-fundamentals/iot-security-ground-up
 [lnk-machine-learning]: https://azure.microsoft.com/services/machine-learning/
-[lnk_regression_model]: http://gallery.cortanaanalytics.com/Collection/Predictive-Maintenance-Template-3
+[lnk_regression_model]: https://gallery.cortanaanalytics.com/Collection/Predictive-Maintenance-Template-3

@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/26/2018
 ms.author: clemensv
-ms.openlocfilehash: f8771be9a96ae188a9610a1b19dfd6cbd49ba277
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: b08540787fc61b9bb38ed921bd42e0f3065cf8f4
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53270427"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53653826"
 ---
 # <a name="use-firewall-rules"></a>使用防火墙规则
 
@@ -53,7 +53,7 @@ IP 筛选器规则将按顺序应用，与 IP 地址匹配的第一个规则决�
 > - Azure 数据资源管理器
 >
 > 以下 Microsoft 服务必须在虚拟网络中
-> - Azure Web 应用
+> - Azure 应用服务
 > - Azure Functions
 
 ### <a name="creating-a-virtual-network-and-firewall-rule-with-azure-resource-manager-templates"></a>使用 Azure 资源管理器模板创建虚拟网络和防火墙规则

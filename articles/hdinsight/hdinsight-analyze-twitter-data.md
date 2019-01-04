@@ -9,18 +9,18 @@ ms.topic: conceptual
 ms.date: 05/25/2017
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: 8782db64a39ab3994c4689e7f809005c20c6dacd
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: b8ab4acd24a53267711fde4408bb9fa8f52c35f3
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53017451"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53635572"
 ---
 # <a name="analyze-twitter-data-using-apache-hive-in-hdinsight"></a>使用 HDInsight 中的 Apache Hive 分析 Twitter 数据
 社交网站是采用大数据的主要推动力之一。 Twitter 等网站所提供的公共 API 是一类用于分析和了解流行趋势的有用数据源。
 本教程将通过使用 Twitter 流式传输 API 获取推文，并使用 Azure HDInsight 上的 [Apache Hive](https://hive.apache.org/) 获取发送包含某个特定词的最多推文的 Twitter 用户列表。
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > 本文档中的步骤要求使用基于 Windows 的 HDInsight 群集。 Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight 在 Windows 上停用](hdinsight-component-versioning.md#hdinsight-windows-retirement)。 有关特定于基于 Linux 的群集的步骤，请参阅[在 HDInsight (Linux) 中使用 Apache Hive 分析 Twitter 数据](hdinsight-analyze-twitter-data-linux.md)。
 
 ## <a name="prerequisites"></a>先决条件
@@ -42,7 +42,7 @@ ms.locfileid: "53017451"
     Select-AzureRmSubscription -SubscriptionID <Azure Subscription ID>
     ```
 
-    > [!IMPORTANT]
+    > [!IMPORTANT]  
     > 使用 Azure Service Manager 管理 HDInsight 资源的 Azure PowerShell 支持**已弃用**，已在 2017 年 1 月 1 日删除。 本文档中的步骤使用的是与 Azure 资源管理器兼容的新 HDInsight cmdlet。
     >
     > 请按照 [安装和配置 Azure PowerShell](/powershell/azureps-cmdlets-docs) 中的步骤安装最新版本的 Azure PowerShell。 如果脚本需要修改后才能使用与 Azure 资源管理器兼容的新 cmdlet，请参阅[迁移到适用于 HDInsight 群集的基于 Azure 资源管理器的开发工具](hdinsight-hadoop-development-using-azure-resource-manager.md)，了解详细信息。
@@ -61,12 +61,12 @@ ms.locfileid: "53017451"
 ## <a name="get-twitter-feed"></a>获取 Twitter 源
 在本教程中，将使用 [Twitter 流式传输 API][twitter-streaming-api]。 将使用的特定 Twitter 流式传输 API 是 [statuses/filter][twitter-statuses-filter]。
 
-> [!NOTE]
+> [!NOTE]  
 > 已将包含 10,000 个推文的文件和 Hive 脚本文件（在下一节中介绍）上传到公共 Blob 容器中。 如果要使用已上传的文件，可以跳过本节。
 
 推文数据以包含复杂的嵌套结构的 JavaScript 对象表示法 (JSON) 格式存储。 可以将此嵌套结构转换为 Hive 表（而不是使用传统的编程语言编写多行代码），使其能够通过类似结构化查询语言 (SQL) 的语言（称作 HiveQL）进行查询。
 
-Twitter 使用 OAuth 提供对其 API 的授权访问。 OAuth 是一种身份验证协议，允许用户批准应用程序代表其执行操作，而不用共享其密码。 更多信息可以在 [oauth.net](http://oauth.net/) 上或 Hueniverse 提供的出色的 [OAuth 初学者指南](http://hueniverse.com/oauth/)中找到。
+Twitter 使用 OAuth 提供对其 API 的授权访问。 OAuth 是一种身份验证协议，允许用户批准应用程序代表其执行操作，而不用共享其密码。 更多信息可以在 [oauth.net](https://oauth.net/) 上或 Hueniverse 提供的出色的 [OAuth 初学者指南](https://hueniverse.com/oauth/)中找到。
 
 使用 OAuth 的第一步是在 Twitter 开发人员网站上创建新的应用程序。
 
@@ -80,7 +80,7 @@ Twitter 使用 OAuth 提供对其 API 的授权访问。 OAuth 是一种身份�
    | --- | --- |
    |  名称 |MyHDInsightApp |
    |  Description |MyHDInsightApp |
-   |  网站 |http://www.myhdinsightapp.com |
+   |  网站 |https://www.myhdinsightapp.com |
 4. 选中“是，我同意”，并单击“创建 Twitter 应用程序”。
 5. 单击“权限”选项卡。默认权限为“只读”。 这对于本教程来说已足够。
 6. 单击“密钥和访问令牌”选项卡。
@@ -90,7 +90,7 @@ Twitter 使用 OAuth 提供对其 API 的授权访问。 OAuth 是一种身份�
 
 本教程将使用 Windows PowerShell 调用 Web 服务。 其他常用于调用 Web 服务的工具是 [*Curl*][curl]。 Curl 可从[此处][curl-download]下载。
 
-> [!NOTE]
+> [!NOTE]  
 > 在 Windows 中使用 curl 命令时，请使用双引号（而不是单引号）括起选项值。
 
 **获取推文**
@@ -245,7 +245,7 @@ Twitter 使用 OAuth 提供对其 API 的授权访问。 OAuth 是一种身份�
 ## <a name="create-hiveql-script"></a>创建 HiveQL 脚本
 使用 Azure PowerShell，可以一次运行多个 [HiveQL](https://cwiki.apache.org/confluence/display/Hive/LanguageManual) 语句，或者将 HiveQL 语句打包到一个脚本文件中。 在本教程中，将创建 HiveQL 脚本。 脚本文件必须上传到 Azure Blob 存储中。 在下一节中，将使用 Azure PowerShell 运行脚本文件。
 
-> [!NOTE]
+> [!NOTE]  
 > 已将 Hive 脚本文件和包含 10,000 个推文的文件上传到公共 Blob 容器中。 如果要使用已上传的文件，可以跳过本节。
 
 HiveQL 脚本将执行以下操作：
@@ -453,7 +453,7 @@ HiveQL 脚本将执行以下操作：
 ### <a name="submit-a-hive-job"></a>提交 Hive 作业
 使用以下 Windows PowerShell 脚本运行 Hive 脚本。 需要设置第一个变量。
 
-> [!NOTE]
+> [!NOTE]  
 > 要使用最后两部分中上传的推文和 [HiveQL](https://cwiki.apache.org/confluence/display/Hive/LanguageManual) 脚本，请将 $hqlScriptFile 设置为“/tutorials/twitter/twitter.hql”。 要使用已上传到公共 Blob 的推文和 HiveQL 脚本，请将 $hqlScriptFile 设置为“wasb://twittertrend@hditutorialdata.blob.core.windows.net/twitter.hql”。
 
 ```powershell
@@ -529,7 +529,7 @@ Write-Host "==================================" -ForegroundColor Green
 #end region
 ```
 
-> [!NOTE]
+> [!NOTE]  
 > Hive 表使用 \001 作为字段分隔符。 该分隔符在输出中不可见。
 
 在将分析结果放到 Azure Blob 存储中后，可以将数据导出到 Azure SQL 数据库/SQL Server，使用 Power Query 将数据导出到 Excel，或者使用 Hive ODBC 驱动程序将应用程序连接到数据。 有关详细信息，请参阅[将 Apache Sqoop 与 HDInsight 配合使用][hdinsight-use-sqoop]、[使用 HDInsight 分析航班延误数据][hdinsight-analyze-flight-delay-data]、[利用 Power Query 将 Excel 连接到 HDInsight][hdinsight-power-query]，以及[使用 Microsoft Hive ODBC 驱动程序将 Excel 连接到 HDInsight][hdinsight-hive-odbc]。
@@ -543,7 +543,7 @@ Write-Host "==================================" -ForegroundColor Green
 * [使用 Microsoft Hive ODBC 驱动程序将 Excel 连接到 HDInsight][hdinsight-hive-odbc]
 * [将 Apache Sqoop 与 HDInsight 配合使用][hdinsight-use-sqoop]
 
-[curl]: http://curl.haxx.se
+[curl]: https://curl.haxx.se
 [curl-download]: https://curl.haxx.se/download.html
 
 [apache-hive-tutorial]: https://cwiki.apache.org/confluence/display/Hive/Tutorial

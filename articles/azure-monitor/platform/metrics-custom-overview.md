@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: ancav
 ms.component: metrics
-ms.openlocfilehash: 2b3e8877713fde088be2147bbfa8969e351a3f06
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: aacfc98a9132a59c90a8f67d5a3877b75fa59dfe
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53325288"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53605579"
 ---
 # <a name="custom-metrics-in-azure-monitor"></a>Azure Monitor 中的自定义指标
 
@@ -25,7 +25,7 @@ ms.locfileid: "53325288"
 - 使用 Azure Application Insights SDK 检测应用程序并将自定义遥测数据发送到 Azure Monitor。 
 - 在 [Azure VM](collect-custom-metrics-guestos-resource-manager-vm.md)、[虚拟机规模集](collect-custom-metrics-guestos-resource-manager-vmss.md)、[经典 VM](collect-custom-metrics-guestos-vm-classic.md) 或[经典云服务](collect-custom-metrics-guestos-vm-cloud-service-classic.md)上安装 Windows Azure 诊断 (WAD) 扩展，并将性能计数器发送到 Azure Monitor。 
 - 在 Azure Linux VM 上安装 [InfluxData Telegraf 代理](collect-custom-metrics-linux-telegraf.md)，并使用 Azure Monitor 输出插件发送指标。
-- 将自定义指标[直接发送到 Azure Monitor REST API](../../monitoring-and-diagnostics/metrics-store-custom-rest-api.md)：`https://<azureregion>.monitoring.azure.com/<AzureResourceID>/metrics`。
+- 将自定义指标[直接发送到 Azure Monitor REST API](../../azure-monitor/platform/metrics-store-custom-rest-api.md)：`https://<azureregion>.monitoring.azure.com/<AzureResourceID>/metrics`。
 
 将自定义指标发送到 Azure Monitor 时，报告的每个数据点或值必须包括以下信息。
 
@@ -193,6 +193,6 @@ Azure Monitor 针对自定义指标实施以下用量限制：
  - [虚拟机规模集](collect-custom-metrics-guestos-resource-manager-vmss.md)
  - [Azure 虚拟机（经典）](collect-custom-metrics-guestos-vm-classic.md)
  - [使用 Telegraf 代理的 Linux 虚拟机](collect-custom-metrics-linux-telegraf.md)
- - [REST API](../../monitoring-and-diagnostics/metrics-store-custom-rest-api.md)
+ - [REST API](../../azure-monitor/platform/metrics-store-custom-rest-api.md)
  - [经典云服务](collect-custom-metrics-guestos-vm-cloud-service-classic.md)
  

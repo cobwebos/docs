@@ -10,12 +10,12 @@ ms.service: application-insights
 ms.custom: mvc
 ms.topic: tutorial
 manager: carmonm
-ms.openlocfilehash: 9c36920d2d1d201a874abaeeaac9eb965e0e641b
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 820f43a8caa5e0d6d9960985fd1d46271071b0fb
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53084000"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53742824"
 ---
 # <a name="find-and-diagnose-run-time-exceptions-with-azure-application-insights"></a>使用 Azure Application Insights 查找并诊断运行时异常
 
@@ -39,7 +39,7 @@ Azure Application Insights 从应用程序收集遥测数据，帮助确定和�
     - Azure 开发
 - 下载并安装 [Visual Studio Snapshot Debugger](https://aka.ms/snapshotdebugger)。
 - 启用 [Visual Studio 快照调试器](https://docs.microsoft.com/azure/application-insights/app-insights-snapshot-debugger)
-- 将 .NET 应用程序部署到 Azure 并[启用 Application Insights SDK](app-insights-asp-net.md)。 
+- 将 .NET 应用程序部署到 Azure 并[启用 Application Insights SDK](../azure-monitor/app/asp-net.md)。 
 - 本教程跟踪应用程序中异常的标识，以便在开发或测试环境中修改代码来生成异常。 
 
 ## <a name="log-in-to-azure"></a>登录 Azure

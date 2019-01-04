@@ -9,18 +9,18 @@ ms.topic: tutorial
 ms.date: 11/26/2018
 ms.author: tamram
 ms.custom: mvc
-ms.openlocfilehash: c55e63d813c462db8a6c404894b8754f4130d935
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 882a43a75fa720b13d931740818e5ee6e893bcab
+ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53097941"
+ms.lasthandoff: 12/22/2018
+ms.locfileid: "53753330"
 ---
 # <a name="tutorial-upload-image-data-in-the-cloud-with-azure-storage"></a>教程：使用 Azure 存储在云中上传图像数据
 
 本教程是一个系列中的第一部分。 在本教程中，你将了解如何部署一个 Web 应用，它使用 Azure 存储客户端库将图像上传到存储帐户。 完成后，你将具有一个通过 Azure 存储来存储和显示图像的 Web 应用。
 
-# <a name="nettabnet"></a>[\.NET](#tab/net)
+# <a name="nettabdotnet"></a>[\.NET](#tab/dotnet)
 ![图像容器视图](media/storage-upload-process-images/figure2.png)
 
 # <a name="nodejstabnodejs"></a>[Node.js](#tab/nodejs)
@@ -99,7 +99,7 @@ echo $blobStorageAccountKey
 
 ## <a name="create-an-app-service-plan"></a>创建应用服务计划
 
-[应用服务计划](../../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md)指定托管应用的 Web 服务器场的位置、大小和功能。
+[应用服务计划](../../app-service/overview-hosting-plans.md)指定托管应用的 Web 服务器场的位置、大小和功能。
 
 使用 [az appservice plan create](/cli/azure/appservice/plan#az_appservice_plan_create) 命令创建应用服务计划。
 
@@ -111,7 +111,7 @@ az appservice plan create --name myAppServicePlan --resource-group myResourceGro
 
 ## <a name="create-a-web-app"></a>创建 Web 应用
 
-Web 应用为从 GitHub 示例存储库部署的示例应用代码提供承载空间。 使用 [az webapp create](/cli/azure/webapp#az_webapp_create) 命令在 `myAppServicePlan` 应用服务计划中创建 [Web 应用](../../app-service/app-service-web-overview.md)。  
+Web 应用为从 GitHub 示例存储库部署的示例应用代码提供承载空间。 使用 [az webapp create](/cli/azure/webapp#az_webapp_create) 命令在 `myAppServicePlan` 应用服务计划中创建 [Web 应用](../../app-service/overview.md)。  
 
 在以下命令中，将 `<web_app>` 替换为唯一名称。 有效的字符是 `a-z`、`0-9` 和 `-`。 如果 `<web_app>` 不唯一，将收到错误消息：_具有给定名称 `<web_app>` 的网站已存在。_ Web 应用的默认 URL 为 `https://<web_app>.azurewebsites.net`。  
 
@@ -121,7 +121,7 @@ az webapp create --name <web_app> --resource-group myResourceGroup --plan myAppS
 
 ## <a name="deploy-the-sample-app-from-the-github-repository"></a>从 GitHub 存储库部署示例应用
 
-# <a name="nettabnet"></a>[\.NET](#tab/net)
+# <a name="nettabdotnet"></a>[\.NET](#tab/dotnet)
 
 应用服务支持通过多种方式将内容部署到 Web 应用。 在本教程中，将从[公共 GitHub 示例存储库](https://github.com/Azure-Samples/storage-blob-upload-from-webapp)部署 Web 应用。 使用 [az webapp deployment source config](/cli/azure/webapp/deployment/source#az_webapp_deployment_source_config) 命令配置 Web 应用的 GitHub 部署。 将 `<web_app>` 替换为在上一步中创建的 Web 应用的名称。
 
@@ -159,7 +159,7 @@ AzureStorageConfig__AccountKey=<blob_storage_key>
 若要测试 Web 应用，请浏览到已发布应用的 URL。 Web 应用的默认 URL 为 `https://<web_app>.azurewebsites.net`。
 选择“上传照片”区域以选择并上传文件，或者将文件拖放到该区域上。 如果成功上传，图像会消失。
 
-# <a name="nettabnet"></a>[\.NET](#tab/net)
+# <a name="nettabdotnet"></a>[\.NET](#tab/dotnet)
 
 ![ImageResizer 应用](media/storage-upload-process-images/figure1.png)
 
@@ -281,7 +281,7 @@ router.post('/', uploadStrategy, (req, res) => {
 
 导航回到应用，以验证上传到 **thumbnails** 容器的图像是否可见。
 
-# <a name="nettabnet"></a>[\.NET](#tab/net)
+# <a name="nettabdotnet"></a>[\.NET](#tab/dotnet)
 ![图像容器视图](media/storage-upload-process-images/figure2.png)
 
 # <a name="nodejstabnodejs"></a>[Node.js](#tab/nodejs)

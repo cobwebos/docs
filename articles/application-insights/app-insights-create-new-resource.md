@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 12/02/2016
 ms.author: mbullwin
-ms.openlocfilehash: 3c3ff606958503efcf2df5fd99b6e52e4687de4a
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 68155b69c1122d645eca5fe121d32bd9353db2da
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52996262"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "54002716"
 ---
 # <a name="create-an-application-insights-resource"></a>创建 Application Insights 资源
 Azure Application Insights 在 Microsoft Azure *资源*中显示有关应用程序的数据。 因此创建新资源属于[设置 Application Insights 来监视新应用程序][start]的一个环节。 在许多情况下，IDE 可以自动完成资源创建。 但在某些情况下需要手动创建资源（例如，创建分别用于应用程序开发和产品构建的资源）。
@@ -66,18 +66,18 @@ SDK 包含无需编写任何代码即可发送遥测数据的标准模块。 若
 如果需要更多数据，请在几秒后单击“刷新”。
 
 ## <a name="creating-a-resource-automatically"></a>自动创建资源
-可以编写 [PowerShell 脚本](app-insights-powershell.md)来自动创建资源。
+可以编写 [PowerShell 脚本](../azure-monitor/app/powershell.md)来自动创建资源。
 
 ## <a name="next-steps"></a>后续步骤
-* [创建仪表板](app-insights-dashboards.md)
-* [诊断搜索](app-insights-diagnostic-search.md)
-* [探索指标](app-insights-metrics-explorer.md)
-* [编写分析查询](app-insights-analytics.md)
+* [创建仪表板](../azure-monitor/app/app-insights-dashboards.md)
+* [诊断搜索](../azure-monitor/app/diagnostic-search.md)
+* [探索指标](../azure-monitor/app/metrics-explorer.md)
+* [编写分析查询](../azure-monitor/app/analytics.md)
 
 <!--Link references-->
 
-[api]: app-insights-api-custom-events-metrics.md
-[diagnostic]: app-insights-diagnostic-search.md
-[metrics]: app-insights-metrics-explorer.md
+[api]: ../azure-monitor/app/api-custom-events-metrics.md
+[diagnostic]: ../azure-monitor/app/diagnostic-search.md
+[metrics]: ../azure-monitor/app/metrics-explorer.md
 [start]: app-insights-overview.md
 
