@@ -99,7 +99,7 @@ items:
       - name: 分布式跟踪
         href: app/distributed-tracing.md
       - name: 基于日志的和预聚合的指标
-        href: ../application-insights/pre-aggregated-metrics-log-metrics.md?toc=/azure/azure-monitor/toc.json
+        href: app/pre-aggregated-metrics-log-metrics.md
     - name: 容器
       href: insights/container-insights-overview.md
     - name: 虚拟机
@@ -155,7 +155,7 @@ items:
       - name: 工作区
         href: platform/manage-access.md
       - name: 应用程序
-        href: ../application-insights/app-insights-resources-roles-access-control.md?toc=/azure/azure-monitor/toc.json
+        href: app/resources-roles-access-control.md
       - name: IP 地址
         href: app/ip-addresses.md
     - name: 监视应用程序
@@ -273,7 +273,7 @@ items:
           - name: 概述
             href: ../application-insights/app-insights-profiler-overview.md?toc=/azure/azure-monitor/toc.json
           - name: 为应用服务启用 Profiler
-            href: ../application-insights/app-insights-profiler.md?toc=/azure/azure-monitor/toc.json
+            href: app/profiler.md
           - name: 为云服务启用 Profiler
             href: ../application-insights/app-insights-profiler-cloudservice.md?toc=/azure/azure-monitor/toc.json
           - name: 为 Service Fabric 应用程序启用 Profiler
@@ -289,7 +289,7 @@ items:
         - name: 诊断
           href: ../application-insights/app-insights-azure-diagnostics.md?toc=/azure/azure-monitor/toc.json
         - name: 预览
-          href: ../application-insights/app-insights-previews.md?toc=/azure/azure-monitor/toc.json
+          href: app/previews.md
       - name: ASP.NET 应用
         items:
         - name: Web 应用
@@ -304,11 +304,11 @@ items:
           href: app/asp-net-core.md
           items:
           - name: 用于 Linux 应用服务的探查器
-            href: ../application-insights/app-insights-profiler-aspnetcore-linux.md?toc=/azure/azure-monitor/toc.json
+            href: app/profiler-aspnetcore-linux.md
         - name: 控制台
           href: app/console.md
         - name: 应用程序仪表板
-          href: ../application-insights/app-insights-overview-dashboard.md?toc=/azure/azure-monitor/toc.json
+          href: app/overview-dashboard.md
         - name: 收集更多遥测数据
           href: app/asp-net-more.md
         - name: 例外
@@ -316,7 +316,7 @@ items:
         - name: 日志跟踪
           href: app/asp-net-trace-logs.md
         - name: 性能计数器
-          href: ../application-insights/app-insights-performance-counters.md?toc=/azure/azure-monitor/toc.json
+          href: app/performance-counters.md
         - name: 依赖项
           href: app/asp-net-dependencies.md
         - name: 版本注释
@@ -324,7 +324,7 @@ items:
         - name: ApplicationInsights.config
           href: app/configuration-with-applicationinsights-config.md
         - name: 快照调试器
-          href: ../application-insights/app-insights-snapshot-debugger.md?toc=/azure/azure-monitor/toc.json
+          href: app/snapshot-debugger.md
       - name: Java 应用
         items:
         - name: Web 应用
@@ -346,7 +346,7 @@ items:
       - name: Node.js 应用
         items:
         - name: Node.js
-          href: ../application-insights/app-insights-nodejs.md?toc=/azure/azure-monitor/toc.json
+          href: app/nodejs.md
       - name: 网页
         items:
         - name: JavaScript
@@ -356,38 +356,38 @@ items:
       - name: 分布式跟踪
         items:
         - name: 本地转发器
-          href: ../application-insights/opencensus-local-forwarder.md?toc=/azure/azure-monitor/toc.json
+          href: app/opencensus-local-forwarder.md
         - name: Python
-          href: ../application-insights/opencensus-python.md?toc=/azure/azure-monitor/toc.json
+          href: app/opencensus-python.md
         - name: Go
-          href: ../application-insights/opencensus-go.md?toc=/azure/azure-monitor/toc.json
+          href: app/opencensus-go.md
       - name: 其他平台
         items:
         - name: SharePoint 站点
           href: ../application-insights/app-insights-sharepoint.md?toc=/azure/azure-monitor/toc.json
         - name: Dynamics CRM
-          href: ../application-insights/app-insights-sample-mscrm.md?toc=/azure/azure-monitor/toc.json
+          href: app/sample-mscrm.md
       - name: 智能检测
         href: ../application-insights/app-insights-proactive-diagnostics.md?toc=/azure/azure-monitor/toc.json
         items:
         - name: 失败异常
-          href: ../application-insights/app-insights-proactive-failure-diagnostics.md?toc=/azure/azure-monitor/toc.json
+          href: app/proactive-failure-diagnostics.md
         - name: 性能异常
-          href: ../application-insights/app-insights-proactive-performance-diagnostics.md?toc=/azure/azure-monitor/toc.json
+          href: app/proactive-performance-diagnostics.md
         - name: 跟踪降级
-          href: ../application-insights/app-insights-proactive-trace-severity.md?toc=/azure/azure-monitor/toc.json
+          href: app/proactive-trace-severity.md
         - name: 异常卷
-          href: ../application-insights/app-insights-proactive-exception-volume.md?toc=/azure/azure-monitor/toc.json
+          href: app/proactive-exception-volume.md
         - name: 内存泄漏
-          href: ../application-insights/app-insights-proactive-potential-memory-leak.md?toc=/azure/azure-monitor/toc.json
+          href: app/proactive-potential-memory-leak.md
         - name: 资源利用率
-          href: ../application-insights/app-insights-proactive-low-utilization-cloud-resources.md?toc=/azure/azure-monitor/toc.json
+          href: app/proactive-low-utilization-cloud-resources.md
         - name: 安全检测
-          href: ../application-insights/app-insights-proactive-application-security-detection-pack.md?toc=/azure/azure-monitor/toc.json
+          href: app/proactive-application-security-detection-pack.md
         - name: Azure 云服务
-          href: ../application-insights/app-insights-proactive-cloud-services.md?toc=/azure/azure-monitor/toc.json
+          href: app/proactive-cloud-services.md
         - name: 管理智能检测规则
-          href: ../application-insights/app-insights-proactive-arm-config.md?toc=/azure/azure-monitor/toc.json
+          href: app/proactive-arm-config.md
       - name: 创建资源
         href: ../application-insights/app-insights-create-new-resource.md?toc=/azure/azure-monitor/toc.json
       - name: 故障排除
@@ -433,7 +433,7 @@ items:
       - name: 配置管理器
         href: platform/collect-sccm.md
       - name: 使用 SCOM 进行的应用程序性能监视
-        href: ../application-insights/app-insights-scom.md?toc=/azure/azure-monitor/toc.json
+        href: app/scom.md
     - name: 路由数据
       items:
       - name: 存档活动日志
@@ -472,13 +472,13 @@ items:
         - name: 搜索
           href: app/diagnostic-search.md
         - name: 度量值
-          href: ../application-insights/app-insights-metrics-explorer.md?toc=/azure/azure-monitor/toc.json
+          href: app/metrics-explorer.md
         - name: 实时流
-          href: ../application-insights/app-insights-live-stream.md?toc=/azure/azure-monitor/toc.json
+          href: app/live-stream.md
         - name: 应用程序地图
           href: app/app-map.md
         - name: 事务诊断
-          href: ../application-insights/app-insights-transaction-diagnostics.md?toc=/azure/azure-monitor/toc.json
+          href: app/transaction-diagnostics.md
         - name: HockeyApp 数据
           href: app/hockeyapp-bridge-app.md
       - name: Visual Studio
@@ -830,7 +830,7 @@ items:
     - name: 使用情况和预估成本
       href: platform/usage-estimated-costs.md
     - name: 应用程序使用情况和成本
-      href: ../application-insights/app-insights-pricing.md?toc=/azure/azure-monitor/toc.json
+      href: app/pricing.md
     - name: 日志数据使用情况和成本
       href: platform/manage-cost-storage.md
   - name: 自动化
@@ -844,13 +844,13 @@ items:
       - name: 应用程序
         items:
         - name: 创建 Application Insights 资源
-          href: ../application-insights/app-insights-powershell.md?toc=/azure/azure-monitor/toc.json
+          href: app/powershell.md
         - name: 创建资源
-          href: ../application-insights/app-insights-powershell-script-create-resource.md?toc=/azure/azure-monitor/toc.json
+          href: app/powershell-script-create-resource.md
         - name: 设置警报
-          href: ../application-insights/app-insights-powershell-alerts.md?toc=/azure/azure-monitor/toc.json
+          href: app/powershell-alerts.md
         - name: 获取 Azure 诊断
-          href: ../application-insights/app-insights-powershell-azure-diagnostics.md?toc=/azure/azure-monitor/toc.json
+          href: app/powershell-azure-diagnostics.md
     - name: Azure CLI 示例
       href: platform/cli-samples.md
     - name: 资源管理器模板
@@ -880,7 +880,7 @@ items:
       - name: 筛选和预处理遥测数据
         href: app/api-filtering-sampling.md
       - name: 采样
-        href: ../application-insights/app-insights-sampling.md?toc=/azure/azure-monitor/toc.json
+        href: app/sampling.md
     - name: 监视解决方案
       items:
       - name: 设计和生成
@@ -908,7 +908,7 @@ items:
     - name: NuGet 包
       href: ../application-insights/app-insights-nuget.md?toc=/azure/azure-monitor/toc.json
     - name: 平台支持
-      href: ../application-insights/app-insights-platforms.md?toc=/azure/azure-monitor/toc.json
+      href: app/platforms.md
   - name: Application Insights 数据模型
     items:
     - name: 概述
@@ -989,9 +989,9 @@ items:
     - name: Log Analytics 服务更新
       href: https://azure.microsoft.com/updates/?product=log-analytics
     - name: SDK 发行说明
-      href: ../application-insights/app-insights-release-notes.md
+      href: app/release-notes.md
     - name: Developer Analytics Tools 发行说明
-      href: ../application-insights/app-insights-release-notes-vsix.md
+      href: app/release-notes-vsix.md
   - name: Windows 分析
     href: https://www.microsoft.com/en-us/WindowsForBusiness/windows-analytics
   - name: 区域可用性
@@ -1004,9 +1004,9 @@ items:
     href: https://stackoverflow.com/search?q=monitoring
   - name: 代码示例
     href: https://azure.microsoft.com/resources/samples/?service=monitor
-ms.openlocfilehash: 1b80318e470995d060467f42aa61cdf6f4e8f34b
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 0cfca3a41157065f2e64c0da8062ebd011375f70
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53974567"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54016101"

@@ -12,15 +12,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/16/2018
+ms.date: 01/02/2019
 ms.author: mabrigg
 ms.reviewer: ppacent
-ms.openlocfilehash: a6f18222e5683d2d9663b699a8f6bab399d4f45b
-ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.openlocfilehash: 6cf32ba50e83b95d51493244ef8e8646433b0b02
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51299854"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54024937"
 ---
 # <a name="azure-stack-public-key-infrastructure-certificate-requirements"></a>Azure Stack 公钥基础结构证书要求
 
@@ -31,7 +31,7 @@ Azure Stack 有一个公共基础结构网络，该网络使用分配给少量 A
 - 如何在部署期间准备、验证和使用这些证书
 
 > [!Note]  
-> 在部署期间，必须将证书复制到与要部署的标识提供者（Azure AD 或 AD FS）匹配的部署文件夹中。 如果将单个证书用于所有终结点，必须将该证书文件复制到下表所述的每个部署文件夹。 该文件夹的结构已预先在部署虚拟机中构建，路径为：C:\CloudDeployment\Setup\Certificates。 
+> 在部署期间，必须将证书复制到与要部署的标识提供者（Azure AD 或 AD FS）匹配的部署文件夹中。 如果将单个证书用于所有终结点，必须将该证书文件复制到下表所述的每个部署文件夹。 部署虚拟机中已预先构建了文件夹结构，路径为：C:\CloudDeployment\Setup\Certificates。 
 
 ## <a name="certificate-requirements"></a>证书要求
 以下列表描述了部署 Azure Stack 时需要满足的证书要求： 
@@ -39,13 +39,13 @@ Azure Stack 有一个公共基础结构网络，该网络使用分配给少量 A
 - Azure Stack 基础结构必须能够通过网络访问证书中发布的证书颁发机构的证书吊销列表 (CRL) 位置。 此 CRL 必须是 http 终结点
 - 轮换证书时，证书必须由签署部署时提供的证书的同一内部证书颁发机构颁发，或者由上述任何公共证书颁发机构颁发
 - 不支持使用自签名证书
-- 对于部署和轮换，可以使用单一证书覆盖证书的“使用者名称”和“使用者可选名称(SAN)”字段中的所有命名空间，也可以为下面你计划使用的 Azure Stack 服务所需的每个命名空间使用单独的证书。 这两种方法需要将它们必需的例如终结点使用通配符**KeyVault**并**KeyVaultInternal**。 
-- 证书的 PFX 加密应为 3DES。 
-- 证书签名算法不应为 SHA1。 
-- 证书格式必须是 PFX，因为安装 Azure Stack 时需要公钥和私钥。 私钥必须具有本地计算机密钥属性设置。
-- PFX 加密必须的 3DES （从 Windows 10 客户端或 Windows Server 2016 证书存储导出时，这是默认值）。
-- 证书 pfx 文件的“密钥用途”字段中必须包含“数字签名”和“KeyEncipherment”值。
-- 证书 pfx 文件的“增强型密钥使用”字段中必须包含“服务器身份验证(1.3.6.1.5.5.7.3.1)”和“客户端身份验证(1.3.6.1.5.5.7.3.2)”值。
+- 对于部署和轮换，可以使用单一证书覆盖证书的“使用者名称”和“使用者可选名称(SAN)”字段中的所有命名空间，也可以为下面你计划使用的 Azure Stack 服务所需的每个命名空间使用单独的证书。 这两种方法都需要将通配符用于需要它们的终结点，例如 **KeyVault** 和 **KeyVaultInternal**。 
+- 证书的 PFX 加密应当为 3DES。 
+- 证书签名算法不能为 SHA1。 
+- 证书格式必须是 PFX，因为安装 Azure Stack 时需要公钥和私钥。 私钥必须设置本地计算机密钥属性。
+- PFX 加密必须是 3DES（从 Windows 10 客户端或 Windows Server 2016 证书存储进行导出时，这是默认值）。
+- 证书 pfx 文件中其"密钥用法"字段必须包含值"数字签名"和"KeyEncipherment"。
+- 证书 pfx 文件必须具有"增强型密钥用法"字段中的"服务器身份验证 (1.3.6.1.5.5.7.3.1)"和"客户端身份验证 (1.3.6.1.5.5.7.3.2)"的值。
 - 证书的“颁发给:”字段不能与其“颁发者:”字段相同。
 - 部署时，所有证书 pfx 文件的密码都必须相同
 - 证书 pfx 的密码必须是复杂密码。
@@ -65,7 +65,7 @@ Azure Stack 有一个公共基础结构网络，该网络使用分配给少量 A
 对于部署，[region] 和 [externalfqdn] 值必须与针对 Azure Stack 系统选择的区域和外部域名相匹配。 例如，如果区域名称为 *Redmond*，外部域名为 *contoso.com*，则 DNS 名称的格式为 *&lt;prefix>.redmond.contoso.com*。 *&lt;prefix>* 值由 Microsoft 预先指定，描述证书保护的终结点。 此外，外部基础结构终结点的 *&lt;prefix>* 值取决于使用特定终结点的 Azure Stack 服务。 
 
 > [!note]  
-> 对于生产环境中，我们建议为每个终结点生成单个证书并将其复制到相应的目录中。 对于开发环境，可以作为单个通配符证书，其中涵盖使用者和使用者可选名称 (SAN) 字段复制到所有目录中的所有命名空间提供的证书。 单个证书，其中涵盖所有终结点和服务是不安全状态，因此仅用于开发。 请记住，这两个选项都要求对 **acs** 和 Key Vault 等需要通配符证书的终结点使用此类证书。 
+> 对于生产环境，我们建议为每个终结点生成单独的证书并将其复制到相应的目录中。 对于开发环境，可以提供单个通配符证书作为证书，在其中涵盖“使用者”和“使用者可选名称”(SAN) 字段中的所有命名空间，并将该证书复制到所有目录中。 使用涵盖所有终结点和服务的单个证书是一种不安全的方式，因此仅用于开发。 请记住，这两个选项都要求对 **acs** 和 Key Vault 等需要通配符证书的终结点使用此类证书。 
 
 | 部署文件夹 | 所需的证书使用者和使用者可选名称 (SAN) | 范围（按区域） | 子域命名空间 |
 |-------------------------------|------------------------------------------------------------------|----------------------------------|-----------------------------|
@@ -112,7 +112,7 @@ Azure Stack 有一个公共基础结构网络，该网络使用分配给少量 A
 
 <sup>2</sup> 不能使用 &#42;.appservice.*&lt;region>.&lt;fqdn>* 通配符证书来取代这三个证书（api.appservice.*&lt;region>.&lt;fqdn>*、ftp.appservice.*&lt;region>.&lt;fqdn>* 和 sso.appservice.*&lt;region>.&lt;fqdn>*）。 应用服务明确要求对这些终结点使用不同的证书。 
 
-## <a name="learn-more"></a>了解详细信息
+## <a name="learn-more"></a>了解详情
 了解如何[为 Azure Stack 部署生成 PKI 证书](azure-stack-get-pki-certs.md)。 
 
 ## <a name="next-steps"></a>后续步骤

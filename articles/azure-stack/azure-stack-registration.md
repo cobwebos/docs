@@ -12,15 +12,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/28/2018
+ms.date: 01/02/2019
 ms.author: jeffgilb
 ms.reviewer: brbartle
-ms.openlocfilehash: b036f0b1c38222b6bb3ebee1a3fab0d1613260f7
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.openlocfilehash: 15c86d1d5af3ba4d373f8dfb199d9ea56edb60b4
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53811012"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "54002478"
 ---
 # <a name="register-azure-stack-with-azure"></a>将 Azure Stack 注册到 Azure
 
@@ -31,7 +31,7 @@ ms.locfileid: "53811012"
 > [!IMPORTANT]  
 > 需要注册才能支持完整的 Azure Stack 功能，包括在市场中提供商品。 此外，如果你在使用即用即付计费模式时未注册，则将违反 Azure Stack 许可条款。 若要了解有关 Azure Stack 授权模型的详细信息，请参阅[“如何购买”页](https://azure.microsoft.com/overview/azure-stack/how-to-buy/)。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>系统必备
 
 在注册之前，需将以下项准备就绪：
 
@@ -309,6 +309,11 @@ Run: get-azurestackstampinformation
     [ ![区域管理磁贴](media/azure-stack-registration/admin1sm.png "区域管理磁贴") ](media/azure-stack-registration/admin1.png#lightbox)
 
 3. 选择“属性”。 此边栏选项卡显示的状态和你的环境的详细信息。 状态可以是**Registered**或**未注册**。 如果注册，它还显示的 Azure 订阅 ID，用于注册 Azure Stack，以及注册的资源组和名称。
+
+或者，可以验证注册是否成功通过 Marketplace 管理功能。 如果看到 Marketplace 管理边栏选项卡中的 marketplace 项的列表，你的注册已成功。 但是，在连接断开环境中，您将不能查看在 Marketplace 管理的 marketplace 项。 但是，脱机工具可用于验证注册。
+
+> [!NOTE]
+> 完成注册后，将不再显示提示未注册的活动警告。 在断开连接的情况下，您将看到一条消息，在 Marketplace 管理要求你注册并激活 Azure Stack，即使已成功注册。
 
 ## <a name="renew-or-change-registration"></a>续订或更改注册
 
