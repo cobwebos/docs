@@ -10,12 +10,12 @@ ms.service: application-insights
 ms.custom: mvc
 ms.topic: tutorial
 manager: carmonm
-ms.openlocfilehash: 50d2545d5145f1d93a1ea9fed3e4f98b474d41b2
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.openlocfilehash: a67f8c0f6be1c388c4138ee0269d7ad8b76d8c4c
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2018
-ms.locfileid: "29178185"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53744321"
 ---
 # <a name="create-custom-kpi-dashboards-using-azure-application-insights"></a>使用 Azure Application Insights 创建自定义 KPI 仪表板
 
@@ -34,10 +34,10 @@ ms.locfileid: "29178185"
 
 完成本教程：
 
-- 将 .NET 应用程序部署到 Azure 并[启用 Application Insights SDK](app-insights-asp-net.md)。 
+- 将 .NET 应用程序部署到 Azure 并[启用 Application Insights SDK](../azure-monitor/app/asp-net.md)。 
 
 ## <a name="log-in-to-azure"></a>登录 Azure
-登录 Azure 门户 ([https://portal.azure.com](https://portal.azure.com))。
+通过 [https://portal.azure.com](https://portal.azure.com) 登录到 Azure 门户。
 
 ## <a name="create-a-new-dashboard"></a>创建新的仪表板
 单个仪表板可以包含来自多个应用程序、资源组和订阅的资源。  通过为应用程序创建新的仪表板开始本教程。  

@@ -10,12 +10,13 @@ ms.component: computer-vision
 ms.topic: overview
 ms.date: 08/10/2017
 ms.author: kefre
-ms.openlocfilehash: 09a7f02df1102e42bc45b4615a2af4235372bcdc
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.custom: seodec18
+ms.openlocfilehash: acd6d41e8b6d1fb834697ec3d026419ee6b69ec9
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52957021"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53582348"
 ---
 # <a name="what-is-computer-vision-api-version-10"></a>什么是计算机视觉 API 版本 1.0？
 

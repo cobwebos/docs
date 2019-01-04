@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: overview
-ms.date: 09/11/2018
+ms.date: 12/27/2018
 ms.author: alkohli
-ms.openlocfilehash: 9dd519f8efc9700f7a747aa37a9c02414f3e1865
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: c0793cd4adc5359aaa2282eb2505c257315c056f
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49093878"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53793387"
 ---
 # <a name="use-the-local-web-ui-to-administer-your-data-box"></a>使用本地 Web UI 管理 Data Box
 
@@ -25,8 +25,7 @@ Data Box 的本地 Web UI 用于设备的初始配置。 还可以使用本地 W
 
 - 生成支持包
 - 关闭或重启设备
-- 安全地擦除设备中的数据
-- 监视设备的可用容量
+- 查看设备的可用容量
 - 跳过校验和验证 
 
 ## <a name="generate-support-package"></a>生成支持包

@@ -16,16 +16,16 @@ ms.topic: overview
 ms.date: 10/09/2018
 ms.author: wesmc
 ms.custom: seodec18
-ms.openlocfilehash: ac8d5ddb843227e5c5d8e7508c3ea46946f4850e
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 2dc12c7250e6747359c8f3813a84537f98bc69d6
+ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53257873"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53993869"
 ---
 # <a name="introduction-to-azure-app-service-on-linux"></a>Linux 上的 Azure 应用服务简介
 
-[Web 应用](../app-service-web-overview.md)是一个完全托管的计算平台，非常适合用来托管网站和 Web 应用程序。 客户可以使用 Linux 应用服务在 Linux 本地针对受支持的应用程序堆栈托管 Web 应用。 以下部分列出了目前受支持的应用程序堆栈。
+[Web 应用](../overview.md)是一个完全托管的计算平台，非常适合用来托管网站和 Web 应用程序。 客户可以使用 Linux 应用服务在 Linux 本地针对受支持的应用程序堆栈托管 Web 应用。 以下部分列出了目前受支持的应用程序堆栈。
 
 ## <a name="languages"></a>语言
 
@@ -63,7 +63,7 @@ Linux 应用服务支持大量内置映像，以便提高开发人员工作效�
 
 ## <a name="scaling"></a>扩展
 
-* 客户可以通过更改[应用服务计划](https://docs.microsoft.com/azure/app-service/azure-web-sites-web-hosting-plans-in-depth-overview?toc=%2fazure%2fapp-service-web%2ftoc.json)的层，增加或减少 Web 应用
+* 客户可以通过更改[应用服务计划](https://docs.microsoft.com/azure/app-service/overview-hosting-plans?toc=%2fazure%2fapp-service-web%2ftoc.json)的层，增加或减少 Web 应用
 
 ## <a name="locations"></a>位置
 
@@ -93,7 +93,7 @@ Linux 上的应用服务仅支持[基本、标准和高级](https://azure.micros
 以下文章将通过使用各种语言编写的 Web 应用让你开始使用 Linux 上的应用服务：
 
 * [.NET Core](quickstart-dotnetcore.md)
-* [PHP](https://docs.microsoft.com/en-us/azure/app-service/containers/quickstart-php)
+* [PHP](https://docs.microsoft.com/azure/app-service/containers/quickstart-php)
 * [Node.js](quickstart-nodejs.md)
 * [Java](quickstart-java.md)
 * [Python](quickstart-python.md)
@@ -105,7 +105,7 @@ Linux 上的应用服务仅支持[基本、标准和高级](https://azure.micros
 
 * [适用于 Linux 的应用服务常见问题解答](app-service-linux-faq.md)
 * [对 Linux 上的应用服务的 SSH 支持](app-service-linux-ssh-support.md)
-* [设置应用服务中的过渡环境](../../app-service/web-sites-staged-publishing.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)
+* [设置应用服务中的过渡环境](../../app-service/deploy-staging-slots.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)
 * [Docker 中心持续部署](app-service-linux-ci-cd.md)
 
 如有问题和疑问，请在[我们的论坛](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazurewebsitespreview)上发帖。

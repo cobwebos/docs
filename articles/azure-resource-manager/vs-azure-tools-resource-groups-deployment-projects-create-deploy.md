@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/02/2018
 ms.author: tomfitz
-ms.openlocfilehash: c5f1c5add069be99f7a6f467f6e3e2bd9c2b3535
-ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
+ms.openlocfilehash: 082170d6f8bfb687195de87cde4247697571b0d6
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45543082"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53715913"
 ---
 # <a name="creating-and-deploying-azure-resource-groups-through-visual-studio"></a>通过 Visual Studio 创建和部署 Azure 资源组
 使用 Visual Studio 可以创建一个项目，用于将基础结构和代码部署到 Azure。 例如，可以为应用定义 Web 主机、网站和数据库，并将该基础结构与代码一起部署。 Visual Studio 许多不同的入门模板用于部署常见方案。 本文部署 Web 应用和 SQL 数据库。  
@@ -132,7 +132,7 @@ Visual Studio 还提供 intellisense，帮助你了解在编辑模板时哪些�
     ![编辑参数按钮](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/edit-parameters.png)
 4. 提供空值参数的值，并选择“保存”按钮。 空值参数为 **hostingPlanName**、**administratorLogin**、**administratorLoginPassword** 和 **databaseName**。
    
-    **hostingPlanName** 指定要创建的[应用服务计划](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md)的名称。 
+    **hostingPlanName** 指定要创建的[应用服务计划](../app-service/overview-hosting-plans.md)的名称。 
    
     **administratorLogin** 指定 SQL Server 管理员的用户名。 请勿使用常用的管理员名称，如 **sa** 或 **admin**。 
    

@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 09/29/2018
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: f08de2398174363604576874627026dcc6199ac5
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: dd6d25d05f59d9561eadb0b55d2a1ec528c27b56
+ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53104656"
+ms.lasthandoff: 12/22/2018
+ms.locfileid: "53753942"
 ---
 # <a name="tutorial-automate-resizing-uploaded-images-using-event-grid"></a>教程：使用事件网格自动调整上传图像的大小
 
@@ -110,7 +110,7 @@ myContainerName=thumbnails FUNCTIONS_EXTENSION_VERSION=~2
 
 ## <a name="deploy-the-function-code"></a>部署函数代码 
 
-# <a name="nettabnet"></a>[\.NET](#tab/net)
+# <a name="nettabdotnet"></a>[\.NET](#tab/dotnet)
 
 [GitHub](https://github.com/Azure-Samples/function-image-upload-resize) 上提供可以重设大小的示例 C# 脚本 (.csx)。 使用 [az functionapp deployment source config](/cli/azure/functionapp/deployment/source#config) 命令将此函数代码项目部署到函数应用。 
 

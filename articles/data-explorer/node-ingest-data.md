@@ -8,12 +8,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 10/25/2018
-ms.openlocfilehash: c638369efc89ca4442b69c9337827fe3872fd197
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: a7ebceff18016a5aa527a032a644d2723aceee7a
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53085954"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53558560"
 ---
 # <a name="quickstart-ingest-data-using-the-azure-data-explorer-node-library"></a>快速入门：使用 Azure 数据资源管理器 Node 库引入数据
 
@@ -42,19 +42,23 @@ npm i --save azure-kusto-ingest azure-kusto-data
 从库中导入类
 
 ```javascript
-const KustoClient = require('azure-kusto-data').KustoClient;
-const KustoIngestClient = require('azure-kusto-ingest').KustoIngestClient;
-const KustoConnectionStringBuilder = require('azure-kusto-ingest').KustoConnectionStringBuilder;
-```
 
+const KustoConnectionStringBuilder = require("azure-kusto-data").KustoConnectionStringBuilder;
+const KustoClient = require("azure-kusto-data").Client;
+const KustoIngestClient = require("azure-kusto-ingest").IngestClient;
+const IngestionProperties = require("azure-kusto-ingest").IngestionProperties;
+const { DataFormat } = require("azure-kusto-ingest").IngestionPropertiesEnums;
+const { BlobDescriptor } = require("azure-kusto-ingest").IngestionDescriptors;
+
+```
 Azure 数据资源管理器使用 Azure Active Directory 租户 ID，以对应用程序进行身份验证。 若要查找租户 ID，请按[查找 Office 365 租户 ID](https://docs.microsoft.com/onedrive/find-your-office-365-tenant-id) 中的说明操作。
 
 为 `authorityId`、`kustoUri`、`kustoIngestUri` 和 `kustoDatabase` 设置值，然后运行以下代码。
 
 ```javascript
 const authorityId = "<TenantId>";
-const kustoUri = "https://<ClusterName>.<Region>.kusto.windows.net:443/";
-const kustoIngestUri = "https://ingest-<ClusterName>.<Region>.kusto.windows.net:443/";
+const kustoUri = "https://<ClusterName>.<Region>.kusto.windows.net:443";
+const kustoIngestUri = "https://ingest-<ClusterName>.<Region>.kusto.windows.net:443";
 const kustoDatabase  = "<DatabaseName>";
 ```
 
@@ -74,14 +78,10 @@ const destTableMapping = "StormEvents_CSV_Mapping";
 导入其他类并设置数据源文件的常数。 此示例使用 Azure Blob 存储上托管的示例文件。 StormEvents 示例数据集包含[美国国家环境信息中心](https://www.ncdc.noaa.gov/stormevents/)中与天气相关的数据。
 
 ```javascript
-from azure.storage.blob import BlockBlobService
-from azure.kusto.ingest import KustoIngestClient, IngestionProperties, FileDescriptor, BlobDescriptor, DataFormat, ReportLevel, ReportMethod
-
 const container = "samplefiles";
 const account = "kustosamplefiles";
 const sas = "?st=2018-08-31T22%3A02%3A25Z&se=2020-09-01T22%3A02%3A00Z&sp=r&sv=2018-03-28&sr=b&sig=LQIbomcKI8Ooz425hWtjeq6d61uEaq21UVX7YrM61N4%3D";
 const filePath = "StormEvents.csv";
-const fileSize = 64158321; // in bytes
 const blobPath = `https://${account}.blob.core.windows.net/${container}/${filePath}${sas}`;
 ```
 
@@ -91,7 +91,7 @@ const blobPath = `https://${account}.blob.core.windows.net/${container}/${filePa
 
 ```javascript
 const kustoClient = new KustoClient(kcsbData);
-const createTableCommand = ".create table StormEvents (StartTime: datetime, EndTime: datetime, EpisodeId: int, EventId: int, State: string, EventType: string, InjuriesDirect: int, InjuriesIndirect: int, DeathsDirect: int, DeathsIndirect: int, DamageProperty: int, DamageCrops: int, Source: string, BeginLocation: string, EndLocation: string, BeginLat: real, BeginLon: real, EndLat: real, EndLon: real, EpisodeNarrative: string, EventNarrative: string, StormSummary: dynamic)";
+const createTableCommand = `.create table ${destTable} (StartTime: datetime, EndTime: datetime, EpisodeId: int, EventId: int, State: string, EventType: string, InjuriesDirect: int, InjuriesIndirect: int, DeathsDirect: int, DeathsIndirect: int, DamageProperty: int, DamageCrops: int, Source: string, BeginLocation: string, EndLocation: string, BeginLat: real, BeginLon: real, EndLat: real, EndLon: real, EpisodeNarrative: string, EventNarrative: string, StormSummary: dynamic)`;
 
 kustoClient.executeMgmt(kustoDatabase, createTableCommand, (err, results) => {
     console.log(result.primaryResults[0]);
@@ -103,7 +103,7 @@ kustoClient.executeMgmt(kustoDatabase, createTableCommand, (err, results) => {
 将传入的 CSV 数据映射到创建表时使用的列名称和数据类型。
 
 ```javascript
-const createMappingCommand = `.create table StormEvents ingestion csv mapping ${destTableMapping} '[{\"Name\":\"StartTime\",\"datatype\":\"datetime\",\"Ordinal\":0}, {\"Name\":\"EndTime\",\"datatype\":\"datetime\",\"Ordinal\":1},{\"Name\":\"EpisodeId\",\"datatype\":\"int\",\"Ordinal\":2},{\"Name\":\"EventId\",\"datatype\":\"int\",\"Ordinal\":3},{\"Name\":\"State\",\"datatype\":\"string\",\"Ordinal\":4},{\"Name\":\"EventType\",\"datatype\":\"string\",\"Ordinal\":5},{\"Name\":\"InjuriesDirect\",\"datatype\":\"int\",\"Ordinal\":6},{\"Name\":\"InjuriesIndirect\",\"datatype\":\"int\",\"Ordinal\":7},{\"Name\":\"DeathsDirect\",\"datatype\":\"int\",\"Ordinal\":8},{\"Name\":\"DeathsIndirect\",\"datatype\":\"int\",\"Ordinal\":9},{\"Name\":\"DamageProperty\",\"datatype\":\"int\",\"Ordinal\":10},{\"Name\":\"DamageCrops\",\"datatype\":\"int\",\"Ordinal\":11},{\"Name\":\"Source\",\"datatype\":\"string\",\"Ordinal\":12},{\"Name\":\"BeginLocation\",\"datatype\":\"string\",\"Ordinal\":13},{\"Name\":\"EndLocation\",\"datatype\":\"string\",\"Ordinal\":14},{\"Name\":\"BeginLat\",\"datatype\":\"real\",\"Ordinal\":16},{\"Name\":\"BeginLon\",\"datatype\":\"real\",\"Ordinal\":17},{\"Name\":\"EndLat\",\"datatype\":\"real\",\"Ordinal\":18},{\"Name\":\"EndLon\",\"datatype\":\"real\",\"Ordinal\":19},{\"Name\":\"EpisodeNarrative\",\"datatype\":\"string\",\"Ordinal\":20},{\"Name\":\"EventNarrative\",\"datatype\":\"string\",\"Ordinal\":21},{\"Name\":\"StormSummary\",\"datatype\":\"dynamic\",\"Ordinal\":22}]'`;
+const createMappingCommand = `.create table ${destTable} ingestion csv mapping '${destTableMapping}' '[{"Name":"StartTime","datatype":"datetime","Ordinal":0}, {"Name":"EndTime","datatype":"datetime","Ordinal":1},{"Name":"EpisodeId","datatype":"int","Ordinal":2},{"Name":"EventId","datatype":"int","Ordinal":3},{"Name":"State","datatype":"string","Ordinal":4},{"Name":"EventType","datatype":"string","Ordinal":5},{"Name":"InjuriesDirect","datatype":"int","Ordinal":6},{"Name":"InjuriesIndirect","datatype":"int","Ordinal":7},{"Name":"DeathsDirect","datatype":"int","Ordinal":8},{"Name":"DeathsIndirect","datatype":"int","Ordinal":9},{"Name":"DamageProperty","datatype":"int","Ordinal":10},{"Name":"DamageCrops","datatype":"int","Ordinal":11},{"Name":"Source","datatype":"string","Ordinal":12},{"Name":"BeginLocation","datatype":"string","Ordinal":13},{"Name":"EndLocation","datatype":"string","Ordinal":14},{"Name":"BeginLat","datatype":"real","Ordinal":16},{"Name":"BeginLon","datatype":"real","Ordinal":17},{"Name":"EndLat","datatype":"real","Ordinal":18},{"Name":"EndLon","datatype":"real","Ordinal":19},{"Name":"EpisodeNarrative","datatype":"string","Ordinal":20},{"Name":"EventNarrative","datatype":"string","Ordinal":21},{"Name":"StormSummary","datatype":"dynamic","Ordinal":22}]'`;
 
 kustoClient.executeMgmt(kustoDatabase, createMappingCommand, (err, results) => {
     console.log(result.primaryResults[0]);
@@ -115,15 +115,12 @@ kustoClient.executeMgmt(kustoDatabase, createMappingCommand, (err, results) => {
 将一条消息排入队列，以便从 blob 存储中提取数据并将该数据引入到 Azure 数据资源管理器。
 
 ```javascript
-const { DataFormat, JsonColumnMapping } =  require("azure-kusto-ingest").IngestionPropertiesEnums;
-const { BlobDescriptor } = require("azure-kusto-ingest").Descriptors;
-const ingestClient = new KustoIngestClient(kcsbIngest);
-
-
+const defaultProps  = new IngestionProperties(kustoDatabase, destTable, DataFormat.csv, null,destTableMapping, {'ignoreFirstRecord': 'true'});
+const ingestClient = new KustoIngestClient(kcsbIngest, defaultProps);
 // All ingestion properties are documented here: https://docs.microsoft.com/azure/kusto/management/data-ingest#ingestion-properties
-const ingestionProps  = new IngestionProperties(kustoDatabase, destTable, DataFormat.csv, null,destTableMapping, {'ignoreFirstRecord': 'true'});
+
 const blobDesc = new BlobDescriptor(blobPath, 10);
-ingestClient.ingestFromBlob(blobDesc,ingestionProps, (err) => {
+ingestClient.ingestFromBlob(blobDesc,null, (err) => {
     if (err) throw new Error(err);
 });
 ```
@@ -133,9 +130,9 @@ ingestClient.ingestFromBlob(blobDesc,ingestionProps, (err) => {
 验证数据已引入表中。 等待五到十分钟，直到排入队列的引入已计划在 Azure 数据资源管理器中引入和加载数据。 然后运行以下代码，以获取 `StormEvents` 表中记录的计数。
 
 ```javascript
-const query = "StormEvents | count";
+const query = `${destTable} | count`;
 
-kustoClient.execute(kustoDatabse, query, (err, results) => {
+kustoClient.execute(kustoDatabase, query, (err, results) => {
     if (err) throw new Error(err);  
     console.log(results.primaryResults[0].toString());
 });

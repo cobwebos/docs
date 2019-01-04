@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 09/18/2018
 ms.author: zhshang
-ms.openlocfilehash: 34cbb4d2c8a1e84499961802ca7bd07408375345
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: 0cd0dcaf200b1248204efc2d2c0011a94d3c41d3
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53409373"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53720962"
 ---
 # <a name="tutorial-azure-signalr-service-authentication-with-azure-functions"></a>教程：使用 Azure Functions 进行 Azure SignalR 服务身份验证
 
@@ -298,7 +298,7 @@ Web 应用还需要使用一个 HTTP API 来发送聊天消息。 我们将创�
 
 ### <a name="configure-function-app-for-authentication"></a>为函数应用配置身份验证
 
-到目前为止，聊天应用程序以匿名方式工作。 在 Azure 中，我们将使用[应用服务身份验证](https://docs.microsoft.com/azure/app-service/app-service-authentication-overview)来验证用户的身份。 可将已经过身份验证的用户的用户 ID 或用户名传递给 *SignalRConnectionInfo* 绑定，以生成进行用户身份验证时所需的连接信息。
+到目前为止，聊天应用程序以匿名方式工作。 在 Azure 中，我们将使用[应用服务身份验证](https://docs.microsoft.com/azure/app-service/overview-authentication-authorization)来验证用户的身份。 可将已经过身份验证的用户的用户 ID 或用户名传递给 *SignalRConnectionInfo* 绑定，以生成进行用户身份验证时所需的连接信息。
 
 发送消息时，应用可以确定是要发送到所有已连接的客户端，还是仅发送到已对给定用户进行身份验证的客户端。
 

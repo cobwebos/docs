@@ -1,5 +1,5 @@
 ---
-title: 探索 Azure 时序见解 JavaScript 客户端库 | Microsoft Docs
+title: 教程：探索 Azure 时序见解 JavaScript 客户端库 | Microsoft Docs
 description: 了解 Azure 时序见解 JavaScript 客户端库和相关的编程模型。
 author: ashannon7
 manager: cshankar
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 06/05/2018
 ms.author: anshan
 ms.custom: seodec18
-ms.openlocfilehash: 33dcf6f69d1287b4e040b3cccf4164667db2b75f
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: f231fa7624a2babea2a3d91076ad0348b3c9e976
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53269968"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53540363"
 ---
 # <a name="tutorial-explore-the-azure-time-series-insights-javascript-client-library"></a>教程：探索 Azure 时序见解 JavaScript 客户端库
 
@@ -138,7 +138,7 @@ TSI 客户端库 API 重度使用聚合表达式。 使用聚合表达式可以�
 
    **aggregateExpression 参数**
 
-   | 参数 | 说明 | 示例 |
+   | 参数 | Description | 示例 |
    | --------- | ----------- | ------- |
    | `predicateObject` | 数据筛选表达式。 |`{predicateString: "Factory = 'Factory3'"}` |
    | `measureObject`   | 所用度量的属性名称。 | `{property: 'Temperature', type: "Double"}` |
@@ -157,7 +157,7 @@ TSI 客户端库 API 重度使用聚合表达式。 使用聚合表达式可以�
 
    **getAggregates 参数**
 
-   | 参数 | 说明 | 示例 |
+   | 参数 | Description | 示例 |
    | --------- | ----------- | ------- |
    | `token`     | TSI API 的访问令牌。 |  `authContext.getTsiToken()` 有关详细信息，请参阅[身份验证部分](#authentication)。 |
    | `envFQDN`   | TSI 环境的完全限定域名 (FQDN)。 | 例如，Azure 门户中的 `10000000-0000-0000-0000-100000000108.env.timeseries.azure.com`。 |

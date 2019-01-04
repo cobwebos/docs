@@ -11,12 +11,12 @@ ms.component: language-understanding
 ms.topic: quickstart
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: 8f1ff88dc917c665d04f7500c8022e6baf4c94bf
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: 0f59a1b84b78bf5c35d11d79f56cb44d128f042e
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53164460"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53723053"
 ---
 # <a name="quickstart-change-model-using-nodejs"></a>快速入门：使用 Node.js 更改模型
 
@@ -29,7 +29,7 @@ ms.locfileid: "53164460"
 * 本文的 NPM 依赖项包括：[**request**](https://www.npmjs.com/package/request)、[**request-promise**](https://www.npmjs.com/package/request-promise)、[**fs-extra**](https://www.npmjs.com/package/fs-extra)。  
 * [Visual Studio Code](https://code.visualstudio.com/)。
 
-[!INCLUDE [Code is available in LUIS-Samples GitHub repo](../../../includes/cognitive-services-luis-qs-change-model-luis-repo-note.md)]
+[!INCLUDE [Code is available in Azure-Samples GitHub repo](../../../includes/cognitive-services-luis-qs-change-model-luis-repo-note.md)]
 
 ## <a name="example-utterances-json-file"></a>示例话语 JSON 文件
 

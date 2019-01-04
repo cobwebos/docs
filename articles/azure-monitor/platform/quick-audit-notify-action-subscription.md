@@ -9,12 +9,12 @@ ms.date: 09/25/2017
 ms.author: johnkem
 ms.custom: mvc
 ms.component: alerts
-ms.openlocfilehash: 76ed904a90b84e7b0bac86b2ed5380289d7802c1
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 79375dbbc7c966f2e972389788cefe8a0fe3692d
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53387915"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53582671"
 ---
 # <a name="audit-and-receive-notifications-about-important-actions-in-your-azure-subscription"></a>审核和接收关于 Azure 订阅中重要操作的通知
 
@@ -98,4 +98,4 @@ Azure 活动日志提供 Azure 中订阅级别事件的历史记录。 它提供
 在本快速入门中，用户执行了生成活动日志事件的操作，然后创建了活动日志警报，以便在将来再次发生此操作时收到通知。 然后再次执行该操作来测试警报。 Azure 可以提供过去 90 天内的活动日志事件。 如果需要保留超过 90 天的事件，请尝试将活动日志数据与其他监视数据一并存档。
 
 > [!div class="nextstepaction"]
-> [存档监视数据](./../../monitoring-and-diagnostics/monitor-tutorial-archive-monitoring-data.md)
+> [存档监视数据](./../../azure-monitor/learn/tutorial-archive-data.md)

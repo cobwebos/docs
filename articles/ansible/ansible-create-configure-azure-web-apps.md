@@ -8,15 +8,15 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 12/08/2018
-ms.openlocfilehash: a7e7c04b458575cdc9f2608d0c84f0df105bf202
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 4a772977130f5679da2d879cc12738b89be09f1d
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53261749"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53726725"
 ---
 # <a name="create-azure-app-service-web-apps-by-using-ansible"></a>使用 Ansible 创建 Azure 应用服务 Web 应用
-[Azure 应用服务 Web 应用](https://docs.microsoft.com/azure/app-service/app-service-web-overview)（简称 Web 应用）可托管 Web 应用程序、REST API 和移动后端。 可以使用 .NET、NET Core、Java、Ruby、Node.js、PHP 或 Python 等偏好的语言进行开发。
+[Azure 应用服务 Web 应用](https://docs.microsoft.com/azure/app-service/overview)（简称 Web 应用）可托管 Web 应用程序、REST API 和移动后端。 可以使用 .NET、NET Core、Java、Ruby、Node.js、PHP 或 Python 等偏好的语言进行开发。
 
 使用 Ansible 可以在环境中自动部署和配置资源。 本文介绍如何使用 Ansible 通过 Java 运行时创建 Web 应用。 
 
@@ -93,7 +93,7 @@ localhost                  : ok=3    changed=2    unreachable=0    failed=0
 ## <a name="create-an-app-service-by-using-traffic-manager"></a>使用流量管理器创建应用服务
 可以使用 [Azure 流量管理器](https://docs.microsoft.com/azure/app-service/web-sites-traffic-manager)来控制如何将来自 Web 客户端的请求分发到 Azure 应用服务中的应用。 将应用服务终结点添加到 Azure 流量管理器配置文件时，流量管理器会跟踪应用服务应用的状态。 状态包括“正在运行”、“已停止”和“已删除”。 然后，流量管理器就可以确定这些终结点中的哪一个应该接收流量。
 
-在应用服务中，应用在应用服务计划中运行。[](https://docs.microsoft.com/azure/app-service/azure-web-sites-web-hosting-plans-in-depth-overview
+在应用服务中，应用在应用服务计划中运行。[](https://docs.microsoft.com/azure/app-service/overview-hosting-plans
 ) 应用服务计划为要运行的 Web 应用定义一组计算资源。 可以在不同的组中管理应用服务计划和 Web 应用。
 
 本部分提供一个示例 Ansible playbook，它定义了以下资源：
