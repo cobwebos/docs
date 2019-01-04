@@ -21,7 +21,7 @@ ms.lasthandoff: 12/06/2018
 ms.locfileid: "52970155"
 ---
 # <a name="copy-data-from-amazon-redshift-using-azure-data-factory"></a>使用 Azure 数据工厂从 Amazon Redshift 复制数据
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="选择您正在使用的 Data Factory 服务的版本:"]
 > * [版本 1](v1/data-factory-amazon-redshift-connector.md)
 > * [当前版本](connector-amazon-redshift.md)
 
