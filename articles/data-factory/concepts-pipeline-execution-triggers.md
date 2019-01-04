@@ -21,7 +21,7 @@ ms.lasthandoff: 12/04/2018
 ms.locfileid: "52876471"
 ---
 # <a name="pipeline-execution-and-triggers-in-azure-data-factory"></a>Azure 数据工厂中的管道执行和触发器
-> [!div class="op_single_selector" title1="Select the version of the Data Factory service that you're using:"]
+> [!div class="op_single_selector" title1="选择您正在使用的 Data Factory 服务的版本:"]
 > * [版本 1](v1/data-factory-scheduling-and-execution.md)
 > * [当前版本](concepts-pipeline-execution-triggers.md)
 
