@@ -10,29 +10,30 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/24/2018
+ms.date: 01/05/2019
 ms.author: sethm
 ms.reviewer: sijuman
-ms.openlocfilehash: bc57d445c334baeb32dbffda814cb10a35956d03
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: d1b15e634cae0758f1f872750ffd9dd569e83a8e
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44380210"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54036233"
 ---
 # <a name="resource-provider-api-versions-supported-by-profiles-in-azure-stack"></a>Azure Stack 中的配置文件支持的资源提供程序 API 版本
 
 可以在本文中找到 Azure Stack 使用的每个 API 配置文件的资源提供程序和版本号。 本文中的表格列出了每个资源提供程序支持的版本以及配置文件的 API 版本。 每个资源提供程序包含一组资源类型和特定的版本号。
 
 API 配置文件使用三个命名约定：
- - 最新
- - yyyy-mm-dd-hybrid
- - yyyy-mm-dd-profile
+
+ - **latest**
+ - **yyyy-mm-dd-hybrid**
+ - **yyyy-mm-dd-profile**
 
 有关 Azure Stack 的 API 配置文件和版本发布频率的说明，请参阅[在 Azure Stack 中管理 API 版本配置文件](azure-stack-version-profiles.md)。
 
 > [!Note]  
-> **最新** API 配置文件包含最新的资源提供程序 API 版本，未在本文中列出。
+> **最新**API 配置文件包含最新版本的资源提供程序 API，并不在本文中列出。
 
 ## <a name="overview-of-2018--03-01-hybrid"></a>2018-03-01-混合的概述
 
@@ -54,9 +55,9 @@ API 配置文件使用三个命名约定：
 | Resources_Locks | 2016-10-01 |
 | 订阅 | 2016-10-01 |
 
-有关更多的提供程序 API 配置文件中每种资源类型的版本的列表，请参阅[2018年-03-01-混合的详细信息](#details-for-the-2018-03-01-hybrid)配置文件。
+有关 API 配置文件中提供程序的每种资源类型的更多版本列表，请参阅 [2018-03-01-hybrid 配置文件的详细信息](#details-for-the-2018-03-01-hybrid)。
 
-## <a name="overview-of-2018-03-01-hybrid"></a>2018-03-01-混合的概述
+## <a name="overview-of-2018-03-01-hybrid"></a>2018-03-01-hybrid 概述
 
 | 资源提供程序 | Api-version |
 |------------------------------------------------|------------------------------|
@@ -76,13 +77,13 @@ API 配置文件使用三个命名约定：
 | Resources_Locks | 2016-09-01 |
 | 订阅 | 2016-06-1 |
 
-有关更多的提供程序 api 配置文件中每种资源类型的版本的列表，请参阅[2018年-03-01-混合的详细信息](#details-for-the-2018-03-01-hybrid)
+每个资源类型的 API 配置文件中的提供程序版本的列表，请参阅下一节。
 
 ## <a name="details-for-the-2018-03-01-hybrid"></a>2018-03-01-hybrid 的详细信息
 
 ### <a name="microsoftauthorization"></a>Microsoft.Authorization
 
-使用基于角色的访问控制来管理组织中用户可对资源执行的操作。 使用这一组操作可以定义角色、将角色分配给用户或组，以及获取有关权限的信息。 有关详细信息，请参阅[授权](https://docs.microsoft.com/rest/api/authorization/)。
+使用基于角色的访问控制来管理组织中用户可对资源执行的操作。 使用这一组操作可以定义角色、将角色分配给用户或组，以及获取有关权限的信息。 有关详细信息，请参阅[授权](/rest/api/authorization/)。
 
 | 资源类型 | API 版本 |
 |---------------------|--------------------|
@@ -108,7 +109,7 @@ API 配置文件使用三个命名约定：
 
 ### <a name="microsoftcompute"></a>Microsoft.Compute
 
-使用 Azure 计算 API 可通过编程方式访问虚拟机及其支持资源。 有关详细信息，请参阅 [Azure 计算](https://docs.microsoft.com/rest/api/compute/)。
+使用 Azure 计算 API 可通过编程方式访问虚拟机及其支持资源。 有关详细信息，请参阅 [Azure 计算](/rest/api/compute/)。
 
 | 资源类型 | API 版本 |
 |---------------------------------------------------------------|-------------|
@@ -155,7 +156,7 @@ API 配置文件使用三个命名约定：
 
 ### <a name="microsoftkeyvault"></a>Microsoft.KeyVault
 
-管理 Key Vault，以及 Key Vault 中的密钥、机密和证书。 有关详细信息，请参阅 [Azure Key Vault REST API 参考](https://docs.microsoft.com/rest/api/keyvault/)。
+管理 Key Vault，以及 Key Vault 中的密钥、机密和证书。 有关详细信息，请参阅[Azure 密钥保管库 REST API 参考](/rest/api/keyvault/)。
 
 | 资源类型 | API 版本 |
 |-------------------------|--------------|
@@ -166,7 +167,7 @@ API 配置文件使用三个命名约定：
 
 ### <a name="microsoftnetwork"></a>Microsoft.Network
 
-操作调用结果是可用网络云操作列表的表示形式。 有关详细信息，请参阅[操作 REST API](https://docs.microsoft.com/rest/api/operation/)。
+操作调用结果是可用的网络云操作列表的表示形式。 有关详细信息，请参阅[操作 REST API](/rest/api/operation/)。
 
 | 资源类型 | API 版本 |
 |---------------------------|--------------|
@@ -188,7 +189,7 @@ API 配置文件使用三个命名约定：
 
 ### <a name="microsoftresources"></a>Microsoft.Resources
 
-使用 Azure 资源管理器可以部署和管理 Azure 解决方案的基础结构。 可在资源组中组织相关的资源，并使用 JSON 模板部署资源。 有关使用资源管理器部署和管理资源的简介，请参阅 [Azure 资源管理器概述](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)。
+使用 Azure 资源管理器可以部署和管理 Azure 解决方案的基础结构。 可在资源组中组织相关的资源，并使用 JSON 模板部署资源。 有关部署和管理资源使用资源管理器简介，请参阅[Azure 资源管理器概述](../../azure-resource-manager/resource-group-overview.md)。
 
 | 资源类型 | API 版本 |
 |-----------------------------------------|-------------------|
@@ -220,7 +221,7 @@ API 配置文件使用三个命名约定：
 
 ### <a name="microsoftstorage"></a>Microsoft.Storage 
 
-使用存储资源提供程序 (SRP) 可通过编程方式管理存储帐户和密钥。 有关详细信息，请参阅 [Azure 存储资源提供程序 REST API 参考](https://docs.microsoft.com/rest/api/storagerp/)。
+使用存储资源提供程序 (SRP) 可通过编程方式管理存储帐户和密钥。 有关详细信息，请参阅[Azure 存储资源提供程序 REST API 参考](/rest/api/storagerp/)。
 
 | 资源类型 | API 版本 |
 |-------------------------|--------------|
