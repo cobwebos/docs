@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 12/22/2018
 ms.author: sethm
 ms.reviewer: adepue
-ms.openlocfilehash: da481a2b6a20b5b5dbd75a23aafffc0bc0a8fef9
-ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
+ms.openlocfilehash: 15f358f76504436dd6a3cf6a39b10531a9e1b376
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/22/2018
-ms.locfileid: "53752752"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54055160"
 ---
 # <a name="azure-stack-1811-update"></a>Azure Stack 1811 更新
 
@@ -84,7 +84,7 @@ Azure Stack 释放定期修补程序。 请务必安装[最新的 Azure Stack �
  
     之后已正确导入的必需扩展主机证书，您可以恢复 1811年更新在管理员门户中。 Azure Stack 操作员在更新过程将缩放单位放入维护模式，Microsoft 建议，而失败的原因是缺少扩展主机证书不应影响现有工作负荷或服务。  
 
-    安装过程中的此更新，在 Azure Stack 用户门户将不可用在配置扩展主机时。 扩展主机的配置可能需要最多 5 个小时。 在此期间，检查更新的状态或恢复失败的更新安装中使用[Azure Stack 管理员 PowerShell 或特权终结点](azure-stack-monitor-update.md)。
+    安装过程中的此更新，在 Azure Stack 用户门户将不可用在配置扩展主机时。 扩展主机的配置可能需要最多 5 个小时。 在此期间，你可以检查更新状态，或者使用 [Azure Stack 管理员 PowerShell 或特权终结点](azure-stack-monitor-update.md)继续执行某个失败的更新安装。
 
 ## <a name="new-features"></a>新增功能
 
@@ -195,7 +195,7 @@ Azure Stack 释放定期修补程序。 请务必安装[最新的 Azure Stack �
 
 - 运行时[Test-azurestack](azure-stack-diagnostic-test.md)，如果**AzsInfraRoleSummary**或**AzsPortalApiSummary**测试失败，则系统会提示您运行**Test-azurestack**与`-Repair`标志。  如果运行此命令，则将会失败并出现以下错误消息：`Unexpected exception getting Azure Stack health status. Cannot bind argument to parameter 'TestResult' because it is null.`  将在未来的版本中解决此问题。
 
-- 1811 更新的安装期间，Azure Stack 使用门户将不可用在配置扩展主机时。 扩展主机的配置可能需要最多 5 个小时。 在此期间，检查更新的状态或恢复失败的更新安装中使用[Azure Stack 管理员 PowerShell 或特权终结点](azure-stack-monitor-update.md)。 
+- 1811 更新的安装期间，Azure Stack 使用门户将不可用在配置扩展主机时。 扩展主机的配置可能需要最多 5 个小时。 在此期间，你可以检查更新状态，或者使用 [Azure Stack 管理员 PowerShell 或特权终结点](azure-stack-monitor-update.md)继续执行某个失败的更新安装。 
 
 - 在安装期间的 1811年更新，用户门户仪表板可能不可用，并自定义项可能会丢失。 您可以还原到默认设置，通过打开门户设置并选择完成更新后的仪表板**还原默认设置**。
 
