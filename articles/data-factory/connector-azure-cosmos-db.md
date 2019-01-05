@@ -22,7 +22,7 @@ ms.locfileid: "53103789"
 ---
 # <a name="copy-data-to-or-from-azure-cosmos-db-sql-api-by-using-azure-data-factory"></a>使用 Azure 数据工厂在 Azure Cosmos DB (SQL API) 中复制或粘贴数据
 
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="选择您正在使用的 Data Factory 服务的版本:"]
 > * [版本 1](v1/data-factory-azure-documentdb-connector.md)
 > * [当前版本](connector-azure-cosmos-db.md)
 
