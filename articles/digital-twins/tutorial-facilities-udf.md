@@ -1,18 +1,19 @@
 ---
-title: 通过 Azure 数字孪生对空间进行监视 | Microsoft Docs
+title: 教程：通过 Azure 数字孪生对空间进行监视 | Microsoft Docs
 description: 了解如何使用 Azure 数字孪生根据本教程中的步骤来预配空间资源并监视工作条件。
 services: digital-twins
 author: dsk-2015
+ms.custom: seodec18
 ms.service: digital-twins
 ms.topic: tutorial
 ms.date: 10/26/2018
 ms.author: dkshir
-ms.openlocfilehash: a9784860cbc0b6d58f63fb22b7ad676048c8aee6
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: 077dee19bbe32379bc88919117b3c61177828094
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52584190"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53556095"
 ---
 # <a name="tutorial-provision-your-building-and-monitor-working-conditions-with-azure-digital-twins"></a>教程：使用 Azure 数字孪生预配大楼并监视工作条件
 
@@ -267,4 +268,4 @@ ms.locfileid: "52584190"
 > [教程：使用逻辑应用从 Azure 数字孪生空间接收通知](tutorial-facilities-events.md)
 
 > [!div class="nextstepaction"]
-> [教程：使用时序见解可视化和分析 Azure 数字孪生空间中的事件](tutorial-facilities-analyze.md)
+> [教程：使用时序见解直观显示和分析 Azure 数字孪生空间中的事件](tutorial-facilities-analyze.md)

@@ -1,5 +1,5 @@
 ---
-title: 示例：调用计算机视觉 API
+title: 示例：调用分析图像 API - 计算机视觉
 titlesuffix: Azure Cognitive Services
 description: 了解如何通过使用 Azure 认知服务中的 REST 调用计算机视觉 API。
 services: cognitive-services
@@ -10,12 +10,13 @@ ms.component: computer-vision
 ms.topic: sample
 ms.date: 01/20/2017
 ms.author: kefre
-ms.openlocfilehash: e8297fbe59ebe2dea9caf112ebea4517447cf9e0
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.custom: seodec18
+ms.openlocfilehash: 9520d4bcec0e170700aacc5ef4bc69100e333af1
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45981739"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53581702"
 ---
 # <a name="example-how-to-call-the-computer-vision-api"></a>示例：如何调用计算机视觉 API
 
@@ -26,10 +27,10 @@ ms.locfileid: "45981739"
 
 ### <a name="Prerequisites">先决条件</a> 
 图像 URL 或本地存储图像的路径。
-  * 支持的输入方法：原始图像二进制，采用应用程序/业务流程流或图像 URL 的形式
-  * 支持的图像格式：JPEG、PNG、GIF、BMP
+  * 支持的输入方法：原始图像二进制，采用应用程序/八位字节流或图像 URL 的形式
+  * 支持的图像格式：JPEG、PNG、GIF 和 BMP
   * 图像文件大小：小于 4MB
-  * 图像尺寸：大于 50 x 50 像素
+  * 图像维度：大于 50 x 50 像素
   
 下面的示例演示了以下功能：
 
@@ -119,7 +120,7 @@ POST https://westus.api.cognitive.microsoft.com/vision/v2.0/analyze?details=cele
 
 本例中的所有 v1 查询参数的行为均相同。  如果 visualFeatures = categories 未指定，则将隐式启用。
 
-### <a name="Step3">步骤 3：检索并了解 analyze&visualFeatures=Tags, Description 的 JSON 输出 </a>
+### <a name="Step3">步骤 3：检索并了解 analyze&visualFeatures=Tags, Description 的 JSON 输出</a>
 
 下面是一个示例：
 ```
@@ -149,7 +150,7 @@ POST https://westus.api.cognitive.microsoft.com/vision/v2.0/analyze?details=cele
     }
   }
 ```
-字段   | Type  | 内容
+字段   | 类型  | 内容
 ------|------|------|
 标记    | 对象    | 标记数组的顶级对象
 tags[].Name | 字符串    | 标记分类器中的关键字
@@ -209,7 +210,7 @@ description.captions[].confidence   | 数字    | 短语的置信度。
 
 类别字段是包含原始分类中 [86 个类别](../Category-Taxonomy.md)中的一个或多个的列表。 另请注意，以下划线结尾的类别将匹配该类别及其子类别（例如，在名人模型中，匹配 people_ 以及 people_group）。
 
-字段   | Type  | 内容
+字段   | 类型  | 内容
 ------|------|------|
 categories | 对象 | 顶级对象
 categories[].name    | 字符串   | 86 个类别分类的名称

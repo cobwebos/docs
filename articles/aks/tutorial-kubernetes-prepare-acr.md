@@ -3,22 +3,21 @@ title: Azure 上的 Kubernetes 教程 - 创建容器注册表
 description: 在本 Azure Kubernetes 服务 (AKS) 教程中，请创建 Azure 容器注册表实例并上传示例应用程序容器映像。
 services: container-service
 author: iainfoulds
-manager: jeconnoc
 ms.service: container-service
 ms.topic: tutorial
-ms.date: 08/14/2018
+ms.date: 12/19/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 4f240d346457717c66a6ed189cfd8610c7a764da
-ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
+ms.openlocfilehash: 51cfc62adaf9d9c780888477aa6eab2a812fe98c
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/15/2018
-ms.locfileid: "41918431"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53718027"
 ---
-# <a name="tutorial-deploy-and-use-azure-container-registry"></a>教程：部署和使用 Azure 容器注册表
+# <a name="tutorial-deploy-and-use-azure-container-registry"></a>教程：部署并使用 Azure 容器注册表
 
-Azure 容器注册表 (ACR) 是用于 Docker 容器映像的基于 Azure 的专用注册表。 可以通过专用容器注册表安全地生成和部署应用程序和自定义代码。 本教程的第 2 部分（共 7 部分）介绍如何部署 ACR 实例并向其推送容器映像。 学习如何：
+Azure 容器注册表 (ACR) 是容器映像的专用注册表。 可以通过专用容器注册表安全地生成和部署应用程序和自定义代码。 本教程的第 2 部分（共 7 部分）介绍如何部署 ACR 实例并向其推送容器映像。 学习如何：
 
 > [!div class="checklist"]
 > * 创建 Azure 容器注册表 (ACR) 实例
@@ -26,13 +25,13 @@ Azure 容器注册表 (ACR) 是用于 Docker 容器映像的基于 Azure 的专�
 > * 向 ACR 上传映像
 > * 查看注册表中的映像
 
-在后续教程中，此 ACR 实例将与 AKS 中的 Kubernetes 群集集成，而应用程序则通过映像进行部署。
+在其他教程中，此 ACR 实例将与 AKS 中的 Kubernetes 群集集成，而应用程序则通过映像进行部署。
 
 ## <a name="before-you-begin"></a>开始之前
 
 在[上一教程][aks-tutorial-prepare-app]中，已经为一个 Azure Voting 应用程序示例创建了容器映像。 如果尚未创建 Azure Voting 应用映像，请返回到[教程 1：创建容器映像][aks-tutorial-prepare-app]。
 
-本教程需要运行 Azure CLI 2.0.44 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI][azure-cli-install]。
+此教程需要运行 Azure CLI 2.0.53 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI][azure-cli-install]。
 
 ## <a name="create-an-azure-container-registry"></a>创建 Azure 容器注册表
 
@@ -44,7 +43,7 @@ Azure 容器注册表 (ACR) 是用于 Docker 容器映像的基于 Azure 的专�
 az group create --name myResourceGroup --location eastus
 ```
 
-使用 [az acr create][az-acr-create] 命令创建 Azure 容器注册表实例，并提供你自己的注册表名称。 注册表名称在 Azure 中必须唯一，并且包含 5-50 个字母数字字符。 在本教程的剩余部分，请使用 `<acrName>` 作为容器注册表名称的占位符。 基本 SKU 是一个针对成本优化的入口点，适用于可以对存储和吞吐量进行均衡考虑的开发目的。
+使用 [az acr create][az-acr-create] 命令创建 Azure 容器注册表实例，并提供你自己的注册表名称。 注册表名称在 Azure 中必须唯一，并且包含 5-50 个字母数字字符。 在本教程的剩余部分，请使用 `<acrName>` 作为容器注册表名称的占位符。 提供自己的唯一注册表名称。 “基本”SKU 是一个针对成本优化的入口点，适用于可以对存储和吞吐量进行均衡考虑的开发目的。
 
 ```azurecli
 az acr create --resource-group myResourceGroup --name <acrName> --sku Basic
@@ -101,7 +100,7 @@ tiangolo/uwsgi-nginx-flask                           flask         788ca94b2313 
 
 ## <a name="push-images-to-registry"></a>将映像推送到注册表
 
-现在可以将 *azure-vote-front* 映像推送到 ACR 实例。 使用 [docker push][docker-push] 并提供你自己的适用于映像名称的 *acrLoginServer* 地址，如下所示：
+生成并标记映像后，将 *azure-vote-front* 映像推送到 ACR 实例。 使用 [docker push][docker-push] 并提供自己的适用于映像名称的 *acrLoginServer* 地址，如下所示：
 
 ```console
 docker push <acrLoginServer>/azure-vote-front:v1
@@ -151,7 +150,7 @@ v1
 > * 向 ACR 上传映像
 > * 查看注册表中的映像
 
-进入下一教程，了解如何在 Azure 中部署 Kubernetes 群集。
+继续学习下一篇教程，了解如何在 Azure 中部署 Kubernetes 群集。
 
 > [!div class="nextstepaction"]
 > [部署 Kubernetes 群集][aks-tutorial-deploy-cluster]

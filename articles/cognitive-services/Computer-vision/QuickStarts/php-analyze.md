@@ -1,5 +1,5 @@
 ---
-title: 快速入门：分析远程图像 - REST、PHP - 计算机视觉
+title: 快速入门：分析远程图像 - REST、PHP
 titleSuffix: Azure Cognitive Services
 description: 在该快速入门中，你将使用计算机视觉 API 和 PHP 分析图像。
 services: cognitive-services
@@ -10,12 +10,13 @@ ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 09/10/2018
 ms.author: pafarley
-ms.openlocfilehash: d9e65b5fa42cc9026f8b1e3f18901f988c38cc46
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.custom: seodec18
+ms.openlocfilehash: 8af75c05d3c30fd8a3f2808cf81de840b7df2d6c
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49340998"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53584286"
 ---
 # <a name="quickstart-analyze-a-remote-image-using-the-rest-api-and-php-in-computer-vision"></a>快速入门：使用计算机视觉中的 REST API 和 PHP 分析远程图像
 
@@ -33,7 +34,7 @@ ms.locfileid: "49340998"
 
 要创建和运行示例，请执行以下步骤：
 
-1. 安装 PHP5 [`HTTP_Request2`](http://pear.php.net/package/HTTP_Request2) 包。
+1. 安装 PHP5 [`HTTP_Request2`](https://pear.php.net/package/HTTP_Request2) 包。
    1. 以管理员身份打开命令提示符窗口。
    1. 运行以下命令：
 

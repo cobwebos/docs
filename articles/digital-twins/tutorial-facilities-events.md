@@ -1,18 +1,19 @@
 ---
-title: 捕获 Azure 数字孪生空间的事件 | Microsoft Docs
+title: 教程：捕获 Azure 数字孪生空间的事件 | Microsoft Docs
 description: 了解如何使用本教程中的步骤将 Azure 数字孪生与逻辑应用集成，以便从空间接收通知。
 services: digital-twins
 author: dsk-2015
+ms.custom: seodec18
 ms.service: digital-twins
 ms.topic: tutorial
 ms.date: 10/15/2018
 ms.author: dkshir
-ms.openlocfilehash: bf41be4a3a4856302a054e5767b3d7b5ba423c60
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: a52a3be8c3023893569e95b566a18c032be26459
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52583255"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53556010"
 ---
 # <a name="tutorial-receive-notifications-from-your-azure-digital-twins-spaces-by-using-logic-apps"></a>教程：使用逻辑应用从 Azure 数字孪生空间接收通知
 
@@ -174,7 +175,7 @@ ms.locfileid: "52583255"
 
    c. 在“收件人”框中，输入用于接收通知的电子邮件 ID。 在“主题”中输入文本“有关空间中空气质量差的数字孪生通知”， 然后从**分析 JSON** 的“动态内容”列表中选择“TopologyObjectId”。
 
-   d. 在同一窗口的“正文”下，输入类似于以下内容的文本：检测到房间中的空气质量差，需调整温度。 请根据需要使用“动态内容”列表中的元素进行详细阐述。
+   d. 在同一窗口中的“正文”下，输入与此类似的文本：**检测到房间内空气质量差，需要调整温度**。 请根据需要使用“动态内容”列表中的元素进行详细阐述。
 
    ![逻辑应用的“发送电子邮件”选项](./media/tutorial-facilities-events/logic-app-send-email.png)
 
@@ -205,7 +206,7 @@ ms.locfileid: "52583255"
 
 若要了解如何可视化传感器数据、分析趋势和查找异常，请继续阅读下一教程： 
 > [!div class="nextstepaction"]
-> [教程：使用时序见解可视化和分析 Azure 数字孪生空间中的事件](tutorial-facilities-analyze.md)
+> [教程：使用时序见解直观显示和分析 Azure 数字孪生空间中的事件](tutorial-facilities-analyze.md)
 
 也可详细了解 Azure 数字孪生中的空间智能图和对象模型： 
 > [!div class="nextstepaction"]

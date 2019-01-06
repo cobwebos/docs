@@ -1,5 +1,5 @@
 ---
-title: 教程：在 Azure 云存储中搜索半结构化数据 - Azure 搜索
+title: 教程：在 Azure Blob 存储中搜索 JSON - Azure 搜索
 description: 在本教程中，了解如何使用 Azure 搜索来搜索半结构化 Azure blob 数据。
 author: HeidiSteen
 manager: cgronlun
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 07/12/2018
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 5608495ff2975cabefdb83e5794a7d92b318b5a5
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: ba9b34dbd9d0959e79c755abc8dad9fe1d358a50
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53313813"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53632936"
 ---
 # <a name="tutorial-search-semi-structured-data-in-azure-cloud-storage"></a>教程：在 Azure 云存储中搜索半结构化数据
 
@@ -60,7 +60,7 @@ ms.locfileid: "53313813"
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
 
-登录到 [Azure 门户](http://portal.azure.com)。
+登录到 [Azure 门户](https://portal.azure.com)。
 
 ## <a name="upload-the-sample-data"></a>上传示例数据
 

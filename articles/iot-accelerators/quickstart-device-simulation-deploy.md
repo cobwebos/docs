@@ -1,5 +1,5 @@
 ---
-title: 尝试使用和运行 Azure 上的设备模拟解决方案 | Microsoft Docs
+title: 尝试使用和运行设备模拟解决方案 - Azure | Microsoft Docs
 description: 在本快速入门中，将部署 Azure IoT 设备模拟并运行模拟
 author: troyhopwood
 manager: timlt
@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 09/28/2018
 ms.author: troyhop
-ms.openlocfilehash: a109f3536ea8709313de3d1d6d17ce69c5652289
-ms.sourcegitcommit: 3dcb1a3993e51963954194ba2a5e42260d0be258
+ms.openlocfilehash: 12f993f606fc1ef44280142d5acfa2687cd4e043
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50753919"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53601587"
 ---
 # <a name="quickstart-deploy-and-run-an-iot-device-simulation-in-azure"></a>快速入门：在 Azure 中部署并运行 IoT 设备模拟
 

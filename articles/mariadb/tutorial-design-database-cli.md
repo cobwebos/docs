@@ -1,22 +1,19 @@
 ---
 title: 教程：使用 Azure CLI 设计 Azure Database for MariaDB
 description: 本教程介绍如何使用 Azure CLI 从命令行创建和管理 Azure Database for MariaDB 服务器和数据库。
-services: mariadb
 author: ajlam
 ms.author: andrela
-manager: kfile
-editor: jasonwhowell
 ms.service: mariadb
-ms.devlang: azure-cli
+ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 11/10/2018
 ms.custom: mvc
-ms.openlocfilehash: 2d715f89b56af822c2c1174cca0f2a9c1b847fc0
-ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
+ms.openlocfilehash: fa056dad052914e771251585cb426c70591aa235
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2018
-ms.locfileid: "51516325"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53541185"
 ---
 # <a name="tutorial-design-an-azure-database-for-mariadb-using-azure-cli"></a>教程：使用 Azure CLI 设计 Azure Database for MariaDB
 
@@ -177,7 +174,7 @@ SELECT * FROM inventory;
 
 - 还原点：选择更改服务器前的时间点。 必须大于或等于源数据库的最早备份值。
 - 目标服务器：提供一个要还原到的新服务器名称
-- 源服务器：提供想从其还原的服务器的名称
+- 源服务器:提供想从中进行还原的服务器的名称
 - 位置：不能选择区域，此区域默认与源服务器相同
 
 ```azurecli-interactive

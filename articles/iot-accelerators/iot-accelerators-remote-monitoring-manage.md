@@ -1,5 +1,5 @@
 ---
-title: 教程：在基于 Azure 的远程监视解决方案中配置设备 | Microsoft Docs
+title: 教程：在远程监视解决方案中配置设备 - Azure | Microsoft Docs
 description: 本教程介绍如何配置与远程监视解决方案加速器连接的设备。
 author: dominicbetts
 manager: timlt
@@ -9,12 +9,12 @@ services: iot-accelerators
 ms.date: 11/15/2018
 ms.topic: tutorial
 ms.custom: mvc
-ms.openlocfilehash: b8352b062efdb49df01834bd3c2a5e1393e11a44
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: 5505ceaa88f1ad792df57f9728f5e4809404942c
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52679148"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53599495"
 ---
 # <a name="tutorial-configure-devices-connected-to-your-monitoring-solution"></a>教程：配置连接到监视解决方案的设备
 

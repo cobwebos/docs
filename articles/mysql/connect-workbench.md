@@ -1,23 +1,20 @@
 ---
 title: 从 MySQL Workbench 连接到 Azure Database for MySQL
 description: 本快速入门介绍如何使用 MySQL Workbench 连接到 Azure Database for MySQL 并查询其中的数据。
-services: mysql
 author: jasonwhowell
 ms.author: jasonh
-manager: kfile
-editor: seanli1988
 ms.service: mysql
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 02/28/2018
-ms.openlocfilehash: def984a6a31cdfe9b9dfbba93ccfb5016b5e315d
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: f93c581b916a7f9c4f454833cb37f603cc177856
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35265159"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53540449"
 ---
-# <a name="azure-database-for-mysql-use-mysql-workbench-to-connect-and-query-data"></a>Azure Database for MySQL：使用 MySQL Workbench 进行连接并查询数据
+# <a name="azure-database-for-mysql-use-mysql-workbench-to-connect-and-query-data"></a>Azure Database for MySQL：使用 MySQL Workbench 连接和查询数据
 本快速入门演示如何使用 MySQL Workbench 应用程序连接到 Azure Database for MySQL。 
 
 ## <a name="prerequisites"></a>先决条件
@@ -49,7 +46,7 @@ ms.locfileid: "35265159"
 
     ![设置新连接](./media/connect-workbench/2-setup-new-connection.png)
 
-    | **设置** | 建议的值 | 字段说明 |
+    | **设置** | **建议的值** | **字段说明** |
     |---|---|---|
     |   连接名称 | 演示连接 | 指定此连接的标签。 |
     | 连接方法 | 标准 (TCP/IP) | 标准 (TCP/IP) 就足够了。 |

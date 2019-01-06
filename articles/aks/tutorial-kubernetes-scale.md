@@ -3,35 +3,34 @@ title: Kubernetes on Azure 教程 - 缩放应用程序
 description: 此 Azure Kubernetes 服务 (AKS) 教程介绍如何缩放 Kubernetes 中的节点和 Pod，以及如何实施水平 Pod 自动缩放。
 services: container-service
 author: iainfoulds
-manager: jeconnoc
 ms.service: container-service
 ms.topic: tutorial
-ms.date: 08/14/2018
+ms.date: 12/19/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 4e2ba61ada16c922dc89d9d6c9aa6a0fce8b0941
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 8d07c87a1849a25738c433b7a4c2753b51661947
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50414168"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53722713"
 ---
 # <a name="tutorial-scale-applications-in-azure-kubernetes-service-aks"></a>教程：在 Azure Kubernetes 服务 (AKS) 中缩放应用程序
 
-如果已按照教程执行，则在 AKS 中已有可正常工作的 Kubernetes 群集，并且已部署了 Azure 投票应用。 在本教程第 5 部分（共 7 部分）中，会在应用中扩大 Pod 并尝试 Pod 自动缩放。 还会了解如何缩放 Azure VM 节点数以更改群集用于托管工作负荷的容量。 学习如何：
+如果已按照教程执行，则在 AKS 中已有可正常工作的 Kubernetes 群集，并且已部署了示例 Azure 投票应用。 在本教程第 5 部分（共 7 部分）中，会在应用中扩大 Pod 并尝试 Pod 自动缩放。 还会了解如何缩放 Azure VM 节点数以更改群集用于托管工作负荷的容量。 学习如何：
 
 > [!div class="checklist"]
 > * 缩放 Kubernetes 节点
 > * 手动缩放运行应用程序的 Kubernetes Pod
 > * 配置运行应用前端的自动缩放 Pod
 
-在后续教程中，Azure 投票应用程序将更新为新版本。
+在另外的教程中，Azure 投票应用程序将更新为新版本。
 
 ## <a name="before-you-begin"></a>开始之前
 
-在前面的教程中，我们已将应用程度打包到容器映像中，将此映像上传到 Azure 容器注册表，并创建了 Kubernetes 群集。 应用程序随后在 Kubernetes 群集上运行。 如果尚未完成这些步骤，并且想要逐一完成，请返回到[教程 1 - 创建容器映像][aks-tutorial-prepare-app]。
+上一教程中，应用程序已打包到容器映像。 已将此映像上传到 Azure容器注册表，并创建了 AKS 集群。 然后，将应用程序部署到了 AKS 群集。 如果尚未完成这些步骤，并且想要逐一完成，请开始参阅[教程 1 – 创建容器映像][aks-tutorial-prepare-app]。
 
-本教程需要运行 Azure CLI 2.0.38 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI][azure-cli-install]。
+此教程需要运行 Azure CLI 2.0.53 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI][azure-cli-install]。
 
 ## <a name="manually-scale-pods"></a>手动缩放 Pod
 
@@ -55,7 +54,7 @@ azure-vote-front-848767080-tf34m   1/1       Running   0          31m
 kubectl scale --replicas=5 deployment/azure-vote-front
 ```
 
-再次运行 [kubectl get pods][kubectl-get]，验证 Kubernetes 是否创建其他 Pod。 一分钟左右之后，其他 Pod 会在群集中提供：
+再次运行 [kubectl get pods][kubectl-get]，验证 AKS 是否创建其他 Pod。 一分钟左右之后，其他 Pod 会在群集中提供：
 
 ```console
 $ kubectl get pods
@@ -77,14 +76,14 @@ Kubernetes 支持[水平 Pod 自动缩放][kubernetes-hpa]以根据 CPU 利用�
 az aks show --resource-group myResourceGroup --name myAKSCluster --query kubernetesVersion
 ```
 
-如果 AKS 群集的版本低于 *1.10*，请安装指标服务器，否则请跳过此步骤。 克隆 `metrics-server` GitHub 存储库并安装示例资源定义。 若要查看这些 YAML 定义的内容，请参阅[适用于 Kuberenetes 1.8+ 的指标服务器][metrics-server-github]。
+如果 AKS 群集的版本低于 *1.10*，请安装指标服务器，否则请跳过此步骤。 若要进行安装，请克隆 `metrics-server` GitHub 存储库并安装示例资源定义。 若要查看这些 YAML 定义的内容，请参阅[适用于 Kuberenetes 1.8+ 的指标服务器][metrics-server-github]。
 
 ```console
 git clone https://github.com/kubernetes-incubator/metrics-server.git
 kubectl create -f metrics-server/deploy/1.8+/
 ```
 
-若要使用自动缩放程序，Pod 必须定义了 CPU 请求和限制。 在 `azure-vote-front` 部署中，前端容器请求 0.25 个 CPU，限制为 0.5 个 CPU。 设置与下面类似：
+若要使用自动缩放程序，Pod 必须定义了 CPU 请求和限制。 在 `azure-vote-front` 部署中，前端容器已请求了 0.25 个 CPU，限制为 0.5 个 CPU。 这些资源请求和限制的定义方式如以下示例代码片段所示：
 
 ```yaml
 resources:
@@ -94,7 +93,7 @@ resources:
      cpu: 500m
 ```
 
-下面的示例使用 [kubectl autoscale][kubectl-autoscale] 命令自动缩放 *azure-vote-front* 部署中的 Pod 数。 如果 CPU 利用率超过 50%，则自动缩放程序会将 Pod 增加到最多 10 个实例：
+下面的示例使用 [kubectl autoscale][kubectl-autoscale] 命令自动缩放 *azure-vote-front* 部署中的 Pod 数。 如果 CPU 利用率超过 50%，则自动缩放程序会将 Pod 增加到最多 *10* 个实例。 为部署定义的最小实例数为 *3*：
 
 ```console
 kubectl autoscale deployment azure-vote-front --cpu-percent=50 --min=3 --max=10
@@ -121,7 +120,7 @@ azure-vote-front   Deployment/azure-vote-front   0% / 50%   3         10        
 az aks scale --resource-group myResourceGroup --name myAKSCluster --node-count 3
 ```
 
-输出类似于：
+当群集成功缩放时，输出类似于以下示例：
 
 ```
 "agentPoolProfiles": [
@@ -144,9 +143,9 @@ az aks scale --resource-group myResourceGroup --name myAKSCluster --node-count 3
 在本教程中，在 Kubernetes 群集中使用了不同的缩放功能。 你已了解如何：
 
 > [!div class="checklist"]
-> * 缩放 Kubernetes 节点
 > * 手动缩放运行应用程序的 Kubernetes Pod
 > * 配置运行应用前端的自动缩放 Pod
+> * 手动缩放 Kubernetes 节点
 
 继续学习下一教程，了解如何在 Kubernetes 中更新应用程序。
 

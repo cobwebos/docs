@@ -3,18 +3,17 @@ title: Azure 上的 Kubernetes 教程 - 准备应用程序
 description: 本 Azure Kubernetes 服务 (AKS) 教程介绍如何通过 Docker Compose 准备和生成一个多容器应用，以便能够随后将其部署到 AKS。
 services: container-service
 author: iainfoulds
-manager: jeconnoc
 ms.service: container-service
 ms.topic: tutorial
-ms.date: 08/14/2018
+ms.date: 12/19/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 20a57a0d528fa6a291aa66f91ff6ddd71053f478
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: b529af1db6d72d87abc25eb37f2f1c39216a0ba4
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46297054"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53724158"
 ---
 # <a name="tutorial-prepare-an-application-for-azure-kubernetes-service-aks"></a>教程：准备用于 Azure Kubernetes 服务 (AKS) 的应用程序
 
@@ -29,7 +28,7 @@ ms.locfileid: "46297054"
 
 ![Azure 上的 Kubernetes 群集映像](./media/container-service-tutorial-kubernetes-prepare-app/azure-vote.png)
 
-在后续教程中，此容器映像会上传到 Azure 容器注册表，然后部署到 AKS 群集中。
+在其他教程中，此容器映像会上传到 Azure 容器注册表，然后部署到 AKS 群集中。
 
 ## <a name="before-you-begin"></a>开始之前
 
@@ -49,7 +48,7 @@ Azure Cloud Shell 不包含完成这些教程的每个步骤所需的 Docker 组
 git clone https://github.com/Azure-Samples/azure-voting-app-redis.git
 ```
 
-将目录更改为克隆的目录，以供使用。
+切换到克隆目录。
 
 ```console
 cd azure-voting-app-redis

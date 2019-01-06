@@ -1,7 +1,7 @@
 ---
-title: 快速入门：创建第一个必应自定义搜索实例
+title: 快速入门：创建第一个必应自定义搜索实例 | Microsoft Docs
 titlesuffix: Azure Cognitive Services
-description: 若要使用必应自定义搜索，需创建自定义搜索实例来定义 Web 视图或切片。 该实例包含指定必应要搜索的公共域、子网站和网页的设置以及各种排名调整。
+description: 参考本文创建一个可以搜索所定义的域和网页的自定义必应实例。
 services: cognitive-services
 author: aahill
 manager: cgronlun
@@ -10,37 +10,46 @@ ms.component: bing-custom-search
 ms.topic: quickstart
 ms.date: 05/07/2017
 ms.author: aahi
-ms.openlocfilehash: c9b37486d664920bbc4b85a0715ce7f5ea910365
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: ba1444b3115ffd2c73e1773aa926d11fed81f830
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52161528"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53556112"
 ---
-# <a name="quickstart-create-your-first-bing-custom-search-instance"></a>快速入门：创建第一个必应自定义搜索实例
-若要使用必应自定义搜索，需创建自定义搜索实例来定义 Web 视图或切片。 该实例包含指定必应要搜索的公共域、网站和网页的设置以及各种排名调整。 若要创建实例，请使用必应自定义搜索[门户](https://customsearch.ai)。 
+# <a name="quickstart-create-your-first-bing-custom-search-instance"></a>快速入门：创建首个必应自定义搜索实例
+
+若要使用必应自定义搜索，需创建自定义搜索实例来定义 Web 视图或切片。 此实例包含你要搜索的公共域、网站和网页，以及你要做出的任何排名调整。 
+
+若要创建实例，请使用[必应自定义搜索门户](https://customsearch.ai)。 
+
+![必应自定义搜索门户的图片](media/blockedCustomSrch.png)
+
+## <a name="prerequisites"></a>先决条件
+
+[!INCLUDE [cognitive-services-bing-custom-search-prerequisites](../../../includes/cognitive-services-bing-custom-search-signup-requirements.md)]
 
 ## <a name="create-a-custom-search-instance"></a>创建自定义搜索实例
 
-要创建自定义搜索实例：
+要创建必应自定义搜索实例：
 
-1.  获取自定义搜索 API 密钥。 请参阅[试用认知服务](https://azure.microsoft.com/try/cognitive-services/?api=bing-custom-search)。
-2.  单击“登录”按钮，并使用 Microsoft 帐户 (MSA) 登录门户。 
-    - 如果没有 MSA，请单击“创建 Microsoft 帐户”。 门户会要求访问用户的数据。 单击 **“是”**。
-    - 同意认知服务条款。 勾选“我同意”并单击“同意”。  
-3.  登录后，单击“新建实例”并为实例命名。 请使用有意义的名称并描述搜索返回的内容类型。 可随时更改名称。 
-4.  在“搜索体验”下的“活动”选项卡上，输入要纳入搜索范围的一个或多个网站的 URL。
-5.  若要确保实例会返回结果，请在右侧的预览窗格中输入查询。 如果没有返回结果，请指定新网站。 必应仅返回已编入索引的公共网站的结果。
-6.  单击“发布”，将配置更改发布到产品。 出现提示时，单击“发布”进行确认。
-7.  依次单击“产品” > “终结点”，然后复制“自定义配置 ID”。 调用自定义搜索 API 时会用到此 ID。
+1. 在[必应自定义搜索门户](https://customsearch.ai)网页上单击“开始”，然后使用 Microsoft 帐户登录。
+
+2. 单击“新建实例”并输入描述性的名称。 随时可以更改实例的名称。
+ 
+3. 在“搜索体验”下的“活动”选项卡上，输入要纳入搜索范围的一个或多个网站的 URL。 
+
+    > [!NOTE]
+    > 必应自定义搜索实例只会返回已由必应编制索引的公共域和网页的结果。
+
+4. 可以在必应自定义搜索门户的右侧输入查询和检查搜索实例返回的搜索结果。 如果未返回任何结果，请尝试输入不同的 URL。  
+
+5. 单击“发布”将更改发布到生产环境，并更新实例的终结点。
+
+6.  单击“生产”选项卡，在“终结点”下复制“自定义配置 ID”。 调用自定义搜索 API 时，需将此 ID 追加到调用中的 `customconfig=` 查询参数。
+
 
 ## <a name="next-steps"></a>后续步骤
 
-按照以下操作指南中的说明继续处理刚刚创建的自定义搜索实例：
-
-- [配置自定义搜索体验](./define-your-custom-view.md)
-- [调用自定义搜索](./search-your-custom-view.md)
-- [共享自定义搜索](./share-your-custom-search.md)
-- [配置托管 UI 体验](./hosted-ui.md)
-- [使用修饰标记来突出显示文本](./hit-highlighting.md)
-- [网页](./page-webpages.md)
+> [!div class="nextstepaction"]
+> [快速入门：调用必应自定义搜索终结点](./call-endpoint-csharp.md)

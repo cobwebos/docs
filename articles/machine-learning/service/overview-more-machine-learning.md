@@ -1,5 +1,6 @@
 ---
-title: 比较 Microsoft 的机器学习产品选项
+title: 比较机器学习产品选项
+titleSuffix: Microsoft
 description: 比较 Microsoft 提供的用于生成、部署和管理机器学习模型的各种产品。 确定要为解决方案选择哪种产品。
 services: machine-learning
 ms.service: machine-learning
@@ -9,12 +10,12 @@ ms.reviewer: jmartens
 author: garyericson
 ms.author: garye
 ms.date: 12/04/2018
-ms.openlocfilehash: bae28fd24cfbbf9fe36a626af1f0ec9359c8cda0
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: b2d7888234a05c82f1245bd58b98f505989d7f2d
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53274101"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53557880"
 ---
 # <a name="what-are-the-machine-learning-products-at-microsoft"></a>Microsoft 的机器学习产品有哪些？
 
@@ -37,7 +38,7 @@ Microsoft 提供多种多样的产品选项用于生成、部署和管理机器�
 
 ## <a name="azure-machine-learning-service"></a>Azure 机器学习服务
 
-[Azure 机器学习服务](overview-what-is-azure-ml.md)是用于大规模训练、部署和管理机器学习模型的完全托管式云服务。 它完全支持开源技术，可让你使用数以万计的开源 Python 包，例如 TensorFlow、PyTorch 和 scikit-learn。 它还提供丰富的工具，例如 [Azure Notebook](https://notebooks.azure.com/)、[Jupyter Notebook](http://jupyter.org) 或[用于 Visual Studio Code 的 Azure 机器学习](https://visualstudio.microsoft.com/downloads/ai-tools-vscode/)扩展，以方便探索和转换数据，然后训练和部署模型。 Azure 机器学习服务包含可以轻松、高效和准确地自动化模型生成和优化的功能。
+[Azure 机器学习服务](overview-what-is-azure-ml.md)是用于大规模训练、部署和管理机器学习模型的完全托管式云服务。 它完全支持开源技术，可让你使用数以万计的开源 Python 包，例如 TensorFlow、PyTorch 和 scikit-learn。 它还提供丰富的工具，例如 [Azure Notebook](https://notebooks.azure.com/)、[Jupyter Notebook](http://jupyter.org) 或[用于 Visual Studio Code 的 Azure 机器学习](https://aka.ms/vscodetoolsforai)扩展，以方便探索和转换数据，然后训练和部署模型。 Azure 机器学习服务包含可以轻松、高效和准确地自动化模型生成和优化的功能。
 
 在 Azure 机器学习服务中可以使用 Python 和 CLI 以云的规模训练、部署和管理机器学习模型。
 

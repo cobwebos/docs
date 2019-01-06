@@ -1,5 +1,5 @@
 ---
-title: 在 Linux 上使用 PostgreSQL 生成 Python Web 应用 - Azure 应用服务 | Microsoft Docs
+title: 在 Linux 上使用 PostgreSQL 生成 Python 应用 - Azure 应用服务 | Microsoft Docs
 description: 了解如何在 Azure 中运行可以连接到 PostgreSQL 数据库的数据驱动型 Python 应用。
 services: app-service\web
 documentationcenter: python
@@ -12,16 +12,16 @@ ms.topic: tutorial
 ms.date: 11/29/2018
 ms.author: beverst;cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 8846ec386ad1776172ae1949b5e0f26e03ddf1df
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: c70c7e8b893c511aae36f122c5983fd0958eac8e
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53337982"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53975383"
 ---
-# <a name="build-a-python-and-postgresql-web-app-in-azure-app-service"></a>在 Azure 应用服务中生成 Python 和 PostgreSQL Web 应用
+# <a name="build-a-python-and-postgresql-app-in-azure-app-service"></a>在 Azure 应用服务中生成 Python 和 PostgreSQL 应用
 
-[Linux 应用服务](app-service-linux-intro.md)提供高度可缩放、自修补的 Web 托管服务。 本教程介绍如何创建一个数据驱动型 Python Web 应用，使用 PostgreSQL 作为数据库后端。 完成后，会有一个在 Linux 上的应用服务中运行的 Django 应用程序。
+[Linux 应用服务](app-service-linux-intro.md)提供高度可缩放、自修补的 Web 托管服务。 本教程介绍如何创建一个数据驱动型 Python 应用，使用 PostgreSQL 作为数据库后端。 完成后，会有一个在 Linux 上的应用服务中运行的 Django 应用程序。
 
 ![Linux 应用服务中的 Python Django 应用](./media/tutorial-python-postgresql-app/django-admin-azure.png)
 
@@ -203,9 +203,9 @@ az postgres server firewall-rule create --resource-group myResourceGroup --serve
 ```
 
 > [!NOTE]
-> 此设置允许从 Azure 网络中的所有 IP 进行网络连接。 进行生产性使用时，请尝试尽可能配置最严格的防火墙规则，即[只使用应用所使用的出站 IP 地址](../app-service-ip-addresses.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#find-outbound-ips)。
+> 此设置允许从 Azure 网络中的所有 IP 进行网络连接。 进行生产性使用时，请尝试尽可能配置最严格的防火墙规则，即[只使用应用所使用的出站 IP 地址](../overview-inbound-outbound-ips.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#find-outbound-ips)。
 
-在 Cloud Shell 中再次运行该命令（将 *\<your_ip_address>* 替换为[你的本地 IPv4 IP 地址](https://www.whatsmyip.org/)），以便从本地计算机进行访问。
+在 Cloud Shell 中再次运行该命令（将 *\<your_ip_address>* 替换为[你的本地 IPv4 IP 地址](http://www.whatsmyip.org/)），以便从本地计算机进行访问。
 
 ```azurecli-interactive
 az postgres server firewall-rule create --resource-group myResourceGroup --server-name <postgresql_name> --start-ip-address=<your_ip_address> --end-ip-address=<your_ip_address> --name AllowLocalClient
@@ -371,9 +371,9 @@ To https://<app_name>.scm.azurewebsites.net/<app_name>.git
 
 应用服务部署服务器会看到存储库根目录中的 _requirements.txt_，并且会在 `git push` 后自动运行 Python 包管理。
 
-### <a name="browse-to-the-azure-web-app"></a>浏览到 Azure Web 应用
+### <a name="browse-to-the-azure-app"></a>浏览到 Azure 应用
 
-浏览到已部署的 Web 应用。 它需要一些时间才能启动，因为在首次请求该应用时需下载并运行容器。 如果页面超时或显示错误消息，请等待数分钟，然后刷新页面。
+浏览到已部署的应用。 它需要一些时间才能启动，因为在首次请求该应用时需下载并运行容器。 如果页面超时或显示错误消息，请等待数分钟，然后刷新页面。
 
 ```bash
 http://<app_name>.azurewebsites.net
@@ -403,15 +403,15 @@ az webapp log config --name <app_name> --resource-group myResourceGroup --docker
 az webapp log tail --name <app_name> --resource-group myResourceGroup
 ```
 
-## <a name="manage-your-web-app-in-the-azure-portal"></a>在 Azure 门户中管理 Web 应用
+## <a name="manage-your-app-in-the-azure-portal"></a>在 Azure 门户中管理应用
 
-转到 [Azure 门户](https://portal.azure.com)查看已创建的 Web 应用。
+转到 [Azure 门户](https://portal.azure.com)查看已创建的应用。
 
-从左侧菜单中单击“应用服务”，并单击 Azure Web 应用的名称。
+从左侧菜单中单击“应用程序服务”，并单击 Azure 应用的名称。
 
-![在门户中导航到 Azure Web 应用](./media/tutorial-python-postgresql-app/app-resource.png)
+![在门户中导航到 Azure 应用](./media/tutorial-python-postgresql-app/app-resource.png)
 
-默认情况下，门户将显示 Web 应用**的**概述页。 在此页中可以查看应用的运行状况。 在此处还可以执行基本的管理任务，例如浏览、停止、启动、重新启动和删除。 该页左侧的选项卡显示可以打开的不同配置页。
+默认情况下，门户将显示应用的“概述”页。 在此页中可以查看应用的运行状况。 在此处还可以执行基本的管理任务，例如浏览、停止、启动、重新启动和删除。 该页左侧的选项卡显示可以打开的不同配置页。
 
 ![Azure 门户中的应用服务页](./media/tutorial-python-postgresql-app/app-mgmt.png)
 
@@ -428,10 +428,10 @@ az webapp log tail --name <app_name> --resource-group myResourceGroup
 > * 查看诊断日志
 > * 在 Azure 门户中管理应用
 
-转到下一教程，了解如何向 Web 应用映射自定义 DNS 名称。
+转到下一教程，了解如何将自定义 DNS 名称映射到应用。
 
 > [!div class="nextstepaction"]
-> [将现有的自定义 DNS 名称映射到 Azure Web 应用](../app-service-web-tutorial-custom-domain.md)
+> [将现有的自定义 DNS 名称映射到 Azure 应用服务](../app-service-web-tutorial-custom-domain.md)
 
 > [!div class="nextstepaction"]
 > [配置内置的 Python 映像并排查错误](how-to-configure-python.md)

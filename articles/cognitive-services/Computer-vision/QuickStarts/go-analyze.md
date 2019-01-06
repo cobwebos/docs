@@ -1,5 +1,5 @@
 ---
-title: 快速入门：分析远程图像 - REST、Go - 计算机视觉
+title: 快速入门：分析远程图像 - REST、Go
 titleSuffix: Azure Cognitive Services
 description: 在本快速入门中，你将使用计算机视觉 API 和 Go 分析图像。
 services: cognitive-services
@@ -10,12 +10,13 @@ ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 08/28/2018
 ms.author: pafarley
-ms.openlocfilehash: c50f65abd6a0bb446444d889de88348ed4fea84a
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.custom: seodec18
+ms.openlocfilehash: acd00955631395efb12acccb3ad25a52b28b27de
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51852599"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53580716"
 ---
 # <a name="quickstart-analyze-a-remote-image-using-the-rest-api-and-go-in-computer-vision"></a>快速入门：使用计算机视觉中的 REST API 和 Go 分析远程图像
 

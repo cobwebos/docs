@@ -8,14 +8,14 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: quickstart
-ms.date: 11/06/2018
+ms.date: 12/13/2018
 ms.author: chlandsi
-ms.openlocfilehash: eaa44f942082c6bd062599dbdd0401fe4505daf4
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 75411ebd50448c5f490a1f03fbbf25a61dbffaf8
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53090189"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53718106"
 ---
 # <a name="quickstart-recognize-speech-in-objective-c-on-ios-using-the-speech-service-sdk"></a>快速入门：使用语音服务 SDK 在 iOS 上的 Objective-C 中识别语音
 
@@ -35,7 +35,7 @@ ms.locfileid: "53090189"
 
 [!INCLUDE [License Notice](../../../includes/cognitive-services-speech-service-license-notice.md)]
 
-认知服务语音 SDK 的当前版本是 `1.1.0`。
+认知服务语音 SDK 的当前版本是 `1.2.0`。
 
 用于 Mac 和 iOS 的认知服务语音 SDK 目前以 Cocoa Framework 形式发行。
 它可以从 https://aka.ms/csspeech/iosbinary 下载。 将文件下载到主目录。
@@ -49,7 +49,7 @@ ms.locfileid: "53090189"
 
 1. 项目选项对话框
     1. 为快速入门应用输入一个名称，例如 `helloworld`。
-    1. 如果已经有 Apple 开发人员帐户，请输入相应的组织名称和组织标识符。 可以直接选取任意名称（例如 `testorg`）进行测试。 若要对应用进行签名，还需适当的预配配置文件。 有关详细信息，请参阅 [Apple 开发人员站点](https://developer.apple.com/)。
+    1. 如果已经有 Apple 开发人员帐户，请输入相应的组织名称和组织标识符。 可以直接选取任意名称（例如 `testorg`）进行测试。 若要对应用进行签名，需要适当的预配配置文件。 有关详细信息，请参阅 [Apple 开发人员站点](https://developer.apple.com/)。
     1. 确保选择 Objective-C 作为项目的语言。
     1. 禁用所有用于测试和核心数据的复选框。
     ![项目设置](media/sdk/qs-objectivec-project-settings.png)
@@ -57,7 +57,7 @@ ms.locfileid: "53090189"
     1. 选择用于放置项目的主目录。 这样会在主目录中创建一个 `helloworld` 目录，其中包含 Xcode 项目的所有文件。
     1. 禁止创建适用于此示例项目的 Git 存储库。
     1. 在“项目设置”中调整 SDK 的路径。
-        1. 在“嵌入式二进制文件”标头下的“常规”选项卡中，添加 SDK 库作为框架：“添加嵌入式二进制文件” > “添加其他...”> 导航到主目录，并选择文件 `MicrosoftCognitiveServicesSpeech.framework`。 这样也会自动将 SDK 库添加到“链接的框架和库”标头。
+        1. 在“嵌入式二进制文件”标头下的“常规”选项卡中，添加 SDK 库作为框架：“添加嵌入式二进制文件” > “添加其他...”> 导航到主目录，并选择文件 `MicrosoftCognitiveServicesSpeech.framework`。 这样会自动将 SDK 库添加到“链接的框架和库”标头。
         ![添加的框架](media/sdk/qs-objectivec-framework.png)
         1. 转到“生成设置”选项卡，激活“所有”设置。
         1. 将目录 `$(SRCROOT)/..` 添加到“搜索路径”标头下的“框架搜索路径”。
@@ -68,7 +68,7 @@ ms.locfileid: "53090189"
 示例应用将具有非常简单的 UI：用于从文件或麦克风输入启动语音识别的两个按钮以及用于显示结果的文本标签。
 此 UI 在项目的 `Main.storyboard` 部分设置。
 打开情节提要的 XML 视图，方法是：右键单击项目树的 `Main.storyboard` 条目，然后选择“打开为...” > “源代码”。
-将自动生成的 XML 替换为以下内容：
+将自动生成的 XML 替换为以下代码：
 
 [!code-xml[](~/samples-cognitive-services-speech-sdk/quickstart/objectivec-ios/helloworld/helloworld/Base.lproj/Main.storyboard)]
 
@@ -99,10 +99,7 @@ ms.locfileid: "53090189"
 
 1. 单击应用中的“识别(麦克风)”按钮并讲几句话后，应在屏幕下方看到所述文本。
 
-[!INCLUDE [Download the sample](../../../includes/cognitive-services-speech-service-speech-sdk-sample-download-h2.md)]
-在 `quickstart/objectivec-ios` 文件夹中查找此示例。
-
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [获取我们的示例](speech-sdk.md#get-the-samples)
+> [浏览 GitHub 上的 Objective-C 示例](https://aka.ms/csspeech/samples)

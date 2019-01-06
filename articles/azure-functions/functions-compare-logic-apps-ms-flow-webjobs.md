@@ -1,6 +1,6 @@
 ---
 title: 比较流、逻辑应用、函数和 WebJobs - Azure
-description: 比较针对集成任务进行了优化的各种 Microsoft 云服务：流、逻辑应用、函数和 WebJobs。
+description: 比较针对集成任务进行了优化的各种 Microsoft 云服务：Flow、逻辑应用、Functions 和 WebJobs。
 services: functions, logic-apps
 documentationcenter: na
 author: ggailey777
@@ -12,12 +12,12 @@ ms.topic: overview
 ms.date: 04/09/2018
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: c22d75b4eb058942da5a3b0699cbb4a23eec42f3
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: ec2c7a25c5108ee3c6f861defd8403ff40113075
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52634925"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53722211"
 ---
 # <a name="compare-flow-logic-apps-functions-and-webjobs"></a>比较流、逻辑应用、函数和 WebJobs
 
@@ -26,7 +26,7 @@ ms.locfileid: "52634925"
 * [Microsoft Flow](https://flow.microsoft.com/)
 * [Azure 逻辑应用](https://azure.microsoft.com/services/logic-apps/)
 * [Azure Functions](https://azure.microsoft.com/services/functions/)
-* [Azure 应用服务 WebJobs](../app-service/web-sites-create-web-jobs.md)
+* [Azure 应用服务 WebJobs](../app-service/webjobs-create.md)
 
 所有这些服务都可以解决集成问题并自动化业务流程。 它们都可以定义输入、操作、条件和输出。 可以在日程安排或触发器中运行其中一个。 但是，每种服务都有其独特的优点，本文将介绍这些差异。
 
@@ -70,7 +70,7 @@ ms.locfileid: "52634925"
 
 ## <a name="compare-functions-and-webjobs"></a>比较函数和 WebJobs
 
-与 Azure Functions 一样，包含 WebJobs SDK 的 Azure 应用服务是一项代码优先的集成服务，专为开发人员设计。 二者都是在 [Azure 应用服务](../app-service/app-service-web-overview.md) 上构建的，支持[源代码管理集成](../app-service/app-service-continuous-deployment.md)、[身份验证](../app-service/app-service-authentication-overview.md)以及[使用 Application Insights 集成进行监视](functions-monitoring.md)等功能。
+与 Azure Functions 一样，包含 WebJobs SDK 的 Azure 应用服务是一项代码优先的集成服务，专为开发人员设计。 二者都是在 [Azure 应用服务](../app-service/overview.md) 上构建的，支持[源代码管理集成](../app-service/deploy-continuous-deployment.md)、[身份验证](../app-service/overview-authentication-authorization.md)以及[使用 Application Insights 集成进行监视](functions-monitoring.md)等功能。
 
 ### <a name="webjobs-and-the-webjobs-sdk"></a>WebJobs 和 WebJobs SDK
 

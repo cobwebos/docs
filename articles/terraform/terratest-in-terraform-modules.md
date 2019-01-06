@@ -9,12 +9,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 10/19/2018
-ms.openlocfilehash: cff7d0dea27dd21ac4f7bb133e297e4f5928d2c2
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: 8ef4e9917623f43e5c9900150deb22d62169c836
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52680593"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53555959"
 ---
 # <a name="test-terraform-modules-in-azure-by-using-terratest"></a>使用 Terratest 在 Azure 中测试 Terraform 模块
 
@@ -298,7 +298,7 @@ Terraform 模块的最佳做法包括安装 `examples` 文件夹。 `examples` �
 </head>
 <body>
     <h1>Hi, Terraform Module</h1>
-    <p>This is a sample webpage to demostrate Terratest.</p>
+    <p>This is a sample webpage to demonstrate Terratest.</p>
 </body>
 </html>
 ```
@@ -365,7 +365,7 @@ func TestIT_HelloWorldExample(t *testing.T) {
     http_helper.HttpGetWithCustomValidation(t, homepage, func(status int, content string) bool {
         return status == 200 &&
             strings.Contains(content, "Hi, Terraform Module") &&
-            strings.Contains(content, "This is a sample web page to demostrate Terratest.")
+            strings.Contains(content, "This is a sample web page to demonstrate Terratest.")
     })
 }
 ```
@@ -417,7 +417,7 @@ mage 需要的唯一项是 `magefile.go`，它位于项目的根目录中（在�
 ```
 
 下面是 `./magefile.go` 的示例。 在这个用 Go 编写的生成脚本中，我们实施五个生成步骤：
-- `Clean`：此步骤删除所有在测试执行过程中生成的文件和临时文件。
+- `Clean`：此步骤删除在测试执行过程中生成的所有文件和临时文件。
 - `Format`：此步骤运行格式化代码库所需的 `terraform fmt` 和 `go fmt`。
 - `Unit`：此步骤运行 `./test/` 文件夹下的所有单元测试（使用函数名称约定 `TestUT_*`）。
 - `Integration`：此步骤类似于 `Unit`，但执行集成测试 (`TestIT_*`)，而不执行单元测试。
@@ -504,7 +504,7 @@ func Clean() error {
 $ cd [Your GoPath]/src/staticwebpage
 GoPath/src/staticwebpage$ dep init    # Run only once for this folder
 GoPath/src/staticwebpage$ dep ensure  # Required to run if you imported new packages in magefile or test cases
-GoPath/src/staticwebpage$ go fmt      # Only requied when you change the magefile
+GoPath/src/staticwebpage$ go fmt      # Only required when you change the magefile
 GoPath/src/staticwebpage$ az login    # Required when no service principal environment variables are present
 GoPath/src/staticwebpage$ mage
 ```

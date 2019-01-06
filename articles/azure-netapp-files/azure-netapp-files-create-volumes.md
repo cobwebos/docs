@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 11/13/2018
+ms.date: 12/17/2018
 ms.author: b-juche
-ms.openlocfilehash: 8fc76c33055f7131444a073d2f8560e136c0701d
-ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
+ms.openlocfilehash: 937ff9cf4c099f229df28070be07ba76339704e0
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53413235"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53583987"
 ---
 # <a name="create-a-volume-for-azure-netapp-files"></a>为 Azure NetApp 文件创建卷
 
@@ -32,7 +32,7 @@ ms.locfileid: "53413235"
 [将子网委派给 Azure NetApp 文件](azure-netapp-files-delegate-subnet.md)
 
 
-## <a name="steps"></a>步骤 
+## <a name="steps"></a>Steps 
 1.  从“管理容量池”边栏选项卡中单击“卷”边栏选项卡。 
 2.  单击“+ 添加卷”以创建卷。  
     此时将显示“新建卷”窗口。
@@ -56,13 +56,13 @@ ms.locfileid: "53413235"
     * **虚拟网络**  
         指定要从中访问卷的 Azure 虚拟网络 (Vnet)。  
 
-        你指定的 Vnet 必须已将子网委派给 Azure NetApp 文件。 只能从同一 Vnet 或者从与卷位于同一区域的 Vnet 通过 Vnet 对等互连来访问 Azure NetApp 文件服务。 还可以从本地网络通过 Express Route 来访问卷。   
+        你指定的 Vnet 必须已将子网委托给 Azure NetApp 文件。 只能从同一 Vnet 或者从与卷位于同一区域的 Vnet 通过 Vnet 对等互连来访问 Azure NetApp 文件服务。 还可以从本地网络通过 Express Route 来访问卷。   
 
     * **子网**  
         指定要用于卷的子网。  
         你指定的子网必须委派给 Azure NetApp 文件。 
         
-        如果尚未委派子网，可以在“创建卷”页面上单击“新建”。 然后，在“创建子网”页面中，指定子网信息，并选择“Microsoft.NetApp/卷”来为 Azure NetApp 文件委派子网。    
+        如果尚未委派子网，可以在“创建卷”页面上单击“新建”。 然后，在“创建子网”页面中，指定子网信息，并选择“Microsoft.NetApp/卷”来为 Azure NetApp 文件委派子网。 请注意，在每个 Vnet 中，只能将一个子网委派给 Azure NetApp 文件。   
  
         ![新建卷](../media/azure-netapp-files/azure-netapp-files-new-volume.png)
     

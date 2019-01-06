@@ -1,5 +1,5 @@
 ---
-title: 快速入门：生成缩略图 - REST、Python - 计算机视觉
+title: 快速入门：生成缩略图 - REST、Python
 titleSuffix: Azure Cognitive Services
 description: 在本快速入门中，你将使用计算机视觉 API 和 Python 基于图像生成缩略图。
 services: cognitive-services
@@ -10,12 +10,13 @@ ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 08/28/2018
 ms.author: pafarley
-ms.openlocfilehash: d674b3aae171ff1c590724720a0e6ee3761e80ef
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.custom: seodec18
+ms.openlocfilehash: 23ef0e83656e7f6d73bf89a787ab8864770a0f4b
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52956068"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53581107"
 ---
 # <a name="quickstart-generate-a-thumbnail-using-the-rest-api-and-python-in-computer-vision"></a>快速入门：在计算机视觉中使用 REST API 和 Python 生成缩略图
 

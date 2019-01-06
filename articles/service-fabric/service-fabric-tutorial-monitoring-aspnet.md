@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 09/14/2017
 ms.author: dekapur
 ms.custom: mvc
-ms.openlocfilehash: 9bbff92b7706fd207894616b83580c4ddf85e5eb
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.openlocfilehash: a130351131f59511ef4f60b579197da96f9334e6
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52444778"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53720714"
 ---
 # <a name="tutorial-monitor-and-diagnose-an-aspnet-core-application-on-service-fabric-using-application-insights"></a>教程：使用 Application Insights 在 Service Fabric 上监视和诊断 ASP.NET Core 应用程序
 
@@ -191,11 +191,11 @@ ConfigureServices(services => services
 
 ![AI 跟踪详细信息](./media/service-fabric-tutorial-monitoring-aspnet/app-map-new.png)
 
-可以通过应用映射更好地了解应用程序拓扑，尤其是在开始添加多个不同的一起运行的服务时。 也可通过它来获取有关请求成功率的基本数据，对失败的请求进行诊断，了解问题之所在。 若要详细了解如何使用应用映射，请参阅 [Application Insights 中的应用程序映射](../application-insights/app-insights-app-map.md)。
+可以通过应用映射更好地了解应用程序拓扑，尤其是在开始添加多个不同的一起运行的服务时。 也可通过它来获取有关请求成功率的基本数据，对失败的请求进行诊断，了解问题之所在。 若要详细了解如何使用应用映射，请参阅 [Application Insights 中的应用程序映射](../azure-monitor/app/app-map.md)。
 
 ## <a name="add-custom-instrumentation-to-your-application"></a>将自定义检测添加到应用程序
 
-虽然 Application Insights 提供了许多现成的遥测，但你可能需要添加更多的自定义检测。 这可能取决于业务需求，或者在应用程序出错时对诊断进行改进的需求。 Application Insights 有一个用于引入自定义事件和指标的 API，详见[此文](../application-insights/app-insights-api-custom-events-metrics.md)。
+虽然 Application Insights 提供了许多现成的遥测，但你可能需要添加更多的自定义检测。 这可能取决于业务需求，或者在应用程序出错时对诊断进行改进的需求。 Application Insights 有一个用于引入自定义事件和指标的 API，详见[此文](../azure-monitor/app/api-custom-events-metrics.md)。
 
 让我们向 VoteDataController.cs（位于“VotingData” > “控制器”下）添加一些自定义事件，以便跟踪在基础 votesDictionary 中添加和删除投票的时间。
 

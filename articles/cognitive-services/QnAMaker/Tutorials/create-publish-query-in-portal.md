@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.technology: qna-maker
 ms.topic: tutorial
-ms.date: 10/29/2018
+ms.date: 12/17/2018
 ms.author: diberry
-ms.openlocfilehash: 9853e84ffd2de8a1dfd6d9c4f32f58bb36b16403
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: 581c47d84466f37d7c7c3ad3e98ae1749f8d9524
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53164426"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53608641"
 ---
 # <a name="tutorial-create-a-knowledge-base-then-answer-question-via-the-qna-maker-portal"></a>教程：通过 QnA Maker 门户创建知识库并回答问题
 
@@ -83,9 +83,9 @@ ms.locfileid: "53164426"
 
 1. 从表的底部选择最后一页的问题和解答。 此页面显示来自聊天个性化内容的问题和解答。 
 
-1. 在问题和解答列表上方的工具栏中，选择齿轮图标。 此时会显示每个问题和解答的筛选器。 聊天问题已设置“编辑: 聊天”筛选器。 此筛选器会与所选答案一起返回到客户端应用程序。 客户端应用程序（例如聊天机器人）可以使用此筛选器来确定其他处理或与用户之间的交互。
+1. 在问题和解答列表上方的工具栏中，选择“元数据”图标。 此时会显示每个问题和解答的元数据标记。 聊天问题已设置“编辑: 聊天”元数据。 此元数据会与所选答案一起返回到客户端应用程序。 客户端应用程序（例如聊天机器人）可以使用此筛选过的元数据来确定其他处理或与用户之间的交互。
 
-    ![查看筛选器](../media/qnamaker-tutorial-create-publish-query-in-portal/save-and-train-kb-chit-chat.png)
+    ![查看元数据标记](../media/qnamaker-tutorial-create-publish-query-in-portal/save-and-train-kb-chit-chat.png)
 
 1. 在顶部菜单栏中选择“保存并训练”。
 
@@ -171,7 +171,7 @@ ms.locfileid: "53164426"
    
     ```
 
-    由于问题 `Thank you` 与聊天问题完全匹配，因此分数为 100，表明 QnA Maker 完全确信其答案。 QnA Maker 还返回了包含聊天筛选器信息的所有相关问题和元数据属性。  
+    由于问题 `Thank you` 与聊天问题完全匹配，因此分数为 100，表明 QnA Maker 完全确信其答案。 QnA Maker 还返回了包含聊天元数据标记信息的所有相关问题和元数据属性。  
 
 ## <a name="use-curl-to-query-for-the-default-answer"></a>使用 curl 查询默认解答
 

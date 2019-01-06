@@ -5,24 +5,21 @@ services: dms
 author: pochiraju
 ms.author: rajpo
 manager: craigg
-ms.reviewer: ''
+ms.reviewer: douglasl
 ms.service: dms
 ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
-ms.date: 12/04/2018
-ms.openlocfilehash: 030cd89bbd6407cd2e83a9b56942adbf419e069b
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.date: 12/19/2018
+ms.openlocfilehash: f23b297acdd8de0c26bf5fc02bc2d5415845b828
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52956697"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53718174"
 ---
 # <a name="tutorial-migrate-sql-server-to-azure-sql-database-managed-instance-online-using-dms"></a>教程：使用 DMS 将 SQL Server 联机迁移到 Azure SQL 数据库托管实例
 可以使用 Azure 数据库迁移服务将数据库从本地 SQL Server 实例迁移到 [Azure SQL 数据库托管实例](../sql-database/sql-database-managed-instance.md)，且几乎不用停机。 有关需要一些手动工作量的其他方法，请参阅[将 SQL Server 实例迁移到 Azure SQL 数据库托管实例](../sql-database/sql-database-managed-instance-migrate.md)。
-
->[!IMPORTANT]
->从 SQL Server 到 Azure SQL 数据库托管实例的联机迁移项目处于预览状态，并受 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)的约束。
 
 本教程介绍如何使用 Azure 数据库迁移服务，在几乎不用停机的情况下将 **Adventureworks2012** 数据库从 SQL Server 的本地实例迁移到 Azure SQL 数据库托管实例。
 
@@ -34,7 +31,7 @@ ms.locfileid: "52956697"
 > * 准备就绪后交接迁移。
 
 > [!NOTE]
-> 使用 Azure 数据库迁移服务执行联机迁移需要基于“高级(预览版)”定价层创建实例。
+> 使用 Azure 数据库迁移服务执行联机迁移需要基于“高级”定价层创建实例。
 
 > [!IMPORTANT]
 > 为获得最佳迁移体验，Microsoft 建议在目标数据库所在的 Azure 区域中创建 Azure 数据库迁移服务的实例。 跨区域或地理位置移动数据可能会减慢迁移过程并引入错误。
@@ -95,10 +92,10 @@ ms.locfileid: "52956697"
 
     有关更多详细信息，请参阅[使用 Azure 数据库迁移服务迁移 Azure SQL 数据库托管实例的网络拓扑](https://aka.ms/dmsnetworkformi)一文。
 
-6. 从“业务关键(预览版)”定价层中选择一个 SKU。
+6. 从“高级”定价层选择 SKU。
 
     > [!NOTE]
-    > 仅当使用“业务关键(预览版)”层时，才支持联机迁移。 
+    > 仅当使用“高级”层时，才支持联机迁移。 
    
     有关成本和定价层的详细信息，请参阅[价格页](https://aka.ms/dms-pricing)。
    
@@ -118,7 +115,7 @@ ms.locfileid: "52956697"
  
 3. 选择“+ 新建迁移项目”。
 
-4. 在“新建迁移项目”屏幕上指定项目名称，在“源服务器类型”文本框中选择“SQL Server”，在“目标服务器类型”文本框中选择“Azure SQL 数据库托管实例”，然后在“选择活动类型”中选择“联机数据迁移(预览版)”。
+4. 在“新建迁移项目”屏幕上指定项目名称，在“源服务器类型”文本框中选择“SQL Server”，在“目标服务器类型”文本框中选择“Azure SQL 数据库托管实例”，然后在“选择活动类型”中选择“联机数据迁移”。
 
    ![创建 DMS 项目](media/tutorial-sql-server-to-managed-instance-online/dms-create-project3.png)
 

@@ -1,5 +1,5 @@
 ---
-title: 快速入门：使用域模型 - REST、PHP - 计算机视觉
+title: 快速入门：特定于域的图像内容 - REST、PHP
 titleSuffix: Azure Cognitive Services
 description: 在本快速入门中，你将通过计算机视觉 API 和 PHP 使用域模型识别图像中的地标。
 services: cognitive-services
@@ -10,14 +10,15 @@ ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 08/28/2018
 ms.author: pafarley
-ms.openlocfilehash: 176e11615fe2f2c1b58b7608dfd5cbd349f9e547
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.custom: seodec18
+ms.openlocfilehash: 19aa1874a93c4a52f6fc5ff75848c1ca6815db1e
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49340063"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53581328"
 ---
-# <a name="quickstart-use-a-domain-model-using-the-rest-api-and-php-in-computer-vision"></a>快速入门：通过计算机视觉中的 REST API 和 PHP 使用域模型
+# <a name="quickstart-recognize-domain-specific-content-using-the-rest-api-and-php-with-computer-vision"></a>快速入门：在计算机视觉中使用 REST API 和 PHP 识别特定于域的内容
 
 在本快速入门中，你将通过计算机视觉的 REST API 使用域模型识别远程存储图像中的地标或者名人。 使用[识别域特定内容](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e200)方法，可以应用一个特定于域的模型来识别图像中的内容。
 
@@ -33,7 +34,7 @@ ms.locfileid: "49340063"
 
 要创建和运行示例，请执行以下步骤：
 
-1. 安装 PHP5 [`HTTP_Request2`](http://pear.php.net/package/HTTP_Request2) 包。
+1. 安装 PHP5 [`HTTP_Request2`](https://pear.php.net/package/HTTP_Request2) 包。
    1. 以管理员身份打开命令提示符窗口。
    1. 运行以下命令：
 

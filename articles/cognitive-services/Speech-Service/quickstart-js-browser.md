@@ -1,5 +1,5 @@
 ---
-title: 快速入门：识别语音，Javascript（浏览器） - 语音服务
+title: 快速入门：识别语音，JavaScript（浏览器）- 语音服务
 titleSuffix: Azure Cognitive Services
 description: 了解如何使用语音服务 SDK 在浏览器的 JavaScript 中识别语音
 services: cognitive-services
@@ -10,19 +10,19 @@ ms.component: speech-service
 ms.topic: quickstart
 ms.date: 11/06/2018
 ms.author: fmegen
-ms.openlocfilehash: f8b6f4d39ce4dc65d691ec6a0e3d0734abb19734
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: b6add6ac94e45789033cfe9913ec64e69f394f45
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53087909"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53715131"
 ---
 # <a name="quickstart-recognize-speech-in-javascript-in-a-browser-using-the-speech-service-sdk"></a>快速入门：使用语音服务 SDK 在浏览器的 JavaScript 中识别语音
 
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
 本文介绍如何创建使用认知服务语音 SDK 的 JavaScript 绑定以将语音转录为文本的网站。
-应用程序基于 Microsoft 认知服务语音 SDK（[下载版本 1.1.0](https://aka.ms/csspeech/jsbrowserpackage)）。
+应用程序基于 Microsoft 认知服务语音 SDK（[下载版本 1.2.0](https://aka.ms/csspeech/jsbrowserpackage)）。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -40,8 +40,8 @@ ms.locfileid: "53087909"
 
 [!INCLUDE [License Notice](../../../includes/cognitive-services-speech-service-license-notice.md)]
 
-将语音 SDK 作为 [.zip 包](https://aka.ms/csspeech/jsbrowserpackage)下载，并将其解压缩到新建文件夹。 这应该会解压缩两个文件，即 `microsoft.cognitiveservices.speech.sdk.bundle.js` 和 `microsoft.cognitiveservices.speech.sdk.bundle.js.map`。
-后一个文件是可选的，可用于调试到 SDK 代码（如有必要）。
+将语音 SDK 作为 [.zip 包](https://aka.ms/csspeech/jsbrowserpackage)下载，并将其解压缩到新建文件夹。 这导致两个文件（`microsoft.cognitiveservices.speech.sdk.bundle.js` 和 `microsoft.cognitiveservices.speech.sdk.bundle.js.map`）被解压缩。
+后一个文件是可选的，可用于调试到 SDK 代码中。
 
 ## <a name="create-an-indexhtml-page"></a>创建 index.html 页面
 
@@ -103,10 +103,7 @@ ms.locfileid: "53087909"
 
 要启动应用，打开你最喜欢的 web 浏览器，将其指向承载文件夹的公共 URL，输入你的[区域](regions.md)，使用麦克风触发识别。 配置后，它将获取令牌源中的令牌。
 
-[!INCLUDE [Download the sample](../../../includes/cognitive-services-speech-service-speech-sdk-sample-download-h2.md)]
-在 `quickstart/js-browser` 文件夹中查找此示例。
-
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [获取我们的示例](speech-sdk.md#get-the-samples)
+> [浏览 GitHub 上的 JavaScript 示例](https://aka.ms/csspeech/samples)

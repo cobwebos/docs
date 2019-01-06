@@ -13,16 +13,16 @@ ms.author: ayolubek
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 12/05/2018
-ms.openlocfilehash: fa46260fdd5623ba32da9979aaea8470139096b8
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 86120e65ad6a3b7fab2a5db78a338bed0e277cb8
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53091384"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53651941"
 ---
 # <a name="quickstart-use-the-azure-portals-sql-query-editor-to-connect-and-query-data"></a>快速入门：使用 Azure 门户的 SQL 查询编辑器进行连接并查询数据
 
-SQL 查询编辑器是一个 Azure 门户浏览器工具，它提供了一种在 Azure SQL 数据库或 Azure SQL 数据仓库上执行 SQL 查询的简便方法。 本快速入门演示如何使用查询编辑器连接到 SQL 数据库，然后运行 Transact-SQL 语句以查询、插入、更新和删除数据。
+SQL 查询编辑器是一个 Azure 门户浏览器工具，它提供了一种在 Azure SQL 数据库或 Azure SQL 数据仓库上执行 SQL 查询的简便方法。 在本快速入门中，将使用查询编辑器连接到 SQL 数据库，然后运行 Transact-SQL 语句以查询、插入、更新和删除数据。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -92,7 +92,7 @@ SQL 查询编辑器是一个 Azure 门户浏览器工具，它提供了一种在
 
 ## <a name="insert-data"></a>插入数据
 
-使用以下 [INSERT](https://msdn.microsoft.com/library/ms174335.aspx) Transact-SQL 语句，将新产品添加到 `SalesLT.Product` 表中。
+运行以下 [INSERT](https://msdn.microsoft.com/library/ms174335.aspx) Transact-SQL 语句，将新产品添加到 `SalesLT.Product` 表中。
 
 1. 将之前的查询替换为此查询。
 
@@ -117,12 +117,12 @@ SQL 查询编辑器是一个 Azure 门户浏览器工具，它提供了一种在
    ```
 
 
-2. 选择“运行”在 Product 表中插入新行。 “消息”窗格显示“查询已成功：受影响的行：1”。
+2. 选择“运行”在 `Product` 表中插入新行。 “消息”窗格显示“查询已成功：受影响的行：1”。
 
 
 ## <a name="update-data"></a>更新数据
 
-使用以下 [UPDATE](https://msdn.microsoft.com/library/ms177523.aspx) Transact-SQL 语句修改新产品。
+运行以下 [UPDATE](https://msdn.microsoft.com/library/ms177523.aspx) Transact-SQL 语句修改新产品。
 
 1. 将之前的查询替换为此查询。
 
@@ -132,11 +132,11 @@ SQL 查询编辑器是一个 Azure 门户浏览器工具，它提供了一种在
    WHERE Name = 'myNewProduct';
    ```
 
-2. 选择“运行”更新 Product 表中的指定行。 “消息”窗格显示“查询已成功：受影响的行：1”。
+2. 选择“运行”更新 `Product` 表中的指定行。 “消息”窗格显示“查询已成功：受影响的行：1”。
 
 ## <a name="delete-data"></a>删除数据
 
-使用以下 [DELETE](https://msdn.microsoft.com/library/ms189835.aspx) Transact-SQL 语句删除新产品。
+运行以下 [DELETE](https://msdn.microsoft.com/library/ms189835.aspx) Transact-SQL 语句删除新产品。
 
 1. 将之前的查询替换为此查询：
 
@@ -145,7 +145,7 @@ SQL 查询编辑器是一个 Azure 门户浏览器工具，它提供了一种在
    WHERE Name = 'myNewProduct';
    ```
 
-2. 选择“运行”删除 Product 表中的指定行。 “消息”窗格显示“查询已成功：受影响的行：1”。
+2. 选择“运行”删除 `Product` 表中的指定行。 “消息”窗格显示“查询已成功：受影响的行：1”。
 
 
 ## <a name="query-editor-considerations"></a>查询编辑器注意事项
@@ -156,7 +156,7 @@ SQL 查询编辑器是一个 Azure 门户浏览器工具，它提供了一种在
 
 * 按 F5 刷新查询编辑器页，任何正在处理的查询都将丢失。
 
-* 查询编辑器不支持连接到 master 数据库。
+* 查询编辑器不支持连接到 `master` 数据库。
 
 * 查询执行的超时为 5 分钟。
 

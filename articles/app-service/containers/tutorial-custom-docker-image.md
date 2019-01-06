@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 10/24/2017
 ms.author: cfowler
 ms.custom: seodec18
-ms.openlocfilehash: ae9da43ac40a3da188e6030659cfb6de166c53bb
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 62cdc50b40fb1273fdc2eece050869fc2284cf6c
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53256071"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53632970"
 ---
 # <a name="use-a-custom-docker-image-for-web-app-for-containers"></a>对用于容器的 Web 应用使用自定义 Docker 映像
 
@@ -193,7 +193,7 @@ v1.0.0: digest: sha256:21f2798b20555f4143f2ca0591a43b4f6c8138406041f2d32ec908974
 
 ## <a name="deploy-app-to-azure"></a>将应用部署到 Azure
 
-可使用 Azure Web 应用在云中托管本机 Linux 应用程序。 要创建用于容器的 Web 应用，必须依次运行用来创建组的 Azure CLI 命令、服务计划和 Web 应用本身。 
+若要创建使用刚刚推送的映像的应用，请运行 Azure CLI 命令，以创建组，然后创建服务计划，最后创建 Web 应用本身。 
 
 ### <a name="create-a-resource-group"></a>创建资源组
 

@@ -1,5 +1,5 @@
 ---
-title: Azure IoT 解决方案加速器简介 | Microsoft Docs
+title: IoT 解决方案加速器简介 - Azure | Microsoft Docs
 description: 了解 Azure IoT 解决方案加速器。 IoT 解决方案加速器是完整的、随时可部署的端到端 IoT 解决方案。
 author: dominicbetts
 ms.author: dobett
@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.service: iot-accelerators
 services: iot-accelerators
 manager: timlt
-ms.openlocfilehash: 6fed0c5e3f24fbcefec427cf56a625d1d8d7aba2
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: 79c8f0f1c987de6320770416641300f3b8bb7c1d
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51824534"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53607195"
 ---
 # <a name="what-are-azure-iot-solution-accelerators"></a>Azure IoT 解决方案加速器是什么？
 
@@ -34,7 +34,7 @@ IoT 解决方案加速器是完整且易于部署的 IoT 解决方案，可以�
 
 ### <a name="remote-monitoring"></a>远程监视
 
-使用此解决方案加速器可以从远程设备收集遥测数据，以及控制远程设备。 示例设备包括客户现场安装的散热系统，或者远地泵房中安装的阀门。
+使用[远程监视解决方案加速器](iot-accelerators-remote-monitoring-sample-walkthrough.md)可以从远程设备收集遥测数据，以及控制远程设备。 示例设备包括客户现场安装的散热系统，或者远地泵房中安装的阀门。
 
 可以使用远程监视仪表板查看联网设备发出的遥测数据、预配新设备，或者升级联网设备上的固件：
 
@@ -42,7 +42,7 @@ IoT 解决方案加速器是完整且易于部署的 IoT 解决方案，可以�
 
 ### <a name="connected-factory"></a>互连工厂
 
-使用此解决方案加速器可以从配备了 [OPC 统一体系结构](https://opcfoundation.org/about/opc-technologies/opc-ua/)接口的工业资产收集遥测数据，以及控制这些资产。 工业资产可能包括工厂生产线上的组装和测试工位。
+使用[连接工厂解决方案加速器](iot-accelerators-connected-factory-sample-walkthrough.md)可以从配备了 [OPC 统一体系结构](https://opcfoundation.org/about/opc-technologies/opc-ua/)接口的工业资产收集遥测数据，以及控制这些资产。 工业资产可能包括工厂生产线上的组装和测试工位。
 
 可以使用互联工厂仪表板来监视和管理工业设备：
 
@@ -50,7 +50,7 @@ IoT 解决方案加速器是完整且易于部署的 IoT 解决方案，可以�
 
 ### <a name="predictive-maintenance"></a>预测性维护
 
-使用此解决方案加速器可以预测远程设备何时可能会发生故障，以便在设备故障之前进行维护。 此解决方案加速器使用机器学习算法，基于设备遥测数据预测故障。 示例设备包括飞机引擎或电梯。
+使用[预测性维护解决方案加速器](iot-accelerators-predictive-walkthrough.md)可以预测远程设备何时可能会发生故障，以便在设备发生故障之前进行维护。 此解决方案加速器使用机器学习算法，基于设备遥测数据预测故障。 示例设备包括飞机引擎或电梯。
 
 可以使用预测性维护仪表板来查看预测性维护分析：
 
@@ -58,7 +58,7 @@ IoT 解决方案加速器是完整且易于部署的 IoT 解决方案，可以�
 
 ### <a name="device-simulation"></a>设备模拟
 
-使用此解决方案加速器可以运行能够生成真实遥测数据的模拟设备。 可以使用此解决方案加速器测试其他解决方案加速器的行为，或测试自己的自定义 IoT 解决方案。
+使用[设备模拟解决方案加速器](iot-accelerators-device-simulation-overview.md)可以运行能够生成真实遥测数据的模拟设备。 可以使用此解决方案加速器测试其他解决方案加速器的行为，或测试自己的自定义 IoT 解决方案。
 
 可以使用设备模拟 Web 应用来配置并运行模拟：
 
@@ -85,7 +85,7 @@ IoT 解决方案加速器是完整且易于部署的 IoT 解决方案，可以�
 | 互连工厂      | MVC           | [.NET](https://github.com/Azure/azure-iot-connected-factory)          |
 | 设备模拟      | 微服务 | [.NET](https://github.com/Azure/device-simulation-dotnet)          |
 
-若要详细了解微服务体系结构，请参阅 [.NET 应用程序体系结构](https://www.microsoft.com/net/learn/architecture)和[微服务：由云推动的应用程序革命](https://azure.microsoft.com/blog/microservices-an-application-revolution-powered-by-the-cloud/)。
+若要了解有关微服务体系结构的详细信息，请参阅 [Azure IoT 参考体系结构简介](iot-accelerators-architecture-overview.md)。
 
 ## <a name="deployment-options"></a>部署选项
 

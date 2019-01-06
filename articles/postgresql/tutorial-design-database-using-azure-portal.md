@@ -1,21 +1,18 @@
 ---
 title: 教程：使用 Azure 门户设计 Azure Database for PostgreSQL
 description: 本教程演示如何使用 Azure 门户设计第一个 Azure Database for PostgreSQL。
-services: postgresql
 author: rachel-msft
 ms.author: raagyema
-manager: kfile
-editor: jasonwhowell
 ms.service: postgresql
 ms.custom: tutorial, mvc
 ms.topic: tutorial
 ms.date: 03/20/2018
-ms.openlocfilehash: 6a3241e15cc72d1d50862a9dec14c23712ec4226
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 441b56aa683ac01566d2fd2877b9b8b912194f3a
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47406376"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53536519"
 ---
 # <a name="tutorial-design-an-azure-database-for-postgresql-using-the-azure-portal"></a>教程：使用 Azure 门户设计 Azure Database for PostgreSQL
 
@@ -195,10 +192,10 @@ SELECT * FROM inventory;
 
    ![Azure 门户 - 还原窗体选项](./media/tutorial-design-database-using-azure-portal/10-azure-portal-restore.png)
 
-   - 还原点：选择更改服务器前的时间点
-   - 目标服务器：提供一个要还原到的新服务器名称
-   - 位置：不能选择区域，此区域默认与源服务器相同
-   - 定价层：还原服务器时不能更改此值。 此值与源服务器相同。 
+   - **还原点**：选择更改服务器前的时间点
+   - **目标服务器**：提供一个要还原到的新服务器名称
+   - **位置**：不能选择区域，此区域默认与源服务器相同
+   - **定价层**：还原服务器时不能更改此值。 此值与源服务器相同。 
 3.  单击“确定”，[将服务器还原到删除该表之前的时间点](./howto-restore-server-portal.md)。 将服务器还原到不同的时间点会基于原始服务器到指定时间点为止的内容创建一个新的副本服务器，前提是该时间点在[定价层](./concepts-pricing-tiers.md)的保留期内。
 
 ## <a name="next-steps"></a>后续步骤
@@ -212,4 +209,4 @@ SELECT * FROM inventory;
 > * 更新数据
 > * 还原数据
 
-接下来了解如何使用 Azure CLI 执行类似的任务，请查看此教程：[使用 Azure CLI 设计第一个 Azure Database for PostgreSQL](tutorial-design-database-using-azure-cli.md)
+接下来，若要了解如何使用 Azure CLI 执行类似任务，请查看此教程：[使用 Azure CLI 设计第一个 Azure Database for PostgreSQL](tutorial-design-database-using-azure-cli.md)

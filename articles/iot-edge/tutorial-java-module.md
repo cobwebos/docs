@@ -9,12 +9,12 @@ ms.date: 11/25/2018
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 53be0f36e79d5691d8531c46bf7f554c53f641ee
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: f099d280615607382bd424063d39bb26cdeea793
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53342817"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53557847"
 ---
 # <a name="tutorial-develop-a-java-iot-edge-module-and-deploy-to-your-simulated-device"></a>教程：开发 Java IoT Edge 模块并将其部署到模拟设备
 
@@ -36,8 +36,8 @@ ms.locfileid: "53342817"
 
 Azure IoT Edge 设备：
 
-* 可以按照适用于 [Linux](quickstart-linux.md) 的快速入门中的步骤，将开发计算机或虚拟机用作 Edge 设备。
-* 用于 IoT Edge 的 Java 模块不支持 Windows 设备。
+* 可以遵循适用于 [Linux](quickstart-linux.md) 或 [Windows](quickstart.md) 的快速入门中的步骤来设置 IoT Edge 设备。
+* 对于 Windows 设备上的 IoT Edge，版本 1.0.5 不支持 Java 模块。 有关详细信息，请参阅 [1.0.5 发行说明](https://github.com/Azure/azure-iotedge/releases/tag/1.0.5)。 有关如何安装特定版本的步骤，请参阅[更新 IoT Edge 安全守护程序和运行时](how-to-update-iot-edge.md)。
 
 云资源：
 
@@ -70,7 +70,7 @@ Azure IoT Edge 设备：
    | ----- | ----- |
    | 注册表名称 | 提供唯一名称。 |
    | 订阅 | 从下拉列表中选择“订阅”。 |
-   | 资源组 | 建议对在 IoT Edge 快速入门和教程中创建的所有测试资源使用同一资源组。 例如，**IoTEdgeResources**。 |
+   | 资源组 | 为了简化管理，请对在 IoT Edge 快速入门和教程中创建的所有测试资源使用同一资源组。 例如，**IoTEdgeResources**。 |
    | 位置 | 选择靠近你的位置。 |
    | 管理员用户 | 设置为“启用”。 |
    | SKU | 选择“基本”。 | 
@@ -82,7 +82,7 @@ Azure IoT Edge 设备：
 7. 复制“登录服务器”、“用户名”和“密码”的值。 本教程后面会用到这些值来访问容器注册表。 
 
 ## <a name="create-an-iot-edge-module-project"></a>创建 IoT Edge 模块项目
-以下步骤使用 Visual Studio Code 和 Azure IoT Edge 扩展来创建基于 Azure IoT Edge maven 模板包和 Azure IoT Java 设备 SDK 的 IoT Edge 模块项目。
+以下步骤创建基于 Azure IoT Edge maven 模板包和 Azure IoT Java 设备 SDK 的 IoT Edge 项目。 可以使用 Visual Studio Code 和 Azure IoT Edge 扩展创建该项目。
 
 ### <a name="create-a-new-solution"></a>创建新的解决方案
 
@@ -90,7 +90,7 @@ Azure IoT Edge 设备：
 
 1. 在 Visual Studio Code 中，选择“查看” > “命令面板”，以打开 VS Code 命令面板。 
 
-2. 在命令面板中，输入并运行“Azure IoT Edge: New IoT Edge solution”命令。 按命令面板中的提示创建解决方案。
+2. 在命令面板中，输入并运行“Azure IoT Edge: **New IoT Edge solution** 命令。 按命令面板中的提示创建解决方案。
 
    | 字段 | 值 |
    | ----- | ----- |
@@ -136,7 +136,7 @@ Azure IoT Edge 设备：
     import com.microsoft.azure.sdk.iot.device.DeviceTwin.TwinPropertyCallBack;
     ```
 
-5. 将以下定义添加到 **App** 类中。 此变量设置一个值，若要向 IoT 中心发送数据，测量的温度必须超出该值。 
+5. 将以下定义添加到 **App** 类中。 此变量设置温度阈值。 在测量的机器温度超过此值之前，不会向 IoT 中心报告此温度。 
 
     ```java
     private static final String TEMP_THRESHOLD = "TemperatureThreshold";
@@ -175,7 +175,7 @@ Azure IoT Edge 设备：
         }
     ```
 
-8. 将下面的两个静态内部类添加到 **App** 类中。 这些类从模块孪生接收所需属性的更新，然后更新 **tempThreshold** 变量，使之匹配。 所有模块都有自己的孪生模块，因此可以直接从云配置在模块中运行的代码。
+8. 将下面的两个静态内部类添加到 **App** 类中。 当模块孪生的所需属性发生更改时，这些类将更新 tempThreshold 变量。 所有模块都有自己的孪生模块，因此可以直接从云配置在模块中运行的代码。
 
     ```java
     protected static class DeviceTwinStatusCallBack implements IotHubEventCallback {
@@ -240,9 +240,9 @@ Azure IoT Edge 设备：
 
 ## <a name="build-your-iot-edge-solution"></a>生成 IoT Edge 解决方案
 
-在上一部分，你已经创建了一个 IoT Edge 解决方案并将代码添加到了 **JavaModule**，该函数会筛选出其中报告的计算机温度低于可接受阈值的消息。 现在需将解决方案生成为容器映像并将其推送到容器注册表。 
+在上一部分，你已经创建了一个 IoT Edge 解决方案并将代码添加到了 **JavaModule**，该函数会筛选出其中报告的计算机温度低于可接受限制的消息。 现在，请将解决方案生成为容器映像并将其推送到容器注册表。 
 
-1. 在 Visual Studio Code 集成终端输入以下命令，登录到 Docker。 然后可将模块映像推送到 Azure 容器注册表。
+1. 在 Visual Studio Code 终端中输入以下命令，以登录到 Docker。 然后可将模块映像推送到 Azure 容器注册表。
      
    ```csh/sh
    docker login -u <ACR username> -p <ACR password> <ACR login server>
@@ -261,7 +261,7 @@ Azure IoT Edge 设备：
 
 1. 在 VS Code 命令面板中，运行命令“Azure: Sign in”并按照说明登录 Azure 帐户。 如果已登录，则可跳过此步骤。
 
-2. 在 VS Code 命令面板中，运行“Azure IoT 中心: 选择 IoT 中心”。 
+2. 在 VS Code 命令面板中，运行“Azure IoT 中心: **Select IoT Hub** 命令。 
 
 3. 选择包含要配置的 IoT Edge 设备的订阅和 IoT 中心。 
 
@@ -281,7 +281,7 @@ Azure IoT Edge 设备：
 
 可以通过 Visual Studio Code 资源管理器的“Azure IoT 中心设备”部分查看 IoT Edge 设备的状态。 展开设备的详细信息，可以看到已部署的正在运行的模块的列表。 
 
-在 IoT Edge 设备本身上，可以使用 `iotedge list` 命令查看部署模块的状态。 应该看到四个模块：两个 IoT Edge 运行时模块、tempSensor 以及在本教程中创建的自定义模块。 启动所有模块可能需要数分钟，因此如果一开始没有看到全部模块，请重新运行命令。 
+在 IoT Edge 设备上，可以使用 `iotedge list` 命令查看部署模块的状态。 应该看到四个模块：两个 IoT Edge 运行时模块、tempSensor 以及在本教程中创建的自定义模块。 启动所有模块可能需要数分钟，因此如果一开始没有看到全部模块，请重新运行命令。 
 
 若要查看由任何模块生成的消息，请使用 `iotedge logs <module name>` 命令。 
 

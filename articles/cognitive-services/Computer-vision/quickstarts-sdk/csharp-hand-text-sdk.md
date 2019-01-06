@@ -1,5 +1,5 @@
 ---
-title: 快速入门：提取文本（SDK、C#）计算机视觉
+title: 快速入门：提取手写文本 - SDK、C#
 titleSuffix: Azure Cognitive Services
 description: 本快速入门将使用计算机视觉 Windows C# 客户端库从图像中提取文本。
 services: cognitive-services
@@ -10,12 +10,13 @@ ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 09/27/2018
 ms.author: pafarley
-ms.openlocfilehash: c0323c215e83850dc53acd5e350d7eeeeb9a05b1
-ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
+ms.custom: seodec18
+ms.openlocfilehash: 7ed33290a9c5cede6fd80058d8557eae65c11b28
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53413211"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53578591"
 ---
 # <a name="quickstart-extract-text-using-the-computer-vision-sdk-and-c"></a>快速入门：使用计算机视觉 SDK 和 C# 提取文本
 

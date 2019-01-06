@@ -1,7 +1,7 @@
 ---
-title: 教程：计算机视觉 C#
+title: Visual Studio 连接服务 - 计算机视觉
 titleSuffix: Azure Cognitive Services
-description: 从 ASP.NET Core Web 应用程序连接到计算机视觉 API。
+description: 使用 Visual Studio 连接服务功能从 ASP.NET Core Web 应用程序连接到计算机视觉 API。
 services: cognitive-services
 author: ghogen
 manager: cgronlun
@@ -10,12 +10,13 @@ ms.component: computer-vision
 ms.topic: Tutorial
 ms.date: 03/01/2018
 ms.author: ghogen
-ms.openlocfilehash: ebfcabdea1e83a83af5eea8025ba5a411c3f9880
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.custom: seodec18
+ms.openlocfilehash: e9207fe19272dac23db165e160ce9f7a7e802c14
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49077944"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53579730"
 ---
 # <a name="use-connected-services-in-visual-studio-to-connect-to-the-computer-vision-api"></a>使用 Visual Studio 中的连接服务连接到计算机视觉 API
 
@@ -25,8 +26,8 @@ ms.locfileid: "49077944"
 
 ## <a name="prerequisites"></a>先决条件
 
-- **一个 Azure 订阅**。 如果没有帐户，可以注册一个[免费帐户](https://azure.microsoft.com/pricing/free-trial/)。
-- **Visual Studio 2017 版本 15.7**（装有 **Web 开发**工作负荷）。 [立即下载](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs)。
+- 一个 Azure 订阅。 如果没有帐户，可以注册一个[免费帐户](https://azure.microsoft.com/pricing/free-trial/)。
+- Visual Studio 2017 版本 15.7（装有 Web 开发工作负荷）。 [立即下载](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs)。
 
 [!INCLUDE [vs-install-cognitive-services-vsix](../../../includes/vs-install-cognitive-services-vsix.md)]
 
@@ -37,15 +38,15 @@ ms.locfileid: "49077944"
 1. 在“解决方案资源管理器”中，选择“添加” > “连接服务”。
    此时会显示“连接服务”页，其中包含可添加到项目的服务。
 
-   ![“添加连接服务”菜单项](../media/vs-common/Connected-Service-Menu.PNG)
+   ![Visual Studio 项目上右键单击菜单的屏幕截图：“添加”>“连接服务”](../media/vs-common/Connected-Service-Menu.PNG)
 
 1. 在可用服务菜单中，选择“认知服务计算机视觉 API”。
 
-   ![选择要连接的服务](./media/vs-computer-vision-connected-service/Cog-Vision-Connected-Service-0.PNG)
+   ![“连接服务”菜单，其中突出显示了“使用计算机视觉分析图像”](./media/vs-computer-vision-connected-service/Cog-Vision-Connected-Service-0.PNG)
 
    如果已登录到 Visual Studio，并且有与帐户关联的 Azure 订阅，则会显示一个页面，其中提供了订阅下拉列表。
 
-   ![选择订阅](media/vs-computer-vision-connected-service/Cog-Vision-Connected-Service-1.PNG)
+   ![“计算机视觉 API”Visual Studio 窗口，其中突出显示了“订阅”下拉列表](media/vs-computer-vision-connected-service/Cog-Vision-Connected-Service-1.PNG)
 
 1. 选择要使用的订阅，然后选择计算机视觉 API 的名称，或选择“编辑”链接以修改自动生成的名称，选择资源组和定价层。
 
@@ -93,11 +94,11 @@ ms.locfileid: "49077944"
 
 1. 在项目的 wwwroot 文件夹中，添加图像文件夹，并向 wwwroot 文件夹添加图像文件。 例如，可使用此[计算机视觉 API 页](https://azure.microsoft.com/services/cognitive-services/computer-vision/)中的一张图像。 右键单击其中一张图像，将其保存到本地硬盘驱动器，然后在解决方案资源管理器中右键单击图像文件夹，选择“添加” > “现有项”，将其添加到项目中。 项目在解决方案资源管理器中应如下所示： 
   
-   ![包含图像文件的图像文件夹](media/vs-computer-vision-connected-service/Cog-Vision-Connected-Service-3.PNG) 
+   ![选择了一个图像文件的解决方案资源管理器视图的屏幕截图](media/vs-computer-vision-connected-service/Cog-Vision-Connected-Service-3.PNG) 
 
 1. 右键单击图像文件，选择“属性”，然后选择“如果较新则复制”。 
 
-   ![如果较新则复制](media/vs-computer-vision-connected-service/Cog-Vision-Connected-Service-5.PNG) 
+   ![图像属性窗口；“复制到输出目录”设置为“如果较新则复制”](media/vs-computer-vision-connected-service/Cog-Vision-Connected-Service-5.PNG) 
  
 1. 将配置方法替换为以下代码，访问计算机视觉 API 并测试图像。
 
@@ -253,7 +254,7 @@ ms.locfileid: "49077944"
 
 ## <a name="clean-up-resources"></a>清理资源
 
-不再需要资源组时，可将其删除。 这会删除认知服务及相关资源。 若要通过门户删除资源组，请执行以下操作：
+不再需要资源组时，可将其删除。 这会删除认知服务及相关资源。 要通过门户删除资源组，请执行以下操作：
 
 1. 在门户顶部的“搜索”框中输入资源组的名称。 在搜索结果中看到在本快速入门中使用的资源组后，请将其选中。
 2. 选择“删除资源组”。

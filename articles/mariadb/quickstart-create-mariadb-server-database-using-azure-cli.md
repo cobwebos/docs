@@ -3,19 +3,17 @@ title: 快速入门：创建 Azure Database for MariaDB 服务器 - Azure CLI
 description: 本快速入门教程介绍如何使用 Azure CLI 在 Azure 资源组中创建 Azure Database for MariaDB 服务器。
 author: ajlam
 ms.author: andrela
-editor: jasonwhowell
-services: mariadb
 ms.service: mariadb
-ms.devlang: azure-cli
+ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 09/24/2018
 ms.custom: mvc
-ms.openlocfilehash: bc32cde7e4b4cf68b12b100eb402237098459aae
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: 19c1952a25e6a6db9b81b74f79bdcd2970cb2c78
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51566442"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53538732"
 ---
 # <a name="create-an-azure-database-for-mariadb-server-by-using-the-azure-cli"></a>使用 Azure CLI 创建 Azure Database for MariaDB 服务器
 
@@ -59,7 +57,7 @@ ssl-enforcement | **已启用** | 是否应该为此服务器启用 SSL。 允�
 storage-size | **51200** | 服务器的存储容量（单位是兆字节）。 有效的存储大小最小为 5120 MB，以 1024 MB 为增量。 有关存储大小限制的详细信息，请参阅[定价层](./concepts-pricing-tiers.md)。 
 版本 | **10.2** | MariaDB 主要引擎版本。
 admin-user | **myadmin** | 用于管理员登录的用户名。 admin-user 参数不能是“azure_superuser”、“admin”、“administrator”、“root”、“guest”或“public”。
-admin-password | 你的密码 | 管理员用户的密码。 密码必须包含 8 到 128 个字符。 它必须含以下字符类别中的三类：英文大写字母、英文小写字母、数字及非字母数字字符。
+admin-password | 你的密码 | 管理员用户的密码。 密码必须包含 8 到 128 个字符。 密码必须包含以下三个类别的字符：英文大写字母、英文小写字母、数字和非字母数字字符。
 
 **sku-name** 参数值遵循*定价层*\_*计算代*\_*vCore 数*约定，如以下示例所示：
 + `--sku-name B_Gen5_4` 映射到“基本”定价层、“第 5 代”计算代、4 vCore。

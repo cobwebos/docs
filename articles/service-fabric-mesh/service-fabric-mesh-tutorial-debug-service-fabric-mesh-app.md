@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 10/31/2018
 ms.author: twhitney
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 06a7ce6301af6e5a7c04ac5c5a0a1240c21f834e
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.openlocfilehash: 6e7f6499a78b21ad81af5d541966e18090467532
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52887502"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53787624"
 ---
 # <a name="tutorial-debug-a-service-fabric-mesh-application-running-in-your-local-development-cluster"></a>教程：调试在本地开发群集中运行的 Service Fabric 网格应用程序
 
@@ -93,8 +93,8 @@ git clone https://github.com/azure-samples/service-fabric-mesh
 ### <a name="debug-in-visual-studio"></a>在 Visual Studio 中进行调试
 
 在 Visual Studio 中调试 Service Fabric 网格应用程序时，使用的是本地 Service Fabric 开发群集。 若要查看如何从后端服务检索待办事项，请调试到 OnGet() 方法中。
-1. 在“WebFrontEnd”项目中，打开“页面” > “Index.cshtml” > “Index.cshtml.cs”，在 **Get** 方法（第 17 行）中设置一个断点。
-2. 在“ToDoService”项目中打开“TodoController.cs”，在 **OnGet** 方法（第 15 行）中设置一个断点。
+1. 在“WebFrontEnd”项目中，打开“页面” > “Index.cshtml” > “Index.cshtml.cs”，在 **OnGet** 方法（第 17 行）中设置一个断点。
+2. 在“ToDoService”项目中打开“TodoController.cs”，在 **Get** 方法（第 15 行）中设置一个断点。
 3. 返回浏览器并刷新页面。 命中 Web 前端 `OnGet()` 方法中的断点。 可以检查 `backendUrl` 变量，以查看 **service.yaml** 文件中定义的环境变量如何合并到用于联系后端服务的 URL 中。
 4. 逐步执行 (F10) `client.GetAsync(backendUrl).GetAwaiter().GetResult())` 调用，直到命中控制器的 `Get()` 断点。 在此方法中，可以查看如何从内存中列表检索待办事项列表。
 5. 完成后，按 **Shift+F5** 停止在 Visual Studio 中调试项目。

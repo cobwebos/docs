@@ -1,5 +1,5 @@
 ---
-title: 快速入门：生成缩略图 - REST、JavaScript - 计算机视觉
+title: 快速入门：生成缩略图 - REST、JavaScript
 titleSuffix: Azure Cognitive Services
 description: 在该快速入门中，你将使用计算机视觉 API 和 JavaScript 基于图像生成缩略图。
 services: cognitive-services
@@ -10,12 +10,13 @@ ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 08/28/2018
 ms.author: pafarley
-ms.openlocfilehash: 9d66e6cf7e858a28d3f78398f83228a7ccf7e5a7
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.custom: seodec18
+ms.openlocfilehash: 9d3d712afedf20c155b3d010f865a238d00ed90a
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52970996"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53579135"
 ---
 # <a name="quickstart-generate-a-thumbnail-using-the-rest-api-and-javascript-in-computer-vision"></a>快速入门：在计算机视觉中使用 REST API 和 JavaScript 生成缩略图
 

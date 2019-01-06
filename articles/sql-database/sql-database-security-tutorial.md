@@ -11,13 +11,13 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 12/13/2018
-ms.openlocfilehash: 814d558efee4a72a25d956828e0db237424cab24
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.date: 12/17/2018
+ms.openlocfilehash: aea95c245b86905b7bef0a35ffaa6c5e00567111
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53409762"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53558628"
 ---
 # <a name="tutorial-secure-a-single-database-in-azure-sql-database"></a>教程：在 Azure SQL 数据库中确保单一数据库的安全
 
@@ -136,6 +136,9 @@ SQL 数据库受 Azure 中的防火墙保护。 默认情况下，将拒绝与�
     ![选择-AD](./media/sql-database-aad-authentication/8choose-ad.png)
 
 2. 在“SQL Server”页上选择“Active Directory 管理员”，在“Active Directory 管理员”页上选择“设置管理员”。![选择 active directory](./media/sql-database-aad-authentication/select-active-directory.png)  
+
+   > [!IMPORTANT]
+   > 需要是“公司管理员”或“全局管理员”才能执行此任务。
 
 3. 在“添加管理员”页中，搜索某位用户，选择该用户或组作为管理员，然后选择“选择”。 （“Active Directory 管理员”页会显示 Active Directory 的所有成员和组。 若用户或组为灰显，则无法选择，因为不支持它们作为 Azure AD 管理员。 （请参阅[将 Azure Active Directory 身份验证与使用 SQL 数据库或 SQL 数据仓库进行身份验证结合使用](sql-database-aad-authentication.md)的“Azure AD 功能和限制”部分中支持的管理员列表。）基于角色的访问控制 (RBAC) 仅适用于该门户，不会传播到 SQL Server。
     ![选择管理员](./media/sql-database-aad-authentication/select-admin.png)  

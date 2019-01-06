@@ -1,22 +1,22 @@
 ---
-title: Azure Cosmos DB：使用 Golang 和 Azure 门户生成 MongoDB API 控制台应用
-description: 演示一个可以用来连接和查询 Azure Cosmos DB 的 Golang 代码示例
+title: 使用 Azure Cosmos DB 的用于 MongoDB 的 API 和 Golang SDK 生成控制台应用
+description: 演示一个 Golang 代码示例，可以参考该示例使用 Azure Cosmos DB 的用于 MongoDB 的 API 进行连接和查询。
 services: cosmos-db
-author: slyons
+author: rimman
 ms.service: cosmos-db
 ms.component: cosmosdb-mongo
 ms.topic: quickstart
-ms.date: 07/21/2017
-ms.author: sclyon
-ms.custom: mvc
-ms.openlocfilehash: a05ca8602ad3b5ea3135ad2ce915bdc38359bfd7
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.date: 12/26/2018
+ms.author: rimman
+ms.custom: quickstart
+ms.openlocfilehash: 7fb1e547f58f2297378b0c95cdea67182a416e04
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53089553"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53791602"
 ---
-# <a name="azure-cosmos-db-build-a-mongodb-api-console-app-with-golang-and-the-azure-portal"></a>Azure Cosmos DB：使用 Golang 和 Azure 门户生成 MongoDB API 控制台应用
+# <a name="build-a-console-app-using-azure-cosmos-dbs-api-for-mongodb-and-golang-sdk"></a>使用 Azure Cosmos DB 的用于 MongoDB 的 API 和 Golang SDK 生成控制台应用
 
 > [!div class="op_single_selector"]
 > * [.NET](create-mongodb-dotnet.md)
@@ -27,11 +27,11 @@ ms.locfileid: "53089553"
 > * [Golang](create-mongodb-golang.md)
 >  
 
-Azure Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务。 可快速创建和查询文档、键/值和图形数据库，所有这些都受益于 Azure Cosmos DB 核心的全球分布和水平缩放功能。
+Azure Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务。 可快速创建和查询文档、键/值和图形数据库，所有这些都受益于 Cosmos DB 核心的全球分布和水平缩放功能。
 
-本快速入门演示如何使用以 [Golang](https://golang.org/) 编写的现有 MongoDB 应用，并使用 [MongoDB API](mongodb-introduction.md) 将其连接到支持 MongoDB 客户端连接的 Azure Cosmos DB 数据库。
+本快速入门演示如何采用以 [Golang](https://golang.org/) 编写的现有 MongoDB 应用，并使用 Azure Cosmos DB 的用于 MongoDB 的 API 将其连接到 Cosmos 数据库。
 
-换而言之，Golang 应用程序仅知道它要使用 MongoDB API 连接到某个数据库。 应用程序完全知道数据存储在 Azure Cosmos DB 中。
+换而言之，Golang 应用程序仅知道它要使用 MongoDB 客户端进行连接。 该应用程序完全知道数据存储在 Cosmos 数据库中。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -93,14 +93,14 @@ Azure Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务�
 
 以下代码片段全部摘自 main.go 文件。
 
-### <a name="connecting-the-go-app-to-azure-cosmos-db"></a>将 Go 应用连接到 Azure Cosmos DB
+### <a name="connecting-the-go-app-to-cosmos-db"></a>将 Go 应用连接到 Cosmos DB
 
-Azure Cosmos DB 支持启用了 SSL 的 MongoDB。 若要连接到启用了 SSL 的 MongoDB，需在 [mgo.DialInfo](https://godoc.org/gopkg.in/mgo.v2#DialInfo) 中定义 DialServer 函数，然后使用 [tls.Dial](https://golang.org/pkg/crypto/tls#Dial) 函数进行连接。
+Azure Cosmos DB 的用于 MongoDB 的 API 支持启用了 SSL 的连接。 若要进行连接，需在 [mgo.DialInfo](https://godoc.org/gopkg.in/mgo.v2#DialInfo) 中定义 **DialServer** 函数，然后使用 [tls.Dial](https://golang.org/pkg/crypto/tls#Dial) 函数进行连接。
 
-以下 Golang 代码片段通过 Azure Cosmos DB MongoDB API 连接 Go 应用。 DialInfo 类包含与 MongoDB 群集建立会话的选项。
+以下 Golang 代码片段通过 Azure Cosmos DB 的用于 MongoDB 的 API 连接 Go 应用。 *DialInfo* 类包含用于建立会话的选项。
 
 ```go
-// DialInfo holds options for establishing a session with a MongoDB cluster.
+// DialInfo holds options for establishing a session.
 dialInfo := &mgo.DialInfo{
     Addrs:    []string{"golang-couch.documents.azure.com:10255"}, // Get HOST + PORT
     Timeout:  60 * time.Second,
@@ -113,11 +113,11 @@ dialInfo := &mgo.DialInfo{
 }
 
 // Create a session which maintains a pool of socket connections
-// to our Azure Cosmos DB MongoDB database.
+// to Cosmos database (using Azure Cosmos DB's API for MongoDB).
 session, err := mgo.DialWithInfo(dialInfo)
 
 if err != nil {
-    fmt.Printf("Can't connect to mongo, go error %v\n", err)
+    fmt.Printf("Can't connect, go error %v\n", err)
     os.Exit(1)
 }
 
@@ -172,7 +172,7 @@ if err != nil {
 
 ### <a name="query-or-read-a-document"></a>查询或读取文档
 
-Azure Cosmos DB 支持对存储在每个集合中的 JSON 文档进行各种查询。 下面的示例代码演示了一个针对集合中文档运行的查询。
+Cosmos DB 支持对存储在每个集合中的数据进行各种查询。 下面的示例代码演示了一个针对集合中文档运行的查询。
 
 ```go
 // Get a Document from the collection
@@ -202,7 +202,7 @@ if err != nil {
 
 ### <a name="delete-a-document"></a>删除文档
 
-Azure Cosmos DB 支持删除 JSON 文档。
+Cosmos DB 支持删除文档。
 
 ```go
 // Delete a document
@@ -216,9 +216,9 @@ if err != nil {
     
 ## <a name="run-the-app"></a>运行应用
 
-1. 在 Goglang 中，确保 GOPATH（依次单击“文件”、“设置”、“Go”、“GOPATH”即可找到）包含安装 gopkg 时所在的位置，默认为 USERPROFILE\go。 
+1. 在 Golang 中，确保 GOPATH（依次单击“文件”、“设置”、“Go”、“GOPATH”即可找到）包含安装 gopkg 时所在的位置，默认为 USERPROFILE\go。 
 2. 注释掉用于删除文档的行（即第 103-107 行），这样就能在运行应用后看到文档。
-3. 在 Goglang 中单击“运行”，然后单击“运行‘生成 main.go 并运行’”。
+3. 在 Golang 中单击“运行”，然后单击“运行‘生成 main.go 并运行’”。
 
     应用完成后，将会显示在[创建文档](#create-document)中创建的文档的说明。
     
@@ -228,7 +228,7 @@ if err != nil {
     Process finished with exit code 0
     ```
 
-    ![Goglang，显示应用的输出](./media/create-mongodb-golang/goglang-cosmos-db.png)
+    ![Golang，显示应用输出](./media/create-mongodb-golang/goglang-cosmos-db.png)
     
 ## <a name="review-your-document-in-data-explorer"></a>在数据资源管理器中查看文档
 
@@ -250,7 +250,7 @@ if err != nil {
 
 ## <a name="next-steps"></a>后续步骤
 
-在本快速入门教程中，你已了解如何创建 Azure Cosmos DB 帐户和使用 API for MongoDB 运行 Golang 应用。 现在可以将其他数据导入 Cosmos DB 帐户。 
+在本快速入门中，你已学习了如何创建 Cosmos 帐户和运行 Golang 应用。 现在可以向你的 Cosmos 数据库导入更多数据。 
 
 > [!div class="nextstepaction"]
-> [将 MongoDB API 的数据导入 Azure Cosmos DB](mongodb-migrate.md)
+> [将 MongoDB 数据导入 Azure Cosmos DB](mongodb-migrate.md)

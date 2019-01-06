@@ -1,5 +1,5 @@
 ---
-title: 尝试使用 Azure 上基于云的 IoT 远程监视解决方案 | Microsoft Docs
+title: 尝试使用基于云的 IoT 远程监视解决方案 - Azure | Microsoft Docs
 description: 在本快速入门中，我们将部署远程监视 Azure IoT 解决方案加速器，然后登录并使用解决方案仪表板。
 author: dominicbetts
 manager: timlt
@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 11/08/2018
 ms.author: dobett
-ms.openlocfilehash: 4071770a74d205570cee082d9af0c0fb7c77e203
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: 3f30b46138fc7753a1a4282497cbb06b6a4defbc
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51824772"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53608351"
 ---
 # <a name="quickstart-try-a-cloud-based-remote-monitoring-solution"></a>快速入门：尝试基于云的远程监视解决方案
 

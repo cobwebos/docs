@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 12/07/2018
 ms.author: barbkess
 ms.reviewer: japere
-ms.openlocfilehash: 444fb5576ed6886e5919202cf7f22ef14e1255b5
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: 8f76c53964d062db76ea7d40cdb0ced2d015fc79
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53321403"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53716000"
 ---
 # <a name="tutorial-add-an-on-premises-application-for-remote-access-through-application-proxy-in-azure-active-directory"></a>教程：在 Azure Active Directory 中添加一个本地应用程序以通过应用程序代理进行远程访问
 
@@ -39,9 +39,9 @@ Azure Active Directory (Azure AD) 具有可让用户使用其 Azure AD 帐户登
 * 一个应用程序管理员帐户。
 
 ### <a name="windows-server"></a>Windows Server
-由于要添加的应用程序位于本地，因此需要提供一个运行 Windows Server 2012 R2 或更高版本的、可在其上安装应用程序代理连接器的服务器。 此连接器服务器需要连接到 Azure 中的应用程序代理服务以及要发布的本地应用程序。
+若要使用应用程序代理，需要一台运行 Windows Server 2012 R2 或更高版本的 Windows 服务器。 在该服务器上安装应用程序代理连接器。 此连接器服务器需要连接到 Azure 中的应用程序代理服务以及要发布的本地应用程序。
 
-为了在生产环境中实现高可用性，我们建议提供多个 Windows 服务器。  对于本教程，使用一个 Windows 服务器便已足够。
+为了在生产环境中实现高可用性，我们建议提供多个 Windows 服务器。 对于本教程，使用一个 Windows 服务器便已足够。
 
 **有关连接器服务器的建议**
 
@@ -89,11 +89,11 @@ Azure Active Directory (Azure AD) 具有可让用户使用其 Azure AD 帐户登
 
 | 代码 | 用途 |
 | --- | --- |
-| \*.msappproxy.net<br>servicebus.windows.net | 连接器与应用程序代理云服务之间的通信 |
+| \*.msappproxy.net<br>\*.servicebus.windows.net | 连接器与应用程序代理云服务之间的通信 |
 | mscrl.microsoft.com:80<br>crl.microsoft.com:80<br>ocsp.msocsp.com:80<br>www.microsoft.com:80 | Azure 使用以下 URL 来验证证书 |
 | login.windows.net<br>login.microsoftonline.com | 在注册过程中，连接器将使用这些 URL。 |
 
-如果你的防火墙或代理允许执行 DNS 允许列表，可以将与 msappproxy.net 和 servicebus.windows.net 的连接加入允许列表。 如果不允许，则需要允许访问每周进行更新的 [Azure 数据中心 IP 范围](https://www.microsoft.com/download/details.aspx?id=41653)。
+如果防火墙或代理允许执行 DNS 允许列表，可将与 \*.msappproxy.net 和 \*.servicebus.windows.net 的连接加入白名单。 否则，需要允许访问 [Azure 数据中心 IP 范围](https://www.microsoft.com/download/details.aspx?id=41653)。 IP 范围每周更新。
 
 ## <a name="install-and-register-a-connector"></a>安装并注册连接器
 若要使用应用程序代理，需在选择与应用程序代理服务配合使用的每个 Windows 服务器上安装一个连接器。 连接器是一个代理，可以管理从本地应用程序服务器到 Azure AD 中应用程序代理的出站连接。 可以在同时安装了其他身份验证代理（例如 Azure AD Connect）的服务器上安装连接器。
@@ -119,7 +119,7 @@ Azure Active Directory (Azure AD) 具有可让用户使用其 Azure AD 帐户登
 
 有关连接器、容量规划以及它们如何保持最新状态的信息，请参阅[了解 Azure AD 应用程序代理连接器](application-proxy-connectors.md)。 
 
-如果应用程序使用 WebSocket 进行连接，请确保安装最新的连接器。  连接器版本 1.5.612.0 或更高版本支持 WebSocket。
+如果使用 Qlik Sense 应用程序，请始终安装最新的连接器。 Qlik Sense 使用 WebSocket，而只有 1.5.612.0 或更高版本的连接器才支持 WebSocket。
 
 
 ## <a name="verify-the-connector-installed-and-registered-correctly"></a>验证是否正确安装并注册了连接器
@@ -162,7 +162,7 @@ Azure Active Directory (Azure AD) 具有可让用户使用其 Azure AD 帐户登
 
     ![添加自己的应用程序](./media/application-proxy-publish-azure-portal/add-your-own.png)
 
-4. 提供有关应用程序的以下信息：
+4. 在“添加自己的本地应用程序”边栏选项卡中，提供有关应用程序的以下信息：
 
     ![配置应用程序](./media/application-proxy-publish-azure-portal/configure-app.png)
 
@@ -171,20 +171,18 @@ Azure Active Directory (Azure AD) 具有可让用户使用其 Azure AD 帐户登
     | **名称** | 显示在访问面板和 Azure 门户中的应用程序名称。 |
     | **内部 URL** | 用于从专用网络内部访问应用程序的 URL。 可以提供后端服务器上要发布的特定路径，而服务器的其余部分则不发布。 通过这种方式，可以在同一服务器上将不同站点发布为不同应用，并为每个站点提供其自己的名称和访问规则。<br><br>如果发布路径，请确保它包含应用程序的所有必要映像、脚本和样式表。 例如，如果你的应用位于 https://yourapp/app，并使用位于 https://yourapp/media 的映像，则应发布 https://yourapp/ 作为路径。 此内部 URL 不一定是用户看到的登陆页面。 有关详细信息，请参阅[为发布的应用设置自定义主页](application-proxy-configure-custom-home-page.md)。 |
     | **外部 URL** | 用户从网络外部访问应用时使用的地址。 如果不想使用默认的应用程序代理域，请参阅 [Azure AD 应用程序代理中的自定义域](application-proxy-configure-custom-domain.md)。|
-    | **预身份验证** | 应用程序代理在向用户授予应用程序访问权限之前如何验证用户。<br><br>**Azure Active Directory** - 应用程序代理重定向用户，让其使用 Azure AD 登录；这会验证他们对目录和应用程序的权限。 建议将此选项保留为默认值，以便可以利用条件性访问和多重身份验证等 Azure AD 安全功能。<br><br>**直通** - 用户无需对 Azure Active Directory 进行身份验证即可访问应用程序。 仍可在后端设置身份验证要求。 |
+    | **预身份验证** | 应用程序代理在向用户授予应用程序访问权限之前如何验证用户。<br><br>**Azure Active Directory** - 应用程序代理重定向用户，让其使用 Azure AD 登录；这会验证他们对目录和应用程序的权限。 建议将此选项保留为默认值，以便可以利用条件性访问和多重身份验证等 Azure AD 安全功能。 必须在 **Azure Active Directory** 中使用 Microsoft 云应用程序安全性来监视应用程序。<br><br>**直通** - 用户无需对 Azure Active Directory 进行身份验证即可访问应用程序。 仍可在后端设置身份验证要求。 |
     | **连接器组** | 连接器处理对应用程序的远程访问，借助连接器组可按区域、网络或用途组织连接器和应用。 如果尚未创建任何连接器组，应用将分配到“默认”。<br><br>如果应用程序使用 WebSocket 进行连接，组中的所有连接器必须为 1.5.612.0 或更高版本。|
 
-5. 如有必要，请配置其他设置。 对于大多数应用程序，应保留这些设置的默认状态。 
-
-    ![配置应用程序](./media/application-proxy-publish-azure-portal/additional-settings.png)
+5. 根据需要配置**其他设置**。 对于大多数应用程序，应保留这些设置的默认状态。 
 
     | 字段 | Description |
     | :---- | :---------- |
     | **后端应用程序超时** | 仅当应用程序身份验证和连接速度较慢时，才将此值设置为“长”。 |
     | **使用仅限 HTTP 的 Cookie** | 将此值设置为“是”，使应用程序代理 Cookie 在 HTTP 响应标头中包含 HTTPOnly 标志。 如果使用远程桌面服务，请将此值设置为“否”。|
-    | **使用安全 Cookie**| 将此值设置为“是”，确保仅通过安全通道（例如加密的 HTTPS 请求）传输 Cookie。
+    | **使用安全 Cookie**| 将此值设置为“是”可通过安全通道（例如加密的 HTTPS 请求）传输 Cookie。
     | **转换标头中的 URL** | 除非应用程序要求在身份验证请求中包含原始主机标头，否则请将此值保留为“是”。 |
-    | **转换应用程序主体中的 URL** | 除非具有指向其他本地应用程序的硬编码 HTML 链接且不使用自定义域，否则请将此值保留为“否”。 有关详细信息，请参阅[使用应用程序代理进行链接转换](application-proxy-configure-hard-coded-link-translation.md)。 |
+    | **转换应用程序主体中的 URL** | 除非具有指向其他本地应用程序的硬编码 HTML 链接且不使用自定义域，否则请将此值保留为“否”。 有关详细信息，请参阅[使用应用程序代理进行链接转换](application-proxy-configure-hard-coded-link-translation.md)。<br><br>如果你打算使用 Microsoft 云应用安全性 (MCAS) 监视此应用程序，请将此值设置为“是”。 有关详细信息，请参阅[使用 Microsoft 云应用安全性和 Azure Active Directory 配置实时应用程序访问监视](application-proxy-integrate-with-microsoft-cloud-application-security.md) |
    
 
 
@@ -192,7 +190,7 @@ Azure Active Directory (Azure AD) 具有可让用户使用其 Azure AD 帐户登
 
 ## <a name="test-the-application"></a>测试应用程序
 
-若要测试是否已正确添加应用，请将一个用户帐户添加到应用程序，然后尝试登录。 
+现在，可以测试是否正确添加了应用程序。 在以下步骤中，你要将一个用户帐户添加到应用程序，然后尝试登录。
 
 ### <a name="add-a-user-for-testing"></a>添加用于测试的用户
 将用户添加到应用程序之前，请验证该用户帐户是否有权从企业网络内部访问应用程序。
@@ -215,14 +213,15 @@ Azure Active Directory (Azure AD) 具有可让用户使用其 Azure AD 帐户登
 测试应用程序登录：
 
 1. 在浏览器中，导航到在发布步骤中配置的外部 URL。 
-2. 此时会看到开始屏幕，并能够使用已设置的测试帐户登录。
+2. 应会看到启动屏幕。
+3. 尝试使用在上一部分创建的用户身份登录。
 
     ![测试已发布的应用](./media/application-proxy-publish-azure-portal/test-app.png)
 
 有关故障排除信息，请参阅[根据错误消息排查应用程序代理问题](application-proxy-troubleshoot.md)。
 
 ## <a name="next-steps"></a>后续步骤
-在本教程中，你已准备了要与应用程序代理配合使用的本地环境，然后安装并注册了应用程序代理连接器。 接下来，将一个应用程序添加到了 Azure AD 租户，并通过使用 Azure AD 帐户登录到该应用程序验证了它的运行状态。
+在本教程中，你已准备了要与应用程序代理配合使用的本地环境，然后安装并注册了应用程序代理连接器。 接下来，你已将一个应用程序添加到 Azure AD 租户。 你已验证某个用户是否可以使用 Azure AD 帐户登录到该应用程序。
 
 完成了以下操作：
 > [!div class="checklist"]
@@ -232,7 +231,7 @@ Azure Active Directory (Azure AD) 具有可让用户使用其 Azure AD 帐户登
 > * 将本地应用程序添加到 Azure AD 租户
 > * 验证测试用户是否可以使用 Azure AD 帐户登录到该应用程序。
 
-现在，可以配置进行单一登录的应用程序了。 有多种单一登录方法可供选择，最佳方法取决于应用程序的身份验证方式。 以下链接可帮助你找到应用程序相关的单一登录教程。
+现在可以配置应用程序的单一登录。 使用以下链接选择单一登录方法，并查找单一登录教程。 
 
 > [!div class="nextstepaction"]
 >[配置单一登录](what-is-single-sign-on.md#choosing-a-single-sign-on-method)

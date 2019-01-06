@@ -1,5 +1,5 @@
 ---
-title: 通过 Azure 数字孪生 (C#) 查找可用房间 | Microsoft Docs
+title: 查找可用房间 - Azure 数字孪生 | Microsoft Docs
 description: 在本快速入门中，请运行两个 .NET Core 示例应用程序，将模拟的移动和二氧化碳遥测数据发送到 Azure 数字孪生中的空间。 目标是在云中进行计算处理以后，通过管理 API 查找空气清新的可用房间。
 author: alinamstanciu
 manager: bertvanhoof
@@ -7,25 +7,25 @@ ms.service: digital-twins
 services: digital-twins
 ms.devlang: csharp
 ms.topic: quickstart
-ms.custom: mvc
-ms.date: 11/7/2018
+ms.custom: mvc seodec18
+ms.date: 12/17/2018
 ms.author: alinast
-ms.openlocfilehash: ab1e879a7c145699779f6af3a97cef0ee6b5d219
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: d2588090ced3e82e63397a416245ca69204f3d87
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53105506"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53583079"
 ---
 # <a name="quickstart-find-available-rooms-by-using-azure-digital-twins"></a>快速入门：通过 Azure 数字孪生查找可用房间
 
-可以通过 Azure 数字孪生服务重新创建物理环境的数字图像。 然后，你可以获得环境中事件的通知并自定义对其的响应。 
+可以通过 Azure 数字孪生服务重新创建物理环境的数字图像。 然后，你可以获得环境中事件的通知并自定义对其的响应。
 
 本快速入门使用[一对 .NET 示例](https://github.com/Azure-Samples/digital-twins-samples-csharp)将一栋虚构的办公大楼数字化， 并介绍如何查找该大楼中的可用房间。 可以通过数字孪生将多个传感器与环境相关联。 还可以借助二氧化碳模拟传感器来确定可用房间的空气质量是否理想。 其中一个示例应用程序会生成用于可视化此方案的随机传感器数据。
 
 以下视频汇总了快速入门设置：
 
-> [!VIDEO https://www.youtube.com/embed/1izK266tbMI]
+>[!VIDEO https://www.youtube.com/embed/1izK266tbMI]
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -33,8 +33,7 @@ ms.locfileid: "53105506"
 
 1. 本快速入门中运行的两个控制台应用程序使用 C# 编写。 在开发计算机上安装 [.NET Core SDK 2.1.403 或更高版本](https://www.microsoft.com/net/download)。 如果已安装 .NET Core SDK，则可在开发计算机上验证 C# 的当前版本。 在命令提示符处运行 `dotnet --version`。
 
-1. 下载[示例 C# 项目](https://github.com/Azure-Samples/digital-twins-samples-csharp/archive/master.zip)。 解压缩 digital-twins-samples-csharp-master.zip 存档。 
-
+1. 下载[示例 C# 项目](https://github.com/Azure-Samples/digital-twins-samples-csharp/archive/master.zip)。 解压缩 digital-twins-samples-csharp-master.zip 存档。
 
 ## <a name="create-a-digital-twins-instance"></a>创建数字孪生实例
 
@@ -44,19 +43,18 @@ ms.locfileid: "53105506"
 
 ## <a name="set-permissions-for-your-app"></a>设置应用的权限
 
-此部分将示例应用程序注册到 Azure Active Directory (Azure AD)，使之能够访问数字孪生实例。 如果已经进行了 Azure AD 应用注册，请将其重用于示例。 确保按此部分所述对其进行配置。 
+此部分将示例应用程序注册到 Azure Active Directory (Azure AD)，使之能够访问数字孪生实例。 如果已经进行了 Azure AD 应用注册，请将其重用于示例。 确保按此部分所述对其进行配置。
 
 [!INCLUDE [digital-twins-permissions](../../includes/digital-twins-permissions.md)]
-
 
 ## <a name="build-application"></a>生成应用程序
 
 使用以下步骤来生成 occupancy 应用程序。
 
-1. 打开命令提示符。 转到解压缩 digital-twins-samples-csharp-master.zip 文件的文件夹。
+1. 打开命令提示符。 转到解压缩 `digital-twins-samples-csharp-master.zip` 文件的文件夹。
 1. 运行 `cd occupancy-quickstart/src`。
 1. 运行 `dotnet restore`。
-1. 编辑 **appSettings.json**，更新以下变量：
+1. 编辑 [appSettings.json](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/appSettings.json)，更新以下变量：
     - **ClientId**：输入 Azure AD 应用注册的应用程序 ID，此 ID 记录在上一部分。
     - **租户**：输入 Azure AD 租户的目录 ID，此 ID 也记录在上一部分。
     - **BaseUrl**：数字孪生实例的管理 API URL 采用 `https://yourDigitalTwinsName.yourLocation.azuresmartspaces.net/management/api/v1.0/` 格式。 请将此 URL 中的占位符替换为上一部分的实例的值。
@@ -64,22 +62,21 @@ ms.locfileid: "53105506"
 ## <a name="provision-graph"></a>预配图形
 
 此步骤为数字孪生空间图预配以下项：
- 
+
 - 多个空间。
 - 一个设备。
-- 两个传感器。 
-- 一个自定义函数。 
+- 两个传感器。
+- 一个自定义函数。
 - 一个角色分配。
- 
-空间图使用 [provisionSample.yaml](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/actions/provisionSample.yaml) 文件进行预配。 
+
+空间图使用 [provisionSample.yaml](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/actions/provisionSample.yaml) 文件进行预配。
 
 1. 运行 `dotnet run ProvisionSample`。
     >[!NOTE]
     >请使用设备登录 Azure CLI 工具向 Azure AD 进行用户身份验证。 用户必须使用 [Microsoft 登录](https://microsoft.com/devicelogin)页输入一个给定的用于身份验证的代码。 输入代码以后，请按步骤进行身份验证。 运行工具时，用户必须进行身份验证。
-    
+
     >[!TIP]
     > 运行此步骤时，如果出现以下错误消息，请确保变量已正确复制：`EXIT: Unexpected error: The input is not a valid Base-64 string ...`
-
 
 1. 预配步骤可能需要数分钟。 此外还会在数字孪生实例中预配 IoT 中心， 并且会一直循环下去，直至 IoT 中心的状态为 `Running`。
 
@@ -99,7 +96,7 @@ ms.locfileid: "53105506"
 1. 打开新的命令提示符窗口。 转到 digital-twins-samples-csharp-master 文件夹中的已下载项目。
 1. 运行 `cd device-connectivity`。
 1. 运行 `dotnet restore`。
-1. 编辑 **appsettings.json**，使用上面的 `ConnectionString` 更新 **DeviceConnectionString**。
+1. 编辑 [appsettings.json](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/device-connectivity/appsettings.json)，使用上面的 `ConnectionString` 更新 **DeviceConnectionString**。
 1. 运行 `dotnet run`，开始发送传感器数据。 可以看到数据会被发送到数字孪生，如下图所示。
 
      ![设备连接性][2]
@@ -115,7 +112,7 @@ ms.locfileid: "53105506"
 
 1. 打开用于运行上述预配步骤的命令提示符窗口。
 1. 运行 `dotnet run GetAvailableAndFreshSpaces`。
-1. 并排查看此命令提示符窗口和传感器数据命令提示符窗口。 
+1. 并排查看此命令提示符窗口和传感器数据命令提示符窗口。
 
     一个命令提示符窗口每五秒钟向数字孪生发送一次模拟的移动和二氧化碳数据。 另一命令以实时方式读取图形，根据随机的模拟数据来找出空气清新的可用房间。 它会根据上一次发送的传感器数据以近实时方式显示这其中的一个条件：
     - 房间可用且空气清新。
@@ -144,26 +141,25 @@ https://YOUR_INSTANCE_NAME.YOUR_LOCATION.azuresmartspaces.net/management/swagger
 
 ## <a name="clean-up-resources"></a>清理资源
 
-这些教程详细介绍如何执行以下操作： 
+这些教程详细介绍如何执行以下操作：
 
-- 生成应用程序，以便设施管理员提高住户工作效率。 
+- 生成应用程序，以便设施管理员提高住户工作效率。
 - 更有效地运营此大楼。
 
 若要继续学习这些教程，请勿清除本快速入门中创建的资源。 如果不打算继续学习，请删除通过本快速入门创建的所有资源。
 
 1. 删除下载示例存储库时创建的文件夹。
 1. 在 [Azure 门户](http://portal.azure.com)左侧的菜单中，选择“所有资源”。 然后，选择数字孪生资源。 在“所有资源”窗格的顶部选择“删除”。
-   
+
     > [!TIP]
     > 如果在删除数字孪生实例时遇到麻烦，请使用已推出的包含修补程序的服务更新。 请重新尝试删除实例。
-
 
 ## <a name="next-steps"></a>后续步骤
 
 本快速入门通过一个简单的方案介绍了如何查找具有良好工作条件的房间。 若要深入分析此方案，请参阅以下教程：
 
-> [!div class="nextstepaction"]
-> [教程：部署 Azure 数字孪生并配置空间图](tutorial-facilities-setup.md)
+>[!div class="nextstepaction"]
+>[教程：部署 Azure 数字孪生并配置空间图](tutorial-facilities-setup.md)
 
 <!-- Images -->
 [1]: media/quickstart-view-occupancy-dotnet/digital-twins-provision-sample.png

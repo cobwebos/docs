@@ -15,16 +15,16 @@ ms.topic: tutorial
 ms.date: 05/14/2018
 ms.author: magattus
 ms.custom: mvc
-ms.openlocfilehash: db4a9a43a971f66870c2079762b9c62802122baa
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: 33b47d33262a4968a0eafb9ec70ef73e50975735
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49093317"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53602811"
 ---
 # <a name="tutorial-add-azure-cdn-to-an-azure-app-service-web-app"></a>教程：向 Azure 应用服务 Web 应用添加 Azure CDN
 
-本教程介绍如何向 [Azure 应用服务中的 Web 应用](../app-service/app-service-web-overview.md)添加 [Azure 内容分发网络 (CDN)](cdn-overview.md)。 Web 应用是用于托管 Web 应用程序、REST API 和移动后端的服务。 
+本教程介绍如何向 [Azure 应用服务中的 Web 应用](../app-service/overview.md)添加 [Azure 内容分发网络 (CDN)](cdn-overview.md)。 Web 应用是用于托管 Web 应用程序、REST API 和移动后端的服务。 
 
 下面是要使用的示例性静态 HTML 站点的主页：
 

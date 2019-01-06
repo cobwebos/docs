@@ -1,6 +1,6 @@
 ---
-title: 使用 Spark 通过 Azure Databricks 访问 Azure Data Lake Storage Gen2 预览版数据 | Microsoft Docs
-description: 了解如何在 Azure Databricks 群集上运行 Spark 查询，以便访问 Azure Data Lake Storage Gen2 存储帐户中的数据。
+title: 教程：使用 Spark 通过 Azure Databricks 访问 Azure Data Lake Storage Gen2 预览版数据 | Microsoft Docs
+description: 本教程介绍如何在 Azure Databricks 群集上运行 Spark 查询，以便访问 Azure Data Lake Storage Gen2 存储帐户中的数据。
 services: storage
 author: dineshmurthy
 ms.component: data-lake-storage-gen2
@@ -8,56 +8,62 @@ ms.service: storage
 ms.topic: tutorial
 ms.date: 12/06/2018
 ms.author: dineshm
-ms.openlocfilehash: 88a05eb8fa59740012ca6c7a8d8508d565854dc7
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: b0382d31f9d16228ca3447ace9c7d4f171b206f6
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52974153"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53548980"
 ---
-# <a name="tutorial-access-azure-data-lake-storage-gen2-preview-data-with-azure-databricks-using-spark"></a>教程：使用 Spark 通过 Azure Databricks 访问 Azure Data Lake Storage Gen2 预览版数据
+# <a name="tutorial-access-data-lake-storage-gen2-preview-data-with-azure-databricks-using-spark"></a>教程：使用 Spark 通过 Azure Databricks 访问 Data Lake Storage Gen2 预览版数据
 
-本教程介绍如何在 Azure Databricks 群集上运行 Spark 查询，以便查询启用了 Azure Data Lake Storage Gen2 预览版的 Azure 存储帐户中的数据。
+本教程介绍如何将 Azure Databricks 群集连接到启用了 Azure Data Lake Storage Gen2（预览版）的 Azure 存储帐户中存储的数据。 建立此连接后，即可在群集本机上针对数据运行查询和分析。
+
+在本教程中，将：
 
 > [!div class="checklist"]
 > * 创建 Databricks 群集
 > * 将非结构化数据引入存储帐户中
 > * 对 Blob 存储中的数据运行分析
 
+如果还没有 Azure 订阅，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+
 ## <a name="prerequisites"></a>先决条件
 
-本教程演示如何使用和查询[美国交通部](https://transtats.bts.gov/Tables.asp?DB_ID=120&DB_Name=Airline%20On-Time%20Performance%20Data&DB_Short_Name=On-Time)提供的航班数据。 下载至少两年的航班数据（选择所有字段）并将结果保存到计算机。 确保记下下载内容的文件名和路径，在后面的步骤中需要该信息。
+本教程演示如何使用和查询[美国交通部](https://transtats.bts.gov/DL_SelectFields.asp)提供的航班数据。 
 
-> [!NOTE]
-> 单击“预压缩的文件”复选框，选择所有数据字段。 下载内容的大小将是数个 GB，但这种数量的数据是进行分析所必需的。
+1. 选中“预压缩的文件”复选框，选择所有数据字段。
+2. 选择“下载”并将结果保存到计算机。
+3. 记下下载内容的文件名和路径；在后面的步骤中需要此信息。
 
-## <a name="create-an-azure-storage-account-with-analytic-capabilities"></a>创建具有分析功能的 Azure 存储帐户
+若要完成本教程，需要一个具有分析功能的存储帐户。 我们建议完成有关该主题的[快速入门](data-lake-storage-quickstart-create-account.md)，以一个存储帐户。 创建存储帐户后，导航到该存储帐户以检索配置设置。
 
-首先，创建一个[具有分析功能的新存储帐户](data-lake-storage-quickstart-create-account.md)，并为其指定唯一名称。 然后导航到存储帐户，以便检索配置设置。
-
-1. 在“设置”下，单击“访问密钥”。
-2. 单击 **key1** 旁边的“复制”按钮，复制密钥值。
+1. 在“设置”下，选择“访问密钥”。
+2. 选择“密钥 1”旁边的“复制”按钮以复制密钥值。
 
 本教程后面的步骤需要此帐户名称和密钥。 打开一个文本编辑器，在其中存储此帐户名称和密钥，供将来引用。
 
 ## <a name="create-a-databricks-cluster"></a>创建 Databricks 群集
 
-下一步是创建 [Databricks 群集](https://docs.azuredatabricks.net/)，以便创建数据工作区。
+下一步是创建 Databricks 群集，以创建数据工作区。
 
-1. 创建一个 [Databricks 服务](https://ms.portal.azure.com/#create/Microsoft.Databricks)，将其命名为 **myFlightDataService**（确保在创建此服务时勾选“固定到仪表板”复选框）。
-2. 单击“启动工作区”，在新浏览器窗口中打开工作区。
-3. 在左侧导航栏中单击“群集”。
-4. 单击“创建群集”。
-5. 在“群集名称”字段中输入 **myFlightDataCluster**。
-6. 在“辅助角色类型”字段中选择“Standard_D8s_v3”。
-7. 将“最小辅助角色数”值更改为 *4*。
-8. 单击页面顶部的“创建群集”（此过程可能需要长达 5 分钟的时间才能完成）。
-9. 当此过程完成时，在导航栏的左上角选择“Azure Databricks”。
-10. 在页面下半部的“新建”部分下选择“Notebook”。
-11. 在“名称”字段中输入你选择的名称，并选择“Python”作为语言。
-12. 所有其他字段可以保留默认值。
-13. 选择“创建”。
-14. 将以下代码粘贴到 **Cmd 1** 单元中。 请务必将示例中括号内显示的占位符替换为你自己的值：
+1. 在 [Azure 门户](https://portal.azure.com)中，选择“创建资源”。
+2. 搜索字段中输入 **Azure Databricks**。
+3. 在 Azure Databricks 边栏选项卡上选择“创建”。
+4. 将 Databricks 服务命名为 **myFlightDataService**（创建该服务时请务必选中“固定到仪表板”复选框）。
+5. 选择“启动工作区”，在新浏览器窗口中打开工作区。
+6. 在左侧导航栏中选择“群集”。
+7. 选择“创建群集”。
+8. 在“群集名称”字段中输入 **myFlightDataCluster**。
+9. 在“辅助角色类型”字段中选择“Standard_D8s_v3”。
+10. 将“最小辅助角色数”值更改为 **4**。
+11. 在页面顶部选择“创建群集”。 （此过程最长需要 5 分钟才能完成。）
+12. 完成此过程后，在导航栏的左上角选择“Azure Databricks”。
+13. 在页面下半部的“新建”部分下选择“Notebook”。
+14. 在“名称”字段中输入选择的名称，然后选择“Python”作为语言。
+15. 所有其他字段可以保留默认值。
+16. 选择“创建”。
+17. 将以下代码粘贴到 **Cmd 1** 单元中。 将示例中括号内显示的占位符替换为自己的值：
 
     ```scala
     %python%
@@ -72,13 +78,13 @@ ms.locfileid: "52974153"
         mount_point = "/mnt/flightdata",
         extra_configs = configs)
     ```
-15. 按 **SHIFT + ENTER** 运行代码单元。
+18. 按 **SHIFT + ENTER** 运行代码单元。
 
 ## <a name="ingest-data"></a>引入数据
 
 ### <a name="copy-source-data-into-the-storage-account"></a>将源数据复制到存储帐户中
 
-下一任务是使用 AzCopy 将数据从 *.csv* 文件复制到 Azure 存储中。 打开命令提示符窗口，输入以下命令。 确保将占位符 `<DOWNLOAD_FILE_PATH>` 和 `<ACCOUNT_KEY>` 替换为在前面的步骤中存储的相应值。
+下一任务是使用 AzCopy 将数据从 *.csv* 文件复制到 Azure 存储中。 打开命令提示符窗口，输入以下命令。 确保将占位符 `<DOWNLOAD_FILE_PATH>`、`<ACCOUNT_NAME>` 和 `<ACCOUNT_KEY>` 替换为在前面步骤中获取的相应值。
 
 ```bash
 set ACCOUNT_NAME=<ACCOUNT_NAME>
@@ -95,7 +101,7 @@ azcopy cp "<DOWNLOAD_FILE_PATH>" https://<ACCOUNT_NAME>.dfs.core.windows.net/dbr
 3. 在“名称”字段中输入 **CSV2Parquet**。
 4. 所有其他字段可以保留默认值。
 5. 选择“创建”。
-6. 在 **Cmd 1** 单元格中粘贴以下代码（此代码在编辑器中自动保存）。
+6. 将以下代码粘贴到 **Cmd 1** 单元中。 （此代码将在编辑器中自动保存。）
 
     ```python
     # Use the previously established DBFS mount point to read the data
@@ -106,11 +112,11 @@ azcopy cp "<DOWNLOAD_FILE_PATH>" https://<ACCOUNT_NAME>.dfs.core.windows.net/dbr
     print("Done")
     ```
 
-## <a name="explore-data-using-hadoop-distributed-file-system"></a>使用 Hadoop 分布式文件系统浏览数据
+## <a name="explore-data"></a>浏览数据
 
-返回到 Databricks 工作区，单击左侧导航栏中的“最新”图标。
+返回到 Databricks 工作区，在左侧导航栏中选择“最近”图标。
 
-1. 单击“航班数据分析”Notebook。
+1. 选择“航班数据分析”Notebook。
 2. 按 **Ctrl + Alt + N** 创建新的单元格。
 
 将下面的每个代码块输入到 **Cmd 1** 中，然后按 **Cmd + Enter** 运行 Python 脚本。
@@ -137,7 +143,7 @@ dbutils.fs.ls("/mnt/flightdata/temp/parquet/flights")
 
 接下来，可以开始查询上传到存储帐户中的数据。 将下面的每个代码块输入到 **Cmd 1** 中，然后按 **Cmd + Enter** 运行 Python 脚本。
 
-### <a name="simple-queries"></a>简单查询
+### <a name="run-simple-queries"></a>运行简单查询
 
 若要为数据源创建 dataframe，请运行以下脚本：
 
@@ -198,7 +204,8 @@ print('Airports in Texas: ', out.show(100))
 out1 = spark.sql("SELECT distinct(Carrier) FROM FlightTable WHERE OriginStateName='Texas'")
 print('Airlines that fly to/from Texas: ', out1.show(100, False))
 ```
-### <a name="complex-queries"></a>复杂查询
+
+### <a name="run-complex-queries"></a>运行复杂查询
 
 若要执行下述更复杂的查询，请在 Notebook 中一次运行一个段，然后检查结果。
 
@@ -241,6 +248,12 @@ output.show(10, False)
 display(output)
 ```
 
+## <a name="clean-up-resources"></a>清理资源
+
+如果不再需要本文中创建的资源，可以删除资源组和所有相关资源。 为此，请选择存储帐户所在的资源组，然后选择“删除”。
+
 ## <a name="next-steps"></a>后续步骤
 
-* [使用 Apache Hive on Azure HDInsight 提取、转换和加载数据](data-lake-storage-tutorial-extract-transform-load-hive.md)
+[!div class="nextstepaction"] 
+> [使用 Apache Hive on Azure HDInsight 提取、转换和加载数据](data-lake-storage-tutorial-extract-transform-load-hive.md)
+

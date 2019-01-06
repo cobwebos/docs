@@ -1,7 +1,7 @@
 ---
 title: 情绪分析
 titleSuffix: Azure Cognitive Services
-description: 在本教程中，我们将创建一个应用，用于演示如何从陈述中提取积极、消极和中性的情绪。 情绪是从整个话语确定的。
+description: 在本教程中，我们将创建一个应用，用于演示如何从话语中获取积极、消极和中性的情绪。 情绪是从整个话语确定的。
 services: cognitive-services
 author: diberry
 manager: cgronlun
@@ -9,56 +9,64 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: tutorial
-ms.date: 09/09/2018
+ms.date: 12/21/2018
 ms.author: diberry
-ms.openlocfilehash: d93c7619bb670a81372ab83359836a78b8956b09
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: ee50907d7965a66d09dc57113e87edecb1932083
+ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53098911"
+ms.lasthandoff: 12/22/2018
+ms.locfileid: "53754282"
 ---
-# <a name="tutorial-9--extract-sentiment-of-overall-utterance"></a>教程 9：提取整体话语的情绪
-在本教程中，我们将创建一个应用，用于演示如何从陈述中提取积极、消极和中性的情绪。 情绪是从整个话语确定的。
+# <a name="tutorial--get-sentiment-of-utterance"></a>教程：获取话语的情绪
 
-情绪分析是确定用户陈述是积极、消极还是中性的功能。 
+在本教程中，我们将创建一个应用，用于演示如何从话语中确定积极、消极和中性的情绪。 情绪是从整个话语确定的。
+
+**本教程介绍如何执行下列操作：**
+
+<!-- green checkmark -->
+> [!div class="checklist"]
+> * 创建新应用
+> * 将情绪分析添加为发布设置
+> * 训练应用
+> * 发布应用
+> * 从终结点获取获取话语的情绪
+
+[!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
+
+## <a name="sentiment-analysis-is-a-publish-setting"></a>情绪分析是一项发布设置
 
 以下陈述显示了情绪的示例：
 
 |情绪|得分|陈述|
 |:--|:--|:--|
 |积极|0.91 |John W. Smith 在巴黎的演讲做得很好。|
-|积极|0.84 |jill-jones@mycompany.com 对 Parker 的推销工作做得很好。|
+|积极|0.84 |西雅图工程师对 Parker 的推销工作做得很好。|
 
-情绪分析是一种适用于所有话语的发布设置。 你不必在陈述中找到表示情感的词语并为它们加注标签，因为情绪分析应用于整个陈述。 
+情绪分析是一种适用于所有话语的发布设置。 不需要在陈述中查找指示情绪的单词并对其进行标记。 
 
 因为它是发布设置，所以不会在意向或实体页上看到它。 可以在[交互式测试](luis-interactive-test.md#view-sentiment-results)窗格中或在终结点 URL 处进行测试时看到它。 
 
-**本教程介绍如何执行下列操作：**
 
-<!-- green checkmark -->
-> [!div class="checklist"]
-> * 使用现有的教程应用 
-> * 将情绪分析添加为发布设置
-> * 定型
-> * 发布
-> * 从终结点获取获取话语的情绪
+## <a name="create-a-new-app"></a>创建新应用
 
-[!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
+[!INCLUDE [Follow these steps to create a new LUIS app](../../../includes/cognitive-services-luis-create-new-app-steps.md)]
 
-## <a name="use-existing-app"></a>使用现有应用
+## <a name="add-personname-prebuilt-entity"></a>添加 PersonName 预生成实体 
 
-继续使用上一个教程中创建的名为 **HumanResources** 的应用。 
 
-如果没有上一个教程中的 HumanResources 应用，请执行以下步骤：
+1. 在左侧导航菜单中选择“实体”。
 
-1.  下载并保存[应用 JSON 文件](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/tutorials/custom-domain-keyphrase-HumanResources.json)。
+1. 选择“添加预生成的实体”按钮。
 
-2. 将 JSON 导入到新应用中。
+1. 从预生成的实体列表中选择以下实体，然后选择“完成”：
 
-3. 在“管理”部分的“版本”选项卡上，克隆版本并将其命名为 `sentiment`。 克隆非常适合用于演练各种 LUIS 功能，且不会影响原始版本。 由于版本名称用作 URL 路由的一部分，因此该名称不能包含任何在 URL 中无效的字符。
+    * **[PersonName](luis-reference-prebuilt-person.md)** 
 
-## <a name="employeefeedback-intent"></a>EmployeeFeedback 意向 
+    ![在“预生成的实体”对话框中选择的数字的屏幕截图](./media/luis-quickstart-intent-and-sentiment-analysis/add-personname-prebuilt-entity.png)
+
+## <a name="create-an-intent-to-determine-employee-feedback"></a>创建用于确定员工反馈的意向
+
 添加一个新意向来从公司的成员捕获员工反馈。 
 
 1. [!INCLUDE [Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
@@ -71,122 +79,66 @@ ms.locfileid: "53098911"
 
 4. 添加几项陈述来指明员工某项工作做得很好或者某个方面需要改进：
 
-    请记住，在此人力资源应用中，员工是在列表实体 `Employee` 中通过姓名、电子邮件、电话分机号码、移动电话号码及其美国联邦社会安全号码定义的。 
-
     |陈述|
     |--|
-    |425-555-1212 做了很好的工作来欢迎一位同事从产假归来。|
-    |234-56-7891 在一位同事悲伤时做了很好的安慰工作。|
-    |jill-jones@mycompany.com 没有文书工作所需的所有发票。|
-    |john.w.smith@mycompany.com 在一个月后上交了没有签名的必需表单|
-    |x23456 没有赶上重要的市场营销场外会议。|
-    |x12345 错过了六月份的评审会议。|
-    |Jill Jones 在哈佛进行了令人震撼的推销|
-    |John W. Smith 在斯坦福的演讲做得很好|
+    |John Smith 做了很好的工作来欢迎一位同事从产假归来。|
+    |Jill Jones 在一位同事悲伤时做了很好的安慰工作。|
+    |Bob Barnes 没有文书工作所需的所有发票。|
+    |Todd Thomas 在一个月后上交了没有签名的必需表单|
+    |Katherine Kelly 没有赶上重要的市场营销场外会议。|
+    |Denise Dillard 错过了六月份的评审会议。|
+    |Mark Mathews 在哈佛进行了令人震撼的推销|
+    |Walter Williams 在斯坦福的演讲做得很好|
 
     [ ![在 EmployeeFeedback 意向中包含了示例陈述的 LUIS 应用的屏幕截图](./media/luis-quickstart-intent-and-sentiment-analysis/hr-utterance-examples.png)](./media/luis-quickstart-intent-and-sentiment-analysis/hr-utterance-examples.png#lightbox)
 
-## <a name="train"></a>定型
+## <a name="add-example-utterances-to-the-none-intent"></a>将话语示例添加到 None 意向 
+
+[!INCLUDE [Follow these steps to add the None intent to the app](../../../includes/cognitive-services-luis-create-the-none-intent.md)]
+
+## <a name="train-the-app-so-the-changes-to-the-intent-can-be-tested"></a>训练应用，以便可以测试对意向所做的更改 
 
 [!INCLUDE [LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
 
 ## <a name="configure-app-to-include-sentiment-analysis"></a>将应用配置为包含情绪分析
+
 1. 在右上角的导航栏中选择“管理”，然后从左侧菜单中选择“发布设置”。
 
-2. 切换到“情绪分析”以启用此设置。 
+1. 选择“情绪分析”以启用此设置。 
 
     ![开启“情绪分析”作为发布设置](./media/luis-quickstart-intent-and-sentiment-analysis/turn-on-sentiment-analysis-as-publish-setting.png)
 
-## <a name="publish"></a>发布
+## <a name="publish-the-app-so-the-trained-model-is-queryable-from-the-endpoint"></a>发布应用，以便可以从终结点查询已训练的模型
 
 [!INCLUDE [LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)]
 
-## <a name="get-sentiment-of-utterance-from-endpoint"></a>从终结点获取获取话语的情绪
+## <a name="get-the-sentiment-of-an-utterance-from-the-endpoint"></a>从终结点获取话语的情绪
 
 1. [!INCLUDE [LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
 
-2. 将光标定位到地址中 URL 的末尾，并输入 `Jill Jones work with the media team on the public portal was amazing`。 最后一个查询字符串参数为 `q`，表示陈述查询 (**q**uery)。 此陈述不同于标记的任何陈述，因此，它非常适合用于测试，测试结果应返回包含所提取的情绪分析的 `EmployeeFeedback` 意向。
+1. 将光标定位到地址中 URL 的末尾，并输入 `Jill Jones work with the media team on the public portal was amazing`。 最后一个查询字符串参数为 `q`，表示陈述查询 (**q**uery)。 此陈述不同于标记的任何陈述，因此，它非常适合用于测试，测试结果应返回包含所提取的情绪分析的 `EmployeeFeedback` 意向。
     
     ```json
     {
       "query": "Jill Jones work with the media team on the public portal was amazing",
       "topScoringIntent": {
         "intent": "EmployeeFeedback",
-        "score": 0.4983256
+        "score": 0.9616192
       },
       "intents": [
         {
           "intent": "EmployeeFeedback",
-          "score": 0.4983256
-        },
-        {
-          "intent": "MoveEmployee",
-          "score": 0.06617523
-        },
-        {
-          "intent": "GetJobInformation",
-          "score": 0.04631853
-        },
-        {
-          "intent": "ApplyForJob",
-          "score": 0.0103248553
-        },
-        {
-          "intent": "Utilities.StartOver",
-          "score": 0.007531875
-        },
-        {
-          "intent": "FindForm",
-          "score": 0.00344597152
-        },
-        {
-          "intent": "Utilities.Help",
-          "score": 0.00337914471
-        },
-        {
-          "intent": "Utilities.Cancel",
-          "score": 0.0026357458
+          "score": 0.9616192
         },
         {
           "intent": "None",
-          "score": 0.00214573368
-        },
-        {
-          "intent": "Utilities.Stop",
-          "score": 0.00157622492
-        },
-        {
-          "intent": "Utilities.Confirm",
-          "score": 7.379545E-05
+          "score": 0.09347677
         }
       ],
       "entities": [
         {
           "entity": "jill jones",
-          "type": "Employee",
-          "startIndex": 0,
-          "endIndex": 9,
-          "resolution": {
-            "values": [
-              "Employee-45612"
-            ]
-          }
-        },
-        {
-          "entity": "media team",
-          "type": "builtin.keyPhrase",
-          "startIndex": 25,
-          "endIndex": 34
-        },
-        {
-          "entity": "public portal",
-          "type": "builtin.keyPhrase",
-          "startIndex": 43,
-          "endIndex": 55
-        },
-        {
-          "entity": "jill jones",
-          "type": "builtin.keyPhrase",
+          "type": "builtin.personName",
           "startIndex": 0,
           "endIndex": 9
         }
@@ -198,11 +150,19 @@ ms.locfileid: "53098911"
     }
     ```
 
-    sentimentAnalysis 是积极的，得分为 0.86。 
+    sentimentAnalysis 是积极的，评分为 86%。 
 
 ## <a name="clean-up-resources"></a>清理资源
 
 [!INCLUDE [LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
+
+## <a name="related-information"></a>相关信息
+
+* 情绪分析由认知服务[文本分析](../Text-Analytics/index.yml)提供。 此功能仅限于文本分析[支持的语言](luis-language-support.md##languages-supported)。
+* [如何训练](luis-how-to-train.md)
+* [如何发布](luis-how-to-publish-app.md)
+* [如何在 LUIS 门户中测试](luis-interactive-test.md)
+
 
 ## <a name="next-steps"></a>后续步骤
 本教程将情绪分析添加为发布设置，以从整个话语中提取情绪值。

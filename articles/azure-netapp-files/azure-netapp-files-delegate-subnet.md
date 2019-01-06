@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 11/13/2018
 ms.author: b-juche
-ms.openlocfilehash: fc8ec5c3bbe0157f5737e2eb757478357aa6e867
-ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
+ms.openlocfilehash: 8ec41c6db8c8e5c62d15dc0638762f2649c637b8
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53414298"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53631645"
 ---
 # <a name="delegate-a-subnet-to-azure-netapp-files"></a>将子网委派给 Azure NetApp 文件 
 
@@ -28,10 +28,10 @@ ms.locfileid: "53414298"
 ## <a name="about-this-task"></a>关于此任务
 * 用于创建新子网的向导默认设置 /24 网络掩码，这将提供 251 个可用 IP 地址。 对于此服务，使用 /28 网络掩码就足够了，这将提供 16 个可用 IP 地址。
 * 不能在委派的子网中指定网络安全组或服务终结点。 这样做会导致子网委派失败。
-* 在每个 Azure 虚拟网络 (VNet) 中，只能将一个子网委派给 Azure NetApp 文件。
+* 在每个 Azure 虚拟网络 (Vnet) 中，只能将一个子网委派给 Azure NetApp 文件。
 * 当前不支持从对等互连的虚拟网络访问卷。
 
-## <a name="steps"></a>步骤 
+## <a name="steps"></a>Steps 
 1.  在 Azure 门户中，转到“虚拟网络”边栏选项卡，选择要用于 Azure NetApp 文件的虚拟网络。    
 
 1. 从“虚拟网络”边栏选项卡中选择“子网”，单击“+子网”按钮。 

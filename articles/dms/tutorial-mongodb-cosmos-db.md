@@ -5,18 +5,18 @@ services: dms
 author: pochiraju
 ms.author: rajpo
 manager: craigg
-ms.reviewer: ''
+ms.reviewer: douglasl
 ms.service: dms
 ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
 ms.date: 12/11/2018
-ms.openlocfilehash: 46e8ca97411e9dce77c0c82c4e0f5dd164bce01b
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: 4651c9afab99577622af71297e1fb6465a20097f
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53320721"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53713091"
 ---
 # <a name="tutorial-migrate-mongodb-to-azure-cosmos-db-mongo-api-offline-using-dms"></a>教程：使用 DMS 将 MongoDB 脱机迁移到 Azure Cosmos DB Mongo API
 可以使用 Azure 数据库迁移服务将数据库从 MongoDB 的本地或云实例脱机（一次性）迁移到 Azure Cosmos DB Mongo API。
@@ -28,11 +28,11 @@ ms.locfileid: "53320721"
 > * 运行迁移。
 > * 监视迁移。
 
-在本教程中，请使用 Azure 数据库迁移服务，将在 Azure 虚拟机中托管的 MongoDB 中的 **Wingtips** 数据集迁移到 Cosmos DB 的 MongoDB API。 如果尚未设置 MongoDB 源，请参阅[在 Azure 中的 Windows VM 上安装和配置 MongoDB](https://docs.microsoft.com/azure/virtual-machines/windows/install-mongodb) 一文。
+在本教程中，请使用 Azure 数据库迁移服务，将在 Azure 虚拟机中托管的 MongoDB 中的 **Wingtips** 数据集迁移到 Azure Cosmos DB for MongoDB API。 如果尚未设置 MongoDB 源，请参阅[在 Azure 中的 Windows VM 上安装和配置 MongoDB](https://docs.microsoft.com/azure/virtual-machines/windows/install-mongodb) 一文。
 
 ## <a name="prerequisites"></a>先决条件
 要完成本教程，需要：
-- [创建 Azure Cosmos DB MongoDB API 帐户](https://ms.portal.azure.com/#create/Microsoft.DocumentDB)。
+- [创建 Azure Cosmos DB for MongoDB API 帐户](https://ms.portal.azure.com/#create/Microsoft.DocumentDB)。
 - 使用 Azure 资源管理器部署模型创建 Azure 数据库迁移服务的 VNET，它将使用 [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) 或 [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways) 为本地源服务器提供站点到站点连接。
 - 确保 Azure 虚拟网络 (VNET) 网络安全组规则未阻止以下通信端口：443、53、9354、445、12000。 有关 Azure VNET NSG 流量筛选的更多详细信息，请参阅[使用网络安全组筛选网络流量](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg)一文。
 - 打开 Windows 防火墙，使 Azure 数据库迁移服务能够访问源 MongoDB 服务器（默认情况下为 TCP 端口 27017）。
@@ -163,7 +163,7 @@ ms.locfileid: "53320721"
 
 ## <a name="verify-data-in-cosmos-db"></a>验证 Cosmos DB 中的数据
 
-- 在迁移完成后，可以检查 Cosmos DB MongoDB API 帐户，验证所有集合是否已成功迁移。
+- 在迁移完成后，可以检查 Azure Cosmos DB for MongoDB API 帐户，验证所有集合是否已成功迁移。
 
     ![活动状态为“已完成”](media/tutorial-mongodb-to-cosmosdb/dms-cosmosdb-data-explorer.png)
 

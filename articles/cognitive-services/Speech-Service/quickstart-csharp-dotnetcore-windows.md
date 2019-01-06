@@ -1,5 +1,5 @@
 ---
-title: 快速入门：识别语音，.NET Core (Windows) - 语音服务
+title: 快速入门：识别语音，C# (.NET Core Windows) - 语音服务
 titleSuffix: Azure Cognitive Services
 description: 了解如何在 Windows 上使用语音服务 SDK 通过 .NET Core 下的 C# 识别语音
 services: cognitive-services
@@ -8,16 +8,16 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: quickstart
-ms.date: 10/12/2018
+ms.date: 12/13/2018
 ms.author: wolfma
-ms.openlocfilehash: e82e39eb3fc6c7ebaf4798ad10038bfd2fa9a41b
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: a5a04fdede498d404a00d666e4042337b4dc675b
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53085478"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53727830"
 ---
-# <a name="quickstart-recognize-speech-in-c-under-net-core-on-windows-by-using-the-speech-sdk"></a>快速入门：在 Windows 上使用语音 SDK 通过 .NET Core 下的 C# 识别语音
+# <a name="quickstart-recognize-speech-with-the-speech-sdk-for-net-core"></a>快速入门：使用适用于 .NET Core 的语音 SDK 识别语音
 
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
@@ -28,35 +28,17 @@ ms.locfileid: "53085478"
 
 需要具有语音服务订阅密钥才能完成此快速入门。 你可以免费获得一个。 有关详细信息，请参阅[免费试用语音服务](get-started.md)。
 
+## <a name="prerequisites"></a>先决条件
+
+本快速入门需要：
+
+* [.NET Core SDK](https://dotnet.microsoft.com/download)
+* [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/)
+* 语音服务的 Azure 订阅密钥。 [免费获得一个](get-started.md)。
 
 ## <a name="create-a-visual-studio-project"></a>创建 Visual Studio 项目
 
-1. 启动 Visual Studio 2017。
-
-1. 确保“.NET 跨平台开发”工作负荷可用。 在 Visual Studio 菜单栏中选择“工具” > “获取工具和功能”，以打开 Visual Studio 安装程序。 如果此工作负荷已启用，请关闭对话框。
-
-    ![Visual Studio 安装程序的屏幕截图，其中突出显示了“工作负荷”选项卡](media/sdk/vs-enable-net-core-workload.png)
-
-    否则，请选择“.NET Core 跨平台开发”旁边的框，然后选择对话框右下角的“修改”。 安装新功能将花费一些时间。
-
-1. 创建新的 Visual C# .NET Core 控制台应用。 在“新建项目”对话框中，从左侧窗格中展开“已安装” > “Visual C#” > “.NET Core”。 然后，选择“控制台应用(.NET Core)”。 在项目名称处，输入 helloworld。
-
-    ![“新建项目”对话框的屏幕截图](media/sdk/qs-csharp-dotnetcore-windows-01-new-console-app.png "创建 Visual C# 控制台应用(.NET Core)")
-
-1. 安装并引用[语音 SDK NuGet 包](https://aka.ms/csspeech/nuget)。 在解决方案资源管理器中，右键单击该解决方案，并选择“为解决方案管理 NuGet 包”。
-
-    ![解决方案资源管理器的屏幕截图，其中突出显示了“为解决方案管理 NuGet 包”选项](media/sdk/qs-csharp-dotnetcore-windows-02-manage-nuget-packages.png "为解决方案管理 NuGet 包")
-
-1. 在右上角的“包源”字段中，选择“nuget.org”。搜索 `Microsoft.CognitiveServices.Speech` 包，并将其安装到“helloworld”项目中。
-
-    ![“管理解决方案包”对话框的屏幕截图](media/sdk/qs-csharp-dotnetcore-windows-03-nuget-install-1.0.0.png "安装 NuGet 包")
-
-1. 接受显示的许可证即可开始安装 NuGet 包。
-
-    ![“接受许可证”对话框的屏幕截图](media/sdk/qs-csharp-dotnetcore-windows-04-nuget-license.png "接受许可证")
-
-安装此包后，在包管理器控制台中会显示一条确认消息。
-
+[!INCLUDE [](../../../includes/cognitive-services-speech-service-quickstart-dotnetcore-create-proj.md)]
 
 ## <a name="add-sample-code"></a>添加示例代码
 
@@ -84,16 +66,14 @@ ms.locfileid: "53085478"
 
     ![成功识别后的控制台输出的屏幕截图](media/sdk/qs-csharp-dotnetcore-windows-07-console-output.png "成功识别后的控制台输出")
 
-[!INCLUDE [Download this sample](../../../includes/cognitive-services-speech-service-speech-sdk-sample-download-h2.md)]
-在 `quickstart/csharp-dotnetcore-windows` 文件夹中查找此示例。
-
 ## <a name="next-steps"></a>后续步骤
 
+GitHub 上提供了其他示例，例如如何从音频文件中读取语音。
+
 > [!div class="nextstepaction"]
-> [使用适用于 C# 的语音 SDK 从语音中识别意向](how-to-recognize-intents-from-speech-csharp.md)
+> [浏览 GitHub 上的 C# 示例](https://aka.ms/csspeech/samples)
 
 ## <a name="see-also"></a>另请参阅
 
-- [翻译语音](how-to-translate-speech-csharp.md)
 - [自定义声学模型](how-to-customize-acoustic-models.md)
 - [自定义语言模型](how-to-customize-language-model.md)

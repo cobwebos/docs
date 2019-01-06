@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 10/23/2018
 ms.author: wgries
 ms.component: files
-ms.openlocfilehash: cc34411cc27870dbd9c707a34ebf34b96c7253dc
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: 3ebf450f4e84fed572307a18f20f36013e32c7a5
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49986111"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53630693"
 ---
 # <a name="tutorial-extend-windows-file-servers-with-azure-file-sync"></a>教程：使用 Azure 文件同步扩展 Windows 文件服务器
 本教程介绍使用 Azure 文件同步扩展 Windows Server 存储容量的基本步骤。虽然本教程使用 Windows Server Azure VM，但通常情况下，需针对本地服务器执行此过程。 若要在自己的环境中部署 Azure 文件同步，请改为参阅[部署 Azure 文件同步](storage-sync-files-deployment-guide.md)一文。
@@ -163,14 +163,14 @@ ms.locfileid: "49986111"
 
 1. 关闭**资源管理器**和**服务器管理器**。
 
-### <a name="download-the-azurerm-powershell-module"></a>下载 AzureRM PowerShell 模块
-接下来，在 **Windows Server 2016 Datacenter** VM 的服务器上安装 **AzureRM PowerShell 模块**。
+### <a name="download-the-azure-powershell-module"></a>下载 Azure PowerShell 模块
+接下来，在 **Windows Server 2016 Datacenter** VM 的服务器上安装 **Azure PowerShell 模块**。
 
 1. 在 VM 中打开提升的 PowerShell 窗口
 1. 运行以下命令：
 
    ```powershell
-   Install-Module -Name AzureRM -AllowClobber
+   Install-Module -Name Az -AllowClobber
    ```
 
    > [!NOTE]
@@ -189,7 +189,7 @@ ms.locfileid: "49986111"
 
 1. 请回答 `Yes` 或 `Yes to All` 继续安装。
 
-`AzureRM` 模块是 Azure PowerShell cmdlet 的汇总模块。 安装它时，系统会下载所有可用的 Azure 资源管理器模块并使其 cmdlet 可供使用。
+`Az` 模块是 Azure PowerShell cmdlet 的汇总模块。 安装它时，系统会下载所有可用的 Azure 资源管理器模块并使其 cmdlet 可供使用。
 
 目前已设置完教程的环境，可以开始部署**存储同步服务**了。
 
@@ -237,7 +237,7 @@ Azure 文件同步代理是一个可下载包，可实现 Windows 服务器与 A
 ## <a name="register-windows-server"></a>注册 Windows Server
 向存储同步服务注册 Windows Server 可在服务器（或群集）与存储同步服务之间建立信任关系。 一个服务器只能注册到一个存储同步服务，并可与同一存储同步服务关联的其他服务器和 Azure 文件共享同步。
 
-服务器注册 UI 会在 **Azure 文件同步代理**安装后自动打开。 如果没有打开，可以手动从其文件位置 C:\Program Files\Azure\StorageSyncAgent\ServerRegistration.exe 打开。
+服务器注册 UI 会在 **Azure 文件同步代理**安装后自动打开。 如果没有，可以从其文件位置手动将其打开：C:\Program Files\Azure\StorageSyncAgent\ServerRegistration.exe。
 
 1. 服务器注册 UI 在 VM 中打开后，请单击“确定”。
 1. 单击“登录”即可开始。

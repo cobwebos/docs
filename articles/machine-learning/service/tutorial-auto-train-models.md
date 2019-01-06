@@ -1,7 +1,7 @@
 ---
-title: 回归模型教程：自动训练模型
+title: 回归模型教程：自动化机器学习
 titleSuffix: Azure Machine Learning service
-description: 了解如何使用自动化机器学习生成 ML 模型。  Azure 机器学习可以通过自动化方式为你执行数据预处理、算法选择和超参数选择操作。 然后，使用 Azure 机器学习服务来部署最终模型。
+description: 了解如何使用自动化机器学习生成机器学习模型。 Azure 机器学习可以通过自动化方式为你执行数据预处理、算法选择和超参数选择操作。 然后，使用 Azure 机器学习服务来部署最终的模型。
 services: machine-learning
 ms.service: machine-learning
 ms.component: core
@@ -11,40 +11,40 @@ ms.author: nilesha
 ms.reviewer: sgilley
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 6bbc2d44ab128aec032ead29bf247cd834f932b6
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 5bd6649b063521853864d4da423372ae181cf977
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53315190"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53580512"
 ---
 # <a name="tutorial-use-automated-machine-learning-to-build-your-regression-model"></a>教程：通过自动化机器学习来构建回归模型
 
 本教程是由两个部分构成的系列教程的第二部分。 在上一教程中，[已准备用于回归建模的纽约市出租车数据](tutorial-data-prep.md)。
 
-现在可以使用 Azure 机器学习服务来生成模型了。 在教程的此部分，需使用准备好的数据自动生成一个回归模型，用于预测出租车费用价格。 使用此服务的自动化 ML 功能，可以定义机器学习目标和约束，启动自动化机器学习过程，然后进行算法选择和超参数优化。 自动化 ML 技术会对算法和超参数的多种组合进行迭代访问，知道找到符合要求的最佳模型。
+现在可以使用 Azure 机器学习服务来生成模型了。 在教程的此部分，你将使用准备好的数据自动生成一个回归模型，用于预测出租车费用价格。 使用该服务的自动化机器学习功能定义机器学习目标和约束。 启动自动化机器学习过程。 然后进行算法选择和超参数优化。 自动化机器学习技术会对算法和超参数的多种组合进行迭代访问，直到找到符合条件的最佳模型。
 
 ![流程图](./media/tutorial-auto-train-models/flow2.png)
 
-本教程介绍如何执行下列操作：
+本教程将介绍以下任务：
 
 > [!div class="checklist"]
-> * 设置 Python 环境并导入 SDK 包
-> * 配置 Azure 机器学习服务工作区
-> * 自动训练回归模型
-> * 使用自定义参数在本地运行模型
-> * 浏览结果
-> * 注册最佳模型
+> * 设置 Python 环境并导入 SDK 包。
+> * 配置 Azure 机器学习服务工作区。
+> * 自动训练回归模型。
+> * 使用自定义参数在本地运行模型。
+> * 浏览结果。
+> * 注册最佳模型。
 
-如果还没有 Azure 订阅，可以在开始前创建一个免费帐户。 立即试用 [Azure 机器学习服务免费或付费版](http://aka.ms/AMLFree)。
+如果没有 Azure 订阅，请在开始之前创建一个免费帐户。 立即试用 [Azure 机器学习服务免费版或付费版](http://aka.ms/AMLFree)。
 
 >[!NOTE]
-> 本文中的代码已使用 Azure 机器学习 SDK 版本 1.0.0 进行测试
+> 本文中的代码已使用 Azure 机器学习 SDK 版本 1.0.0 进行测试。
 
 ## <a name="prerequisites"></a>先决条件
 
 > * [运行数据准备教程](tutorial-data-prep.md)。
-> * 自动化机器学习配置的环境，例如 Azure Notebooks、本地 Python 环境或 Data Science Virtual Machine。 [设置](samples-notebooks.md)自动化机器学习。
+> * 自动化机器学习配置的环境。 示例包括 Azure Notebooks、本地 Python 环境或 Data Science Virtual Machine。 [设置自动化机器学习](samples-notebooks.md)。
 
 ## <a name="get-the-notebook"></a>获取 Notebook
 
@@ -53,7 +53,7 @@ ms.locfileid: "53315190"
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-in-azure-notebook.md)]
 
 ## <a name="import-packages"></a>导入包
-导入需要在本教程中使用的 Python 包。
+导入需要在本教程中使用的 Python 包：
 
 
 ```python
@@ -68,9 +68,11 @@ import os
 
 ## <a name="configure-workspace"></a>配置工作区
 
-从现有工作区创建工作区对象。 `Workspace` 是一个类，可接受 Azure 订阅和资源信息，并创建云资源来监视和跟踪模型运行。 `Workspace.from_config()` 读取 **aml_config/config.json** 文件并将详细信息加载到名为 `ws` 的对象中。  在本教程中，`ws` 在代码的其余部分使用。
+从现有工作区创建工作区对象。 `Workspace` 是可接受 Azure 订阅和资源信息的类。 它还可创建云资源来监视和跟踪模型运行。 
 
-有了工作区对象以后，请为试验指定一个名称，然后通过工作区创建并注册本地目录。 所有运行的历史记录都记录在指定的试验下和 [Azure 门户](https://portal.azure.com)中。
+`Workspace.from_config()` 读取 **aml_config/config.json** 文件并将详细信息加载到名为 `ws` 的对象中。  在本教程中，`ws` 在代码的其余部分使用。
+
+创建工作区对象之后，请为试验指定一个名称。 创建一个本地目录并将其注册到工作区。 所有运行的历史记录都记录在指定的试验下和 [Azure 门户](https://portal.azure.com)中。
 
 
 ```python
@@ -93,7 +95,7 @@ pd.DataFrame(data=output, index=['']).T
 
 ## <a name="explore-data"></a>浏览数据
 
-利用在上一教程中创建的数据流对象。 打开并执行数据流，然后查看结果。
+使用在上一教程中创建的数据流对象。 打开并运行该数据流，然后查看结果：
 
 
 ```python
@@ -581,16 +583,16 @@ dflow_prepared.get_profile()
   </tbody>
 </table>
 
-为试验准备数据时，请将列添加到 `dflow_x`，使之成为创建模型所需的特性。 将 `dflow_y` 定义为预测值：cost。
+为试验准备数据时，请将列添加到 `dflow_x`，使之成为创建模型所需的特性。 将 `dflow_y` 定义为预测值 **cost**：
 
 ```python
 dflow_X = dflow_prepared.keep_columns(['pickup_weekday','pickup_hour', 'distance','passengers', 'vendor'])
 dflow_y = dflow_prepared.keep_columns('cost')
 ```
 
-### <a name="split-data-into-train-and-test-sets"></a>将数据拆分为训练集和测试集
+### <a name="split-the-data-into-train-and-test-sets"></a>将数据拆分为训练集和测试集
 
-现在请使用 `sklearn` 库中的 `train_test_split` 函数将数据拆分为训练集和测试集。 该函数将数据分成用于模型训练的 x（特性）数据集和用于测试的 y（用于预测的值）数据集。 `test_size` 参数决定了分配用于测试的数据的百分比。 `random_state` 参数设置随机数生成器的种子，因此进行的训练-测试拆分始终具有确定性。
+现在，使用 `sklearn` 库中的 `train_test_split` 函数将数据拆分为训练集和测试集。 此函数将数据分隔成用于模型训练的 x（**特征**）数据集，和用于测试的 y（**预测值**）数据集。 `test_size` 参数决定了分配用于测试的数据的百分比。 `random_state` 参数设置随机数生成器的种子，因此进行的训练-测试拆分始终具有确定性：
 
 ```python
 from sklearn.model_selection import train_test_split
@@ -603,27 +605,27 @@ x_train, x_test, y_train, y_test = train_test_split(x_df, y_df, test_size=0.2, r
 y_train.values.flatten()
 ```
 
-现在已有所需的包和数据，可以针对模型进行自动训练了。
+现在已有所需的包和数据，接下来可以开始自动训练模型。
 
 ## <a name="automatically-train-a-model"></a>自动训练模型
 
-若要自动训练模型，请执行以下操作：
-1. 定义试验运行的设置
-1. 提交用于模型优化的试验
+若要自动训练模型，请执行以下步骤：
+1. 定义试验运行的设置。
+1. 提交用于模型优化的试验。
 
 ### <a name="define-settings-for-autogeneration-and-tuning"></a>定义自动生成和优化的设置
 
 定义自动生成和优化的试验参数和模型设置。 查看[设置](how-to-configure-auto-train.md)的完整列表。
 
 
-|属性| 本教程中的值 |说明|
+|属性| 本教程中的值 |Description|
 |----|----|---|
-|**iteration_timeout_minutes**|10|每个迭代的时间限制（分钟）|
+|**iteration_timeout_minutes**|10|每个迭代的时间限制（分钟）。|
 |**迭代**|30|迭代次数。 在每个迭代中，模型通过特定管道使用数据进行训练。|
 |**primary_metric**| spearman_correlation | 要优化的指标。|
-|**preprocess**| True | 如果为 True，则试验可以基于输入执行预处理。|
+|**preprocess**| True | 如果使用 **True**，则试验可以预处理输入。|
 |**verbosity**| logging.INFO | 控制日志记录的级别。|
-|**n_cross_validationss**|5|交叉验证拆分数
+|**n_cross_validationss**|5|交叉验证拆分数。|
 
 
 
@@ -653,7 +655,7 @@ automated_ml_config = AutoMLConfig(task = 'regression',
 
 ### <a name="train-the-automatic-regression-model"></a>训练自动回归模型
 
-启动要在本地运行的试验。 将定义的 `automated_ml_config` 对象传递至试验，并将输出设置为 `True`，以便查看试验过程中的进度。
+启动要在本地运行的试验。 将定义的 `automated_ml_config` 对象传递到试验。 将输出设置为 `True`，以查看试验的进度：
 
 
 ```python
@@ -709,7 +711,7 @@ local_run = experiment.submit(automated_ml_config, show_output=True)
 
 ### <a name="option-1-add-a-jupyter-widget-to-see-results"></a>选项 1：添加查看结果所需的 Jupyter 小组件
 
-如果使用 Jupyter Notebook，则使用此 Jupyter Notebook 小组件可以看到一个包含所有结果的图形和表。
+如果使用 Jupyter Notebook，则使用此 Jupyter Notebook 小组件可以看到一个包含所有结果的图形和表：
 
 
 ```python
@@ -718,11 +720,11 @@ RunDetails(local_run).show()
 ```
 
 ![Jupyter 小组件运行详细信息](./media/tutorial-auto-train-models/automl-dash-output.png)
-![Jupyter 小组件绘图](./media/tutorial-auto-train-models/automl-chart-output.png)
+![Jupyter 小组件图](./media/tutorial-auto-train-models/automl-chart-output.png)
 
 ### <a name="option-2-get-and-examine-all-run-iterations-in-python"></a>选项 2：获取并检查 Python 中的所有运行迭代
 
-也可检索每个试验的历史记录，并浏览每个迭代运行的单个指标。
+也可以检索每个试验的历史记录，并浏览每个迭代运行的单个指标：
 
 ```python
 children = list(local_run.get_children())
@@ -1071,7 +1073,7 @@ rundata
 
 ## <a name="retrieve-the-best-model"></a>检索最佳模型
 
-从迭代中选择最佳管道。 `automl_classifier` 上的 `get_output` 方法针对上次拟合调用返回最佳运行和拟合的模型。 `get_output` 上有重载，因此可以针对任何记录的指标或特定的迭代来检索最佳运行和拟合的模型。
+从迭代中选择最佳管道。 `automl_classifier` 上的 `get_output` 方法针对上次拟合调用返回最佳运行和拟合的模型。 在 `get_output` 中使用重载，可以针对任何记录的指标或特定的迭代来检索最佳运行和拟合的模型：
 
 ```python
 best_run, fitted_model = local_run.get_output()
@@ -1081,7 +1083,7 @@ print(fitted_model)
 
 ## <a name="register-the-model"></a>注册模型
 
-在 Azure 机器学习服务工作区中注册模型。
+在 Azure 机器学习服务工作区中注册模型：
 
 
 ```python
@@ -1093,14 +1095,14 @@ local_run.model_id # Use this id to deploy the model as a web service in Azure
 
 ## <a name="test-the-best-model-accuracy"></a>测试最佳模型的准确性
 
-使用最佳模型针对测试数据集运行预测。 函数 `predict` 使用最佳模型根据 `x_test` 数据集预测 y（行程费用）的值。 输出 `y_predict` 中头 10 个预测的费用值。
+使用最佳模型针对测试数据集运行预测。 函数 `predict` 使用最佳模型根据 `x_test` 数据集预测 y（**行程费用**）的值。 输出 `y_predict` 中头 10 个预测的费用值：
 
 ```python
 y_predict = fitted_model.predict(x_test.values)
 print(y_predict[:10])
 ```
 
-创建散点图来可视化与实际成本值相比的预测成本值。 以下代码使用 `distance` 特性作为 x 轴，使用行程 `cost` 作为 y 轴。 前 100 个预测的和实际的成本值创建为单独的系列，以便比较每个行程距离值处的预测成本的差异。 观察绘图，其中显示的距离/成本关系几乎为线性的，并且大多数情况下，对于同样的行程距离，预测的成本值非常接近于实际成本值。
+创建散点图来可视化与实际成本值相比的预测成本值。 以下代码使用 `distance` 特征作为 x 轴，使用行程 `cost` 作为 y 轴。 若要比较每个行程距离值处的预测成本的差异，前 100 个预测的和实际的成本值需创建为单独的系列。 查看绘图，其中显示的距离/成本关系几乎是线性的。 大多数情况下，对于相同的行程距离，预测的成本值非常接近于实际成本值。
 
 ```python
 import matplotlib.pyplot as plt
@@ -1125,7 +1127,7 @@ plt.show()
 
 ![预测散点图](./media/tutorial-auto-train-models/automl-scatter-plot.png)
 
-计算结果的 `root mean squared error`。 使用 `y_test` dataframe，将其转换为一个列表，以便与预测的值进行比较。 函数 `mean_squared_error` 接受两个数组的值，计算两个数组之间的平均平方误差。 求取结果的平方根会将相同单位内的误差提供为 y 差异（成本），并大致指示预测值与实际值之间有多大的差距。
+计算结果的 `root mean squared error`。 使用 `y_test` 数据帧。 将其转换为一个列表，以便与预测的值进行比较。 函数 `mean_squared_error` 接受两个数组的值，计算两个数组之间的平均平方误差。 取结果的平方根会将相同单位的误差提供为 y 差异（**成本**）。 该值大致指出了预测值与实际值之间有多大的差距：
 
 ```python
 from sklearn.metrics import mean_squared_error
@@ -1137,7 +1139,7 @@ rmse
 
     3.2204936862688798
 
-运行以下代码，使用完整的 `y_actual` 和 `y_predict` 数据集来计算 MAPE（平均绝对百分比误差）。 此指标计算每个预测值和实际值之间的绝对差值，将所有差值求和，然后将该和表示为实际值总和的百分比。
+运行以下代码，使用完整的 `y_actual` 和 `y_predict` 数据集来计算平均绝对百分比误差 (MAPE)。 此指标计算每个预测值和实际值之间的绝对差，将所有差值求和。 然后，它将该和表示为实际值的总计百分比：
 
 ```python
 sum_actuals = sum_errors = 0
@@ -1170,12 +1172,12 @@ print(1 - mean_abs_percent_error)
 
 ## <a name="next-steps"></a>后续步骤
 
-本自动化机器学习教程介绍了以下内容：
+在本自动化机器学习教程中，你已完成以下任务：
 
 > [!div class="checklist"]
-> * 配置工作区并准备试验数据
-> * 通过自动化回归模型在本地使用自定义参数进行训练
-> * 浏览和查看训练结果
-> * 注册最佳模型
+> * 配置了工作区并准备了试验数据。
+> * 结合自定义参数在本地使用自动化回归模型进行了训练。
+> * 浏览并查看了训练结果。
+> * 注册了最佳模型。
 
 使用 Azure 机器学习来[部署模型](tutorial-deploy-models-with-aml.md)。

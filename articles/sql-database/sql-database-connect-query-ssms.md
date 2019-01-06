@@ -4,7 +4,7 @@ description: 了解如何通过使用 SQL Server Management Studio (SSMS) 连接
 keywords: 连接到 sql 数据库, sql server management studio
 services: sql-database
 ms.service: sql-database
-ms.subservice: operations
+ms.subservice: ''
 ms.custom: ''
 ms.devlang: ''
 ms.topic: quickstart
@@ -13,16 +13,16 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 12/04/2018
-ms.openlocfilehash: b3342164aec49967e819c316827dca9a65f2674f
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 636adcf15479fe8e072b833b59ddc78b5f820550
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53098920"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53745068"
 ---
 # <a name="quickstart-use-sql-server-management-studio-to-connect-and-query-an-azure-sql-database"></a>快速入门：使用 SQL Server Management Studio 连接和查询 Azure SQL 数据库
 
-可以使用 [SQL Server Management Studio][ssms-install-latest-84g] (SSMS) 管理任何 SQL 基础结构（从适用于 Microsoft Windows 的 SQL Server 到 SQL 数据库，不一而足）。 本快速入门演示如何使用 SSMS 连接到 Azure SQL 数据库，然后运行 Transact-SQL 语句查询、插入、更新和删除数据。 
+在本快速入门中，将使用 [SQL Server Management Studio][ssms-install-latest-84g] (SSMS) 连接到 Azure SQL 数据库。 然后，将运行 Transact-SQL 语句来查询、插入、更新和删除数据。 可以使用 SSMS 管理任何 SQL 基础结构（从适用于 Microsoft Windows 的 SQL Server 到 SQL 数据库，不一而足）。  
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -75,11 +75,11 @@ ms.locfileid: "53098920"
 
 ## <a name="query-data"></a>查询数据
 
-使用以下 [SELECT](https://msdn.microsoft.com/library/ms189499.aspx) Transact-SQL 代码，按类别查询前 20 个产品。
+运行此 [SELECT](https://msdn.microsoft.com/library/ms189499.aspx) Transact-SQL 代码，按类别查询前 20 个产品。
 
-1. 在对象资源管理器中，右键单击“mySampleDatabase”，并选择“新建查询”。 此时会打开一个空白查询窗口，该窗口连接到数据库。
+1. 在对象资源管理器中，右键单击“mySampleDatabase”，并选择“新建查询”。 此时会打开一个连接到数据库的新查询窗口。
 
-1. 在查询窗口中，粘贴此 SQL 查询。
+2. 在查询窗口中，粘贴此 SQL 查询。
 
    ```sql
    SELECT pc.Name as CategoryName, p.name as ProductName
@@ -90,11 +90,11 @@ ms.locfileid: "53098920"
 
 3. 在工具栏上，选择“执行”，以便从 `Product` 和 `ProductCategory` 表检索数据。
 
-    ![从 2 个表中检索数据的查询](./media/sql-database-connect-query-ssms/query2.png)
+    ![从两个表中检索数据的查询](./media/sql-database-connect-query-ssms/query2.png)
 
 ## <a name="insert-data"></a>插入数据
 
-使用以下 [INSERT](https://msdn.microsoft.com/library/ms174335.aspx) Transact-SQL 代码，在 `SalesLT.Product` 表中创建新产品。
+运行此 [INSERT](https://msdn.microsoft.com/library/ms174335.aspx) Transact-SQL 代码，在 `SalesLT.Product` 表中创建新产品。
 
 1. 将之前的查询替换为此查询。
 
@@ -117,7 +117,7 @@ ms.locfileid: "53098920"
            ,GETDATE() );
    ```
 
-2. 选择“执行”在 Product 表中插入新行。 “消息”面板显示“(受影响的 1 行)”。
+2. 选择“执行”在 `Product` 表中插入新行。 “消息”面板显示“(受影响的 1 行)”。
 
 ## <a name="view-the-result"></a>查看结果
 
@@ -134,7 +134,7 @@ ms.locfileid: "53098920"
  
 ## Update data
 
-Use the following [UPDATE](https://msdn.microsoft.com/library/ms177523.aspx) Transact-SQL code to modify the new product you just added.
+Run this [UPDATE](https://msdn.microsoft.com/library/ms177523.aspx) Transact-SQL code to modify your new product.
 
 1. Replace the previous query with this one.
 
@@ -144,11 +144,11 @@ Use the following [UPDATE](https://msdn.microsoft.com/library/ms177523.aspx) Tra
    WHERE Name = 'myNewProduct';
    ```
 
-2. 选择“执行”更新 Product 表中的指定行。 “消息”面板显示“(受影响的 1 行)”。
+2. 选择“执行”更新 `Product` 表中的指定行。 “消息”面板显示“(受影响的 1 行)”。
 
 ## <a name="delete-data"></a>删除数据
 
-使用以下 [DELETE](https://msdn.microsoft.com/library/ms189835.aspx) Transact-SQL 代码，删除此前添加的新产品。
+运行此 [DELETE](https://msdn.microsoft.com/library/ms189835.aspx) Transact-SQL 代码以删除新产品。
 
 1. 将之前的查询替换为此查询。
 
@@ -157,7 +157,7 @@ Use the following [UPDATE](https://msdn.microsoft.com/library/ms177523.aspx) Tra
    WHERE Name = 'myNewProduct';
    ```
 
-2. 选择“执行”删除 Product 表中的指定行。 “消息”面板显示“(受影响的 1 行)”。
+2. 选择“执行”删除 `Product` 表中的指定行。 “消息”面板显示“(受影响的 1 行)”。
 
 ## <a name="next-steps"></a>后续步骤
 
