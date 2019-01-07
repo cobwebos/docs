@@ -22,7 +22,7 @@ ms.locfileid: "37051002"
 ---
 # <a name="copy-data-to-an-azure-search-index-using-azure-data-factory"></a>使用 Azure 数据工厂将数据复制到 Azure 搜索索引
 
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="选择您正在使用的 Data Factory 服务的版本:"]
 > * [第 1 版](v1/data-factory-azure-search-connector.md)
 > * [当前版本](connector-azure-search.md)
 

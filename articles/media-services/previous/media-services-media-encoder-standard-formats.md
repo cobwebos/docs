@@ -22,7 +22,7 @@ ms.locfileid: "53384728"
 ---
 # <a name="media-encoder-standard-formats-and-codecs"></a>Media Encoder Standard 格式和编解码器
 
-> [!div class="op_single_selector" title1="Select the version of Media Services that you are using:"]
+> [!div class="op_single_selector" title1="选择您正在使用的 Media Services 版本:"]
 > * [第 2 版](media-services-media-encoder-standard-formats.md)
 > * [第 3 版](../latest/media-encoder-standard-formats.md)
 
