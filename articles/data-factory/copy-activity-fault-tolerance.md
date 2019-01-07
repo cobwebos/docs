@@ -21,7 +21,7 @@ ms.lasthandoff: 10/31/2018
 ms.locfileid: "50418337"
 ---
 #  <a name="fault-tolerance-of-copy-activity-in-azure-data-factory"></a>Azure 数据工厂中复制活动的容错
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="选择您正在使用的 Data Factory 服务的版本:"]
 > * [版本 1](v1/data-factory-copy-activity-fault-tolerance.md)
 > * [当前版本](copy-activity-fault-tolerance.md)
 
