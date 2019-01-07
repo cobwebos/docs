@@ -22,7 +22,7 @@ ms.locfileid: "50211598"
 ---
 # <a name="azure-media-services-overview"></a>Azure 媒体服务概述 
 
-> [!div class="op_single_selector" title1="Select the version of Media Services that you are using:"]
+> [!div class="op_single_selector" title1="选择您正在使用的 Media Services 版本:"]
 > * [第 2 版](media-services-overview.md)
 > * [第 3 版](../latest/media-services-overview.md)
 
