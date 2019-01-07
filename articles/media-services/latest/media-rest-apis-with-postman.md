@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/28/2018
+ms.date: 12/18/2018
 ms.author: juliako
-ms.openlocfilehash: b110a57526d6e23ba53afce0a91d735fad6d247c
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 06ecdf31c2627eda5bf651667703ddcf39c9d307
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50215879"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53604093"
 ---
 # <a name="configure-postman-for-media-services-rest-api-calls"></a>配置 Postman 以便进行媒体服务 REST API 调用
 
@@ -30,7 +30,7 @@ ms.locfileid: "50215879"
 - 获取[访问 API](access-api-cli-how-to.md) 所需的信息
 - 安装 [Postman](https://www.getpostman.com/) REST 客户端，以便执行一些 AMS REST 教程中所示的 REST API。 
 
-    我们使用的是 **Postman**，但任何 REST 工具都适用。 其他适用的工具有：具有 REST 插件的 Visual Studio Code 或 Telerik Fiddler。 
+    我们使用的是 **Postman**，但任何 REST 工具都适用。 其他替代工具包括：带有 REST 插件的 **Visual Studio Code** 或 **Telerik Fiddler**。 
 
 ## <a name="download-postman-files"></a>下载 Postman 文件
 
@@ -85,7 +85,7 @@ ms.locfileid: "50215879"
     https://login.microsoftonline.com/:tenantId/oauth2/token
     ```
 
-4. 响应会返回此令牌并将“AccessToken”环境变量设置为令牌值。 若要查看设置“AccessToken”的代码，请单击“测试”选项卡。 
+4. 响应会返回此令牌并将“AccessToken”环境变量设置为令牌值。  
 
     ![获取 AAD 令牌](./media/develop-with-postman/postman-get-aad-auth-token.png)
 

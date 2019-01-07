@@ -8,12 +8,12 @@ ms.topic: get-started-article
 ms.date: 09/19/2017
 ms.author: renash
 ms.component: files
-ms.openlocfilehash: 83829264f16fb295a1f5fa4f2efc74d8b35ec6eb
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 318ecf03853e151040622ef0863f4c6986a96bd2
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52309185"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53628504"
 ---
 # <a name="create-a-file-share-in-azure-files"></a>在 Azure 文件中创建文件共享
 可以使用  [Azure 门户](https://portal.azure.com/)、Azure 存储 PowerShell cmdlet、Azure 存储客户端库或 Azure 存储 REST API 来创建 Azure 文件共享。 本教程介绍：
@@ -34,14 +34,17 @@ ms.locfileid: "52309185"
 3. **提供名称和配额。配额目前的最大值为 5 TiB**：    
     ![为新的文件共享提供名称和所需配额](./media/storage-how-to-create-file-share/create-file-share-portal3.png)
 
-4. 查看新的文件共享：![查看新的文件共享](./media/storage-how-to-create-file-share/create-file-share-portal4.png)
+4. **查看新的文件共享**：![查看新的文件共享](./media/storage-how-to-create-file-share/create-file-share-portal4.png)
 
-5. 上传文件：![上传文件](./media/storage-how-to-create-file-share/create-file-share-portal5.png)
+5. **上传文件**：![上传文件](./media/storage-how-to-create-file-share/create-file-share-portal5.png)
 
-6. 浏览到文件共享并管理目录和文件：![浏览文件共享](./media/storage-how-to-create-file-share/create-file-share-portal6.png)
+6. **浏览到文件共享并管理目录和文件**：![浏览文件共享](./media/storage-how-to-create-file-share/create-file-share-portal6.png)
 
 
 ## <a name="create-file-share-through-powershell"></a>通过 PowerShell 创建文件共享
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
 若要准备使用 PowerShell，请下载并安装 Azure PowerShell cmdlet。 有关安装点和安装说明，请参阅 [如何安装和配置 Azure PowerShell](https://azure.microsoft.com/documentation/articles/powershell-install-configure/)。
 
 > [!Note]  
@@ -50,13 +53,13 @@ ms.locfileid: "52309185"
 1. 为存储帐户和密钥创建上下文：上下文封装存储帐户名称和帐户密钥。 有关从  [Azure 门户](https://portal.azure.com/)复制帐户密钥的说明，请参阅 [存储帐户访问密钥](../common/storage-account-manage.md#access-keys)。
 
     ```powershell
-    $storageContext = New-AzureStorageContext <storage-account-name> <storage-account-key>
+    $storageContext = New-AzStorageContext <storage-account-name> <storage-account-key>
     ```
     
 2. 创建新的文件共享：    
     
     ```powershell
-    $share = New-AzureStorageShare logs -Context $storageContext
+    $share = New-AzStorageShare logs -Context $storageContext
     ```
 
 > [!Note]  

@@ -9,16 +9,16 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 09/09/2018
+ms.date: 12/21/2018
 ms.author: diberry
-ms.openlocfilehash: 06981972dbdb95b8597bab5028c2d86e0594caf3
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 2c8d4486b235534db2bb7d06206d5767c1496fbd
+ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53106033"
+ms.lasthandoff: 12/22/2018
+ms.locfileid: "53754384"
 ---
-# <a name="tutorial-2-batch-test-data-sets"></a>教程 2：成批测试数据集
+# <a name="tutorial-batch-test-data-sets"></a>教程：成批测试数据集
 
 本教程演示如何使用批处理测试在应用中查找话语预测问题并进行修复。  
 
@@ -36,7 +36,7 @@ ms.locfileid: "53106033"
 
 <!-- green checkmark -->
 > [!div class="checklist"]
-> * 使用现有的教程应用
+> * 导入示例应用
 > * 创建批处理测试文件 
 > * 运行批处理测试
 > * 查看测试结果
@@ -45,13 +45,13 @@ ms.locfileid: "53106033"
 
 [!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
-## <a name="use-existing-app"></a>使用现有应用
+## <a name="import-example-app"></a>导入示例应用
 
 继续使用上一个教程中创建的名为 **HumanResources** 的应用。 
 
-如果没有上一个教程中的 HumanResources 应用，请执行以下步骤：
+请执行以下步骤：
 
-1.  下载并保存[应用 JSON 文件](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/tutorials/custom-domain-review-HumanResources.json)。
+1.  下载并保存[应用 JSON 文件](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/custom-domain-review-HumanResources.json)。
 
 2. 将 JSON 导入到新应用中。
 
@@ -61,7 +61,7 @@ ms.locfileid: "53106033"
 
 ## <a name="batch-file"></a>批处理文件
 
-1. 在文本编辑器中创建 `HumanResources-jobs-batch.json` 或[下载](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/tutorials/HumanResources-jobs-batch.json)它。 
+1. 在文本编辑器中创建 `HumanResources-jobs-batch.json` 或[下载](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/HumanResources-jobs-batch.json)它。 
 
 2. 在 JSON 格式的批处理文件中，使用想要在测试中预测的意向添加话语。 
 
@@ -177,7 +177,7 @@ ms.locfileid: "53106033"
 
 测试话语中提供的“工作”实体的值通常是一个或两个词，其中有几个示例有更多词。 如果自己的人力资源应用通常有多个词的工作名称，该应用中带有“工作”实体标记的示例话语将无法正常工作。
 
-1. 在文本编辑器（如 [VSCode](https://code.visualstudio.com/)）中创建 `HumanResources-entities-batch.json`，或[下载](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/tutorials/HumanResources-entities-batch.json)它。
+1. 在文本编辑器（如 [VSCode](https://code.visualstudio.com/)）中创建 `HumanResources-entities-batch.json`，或[下载](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/HumanResources-entities-batch.json)它。
 
 
 2. 在 JSON 格式的批处理文件中，添加一个对象数组，其中包含具有想要在测试中预测的意向的话语以及话语中任何实体的位置。 由于实体是基于令牌的，因此请确保启动和停止字符上的每个实体。 不要以空格开始或结束话语。 这会导致批处理文件导入过程中出现错误。  
