@@ -12,18 +12,18 @@ ms.topic: tutorial
 ms.date: 09/05/2018
 ms.author: pryerram
 ms.custom: mvc
-ms.openlocfilehash: acc926151e5abd1d6f9d0992591575198d1fdf44
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.openlocfilehash: f5d74c2283d25d5774bd46bb9fe94795ff98fe9b
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52890528"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53720555"
 ---
 # <a name="tutorial-how-to-use-azure-key-vault-with-azure-linux-virtual-machine-in-python"></a>教程：如何将 Azure Key Vault 与通过 Python 编写的 Azure Linux 虚拟机配合使用
 
 Azure Key Vault 用于保护机密，例如访问应用程序、服务和 IT 资源所需的 API 密钥、数据库连接字符串。
 
-本教程演练将 Azure Web 应用程序配置为使用 Azure 资源的托管标识，以从 Azure Key Vault 读取信息所要执行的步骤。 本教程基于 [Azure Web 应用](../app-service/app-service-web-overview.md)。 下面介绍如何：
+本教程演练将 Azure Web 应用程序配置为使用 Azure 资源的托管标识，以从 Azure Key Vault 读取信息所要执行的步骤。 下面介绍如何：
 
 > [!div class="checklist"]
 > * 创建密钥保管库。
@@ -80,9 +80,9 @@ az group create --name "<YourResourceGroupName>" --location "West US"
 
 接下来，在上一步骤创建的资源组中创建密钥保管库。 提供以下信息：
 
-* 密钥保管库名称：名称必须为 3-24 个字符的字符串，并且只能包含 0-9、a-z、A-Z 和 -。
+* Key Vault 名称：名称必须为 3-24 个字符的字符串，并且只能包含 0-9、a-z、A-Z 和 -。
 * 资源组名称。
-* 位置：**美国西部**。
+* 位置：美国西部。
 
 ```azurecli
 az keyvault create --name "<YourKeyVaultName>" --resource-group "<YourResourceGroupName>" --location "West US"
@@ -160,7 +160,7 @@ az keyvault set-policy --name '<YourKeyVaultName>' --object-id <VMSystemAssigned
 
 ## <a name="create-and-run-sample-python-app"></a>创建并运行示例 Python 应用
 
-下面是一个名为“Sample.py”的示例文件。 它使用 [requests](http://docs.python-requests.org/master/) 库进行 HTTP GET 调用。
+下面是一个名为“Sample.py”的示例文件。 它使用 [requests](https://pypi.org/project/requests/2.7.0/) 库进行 HTTP GET 调用。
 
 ## <a name="edit-samplepy"></a>编辑 Sample.py
 创建 Sample.py 后，打开该文件并复制下面的代码

@@ -6,15 +6,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 11/27/2018
+ms.date: 12/27/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 0aa7b7f3558bab7f3553527e03c44d71dd5a87ac
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 60ecf08d7f0c40a04472b3e2bf5ef739e51c32e8
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52833136"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53794424"
 ---
 # <a name="set-up-disaster-recovery-for-azure-vms-to-a-secondary-azure-region"></a>为 Azure VM 设置到 Azure 次要区域的灾难恢复
 
@@ -153,22 +153,22 @@ Site Recovery 会针对目标区域创建默认设置和复制策略。 可以�
       >如果使用支持防火墙的源或目标存储帐户，请确保“允许受信任的 Microsoft 服务”。 [了解详细信息。](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions)
       >
 
-    - **托管磁盘副本（如果源 VM 使用托管磁盘）**：默认情况下，Site Recovery 在目标区域新建托管磁盘副本，以生成和源 VM 的托管磁盘存储类型一致（标准或高级）的镜像磁盘。
+    - **副本托管磁盘（如果源 VM 使用托管磁盘）**：默认情况下，Site Recovery 在目标区域中创建副本托管磁盘，以生成和源 VM 的托管磁盘存储类型一致（标准或高级）的镜像磁盘。
     - **目标可用性集**：默认情况下，Azure Site Recovery 会在目标区域中创建一个名称带有“asr”后缀（针对源区域中可用性集的 VM 部分）的新可用性集。 如果 Azure Site Recovery 创建的可用性集已存在，则会重复使用。
     - **目标可用性区域**：默认情况下，Site Recovery 会在目标区域中分配与源区域相同的区域编号，前提是目标区域支持可用性区域。 
 
-    如果目标区域不支持可用性区域，则会将目标 VM 默认配置为单一实例。 可以根据需要单击“自定义”，以便在目标区域中将此类 VM 配置为可用性集的一部分。
+    如果目标区域不支持可用性区域，则会将目标 VM 默认配置为单一实例。 如果需要，可以单击“自定义”，以便在目标区域中将此类 VM 配置为可用性集的一部分。
 
     >[!NOTE]
-    >在启用复制以后，不能更改可用性类型 - 单一实例、可用性集或可用性区域。 若要更改可用性类型，需禁用复制后再启用复制。
+    >在启用复制以后，不能更改可用性类型 - 单一实例、可用性集或可用性区域。 若要更改可用性类型，需要先禁用复制，然后再启用复制。
     >
 
 4. 若要自定义复制策略设置，请单击“复制策略”旁边的“自定义”，然后根据需要修改以下设置。
 
     - **复制策略名称**：策略名称。
-    - **恢复点保留期**： 默认情况下，Site Recovery 会将恢复点保留 24 小时。 可将此值配置为 1 - 72 小时。
-    - **“应用一致”快照频率**：默认情况下，Site Recovery 每隔 4 小时拍摄 1 次“应用一致”快照。 可将此值配置为 1 - 12 小时之间的任何值。 “应用一致”快照是 VM 内应用程序数据的时间点快照。 卷影复制服务 (VSS) 确保 VM 上的应用在拍摄快照时处于一致状态。
-    - **复制组**：如果你的应用程序需要跨 VM 的多 VM 一致性，可以为这些 VM 创建一个复制组。 默认情况下，所选的 VM 不属于任何复制组。
+    - **恢复点保留期**：默认情况下，Site Recovery 会将恢复点保留 24 小时。 可将此值配置为 1 - 72 小时。
+    - **应用一致性快照频率**：默认情况下，Site Recovery 每隔 4 小时拍摄 1 次“应用一致”快照。 可将此值配置为 1 - 12 小时之间的任何值。 “应用一致”快照是 VM 内应用程序数据的时间点快照。 卷影复制服务 (VSS) 确保 VM 上的应用在拍摄快照时处于一致状态。
+    - **复制组**：如果应用程序需要跨 VM 的多 VM 一致性，可以为这些 VM 创建一个复制组。 默认情况下，所选的 VM 不属于任何复制组。
 
 5. 若要将 VM 添加到新的或现有的复制组，请在“自定义”中选择“是”以确保多 VM 一致性。 使 VM 成为复制组的一部分。 然后单击“确定”。
 

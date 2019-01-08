@@ -6,19 +6,23 @@ author: HeidiSteen
 services: search
 ms.service: search
 ms.topic: quickstart
-ms.date: 07/09/2018
+ms.date: 01/02/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 2055ad9baff0c6acc05c9287ca1b8fb08731f8bc
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 5165dd16b77a242ca83d3e5864b6e60f3e12a567
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53315972"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "54002631"
 ---
 # <a name="create-an-azure-search-service-in-the-portal"></a>在门户中创建 Azure 搜索服务
 
-了解如何在门户中创建或预配 Azure 搜索服务。 
+Azure 搜索是用于将搜索体验添加到自定义应用的独立资源。 你可以将 Azure 搜索与许多其他 Azure 服务轻松集成；也可以通过托管在网络服务器上的应用或在其他云平台上运行的软件，单独使用它。 
+
+本文介绍如何在 [Azure 门户](https://portal.azure.com/)中创建 Azure 搜索资源。 
+
+![门户中的 Azure 搜索资源](media/search-create-service-portal/azure-search-resource-label.png)
 
 更喜欢 PowerShell？ 使用 Azure 资源管理器[服务模板](https://azure.microsoft.com/resources/templates/101-azure-search-create/)。 有关如何入门的帮助，请参阅[使用 PowerShell 管理 Azure 搜索](search-manage-powershell.md)了解背景知识。
 
@@ -31,13 +35,15 @@ ms.locfileid: "53315972"
 ## <a name="find-azure-search"></a>查找 Azure 搜索
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
 2. 单击左上角的加号（“+ 创建资源”）。
-3. 选择“Web” > “Azure 搜索”。
+3. 使用搜索栏查找“Azure 搜索”，或通过“Web” > “Azure 搜索”导航到资源。
 
 ![](./media/search-create-service-portal/find-search3.png)
 
 ## <a name="name-the-service-and-url-endpoint"></a>对服务和 URL 终结点进行命名
 
-服务名称是 URL 终结点的一部分，API 调用针对此终结点发出：`https://your-service-name.search.windows.net`。 在 **URL** 字段中输入服务名称。 
+服务名称是 URL 终结点的一部分，API 调用针对此终结点发出：`https://your-service-name.search.windows.net`。 在 **URL** 字段中输入服务名称。
+
+例如，如果希望终结点为 `https://my-app-name-01.search.windows.net`，则输入 `my-app-name-01`。
 
 服务名称要求：
    * 它必须在 search.windows.net 命名空间中唯一
@@ -51,6 +57,8 @@ ms.locfileid: "53315972"
 
 ## <a name="select-a-resource-group"></a>选择资源组
 资源组是结合使用的 Azure 服务和资源的集合。 例如，如果使用 Azure 搜索编制 SQL 数据库索引，则这两个服务应属于同一资源组。
+
+若不将资源合并到单个组中，或现有资源组中包含的资源用于不相关的解决方案，请新建一个仅用于 Azure 搜索资源的资源组。
 
 > [!TIP]
 > 删除资源组也会删除其中的服务。 对于使用多个服务项目的原型，将它们放在同一资源组中可在项目结束后更加轻松地进行清理。 
@@ -109,7 +117,7 @@ ms.locfileid: "53315972"
 无需为实现高可用性添加第二个服务。 在同一服务中使用 2 个或更多个副本，便可实现查询的高可用性。 副本更新是连续的，这意味着当服务更新推出时，至少有一个副本能正常工作。有关运行时间的详细信息，请参阅[服务级别协议](https://azure.microsoft.com/support/legal/sla/search/v1_0/)。
 
 ## <a name="next-steps"></a>后续步骤
-预配 Azure 搜索服务后，即可[定义索引](search-what-is-an-index.md)，从而上传和搜索数据。 
+预配 Azure 搜索服务后，可以继续在门户中创建第一个索引。
 
 > [!div class="nextstepaction"]
-> [如何在 .NET 中使用 Azure 搜索](search-howto-dotnet-sdk.md)
+> [教程：在门户中导入数据、编制索引和运行查询](search-get-started-portal.md)

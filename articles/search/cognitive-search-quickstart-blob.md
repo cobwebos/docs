@@ -1,31 +1,34 @@
 ---
-title: 快速入门：Azure 门户中的认知搜索管道 - Azure 搜索
+title: 在 Azure 门户中为 AI 支持的索引构建认知搜索管道 - Azure 搜索
 description: 在 Azure 门户中使用示例数据添加数据提取、自动语言和图像处理技能的示例。
 manager: cgronlun
 author: HeidiSteen
 services: search
 ms.service: search
 ms.topic: quickstart
-ms.date: 05/01/2018
+ms.date: 01/02/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 7d579bfdaf38b6c06b26cfa7b36f8e4d2ac5a1f2
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: ff862dcee77fb874511ea1b9bcc907a5e4b60dcc
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53386258"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53998976"
 ---
 # <a name="quickstart-create-a-cognitive-search-pipeline-using-skills-and-sample-data"></a>快速入门：使用技能和示例数据创建认知搜索管道
 
-认知搜索（预览版）将数据提取、自然语言处理 (NLP) 和图像处理技能添加到 Azure 搜索索引管道，使不可搜索或非结构化的内容具有更高的可搜索性。 实体识别或图像分析等技能创建的信息将添加到 Azure 搜索中的索引。
+认知搜索（预览版）将数据提取、自然语言处理 (NLP) 和图像处理技能添加到 Azure 搜索索引管道，使不可搜索或非结构化的内容具有更高的可搜索性。 
 
-本快速入门介绍如何在编写单行代码之前，在 [Azure 门户](https://portal.azure.com)中试用扩充管道：
+认知搜索管道可将[认知服务资源](https://azure.microsoft.com/services/cognitive-services/) - 例如 [OCR](cognitive-search-skill-ocr.md)、[语言检测](cognitive-search-skill-language-detection.md)、[实体识别](cognitive-search-skill-entity-recognition.md) - 集成到索引过程。 认知服务的 AI 算法可用于在源数据中查找模式、功能和特征，返回可用于基于 Azure 搜索的全文搜索解决方案的结构和文字内容。
 
-* 从 Azure Blob 存储中的示例数据开始
-* 为索引编制和扩充配置[导入数据向导](search-import-data-portal.md) 
-* 运行向导（实体技能将检测人员、地点和组织）
-* 使用[搜索浏览器](search-explorer.md)查询扩充的数据。
+本快速入门介绍如何在编写单行代码之前，在 [Azure 门户](https://portal.azure.com)中创建第一个扩充管道：
+
+> [!div class="checklist"]
+> * 从 Azure Blob 存储中的示例数据开始
+> * 为认知索引编制和扩充配置[导入数据向导](search-import-data-portal.md) 
+> * 运行向导（实体技能将检测人员、地点和组织）
+> * 使用[搜索浏览器](search-explorer.md)查询扩充的数据
 
 ## <a name="supported-regions"></a> 支持的区域
 
@@ -48,7 +51,7 @@ ms.locfileid: "53386258"
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 > [!NOTE]
-> 自 2018 年 12 月 21 日起，你可将认知服务资源与 Azure 搜索技能集进行关联。 这将使我们能够开始收取技能集执行的费用。 在此日期，我们还会开始将图像提取视为文档破解阶段的一部分进行计费。 我们将继续提供文档文本提取服务（不收取额外费用）。
+> 自 2018 年 12 月 21 日起，你可将认知服务资源与 Azure 搜索技能集进行关联。 这会使我们能够开始收取技能集执行的费用。 在此日期，我们还会开始将图像提取视为文档破解阶段的一部分进行计费。 我们将继续提供文档文本提取服务而不收取额外费用。
 >
 > 内置技能的执行将按现有的[认知服务即用即付价格](https://azure.microsoft.com/pricing/details/cognitive-services/)进行计费。 图像提取费用将按预览版定价进行计费，详见 [Azure 搜索定价页面](https://go.microsoft.com/fwlink/?linkid=2042400)。 了解[详细信息](cognitive-search-attach-cognitive-services.md)。
 
@@ -58,8 +61,9 @@ ms.locfileid: "53386258"
 
 本场景专门使用了 Azure 服务。 创建所需的服务属于准备工作。
 
-+ Azure Blob 存储提供源数据。
-+ Azure 搜索处理数据引入和索引、认知搜索扩充以及全文搜索查询。
++ [Azure Blob 存储](https://azure.microsoft.com/services/storage/blobs/)提供源数据
++ [认知服务](https://azure.microsoft.com/services/cognitive-services/)提供 AI（指定管道时，可以按嵌入式方法创建这些资源）
++ [Azure 搜索](https://azure.microsoft.com/services/search/)提供扩充的索引管道和丰富的自由格式的文本搜索体验，以供在自定义应用中使用
 
 ### <a name="set-up-azure-search"></a>设置 Azure 搜索
 
@@ -71,7 +75,7 @@ ms.locfileid: "53386258"
 
   ![仪表板门户](./media/cognitive-search-tutorial-blob/create-search-service-full-portal.png "在门户中创建 Azure 搜索服务")
 
-1. 对于“资源组”，请创建一个资源组用于包含本快速入门中创建的所有资源。 这样可以在完成本快速入门后更轻松地清理资源。
+1. 对于“资源组”，请创建一个新的资源组用于包含本快速入门中创建的所有资源。 这样可以在完成本快速入门后更轻松地清理资源。
 
 1. 对于“位置”，请为认知搜索选择[支持的区域](#supported-regions)之一。
 
@@ -79,8 +83,8 @@ ms.locfileid: "53386258"
 
   “免费”服务限制为 3 个索引、最大 16 MB 的 Blob 和 2 分钟的索引，这不足以演练认知搜索的完整功能。 要查看不同层的限制，请参阅[服务限制](search-limits-quotas-capacity.md)。
 
-  ![门户中的服务定义页](./media/cognitive-search-tutorial-blob/create-search-service1.png "Service definition page in the portal")
-  ![门户中的服务定义页](./media/cognitive-search-tutorial-blob/create-search-service2.png "Service definition page in the portal")
+  ![门户中的服务定义页](./media/cognitive-search-tutorial-blob/create-search-service2.png "门户中的服务定义页")
+
   > [!NOTE]
   > 认知搜索目前提供公共预览版。 技能集执行目前已在所有层中推出，包括免费层。 你将能够在不关联付费认知服务资源的情况下执行有限数量的扩充。 了解[详细信息](cognitive-search-attach-cognitive-services.md)。
 
@@ -94,79 +98,88 @@ ms.locfileid: "53386258"
 
 1. [下载示例数据](https://1drv.ms/f/s!As7Oy81M_gVPa-LCb5lC_3hbS-4)，其中包括不同类型的小型文件集。 
 
-1. 注册 Azure Blob 存储，创建存储帐户，登录到存储资源管理器，并创建容器。 有关所有步骤的说明，请参阅 [Azure 存储资源管理器快速入门](../storage/blobs/storage-quickstart-blobs-storage-explorer.md)。
+1. 注册 Azure Blob 存储，创建存储帐户，登录到存储资源管理器，并创建容器。 将公共访问级别设置为“容器”。 有关详细信息，请参阅搜索非结构化的数据教程中的[“创建容器”部分](../storage/blobs/storage-unstructured-search.md#create-a-container)。
 
-1. 使用 Azure 存储资源管理器，在创建的容器中单击“上传”以上传示例文件。
+1. 在创建的容器中单击“上传”以上传示例文件。
 
   ![Azure Blob 存储中的源文件](./media/cognitive-search-quickstart-blob/sample-data.png)
 
 ## <a name="create-the-enrichment-pipeline"></a>创建扩充管道
 
-返回到 Azure 搜索服务仪表板页，单击命令栏上的“导入数据”，通过四个步骤设置扩展管道。
+返回到 Azure 搜索服务仪表板页，单击命令栏上的“导入数据”，通过四个步骤设置认知扩充管道。
+
+  ![导入数据命令](media/cognitive-search-quickstart-blob/import-data-cmd2.png)
 
 ### <a name="step-1-create-a-data-source"></a>步骤 1：创建数据源
 
-在“连接到数据” > “Azure Blob 存储”中，选择创建的帐户和容器。 为数据源命名，并对余下的设置使用默认值。 
+在“连接到数据”中，选择“Azure Blob 存储”，再选择创建的帐户和容器。 为数据源命名，并对余下的设置使用默认值。 
 
-   ![Azure Blob 配置](./media/cognitive-search-quickstart-blob/blob-datasource2.png)
+  ![Azure Blob 配置](./media/cognitive-search-quickstart-blob/blob-datasource.png)
 
+继续转到下一页。
 
-单击“确定”创建数据源。
-
-使用“导入数据”向导的优势之一在于，它还可以创建索引。 创建数据源后，向导会同时构造索引架构。 只需几秒钟就能创建索引。
+  ![认知搜索的下一页按钮](media/cognitive-search-quickstart-blob/next-button-add-cog-search.png)
 
 ### <a name="step-2-add-cognitive-skills"></a>步骤 2：添加认知技能
 
-接下来，将扩充步骤添加到索引管道。 门户会提供图像分析和文本分析的预定义认知技能。 在门户中，技能集针对单个源字段运行。 这看上去像是一个小目标，但对于 Azure Blob 而言，`content` 字段包含大部分 Blob 文档（例如，Word 文档或 PowerPoint 幻灯片）。 因此，此字段是理想的输入，因为 Blob 的所有内容都包含在其中。
+接下来，将扩充步骤添加到索引管道。 如果没有认知服务资源，可以注册每天提供 20 个事务的免费版本。 示例数据包含 14 个文件，因此运行此向导后，将最大程度使用完每日分配。
 
-有时，你想要从主要由扫描图像组成的文件中提取文本表示形式，如由扫描仪生成的 PDF。 Azure 搜索可以自动从文档中的嵌入图像中提取内容。 为此，请选择“启用 OCR 并将所有文本合并到 merged_content 字段”选项。 这将自动创建一个 `merged_content` 字段，该字段包含从文档中提取的文本以及嵌入文档中的图像的文本表示形式。 选择此选项时，`Source data field` 将设置为 `merged_content`。
+1. 展开“附加认服务”以查看用于向认知服务 API 提供资源的选项。 在本教程中，你可以使用“免费”资源。
 
-在“添加认知技能”中，选择执行自然语言处理的技能。 在本快速入门中，我们针对人员、组织和地点选择了实体识别。
+  ![附加认知服务](media/cognitive-search-quickstart-blob/cog-search-attach.png)
 
-单击“确定”接受定义。
-   
-  ![技能集定义](./media/cognitive-search-quickstart-blob/skillset.png)
+2. 展开“添加扩充”并选择执行自然语言处理的技能。 在本快速入门中，我们针对人员、组织和地点选择了实体识别。
 
-自然语言处理技能针对示例数据集中的文本内容运行。 由于我们未选择图像处理选项，因此，本快速入门不会处理示例数据集中的 JPEG 文件。 
+  ![附加认知服务](media/cognitive-search-quickstart-blob/skillset.png)
+
+  门户提供了用于 OCR 处理和文本分析的内置技能。 在门户中，技能集针对单个源字段运行。 这看上去像是一个小目标，但对于 Azure Blob 而言，`content` 字段包含大部分 Blob 文档（例如，Word 文档或 PowerPoint 幻灯片）。 因此，此字段是理想的输入，因为 Blob 的所有内容都包含在其中。
+
+3. 继续转到下一页。
+
+  ![下一页可自定义索引](media/cognitive-search-quickstart-blob/next-button-customize-index.png)
+
+> [!NOTE]
+> 自然语言处理技能针对示例数据集中的文本内容运行。 由于我们未选择 OCR 选项，因此，本快速入门不会处理示例数据集中的 JPEG 和 PNG 文件。 
 
 ### <a name="step-3-configure-the-index"></a>步骤 3：配置索引
 
-是否记得我们使用数据源创建了索引？ 在此步骤中，我们可以查看该索引的架构，有时还能修改任何设置。 
+该向导通常可以推断出默认索引。 在此步骤中，你可以查看已生成的索引架构，有时还能修改任何设置。 以下是为演示 Blob 数据集创建的默认索引。
 
 在本快速入门中，向导能够很好地设置合理的默认值： 
 
-+ 每个索引必须有一个名称。 对于此数据源类型，默认名称为 azureblob-index。
++ 默认名称是 azureblob-index。
++ 默认密钥是 metadata_storage_path（此字段包含唯一值）。
++ 默认数据类型和属性对全文搜索方案有效。
 
-+ 每个文档必须有一个键。 向导会选择具有唯一值的字段。 在本快速入门中，键为 metadata_storage_path。
+考虑从 `content` 字段中清除 Retrievable。 在 Blob 中，此字段可运行至成千上万行。 可以想象，在搜索结果列表中以 JSON 形式查看内容量非常大的文件（如 Word 文档或 PowerPoint 幻灯片组）有多么困难。 
 
-+ 每个字段集合必须包含字段，字段中的数据类型描述集合的值；每个字段应包含索引特性，用于描述如何在搜索方案中使用该字段。 
+由于已定义技能集，因此向导假设需要初始源数据字段，以及认知管道创建的输出字段。 为此，门户为 `content`、`people`、`organizations` 和 `locations` 添加了索引字段。 请注意，向导会自动对这些字段启用 Retrievable 和 Searchable。 Searchable 表示字段可搜索。 Retrievable 表示可以在结果中返回该字段。 
 
-由于已定义技能集，因此向导假设需要源数据字段，以及技能创建的输出字段。 为此，门户为 `content`、`people`、`organizations` 和 `locations` 添加了索引字段。 请注意，向导会自动对这些字段启用 Retrievable 和 Searchable。
+  ![索引字段](media/cognitive-search-quickstart-blob/index-fields.png)
+  
+继续转到下一页。
 
-在“自定义索引”，查看字段中的特性，以了解字段在索引中的使用方式。 Searchable 表示字段可搜索。 Retrievable 表示可以在结果中返回该字段。 
-
-考虑从 `content` 字段中清除 Retrievable。 在 Blob 中，此字段可能跨数千行，因此很难在“搜索浏览器”等工具中阅读。
-
-单击“确定”接受索引定义。
-
-  ![索引字段](./media/cognitive-search-quickstart-blob/index-fields.png)
-
-> [!NOTE]
-> 为简洁起见，未使用的字段已从屏幕截图中截掉。 如果在门户中操作，列表会显示其他字段。
+  ![下一页可创建索引器](media/cognitive-search-quickstart-blob/next-button-create-indexer.png)
 
 ### <a name="step-4-configure-the-indexer"></a>步骤 4：配置索引器
 
-索引器是推动索引过程的高级资源。 它指定数据源名称、索引和执行频率。 “导入数据”向导的最终结果始终是一个可以反复运行的索引器。
+索引器是推动索引过程的高级资源。 它指定数据源名称、目标索引和执行频率。 “导入数据”向导的最终结果始终是一个可以反复运行的索引器。
 
-在“索引器”页中，为索引器命名，并使用默认设置“运行一次”来立即运行它。 
+在“索引器”页中，可以接受默认名称并使用“立即运行”计划选项来立即运行它。 
 
-  ![索引器定义](./media/cognitive-search-quickstart-blob/indexer-def.png)
+  ![索引器定义](media/cognitive-search-quickstart-blob/indexer-def.png)
 
-单击“确定”导入、扩充数据并为其编制索引。
+单击“提交”以创建并同时运行索引器。
+
+## <a name="monitor-indexing"></a>监视索引
+
+完成扩充步骤所用的时间比完成编制典型的基于文本的索引所用的时间更长。 向导应在概述页打开索引器列表，以便你能够跟踪进度。 若要进行自导航，请转到“概述”页，然后单击“索引器”。
+
+由于 JPG 和 PNG 文件都是图像文件，并且我们忽略了来自此管道的 OCR 技能，因此会出现警告。 此外，还会出现截断通知。 Azure 搜索将“免费层”的提取字符数限制为 32,000 个字符。
 
   ![Azure 搜索通知](./media/cognitive-search-quickstart-blob/indexer-notification.png)
 
-索引编制和扩充可能需要一段时间，正因如此，我们建议事先探索小型数据集。 可以在 Azure 门户的“通知”页中监视索引。 
+索引编制和扩充可能需要一段时间，正因如此，我们建议事先探索小型数据集。 
 
 ## <a name="query-in-search-explorer"></a>搜索浏览器中的查询
 
@@ -176,19 +189,17 @@ ms.locfileid: "53386258"
 
 1. 选择顶部的“更改索引”，选择创建的索引。
 
-1. 输入要在其中查询索引的搜索字符串，例如“John F. Kennedy”。
+1. 输入要在其中查询索引的搜索字符串，例如 `search=Microsoft&searchFields=organizations`。
 
-随后会返回 JSON 格式的结果。这些结果可能非常冗长且难以阅读，尤其是出现在源自 Azure Blob 的大型文档中时。 
+随后会返回 JSON 格式的结果。这些结果可能非常冗长且难以阅读，尤其是出现在源自 Azure Blob 的大型文档中时。 如果无法轻松扫描结果，请使用 CTRL-F 在文档中搜索。 对于此查询，可以搜索 JSON 中的特定术语。 
 
-如果无法轻松扫描结果，请使用 CTRL-F 在文档中搜索。 对于此查询，可以在 JSON 中搜索“John F. Kennedy”，以查看该搜索词的实例。 
-
-CTRL-F 还有助于确定有多少个文档包含在给定的结果集中。 对于 Azure Blob，门户会选择“metadata_storage_path”作为键，因为每个值是文档的唯一值。 使用 CTRL-F 搜索“metadata_storage_path”，获取文档的计数。 对于此查询，结果集中的两个文档包含搜索词“John F. Kennedy”。
+CTRL-F 还有助于确定有多少个文档包含在给定的结果集中。 对于 Azure Blob，门户会选择“metadata_storage_path”作为键，因为每个值是文档的唯一值。 使用 CTRL-F 搜索“metadata_storage_path”，获取文档的计数。 
 
   ![搜索浏览器示例](./media/cognitive-search-quickstart-blob/search-explorer.png)
 
 ## <a name="takeaways"></a>要点
 
-现已完成第一个扩充索引练习。 本快速入门旨在介绍重要概念，并引导你完成向导中的操作，以便使用自己的数据为认知搜索解决方案快速建立原型。
+现已完成第一个认知扩充索引练习。 本快速入门旨在介绍重要概念，并引导你完成向导中的操作，以便使用自己的数据为认知搜索解决方案快速建立原型。
 
 我们希望学习的某些重要概念也涉及到了 Azure 数据源的依赖关系。 认知搜索扩充与索引器密切相关，而索引器特定于 Azure 和源。 尽管本快速入门使用的是 Azure Blob 存储，但也可以使用其他 Azure 数据源。 有关详细信息，请参阅 [Azure 搜索中的索引器](search-indexer-overview.md)。
 
@@ -206,7 +217,7 @@ CTRL-F 还有助于确定有多少个文档包含在给定的结果集中。 对
 
 ## <a name="next-steps"></a>后续步骤
 
-可以结合不同的技能和源数据字段，通过重新运行该向导来体验索引和扩充功能。 若要重复步骤，请删除索引和索引器，然后使用新的选项组合重新创建索引器。
+根据预配认知服务资源的方式，可以结合不同的技能和源数据字段，通过重新运行该向导来体验索引和扩充功能。 若要重复步骤，请删除索引和索引器，然后使用新的选项组合重新创建索引器。
 
 + 在“概述” > “索引”中选择创建的索引，然后单击“删除”。
 

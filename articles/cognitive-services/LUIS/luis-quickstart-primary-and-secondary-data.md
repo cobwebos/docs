@@ -9,18 +9,36 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: tutorial
-ms.date: 12/07/2018
+ms.date: 12/21/2018
 ms.author: diberry
-ms.openlocfilehash: e8a1575527f906fab130e08cda715f6c8e904275
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: c0c79e3d85a8ced2b868c9fa7741a14105c1de05
+ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53166262"
+ms.lasthandoff: 12/22/2018
+ms.locfileid: "53753041"
 ---
-# <a name="tutorial-7-extract-names-with-simple-entity-and-phrase-list"></a>教程 7：通过简单实体和短语列表提取名称
+# <a name="tutorial-extract-names-with-simple-entity-and-a-phrase-list"></a>教程：通过简单实体和短语列表提取名称
 
 在本教程中，请使用**简单**实体从话语中提取雇佣工作名称的机器学习数据。 若要提高提取的准确性，请添加一个短语列表，其中包含特定于简单实体的术语。
+
+简单实体检测在单词或短语中包含的单个数据概念。
+
+**本教程介绍如何执行下列操作：**
+
+<!-- green checkmark -->
+> [!div class="checklist"]
+> * 导入示例应用
+> * 添加简单实体 
+> * 添加用于增强词汇信号的短语列表
+> * 定型 
+> * 发布 
+> * 从终结点获取意向和实体
+
+[!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
+
+
+## <a name="simple-entity"></a>简单实体
 
 本教程会添加用于提取工作名称的新的简单实体。 在此 LUIS 应用中，简单实体的用途是让 LUIS 知道工作名称是什么，以及在陈述中的哪个位置可以找到该工作名称。 根据选择的词汇和话语的长度，工作名称在话语中的位置因话语而异。 LUIS 需要跨所有意向的工作名称的示例，而这些意向使用工作名称。  
 
@@ -31,34 +49,6 @@ ms.locfileid: "53166262"
 * 数据不常见，例如电话号码或数据的预生成实体。
 * 数据并不与已知单词的列表完全匹配，例如列表实体。
 * 数据不包含其他数据项，例如复合实体或层次结构实体。
-
-**本教程介绍如何执行下列操作：**
-
-<!-- green checkmark -->
-> [!div class="checklist"]
-> * 使用现有的教程应用
-> * 添加用于从应用提取工作的简单实体
-> * 添加用于增强工作词汇信号的短语列表
-> * 定型 
-> * 发布 
-> * 从终结点获取意向和实体
-
-[!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
-
-## <a name="use-existing-app"></a>使用现有应用
-
-继续使用上一个教程中创建的名为 **HumanResources** 的应用。 
-
-如果没有上一个教程中的 HumanResources 应用，请执行以下步骤：
-
-1.  下载并保存[应用 JSON 文件](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/tutorials/custom-domain-composite-HumanResources.json)。
-
-2. 将 JSON 导入到新应用中。
-
-3. 在“管理”部分的“版本”选项卡上，克隆版本并将其命名为 `simple`。 克隆非常适合用于演练各种 LUIS 功能，且不会影响原始版本。 由于版本名称用作 URL 路由的一部分，因此该名称不能包含任何在 URL 中无效的字符。
-
-## <a name="simple-entity"></a>简单实体
-简单实体检测在单词或短语中包含的单个数据概念。
 
 假设某个聊天机器人包含以下话语：
 
@@ -87,25 +77,38 @@ ms.locfileid: "53166262"
 
 在示例话语中标记实体以后，必须添加短语列表来加强简单实体的信号。 短语列表**不**用作完全匹配，不需要是预期的每个可能的值。 
 
+## <a name="import-example-app"></a>导入示例应用
+
+1.  从意向教程中下载并保存[应用 JSON 文件](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/build-app/intentonly.json)。
+
+2. 将 JSON 导入到新应用中。
+
+3. 在“管理”部分的“版本”选项卡上，克隆版本并将其命名为 `simple`。 克隆非常适合用于演练各种 LUIS 功能，且不会影响原始版本。 由于版本名称用作 URL 路由的一部分，因此该名称不能包含任何在 URL 中无效的字符。
+
+## <a name="mark-entities-in-example-utterances-of-an-intent"></a>在意向的示例话语中标记实体
+
 1. [!INCLUDE [Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
 
-2. 在“意向”页上，选择“ApplyForJob”意向。 
+1. 在“意向”页上，选择“ApplyForJob”意向。 
 
-3. 在陈述`I want to apply for the new accounting job`中选择`accounting`，在弹出菜单的顶部字段中输入`Job`，然后在弹出菜单中选择“创建新实体”。 
+1. 在陈述`I want to apply for the new accounting job`中选择`accounting`，在弹出菜单的顶部字段中输入`Job`，然后在弹出菜单中选择“创建新实体”。 
 
     [![带有“ApplyForJob”意向的 LUIS 的屏幕截图，其中突出显示了创建实体的步骤](media/luis-quickstart-primary-and-secondary-data/hr-create-entity.png "Screenshot of LUIS with 'ApplyForJob' intent with create entity steps highlighted")](media/luis-quickstart-primary-and-secondary-data/hr-create-entity.png#lightbox)
 
-4. 在弹出窗口中验证实体名称和类型，然后选择“完成”。
+1. 在弹出窗口中验证实体名称和类型，然后选择“完成”。
 
     ![创建名称为“工作”、类型为“简单”的简单实体弹出模式对话框](media/luis-quickstart-primary-and-secondary-data/hr-create-simple-entity-popup.png)
 
-5. 在陈述 `Submit resume for engineering position` 中，将 `engineering` 一词标记为“工作”实体。 选择 `engineering` 一词，然后从弹出菜单中选择“工作”。 
+1. 在剩余的话语中，选择词汇或短语，然后从弹出菜单中选择“工作”，将与工作有关的词汇标记为“工作”实体。 
 
     [![LUIS 标签的屏幕截图，突出显示了工作实体](media/luis-quickstart-primary-and-secondary-data/hr-label-simple-entity.png "Screenshot of LUIS labeling job entity highlighted")](media/luis-quickstart-primary-and-secondary-data/hr-label-simple-entity.png#lightbox)
 
-    所有陈述都已标记，但五个陈述还不足以教会 LUIS 什么是工作相关词汇和短语。 使用数值的工作不需更多示例，因为使用的是正则表达式实体。 使用词汇或短语的工作至少还需要 15 个示例。 
 
-6. 添加更多的陈述并将工作词汇或短语标记为“工作”实体。 就某项就业服务来说，工作类型通常是跨就业的。 如果所需工作与特定行业相关，则工作词汇应反映这一点。 
+## <a name="add-more-example-utterances-and-mark-entity"></a>添加更多的示例话语并标记实体
+
+简单的实体需要很多示例，从而提高预测的置信度。 
+ 
+1. 添加更多的陈述并将工作词汇或短语标记为“工作”实体。 
 
     |话语|工作实体|
     |:--|:--|
@@ -126,100 +129,64 @@ ms.locfileid: "53166262"
     |我申请生物学教授的简历已包括在内。|生物学教授|
     |我想要申请摄影方面的职位。|摄影|git 
 
-## <a name="label-entity-in-example-utterances"></a>在示例话语中标记实体
-
-对实体进行标记可以向 LUIS 显示实体在示例话语中位于何处。
+## <a name="mark-job-entity-in-other-intents"></a>在其他意向中标记工作实体
 
 1. 在左侧菜单中选择“意向”。
 
-2. 从意向列表中选择“GetJobInformation”。 
+1. 从意向列表中选择“GetJobInformation”。 
 
-3. 标记示例陈述中的工作：
+1. 标记示例话语中的工作
 
-    |话语|工作实体|
-    |:--|:--|
-    |是否有数据库方面的工作？|数据库|
-    |寻找会计方面的新职位|会计|
-    |为高级工程师提供了哪些职位？|高级工程师|
+    如果一个意向中的示例话语比另一个意向中多，则该意向更可能成为置信度最高的预测意向。 
 
-    还有其他示例陈述，但这些陈述不包含工作词汇。
-
-## <a name="train"></a>定型
+## <a name="train-the-app-so-the-changes-to-the-intent-can-be-tested"></a>训练应用，以便可以测试对意向所做的更改 
 
 [!INCLUDE [LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
 
-## <a name="publish"></a>发布
+## <a name="publish-the-app-so-the-trained-model-is-queryable-from-the-endpoint"></a>发布应用，以便可以从终结点查询已训练的模型
 
 [!INCLUDE [LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)]
 
-## <a name="get-intent-and-entities-from-endpoint"></a>从终结点获取意向和实体 
+## <a name="get-intent-and-entity-prediction-from-endpoint"></a>从终结点获取意向和实体预测结果 
 
 1. [!INCLUDE [LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
 
-2. 将光标定位到地址中 URL 的末尾，并输入 `Here is my c.v. for the programmer job`。 最后一个查询字符串参数为 `q`，表示陈述查询 (**q**uery)。 此陈述不同于标记的任何陈述，因此，它非常适合用于测试，测试结果应返回 `ApplyForJob` 陈述。
+2. 将光标定位到地址中 URL 的末尾，并输入 `Here is my c.v. for the engineering job`。 最后一个查询字符串参数为 `q`，表示陈述查询 (**q**uery)。 此陈述不同于标记的任何陈述，因此，它非常适合用于测试，测试结果应返回 `ApplyForJob` 陈述。
 
     ```json
     {
-      "query": "Here is my c.v. for the programmer job",
+      "query": "Here is my c.v. for the engineering job",
       "topScoringIntent": {
         "intent": "ApplyForJob",
-        "score": 0.9826467
+        "score": 0.98052007
       },
       "intents": [
         {
           "intent": "ApplyForJob",
-          "score": 0.9826467
+          "score": 0.98052007
         },
         {
           "intent": "GetJobInformation",
-          "score": 0.0218927357
-        },
-        {
-          "intent": "MoveEmployee",
-          "score": 0.007849265
-        },
-        {
-          "intent": "Utilities.StartOver",
-          "score": 0.00349470088
-        },
-        {
-          "intent": "Utilities.Confirm",
-          "score": 0.00348804821
+          "score": 0.03424581
         },
         {
           "intent": "None",
-          "score": 0.00319909188
-        },
-        {
-          "intent": "FindForm",
-          "score": 0.00222647213
-        },
-        {
-          "intent": "Utilities.Help",
-          "score": 0.00211193133
-        },
-        {
-          "intent": "Utilities.Stop",
-          "score": 0.00172086991
-        },
-        {
-          "intent": "Utilities.Cancel",
-          "score": 0.00138010911
+          "score": 0.0015820954
         }
       ],
       "entities": [
         {
-          "entity": "programmer",
+          "entity": "engineering",
           "type": "Job",
           "startIndex": 24,
-          "endIndex": 33,
-          "score": 0.5230502
+          "endIndex": 34,
+          "score": 0.668959737
         }
       ]
     }
     ```
     
-    LUIS 发现了正确的意向 **ApplyForJob** 并提取了正确的实体 **Job**，其值为 `programmer`。
+    LUIS 发现了正确的意向 **ApplyForJob** 并提取了正确的实体 **Job**，其值为 `engineering`。
 
 
 ## <a name="names-are-tricky"></a>名称很微妙
@@ -229,51 +196,23 @@ LUIS 应用通过高置信度来查找正确的意向，然后提取工作名称
 
 ```json
 {
-  "query": "This is the lead welder paperwork.",
+  "query": "This is the lead welder paperwork",
   "topScoringIntent": {
     "intent": "ApplyForJob",
-    "score": 0.468558252
+    "score": 0.860295951
   },
   "intents": [
     {
       "intent": "ApplyForJob",
-      "score": 0.468558252
+      "score": 0.860295951
     },
     {
       "intent": "GetJobInformation",
-      "score": 0.0102701457
-    },
-    {
-      "intent": "MoveEmployee",
-      "score": 0.009442534
-    },
-    {
-      "intent": "Utilities.StartOver",
-      "score": 0.00639619166
+      "score": 0.07265678
     },
     {
       "intent": "None",
-      "score": 0.005859333
-    },
-    {
-      "intent": "Utilities.Cancel",
-      "score": 0.005087704
-    },
-    {
-      "intent": "Utilities.Stop",
-      "score": 0.00315379258
-    },
-    {
-      "intent": "Utilities.Help",
-      "score": 0.00259344373
-    },
-    {
-      "intent": "FindForm",
-      "score": 0.00193389168
-    },
-    {
-      "intent": "Utilities.Confirm",
-      "score": 0.000420796918
+      "score": 0.00482481951
     }
   ],
   "entities": []
@@ -282,94 +221,76 @@ LUIS 应用通过高置信度来查找正确的意向，然后提取工作名称
 
 由于名称可以是任何词汇，因此如果有一个包含词汇的短语列表来增强信号，则 LUIS 在预测实体时会更准确。
 
-## <a name="to-boost-signal-add-phrase-list"></a>若要增强信号，请添加短语列表
+## <a name="to-boost-signal-of-the-job-related-words-add-a-phrase-list-of-job-related-words"></a>为了增强与工作相关的词汇的信号，请添加工作相关词汇的短语列表
 
-打开 LUIS-Samples GitHub 存储库中的 [jobs-phrase-list.csv](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/job-phrase-list.csv)。 此列表的工作词汇和短语超过一千个。 查看列表中是否有对你有意义的工作词汇。 如果列表中没有你的词汇或短语，请添加你自己的词汇或短语。
+打开 Azure-Samples GitHub 存储库中的 [jobs-phrase-list.csv](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/quickstarts/job-phrase-list.csv)。 此列表有超过 1,000 个工作词汇和短语。 查看列表中是否有对你有意义的工作词汇。 如果列表中没有你的词汇或短语，请添加你自己的词汇或短语。
 
 1. 在 LUIS 应用的“生成”部分，选择“提高应用性能”菜单下的“短语列表”。
 
-2. 选择“创建新的短语列表”。 
+1. 选择“创建新的短语列表”。 
 
-3. 将新的短语列表命名为`Job`，然后将列表从 jobs-phrase-list.csv 复制到“值”文本框中。 按 Enter。 
+1. 将新的短语列表命名为`JobNames`，然后将列表从 jobs-phrase-list.csv 复制到“值”文本框中。 按 Enter。 
 
     [![“新建短语列表”弹出对话框的屏幕截图](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-1.png "Screenshot of create new phrase list dialog pop-up")](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-1.png#lightbox)
 
     如果需要将更多词汇添加到短语列表中，请查看“相关值”，然后添加相关值。 
 
-4. 选择“保存”，激活短语列表。
+1. 选择“保存”，激活短语列表。
 
     [![“新建短语列表”弹出对话框以及短语列表值框中字词的屏幕截图](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-2.png "Screenshot of create new phrase list dialog pop-up with words in phrase list values box")](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-2.png#lightbox)
 
-5. 再次[训练](#train)并[发布](#publish)应用，以便使用短语列表。
+1. 再次[训练](#train)并[发布](#publish)应用，以便使用短语列表。
 
-6. 使用同一陈述（`This is the lead welder paperwork.`）在终结点反复查询
+1. 使用同一陈述（`This is the lead welder paperwork.`）在终结点反复查询
 
     JSON 响应包含提取的实体：
 
     ```json
-    {
-        "query": "This is the lead welder paperwork.",
-        "topScoringIntent": {
-            "intent": "ApplyForJob",
-            "score": 0.920025647
+      {
+      "query": "This is the lead welder paperwork.",
+      "topScoringIntent": {
+        "intent": "ApplyForJob",
+        "score": 0.983076453
+      },
+      "intents": [
+        {
+          "intent": "ApplyForJob",
+          "score": 0.983076453
         },
-        "intents": [
-            {
-            "intent": "ApplyForJob",
-            "score": 0.920025647
-            },
-            {
-            "intent": "GetJobInformation",
-            "score": 0.003800706
-            },
-            {
-            "intent": "Utilities.StartOver",
-            "score": 0.00299335527
-            },
-            {
-            "intent": "MoveEmployee",
-            "score": 0.0027167045
-            },
-            {
-            "intent": "None",
-            "score": 0.00259556063
-            },
-            {
-            "intent": "FindForm",
-            "score": 0.00224019377
-            },
-            {
-            "intent": "Utilities.Stop",
-            "score": 0.00200693542
-            },
-            {
-            "intent": "Utilities.Cancel",
-            "score": 0.00195913855
-            },
-            {
-            "intent": "Utilities.Help",
-            "score": 0.00162656687
-            },
-            {
-            "intent": "Utilities.Confirm",
-            "score": 0.0002851904
-            }
-        ],
-        "entities": [
-            {
-            "entity": "lead welder",
-            "type": "Job",
-            "startIndex": 12,
-            "endIndex": 22,
-            "score": 0.8295959
-            }
-        ]
+        {
+          "intent": "GetJobInformation",
+          "score": 0.0120766377
+        },
+        {
+          "intent": "None",
+          "score": 0.00248388131
+        }
+      ],
+      "entities": [
+        {
+          "entity": "lead welder",
+          "type": "Job",
+          "startIndex": 12,
+          "endIndex": 22,
+          "score": 0.8373154
+        }
+      ]
     }
     ```
 
 ## <a name="clean-up-resources"></a>清理资源
 
 [!INCLUDE [LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
+
+## <a name="related-information"></a>相关信息
+
+* [无实体教程的意向](luis-quickstart-intents-only.md)
+* [简单实体](luis-concept-entity-types.md)概念信息
+* [短语列表](luis-concept-feature.md)概念信息
+* [如何训练](luis-how-to-train.md)
+* [如何发布](luis-how-to-publish-app.md)
+* [如何在 LUIS 门户中测试](luis-interactive-test.md)
+
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -8,12 +8,12 @@ ms.service: cosmos-db
 ms.topic: tutorial
 ms.date: 04/20/2018
 ms.author: danoble
-ms.openlocfilehash: 2979cdd0184e287ba83ae8a254722b64decce83d
-ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
+ms.openlocfilehash: 1876a74ff1631ee8a383ebe954df9756f7ef89f1
+ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53413687"
+ms.lasthandoff: 12/28/2018
+ms.locfileid: "53811437"
 ---
 # <a name="use-the-azure-cosmos-db-emulator-for-local-development-and-testing"></a>将 Azure Cosmos DB 模拟器用于本地开发和测试
 
@@ -34,7 +34,7 @@ ms.locfileid: "53413687"
 
 为方便进行开发，Azure Cosmos DB 模拟器提供了一个模拟 Azure Cosmos DB 服务的本地环境。 使用 Azure Cosmos DB 模拟器可在本地开发和测试应用程序，无需创建 Azure 订阅且不会产生任何费用。 如果对应用程序在 Azure Cosmos DB 模拟器中的工作情况感到满意，可以转为在云中使用 Azure Cosmos DB 帐户。
 
-目前，模拟器中的数据资源管理器仅完全支持 SQL API 集合和 MongoDB 集合。 不完全支持表、图和 Cassandra 容器。
+目前，模拟器中的数据资源管理器仅完全支持 SQL API 和 MongoDB 的 Azure Cosmos DB API 的客户端。 不完全支持表、图和 Cassandra API 的客户端。
 
 本文涵盖以下任务：
 
@@ -57,7 +57,7 @@ Azure Cosmos DB 模拟器提供对 Azure Cosmos DB 服务的高保真模拟。 �
 ## <a name="differences-between-the-emulator-and-the-service"></a>模拟器和服务之间的差异
 由于 Azure Cosmos DB 模拟器提供在本地开发人员工作站上运行的模拟环境，因此模拟器与云中的 Azure Cosmos DB 帐户之间在功能上存在一些差异：
 
-* 目前，模拟器中的数据资源管理器仅支持 SQL API 集合和 MongoDB 集合， 尚不支持表、图形和 Cassandra API。
+* 目前，模拟器中的数据资源管理器支持 SQL API 和 MongoDB 的 Azure Cosmos DB API 的客户端。 尚不支持表、图和 Cassandra API 的客户端。
 * Azure Cosmos DB 模拟器只支持单一固定帐户和公开的主密钥。 在 Azure Cosmos DB 模拟器中无法重新生成密钥。
 * Azure Cosmos DB 模拟器不是可缩放的服务，并且不支持大量的集合。
 * Azure Cosmos DB 模拟器不模拟不同的 [Azure Cosmos DB 一致性级别](consistency-levels.md)。
@@ -125,14 +125,14 @@ Azure Cosmos DB 模拟器启动时，会在浏览器中自动打开 Azure Cosmos
 首次启用网络访问时，用户应关闭模拟器，并删除模拟器的数据目录 (C:\Users\user_name\AppData\Local\CosmosDBEmulator)。
 
 ## <a name="developing-with-the-emulator"></a>通过模拟器进行开发
-在桌面上运行 Azure Cosmos DB 模拟器以后，可以使用任何支持的 [Azure Cosmos DB SDK](sql-api-sdk-dotnet.md) 或 [Azure Cosmos DB REST API](/rest/api/cosmos-db/) 与模拟器进行交互。 Azure Cosmos DB 模拟器还包括内置数据资源管理器，可以利用它在不编写任何代码的情况下，为 SQL API 和 MongoDB API 创建集合以及查看和编辑文档。
+在桌面上运行 Azure Cosmos DB 模拟器以后，可以使用任何支持的 [Azure Cosmos DB SDK](sql-api-sdk-dotnet.md) 或 [Azure Cosmos DB REST API](/rest/api/cosmos-db/) 与模拟器进行交互。 Azure Cosmos DB 模拟器还包括内置数据资源管理器，可以利用它在不编写任何代码的情况下，为 SQL API 或 Mongo DB API 的 Cosmos DB 创建集合以及查看和编辑文档。
 
     // Connect to the Azure Cosmos DB Emulator running locally
     DocumentClient client = new DocumentClient(
         new Uri("https://localhost:8081"),
         "C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==");
 
-如果使用 [Azure Cosmos DB 的 MongoDB 协议支持](mongodb-introduction.md)，请使用以下连接字符串：
+如果使用 [MongoDB 的 Azure Cosmos DB 网络协议支持](mongodb-introduction.md)，请使用以下连接字符串：
 
     mongodb://localhost:C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==@localhost:10255/admin?ssl=true
 
@@ -151,7 +151,7 @@ Azure Cosmos DB 模拟器启动时，会在浏览器中自动打开 Azure Cosmos
 
 ![Azure Cosmos DB 本地模拟器 SSL 证书](./media/local-emulator/database-local-emulator-ssl_certificate.png)
 
-可按照[将证书添加到 Java CA 证书存储](https://docs.microsoft.com/azure/java-add-certificate-ca-store)中的说明，将 X.509 证书导入 Java 证书存储。 证书导入证书存储后，Java 和 MongoDB 应用程序即能够连接到 Azure Cosmos DB 模拟器。
+可按照[将证书添加到 Java CA 证书存储](https://docs.microsoft.com/azure/java-add-certificate-ca-store)中的说明，将 X.509 证书导入 Java 证书存储。 证书导入证书存储后，SQL 和 MongoDB 的 Azure Cosmos DB API 的客户端就能连接到 Azure Cosmos DB 模拟器。
 
 从 Python 和 Node.js SDK 连接到模拟器时，将禁用 SSL 验证。
 

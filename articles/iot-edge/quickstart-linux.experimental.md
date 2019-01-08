@@ -4,17 +4,17 @@ description: 本快速入门介绍如何创建 IoT Edge 设备，然后从 Azure
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 10/14/2018
+ms.date: 12/31/2018
 ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 1bc7425d1979b2e1a35884c0800117455aebe9b6
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 44b47a595c422f62cae13fb1aeb582e0c15787d6
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53338050"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53973496"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-linux-x64-device"></a>快速入门：将第一个 IoT Edge 模块部署到 Linux x64 设备
 
@@ -55,11 +55,13 @@ Azure IoT Edge 将云带来的价值转移至物联网设备。 本快速入门�
 
 IoT Edge 设备：
 
-* 充当 IoT Edge 设备的 Linux 设备或虚拟机。 建议使用 Microsoft 提供的 [Azure IoT Edge on Ubuntu](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/microsoft_iot_edge.iot_edge_vm_ubuntu) 虚拟机，其中预先安装了 IoT Edge 运行时。 使用以下命令创建此虚拟机：
+* 充当 IoT Edge 设备的 Linux 设备或虚拟机。 建议使用 Microsoft 提供的 [Azure IoT Edge on Ubuntu](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/microsoft_iot_edge.iot_edge_vm_ubuntu) 虚拟机，该虚拟机在设备上预先安装了运行 IoT Edge 所需的所有项。 使用以下命令创建此虚拟机：
 
    ```azurecli-interactive
    az vm create --resource-group IoTEdgeResources --name EdgeVM --image microsoft_iot_edge:iot_edge_vm_ubuntu:ubuntu_1604_edgeruntimeonly:latest --admin-username azureuser --generate-ssh-keys --size Standard_DS1_v2
    ```
+
+   可能需要几分钟才能创建并启动新的虚拟机。 
 
    创建新的虚拟机时，请记下在 create 命令的输出中提供的 **publicIpAddress**。 在本快速入门中，稍后将使用此公用 IP 地址连接到虚拟机。
 
@@ -69,7 +71,7 @@ IoT Edge 设备：
 
 ## <a name="create-an-iot-hub"></a>创建 IoT 中心
 
-通过 Azure CLI 创建 IoT 中心，启动快速入门。
+使用 Azure CLI 创建 IoT 中心，开始快速入门。
 
 ![关系图 - 在云中创建 IoT 中心](./media/quickstart-linux/create-iot-hub.png)
 
@@ -86,9 +88,10 @@ IoT Edge 设备：
 ## <a name="register-an-iot-edge-device"></a>注册 IoT Edge 设备
 
 使用新创建的 IoT 中心注册 IoT Edge 设备。
+
 ![关系图 - 使用 IoT 中心标识注册设备](./media/quickstart-linux/register-device.png)
 
-为模拟设备创建设备标识，以便它可以与 IoT 中心通信。 设备标识存在于云中，而将物理设备关联到设备标识时，则使用唯一的设备连接字符串。 
+为 IoT Edge 设备创建设备标识，以便它可以与 IoT 中心通信。 设备标识存在于云中，而将物理设备关联到设备标识时，则使用唯一的设备连接字符串。 
 
 由于 IoT Edge 设备的行为和托管方式与典型 IoT 设备不同，请使用 `--edge-enabled` 标志声明此标识，使之用于 IoT Edge 设备。 
 
@@ -106,11 +109,14 @@ IoT Edge 设备：
    az iot hub device-identity show-connection-string --device-id myEdgeDevice --hub-name {hub_name}
    ```
 
-3. 复制并保存连接字符串。 在下一部分中配置 IoT Edge 运行时时将用到此值。 
+3. 复制 JSON 输出中的连接字符串并保存。 在下一部分中配置 IoT Edge 运行时时将用到此值。
 
-## <a name="connect-the-iot-edge-device-to-iot-hub"></a>将 IoT Edge 设备连接到 IoT 中心
+   ![从 CLI 输出中检索连接字符串](./media/quickstart/retrieve-connection-string.png)
 
-在 IoT Edge 设备上安装并启动 Azure IoT Edge 运行时。 
+## <a name="configure-your-iot-edge-device"></a>配置 IoT Edge 设备
+
+在 IoT Edge 设备上启动 Azure IoT Edge 运行时。 
+
 ![关系图 - 在设备上启动运行时](./media/quickstart-linux/start-runtime.png)
 
 IoT Edge 运行时部署在所有 IoT Edge 设备上。 它有三个组件。 每次某个 Edge 设备在启动后通过启动 IoT Edge 代理来启动此设备时，**IoT Edge 安全守护程序**就会启动。 **IoT Edge 代理**协助部署和监视 IoT Edge 设备（包括 IoT Edge 中心）的模块。 IoT Edge 中心管理 IoT Edge 设备模块之间以及设备和 Azure IoT 中心之间的通信。 
@@ -119,30 +125,26 @@ IoT Edge 运行时部署在所有 IoT Edge 设备上。 它有三个组件。 �
 
 ### <a name="set-the-connection-string-on-the-iot-edge-device"></a>在 IoT Edge 设备上设置连接字符串
 
-* 如果你使用的是 Azure IoT Edge on Ubuntu 虚拟机，请使用之前复制的设备连接字符串来远程配置 IoT Edge 设备：
+如果使用的是先决条件中建议的 Azure IoT Edge on Ubuntu 虚拟机，则表示设备已安装 IoT Edge 运行时。 只需使用上一节中检索的设备连接字符串来配置设备即可。 可以在不连接虚拟机的情况下进行远程配置。 运行以下命令，将 {device_connection_string} 替换为自己的字符串。 
 
    ```azurecli-interactive
    az vm run-command invoke -g IoTEdgeResources -n EdgeVM --command-id RunShellScript --script '/etc/iotedge/configedge.sh "{device_connection_string}"'
    ```
 
-   为完成剩余的步骤，请检索由创建命令输出的公用 IP 地址。 也可在 Azure 门户中虚拟机的概览页上找到公共 IP 地址。 使用以下命令连接到虚拟机。 将 **{publicIpAddress}** 替换为你的计算机的地址。 
+如果要本地计算机或 ARM32 设备上运行 IoT Edge，则需要在设备上安装 IoT Edge 运行时及其必备组件。 请按照[在 Linux (x64) 上安装 Azure IoT Edge 运行时](how-to-install-iot-edge-linux.md)或[在 Linux (ARM32v7/armhf) 上安装 Azure IoT Edge 运行时](how-to-install-iot-edge-linux-arm.md)中的说明操作，然后返回此快速入门。 
+
+### <a name="view-the-iot-edge-runtime-status"></a>查看 IoT Edge 运行时状态
+
+此快速入门中的其余命令都在 Azure IoT Edge 上完成，以便查看设备发生的情况。 如果使用的是虚拟机，请立即使用创建命令输出的公共 IP 地址连接到该虚拟机。 也可在 Azure 门户中虚拟机的概览页上找到公共 IP 地址。 使用以下命令连接到虚拟机。 如果所用用户名与先决条件中建议的用户名不同，请替换 {azureuser}。 将 **{publicIpAddress}** 替换为你的计算机的地址。 
 
    ```azurecli-interactive
    ssh azureuser@{publicIpAddress}
    ```
 
-* 如果是在本地计算机或 ARM32 设备上运行 IoT Edge，请打开位于 /etc/iotedge/config.yaml 的配置文件并将 **device_connection_string** 变量更新为之前复制的值，然后重启 IoT Edge 安全守护程序以应用更改：
-
-   ```bash
-   sudo systemctl restart iotedge
-   ```
+验证是否已在 IoT Edge 设备上成功安装并配置运行时。 
 
 >[!TIP]
 >需要提升的权限才能运行 `iotedge` 命令。 安装 IoT Edge 运行时后从计算机中注销并第一次重新登录后，你的权限将自动更新。 在此之前，请在命令前使用 **sudo**。 
-
-### <a name="view-the-iot-edge-runtime-status"></a>查看 IoT Edge 运行时状态
-
-验证是否已成功安装并配置运行时。
 
 1. 查看 Edge 安全守护程序是否正作为系统服务运行。
 
@@ -187,15 +189,18 @@ IoT Edge 设备现在已配置好。 它可以运行云部署型模块了。
 
    ![查看设备上的三个模块](./media/quickstart-linux/iotedge-list-2.png)
 
-查看从 tempSensor 模块发送的消息：
+查看从温度传感器模块发送的消息：
 
    ```bash
-   sudo iotedge logs tempSensor -f
+   sudo iotedge logs SimulatedTemperatureSensor -f
    ```
 
-![查看模块中的数据](./media/quickstart-linux/iotedge-logs.png)
+   >[!TIP]
+   >引用模块名称时，IoT Edge 命令区分大小写。
 
-如果在日志中看到的最后一行是 `Using transport Mqtt_Tcp_Only`，则说明温度传感器模块可能正等着连接到 Edge 中心。 尝试终止该模块，然后让 Edge 代理重启它。 可以使用 `sudo docker stop tempSensor` 命令来终止它。
+   ![查看模块中的数据](./media/quickstart-linux/iotedge-logs.png)
+
+如果在日志中看到的最后一行是“使用传输 Mqtt_Tcp_Only”，则说明温度传感器模块可能正等待连接到 Edge 中心。 尝试终止该模块，然后让 Edge 代理重启它。 可以使用 `sudo docker stop SimulatedTemperatureSensor` 命令来终止它。
 
 也可以使用 [Visual Studio Code 的 Azure IoT Toolkit 扩展](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit)（以前称为 Azure IoT 工具包扩展）查看到达 IoT 中心的消息。 
 
@@ -229,10 +234,10 @@ IoT Edge 设备现在已配置好。 它可以运行云部署型模块了。
    sudo docker ps -a
    ```
 
-通过 IoT Edge 运行时删除在设备上创建的容器。 更改 tempSensor 容器的名称（如果使用了其他名称）。 
+通过 IoT Edge 运行时删除在设备上创建的容器。 
 
    ```bash
-   sudo docker rm -f tempSensor
+   sudo docker rm -f SimulatedTemperatureSensor
    sudo docker rm -f edgeHub
    sudo docker rm -f edgeAgent
    ```

@@ -107,7 +107,7 @@
    Obsolete ### [Migrate offers](./cloud-partner-portal-orig/cloud-partner-portal-how-to-migrate-to-the-new-cloud-partner-portal.md)  
 -->
 
-<!-- new for SaaS 12/05/2018 -->
+<!-- new for SaaS 12/24/2018 -->
 ## [SaaS 应用程序产品/服务](./cloud-partner-portal/saas-app/cpp-saas-offer.md)
 ### [先决条件](./cloud-partner-portal/saas-app/cpp-prerequisites.md)
 ### [创建 SaaS 应用程序套餐](./cloud-partner-portal/saas-app/cpp-create-offer.md)
@@ -121,6 +121,7 @@
 ### [发布产品/服务](./cloud-partner-portal/saas-app/cpp-publish-offer.md)
 ### [更新现有产品/服务](./cloud-partner-portal/saas-app/cpp-update-existing-offer.md)
 ### [SaaS API](./cloud-partner-portal-orig/cloud-partner-portal-saas-subscription-apis.md)
+### [SaaS 自测试客户端](./cloud-partner-portal/saas-app/cpp-selftest-client.md)
 
 <!-- Legacy SaaS Offer replaced
 ## [SaaS application offer](./cloud-partner-portal-orig/cpp-saas-app-offer.md)
@@ -162,12 +163,26 @@
 
 <!-- ## [Cortana Intelligence](./cloud-partner-portal-orig/cloud-partner-portal-publish-cortana-intelligence-app.md)  -->
 
-## [Dynamics 365 for Customer Engagement 产品/服务](./cloud-partner-portal-orig/cpp-customer-engagement-offer.md)
-### [创建解决方案](./cloud-partner-portal-orig/dynamics-365-solution-preparation.md)
-### [创建包](./cloud-partner-portal-orig/appSource-package-preparation.md)
-### [生成 SAS 密钥](./cloud-partner-portal-orig/store-your-appSource-package-to-azure-storage-and-generate-sas-key.md)
-### [创建产品/服务](./cloud-partner-portal-orig/setup-your-application-in-the-publishing-portal.md)
-### [发布产品/服务](./cloud-partner-portal-orig/request-to-publish-the-app.md)
+## [Dynamics 365 for Customer Engagement 产品/服务](./cloud-partner-portal/dyn365ce/cpp-customer-engagement-offer.md)
+### [先决条件](./cloud-partner-portal/dyn365ce/cpp-prerequisites.md)
+### [创建 IoT Edge 模块产品/服务](./cloud-partner-portal/dyn365ce/cpp-create-offer.md)
+#### [“产品/服务设置”选项卡](./cloud-partner-portal/dyn365ce/cpp-offer-settings-tab.md)
+#### [“技术信息”选项卡](./cloud-partner-portal/dyn365ce/cpp-technical-info-tab.md)
+#### [“体验版”选项卡](./cloud-partner-portal/dyn365ce/cpp-testdrive-tab.md)
+#### [“店面详细信息”选项卡](./cloud-partner-portal/dyn365ce/cpp-storefront-details-tab.md)
+#### [“联系人”选项卡](./cloud-partner-portal/dyn365ce/cpp-contacts-tab.md)
+### [创建客户参与技术资产](./cloud-partner-portal/dyn365ce/cpp-create-technical-assets.md)
+### [发布客户参与产品/服务](./cloud-partner-portal/dyn365ce/cpp-publish-offer.md)
+
+<!-- Following legacy IoT section was replaced.  -->
+<!-- 
+## [Dynamics 365 for Customer Engagement offer](./cloud-partner-portal-orig/cpp-customer-engagement-offer.md)
+### [Create solution](./cloud-partner-portal-orig/dynamics-365-solution-preparation.md)
+### [Create package](./cloud-partner-portal-orig/appSource-package-preparation.md)
+### [Generate SAS key](./cloud-partner-portal-orig/store-your-appSource-package-to-azure-storage-and-generate-sas-key.md)
+### [Create offer](./cloud-partner-portal-orig/setup-your-application-in-the-publishing-portal.md)
+### [Publish offer](./cloud-partner-portal-orig/request-to-publish-the-app.md)
+-->
 
 ## [Dynamics 365 for Business Central 产品/服务](./cloud-partner-portal-orig/cpp-business-central-offer.md)
 ### [发布概述](./cloud-partner-portal-orig/d365-finance-overview-publish-your-app.md)

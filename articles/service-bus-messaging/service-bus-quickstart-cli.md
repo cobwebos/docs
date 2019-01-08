@@ -9,12 +9,12 @@ ms.devlang: java
 ms.topic: quickstart
 ms.date: 09/22/2018
 ms.author: spelluru
-ms.openlocfilehash: 8beabfb8c77d4d62b9b15dca8ae3146c34c3b20a
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 522447b73454016bff5188d07b27702fa21cb748
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52634806"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53998670"
 ---
 # <a name="quickstart-send-and-receive-messages-using-azure-cli-and-java"></a>快速入门：使用 Azure CLI 和 Java 发送和接收消息
 
@@ -66,7 +66,7 @@ connectionString=$(az servicebus namespace authorization-rule keys list \
 
 ## <a name="send-and-receive-messages"></a>发送和接收消息
 
-创建命名空间和队列并且拥有所需的凭据后，便可以发送和接收消息。 可以在[此 GitHub 示例文件夹](https://github.com/Azure/azure-service-bus/tree/master/samples/Java/quickstarts-and-tutorials/quickstart-java/src/main/java/samples/quickstart/SendAndReceiveMessages.java)中检查代码。
+创建命名空间和队列并且拥有所需的凭据后，便可以发送和接收消息。 可以在[此 GitHub 示例文件夹](https://github.com/Azure/azure-service-bus/tree/master/samples/Java/azure-servicebus/TopicFilters)中检查代码。
 
 1. 请确保 Cloud Shell 已打开并显示了 Bash 提示符。
 
@@ -108,7 +108,7 @@ az group delete --resource-group myResourceGroup
 
 ## <a name="understand-the-sample-code"></a>了解示例代码
 
-此部分详述了示例代码的重要节。 可以浏览[此处](https://github.com/Azure/azure-service-bus/blob/master/samples/Java/quickstarts-and-tutorials/quickstart-java/src/main/java/samples/quickstart/SendAndReceiveMessages.java)的 GitHub 存储库提供的代码。
+此部分详述了示例代码的重要节。 可以浏览[此处](https://github.com/Azure/azure-service-bus/tree/master/samples/Java/azure-servicebus/TopicFilters)的 GitHub 存储库提供的代码。
 
 ### <a name="get-connection-string-and-queue"></a>获取连接字符串和队列
 

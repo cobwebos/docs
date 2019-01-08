@@ -1,5 +1,5 @@
 ---
-title: 在 Linux 上使用 Postgres 生成 Ruby Web 应用 - Azure 应用服务 | Microsoft Docs
+title: 在 Linux 上使用 Postgres 生成 Ruby 应用 - Azure 应用服务 | Microsoft Docs
 description: 了解如何创建一个可在 Azure 中运行的 Ruby 应用，并将其连接到 PostgreSQL 数据库。
 services: app-service\web
 documentationcenter: ''
@@ -12,16 +12,16 @@ ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 247c4f24869901f0f50b081d8f57b7e3841a8e8a
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: e42d9592d74e845410441097fa6082cfb3f4ac5e
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53271022"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53713873"
 ---
-# <a name="build-a-ruby-and-postgres-web-app-in-azure-app-service-on-linux"></a>在基于 Linux 的 Azure 应用服务中生成 Ruby 和 Postgres Web 应用
+# <a name="build-a-ruby-and-postgres-app-in-azure-app-service-on-linux"></a>在基于 Linux 上的 Azure 应用服务中生成 Ruby 和 Postgres 应用
 
-[Linux 应用服务](app-service-linux-intro.md)使用 Linux 操作系统，提供高度可缩放的自修补 Web 托管服务。 本教程介绍如何创建 Ruby Web 应用，并将其连接到 PostgreSQL 数据库。 完成本教程后，Linux 上的应用服务将会运行一个 [Ruby on Rails](https://rubyonrails.org/) 应用。
+[Linux 应用服务](app-service-linux-intro.md)使用 Linux 操作系统，提供高度可缩放的自修补 Web 托管服务。 本教程介绍如何创建 Ruby 应用，并将其连接到 PostgreSQL 数据库。 完成本教程后，Linux 上的应用服务将会运行一个 [Ruby on Rails](https://rubyonrails.org/) 应用。
 
 ![Azure 应用服务中运行的 Ruby on Rails 应用](./media/tutorial-ruby-postgres-app/complete-checkbox-published.png)
 
@@ -162,7 +162,7 @@ az postgres server firewall-rule create --resource-group myResourceGroup --serve
 ```
 
 > [!TIP] 
-> 你甚至可以让防火墙规则更严格，即[只使用应用所使用的出站 IP 地址](../app-service-ip-addresses.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#find-outbound-ips)。
+> 你甚至可以让防火墙规则更严格，即[只使用应用所使用的出站 IP 地址](../overview-inbound-outbound-ips.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#find-outbound-ips)。
 >
 
 ### <a name="connect-to-production-postgres-server-locally"></a>在本地连接到生产 Postgres 服务器
@@ -357,7 +357,7 @@ remote: Running deployment command...
 < Output has been truncated for readability >
 ```
 
-### <a name="browse-to-the-azure-web-app"></a>浏览到 Azure Web 应用
+### <a name="browse-to-the-azure-app"></a>浏览到 Azure 应用
 
 浏览到 `http://<app_name>.azurewebsites.net` 并在列表中添加一些任务。
 
@@ -470,21 +470,21 @@ git commit -m "added complete checkbox"
 git push azure master
 ```
 
-`git push` 完成后，请导航至 Azure Web 应用，然后测试新功能。
+`git push` 完成后，请导航至 Azure 应用，测试新功能。
 
 ![发布到 Azure 的模型和数据库更改](media/tutorial-ruby-postgres-app/complete-checkbox-published.png)
 
 如果添加任何任务，则它们保留在数据库中。 更新数据架构不会改变现有数据。
 
-## <a name="manage-the-azure-web-app"></a>管理 Azure Web 应用
+## <a name="manage-the-azure-app"></a>管理 Azure 应用
 
-转到 [Azure 门户](https://portal.azure.com)管理创建的 Web 应用。
+转到 [Azure 门户](https://portal.azure.com)管理已创建的应用。
 
-在左侧菜单中单击“应用服务”，然后单击 Azure Web 应用的名称。
+在左侧菜单中单击“应用程序服务”，然后单击 Azure 应用的名称。
 
-![在门户中导航到 Azure Web 应用](./media/tutorial-php-mysql-app/access-portal.png)
+![在门户中导航到 Azure 应用](./media/tutorial-php-mysql-app/access-portal.png)
 
-将看到 Web 应用的概述页。 在此处可以执行基本的管理任务，例如停止、启动、重启、浏览和删除。
+这里我们可以看到应用的“概述”页。 在此处可以执行基本的管理任务，例如停止、启动、重启、浏览和删除。
 
 左侧菜单提供用于配置应用的页面。
 
@@ -506,7 +506,7 @@ git push azure master
 > * 从 Azure 流式传输诊断日志
 > * 在 Azure 门户中管理应用
 
-转到下一教程，了解如何向 Web 应用映射自定义 DNS 名称。
+继续学习下一篇教程，了解如何将自定义 DNS 名称映射到应用。
 
 > [!div class="nextstepaction"]
-> [将现有的自定义 DNS 名称映射到 Azure Web 应用](../app-service-web-tutorial-custom-domain.md)
+> [将现有的自定义 DNS 名称映射到 Azure 应用服务](../app-service-web-tutorial-custom-domain.md)

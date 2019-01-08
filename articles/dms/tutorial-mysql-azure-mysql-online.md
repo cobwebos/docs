@@ -5,18 +5,18 @@ services: dms
 author: HJToland3
 ms.author: scphang
 manager: craigg
-ms.reviewer: ''
+ms.reviewer: douglasl
 ms.service: dms
 ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
-ms.date: 12/04/2018
-ms.openlocfilehash: a820287c79dcd8d904c9029de3f58d930118e840
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.date: 12/19/2018
+ms.openlocfilehash: 52346e25c0b0e1b1b0c0befb6b5285f66b9a95d7
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52959506"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53724566"
 ---
 # <a name="tutorial-migrate-mysql-to-azure-database-for-mysql-online-using-dms"></a>教程：使用 DMS 以联机方式将 MySQL 迁移到 Azure Database for MySQL
 可以使用 Azure 数据库迁移服务在尽量缩短停机时间的情况下，将数据库从本地 MySQL 实例迁移到 [Azure Database for MySQL](https://docs.microsoft.com/azure/mysql/)。 换句话说，可以在尽量减少应用程序故障时间的情况下进行迁移。 本教程介绍如何在 Azure 数据库迁移服务中使用联机迁移活动将 **Employees** 示例数据库从 MySQL 5.7 的本地实例迁移到 Azure Database for MySQL。
@@ -30,7 +30,7 @@ ms.locfileid: "52959506"
 > * 监视迁移。
 
 > [!NOTE]
-> 使用 Azure 数据库迁移服务执行联机迁移需要基于“高级(预览版)”定价层创建实例。
+> 使用 Azure 数据库迁移服务执行联机迁移需要基于“高级”定价层创建实例。
 
 > [!IMPORTANT]
 > 为获得最佳迁移体验，Microsoft 建议在目标数据库所在的 Azure 区域中创建 Azure 数据库迁移服务的实例。 跨区域或地理位置移动数据可能会减慢迁移过程并引入错误。

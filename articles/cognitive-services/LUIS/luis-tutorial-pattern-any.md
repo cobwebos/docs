@@ -9,18 +9,32 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: tutorial
-ms.date: 09/09/2018
+ms.date: 12/21/2018
 ms.author: diberry
-ms.openlocfilehash: 4551968cc446bb949d0b18cb77211808169cb907
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 58a62a5a882c6883c6fed31a7b95d949247e1bf1
+ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53103466"
+ms.lasthandoff: 12/22/2018
+ms.locfileid: "53752599"
 ---
-# <a name="tutorial-5-extract-free-form-data"></a>教程 5：提取自由格式数据
+# <a name="tutorial-extract-free-form-data-with-patternany-entity"></a>教程：使用 Pattern.any 实体提取自由格式数据
 
 在本教程中，对于格式良好且数据结尾可能容易与话语的剩余单词混淆的话语，我们使用 pattern.any 实体从这些话语中提取数据。 
+
+**本教程介绍如何执行下列操作：**
+
+> [!div class="checklist"]
+> * 导入示例应用
+> * 将示例话语添加到现有实体
+> * 创建 Pattern.any 实体
+> * 创建模式
+> * 定型
+> * 测试新模式
+
+[!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
+
+## <a name="using-patternany-entity"></a>使用 Pattern.any 实体
 
 通过 pattern.any 实体，可找到自由格式数据，其中实体的用语方式比较晦涩，难以从话语的其余部分来确定实体的结尾。 
 
@@ -50,24 +64,12 @@ ms.locfileid: "53103466"
 |{FormName} 的作者是谁[？]|
 |{FormName} 是以法语发布的吗[？]|
 
-**本教程介绍如何执行下列操作：**
-
-> [!div class="checklist"]
-> * 使用现有的教程应用
-> * 将示例话语添加到现有实体
-> * 创建 Pattern.any 实体
-> * 创建模式
-> * 定型
-> * 测试新模式
-
-[!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
-
-## <a name="use-existing-app"></a>使用现有应用
+## <a name="import-example-app"></a>导入示例应用
 继续使用上一个教程中创建的名为 **HumanResources** 的应用。 
 
-如果没有上一个教程中的 HumanResources 应用，请执行以下步骤：
+请执行以下步骤：
 
-1.  下载并保存[应用 JSON 文件](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/tutorials/custom-domain-roles-HumanResources.json)。
+1.  下载并保存[应用 JSON 文件](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/custom-domain-pattern-roles-HumanResources.json)。
 
 2. 将 JSON 导入到新应用中。
 

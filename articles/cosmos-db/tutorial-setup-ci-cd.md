@@ -8,12 +8,12 @@ ms.service: cosmos-db
 ms.topic: tutorial
 ms.date: 11/02/2018
 ms.author: dech
-ms.openlocfilehash: 8b64142a7d693e8e48e1739a61978abbab740e3d
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 83178abab84679dcfb36a361950097f9224eda81
+ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52875206"
+ms.lasthandoff: 12/28/2018
+ms.locfileid: "53810627"
 ---
 # <a name="set-up-a-cicd-pipeline-with-the-azure-cosmos-db-emulator-build-task-in-azure-devops"></a>在 Azure DevOps 中通过 Azure Cosmos DB 模拟器生成任务设置 CI/CD 管道
 
@@ -81,7 +81,7 @@ ms.locfileid: "52875206"
 </RunSettings>
 ```
 
-如果正在为使用 Azure Cosmos DB MongoDB API 的应用程序设置 CI/CD 管道，则 MongoDB 连接字符串默认包含端口号 10255。 但是，此端口当前未打开，作为替代方法，你应该使用端口 10250 建立连接。 MongoDB API 连接字符串保持不变，不同的是支持的端口号是 10250 而不是 10255。
+如果正在为使用 Azure Cosmos DB 的 MongoDB API 的应用程序设置 CI/CD 管道，则连接字符串默认包含端口号 10255。 但是，此端口当前未打开，作为替代方法，你应该使用端口 10250 建立连接。 Azure Cosmos DB 用于 MongoDB 连接字符串的 API 保持不变，不同的是支持的端口号是 10250 而不是 10255。
 
 这些参数 (`TestRunParameters`) 通过应用程序的测试项目中的 `TestContext` 属性引用。 下面是一个针对 Cosmos DB 运行的测试的示例。
 

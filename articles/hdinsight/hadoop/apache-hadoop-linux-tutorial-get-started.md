@@ -9,19 +9,19 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.custom: hdinsightactive,hdiseo17may2017,mvc,seodec18
 ms.topic: quickstart
-ms.date: 05/07/2018
-ms.openlocfilehash: 845aa85a025d75dcc0e80b59fbc1620d8cbae082
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.date: 12/27/2018
+ms.openlocfilehash: bec4e4271fa9f1e2333e9414268832fe77b722cb
+ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53435729"
+ms.lasthandoff: 12/28/2018
+ms.locfileid: "53811216"
 ---
 # <a name="quickstart-get-started-with-apache-hadoop-and-apache-hive-in-azure-hdinsight-using-resource-manager-template"></a>快速入门：使用资源管理器模板在 Azure HDInsight 中开始使用 Apache Hadoop 和 Apache Hive
 
 本文介绍如何使用资源管理器模板在 HDInsight 中创建 [Apache Hadoop](https://hadoop.apache.org/) 群集，以及之后如何在 HDInsight 中运行 Hive 作业。 大多数 Hadoop 作业都是批处理作业。 创建群集，运行一些作业，并删除群集。 在本文中，将会执行所有这三项任务。
 
-在本快速入门教程中，可以使用资源管理器模板创建 HDInsight Hadoop 群集。 也可以使用 [Azure 门户](apache-hadoop-linux-create-cluster-get-started-portal.md)创建群集。
+在本快速入门教程中，可以使用资源管理器模板创建 HDInsight Hadoop 群集。 也可以使用 [Azure 门户](apache-hadoop-linux-create-cluster-get-started-portal.md)创建群集。  可以在 [Azure 快速启动模板](https://azure.microsoft.com/resources/templates/?term=hdinsight)中查看类似的模板。
 
 目前，HDInsight 附带[七个不同的群集类型](./apache-hadoop-introduction.md#cluster-types-in-hdinsight)。 每个群集类型都支持一组不同的组件。 所有群集类型都支持 Hive。 有关 HDInsight 中受支持组件的列表，请参阅 [HDInsight 提供的 Hadoop 群集版本中有哪些新功能？](../hdinsight-component-versioning.md)  
 
@@ -39,9 +39,7 @@ ms.locfileid: "53435729"
 2. 按以下屏幕截图所示输入或选择值：
 
     > [!NOTE]  
-    > 提供的值必须唯一，并应遵循命名指南。 模板不会执行验证检查。 如果提供的值已被使用，或不遵循指南，则提交模板后可能会出错。       
-    > 
-    >
+    > 提供的值必须唯一，并应遵循命名指南。 模板不会执行验证检查。 如果提供的值已被使用，或不遵循指南，则提交模板后可能会出错。    
     
     ![门户中的 HDInsight Linux 入门资源管理器模板](./media/apache-hadoop-linux-tutorial-get-started/hdinsight-linux-get-started-arm-template-on-portal.png "使用 Azure 门户和资源组管理器模板在 HDInsigut 中部署 Hadoop 群集")
 
@@ -52,23 +50,16 @@ ms.locfileid: "53435729"
     |**订阅**     |  选择 Azure 订阅。 |
     |**资源组**     | 创建资源组，或选择现有资源组。  资源组是 Azure 组件的容器。  在本例中，资源组包含 HDInsight 群集和依赖的 Azure 存储帐户。 |
     |**位置**     | 选择要在其中创建群集的 Azure 位置。  选择的位置与你越靠近，性能就越好。 |
+    |**群集名称**     | 输入 Hadoop 群集的名称。 由于 HDInsight 中的所有群集共享同一 DNS 命名空间，因此该名称必须唯一。 此名称只能包含小写字母、数字和连字符，且必须以字母开头。  每个连字符的前后必须为非连字符字符。  名称的长度还必须介于 3 到 59 个字符之间。 |
     |**群集类型**     | 选择“hadoop”。 |
-    |**群集名称**     | 输入 Hadoop 群集的名称。 由于 HDInsight 中的所有群集共享同一 DNS 命名空间，因此该名称必须唯一。 该名称最多可以有 59 个字符，包括字母、数字和连字符。 名称的第一个和最后一个字符不能为连字符。 |
     |**群集登录名和密码**     | 默认登录名为“admin”。密码长度不得少于 10 个字符，且至少必须包含一个数字、一个大写字母和一个小写字母、一个非字母数字字符（' " ` \)字符除外）。 请确保不提供常见密码，如“Pass@word1”。|
     |**SSH 用户名和密码**     | 默认用户名为“sshuser”。  可以重命名 SSH 用户名。  SSH 用户密码的要求与群集登录密码的要求相同。|
        
     某些属性已在模板中硬编码。  可以通过模板配置这些值。 有关这些属性的详细说明，请参阅[在 HDInsight 中创建 Apache Hadoop 群集](../hdinsight-hadoop-provision-linux-clusters.md)。
 
-3. 依次选择“我同意上述条款和条件”、“固定到仪表板”，并选择“购买”。 门户仪表板上应会出现标题为“提交部署”的新磁贴。 创建群集大约需要 20 分钟时间。
+3. 选择“我同意上述条款和条件”，然后选择“购买”。 你将收到一则通知，说明正在进行部署。  创建群集大约需要 20 分钟时间。
 
-    ![模板部署进度](./media/apache-hadoop-linux-tutorial-get-started/deployment-progress-tile.png "Azure 模板部署进度")
-
-4. 创建群集后，该磁贴的标题将更改为指定的资源组名称。 该磁贴还列出了在资源组中创建的 HDInsight 群集。 
-   
-    ![HDInsight Linux 入门资源组](./media/apache-hadoop-linux-tutorial-get-started/hdinsight-linux-get-started-resource-group.png "Azure HDInsight 群集资源组")
-    
-5. 该磁贴还列出了与群集关联的默认存储。 每个群集都有一个 [Azure 存储帐户](../hdinsight-hadoop-use-blob-storage.md)或 [Azure Data Lake 帐户](../hdinsight-hadoop-use-data-lake-store.md)依赖项。 该帐户称为默认存储帐户。 HDInsight 群集与其默认存储帐户必须一起放置在同一个 Azure 区域中。 删除群集不会删除存储帐户。
-    
+4. 创建群集后，将收到“部署成功”的通知，通知中附有“转到资源组”链接。  “资源组”页面将列出新的 HDInsight 群集以及与该群集关联的默认存储。 每个群集都有一个 [Azure 存储帐户](../hdinsight-hadoop-use-blob-storage.md)或 [Azure Data Lake Storage 帐户](../hdinsight-hadoop-use-data-lake-store.md)依赖项。 该帐户称为默认存储帐户。 HDInsight 群集与其默认存储帐户必须一起放置在同一个 Azure 区域中。 删除群集不会删除存储帐户。
 
 > [!NOTE]  
 > 如需其他群集创建方法或要了解本教程中使用的属性，请参阅 [Create HDInsight clusters](../hdinsight-hadoop-provision-linux-clusters.md)（创建 HDInsight 群集）。       
@@ -182,13 +173,13 @@ ms.locfileid: "53435729"
 
 [Apache Hive](hdinsight-use-hive.md) 是 HDInsight 中最流行的组件。 可通过多种方法在 HDInsight 中运行 Hive 作业。 本教程使用门户中的 Ambari Hive 视图。 有关提交 Hive 作业的其他方法，请参阅[在 HDInsight 中使用 Apache Hive](hdinsight-use-hive.md)。
 
-1. 若要打开 Ambari，请从之前的屏幕截图中，选择“群集仪表板”。  也可以浏览到 **https://&lt;ClusterName>.azurehdinsight.net**，其中 &lt;ClusterName> 是在上一部分中创建的群集。
+1. 若要打开 Ambari，请从“群集仪表板”磁贴选择“Ambari 视图”。  也可以浏览到 https://&lt;ClusterName&gt;.azurehdinsight.net，其中 &lt;ClusterName&gt; 是在上一部分中创建的群集。
 
     ![HDInsight Linux 入门群集仪表板](./media/apache-hadoop-linux-tutorial-get-started/hdinsight-linux-get-started-open-cluster-dashboard.png "HDInsight Linux 入门群集仪表板")
 
 2. 输入在创建群集时指定的 Hadoop 用户名和密码。 默认的用户名为 **admin**。
 
-3. 打开“Hive 视图”，如以下屏幕截图中所示： 
+3. 选择“Hive 视图 2.0”，如以下屏幕截图中所示：
    
     ![选择 Ambari 视图](./media/apache-hadoop-linux-tutorial-get-started/selecthiveview.png "HDInsight Hive 查看器菜单")
 
@@ -220,7 +211,7 @@ ms.locfileid: "53435729"
 
 ## <a name="troubleshoot"></a>故障排除
 
-如果在创建 HDInsight 群集时遇到问题，请参阅[访问控制要求](../hdinsight-administer-use-portal-linux.md#create-clusters)。
+如果在创建 HDInsight 群集时遇到问题，请参阅[访问控制要求](../hdinsight-hadoop-create-linux-clusters-portal.md)。
 
 ## <a name="clean-up-resources"></a>清理资源
 完成本文后，可以删除群集。 有了 HDInsight，便可以将数据存储在 Azure 存储中，因此可以在群集不用时安全地删除群集。 此外，还需要为 HDInsight 群集付费，即使不用也是如此。 由于群集费用数倍于存储空间费用，因此在群集不用时删除群集可以节省费用。 

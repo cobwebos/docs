@@ -1,5 +1,5 @@
 ---
-title: 使用 MongoB API 的 Node.Js、Angular 应用（第 6 部分）
+title: 使用 Azure Cosmos DB 的用于 MongoDB 的 API 创建 Angular 应用 - 将 CRUD 函数添加至应用
 titleSuffix: Azure Cosmos DB
 description: 本教程系列的第 6 部分，介绍如何通过 Angular 和 Node 在 Azure Cosmos DB 上创建 MongoDB 应用，所使用的 API 与用于 MongoDB 的 API 完全相同
 author: johnpapa
@@ -7,21 +7,19 @@ ms.service: cosmos-db
 ms.component: cosmosdb-mongo
 ms.devlang: nodejs
 ms.topic: tutorial
-ms.date: 12/06/2018
+ms.date: 12/26/2018
 ms.author: jopapa
 ms.custom: seodec18
-ms.openlocfilehash: ec6fc4237fd2be11d1e937ec6aed12898689e73f
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: affa3fcc580ab69d7cba9db93890ed5f3c499bf4
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53139973"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53793353"
 ---
-# <a name="create-a-mongodb-app-with-angular-and-azure-cosmos-db---part-6-add-crud-functions-to-the-app"></a>通过 Angular 和 Azure Cosmos DB 创建 MongoDB 应用 - 第 6 部分：向应用中添加 CRUD 功能
+# <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---add-crud-functions-to-the-app"></a>使用 Azure Cosmos DB 的用于 MongoDB 的 API 创建 Angular 应用 - 将 CRUD 函数添加至应用
 
-本教程包含多个部分，演示了如何通过 Express 和 Angular 创建以 Node.js 编写的新 [MongoDB API](mongodb-introduction.md) 应用，然后将其连接到 Azure Cosmos DB 数据库。
-
-本教程的第 6 部分基于[第 5 部分](tutorial-develop-mongodb-nodejs-part5.md)，涵盖以下任务：
+本教程包含多个部分，演示了如何通过 Express 和 Angular 创建以 Node.js 编写的新应用，然后将其连接到[使用 Cosmos DB 的用于 MongoDB 的 API 配置的 Cosmos 帐户](mongodb-introduction.md)。 本教程的第 6 部分基于[第 5 部分](tutorial-develop-mongodb-nodejs-part5.md)，涵盖以下任务：
 
 > [!div class="checklist"]
 > * 为 hero 服务创建 Post、Put 和 Delete 函数

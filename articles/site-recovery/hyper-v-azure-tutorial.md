@@ -5,15 +5,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 11/27/2018
+ms.date: 12/28/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 44b5702aa765b0e821850f6a390432563126482d
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 6e0cff6725db52601b4639ad638216370dd3cfda
+ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52839902"
+ms.lasthandoff: 12/28/2018
+ms.locfileid: "53810689"
 ---
 # <a name="set-up-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>对 Azure 设置本地 Hyper-V VM 的灾难恢复
 
@@ -81,8 +81,24 @@ ms.locfileid: "52839902"
 5. 在“代理设置”中，选择“在不使用代理的情况下直接连接到 Azure Site Recovery”。
 6. 在保管库中注册服务器后，在“注册”中单击“完成”。
 
-Azure Site Recovery 将检索 Hyper-V 服务器中的元数据，该服务器显示在“Site Recovery 基础结构” > “Hyper-V 主机”中。 此过程最多可能需要 30 分钟。
+Azure Site Recovery 将检索 Hyper-V 服务器中的元数据，该服务器显示在“Site Recovery 基础结构” > “Hyper-V 主机”中。 此过程最多可能需要 30 分钟。        
 
+如果使用的是 Hyper-V 核心服务器，下载了[此处](#set-up-the-source-environment)提到的提供程序和保管库凭据后，请执行以下步骤
+
+1. 通过运行从 AzureSiteRecoveryProvider.exe 提取文件
+
+    ``AzureSiteRecoveryProvider.exe /x:. /q``
+ 
+    这会将文件提取到本地目录。
+ 
+2.  运行 ``.\setupdr.exe /i ``
+
+    结果将记录到 %Programdata%\ASRLogs\DRASetupWizard.log
+
+3.  使用以下命令注册服务器：
+
+``cd  C:\Program Files\Microsoft Azure Site Recovery Provider\DRConfigurator.exe" /r /Friendlyname "FriendlyName of the Server" /Credentials "path to where the credential file is saved" ``
+ 
 
 ## <a name="set-up-the-target-environment"></a>设置目标环境
 

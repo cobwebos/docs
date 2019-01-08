@@ -2,8 +2,7 @@
 title: 教程：使用 Azure 流分析作业运行 Azure Functions |Microsoft Docs
 description: 本教程介绍如何将 Azure Functions 配置为流分析作业的输出接收器。
 services: stream-analytics
-author: jasonwhowell
-manager: kfile
+author: mamccrea
 ms.service: stream-analytics
 ms.topic: tutorial
 ms.custom: mvc
@@ -11,12 +10,12 @@ ms.workload: data-services
 ms.date: 04/09/2018
 ms.author: mamccrea
 ms.reviewer: jasonh
-ms.openlocfilehash: 6a89333f32fb4ccc8fc4d4710266157fca16fe02
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: 818c75feffc5dcf09421b22d82b8b0c767cbed7f
+ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53164154"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53993002"
 ---
 # <a name="run-azure-functions-from-azure-stream-analytics-jobs"></a>从 Azure 流分析作业运行 Azure Functions 
 
@@ -152,7 +151,7 @@ ms.locfileid: "53164154"
 
 1. 在 Azure 门户中打开流分析作业。  
 
-2. 浏览到你的函数，并选择“概述” > “输出” > “添加”。 若要添加新的输出，请选择“Azure 函数”接收器选项。 新的 Functions 输出适配器现可使用，它具有以下属性：  
+2. 浏览到你的函数，并选择“概述” > “输出” > “添加”。 若要添加新的输出，请选择“Azure 函数”接收器选项。 Functions 输出适配器具有以下属性：  
 
    |**属性名称**|**说明**|
    |---|---|
@@ -160,7 +159,7 @@ ms.locfileid: "53164154"
    |导入选项| 可使用当前订阅中的函数；如果函数位于其他订阅中，也可手动提供设置。 |
    |Function App| Functions 应用的名称 |
    |函数| Functions 应用中函数的名称（run.csx 函数的名称）。|
-   |最大批大小|设置每个输出批的最大大小，此值将发送到你的函数。 默认情况下，此值设置为 256 KB。|
+   |最大批大小|设置每个输出批的最大大小（以字节为单位），此值将发送到你的函数。 默认情况下，此值设置为 262,144 字节 (256 KB)。|
    |最大批数|指定发送给函数的每个批次中的最大事件数。 默认值为 100。 此属性是可选的。|
    |密钥|可以使用其他订阅中的函数。 提供用于访问你的函数的键值。 此属性是可选的。|
 

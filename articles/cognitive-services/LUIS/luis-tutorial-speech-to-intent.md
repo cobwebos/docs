@@ -11,14 +11,14 @@ ms.component: language-understanding
 ms.topic: tutorial
 ms.date: 12/07/2018
 ms.author: diberry
-ms.openlocfilehash: 1bc3b9e016bed59f6453c26371cce7bd089568aa
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: 8e664e26a2cafc2f0b32ebea0f019918426d956c
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53162625"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53714571"
 ---
-# <a name="integrate-speech-service"></a>语音服务集成
+# <a name="integrate-speech-service-with-your-language-understanding-app"></a>将语音服务与语言理解应用集成
 借助[语音服务](https://docs.microsoft.com/azure/cognitive-services/Speech-Service/)，可使用单个请求接收音频并返回 LUIS 预测 JSON 对象。 本文中，你将在 Visual Studio 中下载和使用 C# 项目，从而对麦克风讲话并接收 LUIS 预测信息。 该项目使用语音 [NuGet](https://www.nuget.org/packages/Microsoft.CognitiveServices.Speech/) 包（该包已作为参考包含在内）。 
 
 本文需要一个免费的 [LUIS][LUIS] 网站帐户才能导入应用程序。
@@ -27,7 +27,7 @@ ms.locfileid: "53162625"
 在 Azure 门户中，[创建](luis-how-to-azure-subscription.md#create-luis-endpoint-key)语言理解 (LUIS) 密钥。 
 
 ## <a name="import-human-resources-luis-app"></a>导入人力资源 LUIS 应用
-意向和本文中的话语来自人力资源 LUIS 应用（可在 [LUIS-Samples](https://github.com/Microsoft/LUIS-Samples) GitHub 存储库中获取）。 下载 [HumanResources.json](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/tutorials/HumanResources.json) 文件，以 `.json` 扩展名保存该文件，并将其[导入](luis-how-to-start-new-app.md#import-new-app)到 LUIS。 
+意向和本文中的话语来自人力资源 LUIS 应用（可在 [Azure-Samples](https://github.com/Azure-Samples/cognitive-services-language-understanding) GitHub 存储库中获取）。 下载 [HumanResources.json](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/HumanResources.json) 文件，以 `.json` 扩展名保存该文件，并将其[导入](luis-how-to-start-new-app.md#import-new-app)到 LUIS。 
 
 此应用具有与人力资源域相关的意向、实体和话语。 话语示例包括：
 
@@ -62,7 +62,7 @@ ms.locfileid: "53162625"
 本文使用计算机上的音频设备。 它可以是带麦克风的耳机，也可以是内置音频设备。 请检查音频输入电平，确认要使音频设备检测到你说的话，是否要比平时说话的声音大。 
 
 ## <a name="download-the-luis-sample-project"></a>下载 LUIS 示例项目
- 复制或下载 [LUIS-Samples](https://github.com/Microsoft/LUIS-Samples) 存储库。 使用 Visual Studio 打开[“语音转意向”项目](https://github.com/Microsoft/LUIS-Samples/tree/master/documentation-samples/tutorial-speech-intent-recognition)，并还原 NuGet 包。 VS 解决方案文件位于 .\LUIS-Samples-master\documentation-samples\tutorial-speech-intent-recognition\csharp\csharp_samples.sln。
+ 复制或下载 [Azure-Samples](https://github.com/Azure-Samples/cognitive-services-language-understanding) 存储库。 使用 Visual Studio 打开[“语音转意向”项目](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/tutorial-speech-intent-recognition)，并还原 NuGet 包。 VS 解决方案文件位于 documentation-samples\tutorial-speech-intent-recognition\csharp\csharp_samples.sln。
 
 语音 SDK 已作为参考包括在内。 
 
@@ -93,7 +93,7 @@ ms.locfileid: "53162625"
 ## <a name="clean-up-resources"></a>清理资源
 不再需要时，请删除 LUIS 人力资源应用。 为此，请选择应用，然后在列表上方的上下文工具栏中选择“删除”。 在弹出的“删除应用?”对话框中，选择“确定”。
 
-请记住在使用完示例代码后删除“LUIS 示例”目录。
+请记住在使用完示例代码后删除该目录。
 
 ## <a name="next-steps"></a>后续步骤
 

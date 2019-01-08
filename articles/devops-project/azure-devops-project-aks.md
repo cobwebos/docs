@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 07/09/2018
 author: mlearned
 monikerRange: vsts
-ms.openlocfilehash: 7980ea439cfd3eaefcaa308795836a909f980043
-ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
+ms.openlocfilehash: 2aa103b36f60a84aaafc47f03a6cf6d5b6b66160
+ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52620636"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53993769"
 ---
 # <a name="tutorial-deploy-aspnet-core-apps-to-azure-kubernetes-service-with-azure-devops-projects"></a>教程：使用 Azure DevOps Projects 将 ASP.NET Core 应用部署到 Azure Kubernetes 服务
 
@@ -191,4 +191,4 @@ DevOps Projects 会自动创建并配置从 Azure DevOps 组织部署到 Azure �
 若要详细了解如何使用 Kubernetes 仪表板，请参阅：
 
 > [!div class="nextstepaction"]
-> [使用 Kubernetes 仪表板](https://docs.microsoft.com/en-us/azure/aks/kubernetes-dashboard)
+> [使用 Kubernetes 仪表板](https://docs.microsoft.com/azure/aks/kubernetes-dashboard)

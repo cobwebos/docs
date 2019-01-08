@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 05/04/2017
 ms.author: mahender
 ms.custom: mvc
-ms.openlocfilehash: 9a35c1205c0b564c8d0db1fbd0535d41bb9c84a0
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 9f96b4cbe95d918a94ea0d02f9b8fdd8f663eeec
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46989900"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "54001458"
 ---
 # <a name="create-a-serverless-api-using-azure-functions"></a>使用 Azure Functions 创建无服务器 API
 
@@ -71,7 +71,7 @@ ms.locfileid: "46989900"
 
 代理可以指向任何 HTTP 资源，例如：
 - Azure Functions 
-- [Azure 应用服务](https://docs.microsoft.com/azure/app-service/app-service-web-overview)中的 API 应用
+- [Azure 应用服务](https://docs.microsoft.com/azure/app-service/overview)中的 API 应用
 - [Linux 上的应用服务](https://docs.microsoft.com/azure/app-service/containers/app-service-linux-intro)中的 Docker 容器
 - 其他任何托管 API
 
@@ -104,7 +104,7 @@ ms.locfileid: "46989900"
     | 字段 | 示例值 | Description |
     |---|---|---|
     | 名称 | HelloProxy | 仅用于管理的友好名称 |
-    | 路由模板 | /api/hello | 确定可以使用哪个路由来调用此代理 |
+    | 路由模板 | /api/remotehello | 确定可以使用哪个路由来调用此代理 |
     | 后端 URL | https://%HELLO_HOST%/api/hello | 指定请求应代理的终结点 |
     
 1. 请注意，代理不提供 `/api` 基路径前缀，必须在路由模板中包含此前缀。
@@ -112,9 +112,9 @@ ms.locfileid: "46989900"
 1. 单击“创建”。
 1. 可以通过复制代理 URL 或使用偏好的 HTTP 客户端在浏览器中对其进行测试来试验新代理。
     1. 对于匿名函数，请使用：
-        1. `https://YOURPROXYAPP.azurewebsites.net/api/hello?name="Proxies"`
+        1. `https://YOURPROXYAPP.azurewebsites.net/api/remotehello?name="Proxies"`
     1. 对于具有授权的函数，请使用：
-        1. `https://YOURPROXYAPP.azurewebsites.net/api/hello?code=YOURCODE&name="Proxies"`
+        1. `https://YOURPROXYAPP.azurewebsites.net/api/remotehello?code=YOURCODE&name="Proxies"`
 
 ## <a name="create-a-mock-api"></a>创建模拟 API
 
@@ -132,7 +132,7 @@ ms.locfileid: "46989900"
     "proxies": {
         "HelloProxy": {
             "matchCondition": {
-                "route": "/api/hello"
+                "route": "/api/remotehello"
             },
             "backendUri": "https://%HELLO_HOST%/api/hello"
         }
@@ -148,7 +148,7 @@ ms.locfileid: "46989900"
     "proxies": {
         "HelloProxy": {
             "matchCondition": {
-                "route": "/api/hello"
+                "route": "/api/remotehello"
             },
             "backendUri": "https://%HELLO_HOST%/api/hello"
         },

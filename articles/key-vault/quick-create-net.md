@@ -1,20 +1,20 @@
 ---
-title: 快速入门：使用 Node Web 应用在 Azure Key Vault 中设置和检索机密 | Microsoft Docs
+title: 快速入门：使用节点 Web 应用在 Azure Key Vault 中设置和检索机密 - Azure Key Vault | Microsoft Docs
 description: 快速入门：使用 .NET Web 应用在 Azure Key Vault 中设置和检索机密
 services: key-vault
 author: prashanthyv
 manager: sumedhb
 ms.service: key-vault
 ms.topic: quickstart
-ms.date: 09/12/2018
+ms.date: 01/02/2019
 ms.author: barclayn
 ms.custom: mvc
-ms.openlocfilehash: a53130dcc489764ce9284f15b8de0de37e0827e5
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: 20d47ecaea8ce393f60cba93c3dbcf7ca4a076c8
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51686664"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "54002597"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-by-using-a-net-web-app"></a>快速入门：使用 .NET Web 应用在 Azure Key Vault 中设置和检索机密
 
@@ -77,7 +77,7 @@ az group create --name "<YourResourceGroupName>" --location "East US"
 
 接下来，在上一步骤创建的资源组中创建密钥保管库。 提供以下信息：
 
-* 密钥保管库名称：名称必须为 3-24 个字符的字符串，并且只能包含 0-9、a-z、A-Z 和 -。
+* Key Vault 名称：名称必须为 3-24 个字符的字符串，并且只能包含 0-9、a-z、A-Z 和 -。
 * 资源组名称。
 * 位置：**美国东部**。
 

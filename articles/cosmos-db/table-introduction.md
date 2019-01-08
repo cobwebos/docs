@@ -1,6 +1,6 @@
 ---
 title: Azure Cosmos DB 表 API 简介
-description: 了解如何通过常用 OSS MongoDB API 使用 Azure Cosmos DB 以低延迟存储和查询大量键值对数据。
+description: 了解如何通过 Azure Tables API 使用 Azure Cosmos DB 以低延迟存储和查询大量键值对数据。
 services: cosmos-db
 author: SnehaGunda
 ms.service: cosmos-db
@@ -8,12 +8,12 @@ ms.component: cosmosdb-table
 ms.topic: overview
 ms.date: 11/20/2017
 ms.author: sngun
-ms.openlocfilehash: 2647065d251caea571e2bfcd5703bbb3bec08345
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 393a64cb62bcaf3623f77850ff43437396d7db81
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53074296"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53720146"
 ---
 # <a name="introduction-to-azure-cosmos-db-table-api"></a>Azure Cosmos DB 简介：表 API
 

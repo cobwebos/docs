@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 09/22/2018
 ms.author: spelluru
-ms.openlocfilehash: be08be43269dfb332dca1d5f62ce661940d311cc
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: bfe6c48b2e83c1ebbbad446f79cebd1f513db57e
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51259371"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "54002665"
 ---
 # <a name="quickstart-send-and-receive-messages-using-the-azure-portal-and-net"></a>快速入门：使用 Azure 门户和 .NET 发送和接收消息
 
@@ -77,7 +77,7 @@ Microsoft Azure 服务总线是一种提供安全消息传送和绝对可靠性�
 
 ## <a name="send-and-receive-messages"></a>发送和接收消息
 
-预配命名空间和队列并且拥有所需的凭据后，便可以发送和接收消息。 可以在[此 GitHub 示例文件夹](https://github.com/Azure/azure-service-bus/tree/master/samples/Java/quickstarts-and-tutorials/quickstart-jms)中检查代码。
+预配命名空间和队列并且拥有所需的凭据后，便可以发送和接收消息。 可以在[此 GitHub 示例文件夹](https://github.com/Azure/azure-service-bus/tree/master/samples/Java/azure-servicebus/TopicFilters)中检查代码。
 
 若要运行此代码，请执行以下操作：
 

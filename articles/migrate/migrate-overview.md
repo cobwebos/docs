@@ -4,15 +4,15 @@ description: 概述 Azure Migrate 服务。
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: overview
-ms.date: 12/05/2018
+ms.date: 01/02/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: fcf26b8a5eff407d6dde092ae645084fb20a14a8
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: c511ef8fc4ae580f869ef90da3e2c8764a146881
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53250563"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53969125"
 ---
 # <a name="about-azure-migrate"></a>关于 Azure Migrate
 
@@ -37,8 +37,9 @@ Azure Migrate 有助于：
 -  只能在以下地域创建 Azure Migrate 项目。 但是，这不会限制你为其他目标 Azure 位置创建评估。
     **地域** | **存储位置**
     --- | ---
-    美国 | 美国中西部或美国东部
     Azure Government  | 美国政府弗吉尼亚州
+    欧洲 | 北欧或西欧
+    美国 | 美国东部或美国中西部
 
     与迁移项目关联的地域用于存储本地部署环境中发现的元数据。 根据为迁移项目指定的地域，元数据存储在其中某个区域中。 如果通过创建新的 Log Analytics 工作区来使用依赖关系可视化，则会在项目所在的区域中创建工作区。
 - 依赖项可视化功能在 Azure 政府中不可用。

@@ -4,7 +4,7 @@ description: 了解如何通过使用 Visual Studio Code 连接到 Azure 上的 
 keywords: 连接到 sql 数据库
 services: sql-database
 ms.service: sql-database
-ms.subservice: operations
+ms.subservice: ''
 ms.custom: ''
 ms.devlang: ''
 ms.topic: quickstart
@@ -13,16 +13,16 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 12/06/2018
-ms.openlocfilehash: 786b4fab42fb49cd44c1985bfa04ce33e77cadf0
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 994f7d300b1e9a76e109e73467a2e7f0d4c1584d
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53098978"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53652109"
 ---
 # <a name="quickstart-use-visual-studio-code-to-connect-and-query-an-azure-sql-database"></a>快速入门：使用 Visual Studio Code 连接和查询 Azure SQL 数据库
 
-[Visual Studio Code](https://code.visualstudio.com/docs) 是一种图形代码编辑器，适用于 Linux、macOS 和 Windows。 它支持各种扩展，其中包括 [mssql 扩展](https://aka.ms/mssql-marketplace)（用于查询 Microsoft SQL Server、Azure SQL 数据库和 SQL 数据仓库）。 本快速入门演示如何使用 Visual Studio Code 连接到 Azure SQL 数据库，然后运行 Transact-SQL 语句以查询、插入、更新和删除数据。
+[Visual Studio Code](https://code.visualstudio.com/docs) 是一种图形代码编辑器，适用于 Linux、macOS 和 Windows。 它支持各种扩展，其中包括 [mssql 扩展](https://aka.ms/mssql-marketplace)（用于查询 Microsoft SQL Server、Azure SQL 数据库和 SQL 数据仓库）。 在本快速入门中，将使用 Visual Studio Code 连接到 Azure SQL 数据库，然后运行 Transact-SQL 语句以查询、插入、更新和删除数据。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -66,7 +66,7 @@ ln -s /usr/local/opt/openssl/lib/libssl.1.0.0.dylib /usr/local/lib/
 
 1. 打开新的 Visual Studio Code 窗口。 
 
-2. 按 CTRL+N。 这会打开一个新的纯文本文件。 
+2. 按 Ctrl+N。 这会打开一个新的纯文本文件。 
 
 3. 选择状态栏右下角的“纯文本”。
 
@@ -82,11 +82,11 @@ ln -s /usr/local/opt/openssl/lib/libssl.1.0.0.dylib /usr/local/lib/
 
 1. 在 Visual Studio Code 中，按 Ctrl+Shift+P（或 F1）打开命令面板。
 
-2. 选择“MS SQL:Connect”，然后按 Enter。
+2. 选择“MS SQL:Connect”，然后选择“Enter”。
 
 3. 选择“创建连接配置文件”。
 
-4. 按照提示指定新配置文件的连接属性。 指定每个值后，按 Enter 继续。 
+4. 按照提示指定新配置文件的连接属性。 指定每个值后，选择“Enter”继续。 
 
    | 属性       | 建议的值 | 说明 |
    | ------------ | ------------------ | ------------------------------------------------- | 
@@ -102,7 +102,7 @@ ln -s /usr/local/opt/openssl/lib/libssl.1.0.0.dylib /usr/local/lib/
 
 ## <a name="query-data"></a>查询数据
 
-使用以下 [SELECT](https://msdn.microsoft.com/library/ms189499.aspx) Transact-SQL 语句，按类别查询排名前 20 的产品。
+运行以下 [SELECT](https://msdn.microsoft.com/library/ms189499.aspx) Transact-SQL 语句，按类别查询排名前 20 的产品。
 
 1. 在编辑器窗口中，粘贴以下 SQL 查询。
 
@@ -113,13 +113,13 @@ ln -s /usr/local/opt/openssl/lib/libssl.1.0.0.dylib /usr/local/lib/
    ON pc.productcategoryid = p.productcategoryid;
    ```
 
-2. 按 Ctrl+Shift+E 执行查询并显示来自 `Product` 和 `ProductCategory` 表的结果。
+2. 按 Ctrl+Shift+E 运行查询并显示来自 `Product` 和 `ProductCategory` 表的结果。
 
     ![从 2 个表中检索数据的查询](./media/sql-database-connect-query-vscode/query.png)
 
 ## <a name="insert-data"></a>插入数据
 
-使用以下 [INSERT](https://msdn.microsoft.com/library/ms174335.aspx) Transact-SQL 语句，将新产品添加到 `SalesLT.Product` 表中。
+运行以下 [INSERT](https://msdn.microsoft.com/library/ms174335.aspx) Transact-SQL 语句，将新产品添加到 `SalesLT.Product` 表中。
 
 1. 将之前的查询替换为此查询。
 
@@ -147,7 +147,7 @@ ln -s /usr/local/opt/openssl/lib/libssl.1.0.0.dylib /usr/local/lib/
 
 ## <a name="update-data"></a>更新数据
 
-使用以下 [UPDATE](https://msdn.microsoft.com/library/ms177523.aspx) Transact-SQL 语句更新已添加的产品。
+运行以下 [UPDATE](https://msdn.microsoft.com/library/ms177523.aspx) Transact-SQL 语句更新已添加的产品。
 
 1. 将之前的查询替换为此查询：
 
@@ -161,7 +161,7 @@ ln -s /usr/local/opt/openssl/lib/libssl.1.0.0.dylib /usr/local/lib/
 
 ## <a name="delete-data"></a>删除数据
 
-使用以下 [DELETE](https://docs.microsoft.com/sql/t-sql/statements/delete-transact-sql) Transact-SQL 语句删除新产品。
+运行以下 [DELETE](https://docs.microsoft.com/sql/t-sql/statements/delete-transact-sql) Transact-SQL 语句删除新产品。
 
 1. 将之前的查询替换为此查询：
 

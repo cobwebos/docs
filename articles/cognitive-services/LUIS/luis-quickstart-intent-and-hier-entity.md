@@ -9,32 +9,23 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: tutorial
-ms.date: 12/05/2018
+ms.date: 12/21/2018
 ms.author: diberry
-ms.openlocfilehash: a79c0091220e2980101471abaaa0aaf4c0a898ca
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 91a9646e88adbfaf6d3c3fc0b06b341c647e773f
+ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53104401"
+ms.lasthandoff: 12/22/2018
+ms.locfileid: "53753687"
 ---
-# <a name="tutorial-5-extract-contextually-related-data"></a>教程 5：提取与上下文相关的数据
-在本教程中，基于上下文查找相关的数据片段。 例如，对于从一个建筑物和办公室到另一个建筑物和办公室的物理移动，源位置和目标位置是相关的。 若要生成工作订单，可能同时需要这两个数据片段，并且它们彼此相关。  
+# <a name="tutorial-extract-contextually-related-data-from-an-utterance"></a>教程：从陈述中提取上下文相关的数据
 
-此应用用于确定在何处将员工从原始位置（大楼和办公室）移到目标位置（大楼和办公室）。 它使用分层实体来确定陈述中的位置。 **分层**实体的用途是根据上下文查找陈述中的相关数据。 
-
-分层实体非常适合此类数据，因为这两个数据片段：
-
-* 是简单实体。
-* 在使用陈述的情况下彼此相关。
-* 使用特别选择的词汇来指示每个位置。 这些词汇的示例包括：from/to（从/到）、leaving/headed to（离开/前往）、away from/toward（离开/前往）。
-* 两个位置往往在同一个陈述中。 
-* 需要由客户端应用作为一个信息单元进行分组和处理。
+在本教程中，基于上下文查找相关的数据片段。 例如，从一个城市转移到另一个城市的原位置和目的地。 可能同时需要这两个数据片段，并且它们彼此相关。  
 
 **本教程介绍如何执行下列操作：**
 
 > [!div class="checklist"]
-> * 使用现有的教程应用
+> * 创建新应用
 > * 添加意向 
 > * 添加包含出发地和目的地子级的位置分层实体
 > * 定型
@@ -43,47 +34,47 @@ ms.locfileid: "53104401"
 
 [!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
-## <a name="use-existing-app"></a>使用现有应用
-继续使用上一个教程中创建的名为 **HumanResources** 的应用。 
+## <a name="hierarchical-data"></a>分层数据
 
-如果没有上一个教程中的 HumanResources 应用，请执行以下步骤：
+此应用确定某位员工从原始城市移动到目的地城市的位置。 它使用分层实体来确定陈述中的位置。 
 
-1.  下载并保存[应用 JSON 文件](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/tutorials/custom-domain-list-HumanResources.json)。
+分层实体非常适合此类数据，因为这两个数据片段、子位置：
 
-2. 将 JSON 导入到新应用中。
+* 是简单实体。
+* 在使用陈述的情况下彼此相关。
+* 使用特别选择的词汇来指示每个实体。 这些词汇的示例包括：from/to（从/到）、leaving/headed to（离开/前往）、away from/toward（离开/前往）。
+* 两个子级往往在同一个陈述中。 
+* 需要由客户端应用作为一个信息单元进行分组和处理。
 
-3. 在“管理”部分的“版本”选项卡上，克隆版本并将其命名为 `hier`。 克隆非常适合用于演练各种 LUIS 功能，且不会影响原始版本。 由于版本名称用作 URL 路由的一部分，因此该名称不能包含任何在 URL 中无效的字符。 
+## <a name="create-a-new-app"></a>创建新应用
 
-## <a name="remove-prebuilt-number-entity-from-app"></a>从应用中删除预生成的数字实体
-若要查看整个陈述并标记分层子级，请[暂时删除预生成的数字实体](luis-prebuilt-entities.md#marking-entities-containing-a-prebuilt-entity-token)。 
+[!INCLUDE [Follow these steps to create a new LUIS app](../../../includes/cognitive-services-luis-create-new-app-steps.md)]
+
+## <a name="create-an-intent-to-move-employees-between-cities"></a>创建在城市之间移动员工的意向
 
 1. [!INCLUDE [Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
 
-2. 在左侧菜单中选择“实体”。
+1. 选择“创建新意向”。 
 
-3. 选中列表中数字实体左侧的复选框。 选择“删除”。 
+1. 在弹出对话框中输入 `MoveEmployeeToCity`，然后选择“完成”。 
 
-## <a name="add-utterances-to-moveemployee-intent"></a>将表述添加到 MoveEmployee 意向
+    ![“创建新意向”对话框的屏幕截图](./media/luis-quickstart-intent-and-hier-entity/create-new-intent-move-employee-to-city.png)
 
-1. 在左侧菜单中选择“意向”。
-
-2. 从意向列表中选择“MoveEmployee”。
-
-3. 添加以下示例陈述：
+1. 将示例陈述添加到意向。
 
     |示例陈述|
     |--|
-    |将 John W. Smith 移**到** a-2345|
-    |要求 Jill Jones 转**到** b-3499|
-    |组织 x23456 **从** hh-2345 移**到** e-0234|
-    |开始文书工作，将 x12345 设置为**离开** a-3459，**前往** f-34567|
-    |让 425-555-0000 **离开** g-2323，**前往** hh-2345|
+    |将 John W.Smith 从西雅图派往达拉斯|
+    |将 Jill Jones 从西雅图调至开罗|
+    |将 John Jackson 从坦帕调至亚特兰大 |
+    |将 Debra Doughtery 从达拉斯派往俄克拉荷马|
+    |将 Jill Jones 从开罗派往坦帕|
+    |将 Alice Anderson 从雷德蒙德调至奥克兰|
+    |将 Carl Chamerlin 从旧金山派往雷德蒙德|
+    |将 Steve Standish 从圣地亚哥调至贝尔维尤 |
+    |将 Tanner Thompson 从堪萨斯城派往芝加哥|
 
     [ ![LUIS 的屏幕截图，在 MoveEmployee 意向中有新陈述](./media/luis-quickstart-intent-and-hier-entity/hr-enter-utterances.png)](./media/luis-quickstart-intent-and-hier-entity/hr-enter-utterances.png#lightbox)
-
-    在[列表实体](luis-quickstart-intent-and-list-entity.md)教程中，通过姓名、电子邮件地址、电话分机、移动电话号码或美国联邦社会安全号码指定了某个员工。 这些员工编号用在陈述中。 前面的示例陈述包括了用于表示原始位置和目标位置（以粗体标记）的不同方式。 一些陈述特意只包含目标位置。 这有助于 LUIS 了解在不指定原始位置的情况下，如何在陈述中放置这些位置。     
-
-    [!INCLUDE [Do not use too few utterances](../../../includes/cognitive-services-luis-too-few-example-utterances.md)]  
 
 ## <a name="create-a-location-entity"></a>创建位置实体
 LUIS 需要通过在陈述中标记原始位置和目标位置来了解什么是位置。 如需在令牌（原始）视图中查看陈述，请在标记为“实体视图”的陈述上方的栏中选择切换。 切换开关以后，此控件会被标记为“令牌视图”。
@@ -91,169 +82,103 @@ LUIS 需要通过在陈述中标记原始位置和目标位置来了解什么是
 考虑以下陈述：
 
 ```json
-mv Jill Jones from a-2349 to b-1298
+move John W. Smith leaving Seattle headed to Dallas
 ```
 
-该陈述中指定了两个位置：`a-2349` 和 `b-1298`。 假定字母对应于大楼名称，数字表示该大楼中的办公室。 分组时，可以将它们都作为分层实体 `Locations` 的子级，因为需要从陈述中提取这两种数据片段来完成客户端应用程序中的请求，而且这两种数据片段彼此相关。 
+该陈述中指定了两个位置：`Seattle` 和 `Dallas`。 它们都作为分层实体 `Location` 的子级，因为需要从陈述中提取这两种数据片段来完成客户端应用程序中的请求，而且这两种数据片段彼此相关。 
  
 如果只存在分层实体的一个子级（出发地或目的地），仍会提取该子级。 不需要找到所有子级即可提取一个或一些子级。 
 
-1. 在陈述 `Displace 425-555-0000 away from g-2323 toward hh-2345` 中，选择单词 `g-2323`。 此时会出现下拉菜单，其顶部有一个文本框。 在文本框中输入实体名称 `Locations`，然后在下拉菜单中选择“创建新实体”。 
+1. 在陈述 `move John W. Smith leaving Seattle headed to Dallas` 中，选择单词 `Seattle`。 此时会出现下拉菜单，其顶部有一个文本框。 在文本框中输入实体名称 `Location`，然后在下拉菜单中选择“创建新实体”。 
 
-    [![在意向页上创建新实体的屏幕截图](media/luis-quickstart-intent-and-hier-entity/hr-create-new-entity-1.png "Screenshot of creating new entity on intent page")](media/luis-quickstart-intent-and-hier-entity/hr-create-new-entity-1.png#lightbox)
+    [![在意向页上创建新实体的屏幕截图](media/luis-quickstart-intent-and-hier-entity/create-location-hierarchical-entity-from-example-utterance.png "Screenshot of creating new entity on intent page")](media/luis-quickstart-intent-and-hier-entity/create-location-hierarchical-entity-from-example-utterance.png#lightbox)
 
-2. 在弹出窗口中，选择包含 `Origin` 和 `Destination` 子实体的“分层”实体类型。 选择“完成”。
+1. 在弹出窗口中，选择包含 `Origin` 和 `Destination` 子实体的“分层”实体类型。 选择“完成”。
 
     ![新建位置实体的实体创建弹出对话框的屏幕截图](media/luis-quickstart-intent-and-hier-entity/hr-create-new-entity-2.png "Screenshot of entity creation pop-up dialog for new Location entity")
 
-3. `g-2323` 的标签已标记为 `Locations`，因为 LUIS 不知道名词是出发地还是目的地，或者两者都不是。 依次选择 `g-2323`、“位置”，遵循菜单操作，然后选择 `Origin`。
+1. `Seattle` 的标签已标记为 `Location`，因为 LUIS 不知道名词是出发地还是目的地，或者两者都不是。 依次选择 `Seattle`、“位置”，遵循菜单操作，然后选择 `Origin`。
 
-    [![实体标签弹出对话框的屏幕截图，该对话框用于更改位置实体子级](media/luis-quickstart-intent-and-hier-entity/hr-label-entity.png "Screenshot of entity labeling pop-up dialog to change locations entity child")](media/luis-quickstart-intent-and-hier-entity/hr-label-entity.png#lightbox)
+    [![实体标签弹出对话框的屏幕截图，该对话框用于更改位置实体子级](media/luis-quickstart-intent-and-hier-entity/choose-hierarchical-child-entity-from-example-utterance.png "Screenshot of entity labeling pop-up dialog to change locations entity child")](media/luis-quickstart-intent-and-hier-entity/choose-hierarchical-child-entity-from-example-utterance.png#lightbox)
 
-5. 标记所有其他陈述中的其他位置，方法是：选择陈述中的大楼和办公室，然后选择“位置”，再遵循右侧的菜单选择 `Origin` 或 `Destination`。 所有位置都标记以后，“令牌视图”中的陈述开始显示出某种模式。 
+1. 在其他所有陈述中标记其他位置。 所有位置都标记以后，陈述开始显示出某种模式。 
 
-    [![在陈述中标记的位置实体的屏幕截图](media/luis-quickstart-intent-and-hier-entity/hr-entities-labeled.png "Screenshot of Locations entity labeled in utterances")](media/luis-quickstart-intent-and-hier-entity/hr-entities-labeled.png#lightbox)
+    [![在陈述中标记的位置实体的屏幕截图](media/luis-quickstart-intent-and-hier-entity/all-intents-marked-with-origin-and-destination-location.png "Screenshot of Locations entity labeled in utterances")](media/luis-quickstart-intent-and-hier-entity/all-intents-marked-with-origin-and-destination-location.png#lightbox)
 
-## <a name="add-prebuilt-number-entity-to-app"></a>向应用添加预生成的数字实体
-将预生成的数字实体添加回应用程序。
+    红色下划线表示 LUIS 对该实体不太确信。 训练可以解决这一问题。 
 
-1. 在左侧导航菜单中选择“实体”。
+## <a name="add-example-utterances-to-the-none-intent"></a>将话语示例添加到 None 意向 
 
-2. 选择“添加预生成的实体”按钮。
+[!INCLUDE [Follow these steps to add the None intent to the app](../../../includes/cognitive-services-luis-create-the-none-intent.md)]
 
-3. 从预生成的实体的列表中选择“数字”，然后选择“完成”。
-
-    ![在“预生成的实体”对话框中选择的数字的屏幕截图](./media/luis-quickstart-intent-and-hier-entity/hr-add-number-back-ddl.png)
-
-## <a name="train-the-luis-app"></a>训练 LUIS 应用
+## <a name="train-the-app-so-the-changes-to-the-intent-can-be-tested"></a>训练应用，以便可以测试对意向所做的更改 
 
 [!INCLUDE [LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
 
-## <a name="publish-the-app-to-get-the-endpoint-url"></a>发布应用以获取终结点 URL
+## <a name="publish-the-app-so-the-trained-model-is-queryable-from-the-endpoint"></a>发布应用，以便可以从终结点查询已训练的模型
 
 [!INCLUDE [LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)]
 
-## <a name="query-the-endpoint-with-a-different-utterance"></a>使用不同的话语查询终结点
+## <a name="get-intent-and-entity-prediction-from-endpoint"></a>从终结点获取意向和实体预测结果
 
 1. [!INCLUDE [LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
 
 
-2. 将光标定位到地址栏中 URL 的末尾，并输入 `Please relocation jill-jones@mycompany.com from x-2345 to g-23456`。 最后一个查询字符串参数为 `q`，表示陈述**查询**。 此话语不同于标记的任何话语，因此，它非常适合用于测试，测试结果应返回包含所提取的分层实体的 `MoveEmployee` 意向。
+1. 将光标定位到地址栏中 URL 的末尾，并输入 `Please move Carl Chamerlin from Tampa to Portland`。 最后一个查询字符串参数为 `q`，表示陈述**查询**。 此话语不同于标记的任何话语，因此，它非常适合用于测试，测试结果应返回包含所提取的分层实体的 `MoveEmployee` 意向。
 
     ```json
     {
-      "query": "Please relocation jill-jones@mycompany.com from x-2345 to g-23456",
+      "query": "Please move Carl Chamerlin from Tampa to Portland",
       "topScoringIntent": {
-        "intent": "MoveEmployee",
-        "score": 0.9966052
+        "intent": "MoveEmployeeToCity",
+        "score": 0.979823351
       },
       "intents": [
         {
-          "intent": "MoveEmployee",
-          "score": 0.9966052
-        },
-        {
-          "intent": "Utilities.Stop",
-          "score": 0.0325253047
-        },
-        {
-          "intent": "FindForm",
-          "score": 0.006137873
-        },
-        {
-          "intent": "GetJobInformation",
-          "score": 0.00462633232
-        },
-        {
-          "intent": "Utilities.StartOver",
-          "score": 0.00415637763
-        },
-        {
-          "intent": "ApplyForJob",
-          "score": 0.00382325822
-        },
-        {
-          "intent": "Utilities.Help",
-          "score": 0.00249120337
+          "intent": "MoveEmployeeToCity",
+          "score": 0.979823351
         },
         {
           "intent": "None",
-          "score": 0.00130756292
-        },
-        {
-          "intent": "Utilities.Cancel",
-          "score": 0.00119622645
-        },
-        {
-          "intent": "Utilities.Confirm",
-          "score": 1.26910036E-05
+          "score": 0.0156363435
         }
       ],
       "entities": [
         {
-          "entity": "jill - jones @ mycompany . com",
-          "type": "Employee",
-          "startIndex": 18,
-          "endIndex": 41,
-          "resolution": {
-            "values": [
-              "Employee-45612"
-            ]
-          }
+          "entity": "portland",
+          "type": "Location::Destination",
+          "startIndex": 41,
+          "endIndex": 48,
+          "score": 0.6044041
         },
         {
-          "entity": "x - 2345",
-          "type": "Locations::Origin",
-          "startIndex": 48,
-          "endIndex": 53,
-          "score": 0.8520272
-        },
-        {
-          "entity": "g - 23456",
-          "type": "Locations::Destination",
-          "startIndex": 58,
-          "endIndex": 64,
-          "score": 0.974032
-        },
-        {
-          "entity": "-2345",
-          "type": "builtin.number",
-          "startIndex": 49,
-          "endIndex": 53,
-          "resolution": {
-            "value": "-2345"
-          }
-        },
-        {
-          "entity": "-23456",
-          "type": "builtin.number",
-          "startIndex": 59,
-          "endIndex": 64,
-          "resolution": {
-            "value": "-23456"
-          }
+          "entity": "tampa",
+          "type": "Location::Origin",
+          "startIndex": 32,
+          "endIndex": 36,
+          "score": 0.739491045
         }
       ]
     }
     ```
     
-    预测了正确的意向，并且实体数组在对应的 **entity** 属性中同时具有源和目标值。
+    预测了正确的意向，并且实体数组在对应的“entities”属性中同时具有原位置和目的地值。
     
-
-## <a name="could-you-have-used-a-regular-expression-for-each-location"></a>是否可以为每个位置使用正则表达式？
-是的，可以创建包含原始位置和目标位置角色的正则表达式实体，然后将其用在某个模式中。
-
-此示例中的位置（例如 `a-1234`）遵循特定的格式，即以一到两个字母开头，后接破折号，然后是一系列数字（4 到 5 个）。 可以将该数据描述为一个正则表达式实体，每个位置有一个角色。 角色仅适用于模式。 可以根据这些陈述创建模式，然后针对位置格式创建一个正则表达式，再将其添加到模式。 
-
 ## <a name="clean-up-resources"></a>清理资源
 
 [!INCLUDE [LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
 
-## <a name="hierarchical-entities-versus-roles"></a>分层实体与角色
+## <a name="related-information"></a>相关信息
 
-有关详细信息，请参阅[角色与分层实体](luis-concept-roles.md#roles-versus-hierarchical-entities)。
+* [分层实体](luis-concept-entity-types.md)概念信息
+* [如何训练](luis-how-to-train.md)
+* [如何发布](luis-how-to-publish-app.md)
+* [如何在 LUIS 门户中测试](luis-interactive-test.md)
+* [角色与分层实体](luis-concept-roles.md#roles-versus-hierarchical-entities)
+* [使用模式改进预测](luis-concept-patterns.md)
 
 ## <a name="next-steps"></a>后续步骤
+
 在本教程中，已创建了一个新的意向，并为源位置和目标位置的根据上下文学习的数据添加了示例陈述。 在训练并发布应用后，客户端应用程序可以使用该信息来创建包含相关信息的移动票证。
 
 > [!div class="nextstepaction"] 

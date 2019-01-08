@@ -1,9 +1,9 @@
 ---
-title: 面向开发人员的 Azure Batch 概述 | Microsoft 文档
+title: 面向开发人员的概述 - Azure Batch | Microsoft Docs
 description: 从开发的角度了解 Batch 服务的功能及其 API。
 services: batch
 documentationcenter: .net
-author: dlepow
+author: laurenhughes
 manager: jeconnoc
 editor: ''
 ms.assetid: 416b95f8-2d7b-4111-8012-679b0f60d204
@@ -12,15 +12,15 @@ ms.devlang: multiple
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-compute
-ms.date: 08/22/2018
-ms.author: danlep
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8b6e543a4835410368e752e70e7e8cb6d8805c0e
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.date: 12/18/2018
+ms.author: lahugh
+ms.custom: seodec18
+ms.openlocfilehash: f844b460e5fc6548a17b93038d1232fe61483018
+ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45735573"
+ms.lasthandoff: 12/22/2018
+ms.locfileid: "53754061"
 ---
 # <a name="develop-large-scale-parallel-compute-solutions-with-batch"></a>使用 Batch 开发大规模并行计算解决方案
 
@@ -259,12 +259,12 @@ Azure Batch 池构建在核心 Azure 计算平台的顶层。 它们提供大规
     如果任务需要运行不在节点的 `PATH` 中的应用程序或脚本，或在引用环境变量，请在任务命令行中显式调用 shell。
 * **资源文件** 。 在执行任务的命令行之前，这些文件将自动从 Azure 存储帐户中的 Blob 存储复制到节点。 有关详细信息，请参阅下面的[启动任务](#start-task)与[文件和目录](#files-and-directories)部分。
 * 应用程序所需的 **环境变量** 。 有关详细信息，请参阅下面的 [任务的环境设置](#environment-settings-for-tasks) 部分。
-* 执行任务所依据的**约束**。 例如，约束包括允许运行任务的最长时间、重试失败任务的次数上限，以及文件保留在任务工作目录中的最长时间。
+* 执行任务所依据的 **约束** 。 例如，约束包括允许运行任务的最长时间、重试失败任务的次数上限，以及文件保留在任务工作目录中的最长时间。
 * **Application packages** 。 [应用程序包](#application-packages) 提供任务运行的应用程序的简化部署和版本控制。 在共享池的环境中，任务级应用程序包特别有用：不同的作业在一个池上运行，完成某个作业时不删除该池。 如果作业中的任务少于池中的节点，任务应用程序包可以减少数据传输，因为应用程序只部署到运行任务的节点。
 * Docker 中心的**容器映像**引用，或者专用注册表和其他设置，用于创建 Docker 容器，其中的任务运行在节点上。 如果池使用容器配置进行设置，则仅指定此信息。
 
 > [!NOTE]
-> 最长任务生存期（从添加到作业时算起到任务完成时结束）为 7 天。 已完成的任务会无限期保存；最长生存期内未完成的任务的数据不可访问。
+> 最长任务生存期（从添加到作业时算起到任务完成时结束）为 180 天。 已完成的任务保存 7 天；最长生存期内未完成的任务的数据不可访问。
 
 除了可以定义在节点上运行计算的任务以外，Batch 服务还提供以下特殊任务：
 
@@ -355,7 +355,7 @@ Batch 服务在节点上公开文件系统的一部分作为 *根目录*。 任�
 
 ![计算节点目录结构][1]
 
-* **共享**：此目录允许对节点上运行的 *所有* 任务进行读取/写入访问。 在节点上运行的任何任务都可以创建、读取、更新和删除此目录中的文件。 任务可通过引用 `AZ_BATCH_NODE_SHARED_DIR` 环境变量来访问此目录。
+* **共享**：此目录允许对节点上运行的“所有”任务进行读取/写入访问。 在节点上运行的任何任务都可以创建、读取、更新和删除此目录中的文件。 任务可通过引用 `AZ_BATCH_NODE_SHARED_DIR` 环境变量来访问此目录。
 * **启动**：启动任务使用此目录作为它的工作目录。 由启动任务下载到的节点所有文件都存储在此处。 启动任务可以创建、读取、更新和删除此目录下的文件。 任务可通过引用 `AZ_BATCH_NODE_STARTUP_DIR` 环境变量来访问此目录。
 * **任务**：为节点上运行的每个任务创建一个目录。 可通过引用 `AZ_BATCH_TASK_DIR` 环境变量来访问该目录。
 
@@ -508,7 +508,7 @@ Batch 可以处理使用 Azure 存储将应用程序包存储及部署到计算�
 * 了解适用于生成批处理解决方案的[批处理 API 和工具](batch-apis-tools.md)。
 * 了解使用[批处理 .NET 客户端库](quick-run-dotnet.md)或 [Python](quick-run-python.md) 开发支持批处理的应用程序的基本概念。 这些快速入门介绍了使用 Batch 服务在多个计算节点上执行工作负荷的示例应用程序，并说明了如何使用 Azure 存储进行工作负荷文件暂存和检索。
 * 下载并安装 [Batch Explorer][batch_labs]，供开发 Batch 解决方案时使用。 借助 Batch Explorer 来创建、调试和监视 Azure Batch 应用程序。 
-* 请参阅社区资源，包括 [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-batch)、[Batch 社区存储库](https://github.com/Azure/Batch)和 MSDN 上的 [Azure Batch 论坛][batch_forum]。 
+* 请参阅社区资源，包括 [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-batch)、[Batch 社区存储库](https://github.com/Azure/Batch)和 MSDN 上的 [Azure Batch 论坛][batch_forum]。 
 
 [1]: ./media/batch-api-basics/node-folder-structure.png
 

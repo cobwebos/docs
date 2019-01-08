@@ -4,17 +4,17 @@ description: 本快速入门介绍如何创建 IoT Edge 设备，然后从 Azure
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 10/14/2018
+ms.date: 12/31/2018
 ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 6757438512c03ad7b5a80c08babf5a37417dbe49
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: af95c2a5182a8adca9aeb40f047c7767413b9b1c
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53339495"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53973656"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-linux-x64-device"></a>快速入门：将第一个 IoT Edge 模块部署到 Linux x64 设备
 
@@ -61,11 +61,13 @@ IoT Edge 设备：
    az vm create --resource-group IoTEdgeResources --name EdgeVM --image Canonical:UbuntuServer:16.04-LTS:latest --admin-username azureuser --generate-ssh-keys --size Standard_DS1_v2
    ```
 
+   可能需要几分钟才能创建并启动新的虚拟机。 
+
    创建新的虚拟机时，请记下在 create 命令的输出中提供的 **publicIpAddress**。 在本快速入门中，稍后会使用此公共 IP 地址连接到虚拟机。
 
 ## <a name="create-an-iot-hub"></a>创建 IoT 中心
 
-通过 Azure CLI 创建 IoT 中心，启动快速入门。
+使用 Azure CLI 创建 IoT 中心，启动快速入门。
 
 ![关系图 - 在云中创建 IoT 中心](./media/quickstart-linux/create-iot-hub.png)
 
@@ -102,7 +104,9 @@ IoT Edge 设备：
    az iot hub device-identity show-connection-string --device-id myEdgeDevice --hub-name {hub_name}
    ```
 
-3. 复制并保存连接字符串。 在下一部分中配置 IoT Edge 运行时时将用到此值。 
+3. 复制 JSON 输出中的连接字符串并保存。 在下一部分中配置 IoT Edge 运行时时将用到此值。
+
+   ![从 CLI 输出中检索连接字符串](./media/quickstart/retrieve-connection-string.png)
 
 ## <a name="install-and-start-the-iot-edge-runtime"></a>安装和启动 IoT Edge 运行时
 
@@ -115,7 +119,7 @@ IoT Edge 运行时部署在所有 IoT Edge 设备上。 它有三个组件。 �
 
 ### <a name="connect-to-your-iot-edge-device"></a>连接到 IoT Edge 设备
 
-此部分的步骤全都在 IoT Edge 设备上执行。 如果使用自己的计算机作为 IoT Edge 设备，则可跳过此部分。 如果使用虚拟机或辅助硬件，则现在就可以连接到该虚拟机或辅助硬件。 
+此部分的步骤全都在 IoT Edge 设备上执行。 如果使用自己的计算机作为 IoT Edge 设备，则可以转到下一部分。 如果使用虚拟机或辅助硬件，则现在就可以连接到该虚拟机或辅助硬件。 
 
 如果为本快速入门创建了 Azure 虚拟机，请检索由创建命令输出的公共 IP 地址。 也可在 Azure 门户中虚拟机的概览页上找到公共 IP 地址。 使用以下命令连接到虚拟机。 将 **{publicIpAddress}** 替换为你的计算机的地址。 
 
@@ -194,12 +198,12 @@ IoT Edge 运行时是一组容器，而部署到 IoT Edge 设备的逻辑则以�
    sudo systemctl restart iotedge
    ```
 
->[!TIP]
->需要提升的权限才能运行 `iotedge` 命令。 安装 IoT Edge 运行时后从计算机中注销并第一次重新登录后，你的权限将自动更新。 在此之前，请在命令前使用 **sudo**。 
-
 ### <a name="view-the-iot-edge-runtime-status"></a>查看 IoT Edge 运行时状态
 
 验证是否已成功安装并配置运行时。
+
+>[!TIP]
+>需要提升的权限才能运行 `iotedge` 命令。 安装 IoT Edge 运行时后从计算机中注销并第一次重新登录后，你的权限将自动更新。 在此之前，请在命令前使用 **sudo**。 
 
 1. 查看 Edge 安全守护程序是否正作为系统服务运行。
 
@@ -244,15 +248,18 @@ IoT Edge 设备现在已配置好。 它可以运行云部署型模块了。
 
    ![查看设备上的三个模块](./media/quickstart-linux/iotedge-list-2.png)
 
-查看从 tempSensor 模块发送的消息：
+查看从温度传感器模块发送的消息：
 
    ```bash
-   sudo iotedge logs tempSensor -f
+   sudo iotedge logs SimulatedTemperatureSensor -f
    ```
 
-![查看模块中的数据](./media/quickstart-linux/iotedge-logs.png)
+   >[!TIP]
+   >引用模块名称时，IoT Edge 命令区分大小写。
 
-如果在日志中看到的最后一行是 `Using transport Mqtt_Tcp_Only`，则说明温度传感器模块可能正等着连接到 Edge 中心。 尝试终止该模块，然后让 Edge 代理重启它。 可以使用 `sudo docker stop tempSensor` 命令来终止它。
+   ![查看模块中的数据](./media/quickstart-linux/iotedge-logs.png)
+
+如果在日志中看到的最后一行是“使用传输 Mqtt_Tcp_Only”，则说明温度传感器模块可能正等待连接到 Edge 中心。 尝试终止该模块，然后让 Edge 代理重启它。 可以使用 `sudo docker stop SimulatedTemperatureSensor` 命令来终止它。
 
 也可以使用 [Visual Studio Code 的 Azure IoT Toolkit 扩展](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit)（以前称为 Azure IoT 工具包扩展）查看到达 IoT 中心的消息。 
 
@@ -286,10 +293,10 @@ IoT Edge 设备现在已配置好。 它可以运行云部署型模块了。
    sudo docker ps -a
    ```
 
-通过 IoT Edge 运行时删除在设备上创建的容器。 更改 tempSensor 容器的名称（如果使用了其他名称）。 
+通过 IoT Edge 运行时删除在设备上创建的容器。 
 
    ```bash
-   sudo docker rm -f tempSensor
+   sudo docker rm -f SimulatedTemperatureSensor
    sudo docker rm -f edgeHub
    sudo docker rm -f edgeAgent
    ```

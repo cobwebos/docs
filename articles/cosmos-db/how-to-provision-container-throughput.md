@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 11/06/2018
 ms.author: mjbrown
-ms.openlocfilehash: dd47976bca75569142f1912eee06c66061e92fa6
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 4c17c972a39cd336ab33f6be8bd3db5b8f0f2c92
+ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53097659"
+ms.lasthandoff: 12/28/2018
+ms.locfileid: "53808411"
 ---
 # <a name="provision-throughput-for-an-azure-cosmos-db-container"></a>为 Azure Cosmos DB 容器预配吞吐量
 
@@ -47,7 +47,7 @@ az cosmosdb collection create \
     --throughput 1000
 ```
 
-如果正在为 MongoDB API 帐户预配吞吐量，请使用“/myShardKey”作为分区键路径，在为 Cassandra API 帐户预配吞吐量时，请使用“/myPrimaryKey”作为分区键路径。
+如果正在为 Cosmos 帐户（使用 Azure Cosmos DB 的用于 MongoDB 的 API 配置）预配吞吐量，请使用“/myShardKey”作为分区键路径，在为针对 Cassandra API 配置的 Cosmos 帐户预配吞吐量时，请使用“/myPrimaryKey”作为分区键路径。
 
 ## <a name="provision-throughput-using-net-sdk"></a>使用 .NET SDK 预配吞吐量
 

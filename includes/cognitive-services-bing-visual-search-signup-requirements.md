@@ -1,0 +1,22 @@
+---
+author: aahill
+ms.author: aahi
+ms.service: cognitive-services
+ms.topic: include
+ms.date: 12/18/2018
+ms.openlocfilehash: 5affeca1153b225563eac0a8e29f1e36e761df2a
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53745187"
+---
+必须有可以访问必应搜索 API 的[认知服务 API 帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)。 在继续之前，你将会需要在 S9 价格层开始订阅后提供的访问密钥，如[认知服务定价 - 必应搜索 API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/) 中所示。 
+
+若要在 Azure 门户中开始订阅，请执行以下操作：
+1. 在 Azure 门户顶部显示 `Search resources, services, and docs` 的文本框中输入“BingSearchV7”。  
+2. 在“市场”下的下拉列表中，选择 `Bing Search v7`。
+3. 输入新资源的 `Name`。
+4. 选择 `Pay-As-You-Go` 订阅。
+5. 选择 `S9` 定价层。
+6. 单击 `Enable` 即可开始订阅。

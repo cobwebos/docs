@@ -2,25 +2,18 @@
 title: 将 SQL Server 数据库备份到 Azure | Microsoft Docs
 description: 本教程介绍如何将 SQL Server 备份到 Azure， 此外还介绍 SQL Server 的恢复。
 services: backup
-documentationcenter: ''
 author: rayne-wiselman
 manager: carmonm
-editor: ''
-keywords: ''
-ms.assetid: ''
 ms.service: backup
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
-ms.topic: article
-ms.date: 08/02/2018
-ms.author: anuragm
-ms.custom: ''
-ms.openlocfilehash: e2e6742fb3eda0523c7333451e836beb069e57ca
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.topic: tutorial
+ms.date: 12/21/2018
+ms.author: raynew
+ms.openlocfilehash: 50085336c59f2284f357e32b875eae08ff90d30f
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53410357"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53790145"
 ---
 # <a name="back-up-sql-server-databases-to-azure"></a>将 SQL Server 数据库备份到 Azure
 
@@ -44,9 +37,9 @@ SQL Server 数据库属于关键工作负荷，要求较低的恢复点目标 (R
 - SQL 虚拟机 (VM) 需要建立 Internet 连接才能访问 Azure 公共 IP 地址。 有关详细信息，请参阅[建立网络连接](backup-azure-sql-database.md#establish-network-connectivity)。
 - 在一个恢复服务保管库中最多可以保护 2,000 个 SQL 数据库。 应将其他 SQL 数据库存储在单独的恢复服务保管库中。
 - [分布式可用性组的备份](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/distributed-availability-groups?view=sql-server-2017)存在限制。
-- 不支持 SQL Server Always On 故障转移群集实例 (FCI)。
+- 不支持对 SQL Server Always On 故障转移群集实例 (FCI) 进行备份。
 - 使用 Azure 门户配置 Azure 备份，以保护 SQL Server 数据库。 目前不支持 Azure PowerShell、Azure CLI 和 REST API。
-- 不支持对镜像数据库、数据库快照和 FCI 下的数据库执行备份/还原操作。
+- 不支持对 FCI 镜像数据库、数据库快照和数据库执行备份/还原操作。
 - 无法保护包含大量文件的数据库。 支持的最大文件数不是一个很确定的数字，因为它不仅取决于文件数，而且取决于文件的路径长度。 不过，这种情况不太常见。 我们会构建一个解决方案来处理这方面的问题。
 
 有关支持/不支持的方案的详细信息，请参阅[常见问题解答部分](https://docs.microsoft.com/azure/backup/backup-azure-sql-database#faq)。
@@ -136,7 +129,7 @@ SQL Server 数据库属于关键工作负荷，要求较低的恢复点目标 (R
 
 ## <a name="set-permissions-for-non-marketplace-sql-vms"></a>设置非市场 SQL VM 的权限
 
-若要备份虚拟机，Azure 备份要求安装 **AzureBackupWindowsWorkload** 扩展。 如果使用 Azure 市场虚拟机，请转到[发现 SQL Server 数据库](backup-azure-sql-database.md#discover-sql-server-databases)。 如果托管 SQL 数据库的虚拟机不是从 Azure 市场创建的，请完成以下过程来安装扩展并设置相应的权限。 除了 **AzureBackupWindowsWorkload** 扩展以外，Azure 备份还需要 SQL sysadmin 特权才能保护 SQL 数据库。 为了发现虚拟机上的数据库，Azure 备份会创建帐户 **NT Service\AzureWLBackupPluginSvc**。 此帐户用于备份和还原，需要拥有 SQL sysadmin 权限。 另外，Azure 备份会利用 **NT AUTHORITY\SYSTEM** 帐户进行 DB 发现/查询，因此此帐户必须是 SQL 上的公共登录名。
+若要备份虚拟机，Azure 备份要求安装 **AzureBackupWindowsWorkload** 扩展。 如果使用 Azure 市场虚拟机，请转到[发现 SQL Server 数据库](backup-azure-sql-database.md#discover-sql-server-databases)。 如果托管 SQL 数据库的虚拟机不是从 Azure 市场创建的，请完成以下过程来安装扩展并设置相应的权限。 除了 **AzureBackupWindowsWorkload** 扩展以外，Azure 备份还需要 SQL sysadmin 特权才能保护 SQL 数据库。 为了发现虚拟机上的数据库，Azure 备份会创建帐户 NT SERVICE\AzureWLBackupPluginSvc。 此帐户用于备份和还原，需要拥有 SQL sysadmin 权限。 另外，Azure 备份会利用 **NT AUTHORITY\SYSTEM** 帐户进行 DB 发现/查询，因此此帐户必须是 SQL 上的公共登录名。
 
 配置权限：
 
@@ -182,7 +175,7 @@ SQL Server 数据库属于关键工作负荷，要求较低的恢复点目标 (R
 
     ![在“登录名 - 新建”对话框中选择“搜索”](./media/backup-azure-sql-database/new-login-search.png)
 
-3. 在虚拟机注册和 SQL 发现阶段已创建 Windows 虚拟服务帐户 **NT Service\AzureWLBackupPluginSvc**。 请输入“输入要选择的对象名称”对话框中显示的帐户名。 选择“检查名称”以解析名称。
+3. 在虚拟机注册和 SQL 发现阶段已创建 Windows 虚拟服务帐户 NT SSERVICE\AzureWLBackupPluginSvc。 请输入“输入要选择的对象名称”对话框中显示的帐户名。 选择“检查名称”以解析名称。
 
     ![选择“检查名称”以解析未知的服务名称](./media/backup-azure-sql-database/check-name.png)
 

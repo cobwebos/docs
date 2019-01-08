@@ -4,15 +4,15 @@ description: 介绍如何发现和评估要使用 Azure Migrate 迁移到 Azure 
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: tutorial
-ms.date: 12/05/2018
+ms.date: 01/02/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 04bc43093a6edc66cdbb661a94989f5980445027
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 8971bba1e25a8e87ed57463dcc9b013fea56a0ff
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53257805"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53976828"
 ---
 # <a name="discover-and-assess-on-premises-vmware-vms-for-migration-to-azure"></a>发现和评估要迁移到 Azure 的本地 VMware VM
 
@@ -58,8 +58,9 @@ Azure Migrate 需要访问 VMware 服务器才能自动发现用于评估的 VM�
 
 **地域** | **存储位置**
 --- | ---
-美国 | 美国中西部或美国东部
 Azure Government  | 美国政府弗吉尼亚州
+欧洲 | 北欧或西欧
+美国 | 美国东部或美国中西部
 
 ![Azure Migrate](./media/tutorial-assessment-vmware/project-1.png)
 
@@ -76,13 +77,13 @@ Azure Migrate 会创建一个称作收集器设备的本地 VM。 此 VM 可发�
     > [!NOTE]
     > 一次性发现设备现在已弃用，因为此方法依赖于 vCenter Server 针对性能数据点可用性的统计信息设置并且收集平均性能计数器，这导致用于迁移到 Azure 的 VM 大小不足。
 
-    **即时满足条件：** 使用持续发现设备，一旦发现完成（花费几个小时，具体取决于 VM 数量），你就可以立即创建评估。 由于性能数据收集在你启动发现时开始，如果你希望即时满足条件，则应当将评估中的大小调整条件选择为“按本地”。 对于基于性能的评估，建议在启动发现后等待至少一天，以便获得可靠的大小建议。
+    **即时满足条件：** 使用持续发现设备，发现完成后（需花费几个小时，具体取决于 VM 数量），可立即创建评估。 由于性能数据收集在你启动发现时开始，如果你希望即时满足条件，则应当将评估中的大小调整条件选择为“按本地”。 对于基于性能的评估，建议在启动发现后等待至少一天，以便获得可靠的大小建议。
 
     该设备仅连续收集性能数据，它不会检测本地环境中的任何配置更改（即 VM 添加、删除、磁盘添加等）。 如果本地环境中存在配置更改，可以执行以下操作以在门户中反映更改：
 
-    - 添加项（VM、磁盘、核心等）：若要在 Azure 门户中反映这些更改，可以从设备停止发现，然后重新启动设备。 这可确保在 Azure Migrate 项目中更新更改。
+    - 添加项（VM、磁盘、核心等）：若要在 Azure 门户中反映这些更改，可以从设备停止发现，然后重启发现。 这可确保在 Azure Migrate 项目中更新更改。
 
-    - 删除 VM：由于设备的设计方式，即使停止并启动发现，也不会反映 VM 的删除。 这是因为后续发现的数据会追加到较旧的发现后，而不是进行覆盖。 在这种情况下，可以通过从组中删除 VM 并重新计算评估来直接忽略门户中的 VM。
+    - 删除 VM：由于设备的设计方式，即使停止并启动发现，也不会反映出 VM 已删除这一更改。 这是因为后续发现的数据会追加到较旧的发现后，而不是进行覆盖。 在这种情况下，可以通过从组中删除 VM 并重新计算评估来直接忽略门户中的 VM。
 
 
 3. 在“复制项目凭据”中，复制项目 ID 和密钥。 在配置收集器时要使用这些信息。
@@ -253,7 +254,7 @@ Azure Migrate 会创建一个称作收集器设备的本地 VM。 此 VM 可发�
 
 #### <a name="confidence-rating"></a>置信度分级
 
-在 Azure Migrate 中进行的每个基于性能的评估都会与置信度分级相关联。置信度分级分为 1 星到 5 星（1 星表示置信度最低，5 星表示置信度最高）。 为评估分配置信度时，会考虑到进行评估计算时所需数据点的可用性。 对评估的置信度分级可以用来评估 Azure Migrate 提供的大小建议的可靠性。 置信度分级不适用于本地评估。
+在 Azure Migrate 中进行的每个基于性能的评估都会与置信度分级相关联。置信度分级分为 1 星到 5 星（1 星表示置信度最低，5 星表示置信度最高）。 为评估分配置信度时，会考虑到进行评估计算时所需数据点的可用性。 对评估的置信度分级可以用来评估 Azure Migrate 提供的大小建议的可靠性。 置信度分级不适用于“按原样”本地评估。
 
 对于基于性能的大小调整，Azure Migrate 需要 VM 的 CPU 和内存的利用率数据。 此外，对于每个附加到 VM 的磁盘，它需要磁盘 IOPS 和吞吐量数据。 同样，对于每个附加到 VM 的网络适配器，Azure Migrate 需要网络流入/流出量才能执行基于性能的大小调整。 如果上述利用率数据在 vCenter Server 中均不可用，则 Azure Migrate 提供的大小建议可能不可靠。 根据可用数据点的百分比，提供评估的置信度分级，如下所示：
 

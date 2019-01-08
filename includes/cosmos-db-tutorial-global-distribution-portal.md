@@ -2,25 +2,19 @@
 title: Azure Cosmos DB 全局分发
 description: 了解如何在 Azure 门户中使用 Azure Cosmos DB 全局复制数据
 services: cosmos-db
-author: SnehaGunda
+author: rimman
 ms.service: cosmos-db
 ms.topic: include
-ms.date: 03/26/2018
-ms.author: sngun
+ms.date: 12/26/2018
+ms.author: rimman
 ms.custom: include file
-ms.openlocfilehash: fb9418d47d2888467e1c1c40862833029111b75b
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 751571820d52c003a7e740bd63af8c9d9e071c7a
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38747513"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53796107"
 ---
-可以通过以下视频了解 Azure Cosmos DB 全局分发，在该视频中 Azure Cosmos DB 项目经理 Andrew Liu 介绍了全局分发功能。
-
->[!VIDEO https://www.youtube.com/embed/1D06yjTVxt8]
-
-有关 Azure Cosmos DB 中全局数据库复制工作原理的详细信息，请参阅[使用 Cosmos DB 全局分配数据](../articles/cosmos-db/distribute-data-globally.md)。
-
 ## <a id="addregion"></a>使用 Azure 门户添加全局数据库区域
 Azure Cosmos DB 在全球范围的所有 [Azure 区域][azureregions]中推出。 为数据库帐户选择默认的一致性级别后，可以关联一个或多个区域（具体取决于所选的默认一致性级别和全局分发需求）。
 

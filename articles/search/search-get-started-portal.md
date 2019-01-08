@@ -1,32 +1,34 @@
 ---
-title: 有关如何在 Azure 门户中编制索引、查询和筛选的教程 - Azure 搜索
-description: 本教程介绍如何使用 Azure 门户和预定义的示例数据在 Azure 搜索中生成索引。 探索全文搜索、筛选器、分面 (Facet)、模糊搜索、地域搜索等功能。
+title: 使用 Azure 门户索引和查询快速入门教程 - Azure 搜索
+description: 本快速入门教程介绍如何使用 Azure 门户和内置的示例数据在 Azure 搜索中生成索引。 探索全文搜索、筛选器、分面 (Facet)、模糊搜索、地域搜索等功能。
 author: HeidiSteen
 manager: cgronlun
 tags: azure-portal
 services: search
 ms.service: search
 ms.topic: tutorial
-ms.date: 07/10/2018
+ms.date: 01/02/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: d8b95aaab99fc4f0aa5df21374d6ec023f869b7d
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 3f75cd61d948f3f6df34124a9b16b333f6c5e6d5
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53314017"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "54001781"
 ---
-# <a name="tutorial-use-built-in-portal-tools-for-azure-search-indexing-and-queries"></a>教程：使用内置门户工具在 Azure 搜索中进行索引编制和查询
+# <a name="quickstart-use-built-in-portal-tools-for-azure-search-import-indexing-and-queries"></a>快速入门：使用内置门户工具在 Azure 搜索中进行导入、索引编制和查询
 
-若要快速查看 Azure 搜索概念并增强对其的理解，可以使用 Azure 门户的 Azure 搜索服务页中提供的内置工具。 这些工具可能不提供 .NET 和 REST API 的完整功能。 但是，这些向导和编辑器以无代码的方式对 Azure 搜索进行了简介，让你可以立刻针对示例数据集编写有意思的查询。
+若要快速提升 Azure 搜索概念，请尝试 Azure 门户中的内置工具。 向导和编辑器不提供与 .NET 和 REST API 完全相同的功能，但你可以快速开始使用无代码的介绍，在几分钟内针对示例数据编写感兴趣的查询。
 
 > [!div class="checklist"]
-> * 首先从公共示例数据着手，使用“导入数据”向导自动生成 Azure 搜索索引。
-> * 查看已发布到 Azure 搜索的任何索引的索引架构和属性。
-> * 使用“搜索浏览器”探索全文搜索、筛选器、分面、模糊搜索和地域搜索。  
+> * 从 Azure 上托管的免费公共示例数据集开始
+> * 在 Azure 搜索中运行“导入数据”向导以加载数据并生成索引
+> * 监视门户中的索引进度
+> * 查看现有索引和修改索引的选项
+> * 使用“搜索浏览器”探索全文搜索、筛选器、分面、模糊搜索和地域搜索
 
-如果这些工具限制过多，则可考虑参阅[在 .NET 中进行基于代码的 Azure 搜索编程简介](search-howto-dotnet-sdk.md)，或使用[进行 REST API 调用的 Web 测试工具](search-fiddler.md)。
+如果这些工具限制过多，则可考虑参阅[在 .NET 中进行基于代码的 Azure 搜索编程简介](search-howto-dotnet-sdk.md)，或使用[进行 REST API 调用的 Postman 或 Fiddler](search-fiddler.md)。
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。 也可以花费 3 分钟时间观看这部 [Azure 搜索概述视频](https://channel9.msdn.com/Events/Connect/2016/138)，其中对本教程所述的步骤做了 6 分钟的演示。
 
@@ -44,82 +46,95 @@ ms.locfileid: "53314017"
 
 很多客户开始使用免费服务。 此版本限制为三个索引、三个数据源和三个索引器。 在开始之前，请确保有空间存储额外的项目。 本教程会创建每个对象的一个实例。
 
-> [!TIP]
-> 服务仪表板中的磁贴你将已有多少个索引、索引器和数据源。 “索引器”磁贴显示成功和失败指示器。 单击该磁贴可查看索引器计数。
->
-> ![索引器和数据源的磁贴][1]
->
+服务仪表板上的部分显示你已有多少个索引、索引器和数据源。 
+
+![索引、索引器和数据源列表][media/search-get-started-portal/tiles-indexers-datasources2.png]
 
 ## <a name="create-index"></a> 创建索引并加载数据
 
 搜索查询可循环访问[索引](search-what-is-an-index.md)，索引中包含可搜索数据、元数据，以及其他用于优化某些搜索行为的构造。
 
-在本教程中，请使用可通过“导入数据”向导利用[索引器](search-indexer-overview.md)对其进行爬网的内置示例数据集。 索引器是特定于源的爬网程序，可以从支持的 Azure 数据源中读取元数据和内容。 可以通过“导入数据”向导在门户中查看这些索引器。 稍后可以通过编程方式将索引器作为独立的资源进行创建和管理。
+在本教程中，请使用可通过“导入数据”向导利用[索引器](search-indexer-overview.md)对其进行爬网的内置示例数据集。 索引器是特定于源的爬网程序，可以从支持的 Azure 数据源中读取元数据和内容。 通常，索引器以编程方式使用，但在门户中，你可以通过“导入数据”向导来访问。 
 
-### <a name="step-1-start-the-import-data-wizard"></a>步骤 1：启动“导入数据”向导
+### <a name="step-1---start-the-import-data-wizard-and-create-a-data-source"></a>步骤 1 - 启动“导入数据”向导和创建数据源
 
-1. 在 Azure 搜索服务仪表板的命令栏中单击“导入数据”，以便启动该向导。 此向导用于创建和填充搜索索引。
+1. 在 Azure 搜索服务仪表板的命令栏中单击“导入数据”，以创建和填充搜索索引。
 
-    ![导入数据命令][2]
+   ![导入数据命令](media/search-get-started-portal/import-data-cmd2.png)
 
-2. 在向导中，单击“连接到数据” > “示例” > “realestate-us-sample”。 此数据源中已预先配置名称、类型和连接信息。 创建后，它将成为可在其他导入操作中重复使用的“现有数据源”。
+2. 在向导中，单击“连接到数据” > “示例” > “realestate-us-sample”。 此数据源是内置的。 如果要创建自己的数据源，则需要指定名称、类型和连接信息。 创建后，它将成为可在其他导入操作中重复使用的“现有数据源”。
 
-    ![选择示例数据集][9]
+   ![选择示例数据集](media/search-get-started-portal/import-datasource-sample2.png)
 
-3. 单击“确定”使用该数据集。
+3. 继续转到下一页。
 
-### <a name="skip-cognitive-skills"></a>跳过认知技能
+   ![认知搜索的下一页按钮](media/search-get-started-portal/next-button-add-cog-search.png)
 
-“导入数据”提供了一个可选的认知技能步骤，用于将自定义 AI 算法添加到索引。 目前请跳过此步骤，转到“自定义目标索引”。
+### <a name="step-2---skip-cognitive-skills"></a>步骤 2 - 跳过认知技能
+
+该向导支持创建[认知技能管道](cognitive-search-concept-intro.md)，用于将认知服务 AI 算法合并到索引中。 
+
+我们将暂时跳过此步骤，转到“自定义目标索引”。
+
+   ![跳过认知技能步骤](media/search-get-started-portal/skip-cog-skill-step.png)
 
 > [!TIP]
 > 若要尝试 Azure 搜索的全新认知搜索预览版功能，可以阅读[认知搜索快速入门](cognitive-search-quickstart-blob.md)或[教程](cognitive-search-tutorial-blob.md)。
 
-   ![跳过认知技能步骤][11]
+### <a name="step-3---configure-index"></a>步骤 3 - 配置索引
 
-### <a name="step-2-define-the-index"></a>步骤 2：定义索引
-
-通常情况下，创建索引是使用代码进行的一项手动练习。 在本教程中，向导可以针对它能够爬网的任何数据源生成索引。 索引至少需要一个名称和一个字段集合；其中一个字段应该标记为文档键，用于唯一标识每个文档。
+通常情况下，索引创建是基于代码的练习，在加载数据之前完成。 但是，如本教程所示，向导可以针对它能够爬网的任何数据源生成基本索引。 索引至少需要一个名称和一个字段集合；其中一个字段应该标记为文档键，用于唯一标识每个文档。 此外，如果需要自动完成或建议查询，可以指定语言分析器或建议器。
 
 字段包含数据类型和属性。 顶部的复选框为*索引属性*，用于控制如何使用字段。
 
 * **可检索**意味着该字段将显示在搜索结果列表中。 清除此复选框即可将单个字段标记为关闭搜索结果限制，例如当字段仅用于筛选器表达式时。
+* “密钥”是唯一的文档标识符。 它始终是一个字符串，而且是必需的字符串。
 * “可筛选”、“可排序”和“可查找”确定字段是否可用于筛选器、排序或方面导航结构。
 * **可搜索**意味着该字段将包括在全文搜索中。 字符串可搜索。 数值字段和布尔字段通常标记为不可搜索。
 
+存储要求不会因你的选择而发生更改。 例如，如果你在多个字段上设置“可检索”属性，则存储需求不会增加。
+
 默认情况下，向导会在数据源中扫描用作键字段基础的唯一标识符。 字符串经过属性化，可检索且可搜索。 整数经过属性化，可检索、可筛选、可排序且可分面。
 
-  ![生成的 realestate 索引][3]
+1. 接受所有默认值。
 
-单击“确定”创建该索引。
+  ![生成的 realestate 索引](media/search-get-started-portal/realestateindex2.png)
 
-### <a name="step-3-define-the-indexer"></a>步骤 3：定义索引器
+2. 继续转到下一页。
+
+  ![下一页可创建索引器](media/search-get-started-portal/next-button-create-indexer.png)
+
+### <a name="step-4---configure-indexer"></a>步骤 4 - 配置索引器
 
 仍在“导入数据”向导中，单击“索引器” > “名称”，并键入索引器的名称。
 
-此对象定义一个可执行过程。 可将该对象放入定期计划，但我们暂时单击“确定”，使用默认选项立即运行索引器一次。  
+此对象定义一个可执行过程。 可将该对象放入定期计划，但我们现在使用默认选项立即运行索引器一次。
 
-  ![realestate 索引器][8]
+单击“提交”以创建并同时运行索引器。
 
-### <a name="check-progress"></a>检查进度
+  ![realestate 索引器](media/search-get-started-portal/realestate-indexer2.png)
 
-要监视数据导入，请返回服务仪表板并向下滚动，并双击“索引器”磁贴打开索引器列表。 列表中应会出现新建的索引器，其状态指示“正在进行”或“成功”，此外还会列出已编制索引的文档数。
+## <a name="monitor-progress"></a>监视进度
 
-   ![索引器进度消息][4]
+该向导应转到索引器列表，你可在其中监视进度。 若要进行自导航，请转到“概述”页，然后单击“索引器”。
 
-### <a name="step-4-view-the-index"></a>步骤 4：查看索引
+门户网站可能需要几分钟才能更新页面，但列表中应会出现新建的索引器，其状态指示“正在进行”或“成功”，此外还会列出已编制索引的文档数。
 
-服务仪表板中的磁贴提供资源中各种对象的摘要信息以及对详细信息的访问。 “索引”磁贴列出现有索引的列表，包括刚刚在上一步骤中创建的 *realestate-us-sample* 索引。
+   ![索引器进度消息](media/search-get-started-portal/indexers-inprogress2.png)
 
-现在请单击“realestate-us-sample”索引，以查看该索引的定义的门户选项。 使用“添加/编辑字段”选项可以创建新字段并完全指定其属性。 现有字段在 Azure 搜索中具有实际的表示形式，因此不可修改，即使在代码中也是如此。 若要从根本上更改现有字段，请创建新字段并丢弃原始字段。
+## <a name="view-the-index"></a>查看索引
 
-   ![示例索引定义][10]
+“索引”列表显示现有索引，包括刚刚在向导中创建的“realestate-us-sample”索引。
+
+从此列表中，可以查看索引架构，还可选择添加新字段，但不能更改现有字段。 现有字段在 Azure 搜索中具有实际的表示形式，因此不可修改，即使在代码中也是如此。 若要从根本上更改现有字段，请创建新索引并丢弃原始索引。
+
+   ![示例索引定义](media/search-get-started-portal/sample-index-def.png)
 
 随时可以添加其他构造，例如评分配置文件和 CORS 选项。
 
-若要清楚地了解在索引设计过程中可以和不可以编辑哪些内容，请花点时间查看索引定义选项。 灰显的选项表示对应的值不可修改或删除。 同样，现在请跳过分析器和建议器的复选框。
+若要清楚地了解在索引设计过程中可以和不可以编辑哪些内容，请花点时间查看索引定义选项。 灰显的选项表示对应的值不可修改或删除。 
 
-## <a name="query-index"></a> 查询索引
+## <a name="query-index"></a>使用搜索浏览器查询
 
 我们继续。现在应已创建了一个可以使用内置[**搜索资源管理器**](search-explorer.md)查询页查询的搜索索引。 该页提供了一个搜索框，用于测试任意查询字符串。
 
@@ -129,11 +144,11 @@ ms.locfileid: "53314017"
 
 1. 单击命令栏上的“搜索浏览器”  。
 
-   ![搜索浏览器命令][5]
+   ![搜索浏览器命令](media/search-get-started-portal/search-explorer-cmd2.png)
 
 2. 在命令栏中单击“更改索引”切换到 *realestate-us-sample*。 在命令栏中单击“设置 API 版本”，查看有哪些 REST API 可用。 对于以下查询，请使用正式版 (2017-11-11)。
 
-   ![索引和 API 命令][6]
+   ![索引和 API 命令](media/search-get-started-portal/search-explorer-changeindex-se2.png)
 
 3. 在搜索栏中输入以下查询字符串，并单击“搜索”。
 
@@ -141,17 +156,21 @@ ms.locfileid: "53314017"
     > “搜索资源管理器”仅供用于处理 [REST API 请求](https://docs.microsoft.com/rest/api/searchservice/search-documents)。 搜索浏览器接受[简单查询语法](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search)和[完整 Lucene 查询分析器](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search)的语法，加上可在[搜索文档](https://docs.microsoft.com/rest/api/searchservice/search-documents)操作中使用的所有搜索参数。
     >
 
+## <a name="example-queries"></a>查询示例
+
+你可以输入术语和短语，类似于在必应或 Google 搜索中可能执行的操作，或输入完全指定的查询表达式。 结果以详细的 JSON 文档形式返回。
+
 ### <a name="simple-query-with-top-n-results"></a>提供 top N 结果的简单查询
 
-#### <a name="example-string-searchseattle"></a>示例（字符串）：`search=seattle`
+#### <a name="example-string-query-searchseattle"></a>示例（字符串查询）：`search=seattle`
 
 * **search** 参数用于输入关键字来执行全文搜索，在本例中，将返回华盛顿州金县的结果列表，其中包含文档中任何可搜索字段内的 *Seattle*。
 
 * **搜索浏览器**以 JSON 格式返回结果，如果文档采用密集结构，这种结果将很冗长且难以阅读。 这是有意而为的；整个文档的可见性对于开发来说很重要，尤其是在测试期间。 为了改善用户体验，需要编写代码用于[处理搜索结果](search-pagination-page-layout.md)，以提供重要元素。
 
-* 文档由标记为在索引中“可检索”的所有字段构成。 若要在门户中查看索引属性，请在“索引”磁贴中单击“realestate-us-sample”。
+* 文档由标记为在索引中“可检索”的所有字段构成。 若要在门户中查看索引属性，请在“索引”列表中单击“realestate-us-sample”。
 
-#### <a name="example-parameterized-searchseattlecounttruetop100"></a>示例（参数化）：`search=seattle&$count=true&$top=100`
+#### <a name="example-parameterized-query-searchseattlecounttruetop100"></a>示例（参数化查询）：`search=seattle&$count=true&$top=100`
 
 * **&** 符号用于追加可以按任意顺序指定的搜索参数。
 
@@ -231,13 +250,13 @@ ms.locfileid: "53314017"
 
 ## <a name="takeaways"></a>要点
 
-本教程快速介绍了如何在 Azure 门户中使用 Azure 搜索；
+本教程快速介绍了如何在 Azure 门户中使用 Azure 搜索。
 
 介绍了如何使用“导入数据”向导创建搜索索引； 介绍了[索引器](search-indexer-overview.md)，以及索引设计的基本工作流，包括[对已发布索引进行的支持的修改](https://docs.microsoft.com/rest/api/searchservice/update-index)；
 
 介绍了一些基本的查询语法，在 Azure 门户中使用**搜索浏览器**通过手动示例演示筛选器、搜索词突出显示、模糊搜索和地理搜索等重要功能；
 
-另外还介绍了如何使用门户仪表板中用于搜索索引、索引器和数据源的磁贴。 如果将来有任何新的数据源，则可轻松地通过门户快速查看其定义或字段集合。
+还学习了如何在门户中查找索引、索引器和数据源。 如果将来有任何新的数据源，则可轻松地通过门户快速查看其定义或字段集合。
 
 ## <a name="clean-up"></a>清理
 
@@ -249,17 +268,4 @@ ms.locfileid: "53314017"
 
 * [使用 .NET SDK 创建索引](https://docs.microsoft.com/azure/search/search-create-index-dotnet)
 * [使用 REST API 创建索引](https://docs.microsoft.com/azure/search/search-create-index-rest-api)
-* 使用 [Web 测试工具（例如 Postman 或 Fiddler）调用 Azure 搜索 REST API](search-fiddler.md)
-
-<!--Image references-->
-[1]: ./media/search-get-started-portal/tiles-indexers-datasources2.png
-[2]: ./media/search-get-started-portal/import-data-cmd2.png
-[3]: ./media/search-get-started-portal/realestateindex2.png
-[4]: ./media/search-get-started-portal/indexers-inprogress2.png
-[5]: ./media/search-get-started-portal/search-explorer-cmd2.png
-[6]: ./media/search-get-started-portal/search-explorer-changeindex-se2.png
-[7]: ./media/search-get-started-portal/search-explorer-query2.png
-[8]: ./media/search-get-started-portal/realestate-indexer2.png
-[9]: ./media/search-get-started-portal/import-datasource-sample2.png
-[10]: ./media/search-get-started-portal/sample-index-def.png
-[11]: ./media/search-get-started-portal/skip-cog-skill-step.png
+* [使用 Postman/Fiddler 和 Azure 搜索 REST Api 创建索引](search-fiddler.md)

@@ -9,28 +9,30 @@ ms.topic: quickstart
 ms.date: 09/18/2018
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: a695e333f48ed0bbf1ad5656c20964232feff4d7
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 5086c0758e7c535b65c877917dc790dafa46f763
+ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46990121"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53994704"
 ---
 # <a name="create-a-storage-account"></a>创建存储帐户
 
 本快速入门介绍了如何使用 [Azure 门户](https://portal.azure.com/)、[Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) 或 [Azure CLI](https://docs.microsoft.com/cli/azure?view=azure-cli-latest) 创建存储帐户。  
 
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
 ## <a name="prerequisites"></a>先决条件
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/)。
 
-# <a name="portaltabportal"></a>[门户](#tab/portal)
+# <a name="portaltabazure-portal"></a>[门户](#tab/azure-portal)
 
 无。
 
-# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
-本快速入门需要 Azure PowerShell 模块 3.6 版或更高版本。 运行 `Get-Module -ListAvailable AzureRM` 即可查找当前版本。 如果需要进行安装或升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-azurerm-ps)。
+本快速入门需要 Azure PowerShell 模块 Az 版本 0.7 或更高版本。 运行 `Get-Module -ListAvailable Az` 即可查找当前版本。 如果需要进行安装或升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-Az-ps)。
 
 # <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -57,16 +59,16 @@ Azure Cloud Shell 是可直接在 Azure 门户中运行的免费 Bash shell。 �
 
 ## <a name="log-in-to-azure"></a>登录 Azure
 
-# <a name="portaltabportal"></a>[门户](#tab/portal)
+# <a name="portaltabazure-portal"></a>[门户](#tab/azure-portal)
 
 登录到 [Azure 门户](https://portal.azure.com)。
 
-# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
-使用 `Connect-AzureRmAccount` 命令登录到 Azure 订阅，然后按照屏幕上的说明进行身份验证。
+使用 `Connect-AzAccount` 命令登录到 Azure 订阅，然后按照屏幕上的说明进行身份验证。
 
 ```powershell
-Connect-AzureRmAccount
+Connect-AzAccount
 ```
 
 # <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
@@ -89,32 +91,32 @@ az login
 
 可以使用常规用途 v2 存储帐户访问所有 Azure 存储服务：Blob、文件、队列、表和磁盘。 本快速入门创建常规用途 v2 存储帐户，但创建任何类型的存储帐户的步骤都相似。   
 
-# <a name="portaltabportal"></a>[门户](#tab/portal)
+# <a name="portaltabazure-portal"></a>[门户](#tab/azure-portal)
 
 [!INCLUDE [storage-create-account-portal-include](../../../includes/storage-create-account-portal-include.md)]
 
-# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
-首先，使用 [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) 命令，通过 PowerShell 创建新的资源组： 
+首先，使用 [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) 命令，通过 PowerShell 创建新的资源组： 
 
 ```powershell
 # put resource group in a variable so you can use the same group name going forward,
 # without hardcoding it repeatedly
 $resourceGroup = "storage-quickstart-resource-group"
-New-AzureRmResourceGroup -Name $resourceGroup -Location $location 
+New-AzResourceGroup -Name $resourceGroup -Location $location 
 ```
 
-如果不确定为 `-Location` 参数指定哪个区域，可使用 [Get-AzureRmLocation](/powershell/module/azurerm.resources/get-azurermlocation) 命令检索订阅支持的区域的列表：
+如果不确定为 `-Location` 参数指定哪个区域，可使用 [Get-AzLocation](/powershell/module/az.resources/get-azlocation) 命令检索订阅支持的区域的列表：
 
 ```powershell
-Get-AzureRmLocation | select Location 
+Get-AzLocation | select Location 
 $location = "westus"
 ```
 
-然后，创建具有本地冗余存储 (LRS) 的常规用途 v2 存储帐户。 使用 [New-AzureRmStorageAccount](/powershell/module/azurerm.storage/New-AzureRmStorageAccount) 命令： 
+然后，创建具有本地冗余存储 (LRS) 的常规用途 v2 存储帐户。 使用 [New-AzStorageAccount](/powershell/module/az.storage/New-azStorageAccount) 命令： 
 
 ```powershell
-New-AzureRmStorageAccount -ResourceGroupName $resourceGroup `
+New-AzStorageAccount -ResourceGroupName $resourceGroup `
   -Name "storagequickstart" `
   -Location $location `
   -SkuName Standard_LRS `
@@ -126,7 +128,7 @@ New-AzureRmStorageAccount -ResourceGroupName $resourceGroup `
 |复制选项  |SkuName 参数  |
 |---------|---------|
 |本地冗余存储 (LRS)     |Standard_LRS         |
-|区域冗余存储空间 (ZRS)     |Standard_ZRS         |
+|区域冗余存储 (ZRS)     |Standard_ZRS         |
 |异地冗余存储 (GRS)     |Standard_GRS         |
 |读取访问异地冗余存储 (GRS)     |Standard_RAGRS         |
 
@@ -164,7 +166,7 @@ az storage account create \
 |复制选项  |sku 参数  |
 |---------|---------|
 |本地冗余存储 (LRS)     |Standard_LRS         |
-|区域冗余存储空间 (ZRS)     |Standard_ZRS         |
+|区域冗余存储 (ZRS)     |Standard_ZRS         |
 |异地冗余存储 (GRS)     |Standard_GRS         |
 |读取访问异地冗余存储 (GRS)     |Standard_RAGRS         |
 
@@ -176,7 +178,7 @@ az storage account create \
 
 若要清理本快速入门创建的资源，可以直接删除资源组。 删除资源组也会删除相关联的存储帐户，以及与资源组相关联的任何其他资源。
 
-# <a name="portaltabportal"></a>[门户](#tab/portal)
+# <a name="portaltabazure-portal"></a>[门户](#tab/azure-portal)
 
 若要使用 Azure 门户删除资源组，请执行以下操作：
 
@@ -184,12 +186,12 @@ az storage account create \
 2. 找到要删除的资源组，右键单击列表右侧的“更多”按钮 (**...**)。
 3. 选择“删除资源组”并进行确认。
 
-# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
-若要删除资源组及其关联的资源（包括新的存储帐户），请使用 [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) 命令： 
+若要删除资源组及其关联的资源（包括新的存储帐户），请使用 [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) 命令： 
 
 ```powershell
-Remove-AzureRmResourceGroup -Name $resourceGroup
+Remove-AzResourceGroup -Name $resourceGroup
 ```
 
 # <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
@@ -197,21 +199,21 @@ Remove-AzureRmResourceGroup -Name $resourceGroup
 若要删除资源组及其关联的资源（包括新的存储帐户），请使用 [az group delete](/cli/azure/group#az_group_delete) 命令。
 
 ```azurecli-interactive
-az group delete --name myResourceGroup
+az group delete --name storage-quickstart-resource-group
 ```
 
 ---
 
 ## <a name="next-steps"></a>后续步骤
 
-在本快速入门中，已创建一个通用的标准存储帐户。 若要了解如何通过存储帐户上传和下载 Blob，请继续阅读 Blob 存储快速入门。
+在本快速入门中，已创建一个通用的 v2 标准存储帐户。 若要了解如何通过存储帐户上传和下载 Blob，请继续阅读 Blob 存储快速入门。
 
-# <a name="portaltabportal"></a>[门户](#tab/portal)
+# <a name="portaltabazure-portal"></a>[门户](#tab/azure-portal)
 
 > [!div class="nextstepaction"]
 > [通过 Azure 门户使用 Blob](../blobs/storage-quickstart-blobs-portal.md)
 
-# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
 > [!div class="nextstepaction"]
 > [通过 PowerShell 使用 Blob](../blobs/storage-quickstart-blobs-powershell.md)
@@ -219,6 +221,6 @@ az group delete --name myResourceGroup
 # <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 > [!div class="nextstepaction"]
-> [通过 Azure CLI 使用 Blob 存储](../blobs/storage-quickstart-blobs-cli.md)
+> [通过 Azure CLI 使用 Blob](../blobs/storage-quickstart-blobs-cli.md)
 
 ---

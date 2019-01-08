@@ -1,21 +1,21 @@
 ---
-title: 将数据复制到 Microsoft Azure Data Box | Microsoft Docs
-description: 了解如何将数据复制到 Azure Data Box
+title: 通过 SMB 将数据复制到 Microsoft Azure Data Box | Microsoft Docs
+description: 了解如何通过 SMB 将数据复制到 Azure Data Box
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 10/10/2018
+ms.date: 12/19/2018
 ms.author: alkohli
-ms.openlocfilehash: b59830677ac8c07c6b7adbab24c82ca25d71f5a0
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: 6349ced07385ede42b21c9a8401dd3e0a23bcfbe
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49093453"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53790294"
 ---
-# <a name="tutorial-copy-data-to-azure-data-box"></a>教程：将数据复制到 Azure Data Box 
+# <a name="tutorial-copy-data-to-azure-data-box-via-smb"></a>教程：通过 SMB 将数据复制到 Azure Data Box
 
 本教程介绍如何使用本地 Web UI 连接到主机并从中复制数据，然后准备交付 Data Box。
 
@@ -34,28 +34,25 @@ ms.locfileid: "49093453"
 2. 已收到 Data Box，并且门户中的订单状态为“已送达”。
 3. 你有一台主机，其中的数据需复制到 Data Box。 该主机必须
     - 运行[支持的操作系统](data-box-system-requirements.md)。
-    - 连接到高速网络。 强烈建议至少建立一个 10 GbE 连接。 如果 10 GbE 连接不可用，可以使用 1 GbE 数据链路，但复制速度会受影响。 
+    - 连接到高速网络。 强烈建议你至少建立一个 10-GbE 连接。 如果 10-GbE 连接不可用，可以使用 1-GbE 数据链路，但复制速度会受影响。 
 
 ## <a name="connect-to-data-box"></a>连接到 Data Box
 
 根据选择的存储帐户，Data Box 将会：
 - 为每个关联的 GPv1 和 GPv2 存储帐户最多创建三个共享。
-- 为高级或 Blob 存储帐户创建一个共享。 
+- 为高级或 Blob 存储帐户创建一个共享。
 
 块 Blob 和页 Blob 共享下的一级实体为容器，二级实体为 Blob。 在 Azure 文件共享下，一级实体为共享，二级实体为文件。
 
-请考虑以下示例。 
+下表显示了 Data Box 上共享的 UNC 路径以及上传数据的 Azure 存储路径 URL。 最终的 Azure 存储路径 URL 可以从 UNC 共享路径派生。
+ 
+|                   |                                                            |
+|-------------------|--------------------------------------------------------------------------------|
+| Azure 块 Blob | <li>UNC 共享路径：`\\<DeviceIPAddress>\<StorageAccountName_BlockBlob>\<ContainerName>\files\a.txt`</li><li>Azure 存储 URL：`https://<StorageAccountName>.blob.core.windows.net/<ContainerName>/files/a.txt`</li> |  
+| Azure 页 Blob  | <li>UNC 共享路径：`\\<DeviceIPAddres>\<StorageAccountName_PageBlob>\<ContainerName>\files\a.txt`</li><li>Azure 存储 URL：`https://<StorageAccountName>.blob.core.windows.net/<ContainerName>/files/a.txt`</li>   |  
+| Azure 文件       |<li>UNC 共享路径：`\\<DeviceIPAddres>\<StorageAccountName_AzFile>\<ShareName>\files\a.txt`</li><li>Azure 存储 URL：`https://<StorageAccountName>.file.core.windows.net/<ShareName>/files/a.txt`</li>        |      
 
-- 存储帐户：*Mystoracct*
-- 块 Blob 的共享：*Mystoracct_BlockBlob/my-container/blob*
-- 页 Blob 的共享：*Mystoracct_PageBlob/my-container/blob*
-- 文件的共享：*Mystoracct_AzFile/my-share*
-
-根据 Data Box 是已连接到 Windows Server 主机还是 Linux 主机，连接和复制的步骤可能有所不同。
-
-### <a name="connect-via-smb"></a>通过 SMB 连接 
-
-如果使用 Windows Server 主机，请执行以下步骤连接到 Data Box。
+如果使用 Windows Server 主机，请按照以下步骤连接到 Data Box。
 
 1. 第一步是进行身份验证并启动会话。 转到“连接和复制”。 单击“获取凭据”，获取与存储帐户关联的共享的访问凭据。 
 
@@ -65,16 +62,16 @@ ms.locfileid: "49093453"
     
     ![获取共享凭据 1](media/data-box-deploy-copy-data/get-share-credentials2.png)
 
-3. 访问与存储帐户（在以下示例中为 Mystoracct）关联的共享。 使用 `\\<IP of the device>\ShareName` 路径访问共享。 根据数据格式，连接到位于以下地址的共享（使用共享名称）： 
-    - *\\<IP address of the device>\Mystoracct_Blob*
-    - *\\<IP address of the device>\Mystoracct_Page*
-    - *\\<IP address of the device>\Mystoracct_AzFile*
-    
-    若要从主机连接到共享，请打开命令窗口。 在命令提示符处，键入：
+3. 若要从主机访问与存储帐户关联的共享（以下示例中为 devicemanagertest1），请打开命令窗口。 在命令提示符处，键入：
 
     `net use \\<IP address of the device>\<share name>  /u:<user name for the share>`
 
-    出现提示时，请输入共享的密码。 以下示例演示如何通过前面的命令连接到共享。
+    根据数据格式，共享路径如下：
+    - Azure 块 blob - `\\10.126.76.172\devicemanagertest1_BlockBlob`
+    - Azure 页 blob - `\\10.126.76.172\devicemanagertest1_PageBlob`
+    - Azure 文件 - `\\10.126.76.172\devicemanagertest1_AzFile`
+    
+4. 出现提示时，请输入共享的密码。 以下示例演示如何通过前面的命令连接到共享。
 
     ```
     C:\Users\Databoxuser>net use \\10.126.76.172\devicemanagertest1_BlockBlob /u:devicemanagertest1
@@ -82,53 +79,29 @@ ms.locfileid: "49093453"
     The command completed successfully.
     ```
 
-4. 按 Windows+R。在“运行”窗口中指定 `\\<device IP address>`。 单击“确定”。 此时会打开文件资源管理器。 此时应能看到文件夹形式的共享。
+4. 按 Windows+R。在“运行”窗口中指定 `\\<device IP address>`。 单击“确定”打开文件资源管理器。
     
     ![通过文件资源管理器连接到共享 2](media/data-box-deploy-copy-data/connect-shares-file-explorer1.png)
 
-5.  **始终为要复制到共享下的文件创建一个文件夹，然后将文件复制到该文件夹**。 有时，文件夹可能显示一个灰色的叉形符号。 此符号不代表出错。 应用程序通过标记文件夹来跟踪状态。
+    此时应能看到文件夹形式的共享。
     
-    ![通过文件资源管理器连接到共享 2](media/data-box-deploy-copy-data/connect-shares-file-explorer2.png) ![通过文件资源管理器连接到共享 2](media/data-box-deploy-copy-data/connect-shares-file-explorer2.png) 
-
-### <a name="connect-via-nfs"></a>通过 NFS 连接 
-
-如果使用 Linux 主机，请执行以下步骤将 Data Box 配置为允许 NFS 客户端访问。
-
-1. 提供允许访问共享的客户端的 IP 地址。 在本地 Web UI 中，转到“连接和复制”页。 在“NFS 设置”下，单击“NFS 客户端访问”。 
-
-    ![配置 NFS 客户端访问 1](media/data-box-deploy-copy-data/nfs-client-access.png)
-
-2. 提供 NFS 客户端的 IP 地址，然后单击“添加”。 可以重复此步骤为多个 NFS 客户端配置访问。 单击“确定”。
-
-    ![配置 NFS 客户端访问 2](media/data-box-deploy-copy-data/nfs-client-access2.png)
-
-2. 确保 Linux 主机上已安装[受支持版本](data-box-system-requirements.md)的 NFS 客户端。 使用特定版本的 Linux 分发版。 
-
-3. 安装 NFS 客户端后，使用以下命令在 Data Box 设备上装载 NFS 共享：
-
-    `sudo mount <Data Box device IP>:/<NFS share on Data Box device> <Path to the folder on local Linux computer>`
-
-    以下示例演示如何通过 NFS 连接到 Data Box 共享。 Data Box 设备 IP 为 `10.161.23.130`，共享 `Mystoracct_Blob` 装载在 ubuntuVM 上，装入点为 `/home/databoxubuntuhost/databox`。
-
-    `sudo mount -t nfs 10.161.23.130:/Mystoracct_Blob /home/databoxubuntuhost/databox`
-
+    **始终为要复制到共享下的文件创建一个文件夹，然后将文件复制到该文件夹**。 在块 blob 和页 blob 共享下创建的文件夹表示将数据作为 blob 上传到的容器。 无法将文件直接复制到存储帐户中的 $root 文件夹。
+    
+    ![通过文件资源管理器连接到共享 2](media/data-box-deploy-copy-data/connect-shares-file-explorer2.png) 
 
 ## <a name="copy-data-to-data-box"></a>将数据复制到 Data Box
 
-连接到 Data Box 共享后，下一步是复制数据。 在复制数据之前，请务必查看以下注意事项：
+连接到 Data Box 共享后，下一步是复制数据。 在开始复制数据之前，请查看以下注意事项：
 
 - 确保将数据复制到与适当数据格式对应的共享中。 例如，将块 Blob 数据复制到块 Blob 的共享中。 如果数据格式与相应的共享类型不匹配，则在后续步骤中，数据将无法上传到 Azure。
--  复制数据时，请确保数据大小符合 [Azure 存储和 Data Box 限制](data-box-limits.md)中所述的大小限制。 
+-  复制数据时，请确保数据大小符合 [Azure 存储和 Data Box 限制](data-box-limits.md)中所述的大小限制。
 - 如果 Data Box 正在上传的数据同时已由 Data Box 外部的其他应用程序上传，则可能会导致上传作业失败和数据损坏。
-- 我们建议不要同时使用 SMB 和 NFS，也不要将相同的数据复制到 Azure 上的同一个最终目标。 在这种情况下，最终的结果不可确定。
+- 我们建议不要同时使用 SMB 和 NFS，也不要将相同的数据复制到 Azure 上的同一个最终目标。 在这些情况下，最终的结果不可确定。
+- 始终为要复制到共享下的文件创建一个文件夹，然后将文件复制到该文件夹。 在块 blob 和页 blob 共享下创建的文件夹表示将数据作为 blob 上传到的容器。 无法将文件直接复制到存储帐户中的 $root 文件夹。
 
-### <a name="copy-data-via-smb"></a>通过 SMB 复制数据
-
-连接到 SMB 共享后，启动数据复制。 
-
-可以使用与 SMB 兼容的任何文件复制工具（例如 Robocopy）复制数据。 可以使用 Robocopy 启动多个复制作业。 请使用以下命令：
+连接到 SMB 共享后，开始数据复制。 可以使用与 SMB 兼容的任何文件复制工具（例如 Robocopy）复制数据。 可以使用 Robocopy 启动多个复制作业。 请使用以下命令：
     
-    robocopy <Source> <Target> * /e /r:3 /w:60 /is /nfl /ndl /np /MT:32 or 64 /fft /Log+:<LogFile> 
+    robocopy <Source> <Target> * /e /r:3 /w:60 /is /nfl /ndl /np /MT:32 or 64 /fft /Log+:<LogFile> 
   
  下表描述了属性。
     
@@ -223,80 +196,11 @@ ms.locfileid: "49093453"
     
    ![在仪表板上检查可用空间和已用空间](media/data-box-deploy-copy-data/verify-used-space-dashboard.png)
 
-### <a name="copy-data-via-nfs"></a>通过 NFS 复制数据
-
-如果使用 Linux 主机，请使用类似于 Robocopy 的复制实用工具。 在 Linux 中可用的一些替代工具包括 [rsync](https://rsync.samba.org/)、[FreeFileSync](https://www.freefilesync.org/)、[Unison](https://www.cis.upenn.edu/~bcpierce/unison/) 或 [Ultracopier](https://ultracopier.first-world.info/)。  
-
-`cp` 命令是用于复制目录的最佳选项之一。 有关用法详细信息，请转到 [cp 手册页](http://man7.org/linux/man-pages/man1/cp.1.html)。
-
-如果使用 rsync 选项进行多线程复制，请遵循以下准则：
-
- - 根据 Linux 客户端所用的文件系统，安装 **CIFS Utils** 或 **NFS Utils** 包。
-
-    `sudo apt-get install cifs-utils`
-
-    `sudo apt-get install nfs-utils`
-
- -  安装 **Rsync** 和 **Parallel**（根据 Linux 分发版而异）。
-
-    `sudo apt-get install rsync`
-   
-    `sudo apt-get install parallel` 
-
- - 创建装入点。
-
-    `sudo mkdir /mnt/databox`
-
- - 装载卷。
-
-    `sudo mount -t NFS4  //Databox IP Address/share_name /mnt/databox` 
-
- - 镜像文件夹目录结构。  
-
-    `rsync -za --include='*/' --exclude='*' /local_path/ /mnt/databox`
-
- - 复制文件。 
-
-    `cd /local_path/; find -L . -type f | parallel -j X rsync -za {} /mnt/databox/{}`
-
-     其中，j 指定并行化数目，X 为并行副本数
-
-     我们建议从 16 个并行副本开始，并根据可用的资源增加线程数。
 
 ## <a name="prepare-to-ship"></a>准备交付
 
-最后一步是准备好要交付的设备。 在此步骤中，所有设备共享将会脱机。 一旦开始准备要交付的设备，就无法访问共享。
-1. 转到“准备交付”并单击“开始准备”。 
-   
-    ![准备交付 1](media/data-box-deploy-copy-data/prepare-to-ship1.png)
+[!INCLUDE [data-box-prepare-to-ship](../../includes/data-box-prepare-to-ship.md)]
 
-2. 默认情况下，校验和是在准备交付期间以内联方式计算的。 校验和计算可能需要一些时间，具体取决于数据的大小。 单击“开始准备”。
-    1. 在准备交付时，设备共享将会脱机，设备将会锁定。
-        
-        ![准备交付 1](media/data-box-deploy-copy-data/prepare-to-ship2.png) 
-   
-    2. 设备准备完成后，设备状态将更新为“交付准备就绪”。 
-        
-        ![准备交付 1](media/data-box-deploy-copy-data/prepare-to-ship3.png)
-
-    3. 下载在此过程中复制的文件的列表（清单）。 以后可以使用此列表来确认文件是否已上传到 Azure。
-        
-        ![准备交付 1](media/data-box-deploy-copy-data/prepare-to-ship4.png)
-
-3. 关闭设备。 转到“关闭或重启”页，单击“关闭”。 出现确认提示时，请单击“确定”以继续。
-4. 拔下电缆。 下一步是将设备寄送到 Microsoft。
-
- 
-<!--## Appendix - robocopy parameters
-
-This section describes the robocopy parameters used when copying the data to optimize the performance.
-
-|    Platform    |    Mostly small files < 512 KB                           |    Mostly medium  files 512 KB-1 MB                      |    Mostly large files > 1 MB                             |   
-|----------------|--------------------------------------------------------|--------------------------------------------------------|--------------------------------------------------------|---|
-|    Data Box         |    2 Robocopy sessions <br> 16 threads per sessions    |    3 Robocopy sessions <br> 16 threads per sessions    |    2 Robocopy sessions <br> 24 threads per sessions    |  |
-|    Data Box Heavy     |    6 Robocopy sessions <br> 24 threads per sessions    |    6 Robocopy sessions <br> 16 threads per sessions    |    6 Robocopy sessions <br> 16 threads per sessions    |   
-|    Data Box Disk         |    4 Robocopy sessions <br> 16 threads per sessions             |    2 Robocopy sessions <br> 16 threads per sessions    |    2 Robocopy sessions <br> 16 threads per sessions    |   
--->
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -307,7 +211,7 @@ This section describes the robocopy parameters used when copying the data to opt
 > * 将数据复制到 Data Box
 > * 准备交付 Data Box
 
-请继续学习下一篇教程，了解如何设置和复制 Data Box 上的数据。
+请继续学习下一篇教程，了解如何将 Data Box 寄回 Microsoft。
 
 > [!div class="nextstepaction"]
 > [将 Azure Data Box 寄送到 Microsoft](./data-box-deploy-picked-up.md)

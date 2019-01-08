@@ -1,23 +1,23 @@
 ---
-title: 使用 MongoDB API 构建 Azure Cosmos DB 应用
-description: 使用适用于 MongoDB 的 Azure Cosmos DB API 创建联机数据库的教程。
+title: 使用 Azure Cosmos DB 的用于 MongoDB 的 API 生成 Node.js 应用
+description: 使用 Azure Cosmos DB 的用于 MongoDB 的 API 创建联机数据库的教程。
 keywords: mongodb 示例
 services: cosmos-db
-author: SnehaGunda
+author: rimman
 ms.service: cosmos-db
 ms.component: cosmosdb-mongo
 ms.devlang: nodejs
 ms.topic: sample
-ms.date: 03/23/2018
-ms.author: sngun
-ms.openlocfilehash: e24c64f0042d65cc499e02dff7b53f3ca812f356
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.date: 12/26/2018
+ms.author: rimman
+ms.openlocfilehash: 98a11f6ba0608a9ab39bf258056f0fa17a41653e
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52864071"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53788338"
 ---
-# <a name="build-an-azure-cosmos-db-api-for-mongodb-app-using-nodejs"></a>使用 Node.js 生成 Azure Cosmos DB: API for MongoDB 应用
+# <a name="build-an-app-using-nodejs-and-azure-cosmos-dbs-api-for-mongodb"></a>使用 Node.js 和 Azure Cosmos DB 的用于 MongoDB 的 API 生成应用 
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-get-started.md)
 > * [.NET Core](sql-api-dotnetcore-get-started.md)
@@ -26,12 +26,12 @@ ms.locfileid: "52864071"
 > * [Node.js](sql-api-nodejs-get-started.md)
 >
 
-此示例说明如何使用 Node.js 生成 Azure Cosmos DB: API for MongoDB 控制台应用。
+此示例说明如何使用 Node.js 和 Azure Cosmos DB 的用于 MongoDB 的 API 生成控制台应用。
 
 若要使用此示例，必须：
 
-* [创建](create-mongodb-dotnet.md#create-account) Azure Cosmos DB: API for MongoDB 帐户。
-* 检索 MongoDB [连接字符串](connect-mongodb-account.md)信息。
+* [创建](create-mongodb-dotnet.md#create-account) Cosmos 帐户，配置为使用 Azure Cosmos DB 的用于 MongoDB 的 API。
+* 检索[连接字符串](connect-mongodb-account.md)信息。
 
 ## <a name="create-the-app"></a>创建应用程序
 
@@ -117,7 +117,7 @@ ms.locfileid: "52864071"
     });
     ```
     
-    **可选**：如果使用的是 MongoDB Node.js 2.2 驱动程序，请替换下面的代码片段：
+    可选：如果使用的是 MongoDB Node.js 2.2 驱动程序，请替换下面的代码片段：
 
     原始：
 
@@ -172,4 +172,7 @@ ms.locfileid: "52864071"
 3. 打开偏爱的终端，运行 **npm install mongodb --save**，并使用 **node app.js** 运行应用程序
 
 ## <a name="next-steps"></a>后续步骤
-* 了解如何配合[使用 MongoChef](mongodb-mongochef.md) 与 Azure Cosmos DB: API for MongoDB 帐户。
+
+- 了解如何配合[使用 Studio 3T](mongodb-mongochef.md) 与 Azure Cosmos DB 的用于 MongoDB 的 API。
+- 了解如何配合[使用 Robo 3T](mongodb-robomongo.md) 与 Azure Cosmos DB 的用于 MongoDB 的 API。
+- 使用 Azure Cosmos DB 的用于 MongoDB 的 API 浏览 MongoDB [示例](mongodb-samples.md)。

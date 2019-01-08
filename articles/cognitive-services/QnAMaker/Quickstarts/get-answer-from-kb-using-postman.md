@@ -8,14 +8,14 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: qna-maker
 ms.topic: quickstart
-ms.date: 12/11/2018
+ms.date: 01/03/2019
 ms.author: diberry
-ms.openlocfilehash: 476e982bdddd41c1daf06c3a673d964ce2a85f98
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 75732a3ea78a89c06063102d37b77f315a3bcf62
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53270886"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "54001798"
 ---
 # <a name="quickstart-get-an-answer-from-knowledge-base-using-postman"></a>快速入门：使用 Postman 从知识库获取答案
 
@@ -34,25 +34,33 @@ ms.locfileid: "53270886"
 
 发布知识库后，“发布”页将显示 HTTP 请求设置以生成答案。 默认视图显示从 [Postman](https://www.getpostman.com) 生成答案所需的设置。
 
+下图中的黄色数字表示以下步骤中要使用的名称/值对。
+
 [![发布结果](../media/qnamaker-quickstart-get-answer-with-postman/publish-settings.png)](../media/qnamaker-quickstart-get-answer-with-postman/publish-settings.png#lightbox)
 
 若要使用 Postman 生成答案，请完成以下步骤：
 
-1. 打开 Postman。 
-1. 选择要创建基本请求的构建基块。
-1. 将“请求名称”设置为 `Generate QnA Maker answer`，将“集合”设置为 `Generate QnA Maker answers`。
+1. 打开 Postman。 如果系统提示选择“构建基块”，请选择“基本请求”构建基块。 将“请求名称”设置为 `Generate QnA Maker answer`，将“集合”设置为 `Generate QnA Maker answers`。 如果不想保存到集合中，请选择“取消”按钮。
 1. 在工作区中，选择“POST”的 HTTP 方法。
-1. 对于 URL，连接 HOST 值和 Post 值以创建完整的 URL。 
 
-    [![在 Postman 中，将方法设置为 Post 和完整的 URL](../media/qnamaker-quickstart-get-answer-with-postman/set-postman-method-and-url.png)](../media/qnamaker-quickstart-get-answer-with-postman/set-postman-method-and-url.png#lightbox)
+    [![在 Postman 中，设置 POST 方法](../media/qnamaker-quickstart-get-answer-with-postman/postman-select-post-method.png)](../media/qnamaker-quickstart-get-answer-with-postman/postman-select-post-method.png#lightbox)
+
+1. 对于 URL，连接 HOST 值（图中的 #2）和 Post 值（图中的 #1）以创建完整的 URL。 完整示例 URL 如下所示： 
+
+    `https://qnamaker-f0.azurewebsites.net/qnamaker/knowledgebases/e1115f8c-d01b-4698-a2ed-85b0dbf3348c/generateAnswer`
+
+    [![在 Postman 中，设置完整的 URL](../media/qnamaker-quickstart-get-answer-with-postman/set-postman-method-and-url.png)](../media/qnamaker-quickstart-get-answer-with-postman/set-postman-method-and-url.png#lightbox)
 
 1. 选择 URL 下的“标头”选项卡，然后选择“批量编辑”。 
-1. 将标头复制到文本区域。
+
+1. 将标头（图中的 #3 和 #4）复制到文本区域。
 
     [![在 Postman 中，设置标头](../media/qnamaker-quickstart-get-answer-with-postman/set-postman-headers.png)](../media/qnamaker-quickstart-get-answer-with-postman/set-postman-headers.png#lightbox)
 
 1. 选择“正文”选项卡。
-1. 选择“原始”格式并输入表示问题的 JSON。
+1. 选择“原始”格式并输入表示问题的 JSON（图中的 #5）。
+
+    `{"question":"How do I programmatically update my Knowledge Base?"}`
 
     [![在 Postman 中，设置正文 JSON 值](../media/qnamaker-quickstart-get-answer-with-postman/set-postman-body-json-value.png)](../media/qnamaker-quickstart-get-answer-with-postman/set-postman-body-json-value.png#lightbox)
 
@@ -61,11 +69,11 @@ ms.locfileid: "53270886"
 
     [![在 Postman 中，设置正文 JSON 值](../media/qnamaker-quickstart-get-answer-with-postman/receive-postman-response.png)](../media/qnamaker-quickstart-get-answer-with-postman/receive-postman-response.png#lightbox)
 
-## <a name="use-staging-endpoint-with-curl"></a>通过 cURL 使用暂存终结点
+## <a name="use-staging-endpoint"></a>使用暂存终结点
 
-如果想要从暂存终结点获取答案，请使用值为 `true` 的查询字符串布尔参数 `isTest`。
+如果想要从暂存终结点获取答案，请使用值为 `true` 的查询字符串布尔参数 `isTest` 追加​​ URL。
 
-`isTest=true`
+`?isTest=true`
 
 ## <a name="next-steps"></a>后续步骤
 

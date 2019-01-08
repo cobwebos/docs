@@ -4,58 +4,47 @@ description: 了解如何在 Azure Active Directory 与 Jamf Pro 之间配置单
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: femila
-ms.reviewer: joflore
+manager: mtillman
+ms.reviewer: barbkess
 ms.assetid: 35e86d08-c29e-49ca-8545-b0ff559c5faf
-ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.service: Azure-Active-Directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 10/03/2018
+ms.topic: tutorial
+ms.date: 12/19/2018
 ms.author: jeedes
-ms.openlocfilehash: d28e28a2c4f8144da16c4838f07c9b8bb5ce67f0
-ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
+ms.openlocfilehash: e30ede3e69711fefcf5026202ed7b004d00cb02e
+ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48268151"
+ms.lasthandoff: 12/28/2018
+ms.locfileid: "53810808"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-jamf-pro"></a>教程：Azure Active Directory 与 Jamf Pro 集成
 
 在本教程中，了解如何将 Jamf Pro 与 Azure Active Directory (Azure AD) 集成。
-
 将 Jamf Pro 与 Azure AD 集成可以提供以下优势：
 
-- 可在 Azure AD 中控制谁有权访问 Jamf Pro。
-- 可使用户通过其 Azure AD 帐户自动登录 Jamf Pro（单一登录）。
-- 可在中心位置（即 Azure 门户）管理帐户。
+* 可在 Azure AD 中控制谁有权访问 Jamf Pro。
+* 可以让用户使用其 Azure AD 帐户自动登录到 Jamf Pro（单一登录）。
+* 可在中心位置（即 Azure 门户）管理帐户。
 
-如需了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
+如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
 ## <a name="prerequisites"></a>先决条件
 
 若要配置 Azure AD 与 Jamf Pro 的集成，需要准备好以下各项：
 
-- Azure AD 订阅
-- 启用了 Jamf Pro 单一登录的订阅
-
-> [!NOTE]
-> 为了测试本教程中的步骤，我们不建议使用生产环境。
-
-测试本教程中的步骤应遵循以下建议：
-
-- 除非必要，请勿使用生产环境。
-- 如果没有 Azure AD 试用环境，可以[获取一个月的试用版](https://azure.microsoft.com/pricing/free-trial/)。
+* 一个 Azure AD 订阅。 如果你没有 Azure AD 环境，可以在[此处](https://azure.microsoft.com/pricing/free-trial/)获取一个月的试用版。
+* 启用了 Jamf Pro 单一登录的订阅
 
 ## <a name="scenario-description"></a>方案描述
 
-在本教程中，将在测试环境中测试 Azure AD 单一登录。
-本教程中概述的方案包括两个主要构建基块：
+本教程会在测试环境中配置和测试 Azure AD 单一登录。
 
-1. 从库添加 Jamf Pro
-2. 配置和测试 Azure AD 单一登录
+* Jamf Pro 支持 SP 和 IDP 发起的 SSO
 
 ## <a name="adding-jamf-pro-from-the-gallery"></a>从库添加 Jamf Pro
 
@@ -63,98 +52,96 @@ ms.locfileid: "48268151"
 
 若要从库中添加 Jamf Pro，请执行以下步骤：
 
-1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”图标。 
+1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”图标。
 
-    ![图像](./media/jamfprosamlconnector-tutorial/selectazuread.png)
+    ![“Azure Active Directory”按钮](common/select-azuread.png)
 
-2. 导航到“企业应用程序”。 然后转到“所有应用程序”。
+2. 转到“企业应用”，并选择“所有应用”选项。
 
-    ![图像](./media/jamfprosamlconnector-tutorial/a_select_app.png)
-    
+    ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
+
 3. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
 
-    ![图像](./media/jamfprosamlconnector-tutorial/a_new_app.png)
+    ![“新增应用程序”按钮](common/add-new-app.png)
 
 4. 在搜索框中，键入“Jamf Pro”，在结果面板中选择“Jamf Pro”，然后单击“添加”按钮添加该应用程序。
 
-     ![图像](./media/jamfprosamlconnector-tutorial/a_add_app.png)
+     ![结果列表中的 Jamf Pro](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
 
 在本部分中，基于一个名为“Britta Simon”的测试用户使用 Jamf Pro 配置和测试 Azure AD 单一登录。
-
-若要运行单一登录，Azure AD 需要知道与 Azure AD 用户相对应的 Jamf Pro 用户。 换句话说，需要建立 Azure AD 用户与 Jamf Pro 中相关用户之间的链接关系。
+若要单一登录有效，需要在 Azure AD 用户与 Jamf Pro 相关用户之间建立链接关系。
 
 若要配置和测试 Jamf Pro 的 Azure AD 单一登录，需要完成以下构建基块：
 
 1. **[配置 Azure AD 单一登录](#configure-azure-ad-single-sign-on)** - 使用户能够使用此功能。
-2. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-3. **[创建 Jamf Pro 测试用户](#create-a-jamf-pro-test-user)** - 在 Jamf Pro 中创建 Britta Simon 的对应用户，并将其链接到用户的 Azure AD 身份。
+2. **[配置 Jamf Pro 单一登录](#configure-jamf-pro-single-sign-on)** - 在应用程序端配置“单一登录”设置。
+3. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
 4. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
-5. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
+5. **[创建 Jamf Pro 测试用户](#create-jamf-pro-test-user)** - 在 Jamf Pro 中创建 Britta Simon 的对应用户，并将其链接到用户的 Azure AD 身份。
+6. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
 
-在本部分中，将在 Azure 门户中启用 Azure AD 单一登录并在 Jamf Pro 应用程序中配置单一登录。
+在本部分中，将在 Azure 门户中启用 Azure AD 单一登录。
 
 若要配置 Jamf Pro 的 Azure AD 单一登录，请执行以下步骤：
 
 1. 在 [Azure 门户](https://portal.azure.com/)中的“Jamf Pro”应用程序集成页上，选择“单一登录”。
 
-    ![图像](./media/jamfprosamlconnector-tutorial/b1_b2_select_sso.png)
+    ![配置单一登录链接](common/select-sso.png)
 
-2. 单击屏幕顶部的“更改单一登录模式”，以选择“SAML”模式。
+2. 在“选择单一登录方法”对话框中，选择 SAML/WS-Fed 模式以启用单一登录。
 
-      ![图像](./media/jamfprosamlconnector-tutorial/b1_b2_saml_ssso.png)
+    ![单一登录选择模式](common/select-saml-option.png)
 
-3. 在“选择单一登录方法”对话框中，单击“SAML”模式对应的“选择”，以启用单一登录。
+3. 在“使用 SAML 设置单一登录”页上，单击“编辑”图标以打开“基本 SAML 配置”对话框。
 
-    ![图像](./media/jamfprosamlconnector-tutorial/b1_b2_saml_sso.png)
+    ![编辑基本 SAML 配置](common/edit-urls.png)
 
-4. 在“设置 SAML 单一登录”页上，单击“编辑”按钮，以打开“基本 SAML 配置”对话框。
+4. 如果要在 IDP 发起的模式下进行配置，请在“基本 SAML 配置”部分中执行以下步骤：
 
-    ![图像](./media/jamfprosamlconnector-tutorial/b1-domains_and_urlsedit.png)
+    ![Jamf Pro 域和 URL 单一登录信息](common/idp-intiated.png)
 
-5. 在“基本 SAML 配置”部分中，按照以下步骤操作：
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“标识符”文本框中，使用以下模式键入 URL：`https://<subdomain>.jamfcloud.com/saml/metadata`
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“标识符”文本框中，使用以下模式键入 URL：`https://<subdomain>.jamfcloud.com/saml/metadata`。
+    b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<subdomain>.jamfcloud.com/saml/SSO`
 
-    b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<subdomain>.jamfcloud.com/saml/SSO`。
+5. 如果要在 SP 发起的模式下配置应用程序，请点击“设置其他 URL”，并执行以下步骤：
 
-    ![图像](./media/jamfprosamlconnector-tutorial//b2-domains_and_urls.png)
+    在“登录 URL”文本框中，使用以下模式键入 URL：`https://<subdomain>.jamfcloud.com`
 
-    c. 单击“设置其他 URL”。
-
-    d. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<subdomain>.jamfcloud.com`。
-
-    ![图像](./media/jamfprosamlconnector-tutorial//b4-domains_and_urls.png)
+    ![Jamf Pro 域和 URL 单一登录信息](common/metadata-upload-additional-signon.png)
 
     > [!NOTE]
-    > 这些不是实际值。 请使用实际的“标识符”、“回复 URL”和“登录 URL”更新这些值。 将从 Jamf Pro 门户中的“单一登录”部分获取实际的标识符值（本教程稍后会介绍）。 可以从标识符值提取实际的子域值，并在登录 URL 和答复 URL 中使用该子域信息。
+    > 这些不是实际值。 请使用实际的“标识符”、“回复 URL”和“登录 URL”更新这些值。 将从 Jamf Pro 门户中的“单一登录”部分获取实际的标识符值（本教程稍后会介绍）。 可以从标识符值提取实际的子域值，并在登录 URL 和答复 URL 中使用该子域信息。 还可以参考 Azure 门户中的“基本 SAML 配置”部分中显示的模式。
 
 6. 在“设置 SAML 单一登录”页的“SAML 签名证书”部分中，单击“复制”按钮，以复制“应用联合元数据 URL”，并将它保存在计算机上。
 
-    ![图像](./media/jamfprosamlconnector-tutorial/C2_certificate.png)
+    ![证书下载链接](common/copy-metadataurl.png)
 
-7. 必须通过单击“安装扩展”来安装“我的应用安全登录浏览器扩展”，才能在 Jamf Pro 中自动执行配置。
+### <a name="configure-jamf-pro-single-sign-on"></a>配置 Jamf Pro 单一登录
+
+1. 必须通过单击“安装扩展”来安装“我的应用安全登录浏览器扩展”，才能在 Jamf Pro 中自动执行配置。
 
     ![图像](./media/jamfprosamlconnector-tutorial/install_extension.png)
- 
-8. 将扩展添加到浏览器后，单击“安装 Jamf Pro”会定向到 Jamf Pro 应用程序。 随后，提供管理员凭据，以登录 Jamf Pro。 浏览器扩展会自动为你配置应用程序，并自动执行第 9-12 步。
+
+2. 将扩展添加到浏览器后，单击“安装 Jamf Pro”会定向到 Jamf Pro 应用程序。 随后，提供管理员凭据，以登录 Jamf Pro。 浏览器扩展会自动配置应用程序，并自动执行第 3-7 步。
 
     ![图像](./media/jamfprosamlconnector-tutorial/d1_saml.png)
 
-9. 若要手动安装 Jamf Pro，请打开新的 Web 浏览器窗口，以管理员身份登录 Jamf Pro 公司网站，并按照以下步骤操作：
+3. 若要手动安装 Jamf Pro，请打开新的 Web 浏览器窗口，以管理员身份登录 Jamf Pro 公司网站，并按照以下步骤操作：
 
-10. 单击页面右上角的“设置”图标。
+4. 单击页面右上角的“设置”图标。
 
     ![Jamf Pro 配置](./media/jamfprosamlconnector-tutorial/configure1.png)
 
-11. 单击“单一登录”。
+5. 单击“单一登录”。
 
     ![Jamf Pro 配置](./media/jamfprosamlconnector-tutorial/configure2.png)
 
-12. 在“单一登录”页上，执行以下步骤：
+6. 在“单一登录”页上，执行以下步骤：
 
     ![Jamf Pro 单一登录](./media/jamfprosamlconnector-tutorial/tutorial_jamfprosamlconnector_single.png)
 
@@ -168,7 +155,7 @@ ms.locfileid: "48268151"
 
     e. 在“组属性名称”文本框中粘贴值 `http://schemas.microsoft.com/ws/2008/06/identity/claims/groups`。
 
-13. 在同一页上，一直向下滚动到“单一登录”部分下的“标识提供者”，并执行以下步骤：
+7. 在同一页上，一直向下滚动到“单一登录”部分下的“标识提供者”，并执行以下步骤：
 
     ![Jamf Pro 配置](./media/jamfprosamlconnector-tutorial/configure3.png)
 
@@ -180,7 +167,7 @@ ms.locfileid: "48268151"
 
     d. 复制“实体 ID”值并将其粘贴到 Azure 门户上“Jamf Pro 域和 URL”部分的“标识符(实体 ID)”文本框中。
 
-    >[!NOTE]
+    > [!NOTE]
     > 此处已模糊化的值是子域部分。使用此值填写 Azure 门户上的“Jamf Pro 域和 URL”部分中的“登录 URL”和“回复 URL”。
 
     e. 单击“ **保存**”。
@@ -191,26 +178,52 @@ ms.locfileid: "48268151"
 
 1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”。
 
-    ![图像](./media/jamfprosamlconnector-tutorial/d_users_and_groups.png)
+    ![“用户和组”以及“所有用户”链接](common/users.png)
 
 2. 选择屏幕顶部的“新建用户”。
 
-    ![图像](./media/jamfprosamlconnector-tutorial/d_adduser.png)
+    ![“新建用户”按钮](common/new-user.png)
 
 3. 在“用户属性”中，按照以下步骤操作。
 
-    ![图像](./media/jamfprosamlconnector-tutorial/d_userproperties.png)
+    ![“用户”对话框](common/user-properties.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”字段中，输入 BrittaSimon。
+    a. 在“名称”字段中，输入 BrittaSimon。
   
     b. 在“用户名”字段中键入 brittasimon@yourcompanydomain.extension  
     例如： BrittaSimon@contoso.com
 
-    c. 选择“属性”，再选择“显示密码”复选框，然后记下“密码”框中显示的值。
+    c. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
 
-    d. 选择“创建”。
+    d. 单击“创建”。
 
-### <a name="create-a-jamf-pro-test-user"></a>创建一个 Jamf Pro 测试用户
+### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
+
+在本部分中，通过授予 Britta Simon 访问 Jamf Pro 的权限，支持其使用 Azure 单一登录。
+
+1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”和“Jamf Pro”。
+
+    ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
+
+2. 在应用程序列表中，选择“Jamf Pro”。
+
+    ![应用程序列表中的 Jamf Pro 链接](common/all-applications.png)
+
+3. 在左侧菜单中，选择“用户和组”。
+
+    ![“用户和组”链接](common/users-groups-blade.png)
+
+4. 单击“添加用户”按钮，然后在“添加分配”对话框中选择“用户和组”。
+
+    ![“添加分配”窗格](common/add-assign-user.png)
+
+5. 在“用户和组”对话框中，选择“用户”列表中的 Britta Simon，然后单击屏幕底部的“选择”按钮。
+
+6. 如果你在 SAML 断言中需要任何角色值，请在“选择角色”对话框中从列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。
+
+7. 在“添加分配”对话框中，单击“分配”按钮。
+
+### <a name="create-jamf-pro-test-user"></a>创建 Jamf Pro 测试用户
 
 若要使 Azure AD 用户能够登录 Jamf Pro，必须将其预配到 Jamf Pro 中。 就 Jamf Pro 来说，需要手动执行预配。
 
@@ -252,38 +265,16 @@ ms.locfileid: "48268151"
 
     g. 单击“ **保存**”。
 
-### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
-
-在本部分中，通过授予 Britta Simon 访问 Jamf Pro 的权限，支持其使用 Azure 单一登录。
-
-1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”和“Jamf Pro”。
-
-    ![图像](./media/jamfprosamlconnector-tutorial/d_all_applications.png)
-
-2. 在应用程序列表中，选择“Jamf Pro”。
-
-    ![图像](./media/jamfprosamlconnector-tutorial/d_all_proapplications.png)
-
-3. 在左侧菜单中，选择“用户和组”。
-
-    ![图像](./media/jamfprosamlconnector-tutorial/d_leftpaneusers.png)
-
-4. 选择“添加”按钮，然后在“添加分配”对话框中选择“用户和组”。
-
-    ![图像](./media/jamfprosamlconnector-tutorial/d_assign_user.png)
-
-4. 在“用户和组”对话框中，选择“用户”列表中的 Britta Simon，然后单击屏幕底部的“选择”按钮。
-
-5. 在“添加分配”对话框中，选择“分配”按钮。
-
-### <a name="test-single-sign-on"></a>测试单一登录
+### <a name="test-single-sign-on"></a>测试单一登录 
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-在访问面板中单击 Jamf Pro 磁贴时，应当会自动登录到 Jamf Pro 应用程序。
-有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md)（访问面板简介）。
+单击访问面板中的 Jamf Pro 磁贴时，应会自动登录到为其设置了 SSO 的 Jamf Pro。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 
-* [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](tutorial-list.md)
-* [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
+- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+
+- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+
+- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

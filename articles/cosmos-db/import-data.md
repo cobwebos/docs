@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 11/15/2018
 ms.author: dech
 ms.custom: mvc
-ms.openlocfilehash: 57c70716ac0e3156440d4a602704cb0ac2e30130
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 45c9d5fac24bbbc7d90abf43f5f7662c26c7d4b0
+ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53091148"
+ms.lasthandoff: 12/28/2018
+ms.locfileid: "53810145"
 ---
 # <a name="use-data-migration-tool-to-migrate-your-data-to-azure-cosmos-db"></a>使用数据迁移工具将数据迁移到 Azure Cosmos DB
 
@@ -24,7 +24,7 @@ ms.locfileid: "53091148"
 
 * **[SQL API](documentdb-introduction.md)** - 可以使用数据迁移工具中提供的任何源选项导入数据。
 * **[表 API](table-introduction.md)** - 可以使用数据迁移工具或 AzCopy 导入数据。 有关详细信息，请参阅[导入要在 Azure Cosmos DB 表 API 中使用的数据](table-import.md)。
-* **[MongoDB API](mongodb-introduction.md)** - 数据迁移工具目前不支持将 Azure Cosmos DB MongoDB API 作为源或目标。 如果想要从 Azure Cosmos DB 的 MongoDB API 集合中迁入或迁出数据，请参阅 [Azure Cosmos DB：如何迁移 MongoDB API 的数据](mongodb-migrate.md)的相关说明。 仍可使用数据迁移工具将数据从 MongoDB 导出到 Azure Cosmos DB SQL API 集合中，以便使用 SQL API。
+* **[Azure Cosmos DB 的用于 MongoDB 的 API](mongodb-introduction.md)** - 数据迁移工具目前不支持将 Azure Cosmos DB 的用于 MongoDB 的 API 作为源或目标。 如果想要从 Azure Cosmos DB 的集合中迁入或迁出数据，请参阅[如何使用 Azure Cosmos DB 的用于 MongoDB 的 API 将 MongoDB 数据迁移到 Cosmos 数据库](mongodb-migrate.md)的相关说明。 仍可使用数据迁移工具将数据从 MongoDB 导出到 Azure Cosmos DB SQL API 集合中，以便使用 SQL API。
 * **[Gremlin API](graph-introduction.md)** - Gremlin API 帐户目前不支持将数据迁移工具用作导入工具。
 
 本教程涵盖以下任务：
@@ -111,7 +111,7 @@ dt.exe /s:JsonFile /s.Files:D:\\CompanyData\\Companies.json /t:DocumentDBBulk /t
 ## <a id="MongoDB"></a>从 MongoDB 导入
 
 > [!IMPORTANT]
-> 如果要导入到支持 MongoDB 的 Azure Cosmos DB 帐户，请遵照这些[说明](mongodb-migrate.md)操作。
+> 如果要导入到 Cosmos 帐户（配置了 Azure Cosmos DB 的用于 MongoDB 的 API），请遵照这些[说明](mongodb-migrate.md)操作。
 
 借助 MongoDB 源导入程序选项，可从单个 MongoDB 集合中导入，并且选择使用查询筛选文档，以及使用投影来修改文档结构。  
 

@@ -10,18 +10,18 @@ ms.topic: tutorial
 ms.date: 09/05/2017
 ms.author: jopapa
 ms.custom: mvc
-ms.openlocfilehash: bd72aad51d2649ba6f110ab07b3f85d58da2a09d
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: c6086c3d3bc025feaf9da2d4c26d7f008b304b57
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52867029"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53788117"
 ---
 # <a name="create-a-mongodb-app-with-react-and-azure-cosmos-db"></a>通过 React 和 Azure Cosmos DB 创建 MongoDB 应用  
 
-本视频教程包含多个部分，演示了如何使用 React 前端创建 hero 跟踪应用。 该应用使用适用于服务器的 Node 和 Express，通过 [MongoDB API](mongodb-introduction.md) 连接到 Azure Cosmos DB，然后将 React 前端连接到应用的服务器部分。 本教程还演示了如何在 Azure 门户中对 Azure Cosmos DB 进行点击缩放，以及如何将应用部署到 Internet，方便每个人跟踪其最喜欢的 hero。 
+本视频教程包含多个部分，演示了如何使用 React 前端创建 hero 跟踪应用。 该应用使用适用于服务器的 Node 和 Express，连接到使用 [Azure Cosmos DB 的 MongoDB API](mongodb-introduction.md) 配置的 Cosmos 数据库，然后将 React 前端连接到应用的服务器部分。 本教程还演示了如何在 Azure 门户中对 Cosmos DB 进行点击缩放，以及如何将应用部署到 Internet，方便每个人跟踪其最喜欢的 hero。 
 
-[Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) 支持 MongoDB 客户端连接，因此可以用 Azure Cosmos DB 来代替 MongoDB，所用代码与用于 MongoDB 应用的代码相同，而优势则会增强，例如简化云部署、缩放，大大加快读写速度。  
+[Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) 支持与 MongoDB 的有线协议兼容性，让客户能用 Azure Cosmos DB 代替 MongoDB。  
 
 本教程分为多个部分，涵盖以下任务：
 

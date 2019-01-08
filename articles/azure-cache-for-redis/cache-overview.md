@@ -14,16 +14,16 @@ ms.topic: overview
 ms.date: 03/26/2018
 ms.author: wesmc
 ms.custom: mvc
-ms.openlocfilehash: 1f41172a493f3e5e1b98cbba32b0180cee16c072
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: eab4365b6b86a82f29dbd1a79d4fda6dc9b30e0e
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53018617"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53971318"
 ---
 # <a name="what-is-azure-cache-for-redis"></a>什么是 Azure Redis 缓存
 
-Azure Redis 缓存基于流行的开源[ Azure Redis 缓存](https://redis.io/)。 它通常用作缓存，目的是提高极其依赖后端数据存储的系统的性能和可伸缩性。 提高性能的方式是将经常访问的数据暂时复制到靠近应用程序的快速存储。 使用 [Azure Redis 缓存](https://redis.io/)时，此快速存储位于 Azure Redis 缓存的内存中，而不是通过数据库从磁盘加载。
+Azure Redis 缓存基于热门软件 [Redis](https://redis.io/)。 它通常用作缓存，目的是提高极其依赖后端数据存储的系统的性能和可伸缩性。 提高性能的方式是将经常访问的数据暂时复制到靠近应用程序的快速存储。 使用 [Azure Redis 缓存](https://redis.io/)时，此快速存储位于 Azure Redis 缓存的内存中，而不是通过数据库从磁盘加载。
 
 Azure Redis 缓存也可用作内存中数据结构存储、分布式非关系数据库以及消息代理。 若要提高应用程序性能，可充分利用 Redis 引擎低延迟、高吞吐量的性能特点。
 

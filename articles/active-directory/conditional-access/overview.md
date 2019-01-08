@@ -17,18 +17,18 @@ ms.workload: identity
 ms.date: 12/14/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: f0ba365096808954c24beb073f3570499fd23523
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: 06866b1a0b986190ab6770e5484fb7d950d10b26
+ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53408270"
+ms.lasthandoff: 12/22/2018
+ms.locfileid: "53753908"
 ---
 # <a name="what-is-conditional-access-in-azure-active-directory"></a>Azure Active Directory 中的条件访问是什么？
 
 安全是使用云的组织关心的头等大事。 云安全在管理云资源方面的一个重要方面是标识和访问。 在移动优先、云优先的世界，用户可以从任意位置使用各种设备和应用访问组织的资源。 因此，仅关注谁可以访问资源不再能满足需求。 为了掌握安全与效率之间的平衡，还需将资源的访问方式作为访问控制决策的考虑因素。 使用 Azure Active Directory (Azure AD) 条件访问便可处理该需求。 条件访问是 Azure Active Directory 的一项功能。 使用条件访问时，可以根据条件就云应用的访问实施自动化的访问控制决策。 
 
-完成第一因素身份验证后将强制执行条件访问策略。 换句话说，条件访问不适用于作为对抗拒绝服务攻击 (DoS) 等的机制。  
+完成第一因素身份验证后将强制执行条件访问策略。 因此，条件访问不是针对拒绝服务 (DoS) 攻击等场景的第一道防线，而是可以利用来自这些事件的信号（例如，登录风险级别、请求的位置等）来确定访问权限。  
 
 ![控制](./media/overview/81.png)
 

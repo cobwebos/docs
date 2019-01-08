@@ -6,15 +6,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 11/27/2018
+ms.date: 12/27/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: ea372b4363ce506b926a37686b85cb36e51546eb
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 03b8dd9bd0a7acc63fdae66330904142384429a8
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52833443"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53794203"
 ---
 # <a name="fail-over-and-fail-back-hyper-v-vms-replicated-to-azure"></a>对复制到 Azure 的 Hyper-V VM 进行故障转移和故障回复
 
@@ -65,7 +65,7 @@ ms.locfileid: "52833443"
 4. 验证故障转移后，单击“提交”。 这会删除所有可用的恢复点。
 
 > [!WARNING]
-> **请勿取消正在进行的故障转移**：如果取消正在进行中，故障转移将停止，但 VM 将不会再复制。
+> **不会取消正在进行的故障转移**：如果取消正在进行的故障转移，故障转移会停止，但 VM 将不再进行复制。
 
 ## <a name="failback-azure-vm-to-on-premises-and-reverse-replicate-the-on-premises-vm"></a>将 Azure VM 故障回复到本地并反向复制本地 VM
 

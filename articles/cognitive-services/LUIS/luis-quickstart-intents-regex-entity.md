@@ -9,19 +9,34 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: tutorial
-ms.date: 12/07/2018
+ms.date: 12/21/2018
 ms.author: diberry
-ms.openlocfilehash: d4deeec2c5af5047fa16a2d80f0992409d517910
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 58fa0c36f8c3f630ae7f349bd0f54a497a38f19d
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53135570"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53976777"
 ---
-# <a name="tutorial-3-extract-well-formatted-data"></a>教程 3：提取格式正确的数据
-在本教程中，我们将修改人力资源应用，以使用“正则表达式”实体从话语中提取带有一致格式的数据。
+# <a name="tutorial-get-well-formatted-data-from-the-utterance"></a>教程：从话语中获取格式正确的数据
+在此教程中，创建使用“正则表达式”实体从话语中提取带有一致格式的数据的应用。
 
-该实体的用途是提取话语中包含的重要数据。 此应用使用正则表达式实体的目的是从话语中提取带有格式的人力资源 (HR) 表单编号。 尽管话语的意向始终是使用机器学习确定的，但此特定实体类型不是机器学习的内容。 
+**本教程介绍如何执行下列操作：**
+
+<!-- green checkmark -->
+> [!div class="checklist"]
+> * 创建新应用 
+> * 添加意向
+> * 添加正则表达式实体 
+> * 定型
+> * 发布
+> * 从终结点获取意向和实体
+
+[!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
+
+## <a name="regular-expression-entities"></a>正则表达式实体
+
+此应用使用正则表达式实体的目的是从陈述中提取格式正确的人力资源 (HR) 表单编号。 尽管话语的意向始终是使用机器学习确定的，但此特定实体类型不是机器学习的内容。 
 
 **示例话语包括：**
 
@@ -37,41 +52,22 @@ ms.locfileid: "53135570"
 
 * 数据有良好的格式。
 
-**本教程介绍如何执行下列操作：**
 
-<!-- green checkmark -->
-> [!div class="checklist"]
-> * 使用现有的教程应用
-> * 添加 FindForm 意向
-> * 添加正则表达式实体 
-> * 定型
-> * 发布
-> * 从终结点获取意向和实体
+## <a name="create-a-new-app"></a>创建新应用
 
-[!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
+[!INCLUDE [Follow these steps to create a new LUIS app](../../../includes/cognitive-services-luis-create-new-app-steps.md)]
 
-## <a name="use-existing-app"></a>使用现有应用
-继续使用上一个教程中创建的名为 **HumanResources** 的应用。 
-
-如果没有上一个教程中的 HumanResources 应用，请执行以下步骤：
-
-1. 下载并保存[应用 JSON 文件](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/tutorials/custom-domain-prebuilts-HumanResources.json)。
-
-2. 将 JSON 导入到新应用中。
-
-3. 在“管理”部分的“版本”选项卡上，克隆版本并将其命名为 `regex`。 克隆非常适合用于演练各种 LUIS 功能，且不会影响原始版本。 由于版本名称用作 URL 路由的一部分，因此该名称不能包含任何在 URL 中无效的字符。 
-
-## <a name="findform-intent"></a>FindForm 意向
+## <a name="create-intent-for-finding-form"></a>创建查找格式的意向
 
 1. [!INCLUDE [Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
 
-2. 选择“创建新意向”。 
+1. 选择“创建新意向”。 
 
-3. 在弹出对话框中输入 `FindForm`，然后选择“完成”。 
+1. 在弹出对话框中输入 `FindForm`，然后选择“完成”。 
 
     ![“创建新意向”对话框的屏幕截图，其中的搜索框中包含“实用工具”](./media/luis-quickstart-intents-regex-entity/create-new-intent-ddl.png)
 
-4. 将示例陈述添加到意向。
+1. 将示例陈述添加到意向。
 
     |示例陈述|
     |--|
@@ -79,7 +75,7 @@ ms.locfileid: "53135570"
     |Where is hrf-345678?|
     |When was hrf-456098 updated?|
     |Did John Smith update hrf-234639 last week?|
-    |How many version of hrf-345123 are there?|
+    |How many versions of hrf-345123 are there?|
     |Who needs to authorize form hrf-123456?|
     |How many people need to sign off on hrf-345678?|
     |hrf-234123 date?|
@@ -88,11 +84,9 @@ ms.locfileid: "53135570"
 
     [![“意向”页的屏幕截图，其中已突出显示新陈述](./media/luis-quickstart-intents-regex-entity/findform-intent.png)](./media/luis-quickstart-intents-regex-entity/findform-intent.png#lightbox)
 
-    应用程序包含从前一教程添加的预生成数字实体，因此，已标记每个表单编号。 此信息可能对客户端应用程序而言已足够，但不会使用数字类型来标记编号。 使用适当的名称创建新实体可以在从 LUIS 返回实体后，让客户端应用程序适当地处理该实体。
-
     [!INCLUDE [Do not use too few utterances](../../../includes/cognitive-services-luis-too-few-example-utterances.md)]  
 
-## <a name="regular-expression-entity"></a>正则表达式实体 
+## <a name="use-the-regular-expression-entity-for-well-formatted-data"></a>将正则表达式实体用于格式正确的数据
 要与表单编号匹配的正则表达式实体是 `hrf-[0-9]{6}`。 此正则表达式匹配文本字符 `hrf-`，但忽略大小写和区域性变体。 它完全匹配数字 0-9 中的 6 个数字。
 
 HRF 代表 `human resources form`。
@@ -103,27 +97,31 @@ HRF 代表 `human resources form`。
 
 1. 在左侧面板中选择“实体”。
 
-2. 在“实体”页上选择“创建新实体”按钮。 
+1. 在“实体”页上选择“创建新实体”按钮。 
 
-3. 在弹出对话框中，输入新实体名称 `HRF-number`，选择“正则表达式”作为实体类型，输入 `hrf-[0-9]{6}` 作为“正则表达式”值，然后选择“完成”。
+1. 在弹出对话框中，输入新实体名称 `HRF-number`，选择“正则表达式”作为实体类型，输入 `hrf-[0-9]{6}` 作为“正则表达式”值，然后选择“完成”。
 
     ![用于设置新实体属性的弹出对话框屏幕截图](./media/luis-quickstart-intents-regex-entity/create-regex-entity.png)
 
-4. 从左侧菜单中选择“意向”，然后选择“FindForm”意向查看话语中标记的正则表达式。 
+1. 从左侧菜单中选择“意向”，然后选择“FindForm”意向查看话语中标记的正则表达式。 
 
     [![“标记包含现有实体和正则表达式模式的陈述”的屏幕截图](./media/luis-quickstart-intents-regex-entity/labeled-utterances-for-entity.png)](./media/luis-quickstart-intents-regex-entity/labeled-utterances-for-entity.png#lightbox)
 
-    因为该实体不是机器学习的实体，因此，在创建标签后，该标签将立即应用到陈述并显示在 LUIS 网站中。
+    因为该实体不是机器学习的实体，所以在创建该实体后，它会立即应用到话语并显示在 LUIS 网站中。
 
-## <a name="train"></a>定型
+## <a name="add-example-utterances-to-the-none-intent"></a>将话语示例添加到 None 意向 
+
+[!INCLUDE [Follow these steps to add the None intent to the app](../../../includes/cognitive-services-luis-create-the-none-intent.md)]
+
+## <a name="train-the-app-before-testing-or-publishing"></a>在测试或发布前训练应用
 
 [!INCLUDE [LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
 
-## <a name="publish"></a>发布
+## <a name="publish-the-app-to-query-from-the-endpoint"></a>发布应用，从终结点进行查询
 
 [!INCLUDE [LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)]
 
-## <a name="get-intent-and-entities-from-endpoint"></a>从终结点获取意向和实体
+## <a name="get-intent-and-entity-prediction-from-endpoint"></a>从终结点获取意向和实体预测结果
 
 1. [!INCLUDE [LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
 
@@ -134,63 +132,19 @@ HRF 代表 `human resources form`。
       "query": "When were HRF-123456 and hrf-234567 published in the last year?",
       "topScoringIntent": {
         "intent": "FindForm",
-        "score": 0.9993477
+        "score": 0.9988884
       },
       "intents": [
         {
           "intent": "FindForm",
-          "score": 0.9993477
-        },
-        {
-          "intent": "ApplyForJob",
-          "score": 0.0206110049
-        },
-        {
-          "intent": "GetJobInformation",
-          "score": 0.00533067342
-        },
-        {
-          "intent": "Utilities.StartOver",
-          "score": 0.004215215
-        },
-        {
-          "intent": "Utilities.Help",
-          "score": 0.00209096959
+          "score": 0.9988884
         },
         {
           "intent": "None",
-          "score": 0.0017655947
-        },
-        {
-          "intent": "Utilities.Stop",
-          "score": 0.00109490135
-        },
-        {
-          "intent": "Utilities.Confirm",
-          "score": 0.0005704638
-        },
-        {
-          "intent": "Utilities.Cancel",
-          "score": 0.000525338168
+          "score": 0.00204812363
         }
       ],
       "entities": [
-        {
-          "entity": "last year",
-          "type": "builtin.datetimeV2.daterange",
-          "startIndex": 53,
-          "endIndex": 61,
-          "resolution": {
-            "values": [
-              {
-                "timex": "2017",
-                "type": "daterange",
-                "start": "2017-01-01",
-                "end": "2018-01-01"
-              }
-            ]
-          }
-        },
         {
           "entity": "hrf-123456",
           "type": "HRF-number",
@@ -202,35 +156,24 @@ HRF 代表 `human resources form`。
           "type": "HRF-number",
           "startIndex": 25,
           "endIndex": 34
-        },
-        {
-          "entity": "-123456",
-          "type": "builtin.number",
-          "startIndex": 13,
-          "endIndex": 19,
-          "resolution": {
-            "value": "-123456"
-          }
-        },
-        {
-          "entity": "-234567",
-          "type": "builtin.number",
-          "startIndex": 28,
-          "endIndex": 34,
-          "resolution": {
-            "value": "-234567"
-          }
         }
       ]
     }
     ```
 
-    陈述中的编号返回两次，一次作为新实体 `hrf-number` 返回，一次作为预生成实体 `number` 返回。 一个陈述可以包含多个实体，以及多个相同类型的实体，如此示例中所示。 LUIS 将使用正则表达式实体提取命名数据，从编程角度讲，这对于接收 JSON 响应的客户端应用程序而言会更有帮助。
+    LUIS 将使用正则表达式实体提取命名数据，从编程角度讲，这对于接收 JSON 响应的客户端应用程序而言会更有帮助。
 
 
 ## <a name="clean-up-resources"></a>清理资源
 
 [!INCLUDE [LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
+
+## <a name="related-information"></a>相关信息
+
+* [正则表达式](luis-concept-entity-types.md#regular-expression-entity)实体概念
+* [如何训练](luis-how-to-train.md)
+* [如何发布](luis-how-to-publish-app.md)
+* [如何在 LUIS 门户中测试](luis-interactive-test.md)
 
 ## <a name="next-steps"></a>后续步骤
 本教程创建了新意向，添加了示例话语，然后创建了正则表达式实体以便从话语中提取格式良好的数据。 在训练并发布应用后，向终结点发出的查询识别了意向，并返回了提取的数据。
