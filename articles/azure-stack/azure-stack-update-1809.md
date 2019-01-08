@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 12/22/2018
 ms.author: sethm
 ms.reviewer: justini
-ms.openlocfilehash: f3994c2be50939a837256224030e5284cc6f385b
-ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
+ms.openlocfilehash: 97b7defded39e572a1fecae3e93d389014b15a6b
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/22/2018
-ms.locfileid: "53754044"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54077957"
 ---
 # <a name="azure-stack-1809-update"></a>Azure Stack 1809 更新
 
@@ -48,6 +48,8 @@ Azure Stack 1809 更新内部版本号为 **1.1809.0.90**。
    有关详细信息，请参阅 [Azure Stack Syslog 转发](azure-stack-integrate-security.md)。
 
 - 现在可以在 Azure 上的资源组之间[移动注册资源](azure-stack-registration.md#move-a-registration-resource)，而无需重新注册。 只要新旧订阅都映射到相同的 CSP 合作伙伴 ID，云解决方案商 (CSP) 也可以在订阅之间移动注册资源。 这不影响现有的客户租户映射。 
+
+- 添加了的对分配每个网络接口的多个 IP 地址。  有关更多详细信息，请参阅[将多个 IP 地址分配给虚拟机使用 PowerShell](https://docs.microsoft.com/en-us/azure/virtual-network/virtual-network-multiple-ip-addresses-powershell)。
 
 ### <a name="fixed-issues"></a>修复的问题
 
