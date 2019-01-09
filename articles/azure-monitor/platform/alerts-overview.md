@@ -21,7 +21,7 @@ ms.locfileid: "53976947"
 
 
 ## <a name="what-are-alerts-in-microsoft-azure"></a>什么是 Microsoft Azure 中的警报？
-在监视数据中发现重要情况时，警报会以前摄性的方式通知你。 有了警报，你就可以在系统的用户注意到问题之前确定和解决这些问题。 
+在监视数据中发现重要情况时，警报会以主动的方式通知你。 有了警报，你就可以在系统的用户注意到问题之前确定和解决这些问题。 
 
 本文讨论 Azure Monitor 中的统一警报体验，其现在包括 Log Analytics 和 Application Insights。 [以前的警报体验](alerts-overview.md)和警报类型称为“经典警报”。 单击警报页顶部的“查看经典警报”即可查看这个旧的体验和旧的警报类型。 
 
