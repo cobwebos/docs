@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/15/2018
+ms.date: 01/08/2019
 ms.author: jeffgilb
-ms.reviewer: quying
-ms.openlocfilehash: da88be76d01b246e273739566d629348895b68b6
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.reviewer: georgel
+ms.openlocfilehash: ca924494231f422d6edc8990ef851c9ef454cd1d
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52971991"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54119996"
 ---
 # <a name="deploy-the-mysql-resource-provider-on-azure-stack"></a>在 Azure Stack 上部署 MySQL 资源提供程序
 
@@ -45,6 +45,7 @@ ms.locfileid: "52971991"
 
   |最低 Azure Stack 版本|MySQL RP 版本|
   |-----|-----|
+  |版本-1811 (1.1811.0.101)|[MySQL RP 版本 1.1.33.0](https://aka.ms/azurestackmysqlrp11330)|  
   |版本 1808 (1.1808.0.97)|[MySQL RP 版本 1.1.30.0](https://aka.ms/azurestackmysqlrp11300)|
   |版本 1804 (1.0.180513.1)|[MySQL RP 版本 1.1.24.0](https://aka.ms/azurestackmysqlrp11240)
   |     |     |
@@ -84,7 +85,7 @@ _仅适用于集成系统安装_。 必须提供 [Azure Stack 部署 PKI 要求]
 
 可以在命令行中指定这些参数。 如果未指定参数或任何参数验证失败，系统会提示提供所需的参数。
 
-| 参数名称 | 说明 | 注释或默认值 |
+| 参数名称 | 描述 | 注释或默认值 |
 | --- | --- | --- |
 | **CloudAdminCredential** | 访问特权终结点时所需的云管理员凭据。 | _必需_ |
 | **AzCredential** | Azure Stack 服务管理员帐户的凭据。 使用部署 Azure Stack 时所用的相同凭据。 | _必需_ |
@@ -97,7 +98,7 @@ _仅适用于集成系统安装_。 必须提供 [Azure Stack 部署 PKI 要求]
 | **RetryDuration** | 每两次重试的超时间隔（秒）。 | 120 |
 | **卸载** | 删除资源提供程序和所有关联的资源（请参阅下面的注释）。 | 否 |
 | **DebugMode** | 防止在失败时自动清除。 | 否 |
-| **AcceptLicense** | 跳过接受 GPL 许可条款的提示。  <http://www.gnu.org/licenses/old-licenses/gpl-2.0.html> | |
+| **AcceptLicense** | 跳过接受 GPL 许可条款的提示。  <https://www.gnu.org/licenses/old-licenses/gpl-2.0.html> | |
 
 ## <a name="deploy-the-mysql-resource-provider-using-a-custom-script"></a>使用自定义脚本部署 MySQL 资源提供程序
 

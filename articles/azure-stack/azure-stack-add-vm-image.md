@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: PowerShell
 ms.topic: get-started-article
-ms.date: 11/05/2018
+ms.date: 1/07/2018
 ms.author: mabrigg
 ms.reviewer: kivenkat
-ms.openlocfilehash: a0dc3405cc0e1deb25c1f2772a5018dad95b87e9
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: 9f5f3c4ce08cde81c883bfdac87012dcfd80b8a4
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51036583"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54119724"
 ---
 # <a name="make-a-virtual-machine-image-available-in-azure-stack"></a>在 Azure Stack 中提供虚拟机映像
 
@@ -48,7 +48,7 @@ ms.locfileid: "51036583"
 
    * 记下在其中上传映像的 Blob 存储 URI。 Blob 存储 URI 的格式如下：*&lt;storageAccount&gt;/&lt;blobContainer&gt;/&lt;targetVHDName&gt;*.vhd。
 
-   * 若要使 Blob 可供匿名访问，请转到已在其中上传了 VM 映像 VHD 的存储帐户 Blob 容器。 选择“Blob”，然后选择“访问策略”。 也可改为生成容器的共享访问签名，然后将其作为 Blob URI 的一部分包括进去。 此步骤确保 blob 可用于将该项添加为映像。 如果 blob 不可匿名访问，则 VM 映像创建将处于失败状态。
+   * 若要使 Blob 可供匿名访问，请转到已在其中上传了 VM 映像 VHD 的存储帐户 Blob 容器。 选择“Blob”，然后选择“访问策略”。 （可选） 可以生成共享的访问签名的容器，并将其作为 blob URI 的一部分包含。 此步骤确保 blob 可用于将该项添加为映像。 如果 blob 不可匿名访问，则 VM 映像创建将处于失败状态。
 
    ![转到存储帐户 Blob](./media/azure-stack-add-vm-image/image1.png)
 

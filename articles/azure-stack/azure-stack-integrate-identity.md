@@ -6,16 +6,16 @@ author: jeffgilb
 manager: femila
 ms.service: azure-stack
 ms.topic: article
-ms.date: 12/10/2018
+ms.date: 01/08/19
 ms.author: jeffgilb
 ms.reviewer: wfayed
 keywords: ''
-ms.openlocfilehash: 9d9e97d81e33487a5f23197912eba3802e83a32e
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 07f77a8390edcde1128a7381a54d622611637d78
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53257370"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54118296"
 ---
 # <a name="azure-stack-datacenter-integration---identity"></a>Azure Stack 数据中心集成 - 标识
 可以使用 Azure Active Directory (Azure AD) 或 Active Directory 联合身份验证服务 (AD FS) 作为标识提供者来部署 Azure Stack。 必须在部署 Azure Stack 之前做出选择。 使用 AD FS 的部署也称为在断开连接模式下部署 Azure Stack。
@@ -27,7 +27,7 @@ ms.locfileid: "53257370"
 |计费|必须是“容量”<br> 仅限企业协议 (EA)|“容量”或“即用即付”<br>“EA”或“云解决方案提供商”(CSP)|
 |标识|必须是“AD FS”|“Azure AD”或“AD FS”|
 |市场 |支持<br>BYOL 许可|支持<br>BYOL 许可|
-|注册|建议选项，需要使用可移动媒体<br> 和独立的连接设备。|自动|
+|注册|必需选项，需要使用可移动媒体<br> 和独立的连接设备。|自动|
 |修补和更新|必需选项，需要使用可移动媒体<br> 和独立的连接设备。|可以直接从 Internet<br> 将更新包下载到 Azure Stack。|
 
 > [!IMPORTANT]
@@ -64,21 +64,21 @@ Graph 仅支持与单个 Active Directory 林集成。 如果存在多个林，�
 
 需要使用以下信息作为自动化参数的输入：
 
-|参数|说明|示例|
+|参数|描述|示例|
 |---------|---------|---------|
 |CustomADGlobalCatalog|要与之集成的目标 Active Directory<br>林的 FQDN|Contoso.com|
 |CustomADAdminCredentials|拥有 LDAP“读取”权限的用户|YOURDOMAIN\graphservice|
 
 ### <a name="configure-active-directory-sites"></a>配置 Active Directory 站点
 
-对于具有多个站点的 Active Directory 部署，配置到 Azure Stack 部署最近的 Active Directory 站点。 配置可避免 Azure Stack Graph 服务解析查询使用从远程站点的全局编录服务器。
+如果 Active Directory 部署包含多个站点，请配置最靠近 Azure Stack 部署的 Active Directory 站点。 这种配置可以避免让 Azure Stack Graph 服务使用全局目录服务器从远程站点解析查询。
 
-添加 Azure Stack[公共 VIP 网络](azure-stack-network.md#public-vip-network)到 Azure AD 站点与 Azure Stack 最接近的子网。 例如，如果你的 Active Directory 具有两个站点西雅图和雷德蒙德西雅图站点上部署 Azure stack，可将 Azure Stack 公共 VIP 网络子网到 Azure AD 站点为西雅图。
+将 Azure Stack [公共 VIP 网络](azure-stack-network.md#public-vip-network)子网添加到最靠近 Azure Stack 的 Azure AD 站点。 例如，如果 Active Directory 包含 Seattle 和 Redmond 两个站点，且 Azure stack 部署在 Seattle 站点，则应将 Azure Stack 公共 VIP 网络子网添加到 Seattle 的 Azure AD 站点。
 
-Active Directory 站点的详细信息请参阅[设计站点拓扑](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/designing-the-site-topology)。
+有关 Active Directory 站点的详细信息，请参阅[设计站点拓扑](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/designing-the-site-topology)。
 
 > [!Note]  
-> 如果你的 Active Directory 包含的单个站点可以跳过此步骤。 如果你有配置全能子网验证 Azure Stack 公共 VIP 网络子网不是它的一部分。
+> 如果 Active Directory 只有一个站点，则可以跳过此步骤。 如果配置了全方位的子网，请验证 Azure Stack 公共 VIP 网络子网是否不属于该子网。
 
 ### <a name="create-user-account-in-the-existing-active-directory-optional"></a>在现有 Active Directory 中创建用户帐户（可选）
 
@@ -129,7 +129,7 @@ Azure Stack 中的 Graph 服务使用以下协议和端口来与目标 Active Di
 
 以下信息是作为自动化参数的输入所必需的：
 
-|参数|说明|示例|
+|参数|描述|示例|
 |---------|---------|---------|
 |CustomAdfsName|声明提供程序的名称。<br>AD FS 登录页上会显示此名称。|Contoso|
 |CustomAD<br>FSFederationMetadataEndpointUri|联合元数据链接|https://ad01.contoso.com/federationmetadata/2007-06/federationmetadata.xml|
@@ -168,7 +168,7 @@ Azure Stack 中的 Graph 服务使用以下协议和端口来与目标 Active Di
 以下信息是作为自动化参数的输入所必需的：
 
 
-|参数|说明|示例|
+|参数|描述|示例|
 |---------|---------|---------|
 |CustomAdfsName|声明提供程序的名称。 AD FS 登录页上会显示此名称。|Contoso|
 |CustomADFSFederationMetadataFileContent|元数据内容|$using:federationMetadataFileContent|
@@ -209,13 +209,13 @@ Azure Stack 中的 Graph 服务使用以下协议和端口来与目标 Active Di
    ```
 
    > [!Note]  
-   > 在旋转上现有的 AD FS （帐户 STS） 的证书时必须设置的 AD FS 集成。 即使元数据终结点是可访问或通过提供元数据文件来为其配置，必须设置集成。
+   > 在现有的 AD FS（帐户 STS）中轮换证书时，必须重新设置 AD FS 集成。 即使元数据终结点可访问，或已通过提供元数据文件进行配置，也需要设置集成。
 
 ## <a name="configure-relying-party-on-existing-ad-fs-deployment-account-sts"></a>在现有 AD FS 部署上配置信赖方（帐户 STS）
 
 Microsoft 提供了用于配置信赖方信任（包括声明转换规则）的脚本。 不一定要使用此脚本，也可以手动运行命令。
 
-您可以下载中的帮助程序脚本[Azure Stack 工具](https://github.com/Azure/AzureStack-Tools/tree/vnext/DatacenterIntegration/Identity)GitHub 上。
+可以从 GitHub 上的 [Azure Stack 工具](https://github.com/Azure/AzureStack-Tools/tree/vnext/DatacenterIntegration/Identity)下载帮助器脚本。
 
 如果确定要手动运行命令，请遵循以下步骤：
 

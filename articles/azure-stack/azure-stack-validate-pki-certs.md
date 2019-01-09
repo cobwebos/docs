@@ -11,26 +11,26 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/09/2018
+ms.date: 1/08/2019
 ms.author: mabrigg
 ms.reviewer: ppacent
-ms.openlocfilehash: f3a83352e5aa7591d3f7b325adb542ba89e57fe5
-ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
+ms.openlocfilehash: 1205bb636c01ff03e7e5d6f245c7469c186fca6f
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2018
-ms.locfileid: "51515822"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54121162"
 ---
 # <a name="validate-azure-stack-pki-certificates"></a>验证 Azure Stack PKI 证书
 
-可[从 PowerShell 库](https://aka.ms/AzsReadinessChecker)获取本文所述的 Azure Stack 就绪性检查器工具。 使用该工具可以验证[生成的 PKI 证书](azure-stack-get-pki-certs.md)是否适用于前期部署。 应该留出足够的时间来验证证书，以测试证书并在必要时重新颁发证书。
+可[从 PowerShell 库](https://aka.ms/AzsReadinessChecker)获取本文所述的 Azure Stack 就绪性检查器工具。 使用该工具可以验证[生成的 PKI 证书](azure-stack-get-pki-certs.md)是否适用于前期部署。 通过保留足够的时间来测试并根据需要重新颁发的证书来验证证书。
 
 就绪性检查器工具执行以下证书验证：
 
 - **读取 PFX**  
-    检查 PFX 文件是否有效且密码正确，在公开的信息不受到密码保护时发出警告。 
+    检查有效的 PFX 文件，正确的密码，并公开信息不受到密码。 
 - **签名算法**  
-    检查签名算法是否不是 SHA1。
+    检查签名算法不是 SHA1。
 - **私钥**  
     检查私钥是否存在，并且已连同“本地计算机”属性一起导出。 
 - **证书链**  
@@ -86,8 +86,8 @@ ms.locfileid: "51515822"
     
      - 将证书放入上一步骤中创建的相应目录。 例如：  
         - `c:\certificates\ACSBlob\CustomerCertificate.pfx`
-        - `c:\certificates\Certs\Admin Portal\CustomerCertificate.pfx`
-        - `c:\certificates\Certs\ARM Admin\CustomerCertificate.pfx`
+        - `c:\certificates\Admin Portal\CustomerCertificate.pfx`
+        - `c:\certificates\ARM Admin\CustomerCertificate.pfx`
 
 3. 在 PowerShell 窗口中，更改 **RegionName** 和 **FQDN** 的值以适用于 Azure Stack 环境，然后运行以下命令：
 
@@ -145,7 +145,7 @@ Invoke-AzsCertificateValidation Completed
 
 ### <a name="known-issues"></a>已知问题
 
-**症状**：已跳过测试
+**症状**：跳过了测试
 
 **原因**：如果不符合依赖关系，AzsReadinessChecker 会跳过某些测试：
 
@@ -249,17 +249,17 @@ Invoke-AzsCertificateValidation Completed
 
 | Directory | 证书 |
 | ---    | ----        |
-| acsBlob | wildcard_blob_\<区域 >\< externalFQDN > |
-| ACSQueue  |  wildcard_queue\<区域 >\< externalFQDN > |
-| ACSTable  |  wildcard_table\<区域 >\< externalFQDN > |
-| 管理扩展主机  |  wildcard_adminhosting\<区域 >\< externalFQDN > |
-| 管理门户  |  adminportal\<区域 >\< externalFQDN > |
-| ARM 管理员  |  adminmanagement\<区域 >\< externalFQDN > |
-| ARM 公共  |  管理\<区域 >\< externalFQDN > |
-| KeyVault  |  wildcard_vault\<区域 >\< externalFQDN > |
-| KeyVaultInternal  |  wildcard_adminvault\<区域 >\< externalFQDN > |
-| 公共扩展主机  |  wildcard_hosting\<区域 >\< externalFQDN > |
-| 公共门户  |  门户\<区域 > _\< externalFQDN > |
+| acsBlob | wildcard_blob_\< region>\< externalFQDN> |
+| ACSQueue  |  wildcard_queue\< region>\< externalFQDN> |
+| ACSTable  |  wildcard_table\< region>\< externalFQDN> |
+| 管理扩展主机  |  wildcard_adminhosting\< region>\< externalFQDN> |
+| 管理门户  |  adminportal\< region>\< externalFQDN> |
+| ARM Admin  |  adminmanagement\< region>\< externalFQDN> |
+| ARM Public  |  management\< region>\< externalFQDN> |
+| KeyVault  |  wildcard_vault\< region>\< externalFQDN> |
+| KeyVaultInternal  |  wildcard_adminvault\< region>\< externalFQDN> |
+| 公共扩展主机  |  wildcard_hosting\< region>\< externalFQDN> |
+| 公共门户  |  portal\< region>_\< externalFQDN> |
 
 ## <a name="using-validated-certificates"></a>使用已验证的证书
 

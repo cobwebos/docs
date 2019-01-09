@@ -92,6 +92,7 @@
 ## [Python（帐户管理）](https://docs.microsoft.com/python/api/azure.mgmt.datalake.store?view=azure-python)
 ## [Python（文件系统管理）](http://azure-datalake-store.readthedocs.io/en/latest)
 ## [REST](/rest/api/datalakestore)
+## [资源管理器模板](/azure/templates/microsoft.datalakestore/allversions)
 ## [Azure CLI](https://docs.microsoft.com/cli/azure/dls)
 
 # 资源

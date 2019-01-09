@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: 1e1001d2171bc8d9fc0d3038755220b71218ac2e
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: efd21341254708f0dc2020d3d2b98326f462bd7d
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53020258"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54105706"
 ---
 # <a name="azure-cache-for-redis-documentation"></a>“用于 Redis 的 Azure 缓存”文档
 
@@ -220,8 +220,8 @@ ms.locfileid: "53020258"
                         <h3>语言</h3>
                         <p><a href="/dotnet/api/microsoft.azure.management.redis">.NET</a></p>
                         <p><a href="/java/api/com.microsoft.azure.management.redis._redis_cache">Java</a></p>
-                        <p><a href="http://redis.io/clients">Redis 客户端</a></p>
-                        <p><a href="http://redis.io/commands#">Redis 命令</a></p>
+                        <p><a href="https://redis.io/clients">Redis 客户端</a></p>
+                        <p><a href="https://redis.io/commands#">Redis 命令</a></p>
                    </div>
                 </div>
             </div>

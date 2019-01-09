@@ -21,6 +21,8 @@ items:
   items:
   - name: 评估 Azure Stack
     href: azure-stack-deploy-overview.md
+  - name: 使用管理门户
+    href: azure-stack-manage-portals.md
   expanded: true
 - name: 教程
   items:
@@ -127,8 +129,6 @@ items:
       href: azure-stack-registration.md
     - name: 区域管理
       href: azure-stack-region-management.md
-    - name: 使用管理员门户
-      href: azure-stack-manage-portals.md
     - name: 连接到 Azure
       items:
       - name: 使用 VPN 进行连接
@@ -262,6 +262,8 @@ items:
       items:
       - name: SQL 资源提供程序 1.1.30.0 发行说明
         href: azure-stack-sql-resource-provider-11300.md
+      - name: SQL 资源提供程序 1.1.33.0 发行说明
+        href: azure-stack-sql-resource-provider-11330.md
   - name: 提供 MySQL 作为 PaaS
     href: azure-stack-mysql-resource-provider.md
     items:
@@ -281,6 +283,8 @@ items:
       items:
       - name: MySQL 资源提供程序 1.1.30.0 发行说明
         href: azure-stack-mysql-resource-provider-11300.md
+      - name: MySQL 资源提供程序 1.1.33.0 发行说明
+        href: azure-stack-mysql-resource-provider-11330.md
   - name: 提供应用服务作为 PaaS
     href: azure-stack-app-service-overview.md
     items:
@@ -398,12 +402,12 @@ items:
   - name: 定价信息
     href: https://azure.microsoft.com/overview/azure-stack/how-to-buy/
   - name: 堆栈溢出
-    href: http://stackoverflow.com/questions/tagged/azure-stack
+    href: https://stackoverflow.com/questions/tagged/azure-stack
   - name: 培训和认证
     href: https://docs.microsoft.com/azure/azure-stack/azure-stack-train-and-cert
-ms.openlocfilehash: 3d24dc847d6ca1e842cd86ff9192d43f9006d53d
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: d485829d98dcd5969c0acd02ad6e0c0255647d5c
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53723257"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54118313"

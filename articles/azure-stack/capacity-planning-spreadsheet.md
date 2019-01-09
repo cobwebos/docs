@@ -1,5 +1,5 @@
 ---
-title: 容量规划电子表格，适用于 Azure Stack |Microsoft Docs
+title: 适用于 Azure Stack 的容量规划电子表格 |Microsoft Docs
 description: 了解适用于 Azure Stack 部署的容量规划电子表格。
 services: azure-stack
 documentationcenter: ''
@@ -15,18 +15,18 @@ ms.topic: article
 ms.date: 12/11/2018
 ms.author: jeffgilb
 ms.reviewer: prchint
-ms.openlocfilehash: a37575e6e6e8902dc2dd89a26011031c2e1419c4
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: 6f6e680f7ce613d7a6d9f227765ce599c537e2d3
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53557251"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54106505"
 ---
 # <a name="azure-stack-capacity-planner"></a>Azure Stack Capacity Planner
 Azure Stack Capacity Planner 是用于 Azure Stack 资源容量规划的电子表格。 使用该容量规划器可以设计计算资源的各种分配，并查看这些分配如何与所选的硬件产品/服务相适应。 下面提供了有关如何使用 Azure Stack 计算器的详细说明。
 
 ## <a name="worksheet-descriptions"></a>工作表说明
-下面是可以从 [http://aka.ms/azstackcapacityplanner](https://aka.ms/azstackcapacityplanner) 下载的 Azure Stack Capacity Planner 电子表格中所含工作表的简短说明：
+下面是可以从 [https://aka.ms/azstackcapacityplanner](https://aka.ms/azstackcapacityplanner) 下载的 Azure Stack Capacity Planner 电子表格中所含工作表的简短说明：
 
 |标签名称|描述|
 |-----|-----|
@@ -61,7 +61,7 @@ Azure Stack 规划器内用于资源建模的基本构建基块是各种大小�
 3. 现在就可以开始将各种大小的 VM 添加到模型了。 若要包含特定 VM 类型，请将数量值输入到该 VM 条目左侧的蓝色空心框中。
 
   > [!NOTE]
-  > 总 VM 存储是指 VM 数据磁盘的总容量 (受支持的磁盘数 * (1 TB) 的单个磁盘的最大容量)。 根据配置指示器我们填充了可用的存储配置表中，以便可以为每个 Azure Stack VM 选择所需的存储资源级别。 但是，务必要注意可能添加或更改在必要时可用的存储配置表。<br><br>每个 VM 从最初分配的本地临时存储开始。 为反映临时存储的精简预配，local-temp 数量可以更改为包括最大可允许临时存储量的下拉菜单中的任何内容。
+  > VM 存储总量是指 VM 的数据磁盘的总容量（受支持的磁盘的数目 * 单个磁盘的最大容量 (1 TB)）。 我们已根据配置指示器填充了“可用存储配置”表，以便你可以为每个 Azure Stack VM 选择所需级别的存储资源。 但是，请务必注意，你可以根据需要添加或更改“可用存储配置”表。<br><br>每个 VM 从最初分配的本地临时存储开始。 为反映临时存储的精简预配，local-temp 数量可以更改为包括最大可允许临时存储量的下拉菜单中的任何内容。
 
 4. 添加 VM 时，你将看到显示可用 SKU 资源更改的图表。 这样，就可以查看在建模过程中添加各种大小和数量的 VM 的效果。 查看更改效果的另一种方法是观察“可用 VM”列表正下方列出的“已使用”和“仍可用”数目。 这些数字反映了基于当前所选硬件 SKU 估计的值。
 5. 创建 VM 集后，可以通过单击页面右上角的“建议的 SKU”按钮（位于“当前 SKU”标签正下方）来查找建议的硬件 SKU。 使用此按钮，可以随后修改 VM 配置并查看哪一硬件支持每个配置。

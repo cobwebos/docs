@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 12/18/2018
 ms.author: sethm
 ms.reviewer: harik
-ms.openlocfilehash: 1865b4fa03f774fb4cbe69a5c8b17b096981ebc8
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 49d49553a9375baa92160d9d9a89936acc7dd461
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53632783"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54102612"
 ---
 # <a name="azure-stack-servicing-policy"></a>Azure Stack 服务策略
 
@@ -30,7 +30,7 @@ ms.locfileid: "53632783"
 
 Microsoft 将发布完整每月的更新包以及解决特定问题的修补程序程序包。 
 
-每月的更新程序包托管在安全的 Azure 终结点。 您可以下载这些使用手动[Azure Stack 更新程序下载程序工具](http://aka.ms/azurestackupdatedownload)。 如果缩放单位已连接，更新会自动出现在管理员门户中，如下**可用更新**。 Full、 每月的更新包了每个版本。 有关每个版本的详细信息，可以单击从任何版本[更新包发布频率](#update-package-release-cadence)本文的部分。
+每月的更新程序包托管在安全的 Azure 终结点。 您可以下载这些使用手动[Azure Stack 更新程序下载程序工具](https://aka.ms/azurestackupdatedownload)。 如果缩放单位已连接，更新会自动出现在管理员门户中，如下**可用更新**。 Full、 每月的更新包了每个版本。 有关每个版本的详细信息，可以单击从任何版本[更新包发布频率](#update-package-release-cadence)本文的部分。
 
 修补程序更新程序包托管在同一个安全 Azure 终结点。 您可以下载这些手动在每个相应的修补程序知识库文章; 中使用的嵌入的链接例如， [Azure Stack 修补程序 1.1809.12.114](https://support.microsoft.com/help/4481548/azure-stack-hotfix-1-1809-12-114)。 与完整、 每月的更新包类似，Azure Stack 操作员可以下载的.xml、.bin 和.exe 文件和它们的过程中导入[在 Azure Stack 中应用更新](azure-stack-apply-updates.md)。 与已连接的缩放单位的 azure Stack 操作员将看到修补程序都自动显示在管理员门户中的消息**可用更新**。
 

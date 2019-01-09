@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/04/2018
+ms.date: 01/08/2019
 ms.author: jeffgilb
-ms.reviewer: quying
-ms.openlocfilehash: e1a52dffe0b87b140ee8f0da9379a33f8b071f39
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.reviewer: georgel
+ms.openlocfilehash: 7c8e788f00aacdc7e386d104cb9db9de11c5a146
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52960662"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54120064"
 ---
 # <a name="deploy-the-sql-server-resource-provider-on-azure-stack"></a>在 Azure Stack 上部署 SQL Server 资源提供程序
 
@@ -39,6 +39,7 @@ ms.locfileid: "52960662"
 
   |最低 Azure Stack 版本|SQL RP 版本|
   |-----|-----|
+  |版本-1811 (1.1811.0.101)|[SQL RP 版本 1.1.33.0](https://aka.ms/azurestacksqlrp11330)|  
   |版本 1808 (1.1808.0.97)|[SQL RP 版本 1.1.30.0](https://aka.ms/azurestacksqlrp11300)|
   |版本 1804 (1.0.180513.1)|[SQL RP 版本 1.1.24.0](https://aka.ms/azurestacksqlrp11240)
   |     |     |
@@ -78,7 +79,7 @@ _仅适用于集成系统安装_。 必须提供 [Azure Stack 部署 PKI 要求]
 
 可在命令行中指定以下参数。 如果未指定参数或任何参数验证失败，系统会提示提供所需的参数。
 
-| 参数名称 | 说明 | 注释或默认值 |
+| 参数名称 | 描述 | 注释或默认值 |
 | --- | --- | --- |
 | **CloudAdminCredential** | 访问特权终结点时所需的云管理员凭据。 | _必需_ |
 | **AzCredential** | Azure Stack 服务管理员帐户的凭据。 使用部署 Azure Stack 时所用的相同凭据。 | _必需_ |

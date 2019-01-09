@@ -10,12 +10,12 @@ ms.date: 12/06/2018
 ms.author: jeffgilb
 ms.reviewer: wamota
 keywords: ''
-ms.openlocfilehash: 1800ab19e2d99eb639ef4064e64d7bc475aa0c36
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 23c2206a873dc37f5b4f40e0c692e6a35869c419
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53014851"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54106456"
 ---
 # <a name="azure-stack-datacenter-integration---publish-endpoints"></a>Azure Stack 数据中心集成 - 发布终结点
 
@@ -75,18 +75,18 @@ Azure Stack 仅支持透明代理服务器。 如果部署中的透明代理上�
 |修补程序和更新|https://&#42;.azureedge.net|HTTPS|443|
 |注册|https://management.azure.com|HTTPS|443|
 |使用情况|https://&#42;.microsoftazurestack.com<br>https://*.trafficmanager.net|HTTPS|443|
-|Windows Defender|.wdcp.microsoft.com<br>.wdcpalt.microsoft.com<br>*.updates.microsoft.com<br>*.download.microsoft.com<br>https://msdl.microsoft.com/download/symbols<br>http://www.microsoft.com/pkiops/crl<br>http://www.microsoft.com/pkiops/certs<br>http://crl.microsoft.com/pki/crl/products<br>http://www.microsoft.com/pki/certs<br>https://secure.aadcdn.microsoftonline-p.com<br>|HTTPS|80<br>443|
-|NTP|（为部署提供的 IP 的 NTP 服务器）|UDP|123|
-|DNS|（为部署提供的 IP 的 DNS 服务器）|TCP<br>UDP|53|
-|CRL|(在你的证书上的 CRL 分发点的 URL)|HTTP|80|
-|基础结构备份|（IP 或外部的目标文件服务器的 FQDN）|SMB|445|
+|Windows Defender|.wdcp.microsoft.com<br>.wdcpalt.microsoft.com<br>*.updates.microsoft.com<br>*.download.microsoft.com<br>https://msdl.microsoft.com/download/symbols<br>https://www.microsoft.com/pkiops/crl<br>https://www.microsoft.com/pkiops/certs<br>https://crl.microsoft.com/pki/crl/products<br>https://www.microsoft.com/pki/certs<br>https://secure.aadcdn.microsoftonline-p.com<br>|HTTPS|80<br>443|
+|NTP|（为部署提供的 NTP 服务器的 IP）|UDP|123|
+|DNS|（为部署提供的 DNS 服务器的 IP）|TCP<br>UDP|53|
+|CRL|（证书上的 CRL 分发点下的 URL）|HTTP|80|
+|基础结构备份|（外部目标文件服务器的 IP 或 FQDN）|SMB|445|
 |     |     |     |     |
 
 > [!Note]  
 > 使用 Azure 流量管理器对出站 URL 进行负载均衡，以根据地理位置提供尽可能最佳的连接。 使用负载平衡的 Url，Microsoft 可以更新和更改后端终结点而不会影响客户。 Microsoft 不共享 IP 地址的列表，为负载平衡 Url。 应使用支持按 URL 而不是按 IP 筛选的设备。
 
 > [!Note]  
-> 在 1809，基础结构备份服务公共 VIP 网络中，进行通信的外部文件服务器。 之前 1809，该服务通过公共基础结构网络通信。 如果你的环境不允许访问基础结构资源从公共 VIP 网络中，应用最新[1809年修补程序](azure-stack-update-1809.md#post-update-steps)适用于 Azure Stack。 此修补程序将基础结构备份服务返回到公共基础结构网络。 在 1811，如果应用 1809年修补程序，基础结构备份服务将保留在公共基础结构网络。 如果不应用该修补程序，更新将移动服务返回到公共基础结构网络。
+> 在 1809 中，基础结构备份服务与公共 VIP 网络中的外部文件服务器进行通信。 在 1809 之前，服务通过公共基础结构网络进行通信。 如果你的环境不允许从公共 VIP 网络访问基础结构资源，请应用 Azure Stack 的最新 [1809 修补程序](azure-stack-update-1809.md#post-update-steps)。 该修补程序会将基础结构备份服务移回公共基础结构网络。 在 1811 中，如果应用 1809 修补程序，则基础结构备份服务将保留在公共基础结构网络上。 如果不应用该修补程序，则更新会将服务移回公共基础结构网络。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -10,15 +10,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 11/26/2018
+ms.date: 12/20/2018
 ms.author: mabrigg
 ms.reviewer: johnhas
-ms.openlocfilehash: 7949e764baa7a4e20eb988c78817b6b4f0045593
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.openlocfilehash: e6cfdca207b114871a478262f14ea960be5985df
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52333762"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54104958"
 ---
 # <a name="validate-a-new-azure-stack-solution"></a>验证新的 Azure Stack 解决方案
 
@@ -35,32 +35,53 @@ Azure Stack 解决方案是具有共同达成一致 Microsoft 和合作伙伴之
 ## <a name="create-a-solution-validation-workflow"></a>创建解决方案验证工作流
 
 1. [!INCLUDE [azure-stack-vaas-workflow-step_select-solution](includes/azure-stack-vaas-workflow-step_select-solution.md)]
-2. 选择**启动**上**解决方案验证**磁贴。
+
+3. 选择**启动**上**解决方案验证**磁贴。
 
     ![解决方案验证工作流磁贴](media/tile_validation-solution.png)
 
-3. [!INCLUDE [azure-stack-vaas-workflow-step_naming](includes/azure-stack-vaas-workflow-step_naming.md)]
-4. 选择**解决方案配置**。
+4. [!INCLUDE [azure-stack-vaas-workflow-step_naming](includes/azure-stack-vaas-workflow-step_naming.md)]
+
+5. 选择**解决方案配置**。
     - **最小**： 使用支持的最小数目的节点配置解决方案。
     - **最大**： 的解决方案配置与受支持的最大节点数。
-5. [!INCLUDE [azure-stack-vaas-workflow-step_upload-stampinfo](includes/azure-stack-vaas-workflow-step_upload-stampinfo.md)]
+6. [!INCLUDE [azure-stack-vaas-workflow-step_upload-stampinfo](includes/azure-stack-vaas-workflow-step_upload-stampinfo.md)]
 
     ![解决方案验证信息](media/workflow_validation-solution_info.png)
 
-6. [!INCLUDE [azure-stack-vaas-workflow-step_test-params](includes/azure-stack-vaas-workflow-step_test-params.md)]
+7. [!INCLUDE [azure-stack-vaas-workflow-step_test-params](includes/azure-stack-vaas-workflow-step_test-params.md)]
 
     > [!NOTE]
     > 创建工作流后，无法修改环境的参数。
 
-7. [!INCLUDE [azure-stack-vaas-workflow-step_tags](includes/azure-stack-vaas-workflow-step_tags.md)]
-8. [!INCLUDE [azure-stack-vaas-workflow-step_submit](includes/azure-stack-vaas-workflow-step_submit.md)]
+8. [!INCLUDE [azure-stack-vaas-workflow-step_tags](includes/azure-stack-vaas-workflow-step_tags.md)]
+9. [!INCLUDE [azure-stack-vaas-workflow-step_submit](includes/azure-stack-vaas-workflow-step_submit.md)]
     你将重定向到测试摘要页。
 
-## <a name="execute-solution-validation-tests"></a>执行解决方案验证测试
+## <a name="run-solution-validation-tests"></a>运行解决方案验证测试
 
 在中**解决方案验证测试摘要**页中，将看到的完成验证所需的测试的列表。
 
-[!INCLUDE [azure-stack-vaas-workflow-validation-section_schedule](includes/azure-stack-vaas-workflow-validation-section_schedule.md)]
+验证工作流中**安排**测试使用工作流创建期间指定的工作流级别公用参数 (请参阅[工作流通用参数作为服务AzureStack验证](azure-stack-vaas-parameters.md)). 如果任何测试参数值变得无效，您必须 resupply 它们中所述[修改工作流参数](azure-stack-vaas-monitor-test.md#change-workflow-parameters)。
+
+> [!NOTE]
+> 计划高于现有实例的一个验证测试，将在门户中创建的新实例来代替旧实例。 旧实例的日志将保留，但不能从门户访问。  
+测试成功，完成后**计划**操作将被禁用。
+
+1. [!INCLUDE [azure-stack-vaas-workflow-step_select-agent](includes/azure-stack-vaas-workflow-step_select-agent.md)]
+
+2. 选择以下测试：
+    - 云模拟引擎
+    - 计算 SDK 操作套件
+    - 磁盘标识测试
+    - 密钥保管库扩展 SDK 操作套件
+    - 密钥保管库 SDK 操作套件
+    - 网络 SDK 操作套件
+    - 存储帐户 SDK 操作套件
+
+3. 选择**计划**从上下文菜单打开的提示的计划的测试实例。
+
+4. 查看测试参数，然后选择**提交**来计划执行测试。
 
 ![计划解决方案验证测试](media/workflow_validation-solution_schedule-test.png)
 

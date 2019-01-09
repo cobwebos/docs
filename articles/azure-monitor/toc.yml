@@ -47,11 +47,11 @@ items:
   - name: 查找应用程序运行时异常
     href: learn/tutorial-runtime-exceptions.md
   - name: 查找应用程序性能问题
-    href: ../application-insights/app-insights-tutorial-performance.md?toc=/azure/azure-monitor/toc.json
+    href: learn/tutorial-performance.md
   - name: 根据应用程序运行状况发出警报
     href: learn/tutorial-alert.md
   - name: 了解应用程序用户
-    href: ../application-insights/app-insights-tutorial-users.md?toc=/azure/azure-monitor/toc.json
+    href: learn/tutorial-users.md
   - name: 创建自定义仪表板
     href: learn/tutorial-app-dashboards.md
 - name: 示例
@@ -93,7 +93,7 @@ items:
     - name: Application Insights
       items:
       - name: 概述
-        href: ../application-insights/app-insights-overview.md?toc=/azure/azure-monitor/toc.json
+        href: app/app-insights-overview.md
       - name: DevOps
         href: app/detect-triage-diagnose.md
       - name: 分布式跟踪
@@ -161,7 +161,7 @@ items:
     - name: 监视应用程序
       items:
       - name: 对 Web 应用和服务进行深度诊断
-        href: ../application-insights/app-insights-devops.md?toc=/azure/azure-monitor/toc.json
+        href: app/devops.md
       - name: 在 Web 应用程序中监视性能
         href: app/web-monitor-performance.md
       - name: 将开发、测试和生产隔开
@@ -342,7 +342,7 @@ items:
         - name: 筛选遥测数据
           href: app/java-filter-telemetry.md
         - name: Micrometer 指标
-          href: ../application-insights/micrometer-java.md?toc=/azure/azure-monitor/toc.json
+          href: app/micrometer-java.md
       - name: Node.js 应用
         items:
         - name: Node.js
@@ -907,7 +907,7 @@ items:
     - name: 遥测关联
       href: app/correlation.md
     - name: NuGet 包
-      href: ../application-insights/app-insights-nuget.md?toc=/azure/azure-monitor/toc.json
+      href: app/nuget.md
     - name: 平台支持
       href: app/platforms.md
   - name: Application Insights 数据模型
@@ -1005,9 +1005,9 @@ items:
     href: https://stackoverflow.com/search?q=monitoring
   - name: 代码示例
     href: https://azure.microsoft.com/resources/samples/?service=monitor
-ms.openlocfilehash: daba9eb12d568e3eb49a7aa4d21f1d2eaa367ab8
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 02748b429bf7122dd0f1531d45c8af1217ceaa43
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54074607"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54120914"

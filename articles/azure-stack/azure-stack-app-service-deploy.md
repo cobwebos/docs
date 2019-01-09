@@ -1,5 +1,5 @@
 ---
-title: 部署应用服务：Azure Stack | Microsoft Docs
+title: 部署应用程序服务：Azure Stack | Microsoft Docs
 description: 在 Azure Stack 中部署应用服务的详细指南
 services: azure-stack
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/29/2018
 ms.author: anwestg
-ms.openlocfilehash: cd16bf400c5a5e5a07c7e2dc459d801e6fc810b9
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 504cd5a0bfbae1ff91f7914abe12aa35b699ee80
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52635367"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54104754"
 ---
 # <a name="add-an-app-service-resource-provider-to-azure-stack"></a>将应用服务资源提供程序添加到 Azure Stack
 
@@ -28,7 +28,7 @@ ms.locfileid: "52635367"
 根据本文中的指南在 Azure Stack 中部署应用服务。
 
 > [!IMPORTANT]  
-> 将 1809年更新应用于 Azure Stack 集成系统，或在部署 Azure 应用服务 1.4 之前部署最新 Azure Stack 开发工具包 (ASDK)。
+> 请将 1809 更新应用于 Azure Stack 集成系统，或部署最新的 Azure Stack 开发工具包 (ASDK)，然后部署 Azure 应用服务 1.4。
 
 可以让用户能够创建 Web 应用程序和 API 应用程序。 若要让用户创建这些应用程序，必须：
 
@@ -75,7 +75,7 @@ ms.locfileid: "52635367"
    b. 在“Azure Stack 订阅”中，选择“默认提供程序订阅”。
 
      > [!IMPORTANT]  
-     > 应用服务**必须**将其部署到**默认提供商订阅**。
+     > 应用服务**必须**部署到**默认提供程序订阅**。
 
    c. 在“Azure Stack 位置”中，选择要部署到的区域所对应的位置。 例如，如果要部署到 Azure Stack 开发工具包，请选择“本地”。
 
@@ -153,11 +153,11 @@ ms.locfileid: "52635367"
 
     | 角色 | 最小实例数 | 最小 SKU | 说明 |
     | --- | --- | --- | --- |
-    | 控制器 | 1 | Standard_A2 -（2 个 vCPU，3584 MB） | 管理和维护应用服务云的运行状况。 |
-    | 管理 | 1 | Standard_A2 -（2 vCPU，3584 MB） | 管理应用服务 Azure 资源管理器和 API 终结点、门户扩展（管理员门户、租户门户、Functions 门户）和数据服务。 为了支持故障转移，已将建议的实例数增加到 2 个。 |
-    | 发布者 | 1 | Standard_A1 -（1 vCPU，1792 MB） | 通过 FTP 和 Web 部署发布内容。 |
-    | FrontEnd | 1 | Standard_A1 -（1 vCPU，1792 MB） | 将请求路由到应用服务应用程序。 |
-    | 共享辅助角色 | 1 | Standard_A1 -（1 vCPU，1792 MB） | 托管 Web 应用程序或 API 应用程序和 Azure Functions 应用。 可能需要添加更多实例。 作为操作员，可以定义产品/服务，并选择任何 SKU 层。 这些层必须至少具有一个 vCPU。 |
+    | 控制器 | 第 | Standard_A2 -（2 个 vCPU，3584 MB） | 管理和维护应用服务云的运行状况。 |
+    | 管理 | 第 | Standard_A2 -（2 vCPU，3584 MB） | 管理应用服务 Azure 资源管理器和 API 终结点、门户扩展（管理员门户、租户门户、Functions 门户）和数据服务。 为了支持故障转移，已将建议的实例数增加到 2 个。 |
+    | 发布者 | 第 | Standard_A1 -（1 vCPU，1792 MB） | 通过 FTP 和 Web 部署发布内容。 |
+    | FrontEnd | 第 | Standard_A1 -（1 vCPU，1792 MB） | 将请求路由到应用服务应用程序。 |
+    | 共享辅助角色 | 第 | Standard_A1 -（1 vCPU，1792 MB） | 托管 Web 应用程序或 API 应用程序和 Azure Functions 应用。 可能需要添加更多实例。 作为操作员，可以定义产品/服务，并选择任何 SKU 层。 这些层必须至少具有一个 vCPU。 |
 
     ![应用服务安装程序][13]
 
@@ -198,21 +198,21 @@ ms.locfileid: "52635367"
 
 1. 在 Azure Stack 管理员门户中，转到“管理 - 应用服务”。
 
-2. 在概述中，在状态检查以查看是否**状态**显示**所有角色都已就绪**。
+2. 在“概述”中，在“状态”下，检查“状态”是否显示了“所有角色已就绪”。
 
     ![应用服务管理](media/azure-stack-app-service-deploy/image12.png)
 
     如果部署到现有虚拟网络并使用内部 IP 地址连接到文件服务器，则必须添加出站安全规则。 此规则允许辅助角色子网和文件服务器之间的 SMB 流量。  为此，请转到管理门户中的 WorkersNsg 并添加具有以下属性的出站安全规则：
 
-    - 源：任何
+    - 源：任意
     - 源端口范围：*
     - 目标：IP 地址
-    - 目标 IP 地址范围：文件服务器的 IP 范围
+    - 目标 IP 地址范围：你的文件服务器的 IP 范围
     - 目标端口范围：445
     - 协议：TCP
     - 操作：允许
     - 优先级：700
-    - 名称：Outbound_Allow_SMB445
+    - 姓名：Outbound_Allow_SMB445
 
 ## <a name="test-drive-app-service-on-azure-stack"></a>体验 Azure Stack 上的应用服务
 
@@ -260,9 +260,9 @@ ms.locfileid: "52635367"
  - [MySQL 资源提供程序](azure-stack-mysql-resource-provider-deploy.md)
 
 <!--Links-->
-[Azure_Stack_App_Service_preview_installer]: http://go.microsoft.com/fwlink/?LinkID=717531
-[App_Service_Deployment]: http://go.microsoft.com/fwlink/?LinkId=723982
-[AppServiceHelperScripts]: http://go.microsoft.com/fwlink/?LinkId=733525
+[Azure_Stack_App_Service_preview_installer]: https://go.microsoft.com/fwlink/?LinkID=717531
+[App_Service_Deployment]: https://go.microsoft.com/fwlink/?LinkId=723982
+[AppServiceHelperScripts]: https://go.microsoft.com/fwlink/?LinkId=733525
 
 <!--Image references-->
 [1]: ./media/azure-stack-app-service-deploy/app-service-installer.png

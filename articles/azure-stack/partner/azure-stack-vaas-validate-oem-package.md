@@ -10,15 +10,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 11/19/2018
+ms.date: 1/07/2019
 ms.author: mabrigg
 ms.reviewer: johnhas
-ms.openlocfilehash: 8268a6b04d7ddbb35821999142d3a33bdd2bedcc
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: e3b0de577186cb7eb032a2042d234a0ffa2e3bb9
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52261796"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54105536"
 ---
 # <a name="validate-oem-packages"></a>验证 OEM 程序包
 
@@ -35,7 +35,7 @@ ms.locfileid: "52261796"
 
 使用时**包验证**工作流，以验证包中，将需要提供的 URL **Azure 存储 blob**。 此 blob 是在部署时，解决方案已安装的 OEM 包。 创建使用在安装期间创建的 Azure 存储帐户的 blob (请参阅[设置为服务资源将验证](azure-stack-vaas-set-up-resources.md))。
 
-### <a name="prerequisite-provision-a-storage-container"></a>先决条件： 预配存储容器
+### <a name="prerequisite-provision-a-storage-container"></a>先决条件：预配存储容器
 
 包的 blob 在存储帐户中创建容器。 此容器可以用于所有包验证运行。
 
@@ -56,7 +56,7 @@ ms.locfileid: "52261796"
 
 创建时**包验证**VaaS 门户中的工作流，你将需要提供包含包的 Azure 存储 blob 的 URL。
 
-#### <a name="option-1-generating-an-account-sas-url"></a>选项 1： 生成帐户 SAS URL
+#### <a name="option-1-generating-an-account-sas-url"></a>选项 1：生成 SAS URL 的帐户
 
 1. 在中[Azure 门户](https://portal.azure.com/)，请转到你的存储帐户，然后导航到包含您的包.zip
 
@@ -70,7 +70,7 @@ ms.locfileid: "52261796"
 
 使用**Blob SAS URL**启动时的新**包验证**VaaS 门户中的工作流。
 
-#### <a name="option-2-using-public-read-container"></a>选项 2： 使用公共只读的容器
+#### <a name="option-2-using-public-read-container"></a>选项 2：使用公共只读的容器
 
 > [!CAUTION]
 > 此选项将打开你的容器用于匿名的只读访问。
@@ -113,9 +113,23 @@ ms.locfileid: "52261796"
 
 ## <a name="run-package-validation-tests"></a>运行包验证测试
 
-在中**包验证测试摘要**页中，将看到的完成验证所需的测试的列表。 此工作流中的测试运行大约 24 小时。
+1. 在中**包验证测试摘要**页中，将看到的完成验证所需的测试的列表。 此工作流中的测试运行大约 24 小时。
 
-[!INCLUDE [azure-stack-vaas-workflow-validation-section_schedule](includes/azure-stack-vaas-workflow-validation-section_schedule.md)]
+    验证工作流中**安排**测试使用工作流创建期间指定的工作流级别公用参数 (请参阅[工作流通用参数作为服务AzureStack验证](azure-stack-vaas-parameters.md)). 如果任何测试参数值变得无效，您必须 resupply 它们中所述[修改工作流参数](azure-stack-vaas-monitor-test.md#change-workflow-parameters)。
+
+    > [!NOTE]
+    > 计划高于现有实例的一个验证测试，将在门户中创建的新实例来代替旧实例。 旧实例的日志将保留，但不能从门户访问。  
+    测试成功，完成后**计划**操作将被禁用。
+
+2. 选择将运行测试的代理。 有关添加信息本地测试执行代理，请参阅[部署本地代理](azure-stack-vaas-local-agent.md)。
+
+3. 对于每个以下测试，请步骤四个和第五个：
+    - OEM 扩展包验证
+    - 云模拟引擎
+
+4. 选择**计划**从上下文菜单打开的提示的计划的测试实例。
+
+5. 查看测试参数，然后选择**提交**来计划执行测试。
 
 已成功完成所有测试，请发送 VaaS 解决方案和对包验证的名称[ vaashelp@microsoft.com ](mailto:vaashelp@microsoft.com)请求包签名。
 

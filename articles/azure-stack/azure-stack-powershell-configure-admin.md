@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 12/07/2018
 ms.author: mabrigg
 ms.reviewer: thoroet
-ms.openlocfilehash: 1f9d5325522f8ec40af99059651a00f6cdc0e8e0
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 7a744520fe2a3b53b1306d4c80a5eca7d86258a7
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53089610"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54104533"
 ---
 # <a name="connect-to-azure-stack-with-powershell-as-an-operator"></a>以操作员身份使用 PowerShell 连接到 Azure Stack
 
@@ -29,16 +29,19 @@ ms.locfileid: "53089610"
 
 ## <a name="prerequisites"></a>必备组件
 
-运行以下先决条件[开发工具包](./asdk/asdk-connect.md#connect-with-rdp)或基于 Windows 的外部客户端是否[连接到通过 VPN ASDK](./asdk/asdk-connect.md#connect-with-vpn)。 
+如果已[通过 VPN 连接到 ASDK](./asdk/asdk-connect.md#connect-with-vpn)，请通过[开发工具包](./asdk/asdk-connect.md#connect-with-rdp)或基于 Windows 的外部客户端运行以下先决条件操作。 
 
  - 安装 [Azure Stack 兼容的 Azure PowerShell 模块](azure-stack-powershell-install.md)。  
  - 下载[使用 Azure Stack 所需的工具](azure-stack-powershell-download.md)。  
 
 ## <a name="connect-with-azure-ad"></a>与 Azure AD 连接
 
-使用 PowerShell 配置 Azure Stack 操作员环境。 运行以下脚本之一： Azure Active Directory (Azure AD) 租户和 Azure 资源管理器终结点值替换为你自己环境的配置。 <!-- GraphAudience endpoint -->
+使用 PowerShell 配置 Azure Stack 操作员环境。 运行以下脚本之一：将 Azure Active Directory (Azure AD) tenantName 和 Azure 资源管理器终结点值替换为你自己的环境配置。 <!-- GraphAudience endpoint -->
 
 ```PowerShell  
+    # Register an Azure Resource Manager environment that targets your Azure Stack instance. Get your Azure Resource Manager endpoint value from your service provider.
+Add-AzureRMEnvironment -Name "AzureStackAdmin" -ArmEndpoint "https://adminmanagement.local.azurestack.external"
+
     # Set your tenant name
     $AuthEndpoint = (Get-AzureRmEnvironment -Name "AzureStackAdmin").ActiveDirectoryAuthority.TrimEnd('/')
     $AADTenantName = "<myDirectoryTenantName>.onmicrosoft.com"
@@ -51,7 +54,7 @@ ms.locfileid: "53089610"
 
 ## <a name="connect-with-ad-fs"></a>与 AD FS 连接
 
-连接到 Azure Stack 操作员环境中使用 PowerShell 与 Azure Active Directory 联合身份验证服务 (Azure AD FS)。 对于 Azure Stack 开发工具包，此 Azure 资源管理器终结点设置为`https://adminmanagement.local.azurestack.external`。 若要获取 Azure Stack 集成系统的 Azure 资源管理器终结点，请联系服务提供商。
+使用 PowerShell 通过 Active Directory 联合身份验证服务 (Azure AD FS) 连接到 Azure Stack 操作员环境。 对于 Azure Stack 开发工具包，此 Azure 资源管理器终结点设置为 `https://adminmanagement.local.azurestack.external`。 若要获取 Azure Stack 集成系统的 Azure 资源管理器终结点，请与服务提供商联系。
 
 <!-- GraphAudience endpoint -->
 

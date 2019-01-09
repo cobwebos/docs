@@ -13,14 +13,14 @@ ms.topic: tutorial
 ms.date: 11/26/2018
 ms.author: mabrigg
 ms.reviewer: johnhas
-ms.openlocfilehash: 0830deaaa1161880706c39aee741af06a41b4b6f
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 58c69840e7b8ebdc2bd367859184ab54460c9426
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52426324"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54103462"
 ---
-# <a name="tutorial-set-up-resources-for-validation-as-a-service"></a>教程： 为作为服务的验证设置的资源
+# <a name="tutorial-set-up-resources-for-validation-as-a-service"></a>教程：设置验证为服务资源
 
 [!INCLUDE [Azure_Stack_Partner](./includes/azure-stack-partner-appliesto.md)]
 
@@ -48,7 +48,7 @@ Azure AD 租户是进行身份验证和注册 VaaS 所必需的。 合作伙伴�
  
     为你的租户在 VaaS 中执行操作，通过将分配以下角色之一的用户授权：
 
-    | 角色名称 | 说明 |
+    | 角色名称 | 描述 |
     |---------------------|------------------------------------------|
     | 所有者 | 具有对所有资源的完全访问权限。 |
     | 读取器 | 可以查看所有资源，但不是创建或管理。 |
@@ -70,7 +70,7 @@ Azure AD 租户是进行身份验证和注册 VaaS 所必需的。 合作伙伴�
 
 1. 将有关租户的以下信息发送到在 Microsoft [ vaashelp@microsoft.com ](mailto:vaashelp@microsoft.com)。
 
-    | 数据 | 说明 |
+    | 数据 | 描述 |
     |--------------------------------|---------------------------------------------------------------------------------------------|
     | 组织名称 | 官方组织名称。 |
     | Azure AD 租户目录名称 | 正在注册的 Azure AD 租户目录名称。 |
@@ -90,7 +90,7 @@ Azure AD 租户是进行身份验证和注册 VaaS 所必需的。 合作伙伴�
 
 ## <a name="create-an-azure-storage-account"></a>创建 Azure 存储帐户
 
-在测试执行期间 VaaS 输出到 Azure 存储帐户的诊断日志。 除了测试日志的存储帐户可能还用于上传 OEM 扩展包在包验证工作流。
+在测试执行期间 VaaS 输出到 Azure 存储帐户的诊断日志。 除了测试日志的存储帐户可能还用于上传 OEM 扩展包解决方案验证工作流。
 
 在 Azure 公有云，不能在 Azure Stack 环境中托管的 Azure 存储帐户。
 

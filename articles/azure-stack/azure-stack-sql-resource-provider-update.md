@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/04/2018
+ms.date: 01/08/2019
 ms.author: jeffgilb
-ms.reviewer: quying
-ms.openlocfilehash: 8fc8be105c6c610e6b246fa0ec619fecc81b1dd9
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.reviewer: georgel
+ms.openlocfilehash: b39cc799218a4c6f865acac8b98f5fb977c83bdc
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52966239"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54117786"
 ---
 # <a name="update-the-sql-resource-provider"></a>更新 SQL 资源提供程序
 
@@ -106,7 +106,7 @@ $PfxPass = ConvertTo-SecureString "P@ssw0rd1" -AsPlainText -Force
 
 运行脚本时，可在命令行中指定以下参数。 如果未指定参数或任何参数验证失败，系统会提示提供所需的参数。
 
-| 参数名称 | 说明 | 注释或默认值 |
+| 参数名称 | 描述 | 注释或默认值 |
 | --- | --- | --- |
 | **CloudAdminCredential** | 访问特权终结点时所需的云管理员凭据。 | _必需_ |
 | **AzCredential** | Azure Stack 服务管理员帐户的凭据。 使用部署 Azure Stack 时所用的相同凭据。 | _必需_ |

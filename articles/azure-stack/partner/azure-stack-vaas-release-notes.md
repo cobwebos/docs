@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 11/26/2018
 ms.author: mabrigg
 ms.reviewer: johnhas
-ms.openlocfilehash: a6245472f0fc3f65dcbeebdf251387efed5f02b8
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.openlocfilehash: 687e47eff000679f24088a59297a258a1469f3fd
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52333002"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54106267"
 ---
 # <a name="release-notes-for-validation-as-a-service"></a>作为一项服务验证的发行说明
 
@@ -49,7 +49,7 @@ ms.locfileid: "52333002"
 
 - 更新 VaaS 先决条件和 VHD
 
-    `Install-VaaSPrerequisites` 现在需要云管理员凭据来在包验证过程中解决问题。 在文档[下载并安装代理](azure-stack-vaas-local-agent.md#download-and-install-the-agent)已使用以下更新：
+    `Install-VaaSPrerequisites` 现在需要用于解决方案验证过程中解决问题的云管理员凭据。 在文档[下载并安装代理](azure-stack-vaas-local-agent.md#download-and-install-the-agent)已使用以下更新：
 
     ```PowerShell
     $ServiceAdminCreds = New-Object System.Management.Automation.PSCredential "<aadServiceAdminUser>", (ConvertTo-SecureString "<aadServiceAdminPassword>" -AsPlainText -Force)
@@ -76,7 +76,7 @@ ms.locfileid: "52333002"
 
   - 包签名通知
 
-    OEM 自定义包作为包验证工作流的一部分提交时，将验证的包格式，以确保它遵循已发布的规范。 如果包不符合，则运行将失败。 电子邮件通知将发送到租户的已注册 Azure Active Directory 联系人的电子邮件地址。
+    OEM 自定义包作为解决方案验证工作流的一部分提交时，将验证包格式，以确保它遵循已发布的规范。 如果包不符合，则运行将失败。 电子邮件通知将发送到租户的已注册 Azure Active Directory 联系人的电子邮件地址。
 
   - 交互式测试类别
 

@@ -10,15 +10,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/26/2018
+ms.date: 1/07/2019
 ms.author: mabrigg
 ms.reviewer: johnhas
-ms.openlocfilehash: 871df693878611b0322a0f06634c62a7a9efd90a
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.openlocfilehash: 6a14a806b48b30d84b021a84a1ef0a2f4318ea94
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52335157"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54106455"
 ---
 # <a name="validation-as-a-service-key-concepts"></a>作为服务的关键概念验证
 
@@ -44,7 +44,7 @@ VaaS 解决方案的上下文中运行 VaaS 工作流。 它表示一组执行�
 ![VaaS 工作流磁贴](media/tile_all-workflows.png)
 
 > [!NOTE]
-> **包验证**工作流当前支持两种方案：[验证 OEM 包](azure-stack-vaas-validate-oem-package.md)并[验证来自 Microsoft 的软件更新](azure-stack-vaas-validate-microsoft-updates.md)。
+> **解决方案验证**工作流当前支持两种方案：[验证 OEM 包](azure-stack-vaas-validate-oem-package.md)并[来自 Microsoft 的软件更新进行验证](azure-stack-vaas-validate-microsoft-updates.md)。
 
 工作流类型的详细信息，请参阅[验证作为 Azure Stack 的服务是什么？](azure-stack-vaas-overview.md)。
 
@@ -52,10 +52,10 @@ VaaS 解决方案的上下文中运行 VaaS 工作流。 它表示一组执行�
 
 1. 在解决方案仪表板中创建新的解决方案，或选择一个现有。 这将刷新，并允许工作流磁贴。
 2. 若要创建新的工作流，请选择**启动**的任意磁贴。 特定于每个工作流的信息，请参阅以下文章：
-    - 测试轮次：[快速入门： 用于验证的服务门户，作为计划第一次测试](azure-stack-vaas-schedule-test-pass.md)
+    - 测试通过：[快速入门：用于验证的服务门户，作为计划第一次测试](azure-stack-vaas-schedule-test-pass.md)
     - 解决方案验证：[验证新的 Azure Stack 解决方案](azure-stack-vaas-validate-solution-new.md)
-    - 包验证：[来自 Microsoft 的软件更新进行验证](azure-stack-vaas-validate-microsoft-updates.md)
-    - 包验证： [OEM 验证包](azure-stack-vaas-validate-oem-package.md)
+    - 解决方案验证：[验证来自 Microsoft 的软件更新](azure-stack-vaas-validate-microsoft-updates.md)
+    - 解决方案验证：[验证 OEM 程序包](azure-stack-vaas-validate-oem-package.md)
 
 3. 若要管理或监视现有工作流，请选择上**管理**工作流磁贴上。 选择的工作流并使用名称**编辑**按钮以查看属性或更改常用的测试参数。
 
