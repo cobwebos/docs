@@ -120,10 +120,16 @@ items:
       href: job-state-events-cli-how-to.md
   - name: 保护内容
     items:
-    - name: 使用 AES-128 - .NET
+    - name: AES-128 动态加密 - .NET
       href: protect-with-aes128.md
-    - name: 使用 DRM - .NET
+    - name: DRM 动态加密 - .NET
       href: protect-with-drm.md
+    - name: 适用于 iOS 的脱机 FairPlay
+      href: offline-fairplay-for-ios.md
+    - name: 适用于 Android 的脱机 Widevine
+      href: offline-widevine-for-android.md
+    - name: 适用于 Windows 10 的脱机 PlayReady
+      href: offline-plaready-streaming-for-windows-10.md
   - name: 创建筛选器
     items:
     - name: 使用 .NET
@@ -192,9 +198,9 @@ items:
     href: release-notes.md
   - name: 常见问题解答
     href: frequently-asked-questions.md
-ms.openlocfilehash: 2ea45acd19909c6bcdcca7a68b9dce45fa272f08
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: c168b5d2097e8fe1d6e79e271f8ff84af48cb049
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54034975"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54121628"

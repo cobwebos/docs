@@ -302,6 +302,8 @@ items:
       items:
       - name: 使用用于 VS Code 的 Azure IoT Tools 管理云设备消息传送
         href: iot-hub-vscode-iot-toolkit-cloud-device-messaging.md
+      - name: 使用用于 Visual Studio 的 Cloud Explorer 管理云设备消息传送
+        href: iot-hub-visual-studio-cloud-device-messaging.md
       - name: Power BI 中的数据可视化
         href: iot-hub-live-data-visualization-in-power-bi.md
       - name: 使用 Web 应用进行数据可视化
@@ -310,6 +312,8 @@ items:
         href: iot-hub-weather-forecast-machine-learning.md
       - name: 使用用于 VS Code 的 Azure IoT Tools 进行设备管理
         href: iot-hub-device-management-iot-toolkit.md
+      - name: 使用用于 Visual Studio 的 Cloud Explorer 进行设备管理
+        href: iot-hub-device-management-visual-studio.md
       - name: 使用适用于 Azure CLI 的 IoT 扩展进行设备管理
         href: iot-hub-device-management-iot-extension-azure-cli-2-0.md
       - name: 使用逻辑应用执行远程监视和发送通知
@@ -412,9 +416,9 @@ items:
     href: https://microsoft.github.io/techcasestudies/#technology=IoT&sortBy=featured
   - name: 视频
     href: https://azure.microsoft.com/documentation/videos/index/?services=iot-hub
-ms.openlocfilehash: 09ae29bcfa6c9941f32c4892d30369ba2183cce7
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 4cab0750e1e0a9c71a4323f28147d1963080c138
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54052955"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54107372"
