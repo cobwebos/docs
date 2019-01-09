@@ -129,20 +129,20 @@ ms.locfileid: "52319056"
 
 2.  开始与恢复 VM 建立远程桌面连接。
 
-3.  确保磁盘在磁盘管理控制台中标记为“联机”。 ****  请注意分配给附加的系统磁盘的驱动器号。
+3.  确保磁盘在磁盘管理控制台中标记为“联机”。  ****  请注意分配给附加的系统磁盘的驱动器号。
 
 4.  在进行任何更改之前，请创建 \windows\system32\config 文件夹的副本，以防需要回滚更改。
 
 5.  在故障排除 VM 上，启动注册表编辑器 (regedit.exe)。
 
-6.  突出显示“HKEY_LOCAL_MACHINE”项，然后从菜单中选择“文件” > “加载配置单元”。  **** 
+6.  突出显示“HKEY_LOCAL_MACHINE”项，然后从菜单中选择“文件” > “加载配置单元”。   **** 
 
     ![Regedit](./media/enable-or-disable-firewall-rule-guest-os/load-registry-hive.png)
 
 7.  找到并打开 \windows\system32\config\SYSTEM 文件。 
 
     > [!Note]
-    > 系统会提示输入名称。 输入  **BROKENSYSTEM**，然后展开“HKEY_LOCAL_MACHINE”。 **** 现在，可以看到名为  **BROKENSYSTEM** 的附加项。 为了进行故障排除，我们将这些有问题的配置单元装载为  **BROKENSYSTEM**。
+    > 系统会提示输入名称。 输入  **BROKENSYSTEM**，然后展开“HKEY_LOCAL_MACHINE”。  **** 现在，可以看到名为  **BROKENSYSTEM** 的附加项。 为了进行故障排除，我们将这些有问题的配置单元装载为  **BROKENSYSTEM**。
 
 8.  对 BROKENSYSTEM 分支进行以下更改：
 
@@ -164,7 +164,7 @@ ms.locfileid: "52319056"
         
         **v2.22|Action=Allow|Active=FALSE|Dir=In|Protocol=6|Profile=Domain|Profile=Private|Profile=Public|LPort=3389|App=%SystemRoot%\system32\svchost.exe|Svc=termservice|Name=@FirewallAPI.dll,-28775|Desc=@FirewallAPI.dll,-28756|EmbedCtxt=@FirewallAPI.dll,-28752|**
 
-9.  突出显示“BROKENSYSTEM”，然后从菜单中选择“文件” > “卸载配置单元”。 **** **** 
+9.  突出显示“BROKENSYSTEM”，然后从菜单中选择“文件” > “卸载配置单元”。  **** **** 
 
 10. [拆离系统磁盘并重新创建 VM](troubleshoot-recovery-disks-portal-windows.md)。
 
