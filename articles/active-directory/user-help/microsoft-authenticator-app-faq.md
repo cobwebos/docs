@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 07/30/2018
 ms.author: lizross
 ms.reviewer: librown
-ms.openlocfilehash: 689eb2afb3ca10392b007b863a2900302aea2940
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 330bc39f3d07786faa0546774fa3c58f27b6dfb3
+ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51259065"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53993937"
 ---
 # <a name="microsoft-authenticator-app-faq"></a>Microsoft Authenticator 应用常见问题解答
 
@@ -36,7 +36,7 @@ Microsoft Authenticator 应用替代了 Azure Authenticator 应用，建议使�
 |是否需要连接到 Internet 或网络才能获取和使用验证码？|无需连接到 Internet 或数据网络即可获取验证码，因此，无需手机服务即可登录。 此外，应用在关闭后会停止运行，因为不会耗尽电池。|
 |仅当应用处于打开状态时才会收到通知。 如果应用关闭，则无法收到通知。|如果接收的是通知而不是警报，则即使打开了铃声，也应该检查应用设置。 请确保在应用中启用声音或振动通知。 如果完全收不到通知，应检查是否存在以下情况：<ul><li>手机是否进入“免打扰”或“静音”模式？ 这些模式可能阻止应用发送通知。</li><li>是否能从其他应用收到通知？ 如果不能，原因可能是手机出现网络连接问题，或者 Android 或 Apple 的通知通道出现问题。 可以尝试通过手机设置解决网络连接问题，但可能需要联系服务提供商来帮助解决 Android 或 Apple 通知通道问题。</li><li>是否应用中的某些帐户可以收到通知，而其他帐户则不能？ 如果是，请从应用中删除有问题的帐户，然后再次添加并允许其发送通知，看看是否能解决问题。</li></ul>如果尝试了所有这些步骤但仍有问题，我们建议发送日志文件做诊断。 打开应用，转到“帮助”并选择“发送日志”。 然后，转到 [Microsoft Authenticator 应用论坛](https://social.technet.microsoft.com/Forums/en-US/home?forum=MicrosoftAuthenticatorApp)告知遇到的问题，以及目前为止已尝试过的步骤。|
 |我在应用中使用了验证码，但如何切换到推送通知？|可以针对工作或学校帐户（如果管理员已启用）或个人 Microsoft 帐户设置此方法，并通知并不适用于 Google 或 Facebook 等第三方帐户。<br><br>若要将个人帐户切换到通知，必须在帐户中重新注册设备，并设置推送通知。<br><br>组织会决定是否允许工作或学校帐户使用一键式通知，因此，组织可能已禁用此功能。|
-|通知是否适用于非 Microsoft 帐户|不适用，通知仅适用于 Microsoft 帐户和 Azure Active Directory 帐户。 如果工作单位或学校使用的是 Azure AD 帐户，则可能会禁用此功能。|
+|通知是否适用于非 Microsoft 帐户|不适用，通知只适用于 Microsoft 帐户和 Azure Active Directory 帐户。 如果工作单位或学校使用的是 Azure AD 帐户，则可能会禁用此功能。|
 |我购买了新的设备，或者从备份还原了我的设备。 如何再次在 Microsoft Authenticator 应用中设置我的帐户？|如果运行 iOS 设备，已启用“自动备份”，并且在旧设备上创建了帐户的备份，则可以使用该备份在新设备上恢复帐户凭据。 有关详细信息，请参阅[使用 Microsoft Authenticator 应用备份和恢复帐户凭据](microsoft-authenticator-app-backup-and-recovery.md)一文。|
 |我丢失了设备或者改用了新设备。 如何确保不会继续向旧设备发送通知？|将 Microsoft Authenticator 应用添加到新 iOS 设备不会自动从旧设备上删除该应用。 从旧设备中删除该应用并不足够。 必须从旧设备中删除该应用，同时告知 Microsoft 或组织忘记旧设备，并从帐户中注销该设备。<ul><li>**使用个人 Microsoft 帐户从设备中删除应用。** 转到[帐户安全](https://account.microsoft.com/security) 页的双重验证区域，选择关闭旧设备的验证。</li><li>**使用工作或学校 Microsoft 帐户从设备中删除应用。** 转到[我的应用](https://myapps.microsoft.com/)页的双重验证区域或转到组织的自定义门户，选择关闭旧设备的验证。</li></ul>|
 |如何从应用中删除帐户？|<ul><li>**iOS。** 在主屏幕中，依次选择菜单按钮、“编辑帐户”。 依次点击帐户名旁边的红色图标、“删除帐户”。</li><li>**Windows Phone。** 在主屏幕中，依次选择菜单按钮、“编辑帐户”。 点击帐户名称旁边的 **X**。</li><li>**Android。** 在主屏幕中，依次选择菜单按钮、“编辑帐户”。 点击帐户名称旁边的 **X**。</li></ul>如果拥有已注册到组织的设备，可能需要完成一个额外步骤才能删除帐户。 在这些设备上，Microsoft Authenticator 应用自动注册为设备管理员。 如果要完全卸载该应用，首先需要在应用设置中取消注册它。|

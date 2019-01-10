@@ -17,12 +17,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/16/2018
 ms.author: gokuma
-ms.openlocfilehash: fafa680f877060f1e7d96c60f52e3033eeb38553
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: d6e4cc585c1239d6a1b81b371f39fc19e3ff37ea
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53190629"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54157167"
 ---
 # <a name="data-science-with-a-linux-data-science-virtual-machine-on-azure"></a>Azure 上的 Linux 数据科学虚拟机中的数据科学
 本演练显示如何通过 Linux 数据科研 VM 执行几个常见的数据科学任务。 Linux 数据科研虚拟机 (DSVM) 是 Azure 提供的虚拟机映像，其中预安装了一组常用于执行数据分析和机器学习的工具。 [预配 Linux 数据科研虚拟机](linux-dsvm-intro.md)主题中逐项列出了主要的软件组件。 VM 映像允许在几分钟之内轻松开始执行数据科学任务，而无需逐个安装和配置每个工具。 如有必要，可以轻松扩展 VM，并在不使用时停止 VM。 因此，此资源既具有弹性，又具有成本效益。
@@ -101,7 +101,7 @@ ms.locfileid: "53190629"
 
     data$spam <- as.factor(data$spam)
 
-若要进行一些探索性分析，请使用 [ggplot2](http://ggplot2.org/) 程序包 - 一个适用于 R 的常用绘图库，已安装在 VM 上。 请注意，从前面显示的摘要数据，我们已经获得有关感叹号字符的频率的汇总统计信息。 让我们使用以下命令来绘制这些频率：
+若要进行一些探索性分析，请使用 [ggplot2](https://ggplot2.tidyverse.org/) 程序包 - 一个适用于 R 的常用绘图库，已安装在 VM 上。 请注意，从前面显示的摘要数据，我们已经获得有关感叹号字符的频率的汇总统计信息。 让我们使用以下命令来绘制这些频率：
 
     library(ggplot2)
     ggplot(data) + geom_histogram(aes(x=char_freq_exclamation), binwidth=0.25)

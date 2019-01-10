@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/15/2018
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: 780247b5cfc70a333bac640f2e478e72f820b1f3
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: e21a3ae23ca6a856c9524e52e80f33362f53cae1
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52266166"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54040840"
 ---
 # <a name="how-to-restore-azure-cosmos-db-data-from-a-backup"></a>如何从备份还原 Azure Cosmos DB 数据
 

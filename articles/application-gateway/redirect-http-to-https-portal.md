@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 12/7/2018
 ms.author: victorh
-ms.openlocfilehash: 1d30ddfb97b065d0d2fdf3bf91a73d3f7eb1b70f
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: a10314d4c396298f018459e56252d0d0d1656f08
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53110725"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54107780"
 ---
 # <a name="create-an-application-gateway-with-http-to-https-redirection-using-the-azure-portal"></a>使用 Azure 门户创建支持 HTTP 到 HTTPS 重定向的应用程序网关
 
@@ -65,7 +65,7 @@ Export-PfxCertificate `
 
 若要在创建的资源之间实现通信，需要设置虚拟网络。 在本示例中创建了两个子网：一个用于应用程序网关，另一个用于后端服务器。 可以在创建应用程序网关的同时创建虚拟网络。
 
-1. 在 [http://portal.azure.com](http://portal.azure.com) 中登录 Azure 门户。
+1. 在 [https://portal.azure.com](https://portal.azure.com) 中登录 Azure 门户。
 2. 单击 Azure 门户左上角的“创建资源”。
 3. 选择“网络”，然后在“特色”列表中选择“应用程序网关”。
 4. 输入应用程序网关的以下值：

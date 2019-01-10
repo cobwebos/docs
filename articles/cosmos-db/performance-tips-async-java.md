@@ -1,20 +1,18 @@
 ---
 title: 适用于 Async Java 的 Azure Cosmos DB 性能提示
 description: 了解用于提高 Azure Cosmos DB 数据库性能的客户端配置选项
-keywords: 如何提高数据库性能
-services: cosmos-db
 author: SnehaGunda
 ms.service: cosmos-db
 ms.devlang: java
 ms.topic: conceptual
 ms.date: 03/27/2018
 ms.author: sngun
-ms.openlocfilehash: 440dc13e2c6f4d9acc270b644cc549280e6d91be
-ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
+ms.openlocfilehash: 07da7f8905d7b8952db852d3da1dab12884de509
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53413568"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54041792"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-async-java"></a>适用于 Azure Cosmos DB 和 Async Java 的性能提示
 

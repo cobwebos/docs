@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 02/25/2016
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 85405a96d141188203ddc88410c96654667fa83a
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 11e5a654f2bfcb497eec3a4dfea81f3684f5b551
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53270104"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53599802"
 ---
 # <a name="controlling-azure-app-service-traffic-with-azure-traffic-manager"></a>使用 Azure 流量管理器控制 Azure 应用服务流量
 > [!NOTE]
@@ -52,7 +52,7 @@ Azure 流量管理器使用四种不同的路由方法。 下面的列表中介�
 * 在一个配置文件中，只能为每个区域指定一个应用服务终结点。 当选择某个应用作为一个区域的终结点后，该区域中的其余应用对于该配置文件会变为不可选择状态。
 * 在 Azure 流量管理器配置文件中指定的应用服务终结点将出现在配置文件中应用“配置”页面的“域名”部分下，但无法在该位置进行配置。
 * 在将应用添加到配置文件后，该应用门户页面的仪表板上的“网站 URL”会显示该应用的自定义域 URL（如果已经设置了一个）。 否则，它将显示流量管理器配置文件 URL（例如，`contoso.trafficmanager.net`）。 在应用的“配置”页面的“域名”部分下将可以看到应用的直接域名和流量管理器 URL。
-* 自定义域名将正常工作，但除了将它们添加到应用之外，还必须配置 DNS 映射，使之指向流量管理器 URL。 有关如何为应用服务设置自定义域的信息，请参阅[将现有的自定义 DNS 名称映射到 Azure Web 应用](app-service-web-tutorial-custom-domain.md)。
+* 自定义域名将正常工作，但除了将它们添加到应用之外，还必须配置 DNS 映射，使之指向流量管理器 URL。 有关如何为应用服务设置自定义域的信息，请参阅[将现有的自定义 DNS 名称映射到 Azure 应用服务](app-service-web-tutorial-custom-domain.md)。
 * 只能将标准或高级模式下的应用添加到 Azure 流量管理器配置文件。
 
 ## <a name="next-steps"></a>后续步骤

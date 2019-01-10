@@ -17,12 +17,12 @@ ms.workload: identity
 ms.date: 12/14/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: 90b9a1104dd387c857e4955cabfb121773aedcca
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: 5f3857480bfe6c4d5c4efe759b11761123fa4441
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53410053"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53973054"
 ---
 # <a name="what-are-conditions-in-azure-active-directory-conditional-access"></a>Azure Active Directory 条件访问中的条件是什么？ 
 
@@ -74,7 +74,7 @@ ms.locfileid: "53410053"
 
 - “所有云应用”可对要应用到整个组织的策略设置基准。 对于要求执行多重身份验证（由于检测到任何云应用存在登录风险）的策略，请使用此选项。 应用到“所有云应用”的策略将应用于对所有网站和服务的访问权限。 此设置并非仅限用于“选择应用”列表上显示的云应用。 
 
-- **选择应用**，以便根据策略将特定服务指定为目标。 例如，可以要求用户使用[合规的设备](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-mam#app-based-or-compliant-device-policy-for-exchange-online-and-sharepoint-online)访问 SharePoint Online。 当其他服务访问 SharePoint 内容时，也会对这些服务应用此策略。 例如 Microsoft Teams。 
+- “选择应用”，以便根据策略将特定服务指定为目标。 例如，可以要求用户使用[合规的设备](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-mam#app-based-or-compliant-device-policy-for-exchange-online-and-sharepoint-online)访问 SharePoint Online。 当其他服务访问 SharePoint 内容时，也会对这些服务应用此策略。 例如 Microsoft Teams。 
 
 可以从策略中排除特定的应用。 但是，这些应用仍受到应用于它们访问的服务的策略的限制。 
 

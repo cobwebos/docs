@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/02/2019
 ms.author: jeedes
-ms.openlocfilehash: f4f7546efca0bd69fd71418116142acacb927604
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 31dc45dbe8d7e3ed9b701f8623fd4e1425320316
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53970893"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54107457"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-g-suite"></a>教程：Azure Active Directory 与 G Suite 集成
 
@@ -153,8 +153,8 @@ ms.locfileid: "53970893"
     |--|
     | `google.com/a/<yourdomain.com>` |
     | `google.com` |
-    | `http://google.com` |
-    | `http://google.com/a/<yourdomain.com>` |
+    | `https://google.com` |
+    | `https://google.com/a/<yourdomain.com>` |
 
     > [!NOTE]
     > 这些不是实际值。 必须使用实际登录 URL 和标识符更新这些值。 请联系 [G Suite 客户端支持团队](https://www.google.com/contact/)获取这些值。
@@ -203,7 +203,7 @@ ms.locfileid: "53970893"
 
 ### <a name="configure-g-suite-single-sign-on"></a>配置 G Suite 单一登录
 
-1. 在浏览器中打开新选项卡并使用管理员帐户登录到 [G Suite 管理员控制台](http://admin.google.com/)。
+1. 在浏览器中打开新选项卡并使用管理员帐户登录到 [G Suite 管理员控制台](https://admin.google.com/)。
 
 2. 单击“安全”。 如果没有看到该链接，它可能被隐藏在屏幕底部的“其他控件”菜单下。
 

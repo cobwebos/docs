@@ -12,15 +12,15 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 09/19/2017
 ms.author: mbullwin
-ms.openlocfilehash: 4a4a75885b1303b7bc6666ea65993ac875b98f0d
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: cb32069de295b883cdc6d3a9fa495b1bea719c39
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54001713"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54116976"
 ---
 # <a name="diagnose-exceptions-in-your-web-apps-with-application-insights"></a>使用 Application Insights 诊断 Web 应用中的异常
-[Application Insights](../../application-insights/app-insights-overview.md) 可报告实时 Web 应用中的异常。 可以将失败的请求与异常关联到客户端和服务器上的其他事件，从而快速诊断原因。
+[Application Insights](../../azure-monitor/app/app-insights-overview.md) 可报告实时 Web 应用中的异常。 可以将失败的请求与异常关联到客户端和服务器上的其他事件，从而快速诊断原因。
 
 ## <a name="set-up-exception-reporting"></a>设置异常报告
 * 若要报告服务器应用中的异常，请执行以下操作：
@@ -90,7 +90,7 @@ Application Insights 附带了精选的 APM 体验，帮助你诊断所监视应
 ![深入了解](./media/asp-net-exceptions/viewCustomEvents.png)
 
 > [!NOTE]
-> 如果应用生成大量遥测，自适应采样模块将通过仅发送具有代表性的事件部分自动减少发送到门户的量。 将以组为单位选择或取消选择属于同一操作的事件，以便可以在相关事件之间浏览。 [了解采样](../../application-insights/app-insights-sampling.md)。
+> 如果应用生成大量遥测，自适应采样模块将通过仅发送具有代表性的事件部分自动减少发送到门户的量。 将以组为单位选择或取消选择属于同一操作的事件，以便可以在相关事件之间浏览。 [了解采样](../../azure-monitor/app/sampling.md)。
 >
 >
 

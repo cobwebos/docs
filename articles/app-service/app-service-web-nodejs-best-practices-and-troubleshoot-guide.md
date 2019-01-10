@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 11/09/2017
 ms.author: ranjithr
 ms.custom: seodec18
-ms.openlocfilehash: db412d3fd0af84d528ad0c83d86cc5d055359914
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: aad31e72682e15c49fb3d6dce64e7ef46525cb66
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53632681"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54051845"
 ---
 # <a name="best-practices-and-troubleshooting-guide-for-node-applications-on-azure-app-service-windows"></a>Azure 应用服务 Windows 版上节点应用程序的最佳做法和故障排除指南
 
@@ -147,7 +147,7 @@ var keepaliveAgent = new Agent({
 
 #### <a name="my-node-application-is-consuming-too-much-cpu"></a>节点应用程序消耗过多的 CPU
 
-门户上可能会显示 Azure 应用服务针对高 CPU 消耗量提供的建议。 也可将监视器设置为监视某些[指标](web-sites-monitor.md)。 在 [Azure 门户仪表板](../application-insights/app-insights-web-monitor-performance.md)上检查 CPU 使用率时，请检查 CPU 的最大值，这样才不会错过峰值。
+门户上可能会显示 Azure 应用服务针对高 CPU 消耗量提供的建议。 也可将监视器设置为监视某些[指标](web-sites-monitor.md)。 在 [Azure 门户仪表板](../azure-monitor/app/web-monitor-performance.md)上检查 CPU 使用率时，请检查 CPU 的最大值，这样才不会错过峰值。
 如果你认为应用程序消耗了过多的 CPU，但又无法做出解释，可以分析 Node 应用程序来找出原因。
 
 #### <a name="profiling-your-node-application-on-azure-app-service-with-v8-profiler"></a>在 Azure 应用服务中使用 V8 探查器分析 node 应用程序
@@ -220,7 +220,7 @@ http.createServer(function (req, res) {
 
 ### <a name="my-node-application-is-consuming-too-much-memory"></a>node 应用程序消耗过多的内存
 
-如果应用程序消耗过多的内存，门户中会显示 Azure 应用服务针对高内存消耗量提供的建议。 可将监视器设置为监视某些[指标](web-sites-monitor.md)。 在 [Azure 门户仪表板](../application-insights/app-insights-web-monitor-performance.md)上检查内存使用率时，请务必检查内存的最大值，这样才不会错过峰值。
+如果应用程序消耗过多的内存，门户中会显示 Azure 应用服务针对高内存消耗量提供的建议。 可将监视器设置为监视某些[指标](web-sites-monitor.md)。 在 [Azure 门户仪表板](../azure-monitor/app/web-monitor-performance.md)上检查内存使用率时，请务必检查内存的最大值，这样才不会错过峰值。
 
 #### <a name="leak-detection-and-heap-diff-for-nodejs"></a>node.js 的泄漏检测和堆区分
 

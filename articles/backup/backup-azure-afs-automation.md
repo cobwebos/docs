@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/12/2018
 ms.author: pullabhk
 ms.assetid: 80da8ece-2cce-40dd-8dce-79960b6ae073
-ms.openlocfilehash: 90623981f67bbed15ade743192525676e58a0a83
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 30fc36f29a7602e2bc3f192b445474bfc50e9434
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53318369"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53632629"
 ---
 # <a name="use-powershell-to-back-up-and-restore-azure-file-shares"></a>使用 PowerShell 备份和还原 Azure 文件共享
 
@@ -34,11 +34,11 @@ ms.locfileid: "53318369"
 ## <a name="setup-and-registration"></a>设置和注册
 
 > [!NOTE]
-> 如[此处](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-6.13.0)所述，2018 年 11 月将终止对 AzureRM 模块中新功能的支持。 因此，我们将使用新的“Az”PS 模块来支持 Azure 文件共享的备份。 此外，我们正在计划将 Az 模块正式版 (GA) 上线。
+> 如[此处](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-6.13.0)所述，2018 年 11 月将终止对 AzureRM 模块中新功能的支持。 因此，我们将使用现在在 GA 中的新“Az”PS 模块来支持 Azure 文件共享的备份。
 
 开始时，请执行以下操作：
 
-1. [下载最新版本的“Az”PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azurermps-6.13.0)（所需的最低版本为：0.7.0）
+1. [下载最新版本的“Az”PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azurermps-6.13.0)（所需的最低版本为：1.0.0）
 
 2. 键入以下命令查找可用的 Azure 备份 PowerShell cmdlet：
 
@@ -158,6 +158,8 @@ Name                 WorkloadType       BackupManagementType BackupTime         
 ----                 ------------       -------------------- ----------                ----------
 NewAFSPolicy           AzureFiles            AzureStorage              10/24/2017 1:30:00 AM
 ```
+
+“NewAFSPolicy”进行每日备份，并将其保留 30 天。
 
 ### <a name="enable-protection"></a>启用保护
 

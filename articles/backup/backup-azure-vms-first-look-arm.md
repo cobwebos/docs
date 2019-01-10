@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 12/17/2018
 ms.author: raynew
-ms.openlocfilehash: 0c394a92bff3ace210ee0db156f47bb8912bf45d
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: c1bd92b9c4611465b680f195e4881a447f4bb701
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53631577"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54044393"
 ---
 # <a name="back-up-azure-vms-with-the-azure-backup-service"></a>使用 Azure 备份服务备份 Azure VM
 
@@ -290,7 +290,7 @@ ms.locfileid: "53631577"
   部署通知会告知你备份作业已触发，并且可以在“备份作业”页面上监视作业的进度。 创建初始备份可能需要一些时间，具体取决于 VM 的大小。
 
   > [!NOTE]
-  > 所有由 Azure 备份负责备份的数据均通过[存储服务加密 (SSE)](../storage/common/storage-service-encryption.md) 进行静态加密。
+  > - 所有由 Azure 备份负责备份的数据均通过[存储服务加密 (SSE)](../storage/common/storage-service-encryption.md) 进行静态加密。
   >
   >
 
@@ -339,4 +339,3 @@ Azure VM 备份的成本取决于受保护实例的数目。 如需受保护实�
 ## <a name="next-steps"></a>后续步骤
 
 [管理](backup-azure-manage-vms.md)备份。
-

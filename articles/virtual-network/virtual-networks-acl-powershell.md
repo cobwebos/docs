@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/15/2016
 ms.author: jdial
-ms.openlocfilehash: 1fce5b98d9e12ad373a4ca9d851fb717b3f47045
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 1f6c14c15d4930902ced642bd02d1d1833e0b361
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51250347"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54154804"
 ---
 # <a name="manage-endpoint-access-control-lists-using-powershell-in-the-classic-deployment-model"></a>在典型部署模型中使用 PowerShell 管理终结点访问控制列表
 可以使用 Azure PowerShell 或在管理门户中为终结点创建和管理网络访问控制列表 (ACL)。 在本主题中，将了解可使用 PowerShell 完成的 ACL 常见任务的过程。 有关 Azure PowerShell cmdlet 的列表，请参阅 [Azure 管理 Cmdlet](https://go.microsoft.com/fwlink/?LinkId=317721)。 有关 ACL 的详细信息，请参阅[什么是网络访问控制列表 (ACL)？](virtual-networks-acl.md)。 如果要使用管理门户管理 ACL，请参阅[如何设置虚拟机的终结点](../virtual-machines/windows/classic/setup-endpoints.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)。
@@ -58,7 +58,7 @@ ms.locfileid: "51250347"
         $acl1 = New-AzureAclConfig
         Set-AzureAclConfig –AddRule –ACL $acl1 –Order 100 `
             –Action permit –RemoteSubnet "10.0.0.0/8" `
-            –Description "Sharepoint ACL config"
+            –Description "SharePoint ACL config"
         Set-AzureAclConfig –AddRule –ACL $acl1 –Order 200 `
             –Action permit –RemoteSubnet "157.0.0.0/8" `
             –Description "web frontend ACL config"

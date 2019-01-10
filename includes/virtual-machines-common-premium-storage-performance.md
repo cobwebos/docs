@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/24/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 50e252b7dbd20d5330f8117eaa45ccf52303f277
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: b98261601f352668fa3cc8d18dc3b1d0d7fe2654
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51678162"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53553478"
 ---
 # <a name="azure-premium-storage-design-for-high-performance"></a>Azure 高级存储：高性能设计
 
@@ -66,6 +66,14 @@ IOPS 是指应用程序在一秒内发送到存储磁盘的请求数。 可以�
 延迟是指应用程序接收单个请求，将其发送到存储磁盘，然后又将响应发送到客户端所花的时间。 这是除 IOPS 和吞吐量之外的针对应用程序性能的关键度量。 高级存储磁盘的延迟是指该磁盘检索请求的信息并将其发送回应用程序所花的时间。 高级存储提供持续一致的低延迟服务。 如果在高级存储磁盘上启用 ReadOnly 主机缓存，则可获得相当低的读取延迟。 在后面的优化应用程序性能部分，我们将更详细地讨论磁盘缓存。
 
 对应用程序进行优化以获取更高的 IOPS 和吞吐量时，应用程序的延迟就会受到影响。 在优化应用程序性能以后，应始终评估应用程序的延迟，以免出现意外的高延迟行为。
+
+在托管磁盘上执行控制平面操作可能涉及将磁盘从某个存储位置移动到另一个存储位置的操作。 这是通过在后台复制数据来安排的，可能需要花费数个小时才能完成，通常少于 24 个小时，具体取决于磁盘中的数据量。 在此期间，由于一些读取可能被重定向到原始位置，所以应用程序可能会经历比平常更高的读取延迟，并且可能需要花费更长时间才能完成。 在此期间，对写入延迟没有影响。  
+
+1.  [更新存储类型](../articles/virtual-machines/windows/convert-disk-storage.md)
+2.  [分离磁盘并将其从一个 VM 附加到另一个 VM](../articles/virtual-machines/windows/attach-disk-ps.md)
+3.  [从 VHD 中创建托管磁盘](../articles/virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-managed-disk-from-vhd.md)
+4.  [从快照创建托管磁盘](../articles/virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-managed-disk-from-snapshot.md)
+5.  [将非托管磁盘转换为托管磁盘](../articles/virtual-machines/windows/convert-unmanaged-to-managed-disks.md)
 
 ## <a name="gather-application-performance-requirements"></a>收集应用程序性能要求
 
@@ -296,7 +304,7 @@ Azure 高级存储提供八种 GA 磁盘大小和三种磁盘大小，当前均�
 
 在 Windows 上，可以使用存储空间将磁盘条带化。 必须在池中为每个磁盘配置一个列。 否则，条带化卷的整体性能可能会低于预期，因为磁盘之间的通信分配不平均。
 
-重要提示：使用服务器管理器 UI，可以将列的总数设置为每个条带化卷最多 8 个。 连接 8 个以上的磁盘时，可使用 PowerShell 来创建卷。 使用 PowerShell，可以将列数设置为与磁盘数相等。 例如，如果一个条带集中有 16 个磁盘，可在 *New-VirtualDisk* PowerShell cmdlet 的 *NumberOfColumns* 参数中指定 16 个列。
+重要说明：使用服务器管理器 UI，可以将列的总数设置为每个条带化卷最多 8 个。 连接 8 个以上的磁盘时，可使用 PowerShell 来创建卷。 使用 PowerShell，可以将列数设置为与磁盘数相等。 例如，如果一个条带集中有 16 个磁盘，可在 *New-VirtualDisk* PowerShell cmdlet 的 *NumberOfColumns* 参数中指定 16 个列。
 
 在 Linux 中，可使用 MDADM 实用工具将磁盘条带化。 有关在 Linux 中对磁盘进行条带化操作的详细步骤，请参阅[在 Linux 上配置软件 RAID](../articles/virtual-machines/linux/configure-raid.md)。
 

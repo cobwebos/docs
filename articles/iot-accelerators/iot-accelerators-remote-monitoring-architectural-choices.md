@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 11/20/2018
 ms.topic: conceptual
-ms.openlocfilehash: 20af014e5a59cb526d5b96e543b10d5b2b6d6937
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: 9140739e1c9610cb4cbefb611546fe9588512d06
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52679590"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54050585"
 ---
 # <a name="remote-monitoring-architectural-choices"></a>远程监视体系结构选择
 
@@ -51,7 +51,7 @@ Microsoft 建议用于 IoT 应用程序的体系结构的基础是云原生、�
 
 对 IoT 设备进行连接，可以使用：
 
-- [IoT 中心设备 SDK](../iot-hub/iot-hub-devguide-sdks.md#azure-iot-device-sdks) 为设备实现本机客户端应用程序。 这些 SDK 提供 IoT 中心 REST API 的包装器，并处理包括重试在内的各种方案。
+- [IoT 中心设备 SDK](../iot-hub/iot-hub-devguide-sdks.md#azure-iot-hub-device-sdks) 为设备实现本机客户端应用程序。 这些 SDK 提供 IoT 中心 REST API 的包装器，并处理包括重试在内的各种方案。
 - 与 Azure IoT Edge 集成，以部署和管理在设备上的容器中运行的自定义模块。
 - 与 IoT 中心内的自动设备管理集成，以批量管理已连接的设备。
 

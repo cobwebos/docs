@@ -15,12 +15,12 @@ ms.workload: tbd
 ms.date: 05/23/2018
 ms.author: wesmc
 ms.custom: mvc
-ms.openlocfilehash: 0a407cdfd6786848825a114ff5667ccaff91fe71
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: bd0bb1c967885aa5e74728156a073e9ccc0ca48f
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53556860"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54105876"
 ---
 # <a name="quickstart-how-to-use-azure-cache-for-redis-with-java"></a>快速入门：如何将 Azure Redis 缓存与 Java 配合使用
 
@@ -38,7 +38,7 @@ Azure Redis 缓存提供对 Microsoft 所管理的专用的 Azure Redis 缓存�
 
 ## <a name="prerequisites"></a>先决条件
 
-[Apache Maven](http://maven.apache.org/)
+[Apache Maven](https://maven.apache.org/)
 
 
 

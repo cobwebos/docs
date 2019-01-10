@@ -12,24 +12,24 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 08/24/2016
 ms.author: mbullwin
-ms.openlocfilehash: a57422b4bbac4b929a67495bfffeec7bf0476e9c
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: c8320a0f504927830c47400f1f1ef0369c0e1cad
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54000217"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54116528"
 ---
 # <a name="collectd-linux-performance-metrics-in-application-insights"></a>collectd：Application Insights 中的 Linux 性能指标
 
 
-若要浏览 [Application Insights](../../application-insights/app-insights-overview.md) 中 Linux 系统性能指标，请安装 [collectd](https://collectd.org/) 及其 Application Insights 插件。 此开放源解决方案收集了各种系统和网络统计信息。
+若要浏览 [Application Insights](../../azure-monitor/app/app-insights-overview.md) 中 Linux 系统性能指标，请安装 [collectd](https://collectd.org/) 及其 Application Insights 插件。 此开放源解决方案收集了各种系统和网络统计信息。
 
 如果[已通过 Application Insights 检测 Java Web 服务][java]，则通常会使用 collectd。 它可提供更多数据，有助于增强应用性能或诊断问题。 
 
 ![示例图表](./media/java-collectd/sample.png)
 
 ## <a name="get-your-instrumentation-key"></a>获取检测密钥
-在 [Microsoft Azure 门户](https://portal.azure.com)中，打开要显示数据的 [Application Insights](../../application-insights/app-insights-overview.md) 资源。 （或[创建新资源](../../application-insights/app-insights-create-new-resource.md)。）
+在 [Microsoft Azure 门户](https://portal.azure.com)中，打开要显示数据的 [Application Insights](../../azure-monitor/app/app-insights-overview.md) 资源。 （或[创建新资源](../../azure-monitor/app/create-new-resource.md )。）
 
 复制可标识资源的检测密钥。
 

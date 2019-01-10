@@ -8,12 +8,12 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 12/27/2018
 ms.author: lyrana
-ms.openlocfilehash: c1e48f6cb7ca4f26b8cafc31605bc9441ed047d3
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.openlocfilehash: 94217deace731f6650db8003d2e1e3c6c63dcb66
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53807595"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54121016"
 ---
 # <a name="role-based-access-control-in-azure-digital-twins"></a>Azure 数字孪生中基于角色的访问控制
 
@@ -83,4 +83,4 @@ Azure 数字孪生角色分配将某个对象（例如用户或 Azure AD 租户�
 
 ## <a name="next-steps"></a>后续步骤
 
-若要详细了解如何创建和管理 Azure 数字孪生角色分配，请阅读[创建和管理角色分配](./security-create-manage-role-assignments.md)。
+- 若要详细了解如何创建和管理 Azure 数字孪生角色分配，请阅读[创建和管理角色分配](./security-create-manage-role-assignments.md)。

@@ -14,12 +14,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: wesmc
-ms.openlocfilehash: c9a2d569641ab0f8f6aa1d7234da1d3cbb0ab147
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.openlocfilehash: e14e76be50fc71738779e0196b2034ca4f8e0097
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53744983"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54103870"
 ---
 # <a name="azure-cache-for-redis-samples"></a>“用于 Redis 的 Azure 缓存”示例
 本主题提供 Azure Redis 缓存示例列表，包括连接到缓存、从缓存读取数据和将数据写入缓存，以及使用 ASP.NET Azure Redis 缓存提供程序等方案。 有些示例是可下载的项目，有些示例提供了分步指南并包含代码片段但没有链接到可下载的项目。
@@ -47,7 +47,7 @@ ms.locfileid: "53744983"
 [在缓存中处理 .NET 对象](cache-dotnet-how-to-use-azure-redis-cache.md#work-with-net-objects-in-the-cache)演示了如何对 .NET 对象进行序列化，以便可以将它写入到 Azure Redis 缓存实例以及从中读取它。 
 
 ## <a name="use-azure-cache-for-redis-as-a-scale-out-backplane-for-aspnet-signalr"></a>将 Azure Redis 缓存用作 ASP.NET SignalR 的横向扩展基架
-[将 Azure Redis 缓存用作 ASP.NET SignalR 的横向扩展基架](https://github.com/rustd/RedisSamples/tree/master/RedisAsSignalRBackplane)示例演示如何将 Azure Redis 缓存用作 SignalR 基架。 有关基架的更多信息，请参阅[采用 Redis 的 SignalR 扩展](http://www.asp.net/signalr/overview/performance/scaleout-with-redis)。
+[将 Azure Redis 缓存用作 ASP.NET SignalR 的横向扩展基架](https://github.com/rustd/RedisSamples/tree/master/RedisAsSignalRBackplane)示例演示如何将 Azure Redis 缓存用作 SignalR 基架。 有关基架的更多信息，请参阅[采用 Redis 的 SignalR 扩展](https://www.asp.net/signalr/overview/performance/scaleout-with-redis)。
 
 ## <a name="azure-cache-for-redis-customer-query-sample"></a>Azure Redis 缓存客户查询示例
 此示例对从缓存访问数据与从持久存储访问数据时的性能进行了比较。 此示例有两个项目。

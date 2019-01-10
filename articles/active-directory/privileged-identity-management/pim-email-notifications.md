@@ -11,16 +11,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.component: pim
-ms.date: 11/30/2018
+ms.date: 01/05/2019
 ms.author: rolyon
 ms.reviewer: hanki
 ms.custom: pim
-ms.openlocfilehash: 00b096f59e70962b6883a8024744e8c91a5f9ae3
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 4bc963d09b9d01efdfad65b78ce9ce336798d375
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52846889"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54065335"
 ---
 # <a name="email-notifications-in-pim"></a>PIM 中的电子邮件通知
 
@@ -43,16 +43,15 @@ ms.locfileid: "52846889"
 
 - 当特权角色激活时正在等待审批时
 - 当特权角色激活请求已完成时
-- 当特权角色被指定为符合条件
 - 当 Azure AD PIM 已启用时
 
 接收这些 Azure AD 角色电子邮件的用户取决于角色、事件和通知设置：
 
-| 用户 | 角色激活正在等待审批 | 角色激活请求已完成 | 角色被指定为符合条件 | PIM 已启用 |
-| --- | --- | --- | --- | --- |
-| 特权角色管理员</br>（激活/符合条件） | 是</br>（仅当未指定明确审批者） | 是* | 是 | 是 |
-| 安全管理员</br>（激活/符合条件） | 否 | 是* | 是 | 是 |
-| 全局管理员角色</br>（激活/符合条件） | 否 | 是* | 是 | 是 |
+| 用户 | 角色激活正在等待审批 | 角色激活请求已完成 | PIM 已启用 |
+| --- | --- | --- | --- |
+| 特权角色管理员</br>（激活/符合条件） | 是</br>（仅当未指定明确审批者） | 是* | 是 |
+| 安全管理员</br>（激活/符合条件） | 否 | 是* | 是 |
+| 全局管理员角色</br>（激活/符合条件） | 否 | 是* | 是 |
 
 \* 如果[“通知”设置](pim-how-to-change-default-settings.md#notifications)设置为“启用”。
 

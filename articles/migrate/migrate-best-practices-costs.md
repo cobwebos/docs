@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 12/08/2018
 ms.author: raynew
-ms.openlocfilehash: 9d1acabd07e7c01445c55a57be9b0c9a36140aa5
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: b8ff1ae2f4c07dc59bd1ffb631378817493b96b0
+ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53163763"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53995031"
 ---
 # <a name="best-practices-for-costing-and-sizing-workloads-migrated-to-azure"></a>为迁移到 Azure 的工作负荷计算成本和调整大小的最佳做法
 
@@ -117,7 +117,7 @@ Azure 提供了不同类型的存储帐户和性能层。
 
 **帐户类型** | **详细信息** | **使用情况**
 --- | --- | ---
-**常规用途 v2 标准** | 支持 blob（块 blob、页 blob、追加 blob）、文件、磁盘、队列和表。<br/><br/> 支持热、冷和存档三个访问层。 支持 ZRS。 | 用于大多数方案和大多数数据类型。 标准存储帐户可以基于 HHD 或 SSD。
+**常规用途 v2 标准** | 支持 blob（块 blob、页 blob、追加 blob）、文件、磁盘、队列和表。<br/><br/> 支持热、冷和存档三个访问层。 支持 ZRS。 | 用于大多数方案和大多数数据类型。 标准存储帐户可以基于 HDD 或 SSD。
 **常规用途 v2 高级** | 支持 Blob 存储数据（页 blob）。 支持热、冷和存档三个访问层。 支持 ZRS。<br/><br/> 存储在 SSD 上。 | Microsoft 建议用于所有 VM。
 **常规用途 v1** | 不支持访问分层。 不支持 ZRS | 在应用需要 Azure 经典部署模型时使用。
 **Blob** | 专用存储帐户，用于存储非结构化对象。 仅提供块 blob 和追加 blob（不提供任何文件、队列、表或磁盘存储服务）。 提供与常规用途 v2 一样的持续性、可用性、可伸缩性和性能。 | 不能在这些帐户中存储页 blob，因此不能存储 VHD 文件。 可以将访问层设置为“热”或“冷”。
@@ -248,7 +248,7 @@ Microsoft 提供 Azure 成本管理来帮助你跟踪支出情况，如下所示
 **了解更多：**
 - 简要了解 [Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/overview)和 [Azure 顾问](https://docs.microsoft.com/azure/advisor/advisor-overview)。
 - [获取](https://docs.microsoft.com/azure/advisor/advisor-cost-recommendations)顾问成本建议。
-- 了解如何[根据建议优化成本](https://docs.microsoft.com/azure/cost-management/tutorial-acm-opt-recommendations?toc=/azure/billing/TOC.json)以及[防止意外的费用](https://docs.microsoft.com/en-us/azure/billing/billing-getting-started)。
+- 了解如何[根据建议优化成本](https://docs.microsoft.com/azure/cost-management/tutorial-acm-opt-recommendations?toc=/azure/billing/TOC.json)以及[防止意外的费用](https://docs.microsoft.com/azure/billing/billing-getting-started)。
 - [了解](https://github.com/Azure/azure-quickstart-templates/tree/master/azure-resource-optimization-toolkit/) Azure 资源优化 (ARO) 工具包
 
 ## <a name="best-practice-implement-resource-group-budgets"></a>最佳做法：实现资源组预算

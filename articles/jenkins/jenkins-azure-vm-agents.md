@@ -3,17 +3,17 @@ title: 使用 Azure VM 代理缩放 Jenkins 部署。
 description: 使用安装了 Jenkins Azure VM 代理插件的 Azure 虚拟机将额外的容量添加到 Jenkins 管道。
 ms.service: jenkins
 keywords: jenkins, azure, devops, 虚拟机, 代理
-author: tomarcher
+author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 07/31/2018
-ms.openlocfilehash: 46710b3a669b6a00dc1826c55e8d35fe700f312f
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 5cfece551f99a0925099b6ef936703e72f078985
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43106217"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54074659"
 ---
 # <a name="scale-your-jenkins-deployments-to-meet-demand-with-azure-vm-agents"></a>使用 Azure VM 代理缩放 Jenkins 部署以满足需求
 
@@ -52,7 +52,7 @@ ms.locfileid: "43106217"
 1. 滚动到页面底部，找到有“添加新的云”下拉列表的“云”部分，选择“Microsoft Azure VM 代理”。
 1. 从“Azure 凭据”部分中的“添加”下拉列表，选择一个现有的服务主体。 如果没有列出内容，请执行以下步骤，为 Azure 帐户[创建服务主体](/cli/azure/create-an-azure-service-principal-azure-cli?toc=%2fazure%2fazure-resource-manager)并将其添加到 Jenkins 配置：   
 
-    a. 选择“Azure 凭据”旁的“添加”，然后选择“Jenkins”。   
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 选择“Azure 凭据”旁的“添加”，然后选择“Jenkins”。   
     b. 在“添加凭据”对话框中，从“种类”下拉列表中选择“Microsoft Azure 服务主体”。   
     c. 使用 Azure CLI 或 [Cloud Shell](/azure/cloud-shell/overview) 创建 Active Directory 服务主体。
     

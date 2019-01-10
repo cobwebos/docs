@@ -1,5 +1,5 @@
 ---
-title: 配置连接的工厂拓扑 | Microsoft Docs
+title: 配置连接的工厂拓扑 - Azure | Microsoft Docs
 description: 如何配置连接的工厂解决方案加速器的拓扑。
 author: dominicbetts
 manager: timlt
@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 12/12/2017
 ms.author: dobett
-ms.openlocfilehash: 8cb3cae396016545c5d78a2ff7ccde4a053c4cf1
-ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
+ms.openlocfilehash: 3fd160fbccfb5298cefed6a731797ca6962b997c
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2018
-ms.locfileid: "42746973"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53602267"
 ---
 # <a name="configure-the-connected-factory-solution-accelerator"></a>配置连接的工厂解决方案加速器
 
@@ -85,7 +85,7 @@ ms.locfileid: "42746973"
 }
 ```
 
-`<global_configuration>`、`<factory_configuration>`、`<production_line_configuration>` 和 `<station_configuration>` 的常见属性为：
+ `<global_configuration>`、`<factory_configuration>`、`<production_line_configuration>` 和 `<station_configuration>` 的常见属性为：
 
 * **Name**（字符串类型）
 
@@ -282,7 +282,7 @@ WebApp 维护包含所有拓扑节点信息的内部数据字典。 Guid 和 Opc
 * 要包括在计算中的 OPC UA 节点值。
 * 从遥测值计算图表数据的方式。
 
-连接的工厂使用 http://www.oeefoundation.org 上发布的 OEE 公式。
+连接的工厂使用 https://www.oeefoundation.org 上发布的 OEE 公式。
 
 工作站中的 OPC UA 节点对象支持在 OEE/KPI 计算中使用标记。 Relevance 属性指示 OPC UA 节点值应用于的 OEE/KPI 图表数据。 OpCode 属性定义如何在计算中包含值。
 

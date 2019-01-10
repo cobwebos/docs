@@ -9,16 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/20/2018
 ms.author: jingwang
-ms.openlocfilehash: e11c62f338a9e6ce74ce2e04a933b0458df784d0
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.openlocfilehash: 1e0d6fe79d23f3d3d0679445f5120a3ec17ddd67
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53807901"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54013768"
 ---
 # <a name="copy-data-from-mongodb-using-azure-data-factory"></a>使用 Azure 数据工厂从 MongoDB 复制数据
 

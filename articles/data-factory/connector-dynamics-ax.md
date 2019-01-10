@@ -9,16 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/13/2018
 ms.author: jingwang
-ms.openlocfilehash: 1dca3621b31d74d2ae40156672009b15ba30e3f4
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 48c6fb178b61fd65e0fbf6122d541bef5e3e9830
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53339529"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54014380"
 ---
 # <a name="copy-data-from-dynamics-ax-by-using-azure-data-factory-preview"></a>使用 Azure 数据工厂从 Dynamics AX 中复制数据（预览版）
 

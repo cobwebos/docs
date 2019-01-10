@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/20/2018
 ms.author: terrylan
-ms.openlocfilehash: 14c21db9e1da23e97815953937f434fe7f25e354
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 7c6d373fd294645605815d8a8d380259982d90e7
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53725314"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54118177"
 ---
 # <a name="azure-operational-security-best-practices"></a>Azure 操作安全性最佳做法
 Azure 操作安全性是指用户可用于在 Azure 中保护其数据、应用程序和其他资产的服务、控件和功能。 Azure 操作安全性建立在一个框架上，该框架融合了通过 Microsoft 独有的功能获得的知识，包括 [安全开发生命周期 (SDL)](https://www.microsoft.com/sdl)、[Microsoft 安全响应中心](https://www.microsoft.com/msrc?rtc=1)计划以及对网络安全威胁形态的深刻认识。
@@ -87,7 +87,7 @@ Azure 操作安全性是指用户可用于在 Azure 中保护其数据、应用�
 - 确保应用可以处理下一次启动或市场营销活动的流量。
 
 **最佳做法**：监视应用程序性能。  
-**详细信息**：[Azure Application Insights](../application-insights/app-insights-overview.md) 是多个平台上面向 Web 开发人员的可扩展应用程序性能管理 (APM) 服务。 使用 Application Insights 来监视实时 Web 应用程序。 它会自动检测性能异常。 其中包含分析工具来帮助诊断问题，了解用户在应用中实际执行了哪些操作。 Application Insights 有助于持续提高性能与可用性。
+**详细信息**：[Azure Application Insights](../azure-monitor/app/app-insights-overview.md) 是多个平台上面向 Web 开发人员的可扩展应用程序性能管理 (APM) 服务。 使用 Application Insights 来监视实时 Web 应用程序。 它会自动检测性能异常。 其中包含分析工具来帮助诊断问题，了解用户在应用中实际执行了哪些操作。 Application Insights 有助于持续提高性能与可用性。
 
 ## <a name="mitigate-and-protect-against-ddos"></a>缓解和防范 DDoS
 分布式拒绝服务 (DDoS) 是企图耗尽应用程序资源的一种攻击。 其目的是影响应用程序的可用性和处理合法请求的能力。 这些攻击正变得越来越复杂，且规模和影响程度越来越高。 它们可能会将任何可通过 Internet 公开访问的终结点作为目标。
@@ -102,7 +102,7 @@ Azure 操作安全性是指用户可用于在 Azure 中保护其数据、应用�
 至关重要的一点是，确保应用程序具有足够的弹性，可应对针对应用程序本身的拒绝服务攻击。 从[安全开发生命周期 (SDL)](https://www.microsoft.com/en-us/sdl) 开始，安全和隐私就已内置到 Azure 平台中。 SDL 可以解决每个开发阶段的安全性，并确保 Azure 不断更新，以变得越来越安全。
 
 **最佳做法**：采用可[横向缩放](https://docs.microsoft.com/azure/architecture/guide/design-principles/scale-out)的应用程序设计，以满足放大负载的需求，尤其是防范 DDoS 攻击。 如果应用程序依赖于服务的单个实例，则会造成单一故障点。 预配多个实例能够提高复原能力和可伸缩性。  
-**详细信息**：对于 [Azure 应用服务](../app-service/app-service-value-prop-what-is.md)，请选择提供多个实例的[应用服务计划](../app-service/overview-hosting-plans.md)。
+**详细信息**：对于 Azure 应用服务，请选择提供多个实例的[应用服务计划](../app-service/overview-hosting-plans.md)。
 
 对于 Azure 云服务，请将每个角色配置为使用[多个实例](../cloud-services/cloud-services-choose-me.md)。
 

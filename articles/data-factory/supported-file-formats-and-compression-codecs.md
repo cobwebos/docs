@@ -9,12 +9,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: jingwang
-ms.openlocfilehash: b3498deb85b84c9c47544be1d8c3709c9fc78ae1
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 4c8fcc403b274d161893194109dee4bc8d0cb369
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53100237"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53974346"
 ---
 # <a name="supported-file-formats-and-compression-codecs-in-azure-data-factory"></a>Azure 数据工厂中支持的文件格式和压缩编解码器
 
@@ -24,9 +24,9 @@ ms.locfileid: "53100237"
 
 * [文本格式](#text-format)
 * [JSON 格式](#json-format)
-* [Avro 格式](#avro-format)
-* [ORC 格式](#orc-format)
 * [Parquet 格式](#parquet-format)
+* [ORC 格式](#orc-format)
+* [Avro 格式](#avro-format)
 
 > [!TIP]
 > 了解复制活动如何从[复制活动中的架构映射](copy-activity-schema-and-type-mapping.md)将源数据映射到接收器，包括如何根据文件格式设置确定元数据以及有关何时指定 [dataset`structure`](concepts-datasets-linked-services.md#dataset-structure) 节的技巧。
@@ -91,8 +91,8 @@ ms.locfileid: "53100237"
 | 属性 | 说明 | 必选 |
 | --- | --- | --- |
 | filePattern |指示每个 JSON 文件中存储的数据模式。 允许的值为：**setOfObjects** 和 **arrayOfObjects**。 **默认**值为 **setOfObjects**。 请参阅 [JSON 文件模式](#json-file-patterns)部分，详细了解这些模式。 |否 |
-| jsonNodeReference | 若要进行迭代操作，以同一模式从数组字段中的对象提取数据，请指定该数组的 JSON 路径。 只有从 JSON 文件复制数据时，才支持此属性。 | 否 |
-| jsonPathDefinition | 为每个使用自定义列名映射的列指定 JSON 路径表达式（开头为小写）。 只有从 JSON 文件复制数据时，才支持此属性，而且用户可以从对象或数组提取数据。 <br/><br/> 对于根对象下的字段，请以根 $ 开头；对于按 `jsonNodeReference` 属性选择的数组中的字段，请以数组元素开头。 请参阅 [JsonFormat 示例](#jsonformat-example)部分，了解如何进行配置。 | 否 |
+| jsonNodeReference | 若要进行迭代操作，以同一模式从数组字段中的对象提取数据，请指定该数组的 JSON 路径。 只有**从** JSON 文件复制数据时，才支持此属性。 | 否 |
+| jsonPathDefinition | 为每个使用自定义列名映射的列指定 JSON 路径表达式（开头为小写）。 只有**从** JSON 文件复制数据时，才支持此属性，而且用户可以从对象或数组提取数据。 <br/><br/> 对于根对象下的字段，请以根 $ 开头；对于按 `jsonNodeReference` 属性选择的数组中的字段，请以数组元素开头。 请参阅 [JsonFormat 示例](#jsonformat-example)部分，了解如何进行配置。 | 否 |
 | encodingName |指定编码名称。 有关有效编码名称的列表，请参阅：[Encoding.EncodingName](https://msdn.microsoft.com/library/system.text.encoding.aspx) 属性。 例如：windows-1250 或 shift_jis。 默认值为：**UTF-8**。 |否 |
 | nestingSeparator |用于分隔嵌套级别的字符。 默认值为“.”（点）。 |否 |
 
@@ -190,8 +190,6 @@ ms.locfileid: "53100237"
 ### <a name="jsonformat-example"></a>JsonFormat 示例
 
 **案例 1：从 JSON 文件复制数据**
-
-从 JSON 文件复制数据时，请参阅以下两个示例。 要注意的一般要点：
 
 **示例 1：从对象和数组中提取数据**
 
@@ -405,22 +403,51 @@ ms.locfileid: "53100237"
 }
 ```
 
-## <a name="avro-format"></a>AVRO 格式
+## <a name="parquet-format"></a>Parquet 格式
 
-若要分析 Avro 文件或以 Avro 格式写入数据，请将 `format` `type` 属性设置为 **AvroFormat**。 不需在 typeProperties 节的 Format 节中指定任何属性。 示例：
+若要分析 Parquet 文件或以 Parquet 格式写入数据，请将 `format` `type` 属性设置为 **ParquetFormat**。 不需在 typeProperties 节的 Format 节中指定任何属性。 示例：
 
 ```json
 "format":
 {
-    "type": "AvroFormat",
+    "type": "ParquetFormat"
 }
 ```
 
-若要在 Hive 表中使用 Avro 格式，可以参考 [Apache Hive 教程](https://cwiki.apache.org/confluence/display/Hive/AvroSerDe)。
+> [!IMPORTANT]
+> 对于自托管 Integration Runtime（如在本地与云数据存储之间）授权的复制，如果不是按原样复制 Parquet 文件，则需要在 IR 计算机上安装 JRE 8（Java 运行时环境）。 64 位 IR 需要 64 位 JRE。 可以从[此处](https://go.microsoft.com/fwlink/?LinkId=808605)找到这两个版本。
+>
 
 请注意以下几点：
 
-* 不支持[复杂数据类型](http://avro.apache.org/docs/current/spec.html#schema_complex)（记录、枚举、数组、映射、联合与固定值）。
+* 不支持复杂数据类型（MAP、LIST）。
+* 不支持列名称中的空格。
+* Parquet 文件提供以下压缩相关的选项：NONE、SNAPPY、GZIP 和 LZO。 数据工厂支持以这些压缩格式中的任意一种格式从 Parquet 文件中读取数据 - 但 LZO 格式除外，它使用元数据中的压缩编解码器来读取数据。 但是，写入 Parquet 文件时，数据工厂会选择 SNAPPY，这是 Parquet 格式的默认选项。 目前没有任何选项可以重写此行为。
+
+### <a name="data-type-mapping-for-parquet-files"></a>Parquet 文件的数据类型映射
+
+| 数据工厂临时数据类型 | Parquet 基元类型 | Parquet 原始类型（反序列化） | Parquet 原始类型（串行化） |
+|:--- |:--- |:--- |:--- |
+| Boolean | Boolean | 不适用 | 不适用 |
+| SByte | Int32 | Int8 | Int8 |
+| Byte | Int32 | UInt8 | Int16 |
+| Int16 | Int32 | Int16 | Int16 |
+| UInt16 | Int32 | UInt16 | Int32 |
+| Int32 | Int32 | Int32 | Int32 |
+| UInt32 | Int64 | UInt32 | Int64 |
+| Int64 | Int64 | Int64 | Int64 |
+| UInt64 | Int64/二进制 | UInt64 | 小数 |
+| Single | Float | 不适用 | 不适用 |
+| Double | Double | 不适用 | 不适用 |
+| 小数 | 二进制 | 小数 | 小数 |
+| String | 二进制 | Utf8 | Utf8 |
+| DateTime | Int96 | 不适用 | 不适用 |
+| TimeSpan | Int96 | 不适用 | 不适用 |
+| DateTimeOffset | Int96 | 不适用 | 不适用 |
+| ByteArray | 二进制 | 不适用 | 不适用 |
+| Guid | 二进制 | Utf8 | Utf8 |
+| Char | 二进制 | Utf8 | Utf8 |
+| CharArray | 不支持 | 不适用 | 不适用 |
 
 ## <a name="orc-format"></a>ORC 格式
 
@@ -439,7 +466,8 @@ ms.locfileid: "53100237"
 
 请注意以下几点：
 
-* 不支持复杂数据类型（STRUCT、MAP、LIST、UNION）
+* 不支持复杂数据类型（STRUCT、MAP、LIST、UNION）。
+* 不支持列名称中的空格。
 * ORC 文件有三个[压缩相关的选项](http://hortonworks.com/blog/orcfile-in-hdp-2-better-compression-better-performance/)：NONE、ZLIB、SNAPPY。 数据工厂支持从使用其中任一压缩格式的 ORC 文件中读取数据。 它使用元数据中的压缩编解码器来读取数据。 但是，写入 ORC 文件时，数据工厂会选择 ZLIB，这是 ORC 的默认选项。 目前没有任何选项可以重写此行为。
 
 ### <a name="data-type-mapping-for-orc-files"></a>ORC 文件的数据类型映射
@@ -466,50 +494,22 @@ ms.locfileid: "53100237"
 | Guid | String |
 | Char | Char(1) |
 
-## <a name="parquet-format"></a>Parquet 格式
+## <a name="avro-format"></a>AVRO 格式
 
-若要分析 Parquet 文件或以 Parquet 格式写入数据，请将 `format` `type` 属性设置为 **ParquetFormat**。 不需在 typeProperties 节的 Format 节中指定任何属性。 示例：
+若要分析 Avro 文件或以 Avro 格式写入数据，请将 `format` `type` 属性设置为 **AvroFormat**。 不需在 typeProperties 节的 Format 节中指定任何属性。 示例：
 
 ```json
 "format":
 {
-    "type": "ParquetFormat"
+    "type": "AvroFormat",
 }
 ```
 
-> [!IMPORTANT]
-> 对于自托管 Integration Runtime（如在本地与云数据存储之间）授权的复制，如果不是按原样复制 Parquet 文件，则需要在 IR 计算机上安装 JRE 8（Java 运行时环境）。 64 位 IR 需要 64 位 JRE。 可以从[此处](https://go.microsoft.com/fwlink/?LinkId=808605)找到这两个版本。
->
+若要在 Hive 表中使用 Avro 格式，可以参考 [Apache Hive 教程](https://cwiki.apache.org/confluence/display/Hive/AvroSerDe)。
 
 请注意以下几点：
 
-* 不支持复杂数据类型（MAP、LIST）
-* Parquet 文件提供以下压缩相关的选项：NONE、SNAPPY、GZIP 和 LZO。 数据工厂支持以这些压缩格式中的任意一种格式从 Parquet 文件读取数据。 它使用元数据中的压缩编解码器来读取数据。 但是，写入 Parquet 文件时，数据工厂会选择 SNAPPY，这是 Parquet 格式的默认选项。 目前没有任何选项可以重写此行为。
-
-### <a name="data-type-mapping-for-parquet-files"></a>Parquet 文件的数据类型映射
-
-| 数据工厂临时数据类型 | Parquet 基元类型 | Parquet 原始类型（反序列化） | Parquet 原始类型（串行化） |
-|:--- |:--- |:--- |:--- |
-| Boolean | Boolean | 不适用 | 不适用 |
-| SByte | Int32 | Int8 | Int8 |
-| Byte | Int32 | UInt8 | Int16 |
-| Int16 | Int32 | Int16 | Int16 |
-| UInt16 | Int32 | UInt16 | Int32 |
-| Int32 | Int32 | Int32 | Int32 |
-| UInt32 | Int64 | UInt32 | Int64 |
-| Int64 | Int64 | Int64 | Int64 |
-| UInt64 | Int64/二进制 | UInt64 | 小数 |
-| Single | Float | 不适用 | 不适用 |
-| Double | Double | 不适用 | 不适用 |
-| 小数 | 二进制 | 小数 | 小数 |
-| String | 二进制 | Utf8 | Utf8 |
-| DateTime | Int96 | 不适用 | 不适用 |
-| TimeSpan | Int96 | 不适用 | 不适用 |
-| DateTimeOffset | Int96 | 不适用 | 不适用 |
-| ByteArray | 二进制 | 不适用 | 不适用 |
-| Guid | 二进制 | Utf8 | Utf8 |
-| Char | 二进制 | Utf8 | Utf8 |
-| CharArray | 不支持 | 不适用 | 不适用 |
+* 不支持[复杂数据类型](http://avro.apache.org/docs/current/spec.html#schema_complex)（记录、枚举、数组、映射、联合与固定值）。
 
 ## <a name="compression-support"></a>压缩支持
 

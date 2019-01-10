@@ -9,12 +9,12 @@ ms.date: 09/18/2018
 ms.service: application-insights
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: aa71d171bbb2125a61cc6fec6b07639a5c340796
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 885f4da5ec9b360605a3e46ee8be8d338a638ede
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54004286"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54102663"
 ---
 # <a name="collect-distributed-traces-from-python-preview"></a>从 Python（预览版）收集分布式跟踪
 
@@ -204,4 +204,4 @@ Application Insights 现在支持通过与 [OpenCensus](https://opencensus.io) �
 
 * [OpenCensus Python 使用指南](https://opencensus.io/api/python/trace/usage.html)
 * [应用程序映射](./../../azure-monitor/app/app-map.md)
-* [端到端性能监视](./../../application-insights/app-insights-tutorial-performance.md)
+* [端到端性能监视](./../../azure-monitor/learn/tutorial-performance.md)

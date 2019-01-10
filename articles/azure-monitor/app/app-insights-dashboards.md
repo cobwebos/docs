@@ -12,15 +12,15 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 03/14/2017
 ms.author: mbullwin
-ms.openlocfilehash: 83bf45c93648ca768243a2208f6a91cc9011a919
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 1b0c991c09d1235215dc9b930c529a219d492a8c
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54002512"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54117071"
 ---
 # <a name="navigation-and-dashboards-in-the-application-insights-portal"></a>Application Insights 门户中的导航与仪表板
-[在项目中设置 Application Insights](../../application-insights/app-insights-overview.md) 之后，有关应用性能和使用情况的遥测数据将出现在 [Azure 门户](https://portal.azure.com)中项目的 Application Insights 资源内。
+[在项目中设置 Application Insights](../../azure-monitor/app/app-insights-overview.md) 之后，有关应用性能和使用情况的遥测数据将出现在 [Azure 门户](https://portal.azure.com)中项目的 Application Insights 资源内。
 
 ## <a name="find-your-telemetry"></a>查找遥测数据
 登录到 [Azure 门户](https://portal.azure.com)，并导航到为应用创建的 Application Insights 资源。
@@ -34,7 +34,7 @@ ms.locfileid: "54002512"
 可以自定义任何图表和网格，并将其固定到仪表板。 这样即可将不同应用的关键遥测数据汇集到一个中央仪表板上。
 
 ## <a name="dashboards"></a>仪表板
-登录到 [Microsoft Azure 门户](https://portal.azure.com)后，最先看到的是仪表板。 可以将所有最重要的 Azure 资源的图表整合到此处，包括来自 [Azure Application Insights](../../application-insights/app-insights-overview.md) 的遥测数据。
+登录到 [Microsoft Azure 门户](https://portal.azure.com)后，最先看到的是仪表板。 可以将所有最重要的 Azure 资源的图表整合到此处，包括来自 [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) 的遥测数据。
 
 ![自定义的仪表板。](./media/app-insights-dashboards/31.png)
 
@@ -96,7 +96,7 @@ ms.locfileid: "54002512"
 
 ![在仪表板标题中单击“共享”](./media/app-insights-dashboards/41.png)
 
-了解[角色和访问控制](../../application-insights/app-insights-resources-roles-access-control.md)。
+了解[角色和访问控制](../../azure-monitor/app/resources-roles-access-control.md)。
 
 ## <a name="create-dashboards-programmatically"></a>以编程方式创建仪表板
 可使用 [Azure 资源管理器](https://docs.microsoft.com/azure/azure-portal/azure-portal-dashboards-create-programmatically)和简单的 JSON 编辑器自动执行仪表板的创建。
@@ -113,28 +113,28 @@ ms.locfileid: "54002512"
 * [**搜索**](../../azure-monitor/app/diagnostic-search.md) - 调查特定事件的实例，例如请求、异常或日志跟踪。
 * [**分析**](../../azure-monitor/app/analytics.md) - 功能强大的遥测数据查询工具。
 * **时间范围** - 调整边栏选项卡上所有图表显示的范围。
-* **删除** - 删除此应用的 Application Insights 资源。 还可以从应用代码中删除 Application Insights 包，或编辑应用中的[检测密钥](../../application-insights/app-insights-create-new-resource.md#copy-the-instrumentation-key)，以便将遥测数据定向到不同的 Application Insights 资源。
+* **删除** - 删除此应用的 Application Insights 资源。 还可以从应用代码中删除 Application Insights 包，或编辑应用中的[检测密钥](../../azure-monitor/app/create-new-resource.md #copy-the-instrumentation-key)，以便将遥测数据定向到不同的 Application Insights 资源。
 
 ### <a name="essentials-tab"></a>“概要”选项卡
-* [检测密钥](../../application-insights/app-insights-create-new-resource.md#copy-the-instrumentation-key) - 标识此应用资源。
+* [检测密钥](../../azure-monitor/app/create-new-resource.md #copy-the-instrumentation-key) - 标识此应用资源。
 
 ### <a name="app-navigation-bar"></a>应用导航栏
 ![左侧导航栏](./media/app-insights-dashboards/app-left-nav-bar.png)
 
 * **概述** - 返回到应用概述边栏选项卡。
 * **活动日志** - 警报和 Azure 管理事件。
-* [**访问控制**](../../application-insights/app-insights-resources-roles-access-control.md) - 向团队成员和其他人提供访问权限。
+* [**访问控制**](../../azure-monitor/app/resources-roles-access-control.md) - 向团队成员和其他人提供访问权限。
 * [**标记**](../../azure-resource-manager/resource-group-using-tags.md) - 使用标记将你的应用与其他应用分组。
 
 调查
 
 * [**应用程序地图**](app-map.md) - 显示应用程序组件的活动地图，其内容派生自依赖关系信息。
-* [**智能检测**](../../application-insights/app-insights-proactive-diagnostics.md) - 查看最近的性能警报。
+* [**智能检测**](../../azure-monitor/app/proactive-diagnostics.md) - 查看最近的性能警报。
 * [**实时流**](../../azure-monitor/app/live-stream.md) - 一组固定的近乎实时的指标，在部署新的构建或调试时非常有用。
 * [**可用性/Web 测试**](../../azure-monitor/app/monitor-web-app-availability.md) - 从世界各地将常规请求发送到 Web 应用。*
-* [**故障、性能**](../../application-insights/app-insights-web-monitor-performance.md) - 发往应用的请求以及从应用发往[依赖项](../../azure-monitor/app/asp-net-dependencies.md)的请求的异常、故障率和响应时间。
-* [**性能**](../../application-insights/app-insights-web-monitor-performance.md) - 响应时间和依赖项响应时间。
-* [服务器](../../application-insights/app-insights-web-monitor-performance.md) - 性能计数器。 [安装状态监视器](../../azure-monitor/app/monitor-performance-live-website-now.md)时可用。
+* [**故障、性能**](../../azure-monitor/app/web-monitor-performance.md) - 发往应用的请求以及从应用发往[依赖项](../../azure-monitor/app/asp-net-dependencies.md)的请求的异常、故障率和响应时间。
+* [**性能**](../../azure-monitor/app/web-monitor-performance.md) - 响应时间和依赖项响应时间。
+* [服务器](../../azure-monitor/app/web-monitor-performance.md) - 性能计数器。 [安装状态监视器](../../azure-monitor/app/monitor-performance-live-website-now.md)时可用。
 * **浏览器** - 页面视图和 AJAX 性能。 [检测网页](../../azure-monitor/app/javascript.md)时可用。
 * **使用情况** - 页面视图、用户和会话计数。 [检测网页](../../azure-monitor/app/javascript.md)时可用。
 
@@ -145,7 +145,7 @@ ms.locfileid: "54002512"
 * [警报](../../azure-monitor/app/alerts.md) - 指标警报配置。
 * [连续导出](../../azure-monitor/app/export-telemetry.md) - 配置如何将遥测数据导出到 Azure 存储。
 * [性能测试](../../azure-monitor/app/monitor-web-app-availability.md#performance-tests) - 在网站上设置合成负载。
-* [配额与定价](../../azure-monitor/app/pricing.md)以及[引入采样](../../application-insights/app-insights-sampling.md)。
+* [配额与定价](../../azure-monitor/app/pricing.md)以及[引入采样](../../azure-monitor/app/sampling.md)。
 * **API 访问** - 创建[版本批注](annotations.md)，适用于数据访问 API。
 * [**工作项**](../../azure-monitor/app/diagnostic-search.md#create-work-item) - 连接到工作跟踪系统，以便可以在检查遥测数据时创建 Bug。
 

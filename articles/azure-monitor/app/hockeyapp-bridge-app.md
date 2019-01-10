@@ -12,19 +12,19 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 03/30/2017
 ms.author: mbullwin
-ms.openlocfilehash: 73e1fac5ba9fbb981c92ff8d32064f7d34729ef7
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.openlocfilehash: 4115ec5add9ac523852b4c60c4f9d750bc430a37
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53813091"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54121441"
 ---
 # <a name="exploring-hockeyapp-data-in-application-insights"></a>在 Application Insights 中浏览 HockeyApp 数据
 
 > [!NOTE]
-> HockeyApp 不再适用于新的应用程序。 现有 HockeyApp 部署将继续发挥作用。 Visual Studio App Center 现在是 Microsoft 建议的用于监视新移动应用的服务。 [了解如何使用 App Center 和 Application Insights 设置应用](../../application-insights/app-insights-mobile-center-quickstart.md)。
+> HockeyApp 不再适用于新的应用程序。 现有 HockeyApp 部署将继续发挥作用。 Visual Studio App Center 现在是 Microsoft 建议的用于监视新移动应用的服务。 [了解如何使用 App Center 和 Application Insights 设置应用](../../azure-monitor/learn/mobile-center-quickstart.md)。
 
-[HockeyApp](https://azure.microsoft.com/services/hockeyapp/) 是用于监视实时桌面和移动应用的服务。 可以从 HockeyApp 发送自定义和跟踪遥测数据，以监视使用情况和帮助进行诊断（此外，还能获取崩溃数据）。 使用 [Azure Application Insights](../../application-insights/app-insights-overview.md) 的强大 [Analytics](../../azure-monitor/app/analytics.md) 功能可以查询此遥测数据流。 此外，可以[导出自定义和跟踪遥测数据](export-telemetry.md)。 要启用这些功能，可以设置用于将 HockeyApp 自定义数据转发到 Application Insights 的网桥。
+[HockeyApp](https://azure.microsoft.com/services/hockeyapp/) 是用于监视实时桌面和移动应用的服务。 可以从 HockeyApp 发送自定义和跟踪遥测数据，以监视使用情况和帮助进行诊断（此外，还能获取崩溃数据）。 使用 [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) 的强大 [Analytics](../../azure-monitor/app/analytics.md) 功能可以查询此遥测数据流。 此外，可以[导出自定义和跟踪遥测数据](export-telemetry.md)。 要启用这些功能，可以设置用于将 HockeyApp 自定义数据转发到 Application Insights 的网桥。
 
 ## <a name="the-hockeyapp-bridge-app"></a>HockeyApp Bridge 应用
 HockeyApp Bridge 应用是一项核心功能，可让用户通过 Analytics 和连续导出功能来访问 Application Insights 中的 HockeyApp 自定义和跟踪遥测。 借助上述这些功能，可以访问在创建 HockeyApp Bridge 应用后由 HockeyApp 所收集的自定义和跟踪事件。 让我们了解如何设置其中一个 Bridge 应用。
@@ -33,7 +33,7 @@ HockeyApp Bridge 应用是一项核心功能，可让用户通过 Analytics 和�
 
 ![获取 HockeyApp API 令牌](./media/hockeyapp-bridge-app/01.png)
 
-打开 Microsoft Azure 门户并[创建一个 Application Insights 资源](../../application-insights/app-insights-create-new-resource.md)。 将应用程序类型设置为“HockeyApp Bridge 应用程序”：
+打开 Microsoft Azure 门户并[创建一个 Application Insights 资源](../../azure-monitor/app/create-new-resource.md )。 将应用程序类型设置为“HockeyApp Bridge 应用程序”：
 
 ![新建 Application Insights 资源](./media/hockeyapp-bridge-app/02.png)
 

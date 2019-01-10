@@ -7,19 +7,16 @@ ms.service: application-gateway
 ms.workload: infrastructure-services
 ms.date: 11/6/2018
 ms.author: victorh
-ms.openlocfilehash: f89841c7712737d2d55601c6525e975274b4a103
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: bed406f90c8da62919337c1fa9f30221b0ba8d90
+ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51036711"
+ms.lasthandoff: 12/22/2018
+ms.locfileid: "53752718"
 ---
-# <a name="web-application-firewall-request-size-limits-and-exclusion-lists-public-preview"></a>Web 应用程序防火墙请求大小限制和排除列表（公共预览版）
+# <a name="web-application-firewall-request-size-limits-and-exclusion-lists"></a>Web 应用程序防火墙请求大小限制和排除列表
 
 Azure 应用程序网关 Web 应用程序防火墙 (WAF) 可为 Web 应用程序提供保护。 本文介绍了 WAF 请求大小限制和排除列表配置。
-
-> [!IMPORTANT]
-> WAF 请求大小限制和排除列表配置当前处于公共预览状态。 此预览版在提供时没有附带服务级别协议，不建议用于生产工作负载。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 ## <a name="waf-request-size-limits"></a>WAF 请求大小限制
 
@@ -53,8 +50,8 @@ WAF 排除列表允许用户忽略 WAF 评估中的某些请求属性。 常见�
 下面是受支持的匹配条件运算符：
 
 - **等于**：此运算符用于完全匹配。 例如，要选择名为“bearerToken”的标头，请结合使用等号运算符和设为“bearerToken”的选择器。
-- **开头**：此运算符与以指定选择器值开头的所有字段匹配。
-- **结尾**：此运算符与以指定选择器值结尾的所有请求字段匹配。
+- **开头为**：此运算符与以指定选择器值开头的所有字段匹配。
+- **结尾为**：此运算符与以指定选择器值结尾的所有请求字段匹配。
 - **包含**：此运算符与包含指定选择器值的所有请求字段匹配。
 
 在所有情况下，匹配不区分大小写，并且正则表达式不允许作为选择器。

@@ -7,14 +7,14 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 11/06/2018
+ms.date: 01/01/2019
 ms.author: hrasheed
-ms.openlocfilehash: 4285c633062386657cbea478f327c9a1b088f16a
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 785223f7da1f59288f4fca6e7a3955a6b3af41c0
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53383810"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53974977"
 ---
 # <a name="install-and-use-presto-on-hdinsight-hadoop-clusters"></a>在 HDInsight Hadoop 群集上安装并使用 Presto
 
@@ -31,9 +31,7 @@ HDInsight 还为 Apache Hadoop 群集提供了 Starburst Presto 应用程序。 
 > [!WARNING]  
 > 完全支持通过 HDInsight 群集提供的组件，Microsoft 支持部门将帮助你找出并解决与这些组件相关的问题。
 > 
-> 自定义组件（如 Presto）可获得合理范围的支持，以帮助进一步排查问题。 这可能导致问题解决，或要求参与可用的开放源代码技术渠道，在该处可找到该技术的深入专业知识。 例如，有许多可以使用的社区站点，例如：[面向 HDInsight 的 MSDN 论坛](https://social.msdn.microsoft.com/Forums/azure/home?forum=hdinsight)、[http://stackoverflow.com](http://stackoverflow.com)。 此外，Apache 项目在 [http://apache.org](http://apache.org) 上有项目站点，例如：[Hadoop](http://hadoop.apache.org/)。
-> 
-> 
+> 自定义组件（如 Presto）可获得合理范围的支持，以帮助进一步排查问题。 这可能导致问题解决，或要求参与可用的开放源代码技术渠道，在该处可找到该技术的深入专业知识。 例如，有许多可以使用的社区站点，例如：[面向 HDInsight 的 MSDN 论坛](https://social.msdn.microsoft.com/Forums/azure/home?forum=hdinsight)、[https://stackoverflow.com](https://stackoverflow.com)。 此外，Apache 项目在 [https://apache.org](https://apache.org) 上有项目站点，例如：[Hadoop](https://hadoop.apache.org/)。
 
 
 ## <a name="install-presto-using-script-action"></a>使用脚本操作安装 Presto
@@ -44,7 +42,7 @@ HDInsight 还为 Apache Hadoop 群集提供了 Starburst Presto 应用程序。 
 
     * 它必须是装有 HDInsight 3.6 版的 Hadoop 群集。
 
-    * 它必须使用 Azure 存储作为数据存储。 在使用 Azure Data Lake Store 作为存储选项的群集上使用 Presto 还不是一个选项。
+    * 它必须使用 Azure 存储作为数据存储。 目前不支持在使用 Azure Data Lake Storage 作为存储选项的群集上使用 Presto。
 
     ![使用自定义选项创建 HDInsight 群集](./media/hdinsight-hadoop-install-presto/hdinsight-install-custom.png)
 
@@ -123,17 +121,23 @@ HDInsight 还为 Apache Hadoop 群集提供了 Starburst Presto 应用程序。 
 
 5. 单击“购买”。
 
-6. 将更改应用到群集配置后，可以使用以下步骤访问 Airpal Web 接口。
+6. 将更改应用到群集配置后，可以使用以下步骤从 [Azure 门户](https://portal.azure.com)访问 Airpal Web 接口：
 
-    1. 在群集对话框中，单击“应用程序”。
+    1. 在左侧菜单中，选择“所有服务”。
+
+    1. 在“ANALYTICS”下，选择“HDInsight 群集”。
+
+    1. 从列表中选择群集，随即将打开默认视图。
+
+    1. 在默认视图中的“设置”下，选择“应用程序”。
 
         ![HDInsight 在 Presto 群集上启动 Airpal](./media/hdinsight-hadoop-install-presto/hdinsight-presto-launch-airpal.png)
 
-    2. 在“已安装的应用”区域中，单击 Airpal 对应的“门户”。
+    1. 在“已安装应用”页中，找到“airpal”的表条目，然后选择“门户”。
 
         ![HDInsight 在 Presto 群集上启动 Airpal](./media/hdinsight-hadoop-install-presto/hdinsight-presto-launch-airpal-1.png)
 
-    3. 出现提示时，请输入创建 HDInsight Hadoop 群集时指定的管理员凭据。
+    1. 出现提示时，请输入创建 HDInsight Hadoop 群集时指定的管理员凭据。
 
 ## <a name="customize-a-presto-installation-on-hdinsight-cluster"></a>自定义 HDInsight 群集上的 Presto 安装
 

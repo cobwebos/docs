@@ -9,16 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/20/2018
 ms.author: jingwang
-ms.openlocfilehash: df4d856c99f801e58cf7fdd5de3b634711519fdf
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.openlocfilehash: b0420d53d49d65561395a1fd6b576783a3dfbe64
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53812965"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54104499"
 ---
 # <a name="copy-data-from-azure-database-for-mariadb-using-azure-data-factory"></a>使用 Azure 数据工厂从 Azure Database for MariaDB 复制数据 
 

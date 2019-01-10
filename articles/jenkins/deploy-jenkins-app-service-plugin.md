@@ -3,17 +3,17 @@ title: 使用 Jenkins 插件部署到 Azure App Service
 description: 了解如何在 Jenkins 中使用 Azure App Service Jenkins 插件将 Java Web 应用部署到 Azure
 ms.service: jenkins
 keywords: jenkins, azure, devops, 应用服务
-author: tomarcher
+author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 07/31/2018
-ms.openlocfilehash: 98e69c7759f736c132601305156290f7a43eeaf9
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 0ecd0603a5750b6d03da7cf2c577c668482048aa
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53537573"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54077311"
 ---
 # <a name="deploy-to-azure-app-service-by-using-the-jenkins-plugin"></a>使用 Jenkins 插件部署到 Azure App Service 
 

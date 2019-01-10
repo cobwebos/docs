@@ -9,18 +9,18 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 12/19/2018
 ms.author: liydu
-ms.openlocfilehash: 87091cf3d128eecdbbf06a41d516f13e590338b9
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 038b1d9fa319837f3877c20c9fc3b1b83970e7b4
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53788406"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54158612"
 ---
 # <a name="use-iot-devkit-az3166-with-azure-functions-and-cognitive-services-to-make-a-language-translator"></a>将 IoT DevKit AZ3166 与 Azure Functions 和认知服务配合使用生成语言翻译
 
 本文介绍如何使用 [Azure 认知服务](https://azure.microsoft.com/services/cognitive-services/)将 IoT DevKit 设为语言翻译。 它会录制你的声音并将其翻译为 DevKit 屏幕上显示的英文文本。
 
-[MXChip IoT DevKit](https://aka.ms/iot-devkit) 是具有多种外设和传感器的集成 Arduino 兼容板。 可以使用 Visual Studio Code 中的 [Azure IoT Device Workbench](https://aka.ms/iot-workbench)Azure IoT 设备 Workbench）或 [Azure IoT 工具](https://aka.ms/azure-iot-tools)扩展包进行开发。 [项目目录](https://microsoft.github.io/azure-iot-developer-kit/docs/projects/)包含有助于确定 IoT 解决方案原型的示例应用程序。
+[MXChip IoT DevKit](https://aka.ms/iot-devkit) 是具有多种外设和传感器的集成 Arduino 兼容板。 可以使用 Visual Studio Code 中的 [Azure IoT Device Workbench](https://aka.ms/iot-workbench) 或 [Azure IoT 工具](https://aka.ms/azure-iot-tools)扩展包进行开发。 [项目目录](https://microsoft.github.io/azure-iot-developer-kit/docs/projects/)包含有助于确定 IoT 解决方案原型的示例应用程序。
 
 ## <a name="before-you-begin"></a>开始之前
 
@@ -40,7 +40,7 @@ ms.locfileid: "53788406"
 
 1. 确保 IoT DevKit **未连接**到计算机。 先启动 VS Code，然后将 DevKit 连接到计算机。
 
-1. 单击 `F1` 以打开命令面板，键入并选择 **Azure IoT Device Workbench：打开示例...**。然后选择“IoT DevKit”作为开发板。
+1. 单击 `F1` 以打开命令面板，键入并选择“Azure IoT Device Workbench：打开示例...”**。然后选择“IoT DevKit”作为开发板。
 
 1. 在 IoT Workbench 的“示例”页中，找到 DevKit Translator 并单击“打开示例”。 然后选择用于下载示例代码的默认路径。
   ![打开示例](media/iot-hub-arduino-iot-devkit-az3166-translator/open-sample.png)
@@ -137,7 +137,7 @@ IoT DevKit 会记录你的声音，然后发送 HTTP 请求以触发 Azure Funct
 如果遇到问题，请参阅 [IoT DevKit 常见问题解答](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/)，或通过以下渠道联系我们：
 
 * [Gitter.im](http://gitter.im/Microsoft/azure-iot-developer-kit)
-* [堆栈溢出](https://stackoverflow.com/questions/tagged/iot-devkit)
+* [Stack Overflow](https://stackoverflow.com/questions/tagged/iot-devkit)
 
 ## <a name="next-steps"></a>后续步骤
 

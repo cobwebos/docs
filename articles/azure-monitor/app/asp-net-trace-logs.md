@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 05/03/2017
 ms.author: mbullwin
-ms.openlocfilehash: e5e1a415ce5c5bd14a8afef41e506259555d79f6
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 5c809153b3b86a5460bd2c235d9f6226fb50a024
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53970247"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54118789"
 ---
 # <a name="explore-net-trace-logs-in-application-insights"></a>在 Application Insights 中查看日志浏览 .NET 跟踪日志
 如果针对 ASP.NET 应用程序中的诊断跟踪使用了 NLog、log4Net 或 System.Diagnostics.Trace，请将日志发送到 [Azure Application Insights][start]，然后可在其中浏览和搜索日志。 日志将与来自应用程序的其他遥测合并，以便可以标识与处理每个用户请求关联的跟踪，并将它们与其他事件和异常报告相关联。
@@ -160,7 +160,7 @@ TrackTrace 的一个优势是可将相对较长的数据放置在消息中。 �
 * 将此页面的配置另存为收藏夹
 
 > [!NOTE]
-> **采样。** 如果应用程序发送大量数据，并且使用的是用于 ASP.NET 的 Application Insights SDK 2.0.0-beta3 或更高版本，则自适应采样功能可以正常运行，只发送一部分遥测数据。 [了解有关采样的详细信息。](../../application-insights/app-insights-sampling.md)
+> **采样。** 如果应用程序发送大量数据，并且使用的是用于 ASP.NET 的 Application Insights SDK 2.0.0-beta3 或更高版本，则自适应采样功能可以正常运行，只发送一部分遥测数据。 [了解有关采样的详细信息。](../../azure-monitor/app/sampling.md)
 >
 >
 
@@ -194,7 +194,7 @@ TrackTrace 的一个优势是可将相对较长的数据放置在消息中。 �
 有多个因素会影响保留的数据量。 有关详细信息，请参阅客户事件指标页的[限制](../../azure-monitor/app/api-custom-events-metrics.md#limits)部分。 
 
 ### <a name="im-not-seeing-some-of-the-log-entries-that-i-expect"></a>我没有看到预期的某些日志条目
-如果应用程序发送大量数据，并且使用的是用于 ASP.NET 的 Application Insights SDK 2.0.0-beta3 或更高版本，则自适应采样功能可以正常运行，只发送一部分遥测数据。 [了解有关采样的详细信息。](../../application-insights/app-insights-sampling.md)
+如果应用程序发送大量数据，并且使用的是用于 ASP.NET 的 Application Insights SDK 2.0.0-beta3 或更高版本，则自适应采样功能可以正常运行，只发送一部分遥测数据。 [了解有关采样的详细信息。](../../azure-monitor/app/sampling.md)
 
 ## <a name="add"></a>后续步骤
 * [设置可用性和响应能力测试][availability]
@@ -206,5 +206,5 @@ TrackTrace 的一个优势是可将相对较长的数据放置在消息中。 �
 [diagnostic]: ../../azure-monitor/app/diagnostic-search.md
 [exceptions]: asp-net-exceptions.md
 [portal]: https://portal.azure.com/
-[qna]: ../../application-insights/app-insights-troubleshoot-faq.md
-[start]: ../../application-insights/app-insights-overview.md
+[qna]: ../../azure-monitor/app/troubleshoot-faq.md
+[start]: ../../azure-monitor/app/app-insights-overview.md

@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 06/13/2018
 ms.author: zhshang
-ms.openlocfilehash: be44a233c2b09aa91ec04b5a64b523a2d0b00db1
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: bd872e7aa9ada8c46b0af897b4d7ad137b767514
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53599853"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54103785"
 ---
 # <a name="tutorial-azure-signalr-service-authentication"></a>教程：Azure SignalR 服务身份验证
 
@@ -547,7 +547,7 @@ az webapp deployment source config-local-git --name $WebAppName \
 
 需要执行的最后一步是更新 GitHub OAuth 应用的“主页 URL”和“授权回调 URL”，指向新的托管应用。
 
-1. 在浏览器中打开 [http://github.com](http://github.com) 并导航到帐户的“设置” > “开发人员设置” > “Oauth 应用”。
+1. 在浏览器中打开 [https://github.com](https://github.com) 并导航到帐户的“设置” > “开发人员设置” > “Oauth 应用”。
 
 2. 单击身份验证应用并更新“主页 URL”和“授权回调 URL”，如下所示：
 

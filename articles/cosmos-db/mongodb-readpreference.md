@@ -1,20 +1,19 @@
 ---
 title: 在 Azure Cosmos DB 的用于 MongoDB 的 API 中使用 MongoDB 读取首选项
 description: 了解如何在 Azure Cosmos DB 的用于 MongoDB 的 API 中使用 MongoDB 读取首选项
-services: cosmos-db
-author: vidhoonv
-ms.author: sclyon
+author: sivethe
+ms.author: sivethe
 ms.service: cosmos-db
-ms.component: cosmosdb-mongo
+ms.subservice: cosmosdb-mongo
 ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 02/26/2018
-ms.openlocfilehash: 25c1872a677b05980899307a8de9f9b51fa749f9
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: dfb1e0093893fadf22c7a92ef5f351ae8920a977
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53787828"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54036454"
 ---
 # <a name="how-to-globally-distribute-reads-using-azure-cosmos-dbs-api-for-mongodb"></a>如何使用 Azure Cosmos DB 的用于 MongoDB 的 API 全局分发读取
 

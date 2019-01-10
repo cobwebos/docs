@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/28/2018
 ms.author: magoedte
-ms.openlocfilehash: 1c90c85f667e18a80c4673a73867ee2d6b3b6294
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 1d4760eb6490ce458e699ad9bc59a57cb473ef6d
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53189891"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54104116"
 ---
 # <a name="connect-windows-computers-to-the-log-analytics-service-in-azure"></a>将 Windows 计算机连接到 Azure 中的 Log Analytics 服务
 
@@ -128,9 +128,9 @@ ms.locfileid: "53189891"
 
 32 位和 64 位版本的代理包具有不同的产品代码，新发布的版本也具有唯一的产品代码。  产品代码是一个 GUID，它是应用程序或产品的主体标志，由 Windows Installer 的“ProductCode”属性表示。  **MMAgent.ps1** 脚本中的 `ProductId` 值必须与 32 位或 64 位代理安装程序包的产品代码匹配。
 
-要直接从代理安装包检索产品代码，可使用[适用于 Windows Installer 开发者的 Windows SDK 组件](https://msdn.microsoft.com/library/windows/desktop/aa370834%28v=vs.85%29.aspx)中的 Orca.exe，该组件是 Windows 软件开发工具包的一个组件，或按照 Microsoft 最有价值专家 (MVP) 编写的[示例脚本](http://www.scconfigmgr.com/2014/08/22/how-to-get-msi-file-information-with-powershell/)来使用 PowerShell。  对于上述任一种方法，都需要先从 MMASetup 安装包中提取 **MOMagent.msi** 文件。  在前面[使用命令行安装代理](#install-the-agent-using-the-command-line)部分下的第一个步骤中演示了此操作。  
+要直接从代理安装包检索产品代码，可使用[适用于 Windows Installer 开发者的 Windows SDK 组件](https://msdn.microsoft.com/library/windows/desktop/aa370834%28v=vs.85%29.aspx)中的 Orca.exe，该组件是 Windows 软件开发工具包的一个组件，或按照 Microsoft 最有价值专家 (MVP) 编写的[示例脚本](https://www.scconfigmgr.com/2014/08/22/how-to-get-msi-file-information-with-powershell/)来使用 PowerShell。  对于上述任一种方法，都需要先从 MMASetup 安装包中提取 **MOMagent.msi** 文件。  在前面[使用命令行安装代理](#install-the-agent-using-the-command-line)部分下的第一个步骤中演示了此操作。  
 
-1. 从 [http://www.powershellgallery.com/packages/xPSDesiredStateConfiguration](http://www.powershellgallery.com/packages/xPSDesiredStateConfiguration) 将 xPSDesiredStateConfiguration DSC 模块导入到 Azure 自动化。  
+1. 从 [https://www.powershellgallery.com/packages/xPSDesiredStateConfiguration](https://www.powershellgallery.com/packages/xPSDesiredStateConfiguration) 将 xPSDesiredStateConfiguration DSC 模块导入到 Azure 自动化。  
 2.  为 *OPSINSIGHTS_WS_ID* 和 *OPSINSIGHTS_WS_KEY* 创建 Azure 自动化变量资产。 将 OPSINSIGHTS_WS_ID 设置为 Log Analytics 工作区 ID，将 OPSINSIGHTS_WS_KEY 设置为工作区的主键。
 3.  复制脚本，并将其另存为 MMAgent.ps1。
 

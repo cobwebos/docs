@@ -12,12 +12,12 @@ manager: cgronlun
 ms.reviewer: jmartens
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 86823579286ac0b8fae39c265b387ea6b4ad99ee
-ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
+ms.openlocfilehash: fda0f600fa7cb130511f2bd8b53543acfbcc7759
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/22/2018
-ms.locfileid: "53755234"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54054282"
 ---
 # <a name="load-and-read-data-with-azure-machine-learning"></a>使用 Azure 机器学习加载和读取数据
 
@@ -292,4 +292,4 @@ dataflow.to_pandas_dataframe().head()
 |1|1011871|斯特恩斯家园农贸市场|http://Stearnshomestead.com |6975 Ridge Road|帕尔马|凯霍加河|
 |2|1011878|100 英里市场|http://www.pfcmarkets.com |507 哈里森街|卡拉马祖|卡拉马祖|
 |3|1009364|106 S. 主要街道农贸市场|http://thetownofsixmile.wordpress.com/ |106 S. 主要街道|六英里|||
-|4|1010691|第 10 街社区农贸市场|http://agrimissouri.com/mo-grown/grodetail.php..。 |第十街和波普拉区|拉马尔|巴顿|
+|4|1010691|第 10 街社区农贸市场|https://agrimissouri.com/..。 |第十街和波普拉区|拉马尔|巴顿|

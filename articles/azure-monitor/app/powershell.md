@@ -12,15 +12,15 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/02/2017
 ms.author: mbullwin
-ms.openlocfilehash: bcf33538479a18d1849515f00e9a0d02ef77dba2
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 5596675d428fcf8403d001a8f807507ab1e42e43
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54004307"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54117276"
 ---
 #  <a name="create-application-insights-resources-using-powershell"></a>使用 PowerShell 创建 Application Insights 资源
-本文演示如何通过 Azure 资源管理自动创建和更新 [Application Insights](../../application-insights/app-insights-overview.md) 资源。 例如，可能在生成过程中执行此操作。 除了基本的 Application Insights 资源，还可创建[可用性 Web 测试](../../azure-monitor/app/monitor-web-app-availability.md)、设置[警报](../../azure-monitor/app/alerts.md)、设置[定价方案](pricing.md)和创建其他 Azure 资源。
+本文演示如何通过 Azure 资源管理自动创建和更新 [Application Insights](../../azure-monitor/app/app-insights-overview.md) 资源。 例如，可能在生成过程中执行此操作。 除了基本的 Application Insights 资源，还可创建[可用性 Web 测试](../../azure-monitor/app/monitor-web-app-availability.md)、设置[警报](../../azure-monitor/app/alerts.md)、设置[定价方案](pricing.md)和创建其他 Azure 资源。
 
 创建这些资源的关键是用于 [Azure 资源管理器](../../azure-resource-manager/powershell-azure-resource-manager.md) 的 JSON 模板。 简而言之，过程如下：下载现有资源的 JSON 定义，参数化某些值（如名称），并在需要创建新资源时运行模板。 可以将多个资源打包在一起，以便一次性创建它们，例如具有可用性测试、警报和连续导出的存储的应用监视器。 某些参数化有一些微妙之处，此处我们将进行介绍。
 

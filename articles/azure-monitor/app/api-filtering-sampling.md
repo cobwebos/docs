@@ -12,19 +12,19 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 11/23/2016
 ms.author: mbullwin
-ms.openlocfilehash: f733a321470321b5b0f8bce48b4ac7978027fab7
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 095ecdccde930db20ee858bfce7fc0811163cdd9
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53973462"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54038256"
 ---
 # <a name="filtering-and-preprocessing-telemetry-in-the-application-insights-sdk"></a>Application Insights SDK 中的筛选和预处理遥测 | Microsoft Azure
 
 
 可以为 Application Insights SDK 编写和配置插件，以在将遥测发送到 Application Insights 服务之前自定义遥测的捕获和处理方式。
 
-* [采样](../../application-insights/app-insights-sampling.md)可在不影响统计信息的情况下减少遥测量。 它还保留相关数据点，以便可以在诊断问题时导航这些点。 在门户中，总计相乘以补偿采样。
+* [采样](../../azure-monitor/app/sampling.md)可在不影响统计信息的情况下减少遥测量。 它还保留相关数据点，以便可以在诊断问题时导航这些点。 在门户中，总计相乘以补偿采样。
 * 通过[适用于 ASP.NET](#filtering) 或 [Java](../../azure-monitor/app/java-filter-telemetry.md) 的遥测处理器筛选可先在 SDK 中选择或修改遥测，然后再将其发送到服务器。 例如，可以通过排除机器人请求减少遥测量。 但是，与采样相比，筛选是更基本的减少流量方法。 它允许更好地控制传输的内容，但你必须知道它会影响统计信息（例如，如果筛选出所有成功请求）。
 * [遥测初始值设定项将属性添加](#add-properties)到从应用发送的任何属性，包括来自标准模块的遥测。 例如，可以添加计算得出的值；或在门户中筛选数据所依据的版本号。
 * [SDK API](../../azure-monitor/app/api-custom-events-metrics.md) 用于发送自定义事件和指标。
@@ -43,7 +43,7 @@ ms.locfileid: "53973462"
 > [!WARNING]
 > 使用处理器筛选从 SDK 发送的遥测会使门户中看到的统计信息出现偏差，并使它难以跟进相关项目。
 >
-> 此时，考虑使用[采样](../../application-insights/app-insights-sampling.md)。
+> 此时，考虑使用[采样](../../azure-monitor/app/sampling.md)。
 >
 >
 
@@ -371,5 +371,5 @@ void initialize(Telemetry telemetry); }
 
 ## <a name="next"></a>后续步骤
 * [搜索事件和日志](../../azure-monitor/app/diagnostic-search.md)
-* [采样](../../application-insights/app-insights-sampling.md)
-* [故障排除](../../application-insights/app-insights-troubleshoot-faq.md)
+* [采样](../../azure-monitor/app/sampling.md)
+* [故障排除](../../azure-monitor/app/troubleshoot-faq.md)

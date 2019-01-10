@@ -9,15 +9,15 @@ ms.devlang: ''
 ms.topic: conceptual
 author: anumjs
 ms.author: anjangsh
-ms.reviewer: MightyPen
+ms.reviewer: MightyPen, sstein
 manager: craigg
 ms.date: 09/19/2018
-ms.openlocfilehash: 034fd2434d3b824c4356e640a1c1665dff542de6
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.openlocfilehash: 4b2c9f17bc9c6e9bbc280116d074bd0f1e3d3e38
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47056584"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53606038"
 ---
 # <a name="explore-saas-analytics-with-azure-sql-database-sql-data-warehouse-data-factory-and-power-bi"></a>探索如何使用 Azure SQL 数据库、SQL 数据仓库、数据工厂和 Power BI 运行 SaaS 分析
 
@@ -142,11 +142,11 @@ Azure 数据工厂用于协调数据的提取、加载和转换。 从本教程�
 在概述页中，切换到左侧面板中的“创作”选项卡，并观察是否已创建三个[管道](https://docs.microsoft.com/azure/data-factory/concepts-pipelines-activities)和三个[数据集](https://docs.microsoft.com/azure/data-factory/concepts-datasets-linked-services)。
 ![adf_author](media/saas-tenancy-tenant-analytics/adf_author_tab.JPG)
 
-三个嵌套的管道为：SQLDBToDW、DBCopy 和 TableCopy。
+三个嵌套管道为：SQLDBToDW、DBCopy 和 TableCopy。
 
 **管道 1 - SQLDBToDW** 查找目录数据库中存储的租户数据库的名称（表名称：[__ShardManagement].[ShardsGlobal]），查找每个租户数据库，并执行 **DBCopy** 管道。 完成后，将执行提供的 **sp_TransformExtractedData** 存储过程架构。 此存储过程转换临时表中加载的数据，并填充星型架构表。
 
-**管道 2 - DBCopy** 查找 Blob 存储中存储的配置文件中的源表和列的名称。  然后，针对以下四个表中的每一个运行 **TableCopy** 管道：TicketFacts、CustomerFacts、EventFacts 和 VenueFacts。 对所有 20 个数据库并行执行 **[Foreach](https://docs.microsoft.com/azure/data-factory/control-flow-for-each-activity)** 活动。 ADF 允许并行运行最多 20 个循环迭代。 请考虑为其他数据库创建多个管道。    
+**管道 2 - DBCopy** 查找 Blob 存储中存储的配置文件中的源表和列的名称。  随后为以下四个表分别运行 **TableCopy** 管道：TicketFacts、CustomerFacts、EventFacts 和 VenueFacts。 对所有 20 个数据库并行执行 **[Foreach](https://docs.microsoft.com/azure/data-factory/control-flow-for-each-activity)** 活动。 ADF 允许并行运行最多 20 个循环迭代。 请考虑为其他数据库创建多个管道。    
 
 **管道 3 - TableCopy** 使用 SQL 数据库中的行版本号 (_rowversion_) 来识别已更改或更新的行。 此活动将会查找用于从源表提取行的起始和结束行版本。 每个租户数据库中存储的 **CopyTracker** 表跟踪在每次运行时从每个源表提取的最后一行。 新的或已更改的行将复制到数据仓库中的相应临时表：**raw_Tickets**、**raw_Customers**、**raw_Venues** 和 **raw_Events**。 最后，将在 **CopyTracker** 表中保存最后一个行版本，用作下次提取操作的初始行版本。 
 

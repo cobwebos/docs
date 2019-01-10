@@ -6,14 +6,14 @@ ms.service: security
 ms.subservice: Azure Disk Encryption
 ms.topic: article
 ms.author: mstewart
-ms.date: 12/17/2018
+ms.date: 01/09/2019
 ms.custom: seodec18
-ms.openlocfilehash: 4bc66c3b17dbaf2d011bd0f4b6f355df3d1b50a3
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 071f07e9d485a5fab5f2ce3d23a383e974001143
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53547756"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54158005"
 ---
 # <a name="azure-disk-encryption-prerequisites-previous-release"></a>Azure 磁盘加密先决条件（早期版本）
 
@@ -80,11 +80,10 @@ ms.locfileid: "53547756"
 [Azure PowerShell](/powershell/azure/overview) 提供了一组使用 [Azure 资源管理器](../azure-resource-manager/resource-group-overview.md)模型管理 Azure 资源的 cmdlet。 可以在浏览器中结合 [Azure Cloud Shell](../cloud-shell/overview.md) 使用 PowerShell，或者遵照以下说明将 PowerShell 安装在本地计算机上，以便在任何 PowerShell 会话中使用这些 cmdlet。 如果已在本地安装 PowerShell，请确保使用最新版本的 Azure PowerShell SDK 来配置 Azure 磁盘加密。 下载最新版本的 [Azure PowerShell 版本](https://github.com/Azure/azure-powershell/releases)。
 
 ### <a name="install-azure-powershell-for-use-on-your-local-machine-optional"></a>安装在本地计算机上使用的 Azure PowerShell（可选）：  
-1. 遵照适用于操作系统的链接中的说明，然后继续完成下面的剩余步骤。      
-    - [安装并配置适用于 Windows 的 Azure PowerShell](/powershell/azure/install-azurerm-ps)。 
+1. 遵照适用于操作系统的链接中的说明，然后继续完成下面的剩余步骤。
+    - [安装并配置适用于 Windows 的 Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps?view=azurermps-6.13.0)。 
         - 安装 PowerShellGet、Azure PowerShell，并加载 AzureRM 模块。 
-    - [在 macOS 和 Linux 上安装并配置 Azure PowerShell](/powershell/azure/install-azurermps-maclinux)。
-        -  安装 PowerShell Core、Azure PowerShell for .NET Core，并加载 Az 模块。
+
 2. 安装 [Azure Active Directory PowerShell 模块](/powershell/azure/active-directory/install-adv2#installing-the-azure-ad-module)。 
 
      ```powershell

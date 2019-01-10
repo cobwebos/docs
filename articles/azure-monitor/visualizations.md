@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/24/2018
 ms.author: bwren
-ms.openlocfilehash: 862380a35dcc4d50dce8d709bd1dbea1aa38e37a
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 9b160c011a8a9507698443446ad5fe908b32fb9e
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53728340"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54049956"
 ---
 # <a name="visualizing-data-from-azure-monitor"></a>可视化 Azure Monitor 中的数据
 本文概述了将 Azure Monitor 中存储的日志和指标数据可视化时可使用的方法。
@@ -71,7 +71,7 @@ ms.locfileid: "53728340"
 
 
 ## <a name="application-insights-workbooks"></a>Application Insights 工作簿
-[工作簿](../application-insights/app-insights-usage-workbooks.md)是交互式文档，可以让用户深入了解团队内部的数据、调查和协作。 例如，工作簿在故障排查指南和事件分析方面非常有用。
+[工作簿](../azure-monitor/app/usage-workbooks.md)是交互式文档，可以让用户深入了解团队内部的数据、调查和协作。 例如，工作簿在故障排查指南和事件分析方面非常有用。
 
 ![工作簿](media/visualizations/workbook.png)
 
@@ -140,7 +140,7 @@ ms.locfileid: "53728340"
 - 了解[由 Azure Monitor 收集的数据](platform/data-collection.md)。
 - 了解 [Azure 仪表板](../azure-portal/azure-portal-dashboards.md)。
 - 了解 [Azure Monitor 中的视图](platform/view-designer.md)。
-- 了解 [Application Insights 中的工作簿](../application-insights/app-insights-usage-workbooks.md)。
+- 了解 [Application Insights 中的工作簿](../azure-monitor/app/usage-workbooks.md)。
 - 了解如何[将日志数据导入 Power BI](../azure-monitor/platform/powerbi.md)。
 - 了解 [Grafana Azure Monitor 数据源插件](../azure-monitor/platform/grafana-plugin.md)。
 

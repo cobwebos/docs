@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: d39a271f33cb86bf870c3a7692c38d780093efa2
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 86b33bfa0f5383ac68080e2f8f7f9a004a1364a0
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53100032"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53652593"
 ---
 # <a name="prepare-to-deploy-your-iot-edge-solution-in-production"></a>准备在生产环境中部署 IoT Edge 解决方案
 
@@ -162,6 +162,17 @@ Azure IoT 中心与 IoT Edge 之间的信道始终配置为出站。 对于大�
 在所有三种情况下，DNS 名称将与 \*azure-devices.net 模式匹配。 
 
 此外，**容器引擎**通过 HTTPS 向容器注册表发出调用。 若要检索 IoT Edge 运行时容器映像，请使用 DNS 名称 mcr.microsoft.com。 容器引擎连接到部署中配置的其他注册表。 
+
+此清单可作为防火墙规则的入手点：
+
+   | URL（\* = 通配符） | 出站 TCP 端口 | 使用情况 |
+   | ----- | ----- | ----- |
+   | mcr.microsoft.com  | 443 | Microsoft 容器注册表 |
+   | global.azure-devices-provisioning.net  | 443 | DPS 访问（可选） |
+   | \*.azurecr.io | 443 | 个人和第三方容器注册表 |
+   | \*.blob.core.windows.net | 443 | 下载映像增量数据 | 
+   | \*.azure-devices.net | 5671、8883、443 | IoT 中心访问 |
+   | \*.docker.io  | 443 | Docker 访问（可选） |
 
 ### <a name="configure-communication-through-a-proxy"></a>配置为通过代理进行通信
 

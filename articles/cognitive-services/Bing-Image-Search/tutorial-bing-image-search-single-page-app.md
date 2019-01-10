@@ -3,19 +3,19 @@ title: 教程：创建单页 Web 应用 - 必应图像搜索 API
 titleSuffix: Azure cognitive services
 description: 通过必应图像搜索 API 可以搜索 Web 以寻找高质量的相关图像。 使用本教程构建可向 API 发送搜索查询并在网页内显示结果的单页 Web 应用程序。
 services: cognitive-services
-author: aahi
+author: aahill
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-image-search
 ms.topic: tutorial
 ms.date: 9/12/2018
 ms.author: aahi
-ms.openlocfilehash: e2013b28e8c829d49efe662a9b0eba245c6d5fab
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: f7ab94c6d935222c65c1259f1ce3b01d10f78ec1
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53253946"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54062853"
 ---
 # <a name="tutorial-create-a-single-page-app-using-the-bing-image-search-api"></a>教程：使用必应图像搜索 API 创建单页应用
 

@@ -13,14 +13,14 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: media
-ms.date: 11/21/2018
+ms.date: 12/18/2018
 ms.author: juliako
-ms.openlocfilehash: 73d4ecec2665e238236de4a778d6cdd43642c87b
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 8a680f1c745bed7745691ad337ed887cc4fc05c5
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52310389"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53716610"
 ---
 # <a name="migration-guidance-for-moving-from-media-services-v2-to-v3"></a>有关从媒体服务 v2 迁移到 v3 的指导
 
@@ -83,11 +83,11 @@ ms.locfileid: "52310389"
     * 叠加
     * 裁剪
     * 缩略图子画面
-* 包含转码的 LiveEvent 目前不支持静态图像插入中间流、自定义预设，或通过 API 调用执行的广告标记插入。 
+* 包含转码的 LiveEvent 目前不支持静态图像插入中间流，以及通过 API 调用执行的广告标记插入。 
 
 > [!NOTE]
 > 请将本文加入书签，并不时地查看最新信息。
-
+ 
 ## <a name="code-differences"></a>代码差异
 
 下表显示了常见方案中 v2 和 v3 的代码差异。
@@ -108,7 +108,7 @@ ms.locfileid: "52310389"
     * 无法持续使用 v3 来管理通过 v2 创建的频道和节目（将映射到 v3 中的 LiveEvent 和 LiveOutput）。 建议是停止频道后的方便时间，切换到 v3 LiveEvent 和 LiveOutput。<br/>目前，无法持续迁移正在运行的频道。  
 
 > [!NOTE]
-> 请将本文加入书签，并不时地查看最新信息。
+> 在媒体服务团队不断改进 v3 API 并解决版本差距的过程中，本页面会得到维护。
 
 ## <a name="next-steps"></a>后续步骤
 

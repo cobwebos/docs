@@ -9,16 +9,15 @@ editor: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/16/2018
 ms.author: douglasl
-ms.openlocfilehash: 343af57cc8f3e63965dc1fe1827b2945009ea8bf
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: e004dc6b7d78849705f8d3fa3545efe7318d3911
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37045776"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54022795"
 ---
 # <a name="programmatically-monitor-an-azure-data-factory"></a>以编程方式监视 Azure 数据工厂
 本文介绍如何使用不同的软件开发工具包 (SDK) 监视数据工厂中的管道。 
