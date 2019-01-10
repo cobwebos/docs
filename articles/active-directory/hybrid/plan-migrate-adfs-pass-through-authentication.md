@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 12/13/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: dcb2d1741a8e62bd317881d3f224d3358cad8778
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: c7d236769d5e9adca0402affc2d0eccdf78a6837
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53557200"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54107746"
 ---
 # <a name="migrate-from-federation-to-pass-through-authentication-for-azure-ad"></a>从联合身份验证迁移到 Azure AD 的直通身份验证
 以下文档提供有关从 AD FS 转移到直通身份验证的指导。
@@ -121,9 +121,9 @@ Get-MsolDomainFederationSettings -DomainName Contoso.com | fl *
 |-|-|
 | 要为其他这些应用程序保留 AD FS。| 将同时使用 AD FS 和 Azure AD，因此需要考虑最终用户体验。 在某些情况下，用户可能需要进行身份验证两次，一次是针对 Azure AD（然后用户可以通过 SSO 登录到 Office 365 等其他应用程序），另一次是针对仍以信赖方信任方式绑定到 AD FS 的任何应用程序再次进行身份验证。 |
 | AD FS 经过重度的自定义，并依赖于无法在 Azure AD 中复制的 onload.js 文件中的特定自定义设置（例如，你已更改登录体验，使用户只需以 SamAccountName 格式输入其用户名而不是 UPN；或者在登录体验中使用了众多的品牌设计）| 在继续之前，需要验证 Azure AD 是否可以满足当前自定义要求。 有关更多信息和指导，请参阅“AD FS 品牌”和“AD FS 自定义”部分。|
-| 正在通过 AD FS 阻止旧式身份验证客户端。| 考虑将 AD FS 中当前存在的、用于阻止旧式身份验证客户端的控制机制，替换为[针对旧式身份验证的条件访问控制](https://docs.microsoft.com/azure/active-directory/conditional-access/conditions)和 [Exchange Online 客户端访问规则](http://aka.ms/EXOCAR)的组合。 |
+| 正在通过 AD FS 阻止旧式身份验证客户端。| 考虑将 AD FS 中当前存在的、用于阻止旧式身份验证客户端的控制机制，替换为[针对旧式身份验证的条件访问控制](https://docs.microsoft.com/azure/active-directory/conditional-access/conditions)和 [Exchange Online 客户端访问规则](https://aka.ms/EXOCAR)的组合。 |
 | 要求用户在 AD FS 中进行身份验证时对本地 MFA 服务器解决方案执行 MFA。| 无法通过本地 MFA 解决方案将 MFA 质询注入到托管域的身份验证流，但是，在转换域后，可以使用 Azure MFA 服务实现此目的。 如果用户目前未使用 Azure MFA，则此过程涉及到一次性的最终用户注册步骤，你需要对此做好准备并与最终用户沟通。 |
-| 目前在 AD FS 中使用访问控制策略（AuthZ 规则）来控制对 Office 365 的访问。| 考虑将这些策略替换为等效的 Azure AD [条件访问策略](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal)和 [Exchange Online 客户端访问规则](http://aka.ms/EXOCAR)。|
+| 目前在 AD FS 中使用访问控制策略（AuthZ 规则）来控制对 Office 365 的访问。| 考虑将这些策略替换为等效的 Azure AD [条件访问策略](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal)和 [Exchange Online 客户端访问规则](https://aka.ms/EXOCAR)。|
 
 ### <a name="considerations-for-common-ad-fs-customizations"></a>有关常见 AD FS 自定义的注意事项
 
@@ -333,7 +333,7 @@ Azure AD 智能锁定可以防范暴力破解密码攻击，并可以防止在�
 
 以前，当租户使用联合身份验证时，用户会从 Azure AD 登录页重定向到你的 AD FS 环境。 将租户配置为使用直通身份验证而不是联合身份验证之后，用户不会重定向到 AD FS，而是直接通过 Azure AD 登录页登录。
 
-在 InPrivate 模式下打开 Internet Explorer 以避免自动执行无缝 SSO 登录，然后转到 Office 365 登录页 ([http://portal.office.com](http://portal.office.com/))。 键入用户的 **UPN**，然后单击“下一步”。 请务必键入已从本地 Active Directory 同步的，并且事先已联合的混合用户的 UPN。 用户将会看到一个屏幕，可在其中键入其用户名和密码。
+在 InPrivate 模式下打开 Internet Explorer 以避免自动执行无缝 SSO 登录，然后转到 Office 365 登录页 ([https://portal.office.com](https://portal.office.com/))。 键入用户的 **UPN**，然后单击“下一步”。 请务必键入已从本地 Active Directory 同步的，并且事先已联合的混合用户的 UPN。 用户将会看到一个屏幕，可在其中键入其用户名和密码。
 
 ![图片 18](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image27.png)
 
