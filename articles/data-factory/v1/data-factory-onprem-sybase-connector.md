@@ -22,7 +22,7 @@ ms.lasthandoff: 11/07/2018
 ms.locfileid: "51260561"
 ---
 # <a name="move-data-from-sybase-using-azure-data-factory"></a>使用 Azure 数据工厂从 Sybase 移动数据
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="选择您正在使用的 Data Factory 服务的版本:"]
 > * [版本 1](data-factory-onprem-sybase-connector.md)
 > * [版本 2（当前版本）](../connector-sybase.md)
 
