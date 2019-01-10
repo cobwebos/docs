@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 12/20/2018
 ms.author: mabrigg
 ms.reviewer: johnhas
-ms.openlocfilehash: dea93fefc69664e4830efdab2052d2e1ca0fd2fa
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 1e081eb98b1d9c076fd85c0b542d0bf4ae309935
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54102476"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54190402"
 ---
 # <a name="what-is-validation-as-a-service-for-azure-stack"></a>验证用作 Azure Stack 的服务是什么？
 
@@ -62,7 +62,7 @@ Microsoft 定期对新功能在 Azure Stack 中可用。 作为向市场提供�
 | 验证工作流 | 所需的测试 |
 |----|------------|
 | [新解决方案验证](azure-stack-vaas-validate-solution-new.md) | 云模拟引擎<br>计算 SDK 操作套件<br>磁盘标识测试<br>密钥保管库扩展 SDK 操作套件<br>密钥保管库 SDK 操作套件<br>网络 SDK 操作套件<br>存储帐户 SDK 操作套件<br> |
-| [新解决方案验证](azure-stack-vaas-validate-oem-package.md) | OEM 扩展包验证<br>云模拟引擎 |
+| [OEM 包验证](azure-stack-vaas-validate-oem-package.md) | OEM 扩展包验证<br>云模拟引擎 |
 | [每月更新验证](azure-stack-vaas-validate-microsoft-updates.md) | 每月 AzureStack 更新验证<br>云模拟引擎<br> |
 
 ## <a name="next-steps"></a>后续步骤
