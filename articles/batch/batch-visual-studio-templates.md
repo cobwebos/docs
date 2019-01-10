@@ -1,9 +1,9 @@
 ---
-title: 使用 Visual Studio 模板生成 Batch 解决方案 - Azure | Microsoft Docs
+title: 使用 Visual Studio 模板生成解决方案 - Azure Batch | Microsoft Docs
 description: 了解 Visual Studio 项目模板如何帮助在 Azure Batch 上实现和运行计算密集型工作负荷。
 services: batch
 documentationcenter: .net
-author: dlepow
+author: laurenhughes
 manager: jeconnoc
 editor: ''
 ms.assetid: 5e041ae2-25af-4882-a79e-3aa63c4bfb20
@@ -13,14 +13,14 @@ ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 02/27/2017
-ms.author: danlep
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5a44c249a957050afb500decd094183c71d6ca5e
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.author: lahugh
+ms.custom: seodec18
+ms.openlocfilehash: 085bfa582b676f34a02e4c1c5ae7e69c49e5cb4e
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39114090"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53538117"
 ---
 # <a name="use-visual-studio-project-templates-to-jump-start-batch-solutions"></a>使用 Visual Studio 项目模板快速启动 Batch 解决方案
 
@@ -123,8 +123,8 @@ Batch 的**作业管理器**和**任务处理器 Visual Studio 模板**提供代
 
 **标准 .NET 命令行项目文件**
 
-* `App.config`：标准的 .NET 应用程序配置文件。
-* `Packages.config`：标准的 NuGet 包依赖项文件。
+* `App.config`：标准 .NET 应用程序配置文件。
+* `Packages.config`：标准 NuGet 包依赖项文件。
 * `Program.cs`：包含程序入口点和顶层异常处理。
 
 ### <a name="implementing-the-job-splitter"></a>实现作业拆分器
@@ -278,7 +278,7 @@ job.JobManagerTask.EnvironmentSettings = new [] {
 
 ![显示任务处理器模板解决方案的 Visual Studio 解决方案资源管理器][solution_explorer02]
 
-**架构文件**
+**框架文件**
 
 * `Configuration.cs`：封装作业配置数据的加载，例如 Batch 帐户详细信息、链接的存储帐户凭据、作业和任务信息，以及作业参数。 它还通过 Configuration.EnvironmentVariable 类提供 Batch 定义的环境变量（请参阅 Batch 文档中“Environment settings for tasks”（任务的环境设置））的访问权限。
 * `IConfiguration.cs`：抽象化配置类的实现，以便可以使用虚构或模拟的配置对象对作业拆分器进行单元测试。
@@ -297,8 +297,8 @@ job.JobManagerTask.EnvironmentSettings = new [] {
 
 **标准 .NET 命令行项目文件**
 
-* `App.config`：标准的 .NET 应用程序配置文件。
-* `Packages.config`：标准的 NuGet 包依赖项文件。
+* `App.config`：标准 .NET 应用程序配置文件。
+* `Packages.config`：标准 NuGet 包依赖项文件。
 * `Program.cs`：包含程序入口点和顶层异常处理。
 
 ## <a name="implementing-the-task-processor"></a>实现任务处理器

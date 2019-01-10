@@ -15,12 +15,12 @@ ums.workload: na
 ms.date: 06/07/2018
 ms.author: barclayn
 ms.custom: azlog
-ms.openlocfilehash: 2f97a2e8ad38bb3c78333cc2c8eedad8f520e68a
-ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
+ms.openlocfilehash: a6bbc61afcc1ed25d5eac8673b9abfa59e72dba9
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39036796"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53602182"
 ---
 # <a name="azure-log-integration-with-azure-diagnostics-logging-and-windows-event-forwarding"></a>将 Azure 日志集成与 Azure 诊断日志记录和 Windows 事件转发相结合
 
@@ -198,7 +198,7 @@ Azure 日志集成服务会收集安装了该服务的计算机中的遥测数�
 ## <a name="if-data-isnt-showing-up-in-the-forwarded-events-folder"></a>如果数据未显示在“已转发事件”文件夹中
 如果在 1 小时后数据未显示在“已转发事件”文件夹中，请完成以下步骤：
 
-1. 检查运行 Azure 日志集成服务的计算机。 确认它可以访问 Azure。 若要测试连接，请尝试在浏览器中转到 [Azure 门户](http://portal.azure.com)。
+1. 检查运行 Azure 日志集成服务的计算机。 确认它可以访问 Azure。 若要测试连接，请尝试在浏览器中转到 [Azure 门户](https://portal.azure.com)。
 2. 请确保用户帐户 Azlog 对文件夹 users\Azlog 拥有写入权限。
   1. 打开文件资源管理器。
   2. 转到 C:\users。
@@ -243,7 +243,7 @@ Azure 活动日志是一种方便用户深入了解 Azure 中发生的订阅级�
 
 ## <a name="next-steps"></a>后续步骤
 
-若要了解有关 Azure 日志集成的详细信息，请参阅以下文章：在尝试本文中的步骤之前，必须先查看“入门”文章并完成其中的步骤。
+若要详细了解 Azure 日志集成，请参阅以下文章：必须先查看“入门”文章并完成其中的步骤，然后才能尝试本文中的步骤。
 
 * [适用于 Azure 日志的 Microsoft Azure 日志集成](https://www.microsoft.com/download/details.aspx?id=53324)。 下载中心提供有关 Azure 日志集成的详细信息、系统要求和安装说明。
 * [Azure 日志集成简介](security-azure-log-integration-overview.md)。 此文介绍 Azure 日志集成、其主要功能和工作原理。

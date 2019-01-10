@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.openlocfilehash: 3a65b66619351462fcd9c77c3fb9b935cf99ebcc
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 46791468e094ffb17a6dc9993b2cf8623a72b9b3
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52496458"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53968802"
 ---
 # <a name="get-started-with-ml-services-on-azure-hdinsight"></a>Azure HDInsight 上的 ML Services 入门
 
@@ -22,7 +22,7 @@ ms.locfileid: "52496458"
 
 ## <a name="prerequisites"></a>先决条件
 
-* **Azure 订阅**：在开始学习本教程之前，必须有 Azure 订阅。 有关详细信息，请参阅[获取 Microsoft Azure 免费试用版](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)。
+* **Azure 订阅**：在开始学习本教程之前，必须有一个 Azure 订阅。 有关详细信息，请参阅[获取 Microsoft Azure 免费试用版](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)。
 * **安全外壳 (SSH) 客户端**：SSH 客户端可用于远程连接到 HDInsight 群集，并直接在群集上运行命令。 有关详细信息，请参阅 [Use SSH with HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md)（对 HDInsight 使用 SSH）。
 
 
@@ -31,13 +31,13 @@ ms.locfileid: "52496458"
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 
-2. 单击“创建资源” > “数据 + 分析” > “HDInsight”。
+2. 导航到“+ 创建资源” > “Analytics” > “HDInsight”。
 
 3. 在“基本信息”中输入以下信息：
 
     * **群集名称**：HDInsight 群集的名称。
     * **订阅**：选择要使用的订阅。
-    * **群集登录用户名**和**群集登录密码**：通过 HTTPS 访问群集时的登录凭据。 使用这些凭据访问 Apache Ambari Web UI 或 REST API 等服务。
+    * **群集登录用户名**和**群集登录密码**：通过 HTTPS 访问群集时的登录名。 使用这些凭据访问 Apache Ambari Web UI 或 REST API 等服务。
     * **安全外壳 (SSH) 用户名**：通过 SSH 访问群集时使用的登录名。 默认情况下，密码与群集登录密码相同。
     * **资源组**：要在其中创建群集的资源组。
     * **位置**：要在其中创建群集的 Azure 区域。
@@ -66,7 +66,7 @@ ms.locfileid: "52496458"
 
     ![设置 HDInsight 的存储帐户设置](./media/r-server-get-started/clustersummary.png)
 
-    > [!NOTE]
+    > [!NOTE]  
     > 创建群集可能需要 20 分钟。
 
 <a name="connect-to-rstudio-server"></a>
@@ -78,15 +78,16 @@ ms.locfileid: "52496458"
 
         https://CLUSTERNAME.azurehdinsight.net/rstudio/
 
-* **选项 2** - 在 Azure 门户中打开 ML 服务群集，在“快速链接”下，单击“ML Services 仪表板”。
-
-     ![设置 HDInsight 的存储帐户设置](./media/r-server-get-started/dashboard-quick-links.png)
-
-    从“群集仪表板”中，单击“R Studio Server”。
+* **选项 2** - 使用 Azure 门户。
+在门户中：
+  1. 在左侧菜单中，选择“所有服务”。
+  2. 在“ANALYTICS”下，选择“HDInsight 群集”。
+  3. 从“HDInsight 群集”页选择群集名称。
+  4. 从“ML 服务仪表板”中，选择“R Studio 服务器”。 
 
     ![设置 HDInsight 的存储帐户设置](./media/r-server-get-started/r-studio-server-dashboard.png)
 
-   > [!IMPORTANT]
+   > [!IMPORTANT]  
    > 无论使用哪种方法，首次登录时都需进行两次身份验证。  第一次出现身份验证的提示时，请提供群集管理员用户 ID 和密码。 第二次出现身份验证的提示时，请提供 SSH 用户 ID 和密码。 后续登录只需提供 SSH 凭据。
 
 连接后，屏幕应如以下屏幕截图所示：
@@ -221,11 +222,11 @@ ms.locfileid: "52496458"
 
 ## <a name="troubleshoot"></a>故障排除
 
-如果在创建 HDInsight 群集时遇到问题，请参阅[访问控制要求](../hdinsight-administer-use-portal-linux.md#create-clusters)。
+如果在创建 HDInsight 群集时遇到问题，请参阅[访问控制要求](../hdinsight-hadoop-create-linux-clusters-portal.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
-在本文中，你已学习了如何在 Azure HDInsight 中创建新的 ML Services 群集，以及有关从 SSH 会话使用 R 控制台的基础知识。 以下文章介绍了管理和使用 HDInsight 上的 ML Services 的其他方式：
+在本文中，你已学习了如何在 Azure HDInsight 中创建新的 ML 服务群集，以及有关从 SSH 会话使用 R 控制台的基础知识。 以下文章介绍了管理和使用 HDInsight 上的 ML Services 的其他方式：
 
 * [从针对 Visual Studio 的 R 工具提交作业](r-server-submit-jobs-r-tools-vs.md)
 * [管理 HDInsight 上的 ML Services 群集](r-server-hdinsight-manage.md)

@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/28/2018
+ms.date: 12/18/2018
 ms.author: rkarlin
-ms.openlocfilehash: 4108355415d1230f98db36a4f83497de2fa848f7
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 2dcc72e0e3b9caef9ab01d9f754671cb0365a358
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53185573"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53608828"
 ---
 # <a name="platforms-and-features-supported-by-azure-security-center"></a>Azure 安全中心支持的平台和功能
 
@@ -30,7 +30,7 @@ ms.locfileid: "53185573"
 >
 >
 
-## <a name="supported-platforms"></a>支持的平台 
+## <a name="platforms-that-support-the-data-collection-agent"></a>支持数据收集代理的平台 
 
 本部分列出了 Azure 安全中心代理可在其上运行并从中收集数据的平台。
 
@@ -43,6 +43,10 @@ ms.locfileid: "53185573"
 * Windows Server 2012 R2
 * Windows Server 2016
 
+> [!NOTE]
+> 与 Windows Defender ATP 集成仅支持 Windows Server 2012 R2 和 Windows Server 2016。
+>
+>
 
 ### <a name="supported-platforms-for-linux-computers-and-vms"></a>Linux 计算机和 VM 支持的平台
 支持以下 Linux 操作系统：
@@ -55,11 +59,6 @@ ms.locfileid: "53185573"
 * Oracle Linux 版本 5、6 和 7。
 * Amazon Linux 2012.09 - 2017。
 * 仅 x86_64 平台（64 位）支持 OpenSSL 1.1.0。
-
-> [!NOTE]
-> Linux 操作系统暂不支持虚拟机行为分析。
->
->
 
 ## <a name="vms-and-cloud-services"></a>VM 和云服务
 此外还支持云服务中运行的 VM。 仅监视云服务 Web 和在生产槽运行的辅助角色。 若要了解有关云服务的详细信息，请参阅[云服务概述](../cloud-services/cloud-services-choose-me.md)。

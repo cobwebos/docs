@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/01/2018
-ms.openlocfilehash: 603aa8d85d42167accd2a5e71c4ab3e5245f5d07
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 8e651f516254d408b15ab4aeae718861dfc2b3e6
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52499262"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53608283"
 ---
 # <a name="use-hdinsight-spark-cluster-to-read-and-write-data-to-azure-sql-database"></a>使用 HDInsight Spark 群集在 Azure SQL 数据库中读取和写入数据
 
@@ -26,9 +26,9 @@ ms.locfileid: "52499262"
 
 * **Azure SQL 数据库**。 遵照[创建 Azure SQL 数据库](../../sql-database/sql-database-get-started-portal.md)中的说明。 确保使用示例 **AdventureWorksLT** 架构和数据创建数据库。 另外，请确保创建服务器级防火墙规则，以允许客户端的 IP 地址访问服务器上的 SQL 数据库。 同一篇文章中提供了有关添加防火墙规则的说明。 创建 Azure SQL 数据库后，请确保准备好以下值。 从 Spark 群集连接到数据库时需要这些值。
 
-    * 托管 Azure SQL 数据库的服务器名称
-    * Azure SQL 数据库名称
-    * Azure SQL 数据库管理员用户名/密码
+    * 托管 Azure SQL 数据库的服务器名称。
+    * Azure SQL 数据库名称。
+    * Azure SQL 数据库管理员用户名/密码。
 
 * **SQL Server Management Studio**。 遵照[使用 SSMS 连接和查询数据](../../sql-database/sql-database-connect-query-ssms.md)中的说明。
 
@@ -41,12 +41,10 @@ ms.locfileid: "52499262"
 
     ![Spark 中的 Jupyter 笔记本](./media/apache-spark-connect-to-sql-database/hdinsight-spark-cluster-dashboard-jupyter-notebook.png "Spark 中的 Jupyter 笔记本")
    
-   > [!NOTE]
+   > [!NOTE]  
    > 也可以在浏览器中打开以下 URL 来访问 Spark 群集中的 Jupyter Notebook。 将 **CLUSTERNAME** 替换为群集的名称：
    >
    > `https://CLUSTERNAME.azurehdinsight.net/jupyter`
-   > 
-   > 
 
 1. 在 Jupyter Notebook 的右上角，依次单击“新建”、“Spark”创建 Scala 笔记本。 HDInsight Spark 群集上的 Jupyter Notebook 还提供适用于 Python2 应用程序的 **PySpark** 内核，以及适用于 Python3 应用程序的 **PySpark3** 内核。 本文将会创建 Scala 笔记本。
    
@@ -54,9 +52,8 @@ ms.locfileid: "52499262"
 
     有关内核的详细信息，请参阅[将 Jupyter Notebook 内核与 HDInsight 中的 Apache Spark 群集配合使用](apache-spark-jupyter-notebook-kernels.md)。
 
-   > [!NOTE]
+   > [!NOTE]  
    > 本文使用 Spark (Scala) 内核，因为目前只有 Scala 和 Java 才支持将数据从 Spark 流式传输到 SQL 数据库。 尽管可以使用 Python 在 SQL中 读取和写入数据，但为了保持一致，本文将使用 Scala 执行所有三个操作。
-   >
 
 1. 这会打开默认名称为“无标题”的新笔记本。 单击笔记本名称，然后输入所选的名称。
 
@@ -235,6 +232,6 @@ ms.locfileid: "52499262"
 
 ## <a name="next-steps"></a>后续步骤
 
-* [使用 HDInsight Spark 群集分析 Data Lake Store 中的数据](apache-spark-use-with-data-lake-store.md)
+* [使用 HDInsight Spark 群集分析 Data Lake Storage 中的数据](apache-spark-use-with-data-lake-store.md)
 * [使用事件中心处理结构化流事件](apache-spark-eventhub-structured-streaming.md)
 * [将 Apache Spark 结构化流式处理与 Apache Kafka on HDInsight 配合使用](../hdinsight-apache-kafka-spark-structured-streaming.md)

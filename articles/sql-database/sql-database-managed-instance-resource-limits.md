@@ -12,12 +12,12 @@ ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp
 manager: craigg
 ms.date: 12/12/2018
-ms.openlocfilehash: 7af15e2e2ca6698f9d8ba1629f13804ce6457b8d
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: f6191ba2f6ca86e07842030c0fca0a65b8c9d09a
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53315632"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53584490"
 ---
 # <a name="overview-azure-sql-database-managed-instance-resource-limits"></a>概述 Azure SQL 数据库托管实例资源限制
 
@@ -48,16 +48,20 @@ Azure SQL 数据库托管实例可部署在两代硬件 (Gen4 和 Gen5) 上。 �
 | **功能** | **常规用途** | **业务关键** |
 | --- | --- | --- |
 | vCore 数目\* | 第 4 代：8、16、24<br/>第 5 代：8、16、24、32、40、64、80 | 第 4 代：8、16、24、32 <br/> 第 5 代：8、16、24、32、40、64、80 |
-| 内存 | 第 4 代：56GB-156GB<br/>第 5 代：44GB-440GB<br/>\*与 vCore 数目成正比 | 第 4 代：56GB-156GB <br/> 第 5 代：44GB-440GB<br/>\*与 vCore 数目成正比 |
+| 内存 | 第 4 代：56GB-156GB<br/>第 5 代：44GB-440GB<br/>\*与 vCore 数目成正比 | 第 4 代：56GB-156GB <br/> Gen5：41-408 GB<br/>\*与 vCore 数目成正比 |
 | 最大存储大小 | 8 TB | 第 4 代：1 TB <br/> 第 5 代： <br/>- 8、16 个 vCore 1 TB<br/>- 24 个 vCore 2 TB<br/>- 32、40、64、80 个 vCore 4 TB |
 | 每个数据库的最大存储 | 由每个实例的最大存储大小决定 | 由每个实例的最大存储大小决定 |
 | 每个实例的数据库数目上限 | 100 | 100 |
 | 每个实例的数据库文件数目上限 | 最多 280 个 | 每个数据库 32,767 个文件 |
-| IOPS（近似） | 每个文件 500-7500<br/>\*[取决于文件大小](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#premium-storage-disk-sizes) | 11K - 110K（每个 vCore 为 1375） |
+| 数据/日志 IOPS（近似） | 每个文件 500-7500<br/>\*[取决于文件大小](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#premium-storage-disk-sizes) | 11K - 110K（每个 vCore 为 1375） |
+| 实例日志吞吐量 | 22 MB/s（每个实例） | 3 MB/s（每个 vCore）<br/>最大 48 MB/s |
+| 数据吞吐量（近似） | 100-250 MB/s（每个文件）<br/>\*[取决于文件大小](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#premium-storage-disk-sizes) | 24-48 MB/s（每个 vCore） |
 | IO 延迟（近似） | 5-10 毫秒 | 1-2 毫秒 |
-| 最大 tempDB 大小 | 192-1920 GB（每个 vCore 为 24 GB） | 由每个实例的最大存储大小决定 |
+| 最大 tempDB 大小 | 192-1920 GB（每个 vCore 为 24 GB） | 无约束 - 受最大实例存储大小限制 |
 
-- 与最大存储大小限制进行比较的实例存储大小同时包括用户数据库和系统数据库。 可以使用 <a href="https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-master-files-transact-sql">sys.master_files</a> 系统视图来确定数据库使用的空间总量。 错误日志不会持久保存，不包括在大小中。 备份不包括在存储大小中。
+**注释**：
+- 与最大存储大小限制进行比较的实例存储大小同时包括用户和系统数据库中的数据及日志文件大小。 可以使用 <a href="https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-master-files-transact-sql">sys.master_files</a> 系统视图来确定数据库使用的空间总量。 错误日志不会持久保存，不包括在大小中。 备份不包括在存储大小中。
+- 吞吐量和 IOPS 还取决于未显式受到托管实例限制的页面大小。
 
 ## <a name="supported-regions"></a>支持的区域
 

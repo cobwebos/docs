@@ -11,34 +11,31 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/05/2018
+ms.date: 12/20/2018
 ms.author: jingwang
-ms.openlocfilehash: debb27f49c730df4a8bef42b1f1ef9ec50f1faf0
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: e11c62f338a9e6ce74ce2e04a933b0458df784d0
+ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37054047"
+ms.lasthandoff: 12/28/2018
+ms.locfileid: "53807901"
 ---
 # <a name="copy-data-from-mongodb-using-azure-data-factory"></a>使用 Azure 数据工厂从 MongoDB 复制数据
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [第 1 版](v1/data-factory-on-premises-mongodb-connector.md)
-> * [当前版本](connector-mongodb.md)
 
 本文概述了如何使用 Azure 数据工厂中的复制活动从 MongoDB 数据库复制数据。 它是基于概述复制活动总体的[复制活动概述](copy-activity-overview.md)一文。
+
+>[!IMPORTANT]
+>ADF 发布了这个新版本的 MongoDB 连接器，它提供更好的本机 MongoDB 支持。 如果在解决方案中使用的是以前的 MongoDB 连接器，且该连接器“按原样”支持后向兼容性，请参阅 [MongoDB 连接器（旧版）](connector-mongodb-legacy.md)一文。
 
 ## <a name="supported-capabilities"></a>支持的功能
 
 可以将数据从 MongoDB 数据库复制到任何支持的接收器数据存储。 有关复制活动支持作为源/接收器的数据存储列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)表。
 
-具体而言，此 MongoDB 连接器支持：
-
-- MongoDB **版本 2.4、2.6、3.0、3.2、3.4 和 3.6**。
-- 使用基本或匿名身份验证复制数据。
+具体而言，此 MongoDB 连接器最高支持版本 3.4。
 
 ## <a name="prerequisites"></a>先决条件
 
-要从不可公开访问的 MongoDB 数据库复制数据，需要设置自承载集成运行时。 要了解详细信息，请参阅[自承载集成运行时](create-self-hosted-integration-runtime.md)一文。 集成运行时提供内置 MongoDB 驱动程序，因此从 MongoDB 复制数据时，无需手动安装任何驱动程序。
+要从不可公开访问的 MongoDB 数据库复制数据，需要设置自承载集成运行时。 要了解详细信息，请参阅[自承载集成运行时](create-self-hosted-integration-runtime.md)一文。
 
 ## <a name="getting-started"></a>入门
 
@@ -52,17 +49,10 @@ MongoDB 链接的服务支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
-| type |type 属性必须设置为：**MongoDb** |是 |
-| server |MongoDB 服务器的 IP 地址或主机名。 |是 |
-| port |MongoDB 服务器用于侦听客户端连接的 TCP 端口。 |否（默认值为 27017） |
-| databaseName |要访问的 MongoDB 数据库名称。 |是 |
-| authenticationType | 用于连接 MongoDB 数据库的身份验证类型。<br/>允许的值为：Basic 和 Anonymous。 |是 |
-| username |用于访问 MongoDB 的用户帐户。 |是（如果使用基本身份验证）。 |
-| password |用户密码。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 |是（如果使用基本身份验证）。 |
-| authSource |要用于检查身份验证凭据的 MongoDB 数据库名称。 |不是。 对于基本身份验证，默认使用管理员帐户和使用 databaseName 属性指定的数据库。 |
-| enableSsl | 指定是否使用 SSL 加密到服务器的连接。 默认值为 false。  | 否 |
-| allowSelfSignedServerCert | 指定是否允许来自服务器的自签名证书。 默认值为 false。  | 否 |
-| connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 如果可以公开访问数据存储，则可以使用自承载集成运行时或 Azure 集成运行时。 如果未指定，则使用默认 Azure 集成运行时。 |否 |
+| type |type 属性必须设置为：MongoDbV2 |是 |
+| connectionString |指定 MongoDB 连接字符串，例如 `mongodb://[username:password@]host[:port][/[database][?options]]`。 请参阅 [MongoDB 连接字符串手册](https://docs.mongodb.com/manual/reference/connection-string/)获取详细信息。 <br/><br />将此字段标记为 SecureString 类型，以便安全地将其存储在数据工厂中。 此外，还可以[引用 Azure Key Vault 中存储的机密](store-credentials-in-key-vault.md)。 |是 |
+| database | 要访问的数据库的名称。 | 是 |
+| connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 如果可以公开访问数据存储，则可以使用自承载集成运行时或 Azure Integration Runtime 时。 如果未指定，则使用默认 Azure Integration Runtime。 |否 |
 
 **示例：**
 
@@ -70,16 +60,13 @@ MongoDB 链接的服务支持以下属性：
 {
     "name": "MongoDBLinkedService",
     "properties": {
-        "type": "MongoDb",
+        "type": "MongoDbV2",
         "typeProperties": {
-            "server": "<server name>",
-            "databaseName": "<database name>",
-            "authenticationType": "Basic",
-            "username": "<username>",
-            "password": {
+            "connectionString": {
                 "type": "SecureString",
-                "value": "<password>"
-            }
+                "value": "mongodb://[username:password@]host[:port][/[database][?options]]"
+            },
+            "database": "myDatabase"
         },
         "connectVia": {
             "referenceName": "<name of Integration Runtime>",
@@ -91,13 +78,11 @@ MongoDB 链接的服务支持以下属性：
 
 ## <a name="dataset-properties"></a>数据集属性
 
-有关可用于定义数据集的各个部分和属性的完整列表，请参阅数据集一文。 本部分提供 MongoDB 数据集支持的属性列表。
-
-要从 MongoDB 复制数据，请将数据集的 type 属性设置为“MongoDbCollection”。 支持以下属性：
+有关可用于定义数据集的各部分和属性的完整列表，请参阅[数据集和链接服务](concepts-datasets-linked-services.md)。 MongoDB 数据集支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
-| type | 数据集的 type 属性必须设置为：**MongoDbCollection** | 是 |
+| type | 数据集的 type 属性必须设置为：MongoDbV2Collection | 是 |
 | collectionName |MongoDB 数据库中集合的名称。 |是 |
 
 **示例：**
@@ -106,7 +91,7 @@ MongoDB 链接的服务支持以下属性：
 {
      "name":  "MongoDbDataset",
     "properties": {
-        "type": "MongoDbCollection",
+        "type": "MongoDbV2Collection",
         "linkedServiceName": {
             "referenceName": "<MongoDB linked service name>",
             "type": "LinkedServiceReference"
@@ -124,12 +109,20 @@ MongoDB 链接的服务支持以下属性：
 
 ### <a name="mongodb-as-source"></a>以 MongoDB 作为源
 
-要从 MongoDB 复制数据，请将复制活动中的源类型设置为“MongoDbSource”。 复制活动**源**部分支持以下属性：
+复制活动源部分支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
-| type | 复制活动源的 type 属性必须设置为：**MongoDbSource** | 是 |
-| query |使用自定义 SQL-92 查询读取数据。 例如：从 MyTable 中选择 *。 |否（如果指定了数据集中的“collectionName”） |
+| type | 复制活动源的 type 属性必须设置为：MongoDbV2Source | 是 |
+| filter | 使用查询运算符指定选择筛选器。 若要返回集合中的所有文档，请省略此参数或传递空文档 ({})。 | 否 |
+| cursorMethods.project | 指定要在文档中返回用于投影的字段。 若要返回匹配文档中的所有字段，请省略此参数。 | 否 |
+| cursorMethods.sort | 指定查询返回匹配文档的顺序。 请参阅 [cursor.sort()](https://docs.mongodb.com/manual/reference/method/cursor.sort/#cursor.sort)。 | 否 |
+| cursorMethods.limit | 指定服务器返回的文档的最大数量。 请参阅 [cursor.limit()](https://docs.mongodb.com/manual/reference/method/cursor.limit/#cursor.limit)。  | 否 | 
+| cursorMethods.skip | 指定要跳过的文档数量以及 MongoDB 开始返回结果的位置。 请参阅 [cursor.skip()](https://docs.mongodb.com/manual/reference/method/cursor.skip/#cursor.skip)。 | 否 |
+| batchSize | 指定从 MongoDB 实例的每批响应中返回的文档数量。 大多数情况下，修改批大小不会影响用户或应用程序。 Cosmos DB 限制每个批不能超过 40 MB（这是文档大小的 batchSize 数量的总和），因此如果文档很大，请减小此值。 | 否<br/>（默认值为 100） |
+
+>[!TIP]
+>ADF 支持在“严格”模式下使用 BSON 文档。 请确保筛选器查询处于“严格”模式，而不是“Shell”模式。 有关详细说明，请参阅 [MongoDB 手册](https://docs.mongodb.com/manual/reference/mongodb-extended-json/index.html)。
 
 **示例：**
 
@@ -152,8 +145,14 @@ MongoDB 链接的服务支持以下属性：
         ],
         "typeProperties": {
             "source": {
-                "type": "MongoDbSource",
-                "query": "SELECT * FROM MyTable"
+                "type": "MongoDbV2Source",
+                "filter": "{datetimeData: {$gte: ISODate(\"2018-12-11T00:00:00.000Z\"),$lt: ISODate(\"2018-12-12T00:00:00.000Z\")}, _id: ObjectId(\"5acd7c3d0000000000000000\") }",
+                "cursorMethods": {
+                    "project": "{ _id : 1, name : 1, age: 1, datetimeData: 1 }",
+                    "sort": "{ age : 1 }",
+                    "skip": 3,
+                    "limit": 3
+                }
             },
             "sink": {
                 "type": "<sink type>"
@@ -163,83 +162,13 @@ MongoDB 链接的服务支持以下属性：
 ]
 ```
 
-> [!TIP]
-> 指定 SQL 查询时，请注意 DateTime 的格式。 例如：`SELECT * FROM Account WHERE LastModifiedDate >= '2018-06-01' AND LastModifiedDate < '2018-06-02'`，或使用参数 `SELECT * FROM Account WHERE LastModifiedDate >= '@{formatDateTime(pipeline().parameters.StartTime,'yyyy-MM-dd HH:mm:ss')}' AND LastModifiedDate < '@{formatDateTime(pipeline().parameters.EndTime,'yyyy-MM-dd HH:mm:ss')}'`
+## <a name="export-json-documents-as-is"></a>按原样导出 JSON 文档
 
-## <a name="schema-by-data-factory"></a>数据工厂的构架
+可以使用此 MongoDB 连接器将 JSON 文档按原样从 MongoDB 集合导出到各种基于文件的存储或 Azure Cosmos DB。 若要实现此类“架构不可知”复制，请跳过数据集中的“结构”（也称为“架构”）部分和复制活动中的架构映射。
 
-Azure 数据工厂服务通过使用 MongoDB 集合中**最新的 100 个文档**来推断该集合的架构。 如果这 100 个文档不包含完整架构，则在复制操作期间可能忽略某些列。
+## <a name="schema-mapping"></a>架构映射
 
-## <a name="data-type-mapping-for-mongodb"></a>MongoDB 的数据类型映射
-
-从 MongoDB 复制数据时，以下映射用于从 MongoDB 数据类型映射到 Azure 数据工厂临时数据类型。 若要了解复制活动如何将源架构和数据类型映射到接收器，请参阅[架构和数据类型映射](copy-activity-schema-and-type-mapping.md)。
-
-| MongoDB 数据类型 | 数据工厂临时数据类型 |
-|:--- |:--- |
-| 二进制 |Byte[] |
-| 布尔 |布尔 |
-| 日期 |DateTime |
-| NumberDouble |Double |
-| NumberInt |Int32 |
-| NumberLong |Int64 |
-| ObjectID |String |
-| String |String |
-| UUID |Guid |
-| 对象 |重新标准化为平展列，以“_”作为嵌套分隔符 |
-
-> [!NOTE]
-> 要了解对使用虚拟表的数组的支持，请参阅[支持使用虚拟表的复杂类型](#support-for-complex-types-using-virtual-tables)一节。
->
-> 目前，不支持以下 MongoDB 数据类型：DBPointer、JavaScript、Max/Min key、Regular Expression、Symbol、Timestamp、Undefined。
-
-## <a name="support-for-complex-types-using-virtual-tables"></a>支持使用虚拟表的复杂类型
-
-Azure 数据工厂使用内置的 ODBC 驱动程序连接到 MongoDB 数据库，并从中复制数据。 对于数组或文档间不同类型的对象等复杂类型，该驱动程序会将数据重新标准化到相应虚拟表中。 具体而言，如果表中包含此类列，该驱动程序会生成以下虚拟表：
-
-* **基表**，其中包含与实际表相同的数据（复杂类型列除外）。 基表使用与其所表示的实际表相同的名称。
-* 对于每个复杂类型列生成一个**虚拟表**，这会扩展嵌套数据。 使用实际表名称、分隔符“_”和数组或对象的名称，对虚拟表命名。
-
-虚拟表引用实际表中的数据，以使驱动程序能访问非规范化的数据。 通过查询和联接虚拟表，可访问 MongoDB 数组的内容。
-
-### <a name="example"></a>示例
-
-例如，此处 ExampleTable 为 MongoDB 表，其中“发票”列的每个单元格包含对象数组，“评级”列包含标量类型数组。
-
-| _id | 客户名称 | 发票 | 服务级别 | 评级 |
-| --- | --- | --- | --- | --- |
-| 1111 |ABC |[{invoice_id:"123", item:"toaster", price:"456", discount:"0.2"}, {invoice_id:"124", item:"oven", price: "1235", discount: "0.2"}] |银牌服务 |[5,6] |
-| 2222 |XYZ |[{invoice_id:"135", item:"fridge", price: "12543", discount: "0.0"}] |金牌服务 |[1,2] |
-
-该驱动程序会生成多个虚拟表来表示此单个表。 第一个虚拟表是名为“ExampleTable”的基表，如下例所示。 基表包含原始表中的所有数据，但已省略数组中的数据，这些数据会在虚拟表中展开。
-
-| _id | 客户名称 | 服务级别 |
-| --- | --- | --- |
-| 1111 |ABC |银牌服务 |
-| 2222 |XYZ |金牌服务 |
-
-下表显示在示例中表示原始数组的虚拟表。 这些表包含以下项：
-
-* 通过 _id 列返回到原始主键列的引用，该列与原始数组的行对应
-* 原始数组中数据位置的指示
-* 该数组中每个元素展开的数据
-
-**“ExampleTable_Invoices”表：**
-
-| _id | ExampleTable_Invoices_dim1_idx | invoice_id | item | price | 折扣 |
-| --- | --- | --- | --- | --- | --- |
-| 1111 |0 |123 |吐司炉 |456 |0.2 |
-| 1111 |1 |124 |烤箱 |1235 |0.2 |
-| 2222 |0 |135 |冰箱 |12543 |0.0 |
-
-**“ExampleTable_Ratings”表：**
-
-| _id | ExampleTable_Ratings_dim1_idx | ExampleTable_Ratings |
-| --- | --- | --- |
-| 1111 |0 |5 |
-| 1111 |1 |6 |
-| 2222 |0 |1 |
-| 2222 |1 |2 |
-
+若要将数据从 MongoDB 复制到表格接收器，请参阅[架构映射](copy-activity-schema-and-type-mapping.md#schema-mapping)。
 
 ## <a name="next-steps"></a>后续步骤
 有关 Azure 数据工厂中复制活动支持作为源和接收器的数据存储的列表，请参阅[支持的数据存储](copy-activity-overview.md##supported-data-stores-and-formats)。

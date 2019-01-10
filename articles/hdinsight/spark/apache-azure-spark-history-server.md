@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 09/14/2018
-ms.openlocfilehash: 349298ba30de5540d5c86c81f483a1bd344dba9c
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: a896c949e1f05a5d9ee179fa475150ad8da34283
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52497273"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53792775"
 ---
 # <a name="use-extended-apache-spark-history-server-to-debug-and-diagnose-apache-spark-applications"></a>使用扩展的 Apache Spark History Server 调试和诊断 Apache Spark 应用程序
 
@@ -26,7 +26,7 @@ Apache Spark History Server 是已完成的和正在运行的 Spark 应用程序
 
 ### <a name="open-the-apache-spark-history-server-web-ui-from-azure-portal"></a>从 Azure 门户打开 Apache Spark History Server Web UI
 
-1. 从 [Azure 门户](https://portal.azure.com/)打开 Spark 群集。 有关详细信息，请参阅[列出和显示群集](../hdinsight-administer-use-portal-linux.md#list-and-show-clusters)。
+1. 从 [Azure 门户](https://portal.azure.com/)打开 Spark 群集。 有关详细信息，请参阅[列出和显示群集](../hdinsight-administer-use-portal-linux.md#showClusters)。
 2. 在“快速链接”中，依次单击“群集仪表板”、“Spark History Server”。 出现提示时，输入 Spark 群集的管理员凭据。 
 
     ![Spark History Server](./media/apache-azure-spark-history-server/launch-history-server.png "Spark History Server")
@@ -106,11 +106,11 @@ Spark History Server Web UI 如下所示：
 
 + 单击“播放”按钮可播放作业，单击“停止”按钮可随时停止播放。 彩色任务视图，其中显示了播放时的不同状态：
 
-    + 绿色表示成功：作业已成功完成。
+    + 绿色表示已成功：已成功完成作业。
     + 橙色表示已重试：失败的任务实例，但不影响作业的最终结果。 这些任务具有稍后可能成功的重复实例或重试实例。
     + 蓝色表示正在运行：任务正在运行。
     + 白色表示正在等待或已跳过：任务正在等待运行，或已跳过执行阶段。
-    + 红色表示失败：任务失败。
+    + 红色表示已失败：任务已失败。
 
     ![图形颜色示例：正在运行](./media/apache-azure-spark-history-server/sparkui-graph-color-running.png)
  
@@ -119,7 +119,7 @@ Spark History Server Web UI 如下所示：
 
     ![图形颜色示例：失败](./media/apache-azure-spark-history-server/sparkui-graph-color-failed.png)
  
-    > [!NOTE]
+    > [!NOTE]  
     > 允许播放每个作业。 不完整的作业不支持播放。
 
 
@@ -132,8 +132,8 @@ Spark History Server Web UI 如下所示：
     ![图形 - 工具提示](./media/apache-azure-spark-history-server/sparkui-graph-tooltip.png)
 
 + 在作业图形选项卡中，如果阶段的任务满足以下条件，则会显示该阶段的工具提示和小图标：
-    + 数据倾斜：数据读取大小 > 此阶段所有任务的平均数据读取大小 * 2 且数据读取大小 > 10 MB
-    + 时间倾斜：执行时间 > 此阶段所有任务的平均执行时间 * 2 且执行时间 > 2 分钟
+    + 数据倾斜：数据读取大小 > 此阶段所有任务的平均数据读取大小 * 2 且数据读取大小 > 10 MB。
+    + 时间倾斜：执行时间 > 此阶段所有任务的平均执行时间 * 2 且执行时间 > 2 分钟。
 
     ![图形倾斜图标](./media/apache-azure-spark-history-server/sparkui-graph-skew-icon.png)
 
@@ -147,10 +147,10 @@ Spark History Server Web UI 如下所示：
     + 行计数：输入记录数、输出记录数、随机读取记录数和随机写入记录数之和。
     + 进度。
 
-    > [!NOTE]
+    > [!NOTE]  
     > 默认情况下，作业图形节点显示每个阶段的最后一次尝试的信息（阶段执行时间除外），但在播放期间，图形节点显示每次尝试的信息。
 
-    > [!NOTE]
+    > [!NOTE]  
     > 对于读取和写入的数据大小，我们以 1 MB = 1000 KB = 1000 * 1000 字节为单位。
 
 + 单击“向我们提供反馈”发送问题反馈。

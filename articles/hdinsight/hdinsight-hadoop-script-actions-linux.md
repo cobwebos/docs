@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/10/2018
 ms.author: hrasheed
-ms.openlocfilehash: 768dc4f555ade9483e11c3aec0f4622fe6b441c1
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 9dafe7df3c488dbc6d0c2f27a6265e86eebad41c
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53384185"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53718922"
 ---
 # <a name="script-action-development-with-hdinsight"></a>使用 HDInsight 进行脚本操作开发
 
@@ -134,7 +134,7 @@ fi
 
 ### <a name="bPS6"></a>配置自定义组件以使用 Azure Blob 存储
 
-在群集上安装的组件可能具有使用 Apache Hadoop 分布式文件系统 (HDFS) 存储的默认配置。 HDInsight 使用 Azure 存储或 Data Lake Store 作为默认存储。 两者可以提供与 HDFS 兼容的文件系统，即使删除了群集，也能保存数据。 可能需要将安装的组件配置为使用 WASB 或 ADL，而不是 HDFS。
+在群集上安装的组件可能具有使用 Apache Hadoop 分布式文件系统 (HDFS) 存储的默认配置。 HDInsight 使用 Azure 存储或 Data Lake Storage 作为默认存储。 两者可以提供与 HDFS 兼容的文件系统，即使删除了群集，也能保存数据。 可能需要将安装的组件配置为使用 WASB 或 ADL，而不是 HDFS。
 
 对于大多数操作，不需要指定文件系统。 例如，以下脚本将 giraph-examples.jar 文件从本地文件系统复制到群集存储：
 
@@ -142,7 +142,7 @@ fi
 hdfs dfs -put /usr/hdp/current/giraph/giraph-examples.jar /example/jars/
 ```
 
-在此示例中，`hdfs` 命令以透明方式使用默认群集存储。 对于某些操作，可能需要指定 URI。 例如，为 Data Lake Store 指定 `adl:///example/jars`，或者为 Azure 存储指定 `wasb:///example/jars`。
+在此示例中，`hdfs` 命令以透明方式使用默认群集存储。 对于某些操作，可能需要指定 URI。 例如，为 Data Lake Storage 指定 `adl:///example/jars`，或者为 Azure 存储指定 `wasb:///example/jars`。
 
 ### <a name="bPS7"></a>将信息写入 STDOUT 和 STDERR
 
@@ -163,7 +163,7 @@ echo "Getting ready to install Foo"
 >&2 echo "An error occurred installing Foo"
 ```
 
-这会将写入 STDOUT 的信息改为重定向到 STDERR (2)。 有关 IO 重定向的详细信息，请参阅 [http://www.tldp.org/LDP/abs/html/io-redirection.html](http://www.tldp.org/LDP/abs/html/io-redirection.html)。
+这会将写入 STDOUT 的信息改为重定向到 STDERR (2)。 有关 IO 重定向的详细信息，请参阅 [https://www.tldp.org/LDP/abs/html/io-redirection.html](https://www.tldp.org/LDP/abs/html/io-redirection.html)。
 
 有关查看脚本操作记录的信息的详细信息，请参阅[使用脚本操作自定义 HDInsight 群集](hdinsight-hadoop-customize-cluster-linux.md#troubleshooting)
 
@@ -278,17 +278,17 @@ echo "HADOOP_CONF_DIR=/etc/hadoop/conf" | sudo tee -a /etc/environment
 
 * __可公开读取的 URI__。 例如，在 OneDrive、Dropbox 或其他文件托管服务中存储的数据的 URL。
 
-* 与 HDInsight 群集关联的 __Azure Data Lake Store 帐户__ 。 有关将 Azure Data Lake Store 与 HDInsight 配合使用的详细信息，请参阅[快速入门：在 HDInsight 中设置群集](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)。
+* 与 HDInsight 群集关联的 __Azure Data Lake Storage 帐户__。 有关将 Azure Data Lake Storage 与 HDInsight 配合使用的详细信息，请参阅[快速入门：在 HDInsight 中设置群集](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)。
 
     > [!NOTE]  
-    > 用于访问 Data Lake Store 的服务主体 HDInsight 必须具有对脚本的读取访问权限。
+    > 用于访问 Data Lake Storage 的服务主体 HDInsight 必须具有对脚本的读取访问权限。
 
 脚本使用的资源也必须公开。
 
-与在 Azure 网络中一样，在 Azure 存储帐户或 Azure Data Lake Store 中存储文件可提供快速访问。
+与在 Azure 网络中一样，在 Azure 存储帐户或 Azure Data Lake Storage 中存储文件可提供快速访问。
 
 > [!NOTE]  
-> 用于引用脚本的 URI 格式取决于正在使用的服务。 对于与 HDInsight 群集关联的存储帐户，请使用 `wasb://` 或 `wasbs://`。 对于可公开读取的 URI，请使用 `http://` 或 `https://`。 对于 Data Lake Store，请使用 `adl://`。
+> 用于引用脚本的 URI 格式取决于正在使用的服务。 对于与 HDInsight 群集关联的存储帐户，请使用 `wasb://` 或 `wasbs://`。 对于可公开读取的 URI，请使用 `http://` 或 `https://`。 对于 Data Lake Storage，请使用 `adl://`。
 
 ### <a name="checking-the-operating-system-version"></a>查看操作系统版本
 

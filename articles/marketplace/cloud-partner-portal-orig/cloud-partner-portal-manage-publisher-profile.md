@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 11/15/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 8459866aa192f2364ae52d0d5d68eace693e127e
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: c73c846db4b22d8c19ccdaa2ec99a3fe7fdadf78
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52832677"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54076699"
 ---
 # <a name="manage-azure-marketplace-and-appsource-publisher-profile"></a>管理“Azure 市场”和“AppSource”发布者个人资料
 
@@ -51,6 +51,6 @@ ms.locfileid: "52832677"
 >[!NOTE]
 >开发人员中心帐户注册是发布市场付费 SKU 所需的必要操作。
 
-如果没有[开发人员中心帐户](~/articles/marketplace-publishing/marketplace-publishing-accounts-creation-registration.md)，可以创建一个。 然后在云合作伙伴门户上将注册的电子邮件地址添加为产品/服务的所有者。 所有者仅可从“用户”部分将已注册的电子邮件地址添加到发布个人资料。 然后，使用相同的电子邮件地址登录到门户，并链接开发人员中心帐户。
+如果没有[开发人员中心帐户](./cloud-partner-portal-dev-center-accounts-registration.md)，可以创建一个。 然后在云合作伙伴门户上将注册的电子邮件地址添加为产品/服务的所有者。 所有者仅可从“用户”部分将已注册的电子邮件地址添加到发布个人资料。 然后，使用相同的电子邮件地址登录到门户，并链接开发人员中心帐户。
 
 ![发布者个人资料详细信息 - 发布者个人资料说明](./media/cloud-partner-portal-how-to-manage-publisher-profile/publisherprofiledescription.png)

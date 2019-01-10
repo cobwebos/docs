@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/28/2018
 ms.author: rimman
-ms.openlocfilehash: 44c561386b00ca60dc537360145ea62177b6d5d6
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 5651e7ee8196eec9d1b1bf20e84ed73e484afb4b
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53263382"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53542384"
 ---
 # <a name="pricing-model-of-azure-cosmos-db"></a>Azure Cosmos DB 的定价模型 
 
@@ -26,11 +26,11 @@ Azure Cosmos DB 的定价模型可简化成本管理和计划。 使用 Azure Co
 
 预配的吞吐量按每秒的[请求单位数](request-units.md)（即 RU/s）指定，允许从容器中读取数据或者将数据写入容器或数据库。 可以[在数据库或容器上预配吞吐量](set-throughput.md)。 根据工作负荷需求，可以随时调整吞吐量的大小。 Azure Cosmos DB 的定价是弹性的，且与数据库或容器上配置的吞吐量成正比。 最小吞吐量和存储值以及规模增量为所有客户（从小型容器到大型容器）提供全面的价格和弹性范围。 对于以 100 RU/s 为单位预配的、最少为 400 RU/s 的吞吐量和以 GB 消耗的存储，每个数据库或容器按小时计费。 不同于预配的吞吐量，存储按消耗进行计费。 也就是说，无需提前预留任何存储。 仅为所使用的存储付费。
 
-有关详细信息，请参阅 [Cosmos DB 定价页](https://azure.microsoft.com/pricing/details/cosmos-db/)和[了解 Cosmos DB 付费](understand-your-bill.md)。
+有关详细信息，请参阅 [Azure Cosmos DB 定价页](https://azure.microsoft.com/pricing/details/cosmos-db/)和[了解 Azure Cosmos DB 帐单](understand-your-bill.md)。
 
 Azure Cosmos DB 中的定价模型在所有 API 中都是一致的。 有关详细信息，请参阅 [Azure Cosmos DB 定价模型如何对客户而言更具经济效益](total-cost-ownership.md)。 数据库或容器需要最小吞吐量来确保 SLA，可以按每 100 RU/s 6 美元增加或减少预配的吞吐量。
 
-目前，基于数据库和容器的吞吐量的最低价格是 24 美元/月（请参阅 [Cosmos DB 定价页](https://azure.microsoft.com/pricing/details/cosmos-db/)获取最新信息）。 如果工作负荷使用多个容器，那么可以通过使用数据库级别的吞吐量来优化成本，因为数据库级别的吞吐量使得数据库中的任意数量的容器可以在容器之间共享吞吐量。 下表总结了预配的吞吐量和不同实体的成本：
+目前，基于数据库和容器的吞吐量的最低价格是 24 美元/月（请参阅 [Azure Cosmos DB 定价页](https://azure.microsoft.com/pricing/details/cosmos-db/)获取最新信息）。 如果工作负荷使用多个容器，那么可以通过使用数据库级别的吞吐量来优化成本，因为数据库级别的吞吐量使得数据库中的任意数量的容器可以在容器之间共享吞吐量。 下表总结了预配的吞吐量和不同实体的成本：
 
 |**实体**  | **最小吞吐量和成本** |**规模增量和成本** |**预配范围** |
 |---------|---------|---------|-------|
@@ -45,7 +45,7 @@ Azure Cosmos DB 免费为开发人员提供多个选项。 这些选项包括：
 
 * **Azure 免费帐户**：Azure 提供[免费层级](https://azure.microsoft.com/free/)，即提供 200 美元的 Azure 额度（可在前 30 天内使用），以及 12 个月的限量免费服务。 有关详细信息，请参阅 [Azure 免费帐户](../billing/billing-avoid-charges-free-account.md)。 Azure Cosmos DB 是 Azure 免费帐户的一部分。 特别对于 Azure Cosmos DB，该免费帐户提供 5 GB 的存储空间和 400 RU 的全年预配吞吐量。 
 
-* **免费试用 Azure Cosmos DB**：Azure Cosmos DB 通过使用“试用 Azure Cosmos DB 免费帐户”提供限时体验。 可以通过使用快速入门和教程创建 Azure Cosmos DB 帐户、创建数据库和集合，以及运行示例应用程序。 可以运行示例应用程序，而无需订阅 Azure 帐户或使用信用卡。 [免费试用 Cosmos DB](https://azure.microsoft.com/try/cosmosdb/) 提供一个月的 Azure Cosmos DB 服务，并且可以多次更新帐户。
+* **免费试用 Azure Cosmos DB**：Azure Cosmos DB 通过使用“试用 Azure Cosmos DB 免费帐户”提供限时体验。 可以通过使用快速入门和教程创建 Azure Cosmos DB 帐户、创建数据库和集合，以及运行示例应用程序。 可以运行示例应用程序，而无需订阅 Azure 帐户或使用信用卡。 [免费试用 Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/) 提供一个月的 Azure Cosmos DB 服务，并且可以任意次数更新帐户。
 
 * **Azure Cosmos DB 模拟器**：为方便进行开发，Azure Cosmos DB 模拟器提供了一个模拟 Azure Cosmos DB 服务的本地环境。 模拟器免费提供，并且具有对云服务的高保真度。 使用 Azure Cosmos DB 模拟器可在本地开发和测试应用程序，无需创建 Azure 订阅且不会产生任何费用。 投入生产之前，可以在本地使用模拟器开发应用程序。 如果对模拟器的应用程序功能感到满意，可切换到云中的“使用 Azure Cosmos DB 帐户”，从而大幅节省成本。 有关模拟器的详细信息，请参阅[使用 Azure Cosmos DB 进行开发和测试](local-emulator.md)一文。
 
@@ -60,12 +60,11 @@ Azure Cosmos DB [预留容量](cosmos-db-reserved-capacity.md)有助于通过预
 可在以下文章中了解更多关于优化 Azure Cosmos DB 资源成本的信息：
 
 * 了解[开发和测试优化](optimize-dev-test.md)
-
-* 详细了解[了解 Cosmos DB 帐单](understand-your-bill.md)
+* 详细了解[了解 Azure Cosmos DB 帐单](understand-your-bill.md)
 * 详细了解如何[优化吞吐量成本](optimize-cost-throughput.md)
 * 详细了解如何[优化存储成本](optimize-cost-storage.md)
 * 详细了解如何[优化读取和写入成本](optimize-cost-reads-writes.md)
 * 详细了解如何[优化查询成本](optimize-cost-queries.md)
 * 详细了解如何[优化多区域 Cosmos 帐户的成本](optimize-cost-regions.md)
-* 了解 [Cosmos DB 预留容量](cosmos-db-reserved-capacity.md)
-* 了解 [Cosmos DB 模拟器](local-emulator.md)
+* 了解 [Azure Cosmos DB 预留容量](cosmos-db-reserved-capacity.md)
+* 了解 [Azure Cosmos DB 模拟器](local-emulator.md)

@@ -3,18 +3,17 @@ title: 快速入门：使用 SQL API 和 Azure 门户生成包含 Azure Cosmos D
 description: 本快速入门介绍如何使用 Azure Cosmos DB SQL API 和 Azure 门户创建 ASP.NET Web 应用
 author: deborahc
 ms.service: cosmos-db
-ms.component: cosmosdb-sql
+ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 12/01/2018
 ms.author: dech
-clicktale: true
-ms.openlocfilehash: 4422e656759418d715fb0bd26643581a0ca99a4f
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 5c416b6db5cc7708c5523d6da12af651d706811e
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53089116"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54037644"
 ---
 # <a name="quickstart-build-an-aspnet-web-app-with-azure-cosmos-db-using-the-sql-api-and-the-azure-portal"></a>快速入门：使用 SQL API 和 Azure 门户生成包含 Azure Cosmos DB 的 ASP.NET Web 应用
 

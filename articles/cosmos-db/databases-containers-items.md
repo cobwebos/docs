@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/08/2018
 ms.author: dharmas
 ms.reviewer: sngun
-ms.openlocfilehash: 39de7453c9d3b0335748cd37e4b1eef91b64b207
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: 6757f887376e1b399d6af18f114e203991c16a67
+ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53409535"
+ms.lasthandoff: 12/28/2018
+ms.locfileid: "53807680"
 ---
 # <a name="working-with-azure-cosmos-databases-containers-and-items"></a>使用 Azure Cosmos 数据库、容器和项
 
@@ -24,7 +24,7 @@ ms.locfileid: "53409535"
 
 可以在帐户下创建一个或多个 Azure Cosmos 数据库。 数据库类似于命名空间，它是一组 Azure Cosmos 容器的管理单元。 下表显示如何将 Azure Cosmos 数据库映射到各种特定于 API 的实体：
 
-| **Azure Cosmos 实体** | **SQL API** | **Cassandra API** | **MongoDB API** | **Gremlin API** | **表 API** |
+| **Azure Cosmos 实体** | **SQL API** | **Cassandra API** | **Azure Cosmos DB 的 API for MongoDB** | **Gremlin API** | **表 API** |
 | --- | --- | --- | --- | --- | --- |
 |Azure Cosmos 数据库 | 数据库 | 密钥空间 | 数据库 | 数据库 | NA |
 
@@ -35,7 +35,7 @@ ms.locfileid: "53409535"
 
 可以使用以下 Azure Cosmos API 与 Azure Cosmos 数据库进行交互：
 
-| **操作** | **Azure CLI**|**SQL API** | **Cassandra API** | **MongoDB API** | **Gremlin API** | **表 API** |
+| **操作** | **Azure CLI**|**SQL API** | **Cassandra API** | **Azure Cosmos DB 的 API for MongoDB** | **Gremlin API** | **表 API** |
 | --- | --- | --- | --- | --- | --- | --- |
 |枚举所有数据库| 是 | 是 | 是（将数据库映射至密钥空间） | 是 | NA | NA |
 |读取数据库| 是 | 是 | 是（将数据库映射至密钥空间） | 是 | NA | NA |
@@ -67,7 +67,7 @@ Azure Cosmos 容器是与架构无关的项容器。 容器中的项可以具备
 
 Azure Cosmos 容器专用于特定于 API 的实体，如下所示：
 
-| **Azure Cosmos 实体** | **SQL API** | **Cassandra API** | **MongoDB API** | **Gremlin API** | **表 API** |
+| **Azure Cosmos 实体** | **SQL API** | **Cassandra API** | **Azure Cosmos DB 的 API for MongoDB** | **Gremlin API** | **表 API** |
 | --- | --- | --- | --- | --- | --- |
 |Azure Cosmos 容器 | 集合 | 表 | 集合 | 图形 | 表 |
 
@@ -75,7 +75,7 @@ Azure Cosmos 容器专用于特定于 API 的实体，如下所示：
 
 Azure Cosmos 容器具备一组系统定义的属性。 根据所选的 API，其中一些属性可能不会直接公开。 下表介绍了受支持的系统定义属性的列表：
 
-| **系统定义的属性** | **是系统生成的还是可由用户设置的？** | **用途** | **SQL API** | **Cassandra API** | **MongoDB API** | **Gremlin API** | **表 API** |
+| **系统定义的属性** | **是系统生成的还是可由用户设置的？** | **用途** | **SQL API** | **Cassandra API** | **Azure Cosmos DB 的 API for MongoDB** | **Gremlin API** | **表 API** |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 |__rid | 系统生成的 | 容器的唯一标识符 | 是 | 否 | 否 | 否 | 否 |
 |__etag | 系统生成的 | 用于乐观并发控制的实体标记 | 是 | 否 | 否 | 否 | 否 |
@@ -91,7 +91,7 @@ Azure Cosmos 容器具备一组系统定义的属性。 根据所选的 API，�
 
 Azure Cosmos 容器支持使用任何 Azure Cosmos API 执行的以下操作。
 
-| **操作** | **Azure CLI** | **SQL API** | **Cassandra API** | **MongoDB API** | **Gremlin API** | **表 API** |
+| **操作** | **Azure CLI** | **SQL API** | **Cassandra API** | **Azure Cosmos DB 的 API for MongoDB** | **Gremlin API** | **表 API** |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | 枚举数据库中的容器 | 是* | 是 | 是 | 是 | NA | NA |
 | 读取容器 | 是 | 是 | 是 | 是 | NA | NA |
@@ -103,7 +103,7 @@ Azure Cosmos 容器支持使用任何 Azure Cosmos API 执行的以下操作。
 
 根据所选的 API，Azure Cosmos 项可以表示集合中的一个文件、表格中的一行或者图形中的一个节点/边缘。 下表显示特定于 API 的实体和 Azure Cosmos 项之间的映射：
 
-| **Cosmos 实体** | **SQL API** | **Cassandra API** | **MongoDB API** | **Gremlin API** | **表 API** |
+| **Cosmos 实体** | **SQL API** | **Cassandra API** | **Azure Cosmos DB 的 API for MongoDB** | **Gremlin API** | **表 API** |
 | --- | --- | --- | --- | --- | --- |
 |Azure Cosmos 项 | 文档 | 行 | 文档 | 节点或边缘 | Item |
 
@@ -111,7 +111,7 @@ Azure Cosmos 容器支持使用任何 Azure Cosmos API 执行的以下操作。
 
 每个 Azure Cosmos 项都具有以下系统定义的属性。 根据所选的 API，其中一些属性可能不会直接公开。
 
-|**系统定义的属性** | **是系统生成的还是可由用户设置的？**| **用途** | **SQL API** | **Cassandra API** | **MongoDB API** | **Gremlin API** | **表 API** |
+|**系统定义的属性** | **是系统生成的还是可由用户设置的？**| **用途** | **SQL API** | **Cassandra API** | **Azure Cosmos DB 的 API for MongoDB** | **Gremlin API** | **表 API** |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 |__id | 系统生成的 | 项的唯一标识符 | 是 | 否 | 否 | 否 | 否 |
 |__etag | 系统生成的 | 用于乐观并发控制的实体标记 | 是 | 否 | 否 | 否 | 否 |
@@ -124,7 +124,7 @@ Azure Cosmos 容器支持使用任何 Azure Cosmos API 执行的以下操作。
 
 Azure Cosmos 项支持可使用任何 Azure Cosmos API 执行的以下操作。
 
-| **操作** | **Azure CLI** | **SQL API** | **Cassandra API** | **MongoDB API** | **Gremlin API** | **表 API** |
+| **操作** | **Azure CLI** | **SQL API** | **Cassandra API** | **Azure Cosmos DB 的 API for MongoDB** | **Gremlin API** | **表 API** |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | 插入、替换、删除、Upsert、读取 | 否 | 是 | 是 | 是 | 是 | 是 |
 

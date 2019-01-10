@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 11/27/2017
 ms.author: cshoe
-ms.openlocfilehash: 39036f17b8ceafebbe3660f2074e2a6c84c4df03
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: 765eab8dfc1163c4d9e0337a1af840278ae1a82c
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50248687"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53546260"
 ---
 # <a name="azure-functions-external-file-bindings-experimental"></a>Azure Functions 外部文件绑定（实验性）
 本文演示如何在 Azure Functions 中通过不同 SaaS 提供程序（例如 Dropbox 或 Google Drive）处理文件。 Azure Functions 支持外部文件的触发器、输入和输出绑定。 这些绑定会创建与 SaaS 提供程序的 API 连接，或使用 Function App 的资源组中的现有 API 连接。
@@ -31,7 +31,7 @@ ms.locfileid: "50248687"
 |:-----|:---:|:---:|:---:|
 |[Box](https://www.box.com)|x|x|x
 |[Dropbox](https://www.dropbox.com)|x|x|x
-|[FTP](https://docs.microsoft.com/azure/app-service/app-service-deploy-ftp)|x|x|x
+|[FTP](https://docs.microsoft.com/azure/app-service/deploy-ftp)|x|x|x
 |[OneDrive](https://onedrive.live.com)|x|x|x
 |[OneDrive for Business](https://onedrive.live.com/about/business/)|x|x|x
 |[SFTP](https://docs.microsoft.com/azure/connectors/connectors-create-api-sftp)|x|x|x
@@ -204,7 +204,7 @@ To force reprocessing of a file, delete the file receipt for that file from the 
 * FileType
 * FolderName
 * FileName
-* ETag（文件版本标识符，例如：“0x8D1DC6E70A277EF”）
+* ETag（文件版本标识符，例如："0x8D1DC6E70A277EF"）
 
 ## <a name="input"></a>输入
 

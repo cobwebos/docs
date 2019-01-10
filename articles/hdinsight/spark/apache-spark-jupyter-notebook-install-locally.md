@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/28/2017
 ms.author: hrasheed
-ms.openlocfilehash: 92f6bc358fe8cc5ab8f7242d94edc3004eaab4b9
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: c1f4690d2ce10fe83d613b37ef2514effd2cef63
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53163372"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53598815"
 ---
 # <a name="install-jupyter-notebook-on-your-computer-and-connect-to-apache-spark-on-hdinsight"></a>在计算机上安装 Jupyter 笔记本并连接到 HDInsight 上的 Apache Spark
 
@@ -22,9 +22,9 @@ ms.locfileid: "53163372"
 
 在计算机上安装 Jupyter 和 Spark magic 包括三个重要步骤。
 
-* 安装 Jupyter 笔记本
-* 安装 PySpark 和具有 Spark magic 的 Spark 内核
-* 配置 Spark magic 以访问 HDInsight 上的 Spark 群集
+* 安装 Jupyter 笔记本。
+* 安装 PySpark 和具有 Spark magic 的 Spark 内核。
+* 配置 Spark magic 以访问 HDInsight 上的 Spark 群集。
 
 有关适用于装有 HDInsight 群集的 Jupyter 笔记本的自定义内核和 Spark magic 的详细信息，请参阅 [Kernels available for Jupyter notebooks with Apache Spark Linux clusters on HDInsight](apache-spark-jupyter-notebook-kernels.md)（适用于装有 HDInsight 上的 Apache Spark Linux 群集的 Jupyter 笔记本的内核）。
 
@@ -43,7 +43,7 @@ ms.locfileid: "53163372"
 
         conda install jupyter
 
-    有关安装 Jupyter 的详细信息，请参阅[使用 Anaconda 安装 Jupyter](http://jupyter.readthedocs.io/en/latest/install.html)。
+    有关安装 Jupyter 的详细信息，请参阅[使用 Anaconda 安装 Jupyter](https://jupyter.readthedocs.io/en/latest/install.html)。
 
 ## <a name="install-the-kernels-and-spark-magic"></a>安装内核和 Spark magic
 
@@ -100,7 +100,7 @@ ms.locfileid: "53163372"
             "livy_server_heartbeat_timeout_seconds": 60,
             "heartbeat_retry_seconds": 1
 
-    >[!TIP]
+    >[!TIP]  
     >将发送检测信号，以确保会话不会泄漏。 计算机进入睡眠状态或关闭时不会发送检测信号，从而导致会话被清除。 对于群集 v3.4，如果要禁用此行为，可以从 Ambari UI 将 Livy 配置 `livy.server.interactive.heartbeat.timeout` 设置为 `0`。 对于群集 v3.5，如果未设置上述 3.5 配置，会话将不会删除。
 
 1. 启动 Jupyter。 从命令提示符使用以下命令。
@@ -120,7 +120,7 @@ ms.locfileid: "53163372"
 
     如果可以成功检索输出，则表示与 HDInsight 群集的连接已经过测试。
 
-    >[!TIP]
+    >[!TIP]  
     >如果想要更新笔记本配置以连接到不同的群集，请使用一组新值更新 config.json，如上述步骤 3 中所示。
 
 ## <a name="why-should-i-install-jupyter-on-my-computer"></a>为何要在计算机上安装 Jupyter？
@@ -132,7 +132,7 @@ ms.locfileid: "53163372"
 * 甚至不需要启动群集就能在本地使用笔记本。 只需创建一个群集以根据它来测试笔记本，而不需要手动管理笔记本或开发环境。
 * 配置自己的本地开发环境比在群集上配置 Jupyter 安装更容易。  可以利用本地安装的所有软件，而不需要配置一个或多个远程群集。
 
-> [!WARNING]
+> [!WARNING]  
 > 在本地计算机上安装 Jupyter 后，多个用户可以同时在同一个 Spark 群集上运行同一个笔记本。 在这种情况下，会创建多个 Livy 会话。 如果遇到问题并想要调试，则跟踪哪个 Livy 会话属于哪个用户将是一项复杂的任务。
 >
 >

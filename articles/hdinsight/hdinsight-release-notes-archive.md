@@ -9,12 +9,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 03/20/2018
 ms.author: hrasheed
-ms.openlocfilehash: 43acf5f59667f45e67156b33e31d28160ba47c13
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: 19a842eacb00e877d31712febeeebc72cbdd25a0
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53408802"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53743164"
 ---
 # <a name="archived-release-notes-for-azure-hdinsight"></a>Azure HDInsight 发行说明存档
 
@@ -40,7 +40,7 @@ ms.locfileid: "53408802"
 
 ## <a name="notes-for-08012017-release-of-hdinsight"></a>HDInsight 08/01/2017 版发行说明
 
-| 标题 | 说明 | 受影响的区域  | 群集类型  | 
+| 标题 | Description | 受影响的区域  | 群集类型  | 
 | --- | --- | --- | --- | --- |
 | 发布 HDInsight 上的 Microsoft R Server 9.1 |HDInsight 现在支持在 HDInsight 上设置 R Server 9.1 群集。 有关 Microsoft R Server 9.1 版本的详细信息，请参阅[此博客](https://blogs.technet.microsoft.com/dataplatforminsider/2017/04/19/introducing-microsoft-r-server-9-1-release/)。 |服务 |R Server |
 | HDInsight 3.6 现在包含较新版本的 Hadoop 堆栈|<ul><li>有关更新版本的详细列表，请参阅 [HDInsight 中可用的 Apache Hadoop 组件版本](hdinsight-component-versioning.md#apache-hadoop-components-available-with-different-hdinsight-versions)。</li><li>有关在 Hadoop 堆栈最新版本中修复的 bug 的列表，请参阅 [Apache 修补程序信息](https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.6.1/bk_release-notes/content/patch_parent.html)。</li><li>有关 HDP 2.6.1（现已在 HDInsight 3.6 中可提供） 之间的重大更改的列表，请参阅 [https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.6.1/bk_release-notes/content/behavior_changes.html](https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.6.1/bk_release-notes/content/behavior_changes.html)。</li><li>有关 HDP 2.6.1 中的已知问题的列表，请参阅[已知问题](https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.6.1/bk_release-notes/content/known_issues.html)。</li></ul> |服务 |All |不适用 |
@@ -52,10 +52,9 @@ ms.locfileid: "53408802"
   
 
 
-
 ## <a name="04062017---general-availability-of-hdinsight-36"></a>2017 年 4 月 6 日：HDInsight 3.6 公开上市
 
-* 在此次发布中，Azure HDInsight 添加了基于 HDP 2.6 的 3.6 版。 [此处](http://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.6.0/bk_release-notes/content/ch_relnotes.html)提供 HDP 2.6 发行说明；[此处](hdinsight-component-versioning.md)提供有关 HDInsight 版本的详细信息。 HDInsight 3.6 可用于以下工作负荷：
+* 在此次发布中，Azure HDInsight 添加了基于 HDP 2.6 的 3.6 版。 [此处](https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.6.0/bk_release-notes/content/ch_relnotes.html)提供 HDP 2.6 发行说明；[此处](hdinsight-component-versioning.md)提供有关 HDInsight 版本的详细信息。 HDInsight 3.6 可用于以下工作负荷：
 
     * Hadoop v2.7.3
     * HBase v1.1.2
@@ -63,7 +62,7 @@ ms.locfileid: "53408802"
     * Spark v2.1.0
     * Interactive Hive v2.1.0
 
-* **Hive View 2.0 支持**。 这应该能够改善 Interactive Hive 的用户体验。 有关详细信息，请参阅 [Hortonworks 文档](http://docs.hortonworks.com/HDPDocuments/Ambari-2.5.0.3/bk_ambari-views/content/ch_using_hive_view.html)。
+* **Hive View 2.0 支持**。 这应该能够改善 Interactive Hive 的用户体验。 有关详细信息，请参阅 [Hortonworks 文档](https://docs.hortonworks.com/HDPDocuments/Ambari-2.5.0.3/bk_ambari-views/content/ch_using_hive_view.html)。
 
 * **Hive LLAP 性能增强**。 有关详细信息，请参阅 [Hortonworks 文档](https://hortonworks.com/blog/top-5-performance-boosters-with-apache-hive-llap/)。
 
@@ -87,11 +86,11 @@ ms.locfileid: "53408802"
 
 
 ## <a name="02282017---release-of-spark-21-on-hdinsight-36-preview"></a>2017 年 2 月 28 日：发布 Spark 2.1 on HDInsight 3.6（预览版）
-* [Spark 2.1](http://spark.apache.org/releases/spark-release-2-1-0.html) 纠正了旧版中的许多稳定性和可用性问题。 它还提供了跨所有 Spark 工作负荷（例如 Spark Core、SQL、ML 和流式处理）的新功能。
+* [Spark 2.1](https://spark.apache.org/releases/spark-release-2-1-0.html) 纠正了旧版中的许多稳定性和可用性问题。 它还提供了跨所有 Spark 工作负荷（例如 Spark Core、SQL、ML 和流式处理）的新功能。
 * 结构化流改进了可伸缩性，支持事件时间水印和 Kafka 0.10 连接器。
-* Spark SQL 分区现在通过新的可缩放分区处理机制进行处理。 [此处](http://spark.apache.org/releases/spark-release-2-1-0.html)提供有关如何升级的更多详细信息。
+* Spark SQL 分区现在通过新的可缩放分区处理机制进行处理。 [此处](https://spark.apache.org/releases/spark-release-2-1-0.html)提供有关如何升级的更多详细信息。
 * Spark 2.1 on Azure HDInsight 3.6 预览版目前不支持使用 ODBC 驱动程序进行 BI Tool 连接。
-* 此预览版不支持从 Spark 2.1 群集进行 Azure Data Lake Store 访问。
+* 此预览版不支持从 Spark 2.1 群集进行 Azure Data Lake Storage 访问。
 
 
 ## <a name="11182016---release-of-spark-201-on-hdinsight-35"></a>2016 年 11 月 18 日：发布 Spark 2.0.1 on HDInsight 3.5
@@ -110,9 +109,4 @@ Spark 2.0.1 现已在 Spark 群集（HDInsight 版本 3.5）上发行。
 * R Server on HDInsight 群集预配已简化。
 * R Server on HDInsight 现可作为常规 HDInsight“R Server”群集类型提供，并且不再作为单独的 HDInsight 应用程序进行安装。 边缘节点和 R Server 二进制文件现已作为 R Server 群集部署的一部分进行预配。 这会提高预配的速度和可靠性。 R Server 的定价模型将相应更新。
 * R Server 群集类型价格现基于标准层价格加上 R Server 额外费用价格。 此更改不会影响 R Server 的有效定价，它只会更改费用在帐单中的呈现方式。 所有现有 R Server 群集将继续生效，并且 Resource Manager 模板仍可在发出弃用通知前正常使用。 **建议更新脚本化的部署，以使用新的 Resource Manager 模板。**
-
-
-
-
-
 

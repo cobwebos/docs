@@ -5,15 +5,15 @@ manager: kfile
 description: 了解如何使用 Power BI Desktop 连接到 Azure Analysis Services。
 ms.service: azure-analysis-services
 ms.topic: tutorial
-ms.date: 12/06/2018
+ms.date: 01/09/2019
 ms.author: owend
 ms.reviewer: owend
-ms.openlocfilehash: 0025655b3df8ddfb91857bbd56c04507ac6bca5e
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 5d021aa7a6d55bb071340ebcd8e7090a4b0c2e2f
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52993980"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54188804"
 ---
 # <a name="tutorial-connect-with-power-bi-desktop"></a>教程：使用 Power BI Desktop 进行连接
 

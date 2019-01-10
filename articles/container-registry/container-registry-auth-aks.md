@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/08/2018
 ms.author: danlep
-ms.openlocfilehash: d08fc0cb8e3203a60cbd426145ec50bb3636e758
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: 850919f8ca8bb68af544ae528a779e16068424b1
+ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48857119"
+ms.lasthandoff: 12/22/2018
+ms.locfileid: "53752531"
 ---
 # <a name="authenticate-with-azure-container-registry-from-azure-kubernetes-service"></a>使用 Azure 容器注册表从 Azure Kubernetes 服务进行身份验证
 
@@ -22,7 +22,7 @@ ms.locfileid: "48857119"
 
 创建 AKS 群集时，Azure 还会创建一个服务主体以支持与其他 Azure 资源的群集可操作性。 可以使用此自动生成的服务主体向 ACR 注册表进行身份验证。 若要执行此操作，需要创建一个 Azure AD [角色分配](../role-based-access-control/overview.md#role-assignments)，它会授予群集的服务主体访问容器注册表的权限。
 
-使用以下脚本授予 AKS 生成的服务主体访问 Azure 容器注册表的权限。 在运行脚本前，修改环境的 `AKS_*` 和 `ACR_*` 变量。
+使用以下脚本授予 AKS 生成的服务主体请求 Azure 容器注册表的访问权限。 在运行脚本前，修改环境的 `AKS_*` 和 `ACR_*` 变量。
 
 ```bash
 #!/bin/bash
@@ -39,7 +39,7 @@ CLIENT_ID=$(az aks show --resource-group $AKS_RESOURCE_GROUP --name $AKS_CLUSTER
 ACR_ID=$(az acr show --name $ACR_NAME --resource-group $ACR_RESOURCE_GROUP --query "id" --output tsv)
 
 # Create role assignment
-az role assignment create --assignee $CLIENT_ID --role Reader --scope $ACR_ID
+az role assignment create --assignee $CLIENT_ID --role acrpull --scope $ACR_ID
 ```
 
 ## <a name="access-with-kubernetes-secret"></a>使用 Kubernetes 机密访问
@@ -58,8 +58,8 @@ SERVICE_PRINCIPAL_NAME=acr-service-principal
 ACR_LOGIN_SERVER=$(az acr show --name $ACR_NAME --query loginServer --output tsv)
 ACR_REGISTRY_ID=$(az acr show --name $ACR_NAME --query id --output tsv)
 
-# Create a 'Reader' role assignment with a scope of the ACR resource.
-SP_PASSWD=$(az ad sp create-for-rbac --name $SERVICE_PRINCIPAL_NAME --role Reader --scopes $ACR_REGISTRY_ID --query password --output tsv)
+# Create acrpull role assignment with a scope of the ACR resource.
+SP_PASSWD=$(az ad sp create-for-rbac --name $SERVICE_PRINCIPAL_NAME --role acrpull --scopes $ACR_REGISTRY_ID --query password --output tsv)
 
 # Get the service principal client id.
 CLIENT_ID=$(az ad sp show --id http://$SERVICE_PRINCIPAL_NAME --query appId --output tsv)

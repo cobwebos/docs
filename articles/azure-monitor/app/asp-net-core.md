@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 06/03/2018
 ms.author: mbullwin
-ms.openlocfilehash: 19830ade92e5d2a046abc8a2ad00c086a5bf62ec
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 24132fdb23ff89045f2b497327997d95e4ceecac
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53972781"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54054837"
 ---
 # <a name="application-insights-for-aspnet-core"></a>用于 ASP.NET Core 的 Application Insights
 
@@ -62,7 +62,7 @@ Azure Application Insights 提供 Web 应用程序的监视信息，深度可达
    ![Visual Studio Application Insights 搜索的屏幕截图](./media/asp-net-core/006-search.png)
 
 > [!NOTE]
-> 要详细了解 Visual Studio 如何在你向 ASP.NET Core 项目添加 Application Insights 之前在本地启用 [Application Insights 搜索](../../application-insights/app-insights-visual-studio.md)和 [CodeLens ](../../application-insights/app-insights-visual-studio-codelens.md) 等功能的详细信息，请参阅 [Application Insights 搜索（续）](#application-insights-search-continued)。
+> 要详细了解 Visual Studio 如何在你向 ASP.NET Core 项目添加 Application Insights 之前在本地启用 [Application Insights 搜索](../../azure-monitor/app/visual-studio.md)和 [CodeLens ](../../azure-monitor/app/visual-studio-codelens.md) 等功能的详细信息，请参阅 [Application Insights 搜索（续）](#application-insights-search-continued)。
 
 ## <a name="add-application-insights-telemetry"></a>添加 Application Insights 遥测
 
@@ -404,7 +404,7 @@ CoreCLR 仍会加载 Microsoft.AspNetCore.ApplicationInsights.HostingStartup.dll
 > [!VIDEO https://channel9.msdn.com/events/Connect/2016/100/player] 
 
 ## <a name="next-steps"></a>后续步骤
-* [浏览用户流](../../application-insights/app-insights-usage-flows.md)，了解用户如何在应用中导航。
+* [浏览用户流](../../azure-monitor/app/usage-flows.md)，了解用户如何在应用中导航。
 * [配置快照收集](https://docs.microsoft.com/azure/application-insights/app-insights-snapshot-debugger#configure-snapshot-collection-for-aspnet-core-20-applications)，以便在引发异常时查看源代码和变量的状态。
 * [使用 API](../../azure-monitor/app/api-custom-events-metrics.md)，发送自己的事件和指标以获取应用的性能和使用情况的更详细视图。
 * 使用[可用性测试](../../azure-monitor/app/monitor-web-app-availability.md)从世界各地不断检查应用。

@@ -14,12 +14,12 @@ ms.author: ronitr
 ms.reviewer: vanto
 manager: craigg
 ms.date: 09/20/2018
-ms.openlocfilehash: 375e1a0ba4be9483986c088195e380e856d32a67
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: b295f7a2a454e3987e8639814f785b7457dd452b
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49093742"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53973088"
 ---
 # <a name="get-started-with-azure-sql-database-managed-instance-auditing"></a>开始使用 Azure SQL 数据库托管实例审核
 
@@ -153,7 +153,7 @@ Azure Blob 存储审核的主要 `CREATE AUDIT` 语法差异为：
 
 ## <a name="next-steps"></a>后续步骤
 
-- 有关审核日志使用方法的完整列表，请参阅 [SQL 数据库审核入门](https://docs.microsoft.com/ azure/sql-database/sql-database-auditing)。
+- 有关审核日志使用方法的完整列表，请参阅 [SQL 数据库审核入门](https://docs.microsoft.com/azure/sql-database/sql-database-auditing)。
 - 有关可帮助遵从标准 Azure 计划的详细信息，请参阅 [Azure 信任中心](https://azure.microsoft.com/support/trust-center/compliance/)。
 
 

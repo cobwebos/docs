@@ -2,24 +2,27 @@
 title: 远程监视解决方案中的设备架构 - Azure | Microsoft Docs
 description: 本文介绍用于在远程监视解决方案中定义模拟设备的 JSON 架构。
 author: dominicbetts
-manager: timlt
+manager: philmea
 ms.author: dobett
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.date: 01/29/2018
+ms.date: 12/18/2018
 ms.topic: conceptual
-ms.openlocfilehash: f312f29e14c371e7b500f3eee6471151e3544513
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: 54e21e0b5f522b226ec1abb71a1c5ab5b245df05
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43338849"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53635521"
 ---
 # <a name="understand-the-device-model-schema"></a>了解设备模型架构
 
-可以使用远程监视解决方案中的模拟设备来测试该解决方案的行为。 部署远程监视解决方案时，会自动预配一系列模拟设备。 我们可以自定义现有的模拟设备，或创建自己的模拟设备。
+可以使用远程监视解决方案中的模拟设备来测试该解决方案的行为。 远程监视解决方案包括用于运行模拟设备的设备模拟服务。 部署远程监视解决方案时，会自动预配一系列模拟设备。 我们可以自定义现有的模拟设备，或创建自己的模拟设备。
 
 本文介绍指定模拟设备的功能和行为的设备模型架构。 设备模型存储在 JSON 文件中。
+
+> [!NOTE]
+> 此设备模型架构仅适用于在设备模拟服务中托管的模拟设备。 如果想要创建物理设备，请参阅[将设备连接到远程监视解决方案加速器](iot-accelerators-connecting-devices.md)。
 
 以下文章与本文相关：
 

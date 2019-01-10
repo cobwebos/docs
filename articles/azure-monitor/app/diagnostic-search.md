@@ -12,15 +12,15 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 09/20/2018
 ms.author: mbullwin
-ms.openlocfilehash: a9c9ac9ada6dfab051deda14cddb4ba6c07f48df
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: dfbaabd3d27804909334a7a370bcc89115e625c4
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53998891"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54119164"
 ---
 # <a name="using-search-in-application-insights"></a>使用 Application Insights 中的搜索
-搜索是 [Application Insights](../../application-insights/app-insights-overview.md) 中的一项功能，可用于查找和浏览单个遥测项，例如页面视图、异常或 Web 请求。 此外，可以查看编写的日志跟踪和事件。
+搜索是 [Application Insights](../../azure-monitor/app/app-insights-overview.md) 中的一项功能，可用于查找和浏览单个遥测项，例如页面视图、异常或 Web 请求。 此外，可以查看编写的日志跟踪和事件。
 
 （若要对数据进行更复杂的查询，请使用 [Analytics](../../azure-monitor/log-query/get-started-portal.md)。）
 
@@ -129,7 +129,7 @@ ms.locfileid: "53998891"
 ## <a name="sampling"></a>采样
 如果应用生成大量遥测（且使用的是 ASP.NET SDK 版本 2.0.0-beta3 或更高版本），自适应采样模块将通过仅发送具有代表性的事件部分来自动减少发送到门户的量。 但是，以组为单位选择或取消选择与同一请求相关的事件，以便可以在相关事件之间浏览。 
 
-[了解采样](../../application-insights/app-insights-sampling.md)。
+[了解采样](../../azure-monitor/app/sampling.md)。
 
 ## <a name="create-work-item"></a>创建工作项
 可以使用任何遥测项中的详细信息，在 GitHub 或 Azure DevOps 中创建 Bug。 
@@ -166,4 +166,4 @@ ms.locfileid: "53998891"
 * [在 Analytics 中编写复杂查询](../../azure-monitor/log-query/get-started-portal.md)
 * [向 Application Insights 发送日志和自定义的遥测数据](../../azure-monitor/app/asp-net-trace-logs.md)
 * [设置可用性和响应能力测试](../../azure-monitor/app/monitor-web-app-availability.md)
-* [故障排除](../../application-insights/app-insights-troubleshoot-faq.md)
+* [故障排除](../../azure-monitor/app/troubleshoot-faq.md)

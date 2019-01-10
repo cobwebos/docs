@@ -6,15 +6,15 @@ author: wmgries
 ms.service: storage
 ms.devlang: python
 ms.topic: article
-ms.date: 09/19/2017
+ms.date: 12/14/2018
 ms.author: tamram
 ms.component: files
-ms.openlocfilehash: 4082352c8c9814b8e6533d3f64b18450a6cf416d
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: f1ebc059c66615ecf21054e85472b2a6d86dfce6
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53165566"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53743181"
 ---
 # <a name="develop-for-azure-files-with-python"></a>使用 Python 针对 Azure 文件进行开发
 [!INCLUDE [storage-selector-file-include](../../../includes/storage-selector-file-include.md)]
@@ -33,7 +33,7 @@ ms.locfileid: "53165566"
 
 ## <a name="download-and-install-azure-storage-sdk-for-python"></a>下载和安装适用于 Python 的 Azure 存储 SDK
 
-适用于 Python 的 Azure 存储 SDK 需要 Python 2.7、3.3、3.4、3.5 或 3.6，并且包含 4 个不同包：`azure-storage-blob`、`azure-storage-file`、`azure-storage-table` 和 `azure-storage-queue`。 在本教程中，我们要用到 `azure-storage-file` 包。
+[适用于 Python 的 Azure 存储 SDK](https://github.com/azure/azure-storage-python) 需要使用 Python 2.7、3.3、3.4、3.5 或 3.6。
  
 ## <a name="install-via-pypi"></a>通过 PyPi 安装
 
@@ -43,13 +43,15 @@ ms.locfileid: "53165566"
 pip install azure-storage-file
 ```
 
-
 > [!NOTE]
-> 如果要从用于 Python 的 Azure 存储 SDK 版本 0.36 或更早版本升级，首先需要使用 `pip uninstall azure-storage` 进行卸载，因为我们不再通过单个包的形式发布用于 Python 的存储 SDK 了。
-> 
-> 
+> 如果要从适用于 Python 的 Azure 存储 SDK 版本 0.36 或更早版本升级，请在安装最新软件包之前使用 `pip uninstall azure-storage` 卸载旧版 SDK。
 
 有关备用安装方法，请访问 [Github 上用于 Python 的 Azure 存储 SDK](https://github.com/Azure/azure-storage-python/)。
+
+## <a name="view-the-sample-application"></a>查看示例应用程序
+若要查看和运行示例应用程序，该应用程序演示如何将 Python 与 Azure 文件存储配合使用，请参阅 [Azure Storage:Getting Started with Azure Files in Python](https://github.com/Azure-Samples/storage-file-python-getting-started)（Azure 存储：开始在 Python 中使用 Azure 文件存储）。 
+
+若要运行示例应用程序，请确保已安装 `azure-storage-file` 和 `azure-storage-common` 软件包。
 
 ## <a name="set-up-your-application-to-use-azure-files"></a>设置应用程序以使用 Azure 文件
 在希望在其中以编程方式访问 Azure 存储的任何 Python 源文件中，将以下代码添加到文件的顶部附近：

@@ -12,18 +12,21 @@ ms.author: xiwu
 ms.reviewer: douglasl
 manager: craigg
 ms.date: 07/16/2018
-ms.openlocfilehash: c08a76711a74f5b0fd119e579c6db54fc13ecfbb
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: 87f3b9de2ff86016f11a0996cbe448651ee6844f
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51685814"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53723886"
 ---
 # <a name="troubleshoot-issues-with-sql-data-sync"></a>排查 SQL 数据同步的问题
 
 本文介绍如何排查 Azure SQL 数据同步的已知问题。如果某个问题有了解决方法，会在本文中提供。
 
 有关 SQL 数据同步的概述，请参阅[使用 Azure SQL 数据同步跨多个云和本地数据库同步数据](sql-database-sync-data.md)。
+
+> [!IMPORTANT]
+> 目前，Azure SQL 数据同步不支持 Azure SQL 数据库托管实例。
 
 ## <a name="sync-issues"></a>同步问题
 
@@ -37,7 +40,7 @@ ms.locfileid: "51685814"
 
 - [发现性能显著降低](#sync-perf)
 
-- [有一条消息指出“无法在列 <column> 中插入 NULL 值。”此列不允许 null 值。”这是什么意思，如何解决该错误？](#sync-nulls)
+- [看到此消息：“无法在列 <column> 中插入 NULL 值。此列不允许 null 值。”这是什么意思，如何解决该错误？](#sync-nulls)
 
 - [数据同步如何处理循环引用？也就是说，如果在多个同步组中同步相同的数据，这些数据是否不断更改？](#sync-circ)
 
@@ -102,7 +105,7 @@ SQL 数据同步中的同步组长时间处于“正在处理”状态。 该同
 
 - **解决方法**。 最佳解决方案就是预防。 确保同步组中没有循环引用。 由一个同步组同步的任何行都不能由其他同步组同步。
 
-### <a name="sync-nulls"></a>有一条消息指出“无法在列 <column> 中插入 NULL 值。” 此列不允许 null 值。” 这是什么意思，如何解决该错误？ 
+### <a name="sync-nulls"></a>看到此消息：“无法在列 <column> 中插入 NULL 值。 此列不允许 null 值。” 这是什么意思，如何解决该错误？ 
 此错误消息表示发生了两个以下问题之一：
 -  某个表没有主键。 若要解决此问题，请将主键添加到要同步的所有表。
 -  CREATE INDEX 语句中可能存在 WHERE 子句。 数据同步不会处理这种情况。 若要解决此问题，请删除 WHERE 子句，或手动对所有数据库进行更改。 

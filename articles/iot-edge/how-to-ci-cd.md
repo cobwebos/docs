@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: a714cec5ce05473887f9f06d47c75563bf878081
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 3c4f5d6888d581cb44702a8d76e1ebbb13845091
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53386819"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53582909"
 ---
 # <a name="continuous-integration-and-continuous-deployment-to-azure-iot-edge"></a>向 Azure IoT Edge 进行持续集成和持续部署
 
@@ -40,7 +40,7 @@ ms.locfileid: "53386819"
 
 3. 现在，示例 IoT Edge 解决方案已准备就绪。 默认 C# 模块充当管道消息模块。 在 `deployment.template.json` 中，你将看到此解决方案包含两个模块。 消息将从 `tempSensor` 模块生成，并且将通过 `FilterModule` 直接输送，然后发送到 IoT 中心。
 
-4. 保存这些项目，然后将其提交到 Azure Repos。
+4. 保存这些项目，然后将其提交到 Azure Repos 存储库。
     
 > [!NOTE]
 > 若要详细了解如何使用 Azure 存储库，请参阅 [Share your code with Visual Studio and Azure Repos](https://docs.microsoft.com/azure/devops/repos/git/share-your-code-in-git-vs?view=vsts)（与 Visual Studio 和 Azure 存储库共享代码）。
@@ -69,11 +69,11 @@ ms.locfileid: "53386819"
     
     * 若要在用于 Linux 容器的 amd64 平台中生成模块，请选择“托管 Ubuntu 1604”
     * 若要在用于 Windows 容器的 amd64 平台中生成模块，请选择“托管 VS2017” 
-    * 若要在用于 Linux 容器的 arm32v7 平台中生成模块，则需要通过单击“管理”按钮来设置自己的生成代理。
+    * 若要在用于 Linux 容器的 arm32v7 平台中生成模块，则需要通过访问“管理”按钮来设置自己的生成代理。
     
     ![配置生成代理池](./media/how-to-ci-cd/configure-env.png)
 
-1. 在代理作业中单击“+”，以在生成管道中添加三个任务。 头两个任务来自“Azure IoT Edge”。 第三个任务来自“发布生成项目”
+1. 在代理作业中打开“+”，以在生成管道中添加三个任务。 头两个任务来自“Azure IoT Edge”。 第三个任务来自“发布生成项目”
     
     ![将任务添加到生成管道](./media/how-to-ci-cd/add-tasks.png)
 
@@ -93,13 +93,13 @@ ms.locfileid: "53386819"
 
     ![开启“持续集成”触发器](./media/how-to-ci-cd/configure-trigger.png)
 
-    保存新的生成管道。 单击“保存”按钮  。
+    使用“保存”按钮保存新的生成管道。
 
 
 ## <a name="configure-azure-pipelines-for-continuous-deployment"></a>配置 Azure Pipelines，以进行持续部署
 在本部分中，将创建一个发布管道，此管道配置为在生成管道放置项目时自动运行，并且它将在 Azure Pipelines 中显示部署日志。
 
-1. 在“发布”选项卡上，选择“+ 新建管道”。 或者，如果已有发布管道，则选择“+ 新建”按钮并单击“+ 新建发布管道”。  
+1. 在“发布”选项卡上，选择“+ 新键管道”。 或者，如果已有发布管道，则选择“+ 新建”按钮并选择“+ 新建发布管道”。  
 
     ![添加发布管道](./media/how-to-ci-cd/add-release-pipeline.png)
 
@@ -115,7 +115,7 @@ ms.locfileid: "53386819"
 
     ![添加项目](./media/how-to-ci-cd/add-artifacts.png)  
     
-    在“添加项目”页中，选择源类型“生成”。 然后选择项目和创建的生成管道。 然后单击“添加”。
+    在“添加项目”页中，选择源类型“生成”。 然后选择项目和创建的生成管道。 然后选择“添加”。
 
     ![添加生成项目](./media/how-to-ci-cd/add-an-artifact.png)
 
@@ -127,7 +127,7 @@ ms.locfileid: "53386819"
 
     ![配置 QA 任务](./media/how-to-ci-cd/view-stage-tasks.png)
 
-   部署任务对平台不敏感，这意味着可以在代理池（或你自己管理的任何其他代理）中选择“托管 VS2017”或“托管 Ubuntu 1604 ”。 单击“+”，然后添加一个任务。
+   部署任务对平台不敏感，这意味着可以在代理池（或你自己管理的任何其他代理）中选择“托管 VS2017”或“托管 Ubuntu 1604 ”。 选择“+”，然后添加一个任务。
 
     ![添加 QA 任务](./media/how-to-ci-cd/add-task-qa.png)
 
@@ -135,13 +135,13 @@ ms.locfileid: "53386819"
 
     ![部署到 QA](./media/how-to-ci-cd/deploy-to-qa.png)
 
-    保存新发布管道。 单击“保存”按钮  。 然后，单击“管道”以返回到管道。
+    使用“保存”按钮保存新的发布管道。 然后，选择“管道”以返回到管道。
 
 6. 第二个阶段针对生产环境。 若要添加新阶段“PROD”，可以克隆“QA”阶段并将克隆的阶段重命名为“PROD”。
 
     ![克隆阶段](./media/how-to-ci-cd/clone-stage.png)
 
-7. 为生产环境配置任务。 假设已将多个 IoT Edge 设备标记为“prod”，请在任务配置中将目标条件更新为“prod”，并在高级设置中将部署 ID 设置为“deploy-prod”。 单击“保存”按钮  。 然后，单击“管道”以返回到管道。
+7. 为生产环境配置任务。 假设已将多个 IoT Edge 设备标记为“prod”，请在任务配置中将目标条件更新为“prod”，并在高级设置中将部署 ID 设置为“deploy-prod”。 使用“保存”按钮将其保存。 然后，选择“管道”以返回到管道。
     
     ![部署到生产环境](./media/how-to-ci-cd/deploy-to-prod.png)
 
@@ -151,7 +151,7 @@ ms.locfileid: "53386819"
 
         ![打开预先部署条件](./media/how-to-ci-cd/pre-deploy-conditions.png)    
 
-    2. 在“预先部署审批”中，设置“已启用”。 并填写“审批者”输入栏。 然后单击“保存”。
+    2. 在“预先部署审批”中，设置“已启用”。 并填写“审批者”输入栏。 然后使用“保存”按钮将其保存。
     
         ![设置条件](./media/how-to-ci-cd/set-pre-deployment-conditions.png)
 
@@ -165,7 +165,7 @@ ms.locfileid: "53386819"
 
 在本部分中，将触发生成作业，以使 CI/CD 管道正常工作。 然后验证部署是否成功。
 
-1. 要触发生成作业，可以将提交推送到源代码存储库或手动触发该作业。 通过单击“队列”按钮，可在生成管道中触发生成作业（如以下屏幕截图所示）。
+1. 要触发生成作业，可以将提交推送到源代码存储库或手动触发该作业。 通过选择“队列”按钮，可在生成管道中触发生成作业（如以下屏幕截图所示）。
 
     ![手动触发器](./media/how-to-ci-cd/manual-trigger.png)
 

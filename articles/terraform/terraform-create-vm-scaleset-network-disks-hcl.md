@@ -4,17 +4,16 @@ description: 有关使用 Terraform 配置 Azure 虚拟机规模集（配有虚�
 services: terraform
 ms.service: terraform
 keywords: terraform, devops, 虚拟机, Azure, 规模集, 网络, 存储, 模块
-author: tomarcher
-manager: jeconnoc
+author: tomarchermsft
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 10/26/2018
-ms.openlocfilehash: 4784672364e2bdf44f0415ab4e1e386a5a80076b
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: bceef544b51126d4d470f6f13f07b54437b08df5
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53313048"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54076886"
 ---
 # <a name="use-terraform-to-create-an-azure-virtual-machine-scale-set"></a>使用 Terraform 创建 Azure 虚拟机规模集
 

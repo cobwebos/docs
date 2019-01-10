@@ -1,19 +1,17 @@
 ---
 title: 使用 BI 分析工具连接到 Azure Cosmos DB
 description: 了解如何使用 Azure Cosmos DB ODBC 驱动程序创建表和视图，以便能够在 BI 和数据分析软件中查看规范化数据。
-keywords: odbc, odbc 驱动程序
-services: cosmos-db
 author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 03/22/2018
 ms.author: sngun
-ms.openlocfilehash: d1ea0a51d9637c1ca1dba214e969e6835dfb241c
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: f51ce90d9349d345bb1e77ca5e254315c20c1b1d
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53136352"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54034466"
 ---
 # <a name="connect-to-azure-cosmos-db-using-bi-analytics-tools-with-the-odbc-driver"></a>通过 ODBC 驱动程序使用 BI 分析工具连接到 Azure Cosmos DB
 
@@ -114,7 +112,7 @@ Azure Cosmos DB 是一个无架构数据库，可用于快速开发应用程序�
 
 1. 在“采样视图”选项卡上的集合“映射定义”列中选择一个集合，并单击“编辑”。 在“映射定义”窗口中，选择“表分隔符”方法。 然后执行以下操作：
 
-    a. 在“属性”框中，键入分隔符属性的名称。 这是文档中要将采样范围限定到的属性（例如 City）。然后按 Enter 键。 
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“属性”框中，键入分隔符属性的名称。 这是文档中要将采样范围限定到的属性（例如 City）。然后按 Enter 键。 
 
     b. 如果只想将采样范围限定为你在上面输入的属性的某些值，请在选择框中选择该属性，在“值”框中输入一个值（例如 Seattle），然后按 Enter 键。 可以继续添加属性的多个值。 只需确保在输入值时选择正确的属性。
 

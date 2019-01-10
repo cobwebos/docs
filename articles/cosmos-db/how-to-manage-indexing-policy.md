@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 11/10/2018
 ms.author: mjbrown
-ms.openlocfilehash: 97fb5c2558d55b3f80f2e771971faa109a930c5f
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: c27cee4842c0e65e1737f100a215cff82a0fd439
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51626424"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54033088"
 ---
 # <a name="manage-indexing-in-azure-cosmos-db"></a>管理 Azure Cosmos DB 中的索引编制
 
@@ -53,7 +53,7 @@ client.CreateDocumentAsync(UriFactory.CreateDocumentCollectionUri("myDatabaseNam
 
 ## <a name="next-steps"></a>后续步骤
 
-阅读以下文章中有关索引的更多信息：
+阅读以下文章中有关索引的详细信息：
 
 * [索引概览](index-overview.md)
 * [索引策略](index-policy.md)

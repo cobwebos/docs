@@ -4,22 +4,22 @@ description: 详细了解 Azure 数据库迁移服务支持的迁移方案的状
 services: database-migration
 author: pochiraju
 ms.author: rajpo
-manager: ''
-ms.reviewer: ''
-ms.service: database-migration
+manager: craigg
+ms.reviewer: douglasl
+ms.service: dms
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
-ms.date: 12/11/2018
-ms.openlocfilehash: 9eea3c28751ecaec0ffdb27e08f84cad1bf62acd
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.date: 12/19/2018
+ms.openlocfilehash: 81bd23f7e4b7065155b708703e52bc0a351696c1
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53267860"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53722075"
 ---
 # <a name="status-of-migration-scenarios-supported-by-the-azure-database-migration-service"></a>Azure 数据库迁移服务支持的迁移方案的状态
-Azure 数据库迁移服务旨在支持脱机（一次性）和联机（连续同步）迁移的各种迁移方案（源/目标对）。 随着时间的推移，Azure 数据库迁移服务提供的方案范围也在不断扩大。 将定期添加新的方案。 这篇文章介绍了 Azure 数据库迁移服务当前支持的迁移方案和状态（个人预览版、公共预览版或正式发布版）或每个方案。
+Azure 数据库迁移服务旨在支持脱机（一次性）和联机（连续同步）迁移的各种迁移方案（源/目标对）。 随着时间的推移，Azure 数据库迁移服务提供的方案范围也在不断扩大。 将定期添加新的方案。 这篇文章介绍了 Azure 数据库迁移服务当前支持的迁移方案和状态（个人[或有限]预览版、公共预览版或正式发布版）或每个方案。
 
 ## <a name="offline-versus-online-migrations"></a>脱机和联机迁移
 使用 Azure 数据库迁移服务将数据库迁移到 Azure 时，可以执行脱机或联机迁移。 通过“脱机”迁移，应用程序停机时间在迁移开始的同时开始。 对于“联机”迁移，停机时间仅限于迁移完成时切换到新环境所需的时间。 建议对脱机迁移进行测试，以便确定其停机时间是否可以接受；如果不能接受，请执行联机迁移。

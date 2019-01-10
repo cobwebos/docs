@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 11/17/2018
 ms.author: yijenj
-ms.openlocfilehash: 1ae10fb749e671f7a8b5ca48e652711d7dcf98c8
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: fad023b7593b0e13b05d081a11333f5e92c8ecef
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52262595"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53602165"
 ---
 # <a name="azure-partner-customer-usage-attribution"></a>Azure 合作伙伴和客户使用情况归因
 
@@ -270,15 +270,11 @@ Microsoft 为合作伙伴提供其模板的客户部署情况以及有关受其�
 
 **谁可以向模板添加 GUID？**
 
-跟踪资源旨在将合作伙伴的解决方案与客户的 Azure 使用情况关联。 使用情况数据与合作伙伴的 Microsoft 合作伙伴网络标识 (MPN ID) 相关联。 报告通过 CPP 向合作伙伴提供。
+跟踪资源旨在将合作伙伴的解决方案与客户的 Azure 使用情况关联。 使用情况数据与合作伙伴的 Microsoft 合作伙伴网络标识 (MPN ID) 相关联。 
 
 **添加 GUID 后是否可对其进行更改？**
  
 是，客户或实现合作伙伴可以自定义模板，并且可以更改或删除 GUID。 我们建议合作伙伴主动向其客户和合作伙伴介绍资源和 GUID 的角色，以防止删除或编辑跟踪 GUID。 更改 GUID 只会影响新的部署和资源，而不会影响现有部署和资源。
-
-**报告何时可用？**
-
-报告的 beta 版本应该很快就会上线。 报告将集成到 CPP 中。
 
 **我是否可以跟踪通过非 Microsoft 存储库（如 GitHub）部署的模板？**
 

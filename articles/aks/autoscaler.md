@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 07/19/18
 ms.author: sakthivetrivel
 ms.custom: mvc
-ms.openlocfilehash: 0f376d6b1108b784af37b5e50dab9edba63e5f76
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.openlocfilehash: 0b2e49bb0e269c91ed6a1bf7294565a729082db3
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51713086"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53975128"
 ---
 # <a name="cluster-autoscaler-on-azure-kubernetes-service-aks---preview"></a>Azure Kubernetes 服务 (AKS) 中的群集自动缩放程序 - 预览版
 
@@ -398,7 +398,7 @@ Events:  <none>
     * 缩减候选项是群集自动缩放程序确定可以删除，而不会影响群集处理其工作负荷的节点。 
     * 提供的时间显示群集上次检查缩减候选项的时间，及其上次转换时间。
 
-最后，在 Events 下面，可以查看群集自动缩放程序执行的所有扩展或缩减事件、失败或成功的事件，及其时间。
+最后，在 Events 下面，可以查看群集自动缩放程序执行的所有纵向扩展或减少事件、失败或成功的事件，及其时间。
 
 ## <a name="next-steps"></a>后续步骤
 

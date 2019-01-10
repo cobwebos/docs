@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/26/2018
 ms.author: clemensv
-ms.openlocfilehash: 04588d0af0f85a9e69f44e82d01294c2a4440abc
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 70f07b3925eb91d91dfbd623f8f1611ac31a1b6f
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52961138"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53542503"
 ---
 # <a name="amqp-10-in-azure-service-bus-and-event-hubs-protocol-guide"></a>Azure 服务总线和事件中心内的 AMQP 1.0 协议指南
 
@@ -264,7 +264,7 @@ AMQP 1.0 规范定义进一步的处置状态（称为“已接收”），其�
 
 #### <a name="starting-a-transaction"></a>启动事务
 
-开始事务性工作。 控制器必须从协调器获取一个 `txn-id`。 通过发送 `declare` 类型消息完成此操作。 如果声明成功，协调器会响应一个处置结果，其中包含分配的 `txn-id`。
+开始事务性工作。 控制器必须从协调器获取一个 `txn-id`。 通过发送 `declare` 类型消息完成此操作。 如果声明成功，协调器使用处置结果响应，其中包含分配的 `txn-id`。
 
 | 客户端（控制器） | | 服务总线（协调器） |
 | --- | --- | --- |

@@ -1,21 +1,22 @@
 ---
-title: 了解如何使用 Azure 数字孪生 Swagger | Microsoft Docs
-description: 使用 Azure 数字孪生 Swagger
+title: 了解如何使用 Azure 数字孪生 Swagger 参考文档 | Microsoft Docs
+description: 了解如何使用 Azure 数字孪生 Swagger 参考文档。
 author: kingdomofends
 manager: alinast
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 11/13/2018
+ms.date: 12/31/2018
 ms.author: adgera
-ms.openlocfilehash: 737c33f6b8cdf9bcb2530816601ff9b5eb994087
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.custom: seodec18
+ms.openlocfilehash: 7d079f543f8b564c396560c97225897c12f3cd24
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51624244"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53975638"
 ---
-# <a name="use-azure-digital-twins-swagger"></a>使用 Azure 数字孪生 Swagger
+# <a name="azure-digital-twins-swagger-reference-documentation"></a>Azure 数字孪生 Swagger 参考文档
 
 每个预配的 Azure 数字孪生实例都包含自己生成的 Swagger 参考文档。
 
@@ -34,19 +35,19 @@ Swagger 提供 API 的交互式摘要，这包括：
 * 示例响应信息，用于验证和确认 HTTP 响应。
 * 错误代码信息。
 
-Swagger 是一种非常便利的工具，可用于帮助执行开发和对管理 API 作出的测试调用。
+Swagger 是一种非常便利的工具，可用于帮助执行对 Azure 数字孪生管理 API 作出的开发和测试调用。
 
 [!INCLUDE [Digital Twins Swagger](../../includes/digital-twins-swagger.md)]
 
 ## <a name="reference-material"></a>参考资料
 
-自动生成的参考资料介绍了关键概念和对象模型。
+自动生成的 Swagger 参考资料提供了重要概念的快速概述、可用的管理 API 终结点和每个对象模型的描述，用于帮助开发和测试。
 
 精简摘要对 API 进行了描述。
 
 ![Swagger 顶部][1]
 
-还列出了核心 API 对象模型。
+还列出了管理 API 对象模型。
 
 ![Swagger 模型][2]
 
@@ -58,7 +59,7 @@ Swagger 是一种非常便利的工具，可用于帮助执行开发和对管理
 
 ## <a name="endpoint-summary"></a>终结点摘要
 
-Swagger 还对编写 API 的所有终结点提供了全面概述。
+Swagger 还对编写管理 API 的所有终结点提供了全面概述。
 
 每个列出的终结点还包括所需的请求信息，例如：
 

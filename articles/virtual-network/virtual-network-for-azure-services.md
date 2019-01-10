@@ -1,13 +1,10 @@
 ---
-title: Azure 服务的虚拟网络 | Microsoft Docs
+title: Azure 服务的虚拟网络
+titlesuffix: Azure Virtual Network
 description: 了解向虚拟网络部署资源的好处。 虚拟网络中的资源可以彼此信，也可与本地资源通信，而无需遍历 Internet 的流量。
 services: virtual-network
 documentationcenter: na
 author: jimdial
-manager: timlt
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
@@ -15,18 +12,19 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: jdial
-ms.openlocfilehash: 5b21ec36215dfde964b845a1ee28c02b562e1dd7
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 8672fbccb384a87a1b227bab7c81fdd99438d1da
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53340668"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54020500"
 ---
 # <a name="virtual-network-integration-for-azure-services"></a>Azure 服务的虚拟网络集成
 
 通过将 Azure 服务集成到 Azure 虚拟网络，可从虚拟机或虚拟网络中的计算资源私密访问服务。
-可通过以下选项在虚拟网络中集成 Azure 服务：将服务的专用实例直接部署到虚拟网络中。 随后即可在虚拟网络内以及从本地网络私密访问这些服务。
-通过服务终结点将虚拟网络扩展到服务。 服务终结点可使单个服务资源在虚拟网络中得到保护。
+可通过以下选项在虚拟网络中集成 Azure 服务：
+- 将服务的专用实例部署到虚拟网络中。 随后即可在虚拟网络内以及从本地网络私密访问这些服务。
+- 通过服务终结点将虚拟网络扩展到服务。 服务终结点可使单个服务资源在虚拟网络中得到保护。
 
 若要将多个 Azure 服务集成到虚拟网络，可组合一种或多种上述模式。 例如，可将 HDInsight 部署到虚拟网络中，并通过服务终结点保护该 HDInsight 子网的存储帐户。
  

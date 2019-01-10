@@ -2,25 +2,21 @@
 title: 使用现有的本地代理服务器和 Azure AD | Microsoft 文档
 description: 介绍如何使用现有的本地代理服务器。
 services: active-directory
-documentationcenter: ''
 author: barbkess
 manager: mtillman
 ms.service: active-directory
 ms.component: app-mgmt
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/12/2018
 ms.author: barbkess
 ms.reviewer: japere
-ms.custom: it-pro
-ms.openlocfilehash: 06df705aabce06c37f04de3fb5046d822f9f981e
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 6409b9313aa9b036e24ea50435659b3653ac01e0
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49404947"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53720095"
 ---
 # <a name="work-with-existing-on-premises-proxy-servers"></a>使用现有的本地代理服务器
 
@@ -107,15 +103,16 @@ OS 组件尝试通过针对 wpad.domainsuffix 执行 DNS 查找来查找代理�
 * SSL 检查
 
 #### <a name="proxy-outbound-rules"></a>代理出站规则
-允许访问连接器服务的以下终结点：
+允许访问以下 URL：
 
-* * .msappproxy.net
-* * .servicebus.windows.net
+| 代码 | 用途 |
+| --- | --- |
+| \*.msappproxy.net<br>\*.servicebus.windows.net | 连接器与应用程序代理云服务之间的通信 |
+| mscrl.microsoft.com:80<br>crl.microsoft.com:80<br>ocsp.msocsp.com:80<br>www.microsoft.com:80 | Azure 使用以下 URL 来验证证书 |
+| login.windows.net<br>login.microsoftonline.com | 在注册过程中，连接器将使用这些 URL。 |
 
-为了完成初始注册，需允许访问以下终结点：
+如果防火墙或代理允许执行 DNS 白名单，可将与 \*.msappproxy.net 和 \*.servicebus.windows.net 的连接加入白名单。 否则，需要允许访问 [Azure 数据中心 IP 范围](https://www.microsoft.com/download/details.aspx?id=41653)。 IP 范围每周更新。
 
-* login.windows.net
-* login.microsoftonline.com
 
 如果不能通过 FQDN 允许连接，请使用以下选项改为指定 IP 范围：
 

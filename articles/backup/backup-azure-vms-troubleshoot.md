@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 8/7/2018
 ms.author: trinadhk
-ms.openlocfilehash: b751fe4feab48e6ed706a2e28bba8406f4f4891c
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 9bbaf23999c04eba5157ebe7dff73ed47418c99a
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53185692"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53634178"
 ---
 # <a name="troubleshoot-azure-virtual-machine-backup"></a>Azure 虚拟机备份疑难解答
 可使用下表中所列出的信息排查使用 Azure 备份时遇到的错误：
@@ -69,11 +69,11 @@ ms.locfileid: "53185692"
 | 为还原操作指定的存储帐户的类型不是联机状态： <br>确保还原操作中指定的存储帐户处于联机状态。 |如果 Azure 存储中出现暂时性错误或中断，可能会发生此错误。 请选择另一个存储帐户。 |
 | 资源组配额已达限制： <br>请从 Azure 门户中删除某些资源组，或者与 Azure 支持部门联系，以提高限额。 |无 |
 | 所选子网不存在： <br>选择存在的子网。 |无 |
-| 备份服务无权访问订阅中的资源。 |要修复此错误，请首先使用[还原备份磁盘](backup-azure-arm-restore-vms.md#restore-backed-up-disks)中的步骤来还原磁盘。 然后使用[从已还原的磁盘创建 VM](backup-azure-vms-automation.md#create-a-vm-from-restored-disks) 中的 PowerShell 步骤，以从还原的磁盘创建完整的 VM。 |
+| 备份服务无权访问订阅中的资源。 |要修复此错误，请首先使用[还原备份磁盘](backup-azure-arm-restore-vms.md#create-new-restore-disks)中的步骤来还原磁盘。 然后使用[从已还原的磁盘创建 VM](backup-azure-vms-automation.md#restore-an-azure-vm) 中的 PowerShell 步骤。 |
 
 ## <a name="backup-or-restore-takes-time"></a>备份或还原需要一定时间
 如果备份时间超过 12 小时，或还原时间超过 6 小时：
-* 请了解[影响备份时间的因素](backup-azure-vms-introduction.md#total-vm-backup-time)和[影响还原时间的因素](backup-azure-vms-introduction.md#total-restore-time)。
+* 请了解[影响备份时间的因素](backup-azure-vms-introduction.md#time-considerations)和[影响还原时间的因素](backup-azure-vms-introduction.md#restore-considerations)。
 * 请务必遵循[备份最佳做法](backup-azure-vms-introduction.md#best-practices)。
 
 ## <a name="vm-agent"></a>VM 代理

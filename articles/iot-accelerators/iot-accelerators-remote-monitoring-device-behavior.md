@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 01/29/2018
 ms.topic: conceptual
-ms.openlocfilehash: 70f9ccbbe737bad4d6f88365e804d4421c418d28
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: edd5da35d33aa7e79fc3e972f3ea1cfe2ef40973
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53164001"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53631407"
 ---
 # <a name="implement-the-device-model-behavior"></a>实现设备模型的行为
 
@@ -21,6 +21,9 @@ ms.locfileid: "53164001"
 
 - 按固定间隔运行，更新设备内部状态的**状态** JavaScript 文件。
 - 解决方案在设备上调用方法时运行的**方法** JavaScript 文件。
+
+> [!NOTE]
+> 设备模型行为仅适用于在设备模拟服务中托管的模拟设备。 如果想要创建物理设备，请参阅[将设备连接到远程监视解决方案加速器](iot-accelerators-connecting-devices.md)。
 
 在本文中，学习如何：
 

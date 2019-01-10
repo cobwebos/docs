@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/02/2018
 ms.author: jaredro
 ms.custom: seodec18
-ms.openlocfilehash: 9dadd61c8c4c2d1cd2305aa852e4528bfb9a1421
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: be20f01511990ef8de6ce6e0e13ddfa99b004dcd
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53076604"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54076207"
 ---
 # <a name="how-to-configure-expressroute-direct-preview"></a>如何配置 ExpressRoute Direct（预览版）
 
@@ -69,7 +69,7 @@ ms.locfileid: "53076604"
 3. 确定上面列出的某个位置是否有可用的带宽
 
   ```powershell
-  Get-AzureRMExpressRoutePortsLocations -Name "Equinix-San-Jose-SV1"
+  Get-AzureRmExpressRoutePortsLocation -LocationName "Equinix-San-Jose-SV1"
   ```
 
   **示例输出**

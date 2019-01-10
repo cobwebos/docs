@@ -13,12 +13,12 @@ ms.devlang: objective-c
 ms.topic: article
 ms.date: 10/01/2016
 ms.author: crdun
-ms.openlocfilehash: b284b599c569fe1c492b28d09fbc62a9130e939e
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: b6f93cc3c35ab18ecd50ccd6b3090985497baabf
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53409303"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54121764"
 ---
 # <a name="how-to-use-ios-client-library-for-azure-mobile-apps"></a>如何使用适用于 Azure 移动应用的 iOS 客户端库
 
@@ -81,7 +81,7 @@ let table = client.tableWithName("TodoItem")
 
 ```objc
 [table readWithCompletion:^(MSQueryResult *result, NSError *error) {
-        if(error) { // error is nil if no error occured
+        if(error) { // error is nil if no error occurred
                 NSLog(@"ERROR %@", error);
         } else {
                 for(NSDictionary *item in result.items) { // items is NSArray of records that match query

@@ -3,17 +3,17 @@ title: 在 Azure 中使用 Ansible
 description: 介绍如何使用 Ansible 自动执行云预配、配置管理和应用程序部署。
 ms.service: ansible
 keywords: ansible, azure, devops, 概述, 云预配, 配置管理, 应用程序部署, ansible 模块, ansible playbook
-author: tomarcher
+author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.date: 09/02/2018
 ms.topic: article
-ms.openlocfilehash: 22eeb3993cd408a8369236683da3db466a348a30
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: d684c4238a7550ca3ec34629fffdc9791db55954
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52956742"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54052694"
 ---
 # <a name="ansible-with-azure"></a>Ansible 与 Azure
 

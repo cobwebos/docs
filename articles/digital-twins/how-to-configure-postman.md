@@ -6,14 +6,14 @@ manager: alinast
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 11/13/2018
+ms.date: 12/18/2018
 ms.author: adgera
-ms.openlocfilehash: b22bf34a06966f917cdcdd07c28ead2d042061c1
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: 92ff8cb732c7c10c525d8a8ec76180cb435bd466
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52163990"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53974988"
 ---
 # <a name="how-to-configure-postman-for-azure-digital-twins"></a>如何为 Azure 数字孪生配置 Postman
 
@@ -31,7 +31,7 @@ ms.locfileid: "52163990"
 
 1. 遵循[此快速入门](https://docs.microsoft.com/azure/active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad)中的步骤创建一个本机类型的 Azure AD 应用程序。 也可以重复使用现有的本机应用注册。
 
-1. 在“所需权限”下，输入 `Azure Digital Twins` 并选择“委托的权限”。 然后选择“授予权限”。
+1. 在“所需的权限”下，选择“添加”，然后在“添加 API 访问权限”下输入“Azure 数字孪生”。 如果搜索没有找到该 API，请改为搜索“Azure 智能空间”。 然后，选择“授予权限”>“委托的权限”并选择“完成”。
 
     ![Azure AD 应用注册添加 api](../../includes/media/digital-twins-permissions/aad-app-req-permissions.png)
 
@@ -65,7 +65,7 @@ ms.locfileid: "52163990"
     | 字段  | 值 |
     |---------|---------|
     | 授权类型 | `Implicit` |
-    | 回调 URL | [`https://www.getpostman.com/oauth2/callback`](https://www.getpostman.com/oauth2/callback) |
+    | 回调 URL | `https://www.getpostman.com/oauth2/callback` |
     | 身份验证 URL | 使用上面步骤 2 中的“授权 URL” |
     | 客户端 ID | 使用上一部分创建或重新调整的 Azure AD 应用的“应用程序 ID” |
     | 范围 | 留空 |

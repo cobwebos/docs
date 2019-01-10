@@ -9,17 +9,16 @@ ms.assetid: 4fad8445-4e96-4ce0-aa23-9b88e5ec1965
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 62712a201e8f9717f3e0215c4c29130d3bddcdf2
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 1a0130c7cd42d81609379ba4d9ba7fc922e50b16
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37050205"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54022387"
 ---
 # <a name="create-predictive-pipelines-using-azure-machine-learning-and-azure-data-factory"></a>使用 Azure 机器学习和 Azure 数据工厂创建预测管道
 
@@ -77,7 +76,7 @@ ms.locfileid: "37050205"
 
       ![批处理 URI](./media/data-factory-azure-ml-batch-execution-activity/batch-uri.png)
 
-### <a name="scenario-experiments-using-web-service-inputsoutputs-that-refer-to-data-in-azure-blob-storage"></a>方案：使用 Web 服务输入/输出（参考 Azure Blob 存储中的数据）的实验
+### <a name="scenario-experiments-using-web-service-inputsoutputs-that-refer-to-data-in-azure-blob-storage"></a>场景：使用 Web 服务输入/输出（引用 Azure Blob 存储中的数据）的试验
 在本方案中，Azure 机器学习 Web 服务使用 Azure Blob 存储中某文件的数据进行预测，并将预测结果存储在 Blob 存储中。 以下 JSON 定义了包含 AzureMLBatchExecution 活动的数据工厂管道。 该活动将数据集 **DecisionTreeInputBlob** 作为输入，**DecisionTreeResultBlob** 作为输出。 通过使用 **webServiceInput** JSON 属性，将 **DecisionTreeInputBlob** 作为输入传递给 Web 服务。 通过使用 **webServiceOutputs** JSON 属性，将 **DecisionTreeResultBlob** 作为输出传递给 Web 服务。  
 
 > [!IMPORTANT]
@@ -195,7 +194,7 @@ ms.locfileid: "37050205"
     }
     ```
 
-    如果 csv 文件不含标题行，可能出现以下错误：**活动中出错：读取字符串时出错。意外令牌：StartObject。路径 ''、行 1、位置 1**。
+    如果 csv 文件不含标题行，可能会显示以下错误：**活动中出错：读取字符串时出错。意外令牌：StartObject。路径 ''、行 1、位置 1**。
 3. 创建**输出** Azure 数据工厂**数据集**。 本示例使用分区为每个切片执行创建唯一输出路径。 如不使用分区，活动将覆盖文件。
 
     ```JSON
@@ -237,7 +236,7 @@ ms.locfileid: "37050205"
       }
     }
     ```
-4. 创建类型为 **AzureMLLinkedService** 的**链接服务**，提供 API 密钥和模型批处理执行 URL。
+4. 为以下类型创建“链接服务”：AzureMLLinkedService，提供 API 密钥和模型批处理执行 URL。
 
     ```JSON
     {
@@ -311,10 +310,10 @@ ms.locfileid: "37050205"
       >
       >
 
-### <a name="scenario-experiments-using-readerwriter-modules-to-refer-to-data-in-various-storages"></a>方案：使用读取器/编写器模块参考各种存储中的数据的实验
+### <a name="scenario-experiments-using-readerwriter-modules-to-refer-to-data-in-various-storages"></a>场景：使用读取器/写入器模块引用各种存储中的数据的试验
 创建 Azure 机器学习实验时的另一种常见方案是使用读取器和编写器模块。 读取器模块用于将数据加载到实验，编写器模块用于保存实验中的数据。 有关读取器和编写器模块的详细信息，请参阅 MSDN 库上的[读取器](https://msdn.microsoft.com/library/azure/dn905997.aspx)和[编写器](https://msdn.microsoft.com/library/azure/dn905984.aspx)主题。     
 
-使用读取器和编写器模块时，最好对这些读取器/编写器模块的每个属性使用 Web 服务参数。 使用这些 Web 参数，可在运行时配置值。 例如，可通过使用 Azure SQL 数据库 XXX.database.windows.net 的读取器模块创建实验。 部署 Web 服务后，需使 Web 服务使用者能够指定另一个名为 YYY.database.windows.net 的 Azure SQL Server。 Web 服务参数可用于允许配置此值。
+使用读取器和编写器模块时，最好对这些读取器/编写器模块的每个属性使用 Web 服务参数。 使用这些 Web 参数，可在运行时配置值。 例如，可通过使用 Azure SQL 数据库的读取器模块创建实验：XXX.database.windows.net。 部署 Web 服务后，需使 Web 服务使用者能够指定另一个名为 YYY.database.windows.net 的 Azure SQL Server。 Web 服务参数可用于允许配置此值。
 
 > [!NOTE]
 > Web 服务输入和输出与 Web 服务参数不同。 在第一个方案中，已了解了可为 Azure 机器学习 Web 服务指定输入和输出的方法。 在此方案中，为 Web 服务传递对应于读取器/编写器模块属性的参数。
@@ -350,7 +349,7 @@ ms.locfileid: "37050205"
 ### <a name="using-a-reader-module-to-read-data-from-multiple-files-in-azure-blob"></a>使用读取器模块读取 Azure Blob 中多个文件的数据
 含 Pig 和 Hive 等活动的大数据管道可以生成无扩展名的一个或多个输出文件。 例如，指定外部 Hive 表时，可将外部 Hive 表数据存储在 Azure Blob 存储中，并命名为 000000_0。 可在实验中使用读取器模块读取多个文件，并将文件用于预测。
 
-在 Azure 机器学习实验中使用读取器模块时，可指定 Azure Blob 作为输入。 Azure Blob 存储中的文件可能是在 HDInsight 上运行的 Pig 和 Hive 脚本生成的输出文件（示例：000000_0）。 使用读取器模块，可通过配置“容器路径、目录/blob”读取文件（无扩展名）。 **容器路径**指向容器，**目录/blob** 指向包含如下图所示文件的文件夹。 星号，即 \*) **指定容器/文件夹中的所有文件（即，data/aggregateddata/year=2014/month-6/\*）** 均作为实验的一部分读取。
+在 Azure 机器学习实验中使用读取器模块时，可指定 Azure Blob 作为输入。 Azure Blob 存储中文件可以是输出文件（例如：000000_0），这些文件由 HDInsight 上运行的 Pig 和 Hive 脚本生成。 使用读取器模块，可通过配置“容器路径、目录/blob”读取文件（无扩展名）。 **容器路径**指向容器，**目录/blob** 指向包含如下图所示文件的文件夹。 星号，即 \*) **指定容器/文件夹中的所有文件（即，data/aggregateddata/year=2014/month-6/\*）** 均作为实验的一部分读取。
 
 ![Azure Blob 属性](./media/data-factory-create-predictive-pipelines/azure-blob-properties.png)
 
@@ -407,7 +406,7 @@ ms.locfileid: "37050205"
 
 在上述 JSON 示例中：
 
-* 部署的 Azure 机器学习 Web 服务使用读取器和编写器模块从 Azure SQL 数据库读取数据，或将数据写入 Azure SQL 数据库。 此 Web 服务公开以下四个参数：数据库服务器名、数据库名、服务器用户帐户名和服务器用户帐户密码。  
+* 部署的 Azure 机器学习 Web 服务使用读取器和编写器模块从 Azure SQL 数据库读取数据，或将数据写入 Azure SQL 数据库。 此 Web 服务公开以下四个参数：数据库服务器名称、数据库名称、服务器用户帐户名称和服务器用户帐户密码。  
 * **开始**和**结束**日期/时间必须采用 [ISO 格式](http://en.wikipedia.org/wiki/ISO_8601)。 例如：2014-10-14T16:32:41Z。 **结束**时间可选。 如果未指定 **end** 属性的值，则以“**开始时间 + 48 小时**”计算 若要无限期运行管道，请指定 **9999-09-09** 作为 **end** 属性的值。 有关 JSON 属性的详细信息，请参阅 [JSON Scripting Reference](https://msdn.microsoft.com/library/dn835050.aspx) （JSON 脚本参考）。
 
 ### <a name="other-scenarios"></a>其他方案
@@ -558,7 +557,7 @@ Azure 机器学习批处理执行 Web 服务可能未配置任何 Web 服务输�
 ## <a name="frequently-asked-questions"></a>常见问题
 **问：** 我有多个由大数据管道生成的文件。 可以使用 AzureMLBatchExecution 活动处理所有文件吗？
 
-**答：** 可以。 有关详细信息，请参阅**使用读取器模块读取 Azure Blob 中多个文件的数据**部分。
+**答：** 是的。 有关详细信息，请参阅**使用读取器模块读取 Azure Blob 中多个文件的数据**部分。
 
 ## <a name="azure-ml-batch-scoring-activity"></a>Azure 机器学习批处理评分活动
 如果使用 **AzureMLBatchScoring** 活动集成 Azure 机器学习，建议使用最新的 **AzureMLBatchExecution** 活动。
@@ -605,7 +604,7 @@ Azure SDK 和 Azure PowerShell 的 2015 年 8 月版中引入了 AzureMLBatchExe
 ```
 
 ### <a name="web-service-parameters"></a>Web 服务参数
-要指定 Web 服务参数的值，请将 **typeProperties** 部分添加到管道 JSON 中的 **AzureMLBatchScoringActivty** 部分，如下方示例所示：
+要指定 Web 服务参数的值，请将“typeProperties”部分添加到管道 JSON 中的“AzureMLBatchScoringActivty”部分，如下方示例所示：
 
 ```JSON
 "typeProperties": {

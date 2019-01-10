@@ -9,20 +9,20 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 10/22/2018
+ms.date: 12/20/2018
 ms.author: juliako
-ms.openlocfilehash: e13afe26d06f5b5b2dcf7eddf00f9ee481312b2c
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: 95079813cf3ade41d17393168116e4767ca26e99
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50024250"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53742773"
 ---
 # <a name="transforms-and-jobs"></a>转换和作业
  
-Azure 媒体服务 v3 针对用于编码和/或分析视频的脚本引入了一个称作[转换](https://docs.microsoft.com/rest/api/media/transforms)的新模板化工作流资源。 **转换**可用来配置对视频进行编码或分析的常见任务。 每个**转换**描述了用于处理视频或音频文件的脚本或任务工作流。 
+[转换](https://docs.microsoft.com/rest/api/media/transforms)可用来配置对视频进行编码或分析的常见任务。 每个**转换**描述了用于处理视频或音频文件的脚本或任务工作流。 
 
-**作业**是针对 Azure 媒体服务的实际请求，目的是将**转换**应用到给定的输入视频或音频内容。 **作业**指定输入视频位置和输出位置等信息。 可以使用 HTTPS URL、SAS URL 或[媒体服务资产](https://docs.microsoft.com/rest/api/media/assets)指定输入视频的位置。  
+[作业](https://docs.microsoft.com/rest/api/media/jobs)是针对 Azure 媒体服务的实际请求，目的是将**转换**应用到给定的输入视频或音频内容。 **作业**指定输入视频位置和输出位置等信息。 可以使用以下各项指定输入视频的位置：HTTPS URL、SAS URL、或[媒体服务资产](https://docs.microsoft.com/rest/api/media/assets)。  
 
 ## <a name="typical-workflow"></a>典型工作流
 
@@ -99,7 +99,7 @@ Azure 媒体服务 v3 针对用于编码和/或分析视频的脚本引入了一
 > [!TIP]
 > 应始终使用下一个链接来枚举集合，而不依赖特定的页面大小。
 
-如果查询响应包含很多项，则该服务会返回“\@odata.nextLink”属性以获取下一页结果。 这可用于逐页浏览整个结果集。 无法配置页面大小。 
+如果查询响应包含许多项，则服务将返回一个“\@odata.nextLink”属性来获取下一页结果。 这可用于逐页浏览整个结果集。 无法配置页面大小。 
 
 如果在逐页浏览集合时创建或删除作业，则会在返回的结果中反映此更改（如果这些更改位于集合中尚未下载的部分）。 
 

@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 author: nacharya1
 ms.author: nilesha
-ms.date: 12/04/2018
+ms.date: 12/12/2018
 ms.custom: seodec18
-ms.openlocfilehash: 7e55304fb02078c71b91b2904475a4bee4bcc018
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 9e3297b2493ea12f9da50556e4fc9e72d625fd25
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53436953"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53583443"
 ---
 # <a name="what-is-automated-machine-learning"></a>什么是自动化机器学习？
 
@@ -65,9 +65,10 @@ ms.locfileid: "53436953"
 ## <a name="next-steps"></a>后续步骤
 
 查看示例并了解如何使用自动化机器学习构建模型：
++ [示例：使用 Jupyter 笔记本探索 Azure 机器学习服务](samples-notebooks.md#automated-ml-setup)
 
 + [教程：使用 Azure 自动机器学习自动训练分类模型](tutorial-auto-train-models.md)
 
-+ [为自动培训配置设置](how-to-configure-auto-train.md)
++ [在远程资源上使用自动训练](how-to-auto-train-remote.md)
 
-+ [在远程资源上使用自动训练](how-to-auto-train-remote.md) 
++ [为自动培训配置设置](how-to-configure-auto-train.md)

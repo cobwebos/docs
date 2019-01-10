@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/16/2017
 ms.author: kumud
-ms.openlocfilehash: 8696f4780db8b98457b56dd7f1162553697023d4
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 93d52101569e911c90377f26a9773d61eeaaf229
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51237921"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53653673"
 ---
 # <a name="using-powershell-to-manage-traffic-manager"></a>使用 PowerShell 管理流量管理器
 
@@ -111,7 +111,7 @@ Set-AzureRmTrafficManagerProfile -TrafficManagerProfile $profile
 
 Azure 终结点会引用托管在 Azure 中的服务。 支持 2 种类型的 Azure 终结点：
 
-1. Azure Web 应用
+1. Azure 应用服务
 2. Azure PublicIpAddress 资源（可以附加到负载均衡器或虚拟机 NIC）。 必须为 publicIpAddress 指定 DNS 名称，才能在流量管理器中使用它。
 
 在每种情况下：
@@ -121,9 +121,9 @@ Azure 终结点会引用托管在 Azure 中的服务。 支持 2 种类型的 Az
 * 指定“加权”是可选项。 仅当配置文件被配置为使用“加权”流量路由方法时，才使用加权。 否则会忽视加权。 如果要指定，值必须是介于 1 和 1000 之间的数字。 默认值为“1”。
 * 指定“优先级”是可选项。 仅当配置文件被配置为使用“优先级”流量路由方法时，才使用优先级。 否则会忽视优先级。 有效值为 1 到 1000 之间的值，值越小指示优先级越高。 如果为一个终结点指定了该值，则必须为所有终结点指定该值。 如果省略，则会按排列终结点的顺序从“1”开始应用默认值。
 
-### <a name="example-1-adding-web-app-endpoints-using-add-azurermtrafficmanagerendpointconfig"></a>示例 1：使用 `Add-AzureRmTrafficManagerEndpointConfig` 添加 Web 应用终结点
+### <a name="example-1-adding-app-service-endpoints-using-add-azurermtrafficmanagerendpointconfig"></a>示例 1：使用 `Add-AzureRmTrafficManagerEndpointConfig` 添加应用服务终结点
 
-在此示例中，我们创建了一个流量管理器配置文件，并使用 `Add-AzureRmTrafficManagerEndpointConfig` cmdlet 添加了两个 Web 应用终结点。
+在此示例中，创建了一个流量管理器配置文件，并使用 `Add-AzureRmTrafficManagerEndpointConfig` cmdlet 添加了两个应用服务终结点。
 
 ```powershell
 $profile = New-AzureRmTrafficManagerProfile -Name myprofile -ResourceGroupName MyRG -TrafficRoutingMethod Performance -RelativeDnsName myapp -Ttl 30 -MonitorProtocol HTTP -MonitorPort 80 -MonitorPath "/"
@@ -182,7 +182,7 @@ New-AzureRmTrafficManagerEndpoint -Name eu-endpoint -ProfileName MyProfile -Reso
 * 对于 Azure 终结点，“加权”和“优先级”是可选项。
 * “MinChildEndpoints”参数是可选项。 默认值为“1”。 如果可用终结点数低于此阈值，则父配置文件会将此子配置文件视为“已降级”，并将流量转移到父配置文件中的其他终结点。
 
-### <a name="example-1-adding-nested-endpoints-using-add-azurermtrafficmanagerendpointconfig-and-set-azurermtrafficmanagerprofile"></a>示例 1：使用 `Add-AzureRmTrafficManagerEndpointConfig` 和 `Set-AzureRmTrafficManagerProfile` 添加嵌套终结点
+### <a name="example-1-adding-nested-endpoints-using-add-azurermtrafficmanagerendpointconfig-and-set-azurermtrafficmanagerprofile"></a>示例 1：使用 `Add-AzureRmTrafficManagerEndpointConfig` 和 `Set-AzureRmTrafficManagerProfile` 添加嵌套式终结点
 
 在此示例中，我们将创建新的流量管理器子配置文件和父配置文件，将子配置文件添加为父配置文件中的嵌套式终结点，并提交所做的更改。
 
@@ -195,7 +195,7 @@ Set-AzureRmTrafficManagerProfile -TrafficManagerProfile $profile
 
 在本示例中为方便起见，我们未将任何其他终结点添加到子或父配置文件。
 
-### <a name="example-2-adding-nested-endpoints-using-new-azurermtrafficmanagerendpoint"></a>示例 2：使用 `New-AzureRmTrafficManagerEndpoint` 添加嵌套终结点
+### <a name="example-2-adding-nested-endpoints-using-new-azurermtrafficmanagerendpoint"></a>示例 2：使用 `New-AzureRmTrafficManagerEndpoint` 添加嵌套式终结点
 
 在此示例中，我们将现有子配置文件作为嵌套式终结点添加到了现有父配置文件。 该配置文件由配置文件和资源组名称指定。
 

@@ -1,5 +1,5 @@
 ---
-title: Azure 时序见解 - 时序见解模型 | Microsoft Docs
+title: Azure 时序见解预览中的时序模型 | Microsoft Docs
 description: 了解 Azure 时序见解时序模型。
 author: ashannon7
 ms.author: anshan
@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 2ead7a9a71c0afe72736bef8796107cae42009f1
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: a6eb142cf607c286ccce1282bb5c67a30c040c62
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53278179"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53716576"
 ---
 # <a name="time-series-model"></a>时序模型
 
@@ -136,7 +136,7 @@ ms.locfileid: "53278179"
  H1 = [“building”, “floor”, “room”]
 ```
 
-根据实例字段，层次结构属性和值如下表中所示： 
+根据实例字段，层次结构属性和值如下表中所示：
 
 | 时序 ID | 实例字段 |
 | --- | --- |
@@ -144,9 +144,9 @@ ms.locfileid: "53278179"
 | ID2 | “building” = “1000”, “room” = “55” |
 | ID3 | “floor” = “10” |
 | ID4 | “building” = “1000”, “floor” = “10”  |
-| ID5 | |
+| ID5 | “building”、“floor”和“room”均未设置 |
 
-在前面的示例中，ID1 显示为 UI/UX 中层次结构 H1 的一部分，剩余的字段分类在“Unparented Instances”（无父级实例）下，因为它们不符合指定的数据层次结构。
+在前面的示例中，ID1 和 ID4 显示为 Azure 时序见解资源管理器中层次结构 H1 的一部分，剩余的字段分类在“无父级实例”下，因为它们不符合指定的数据层次结构。
 
 ## <a name="time-series-model-instances"></a>时序模型实例
 

@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/01/2018
-ms.openlocfilehash: fd9094d646b917cf811c28c9770fc2427a404ab4
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 0df548d6b3639ce2ce3c7c72695bb96cc6d0dc3d
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52309032"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53581022"
 ---
 # <a name="use-mirrormaker-to-replicate-apache-kafka-topics-with-kafka-on-hdinsight"></a>使用 MirrorMaker 通过 Kafka on HDInsight 复制 Apache Kafka 主题
 
@@ -22,7 +22,7 @@ ms.locfileid: "52309032"
 
 在此示例中，镜像用于在两个 HDInsight 群集之间复制主题。 这两个群集位于同一区域的 Azure 虚拟网络中。
 
-> [!WARNING]
+> [!WARNING]  
 > 不应将镜像视为实现容错的方法。 源和目标群集的主题内项目的偏移量不同，因此客户端不能将两者互换使用。
 >
 > 如果担心容错，应在群集内为主题设置复制。 有关详细信息，请参阅 [Apache Kafka on HDInsight 入门](apache-kafka-get-started.md)。
@@ -51,7 +51,7 @@ Apache Kafka on HDInsight 不提供通过公共 Internet 访问 Kafka 服务的�
 
     创建 Azure 虚拟网络时，必须指定自定义 DNS 服务器和服务器的 IP 地址，而不是使用网络提供的自动 DNS。 创建虚拟网络后，必须创建一个使用该 IP 地址的 Azure 虚拟机，并在其上安装和配置 DNS 软件。
 
-    > [!WARNING]
+    > [!WARNING]  
     > 在将 HDInsight 安装到虚拟网络之前，需先创建和配置自定义 DNS 服务器。 HDInsight 不需要再进行其他配置，便可使用为虚拟网络配置的 DNS 服务器。
 
 有关连接两个 Azure 虚拟网络的详细信息，请参阅[配置 VNet 到 VNet 的连接](../../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md)。
@@ -66,18 +66,18 @@ Apache Kafka on HDInsight 不提供通过公共 Internet 访问 Kafka 服务的�
    
     Azure 资源管理器模板位于 **https://hditutorialdata.blob.core.windows.net/armtemplates/create-linux-based-kafka-mirror-cluster-in-vnet-v2.1.json**。
 
-    > [!WARNING]
+    > [!WARNING]  
     > 若要确保 Kafka on HDInsight 的可用性，群集必须至少包含 3 个辅助节点。 此模板创建的 Kafka 群集包含三个辅助角色节点。
 
 2. 使用以下信息来填充“自定义部署”边栏选项卡上的项：
     
     ![HDInsight 自定义部署](./media/apache-kafka-mirroring/parameters.png)
     
-    * **资源组**：创建一个资源组或选择现有的资源组。 此组包含 HDInsight 群集。
+    * **资源组**：创建一个组或选择有个现有的组。 此组包含 HDInsight 群集。
 
     * **位置**：选择在地理上邻近的位置。
      
-    * **基群集名称**：此值将用作 Kafka 群集的基名称。 例如，输入 **hdi** 会创建名为 **source-hdi** 和 **dest-hdi** 的群集。
+    * **基群集名称**：此值用作 Kafka 群集的基名称。 例如，输入 **hdi** 会创建名为 **source-hdi** 和 **dest-hdi** 的群集。
 
     * **群集登录用户名**：源和目标 Kafka 群集的管理员用户名。
 
@@ -91,7 +91,7 @@ Apache Kafka on HDInsight 不提供通过公共 Internet 访问 Kafka 服务的�
 
 4. 最后，选中“固定到仪表板”，并选择“购买”。 创建群集大约需要 20 分钟时间。
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > HDInsight 群集的名称为 source-BASENAME 和 dest-BASENAME，其中 BASENAME 是为模板提供的名称。 在连接到群集的后续步骤中，会用到这些名称。
 
 ## <a name="create-topics"></a>创建主题
@@ -218,7 +218,7 @@ Apache Kafka on HDInsight 不提供通过公共 Internet 访问 Kafka 服务的�
 
 7. Kafka 在 HDInsight 上的默认配置不允许自动创建的主题。 在开始镜像过程之前，你必须使用以下选项之一：
 
-    * **在目标群集上创建的主题**：此选项还允许您设置分区和复制因子的数目。
+    * **在目标群集上创建主题**：还可使用此选项设置分区和复制因子的数目。
 
         可以使用以下命令提前创建新的主题：
 
@@ -228,7 +228,7 @@ Apache Kafka on HDInsight 不提供通过公共 Internet 访问 Kafka 服务的�
 
         将 `testtopic` 替换为要创建的主题的名称。
 
-    * **将群集配置为自动主题创建**：此选项允许 MirrorMaker 来自动创建的主题，但它可能使用不同数量的分区或复制因子比源主题创建它们。
+    * **将群集配置为自动创建主题**：使用此选项，MirrorMaker 可以自动创建主题，但它可能使用与源主题不同数量的分区或复制因子来创建主题。
 
         若要配置目标群集来自动创建的主题，请执行以下步骤：
 
@@ -252,9 +252,9 @@ Apache Kafka on HDInsight 不提供通过公共 Internet 访问 Kafka 服务的�
 
     * **--consumer.config**：指定包含使用者属性的文件。 这些属性用于创建从*源* Kafka 群集进行读取的使用者。
 
-    * **--producer.config**：指定包含创建器属性的文件。 这些属性用于创建写入*目标* Kafka 群集的创建器。
+    * **--producer.config**：指定包含创建者属性的文件。 这些属性用于创建写入*目标* Kafka 群集的创建器。
 
-    * **--whitelist**：MirrorMaker 从源群集复制到目标群集的主题的列表。
+    * **--whitelist**：MirrorMaker 从源群集复制到目标群集的主题列表。
 
     * **--num.streams**：要创建的使用者线程数。
 

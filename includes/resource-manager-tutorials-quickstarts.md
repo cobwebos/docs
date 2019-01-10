@@ -14,12 +14,12 @@ ms.workload: multiple
 ms.date: 12/05/2018
 ms.author: jgao
 ms.custom: include file
-ms.openlocfilehash: 46618b76f43247199e85c2023a5391c5566f3394
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 711688b5b414e7b9a931190de3f7e6321d97ba3e
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52978773"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53729333"
 ---
 ## <a name="quickstarts-and-tutorials"></a>快速入门和教程
 
@@ -39,6 +39,7 @@ ms.locfileid: "52978773"
     |------|-----|
     |[利用模板参考](../articles/azure-resource-manager/resource-manager-tutorial-create-encrypted-storage-accounts.md)|利用模板参考文档来开发模板。 在本教程中，找到存储帐户架构，并使用相关信息来创建加密的存储帐户。|
     |[创建多个实例](../articles/azure-resource-manager/resource-manager-tutorial-create-multiple-instances.md)|创建多个 Azure 资源的实例。 在本教程中，将创建多个存储帐户实例。|
+    |[移动资源](../articles/azure-resource-manager/resource-manager-tutorial-move-resources.md)|将资源在资源组之间移动。 在本教程中，运行现有模板以创建两个资源组和一个存储帐户，然后运行 Azure PowerShell cmdlet 以将存储帐户移动到另一个资源组。|
     |[设置资源部署顺序](../articles/azure-resource-manager/resource-manager-tutorial-create-templates-with-dependent-resources.md)|定义资源依赖关系。 在本教程中，将创建虚拟网络、虚拟机和相关 Azure 资源。 了解如何定义依赖关系。|
     |[使用条件](../articles/azure-resource-manager/resource-manager-tutorial-use-conditions.md)|基于某些参数值来部署资源。 在本教程中，基于参数的值定义一个模板以创建新的存储帐户或使用现有存储帐户。|
     |[集成 Key Vault](../articles/azure-resource-manager/resource-manager-tutorial-use-key-vault.md)|从 Azure Key Vault 检索机密/密码。 在本教程中，将创建虚拟机。  从 Key Vault 检索虚拟机管理员密码。|

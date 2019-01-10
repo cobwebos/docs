@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/18/2018
+ms.date: 01/09/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: ab238e31ba022427dc55fec842f3e89e72fa530a
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 7f8c410f368c5c63bd24bed25b9807b8061180be
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50238873"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54189790"
 ---
 # <a name="manage-database-roles-and-users"></a>管理数据库角色和用户
 
@@ -63,6 +63,7 @@ ms.locfileid: "50238873"
 
 
 ## <a name="to-add-or-manage-roles-and-users-in-ssms"></a>在 SSMS 中添加或管理角色和用户
+
 若要向部署模型数据库添加角色和用户，必须以服务器管理员身份连接到服务器，或已经是具有管理员权限的数据库角色的成员。
 
 1. 在对象资源管理器中，右击“角色” > “新建角色”。
@@ -83,6 +84,7 @@ ms.locfileid: "50238873"
 5. 如果正在创建的角色具有“读取”权限，可以使用 DAX 公式添加行筛选器。 单击“行筛选器”，选择表，然后在“DAX 筛选器”字段中输入 DAX 公式。 
 
 ## <a name="to-add-roles-and-users-by-using-a-tmsl-script"></a>使用 TMSL 脚本添加角色和用户
+
 可在 SSMS 中的 XMLA 窗口中运行 TMSL 脚本或使用 PowerShell。 使用 [CreateOrReplace](https://docs.microsoft.com/sql/analysis-services/tabular-models-scripting-language-commands/createorreplace-command-tmsl) 命令和 [Roles](https://docs.microsoft.com/sql/analysis-services/tabular-models-scripting-language-objects/roles-object-tmsl) 对象。
 
 **示例 TMSL 脚本**
@@ -116,6 +118,7 @@ ms.locfileid: "50238873"
 ```
 
 ## <a name="to-add-roles-and-users-by-using-powershell"></a>使用 PowerShell 添加角色和用户
+
 [SqlServer](https://msdn.microsoft.com/library/hh758425.aspx) 模块提供任务特定的数据库管理 cmdlet，以及接受表格模型脚本语言 (TMSL) 查询或脚本的通用 Invoke-ASCmd cmdlet。 以下 cmdlet 用于管理数据库角色和用户。
   
 |Cmdlet|Description|
@@ -125,6 +128,7 @@ ms.locfileid: "50238873"
 |[Invoke-ASCmd](https://msdn.microsoft.com/library/hh479579.aspx)|执行 TMSL 脚本。|
 
 ## <a name="row-filters"></a>行筛选器  
+
 行筛选器定义特定角色的成员可以查询表中的哪些行。 可使用 DAX 公式为模型中的每个表定义行筛选器。  
   
 可仅为具有“读取”和“读取和处理”权限的角色定义行筛选器。 默认情况下，如果没有为特定表定义行筛选器，除非交叉筛选其他表中的适用项，否则成员可以查询表中的所有行。
@@ -144,6 +148,7 @@ ms.locfileid: "50238873"
  可以使用筛选器 =FALSE() 拒绝访问整个表的所有行。
 
 ## <a name="next-steps"></a>后续步骤
+
   [管理服务器管理员](analysis-services-server-admins.md)   
   [使用 PowerShell 管理 Azure Analysis Services](analysis-services-powershell.md)  
   [表格模型脚本语言 (TMSL) 参考](https://docs.microsoft.com/sql/analysis-services/tabular-model-scripting-language-tmsl-reference)

@@ -9,16 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/26/2018
 ms.author: jingwang
-ms.openlocfilehash: f9f6d2e43fff9a3e57145f39863f66eed64869b2
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: ab9d28212e471a9fe3d59ff30a8225b7440655d7
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37048577"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54022489"
 ---
 # <a name="copy-data-from-sap-ecc-using-azure-data-factory"></a>使用 Azure 数据工厂从 SAP ECC 复制数据
 
@@ -58,7 +57,7 @@ SAP ECC 链接服务支持以下属性：
 | url | SAP ECC OData 服务的 URL。 | 是 |
 | username | 用于连接到 SAP ECC 的用户名。 | 否 |
 | password | 用于连接到 SAP ECC 的明文密码。 | 否 |
-| connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 如果可以公开访问数据存储，则可以使用自承载集成运行时或 Azure 集成运行时。 如果未指定，则使用默认 Azure 集成运行时。 |否 |
+| connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 如果可以公开访问数据存储，则可以使用自承载集成运行时或 Azure Integration Runtime 时。 如果未指定，则使用默认 Azure Integration Runtime。 |否 |
 
 **示例：**
 
@@ -117,7 +116,7 @@ SAP ECC 链接服务支持以下属性：
 
 ### <a name="sap-ecc-as-source"></a>以 SAP ECC 作为源
 
-若要从 SAP ECC 复制数据，请将复制活动中的源类型设置为 **SapEccSource**。 复制活动**源**部分支持以下属性：
+若要从 SAP ECC 复制数据，请将复制活动中的源类型设置为 **SapEccSource**。 复制活动源部分支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |

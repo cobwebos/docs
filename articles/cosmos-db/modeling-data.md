@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: andrl
 ms.custom: seodec18
-ms.openlocfilehash: 5b75f620194a58aa7801fe390148a327a319c4a3
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: 0197c11673f49214dc2cea09b53290993a00c6b3
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53166636"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53744932"
 ---
 # <a name="modeling-document-data-for-nosql-databases"></a>NoSQL 数据库的文档数据建模
 
@@ -71,7 +71,7 @@ ms.locfileid: "53166636"
         ] 
     }
 
-通过使用上述方法，我们对这个人的记录实施了**非规范化**处理，即我们将与此人有关的信息，例如联系人详细信息和地址，**嵌入**到一个 JSON 文档中。
+通过使用上述方法，我们对这个人的记录实施了“非规范化”处理，即我们将与此人有关的信息，例如联系人详细信息和地址，“嵌入”到一个 JSON 文档中。
 此外，因为我们不受固定架构的限制，所以我们可以灵活地执行一些操作，例如可以具有完全不同类型的联系人详细信息。 
 
 从数据库检索一个完整的人员记录现在成为针对单个集合和单个文档的单个读取操作。 更新人员的联系人详细信息和地址也是针对单个文档的单个写入操作。
@@ -259,7 +259,7 @@ ms.locfileid: "53166636"
     ...
     {"id": "100", "name": "Learn about Azure Cosmos DB" }
     ...
-    {"id": "1000", "name": "Deep Dive in to Azure Cosmos DB" }
+    {"id": "1000", "name": "Deep Dive into Azure Cosmos DB" }
 
 如果每个出版商的书籍数量较少且增长有限，那么在出版商文档中存储书籍引用可能很有用。 但是，如果每个出版商的书籍数量没有限制，那么此数据模型将产生可变、不断增长的数组，类似于上面示例中的出版商文档。 
 
@@ -278,7 +278,7 @@ ms.locfileid: "53166636"
     ...
     {"id": "100","name": "Learn about Azure Cosmos DB", "pub-id": "mspress"}
     ...
-    {"id": "1000","name": "Deep Dive in to Azure Cosmos DB", "pub-id": "mspress"}
+    {"id": "1000","name": "Deep Dive into Azure Cosmos DB", "pub-id": "mspress"}
 
 在上面的示例中，我们删除了出版商文档中的无限制集合， 只在每个书籍文档中引用出版商。
 
@@ -298,7 +298,7 @@ ms.locfileid: "53166636"
     {"id": "b2", "name": "Azure Cosmos DB for RDBMS Users" }
     {"id": "b3", "name": "Taking over the world one JSON doc at a time" }
     {"id": "b4", "name": "Learn about Azure Cosmos DB" }
-    {"id": "b5", "name": "Deep Dive in to Azure Cosmos DB" }
+    {"id": "b5", "name": "Deep Dive into Azure Cosmos DB" }
 
     Joining documents: 
     {"authorId": "a1", "bookId": "b1" }
@@ -319,7 +319,7 @@ ms.locfileid: "53166636"
     {"id": "b1", "name": "Azure Cosmos DB 101", "authors": ["a1", "a2"]}
     {"id": "b2", "name": "Azure Cosmos DB for RDBMS Users", "authors": ["a1"]}
     {"id": "b3", "name": "Learn about Azure Cosmos DB", "authors": ["a1"]}
-    {"id": "b4", "name": "Deep Dive in to Azure Cosmos DB", "authors": ["a2"]}
+    {"id": "b4", "name": "Deep Dive into Azure Cosmos DB", "authors": ["a2"]}
 
 现在，如果我有作者的姓名，我可以立即知道他们写了哪些书，相反如果我加载了书籍文档，我可以知道作者的 ID。 这可以省去对联接表的中间查询，从而减少了应用程序需要往返访问服务器的次数。 
 
@@ -381,7 +381,7 @@ ms.locfileid: "53166636"
 
 在示例中**预先计算的聚合**值可在读取操作上节省高昂的处理成本。 在本例中，作者文档中嵌入的一些数据为在运行时计算的数据。 每当出版了一本新书，就会创建一个书籍文档**并且**将 countOfBooks 字段设置为基于特定作者的现有书籍文档数的计算值。 这种优化对于读取频繁的系统来说是有益的，为了优化读取，我们可以对写入操作执行更多计算。
 
-因为 Azure Cosmos DB 支持**多文档事务**，所以构建一个具有预先计算字段的模型是可能的。 许多 NoSQL 存储无法跨文档执行事务，正是因为该限制，所以提倡诸如“始终嵌入所有数据”的设计决策。 在 Azure Cosmos DB 中，可以使用服务器端触发器或存储过程在一个 ACID 事务中插入书籍和更新作者信息等。 现在**无需**将所有数据嵌入一个文档，只需确保数据保持一致性。
+因为 Azure Cosmos DB 支持**多文档事务**，所以构建一个具有预先计算字段的模型是可能的。 许多 NoSQL 存储无法跨文档执行事务，正是因为该限制，所以提倡诸如“始终嵌入所有数据”的设计决策。 在 Azure Cosmos DB 中，可以使用服务器端触发器或存储过程在一个 ACID 事务中插入书籍和更新作者信息等。 现在无需将所有数据嵌入一个文档，只需确保数据保持一致性。
 
 ## <a name="NextSteps"></a>后续步骤
 本文的最大的要点在于了解无架构环境下的数据建模的重要性一如既往。 

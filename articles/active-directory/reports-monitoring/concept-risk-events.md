@@ -15,12 +15,12 @@ ms.component: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 6c1b9fabe89d254524006a21e3a422221791022d
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 4bca7ed2f10ce6b0231a260a9cf5b7468476343f
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51625260"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53652143"
 ---
 # <a name="azure-active-directory-risk-events"></a>Azure Active Directory 风险事件
 
@@ -31,7 +31,9 @@ ms.locfileid: "51625260"
  - **Azure AD 报告** - 风险事件属于 Azure AD 的安全报告。 有关详细信息，请参阅[风险用户安全报告](concept-user-at-risk.md)和[有风险的登录安全报告](concept-risky-sign-ins.md)。
 
  - **Azure AD Identity Protection** - 风险事件也是 [Azure Active Directory Identity Protection](../active-directory-identityprotection.md) 的报告功能的一部分。
-    
+
+此外，还可以使用 [Identity Protection 风险事件 API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/identityriskevent) 通过 Microsoft Graph 以编程方式访问安全检测。 有关详细信息，请参阅 [Azure Active Directory Identity Protection 和 Microsoft Graph 入门](../identity-protection/graph-get-started.md)。 
+
 目前，Azure Active Directory 检测 6 种类型的风险事件：
 
 - [具有已泄漏凭据的用户](#leaked-credentials) 
@@ -127,7 +129,7 @@ Identity Protection 检测来自不熟悉位置的登录，也用于基本身份
 
 * **高**：高置信度和高严重性风险事件。 这些事件指出用户的标识明显已遭入侵，应立即补救所有受影响的用户帐户。
 
-* **中**：高严重性，但置信度较低的风险事件，或反之。 这些事件具有潜在风险，应补救所有受影响的用户帐户。
+* **中**：高严重性，但置信度较低的风险事件，反之亦然。 这些事件具有潜在风险，应补救所有受影响的用户帐户。
 
 * **低**：低置信度和低严重性风险事件。 此事件可能不要求立即采取措施，但与其他风险事件结合时，可能指出标识明显遭到入侵。
 

@@ -7,16 +7,16 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: iainfou
-ms.openlocfilehash: 8acd69480d6cd441c33ccc696794977bbfbfd975
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 412f27c572953b3f44ddca54a99f75895f438f21
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53110719"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53559070"
 ---
 # <a name="best-practices-for-pod-security-in-azure-kubernetes-service-aks"></a>保护 Azure Kubernetes 服务 (AKS) 中的 Pod 的最佳做法
 
-在 Azure Kubernetes 服务 (AKS) 中开发和运行应用程序时，Pod 的安全性是需要考虑的一个重要方面。 设计应用程序时，应考虑所需权限最少的原则。 客户最看重的是私人数据的安全。 你不会希望将数据库连接字符串、密钥或机密和证书等凭据暴露给外部世界，因为一旦受到攻击，攻击者就可能利用这些机密进行恶意攻击。 请勿将这些凭据添加到代码中，或将其嵌入容器映像中。 这样会有暴露的风险，并且会限制凭证的轮换能力，因为轮换时需要重建容器映像。
+在 Azure Kubernetes 服务 (AKS) 中开发和运行应用程序时，Pod 的安全性是需要考虑的一个重要方面。 设计应用程序时，应以所需权限最少为原则。 客户最看重的是私人数据的安全。 你不会希望将数据库连接字符串、密钥或机密和证书等凭据暴露给外部世界，因为攻击者可能利用这些机密进行恶意攻击。 请勿将这些凭据添加到代码中，或将其嵌入容器映像中。 这样会有暴露的风险，并且会限制凭证的轮换能力，因为轮换时需要重建容器映像。
 
 这篇有关最佳做法的文章重点介绍如何保护 AKS 中的 Pod。 学习如何：
 

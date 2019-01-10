@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/05/2018
 ms.author: luywang
 ms.custom: include file
-ms.openlocfilehash: 7f093a1878bc3cf7e91cc14ec7a68b1a84764a49
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 5c7c9938b6a0b3d2e6050940154a8dc3f114341e
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39485715"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53638860"
 ---
 # <a name="backup-and-disaster-recovery-for-azure-iaas-disks"></a>Azure IaaS 磁盘的备份和灾难恢复
 
@@ -63,7 +63,7 @@ Azure 平台旨在从这些故障中复原。 重大灾难可能会导致大量�
 
 DR 注意事项可能包括以下方面：
 
-- 高可用性：应用程序能够以正常状态继续运行，而没有显著增加故障时间。 “正常状态”是指，应用程序有响应，用户可以连接到应用程序，并与之交互。 某些任务关键型应用程序和数据库可能需要始终可用，即使平台上有故障，也不例外。 对于这些工作负荷，可能需要为应用程序和数据计划冗余。
+- 高可用性：应用程序能够以正常状态继续运行，而没有显著增加停机时间。 “正常状态”是指，应用程序有响应，用户可以连接到应用程序，并与之交互。 某些任务关键型应用程序和数据库可能需要始终可用，即使平台上有故障，也不例外。 对于这些工作负荷，可能需要为应用程序和数据计划冗余。
 
 - 数据持续性：在某些情况下，主要注意事项是确保在灾难发生时保留数据。 因此，可能需要在不同站点中备份数据。 对于此类工作负荷，可能不需要为应用程序计划完全冗余，只需定期备份磁盘即可。
 
@@ -92,7 +92,7 @@ DR 注意事项可能包括以下方面：
 
 再例如，报表服务器从其他数据源拉取数据，并生成聚合报表。 如果丢失此 VM 或磁盘，可能导致报表丢失。 不过，可以重新运行报表进程，并重新生成输出。 在这种情况下，即使报表服务器遭遇灾难，也不会真正丢失数据。 因此，可以有高水平的容错，允许报表服务器上丢失部分数据。 在这种情况下，不太频繁地进行备份可以降低成本。
 
-### <a name="scenario-4-iaas-application-data-issues"></a>方案 4：IaaS 应用程序数据问题
+### <a name="scenario-4-iaas-application-data-issues"></a>情景 4：IaaS 应用程序数据问题
 
 IaaS 应用程序数据问题是另一种可能的情况。 假设有一个应用程序，用于计算、维护和提供关键商业数据（如定价信息）。 新版应用程序有一个软件 bug，不仅错误地计算了定价，还破坏了平台提供的现有商业数据。 在这种情况下，最好还原到旧版应用程序和数据。 若要能够进行还原，请定期备份系统。
 
@@ -144,7 +144,7 @@ IaaS 应用程序数据问题是另一种可能的情况。 假设有一个应�
 
 1.  为 VM 创建恢复服务保管库：
 
-    a. 在 [Azure 门户](https://portal.azure.com/)中，浏览到“所有资源”并找到“恢复服务保管库”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在 [Azure 门户](https://portal.azure.com/)中，浏览到“所有资源”并找到“恢复服务保管库”。
 
     b. 在“恢复服务保管库”菜单上，单击“添加”，并按相关步骤操作，在 VM 所在区域中新建一个保管库。 例如，如果 VM 位于美国西部区域，请为保管库选择“美国西部”。
 
@@ -152,7 +152,7 @@ IaaS 应用程序数据问题是另一种可能的情况。 假设有一个应�
 
 1.  配置备份策略，再从同一 UI 中选择 VM。
 
-1.  确保在 VM 上安装了备份代理。 如果 VM 是使用 Azure 库映像创建而成，表明备份代理已安装。 否则（即使用的是自定义映像），请根据相关说明[在虚拟机中安装 VM 代理](../articles/backup/backup-azure-arm-vms-prepare.md#install-the-vm-agent-on-the-virtual-machine)。
+1.  确保在 VM 上安装了备份代理。 如果 VM 是使用 Azure 库映像创建而成，表明备份代理已安装。 否则（即使用的是自定义映像），请根据相关说明[在虚拟机中安装 VM 代理](../articles/backup/backup-azure-arm-vms-prepare.md#install-the-vm-agent)。
 
 1.  确保 VM 允许备份服务的网络连接功能正常运行。 遵循[网络连接](../articles/backup/backup-azure-arm-vms-prepare.md#establish-network-connectivity)的说明。
 
@@ -172,7 +172,7 @@ IaaS 应用程序数据问题是另一种可能的情况。 假设有一个应�
 
 也可以使用 PowerShell [还原 VM](../articles/backup/backup-azure-arm-restore-vms.md#restore-a-vm-during-an-azure-datacenter-disaster) 或[通过还原后的磁盘新建 VM](../articles/backup/backup-azure-vms-automation.md#create-a-vm-from-restored-disks)。
 
-## <a name="alternative-solution-consistent-snapshots"></a>备用解决方案：一致性快照
+## <a name="alternative-solution-consistent-snapshots"></a>替代解决方案：一致性快照
 
 如果无法使用 Azure 备份，可以使用快照实现自己的备份机制。 为 VM 使用的所有磁盘创建一致性快照，再将这些快照复制到另一个区域的过程比较复杂。 因此，Azure 认为相对于生成自定义解决方案，使用备份服务是更好的选择。 
 

@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: procedural
 ms.date: 10/31/2018
 ms.author: v-erkell
-ms.openlocfilehash: d38fe1cab27cfade3e6e4d2f6764f455896ac470
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: a7036f6fbab771dc090e97034a6191cf82b707a7
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53001975"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54190815"
 ---
 # <a name="configure-storage"></a>配置存储
 
@@ -38,7 +38,7 @@ ms.locfileid: "53001975"
 
 ## <a name="create-a-core-filer"></a>创建核心文件管理器
 
-“核心文件管理器”是后端存储系统的 vFXT 术语。 存储器可以是 NetApp 或 Isilon 等硬件 NAS 设备，也可以是云对象存储。 有关核心文件管理器的详细信息，请参阅 [Avere 群集设置指南](http://library.averesystems.com/ops_guide/4_7/settings_overview.html#managing-core-filers)。
+“核心文件管理器”是后端存储系统的 vFXT 术语。 存储器可以是 NetApp 或 Isilon 等硬件 NAS 设备，也可以是云对象存储。 有关核心文件管理器的详细信息，请参阅 [Avere 群集设置指南](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/settings_overview.html#managing-core-filers)。
 
 要添加核心文件管理器，请选择以下两种主要类型的核心文件管理器之一：
 
@@ -70,7 +70,7 @@ NAS 核心文件管理器可以是本地 NetApp 或 Isilon，也可以是云中�
   
    * 单击“下一步”，然后选择一个高速缓存策略。 
    * 单击“添加文件管理器”。
-   * 有关更多详细信息，请参阅 Avere 群集设置指南中的 [Adding a new NAS core filer](http://library.averesystems.com/ops_guide/4_7/new_core_filer_nas.html)（添加新的 NAS 核心文件管理器）。
+   * 有关更多详细信息，请参阅 Avere 群集设置指南中的 [Adding a new NAS core filer](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/new_core_filer_nas.html)（添加新的 NAS 核心文件管理器）。
 
 接下来，继续执行[创建交接点](#create-a-junction)。  
 
@@ -156,7 +156,7 @@ NAS 核心文件管理器可以是本地 NetApp 或 Isilon，也可以是云中�
    * （可选）将“加密类型”设置为“无”。  Azure 存储默认已加密。
    * 单击“添加文件管理器”。
 
-  有关更多详细信息，请阅读 Avere 群集配置指南中的 [Adding a new cloud core filer](<http://library.averesystems.com/ops_guide/4_7/new_core_filer_cloud.html>)（添加新的云核心文件管理器）。 
+  有关更多详细信息，请阅读 Avere 群集配置指南中的 [Adding a new cloud core filer](<https://azure.github.io/Avere/legacy/ops_guide/4_7/html/new_core_filer_cloud.html>)（添加新的云核心文件管理器）。 
 
 页面将刷新，或者你可以刷新页面以显示新的核心文件管理器。
 
@@ -168,7 +168,7 @@ NAS 核心文件管理器可以是本地 NetApp 或 Isilon，也可以是云中�
 
 例如，可以创建 `/avere/files` 以映射到 NetApp 核心文件管理器 `/vol0/data` 导出和 `/project/resources` 子目录。
 
-有关交接点的详细信息，请参阅 [Avere 群集配置指南的命名空间部分](http://library.averesystems.com/ops_guide/4_7/gui_namespace.html)。
+有关交接点的详细信息，请参阅 [Avere 群集配置指南的命名空间部分](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_namespace.html)。
 
 在 Avere 控制面板设置界面中执行以下步骤：
 

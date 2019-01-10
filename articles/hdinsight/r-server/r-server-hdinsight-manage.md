@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: bdb2e355b29306c8a78a3a773269baeee13fc9d1
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 7e135432ce8490c505e7d3a1022407dd5d9b9776
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52497541"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53584388"
 ---
 # <a name="manage-ml-services-cluster-on-azure-hdinsight"></a>管理 Azure HDInsight 上的 ML Services 群集
 
@@ -22,7 +22,7 @@ ms.locfileid: "52497541"
 
 ## <a name="prerequisites"></a>先决条件
 
-* **HDInsight 上的 ML Services 群集**：有关说明，请参阅 [HDInsight 上的 ML Services 入门](r-server-get-started.md)。
+* **HDInsight 上的 ML 服务群集**：有关说明，请参阅 [HDInsight 上的 ML 服务入门](r-server-get-started.md)。
 
 * **安全外壳 (SSH) 客户端**：SSH 客户端可用于远程连接到 HDInsight 群集，并直接在群集上运行命令。 有关详细信息，请参阅 [Use SSH with HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md)（将 SSH 与 HDInsight 配合使用）。
 
@@ -299,10 +299,8 @@ ms.locfileid: "52497541"
 
 若要在群集的工作节点上安装 R 包，必须使用脚本操作。 脚本操作为 Bash 脚本，用于更改 HDInsight 群集的配置或安装其他软件（例如其他 R 包）。 
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > 只有在创建群集之后，才可以使用脚本操作来安装其他 R 包。 请勿在群集创建期间使用此过程，因为脚本依赖于配置完毕的 ML Services。
->
->
 
 1. 执行[使用脚本操作自定义群集](../hdinsight-hadoop-customize-cluster-linux.md)中的步骤。
 
@@ -312,7 +310,7 @@ ms.locfileid: "52497541"
 
    * 对于“名称”，为脚本操作提供一个名称。
 
-    * 对于“Bash 脚本 URI”，输入 `http://mrsactionscripts.blob.core.windows.net/rpackages-v01/InstallRPackages.sh`。 此脚本会在工作节点上安装其他 R 包
+    * 对于“Bash 脚本 URI”，输入 `https://mrsactionscripts.blob.core.windows.net/rpackages-v01/InstallRPackages.sh`。 此脚本会在工作节点上安装其他 R 包
 
    * 仅选中“辅助角色”所对应的复选框。
 

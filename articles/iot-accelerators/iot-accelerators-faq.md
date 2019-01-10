@@ -1,5 +1,5 @@
 ---
-title: Azure IoT 解决方案加速器常见问题解答 | Microsoft Docs
+title: IoT 解决方案加速器常见问题解答 - Azure | Microsoft Docs
 description: IoT 解决方案加速器常见问题解答
 author: dominicbetts
 manager: timlt
@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 02/15/2018
 ms.author: dobett
-ms.openlocfilehash: 294eae1dd5e591d12fdb82f62ea013ba54489686
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 59271a96c5ad1a92483ca585fc30f1e9de0ed4f7
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51253325"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53608743"
 ---
 # <a name="frequently-asked-questions-for-iot-solution-accelerators"></a>IoT 解决方案加速器常见问题解答
 
@@ -32,7 +32,7 @@ ms.locfileid: "51253325"
 
 可以在 [Microsoft Azure IoT SDK](https://github.com/Azure/azure-iot-sdks) GitHub 存储库中找到各种语言（C、NET、Java、Node.js、Python）的 IoT 设备 SDK。
 
-如果在使用 DevKit 设备，可以在 [IoT DevKit SDK](https://github.com/Microsoft/devkit-sdk) GitHub 存储库中找到资源和示例。
+如果使用 DevKit 设备，可以在 [IoT DevKit SDK](https://github.com/Microsoft/devkit-sdk) GitHub 存储库中找到资源和示例。
 
 ### <a name="is-the-new-microservices-architecture-available-for-all-the-three-solution-accelerators"></a>新的微服务体系结构是否适用于所有三个解决方案加速器？
 
@@ -40,7 +40,28 @@ ms.locfileid: "51253325"
 
 ### <a name="what-advantages-does-the-new-open-sourced-microservices-based-architecture-provide-in-the-new-update"></a>基于微服务的新开源体系结构在新的更新中提供哪些优势？
 
-过去两年以来，云体系结构已发生重大的演变。 微服务应运而生，是能够在不降低开发速度的情况下实现可伸缩性和灵活性的极佳模式。 此体系结构模式已在多种 Microsoft 服务内部使用，且获得了出色的可靠性和可伸缩性。 我们正在将这些知识付诸实践，使客户能够从中受益。
+过去两年以来，云体系结构已发生重大的演变。 微服务应运而生，是能够在不降低开发速度的情况下实现可伸缩性和灵活性的极佳模式。 此体系结构模式已在多种 Microsoft 服务内部使用，且获得了出色的可靠性和可伸缩性。 Microsoft 将这些知识付诸解决方案加速器的实践中，以便客户从中受益。
+
+### <a name="im-a-service-administrator-and-id-like-to-change-the-directory-mapping-between-my-subscription-and-a-specific-azure-ad-tenant-how-do-i-complete-this-task"></a>我是服务管理员，我想要更改我的订阅与特定 Azure AD 租户之间的目录映射。 如何完成此任务？
+
+请参阅[如何将现有订阅添加到 Azure AD 目录](../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md#to-associate-an-existing-subscription-to-your-azure-ad-directory)
+
+### <a name="i-want-to-change-a-service-administrator-or-co-administrator-when-logged-in-with-an-organizational-account"></a>我在使用组织帐户登录时要更改服务管理员或共同管理员
+
+请参阅支持文章[使用组织帐户登录时更改服务管理员和共同管理员](https://azure.microsoft.com/support/changing-service-admin-and-co-admin)。
+
+### <a name="why-am-i-seeing-this-error-your-account-does-not-have-the-proper-permissions-to-create-a-solution-please-check-with-your-account-administrator-or-try-with-a-different-account"></a>为何会出现以下错误？ “帐户没有创建解决方案的正确权限。 请咨询帐户管理员或使用其他帐户进行尝试。”
+
+请查看以下指南示意图：
+
+![权限流程图](media/iot-accelerators-faq/flowchart.png)
+
+> [!NOTE]
+> 如果在验证你是 Azure AD 租户的全局管理员和订阅的共同管理员后，仍看到此错误，请让帐户管理员删除该用户，并按以下顺序重新分配必要的权限。 首先，将用户添加为全局管理员，然后将用户添加为 Azure 订阅的共同管理员。 如果问题仍然存在，请联系[帮助和支持](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade)。
+
+### <a name="why-am-i-seeing-this-error-when-i-have-an-azure-subscription-an-azure-subscription-is-required-to-create-pre-configured-solutions-you-can-create-a-free-trial-account-in-just-a-couple-of-minutes"></a>为何在我具有 Azure 订阅时会出现以下错误？ “创建预配置解决方案需要 Azure 订阅。 只需几分钟即可创建一个免费试用帐户。”
+
+如果确定拥有 Azure 订阅，请验证订阅的租户映射，并确保在下拉列表中选择正确的租户。 如果租户经验证是正确的，请按照上图，验证订阅与此 Azure AD 租户之间的映射。
 
 ### <a name="where-can-i-find-information-about-the-previous-version-of-the-remote-monitoring-solution"></a>在哪里可以找到有关以前版本的远程监视解决方案的信息？
 
@@ -52,12 +73,12 @@ ms.locfileid: "51253325"
 
 ### <a name="whats-the-difference-between-deleting-a-resource-group-in-the-azure-portal-and-clicking-delete-on-a-solution-accelerator-in-azureiotsuitecom"></a>在 Azure 门户中删除资源组与在 azureiotsuite.com 中对解决方案加速器单击删除之间的区别是什么？
 
-* 如果在 [azureiotsuite.com](https://www.azureiotsolutions.com/) 中删除解决方案加速器，则会删除在创建解决方案加速器时预配的所有资源。 如果向资源组添加了其他资源，则也会删除这些资源。
+* 如果在 [azureiotsuite.com](https://www.azureiotsolutions.com/) 中删除解决方案加速器，则会删除在创建解决方案加速器时部署的所有资源。 如果向资源组添加了其他资源，则也会删除这些资源。
 * 如果在 [Azure 门户](https://portal.azure.com)中删除资源组，则只会删除该资源组中的资源。 此外还需要删除与解决方案加速器关联的 Azure Active Directory 应用程序。
 
 ### <a name="can-i-continue-to-leverage-my-existing-investments-in-azure-iot-solution-accelerators"></a>是否可以继续利用 Azure IoT 解决方案加速器中的现有投资？
 
-是的。 现存的任何解决方案可继续在 Azure 订阅中工作，GitHub 中仍会提供其源代码。
+是的。 现存的所有解决方案可继续在 Azure 订阅中工作，GitHub 中仍会提供其源代码。
 
 ### <a name="how-many-iot-hub-instances-can-i-provision-in-a-subscription"></a>在一个订阅中可以设置多少个 IoT 中心实例？
 
@@ -78,7 +99,7 @@ ms.locfileid: "51253325"
 
 目前无法使用 [Microsoft Azure for DreamSpark](https://azure.microsoft.com/pricing/member-offers/imagine/) 帐户创建解决方案加速器。 但是，可以在几分钟内创建一个 [Azure 免费试用帐户](https://azure.microsoft.com/free/)，以便创建解决方案加速器。
 
-### <a name="how-do-i-delete-an-aad-tenant"></a>如何删除 AAD 租户？
+### <a name="how-do-i-delete-an-azure-ad-tenant"></a>如何删除 Azure AD 租户？
 
 请参阅 Eric Golpe 的博客文章 [Walkthrough of Deleting an Azure AD Tenant](https://blogs.msdn.com/b/ericgolpe/archive/2015/04/30/walkthrough-of-deleting-an-azure-ad-tenant.aspx)（有关删除 Azure AD 租户的演练）。
 

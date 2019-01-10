@@ -1,5 +1,5 @@
 ---
-Title: Synonyms for query expansion over a search index  - Azure Search
+title: 搜索索引上查询扩展的同义词 - Azure 搜索
 description: 创建一个同义词映射，用于扩展 Azure 搜索索引上搜索查询的范围。 扩宽了范围，使其包括你在列表中提供的同义术语。
 author: brjohnstmsft
 services: search
@@ -10,12 +10,12 @@ ms.date: 04/20/2018
 manager: jlembicz
 ms.author: brjohnst
 ms.custom: seodec2018
-ms.openlocfilehash: ce9eb8ed099a232128ba924da1466917df542fbb
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: cea95756f115e9efd6dc184fc85a0485ab49d1b9
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53315650"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53634654"
 ---
 # <a name="synonyms-in-azure-search"></a>Azure 搜索中的同义词功能
 

@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 09/25/2016
 ms.author: glenga
-ms.openlocfilehash: 7529d20535eedab92d164df5a0435efeda83fca2
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: a0d697438c1265b8c4e6802dc2dad62a33f51855
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44301542"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53548589"
 ---
 # <a name="continuous-deployment-for-azure-functions"></a>Azure Functions 的连续部署
 使用 Azure Functions，可轻松使用应用服务持续集成部署 Function App。 Functions 可与 BitBucket、Dropbox、GitHub 和 Azure DevOps 集成。 这样，通过使用其中一项集成服务实现的函数代码更新所在的工作流将触发到 Azure 的部署。 如果不熟悉 Azure Functions，请从[Azure Functions 概述](functions-overview.md)开始。
@@ -26,7 +26,7 @@ ms.locfileid: "44301542"
 * [Bitbucket](https://bitbucket.org/)
 * [Dropbox](https://www.dropbox.com/)
 * 外部存储库（Git 或 Mercurial）
-* [Git 本地存储库](../app-service/app-service-deploy-local-git.md)
+* [Git 本地存储库](../app-service/deploy-local-git.md)
 * [GitHub](https://github.com)
 * [OneDrive](https://onedrive.live.com/)
 * [Azure DevOps Services](https://www.visualstudio.com/team-services/)
@@ -52,7 +52,7 @@ ms.locfileid: "44301542"
  
     ![设置连续部署](./media/functions-continuous-deployment/setup-deployment-1.png)
    
-2. 在“部署源”边栏选项卡中，单击“选择源”，并为所选部署源填写信息，单击“确定”。
+3. 在“部署源”边栏选项卡中，单击“选择源”，并为所选部署源填写信息，单击“确定”。
    
     ![选择部署源](./media/functions-continuous-deployment/choose-deployment-source.png)
 
@@ -98,7 +98,7 @@ Function App 尚不支持部署槽。 但是，仍可以通过使用持续集成
 - [如何：使用本地 Git 存储库下载文件](#downgit)
 
 <a name="credentials"></a>
-#### <a name="how-to-configure-deployment-credentials"></a>如何配置部署凭据
+#### <a name="how-to-configure-deployment-credentials"></a>如何：配置部署凭据
 在可使用 FTP 或本地 Git 存储库从 Function App 下载文件之前，必须配置凭据以访问站点。 在函数应用级别上设置凭据。 执行以下步骤，在 Azure 门户中设置部署凭据：
 
 1. 在 [Azure 门户](https://portal.azure.com) 的 Function App 中，单击“平台功能”和“部署凭据”。
@@ -108,7 +108,7 @@ Function App 尚不支持部署槽。 但是，仍可以通过使用持续集成
 2. 键入用户名和密码，并单击“保存”。 现在可以使用这些凭据来访问 FTP 或内置 Git 存储库内的函数应用。
 
 <a name="downftp"></a>
-#### <a name="how-to-download-files-using-ftp"></a>使用 FTP 下载文件的方法
+#### <a name="how-to-download-files-using-ftp"></a>如何：使用 FTP 下载文件
 
 1. 在 [Azure 门户](https://portal.azure.com)的 Function App 中，单击“平台功能”和“属性”，并复制 FTP/部署用户的值、FTP 主机名和 FTPS 主机名。  
 

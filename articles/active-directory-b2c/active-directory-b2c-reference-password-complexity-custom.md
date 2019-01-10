@@ -1,102 +1,39 @@
 ---
-title: Azure Active Directory B2C 中自定义策略的密码复杂性 | Microsoft Docs
-description: 如何在自定义策略中配置密码复杂性要求。
+title: 在 Azure Active Directory B2C 中使用自定义策略配置密码复杂性 | Microsoft Docs
+description: 如何在 Azure Active Directory B2C 中使用自定义策略配置密码复杂性要求。
 services: active-directory-b2c
 author: davidmu1
 manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 08/16/2017
+ms.date: 12/13/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: c6b8312a08d1d92bccf70e7d3dda5f01811b4f87
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 74542f86d5114ff57e358db7e239e307059fe5ad
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52848521"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53580342"
 ---
-# <a name="configure-password-complexity-in-custom-policies"></a>在自定义策略中配置密码复杂性
+# <a name="configure-password-complexity-using-custom-policies-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中使用自定义策略配置密码复杂性
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-本文对密码复杂性的工作原理进行了深入描述，并介绍了如何使用 Azure AD B2C 自定义策略来启用它。
-
-## <a name="azure-ad-b2c-configure-complexity-requirements-for-passwords"></a>Azure AD B2C：配置密码复杂性要求
-
-Azure Active Directory B2C (Azure AD B2C) 支持更改由最终用户在创建帐户时提供的密码复杂性要求。  默认情况下，Azure AD B2C 使用“强”密码。  此外，Azure AD B2C 还支持用于控制客户可以使用的密码复杂性的配置选项。  本文介绍如何在自定义策略中配置密码复杂性。  另外，还有可能要使用[在内置策略中配置密码复杂性](active-directory-b2c-reference-password-complexity.md)。
+在 Azure Active Directory (Azure AD) B2C 中，可配置由用户在创建帐户时提供的密码的复杂性要求。 默认情况下，Azure AD B2C 使用“强”密码。 本文介绍如何在[自定义策略](active-directory-b2c-overview-custom.md)中配置密码复杂性。 还有可能在[用户流](active-directory-b2c-reference-password-complexity.md)中配置密码复杂性。
 
 ## <a name="prerequisites"></a>先决条件
 
-根据[入门](active-directory-b2c-get-started-custom.md)中所述配置一个 Azure AD B2C 租户，以完成本地帐户注册/登录。
+完成 [Active Directory B2C 中的自定义策略入门](active-directory-b2c-get-started-custom.md)中的步骤。
 
-## <a name="how-to-configure-password-complexity-in-custom-policy"></a>如何在自定义策略中配置密码复杂性
+## <a name="add-the-elements"></a>添加元素
 
-若要在自定义策略中配置密码复杂性，自定义策略的整体结构必须包括 `BuildingBlocks` 内的 `ClaimsSchema`、`Predicates` 和 `InputValidations` 元素。
+1. 复制随初学者包下载的 *SignUpOrSignIn.xml* 文件，并将其命名为 *SingUpOrSignInPasswordComplexity.xml*。
+2. 打开 *SingUpOrSignInPasswordComplexity.xml* 文件，并将 **PolicyId** 和 **PublicPolicyUri** 更改为新的策略名称。 例如，*B2C_1A_signup_signin_password_complexity*。
+3. 添加标识符为 `newPassword` 和 `reenterPassword` 的以下 **ClaimType** 元素：
 
-```XML
-  <BuildingBlocks>
-    <ClaimsSchema>...</ClaimsSchema>
-    <Predicates>...</Predicates>
-    <InputValidations>...</InputValidations>
-  </BuildingBlocks>
-```
-
-这些元素的用途如下所示：
-
-- 每个 `Predicate` 元素定义基本字符串验证检查，返回 true 或 false。
-- `InputValidations` 元素具有一个或多个 `InputValidation` 元素。  通过使用一系列 `Predicate` 元素构建每个 `InputValidation`。 此元素允许你执行布尔聚合（类似于 `and` 和 `or`）。
-- `ClaimsSchema` 定义正在验证的声明。  然后，它定义用于验证该声明的 `InputValidation` 规则。
-
-### <a name="defining-a-predicate-element"></a>定义谓词元素
-
-谓词具有两种方法类型：IsLengthRange 或 MatchesRegex。 让我们查看每个示例。  首先，我们有一个用于匹配正则表达式的 MatchesRegex 示例。  在此示例中，它可匹配包含数字的字符串。
-
-```XML
-      <Predicate Id="PIN" Method="MatchesRegex" HelpText="The password must be a pin.">
-        <Parameters>
-          <Parameter Id="RegularExpression">^[0-9]+$</Parameter>
-        </Parameters>
-      </Predicate>
-```
-
-接下来，让我们回顾一下 IsLengthRange 的示例。  此方法采用最小和最大字符串长度。
-
-```XML
-      <Predicate Id="Length" Method="IsLengthRange" HelpText="The password must be between 8 and 16 characters.">
-        <Parameters>
-          <Parameter Id="Minimum">8</Parameter>
-          <Parameter Id="Maximum">16</Parameter>
-        </Parameters>
-      </Predicate>
-```
-
-如果检查失败，则使用 `HelpText` 属性为最终用户提供错误消息。  可以使用[语言自定义功能](active-directory-b2c-reference-language-customization.md)本地化此字符串。
-
-### <a name="defining-an-inputvalidation-element"></a>定义 InputValidation 元素
-
-`InputValidation` 是 `PredicateReferences` 的聚合。 每个 `PredicateReferences` 必须为 true `InputValidation` 才能成功。  但是，在 `PredicateReferences` 元素内，请使用名为 `MatchAtLeast` 的属性指定多少个 `PredicateReference` 检查必须返回 true。  （可选）定义 `HelpText` 属性来覆盖它所引用的 `Predicate` 元素中定义的错误消息。
-
-```XML
-      <InputValidation Id="PasswordValidation">
-        <PredicateReferences Id="LengthGroup" MatchAtLeast="1">
-          <PredicateReference Id="Length" />
-        </PredicateReferences>
-        <PredicateReferences Id="3of4" MatchAtLeast="3" HelpText="You must have at least 3 of the following character classes:">
-          <PredicateReference Id="Lowercase" />
-          <PredicateReference Id="Uppercase" />
-          <PredicateReference Id="Number" />
-          <PredicateReference Id="Symbol" />
-        </PredicateReferences>
-      </InputValidation>
-```
-
-### <a name="defining-a-claimsschema-element"></a>定义 ClaimsSchema 元素
-
-声明类型 `newPassword` 和 `reenterPassword` 被视为特殊类型，因此请不要更改名称。  UI 基于这些 `ClaimType` 元素验证用户在创建帐户期间是否正确重新输入其密码。  若要查找相同的 `ClaimType` 元素，请在初学者包的 TrustFrameworkBase.xml 中查找。  此示例中的新增内容是我们将重写这些元素来定义 `InputValidationReference`。 此新元素的 `ID` 属性指向我们定义的 `InputValidation` 元素。
-
-```XML
+    ```XML
     <ClaimsSchema>
       <ClaimType Id="newPassword">
         <InputValidationReference Id="PasswordValidation" />
@@ -105,78 +42,29 @@ Azure Active Directory B2C (Azure AD B2C) 支持更改由最终用户在创建�
         <InputValidationReference Id="PasswordValidation" />
       </ClaimType>
     </ClaimsSchema>
-```
+    ```
 
-### <a name="putting-it-all-together"></a>汇总
+4. [谓词](predicates.md)具有 `IsLengthRange` 或 `MatchesRegex` 方法类型。 `MatchesRegex` 类型用于匹配正则表达式。 `IsLengthRange` 类型采用最小和最大字符串长度。 如果 **BuildingBlocks** 元素不具有以下 **Predicate** 元素，则向其添加 **Predicates** 元素：
 
-此示例演示所有部分如何组合在一起以形成工作策略。  使用以下示例：
-
-1. 按照先决条件[入门](active-directory-b2c-get-started-custom.md)中的说明下载、配置并上传 TrustFrameworkBase.xml 和 TrustFrameworkExtensions.xml
-1. 使用本部分中的示例内容创建 SignUporSignIn.xml 文件。
-1. 更新 SignUporSignIn.xml，将 `yourtenant` 替换为你的 Azure AD B2C 租户名称。
-1. 最后上传 SignUporSignIn.xml 策略文件。
-
-此示例包含对 pin 密码的验证和对强密码的验证：
-
-- 查找 `PINpassword`。 此 `InputValidation` 元素验证任意长度的 pin。  由于未在 `ClaimType` 内的 `InputValidationReference` 元素中引用，因此目前不会使用。 
-- 查找 `PasswordValidation`。 此 `InputValidation` 元素验证密码是否为 8 到 16 个字符，以及是否包含 4 个数字、大写字母、小写字母或符号中的 3 个。  在 `ClaimType` 中引用。  因此，此规则在此策略中强制实施。
-
-```XML
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<TrustFrameworkPolicy
-  xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance"
-  xmlns:xsd="https://www.w3.org/2001/XMLSchema"
-  xmlns="http://schemas.microsoft.com/online/cpim/schemas/2013/06"
-  PolicySchemaVersion="0.3.0.0"
-  TenantId="yourtenant.onmicrosoft.com"
-  PolicyId="B2C_1A_signup_signin"
-  PublicPolicyUri="http://yourtenant.onmicrosoft.com/B2C_1A_signup_signin">
- <BasePolicy>
-    <TenantId>yourtenant.onmicrosoft.com</TenantId>
-    <PolicyId>B2C_1A_TrustFrameworkExtensions</PolicyId>
-  </BasePolicy>
-  <BuildingBlocks>
-    <ClaimsSchema>
-      <ClaimType Id="newPassword">
-        <InputValidationReference Id="PasswordValidation" />
-      </ClaimType>
-      <ClaimType Id="reenterPassword">
-        <InputValidationReference Id="PasswordValidation" />
-      </ClaimType>
-    </ClaimsSchema>
+    ```XML
     <Predicates>
-      <Predicate Id="Lowercase" Method="MatchesRegex" HelpText="a lowercase">
+      <Predicate Id="PIN" Method="MatchesRegex" HelpText="The password must be a pin.">
         <Parameters>
-          <Parameter Id="RegularExpression">[a-z]+</Parameter>
-        </Parameters>
-      </Predicate>
-      <Predicate Id="Uppercase" Method="MatchesRegex" HelpText="an uppercase">
-        <Parameters>
-          <Parameter Id="RegularExpression">[A-Z]+</Parameter>
-        </Parameters>
-      </Predicate>
-      <Predicate Id="Number" Method="MatchesRegex" HelpText="a number">
-        <Parameters>
-          <Parameter Id="RegularExpression">[0-9]+</Parameter>
-        </Parameters>
-      </Predicate>
-      <Predicate Id="Symbol" Method="MatchesRegex" HelpText="a symbol">
-        <Parameters>
-          <Parameter Id="RegularExpression">[!@#$%^*()]+</Parameter>
+          <Parameter Id="RegularExpression">^[0-9]+$</Parameter>
         </Parameters>
       </Predicate>
       <Predicate Id="Length" Method="IsLengthRange" HelpText="The password must be between 8 and 16 characters.">
         <Parameters>
           <Parameter Id="Minimum">8</Parameter>
           <Parameter Id="Maximum">16</Parameter>
-        </Parameters>
-      </Predicate>
-      <Predicate Id="PIN" Method="MatchesRegex" HelpText="The password must be a pin.">
-        <Parameters>
-          <Parameter Id="RegularExpression">^[0-9]+$</Parameter>
         </Parameters>
       </Predicate>
     </Predicates>
+    ```
+
+5. 每个 **InputValidation** 元素使用定义的 **Predicate** 元素进行构造。 此元素允许执行布尔聚合（类似于 `and` 和 `or`）。 如果 **BuildingBlocks** 元素不具有以下 **InputValidation** 元素，则向其添加 **InputValidations** 元素：
+
+    ```XML
     <InputValidations>
       <InputValidation Id="PasswordValidation">
         <PredicateReferences Id="LengthGroup" MatchAtLeast="1">
@@ -189,30 +77,57 @@ Azure Active Directory B2C (Azure AD B2C) 支持更改由最终用户在创建�
           <PredicateReference Id="Symbol" />
         </PredicateReferences>
       </InputValidation>
-      <InputValidation Id="PINpassword">
-        <PredicateReferences Id="PINGroup">
-          <PredicateReference Id="PIN" />
-        </PredicateReferences>
-      </InputValidation>
     </InputValidations>
-  </BuildingBlocks>
-  <RelyingParty>
-    <DefaultUserJourney ReferenceId="SignUpOrSignIn" />
-    <TechnicalProfile Id="PolicyProfile">
-      <DisplayName>PolicyProfile</DisplayName>
-      <Protocol Name="OpenIdConnect" />
-      <InputClaims>
-        <InputClaim ClaimTypeReferenceId="passwordPolicies" DefaultValue="DisablePasswordExpiration, DisableStrongPassword" />
-      </InputClaims>
-      <OutputClaims>
-        <OutputClaim ClaimTypeReferenceId="displayName" />
-        <OutputClaim ClaimTypeReferenceId="givenName" />
-        <OutputClaim ClaimTypeReferenceId="surname" />
-        <OutputClaim ClaimTypeReferenceId="email" />
-        <OutputClaim ClaimTypeReferenceId="objectId" PartnerClaimType="sub"/>
-      </OutputClaims>
-      <SubjectNamingInfo ClaimType="sub" />
-    </TechnicalProfile>
-  </RelyingParty>
-</TrustFrameworkPolicy>
-```
+    ```
+
+6. 确保 **PolicyProfile** 技术配置文件包含下列元素：
+
+    ```XML
+    <RelyingParty>
+      <DefaultUserJourney ReferenceId="SignUpOrSignIn"/>
+      <TechnicalProfile Id="PolicyProfile">
+        <DisplayName>PolicyProfile</DisplayName>
+        <Protocol Name="OpenIdConnect"/>
+        <InputClaims>
+          <InputClaim ClaimTypeReferenceId="passwordPolicies" DefaultValue="DisablePasswordExpiration, DisableStrongPassword"/>
+        </InputClaims>
+        <OutputClaims>
+          <OutputClaim ClaimTypeReferenceId="displayName"/>
+          <OutputClaim ClaimTypeReferenceId="givenName"/>
+          <OutputClaim ClaimTypeReferenceId="surname"/>
+          <OutputClaim ClaimTypeReferenceId="email"/>
+          <OutputClaim ClaimTypeReferenceId="objectId" PartnerClaimType="sub"/>
+        </OutputClaims>
+        <SubjectNamingInfo ClaimType="sub"/>
+      </TechnicalProfile>
+    </RelyingParty>
+    ```
+
+7. 保存策略文件。
+
+## <a name="test-your-policy"></a>测试策略
+
+在 Azure AD B2C 中测试应用程序时，可以使 Azure AD B2C 令牌返回到 `https://jwt.ms` 以便能够在其中查看声明，这可能很有用处。
+
+### <a name="upload-the-files"></a>上传文件
+
+1. 登录到 [Azure 门户](https://portal.azure.com/)。
+2. 请确保使用包含 Azure AD B2C 租户的目录，方法是单击顶部菜单中的“目录和订阅筛选器”，然后选择包含租户的目录。
+3. 选择 Azure 门户左上角的“所有服务”，然后搜索并选择“Azure AD B2C”。
+4. 选择“标识体验框架”。
+5. 在“自定义策略”页上，单击“上传策略”。
+6. 选择“覆盖策略(若存在)”，然后搜索并选择 *SingUpOrSignInPasswordComplexity.xml* 文件。
+7. 单击“上传” 。
+
+### <a name="run-the-policy"></a>运行策略
+
+1. 打开你更改的策略。 例如，*B2C_1A_signup_signin_password_complexity*。
+2. 对于“应用程序”，选择你之前注册的应用程序。 若要查看令牌，“回复 URL”应当显示 `https://jwt.ms`。
+3. 单击“立即运行”。
+4. 选择“立即注册”，输入电子邮件地址，并输入新密码。 密码限制中会显示相关指导。 完成输入用户信息，然后单击“创建”。 应看到返回的令牌的内容。
+
+## <a name="next-steps"></a>后续步骤
+
+- 了解如何[在 Azure Active Directory B2C 中使用自定义策略配置密码更改](active-directory-b2c-reference-password-change-custom.md)。
+
+

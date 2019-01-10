@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 12/13/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 5361c8940c8c7dba5338a3f5a0ed18910f7e45a0
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: dcb2d1741a8e62bd317881d3f224d3358cad8778
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53410323"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53557200"
 ---
 # <a name="migrate-from-federation-to-pass-through-authentication-for-azure-ad"></a>从联合身份验证迁移到 Azure AD 的直通身份验证
 以下文档提供有关从 AD FS 转移到直通身份验证的指导。

@@ -4,17 +4,16 @@ description: 使用 Microsoft Azure 备份代理将 Windows 文件和文件夹�
 services: backup
 author: rayne-wiselman
 manager: carmonm
-keywords: 备份保管库; 备份 Windows 服务器; 备份 windows;
 ms.service: backup
 ms.topic: conceptual
 ms.date: 8/5/2018
 ms.author: raynew
-ms.openlocfilehash: 4e138311b58d56f3a188347d43ed12287d43e1bd
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: ff1aaadd77df9cb7678ad71141d15c96f2f12dc0
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52873999"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53788389"
 ---
 # <a name="back-up-a-windows-server-or-client-to-azure-using-the-resource-manager-deployment-model"></a>通过 Resource Manager 部署模型将 Windows Server 或客户端备份到 Azure
 本文介绍如何通过 Resource Manager 部署模型使用 Azure 备份将 Windows Server（或 Windows 客户端）文件和文件夹备份到 Azure。
@@ -183,6 +182,8 @@ ms.locfileid: "52873999"
 备份策略是有关以下事项的计划：何时创建恢复点，以及恢复点保留的时间长度。 可以使用 Microsoft Azure 备份代理为文件和文件夹创建备份策略。
 
 ### <a name="to-create-a-backup-schedule"></a>创建备份计划
+
+在要备份的计算机上设置备份计划。 请注意，设置的备份时间可能不同于本地计算机时间，因为 Azure 备份不会采用夏令时 (DST)。 
 1. 打开 Microsoft Azure 备份代理。 可以通过在计算机中搜索 **Microsoft Azure 备份**找到该代理。
 
     ![启动 Azure 备份代理](./media/backup-configure-vault/snap-in-search.png)

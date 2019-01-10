@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 03/08/2017
 ms.author: mbullwin
-ms.openlocfilehash: aaa34d27e73c1691e69ea2f6860226639217f0c6
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 752f28eed3a6be5f7f136999c66e405bf7785a42
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54004291"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54120965"
 ---
 # <a name="exploring-metrics-in-application-insights"></a>在 Application Insights 中浏览指标
 [Application Insights][start] 中的指标是从应用程序遥测功能发送的度量值和事件计数。 它们可帮助检测性能问题，观察应用程序的用法趋势。 标准指标的范围很广泛，也可以创建自己的自定义指标和事件。
@@ -193,18 +193,18 @@ ms.locfileid: "54004291"
 
     如果想要在不同的图表上设置不同的筛选器，请在不同的边栏选项卡中创建图表，将它们保存为独立的收藏项。 如果需要，可将这些图表固定到仪表板，以便并排查看这些图表。
 * 如果根据指标上未定义的属性将图表分组，则图表中不会显示任何数据。 请尝试清除“分组依据”，或选择不同的分组属性。
-* 性能数据（CPU、IO 速率等）适用于 Java Web 服务、Windows 桌面应用、[IIS Web 应用和服务（如果安装了状态监视器）](../../azure-monitor/app/monitor-performance-live-website-now.md)以及 [Azure 云服务](../../application-insights/app-insights-overview.md)。 这些数据不适用于 Azure 网站。
+* 性能数据（CPU、IO 速率等）适用于 Java Web 服务、Windows 桌面应用、[IIS Web 应用和服务（如果安装了状态监视器）](../../azure-monitor/app/monitor-performance-live-website-now.md)以及 [Azure 云服务](../../azure-monitor/app/app-insights-overview.md)。 这些数据不适用于 Azure 网站。
 
 ## <a name="video"></a>视频
 
 > [!VIDEO https://channel9.msdn.com/events/Connect/2016/112/player]
 
 ## <a name="next-steps"></a>后续步骤
-* [使用 Application Insights 监视使用情况](../../application-insights/app-insights-usage-overview.md)
+* [使用 Application Insights 监视使用情况](../../azure-monitor/app/usage-overview.md)
 * [使用诊断搜索](../../azure-monitor/app/diagnostic-search.md)
 
 <!--Link references-->
 
 [alerts]: ../../azure-monitor/app/alerts.md
-[start]: ../../application-insights/app-insights-overview.md
+[start]: ../../azure-monitor/app/app-insights-overview.md
 [track]: ../../azure-monitor/app/api-custom-events-metrics.md

@@ -1,20 +1,17 @@
 ---
 title: 如何在 Azure Database for MySQL 中使用 sys_schema 进行性能优化和数据库维护
 description: 本文介绍如何在 Azure Database for MySQL 中使用 sys_schema 发现性能问题和维护数据库。
-services: mysql
 author: ajlam
 ms.author: andrela
-manager: kfile
-editor: jasonwhowell
 ms.service: mysql
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/01/2018
-ms.openlocfilehash: 1e10e3b1b5f4518732408f254eb5767acb8485c6
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 993c77056c09c1dc21d5317ddbfe8e937341718d
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39446901"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53542843"
 ---
 # <a name="how-to-use-sysschema-for-performance-tuning-and-database-maintenance-in-azure-database-for-mysql"></a>如何在 Azure Database for MySQL 中使用 sys_schema 进行性能优化和数据库维护
 
@@ -24,15 +21,15 @@ MySQL performance_schema 首先在 MySQL 5.5 中推出，针对许多关键服�
 
 sys_schema 中有 52 个视图，每个视图具有以下前缀之一：
 
-- Host_summary 或 IO：I/O 相关的延迟。
+- Host_summary 或 IO：与 I/O 相关的延迟。
 - InnoDB：InnoDB 缓冲区状态和锁。
-- Memory：按主机和用户列出的内存用量。
-- Schema：架构相关的信息，例如增量、索引，等等。
-- Statement：有关 SQL 语句（导致扫描整个表或长时间查询的语句）的信息。
-- User：按用户分组的消耗资源。 示例包括文件 I/O、连接和内存。
-- Wait：等待按主机或用户分组的事件。
+- 内存: 按主机和用户列出的内存用量。
+- 架构：与架构相关的信息，如增量、索引等。
+- 语句：有关 SQL 语句（导致全表扫描或长时间查询的语句）的信息。
+- 用户：按用户分组和消耗的资源。 示例包括文件 I/O、连接和内存。
+- 等待：等待按主机或用户分组的事件。
 
-现在，让我们了解 sys_schema 的一些常见使用模式。 首先，我们将使用模式分组为两个类别：**性能优化**和**数据库维护**。
+现在，让我们了解 sys_schema 的一些常见使用模式。 首先，我们将使用模式分为两类：“性能调优”和“数据库维护”。
 
 ## <a name="performance-tuning"></a>性能调优
 
@@ -40,11 +37,11 @@ sys_schema 中有 52 个视图，每个视图具有以下前缀之一：
 
 IO 是数据库中开销最高的操作。 我们可以通过查询 *sys.user_summary_by_file_io* 视图找出平均 IO 延迟。 使用 125 GB 默认预配存储时，IO 延迟大约为 15 秒。
 
-![125 GB 时的 IO 延迟](./media/howto-troubleshoot-sys-schema/io-latency-125GB.png)
+![io 延迟：125 GB](./media/howto-troubleshoot-sys-schema/io-latency-125GB.png)
 
 由于 Azure Database for MySQL 可根据存储缩放 IO，将预配存储增大到 1 TB 后，IO 延迟减小为 571 毫秒。
 
-![1 TB 时的 IO 延迟](./media/howto-troubleshoot-sys-schema/io-latency-1TB.png)
+![io 延迟：1TB](./media/howto-troubleshoot-sys-schema/io-latency-1TB.png)
 
 ### <a name="sysschematableswithfulltablescans"></a>*sys.schema_tables_with_full_table_scans*
 

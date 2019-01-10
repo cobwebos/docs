@@ -9,16 +9,16 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/14/2017
-ms.openlocfilehash: c26b4700f32ce4e0bd8327e862d31df8fea2439d
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: f8fb036eaca35e41d89b0a9610ebcd68e65f40f9
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51632537"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53630252"
 ---
 # <a name="use-apache-hive-as-an-extract-transform-and-load-etl-tool"></a>将 Apache Hive 用作提取、转换和加载 (ETL) 工具
 
-通常需要先将传入的数据清理并转换，才能将它载入适合用于分析的目标。 提取、转换和加载 (ETL) 操作可用于准备数据并将其载入数据目标。  HDInsight 上的 Apache Hive 可以读入非结构化数据、根据需要处理该数据，然后将该数据载入关系数据仓库，供决策支持系统使用。 此方法从源提取数据并将其存储在可缩放的存储（例如 Azure 存储 Blob 或 Azure Data Lake Store）中。 然后，使用一系列 Hive 查询来转换该数据，最后将其暂存在 Hive 中，为批量载入目标数据存储做好准备。
+通常需要先将传入的数据清理并转换，才能将它载入适合用于分析的目标。 提取、转换和加载 (ETL) 操作可用于准备数据并将其载入数据目标。  HDInsight 上的 Apache Hive 可以读入非结构化数据、根据需要处理该数据，然后将该数据载入关系数据仓库，供决策支持系统使用。 此方法从源提取数据并将其存储在可缩放的存储（例如 Azure 存储 Blob 或 Azure Data Lake Storage）中。 然后，使用一系列 Hive 查询来转换该数据，最后将其暂存在 Hive 中，为批量载入目标数据存储做好准备。
 
 ## <a name="use-case-and-model-overview"></a>用例和模型概述
 
@@ -30,7 +30,7 @@ ms.locfileid: "51632537"
 
 使用 Hive 执行 ETL 的典型步骤如下：
 
-1. 将数据载入 Azure Data Lake Store 或 Azure Blob 存储。
+1. 将数据载入 Azure Data Lake Storage 或 Azure Blob 存储。
 2. 创建元数据存储数据库（使用 Azure SQL 数据库）供 Hive 用于存储架构。
 3. 创建 HDInsight 群集并连接数据存储。
 4. 定义要在读取阶段应用到数据存储中的数据的架构：
@@ -51,7 +51,7 @@ ms.locfileid: "51632537"
 
 5. 转换数据并将其载入目标。  在转换和加载期间，可通过多种方式使用 Hive：
 
-    * 使用 Hive 查询和准备数据，并将其以 CSV 格式存储在 Azure Data Lake Store 或 Azure Blob 存储中。  然后，使用 SQL Server Integration Services (SSIS) 等工具获取这些 CSV，并将数据载入 SQL Server 等目标关系数据库。
+    * 使用 Hive 查询和准备数据，并将其以 CSV 格式存储在 Azure Data Lake Storage 或 Azure Blob 存储中。  然后，使用 SQL Server Integration Services (SSIS) 等工具获取这些 CSV，并将数据载入 SQL Server 等目标关系数据库。
     * 使用 Hive ODBC 驱动程序直接从 Excel 或 C# 查询数据。
     * 使用 [Apache Sqoop](apache-hadoop-use-sqoop-mac-linux.md) 读取已准备好的 CSV 平面文件，并将其载入目标关系数据库。
 

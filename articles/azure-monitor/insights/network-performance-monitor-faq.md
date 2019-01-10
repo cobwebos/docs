@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/12/2018
 ms.author: vinynigam
-ms.openlocfilehash: 8e152bc96293d5e6e801fd23657d0de303093eb6
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: c792881b02eba7207b20c4b4807d8afbc1adb87f
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53166602"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53543982"
 ---
 # <a name="network-performance-monitor-solution-faq"></a>网络性能监视器解决方案常见问题解答
 
@@ -70,6 +70,9 @@ ms.locfileid: "53166602"
 
 ### <a name="how-many-agents-should-i-use"></a>应使用多少个代理？
 对于要监视的每个子网，至少要使用一个代理。
+
+### <a name="what-is-the-maximum-number-of-agents-i-can-use-or-i-see-error--you-have-reached-your-configuration-limit"></a>我可以使用的最大代理数或我会看到“...你已达到配置限制”错误的最大代理数是多少？
+NPM 将 IP 数限制为每个工作区 5000 个 IP。 如果某个节点同时拥有 IPv4 和 IPv6 地址，则计为该节点的 2 个 IP。 因此，此 5000 个 IP 的限制会决定代理数的上限。 可从“NPM”>>“配置”中的“节点”选项卡删除非活动代理。 NPM 还维护曾分配给托管代理的 VM 的所有 IP 的历史记录，这些 IP 也计为单独的 IP 并包含在 5000 个 IP 的上限中。 若要为工作区释放 IP，可使用“节点”页面删除未使用的 IP。
 
 ## <a name="monitoring"></a>监视
 

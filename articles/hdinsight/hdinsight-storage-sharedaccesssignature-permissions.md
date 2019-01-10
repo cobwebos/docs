@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/23/2018
 ms.author: hrasheed
-ms.openlocfilehash: 100c9266718d618b8b00a3169c3d88ac7d501791
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: c3cb9b7988269f394615b6498bbe7af5bb0ab1e1
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53409915"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53743351"
 ---
 # <a name="use-azure-storage-shared-access-signatures-to-restrict-access-to-data-in-hdinsight"></a>使用 Azure 存储共享访问签名来限制访问 HDInsight 中的数据
 
@@ -180,10 +180,10 @@ HDInsight 对群集关联的 Azure 存储帐户中的数据拥有完全访问权
    > [!IMPORTANT]  
    > 出现输入 HTTP/s 或 SSH 用户名和密码的提示时，必须提供符合以下条件的密码：
    >
-   > * 长度必须至少为 10 个字符
-   > * 必须至少包含一个数字
-   > * 必须至少包含一个非字母数字字符
-   > * 必须至少包含一个大写或小写字母
+   > * 长度必须至少为 10 个字符。
+   > * 必须至少包含一个数字。
+   > * 必须至少包含一个非字母数字字符。
+   > * 必须至少包含一个大写或小写字母。
 
 需要等待一段时间让此脚本完成，通常大约是 15 分钟。 如果脚本完成且没有发生任何错误，则会创建群集。
 
@@ -290,10 +290,10 @@ HDInsight 对群集关联的 Azure 存储帐户中的数据拥有完全访问权
 
 **解决方法**：使用符合以下条件的密码：
 
-* 长度必须至少为 10 个字符
-* 必须至少包含一个数字
-* 必须至少包含一个非字母数字字符
-* 必须至少包含一个大写或小写字母
+* 长度必须至少为 10 个字符。
+* 必须至少包含一个数字。
+* 必须至少包含一个非字母数字字符。
+* 必须至少包含一个大写或小写字母。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 05/03/2018
 ms.author: bwren
-ms.openlocfilehash: 3f7cfbea414561a50152f88ac9061d7f62c89e2a
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: bc8688e06b430522d2aeb1bcc67f72dae2e9ac6a
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53192384"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53728392"
 ---
 # <a name="computer-groups-in-log-analytics-log-searches"></a>Log Analytics 日志搜索中的计算机组
 
@@ -31,7 +31,7 @@ Log Analytics 中的计算机组允许为一组特定的计算机设定[日志�
 |:--- |:--- |
 | 日志搜索 |创建将返回计算机列表的日志搜索。 |
 | 日志搜索 API |使用日志搜索 API 基于日志搜索结果以编程方式创建计算机组。 |
-| Active Directory |自动扫描属于 Active Directory 域成员的任何代理计算机的组成员身份，并在 Log Analytics 中为每个安全组创建一个组。 |
+| Active Directory |自动扫描属于 Active Directory 域成员的任何代理计算机的组成员身份，并在 Log Analytics 中为每个安全组创建一个组。 （仅限 Windows 计算机）|
 | 配置管理器 | 从 System Center Configuration Manager 中导入集合并在 Log Analytics 中为每个集合创建一个组。 |
 | Windows Server Update Services |为目标组自动扫描 WSUS 服务器或客户端，并在 Log Analytics 中为每个组创建一个组。 |
 
@@ -60,7 +60,10 @@ Log Analytics 中的计算机组允许为一组特定的计算机设定[日志�
 
 
 ### <a name="active-directory"></a>Active Directory
-将 Log Analytics 配置为导入 Active Directory 组成员身份时，它将使用 Log Analytics 代理分析任何加入域的计算机的组成员身份。  在 Log Analytics 中为 Active Directory 中的每个安全组创建一个计算机组，并且会将每台计算机添加到与其所属安全组对应的计算机组。  此成员身份每 4 小时持续更新一次。  
+将 Log Analytics 配置为导入 Active Directory 组成员身份时，它将使用 Log Analytics 代理分析任何加入域的 Windows 计算机的组成员身份。  系统会在 Log Analytics 中为 Active Directory 中的每个安全组创建一个计算机组，并将每台 Windows 计算机添加到与其所属安全组对应的计算机组。  此成员身份每 4 小时持续更新一次。  
+
+> [!NOTE]
+> 导入的 Active Directory 组仅包含 Windows 计算机。
 
 在 Azure 门户中，从 Log Analytics“高级设置”中配置 Log Analytics 以导入 Active Directory 安全组。  依次选择“计算机组”、“Active Directory”和“从计算机导入 Active Directory 组成员身份”。  无需进一步的配置。
 

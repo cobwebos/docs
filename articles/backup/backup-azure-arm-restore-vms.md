@@ -9,32 +9,30 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 09/04/2017
 ms.author: geg
-ms.openlocfilehash: 0d78ae294cea383fbe59a1f7968d8bf18b1942d1
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: ac0c727e41ad9b361ea9f558a97f16446c12ef0e
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52422950"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53793370"
 ---
 # <a name="use-the-azure-portal-to-restore-virtual-machines"></a>使用 Azure 门户还原虚拟机
 可以通过按定义的间隔创建数据快照来保护数据。 这些快照称为恢复点，存储在恢复服务保管库中。 当需要修复或重新生成虚拟机 (VM) 时，可以从保存的任何恢复点还原 VM。 还原恢复点时，可以：
 
-* 新建 VM，表示处于特定时间点的已备份 VM。
-* 还原磁盘，并使用进程随附的模板自定义已还原的 VM，或恢复单独的文件。
+* 创建新 VM：从备份 VM 的时点恢复点开始。
+* 还原磁盘：使用进程随附的模板自定义已还原的 VM，或恢复单独的文件。
 
 本文介绍如何将 VM 还原到新 VM，或者还原所有已备份的磁盘。 有关单独的文件恢复，请参阅[从 Azure VM 备份恢复文件](backup-azure-restore-files-from-vm.md)。
 
 ![从 VM 备份还原的三种方式](./media/backup-azure-arm-restore-vms/azure-vm-backup-restore.png)
 
-> [!NOTE]
-> Azure 具有两个不同的部署模型用于创建和处理资源：[Azure 资源管理器和经典](../azure-resource-manager/resource-manager-deployment-model.md)部署模型。 本文介绍有关如何使用资源管理器模型还原已部署 VM 的信息以及相关过程。
->
->
 
 从 VM 备份还原 VM 或所有磁盘包括两个步骤：
 
 * 选择用于还原的还原点。
-* 选择还原类型，新建 VM 或还原磁盘，并指定所需参数。
+* 选择还原类型
+    - 选项 1：创建新 VM
+    - 选项 2：还原磁盘。
 
 ## <a name="select-a-restore-point-for-restore"></a>选择用于还原的还原点
 1. 登录到 [Azure 门户](http://portal.azure.com/)。
@@ -62,104 +60,82 @@ ms.locfileid: "52422950"
 7. 从列表中选择一个 VM 以打开仪表板。 VM 仪表板随即打开包含“恢复点”的“监视”区域。 可在此边栏选项卡中执行所有 VM 级别的操作，如“立即备份”、“文件恢复”、“停止备份”。
 在此边栏选项卡中可通过多种方式执行还原。 请注意，此边栏选项卡只列出过去 30 天的恢复点。
 
-    a) 右键单击此边栏选项卡中的恢复点（不超过 30 天）并启动“还原 VM”。
-
-    b) 若要还原超出 30 天的恢复点，可以使用边栏选项卡中提供的“单击此处”。
-
-    c) 菜单标头中的“还原 VM”提供一个选项，用于根据需要按自定义日期列出和筛选 VM。
-
-    使用“筛选器”可更改显示的还原点的时间范围。 默认情况下，会显示所有一致性还原点。 修改“所有还原点”筛选器，以选择特定的还原点一致性。 有关每种还原点的详细信息，请参阅[数据一致性](backup-azure-vms-introduction.md#data-consistency)。
-
-    还原点一致性选项：
-    - 崩溃一致还原点
-    - 应用程序一致还原点
-    - 文件系统一致还原点
-    - 所有还原点
+    - 要使用过去 30 天内的还原点进行还原，请右键单击 VM >“还原 VM”。
+    - 要使用超过 30 天的还原点进行还原，请单击“还原点”下的链接。
+    - 要通过自定义日期列出和筛选 VM，请单击菜单中的“还原 VM”。 使用筛选器可更改显示的还原点的时间范围。 还可筛选不同类型的数据一致性。
+8. 查看还原点设置：
+    - 数据一致性显示恢复点中的[一致性类型](backup-azure-vms-introduction.md#consistency-types)。
+    - “恢复类型”显示点的存储位置（存储帐户、保管库或两者中）。 [详细了解](https://azure.microsoft.com/blog/large-disk-support/)即时恢复点。
 
   ![还原点](./media/backup-azure-arm-restore-vms/vm-blade1.png)
+9. 选择还原点。
 
-    >  [!NOTE]
-    > 恢复类型表示它是位于客户存储帐户还是位于保管库，或者同时位于两者中。 详细了解[即时恢复点](https://azure.microsoft.com/blog/large-disk-support/)。
-
-8. 在“还原”边栏选项卡中，选择“还原点”。
-
-    ![选择还原点](./media/backup-azure-arm-restore-vms/select-recovery-point1.png)
-
-    单击“确定”时，“还原”边栏选项卡会显示已设置还原点。
-9. 如果尚未执行此操作，请转到“还原”边栏选项卡。 确保[已选择还原点](#select-a-restore-point-for-restore)，并选择“还原配置”。 “还原配置”边栏选项卡随即打开。
+10. 选择“还原配置”。 “还原配置”边栏选项卡随即打开。
 
 ## <a name="choose-a-vm-restore-configuration"></a>选择 VM 还原配置
 选择还原点后，请选择 VM 还原配置。 若要配置已还原 VM，可使用 Azure 门户或 PowerShell。
 
-1. 如果尚未执行此操作，请转到“还原”边栏选项卡。 确保[已选择还原点](#select-a-restore-point-for-restore)，并选择“还原配置”。 “还原配置”边栏选项卡随即打开。
-2. 此边栏选项卡目前包含两个选项：一个是默认的“新建”选项；另一个是“替换现有”选项，用于就地还原以替换仅包含现有配置和扩展的磁盘。
+### <a name="restore-options"></a>还原选项
+
+**选项** | **详细信息**
+--- | ---
+**新建 - 创建 VM** | 相当于快速创建 VM。 启动基本 VM 并在还原点运行。<br/><br/> VM 设置可以作为还原过程的一部分进行修改。
+**新建 - 还原磁盘** | 创建一个可自定义为还原过程一部分的 VM。<br/><br/> 此选项将 VHD 复制到所指定的存储帐户。<br/><br/> - 存储帐户应与保管库位于同一位置。<br/><br/> 若没有合适的存储帐户，则需要创建一个帐户。<br/><br/> 存储帐户复制类型显示在括号中。 不支持区域冗余存储 (ZRS)。<br/><br/> 在存储帐户中，可将还原的磁盘附加到现有 VM，或使用 PowerShell 从还原的磁盘创建新 VM。
+**替换现有** | 无需创建 VM 即可使用此选项。<br/><br/> 必须存在当前 VM。 若已删除 VM，则无法使用该选项。<br/><br/> Azure 备份会获取现有 VM 的快照，并将其存储在指定的暂存位置。 然后，使用选定的还原点替换连接到 VM 的现有磁盘。 先前创建的快照将复制到保管库中，并根据备份保留策略存储为恢复点。<br/><br/> 未加密的托管 VM 支持替换现有。 非托管磁盘、[通用 VM](https://docs.microsoft.com/azure/virtual-machines/windows/capture-image-resource) 或[使用自定义映像创建的 VM](https://azure.microsoft.com/resources/videos/create-a-custom-virtual-machine-image-in-azure-resource-manager-with-powershell/) 不支持此选项。<br/><br/> 如果还原点的磁盘数多于或少于当前 VM，则还原点中的磁盘数将仅反映在 VM 中。
 
 > [!NOTE]
-> 我们正在努力在接下来的几个月内将整个 VM 替换为磁盘、网络设置、配置和扩展。
->
->
+> 如果要还原具有高级网络设置的 VM，例如，如果它们由内部或外部负载均衡器托管，或者具有多个 NIC 或多个保留的 IP 地址，请使用 PowerShell 进行还原。 [了解详细信息](#restore-vms-with-special-network-configurations)。
+> 如果 Windows VM 使用 [HUB 许可](../virtual-machines/windows/hybrid-use-benefit-licensing.md)，请使用“新建 - 还原磁盘”选项，然后使用 PowerShell 或还原模板创建“许可类型”为“Windows_Server”的 VM。 创建 VM 后也可以应用此设置。
 
- 在用于将数据还原到新 VM 或新磁盘的“新建”选项中，有两个选项可供选择：
 
- ![还原配置向导](./media/backup-azure-arm-restore-vms/restore-configuration-create-new.png)
+指定还原设置，如下所示：
 
- - 创建虚拟机
- - 还原磁盘
+1. 在“还原”中，选择“[还原点](#select-a-restore-point-for-restore)” > “还原配置”。
+2. 在“还原配置”中，根据上表中汇总的设置选择要还原 VM 的方式。
 
-![还原配置向导](./media/backup-azure-arm-restore-vms/restore-configuration-create-new1.png)
+    ![还原配置向导](./media/backup-azure-arm-restore-vms/restore-configuration-create-new1.png)
 
-门户为已还原的 VM 提供“快速创建”选项。 如果想要自定义在创建新 VM 过程中创建的资源的 VM 配置或名称，请使用 PowerShell 或门户还原已备份的磁盘。 使用 PowerShell 命令将其附加到所选 VM 配置。 或者可以使用附带了已还原磁盘的模板来自定义已还原的 VM。 有关如何还原具有多个 NIC 或采用负载均衡器的 VM 的详细信息，请参阅[还原采用特殊网络配置的 VM](#restore-vms-with-special-network-configurations)。 如果 Windows VM 使用 [HUB 许可](../virtual-machines/windows/hybrid-use-benefit-licensing.md)，请还原磁盘并使用本文中所指定的 PowerShell/模板来创建 VM。 确保在创建 VM 时将“许可证类型”指定为“Windows_Server”以利用还原的 VM 上的 HUB 优势。 请注意，此操作也可在创建 VM 后完成。
 
-## <a name="create-a-new-vm-from-a-restore-point"></a>从还原点创建新的 VM
-1. 在上一节中提及的“还原配置”边栏选项卡中，输入或选择以下每个字段的值：
+## <a name="create-new-create-a-vm"></a>新建 - 创建 VM
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 还原类型。 创建虚拟机。
-
-    b. 虚拟机名称。 输入订阅中不存在的 VM 名称。
-
-    c. 资源组。 使用现有资源组，或创建一个新的资源组。 如果要还原经典 VM，请使用此字段来指定新云服务的名称。 创建新的资源组/云服务时，该名称必须全局唯一。 通常，云服务名称与面向公众的 URL 关联：例如：[cloudservice].cloudapp.net。 如果尝试使用已用的云资源组/云服务名称，Azure 会为资源组/云服务分配与 VM 相同的名称。 Azure 会显示不与任何地缘组关联的资源组/云服务和 VM。 有关详细信息，请参阅[如何从地缘组迁移到区域虚拟网络](../virtual-network/virtual-networks-migrate-to-regional-vnet.md)。
-
-    d. 虚拟网络。 创建 VM 时，选择虚拟网络。 该字段提供与订阅关联的所有虚拟网络。 VM 的资源组显示在括号中。
-
-    e. 子网。 如果虚拟网络包含子网，则默认情况下选择第一个子网。 如果包含其他子网，请选择所需的子网。
-
-    f. **存储位置**。 存储帐户是临时位置。 此菜单将列出与恢复服务保管库位于相同位置的存储帐户。 不支持区域冗余的存储帐户。 如果没有与恢复服务保管库位于相同位置的存储帐户，必须创建一个存储帐户，然后再开始还原操作。 存储帐户的复制类型显示在括号中。
+1. 在“还原配置” > “新建 > 还原类型”中，选择“创建虚拟机”。
+2. 在“虚拟机名称”中，指定订阅中不存在的 VM。
+3. 在“资源组”中，为新 VM 选择现有资源组，或创建具有全局唯一名称的新资源组。 如果指定已存在的名称，则 Azure 将为该组分配与 VM 相同的名称。
+4. 在“虚拟网络”中，选择将放置 VM 的 VNet。 将显示与订阅关联的所有 VNet。 选择子网。 默认情况下选择第一个子网。
+5. 在“存储位置”中，指定用于 VM 的存储类型。
 
     ![还原配置向导](./media/backup-azure-arm-restore-vms/recovery-configuration-wizard1.png)
 
-    > [!NOTE]
-    > * 虚拟网络对经典 VM 是可选的，但对资源管理器部署的 VM 是必需的。
+6. 在“还原配置”中，选择“确定”。 在“还原”中，单击“还原”以触发还原操作。
 
-    > * 临时位置的存储帐户（高级或标准）中提供的存储类型决定还原磁盘存储类型。 还原时，我们当前不支持混合模式的磁盘。
-    >
-    >
 
-2. 在“还原配置”边栏选项卡中，选择“确定”完成还原配置。 在“还原”边栏选项卡中，选择“还原”以触发还原操作。
 
-## <a name="restore-backed-up-disks"></a>还原备份磁盘
-“还原配置”边栏选项卡中的还原类型值“还原磁盘”支持创建包含自定义配置的 VM。 还原磁盘时，选择的存储帐户应与恢复服务保管库位于相同位置。 如果没有与恢复服务保管库位于同一位置的存储帐户，则必须创建一个存储帐户。 不支持 ZRS 存储帐户。 存储帐户的复制类型显示在括号中。
+## <a name="create-new-restore-disks"></a>新建 - 还原磁盘
 
-对于还原后操作，请参阅以下资源：
-* [使用模板自定义已还原的 VM](#use-templates-to-customize-restore-vm)
-* [使用已还原的磁盘附加到现有 VM](../virtual-machines/windows/attach-managed-disk-portal.md)
-* [从已还原的磁盘使用 PowerShell 新建 VM](./backup-azure-vms-automation.md#restore-an-azure-vm)
+1. 在“还原配置” > “新建 > 还原类型”中，选择“还原磁盘”。
+2. 在“资源组”中，为还原的磁盘选择现有资源组，或创建具有全局唯一名称的新资源组。
+3. 在“存储帐户”中，指定要将 VHD 复制到的帐户。 确保帐户与保管库位于同一区域。
 
-在“还原配置”边栏选项卡中，选择“确定”完成还原配置。 在“还原”边栏选项卡中，选择“还原”以触发还原操作。
+    ![已完成恢复配置](./media/backup-azure-arm-restore-vms/trigger-restore-operation1.png)
 
-![已完成恢复配置](./media/backup-azure-arm-restore-vms/trigger-restore-operation1.png)
+4. 在“还原配置”中，选择“确定”。 在“还原”中，单击“还原”以触发还原操作。
+5. 还原磁盘后，可执行以下任一操作完成 VM 还原操作。
 
-“放置还原”通过“替换现有”选项卡完成。
+    - 使用作为还原操作一部分生成的模板来自定义设置，并触发 VM 部署。 可编辑默认模板设置，并提交 VM 部署模板。
+    - 可[将已还原的磁盘附加](https://docs.microsoft.com/azure/virtual-machines/windows/attach-disk-ps)到现有 VM。
+    - 可使用 PowerShell 从已还原的磁盘[创建新 VM](backup-azure-vms-automation.md#restore-an-azure-vm)。
 
-## <a name="replace-existing-disks-from-a-restore-point"></a>替换还原点中的现有磁盘
-“替换现有”选项可将当前 VM 中的现有磁盘替换为所选的还原点。 仅在当前 VM 存在时，才可执行此操作。 如果出于任何原因删除了 VM，此操作将无法执行；或者，建议“新建”VM 或磁盘以继续执行还原操作。 在此操作过程中，作为预防措施，请在启动替换磁盘操作之前备份数据。 此操作将在保管库中创建一个快照和一个恢复点，其保留期如在配置的备份策略中所计划。 如果还原点的磁盘数多于/少于当前 VM，则还原点中的磁盘数将仅反映在 VM 中。 目前托管磁盘和加密 VM 不支持“替换现有”选项。 [通用 VM](https://docs.microsoft.com/azure/virtual-machines/windows/capture-image-resource) 以及使用[自定义映像](https://azure.microsoft.com/resources/videos/create-a-custom-virtual-machine-image-in-azure-resource-manager-with-powershell/)创建的 VM 也不支持此选项。  
 
- 在“还原配置”边栏选项卡上，需要选择的唯一输入是“临时位置”。
+## <a name="replace-existing-disks"></a>替换现有磁盘
+
+使用此选项可通过选定的还原点替换当前 VM 中的现有磁盘。
+
+1. 在“还原配置”中，单击“替换现有”。
+2. 在“还原类型”中，选择“替换磁盘”（将替换现有 VM 磁盘的还原点）。
+3. 在“暂存位置”中，指定应保存当前托管磁盘的快照的位置。
 
    ![还原配置向导“替换现有”](./media/backup-azure-arm-restore-vms/restore-configuration-replace-existing.png)
 
- a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 还原类型。 表示所选还原点的替换磁盘将替换现有 VM 中的磁盘。
-
- b. **临时位置**。 存储帐户是托管磁盘的临时位置。 此菜单将列出与恢复服务保管库位于相同位置的存储帐户。 不支持区域冗余的存储帐户。 如果没有与恢复服务保管库位于相同位置的存储帐户，必须创建一个存储帐户，然后再开始还原操作。 存储帐户的复制类型显示在括号中。
 
 ## <a name="track-the-restore-operation"></a>跟踪还原操作
 触发还原操作后，备份服务会创建一个作业用于跟踪还原操作。 备份服务还会创建并在门户的“通知”区域中临时显示通知。 如果未显示通知，请选择“通知”符号查看通知。
@@ -171,6 +147,15 @@ ms.locfileid: "52422950"
 “备份作业”边栏选项卡随即打开并显示作业列表。
 
 ![保管库中的 VM 列表](./media/backup-azure-arm-restore-vms/restore-job-in-progress1.png)
+
+现在，“还原详细信息”边栏选项卡中提供了“进度栏”。 通过单击状态为“正在进行”的任意还原作业，可以打开“还原详细信息”边栏选项卡。 “进度栏”适用于所有还原变体，例如“新建”、“还原磁盘”和“替换现有”。 “还原进度栏”执行的详细信息是“估计还原时间”、“还原百分比”和“传输的字节数”。
+
+还原进度栏详细信息如下：
+
+- “估计还原时间”最初提供完成还原操作所需的时间。 随着操作的进行，恢复操作完成后，所花费的时间将减少并达到 0。
+- “还原百分比”提供完成还原操作的数据百分比。
+- “传输的字节数”在通过“创建新 VM”进行还原时可用于子任务中。 这提供了有关要传输的总字节数中传输了多少字节数的详细信息。
+
 
 ## <a name="use-templates-to-customize-a-restored-vm"></a>使用模板自定义还原 VM
 [还原磁盘操作完成](#Track-the-restore-operation)后，使用在还原操作过程中生成的模板来创建配置与备份配置不同的新 VM。 还可使用该模板自定义从还原点创建新 VM 时创建的资源的名称。

@@ -15,16 +15,16 @@ ms.topic: article
 ms.date: 11/09/2017
 ms.author: ranjithr
 ms.custom: seodec18
-ms.openlocfilehash: 5a8760bc67125f857998f23ca33733a62a0d8fb5
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: db412d3fd0af84d528ad0c83d86cc5d055359914
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53315717"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53632681"
 ---
 # <a name="best-practices-and-troubleshooting-guide-for-node-applications-on-azure-app-service-windows"></a>Azure 应用服务 Windows 版上节点应用程序的最佳做法和故障排除指南
 
-本文介绍 Azure Web 应用上运行的 [node 应用程序](app-service-web-get-started-nodejs.md)的最佳实践和故障排除步骤（使用 [iisnode](https://github.com/azure/iisnode)）。
+本文介绍 Azure 应用服务上运行的 [node 应用程序](app-service-web-get-started-nodejs.md)的最佳实践和故障排除步骤（使用 [iisnode](https://github.com/azure/iisnode)）。
 
 > [!WARNING]
 > 在生产站点上使用故障排除步骤时，请格外小心。 建议在非生产安装（例如过渡槽）上排查应用问题，当问题修复后，请交换过渡槽与生产槽。
@@ -44,18 +44,18 @@ ms.locfileid: "53315717"
 
 ### <a name="maxconcurrentrequestsperprocess"></a>maxConcurrentRequestsPerProcess
 
-此设置控制 iisnode 发送给每个 node.exe 的并发请求数目上限。 在 Azure Web 应用中，默认值为“无限”。 在 Azure Web 应用外部，默认值为 1024。 可以根据应用程序收到的请求数目以及应用程序处理每个请求的速度来配置此值。
+此设置控制 iisnode 发送给每个 node.exe 的并发请求数目上限。 在 Azure 应用服务中，默认值为“无限”。 可以根据应用程序收到的请求数目以及应用程序处理每个请求的速度来配置此值。
 
 ### <a name="maxnamedpipeconnectionretry"></a>maxNamedPipeConnectionRetry
 
-此设置控制 iisnode 在命名管道上重试连接，以将请求发送到 node.exe 的次数上限。 此设置与 namedPipeConnectionRetryDelay 结合使用，可确定 iisnode 内每个请求的总超时。 在 Azure Web 应用中，默认值为 200。 总超时（秒）= (maxNamedPipeConnectionRetry \* namedPipeConnectionRetryDelay) / 1000
+此设置控制 iisnode 在命名管道上重试连接，以将请求发送到 node.exe 的次数上限。 此设置与 namedPipeConnectionRetryDelay 结合使用，可确定 iisnode 内每个请求的总超时。 在 Azure 应用服务中，默认值为 200。 总超时（秒）= (maxNamedPipeConnectionRetry \* namedPipeConnectionRetryDelay) / 1000
 
 ### <a name="namedpipeconnectionretrydelay"></a>namedPipeConnectionRetryDelay
 
 此设置控制 iisnode 在每次重试通过命名管道将请求发送到 node.exe 之间所要等待的时间（毫秒）。 默认值为 250 毫秒。
 总超时（秒）= (maxNamedPipeConnectionRetry \* namedPipeConnectionRetryDelay) / 1000
 
-在 Azure Web 应用中，iisnode 的总超时默认为 200 \* 250 毫秒 = 50 秒。
+在 Azure 应用服务中，iisnode 的总超时默认为 200 \* 250 毫秒 = 50 秒。
 
 ### <a name="logdirectory"></a>logDirectory
 
@@ -128,7 +128,7 @@ IIS 的默认行为是在刷新之前或直到响应结束时（以较早出现�
 
 许多应用程序想要在其定期操作中进行出站连接。 例如，当请求传入时，节点应用程序会想连接别处的 REST API，并获取一些信息来处理请求。 建议在进行 http 或 https 调用时使用保持连接代理。 可在进行这些出站调用时，使用 agentkeepalive 模块作为保持连接代理。
 
-agentkeepalive 模块确保在 Azure Web 应用 VM 上重复使用套接字。 在每个出站请求中创建新套接字会增大应用程序的开销。 让应用程序对出站请求重复使用套接字可确保应用程序不会超过为每个 VM 分配的 maxSockets。 对于 Azure Web 应用的建议是将 agentKeepAlive maxSockets 值设置为每个 VM 总共 160 个套接字（4 个 node.exe 实例 \* 每个实例 40 个 maxSockets）。
+agentkeepalive 模块确保在 Azure Web 应用 VM 上重复使用套接字。 在每个出站请求中创建新套接字会增大应用程序的开销。 让应用程序对出站请求重复使用套接字可确保应用程序不会超过为每个 VM 分配的 maxSockets。 对于 Azure 应用服务的建议是将 agentKeepAlive maxSockets 值设置为每个 VM 总共 160 个套接字（4 个 node.exe 实例 \* 每个实例 40 个 maxSockets）。
 
 [agentKeepALive ](https://www.npmjs.com/package/agentkeepalive) 配置示例：
 
@@ -147,10 +147,10 @@ var keepaliveAgent = new Agent({
 
 #### <a name="my-node-application-is-consuming-too-much-cpu"></a>节点应用程序消耗过多的 CPU
 
-门户上可能会显示 Azure Web 应用针对高 CPU 消耗量提供的建议。 也可将监视器设置为监视某些[指标](web-sites-monitor.md)。 在 [Azure 门户仪表板](../application-insights/app-insights-web-monitor-performance.md)上检查 CPU 使用率时，请检查 CPU 的最大值，这样才不会错过峰值。
+门户上可能会显示 Azure 应用服务针对高 CPU 消耗量提供的建议。 也可将监视器设置为监视某些[指标](web-sites-monitor.md)。 在 [Azure 门户仪表板](../application-insights/app-insights-web-monitor-performance.md)上检查 CPU 使用率时，请检查 CPU 的最大值，这样才不会错过峰值。
 如果你认为应用程序消耗了过多的 CPU，但又无法做出解释，可以分析 Node 应用程序来找出原因。
 
-#### <a name="profiling-your-node-application-on-azure-web-apps-with-v8-profiler"></a>在 Azure Web 应用中使用 V8 探查器分析 node 应用程序
+#### <a name="profiling-your-node-application-on-azure-app-service-with-v8-profiler"></a>在 Azure 应用服务中使用 V8 探查器分析 node 应用程序
 
 例如，假设需要分析如下所示的 hello world 应用：
 
@@ -220,7 +220,7 @@ http.createServer(function (req, res) {
 
 ### <a name="my-node-application-is-consuming-too-much-memory"></a>node 应用程序消耗过多的内存
 
-如果应用程序消耗过多的内存，门户中会显示 Azure Web 应用针对高内存消耗量提供的建议。 可将监视器设置为监视某些[指标](web-sites-monitor.md)。 在 [Azure 门户仪表板](../application-insights/app-insights-web-monitor-performance.md)上检查内存使用率时，请务必检查内存的最大值，这样才不会错过峰值。
+如果应用程序消耗过多的内存，门户中会显示 Azure 应用服务针对高内存消耗量提供的建议。 可将监视器设置为监视某些[指标](web-sites-monitor.md)。 在 [Azure 门户仪表板](../application-insights/app-insights-web-monitor-performance.md)上检查内存使用率时，请务必检查内存的最大值，这样才不会错过峰值。
 
 #### <a name="leak-detection-and-heap-diff-for-nodejs"></a>node.js 的泄漏检测和堆区分
 
@@ -249,12 +249,12 @@ node.exe 随机关闭的原因有多种：
 
 ### <a name="my-node-application-takes-too-much-time-to-start-cold-start"></a>node 应用程序的启动时间太长（冷启动）
 
-应用程序启动时间过长的最常见原因是 node\_modules 中有大量文件。 应用程序在启动时会尝试加载其中的大多数文件。 默认情况下，由于文件存储在 Azure Web 应用的网络共享上，因此加载过多的文件可能需要一段时间。
+应用程序启动时间过长的最常见原因是 node\_modules 中有大量文件。 应用程序在启动时会尝试加载其中的大多数文件。 默认情况下，由于文件存储在 Azure 应用服务的网络共享上，因此加载过多的文件可能需要一段时间。
 加速此过程的某些解决方法包括：
 
 1. 使用 npm3 来安装模块，确保采用平面依赖关系结构，并且没有重复的依赖项。
 2. 尝试延迟加载 node\_modules，而不要在应用程序启动时加载所有模块。 若要延迟加载模块，应在首次执行模块代码之前，在函数中真正需要该模块时调用 require('module')。
-3. Azure Web 应用提供一项称为本地缓存的功能。 此功能会将内容从网络共享复制到 VM 上的本地磁盘。 由于文件位于本地，因此，node\_modules 的加载时间快很多。
+3. Azure 应用服务提供一项称为本地缓存的功能。 此功能会将内容从网络共享复制到 VM 上的本地磁盘。 由于文件位于本地，因此，node\_modules 的加载时间快很多。
 
 ## <a name="iisnode-http-status-and-substatus"></a>IISNODE http 状态和子状态
 
@@ -274,7 +274,7 @@ node.exe 随机关闭的原因有多种：
 | 503 |1002 |检查 win32 错误代码的实际原因 – 无法将请求分派到 node.exe。 |
 | 503 |1003 |命名管道太忙 – 验证 node.exe 是否正在消耗过多的 CPU |
 
-NODE.exe 具有名为 `NODE_PENDING_PIPE_INSTANCES` 的设置。 默认情况下，当未部署在 Azure Web 应用上时，此值为 4。 这意味着 node.exe 在命名管道上一次只能接受四个请求。 在 Azure Web 应用中，此值设置为 5000。 此值应足以满足 Azure Web 应用中运行的大多数 node 应用程序。 Azure Web 应用中不应出现 503.1003，因为 `NODE_PENDING_PIPE_INSTANCES` 的值较高。
+NODE.exe 具有名为 `NODE_PENDING_PIPE_INSTANCES` 的设置。 在 Azure 应用服务中，此值设置为 5000。 这表示 node.exe 在命名管道上一次可以接受 5000 个请求。 此值应足以满足 Azure 应用服务中运行的大多数 node 应用程序。 Azure 应用服务中不应出现 503.1003，因为 `NODE_PENDING_PIPE_INSTANCES` 的值较高
 
 ## <a name="more-resources"></a>更多资源
 

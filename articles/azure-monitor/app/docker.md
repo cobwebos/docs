@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 11/20/2018
 ms.author: mbullwin
-ms.openlocfilehash: a4e4ca1ca4878a2a405b12413e4378a2cb79aef6
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 3ea7d6562965debda2c146fedab2ea9ab19f6cc8
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53999112"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54077447"
 ---
 # <a name="monitor-docker-applications-in-application-insights"></a>在 Application Insights 中监视 Docker 应用程序
 
@@ -36,9 +36,9 @@ ms.locfileid: "53999112"
 
 ## <a name="set-up-your-application-insights-resource"></a>设置 Application Insights 资源
 
-1. 登录到 [Microsoft Azure 门户](https://azure.com)并打开应用的 Application Insights 资源；或[创建新资源](../../application-insights/app-insights-create-new-resource.md)。 
+1. 登录到 [Microsoft Azure 门户](https://azure.com)并打开应用的 Application Insights 资源；或[创建新资源](../../azure-monitor/app/create-new-resource.md )。 
    
-    *应该使用哪种资源？* 如果主机上运行的应用由其他人开发，则需要[创建新的 Application Insights 资源](../../application-insights/app-insights-create-new-resource.md)。 这是查看和分析遥测数据的位置。 （选择“常规”作为应用类型。）
+    *应该使用哪种资源？* 如果主机上运行的应用由其他人开发，则需要[创建新的 Application Insights 资源](../../azure-monitor/app/create-new-resource.md )。 这是查看和分析遥测数据的位置。 （选择“常规”作为应用类型。）
    
     但如果是应用的开发人员，我们建议[将 Application Insights SDK 添加到](../../azure-monitor/app/java-live.md)每个应用。 如果这些应用实际上都是单个业务应用程序的组件，则可以将所有应用配置为向一个资源发送遥测数据，并使用相一资源显示 Docker 生命周期和性能数据。 
    

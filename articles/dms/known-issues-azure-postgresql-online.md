@@ -4,19 +4,19 @@ description: 了解在联机迁移到 Azure Database for MySQL 时存在的已�
 services: database-migration
 author: HJToland3
 ms.author: scphang
-manager: ''
-ms.reviewer: ''
-ms.service: database-migration
+manager: craigg
+ms.reviewer: douglasl
+ms.service: dms
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 09/22/2018
-ms.openlocfilehash: b83c889e72acb320c308c3ad5ee6243e715fd523
-ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
+ms.openlocfilehash: ec91eec9baba1f337f18e1927a87971bf1499040
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52282870"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53724126"
 ---
 # <a name="known-issuesmigration-limitations-with-online-migrations-to-azure-db-for-postgresql"></a>联机迁移到 Azure DB for PostgreSQL 时存在的已知问题/迁移限制
 
@@ -82,7 +82,7 @@ ms.locfileid: "52282870"
 
 - **限制**：如果表中没有主键，连续同步将会失败。
 
-    **解决方法**：暂时为表设置一个主键，使迁移能够继续。 数据迁移完成后，可以删除该主键。
+    **解决方法**：暂时为表设置一个主键，以便迁移能够继续。 数据迁移完成后，可以删除该主键。
 
 ## <a name="lob-limitations"></a>LOB 限制
 大型对象 (LOB) 列为可能增大的列。 对于 PostgreSQL，LOB 数据类型的示例包括 XML、JSON、IMAGE、TEXT 等。
@@ -91,7 +91,7 @@ ms.locfileid: "52282870"
 
     **解决方法**：将主键替换为不属于 LOB 的其他数据类型或列。
 
-- **限制**：如果大型对象 (LOB) 列的长度超过 32 KB，目标上的数据可能会被截断。 可使用以下查询检查 LOB 列的长度：
+- **限制**：如果大型对象 (LOB) 列的长度超过 32 KB，目标上的数据可能会截断。 可使用以下查询检查 LOB 列的长度：
 
     ```
     SELECT max(length(cast(body as text))) as body FROM customer_mail
@@ -99,9 +99,9 @@ ms.locfileid: "52282870"
 
     **解决方法**：如果 LOB 对象大于 32 KB，请通过 [dmsfeedback@microsoft.com](mailto:dmsfeedback@microsoft.com) 联系工程团队。
 
-- **限制**；如果表中包含 LOB 列，切没有用于表的主键集，则数据可能不会为此表迁移。
+- **限制**：如果表中包含 LOB 列，切没有用于表的主键集，则数据可能不会为此表迁移。
 
-    **解决方法**：暂时为表设置一个主键，使迁移能够继续。 数据迁移完成后，可以删除该主键。
+    **解决方法**：暂时为表设置一个主键，以便迁移能够继续。 数据迁移完成后，可以删除该主键。
 
 ## <a name="postgresql10-workaround"></a>PostgreSQL10 解决方法
 PostgreSQL 10.x 对 pg_xlog 文件夹名称进行各种更改，并因此导致迁移未按预期运行。 如果要从 PostgreSQL 10.x 迁移到 Azure Database for PostgreSQL 10.3，请对源 PostgreSQL 数据库执行以下脚本，以围绕 pg_xlog 函数创建包装程序函数。

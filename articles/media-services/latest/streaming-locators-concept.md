@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 10/22/2018
+ms.date: 12/20/2018
 ms.author: juliako
-ms.openlocfilehash: cb34855fc9451679c885eebb0ef5a2fab0be8c57
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.openlocfilehash: 658843fd5acbe0d4e29947e99c00edf4909fe9f4
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50086839"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53742739"
 ---
 # <a name="streaming-locators"></a>流式处理定位符
 
@@ -29,13 +29,13 @@ ms.locfileid: "50086839"
 |名称|Description|
 |---|---|
 |id |资源的完全限定的资源 ID。|
-|名称   |资源的名称。|
+|名称|资源的名称。|
 |properties.alternativeMediaId|此流式处理定位符的备选媒体 ID。|
-|properties.assetName   |资产名称|
-|properties.contentKeys |此流式处理定位符使用的 Contentkey。|
-|properties.created |流式处理定位符的创建时间。|
+|properties.assetName|资产名称|
+|properties.contentKeys|此流式处理定位符使用的 Contentkey。|
+|properties.created|流式处理定位符的创建时间。|
 |properties.defaultContentKeyPolicyName|此流式处理定位符使用的默认 ContentKeyPolicy 的名称。|
-|properties.endTime |流式处理定位符的结束时间。|
+|properties.endTime|流式处理定位符的结束时间。|
 |properties.startTime|流式处理定位符的开始时间。|
 |properties.streamingLocatorId|流式处理定位符的 StreamingLocatorId。|
 |properties.streamingPolicyName |此流式处理定位符使用的流式处理策略的名称。 指定创建的流式处理策略的名称，或使用一个预定义的流式处理策略。 可用的预定义流式处理策略包括：“Predefined_DownloadOnly”、“Predefined_ClearStreamingOnly”、“Predefined_DownloadAndClearStreaming”、“Predefined_ClearKey”、“Predefined_MultiDrmCencStreaming”和“Predefined_MultiDrmStreaming”|

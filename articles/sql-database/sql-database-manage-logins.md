@@ -12,13 +12,13 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 11/29/2018
-ms.openlocfilehash: c234ac95d0e02857fe87afe3a734d77f00954477
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.date: 12/18/2018
+ms.openlocfilehash: 2be5c8ddf6928d5529c2eb08a6d64bd64b8445de
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52864938"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53631968"
 ---
 # <a name="controlling-and-granting-database-access-to-sql-database-and-sql-data-warehouse"></a>控制和授予对 SQL 数据库和 SQL 数据仓库的数据库访问权限
 
@@ -31,9 +31,9 @@ ms.locfileid: "52864938"
 > 相关教程，请参阅[保护 Azure SQL 数据库](sql-database-security-tutorial.md)。 本教程不适用于 Azure SQL 数据库托管实例。
 
 ## <a name="unrestricted-administrative-accounts"></a>非受限管理帐户
-有两个充当管理员的管理帐户（**服务器管理员**和 **Active Directory 管理员**）。 若要在 SQL 服务器中识别这些管理员帐户，请打开 Azure 门户并导航到 SQL 服务器的属性。
+有两个充当管理员的管理帐户（**服务器管理员**和 **Active Directory 管理员**）。 若要在 SQL 服务器中识别这些管理员帐户，请打开 Azure 门户并导航到 SQL 服务器或 SQL 数据库的“属性”选项卡。
 
-![SQL 服务器管理员](./media/sql-database-manage-logins/sql-admins.png)
+![SQL 服务器管理员](media/sql-database-manage-logins/sql-admins.png)
 
 - **服务器管理员**   
 创建 Azure SQL 服务器时，必须指定**服务器管理员登录名**。 SQL 服务器创建该帐户作为 master 数据库中的登录名。 此帐户通过 SQL Server 身份验证（用户名和密码）进行连接。 此类帐户只能存在一个。   

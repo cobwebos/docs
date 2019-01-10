@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/15/2018
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: 345e7c6985f03081048019912d636bba8e9a2361
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: b5a129c2a92c18b979a3b0c2eeea7fa19791551c
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49426475"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53633759"
 ---
 # <a name="use-an-azure-ad-identity-to-access-azure-storage-with-cli-or-powershell-preview"></a>使用 Azure AD 标识通过 CLI 或 PowerShell 访问 Azure 存储（预览版）
 
@@ -56,10 +56,7 @@ az storage blob download --account-name storagesamples --container sample-contai
 
 ## <a name="call-powershell-commands-with-an-azure-ad-identity"></a>通过 Azure AD 标识调用 PowerShell 命令
 
-Azure PowerShell 仅支持通过以下预览模块之一使用 Azure AD 标识登录： 
-
-- 4.4.0-preview 
-- 4.4.1-preview 
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 使用 Azure PowerShell 通过 Azure AD 标识登录：
 
@@ -78,23 +75,23 @@ Azure PowerShell 仅支持通过以下预览模块之一使用 Azure AD 标识�
 1. 安装最新版本的 Azure PowerShell：
 
     ```powershell
-    Install-Module AzureRM –Repository PSGallery –AllowClobber
+    Install-Module Az –Repository PSGallery –AllowClobber
     ```
 
-1. 安装一个支持 Azure AD 的 Azure 存储预览模块：
-
-    ```powershell
-    Install-Module Azure.Storage –Repository PSGallery -RequiredVersion 4.4.1-preview  –AllowPrerelease –AllowClobber –Force 
-    ```
+1. 安装支持 Azure AD 的 Azure 存储预览模块：
+   
+   ```powershell
+   Install-Module Az.Storage -Repository PSGallery -AllowPrerelease -AllowClobber -Force
+   ```
 1. 关闭并重新打开 PowerShell 窗口。
-1. 调用 [New-AzureStorageContext](https://docs.microsoft.com/powershell/module/azure.storage/new-azurestoragecontext) cmdlet 以创建上下文，并添加 `-UseConnectedAccount` 参数。 
+1. 调用 [New-AzStorageContext](https://docs.microsoft.com/powershell/module/azure.storage/new-AzStoragecontext) cmdlet 以创建上下文，并添加 `-UseConnectedAccount` 参数。 
 1. 若要使用 Azure AD 标识调用 cmdlet，请将新创建的上下文传递给 cmdlet。
 
 以下示例演示如何使用 Azure AD 标识通过 Azure PowerShell 列出容器中的 blob。 请务必将占位符帐户名称和容器名称替换为自己的值： 
 
 ```powershell
-$ctx = New-AzureStorageContext -StorageAccountName storagesamples -UseConnectedAccount 
-Get-AzureStorageBlob -Container sample-container -Context $ctx 
+$ctx = New-AzStorageContext -StorageAccountName storagesamples -UseConnectedAccount 
+Get-AzStorageBlob -Container sample-container -Context $ctx 
 ```
 
 ## <a name="next-steps"></a>后续步骤

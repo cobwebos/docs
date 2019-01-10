@@ -10,12 +10,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017,seodec18
 ms.topic: conceptual
 ms.date: 08/27/2018
-ms.openlocfilehash: e760b67c1b971613de6b21102687c8ffeb556ed8
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: ce39b431adfd333db1e771913ed28881a193b327
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53386870"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53790823"
 ---
 # <a name="set-up-clusters-in-hdinsight-with-apache-hadoop-apache-spark-apache-kafka-and-more"></a>使用 Apache Hadoop、Apache Spark、Apache Kafka 及其他组件在 HDInsight 中设置群集
 
@@ -107,12 +107,12 @@ Azure HDInsight 目前提供以下几种群集类型，每种类型都具有一�
 
 ## <a name="storage-endpoints-for-clusters"></a>群集的存储终结点
 
-虽然 Hadoop 的本地安装使用 Hadoop 分布式文件系统 (HDFS) 作为群集上的存储，但在云中，会使用连接到群集的存储终结点。 HDInsight 群集使用 [Azure Data Lake Store](hdinsight-hadoop-use-data-lake-store.md) 或 [Azure 存储中的 Blob](hdinsight-hadoop-use-blob-storage.md)。 使用 Azure 存储或 Data Lake Store 意味着可以安全地删除用于计算的 HDInsight 群集，同时仍保留数据。 
+虽然 Hadoop 的本地安装使用 Hadoop 分布式文件系统 (HDFS) 作为群集上的存储，但在云中，会使用连接到群集的存储终结点。 HDInsight 群集使用 [Azure Data Lake Storage](hdinsight-hadoop-use-data-lake-store.md) 或 [Azure 存储中的 Blob](hdinsight-hadoop-use-blob-storage.md)。 使用 Azure 存储或 Data Lake Storage 意味着可以安全地删除用于计算的 HDInsight 群集，同时仍保留数据。 
 
 > [!WARNING]  
 > 不支持在 HDInsight 群集之外的其他位置使用其他存储帐户。
 
-在配置期间，对于默认存储终结点，指定 Azure 存储帐户的 Blob 容器或 Data Lake Store。 默认存储包含应用程序日志和系统日志。 可以选择指定群集可访问的其他已链接 Azure 存储帐户和 Data Lake Store 帐户。 HDInsight 群集与从属存储帐户必须位于相同的 Azure 位置。
+在配置期间，对于默认存储终结点，需要指定 Azure 存储帐户的 Blob 容器或 Data Lake Storage。 默认存储包含应用程序日志和系统日志。 可以选择指定群集可访问的其他链接的 Azure 存储帐户和 Data Lake Storage 帐户。 HDInsight 群集与从属存储帐户必须位于相同的 Azure 位置。
 
 ![群集存储设置：与 HDFS 兼容的存储终结点](./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-cluster-creation-storage.png)
 
@@ -247,7 +247,7 @@ HDInsight 群集的成本取决于节点数和节点的虚拟机大小。
 
 ## <a name="troubleshoot-access-control-issues"></a>排查访问控制问题
 
-如果在创建 HDInsight 群集时遇到问题，请参阅[访问控制要求](hdinsight-administer-use-portal-linux.md#create-clusters)。
+如果在创建 HDInsight 群集时遇到问题，请参阅[访问控制要求](hdinsight-hadoop-create-linux-clusters-portal.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

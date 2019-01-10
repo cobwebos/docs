@@ -1,19 +1,20 @@
 ---
 title: 如何在 Azure 数字孪生中配置监视 | Microsoft Docs
-description: 如何在 Azure 数字孪生中配置监视
+description: 如何在 Azure 数字孪生中配置监视。
 author: kingdomofends
 manager: alinast
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 10/22/2018
+ms.date: 12/26/2018
 ms.author: adgera
-ms.openlocfilehash: 1c8f1931a29ae9769f7d8ad57a184e3240105a1a
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.custom: seodec18
+ms.openlocfilehash: 2749a5c6c4e6003c51523d83c46b48d3b55b3d45
+ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49945803"
+ms.lasthandoff: 12/28/2018
+ms.locfileid: "53807578"
 ---
 # <a name="how-to-configure-monitoring-in-azure-digital-twins"></a>如何在 Azure 数字孪生中配置监视
 
@@ -23,7 +24,7 @@ Azure 数字孪生支持可靠的日志记录、监视和分析。 解决方案�
 
 ## <a name="review-activity-logs"></a>查看活动日志
 
-通过 Azure [活动日志](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs) 可以快速了解每个 Azure 服务实例的订阅级别事件和操作历史记录。
+通过 Azure [活动日志](../azure-monitor/platform/activity-logs-overview.md) 可以快速了解每个 Azure 服务实例的订阅级别事件和操作历史记录。
 
 订阅级别事件包括：
 
@@ -54,7 +55,7 @@ Azure 数字孪生的活动日志记录默认启用，可以通过以下方式�
 
 ## <a name="enable-customer-diagnostic-logs"></a>启用客户诊断日志
 
-可以为每个 Azure 实例设置 Azure [诊断设置](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)来补充活动日志记录。 虽然活动日志与订阅级别事件相关，但诊断日志记录可提供有关资源本身的操作历史记录的见解。
+可以为每个 Azure 实例设置 Azure [诊断设置](../azure-monitor/platform/diagnostic-logs-overview.md)来补充活动日志记录。 虽然活动日志与订阅级别事件相关，但诊断日志记录可提供有关资源本身的操作历史记录的见解。
 
 诊断日志记录的示例包括：
 
@@ -74,7 +75,7 @@ Azure 数字孪生的活动日志记录默认启用，可以通过以下方式�
 
     ![诊断设置二][5]
 
-    诊断日志通常使用 [Azure 文件存储](https://docs.microsoft.com/azure/storage/files/storage-files-deployment-guide)保存，并与 [Azure Log Analytics](https://docs.microsoft.com/azure/log-analytics/query-language/get-started-analytics-portal) 共享。 可以同时选择这两个选项。
+    诊断日志通常使用 [Azure 文件存储](../storage/files/storage-files-deployment-guide.md)保存，并与 [Azure Log Analytics](../azure-monitor/log-query/get-started-portal.md) 共享。 可以同时选择这两个选项。
 
 >[!TIP]
 >使用诊断日志了解资源操作。
@@ -91,7 +92,7 @@ Azure Monitor 包含功能强大的 Log Analytics 服务，该服务允许在一
 * 查看若干个用户定义的函数的日志
 * 在特定时间范围内显示两个或多个服务的日志
 
-通过 [Azure Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-queries) 可提供完整日志查询。 设置这些强大的功能：
+通过 [Azure Log Analytics](../azure-monitor/log-query/log-query-overview.md) 可提供完整日志查询。 设置这些强大的功能：
 
 1. 在 Azure 门户中搜索“Log Analytics”。
 1. 将看到可用的 Log Analytics 实例。 选择一个实例，然后选择“日志”进行查询：
@@ -106,7 +107,7 @@ Azure Monitor 包含功能强大的 Log Analytics 服务，该服务允许在一
 
    ![日志管理][8]
 
-有关功能强大的查询操作的详细信息，请参阅[开始使用查询](https://docs.microsoft.com/azure/log-analytics/query-language/get-started-queries)。
+有关功能强大的查询操作的详细信息，请参阅[开始使用查询](../azure-monitor/log-query/get-started-queries.md)。
 
 > [!NOTE]
 > 将事件首次发送到 Log Analytics 时，可能会遇到 5 分钟的延迟。
@@ -120,15 +121,15 @@ Azure Log Analytics 还提供强大的错误和警报通知服务，可通过单
 
 ## <a name="other-options"></a>其他选项
 
-Azure 的数字孪生还支持特定于应用程序的日志记录和安全审核。 有关 Azure 数字孪生实例可用的所有 Azure 日志记录选项的完整概述，请参阅 [Azure 日志审核](https://docs.microsoft.com/azure/security/azure-log-audit)一文。
+Azure 的数字孪生还支持特定于应用程序的日志记录和安全审核。 有关 Azure 数字孪生实例可用的所有 Azure 日志记录选项的完整概述，请参阅 [Azure 日志审核](../security/azure-log-audit.md)一文。
 
 ## <a name="next-steps"></a>后续步骤
 
-详细了解 Azure [活动日志](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs)。
+- 详细了解 Azure [活动日志](../azure-monitor/platform/activity-logs-overview.md)。
 
-通过阅读[诊断日志概述](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)深入了解 Azure 诊断设置。
+- 通过阅读[诊断日志概述](../azure-monitor/platform/diagnostic-logs-overview.md)深入了解 Azure 诊断设置。
 
-详细了解 [Azure Log Analytics](https://docs.microsoft.com/azure/log-analytics/query-language/get-started-analytics-portal)。
+- 详细了解 [Azure Log Analytics](../azure-monitor/log-query/get-started-portal.md)。
 
 <!-- Images -->
 [1]: media/how-to-configure-monitoring/activity-log.png

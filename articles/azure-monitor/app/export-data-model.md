@@ -10,17 +10,17 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 03/21/2016
+ms.date: 01/08/2018
 ms.author: mbullwin
-ms.openlocfilehash: 2ce302f78de2cd344c82300a808b125c3443179f
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 12025dfb93bbcfc86ae301f8fb63e7ac74697cf2
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54000030"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54119266"
 ---
 # <a name="application-insights-export-data-model"></a>Application Insights 导出数据模型
-此表列出了从 [Application Insights](../../application-insights/app-insights-overview.md) SDK 发送到门户的遥测属性。
+此表列出了从 [Application Insights](../../azure-monitor/app/app-insights-overview.md) SDK 发送到门户的遥测属性。
 [连续导出](export-telemetry.md)的数据输出中会显示这些属性。
 这些属性还显示在[指标资源管理器](../../azure-monitor/app/metrics-explorer.md)和[诊断搜索](../../azure-monitor/app/diagnostic-search.md)的属性筛选器中。
 
@@ -130,9 +130,11 @@ ms.locfileid: "54000030"
 | context.device.locale |字符串 |en-GB、de-DE... |
 | context.device.network |字符串 | |
 | context.device.oemName |字符串 | |
+| context.device.os |字符串 | |
 | context.device.osVersion |字符串 |主机 OS |
 | context.device.roleInstance |字符串 |服务器主机的 ID |
 | context.device.roleName |字符串 | |
+| context.device.screenResolution |字符串 | |
 | context.device.type |字符串 |电脑、浏览器... |
 | context.location |对象 |派生自 clientip。 |
 | context.location.city |字符串 |派生自 clientip（如果已知） |
@@ -146,10 +148,13 @@ ms.locfileid: "54000030"
 | context.session.id |字符串 |一组来自相同源的操作的 ID。 如果在 30 分钟期限内没有操作，则表示会话结束。 |
 | context.session.isFirst |布尔值 | |
 | context.user.accountAcquisitionDate |字符串 | |
+| context.user.accountId |字符串 | |
 | context.user.anonAcquisitionDate |字符串 | |
 | context.user.anonId |字符串 | |
 | context.user.authAcquisitionDate |字符串 |[经过身份验证的用户](../../azure-monitor/app/api-custom-events-metrics.md#authenticated-users) |
+| context.user.authId |字符串 | |
 | context.user.isAuthenticated |布尔值 | |
+| context.user.storeRegion |字符串 | |
 | internal.data.documentVersion |字符串 | |
 | internal.data.id |字符串 | 将项引入到 Application Insights 时分配的唯一 ID |
 
@@ -158,7 +163,7 @@ ms.locfileid: "54000030"
 
 | 路径 | 类型 | 说明 |
 | --- | --- | --- |
-| event [0] count |integer |100/([采样](../../application-insights/app-insights-sampling.md)率)。 例如 4 =&gt; 25%。 |
+| event [0] count |integer |100/([采样](../../azure-monitor/app/sampling.md)率)。 例如 4 =&gt; 25%。 |
 | event [0] name |字符串 |事件名称。  最大长度为 250。 |
 | event [0] url |字符串 | |
 | event [0] urlData.base |字符串 | |
@@ -170,7 +175,7 @@ ms.locfileid: "54000030"
 | 路径 | 类型 | 说明 |
 | --- | --- | --- |
 | basicException [0] assembly |字符串 | |
-| basicException [0] count |integer |100/([采样](../../application-insights/app-insights-sampling.md)率)。 例如 4 =&gt; 25%。 |
+| basicException [0] count |integer |100/([采样](../../azure-monitor/app/sampling.md)率)。 例如 4 =&gt; 25%。 |
 | basicException [0] exceptionGroup |字符串 | |
 | basicException [0] exceptionType |字符串 | |
 | basicException [0] failedUserCodeMethod |字符串 | |
@@ -211,7 +216,7 @@ ms.locfileid: "54000030"
 | remoteDependency [0] async |布尔值 | |
 | remoteDependency [0] baseName |字符串 | |
 | remoteDependency [0] commandName |字符串 |例如“home/index” |
-| remoteDependency [0] count |integer |100/([采样](../../application-insights/app-insights-sampling.md)率)。 例如 4 =&gt; 25%。 |
+| remoteDependency [0] count |integer |100/([采样](../../azure-monitor/app/sampling.md)率)。 例如 4 =&gt; 25%。 |
 | remoteDependency [0] dependencyTypeName |字符串 |HTTP、SQL... |
 | remoteDependency [0] durationMetric.value |数字 |从依赖项调用到完成响应花费的时间 |
 | remoteDependency [0] id |字符串 | |
@@ -229,7 +234,7 @@ ms.locfileid: "54000030"
 
 | 路径 | 类型 | 说明 |
 | --- | --- | --- |
-| request [0] count |integer |100/([采样](../../application-insights/app-insights-sampling.md)率)。 例如：4 =&gt; 25%. |
+| request [0] count |integer |100/([采样](../../azure-monitor/app/sampling.md)率)。 例如：4 =&gt; 25%. |
 | request [0] durationMetric.value |数字 |从请求到响应花费的时间。 1e7 == 1s |
 | request [0] id |字符串 |操作 ID |
 | request [0] name |字符串 |GET/POST + URL 基。  最大长度为 250 |
@@ -264,7 +269,7 @@ ms.locfileid: "54000030"
 
 | 路径 | 类型 | 说明 |
 | --- | --- | --- |
-| view [0] count |integer |100/([采样](../../application-insights/app-insights-sampling.md)率)。 例如 4 =&gt; 25%。 |
+| view [0] count |integer |100/([采样](../../azure-monitor/app/sampling.md)率)。 例如 4 =&gt; 25%。 |
 | view [0] durationMetric.value |integer |在 trackPageView() 中设置的，或者由 startTrackPage() - stopTrackPage() 设置的可选值。 与 clientPerformance 值不同。 |
 | view [0] name |字符串 |页面标题。  最大长度为 250 |
 | view [0] url |字符串 | |
@@ -279,7 +284,7 @@ ms.locfileid: "54000030"
 | --- | --- | --- |
 | availability [0] availabilityMetric.name |字符串 |availability |
 | availability [0] availabilityMetric.value |数字 |1.0 或 0.0 |
-| availability [0] count |integer |100/([采样](../../application-insights/app-insights-sampling.md)率)。 例如 4 =&gt; 25%。 |
+| availability [0] count |integer |100/([采样](../../azure-monitor/app/sampling.md)率)。 例如 4 =&gt; 25%。 |
 | availability [0] dataSizeMetric.name |字符串 | |
 | availability [0] dataSizeMetric.value |integer | |
 | availability [0] durationMetric.name |字符串 | |
@@ -341,12 +346,12 @@ ms.locfileid: "54000030"
 
 上表中省略了一些极少用到的字段：count、min、max、stdDev 和 sampledValue。
 
-如果需要减少遥测量，可以改用[采样](../../application-insights/app-insights-sampling.md)，而不要使用预先聚合的指标。
+如果需要减少遥测量，可以改用[采样](../../azure-monitor/app/sampling.md)，而不要使用预先聚合的指标。
 
 ### <a name="durations"></a>持续时间
 除非另有规定，否则持续时间以十分之一微秒表示，因此 10000000.0 表示 1 秒。
 
 ## <a name="see-also"></a>另请参阅
-* [Application Insights](../../application-insights/app-insights-overview.md)
+* [Application Insights](../../azure-monitor/app/app-insights-overview.md)
 * [连续导出](export-telemetry.md)
 * [代码示例](export-telemetry.md#code-samples)

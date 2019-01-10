@@ -7,12 +7,12 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.topic: conceptual
 ms.date: 10/15/2018
-ms.openlocfilehash: 724e6c57f10fb85b4b91c2236d17a64899953d67
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: 204a3230c782279b0cad4194e97aa4014c940635
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52581929"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53608488"
 ---
 # <a name="improve-performance-of-apache-spark-workloads-using-azure-hdinsight-io-cache-preview"></a>使用 Azure HDInsight IO 缓存提高 Apache Spark 工作负载的性能（预览版）
 
@@ -20,7 +20,7 @@ IO 缓存是 Azure HDInsight 的数据缓存服务，可用于提高 Apache Spar
 
 大多数 SSD 提供超过 1 GB/秒的带宽。 此带宽由操作系统内存中文件缓存补充，提供的带宽足以加载大数据计算处理引擎（如 Apache Spark）。 剩余的操作内存可供 Apache Spark 处理很大程度依赖于内存的任务（如数据重组）。 独占使用操作内存可让 Apache Spark 实现最佳资源使用情况。  
 
->[!Note]
+>[!Note]  
 >IO 缓存当前将 RubiX 用作缓存组件，但在该服务的将来版本中可能会有所更改。 请使用 IO 缓存接口，并且不要直接对 RubiX 实现执行任何依赖项。
 
 ## <a name="benefits-of-azure-hdinsight-io-cache"></a>Azure HDInsight IO 缓存的优点
@@ -45,7 +45,7 @@ IO 缓存是 Azure HDInsight 的数据缓存服务，可用于提高 Apache Spar
 
 1. 确认重新启动群集上所有受影响的服务。
 
->[!NOTE] 
+>[!NOTE]  
 > 即使进度栏显示已激活，但 IO 缓存实际上未启用，直到重新启动其他受影响的服务。
 
 ## <a name="troubleshooting"></a>故障排除
@@ -78,4 +78,4 @@ IO 缓存是 Azure HDInsight 的数据缓存服务，可用于提高 Apache Spar
 
 ## <a name="next-steps"></a>后续步骤
 
-- 阅读有关 IO 缓存的详细信息，包括以下博客文章中的性能基准：[Apache Spark 作业通过 HDInsight IO 缓存使速度加快 9 倍](https://azure.microsoft.com/en-us/blog/apache-spark-speedup-with-hdinsight-io-cache/)
+- 阅读关于 IO 缓存的更多信息，包括这篇博客文章中的性能基准：[Apache Spark jobs gain up to 9x speed up with HDInsight IO Cache](https://azure.microsoft.com/en-us/blog/apache-spark-speedup-with-hdinsight-io-cache/)（Apache Spark 作业使用 HDInsight IO 缓存提升多达 9 倍的速度）

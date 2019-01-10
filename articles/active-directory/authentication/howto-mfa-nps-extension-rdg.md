@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: michmcla
-ms.openlocfilehash: 013b63d0eb2cc69893dcb4075c1ca26a31ef2474
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: db7591c98147a5728486843efb0c807b6094557a
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53277975"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53601468"
 ---
 # <a name="integrate-your-remote-desktop-gateway-infrastructure-using-the-network-policy-server-nps-extension-and-azure-ad"></a>使用网络策略服务器 (NPS) 扩展和 Azure AD 集成远程桌面网关基础结构
 
@@ -26,7 +26,7 @@ Azure 网络策略服务 (NPS) 扩展允许客户使用 Azure 基于云的[多�
 本文将逐步说明如何使用 Azure 的 NPS 扩展集成 NPS 基础结构与 Azure MFA。 这使得尝试登录到远程桌面网关的用户能够进行安全验证。
 
 > [!NOTE]
-> 本文不适用于 MFA 服务器部署，仅适用于 Azure MFA（基于云）。
+> 本文不适用于 MFA 服务器部署，仅适用于 Azure MFA（基于云）部署。
 
 网络策略和访问服务 (NPS) 使组织能够执行以下操作：
 
@@ -162,7 +162,7 @@ NPS 角色服务提供 RADIUS 服务器和客户端功能，以及网络访问�
 
 1. 打开管理 Windows PowerShell 提示符。
 1. 在 PowerShell 命令提示符处，键入 `cd ‘c:\Program Files\Microsoft\AzureMfa\Config’` 并按 ENTER。
-1. 键入 `.\AzureMfsNpsExtnConfigSetup.ps1`，然后按 ENTER。 该脚本将检查是否已安装 Azure Active Directory PowerShell 模块。 如果未安装，该脚本将为你安装此模块。
+1. 键入 `.\AzureMfaNpsExtnConfigSetup.ps1`，然后按 ENTER。 该脚本将检查是否已安装 Azure Active Directory PowerShell 模块。 如果未安装，该脚本将为你安装此模块。
 
   ![Azure AD PowerShell](./media/howto-mfa-nps-extension-rdg/image4.png)
   

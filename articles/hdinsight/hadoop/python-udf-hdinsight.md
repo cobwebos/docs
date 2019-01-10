@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 02/27/2018
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.openlocfilehash: 021ec3919e061010265ff3a2f30fde0ffb59e7b0
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: 92221e5aaebbaebb2af17ea211e38a3665a2b04f
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51632605"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53652467"
 ---
 # <a name="use-python-user-defined-functions-udf-with-apache-hive-and-apache-pig-in-hdinsight"></a>在 HDInsight 中通过 Apache Hive 和 Apache Pig 使用 Python 用户定义函数 (UDF)
 
@@ -26,7 +26,7 @@ Python2.7 默认安装在 HDInsight 3.0 和更高版本上。 可以结合此 Py
 
 HDInsight 还包含 Jython，后者是用 Java 编写的 Python 实现。 Jython 直接在 Java 虚拟机上运行，不使用流式处理。 将 Python 与 Pig 配合使用时，我们建议将 Jython 用作 Python 解释器。
 
-> [!WARNING]
+> [!WARNING]  
 > 本文档中的步骤基于以下假设： 
 >
 > * 在本地开发环境中创建 Python 脚本。
@@ -38,7 +38,7 @@ HDInsight 还包含 Jython，后者是用 Java 编写的 Python 实现。 Jython
 > * 使用 `scp` 将文件从 Cloud Shell 上传到 HDInsight。
 > * 在 Cloud Shell 中使用 `ssh` 连接到 HDInsight 并运行示例。
 
-## <a name="hivepython"></a>Hive UDF
+## <a name="hivepython"></a>Apache Hive UDF
 
 可通过 HiveQL `TRANSFORM` 语句将 Python 用作 Hive 中的 UDF。 例如，以下 HiveQL 调用群集的默认 Azure 存储帐户中存储的 `hiveudf.py` 文件。
 
@@ -66,7 +66,7 @@ FROM hivesampletable
 ORDER BY clientid LIMIT 50;
 ```
 
-> [!NOTE]
+> [!NOTE]  
 > 在基于 Windows 的 HDInsight 群集上，`USING` 子句必须指定 python.exe 的完整路径。
 
 下面是本示例执行的操作：
@@ -111,7 +111,7 @@ while True:
 
 有关如何在 HDInsight 群集上运行此示例的信息，请参阅[运行示例](#running)。
 
-## <a name="pigpython"></a>Pig UDF
+## <a name="pigpython"></a>Apache Pig UDF
 
 在整个 `GENERATE` 语句中，Python 脚本可用作 Pig 中的 UDF。 可以使用 Jython 或 C Python 运行脚本。
 
@@ -123,7 +123,7 @@ while True:
 * **使用 Jython**：`register '/path/to/pigudf.py' using jython as myfuncs;`
 * **使用 C Python**：`register '/path/to/pigudf.py' using streaming_python as myfuncs;`
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > 使用 Jython 时，pig_jython 文件的路径可以是本地路径或 WASB:// 路径。 但是，使用 C Python 时，必须引用用于提交 Pig 作业的节点的本地文件系统上的文件。
 
 通过注册后，此示例的 Pig Latin 对于两个脚本是相同的：
@@ -182,7 +182,7 @@ def create_structure(input):
 
 ## <a name="running"></a>上传并运行示例
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > **SSH** 步骤仅适用于基于 Linux 的 HDInsight 群集。 **PowerShell** 步骤适用于基于 Linux 或 Windows 的 HDInsight 群集，但需要 Windows 客户端。
 
 ### <a name="ssh"></a>SSH
@@ -303,7 +303,7 @@ def create_structure(input):
 
 可以使用 PowerShell 将文件上传到 HDInsight 服务器。 使用以下脚本上传 Python 文件：
 
-> [!IMPORTANT] 
+> [!IMPORTANT]   
 > 本部分中的步骤使用 Azure PowerShell。 有关如何使用 Azure PowerShell 的详细信息，请参阅[如何安装和配置 Azure PowerShell](/powershell/azure/overview)。
 
 [!code-powershell[main](../../../powershell_scripts/hdinsight/run-python-udf/run-python-udf.ps1?range=5-41)]
@@ -313,14 +313,14 @@ def create_structure(input):
 
 此脚本将检索 HDInsight 群集的信息，然后提取默认存储帐户的名称和密钥，并将文件上传到容器的根目录。
 
-> [!NOTE]
-> 有关上传文件的详细信息，请参阅[在 HDInsight 中上传 Hadoop 作业的数据](../hdinsight-upload-data.md)文档。
+> [!NOTE]  
+> 有关上传文件的详细信息，请参阅[在 HDInsight 中上传 Apache Hadoop 作业的数据](../hdinsight-upload-data.md)文档。
 
 #### <a name="powershell-use-the-hive-udf"></a>PowerShell：使用 Hive UDF
 
 也可以使用 PowerShell 远程运行 Hive 查询。 使用以下 PowerShell 脚本来运行使用 **hiveudf.py** 脚本的 Hive 查询：
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > 在运行之前，该脚本会提示输入 HDInsight 群集的 HTTPs/管理员帐户信息。
 
 [!code-powershell[main](../../../powershell_scripts/hdinsight/run-python-udf/run-python-udf.ps1?range=45-94)]
@@ -337,7 +337,7 @@ def create_structure(input):
 
 也可以使用 PowerShell 运行 Pig Latin 作业。 若要运行使用 **pigudf.py** 脚本的 Pig Latin 作业，请使用以下 PowerShell 脚本：
 
-> [!NOTE]
+> [!NOTE]  
 > 使用 PowerShell 远程提交作业时，无法使用 C Python 作为解释器。
 
 [!code-powershell[main](../../../powershell_scripts/hdinsight/run-python-udf/run-python-udf.ps1?range=98-144)]
@@ -383,6 +383,6 @@ def create_structure(input):
 
 若要了解使用 Pig、Hive 的其他方式以及如何使用 MapReduce，请参阅以下文档：
 
-* [将 Hive 与 HDInsight 配合使用](hdinsight-use-hive.md)
-* [将 Pig 与 HDInsight 配合使用](hdinsight-use-pig.md)
+* [将 Apache Hive 和 HDInsight 配合使用](hdinsight-use-hive.md)
+* [将 Apache Pig 和 HDInsight 配合使用](hdinsight-use-pig.md)
 * [将 MapReduce 与 HDInsight 配合使用](hdinsight-use-mapreduce.md)

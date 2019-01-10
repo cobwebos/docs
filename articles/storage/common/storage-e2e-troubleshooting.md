@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 03/15/2017
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: cf183b0a78ff3f7e442ea8052f37fc2df58aac54
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 80a2ed779fa65c669be81fdf8212b7d018325ee5
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51262312"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53634501"
 ---
 # <a name="end-to-end-troubleshooting-using-azure-storage-metrics-and-logging-azcopy-and-message-analyzer"></a>使用 Azure 存储指标和日志记录、AzCopy 及 Message Analyzer 进行端到端故障排除
 [!INCLUDE [storage-selector-portal-e2e-troubleshooting](../../../includes/storage-selector-portal-e2e-troubleshooting.md)]
@@ -94,6 +94,8 @@ Azure 存储操作可能返回 HTTP 状态代码大于 299 作为其正常功能
 
 **通过 PowerShell**
 
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
 若要开始使用 Azure 适用的 PowerShell，请参阅[如何安装和配置 Azure PowerShell](/powershell/azure/overview)。
 
 1. 通过 [Add-AzureAccount](/powershell/module/servicemanagement/azure/add-azureaccount?view=azuresmps-3.7.0) cmdlet，将 Azure 用户帐户添加到 PowerShell 窗口中：
@@ -114,13 +116,13 @@ Azure 存储操作可能返回 HTTP 状态代码大于 299 作为其正常功能
 4. 为 Blob 服务启用存储日志记录：
    
     ```powershell
-    Set-AzureStorageServiceLoggingProperty -ServiceType Blob -LoggingOperations Read,Write,Delete -PassThru -RetentionDays 7 -Version 1.0
+    Set-AzStorageServiceLoggingProperty -ServiceType Blob -LoggingOperations Read,Write,Delete -PassThru -RetentionDays 7 -Version 1.0
     ```
 
 5. 为 Blob 服务启用存储度量值，确保将 **-MetricsType** 设置为 `Minute`：
    
     ```powershell
-    Set-AzureStorageServiceMetricsProperty -ServiceType Blob -MetricsType Minute -MetricsLevel ServiceAndApi -PassThru -RetentionDays 7 -Version 1.0
+    Set-AzStorageServiceMetricsProperty -ServiceType Blob -MetricsType Minute -MetricsLevel ServiceAndApi -PassThru -RetentionDays 7 -Version 1.0
     ```
 
 ### <a name="configure-net-client-side-logging"></a>配置 .NET 客户端日志记录
@@ -198,11 +200,11 @@ Message Analyzer 包括 Azure 存储的资产，可帮助你分析服务器、�
 2. 启动 Message Analyzer。
 3. 从“工具”菜单中选择“资产管理器”。 在“资产管理器”对话框中，选择“下载”，并筛选“Azure 存储”。 会看到 Azure 存储资产，如下图中所示。
 4. 单击“同步所有显示的项”以安装 Azure 存储资产。 可用的资产包括：
-   * **Azure 存储颜色规则：** 可通过这些规则定义特殊筛选器，利用颜色、文本和字体样式突出显示跟踪中包含特定信息的消息。
+   * **Azure 存储颜色规则：** 可通过Azure 存储颜色规则定义特殊筛选器，利用颜色、文本和字体样式突出显示跟踪中包含特定信息的消息。
    * **Azure 存储图表：** Azure 存储图表是根据服务器日志数据绘制的预定义图表。 请注意，若在此时使用 Azure 存储图表，可以只将服务器日志加载到分析网格中。
    * **Azure 存储分析程序：** 该程序可分析 Azure 存储客户端、服务器和 HTTP 日志，将其显示在分析网格中。
-   * **Azure 存储筛选器：** 它是可用于查询分析网格中的数据的预定义条件。
-   * **Azure 存储视图布局：** 它是分析网格中的预定义列布局和分组。
+   * **Azure 存储筛选器：** Azure 存储筛选器是可用于查询分析网格中的数据的预定义条件。
+   * **Azure 存储视图布局：** Azure 存储视图布局是分析网格中的预定义列布局和分组。
 5. 安装资产后，请重新启动 Message Analyzer。
 
 ![Message Analyzer 资产管理器](./media/storage-e2e-troubleshooting/mma-start-page-1.png)
@@ -344,14 +346,14 @@ Message Analyzer 将查找并选择搜索条件匹配客户端请求 ID 的第�
 | 队列上的消息传递出现意外的延迟 |AzureStorageClientDotNetV4.Description   包含“正在重试失败的操作。” |Client |
 | PercentThrottlingError 的 HTTP 提升 |HTTP.Response.StatusCode == 500 &#124;&#124; HTTP.Response.StatusCode == 503 |网络 |
 | PercentTimeoutError 提升 |HTTP.Response.StatusCode == 500 |网络 |
-| PercentTimeoutError 提升（全部） |*StatusCode == 500 |全部 |
+| PercentTimeoutError 提升（全部） |*StatusCode == 500 |All |
 | PercentNetworkError 提升 |AzureStorageClientDotNetV4.EventLogEntry.Level < 2 |Client |
 | HTTP 403（禁止）消息 |HTTP.Response.StatusCode == 403 |网络 |
 | HTTP 404（未找到）消息 |HTTP.Response.StatusCode == 404 |网络 |
-| 404（全部） |*StatusCode == 404 |全部 |
+| 404（全部） |*StatusCode == 404 |All |
 | 共享访问签名 (SAS) 授权问题 |AzureStorageLog.RequestStatus == "SASAuthorizationError" |网络 |
 | HTTP 409（冲突）消息 |HTTP.Response.StatusCode == 409 |网络 |
-| 409（全部） |*StatusCode == 409 |全部 |
+| 409（全部） |*StatusCode == 409 |All |
 | 低 PercentSuccess 或分析日志项包含事务状态为 ClientOtherErrors 的操作 |AzureStorageLog.RequestStatus == "ClientOtherError" |服务器 |
 | Nagle 警告 |((AzureStorageLog.EndToEndLatencyMS - AzureStorageLog.ServerLatencyMS) > (AzureStorageLog.ServerLatencyMS * 1.5)) 和 (AzureStorageLog.RequestPacketSize <1460) 和 (AzureStorageLog.EndToEndLatencyMS - AzureStorageLog.ServerLatencyMS >= 200) |服务器 |
 | 服务器和网络日志中的时间范围 |#Timestamp >= 2014-10-20T16:36:38 和 #Timestamp <= 2014-10-20T16:36:39 |服务器、网络 |

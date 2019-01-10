@@ -1,5 +1,5 @@
 ---
-title: 认知搜索管道中自定义技能的接口定义 - Azure 搜索
+title: 认知搜索中自定义技能的接口定义 - Azure 搜索
 description: Azure 搜索的认知搜索管道中的 web-api 自定义技能的自定义数据提取接口。
 manager: pablocas
 author: luiscabrer
@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/14/2018
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: 1df2a565b1c9e8bd2bea75ce78abc84608c89eea
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: deb72bcc41e20057b6e7b214c6a8c93655894a12
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53314646"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53628266"
 ---
 # <a name="how-to-add-a-custom-skill-to-a-cognitive-search-pipeline"></a>如何将自定义技能添加到认知搜索管道
 

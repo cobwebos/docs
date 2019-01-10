@@ -12,16 +12,16 @@ ms.topic: conceptual
 ms.date: 10/31/2018
 ms.reviewer: sergkanz
 ms.author: lagayhar
-ms.openlocfilehash: 946d0895ff25509a0e35695fe27c783b3c50784b
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: a6937b5b6b3b85dd51d80a928de02a00c361cc0e
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53999571"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54117599"
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Application Insights 中的遥测关联
 
-在微服务的世界中，每次逻辑操作都需要在服务的不同组件中完成工作。 这些组件都可由 [Application Insights](../../application-insights/app-insights-overview.md) 单独监视。 Web 应用组件与身份验证提供程序组件通信以验证用户凭据，并与 API 组件通信以获取要可视化的数据。 而 API 组件可从其他服务查询数据，还可使用缓存提供程序组件，并通知有关此调用的计费组件。 Application Insights 支持分布式遥测关联。 它允许检测哪个组件要对故障或性能下降问题负责。
+在微服务的世界中，每次逻辑操作都需要在服务的不同组件中完成工作。 这些组件都可由 [Application Insights](../../azure-monitor/app/app-insights-overview.md) 单独监视。 Web 应用组件与身份验证提供程序组件通信以验证用户凭据，并与 API 组件通信以获取要可视化的数据。 而 API 组件可从其他服务查询数据，还可使用缓存提供程序组件，并通知有关此调用的计费组件。 Application Insights 支持分布式遥测关联。 它允许检测哪个组件要对故障或性能下降问题负责。
 
 本文介绍了 Application Insights 用于关联由多个组件发送的遥测的数据模型。 其中阐述了上下文传播技术和协议， 以及如何在不同的语言和平台上实现相关的概念。
 

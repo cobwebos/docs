@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/11/2018
 ms.author: raynew
-ms.openlocfilehash: 588bd5b3edeadb841de54691cf30916dd18c0982
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: 6dd063f8d6520e3ee18dcb3899c1cca16d732707
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49092995"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53608709"
 ---
 # <a name="contoso-migration-refactor-a-contoso-linux-service-desk-app-to-multiple-regions-with-azure-app-service-traffic-manager-and-azure-mysql"></a>Contoso 迁移：使用 Azure 应用服务、流量管理器和 Azure MySQL 将 Contoso Linux 服务台应用重构到多个区域
 
@@ -28,12 +28,12 @@ ms.locfileid: "49092995"
 [文章 4：在 Azure VM 和 SQL 数据库托管实例上重新托管应用](contoso-migration-rehost-vm-sql-managed-instance.md) | Contoso 将其本地 SmartHotel360 应用直接迁移到 Azure。 Contoso 使用 [Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/site-recovery-overview) 迁移应用前端 VM。 Contoso 使用 [Azure 数据库迁移服务](https://docs.microsoft.com/azure/dms/dms-overview)将应用数据库迁移到 Azure SQL 数据库托管实例。 | 可用   
 [文章 5：在 Azure VM 上重新托管应用](contoso-migration-rehost-vm.md) | Contoso 使用 Site Recovery 服务将其 SmartHotel360 应用 VM 迁移到 Azure VM。 | 可用
 [文章 6：在 Azure VM 和 SQL Server AlwaysOn 可用性组中重新托管应用](contoso-migration-rehost-vm-sql-ag.md) | Contoso 迁移 SmartHotel360 应用。 Contoso 使用 Site Recovery 迁移应用 VM。 它使用数据库迁移服务将应用数据库迁移到受 AlwaysOn 可用性组保护的 SQL Server 群集。 | 可用 
-[文章 7：将 Linux 应用重新托管到 Azure VM](contoso-migration-rehost-linux-vm.md) | Contoso 使用 Azure Site Recovery 将 Linux osTicket 应用直接迁移到 Azure VM | 可用
+[文章 7：在 Azure VM 上重新托管 Linux 应用](contoso-migration-rehost-linux-vm.md) | Contoso 使用 Azure Site Recovery 将 Linux osTicket 应用直接迁移到 Azure VM | 可用
 [文章 8：在 Azure VM 和 Azure MySQL 上重新托管 Linux 应用](contoso-migration-rehost-linux-vm-mysql.md) | Contoso 使用 Azure Site Recovery 将 Linux osTicket 应用迁移到 Azure VM，并使用 MySQL 工作台将应用数据库迁移到 Azure MySQL 服务器实例。 | 可用
 [文章 9：基于 Azure Web 应用和 Azure SQL 数据库重构应用](contoso-migration-refactor-web-app-sql.md) | Contoso 将 SmartHotel360 应用迁移到 Azure Web 应用，并使用数据库迁移助手将应用数据库迁移到 Azure SQL Server 实例 | 可用
 文章 10：基于 Azure Web 应用和 Azure MySQL 重构 Linux 应用 | Contoso 使用 Azure 流量管理器将其 Linux osTicket 应用迁移到多个 Azure 区域上的 Azure Web 应用，并与 GitHub 集成以实现持续交付。 Contoso 将应用数据库迁移到 Azure Database for MySQL 实例。 | 本文
-[文章 11：重构 Azure DevOps Services 上的 TFS](contoso-migration-tfs-vsts.md) | Contoso 将其本地 Team Foundation Server 部署迁移到 Azure 中的 Azure DevOps Services。 | 可用
-[文章 12：基于 Azure 容器和 Azure SQL 数据库重构应用](contoso-migration-rearchitect-container-sql.md) | Contoso 将其 SmartHotel 应用迁移到 Azure。 然后，它将应用 Web 层重新架构为 Azure Service Fabric 中运行的 Windows 容器，以及具有 Azure SQL 数据库的数据库。 | 可用
+[文章 11：在 Azure DevOps Services 上重构 TFS](contoso-migration-tfs-vsts.md) | Contoso 将其本地 Team Foundation Server 部署迁移到 Azure 中的 Azure DevOps Services。 | 可用
+[文章 12：在 Azure 容器和 Azure SQL 数据库上重塑应用架构](contoso-migration-rearchitect-container-sql.md) | Contoso 将其 SmartHotel 应用迁移到 Azure。 然后，它将应用 Web 层重新架构为 Azure Service Fabric 中运行的 Windows 容器，以及具有 Azure SQL 数据库的数据库。 | 可用
 [文章 13：在 Azure 中重新生成应用](contoso-migration-rebuild.md) | Contoso 使用一系列 Azure 功能和服务（包括 Azure 应用服务、Azure Kubernetes 服务 (AKS)、Azure Functions、Azure 认知服务和 Azure Cosmos DB）重新生成其 SmartHotel360 应用。 | 可用
 [文章 14：到 Azure 的大规模迁移](contoso-migration-scale.md) | 尝试过组合迁移后，Contoso 准备大规模整体迁移到 Azure。 | 可用
 
@@ -44,9 +44,9 @@ ms.locfileid: "49092995"
 
 IT 领导团队与业务合作伙伴密切协作，以了解其想要实现的目标：
 
-- **应对业务增长**：Contoso 正在发展壮大，并且在扩展新市场。 他们需要更多的客户服务代理。 
-- **扩展**：构建的解决方案应当使 Contoso 能够随业务扩展添加更多的客户服务代理。
-- **提高恢复能力**：过去，系统发生的问题仅影响内部用户。 采用新业务模型后，外部用户将受影响，Contoso 需要让应用始终正常运行。
+- **满足业务增长**：Contoso 正在发展壮大，并且在扩展新市场。 他们需要更多的客户服务代理。 
+- **缩放**：构建的解决方案应当使 Contoso 能够随业务扩展添加更多的客户服务代理。
+- **提高复原能力**：过去，系统发生的问题仅影响内部用户。 采用新业务模型后，外部用户将受影响，Contoso 需要让应用始终正常运行。
 
 ## <a name="migration-goals"></a>迁移目标
 
@@ -133,8 +133,8 @@ Contoso 将按如下方式完成迁移进程：
 > * **步骤 2：设置流量管理器**：他们在 Web 应用之前设置流量管理器，用于对流量进行路由和负载均衡。
 > * **步骤 3：预配 MySQL**：在 Azure 中，预配 Azure MySQL 数据库的实例。
 > * **步骤 4：迁移数据库**：他们使用 MySQL Workbench 迁移数据库。 
-> * **步骤 5：设置 GitHub**：为应用网站/代码设置本地 GitHub 存储库。
-> * **步骤 6：部署 Web 应用**：从 GitHub 部署 Web 应用。
+> * **步骤 5：设置 GitHub**：他们为应用网站/代码设置本地 GitHub 存储库。
+> * **步骤 6：部署 Web 应用**：他们从 GitHub 部署 Web 应用。
 
 
 
@@ -163,7 +163,7 @@ Contoso 管理员使用 Azure 应用服务预配两个 Web 应用（每个区域
 
 **需要更多帮助？**
 
-- 了解 [Azure 应用服务 Web 应用](https://docs.microsoft.com/azure/app-service/app-service-web-overview)。
+- 了解 [Azure 应用服务 Web 应用](https://docs.microsoft.com/azure/app-service/overview)。
 - 了解 [Linux 上的 Azure 应用服务](https://docs.microsoft.com/azure/app-service/containers/app-service-linux-intro)。
 
 

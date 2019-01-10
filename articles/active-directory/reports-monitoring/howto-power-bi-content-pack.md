@@ -14,12 +14,12 @@ ms.component: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: d810b8be496bbfd1c5bd88d8221e77dd5b76c889
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 16026adc2eb0179cd2b42f449494cbbc6547b946
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51622954"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53651446"
 ---
 # <a name="how-to-use-the-azure-active-directory-power-bi-content-pack"></a>如何使用 Azure Active Directory Power BI 内容包
 
@@ -32,7 +32,7 @@ Azure Active directory (Azure AD) 的 Power BI 内容包包含预生成的报表
 
 ## <a name="prerequisites"></a>先决条件
 
-需要 Azure AD premium (P1/P2) 许可证才能使用内容包。 
+需要 Azure AD premium (P1/P2) 许可证才能使用内容包。 请参阅 [Azure Active Directory Premium 入门](../fundamentals/active-directory-get-started-premium.md)来升级 Azure Active Directory 版本。
 
 ## <a name="install-the-content-pack"></a>安装内容包
 
@@ -61,17 +61,17 @@ Azure AD Power BI 内容包中包含以下报表。 这些报表包含**过去 3
 - 位置 
 - 登录状态 
 
-**SSPR 漏斗图**：此报表可帮助你了解组织中如何使用 SSPR 工具。 可以查看通过 SSPR 工具尝试了多少次密码重置，以及多少次尝试成功。 还可以深入了解密码重置失败情况，并了解某些失败的发生原因。 
+**SSPR 漏斗图**：此报表可帮助了解如何在组织中使用 SSPR 工具。 可以查看通过 SSPR 工具尝试了多少次密码重置，以及多少次尝试成功。 还可以深入了解密码重置失败情况，并了解某些失败的发生原因。 
 
 ## <a name="customize-azure-ad-activity-content-pack"></a>自定义 Azure AD 活动内容包
 
-更改可视化效果：可以通过单击“编辑报表”并选择所要的可视化效果来更改报表可视化效果。
+**更改可视化效果**：可以通过单击“编辑报表”并选择所要的可视化效果来更改报表可视化效果。
  
 ![Azure Active Directory Power BI 内容包](./media/howto-power-bi-content-pack/09.png) 
  
 ![Azure Active Directory Power BI 内容包](./media/howto-power-bi-content-pack/10.png) 
 
-包括其他字段：若要添加或删除报表的字段，选择要添加/删除字段的视觉对象即可。 例如，可将“登录状态”字段添加到下面所示的表视图。 
+**包括其他字段**：若要添加或删除报表的字段，选择要添加/删除字段的视觉对象即可。 例如，可将“登录状态”字段添加到下面所示的表视图。 
  
 ![Azure Active Directory Power BI 内容包](./media/howto-power-bi-content-pack/11.png) 
 

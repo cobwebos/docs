@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: sngun
-ms.openlocfilehash: f0f0308233334e2662704e818c765c625a80019d
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 1d013f2cdd9f33f55d579638386355e5cbaccb7e
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52878288"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53714944"
 ---
 # <a name="serverless-database-computing-using-azure-cosmos-db-and-azure-functions"></a>使用 Azure Cosmos DB 和 Azure Functions 的无服务器数据库计算
 
@@ -29,7 +29,7 @@ Azure Cosmos DB 和 Azure Functions 支持采用以下方式集成数据库和�
 * 使用“输出绑定”将函数绑定到 Azure Cosmos DB 容器。 当函数执行完成时，输出绑定会将数据写入容器。
 
 > [!NOTE]
-> 目前，Azure Cosmos DB 触发器、输入绑定和输出绑定仅支持与 SQL API 一起使用。 对于所有其他的 Azure Cosmos DB API，应使用适用于 API 的静态客户端通过函数来访问数据库。API 包括 MongoDB API、Cassandra API、Gremlin API 和表 API。
+> 目前，Azure Cosmos DB 触发器、输入绑定和输出绑定仅支持与 SQL API 一起使用。 对于所有其他的 Azure Cosmos DB API，应使用适用于 API 的静态客户端通过函数来访问数据库。
 
 
 下图介绍了所有这三种集成： 

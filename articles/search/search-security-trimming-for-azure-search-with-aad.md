@@ -1,5 +1,5 @@
 ---
-title: 使用 Active Directory 标识修剪结果的安全筛选器 - Azure 搜索
+title: 使用 Active Directory 修剪结果的安全筛选器 - Azure 搜索
 description: 使用安全筛选器和 Azure Active Directory (AAD) 标识对 Azure 搜索内容进行访问控制。
 author: brjohnstmsft
 manager: jlembicz
@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 11/07/2017
 ms.author: brjohnst
 ms.custom: seodec2018
-ms.openlocfilehash: 2d1ac36341ef47ac95317c583005b675f31f1265
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 1cd862c59154f9da766b5df1ab8fb8d61e15d054
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53308815"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53628283"
 ---
 # <a name="security-filters-for-trimming-azure-search-results-using-active-directory-identities"></a>用于使用 Active Directory 标识修剪 Azure 搜索结果的安全筛选器
 

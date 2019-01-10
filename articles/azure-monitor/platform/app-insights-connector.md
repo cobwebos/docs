@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 06/29/2018
 ms.author: magoedte
-ms.openlocfilehash: 684fa85749bc131b21ef12070055841ff7d3d169
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 6b725d7912fa4b0d6b46acb35eda80ae66e4a38c
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53726208"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54121407"
 ---
 # <a name="application-insights-connector-management-solution-preview"></a>Application Insights 连接器管理解决方案（预览版）
 
@@ -27,7 +27,7 @@ ms.locfileid: "53726208"
 >[!NOTE]
 > 在[跨资源查询](../../azure-monitor/log-query/cross-workspace-query.md)的支持下，不再需要 Application Insights 连接器管理解决方案，并且将弃用它。 从 7 月开始，无法将新的 Application Insights 资源链接到 Log Analytics 工作区。 在 2018 年 11 月之前，现有的链接和仪表板将继续正常运行。 有关详细信息，请参阅 [OMS 门户即将转移到 Azure](../../azure-monitor/platform/oms-portal-transition.md)。
 
-可以借助 Application Insights 连接器解决方案诊断性能问题，以及了解用户在使用 [Application Insights](../../application-insights/app-insights-overview.md) 监视的应用中执行的操作。 Log Analytics 中提供了 Application Insights 中向开发人员显示的相同应用程序遥测数据视图。 但是，将 Application Insights 应用与 Log Analytics 集成时，将操作和应用程序数据放在一个位置可以增强应用程序的可见性。 使用相同的视图有助于与应用开发人员协作。 常见的视图可帮助减少检测和解决应用程序与平台问题的时间。
+可以借助 Application Insights 连接器解决方案诊断性能问题，以及了解用户在使用 [Application Insights](../../azure-monitor/app/app-insights-overview.md) 监视的应用中执行的操作。 Log Analytics 中提供了 Application Insights 中向开发人员显示的相同应用程序遥测数据视图。 但是，将 Application Insights 应用与 Log Analytics 集成时，将操作和应用程序数据放在一个位置可以增强应用程序的可见性。 使用相同的视图有助于与应用开发人员协作。 常见的视图可帮助减少检测和解决应用程序与平台问题的时间。
 
 使用该解决方案时，可以：
 
@@ -142,7 +142,7 @@ ms.locfileid: "53726208"
 
 ### <a name="sample-corrected-data"></a>采样更正数据
 
-Application Insights 提供*[采样更正](../../application-insights/app-insights-sampling.md)* 来帮助减少遥测流量。 在 Application Insights 应用中启用采样时，可以减少 Application Insights 和 Log Analytics 中存储的条目数量。 尽管“Application Insights 连接器”页面和透视图中会保持数据一致性，但对于自定义查询，应手动更正采样的数据。
+Application Insights 提供*[采样更正](../../azure-monitor/app/sampling.md)* 来帮助减少遥测流量。 在 Application Insights 应用中启用采样时，可以减少 Application Insights 和 Log Analytics 中存储的条目数量。 尽管“Application Insights 连接器”页面和透视图中会保持数据一致性，但对于自定义查询，应手动更正采样的数据。
 
 下面日志搜索查询中的采样更正示例：
 

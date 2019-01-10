@@ -3,17 +3,17 @@ title: 为 Azure Maps 选择适当的定价层 | Microsoft Docs
 description: 详细了解由 Azure Maps 提供的定价层
 author: walsehgal
 ms.author: v-musehg
-ms.date: 12/05/2018
+ms.date: 01/02/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: ee277867f449afddeb89c3fd73b5b577a68a4497
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 028a227eefb319d19c9274082626a007bd9161de
+ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52998382"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53993954"
 ---
 # <a name="choosing-the-right-pricing-tier-in-azure-maps"></a>在 Azure Maps 中选择适当的定价层
 
@@ -53,9 +53,8 @@ S0 和 S1 定价层可以处理不同数量的数据吞吐量。 在选择 Azure
 
 | 定价层  |        目标客户                                                                |
 |---------------|:-----------------------------------------------------------------------------------------|
-| S0            |    <p>S0 定价层适用于中小型企业的客户。 如果你不需要大量并发用户并且核心地理空间 API 满足服务需求，则它是适合你的定价层，如下表所示。 此层已正式发布，适用于从概念证明开发和早期阶段测试到应用程序生产和部署的所有生产阶段的应用程序。<p>|
+| S0            |    <p>S0 定价层适用于中小型企业的客户。 如果你不需要大量并发用户并且核心地理空间 API 满足服务需求，则它是适合你的定价层，如上表所示。 此层已正式发布，适用于从概念证明开发和早期阶段测试到应用程序生产和部署的所有生产阶段的应用程序。<p>|
 | S1            |    <p>S1 定价层适用于需要支持大型企业、任务关键型应用程序、并发用户量大或需要高级地理空间服务的客户。</p>|
-
 
 ## <a name="next-steps"></a>后续步骤
 

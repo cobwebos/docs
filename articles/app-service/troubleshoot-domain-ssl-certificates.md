@@ -1,6 +1,6 @@
 ---
 title: 排查域和 SSL 证书问题 - Azure 应用服务 | Microsoft Docs
-description: 排查 Azure Web 应用中的域和 SSL 证书问题
+description: 排查 Azure 应用服务中的域和 SSL 证书问题
 services: app-service\web
 documentationcenter: ''
 author: genlin
@@ -15,22 +15,22 @@ ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
 ms.custom: seodec18
-ms.openlocfilehash: 726bc78532cfe621eb3f3787aa05a7a54571a8c3
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 6f88079c5baac8cef677fd3afc5696cec5c00d92
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53388323"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53653656"
 ---
-# <a name="troubleshoot-domain-and-ssl-certificate-problems-in-azure-web-apps"></a>排查 Azure Web 应用中的域和 SSL 证书问题
+# <a name="troubleshoot-domain-and-ssl-certificate-problems-in-azure-app-service"></a>排查 Azure 应用服务中的域和 SSL 证书问题
 
-本文列出了为 Azure Web 应用配置域或 SSL 证书时可能遇到的常见问题。 此外，还描述了这些问题的可能原因和解决方法。
+本文列出了为 Azure 应用服务中的 Web 应用配置域或 SSL 证书时可能遇到的常见问题。 此外，还描述了这些问题的可能原因和解决方法。
 
 如果对本文中的任何内容需要更多帮助，可以联系 [MSDN 和 Stack Overflow 论坛](https://azure.microsoft.com/support/forums/)上的 Azure 专家。 或者，你也可以提出 Azure 支持事件。 请转到 [Azure 支持站点](https://azure.microsoft.com/support/options/)并选择“获取支持”。
 
 ## <a name="certificate-problems"></a>证书问题
 
-### <a name="you-cant-add-an-ssl-certificate-binding-to-a-web-app"></a>无法将 SSL 绑定证书添加到 Web 应用 
+### <a name="you-cant-add-an-ssl-certificate-binding-to-an-app"></a>无法将 SSL 绑定证书添加到应用 
 
 #### <a name="symptom"></a>症状
 
@@ -40,13 +40,13 @@ ms.locfileid: "53388323"
 
 #### <a name="cause"></a>原因
 
-如果对跨多个 Web 应用的同一 IP 地址使用多个基于 IP 的 SSL 绑定，则可能会出现此问题。 例如，Web 应用 A 具有采用旧证书的基于 IP 的 SSL。 Web 应用 B 对同一 IP 地址使用采用新证书的基于 IP 的 SSL。 使用新证书更新 Web 应用 SSL 绑定时，此操作将会失败并出现此错误，因为同一个 IP 地址已由另一应用使用。 
+如果对跨多个应用的同一 IP 地址使用多个基于 IP 的 SSL 绑定，则可能会出现此问题。 例如，应用 A 具有采用旧证书的基于 IP 的 SSL。 应用 B 对同一 IP 地址使用采用新证书的基于 IP 的 SSL。 使用新证书更新应用 SSL 绑定时，此操作将会失败并出现此错误，因为同一个 IP 地址已由另一应用使用。 
 
-#### <a name="solution"></a>解决方法 
+#### <a name="solution"></a>解决方案 
 
 若要解决此问题，请使用以下方法之一：
 
-- 在 Web 应用中删除使用旧证书的基于 IP 的 SSL 绑定。 
+- 在应用中删除使用旧证书的基于 IP 的 SSL 绑定。 
 - 新建使用新证书的基于 IP 的 SSL 绑定。
 
 ### <a name="you-cant-delete-a-certificate"></a>无法删除证书 
@@ -59,11 +59,11 @@ ms.locfileid: "53388323"
 
 #### <a name="cause"></a>原因
 
-如果另一个 Web 应用使用了该证书，则可能会出现此问题。
+如果另一个应用使用了该证书，则可能会出现此问题。
 
-#### <a name="solution"></a>解决方法
+#### <a name="solution"></a>解决方案
 
-从 Web 应用中删除该证书的 SSL 绑定。 然后尝试删除证书。 如果仍然无法删除证书，请清除 Internet 浏览器缓存，并在新浏览器窗口中重新打开 Azure 门户。 然后尝试删除证书。
+从应用中删除该证书的 SSL 绑定。 然后尝试删除证书。 如果仍然无法删除证书，请清除 Internet 浏览器缓存，并在新浏览器窗口中重新打开 Azure 门户。 然后尝试删除证书。
 
 ### <a name="you-cant-purchase-an-app-service-certificate"></a>无法购买应用服务证书 
 
@@ -75,22 +75,22 @@ ms.locfileid: "53388323"
 
 - 应用服务计划的层级为“免费”或“共享”。 这些定价层不支持 SSL。 
 
-    **解决方法**：将 Web 应用的应用服务计划升级到“标准”。
+    **解决方案**；将应用的应用服务计划升级到“标准”。
 
 - 订阅中没有有效的信用卡。
 
-    **解决方法**：将有效的信用卡添加到订阅。 
+    **解决方案**；将有效的信用卡添加到订阅。 
 
 - 该订阅套餐不支持购买“Microsoft 学生”等应用服务证书。  
 
-    **解决方法**：升级订阅。 
+    **解决方案**；升级订阅。 
 
 - 订阅已达到允许的购买限制。
 
-    **解决方法**：对于即用即付和 EA 订阅类型，可购买的应用服务证书限制为 10 个。 对于其他订阅类型，限制为 3 个。 若要提高限制，请联系 [Azure 支持](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)。
+    **解决方案**；对于即用即付和 EA 订阅类型，可购买的应用服务证书限制为 10 个。 对于其他订阅类型，限制为 3 个。 若要提高限制，请联系 [Azure 支持](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)。
 - 应用服务证书标记为欺诈。 收到以下错误消息：“你的证书已被标记为可能存在欺诈。 请求当前正在审查中。 如果证书未在 24 小时内变为可用，请联系 Azure 支持部门。”
 
-    **解决方法**：如果证书标记为欺诈，并且在 24 小时后未得到解决，请执行以下步骤：
+    **解决方案**；如果证书标记为欺诈，并且在 24 小时后未得到解决，请执行以下步骤：
 
     1. 登录到 [Azure 门户](https://portal.azure.com)。
     2. 转到“应用服务证书”，选择该证书。
@@ -104,22 +104,22 @@ ms.locfileid: "53388323"
 
 为错误的域购买了应用服务证书。 并且无法将该证书更新为使用正确的域。
 
-#### <a name="solution"></a>解决方法
+#### <a name="solution"></a>解决方案
 
 删除该证书，然后购买新证书。
 
 如果使用错误域的当前证书处于“已颁发”状态，则该证书也会产生费用。 应用服务证书不可退款，但你可以联系 [Azure 支持](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)，看看是否还有其他解决办法。 
 
-### <a name="an-app-service-certificate-was-renewed-but-the-web-app-shows-the-old-certificate"></a>应用服务证书已续订，但 Web 应用显示旧证书 
+### <a name="an-app-service-certificate-was-renewed-but-the-app-shows-the-old-certificate"></a>应用服务证书已续订，但应用显示旧证书 
 
 #### <a name="symptom"></a>症状
 
-应用服务证书已续订，但使用应用服务证书的 Web 应用仍在使用旧证书。 此外，出现需要 HTTPS 协议的警告。
+应用服务证书已续订，但使用应用服务证书的应用仍在使用旧证书。 此外，出现需要 HTTPS 协议的警告。
 
 #### <a name="cause"></a>原因 
-Azure 应用服务的 Web 应用功能每隔 8 小时运行一个后台作业，如果有任何更改发生，则会同步证书资源。 在轮换或更新证书时，应用程序有时仍会检索旧证书，而不是最近更新的证书。 原因是同步证书资源的作业尚未运行。 
+Azure 应用服务每隔 8 小时会运行一个后台作业，如果有任何更改发生，则会同步证书资源。 在轮换或更新证书时，应用程序有时仍会检索旧证书，而不是最近更新的证书。 原因是同步证书资源的作业尚未运行。 
  
-#### <a name="solution"></a>解决方法
+#### <a name="solution"></a>解决方案
 
 可以强制同步证书：
 
@@ -132,7 +132,7 @@ Azure 应用服务的 Web 应用功能每隔 8 小时运行一个后台作业，
 #### <a name="symptom"></a>症状 
 应用服务证书要求先经过域验证，然后该证书才可供使用。 选择“验证”时，验证过程失败。
 
-#### <a name="solution"></a>解决方法
+#### <a name="solution"></a>解决方案
 通过添加 TXT 记录来手动验证域：
  
 1.  转到托管域名的域名服务 (DNS) 提供商站点。
@@ -156,7 +156,7 @@ Azure 应用服务的 Web 应用功能每隔 8 小时运行一个后台作业，
 ### <a name="you-cant-purchase-a-domain"></a>无法购买某个域
 
 #### <a name="symptom"></a>症状
-无法在 Azure 门户中从 Web 应用或应用服务域购买域。
+不能在 Azure 门户中购买应用服务域。
 
 #### <a name="cause-and-solution"></a>原因和解决方法
 
@@ -164,19 +164,19 @@ Azure 应用服务的 Web 应用功能每隔 8 小时运行一个后台作业，
 
 - Azure 订阅中没有信用卡，或信用卡无效。
 
-    **解决方法**：将有效的信用卡添加到订阅。
+    **解决方案**；将有效的信用卡添加到订阅。
 
 - 你不是订阅所有者，因此无权购买域。
 
-    **解决方法**：[将“所有者”角色分配](../role-based-access-control/role-assignments-portal.md)给自己的帐户。 或者联系订阅管理员获取购买域的权限。
+    **解决方案**；[将“所有者”角色分配](../role-based-access-control/role-assignments-portal.md)给自己的帐户。 或者联系订阅管理员获取购买域的权限。
 - 已达到订阅中可购买域数的限制。 当前限制为 20 个。
 
-    **解决方法**：若要请求提高限制，请联系 [Azure 支持](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)。
+    **解决方案**；若要请求提高限制，请联系 [Azure 支持](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)。
 - Azure 订阅类型不支持购买应用服务域。
 
-    **解决方法**：将 Azure 订阅升级到其他订阅类型，例如即用即付订阅。
+    **解决方案**；将 Azure 订阅升级到其他订阅类型，例如即用即付订阅。
 
-### <a name="you-cant-add-a-host-name-to-a-web-app"></a>无法将主机名添加到 Web 应用 
+### <a name="you-cant-add-a-host-name-to-an-app"></a>无法将主机名添加到应用 
 
 #### <a name="symptom"></a>症状
 
@@ -188,14 +188,14 @@ Azure 应用服务的 Web 应用功能每隔 8 小时运行一个后台作业，
 
 - 无权添加主机名。
 
-    **解决方法**：让订阅管理员为你授予添加主机名的权限。
+    **解决方案**；让订阅管理员为你授予添加主机名的权限。
 - 无法验证域所有权。
 
-    **解决方法**：验证是否已正确配置 CNAME 或 A 记录。 若要将自定义域映射到 Web 应用，请创建 CNAME 记录或 A 记录。 若要使用根域，必须使用 A 和 TXT 记录：
+    **解决方案**；验证是否已正确配置 CNAME 或 A 记录。 若要将自定义域映射到应用，请创建 CNAME 记录或 A 记录。 若要使用根域，必须使用 A 和 TXT 记录：
 
     |记录类型|主机|指向|
     |------|------|-----|
-    |A|@|Web 应用的 IP 地址|
+    |A|@|应用的 IP 地址|
     |TXT|@|<应用名称>.azurewebsites.net|
     |CNAME|www|<应用名称>.azurewebsites.net|
 
@@ -213,10 +213,10 @@ Azure 应用服务的 Web 应用功能每隔 8 小时运行一个后台作业，
 - 生存期 (TTL) 未过。 检查域的 DNS 配置以确定 TTL 值，然后等到期限已过。
 - DNS 配置不正确。
 
-#### <a name="solution"></a>解决方法
+#### <a name="solution"></a>解决方案
 - 等待 48 小时，让此问题自行解决。
 - 如果可以在 DNS 配置中更改 TTL 设置，请将值更改为 5 分钟，然后看看是否能解决问题。
-- 使用 [WhatsmyDNS.net](https://www.whatsmydns.net/) 验证域是否指向 Web 应用的 IP 地址。 如果不是，请将 A 记录配置为 Web 应用的正确 IP 地址。
+- 使用 [WhatsmyDNS.net](https://www.whatsmydns.net/) 验证域是否指向应用的 IP 地址。 如果不是，请将 A 记录配置为应用的正确 IP 地址。
 
 ### <a name="you-need-to-restore-a-deleted-domain"></a>需要还原已删除的域 
 
@@ -226,7 +226,7 @@ Azure 应用服务的 Web 应用功能每隔 8 小时运行一个后台作业，
 #### <a name="cause"></a>原因 
 订阅所有者可能意外删除了该域。
 
-#### <a name="solution"></a>解决方法
+#### <a name="solution"></a>解决方案
 如果域的删除时间不超过七天，则尚未对该域启动删除过程。 在这种情况下，可以在 Azure 门户中的同一个订阅下购买同一个域。 （请务必在搜索框中键入确切的域名。）此域不会重复产生费用。 如果该域的删除时间超过七天，请求助 [Azure 支持](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)来还原该域。
 
 ### <a name="a-custom-domain-returns-a-404-error"></a>自定义域返回 404 错误 
@@ -247,7 +247,7 @@ Azure 应用服务的 Web 应用功能每隔 8 小时运行一个后台作业，
 **原因 1 的解决方法**
 
 - 如果添加了 A 记录，请确保同时添加 TXT 记录。 有关详细信息，请参阅[创建 A 记录](./app-service-web-tutorial-custom-domain.md#create-the-a-record)。
-- 如果不需要对 Web 应用使用根域，我们建议使用 CNAME 记录，而不要使用 A 记录。
+- 如果不需要对应用使用根域，我们建议使用 CNAME 记录，而不要使用 A 记录。
 - 不要对同一个域同时使用 CNAME 记录和 A 记录。 这可能会导致冲突，并阻止域解析。 
 
 **原因 2** 
@@ -256,18 +256,18 @@ Internet 浏览器可能仍在缓存域的旧 IP 地址。
 
 **原因 2 的解决方法**
 
-清除浏览器缓存。 对于 Windows 设备，可以运行命令 `ipconfig /flushdns`。 使用 [WhatsmyDNS.net](https://www.whatsmydns.net/) 验证域是否指向 Web 应用的 IP 地址。 
+清除浏览器缓存。 对于 Windows 设备，可以运行命令 `ipconfig /flushdns`。 使用 [WhatsmyDNS.net](https://www.whatsmydns.net/) 验证域是否指向应用的 IP 地址。 
 
 ### <a name="you-cant-add-a-subdomain"></a>无法添加子域 
 
 #### <a name="symptom"></a>症状
 
-无法将新主机名添加到 Web 应用以分配子域。
+无法将新主机名添加到应用，因此无法分配子域。
 
-#### <a name="solution"></a>解决方法
+#### <a name="solution"></a>解决方案
 
-- 咨询订阅管理员，确保有权将主机名添加到 Web 应用。
-- 如果需要更多子域，我们建议将域托管服务更改为 Azure DNS。 使用 Azure DNS 可将 500 个主机名添加到 Web 应用。 有关详细信息，请参阅[添加子域](https://blogs.msdn.microsoft.com/waws/2014/10/01/mapping-a-custom-subdomain-to-an-azure-website/)。
+- 咨询订阅管理员，确保有权将主机名添加到应用。
+- 如果需要更多子域，我们建议将域托管服务更改为 Azure DNS。 使用 Azure DNS 可将 500 个主机名添加到应用。 有关详细信息，请参阅[添加子域](https://blogs.msdn.microsoft.com/waws/2014/10/01/mapping-a-custom-subdomain-to-an-azure-website/)。
 
 
 

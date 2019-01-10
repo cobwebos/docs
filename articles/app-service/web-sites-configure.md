@@ -1,6 +1,6 @@
 ---
-title: 配置 Web 应用 - Azure 应用服务
-description: 如何在 Azure 应用服务中配置 Web 应用
+title: 配置应用 - Azure 应用服务
+description: 如何在 Azure 应用服务中配置应用
 services: app-service\web
 documentationcenter: ''
 author: cephalin
@@ -15,22 +15,20 @@ ms.topic: article
 ms.date: 04/25/2017
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 4286aa9cbaf07743c1d420fb1f5caace91bab7ee
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: deb3b155af464e69c6811414135913917cf2193a
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53269424"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53716457"
 ---
-# <a name="configure-web-apps-in-azure-app-service"></a>在 Azure 应用服务中配置 Web 应用
+# <a name="configure-apps-in-azure-app-service"></a>在 Azure 应用服务中配置应用
 
-本主题介绍如何使用 [Azure 门户]配置 Web 应用。
-
-[!INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
+本主题介绍如何使用 [Azure 门户]配置 Web 应用、移动后端或 API 应用。
 
 ## <a name="application-settings"></a>应用程序设置
-1. 在 [Azure 门户]中，打开 Web 应用的边栏选项卡。
-3. 单击“应用程序设置” 。
+1. 在 [Azure 门户]中，打开应用的边栏选项卡。
+2. 单击“应用程序设置” 。
 
 ![应用程序设置][configure01]
 
@@ -47,14 +45,14 @@ ms.locfileid: "53269424"
 出于技术原因，为应用启用 Java 会禁用 .NET、PHP 和 Python 选项。
 
 <a name="platform"></a>
-**平台**。 选择是要在 32 位还是 64 位环境中运行 Web 应用。 64 位环境需要“基本”或“标准”层。 “免费”和“共享”层始终在 32 位环境下运行。
+**平台**。 选择要在 32 位还是 64 位环境中运行应用。 64 位环境需要“基本”或“标准”层。 “免费”和“共享”层始终在 32 位环境下运行。
 
 [!INCLUDE [app-service-dev-test-note](../../includes/app-service-dev-test-note.md)]
 
-**Web 套接字**。 设为“开”以启用 WebSocket 协议；例如，如果 Web 应用使用 [ASP.NET SignalR] 或 [socket.io](https://socket.io/)。
+**Web 套接字**。 设为“开”以启用 WebSocket 协议；例如，如果应用使用 [ASP.NET SignalR] 或 [socket.io](https://socket.io/)。
 
 <a name="alwayson"></a>
-**始终打开**。 默认情况下，Web 应用如果已处于空闲状态相当一段时间，则是未加载的状态。 这样可以让系统节省资源。 在“基本”或“标准”模式下，可启用“始终打开”以保证始终加载应用。 如果你的应用运行连续的 Web 作业或运行使用 CRON 表达式触发的 Web 作业，应启用“始终打开”；否则这些 Web 作业可能无法可靠运行。
+**始终打开**。 默认情况下，应用如果已处于空闲状态达到一定时间，则会卸载。 这样可以让系统节省资源。 在“基本”或“标准”模式下，可启用“始终打开”以保证始终加载应用。 如果你的应用运行连续的 Web 作业或运行使用 CRON 表达式触发的 Web 作业，应启用“始终打开”；否则这些 Web 作业可能无法可靠运行。
 
 **托管管道版本**。 设置 IIS [管道模式]。 将此设置保留为“集成(默认)”，除非旧版应用需要旧版 IIS。
 
@@ -65,13 +63,13 @@ ms.locfileid: "53269424"
 
 **ARR 相关性**。 在横向扩展到多个 VM 实例的应用中，ARR 相关性 Cookie 保证在会话的整个生命周期内将客户端路由到相同的实例。 若要提高无状态应用程序的性能，请将此选项设置为“关闭”。   
 
-**自动交换**。 如果启用部署槽的自动交换，则在向该槽推送更新时，应用服务会自动将 Web 应用交换到生产。 有关详细信息，请参阅[为 Azure 应用服务中的 Web 应用部署到过渡槽](web-sites-staged-publishing.md)。
+**自动交换**。 如果启用部署槽的自动交换，则在向该槽推送更新时，应用服务会自动将应用交换到生产。 有关详细信息，请参阅[为 Azure 应用服务中的应用部署到过渡槽](deploy-staging-slots.md)。
 
 ### <a name="debugging"></a>调试
-**远程调试**。 启用远程调试。 启用后，可使用 Visual Studio 中的远程调试器直接连接到 Web 应用。 远程调试将保持启用状态 48 小时。 
+**远程调试**。 启用远程调试。 启用后，可使用 Visual Studio 中的远程调试器直接连接到应用。 远程调试将保持启用状态 48 小时。 
 
 ### <a name="app-settings"></a>应用设置
-本部分包含 Web 应用启动时会要加载的名称/值对。 
+本部分包含应用启动时会加载的名称/值对。 
 
 * 对于 .NET 应用，这些设置=会在运行时注入到 .NET 配置 `AppSettings` 中，重写现有设置。 
 * 对于 Linux 上的应用服务或用于容器的 Web 应用，如果名称中有嵌套的 json 密钥结构（如 `ApplicationInsights:InstrumentationKey`），则需要将 `ApplicationInsights__InstrumentationKey` 作为密钥名称。 因此请注意，应将所有 `:` 替换为 `__`（即双下划线）。
@@ -102,7 +100,7 @@ ms.locfileid: "53269424"
 ### <a name="default-documents"></a>默认文档
 默认文档是网站的根 URL 下显示的网页。  使用的是列表中的第一个匹配文件。 
 
-Web 应用可能会使用根据 URL 路由的模块，而不是提供静态内容，在此情况下，将没有此类默认文档。    
+应用可能会使用根据 URL 路由的模块，而不是提供静态内容，在此情况下，将没有此类默认文档。    
 
 ### <a name="handler-mappings"></a>处理程序映射
 使用此区域可添加自定义脚本处理器，以处理特定文件扩展名的请求。 
@@ -117,7 +115,7 @@ Web 应用可能会使用根据 URL 路由的模块，而不是提供静态内�
 ## <a name="enabling-diagnostic-logs"></a>启用诊断日志
 启用诊断日志：
 
-1. 在 Web 应用的边栏选项卡上单击“所有设置”。
+1. 在应用的边栏选项卡上单击“所有设置”。
 2. 单击“诊断日志”。 
 
 从支持日志记录的 Web 应用程序写入诊断日志的选项： 
@@ -134,31 +132,31 @@ Web 应用可能会使用根据 URL 路由的模块，而不是提供静态内�
 
 若要查看日志文件，必须按以下方式创建 FTP 凭据：
 
-1. 在 Web 应用的边栏选项卡上单击“所有设置”。
+1. 在应用的边栏选项卡上单击“所有设置”。
 2. 单击“部署凭据”。
 3. 输入用户名和密码。
 4. 单击“保存”。
 
 ![设置部署凭据][configure03]
 
-完整的 FTP 用户名是“app\username”，其中 *app* 是 Web 应用的名称。 用户名列在 Web 应用边栏选项卡的“软件包”下。
+完整的 FTP 用户名是“app\username”，其中 app 是应用的名称。 用户名列在应用边栏选项卡的“软件包”下。
 
 ![FTP 部署凭据][configure02]
 
 ## <a name="other-configuration-tasks"></a>其他配置任务
 ### <a name="ssl"></a>SSL
-在“基本”或“标准”模式下，可为自定义域上传 SSL 证书。 有关详细信息，请参阅[为 Web 应用启用 HTTPS](app-service-web-tutorial-custom-ssl.md)。 
+在“基本”或“标准”模式下，可为自定义域上传 SSL 证书。 有关详细信息，请参阅[为应用启用 HTTPS](app-service-web-tutorial-custom-ssl.md)。 
 
 若要查看上传的证书，请单击“所有设置” > “自定义域和 SSL”。
 
 ### <a name="domain-names"></a>域名
-添加 Web 应用的自定义域名。 有关详细信息，请参阅[为 Azure 应用服务中的 Web 应用配置自定义域名](app-service-web-tutorial-custom-domain.md)。
+添加应用的自定义域名。 有关详细信息，请参阅[为 Azure 应用服务中的应用配置自定义域名](app-service-web-tutorial-custom-domain.md)。
 
 若要查看域名，请单击“所有设置” > “自定义域和 SSL”。
 
 ### <a name="deployments"></a>部署
-* 设置连续部署。 请参阅[使用 Git 在 Azure 应用服务中部署 Web 应用](app-service-deploy-local-git.md)。
-* 部署槽。 请参阅[为 Azure 应用服务中的 Web 应用部署到过渡环境]。
+* 设置连续部署。 请参阅[使用 Git 在 Azure 应用服务中部署应用](deploy-local-git.md)。
+* 部署槽。 请参阅[为 Azure 应用服务部署到过渡环境]。
 
 若要查看部署槽，请单击“所有设置” > “部署槽”。
 
@@ -167,29 +165,23 @@ Web 应用可能会使用根据 URL 路由的模块，而不是提供静态内�
 
 有关更多信息，请参阅[如何：监视 Web 终结点状态]。
 
-> [!NOTE]
-> 如果要在注册 Azure 帐户之前开始使用 Azure 应用服务，请转到[试用应用服务]，可以在应用服务中立即创建一个生存期较短的入门 Web 应用。 不需要使用信用卡，也不需要做出承诺。
-> 
-> 
-
 ## <a name="next-steps"></a>后续步骤
 * [在 Azure 应用服务中配置自定义域名]
 * [为 Azure 应用服务中的应用启用 HTTPS]
-* [在 Azure 应用服务中缩放 Web 应用]
-* [Azure 应用服务中 Web 应用的监视基础知识]
+* [在 Azure 应用服务中缩放应用]
+* [在 Azure 应用服务中监视基础知识]
 
 <!-- URL List -->
 
 [ASP.NET SignalR]: https://www.asp.net/signalr
 [Azure 门户]: https://portal.azure.com/
 [在 Azure 应用服务中配置自定义域名]: ./app-service-web-tutorial-custom-domain.md
-[为 Azure 应用服务中的 Web 应用部署到过渡环境]: ./web-sites-staged-publishing.md。
+[为 Azure 应用服务部署到过渡环境]: ./deploy-staging-slots.md
 [为 Azure 应用服务中的应用启用 HTTPS]: ./app-service-web-tutorial-custom-ssl.md
 [如何：监视 Web 终结点状态]: https://go.microsoft.com/fwLink/?LinkID=279906
-[Azure 应用服务中 Web 应用的监视基础知识]: ./web-sites-monitor.md
+[在 Azure 应用服务中监视基础知识]: ./web-sites-monitor.md
 [管道模式]: https://www.iis.net/learn/get-started/introduction-to-iis/introduction-to-iis-architecture#Application
-[在 Azure 应用服务中缩放 Web 应用]: ./web-sites-scale.md
-[试用应用服务]: https://azure.microsoft.com/try/app-service/
+[在 Azure 应用服务中缩放应用]: ./web-sites-scale.md
 
 <!-- IMG List -->
 

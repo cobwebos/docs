@@ -4,14 +4,14 @@ description: 解答有关 Azure Migrate 的常见问题
 author: snehaamicrosoft
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 12/05/2018
+ms.date: 01/02/2019
 ms.author: snehaa
-ms.openlocfilehash: ebc4393341341b3b73165a166a650ae1a6f431ff
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 787e3f53cb75b33b03c29b61b319270fdf7a63ca
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53257788"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53975468"
 ---
 # <a name="azure-migrate---frequently-asked-questions-faq"></a>Azure Migrate - 常见问题解答 (FAQ)
 
@@ -48,12 +48,13 @@ Azure Migrate 是一个迁移规划工具，而 Azure Site Recovery 部署规划
 
 ### <a name="which-azure-geographies-are-supported-by-azure-migrate"></a>Azure Migrate 支持哪些 Azure 地域？
 
-Azure Migrate 当前支持将美国和 Azure 政府作为项目地域。 即使只能在这些地域创建迁移项目，也仍可以针对[多个目标位置](https://docs.microsoft.com/azure/migrate/how-to-modify-assessment#edit-assessment-properties)评估计算机。 项目地域仅用于存储已发现的元数据。
+Azure Migrate 当前支持将欧洲、美国和 Azure 政府作为项目地域。 即使只能在这些地域创建迁移项目，也仍可以针对[多个目标位置](https://docs.microsoft.com/azure/migrate/how-to-modify-assessment#edit-assessment-properties)评估计算机。 项目地域仅用于存储已发现的元数据。
 
 **地域** | **元数据存储位置**
 --- | ---
-美国 | 美国中西部或美国东部
 Azure Government  | 美国政府弗吉尼亚州
+欧洲 | 欧洲北部或欧洲西部
+美国 | 美国东部或美国中西部
 
 ### <a name="how-does-the-on-premises-site-connect-to-azure-migrate"></a>本地站点如何连接到 Azure Migrate？
 

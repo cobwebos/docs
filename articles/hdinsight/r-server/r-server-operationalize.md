@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.openlocfilehash: ce701c029c63256714452aa13f646af77991cb67
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: d0cae4210fa313c5d6e1f33987422e7b0d53e76a
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52496920"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53579951"
 ---
 # <a name="operationalize-ml-services-cluster-on-azure-hdinsight"></a>操作 Azure HDInsight 上的 ML Services 群集
 
@@ -28,7 +28,7 @@ ms.locfileid: "52496920"
 
 ## <a name="operationalize-ml-services-cluster-with-one-box-configuration"></a>使用单机配置操作 ML Services 群集
 
-> [!NOTE]
+> [!NOTE]  
 > 以下步骤适用于 R Server 9.0 和 ML Server 9.1。 有关 ML Server 9.3，请参阅[使用管理工具管理操作化配置](https://docs.microsoft.com/machine-learning-server/operationalize/configure-admin-cli-launch)。
 
 1. 通过 SSH 登录到边缘节点。
@@ -137,7 +137,7 @@ SSH 会话处于活动状态后，来自本地计算机端口 12800 的流量将
 
 若要缩放计算节点，请先解除工作节点的授权，然后在已解除授权的工作节点上配置计算节点。
 
-### <a name="step-1-decommission-the-worker-nodes"></a>步骤 1：解除工作节点的授权
+### <a name="step-1-decommission-the-worker-nodes"></a>步骤 1：解除辅助角色节点的授权
 
 ML Services 群集未通过 [Apache Hadoop YARN](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html) 托管。 如果工作节点未解除授权，YARN 资源管理器将无法正常工作，因为它不知道服务器所占用的资源。 为了避免这种情况，建议在扩大计算节点前解除辅助角色节点的授权。
 
@@ -159,7 +159,7 @@ ML Services 群集未通过 [Apache Hadoop YARN](https://hadoop.apache.org/docs/
 * 取消选择辅助角色节点并选择头节点。
 * 选择“操作” > “所选主机”>“主机” > “重启所有组件”。
 
-### <a name="step-2-configure-compute-nodes-on-each-decommissioned-worker-nodes"></a>步骤 2：在每个已解除授权的工作节点上配置计算节点
+### <a name="step-2-configure-compute-nodes-on-each-decommissioned-worker-nodes"></a>步骤 2：在每个已解除授权的辅助角色节点上配置计算节点
 
 1. 通过 SSH 登录到每个已解除授权的辅助角色节点。
 

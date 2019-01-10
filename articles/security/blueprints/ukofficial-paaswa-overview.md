@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 07/13/2018
 ms.author: jomolesk
-ms.openlocfilehash: 1cef5f8f77a11dad605d9758296c9632f5d30ab8
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: 0b3b3cd1c9c0410c4cc0ffda8887b40123c1ac7a
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53409014"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53718468"
 ---
 # <a name="azure-security-and-compliance-blueprint-paas-web-application-hosting-for-uk-official-workloads"></a>Azure 安全性与合规性蓝图：适用于英国官方工作负荷的 PaaS Web 应用程序托管
 
@@ -102,17 +102,17 @@ Azure 蓝图由指导文档和自动化模板组成，用于部署基于云的�
 
 #### <a name="azure-app-service"></a>Azure 应用服务
 
-Azure Web 应用为使用 Java、PHP、Node.js Python、HTML和 C# 开发的 Web 应用程序提供了完全托管的 Web 托管环境，而无需管理基础架构 它提供自动缩放和高可用性，支持 Windows 和 Linux，并允许从 [Azure DevOps](https://azure.microsoft.com/services/visual-studio-team-services/) 或任何基于 Git 的存储库进行自动部署。
+Azure 应用服务为使用 Java、PHP、Node.js Python、HTML 和 C# 开发的 Web 应用程序提供了完全托管的 Web 托管环境，而无需管理基础架构。 它提供自动缩放和高可用性，支持 Windows 和 Linux，并允许从 [Azure DevOps](https://azure.microsoft.com/services/visual-studio-team-services/) 或任何基于 Git 的存储库进行自动部署。
 
 应用服务符合 [ISO、SOC、和 PCI 标准](https://www.microsoft.com/TrustCenter/)，可以使用[ Azure Active Directory ](https://docs.microsoft.com/azure/app-service/configure-authentication-provider-aad)或者通过社交登录（[Google](https://docs.microsoft.com/azure/app-service/configure-authentication-provider-google)[Facebook](https://docs.microsoft.com/azure/app-service/configure-authentication-provider-facebook)、[Twitter](https://docs.microsoft.com/azure/app-service/configure-authentication-provider-twitter) 和 [Microsoft 身份验证](https://docs.microsoft.com/azure/app-service/configure-authentication-provider-microsoft)）对用户进行身份验证。
 
-基本、标准和高级计划适用于生产工作负载，并在专用虚拟机实例上运行。 每个实例均可支持多个应用程序和域。 应用服务还支持 [IP 地址限制](https://docs.microsoft.com/azure/app-service/app-service-ip-restrictions)，可在需要时将流量安全地传输到受信任的 IP 地址；它还支持 [Azure 资源的托管标识](https://docs.microsoft.com/azure/app-service/app-service-managed-service-identity)，可确保安全连接到其他 PaaS 服务（[如 Key Vault](https://azure.microsoft.com/services/key-vault/) 和 [Azure SQL 数据库](https://azure.microsoft.com/services/sql-database/)）。 如果需要额外保护，还可使用独立计划在私有专用 Azure 环境中托管应用，对于需要与本地网络或其他性能和规模安全连接的应用而言，这是理想选择。
+基本、标准和高级计划适用于生产工作负载，并在专用虚拟机实例上运行。 每个实例均可支持多个应用程序和域。 应用服务还支持 [IP 地址限制](https://docs.microsoft.com/azure/app-service/app-service-ip-restrictions)，可在需要时将流量安全地传输到受信任的 IP 地址；它还支持 [Azure 资源的托管标识](https://docs.microsoft.com/azure/app-service/overview-managed-identity)，可确保安全连接到其他 PaaS 服务（[如 Key Vault](https://azure.microsoft.com/services/key-vault/) 和 [Azure SQL 数据库](https://azure.microsoft.com/services/sql-database/)）。 如果需要额外保护，还可使用独立计划在私有专用 Azure 环境中托管应用，对于需要与本地网络或其他性能和规模安全连接的应用而言，这是理想选择。
 
 此模板将部署以下应用服务功能：
 
-- [标准](https://docs.microsoft.com/azure/app-service/azure-web-sites-web-hosting-plans-in-depth-overview)应用服务计划层
-- 多个 Web 应用[部署槽位](https://docs.microsoft.com/azure/app-service/web-sites-staged-publishing)：开发、预览、QA、UAT 和生产（默认槽位）。
-- [Azure 资源的托管标识](https://docs.microsoft.com/azure/app-service/app-service-managed-service-identity)连接到 [Azure Key Vault](https://azure.microsoft.com/services/key-vault/)（这还可以用于提供 [Azure SQL 数据库](https://azure.microsoft.com/services/sql-database/)的访问权限） 
+- [标准](https://docs.microsoft.com/azure/app-service/overview-hosting-plans)应用服务计划层
+- 多个应用服务[部署槽位](https://docs.microsoft.com/azure/app-service/deploy-staging-slots)：开发、预览、QA、UAT 和生产（默认槽位）。
+- [Azure 资源的托管标识](https://docs.microsoft.com/azure/app-service/overview-managed-identity)连接到 [Azure Key Vault](https://azure.microsoft.com/services/key-vault/)（这还可以用于提供 [Azure SQL 数据库](https://azure.microsoft.com/services/sql-database/)的访问权限） 
 - 集成 [Azure Application Insights](https://docs.microsoft.com/azure/application-insights/app-insights-azure-web-apps)来监视性能
 - [诊断日志](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs) 
 - 指标[警报](https://docs.microsoft.com/azure/application-insights/app-insights-alerts) 
@@ -163,7 +163,7 @@ Microsoft [Azure 存储](https://azure.microsoft.com/services/storage/)是 Micro
 
 #### <a name="azure-key-vault-in-this-blueprint"></a>此蓝图中的 Azure Key Vault
 
-- 保存存储访问密钥，并为面向客户的 Web 应用的[托管标识](https://docs.microsoft.com/azure/app-service/app-service-managed-service-identity)授予读取访问权限
+- 保存存储访问密钥，并为面向客户的 Web 应用的[托管标识](https://docs.microsoft.com/azure/app-service/overview-managed-identity)授予读取访问权限
 - 保存 SQL Server DBA 密码（在单独的保管库中）
 - 诊断日志记录
 

@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: ashish
-ms.openlocfilehash: 4ba1e325ec978114016682aaee35be35a20ec028
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 5d2f803414db3bd118f57d317cfc32c8f22fcd5a
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52499118"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53653249"
 ---
 # <a name="install-published-application---dataiku-dds"></a>安装已发布的应用程序 - Dataiku DDS
 
@@ -28,7 +28,7 @@ Dataiku [Data Science Studio (DSS)](https://www.dataiku.com/dss/features/connect
 
 可以使用 [Apache Hadoop](https://hadoop.apache.org/) 或 [Apache Spark](https://spark.apache.org/) 群集在 HDInsight 上安装 DSS。 可以在运行的现有群集上安装 DSS，或者在创建新群集时安装 DSS。 DSS 还支持使用 Azure Blob 存储作为连接器来读取数据。
 
-可以使用 DSS 生成项目，然后项目可以生成 [Apache Hadoop MapReduce](https://hadoop.apache.org/docs/r1.2.1/mapred_tutorial.html) 或 Spark 作业。 这些作业在 HDInsight 上作为常规的 MapReduce 或 Spark 作业执行，因此可以按需缩放群集。
+可以使用 DSS 生成项目，然后生成 [MapReduce](https://hadoop.apache.org/docs/r1.2.1/mapred_tutorial.html) 或 Spark 作业。 这些作业在 HDInsight 上作为常规的 MapReduce 或 Spark 作业执行，因此可以按需缩放群集。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -117,4 +117,4 @@ Dataiku [Data Science Studio (DSS)](https://www.dataiku.com/dss/features/connect
 * [发布 HDInsight 应用程序](hdinsight-apps-publish-applications.md)：了解如何将自定义 HDInsight 应用程序发布到 Azure 市场。
 * [MSDN：安装 HDInsight 应用程序](https://msdn.microsoft.com/library/mt706515.aspx)：了解如何定义 HDInsight 应用程序。
 * [使用脚本操作自定义基于 Linux 的 HDInsight 群集](hdinsight-hadoop-customize-cluster-linux.md)：了解如何使用脚本操作安装其他应用程序。
-* [在 HDInsight 中使用空边缘节点](hdinsight-apps-use-edge-node.md)：了解如何使用空边缘节点访问 HDInsight 群集、测试和托管 HDInsight 应用程序。
+* [在 HDInsight 中使用空边缘节点](hdinsight-apps-use-edge-node.md)：了解如何使用空边缘节点访问 HDInsight 群集，以及测试和托管 HDInsight 应用程序。

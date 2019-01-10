@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/25/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 7bf7add75f60bf64f64119979e5eee81be0f6e7b
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: 89663db23962cbc82ead331f05cb39c0ef5d2e87
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43344959"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53722560"
 ---
 # <a name="secure-your-restful-service-by-using-client-certificates"></a>使用客户端证书保护 RESTful 服务
 
@@ -41,7 +41,7 @@ ms.locfileid: "43344959"
 若要将 **Azure 应用服务**设置为要求提供客户端证书，请将 Web 应用的 `clientCertEnabled` 站点设置指定为 *true*。 若要进行此更改，请在 Azure 门户中打开 Web 应用页。 在左侧导航栏中的“设置”下，选择“SSL 设置”。 在“客户端证书”部分中，启用“传入客户端证书”选项。
 
 >[!NOTE]
->确保 Azure 应用服务计划使用标准或更高的层。 有关详细信息，请参阅 [Azure 应用服务计划深入概述](https://docs.microsoft.com/azure/app-service/azure-web-sites-web-hosting-plans-in-depth-overview)。
+>确保 Azure 应用服务计划使用标准或更高的层。 有关详细信息，请参阅 [Azure 应用服务计划深入概述](https://docs.microsoft.com/azure/app-service/overview-hosting-plans)。
 
 >[!NOTE]
 >有关设置 **clientCertEnabled** 属性的详细信息，请参阅[为 Web 应用配置 TLS 相互身份验证](https://docs.microsoft.com/azure/app-service-web/app-service-web-configure-tls-mutual-auth)。
@@ -66,7 +66,7 @@ ms.locfileid: "43344959"
 
     ![上传策略密钥](media/aadb2c-ief-rest-api-netfw-secure-cert/rest-api-netfw-secure-client-cert-upload.png)
 
-7. 选择**创建**。
+7. 选择“创建”。
 
 8. 若要查看租户中的可用密钥并确认是否已创建 `B2C_1A_B2cRestClientCertificate` 密钥，请选择“策略密钥”。
 
@@ -152,7 +152,7 @@ ms.locfileid: "43344959"
    >如果收到“名称无效，请提供有效名称”错误消息，表示 Azure AD B2C 在提供客户端证书时已成功调用 RESTful 服务。 下一步是验证证书。
 
 ## <a name="step-6-add-certificate-validation"></a>步骤 6：添加证书验证
-由 Azure AD B2C 发送到 RESTful 服务的客户端证书不会在 Azure Web 应用平台中经历验证，系统只会检查该证书是否存在。 验证该证书是 Web 应用的责任。 
+由 Azure AD B2C 发送到 RESTful 服务的客户端证书不会在 Azure 应用服务平台中经历验证，系统只会检查该证书是否存在。 验证该证书是 Web 应用的责任。 
 
 本部分会添加示例 ASP.NET 代码，用于针对身份验证目的验证证书属性。
 

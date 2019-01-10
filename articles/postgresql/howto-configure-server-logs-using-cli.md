@@ -1,21 +1,18 @@
 ---
 title: 使用 Azure CLI 配置和访问 PostgreSQL 的服务器日志
 description: 本文介绍如何使用 Azure CLI 命令行在 Azure Database for PostgreSQL 中配置和访问服务器日志。
-services: postgresql
 author: rachel-msft
 ms.author: raagyema
-manager: kfile
-editor: jasonwhowell
 ms.service: postgresql
-ms.devlang: azure-cli
-ms.topic: article
+ms.devlang: azurecli
+ms.topic: conceptual
 ms.date: 02/28/2018
-ms.openlocfilehash: af5a0843acced4611b219088b7662f9ea4b32beb
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 938aadaa1d17135808cbeb34adac5139bd61f833
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46969574"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53545016"
 ---
 # <a name="configure-and-access-server-logs-by-using-azure-cli"></a>使用 Azure CLI 配置和访问服务器日志
 可以使用命令行接口 (Azure CLI) 下载 PostgreSQL 服务器错误日志。 但不支持访问事务日志。 
@@ -28,7 +25,7 @@ ms.locfileid: "46969574"
 ## <a name="configure-logging-for-azure-database-for-postgresql"></a>为 Azure Database for PostgreSQL 配置日志记录
 可以将服务器配置为访问查询日志和错误日志。 错误日志包含自动清空、连接和检查点等信息。
 1. 启用日志。
-2. 要启动日期，请更新 log\_statement 和 log\_min\_duration\_statement。
+2. 若要启用查询日志，请更新 **log\_statement**  和  **log\_min\_duration\_statement**。
 3. 更新保留期。
 
 请参阅[自定义服务器配置参数](howto-configure-server-parameters-using-cli.md)，了解详细信息。

@@ -9,12 +9,12 @@ manager: cgronlund
 ms.custom: include file
 ms.topic: include
 ms.date: 09/24/2018
-ms.openlocfilehash: edcb2ecb74255ddbb8d601cb69565fb401b756d2
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 6f73b15ed16cfe26bf14e60a5206568e1a1564fd
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52886423"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53594155"
 ---
 使用将所使用的 Azure 订阅的凭据登录到 [Azure 门户](https://portal.azure.com/)。 
 
@@ -30,7 +30,7 @@ ms.locfileid: "52886423"
 
    ![搜索工作区](./media/aml-create-in-portal/allservices-search.PNG)
 
-在“机器学习服务工作区”窗格中，首先滚动到底部并选择“创建”。
+在“机器学习服务工作区”窗格中，滚动到底部并选择“创建”。
 
    ![创建](./media/aml-create-in-portal/portal-create-button.png)
 
@@ -38,9 +38,9 @@ ms.locfileid: "52886423"
 
    字段|Description
    ---|---
-   工作区名称 |输入用于标识工作区的唯一名称。 在这里，我们使用 docs-ws。 名称在整个资源组中必须唯一。 使用易于记忆且区别于其他人所创建工作区的名称。  
+   工作区名称 |输入用于标识工作区的唯一名称。 本示例使用 docs-ws。 名称在整个资源组中必须唯一。 使用易于记忆且区别于其他人所创建工作区的名称。  
    订阅 |选择要使用的 Azure 订阅。
-   资源组 | 使用订阅中的现有资源组，或者输入一个名称，创建新的资源组。 资源组是用于保存 Azure 解决方案相关资源的容器。 在这里，我们使用 docs-aml。 
+   资源组 | 使用订阅中的现有资源组，或者输入一个名称，创建新的资源组。 资源组是用于保存 Azure 解决方案相关资源的容器。 本示例使用 docs-aml。 
    位置 | 选择最靠近用户和数据资源的位置。 这是用于创建工作区的位置。
 
    ![创建工作区](./media/aml-create-in-portal/workspace-create.png)

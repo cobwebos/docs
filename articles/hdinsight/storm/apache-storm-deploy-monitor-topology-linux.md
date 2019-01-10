@@ -9,30 +9,30 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/22/2018
-ms.openlocfilehash: 61f5f0d0b9e88174f82e960eb5d92db99d0cae71
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: d194a5929e648c09eb204860c528e48bc55259ee
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52582834"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53635387"
 ---
 # <a name="deploy-and-manage-apache-storm-topologies-on-azure-hdinsight"></a>在 Azure HDInsight 中部署和管理 Apache Storm 拓扑 
 
-本文档介绍有关如何在 HDInsight 群集上管理和监视 Storm 上运行的 [Apache Storm](http://storm.apache.org/) 拓扑的基本知识。
+本文档介绍有关如何在 HDInsight 群集上管理和监视 Storm 上运行的 [Apache Storm](https://storm.apache.org/) 拓扑的基本知识。
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > 本文中的步骤需要使用 HDInsight 群集上基于 Linux 的 Storm。 Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight 在 Windows 上停用](../hdinsight-component-versioning.md#hdinsight-windows-retirement)。 
 >
-> 有关在基于 Windows 的 HDInsight 上部署和监视拓扑的详细信息，请参阅 [在基于 Windows 的 HDInsight 上部署和管理 Apache Storm 拓扑](apache-storm-deploy-monitor-topology.md)
+> 有关在基于 Windows 的 HDInsight 上部署和监视拓扑的信息，请参阅[在基于 Windows 的 HDInsight 上部署和管理 Apache Storm 拓扑](apache-storm-deploy-monitor-topology.md)。
 
 
 ## <a name="prerequisites"></a>先决条件
 
 * **基于 Linux 的 Storm on HDInsight 群集**：请参阅 [Apache Storm on HDInsight 入门](apache-storm-tutorial-get-started-linux.md)获取群集创建步骤
 
-* （可选）**熟悉 SSH 和 SCP**：有关详细信息，请参阅[将 SSH 与 HDInsight 配合使用](../hdinsight-hadoop-linux-use-ssh-unix.md)。
+* （可选）**熟悉 SSH 和 SCP**：有关详细信息，请参阅 [Use SSH with HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md)（对 HDInsight 使用 SSH）。
 
-* （可选）**Visual Studio**：Azure SDK 2.5.1 或更高版本，以及针对 Visual Studio 的 Data Lake 工具。 有关详细信息，请参阅[开始使用针对 Visual Studio 的 Data Lake 工具](../hadoop/apache-hadoop-visual-studio-tools-get-started.md)。
+* （可选）**Visual Studio**：Azure SDK 2.5.1 或更高版本，以及适用于 Visual Studio 的 Data Lake 工具。 有关详细信息，请参阅[开始使用针对 Visual Studio 的 Data Lake 工具](../hadoop/apache-hadoop-visual-studio-tools-get-started.md)。
 
     下列其中一个版本的 Visual Studio：
 
@@ -51,7 +51,7 @@ HDInsight Tools 可用于将 C# 或混合拓扑提交到 Storm 群集。 以下�
 
 1. 如果尚未安装最新版本的针对 Visual Studio 的 Data Lake 工具，请参阅[开始使用针对 Visual Studio 的 Data Lake 工具](../hadoop/apache-hadoop-visual-studio-tools-get-started.md)。
 
-    > [!NOTE]
+    > [!NOTE]  
     > 针对 Visual Studio 的 Data Lake 工具以前称为 Visual Studio 的 HDInsight 工具。
     >
     > 针对 Visual Studio 的 Data Lake 工具包含在 Visual Studio 2017 的 __Azure 工作负荷__中。
@@ -64,7 +64,7 @@ HDInsight Tools 可用于将 C# 或混合拓扑提交到 Storm 群集。 以下�
 
 4. 在“解决方案资源管理器”中，右键单击项目，并选择“提交到 Storm on HDInsight”。
 
-   > [!NOTE]
+   > [!NOTE]  
    > 如果出现提示，请输入 Azure 订阅的登录凭据。 如果有多个订阅，请登录包含 Storm on HDInsight 群集的订阅。
 
 5. 从“Storm 群集”下拉列表中选择 Storm on HDInsight 群集，并选择“提交”。 可以使用“输出”窗口监视提交是否成功。
@@ -83,7 +83,7 @@ HDInsight Tools 可用于将 C# 或混合拓扑提交到 Storm 群集。 以下�
 
     此命令启动群集上的示例 WordCount 拓扑。 此拓扑随机生成句子，并统计句子中每个单词的出现次数。
 
-   > [!NOTE]
+   > [!NOTE]  
    > 将拓扑提交到群集时，必须先复制包含群集的 jar 文件，然后才能使用 `storm` 命令。 要将文件复制到群集，可以使用 `scp` 命令。 例如： `scp FILENAME.jar USERNAME@CLUSTERNAME-ssh.azurehdinsight.net:FILENAME.jar`
    >
    > WordCount 示例和其他 Storm 初学者示例已经包含在群集中，其位置为 `/usr/hdp/current/storm-client/contrib/storm-starter/`。
@@ -98,7 +98,7 @@ HDInsight Tools 可用于将 C# 或混合拓扑提交到 Storm 群集。 以下�
 
 ![visual studio 监视器](./media/apache-storm-deploy-monitor-topology-linux/vsmonitor.png)
 
-> [!NOTE]
+> [!NOTE]  
 > 也可以通过依次展开“Azure” > “HDInsight”，右键单击 Storm on HDInsight 群集，并选择“查看 Storm 拓扑”，以从“服务器资源管理器”查看“Storm 拓扑”。
 
 选择 Spout 或 Bolt 的形状可查看有关这些组件的信息。 每选择一项都会打开一个新窗口。
@@ -113,7 +113,7 @@ HDInsight Tools 可用于将 C# 或混合拓扑提交到 Storm 群集。 以下�
 
 若要重新平衡拓扑，请使用“拓扑摘要”顶部的“重新平衡”按钮。
 
-> [!WARNING]
+> [!WARNING]  
 > 重新平衡某个拓扑首先会停用该拓扑，然后跨群集平均重新分布辅助角色，最后让拓扑返回到发生重新平衡之前的状态。 因此，如果拓扑原本处于活动，则它将再次变为活动状态。 如果它原本已停用，则将保持停用状态。
 
 ### <a name="kill-a-topology"></a>终止拓扑
@@ -154,7 +154,7 @@ Storm 拓扑在启动后，会不断运行，直到将其停止。 若要停止�
 
 重新平衡拓扑可以让系统修改拓扑的并行度。 例如，如果调整了群集的大小以添加更多节点，则重新平衡允许拓扑查看新节点。
 
-> [!WARNING]
+> [!WARNING]  
 > 重新平衡某个拓扑首先会停用该拓扑，然后跨群集平均重新分布辅助角色，最后让拓扑返回到发生重新平衡之前的状态。 因此，如果拓扑原本处于活动，则它将再次变为活动状态。 如果它原本已停用，则将保持停用状态。
 
     storm rebalance TOPOLOGYNAME
@@ -163,7 +163,7 @@ Storm 拓扑在启动后，会不断运行，直到将其停止。 若要停止�
 
 Storm UI 提供一个 Web 界面用于处理正在运行的拓扑，HDInsight 群集随附了此界面。 若要查看 Storm UI，请使用 Web 浏览器打开 **https://CLUSTERNAME.azurehdinsight.net/stormui**，其中 **CLUSTERNAME** 是群集的名称。
 
-> [!NOTE]
+> [!NOTE]  
 > 如果系统要求提供用户名和密码，请输入创建群集时使用的群集管理员用户名 (admin) 和密码。
 
 ### <a name="main-page"></a>主页面
@@ -171,8 +171,8 @@ Storm UI 提供一个 Web 界面用于处理正在运行的拓扑，HDInsight �
 Storm UI 的主页面提供以下信息：
 
 * **群集摘要**：有关 Storm 群集的基本信息。
-* **拓扑摘要**：正在运行的拓扑列表。 使用此部分中的链接可以查看有关特定拓扑的详细信息。
-* **监督员摘要**：有关 Storm 监督员的信息。
+* **拓扑摘要**：正在运行的拓扑的列表。 使用此部分中的链接可以查看有关特定拓扑的详细信息。
+* **监督器摘要**：有关 Storm 监督器的信息。
 * **Nimbus 配置**：群集的 Nimbus 配置。
 
 ### <a name="topology-summary"></a>拓扑摘要
@@ -186,7 +186,7 @@ Storm UI 的主页面提供以下信息：
   * **停用**：暂停正在运行的拓扑。
   * **重新平衡**：调整拓扑的并行度。 更改群集中的节点数目之后，应该重新平衡正在运行的拓扑。 此操作可让拓扑调整并行度，以弥补群集中增加或减少的节点数。
 
-    有关详细信息，请参阅<a href="http://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html" target="_blank">了解 Apache Storm 拓扑的并行度</a>。
+    有关详细信息，请参阅<a href="https://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html" target="_blank">了解 Apache Storm 拓扑的并行度</a>。
   * **终止**：在经过指定的超时之后终止 Storm 拓扑。
 * **拓扑统计信息**：有关拓扑的统计信息。 若要设置页面上剩余项的时间范围，请使用“窗口”列中的链接。
 * **Spout**：拓扑使用的 Spout。 使用此部分中的链接可以查看有关特定 Spout 的详细信息。
@@ -200,17 +200,17 @@ Storm UI 的主页面提供以下信息：
 * **组件摘要**：有关 Spout 或 Bolt 的基本信息。
 * **Spout/Bolt 统计信息**：有关 Spout 或 Bolt 的统计信息。 若要设置页面上剩余项的时间范围，请使用“窗口”列中的链接。
 * **输入统计信息**（仅限 Bolt）：有关 Bolt 使用的输入流的信息。
-* 输出统计信息：有关 Spout 或 Bolt 所发出的流的信息。
-* **执行器**：有关 Spout 或 Bolt 实例的信息。 选择特定执行器的“端口”项可以查看针对此实例生成的诊断信息的日志。
-* 错误：此 Spout 或 Bolt 的任何错误信息。
+* **输出统计信息**：有关 Spout 或 Bolt 所发出的流的信息。
+* **执行程序**：有关 Spout 或 Bolt 实例的信息。 选择特定执行器的“端口”项可以查看针对此实例生成的诊断信息的日志。
+* **Errors**:Spout 或 Bolt 的任何错误信息。
 
 ## <a name="monitor-and-manage-rest-api"></a>监视和管理：REST API
 
 Storm UI 是以 REST API 为基础生成的，因此，可以使用 API 执行类似的管理和监视功能。 使用 REST API 可以创建自定义工具来管理和监视 Storm 拓扑。
 
-有关详细信息，请参阅 [Apache Storm UI REST API](http://storm.apache.org/releases/current/STORM-UI-REST-API.html)。 以下信息特定于将 REST API 与 Apache Storm on HDInsight 配合使用的情况。
+有关详细信息，请参阅 [Apache Storm UI REST API](https://storm.apache.org/releases/current/STORM-UI-REST-API.html)。 以下信息特定于将 REST API 与 Apache Storm on HDInsight 配合使用的情况。
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Storm REST API 不能通过 Internet 公开使用，而必须使用与 HDInsight 群集头节点建立的 SSH 隧道来访问。 若要了解如何创建和使用 SSH 隧道，请参阅[使用 SSH 隧道访问 Apache Ambari Web UI、ResourceManager、JobHistory、NameNode、Apache Oozie 和其他 Web UI](../hdinsight-linux-ambari-ssh-tunnel.md)。
 
 ### <a name="base-uri"></a>基本 URI
@@ -219,15 +219,15 @@ Storm UI 是以 REST API 为基础生成的，因此，可以使用 API 执行�
 
 可以使用多种不同的方式查找群集头节点的完全限定域名 (FQDN)：
 
-* **从 SSH 会话**：通过与群集建立的 SSH 会话使用命令 `headnode -f`。
-* **从 Ambari Web**：从页面顶部选择“服务”，并选择“Storm”。 在“摘要”选项卡中，选择“Storm UI 服务器”。 页面顶部会显示承载 Storm UI 和 REST API 的节点的 FQDN。
-* **从 Ambari REST API**：使用命令 `curl -u admin -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/services/STORM/components/STORM_UI_SERVER"` 来检索有关 Storm UI 和 REST API 正在其上运行的节点的信息。 将 **CLUSTERNAME** 替换为群集名称。 出现提示时，请输入登录（管理员）帐户的密码。 在响应中，“host_name”条目包含节点的 FQDN。
+* **从 SSH 会话**：通过与群集建立的 SSH 会话使用 `headnode -f` 命令。
+* **从 Ambari Web**：从页面顶部选择“服务”，然后选择“Storm”。 在“摘要”选项卡中，选择“Storm UI 服务器”。 页面顶部会显示承载 Storm UI 和 REST API 的节点的 FQDN。
+* **从 Ambari REST API**：使用 `curl -u admin -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/services/STORM/components/STORM_UI_SERVER"` 命令来检索有关 Storm UI 和 REST API 正在其上运行的节点的信息。 将 **CLUSTERNAME** 替换为群集名称。 出现提示时，请输入登录（管理员）帐户的密码。 在响应中，“host_name”条目包含节点的 FQDN。
 
 ### <a name="authentication"></a>身份验证
 
 对 REST API 的请求必须使用**基本身份验证**，因此应该使用 HDInsight 群集管理员名称和密码。
 
-> [!NOTE]
+> [!NOTE]  
 > 由于基本身份验证使用明文发送，因此**始终**应该使用 HTTPS 来保护与群集之间的通信。
 
 ### <a name="return-values"></a>返回值

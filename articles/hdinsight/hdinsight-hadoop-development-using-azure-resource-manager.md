@@ -9,25 +9,23 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/21/2018
 ms.author: hrasheed
-ms.openlocfilehash: 7722076c3b0031da8580dd88efdc0b575fd5a3be
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 33bb3186493b2ea2a0d676f250282574b27f7988
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52875563"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53718471"
 ---
 # <a name="migrating-to-azure-resource-manager-based-development-tools-for-hdinsight-clusters"></a>迁移到适用于 HDInsight 群集的基于 Azure 资源管理器的开发工具
 
 HDInsight 即将淘汰适用于 HDInsight 的基于 Azure 服务管理器 (ASM) 的工具。 如果一直在使用 Azure PowerShell、Azure 经典 CLI 或 HDInsight.NET SDK 来处理 HDInsight 群集，我们建议跟随潮流，使用 Azure 资源管理器的 PowerShell、CLI 和 .NET SDK 版本。 本文章提供有关如何迁移到基于资源管理器的新方法的指导。 本文档将重点介绍适用于 HDInsight 的 ASM 与资源管理器方法之间的差异（如果适用）。
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > **2017 年 1 月 1 日**，对基于 ASM 的 PowerShell CLI 和 .NET SDK 的支持会终止。
-> 
-> 
 
 ## <a name="migrating-azure-classic-cli-to-azure-resource-manager"></a>将 Azure 经典 CLI 迁移到 Azure 资源管理器
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Azure CLI 未提供针对使用 HDInsight 群集的支持。 因此，仍可通过 Azure 经典 CLI 来使用 HDInsight，但是 Azure 经典 CLI 已弃用。
 
 以下是通过 Azure 经典 CLI 使用 HDInsight 的基本命令：
@@ -51,11 +49,11 @@ HDInsight 即将淘汰适用于 HDInsight 的基于 Azure 服务管理器 (ASM) 
 ### <a name="deprecated-commands"></a>已过时的命令
 如果使用 `azure hdinsight job` 命令将作业提交到 HDInsight 群集，则这些命令无法通过资源管理器命令提供。 如果需要以编程方式通过脚本将作业提交到 HDInsight，应改用 HDInsight 提供的 REST API。 有关如何使用 REST API 提交作业的详细信息，请参阅以下文档。
 
-* [使用 cURL 在 HDInsight 上通过 Hadoop 运行 Apache Hadoop MapReduce 作业](hadoop/apache-hadoop-use-mapreduce-curl.md)
+* [使用 cURL 在 HDInsight 上的 Hadoop 上远程运行 MapReduce 作业](hadoop/apache-hadoop-use-mapreduce-curl.md)
 * [使用 cURL 在 HDInsight 上通过 Apache Hadoop 运行 Apache Hive 查询](hadoop/apache-hadoop-use-hive-curl.md)
-* [使用 cURL 在 HDInsight 上通过 Apache Hadoop 运行 Apache Pig 作业](hadoop/apache-hadoop-use-pig-curl.md)
+* [使用 cURL 通过 Apache Hadoop on HDInsight 运行 Apache Pig 作业](hadoop/apache-hadoop-use-pig-curl.md)
 
-有关以其他交互方式运行 Apache Hadoop MapReduce、Apache Hive 和 Apache Pig 的信息，请参阅[将 Apache Hadoop MapReduce 与 HDInsight 上的 Hadoop 配合使用](hadoop/hdinsight-use-mapreduce.md)、[将 Apache Hive 与 HDInsight 上的 Apache Hadoop 配合使用](hadoop/hdinsight-use-hive.md)和[将 Apache Pig 与 HDInsight 上的 Apache Hadoop 配合使用](hadoop/hdinsight-use-pig.md)。
+有关以其他交互方式运行 Apache Hadoop MapReduce、Apache Hive 和 Apache Pig 的信息，请参阅[将 MapReduce 与 HDInsight 上的 Hadoop 配合使用](hadoop/hdinsight-use-mapreduce.md)、[将 Apache Hive 与 HDInsight 上的 Apache Hadoop 配合使用](hadoop/hdinsight-use-hive.md)和[将 Apache Pig 与 HDInsight 上的 Apache Hadoop 配合使用](hadoop/hdinsight-use-pig.md)。
 
 ### <a name="examples"></a>示例
 **创建群集**
@@ -73,10 +71,8 @@ HDInsight 即将淘汰适用于 HDInsight 的基于 Azure 服务管理器 (ASM) 
 * 旧命令 (ASM) - `azure hdinsight cluster list`
 * 新命令 - `azure hdinsight cluster list`
 
-> [!NOTE]
+> [!NOTE]  
 > 运行 list 命令时，使用 `-g` 指定资源组只会返回指定资源组中的群集。
-> 
-> 
 
 **显示群集信息**
 
@@ -145,7 +141,7 @@ Azure PowerShell 资源管理器 cmdlet 可与 ASM cmdlet 一同安装。 两种
 
 **与群集标识相关的 cmdlet：**
 
-* **Add-AzureRmHDInsightClusterIdentity**：将群集标识添加到群集配置对象，使 HDInsight 群集能够访问 Azure Data Lake Store。 请参阅[使用 Azure PowerShell 创建包含 Data Lake Store 的 HDInsight 群集](../data-lake-store/data-lake-store-hdinsight-hadoop-use-powershell.md)。
+* **Add-AzureRmHDInsightClusterIdentity**：将群集标识添加到群集配置对象，使 HDInsight 群集能够访问 Azure Data Lake Storage。 请参阅[使用 Azure PowerShell 创建包含 Data Lake Storage 的 HDInsight 群集](../data-lake-store/data-lake-store-hdinsight-hadoop-use-powershell.md)。
 
 ### <a name="examples"></a>示例
 **创建群集**

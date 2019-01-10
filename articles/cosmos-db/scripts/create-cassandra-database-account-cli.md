@@ -4,15 +4,16 @@ description: Azure CLI 脚本示例 - 创建 Azure Cosmos DB Cassandra API 帐�
 author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
-ms.component: cosmosdb-cassandra
+ms.subservice: cosmosdb-cassandra
 ms.topic: sample
 ms.date: 10/26/2018
-ms.openlocfilehash: 381dc16366b4772f828ed474637d029324703c9e
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.reviewer: sngun
+ms.openlocfilehash: 89d43d8fc956d747de885f69017ed79f49670858
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52961548"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54032629"
 ---
 # <a name="azure-cosmos-db-create-a-cassandra-api-account-using-azure-cli"></a>Azure Cosmos DB：使用 Azure CLI 创建 Cassandra API 帐户
 

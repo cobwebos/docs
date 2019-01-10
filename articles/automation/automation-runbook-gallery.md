@@ -9,15 +9,18 @@ ms.author: gwallace
 ms.date: 09/11/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: a518d00a50c0fc6ec83626852f30f739d64b18ea
-ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
+ms.openlocfilehash: 5b87d04466a2c94ed233edf4069ec1a30b10d03a
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52283278"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53634314"
 ---
 # <a name="runbook-and-module-galleries-for-azure-automation"></a>Azure 自动化的 Runbook 和模块库
 无需在 Azure 自动化中创建自己的 Runbook 和模块，即可访问 Microsoft 和社区构建的各种方案。  可以在不加以修改的情况下直接使用这些方案，或者使用它们作为起点并根据具体的要求进行编辑。
+
+> [!NOTE]
+> Azure 自动化不支持新的 [Azure PowerShell Az 模块](/powershell/azure/new-azureps-module-az?view=azurermps-6.13.0)。 使用这些 cmdlet 从 PowerShell 库中下载的任何脚本都不会在 Azure 自动化中运行。
 
 可以从 [Runbook 库](#runbooks-in-runbook-gallery)获取 Runbook，并从[PowerShell 库](#modules-in-powerShell-gallery)获取模块。  还可以通过共享开发的方案来为社区做出贡献，请参阅[将 Runbook 添加到库](automation-runbook-gallery.md#adding-a-runbook-to-the-runbook-gallery)
 

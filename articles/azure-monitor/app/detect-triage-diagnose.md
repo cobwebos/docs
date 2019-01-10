@@ -13,16 +13,16 @@ ms.custom: mvc
 ms.topic: overview
 ms.date: 09/06/2018
 ms.author: mbullwin
-ms.openlocfilehash: b3cfd57ff0e4b881352c07081d71bb9ba80fd11e
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: d5cba3b21ff6099a4132a7ebfab38d1ead9afded
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54000172"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54118076"
 ---
 # <a name="overview-of-application-insights-for-devops"></a>Application Insights for DevOps 概述
 
-通过 [Application Insights](../../application-insights/app-insights-overview.md) 可快速了解应用执行情况和处于活动状态时的使用情况。 如果有问题，它可告知相关情况、帮助评估影响，并帮助确定原因。
+通过 [Application Insights](../../azure-monitor/app/app-insights-overview.md) 可快速了解应用执行情况和处于活动状态时的使用情况。 如果有问题，它可告知相关情况、帮助评估影响，并帮助确定原因。
 
 以下是一个开发 Web 应用程序的团队的描述：
 
@@ -61,7 +61,7 @@ Marcela Markova 是 OBS 团队的高级开发人员，负责监视联机性能�
 但更重要的是，有关任何故障的警报以电子邮件的形式发送给开发团队。 如此一来，他们几乎可在所有客户之前了解相关事项。
 
 ## <a name="monitor-performance"></a>监视性能
-在 Application Insights 的“概述”页上，有一张表格显示各种[关键指标](../../application-insights/app-insights-web-monitor-performance.md)。
+在 Application Insights 的“概述”页上，有一张表格显示各种[关键指标](../../azure-monitor/app/web-monitor-performance.md)。
 
 ![概述性能 KPI 图的屏幕截图](./media/detect-triage-diagnose/overview-graphs.png)
 
@@ -151,7 +151,7 @@ TrackException 用于报告异常，因为它发送堆栈副本。 TrackEvent �
 
 
 ## <a name="monitor-proactively"></a>主动监视
-Marcela 并不是坐等警报出现。 每次重新部署后不久，她都会查看 [响应时间](../../application-insights/app-insights-web-monitor-performance.md)，观察整体数字和最慢请求表以及异常计数。  
+Marcela 并不是坐等警报出现。 每次重新部署后不久，她都会查看 [响应时间](../../azure-monitor/app/web-monitor-performance.md)，观察整体数字和最慢请求表以及异常计数。  
 
 ![响应时间图和服务器响应时间网格。](./media/detect-triage-diagnose/response-time.png)
 
@@ -184,7 +184,7 @@ Marcela 并不是坐等警报出现。 每次重新部署后不久，她都会�
 
 某些依赖项缓慢的问题是地理位置问题。 Fabrikam Bank 使用 Azure 虚拟机，发现他们无意中将 Web 服务器和帐户服务器定位其他国家/地区。 迁移其中一项设置即可带来显著提升。
 
-**我们做了什么？** 我们此问题没有出现在依赖项中，并且不经常出现，则可能是最近的某项更改导致。 指标和事件图提供的历史角度使将任何突然更改与部署联系变得简单。 这可缩小问题的搜索范围。 若要确定应用程序代码中的哪些行降低了性能，请启用 Application Insights Profiler。 请参阅[使用 Application Insights 分析实时 Azure Web 应用](./../../application-insights/app-insights-profiler.md)。 启用 Profiler 后，将看到如下跟踪。 在此示例中，显而易见是 *GetStorageTableData* 方法导致了问题。  
+**我们做了什么？** 我们此问题没有出现在依赖项中，并且不经常出现，则可能是最近的某项更改导致。 指标和事件图提供的历史角度使将任何突然更改与部署联系变得简单。 这可缩小问题的搜索范围。 若要确定应用程序代码中的哪些行降低了性能，请启用 Application Insights Profiler。 请参阅[使用 Application Insights 分析实时 Azure Web 应用](./../../azure-monitor/app/profiler.md)。 启用 Profiler 后，将看到如下跟踪。 在此示例中，显而易见是 *GetStorageTableData* 方法导致了问题。  
 
 ![App Insights Profiler 跟踪](./media/detect-triage-diagnose/AppInsightsProfiler.png)
 
@@ -215,7 +215,7 @@ Application Insights 还可用于了解用户对应用执行了什么操作。 �
 
 该团队已习惯掌握关于用户活动的信息。 如今，他们无论什么时候设计一项新功能，都能知道如何获取关于使用情况的反馈。 他们从开始就设计将跟踪调用插入功能。 在每个开发循环中都使用反馈改进功能。
 
-[阅读有关跟踪使用情况的详细信息](../../application-insights/app-insights-usage-overview.md)。
+[阅读有关跟踪使用情况的详细信息](../../azure-monitor/app/usage-overview.md)。
 
 ## <a name="apply-the-devops-cycle"></a>应用 DevOps 循环
 这就是一个团队使用 Application Insights 解决个别问题和改进开发周期的方式。 希望本文能够给读者带来一些启发，知道如何借助 Application Insights 在自己的应用程序中进行性能管理。
@@ -230,6 +230,6 @@ Application Insights 还可用于了解用户对应用执行了什么操作。 �
 * [ASP.NET Web 应用程序](../../azure-monitor/app/asp-net.md)
 * [Java Web 应用程序](../../azure-monitor/app/java-get-started.md)
 * [Node.js Web 应用程序](../../azure-monitor/app/nodejs.md)
-* 在 [IIS](../../azure-monitor/app/monitor-web-app-availability.md)、[J2EE](../../azure-monitor/app/java-live.md) 或 [Azure](../../application-insights/app-insights-overview.md) 上托管的已部署的应用。
+* 在 [IIS](../../azure-monitor/app/monitor-web-app-availability.md)、[J2EE](../../azure-monitor/app/java-live.md) 或 [Azure](../../azure-monitor/app/app-insights-overview.md) 上托管的已部署的应用。
 * [网页](../../azure-monitor/app/javascript.md) - 单页应用或普通网页 - 单独使用此方法，或者将它与任何服务器选项结合使用。
 * [可用性测试](../../azure-monitor/app/monitor-web-app-availability.md)：通过公共 Internet 测试应用。

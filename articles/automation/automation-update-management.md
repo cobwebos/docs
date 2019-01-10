@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 12/11/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 06006456a08c5eb499eff504fea5dcffdc11d662
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 0066a4ea5d91369bf6724dbaea4743a10bd8db0b
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53342385"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53631849"
 ---
 # <a name="update-management-solution-in-azure"></a>Azure 中的更新管理解决方案
 
@@ -166,7 +166,7 @@ Heartbeat
 
 下表介绍了该解决方案支持的连接的源：
 
-| 连接的源 | 支持 | 说明 |
+| 连接的源 | 支持 | Description |
 | --- | --- | --- |
 | Windows 代理 |是 |该解决方案从 Windows 代理收集有关系统更新的信息，然后开始安装必需的更新。 |
 | Linux 代理 |是 |该解决方案从 Linux 代理收集有关系统更新的信息，然后开始在受支持的发行版上安装必需的更新。 |
@@ -205,7 +205,7 @@ Heartbeat
 
 若要创建新的更新部署，请选择“计划更新部署”。 此时将打开“新建更新部署”窗格。 为下表中介绍的属性输入值，然后单击“创建”：
 
-| 属性 | 说明 |
+| 属性 | Description |
 | --- | --- |
 | 名称 |用于标识更新部署的唯一名称。 |
 |操作系统| Linux 或 Windows|
@@ -253,7 +253,7 @@ New-AzureRmAutomationSoftwareUpdateConfiguration  -ResourceGroupName $rg -Automa
 
 ### <a name="windows"></a>Windows
 
-|分类  |说明  |
+|分类  |Description  |
 |---------|---------|
 |关键更新     | 解决关键、非安全相关错误的特定问题的更新。        |
 |安全更新     | 产品特定、安全相关问题的更新。        |
@@ -266,7 +266,7 @@ New-AzureRmAutomationSoftwareUpdateConfiguration  -ResourceGroupName $rg -Automa
 
 ### <a name="linux"></a>Linux
 
-|分类  |说明  |
+|分类  |Description  |
 |---------|---------|
 |关键和安全更新     | 特定问题或产品特定、安全相关问题的更新。         |
 |其他更新     | 本质上不是关键更新或不是安全更新的所有其他更新。        |
@@ -589,7 +589,7 @@ Update
 
 但是，更新管理仍可能报告该计算机不合规，因为其中包含有关更新的其他信息。
 
-按更新分类部署更新在 CentOS 上无法现成地运行。 对于 SUSE，如果首先需要与 zypper（包管理器）或其依赖项相关的安全更新，则仅选择“其他更新”作为分类可能会导致同时安装某些安全更新。 此行为是 zypper 的一项限制。 某些情况下，可能需要重新运行更新部署。 若要验证，请检查更新日志。
+按更新分类部署更新在 CentOS 上无法现成地运行。 若要为 CentOS 正确部署更新，请选择所有分类以确保应用更新。 对于 SUSE，如果首先需要与 zypper（包管理器）或其依赖项相关的安全更新，则仅选择“其他更新”作为分类可能会导致同时安装某些安全更新。 此行为是 zypper 的一项限制。 某些情况下，可能需要重新运行更新部署。 若要验证，请检查更新日志。
 
 ## <a name="troubleshoot"></a>故障排除
 

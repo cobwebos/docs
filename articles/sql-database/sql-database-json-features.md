@@ -1,5 +1,5 @@
 ---
-title: Azure SQL 数据库 JSON 功能 | Microsoft 文档
+title: 使用 Azure SQL 数据库中的 JSON 数据 | Microsoft Docs
 description: 使用 Azure SQL 数据库可以分析、查询数据，以 JavaScript 对象表示法 (JSON) 设置数据格式。
 services: sql-database
 ms.service: sql-database
@@ -11,27 +11,20 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: ''
 manager: craigg
-ms.date: 04/01/2018
-ms.openlocfilehash: c3f1cb7499be57be94cc387eb40d37c1710f2f75
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.date: 12/17/2018
+ms.openlocfilehash: bc4e27f45b905e00c1c809a781a5cf034a0da8ca
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51230523"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53543781"
 ---
 # <a name="getting-started-with-json-features-in-azure-sql-database"></a>Azure SQL 数据库中的 JSON 功能入门
-使用 Azure SQL 数据库可以分析和查询以 JavaScript 对象表示法 [(JSON)](http://www.json.org/) 格式表示的数据，然后将关系数据导出为 JSON 文本。
-
-JSON 是用于在新式 Web 与移动应用程序中交换数据的流行数据格式。 JSON 还用于将半结构化数据存储在日志文件或 NoSQL 数据库（例如 [Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/)）中。 许多 REST Web 服务返回采用 JSON 文本格式的结果，或接受采用 JSON 格式的数据。 大多数 Azure 服务（例如 [Azure 搜索](https://azure.microsoft.com/services/search/)、[Azure 存储](https://azure.microsoft.com/services/storage/)和 [Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/)）都具有返回或使用 JSON 的 REST 终结点。
-
-使用 Azure SQL 数据库可以轻松处理 JSON 数据，将数据库与新式服务集成。
-
-## <a name="overview"></a>概述
-Azure SQL 数据库提供以下函数用于处理 JSON 数据：
-
-![JSON 函数](./media/sql-database-json-features/image_1.png)
-
-对于 JSON 文本，可以使用内置函数 [JSON_VALUE](https://msdn.microsoft.com/library/dn921898.aspx)、[JSON_QUERY](https://msdn.microsoft.com/library/dn921884.aspx) 和 [ISJSON](https://msdn.microsoft.com/library/dn921896.aspx)，从 JSON 中提取数据，或者验证 JSON 的格式是否正确。 使用 [JSON_MODIFY](https://msdn.microsoft.com/library/dn921892.aspx) 函数可以更新 JSON 文本中的值。 对于更高级的查询和分析，[OPENJSON](https://msdn.microsoft.com/library/dn921885.aspx) 函数可将 JSON 对象数组转换成行集。 可对返回的结果集执行任何 SQL 查询。 最后，使用 [FOR JSON](https://msdn.microsoft.com/library/dn921882.aspx) 可将存储在关系表中的数据格式化为 JSON 文本。
+使用 Azure SQL 数据库可以分析和查询以 JavaScript 对象表示法 [(JSON)](http://www.json.org/) 格式表示的数据，然后将关系数据导出为 JSON 文本。 以下 JSON 方案在 Azure SQL 数据库中可用：
+- 使用 `FOR JSON` 字句[将关系数据设置为 JSON 格式](#formatting-relational-data-in-json-format)。
+- [处理 JSON 数据](#working-with-json-data)
+- 使用 JSON 标量函数[查询 JSON 数据](#querying-json-data)。
+- 使用 `OPENJSON` 函数[将 JSON 转换为表格格式](#transforming-json-into-tabular-format)。
 
 ## <a name="formatting-relational-data-in-json-format"></a>将关系数据设置为 JSON 格式
 如果 Web 服务从数据库层提取数据并以 JSON 格式提供响应，或者客户端 JavaScript 框架或库接受 JSON 格式的数据，则可以直接在 SQL 查询中将数据库内容格式化为 JSON。 不再需要编写应用程序代码将 Azure SQL 数据库中的结果格式化为 JSON，也不再需要包含一些 JSON 序列化库来转换表格查询结果，然后将对象序列化为 JSON 格式。 可以使用 FOR JSON 子句将 Azure SQL 数据库中的 SQL 查询结果格式化为 JSON，然后直接在应用程序中使用这种格式。
@@ -79,7 +72,7 @@ FOR JSON PATH, WITHOUT_ARRAY_WRAPPER
 
 在本示例中，通过指定 [WITHOUT_ARRAY_WRAPPER](https://msdn.microsoft.com/library/mt631354.aspx) 选项返回了单个 JSON 对象而不是数组。 如果确定要返回单个对象作为查询结果，可以使用此选项。
 
-FOR JSON 子句的主要作用是从数据库返回格式化为嵌套 JSON 对象或数组的复杂分层数据。 以下示例演示如何将属于 Customer 的 Orders 包含为嵌套的 Orders 数组：
+FOR JSON 子句的主要作用是从数据库返回格式化为嵌套 JSON 对象或数组的复杂分层数据。 以下示例显示如何将属于 `Customer` 的 `Orders` 表中的行包含为嵌套的 `Orders` 数组：
 
 ```
 select CustomerName as Name, PhoneNumber as Phone, FaxNumber as Fax,

@@ -10,12 +10,12 @@ ms.component: translator-speech
 ms.topic: conceptual
 ms.date: 05/18/18
 ms.author: v-jansko
-ms.openlocfilehash: 73c65aa5c95887c8b1f6eb5e4cf91e19815eba15
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.openlocfilehash: ac8de247f09ba3b4e38cabb565fe332eba909ccc
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53741872"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54118126"
 ---
 # <a name="translator-speech-api-languages"></a>语音翻译 API：语言
 
@@ -150,5 +150,5 @@ X-RequestId|服务器生成的值，用于标识请求并用于故障排除目�
 |:--|:--|
 |400|请求错误。 请检查输入参数以确保它们有效。 响应对象包括错误的更详细描述。|
 |429|请求过多。|
-|500|出现错误。 如果错误仍然存在，请使用客户端跟踪标识符 (X-ClientTraceId) 或请求标识符 (X-RequestId) 进行报告。|
+|500|发生错误。 如果错误仍然存在，请使用客户端跟踪标识符 (X-ClientTraceId) 或请求标识符 (X-RequestId) 进行报告。|
 |503|服务器暂不可用。 请重试请求。 如果错误仍然存在，请使用客户端跟踪标识符 (X-ClientTraceId) 或请求标识符 (X-RequestId) 进行报告。|

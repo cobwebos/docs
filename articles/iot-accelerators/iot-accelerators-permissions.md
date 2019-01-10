@@ -1,106 +1,72 @@
 ---
-title: Azure IoT 解决方案加速器和 Azure Active Directory | Microsoft Docs
-description: 介绍了 Azure IoT 解决方案加速器如何使用 Azure Active Directory 来管理权限。
+title: 使用 Azure IoT 解决方案站点 - Azure | Microsoft Docs
+description: 介绍如何使用 AzureIoTSolutions.com 网站来部署解决方案加速器。
 author: dominicbetts
-manager: timlt
+manager: philmea
 ms.service: iot-accelerators
 services: iot-accelerators
 ms.topic: conceptual
-ms.date: 11/10/2017
+ms.date: 12/13/2018
 ms.author: dobett
-ms.openlocfilehash: e45954389c8dd1b484a7009460c541bf35266973
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 87f6b9cef50e4b8c388be835b2aa7bed8177ac4b
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44713844"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53601077"
 ---
-# <a name="permissions-on-the-azureiotsolutionscom-site"></a>azureiotsolutions.com 站点权限
+# <a name="use-the-azureiotsolutionscom-site-to-deploy-your-solution-accelerator"></a>使用 azureiotsolutions.com 站点来部署解决方案加速器
 
-## <a name="what-happens-when-you-sign-in"></a>登录时发生的情况
+可从 [AzureIoTSolutions.com](https://www.azureiotsolutions.com/Accelerators) 将 Azure IoT 解决方案加速器部署到 Azure 订阅。 AzureIoTSolutions.com 同时托管 Microsoft 开源解决方案加速器和合作伙伴解决方案加速器。 这些解决方案加速器适用于 [Azure IoT 参考体系结构](https://aka.ms/iotrefarchitecture)。 可使用该站点快速部署解决方案加速器作为演示或生产环境。
 
-在 [azureiotsuite.com][lnk-azureiotsolutions] 上首次登录时，站点会基于当前所选 Azure Active Directory (AAD) 租户和 Azure 订阅来确定你拥有的权限级别。
+![AzureIoTSolutions.com](media/iot-accelerators-permissions/iotsolutionscom.png)
 
-1. 站点首先从 Azure 查明用户所属的 AAD 租户以填充用户名旁显示的租户列表。 当前，站点一次只能获取一个租户的用户令牌。 因此，当使用右上角的下拉列表切换租户时，站点会使你登录到该租户，以获取该租户的令牌。
+> [!TIP]
+> 如果需要对部署过程进行更多控制，则可以使用 [CLI 来部署解决方案加速器](iot-accelerators-remote-monitoring-deploy-cli.md)。
 
-2. 接下来，站点从 Azure 查明你已与所选租户关联的订阅。 创建新的解决方案加速器时，会看到可用订阅。
+可在以下配置中部署解决方案加速器：
 
-3. 最后，站点检索标记为解决方案加速器的订阅和资源组中的所有资源，并填充主页上的磁贴。
+* **标准**：扩展的基础结构部署，适用于开发生产环境。 Azure 容器服务将微服务部署到多个 Azure 虚拟机。 Kubernetes 会协调托管单个微服务的 Docker 容器。
+* **基本**：降低成本版本，适用于演示或部署测试。 所有微服务都部署到一个 Azure 虚拟机。
+* **本地**：用于测试和开发的本地计算机部署。 此方法将微服务部署到本地 Docker 容器，并连接到云中的 IoT 中心、Azure Cosmos DB 和 Azure 存储服务。
 
-下列各部分介绍了用于控制对解决方案加速器的访问的角色。
+每个解决方案加速器都使用 IoT 中心、Azure 流分析和 Cosmos DB 等 Azure 服务的不同组合。 有关详细信息，请访问 [AzureIoTSolutions.com](https://www.azureiotsolutions.com/Accelerators) 并选择解决方案加速器。
 
-## <a name="aad-roles"></a>AAD 角色
+## <a name="sign-in-at-azureiotsolutionscom"></a>登录 azureiotsolutions.com
 
-AAD 角色控制预配解决方案加速器，以及在解决方案加速器中管理用户和一些 Azure 服务的能力。
+必须先使用与 Azure 订阅关联的凭据登录 AzureIoTSolutions.com，然后才能部署解决方案加速器。 如果帐户与多个 Microsoft Azure Active Directory (AD) 租户关联，则可以使用**帐户选择下拉列表**选择要使用的目录。
 
-有关 AAD 中的管理员角色的详细信息，可参阅[在 Azure AD 中分配管理员角色][lnk-aad-admin]。 本文重点介绍解决方案加速器使用的**全局管理员**和**用户**目录角色。
+部署解决方案加速器、管理用户以及管理 Azure 服务的权限取决于你在所选目录中的角色。 与解决方案加速器关联的常见 Azure AD 角色包括：
 
-### <a name="global-administrator"></a>全局管理员
+* **全局管理员**：对于每个 Azure AD 租户，可以有多个[全局管理员](../active-directory/users-groups-roles/directory-assign-admin-roles.md)：
 
-对于每个 AAD 租户，可以有多个全局管理员：
+  * 创建某个 Azure AD 租户时，默认情况下会成为该租户的全局管理员。
+  * 全局管理员可以部署基本和标准解决方案加速器。
 
-* 在创建某个 AAD 租户时，默认情况下会成为该租户的全局管理员。
-* 全局管理员可以预配基本和标准解决方案加速器（一个基本部署使用单个 Azure 虚拟机）。
+* **域用户**：对于每个 Azure AD 租户，可以有多个域用户。 域用户可以部署基本解决方案加速器。
 
-### <a name="domain-user"></a>域用户
+* **来宾用户**：对于每个 Azure AD 租户，可以有多个来宾用户。 来宾用户不能在 Azure AD 租户中部署解决方案加速器。
 
-每个 AAD 租户可以有多个域用户：
+有关 Azure AD 中用户及角色的详细信息，请参阅以下资源：
 
-* 域用户可以通过 [azureiotsolutions.com][lnk-azureiotsolutions] 站点预配基本解决方案加速器。
-* 域用户可以使用 CLI 创建基本解决方案加速器。
+* [在 Azure Active Directory 中创建用户](../active-directory/fundamentals/active-directory-users-profile-azure-portal.md)
+* [将用户分配到应用](../active-directory/manage-apps/assign-user-or-group-access-portal.md)
 
-### <a name="guest-user"></a>来宾用户
+## <a name="choose-your-device"></a>选择设备
 
-每个 AAD 租户可以有多个来宾用户。 来宾用户在 AAD 租户中拥有有限的权利集。 因此，来宾用户无法在 AAD 租户中预配解决方案加速器。
+AzureIoTSolutions.com 站点链接到 [Azure IoT 认证设备目录](https://catalog.azureiotsolutions.com/)。
 
-有关 AAD 中用户及角色的详细信息，请参阅以下资源：
+该目录列出数百个 IoT 认证硬件设备，可供连接到解决方案加速器，以开始生成 IoT 解决方案。
 
-* [在 Azure AD 中创建用户][lnk-create-edit-users]
-* [将用户分配到应用][lnk-assign-app-roles]
+![设备目录](media/iot-accelerators-permissions/devicecatalog.png)
 
-## <a name="azure-subscription-administrator-roles"></a>Azure 订阅管理员角色
-
-Azure 管理员角色可控制将 Azure 订阅映射到 AAD 租户的能力。
-
-可在文章[添加或更改 Azure 订阅管理员][lnk-admin-roles]中找到有关 Azure 管理员角色的更多信息。
-
-## <a name="faq"></a>常见问题解答
-
-### <a name="im-a-service-administrator-and-id-like-to-change-the-directory-mapping-between-my-subscription-and-a-specific-aad-tenant-how-do-i-complete-this-task"></a>我是服务管理员，要更改我的订阅与特定 AAD 租户之间的目录映射。 如何完成此任务？
-
-请参阅[如何将现有订阅添加到 Azure AD 目录](../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md#to-associate-an-existing-subscription-to-your-azure-ad-directory)
-
-### <a name="i-want-to-change-a-service-administrator-or-co-administrator-when-logged-in-with-an-organizational-account"></a>我在使用组织帐户登录时要更改服务管理员或共同管理员
-
-请参阅支持文章[使用组织帐户登录时更改服务管理员和共同管理员][lnk-service-admins]。
-
-### <a name="why-am-i-seeing-this-error-your-account-does-not-have-the-proper-permissions-to-create-a-solution-please-check-with-your-account-administrator-or-try-with-a-different-account"></a>为何会出现以下错误？ “帐户没有创建解决方案的正确权限。 请咨询帐户管理员或使用其他帐户进行尝试。”
-
-请查看以下指南示意图：
-
-![][img-flowchart]
-
-> [!NOTE]
-> 如果在验证你是 AAD 租户的全局管理员和订阅的共同管理员后，仍看到此错误，请让帐户管理员删除该用户，并按以下顺序重新分配必要的权限。 首先，将用户添加为全局管理员，然后将用户添加为 Azure 订阅的共同管理员。 如果问题仍然存在，请联系[帮助和支持][lnk-help-support]。
-
-### <a name="why-am-i-seeing-this-error-when-i-have-an-azure-subscription-an-azure-subscription-is-required-to-create-pre-configured-solutions-you-can-create-a-free-trial-account-in-just-a-couple-of-minutes"></a>为何在我具有 Azure 订阅时会出现以下错误？ “创建预配置解决方案需要 Azure 订阅。 只需几分钟即可创建一个免费试用帐户。”
-
-如果确定具有 Azure 订阅，请验证订阅的租户映射，并确保在下拉列表中选择正确租户。 如果验证了所需租户是正确的，请按照上图，验证订阅和此 AAD 租户的映射。
+如果你是硬件制造商，请单击“成为合作伙伴”，了解如何成为 Microsoft IoT 认证计划的合作伙伴。
 
 ## <a name="next-steps"></a>后续步骤
-若要继续了解 IoT 解决方案加速器，请参阅如何[自定义解决方案加速器][lnk-customize]。
 
-[img-flowchart]: media/iot-accelerators-permissions/flowchart.png
+若要试用某个 IoT 解决方案加速器，请参阅以下快速入门：
 
-[lnk-azureiotsolutions]: https://www.azureiotsolutions.com
-[lnk-rm-github-repo]: https://github.com/Azure/remote-monitoring-services-dotnet
-[lnk-pm-github-repo]: https://github.com/Azure/azure-iot-predictive-maintenance
-[lnk-cf-github-repo]: https://github.com/Azure/azure-iot-connected-factory
-[lnk-aad-admin]:../active-directory/users-groups-roles/directory-assign-admin-roles.md
-[lnk-portal]: https://portal.azure.com
-[lnk-create-edit-users]:../active-directory/fundamentals/active-directory-users-profile-azure-portal.md
-[lnk-assign-app-roles]:../active-directory/manage-apps/assign-user-or-group-access-portal.md
-[lnk-service-admins]: https://azure.microsoft.com/support/changing-service-admin-and-co-admin
-[lnk-admin-roles]: ../billing/billing-add-change-azure-subscription-administrator.md
-[lnk-help-support]: https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade
-[lnk-customize]: iot-accelerators-remote-monitoring-customize.md
+* [尝试远程监视解决方案](quickstart-remote-monitoring-deploy.md)
+* [尝试互联工厂解决方案](quickstart-connected-factory-deploy.md)
+* [尝试预测性维护解决方案](quickstart-predictive-maintenance-deploy.md)
+* [尝试设备模拟解决方案](quickstart-device-simulation-deploy.md)

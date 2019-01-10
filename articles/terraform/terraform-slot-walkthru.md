@@ -4,17 +4,17 @@ description: 有关使用 Terraform 和 Azure 提供程序部署槽位的教程
 services: terraform
 ms.service: terraform
 keywords: terraform, devops, 虚拟机, Azure, 部署槽位
-author: tomarcher
+author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 4/05/2018
-ms.openlocfilehash: a85e7c46aa41309bc031f59ed841dc8149d878b3
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 1564991ecfe29b1977837c2fdff4be7b3a3e1797
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53723954"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54074812"
 ---
 # <a name="use-terraform-to-provision-infrastructure-with-azure-deployment-slots"></a>结合 Azure 部署槽位使用 Terraform 来预配基础结构
 

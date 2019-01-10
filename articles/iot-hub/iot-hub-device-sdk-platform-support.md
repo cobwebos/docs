@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: yizhon
-ms.openlocfilehash: ebe039c37eb42b0044fa0acf9361edc7e8cbb828
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 15548e801777a99dfb78de0067abb633a2587ee6
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52879343"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54053187"
 ---
 # <a name="azure-iot-sdks-platform-support"></a>Azure IoT SDK 平台支持
 
@@ -20,9 +20,9 @@ ms.locfileid: "52879343"
 
 Microsoft 支持各种操作系统/平台/框架，后者可以通过 Azure IoT C SDK 进行扩展。 某些是团队正式支持的，可以分成多个层，这些层表示用户可以预期的支持级别。 *为平台提供全面的支持*是指 Microsoft 会：
 
-    * 持续生成主版本和 LTS 支持的版本并对其运行端到端测试。  为了提供覆盖不同版本的测试，我们通常会针对最新的 LTS 版本和最常用的版本进行测试。  可以通过平台版本兼容性支持同一平台的其他版本。
-    * 根据需要提供安装指南或包。
-    * 完全支持 GitHub 上的平台。
+- 持续生成主版本和 LTS 支持的版本并对其运行端到端测试。  为了提供覆盖不同版本的测试，我们通常会针对最新的 LTS 版本和最常用的版本进行测试。  可以通过平台版本兼容性支持同一平台的其他版本。
+- 根据需要提供安装指南或包。
+- 完全支持 GitHub 上的平台。
 
 另外，许多合作伙伴已将 C SDK 移植到多个平台，他们负责维护平台抽象层 (PAL)。 [Azure IoT 认证设备目录](https://catalog.azureiotsolutions.com/)还提供了一系列已在其上测试了各种 SDK 的 OS 平台。 这些 SDK 还会定期在这些平台上进行构建，但进行的测试和提供的支持有限：
 

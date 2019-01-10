@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: hrasheed
-ms.openlocfilehash: f50767ad4fc979962968c32bbe972e28d93cce88
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: d6897e35aa60be11cf556335d211c5ea616295b6
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53166398"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53652689"
 ---
 # <a name="process-and-analyze-json-documents-by-using-apache-hive-in-azure-hdinsight"></a>使用 Azure HDInsight 中的 Apache Hive 分析和处理 JSON 文档
 
@@ -57,9 +57,9 @@ ms.locfileid: "53166398"
 }
 ```
 
-可以在 **wasb://processjson@hditutorialdata.blob.core.windows.net/** 上找到该文件。 有关如何将 Azure Blob 存储与 HDInsight 配合使用的详细信息，请参阅[将 HDFS 兼容的 Azure Blob 存储与 HDInsight 中的 Hadoop 配合使用](../hdinsight-hadoop-use-blob-storage.md)。 可以将该文件复制到群集的默认容器。
+可以在 **wasb://processjson@hditutorialdata.blob.core.windows.net/** 上找到该文件。 有关如何将 Azure Blob 存储与 HDInsight 配合使用的详细信息，请参阅[将 HDFS 兼容的 Azure Blob 存储与 HDInsight 中的 Apache Hadoop 配合使用](../hdinsight-hadoop-use-blob-storage.md)。 可以将该文件复制到群集的默认容器。
 
-在本教程中，将使用 Hive 控制台。 有关如何打开 Hive 控制台的说明，请参阅[通过远程桌面将 Hive 与 Hadoop on HDInsight 配合使用](apache-hadoop-use-hive-remote-desktop.md)。
+在本教程中，将使用 Apache Hive 控制台。 有关如何打开 Hive 控制台的说明，请参阅[通过远程桌面将 Apache Hive 与 Apache Hadoop 配合使用](apache-hadoop-use-hive-remote-desktop.md)。
 
 ## <a name="flatten-json-documents"></a>平展 JSON 文档
 下一部分中所列的方法需要 JSON 文档在单一行中。 因此，必须将 JSON 文档平展成字符串。 如果 JSON 文档已平展，则可以跳过此步骤，直接转到有关分析 JSON 数据的下一部分。 若要平展 JSON 文档，请运行以下脚本：
@@ -101,7 +101,7 @@ Hive 提供了三种不同的机制用于对 JSON 文档运行查询，你也可
 * 使用 get_json_object 用户定义的函数 (UDF)。
 * 使用 json_tuple UDF。
 * 使用自定义序列化程序/反序列化程序 (SerDe)。
-* 使用 Python 或其他语言编写自己的 UDF。 有关如何使用 Hive 运行自己的 Python 代码的详细信息，请参阅[使用 Apache Hive 和 Pig 运行 Python UDF][hdinsight-python]。
+* 使用 Python 或其他语言编写自己的 UDF。 有关如何使用 Hive 运行自己的 Python 代码的详细信息，请参阅[使用 Apache Hive 和 Apache Pig 运行 Python UDF][hdinsight-python]。
 
 ### <a name="use-the-getjsonobject-udf"></a>使用 get_json_object UDF
 Hive 提供名为 [get_json_object](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF#LanguageManualUDF-get_json_object) 的内置 UDF，它可以在运行时执行 JSON 查询。 此方法采用两个参数 - 表名称和方法名称，具有平展的 JSON 文档和需要进行分析的 JSON 字段。 让我们来探讨一个示例，以了解此 UDF 的工作原理。
@@ -152,9 +152,9 @@ SerDe 是用于分析嵌套 JSON 文档的最佳选择。 使用它可以定义 
 
 相关文章请参阅：
 
-* [将 Hive 和 HiveQL 与 HDInsight 中的 Hadoop 配合使用以分析示例 Apache log4j 文件](../hdinsight-use-hive.md)
-* [使用 HDInsight 中的 Hive 分析航班延误数据](../hdinsight-analyze-flight-delay-data.md)
-* [使用 HDInsight 中的 Hive 分析 Twitter 数据](../hdinsight-analyze-twitter-data.md)
+* [将 Apache Hive 和 HiveQL 与 HDInsight 中的 Apache Hadoop 配合使用以分析示例 Apache log4j 文件](../hdinsight-use-hive.md)
+* [使用 HDInsight 中的 Apache Hive 分析航班延误数据](../hdinsight-analyze-flight-delay-data.md)
+* [使用 HDInsight 中的 Apache Hive 分析 Twitter 数据](../hdinsight-analyze-twitter-data.md)
 
 [hdinsight-python]:python-udf-hdinsight.md
 

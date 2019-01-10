@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: alsin
-ms.openlocfilehash: 43f9d7d39cfcdd7b670aca6184533def0b6966f5
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: f22e5159acc93d9632c8cd268e24e8f972cbd7dd
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50211377"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53580138"
 ---
 # <a name="use-serial-console-to-access-grub-and-single-user-mode"></a>使用串行控制台访问 GRUB 和单用户模式
 GRUB 指的是 GRand Unified Bootloader。 从 GRUB 可以修改启动配置以实现启动进入单用户模式等功能。
@@ -28,10 +28,10 @@ GRUB 指的是 GRand Unified Bootloader。 从 GRUB 可以修改启动配置以�
 
 在仅将 VM 配置为接受 SSH 密钥登录的情况下，单用户模式也很有用。 在这种情况下，可以使用单用户模式创建具有密码身份验证的帐户。
 
-若要进入单用户模式，需要在 VM 启动时输入 GRUB，并在 GRUB 中修改启动配置。 这可以使用 VM 串行控制台完成。 
+若要进入单用户模式，需要在 VM 启动时输入 GRUB，并在 GRUB 中修改启动配置。 这可以使用 VM 串行控制台完成。
 
 ## <a name="general-grub-access"></a>常规 GRUB 访问
-若要访问 GRUB，需要重新启动 VM，同时使串行控制台边栏选项卡保持处于打开状态。 某些发行版将需要键盘输入以显示 GRUB，而其他发行版则会自动显示 GRUB 几秒钟，并允许用户键盘输入取消超时。 
+若要访问 GRUB，需要重新启动 VM，同时使串行控制台边栏选项卡保持处于打开状态。 某些发行版将需要键盘输入以显示 GRUB，而其他发行版则会自动显示 GRUB 几秒钟，并允许用户键盘输入取消超时。
 
 需要确保 VM 上已启用 GRUB，以便能够访问单用户模式。 根据所用的分发版，可能需要完成一些设置工作才能确保启用 GRUB。 可在下方的[此链接](https://blogs.msdn.microsoft.com/linuxonazure/2018/10/23/why-proactively-ensuring-you-have-access-to-grub-and-sysrq-in-your-linux-vm-could-save-you-lots-of-down-time/)处查看特定于发行版的信息。
 
@@ -63,11 +63,11 @@ RHEL 中的单用户模式要求启用 root 用户（默认已禁用）。 如�
 
 1. 通过 SSH 登录到 RedHat 系统
 1. 切换到 root
-1. 启用 root 用户的密码 
+1. 启用 root 用户的密码
     * `passwd root`（设置强 root 密码）
 1. 确保 root 用户只能通过 ttyS0 登录
     * 运行 `edit /etc/ssh/sshd_config` 并确保 PermitRootLogIn 设置为 no
-    * 运行 `edit /etc/securetty file`，以便只允许通过 ttyS0 登录 
+    * 运行 `edit /etc/securetty file`，以便只允许通过 ttyS0 登录
 
 现在，如果系统启动到单用户模式，则你可以通过 root 密码登录。
 
@@ -83,7 +83,7 @@ RHEL 中的单用户模式要求启用 root 用户（默认已禁用）。 如�
 1. 在行尾添加以下代码：`systemd.unit=rescue.target`
     * 如此即可启动进入单用户模式。 若要使用紧急模式，请将 `systemd.unit=emergency.target` 而不是 `systemd.unit=rescue.target` 添加到行尾
 1. 按 Ctrl + X 退出，并使用应用的设置重新启动
-1. 系统会提示输入管理员密码，以便能够进入单用户模式 - 这是根据前面的说明创建的同一密码    
+1. 系统会提示输入管理员密码，以便能够进入单用户模式 - 这是根据前面的说明创建的同一密码
 
     ![](../media/virtual-machines-serial-console/virtual-machine-linux-serial-console-rhel-enter-emergency-shell.gif)
 
@@ -104,11 +104,11 @@ RHEL 中的单用户模式要求启用 root 用户（默认已禁用）。 如�
 
 ![](../media/virtual-machines-serial-console/virtual-machine-linux-serial-console-rhel-emergency-mount-no-root.gif)
 
-> 注意：遵照上面的整个说明会置于紧急 shell 中，因此还可以执行编辑 `fstab` 之类的任务。 但是，用户普遍接受的建议是重置 root 密码，并使用该密码进入单用户模式。 
+> 注意：遵照上面的整个说明会置于紧急 shell 中，因此还可以执行编辑 `fstab` 之类的任务。 但是，用户普遍接受的建议是重置 root 密码，并使用该密码进入单用户模式。
 
 
 ## <a name="access-for-centos"></a>在 CentOS 中访问
-与 Red Hat Enterprise Linux 中的情况非常类似，CentOS 中的单用户模式也要求启用 GRUB 和 root 用户。 
+与 Red Hat Enterprise Linux 中的情况非常类似，CentOS 中的单用户模式也要求启用 GRUB 和 root 用户。
 
 ### <a name="grub-access-in-centos"></a>在 CentOS 中访问 GRUB
 CentOS 原本就启用了 GRUB。 若要进入 GRUB，请使用 `sudo reboot` 重新启动 VM，然后按任意键。 此时会显示 GRUB 屏幕。
@@ -116,8 +116,8 @@ CentOS 原本就启用了 GRUB。 若要进入 GRUB，请使用 `sudo reboot` �
 ### <a name="single-user-mode-in-centos"></a>CentOS 中的单用户模式
 遵照适用于 RHEL 的上述说明，在 CentOS 中启用单用户模式。
 
-## <a name="access-for-ubuntu"></a>在 Ubuntu 中访问 
-Ubuntu 映像不需要 root 密码。 如果系统启动进入单用户模式，则你无需提供其他凭据即可使用它。 
+## <a name="access-for-ubuntu"></a>在 Ubuntu 中访问
+Ubuntu 映像不需要 root 密码。 如果系统启动进入单用户模式，则你无需提供其他凭据即可使用它。
 
 ### <a name="grub-access-in-ubuntu"></a>在 Ubuntu 中访问 GRUB
 若要访问 GRUB，请在启动 VM 时按住“Esc”。
@@ -137,8 +137,17 @@ Ubuntu 映像不需要 root 密码。 如果系统启动进入单用户模式，
 1. 在 `ro` 的后面添加 `single`，请确保在 `single` 的前面和后面插入一个空格
 1. 按 Ctrl + X 使用这些设置重新启动，并进入单用户模式
 
+### <a name="using-grub-to-invoke-bash-in-ubuntu"></a>使用 GRUB 调用 Ubuntu 中的 Bash
+可能存在尝试过上述说明后仍无法在 Ubuntu VM 中访问单用户模式的情况（例如忘记 root 密码）。 也可以指示内核将 /bin/bash 作为 init 运行，而不是作为系统 init，这将提供 Bash Shell 并允许进行系统维护。 请遵照以下说明：
+
+1. 在 GRUB 中，按“e”编辑启动项（Ubuntu 项）
+1. 查找以 `linux` 开头的行，然后查找 `ro`
+1. 将 `ro` 替换为 `rw init=/bin/bash`
+    - 此操作会将文件系统装载为读写并使用 /bin/bash 作为 init 进程
+1. 按 Ctrl + X 使用这些设置重新启动
+
 ## <a name="access-for-coreos"></a>在 CoreOS 中访问
-CoreOS 中的单用户模式要求启用 GRUB。 
+CoreOS 中的单用户模式要求启用 GRUB。
 
 ### <a name="grub-access-in-coreos"></a>在 CoreOS 中访问 GRUB
 若要访问 GRUB，请在启动 VM 时按任意键。
@@ -151,13 +160,13 @@ CoreOS 中的单用户模式要求启用 GRUB。
 1. 按 Ctrl + X 使用这些设置重新启动，并进入单用户模式
 
 ## <a name="access-for-suse-sles"></a>在 SUSE SLES 中访问
-如果系统已启动进入紧急模式，则 SLES 12 SP3+ 的较新映像允许通过串行控制台访问。 
+如果系统已启动进入紧急模式，则 SLES 12 SP3+ 的较新映像允许通过串行控制台访问。
 
 ### <a name="grub-access-in-suse-sles"></a>在 SUSE SLES 中访问 GRUB
 在 SLES 中访问 GRUB 需要通过 YaST 配置引导加载程序。 为此，请遵照以下说明操作：
 
-1. 通过 SSH 连接到 SLES VM 并运行 `sudo yast bootloader`。 使用 `tab` 键、`enter` 键和箭头键浏览菜单。 
-1. 导航到 `Kernel Parameters`，并选中 `Use serial console`。 
+1. 通过 SSH 连接到 SLES VM 并运行 `sudo yast bootloader`。 使用 `tab` 键、`enter` 键和箭头键浏览菜单。
+1. 导航到 `Kernel Parameters`，并选中 `Use serial console`。
 1. 将 `serial --unit=0 --speed=9600 --parity=no` 添加到 Console 参数
 
 1. 按 F10 保存设置并退出
@@ -176,7 +185,7 @@ CoreOS 中的单用户模式要求启用 GRUB。
 > 请注意，系统会将你置于采用只读文件系统的紧急 shell。 若要对任何文件进行任何编辑，需要使用读写权限重新装载文件系统。 为此，请在 shell 中输入 `mount -o remount,rw /`
 
 ## <a name="access-for-oracle-linux"></a>在 Oracle Linux 中访问
-与 Red Hat Enterprise Linux 中的情况非常类似，Oracle Linux 中的单用户模式也要求启用 GRUB 和 root 用户。 
+与 Red Hat Enterprise Linux 中的情况非常类似，Oracle Linux 中的单用户模式也要求启用 GRUB 和 root 用户。
 
 ### <a name="grub-access-in-oracle-linux"></a>在 Oracle Linux 中访问 GRUB
 Oracle Linux 原本就启用了 GRUB。 若要进入 GRUB，请使用 `sudo reboot` 重新启动 VM，然后按“Esc”。 此时会显示 GRUB 屏幕。

@@ -8,12 +8,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 10/6/2018
 ms.author: victorh
-ms.openlocfilehash: 0187ef3d3b6853c1d1225fc9f208f2508372978d
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 9cb14e5076379e5095ca88dc749a954e9e5d5aa4
+ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52425721"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53994823"
 ---
 # <a name="frequently-asked-questions-for-application-gateway"></a>应用程序网关常见问题
 
@@ -49,7 +49,7 @@ Set-AzureRmApplicationGateway -ApplicationGateway $gw
 
 ### <a name="what-resources-are-supported-today-as-part-of-backend-pool"></a>目前支持在后端池中添加哪些资源？
 
-后端池可以包含 NIC、虚拟机规模集、公共 IP、内部 IP、完全限定的域名 (FQDN) 和多租户后端（比如 Azure Web 应用）。 应用程序网关后端池成员不会绑定到可用性集。 后端池的成员可以跨群集、数据中心，或者在 Azure 外部，前提是它们建立了 IP 连接。
+后端池可以包含 NIC、虚拟机规模集、公共 IP、内部 IP、完全限定的域名 (FQDN) 和多租户后端（例如 Azure 应用服务）。 应用程序网关后端池成员不会绑定到可用性集。 后端池的成员可以跨群集、数据中心，或者在 Azure 外部，前提是它们建立了 IP 连接。
 
 ### <a name="what-regions-is-the-service-available-in"></a>该服务已在哪些区域推出？
 
@@ -88,9 +88,11 @@ Set-AzureRmApplicationGateway -ApplicationGateway $gw
 如果配置了专用前端 IP 配置，则应用程序网关使用每个实例的一个专用 IP 地址，以及另一个专用 IP 地址。 另外，Azure 会在每个子网中保留前四个 IP 地址和最后一个 IP 地址供内部使用。
 例如，如果应用程序网关设置为三个实例并且没有专用前端 IP，则需要 /29 子网大小或更大。 在这种情况下，应用程序网关使用三个 IP 地址。 如果将三个实例和一个 IP 地址用于专用前端 IP 配置，则需要 /28 子网大小或更大，因为需要四个 IP 地址。
 
-### <a name="q-can-i-deploy-more-than-one-application-gateway-resource-to-a-single-subnet"></a>问： 是否可将多个应用程序网关资源部署到单个子网？**
+### <a name="q-can-i-deploy-more-than-one-application-gateway-resource-to-a-single-subnet"></a>问： 是否可将多个应用程序网关资源部署到单个子网？
 
 是，除了提供给定应用程序网关部署的多个实例以外，还可以在包含不同应用程序网关资源的现有子网中预配另一个唯一的应用程序网关资源。
+
+不支持在同一子网上混合使用 Standard_v2 和标准应用程序网关。 另外，如果启用了自动缩放，则一个子网只能有一个应用程序网关。
 
 ### <a name="does-application-gateway-support-x-forwarded-for-headers"></a>应用程序网关是否支持 x-forwarded-for 标头？
 
@@ -103,6 +105,8 @@ Set-AzureRmApplicationGateway -ApplicationGateway $gw
 预配新的应用程序网关 v1 SKU 部署最多需 20 分钟。 更改实例大小/计数不会出现干扰，且在此期间网关处于活动状态。
 
 预配 V2 SKU 部署可能需要大约 5 到 6 分钟时间。
+
+应用程序网关是否支持 x-forwarded-for 标头？
 
 ## <a name="configuration"></a>配置
 
@@ -316,9 +320,9 @@ v2 SKU 可以自动确保新实例分布到各个容错域和更新域中。 如
 
 不会。检测模式仅记录触发了 WAF 规则的流量。
 
-### <a name="how-do-i-customize-waf-rules"></a>如何自定义 WAF 规则？
+### <a name="can-i-customize-waf-rules"></a>我可以自定义 WAF 规则吗？
 
-是的，WAF 规则可自定义，有关如何自定义这些规则的详细信息，请参阅[自定义 WAF 规则组和规则](application-gateway-customize-waf-rules-portal.md)
+可以，WAF 规则可自定义。 有关详细信息，请参阅[自定义 WAF 规则组和规则](application-gateway-customize-waf-rules-portal.md)
 
 ### <a name="what-rules-are-currently-available"></a>目前支持哪些规则？
 

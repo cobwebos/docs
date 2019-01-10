@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/01/2018
 ms.author: ergreenl
-ms.openlocfilehash: 74d6748a4d595e330103497dcc97ac57e01db250
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: b1cfecca7d7b8a3f554466d95c666e2cbddbffde
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50158612"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53975672"
 ---
 # <a name="enable-secure-ldap-ldaps-for-an-azure-ad-domain-services-managed-domain"></a>为 Azure AD 域服务托管域启用安全 LDAP (LDAPS)
 
@@ -51,7 +51,7 @@ ms.locfileid: "50158612"
 5. 默认情况下，已禁用通过 Internet 对托管域的安全 LDAP 访问。 如果需要，将“允许通过 Internet 进行安全 LDAP 访问”切换为“启用”。
 
     > [!WARNING]
-    > 在通过 Internet 启用安全 LDAP 访问时，你的域容易受到来自 Internet 的密钥搜索攻击。 因此，我们建议设置 NSG 以将访问锁定到所需的源 IP 地址范围。 请参阅[通过 Internet 锁定对托管域的 LDAPS 访问](#task-5---lock-down-secure-ldap-access-to-your-managed-domain-over-the-internet)的说明。
+    > 在通过 Internet 启用安全 LDAP 访问时，你的域容易受到来自 Internet 的密钥搜索攻击。 因此，我们建议设置 NSG 以将访问锁定到所需的源 IP 地址范围。 请参阅[通过 Internet 锁定对托管域的 LDAPS 访问](active-directory-ds-ldaps-bind-lockdown.md#task-6-lock-down-secure-ldap-access-to-your-managed-domain-over-the-internet)的说明。
     >
 
 6. 单击具有安全 LDAP 证书的 .PFX 文件后面的文件夹图标。 指定具有证书的 PFX 文件的路径，以便对托管域进行安全 LDAP 访问。

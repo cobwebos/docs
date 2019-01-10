@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/07/2018
 ms.author: johnkem
 ms.component: logs
-ms.openlocfilehash: 50eb70799506ecd5203ff4fd0c2649726658b3e4
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 08ad8964fee2d94677832fa664ed2e18cb9f772c
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53550714"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54104975"
 ---
 # <a name="collect-and-consume-log-data-from-your-azure-resources"></a>从 Azure 资源收集和使用日志数据
 
@@ -83,7 +83,7 @@ ms.locfileid: "53550714"
 
 可以在创建资源后，在 Azure 门户中通过转到特定的资源或导航到 Azure Monitor 来启用资源诊断日志的收集。 通过 Azure Monitor 启用日志收集：
 
-1. 在 [Azure 门户](http://portal.azure.com)中，导航到 Azure Monitor 并单击“诊断设置”
+1. 在 [Azure 门户](https://portal.azure.com)中，导航到 Azure Monitor 并单击“诊断设置”
 
     ![Azure Monitor 的“监视”部分](media/diagnostic-logs-overview/diagnostic-settings-blade.png)
 

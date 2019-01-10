@@ -9,24 +9,24 @@ ms.author: gwallace
 ms.date: 07/17/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 48dcc558d4855874df02ad5c631211f16fd8c29e
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: 89f8b4a842c9a632c661d9770d17c1ec01d4211e
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50024981"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53582246"
 ---
 # <a name="running-runbooks-on-a-hybrid-runbook-worker"></a>在混合 Runbook 辅助角色上运行 runbook
 
-运行在 Azure 自动化中的 Runbook 和运行在混合 Runbook 辅助角色上的 Runbook 没有结构上的区别。 上述两种 Runbook 使用起来可能会有很大差异，因为用于混合 Runbook 辅助角色的 runbook 通常会管理本地计算机本身的资源或其部署的本地环境中的资源，而 Azure 自动化中的 runbook 通常会管理 Azure 云中的资源。
+运行在 Azure 自动化中的 runbook 和运行在混合 Runbook 辅助角色上的 runbook 没有结构上的区别。 但在这两类 runbook 彼此之间可能会有很大差异。 存在这种差异是因为面向混合 Runbook 辅助角色的 runbook 通常管理本地计算机本身的资源，或者管理它所在的本地环境中的资源。 Azure 自动化中的 runbook 通常管理 Azure 云中的资源。
 
-创建 runbook 以在混合 Runbook 辅助角色上运行时，应当在承载着混合辅助角色的计算机内编辑并测试 runbook。 宿主计算机具有管理和访问本地资源时所需的所有 PowerShell 模块和网络访问权限。 在混合辅助角色计算机上编辑和测试 runbook 后，可以将它上传到 Azure 自动化环境，然后它可以在此环境中在混合辅助角色中运行。 请务必知道，作业在本地系统帐户下（对于 Windows）或在特殊用户帐户 nxautomation 下（对于 Linux）运行，这可能会带来细微的差别，在为混合 Runbook 辅助角色创建 Runbook 时应当考虑此事项。
+创建 runbook 以在混合 Runbook 辅助角色上运行时，应当在承载着混合辅助角色的计算机内编辑并测试 runbook。 宿主计算机具有管理和访问本地资源时所需的所有 PowerShell 模块和网络访问权限。 在混合辅助角色计算机上测试 runbook 后，可以将它上传到 Azure 自动化环境，用于在混合辅助角色中运行。 务必应了解在 Windows 的本地系统帐户下或 Linux 的特殊用户帐户 **nxautomation** 下运行的作业。 为混合 Runbook 辅助角色创作 runbook 时，所创作的 runbook 会因此存在细微差别。 在编写 runbook 时，应查看这些变化。
 
 ## <a name="starting-a-runbook-on-hybrid-runbook-worker"></a>在混合 Runbook 辅助角色中启动 runbook
 
-[在 Azure 自动化中启动 Runbook](automation-starting-a-runbook.md) 介绍了用于启动 Runbook 的不同方法。 混合 Runbook 辅助角色增加了一个 **RunOn** 选项，可以在其中指定混合 Runbook 辅助角色组的名称。 如果指定了组，则会由该组中的辅助角色检索和运行 Runbook。 如果未指定此选项，则会在 Azure 自动化中正常运行 Runbook。
+[在 Azure 自动化中启动 Runbook](automation-starting-a-runbook.md) 介绍了用于启动 Runbook 的不同方法。 混合 Runbook 辅助角色增加了一个 **RunOn** 选项，可以在其中指定混合 Runbook 辅助角色组的名称。 指定组时，会由该组中的辅助角色检索和运行 runbook。 如果未指定此选项，则会在 Azure 自动化中正常运行 runbook。
 
-在 Azure 门户中启动 Runbook 时，会看到一个“运行位置”选项，可以在其中选择“Azure”或“混合辅助角色”。 如果选择“混合辅助角色”，则可以从下拉列表中选择该组。
+在 Azure 门户中启动 runbook 时，会看到一个“运行位置”选项，可以在其中选择“Azure”或“混合辅助角色”。 如果选择“混合辅助角色”，则可以从下拉列表中选择该组。
 
 使用 **RunOn** 参数。 可以使用以下命令，通过 Windows PowerShell 在名为 MyHybridGroup 的混合 Runbook 辅助角色组中启动一个名为 Test-Runbook 的 Runbook。
 
@@ -39,8 +39,8 @@ Start-AzureRmAutomationRunbook –AutomationAccountName "MyAutomationAccount" �
 
 ## <a name="runbook-permissions"></a>Runbook 权限
 
-在混合 Runbook 辅助角色上运行的 Runbook 不能使用通常用于针对 Azure 资源进行 Runbook 身份验证的方法，因为它们会访问位于 Azure 之外的资源。 Runbook 可以针对本地资源提供其自己的身份验证，也可以配置使用 [Azure 资源的托管标识](../active-directory/managed-identities-azure-resources/tutorial-windows-vm-access-arm.md#grant-your-vm-access-to-a-resource-group-in-resource-manager
-)的身份验证，还可以指定运行方式帐户来为所有 Runbook 提供用户上下文。
+在混合 Runbook 辅助角色上运行的 runbook 不能使用通常用于针对 Azure 资源进行 runbook 身份验证的方法，因为它们访问的资源不在 Azure 中。 Runbook 可以针对本地资源提供其自己的身份验证，也可以配置使用 [Azure 资源的托管标识](../active-directory/managed-identities-azure-resources/tutorial-windows-vm-access-arm.md#grant-your-vm-access-to-a-resource-group-in-resource-manager
+)的身份验证。 还可以指定运行方式帐户，为所有 runbook 提供用户上下文。
 
 ### <a name="runbook-authentication"></a>Runbook 身份验证
 
@@ -55,7 +55,7 @@ $Computer = Get-AutomationVariable -Name "ComputerName"
 Restart-Computer -ComputerName $Computer -Credential $Cred
 ```
 
-还可以利用 [InlineScript](automation-powershell-workflow.md#inlinescript)，以便在其他由 [PSCredential 通用参数](/powershell/module/psworkflow/about/about_workflowcommonparameters)指定凭据的计算机上运行代码块。
+还可以使用 [InlineScript](automation-powershell-workflow.md#inlinescript)，以便在其他由 [PSCredential 通用参数](/powershell/module/psworkflow/about/about_workflowcommonparameters)指定凭据的计算机上运行代码块。
 
 ### <a name="runas-account"></a>RunAs 帐户
 
@@ -92,7 +92,7 @@ Restart-Computer -ComputerName $Computer -Credential $Cred
 4. [使用 VM 的系统分配托管标识获取访问令牌](../active-directory/managed-identities-azure-resources/tutorial-windows-vm-access-arm.md#get-an-access-token-using-the-vms-system-assigned-managed-identity-and-use-it-to-call-azure-resource-manager)
 5. 在虚拟机上[安装 Windows 混合 Runbook 辅助角色](automation-windows-hrw-install.md#installing-the-windows-hybrid-runbook-worker)。
 
-完成前面的步骤后，可以在 Runbook 中使用 `Connect-AzureRmAccount -Identity` 向 Azure 资源进行身份验证。 这减少了利用运行方式帐户以及为运行方式帐户管理证书的需求。
+完成前面的步骤后，可以在 Runbook 中使用 `Connect-AzureRmAccount -Identity` 向 Azure 资源进行身份验证。 此配置减少了使用运行方式帐户以及为运行方式帐户管理证书的需求。
 
 ```powershell
 # Connect to Azure using the Managed identities for Azure resources identity configured on the Azure VM that is hosting the hybrid runbook worker
@@ -102,11 +102,11 @@ Connect-AzureRmAccount -Identity
 Get-AzureRmVm | Select Name
 ```
 
-### <a name="automation-run-as-account"></a>自动化运行方式帐户
+### <a name="runas-script"></a>自动化运行方式帐户
 
 在 Azure 中部署资源时，可能需要在自动生成过程中访问本地系统以支持部署过程中的某个任务或某组步骤。 需安装运行方式帐户证书，才能使用运行方式帐户针对 Azure 进行身份验证。
 
-下面的 PowerShell Runbook（即 *Export-RunAsCertificateToHybridWorker*）将运行方式证书从 Azure 自动化帐户导出，并将其下载和导入到混合辅助角色（已连接到同一帐户）上的本地计算机证书存储。 完成该步骤后，就会验证辅助角色能否成功地使用运行方式帐户向 Azure 进行身份验证。
+下面的 PowerShell Runbook（即 Export-RunAsCertificateToHybridWorker）将运行方式证书从 Azure 自动化帐户导出，并将其下载和导入到混合辅助角色（已连接到同一帐户）上的本地计算机证书存储。 完成该步骤后，就会验证辅助角色能否成功地使用运行方式帐户向 Azure 进行身份验证。
 
 ```azurepowershell-interactive
 <#PSScriptInfo
@@ -181,22 +181,22 @@ Get-AzureRmAutomationAccount | Select-Object AutomationAccountName
 > [!IMPORTANT]
 > Add-AzureRmAccount 现在是 Connect-AzureRMAccount 的别名。 搜索库项时，如果未看到 Connect-AzureRMAccount，可以使用 Add-AzureRmAccount，或更新自动化帐户中的模块。
 
-将 *Export-RunAsCertificateToHybridWorker* Runbook 保存到装有 `.ps1` 扩展的计算机。 将其导入自动化帐户中，对 Runbook 进行编辑，将变量 `$Password` 的值更改成自己的密码。 发布并运行该 Runbook，以混合辅助角色组为目标，该组使用运行方式帐户运行 Runbook 并对其进行身份验证。 作业流会报告将证书导入本地计算机存储的尝试，并且随后会附带多个行，具体取决于在订阅中定义了多少自动化帐户，以及身份验证是否成功。
+将 *Export-RunAsCertificateToHybridWorker* Runbook 保存到装有 `.ps1` 扩展的计算机。 将其导入自动化帐户中，对 Runbook 进行编辑，将变量 `$Password` 的值更改成自己的密码。 发布并运行 runbook。 以混合辅助角色组为目标，该组使用运行方式帐户运行 runbook 并对其进行身份验证。 作业流会汇报某个操作尝试将证书导入本地计算机存储，并尾随多个行。 此行为取决于订阅中定义的自动化帐户数以及身份验证是否成功。
 
 ## <a name="job-behavior"></a>作业行为
 
-在混合 Runbook 辅助角色中，对作业的处理方式与作业在 Azure 沙盒中运行时略有不同。 一个主要区别是，混合 Runbook 辅助角色中对作业持续时间没有限制。 Azure 沙盒中运行的 Runbook 因[公平份额](automation-runbook-execution.md#fair-share)原则限制为 3 小时。 如果具有长时间运行的 runbook，则你希望确保它在可能发生的重新启动（例如，如果承载着混合辅助角色的计算机重新启动）后能够复原。 如果混合辅助角色宿主计算机重新启动，则任何正在运行的 runbook 将从头重启，或者从 PowerShell 工作流 runbook 的最后一个检查点重启。 如果某个 runbook 作业重启了 3 次以上，则它会挂起。
+在混合 Runbook 辅助角色中，对作业的处理方式与作业在 Azure 沙盒中运行时略有不同。 一个主要区别是，混合 Runbook 辅助角色中对作业持续时间没有限制。 Azure 沙盒中运行的 runbook 因[公平份额](automation-runbook-execution.md#fair-share)原则限制为 3 小时。 对于长时间运行的 runbook，需要确保它能在重启后迅速恢复。 例如，在承载混合辅助角色的计算机重启后。 如果混合辅助角色宿主计算机重新启动，则任何正在运行的 runbook 将从头重启，或者从 PowerShell 工作流 runbook 的最后一个检查点重启。 如果某个 runbook 作业重启了 3 次以上，则它会暂停。
 
 ## <a name="run-only-signed-runbooks"></a>仅运行已签名 Runbook
 
-可以将混合 Runbook 辅助角色配置为仅运行具有某些配置的已签名 Runbook。 以下部分介绍如何设置混合 Runbook 辅助角色以运行已签名 Runbook，以及如何对 Runbook 签名。
+可以将混合 Runbook 辅助角色配置为仅运行具有某些配置的已签名 Runbook。 以下部分介绍如何设置混合 Runbook 辅助角色以运行已签名 runbook，以及如何对 runbook 签名。
 
 > [!NOTE]
 > 将混合 Runbook 辅助角色配置为仅运行已签名 Runbook 后，**未**签名的 Runbook 将无法在该辅助角色上执行。
 
 ### <a name="create-signing-certificate"></a>创建签名证书
 
-以下示例创建可用于对 Runbook 签名的自签名证书。 该示例创建证书并将其导出。 该证书稍后将导入到混合 Runbook 辅助角色中。 该示例还返回指纹，稍后将用于引用证书。
+以下示例创建可用于对 Runbook 签名的自签名证书。 该示例创建证书并将其导出。 该证书稍后将导入到混合 Runbook 辅助角色中。 该示例还返回指纹，此值稍后将用于引用证书。
 
 ```powershell
 # Create a self-signed certificate that can be used for code signing
@@ -249,9 +249,9 @@ Set-AuthenticodeSignature .\TestRunbook.ps1 -Certificate $SigningCert
 
 ## <a name="troubleshoot"></a>故障排除
 
-如果 Runbook 未成功完成，请查看 [Runbook 执行失败](troubleshoot/hybrid-runbook-worker.md#runbook-execution-fails)相关故障排除指南。
+如果 runbook 未成功完成，请查看 [runbook 执行失败](troubleshoot/hybrid-runbook-worker.md#runbook-execution-fails)相关故障排除指南。
 
 ## <a name="next-steps"></a>后续步骤
 
 * 若要详细了解其他可用于启动 Runbook 的方法，请参阅[在 Azure 自动化中启动 Runbook](automation-starting-a-runbook.md)。
-* 若要了解如何通过不同过程使用文本编辑器在 Azure 自动化中处理 PowerShell Runbook 和 PowerShell 工作流 Runbook，请参阅[在 Azure 自动化中编辑 Runbook](automation-edit-textual-runbook.md)
+* 若要了解如何通过不同过程使用文本编辑器在 Azure 自动化中处理 PowerShell runbook，请参阅[在 Azure 自动化中编辑 runbook](automation-edit-textual-runbook.md)

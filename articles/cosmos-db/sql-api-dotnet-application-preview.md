@@ -3,17 +3,17 @@ title: 教程：通过 .Net 预览版 SDK 开发使用 Azure Cosmos DB 的 ASP.N
 description: 本教程介绍如何创建使用 Azure Cosmos DB 的 ASP.NET MVC Web 应用程序。 将通过在 Azure 上托管的待办事项应用存储和访问 JSON 数据。
 author: deborahc
 ms.service: cosmos-db
-ms.component: cosmosdb-sql
+ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 12/03/2018
 ms.author: dech
-ms.openlocfilehash: c0b1ed5aff7f22000a179983396239c24d21a311
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: e3ad852246b4b78d5ed7ac938348e59e9b7e6ce0
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53101324"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54037117"
 ---
 # <a name="tutorial-develop-an-aspnet-mvc-web-application-with-azure-cosmos-db-by-using-net-preview-sdk"></a>教程：通过 .Net 预览版 SDK 开发使用 Azure Cosmos DB 的 ASP.NET MVC Web 应用程序 
 

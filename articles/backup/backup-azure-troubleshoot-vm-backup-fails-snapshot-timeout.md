@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: troubleshooting
 ms.date: 12/03/2018
 ms.author: genli
-ms.openlocfilehash: 9f26a51a8da2c3fec3ff180dbc8c8de08bb0a93a
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: a0f002266764ace07482023a0412366b90acec63
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52833867"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53789851"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>对 Azure 备份失败进行故障排除：代理或扩展的问题
 
@@ -52,8 +52,7 @@ ms.locfileid: "52833867"
 * 如果每天触发多个备份，则也可能发生此问题。 目前，我们建议每天只创建一个备份，因为即时 RP 只保留 7 天，并且在任意给定时间，只能将 18 个即时 RP 与一个 VM 相关联。 <br>
 
 建议的操作：<br>
-若要解决此问题，请删除资源组中的锁，并重试触发清理的操作。
-
+若要解决此问题，请删除 VM 资源组中的锁，并重试触发清理的操作。 
 > [!NOTE]
     > 备份服务将创建一个单独的资源组而非 VM 的资源组来存储还原点集合。 建议客户不要锁定为备份服务使用而创建的资源组。 备份服务创建的资源组的命名格式为：AzureBackupRG_`<Geo>`_`<number>` 例如：AzureBackupRG_northeurope_1
 

@@ -9,16 +9,16 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/10/2017
 ms.author: ashishth
-ms.openlocfilehash: 8b14550adf89f866cf3b736db049cc671db5b765
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 04a923a8bc022aefb667489702c0e74493df94a8
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52314501"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53652755"
 ---
-# <a name="bulk-load-data-into-apache-phoenix-using-psql"></a>使用 psql 将数据大容量加载到 Apache Phoenix
+# <a name="bulk-load-data-into-apache-phoenix-using-psql"></a>使用 psql 将数据批量加载到 Apache Phoenix
 
-[Apache Phoenix](http://phoenix.apache.org/) 是构建在 [Apache HBase](../hbase/apache-hbase-overview.md) 基础之上的开源大规模并行关系数据库。 Phoenix 通过 HBase 提供类似于 SQL 的查询。 Phoenix 使用 JDBC 驱动程序，可让用户创建、删除和更改 SQL 表、索引、视图与序列，以及单独或批量更新插入行。 Phoenix 使用 noSQL 本机编译而不是 MapReduce 来编译查询，以及在 HBase 的顶层创建低延迟的应用程序。 Phoenix 添加了协处理器，支持在服务器的地址空间中运行客户端提供的代码，执行与数据共置的代码。 这样可将客户端/服务器数据传输延迟降到最低。  若要在 HDInsight 中使用 Phoenix 处理数据，请先创建表，然后将数据载入这些表。
+[Apache Phoenix](https://phoenix.apache.org/) 是构建在 [Apache HBase](../hbase/apache-hbase-overview.md) 基础之上的开源大规模并行关系数据库。 Phoenix 通过 HBase 提供类似于 SQL 的查询。 Phoenix 使用 JDBC 驱动程序，可让用户创建、删除和更改 SQL 表、索引、视图与序列，以及单独或批量更新插入行。 Phoenix 使用 noSQL 本机编译而不是 MapReduce 来编译查询，以及在 HBase 的顶层创建低延迟的应用程序。 Phoenix 添加了协处理器，支持在服务器的地址空间中运行客户端提供的代码，执行与数据共置的代码。 这样可将客户端/服务器数据传输延迟降到最低。  若要在 HDInsight 中使用 Phoenix 处理数据，请先创建表，然后将数据载入这些表。
 
 ## <a name="bulk-loading-with-apache-phoenix"></a>使用 Apache Phoenix 大容量加载数据
 
@@ -73,7 +73,7 @@ ms.locfileid: "52314501"
     python psql.py ZookeeperQuorum createCustomersTable.sql /tmp/customers.csv listCustomers.sql
     ```
 
-    > [!NOTE] 
+    > [!NOTE]   
     > 若要确定 `ZookeeperQuorum` 名称，请在文件 `/etc/hbase/conf/hbase-site.xml` 中，使用属性名称 `hbase.zookeeper.quorum` 找到 [Apache ZooKeeper](https://zookeeper.apache.org/) 仲裁字符串。
 
 5. 完成 `psql` 操作后，命令窗口中应会显示一条消息：
@@ -141,7 +141,7 @@ ms.locfileid: "52314501"
 
 ## <a name="next-steps"></a>后续步骤
 
-* [使用 Apache Phoenix 进行批量数据加载](http://phoenix.apache.org/bulk_dataload.html)
+* [使用 Apache Phoenix 进行批量数据加载](https://phoenix.apache.org/bulk_dataload.html)
 * [将 Apache Phoenix 与 HDInsight 中基于 Linux 的 Apache HBase 群集配合使用](../hbase/apache-hbase-phoenix-squirrel-linux.md)
 * [加盐表](https://phoenix.apache.org/salted.html)
-* [Phoenix 语法](http://phoenix.apache.org/language/index.html)
+* [Apache Phoenix 语法](https://phoenix.apache.org/language/index.html)

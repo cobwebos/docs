@@ -10,21 +10,21 @@ ms.topic: conceptual
 ms.date: 01/07/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 2e515ee61144dfe56d2b5a4fac97da81b0fa8c84
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 43da5b32fe3ad8891f89544d0f9bdbd1d4d127d0
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52834836"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53606176"
 ---
 # <a name="azure-ad-b2c-build-a-windows-desktop-app"></a>Azure AD B2C：构建 Windows 桌面应用
 通过使用 Azure Active Directory (Azure AD) B2C，只需几个简短的步骤即可将强大的自助服务标识管理功能添加到桌面应用。 本文将说明如何创建 .NET Windows Presentation Foundation (WPF)“待办事项列表”应用，其中包括用户注册、登录和配置文件管理。 该应用将支持使用用户名或电子邮件进行注册和登录。 该应用还将支持使用社交帐户（如 Facebook 和 Google）进行注册和登录。
 
 ## <a name="get-an-azure-ad-b2c-directory"></a>获取 Azure AD B2C 目录
-只有在创建目录或租户之后，才可使用 Azure AD B2C。  目录是所有用户、应用、组等对象的容器。 如果没有容器，请先 [创建 B2C 目录](active-directory-b2c-get-started.md) ，然后继续执行本指南中的步骤。
+只有在创建目录或租户之后，才可使用 Azure AD B2C。 目录是所有用户、应用、组等对象的容器。 如果没有容器，请先 [创建 B2C 目录](active-directory-b2c-get-started.md) ，然后继续执行本指南中的步骤。
 
 ## <a name="create-an-application"></a>创建应用程序
-接下来，需要在 B2C 目录中创建应用。 此应用为 Azure AD 提供所需的 Azure AD 信息，使之能够与应用安全通信。 若要创建应用，请遵循 [这些说明](active-directory-b2c-app-registration.md)。  请务必：
+接下来，需要在 B2C 目录中创建应用。 此应用为 Azure AD 提供所需的 Azure AD 信息，使之能够与应用安全通信。 若要创建应用，请遵循 [这些说明](active-directory-b2c-app-registration.md)。 请务必：
 
 * 在应用程序中包括**本机客户端**。
 * 复制**重定向 URI** `urn:ietf:wg:oauth:2.0:oob`。 它是此代码示例的默认 URL。
@@ -36,7 +36,7 @@ ms.locfileid: "52834836"
 * 在标识提供者边栏选项卡中，选择“用户 ID 注册”或“电子邮件注册”。
 * 在注册策略中，选择“显示名称”和其他注册属性。
 * 针对每个策略选择“显示名称”和“对象 ID”声明作为应用程序声明。 也可以选择其他声明。
-* 创建每个策略后，请复制策略的 **名称** 。 其前缀应为 `b2c_1_`。  稍后需要用到这些策略名称。
+* 创建每个策略后，请复制策略的 **名称** 。 其前缀应为 `b2c_1_`。 稍后需要用到这些策略名称。
 
 [!INCLUDE [active-directory-b2c-devquickstarts-policy](../../includes/active-directory-b2c-devquickstarts-policy.md)]
 
@@ -51,7 +51,7 @@ git clone --branch skeleton https://github.com/AzureADQuickStarts/B2C-NativeClie
 
 完成的应用也[作为 .zip 文件提供](https://github.com/AzureADQuickStarts/B2C-NativeClient-DotNet/archive/complete.zip)，或者放在同一存储库的 `complete` 分支中。
 
-下载示例代码后，打开 Visual Studio .sln 文件开始处理。 `TaskClient` 项目是用户与之交互的 WPF 桌面应用程序。 出于本教程的目的，它将调用 Azure 中托管的后端任务 Web API，用于存储用户的每个待办事项列表。  无需构建 Web API，我们已运行它。
+下载示例代码后，打开 Visual Studio .sln 文件开始处理。 `TaskClient` 项目是用户与之交互的 WPF 桌面应用程序。 出于本教程的目的，它将调用 Azure 中托管的后端任务 Web API，用于存储用户的每个待办事项列表。 无需构建 Web API，我们已运行它。
 
 若要了解 Web API 如何使用 Azure AD B2C 安全验证请求，请查看 [Web API 快速入门文章](active-directory-b2c-devquickstarts-api-dotnet.md)。
 
@@ -96,7 +96,7 @@ protected async override void OnInitialized(EventArgs e)
 
     pca = new PublicClientApplication(Globals.clientId)
     {
-        // MSAL implements an in-memory cache by default.  Since we want tokens to persist when the user closes the app,
+        // MSAL implements an in-memory cache by default. Since we want tokens to persist when the user closes the app,
         // we've extended the MSAL TokenCache and created a simple FileCache in this app.
         UserTokenCache = new FileCache(),
     };
@@ -115,7 +115,7 @@ private async void SignUp(object sender, RoutedEventArgs e)
     {
         // Use the app's clientId here as the scope parameter, indicating that
         // you want a token to the your app's backend web API (represented by
-        // the cloud hosted task API).  Use the UiOptions.ForceLogin flag to
+        // the cloud hosted task API). Use the UiOptions.ForceLogin flag to
         // indicate to MSAL that it should show a sign-up UI no matter what.
         result = await pca.AcquireTokenAsync(new string[] { Globals.clientId },
                 string.Empty, UiOptions.ForceLogin, null, null, Globals.authority,
@@ -187,7 +187,7 @@ private async void EditProfile(object sender, RoutedEventArgs e)
 在所有这些情况下，MSAL 将返回 `AuthenticationResult` 中的令牌或引发异常。 每次从 MSAL 获取令牌时，都可以使用 `AuthenticationResult.User` 对象更新应用中的用户数据，如 UI。 ADAL 还可缓存令牌，以便在应用程序的其他部件中使用。
 
 ### <a name="check-for-tokens-on-app-start"></a>应用启动时检查令牌
-MSAL 还可用于跟踪用户的登录状态。  在此应用中，我们希望用户即使关闭并重新打开它，也能保持登录状态。  回到 `OnInitialized` 替代中，请使用 MSAL 的 `AcquireTokenSilent` 方法检查缓存的令牌：
+MSAL 还可用于跟踪用户的登录状态。 在此应用中，我们希望用户即使在关闭并重新打开应用后也能保持登录状态。 回到 `OnInitialized` 替代中，请使用 MSAL 的 `AcquireTokenSilent` 方法检查缓存的令牌：
 
 ```csharp
 AuthenticationResult result = null;
@@ -209,7 +209,7 @@ catch (MsalException ex)
 {
     if (ex.ErrorCode == "failed_to_acquire_token_silently")
     {
-        // There are no tokens in the cache.  Proceed without calling the To Do list service.
+        // There are no tokens in the cache. Proceed without calling the To Do list service.
     }
     else
     {
@@ -226,7 +226,7 @@ catch (MsalException ex)
 ```
 
 ## <a name="call-the-task-api"></a>调用任务 API
-现在，已使用 MSAL 执行策略并获取令牌。  如果想要使用以下令牌之一来调用任务 API，可以再次使用 MSAL 的 `AcquireTokenSilent` 方法检查缓存的令牌：
+现在，已使用 MSAL 执行策略并获取令牌。 如果想要使用以下令牌之一来调用任务 API，可以再次使用 MSAL 的 `AcquireTokenSilent` 方法检查缓存的令牌：
 
 ```csharp
 private async void GetTodoList()
@@ -306,7 +306,7 @@ private void SignOut(object sender, RoutedEventArgs e)
 ```
 
 ## <a name="run-the-sample-app"></a>运行示例应用
-最后，构建并运行示例。  使用电子邮件地址或用户名注册应用。 注销，并以同一用户身份重新登录。 编辑该用户的配置文件。 注销并使用其他用户身份注册。
+最后，构建并运行示例。 使用电子邮件地址或用户名注册应用。 注销，并以同一用户身份重新登录。 编辑该用户的配置文件。 注销并使用其他用户身份注册。
 
 ## <a name="add-social-idps"></a>添加社交 IDP
 目前，该应用仅支持用户使用**本地帐户**进行注册和登录。 这些帐户是存储在 B2C 目录中使用用户名和密码的帐户。 通过使用 Azure AD B2C，无需更改任何代码即可添加对其他标识提供者 (IDP) 的支持。

@@ -1,24 +1,23 @@
 ---
-title: Azure Cosmos DB MongoDB API 中的索引编制
-description: 概述 Azure Cosmos DB MongoDB API 中的索引编制功能。
-services: cosmos-db
-author: orestis-ms
+title: Azure Cosmos DB 的 API for MongoDB 中的索引编制
+description: 概述 Azure Cosmos DB 的 API for MongoDB 中的索引编制功能。
 ms.service: cosmos-db
-ms.component: cosmosdb-mongo
+ms.subservice: cosmosdb-mongo
 ms.devlang: nodejs
 ms.topic: conceptual
-ms.date: 03/01/2018
-ms.author: orkostak
-ms.openlocfilehash: bdb2ceb45950b99b1a5a351c6301599a791ef8cc
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.date: 12/26/2018
+author: sivethe
+ms.author: sivethe
+ms.openlocfilehash: de037316efa50dd25ea04c370fa0e5878fb52ba1
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52875291"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54040398"
 ---
-# <a name="indexing-in-the-azure-cosmos-db-mongodb-api"></a>Azure Cosmos DB 中的索引编制：MongoDB API
+# <a name="indexing-using-azure-cosmos-dbs-api-for-mongodb"></a>使用 Azure Cosmos DB 的 API for MongoDB 编制索引
 
-Azure Cosmos DB MongoDB API 可利用 Azure Cosmos DB 的自动索引管理功能。 因此，用户可以访问 Azure Cosmos DB 的默认索引编制策略。 因此，如果用户没有定义索引，或者没有删除索引，则默认情况下，所有字段都会在插入到集合中时自动编制索引。 大多数情况下，建议使用在帐户上设置的默认索引编制策略。
+Azure Cosmos DB 的 API for MongoDB 可利用 Cosmos DB 的自动索引管理功能。 因此，用户可以访问 Cosmos DB 的默认索引编制策略。 因此，如果用户没有定义索引，或者没有删除索引，则默认情况下，所有字段都会在插入到集合中时自动编制索引。 大多数情况下，建议使用在帐户上设置的默认索引编制策略。
 
 ## <a name="dropping-the-default-indexes"></a>删除默认索引
 
@@ -97,5 +96,5 @@ globaldb:PRIMARY> db.coll.createIndex({"_ts":1}, {expireAfterSeconds: 10})
 目前，创建唯一索引的前提是集合不含文档。 常用 MongoDB 迁移工具会尝试在导入数据后创建唯一索引。 若要避免此问题，建议用户手动创建相应的集合和唯一索引，而不是让迁移工具来创建（对于 ```mongorestore```，可以通过在命令行中使用 --noIndexRestore 标志来实现此行为）。
 
 ## <a name="next-steps"></a>后续步骤
-* [Azure Cosmos DB 如何编制数据索引？](../cosmos-db/index-policy.md)
-* [利用生存时间使 Azure Cosmos DB 集合中的数据自动过期](../cosmos-db/time-to-live.md)
+* [Azure Cosmos DB 中的索引](../cosmos-db/index-policy.md)
+* [利用生存时间使 Azure Cosmos DB 中的数据自动过期](../cosmos-db/time-to-live.md)

@@ -11,20 +11,20 @@ author: oslake
 ms.author: moslake
 ms.reviewer: vanto, genemi
 manager: craigg
-ms.date: 12/13/2018
-ms.openlocfilehash: d4957efa151a0f992d098b2d6355b03f336e3738
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.date: 12/20/2018
+ms.openlocfilehash: 33e0b66541e5ead5f3c05d2310ecc07e8a62324c
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53438585"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53728119"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-sql"></a>使用适用于 Azure SQL 数据库的虚拟网络服务终结点和规则
 
 虚拟网络规则是一种防火墙安全功能，用于控制是否允许 Azure [SQL 数据库](sql-database-technical-overview.md)或 [SQL 数据仓库](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md)服务器接受从虚拟网络中特定子网发送的通信。 本文说明了为何有时候最好选择虚拟网络规则功能来安全地启用到 Azure SQL 数据库和 SQL 数据仓库的通信。
 
-> [!NOTE]
-> 本主题适用于 Azure SQL 服务器，同时也适用于在 Azure SQL 服务器中创建的 SQL 数据库和 SQL 数据仓库数据库。 为简单起见，在提到 SQL 数据库和 SQL 数据仓库时，本文统称 SQL 数据库。
+> [!IMPORTANT]
+> 本主题适用于 Azure SQL 服务器，同时也适用于在 Azure SQL 服务器中创建的 SQL 数据库和 SQL 数据仓库数据库。 为简单起见，在提到 SQL 数据库和 SQL 数据仓库时，本文统称 SQL 数据库。 本文不适用于 **Azure SQL 数据库托管实例**。
 
 若要创建虚拟网络规则，首先必须具有可供规则引用的[虚拟网络服务终结点][vm-virtual-network-service-endpoints-overview-649d]。
 
@@ -64,9 +64,8 @@ ms.locfileid: "53438585"
 
 但是，静态 IP 方法可能会变得难以管理，在规模大时操作成本高。 虚拟网络规则更易于制定和管理。
 
-### <a name="c-cannot-yet-have-sql-database-on-a-subnet"></a>C. 目前，子网上不允许有 SQL 数据库
-
-如果 Azure SQL 数据库服务器是虚拟网络子网上的一个节点，则虚拟网络中的所有节点都可以与 SQL 数据库通信。 在这种情况下，VM 可以与 SQL 数据库通信，不需任何虚拟网络规则或 IP 规则。
+> [!NOTE]
+> 目前，子网上没有 SQL 数据库。 如果 Azure SQL 数据库服务器是虚拟网络子网上的一个节点，则虚拟网络中的所有节点都可以与 SQL 数据库通信。 在这种情况下，VM 可以与 SQL 数据库通信，不需任何虚拟网络规则或 IP 规则。
 
 但截至 2017 年 9 月，Azure SQL 数据库服务仍然无法分配给子网。
 
@@ -92,7 +91,7 @@ ms.locfileid: "53438585"
 
 在管理虚拟网络服务终结点时，安全角色是分开的。 下述每个角色都需要进行操作：
 
-- **网络管理元：**&nbsp;启用终结点。
+- **网络管理员：**&nbsp; 启用终结点。
 - **数据库管理员：**&nbsp;更新访问控制列表 (ACL)，将给定的子网添加到 SQL 数据库服务器。
 
 RBAC 备用：

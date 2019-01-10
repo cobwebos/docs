@@ -3,17 +3,17 @@ title: 在 Azure 中使用 Ansible 创建虚拟机规模集
 description: 了解如何在 Azure 中使用 Ansible 创建和配置虚拟机规模集
 ms.service: ansible
 keywords: ansible, azure, devops, bash, playbook, 虚拟机, 虚拟机规模集, vmss
-author: tomarcher
+author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 08/24/2018
-ms.openlocfilehash: 8dacfb054a36801c076435037a530daa87c4a89c
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: 920a631ed379651751641c22e4b43f6731197377
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53409375"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54054148"
 ---
 # <a name="create-virtual-machine-scale-sets-in-azure-using-ansible"></a>在 Azure 中使用 Ansible 创建虚拟机规模集
 使用 Ansible 可以在环境中自动部署和配置资源。 可以在 Azure 中使用 Ansible 管理虚拟机规模集 (VMSS)，就像管理任何其他 Azure 资源一样。 本文介绍如何使用 Ansible 创建和横向扩展虚拟机规模集。 

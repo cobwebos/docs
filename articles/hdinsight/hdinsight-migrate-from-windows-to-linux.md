@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/30/2018
 ms.author: hrasheed
-ms.openlocfilehash: bcaf59e1d9b36dfbb17f1e0b8089cd88e626e2b9
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: ea808609add942c5cac36e7f0306e4a27ac3bb3a
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53437123"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53743640"
 ---
 # <a name="migrate-from-a-windows-based-hdinsight-cluster-to-a-linux-based-cluster"></a>从基于 Windows 的 HDInsight 群集迁移到基于 Linux 的群集
 
@@ -119,7 +119,7 @@ ms.locfileid: "53437123"
 
 ### <a name="ssh-user"></a>SSH 用户
 
-基于 Linux 的 HDInsight 群集使用**安全 Shell (SSH)** 协议为群集节点提供远程访问功能。 与基于 Windows 的群集的远程桌面不同，大多数 SSH 客户端不提供图形用户体验。 相反，SSH 客户端提供支持在群集上运行命令的命令行。 某些客户端（例如 [MobaXterm](http://mobaxterm.mobatek.net/)）除了提供远程命令行以外，还提供图形化文件系统浏览器。
+基于 Linux 的 HDInsight 群集使用**安全 Shell (SSH)** 协议为群集节点提供远程访问功能。 与基于 Windows 的群集的远程桌面不同，大多数 SSH 客户端不提供图形用户体验。 相反，SSH 客户端提供支持在群集上运行命令的命令行。 某些客户端（例如 [MobaXterm](https://mobaxterm.mobatek.net/)）除了提供远程命令行以外，还提供图形化文件系统浏览器。
 
 在群集创建期间，必须提供 SSH 用户，以及**密码**或**公钥证书**进行身份验证。
 
@@ -199,7 +199,7 @@ Pig 和 MapReduce 工作负荷在基于 Linux 的群集上很相似。 但是，
 | 运行 `set hive.execution.engine=tez;` 以启用 Tez |Apache Tez 是基于 Linux 的群集的默认执行引擎，因此不再需要 set 语句。 |
 | C# 用户定义函数 | 有关通过基于 Linux 的 HDInsight 验证 C# 组件的信息，请参阅[将 .NET 解决方案迁移到基于 Linux 的 HDInsight](hdinsight-hadoop-migrate-dotnet-to-linux.md) |
 | 服务器上的 CMD 文件或脚本作为 Hive 作业的一部分调用 |使用 Bash 脚本 |
-| 从远程桌面运行 `hive` 命令 |使用 [Beeline](hadoop/apache-hadoop-use-hive-beeline.md)，或者[从 SSH 会话使用 Apache Hive](hdinsight-hadoop-use-hive-ssh.md) |
+| 从远程桌面运行 `hive` 命令 |使用 [Apache Hive Beeline](hadoop/apache-hadoop-use-hive-beeline.md)，或者[从 SSH 会话使用 Apache Hive](hdinsight-hadoop-use-hive-ssh.md) |
 
 ### <a name="pig"></a>Pig
 
@@ -220,7 +220,7 @@ Pig 和 MapReduce 工作负荷在基于 Linux 的群集上很相似。 但是，
 > [!IMPORTANT]  
 > 如果使用外部 Oozie 元存储，应先备份元存储，再将它与基于 Linux 的 HDInsight 配合使用。 基于 Linux 的 HDInsight 在较新版本的 Oozie 中提供，但可能与由较早版本创建的元存储不兼容。
 
-Oozie 工作流支持 shell 操作。 shell 操作将默认 shell 用于操作系统，以运行命令行命令。 如果现有 Oozie 工作流依赖于 Windows shell，则必须重写工作流以依赖于 Linux shell 环境 (Bash)。 有关将 shell 操作与 Oozie 配合使用的详细信息，请参阅 [Oozie shell 操作扩展](http://oozie.apache.org/docs/3.3.0/DG_ShellActionExtension.html)。
+Oozie 工作流支持 shell 操作。 shell 操作将默认 shell 用于操作系统，以运行命令行命令。 如果现有 Oozie 工作流依赖于 Windows shell，则必须重写工作流以依赖于 Linux shell 环境 (Bash)。 有关将 shell 操作与 Oozie 配合使用的详细信息，请参阅 [Oozie shell 操作扩展](https://oozie.apache.org/docs/3.3.0/DG_ShellActionExtension.html)。
 
 如果具有使用 C# 应用程序的工作流，请在 Linux 环境中验证这些应用程序。 有关详细信息，请参阅[将 .NET 解决方案迁移到基于 Linux 的 HDInsight](hdinsight-hadoop-migrate-dotnet-to-linux.md)。
 

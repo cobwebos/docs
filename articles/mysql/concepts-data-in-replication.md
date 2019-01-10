@@ -1,20 +1,17 @@
 ---
 title: 将数据复制到 Azure Database for MySQL。
 description: 本文介绍 Azure Database for MySQL 的复制中数据。
-services: mysql
 author: ajlam
 ms.author: andrela
-manager: kfile
-editor: jasonwhowell
 ms.service: mysql
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/31/2018
-ms.openlocfilehash: 6135e4a0182f3af7db54eab974e4c307402185ab
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: ca748dff67be2a37ca61f34602f207265cc77aaa
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43666070"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53544220"
 ---
 # <a name="replicate-data-into-azure-database-for-mysql"></a>将数据复制到 Azure Database for MySQL
 
@@ -23,8 +20,8 @@ ms.locfileid: "43666070"
 ## <a name="when-to-use-data-in-replication"></a>何时使用配置复制中数据
 可以考虑使用复制中数据的主要场景有：
 
-- 混合数据同步：借助复制中数据，可以在本地服务器和 Azure Database for MySQL 之间同步数据。 此同步可用于创建混合应用程序。 如果有现有的本地数据库服务器，但想要将数据移到更靠近最终用户的区域，那么此方法很有吸引力。
-- 多云同步：对于复杂的云解决方案，使用复制中数据在 Azure Database for MySQL 和不同云提供程序之间同步数据，包括虚拟机和托管在这些云中的数据库服务。
+- **混合数据同步：** 借助数据传入复制，可以在本地服务器和 Azure Database for MySQL 之间同步数据。 此同步可用于创建混合应用程序。 如果有现有的本地数据库服务器，但想要将数据移到更靠近最终用户的区域，那么此方法很有吸引力。
+- **多云同步：** 对于复杂的云解决方案，使用数据传入复制在 Azure Database for MySQL 和不同的云服务提供商之间同步数据，包括虚拟机和托管在这些云中的数据库服务。
 
 ## <a name="limitations-and-considerations"></a>限制和注意事项
 

@@ -5,21 +5,24 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 03/21/2018
+ms.date: 11/30/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: a1fa4d58cefa82e70c036d697957254531042b9c
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: eb2555cdc163ee0f88149248b9e7d83a51d34a1b
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
-ms.locfileid: "30196868"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53443990"
 ---
-1. 在[门户](http://portal.azure.com)中，导航到要为其创建虚拟网关的 Resource Manager 虚拟网络。
-2. 在 VNet 页的“设置”部分单击“子网”，展开“子网”页。
-3. 在“子网”页中，单击“+网关子网”打开“添加子网”页。
+1. 在[Azure 门户](http://portal.azure.com)中，选择要为其创建虚拟网关的资源管理器虚拟网络。
 
-  ![添加网关子网](./media/vpn-gateway-add-gwsubnet-rm-portal-include/addgwsub.png "添加网关子网")
-4. 子网的“名称”自动填充为值“GatewaySubnet”。 Azure 需要此值才能识别作为网关子网的子网。 根据配置要求调整自动填充的“地址范围”值，然后单击页面底部的“确定”以创建该子网。
+2. 在虚拟网络页的“设置”部分中，选择“子网”展开“子网”页。
 
-  ![添加子网](./media/vpn-gateway-add-gwsubnet-rm-portal-include/addsubnetgw.png "添加子网")
+3. 在“子网”页中，选择“网关子网”打开“添加子网”页。
+
+   ![添加网关子网](./media/vpn-gateway-add-gwsubnet-rm-portal-include/addgwsub.png "添加网关子网")
+
+4. 子网的“名称”自动填充为值“GatewaySubnet”。 Azure 需要此值才能识别作为网关子网的子网。 根据配置要求调整自动填充的“地址范围”值，然后选择“确定”以创建该子网。
+
+   ![添加子网](./media/vpn-gateway-add-gwsubnet-rm-portal-include/addsubnetgw.png "添加子网")

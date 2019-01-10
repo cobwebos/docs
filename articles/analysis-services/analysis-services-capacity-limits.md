@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 09/12/2018
+ms.date: 12/19/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 4c2cebe2225e475ccd40460e7b10a6ba3ed428d5
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: beb0c1f9d6b54c029af48684fd81b38699dd2720
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44723615"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53630642"
 ---
 # <a name="analysis-services-resource-and-object-limits"></a>Azure Analysis Services 资源和对象限制
 
@@ -32,7 +32,7 @@ ms.locfileid: "44723615"
 
 ### <a name="basic-tier"></a>基本层
 
-建议在具有小型表格模型的生产解决方案、限制用户并发性和要求简单数据刷新的场合下使用该层。 查询副本横向扩展不适用于此层。 此层不支持透视图、多个分区和 DirectQuery 表格模型功能。  
+建议在具有小型表格模型的生产解决方案、限制用户并发性和要求简单数据刷新的场合下使用该层。 查询副本横向扩展*不适用于*此层。 此层不支持透视、多个分区和 DirectQuery 表格模型功能。  
 
 |计划  |QPU  |内存 (GB)  |
 |---------|---------|---------|
@@ -56,20 +56,20 @@ ms.locfileid: "44723615"
 
 ## <a name="object-limits"></a>对象限制
 
-以下是理论限制。 性能会随以下数值的降低而降低。
+以下限制是理论限制。 性能会随以下数值的降低而降低。
 
 |对象|最大大小/数量|  
 |------------|----------------------------|  
 |实例中的数据库数|16,000|  
 |数据库中表和列的总数|16,000|  
-|表中的行数|不受限制<br /><br /> 警告：具有限制：表中单列的非重复值不能超过 1,999,999,997 个。|  
+|表中的行数|不受限制<br /><br /> **警告：** 具有限制：表中单列的非重复值不能超过 1,999,999,997 个。|  
 |表中的层次结构数|15,999|  
 |层次结构中的级别数|15,999|  
 |关系|8,000|  
 |所有表中的键列数|15,999|  
-|表中的度量值数|2^31-1 = 2,147,483,647|  
+|表中的度量值|2^31-1 = 2,147,483,647|  
 |查询返回的单元格数|2^31-1 = 2,147,483,647|  
-|源查询的记录大小|64K|  
+|源查询的记录大小|64 K|  
 |对象名称的长度|512 个字符|  
 
 

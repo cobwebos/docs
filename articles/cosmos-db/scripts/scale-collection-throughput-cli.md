@@ -3,15 +3,17 @@ title: Azure CLI 脚本 - 缩放 Azure Cosmos DB 容器吞吐量 | Microsoft Doc
 description: Azure CLI 脚本示例 - 缩放 Azure Cosmos DB 容器吞吐量
 author: markjbrown
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: sample
 ms.date: 10/26/2018
 ms.author: mjbrown
-ms.openlocfilehash: 4eafc94349acaedeee72edb408d5cea43eae92c3
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.reviewer: sngun
+ms.openlocfilehash: 593fade731fac86e7fcda69bfe223716127de9e1
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51005625"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54038443"
 ---
 # <a name="scale-azure-cosmos-db-container-throughput-using-the-azure-cli"></a>使用 Azure CLI 缩放 Azure Cosmos DB 容器吞吐量
 

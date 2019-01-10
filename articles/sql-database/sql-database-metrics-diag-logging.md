@@ -11,28 +11,28 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 manager: craigg
-ms.date: 09/20/2018
-ms.openlocfilehash: 138368c8e79d68a9a9c5a711b99d8926da7dc68d
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.date: 01/03/2019
+ms.openlocfilehash: 49c411487a29a7faa5a6cec5087a85d472309a4b
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53601553"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54044563"
 ---
 # <a name="azure-sql-database-metrics-and-diagnostics-logging"></a>Azure SQL 数据库指标和诊断日志记录
 
 Azure SQL 数据库、弹性池、托管实例和托管实例中的数据库可以流式传输指标和诊断日志，以便更轻松地进行性能监视。 可以配置数据库，以将资源使用情况、辅助角色和会话以及连接性传输到以下 Azure 资源之一：
 
-* **Azure SQL Analytics**：使用报告、警报和缓解建议对 Azure 数据库进行智能监视。
-* **Azure 事件中心**：将 SQL 数据库遥测与自定义监视解决方案或热管道相集成。
-* **Azure 存储**：低价存档大量遥测数据。
+- **Azure SQL Analytics**：使用报告、警报和缓解建议对 Azure 数据库进行智能监视。
+- **Azure 事件中心**：将 SQL 数据库遥测与自定义监视解决方案或热管道相集成。
+- **Azure 存储**：低价存档大量遥测数据。
 
     ![体系结构](./media/sql-database-metrics-diag-logging/architecture.png)
 
 有关各种 Azure 服务支持的指标和日志类别的详细信息，请参阅：
 
-* [Microsoft Azure 中的指标概述](../monitoring-and-diagnostics/monitoring-overview-metrics.md)
-* [Azure 诊断日志概述](../azure-monitor/platform/diagnostic-logs-overview.md)
+- [Microsoft Azure 中的指标概述](../monitoring-and-diagnostics/monitoring-overview-metrics.md)
+- [Azure 诊断日志概述](../azure-monitor/platform/diagnostic-logs-overview.md)
 
 本文提供的指导可帮助你为数据库、弹性池和托管实例启用诊断遥测。 它还可以帮助你了解如何将 Azure SQL Analytics 配置为监视工具用于查看数据库诊断遥测数据。
 
@@ -101,7 +101,6 @@ Azure SQL 数据库、弹性池、托管实例和托管实例中的数据库可�
 
 > [!NOTE]
 > 无法从数据库诊断设置启用安全审核日志。 若要启用审核日志流式传输，请参阅[为数据库设置审核](sql-database-auditing.md#subheading-2)和 [Azure Log Analytics 和 Azure 事件中心内的 SQL 审核日志](https://blogs.msdn.microsoft.com/sqlsecurity/2018/09/13/sql-audit-logs-in-azure-log-analytics-and-azure-event-hubs/)。
-
 > [!TIP]
 > 针对要监视的每个 Azure SQL 数据库重复上述步骤。
 
@@ -112,17 +111,17 @@ Azure SQL 数据库、弹性池、托管实例和托管实例中的数据库可�
 若要为托管实例中的数据库启用诊断遥测流，请执行以下步骤：
 
 1. 转到托管实例中的数据库。
-1. 选择“诊断设置”。
-1. 选择“启用诊断”（如果不存在以前的设置），或选择“编辑设置”来编辑以前的设置
+2. 选择“诊断设置”。
+3. 选择“启用诊断”（如果不存在以前的设置），或选择“编辑设置”来编辑以前的设置
    - 最多可以创建三 (3) 个并行连接用于流式传输诊断遥测数据。
    - 选择“+添加诊断设置”，配置为将诊断数据并行流式传输到多个资源。
 
    ![为托管实例数据库启用诊断](./media/sql-database-metrics-diag-logging/diagnostics-settings-database-mi-enable.png)
 
-1. 输入设置名称供自己参考。
-1. 选择诊断数据要流式传输到的目标资源：“存档到存储帐户”、“流式传输到事件中心”或“发送到 Log Analytics”。
-1. 选中数据库诊断遥测对应的复选框：“SQLInsights”、“QueryStoreRuntimeStatistics”、“QueryStoreWaitStatistics”和“Errors”。
-1. 选择“保存”。
+4. 输入设置名称供自己参考。
+5. 选择诊断数据要流式传输到的目标资源：“存档到存储帐户”、“流式传输到事件中心”或“发送到 Log Analytics”。
+6. 选中数据库诊断遥测对应的复选框：“SQLInsights”、“QueryStoreRuntimeStatistics”、“QueryStoreWaitStatistics”和“Errors”。
+7. 选择“保存”。
 
    ![为托管实例数据库配置诊断](./media/sql-database-metrics-diag-logging/diagnostics-settings-database-mi-selection.png)
 
@@ -170,7 +169,7 @@ Azure SQL 数据库、弹性池、托管实例和托管实例中的数据库可�
 
 | 资源 | 监视遥测数据 |
 | :------------------- | ------------------- |
-| **托管实例** | [ResourceUsageStats](sql-database-metrics-diag-logging.md#resource-usage-stats) 包含 vCore 计数、平均 CPU 百分比、IO 请求数、读取/写入的字节数、保留的存储空间和已使用的存储空间。 |
+| **托管实例** | [ResourceUsageStats](sql-database-metrics-diag-logging.md#logs-for-managed-instance) 包含 vCore 计数、平均 CPU 百分比、IO 请求数、读取/写入的字节数、保留的存储空间和已使用的存储空间。 |
 
 若要为托管实例资源启用诊断遥测流，请执行以下步骤：
 
@@ -338,11 +337,11 @@ Azure SQL Analytics 是一种云解决方案，可跨多个订阅大规模监视
 
 使用在事件中心流式传输的指标可以：
 
-* **通过将热路径数据流式传输到 Power BI 来查看服务运行状况**。 使用事件中心、流分析和 PowerBI，可以在 Azure 服务中轻松地将指标和诊断数据转换成几近实时的分析结果。 有关如何设置事件中心、如何使用流分析处理数据，以及如何使用 PowerBI 作为输出的概述，请参阅[流分析和 Power BI](../stream-analytics/stream-analytics-power-bi-dashboard.md)。
+- **通过将热路径数据流式传输到 Power BI 来查看服务运行状况**。 使用事件中心、流分析和 PowerBI，可以在 Azure 服务中轻松地将指标和诊断数据转换成几近实时的分析结果。 有关如何设置事件中心、如何使用流分析处理数据，以及如何使用 PowerBI 作为输出的概述，请参阅[流分析和 Power BI](../stream-analytics/stream-analytics-power-bi-dashboard.md)。
 
-* **将日志流式传输到第三方日志记录和遥测流**。 使用事件中心流式传输，可将指标和诊断日志引入不同的第三方监视和日志分析解决方案。
+- **将日志流式传输到第三方日志记录和遥测流**。 使用事件中心流式传输，可将指标和诊断日志引入不同的第三方监视和日志分析解决方案。
 
-* **生成自定义遥测和日志记录平台**。 是否已有一个自定义生成的遥测平台，或者正在考虑生成一个？ 可以利用事件中心高度可缩放的发布-订阅功能灵活引入诊断日志。 请参阅 [Dan Rosanova 的指南：了解如何在全局规模的遥测平台中使用事件中心](https://azure.microsoft.com/documentation/videos/build-2015-designing-and-sizing-a-global-scale-telemetry-platform-on-azure-event-Hubs/)。
+- **生成自定义遥测和日志记录平台**。 是否已有一个自定义生成的遥测平台，或者正在考虑生成一个？ 可以利用事件中心高度可缩放的发布-订阅功能灵活引入诊断日志。 请参阅 [Dan Rosanova 的指南：了解如何在全局规模的遥测平台中使用事件中心](https://azure.microsoft.com/documentation/videos/build-2015-designing-and-sizing-a-global-scale-telemetry-platform-on-azure-event-Hubs/)。
 
 ## <a name="stream-into-storage"></a>流式传输到存储
 
@@ -386,7 +385,7 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 
 ## <a name="metrics-and-logs-available"></a>可用的指标和日志
 
-收集的监视遥测数据可用于你自己的_自定义分析_，并结合 [SQL Analytics 语言](https://docs.microsoft.com/azure/log-analytics/query-language/get-started-queries)用于_应用程序开发_。 
+收集的监视遥测数据可用于你自己的_自定义分析_，并结合 [SQL Analytics 语言](https://docs.microsoft.com/azure/log-analytics/query-language/get-started-queries)用于_应用程序开发_。
 
 ## <a name="all-metrics"></a>所有指标
 
@@ -690,12 +689,12 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 
 若要了解如何启用日志记录并了解各种 Azure 服务支持的指标和日志类别，请参阅：
 
-* [Microsoft Azure 中的指标概述](../monitoring-and-diagnostics/monitoring-overview-metrics.md)
-* [Azure 诊断日志概述](../azure-monitor/platform/diagnostic-logs-overview.md)
+- [Microsoft Azure 中的指标概述](../monitoring-and-diagnostics/monitoring-overview-metrics.md)
+- [Azure 诊断日志概述](../azure-monitor/platform/diagnostic-logs-overview.md)
 
 若要了解事件中心，请阅读以下主题：
 
-* [什么是 Azure 事件中心？](../event-hubs/event-hubs-what-is-event-hubs.md)
-* [事件中心入门](../event-hubs/event-hubs-csharp-ephcs-getstarted.md)
+- [什么是 Azure 事件中心？](../event-hubs/event-hubs-what-is-event-hubs.md)
+- [事件中心入门](../event-hubs/event-hubs-csharp-ephcs-getstarted.md)
 
 若要详细了解 Azure 存储，请参阅[如何从存储下载指标和诊断日志](../storage/blobs/storage-quickstart-blobs-dotnet.md#download-the-sample-application)。

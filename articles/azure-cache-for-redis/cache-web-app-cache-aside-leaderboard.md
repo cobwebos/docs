@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 03/30/2018
 ms.author: wesmc
-ms.openlocfilehash: 21f6f729cef6478c190c9e8b872723e4ae67fb1e
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: da99d446da1451c2b05f6ecab8ba19eaa1e2bfa3
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53020532"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54104941"
 ---
 # <a name="tutorial-create-a-cache-aside-leaderboard-on-aspnet"></a>教程：在 ASP.NET 中创建缓存端排行榜
 
@@ -520,7 +520,7 @@ ms.locfileid: "53020532"
     ```csharp
     // POST: Teams/Create
     // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-    // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+    // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
     [HttpPost]
     [ValidateAntiForgeryToken]
     public ActionResult Create([Bind(Include = "ID,Name,Wins,Losses,Ties")] Team team)
@@ -544,7 +544,7 @@ ms.locfileid: "53020532"
     ```csharp
     // POST: Teams/Edit/5
     // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-    // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+    // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
     [HttpPost]
     [ValidateAntiForgeryToken]
     public ActionResult Edit([Bind(Include = "ID,Name,Wins,Losses,Ties")] Team team)
@@ -709,7 +709,7 @@ ms.locfileid: "53020532"
 
     下表描述了示例应用程序中的每个操作链接：
 
-    | 操作 | 说明 |
+    | 操作 | Description |
     | --- | --- |
     | 新建 |创建新的团队。 |
     | 举行赛季的比赛 |举行一赛季的比赛、更新团队统计信息，以及从缓存中清除任何过时的团队数据。 |

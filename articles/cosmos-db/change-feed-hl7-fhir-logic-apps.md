@@ -1,19 +1,18 @@
 ---
 title: 适用于 HL7 FHIR 资源的更改源 - Azure Cosmos DB
 description: 了解如何使用 Azure 逻辑应用、Azure Cosmos DB 和服务总线设置 HL7 FHIR 患者卫生保健记录的更改通知。
-keywords: hl7 fhir
-services: cosmos-db
 author: SnehaGunda
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 02/08/2017
 ms.author: sngun
-ms.openlocfilehash: 5cc6bdfa9c16a6dfbdd0f6c87873a90b2a203169
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 0ff92ad58cc8b7206b7061c88f8aadbb701870f0
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53089218"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54044512"
 ---
 # <a name="notifying-patients-of-hl7-fhir-health-care-record-changes-using-logic-apps-and-azure-cosmos-db"></a>使用逻辑应用和 Azure Cosmos DB 通知患者 HL7 FHIR 医疗保健记录的更改
 

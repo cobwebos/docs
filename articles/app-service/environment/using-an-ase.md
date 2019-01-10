@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 06/13/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: eca6f7996b05e58614c8f15067dacabb13730396
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: c332b20650bef2e341a935dacae835403dc56c9b
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53274711"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53630659"
 ---
 # <a name="use-an-app-service-environment"></a>使用应用服务环境 #
 
@@ -39,22 +39,22 @@ Azure 应用服务环境指将 Azure 应用服务部署到客户 Azure 虚拟网
 
 可以使用外部或内部 VIP 来部署 ASE（ASEv1 和 ASEv2）进行应用访问。 使用外部 VIP 的部署通常称为外部 ASE。 内部版本称为 ILB ASE，因为它使用内部负载均衡器 (ILB)。 若要详细了解 ILB ASE，请参阅[创建和使用 ILB ASE][MakeILBASE]。
 
-## <a name="create-a-web-app-in-an-ase"></a>在 ASE 中创建 Web 应用 ##
+## <a name="create-an-app-in-an-ase"></a>在 ASE 中创建应用 ##
 
-在 ASE 中创建 Web 应用的过程与一般情况下的创建过程大致相同，只存在几处小小的差别。 创建新的应用服务计划时：
+在 ASE 中创建应用的过程与一般情况下的创建过程大致相同，只存在几处细微的差别。 创建新的应用服务计划时：
 
 - 不要选择某个地理位置来部署应用，而应该选择 ASE 作为位置。
 - 在 ASE 中创建的所有应用服务计划必须在“隔离”定价层中。
 
 如果没有 ASE，可以根据[创建应用服务环境][MakeExternalASE]中的说明创建一个。
 
-若要在 ASE 中创建 Web 应用，请执行以下操作：
+在 ASE 中创建应用：
 
 1. 选择“创建资源” > “Web + 移动” > “Web 应用”。
 
-2. 输入 Web 应用的名称。 如果已在 ASE 中选择了应用服务计划，则应用的域名会反映 ASE 的域名。
+2. 输入应用程序的名称。 如果已在 ASE 中选择了应用服务计划，则应用的域名会反映 ASE 的域名。
 
-    ![Web 应用名称选择][1]
+    ![应用名称选择][1]
 
 1. 选择一个订阅。
 
@@ -80,10 +80,10 @@ Azure 应用服务环境指将 Azure 应用服务部署到客户 Azure 虚拟网
     ![“隔离”定价层][2]
 
     > [!NOTE]
-    > Linux Web 应用和 Windows Web 应用不能位于同一应用服务计划中，但可以位于同一应用服务环境中。 
+    > Linux 应用和 Windows 应用不能位于同一应用服务计划中，但可以位于同一应用服务环境中。 
     >
 
-1. 选择“创建”。
+2. 选择“创建”。
 
 ## <a name="how-scale-works"></a>缩放的工作原理 ##
 
@@ -97,7 +97,7 @@ Azure 应用服务环境指将 Azure 应用服务部署到客户 Azure 虚拟网
 
 ## <a name="ip-addresses"></a>IP 地址 ##
 
-应用服务能够向应用分配专用的 IP 地址。 根据[将现有的自定义 SSL 证书绑定到 Azure Web 应用][ConfigureSSL]中所述，可以在配置基于 IP 的 SSL 后使用此功能。 但是，ASE 中有一个明显的差异。 无法添加更多的 IP 地址用于 ILB ASE 中基于 IP 的 SSL。
+应用服务能够向应用分配专用的 IP 地址。 根据[将现有的自定义 SSL 证书绑定到 Azure 应用服务][ConfigureSSL]中所述，可以在配置基于 IP 的 SSL 后使用此功能。 但是，ASE 中有一个明显的差异。 无法添加更多的 IP 地址用于 ILB ASE 中基于 IP 的 SSL。
 
 在 ASEv1 中，需要先分配 IP 地址作为资源，然后才能使用这些 IP 地址。 在 ASEv2 中，可以从应用使用 IP 地址，就像在多租户应用服务中一样。 ASEv2 中始终有一个备用地址，最多可包含 30 个 IP 地址。 每次使用一个地址时，会添加另一个地址，因此，始终有一个现成可用的地址。 分配另一个 IP 地址会产生一定的时间延迟，这会给快速连续添加 IP 地址带来阻碍。
 
@@ -187,6 +187,6 @@ ILB ASE 中应用的发布终结点使用创建该 ILB ASE 所用的域。 可�
 [ARMOverview]: ../../azure-resource-manager/resource-group-overview.md
 [ConfigureSSL]: ../web-sites-purchase-ssl-web-site.md
 [Kudu]: https://azure.microsoft.com/resources/videos/super-secret-kudu-debug-console-for-azure-web-sites/
-[AppDeploy]: ../app-service-deploy-local-git.md
+[AppDeploy]: ../deploy-local-git.md
 [ASEWAF]: app-service-app-service-environment-web-application-firewall.md
 [AppGW]: ../../application-gateway/application-gateway-web-application-firewall-overview.md

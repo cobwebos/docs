@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/12/2017
+ms.date: 12/18/2018
 ms.author: tomfitz
-ms.openlocfilehash: 08728a3c0b4d4578939004e2d1b1ee2d30a682ab
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: f6c629182fdcce83c566869860480d9c70488797
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34359282"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53712740"
 ---
 # <a name="variables-section-of-azure-resource-manager-templates"></a>Azure 资源管理器模板的变量部分
 在 variables 节中构造可在整个模板中使用的值。 不需要定义变量，但使用变量可以减少复杂的表达式，从而简化模板。
@@ -117,7 +117,7 @@ ms.locfileid: "34359282"
 
 ## <a name="use-copy-element-in-variable-definition"></a>在变量定义中使用 copy 元素
 
-你可以使用 copy 语法创建带有多个元素数组的变量。 为元素数量提供一个数字。 每个元素的属性都包含在 input 对象中。 你可以在变量中使用 copy，或用其创建变量。 定义变量并在该变量中使用 copy 时，会创建一个具有数组属性的对象。 在顶层使用 copy 并在其中定义一个或多个变量时，会创建一个或多个数组。 下例说明了这两种方法：
+你可以使用“copy”语法创建带有多个元素数组的变量。 为元素数量提供一个数字。 每个元素的属性都包含在 input 对象中。 你可以在变量中使用 copy，或用其创建变量。 定义变量并在该变量中使用 copy 时，会创建一个具有数组属性的对象。 在顶层使用 copy 并在其中定义一个或多个变量时，会创建一个或多个数组。 下例说明了这两种方法：
 
 ```json
 "variables": {
@@ -269,26 +269,19 @@ ms.locfileid: "34359282"
 }
 ```
 
-## <a name="recommendations"></a>建议
-使用变量时，以下信息可以提供帮助：
-
-* 针对需要在模板中多次使用的值使用变量。 如果一次只使用一个值，则硬编码值可使模板更易于阅读。
-* 不能在模板的 **variables** 节中使用 [reference](resource-group-template-functions-resource.md#reference) 函数。 **reference** 函数从资源的运行时状态中派生其值。 但是，变量是在初始模板分析期间解析的。 直接在模板的 **resources** 或 **outputs** 节中构造需要 **reference** 函数的值。
-* 包含必须具有唯一性的资源名称的变量。
-
 ## <a name="example-templates"></a>示例模板
 
 这些示例模板演示了一些使用变量的情况。 部署这些模板，测试在不同情况下如何处理变量。 
 
-|模板  |说明  |
+|模板  |Description  |
 |---------|---------|
-| [变量定义](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/variables.json) | 演示不同类型的变量。 该模板不会部署任何资源。 它构造变量值并返回这些值。 |
-| [配置变量](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/variablesconfigurations.json) | 演示如何使用定义配置值的变量。 该模板不会部署任何资源。 它构造变量值并返回这些值。 |
+| [变量定义](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/variables.json) | 演示不同类型的变量。 该模板不部署任何资源。 它构造变量值并返回这些值。 |
+| [配置变量](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/variablesconfigurations.json) | 演示如何使用定义配置值的变量。 该模板不部署任何资源。 它构造变量值并返回这些值。 |
 | [网络安全规则](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/multiplesecurityrules.json)和[参数文件](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/multiplesecurityrules.parameters.json) | 以正确的格式构造数组，以便将安全规则分配给网络安全组。 |
 
 
 ## <a name="next-steps"></a>后续步骤
 * 若要查看许多不同类型的解决方案的完整模型，请参阅 [Azure Quickstart Templates](https://azure.microsoft.com/documentation/templates/)（Azure 快速入门模板）。
 * 有关用户可以使用的来自模板中的函数的详细信息，请参阅 [Azure 资源管理器模板函数](resource-group-template-functions.md)。
-* 要在部署期间合并多个模板，请参阅[将已链接的模板与 Azure 资源管理器配合使用](resource-group-linked-templates.md)。
-* 可能需要使用不同资源组中的资源。 使用跨多个资源组共享的存储帐户或虚拟网络时，此方案很常见。 有关详细信息，请参阅 [resourceId 函数](resource-group-template-functions-resource.md#resourceid)。
+* 有关创建模板的建议，请参阅 [Azure 资源管理器模板的最佳做法](template-best-practices.md)。
+* 可能需要使用不同资源组中的资源。 使用跨多个资源组共享的存储帐户或虚拟网络时，这种情况很常见。 有关详细信息，请参阅 [resourceId 函数](resource-group-template-functions-resource.md#resourceid)。

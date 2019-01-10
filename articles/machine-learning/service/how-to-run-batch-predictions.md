@@ -11,27 +11,27 @@ ms.author: jordane
 author: jpe316
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: a711b80471da0677c5e2d0dd0ee5e371e5a16f75
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 7b0e3bc14c97c874b9d5936c025f4534665a461e
+ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53268634"
+ms.lasthandoff: 12/22/2018
+ms.locfileid: "53752616"
 ---
 # <a name="run-batch-predictions-on-large-data-sets-with-azure-machine-learning-service"></a>使用 Azure 机器学习服务对大型数据集运行批量预测
 
-本文介绍如何快速且有效地使用 Azure 机器学习服务对大量数据进行异步预测。
+本文介绍如何使用 Azure 机器学习服务对大量数据进行异步预测。
 
-批量预测（或批量评分）可以针对异步应用程序的空前吞吐量进行经济有效的推理。 批量预测管道可以进行缩放，以便在数 TB 生产数据的基础上进行推理。 批量预测围绕高吞吐量的即发即弃预测进行优化，适用于大量的数据。
+批量预测（或批量评分）可以针对异步应用程序空前未有的吞吐量进行经济有效的推理。 批量预测管道可以进行缩放，以便在数 TB 生产数据的基础上进行推理。 批量预测针对高吞吐量的即发即弃预测进行优化，适用于大量的数据。
 
->[!NOTE]
-> 如果系统要求低延迟处理（快速处理单个文档或少量文档），则请使用[实时评分](how-to-consume-web-service.md)而不是批量预测。
+>[!TIP]
+> 如果系统要求低延迟处理（以便快速处理单个文档或少量文档），则请使用[实时评分](how-to-consume-web-service.md)而不是批量预测。
 
-在以下步骤中，需创建一个[机器学习管道](concept-ml-pipelines.md)来注册预先训练的计算机视觉模型([Inception-V3](https://arxiv.org/abs/1512.00567))，然后使用该预先训练的模型对 Azure Blob 帐户中提供的图像进行批量评分。 这些用于评分的图像是 [ImageNet](http://image-net.org/) 数据集中的未标记图像。
+在以下步骤中，需创建一个[机器学习管道](concept-ml-pipelines.md)来注册预先训练的计算机视觉模型 ([Inception-V3](https://arxiv.org/abs/1512.00567))。 然后使用该预先训练的模型对 Azure Blob 存储帐户中提供的图像进行批量评分。 这些用于评分的图像是 [ImageNet](http://image-net.org/) 数据集中的未标记图像。
 
 ## <a name="prerequisites"></a>先决条件
 
-- 如果还没有 Azure 订阅，请在开始前创建免费帐户。 立即试用 [Azure 机器学习服务免费版或付费版](http://aka.ms/AMLFree)。
+- 如果没有 Azure 订阅，请在开始之前创建一个免费帐户。 试用 [Azure 机器学习服务免费版或付费版](http://aka.ms/AMLFree)。
 
 - 配置安装 Azure 机器学习 SDK 所需的开发环境。 有关详细信息，请参阅[配置 Azure 机器学习的开发环境](how-to-configure-environment.md)。
 
@@ -52,7 +52,7 @@ ms.locfileid: "53268634"
 
 - 访问数据存储，该数据存储已经有用于评分的预先训练的模型、输入标签和图像（已经为你设置好）。
 - 设置用于存储输出的数据存储。
-- 配置 DataReference 对象，使之指向前述数据存储中的数据。
+- 配置 `DataReference` 对象，使之指向前述数据存储中的数据。
 - 设置将在其中运行管道步骤的计算机或计算群集。
 
 ### <a name="access-the-datastores"></a>访问数据存储
@@ -76,7 +76,7 @@ batchscore_blob = Datastore.register_azure_blob_container(ws,
 
 接下来进行设置，以便使用输出的默认数据存储。
 
-创建工作区时，会默认将 [Azure 文件存储](https://docs.microsoft.com/azure/storage/files/storage-files-introduction)和 [Blob 存储](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-introduction)附加到工作区。 Azure 文件存储是工作区的“默认数据存储”，但也可使用 Blob 存储作为数据存储。 详细了解 [Azure 存储选项](https://docs.microsoft.com/azure/storage/common/storage-decide-blobs-files-disks)。
+创建工作区时，会默认将 [Azure 文件存储](https://docs.microsoft.com/azure/storage/files/storage-files-introduction) 和 [Blob 存储](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-introduction) 附加到工作区。 Azure 文件存储是工作区的默认数据存储，但你也可以使用 Blob 存储作为数据存储。 有关详细信息，请参阅 [Azure 存储选项](https://docs.microsoft.com/azure/storage/common/storage-decide-blobs-files-disks)。
 
 ```python
 def_data_store = ws.get_default_datastore()
@@ -86,7 +86,7 @@ def_data_store = ws.get_default_datastore()
 
 现在，请将管道中的数据作为管道步骤的输入引入。
 
-管道中的数据源由 [DataReference](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference) 对象表示。 DataReference 对象指向保存在数据存储中的或者可以从数据存储访问的数据。 不管是用于输入图像的目录、在其中存储预先训练的模型的目录、用于标签的目录还是输出目录，都需要 DataReference 对象。
+管道中的数据源由 [DataReference](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference) 对象表示。  `DataReference` 对象指向驻留在数据存储中的或者可从数据存储访问的数据。 不管是用于输入图像的目录、用于存储预先训练的模型的目录、用于标签的目录还是输出目录，都需要 `DataReference` 对象。
 
 ```python
 input_images = DataReference(datastore=batchscore_blob, 
@@ -111,7 +111,7 @@ output_dir = PipelineData(name="scores",
 
 ### <a name="set-up-compute-target"></a>设置计算目标
 
-在 Azure 机器学习中，计算（或计算目标）是指将要在机器学习管道中执行计算步骤的计算机或群集。 例如，可以创建 `Azure Machine Learning compute`。
+在 Azure 机器学习中，*计算*（或*计算目标*）是指在机器学习管道中执行计算步骤的计算机或群集。 例如，可以创建 `Azure Machine Learning compute`。
 
 ```python
 compute_name = "gpucluster"
@@ -148,7 +148,7 @@ else:
 
 ### <a name="download-the-pretrained-model"></a>下载预先训练的模型
 
-从 <http://download.tensorflow.org/models/inception_v3_2016_08_28.tar.gz> 下载预先训练的计算机视觉模型 (InceptionV3)。 下载后，即可将其提取到 `models` 子文件夹。
+从 <http://download.tensorflow.org/models/inception_v3_2016_08_28.tar.gz> 下载预先训练的计算机视觉模型 (InceptionV3)。 然后将其提取到 `models` 子文件夹。
 
 ```python
 import os
@@ -167,6 +167,8 @@ tar.extractall(model_dir)
 
 ### <a name="register-the-model"></a>注册模型
 
+下面展示了如何注册模型：
+
 ```python
 import shutil
 from azureml.core.model import Model
@@ -183,7 +185,7 @@ model = Model.register(
 ## <a name="write-your-scoring-script"></a>编写评分脚本
 
 >[!Warning]
->以下代码只是一个示例，说明了在[示例笔记本](https://github.com/Azure/MachineLearningNotebooks/tree/master/pipeline/pipeline-batch-scoring.ipynb)使用的 [batch_score.py](https://github.com/Azure/MachineLearningNotebooks/tree/master/pipeline/batch_score.py) 中包含了什么内容。你需要根据方案创建自己的评分脚本。
+>以下代码只是一个示例，说明了在[示例笔记本](https://github.com/Azure/MachineLearningNotebooks/tree/master/pipeline/pipeline-batch-scoring.ipynb)使用的 [batch_score.py](https://github.com/Azure/MachineLearningNotebooks/tree/master/pipeline/batch_score.py) 中包含了什么内容。 你需要根据具体情况创建自己的评分脚本。
 
 `batch_score.py` 脚本采用 *dataset_path* 中的输入图像和 *model_dir* 中的预先训练的模型，并将 *results-label.txt* 输出到 *output_dir*。
 
@@ -297,7 +299,7 @@ batch_score_step = PythonScriptStep(
 pipeline = Pipeline(workspace=ws, steps=[batch_score_step])
 pipeline_run = Experiment(ws, 'batch_scoring').submit(pipeline, pipeline_params={"param_batch_size": 20})
 
-# Wait for the run to finish (this may take several minutes)
+# Wait for the run to finish (this might take several minutes)
 pipeline_run.wait_for_completion(show_output=True)
 
 # Download and review the output
@@ -312,7 +314,7 @@ df.head()
 
 ## <a name="publish-the-pipeline"></a>发布管道
 
-对运行结果满意以后，请发布管道，以便以后使用不同的输入值来运行它。 发布管道时，你会获得一个 REST 终结点，该终结点允许使用已通过 [PipelineParameter](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.pipelineparameter?view=azure-ml-py) 纳入的参数集来调用管道。
+对运行结果满意以后，请发布管道，以便以后使用不同的输入值来运行它。 发布管道时，你会获得一个 REST 终结点。 此终结点允许使用已通过 [PipelineParameter](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.pipelineparameter?view=azure-ml-py) 纳入的参数集来调用管道。
 
 ```python
 published_pipeline = pipeline_run.publish_pipeline(
@@ -321,9 +323,9 @@ published_pipeline = pipeline_run.publish_pipeline(
     version="1.0")
 ```
 
-## <a name="rerun-the-pipeline-using-the-rest-endpoint"></a>使用 REST 终结点重新运行管道
+## <a name="rerun-the-pipeline-by-using-the-rest-endpoint"></a>使用 REST 终结点重新运行管道
 
-若要重新运行管道，需要一个 Azure Active Directory 身份验证标头令牌，如 [AzureCliAuthentication class](https://docs.microsoft.com/python/api/azureml-core/azureml.core.authentication.azurecliauthentication?view=azure-ml-py)（AzureCliAuthentication 类）中所述。
+若要重新运行管道，需要一个 Azure Active Directory 身份验证标头令牌，如 [AzureCliAuthentication 类](https://docs.microsoft.com/python/api/azureml-core/azureml.core.authentication.azurecliauthentication?view=azure-ml-py)中所述。
 
 ```python
 from azureml.pipeline.core import PublishedPipeline
@@ -344,7 +346,7 @@ RunDetails(published_pipeline_run).show()
 
 ## <a name="next-steps"></a>后续步骤
 
-若要了解此方面的端到端运行机制，请尝试 [how-to-use-azureml/machine-learning-pipelines](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines) 中的批量评分笔记本。 
+若要了解此方面的端到端运行机制，请尝试 [GitHub](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines) 中的批量评分笔记本。 
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-for-examples.md)]
 

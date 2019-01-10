@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/04/2017
 ms.author: mbullwin
-ms.openlocfilehash: c8ff6abe72a55be24b35b254a4bfc2a446b13c0b
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 5e22a3f3b362811fd87460ec41b61a990f4d83fb
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53999675"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54074200"
 ---
 # <a name="how-do-i--in-application-insights"></a>如何在 Application Insights 中执行...？
 ## <a name="get-an-email-when-"></a>... 时收到电子邮件
@@ -83,18 +83,18 @@ ms.locfileid: "53999675"
 ## <a name="separate-telemetry-from-different-versions"></a>不同版本中的单独遥测
 
 * 应用中的多个角色：使用一个 Application Insights 资源，对 [cloud_Rolename](../../azure-monitor/app/app-map.md) 进行筛选。
-* 开发、测试和发布版本相互独立：使用不同的 Application Insights 资源。 从 web.config 中选取检测密钥。[了解详细信息](../../application-insights/app-insights-separate-resources.md)
-* 报告生成版本：使用遥测初始值设定项添加属性。 [了解详细信息](../../application-insights/app-insights-separate-resources.md)
+* 开发、测试和发布版本相互独立：使用不同的 Application Insights 资源。 从 web.config 中选取检测密钥。[了解详细信息](../../azure-monitor/app/separate-resources.md)
+* 报告生成版本：使用遥测初始值设定项添加属性。 [了解详细信息](../../azure-monitor/app/separate-resources.md)
 
 ## <a name="monitor-backend-servers-and-desktop-apps"></a>监视后端服务器和桌面应用
-[使用 Windows Server SDK 模块](../../application-insights/app-insights-windows-desktop.md)。
+[使用 Windows Server SDK 模块](../../azure-monitor/app/windows-desktop.md)。
 
 ## <a name="visualize-data"></a>可视化数据
 #### <a name="dashboard-with-metrics-from-multiple-apps"></a>包含来自多个应用的指标的仪表板
 * 在 [指标资源管理器](../../azure-monitor/app/metrics-explorer.md) 中，自定义图表并将它保存到收藏夹。 将图表固定到 Azure 仪表板。
 
 #### <a name="dashboard-with-data-from-other-sources-and-application-insights"></a>包含来自其他源和 Application Insights 的数据的仪表板
-* [将遥测数据导出到 Power BI](../../application-insights/app-insights-export-power-bi.md)。
+* [将遥测数据导出到 Power BI](../../azure-monitor/app/export-power-bi.md )。
 
 或
 

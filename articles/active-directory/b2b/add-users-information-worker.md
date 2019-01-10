@@ -5,25 +5,28 @@ services: active-directory
 ms.service: active-directory
 ms.component: B2B
 ms.topic: conceptual
-ms.date: 08/08/2018
+ms.date: 12/19/2018
 ms.author: mimart
 author: msmimart
 manager: mtillman
 ms.reviewer: mal
-ms.openlocfilehash: e590500dd622988226c592352b0b86f16d54a9d4
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: 08fed2206d7d74d9ab6cb7f1462388486f999987
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45983057"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53718786"
 ---
 # <a name="how-users-in-your-organization-can-invite-guest-users-to-an-app"></a>组织中的用户如何邀请来宾用户访问应用
 
-将来宾用户添加到 Azure AD 中的目录后，应用程序所有者可向该来宾用户发送他们想要共享的应用的直接链接。 Azure AD 管理员还可以设置自助服务管理，使应用程序所有者可以管理自己的来宾用户，即使尚未将来宾用户添加到目录。 为应用配置自助服务后，应用程序所有者可以使用访问面板邀请来宾用户访问应用，或将来宾用户添加到有权访问该应用的组中。 自助服务应用管理要求管理员完成一些初始设置下面是设置步骤的摘要（有关更详细的说明，请参阅本页稍后提供的[先决条件](#prerequisites)）：
+将来宾用户添加到 Azure AD 中的目录后，应用程序所有者可向该来宾用户发送他们想要共享的应用的直接链接。 Azure AD 管理员还可以为其 Azure AD 租户中基于库或 SAML 的应用设置自助服务管理。 这样，即使尚未将自己的来宾用户添加到目录中，应用程序所有者也可以管理这些来宾用户。 为应用配置自助服务后，应用程序所有者可以使用访问面板邀请来宾用户访问应用，或将来宾用户添加到有权访问该应用的组中。 基于库和 SAML 的应用的自助服务应用管理要求管理员完成一些初始设置。下面是设置步骤的摘要（有关更详细的说明，请参阅本页稍后提供的[先决条件](#prerequisites)）：
 
  - 为租户启用自助服务组管理
  - 创建要分配到应用的组，并将相应用户设为所有者
  - 为应用配置自助服务，并将该组分配到该应用
+
+> [!NOTE]
+> 本文介绍如何为已添加到 Azure AD 租户中的基于库和 SAML 的应用设置自助服务管理。 你还可以[设置自助服务 Office 365 组](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-self-service-management)，让用户可以管理对自己的 Office 365 组的访问权限。 有关用户可以与来宾用户共享 Office 文件和应用的更多方式，请参阅 [Office 365 组中的来宾访问](https://support.office.com/article/guest-access-in-office-365-groups-bfc7a840-868f-4fd6-a390-f347bf51aff6)和[共享 SharePoint 文件或文件夹](https://support.office.com/article/share-sharepoint-files-or-folders-1fe37332-0f9a-4719-970e-d2578da4941c)。
 
 ## <a name="invite-a-guest-user-to-an-app-from-the-access-panel"></a>通过访问面板邀请来宾用户访问应用
 
@@ -102,6 +105,7 @@ ms.locfileid: "45983057"
 4. 在应用程序列表中，找到并打开该应用。
 5. 在“管理”下，选择“单一登录”，然后配置应用程序的单一登录。 （有关详细信息，请参阅[如何管理企业应用的单一登录](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-single-sign-on-portal)。）
 6. 在“管理”下，选择“自助服务”，然后设置自助服务应用访问权限。 （有关详细信息，请参阅[如何使用自助服务应用访问权限](https://docs.microsoft.com/azure/active-directory/application-access-panel-self-service-applications-how-to)。） 
+
     > [!NOTE]
     > 对于“应将已分配的用户添加到哪个组?”设置，请选择在上一部分创建的组。
 7. 在“管理”下，选择“用户和组”，并检查创建的自助服务组是否显示在列表中。

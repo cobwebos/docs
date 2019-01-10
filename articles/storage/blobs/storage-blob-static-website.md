@@ -8,17 +8,17 @@ ms.topic: article
 ms.date: 10/19/18
 ms.author: tamram
 ms.component: blobs
-ms.openlocfilehash: 36b4fbac13e012de2fbef137c6637fd7e2daea8f
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: 933fcbfc21c69d02f1093e0ea2519d76f4130b29
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52161287"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53598884"
 ---
 # <a name="static-website-hosting-in-azure-storage"></a>Azure 存储中的静态网站托管
 使用 Azure 存储 GPv2 帐户可以直接通过名为 *$web* 的存储容器提供静态内容（HTML、CSS、JavaScript 和图像文件）。 利用 Azure 存储中的托管，可以使用无服务器体系结构，包括 [Azure Functions](/azure/azure-functions/functions-overview) 和其他 PaaS 服务。
 
-与静态网站托管相比，依赖于服务器端代码的动态站点最适合使用 [Azure Web 应用](/azure/app-service/app-service-web-overview)来托管。
+与静态网站托管相比，依赖于服务器端代码的动态站点最适合使用 [Azure 应用服务](/azure/app-service/overview)来托管。
 
 ## <a name="how-does-it-work"></a>工作原理
 在存储帐户中启用静态网站托管时，请选择默认文件的名称，并选择性地提供自定义 404 页面的路径。 启用该功能后，将创建名为 *$web* 的容器（如果不存在）。 
@@ -161,6 +161,6 @@ az storage blob upload-batch -s <SOURCE_PATH> -d $web --account-name <ACCOUNT_NA
 * [使用 Azure CDN 通过 HTTPS 访问包含自定义域的 Blob](storage-https-custom-domain-cdn.md)
 * [为 blob 或 Web 终结点配置自定义域名](storage-custom-domain-name.md)
 * [Azure Functions](/azure/azure-functions/functions-overview)
-* [Azure Web 应用](/azure/app-service/app-service-web-overview)
+* [Azure 应用服务](/azure/app-service/overview)
 * [生成首个无服务器 Web 应用程序](https://docs.microsoft.com/azure/functions/tutorial-static-website-serverless-api-with-database)
 * [教程：在 Azure DNS 中托管域](../../dns/dns-delegate-domain-azure-dns.md)

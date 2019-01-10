@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 10/3/2018
 ms.author: trinadhk
-ms.openlocfilehash: 8882970471b554f6d05a9cf3028e7be572292ef6
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: 605ce97f786b6b674a4adf8d6b1ee50957ef25fa
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52582694"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53582734"
 ---
 # <a name="upgrade-to-azure-vm-backup-stack-v2"></a>升级到 Azure VM 备份堆栈 V2
 
@@ -147,3 +147,6 @@ az feature show --namespace Microsoft.RecoveryServices --name InstantBackupandRe
 
 ### <a name="how-to-get-standard-ssd-managed-disk-support-for-a-virtual-machine"></a>如何获得对虚拟机的标准 SSD 托管磁盘支持？
 升级到 Azure VM 备份堆栈 V2 以获得对[标准 SSD 托管磁盘](https://azure.microsoft.com/blog/announcing-general-availability-of-standard-ssd-disks-for-azure-virtual-machine-workloads/)的 Azure 备份支持。
+
+### <a name="what-happens-if-i-select-retention-period-of-restore-point-tier-2-less-than-snapshot-tier1"></a>如果选择的还原点（第 2 层）保留期小于快照（第 1 层）的，会发生什么情况？
+除非删除快照（第 1 层），否则 VM 备份堆栈 v2 不允许删除还原点（第 2 层）。 目前支持的快照（第 1 层）删除保留期为 7 天，因此不支持少于 7 天的还原点（第 2 层）保留期。 建议将还原点（第 2 层）保留期设置为大于 7 天。

@@ -9,20 +9,20 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/19/2018
 ms.author: hrasheed
-ms.openlocfilehash: 08d0221c785fdaeb18fe9a2999d08ded67d1fa91
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 7e5f56251e00b59a6e6d3be40612f4c8e381dff1
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53437191"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53742994"
 ---
 # <a name="machine-learning-on-hdinsight"></a>HDInsight 中的机器学习
 
-可以使用 HDInsight 通过大数据进行机器学习，以便从大量（千万亿字节甚至百亿亿字节）结构化、非结构化和快速移动的数据中获得有价值的见解。 在 HDInsight 中有几种机器学习选项：SparkML 和 MLlib、R、Apache Hive 和 Microsoft Cognitive Toolkit。
+可以使用 HDInsight 通过大数据进行机器学习，以便从大量（千万亿字节甚至百亿亿字节）结构化、非结构化和快速移动的数据中获得有价值的见解。 在 HDInsight 中有几种机器学习选项：SparkML 和 Apache Spark MLlib、R、Apache Hive 和 Microsoft Cognitive Toolkit。
 
 ## <a name="sparkml-and-mllib"></a>SparkML 和 MLlib
 
-[HDInsight Spark](spark/apache-spark-overview.md) 是 Azure 托管的 [Apache Spark](http://spark.apache.org/) 产品/服务，它是统一的开源并行数据处理框架，支持使用内存中处理来大幅提升大数据分析性能。 Spark 处理引擎是专为速度、易用性和复杂分析打造的产品。 Spark 的内存中分布式计算功能使其成为机器学习和图形计算中使用的迭代算法的最佳选择。 有两个可缩放的机器学习库向此分布式环境引入了算法建模功能：MLlib 和 SparkML。 MLlib 包含构建在 RDD 基础之上的原始 API。 SparkML 是一个较新的包，提供构建在 DataFrames 基础之上的更高级 API，用于构造 ML 管道。 SparkML 目前尚不支持 MLlib 的所有功能，但正在替换 MLlib 的角色，即充当 Spark 的标准机器学习库。
+[HDInsight Spark](spark/apache-spark-overview.md) 是 Azure 托管的 [Apache Spark](https://spark.apache.org/) 产品/服务，它是统一的开源并行数据处理框架，支持使用内存中处理来大幅提升大数据分析性能。 Spark 处理引擎是专为速度、易用性和复杂分析打造的产品。 Spark 的内存中分布式计算功能使其成为机器学习和图形计算中使用的迭代算法的最佳选择。 有两个可缩放的机器学习库向此分布式环境引入了算法建模功能：MLlib 和 SparkML。 MLlib 包含构建在 RDD 基础之上的原始 API。 SparkML 是一个较新的包，提供构建在 DataFrames 基础之上的更高级 API，用于构造 ML 管道。 SparkML 目前尚不支持 MLlib 的所有功能，但正在替换 MLlib 的角色，即充当 Spark 的标准机器学习库。
 
 [MMLSpark](https://github.com/Azure/mmlspark) 是适用于 Apache Spark 的 Microsoft 机器学习库。 该库旨在提升数据科学家在 Spark 上的生产力，它不仅可以提高试验成功率，而且还能在极大型数据集上利用前沿的机器学习技术，包括深度学习。 MMLSpark 在生成可缩放 ML 模型（例如编制字符串的索引、强制数据进入机器学习算法预期的布局中、组合特征矢量）时，可以在 SparkML 的低级别 API 基础上提供一个层。 MMLSpark 库简化了可在 PySpark 中生成模型的这些任务以及其他常见任务。
 

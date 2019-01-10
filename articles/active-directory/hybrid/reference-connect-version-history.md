@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/11/2018
+ms.date: 12/18/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 5e13f21971c7babaeaebc9714fe2a040229eebb2
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 780a4c5cd590b4fa1b4dd5b29fab738cb9a8bb6a
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53278672"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53608437"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect：版本发行历史记录
 Azure Active Directory (Azure AD) 团队会定期更新 Azure AD Sync 的新特性和功能。 并非所有的新增内容都适用于所有受众。
@@ -36,6 +36,17 @@ Azure Active Directory (Azure AD) 团队会定期更新 Azure AD Sync 的新特�
 所需的权限 | 有关应用更新时所需的权限，请参阅[帐户和权限](reference-connect-accounts-permissions.md#upgrade)。
 
 下载| [下载 Azure AD Connect](https://go.microsoft.com/fwlink/?LinkId=615771)。
+
+## <a name="12700"></a>1.2.70.0
+
+### <a name="release-status"></a>版本状态
+
+12/18/2018：已发布，供下载
+
+### <a name="fixed-issues"></a>修复的问题
+
+此版本更新 Azure AD Connect 随附的非标准连接器（例如，泛型 LDAP 连接器和泛型 SQL 连接器）。 有关适用连接器的详细信息，请参阅[连接器版本发行历史记录](/microsoft-identity-manager/reference/microsoft-identity-manager-2016-connector-version-history)中的版本 1.1.911.0。
+
 
 ## <a name="12690"></a>1.2.69.0
 

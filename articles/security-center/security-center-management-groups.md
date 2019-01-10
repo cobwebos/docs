@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/22/2018
+ms.date: 12/19/2018
 ms.author: rkarlin
-ms.openlocfilehash: cb70c99d56cb1d09e561a44a90fd6c007ea9b59f
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: f05c0469dffa074501a301802412901ead3d1e69
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52964111"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53720809"
 ---
 # <a name="gain-tenant-wide-visibility-for-azure-security-center"></a>在 Azure 安全中心内实现租户级公开范围
 本文介绍了如何执行一些操作来最大限度地利用 Azure 安全中心提供的优势，从而帮助读者入门。 执行这些操作，可以在所有与 Azure Active Directory 租户相关联的 Azure 订阅中实现公开范围，并能以聚合方式跨多个订阅应用安全策略，从而大规模、有效地管理组织的安全状态。
@@ -71,19 +71,19 @@ Azure Active Directory 租户管理员无权直接访问 Azure 订阅。 不过�
 
    ![Azure AD 属性 - 屏幕截图](./media/security-center-management-groups/aad-properties.png)
 
-3. 在“全局管理员可管理 Azure 订阅和管理组”下，将开关设置为“是”。
+3. 在“Azure 资源的访问管理”下，将开关设置为“是”。
 
    ![全局管理员可管理 Azure 订阅和管理组 - 屏幕截图](./media/security-center-management-groups/aad-properties-global-admin-setting.png)
 
-   - 如果将开关设置为“是”，全局管理员帐户（当前登录用户）会在根范围 (`/`) 内添加到 Azure RBAC 的用户访问管理员角色，此操作可授予你查看和报告与 Azure AD 租户关联的所有 Azure 订阅的访问权限。
+   - 将开关设为“是”时，将分配到 Azure RBAC 中根范围 (/) 的用户访问管理员角色。 这将授予你在与此 Azure AD 目录关联的所有 Azure 订阅和管理组中分配角色的权限。 此开关仅适用于分配到 Azure AD 中全局管理员角色的用户。
 
-   - 如果将开关设置为“否”，全局管理员帐户（当前登录用户）会从 Azure RBAC 的用户访问管理员角色中删除。 你无法看到与 Azure AD 租户关联的所有 Azure 订阅，并且只能查看和管理已被授予访问权限的 Azure 订阅。
+  - 将开关设为“否”时，会从用户帐户中删除 Azure RBAC 中的用户访问管理员角色。 将无法再分配在与此 Azure AD 目录关联的所有 Azure 订阅和管理组中的角色。 只能查看和管理已获取访问权限的 Azure 订阅和管理组。
 
 4. 单击“保存”，保存设置。
 
     - 此设置不是全局属性，仅适用于当前登录用户。
 
-5. 执行需要在提升的访问权限下完成的任务。 完成后，将开关设置回“否”。
+5. 在提升访问权限下执行需要完成的任务。 完成后，将开关设置回“否”。
 
 
 ### <a name="assign-rbac-roles-to-users"></a>向用户分配 RBAC 角色

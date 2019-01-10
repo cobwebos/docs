@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/13/2018
 ms.author: bwren
-ms.openlocfilehash: 1612c2d47f88b6d065e5307be5ff3c99d8f6d405
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 39229bbd120ca52f31a0bd54446e49990d952c9d
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53433434"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54020126"
 ---
 # <a name="sources-of-data-in-azure-monitor"></a>Azure Monitor 中的数据的来源
 本文介绍了由 Azure Monitor 收集的用于监视资源及其上运行的应用程序的运行状况和性能的数据的来源。 这些资源可能在 Azure 中，在其他云中或在本地。  有关此数据如何存储以及如何查看它的详细信息，请参阅 [Azure Monitor 收集的数据](data-collection.md)。
@@ -41,12 +41,12 @@ Azure 中的监视数据来自各种来源，这些来源可以组织为层，�
 ![Azure 订阅集合](media/data-sources/azure-collection.png)
 
 ### <a name="azure-service-health"></a>Azure 服务运行状况
-[Azure 服务运行状况](../../monitoring-and-diagnostics/monitoring-service-notifications.md)提供订阅中应用程序和资源所依赖的 Azure 服务的运行状况信息。 可以根据当前的以及预期的可能会影响应用程序的关键问题创建警报，以便到时获得通知。 服务运行状况记录存储在 [Azure 活动日志](../../monitoring-and-diagnostics/monitoring-overview-activity-logs.md)中，你可以在活动日志资源管理器中查看，并将其复制到 Azure Monitor 日志中。
+[Azure 服务运行状况](../../azure-monitor/platform/service-notifications.md)提供订阅中应用程序和资源所依赖的 Azure 服务的运行状况信息。 可以根据当前的以及预期的可能会影响应用程序的关键问题创建警报，以便到时获得通知。 服务运行状况记录存储在 [Azure 活动日志](../../azure-monitor/platform/activity-logs-overview.md)中，你可以在活动日志资源管理器中查看，并将其复制到 Azure Monitor 日志中。
 
 ### <a name="azure-activity-log"></a>Azure 活动日志
-[Azure 活动日志](../../monitoring-and-diagnostics/monitoring-overview-activity-logs.md)包含服务运行状况记录，以及对 Azure 资源所做的配置更改的记录。 活动日志可供所有 Azure 资源使用，代表其外部视图。 活动日志中记录的具体类型在 [Azure 活动日志事件架构](../../azure-monitor/platform/activity-log-schema.md)中介绍。
+[Azure 活动日志](../../azure-monitor/platform/activity-logs-overview.md)包含服务运行状况记录，以及对 Azure 资源所做的配置更改的记录。 活动日志可供所有 Azure 资源使用，代表其外部视图。 活动日志中记录的具体类型在 [Azure 活动日志事件架构](../../azure-monitor/platform/activity-log-schema.md)中介绍。
 
-可以在 Azure 门户中特定资源的页面上查看其活动日志，或在[活动日志资源管理器](../../monitoring-and-diagnostics/monitoring-overview-activity-logs.md)中的多个资源处查看日志。 可以将日志项目复制到 Azure Monitor 中，与其他监视数据组合在一起，这特别有用。 也可使用[事件中心](../../monitoring-and-diagnostics/monitoring-stream-activity-logs-event-hubs.md)将其发送到其他位置。
+可以在 Azure 门户中特定资源的页面上查看其活动日志，或在[活动日志资源管理器](../../azure-monitor/platform/activity-logs-overview.md)中的多个资源处查看日志。 可以将日志项目复制到 Azure Monitor 中，与其他监视数据组合在一起，这特别有用。 也可使用[事件中心](../../azure-monitor/platform/activity-logs-stream-event-hubs.md)将其发送到其他位置。
 
 
 
@@ -61,9 +61,9 @@ Azure 中的监视数据来自各种来源，这些来源可以组织为层，�
 
 
 ### <a name="resource-diagnostic-logs"></a>资源诊断日志
-活动日志提供在 Azure 资源上执行的操作的信息，而资源级[诊断日志](../../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md)则可用于了解资源本身的操作。   这些日志的配置要求和内容[因资源类型而异](../../azure-monitor/platform/tutorial-dashboards.md)。
+活动日志提供在 Azure 资源上执行的操作的信息，而资源级[诊断日志](../../azure-monitor/platform/diagnostic-logs-overview.md)则可用于了解资源本身的操作。   这些日志的配置要求和内容[因资源类型而异](../../azure-monitor/platform/tutorial-dashboards.md)。
 
-不能直接在 Azure 门户中查看诊断日志，但可以[将它们发送到 Azure 存储进行存档](../../azure-monitor/platform/archive-diagnostic-logs.md)，然后将它们导出到[事件中心](../../event-hubs/event-hubs-about.md)以便重定向到其他服务，或者导出[到 Log Analytics](../../monitoring-and-diagnostics/monitor-stream-diagnostic-logs-log-analytics.md) 进行分析。 某些资源可以直接写入到 Log Analytics 中，而另一些资源则只能先写入到存储帐户，然后再[导入 Log Analytics 中](../../azure-monitor/platform/azure-storage-iis-table.md#use-the-azure-portal-to-collect-logs-from-azure-storage)。
+不能直接在 Azure 门户中查看诊断日志，但可以[将它们发送到 Azure 存储进行存档](../../azure-monitor/platform/archive-diagnostic-logs.md)，然后将它们导出到[事件中心](../../event-hubs/event-hubs-about.md)以便重定向到其他服务，或者导出[到 Log Analytics](../../azure-monitor/platform/diagnostic-logs-stream-log-store.md) 进行分析。 某些资源可以直接写入到 Log Analytics 中，而另一些资源则只能先写入到存储帐户，然后再[导入 Log Analytics 中](../../azure-monitor/platform/azure-storage-iis-table.md#use-the-azure-portal-to-collect-logs-from-azure-storage)。
 
 ### <a name="monitoring-solutions"></a>监视解决方案
  [监视解决方案](../insights/solutions.md)通过收集数据来提供针对特定服务或应用程序的更多操作见解。 这些解决方案将数据收集到 Azure Monitor 日志中，以便在其中使用[查询语言](../log-query/log-query-overview.md)或通常包括在解决方案中的[视图](view-designer.md)对这些数据进行分析。
@@ -93,13 +93,13 @@ Windows 或 Linux 虚拟机或物理计算机的全面监视和管理是通过 L
 ### <a name="application-data"></a>应用程序数据
 通过安装检测包为应用程序启用 Application Insights 后，它就会收集与应用程序的性能和运行相关的指标 和日志。 这包括有关页面视图、应用程序请求和异常的详细信息。 Application Insights 将它收集的数据存储在 Azure Monitor 中。 它包括各种用于分析此数据的工具，但是也可使用指标分析和日志分析之类的工具分析来自其他源的数据。
 
-也可使用 Application Insights [创建自定义指标](../../application-insights/app-insights-api-custom-events-metrics.md)。  这样就可以定义你自己的逻辑，以便计算出一个数字值，然后将该值与其他可以从指标资源管理器访问的指标一起存储，用于[自动缩放](../../azure-monitor/platform/autoscale-custom-metric.md)和指标警报。
+也可使用 Application Insights [创建自定义指标](../../azure-monitor/app/api-custom-events-metrics.md)。  这样就可以定义你自己的逻辑，以便计算出一个数字值，然后将该值与其他可以从指标资源管理器访问的指标一起存储，用于[自动缩放](../../azure-monitor/platform/autoscale-custom-metric.md)和指标警报。
 
 ### <a name="dependencies"></a>依赖项
-若要监视应用程序的不同逻辑操作，必须[跨多个组件收集遥测数据](../../application-insights/app-insights-transaction-diagnostics.md)。 Application Insights 支持[分布式遥测关联](../../application-insights/application-insights-correlation.md)，该关联用于确定组件之间的依赖关系，这样就可以将它们放在一起进行分析。
+若要监视应用程序的不同逻辑操作，必须[跨多个组件收集遥测数据](../../azure-monitor/app/transaction-diagnostics.md)。 Application Insights 支持[分布式遥测关联](../../azure-monitor/app/correlation.md)，该关联用于确定组件之间的依赖关系，这样就可以将它们放在一起进行分析。
 
 ### <a name="availability-tests"></a>可用性测试
-使用 Application Insights 中的[可用性测试](../../application-insights/app-insights-monitor-web-app-availability.md)，可以从公共 Internet 的不同位置测试应用程序的可用性和响应能力。 可以通过简单的 ping 测试来验证应用程序是否处于活动状态，也可以使用 Visual Studio 创建一个模拟用户方案的 Web 测试。  可用性测试不需应用程序中有任何检测。
+使用 Application Insights 中的[可用性测试](../../azure-monitor/app/monitor-web-app-availability.md)，可以从公共 Internet 的不同位置测试应用程序的可用性和响应能力。 可以通过简单的 ping 测试来验证应用程序是否处于活动状态，也可以使用 Visual Studio 创建一个模拟用户方案的 Web 测试。  可用性测试不需应用程序中有任何检测。
 
 ## <a name="custom-sources"></a>自定义来源
 除了应用程序的标准层之外，还可能需要监视具有不能与其他数据源一起收集的遥测数据的其他资源。 对于这些资源，你需要使用 Azure Monitor API 为此数据进行编码。

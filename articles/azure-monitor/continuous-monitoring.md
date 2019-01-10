@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/12/2018
 ms.author: bwren
-ms.openlocfilehash: 2d58a39efca8733902d157083489e59bf22ef161
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: a7b91bfdc616e19fde9f74246d05cf14ecbd335e
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54002274"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54117259"
 ---
 # <a name="continuous-monitoring-with-azure-monitor"></a>使用 Azure Monitor 进行持续监视
 
@@ -32,9 +32,9 @@ ms.locfileid: "54002274"
 若要观察整个环境，需在所有 Web 应用程序和服务中启用监视。 这样，便可以轻松可视化所有组件中的端到端事务和连接。
 
 - [Azure DevOps Projects](../devops-project/overview.md) 提供一种简化的体验，在其中可以使用现有的代码和 Git 存储库，或者选择一个示例应用程序，来与 Azure 建立持续集成 (CI) 和持续交付 (CD) 管道。
-- 使用 [DevOps 发布管道中的持续监视](../application-insights/app-insights-vsts-continuous-monitoring.md)可以基于监视数据限制或回滚部署。
+- 使用 [DevOps 发布管道中的持续监视](../azure-monitor/app/continuous-monitoring.md)可以基于监视数据限制或回滚部署。
 - 使用 [Status Monitor](../azure-monitor/app/monitor-performance-live-website-now.md) 可以配合 Azure Application Insights 检测 Windows 上的实时 .NET 应用，而无需修改或重新部署代码。
-- 如果你有权访问应用程序的代码，则可以通过安装适用于 [.NET](../application-insights/quick-monitor-portal.md)、[Java](../application-insights/app-insights-java-quick-start.md)、[Node.js](../application-insights/app-insights-nodejs-quick-start.md)或[其他任何编程语言](../azure-monitor/app/platforms.md)的 Azure Monitor Application Insights SDK，使用 [Application Insights](../application-insights/app-insights-overview.md) 启用完全监视。 这样可以指定与应用程序和业务相关的自定义事件、指标或页面视图。
+- 如果你有权访问应用程序的代码，则可以通过安装适用于 [.NET](../azure-monitor/learn/quick-monitor-portal.md)、[Java](../azure-monitor/learn/java-quick-start.md)、[Node.js](../azure-monitor/learn/nodejs-quick-start.md)或[其他任何编程语言](../azure-monitor/app/platforms.md)的 Azure Monitor Application Insights SDK，使用 [Application Insights](../azure-monitor/app/app-insights-overview.md) 启用完全监视。 这样可以指定与应用程序和业务相关的自定义事件、指标或页面视图。
 
 
 
@@ -64,7 +64,7 @@ ms.locfileid: "54002274"
 
 - 使用 [Azure Pipelines](/azure/devops/pipelines) 可以实现持续部署，并可以根据 CI/CD 测试，自动化将代码提交到生产环境的整个流程。
 - 使用[质量门限](/devops/pipelines/release/approvals/gates)可将监视功能集成到部署前或部署后的流程。 这可以确保应用程序从开发环境转移到生产环境时可以符合关键的运行状况/性能指标 (KPI)，并且基础结构环境或规模的任何差异不会对 KPI 造成负面影响。
-- 在开发、测试、Canary 和生产等不同的部署环境之间[维护独立的监视实例](../application-insights/app-insights-separate-resources.md)。这可以确保收集的数据与关联的应用程序和基础结构相关。 如果需要跨环境关联数据，可以使用[指标资源管理器中的多资源图表](../azure-monitor/platform/metrics-charts.md)，或者[在 Log Analytics 中创建跨资源查询](log-query/cross-workspace-query.md)。
+- 在开发、测试、Canary 和生产等不同的部署环境之间[维护独立的监视实例](../azure-monitor/app/separate-resources.md)。这可以确保收集的数据与关联的应用程序和基础结构相关。 如果需要跨环境关联数据，可以使用[指标资源管理器中的多资源图表](../azure-monitor/platform/metrics-charts.md)，或者[在 Log Analytics 中创建跨资源查询](log-query/cross-workspace-query.md)。
 
 
 ## <a name="create-actionable-alerts-with-actions"></a>使用操作创建可操作警报
@@ -79,17 +79,17 @@ ms.locfileid: "54002274"
 ## <a name="prepare-dashboards-and-workbooks"></a>准备仪表板和工作簿
 确保开发和运营部门有权访问相同的遥测功能和工具可让他们查看整个环境中的模式，并最大程度地减小平均检测时间 (MTTD) 和平均还原时间 (MTTR)。
 
-- 根据组织中不同角色的通用指标和日志准备[自定义仪表板](../application-insights/app-insights-tutorial-dashboards.md)。 仪表板可以合并所有 Azure 资源的数据。
-- 准备[工作簿](../application-insights/app-insights-usage-workbooks.md)以确保在开发与运营部门之间分享知识。 可将这些工作簿准备为包含指标图表和日志查询的动态报表，甚至可由开发人员准备为故障排除指南，以帮助客户支持或运营人员处理基本问题。
+- 根据组织中不同角色的通用指标和日志准备[自定义仪表板](../azure-monitor/learn/tutorial-app-dashboards.md)。 仪表板可以合并所有 Azure 资源的数据。
+- 准备[工作簿](../azure-monitor/app/usage-workbooks.md)以确保在开发与运营部门之间分享知识。 可将这些工作簿准备为包含指标图表和日志查询的动态报表，甚至可由开发人员准备为故障排除指南，以帮助客户支持或运营人员处理基本问题。
 
 ## <a name="continuously-optimize"></a>持续优化
  监视是热门的“构建-度量-学习”理念的基本方面，该理念鼓励持续跟踪 KPI 和用户行为指标，然后努力通过规划迭代对其进行优化。 Azure Monitor 可以帮助收集业务相关的指标和日志，并在下一次部署中按需添加新的数据点。
 
-- 使用 Application Insights 中的工具可以[跟踪最终用户行为和参与情况](../application-insights/app-insights-tutorial-users.md)。
-- 使用[影响分析](../application-insights/app-insights-usage-impact.md)可以帮助确定优先关注点，以提高重要 KPI。
+- 使用 Application Insights 中的工具可以[跟踪最终用户行为和参与情况](../azure-monitor/learn/tutorial-users.md)。
+- 使用[影响分析](../azure-monitor/app/usage-impact.md)可以帮助确定优先关注点，以提高重要 KPI。
 
 
 ## <a name="next-steps"></a>后续步骤
 
 - 了解 [Azure Monitor](overview.md) 的不同组件。
-- 向发布管道[添加持续监视](../application-insights/app-insights-vsts-continuous-monitoring.md)。
+- 向发布管道[添加持续监视](../azure-monitor/app/continuous-monitoring.md)。

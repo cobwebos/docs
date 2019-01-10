@@ -7,16 +7,16 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 10/16/2018
 ms.author: victorh
-ms.openlocfilehash: b0bde770e33a08832e7d3a93a745bbba44b04f87
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: 99a4dd25539db754a893ddda7480c64e5a13a5bd
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49353333"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53631509"
 ---
-# <a name="configure-app-service-web-apps-with-application-gateway"></a>使用应用程序网关配置应用服务 Web 应用
+# <a name="configure-app-service-with-application-gateway"></a>使用应用程序网关配置应用服务
 
-可以通过应用程序网关将 Azure Web 应用或其他多租户服务配置为后端池成员。 本文介绍如何通过应用程序网关配置 Azure Web 应用。 第一个示例介绍如何将现有的应用程序网关配置为使用 Web 应用作为后端池成员。 第二个示例介绍如何新建一个将 Web 应用用作后端池成员的应用程序网关。
+可以通过应用程序网关将应用服务应用或其他多租户服务配置为后端池成员。 本文介绍如何通过应用程序网关配置应用服务应用。 第一个示例介绍如何将现有的应用程序网关配置为使用 Web 应用作为后端池成员。 第二个示例介绍如何新建一个将 Web 应用用作后端池成员的应用程序网关。
 
 ## <a name="configure-a-web-app-behind-an-existing-application-gateway"></a>在现有的应用程序网关后面配置 Web 应用
 
@@ -163,4 +163,4 @@ DnsSettings              : {
 
 ## <a name="next-steps"></a>后续步骤
 
-若要了解如何配置重定向，请访问：[使用 PowerShell 在应用程序网关上配置重定向](redirect-overview.md)。
+了解如何配置重定向，请访问：[使用 PowerShell 在应用程序网关上配置重定向](redirect-overview.md)。

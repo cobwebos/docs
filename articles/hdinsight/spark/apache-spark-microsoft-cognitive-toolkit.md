@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/28/2017
 ms.author: hrasheed
-ms.openlocfilehash: f3e590ec5dded03ce9c6ab2f7a21d51048020622
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 76fc2c9a0864417e380471f8de59d148e0fbf7b4
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53012583"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53651821"
 ---
 # <a name="use-microsoft-cognitive-toolkit-deep-learning-model-with-azure-hdinsight-spark-cluster"></a>将 Microsoft 认知工具包深入学习模型与 Azure HDInsight Spark 群集配合使用
 
@@ -39,15 +39,15 @@ ms.locfileid: "53012583"
 
 以下其余步骤涵盖在 Jupyter 笔记本中。
 
-- 将示例图像加载到 Spark 弹性分布式数据集或 RDD 中
-   - 加载模块并定义预设
-   - 将数据集下载到本地 Spark 群集上
-   - 将数据集格转换为 RDD
-- 使用定型的认知工具包模型对图像评分
-   - 将定型的认知工具包模型下载到 Spark 群集
-   - 定义由辅助角色节点使用的函数
-   - 对辅助角色节点上的图像评分
-   - 评估模型准确性
+- 将示例图像加载到 Spark 弹性分布式数据集或 RDD 中。
+   - 加载模块并定义预设。
+   - 将数据集下载到本地 Spark 群集上。
+   - 将数据集格式转换为 RDD。
+- 使用定型的 Cognitive Toolkit 模型对图像评分。
+   - 将定型的 Cognitive Toolkit 模型下载到 Spark 群集。
+   - 定义由辅助角色节点使用的函数。
+   - 对辅助角色节点上的图像评分。
+   - 评估模型准确性。
 
 
 ## <a name="install-microsoft-cognitive-toolkit"></a>安装 Microsoft 认知工具包
@@ -98,7 +98,7 @@ ms.locfileid: "53012583"
 
 ### <a name="create-and-run-applications"></a>创建和运行应用程序
 * [使用 Scala 创建独立的应用程序](apache-spark-create-standalone-application.md)
-* [使用 Livy 在 Apache Spark 群集中远程运行作业](apache-spark-livy-rest-interface.md)
+* [使用 Apache Livy 在 Apache Spark 群集中远程运行作业](apache-spark-livy-rest-interface.md)
 
 ### <a name="tools-and-extensions"></a>工具和扩展
 * [使用适用于 IntelliJ IDEA 的 HDInsight 工具插件创建和提交 Spark Scala 应用程序](apache-spark-intellij-tool-plugin.md)

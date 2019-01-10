@@ -1,20 +1,17 @@
 ---
 title: Azure Database for PostgreSQL 视频
 description: 本页列出了用于了解 Azure Database for PostgreSQL 的相关视频内容。
-services: postgresql
 author: rachel-msft
 ms.author: raagyema
-manager: kfile
-editor: jasonwhowell
 ms.service: postgresql
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/28/2018
-ms.openlocfilehash: ddc5249bb5b001a93f2695f9df2fb8e870988095
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: de4194671f09bde65bee0a1d0d86ffacdcedfbf3
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2018
-ms.locfileid: "29687894"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53543223"
 ---
 # <a name="azure-database-for-postgresql-videos"></a>Azure Database for PostgreSQL 视频
 

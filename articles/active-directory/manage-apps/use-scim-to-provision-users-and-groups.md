@@ -16,17 +16,20 @@ ms.date: 12/12/2017
 ms.author: barbkess
 ms.reviewer: asmalser
 ms.custom: aaddev;it-pro;seohack1
-ms.openlocfilehash: 87f5153ef71f74a0fa1a6be3c527fba03b65bf83
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 04287d286aed872a2b951c47e0f67a93bd19c7b3
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53095561"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53583470"
 ---
 # <a name="using-system-for-cross-domain-identity-management-scim-to-automatically-provision-users-and-groups-from-azure-active-directory-to-applications"></a>使用跨域标识管理系统 (SCIM) 将用户和组从 Azure Active Directory 自动预配到应用程序
 
 ## <a name="overview"></a>概述
 Azure Active Directory (Azure AD) 可以使用[跨域标识管理系统 (SCIM) 2.0 协议规范](https://tools.ietf.org/html/draft-ietf-scim-api-19)中定义的接口，将用户和组自动预配到以 Web 服务为前端的任何应用程序或标识存储。 Azure Active Directory 可将创建、修改或删除分配用户和组的请求发送到 web 服务。 然后，Web 服务可将这些请求转换为针对目标标识存储的操作。 
+
+>[!IMPORTANT]
+>Azure AD SCIM 实现的行为最近于 2018 年 12 月 18 日更新。 有关更改内容的信息，请参阅 [Azure AD 用户预配服务 SCIM 2.0 协议合规性](application-provisioning-config-problem-scim-compatibility.md)。
 
 ![][0]
 *图 1：通过 Web 服务从 Azure Active Directory 预配到标识存储*
@@ -73,6 +76,10 @@ Azure AD 可配置为自动将已分配的用户和组预配到实现[跨域标�
 6. 在“租户 URL”字段中，输入应用程序的 SCIM 终结点的 URL。 示例： https://api.contoso.com/scim/v2/
 7. 如果 SCIM 终结点需要来自非 Azure AD 颁发者的 OAuth 持有者令牌，可将所需的 OAuth 持有者令牌复制到可选的“密钥令牌”字段。 如果此字段留空，则 Azure AD 会在每个请求中包含从 Azure AD 颁发的 OAuth 持有者令牌。 将 Azure AD 用作标识提供程序的应用可以验证 Azure AD 颁发的此令牌。
 8. 单击“测试连接”按钮，使 Azure Active Directory 尝试连接到 SCIM 终结点。 如果尝试失败，则显示错误信息。  
+
+    >[!NOTE]
+    >**测试连接**使用随机 GUID 作为在 Azure AD 配置中选择的匹配属性，针对不存在的用户查询 SCIM 终结点。 预期正确响应为“HTTP 200 正常”以及空的 SCIM ListResponse 消息。 
+
 9. 如果尝试连接应用程序成功，请单击“保存”来保存管理员凭据。
 10. 在“映射”部分中有两个可选的属性映射集：一个用于用户对象，一个用于组对象。 分别选择它们，查看从 Azure Active Directory 同步到应用的属性。 选为“匹配”属性的特性用于匹配应用中的用户和组，以执行更新操作。 选择“保存”按钮以提交任何更改。
 
@@ -149,6 +156,10 @@ Azure AD 可配置为自动将已分配的用户和组预配到实现[跨域标�
 6. 在“租户 URL”字段中，输入面向 Internet 的 URL 和 SCIM 终结点的端口。 该条目类似于 http://testmachine.contoso.com:9000 或 http://<ip-address>:9000/，其中 <ip-address> 是 Internet 公开的 IP 地址。  
 7. 如果 SCIM 终结点需要来自非 Azure AD 颁发者的 OAuth 持有者令牌，可将所需的 OAuth 持有者令牌复制到可选的“密钥令牌”字段。 如果此字段留空，则 Azure AD 会在每个请求中包含从 Azure AD 颁发的 OAuth 持有者令牌。 将 Azure AD 用作标识提供程序的应用可以验证 Azure AD 颁发的此令牌。
 8. 单击“测试连接”按钮，使 Azure Active Directory 尝试连接到 SCIM 终结点。 如果尝试失败，则显示错误信息。  
+
+    >[!NOTE]
+    >**测试连接**使用随机 GUID 作为在 Azure AD 配置中选择的匹配属性，针对不存在的用户查询 SCIM 终结点。 预期正确响应为“HTTP 200 正常”以及空的 SCIM ListResponse 消息
+
 9. 如果尝试连接应用程序成功，请单击“保存”来保存管理员凭据。
 10. 在“映射”部分中有两个可选的属性映射集：一个用于用户对象，一个用于组对象。 分别选择它们，查看从 Azure Active Directory 同步到应用的属性。 选为“匹配”属性的特性用于匹配应用中的用户和组，以执行更新操作。 选择“保存”按钮以提交任何更改。
 11. “设置”下的“作用域”字段定义同步的用户或组。 若选择“仅同步分配的用户和组”（推荐），将仅同步“用户和组”选项卡中分配的用户和组。

@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 04/27/2018
 ms.author: glenga
-ms.openlocfilehash: 9f3d84b1f2e179d265c811faf2d35bd55bc1410f
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 913b23946f70500ace7ab7e4ff7b5cd2858492fc
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53606975"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54121650"
 ---
 # <a name="get-started-with-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>用于事件驱动的后台处理的 Azure WebJobs SDK 入门
 
@@ -292,7 +292,7 @@ WebJobs SDK 在“应用设置”集合中查找存储连接字符串。 在本�
 
 ## <a name="add-application-insights-logging"></a>添加 Application Insights 日志记录
 
-在 Azure 中运行项目时，无法通过查看控制台输出来监视函数执行。 我们建议的监视解决方案是 [Application Insights](../application-insights/app-insights-overview.md)。 有关详细信息，请参阅[监视 Azure Functions](../azure-functions/functions-monitoring.md)。
+在 Azure 中运行项目时，无法通过查看控制台输出来监视函数执行。 我们建议的监视解决方案是 [Application Insights](../azure-monitor/app/app-insights-overview.md)。 有关详细信息，请参阅[监视 Azure Functions](../azure-functions/functions-monitoring.md)。
 
 在本部分，我们将执行以下任务来设置 Application Insights 日志记录，然后部署到 Azure：
 
@@ -304,9 +304,9 @@ WebJobs SDK 在“应用设置”集合中查找存储连接字符串。 在本�
 
 1. 如果没有可用的应用服务应用，请[创建一个](app-service-web-get-started-dotnet-framework.md)。
 
-1. 如果没有可用的 Application Insights 资源，请[创建一个](../application-insights/app-insights-create-new-resource.md)。 将“应用程序类型”设置为“常规”，并跳过“复制检测密钥”后面的部分。
+1. 如果没有可用的 Application Insights 资源，请[创建一个](../azure-monitor/app/create-new-resource.md )。 将“应用程序类型”设置为“常规”，并跳过“复制检测密钥”后面的部分。
 
-1. 如果已有可用的 Application Insights 资源，请[复制检测密钥](../application-insights/app-insights-create-new-resource.md#copy-the-instrumentation-key)。
+1. 如果已有可用的 Application Insights 资源，请[复制检测密钥](../azure-monitor/app/create-new-resource.md #copy-the-instrumentation-key)。
 
 ### <a name="configure-app-settings"></a>配置应用设置 
 

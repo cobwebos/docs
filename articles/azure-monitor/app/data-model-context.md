@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 05/15/2017
 ms.reviewer: sergkanz
 ms.author: mbullwin
-ms.openlocfilehash: fc2b5a5badcf38f7bc94a876f9f0a21af4f558b7
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.openlocfilehash: 7c1f47c9b88bd68b326b3c8923ba5b81d425c3e4
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53813031"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54015468"
 ---
 # <a name="telemetry-context-application-insights-data-model"></a>遥测上下文：Application Insights 数据模型
 
@@ -84,7 +84,7 @@ ms.locfileid: "53813031"
 
 匿名用户 ID。表示应用程序的最终用户。 从服务发送遥测时，用户上下文与在服务中启用操作的用户有关。
 
-[采样](../../application-insights/app-insights-sampling.md)是最小化遥测收集量的一种技术。 采样算法尝试在所有相关遥测内部或外部采样。 匿名用户 ID 用于生成采样得分。 所以匿名用户 ID 应为随机值。 
+[采样](../../azure-monitor/app/sampling.md)是最小化遥测收集量的一种技术。 采样算法尝试在所有相关遥测内部或外部采样。 匿名用户 ID 用于生成采样得分。 所以匿名用户 ID 应为随机值。 
 
 使用匿名用户 ID 存储用户名是字段误用。 使用已经过身份验证的用户 ID。
 

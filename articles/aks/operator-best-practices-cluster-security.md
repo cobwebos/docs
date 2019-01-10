@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: iainfou
-ms.openlocfilehash: 5acabc8381422b9202b041cf849af3b35809a3c0
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 0c12136fb0c866ceebf83f6352a33b7e2791ad0f
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53110679"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53717205"
 ---
 # <a name="best-practices-for-cluster-security-and-upgrades-in-azure-kubernetes-service-aks"></a>有关 Azure Kubernetes 服务 (AKS) 中的群集安全性和升级的最佳做法
 
@@ -54,7 +54,7 @@ Azure Active Directory (AD) 提供可与 AKS 群集集成的企业级标识管�
 
 ### <a name="app-armor"></a>App Armor
 
-若要限制容器可以执行的操作，可以使用 [AppAmour][k8s-apparmor] Linux 内核安全模块。 AppArmor 作为基础 AKS 节点 OS 的一部分提供，默认情况下处于启用状态。 可以创建 AppArmor 配置文件来限制读取、写入或执行等操作或者装载文件系统等系统功能。 默认 AppArmor 配置文件限制对各种 `/proc` 和 `/sys` 位置的访问，并提供一种在逻辑上将容器与基础节点隔离的方法。 AppArmor 适用于 Linux 上运行的任何应用程序，而不仅仅是 Kubernetes Pod。
+若要限制容器可以执行的操作，可以使用 [AppArmor][k8s-apparmor] Linux 内核安全模块。 AppArmor 作为基础 AKS 节点 OS 的一部分提供，默认情况下处于启用状态。 可以创建 AppArmor 配置文件来限制读取、写入或执行等操作或者装载文件系统等系统功能。 默认 AppArmor 配置文件限制对各种 `/proc` 和 `/sys` 位置的访问，并提供一种在逻辑上将容器与基础节点隔离的方法。 AppArmor 适用于 Linux 上运行的任何应用程序，而不仅仅是 Kubernetes Pod。
 
 ![AKS 群集中用来限制容器操作的 AppArmor 配置文件](media/operator-best-practices-container-security/apparmor.png)
 

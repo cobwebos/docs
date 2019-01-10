@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 06/13/2018
 ms.author: ellacroi
-ms.openlocfilehash: 0ad4fef9dd67ed0bf2bc9a3c66e26fc111526b90
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 4abed1718d77c93e864fe5bb1d39aba5e5272f10
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53081534"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54074464"
 ---
 # <a name="determine-your-publishing-option"></a>确定发布选项
 为套餐选择的发布选项直接关系到资格要求和市场 GTM 权益。 更重要的是，在云合作伙伴门户中选择的发布选项和套餐类型定义了用户如何与市场套餐进行交互。
@@ -62,7 +62,7 @@ ms.locfileid: "53081534"
 
 ## <a name="choose-a-publishing-option"></a>选择发布选项
 
-可用的发布选项提供差异化的客户参与度，并且允许你访问潜在客户共享资料和[上市权益](https://partner.microsoft.com/en-US/reach-customers/gtm)。 在使用云合作伙伴门户创建市场套餐之前，请从三个可能的发布选项中进行选择。 请注意与发布选项相对应的广告语：
+可用的发布选项提供差异化的客户参与度，并且允许你访问潜在客户共享资料和[上市权益](https://partner.microsoft.com/reach-customers/gtm)。 在使用云合作伙伴门户创建市场套餐之前，请从三个可能的发布选项中进行选择。 请注意与发布选项相对应的广告语：
 
 | **发布选项**    | **说明**  |
 | :------------------- | :-------------------|

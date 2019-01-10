@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 10/28/2018
 ms.author: glenga
-ms.openlocfilehash: e59c0b6994a64972b1458c0f295f24d0a615d871
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.openlocfilehash: 4ec2e9b931e6405aca5b4237bc044647af3b8bb3
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50740104"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53608573"
 ---
 # <a name="use-azure-functions-to-connect-to-an-azure-sql-database"></a>使用 Azure Functions 连接 Azure SQL 数据库
 
@@ -70,7 +70,7 @@ Function App 在 Azure 中托管函数的执行。 这是在函数应用设置�
 
 1. 转到“浏览”选项卡，搜索 ```System.Data.SqlClient```，找到后将其选中。
 
-1. 在“System.Data.SqlClient”页中单击“安装”。
+1. 在“System.Data.SqlClient”页面，选择版本 `4.5.1`，然后单击“安装”。
 
 1. 安装完成后，查看所做的更改，然后单击“确定”以关闭“预览”窗口。
 

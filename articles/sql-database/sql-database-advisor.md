@@ -9,22 +9,22 @@ ms.devlang: ''
 ms.topic: conceptual
 author: danimir
 ms.author: danil
-ms.reviewer: carlrab
+ms.reviewer: jrasnik
 manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: e5480e5e071d541d12e96ddd549e496c7f974f81
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: f55d3eb67bb9c494a3d055e39d970c9a440dfc67
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53271039"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53603424"
 ---
 # <a name="performance-recommendations-for-sql-database"></a>SQL 数据库性能建议
 
 Azure SQL 数据库与应用程序一起自行学习和进行适应性调整。 它提供可最大限度提高 SQL 数据库性能的自定义建议。 SQL 数据库持续评估并分析 SQL 数据库的使用情况历史记录。 提供的建议以数据库唯一工作负载模式为依据，有助于提升性能。
 
 > [!TIP]
-> [自动优化](sql-database-automatic-tuning.md)是性能优化的推荐方式。 [智能见解](sql-database-intelligent-insights.md)是监视性能的推荐方式。 
+> [自动调整](sql-database-automatic-tuning.md)是自动调整一些最常见的数据库性能问题的推荐方法。 [查询性能见解](sql-database-query-performance.md)是基本 Azure SQL 数据库性能监控需求的推荐方法。 [Azure SQL Analytics](../azure-monitor/insights/azure-sql.md) 是针对大规模高级数据库性能监控的推荐方法，具有内置智能功能，可自动执行性能故障排除。
 >
 
 ## <a name="create-index-recommendations"></a>“创建索引”建议

@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 10/31/2018
 ms.author: v-erkell
-ms.openlocfilehash: 82b5e175f0340aae7e35b177d9faa4831982984c
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: a47b18972e945e495e5a5d3dd90e383390612865
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52999060"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54189603"
 ---
 # <a name="manage-the-avere-vfxt-cluster"></a>管理 Avere vFXT 群集
 
@@ -63,11 +63,11 @@ FXT 节点设置页面有用于管理单独的节点的控件。
 > [!NOTE] 
 > 活动节点的数量发生变化时，IP 地址可能会在群集节点之间移动。
 
-请参阅 Avere 群集设置指南中的[群集 > FXT节点](<http://library.averesystems.com/ops_guide/4_7/gui_fxt_nodes.html#gui-fxt-nodes>)，了解详细信息。
+请参阅 Avere 群集设置指南中的[群集 > FXT节点](<https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_fxt_nodes.html#gui-fxt-nodes>)，了解详细信息。
 
 ### <a name="stop-or-reboot-the-cluster-with-avere-control-panel"></a>使用 Avere 控制面板停止或重启群集
 
-“系统维护”设置页面有重启群集服务、重启群集或安全地关闭群集的命令。 请参阅[管理 > 系统维护](<http://library.averesystems.com/ops_guide/4_7/gui_system_maintenance.html#gui-system-maintenance>)（位于 Avere 群集设置指南中），了解详细信息。
+“系统维护”设置页面有重启群集服务、重启群集或安全地关闭群集的命令。 请参阅[管理 > 系统维护](<https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_system_maintenance.html#gui-system-maintenance>)（位于 Avere 群集设置指南中），了解详细信息。
 
 关闭群集时，它会先向“仪表板”选项卡发送状态消息。 片刻后，Avere 控制面板会话将停止响应，这意味着群集已关闭。
 

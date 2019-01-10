@@ -1,5 +1,5 @@
 ---
-title: Azure 时序见解预览版资源管理器 - 在 Azure 时序见解预览版资源管理器中实现数据可视化 | Microsoft Docs
+title: 在 Azure 时序见解预览版资源管理器中直观显示数据 | Microsoft Docs
 description: 本文介绍 Azure 时序见解预览版资源管理器 Web 应用中可用的功能和选项。
 author: ashannon7
 ms.author: anshan
@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 12/03/2018
 ms.custom: seodec18
-ms.openlocfilehash: 5372a36291ee13966d497bdae83a6e214dce99b9
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: d5c18521f39b1b57b5f94a54bb3131e05abba745
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53272331"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53556639"
 ---
 # <a name="visualize-data-in-the-explorer-preview"></a>在资源管理器预览版中实现数据可视化
 

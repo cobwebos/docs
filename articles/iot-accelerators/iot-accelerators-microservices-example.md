@@ -1,5 +1,5 @@
 ---
-title: 更改和重新部署微服务 | Microsoft Docs
+title: 更改和重新部署微服务 - Azure | Microsoft Docs
 description: 本教程介绍如何在远程监视中更改和重新部署微服务
 author: dominicbetts
 ms.author: dobett
@@ -7,16 +7,16 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 04/19/2018
 ms.topic: conceptual
-ms.openlocfilehash: 20e86220fffe95fc38b5fa15dd5603db4331203f
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 563de3d062b2c49d6b7ba23ae405e75283270815
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53315751"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53631885"
 ---
 # <a name="customize-and-redeploy-a-microservice"></a>自定义和重新部署微服务
 
-本教程介绍如何编辑远程监视解决方案中的[微服务](http://azure.com/microservices)之一、生成微服务的映像、将映像部署到 Docker 中心，然后在远程监视解决方案中使用该映像。 为了介绍此概念，本教程使用了一个简单场景：在其中调用微服务 API，并将状态消息从“Alive and Well”更改为“New Edits Made Here!”
+本教程介绍如何编辑远程监视解决方案中的[微服务](https://azure.com/microservices)之一、生成微服务的映像、将映像部署到 Docker 中心，然后在远程监视解决方案中使用该映像。 为了介绍此概念，本教程使用了一个简单场景：在其中调用微服务 API，并将状态消息从“Alive and Well”更改为“New Edits Made Here!”
 
 远程监视解决方案使用基于 Docker 映像生成的微服务，这些映像是从 Docker 中心提取的。 
 
@@ -77,7 +77,7 @@ ms.locfileid: "53315751"
     
     或在 Windows 上：
     
-    ```
+    ```cmd
     ./build.cmd
     ```
 

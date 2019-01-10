@@ -4,17 +4,17 @@ description: 了解如何使用 Terratest 来测试 Terraform 模块。
 services: terraform
 ms.service: terraform
 keywords: terraform, devops, 存储帐户, azure, terratest, 单元测试, 集成测试
-author: JunyiYi
+author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 10/19/2018
-ms.openlocfilehash: 8ef4e9917623f43e5c9900150deb22d62169c836
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: 94d878f8a17b0c0d62afbabe8125068bbf3a2e85
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53555959"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54075798"
 ---
 # <a name="test-terraform-modules-in-azure-by-using-terratest"></a>使用 Terratest 在 Azure 中测试 Terraform 模块
 

@@ -15,23 +15,23 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/19/2017
 ms.author: jdial
-ms.openlocfilehash: 2e5862e99b3e883554b42341d2c1dbe9d8b8ec72
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: f21d92dabfcfbe51cf8135388a1ab489c20593a4
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34366974"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53537539"
 ---
 # <a name="azure-networking"></a>Azure 网络
 
 Azure 提供可以结合使用或单独使用的各种网络功能。 请单击以下任一重要功能了解更多相关信息：
-- [Azure 资源之间的连接](#connectivity)：在云中的安全专用虚拟网络内将 Azure 资源连接在一起。
-- [Internet 连接](#internet-connectivity)：通过 Internet 与 Azure 资源相互通信。
-- [本地连接](#on-premises-connectivity)：在 Internet 上通过虚拟专用网络 (VPN) 或者通过与 Azure 建立的专用连接将本地网络连接到 Azure 资源。
+- [Azure 资源之间的连接性](#connectivity)：在云中的安全专用虚拟网络内将 Azure 资源连接在一起。
+- [Internet 连接性](#internet-connectivity)：通过 Internet 与 Azure 资源相互通信。
+- [本地连接性](#on-premises-connectivity)：在 Internet 上通过虚拟专用网络 (VPN) 或者通过与 Azure 相连的专用连接将本地网络连接到 Azure 资源。
 - [负载均衡和流量方向](#load-balancing)：对发往同一位置中的服务器的流量进行负载均衡，并将流量定向到不同位置中的服务器。
 - [安全性](#security)：筛选网络子网或单个虚拟机 (VM) 之间的网络流量。
-- [路由](#routing)：使用默认路由，或者完全控制 Azure 与本地资源之间的路由。
-- [可管理性](#manageability)：监视器和管理 Azure 网络资源。
+- [路由](#routing)：使用默认路由，或者 Azure 与本地资源之间完全控制的路由。
+- [可管理性](#manageability)：监视和管理 Azure 网络资源。
 - [部署和配置工具](#tools)：使用基于 Web 的门户或跨平台命令行工具来部署和配置网络资源。
 
 ## <a name="Connectivity"></a>Azure 资源之间的连接
@@ -124,25 +124,25 @@ Azure 负载均衡器为所有 UDP 和 TCP 协议提供高性能、低延迟的�
 - **网络：** 可以实现 Azure 网络安全组 (NSG) 来筛选 Azure 资源的入站和出站流量。 每个 NSG 包含一个或多个入站和出站规则。 每个规则指定用于筛选流量的源 IP 地址、目标 IP 地址、端口和协议。 可将 NSG 应用到单个子网和单个 VM。 有关 NSG 的详细信息，请参阅[网络安全组概述](../virtual-network/security-overview.md?toc=%2fazure%2fnetworking%2ftoc.json)一文。
 - **应用程序：** 将应用程序网关与 Web 应用程序防火墙结合使用可以保护 Web 应用程序，使其免受漏洞和攻击的影响。 常见的示例包括 SQL 注入攻击、跨站点脚本和格式不当的标头。 应用程序网关可筛选掉这些流量，并阻止其传入 Web 服务器。 可以配置想要启用的规则。 还可以配置 SSL 协商策略，以便能够禁用某些策略。 若要详细了解 Web 应用程序防火墙，请参阅 [Web 应用程序防火墙](../application-gateway/application-gateway-web-application-firewall-overview.md?toc=%2fazure%2fnetworking%2ftoc.json)一文。
 
-如果 Azure 无法提供所需的网络功能，或者你要使用本地使用的网络应用程序，可以在 VM 中实施产品并将其连接到 VNet。 [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/networking?page=1&subcategories=appliances) 包含许多不同的 VM，其中已预配置了你当前使用的网络应用程序。 这些预配置的 VM 通常称为网络虚拟设备 (NVA)。 NVA 可用于防火墙等应用程序以及 WAN 优化。
+如果 Azure 无法提供所需的网络功能，或者你要使用本地使用的网络应用程序，可以在 VM 中实施产品并将其连接到 VNet。 [Azure 市场](https://azuremarketplace.microsoft.com/marketplace/apps/category/networking?page=1&subcategories=appliances)包含许多不同的 VM，其中已预配置了你当前使用的网络应用程序。 这些预配置的 VM 通常称为网络虚拟设备 (NVA)。 NVA 可用于防火墙等应用程序以及 WAN 优化。
 
 ## <a name="routing"></a>路由
 
 Azure 创建默认的路由表，使用这些路由表可让连接到 VNet 中任何子网的资源相互通信。 可使用以下一种或两种类型的路由来替代 Azure 创建的默认路由：
-- **用户定义：** 可创建自定义路由表，其中包含可对每个子网控制流量路由位置的路由。 若要详细了解用户定义的路由，请阅读[用户定义的路由](../virtual-network/virtual-networks-udr-overview.md?toc=%2fazure%2fnetworking%2ftoc.json)一文。
+- **用户定义：** 可创建自定义路由表，其中包含可对每个子网控制流量路由到位置的路由。 若要详细了解用户定义的路由，请阅读[用户定义的路由](../virtual-network/virtual-networks-udr-overview.md?toc=%2fazure%2fnetworking%2ftoc.json)一文。
 - **边界网关协议 (BGP)：** 如果使用 Azure VPN 网关或 ExpressRoute 连接将 VNet 连接到本地网络，则可将 BGP 路由传播到 VNet。 BGP 是通常在 Internet 上使用的，用于在两个或更多网络之间交换路由和可访问性信息的标准路由协议。 在 Azure 虚拟网络的上下文中使用时，BGP 允许 Azure VPN 网关和本地 VPN 设备（称为 BGP 对等节点或邻居）交换“路由”，这些路由将通知这两个网关这些前缀的可用性和可访问性，以便这些前缀可通过涉及的网关或路由器。 BGP 还可以通过将 BGP 网关从一个 BGP 对等节点获知的路由传播到所有其他 BGP 对等节点来允许在多个网络之间传输路由。 若要了解有关 BGP 的详细信息，请参阅[使用 Azure VPN 网关的 BGP 概述](../vpn-gateway/vpn-gateway-bgp-overview.md?toc=%2fazure%2fnetworking%2ftoc.json)一文。
 
 ## <a name="manageability"></a>可管理性
 
 Azure 提供以下工具用于监视和管理网络：
-- **活动日志：** 所有 Azure 资源都会生成活动日志，其中提供有关执行的操作、操作状态以及操作发起者的信息。 若要详细了解活动日志，请参阅[活动日志概述](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md?toc=%2fazure%2fnetworking%2ftoc.json)一文。
-- **诊断日志：** 定期和自发性事件由网络资源创建，记录在 Azure 存储帐户中并发送到事件中心或 Azure Log Analytics。 诊断日志提供资源运行状况的见解。 诊断日志是针对负载均衡器（面向 Internet）、网络安全组、路由和应用程序网关提供的。 若要详细了解诊断日志，请参阅[诊断日志概述](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md?toc=%2fazure%2fnetworking%2ftoc.json)一文。
+- **活动日志：** 所有 Azure 资源都会生成活动日志，其中提供有关执行的操作、操作状态以及操作发起者的信息。 若要详细了解活动日志，请参阅[活动日志概述](../azure-monitor/platform/activity-logs-overview.md?toc=%2fazure%2fnetworking%2ftoc.json)一文。
+- **诊断日志：** 定期和自发性事件由网络资源创建，记录在 Azure 存储帐户中并发送到事件中心或 Azure Log Analytics。 诊断日志提供资源运行状况的见解。 诊断日志是针对负载均衡器（面向 Internet）、网络安全组、路由和应用程序网关提供的。 若要详细了解诊断日志，请参阅[诊断日志概述](../azure-monitor/platform/diagnostic-logs-overview.md?toc=%2fazure%2fnetworking%2ftoc.json)一文。
 - **指标：** 指标是在一段时间内从资源收集的性能度量值与计数器。 使用指标可以基于阈值触发警报。 指标目前适用于应用程序网关。 若要详细了解指标，请参阅[指标概述](../monitoring-and-diagnostics/monitoring-overview-metrics.md?toc=%2fazure%2fnetworking%2ftoc.json)一文。
 - **故障排除：** 可直接在 Azure 门户中访问故障排除信息。 这些信息可帮助诊断 ExpressRoute、VPN 网关、应用程序网关、网络安全日志、路由、DNS、负载均衡器和流量管理器的常见问题。
 - **基于角色的访问控制 (RBAC)：** 控制谁可以使用基于角色的访问控制 (RBAC) 创建和管理网络资源。 请参阅 [RBAC 入门](../role-based-access-control/overview.md?toc=%2fazure%2fnetworking%2ftoc.json)一文，了解有关 RBAC 的详细信息。 
 - **数据包捕获：** 使用 Azure 网络观察程序服务可以通过 VM 中的某个扩展在 VM 上运行数据包捕获。 此功能适用于 Linux 和 Windows VM。 若要详细了解数据包捕获，请参阅[数据包捕获概述](../network-watcher/network-watcher-packet-capture-overview.md?toc=%2fazure%2fnetworking%2ftoc.json)一文。
 - **验证 IP 流：** 使用网络观察程序可以验证 Azure VM 与远程资源之间的 IP 流，以确定是允许还是拒绝了数据包。 此功能可让管理员快速诊断连接问题。 若要详细了解如何验证 IP 流，请参阅[“IP 流验证”概述](../network-watcher/network-watcher-ip-flow-verify-overview.md?toc=%2fazure%2fnetworking%2ftoc.json)一文。
-- **排查 VPN 连接问题：** 使用网络观察程序的 VPN 故障排除功能可以查询连接或网关，并验证资源的运行状况。 若要详细了解如何排查 VPN 连接问题，请参阅 [VPN 连接故障排除概述](../network-watcher/network-watcher-troubleshoot-overview.md?toc=%2fazure%2fnetworking%2ftoc.json)一文。
+- **排查 VPN 连接性问题：** 使用网络观察程序的 VPN 故障排除功能可以查询连接或网关，并验证资源的运行状况。 若要详细了解如何排查 VPN 连接问题，请参阅 [VPN 连接故障排除概述](../network-watcher/network-watcher-troubleshoot-overview.md?toc=%2fazure%2fnetworking%2ftoc.json)一文。
 - **查看网络拓扑：** 使用网络观察程序查看 VNet 中网络资源的图形表示形式。 若要详细了解如何查看网络拓扑，请参阅[拓扑概述](../network-watcher/network-watcher-topology-overview.md?toc=%2fazure%2fnetworking%2ftoc.json)一文。
 
 ## <a name="tools"></a>部署和配置工具
@@ -151,7 +151,7 @@ Azure 提供以下工具用于监视和管理网络：
 
 - **Azure 门户：** 在浏览器中运行的图形用户界面。 打开 [Azure 门户](http://portal.azure.com)。
 - **Azure PowerShell：** 用于在 Windows 计算机上管理 Azure 的命令行工具。 请阅读 [Azure PowerShell 概述](/powershell/azure/overview?view=azurermps-3.8.0?toc=%2fazure%2fnetworking%2ftoc.json)一文，了解有关 Azure PowerShell 的详细信息。
-- **Azure 命令行接口 (CLI)：** 用于在 Linux、macOS 或 Windows 计算机上管理 Azure 的命令行工具。 请阅读 [Azure CLI 概述](/cli/azure/get-started-with-azure-cli?toc=%2fazure%2fnetworking%2ftoc.json)一文，了解有关 Azure CLI 的详细信息。
+- **Azure 命令行界面 (CLI)：** 用于在 Linux、macOS 或 Windows 计算机上管理 Azure 的命令行工具。 请阅读 [Azure CLI 概述](/cli/azure/get-started-with-azure-cli?toc=%2fazure%2fnetworking%2ftoc.json)一文，了解有关 Azure CLI 的详细信息。
 - **Azure 资源管理器模板：** 用于定义 Azure 解决方案的基础结构和配置的文件（采用 JSON 格式）。 使用模板，可以在解决方案的整个生命周期内重复部署该解决方案，确保以一致的状态部署资源。 若要详细了解如何创作模板，请参阅[有关创作模板的最佳做法](../azure-resource-manager/resource-manager-template-best-practices.md?toc=%2fazure%2fnetworking%2ftoc.json)一文。 可以使用 Azure 门户、CLI 或 PowerShell 部署模板。 若要立即开始使用模板，请部署 [Azure 快速启动模板](https://azure.microsoft.com/resources/templates/?term=network)库中预配置的众多模板之一。 
 
 ## <a name="pricing"></a>定价

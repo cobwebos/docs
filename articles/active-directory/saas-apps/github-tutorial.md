@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/15/2018
 ms.author: jeedes
-ms.openlocfilehash: dbd4634c575fd4f1886d3e7714ef9ddabbde0f8a
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 41e8fb40f07a88cb6fa2108a38db7f973fccd2f9
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49341151"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53607792"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-github"></a>教程：Azure Active Directory 与 GitHub 集成
 
@@ -49,7 +49,8 @@ ms.locfileid: "49341151"
 - 如果没有 Azure AD 试用环境，可以[获取一个月的试用版](https://azure.microsoft.com/pricing/free-trial/)。
 
 ## <a name="scenario-description"></a>方案描述
-在本教程中，将在测试环境中测试 Azure AD 单一登录。 本教程中概述的方案包括两个主要构建基块：
+在本教程中，将在测试环境中测试 Azure AD 单一登录。
+本教程中概述的方案包括两个主要构建基块：
 
 1. 从库中添加 GitHub
 2. 配置和测试 Azure AD 单一登录
@@ -59,21 +60,21 @@ ms.locfileid: "49341151"
 
 **若要从库中添加 GitHub，请执行以下步骤：**
 
-1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”图标。 
+1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”图标。
 
     ![图像](./media/github-tutorial/selectazuread.png)
 
 2. 导航到“企业应用程序”。 然后转到“所有应用程序”。
 
     ![图像](./media/github-tutorial/a_select_app.png)
-    
+
 3. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
 
     ![图像](./media/github-tutorial/a_new_app.png)
 
 4. 在搜索框中，键入“GitHub”，在结果面板中选择“GitHub”，然后单击“添加”按钮添加该应用程序。
 
-     ![图像](./media/github-tutorial/tutorial_github_addfromgallery.png)
+    ![图像](./media/github-tutorial/tutorial_github_addfromgallery.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
 
@@ -109,7 +110,7 @@ ms.locfileid: "49341151"
 
 4. 在“基本 SAML 配置”部分中，按照以下步骤操作：
 
-    ![图像](./media/github-tutorial/tutorial_github_url.png) 
+    ![图像](./media/github-tutorial/tutorial_github_url.png)
 
     a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“登录 URL”文本框中，使用以下模式键入 URL：`https://github.com/orgs/<entity-id>/sso`
 
@@ -123,7 +124,7 @@ ms.locfileid: "49341151"
     ![图像](./media/github-tutorial/i3-attribute.png)
 
 6. 在“用户属性”对话框的“用户声明”部分中，按上图所示配置 SAML 令牌属性，并执行以下步骤：
-    
+
     a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 单击“编辑”按钮，以打开“管理用户声明”对话框。
 
     ![图像](./media/github-tutorial/i2-attribute.png)
@@ -133,7 +134,7 @@ ms.locfileid: "49341151"
     b. 在“源属性”列表中，选择属性值。
 
     c. 单击“ **保存**”。
- 
+
 7. 在“SAML 签名证书”部分中，单击“下载”以下载“证书(Base64)”并将其保存到计算机上。
 
     ![图像](./media/github-tutorial/tutorial_github_certficate.png)
@@ -146,7 +147,7 @@ ms.locfileid: "49341151"
 
     c. 注销 URL
 
-    ![图像](./media/github-tutorial/d1_samlsonfigure.png) 
+    ![图像](./media/github-tutorial/d1_samlsonfigure.png)
 
 9. 在另一个 Web 浏览器窗口中，以管理员身份登录到 GitHub 组织站点。
 
@@ -170,8 +171,8 @@ ms.locfileid: "49341151"
 
     d. 单击“编辑”图标，将“签名方法”和“摘要方法”从 **RSA-SHA1** 和 **SHA1** 编辑为 **RSA-SHA256** 和 **SHA256**，如下所示。
 
-    ![图像](./media/github-tutorial/tutorial_github_sha.png) 
-    
+    ![图像](./media/github-tutorial/tutorial_github_sha.png)
+
 13. 单击“测试 SAML 配置”，确认在 SSO 期间未发生验证失败错误。
 
     ![设置](./media/github-tutorial/tutorial_github_config_github_06.png)
@@ -179,7 +180,7 @@ ms.locfileid: "49341151"
 14. 单击“保存”
 
 > [!NOTE]
-> GitHub 中的单一登录向 GitHub 中的特定组织进行身份验证，并不替换 GitHub 本身的身份验证。 因此，如果用户的 GitHub.com 会话已过期，可能会要求你在单一登录过程中使用 GitHub 的 ID/密码进行身份验证。
+> GitHub 中的单一登录向 GitHub 中的特定组织进行身份验证，并不替换 GitHub 本身的身份验证。 因此，如果用户的 github.com 会话已过期，可能会要求你在单一登录过程中使用 GitHub 的 ID/密码进行身份验证。
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 
@@ -205,7 +206,7 @@ ms.locfileid: "49341151"
     c. 选择“属性”，再选择“显示密码”复选框，然后记下“密码”框中显示的值。
 
     d. 选择“创建”。
- 
+
 ### <a name="create-a-github-test-user"></a>创建 GitHub 测试用户
 
 本部分的目的是在 GitHub 中创建名为“Britta Simon”的用户。 GitHub 支持在默认情况下启用的自动用户预配。 有关如何配置自动用户预配的更多详细信息，请参见[此处](github-provisioning-tutorial.md)。
@@ -258,13 +259,13 @@ ms.locfileid: "49341151"
 4. 在“用户和组”对话框中，选择“用户”列表中的 Britta Simon，然后单击屏幕底部的“选择”按钮。
 
 5. 在“添加分配”对话框中，选择“分配”按钮。
-    
+
 ### <a name="test-single-sign-on"></a>测试单一登录
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 单击访问面板中的 GitHub 磁贴时，应自动登录到 GitHub 应用程序。
-有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
+有关访问面板的详细信息，请参阅[访问面板简介](../active-directory-saas-access-panel-introduction.md)。
 
 ## <a name="additional-resources"></a>其他资源
 

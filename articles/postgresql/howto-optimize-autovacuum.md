@@ -3,16 +3,15 @@ title: 在 Azure Database for PostgreSQL 服务器中优化 autovacuum
 description: 本文介绍如何在 Azure Database for PostgreSQL 服务器中优化 autovacuum。
 author: dianaputnam
 ms.author: dianas
-editor: jasonwhowell
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 10/22/2018
-ms.openlocfilehash: 3f35779337082b7280398bd13ef870c74f3ec082
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: 0f8db7dd3a90e06587a7e0e05f33cb6fba5c72e1
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51685984"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53539783"
 ---
 # <a name="optimizing-autovacuum-on-azure-database-for-postgresql-server"></a>在 Azure Database for PostgreSQL 服务器中优化 autovacuum 
 本文介绍如何在 Azure Database for PostgreSQL 上有效地优化 autovacuum。
@@ -34,7 +33,7 @@ PostgreSQL 使用 MVCC 实现更大的数据库并发。 每次更新都会导�
 - I/O 增加。
 
 ## <a name="monitoring-bloat-with-autovacuum-queries"></a>使用 autovacuum 查询监视膨胀情况
-下面的示例查询是在名为“XYZ”的表中识别死元组和活动元组的数量：'SELECT relname, n_dead_tup, n_live_tup, (n_dead_tup/ n_live_tup) AS DeadTuplesRatio, last_vacuum, last_autovacuum FROM pg_catalog.pg_stat_all_tables WHERE relname = 'XYZ' order by n_dead_tup DESC;'
+以下示例查询的目的是确定名为“XYZ”的表中的非活动元组和活动元组的数量：'SELECT relname, n_dead_tup, n_live_tup, (n_dead_tup/ n_live_tup) AS DeadTuplesRatio, last_vacuum, last_autovacuum FROM pg_catalog.pg_stat_all_tables WHERE relname = 'XYZ' order by n_dead_tup DESC;'
 
 ## <a name="autovacuum-configurations"></a>Autovacuum 配置
 控制 autovacuum 的配置参数围绕两个关键问题：

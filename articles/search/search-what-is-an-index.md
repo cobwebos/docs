@@ -1,6 +1,6 @@
 ---
 title: 索引定义和概念 - Azure 搜索
-description: Azure 搜索中的索引概念简介以及索引的使用方式。
+description: 介绍 Azure 搜索中的索引术语和概念，包括逆选索引的物理结构。
 author: brjohnstmsft
 manager: jlembicz
 ms.author: brjohnst
@@ -9,12 +9,12 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 11/08/2017
 ms.custom: seodec2018
-ms.openlocfilehash: e1ff28434dab4e63e10d6b14eb671260650d4ada
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 40291b105eb39b44da0b0697f5808d819291e457
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53317060"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53630207"
 ---
 # <a name="indexes-in-azure-search"></a>Azure 搜索中的索引
 > [!div class="op_single_selector"]

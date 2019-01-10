@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 01/31/2017
 ms.author: mikeray
-ms.openlocfilehash: 0fdf768008161fbb72e48dae937a4172222dbb63
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 1b6660a1565b3c119cc1dec0823870c7dd5bd24f
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51239740"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53654081"
 ---
 # <a name="use-azure-storage-for-sql-server-backup-and-restore"></a>将 Azure 存储用于 SQL Server 备份和还原
 ## <a name="overview"></a>概述
@@ -62,7 +62,7 @@ SQL Server 2016 引入了新功能；可以使用[文件快照备份](https://ms
 | **凭据** |连接到 Azure Blob 存储服务并通过其进行身份验证所需的信息将存储为凭据。  为了使 SQL Server 将备份写入 Azure Blob 或从中进行还原，必须创建 SQL Server 凭据。 有关详细信息，请参阅 [SQL Server 凭据](https://msdn.microsoft.com/library/ms189522.aspx)。 |
 
 > [!NOTE]
-> 如果选择将备份文件复制并上传到 Azure Blob 存储服务中，并且打算使用此文件执行还原操作，则必须将页 Blob 类型作为存储选项。 从块 Blob 类型执行 RESTORE 命令会失败并报错。
+> SQL Server 2016 已更新以支持块 blob。 有关详细信息，请参阅[教程：将 Microsoft Azure Blob 存储服务用于 SQL Server 2016 数据库](https://msdn.microsoft.com/library/dn466438.aspx)。
 > 
 > 
 
