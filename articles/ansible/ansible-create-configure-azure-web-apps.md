@@ -3,17 +3,17 @@ title: 使用 Ansible 创建 Azure Web 应用
 description: 了解如何使用 Ansible 在 Linux 上的应用服务中创建采用 Java 8 和 Tomcat 容器运行时的 Web 应用
 ms.service: ansible
 keywords: ansible, azure, devops, bash, playbook, Azure 应用服务, Web 应用, Java
-author: tomarcher
+author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 12/08/2018
-ms.openlocfilehash: 4a772977130f5679da2d879cc12738b89be09f1d
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 106fe11355d629e57f71b12d1125d188b98c2236
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53726725"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54051339"
 ---
 # <a name="create-azure-app-service-web-apps-by-using-ansible"></a>使用 Ansible 创建 Azure 应用服务 Web 应用
 [Azure 应用服务 Web 应用](https://docs.microsoft.com/azure/app-service/overview)（简称 Web 应用）可托管 Web 应用程序、REST API 和移动后端。 可以使用 .NET、NET Core、Java、Ruby、Node.js、PHP 或 Python 等偏好的语言进行开发。

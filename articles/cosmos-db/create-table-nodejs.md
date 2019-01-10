@@ -1,21 +1,19 @@
 ---
 title: 快速入门：将表 API 与 Node.js 配合使用 - Azure Cosmos DB
 description: 本快速入门介绍如何在 Azure 门户和 Node.js 中使用 Azure Cosmos DB 表 API 创建应用程序
-services: cosmos-db
 author: SnehaGunda
 ms.service: cosmos-db
-ms.component: cosmosdb-table
-ms.custom: quick start connect, mvc
+ms.subservice: cosmosdb-table
 ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 04/10/2018
 ms.author: sngun
-ms.openlocfilehash: 870b07013aa279a20dd231fecc83775fd1aebc5c
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: 57da4fcb6fb1a91477b6c31387ab06205be8138c
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53166092"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54044648"
 ---
 # <a name="quickstart-build-a-table-api-app-with-nodejs-and-azure-cosmos-db"></a>快速入门：使用 Node.js 和 Azure Cosmos DB 生成表 API 应用
 

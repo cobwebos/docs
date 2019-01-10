@@ -15,12 +15,12 @@ ms.workload: tbd
 ms.date: 05/21/2018
 ms.author: wesmc
 ms.custom: mvc
-ms.openlocfilehash: cff742688c307becf4bf87cced15036b25fa10c8
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: f47b1d35ada061601233506222903742393c6830
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53554616"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54101745"
 ---
 # <a name="quickstart-how-to-use-azure-cache-for-redis-with-nodejs"></a>快速入门：如何将 Azure Redis 缓存与 Node.js 配合使用
 
@@ -42,7 +42,7 @@ Azure Redis 缓存提供对 Microsoft 所管理的安全、专用的 Azure Redis
 
     npm install redis
 
-本教程使用的是 [node_redis](https://github.com/mranney/node_redis)。 有关使用其他 Node.js 客户端的示例，请参阅 [Node.js Redis 客户端](http://redis.io/clients#nodejs)中所列的适用于 Node.js 客户端的各个文档。
+本教程使用的是 [node_redis](https://github.com/mranney/node_redis)。 有关使用其他 Node.js 客户端的示例，请参阅 [Node.js Redis 客户端](https://redis.io/clients#nodejs)中所列的适用于 Node.js 客户端的各个文档。
 
 
 ## <a name="create-a-cache"></a>创建缓存
@@ -77,7 +77,7 @@ var client = redis.createClient(6380, process.env.REDISCACHEHOSTNAME,
 
 创建名为 *redistest.js* 的新脚本文件。
 
-将下面的示例 JavaScript 添加到文件。 此代码演示如何使用缓存主机名和密钥环境变量连接到 Azure Redis 缓存实例。 此代码还在缓存中存储和检索字符串值。 还执行了 `PING` 和 `CLIENT LIST` 命令。 有关将 Redis 与 [node_redis](https://github.com/mranney/node_redis) 客户端一起使用的更多示例，请参阅 [http://redis.js.org/](http://redis.js.org/)。
+将下面的示例 JavaScript 添加到文件。 此代码演示如何使用缓存主机名和密钥环境变量连接到 Azure Redis 缓存实例。 此代码还在缓存中存储和检索字符串值。 还执行了 `PING` 和 `CLIENT LIST` 命令。 有关将 Redis 与 [node_redis](https://github.com/mranney/node_redis) 客户端一起使用的更多示例，请参阅 [https://redis.js.org/](https://redis.js.org/)。
 
 ```js
 var redis = require("redis");
