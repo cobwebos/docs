@@ -12,18 +12,18 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 07/23/2018
 ms.author: mbullwin
-ms.openlocfilehash: 83da24acfb339405c24bc1eed020736e6d4cef14
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 690822848fa2c6524f98c9bbd32e6d2890e4a9c4
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54000166"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54118756"
 ---
 # <a name="troubleshooting-no-data---application-insights-for-net"></a>排查无数据问题 - 用于 .NET 的 Application Insights
 ## <a name="some-of-my-telemetry-is-missing"></a>缺少一些遥测数据
 *在 Application Insights 中，我只看到应用生成的一部分事件。*
 
-* 如果持续看到同一个部分，可能是由于自适应[采样](../../application-insights/app-insights-sampling.md)所导致。 要确认这一点，请打开“搜索”（通过“概述”边栏选项卡），并查看请求或其他事件的实例。 单击“属性”部分底部的“...”，获取完整的属性详细信息。 如果请求计数 > 1，则表示采样正在进行。 
+* 如果持续看到同一个部分，可能是由于自适应[采样](../../azure-monitor/app/sampling.md)所导致。 要确认这一点，请打开“搜索”（通过“概述”边栏选项卡），并查看请求或其他事件的实例。 单击“属性”部分底部的“...”，获取完整的属性详细信息。 如果请求计数 > 1，则表示采样正在进行。 
 * 否则，有可能是已达到定价计划的[数据率限制](../../azure-monitor/app/pricing.md#limits-summary)。 系统每隔一分钟应用这些限制。
 
 ## <a name="no-data-from-my-server"></a>服务器未提供数据
@@ -34,12 +34,12 @@ ms.locfileid: "54000166"
 
 *我已在 Web 服务器上[安装状态监视器](../../azure-monitor/app/monitor-performance-live-website-now.md)来监视现有应用，但未看到任何结果。*
 
-* 请参阅[排查状态监视器问题](../../azure-monitor/app/monitor-performance-live-website-now.md#troubleshooting-runtime-configuration-of-application-insights)。 
+* 请参阅[排查状态监视器问题](../../azure-monitor/app/monitor-performance-live-website-now.md#troubleshoot)。 
 
 ## <a name="q01"></a>Visual Studio 中没有“添加 Application Insights”选项
 *在解决方案资源管理器中右键单击现有项目时，未看到任何 Application Insights 选项。*
 
-* 工具并非支持所有类型的 .NET 项目。 支持 Web 和 WCF 项目。 对于其他项目类型，例如桌面或服务应用程序，仍可以[手动将 Application Insights SDK 添加到项目](../../application-insights/app-insights-windows-desktop.md)。
+* 工具并非支持所有类型的 .NET 项目。 支持 Web 和 WCF 项目。 对于其他项目类型，例如桌面或服务应用程序，仍可以[手动将 Application Insights SDK 添加到项目](../../azure-monitor/app/windows-desktop.md)。
 * 请务必使用 [Visual Studio 2013 Update 3 或更高版本](https://docs.microsoft.com/visualstudio/releasenotes/vs2013-update3-rtm-vs)。 该软件预装了开发人员分析工具，其中提供了 Application Insights SDK。
 * 选择“工具”、“扩展和更新”，检查“开发人员分析工具”是否已安装并启用。 如果是，请单击“更新”查看是否有可用的更新。
 * 打开“新建项目”对话框，选择“ASP.NET Web 应用程序”。 如果看到了 Application Insights 选项，则表示工具已安装。 否则，请尝试卸载再重新安装 Application Insights 工具。
@@ -51,14 +51,14 @@ ms.locfileid: "54000166"
 
 * 与 Application Insights 门户通信失败；或者
 * Azure 帐户存在某种问题；
-* 对于在其中创建新资源的订阅或组，只拥有[读取访问权限](../../application-insights/app-insights-resources-roles-access-control.md)。
+* 对于在其中创建新资源的订阅或组，只拥有[读取访问权限](../../azure-monitor/app/resources-roles-access-control.md)。
 
 解决方法：
 
 * 检查是否为适当的 Azure 帐户提供了登录凭据。 
 * 在浏览器中，检查是否可以访问 [Azure 门户](https://portal.azure.com)。 打开“设置”并查看是否有任何限制。
 * [将 Application Insights 添加到现有项目](../../azure-monitor/app/asp-net.md)：在解决方案资源管理器中，右键单击项目并选择“添加 Application Insights”。
-* 如果仍不起作用，请执行[手动过程](../../application-insights/app-insights-windows-services.md)在门户中添加资源，然后将 SDK 添加到项目。 
+* 如果仍不起作用，请执行[手动过程](../../azure-monitor/app/windows-services.md)在门户中添加资源，然后将 SDK 添加到项目。 
 
 ## <a name="emptykey"></a>遇到错误“检测密钥不能为空”
 可能是在安装 Application Insights 或日志记录适配器时发生了问题。
@@ -95,7 +95,7 @@ ms.locfileid: "54000166"
 * 有多个的 Microsoft 帐户 - 也许同时拥有工作帐户和个人 Microsoft 帐户。 上一次在默认浏览器中使用的登录名的关联帐户不是有权[将 Application Insights 添加到项目](../../azure-monitor/app/asp-net.md)的帐户。 
   
   * 解决方法：单击浏览器窗口右上角的用户名并注销。使用拥有访问权限的帐户登录。 然后，在左侧导航栏中单击“Application Insights”并选择应用。
-* 其他人将 Application Insights 添加到了项目，但他们忘记向你提供创建项目的[资源组的访问权限](../../application-insights/app-insights-resources-roles-access-control.md)。 
+* 其他人将 Application Insights 添加到了项目，但他们忘记向你提供创建项目的[资源组的访问权限](../../azure-monitor/app/resources-roles-access-control.md)。 
   
   * 解决方法：如果他们使用的是组织帐户，便可以将你添加到团队；或者，他们可以单独向你授予对资源组的访问权限。
 
@@ -154,7 +154,7 @@ ApplicationInsights.config 中的检测密钥控制遥测数据发送到的位�
 请参阅[依赖项遥测](../../azure-monitor/app/asp-net-dependencies.md)和[异常遥测](asp-net-exceptions.md)。
 
 ## <a name="no-performance-data"></a>没有性能数据
-性能数据（CPU、IO 速率等）适用于 [Java Web 服务](../../azure-monitor/app/java-collectd.md)、[Windows 桌面应用](../../application-insights/app-insights-windows-desktop.md)、[IIS Web 应用和服务（如果安装了状态监视器）](../../azure-monitor/app/monitor-performance-live-website-now.md)以及 [Azure 云服务](../../application-insights/app-insights-overview.md)。 可在“设置”、“服务器”下面看到这些数据。
+性能数据（CPU、IO 速率等）适用于 [Java Web 服务](../../azure-monitor/app/java-collectd.md)、[Windows 桌面应用](../../azure-monitor/app/windows-desktop.md)、[IIS Web 应用和服务（如果安装了状态监视器）](../../azure-monitor/app/monitor-performance-live-website-now.md)以及 [Azure 云服务](../../azure-monitor/app/app-insights-overview.md)。 可在“设置”、“服务器”下面看到这些数据。
 
 ## <a name="no-server-data-since-i-published-the-app-to-my-server"></a>将应用发布到服务器后未看到（服务器）数据
 * 请检查是否确实将 Microsoft. ApplicationInsights DLL 连同 Microsoft.Diagnostics.Instrumentation.Extensions.Intercept.dll 一起复制到了服务器。
@@ -167,7 +167,7 @@ ApplicationInsights.config 中的检测密钥控制遥测数据发送到的位�
 * 是否达到了数据点的每月配额？ 打开“设置/配额和定价”即可检查。如果达到了配额，可以升级计划，或付费购买更多的容量。 请参阅[定价方案](https://azure.microsoft.com/pricing/details/application-insights/)。
 
 ## <a name="i-dont-see-all-the-data-im-expecting"></a>未按预期看到所有数据
-如果应用程序发送大量数据，并且使用的是用于 ASP.NET 的 Application Insights SDK 2.0.0-beta3 或更高版本，则[自适应采样](../../application-insights/app-insights-sampling.md)功能可以正常运行，只发送一部分遥测数据。 
+如果应用程序发送大量数据，并且使用的是用于 ASP.NET 的 Application Insights SDK 2.0.0-beta3 或更高版本，则[自适应采样](../../azure-monitor/app/sampling.md)功能可以正常运行，只发送一部分遥测数据。 
 
 可以禁用该功能，但不建议这样做。 采样旨在正确传输相关遥测数据，以便进行诊断。 
 

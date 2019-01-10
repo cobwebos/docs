@@ -9,16 +9,15 @@ editor: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/10/2018
 ms.author: douglasl
-ms.openlocfilehash: ff9bfce1f9262d78ba17abdd88c481d5057d5f38
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: cc573028779bcd6b77394bbeefbea58f714b835c
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49076413"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54017338"
 ---
 # <a name="set-variable-activity-in-azure-data-factory"></a>Azure 数据工厂中的设置变量活动
 

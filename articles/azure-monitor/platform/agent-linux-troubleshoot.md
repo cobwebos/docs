@@ -1,6 +1,6 @@
 ---
 title: Azure Log Analytics Linux 代理故障排除 | Microsoft Docs
-description: 描述 Log Analytics Linux 代理最常见问题的症状、原因和解决方法。
+description: 描述 Log Analytics Linux 代理最常见问题的表现、原因和解决方法。
 services: log-analytics
 documentationcenter: ''
 author: mgoedtel
@@ -13,24 +13,24 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: magoedte
-ms.openlocfilehash: 1f772e1a3e5b3e121b968d358166e9018c80d573
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: b95a9b2243dda83be7de67802a8b6678419e335f
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53192680"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54102578"
 ---
 # <a name="how-to-troubleshoot-issues-with-the-log-analytics-agent-for-linux"></a>如何排查 Log Analytics Linux 代理的问题 
 
-本文介绍如何解决可能遇到的 Log Analytics Linux 代理的相关错误，并提供可能的解决方案建议。
+本文介绍如何排查可能遇到的 Log Analytics Linux 代理的相关错误，并提供可能的解决方案建议。
 
 如果这些步骤对你均无效，我们还提供了以下支持渠道：
 
-* 具有顶级支持权益的客户可以通过[顶级](https://premier.microsoft.com/)提出支持请求。
-* 具有 Azure 支持协议的客户可以在 [Azure 门户](https://manage.windowsazure.com/?getsupport=true)中提出支持请求。
+* 具有顶级支持权益的客户可以通过[顶级支持](https://premier.microsoft.com/)提出支持请求。
+* 签订了 Azure 支持协议的客户可以在 [Azure 门户](https://manage.windowsazure.com/?getsupport=true)中提出支持请求。
 * 借助 [OMI 故障排除指南](https://github.com/Microsoft/omi/blob/master/Unix/doc/diagnose-omi-problems.md)诊断 OMI 问题。
-* 提出 [GitHub 问题](https://github.com/Microsoft/OMS-Agent-for-Linux/issues)。
-* 请访问 Log Analytics 反馈页面，查看已提交的想法和 bug [http://aka.ms/opinsightsfeedback](https://aka.ms/opinsightsfeedback)或提出新的想法。  
+* 提交 [GitHub 问题](https://github.com/Microsoft/OMS-Agent-for-Linux/issues)。
+* 请访问 Log Analytics 反馈页面，查看已提交的想法和 bug [https://aka.ms/opinsightsfeedback](https://aka.ms/opinsightsfeedback)或提交新的想法或 bug。  
 
 ## <a name="important-log-locations-and-log-collector-tool"></a>重要的日志位置和日志收集器工具
 
@@ -39,7 +39,7 @@ ms.locfileid: "53192680"
  Log Analytics Linux 代理日志文件 | `/var/opt/microsoft/omsagent/<workspace id>/log/omsagent.log `
  Log Analytics 代理配置日志文件 | `/var/opt/microsoft/omsconfig/omsconfig.log`
 
- 我们建议你使用我们的日志收集器工具来检索重要日志进行故障排除或在提交 GitHub 问题之前使用它们来检索重要日志。 你可以点击[此处](https://github.com/Microsoft/OMS-Agent-for-Linux/blob/master/tools/LogCollector/OMS_Linux_Agent_Log_Collector.md)了解有关该工具的详细信息以及如何运行该工具。
+ 我们建议你在进行故障排除或提交 GitHub 问题之前使用我们的日志收集器工具来检索重要日志。 你可以点击[此处](https://github.com/Microsoft/OMS-Agent-for-Linux/blob/master/tools/LogCollector/OMS_Linux_Agent_Log_Collector.md)了解有关该工具的详细信息以及如何运行该工具。
 
 ## <a name="important-configuration-files"></a>重要的配置文件
 
@@ -60,7 +60,7 @@ ms.locfileid: "53192680"
 | NOT_DEFINED | 由于未安装必需的依赖项，将不会安装 auoms auditd 插件 | Auoms 安装失败，请安装程序包 auditd。 |
 | 2 | 提供给 shell 捆绑包的选项无效。 运行 `sudo sh ./omsagent-*.universal*.sh --help` 获取使用情况 |
 | 3 | 未向 shell 捆绑包提供任何选项。 运行 `sudo sh ./omsagent-*.universal*.sh --help` 获取使用情况。 |
-| 4 | 无效的程序包类型或者无效的代理服务器设置；omsagent-*rpm*.sh 程序包只能安装在基于 RPM 的系统上，而 msagent-*deb*.sh 程序包只能安装在基于 Debian 的系统上。 建议从[最新版本](../../azure-monitor/learn/quick-collect-linux-computer.md#install-the-agent-for-linux)使用通用安装程序。 也进行[查看](#issue:-unable-to-connect-through-proxy-to-log-analytics)以验证你的代理服务器设置。 |
+| 4 | 无效的程序包类型或者无效的代理服务器设置；omsagent-*rpm*.sh 程序包只能安装在基于 RPM 的系统上，而 msagent-*deb*.sh 程序包只能安装在基于 Debian 的系统上。 建议使用[最新版本](../../azure-monitor/learn/quick-collect-linux-computer.md#install-the-agent-for-linux)中的通用安装程序。 另外还应该进行[查看](#issue:-unable-to-connect-through-proxy-to-log-analytics)以验证你的代理服务器设置。 |
 | 5 | 必须以 root 身份执行 shell 捆绑包或在载入期间返回 403 错误。 使用 `sudo` 运行你的命令。 |
 | 6 | 无效的程序包体系结构或者载入期间返回 200 错误；omsagent-*x64.sh 程序包只能安装在 64 位系统上，而 omsagent-* x86.sh 程序包只能安装在 32 位系统上。 从[最新版本](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/latest)为你的体系结构下载正确的程序包。 |
 | 17 | OMS 程序包安装失败。 仔细查看命令输出查找根源故障。 |
@@ -69,7 +69,7 @@ ms.locfileid: "53192680"
 | 21 | Provider 工具包安装失败。 仔细查看命令输出查找根源故障。 |
 | 22 | 捆绑的程序包安装失败。 仔细查看命令输出查找根源故障 |
 | 23 | SCX 或 OMI 程序包已安装。 使用 `--upgrade` 而不是 `--install` 安装 shell 捆绑包。 |
-| 30 | 内部捆绑包错误。 提出 [GitHub 问题](https://github.com/Microsoft/OMS-Agent-for-Linux/issues)，附带输出中的详细信息。 |
+| 30 | 内部捆绑包错误。 提交 [GitHub 问题](https://github.com/Microsoft/OMS-Agent-for-Linux/issues)，附带输出中的详细信息。 |
 | 55 | 不受支持的 openssl 版本或无法连接到 Log Analytics 服务或 dpkg 已锁定或缺少 curl 程序。 |
 | 61 | 缺少 Python ctypes 库。 安装 Python ctypes 库或程序包 (python-ctypes)。 |
 | 62 | 缺少 tar 程序，请安装 tar。 |
@@ -88,10 +88,10 @@ ms.locfileid: "53192680"
 | 6 | 未从 Log Analytics 服务收到 200 HTTP 错误。 请参阅完整的 omsadmin 脚本输出了解详细信息。 |
 | 7 | 无法连接到 Log Analytics 服务。 请参阅完整的 omsadmin 脚本输出了解详细信息。 |
 | 8 | 载入 Log Analytics 工作区时出错。 请参阅完整的 omsadmin 脚本输出了解详细信息。 |
-| 30 | 内部脚本错误。 提出 [GitHub 问题](https://github.com/Microsoft/OMS-Agent-for-Linux/issues)，附带输出中的详细信息。 |
-| 31 | 生成代理 ID 时出错。 提出 [GitHub 问题](https://github.com/Microsoft/OMS-Agent-for-Linux/issues)，附带输出中的详细信息。 |
+| 30 | 内部脚本错误。 提交 [GitHub 问题](https://github.com/Microsoft/OMS-Agent-for-Linux/issues)，附带输出中的详细信息。 |
+| 31 | 生成代理 ID 时出错。 提交 [GitHub 问题](https://github.com/Microsoft/OMS-Agent-for-Linux/issues)，附带输出中的详细信息。 |
 | 32 | 生成证书时出错。 请参阅完整的 omsadmin 脚本输出了解详细信息。 |
-| 33 | 生成 omsconfig 的元配置时出错。 提出 [GitHub 问题](https://github.com/Microsoft/OMS-Agent-for-Linux/issues)，附带输出中的详细信息。 |
+| 33 | 生成 omsconfig 的元配置时出错。 提交 [GitHub 问题](https://github.com/Microsoft/OMS-Agent-for-Linux/issues)，附带输出中的详细信息。 |
 | 34 | 不存在元配置生成脚本。 重新尝试使用 `sudo sh /opt/microsoft/omsagent/bin/omsadmin.sh -w <Workspace ID> -s <Workspace Key>` 载入。 |
 
 ## <a name="enable-debug-logging"></a>启用调试日志记录

@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 09/24/2018
 ms.author: crdun
-ms.openlocfilehash: 30eb458b9d0584b467479163d8312d7bd5456be1
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: 62711ac094a10a9e4a0350319a316c5a293fd522
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53409728"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54157322"
 ---
 # <a name="how-to-use-the-managed-client-for-azure-mobile-apps"></a>如何使用 Azure 移动应用的托管客户端
 [!INCLUDE [app-service-mobile-selector-client-library](../../includes/app-service-mobile-selector-client-library.md)]
@@ -651,7 +651,7 @@ InvokeApiAsync() 方法在想要调用的 API 前附加“/api/”，除非 API 
 可以使用 Active Directory 身份验证库 (ADAL)，从使用 Azure Active Directory 身份验证的客户端启动用户身份验证。
 
 1. 根据[如何为 Active Directory 登录配置应用服务]教程的说明，为 AAD 登录配置移动应用。 请务必完成注册本机客户端应用程序的可选步骤。
-2. 在 Visual Studio 或 Xamarin Studio 中打开项目，并添加对 `Microsoft.IdentityModel.CLients.ActiveDirectory` NuGet 包的引用。 搜索时，请包含预发行版。
+2. 在 Visual Studio 或 Xamarin Studio 中打开项目，并添加对 `Microsoft.IdentityModel.Clients.ActiveDirectory` NuGet 包的引用。 搜索时，请包含预发行版。
 3. 根据使用的平台，将以下代码添加到应用程序。 在每条代码中进行以下替换：
 
    * 将 **INSERT-AUTHORITY-HERE** 替换为在其中预配应用程序的租户的名称。 格式应为 https://login.microsoftonline.com/contoso.onmicrosoft.com。 可以在 [Azure 门户]中从 Azure Active Directory 的域选项卡复制此值。

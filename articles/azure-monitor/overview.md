@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 12/09/2018
 ms.author: bwren
-ms.openlocfilehash: f1125c9d0ce543984393c99d70d511a3a162041e
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: b499f6e1b05e42c7af71dedd81fd15bc7574b0aa
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53975179"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54118841"
 ---
 # <a name="azure-monitor-overview"></a>Azure Monitor 概述
 
@@ -66,10 +66,10 @@ Azure Monitor 可以使用[数据收集器 API](../azure-monitor/platform/data-c
 
 
 ## <a name="insights"></a>洞察力
-仅当能够有利于洞察计算环境的操作时，监视数据才有作用。 Azure Monitor 包含多种功能和工具，可以提供应用程序及其依赖的其他资源的有用见解。 [监视解决方案](insights/solutions.md)和 [Application Insights](../application-insights/app-insights-overview.md) 与 Container Insights 等功能在应用程序和特定 Azure 服务的不同方面提供深入见解。 
+仅当能够有利于洞察计算环境的操作时，监视数据才有作用。 Azure Monitor 包含多种功能和工具，可以提供应用程序及其依赖的其他资源的有用见解。 [监视解决方案](insights/solutions.md)和 [Application Insights](../azure-monitor/app/app-insights-overview.md) 与 Container Insights 等功能在应用程序和特定 Azure 服务的不同方面提供深入见解。 
 
 ### <a name="application-insights"></a>Application Insights
-无论 Web 应用程序托管在云中还是本地，[Application Insights](../application-insights/app-insights-overview.md) 都可以监视其可用性、性能和使用情况。 它利用 Azure Monitor 中的强大数据分析平台来提供应用程序操作的深入见解，并可以诊断错误，无需等到用户报告这些问题。 Application Insights 包含各种开发工具的连接点，并与 Visual Studio 集成以支持 DevOps 过程。
+无论 Web 应用程序托管在云中还是本地，[Application Insights](../azure-monitor/app/app-insights-overview.md) 都可以监视其可用性、性能和使用情况。 它利用 Azure Monitor 中的强大数据分析平台来提供应用程序操作的深入见解，并可以诊断错误，无需等到用户报告这些问题。 Application Insights 包含各种开发工具的连接点，并与 Visual Studio 集成以支持 DevOps 过程。
 
 ![App Insights](media/overview/app-insights.png)
 

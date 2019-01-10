@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/12/2017
 ms.author: tomfitz
-ms.openlocfilehash: a01a59a7e8c9757cb41d328cd26a34fa219f9152
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: 80fd593eecf189d516a8c9d7ef2a94ec9f23fc39
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/18/2018
-ms.locfileid: "34304498"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54063788"
 ---
 # <a name="createuidefinition-functions"></a>CreateUiDefinition 函数
 本部分包含 CreateUiDefinition 支持的所有函数的签名。
@@ -80,7 +80,7 @@ ms.locfileid: "34304498"
 例如，如果 `element1` 的输出值是 `"bar"`，则此示例返回字符串 `"foobar!"`：
 
 ```json
-"[concat('foo', steps('step1').element1), '!']"
+"[concat('foo', steps('step1').element1, '!')]"
 ```
 
 ### <a name="substring"></a>substring

@@ -1,19 +1,17 @@
 ---
 title: 将 Apache Spark 连接到 Azure Cosmos DB
 description: 了解可将 Apache Spark 连接到 Azure Cosmos DB 的 Azure Cosmos DB Spark 连接器。 可以在 Microsoft 提供的多租户全局分布式数据库系统上执行分布式聚合。
-keywords: apache spark
-services: cosmos-db
 author: tknandu
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/11/2018
 ms.author: ramkris
-ms.openlocfilehash: fd1fa105a880acb0d2b18a3b69ba8d475d8f82a3
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 6d80de23f815d96ba78f023f46a530561d5ec39d
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53081585"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54034635"
 ---
 # <a name="accelerate-big-data-analytics-by-using-the-apache-spark-to-azure-cosmos-db-connector"></a>使用 Apache Spark 到 Azure Cosmos DB 的连接器加速大数据分析
  

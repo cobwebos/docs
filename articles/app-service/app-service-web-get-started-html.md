@@ -12,15 +12,15 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 08/28/2018
+ms.date: 11/20/2018
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: ae37befe2ae2220feaf17ae4354b6fc780147f7e
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 2a6378406272f502af107a151e69fe33954f7780
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53634229"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54187853"
 ---
 # <a name="create-a-static-html-web-app-in-azure"></a>在 Azure 中创建静态 HTML Web 应用
 
@@ -31,22 +31,6 @@ ms.locfileid: "53634229"
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
-## <a name="install-web-app-extension-for-cloud-shell"></a>安装 Cloud Shell 的 Web 应用扩展
-
-若要完成本快速入门，需要添加 [az Web 应用扩展](https://docs.microsoft.com/cli/azure/extension?view=azure-cli-latest#az-extension-add)。 如果该扩展已安装，则应将其更新为最新版本。 若要更新该 Web 应用扩展，请键入 `az extension update -n webapp`。
-
-若要安装该 Web 应用扩展，请运行以下命令：
-
-```bash
-az extension add --name webapp
-```
-
-安装该扩展后，Cloud Shell 会显示类似于以下示例的信息：
-
-```bash
-The installed extension 'webapp' is in preview.
-```
 
 ## <a name="download-the-sample"></a>下载示例
 

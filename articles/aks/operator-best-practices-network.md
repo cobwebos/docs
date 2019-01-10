@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 12/10/2018
 ms.author: iainfou
-ms.openlocfilehash: b1d4a3bde7852cb4eb9192ed1eab80c20613510a
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 0ad6ab27a51cf082be71262b887a459f6c7cc906
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53263262"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54101966"
 ---
 # <a name="best-practices-for-network-connectivity-and-security-in-azure-kubernetes-service-aks"></a>Azure Kubernetes 服务 (AKS) 中的网络连接和安全的最佳做法
 
@@ -140,7 +140,7 @@ AKS 中的大多数操作都可以使用 Azure 管理工具或通过 Kubernetes 
 [app-gateway-ingress]: https://github.com/Azure/application-gateway-kubernetes-ingress
 [nginx]: https://www.nginx.com/products/nginx/kubernetes-ingress-controller
 [contour]: https://github.com/heptio/contour
-[haproxy]: http://www.haproxy.org
+[haproxy]: https://www.haproxy.org
 [traefik]: https://github.com/containous/traefik
 [barracuda-waf]: https://www.barracuda.com/products/webapplicationfirewall/models/5
 

@@ -9,16 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: jingwang
-ms.openlocfilehash: a4c683f6f3a1b321b786569999edac67cfb41892
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 4e1975409f73804448f844d1bcb84c2b0d0d2afc
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53083489"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54013717"
 ---
 # <a name="copy-data-from-couchbase-using-azure-data-factory-preview"></a>使用 Azure 数据工厂（预览版）从 Couchbase 复制数据
 

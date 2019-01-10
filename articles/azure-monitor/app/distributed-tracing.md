@@ -10,16 +10,16 @@ ms.date: 09/17/2018
 ms.service: application-insights
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: e68e236c54083862bbe1524ec2f7fc3ee6c52ef2
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 7bc04748f2a5b8caa8f589140dd46f0650b7b390
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54002206"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54102969"
 ---
 # <a name="what-is-distributed-tracing"></a>什么是分布式跟踪？
 
-现代云和[微服务](http://azure.com/microservices)体系结构的出现宣告了一种简单且可独立部署的服务的诞生，它可以提高可用性和吞吐量，同时还能降低成本。 但是，虽然这些转变使那些单个的服务作为整体更易于理解，但也使整个系统更加难以推断和调试。
+现代云和[微服务](https://azure.com/microservices)体系结构的出现宣告了一种简单且可独立部署的服务的诞生，它可以提高可用性和吞吐量，同时还能降低成本。 但是，虽然这些转变使那些单个的服务作为整体更易于理解，但也使整个系统更加难以推断和调试。
 
 在整体式体系结构中，我们已习惯于通过调用堆栈进行调试。 调用堆栈是很好的工具，可以显示执行流（方法 A 调用了方法 B，方法 B 调用了方法 C），并可显示每个这样的调用的详细信息和参数。 这适用于在单个进程上运行的庞大单体结构或服务。但是，如果调用跨进程边界，而不仅仅是本地堆栈上的某个引用，我们该如何调试？ 
 
@@ -59,4 +59,4 @@ OpenCensus 网站保留了 [Python](https://opencensus.io/api/python/trace/usage
 
 * [OpenCensus Python 使用指南](https://opencensus.io/api/python/trace/usage.html)
 * [应用程序映射](./../../azure-monitor/app/app-map.md)
-* [端到端性能监视](./../../application-insights/app-insights-tutorial-performance.md)
+* [端到端性能监视](./../../azure-monitor/learn/tutorial-performance.md)

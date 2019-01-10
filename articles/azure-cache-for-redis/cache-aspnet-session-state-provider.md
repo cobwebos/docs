@@ -14,12 +14,12 @@ ms.tgt_pltfrm: azure-cache-for-redis
 ms.workload: tbd
 ms.date: 05/01/2017
 ms.author: wesmc
-ms.openlocfilehash: c9b843bfd448c05cb2b11165e54d19db0a7ad60e
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: a7f3e23cd74baa2e1fdef178be8c5b213a3905ef
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53021110"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54105281"
 ---
 # <a name="aspnet-session-state-provider-for-azure-cache-for-redis"></a>Azure Redis 缓存的 ASP.NET 会话状态提供程序
 Azure Redis 缓存提供了一个会话状态提供程序，可使用该提供程序通过 Azure Redis 缓存将会话状态存储在内存中而不是存储在 SQL Server 数据库中。 要使用缓存会话状态提供程序，首先配置缓存，然后使用用于 Azure Redis 缓存会话状态 NuGet 包为缓存配置 ASP.NET 应用程序。
@@ -127,7 +127,7 @@ Redis 会话状态提供程序 NuGet 包依赖于 StackExchange.Redis.StrongName
 * SQL Server 会话状态提供程序 - 此提供程序会话状态存储在 SQL Server 中。 如果要在持久性存储区中存储会话状态，请使用此提供程序。 可以缩放 Web 应用，但将 SQL Server 用于会话将对 Web 应用造成性能影响。 还可以将此提供程序与[内存中 OLTP 配置](https://blogs.msdn.microsoft.com/sqlserverstorageengine/2017/11/28/asp-net-session-state-with-sql-server-in-memory-oltp/)一起使用来帮助提高性能。
 * 分布式内存中会话状态提供程序（如 Azure Redis 缓存会话状态提供程序） - 此提供程序提供两全其美的功能。 Web 应用可以使用简单、快速且可缩放的会话状态提供程序。 因为此提供程序会话状态存储在缓存中，因此应用必须考虑到在与分布式内存中缓存通信时关联的所有特征，如暂时性网络故障。 有关使用缓存的最佳实践，请参阅 Microsoft 模式和实践 [Azure 云应用程序设计和实现指南](https://github.com/mspnp/azure-guidance)中的[缓存指南](../best-practices-caching.md)。
 
-有关会话状态和其他最佳实践的详细信息，请参阅 [Web Development Best Practices (Building Real-World Cloud Apps with Azure)](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/web-development-best-practices)（Web 开发最佳做法（使用 Azure 构建实际的云应用））。
+有关会话状态和其他最佳实践的详细信息，请参阅 [Web Development Best Practices (Building Real-World Cloud Apps with Azure)](https://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/web-development-best-practices)（Web 开发最佳做法（使用 Azure 构建实际的云应用））。
 
 ## <a name="next-steps"></a>后续步骤
 请查看[用于 Azure Redis 缓存的 ASP.NET 输出缓存提供程序](cache-aspnet-output-cache-provider.md)。

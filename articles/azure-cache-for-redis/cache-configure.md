@@ -14,12 +14,12 @@ ms.tgt_pltfrm: azure-cache-for-redis
 ms.workload: tbd
 ms.date: 08/22/2017
 ms.author: wesmc
-ms.openlocfilehash: ff6a3f32d9163be01483e8b8c743caa4e5bb573c
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: 8a78823a208a5310e62714de7b1a3cd2e35eaa8f
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53581243"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54104669"
 ---
 # <a name="how-to-configure-azure-cache-for-redis"></a>如何配置 Azure Redis 缓存
 本主题介绍可用于 Azure Redis 缓存实例的配置。 本主题还介绍了适用于 Azure Redis 缓存实例的默认 Redis 服务器配置。
@@ -147,7 +147,7 @@ ms.locfileid: "53581243"
 * `volatile-ttl`
 * `noeviction`
 
-有关 `maxmemory` 策略的详细信息，请参阅[逐出策略](http://redis.io/topics/lru-cache#eviction-policies)。
+有关 `maxmemory` 策略的详细信息，请参阅[逐出策略](https://redis.io/topics/lru-cache#eviction-policies)。
 
 “maxmemory-reserved”设置用于配置保留给非缓存操作（例如故障转移期间的复制）的内存量 (MB)。 设置此值能够在负载变化时具有更一致的 Redis 服务器体验。 对于写入密集型工作负荷，应将此值设置为较高。 为此类操作保留内存后，将无法存储缓存数据。
 
@@ -170,7 +170,7 @@ Redis 密钥空间通知是在“高级设置”边栏选项卡上配置的。 �
 > 
 > 
 
-有关详细信息，请参阅 [Redis Keyspace Notifications](http://redis.io/topics/notifications)（Redis 密钥空间通知）。 有关示例代码，请参阅 [Hello world](https://github.com/rustd/RedisSamples/tree/master/HelloWorld) 示例中的 [KeySpaceNotifications.cs](https://github.com/rustd/RedisSamples/blob/master/HelloWorld/KeySpaceNotifications.cs) 文件。
+有关详细信息，请参阅 [Redis Keyspace Notifications](https://redis.io/topics/notifications)（Redis 密钥空间通知）。 有关示例代码，请参阅 [Hello world](https://github.com/rustd/RedisSamples/tree/master/HelloWorld) 示例中的 [KeySpaceNotifications.cs](https://github.com/rustd/RedisSamples/blob/master/HelloWorld/KeySpaceNotifications.cs) 文件。
 
 
 <a name="recommendations"></a>
@@ -406,7 +406,7 @@ Redis 密钥空间通知是在“高级设置”边栏选项卡上配置的。 �
 | `maxmemory-samples` |3 |为了节省内存，LRU 和最小 TTL 算法是近似算法而不是精确算法。 默认情况下，Redis 会检查三个密钥并选取最近使用较少的一个。 |
 | `lua-time-limit` |5,000 |Lua 脚本的最大执行时间（以毫秒为单位）。 如果达到最大执行时间，Redis 将记录脚本在达到最大允许时间后仍在执行，并开始以错误响应查询。 |
 | `lua-event-limit` |500 |脚本事件队列的最大大小。 |
-| `client-output-buffer-limit` `normalclient-output-buffer-limit` `pubsub` |0 0 032mb 8mb 60 |客户端输出缓冲区限制可用于强制断开处于某种原因（一个常见原因是发布/订阅客户端处理消息的速度慢于发布者提供消息的速度）而未从服务器快速读取数据的客户端的连接。 有关详细信息，请参阅 [http://redis.io/topics/clients](http://redis.io/topics/clients)。 |
+| `client-output-buffer-limit` `normalclient-output-buffer-limit` `pubsub` |0 0 032mb 8mb 60 |客户端输出缓冲区限制可用于强制断开处于某种原因（一个常见原因是发布/订阅客户端处理消息的速度慢于发布者提供消息的速度）而未从服务器快速读取数据的客户端的连接。 有关详细信息，请参阅 [https://redis.io/topics/clients](https://redis.io/topics/clients)。 |
 
 <a name="databases"></a>
 <sup>1</sup>每个 Azure Redis 缓存定价层的 `databases` 限制是不同的，可以在创建缓存时进行设置。 如果在创建缓存期间未指定 `databases` 设置，则默认值为 16。
@@ -424,7 +424,7 @@ Redis 密钥空间通知是在“高级设置”边栏选项卡上配置的。 �
   * P2 (13 GB - 130 GB) - 最多支持 32 个数据库
   * P3 (26 GB - 260 GB) - 最多支持 48 个数据库
   * P4 (53 GB - 530 GB) - 最多支持 64 个数据库
-  * 所有启用了 Redis 群集的高级缓存 - Redis 群集仅支持使用数据库 0，因此任何启用了 Redis 群集的高级缓存的 `databases` 限制实际上是 1，并且不允许使用 [Select](http://redis.io/commands/select) 命令。 有关详细信息，请参阅[使用群集功能时，是否需要对客户端应用程序进行更改？](cache-how-to-premium-clustering.md#do-i-need-to-make-any-changes-to-my-client-application-to-use-clustering)
+  * 所有启用了 Redis 群集的高级缓存 - Redis 群集仅支持使用数据库 0，因此任何启用了 Redis 群集的高级缓存的 `databases` 限制实际上是 1，并且不允许使用 [Select](https://redis.io/commands/select) 命令。 有关详细信息，请参阅[使用群集功能时，是否需要对客户端应用程序进行更改？](cache-how-to-premium-clustering.md#do-i-need-to-make-any-changes-to-my-client-application-to-use-clustering)
 
 有关数据库的详细信息，请参阅[什么是 Redis 数据库？](cache-faq.md#what-are-redis-databases)
 
@@ -473,14 +473,14 @@ Redis 密钥空间通知是在“高级设置”边栏选项卡上配置的。 �
 > 
 > 
 
-有关 Redis 命令的详细信息，请参阅 [http://redis.io/commands](http://redis.io/commands)。
+有关 Redis 命令的详细信息，请参阅 [https://redis.io/commands](https://redis.io/commands)。
 
 ## <a name="redis-console"></a>Redis 控制台
 可以使用“Redis 控制台”向 Azure Redis 缓存实例安全地发出命令，此操作在 Azure 门户中适用于所有缓存层。
 
 > [!IMPORTANT]
 > - Redis 控制台不处理 [VNET](cache-how-to-premium-vnet.md)。 如果缓存是 VNET 的一部分，则只有 VNET 中的客户端可以访问缓存。 由于 Redis 控制台在本地浏览器中运行（这在 VNET 的外部），因此它无法连接到缓存。
-> - Azure Redis 缓存中并不支持所有 Redis 命令。 有关为 Azure Redis 缓存禁用的 Redis 命令列表，请参阅之前的 [Azure Redis 缓存中不支持的 Redis 命令](#redis-commands-not-supported-in-azure-cache-for-redis)部分。 有关 Redis 命令的详细信息，请参阅 [http://redis.io/commands](http://redis.io/commands)。
+> - Azure Redis 缓存中并不支持所有 Redis 命令。 有关为 Azure Redis 缓存禁用的 Redis 命令列表，请参阅之前的 [Azure Redis 缓存中不支持的 Redis 命令](#redis-commands-not-supported-in-azure-cache-for-redis)部分。 有关 Redis 命令的详细信息，请参阅 [https://redis.io/commands](https://redis.io/commands)。
 > 
 > 
 

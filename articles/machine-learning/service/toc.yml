@@ -10,7 +10,7 @@ items:
     displayName: architecture concepts definitions
     href: concept-azure-machine-learning-architecture.md
   - name: Workbench 发生了什么情况？
-    displayName: desktop ui
+    displayName: desktop ui Workbench upgrade update transfer
     href: overview-what-happened-to-workbench.md
   - name: 发行说明
     displayName: what's new issues bugs
@@ -142,6 +142,9 @@ items:
   - name: 使用机器学习 CLI
     displayName: cli command line command-line az ci/cd automate automated
     href: reference-azure-machine-learning-cli.md
+  - name: 导出和删除数据
+    displayName: gdpr
+    href: how-to-export-delete-data.md
 - name: 引用
   items:
   - name: 机器学习 SDK
@@ -166,213 +169,11 @@ items:
     href: resource-known-issues.md
   - name: 获取支持
     href: support-for-aml-services.md
-  - name: 导出和删除数据
-    displayName: gdpr
-    href: how-to-export-delete-data.md
-  - name: 弃用的文档
-    items:
-    - name: 从 Workbench 迁移
-      displayName: Workbench upgrade update transfer
-      href: how-to-migrate.md
-    - name: 导出或删除帐户数据（已弃用）
-      href: ../desktop-workbench/export-delete-experimentation-model-management-data-dsr.md
-    - name: Workbench 快速入门（已弃用）
-      href: ../desktop-workbench/quickstart-installation.md
-    - name: 教程 1：准备数据
-      href: ../desktop-workbench/tutorial-classifying-iris-part-1.md
-    - name: 教程 2：生成模型
-      href: ../desktop-workbench/tutorial-classifying-iris-part-2.md
-    - name: 教程 3：部署模型
-      href: ../desktop-workbench/tutorial-classifying-iris-part-3.md
-    - name: 教程 4：高级数据准备
-      href: ../desktop-workbench/tutorial-bikeshare-dataprep.md
-    - name: 模型管理概述
-      href: ../desktop-workbench/model-management-overview.md
-    - name: 首要 CLI 任务
-      href: ../desktop-workbench/cli-for-azure-machine-learning.md
-    - name: 使用 Workbench
-      items:
-      - name: 使用 Python IDE
-        href: ../desktop-workbench/how-to-configure-your-IDE.md
-      - name: 使用 Jupyter Notebook
-        href: ../desktop-workbench/how-to-use-jupyter-notebooks.md
-      - name: 与 Git 存储库集成
-        href: ../desktop-workbench/using-git-ml-project.md
-      - name: 使用 TDSP 构造项目
-        href: ../desktop-workbench/how-to-use-tdsp-in-azure-ml.md
-      - name: 漫游和协作
-        href: ../desktop-workbench/roaming-and-collaboration.md
-    - name: 使用 IDE 扩展
-      items:
-      - name: 使用用于 AI 的 Visual Studio Tools
-        href: ../desktop-workbench/quickstart-visual-studio-tools.md
-      - name: 使用用于 AI 的 Visual Studio Code 工具
-        href: ../desktop-workbench/quickstart-visual-studio-code-tools.md
-    - name: 使用 Azure IoT Edge AI 工具包
-      href: ../desktop-workbench/use-azure-iot-edge-ai-toolkit.md
-    - name: 配置计算环境
-      items:
-      - name: 配置试验
-        href: ../desktop-workbench/experimentation-service-configuration.md
-      - name: 创建 DSVM 和 HDI Spark 群集
-        href: ../desktop-workbench/how-to-create-dsvm-hdi.md
-      - name: 使用 GPU 训练
-        href: ../desktop-workbench/how-to-use-gpu.md
-    - name: 获取和了解数据
-      items:
-      - name: 添加数据源
-        href: ../desktop-workbench/data-source-wizard.md
-      - name: 数据准备指南
-        href: ../desktop-workbench/data-prep-getting-started.md
-      - name: 高级数据准备
-        href: ../desktop-workbench/data-prep-user-guide.md
-      - name: 数据准备转换
-        href: ../desktop-workbench/data-prep-appendix3-supported-transforms.md
-        items:
-        - name: 按示例合并列
-          href: ../desktop-workbench/data-prep-combine-columns-by-example.md
-        - name: 按示例派生列
-          href: ../desktop-workbench/data-prep-derive-column-by-example.md
-        - name: 按示例拆分列
-          href: ../desktop-workbench/data-prep-split-column-by-example.md
-        - name: 展开 JSON
-          href: ../desktop-workbench/data-prep-expand-json.md
-    - name: 开发模型
-      items:
-      - name: 使用 CLI 对 Iris 进行分类
-        href: ../desktop-workbench/tutorial-iris-azure-cli.md
-      - name: 跟踪运行历史记录和模型指标
-        href: ../desktop-workbench/how-to-use-run-history-model-metrics.md
-      - name: 查找具有最高准确性的运行
-        href: ../desktop-workbench/how-to-find-best-accuracy-cli.md
-      - name: 读取和写入文件
-        href: ../desktop-workbench/how-to-read-write-files.md
-      - name: 使用 MMLSpark 库
-        href: ../desktop-workbench/how-to-use-mmlspark.md
-    - name: 部署和使用模型
-      items:
-      - name: 设置模型管理
-        href: ../desktop-workbench/deployment-setup-configuration.md
-      - name: 缩放群集和服务
-        href: ../desktop-workbench/how-to-scale-clusters.md
-      - name: 在 MLC 群集上启用 SSL
-        href: ../desktop-workbench/how-to-setup-ssl-on-mlc.md
-      - name: 部署 Web 服务
-        href: ../desktop-workbench/model-management-service-deploy.md
-      - name: 自定义容器
-        href: ../desktop-workbench/model-management-custom-container.md
-      - name: 部署到 IoT Edge 设备
-        href: ../desktop-workbench/deploy-to-iot-edge-device.md
-      - name: 使用 Web 服务
-        href: ../desktop-workbench/model-management-consumption.md
-      - name: 收集模型数据
-        href: ../desktop-workbench/how-to-use-model-data-collection.md
-      - name: 部署故障排除指南
-        href: ../desktop-workbench/how-to-deploy-troubleshooting-guide.md
-    - name: 旧示例
-      items:
-      - name: 文档集合分析
-        href: ../desktop-workbench/scenario-document-collection-analysis.md
-      - name: 问答匹配
-        href: ../desktop-workbench/scenario-qna-matching.md
-      - name: 预见性维护
-        href: ../desktop-workbench/scenario-predictive-maintenance.md
-      - name: 航拍图像分类
-        href: ../desktop-workbench/scenario-aerial-image-classification.md
-      - name: 基于 TB 量级的数据执行服务器工作负荷预测
-        href: ../desktop-workbench/scenario-big-data.md
-      - name: 能量需求时序预测
-        href: ../desktop-workbench/scenario-time-series-forecasting.md
-      - name: 超参数的分布式优化
-        href: ../desktop-workbench/scenario-distributed-tuning-of-hyperparameters.md
-      - name: 客户流失预测
-        href: ../desktop-workbench/scenario-churn-prediction.md
-      - name: 使用深度学习进行情绪分析
-        href: ../desktop-workbench/scenario-sentiment-analysis-deep-learning.md
-      - name: 生物医学实体识别 - TDSP 项目
-        href: ../desktop-workbench/scenario-tdsp-biomedical-recognition.md
-      - name: 美国收入分类 - TDSP 项目
-        href: ../desktop-workbench/scenario-tdsp-classifying-us-incomes.md
-      - name: 使用 CNTK 进行的图像分类
-        href: ../desktop-workbench/scenario-image-classification-using-cntk.md
-      - name: 深度学习预测性维护
-        href: ../desktop-workbench/scenario-deep-learning-for-predictive-maintenance.md
-    - name: 旧参考
-      items:
-      - name: 用于数据准备的 Python 扩展
-        href: ../desktop-workbench/data-prep-python-extensibility-overview.md
-      - name: 支持的数据源
-        href: ../desktop-workbench/data-prep-appendix2-supported-data-sources.md
-      - name: 将 Azure Cosmos DB 加载为数据源
-        href: ../desktop-workbench/data-prep-load-azure-cosmos-db.md
-      - name: 支持的检查器
-        href: ../desktop-workbench/data-prep-appendix4-supported-inspectors.md
-      - name: 支持的数据目标
-        href: ../desktop-workbench/data-prep-appendix5-supported-destinations.md
-      - name: 支持的执行和数据环境组合
-        href: ../desktop-workbench/data-prep-supported-runtime-data-environments.md
-      - name: Python 中的筛选表达式示例
-        href: ../desktop-workbench/data-prep-appendix6-sample-filter-expressions-python.md
-      - name: 以 Python 编写的自定义数据流转换示例
-        href: ../desktop-workbench/data-prep-appendix7-sample-transform-data-flow-python.md
-      - name: Python 中的源连接示例
-        href: ../desktop-workbench/data-prep-appendix8-sample-source-connections-python.md
-      - name: Python 中的目标连接示例
-        href: ../desktop-workbench/data-prep-appendix9-sample-destination-connections-python.md
-      - name: Python 中的列转换示例
-        href: ../desktop-workbench/data-prep-appendix10-sample-custom-column-transforms-python.md
-      - name: 数据准备执行 API
-        href: ../desktop-workbench/data-prep-python-execution-api.md
-      - name: 试验服务配置
-        href: ../desktop-workbench/experimentation-service-configuration-reference.md
-      - name: 日志记录 API
-        href: ../desktop-workbench/reference-logging-api.md
-      - name: 试验服务模板
-        href: ../desktop-workbench/experimentation-service-template.md
-      - name: 模型管理 API
-        href: ../desktop-workbench/model-management-api-reference.md
-      - name: 模型管理 CLI
-        href: ../desktop-workbench/model-management-cli-reference.md
-      - name: 模型数据集合 API
-        href: ../desktop-workbench/model-data-collection-api-reference.md
-    - name: 域包
-      href: ../desktop-workbench/reference-python-package-overview.md
-      items:
-      - name: 计算机视觉包已弃用
-        items:
-        - name: 包安装
-          href: https://docs.microsoft.com/python/api/overview/azure-machine-learning/computer-vision
-        - name: 建模和部署
-          items:
-          - name: 图像分类
-            href: ../desktop-workbench/how-to-build-deploy-image-classification-models.md
-          - name: 对象检测
-            href: ../desktop-workbench/how-to-build-deploy-object-detection-models.md
-          - name: 图像相似性
-            href: ../desktop-workbench/how-to-build-deploy-image-similarity-models.md
-          - name: 提高模型准确性
-            href: ../desktop-workbench/how-to-improve-accuracy-for-computer-vision-models.md
-      - name: 预测包已弃用
-        items:
-        - name: 概述和安装
-          href: https://docs.microsoft.com/python/api/overview/azure-machine-learning/forecasting-overview
-        - name: 生成和部署预测模型
-          href: ../desktop-workbench/how-to-build-deploy-forecast-models.md
-      - name: FPGA 加速包
-        href: reference-fpga-package-overview.md
-      - name: 文本分析包
-        items:
-        - name: “概述和安装”已弃用
-          href: https://docs.microsoft.com/python/api/overview/azure-machine-learning/textanalytics
-        - name: 生成和部署文本分类模型
-          href: ../desktop-workbench/how-to-build-deploy-text-classification-models.md
-    - name: 常见问题解答
-      href: ../desktop-workbench/frequently-asked-questions.md
-    - name: 旧问题
-      href: ../desktop-workbench/known-issues-and-troubleshooting-guide.md
-ms.openlocfilehash: 4af9d970fe07370200d9c6472366ea3dab16a76c
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+  - name: 比较 Microsoft 的 ML 产品
+    href: overview-more-machine-learning.md
+ms.openlocfilehash: eb989777a0cf7fac41db64d05fa71a24efd34b5c
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54079215"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54158953"

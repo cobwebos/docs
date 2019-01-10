@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.custom: it-pro, seodec18
-ms.openlocfilehash: 61cefe762b639dcc58c2e10fc845dd9729cb2cb2
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 4fcb692d7189c84e32f55995538ffc692cb67dd6
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53078222"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54064706"
 ---
 # <a name="azure-active-directory-premium-p2-licensing-feature-checklist"></a>Azure Active Directory Premium P2 许可功能清单
 
@@ -84,7 +84,7 @@ ms.locfileid: "53078222"
 - 全面管理用户生命周期
    - Azure AD 具有管理标识生命周期的方法
    - 从员工帐户生命周期中删除手动步骤，以防止未经授权的访问：
-      - 将真实来源（HR 系统）中的标识同步到 Azure AD。 （它链接到支持的 HR 系统）
+      - 将真实来源（HR 系统）中的标识同步到 Azure AD。
       - [使用动态组根据来自 HR（或真实来源）的属性（例如部门、职位、区域和其他属性）自动向组分配用户。](../users-groups-roles/groups-dynamic-membership.md)
       - [使用预配为自动预配 SaaS 应用程序的用户的基于组的访问管理。](../manage-apps/what-is-access-management.md)
 

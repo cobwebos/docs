@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 12/19/2018
 ms.author: magoedte
-ms.openlocfilehash: 581d5ddc0930a84bad4dd74a0e8dbcc3787f1a16
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.openlocfilehash: a791ac5424a0c0e70ba5480e51f5e21fe3c061ea
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53652058"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54104737"
 ---
 # <a name="log-analytics-data-security"></a>Log Analytics 数据安全
 本文档旨在提供特定于 Azure Log Analytics 的信息（Azure Monitor 的功能），用于补充有关 [Azure 信任中心](../../security/security-microsoft-trust-center.md)的信息。  
@@ -124,8 +124,8 @@ Microsoft 会向 Microsoft 董事会呈报有关所有信息安全计划的年�
 ## <a name="certifications-and-attestations"></a>认证和证明
 Azure Log Analytics 满足以下要求：
 
-* [ISO/IEC 27001](http://www.iso.org/iso/home/standards/management-standards/iso27001.htm)
-* [ISO/IEC 27018:2014](http://www.iso.org/iso/home/store/catalogue_tc/catalogue_detail.htm?csnumber=61498)
+* [ISO/IEC 27001](https://www.iso.org/iso/home/standards/management-standards/iso27001.htm)
+* [ISO/IEC 27018:2014](https://www.iso.org/iso/home/store/catalogue_tc/catalogue_detail.htm?csnumber=61498)
 * [ISO 22301](https://azure.microsoft.com/blog/iso22301/)
 * PCI 安全标准委员会制定的[支付卡行业（PCI 标准）数据安全标准 (PCI DSS)](https://www.microsoft.com/en-us/TrustCenter/Compliance/PCI)。
 * [服务组织控制 (SOC) 1 类型 1 和 SOC 2 类型 1](https://www.microsoft.com/en-us/TrustCenter/Compliance/SOC1-and-2) 标准

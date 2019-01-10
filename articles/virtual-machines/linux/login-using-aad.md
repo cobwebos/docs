@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/17/2018
 ms.author: cynthn
-ms.openlocfilehash: e75758c5a4171adc7af56581026a727db2ef4740
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: bc556991cc304aa8c5edc04dba1d333dc77ad230
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52850969"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54073401"
 ---
 # <a name="log-in-to-a-linux-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>使用 Azure Active Directory 身份验证（预览版）登录到 Azure 中的 Linux 虚拟机
 
@@ -150,7 +150,7 @@ To sign in, use a web browser to open the page https://microsoft.com/devicelogin
 
 ## <a name="sudo-and-aad-login"></a>Sudo 和 AAD 登录名
 
-第一次运行 sudo 时，系统会要求你进行第二次身份验证。 如果不想再次进行身份验证就运行 sudo，则可以编辑 sudoers文件 `/aad/etc/sudoers.d/aad_admins` 并将此行：
+第一次运行 sudo 时，系统会要求你进行第二次身份验证。 如果不想再次进行身份验证就运行 sudo，则可以编辑 sudoers文件 `/etc/sudoers.d/aad_admins` 并将此行：
 
 ```bash
 %aad_admins ALL=(ALL) ALL

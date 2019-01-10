@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: 030ec9db16f90430a544ca8715a4e1dea02e2c62
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 71f024c81983fcb9c3e99bdf633a5bde306452b8
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52873234"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54051231"
 ---
 # <a name="elastic-database-client-library-with-entity-framework"></a>将弹性数据库客户端库与实体框架配合使用
 此文档介绍与[弹性数据库工具](sql-database-elastic-scale-introduction.md)集成所需的实体框架应用程序中的更改。 重点是使用 Entity Framework **Code First** 方法撰写[分片映射管理](sql-database-elastic-scale-shard-map-management.md)和[数据相关路由](sql-database-elastic-scale-data-dependent-routing.md)。 EF 的 [Code First – 新数据库](https://msdn.microsoft.com/data/jj193542.aspx)教程在本文档中充当运行示例。 本文档附带的示例代码是 Visual Studio 代码示例中弹性数据库工具示例的一部分。
@@ -236,13 +236,13 @@ Microsoft 模式和实践团队已发布[暂时性故障处理应用程序块](h
         } 
 
         // Only static methods are allowed in calls into base class c'tors 
-        private static string SetInitializerForConnection(string connnectionString) 
+        private static string SetInitializerForConnection(string connectionString) 
         { 
             // You want existence checks so that the schema can get deployed 
             Database.SetInitializer<ElasticScaleContext<T>>( 
         new CreateDatabaseIfNotExists<ElasticScaleContext<T>>()); 
 
-            return connnectionString; 
+            return connectionString; 
         } 
 
 有人可能使用了从基类继承的构造函数版本。 但是该代码需要确保在连接时使用 EF 的默认初始化程序。 因此在调用带有连接字符串的基类构造函数前，需短暂绕行到静态方法。 请注意，分片的注册应该在不同的应用域或进程中运行，以确保 EF 的初始化程序设置不冲突。 

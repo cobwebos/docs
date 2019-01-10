@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 08/20/2018
 ms.author: mbullwin
-ms.openlocfilehash: c93b23e3b06afe754ea1ca2472806d26c70f4c92
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: c2374bd0d67115bdc9fef2b6937f7b087bc581de
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53973258"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54076767"
 ---
 # <a name="export-telemetry-from-application-insights"></a>从 Application Insights 导出遥测数据
 想要将遥测数据保留超过标准保留期限？ 或者要以某种专业方式处理这些数据？ 连续导出很适合此目的。 可以使用 JSON 格式将 Application Insights 门户中显示的事件导出到 Microsoft Azure 中的存储。 可以从该存储中下载这些数据，并编写所需的代码来处理这些数据。  
@@ -27,7 +27,7 @@ ms.locfileid: "53973258"
 * 通过指标或搜索边栏选项卡顶部的“导出”按钮，可将表格和图表发送到 Excel 电子表格。
 
 * [Analytics](../../azure-monitor/app/analytics.md) 提供功能强大的遥测查询语言。 它还可以导出结果。
-* 如果想要[在 Power BI 中浏览数据](../../application-insights/app-insights-export-power-bi.md)，无需使用连续导出也可以做到。
+* 如果想要[在 Power BI 中浏览数据](../../azure-monitor/app/export-power-bi.md )，无需使用连续导出也可以做到。
 * 使用[数据访问 REST API](https://dev.applicationinsights.io/) 能够以编程方式访问遥测数据。
 * 也可以访问[通过 Powershell 设置连续导出](https://docs.microsoft.com/powershell/module/azurerm.applicationinsights/new-azurermapplicationinsightscontinuousexport?view=azurermps-5.7.0)。
 
@@ -71,14 +71,14 @@ ms.locfileid: "53973258"
 ## <a name="analyze"></a> 获取哪些事件？
 导出的数据是从应用程序接收的原始遥测数据，只不过我们添加了从客户端 IP 地址计算的位置数据。
 
-被[采样](../../application-insights/app-insights-sampling.md)丢弃的数据不会包含在导出的数据中。
+被[采样](../../azure-monitor/app/sampling.md)丢弃的数据不会包含在导出的数据中。
 
 不包含其他计算的指标。 例如，不会导出平均 CPU 使用率，但会导出用来计算平均值的原始遥测数据。
 
 该数据还包含已设置的任何[可用性 Web 测试](../../azure-monitor/app/monitor-web-app-availability.md)的结果。
 
 > [!NOTE]
-> **采样。** 如果应用程序发送大量数据，采样功能可能会运行，并只发送一小部分生成的遥测数据。 [了解有关采样的详细信息。](../../application-insights/app-insights-sampling.md)
+> **采样。** 如果应用程序发送大量数据，采样功能可能会运行，并只发送一小部分生成的遥测数据。 [了解有关采样的详细信息。](../../azure-monitor/app/sampling.md)
 >
 >
 
@@ -194,4 +194,4 @@ ms.locfileid: "53973258"
 <!--Link references-->
 
 [exportasa]: ../../azure-monitor/app/code-sample-export-sql-stream-analytics.md
-[roles]: ../../application-insights/app-insights-resources-roles-access-control.md
+[roles]: ../../azure-monitor/app/resources-roles-access-control.md

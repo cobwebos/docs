@@ -9,16 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 463e358816d665bd0ecc0ca8853b7feb5a18f3e6
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: fe9153958fa46f4be6aaa346713c002905316902
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53077777"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54024682"
 ---
 # <a name="copy-data-from-greenplum-using-azure-data-factory"></a>使用 Azure 数据工厂从 Greenplum 复制数据 
 

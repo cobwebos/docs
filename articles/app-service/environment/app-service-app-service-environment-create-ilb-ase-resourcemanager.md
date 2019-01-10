@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: stefsch
 ms.custom: seodec18
-ms.openlocfilehash: d9d94a7ece4b3758792cc0df8e013d14ac40c027
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 34278e02c62bda18a4b4d2f404417e8844dd5fc4
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53276346"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54156674"
 ---
 # <a name="how-to-create-an-ilb-ase-using-azure-resource-manager-templates"></a>如何使用 Azure 资源管理器模板创建 ILB ASE
 
@@ -42,7 +42,7 @@ GitHub（[此处][quickstartilbasecreate]）上提供了 Azure 资源管理器�
 
 *azuredeploy.parameters.json* 文件中的大部分参数通用于创建 ILB ASE 以及绑定到公用 VIP 的 ASE。  创建 ILB ASE 时，以下列表会调出特殊注释的参数或唯一的参数：
 
-* *interalLoadBalancingMode*：大多数情况下，请将此属性设置为 3，这表示端口 80/443 上的 HTTP/HTTPS 流量以及 ASE 上的 FTP 服务所侦听的控制/数据通道端口将绑定到 ILB 分配的虚拟网络内部地址。  如果此属性改设为 2，则只有与 FTP 服务相关的端口（控制和数据通道）会绑定到 ILB 地址，而 HTTP/HTTPS 流量将保留在公用 VIP 上。
+* internalLoadBalancingMode：大多数情况下，请将此属性设置为 3，这表示端口 80/443 上的 HTTP/HTTPS 流量以及 ASE 上的 FTP 服务所侦听的控制/数据通道端口将绑定到 ILB 分配的虚拟网络内部地址。  如果此属性改设为 2，则只有与 FTP 服务相关的端口（控制和数据通道）会绑定到 ILB 地址，而 HTTP/HTTPS 流量将保留在公用 VIP 上。
 * *dnsSuffix*：此参数定义要分配给 ASE 的默认根域。  在 Azure 应用服务的公共变体中，所有 Web 应用的默认根域均为 *azurewebsites.net*。  不过，ILB ASE 位于客户虚拟网络的内部，因此不适合使用公共服务的默认根域，  而应当具有适合在公司的内部虚拟网络中使用的默认根域。  例如，假定的 Contoso Corporation 可能会将 *internal-contoso.com* 的默认根域用于只能在 Contoso 虚拟网络内解析和访问的应用。 
 * *ipSslAddressCount*：在 *azuredeploy.json* 文件中，此参数的值自动默认为 0，因为 ILB ASE 只有一个 ILB 地址。  ILB ASE 没有显式 IP-SSL 地址，因此 ILB ASE 的 IP-SSL 地址池必须设置为零，否则会发生预配错误。 
 
@@ -86,10 +86,10 @@ GitHub（[此处][quickstartilbasecreate]）上提供了 Azure 资源管理器�
 *azuredeploy.parameters.json* 文件中的参数如下所列：
 
 * *appServiceEnvironmentName*：要配置的 ILB ASE 的名称。
-* *existingAseLocation*：包含 ILB ASE 部署所在的 Azure 区域的文本字符串。  例如：“South Central US”。
+* existingAseLocation：包含 ILB ASE 部署所在的 Azure 区域的文本字符串。  例如：“South Central US”。
 * *pfxBlobString*：.pfx 文件的 based64 编码字符串表示形式。  使用前面所示的代码片段，复制并粘贴“exportedcert.pfx.b64”中包含的字符串，作为 *pfxBlobString* 属性的值。
 * *password*：用于保护 .pfx 文件的密码。
-* *certificateThumbprint*：证书的指纹。  如果从 Powershell 检索到此值（例如先前代码片段中的 *$certificate.Thumbprint*），可以按原样使用此值。  不过，如果从 Windows 证书对话框复制此值，请记得去除多余的空格。  *certificateThumbprint* 应如下所示：AF3143EB61D43F6727842115BB7F17BBCECAECAE
+* certificateThumbprint：证书的指纹。  如果从 Powershell 检索到此值（例如先前代码片段中的 *$certificate.Thumbprint*），可以按原样使用此值。  不过，如果从 Windows 证书对话框复制此值，请记得去除多余的空格。  *certificateThumbprint* 应如下所示：AF3143EB61D43F6727842115BB7F17BBCECAECAE
 * *certificateName*：用户自己选择的易记字符串标识符，用于标识证书。  此名称用作 *Microsoft.Web/certificates* 实体（表示 SSL 证书）的 Azure 资源管理器唯一标识符的一部分。  名称**必须**以下述后缀结尾：\_yourASENameHere_InternalLoadBalancingASE。  此后缀由门户使用，表示证书用于维护启用 ILB 的 ASE 的安全。
 
 *azuredeploy.parameters.json* 的缩写示例如下所示：

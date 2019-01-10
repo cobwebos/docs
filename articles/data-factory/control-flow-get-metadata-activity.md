@@ -10,16 +10,15 @@ ms.assetid: 1c46ed69-4049-44ec-9b46-e90e964a4a8e
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/19/2018
 ms.author: shlo
-ms.openlocfilehash: f61399a3a6cb5c67343e28e4364d8d796ffbc066
-ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
+ms.openlocfilehash: e733b82e1b5870d98de5d65771bd621d9bffdf44
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49457014"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54024881"
 ---
 # <a name="get-metadata-activity-in-azure-data-factory"></a>Azure 数据工厂中的获取元数据活动
 GetMetadata 活动可用于检索 Azure 数据工厂中的任何数据的**元数据**。 此活动可用于以下方案：

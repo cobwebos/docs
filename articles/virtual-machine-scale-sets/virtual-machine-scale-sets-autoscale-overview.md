@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 05/29/2018
 ms.author: zarhoads
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 18be454c93c32e0902a55a08748045c26d649ce7
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: a5386e56bffd9a9789fe431aae8ed13df8ffae13
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53322033"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54117429"
 ---
 # <a name="overview-of-autoscale-with-azure-virtual-machine-scale-sets"></a>Azure 虚拟机规模集自动缩放概述
 Azure 虚拟机规模集可以自动增加或减少运行应用程序的 VM 实例数。 这种自动且弹性的行为可以减少监视和优化应用程序性能所需的管理开销。 创建规则，用于定义提供正面客户体验而可接受的性能。 如果满足定义的这些阈值，自动缩放规则会采取措施来调整规模集的容量。 还可以计划事件，以便在固定的时间自动增加或减少规模集的容量。 本文概述所提供的性能指标，以及自动缩放可以执行的操作。
@@ -122,7 +122,7 @@ Azure 诊断扩展是在 VM 实例中运行的代理。 该代理可监视性能
 ## <a name="application-level-metrics-with-app-insights"></a>App Insights 中的应用程序级指标
 若要更深入地洞察应用程序的性能，可以使用 Application Insights。 在应用程序中安装一个小型检测包，用于监视应用并将遥测数据发送到 Azure。 可以监视应用程序响应时间、页面加载性能和会话计数等指标。 基于可能对客户体验造成影响的、可采取行动的见解触发规则时，可以使用这些应用程序指标创建粒度级的嵌入式自动缩放规则。
 
-有关 App Insights 的详细信息，请参阅[什么是 Application Insights](../application-insights/app-insights-overview.md)。
+有关 App Insights 的详细信息，请参阅[什么是 Application Insights](../azure-monitor/app/app-insights-overview.md)。
 
 
 ## <a name="scheduled-autoscale"></a>计划的自动缩放

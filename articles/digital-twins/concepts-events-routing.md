@@ -8,12 +8,12 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 12/14/2018
 ms.author: alinast
-ms.openlocfilehash: e16d27314a159b124e35560ffb8cd9685fc5c7a0
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: b7ace0718ea0fad0b746a40c90acff487ae314d5
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53438007"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54035689"
 ---
 # <a name="routing-events-and-messages"></a>路由事件和消息
 
@@ -65,6 +65,7 @@ Azure 数字孪生当前支持以下将发送到所选终结点的 EventTypes：
 ## <a name="next-steps"></a>后续步骤
 
 - 若要了解 Azure 数字孪生预览版的限制，请参阅[公共预览版服务的限制](concepts-service-limits.md)。
+
 - 若要尝试 Azure 数字孪生示例，请参阅[查找可用房间的快速入门](quickstart-view-occupancy-dotnet.md)。
 
 <!-- Images -->

@@ -9,17 +9,16 @@ ms.assetid: 6f1523c7-46c3-4b8d-9ed6-b847ae5ec4ae
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: a940b1d2184961d907f72ad072270dad3571e844
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 8ff100cd3fc1c9def10b4e585119414281b90d92
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51229247"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54017372"
 ---
 # <a name="use-case---product-recommendations"></a>使用案例 - 产品建议
 Azure 数据工厂是用于实现解决方案加速器的 Cortana Intelligence 套件的许多服务之一。  有关此套件的详细信息，请参阅 [Cortana Intelligence 套件](https://www.microsoft.com/cortanaanalytics) 页面。 在本文档中，我们介绍了 Azure 用户通过使用 Azure 数据工厂和其他 Cortana Intelligence 组件服务已解决和实现的常见用例。

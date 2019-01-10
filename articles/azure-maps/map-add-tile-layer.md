@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 57cde41bf65c370f86ebc57a39e917b95721ca81
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.openlocfilehash: a9decacc3b22676d94726e3cf979198b3486d270
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52892818"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54104635"
 ---
 # <a name="add-a-tile-layer-to-a-map"></a>将图块层添加到地图
 
@@ -24,7 +24,7 @@ ms.locfileid: "52892818"
 
 * X、Y、缩放表示法 - 基于缩放级别，x 是列，y 是图块网格中图块的行位置。
 * Quadkey 表示法 - 将 x、y、缩放信息合并到单个字符串值（即图块的唯一标识符）中。
-* 边界框 - 边界框坐标可用于指定格式为 `{west},{south},{east},{north}` 的图像，这通常由 [Web 地图定位服务 (WMS)](http://www.opengeospatial.org/standards/wms) 使用。
+* 边界框 - 边界框坐标可用于指定格式为 `{west},{south},{east},{north}` 的图像，这通常由 [Web 地图定位服务 (WMS)](https://www.opengeospatial.org/standards/wms) 使用。
 
 > [!TIP]
 > [TileLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.tilelayer?view=azure-iot-typescript-latest) 是直观显示地图上的大型数据集的好办法。 不仅可以从图像中生成图块层，而且还可以将矢量数据呈现为图块层。 通过将矢量数据呈现为图块层，地图控件只需加载文件大小远小于它们所代表的矢量数据的图块。 此方法可供需要呈现地图上的数百万行数据的用户使用。
@@ -40,7 +40,7 @@ ms.locfileid: "52892818"
 
 ## <a name="add-a-tile-layer"></a>添加图块层
 
- 此示例演示如何创建指向一组使用 x、y、缩放图块系统的图块的图块层。 此图块层源自[爱荷华州立大学的 Iowa Environmental Mesonet](http://mesonet.agron.iastate.edu/ogc/) 的气象雷达图覆盖。
+ 此示例演示如何创建指向一组使用 x、y、缩放图块系统的图块的图块层。 此图块层源自[爱荷华州立大学的 Iowa Environmental Mesonet](https://mesonet.agron.iastate.edu/ogc/) 的气象雷达图覆盖。
 
 <br/>
 

@@ -1,18 +1,17 @@
 ---
 title: Azure Cosmos DB NoSQL 迁移和应用程序开发合作伙伴
 description: 列出提供支持 Azure Cosmos DB 的迁移解决方案的 Microsoft 合作伙伴。
-services: cosmos-db
 author: SnehaGunda
 ms.author: sngun
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/07/2018
-ms.openlocfilehash: c241232de33d4371456a374f8bc511211b3e9449
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 25d2b9fac65525c56912e5daa7e5bcb4aa2cd5f4
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53082396"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54035995"
 ---
 # <a name="azure-cosmos-db-nosql-migration-and-application-development-partners"></a>Azure Cosmos DB NoSQL 迁移和应用程序开发合作伙伴
 

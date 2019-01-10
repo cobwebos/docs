@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 05/15/2017
 ms.author: robb
 ms.component: diagnostic-extension
-ms.openlocfilehash: 333fec5b9459979d7735f0dd292d7367d86353fe
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: 7c5bfa96e7f9ef7812b8487c479b34d926633287
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53325270"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54105910"
 ---
 # <a name="azure-diagnostics-10-configuration-schema"></a>Azure 诊断 1.0 配置架构
 > [!NOTE]
@@ -25,7 +25,7 @@ Azure 诊断可以与其他 Microsoft 诊断产品（例如 Azure Monitor、Appl
 
 Azure 诊断配置文件定义用于初始化诊断监视器的值。 此文件用于在诊断监视器启动时初始化诊断配置设置。  
 
- 默认情况下，Azure 诊断配置架构文件将安装到 `C:\Program Files\Microsoft SDKs\Azure\.NET SDK\<version>\schemas` 目录。 将 `<version>` 替换为 [Azure SDK](http://www.windowsazure.com/develop/downloads/) 的已安装版本。  
+ 默认情况下，Azure 诊断配置架构文件将安装到 `C:\Program Files\Microsoft SDKs\Azure\.NET SDK\<version>\schemas` 目录。 将 `<version>` 替换为 [Azure SDK](https://www.windowsazure.com/develop/downloads/) 的已安装版本。  
 
 > [!NOTE]
 >  诊断配置文件通常用于启动任务，此类任务需要在启动进程之前收集诊断数据。 有关使用 Azure 诊断的详细信息，请参阅[使用 Azure 诊断收集日志记录数据](assetId:///83a91c23-5ca2-4fc9-8df3-62036c37a3d7)。  

@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.date: 12/04/2018
 ms.reviewer: sdash
 ms.author: mbullwin
-ms.openlocfilehash: d261fe78bc6902558e2714d9fe4e66d991a7bd09
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 403906a60d16a478dffd313b45aa1ce24e42196a
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54004313"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54119207"
 ---
 # <a name="live-metrics-stream-monitor--diagnose-with-1-second-latency"></a>实时指标流：以 1 秒的延迟进行监视和诊断
 
-通过使用 [Application Insights](../../application-insights/app-insights-overview.md) 中的实时指标流探测实时和生产时的 Web 应用程序的信号。 选择并筛选指标和性能计数器进行实时监视，且服务不会受到任何干扰。 从失败请求和异常的样本中检查堆栈跟踪。 实时指标流与[探查器](../../application-insights/app-insights-profiler.md)、[快照调试器](../../application-insights/app-insights-snapshot-debugger.md)和[性能测试](../../azure-monitor/app/monitor-web-app-availability.md#performance-tests)一同为实时网站提供了功能强大且非入侵性的诊断工具。
+通过使用 [Application Insights](../../azure-monitor/app/app-insights-overview.md) 中的实时指标流探测实时和生产时的 Web 应用程序的信号。 选择并筛选指标和性能计数器进行实时监视，且服务不会受到任何干扰。 从失败请求和异常的样本中检查堆栈跟踪。 实时指标流与[探查器](../../azure-monitor/app/profiler.md)、[快照调试器](../../azure-monitor/app/snapshot-debugger.md)和[性能测试](../../azure-monitor/app/monitor-web-app-availability.md#performance-tests)一同为实时网站提供了功能强大且非入侵性的诊断工具。
 
 使用实时指标流可实现以下操作：
 
@@ -38,7 +38,7 @@ ms.locfileid: "54004313"
 
 ## <a name="get-started"></a>入门
 
-1. 如果尚未在 ASP.NET Web 应用或 [Windows Server 应用](../../application-insights/app-insights-windows-services.md)中[安装 Application Insights](../../azure-monitor/app/asp-net.md)，请立即进行安装。 
+1. 如果尚未在 ASP.NET Web 应用或 [Windows Server 应用](../../azure-monitor/app/windows-services.md)中[安装 Application Insights](../../azure-monitor/app/asp-net.md)，请立即进行安装。 
 2. 更新到最新版本的 Application Insights 包。 在 Visual Studio 中右键单击项目，然后选择“管理 NuGet 包”。 打开“更新”选项卡，选中“包括预先发行版”，然后选择所有的 Microsoft.ApplicationInsights.* 包。
 
     重新部署应用。
@@ -202,7 +202,7 @@ services.ConfigureTelemetryModule<QuickPulseTelemetryModule> ((module, o) => mod
 
 
 ## <a name="next-steps"></a>后续步骤
-* [使用 Application Insights 监视使用情况](../../application-insights/app-insights-usage-overview.md)
+* [使用 Application Insights 监视使用情况](../../azure-monitor/app/usage-overview.md)
 * [使用诊断搜索](../../azure-monitor/app/diagnostic-search.md)
-* [探查器](../../application-insights/app-insights-profiler.md)
-* [快照调试器](../../application-insights/app-insights-snapshot-debugger.md)
+* [探查器](../../azure-monitor/app/profiler.md)
+* [快照调试器](../../azure-monitor/app/snapshot-debugger.md)

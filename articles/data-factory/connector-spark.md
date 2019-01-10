@@ -9,16 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 39b5a7a99f56c33aee0b0db9211f4f45a058f418
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 370da046e5a964d91b668ea80730b8d331065d29
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53094332"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54019956"
 ---
 # <a name="copy-data-from-spark-using-azure-data-factory"></a>使用 Azure 数据工厂从 Spark 复制数据 
 

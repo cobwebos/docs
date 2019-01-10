@@ -13,21 +13,21 @@ ms.topic: conceptual
 ms.date: 08/28/2018
 ms.reviewer: lmolkova
 ms.author: mbullwin
-ms.openlocfilehash: c3381ac2dcc3755bb0aedb5f36e398ebc5842959
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 5873907485633753eb471855e443d452e4118b26
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53797342"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54120744"
 ---
 # <a name="application-insights-for-net-console-applications"></a>适用于 .NET 控制台应用程序的 Application Insights
-使用 [Application Insights](../../application-insights/app-insights-overview.md) 可以监视 Web 应用程序的可用性、性能和使用情况。
+使用 [Application Insights](../../azure-monitor/app/app-insights-overview.md) 可以监视 Web 应用程序的可用性、性能和使用情况。
 
 需要 [Microsoft Azure](https://azure.com) 订阅。 使用 Microsoft 帐户登录，该帐户可能适用于 Windows、XBox Live 或其他 Microsoft 云服务。 团队可能拥有 Azure 组织订阅：要求所有者使用 Microsoft 帐户你将加入其中。
 
 ## <a name="getting-started"></a>入门
 
-* 在 [Azure 门户](https://portal.azure.com)中，[创建 Application Insights 资源](../../application-insights/app-insights-create-new-resource.md)。 对于应用程序类型，选择“常规”。
+* 在 [Azure 门户](https://portal.azure.com)中，[创建 Application Insights 资源](../../azure-monitor/app/create-new-resource.md )。 对于应用程序类型，选择“常规”。
 * 获取检测密钥的副本。 在创建的新资源的“概要”下拉列表中找到该密钥。 
 * 安装最新的 [Microsoft.ApplicationInsights](https://www.nuget.org/packages/Microsoft.ApplicationInsights) 包。
 * 在跟踪任何遥测之前，请先在代码中设置检测密钥（或设置 APPINSIGHTS_INSTRUMENTATIONKEY 环境变量）。 设置后，应能手动跟踪遥测并在 Azure 门户中查看
