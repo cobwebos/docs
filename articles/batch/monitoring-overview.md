@@ -11,12 +11,12 @@ ms.topic: article
 ms.workload: na
 ms.date: 04/05/2018
 ms.author: danlep
-ms.openlocfilehash: ee483c19aa59ca98226f77a5e56b1ee4eb4dede5
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: e80eaf8e2ab1cf001e06aac1b5f23c7714c9013b
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53543404"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54117005"
 ---
 # <a name="monitor-batch-solutions"></a>监视 Batch 解决方案
 
@@ -55,7 +55,7 @@ Azure 和 Batch 服务提供了一系列服务、工具和 API 来监视 Batch �
 
 ## <a name="vm-performance-counters-and-application-monitoring"></a>VM 性能计数器和应用程序监视
 
-* [Application Insights](../application-insights/app-insights-overview.md) 是一项 Azure 服务，可以用来以编程方式监视 Batch 作业和任务的可用性、性能和使用情况。 轻松从计算节点 (VM) 获取性能计数器，并从 VM 获取任务的自定义信息。 
+* [Application Insights](../azure-monitor/app/app-insights-overview.md) 是一项 Azure 服务，可以用来以编程方式监视 Batch 作业和任务的可用性、性能和使用情况。 轻松从计算节点 (VM) 获取性能计数器，并从 VM 获取任务的自定义信息。 
 
   有关示例，请参阅[使用 Application Insights 监视和调试 Batch .NET 应用程序](monitor-application-insights.md)以及附随的[代码示例](https://github.com/Azure/azure-batch-samples/tree/master/CSharp/ArticleProjects/ApplicationInsights)。
 

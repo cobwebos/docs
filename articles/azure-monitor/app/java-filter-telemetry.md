@@ -11,12 +11,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 11/23/2016
 ms.author: mbullwin
-ms.openlocfilehash: 81bfd5e0354fefea4690e6871dd5e846f41dc6d8
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 6bd8d0cee01853547efd028feef0a97f9398024e
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53981550"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54015516"
 ---
 # <a name="filter-telemetry-in-your-java-web-app"></a>在 Java Web 应用中筛选遥测
 
@@ -31,7 +31,7 @@ ms.locfileid: "53981550"
 
 > [!NOTE]
 > 筛选器会使应用的指标产生偏差。 例如，为了诊断缓慢响应，你可能会决定设置一个排除快速响应时间的筛选器。 但必须注意，Application Insights 报告的平均响应时间会慢于实际速度，且请求数会小于实际数目。
-> 如果这是一个问题，请改用[采样](../../application-insights/app-insights-sampling.md)。
+> 如果这是一个问题，请改用[采样](../../azure-monitor/app/sampling.md)。
 
 ## <a name="setting-filters"></a>设置筛选器
 
@@ -262,4 +262,4 @@ ms.locfileid: "53981550"
 
 ## <a name="next-steps"></a>后续步骤
 
-* [采样](../../application-insights/app-insights-sampling.md) - 请考虑将采样作为替代方法，该方法不会使指标出现偏差。
+* [采样](../../azure-monitor/app/sampling.md) - 请考虑将采样作为替代方法，该方法不会使指标出现偏差。

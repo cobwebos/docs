@@ -5,15 +5,15 @@ services: data-factory
 author: linda33wj
 ms.service: data-factory
 ms.topic: include
-ms.date: 12/12/2018
+ms.date: 1/8/2019
 ms.author: jingwang
 ms.custom: include file
-ms.openlocfilehash: 856d702bcf1f566d0cc455cdd2676e6c2e23d179
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 203168f27e06d58c192bc5009db077461738011a
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53326584"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54122779"
 ---
 数据工厂是一项多租户服务，具有以下默认限制，目的是确保客户订阅不受彼此工作负荷的影响。 订阅的许多限制只需联系支持部门即可提高，最多可提高到最大限制。
 
@@ -23,7 +23,7 @@ ms.locfileid: "53326584"
 | -------- | ------------- | ------------- |
 | Azure 订阅中的数据工厂 | 50 | [联系支持人员](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
 | 数据工厂中的实体（管道、数据集、触发器、链接服务以及集成运行时）总数 | 5000 | [联系支持人员](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
-| 一个订阅中 Azure-SSIS 集成运行时的总 CPU 内核数 | 128 | [联系支持人员](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
+| 一个订阅中 Azure-SSIS 集成运行时的总 CPU 内核数 | 256 | [联系支持人员](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
 | 每个数据工厂的并行管道运行数（在工厂中的所有管道之间共享） | 10,000  | [联系支持人员](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
 | 每个管道中的最大活动数（包括容器的内部活动） | 40 | 40 |
 | 每个管道的最大参数个数 | 50 | 50 |

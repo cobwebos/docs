@@ -12,16 +12,16 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 01/19/2018
 ms.author: mbullwin
-ms.openlocfilehash: f8ea270e5a41c094b29fb2dbb6df4bd325b66b32
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: f41d54f97861a4df7d50cb3b4f0f99970de354cc
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53999962"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54121492"
 ---
 # <a name="set-up-application-insights-for-your-aspnet-website"></a>为 ASP.NET 网站设置 Application Insights
 
-此过程将 ASP.NET Web 应用配置为将遥测发送到 [Azure Application Insights](../../application-insights/app-insights-overview.md) 服务。 它适用于托管在你自己的本地或云中 IIS 服务器上的 ASP.NET 应用。 你会获得图表和功能强大的查询语言，这有助于你了解应用的性能以及用户使用它的方式。另外，在出现故障或性能问题时还会自动发送警报。 许多开发人员发现这些功能很有用，不过你也可以根据需要扩展和自定义遥测。
+此过程将 ASP.NET Web 应用配置为将遥测发送到 [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) 服务。 它适用于托管在你自己的本地或云中 IIS 服务器上的 ASP.NET 应用。 你会获得图表和功能强大的查询语言，这有助于你了解应用的性能以及用户使用它的方式。另外，在出现故障或性能问题时还会自动发送警报。 许多开发人员发现这些功能很有用，不过你也可以根据需要扩展和自定义遥测。
 
 在 Visual Studio 中单击几下即可完成安装。 可以选择对遥测量进行限制，从而避免付费。 可以通过此功能对用户不多的站点进行试验和调试，或者对其进行监视。 如果认为需要前进一步，对生产站点进行监视，则可轻松地在以后提高该限制。
 
@@ -84,7 +84,7 @@ Visual Studio 中会显示已记录的事件数。
 > [!Tip]
 > 如果看不到任何数据，请确保时间范围正确，并单击“搜索”图标。
 
-[了解有关 Visual Studio 中的 Application Insights Tools 的详细信息](../../application-insights/app-insights-visual-studio.md)。
+[了解有关 Visual Studio 中的 Application Insights Tools 的详细信息](../../azure-monitor/app/visual-studio.md)。
 
 <a name="monitor"></a>
 ### <a name="see-telemetry-in-web-portal"></a>在 Wb 门户中查看遥测
@@ -106,10 +106,10 @@ Visual Studio 中会显示已记录的事件数。
 
 遥测数据会在 Application Insights 门户中累积，可在此监视指标、搜索遥测数据以及设置[仪表板](../../azure-monitor/app/app-insights-dashboards.md)。 还可以使用功能强大的 [Log Analytics 查询语言](https://aka.ms/LogAnalyticsLanguage)来分析使用情况和性能，或查找特定的事件。
 
-还可以继续在 [Visual Studio](../../application-insights/app-insights-visual-studio.md) 中借助诊断搜索和[趋势](../../application-insights/app-insights-visual-studio-trends.md)等工具来分析遥测。
+还可以继续在 [Visual Studio](../../azure-monitor/app/visual-studio.md) 中借助诊断搜索和[趋势](../../azure-monitor/app/visual-studio-trends.md)等工具来分析遥测。
 
 > [!NOTE]
-> 如果应用发送的遥测足够达到[限制](../../azure-monitor/app/pricing.md#limits-summary)，自动[采样](../../application-insights/app-insights-sampling.md)会打开。 采样可以减少从应用发送的遥测数量，同时为诊断保留相关数据。
+> 如果应用发送的遥测足够达到[限制](../../azure-monitor/app/pricing.md#limits-summary)，自动[采样](../../azure-monitor/app/sampling.md)会打开。 采样可以减少从应用发送的遥测数量，同时为诊断保留相关数据。
 >
 >
 
@@ -147,14 +147,14 @@ Visual Studio 中会显示已记录的事件数。
 
 ### <a name="analysis"></a>分析
 
-* **[在 Visual Studio 中使用 Application Insights](../../application-insights/app-insights-visual-studio.md)**<br/>包含有关使用遥测数据进行调试、诊断搜索和钻取代码的信息。
+* **[在 Visual Studio 中使用 Application Insights](../../azure-monitor/app/visual-studio.md)**<br/>包含有关使用遥测数据进行调试、诊断搜索和钻取代码的信息。
 * **[使用 Application Insights 门户](../../azure-monitor/app/app-insights-dashboards.md)**<br/> 包含有关仪表板、功能强大的诊断和分析工具、警报、应用程序的实时依赖项映射和遥测数据导出功能的信息。
 * **[分析](../../azure-monitor/log-query/get-started-portal.md)** - 功能强大的查询语言。
 
 ### <a name="alerts"></a>警报
 
 * [可用性测试](../../azure-monitor/app/monitor-web-app-availability.md)：创建测试来确保站点在 Web 上可见。
-* [智能诊断](../../application-insights/app-insights-proactive-diagnostics.md)：这些测试可自动运行，因此不需要进行任何设置。 它们会告诉你应用是否具有异常的失败请求速率。
+* [智能诊断](../../azure-monitor/app/proactive-diagnostics.md)：这些测试可自动运行，因此不需要进行任何设置。 它们会告诉你应用是否具有异常的失败请求速率。
 * [指标警报](../../azure-monitor/app/alerts.md)：设置这些警报可在某个指标超过阈值时发出警告。 可以在编码到应用中的自定义指标中设置它们。
 
 ### <a name="automation"></a>自动化

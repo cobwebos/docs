@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/08/2018
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: 00ad005fff54940dbec468e0fde105e936579378
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: 1fff32896ef794a26f223cae4ae491a2995d9acf
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53411226"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54191133"
 ---
 # <a name="working-with-javascript-language-integrated-query-api-with-azure-cosmos-db"></a>将 JavaScript 语言集成式查询 API 用于 Azure Cosmos DB
 
@@ -20,7 +20,7 @@ ms.locfileid: "53411226"
 
 ## <a name="supported-javascript-functions"></a>支持的 JavaScript 函数
 
-| **函数** | **说明** |
+| **Function** | **说明** |
 |---------|---------|
 |`chain() ... .value([callback] [, options])`|发起一个必须用 value() 终止的连锁调用。|
 |`filter(predicateFunction [, options] [, callback])`|使用返回 true/false 的谓词函数对输入进行筛选，以便将输入文档筛选出或筛选到结果集。 此函数与 SQL 中的 WHERE 子句行为相似。|
@@ -64,7 +64,7 @@ ms.locfileid: "53411226"
 
 详细了解概念以及如何在 Azure Cosmos DB 中编写并使用存储过程、触发器和用户定义的函数：
 
-- [如何使用 Javascript 查询 API 编写存储过程和触发器](how-to-write-javascript-query-api.md#)
+- [如何使用 Javascript 查询 API 编写存储过程和触发器](how-to-write-javascript-query-api.md)
 - [使用 Azure Cosmos DB 存储过程、触发器和用户定义的函数](stored-procedures-triggers-udfs.md)
 - [如何在 Azure Cosmos DB 中使用存储过程、触发器和用户定义的函数](how-to-use-stored-procedures-triggers-udfs.md)
 - [Azure Cosmos DB JavaScript 服务器端 API 参考](https://azure.github.io/azure-cosmosdb-js-server)

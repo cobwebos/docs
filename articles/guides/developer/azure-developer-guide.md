@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/18/2017
 ms.author: glenga
-ms.openlocfilehash: 84d8d3838740ec5d448b14b5c4539f7d78c96b5e
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 7c4eefa09f0a70d42601a5b1fe8694500b5c6be2
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53714349"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54118243"
 ---
 # <a name="get-started-guide-for-azure-developers"></a>Azure 开发人员入门指南
 
@@ -178,7 +178,7 @@ Azure 提供了多种方式以便在应用程序中使用容器。
 
 -   **Visual Studio Application Insights**：一项 Azure 托管的可扩展分析服务，与 Visual Studio 集成后可监视实时 Web 应用。 该服务可为你提供需要不断改进应用性能和可用性的数据，无论它们是否托管在 Azure 上。
 
-    >**入门**：按照 [Application Insights 教程](../../application-insights/app-insights-overview.md)操作。
+    >**入门**：按照 [Application Insights 教程](../../azure-monitor/app/app-insights-overview.md)操作。
 
 -   **Azure Monitor**：这项服务可帮助你对由 Azure 基础结构和资源生成的指标和日志进行可视化、查询、路由、存档，并对其执行其他操作。 该监视器将提供你在 Azure 门户中看到的数据视图，并且是用于监视 Azure 资源的单一源。
  

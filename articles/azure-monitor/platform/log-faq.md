@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: magoedte
-ms.openlocfilehash: 8d062108dbb27095e978b4973cb7bc5172a4d814
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: a2213ac9b31623aed18855ce87e7e00870b05247
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53186270"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54107212"
 ---
 # <a name="log-analytics-faq"></a>Log Analytics 常见问题解答
 此 Microsoft 常见问题解答是有关 Microsoft Azure 中 Log Analytics 的常见问题列表。 如果有与 Log Analytics 有关的任何其他问题，请转到[论坛](https://social.msdn.microsoft.com/Forums/azure/home?forum=opinsights)并发布问题。 当某个问题经常被问到时，我们会将该问题添加到本文中，以便可以轻松快捷地找到该问题。
@@ -219,7 +219,7 @@ A. 免费套餐设置的上限是每个工作区每天 500 MB。 标准和高级
 
 Log Analytics 代理设计为确保占用较小的数据空间。 数据量因启用的解决方案而异。 在[“使用情况”](../../azure-monitor/platform/data-usage.md)页面中可以找到有关数据量的详细信息以及按解决方案列出的故障。
 
-有关详细信息，可以阅读[客户博客](http://thoughtsonopsmgr.blogspot.com/2015/09/one-small-footprint-for-server-one.html)，其中显示了他们在评估 OMS 代理的资源利用率后的结果。
+有关详细信息，可以阅读[客户博客](https://thoughtsonopsmgr.blogspot.com/2015/09/one-small-footprint-for-server-one.html)，其中显示了他们在评估 OMS 代理的资源利用率后的结果。
 
 ### <a name="q-how-much-network-bandwidth-is-used-by-the-microsoft-management-agent-mma-when-sending-data-to-log-analytics"></a>问： 将数据发送到 Log Analytics 时，Microsoft 管理代理 (MMA) 使用多少网络带宽？
 

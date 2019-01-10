@@ -11,12 +11,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 10/25/2018
 ms.author: victorh
-ms.openlocfilehash: e106094ce94b7f232fd5687988af2bd11b971e3f
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 227e09ad087f1ac06f0dbb5b731c68f7c0a6980e
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53001934"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54159768"
 ---
 # <a name="create-an-application-gateway-with-path-based-routing-rules-using-the-azure-portal"></a>通过 Azure 门户使用基于路径的路由规则创建应用程序网关
 
@@ -123,7 +123,7 @@ ms.locfileid: "53001934"
 ## <a name="create-backend-pools-with-the-virtual-machines"></a>使用虚拟机创建后端池
 
 1. 单击“所有资源”，然后单击“myAppGateway”。
-2. 单击“后端池”。 默认池已随应用程序网关自动创建。 单击“appGateayBackendPool”。
+2. 单击“后端池”。 默认池已随应用程序网关自动创建。 单击 **appGatewayBackendPool**。
 3. 单击“添加目标”，将 *myVM1* 添加到 appGatewayBackendPool。
 
     ![添加后端服务器](./media/create-url-route-portal/application-gateway-backend.png)

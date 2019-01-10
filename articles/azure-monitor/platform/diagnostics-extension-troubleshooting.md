@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 07/12/2017
 ms.author: robb
 ms.component: diagnostic-extension
-ms.openlocfilehash: 1ddadcf17a5733767e24505b970b2ac21c8d7fa8
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: 8a8883989a731265fb358c119d44fa4243b54a5e
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53325257"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54103938"
 ---
 # <a name="azure-diagnostics-troubleshooting"></a>Azure 诊断故障排除
 本文介绍有关使用 Azure 诊断的故障排除信息。 有关 Azure 诊断的详细信息，请参阅 [Azure 诊断概述](diagnostics-extension-overview.md)。
@@ -118,7 +118,7 @@ DiagnosticsPluginLauncher.exe Information: 0 : [4/16/2016 6:24:15 AM] Diagnostic
 #### <a name="is-the-host-generating-data"></a>主机是否生成数据？
 - **性能计数器**：打开 perfmon 并检查计数器。
 
-- **跟踪日志**：远程访问 VM 并向应用的配置文件添加 TextWriterTraceListener。  请参阅 http://msdn.microsoft.com/library/sk36c28t.aspx 设置文本侦听器。  确保 `<trace>` 元素具有 `<trace autoflush="true">`。<br />
+- **跟踪日志**：远程访问 VM 并向应用的配置文件添加 TextWriterTraceListener。  请参阅 https://msdn.microsoft.com/library/sk36c28t.aspx 设置文本侦听器。  确保 `<trace>` 元素具有 `<trace autoflush="true">`。<br />
 如果没有看到生成跟踪日志，请查看[关于跟踪日志丢失的更多信息](#more-about-trace-logs-missing)。
 
 - **ETW 跟踪**：远程访问 VM 并安装 PerfView。  在 PerfView 中运行“文件” > “用户命令” > “侦听 etwprovder1” > “etwprovider2”等。 侦听命令区分大小写，ETW 提供程序的逗号分隔列表之间不能有空格。 如果命令未能运行，可选择 Perfview 工具右下角的“日志”按钮，查看尝试运行的内容以及结果。  假设输入正确，则会弹出一个新窗口。 几秒钟后，即可看到 ETW 跟踪信息。
@@ -217,9 +217,9 @@ Azure 存储中保存 ETW 事件的表是使用以下代码命名的：
 
 在任何一种情况下，都请先搜索“Microsoft.Azure.Diagnostics”，再搜索“xmlCfg”或“WadCfg”字段。
 
-如果在虚拟机上进行搜索，且存在 WadCfg 字段，则表示配置为 JSON 格式。 如果存在 xmlCfg 字段，则表示配置在 XML 中，且已进行 base64 编码。 你需要[将其解码](http://www.bing.com/search?q=base64+decoder)才能查看诊断加载的 XML。
+如果在虚拟机上进行搜索，且存在 WadCfg 字段，则表示配置为 JSON 格式。 如果存在 xmlCfg 字段，则表示配置在 XML 中，且已进行 base64 编码。 你需要[将其解码](https://www.bing.com/search?q=base64+decoder)才能查看诊断加载的 XML。
 
-对于云服务角色，如果从磁盘选择配置，数据采用 base64 编码，则需要[将其解码](http://www.bing.com/search?q=base64+decoder)才能查看诊断加载的 XML。
+对于云服务角色，如果从磁盘选择配置，数据采用 base64 编码，则需要[将其解码](https://www.bing.com/search?q=base64+decoder)才能查看诊断加载的 XML。
 
 ### <a name="azure-diagnostics-plugin-exit-codes"></a>Azure 诊断插件退出代码
 该插件返回以下退出代码：

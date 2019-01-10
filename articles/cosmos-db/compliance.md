@@ -5,14 +5,14 @@ author: dharmas-cosmos
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/15/2018
-ms.author: dharmas-cosmos
+ms.author: dharmas
 ms.reviewer: sngun
-ms.openlocfilehash: f1f05987bee2931f6863298fc0ef7191fd5dbb87
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: f623411c3e8b13aeacc08a6c47053931742a2e82
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52166681"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54034176"
 ---
 # <a name="azure-cosmos-db-compliance"></a>Azure Cosmos DB 符合性
 

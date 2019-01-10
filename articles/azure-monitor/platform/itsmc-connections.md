@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 05/24/2018
 ms.author: v-jysur
-ms.openlocfilehash: 7184a5e1e9b41653cfe23aa863f8e4e4ea86c620
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: a07512c801d8e6c0f0ff3242fe1b94eeab5b2534
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53409235"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54104992"
 ---
 # <a name="connect-itsm-productsservices-with-it-service-management-connector"></a>将 ITSM 产品/服务与 IT 服务管理连接器相连接
 本文介绍如何配置 ITSM 产品/服务与 Log Analytics 中的 IT 服务管理连接器 (ITSMC) 之间的连接，以便集中管理工作项。 有关 ITSMC 的详细信息，请参阅[概述](../../azure-monitor/platform/itsmc-overview.md)。
@@ -224,7 +224,7 @@ ms.locfileid: "53409235"
 | **用户名**   | 键入在 ServiceNow 应用中创建的、用于支持连接到 ITSMC 的集成用户名。 详细信息：[创建 ServiceNow 应用用户角色](#create-integration-user-role-in-servicenow-app)。|
 | **密码**   | 键入此用户名的关联密码。 **注意**：用户名和密码仅用于生成身份验证令牌，不会存储在 ITSMC 服务中的任何位置。  |
 | **服务器 URL**   | 键入需要连接到 ITSMC 的 ServiceNow 实例的 URL。 |
-| **客户端 ID**   | 键入前面生成的、用于 OAuth2 身份验证的客户端 ID。  有关生成客户端 ID 和机密的详细信息： [OAuth 设置](http://wiki.servicenow.com/index.php?title=OAuth_Setup)。 |
+| **客户端 ID**   | 键入前面生成的、用于 OAuth2 身份验证的客户端 ID。  有关生成客户端 ID 和机密的详细信息： [OAuth 设置](https://wiki.servicenow.com/index.php?title=OAuth_Setup)。 |
 | **客户端机密**   | 键入为此 ID 生成的客户端机密。   |
 | **数据同步范围**   | 选择要通过 ITSMC 同步到 Azure Log Analytics 的 ServiceNow 工作项。  选定的值将导入到 Log Analytics。   **选项：**“事件”和“更改请求”。|
 | **同步数据** | 键入检索数据的过去天数。 **最大限制**：120 天。 |
