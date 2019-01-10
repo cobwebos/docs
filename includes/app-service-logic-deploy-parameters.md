@@ -1,3 +1,16 @@
+---
+author: cephalin
+ms.service: app-service
+ms.topic: include
+ms.date: 11/03/2016
+ms.author: cephalin
+ms.openlocfilehash: f188f2c7bea511f1109d37ef49563e0f745a770e
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50133370"
+---
 使用 Azure 资源管理器，可以在部署模板时为要使用的值定义参数。 模板包括 `parameters` 节，其中包含所有参数值。 模板使用每个参数值定义要部署的资源。
 
 > [!NOTE]
