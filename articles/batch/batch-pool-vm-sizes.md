@@ -1,9 +1,9 @@
 ---
-title: 选择 Azure Batch 池的 VM 大小 | Microsoft Docs
+title: 选择池的 VM 大小 - Azure Batch | Microsoft Docs
 description: 如何选择 Azure Batch 池中计算节点的可用 VM 大小
 services: batch
 documentationcenter: ''
-author: dlepow
+author: laurenhughes
 manager: jeconnoc
 editor: ''
 ms.assetid: ''
@@ -13,13 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/07/2018
-ms.author: danlep
-ms.openlocfilehash: 35e5d13ac358fa5edcb778253340de0f9e15c067
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.author: lahugh
+ms.custom: seodec18
+ms.openlocfilehash: a1d733e918d4b53ea9dd220f5e379e0c8133c03a
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51281271"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53540650"
 ---
 # <a name="choose-a-vm-size-for-compute-nodes-in-an-azure-batch-pool"></a>选择 Azure Batch 池中计算节点的 VM 大小
 
@@ -40,7 +41,7 @@ ms.locfileid: "51281271"
 |---------|---------|
 | 基本 A 系列 | Basic_A0 (A0) |
 | A 系列 | Standard_A0 |
-| B 系列 | 全部 |
+| B 系列 | All |
 
 仅低优先级节点支持以下 VM 大小：
 

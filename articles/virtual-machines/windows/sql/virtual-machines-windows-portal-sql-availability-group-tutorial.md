@@ -17,17 +17,17 @@ ms.workload: iaas-sql-server
 ms.date: 08/30/2018
 ms.author: mikeray
 ms.openlocfilehash: 42a4ea1e4dc352e56fbd65f69c9ed71e3b0c1038
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
+ms.lasthandoff: 12/21/2018
 ms.locfileid: "51238069"
 ---
 # <a name="configure-always-on-availability-group-in-azure-vm-manually"></a>在 Azure VM 中手动配置 Always On 可用性组
 
 本教程说明如何在 Azure 虚拟机上创建 SQL Server Always On 可用性组。 完整教程将创建一个数据库副本位于两个 SQL Server 上的可用性组。
 
-**估计所需时间**：如果满足先决条件，完成本教程大约需要 30 分钟。
+**时间估计**：如果满足先决条件，完成本教程大约需要 30 分钟。
 
 下图演示了在本教程中构建的内容。
 
@@ -45,7 +45,7 @@ ms.locfileid: "51238069"
 |![Square](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/square.png)| Windows Server | 群集的文件共享见证 |  
 |![Square](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/square.png)|SQL Server 服务帐户 | 域帐户 |
 |![Square](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/square.png)|SQL Server 代理服务帐户 | 域帐户 |  
-|![Square](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/square.png)|防火墙端口已打开 | - SQL Server：默认实例使用 1433 <br/> - 数据库镜像终结点：5022 或任何可用端口 <br/> - 可用性组负载均衡器 IP 地址运行状况探测：59999 或任何可用端口 <br/> - 群集核心负载均衡器 IP 地址运行状况探测：58888 或任何可用端口 |
+|![Square](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/square.png)|防火墙端口已打开 | - SQL Server：对于默认实例，为 1433 <br/> - 数据库镜像终结点：5022 或任何可用端口 <br/> - 可用性组负载均衡器 IP 地址运行状况探测：59999 或任何可用端口 <br/> - 群集核心负载均衡器 IP 地址运行状况探测：58888 或任何可用端口 |
 |![Square](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/square.png)|添加故障转移群集功能 | 两个 SQL Server 都需要此功能 |
 |![Square](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/square.png)|安装域帐户 | - 每个 SQL Server 上的本地管理员 <br/> - 每个 SQL Server 实例的 SQL Server sysadmin 固定服务器角色的成员  |
 
