@@ -1,5 +1,5 @@
 ---
-title: 安全地保存 Web 应用的密钥应用程序设置 | Microsoft 文档
+title: 安全地保存 Web 应用程序的机密应用程序设置 - Azure 密钥保管库 | Microsoft Docs
 description: 如何使用 ASP.NET Core 密钥保管库提供程序、用户密钥或 .NET 4.7.1 配置生成器来安全地保存密钥应用程序设置（如 Azure 凭据或第三方 API 密钥）
 services: visualstudio
 documentationcenter: ''
@@ -12,14 +12,14 @@ ms.workload: web, azure
 ms.tgt_pltfrm: vs-getting-started
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/09/2017
+ms.date: 01/02/2019
 ms.author: cawa
-ms.openlocfilehash: 4c54fe7c9ae5555ad1b8ba6919c70c8f7fa49125
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 5ed0f861e17c646a66d9fa636e17ce0ba9c7c91a
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53252083"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53999146"
 ---
 # <a name="securely-save-secret-application-settings-for-a-web-application"></a>安全地保存 Web 应用的密钥应用程序设置
 

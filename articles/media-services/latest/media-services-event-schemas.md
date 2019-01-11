@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: reference
-ms.date: 12/05/2018
+ms.date: 12/24/2018
 ms.author: juliako
-ms.openlocfilehash: 9de0d8bc389218d3102633b09073b3af323d2ceb
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: c5332cd2613bc64e3dda143381f37d27b54aa922
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53011988"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53789223"
 ---
 # <a name="azure-event-grid-schemas-for-media-services-events"></a>媒体服务事件的 Azure 事件网格架构
 
@@ -134,7 +134,7 @@ ms.locfileid: "53011988"
     "previousState": "Scheduled",
     "state": "Processing",
     "correlationData": {
-      "TestKey1": "TestValue1",
+      "testKey1": "testValue1",
       "testKey2": "testValue2"
     }
   },
@@ -168,7 +168,7 @@ ms.locfileid: "53011988"
     "previousState": "Processing",
     "state": "Finished",
     "correlationData": {
-      "TestKey1": "TestValue1",
+      "testKey1": "testValue1",
       "testKey2": "testValue2"
     }
   },
@@ -205,7 +205,7 @@ ms.locfileid: "53011988"
       "state": "Finished"
     },
     "jobCorrelationData": {
-      "TestKey1": "TestValue1",
+      "testKey1": "testValue1",
       "testKey2": "testValue2"
     }
   },
@@ -236,7 +236,7 @@ ms.locfileid: "53011988"
       "state": "Processing"
     },
     "jobCorrelationData": {
-      "TestKey1": "TestValue1",
+      "testKey1": "testValue1",
       "testKey2": "testValue2"
     }
   },
@@ -258,13 +258,14 @@ ms.locfileid: "53011988"
     "eventTime": "2018-01-16T01:57:26.005121Z",
     "id": "b303db59-d5c1-47eb-927a-3650875fded1",
     "data": { 
-      "StreamId":"Mystream1",
-      "IngestUrl": "http://abc.ingest.isml",
-      "EncoderIp": "118.238.251.xxx",
-      "EncoderPort": 52859,
-      "ResultCode": "MPE_INGEST_CODEC_NOT_SUPPORTED"
+      "streamId":"Mystream1",
+      "ingestUrl": "http://abc.ingest.isml",
+      "encoderIp": "118.238.251.xxx",
+      "encoderPort": 52859,
+      "resultCode": "MPE_INGEST_CODEC_NOT_SUPPORTED"
     },
-    "dataVersion": "1.0"
+    "dataVersion": "1.0",
+    "metadataVersion": "1"
   }
 ]
 ```
@@ -273,11 +274,11 @@ ms.locfileid: "53011988"
 
 | 属性 | 类型 | Description |
 | -------- | ---- | ----------- |
-| StreamId | 字符串 | 流或连接的标识符。 编码器或客户负责在引入 URL 中添加此 ID。 |  
-| IngestUrl | 字符串 | 实时事件提供的引入 URL。 |  
-| EncoderIp | 字符串 | 编码器的 IP。 |
-| EncoderPort | 字符串 | 此流的来源编码器的端口。 |
-| ResultCode | 字符串 | 拒绝连接的原因。 下表中列出了结果代码。 |
+| streamId | 字符串 | 流或连接的标识符。 编码器或客户负责在引入 URL 中添加此 ID。 |  
+| ingestUrl | 字符串 | 实时事件提供的引入 URL。 |  
+| encoderIp | 字符串 | 编码器的 IP。 |
+| encoderPort | 字符串 | 此流的来源编码器的端口。 |
+| resultCode | 字符串 | 拒绝连接的原因。 下表中列出了结果代码。 |
 
 结果代码为：
 
@@ -320,10 +321,10 @@ ms.locfileid: "53011988"
 
 | 属性 | 类型 | Description |
 | -------- | ---- | ----------- |
-| StreamId | 字符串 | 流或连接的标识符。 编码器或客户负责在引入 URL 中提供此 ID。 |
-| IngestUrl | 字符串 | 实时事件提供的引入 URL。 |
-| EncoderIp | 字符串 | 编码器的 IP。 |
-| EncoderPort | 字符串 | 此流的来源编码器的端口。 |
+| streamId | 字符串 | 流或连接的标识符。 编码器或客户负责在引入 URL 中提供此 ID。 |
+| ingestUrl | 字符串 | 实时事件提供的引入 URL。 |
+| encoderIp | 字符串 | 编码器的 IP。 |
+| encoderPort | 字符串 | 此流的来源编码器的端口。 |
 
 ### <a name="liveeventencoderdisconnected"></a>LiveEventEncoderDisconnected
 
@@ -354,11 +355,11 @@ ms.locfileid: "53011988"
 
 | 属性 | 类型 | Description |
 | -------- | ---- | ----------- |
-| StreamId | 字符串 | 流或连接的标识符。 编码器或客户负责在引入 URL 中添加此 ID。 |  
-| IngestUrl | 字符串 | 实时事件提供的引入 URL。 |  
-| EncoderIp | 字符串 | 编码器的 IP。 |
-| EncoderPort | 字符串 | 此流的来源编码器的端口。 |
-| ResultCode | 字符串 | 编码器断开连接的原因。 可能是正常断开连接，或者是由于出错而断开连接。 下表中列出了结果代码。 |
+| streamId | 字符串 | 流或连接的标识符。 编码器或客户负责在引入 URL 中添加此 ID。 |  
+| ingestUrl | 字符串 | 实时事件提供的引入 URL。 |  
+| encoderIp | 字符串 | 编码器的 IP。 |
+| encoderPort | 字符串 | 此流的来源编码器的端口。 |
+| resultCode | 字符串 | 编码器断开连接的原因。 可能是正常断开连接，或者是由于出错而断开连接。 下表中列出了结果代码。 |
 
 错误结果代码为：
 
@@ -394,14 +395,15 @@ ms.locfileid: "53011988"
     "eventTime": "2018-01-16T01:57:26.005121Z",
     "id": "03da9c10-fde7-48e1-80d8-49936f2c3e7d",
     "data": { 
-      "TrackType": "Video",
-      "TrackName": "Video",
-      "Bitrate": 300000,
-      "Timestamp": 36656620000,
-      "Timescale": 10000000,
-      "ResultCode": "FragmentDrop_OverlapTimestamp"
+      "trackType": "Video",
+      "trackName": "Video",
+      "bitrate": 300000,
+      "timestamp": 36656620000,
+      "timescale": 10000000,
+      "resultCode": "FragmentDrop_OverlapTimestamp"
     },
-    "dataVersion": "1.0"
+    "dataVersion": "1.0",
+    "metadataVersion": "1"
   }
 ]
 ```
@@ -410,12 +412,12 @@ ms.locfileid: "53011988"
 
 | 属性 | 类型 | Description |
 | -------- | ---- | ----------- |
-| TrackType | 字符串 | 轨道类型（音频/视频）。 |
-| TrackName | 字符串 | 轨道名称。 |
-| Bitrate | integer | 轨道的比特率。 |
-| Timestamp | 字符串 | 已删除的数据区块的时间戳。 |
+| trackType | 字符串 | 轨道类型（音频/视频）。 |
+| trackName | 字符串 | 轨道名称。 |
+| 比特率 | integer | 轨道的比特率。 |
+| timestamp | 字符串 | 已删除的数据区块的时间戳。 |
 | 时间刻度 | 字符串 | 时间戳的时间刻度。 |
-| ResultCode | 字符串 | 删除数据区块的原因。 **FragmentDrop_OverlapTimestamp** 或 **FragmentDrop_NonIncreasingTimestamp**。 |
+| resultCode | 字符串 | 删除数据区块的原因。 **FragmentDrop_OverlapTimestamp** 或 **FragmentDrop_NonIncreasingTimestamp**。 |
 
 ### <a name="liveeventincomingstreamreceived"></a>LiveEventIncomingStreamReceived
 
@@ -450,13 +452,13 @@ ms.locfileid: "53011988"
 
 | 属性 | 类型 | Description |
 | -------- | ---- | ----------- |
-| TrackType | 字符串 | 轨道类型（音频/视频）。 |
-| TrackName | 字符串 | 轨迹的名称（由编码器提供；对于 RTMP，由服务器以 *TrackType_Bitrate* 格式生成）。 |
-| Bitrate | integer | 轨道的比特率。 |
-| IngestUrl | 字符串 | 实时事件提供的引入 URL。 |
-| EncoderIp | 字符串  | 编码器的 IP。 |
-| EncoderPort | 字符串 | 此流的来源编码器的端口。 |
-| Timestamp | 字符串 | 收到数据区块的第一个时间戳。 |
+| trackType | 字符串 | 轨道类型（音频/视频）。 |
+| trackName | 字符串 | 轨迹的名称（由编码器提供；对于 RTMP，由服务器以 *TrackType_Bitrate* 格式生成）。 |
+| 比特率 | integer | 轨道的比特率。 |
+| ingestUrl | 字符串 | 实时事件提供的引入 URL。 |
+| encoderIp | 字符串  | 编码器的 IP。 |
+| encoderPort | 字符串 | 此流的来源编码器的端口。 |
+| timestamp | 字符串 | 收到数据区块的第一个时间戳。 |
 | 时间刻度 | 字符串 | 用于表示时间戳的时间刻度。 |
 
 ### <a name="liveeventincomingstreamsoutofsync"></a>LiveEventIncomingStreamsOutOfSync
@@ -489,12 +491,12 @@ ms.locfileid: "53011988"
 
 | 属性 | 类型 | Description |
 | -------- | ---- | ----------- |
-| MinLastTimestamp | 字符串 | 所有轨迹（音频或视频）中最后一个时间戳的最小值。 |
-| TypeOfTrackWithMinLastTimestamp | 字符串 | 最后一个时间戳最小的轨迹的类型（音频或视频）。 |
-| MaxLastTimestamp | 字符串 | 所有轨迹（音频或视频）中所有时间戳的最大值。 |
-| TypeOfTrackWithMaxLastTimestamp | 字符串 | 最后一个时间戳最大的轨迹的类型（音频或视频）。 |
-| TimescaleOfMinLastTimestamp| 字符串 | 获取用于表示“MinLastTimestamp”的时间刻度。|
-| TimescaleOfMaxLastTimestamp| 字符串 | 获取用于表示“MaxLastTimestamp”的时间刻度。|
+| minLastTimestamp | 字符串 | 所有轨迹（音频或视频）中最后一个时间戳的最小值。 |
+| typeOfTrackWithMinLastTimestamp | 字符串 | 最后一个时间戳最小的轨迹的类型（音频或视频）。 |
+| maxLastTimestamp | 字符串 | 所有轨迹（音频或视频）中所有时间戳的最大值。 |
+| typeOfTrackWithMaxLastTimestamp | 字符串 | 最后一个时间戳最大的轨迹的类型（音频或视频）。 |
+| timescaleOfMinLastTimestamp| 字符串 | 获取用于表示“MinLastTimestamp”的时间刻度。|
+| timescaleOfMaxLastTimestamp| 字符串 | 获取用于表示“MaxLastTimestamp”的时间刻度。|
 
 ### <a name="liveeventincomingvideostreamsoutofsync"></a>LiveEventIncomingVideoStreamsOutOfSync
 
@@ -509,13 +511,14 @@ ms.locfileid: "53011988"
     "eventTime": "2018-01-16T01:57:26.005121Z",
     "id": "6dd4d862-d442-40a0-b9f3-fc14bcf6d750",
     "data": {
-      "FirstTimestamp": "2162058216",
-      "FirstDuration": "2000",
-      "SecondTimestamp": "2162057216",
-      "SecondDuration": "2000",
+      "firstTimestamp": "2162058216",
+      "firstDuration": "2000",
+      "secondTimestamp": "2162057216",
+      "secondDuration": "2000",
       "timescale": "10000000"      
     },
-    "dataVersion": "1.0"
+    "dataVersion": "1.0",
+    "metadataVersion": "1"
   }
 ]
 ```
@@ -524,10 +527,10 @@ ms.locfileid: "53011988"
 
 | 属性 | 类型 | Description |
 | -------- | ---- | ----------- |
-| FirstTimestamp | 字符串 | 收到视频类型的某个轨迹/质量级别的时间戳。 |
-| FirstDuration | 字符串 | 具有第一个时间戳的数据区块的持续时间。 |
-| SecondTimestamp | 字符串  | 收到视频类型的其他某个轨迹/质量级别的时间戳。 |
-| SecondDuration | 字符串 | 具有第二个时间戳的数据区块的持续时间。 |
+| firstTimestamp | 字符串 | 收到视频类型的某个轨迹/质量级别的时间戳。 |
+| firstDuration | 字符串 | 具有第一个时间戳的数据区块的持续时间。 |
+| secondTimestamp | 字符串  | 收到视频类型的其他某个轨迹/质量级别的时间戳。 |
+| secondDuration | 字符串 | 具有第二个时间戳的数据区块的持续时间。 |
 | 时间刻度 | 字符串 | 时间戳和持续时间的时间刻度。|
 
 ### <a name="liveeventingestheartbeat"></a>LiveEventIngestHeartbeat
@@ -566,18 +569,18 @@ ms.locfileid: "53011988"
 
 | 属性 | 类型 | Description |
 | -------- | ---- | ----------- |
-| TrackType | 字符串 | 轨道类型（音频/视频）。 |
-| TrackName | 字符串 | 轨迹的名称（由编码器提供；对于 RTMP，由服务器以 *TrackType_Bitrate* 格式生成）。 |
-| Bitrate | integer | 轨道的比特率。 |
-| IncomingBitrate | integer | 基于来自编码器的数据区块计算出的比特率。 |
-| LastTimestamp | 字符串 | 在过去 20 秒收到的轨迹的最新时间戳。 |
+| trackType | 字符串 | 轨道类型（音频/视频）。 |
+| trackName | 字符串 | 轨迹的名称（由编码器提供；对于 RTMP，由服务器以 *TrackType_Bitrate* 格式生成）。 |
+| 比特率 | integer | 轨道的比特率。 |
+| incomingBitrate | integer | 基于来自编码器的数据区块计算出的比特率。 |
+| lastTimestamp | 字符串 | 在过去 20 秒收到的轨迹的最新时间戳。 |
 | 时间刻度 | 字符串 | 用于表示时间戳的时间刻度。 |
-| OverlapCount | integer | 在过去 20 秒数据区块数目包含重叠的时间戳。 |
-| DiscontinuityCount | integer | 在过去 20 秒观察到的不连续性数目。 |
-| NonIncreasingCount | integer | 在过去 20 秒收到的具有以往时间戳的数据区块数。 |
-| UnexpectedBitrate | bool | 在过去 20 秒，预期和实际比特率之差是否超过了允许的限制。 当且仅当 IncomingBitrate >= 2* 比特率，或者 IncomingBitrate <= 比特率/2，或者 IncomingBitrate = 0 时，此属性的值才为 true。 |
-| 状态 | 字符串 | 实时事件的状态。 |
-| Healthy | bool | 指示引入是否正常（基于计数和标志判断）。 如果 OverlapCount = 0 并且 DiscontinuityCount = 0 并且 NonIncreasingCount = 0 并且 UnexpectedBitrate = false，则 Healthy 为 true。 |
+| overlapCount | integer | 在过去 20 秒数据区块数目包含重叠的时间戳。 |
+| discontinuityCount | integer | 在过去 20 秒观察到的不连续性数目。 |
+| nonIncreasingCount | integer | 在过去 20 秒收到的具有以往时间戳的数据区块数。 |
+| unexpectedBitrate | bool | 在过去 20 秒，预期和实际比特率之差是否超过了允许的限制。 当且仅当 incomingBitrate >= 2* 比特率，或者 incomingBitrate <= 比特率/2，或者 IncomingBitrate = 0 时，此属性的值才为 true。 |
+| state | 字符串 | 实时事件的状态。 |
+| healthy | bool | 指示引入是否正常（基于计数和标志判断）。 如果 overlapCount = 0 并且 discontinuityCount = 0 并且 nonIncreasingCount = 0 并且 unexpectedBitrate = false，则 Healthy 为 true。 |
 
 ### <a name="liveeventtrackdiscontinuitydetected"></a>LiveEventTrackDiscontinuityDetected
 
@@ -610,12 +613,12 @@ ms.locfileid: "53011988"
 
 | 属性 | 类型 | Description |
 | -------- | ---- | ----------- |
-| TrackType | 字符串 | 轨道类型（音频/视频）。 |
-| TrackName | 字符串 | 轨迹的名称（由编码器提供；对于 RTMP，由服务器以 *TrackType_Bitrate* 格式生成）。 |
-| Bitrate | integer | 轨道的比特率。 |
-| PreviousTimestamp | 字符串 | 前一个片段的时间戳。 |
-| NewTimestamp | 字符串 | 当前片段的时间戳。 |
-| DiscontinuityGap | 字符串 | 上面两个时间戳之间的差距。 |
+| trackType | 字符串 | 轨道类型（音频/视频）。 |
+| trackName | 字符串 | 轨迹的名称（由编码器提供；对于 RTMP，由服务器以 *TrackType_Bitrate* 格式生成）。 |
+| 比特率 | integer | 轨道的比特率。 |
+| previousTimestamp | 字符串 | 前一个片段的时间戳。 |
+| newTimestamp | 字符串 | 当前片段的时间戳。 |
+| discontinuityGap | 字符串 | 上面两个时间戳之间的差距。 |
 | 时间刻度 | 字符串 | 用于表示时间戳和非连续性差距的时间刻度。 |
 
 ### <a name="common-event-properties"></a>自定义事件属性

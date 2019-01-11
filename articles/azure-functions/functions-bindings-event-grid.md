@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 09/04/2018
 ms.author: cshoe
-ms.openlocfilehash: e5c5c7f667959426f015e207cd32d716c493e31e
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 78290f6d1b31788c3f2de99996739cc8e7b20419
+ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52995031"
+ms.lasthandoff: 12/28/2018
+ms.locfileid: "53810928"
 ---
 # <a name="event-grid-trigger-for-azure-functions"></a>Azure Functions 的事件网格触发器
 
@@ -48,7 +48,7 @@ ms.locfileid: "52995031"
 
 * [C#](#c-example)
 * [C# 脚本 (.csx)](#c-script-example)
-* [Java](#trigger---java-example)
+* [Java](#trigger---java-examples)
 * [JavaScript](#javascript-example)
 * [Python](#python-example)
 
@@ -221,9 +221,14 @@ def main(event: func.EventGridEvent):
     logging.info("  Data: %s", event.get_json())
 ```
 
-### <a name="trigger---java-example"></a>触发器 - Java 示例
+### <a name="trigger---java-examples"></a>触发器 - Java 示例
 
-以下示例演示 *function.json* 文件中的一个触发器绑定以及使用该绑定并输出事件的 [Java 函数](functions-reference-java.md)。
+本部分包含以下示例：
+
+* [事件网格触发器、字符串参数](#event-grid-trigger-string-parameter-java)
+* [事件网格触发器、POJO 参数](#event-grid-trigger-pojo-parameter-java)
+
+以下示例显示了 *function.json* 文件和 [Java 函数](functions-reference-java.md)中的触发器绑定，这些函数使用绑定并打印出事件，首先接收 ```String``` 形式的事件，第二个接收 POJO 形式的事件。
 
 ```json
 {
@@ -237,16 +242,60 @@ def main(event: func.EventGridEvent):
 }
 ```
 
-下面是 Java 代码：
+#### <a name="event-grid-trigger-string-parameter-java"></a>事件网格触发器、字符串参数 (Java)
 
 ```java
-@FunctionName("eventGridMonitor")
+  @FunctionName("eventGridMonitorString")
   public void logEvent(
-     @EventGridTrigger(name = "event") String content,
-      final ExecutionContext context
-  ) {
-      context.getLogger().info(content);
-    }
+    @EventGridTrigger(
+      name = "event"
+    ) 
+    String content, 
+    final ExecutionContext context) {
+      // log 
+      context.getLogger().info("Event content: " + content);      
+  }
+```
+
+#### <a name="event-grid-trigger-pojo-parameter-java"></a>事件网格触发器、POJO 参数 (Java)
+
+此示例使用以下 POJO 表示事件网格事件的顶级属性：
+
+```java
+import java.util.Date;
+import java.util.Map;
+
+public class EventSchema {
+
+  public String topic;
+  public String subject;
+  public String eventType;
+  public Date eventTime;
+  public String id;
+  public String dataVersion;
+  public String metadataVersion;
+  public Map<String, Object> data;
+
+}
+```
+
+到达后，事件的 JSON 有效负载被反序列化为 ```EventSchema``` POJO 以供函数使用。 这样，函数便能以面向对象的方式访问事件的属性。
+
+```java
+  @FunctionName("eventGridMonitor")
+  public void logEvent(
+    @EventGridTrigger(
+      name = "event"
+    ) 
+    EventSchema event, 
+    final ExecutionContext context) {
+      // log 
+      context.getLogger().info("Event content: ");
+      context.getLogger().info("Subject: " + event.subject);
+      context.getLogger().info("Time: " + event.eventTime); // automatically converted to Date by the runtime
+      context.getLogger().info("Id: " + event.id);
+      context.getLogger().info("Data: " + event.data);
+  }
 ```
 
 在 [Java 函数运行时库](/java/api/overview/azure/functions/runtime)中，对其值将来自 EventGrid 的参数使用 `EventGridTrigger` 注释。 带有这些注释的参数会导致函数在事件到达时运行。  可以将此注释与本机 Java 类型、POJO 或使用了 `Optional<T>` 的可为 null 的值一起使用。

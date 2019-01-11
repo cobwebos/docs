@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/13/2018
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 65c89e337d62ccb7ce58a1ea4e7414527bf9af19
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 27b952fb1a901ff716f25cc7d512f860f639fb02
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53342082"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53632612"
 ---
 # <a name="language-and-region-support-for-speech-service-api"></a>语音服务 API 的语言和区域支持
 
@@ -176,22 +176,7 @@ zh-TW | 中文(中国台湾)|女 | “Microsoft 服务器语音的文本转语�
 
 ## <a name="speech-translation"></a>语音翻译
 
-**语音翻译** API 支持使用不同的语言进行语音转语音和语音转文本的翻译。 源语言必须始终来自以下“语音语言”表。 可用的目标语言取决于翻译目标是语音还是文本。 可以将传入的语音翻译成 [60 种以上的语言](https://www.microsoft.com/translator/business/languages/)。 这些语言的子集可用于[语音合成](language-support.md#text-languages)。
-
-### <a name="speech-languages"></a>语音语言
-
-| 语音语言   | 语言代码 |
-|:----------- |-|
-| 阿拉伯语(现代标准)      | `ar` |
-| 中文(普通话)      | `zh` |
-| 英语      | `en` |
-| 法语      | `fr` |
-| 德语      | `de` |
-| 意大利语      | `it` |
-| 日语      | `jp` |
-| 葡萄牙语(巴西)     | `pt` |
-| 俄语      | `ru` |
-| 西班牙语      |  `es` |
+**语音翻译** API 支持使用不同的语言进行语音转语音和语音转文本的翻译。 源语言必须始终来自“语音转文本”语言表。 可用的目标语言取决于翻译目标是语音还是文本。 可以将传入的语音翻译成 [60 种以上的语言](https://www.microsoft.com/translator/business/languages/)。 这些语言的子集可用于[语音合成](language-support.md#text-languages)。
 
 ### <a name="text-languages"></a>文本语言
 

@@ -2,19 +2,19 @@
 title: Azure HDInsight 发行说明
 description: Azure HDInsight 的最新发行说明。 获取 Hadoop、Spark、R Server、Hive 和更多工具的开发技巧和详细信息。
 services: hdinsight
-ms.reviewer: jasonh
 author: hrasheed-msft
+ms.author: hrasheed
+ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 07/01/2018
-ms.author: hrasheed
-ms.openlocfilehash: 1f0ff7bef5c1d30eb6920eaab3767de1dea6b94a
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.date: 01/02/2019
+ms.openlocfilehash: 49087792efa5e377beadc78746bcf99c88954e9b
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53438857"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "54000065"
 ---
 # <a name="release-notes-for-azure-hdinsight"></a>Azure HDInsight 发行说明
 
@@ -35,7 +35,7 @@ Azure HDInsight 是 Azure 中最受企业客户青睐的开源 Apache Hadoop 和
 
     a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。  [**Apache Spark 2.3 中的新增功能**](https://spark.apache.org/releases/spark-release-2-3-0.html)
 
-    b.  [**Apache Kafka 1.0 中的新增功能**](https://www.apache.org/dist/kafka/1.0.0/RELEASE_NOTES.html)
+    b.  [**Apache Kafka 1.0 中的新增功能**](https://kafka.apache.org/downloads#1.0.0)
 
 2.  ***将 R Server 9.1 更新到机器学习服务 9.3*** - 通过此发布，我们为数据科学家和工程师提供通过算法革新和便捷的操作化增强的最佳开放源代码，均在其首选语言中提供（达到 Apache Spark 速度）。 此版本扩展了 R Server 的功能，添加了对 Python 的支持，群集名称因而从 R Server 更改为 ML Services。 
 
@@ -1300,14 +1300,24 @@ HDP 2.3.x 和 2.4.x 未随附 Mahout 的特定 Apache 版本，而是同步到 A
 
 |**Apache 组件**|**Apache JIRA**|**摘要**|**详细信息**|
 |--|--|--|--|
-|**Spark 2.3** |**不适用** |**Apache Spark 发行说明中所述的更改** |- 提供了“弃用”文档和“行为变更”指南： https://spark.apache.org/releases/spark-release-2-3-0.html#deprecations<br /><br />- 对于 SQL 部分，提供了另一篇详细“迁移”指南（从 2.3 到 2.2）： http://spark.apache.org/docs/latest/sql-programming-guide.html#upgrading-from-spark-sql-22-to-23|
+|**Spark 2.3** |**不适用** |**Apache Spark 发行说明中所述的更改** |- 提供了“弃用”文档和“行为变更”指南： https://spark.apache.org/releases/spark-release-2-3-0.html#deprecations<br /><br />- 对于 SQL 部分，提供了另一篇详细“迁移”指南（从 2.3 到 2.2）： https://spark.apache.org/docs/latest/sql-programming-guide.html#upgrading-from-spark-sql-22-to-23|
 |Spark |[**HIVE-12505**](https://issues.apache.org/jira/browse/HIVE-12505) |Spark 作业成功完成，但出现 HDFS 磁盘配额已满错误 |**场景**：当运行 **insert overwrite** 命令的用户的回收站文件夹中设置了配额时运行该命令。<br /><br />**以前的行为：** 作业会成功，但无法将数据移到回收站。 结果可能错误地包含表中以前存在的一些数据。<br /><br />**新行为：** 如果移到回收站失败，会永久删除文件。|
-|**Kafka 1.0**|**不适用**|**Apache Spark 发行说明中所述的更改** |http://kafka.apache.org/10/documentation.html#upgrade_100_notable|
+|**Kafka 1.0**|**不适用**|**Apache Spark 发行说明中所述的更改** |https://kafka.apache.org/10/documentation.html#upgrade_100_notable|
 |**Hive/Ranger** | |INSERT OVERWRITE 需要其他 ranger hive 策略 |**场景**：**INSERT OVERWRITE** 需要其他 ranger hive 策略<br /><br />**以前的行为：** Hive **INSERT OVERWRITE** 查询像往常一样成功。<br /><br />**新行为：** 升级到 HDP 2.6.x 之后，Hive **INSERT OVERWRITE** 查询意外失败并出现错误：<br /><br />编译语句时出错:失败:HiveAccessControlException 权限被拒绝: 用户 jdoe 对 /tmp/ 没有写入特权\*(状态=42000，代码=40000)<br /><br />从 HDP-2.6.0 开始，Hive **INSERT OVERWRITE** 查询需要 Ranger URI 策略才能允许写入操作，即使已通过 HDFS 策略为用户授予了写入特权。<br /><br />**解决方法/预期的客户操作：**<br /><br />1.在 Hive 存储库下创建新策略。<br />2.在显示“数据库”的下拉列表中，选择“URI”。<br />3.更新路径（示例：/tmp/*）<br />4.添加用户和组并保存。<br />5.重试 insert 查询。|
 |**HDFS**|**不适用** |HDFS 应受多个 KMS RUI 的支持 |**以前的行为：** dfs.encryption.key.provider.uri 属性用于配置 KMS 提供程序路径。<br /><br />**新行为：** 现已弃用 dfs.encryption.key.provider.uri，改用 hadoop.security.key.provider.path 来配置 KMS 提供程序路径。|
 |**Zeppelin**|[**ZEPPELIN-3271**](https://issues.apache.org/jira/browse/ZEPPELIN-3271)|用于禁用计划程序的选项 |**受影响的组件：** Zeppelin-Server<br /><br />**以前的行为：** 以前的 Zeppelin 版本未提供用于禁用计划程序的选项。<br /><br />**新行为：** 默认情况下，用户不再会看到计划程序，因为它默认已禁用。<br /><br />**解决方法/预期的客户操作：** 若要启用计划程序，需要通过 Ambari 在 Zeppelin 中的自定义 zeppelin 站点设置下添加值为 true 的 azeppelin.notebook.cron.enable。|
 
 ## <a name="known-issues"></a>已知问题
+
+-   **HDInsight 与 ADLS Gen 2 集成** 使用 Azure Data Lake Storage Gen 2 的 HDInsight ESP 群集在用户目录和权限上存在两个问题：
+   
+   1. 用户的主目录未在头节点 1 上创建。 解决方法是，手动创建目录并将所有权更改为相应用户的 UPN。
+   
+   2. /hdp 目录的权限当前未设置为 751。 这需要设置为该值 
+      ```bash
+      chmod 751 /hdp 
+      chmod –R 755 /hdp/apps
+      ```
 
 -   **Spark 2.3**
 
@@ -1409,6 +1419,10 @@ HDP 2.3.x 和 2.4.x 未随附 Mahout 的特定 Apache 版本，而是同步到 A
             val = \_.escape(val);//Line No:460
             
             删除上述行之后，Ranger UI 将允许你创建策略条件可以包含特殊字符的策略，并且针对同一策略执行策略评估将会成功。
+
+**HDInsight 与 ADLS Gen 2 集成：ESP 群集存在用户目录和权限问题**
+    1.  用户的主目录未在头节点 1 上创建。 解决方法是，手动创建这些目录并将所有权更改为相应用户的 UPN。
+    2.  /hdp 的权限当前未设置为 751。 这需要设置为 a.  chmod 751 /hdp b.  chmod -R 755 /hdp/apps
 
 ## <a name="deprecation"></a>弃用
 

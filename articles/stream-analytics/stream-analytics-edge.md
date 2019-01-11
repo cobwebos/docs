@@ -9,12 +9,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.custom: seodec18
-ms.openlocfilehash: bf290343634f9f9f836a87ab15f13cc1dac6f86f
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 9d5a0cf9fa4f9ad8b5a673cd2420416f92edda91
+ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53141945"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53994974"
 ---
 # <a name="azure-stream-analytics-on-iot-edge"></a>Azure IoT Edge 流分析
  
@@ -144,7 +144,7 @@ IoT Edge 提供了一种在模块之间，以及模块和 IoT 中心之间以声
 ### <a name="current-limitations-for-iot-edge-jobs-compared-to-cloud-jobs"></a>与云作业相比，IoT Edge 作业当前受限制
 目标是在 IoT Edge 作业和云作业之间进行平衡。 已支持大多数 SQL 查询语言功能。
 但是，以下功能尚不支持 Edge 作业：
-* JavaScript 中的用户定义函数 (UDF)。 [用于 IoT Edge 作业的 C#](https://docs.microsoft.com/en-us/azure/stream-analytics/stream-analytics-edge-csharp-udf)（预览版）中提供了 UDF。
+* JavaScript 中的用户定义函数 (UDF)。 [用于 IoT Edge 作业的 C#](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-edge-csharp-udf)（预览版）中提供了 UDF。
 * 用户定义聚合 (UDA)。
 * Azure ML 函数
 * 在单个步骤中使用超过 14 个聚合。
@@ -167,7 +167,7 @@ IoT Edge 提供了一种在模块之间，以及模块和 IoT 中心之间以声
 
 ASA 和 Azure IoT Edge 使用 Docker 容器来提供可在多个主机操作系统（Windows、Linux）上运行的便携式解决方案。
 
-IoT Edge 上的 ASA 可用作 Windows 和 Linux 映像运行于 x86-64 或 Azure 资源管理器架构之上。 
+IoT Edge 上的 ASA 可用作 Windows 和 Linux 映像运行于 x86-64 或 ARM（高级 RISC 计算机）架构之上。 
 
 
 ### <a name="input-and-output"></a>输入和输出

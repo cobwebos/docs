@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/29/2018
+ms.date: 12/12/2018
 ms.author: jeedes
-ms.openlocfilehash: 84ea1d999a26ce0ce1d548da92549c6a718d5978
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: c727cddf41c269c214b541134cd9f688017ee687
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52850357"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53789715"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-tableau-server"></a>教程：Azure Active Directory 与 Tableau Server 集成
 
@@ -86,13 +86,14 @@ ms.locfileid: "52850357"
 
 若要配置和测试 Tableau Server 的 Azure AD 单一登录，需要完成以下构建基块：
 
-1. **[配置 Azure AD 单一登录](#configuring-azure-ad-single-sign-on)** - 让用户使用此功能。
-2. **[创建 Azure AD 测试用户](#creating-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-3. **[创建 Tableau Server 测试用户](#creating-a-tableau-server-test-user)** - 在 Tableau Server 中创建 Britta Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
-4. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 使用 Azure AD 单一登录。
-5. **[测试单一登录](#testing-single-sign-on)** - 验证配置是否正常工作。
+1. **[配置 Azure AD 单一登录](#configure-azure-ad-single-sign-on)** - 使用户能够使用此功能。
+2. **[配置 Tableau Server 单一登录](#configure-tableau-server-single-sign-on)** - 在应用程序端配置单一登录设置。
+3. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
+4. **[创建 Tableau Server 测试用户](#create-tableau-server-test-user)** - 在 Tableau Server 中创建 Britta Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
+5. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
+6. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
 
-### <a name="configuring-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
+### <a name="configure-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
 
 在本部分中，将在 Azure 门户中启用 Azure AD 单一登录，并在 Tableau Server 应用程序中配置单一登录。
 
@@ -112,9 +113,9 @@ ms.locfileid: "52850357"
 
 4. 在“用户属性和声明”对话框的“用户声明”部分中，按上图所示配置 SAML 令牌属性，并执行以下步骤：
     
-    | 属性名称 | 属性值 |
-    | ---------------| --------------- |    
-    | username | user.userprincipalname |
+    | 属性名称 | 属性值 | 命名空间 |
+    | ---------------| --------------- | ----------- |   
+    | username | user.userprincipalname | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims` |
 
     a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 单击“添加新声明”以打开“管理用户声明”对话框。
 
@@ -151,33 +152,41 @@ ms.locfileid: "52850357"
 
 7. 在“SAML 签名证书”页的“SAML 签名证书”部分，单击“下载”以下载“联合元数据 XML”并将证书文件保存在计算机上。
 
-    ![证书下载链接](./media/tableauserver-tutorial/tutorial-tableauserver-certificate.png) 
+    ![证书下载链接](./media/tableauserver-tutorial/tutorial-tableauserver-certificate.png)
 
-8. 若要为应用程序配置 SSO，需要以管理员身份登录 Tableau Server 租户。
+### <a name="configure-tableau-server-single-sign-on"></a>配置 Tableau Server 单一登录 
 
-9. 在“Tableau Server 配置”页面上，执行以下步骤：
-   
-    ![配置单一登录](./media/tableauserver-tutorial/tutorial-tableauserver-001.png)
+1. 若要为应用程序配置 SSO，需要以管理员身份登录 Tableau Server 租户。
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在 Tableau Server 配置中，单击“SAML”选项卡。 
-  
-    b. 选中“使用 SAML 进行单一登录”复选框。
-   
+2. 在“配置”选项卡上，选择“用户标识和访问”，然后选择“身份验证方法”选项卡。
+
+    ![配置单一登录](./media/tableauserver-tutorial/tutorial-tableauserver-auth.png)
+
+3. 在“配置”页上，执行以下步骤：
+
+    ![配置单一登录](./media/tableauserver-tutorial/tutorial-tableauserver-config.png)
+
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 对于**身份验证方法**，请选择“SAML”。
+    
+    b. 选中“为服务器启用 SAML 身份验证”复选框。
+
     c. Tableau Server 返回 URL（Tableau Server 用户将要访问的 URL），例如 http://tableau_server。 但不建议使用 http://localhost。 不支持使用带尾部反斜杠的 URL（例如， http://tableau_server/)。 在“Tableau Server 域和 URL”部分中，复制“Tableau Server 返回 URL”并将其粘贴到 Azure AD“登录 URL”文本框中。
-   
+
     d. SAML 实体 ID - 此实体 ID 唯一标识安装到 IdP 的 Tableau Server。 可以在此处再次输入 Tableau Server URL（如果需要），但它不必须是 Tableau Server URL。 在“Tableau Server 域和 URL”部分中，复制“SAML 实体 ID”并将其粘贴到 Azure AD“标识符”文本框中。
-     
-    e. 单击“导出元数据文件”，并在文本编辑器应用程序中打开该文件。 找到包含 Http Post 和索引 0 的断言使用者服务 URL 并复制该 URL。 现在将其粘贴到“Tableau Server 域和 URL”部分中的 Azure AD“答复 URL”文本框中。
-   
+
+    e. 单击“下载 XML 元数据文件”，并在文本编辑器应用程序中打开该文件。 找到包含 Http Post 和索引 0 的断言使用者服务 URL 并复制该 URL。 现在将其粘贴到“Tableau Server 域和 URL”部分中的 Azure AD“答复 URL”文本框中。
+
     f. 找到从 Azure 门户下载的联合元数据文件，然后在“SAML Idp 元数据文件”中上传它。
-   
-    g. 在“Tableau Server 配置”页中单击“确定”按钮。
-   
+
+    g. 输入 IdP 用来保存用户名、显示名称和电子邮件地址的属性的名称。
+
+    h. 单击“保存”
+
     >[!NOTE] 
     >客户必须上传 Tableau Server SAML SSO 配置中的任何证书，SSO 流程中会将其忽略。
-    >如果需要帮助在 Tableau Server 上配置 SAML，请参阅此文：[配置 SAML](https://onlinehelp.tableau.com/current/server/en-us/config_saml.htm)。
+    >如果需要帮助在 Tableau Server 上配置 SAML，请参阅此文：[配置 SAML](https://onlinehelp.tableau.com/v2018.2/server/en-us/saml_config_steps_tsm_ui.htm)。
 
-### <a name="creating-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
+### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 
 本部分的目的是在 Azure 门户中创建名为 Britta Simon 的测试用户。
 
@@ -202,7 +211,7 @@ ms.locfileid: "52850357"
 
     d. 选择“创建”。
   
-### <a name="creating-a-tableau-server-test-user"></a>创建 Tableau Server 测试用户
+### <a name="create-tableau-server-test-user"></a>创建 Tableau Server 测试用户
 
 本部分的目的是在 Tableau Server 中创建名为“Britta Simon”的用户。 需要在 Tableau Server 中预配所有用户。 
 
@@ -211,7 +220,7 @@ ms.locfileid: "52850357"
 >[!NOTE]
 >如果需要手动创建用户，需要联系组织中的 Tableau Server 管理员。
 
-### <a name="assigning-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
+### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
 在本部分中，通过授予 Britta Simon 访问 Tableau Server 的权限，允许她使用 Azure 单一登录。
 
@@ -235,7 +244,7 @@ ms.locfileid: "52850357"
 
 6. 在“添加分配”对话框中，选择“分配”按钮。
 
-### <a name="testing-single-sign-on"></a>测试单一登录
+### <a name="test-single-sign-on"></a>测试单一登录
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/16/2018
 ms.author: sedusch
-ms.openlocfilehash: e2e76e3cd058e5798b0159923118b050f38d077e
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: aca5b1613a6500b3aeca1a7074cabdce50023510
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47034631"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53789494"
 ---
 # <a name="high-availability-of-sap-hana-on-azure-vms-on-suse-linux-enterprise-server"></a>SUSE Linux Enterprise Server 上 Azure VM 中 SAP HANA 的高可用性
 
@@ -36,6 +36,7 @@ ms.locfileid: "47034631"
 [1984787]:https://launchpad.support.sap.com/#/notes/1984787
 [1999351]:https://launchpad.support.sap.com/#/notes/1999351
 [2388694]:https://launchpad.support.sap.com/#/notes/2388694
+[401162]:https://launchpad.support.sap.com/#/notes/401162
 
 [hana-ha-guide-replication]:sap-hana-high-availability.md#14c19f65-b5aa-4856-9594-b81c7e4df73d
 [hana-ha-guide-shared-storage]:sap-hana-high-availability.md#498de331-fa04-490b-997c-b078de457c9d
@@ -67,6 +68,7 @@ ms.locfileid: "47034631"
 * SAP 说明 [2243692] 包含 Azure 中的 Linux 上的 SAP 许可的相关信息。
 * SAP 说明 [1984787] 包含有关 SUSE Linux Enterprise Server 12 的一般信息。
 * SAP 说明 [1999351] 包含适用于 SAP 的 Azure 增强型监视扩展的其他故障排除信息。
+* SAP 说明 [401162] 包含有关在设置 HANA 系统复制时如何避免“地址已在使用”的信息。
 * [SAP Community WIKI](https://wiki.scn.sap.com/wiki/display/HOME/SAPonLinuxNotes) 包含适用于 Linux 的所有必需 SAP 说明。
 * [经 SAP HANA 认证的 IaaS 平台](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure)
 * [针对 Linux 上的 SAP 的 Azure 虚拟机规划和实施][planning-guide]指南。
@@ -105,11 +107,11 @@ Azure 市场中包含适用于 SUSE Linux Enterprise Server for SAP Applications
 1. 输入以下参数：
     - **SAP 系统 ID**：输入要安装的 SAP 系统的 SAP 系统 ID。 该 ID 将用作所要部署的资源的前缀。
     - **堆栈类型**：（仅当使用聚合模板时此参数才适用。）选择 SAP NetWeaver 堆栈类型。
-    - **OS 类型**：选择一个 Linux 分发版。 对于本示例，请选择“SLES 12”。
+    - **OS 类型**：选择一个 Linux 发行版。 对于本示例，请选择“SLES 12”。
     - **数据库类型**：选择“HANA”。
     - **SAP 系统大小**：输入新系统将提供的 SAPS 数量。 如果不确定系统需要多少 SAPS，请咨询 SAP 技术合作伙伴或系统集成商。
     - **系统可用性**：选择“HA”。
-    - **管理员用户名和管理员密码**：创建的可用于登录计算机的新用户。
+    - **管理员用户名和管理员密码**：创建可用于登录计算机的新用户。
     - **新子网或现有子网**：确定是要创建新的虚拟网络和子网，还是使用现有子网。 如果已有连接到本地网络的虚拟网络，请选择“现有”。
     - **子网 ID**：如果要将 VM 部署到现有 VNet 中，并且该 VNet 中已定义了 VM 应分配到的子网，请指定该特定子网的 ID。 ID 通常如下所示：**/subscriptions/\<订阅 ID>/resourceGroups/\<资源组名称>/providers/Microsoft.Network/virtualNetworks/\<虚拟网络名称>/subnets/\<子网名称>**。
 
@@ -316,28 +318,28 @@ Azure 市场中包含适用于 SUSE Linux Enterprise Server for SAP Applications
 1. **[A]** 从 HANA DVD 运行 **hdblcm** 程序。 在提示符下输入以下值：
    * 选择安装：输入 **1**。
    * 选择要安装的其他组件：输入 **1**。
-   * 输入安装路径 [/hana/shared]：按 Enter。
-   * 输入本地主机名 [..]：按 Enter。
-   * 是否要将其他主机添加到系统? (y/n) [n]：按 Enter。
+   * 输入安装路径 [/hana/shared]：选择 Enter。
+   * 输入本地主机名 [..]：选择 Enter。
+   * 是否要将其他主机添加到系统? (y/n) [n]：选择 Enter。
    * 输入 SAP HANA 系统 ID：输入 HANA 的 SID，例如：**HN1**。
    * 输入实例编号 [00]：输入 HANA 实例编号。 如果使用了 Azure 模板或者遵循了本文的手动部署部分，请输入 **03**。
-   * 选择数据库模式/输入索引 [1]：按 Enter。
+   * 选择数据库模式 / 输入索引 [1]：选择 Enter。
    * 选择系统用途/输入索引 [4]：选择系统用途值。
-   * 输入数据卷的位置 [/hana/data/HN1]：按 Enter。
-   * 输入日志卷的位置 [/hana/log/HN1]：按 Enter。
-   * 是否限制最大内存分配? [n]：按 Enter。
-   * 输入主机 '...' 的证书主机名 [...]：按 Enter。
+   * 输入数据卷的位置 [/hana/data/HN1]：选择 Enter。
+   * 输入日志卷的位置 [/hana/log/HN1]：选择 Enter。
+   * 是否限制最大内存分配? [n]：选择 Enter。
+   * 输入主机 '...' [...] 的证书主机名：选择 Enter。
    * 输入 SAP 主机代理用户 (sapadm) 密码：输入主机代理用户密码。
-   * 确认 SAP 主机代理用户 (sapadm) 密码：再次输入主机代理用户密码以确认。
+   * 确认 SAP 主机代理用户 (sapadm) 密码：再次输入主机代理用户密码以进行确认。
    * 输入系统管理员 (hdbadm) 密码：输入系统管理员密码。
-   * 确认系统管理员 (hdbadm) 密码：再次输入系统管理员密码以确认。
-   * 输入系统管理员主目录 [/usr/sap/HN1/home]：按 Enter。
-   * 输入系统管理员登录 Shell [/ bin/sh]：按 Enter。
-   * 输入系统管理员用户 ID [1001]：按 Enter。
-   * 输入用户组 (sapsys) 的 ID [79]：按 Enter。
+   * 确认系统管理员 (hdbadm) 密码：再次输入系统管理员密码以进行确认。
+   * 输入系统管理员主目录 [/usr/sap/HN1/home]：选择 Enter。
+   * 输入系统管理员登录 Shell [/ bin/sh]：选择 Enter。
+   * 输入系统管理员用户 ID [1001]：选择 Enter。
+   * 输入用户组 (sapsys) 的 ID [79]：选择 Enter。
    * 输入数据库用户 (SYSTEM) 密码：输入数据库用户密码。
-   * 确认数据库用户 (SYSTEM) 密码：再次输入数据库用户密码以确认。
-   * 重新引导计算机后是否重新启动系统? [n]：按 Enter。
+   * 确认数据库用户 (SYSTEM) 密码：再次输入数据库用户密码以进行确认。
+   * 重新引导计算机后是否重新启动系统? [n]：选择 Enter。
    * 是否继续? (y/n)：验证摘要。 按 **y** 继续。
 
 1. **[A]** 升级 SAP 主机代理。
@@ -688,9 +690,9 @@ crm resource cleanup msl_SAPHana_<b>HN1</b>_HDB<b>03</b> <b>hn1-db-0</b>
 以下测试是“SUSE Linux Enterprise Server for SAP Applications 12 SP1 的 SAP HANA SR 性能优化方案”指南测试说明的副本。 如需最新版本，另请阅读指南本身。 在开始测试之前，始终确保 HANA 已同步，另请确保 Pacemaker 的配置正确。
 
 以下测试说明假设 PREFER_SITE_TAKEOVER ="true"，AUTOMATED_REGISTER ="false"。
-注意：以下测试需按顺序运行，并依赖于先前测试的退出状态。
+注意：以下测试需按顺序运行，并依赖于前面测试的退出状态。
 
-1. 测试 1：在节点 1 上停止主数据库
+1. 测试 1：停止节点 1 上的主数据库
 
    开始测试之前的资源状态：
 
@@ -731,7 +733,7 @@ crm resource cleanup msl_SAPHana_<b>HN1</b>_HDB<b>03</b> <b>hn1-db-0</b>
       rsc_nc_HN1_HDB03   (ocf::heartbeat:anything):      Started hn1-db-1
    </code></pre>
 
-1. 测试 2：在节点 2 上停止主数据库
+1. 测试 2：停止节点 2 上的主数据库
 
    开始测试之前的资源状态：
 
@@ -772,7 +774,7 @@ crm resource cleanup msl_SAPHana_<b>HN1</b>_HDB<b>03</b> <b>hn1-db-0</b>
       rsc_nc_HN1_HDB03   (ocf::heartbeat:anything):      Started hn1-db-0
    </code></pre>
 
-1. 测试 3：在节点上崩溃主数据库
+1. 测试 3：使节点上的主数据库发生故障
 
    开始测试之前的资源状态：
 
@@ -813,7 +815,7 @@ crm resource cleanup msl_SAPHana_<b>HN1</b>_HDB<b>03</b> <b>hn1-db-0</b>
       rsc_nc_HN1_HDB03   (ocf::heartbeat:anything):      Started hn1-db-1
    </code></pre>
 
-1. 测试 4：在节点 2 上崩溃主数据库
+1. 测试 4：使节点 2 上的主数据库发生故障
 
    开始测试之前的资源状态：
 
@@ -854,7 +856,7 @@ crm resource cleanup msl_SAPHana_<b>HN1</b>_HDB<b>03</b> <b>hn1-db-0</b>
       rsc_nc_HN1_HDB03   (ocf::heartbeat:anything):      Started hn1-db-0
    </code></pre>
 
-1. 测试 5：崩溃主站点节点（节点 1）
+1. 测试 5：使主站点节点（节点 1）发生故障
 
    开始测试之前的资源状态：
 
@@ -905,7 +907,7 @@ crm resource cleanup msl_SAPHana_<b>HN1</b>_HDB<b>03</b> <b>hn1-db-0</b>
       rsc_nc_HN1_HDB03   (ocf::heartbeat:anything):      Started hn1-db-1
    </code></pre>
 
-1. 测试 6：崩溃辅助站点节点（节点 2）
+1. 测试 6：使辅助站点节点（节点 2）发生故障
 
    开始测试之前的资源状态：
 
@@ -993,7 +995,7 @@ crm resource cleanup msl_SAPHana_<b>HN1</b>_HDB<b>03</b> <b>hn1-db-0</b>
       rsc_nc_HN1_HDB03   (ocf::heartbeat:anything):      Started hn1-db-0
    </code></pre>
 
-1. 测试 8：崩溃节点 2 上的辅助数据库
+1. 测试 8：使节点 2 上的辅助数据库发生故障
 
    开始测试之前的资源状态：
 
@@ -1030,7 +1032,7 @@ crm resource cleanup msl_SAPHana_<b>HN1</b>_HDB<b>03</b> <b>hn1-db-0</b>
       rsc_nc_HN1_HDB03   (ocf::heartbeat:anything):      Started hn1-db-0
    </code></pre>
 
-1. 测试 9：崩溃运行辅助 HANA 数据库的辅助站点节点（节点 2）
+1. 测试 9：使运行辅助 HANA 数据库的辅助站点节点（节点 2）发生故障
 
    开始测试之前的资源状态：
 

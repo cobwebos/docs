@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: pbutlerm
-ms.openlocfilehash: e247cedb732bb1290631ada4c6d423f1b3ed0dbd
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: da67213b708b3ff26fe1ddd926c5cb0bba33458d
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53195420"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53788542"
 ---
 # <a name="saas-application-technical-info-tab"></a>SaaS 应用程序“技术信息”选项卡
 
@@ -54,7 +54,7 @@ ms.locfileid: "53195420"
 |     入门说明              |   有关与客户共享，以帮助他们连接到 SaaS 应用的指导。 允许基本的 HTML 标记，例如：&lt;p&gt;、&lt;h1&gt;、&lt;li&gt;，等等。                |
 |    登陆页 URL  |   从 Azure 门户获取套餐后，将客户定向到的登陆站点 URL。 此 URL 也是接收连接 API 以方便与 Microsoft 开展商务活动的终结点。                |
 |  连接 Webhook    |  对于 Microsoft 需要代表客户向你发送的所有异步事件（示例：Azure 订阅已无效），我们需要你提供连接 Webhook。 如果你尚未部署 Webhook 系统，最简单的配置是使用一个 HTTP 终结点逻辑应用来侦听发布到该终结点的所有事件，并相应地进行处理。 有关详细信息，请参阅<a href="https://docs.microsoft.com/azure/logic-apps/logic-apps-http-endpoint">在逻辑应用中使用 HTTP 终结点调用、触发或嵌套工作流</a>                |
-|  Azure AD 租户 ID 和应用 ID      |   在 Azure 门户中，我们要求创建一个 Active Directory 应用，以便可以验证两个服务之间的连接是否属于经过身份验证的通信。 对于这些字段，请创建一个 AD 应用，并粘贴所需的相应租户 ID 和应用 ID。               |
+|  Azure AD 租户 ID 和应用 ID      |   在 Azure 门户中，我们要求创建一个 Active Directory 应用，以便可以验证两个服务之间的连接是否属于经过身份验证的通信。 对于这些字段，请创建一个 AD 应用，并粘贴所需的相应租户 ID 和应用 ID。 请注意，应用 ID 将关联到 publisherID。 因此，请确保所有产品/服务中的应用 ID 都相同。             |
 
 
 最后，如果你选择“通过 Microsoft 进行销售”，则“新建产品/服务”中还会有名为“计划”的另一个选项卡。 

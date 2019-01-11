@@ -1,5 +1,5 @@
 ---
-title: Azure 时序见解 JSON - 在 Azure 时序见解查询中塑造 JSON 的最佳做法 | Microsoft Docs
+title: 在 Azure 时序见解查询中塑造 JSON 的最佳做法 | Microsoft Docs
 description: 了解如何提高 Azure 时序见解查询的效率。
 services: time-series-insights
 author: ashannon7
@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 05/24/2018
 ms.author: anshan
 ms.custom: seodec18
-ms.openlocfilehash: 284bbf435c7940658753e7bbf1daff00a79d57a1
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: aa09183d1dbb78822b6c46333dada3ed7f54811a
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53273836"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53554565"
 ---
 # <a name="how-to-shape-json-to-maximize-query-performance"></a>如何塑造 JSON 以最大化查询性能 
 

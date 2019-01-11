@@ -1,19 +1,17 @@
 ---
 title: Azure Cosmos DB PDF 查询速查表
 description: 可打印的 PDF 备忘单，借助该备忘录可使用 Azure Cosmos DB SQL、MongoDB、Graph 和表 API 来查询数据
-keywords: SQL 备忘单, SQL 备忘单 PDF, SQL 查询备忘单
-services: cosmos-db
 author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 03/20/2018
 ms.author: sngun
-ms.openlocfilehash: 21b2ee99fa8f9b22b4dfccadfaadf1d4a10980cf
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 848b5a75e4e957b2ad61072ff2e229cacdba2019
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53138137"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54035063"
 ---
 # <a name="azure-cosmos-db-query-cheat-sheets"></a>Azure Cosmos DB 查询备忘单
 
@@ -25,18 +23,16 @@ Azure Cosmos DB 查询备忘单通过在易于打印的 PDF 参考单中显示�
 
 如果想要打印到信纸尺寸的纸张 (8.5" x 11")，请下载 [Azure Cosmos DB 信纸尺寸的查询备忘单](https://go.microsoft.com/fwlink/?LinkId=623215)。
 
-![Azure Cosmos DB 查询备忘单 - 信纸尺寸（包含 SQL API、JavaScript、MongoDB API、Gremlin API 和表 API 查询和函数）](./media/query-cheat-sheet/azure-cosmos-db-cheat-sheet-letter.png)
+![Azure Cosmos DB 查询备忘单 - 信纸尺寸（包含 SQL API、JavaScript、MongoDB、Gremlin 和表 API 查询和函数）](./media/query-cheat-sheet/azure-cosmos-db-cheat-sheet-letter.png)
 
 ## <a name="oversized-cheat-sheets"></a>超大尺寸的备忘单
 如果想要使用绘图仪或大型打印机打印到 A3 尺寸的纸张上 (11.7" x 16.5")，请下载 [Azure Cosmos DB A3 尺寸的查询备忘单](https://go.microsoft.com/fwlink/?linkid=870413)。
 
-![Azure Cosmos DB 查询备忘单 - A3 尺寸（包含 SQL API、JavaScript、MongoDB API、Gremlin API 和表 API 查询和函数）](./media/query-cheat-sheet/azure-cosmos-db-cheat-sheet-a3.png)
+![Azure Cosmos DB 查询备忘单 - A3 尺寸（包含 SQL API、JavaScript、MongoDB、Gremlin 和表 API 查询和函数）](./media/query-cheat-sheet/azure-cosmos-db-cheat-sheet-a3.png)
 
 ## <a name="next-steps"></a>后续步骤
 如需查询编写的相关帮助，请参阅以下文章：
 * 有关 SQL API 查询，请参阅[使用 SQL API 的查询](tutorial-query-sql-api.md)、[Azure Cosmos DB 的 SQL 查询](how-to-sql-query.md)和 [SQL 语法参考](sql-api-query-reference.md)
-* 有关 MongoDB 查询，请参阅[使用 MongoDB API 的查询](tutorial-query-mongodb.md)和[针对 MongoDB 功能和语法的 MongoDB API 支持](mongodb-feature-support.md)
+* 有关 MongoDB 查询，请参阅[使用 Azure Cosmos DB 的 API for MongoDB 进行查询](tutorial-query-mongodb.md)和 [Azure Cosmos DB 的 API for MongoDB 功能支持和语法](mongodb-feature-support.md)
 * 有关 Gremlin API 查询，请参阅[使用 Gremlin API 的查询](tutorial-query-graph.md)和 [Azure Cosmos DB Gremlin 图形支持](gremlin-support.md)
 * 有关表 API 查询，请参阅[使用表 API 的查询](tutorial-query-table.md)
-
-

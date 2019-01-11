@@ -11,18 +11,18 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 12/07/2018
 ms.author: diberry
-ms.openlocfilehash: 6bcea43fb21cae6f000f3522b498dfc6c0f6d9a7
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: 4d14569219c8db503fc91f52a6867de85373aa05
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53166211"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53724379"
 ---
-# <a name="find-endpoint-region-with-nodejs"></a>使用 Node.js 查找终结点区域
+# <a name="programmatically-find-endpoint-region-with-nodejs"></a>使用 Node.js 以编程方式查找终结点区域
 如果具有 LUIS 应用 ID 和 LUIS 订阅 ID，则可查找要用于终结点查询的区域。
 
 > [!NOTE] 
-> [LUIS-Samples GitHub 存储库](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/find-region/nodejs/)中提供了完整的 Node.js 解决方案。
+> [**Azure-Samples** GitHub 存储库](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/find-region/nodejs/)中提供了完整的 Node.js 解决方案。
 
 ## <a name="luis-endpoint-query-strategy"></a>LUIS 终结点查询策略
 每个 LUIS 终结点查询需要：

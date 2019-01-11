@@ -1,25 +1,24 @@
 ---
 title: Azure Cosmos DB 中的高可用性
 description: 本文介绍 Azure Cosmos DB 如何提供高可用性
-services: cosmos-db
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/15/2018
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: 112b41aa41706a807a82e708fe1fb4173fd084ca
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 4fc17daf640e95ab028150cec029471a0c7bc565
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52837522"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54062989"
 ---
 # <a name="high-availability-with-azure-cosmos-db"></a>使用 Azure Cosmos DB 实现高可用性
 
 Azure Cosmos DB 以透明方式在与 Cosmos 帐户关联的所有 Azure 区域之间复制数据。 Cosmos DB 对数据采用多层冗余，如下图所示：
 
-![资源分区](./media/high-availability/figure1.png)
+![物理分区](./media/high-availability/cosmosdb-data-redundancy.png)
 
 - Cosmos 容器中的数据已水平分区。
 

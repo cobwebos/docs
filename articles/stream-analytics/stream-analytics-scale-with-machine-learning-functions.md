@@ -4,26 +4,25 @@ description: 本文介绍如何通过配置分区和流单元缩放使用机器�
 services: stream-analytics
 author: jseb225
 ms.author: jeanb
-manager: kfile
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/28/2017
-ms.openlocfilehash: 115273086eeb88064c4b179f67d2d400d9f84692
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 216ce32997a4114f4f2684b14338b4e36d9afd03
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43696092"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53557999"
 ---
 # <a name="scale-your-stream-analytics-job-with-azure-machine-learning-functions"></a>使用 Azure 机器学习函数缩放流分析作业
 设置流分析作业，并通过它运行某些示例数据，这通常很直接了当。 但当我们需要运行数据量更大的相同作业时，该怎么办？ 需要了解如何配置流分析作业，以便可以缩放它。 本文档关注使用机器学习函数缩放流分析作业的特殊方面。 有关在一般情况下如何缩放流分析作业的信息，请参阅文章[缩放作业](stream-analytics-scale-jobs.md)。
 
 ## <a name="what-is-an-azure-machine-learning-function-in-stream-analytics"></a>流分析中的 Azure 机器学习函数是什么？
-流分析中的机器学习函数可像流分析查询语言中的常规函数调用那样使用。 但是在后台，函数调数用实际上是 Azure 机器学习 Web 服务请求数。 机器学习 Web 服务支持在相同的 Web 服务 API 调用中“批处理”多个行（这称为“微批处理”），从而提高整体吞吐量。 有关更多信息，请参阅[流分析中的 Azure 机器学习函数](https://blogs.technet.microsoft.com/machinelearning/2015/12/10/azure-ml-now-available-as-a-function-in-azure-stream-analytics/)和 [Azure 机器学习 Web 服务](../machine-learning/studio/consume-web-services.md)。
+流分析中的机器学习函数可像流分析查询语言中的常规函数调用那样使用。 但是在后台，函数调数用实际上是 Azure 机器学习 Web 服务请求数。 机器学习 Web 服务支持在同一 Web 服务 API 调用中“批处理”多个行（这称为“微批处理”），从而提高整体吞吐量。 有关更多信息，请参阅[流分析中的 Azure 机器学习函数](https://blogs.technet.microsoft.com/machinelearning/2015/12/10/azure-ml-now-available-as-a-function-in-azure-stream-analytics/)和 [Azure 机器学习 Web 服务](../machine-learning/studio/consume-web-services.md)。
 
 ## <a name="configure-a-stream-analytics-job-with-machine-learning-functions"></a>使用机器学习函数配置流分析作业
-在配置流分析作业的机器学习函数时，需要考虑两个参数：机器学习函数调用数的批大小和为流分析作业预配的流式处理单位 (SU)。 若要确定这些参数的相应值，请首先确定延迟和吞吐量，即流分析作业延迟和每个 SU 的吞吐量。 虽然额外的 SU 会增加运行作业的成本，但可能会始终将 SU 添加到某个作业，以增加分区良好的流分析查询吞吐量。
+在配置流分析作业的机器学习函数时，需要考虑两个参数：机器学习函数调用数的批大小和为流分析作业预配的流式处理单位 (SU)。 若要确定 SU 的相应值，请首先确定延迟和吞吐量，即流分析作业延迟和每个 SU 的吞吐量。 虽然额外的 SU 会增加运行作业的成本，但可能会始终将 SU 添加到某个作业，以增加分区良好的流分析查询吞吐量。
 
 因此，请务必确定运行流分析作业的延迟*公差*。 运行 Azure 机器学习服务请求产生的额外延迟会随着批大小的增加而自然增加，这会恶化流分析作业延迟现象。 另一方面，增加批大小支持流分析作业使用相同数量的机器学习 Web 服务请求处理 * 更多事件。 增加机器学习 Web 服务延迟通常与增加批大小呈子线性关系，所以在任何给定的情况下，请务必考虑机器学习 Web 服务的最经济有效的批大小。 Web 服务请求的默认批大小为 1000，可使用[流分析 REST API](https://msdn.microsoft.com/library/mt653706.aspx "流分析 REST API") 或[用于流分析的 PowerShell 客户端](stream-analytics-monitor-and-manage-jobs-use-powershell.md "用于流分析的 PowerShell 客户端")修改大小。
 
@@ -44,8 +43,9 @@ ms.locfileid: "43696092"
 ## <a name="example--sentiment-analysis"></a>示例 – 情绪分析
 以下示例包括具有情绪分析机器学习函数的流分析作业，如[流分析机器学习集成教程](stream-analytics-machine-learning-integration-tutorial.md)所述。
 
-查询是已完全分区的简单查询，后跟情绪函数，如下所示：
+查询是简单的、已完全分区的查询，后跟**情绪**函数，如以下示例所示：
 
+```SQL
     WITH subquery AS (
         SELECT text, sentiment(text) as result from input
     )
@@ -53,8 +53,8 @@ ms.locfileid: "43696092"
     Select text, result.[Score]
     Into output
     From subquery
-
-请考虑以下方案：若要每秒内产生 10000 条推文的吞吐量，则必须创建执行推文（事件）情绪分析的流分析作业。 如果使用 1 个 SU，此流分析作业可以处理该流量吗？ 如果使用默认值 1000 的批大小，作业应该能够与输入保持一致。 进一步而言，添加的机器学习函数应生成不大于一秒的延迟，这是情绪分析机器学习 Web 服务（默认批大小为 1000）的常规默认延迟。 流分析作业的**整体**或端到端延迟通常是几秒钟。 请仔细了解此流分析作业，*特别是*机器学习函数调用数。 如果批大小为 1000，则 10,000 个事件的吞吐量将向 Web 服务发送大约 10 个请求。 即使使用 1 个 SU，也有足够的并发连接可以容纳此输入流量。
+```
+请考虑以下方案：若要每秒内产生 10000 条推文的吞吐量，则必须创建执行推文（事件）情绪分析的流分析作业。 如果使用 1 个 SU，此流分析作业可以处理该流量吗？ 如果使用默认值 1000 的批大小，作业应该能够与输入保持一致。 进一步而言，添加的机器学习函数应生成不大于一秒的延迟，这是情绪分析机器学习 Web 服务（默认批大小为 1000）的常规默认延迟。 流分析作业的**整体**或端到端延迟通常是几秒钟。 请仔细了解此流分析作业，*特别是*机器学习函数调用数。 如果批大小为 1000，则 10,000 个事件的吞吐量将向 Web 服务发送大约 10 个请求。 即使使用一个 SU，也有足够的并发连接可以容纳此输入流量。
 
 如果输入事件率增加 100 倍，而流分析作业需要每秒处理 1000000 条推文。 有两个选项来完成增加的规模：
 

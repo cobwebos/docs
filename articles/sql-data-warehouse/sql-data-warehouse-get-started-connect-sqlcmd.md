@@ -1,6 +1,6 @@
 ---
 title: 连接到 Azure SQL 数据仓库 sqlcmd |Microsoft 文档
-description: 使用 [sqlcmd][sqlcmd] 命令行实用工具连接和查询 Azure SQL 数据仓库。
+description: 使用 sqlcmd 命令行实用程序连接并查询 Azure SQL 数据仓库。
 services: sql-data-warehouse
 author: kavithaj
 manager: craigg
@@ -10,12 +10,12 @@ ms.component: consume
 ms.date: 04/17/2018
 ms.author: kavithaj
 ms.reviewer: igorstan
-ms.openlocfilehash: 94f3955f9ce94fa52e89180fa649c4e412b80109
-ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
+ms.openlocfilehash: 2534d668132db4c66b5e54c33849b76a8f93c348
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43247707"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53976403"
 ---
 # <a name="connect-to-sql-data-warehouse-with-sqlcmd"></a>使用 sqlcmd 连接到 SQL 数据仓库
 > [!div class="op_single_selector"]
@@ -38,8 +38,8 @@ ms.locfileid: "43247707"
 
 若要使用 SQL Server 身份验证，需要添加用户名/密码参数：
 
-* **用户 (-U)：** 采用`<`用户`>`格式的服务器用户
-* **密码 (-P)：** 与用户关联的密码
+* **用户 (-U)：** 采用 `<`User`>` 格式的服务器用户
+* **密码 (-P)：** 与用户关联的密码。
 
 例如，连接字符串可能如下所示：
 
@@ -62,7 +62,7 @@ C:\>sqlcmd -S MySqlDw.database.windows.net -d Adventure_Works -G -I
 > 
 > 
 
-## <a name="2-query"></a>2.查询
+## <a name="2-query"></a>2.Query
 连接后，可以对实例发出任何支持的 Transact-SQL 语句。  在此示例中，查询以交互模式进行提交。
 
 ```sql

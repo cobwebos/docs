@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/01/2018
 ms.author: hrushib
-ms.openlocfilehash: 1a9034d7cbc276f35c5f01b06f6973553222d1c4
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: f2a1cd79a99e16460c96d28ebeb0a2bd68975361
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52722371"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53794237"
 ---
 # <a name="understanding-periodic-backup-configuration-in-azure-service-fabric"></a>了解 Azure Service Fabric 中的定期备份配置
 
@@ -138,6 +138,9 @@ ms.locfileid: "52722371"
         }
         ```
 
+> [!IMPORTANT]
+> 由于运行时中的问题，请确保保留策略中的保留期配置为小于 24 天，否则将导致备份还原服务进入仲裁丢失后副本故障转移。
+
 ## <a name="enable-periodic-backup"></a>启用定期备份
 在定义备份策略来满足数据备份要求后，应当将备份策略与“应用程序”、“服务”或“分区”相关联。
 
@@ -214,6 +217,11 @@ ms.locfileid: "52722371"
 * 如果暂停是在“服务”上应用的，则应当使用[恢复服务备份](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-resumeservicebackup) API 进行恢复。
 
 * 如果暂停是在“分区”上应用的，则应当使用[恢复分区备份](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-resumepartitionbackup) API 进行恢复。
+
+### <a name="difference-between-suspend-and-disable-backups"></a>暂停备份与禁用备份之间的差异
+当特定的应用程序、服务或分区不再需要备份时，应当禁用备份。 用户实际上可以在将“清理备份”参数设置为 true 的情况下调用“禁止备份”请求，这意味着所有现有备份也将被删除。 但是，暂停将用于以下场景：当用户希望暂时关闭备份时，例如，当本地磁盘已满或者上传备份由于已知的网络问题等而失败时。 
+
+只能在先前显式为备份启用的级别调用禁用，但是可以在当前直接或通过继承/层次结构为备份启用的任何级别应用暂停。 例如，如果在某个应用程序级别启用了备份，则用户只能在该应用程序级别调用禁用，但是可以在该应用程序上以及该应用程序下的任何服务或分区上调用暂停。 
 
 ## <a name="auto-restore-on-data-loss"></a>在数据丢失时自动还原
 服务分区可能会由于意外故障而导致数据丢失。 例如，分区的三个副本中的两个（包括主副本）的磁盘数据已损坏或被擦除。

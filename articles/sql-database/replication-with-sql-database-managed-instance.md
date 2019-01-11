@@ -12,12 +12,12 @@ ms.author: xiwu
 ms.reviewer: mathoma
 manager: craigg
 ms.date: 09/25/2018
-ms.openlocfilehash: 3b979a9a7e93992ba593697fa9465fdadc1e58b9
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 4a272b028e1e3ef2778227f259c0b1b980af885d
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51240386"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53547586"
 ---
 # <a name="replication-with-sql-database-managed-instance"></a>使用 SQL 数据库托管实例进行复制
 
@@ -63,6 +63,8 @@ Azure SQL 数据库上的发布服务器和分发服务器需要：
 - 连接时，在复制参与者之间使用 SQL 身份验证。
 
 - 适用于复制工作目录的 Azure 存储帐户共享。
+
+- 需要在托管实例子网的安全规则中打开端口 445（TCP 出站）才能访问 Azure 文件共享
 
 ## <a name="features"></a>功能
 

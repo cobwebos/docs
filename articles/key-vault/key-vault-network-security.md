@@ -1,6 +1,6 @@
 ---
 ms.assetid: ''
-title: 配置 Azure Key Vault 防火墙和虚拟网络
+title: 配置 Azure 密钥保管库防火墙和虚拟网络 - Azure 密钥保管库
 description: 配置 Key Vault 防火墙和虚拟网络的分步说明
 services: key-vault
 author: amitbapat
@@ -8,14 +8,14 @@ manager: mbaldwin
 ms.service: key-vault
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 08/31/2018
+ms.date: 01/02/2019
 ms.author: ambapat
-ms.openlocfilehash: 7dd768d3f0059f4b26f09298992483553f1508d2
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: 09a19b92a496650f94be208d4f463f1fb3fa4256
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52681240"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "54001849"
 ---
 # <a name="configure-azure-key-vault-firewalls-and-virtual-networks"></a>配置 Azure Key Vault 防火墙和虚拟网络
 

@@ -16,12 +16,12 @@ ms.component: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 4d86bcf99d5b4cf2b04980e72a2bd0a422233dc3
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: db801acbed649c4baa039858ce1d097237c8e227
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51622868"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53971369"
 ---
 # <a name="azure-ad-audit-activity-reference"></a>Azure AD 审核活动参考
 
@@ -33,7 +33,7 @@ Azure AD 中的报告体系结构由以下部分组成：
     - [登录](concept-sign-ins.md) - 提供有关托管应用程序的使用情况和用户登录活动的信息
     - [审核日志](concept-audit-logs.md) - 针对 Azure AD 中的各种功能所做的所有更改进行日志记录，通过这些日志提供可跟踪性。 
     
-- **安全报告** 
+- **安全报表** 
     - [风险登录](concept-risky-sign-ins.md) - 风险登录是指可能由非用户帐户合法拥有者进行的登录尝试。 
     - [已标记为存在风险的用户](concept-user-at-risk.md) - 风险用户是指可能已泄露的用户帐户。 
 
@@ -227,7 +227,7 @@ Azure AD 中的报告体系结构由以下部分组成：
 |授权|更新策略|
 |授权|更新用户属性|
 |授权|上传 CPIM 加密密钥|
-|授权|用户授权：针对租户功能集禁用了 API|
+|授权|用户授权：对租户功能集禁用了 API|
 |授权|用户授权：为用户授予了“租户管理员”访问权限|
 |授权|用户授权：为用户授予了“已验证用户”访问权限|
 |授权|验证是否已启用 B2C 功能|
@@ -516,7 +516,7 @@ Azure AD 中的报告体系结构由以下部分组成：
 |组管理|更新访问评审|
 |组管理|更新访问评审邮件通知设置|
 |组管理|更新访问评审再评计数设置|
-|组管理|更新访问评审再评持续时间（天）设置|
+|组管理|更新以天为单位的访问评审再评持续时间设置|
 |用户管理|更新访问评审再评结束类型设置|
 |用户管理|更新访问评审再评类型设置|
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/24/2018
 ms.author: hermannd
-ms.openlocfilehash: f86107c5fcd4c0175d59689718dca15736aa3b17
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: fb4fed2aa6b80ceb37dde1205996a16f0c30bdd4
+ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52497363"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53994703"
 ---
 # <a name="verify-and-troubleshoot-sap-hana-scale-out-high-availability-setup-on-sles-12-sp3"></a>验证 SLES 12 SP3 上的 SAP HANA 横向扩展高可用性设置和排查其问题 
 
@@ -173,7 +173,7 @@ corosync 配置文件必须在群集中的每个节点（包括多数仲裁节�
 
 我们以测试系统中 corosync.conf 的内容作为示例。
 
-第一个节是[群集安装](https://review.docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker#cluster-installation)步骤 11 中所述的 totem。 可以忽略 **mcastaddr** 的值。 只需保留现有条目即可。 必须根据 [Microsoft Azure SAP HANA 文档][sles-pacemaker-ha-guide]设置 token 和 consensus 的条目。
+第一个节是[群集安装](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker#cluster-installation)步骤 11 中所述的 totem。 可以忽略 **mcastaddr** 的值。 只需保留现有条目即可。 必须根据 [Microsoft Azure SAP HANA 文档][sles-pacemaker-ha-guide]设置 token 和 consensus 的条目。
 
 <pre><code>
 totem {
@@ -280,7 +280,7 @@ systemctl restart corosync
 
 ## <a name="sbd-device"></a>SBD 设备
 
-有关如何在 Azure VM 上设置 SBD 设备的信息，请参阅 [SBD 隔离](https://review.docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker#sbd-fencing)。
+有关如何在 Azure VM 上设置 SBD 设备的信息，请参阅 [SBD 隔离](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker#sbd-fencing)。
 
 首先，在 SBD 服务器 VM 上检查群集中是否存在用于每个节点的 ACL 条目。 在 SBD 服务器 VM 上运行以下命令：
 
@@ -423,7 +423,7 @@ sbd -d /dev/sdm message hso-hana-vm-s2-2 test
 /dev/disk/by-id/scsi-36001405e614138d4ec64da09e91aea68:   notice: servant: Received command test from hso-hana-vm-s2-1 on disk /dev/disk/by-id/scsi-36001405e614138d4ec64da09e91aea68
 </code></pre>
 
-检查 /etc/sysconfig/sbd 中的条目是否对应于[在 Azure 中的 SUSE Linux Enterprise Server 上设置 Pacemaker](https://review.docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker#sbd-fencing) 中的描述。 验证 **/etc/iscsi/iscsid.conf** 中的启动设置是否设置为自动。
+检查 /etc/sysconfig/sbd 中的条目是否对应于[在 Azure 中的 SUSE Linux Enterprise Server 上设置 Pacemaker](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker#sbd-fencing) 中的描述。 验证 **/etc/iscsi/iscsid.conf** 中的启动设置是否设置为自动。
 
 以下条目对于 /etc/sysconfig/sbd 非常重要。 在必要时调整 id 值：
 
@@ -458,7 +458,7 @@ node.startup = automatic
 5. 在发起程序名称的上面，确保“服务启动”值设置为“启动时”。
 6. 如果尚未进行此设置，请将它设置为“启动时”而不是“手动”。
 7. 接下来，将顶部选项卡切换到“连接的目标”。
-8. 在“连接的目标”屏幕中，应会看到如以下示例所示的 SBD 设备条目：10.0.0.19:3260 iqn.2006-04.dbhso.local:dbhso。
+8. 在“连接的目标”屏幕中，应会看到 SBD 设备的条目，如以下示例所示：10.0.0.19:3260 iqn.2006-04.dbhso.local:dbhso。
 9. 检查“启动”值是否设置为“onboot”。
 10. 如果不是，请选择“编辑”并更改。
 11. 保存更改并退出 YaST2。

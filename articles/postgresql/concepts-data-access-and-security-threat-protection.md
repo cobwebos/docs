@@ -1,19 +1,17 @@
 ---
-title: 高级威胁防护 - Azure Database for PostgreSQL | Microsoft Docs
+title: 高级威胁防护 - Azure Database for PostgreSQL
 description: 高级威胁防护会检测异常的数据库活动，指出对数据库的潜在安全威胁。
-services: postgresql
 author: bolzmj
-manager: kfile
-ms.service: postgresql
-ms.topic: article
-ms.date: 09/20/2018
 ms.author: mbolz
-ms.openlocfilehash: 392947919813753dc57422957029e961a037a616
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.service: postgresql
+ms.topic: conceptual
+ms.date: 09/20/2018
+ms.openlocfilehash: 68027526fb98db4cb5b7eaf75f117692222c6039
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49066932"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53549014"
 ---
 # <a name="azure-database-for-postgresql-advanced-threat-protection"></a>Azure Database for PostgreSQL 高级威胁防护
 
@@ -22,7 +20,7 @@ Azure Database for PostgreSQL 的高级威胁防护可检测异常活动，指�
 威胁防护是高级威胁防护 (ATP) 产品/服务的一部分，后者是一个针对高级安全功能的统一软件包。 高级威胁防护可以通过 [Azure 门户](https://portal.azure.com)进行访问和管理，当前为预览版。
 
 > [!NOTE]
-> 高级威胁防护功能在以下 Azure 政府和主权云区域中不可用：US Gov 德克萨斯州、US Gov 亚利桑那州、US Gov 爱荷华州、US Gov 弗吉尼亚州、US DoD 东部、US DoD 中部、德国中部、德国北部、中国东部、中国东部 2。 请访问[各区域的产品可用性](https://azure.microsoft.com/global-infrastructure/services/)，以了解常规产品可用性。
+> 高级威胁防护功能在以下 Azure 政府版和主权云区域中不可用：US Gov 德克萨斯州、US Gov 亚利桑那州、US Gov 爱荷华州、US Gov 弗吉尼亚州、US DoD 东部、US DoD 中部、德国中部、德国北部、中国东部、中国东部 2。 请访问[各区域的产品可用性](https://azure.microsoft.com/global-infrastructure/services/)，以了解常规产品可用性。
 >
 
 ## <a name="what-is-advanced-threat-protection"></a>什么是高级威胁防护？
@@ -33,11 +31,11 @@ Azure Database for PostgreSQL 高级威胁防护提供了一个新的安全层�
 
 ## <a name="advanced-threat-protection-alerts"></a>高级威胁防护警报 
 Azure Database for PostgreSQL 高级威胁防护可检测异常活动，指出有人在访问或利用数据库时的异常行为和可能有害的尝试，并可以触发以下警报：
-- **从异常位置访问**：当 Azure Database for PostgreSQL 服务器的访问模式发生更改，有人从异常的地理位置登录到 Azure Database for PostgreSQL 服务器时，会触发此警报。 在某些情况下，警报会检测合法操作（发布新应用程序或开发人员维护）。 在其他情况下，警报会检测恶意操作（以前的员工、外部攻击者）。
-- **从异常的 Azure 数据中心访问**：当 Azure Database for PostgreSQL 服务器的访问模式发生更改，有人从最近一段时间在此服务器上看到的异常 Azure 数据中心登录到服务器时，会触发此警报。 在某些情况下，警报会检测合法操作（在 Azure、Power BI 或 Azure Database for PostgreSQL 查询编辑器中发布新应用程序）。 在其他情况下，警报会检测通过 Azure 资源/服务执行的恶意操作（以前的员工、外部攻击者）。
-- **从不熟悉的主体访问**：当 Azure Database for PostgreSQL 服务器的访问模式发生更改，有人使用异常主体（Azure Database for PostgreSQL 用户）登录到服务器时，会触发此警报。 在某些情况下，警报会检测合法操作（发布新应用程序或开发人员维护）。 在其他情况下，警报会检测恶意操作（以前的员工、外部攻击者）。
-- **从可能有害的应用程序访问**：当使用可能有害的应用程序访问数据库时，会触发此警报。 在某些情况下，警报会检测操作中的渗透测试。 在其他情况下，警报会检测使用常见攻击工具执行的攻击。
-- **暴力破解 Azure Database for PostgreSQL 凭据**：当有人使用不同的凭据异常登录失败很多次时，会触发此警报。 在某些情况下，警报会检测操作中的渗透测试。 在其他情况下，警报会检测暴力破解攻击。
+- **来自异常位置的访问**：当 Azure Database for PostgreSQL 服务器的访问模式发生更改，有人从异常的地理位置登录到 Azure Database for PostgreSQL 服务器时，会触发此警报。 在某些情况下，警报会检测合法操作（发布新应用程序或开发人员维护）。 在其他情况下，警报会检测恶意操作（以前的员工、外部攻击者）。
+- **来自异常 Azure 数据中心的访问**：当 Azure Database for PostgreSQL 服务器的访问模式发生更改，最近一段时间在此服务器上发现有人从异常 Azure 数据中心登录到服务器时，会触发此警报。 在某些情况下，警报会检测合法操作（在 Azure、Power BI 或 Azure Database for PostgreSQL 查询编辑器中发布新应用程序）。 在其他情况下，警报会检测通过 Azure 资源/服务执行的恶意操作（以前的员工、外部攻击者）。
+- **来自陌生主体的访问**：当 Azure Database for PostgreSQL 服务器的访问模式发生更改，有人使用异常主体（Azure Database for PostgreSQL 用户）登录到服务器时，会触发此警报。 在某些情况下，警报会检测合法操作（发布新应用程序或开发人员维护）。 在其他情况下，警报会检测恶意操作（以前的员工、外部攻击者）。
+- **来自可能有害的应用程序的访问**：当使用可能有害的应用程序访问数据库时，会触发此警报。 在某些情况下，警报会检测操作中的渗透测试。 在其他情况下，警报会检测使用常见攻击工具执行的攻击。
+- **暴力破解 Azure Database for PostgreSQL 凭据**：当有人使用不同的凭据异常登录并失败很多次时，会触发此警报。 在某些情况下，警报会检测操作中的渗透测试。 在其他情况下，警报会检测暴力破解攻击。
 
 ## <a name="next-steps"></a>后续步骤
 

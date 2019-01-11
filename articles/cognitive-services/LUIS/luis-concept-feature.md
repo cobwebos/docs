@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: conceptual
-ms.date: 12/10/2018
+ms.date: 01/02/2019
 ms.author: diberry
-ms.openlocfilehash: 62827054a14930cd49f7d80d6c305e60060c0fe6
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 2d6f7e2fd332e1687db1564befeb6f531045c5dd
+ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53271379"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53993053"
 ---
 # <a name="phrase-list-features-in-your-luis-app"></a>LUIS 应用中的短语列表特征
 
@@ -29,6 +29,10 @@ ms.locfileid: "53271379"
 
 短语列表添加到应用域的词汇中，作为这些字词的第二个 LUIS 信号。
 
+## <a name="phrase-lists-help-all-models"></a>短语列表可以帮助所有模型
+
+短语列表未链接到特定意向或实体，但作为增强项添加到所有模型。 其目的是改进意向检测和实体分类。
+
 ## <a name="how-to-use-phrase-lists"></a>如何使用短语列表
 在人力资源应用的[简单实体教程](luis-quickstart-primary-and-secondary-data.md)中，应用使用作业类型的“工作”短语列表，例如程序员、屋顶工和秘书。 如果将其中一个值标记为机器学习实体，则 LUIS 会学习识别其他值。 
 
@@ -40,6 +44,7 @@ ms.locfileid: "53271379"
 |不可互换|相对于该语言中的其他通用字词，更特定于应用的应用词汇。|
 
 短语列表不仅有助于实体检测，还有助于意向分类，其中不可互换短语列表有添加英语中未知的集外词等作用。
+
 
 <a name="phrase-lists-help-identify-simple-exchangeable-entities"></a>
 

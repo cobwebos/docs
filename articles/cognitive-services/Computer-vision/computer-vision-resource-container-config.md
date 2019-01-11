@@ -1,24 +1,24 @@
 ---
-title: 配置容器
-titlesuffix: Computer Vision - Azure Cognitive Services
-description: 计算机视觉中的容器配置设置。
+title: 配置容器 - 计算机视觉
+titlesuffix: Azure Cognitive Services
+description: 在计算机视觉中为识别文本容器配置各种设置。
 services: cognitive-services
 author: diberry
 manager: cgronlun
-ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: text-analytics
 ms.topic: conceptual
 ms.date: 11/14/2018
 ms.author: diberry
-ms.openlocfilehash: f71cbe965e70dfce1b29cf0e5f9ea44faf0a4e27
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.custom: seodec18
+ms.openlocfilehash: 48d3bc7ecdd66565372be8347897202cae3ec158
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53077012"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53579781"
 ---
-# <a name="configure-containers"></a>配置容器
+# <a name="configure-recognize-text-containers"></a>配置识别文本容器
 
 计算机视觉为“识别文本”容器提供一个通用配置框架，以便可以轻松配置和管理容器的存储、日志记录、遥测和安全性设置。
 
@@ -41,7 +41,7 @@ ms.locfileid: "53077012"
 
 ### <a name="configuration-settings-as-environment-variables"></a>作为环境变量的配置设置
 
-可以使用 [ASP.NET Core 环境变量语法](https://docs.microsoft.com/aspnet/core/fundamentals/configuration/?view=aspnetcore-2.1&tabs=basicconfiguration#configuration-by-environment)来指定配置设置。
+可以使用 [ASP.NET Core 环境变量语法](https://docs.microsoft.com/aspnet/core/fundamentals/configuration/?view=aspnetcore-2.1&tabs=basicconfiguration#environment-variables-configuration-provider)来指定配置设置。
 
 容器在实例化时读取用户环境变量。 如果存在环境变量，则环境变量的值将替代指定的配置设置的默认值。 使用环境变量的好处是可以在实例化容器之前设置多个配置设置，并且多个容器可以自动使用同一组配置设置。
 
@@ -133,7 +133,7 @@ ms.locfileid: "53077012"
   | `Format` | String | 日志文件的输出格式。<br/> **注意：** 此值必须设置为 `json` 才能启用日志记录提供程序。 如果指定了此值，但未同时在实例化容器时指定输出装入点，则会发生错误。 |
   | `MaxFileSize` | Integer | 日志文件的最大大小，以 MB 为单位。 如果当前日志文件的大小达到或超过此值，则日志记录提供程序会启动新的日志文件。 如果指定 -1，则日志文件的大小仅受输出装入点的最大文件大小（如果有）的限制。 默认值为 1。 |
 
-有关配置 ASP.NET Core 日志记录支持的详细信息，请参阅[设置文件配置](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#settings-file-configuration)。
+有关如何配置 ASP.NET Core 日志记录支持的详细信息，请参阅 [ASP.NET Core 中的日志记录](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#configuration)。
 
 ## <a name="mounts-configuration-settings"></a>Mounts 配置设置
 

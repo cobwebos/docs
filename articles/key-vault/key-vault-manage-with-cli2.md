@@ -1,5 +1,5 @@
 ---
-title: 使用 CLI 管理 Azure Key Vault | Microsoft Docs
+title: 使用 CLI 管理 Azure 密钥保管库 - Azure 密钥保管库 | Microsoft Docs
 description: 使用本文通过 Azure CLI 自动执行密钥保管库中的常见任务
 services: key-vault
 documentationcenter: ''
@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/28/2018
+ms.date: 01/02/2019
 ms.author: barclayn
-ms.openlocfilehash: f3b91e73cbfe9972969f5a061768a2c2bbfa7d1b
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 632620bf8140ba855198a9354fbd7e50604e18c3
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51256438"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "54000302"
 ---
 # <a name="manage-key-vault-using-the-azure-cli"></a>使用 Azure CLI 管理密钥保管库 
 
@@ -133,8 +133,8 @@ az keyvault create --name 'ContosoKeyVault' --resource-group 'ContosoResourceGro
 
 此命令的输出会显示创建的 Key Vault 的属性。 两个最重要的属性是：
 
-* **name**：在本示例中，名称为 ContosoKeyVault。 将在其他 Key Vault 命令中使用此名称。
-* **vaultUri**：在本示例中， URI 为 https://contosokeyvault.vault.azure.net。 通过其 REST API 使用保管库的应用程序必须使用此 URI。
+* **名称**：在本示例中，名称为 ContosoKeyVault。 将在其他 Key Vault 命令中使用此名称。
+* **vaultUri**：在本示例中，URI 为 https://contosokeyvault.vault.azure.net。 通过其 REST API 使用保管库的应用程序必须使用此 URI。
 
 Azure 帐户现已获取在此密钥保管库上执行任何作业的授权。 到目前为止，尚未授权其他任何人。
 
@@ -228,18 +228,18 @@ az keyvault set-policy --name 'ContosoKeyVault' --spn 8f8c4bbd-485b-45fd-98f7-ec
 
 使用 [az keyvault update](/cli/azure/keyvault#az-keyvault-update) 为 Key Vault 启用高级策略。 
 
- 为部署启用 Key Vault：允许虚拟机从保管库中检索作为机密存储的证书。
+ 为部署启用密钥保管库：允许虚拟机从保管库中检索作为机密存储的证书。
  ```azurecli
  az keyvault update --name 'ContosoKeyVault' --resource-group 'ContosoResourceGroup' --enabled-for-deployment 'true'
  ``` 
 
-为磁盘加密启用 Key Vault：为 Azure 磁盘加密使用保管库时需要执行此操作。
+为磁盘加密启用密钥保管库：使用保管库进行 Azure 磁盘加密时需要。
 
  ```azurecli
  az keyvault update --name 'ContosoKeyVault' --resource-group 'ContosoResourceGroup' --enabled-for-disk-encryption 'true'
  ```  
 
-为模板部署启用 Key Vault：允许资源管理器从保管库中检索机密。
+为模板部署启用密钥保管库：允许资源管理器从保管库中检索机密。
  ```azurecli 
  az keyvault update --name 'ContosoKeyVault' --resource-group 'ContosoResourceGroup' --enabled-for-template-deployment 'true'
  ```

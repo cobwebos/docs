@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: rimman
-ms.openlocfilehash: 78c840efebd2e451747e2490fc4d2f363afa9a09
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 6a6f8b47044d36d767721e2d3503d11518dbf5a6
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53263252"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54036114"
 ---
 # <a name="optimize-storage-cost-in-azure-cosmos-db"></a>优化 Azure Cosmos DB 中的存储成本
 
@@ -27,7 +27,7 @@ Azure Cosmos DB 希望项目大小不超过 2 MB，以获得最佳性能和成�
 
 ## <a name="optimize-cost-with-indexing"></a>通过索引优化成本
 
-默认情况下，数据会自动编入索引，这会增加所消耗的总存储量。 但是，可应用自定义索引策略来减少此开销。 尚未通过策略调整的自动索引约为项目大小的 10-20％。 通过删除或自定义索引策略，无需为写入支付额外成本，也不需要额外的吞吐量容量。 请参阅 [Cosmos DB 中的索引](indexing-policies.md)以配置自定义索引策略。 如果你曾使用过关系数据库，你可能会认为“对所有内容编制索引”意味着存储成本会翻倍或更高。 但是，在 Azure Cosmos DB 中，在中值情况下，存储成本实际要低得多。 在 Azure Cosmos DB 中，即使使用自动索引，索引的存储开销通常也很低 (10-20%)，因为它专为低存储容量而设计。 通过管理索引策略，你可以以更细粒度的方式控制索引占用空间和查询性能之间的权衡。
+默认情况下，数据会自动编入索引，这会增加所消耗的总存储量。 但是，可应用自定义索引策略来减少此开销。 尚未通过策略调整的自动索引约为项目大小的 10-20％。 通过删除或自定义索引策略，无需为写入支付额外成本，也不需要额外的吞吐量容量。 请参阅 [Azure Cosmos DB 中的索引编制](indexing-policies.md)以配置自定义索引策略。 如果你曾使用过关系数据库，你可能会认为“对所有内容编制索引”意味着存储成本会翻倍或更高。 但是，在 Azure Cosmos DB 中，在中值情况下，存储成本实际要低得多。 在 Azure Cosmos DB 中，即使使用自动索引，索引的存储开销通常也很低 (10-20%)，因为它专为低存储容量而设计。 通过管理索引策略，你可以以更细粒度的方式控制索引占用空间和查询性能之间的权衡。
 
 ## <a name="optimize-cost-with-time-to-live-and-change-feed"></a>使用生存时间和更改源优化成本
 

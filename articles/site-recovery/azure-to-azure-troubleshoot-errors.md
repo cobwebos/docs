@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: sujayt
-ms.openlocfilehash: 84462b98e1006cadf34adecf948efd39ad4f69d6
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: e120c10468ca95b604ef8f857959607d3a066ea0
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53313966"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53973547"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-replication-issues"></a>Azure 到 Azure VM 复制问题故障排除
 
@@ -278,6 +278,14 @@ Azure Site Recovery 当前强制要求源区域资源组和虚拟机应位于同
 
 可以打开“服务”控制台并确保“COM + 系统应用程序”和“卷影复制”的“启动类型”未设置为“已禁用”。
   ![com-error](./media/azure-to-azure-troubleshoot-errors/com-error.png)
+
+## <a name="unsupported-managed-disk-size-error-code-150172"></a>不支持的托管磁盘大小（错误代码 150172）
+
+
+**错误代码** | **可能的原因** | **建议**
+--- | --- | ---
+150172<br></br>**消息**：无法为虚拟机启用保护，因为它具有 (DiskName)，其大小 (DiskSize) 小于最小支持的大小 10 GB。 | - 磁盘小于支持的大小 (1024 MB)| 请确保磁盘大小在支持的大小范围内，然后重试该操作。 
+
 
 ## <a name="next-steps"></a>后续步骤
 [复制 Azure 虚拟机](site-recovery-replicate-azure-to-azure.md)

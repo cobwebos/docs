@@ -1,5 +1,5 @@
 ---
-title: 管道：在速度、可移植性和重复使用方面优化机器学习
+title: 管道：优化机器学习工作流
 titleSuffix: Azure Machine Learning service
 description: 本文介绍通过适用于 Python 的 Azure 机器学习 SDK 生成的机器学习管道，以及使用管道的优势。 机器学习 (ML) 管道由数据科学家用来生成、优化和管理其机器学习工作流。
 services: machine-learning
@@ -11,12 +11,12 @@ ms.author: sanpil
 author: sanpil
 ms.date: 11/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: e2874c4a40a2347fd47e93c99fdec7ff5e81aec1
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: e8532e9821501c7b10fbb47c531228e439a8b289
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53308193"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53556867"
 ---
 # <a name="build-machine-learning-pipelines-with-the-azure-machine-learning-service"></a>使用 Azure 机器学习服务生成机器学习管道
 
@@ -52,7 +52,7 @@ ms.locfileid: "53308193"
 
 为机器学习工作流生成管道的主要优点包括：
 
-|主要优点|说明|
+|主要优点|Description|
 |:-------:|-----------|
 |**无人参与&nbsp;运行**|对一些步骤进行计划，使之以可靠且无人参与的方式并行或顺序运行。 由于数据准备和建模可能持续数天或数周，因此你现在可以在管道运行的时候专注于其他任务。 |
 |**混合和多样化计算**|使用多个管道，这些管道已跨异类的可缩放计算和存储进行可靠的协调。 可以在不同的计算目标（例如 HDInsight、GPU Data Science VM 和 Databricks）上运行单独的管道步骤。 这可以高效地利用可用的计算选项。|

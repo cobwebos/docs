@@ -1,5 +1,5 @@
 ---
-title: Azure 时序见解预览版安全性 - 配置安全性以访问和管理 Azure 时序见解预览版 | Microsoft Docs
+title: 配置安全性以访问和管理 Azure 时序见解预览版 | Microsoft Docs
 description: 本文介绍如何将安全性和权限配置为管理访问策略和数据访问策略以保护 Azure 时序见解预览版。
 ms.service: time-series-insights
 services: time-series-insights
@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 11/26/2018
 ms.custom: seodec18
-ms.openlocfilehash: 7f8eb66feecd58b766b3414b1bbc6bd4e27bf4f7
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 9aea7a9c9dd96bf30ebb3def9354df9e4bd30114
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53275459"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53558509"
 ---
 # <a name="grant-data-access-to-an-environment"></a>授予对环境的数据访问权限
 

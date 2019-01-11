@@ -1,5 +1,5 @@
 ---
-title: Azure AD Connect：传递身份验证 - 常见问题 | Microsoft Docs
+title: Azure AD Connect：直通身份验证 - 常见问题解答 | Microsoft Docs
 description: 有关 Azure Active Directory 直通身份验证的常见问题的解答
 services: active-directory
 keywords: Azure AD Connect 传递身份验证, 安装 Active Directory, Azure AD 所需的组件, SSO, 单一登录
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 11/27/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 77872ab809f4375523a91f4ebc9b24f8606e6c94
-ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
+ms.openlocfilehash: fdb316f5f5c1f67dbb92fe8847c0ffacce46ae07
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52619805"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53789086"
 ---
 # <a name="azure-active-directory-pass-through-authentication-frequently-asked-questions"></a>Azure Active Directory 传递身份验证：常见问题
 
@@ -62,7 +62,7 @@ ms.locfileid: "52619805"
 
 如果已针对特定的用户配置[密码写回](../authentication/concept-sspr-writeback.md)，则当用户使用直通身份验证进行登录时，可更改或重置其密码。 密码会按预期写回到本地 Active Directory。
 
-若没有为特定用户配置密码写回，或者没有为用户分配有效的 Azure AD 许可证，则用户不能在云中更新其密码。 即使密码过期也不能更新。 用户会看到此消息：“组织不允许更新此站点上的密码。 请根据组织建议的方法更新密码，或者请求管理员提供帮助。” 用户或管理员必须在本地 Active Directory 中重置其密码。
+若没有为特定用户配置密码写回，或者没有为用户分配有效的 Azure AD 许可证，则用户不能在云中更新其密码。 即使密码过期也不能更新。 用户会看到此消息：“你的组织不允许你更新此站点上的密码。 请根据组织建议的方法更新密码，或者请求管理员提供帮助。” 用户或管理员必须在本地 Active Directory 中重置其密码。
 
 ## <a name="how-does-pass-through-authentication-protect-you-against-brute-force-password-attacks"></a>直通身份验证如何防止不受密码搜索攻击？
 
@@ -74,7 +74,7 @@ ms.locfileid: "52619805"
 - 直通身份验证通过端口 80 发出 HTTP 请求，以下载 SSL 证书吊销列表 (CRL)。
 
      >[!NOTE]
-     >最近的更新减少了功能所需的端口数。 如果有较旧版 Azure AD Connect 或身份验证代理，也请打开以下端口：5671、8080、9090、9091、9350、9352 和 10100-10120。
+     >最近的更新减少了功能所需的端口数。 如果有旧版 Azure AD Connect 或身份验证代理，也请打开以下端口：5671、8080、9090、9091、9350、9352 和 10100-10120。
 
 ## <a name="can-the-pass-through-authentication-agents-communicate-over-an-outbound-web-proxy-server"></a>传递身份验证代理能否通过出站 Web 代理服务器进行通信？
 
@@ -83,7 +83,7 @@ ms.locfileid: "52619805"
 如果环境中未设置 WPAD，则可以添加代理信息（如下所示）以允许直通身份验证代理与 Azure AD 通信：
 - 在服务器上安装直通身份验证代理之前，请在 Internet Explorer 中配置代理信息。 这将允许你完成身份验证代理的安装，但它仍将在管理员门户上显示为“非活动”。
 - 在服务器上，导航到“C:\Program Files\Microsoft Azure AD Connect Authentication Agent”。
-- 编辑“AzureADConnectAuthenticationAgentService”配置文件并添加以下行（将“http://contosoproxy.com:8080”替换为实际代理地址）：
+- 编辑“AzureADConnectAuthenticationAgentService”配置文件并添加以下行（将“http\://contosoproxy.com:8080”替换为实际代理地址）：
 
 ```
    <system.net>
@@ -156,7 +156,7 @@ ms.locfileid: "52619805"
 
 ## <a name="i-have-an-older-tenant-that-was-originally-setup-using-ad-fs--we-recently-migrated-to-pta-but-now-are-not-seeing-our-upn-changes-synchronizing-to-azure-ad--why-are-our-upn-changes-not-being-synchronized"></a>我有最初使用 AD FS 设置的较旧租户。  我们最近迁移到了 PTA，但现在未看到我们的 UPN 更改同步到 Azure AD。  我们的 UPN 更改为何没有同步？
 
-答：在以下情况下，你的本地 UPN 更改可能不会同步：
+答：在以下情况下，本地 UPN 更改可能不会同步：
 
 - 如果 Azure AD 租户是在 2015 年 6 月 15 日之前创建的
 - 你最初将 AD FS 用于身份验证，通过你的 Azure AD 租户进行联合身份验证
@@ -172,12 +172,12 @@ ms.locfileid: "52619805"
 
 ## <a name="next-steps"></a>后续步骤
 - [当前限制](how-to-connect-pta-current-limitations.md)：了解支持和不支持的方案。
-- [快速入门](how-to-connect-pta-quick-start.md)：快速了解 Azure AD 直通身份验证。
+- [快速入门](how-to-connect-pta-quick-start.md)：快速启动并运行 Azure AD 传递身份验证。
 - [从 AD FS 迁移到传递身份验证](https://github.com/Identity-Deployment-Guides/Identity-Deployment-Guides/blob/master/Authentication/Migrating%20from%20Federated%20Authentication%20to%20Pass-through%20Authentication.docx?raw=true) - 从 AD FS（或其他联合技术）迁移到传递身份验证的详细指南。
 - [智能锁定](../authentication/howto-password-smart-lockout.md)：了解如何在租户中配置智能锁定功能以保护用户帐户。
-- [技术深入了解](how-to-connect-pta-how-it-works.md)：了解直通身份验证功能的工作原理。
-- [故障诊断](tshoot-connect-pass-through-authentication.md)：了解如何解决直通身份验证功能的常见问题。
+- [技术深入了解](how-to-connect-pta-how-it-works.md)：了解传递身份验证功能的工作原理。
+- [故障排除](tshoot-connect-pass-through-authentication.md)：了解如何解决传递身份验证功能的常见问题。
 - [深入了解安全性](how-to-connect-pta-security-deep-dive.md)：深入了解有关直通身份验证功能的技术信息。
-- [Azure AD 无缝 SSO](how-to-connect-sso.md)：深入了解此补充功能。
+- [Azure AD 无缝 SSO](how-to-connect-sso.md)：详细了解此补充功能。
 - [UserVoice](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect)：使用 Azure Active Directory 论坛来提交新的功能请求。
 

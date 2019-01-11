@@ -1,7 +1,7 @@
 ---
 title: 检测人脸 - 计算机视觉
 titleSuffix: Azure Cognitive Services
-description: 与使用计算机视觉 API 检测人脸相关的概念。
+description: 与计算机视觉 API 的人脸检测功能相关的概念。
 services: cognitive-services
 author: PatrickFarley
 manager: cgronlun
@@ -10,14 +10,15 @@ ms.component: computer-vision
 ms.topic: conceptual
 ms.date: 08/29/2018
 ms.author: pafarley
-ms.openlocfilehash: bf358d1e8f60f989ced8db966bbf0a5179fab25b
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.custom: seodec18
+ms.openlocfilehash: 0c6485bff4ad11aab37139cd2aa2d3660bddac0e
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49342307"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53580530"
 ---
-# <a name="detecting-faces"></a>检测人脸
+# <a name="face-detection-with-computer-vision"></a>使用计算机视觉进行人脸检测
 
 计算机视觉检测图片中的人脸，并为每个检测到的脸部生成年龄、性别和人脸边框。 计算机视觉提供可以在[人脸](/azure/cognitive-services/face/)中发现的部分功能。可以使用人脸服务进行更详细的分析，例如人脸识别和姿势检测。  
 

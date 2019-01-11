@@ -1,18 +1,18 @@
 ---
 title: 使用服务主体的 Azure 容器注册表身份验证
-description: 了解如何使用 Azure Active Directory 服务主体访问专用容器注册表中的映像。
+description: 使用 Azure Active Directory 服务主体允许访问专用容器注册表中的映像。
 services: container-registry
 author: dlepow
 ms.service: container-registry
 ms.topic: article
-ms.date: 04/23/2018
+ms.date: 12/13/2018
 ms.author: danlep
-ms.openlocfilehash: 30f0eb04b4b7d07785854e3079bc6656889edec6
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: 70ca1b88c653601e077c55a847c13f67efc3e300
+ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48854469"
+ms.lasthandoff: 12/22/2018
+ms.locfileid: "53754197"
 ---
 # <a name="azure-container-registry-authentication-with-service-principals"></a>使用服务主体的 Azure 容器注册表身份验证
 
@@ -20,9 +20,9 @@ ms.locfileid: "48854469"
 
 ## <a name="what-is-a-service-principal"></a>什么是服务主体？
 
-Azure AD“服务主体”提供对订阅中的 Azure 资源的访问权限。 可以将服务主体视为某个服务的用户标识，其中，“服务”是需要访问资源的任何应用程序、服务或平台。 可以为服务主体配置作用域仅限于你指定的那些资源的访问权限。 然后，可以将应用程序或服务配置为使用服务主体的凭据来访问那些资源。
+Azure AD“服务主体”提供对订阅中的 Azure 资源的访问权限。 可以将服务主体视为某个服务的用户标识，其中，“服务”是需要访问资源的任何应用程序、服务或平台。 可以为服务主体配置作用域仅限于你指定的那些资源的访问权限。 然后，将应用程序或服务配置为使用服务主体的凭据来访问这些资源。
 
-在 Azure 容器注册表的上下文中，你可以创建对 Azure 中的 Docker 注册表具有拉取、推送和拉取或所有者权限的 Azure AD 服务主体。
+在 Azure 容器注册表的上下文中，你可以创建对 Azure 中的专用注册表具有拉取、推送和拉取或其他权限的 Azure AD 服务主体。 有关完整列表，请参阅 [Azure 容器注册表的角色和权限](container-registry-roles.md)。
 
 ## <a name="why-use-a-service-principal"></a>为何使用服务主体？
 

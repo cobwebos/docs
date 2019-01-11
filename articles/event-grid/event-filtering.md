@@ -5,14 +5,14 @@ services: event-grid
 author: tfitzmac
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 11/05/2018
+ms.date: 12/21/2018
 ms.author: tomfitz
-ms.openlocfilehash: 973b5d3f40968790dc6153ae91d1638cb83202ee
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 77225c4d659755ec6de1a14bf67bd0a62659fb6a
+ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53384371"
+ms.lasthandoff: 12/22/2018
+ms.locfileid: "53753857"
 ---
 # <a name="understand-event-filtering-for-event-grid-subscriptions"></a>了解事件网格订阅的事件筛选
 
@@ -141,6 +141,7 @@ ms.locfileid: "53384371"
 * 每个字符串值有 512 个字符
 * “in”和“not in”运算符有 5 个值
 * 键只能有一个嵌套级别（如 data.key1）
+* 自定义事件架构只能基于顶级字段进行筛选
 
 可以在多个筛选器中使用相同的键。
 

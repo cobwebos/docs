@@ -1,17 +1,17 @@
 ---
-title: Batch 渲染应用程序
+title: 渲染应用程序 - Azure Batch
 description: 预安装的 Batch 渲染应用程序
 services: batch
 author: laurenhughes
 ms.author: lahugh
 ms.date: 12/11/2018
 ms.topic: conceptual
-ms.openlocfilehash: 7cc19c8def9e162c752efab776d0b6f5118bfde2
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: d17a740959f36a11835f6d4548b8f8bc1a5c5f80
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53320942"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53536315"
 ---
 # <a name="pre-installed-applications-on-rendering-vm-images"></a>在渲染 VM 映像上预安装的应用程序
 

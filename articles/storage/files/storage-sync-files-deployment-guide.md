@@ -8,17 +8,19 @@ ms.topic: article
 ms.date: 07/19/2018
 ms.author: wgries
 ms.component: files
-ms.openlocfilehash: ee0d46cd07de4e9b123357bcc4ee9d1e51926f49
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: eeaedc84e860cebc0b001300ace4fe1594375af2
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53312964"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53999401"
 ---
 # <a name="deploy-azure-file-sync"></a>部署 Azure 文件同步
 使用 Azure 文件同步，即可将组织的文件共享集中在 Azure 文件中，同时又不失本地文件服务器的灵活性、性能和兼容性。 Azure 文件同步可将 Windows Server 转换为 Azure 文件共享的快速缓存。 可以使用 Windows Server 上可用的任意协议本地访问数据，包括 SMB、NFS 和 FTPS。 并且可以根据需要在世界各地具有多个缓存。
 
 强烈建议先阅读[规划 Azure 文件部署](storage-files-planning.md)和[规划 Azure 文件同步部署](storage-sync-files-planning.md)，再按照本文中的步骤进行操作。
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>先决条件
 * Azure 存储帐户和 Azure 文件共享位于要部署 Azure 文件同步的相同区域。有关详细信息，请参阅：
@@ -36,12 +38,12 @@ ms.locfileid: "53312964"
 
     > [!Note]  
     > 在 Windows Server 2012 R2 或 Windows Server 2016 上，Azure 文件同步尚不支持 PowerShell 6+。
-* 在要与 Azure 文件同步配合使用的服务器上安装 AzureRM PowerShell 模块。有关如何安装 AzureRM PowerShell 模块的详细信息，请参阅[安装和配置 Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps)。 始终建议使用最新版本的 Azure PowerShell 模块。 
+* 在要与 Azure 文件同步配合使用的服务器上安装 Azure PowerShell 模块。有关如何安装 Azure PowerShell 模块的详细信息，请参阅[安装和配置 Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps)。 始终建议使用最新版本的 Azure PowerShell 模块。 
 
 ## <a name="prepare-windows-server-to-use-with-azure-file-sync"></a>准备 Windows Server，用于 Azure 文件同步
 对于要与 Azure 文件同步配合使用的每个服务器（包括故障转移群集中的服务器节点），请禁用“Internet Explorer 增强的安全性配置”。 只需在最初注册服务器时禁用。 可在注册服务器后重新启用。
 
-# <a name="portaltabportal"></a>[门户](#tab/portal)
+# <a name="portaltabazure-portal"></a>[门户](#tab/azure-portal)
 1. 打开服务器管理器。
 2. 单击“本地服务器”：  
     ![服务器管理器 UI 左侧的“本地服务器”](media/storage-sync-files-deployment-guide/prepare-server-disable-IEESC-1.PNG)
@@ -50,7 +52,7 @@ ms.locfileid: "53312964"
 4. 对于“Internet Explorer 增强的安全性配置”对话框中的“管理员”和“用户”，都选择“关”：  
     ![选定“关”的“Internet Explorer 增强的安全性配置”弹出窗口](media/storage-sync-files-deployment-guide/prepare-server-disable-IEESC-3.png)
 
-# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 若要禁用“Internet Explorer 增强的安全性配置”，请在权限提升的 PowerShell 会话中执行以下命令：
 
 ```PowerShell
@@ -73,7 +75,7 @@ Stop-Process -Name iexplore -ErrorAction SilentlyContinue
 ## <a name="install-the-azure-file-sync-agent"></a>安装 Azure 文件同步代理
 Azure 文件同步代理是一个可下载包，可实现 Windows 服务器与 Azure 文件共享的同步。 
 
-# <a name="portaltabportal"></a>[门户](#tab/portal)
+# <a name="portaltabazure-portal"></a>[门户](#tab/azure-portal)
 可从 [Microsoft 下载中心](https://go.microsoft.com/fwlink/?linkid=858257)下载代理。 下载完成后，双击 MSI 包，开始安装 Azure 文件同步代理。
 
 > [!Important]  
@@ -85,7 +87,7 @@ Azure 文件同步代理是一个可下载包，可实现 Windows 服务器与 A
 
 Azure 文件同步代理安装完成后，服务器注册 UI 自动打开。 在注册之前，必须创建存储同步服务；请参阅下一部分了解如何创建存储同步服务。
 
-# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 执行以下 PowerShell 代码，以下载适用于所用 OS 的 Azure 文件同步代理版本，并将其安装在系统上。
 
 > [!Important]  
@@ -131,7 +133,7 @@ Azure 文件同步的部署过程首先会将一个“存储同步服务”资�
 > [!Note]
 > 存储同步服务已从其部署到的订阅和资源组继承访问权限。 我们建议仔细检查谁有权访问该服务。 具有写访问权限的实体可以开始从已注册到此存储同步服务的服务器同步新的文件集，使数据流向这些实体可以访问的 Azure 存储。
 
-# <a name="portaltabportal"></a>[门户](#tab/portal)
+# <a name="portaltabazure-portal"></a>[门户](#tab/azure-portal)
 要部署存储同步服务，请转到 [Azure 门户](https://portal.azure.com/)，单击“新建”，然后搜索 Azure 文件同步。在搜索结果中，选择“Azure 文件同步”，然后选择“创建”，打开“部署存储同步”选项卡。
 
 在打开的窗格中，输入以下信息：
@@ -143,14 +145,14 @@ Azure 文件同步的部署过程首先会将一个“存储同步服务”资�
 
 完成后，选择“创建”部署存储同步服务。
 
-# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
-在与 Azure 文件同步管理 cmdlet 交互之前，需要导入一个 DLL 并创建 Azure 文件同步管理上下文。 这是必需的操作，因为 Azure 文件同步管理 cmdlet 尚未包含在 AzureRM PowerShell 模块中。
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+在与 Azure 文件同步管理 cmdlet 交互之前，需要导入一个 DLL 并创建 Azure 文件同步管理上下文。 这是必需的操作，因为 Azure 文件同步管理 cmdlet 尚未包含在 Azure PowerShell 模块中。
 
 > [!Note]  
-> 包含 Azure 文件同步管理 cmdlet 的 StorageSync.Management.PowerShell.Cmdlets.dll 包（有意）包含了一个带有未经批准的谓词 (`Login`) 的 cmdlet。 选择的名称 `Login-AzureRmStorageSync` 与 AzureRM PowerShell 模块中 `Login-AzureRmAccount` cmdlet 的别名匹配。 将 Azure 文件同步代理添加到 AzureRM PowerShell 模块后，将会删除此错误消息（和 cmdlet）。
+> 包含 Azure 文件同步管理 cmdlet 的 StorageSync.Management.PowerShell.Cmdlets.dll 包（有意）包含了一个带有未经批准的谓词 (`Login`) 的 cmdlet。 选择的名称 `Login-AzureStorageSync` 与 Azure PowerShell 模块中 `Login-AzAccount` cmdlet 的别名匹配。 将 Azure 文件同步代理添加到 Azure PowerShell 模块后，将会删除此错误消息（和 cmdlet）。
 
 ```PowerShell
-$acctInfo = Login-AzureRmAccount
+$acctInfo = Login-AzAccount
 
 # The location of the Azure File Sync Agent. If you have installed the Azure File Sync 
 # agent to a non-standard location, please update this path.
@@ -164,7 +166,7 @@ Import-Module "$agentPath\StorageSync.Management.PowerShell.Cmdlets.dll"
 $subID = $acctInfo.Context.Subscription.Id
 
 # this variable holds your Azure Active Directory tenant ID
-# use Login-AzureRMAccount to get the ID from that context
+# use Login-AzAccount to get the ID from that context
 $tenantID = $acctInfo.Context.Tenant.Id
 
 # this variable holds the Azure region you want to deploy 
@@ -174,7 +176,7 @@ $region = '<Az_Region>'
 # Check to ensure Azure File Sync is available in the selected Azure
 # region.
 $regions = @()
-Get-AzureRmLocation | ForEach-Object { 
+Get-AzLocation | ForEach-Object { 
     if ($_.Providers -contains "Microsoft.StorageSync") { 
         $regions += $_.Location 
     } 
@@ -189,12 +191,12 @@ $resourceGroup = '<RG_Name>'
 
 # Check to ensure resource group exists and create it if doesn't
 $resourceGroups = @()
-Get-AzureRmResourceGroup | ForEach-Object { 
+Get-AzResourceGroup | ForEach-Object { 
     $resourceGroups += $_.ResourceGroupName 
 }
 
 if ($resourceGroups -notcontains $resourceGroup) {
-    New-AzureRmResourceGroup -Name $resourceGroup -Location $region
+    New-AzResourceGroup -Name $resourceGroup -Location $region
 }
 
 # the following command creates an AFS context 
@@ -207,7 +209,7 @@ Login-AzureRmStorageSync `
     -Location $region
 ```
 
-使用 `Login-AzureRmStorageSync` cmdlet 创建 Azure 文件同步上下文后，可以创建存储同步服务。 请务必将 `<my-storage-sync-service>` 替换为存储同步服务的所需名称。
+使用 `Login-AzureR,StorageSync` cmdlet 创建 Azure 文件同步上下文后，可以创建存储同步服务。 请务必将 `<my-storage-sync-service>` 替换为存储同步服务的所需名称。
 
 ```PowerShell
 $storageSyncName = "<my-storage-sync-service>"
@@ -222,7 +224,7 @@ New-AzureRmStorageSyncService -StorageSyncServiceName $storageSyncName
 > [!Note]
 > 服务器注册使用你的 Azure 凭据在存储同步服务与 Windows Server 之间创建信任关系，但是，服务器随后会创建并使用自身有效的标识，前提是该服务器保持已注册状态，并且当前的共享访问签名令牌（存储 SAS）有效。 取消注册服务器后，无法将新的 SAS 令牌颁发给服务器，因此，服务器无法访问 Azure 文件共享，并停止任何同步。
 
-# <a name="portaltabportal"></a>[门户](#tab/portal)
+# <a name="portaltabazure-portal"></a>[门户](#tab/azure-portal)
 服务器注册 UI 应在 Azure 文件同步代理安装后自动打开。 如果没有，可以从其文件位置手动将其打开：C:\Program Files\Azure\StorageSyncAgent\ServerRegistration.exe。 服务器注册 UI 打开时，请选择“登录”开始操作。
 
 登录后，系统会提示输入以下信息：
@@ -235,7 +237,7 @@ New-AzureRmStorageSyncService -StorageSyncServiceName $storageSyncName
 
 选择相应的信息之后，选择“注册”完成服务器注册。 在注册过程中，系统会提示进行其他登录。
 
-# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 ```PowerShell
 $registeredServer = Register-AzureRmStorageSyncServer -StorageSyncServiceName $storageSyncName
 ```
@@ -250,7 +252,7 @@ $registeredServer = Register-AzureRmStorageSyncServer -StorageSyncServiceName $s
 > [!Important]  
 > 可对同步组中的任何云终结点或服务器终结点进行更改，并将文件同步到同步组中的其他终结点。 如果直接对云终结点（Azure 文件分享）进行更改，首先需要通过 Azure 文件同步更改检测作业来发现更改。 每 24 小时仅针对云终结点启动一次更改检测作业。 有关详细信息，请参阅 [Azure 文件常见问题解答](storage-files-faq.md#afs-change-detection)。
 
-# <a name="portaltabportal"></a>[门户](#tab/portal)
+# <a name="portaltabazure-portal"></a>[门户](#tab/azure-portal)
 要创建同步组，请在 [Azure 门户](https://portal.azure.com/)中转到存储同步服务，然后选择“+ 同步组”：
 
 ![在 Azure 门户中创建新的同步组](media/storage-sync-files-deployment-guide/create-sync-group-1.png)
@@ -262,7 +264,7 @@ $registeredServer = Register-AzureRmStorageSyncServer -StorageSyncServiceName $s
 - **存储帐户**：如果选择“选择存储账户”，另一个窗格随即出现，可在其中选择包含要同步的 Azure 文件共享的存储帐户。
 - **Azure 文件共享**：要与其同步的 Azure 文件共享的名称。
 
-# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 若要创建同步组，请执行以下 PowerShell。 请记得将 `<my-sync-group>` 替换为同步组的所需名称。
 
 ```PowerShell
@@ -275,12 +277,12 @@ New-AzureRmStorageSyncGroup -SyncGroupName $syncGroupName -StorageSyncService $s
 ```PowerShell
 # Get or create a storage account with desired name
 $storageAccountName = "<my-storage-account>"
-$storageAccount = Get-AzureRmStorageAccount -ResourceGroupName $resourceGroup | Where-Object {
+$storageAccount = Get-AzStorageAccount -ResourceGroupName $resourceGroup | Where-Object {
     $_.StorageAccountName -eq $storageAccountName
 }
 
 if ($storageAccount -eq $null) {
-    $storageAccount = New-AzureRmStorageAccount `
+    $storageAccount = New-AzStorageAccount `
         -Name $storageAccountName `
         -ResourceGroupName $resourceGroup `
         -Location $region `
@@ -291,12 +293,12 @@ if ($storageAccount -eq $null) {
 
 # Get or create an Azure file share within the desired storage account
 $fileShareName = "<my-file-share>"
-$fileShare = Get-AzureStorageShare -Context $storageAccount.Context | Where-Object {
+$fileShare = Get-AzStorageShare -Context $storageAccount.Context | Where-Object {
     $_.Name -eq $fileShareName -and $_.IsSnapshot -eq $false
 }
 
 if ($fileShare -eq $null) {
-    $fileShare = New-AzureStorageShare -Context $storageAccount.Context -Name $fileShareName
+    $fileShare = New-AzStorageShare -Context $storageAccount.Context -Name $fileShareName
 }
 
 # Create the cloud endpoint
@@ -312,7 +314,7 @@ New-AzureRmStorageSyncCloudEndpoint `
 ## <a name="create-a-server-endpoint"></a>创建服务器终结点
 服务器终结点代表已注册服务器上的特定位置，例如服务器卷中的文件夹。 服务器终结点必须是已注册的服务器（而不是装载的共享）上的路径；若要使用云分层，该路径必须在非系统卷上。 不支持网络附加存储 (NAS)。
 
-# <a name="portaltabportal"></a>[门户](#tab/portal)
+# <a name="portaltabazure-portal"></a>[门户](#tab/azure-portal)
 要添加服务器终结点，请转到新创建的同步组，然后选择“添加服务器终结点”。
 
 ![在“同步组”窗格中添加一个新的服务器终结点](media/storage-sync-files-deployment-guide/create-sync-group-2.png)
@@ -326,7 +328,7 @@ New-AzureRmStorageSyncCloudEndpoint `
 
 要添加服务器终结点，请选择“创建”。 现在，文件在 Azure 文件共享和 Windows Server 之间保持保存。 
 
-# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 执行以下 PowerShell 命令创建服务器终结点（请务必将 `<your-server-endpoint-path>` 和 `<your-volume-free-space>` 替换为所需值）。
 
 ```PowerShell

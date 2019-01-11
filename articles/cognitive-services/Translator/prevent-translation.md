@@ -10,12 +10,12 @@ ms.component: translator-text
 ms.topic: conceptual
 ms.date: 11/20/2018
 ms.author: v-jansko
-ms.openlocfilehash: b012201bcb9e0aece3d7e1ddd4f771643088af76
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: 70bc4a50240abd8e4b67ff572f8c472f7519569a
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52683346"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53556843"
 ---
 # <a name="how-to-prevent-translation-of-content-with-the-translator-text-api"></a>如何使用文本翻译 API 阻止翻译内容
 

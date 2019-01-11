@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/29/2018
 ms.author: terrylan
-ms.openlocfilehash: 63967face89c12f6769d397bd5be78c23bc9f851
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 55686972979c5ac3015802c340cef7dffebdb9bd
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51259133"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53973122"
 ---
 # <a name="azure-storage-security-overview"></a>Azure 存储安全概述
 
@@ -67,11 +67,11 @@ SAS 是一个 URI，在其查询参数中包含对存储资源已验证访问所
 了解有关客户端加密的详细信息：
 
 * [适用于 Microsoft Azure 存储的客户端加密](https://blogs.msdn.microsoft.com/windowsazurestorage/2015/04/28/client-side-encryption-for-microsoft-azure-storage-preview/)
-* [云安全控制系列：加密传输中的数据](https://blogs.microsoft.com/cybertrust/2015/08/10/cloud-security-controls-series-encrypting-data-in-transit/)
+* [云安全控制系列：加密传输中的数据](https://cloudblogs.microsoft.com/microsoftsecure/2015/08/10/cloud-security-controls-series-encrypting-data-in-transit/)
 
 ## <a name="encryption-at-rest"></a>静态加密
 
-对许多组织而言，[静态数据加密](https://blogs.microsoft.com/cybertrust/2015/09/10/cloud-security-controls-series-encrypting-data-at-rest/)是实现数据隐私性、符合性和数据所有权的必要措施。 可通过三种 Azure 功能进行静态数据加密：
+对许多组织而言，[静态数据加密](https://cloudblogs.microsoft.com/microsoftsecure/2015/09/10/cloud-security-controls-series-encrypting-data-at-rest/)是实现数据隐私性、符合性和数据所有权的必要措施。 可通过三种 Azure 功能进行静态数据加密：
 
 * [存储服务加密](../storage/common/storage-security-guide.md#encryption-at-rest)可请求存储服务在将数据写入 Azure 存储时自动加密数据。
 * [客户端加密](../storage/common/storage-security-guide.md#client-side-encryption)也提供静态加密功能。

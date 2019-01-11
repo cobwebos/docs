@@ -5,19 +5,19 @@ author: vgorbenko
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 12/05/2018
+ms.date: 12/20/2018
 ms.author: vitaly.gorbenko
 ms.component: metrics
-ms.openlocfilehash: daa3a140e749700665427a011292f48ac8f163d2
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 8932f8aa1dd950693378e9fc58c79838fad6166b
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53388161"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53741753"
 ---
 # <a name="azure-monitor-metrics-explorer"></a>Azure Monitor 指标资源管理器
 
-Azure Monitor 指标资源管理器是 Microsoft Azure 门户的一个组件，通过它可以绘制图表、以直观的形式关联趋势及研究指标值的上升和下降。 指标资源管理器是研究 Azure 托管的或 Azure Monitor 服务监视的应用程序，以及基础结构存在的各种性能问题和可用性问题的基本起始点。 
+Azure Monitor 指标资源管理器是 Microsoft Azure 门户的一个组件，通过它可以绘制图表、以直观的形式关联趋势及研究指标值的上升和下降。 指标资源管理器是研究 Azure 托管的或 Azure Monitor 服务监视的应用程序，以及基础结构存在的各种性能问题和可用性问题的基本起始点。
 
 ## <a name="metrics-in-azure"></a>Azure 中的指标
 
@@ -28,11 +28,11 @@ Microsoft Azure 中的指标是随着时间的推移收集和存储的一系列�
 1. 打开 Azure 门户
 2. 导航到新的“监视”选项卡，并选择“指标”。
 
-   ![指标图像](./media/metrics-charts/0001.png)
+   ![指标图像](./media/metrics-charts/00001.png)
 
 3. “指标选择器”将自动打开。 从列表中选择一个资源，查看它关联的指标。 列表将只显示具有指标的资源。
 
-   ![指标图像](./media/metrics-charts/0002.png)
+   ![指标图像](./media/metrics-charts/00002.png)
 
    > [!NOTE]
    >如果有多个 Azure 订阅，指标资源管理器将拉取“门户设置 -> 按订阅筛选”列表中选定的所有订阅中的资源。 若要更改此设置，请单击屏幕顶部的“门户设置”齿轮图标，然后选择要使用的订阅。
@@ -41,15 +41,15 @@ Microsoft Azure 中的指标是随着时间的推移收集和存储的一系列�
 
    例如，每个 Azure 存储空间都包含针对次级服务“Blob”、“文件”、“队列”和“表”（这些均是存储帐户的组成部分）的指标。 但是，指标“队列消息计数”必然只适用于次级服务“队列”，而不适用于任何其他存储帐户次级服务。
 
-   ![指标图像](./media/metrics-charts/0003.png)
+   ![指标图像](./media/metrics-charts/00003.png)
 
 5. 从列表中选择一个指标。 如果知道所需指标的部分名称，可以将其键入，即可看到可用指标的筛选列表：
 
-   ![指标图像](./media/metrics-charts/0004.png)
+   ![指标图像](./media/metrics-charts/00004.png)
 
 6. 选择指标后，将显示图表，其中包含对所选指标的默认聚合。 此时，在“指标选择器”之外单击即可将其关闭。 也可以选择将图表切换到不同的聚合。 对于一些指标，可以通过切换聚合选择想要在图表上看到的值。 例如，可以在平均值、最小值和最大值之间切换。 
 
-7. 通过单击“添加指标”图标 ![指标图标](./media/metrics-charts/icon001.png) 并重复步骤 3-6，你可以在同一个图表上添加其他指标。
+7. 通过单击“添加指标”并重复步骤 3-6，你可以在同一个图表上添加其他指标。
 
    > [!NOTE]
    > 通常情况下，你不会想要在一个图表上拥有度量单位不同（即“毫秒”和“千字节”）或刻度差异显著的多个指标。 此时，可考虑使用多个图表。 单击“添加图表”按钮，即可在指标资源管理器中创建多个图表。
@@ -60,19 +60,19 @@ Microsoft Azure 中的指标是随着时间的推移收集和存储的一系列�
 
 ### <a name="to-add-a-filter"></a>添加筛选器
 
-1. 单击“添加筛选器”图标 ![图表上的](./media/metrics-charts/icon002.png) 筛选器图标
+1. 选择图表上方的“添加筛选器”
 
 2. 选择想要筛选的维度（属性）
 
-   ![图表上的](./media/metrics-charts/0006.png)
+   ![指标图像](./media/metrics-charts/00006.png)
 
 3. 选择想要在绘制图表时包含的维度值（此示例将显示筛选出了成功的存储事务）：
 
-   ![指标图](./media/metrics-charts/0007.png)
+   ![指标图像](./media/metrics-charts/00007.png)
 
 4. 选择筛选值后，在“筛选选择器”之外单击将其关闭。 现在图表将显示失败的存储事务数：
 
-   ![图表上的](./media/metrics-charts/0008.png)
+   ![指标图像](./media/metrics-charts/00008.png)
 
 5. 可以重复步骤 1-4 将多个筛选器应用到同一个图表。
 
@@ -82,23 +82,37 @@ Microsoft Azure 中的指标是随着时间的推移收集和存储的一系列�
 
 ### <a name="to-segment-a-chart"></a>分割图表
 
-1. 单击“添加分组”图标  ![图表上的](./media/metrics-charts/icon003.png) 指标图。
+1. 单击图表上方的“应用拆分”。
  
    > [!NOTE]
-   > 所有的单个图表上可以包含多个筛选器，但只能包含一个分组。
+   > 任何单个图表上都可以有多个筛选器，但只能有一个拆分/分段值。
 
-2. 选择想要用于分割图表的维度： 
+2. 选择想要用于分割图表的维度：
 
-   ![图表上的](./media/metrics-charts/0010.png)
+   ![指标图像](./media/metrics-charts/00010.png)
 
    现在图表将显示多个折线图，每个维度部分均有一个：
 
-   ![图表上的](./media/metrics-charts/0012.png)
+   ![指标图像](./media/metrics-charts/00012.png)
 
 3. 在“分组选择器”之外单击以将其关闭。
 
    > [!NOTE]
-   > 在同一个维度上同时使用筛选器和分组，可隐藏与你的方案无关的部分，使图表更易读取。
+   > 在同一个维度上同时使用筛选和拆分，可以隐藏与你的方案无关的部分，使图表更易读取。
+
+### <a name="new-alert-rule"></a>新建警报规则
+
+还可以使用你设置的条件将指标可视化为基于指标的警报规则的底层逻辑的基础。 
+
+如果单击“新建警报规则”
+
+![以红色突出显示的“新建警报规则”按钮](./media/metrics-charts/015.png)
+
+则会转到警报规则创建窗格，其中预先填充了来自你的图表的底层指标维度，以便更轻松地生成自定义警报规则。
+
+![创建警报规则](./media/metrics-charts/016.png)
+
+若要详细了解如何设置指标警报，请查看此[文章](alerts-metric.md)。
 
 ## <a name="lock-boundaries-of-chart-y-axis"></a>锁定图表 y 轴的边界
 
@@ -110,20 +124,20 @@ Microsoft Azure 中的指标是随着时间的推移收集和存储的一系列�
 
 若要控制 y 轴范围，请使用 “…” 图表菜单，并选择“编辑图表”以访问高级图表设置。 修改“Y 轴范围”部分中的值，或者使用“自动”按钮恢复为默认值。
 
-![指标图像](./media/metrics-charts/0014-manually-set-granularity.png)
+![指标图像](./media/metrics-charts/00014-manually-set-granularity.png)
 
 > [!WARNING]
 > 如果图表用于跟踪一段时间内的各种计数或合计（并因此使用计数、求和、最小值或最大值聚合），要锁定这类图表的 y 轴边界，通常需要指定一个固定的时间粒度，而不是依赖于自动默认值。 这是必要的，因为当用户通过调整浏览器窗口大小或者通过更改屏幕分辨率来自动修改时间粒度时，图表上的值也会发生更改。 时间粒度发生的更改会影响图表的外观，导致当前选择的 y 轴范围失效。
 
 ## <a name="pin-charts-to-dashboards"></a>将图表固定到仪表板
 
-配置图表后，可能需要将其添加到仪表板，以便可以再次查看它（可能是在其他监视遥测的上下文中）或与团队共享。 
+配置图表后，可能需要将其添加到仪表板，以便可以再次查看它（可能是在其他监视遥测的上下文中）或与团队共享。
 
 将配置的图表固定到仪表板：
 
 配置图表后，单击图表右上角的“图表操作”菜单，然后单击“固定到仪表板”。
 
-![指标图像](./media/metrics-charts/0013.png)
+![指标图像](./media/metrics-charts/00013.png)
 
 ## <a name="next-steps"></a>后续步骤
 

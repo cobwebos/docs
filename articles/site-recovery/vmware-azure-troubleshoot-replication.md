@@ -5,20 +5,21 @@ author: Rajeswari-Mamilla
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 11/27/2018
+ms.date: 12/17/2018
 ms.author: ramamill
-ms.openlocfilehash: ae2f32a02005bc015d2521e576ea5625bef2d377
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 1c37b764b47856d3a369228d3f224f2a464029bb
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52846005"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53790650"
 ---
 # <a name="troubleshoot-replication-issues-for-vmware-vms-and-physical-servers"></a>解决 VMware VM 和物理服务器的复制问题
 
 使用 Azure Site Recovery 保护 VMware 虚拟机或物理服务器时，可能会收到特定错误消息。 本文介绍在使用 [Azure Site Recovery](site-recovery-overview.md) 将本地 VMware VM 和物理服务器复制到 Azure 时可能遇到的一些常见问题。
 
-## <a name="initial-replication-issues"></a>初始复制问题。
+
+## <a name="initial-replication-issues"></a>初始复制问题
 
 对于在支持方面遇到的初始复制故障，大多数都由源服务器到进程服务器或进程服务器到 Azure 之间的连接问题引起。 大多数情况下，用户可按照下列步骤解决这些问题。
 
@@ -33,7 +34,7 @@ ms.locfileid: "52846005"
 
 * 查看 `InMage Scout VX Agent – Sentinel/OutpostStart` 服务的状态，检查其是否未运行，然后检查问题是否仍然存在。   
 
-## <a name="verify-the-process-server"></a>验证进程服务器
+### <a name="verify-the-process-server"></a>验证进程服务器
 
 * **检查进程服务器是否主动将数据推送到 Azure**
 
@@ -87,6 +88,19 @@ ms.locfileid: "52846005"
 
 
 * **检查进程服务器上的限制带宽是否不受约束**：增加带宽，然后检查问题是否仍然存在。
+
+## <a name="source-machine-to-be-protected-through-site-recovery-is-not-listed-on-azure-portal"></a>要通过 Site Recovery 保护的源计算机未在 Azure 门户上列出
+
+尝试选择源计算机来通过 Azure Site Recovery 启用复制时，计算机可能由于以下原因而不可供用来继续执行操作
+
+* 如果 vCenter 中存在具有相同 UUID 的两个虚拟机，则配置服务器发现的第一个虚拟机将显示在门户中。 若要解决此问题，请确保没有两个虚拟机具有相同的实例 UUID。
+* 确保在通过 OVF 模板或统一设置来设置配置期间添加了正确的 vCenter 凭据。 若要验证添加的凭据，请参阅[此处](vmware-azure-manage-configuration-server.md#modify-credentials-for-automatic-discovery)共享的准则。
+* 如果提供的用来访问 vCenter 的权限没有足够的特权，则可能会导致发现虚拟机失败。 确保将[此处](vmware-azure-tutorial-prepare-on-premises.md#prepare-an-account-for-automatic-discovery)提供的权限添加到 vCenter 用户帐户。
+* 如果虚拟机已通过 Site Recovery 进行了保护，则它不再可供保护。 确保你要在门户中查找的虚拟机尚未由任何其他用户或其他订阅进行保护。
+
+## <a name="protected-virtual-machines-are-greyed-out-in-the-portal"></a>受保护的虚拟机在门户中处于灰显状态
+
+如果系统中存在重复的条目，则在 Site Recovery 下复制的虚拟机将处于灰显状态。 请参阅[此处](https://social.technet.microsoft.com/wiki/contents/articles/32026.asr-vmware-to-azure-how-to-cleanup-duplicatestale-entries.aspx)提供的准则来删除过时的条目并解决问题。
 
 ## <a name="next-steps"></a>后续步骤
 如需更多帮助，请在 [Azure Site Recovery 论坛](https://social.msdn.microsoft.com/Forums/azure/home?forum=hypervrecovmgr)提出疑问。 我们的社区非常活跃，我们的工程师将为你提供帮助。

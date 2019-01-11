@@ -5,19 +5,19 @@ author: rboucher
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 09/24/2018
+ms.date: 12/29/2018
 ms.author: robb
-ms.openlocfilehash: f0765e010cb40a89f3f57d143c51bdfba72a4ba0
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 9a12ca5deeadfb7272532f404cc9cf7c030fb6c0
+ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53341926"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53994345"
 ---
 # <a name="what-are-classic-alerts-in-microsoft-azure"></a>Microsoft Azure 中的经典警报是什么？
 
 > [!NOTE]
-> 本文介绍了如何创建旧式经典指标警报。 Azure Monitor 现在支持[较新的近实时指标警报和新的警报体验](../../azure-monitor/platform/alerts-overview.md)。 
+> 本文介绍了如何创建旧式经典指标警报。 Azure Monitor 现在支持[较新的近实时指标警报和新的警报体验](../../azure-monitor/platform/alerts-overview.md)。 经典警报[已计划停用](https://docs.microsoft.com/en-us/azure/azure-monitor/platform/monitoring-classic-retirement)。  
 >
 
 警报允许配置数据条件，并在条件与最新监视数据匹配时发出通知。
@@ -39,7 +39,7 @@ ms.locfileid: "53341926"
 -   **智能警报整合**和**设置警报状态** - 新式警报包括了自动分组功能，它将类似的警报显示在一起以降低用户界面中的开销。 
 
 与经典指标警报相比，新式指标警报具有以下优点：
--   **延迟降低**：新型指标警报的运行频率可达每分钟一次。 旧式指标警报每 5 分钟方可运行 1 次。 新式警报从问题发生到发出通知或采取操作的延迟更小（3 到 5 分钟）。 旧式警报需要 5 到 15 分组，具体取决于类型。  由于要花费时间来引入日志，日志警报通常有 10 到 15 分钟的延迟，但新式处理方法减小了该时间。 
+-   **延迟降低**：新型指标警报的运行频率可达每分钟一次。 旧式指标警报每 5 分钟方可运行 1 次。 新式警报从问题发生到发出通知或采取操作的延迟更小（3 到 5 分钟）。 旧式警报需要 5 到 15 分组，具体取决于类型。  由于要花费时间来引入日志，日志警报通常有 10 到 15 分钟的延迟，但新式处理方法缩短了该时间。 
 -   **支持多维指标**：支持对维度指标发出警报，从而可监视所关注的指标段。
 -   **更好地控制指标条件**：可以定义更丰富的警报规则。 新型警报支持监视指标的最大值、最小值、平均值和总值。
 -   **综合监视多个指标**：可以使用单个规则监视多个指标（目前最多为两个指标）。 如果两个指标在指定时间段内违反其各自的阈值，则会触发警报。
@@ -50,9 +50,9 @@ ms.locfileid: "53341926"
 ## <a name="classic-alerts-on-azure-monitor-data"></a>关于 Azure Monitor 数据的经典警报
 有两种可用的经典警报类型：指标警报和活动日志警报。
 
-* **经典指标警报** - 当指定的指标值越过了分配的阈值时，就会触发此警报。 警报在“激活”时（越过阈值并满足警报条件时）生成通知。 它在“已解决”时（再次越过阈值且不再满足条件时）生成另一个通知。
+* **经典指标警报** - 当指定的指标值越过了分配的阈值时，就会触发此警报。 当越过了该阈值并且满足警报条件时，警报将生成通知。 此时，该警报被视为“已激活”。 它在“已解决”时（即再次越过阈值且不再满足条件时）生成另一个通知。
 
-* **经典活动日志警报** - 当生成与分配的筛选器条件匹配的活动日志事件时，触发的流式处理日志警报。 这些警报只有“已激活”这一个状态，因为警报引擎只需将筛选器条件应用到任何新事件。 出现新的服务运行状况事件时，或用户或应用程序在订阅中执行操作（例如“删除虚拟机”）时，可以使用这些警报通知。
+* **经典活动日志警报** - 当某个活动日志事件条目与筛选条件匹配时将触发的流式处理日志警报。 这些警报只有一个状态，即“已激活”。 警报引擎只是简单地将筛选条件应用于任何新事件。 它不会进行搜索来查找更早的条目。 出现新的服务运行状况事件时，或用户或应用程序在订阅中执行操作（例如“删除虚拟机”）时，这些警报可发出通知。
 
 对于通过 Azure Monitor 提供的诊断日志数据，建议将数据路由到 Log Analytics（之前为 OMS）并使用 Log Analytics 查询警报。 Log Analytics 现在使用[新的警报方法](../../azure-monitor/platform/alerts-overview.md) 
 
@@ -71,7 +71,7 @@ Azure 使用以下术语来描述经典警报和及其功能：
 ## <a name="how-do-i-receive-a-notification-from-an-azure-monitor-classic-alert"></a>如何接收来自 Azure Monitor 经典警报的通知？
 从历史上来看，来自不同服务的 Azure 警报使用自己的内置通知方法。 
 
-Azure Monitor 创建了一个称为“操作组”的可重复使用的通知组。 操作组指定一组通知接收者，每当激活涉及操作组的警报，所有接收者都会收到该通知。 操作组允许在多个警报对象中重复使用一组接收方（例如，在线工程师列表）。 除了电子邮件地址、短信号码和大量其他操作外，操作组还通过发布到 Webhook URL 来支持通知。  有关详细信息，请参阅[操作组](../../azure-monitor/platform/action-groups.md)。 
+Azure Monitor 创建了一个称为“操作组”的可重复使用的通知组。 操作组指定一组接收通知的接收方。 每当引用操作组的一个警报被激活时，所有接收方都会收到该通知。 操作组允许在多个警报对象中重复使用一组接收方（例如，在线工程师列表）。 除了电子邮件地址、短信号码和大量其他操作外，操作组还通过发布到 Webhook URL 来支持通知。  有关详细信息，请参阅[操作组](../../azure-monitor/platform/action-groups.md)。 
 
 旧式经典活动日志警报使用操作组。
 
@@ -93,7 +93,7 @@ Webhook 可实现自动化和修复，例如使用：
 * 配置[经典指标警报 PowerShell](alerts-classic-portal.md)
 * 配置[经典指标警报命令行接口 (CLI)](alerts-classic-portal.md)
 * 配置[经典指标警报 Azure Monitor REST API](https://msdn.microsoft.com/library/azure/dn931945.aspx)
-* 详细了解[活动日志](../../monitoring-and-diagnostics/monitoring-overview-activity-logs.md)
+* 详细了解[活动日志](../../azure-monitor/platform/activity-logs-overview.md)
 * [通过 Azure 门户配置活动日志警报](../../azure-monitor/platform/activity-log-alerts.md)
 * [通过 Resource Manager 配置活动日志警报](alerts-activity-log.md)
 * 查看[活动日志警报 webhook 架构](../../azure-monitor/platform/activity-log-alerts-webhook.md)

@@ -9,19 +9,19 @@ ms.devlang: ''
 ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
-ms.reviewer: carlrab
+ms.reviewer: mathoma, carlrab
 manager: craigg
-ms.date: 12/10/2018
-ms.openlocfilehash: 3da4d6ffe8660c490d39f223dff105ed126fa10b
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.date: 01/03/2019
+ms.openlocfilehash: 958dcb8113f58409d413b5471c96d2e0ba83c361
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53283113"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54033802"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>使用自动故障转移组可以实现多个数据库的透明、协调式故障转移
 
-自动故障转移组是一项 SQL 数据库功能，可用于管理逻辑服务器中一组数据库或托管实例中所有数据库到另一区域的复制和故障转移（对于托管实例，此功能目前以预览版提供）。 它使用的底层技术与相同[活动异地复制](sql-database-active-geo-replication.md)相同。 可以手动启动故障转移，或者，可以基于用户定义的策略委托 SQL 数据库服务进行故障转移。 使用后一种做法可在发生下述情况后自动恢复次要区域中的多个相关数据库：灾难性故障或其他导致主要区域中 SQL 数据库服务完全或部分丧失可用性的计划外事件。 此外，你还可以使用可读辅助数据库卸载只读查询工作负荷。 由于自动故障转移组涉及多个数据库，因此这些数据库必须在主服务器上进行配置。 故障转移组中数据库的主服务器和辅助服务器必须位于同一订阅中。 自动故障转移组支持将组中所有的数据库复制到另一个区域中唯一的辅助服务器。
+自动故障转移组是一项 SQL 数据库功能，可用于管理逻辑服务器中一组数据库或托管实例中所有数据库到另一区域的复制和故障转移（对于托管实例，此功能目前以预览版提供）。 它使用的底层技术与相同[活动异地复制](sql-database-active-geo-replication.md)相同。 可以手动启动故障转移，也可以基于用户定义的策略委托 SQL 数据库服务进行故障转移。 使用后一种做法可在发生下述情况后自动恢复次要区域中的多个相关数据库：灾难性故障或其他导致主要区域中 SQL 数据库服务完全或部分丧失可用性的计划外事件。 此外，你还可以使用可读辅助数据库卸载只读查询工作负荷。 由于自动故障转移组涉及多个数据库，因此这些数据库必须在主服务器上进行配置。 故障转移组中数据库的主服务器和辅助服务器必须位于同一订阅中。 自动故障转移组支持将组中所有的数据库复制到另一个区域中唯一的辅助服务器。
 
 > [!NOTE]
 > 如果在逻辑服务器上使用单个数据库或入池数据库，并想要在相同或不同的区域中使用多个辅助节点，请使用[活动异地复制](sql-database-active-geo-replication.md)。
@@ -109,7 +109,7 @@ ms.locfileid: "53283113"
 
 - **计划外故障转移**
 
-   计划外故障转移或强制故障转移立即将辅助角色切换为主要角色，而不与主要节点进行任何同步。 此操作可能会导致数据丢失。 在服务中断期间当主要节点不可访问时，计划外故障转移将用作恢复方法。 原始主要节点重新联机后，将在不进行同步的情况下自动重新连接，并成为新的辅助节点。
+   计划外故障转移或强制故障转移立即将辅助角色切换为主要角色，而不与主要节点进行任何同步。 此操作会导致数据丢失。 在服务中断期间当主要节点不可访问时，计划外故障转移将用作恢复方法。 原始主要节点重新联机后，将在不进行同步的情况下自动重新连接，并成为新的辅助节点。
 
 - **手动故障转移**
 
@@ -175,7 +175,7 @@ ms.locfileid: "53283113"
 
   创建新实例后，会自动生成唯一 ID 作为 DNS 区域，并将其包含在实例 DNS 名称中。 使用 SAN 字段以 `zone_id.database.windows.net` 格式预配此实例的多域 (SAN) 证书。 可以使用此证书对同一 DNS 区域中客户端与实例之间的连接进行身份验证。 若要确保故障转移后与主要实例的连接不中断，主要实例和辅助实例必须位于同一 DNS 区域。 准备好将应用程序部署到生产环境后，在不同的区域中创建一个辅助实例，并确保它与主要实例共享 DNS 区域。 为此，可以使用 Azure 门户、PowerShell 或 REST API 指定 `DNS Zone Partner` 可选参数。
 
-  有关在主要实例所在的同一 DNS 区域中创建辅助实例的详细信息，请参阅[使用托管实例管理故障转移组（预览版）](#managing-failover-groups-with-managed-instances-preview)。
+  有关在主要实例所在的同一 DNS 区域中创建辅助实例的详细信息，请参阅[使用托管实例管理故障转移组（预览版）](#powershell-managing-failover-groups-with-managed-instances-preview)。
 
 - **在两个实例之间启用复制流量**
 
@@ -203,7 +203,7 @@ ms.locfileid: "53283113"
 
 - **可应对性能下降的问题**
 
-  SQL 故障转移决策与应用程序的其余部分或所用的其他服务无关。 应用程序可能是“mixed”与在一个区域和一些在另一些组件。 为避免性能降低，请确保在 DR 区域中采用冗余的应用程序部署，并遵循这些[网络安全性准则](#Failover groups-and-network-security)。
+  SQL 故障转移决策与应用程序的其余部分或所用的其他服务无关。 应用程序可能是“mixed”与在一个区域和一些在另一些组件。 为避免性能降低，请确保在 DR 区域中采用冗余的应用程序部署，并遵循这些[网络安全性准则](#failover-groups-and-network-security)。
 
 - **可应对数据丢失的问题**
 
@@ -306,17 +306,17 @@ ms.locfileid: "53283113"
 
 #### <a name="install-the-newest-pre-release-version-of-powershell"></a>安装 Powershell 的最新预发行版
 
-1. 将 Powershellget 模块更新到 1.6.5（或最新预览版）。 请参阅 [PowerShell 预览版站点](https://www.powershellgallery.com/packages/AzureRM.Sql/4.11.6-preview)。
+1. 将 PowerShellGet 模块更新到 1.6.5（或最新预览版）。 请参阅 [PowerShell 预览版站点](https://www.powershellgallery.com/packages/AzureRM.Sql/4.11.6-preview)。
 
    ```Powershell
-      install-module powershellget -MinimumVersion 1.6.5 -force
+      install-module PowerShellGet -MinimumVersion 1.6.5 -force
    ```
 
 2. 在新的 PowerShell 窗口中执行以下命令：
 
    ```Powershell
-      import-module powershellget
-      get-module powershellget #verify version is 1.6.5 (or newer)
+      import-module PowerShellGet
+      get-module PowerShellGet #verify version is 1.6.5 (or newer)
       install-module azurerm.sql -RequiredVersion 4.5.0-preview -AllowPrerelease –Force
       import-module azurerm.sql
    ```
@@ -349,7 +349,7 @@ ms.locfileid: "53283113"
 | API | Description |
 | --- | --- |
 | [创建或更新故障转移组](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/createorupdate) | 创建或更新故障转移组 |
-| [删除故障转移组](https://docs.microsoft.com/rest/api/instancefailovergroups/delete) | 从服务器中删除故障转移组 |
+| [删除故障转移组](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/delete) | 从服务器中删除故障转移组 |
 | [故障转移（计划内）](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/failover) | 把故障从当前的主服务器转移到该服务器。 |
 | [强制故障转移可能导致数据丢失](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/forcefailoverallowdataloss) |把故障从当前的主服务器转移到该服务器。 此操作可能导致数据丢失。 |
 | [获取故障转移组](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/get) | 获取故障转移组。 |

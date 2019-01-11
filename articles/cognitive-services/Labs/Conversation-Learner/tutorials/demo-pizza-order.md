@@ -10,23 +10,23 @@ ms.component: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: e23ff60a0a2ea10ace09130ba115e72b4e1c9ad7
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 9b35c0fd412dd48137a3cb362f20fae067c80461
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51249806"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53792622"
 ---
-# <a name="demo-pizza-order"></a>演示：披萨订购
-此演示演示了披萨订购机器人。 它支持使用此功能订购单个披萨：
+# <a name="demo-pizza-order"></a>演示：披萨订单
+此演示演示了披萨订购机器人，其支持单个披萨订购的方式包括：
 
-- 在用户陈述中识别比萨配料
-- 检查比萨配料是有库存还是缺货，并做出适当的响应
-- 记住之前订单上的披萨配料，并提供用相同的配料开始新订单
+- 在用户话语中识别比萨配料
+- 管理配料清单，并做出适当的响应
+- 记住以前的订单，加快重新订购相同披萨的速度
 
 ## <a name="video"></a>视频
 
-[![演示披萨预览](https://aka.ms/cl-demo-pizza-preview)](https://aka.ms/blis-demo-pizza)
+[![演示披萨预览](https://aka.ms/cl_Tutorial_v3_DemoPizzaOrder_Preview)](https://aka.ms/cl_Tutorial_v3_DemoPizzaOrder)
 
 ## <a name="requirements"></a>要求
 本教程要求运行披萨订购机器人
@@ -39,72 +39,66 @@ ms.locfileid: "51249806"
 
 ## <a name="entities"></a>实体
 
-已创建三个实体。
+此模型包含三个实体：
 
-- Toppings：此实体将累积用户要求的配料。 它包括有库存的有效配料。 它会检查配料是有库存还是缺货。
-- OutofStock：此实体用来告诉用户他们选择的配料没有存货。
-- LastToppings：下订单后，此实体用于向用户提供其订单上的配料列表。
+- “配料”汇聚了用户的指定配料（如果可用）。
+- “OutofStock”向用户指出所选配料没有存货
+- “LastToppings”包含上次订购曾用过的配料
 
 ![](../media/tutorial_pizza_entities.PNG)
 
 ### <a name="actions"></a>操作
 
-你已经创建了一组操作，包括询问用户他们想要在披萨上加什么配料，告诉用户到目前为止他们已添加了什么，等等。
+此模型包含一组操作，这些操作会询问用户的配料选择、累积配料等内容。
 
-此外，还有两个 API 调用：
+此外还提供两个 API 调用：
 
-- FinalizeOrder：用于下披萨订单
-- UseLastToppings：用于从先前的订单迁移配料 
+- “FinalizeOrder”处理订单的履行
+- “UseLastToppings”处理历史配料信息
 
 ![](../media/tutorial_pizza_actions.PNG)
 
 ### <a name="training-dialogs"></a>训练对话
-你已经定义了少量定型对话。 
+
+在模型中发现多个训练对话。
 
 ![](../media/tutorial_pizza_dialogs.PNG)
 
-例如，让我们尝试一个教学会话。
+让我们创建另一个训练对话，对模型进行稍微多一些的训练。
 
-1. 依次单击“训练对话”和“新建训练对话”。
-1. 输入“order a pizza”。
-2. 单击“对操作打分”。
-3. 单击以选择“what would you like on your pizza?”
-4. 输入“mushrooms and cheese”。
-    - 请注意 LUIS 已将这两者都标记为 Toppings。 如果这不正确，你可以单击使其突出显示，然后进行更正。
-    - 实体旁边的“+”号表示它将添加到配料组中。
-5. 单击“Score Actions”。
-    - 注意 `mushrooms` 和 `cheese` 不在 Toppings 的内存中。
-3. 单击以选择“you have $Toppings on your pizza”
-    - 注意，这是一个非等待操作，因此机器人会请求下一个操作。
-6. 选择“Would you like anything else?”
-7. 输入“remove mushrooms and add peppers”。
-    - 注意 `mushroom` 旁边有一个“-”号表示要将其删除。 `peppers` 旁边有一个“+”号表示要将其添加到配料中。
-2. 单击“Score Action”。
-    - 注意 `peppers` 现在是粗体，因为它是新加的。 并且 `mushrooms` 已被删掉。
-8. 单击以选择“you have $Toppings on your pizza”
-6. 选择“Would you like anything else?”
-7. 输入“add peas”。
-    - `Peas` 是缺货的配料的示例。 它仍被标记为配料。
-2. 单击“Score Action”。
-    - `Peas` 显示为 OutOfStock。
-    - 要查看这是如何实现的，请打开 `C:\<\installedpath>\src\demos\demoPizzaOrder.ts` 处的代码。 查看 EntityDetectionCallback 方法。 此方法在每个配料后调用，看它是否有库存。 如果没有，此方法会从配料集中清除该配料并将该配料添加到 OutOfStock 实体。 inStock 变量在该方法的上方定义，其中包含有库存的配料列表。
-6. 选择“We don't have $OutOfStock”。
-7. 选择“Would you like anything else?”
-8. 输入“no”。
-9. 单击“对操作打分”。
-10. 选择“FinalizeOrder”API 调用。 
-    - 这将调用代码中定义的“FinalizeOrder”函数。 这清除配料，并返回“your order is on its way”。 
-2. 输入“order another”。 我们正在启动新订单。
-9. 单击“Score Action”。
-    - “cheese”和“pepper”在内存中作为上一个订单的配料。
-1. 选择“Would you like $LastToppings”。
-2. 输入“yes”
-3. 单击“对操作打分”。
-    - 机器人想要执行 UseLastToppings 操作。 该操作是两个回调方法中的第二个。 它将把上一个订单的配料复制到 Toppings 中，并清除上一个 Toppings。 这是记住上一个订单的一种方式，如果用户说他们想要另一个披萨，则提供这些配料作为选项。
-2. 单击以选择“you have $Toppings on your pizza”。
-3. 选择“Would you like anything else?”
-8. 输入“no”。
-4. 单击“Done Teaching”。
+1. 在左侧面板上单击“训练对话”，然后单击“新建训练对话”按钮。
+2. 在聊天面板中显示“键入你的消息...”的位置，键入“订购带奶酪的披萨”
+    - “奶酪”一词由实体提取器提取。
+3. 单击“对操作打分”按钮。
+4. 选择响应“你的披萨有奶酪。”
+5. 选择响应“想要其他配料吗?”
+6. 在聊天面板中显示“键入你的消息...”的位置，键入“加蘑菇和辣椒”
+7. 单击“对操作打分”按钮。
+8. 选择响应“你的披萨有奶酪、蘑菇和辣椒。”
+9. 选择响应“想要其他配料吗?”
+10. 在聊天面板中显示“键入你的消息...”的位置，键入“去掉辣椒，加香肠”
+11. 单击“对操作打分”按钮。
+12. 选择响应“你的披萨有奶酪、蘑菇和香肠。”
+13. 选择响应“想要其他配料吗?”
+14. 在聊天面板中显示“键入你的消息...”的位置，键入“加洋芋”
+15. 单击“对操作打分”按钮。
+    - “洋芋”值由实体检测回调代码添加到“OutofStock”中，因为该文本与系统支持的任何原料都不匹配。
+16. 选择响应“OutOfStock”
+17. 选择响应“想要其他配料吗?”
+18. 在聊天面板中显示“键入你的消息...”的位置，键入“否”
+    - “否”未被标记为任何类型的意向。 我们会根据当前的上下文选择相关操作。
+19. 单击“对操作打分”按钮。
+20. 选择响应“FinalizeOrder”
+    - 选择此操作后，客户的当前配料就会保存到“LastToppings”实体，而“配料”实体则由 FinalizeOrder 回调代码删除。
+21. 在聊天面板中显示“键入你的消息...”的位置，键入“订购另一个”
+22. 单击“对操作打分”按钮。
+23. 选择响应“你想要奶酪、蘑菇和香肠吗?”
+    - 此操作现在可用是因为“LastToppings”实体已设置。
+24. 在聊天面板中显示“键入你的消息...”的位置，键入“是”
+25. 单击“对操作打分”按钮。
+26. 选择响应“UseLastToppings”
+27. 选择响应“你的披萨有奶酪、蘑菇和香肠。”
+28. 选择响应“想要其他配料吗?”
 
 ![](../media/tutorial_pizza_callbackcode.PNG)
 
@@ -113,4 +107,4 @@ ms.locfileid: "51249806"
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [演示 - VR 应用启动器](./demo-vr-app-launcher.md)
+> [部署会话学习器机器人](../deploy-to-bf.md)

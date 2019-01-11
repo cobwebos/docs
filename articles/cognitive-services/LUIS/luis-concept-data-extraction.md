@@ -11,24 +11,24 @@ ms.component: language-understanding
 ms.topic: conceptual
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: d8d12662552eaf2d566eebd773c69dfb9817d874
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: a97da5542395b57fa9a6ca6e4c38dd25e524ec3e
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53098635"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53969414"
 ---
 # <a name="data-extraction-from-intents-and-entities"></a>从意向和实体中提取数据
 使用 LUIS 可以从用户的自然语言陈述中获取信息。 信息以一种程序、应用程序或聊天机器人能够使用其来采取操作的方式进行提取。 在以下部分中，通过 JSON 示例了解从意向和实体返回了什么数据。
 
-最难提取的数据是机器学习的数据，因为它不是确切的文本匹配。 机器学习[实体](luis-concept-entity-types.md)的数据提取需要作为[创作周期](luis-concept-app-iteration.md)的一部分，直到你确信已接收到所期望的数据。
+最难提取的数据是机器学习的数据，因为它不是确切的文本匹配。 机器学习[实体](luis-concept-entity-types.md)的数据提取需要作为[创作周期](luis-concept-app-iteration.md)的一部分，直到你确信已接收到所需的数据。
 
 ## <a name="data-location-and-key-usage"></a>数据位置和密钥用法
 LUIS 从已发布的[终结点](luis-glossary.md#endpoint)提供数据。 HTTPS 请求（POST 或 GET）包含陈述以及一些可选配置，例如暂存或生产环境。
 
 `https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/<appID>?subscription-key=<subscription-key>&verbose=true&timezoneOffset=0&q=book 2 tickets to paris`
 
-在编辑 LUIS 应用时，可在该 LUIS 应用的“设置”页面上找到 `appID`，也可在 URL 部分找到此 ID（在 `/apps/` 之后）。 `subscription-key` 是用于查询应用的终结点密钥。 虽然可以在学习 LUIS 时使用免费的创作/初学者密钥，但是将终结点密钥更改为支持[所需 LUIS 用法](luis-boundaries.md#key-limits)的密钥非常重要。 `timezoneOffset` 的单位是分钟。
+在编辑 LUIS 应用时，`appID` 可在该 LUIS 应用的“设置”页上找到，也可在 URL 中找到（在 `/apps/` 之后）。 `subscription-key` 是用于查询应用的终结点密钥。 虽然可以在学习 LUIS 时使用免费的创作/初学者密钥，但是将终结点密钥更改为支持[所需 LUIS 用法](luis-boundaries.md#key-limits)的密钥非常重要。 `timezoneOffset` 的单位是分钟。
 
 HTTPS 响应包含 LUIS 可基于当前发布的暂存或生产终结点的模型确定的所有意向和实体信息。 终结点 URL 位于 [LUIS](luis-reference-regions.md) 网站的“管理”部分的“密钥和终结点”页上。
 
@@ -260,7 +260,7 @@ HTTPS 响应包含 LUIS 可基于当前发布的暂存或生产终结点的模�
 
 ## <a name="list-entity-data"></a>列表实体数据
 
-[列表](luis-concept-entity-types.md)实体不属于机器学习。 它是确切的文本匹配。 列表代表列表中的项以及这些项的同义词。 LUIS 将任何列表中某个项的任何匹配项标记为响应中的实体。 同义词可位于多个列表中。
+[列表](luis-concept-entity-types.md)实体不进行机器学习。 它是确切的文本匹配。 列表代表列表中的项以及这些项的同义词。 LUIS 将任何列表中某个项的任何匹配项标记为响应中的实体。 同义词可位于多个列表中。
 
 假设应用有一个名为 `Cities` 的列表，允许城市名称的变体，包括机场城市 (Sea-tac)、机场代码 (SEA)、邮政编码 (98101) 和电话区号 (206)。
 
@@ -425,7 +425,11 @@ HTTPS 响应包含 LUIS 可基于当前发布的暂存或生产终结点的模�
 ```
 
 ## <a name="extracting-names"></a>提取名称
-从陈述提取名称非常困难，因为名称几乎可以是字母和单词的任何组合。 根据要提取的名称类型，有若干选项。 这些不是规则，而更像是指南。
+从陈述提取名称非常困难，因为名称几乎可以是字母和单词的任何组合。 根据要提取的名称类型，有若干选项。 以下建议不是规则，而是更多准则。
+
+### <a name="add-prebuilt-personname-and-geographyv2-entities"></a>添加预构建的 PersonName 和 GeographyV2 实体
+
+[PersonName](luis-reference-prebuilt-person.md) 和 [GeographyV2](luis-reference-prebuilt-geographyV2.md) 实体在某些[语言区域性](luis-reference-prebuilt-entities.md)中可用。 
 
 ### <a name="names-of-people"></a>人的姓名
 人的姓名可能会带有些许格式，具体取决于语言和区域性。 使用分层实体将姓氏和名字作为子级，或者使用简单实体将姓氏和名字作为角色。 请确保给出的示例在陈述的不同部分、在不同长度的陈述中以及在所有意向（包括“None”意向）的陈述中使用姓氏和名字。 定期[查看](luis-how-to-review-endoint-utt.md)终结点陈述以标记未能正确预测的任何名称。
@@ -434,7 +438,7 @@ HTTPS 响应包含 LUIS 可基于当前发布的暂存或生产终结点的模�
 地名是固定且已知的，例如市、县、州、省和国家/地区。 如果应用采用已知的地名集合，请考虑使用列表实体。 如果需要找到所有地名，请创建一个简单实体，并提供各种示例。 添加地名短语列表，以使地名在应用中更易认出。 定期[查看](luis-how-to-review-endoint-utt.md)终结点陈述以标记未能正确预测的任何名称。
 
 ### <a name="new-and-emerging-names"></a>新出现的名称
-一些应用需要能够找到新出现的名称，例如产品或公司。 这种类型的数据提取是最难的。 首先从简单实体开始，添加一个短语列表。 定期[查看](luis-how-to-review-endoint-utt.md)终结点陈述以标记未能正确预测的任何名称。
+一些应用需要能够找到新出现的名称，例如产品或公司。 这些类型的名称是最难提取的数据类型。 首先从简单实体开始，添加一个短语列表。 定期[查看](luis-how-to-review-endoint-utt.md)终结点陈述以标记未能正确预测的任何名称。
 
 ## <a name="pattern-roles-data"></a>模式角色数据
 角色是实体间的上下文差别。
@@ -603,6 +607,7 @@ Pattern.any 实体是长度可变的实体，用于某个[模式](luis-concept-p
 ```
 
 ## <a name="data-matching-multiple-entities"></a>匹配多个实体的数据
+
 LUIS 返回在陈述中发现的所有实体。 因此，机器人可能需要基于这些结果进行决策。 一个陈述中可能包含很多实体：
 
 `book me 2 adult business tickets to paris tomorrow on air france`
@@ -728,6 +733,46 @@ LUIS 终结点可以发现不同实体中的相同数据：
           "value": "business"
         }
       ]
+    }
+  ]
+}
+```
+
+## <a name="data-matching-multiple-list-entities"></a>匹配多个列表实体的数据
+
+如果一个单词或短语与多个列表实体匹配，则终结点查询会返回每个列表实体。
+
+对于查询 `when is the best time to go to red rock?`，且应用中的单词 `red` 出现在多个列表中，LUIS 会识别所有实体，并返回一组实体作为 JSON 终结点响应的一部分： 
+
+```JSON
+{
+  "query": "when is the best time to go to red rock?",
+  "topScoringIntent": {
+    "intent": "Calendar.Find",
+    "score": 0.06701678
+  },
+  "entities": [
+    {
+      "entity": "red",
+      "type": "Colors",
+      "startIndex": 31,
+      "endIndex": 33,
+      "resolution": {
+        "values": [
+          "Red"
+        ]
+      }
+    },
+    {
+      "entity": "red rock",
+      "type": "Cities",
+      "startIndex": 31,
+      "endIndex": 38,
+      "resolution": {
+        "values": [
+          "Destinations"
+        ]
+      }
     }
   ]
 }

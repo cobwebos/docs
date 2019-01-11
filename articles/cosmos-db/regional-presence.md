@@ -7,18 +7,18 @@ ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: rimman
 ms.custom: seodec18
-ms.openlocfilehash: c3299b2ea777577281ede234cd1aa5137ce5a445
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 2062862670f5b373d3153c473e45455e10d5e996
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53138103"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53548674"
 ---
 # <a name="regional-presence-of-azure-cosmos-db"></a>Azure Cosmos DB 遍及各区
 
 目前，Azure 在全球的 [54 个地区](https://azure.microsoft.com/global-infrastructure/regions/)提供。 Azure Cosmos DB 是 Azure 中的一项基础服务，在所有提供 Azure 的地区均可使用。
 
-![Azure Cosmos DB 区域可用性](./media/regional-presence/regional-presence.png)
+[![Azure Cosmos DB 可用的区域](./media/regional-presence/regional-presence.png)](./media/regional-presence/regional-presence.png#lightbox)
 
 Cosmos DB 在提供给客户的所有五种不同的 Azure 云环境中均可使用：
 

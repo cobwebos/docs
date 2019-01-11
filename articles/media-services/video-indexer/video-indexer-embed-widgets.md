@@ -7,18 +7,22 @@ author: Juliako
 manager: femila
 ms.service: media-services
 ms.topic: article
-ms.date: 11/19/2018
+ms.date: 12/25/2018
 ms.author: juliako
-ms.openlocfilehash: a051f40cb5586cae58d8e4939f4fcee35438bf69
-ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
+ms.openlocfilehash: 2c07cfcba473e2e27f14ff0118e6ca8a8f484df1
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2018
-ms.locfileid: "52291747"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53791804"
 ---
 # <a name="embed-video-indexer-widgets-into-your-applications"></a>将视频索引器小组件嵌入应用程序
 
 本文介绍如何将视频索引器小组件嵌入应用程序。 视频索引器支持将两类小组件嵌入应用程序：**认知见解**和**播放器**。 
+
+> [!NOTE]
+> 从 2018 年 2 月 1 日开始，**认知见解**小组件的版本 1 将弃用。 嵌入 URL 版本将默认为 `version=2`。
+
 ## <a name="widget-types"></a>小组件类型
 
 ### <a name="cognitive-insights-widget"></a>认知见解小组件
@@ -39,7 +43,7 @@ ms.locfileid: "52291747"
 |t|距离开始的秒数|让播放器从给定时间点开始播放。<br/>示例：t=60|
 |captions|语言代码|在小组件加载过程中提取给定语言的字幕，使之在字幕菜单中可用。<br/>示例：captions=en-US|
 |showCaptions|布尔值|使播放器与已启用的字幕一起加载。<br/>示例：showCaptions=true|
-|type||激活音频播放器外观（视频部件已删除）。<br/>示例：type=audio|
+|type||激活音频播放器外观（视频部件已删除）。<br/>示例：type=audio|"
 |autoplay|布尔值|确定播放器是否会在加载后开始播放视频（默认值为 true）。<br/>示例：autoplay=false|
 |语言|语言代码|控制播放器语言（默认值为 en-US）<br/>示例：language=de-DE|
 

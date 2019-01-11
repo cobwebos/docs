@@ -12,12 +12,12 @@ documentationcenter: ''
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: 8951680ca9488dabffd02ee084e3f6827122276e
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: a51efa18672b81ef3e23e292abbe2b34c1936205
+ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52957446"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53994736"
 ---
 # <a name="manage-connectivity-and-reliable-messaging-by-using-azure-iot-hub-device-sdks"></a>使用 Azure IoT 中心设备 SDK 管理连接和可靠的消息传送
 
@@ -62,13 +62,13 @@ Azure IoT 中心设备 SDK 旨在简化从云到设备和从设备到云的连�
 1. SDK 检测网络、协议或应用程序中的错误和相关错误。
 1. SDK 使用错误筛选器来确定错误类型并决定是否需要重试。
 1. 如果 SDK 确定了**无法恢复的错误**，则会停止连接、发送和接收等操作。 SDK 会通知用户。 无法恢复的错误的示例包括身份验证错误和错误终结点错误。
-1. 如果 SDK 确定了**可恢复的错误**，则会根据指定的重试策略进行重试，直到经过定义的超时时间。
+1. 如果 SDK 确定了**可恢复的错误**，则会根据指定的重试策略进行重试，直到经过定义的超时时间。  请注意，SDK 默认情况下使用**带抖动的指数回退**重试策略。
 1. 当定义的超时到期时，SDK 会停止尝试连接或发送。 它会通知用户。
 1. SDK 允许用户附加回调以接收连接状态更改。
 
 SDK 提供三种重试策略：
 
-- **带抖动的指数回退**：此默认重试策略往往在开始时激进，并随时间推移减缓，直到达到最大延迟。 该设计基于 [Azure 体系结构中心的重试指南](https://docs.microsoft.com/azure/architecture/best-practices/retry-service-specific)。
+- **带抖动的指数回退**：此默认重试策略往往在开始时激进，并随时间推移减缓，直到达到最大延迟。 该设计基于 [Azure 体系结构中心的重试指南](https://docs.microsoft.com/azure/architecture/best-practices/retry-service-specific)。 
 - **自定义重试**：对于某些 SDK 语言，可以设计更适合你的方案的自定义重试策略，然后将其注入 RetryPolicy。 C SDK 中不提供自定义重试。
 - **不重试**：可以将重试策略设置为“不重试”，这将禁用重试逻辑。 SDK 假设连接已建立，尝试进行一次连接并发送一次消息。 此策略通常用于有带宽或成本顾虑的方案。 如果选择此选项，则未能发送的消息将丢失且无法恢复。
 

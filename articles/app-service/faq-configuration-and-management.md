@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: genli
-ms.openlocfilehash: 266c9df095e9153533dbd89b4cd557d12ddcdc66
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: 4cd6b375385326889226f6d4284815dfa0f47c49
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53408878"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53971301"
 ---
 # <a name="configuration-and-management-faqs-for-web-apps-in-azure"></a>Azure 中的 Web 应用配置和管理常见问题解答
 
@@ -39,7 +39,7 @@ ms.locfileid: "53408878"
 
 ## <a name="how-do-i-purchase-a-new-custom-domain-for-my-web-app"></a>如何为 Web 应用购买新的自定义域？
 
-若要了解如何为应用服务 Web 应用购买和设置自定义域，请参阅[在应用服务中配置和配置自定义域名](custom-dns-web-site-buydomains-web-app.md)。
+若要了解如何为应用服务 Web 应用购买和设置自定义域，请参阅[在应用服务中配置和配置自定义域名](manage-custom-dns-buy-domain.md)。
 
 
 ## <a name="how-do-i-upload-and-configure-an-existing-ssl-certificate-for-my-web-app"></a>如何为 Web 应用上传和配置现有 SSL 证书？
@@ -72,9 +72,11 @@ ms.locfileid: "53408878"
     * 值 = *所需时区*
 3. 选择“保存”。
 
+有关可接受的值，请参阅[默认时区](https://docs.microsoft.com/windows-hardware/manufacture/desktop/default-time-zones)一文中的“时区”列。
+
 ## <a name="why-do-my-continuous-webjobs-sometimes-fail"></a>为何我的连续 Web 作业有时会失败？
 
-默认情况下，Web 应用如果已处于空闲状态达到一定时间，则会卸载。 这样可以让系统节省资源。 在基本和标准计划中，可以打开“始终可用”设置以使 Web 应用始终加载。 如果 Web 应用运行连续 Web 作业，则应打开“始终打开”，否则 Web 作业可能无法可靠运行。 有关详细信息，请参阅[创建连续运行的 Web 作业](web-sites-create-web-jobs.md#CreateContinuous)。
+默认情况下，Web 应用如果已处于空闲状态达到一定时间，则会卸载。 这样可以让系统节省资源。 在基本和标准计划中，可以打开“始终可用”设置以使 Web 应用始终加载。 如果 Web 应用运行连续 Web 作业，则应打开“始终打开”，否则 Web 作业可能无法可靠运行。 有关详细信息，请参阅[创建连续运行的 Web 作业](webjobs-create.md#CreateContinuous)。
 
 ## <a name="how-do-i-get-the-outbound-ip-address-for-my-web-app"></a>如何获取 Web 应用的出站 IP 地址？
 
@@ -124,7 +126,7 @@ PCI DSS 版本 3.1 认证要求禁用传输层安全性 (TLS) 1.0。 当前，�
 
 在标准和高级应用服务计划中，将 Web 应用部署到应用服务时，可以部署到单独的部署槽位而不是默认的生产槽位。 部署槽是具有自己的主机名的动态 Web 应用。 两个部署槽（包括生产槽）之间的 Web 应用内容与配置元素可以交换。
 
-有关使用部署槽位的详细信息，请参阅[在应用服务中设置过渡环境](web-sites-staged-publishing.md)。
+有关使用部署槽位的详细信息，请参阅[在应用服务中设置过渡环境](deploy-staging-slots.md)。
 
 ## <a name="how-do-i-access-and-review-webjob-logs"></a>如何访问和查看 Web 作业日志？
 
@@ -248,7 +250,7 @@ Error:{"error":{"code":"ResourceDeploymentFailure","message":"The resource provi
     {month} {day of the week}" }
     ```
 
-有关计划 Web 作业的详细信息，请参阅[使用 Cron 表达式创建计划 Web 作业](web-sites-create-web-jobs.md#CreateScheduledCRON)。
+有关计划 Web 作业的详细信息，请参阅[使用 Cron 表达式创建计划 Web 作业](webjobs-create.md#CreateScheduledCRON)。
 
 ## <a name="how-do-i-perform-penetration-testing-for-my-app-service-app"></a>如何对应用服务应用执行渗透测试？
 

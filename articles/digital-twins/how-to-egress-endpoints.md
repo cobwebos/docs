@@ -1,25 +1,71 @@
 ---
 title: Azure 数字孪生中的出口和终结点 | Microsoft Docs
-description: 有关如何使用 Azure 数字孪生创建终结点的指南
+description: 有关如何使用 Azure 数字孪生创建终结点的指南。
 author: alinamstanciu
 manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 10/26/2018
+ms.date: 12/31/2018
 ms.author: alinast
-ms.openlocfilehash: c94d29f16c011a9ff9951d064d7496d3a87f70ef
-ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
+ms.openlocfilehash: e93811a56f934a95dde45633c4fb64312b3696df
+ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51636299"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53994805"
 ---
 # <a name="egress-and-endpoints"></a>出口和终结点
 
-Azure 数字孪生支持**终结点**的概念。 每个终结点代表用户的 Azure 订阅中的一个事件或消息中转站。 可以将事件和消息发送到 Azure 事件中心、Azure 事件网格和 Azure 服务总线主题。
+Azure 数字孪生*终结点*在用户的 Azure 订阅中提供消息或事件代理。 可以将事件和消息发送到 Azure 事件中心、Azure 事件网格和 Azure 服务总线主题。
 
-事件根据预定义的路由首选项发送到终结点。 用户可以指定哪个终结点应接收以下任何事件： 
+事件根据预定义的路由首选项传送到终结点。 用户指定每个终结点可以接收哪些*事件类型*。
+
+若要详细了解事件、路由和事件类型，请参阅[在 Azure 数字孪生中路由事件和消息](./concepts-events-routing.md)。
+
+## <a name="events"></a>事件
+
+事件由 IoT 对象（例如设备和传感器）发送，由 Azure 消息和事件代理进行处理。 事件是通过以下 [Azure 事件网格事件架构参考](../event-grid/event-schema.md)定义的。
+
+```JSON
+{
+  "id": "00000000-0000-0000-0000-000000000000",
+  "subject": "ExtendedPropertyKey",
+  "data": {
+    "SpacesToNotify": [
+      "3a16d146-ca39-49ee-b803-17a18a12ba36"
+    ],
+    "Id": "00000000-0000-0000-0000-000000000000",
+      "Type": "ExtendedPropertyKey",
+    "AccessType": "Create"
+  },
+  "eventType": "TopologyOperation",
+  "eventTime": "2018-04-17T17:41:54.9400177Z",
+  "dataVersion": "1",
+  "metadataVersion": "1",
+  "topic": "/subscriptions/YOUR_TOPIC_NAME"
+}
+```
+
+| 属性 | 类型 | 说明 |
+| --- | --- | --- |
+| id | 字符串 | 事件的唯一标识符。 |
+| subject | 字符串 | 事件主题的发布者定义路径。 |
+| data | 对象 | 特定于资源提供程序的事件数据。 |
+| eventType | 字符串 | 此事件源的一个注册事件类型。 |
+| EventTime | 字符串 | 基于提供程序 UTC 时间的事件生成时间。 |
+| dataVersion | 字符串 | 数据对象的架构版本。 发布者定义架构版本。 |
+| metadataVersion | 字符串 | 事件元数据的架构版本。 事件网格定义顶级属性的架构。 事件网格提供此值。 |
+| topic | 字符串 | 事件源的完整资源路径。 此字段不可写入。 事件网格提供此值。 |
+
+有关事件网格事件架构的详细信息：
+
+- 请查看 [Azure 事件网格事件架构参考](../event-grid/event-schema.md)。
+- 请阅读 [Azure 事件网格 Node.js SDK EventGridEvent 参考](https://docs.microsoft.com/javascript/api/azure-eventgrid/eventgridevent?view=azure-node-latest)。
+
+## <a name="event-types"></a>事件类型
+
+事件类型对事件的性质进行分类并且是在 **eventType** 字段中设置的。 以下列表提供了可用的事件类型：
 
 - TopologyOperation
 - UdfCustom
@@ -27,34 +73,30 @@ Azure 数字孪生支持**终结点**的概念。 每个终结点代表用户的
 - SpaceChange
 - DeviceMessage
 
-若要对事件路由和事件类型有基本了解，请参阅[路由事件和消息](concepts-events-routing.md)。
-
-## <a name="event-types-description"></a>事件类型描述
-
-以下部分将会介绍每种事件类型的事件格式。
+以下各个子部分将进一步介绍每个事件类型的事件格式。
 
 ### <a name="topologyoperation"></a>TopologyOperation
 
-**TopologyOperation** 适用于图形更改。 **subject** 属性指定受影响的对象类型。 以下类型的对象可能会触发此事件： 
+**TopologyOperation** 适用于图形更改。 **subject** 属性指定受影响的对象类型。 以下类型的对象可能会触发此事件：
 
-- 设备
+- Device
 - DeviceBlobMetadata
 - DeviceExtendedProperty
 - ExtendedPropertyKey
 - ExtendedType
 - KeyStore
-- 报表
+- Report
 - RoleDefinition
-- 传感器
+- Sensor
 - SensorBlobMetadata
 - SensorExtendedProperty
-- 空格
+- Space
 - SpaceBlobMetadata
 - SpaceExtendedProperty
 - SpaceResource
 - SpaceRoleAssignment
-- 系统
-- 用户
+- System
+- User
 - UserBlobMetadata
 - UserExtendedProperty
 
@@ -86,7 +128,7 @@ Azure 数字孪生支持**终结点**的概念。 每个终结点代表用户的
 
 ### <a name="udfcustom"></a>UdfCustom
 
-**UdfCustom** 是用户定义的函数 (UDF) 发送的事件。 
+**UdfCustom** 是用户定义的函数 (UDF) 发送的事件。
   
 > [!IMPORTANT]  
 > 必须从 UDF 本身显式发送此事件。
@@ -195,10 +237,19 @@ Azure 数字孪生支持**终结点**的概念。 每个终结点代表用户的
 
 ## <a name="configure-endpoints"></a>配置终结点
 
-终结点管理通过终结点 API 执行。 以下示例演示如何配置各种受支持的终结点。 请特别注意事件类型数组，因为此数组会定义终结点的路由：
+终结点管理通过终结点 API 执行。
+
+[!INCLUDE [Digital Twins Management API](../../includes/digital-twins-management-api.md)]
+
+以下示例演示了如何配置受支持的终结点。
+
+>[!IMPORTANT]
+> 请特别注意 **eventTypes** 属性。 它定义终结点处理哪些事件类型并确定其路由。
+
+针对以下项发出的经过身份验证的 HTTP POST 请求
 
 ```plaintext
-POST https://endpoints-demo.azuresmartspaces.net/management/api/v1.0/endpoints
+YOUR_MANAGEMENT_API_URL/endpoints
 ```
 
 - 路由到服务总线事件类型 **SensorChange**、**SpaceChange** 和 **TopologyOperation**：

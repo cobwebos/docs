@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 02/21/2018
 ms.author: diberry
-ms.openlocfilehash: be2c7aea356f6d7b73438499b7e4d680ed4bad7c
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 4cac20cb44c2400e44ff2ca0939b1537f0b20734
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53259233"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53727174"
 ---
 # <a name="use-a-list-entity-to-increase-entity-detection"></a>使用列表实体提升实体检测 
 本教程展示了如何使用[列表实体](luis-concept-entity-types.md)提升实体检测。 无需标记列表实体，因为它们与术语完全匹配。  
@@ -37,7 +37,7 @@ ms.locfileid: "53259233"
 > [!Tip]
 > 如果尚无订阅，可注册[免费帐户](https://azure.microsoft.com/free/)。
 
-本教程中的所有代码都存储在 [LUIS 示例 GitHub 存储库](https://github.com/Microsoft/LUIS-Samples/tree/master/documentation-samples/tutorial-list-entity)中。 
+本教程中的所有代码都可在 [Azure 示例 GitHub 存储库](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/tutorial-list-entity)中找到。 
 
 ## <a name="use-homeautomation-app"></a>使用 HomeAutomation 应用
 使用 HomeAutomation 应用，可以控制灯等设备、娱乐系统和供热制冷等环境控制系统。 这些系统有多个不同名称，包括制造商名称、别名、首字母缩略词和行话。 

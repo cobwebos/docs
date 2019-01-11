@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/25/2018
 ms.author: andrl
-ms.openlocfilehash: e866b205fb5cdd65dc690101503613714271e36c
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 3e992dd8ab24e4e60b81c6565ea4ec3971a9336b
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53075346"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54036405"
 ---
 # <a name="provision-throughput-on-azure-cosmos-containers-and-databases"></a>在 Azure Cosmos 容器和数据库上预配吞吐量
 
@@ -27,9 +27,9 @@ Azure Cosmos DB 允许以两种粒度配置吞吐量 - “Azure Cosmos 容器”
 
 如果希望容器的性能有保证，则我们建议以容器粒度配置吞吐量。
 
-对 Azure Cosmos 容器预配的吞吐量均匀分布于该容器的所有逻辑分区之间。 由于某个容器的一个或多个逻辑分区由资源分区托管，因此，物理分区专属于该容器，并支持对该容器预配的吞吐量。 下图显示了资源分区如何托管容器的一个或多个逻辑分区：
+对 Azure Cosmos 容器预配的吞吐量均匀分布于该容器的所有逻辑分区之间。 由于某个容器的一个或多个逻辑分区由物理分区托管，因此，物理分区专属于该容器，并支持对该容器预配的吞吐量。 下图显示了物理分区如何托管容器的一个或多个逻辑分区：
 
-![资源分区](./media/set-throughput/resource-partition.png)
+![物理分区](./media/set-throughput/resource-partition.png)
 
 ## <a name="setting-throughput-on-a-database"></a>对数据库设置吞吐量
 
@@ -47,11 +47,11 @@ Azure Cosmos DB 允许以两种粒度配置吞吐量 - “Azure Cosmos 容器”
 
 * 将 VM 群集或本地物理服务器中托管的 NoSQL 数据库（例如 MongoDB、Cassandra）迁移到 Azure Cosmos DB 时，在一组容器之间共享数据库的预配吞吐量非常有利。 可将针对 Azure Cosmos 数据库配置的预配吞吐量视为在逻辑上等同于（但更具成本效益和弹性）MongoDB 或 Cassandra 群集的计算容量。  
 
-在任意给定的时间点，分配给数据库中容器的吞吐量将分布在该容器的所有逻辑分区之间。 如果有容器共享数据库的预配吞吐量，则无法选择性地将吞吐量应用到特定的容器或逻辑分区。 如果逻辑分区上的工作负荷消耗的吞吐量超过了分配给特定逻辑分区的吞吐量，操作将受到速率限制。 发生速率限制时，可以增大整个容器的吞吐量，或重试操作。 有关分区的详细信息，请参阅[逻辑分区](partition-data.md)。
+必须使用分区键创建在具有预配吞吐量的数据库内创建的所有容器。 在任意给定的时间点，分配给数据库中容器的吞吐量将分布在该容器的所有逻辑分区之间。 如果有容器共享数据库的预配吞吐量，则无法选择性地将吞吐量应用到特定的容器或逻辑分区。 如果逻辑分区上的工作负荷消耗的吞吐量超过了分配给特定逻辑分区的吞吐量，操作将受到速率限制。 发生速率限制时，可以增大整个容器的吞吐量，或重试操作。 有关分区的详细信息，请参阅[逻辑分区](partition-data.md)。
 
-可在单个资源分区中托管多个共享数据库预配吞吐量的逻辑分区。 尽管容器的单个逻辑分区始终划归到资源分区，但可以在“R”物理分区中映射和托管“C”容器中共享数据库预配吞吐量的“L”逻辑分区。 下图显示了资源分区如何托管属于数据库中不同容器的一个或多个逻辑分区：
+可在单个物理分区中托管多个共享数据库预配吞吐量的逻辑分区。 尽管容器的单个逻辑分区始终划归到物理分区，但可以在“R”物理分区中映射和托管“C”容器中共享数据库预配吞吐量的“L”逻辑分区。 下图显示了物理分区如何托管属于数据库中不同容器的一个或多个逻辑分区：
 
-![资源分区](./media/set-throughput/resource-partition2.png)
+![物理分区](./media/set-throughput/resource-partition2.png)
 
 ## <a name="setting-throughput-on-a-database-and-a-container"></a>对数据库和容器设置吞吐量
 

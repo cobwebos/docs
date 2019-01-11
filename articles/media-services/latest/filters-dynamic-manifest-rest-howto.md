@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 11/28/2018
+ms.date: 12/17/2018
 ms.author: juliako
-ms.openlocfilehash: 5cc670a94958b123ac71b49cbf25661d567e4629
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 32b9664d12d6fe3a44329665c730dbc8709430f2
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53083405"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53650835"
 ---
 # <a name="creating-filters-with-media-services-rest-api"></a>使用媒体服务 REST API 创建筛选器
 
@@ -31,12 +31,13 @@ ms.locfileid: "53083405"
 若要完成本主题中所述的步骤，必须：
 
 - 查看[筛选器和动态清单](filters-dynamic-manifest-overview.md)。
-- [创建媒体服务帐户](create-account-cli-how-to.md)。 请务必记住资源组名称和媒体服务帐户名称。 
 - [配置 Postman 以便进行 Azure 媒体服务 REST API 调用](media-rest-apis-with-postman.md)。
+
+    确保遵循[获取 Azure AD 令牌](media-rest-apis-with-postman.md#get-azure-ad-token)主题中的最后一步。 
 
 ## <a name="define-a-filter"></a>定义筛选器  
 
-下面是**请求正文**示例，其中定义了添加到清单的曲目择条件。 此筛选器包括带有 EC-3 的任何英语曲目和比特率在 0-1000000 范围内的任何视频曲目。
+下面是**请求正文**示例，其中定义了添加到清单的曲目择条件。 此筛选器包括属于 EC-3 的任何音频曲目和比特率在 0-1000000 范围内的任何视频曲目。
 
 ```json
 {
@@ -50,14 +51,9 @@ ms.locfileid: "53083405"
                         "operation": "Equal"
                     },
                     {
-                        "property": "Language",
-                        "value": "en",
-                        "operation": "Equal"
-                    },
-                    {
                         "property": "FourCC",
                         "value": "EC-3",
-                        "operation": "NotEqual"
+                        "operation": "Equal"
                     }
                 ]
             },
@@ -86,7 +82,9 @@ ms.locfileid: "53083405"
 
 **PUT** HTTP 请求方法类似于：
 
+```
 PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Media/mediaServices/{accountName}/accountFilters/{filterName}?api-version=2018-07-01
+```
 
 选择“正文”选项卡并粘贴你[之前定义的](#define-a-filter) json 代码。
 
@@ -98,11 +96,13 @@ PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
 
 ## <a name="create-asset-filters"></a>创建资产筛选器  
 
-在你下载的“媒体服务 v3”Postman 集合中，选择“资产”->**创建或更新资产筛选器。
+在已下载的“媒体服务 v3”Postman 集合中，选择“资产”->“创建或更新资产筛选器”。
 
 **PUT** HTTP 请求方法类似于：
 
+```
 PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Media/mediaServices/{accountName}/assets/{assetName}/assetFilters/{filterName}?api-version=2018-07-01
+```
 
 选择“正文”选项卡并粘贴你[之前定义的](#define-a-filter) json 代码。
 

@@ -1,5 +1,5 @@
 ---
-title: 发生影响 Azure 密钥保管库的 Azure 服务中断时该怎么办 | Microsoft Docs
+title: 发生影响 Azure 密钥保管库的 Azure 服务中断时该怎么办 - Azure 密钥保管库 | Microsoft Docs
 description: 了解发生影响 Azure 密钥保管库的 Azure 服务中断时该怎么办。
 services: key-vault
 documentationcenter: ''
@@ -10,18 +10,18 @@ ms.assetid: 19a9af63-3032-447b-9d1a-b0125f384edb
 ms.service: key-vault
 ms.workload: key-vault
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/07/2017
+ms.date: 01/07/2019
 ms.author: barclayn
-ms.openlocfilehash: 5ab6fc207d8a7732062a51a6215c25a4a0fac006
-ms.sourcegitcommit: 06724c499837ba342c81f4d349ec0ce4f2dfd6d6
+ms.openlocfilehash: a8f9b1a9ac72498e2e8374926ba3ae47a3eaff09
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46465837"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54078331"
 ---
 # <a name="azure-key-vault-availability-and-redundancy"></a>Azure 密钥保管库可用性和冗余
+
 Azure 密钥保管库具有多层冗余功能，确保密钥和机密持续可供应用程序使用，即使服务的单个组件发生故障也是如此。
 
 密钥保管库的内容会在区域中复制，并且会复制到至少 150 英里以外（但位于同一个地理位置）的次要区域。 这可以保持密钥和机密的高持久性。 有关特定区域对的详细信息，请参阅 [Azure 配对区域](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)一文。

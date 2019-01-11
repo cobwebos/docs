@@ -11,12 +11,12 @@ ms.topic: howto
 ms.service: virtual-machines-windows
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.openlocfilehash: d1381ff16d0de382634b06fd081f1827588f8ee9
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 1caf8455816bd86411a75821ee33516e8aad5de3
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53435100"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "54002257"
 ---
 # <a name="how-to-enable-nested-virtualization-in-an-azure-vm"></a>如何在 Azure VM 中启用嵌套虚拟化
 
@@ -180,3 +180,7 @@ New-NetNat -Name "InternalNat" -InternalIPInterfaceAddressPrefix 192.168.0.0/24
 
 在来宾虚拟机中，打开浏览器并导航到网页。
     ![GuestVM](./media/virtual-machines-nested-virtualization/guest-virtual-machine.png)
+
+## <a name="set-up-intranet-connectivity-for-the-guest-virtual-machine"></a>设置来宾虚拟机的 Intranet 连接
+
+有关如何在来宾 VM 和 Azure VM 之间启用透明连接的说明，请参阅[此文档](https://docs.microsoft.com/virtualization/hyper-v-on-windows/user-guide/nested-virtualization-azure-virtual-network)。

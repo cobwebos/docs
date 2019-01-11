@@ -3,17 +3,17 @@ title: Azure Cosmos DB：批量执行程序 .NET API、SDK 和资源
 description: 了解有关批量执行程序 .NET API 和 SDK 的所有信息，包括发布日期、停用日期和 Azure Cosmos DB 批量执行程序 .NET SDK 各版本之间所做的更改。
 author: tknandu
 ms.service: cosmos-db
-ms.component: cosmosdb-sql
+ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: reference
 ms.date: 11/19/2018
 ms.author: ramkris
-ms.openlocfilehash: c239464a37637b21504227951d917977cfea6726
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 8675c5ff90f7be2dc0b3ac80eb593adb613ba860
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53343949"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54039752"
 ---
 # <a name="net-bulk-executor-library-download-information"></a>.NET 批量执行程序库：下载信息 
 
@@ -77,7 +77,7 @@ ms.locfileid: "53343949"
 ### <a name="a-name110110"></a><a name="1.1.0"/>1.1.0
 
 * 添加了对 Azure Cosmos DB SQL API 帐户的 BulkDelete 操作的支持。
-* 添加了对 Azure Cosmos DB MongoDB API 帐户的 BulkImport 操作的支持。
+* 使用 Azure Cosmos DB 的 API for MongoDB 添加了对帐户进行 BulkImport 操作的支持。
 * 增加了对版本 2.0.0 的 DocumentDB .NET SDK 依赖项。 
 
 ### <a name="a-name102102"></a><a name="1.0.2"/>1.0.2

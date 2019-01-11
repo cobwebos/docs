@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.topic: conceptual
 ms.service: site-recovery
-ms.date: 11/27/2018
+ms.date: 12/27/2018
 ms.author: raynew
-ms.openlocfilehash: 8285632d8dea76763c65dd06e8be2d7494a47188
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 02e6d6407a515314d99ea747dac3646d665c47ae
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52838984"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53976573"
 ---
 # <a name="replicate-azure-stack-vms-to-azure"></a>将 Azure Stack VM 复制到 Azure
 
@@ -237,7 +237,7 @@ Site Recovery 有助于实现业务连续性和灾难恢复 (BCDR) 策略。 该
 6. 选择要在其中存储复制的数据的 Azure 存储帐户。
 7. 选择 Azure VM 在故障转移后创建时所要连接的 Azure 网络和子网。
 8. 选择“立即为选定的计算机配置”，将网络设置应用到选择保护的所有计算机。 如需为每台计算机单独选择 Azure 网络，请选择“稍后配置”。
-9. 在“物理计算机”中，单击“+物理计算机”。 指定每台计算机的 IP 地址名称以及要复制的操作系统。
+9. 在“物理计算机”中，单击“+物理计算机”。 指定要复制的每台计算机的名称、IP 地址和 OS 类型。
 
     - 使用计算机的内部 IP 地址。
     - 如果指定公共 IP 地址，则复制可能无法按预期进行。
@@ -280,7 +280,7 @@ Site Recovery 有助于实现业务连续性和灾难恢复 (BCDR) 策略。 该
 2. 故障转移使用指定的恢复点处理数据：
     - **最新处理**：计算机故障转移到由 Site Recovery 处理的最新恢复点。 将显示时间戳。 使用此选项时，无需费时处理数据，因此 RTO（恢复时间目标）会较低。
     - **最新的应用一致**：计算机故障转移到最新的应用一致恢复点。
-    - **自定义**： 选择用于故障转移的恢复点。
+    - **自定义**：选择用于故障转移的恢复点。
 
 3. 会使用已处理的数据创建 Azure VM。
 4. 测试故障转移可自动清理在演练期间创建的 Azure VM。
@@ -319,7 +319,7 @@ Site Recovery 有助于实现业务连续性和灾难恢复 (BCDR) 策略。 该
 
 ### <a name="fail-back-to-azure-stack"></a>故障回复到 Azure Stack
 
-主站点恢复正常运行后，可从 Azure 故障回复到 Azure Stack。 若要进行此操作，需下载 Azure VM VHD，并将其上传到 Azure Stack。
+主站点重新启动并运行后，可从 Azure 故障回复到 Azure Stack。 若要进行此操作，需下载 Azure VM VHD，并将其上传到 Azure Stack。
 
 1. 关闭 Azure VM，以便可下载 VHD。 
 2. 若要开始下载 VHD，请安装 [Azure 存储资源管理器](https://azure.microsoft.com/features/storage-explorer/)。

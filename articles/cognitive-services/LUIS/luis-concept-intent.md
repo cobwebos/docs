@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 01/02/2019
 ms.author: diberry
-ms.openlocfilehash: a6343d9bd2009ee2c16f0cca3118e5653faa4c07
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: f9f0c52c187b36416dbc77f280a8f6148cf1cbbc
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53138681"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53971046"
 ---
 # <a name="concepts-about-intents-in-your-luis-app"></a>关于 LUIS 应用中的意向的概念
 
@@ -58,7 +58,7 @@ ms.locfileid: "53138681"
 [预生成域](luis-how-to-use-prebuilt-domains.md)具有带有陈述的意向。  
 
 ## <a name="none-intent-is-fallback-for-app"></a>None 意向是应用的回退意向
-“None”意向是全方位或或回退意向。 它用于训练应用域（主题区域）中不重要的 LUIS 陈述。 None 意向应占应用程序中总陈述数的 10 % 到 20%。 请不要将此意向留空。 
+“None”意向是全方位或或回退意向。 它用于训练应用域（主题区域）中不重要的 LUIS 陈述。 None 意向应占应用程序中总陈述数的 10 % 到 20%。 不要将“None”意向留空。 
 
 ### <a name="none-intent-helps-conversation-direction"></a>None 意向有助于指导会话
 当陈述预测为 None 意向并且返回到具有该预测的聊天机器人时，机器人可询问更多问题或提供菜单以指导用户在聊天机器人中进行有效选择。 

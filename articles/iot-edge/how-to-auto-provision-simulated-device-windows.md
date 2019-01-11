@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: a251eb3915ee3043ab4b69e0cd4cef8fa2170486
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 1ad8435626b35859968bdf93589f22dc81e74e02
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53101596"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53557693"
 ---
 # <a name="create-and-provision-a-simulated-tpm-edge-device-on-windows"></a>在 Windows 上创建和预配模拟 TPM Edge 设备
 
@@ -61,14 +61,13 @@ ms.locfileid: "53101596"
 
 完成上一部分后，应该会发现新设备在 IoT 中心内列为 IoT Edge 设备。 现在，需要在设备上安装 IoT Edge 运行时。 
 
-IoT Edge 运行时部署在所有 IoT Edge 设备上。 该运行时的组件在容器中运行，允许你将其他容器部署到设备，以便在边缘上运行代码。 在运行 Windows 的设备上，可以选择使用 Windows 容器或 Linux 容器。 选择要使用的容器类型，然后遵循本文中的步骤。 确保将 IoT Edge 运行时配置为自动预配而不是手动预配。 
+IoT Edge 运行时部署在所有 IoT Edge 设备上。 该运行时的组件在容器中运行，允许你将其他容器部署到设备，以便在边缘上运行代码。  
 
-遵照说明在运行上一部分所述的模拟 TPM 的设备上安装 IoT Edge 运行时。 
+遵照说明在运行上一部分所述的模拟 TPM 的设备上安装 IoT Edge 运行时。 确保将 IoT Edge 运行时配置为自动预配而不是手动预配。
 
-在开始学习这些文章之前，请了解 DPS 的“ID 范围”和设备的“注册 ID”。 
+在设备上安装 IoT Edge 之前，请先了解 DPS **ID 范围**和设备**注册 ID**。 
 
-* [Windows 容器](how-to-install-iot-edge-windows-with-windows.md)
-* [Linux 容器](how-to-install-iot-edge-windows-with-linux.md)
+[安装和自动预配 IoT Edge](how-to-install-iot-edge-windows.md#option-2-install-and-automatically-provision)
 
 ## <a name="verify-successful-installation"></a>验证是否成功安装
 

@@ -1,5 +1,5 @@
 ---
-title: Azure 时序见解故障排除 - 诊断和解决 Azure 时序见解中的问题 | Microsoft Docs
+title: 诊断、排查和解决 Azure 时序见解中的问题 | Microsoft Docs
 description: 本文介绍如何诊断、排查和解决可能在 Azure 时序见解环境中遇到的常见问题。
 ms.service: time-series-insights
 services: time-series-insights
@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: troubleshooting
 ms.date: 04/09/2018
 ms.custom: seodec18
-ms.openlocfilehash: 8e9a2bc8378f71e510d11b3e28438489d620ff6f
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: 36ea2b8d3649fbda5a5cd6cc5f2cd05cdc095902
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53322322"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53555806"
 ---
 # <a name="diagnose-and-solve-issues-in-your-time-series-insights-environment"></a>诊断和解决时序见解环境中的问题
 

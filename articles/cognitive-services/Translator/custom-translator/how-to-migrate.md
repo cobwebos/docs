@@ -9,12 +9,12 @@ ms.component: custom-translator
 ms.date: 11/13/2018
 ms.author: v-rada
 ms.topic: article
-ms.openlocfilehash: 6572a9b72554691441cb258a87a5db4ba7845087
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: a02be1ba29ad43b90c99a5d1e275b96b3b4023d6
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53077114"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53718718"
 ---
 # <a name="migrate-hub-workspace-and-projects-to-custom-translator"></a>将 Hub 工作区和项目迁移到自定义翻译
 
@@ -130,7 +130,7 @@ Microsoft Translator Hub 允许有选择性地迁移项目。
 * 每个项目只可迁移一次。  如需重复执行对某个项目的迁移，请与我们联系。
 * 当前自定义翻译器支持 36 种语言与英语的互译，我们将努力添加更多语言。  Hub 无需基准模型，因此它支持数千种语言。  可以迁移不受支持的语言对，但我们将仅执行对文档和项目定义的迁移。  我们无法训练新模型。  此外，这些文档和项目将显示为非活动状态，以指示它们当前不可用。 若添加了对这些项目和/或文档的支持，它们将变为活动且可训练状态。
 * 自定义翻译器当前不支持单语训练数据。  与不受支持的语言对一样，可以迁移单语文档，但在支持单语数据前，它们将显示为非活动状态。  
-* 自定义翻译器需要具备 1 万个并行句子，才能执行训练。  Microsoft Hub 可以针对小型数据集执行训练。  若要迁移的训练不符合此要求，则不会对它执行训练。
+* 自定义翻译器需要具备 1 万个并行句子，才能执行训练。  Microsoft Hub 可以针对小型数据集执行训练。 若要迁移的训练不符合此要求，则不会对它执行训练。
 
 
 ## <a name="custom-translator-versus-hub"></a>自定义翻译与 Hub

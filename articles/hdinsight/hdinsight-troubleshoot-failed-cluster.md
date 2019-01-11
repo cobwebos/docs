@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/11/2018
-ms.openlocfilehash: 5f85d01b20466fd72b802b4daaf001a7928717c4
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: b298836070a511421f9df25155ff1ee4422e61dd
+ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53410272"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53994362"
 ---
 # <a name="troubleshoot-a-slow-or-failing-hdinsight-cluster"></a>排查 HDInsight 群集速度慢或故障问题
 
@@ -88,7 +88,7 @@ Azure 门户可以提供此信息：
 
 #### <a name="check-for-azure-service-outages"></a>检查 Azure 服务中断
 
-HDInsight 依赖于多个 Azure 服务。 它在 Azure HDInsight 中运行虚拟服务器，在 Azure Blob 存储或 Azure DataLake Store 中存储数据和脚本，在 Azure 表存储中为日志文件编制索引。 这些服务发生中断（不过这种情况很少见）可能会导致 HDInsight 出现问题。 如果群集发生意外的速度变慢或故障，请检查 [Azure 状态仪表板](https://azure.microsoft.com/status/)。 每个服务的状态按区域列出。 请检查群集的区域，以及所有相关服务的区域。
+HDInsight 依赖于多个 Azure 服务。 它在 Azure HDInsight 中运行虚拟服务器，在 Azure Blob 存储或 Azure DataLake Storage 中存储数据和脚本，在 Azure 表存储中为日志文件编制索引。 这些服务发生中断（不过这种情况很少见）可能会导致 HDInsight 出现问题。 如果群集发生意外的速度变慢或故障，请检查 [Azure 状态仪表板](https://azure.microsoft.com/status/)。 每个服务的状态按区域列出。 请检查群集的区域，以及所有相关服务的区域。
 
 #### <a name="check-azure-service-usage-limits"></a>检查 Azure 服务使用限制
 

@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: alkarche
-ms.openlocfilehash: 18398326e21ac6f3d64e43a577cf7d57cfb23438
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 413decee89e99b8120d271e2e87e703d4d362c33
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53139514"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53999282"
 ---
 # <a name="work-with-azure-functions-proxies"></a>使用 Azure Functions 代理
 
@@ -161,7 +161,7 @@ Proxies.json 是由一个代理对象定义的，包括已命名的代理及其�
             "matchCondition": {
                 "route": "/example"
             },
-            "backendUri": "www.example.com"
+            "backendUri": "https://<AnotherApp>.azurewebsites.net/api/<FunctionName>"
         }
     }
 }
@@ -176,12 +176,13 @@ Proxies.json 是由一个代理对象定义的，包括已命名的代理及其�
 
 ### <a name="reservedChars"></a> 保留字符（字符串格式设置）
 
-代理读取所有字符串而不进行解释，大括号和斜杠除外
+代理使用 \\\\\\ 作为转义符号，以 C# 字符串表示法读取所有字符串。 代理还会解释大括号。 请参阅下面的完整示例集。
 
 |Character|转义字符|示例|
 |-|-|-|
 |{ 或 }|{{ 或 }}|`{{ example }}` --> `{ example }`
-|/|///| `example.com///text.html` --> `example.com/text.html`
+| \ | \\\\\\\\ | `example.com\\\text.html` --> `example.com\text.html`
+|"|\\\\\\"| `\\\"example\\\"` --> `"example"`
 
 ### <a name="requestOverrides"></a>定义 requestOverrides 对象
 

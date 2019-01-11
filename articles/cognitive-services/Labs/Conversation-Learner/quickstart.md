@@ -10,12 +10,12 @@ ms.component: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: b98b528d2d78d2285977dec49da18081df47e9d6
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: 3d029c91debfc8ed3ac24e831224426a2780b763
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53166126"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53791059"
 ---
 # <a name="create-a-conversation-learner-model-using-nodejs"></a>使用 Node.js 创建对话学习器模型
 
@@ -112,14 +112,11 @@ ms.locfileid: "53166126"
   npm run demo-password
   npm run demo-pizza
   npm run demo-storage
-  npm run demo-vrapp
   ```
 
 4. 在 Chrome 中通过加载 http://localhost:5050/home 切换到对话学习器 Web UI（如果尚未这样做）。 
 
-5. 单击“导入教程”（只需执行一次）。  此过程大约需要花费一分钟，会将所有教程的对话学习器模型复制到你的对话学习器帐户。
-
-6. 在对话学习器 UI 中，单击对应于已启动的演示的演示模型。
+5. 单击“导入教程”，然后在 Conversation Learner UI 中选择对应于已启动的演示的演示模型。
 
 演示的源文件位于 `cl-bot-01/src/demos`
 
@@ -181,4 +178,4 @@ cp .env.example .env
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [Hello world](./tutorials/1-hello-world.md)
+> [Hello world](./tutorials/01-hello-world.md)

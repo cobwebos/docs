@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/22/2017
-ms.openlocfilehash: f7567d0c3bfdfc7bd44b918c9f2feda7499386e8
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: f4307da2e74846507cafb9f767a6ccae855e42a2
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49984073"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53554667"
 ---
 # <a name="scale-an-azure-stream-analytics-job-to-increase-throughput"></a>扩展 Azure 流分析作业以增加吞吐量
 本文介绍如何优化流分析查询，增加流分析作业的吞吐量。 可以使用以下指南来扩展作业，以便处理较高负载并充分利用更多的系统资源（如更多带宽、更多 CPU 资源、更多内存）。
@@ -34,7 +34,7 @@ ms.locfileid: "49984073"
 4.  在确定 6 SU 作业可以达到的上限之后，可以在添加更多的 SU 时线性推断出作业的处理容量，前提是你没有任何使某些分区“紧迫”的数据倾斜。
 
 > [!NOTE]
-> 选择适当数量的流式处理单元：由于流分析为每个添加的 6 SU 创建一个处理节点，因此，最好将节点数作为输入分区数的除数，以便分区可以均匀分布在各节点上。
+> 选择合适的流单元数：由于流分析为每个添加的 6 SU 创建一个处理节点，因此，最好将节点数作为输入分区数的除数，以便分区可以均匀分布在各节点上。
 > 例如，你已经度量出 6 SU 作业可以实现 4 MB/秒的处理速率，且输入分区计数为 4。 可以选择使用 12 SU 来运行作业，以达到大约 8 MB/秒的处理速率，或使用 24 SU 来实现 16 MB/秒的处理速率。 然后，你可以决定何时增加作业的 SU 数量以及增加至多少，以作为输入速率的一个函数。
 
 
@@ -48,15 +48,16 @@ ms.locfileid: "49984073"
 
 查询：
 
-    WITH Step1 AS (
-    SELECT COUNT(*) AS Count, TollBoothId, PartitionId
-    FROM Input1 Partition By PartitionId
-    GROUP BY TumblingWindow(minute, 3), TollBoothId, PartitionId
-    )
-    SELECT SUM(Count) AS Count, TollBoothId
-    FROM Step1
-    GROUP BY TumblingWindow(minute, 3), TollBoothId
-
+ ```SQL
+ WITH Step1 AS (
+ SELECT COUNT(*) AS Count, TollBoothId, PartitionId
+ FROM Input1 Partition By PartitionId
+ GROUP BY TumblingWindow(minute, 3), TollBoothId, PartitionId
+ )
+ SELECT SUM(Count) AS Count, TollBoothId
+ FROM Step1
+ GROUP BY TumblingWindow(minute, 3), TollBoothId
+ ```
 在上述查询中，计算每个分区每个收费站的车辆数，然后将所有分区中的计数相加。
 
 分区后，对于该步骤的每个分区，最多分配 6 个 SU，每个分区最多有 6 个 SU，因此，每个分区都可以置于其自己的处理节点上。

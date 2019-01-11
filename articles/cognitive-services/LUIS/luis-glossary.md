@@ -10,14 +10,14 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: a7a2c921d2bb0f77579c48d0608eb0d195e83ca1
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: b0bbd3300e48e82e44a7b7fac05f89c8d25e007f
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53078916"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53603491"
 ---
-# <a name="glossary"></a>术语表
+# <a name="language-understanding-glossary-of-common-vocabulary-and-concepts"></a>对包含常见词汇和概念的术语表进行语言理解
 语言理解 (LUIS) 术语表解释使用 LUIS API 服务时可能遇到的术语。
 
 ## <a name="active-version"></a>活动版本

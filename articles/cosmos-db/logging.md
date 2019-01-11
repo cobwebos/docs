@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 7a233a5effb804ec3cc22727b46846509032d214
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: cdc55491e827ab949d471c9b66c7caaa86f5055d
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53438500"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54043322"
 ---
 # <a name="diagnostic-logging-in-azure-cosmos-db"></a>Azure Cosmos DB 中的诊断日志记录 
 
@@ -81,7 +81,7 @@ Azure 诊断日志由资源发出，提供与该资源的操作相关的各种�
     * **流式传输到事件中心**：要使用此选项，需要一个可连接到的现有事件中心命名空间和事件中心。 要创建事件中心命名空间，请参阅[使用 Azure 门户创建事件中心命名空间和事件中心](../event-hubs/event-hubs-create.md)。 然后在门户中返回到此页，选择事件中心命名空间和策略名称。
     * **发送到 Log Analytics**：若要使用此选项，请使用现有的工作区，或遵循[创建新工作区](../azure-monitor/learn/quick-collect-azurevm.md#create-a-workspace)的步骤在门户中创建新的 Log Analytics 工作区。 有关在 Log Analytics 中查看日志的详细信息，请参阅[在 Log Analytics 中查看日志](#view-in-loganalytics)。
     * **记录 DataPlaneRequests**：选择此选项可记录从底层 Azure Cosmos DB 分布式平台发出的针对 SQL、图形、MongoDB、Cassandra 和表 API 帐户的后端请求。 若要存档到存储帐户，可以选择诊断日志的保留期。 保留期到期后自动删除日期。
-    * **记录 MongoRequests**：选择此选项可记录用户从 Azure Cosmos DB 前端发起的用于处理 MongoDB API 帐户的请求。 若要存档到存储帐户，可以选择诊断日志的保留期。 保留期到期后自动删除日期。
+    * **记录 MongoRequests**：选择此选项可记录来自 Azure Cosmos DB 前端的用户发起的请求，以便为使用 Azure Cosmos DB 的 API for MongoDB 配置的 Cosmos 帐户提供服务。 若要存档到存储帐户，可以选择诊断日志的保留期。 保留期到期后自动删除日期。
     * **指标请求**：选择此选项可在 [Azure 指标](../azure-monitor/platform/metrics-supported.md)中存储详细数据。 若要存档到存储帐户，可以选择诊断日志的保留期。 保留期到期后自动删除日期。
 
 3. 选择“保存”。
@@ -437,7 +437,7 @@ $blobs | Get-AzureStorageBlobContent `
 
 下表描述了每个日志条目的内容。
 
-| Azure 存储字段或属性 | Log Analytics 属性 | 说明 |
+| Azure 存储字段或属性 | Log Analytics 属性 | Description |
 | --- | --- | --- |
 | **time** | **TimeGenerated** | 操作发生时的日期和时间 (UTC)。 |
 | **resourceId** | **资源** | 为其启用日志的 Azure Cosmos DB 帐户。|
@@ -459,7 +459,7 @@ $blobs | Get-AzureStorageBlobContent `
 
 ## <a name="next-steps"></a>后续步骤
 
-- 若要了解如何启用日志记录，以及各种 Azure 服务支持的指标和日志类别，请参阅文章 [Microsoft Azure 中的指标概述](../monitoring-and-diagnostics/monitoring-overview-metrics.md)和 [Azure 诊断日志概述](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md)。
+- 若要了解如何启用日志记录，以及各种 Azure 服务支持的指标和日志类别，请参阅文章 [Microsoft Azure 中的指标概述](../monitoring-and-diagnostics/monitoring-overview-metrics.md)和 [Azure 诊断日志概述](../azure-monitor/platform/diagnostic-logs-overview.md)。
 - 阅读以下文章，了解事件中心：
    - [什么是 Azure 事件中心？](../event-hubs/event-hubs-what-is-event-hubs.md)
    - [事件中心入门](../event-hubs/event-hubs-csharp-ephcs-getstarted.md)

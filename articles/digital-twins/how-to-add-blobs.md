@@ -1,19 +1,20 @@
 ---
-title: 将 Blob 添加到 Azure 数字孪生中的对象 | Microsoft Docs
-description: 了解如何将 Blob 添加到 Azure 数字孪生中的对象
+title: 如何将 Blob 添加到 Azure 数字孪生中的对象 | Microsoft Docs
+description: 了解如何将 Blob 添加到 Azure 数字孪生中的对象。
 author: kingdomofends
 manager: alinast
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 11/13/2018
+ms.date: 12/28/2018
 ms.author: adgera
-ms.openlocfilehash: 8a68ba35ddf7caacbf2339d87c5aeef80f470ba4
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.custom: seodec18
+ms.openlocfilehash: 604093dcec048b0991bbc9beac3ef998cc47e351
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52725618"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53974501"
 ---
 # <a name="add-blobs-to-objects-in-azure-digital-twins"></a>将 Blob 添加到 Azure 数字孪生中的对象
 
@@ -21,10 +22,7 @@ Blob 是常见文件类型（例如图片和日志）的非结构化表示形式
 
 Azure 数字孪生支持将 Blob 附加到设备、空间和用户。 Blob 可以表示用户个人资料图片、设备照片、视频、地图或日志。
 
-> [!NOTE]
-> 本文假设：
-> * 实例已正确配置为接收管理 API 请求。
-> * 已使用所选的 REST 客户端正确完成身份验证。
+[!INCLUDE [Digital Twins Management API familiarity](../../includes/digital-twins-familiarity.md)]
 
 ## <a name="uploading-blobs-an-overview"></a>上传 Blob：概述
 
@@ -93,9 +91,9 @@ This is my blob content. In this case, some text, but I could also be uploading 
 --USER_DEFINED_BOUNDARY--
 ```
 
-| 参数值 | 替换为 |
+| 值 | 替换为 |
 | --- | --- |
-| *USER_DEFINED_BOUNDARY* | 多部分内容边界名称 |
+| USER_DEFINED_BOUNDARY | 多部分内容边界名称 |
 
 下面的代码使用 [MultipartFormDataContent](https://docs.microsoft.com/dotnet/api/system.net.http.multipartformdatacontent) 类完成相同 Blob 上传操作的 .NET 实现：
 
@@ -116,7 +114,7 @@ var response = await httpClient.PostAsync("spaces/blobs", multipartContent);
 
 ## <a name="api-endpoints"></a>API 终结点
 
-以下部分介绍了核心终结点及其功能。
+以下部分介绍与核心 blob 相关的 API 终结点及其功能。
 
 ### <a name="devices"></a>设备
 
@@ -194,7 +192,7 @@ YOUR_MANAGEMENT_API_URL/users/blobs/YOUR_BLOB_ID
 
 ## <a name="common-errors"></a>常见错误
 
-一种常见错误为不包含正确的标头信息：
+一种常见错误为未包含正确的标头信息：
 
 ```JSON
 {

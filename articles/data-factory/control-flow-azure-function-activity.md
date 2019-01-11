@@ -11,20 +11,22 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/30/2018
+ms.date: 12/20/2018
 ms.author: douglasl
-ms.openlocfilehash: ef93c62a2e2084a43eeda578c889a568d04db4f1
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 4b185236e5925152acb5f8a733e117186a2318cf
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52854056"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53740886"
 ---
 # <a name="azure-function-activity-in-azure-data-factory"></a>Azure 数据工厂中的 Azure 函数活动
 
 通过 Azure 函数活动可以在数据工厂管道中运行 [Azure Functions](../azure-functions/functions-overview.md)。 若要运行 Azure 函数，需要创建链接服务连接以及指定计划执行的 Azure 函数的活动。
 
 ## <a name="azure-function-linked-service"></a>Azure 函数链接服务
+
+Azure 函数的返回类型必须是有效的 JObject。 其他任何类型都会失败并引发通用用户错误“调用终结点时出错”。
 
 | **属性** | **说明** | **必需** |
 | --- | --- | --- |
@@ -43,10 +45,16 @@ ms.locfileid: "52854056"
 | 函数名称  | 此活动在 Azure 函数应用中调用的函数的名称 | String | 是 |
 | 方法  | 函数调用的 Rest API 方法 | 字符串支持的类型：“GET”、“POST”、“PUT”   | 是 |
 | 标头的值开始缓存响应  | 发送到请求的标头。 例如，若要在请求中设置语言和类型："headers": { "Accept-Language": "en-us", "Content-Type": "application/json" } | 字符串（或带有 resultType 字符串的表达式） | 否 |
-| body  | 随请求一起发送到函数 API 方法的正文  | 字符串（或带有 resultType 字符串的表达式）。   | PUT/POST 方法所必需 |
+| body  | 随请求一起发送到函数 API 方法的正文  | 字符串（或带有 resultType 字符串的表达式）或对象。   | PUT/POST 方法所必需 |
 |   |   |   | |
 
 请参阅 [请求有效负载架构](control-flow-web-activity.md#request-payload-schema) 部分中的请求有效负载架构。
+
+## <a name="more-info"></a>更多信息
+
+Azure 函数活动支持**路由**。 例如，如果应用使用路由 `https://functionAPP.azurewebsites.net/api/functionName/{value}?code=<secret>`，则 `functionName` 为 `functionName/{value}`，你可以将其参数化以在运行时提供所需的 `functionName`。
+
+Azure 函数活动还支持**查询**。 查询必须是 `functionName` 的一部分（例如，`HttpTriggerCSharp2?name=hello`），其中 `function name` 为 `HttpTriggerCSharp2`。
 
 ## <a name="next-steps"></a>后续步骤
 

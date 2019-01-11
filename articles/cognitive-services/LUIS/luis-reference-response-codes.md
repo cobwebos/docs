@@ -11,14 +11,15 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: diberry
-ms.openlocfilehash: 478727a4d3628fbe6a385e3beb28201c228f9e2d
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 8ea180131ce2f9e1288c3ffb928170be55a77de7
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53078223"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53598444"
 ---
-# <a name="luis-api-http-response-codes"></a>LUIS API HTTP 响应代码
+# <a name="common-api-response-codes-and-their-meaning"></a>常见的 API 响应代码及其含义
+
 [创作](https://aka.ms/luis-authoring-apis)和[终结点](https://aka.ms/luis-endpoint-apis) API 返回 HTTP 响应代码。 响应消息包含特定于某个请求的信息，而 HTTP 响应状态代码是通用的。 
 
 ## <a name="common-status-codes"></a>常见状态代码
@@ -38,3 +39,7 @@ ms.locfileid: "53078223"
 |410|终结点|需要重新训练和重新发布应用程序|
 |414|终结点|查询超过最大字符限制|
 |429|创作、终结点|超出速率限制（请求数/秒）|
+
+## <a name="next-steps"></a>后续步骤
+
+* REST API [创作](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c2f)和[终结点](https://westus.dev.cognitive.microsoft.com/docs/services/5819c76f40a6350ce09de1ac/operations/5819c77140a63516d81aee78)文档

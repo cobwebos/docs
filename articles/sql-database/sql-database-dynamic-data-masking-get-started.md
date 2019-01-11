@@ -11,13 +11,13 @@ author: ronitr
 ms.author: ronitr
 ms.reviewer: vanto
 manager: craigg
-ms.date: 04/01/2018
-ms.openlocfilehash: 872e700842ce69ca955035120d4e09ec9facf7ec
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.date: 12/16/2018
+ms.openlocfilehash: 3e807033b109b8281057f6881a315f5c1c783a22
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47165545"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53536366"
 ---
 # <a name="sql-database-dynamic-data-masking"></a>SQL 数据库动态数据掩码
 
@@ -31,7 +31,7 @@ SQL 数据库动态数据掩码通过对非特权用户模糊化敏感数据来�
 通过在 SQL 数据库配置边栏选项卡或设置边栏选项卡中选择“动态数据掩码”操作，在 Azure 门户中设置动态数据掩码策略。
 
 ### <a name="dynamic-data-masking-permissions"></a>动态数据屏蔽权限
-Azure 数据库管理员、服务器管理员或安全主管角色可以配置动态数据屏蔽。
+Azure 数据库管理员、服务器管理员或 [SQL 安全管理员](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#sql-security-manager)角色可以配置动态数据掩码。
 
 ### <a name="dynamic-data-masking-policy"></a>动态数据屏蔽策略
 * **不对其进行屏蔽的 SQL 用户** - 一组可以在 SQL 查询结果中获取非屏蔽数据的 SQL 用户或 AAD 标识。 始终不会对拥有管理员权限的用户进行屏蔽，这些用户可以看到没有任何屏蔽的原始数据。

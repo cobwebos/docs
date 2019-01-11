@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 02/05/2018
 ms.author: motanv
-ms.openlocfilehash: 3774ae0572a87129fb089064cec9bb7957a98c22
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: a1b334b34e8e234d9ce5cc5ad5cd77bf5ba7118c
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39113233"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53555517"
 ---
 # <a name="induce-controlled-chaos-in-service-fabric-clusters"></a>在 Service Fabric 群集中引入受控的混沌测试
 大规模分布式系统，例如云基础结构，在本质上都是不可靠的。 Azure Service Fabric 可让开发人员在不可靠的基础结构之上编写可靠的分布式服务。 若要在不可靠的基础结构之上编写可靠的分布式服务，开发人员应能够在不可靠的底层基础结构因故障而进行复杂的状态转换时，测试其服务的稳定性。
@@ -34,7 +34,7 @@ ms.locfileid: "39113233"
 > 从目前来看，混沌测试只会引入安全的故障，这意味着，在没有外部故障的情况下，绝对不会发生仲裁丢失或数据丢失。
 >
 
-混沌测试在运行时，将生成不同的事件来捕获当前的运行状态。 例如，ExecutingFaultsEvent 包含混沌测试决定在该迭代中执行的所有故障。 ValidationFailedEvent 包含群集验证期间发现的验证故障（运行状况或稳定性问题）的详细信息。 可以调用 GetChaosReport API（C#、Powershell 或 REST）来获取混沌测试运行报告。 这些事件保存在一个 [Reliable Dictionary](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-services-reliable-collections) 中，该字典的截断策略由两项配置决定：**MaxStoredChaosEventCount**（默认值为 25000）和 **StoredActionCleanupIntervalInSeconds**（默认值为 3600）。 混沌测试每隔 *StoredActionCleanupIntervalInSeconds* 进行一次检查，从 Reliable Dictionary 中清除除最新 *MaxStoredChaosEventCount* 事件以外的所有事件。
+混沌测试在运行时，将生成不同的事件来捕获当前的运行状态。 例如，ExecutingFaultsEvent 包含混沌测试决定在该迭代中执行的所有故障。 ValidationFailedEvent 包含群集验证期间发现的验证故障（运行状况或稳定性问题）的详细信息。 可以调用 GetChaosReport API（C#、Powershell 或 REST）来获取混沌测试运行报告。 这些事件持久保存在[可靠字典](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-services-reliable-collections)中，该字典具有由两个配置控制的截断策略：**MaxStoredChaosEventCount**（默认值为 25000）和 **StoredActionCleanupIntervalInSeconds**（默认值为 3600）。 混沌测试每隔 *StoredActionCleanupIntervalInSeconds* 进行一次检查，从 Reliable Dictionary 中清除除最新 *MaxStoredChaosEventCount* 事件以外的所有事件。
 
 ## <a name="faults-induced-in-chaos"></a>在混沌测试中引入的故障
 混沌测试在整个 Service Fabric 群集中生成故障，将几个月或几年内出现的故障压缩成几小时。 通过将各种具有高故障率的交叉故障组合在一起，能够找出很有可能被忽视的极端状况。 运行这种混沌测试会使服务的代码质量得到显著提高。

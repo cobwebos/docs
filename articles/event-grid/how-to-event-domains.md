@@ -6,13 +6,13 @@ author: banisadr
 ms.service: event-grid
 ms.author: babanisa
 ms.topic: conceptual
-ms.date: 11/08/2018
-ms.openlocfilehash: ad23599d1df5d07e912f634435f8b44b441d87e6
-ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.date: 12/17/2018
+ms.openlocfilehash: 08faef2eaf5c9cd09172d455c464531e293d5f3e
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51298519"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53554582"
 ---
 # <a name="manage-topics-and-publish-events-using-event-domains"></a>使用事件域管理主题和发布事件
 
@@ -139,7 +139,7 @@ New-AzureRmEventGridSubscription `
 
 ## <a name="publish-events-to-an-event-grid-domain"></a>将事件发布到事件网格域
 
-将事件发布到域的过程与[发布到自定义主题](./post-to-custom-topic.md)相同。 唯一的区别是，需要指定每个事件要传送到的主题。 例如，以下事件数组会导致将包含 `"id": "1111"` 的事件发送到主题 `foo`，将包含 `"id": "2222"` 的事件发送到主题 `bar`：
+将事件发布到域的过程与[发布到自定义主题](./post-to-custom-topic.md)相同。 但是，不是发布到自定义主题，而是将所有事件发布到域终结点。 在 JSON 事件数据中，可以指定要将事件发送到的主题。 例如，以下事件数组会导致将包含 `"id": "1111"` 的事件发送到主题 `demotopic1`，将包含 `"id": "2222"` 的事件发送到主题 `demotopic2`：
 
 ```json
 [{
@@ -168,7 +168,15 @@ New-AzureRmEventGridSubscription `
 }]
 ```
 
-若要使用 Azure CLI 获取域的密钥，请使用：
+若要使用 Azure CLI 获取域终结点，请使用：
+
+```azurecli-interactive
+az eventgrid domain show \
+  -g <my-resource-group> \
+  -n <my-domain>
+```
+
+若要获取域的密钥，请使用：
 
 ```azurecli-interactive
 az eventgrid domain key list \
@@ -176,7 +184,15 @@ az eventgrid domain key list \
   -n <my-domain>
 ```
 
-对于 PowerShell，请使用：
+若要使用 PowerShell 获取域终结点，请使用：
+
+```azurepowershell-interactive
+Get-AzureRmEventGridDomain `
+  -ResourceGroupName <my-resource-group> `
+  -Name <my-domain>
+```
+
+若要获取域的密钥，请使用：
 
 ```azurepowershell-interactive
 Get-AzureRmEventGridDomainKey `

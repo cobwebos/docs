@@ -16,12 +16,12 @@ ms.component: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: abd64b7d2fa7930f5b6177c7ac037840da34dc18
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.openlocfilehash: 6188b141ec1a514d999f290366cd9ffbafc1d96c
+ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52333575"
+ms.lasthandoff: 12/22/2018
+ms.locfileid: "53753126"
 ---
 # <a name="azure-active-directory-report-retention-policies"></a>Azure Active Directory 报告保留策略
 
@@ -53,17 +53,19 @@ ms.locfileid: "52333575"
 
 **活动报告**    
 
-| 报表                 | Azure AD Free | Azure AD Premium P1 | Azure AD Premium P2 |
-| :--                    | :--           | :--                 | :--                 |
-| 目录审核        | 7 天        | 30 天             | 30 天             |
-| 登录活动       | 不适用           | 30 天             | 30 天             |
-| Azure MFA 使用情况        | 30 天       | 30 天             | 30 天             |
+| 报表                 | Azure AD Free | Azure AD Basic | Azure AD Premium P1 | Azure AD Premium P2 |
+| :--                    | :--           | :--            | :--                 | :--                 |
+| 目录审核        | 7 天        |  7 天        | 30 天             | 30 天             |
+| 登录活动       | 不适用           |  不适用           | 30 天             | 30 天             |
+| Azure MFA 使用情况        | 30 天       |  30 天       | 30 天             | 30 天             |
+
+通过使用 Azure Monitor 将审核和登录活动数据路由到 Azure 存储帐户，可以使这些活动数据的保留时间长于上述默认保留期限。 有关详细信息，请参阅[将 Azure AD 日志存档到 Azure 存储帐户](quickstart-azure-monitor-route-logs-to-storage-account.md)。
 
 **安全信号**
 
-| 报表         | Azure AD Free | Azure AD Premium P1 | Azure AD Premium P2 |
-| :--            | :--           | :--                 | :--                 |
-| 有风险的用户  | 7 天        | 30 天             | 90 天             |
-| 有风险的登录 | 7 天        | 30 天             | 90 天             |
+| 报表         | Azure AD Free | Azure AD Basic | Azure AD Premium P1 | Azure AD Premium P2 |
+| :--            | :--           | :--            | :--                 | :--                 |
+| 有风险的用户  | 7 天        | 7 天         | 30 天             | 90 天             |
+| 有风险的登录 | 7 天        | 7 天         |  30 天            | 90 天             |
 
 ---

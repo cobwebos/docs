@@ -8,15 +8,15 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: qna-maker
 ms.topic: article
-ms.date: 09/24/2018
+ms.date: 12/18/2018
 ms.author: tulasim
 ms.custom: seodec18
-ms.openlocfilehash: 63025a299f6b7b48936be9702522a832a1d77330
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: d51cbc7bd88fd9f4baf066210e7b7da8cd175cd6
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53074787"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53603117"
 ---
 # <a name="best-practices-of-a-qna-maker-knowledge-base"></a>QnA Maker 知识库的最佳做法
 [知识库开发生命周期](../Concepts/development-lifecycle-knowledge-base.md)介绍如何从头至尾地管理 KB。 使用这些最佳做法来改进知识库，并向应用程序/聊天机器人的最终用户提供更好的结果。
@@ -67,8 +67,11 @@ QnA Maker 服务持续改进着从内容提取 QnA 的算法，并扩展支持�
 |是否有停车的地方？|你有停车的地方吗？|句子结构|
  |嗨|呦<br>你好！|措辞方式或俚语|
 
-### <a name="use-metadata-filters"></a>使用元数据筛选器
-[元数据](../How-To/edit-knowledge-base.md)可增加根据筛选器缩小用户查询结果的范围的能力。 即使查询相同，知识库的答案也可能因元数据标记而有所不同。 例如，如果餐馆分店的位置不同（即，元数据是“位置：西雅图”和“位置：雷德蒙德”），则“停车位在哪里？”就会有不同的答案。
+<a name="#use-metadata-filters"></a>
+
+### <a name="use-metadata-tags-to-filter-questions-and-answers"></a>使用元数据标记筛选问题和解答
+
+[元数据](../How-To/edit-knowledge-base.md)可添加根据元数据标记缩小用户查询结果的范围的能力。 即使查询相同，知识库的答案也可能因元数据标记而有所不同。 例如，如果餐馆分店的位置不同（即，元数据是“位置：西雅图”和“位置：雷德蒙德”），则“停车位在哪里？”就会有不同的答案。
 
 ### <a name="use-synonyms"></a>使用同义词
 英语中对同义词提供一定程度的支持，使用 [word alterations](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75fd) 将同义词添加到具有不同形式的关键字中。 同义词应添加到 QnA Maker 服务级别并由服务中的所有知识库共享。

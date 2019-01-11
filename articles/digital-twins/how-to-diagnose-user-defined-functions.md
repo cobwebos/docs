@@ -1,23 +1,27 @@
 ---
 title: 如何在 Azure 数字孪生中调试 UDF | Microsoft Docs
-description: 有关如何在 Azure 数字孪生中调试 UDF 的指南
+description: 有关如何在 Azure 数字孪生中调试 UDF 的指南。
 author: stefanmsft
 manager: deshner
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 11/13/2018
+ms.date: 12/27/2018
 ms.author: stefanmsft
-ms.openlocfilehash: 9476db888a4bfae2d43ae4eec340972d4c2eb714
-ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
+ms.custom: seodec18
+ms.openlocfilehash: e373e7c3ca83a0200cd1b6b945c5e4cb43b77a51
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53413007"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53974856"
 ---
-# <a name="how-to-debug-issues-with-user-defined-functions-in-azure-digital-twins"></a>如何在 Azure 数字孪生中使用用户定义的函数调试问题
+# <a name="how-to-debug-user-defined-functions-in-azure-digital-twins"></a>如何在 Azure 数字孪生中调试用户定义的函数
 
-本文概述如何诊断用户定义的函数。 然后，本文确定了使用用户定义的函数时遇到的一些最常见情况。
+本文概述如何诊断用户定义的函数。 然后，本文介绍了使用用户定义的函数时可能会遇到的一些最常见情况。
+
+>[!TIP]
+> 若要详细了解如何使用活动日志、诊断日志和 Azure Monitor 在 Azure 数字孪生中设置调试工具，请阅读[如何配置监视和日志记录](./how-to-configure-monitoring.md)。
 
 ## <a name="debug-issues"></a>调试问题
 
@@ -28,9 +32,14 @@ ms.locfileid: "53413007"
 Azure 数字孪生实例的日志和指标通过 Azure Monitor 公开。 以下文档假设你已通过 [Azure 门户](../azure-monitor/learn/quick-create-workspace.md)、通过 [Azure CLI](../azure-monitor/learn/quick-create-workspace-cli.md) 或通过 [PowerShell](../azure-monitor/learn/quick-create-workspace-posh.md) 创建了 [Azure Log Analytics](../azure-monitor/log-query/log-query-overview.md) 工作区。
 
 > [!NOTE]
-> 将事件首次发送到 Log Analytics 时，可能会遇到 5 分钟的延迟。
+> 首次向 Azure Log Analytics 发送事件时，可能会出现 5 分钟的延迟。
 
-请阅读[“从 Azure 资源收集和使用日志数据”](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md)一文，了解如何通过门户、Azure CLI 或 PowerShell 启用 Azure 数字孪生实例的诊断设置。 请务必选择所有日志类别、指标和 Azure Log Analytics 工作区。
+若要为 Azure 数字孪生资源配置监视和日志记录，请阅读[如何配置监视和日志记录](./how-to-configure-monitoring.md)。
+
+有关如何通过 Azure 门户、Azure CLI 或 PowerShell 为 Azure 数字孪生实例配置诊断日志设置的综合概述，请阅读[从 Azure 资源收集和使用日志数据](../azure-monitor/platform/diagnostic-logs-overview.md)一文。
+
+>[!IMPORTANT]
+> 请务必选择所有日志类别、指标和 Azure Log Analytics 工作区。
 
 ### <a name="trace-sensor-telemetry"></a>跟踪传感器遥测数据
 
@@ -56,11 +65,11 @@ AzureDiagnostics
 | where Category == 'UserDefinedFunction'
 ```
 
-有关功能强大的查询操作的详细信息，请参阅[开始使用查询](https://docs.microsoft.com/azure/log-analytics/query-language/get-started-queries)。
+有关功能强大的查询操作的详细信息，请阅读[开始使用查询](../azure-monitor/log-query/get-started-queries.md)。
 
 ## <a name="identify-common-issues"></a>识别常见问题
 
-在对解决方案进行故障排查时，诊断和识别常见问题都很重要。 下面总结了开发用户定义的函数时遇到的几个常见问题。
+在对解决方案进行故障排查时，诊断和识别常见问题都很重要。 下面汇总了开发用户定义的函数时经常遇到的几个问题。
 
 [!INCLUDE [Digital Twins Management API](../../includes/digital-twins-management-api.md)]
 
@@ -74,11 +83,11 @@ AzureDiagnostics
 GET YOUR_MANAGEMENT_API_URL/roleassignments?path=/&traverse=Down&objectId=YOUR_USER_DEFINED_FUNCTION_ID
 ```
 
-| 参数 | 替换为 |
+| 参数值 | 替换为 |
 | --- | --- |
-| *YOUR_USER_DEFINED_FUNCTION_ID* | 要检索其角色分配的用户定义的函数 ID|
+| YOUR_USER_DEFINED_FUNCTION_ID | 要检索其角色分配的用户定义的函数 ID|
 
-如果未检索到任何角色分配，请按照[如何为用户定义的函数创建角色分配](./how-to-user-defined-functions.md)一文中的说明操作。
+如果不存在任何角色分配，请了解[如何为用户定义的函数创建角色分配](./how-to-user-defined-functions.md)。
 
 ### <a name="check-if-the-matcher-will-work-for-a-sensors-telemetry"></a>检查匹配程序是否适用于传感器的遥测数据
 
@@ -159,7 +168,7 @@ var customNotification = {
 sendNotification(telemetry.SensorId, "Space", JSON.stringify(customNotification));
 ```
 
-出现这种情况是因为使用的标识符指的是传感器，而指定的拓扑对象类型是“Space”。
+出现这种情况是因为使用的标识符指的是传感器，而指定的拓扑对象类型是 `Space`。
 
 正确示例：
 
@@ -200,4 +209,4 @@ function process(telemetry, executionContext) {
 
 ## <a name="next-steps"></a>后续步骤
 
-了解如何在 Azure 数字孪生中启用[监视和日志](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs)。
+了解如何在 Azure 数字孪生中启用[监视和日志](../azure-monitor/platform/activity-logs-overview.md)。

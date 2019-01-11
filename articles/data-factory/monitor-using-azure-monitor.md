@@ -9,16 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/22/2018
+ms.date: 12/11/2018
 ms.author: shlo
-ms.openlocfilehash: 2e8c5b3d9624d3a622f16d770f68bc8614993d36
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 53fcaab5d98dd63579390105f3b62c053208e894
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49387476"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54020296"
 ---
 # <a name="alert-and-monitor-data-factories-using-azure-monitor"></a>使用 Azure Monitor 发警报和监视数据工厂
 云应用程序很复杂，包含很多移动部件。 监视可以为用户提供数据，确保应用程序始终处于健康运行状态。 监视还有助于避免潜在问题，或者解决过去的问题。 此外，还可以利用监视数据深入了解应用程序的情况。 了解这些情况有助于改进应用程序的性能或可维护性，或者实现本来需要手动干预的操作的自动化。
@@ -26,7 +25,7 @@ ms.locfileid: "49387476"
 Azure Monitor 针对 Microsoft Azure 中的大多数服务提供基本级别的基础结构指标和日志。 有关详细信息，请参阅[监视概述](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-azure-monitor)。 Azure 诊断日志是资源发出的日志，记录与该资源的操作相关的各种频繁生成的数据。 数据工厂在 Azure Monitor 中输出诊断日志。
 
 ## <a name="persist-data-factory-data"></a>保存数据工厂数据
-数据工厂仅将管道运行数据存储 45 天。 如果希望将管道运行数据持久保存 45 天以上，则不仅可以传输诊断日志进行分析，还可以将它们持久保存到存储帐户中，以便在您选择的持续时间内保留工厂信息。
+数据工厂仅将管道运行数据存储 45 天。 如果希望使用 Azure Monitor 将管道运行数据持久保存 45 天以上，则不仅可以路由诊断日志进行分析，还可以将它们持久保存到存储帐户中，以便在所选的持续时间内保留工厂信息。
 
 ## <a name="diagnostic-logs"></a>诊断日志
 
@@ -41,9 +40,9 @@ Azure Monitor 针对 Microsoft Azure 中的大多数服务提供基本级别的�
 ### <a name="diagnostic-settings"></a>诊断设置
 可以使用诊断设置配置非计算资源的诊断日志。 用于资源控制的诊断设置：
 
-* 将诊断日志发送到何处：存储帐户、事件中心和/或 Log Analytics。
+* 将诊断日志发送到何处（存储帐户、事件中心或 Log Analytics）。
 * 发送哪些日志类别。
-* 应该将每个日志类别在存储帐户中保留多长时间
+* 应该将每个日志类别保留在存储帐户中多长时间。
 * 保留期为零天表示日志将永久保留。 如果不需永久保留，则可将该值设置为 1 到 2147483647 之间的任意天数。
 * 如果设置了保留策略，但禁止将日志存储在存储帐户中（例如，仅选择了“事件中心”或“Log Analytics”选项），则保留策略无效。
 * 保留策略按天应用，因此在一天结束时 (UTC)，会删除当天已超过保留策略期限的日志。 例如，假设保留策略的期限为一天，则在今天开始时，会删除前天的日志。
@@ -104,7 +103,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 }
 ```
 
-| 属性 | Type | Description |
+| 属性 | 类型 | Description |
 | --- | --- | --- |
 | storageAccountId |String | 要将诊断日志发送到的存储帐户的资源 ID |
 | serviceBusRuleId |String | 要在其中创建事件中心，以便流式传输诊断日志的服务总线命名空间的服务总线规则 ID。 规则 ID 的格式为：“{服务总线资源 ID}/authorizationrules/{密钥名称}”。|
@@ -113,7 +112,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 | 日志| 复杂类型| 某个资源类型的诊断日志类别的名称。 若要获取资源的诊断日志类别列表，请先执行 GET 诊断设置操作。 |
 | category| String| 日志类别及其保留策略的数组 |
 | timeGrain | String | 以 ISO 8601 持续时间格式捕获的指标的粒度。 必须为 PT1M（1 分钟）|
-| 已启用| 布尔 | 指定是否为此资源启用了该指标或日志类别的收集|
+| 已启用| Boolean | 指定是否为此资源启用了该指标或日志类别的收集|
 | retentionPolicy| 复杂类型| 描述指标或日志类别的保留策略。 仅用于存储帐户选项。|
 | days| int| 指标或日志的保留天数。 如果值为 0，则无限期保留日志。 仅用于存储帐户选项。 |
 
@@ -274,7 +273,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 }
 ```
 
-| 属性 | Type | Description | 示例 |
+| 属性 | 类型 | Description | 示例 |
 | --- | --- | --- | --- |
 | 级别 |String | 诊断日志的级别。 活动运行日志始终为级别 4。 | `4`  |
 | correlationId |String | 用于跟踪特定端到端请求的唯一 ID | `319dc6b4-f348-405e-b8d7-aafc77b73e77` |
@@ -321,7 +320,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 }
 ```
 
-| 属性 | Type | Description | 示例 |
+| 属性 | 类型 | Description | 示例 |
 | --- | --- | --- | --- |
 | 级别 |String | 诊断日志的级别。 活动运行日志为级别 4。 | `4`  |
 | correlationId |String | 用于跟踪特定端到端请求的唯一 ID | `319dc6b4-f348-405e-b8d7-aafc77b73e77` |
@@ -366,7 +365,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 
 ```
 
-| 属性 | Type | Description | 示例 |
+| 属性 | 类型 | Description | 示例 |
 | --- | --- | --- | --- |
 | 级别 |String | 诊断日志的级别。 对于活动运行日志，请设置为级别 4。 | `4`  |
 | correlationId |String | 用于跟踪特定端到端请求的唯一 ID | `319dc6b4-f348-405e-b8d7-aafc77b73e77` |
@@ -465,15 +464,7 @@ ADFV2 发出以下指标
 
 ## <a name="alerts"></a>警报
 
-可在数据工厂中发出有关受支持指标的警报。 单击数据工厂“监视器”页上的“警报”按钮。
-
-![“警报”选项](media/monitor-using-azure-monitor/alerts_image1.png)
-
-这将进入“警报”页。
-
-![“警报”页](media/monitor-using-azure-monitor/alerts_image2.png)
-
-还可以登录到 Azure 门户并单击“监视”-&gt;“警报”，直接访问“警报”页。
+登录到 Azure 门户，然后依次单击“监视器”-&gt;“警报”以创建警报。
 
 ![门户菜单中的警报](media/monitor-using-azure-monitor/alerts_image3.png)
 
@@ -509,4 +500,5 @@ ADFV2 发出以下指标
     ![操作组，第 4 屏，共 4 屏](media/monitor-using-azure-monitor/alerts_image12.png)
 
 ## <a name="next-steps"></a>后续步骤
-参阅[以编程方式监视和管理管道](monitor-programmatically.md)一文，了解如何通过运行  来监视和管理管道。
+
+请参阅[以编程方式监视和管理管道](monitor-programmatically.md)一文，了解如何使用代码监视和管理管道。

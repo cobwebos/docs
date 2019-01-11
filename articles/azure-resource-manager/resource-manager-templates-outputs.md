@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/07/2018
+ms.date: 12/18/2018
 ms.author: tomfitz
-ms.openlocfilehash: 85aab429fd59afd36cd026e6d8aef2b7e6f6e122
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 9a46d813f2e50831240303ba47380da39e2cb6af
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53140449"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53725797"
 ---
 # <a name="outputs-section-in-azure-resource-manager-templates"></a>Azure 资源管理器模板中的 Outputs 节
 在 Outputs 节中，可以指定从部署返回的值。 例如，可能会返回用于访问已部署资源的 URI。
@@ -81,25 +81,8 @@ az group deployment show -g <resource-group-name> -n <deployment-name> --query p
 | type |是 |输出值的类型。 输出值支持的类型与模板输入参数相同。 |
 | 值 |是 |评估并作为输出值返回的模板语言表达式。 |
 
-## <a name="recommendations"></a>建议
-
-如果使用模板创建公共 IP 地址，请包含 outputs 节，用于返回 IP 地址和完全限定域名 (FQDN) 的详细信息。 部署后，可以使用输出值轻松检索有关公共 IP 地址和 FQDN 的详细信息。
-
-```json
-"outputs": {
-    "fqdn": {
-        "value": "[reference(parameters('publicIPAddresses_name')).dnsSettings.fqdn]",
-        "type": "string"
-    },
-    "ipaddress": {
-        "value": "[reference(parameters('publicIPAddresses_name')).ipAddress]",
-        "type": "string"
-    }
-}
-```
 
 ## <a name="example-templates"></a>示例模板
-
 
 |模板  |Description  |
 |---------|---------|
@@ -111,5 +94,4 @@ az group deployment show -g <resource-group-name> -n <deployment-name> --query p
 ## <a name="next-steps"></a>后续步骤
 * 若要查看许多不同类型的解决方案的完整模型，请参阅 [Azure Quickstart Templates](https://azure.microsoft.com/documentation/templates/)（Azure 快速入门模板）。
 * 有关用户可以使用的来自模板中的函数的详细信息，请参阅 [Azure 资源管理器模板函数](resource-group-template-functions.md)。
-* 要在部署期间合并多个模板，请参阅[将已链接的模板与 Azure 资源管理器配合使用](resource-group-linked-templates.md)。
-* 可能需要使用不同资源组中的资源。 使用跨多个资源组共享的存储帐户或虚拟网络时，此方案很常见。 有关详细信息，请参阅 [resourceId 函数](resource-group-template-functions-resource.md#resourceid)。
+* 有关创建模板的建议，请参阅 [Azure 资源管理器模板最佳做法](template-best-practices.md)。

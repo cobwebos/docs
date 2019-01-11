@@ -9,16 +9,16 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: ashish
-ms.openlocfilehash: d2aeb41c2fcc11c37ec56707932eabcf63e026a0
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 4be346163fd54c0c5f962d15bc2433c7fab49e0b
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52497206"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53650937"
 ---
 # <a name="install-published-application---h2o-sparkling-water"></a>安装已发布的应用程序 - H2O Sparkling Water
 
-本文介绍如何在 Azure HDInsight 上安装和运行 [H20 Sparkling Water](http://www.h2o.ai/) 发布的 [Apache Hadoop](https://hadoop.apache.org/) 应用程序。 有关 HDInsight 应用程序平台的概述以及可用独立软件供应商 (ISV) 发布的应用程序的列表，请参阅[安装第三方 Hadoop 应用程序](hdinsight-apps-install-applications.md)。 有关如何安装自己的应用程序的说明，请参阅[安装自定义 HDInsight 应用程序](hdinsight-apps-install-custom-applications.md)。
+本文介绍如何在 Azure HDInsight 上安装和运行 [H20 Sparkling Water](https://www.h2o.ai/) 发布的 [Apache Hadoop](https://hadoop.apache.org/) 应用程序。 有关 HDInsight 应用程序平台的概述以及可用独立软件供应商 (ISV) 发布的应用程序的列表，请参阅[安装第三方 Hadoop 应用程序](hdinsight-apps-install-applications.md)。 有关如何安装自己的应用程序的说明，请参阅[安装自定义 HDInsight 应用程序](hdinsight-apps-install-custom-applications.md)。
 
 ## <a name="about-h2o-sparkling-water"></a>关于 H2O Sparkling Water
 
@@ -34,7 +34,7 @@ H2O Sparkling Water 提供：
 ### <a name="resource-links"></a>资源链接
 
 * [H2O.ai 工程路线图](http://jira.h2o.ai/)
-* [H2O.ai 主页](http://www.h2o.ai/)
+* [H2O.ai 主页](https://www.h2o.ai/)
 * [H2O.ai 文档](http://docs.h2o.ai/)
 * [H2O.ai 支持](https://support.h2o.ai/)
 * [H2O.ai 开源代码库](https://github.com/h2oai/)
@@ -55,7 +55,7 @@ H2O Sparkling Water 提供：
 
 1. 安装完成后，可以在 Azure 门户中打开 [Jupyter Notebook](https://jupyter.org/) (`https://<ClusterName>.azurehdinsight.net/jupyter`)，通过群集开始使用 H2O Sparkling Water (h2o-sparklingwater)。 转到 Jupyter 的另一种方法是在门户上的群集窗格中选择“群集仪表板”，然后选择“Jupyter Notebook”。 系统会提示输入凭据。 输入创建群集时指定的群集 Hadoop 凭据。
 
-2. Jupyter 中显示了三个文件夹：H2O-PySparkling-Examples、PySpark Examples 和 Scala Examples。 选择“H2O-PySparkling-Examples”文件夹。
+2. 在 Jupyter 中将显示三个文件夹：H2O-PySparkling-Examples、PySpark Examples 和 Scala Examples。 选择“H2O-PySparkling-Examples”文件夹。
 
     ![Jupyter Notebook 主页](./media/hdinsight-apps-install-h2o/jupyter-home.png)
 
@@ -69,7 +69,7 @@ H2O Sparkling Water 提供：
 
 5. H2O 群集启动并运行后，转到 **`https://<ClusterName>-h2o.apps.azurehdinsight.net:443`** 打开 H2O Flow。
 
-    > [!NOTE]
+    > [!NOTE]  
     > 如果无法打开 H2O Flow，请尝试清除浏览器缓存。 如果仍然无法访问它，则可能表示群集中没有足够的资源。 请尝试在群集窗格中的“缩放群集”选项下增加工作节点的数目。
 
     ![H2O Flow 仪表板](./media/hdinsight-apps-install-h2o/h2o-flow.png)
@@ -99,4 +99,4 @@ H2O Sparkling Water 提供：
 * [发布 HDInsight 应用程序](hdinsight-apps-publish-applications.md)：了解如何将自定义 HDInsight 应用程序发布到 Azure 市场。
 * [MSDN：安装 HDInsight 应用程序](https://msdn.microsoft.com/library/mt706515.aspx)：了解如何定义 HDInsight 应用程序。
 * [使用脚本操作自定义基于 Linux 的 HDInsight 群集](hdinsight-hadoop-customize-cluster-linux.md)：了解如何使用脚本操作安装其他应用程序。
-* [在 HDInsight 中使用空边缘节点](hdinsight-apps-use-edge-node.md)：了解如何使用空边缘节点访问 HDInsight 群集、测试和托管 HDInsight 应用程序。
+* [在 HDInsight 中使用空边缘节点](hdinsight-apps-use-edge-node.md)：了解如何使用空边缘节点访问 HDInsight 群集，以及测试和托管 HDInsight 应用程序。

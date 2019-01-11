@@ -8,17 +8,17 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.custom: hdinsightactive,mvc
 ms.topic: conceptual
-ms.date: 11/06/2018
-ms.openlocfilehash: 537ae87fa694a8b0e82cb2830dd8ad1f62986093
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.date: 12/28/2018
+ms.openlocfilehash: 81104c7b206d4fe158df1ae9d329084ad88c3bdd
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52496436"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53976624"
 ---
 # <a name="tutorial-process-tweets-using-azure-event-hubs-and-apache-spark-in-hdinsight"></a>教程：在 HDInsight 中使用 Azure 事件中心和 Apache Spark 处理推文
 
-本教程介绍如何创建 [Apache Spark](https://spark.apache.org/) 流式处理应用程序用于将推文发送到 Azure 事件中心，以及如何创建另一个应用程序用于从事件中心读取推文。 有关 Spark 流式处理的详细说明，请参阅 [Apache Spark 流式处理概述](http://spark.apache.org/docs/latest/streaming-programming-guide.html#overview)。 HDInsight 将相同的流式处理功能引入到 Azure 上的 Spark 群集。
+本教程介绍如何创建 [Apache Spark](https://spark.apache.org/) 流式处理应用程序用于将推文发送到 Azure 事件中心，以及如何创建另一个应用程序用于从事件中心读取推文。 有关 Spark 流式处理的详细说明，请参阅 [Apache Spark 流式处理概述](https://spark.apache.org/docs/latest/streaming-programming-guide.html#overview)。 HDInsight 将相同的流式处理功能引入到 Azure 上的 Spark 群集。
 
 本教程介绍如何执行下列操作：
 > [!div class="checklist"]
@@ -29,78 +29,104 @@ ms.locfileid: "52496436"
 
 ## <a name="prerequisites"></a>先决条件
 
-* **完成[教程：在 Azure HDInsight 中的 Apache Spark 群集上加载数据并运行查询](./apache-spark-load-data-run-query.md)一文**。
+* **完成文章[教程：在 Azure HDInsight 中的 Apache Spark 群集上加载数据并运行查询](./apache-spark-load-data-run-query.md)**。
 
 ## <a name="create-a-twitter-application"></a>创建 Twitter 应用程序
 
 若要接收推文流，请在 Twitter 中创建一个应用程序。 遵照说明创建一个 Twitter 应用程序，并记下稍后需要在本教程中使用的值。
 
 1. 浏览到 [Twitter 应用程序管理](https://apps.twitter.com/)。
-2. 选择“创建新应用”。
-3. 提供以下值：
+
+1. 选择“创建新应用”。
+
+1. 提供以下值：
 
     - 名称：提供应用程序名称。 本教程使用的值为 **HDISparkStreamApp0423**。 此名称必须是唯一的名称。
     - 说明：提供应用程序的简短说明。 本教程使用的值为“一个简单的 HDInsight Spark 流式处理应用程序”。
     - 网站：提供应用程序的网站。 不必是有效网站。  本教程使用的值为 **http://www.contoso.com**。
     - 回调 URL：可以留空。
 
-4. 选择“是，我已阅读并同意 Twitter 开发人员协议”，然后选择“创建 Twitter 应用程序”。
-5. 选择“密钥和访问令牌”选项卡。
-6. 选择页面末尾的“创建访问令牌”。
-7. 记下页面中的以下值。  本教程稍后需要用到这些值：
+1. 选择“是，我已阅读并同意 Twitter 开发人员协议”，然后选择“创建 Twitter 应用程序”。
+
+1. 选择“密钥和访问令牌”选项卡。
+
+1. 选择页面末尾的“创建访问令牌”。
+
+1. 记下页面中的以下值。  本教程稍后需要用到这些值：
 
     - **使用者密钥（API 密钥）**    
     - **使用者机密（API 机密）**  
     - **访问令牌**
     - **访问令牌机密**   
 
-## <a name="create-an-azure-event-hub"></a>创建 Azure 事件中心
+## <a name="create-an-azure-event-hubs-namespace"></a>创建一个 Azure 事件中心命名空间
 
 使用此事件中心来存储推文。
 
-1. 登录到 [Azure 门户](https://ms.portal.azure.com)。
-2. 选择屏幕左上角的“创建资源”。
-3. 依次选择“物联网”、“事件中心”。
+1. 登录到 [Azure 门户](https://portal.azure.com)。 
+
+1. 在左侧菜单中，选择“所有服务”。  
+
+1. 在“物联网”下，选择“事件中心”。 
 
     ![为 Spark 流式处理示例创建事件中心](./media/apache-spark-eventhub-streaming/hdinsight-create-event-hub-for-spark-streaming.png "为 Spark 流式处理示例创建事件中心")
-4. 为新事件中心命名空间输入以下值：
+
+4. 选择“+ 添加”。
+5. 为新的事件中心命名空间输入以下值：
 
     - **名称**：输入事件中心的名称。  本教程使用的值为 **myeventhubns20180403**。
+
     - **定价层**：选择“标准”。
-    - **资源组**：可以选择新建，或选择 Spark 群集的资源组。 
+
+    - **订阅**：选择相应的订阅。
+
+    - **资源组**：从下拉列表中选择现有资源组，或者选择“新建”来创建新的资源组。
+
     - **位置**：选择与 HDInsight 中 Apache Spark 群集相同的“位置”，以降低延迟和成本。
 
-    ![提供 Spark 流式处理示例的事件中心名称](./media/apache-spark-eventhub-streaming/hdinsight-provide-event-hub-name-for-spark-streaming.png "提供 Spark 流式处理示例的事件中心名称")
-5. 选择“创建”以创建命名空间。
+    - **启用自动膨胀**：（可选）当流量超出了分配给事件中心命名空间的吞吐量单位数时，自动膨胀会自动扩展该数量。  
 
-7. 遵照以下说明打开事件中心命名空间：
+    - **自动膨胀最大吞吐量单位数**：（可选）只有当选中了“启用自动膨胀”时才会显示此滑块。  
 
-    1. 在门户中，选择“所有服务”。
-    2. 在筛选器框中，输入“事件中心”。
-    3. 选择新建的命名空间。
-    4. 选择“+ 事件中心”。
+      ![提供 Spark 流式处理示例的事件中心名称](./media/apache-spark-eventhub-streaming/hdinsight-provide-event-hub-name-for-spark-streaming.png "提供 Spark 流式处理示例的事件中心名称")
+6. 选择“创建”以创建命名空间。  部署将在几分钟内完成。
 
-8. 输入以下值：
+## <a name="create-an-azure-event-hub"></a>创建 Azure 事件中心
+部署事件中心命名空间后，创建一个事件中心。  在门户中：
 
-    - 名称：为事件中心命名。
-    - 分区计数：10
-    - 消息保留期：1 
+1. 在左侧菜单中，选择“所有服务”。  
+
+1. 在“物联网”下，选择“事件中心”。  
+
+1. 从列表中选择你的事件中心命名空间。  
+
+1. 在“事件中心命名空间”页面中，选择“+ 事件网格”。  
+1. 在“创建事件中心”页面中输入以下值：
+
+    - **名称**：为事件中心提供一个名称。 
+ 
+    - **分区计数**：10.  
+
+    - **消息保留期**：1.   
    
-    ![提供 Spark 流式处理示例的事件中心详细信息](./media/apache-spark-eventhub-streaming/hdinsight-provide-event-hub-details-for-spark-streaming-example.png "提供 Spark 流式处理示例的事件中心详细信息")
+      ![提供 Spark 流式处理示例的事件中心详细信息](./media/apache-spark-eventhub-streaming/hdinsight-provide-event-hub-details-for-spark-streaming-example.png "提供 Spark 流式处理示例的事件中心详细信息")
 
-9. 选择“创建”。
-10. 为命名空间选择“共享的访问策略”（请注意，它不是事件中心共享的访问策略），然后选择“RootManageSharedAccessKey”。
+1. 选择“创建”。  部署应在几秒内完成，你将返回到“事件中心命名空间”页面。
+
+1. 在“设置”下，选择“共享访问策略”。
+
+1. 选择“RootManageSharedAccessKey”。
     
      ![设置 Spark 流式处理示例的事件中心策略](./media/apache-spark-eventhub-streaming/hdinsight-set-event-hub-policies-for-spark-streaming-example.png "设置 Spark 流式处理示例的事件中心策略")
 
-11. 保存“主密钥”和“连接字符串主密钥”的值，以便稍后在本教程中使用。
+1. 保存“主密钥”和“连接字符串主密钥”的值，以便稍后在本教程中使用。
 
      ![查看 Spark 流式处理示例的事件中心策略密钥](./media/apache-spark-eventhub-streaming/hdinsight-view-event-hub-policy-keys.png "查看 Spark 流式处理示例的事件中心策略密钥")
 
 
 ## <a name="send-tweets-to-the-event-hub"></a>将推文发送到事件中心
 
-需要创建一个 Jupyter Notebook，并将其命名为 **SendTweetsToEventHub**。 
+创建一个 Jupyter Notebook，并将其命名为 **SendTweetsToEventHub**。 
 
 1. 运行以下代码，添加外部 Apache Maven 库：
 
@@ -182,7 +208,7 @@ ms.locfileid: "52496436"
 
 ## <a name="read-tweets-from-the-event-hub"></a>从事件中心读取推文
 
-需要创建另一个 Jupyter Notebook，并将其命名为 **ReadTweetsFromEventHub**。 
+创建另一个 Jupyter Notebook，并将其命名为 **ReadTweetsFromEventHub**。 
 
 1. 运行以下代码，添加一个外部 Apache Maven 库：
 

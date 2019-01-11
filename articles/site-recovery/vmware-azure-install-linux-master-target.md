@@ -6,12 +6,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: nisoneji
-ms.openlocfilehash: e35a8cf720fffa3a3b4c7d9f1b83c2323041b1c4
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 09f4637c24b146394dc0299e60e729c07420150a
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52833306"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53974353"
 ---
 # <a name="install-a-linux-master-target-server-for-failback"></a>安装用于故障回复的 Linux 主目标服务器
 将虚拟机故障转移到 Azure 后，可将虚拟机故障回复到本地站点。 若要故障回复，需要在本地站点中重新保护 Azure 中的虚拟机。 对于此过程，需要安装一个本地主目标服务器用于接收流量。 
@@ -20,6 +20,7 @@ ms.locfileid: "52833306"
 
 > [!IMPORTANT]
 > 从主目标服务器版本 9.10.0 开始，只能在 Ubuntu 16.04 服务器上安装最新的主目标服务器。 CentOS6.6 服务器不支持新安装。 但是，可继续使用 9.10.0 版本升级旧版主目标服务器。
+> 不支持 LVM 上的主目标服务器。
 
 ## <a name="overview"></a>概述
 本文提供 Linux 主目标的相关安装说明。
@@ -59,7 +60,7 @@ ms.locfileid: "52833306"
 
 按下列步骤安装 Ubuntu 16.04.2 64 位操作系统。
 
-1.   转至[下载链接](https://www.ubuntu.com/download/server/thank-you?version=16.04.2&architecture=amd64)，并选择最接近的镜像，从中下载 Ubuntu 16.04.2 最简版 64 位 ISO。
+1.   转至[下载链接](http://old-releases.ubuntu.com/releases/16.04.2/ubuntu-16.04.2-server-amd64.iso)，并选择最接近的镜像，从中下载 Ubuntu 16.04.2 最简版 64 位 ISO。
 将 Ubuntu 16.04.2 最简版 64 位 ISO 保存在 DVD 驱动器中，并启动系统。
 
 1.  选择“英语”作为首选语言，再按 Enter。

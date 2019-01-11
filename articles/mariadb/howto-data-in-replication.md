@@ -3,17 +3,15 @@ title: 配置数据传入复制，以将数据复制到 Azure Database for Maria
 description: 本文介绍如何为 Azure Database for MariaDB 设置数据传入复制。
 author: ajlam
 ms.author: andrela
-editor: jasonwhowell
-services: mariadb
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: f75b3e33cbd5719211bb30b22ab8d53c344b5579
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 3897c402e45962836880ccebbeb252d189188d3c
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50212754"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53548895"
 ---
 # <a name="how-to-configure-azure-database-for-mariadb-data-in-replication"></a>如何配置 Azure Database for MariaDB 的数据传入复制
 

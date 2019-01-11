@@ -1,5 +1,5 @@
 ---
-title: 关于 Azure Key Vault 密钥、机密和证书
+title: 关于 Azure 密钥保管库密钥、机密和证书 - Azure 密钥保管库
 description: Azure Key Vault REST 接口概述以及密钥、机密和证书的开发人员详细信息。
 services: key-vault
 documentationcenter: ''
@@ -10,16 +10,15 @@ ms.assetid: abd1b743-1d58-413f-afc1-d08ebf93828a
 ms.service: key-vault
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/12/2018
+ms.date: 01/07/2019
 ms.author: bryanla
-ms.openlocfilehash: 6d158f14afa305dd547392722abb5f81380de31f
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 0dcfd1bd75fa54a1bbea93497a0cc872ad6d5184
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53384779"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54078365"
 ---
 # <a name="about-keys-secrets-and-certificates"></a>关于密钥、机密和证书
 
@@ -36,7 +35,7 @@ ms.locfileid: "53384779"
 
 以下部分提供在实现 Key Vault 服务中可以用到的常规信息。
 
-###  <a name="supporting-standards"></a>支持标准
+### <a name="supporting-standards"></a>支持标准
 
 JavaScript 对象表示法 (JSON) 与 JavaScript 对象的签名和加密 (JOSE) 规范是重要的背景信息。  
 
@@ -60,7 +59,7 @@ JavaScript 对象表示法 (JSON) 与 JavaScript 对象的签名和加密 (JOSE)
 -   **Identity** - Azure Active Directory (AAD) 的标识。  
 -   **IntDate** - 一个 JSON 十进制值，表示从 1970-01-01T0:0:0Z UTC 到指定 UTC 日期/时间的秒数。 请参阅 RFC3339，了解有关日期/时间的常规信息和 UTC 的特别信息。  
 
-###  <a name="objects-identifiers-and-versioning"></a>对象、标识符和版本控制
+### <a name="objects-identifiers-and-versioning"></a>对象、标识符和版本控制
 
 对于存储在 Key Vault 中的对象，在创建了某一对象的新实例后，这些对象就会受到版本控制。 每个版本都分配有唯一标识符和 URL。 首次创建一个对象时，该对象被赋予了一个唯一的版本标识符，并标记为当前版本的对象。 创建与对象同名的新实例会向新对象赋予一个唯一的版本标识符，并使其成为当前版本。  
 
@@ -85,7 +84,7 @@ Key Vault 中的对象通过 URL 唯一标识。 不管地理位置如何，系�
 
 ## <a name="key-vault-keys"></a>Key Vault 密钥
 
-###  <a name="keys-and-key-types"></a>密钥和密钥类型
+### <a name="keys-and-key-types"></a>密钥和密钥类型
 
 Key Vault 中的加密密钥表示为 JSON Web 密钥 [JWK] 对象。 此外，还扩展了基本 JWK/JWA 规范，以启用对于 Key Vault 实现唯一的密钥类型。 例如，使用 HSM 供应商特定的包导入密钥，可以安全传输仅可在 Key Vault HSM 中使用的密钥。  
 

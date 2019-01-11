@@ -8,15 +8,15 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: qna-maker
 ms.topic: article
-ms.date: 11/08/2018
+ms.date: 12/18/2018
 ms.author: tulasim
 ms.custom: seodec18
-ms.openlocfilehash: d40886f54083a1619635f31af57841138f1706d1
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: e055d1e10ddf8c18c84af5376cf4a284d48fde6b
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53086600"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53603321"
 ---
 # <a name="edit-a-knowledge-base-in-qna-maker"></a>在 QnA Maker 中编辑知识库
 
@@ -71,7 +71,7 @@ QnA Maker 允许你通过提供易于使用的编辑体验来管理知识库的�
 ## <a name="add-metadata"></a>添加元数据
 
 
-通过选择过滤器图标添加元数据对
+通过选择元数据图标添加元数据对
 
 ![添加元数据](../media/qnamaker-how-to-edit-kb/add-metadata.png)
 
@@ -80,11 +80,17 @@ QnA Maker 允许你通过提供易于使用的编辑体验来管理知识库的�
 
 ## <a name="manage-large-knowledge-bases"></a>管理大型知识库
 
-1. QnAs 按从中提取它们的数据源分组。 你可以展开或折叠数据源。
-2. 你可以通过在知识库表顶部的文本框中键入内容来搜索知识库。 单击 Enter 以搜索问题、答案或元数据内容。 单击 X 图标以删除搜索筛选器。
-3. “分页”允许你管理大型知识库
+* **数据源组**：QnAs 按从中提取它们的数据源进行分组。 你可以展开或折叠数据源。
 
-    ![搜索, 分页, 分组](../media/qnamaker-how-to-edit-kb/search-paginate-group.png)
+    ![使用 QnA Maker 数据源栏来折叠和展开数据源问题和解答](../media/qnamaker-how-to-edit-kb/data-source-grouping.png)
+
+* **搜索知识库**：可以通过在知识库表顶部的文本框中键入内容来搜索知识库。 单击 Enter 以搜索问题、答案或元数据内容。 单击 X 图标以删除搜索筛选器。
+
+    ![使用问题和解答上方的 QnA Maker 搜索框可将视图缩小为仅筛选匹配项](../media/qnamaker-how-to-edit-kb/search-paginate-group.png)
+
+* **分页**：快速浏览数据源以管理大型知识库
+
+    ![使用问题和解答上方的 QnA Maker 分页功能可浏览问题和解答页面](../media/qnamaker-how-to-edit-kb/pagination.png)
 
 ## <a name="delete-knowledge-bases"></a>删除知识库
 

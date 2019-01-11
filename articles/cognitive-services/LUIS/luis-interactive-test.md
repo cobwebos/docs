@@ -11,12 +11,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 09/06/2018
 ms.author: diberry
-ms.openlocfilehash: 836449dad621cf6a0efe6c8534edc9f3982869b3
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: d355e14d15dc6a393a6fabb90418cb3949fe0cf5
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53141571"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53601961"
 ---
 # <a name="test-your-luis-app-in-the-luis-portal"></a>在 LUIS 门户中测试 LUIS 应用
 对应用进行<a name="train-your-app"></a>
@@ -51,11 +51,11 @@ ms.locfileid: "53141571"
  
 1. 打开“测试”滑出面板后，对想要比对的陈述选择“检查”。 
 
-    ![“检查”按钮](./media/luis-how-to-interactive-test/inspect.png)
+    ![选择“检查”按钮可查看有关测试结果的更多详细信息](./media/luis-how-to-interactive-test/inspect.png)
 
 2. 此时将显示“检查”面板。 此面板包括评分最高的意向以及任何已识别的实体。 此面板显示所选陈述的结果。
 
-    ![“检查”按钮](./media/luis-how-to-interactive-test/inspect-panel.png)
+    ![此面板包括评分最高的意向以及任何已识别的实体。 此面板显示所选陈述的结果。](./media/luis-how-to-interactive-test/inspect-panel.png)
 
 ## <a name="correct-top-scoring-intent"></a>更正评分最高的意向
 

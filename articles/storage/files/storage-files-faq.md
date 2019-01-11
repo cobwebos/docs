@@ -4,15 +4,15 @@ description: 查看有关 Azure 文件的常见问题解答。
 services: storage
 author: RenaShahMSFT
 ms.service: storage
-ms.date: 10/04/2018
+ms.date: 01/02/2019
 ms.author: renash
 ms.component: files
-ms.openlocfilehash: 761637a9c44cc490d6633aeb1a9b8d81f8885583
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 70370db841a08ae8ee62bda83bec4b1b9e2e7cf2
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52972076"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "54001526"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>有关 Azure 文件的常见问题解答 (FAQ)
 [Azure 文件](storage-files-introduction.md)在云端提供完全托管的文件共享，这些共享项可通过行业标准的[服务器消息块 (SMB) 协议](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx)进行访问。 你可以在云或 Windows、Linux 和 macOS 的本地部署同时装载 Azure 文件共享。 另外，你也可以使用 Azure 文件同步在 Windows Server 计算机上缓存 Azure 文件共享，以在靠近使用数据的位置实现快速访问。
@@ -182,7 +182,7 @@ ms.locfileid: "52972076"
 * <a id="ad-support-regions"></a>
 **通过 SMB 为 Azure 文件启用 Azure AD 预览版是否可在所有 Azure 区域使用？**
 
-    预览版适用于以下区域除外的所有公共区域：北欧。
+    预览版在所有公共区域中都可用。
 
 * <a id="ad-support-on-premises"></a>
 **通过 SMB 为 Azure 文件启用 Azure AD 身份验证（预览版）是否支持从本地计算机使用 Azure AD 进行身份验证？**

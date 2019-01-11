@@ -9,12 +9,12 @@ ms.date: 12/12/2018
 ms.topic: troubleshooting
 ms.service: service-fabric-mesh
 manager: jeanpaul.connock
-ms.openlocfilehash: 7103557d19b367be0b9f0aa6f4a4642800c14558
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 2f9800deedb2e8d55362920fed2493a42290e764
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53314819"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53555840"
 ---
 # <a name="commonly-asked-service-fabric-mesh-questions"></a>有关 Service Fabric 网格的常见问题
 
@@ -101,7 +101,7 @@ Azure Service Fabric 网格是一个完全托管的服务，由此开发者可�
 - 如果单独的服务名称无效，请尝试完全限定的名称：ServiceName.ApplicationName。
 - 在服务的 Docker 文件中添加 `EXPOSE <port>`，其中的端口是在其上公开服务的端口。 例如：
 
-```
+```DockerFile
 EXPOSE 80
 ```
 

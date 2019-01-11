@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 09/26/2018
+ms.date: 01/02/2019
 ms.author: diberry
-ms.openlocfilehash: 452700593d7145e828155c3bd999ad90e2437ba9
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 83c293fe93cd67aca5ef5a3ed766545d2b6d4938
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53098995"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53970162"
 ---
 # <a name="language-and-region-support-for-luis"></a>LUIS 的语言和区域支持
 
@@ -44,6 +44,7 @@ LUIS 理解以下语言：
 | 葡萄牙语(巴西) |`pt-BR` |-| ✔ |✔ |并非所有亚区域性|
 | 西班牙语(西班牙) |`es-ES` |-| ✔ |✔|✔|
 | 西班牙语(墨西哥)|`es-MX` |-|  -   |✔|✔|
+| 土耳其语 | `tr-TR` |-|-|-|仅情绪|
 
 
 [预生成实体](luis-reference-prebuilt-entities.md)和[预生成域](luis-reference-prebuilt-domains.md)具有不同的语言支持。

@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/07/2018
-ms.openlocfilehash: 7a1577e3c352c24983cc3a586c11ad43c416acc4
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 0b68819ba032d7655433aadd30fe2852941096ce
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53091037"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "54000540"
 ---
 # <a name="leverage-query-parallelization-in-azure-stream-analytics"></a>利用 Azure 流分析中的查询并行化
 本文说明了如何利用 Azure 流分析中的并行化。 了解如何通过配置输入分区和调整分析查询定义来缩放流分析作业。
@@ -41,12 +41,13 @@ ms.locfileid: "53091037"
 -   Azure Functions
 -   Azure 表
 -   Blob 存储（可显式设置分区键）
--   CosmosDB（需显式设置分区键）
--   EventHub（需显式设置分区键）
+-   Cosmos DB（需显式设置分区键）
+-   事件中心（需显式设置分区键）
 -   IoT 中心（需显式设置分区键）
 -   服务总线
+- 使用可选分区的 SQL 和 SQL 数据仓库：请在[“输出到 Azure SQL 数据库”页](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-sql-output-perf)中查看详细信息。
 
-PowerBI、SQL 和 SQL 数据仓库的输出不支持分区。 但仍可对输入进行分区，如[本节](#multi-step-query-with-different-partition-by-values)中所述 
+Power BI 不支持分区。 但仍可对输入进行分区，如[本节](#multi-step-query-with-different-partition-by-values)中所述 
 
 若要深入了解分区，请参阅以下文章：
 
@@ -115,9 +116,9 @@ PowerBI、SQL 和 SQL 数据仓库的输出不支持分区。 但仍可对输入
 
 ### <a name="query-using-non-partitioned-output"></a>使用非分区输出进行查询
 * 输入：具有 8 个分区的事件中心
-* 输出：PowerBI
+* 输出：Power BI
 
-PowerBI 输出当前不支持分区。 因此，此方案不易并行。
+Power BI 输出当前不支持分区。 因此，此方案不易并行。
 
 ### <a name="multi-step-query-with-different-partition-by-values"></a>使用不同 PARTITION BY 值进行多步骤查询
 * 输入：具有 8 个分区的事件中心

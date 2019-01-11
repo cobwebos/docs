@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 09/24/2018
+ms.date: 12/27/2018
 ms.author: alkohli
-ms.openlocfilehash: 957100e042da1d41fb7c8fa27a5663cf99a41c20
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: af7bcf2a83259b9d883a824b05312316f9f1f4f8
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49093929"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53793999"
 ---
 # <a name="azure-data-box-system-requirements"></a>Azure Data Box 系统要求
 
@@ -55,6 +55,9 @@ ms.locfileid: "49093929"
 | 经典 | 标准 |
 | 常规用途  |标准；同时支持 V1 和 V2。 |
 | Blob |支持热和冷。 |
+
+>[!NOTE]
+> 不支持 Azure Data Lake Storage Gen 2 帐户。
 
 
 ### <a name="supported-storage-types"></a>支持的存储类型

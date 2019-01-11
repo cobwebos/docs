@@ -10,20 +10,20 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 02/27/2018
 ms.custom: H1Hack27Feb2017,hdinsightactive,hdiseo17may2017
-ms.openlocfilehash: 900180c9991932f4efaa07f9881e9f3f897cd99e
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 8981f6a2b2d42627530fb8bf820ff8373e8f50b0
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52498284"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53971659"
 ---
 # <a name="get-started-with-apache-storm-on-hdinsight-using-the-storm-starter-examples"></a>通过 storm-starter 示例开始使用 Apache Storm on HDInsight
 
-了解如何通过 storm-starter 示例在 HDInsight 中使用 [Apache Storm](http://storm.apache.org/)。
+了解如何通过 storm-starter 示例在 HDInsight 中使用 [Apache Storm](https://storm.apache.org/)。
 
 Apache Storm 是一个可扩展的、具有容错能力的分布式实时计算系统，用于处理数据流。 使用 Azure HDInsight 上的 Storm，可以创建一个基于云的、用于实时执行大数据分析的 Storm 群集。
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight 在 Windows 上停用](../hdinsight-component-versioning.md#hdinsight-windows-retirement)。
 
 ## <a name="prerequisites"></a>先决条件
@@ -38,7 +38,9 @@ Apache Storm 是一个可扩展的、具有容错能力的分布式实时计算�
 
 使用以下步骤创建 Storm on HDInsight 群集：
 
-1. 从 [Azure 门户](https://portal.azure.com)依次选择“+ 创建资源”、“数据 + 分析”、“HDInsight”。
+1. 登录到 [Azure 门户](https://portal.azure.com)。
+
+1. 导航到“+ 创建资源” > “Analytics” > “HDInsight”。
 
     ![创建 HDInsight 群集](./media/apache-storm-tutorial-get-started-linux/create-hdinsight.png)
 
@@ -46,7 +48,7 @@ Apache Storm 是一个可扩展的、具有容错能力的分布式实时计算�
 
     * **群集名称**：HDInsight 群集的名称。
     * **订阅**：选择要使用的订阅。
-    * **群集登录用户名**和**群集登录密码**：通过 HTTPS 访问群集时的登录凭据。 可以使用这些凭据访问 Ambari Web UI 或 REST API 等服务。
+    * **群集登录用户名**和**群集登录密码**：通过 HTTPS 访问群集时的登录名。 可以使用这些凭据访问 Ambari Web UI 或 REST API 等服务。
     * **安全外壳 (SSH) 用户名**：通过 SSH 访问群集时使用的登录名。 默认情况下，密码与群集登录密码相同。
     * **资源组**：要在其中创建群集的资源组。
     * **位置**：要在其中创建群集的 Azure 区域。
@@ -59,7 +61,7 @@ Apache Storm 是一个可扩展的、具有容错能力的分布式实时计算�
 
     * **操作系统**：Linux
 
-    * 版本：Storm 1.1.0 (HDI 3.6)
+    * **版本**：Storm 1.1.0 (HDI 3.6)
 
    最后使用“选择”按钮保存设置。
 
@@ -84,10 +86,10 @@ Apache Storm 是一个可扩展的、具有容错能力的分布式实时计算�
 
         ssh USERNAME@CLUSTERNAME-ssh.azurehdinsight.net
 
-    > [!TIP]
+    > [!TIP]  
     > SSH 客户端可能会指出无法进行主机验证。 如果是这样，则输入 `yes` 继续。
 
-    > [!NOTE]
+    > [!NOTE]  
     > 如果使用了密码来保护 SSH 用户帐户，系统会提示输入密码。 如果使用了公钥，则可能需要使用 `-i` 参数来指定匹配的私钥。 例如，`ssh -i ~/.ssh/id_rsa USERNAME@CLUSTERNAME-ssh.azurehdinsight.net`。
 
     有关信息，请参阅[将 SSH 与 HDInsight 配合使用](../hdinsight-hadoop-linux-use-ssh-unix.md)。
@@ -98,7 +100,7 @@ Apache Storm 是一个可扩展的、具有容错能力的分布式实时计算�
 
     此命令启动群集上的示例 WordCount 拓扑。 此拓扑生成随机句子，并计算单词的出现次数。 拓扑的友好名称为 `wordcount`。
 
-    > [!NOTE]
+    > [!NOTE]  
     > 将自己的拓扑提交到群集时，必须先复制包含群集的 jar 文件，然后再使用 `storm` 命令。 使用 `scp` 命令来复制该文件。 例如： `scp FILENAME.jar USERNAME@CLUSTERNAME-ssh.azurehdinsight.net:FILENAME.jar`
     >
     > WordCount 示例和其他 Storm 初学者示例已经包含在群集中，其位置为 `/usr/hdp/current/storm-client/contrib/storm-starter/`。
@@ -113,7 +115,7 @@ Storm UI 提供一个 Web 界面用于处理正在运行的拓扑，HDInsight �
 
 1. 若要显示 Storm UI，请打开 Web 浏览器，访问 `https://CLUSTERNAME.azurehdinsight.net/stormui`。 将 **CLUSTERNAME** 替换为群集名称。
 
-    > [!NOTE]
+    > [!NOTE]  
     > 如果系统要求提供用户名和密码，请输入创建群集时使用的群集管理员用户名 (admin) 和密码。
 
 2. 在“拓扑摘要”下，选择“名称”列中的“Wordcount”条目。 将显示有关拓扑的信息。
@@ -124,7 +126,7 @@ Storm UI 提供一个 Web 界面用于处理正在运行的拓扑，HDInsight �
 
     * **拓扑统计信息** - 有关拓扑性能的基本信息，已组织到时间窗口中。
 
-        > [!NOTE]
+        > [!NOTE]  
         > 选择特定的时间窗口会更改页面其他部分中显示的信息的时间窗口。
 
     * **Spout** - 有关 spout 的基本信息，包括每个 spout 返回的最后一个错误。
@@ -139,7 +141,7 @@ Storm UI 提供一个 Web 界面用于处理正在运行的拓扑，HDInsight �
 
     * **停用** - 暂停正在运行的拓扑。
 
-    * **重新平衡** - 调整拓扑的并行度。 更改群集中的节点数目之后，应该重新平衡正在运行的拓扑。 重新平衡可调整并行度，以弥补群集中增加/减少的节点数目。 有关详细信息，请参阅[了解 Apache Storm 拓扑的并行度](http://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html)。
+    * **重新平衡** - 调整拓扑的并行度。 更改群集中的节点数目之后，应该重新平衡正在运行的拓扑。 重新平衡可调整并行度，以弥补群集中增加/减少的节点数目。 有关详细信息，请参阅[了解 Apache Storm 拓扑的并行度](https://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html)。
 
     * **终止** - 在经过指定的超时之后终止 Storm 拓扑。
 
@@ -151,7 +153,7 @@ Storm UI 提供一个 Web 界面用于处理正在运行的拓扑，HDInsight �
 
     * **Spout/Bolt 统计信息** - 有关组件性能的基本信息，已组织到时间窗口中。
 
-        > [!NOTE]
+        > [!NOTE]  
         > 选择特定的时间窗口会更改页面其他部分中显示的信息的时间窗口。
 
     * **输入统计信息** （仅限 Bolt）- 有关生成 Bolt 所用数据的组件的信息。
@@ -183,7 +185,7 @@ Storm UI 提供一个 Web 界面用于处理正在运行的拓扑，HDInsight �
 
 [!INCLUDE [delete-cluster-warning](../../../includes/hdinsight-delete-cluster-warning.md)]
 
-如果在创建 HDInsight 群集时遇到问题，请参阅[访问控制要求](../hdinsight-administer-use-portal-linux.md#create-clusters)。
+如果在创建 HDInsight 群集时遇到问题，请参阅[访问控制要求](../hdinsight-hadoop-create-linux-clusters-portal.md)。
 
 ## <a id="next"></a>后续步骤
 
@@ -198,7 +200,7 @@ Storm UI 提供一个 Web 界面用于处理正在运行的拓扑，HDInsight �
 * [HDInsight 上的 Apache Storm 的示例拓扑](apache-storm-example-topology.md)
 
 [apachestorm]: https://storm.incubator.apache.org
-[stormdocs]: http://storm.incubator.apache.org/documentation/Documentation.html
+[stormdocs]: https://storm.incubator.apache.org/documentation/Documentation.html
 [stormstarter]: https://github.com/apache/storm/tree/master/examples/storm-starter
 [stormjavadocs]: https://storm.incubator.apache.org/apidocs/
 [hdinsight-provision]: hdinsight-hadoop-provision-linux-clusters.md

@@ -1,7 +1,7 @@
 ---
 title: 对图像进行分类 - 计算机视觉
 titleSuffix: Azure Cognitive Services
-description: 使用计算机视觉 API 对图像进行分类的相关概念。
+description: 了解与计算机视觉 API 的图像分类功能相关的概念。
 services: cognitive-services
 author: PatrickFarley
 manager: cgronlun
@@ -10,14 +10,15 @@ ms.component: computer-vision
 ms.topic: conceptual
 ms.date: 08/29/2018
 ms.author: pafarley
-ms.openlocfilehash: 7062d98d40c15f4e9e873038fc12fc1b104c996d
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.custom: seodec18
+ms.openlocfilehash: 40873b13407066920caec5c04751b65c01d7e209
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52333473"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53579492"
 ---
-# <a name="categorizing-images"></a>对图像进行分类
+# <a name="image-categorization-with-computer-vision"></a>使用计算机视觉进行图像分类
 
 除了标记和说明以外，计算机视觉还返回早期版本中定义的基于分类的类别。 这些类别组织为具有父/子遗传的层次结构的分类。 所有类别均采用英语。 它们可单独使用或与我们的新标记模型结合使用。
 
@@ -31,7 +32,7 @@ ms.locfileid: "52333473"
 
 以下 JSON 响应表明计算机视觉在基于视觉特征对示例图像进行分类时返回的内容。
 
-![女士屋顶](./Images/woman_roof.png)
+![在公寓楼顶上的一个女人](./Images/woman_roof.png)
 
 ```json
 {
@@ -54,10 +55,10 @@ ms.locfileid: "52333473"
 
 | 映像 | 类别 |
 |-------|----------|
-| ![系列照片](./Images/family_photo.png) | people_group |
-| ![可爱的小狗](./Images/cute_dog.png) | animal_dog |
-| ![户外山脉](./Images/mountain_vista.png) | outdoor_mountain |
-| ![视觉分析食物面包](./Images/bread.png) | food_bread |
+| ![四个人一起摆出一家人的姿势](./Images/family_photo.png) | people_group |
+| ![一只小狗坐在草地上](./Images/cute_dog.png) | animal_dog |
+| ![日落时站在山岩上的人](./Images/mountain_vista.png) | outdoor_mountain |
+| ![桌子上有一堆面包](./Images/bread.png) | food_bread |
 
 ## <a name="next-steps"></a>后续步骤
 

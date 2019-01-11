@@ -8,12 +8,12 @@ ms.author: hrasheed
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: 78d18bfe0f47517067fbb053a2d7e076b15761a7
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: 194e6091180fa1dd0eaaf999e970c0248ea99db9
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52580994"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53651769"
 ---
 # <a name="create-apache-spark-streaming-jobs-with-exactly-once-event-processing"></a>使用“恰好一次”事件处理创建 Apache Spark 流式处理作业
 
@@ -29,11 +29,11 @@ ms.locfileid: "52580994"
 
 首先，考虑在出现问题后所有系统故障点如何重启，以及如何避免数据丢失。 Spark 流应用程序包含：
 
-* 一个输入源
-* 从输入源提取数据的一个或多个接收器进程
-* 处理数据的任务
-* 一个输出接收器
-* 一个管理长时间运行的作业的驱动程序进程
+* 一个输入源。
+* 从输入源提取数据的一个或多个接收器进程。
+* 处理数据的任务。
+* 一个输出接收器。
+* 一个管理长时间运行的作业的驱动程序进程。
 
 “恰好一次”语义要求数据在任何时间点都不会丢失，并且不管故障发生在哪个位置，消息处理都可重启。
 
@@ -41,7 +41,7 @@ ms.locfileid: "52580994"
 
 Spark 流应用程序从中读取事件的源必须可重播。 这意味着，如果已检测到消息，但在持久保存或处理该消息之前系统发生故障，则源必须再次提供同一消息。
 
-在 Azure 中，Azure 事件中心和 HDInsight 上的 [Apache Kafka](https://kafka.apache.org/) 提供可重播源。 可重播源的另一个示例是 [Apache Hadoop HDFS](https://hadoop.apache.org/docs/r1.2.1/hdfs_design.html) 等容错的文件系统、Azure 存储 Blob 或 Azure Data Lake Store，其中的所有数据将永久保留，随时都可以重新读取整个数据。
+在 Azure 中，Azure 事件中心和 HDInsight 上的 [Apache Kafka](https://kafka.apache.org/) 提供可重播源。 可重播源的另一个示例是 [Apache Hadoop HDFS](https://hadoop.apache.org/docs/r1.2.1/hdfs_design.html) 等容错的文件系统、Azure 存储 Blob 或 Azure Data Lake Storage，其中的所有数据将永久保留，随时都可以重新读取整个数据。
 
 ### <a name="reliable-receivers"></a>可靠的接收器
 
@@ -49,7 +49,7 @@ Spark 流应用程序从中读取事件的源必须可重播。 这意味着，�
 
 ### <a name="use-the-write-ahead-log"></a>使用预写日志
 
-Spark 流支持使用预写日志，其中每个收到的事件首先写入容错存储中的 Spark 检查点目录，然后存储在弹性分布式数据集 (RDD) 中。 在 Azure 中，容错存储是以 Azure 存储或 Azure Data Lake Store 为基础的 HDFS。 在 Spark 流应用程序中，可以通过将 `spark.streaming.receiver.writeAheadLog.enable` 配置设置指定为 `true`，为所有接收器启用预写日志。 预写日志针对驱动程序和执行器的故障提供容错。
+Spark 流支持使用预写日志，其中每个收到的事件首先写入容错存储中的 Spark 检查点目录，然后存储在弹性分布式数据集 (RDD) 中。 在 Azure 中，容错存储是由 Azure 存储或 Azure Data Lake Storage 提供支持的 HDFS。 在 Spark 流应用程序中，可以通过将 `spark.streaming.receiver.writeAheadLog.enable` 配置设置指定为 `true`，为所有接收器启用预写日志。 预写日志针对驱动程序和执行器的故障提供容错。
 
 对于针对事件数据运行任务的辅助角色，将会根据定义在多个辅助角色之间复制和分配每个 RDD。 如果由于运行任务的辅助角色崩溃而导致该任务失败，则会在拥有事件数据副本的另一个辅助角色上重启该任务，因此事件不会丢失。
 
@@ -66,7 +66,7 @@ Spark 流支持使用预写日志，其中每个收到的事件首先写入容�
     ssc.checkpoint("/path/to/checkpoints")
     ```
 
-    在 HDInsight 中，应将这些检查点保存到群集上附加的默认存储：Azure 存储或 Azure Data Lake Store。
+    在 HDInsight 中，应将这些检查点保存到群集上附加的默认存储：Azure 存储或 Azure Data Lake Storage。
 
 2. 接下来，在 DStream 上指定检查点间隔（以秒为单位）。 在每个间隔内，会将派生自输入事件的状态数据持久保存到存储。 在从源事件重新生成状态时，持久保存的状态数据可以减少所需的计算。
 
@@ -85,7 +85,7 @@ Spark 流支持使用预写日志，其中每个收到的事件首先写入容�
 
 例如，可以在 Azure SQL 数据库中使用存储过程，将事件插入表中。 此存储过程先根据键字段查找事件，仅当未找到匹配的事件时，才将记录插入到表中。
 
-另一个示例是使用分区的文件系统，例如 Azure 存储 Blob 或 Azure Data Lake Store。 在这种情况下，接收器逻辑不需要检查文件是否存在。 如果表示事件的文件存在，只需使用相同的数据将其覆盖。 否则，需要在计算的路径中创建一个新文件。
+另一个示例是使用分区文件系统，例如 Azure 存储 Blob 或 Azure Data Lake Storage。 在这种情况下，接收器逻辑不需要检查文件是否存在。 如果表示事件的文件存在，只需使用相同的数据将其覆盖。 否则，需要在计算的路径中创建一个新文件。
 
 ## <a name="next-steps"></a>后续步骤
 

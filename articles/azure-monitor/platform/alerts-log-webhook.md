@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: 4502f7232d2bcfaf4a32a384d24556cd668dc50b
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: e7676213f9eee781fa7b8c19a30c6505ca5bf2ac
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53283373"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53720299"
 ---
 # <a name="webhook-actions-for-log-alert-rules"></a>用于日志警报规则的 Webhook 操作
 [在 Azure 中创建日志警报](alerts-log.md)时，可以选择[使用操作组配置](action-groups.md)以执行一个或多个操作。  本文介绍可用的不同 Webhook 操作，以及有关配置基于 JSON 的自定义 Webhook 的详细信息。
@@ -73,13 +73,13 @@ Webhooks 包括 URL 和 JSON 格式的负载（即发送到外部服务的数据
 ```
 由于自定义 Webhook 中的所有变量都必须在 JSON enclosure（如“#searchinterval”）内指定，因此生成的 Webhook 在 enclosure（如“00:05:00”）内也会有可变数据。
 
-若要在自定义有效负载中包含搜索结果，请确保在 json 有效负载中将 **IncudeSearchResults** 设置为顶级属性。 
+若要在自定义有效负载中包含搜索结果，请确保在 json 有效负载中将 **IncludeSearchResults** 设置为顶级属性。 
 
 ## <a name="sample-payloads"></a>示例有效负载
 此部分显示用于日志警报的 Webhook 的示例有效负载，包括有效负载是标准有效负载时以及是自定义有效负载时。
 
 > [!NOTE]
-> 为了确保向后兼容性，使用 Azure Log Analytics 的警报的标准 Webhook 有效负载与 [Log Analytics 警报管理](alerts-metric.md)相同。 但对于使用 [Application Insights](../../application-insights/app-insights-analytics.md) 的日志警报，标准 Webhook 有效负载基于操作组架构。
+> 为了确保向后兼容性，使用 Azure Log Analytics 的警报的标准 Webhook 有效负载与 [Log Analytics 警报管理](alerts-metric.md)相同。 但对于使用 [Application Insights](../../azure-monitor/app/analytics.md) 的日志警报，标准 Webhook 有效负载基于操作组架构。
 
 ### <a name="standard-webhook-for-log-alerts"></a>用于日志警报的标准 Webhook 
 这两个示例都声明了仅包含两列和两行的虚拟有效负载。
@@ -200,5 +200,5 @@ Webhooks 包括 URL 和 JSON 格式的负载（即发送到外部服务的数据
 - 了解 [Azure 警报中的日志警报](alerts-unified-log.md)
 - 了解如何[在 Azure 中管理日志警报](alerts-log.md)
 - 创建和管理 [Azure 门户中的操作组](action-groups.md)
-- 详细了解 [Application Insights](../../application-insights/app-insights-analytics.md)
+- 详细了解 [Application Insights](../../azure-monitor/app/analytics.md)
 - 详细了解 [Log Analytics](../../azure-monitor/log-query/log-query-overview.md)。 

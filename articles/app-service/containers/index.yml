@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: f6face1b6bd8893f1391f32ea5ac1a52e0289e99
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 8b10892a087572f2e66a73539827601410e9aca2
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53542418"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54155042"
 documentType: LandingData
 title: Linux 应用服务文档
 metadata:
@@ -98,7 +98,7 @@ sections:
   - type: list
     style: ordered
     items:
-    - html: 通过<a href="/azure/app-service/containers/tutorial-dotnetcore-sqldb-app">将 .NET Core 与 Azure SQL DB 配合使用</a>、<a href="/azure/app-service/containers/tutorial-java-enterprise-postgresql-app">将Java Enterpise 与 PostgreSQL 配合使用</a>或<a href="/azure/app-service/containers/tutorial-nodejs-mongodb-app">将 Node.js 与 MongoDB 配合使用</a>来创建应用程序
+    - html: 通过<a href="/azure/app-service/containers/tutorial-dotnetcore-sqldb-app">将 .NET Core 与 Azure SQL DB 配合使用</a>、<a href="/azure/app-service/containers/tutorial-java-enterprise-postgresql-app">将 Java Enterpise 与 PostgreSQL 配合使用</a>或<a href="/azure/app-service/containers/tutorial-nodejs-mongodb-app">将 Node.js 与 MongoDB 配合使用</a>来创建应用程序
     - html: <a href="/azure/app-service/app-service-web-tutorial-custom-domain">将现有自定义域映射到应用程序</a>
     - html: <a href="/azure/app-service/app-service-web-tutorial-custom-SSL">将现有 SSL 证书绑定到应用程序</a>
     - html: <a href="/azure/cdn/cdn-add-to-web-app">将 CDN 添加到应用程序</a>

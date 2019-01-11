@@ -1,19 +1,18 @@
 ---
 title: 一致性级别和 Azure Cosmos DB API
 description: 了解 Azure Cosmos DB 中 API 的一致性级别。
-keywords: 一致性, azure cosmos db, azure, 模型, mongodb, cassandra, 图, 表, Microsoft azure
-services: cosmos-db
 author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/23/2018
-ms.openlocfilehash: 277a064d93e2ebcea82f3909b3fd16328a775105
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.reviewer: sngun
+ms.openlocfilehash: 76ebbc8cc8dbea4b7f8f8226cf1d8570a421e8cf
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52832490"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54034329"
 ---
 # <a name="consistency-levels-and-azure-cosmos-db-apis"></a>一致性级别和 Azure Cosmos DB API
 
@@ -50,5 +49,5 @@ Azure Cosmos DB 还为常用数据库提供对与线路协议兼容的 API 的�
 详细了解 Azure Cosmos DB API 与开源 API 之间的一致性级别和兼容性。 请参阅以下文章：
 
 * [各种一致性级别的可用性和性能权衡](consistency-levels-tradeoffs.md)
-* [Azure Cosmos DB MongoDB API 支持的 MongoDB 功能](mongodb-feature-support.md)
+* [Azure Cosmos DB 的 API for MongoDB 支持的 MongoDB 功能](mongodb-feature-support.md)
 * [Azure Cosmos DB Cassandra API 支持的 Apache Cassandra 功能](cassandra-support.md)

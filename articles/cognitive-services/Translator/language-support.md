@@ -10,12 +10,12 @@ ms.component: translator-text
 ms.topic: article
 ms.date: 09/25/2018
 ms.author: v-jansko
-ms.openlocfilehash: 0b1187083c14fc7c536f6a32f3a41957f53f299b
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: 3d25cfd39b4b4278fedf33e042d394208fd5eafc
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52679709"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53713173"
 ---
 # <a name="language-and-region-support-for-the-translator-text-api"></a>文本翻译 API 的语言和区域支持
 
@@ -39,9 +39,8 @@ ms.locfileid: "52679709"
 |:-----|:-----:|:-----|:-----|
 |南非荷兰语| `af`    |仅统计|  神经|
 |阿拉伯语|    `ar`    |神经可用|  神经|
-|阿拉伯语(黎凡特)| `apc`   |神经可用|  神经|
 |Bangla|    `bn`    |神经可用|  神经|
-|波斯尼亚语(拉丁语系)|   `bs`    |仅统计|  统计|
+|波斯尼亚语(拉丁语系)|   `bs`    |神经可用|  神经|
 |保加利亚语| `bg`    |神经可用|  神经|
 |粤语(繁体)|   `yue`   |仅统计|  统计|
 |加泰罗尼亚语|   `ca`    |仅统计|  统计|
@@ -109,26 +108,26 @@ Transliterate 方法支持以下语言。 在“音译方向”中，“<-->”�
 
 | 语言    | 语言代码 | 脚本 | 音译方向 | 脚本|
 |:----------- |:-------------:|:-------------:|:-------------:|:-------------:|
-| 阿拉伯语 | ar | 阿拉伯语 | <--> | 拉丁语 |
-|Bangla  | bn | 孟加拉语 | <--> | 拉丁语 |
-| 中文(简体) | zh-Hans | 中文(简体) | <--> | 拉丁语 |
-| 中文(简体) | zh-Hans | 中文(简体) | <--> | 中文(繁体) |
-| 中文(繁体) | zh-Hant | 中文(繁体) | <--> | 拉丁语 |
-| 中文(繁体) | zh-Hant | 中文(繁体) | <--> | 中文(简体) |
-| 古吉拉特语 | gu  | 古吉拉特语 | --> | 拉丁语 |
-| 希伯来语 | he | 希伯来语 | <--> | 拉丁语 |
-| 印地语 | hi | 梵语 | <--> | 拉丁语 |
-| 日语 | ja | 日语 | <--> | 拉丁语 |
-| 卡纳达语 | kn | 卡纳达语 | --> | 拉丁语 |
-| 马拉雅拉姆语 | ml | 马拉雅拉姆语 | --> | 拉丁语 |
-| 马拉地语 | mr | 梵语 | --> | 拉丁语 |
-| 奥里雅语 | 或 | 奥里雅语 | <--> | 拉丁语 |
-| 旁遮普语 | pa | 果鲁穆奇语 | <--> | 拉丁语  |
-| 塞尔维亚语(西里尔文) | sr-Cyrl | 西里尔语  | --> | 拉丁语 |
-| 塞尔维亚语(拉丁语系) | sr-Latn | 拉丁语 | --> | 西里尔语 |
-| 泰米尔语 | ta | 泰米尔语 | --> | 拉丁语 |
-| 泰卢固语 | te | 泰卢固语 | --> | 拉丁语 |
-| 泰语 | th | 泰语 | <--> | 拉丁语 |
+| 阿拉伯语 | `ar` | 阿拉伯语 `Arab` | <--> | 拉丁语 `Latn` |
+|Bangla  | `bn` | 孟加拉语 `Beng` | <--> | 拉丁语 `Latn` |
+| 中文(简体) | `zh-Hans` | 简体中文 `Hans`| <--> | 拉丁语 `Latn` |
+| 中文(简体) | `zh-Hans` | 简体中文 `Hans`| <--> | 繁体中文 `Hant`|
+| 中文(繁体) | `zh-Hant` | 繁体中文 `Hant`| <--> | 拉丁语 `Latn` |
+| 中文(繁体) | `zh-Hant` | 繁体中文 `Hant`| <--> | 简体中文 `Hans` |
+| 古吉拉特语 | `gu`  | 古吉拉特语 `Gujr` | --> | 拉丁语 `Latn` |
+| 希伯来语 | `he` | 希伯来语 `Hebr` | <--> | 拉丁语 `Latn` |
+| 印地语 | `hi` | 梵语 `Deva` | <--> | 拉丁语 `Latn` |
+| 日语 | `ja` | 日语 `Jpan` | <--> | 拉丁语 `Latn` |
+| 卡纳达语 | `kn` | 卡纳达语 `Knda` | --> | 拉丁语 `Latn` |
+| 马拉雅拉姆语 | `ml` | 马拉雅拉姆语 `Mlym` | --> | 拉丁语 `Latn` |
+| 马拉地语 | `mr` | 梵语 `Deva` | --> | 拉丁语 `Latn` |
+| 奥里雅语 | `or` | 奥里雅语 `Orya` | <--> | 拉丁语 `Latn` |
+| 旁遮普语 | `pa` | 果鲁穆奇语 `Guru`  | <--> | 拉丁语 `Latn`  |
+| 塞尔维亚语(西里尔文) | `sr-Cyrl` | 西里尔语 `Cyrl`  | --> | 拉丁语 `Latn` |
+| 塞尔维亚语(拉丁语系) | `sr-Latn` | 拉丁语 `Latn` | --> | 西里尔语 `Cyrl`|
+| 泰米尔语 | `ta` | 泰米尔语 `Taml` | --> | 拉丁语 `Latn` |
+| 泰卢固语 | `te` | 泰卢固语 `Telu` | --> | 拉丁语 `Latn` |
+| 泰语 | `th` | 泰语 `Thai` | <--> | 拉丁语 `Latn` |
 
 ## <a name="dictionary"></a>字典
 
@@ -187,9 +186,9 @@ Transliterate 方法支持以下语言。 在“音译方向”中，“<-->”�
 | 越南语      | `vi`          |
 | 威尔士语      | `cy`          |
 
-## <a name="languages-detected-by-the-detect-method"></a>Detect 方法检测到的语言
+## <a name="detect"></a>检测
 
-Detect 方法可检测到以下语言。 Detect 可能会检测到 Microsoft Translator 无法翻译的语言。
+Detect 方法支持以下语言。 Detect 可能会识别 Microsoft Translator 无法翻译的语言。
 
 | 语言    |
 |:----------- |
@@ -261,11 +260,55 @@ Detect 方法可检测到以下语言。 Detect 可能会检测到 Microsoft Tra
 | 威尔士语 |
 | 意第绪语 |
 
-## <a name="access-the-list-programmatically"></a>以编程方式访问列表
+## <a name="access-the-translator-text-api-language-list-programmatically"></a>以编程方式访问文本翻译 API 语言列表
 
-可使用 V3.0 文本 API 的语言操作以编程方式访问支持的语言列表。 可按功能、语言代码以及该语言在英文或任何其他受支持语言中的名称来查看列表。 当新语言可用时，Microsoft Translator 服务会自动更新此列表。
+可以使用 Languages 方法检索文本翻译 API v3.0 支持的语言列表。 可按功能、语言代码以及该语言在英文或任何其他受支持语言中的名称来查看列表。 当有新语言可用时，Microsoft Translator 服务会自动更新此列表。
 
 [查看语言操作参考文档](reference/v3-0-languages.md)
+
+## <a name="customization"></a>自定义
+
+以下语言可以使用[自定义翻译器](http://aka.ms/CustomTranslator)进行自定义。
+
+| 语言    | 语言代码 |
+|:----------- |:-------------:|
+| 阿拉伯语       | `ar`          |
+| Bangla      | `bn`          |
+| 波斯尼亚语(拉丁语系)      | `bs`          |
+| 保加利亚语      | `bg`          |
+| 中文(简体)      | `zh-Hans`          |
+| 克罗地亚语      | `hr`          |
+| 捷克语      | `cs`          |
+| 丹麦语      | `da`          |
+| 荷兰语      | `nl`          |
+| 英语    | `en`     |
+| 爱沙尼亚语      | `et`          |
+| 芬兰语      | `fi`          |
+| 法语      | `fr`          |
+| 德语      | `de`          |
+| 希腊语      | `el`          |
+| 希伯来语      | `he`          |
+| 印地语      | `hi`          |
+| 匈牙利语      | `hu`          |
+| 意大利语      | `it`          |
+| 日语      | `ja`          |
+| 韩语      | `ko`          |
+| 拉脱维亚语      | `lv`          |
+| 立陶宛语      | `lt`          |
+| 挪威语      | `nb`          |
+| 波兰语      | `pl`          |
+| 葡萄牙语      | `pt`          |
+| 罗马尼亚语      | `ro`          |
+| 俄语      | `ru`          |
+| 塞尔维亚语(拉丁语系)      | `sr-Latn`          |
+| 斯洛伐克语     | `sk`          |
+| 斯洛文尼亚语      | `sl`          |
+| 西班牙语      | `es`          |
+| 瑞典语      | `sv`          |
+| 泰语      | `th`          |
+| 土耳其语      | `tr`          |
+| 乌克兰语      | `uk`          |
+| 越南语      | `vi`          |
 
 ## <a name="access-the-list-on-the-microsoft-translator-website"></a>访问 Microsoft Translator 网站上的列表
 

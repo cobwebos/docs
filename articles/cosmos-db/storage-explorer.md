@@ -1,28 +1,27 @@
 ---
 title: 使用 Azure 存储资源管理器管理 Azure Cosmos DB 资源
 description: 了解如何使用 Azure 存储资源管理器连接到 Azure Cosmos DB 并管理其资源。
-author: Jejiang
-tags: Azure Cosmos DB
+author: deborahc
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/07/2018
-ms.author: jejiang
+ms.author: dech
 ms.custom: seodec18
-ms.openlocfilehash: 1ce483a88c1f57912dfe30efa98f46335e97c01c
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: d19aaa6e486732cb1453e3299c8e598e8fd2f507
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53138120"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54044614"
 ---
 # <a name="manage-azure-cosmos-db-resources-using-azure-storage-explorer"></a>使用 Azure 存储资源管理器管理 Azure Cosmos DB 资源
 
-通过在 Azure 存储资源管理器中使用 Azure Cosmos DB，用户可以管理 Azure Cosmos DB 实体、操作数据、更新存储过程和触发器以及其他 Azure 实体（如存储 blob 和队列）。 现在可以使用相同工具在一个位置管理不同 Azure 实体。 目前，Azure 存储资源管理器支持 SQL、MongoDB、Graph 和表帐户。
+通过在 Azure 存储资源管理器中使用 Azure Cosmos DB，用户可以管理 Azure Cosmos DB 实体、操作数据、更新存储过程和触发器以及其他 Azure 实体（如存储 blob 和队列）。 现在可以使用相同工具在一个位置管理不同 Azure 实体。 目前，Azure 存储资源管理器支持为 SQL、MongoDB、Graph 和表 API 配置的 Cosmos 帐户。
 
 
 ## <a name="prerequisites"></a>先决条件
 
-适用于 SQL API<!--or MongoDB API--> 的 Azure Cosmos DB 帐户。 如果你没有帐户，则可以按照 [Azure Cosmos DB：使用 .NET 和 Azure 门户生成 SQL API Web 应用](create-sql-api-dotnet.md)中所述，在 Azure 门户中创建一个。
+使用 SQL API 或 Azure Cosmos DB 的 API for MongoDB 创建的 Cosmos 帐户。 如果你没有帐户，则可以按照 [Azure Cosmos DB：使用 .NET 和 Azure 门户生成 SQL API Web 应用](create-sql-api-dotnet.md)中所述，在 Azure 门户中创建一个。
 
 ## <a name="installation"></a>安装
 

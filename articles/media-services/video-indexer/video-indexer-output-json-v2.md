@@ -9,12 +9,12 @@ ms.service: media-services
 ms.topic: article
 ms.date: 11/19/2018
 ms.author: juliako
-ms.openlocfilehash: 8acb1c70dc21efc87e13e0e5e94d9a61acfe01e9
-ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
+ms.openlocfilehash: 666be9c2ebba9dc9607e4188b2390fff49fd59b9
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2018
-ms.locfileid: "52291748"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53554650"
 ---
 # <a name="examine-the-video-indexer-output-produced-by-v2-api"></a>探讨 v2 API 生成的视频索引器输出
 
@@ -78,7 +78,7 @@ ms.locfileid: "52291748"
 |属性 | Description|
 |---|---|
 |名称|视频的名称。 例如 Azure Monitor。|
-|shortId|视频的 ID。 例如 63c6d532ff。|
+|id|视频的 ID。 例如 63c6d532ff。|
 |privacyMode|可以细分为以下模式之一：“私用”、“公共”。 **公共** - 向你帐户中的任何人，以及具有视频链接的每个人显示该视频。 **私用** - 向你帐户中的每个人显示该视频。|
 |duration|包含一个持续时间，用于描述见解发生的时间。 持续时间以秒为单位。|
 |thumbnailVideoId|从其创建缩略图的视频的 ID。
@@ -149,7 +149,7 @@ ms.locfileid: "52291748"
 
 见解是一组维度（例如，脚本行、人脸、品牌等），其中的每个维度是唯一元素（例如，face1、face2、face3）的列表，每个元素有自身的元数据及其实例（具有其他可选元数据的时间范围）的列表。
 
-人脸可能具有 ID、名称、缩略图、其他元数据及其时态实例的列表（例如：00:00:05 – 00:00:10、00:01:00 - 00:02:30 和 00:41:21 – 00:41:49。）每个时态实例可以包含其他元数据。 例如，人脸的矩形坐标 (20,230,60,60)。
+人脸可能具有 ID、名称、缩略图、其他元数据及其时态实例的列表（例如：00:00:05 - 00:00:10、00:01:00 - 00:02:30 和 00:41:21 - 00:41:49）。每个时态实例可以包含其他元数据。 例如，人脸的矩形坐标 (20,230,60,60)。
 
 |版本|代码版本|
 |---|---|
@@ -553,7 +553,7 @@ instances|此块的时间范围列表。|
 |名称|Description|
 |---|---|
 |CorrespondenceCount|视频中对应关系的数目。|
-|WordCount|每个发言人的单词数。|
+|SpeakerWordCount|每个发言人的单词数。|
 |SpeakerNumberOfFragments|发言人在视频中的片段数量。|
 |SpeakerLongestMonolog|发言人的最长独白。 如果发言人在独白中有沉默，则会将沉默期包含在内。 删除独白开头和结尾的沉默期。| 
 |SpeakerTalkToListenRatio|计算方式为将发言人的独白时间（开头和结尾之间没有沉默期）除以视频总时间。 时间将四舍五入为三位小数。|
@@ -767,8 +767,8 @@ visualContentModeration 块包含视频索引器找到的、可能具有成人�
 |名称|Description|
 |---|---|
 |id|主题 ID。|
-|名称|主题名称，例如：“Pharmaceuticals”。|
-|referenceId|反映主题层次结构的痕迹导航。 例如：“健康和福利 / 医疗和保健 / 药品”。|
+|名称|主题名称，例如：“药品”。|
+|referenceId|反映主题层次结构的痕迹导航。 例如：“健康和福利/医疗和保健/药品”。|
 |confidence|[0,1] 范围内的置信度评分。 评分越高，则置信度越高。|
 |语言|主题中使用的语言。|
 |iptcName|IPTC 媒体代码名称（如果已检测到）。|

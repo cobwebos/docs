@@ -9,17 +9,17 @@ ms.topic: conceptual
 ms.date: 05/25/2017
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: 2e24a138220f350e56b30406f65bb869dd523bad
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: fada29145334a45872aa64b3cc0fe2e859b52568
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53015868"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53632885"
 ---
 # <a name="analyze-flight-delay-data-by-using-apache-hive-in-hdinsight"></a>使用 HDInsight 中的 Apache Hive 分析航班延误数据
 [Apache Hive](https://hive.apache.org/) 提供了通过类似于 SQL 的脚本语言（称为 *[HiveQL][hadoop-hiveql]*）运行 [Apache Hadoop MapReduce](https://hadoop.apache.org/docs/r1.2.1/mapred_tutorial.html) 作业的方法，此方法可用于对大量数据进行汇总、查询和分析。
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > 本文档中的步骤要求使用基于 Windows 的 HDInsight 群集。 Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight 在 Windows 上停用](hdinsight-component-versioning.md#hdinsight-windows-retirement)。 有关适用于基于 Linux 的群集的步骤，请参阅[在 HDInsight (Linux) 中使用 Apache Hive 分析航班延误数据](hdinsight-analyze-flight-delay-data-linux.md)。
 
 Azure HDInsight 的主要优势之一就是隔离数据存储和计算。 HDInsight 将 Azure Blob 存储用于数据存储。 典型的作业包含 3 部分：
@@ -43,8 +43,8 @@ Azure HDInsight 的主要优势之一就是隔离数据存储和计算。 HDInsi
 
 在附录中，你可以找到有关上传航班延误数据、创建/上传 Hive 查询字符串和针对 Sqoop 作业准备 Azure SQL 数据库的说明。
 
-> [!NOTE]
-> 本文档中的步骤特定于基于 Windows 的 HDInsight 群集。 有关适用于基于 Linux 的群集的步骤，请参阅[在 HDInsight (Linux) 中使用 Apache Hive 分析航班延误数据](hdinsight-analyze-flight-delay-data-linux.md)
+> [!NOTE]  
+> 本文档中的步骤特定于基于 Windows 的 HDInsight 群集。 有关适用于基于 Linux 的群集的步骤，请参阅[在 HDInsight (Linux) 中使用 Apache Hive 分析航班延误数据](hdinsight-analyze-flight-delay-data-linux.md)。
 
 ### <a name="prerequisites"></a>先决条件
 开始学习本教程之前，必须做好以下准备：
@@ -52,7 +52,7 @@ Azure HDInsight 的主要优势之一就是隔离数据存储和计算。 HDInsi
 * **一个 Azure 订阅**。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)。
 * **配备 Azure PowerShell 的工作站**。
 
-    > [!IMPORTANT]
+    > [!IMPORTANT]  
     > 使用 Azure Service Manager 管理 HDInsight 资源的 Azure PowerShell 支持**已弃用**，已在 2017 年 1 月 1 日删除。 本文档中的步骤使用的是与 Azure 资源管理器兼容的新 HDInsight cmdlet。
     >
     > 请按照 [安装和配置 Azure PowerShell](/powershell/azureps-cmdlets-docs) 中的步骤安装最新版本的 Azure PowerShell。 如果脚本需要修改后才能使用与 Azure 资源管理器兼容的新 cmdlet，请参阅[迁移到适用于 HDInsight 群集的基于 Azure 资源管理器的开发工具](hdinsight-hadoop-development-using-azure-resource-manager.md)，了解详细信息。
@@ -242,7 +242,7 @@ Hadoop MapReduce 属于批处理。 运行 Hive 作业时，最具成本效益�
 * **使用由 HDInsight 群集用作默认文件系统的同一 Azure 存储帐户。** 由于 HDInsight 群集将具有存储帐户访问密钥，因此，无需进行任何其他更改。
 * **使用与 HDInsight 群集默认文件系统不同的 Azure 存储帐户。** 如果选择了此项，则必须修改[创建 HDInsight 群集和运行 Apache Hive/Sqoop 作业](#runjob)中的 Windows PowerShell 脚本的创建部分，以链接该存储帐户作为额外的存储帐户。 有关说明，请参阅[在 HDInsight 中创建 Apache Hadoop 群集][hdinsight-provision]。 这样，HDInsight 群集就会知道存储帐户的访问密钥。
 
-> [!NOTE]
+> [!NOTE]  
 > 数据文件的 WASB 路径会在 HiveQL 脚本文件中进行硬编码。 必须相应地更新该路径。
 
 **下载航班数据**
@@ -351,7 +351,7 @@ Hadoop MapReduce 属于批处理。 运行 Hive 作业时，最具成本效益�
 
 路径 tutorials/flightdelay/data 是你在上传文件时创建的虚拟文件夹。 验证是否有 12 个文件，每个月对应一个文件。
 
-> [!NOTE]
+> [!NOTE]  
 > 必须更新 Hive 查询，以从新位置读取。
 >
 > 必须配置容器访问权限，使其成为公用，或者将存储帐户绑定到 HDInsight 群集。 否则，Hive 查询字符串将无法访问数据文件。
@@ -615,7 +615,7 @@ HiveQL 脚本将执行以下操作：
     #region - Constants and variables
 
     # IP address REST service used for retrieving external IP address and creating firewall rules
-    [String]$ipAddressRestService = "http://bot.whatismyipaddress.com"
+    [String]$ipAddressRestService = "https://bot.whatismyipaddress.com"
     [String]$fireWallRuleName = "FlightDelay"
 
     # SQL database variables
@@ -699,12 +699,12 @@ HiveQL 脚本将执行以下操作：
     Write-host "`nEnd of the PowerShell script" -ForegroundColor Green
     ```
 
-   > [!NOTE]
-   > 该脚本使用具象状态传输 (REST) 服务 http://bot.whatismyipaddress.com 来检索外部 IP 地址。 IP 地址用于创建 SQL 数据库服务器的防火墙规则。
+   > [!NOTE]  
+   > 该脚本使用具象状态传输 (REST) 服务 https://bot.whatismyipaddress.com 来检索外部 IP 地址。 IP 地址用于创建 SQL 数据库服务器的防火墙规则。
 
     该脚本中使用的某些变量：
 
-   * **$ipAddressRestService** - 默认值为 http://bot.whatismyipaddress.com。 这是用来获取外部 IP 地址的公共 IP 地址 REST 服务。 如果需要，可以使用其他服务。 使用此服务检索的外部 IP 地址用于创建 Azure SQL 数据库服务器的防火墙规则，使你能够从工作站访问数据库（通过 Windows PowerShell 脚本）。
+   * **$ipAddressRestService** - 默认值为 https://bot.whatismyipaddress.com。 这是用来获取外部 IP 地址的公共 IP 地址 REST 服务。 如果需要，可以使用其他服务。 使用此服务检索的外部 IP 地址用于创建 Azure SQL 数据库服务器的防火墙规则，使你能够从工作站访问数据库（通过 Windows PowerShell 脚本）。
    * **$fireWallRuleName** - 这是 Azure SQL 数据库服务器的防火墙规则名称。 默认名称为 <u>FlightDelay</u>。 如果需要，可以将它重命名。
    * **$sqlDatabaseMaxSizeGB** - 只有在创建新的 Azure SQL 数据库服务器时才会使用此值。 默认值为 10GB。 10GB 对于本教程来说已足够。
    * **$sqlDatabaseName** - 只有在创建新的 Azure SQL 数据库时才会使用此值。 默认值为 HDISqoop。 如果将它重命名，则必须相应地更新 Sqoop Windows PowerShell 脚本。
@@ -725,7 +725,7 @@ HiveQL 脚本将执行以下操作：
 [azure-member-offers]: https://azure.microsoft.com/pricing/member-offers/
 [azure-free-trial]: https://azure.microsoft.com/pricing/free-trial/
 
-[rita-website]: http://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236&DB_Short_Name=On-Time
+[rita-website]: https://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236&DB_Short_Name=On-Time
 [powershell-install-configure]: /powershell/azureps-cmdlets-docs
 
 [hdinsight-use-oozie]: hdinsight-use-oozie.md
@@ -739,9 +739,9 @@ HiveQL 脚本将执行以下操作：
 [hdinsight-develop-mapreduce]:hadoop/apache-hadoop-develop-deploy-java-mapreduce-linux.md
 
 [hadoop-hiveql]: https://cwiki.apache.org/confluence/display/Hive/LanguageManual+DDL
-[hadoop-shell-commands]: http://hadoop.apache.org/docs/r0.18.3/hdfs_shell.html
+[hadoop-shell-commands]: https://hadoop.apache.org/docs/r0.18.3/hdfs_shell.html
 
-[technetwiki-hive-error]: http://social.technet.microsoft.com/wiki/contents/articles/23047.hdinsight-hive-error-unable-to-rename.aspx
+[technetwiki-hive-error]: https://social.technet.microsoft.com/wiki/contents/articles/23047.hdinsight-hive-error-unable-to-rename.aspx
 
 [image-hdi-flightdelays-avgdelays-dataset]: ./media/hdinsight-analyze-flight-delay-data/HDI.FlightDelays.AvgDelays.DataSet.png
 [img-hdi-flightdelays-run-hive-job-output]: ./media/hdinsight-analyze-flight-delay-data/HDI.FlightDelays.RunHiveJob.Output.png

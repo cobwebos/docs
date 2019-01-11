@@ -14,12 +14,12 @@ ms.tgt_pltfrm: azure-cache-for-redis
 ms.workload: tbd
 ms.date: 05/30/2017
 ms.author: wesmc
-ms.openlocfilehash: c3c1aa9abc6a7ba97bf7c95aa1c670c7239df3ab
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 27c8fce8c8eac936708dbac72ca60a1c0af286ea
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53021385"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54106129"
 ---
 # <a name="migrate-from-managed-cache-service-to-azure-cache-for-redis"></a>从托管缓存服务迁移到 Azure Redis 缓存
 在将使用 Azure 托管缓存服务的应用程序迁移到 Azure Redis 缓存时，只需对应用程序略做更改，具体情况取决于缓存应用程序所使用的托管缓存服务功能。 API 虽非完全相同，但却极为类似，而且使用托管缓存服务来访问缓存的多数现有代码，只需略做更改即可重复使用。 本文介绍了为迁移托管缓存服务应用程序以使用 Azure Redis 缓存，如何进行必要的配置和应用程序更改；还介绍了如何使用 Azure Redis 缓存的某些功能实现托管缓存服务缓存功能。
@@ -47,13 +47,13 @@ Azure 托管缓存服务与 Azure Redis 缓存类似，但两者在实现某些�
 
 | 托管缓存服务功能 | 托管缓存服务支持 | Azure Redis 缓存支持 |
 | --- | --- | --- |
-| 命名缓存 |系统会配置默认缓存，而在标准和高级缓存产品/服务中，还可以根据需要额外配置多达 9 个命名缓存。 |Azure Redis 缓存具有可用于对命名缓存实现类似功能的、数目可配置的数据库（默认值为 16 个）。 有关详细信息，请参阅[什么是 Redis 数据库？](cache-faq.md#what-are-redis-databases)和[默认 Redis 服务器配置](cache-configure.md#default-redis-server-configuration)。 |
+| 命名缓存 |系统会配置默认缓存，而在标准和高级缓存产品/服务中，还可以根据需要额外配置多达 9 个命名缓存。 |Azure Redis 缓存具有可配置数量的数据库（默认值为 16 个），可用于实现与命名缓存类似的功能。 有关详细信息，请参阅[什么是 Redis 数据库？](cache-faq.md#what-are-redis-databases)和[默认 Redis 服务器配置](cache-configure.md#default-redis-server-configuration)。 |
 | 高可用性 |在标准和高级缓存产品/服务中，为缓存中的项提供高可用性。 如果因为故障而导致项丢失，缓存中的项仍有备份副本可供使用。 辅助缓存的写入操作以同步方式进行。 |标准和高级缓存产品/服务提供高可用性，它们具有双节点的主要/副本配置（高级缓存的每个分片都有主要/副本对）。 副本的写入操作以异步方式进行。 有关详细信息，请参阅 [Azure Redis 缓存定价](https://azure.microsoft.com/pricing/details/cache/)。 |
 | 通知 |当命名缓存上发生各种缓存操作时，允许客户端接收异步通知。 |客户端应用程序可以使用 Redis pub/sub 或[密钥空间通知](cache-configure.md#keyspace-notifications-advanced-settings)来实现与通知类似的功能。 |
 | 本地缓存 |在客户端本地存储缓存对象的副本，以实现超快访问。 |客户端应用程序需使用字典或类似的数据结构来实现此功能。 |
 | 逐出策略 |无或 LRU。 默认策略是 LRU。 |Azure Redis 缓存支持以下逐出策略：volatile-lru、allkeys-lru、volatile-random、allkeys-random、volatile-ttl、noeviction。 默认策略是 volatile-lru。 有关详细信息，请参阅[默认 Redis 服务器配置](cache-configure.md#default-redis-server-configuration)。 |
 | 过期策略 |默认过期策略为“绝对”，默认过期间隔为 10 分钟。 另外也提供“滑动”和“永不”策略。 |默认情况下，缓存中的项不会过期，但可以使用缓存集重载，对每次写入配置过期时间。 |
-| 区域和标记 |区域是缓存项的子组。 区域也支持使用称为标记的额外描述性字符串为缓存项添加批注。 区域支持对该区域内的任何标记项执行搜索操作的能力。 区域内的所有项全部位于缓存群集的单个节点内。 |Azure Redis 缓存由单个节点组成（除非已启用 Redis 群集），因此托管缓存服务区域的概念不适用。 Redis 支持在检索键时执行搜索和通配符操作，让描述性标记可以嵌入键名称内并在后面用于检索项。 有关使用 Redis 实现标记解决方案的示例，请参阅[使用 Redis 实现缓存标记](http://stackify.com/implementing-cache-tagging-redis/)。 |
+| 区域和标记 |区域是缓存项的子组。 区域也支持使用称为标记的额外描述性字符串为缓存项添加批注。 区域支持对该区域内的任何标记项执行搜索操作的能力。 区域内的所有项全部位于缓存群集的单个节点内。 |Azure Redis 缓存由单个节点组成（除非已启用 Redis 群集），因此托管缓存服务区域的概念不适用。 Redis 支持在检索键时执行搜索和通配符操作，让描述性标记可以嵌入键名称内并在后面用于检索项。 有关使用 Redis 实现标记解决方案的示例，请参阅[使用 Redis 实现缓存标记](https://stackify.com/implementing-cache-tagging-redis/)。 |
 | 序列化 |托管缓存支持 NetDataContractSerializer 和 BinaryFormatter，也支持使用自定义序列化程序。 默认值为 NetDataContractSerializer。 |由客户端应用程序负责先将 .NET 对象序列化，再将它们放入缓存中，至于要选择使用哪个序列化程序则由客户端应用程序开发人员决定。 有关详细信息和示例代码，请参阅[处理缓存中的 .NET 对象](cache-dotnet-how-to-use-azure-redis-cache.md#work-with-net-objects-in-the-cache)。 |
 | 缓存模拟器 |托管缓存提供本地缓存模拟器。 |Azure Redis 缓存没有模拟器，但可以通过[在本地运行 redis-server.exe 的 MSOpenTech 生成](cache-faq.md#cache-emulator)来提供模拟器体验。 |
 

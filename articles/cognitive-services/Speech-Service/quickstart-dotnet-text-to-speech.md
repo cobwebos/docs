@@ -8,14 +8,14 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: conceptual
-ms.date: 11/28/2018
+ms.date: 12/13/2018
 ms.author: erhopf
-ms.openlocfilehash: 3a0304a69cdff15cddf325be8abe336a42ea4fc1
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 6d463ca73fb533b8a44c2019a478f2df0162cb23
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53089864"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53791439"
 ---
 # <a name="quickstart-convert-text-to-speech-using-net-core"></a>快速入门：使用 .NET Core 将文本转换为语音
 
@@ -27,7 +27,7 @@ ms.locfileid: "53089864"
 
 本快速入门需要：
 
-* [.NET SDK](https://www.microsoft.com/net/learn/dotnet/hello-world-tutorial)
+* [.NET Core SDK](https://dotnet.microsoft.com/download)
 * [Visual Studio](https://visualstudio.microsoft.com/downloads/)、[Visual Studio Code](https://code.visualstudio.com/download) 或你喜欢用的文本编辑器
 * 语音服务的 Azure 订阅密钥
 
@@ -109,7 +109,7 @@ public class Authentication
 ```
 
 > [!NOTE]
-> 有关身份验证的详细信息，请参阅[如何获取访问令牌](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis#how-to-get-an-access-token)。
+> 有关身份验证的详细信息，请参阅[使用访问令牌进行身份验证](https://docs.microsoft.com/azure/cognitive-services/authentication#authenticate-with-an-authentication-token)。
 
 ## <a name="get-an-access-token-and-set-the-host-url"></a>获取访问令牌并设置主机 URL
 
@@ -162,7 +162,7 @@ string body = @"<speak version='1.0' xmlns='http://www.w3.org/2001/10/synthesis'
 ```
 
 > [!NOTE]
-> 此示例使用 `ZiraRUS` 语音字体。 如需 Microsoft 提供的语音/语言的完整列表，请参阅[语言支持](https://review.docs.microsoft.com/azure/cognitive-services/speech-service/language-support)。 若要为品牌创建唯一且可识别的语音，请参阅[创建自定义语音字体](https://review.docs.microsoft.com/azure/cognitive-services/speech-service/how-to-customize-voice-font)。
+> 此示例使用 `ZiraRUS` 语音字体。 如需 Microsoft 提供的语音/语言的完整列表，请参阅[语言支持](language-support.md)。 若要为品牌创建唯一且可识别的语音，请参阅[创建自定义语音字体](how-to-customize-voice-font.md)。
 
 ## <a name="instantiate-the-client-make-a-request-and-save-synthesized-audio-to-a-file"></a>实例化客户端，发出请求，然后将合成的音频保存到文件
 

@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 5e2b31671a8f08bae1cba66e05d6ae72f960cf9e
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: f7225fece81672e539858567039e1ff086d97c2c
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54050925"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54197719"
 documentType: LandingData
 title: “Azure 上的 Ansible”文档
 metadata:
@@ -53,6 +53,9 @@ sections:
     - html: <a href="./ansible-deploy-app-vmss">将应用程序部署到 Azure 中的虚拟机规模集。</a>
     - html: <a href="./ansible-create-configure-aks">创建和管理 Azure Kubernetes 服务群集。</a>
     - html: <a href="./ansible-create-configure-application-gateway">使用 Azure 应用程序网关管理 Web 流量。</a>
+    - html: <a href="./ansible-auto-scale-vmss">使用 Ansible 在 Azure 中自动缩放虚拟机规模集。</a>
+    - html: <a href="./ansible-scale-azure-web-apps">使用 Ansible 缩放 Azure 应用服务 Web 应用。</a>
+    - html: <a href="./ansible-create-configure-route-table">使用 Ansible 创建、更改或删除 Azure 路由表。</a>
 - title: 引用
   items:
   - type: list

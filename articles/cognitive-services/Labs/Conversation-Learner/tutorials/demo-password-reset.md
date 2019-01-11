@@ -10,21 +10,19 @@ ms.component: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: bd0bcd79bb21dc3973b34086f6dad21b47a95c2f
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 409647da146a2844384204cb03de5028d45e5763
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51240862"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53792384"
 ---
 # <a name="demo-password-reset"></a>演示：密码重置
-此演示展示了一个简单的技术支持机器人，它可以帮助进行密码重置。 
-
-它展示了对话学习器如何学习重要的对话框流、多轮序列，包括域外类。 此演示未使用任何代码或实体。
+本教程展示了一个简单的技术支持机器人，它可以帮助进行密码重置（由 Conversation Learner 提供的功能）。 此机器人的模型可以学习重要的对话流和多轮序列，包括域外类。 此任务可以在没有代码或实体的情况下完成。
 
 ## <a name="video"></a>视频
 
-[![演示密码预览](https://aka.ms/cl-demo-password-preview)](https://aka.ms/blis-demo-password)
+[![演示密码预览](https://aka.ms/cl_Tutorial_v3_DemoPassword_Preview)](https://aka.ms/cl_Tutorial_v3_DemoPassword)
 
 ## <a name="requirements"></a>要求
 本教程要求密码重置机器人正在运行
@@ -37,41 +35,48 @@ ms.locfileid: "51240862"
 
 ### <a name="actions"></a>操作
 
-我们已创建了操作集，用户在其中查找有关其密码的帮助，包括解决方案。
+此模型包含一组操作，旨在帮助用户解决常见的密码问题。
 
 ![](../media/tutorial_pw_reset_actions.PNG)
 
 ### <a name="training-dialogs"></a>训练对话
 
-有大量的训练对话。 还有针对域外类的演示 -- 例如，诸如“驾驶路线”之类的用户请求就是域外的；已向机器人提供了一些域外请求的示例，并且机器人能够以“我能帮忙做这个”做出响应。
+此模型还包含多个训练对话，包括一些演示域外类训练的对话。 例如，可能请求行车路线之类内容的用户。 示例机器人已在一些训练框中进行演示目的的训练，会直接使用“无法提供这方面的帮助”进行响应。 现有训练对话的列表位于左侧面板中的“训练对话”下。
 
 ![](../media/tutorial_pw_reset_entities.PNG)
 
-例如，让我们尝试一个教学会话。
+1. 在左侧面板上单击“训练对话”，然后单击“新建训练对话”按钮。
+2. 在聊天面板中显示“键入你的消息...”的位置，键入“我丢失了密码。”
+3. 单击“对操作打分”按钮。
+4. 选择响应“该密码是本地帐户的还是 Microsoft 帐户的?”
+5. 在聊天面板中显示“键入你的消息...”的位置，键入“请使用本地帐户”
+6. 单击“对操作打分”按钮。
+7. 选择响应“你使用哪个版本的 Windows?”
+8. 在聊天面板中显示“键入你的消息...”的位置，键入“windows xp”
+9. 单击“对操作打分”按钮。
+10. 单击“+操作”按钮。
+11. 在“机器人的响应...”字段中，键入“解决方案:如何在 Windows XP 上重置密码。”
+12. 单击“创建”按钮。
 
-1. 单击 Train Dialogs，然后单击 New Train Dialog。
-1. 输入“I lost my password”。
-2. 单击“Score Action”。
-3. 单击以选择“Is that for your local account or Microsoft account?”
-4. 输入“Local account”。
-5. 单击“Score Actions”。
-3. 单击以选择“Which version of Windows do you have?”
-4. 输入“Windows 8”。
-5. 单击“Score Actions”。
-6. 选择“SOLUTION: how to reset password on Windows 8”。
-4. 单击“Done Teaching”。
+### <a name="training-dialogs-for-out-of-domain-scenarios"></a>域外场景的训练对话
 
-让我们试验一下机器人如何学习域外类。
-
-1. 单击 Train Dialogs，然后单击 New Train Dialog。
-1. 输入“web search”。
-    - 这是域外类的一个示例。 
-2. 单击“Score Action”。
-3. 单击以选择“Sorry, I can't help with that”。
-    - 注意，此选项的得分当前较低。 但是，在进行更多一些教学后，得分将变高。
-4. 单击“Done Teaching”。
-
-现在，你已了解了如何创建一个基本的技术支持演示，以及它如何进行学习来提供解决方案并处理不符合示例的查询。
+1. 在左侧面板上单击“训练对话”，然后单击现有的“玩具商店”训练对话。
+2. 在聊天面板中单击“玩具商店”话语。
+3. 在“添加备用输入...”字段中键入“Web 搜索”，然后按 Enter。
+4. 在“添加备用输入...”字段中键入“航班预订”，然后按 Enter。
+5. 单击“保存更改”按钮。
+6. 单击“保存编辑”按钮。
+7. 在左侧面板上单击“记录对话”，然后单击“新建记录对话”按钮。
+8. 在聊天面板中显示“键入你的消息...”的位置，键入“我找不到密码”
+9. 在聊天面板中显示“键入你的消息...”的位置，键入“Microsoft 帐户”
+10. 在聊天面板中显示“键入你的消息...”的位置，键入“谢谢”
+11. 单击“完成测试”按钮。
+12. 在网格视图中单击“我找不到密码”记录对话。
+13. 在聊天面板中单击未正确呈现的“解决方案:如何重置 Microsoft 帐户密码”响应。
+14. 单击“+操作”按钮。
+15. 在“机器人的响应...”字段中，键入“欢迎你”
+16. 单击“创建”按钮。
+17. 单击“另存为训练对话”按钮。
 
 ## <a name="next-steps"></a>后续步骤
 

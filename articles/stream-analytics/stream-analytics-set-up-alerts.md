@@ -4,17 +4,17 @@ description: 本文介绍如何使用 Azure 门户为 Azure 流分析作业设�
 services: stream-analytics
 author: jseb225
 ms.author: jeanb
-manager: kfile
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 06/26/2017
-ms.openlocfilehash: 4c676ab3039a02a4fda27ab00312133e5de8077a
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.date: 12/07/2018
+ms.custom: seodec18
+ms.openlocfilehash: 727747d84d0db32c73fc1a200bcea7e5c149d24b
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47090960"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53554905"
 ---
 # <a name="set-up-alerts-for-azure-stream-analytics-jobs"></a>为 Azure 流分析作业设置警报
 可以设置警报，以便在指标达到指定的条件时触发警报。 例如，可为如下条件设置警报：
@@ -30,7 +30,7 @@ ms.locfileid: "47090960"
 
 3. 在“指标”边栏选项卡中，单击“添加警报”命令。
 
-      ![Azure 门户设置](./media/stream-analytics-set-up-alerts/06-stream-analytics-set-up-alerts.png)  
+      ![Azure 门户流分析警报设置](./media/stream-analytics-set-up-alerts/06-stream-analytics-set-up-alerts.png)  
 
 4. 输入名称和描述。
 

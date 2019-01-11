@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/18/2018
 ms.author: barclayn
-ms.openlocfilehash: 1bcd9dfe2d7a846dd040944509be916c1964ba48
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 4796dc50447b94b01d9bb4625ca9a69a73850fcd
+ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50420381"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53994396"
 ---
 # <a name="azure-data-encryption-at-rest"></a>Azure 静态数据加密
 
@@ -104,7 +104,7 @@ Microsoft 致力于提供跨云服务的静态加密选项，可让客户控制�
 - 客户在本地（或其他安全存储中）管理和存储密钥。 Azure 服务无法使用密钥
 - 精简云功能
 
-Azure 中支持的加密模型分为两个主要的组：“客户端加密”和“服务器端加密”，如前所述。 Azure 服务始终建议使用独立于所用静态加密模型的安全传输（例如 TLS 或 HTTPS）。 因此，传输过程中的加密应由传输协议来处理，不应成为决定要使用的静态加密模型的主要因素。
+Azure 中支持的加密模型分为两大类：如前所述，“客户端加密”和“服务器端加密”。 Azure 服务始终建议使用独立于所用静态加密模型的安全传输（例如 TLS 或 HTTPS）。 因此，传输过程中的加密应由传输协议来处理，不应成为决定要使用的静态加密模型的主要因素。
 
 ### <a name="client-encryption-model"></a>客户端加密模型
 
@@ -262,6 +262,7 @@ Azure SQL 数据库目前支持将静态加密用于 Microsoft 托管的服务�
 | 磁盘 (IaaS)                      | -                  | 是，RSA 2048 位  | -                  |
 | SQL Server (IaaS)                | 是                | 是，RSA 2048 位  | 是                |
 | Azure SQL（数据库/数据仓库） | 是                | 是，RSA 2048 位  | 是                |
+| Azure SQL（数据库托管实例） | 是                | 预览，RSA 2048 位  | 是                |
 | Azure 存储（块/页 Blob） | 是                | 是，RSA 2048 位  | 是                |
 | Azure 存储（文件）            | 是                | 是，RSA 2048 位  | -                  |
 | Azure 存储（表、队列）   | 是                | -                  | 是                |

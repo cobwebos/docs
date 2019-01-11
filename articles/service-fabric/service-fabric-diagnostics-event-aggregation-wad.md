@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/03/2018
 ms.author: srrengar
-ms.openlocfilehash: d670b90404d441876727336fc50a848965082de5
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: baa86fe70c394aaea31a6fa775073bb26d062c49
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50232488"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "54002393"
 ---
 # <a name="event-aggregation-and-collection-using-windows-azure-diagnostics"></a>使用 Microsoft Azure 诊断的事件聚合和集合
 > [!div class="op_single_selector"]
@@ -65,7 +65,7 @@ Service Fabric 提供了一些[现成的日志记录通道](service-fabric-diagn
 ## <a name="deploy-the-diagnostics-extension-through-azure-resource-manager"></a>通过 Azure 资源管理器部署诊断扩展
 
 ### <a name="create-a-cluster-with-the-diagnostics-extension"></a>创建包含诊断扩展的群集
-若要使用资源管理器创建群集，需要在创建群集之前，将诊断配置 JSON 添加到整个资源管理器模板。 我们会在 Resource Manager 模板示例中提供包含五个 VM 的群集 Resource Manager 模板，并在演示 Resource Manager 模板示例的过程中添加诊断配置。 可以在 Azure 示例库中的以下位置找到该示例：[包含诊断 Resource Manager 模板示例的五节点群集](https://azure.microsoft.com/resources/templates/service-fabric-secure-cluster-5-node-1-nodetype/)。
+若要使用资源管理器创建群集，需要将诊断配置 JSON 添加到整个资源管理器模板。 我们会在 Resource Manager 模板示例中提供包含五个 VM 的群集 Resource Manager 模板，并在演示 Resource Manager 模板示例的过程中添加诊断配置。 可以在 Azure 示例库中的此位置查看它：[具有诊断资源管理器模板示例的五节点群集](https://azure.microsoft.com/resources/templates/service-fabric-secure-cluster-5-node-1-nodetype/)。
 
 若要查看 Resource Manager 模板中的诊断设置，请打开 azuredeploy.json 文件并搜索 **IaaSDiagnostics**。 若要使用此模板创建群集，请在上面的链接中选择“**部署到 Azure**”按钮。
 
@@ -196,7 +196,7 @@ Service Fabric 提供了一些[现成的日志记录通道](service-fabric-diagn
 ## <a name="log-collection-configurations"></a>日志收集配置
 其他通道的日志也可供收集，下面是你可以在 Azure 中运行的群集的模板中进行的一些最常见配置。
 
-* 操作通道 - 基本：默认情况下启用，由 Service Fabric 和群集执行的高级操作，包括发生的节点事件、所部署新应用程序的事件或升级回退事件等。有关事件的列表，请参阅[操作通道事件](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-event-generation-operational)。
+* 操作通道 - 基本：默认情况下已启用由 Service Fabric 和群集执行的高级操作，包括出现节点事件、部署新应用程序或升级回滚等。有关事件的列表，请参阅[操作通道事件](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-event-generation-operational)。
   
 ```json
       scheduledTransferKeywordFilter: "4611686018427387904"
@@ -213,7 +213,7 @@ Service Fabric 提供了一些[现成的日志记录通道](service-fabric-diagn
       scheduledTransferKeywordFilter: "4611686018427387928"
   ```
 
-* 数据和消息通道 - 详细：包含群集和详细操作通道中的数据和消息提供的所有非关键日志。 有关对所有反向代理事件的详细故障排除，请参阅[反向代理诊断指南](service-fabric-reverse-proxy-diagnostics.md)。  若要在 Visual Studio 的诊断事件查看器中查看这些事件，请将“Microsoft-ServiceFabric:4:0x4000000000000020”添加到 ETW 提供程序列表。
+* 数据和消息通道 - 详细：包含群集和详细操作通道中的数据和消息提供的所有非关键日志的详细通道。 有关对所有反向代理事件的详细故障排除，请参阅[反向代理诊断指南](service-fabric-reverse-proxy-diagnostics.md)。  若要在 Visual Studio 的诊断事件查看器中查看这些事件，请将“Microsoft-ServiceFabric:4:0x4000000000000020”添加到 ETW 提供程序列表。
 
 ```json
       scheduledTransferKeywordFilter: "4611686018427387944"

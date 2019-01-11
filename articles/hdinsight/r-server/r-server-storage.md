@@ -9,33 +9,33 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.openlocfilehash: 578479d43279dc1edb9edd24fd57d6841784166a
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 4aae44745981951fa61836fe52d8d6b799c6cadf
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52498134"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "54001509"
 ---
 # <a name="azure-storage-solutions-for-ml-services-on-azure-hdinsight"></a>适用于 ML Services on HDInsight 的 Azure 存储解决方案
 
 ML Services on HDInsight 可使用各种存储解决方案来保存数据、代码或包含分析结果的对象。 这包括以下选项：
 
 - [Azure Blob](https://azure.microsoft.com/services/storage/blobs/)
-- [Azure Data Lake 存储](https://azure.microsoft.com/services/data-lake-store/)
+- [Azure Data Lake 存储](https://azure.microsoft.com/services/storage/data-lake-storage/)
 - [Azure 文件存储](https://azure.microsoft.com/services/storage/files/)
 
 还可以使用 HDInsight 群集访问多个 Azure 存储帐户或容器。 Azure 文件存储是可在边缘节点上使用的一个方便的数据存储选项，通过它可将 Azure 存储文件共享装载到其他位置，例如 Linux 文件系统。 任何具有受支持操作系统（如 Windows 或 Linux）的系统，都可以装载和使用 Azure 文件共享。 
 
-在 HDInsight 中创建 Apache Hadoop 群集时，将指定 Azure 存储帐户或 Data Lake Store。 该帐户中的某个特定存储容器可为你所创建的群集保存文件系统（例如 Hadoop 分布式文件系统）。 有关详细信息及指南，请参阅：
+在 HDInsight 中创建 Apache Hadoop 群集时，将指定 **Azure 存储**帐户或 **Data Lake Storage**。 该帐户中的某个特定存储容器可为你所创建的群集保存文件系统（例如 Hadoop 分布式文件系统）。 有关详细信息及指南，请参阅：
 
 - [配合使用 Azure 存储与 HDInsight ](../hdinsight-hadoop-use-blob-storage.md)
-- [配合使用 Data Lake Store 和 Azure HDInsight 群集](../hdinsight-hadoop-use-data-lake-store.md)
+- [配合使用 Data Lake Storage 和 Azure HDInsight 群集](../hdinsight-hadoop-use-data-lake-store.md)
 
 ## <a name="use-azure-blob-storage-accounts-with-ml-services-cluster"></a>将 Azure Blob 存储帐户用于 ML Services 群集
 
 如果在创建 ML Services 群集时指定了多个存储帐户，以下说明介绍如何使用辅助帐户在 ML Services 群集上访问数据和执行操作。 假定为以下存储帐户和容器：storage1 和名为 container1 的一个默认容器以及包含 **container2** 的 storage2。
 
-> [!WARNING]
+> [!WARNING]  
 > 出于性能目的，HDInsight 群集会在与你指定的主存储帐户相同的数据中心内创建。 不支持在 HDInsight 群集之外的其他位置使用存储帐户。
 
 ### <a name="use-the-default-storage-with-ml-services-on-hdinsight"></a>将默认存储用于 ML Services on HDInsight
@@ -102,29 +102,29 @@ ML Services on HDInsight 可使用各种存储解决方案来保存数据、代�
     hadoop fs -mkdir wasb://container2@storage2.blob.core.windows.net/user/RevoShare
     hadoop fs -mkdir wasb://container2@storage2.blob.core.windows.net/user/RevoShare/<RDP username>
 
-## <a name="use-an-azure-data-lake-store-with-ml-services-cluster"></a>将 Azure Data Lake Store 与 ML Services 群集配合使用 
+## <a name="use-azure-data-lake-storage-with-ml-services-cluster"></a>将 Azure Data Lake Storage 与 ML Services 群集配合使用 
 
-若要将 Data Lake Store 与 HDInsight 群集配合使用，必须允许群集访问你要使用的每个 Azure Data Lake Store。 有关如何使用 Azure 门户创建 HDInsight 群集，并将 Azure Data Lake Store 帐户作为默认存储或附加存储的说明，请参阅[使用 Azure 门户创建带 Data Lake Store 的 HDInsight 群集](../../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md)。
+若要将 Data Lake Storage 与 HDInsight 群集配合使用，必须允许群集访问你要使用的每个 Azure Data Lake Storage。 有关如何使用 Azure 门户创建 HDInsight 群集，并将 Azure Data Lake Storage 帐户作为默认存储或附加存储的说明，请参阅[使用 Azure 门户创建带 Data Lake Storage 的 HDInsight 群集](../../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md)。
 
 在 R 脚本中使用该存储的方式与使用辅助 Azure 存储帐户的方式（如上一过程中所述）非常类似。
 
-### <a name="add-cluster-access-to-your-azure-data-lake-stores"></a>为群集添加 Azure Data Lake Store 访问权限
-可以使用与 HDInsight 群集关联的 Azure Active Directory (Azure AD) 服务主体来访问 Data Lake Store。
+### <a name="add-cluster-access-to-your-azure-data-lake-storage"></a>为群集添加 Azure Data Lake Storage 访问权限
+可以使用与 HDInsight 群集关联的 Azure Active Directory (Azure AD) 服务主体来访问 Data Lake Storage。
 
 1. 创建 HDInsight 群集时，请在“数据源”选项卡中选择“群集 AAD 标识”。
 
 2. 在“群集 AAD 标识”对话框中的“选择 AD 服务主体”下面，选择“新建”。
 
-为服务主体命名并创建密码后，单击“管理 ADLS 访问”将该服务主体与 Data Lake Store 相关联。
+为服务主体命名并创建密码后，单击“管理 ADLS 访问”将该服务主体与 Data Lake Storage 相关联。
 
-创建群集后，还可向一个或多个 Data Lake store 帐户添加群集访问权限。 打开 Data Lake store 的 Azure 门户条目，转至“数据资源管理器”>“访问权限”>“添加”。 
+创建群集后，还可向一个或多个 Data Lake Storage 帐户添加群集访问权限。 打开 Data Lake Storage 的 Azure 门户条目，转至“数据资源管理器”>“访问权限”>“添加”。 
 
-### <a name="how-to-access-the-data-lake-store-from-ml-services-on-hdinsight"></a>如何从 ML Services on HDInsight 访问 Data Lake Store
+### <a name="how-to-access-data-lake-storage-from-ml-services-on-hdinsight"></a>如何从 ML Services on HDInsight 访问 Data Lake Storage
 
-获得 Data Lake Store 访问权限后，便可以在 HDInsight 上的 ML Services 群集中使用该存储，其使用方式与使用辅助 Azure 存储帐户类似。 唯一的差别在于，前缀 **wasb://** 需更改为 **adl://**，如下所示：
+获得 Data Lake Storage 访问权限后，便可以在 HDInsight 上的 ML Services 群集中使用该存储，其使用方式与使用辅助 Azure 存储帐户类似。 唯一的差别在于，前缀 **wasb://** 需更改为 **adl://**，如下所示：
 
 
-    # Point to the ADL store (e.g. ADLtest)
+    # Point to the ADL Storage (e.g. ADLtest)
     myNameNode <- "adl://rkadl1.azuredatalakestore.net"
     myPort <- 0
 
@@ -143,7 +143,7 @@ ML Services on HDInsight 可使用各种存储解决方案来保存数据、代�
     # Specify the input file in HDFS to analyze
     inputFile <-file.path(bigDataDirRoot,"mysamplefile.csv")
 
-以下命令用于为 Data Lake Store 帐户配置 RevoShare 目录，并添加前一示例中的示例 .csv 文件：
+以下命令用于结合 RevoShare 目录配置 Data Lake Storage 帐户，并添加上述示例所述的示例 .csv 文件：
 
 
     hadoop fs -mkdir adl://rkadl1.azuredatalakestore.net/user

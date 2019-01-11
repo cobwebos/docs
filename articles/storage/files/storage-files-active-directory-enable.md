@@ -5,19 +5,21 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 10/15/2018
+ms.date: 01/02/2019
 ms.author: tamram
-ms.openlocfilehash: c898a206322bbc6acb73d582fcb08c8bbba274d0
-ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
+ms.openlocfilehash: deb91e1b881afe59d47f677fbee1c307da51f4e5
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2018
-ms.locfileid: "52291430"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54062207"
 ---
 # <a name="enable-azure-active-directory-authentication-over-smb-for-azure-files-preview"></a>通过 SMB 为 Azure 文件启用 Azure Active Directory 身份验证（预览）
 [!INCLUDE [storage-files-aad-auth-include](../../../includes/storage-files-aad-auth-include.md)]
 
 有关通过 SMB 为 Azure 文件启用 Azure AD 身份验证的概述，请参阅[通过 SMB 为 Azure 文件启用 Azure Active Directory身份验证（预览）概述](storage-files-active-directory-overview.md)。
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="overview-of-the-workflow"></a>工作流概述
 通过 SMB 为 Azure 文件启用 Azure AD 之前，请确认已正确配置 Azure AD 和 Azure 存储环境。 建议逐步完成[先决条件](#prerequisites)，确保已执行所有必需步骤。 
@@ -41,7 +43,7 @@ ms.locfileid: "52291430"
 
     可以使用新的或现有的租户进行通过 SMB 的 Azure AD 身份验证。 要访问的租户和文件共享必须与同一订阅相关联。
 
-    若要创建一个新的 Azure AD 租户，可以[添加 Azure AD 租户和 Azure AD 订阅](https://docs.microsoft.com/windows/client-management/mdm/add-an-azure-ad-tenant-and-azure-ad-subscription)。 如果已有一个 Azure AD 租户，但想要使用 Azure 文件创建新租户进行使用，请参阅[创建 Azure Active Directory 租户](https://docs.microsoft.com/rest/api/datacatalog/create-an-azure-active-directory-tenant)。
+    若要创建一个新的 Azure AD 租户，可以[添加 Azure AD 租户和 Azure AD 订阅](https://docs.microsoft.com/windows/client-management/mdm/add-an-azure-ad-tenant-and-azure-ad-subscription)。 如果已有一个 Azure AD 租户，但想要创建新租户以便与 Azure 文件一同使用，请参阅[创建 Azure Active Directory 租户](https://docs.microsoft.com/rest/api/datacatalog/create-an-azure-active-directory-tenant)。
 
 2.  **启用 Azure AD 租户上的 Azure AD 域服务。**
 
@@ -59,9 +61,6 @@ ms.locfileid: "52291430"
 4.  **选择或创建 Azure 文件共享。**
 
     选择与 Azure AD 租户相同订阅关联的新的或现有文件共享。 有关创建新的文件共享的信息，请参阅[在 Azure 文件中创建文件共享](storage-how-to-create-file-share.md)。 
-
-    必须将 Azure AD 租户部署到支持通过 SMB 预览 Azure AD 的区域。 预览版适用于除以下区域之外的所有其他公共区域：美国西部、美国西部 2、美国中南部、美国东部、美国东部 2、美国中部、美国中北部、澳大利亚东部、西欧、北欧。
-
     为获得最佳性能，Microsoft 建议将文件共享与计划访问共享的 VM 放置在同一区域。
 
 5.  **通过使用存储帐户密钥装载 Azure 文件共享来验证 Azure 文件连接。**
@@ -88,17 +87,17 @@ ms.locfileid: "52291430"
   
 ### <a name="powershell"></a>PowerShell  
 
-若要使用 Azure PowerShell 通过 SMB 启用 Azure AD 身份验证，请先安装 `AzureRM.Storage` 模块（版本为 `6.0.0-preview`），如下所示。 有关如何安装 PowerShell 的详细信息，请参阅[使用 PowerShellGet 在 Windows 上安装 Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps)：
+若要使用 Azure PowerShell 通过 SMB 启用 Azure AD 身份验证，请先安装具有 Azure AD 支持的 `Az.Storage` 模块的预览版本。 有关如何安装 PowerShell 的详细信息，请参阅[使用 PowerShellGet 在 Windows 上安装 Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps)：
 
 ```powershell
-Install-Module -Name AzureRM.Storage -RequiredVersion 6.0.0-preview -AllowPrerelease
+Install-Module -Name Az.Storage -AllowPrerelease -Force -AllowClobber
 ```
 
-接下来，创建新存储帐户，然后调用 [Set-AzureRmStorageAccount](https://docs.microsoft.com/powershell/module/azurerm.storage/set-azurermstorageaccount) 并将 **EnableAzureFilesAadIntegrationForSMB** 参数设置为 **true**。 在下面的示例中，请务必将占位符值替换为你自己的值。
+接下来，创建新存储帐户，然后调用 [Set-AzStorageAccount](https://docs.microsoft.com/powershell/module/az.storage/set-azstorageaccount) 并将 **EnableAzureFilesAadIntegrationForSMB** 参数设置为 **true**。 在下面的示例中，请务必将占位符值替换为你自己的值。
 
 ```powershell
 # Create a new storage account
-New-AzureRmStorageAccount -ResourceGroupName "<resource-group-name>" `
+New-AzStorageAccount -ResourceGroupName "<resource-group-name>" `
     -Name "<storage-account-name>" `
     -Location "<azure-region>" `
     -SkuName Standard_LRS `
@@ -107,7 +106,7 @@ New-AzureRmStorageAccount -ResourceGroupName "<resource-group-name>" `
 
 # Update an existing storage account
 # Supported for storage accounts created after September 24, 2018 only
-Set-AzureRmStorageAccount -ResourceGroupName "<resource-group-name>" `
+Set-AzStorageAccount -ResourceGroupName "<resource-group-name>" `
     -Name "<storage-account-name>" `
     -EnableAzureFilesAadIntegrationForSMB $true```
 ```
@@ -152,14 +151,14 @@ az storage account update -n <storage-account-name> -g <resource-group-name> --f
   "Name": "<Custom-Role-Name>",
   "Id": null,
   "IsCustom": true,
-  "Description": "Allows for read, write and delete access to Azure File Share",
+  "Description": "Allows for read, write and delete access to Azure File Share over SMB",
   "Actions": [
     "*"
   ],
   "NotActions": [
-      "Microsoft.Authorization/*/Delete",
-    "Microsoft.Authorization/*/Write",
-    "Microsoft.Authorization/elevateAccess/Action"
+    "Microsoft.Authorization/*/Delete",
+        "Microsoft.Authorization/*/Write",
+        "Microsoft.Authorization/elevateAccess/Action"
   ],
   "DataActions": [
     "*"
@@ -178,7 +177,7 @@ az storage account update -n <storage-account-name> -g <resource-group-name> --f
   "Name": "<Custom-Role-Name>",
   "Id": null,
   "IsCustom": true,
-  "Description": "Allows for read access to Azure File Share",
+  "Description": "Allows for read access to Azure File Share over SMB",
   "Actions": [
     "*/read"
   ],
@@ -201,7 +200,7 @@ az storage account update -n <storage-account-name> -g <resource-group-name> --f
 
 ```powershell
 #Create a custom role based on the sample template above
-New-AzureRmRoleDefinition -InputFile "<custom-role-def-json-path>"
+New-AzRoleDefinition -InputFile "<custom-role-def-json-path>"
 ```
 
 #### <a name="cli"></a>CLI 
@@ -225,11 +224,11 @@ az role definition create --role-definition "<Custom-role-def-JSON-path>"
 
 ```powershell
 #Get the name of the custom role
-$FileShareContributorRole = Get-AzureRmRoleDefinition "<role-name>"
+$FileShareContributorRole = Get-AzRoleDefinition "<role-name>"
 #Constrain the scope to the target file share
 $scope = "/subscriptions/<subscription-id>/resourceGroups/<resource-group>/providers/Microsoft.Storage/storageAccounts/<storage-account>/fileServices/default/fileshare/<share-name>"
 #Assign the custom role to the target identity with the specified scope.
-New-AzureRmRoleAssignment -SignInName <user-principal-name> -RoleDefinitionName $FileShareContributorRole.Name -Scope $scope
+New-AzRoleAssignment -SignInName <user-principal-name> -RoleDefinitionName $FileShareContributorRole.Name -Scope $scope
 ```
 
 #### <a name="cli"></a>CLI

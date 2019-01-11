@@ -11,19 +11,19 @@ ms.topic: article
 ms.date: 11/13/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 630961954a235efd5f0cef92dd6a2525ae316838
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: f53233edd17fa7097dde67bbce16b1ece668c721
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53140024"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53554854"
 ---
 # <a name="access-datasets-with-python-using-the-azure-machine-learning-python-client-library"></a>使用 Azure 机器学习 Python 客户端库通过 Python 访问数据集
 Microsoft Azure 机器学习 Python 客户端库的预览可允许从本地 Python 环境安全访问 Azure 机器学习数据集，以及允许在工作区创建并管理数据集。
 
 本主题说明如何执行以下操作：
 
-* 安装机器学习 Python 客户端库 
+* 安装机器学习 Python 客户端库
 * 访问和上传数据集，包括如何获取授权以从本地 Python 环境访问 Azure 机器学习数据集的说明
 * 从实验访问中间数据集
 * 使用 Python 客户端库枚举数据集、访问元数据、读取数据集内容、创建新的数据集和更新现有数据集
@@ -49,7 +49,7 @@ Microsoft Azure 机器学习 Python 客户端库的预览可允许从本地 Pyth
 
     pip install azureml
 
-或者，可以从 [github](https://github.com/Azure/Azure-MachineLearning-ClientLibrary-Python) 上的源中下载和安装。
+或者，可以从 [GitHub](https://github.com/Azure/Azure-MachineLearning-ClientLibrary-Python) 上的源中下载和安装。
 
     python setup.py install
 
@@ -74,11 +74,11 @@ Studio 提供的用于 Python 客户端库的代码片段包括工作区 ID 和�
 
 若要获取授权令牌，可以执行以下任一操作：
 
-* 向所有者请求令牌。 所有者可从 Studio 中其工作区“设置”页面中访问授权令牌。 从左窗格中选择“设置”，单击“授权令牌”以查看主要和次要令牌。  尽管主要或次要授权都可在代码片段中使用，但是建议所有者只共享次要授权令牌。
+* 向所有者请求令牌。 所有者可从 Studio 中其工作区“设置”页面中访问授权令牌。 从左窗格中选择“设置”，单击“授权令牌”以查看主要和次要令牌。 尽管主要或次要授权都可在代码片段中使用，但是建议所有者只共享次要授权令牌。
 
 ![授权令牌](./media/python-data-access/ml-python-access-settings-tokens.png)
 
-* 请求升级为所有者角色。  要执行此操作，当前工作区所有者需要先你将从工作区中删除，然后重新邀请你作为所有者加入。
+* 请求升级为所有者角色。 要执行此操作，当前工作区所有者需要先你将从工作区中删除，然后重新邀请你作为所有者加入。
 
 开发人员获取工作区 ID 和授权令牌之后，能够使用代码片段访问工作区，无论其角色是什么。
 

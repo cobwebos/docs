@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/13/2017
+ms.date: 12/17/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 378e1d3aab992e9b4e6f2263c26ea4268a43d678
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: d1a09c077adbc3c9176740bce69bf051a912bc22
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46306156"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53555568"
 ---
 # <a name="azure-ad-connect-sync-enable-ad-recycle-bin"></a>Azure AD Connect 同步：启用 AD 回收站
 建议为同步到 Azure AD 的本地 Active Directory 启用 AD 回收站功能。 
@@ -40,11 +40,12 @@ ms.locfileid: "46306156"
 > [!NOTE]
 > 默认情况下，Azure AD 会以软删除状态保留已删除的 Azure AD 用户对象 30 天，然后才会将其永久删除。 但管理员可加快此类对象的删除。 对象永久删除后，即使已启用本地 AD 回收站功能，也无法再进行恢复。
 
-
+>[!NOTE]
+>以前，将用户从本地同步范围中删除并在云中删除时，该帐户的 DirSyncEnabled 状态被错误地设置为“False”。 如果之后从 Azure AD 回收站手动还原了该用户，则会显示“仅限云”帐户的错误状态。 现已修复此问题，将用户从同步范围中删除，然后软删除并从 Azure AD 回收站手动还原时，DirSyncEnabled 状态的值始终保持为“True”。
 
 ## <a name="next-steps"></a>后续步骤
 **概述主题**
 
-* [Azure AD Connect 同步：理解和自定义同步](how-to-connect-sync-whatis.md)
+* [Azure AD Connect 同步：了解和自定义同步](how-to-connect-sync-whatis.md)
 
 * [将本地标识与 Azure Active Directory 集成](whatis-hybrid-identity.md)

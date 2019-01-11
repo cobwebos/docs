@@ -12,12 +12,12 @@ ms.author: srbozovi
 ms.reviewer: bonova, carlrab
 manager: craigg
 ms.date: 12/10/2018
-ms.openlocfilehash: 964f91f412645e141ca003d511480f6f6eb438a3
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: e69f6869911555730fe723b340e224c0d5a1e4bb
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53343275"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53536043"
 ---
 # <a name="azure-sql-database-managed-instance-connectivity-architecture"></a>Azure SQL 数据库托管实例连接体系结构
 
@@ -113,7 +113,10 @@ Azure SQL 数据库托管实例虚拟群集包含一个管理终结点，可供 
 
   > [!Note]
   > 虽然强制入站安全规则允许来自端口 9000、9003、1438、1440、1452 上的任意资源的流量，但这些端口受内置防火墙的保护。 此[文章](sql-database-managed-instance-find-management-endpoint-ip-address.md)介绍如何发现管理终结点 IP 地址并验证防火墙规则。 
-
+  
+  > [!Note]
+  > 如果你在托管实例中使用事务复制，并且托管实例中的任何数据库都用作发布服务器或分发服务器，则还需要在子网的安全规则中打开端口 445（TCP 出站）以访问 Azure 文件共享。
+  
 ## <a name="next-steps"></a>后续步骤
 
 - 相关概述，请参阅 [什么是托管实例](sql-database-managed-instance.md)

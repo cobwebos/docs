@@ -1,21 +1,21 @@
 ---
 ms.assetid: ''
-title: Azure Key Vault 的虚拟网络服务终结点 | Microsoft Docs
+title: Azure 密钥保管库的虚拟网络服务终结点 - Azure 密钥保管库 | Microsoft Docs
 description: Key Vault 的虚拟网络服务终结点概述
 services: key-vault
 author: amitbapat
 ms.author: ambapat
 manager: mbaldwin
-ms.date: 08/31/2018
+ms.date: 01/02/2019
 ms.service: key-vault
 ms.workload: identity
 ms.topic: conceptual
-ms.openlocfilehash: 656007268dcf57910e4a655d85285da4fbd37425
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: 1d53fc6cef022f627bb1cd1f832ebf65698207a9
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52681511"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "54002412"
 ---
 # <a name="virtual-network-service-endpoints-for-azure-key-vault"></a>Azure Key Vault 的虚拟网络服务终结点
 
@@ -31,6 +31,7 @@ ms.locfileid: "52681511"
 > Key Vault 防火墙和虚拟网络规则仅适用于 Key Vault [数据平面](../key-vault/key-vault-secure-your-key-vault.md#data-plane-access-control)。 Key Vault 控制平面操作（例如创建、删除和修改操作，设置访问策略，设置防火墙和虚拟网络规则）不受防火墙和虚拟网络规则的影响。
 
 下面是此服务终结点的一些用法示例：
+
 * 使用 Key Vault 存储加密密钥、应用程序机密和证书，并希望阻止从公共 Internet 访问 Key Vault。
 * 你希望限制访问 Key Vault，以便只有你的应用程序或指定的少部分主机才能连接到 Key Vault。
 * 你有一个在 Azure 虚拟网络中运行的应用程序，并且此虚拟网络限制了所有的入站和出站流量。 应用程序仍需连接到 Key Vault，以获取机密或证书，或者使用加密密钥。
@@ -38,12 +39,13 @@ ms.locfileid: "52681511"
 ## <a name="configure-key-vault-firewalls-and-virtual-networks"></a>配置 Key Vault 防火墙和虚拟网络
 
 以下是配置防火墙和虚拟网络所需的步骤。 无论使用的是 PowerShell、Azure CLI 还是 Azure 门户，上述步骤均适用。
+
 1. 启用 [Key Vault 日志记录](key-vault-logging.md)以查看详细的访问日志。 当防火墙和虚拟网络规则阻止访问 Key Vault 时，此操作有助于进行诊断。 （此为可选步骤，但强烈建议你执行。）
 2. 为目标虚拟网络和子网启用“Key Vault 的服务终结点”。
 3. 为 Key Vault 设置防火墙和虚拟网络规则，仅限特定虚拟网络、子网和 IPv4 地址范围能够访问该 Key Vault。
 4. 如果需要所有受信任的 Microsoft 服务都能够访问此 Key Vault，则启用该选项，允许“受信任的 Azure 服务”连接到 Key Vault。
 
-有关详细信息，请参阅[配置 Azure Key Vault 防火墙和虚拟网络](key-vault-network-security.md)。
+有关详细信息，请参阅[配置 Azure 密钥保管库防火墙和虚拟网络](key-vault-network-security.md)。
 
 > [!IMPORTANT]
 > 防火墙规则生效后，只在用户请求来自允许的虚拟网络或 IPv4 地址范围时，才能执行 Key Vault [数据平面](../key-vault/key-vault-secure-your-key-vault.md#data-plane-access-control)操作。 从 Azure 门户访问 Key Vault 时，这同样适用。 虽然用户可从 Azure 门户浏览到 Key Vault，但如果其客户端计算机不在允许列表中，则可能无法列出密钥、机密或证书。 这也会影响其他 Azure 服务的 Key Vault 选取器。 如果防火墙规则阻止了用户的客户端计算机，则用户可以查看 Key Vault 列表，但不能查看列表密钥。
@@ -57,6 +59,7 @@ ms.locfileid: "52681511"
 > * 目前仅支持 IPv4 地址。
 
 ## <a name="trusted-services"></a>受信服务
+
 以下是允许访问 Key Vault 的受信服务列表（前提是启用了“允许受信任的服务”选项）。
 
 |受信服务|使用方案|

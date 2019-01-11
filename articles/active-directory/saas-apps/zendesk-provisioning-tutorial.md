@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/31/2018
 ms.author: v-ant
-ms.openlocfilehash: d8d6df221a8c520cea5e6e938447ffd881e7374c
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: 7df4cb5e988b4037675d5bf1c45ee103d5939568
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53322766"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53999316"
 ---
 # <a name="tutorial-configure-zendesk-for-automatic-user-provisioning"></a>教程：为 Zendesk 配置自动用户预配
 
@@ -168,6 +168,7 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 
 ## <a name="connector-limitations"></a>连接器限制
 * Zendesk 仅支持对“代理”角色的用户使用组。 有关详细信息，请参阅 [Zendesk 的文档](https://support.zendesk.com/hc/en-us/articles/203661966-Creating-managing-and-using-groups)。
+* 将自定义角色分配给用户和/或组时，Azure AD 自动用户预配服务还将分配默认角色“代理”。 只能为“代理”分配自定义角色。 有关详细信息，请参阅此 [Zendesk API 文档](https://developer.zendesk.com/rest_api/docs/support/users#json-format-for-agent-or-admin-requests)。  
 
 ## <a name="additional-resources"></a>其他资源
 

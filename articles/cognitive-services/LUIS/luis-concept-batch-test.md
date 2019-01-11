@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 01/02/2019
 ms.author: diberry
-ms.openlocfilehash: c050c8ed338a019b34302e87a53d4a40306f9a22
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: b0b2c8d0e3484538ca5c988a7fad56fb82b97902
+ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53133140"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53993155"
 ---
 # <a name="batch-testing-with-1000-utterances-in-luis-portal"></a>对 LUIS 门户中的 1000 个话语执行批处理测试
 
@@ -48,7 +48,7 @@ ms.locfileid: "53133140"
 
 批处理文件包含表达。 每个表达都必须具有任何你预测可被检测到的[机器学习实体](luis-concept-entity-types.md#types-of-entities)随附的预期意向预测。 
 
-## <a name="batch-syntax-template"></a>批处理语法模板
+## <a name="batch-syntax-template-for-intents-with-entities"></a>使用实体的意向的批处理语法模板
 
 使用以下模板启动批处理文件：
 
@@ -75,6 +75,22 @@ ms.locfileid: "53133140"
 ```
 
 批处理文件使用 startPos 和 endPos 属性来记录实体的开始和结束。 值从零开始，不得以空格开始或结束。 这与使用 startIndex 和 endIndex 属性的查询日志不同。 
+
+## <a name="batch-syntax-template-for-intents-without-entities"></a>不使用实体的意向的批处理语法模板
+
+使用以下模板启动没有实体的批处理文件：
+
+```JSON
+[
+  {
+    "text": "example utterance goes here",
+    "intent": "intent name goes here",
+    "entities": []
+  }
+]
+```
+
+如果不想测试实体，请包含 `entities` 属性并将值设置为空数组 `[]`。
 
 
 ## <a name="common-errors-importing-a-batch"></a>导入批处理文件的常见错误

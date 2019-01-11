@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/26/2018
 ms.author: douglasl
-ms.openlocfilehash: 424de36dbbd3b09e635679900110148b9edd0242
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: bfacad5064862f8ff20fc33b2b242c00ec416661
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52422876"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "54000339"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>在 Azure 数据工厂管道中使用自定义活动
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -104,10 +104,12 @@ ms.locfileid: "52422876"
 | type                  | 对于自定义活动，活动类型为 **Custom**。 | 是      |
 | linkedServiceName     | Azure Batch 的链接服务。 若要了解此链接服务，请参阅[计算链接服务](compute-linked-services.md)一文。  | 是      |
 | command               | 要执行的自定义应用程序的命令。 如果应用程序在 Azure Batch 池节点上已可用，可以跳过 resourceLinkedService 和 folderPath。 例如，可以将命令指定为 `cmd /c dir`，Windows Batch 池节点针对该命令提供了本机支持。 | 是      |
-| resourceLinkedService | 存储着自定义应用程序的存储帐户的 Azure 存储链接服务 | 否       |
-| folderPath            | 自定义应用程序及其所有依赖项所在的文件夹的路径<br/><br/>如果将依赖项存储在子文件夹中（即 *folderPath* 下的分层文件夹结构中），目前当文件复制到 Azure Batch 时，文件夹结构将被平展。 也就是说，所有文件将复制到没有子文件夹的单个文件夹中。 若要解决此行为，请考虑压缩文件，复制压缩文件，然后在所需位置使用自定义代码解压缩文件。 | 否       |
+| resourceLinkedService | 存储着自定义应用程序的存储帐户的 Azure 存储链接服务 | 否&#42;       |
+| folderPath            | 自定义应用程序及其所有依赖项所在的文件夹的路径<br/><br/>如果将依赖项存储在子文件夹中（即 *folderPath* 下的分层文件夹结构中），目前当文件复制到 Azure Batch 时，文件夹结构将被平展。 也就是说，所有文件将复制到没有子文件夹的单个文件夹中。 若要解决此行为，请考虑压缩文件，复制压缩文件，然后在所需位置使用自定义代码解压缩文件。 | 否&#42;       |
 | referenceObjects      | 现有链接服务和数据集的数组。 所引用的链接服务和数据集采用 JSON 格式传递到自定义应用程序，因此，自定义代码可以引用数据工厂的资源 | 否       |
 | extendedProperties    | 可以采用 JSON 格式传递到自定义应用程序的用户定义属性，以便自定义代码可以引用更多属性 | 否       |
+
+&#42;属性 `resourceLinkedService` 和 `folderPath` 应该一起指定或一起省略。
 
 ## <a name="custom-activity-permissions"></a>自定义活动权限
 
@@ -353,7 +355,7 @@ namespace SampleApp
 ## <a name="auto-scaling-of-azure-batch"></a>Azure Batch 的自动缩放
 还可以使用**自动缩放**功能创建 Azure Batch 池。 例如，可以根据挂起任务的数量不使用专用 VM 但使用自动缩放公式创建 Azure 批处理池。 
 
-此处的示例公式实现以下行为：最初创建池时，它从 1 个 VM 开始。 $PendingTasks 度量值定义处于正在运行状态和活动（已排队）状态中的任务数。  该公式查找过去 180 秒内的平均挂起任务数，并相应地设置 TargetDedicated。 它可确保 TargetDedicated 永不超过 25 个 VM。 因此，随着新任务的提交，池会自动增长；随着任务的完成，VM 会逐个释放，并且自动缩放功能会收缩这些 VM。 可根据自己的需要调整 startingNumberOfVMs 和 maxNumberofVMs。
+此处的示例公式可实现以下行为：最初创建池之后，它开始时包含 1 个 VM。 $PendingTasks 度量值定义处于正在运行状态和活动（已排队）状态中的任务数。  该公式查找过去 180 秒内的平均挂起任务数，并相应地设置 TargetDedicated。 它可确保 TargetDedicated 永不超过 25 个 VM。 因此，随着新任务的提交，池会自动增长；随着任务的完成，VM 会逐个释放，并且自动缩放功能会收缩这些 VM。 可根据自己的需要调整 startingNumberOfVMs 和 maxNumberofVMs。
 
 自动缩放公式：
 

@@ -11,12 +11,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 09/24/2018
 ms.author: diberry
-ms.openlocfilehash: 4f1372f8b15670472146efc1c4f3a341f4a97c71
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 0ab9e4a3d129243ec069031c5e7233f341b545e4
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53255595"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53713958"
 ---
 # <a name="add-luis-results-to-application-insights-and-azure-functions"></a>将 LUIS 结果添加到 Application Insights 和 Azure 函数
 本教程将 LUIS 请求和响应信息添加到 [Application Insights](https://azure.microsoft.com/services/application-insights/) 遥测数据存储。 添加该数据后，可使用 Kusto 语言进行查询，或使用 PowerBi 对陈述的意向和实体进行实时分析、聚合和报告。 此分析有助于确定是否应添加或编辑 LUIS 应用的意向和实体。
@@ -37,7 +37,7 @@ ms.locfileid: "53255595"
 > [!Tip]
 > 如果尚无订阅，可注册[免费帐户](https://azure.microsoft.com/free/)。
 
-本教程中的所有代码均可在 [LUIS 示例 GitHub 存储库](https://github.com/Microsoft/LUIS-Samples/tree/master/documentation-samples/tutorial-web-app-bot-application-insights/nodejs)中找到，并且与本教程关联的每行均注释有 `//APPINSIGHT:`。 
+本教程中的所有代码均可在 [Azure 示例 GitHub 存储库](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/tutorial-web-app-bot-application-insights/nodejs)中找到，并且与本教程关联的每行均注释有 `//APPINSIGHT:`。 
 
 ## <a name="web-app-bot-with-luis"></a>Web 应用机器人与 LUIS
 本教程假定你有如下代码或已完成[其他教程](luis-nodejs-tutorial-build-bot-framework-sample.md)： 
@@ -51,11 +51,11 @@ ms.locfileid: "53255595"
 
 1. 在 Azure 门户上的 Web 应用机器人服务中，选择“机器人管理”部分下的“生成”。 
 
-    ![搜索 Application Insights](./media/luis-tutorial-appinsights/build.png)
+    ![在 Azure 门户上的 Web 应用机器人服务中，选择“机器人管理”部分下的“生成”。 ](./media/luis-tutorial-appinsights/build.png)
 
 2. 此时会打开一个包含“应用服务编辑器”的新浏览器标签页。 在顶部栏中选择应用名称，然后选择“打开 Kudu 控制台”。 
 
-    ![搜索 Application Insights](./media/luis-tutorial-appinsights/kudu-console.png)
+    ![在顶部栏中选择应用名称，然后选择“打开 Kudu 控制台”。 ](./media/luis-tutorial-appinsights/kudu-console.png)
 
 3. 在控制台中输入以下命令，安装 Application Insights 和 Underscore 包：
 
@@ -63,7 +63,7 @@ ms.locfileid: "53255595"
     cd site\wwwroot && npm install applicationinsights && npm install underscore
     ```
 
-    ![搜索 Application Insights](./media/luis-tutorial-appinsights/npm-install.png)
+    ![使用 npm 命令安装 Application Insights 和 Underscore 包](./media/luis-tutorial-appinsights/npm-install.png)
 
     等待这些包安装完成：
 
@@ -112,9 +112,7 @@ ms.locfileid: "53255595"
 
 1. 在门户中，选择“所有资源”，然后按 Web 应用机器人的名称进行筛选。 单击“Application Insights”类型的资源。 Application Insights 的图标是灯泡。 
 
-    ![搜索 Application Insights](./media/luis-tutorial-appinsights/search-for-app-insights.png)
-
-
+    ![[在 Azure 门户中搜索 app insights](./media/luis-tutorial-appinsights/search-for-app-insights.png)
 
 2. 资源打开后，单击最右侧面板中的“搜索”图标（放大镜）。 右侧将显示一个新面板。 该面板可能需要一秒钟才能显示出来，具体取决于找到的遥测数据量。 搜索 `LUIS-results` 并按 Enter 键。 该列表已缩减为仅限本教程添加的 LUIS 查询结果。
 

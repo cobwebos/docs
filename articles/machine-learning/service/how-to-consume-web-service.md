@@ -1,7 +1,7 @@
 ---
 title: 创建客户端以使用部署的 Web 服务
 titleSuffix: Azure Machine Learning service
-description: 了解如何使用在通过 Azure 机器学习模型部署模型时生成的 Web 服务（该 Web 服务公开一个 REST API）。 使用所选的编程语言为此 API 创建客户端。
+description: 了解如何使用在通过 Azure 机器学习模型部署模型时生成的 Web 服务。 该 Web 服务公开一个 REST API。 使用所选的编程语言为此 API 创建客户端。
 services: machine-learning
 ms.service: machine-learning
 ms.component: core
@@ -11,31 +11,31 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 12/03/2018
 ms.custom: seodec18
-ms.openlocfilehash: fc1f472cec1b1da26456924885d7905ab2458e14
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: efa24fcb624c7613ce16028d7ba06af4d4d2153c
+ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53251124"
+ms.lasthandoff: 12/22/2018
+ms.locfileid: "53753381"
 ---
 # <a name="consume-an-azure-machine-learning-model-deployed-as-a-web-service"></a>使用部署为 Web 服务的 Azure 机器学习模型
 
-将 Azure 机器学习模型部署为 Web 服务可创建 REST API。 可将数据发送到此 API，并接收模型返回的预测。 本文档介绍如何使用 C#、Go、Java 和 Python 为 Web 服务创建客户端。
+将 Azure 机器学习模型部署为 Web 服务可创建 REST API。 可将数据发送到此 API，并接收模型返回的预测。 本文档介绍了如何使用 C#、Go、Java 和 Python 为 Web 服务创建客户端。
 
-将映像部署到 Azure 容器实例、Azure Kubernetes 服务或 Project Brainwave（现场可编程门阵列）时，会创建一个 Web 服务。 映像是从已注册的模型和评分文件创建的。 可以使用 [Azure 机器学习 SDK](https://aka.ms/aml-sdk) 来检索用于访问 Web 服务的 URI。 如果启用了身份验证，则还可以使用该 SDK 来获取身份验证密钥。
+将映像部署到 Azure 容器实例、Azure Kubernetes 服务或 Project Brainwave（现场可编程门阵列）时，你将创建一个 Web 服务。 你将基于已注册的模型和评分文件创建映像。 你将使用 [Azure 机器学习 SDK](https://aka.ms/aml-sdk) 检索用来访问 Web 服务的 URI。 如果启用了身份验证，则还可以使用该 SDK 来获取身份验证密钥。
 
-创建使用机器学习 Web 服务的客户端的常规工作流为：
+用于创建使用机器学习 Web 服务的客户端的常规工作流为：
 
-1. 使用 SDK 获取连接信息
-1. 确定模型使用的请求数据类型
-1. 创建调用 Web 服务的应用程序
+1. 使用 SDK 获取连接信息。
+1. 确定模型使用的请求数据的类型。
+1. 创建调用 Web 服务的应用程序。
 
 ## <a name="connection-information"></a>连接信息
 
 > [!NOTE]
-> Azure 机器学习 SDK 用于获取 Web 服务信息。 这是一个 Python SDK。 尽管该 SDK 用于检索有关 Web 服务的信息，但你可以使用任何语言来为服务创建客户端。
+> 使用 Azure 机器学习 SDK 获取 Web 服务信息。 这是一个 Python SDK。 可以使用任何语言来为服务创建客户端。
 
-可以使用 Azure 机器学习 SDK 来检索 Web 服务连接信息。 [azureml.core.Webservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py) 类提供用于创建客户端的信息。 创建客户端应用程序时，以下 `Webservice` 属性非常有用：
+[azureml.core.Webservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py) 类提供了创建客户端所需的信息。 创建客户端应用程序时，以下 `Webservice` 属性非常有用：
 
 * `auth_enabled` - 如果启用了身份验证，则为 `True`；否则为 `False`。
 * `scoring_uri` - REST API 地址。
@@ -53,7 +53,7 @@ ms.locfileid: "53251124"
     print(service.scoring_uri)
     ```
 
-* 可以使用 `Webservice.list` 检索工作区中为模型部署的 Web 服务列表。 可以添加筛选器，以缩小返回的信息列表范围。 有关可筛选的对象的详细信息，请参阅 [Webservice.list](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.webservice.webservice?view=azure-ml-py#list) 参考文档。
+* 可以使用 `Webservice.list` 检索工作区中为模型部署的 Web 服务列表。 可以添加筛选器，以缩小返回的信息列表范围。 有关可以筛选的对象的详细信息，请参阅 [Webservice.list](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.webservice.webservice?view=azure-ml-py#list) 参考文档。
 
     ```python
     services = Webservice.list(ws)
@@ -71,8 +71,8 @@ ms.locfileid: "53251124"
 
 为部署启用身份验证时，会自动创建身份验证密钥。
 
-* 部署到 __Azure Kubernetes 服务__时，__默认会启用__身份验证。
-* 部署到 __Azure 容器实例__时，__默认会禁用__身份验证。
+* 部署到 Azure Kubernetes 服务时，会默认启用身份验证。
+* 部署到 Azure 容器实例时，会默认禁用身份验证。
 
 若要控制身份验证，请在创建或更新部署时使用 `auth_enabled` 参数。
 
@@ -128,7 +128,7 @@ Web 服务可以接受一个请求中的多个数据集。 它会返回包含响
 
 ### <a name="binary-data"></a>二进制数据
 
-如果模型接受二进制数据（如映像），则必须修改用于部署的 `score.py` 文件以接受原始 HTTP 请求。 下面是 `score.py` 示例，它接受二进制数据，并返回 POST 请求的反向字节。 对于 GET 请求，它在响应正文中返回完整 URL：
+如果模型接受二进制数据（如映像），则必须修改用于部署的 `score.py` 文件以接受原始 HTTP 请求。 下面是 `score.py` 的一个示例，它接受二进制数据，并返回 POST 请求的反向字节。 对于 GET 请求，它在响应正文中返回完整 URL：
 
 ```python 
 from azureml.contrib.services.aml_request  import AMLRequest, rawhttp
@@ -155,9 +155,9 @@ def run(request):
 ```
 
 > [!IMPORTANT]
-> `azureml.contrib` 命名空间中的内容会频繁更改，因为我们致力于改进服务。 因此，此命名空间中的任何内容都应被视为预览版，Microsoft 并不完全支持。
+> `azureml.contrib` 命名空间会频繁更改，因为我们正在改进服务。 因此，此命名空间中的任何内容都应被视为预览版，Microsoft 并不完全支持。
 >
-> 如果需要在本地开发环境中对此进行测试，可以使用以下命令安装 contrib 命名空间中的组件：
+> 如果需要在本地开发环境中对此进行测试，可以使用以下命令安装 `contrib` 命名空间中的组件：
 > 
 > ```shell
 > pip install azureml-contrib-services

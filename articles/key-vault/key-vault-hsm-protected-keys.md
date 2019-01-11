@@ -1,5 +1,5 @@
 ---
-title: 如何为 Azure 密钥保管库生成和传输受 HSM 保护的密钥 | Microsoft Docs
+title: 如何为 Azure Key Vault 生成和传输受 HSM 保护的密钥 - Azure Key Vault | Microsoft Docs
 description: 使用这篇文章可帮助你规划、生成然后传输自己的受 HSM 保护的密钥，以便与 Azure 密钥保管库一起使用。 也称为 BYOK 或自带密钥。
 services: key-vault
 documentationcenter: ''
@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/27/2018
+ms.date: 01/02/2019
 ms.author: barclayn
-ms.openlocfilehash: 2294e65a552b0bf0a428e5272610abc1f63229e6
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 44c1406c8ecd8c5ff103fed4d105ecd64d16c358
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52308284"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "54002461"
 ---
 # <a name="how-to-generate-and-transfer-hsm-protected-keys-for-azure-key-vault"></a>如何为 Azure 密钥保管库生成和传输受 HSM 保护的密钥
 
@@ -58,10 +58,10 @@ Microsoft 已与 Thales 联手增强 HSM 的技术开发水平。 这些增强�
 
 | 要求 | 详细信息 |
 | --- | --- |
-| Azure 订阅 |若要创建 Azure 密钥保管库，需要 Azure 订阅：[注册免费试用版](https://azure.microsoft.com/pricing/free-trial/) |
+| Azure 订阅 |若要创建 Azure Key Vault，需要 Azure 订阅：[注册免费试用版](https://azure.microsoft.com/pricing/free-trial/) |
 | 用于支持受 HSM 保护的密钥的 Azure 密钥保管库高级服务层 |请参阅 [Azure 密钥保管库定价](https://azure.microsoft.com/pricing/details/key-vault/)网站，了解有关 Azure 密钥保管库的服务层和功能的详细信息。 |
 | Thales HSM、智能卡和支持软件 |必须具有 Thales 硬件安全模块的访问权限和 Thales HSM 的基本操作知识。 请参阅 [Thales 硬件安全模块](https://www.thales-esecurity.com/msrms/buy)，了解兼容型号的列表，或者如果还没有 HSM，请购买 HSM。 |
-| 以下硬件和软件：<ol><li>脱机 x64 工作站，最低 Windows 操作系统为 Windows 7，Thales nShield 软件最低为 11.50 版。<br/><br/>如果此工作站运行 Windows 7，则必须[安装 Microsoft.NET Framework 4.5](https://download.microsoft.com/download/b/a/4/ba4a7e71-2906-4b2d-a0e1-80cf16844f5f/dotnetfx45_full_x86_x64.exe)。</li><li>连接到 Internet 的工作站，最低 Windows 操作系统为 Windows 7，最低 [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview?view=azurermps-6.7.0) 安装版本为 1.1.0。</li><li>至少拥有 16 MB 可用空间的 USB 驱动器或其他便携式存储设备。</li></ol> |出于安全原因，建议第一个工作站不要连接到网络。 但是，此建议不会以编程方式强制执行。<br/><br/>请注意，在后面的说明中，将此工作站称为连接断开的工作站。</p></blockquote><br/>此外，如果租户密钥用于生产网络，我们建议使用第二个独立的工作站来下载工具集和上传租户密钥。 但出于测试目的，可以使用与第一个相同的工作站。<br/><br/>请注意，在后面的说明中，将第二个工作站称为连接到 Internet 的工作站。</p></blockquote><br/> |
+| 以下硬件和软件：<ol><li>脱机 x64 工作站，最低 Windows 操作系统为 Windows 7，Thales nShield 软件最低为 11.50 版。<br/><br/>如果此工作站运行 Windows 7，则必须[安装 Microsoft.NET Framework 4.5](https://download.microsoft.com/download/b/a/4/ba4a7e71-2906-4b2d-a0e1-80cf16844f5f/dotnetfx45_full_x86_x64.exe)。</li><li>连接到 Internet 的工作站，最低 Windows 操作系统为 Windows 7，最低 [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview?view=azurermps-6.7.0) 安装版本为 1.1.0。</li><li>至少拥有 16 MB 可用空间的 USB 驱动器或其他便携式存储设备。</li></ol> |出于安全原因，建议第一个工作站不要连接到网络。 但是，此建议不会以编程方式强制执行。<br/><br/>在后面的说明中，将此工作站称为连接断开的工作站。</p></blockquote><br/>此外，如果租户密钥用于生产网络，建议使用第二个独立的工作站来下载工具集和上传租户密钥。 但出于测试目的，可以使用与第一个相同的工作站。<br/><br/>在后面的说明中，将第二个工作站称为连接到 Internet 的工作站。</p></blockquote><br/> |
 
 ## <a name="generate-and-transfer-your-key-to-azure-key-vault-hsm"></a>生成密钥并将其传输到 Azure 密钥保管库 HSM
 
@@ -71,7 +71,7 @@ Microsoft 已与 Thales 联手增强 HSM 的技术开发水平。 这些增强�
 * [步骤 2：准备连接断开的工作站](#step-2-prepare-your-disconnected-workstation)
 * [步骤 3：生成密钥](#step-3-generate-your-key)
 * [步骤 4：准备要传输的密钥](#step-4-prepare-your-key-for-transfer)
-* [步骤 5：将密钥传输到 Azure 密钥保管库](#step-5-transfer-your-key-to-azure-key-vault)
+* [步骤 5：将密钥传输到 Azure Key Vault](#step-5-transfer-your-key-to-azure-key-vault)
 
 ## <a name="step-1-prepare-your-internet-connected-workstation"></a>步骤 1：准备连接到 Internet 的工作站
 
@@ -99,7 +99,7 @@ Microsoft 已与 Thales 联手增强 HSM 的技术开发水平。 这些增强�
 
 不要关闭 Azure PowerShell 窗口。
 
-### <a name="step-13-download-the-byok-toolset-for-azure-key-vault"></a>步骤 1.3：下载 Azure 密钥保管库的 BYOK 工具集
+### <a name="step-13-download-the-byok-toolset-for-azure-key-vault"></a>步骤 1.3：下载 Azure Key Vault 的 BYOK 工具集
 
 转到 Microsoft 下载中心，针对所在的地理区域或 Azure 实例[下载 Azure Key Vault BYOK 工具集](https://www.microsoft.com/download/details.aspx?id=45345)。 使用以下信息确定要下载的包名称及其对应的 SHA 256 包哈希：
 
@@ -209,7 +209,7 @@ KeyVault-BYOK-Tools-UnitedKingdom.zip
    Get-FileHash KeyVault-BYOK-Tools-*.zip
    ```
 
-该工具集包括以下内容：
+该工具集包括：
 
 * 名称以 **BYOK-KEK-pkg-** 开头的密钥交换密钥 (KEK) 包。
 * 名称以 **BYOK-SecurityWorld-pkg-** 开头的的安全体系包。
@@ -332,7 +332,7 @@ KeyVault-BYOK-Tools-UnitedKingdom.zip
      > Thales 软件包含在 %NFAST_HOME%\python\bin 中的 python
      >
      >
-2. 确认看到以下指示验证成功的消息：**Result: SUCCESS**
+2. 确认看到以下指示验证成功的消息：**结果:成功**
 
 此脚本会验证直到 Thales 根密钥的签名程序链。 此根密钥的哈希嵌入到脚本中，其值应为 **59178a47 de508c3f 291277ee 184f46c4 f1d9c639**。 还可以通过访问 [Thales 网站](http://www.thalesesec.com/)单独确认此值。
 
@@ -367,7 +367,7 @@ KeyVault-BYOK-Tools-UnitedKingdom.zip
 
 在步骤 4 中，请对断开连接的工作站执行以下过程。
 
-### <a name="step-41-create-a-copy-of-your-key-with-reduced-permissions"></a>步骤 4.1：使用减少权限创建密钥的副本
+### <a name="step-41-create-a-copy-of-your-key-with-reduced-permissions"></a>步骤 4.1：使用减少的权限创建密钥的副本
 
 打开新命令提示符并将当前目录更改为解压缩 BYOK zip 文件的位置。 要减少密钥的权限，请从命令提示符处运行以下命令，具体要取决于所在的地理区域或 Azure 实例：
 
@@ -414,11 +414,11 @@ KeyVault-BYOK-Tools-UnitedKingdom.zip
 
         KeyTransferRemote.exe -ModifyAcls -KeyAppName simple -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-UK-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-UK-1
 
-运行此命令时，请将 contosokey 替换为在[生成密钥](#step-3-generate-your-key)步骤的“步骤 3.5：新建密钥”中指定的相同值。
+运行此命令时，请将 *contosokey* 替换为在[生成密钥](#step-3-generate-your-key)步骤的“步骤 3.5：新建密钥”中指定的相同值。
 
 系统会要求插入安全体系的管理员卡。
 
-此命令完成后，会看到 **Result: SUCCESS**，同时权限减少的密钥副本位于名为 key_xferacId_<contosokey> 的文件中。
+此命令完成后，会看到“结果:成功”，同时权限减少的密钥副本位于名为 key_xferacId_<contosokey> 的文件中。
 
 可使用 Thales 实用程序通过以下命令检查 ACLS：
 
@@ -428,7 +428,7 @@ KeyVault-BYOK-Tools-UnitedKingdom.zip
 * kmfile-dump.exe:
 
         "%nfast_home%\bin\kmfile-dump.exe" "%NFAST_KMDATA%\local\key_xferacld_contosokey"
-  运行这些命令时，将 contosokey 替换为在[生成密钥](#step-3-generate-your-key)步骤的“步骤 3.5：新建密钥”中指定的相同值。
+  运行这些命令时，请将 contosokey 替换为在[生成密钥](#step-3-generate-your-key)步骤的“步骤 3.5：新建密钥”中指定的相同值。
 
 ### <a name="step-42-encrypt-your-key-by-using-microsofts-key-exchange-key"></a>步骤 4.2：使用 Microsoft 的密钥交换密钥加密密钥
 
@@ -479,17 +479,17 @@ KeyVault-BYOK-Tools-UnitedKingdom.zip
 
 运行此命令时，请使用以下说明︰
 
-* 将 contosokey 替换为用于在[生成密钥](#step-3-generate-your-key)步骤的“步骤 3.5：新建密钥”中生成密钥的标识符。
+* 将 *contosokey* 替换为用于在[生成密钥](#step-3-generate-your-key)步骤的“步骤 3.5：新建密钥”中生成密钥的标识符。
 * 将 *SubscriptionID* 替换为包含密钥保管库的 Azure 订阅 ID。 以前已在[准备连接到 Internet 的工作站](#step-1-prepare-your-internet-connected-workstation)步骤的**步骤 1.2：获取 Azure 订阅 ID** 中检索此值。
 * 将 *ContosoFirstHSMKey* 替换为用于输出文件名称的标签。
 
-此操作成功完成后，会显示“结果: 成功”，并且包含 KeyTransferPackage-ContosoFirstHSMkey.byok 的当前文件夹中会出现一个新文件
+此操作成功完成后，它会显示“结果:成功”，并且具有以下名称的当前文件夹中会出现一个新文件：KeyTransferPackage-*ContosoFirstHSMkey*.byok
 
 ### <a name="step-43-copy-your-key-transfer-package-to-the-internet-connected-workstation"></a>步骤 4.3：将密钥传输包复制到连接 Internet 的工作站
 
 使用 U 盘或其他便携式存储设备，将上一步的输出文件 (KeyTransferPackage-ContosoFirstHSMkey.byok) 复制到连接 Internet 的工作站。
 
-## <a name="step-5-transfer-your-key-to-azure-key-vault"></a>步骤 5：将密钥传输到 Azure 密钥保管库
+## <a name="step-5-transfer-your-key-to-azure-key-vault"></a>步骤 5：将密钥传输到 Azure Key Vault
 
 在此最后一步中，在连接 Internet 的工作站上，使用 [Add-AzureKeyVaultKey](/powershell/module/azurerm.keyvault/add-azurekeyvaultkey) cmdlet 上传从断开连接的工作站复制到 Azure Key Vault HSM 的密钥传输包：
 

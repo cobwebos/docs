@@ -5,23 +5,23 @@ services: active-directory
 ms.service: active-directory
 ms.component: B2B
 ms.topic: conceptual
-ms.date: 11/07/2018
+ms.date: 12/17/2018
 ms.author: mimart
 author: msmimart
 manager: mtillman
 ms.reviewer: mal
-ms.openlocfilehash: 5bc94b6fe69a9ffec11fcbab952a6f8aa3e2259a
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: 295b7eeebf8d9815aef0b862ee2b3cccbee15ed6
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51568999"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53546736"
 ---
 # <a name="add-google-as-an-identity-provider-for-b2b-guest-users"></a>将 Google 添加为 B2B 来宾用户的标识提供者
 
 通过设置 Google 联合，可让受邀的用户使用其自己的 Google 帐户登录到你的共享应用和资源，而无需创建 Microsoft 帐户 (MSA) 或 Azure AD 帐户。  
 > [!NOTE]
-> Google 来宾用户必须使用包含租户上下文的链接（例如 `https://myapps.microsoft.com/?tenantid=<tenant id>`）登录。 也可以使用应用程序和资源的直接链接，只要这些链接包含租户上下文即可。 来宾用户目前无法使用不包含租户上下文的终结点登录。 例如，使用 `https://myapps.microsoft.com`、`https://portal.azure.com` 或团队公共终结点会导致错误。
+> Google 来宾用户必须使用包含租户上下文的链接（例如 `https://myapps.microsoft.com/<tenant id>`）登录。 也可以使用应用程序和资源的直接链接，只要这些链接包含租户上下文即可。 来宾用户目前无法使用不包含租户上下文的终结点登录。 例如，使用 `https://myapps.microsoft.com`、`https://portal.azure.com` 或团队公共终结点会导致错误。
  
 ## <a name="what-is-the-experience-for-the-google-user"></a>Google 用户体验是什么？
 向某个 Google Gmail 用户发送邀请时，该来宾用户应使用包含租户上下文的链接来访问你的共享应用或资源。 他们的体验根据是否已登录到 Google 而异：
@@ -90,7 +90,7 @@ ms.locfileid: "51568999"
    `New-AzureADMSIdentityProvider -Type Google -Name Google -ClientId [Client ID] -ClientSecret [Client secret]`
  
    > [!NOTE]
-   > 使用在“步骤 1：配置 Google 开发人员项目”中创建的应用客户端 ID 和客户端机密。 有关详细信息，请参阅 [New-AzureADMSIdentityProvider](https://docs.microsoft.com/powershell/module/azuread/new-azureadmsidentityprovider?view=azureadps-2.0-preview) 一文。 
+   > 使用在“步骤 1：配置 Google 开发人员项目”中创建的应用的客户端 ID 和客户端密码。 有关详细信息，请参阅 [New-AzureADMSIdentityProvider](https://docs.microsoft.com/powershell/module/azuread/new-azureadmsidentityprovider?view=azureadps-2.0-preview) 一文。 
  
 ## <a name="how-do-i-remove-google-federation"></a>如何删除 Google 联合？
 可以删除 Google 联合设置。 如果删除，则已按邀请操作的 Google 来宾用户将无法登录，但你可以通过从目录中删除然后重新邀请他们，使他们再次能够访问你的资源。 

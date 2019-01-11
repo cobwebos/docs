@@ -8,19 +8,60 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: conceptual
-ms.date: 12/06/2018
+ms.date: 12/18/2018
 ms.author: wolfma
 ms.custom: seodec18
-ms.openlocfilehash: c99f1691618765e8997ef442a506c83b9a7bd4fa
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 7485ca1e4b1143ed46c9b3bef9ca66af0638b4f8
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53088290"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53599410"
 ---
 # <a name="release-notes"></a>发行说明
 
-## <a name="speech-service-sdk-110"></a>语音服务 SDK 1.1.0
+## <a name="speech-sdk-120-2018-december-release"></a>语音 SDK 1.2.0：2018 年 12 月版本
+
+**新功能**
+
+* Python
+  * 此版本支持 Python 的 Beta 版本（3.5 及更高版本）。 有关详细信息，请[参阅此处](quickstart-python.md)。
+* JavaScript
+  * 适用于 JavaScript 的语音 SDK 已开放了源代码。 [GitHub](https://github.com/Microsoft/cognitive-services-speech-sdk-js) 上提供了源代码。
+  * 我们现在支持 Node.js，可以在[此处](quickstart-js-node.md)找到详细信息。
+  * 已删除了对音频会话的长度限制，将自动在后台进行重新连接。
+* 连接对象
+  * 可以从识别器中访问连接对象。 此对象允许你显式启动服务连接并订阅连接事件和断开连接事件。
+    （这在 JavaScript 和 Python 中尚不可用。）
+* 支持 Ubuntu 18.04。
+* Android
+  * 在生成 APK 期间启用了 ProGuard 支持。
+
+**改进**
+
+* 改进了内部线程的使用，减少了线程、锁和互斥的数量。
+* 改进了错误报告 / 信息。 在某些情况下，错误消息没有完全传播出去。
+* 更新了 JavaScript 中的开发依赖项来使用最新模块。
+
+**Bug 修复**
+
+* 修复了由于 RecognizeAsync 中的类型不匹配导致的内存泄漏。
+* 在某些情况下，异常会被泄露。
+* 修复了翻译事件参数中的内存泄漏。
+* 修复了长时间运行的会话中与重新连接相关的锁定问题。
+* 修复了可能会导致失败的翻译缺少最终结果的问题。
+* C#：如果在主线程中没有等待异步操作，则可能会在异步任务完成之前释放识别器。
+* Java:修复了导致 Java VM 故障的一个问题。
+* Objective-C：修复了枚举映射；之前返回 RecognizedIntent 而非 RecognizingIntent。
+* JavaScript：在 SpeechConfig 中将默认输出格式设置为“simple”。
+* JavaScript：删除了 JavaScript 和其他语言中配置对象中的属性之间的不一致。
+
+**示例**
+
+* 更新并修复了几个示例（例如，翻译的输出语音，等等）。
+* 在[示例存储库](https://aka.ms/csspeech/samples)中添加了 Node.js 示例。
+
+## <a name="speech-sdk-110"></a>语音 SDK 1.1.0
 
 **新功能**
 
@@ -51,7 +92,7 @@ ms.locfileid: "53088290"
 
 * 在[示例存储库](https://aka.ms/csspeech/samples)中添加了拉取和推送流用法的 C++ 和 C# 示例。
 
-## <a name="speech-service-sdk-101"></a>语音服务 SDK 1.0.1
+## <a name="speech-sdk-101"></a>语音 SDK 1.0.1
 
 可靠性改进和 bug 修复：
 

@@ -1,7 +1,7 @@
 ---
 title: 使用情况数据 - Cloud Shell
 titleSuffix: Language Understanding - Azure Cognitive Services
-description: 了解如何在 Azure Cloud Shell 中获取 LUIS 的使用情况信息。
+description: 了解如何在 Azure Cloud Shell 中获取 LUIS 的终结点命中次数使用情况信息。
 services: cognitive-services
 author: diberry
 manager: cgronlun
@@ -9,21 +9,25 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 12/07/2018
+ms.date: 12/18/2018
 ms.author: diberry
-ms.openlocfilehash: d4f1a76fe587a34448cf218dbfef10f6b0e2ea46
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 703332ece0208856bfbedb852b4b1e985d157dc9
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53133464"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53605937"
 ---
 # <a name="usage-data-for-luis-service-from-azure-cloud-shell"></a>从 Azure Cloud Shell 获取 LUIS 服务的使用情况数据
+
+了解如何在 Azure Cloud Shell 中获取 LUIS 的终结点命中次数使用情况信息。
+
 通过 Azure 门户可使用 PowerShell cmdlet 处理 LUIS 资源。 
 
 使用这些 cmdlet 可以[创建](https://docs.microsoft.com/powershell/module/azurerm.cognitiveservices/new-azurermcognitiveservicesaccount?view=azurermps-6.0.0) LUIS 订阅、获取有关订阅的信息（包括[使用情况](https://docs.microsoft.com/powershell/module/azurerm.cognitiveservices/get-azurermcognitiveservicesaccountusage?view=azurermps-6.0.0)）和[删除](https://docs.microsoft.com/powershell/module/azurerm.cognitiveservices/remove-azurermcognitiveservicesaccount?view=azurermps-6.0.0)订阅。 
 
 ## <a name="cloud-shell-storage-account-and-authentication"></a>Cloud Shell 存储帐户和身份验证
+
 若要在 Azure 门户 [cloud shell](https://docs.microsoft.com/azure/cloud-shell/quickstart-powershell) 中使用 PowerShell，需要具有 Azure 存储帐户。 如果没有[存储帐户](https://docs.microsoft.com/azure/cloud-shell/persisting-shell-storage)，系统将提示你创建一个。 存储帐户允许你在 Cloud Shell 中保存PowerShell 脚本。  
 
 你还需要在 cloud shell 中向 Azure 进行身份验证才能访问任何资源。 
@@ -31,6 +35,7 @@ ms.locfileid: "53133464"
 拥有存储帐户并进行身份验证后，便可以运行 PowerShell cmdlet。
 
 ## <a name="open-cloud-shell"></a>打开 Cloud Shell
+
 使用 Azure门户 cloud shell 时，你始终使用最新的 PowerShell 版本。 
 
 使用“启动 Cloud Shell”按钮打开 Cloud Shell 或使用 [https://shell.azure.com](https://shell.azure.com) 打开浏览器。 选择 Power Shell 作为环境。 如果没有 Azure 存储帐户，则需创建一个。 

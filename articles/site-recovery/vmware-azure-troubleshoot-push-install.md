@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.author: ramamill
 ms.date: 12/12/2018
-ms.openlocfilehash: 748f4e56b4b7fa52928f8f6507960ec35b5fe6e5
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: fef0cfd05fe0d44966cbb9f15ba1148f8473207d
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53314391"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53789901"
 ---
 # <a name="troubleshoot-mobility-service-push-installation-issues"></a>解决移动服务推送安装问题
 
@@ -135,9 +135,8 @@ ms.locfileid: "53314391"
 
 ## <a name="unsupported-operating-systems"></a>操作系统不受支持
 
-另一个最常见的失败原因可能是操作系统不受支持。 确保使用的是受支持的操作系统/内核版本，以便成功安装移动服务。
-
-若要了解有关哪些操作系统支持 Azure Site Recovery 的信息，请参阅[支持矩阵文档](vmware-physical-azure-support-matrix.md#replicated-machines)。
+另一个最常见的失败原因可能是操作系统不受支持。 确保使用的是受支持的操作系统/内核版本，以便成功安装移动服务。 避免使用专用修补程序。
+若要查看 Azure Site Recovery 支持的操作系统和内核版本列表，请参阅我们的[支持矩阵文档](vmware-physical-azure-support-matrix.md#replicated-machines)。
 
 ## <a name="boot-and-system-partitions--volumes-are-not-the-same-disk-errorid-95309"></a>启动和系统分区/卷不是同一磁盘（ErrorID：95309）
 
@@ -146,6 +145,10 @@ ms.locfileid: "53314391"
 ## <a name="system-partition-on-multiple-disks-errorid-95313"></a>在多个磁盘上进行系统分区（ErrorID：95313）
 
 在版本 9.20 之前，将根分区或卷置于不同磁盘上是不受支持的配置。 [版本 9.20](https://support.microsoft.com/en-in/help/4478871/update-rollup-31-for-azure-site-recovery) 开始支持此配置。 请使用最新版本来获取此支持。
+
+## <a name="grub-uuid-failure-errorid-95320"></a>GRUB UUID 失败 (ErrorID: 95320)
+
+如果源计算机的 GRUB 使用设备名称而不 UUID，则移动代理安装将失败。 若要更改 GRUB 文件，请与系统管理员联系。
 
 ## <a name="lvm-support-from-920-version"></a>版本 9.20 提供的 LVM 支持
 

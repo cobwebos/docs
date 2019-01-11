@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 3/9/2018
 ms.author: masnider
-ms.openlocfilehash: 474cc78a4ceb872742ca7eb10837eeb89dcc1bdb
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 37f956606075cb21075d6f50bb53e04075936997
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34213174"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53999027"
 ---
 # <a name="reliable-services-overview"></a>Reliable Services 概述
 Azure Service Fabric 可简化无状态和有状态 Reliable Services 的编写与管理。 本主题的内容：
@@ -76,13 +76,13 @@ Service Fabric 中的 Reliable Services 与以前编写的服务不同。 Servic
 
 以没有内存的计算器为例，它会接收所有项并同时执行运算。
 
-在这种情况下，由于服务无需处理任何后台任务，因此，服务的 `RunAsync()` (C#) 或 `runAsync()` (Java) 可为空。 创建计算器服务后，该服务将返回 `ICommunicationListener` (C#) 或 `CommunicationListener`（例如 [Web API](service-fabric-reliable-services-communication-webapi.md)），用于在某个端口上打开侦听终结点。 此侦听终结点挂接到不同的计算方法（例如："Add(n1, n2)"），这些方法定义计算器的公共 API。
+在这种情况下，由于服务无需处理任何后台任务，因此，服务的 `RunAsync()` (C#) 或 `runAsync()` (Java) 可为空。 创建计算器服务后，该服务将返回 `ICommunicationListener` (C#) 或 `CommunicationListener`（例如 [Web API](service-fabric-reliable-services-communication-webapi.md)），用于在某个端口上打开侦听终结点。 此侦听终结点挂接到不同的计算方法（例如：“Add(n1, n2)”），这些方法定义计算器的公共 API。
 
 从客户端进行调用时，将调用相应的方法，并且计算器服务会对所提供的数据执行运算并返回结果。 它不存储任何状态。
 
 不存储任何内部状态让此示例计算器变得十分简单。 不过大多数服务并不是真正的无状态。 它们是将状态外部化到其他某个存储。 （例如，任何依赖在备份存储或缓存中保留会话状态的 Web 应用程序便不是无状态的。）
 
-Service Fabric 中常见的无状态服务使用示例是作为前端，它公开 Web 应用程序的面向公众的 API。 然后，前端服务指示有状态服务完成用户请求。 在这种情况下，来自客户端的调用将定向到无状态服务正在侦听的某个已知端口（如 80）。 此无状态服务将接收调用，并判断调用是否来自可信方以及其目标服务是哪一个。  然后，此无状态服务将调用转发到有状态服务的正确分区并等待响应。 无状态服务收到响应后，将回复原始客户端。 我们的示例 [C#](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started) / [Java](https://github.com/Azure-Samples/service-fabric-java-getting-started/tree/master/Actors/VisualObjectActor/VisualObjectWebService) 中提供了此类服务的示例。 这只是此模式的示例之一，还有其他许多的示例。
+Service Fabric 中常见的无状态服务使用示例是作为前端，它公开 Web 应用程序的面向公众的 API。 然后，前端服务指示有状态服务完成用户请求。 在这种情况下，来自客户端的调用将定向到无状态服务正在侦听的某个已知端口（如 80）。 此无状态服务将接收调用，并判断调用是否来自可信方以及其目标服务是哪一个。  然后，此无状态服务将调用转发到有状态服务的正确分区并等待响应。 无状态服务收到响应后，将回复原始客户端。 我们的示例 [C#](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started) / [Java](https://github.com/Azure-Samples/service-fabric-java-getting-started) 中提供了此类服务的示例。 这只是此模式的示例之一，还有其他许多的示例。
 
 ### <a name="stateful-reliable-services"></a>有状态的 Reliable Services
 有状态服务是指必须存在状态的某部分并且使该部分保持一致才能正常运行的服务。 假设有一个服务不断地根据某个值收到的更新，计算它的滚动平均值。 为此，它必须具有目前需要处理的传入请求集以及目前的平均值。 检索、处理并将信息存储在外部存储（比如现在的 Azure Blob 或表存储）的任何服务都是有状态的， 只不过它将其状态保存在外部状态存储中。

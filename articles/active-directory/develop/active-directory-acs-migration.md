@@ -16,12 +16,12 @@ ms.workload: identity
 ms.date: 10/03/2018
 ms.author: celested
 ms.reviewer: jlu, annaba, hirsin
-ms.openlocfilehash: e68099609e5a4a27dfae7956fa43634d38311a22
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 01781725e3224e2cab49a5e7cc7dcc33030ce9fb
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53015766"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53971546"
 ---
 # <a name="how-to-migrate-from-the-azure-access-control-service"></a>如何：从 Azure 访问控制服务迁移
 
@@ -151,7 +151,7 @@ https://<mynamespace>.accesscontrol.windows.net
 
 | Feature | 指南 |
 | ------- | -------- |
-| 从 Azure AD 对用户进行身份验证 | 以前，Azure AD 不支持 SharePoint 用来执行身份验证的 SAML 1.1 令牌，并将 ACS 用作中介，使 SharePoint 能够与 Azure AD 令牌格式兼容。 现在，可以[使用 Azure AD 应用库 SharePoint 本地应用](https://docs.microsoft.com/azure/active-directory/saas-apps/sharepoint-on-premises-tutorial)将 SharePoint 直接连接到 Azure AD。 |
+| 从 Azure AD 对用户进行身份验证 | 以前，Azure AD 不支持 SharePoint 进行身份验证所需的 SAML 1.1 令牌，并将 ACS 用作中介，使 SharePoint 能够与 Azure AD 令牌格式兼容。 现在，可以[使用 Azure AD 应用库 SharePoint 本地应用](https://docs.microsoft.com/azure/active-directory/saas-apps/sharepoint-on-premises-tutorial)将 SharePoint 直接连接到 Azure AD。 |
 | [本地 SharePoint 中的应用身份验证和服务器到服务器身份验证](https://technet.microsoft.com/library/jj219571(v=office.16).aspx) | 不受 ACS 停用的影响；无需更改。 | 
 | [SharePoint 加载项的低信任授权（提供程序托管和 SharePoint 托管）](https://docs.microsoft.com/sharepoint/dev/sp-add-ins/three-authorization-systems-for-sharepoint-add-ins) | 不受 ACS 停用的影响；无需更改。 |
 | [SharePoint 云混合搜索](https://blogs.msdn.microsoft.com/spses/2015/09/15/cloud-hybrid-search-service-application/) | 不受 ACS 停用的影响；无需更改。 |
