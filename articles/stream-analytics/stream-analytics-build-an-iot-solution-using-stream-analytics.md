@@ -9,12 +9,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.custom: seodec18
-ms.openlocfilehash: 4817efcb5cfa5f8692f2b7e5c65d411bc0d21942
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 820a918b9ab5dd7a399dc43bcfed29fb3b94e99b
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53317383"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53971097"
 ---
 # <a name="build-an-iot-solution-by-using-stream-analytics"></a>使用流分析构建 IoT 解决方案
 
@@ -185,7 +185,7 @@ ms.locfileid: "53317383"
 ## <a name="review-the-cosmosdb-output-data"></a>查看 CosmosDB 输出数据
 1. 找到包含 TollApp 资源的资源组。
 
-2. 选择名称模式为 **tollapp<random>-cosmos** 的 Azure Cosmos DB 帐户。
+2. 选择名称模式为 **tollapp\<random\>-cosmos** 的 Azure Cosmos DB 帐户。
 
 3. 选择“数据资源管理器”标题打开“数据资源管理器”页。
 
