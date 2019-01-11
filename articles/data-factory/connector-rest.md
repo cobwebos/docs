@@ -9,16 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/20/2018
 ms.author: jingwang
-ms.openlocfilehash: 31f523dc8d171f62e814cd1a4225d2b25a972f36
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 372275740b7d4fd757e97a3966e4e87c9d2de940
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53970315"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54105383"
 ---
 # <a name="copy-data-from-a-rest-endpoint-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 REST 终结点复制数据
 

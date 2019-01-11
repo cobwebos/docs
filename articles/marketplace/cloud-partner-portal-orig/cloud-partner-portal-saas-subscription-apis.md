@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/17/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 9ffb67a2d3d07e75df29070ca198bac1661f95cc
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: c4cf59e6aa7e6edc73db2e22b9fa8ce40301b07c
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50212958"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53790327"
 ---
 <a name="saas-sell-through-azure---apis"></a>通过 Azure 销售 SaaS - API
 ==============================
@@ -67,7 +67,7 @@ Azure 不会对 SaaS 服务公开给其最终用户的身份验证施加任何�
         - 为安装在设备本地的[客户端应用程序](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#client-application)选择“本机”。 此设置用于 OAuth 公共[本机客户端](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#native-client)。
         - 为安装在安全服务器上的[客户端应用程序](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#client-application)和[资源/API 应用程序](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#resource-server)选择“Web 应用/API”。 此设置用于 OAuth 机密性 [Web 客户端](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#web-client)和公共的[基于用户代理的客户端](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#user-agent-based-client)。
         相同的应用程序还可以公开客户端和资源/API。
-    -   **登录 URL**：对于“Web 应用/API”应用程序，请提供应用的基 URL。 例如，**http://localhost:31544** 可以是本地计算机上运行的 Web 应用的 URL。 然后，用户将使用此 URL 登录到 Web 客户端应用程序。
+    -   **登录 URL**：对于 Web 应用/API 应用程序，请提供应用的基 URL。 例如，**http://localhost:31544** 可以是本地计算机上运行的 Web 应用的 URL。 然后，用户将使用此 URL 登录到 Web 客户端应用程序。
     -   **重定向 URI**：对于本机应用程序，请提供 Azure AD 返回令牌响应时所用的 URI。 输入特定于你的应用程序的值，例如 **http://MyFirstAADApp**。
 
         ![SaaS AD 应用注册](media/saas-offer-publish-with-subscription-apis/saas-offer-app-registration-2.png)有关 Web 应用程序或本机应用程序的具体示例，请查看 [Azure AD 开发人员指南](https://docs.microsoft.com/azure/active-directory/develop/active-directory-developers-guide#get-started)的“快速入门”部分中提供的快速入门引导设置。
@@ -136,7 +136,7 @@ HTTP 方法
       "ext_expires_in": "0",
       "expires_on": "15251…",
       "not_before": "15251…",
-      "resource": "b3cca048-ed2e-406c-aff2-40cf19fe7bf5",
+      "resource": "62d94f6c-d599-489b-a797-3e10e42fbe22",
       "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6ImlCakwxUmNxemhpeTRmcHhJeGRacW9oTTJZayIsImtpZCI6ImlCakwxUmNxemhpeTRmcHhJeGRacW9oTTJZayJ9…"
   }               
 ```
@@ -172,7 +172,7 @@ Azure 市场 API 的终结点为 `https://marketplaceapi.microsoft.com`。
 | x-ms-correlationid | 否           | 在客户端上执行的操作的唯一字符串值。 此值将客户端操作生成的所有事件与服务器端的事件相关联。 如果未提供此值，则系统会生成一个值，并在响应标头中提供该值。 |
 | Content-type       | 是          | `application/json`                                        |
 | authorization      | 是          | JSON Web 令牌 (JWT) 持有者令牌。                    |
-| x-ms-marketplace-token| 是| 将用户从 Azure 重定向到 SaaS ISV 网站时 URL 中的令牌查询参数。 **注意：** URL 在使用令牌值之前会从浏览器解码此值。|
+| x-ms-marketplace-token| 是| 将用户从 Azure 重定向到 SaaS ISV 网站时 URL 中的令牌查询参数。 **注意：** 此令牌仅在 1 小时内有效。 此外，URL 会对来自浏览器的令牌值进行解码，然后再使用它。|
 |  |  |  |
   
 
@@ -201,7 +201,7 @@ Azure 市场 API 的终结点为 `https://marketplaceapi.microsoft.com`。
 | **HTTP 状态代码** | **错误代码**     | **说明**                                                                         |
 |----------------------|--------------------| --------------------------------------------------------------------------------------- |
 | 200                  | `OK`                 | 已成功解析令牌。                                                            |
-| 400                  | `BadRequest`         | 缺少必需的标头，或指定了无效的 api-version。 由于令牌格式不正确或已过期，无法解析该令牌。 |
+| 400                  | `BadRequest`         | 缺少必需的标头，或指定了无效的 api-version。 无法解析令牌，因为其中任意一个令牌格式不正确或已过期（令牌仅在生成后的 1 小时内有效）。 |
 | 403                  | `Forbidden`          | 调用方无权执行此操作。                                 |
 | 429                  | `RequestThrottleId`  | 服务正忙于处理请求，请稍后重试。                                |
 | 503                  | `ServiceUnavailable` | 服务暂时关闭，请稍后重试。                                        |
@@ -612,4 +612,36 @@ Azure 市场 API 的终结点为 `https://marketplaceapi.microsoft.com`。
 | x-ms-correlationid | 是          | 如果由客户端传递，则为关联 ID，否则此值为服务器关联 ID。                   |
 | x-ms-activityid    | 是          | 唯一的字符串值，用于跟踪来自服务的请求。 此值用于任何核对操作。 |
 | Retry-After        | 否           | 客户端检查状态的间隔。                                                       |
+|  |  |  |
+
+### <a name="saas-webhook"></a>SaaS Webhook
+
+SaaS webhook 用于主动将更改通知给 SaaS 服务。 此 POST API 应当不进行身份验证并由 Microsoft 服务调用。 在对 webhook 通知采取操作之前，SaaS 服务应当调用操作 API 来进行验证和授权。 
+
+
+*正文*
+
+``` json
+  { 
+    "id": "be750acb-00aa-4a02-86bc-476cbe66d7fa",
+    "activityId": "be750acb-00aa-4a02-86bc-476cbe66d7fa",
+    "subscriptionId":"cd9c6a3a-7576-49f2-b27e-1e5136e57f45",
+    "offerId": "sampleSaaSOffer", // Provided with "Update" action
+    "publisherId": "contoso", 
+    "planId": "silver",     // Provided with "Update" action
+    "action": "Activate", // Activate/Delete/Suspend/Reinstate/Update
+    "timeStamp": "2018-12-01T00:00:00"
+  }
+```
+
+| **参数名称**     | **数据类型** | **说明**                               |
+|------------------------|---------------|-----------------------------------------------|
+| id  | String       | 触发的操作的唯一 ID。                |
+| activityId   | String        | 唯一的字符串值，用于跟踪来自服务的请求。 此值用于任何核对操作。               |
+| subscriptionId                     | String        | Azure 中 SaaS 订阅资源的 ID。    |
+| offerId                | String        | 用户订阅的套餐 ID。 仅随“更新”操作提供。        |
+| publisherId                | String        | SaaS 产品/服务的发布者 ID         |
+| planId                 | String        | 用户订阅的计划 ID。 仅随“Update”操作提供。          |
+| action                 | String        | 触发此通知的操作。 可能的值 - Activate、Delete、Suspend、Reinstate、Update          |
+| timeStamp                 | String        | 此通知的触发时间的时间戳值（采用 UTC 格式）。          |
 |  |  |  |

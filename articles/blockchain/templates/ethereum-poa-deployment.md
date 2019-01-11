@@ -10,12 +10,12 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: brendal
 manager: vamelech
-ms.openlocfilehash: 12fab05ef7c459419c8aaf319098fddaae1416e6
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: 145dd36629286980c0f0e1692df3afb227764285
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48240749"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53974040"
 ---
 # <a name="ethereum-proof-of-authority-consortium"></a>Ethereum 权威证明联盟
 
@@ -38,7 +38,7 @@ ms.locfileid: "48240749"
 
 ### <a name="proof-of-authority"></a>权威证明
 
-对于那些刚刚进入区块链社区的人来说，该解决方案的发布是在 Azure 上以简单的可配置方式了解该技术的绝佳机会。 工作量证明是一种抗 Sybil 机制，利用计算成本对网络进行自我调节并允许公平参与。 这非常适合开放的匿名区块链网络，其中加密货币的竞争提升了网络安全性。 但是，在专用/联盟网络中，基础 Ether 没有值。 另一种协议（权威证明）更适合所有共识参与者都已知且可信的特权网络。 无需进行挖矿，权威证明更有效，同时仍保留拜占庭容错。
+对于那些刚刚进入区块链社区的人来说，该解决方案的发布是在 Azure 上以简单的可配置方式了解该技术的绝佳机会。 工作量证明是一种抗 Sybil 机制，利用计算成本对网络进行自我调节并允许公平参与。 这非常适合开放的匿名区块链网络，其中加密货币的竞争提升了网络安全性。 但是，在专用/联盟网络中，基础 Ether 没有值。 另一种协议（权威证明）更适合所有共识参与者都已知且可信的特权网络。 无需进行挖掘，权威证明更有效，同时仍保留拜占庭容错。
 
 ### <a name="consortium-governance"></a>联盟治理
 
@@ -50,7 +50,7 @@ ms.locfileid: "48240749"
 
 ### <a name="validator-node"></a>验证程序节点
 
-在权威证明协议中，验证程序节点取代了传统的挖矿程序节点。 每个验证程序都有一个添加到智能合同权限列表中的唯一 Ethereum 标识。 验证程序包含在此列表中之后，即可参与块创建过程。 有关此过程的详细信息，请参阅关于[权威系列共识](https://wiki.parity.io/Aura)的奇偶校验文档。 每个联盟成员可以跨五个区域预配两个或更多验证程序节点，用于提供异地冗余。 验证程序节点与其他验证程序节点进行通信以就基础分布式账本的状态达成共识。
+在权威证明协议中，验证程序节点取代了传统的挖掘程序节点。 每个验证程序都有一个添加到智能合同权限列表中的唯一 Ethereum 标识。 验证程序包含在此列表中之后，即可参与块创建过程。 有关此过程的详细信息，请参阅关于[权威系列共识](https://wiki.parity.io/Aura)的奇偶校验文档。 每个联盟成员可以跨五个区域预配两个或更多验证程序节点，用于提供异地冗余。 验证程序节点与其他验证程序节点进行通信以就基础分布式账本的状态达成共识。
 为确保网络上的公平参与，每个联盟成员使用的验证程序数不得超过网络上第一个成员使用的验证程序数（如果第一个成员部署三个验证程序，则每个成员最多只能有三个验证程序）。
 
 ### <a name="identity-store"></a>标识存储区
@@ -212,7 +212,7 @@ ms.locfileid: "48240749"
 电子邮件地址（可选）|部署完成后，可收到包含相关部署信息的电子邮件通知。|有效的电子邮件地址|NA
 VM 用户名|部署的每个 VM 的管理员用户名（仅限字母数字字符）|1-64 个字符|NA
 身份验证类型|对虚拟机进行身份验证的方法。|密码或 SSH 公钥|密码
-密码（身份验证类型 = 密码）|部署的每个虚拟机的管理员帐户密码。  密码必须包含下列要求中的 3 项：1 个大写字符、1 个小写字符、1 个数字和 1 个特殊字符。 虽然所有 VM 最初都有相同的密码，但可以在预配后更改密码。|12-72 个字符|NA
+密码（身份验证类型 = 密码）|部署的每个虚拟机的管理员帐户密码。  密码必须包含以下 3 项：1 个大写字符、1 个小写字符、1 个数字和 1 个特殊字符。 虽然所有 VM 最初都有相同的密码，但可以在预配后更改密码。|12-72 个字符|NA
 SSH 密钥（身份验证类型 = 公钥）|用于远程登录的安全 shell 密钥。||NA
 订阅|部署联盟网络的订阅||NA
 资源组|部署联盟网络的资源组。||NA
@@ -744,7 +744,7 @@ $ truffle migrate --network poa
 
 ### <a name="debug-smart-contract-with-truffle"></a>使用 Truffle 调试智能合同
 
-Truffle 具有可用于调试智能合同的本地开发网络。 可在[此处](http://truffleframework.com/tutorials/debugging-a-smart-contract)找到完整教程。
+Truffle 具有可用于调试智能合同的本地开发网络。 可在[此处](https://truffleframework.com/tutorials/debugging-a-smart-contract)找到完整教程。
 
 ### <a name="webassembly-wasm-support"></a>WebAssembly (WASM) 支持
 

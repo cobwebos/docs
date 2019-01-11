@@ -1,18 +1,17 @@
 ---
 title: Azure Cosmos DB 的常见用例和方案
 description: 了解 Azure Cosmos DB 最常见的五个用例：用户生成的内容、事件日志记录、目录数据、用户首选项数据和物联网 (IoT)。
-services: cosmos-db
 ms.service: cosmos-db
 author: SnehaGunda
 ms.author: sngun
 ms.topic: conceptual
 ms.date: 05/07/2017
-ms.openlocfilehash: c93b53a78891eaf46e5455bd13198f7b9bd90903
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.openlocfilehash: 935c6ff03485c2b8e4d3e2f3df51c740ec1e8371
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53807999"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54043288"
 ---
 # <a name="common-azure-cosmos-db-use-cases"></a>Azure Cosmos DB 常见用例
 本文概述了 Azure Cosmos DB 的几个常见用例。  本文中的建议可以作为使用 Cosmos DB 开发应用程序的一个起点。   
@@ -69,7 +68,7 @@ Azure Cosmos DB 通常用于事件寻源，可使用其[更改源](change-feed.m
 ## <a name="gaming"></a>游戏
 数据库层是游戏应用程序的关键组件。 新式游戏可在移动/控制台客户端执行图形处理，但需依赖云传输自定义的个性化内容，例如游戏中的统计数据、社交媒体集成以及高分排行榜。 游戏通常需要单毫秒的读取和写入延迟，从而带来具有吸引力的游戏体验。 新游戏启动和功能更新期间，游戏数据库需要具备很快的速度，并且要能够处理请求速率中的大量峰值。
 
-Azure Cosmos DB 用于 [Next Games](https://www.nextgames.com/) 推出的 [The Walking Dead:No Man's Land](https://azure.microsoft.com/blog/the-walking-dead-no-mans-land-game-soars-to-1-with-azure-documentdb/)（行尸走肉：无人地带）和 [Halo 5:Guardians](https://azure.microsoft.com/blog/how-halo-5-guardians-implemented-social-gameplay-using-azure-documentdb/)（光环 5：守护者）等游戏。 对于游戏开发人员，Azure Cosmos DB 具备以下优势：
+Azure Cosmos DB 用于 Next Games 推出的 [The Walking Dead:No Man's Land](https://azure.microsoft.com/blog/the-walking-dead-no-mans-land-game-soars-to-1-with-azure-documentdb/)（行尸走肉：无人地带）和 [Halo 5:Guardians](https://azure.microsoft.com/blog/how-halo-5-guardians-implemented-social-gameplay-using-azure-documentdb/)（光环 5：守护者）等游戏。 对于游戏开发人员，Azure Cosmos DB 具备以下优势：
 
 * Azure Cosmos DB 允许弹性提高或降低性能。 此优势使游戏可以通过执行单个 API 调用同时处理从几十到数百万不等的游戏配置文件和统计数据的更新。
 * Azure Cosmos DB 支持毫秒读取和写入，有助于避免在玩游戏期间出现任何延迟。

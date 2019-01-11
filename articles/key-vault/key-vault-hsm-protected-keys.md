@@ -10,16 +10,15 @@ ms.assetid: 51abafa1-812b-460f-a129-d714fdc391da
 ms.service: key-vault
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/02/2019
+ms.date: 01/07/2019
 ms.author: barclayn
-ms.openlocfilehash: 44c1406c8ecd8c5ff103fed4d105ecd64d16c358
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: a53e37cf2ac99dcd755f71e9a2a236f27832fbd7
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54002461"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54079198"
 ---
 # <a name="how-to-generate-and-transfer-hsm-protected-keys-for-azure-key-vault"></a>如何为 Azure 密钥保管库生成和传输受 HSM 保护的密钥
 
@@ -414,7 +413,7 @@ KeyVault-BYOK-Tools-UnitedKingdom.zip
 
         KeyTransferRemote.exe -ModifyAcls -KeyAppName simple -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-UK-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-UK-1
 
-运行此命令时，请将 *contosokey* 替换为在[生成密钥](#step-3-generate-your-key)步骤的“步骤 3.5：新建密钥”中指定的相同值。
+运行此命令时，请将 *contosokey* 替换为在生成密钥步骤的“步骤 3.5：新建密钥”中指定的相同值。**
 
 系统会要求插入安全体系的管理员卡。
 
@@ -428,7 +427,7 @@ KeyVault-BYOK-Tools-UnitedKingdom.zip
 * kmfile-dump.exe:
 
         "%nfast_home%\bin\kmfile-dump.exe" "%NFAST_KMDATA%\local\key_xferacld_contosokey"
-  运行这些命令时，请将 contosokey 替换为在[生成密钥](#step-3-generate-your-key)步骤的“步骤 3.5：新建密钥”中指定的相同值。
+  运行这些命令时，请将 contosokey 替换为在生成密钥步骤的“步骤 3.5：新建密钥”中指定的相同值。**
 
 ### <a name="step-42-encrypt-your-key-by-using-microsofts-key-exchange-key"></a>步骤 4.2：使用 Microsoft 的密钥交换密钥加密密钥
 
@@ -479,8 +478,8 @@ KeyVault-BYOK-Tools-UnitedKingdom.zip
 
 运行此命令时，请使用以下说明︰
 
-* 将 *contosokey* 替换为用于在[生成密钥](#step-3-generate-your-key)步骤的“步骤 3.5：新建密钥”中生成密钥的标识符。
-* 将 *SubscriptionID* 替换为包含密钥保管库的 Azure 订阅 ID。 以前已在[准备连接到 Internet 的工作站](#step-1-prepare-your-internet-connected-workstation)步骤的**步骤 1.2：获取 Azure 订阅 ID** 中检索此值。
+* 将 *contosokey* 替换为用于在生成密钥步骤的“步骤 3.5：新建密钥”中生成密钥的标识符。**
+* 将 *SubscriptionID* 替换为包含密钥保管库的 Azure 订阅 ID。 以前已在准备连接到 Internet 的工作站步骤的**步骤 1.2：获取 Azure 订阅 ID** 中检索此值。
 * 将 *ContosoFirstHSMKey* 替换为用于输出文件名称的标签。
 
 此操作成功完成后，它会显示“结果:成功”，并且具有以下名称的当前文件夹中会出现一个新文件：KeyTransferPackage-*ContosoFirstHSMkey*.byok

@@ -10,12 +10,12 @@ ms.component: custom-translator
 ms.date: 11/13/2018
 ms.author: v-rada
 ms.topic: conceptual
-ms.openlocfilehash: 6f88ff8ecd1aee588cb82c08ae2eda58fe2eb1e7
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: f3d2276c92868bd2f9d98b119bc31aee4db13a81
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51626712"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53717546"
 ---
 # <a name="what-is-a-custom-translator-workspace"></a>什么是自定义翻译工作区？
 
@@ -31,7 +31,7 @@ ms.locfileid: "51626712"
 
 类别标识项目的领域 – 要使用的术语和样式的区域。 请选择与文档最相关的类别。 在某些情况下，所选的类别会直接影响自定义翻译的行为。
 
-除常规基准系统以外，我们尚未为其他类别开发自定义模型。 但我们仍建议用户选择最适合其领域的类别，以便可在 CategoryID 中将其用作标识符。 对于技术领域的项目，选择“技术”可确保基准模型可用时，项目能够使用该模型。
+我们有两组基线模型。 它们是“常规”和“技术”。 如果选择了“技术”类别，则将使用“技术”基线模型。 如果选择了任何其他类别，则将使用“常规”基线模型。 “技术”基线模型在技术领域表现良好，但如果用于翻译的句子不在技术领域内，则表现出较低的质量。 我们建议客户只有在句子严格属于技术领域时才选择“技术”类别。
 
 在同一工作区中，可为不同类别中的相同语言对创建项目。 自定义翻译会阻止创建具有相同语言对和类别的重复项目。 将标签应用到项目可避免这种限制。 除非要为多个客户端构建翻译系统，否则请不要使用标签，因为将唯一标签添加到项目的操作会反映在项目的 CategoryID 中。
 
