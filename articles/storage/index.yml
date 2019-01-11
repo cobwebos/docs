@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 77d3bdd755e7c8d68115e12c6bee318fda652b09
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 38f20f74f8c553c134a6ef91151aa49b99ad45b5
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52972195"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54213495"
 documentType: LandingData
 title: Azure 存储文档
 metadata:
@@ -67,9 +67,9 @@ sections:
       - href: /azure/storage/blobs/storage-quickstart-blobs-nodejs
     - title: Data Lake Storage Gen2
       values:
-      - href: /azure/storage/blobs/quickstart-create-account#create-an-account-using-the-azure-portal
-      - href: /azure/storage/blobs/quickstart-create-account#create-an-account-using-powershell
-      - href: /azure/storage/blobs/quickstart-create-account#create-an-account-using-azure-cli
+      - href: /azure/storage/blobs/data-lake-storage-quickstart-create-account#create-an-account-using-the-azure-portal
+      - href: /azure/storage/blobs/data-lake-storage-quickstart-create-account#create-an-account-using-powershell
+      - href: /azure/storage/blobs/data-lake-storage-quickstart-create-account#create-an-account-using-azure-cli
       - href: 
       - href: 
       - href: 
@@ -83,7 +83,7 @@ sections:
     - title: Blob
       html: <p>在云中上传和处理图像数据</p><ul><li><a href="/azure/storage/blobs/storage-upload-process-images">上传和检索云中的图像数据</a></li><li><a href="/azure/event-grid/resize-images-on-storage-blob-upload-event?toc=%2fazure%2fstorage%2fblobs%2ftoc.json">触发 Azure Functions 来处理 Blob</a></li><li><a href="/azure/storage/blobs/storage-secure-access-application">保护应用程序数据</a></li><li><a href="/azure/storage/blobs/storage-monitor-troubleshoot-storage-application">监视存储和排查其问题</a></li></ul><p>针对高可用性设计应用程序</p><ul><li><a href="/azure/storage/blobs/storage-create-geo-redundant-storage">使应用程序数据的可用性高</a></li><li><a href="/azure/storage/blobs/storage-simulate-failure-ragrs-account-app">模拟访问读取访问冗余存储时发生的故障</a></li></ul><p><a href="/azure/storage/blobs/storage-unstructured-search">在 Azure 存储中搜索非结构化数据</a></p>
     - title: Data Lake Storage Gen2
-      html: <p><a href="/azure/storage/blobs/handle-data-using-databricks">使用 Azure Databricks 提取、转换和加载数据</a></p><p><a href="/azure/storage/blobs/data-lake-storage-use-databricks-spark">使用 Spark 通过 DataBricks 访问 Azure Data Lake Storage Gen2 数据</a></p><p><a href="/azure/storage/blobs/data-lake-storage-tutorial-extract-transform-load-hive">使用 Apache Hive on Azure HDInsight 提取、转换和加载数据</a></p>
+      html: <p><a href="/azure/storage/blobs/data-lake-storage-handle-data-using-databricks">使用 Azure Databricks 提取、转换和加载数据</a></p><p><a href="/azure/storage/blobs/data-lake-storage-use-databricks-spark">使用 Spark 通过 DataBricks 访问 Azure Data Lake Storage Gen2 数据</a></p><p><a href="/azure/storage/blobs/data-lake-storage-tutorial-extract-transform-load-hive">使用 Apache Hive on Azure HDInsight 提取、转换和加载数据</a></p>
 - title: 示例
   items:
   - type: paragraph

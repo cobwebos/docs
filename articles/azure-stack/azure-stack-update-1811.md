@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/22/2018
+ms.date: 01/11/2019
 ms.author: sethm
 ms.reviewer: adepue
-ms.openlocfilehash: 15f358f76504436dd6a3cf6a39b10531a9e1b376
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: f5826b2a6935bb448a7a3ef94d9a5f27f1ed9426
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54055160"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54214583"
 ---
 # <a name="azure-stack-1811-update"></a>Azure Stack 1811 更新
 
@@ -82,7 +82,7 @@ Azure Stack 释放定期修补程序。 请务必安装[最新的 Azure Stack �
     then resume the update.
     Exception: The Certificate path does not exist: [certificate path here]` 
  
-    之后已正确导入的必需扩展主机证书，您可以恢复 1811年更新在管理员门户中。 Azure Stack 操作员在更新过程将缩放单位放入维护模式，Microsoft 建议，而失败的原因是缺少扩展主机证书不应影响现有工作负荷或服务。  
+    之后已正确导入的必需扩展主机证书，您可以恢复 1811年更新在管理员门户中。 Azure Stack 操作员在更新过程中计划维护时段，Microsoft 建议，而失败的原因是缺少扩展主机证书不应影响现有工作负荷或服务。  
 
     安装过程中的此更新，在 Azure Stack 用户门户将不可用在配置扩展主机时。 扩展主机的配置可能需要最多 5 个小时。 在此期间，你可以检查更新状态，或者使用 [Azure Stack 管理员 PowerShell 或特权终结点](azure-stack-monitor-update.md)继续执行某个失败的更新安装。
 
@@ -255,8 +255,14 @@ Azure Stack 释放定期修补程序。 请务必安装[最新的 Azure Stack �
 
 - 当创建新 Windows 虚拟机 (VM)，**设置**边栏选项卡要求才能继续选择公共入站的端口。 在 1811，此设置是必需的但不起作用。 这是因为该功能取决于 Azure 防火墙，这会在 Azure Stack 中未实现。 可以选择**无公共入站端口**，或任何其他选项以继续进行创建 VM。 该设置不起。
 
+- 当创建新的 Windows 虚拟机 (VM)，可能会显示以下错误：
+
+   `'Failed to start virtual machine 'vm-name'. Error: Failed to update serial output settings for VM 'vm-name'`
+
+   如果 VM 上启用启动诊断，但删除启动诊断存储帐户后，将发生此错误。 若要解决此问题，请重新创建具有您之前从未使用过与同名的存储帐户。
+
 <!-- 3235634 – IS, ASDK -->
-- 若要将 Vm 部署包含的大小**v2**后缀; 例如， **Standard_A2_v2**，指定作为后缀**Standard_A2_v2** (小写 v)。 不要使用**Standard_A2_V2** （大写 V）。 这适用于全球 Azure，在 Azure Stack 上有不一致的问题。
+- 若要将 Vm 部署包含的大小**v2**后缀; 例如， **Standard_A2_v2**，指定作为后缀**Standard_A2_v2** (小写 v)。 请勿使用 **Standard_A2_V2**（大写 V）。 这适用于全球 Azure，在 Azure Stack 上有不一致的问题。
 
 <!-- 2869209 – IS, ASDK --> 
 - 使用 [**Add-AzsPlatformImage** cmdlet](/powershell/module/azs.compute.admin/add-azsplatformimage) 时，必须使用 **-OsUri** 参数作为存储帐户 URI（在其中上传磁盘）。 如果使用磁盘的本地路径，则此 cmdlet 会失败并显示以下错误： 
@@ -286,18 +292,18 @@ Azure Stack 释放定期修补程序。 请务必安装[最新的 Azure Stack �
    若要查找指标数据，例如 VM 的 CPU 百分比图表，请转到**指标**窗口并显示所有受支持的 Windows VM 来宾指标。
 
 <!-- 3507629 - IS, ASDK --> 
-- 托管的磁盘创建两个新[计算配额类型](azure-stack-quota-types.md#compute-quota-types)来限制可以预配的托管磁盘的最大容量。 默认情况下，为每个托管的磁盘配额类型分配 GiB。 但是，您可能会遇到以下问题：
+- 托管磁盘创建了两个新的[计算配额类型](azure-stack-quota-types.md#compute-quota-types)来限制可以预配的托管磁盘的最大容量。 默认情况下将为每个托管磁盘配额类型分配 2048 GiB。 不过，你可能会遇到以下问题：
 
-   - 对于 1808年更新之前创建的配额，托管磁盘配额将显示 0 值在管理员门户中，尽管分配 GiB。 你可以增加或减少值基于您的实际需求，并使用新设置配额值将覆盖 2048 GiB 默认值。
-   - 如果您更新的配额值为 0，相当于 GiB 的默认值。 作为一种解决方法，设置为 1 的配额值。
+   - 对于在 1808 更新之前创建的配额，托管磁盘配额在管理门户中将显示为值 0，虽然分配了 2048 GiB。 你可以根据实际需求增大或减小该值，新设置的配额值将替代 2048 GiB 默认值。
+   - 如果将配额值更新为 0，则它等效于默认值 2048 GiB。 作为一种解决方法，请将配额值设置为 1。
 
 <!-- TBD - IS ASDK --> 
 - 更新后应用 1811年，部署包含托管磁盘的 Vm 时，您可能会遇到以下问题：
 
-   - 如果 1808年更新，使用托管磁盘部署 VM 之前创建的订阅可能会失败并显示内部错误消息。 若要解决此错误，请针对每个订阅执行以下步骤：
+   - 如果订阅是在 1808 更新之前创建的，则部署具有托管磁盘的 VM 可能会失败并出现内部错误消息。 若要解决此错误，请针对每个订阅执行以下步骤：
       1. 在租户门户中转到“订阅”，找到相应订阅。 选择**资源提供程序**，然后选择**Microsoft.Compute**，然后单击**重新注册**。
       2. 在同一订阅下，转到“访问控制(标识和访问管理)”，验证“Azure Stack - 托管磁盘”是否已列出。
-   - 如果已配置多租户环境中，在与来宾目录关联的订阅中部署虚拟机内部的错误消息可能会失败。 若要解决此错误，请按照中的步骤[这篇文章](azure-stack-enable-multitenancy.md#registering-azure-stack-with-the-guest-directory)重新配置每个来宾目录。
+   - 如果已配置多租户环境，在与来宾目录相关联的订阅中部署 VM 可能会失败并出现内部错误消息。 若要解决错误，请执行[此文章](azure-stack-enable-multitenancy.md#registering-azure-stack-with-the-guest-directory)中的步骤来重新配置每个来宾目录。
 
 - 创建具有 SSH 授权启用的 Ubuntu 18.04 VM 将不允许要使用 SSH 密钥登录。 解决方法是，使用 VM 访问 for Linux 扩展预配后，实现 SSH 密钥或使用基于密码的身份验证。
 

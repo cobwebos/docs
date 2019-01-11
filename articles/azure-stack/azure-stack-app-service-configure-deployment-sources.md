@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/15/2018
 ms.author: sethm
 ms.reviewer: anwestg
-ms.openlocfilehash: b81b9b34843974ceacf41b08a40a52418ea46d22
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 3e8e1626987f7418fee9fc36515131650d865201
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53547543"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54213070"
 ---
 # <a name="configure-deployment-sources"></a>配置部署源
 
@@ -38,7 +38,7 @@ Azure Stack 上的应用服务支持从多个源代码管理提供程序执行�
 ## <a name="view-deployment-sources-in-app-service-administration"></a>在应用服务管理中查看部署源
 
 1. 以服务管理员身份登录到 Azure Stack 管理员门户 (https://adminportal.local.azurestack.external))。
-2. 浏览到**所有服务**，然后选择**应用服务**。
+2. 浏览到“所有服务”，然后选择“应用服务”。
     ![应用服务资源提供程序管理][1]
 3. 单击“源代码管理配置”。 可以看到所有已配置的部署源的列表。
     ![应用服务资源提供程序管理中的源代码管理配置][2]
@@ -138,7 +138,7 @@ Azure Stack 上的应用服务支持从多个源代码管理提供程序执行�
 
 ## <a name="next-steps"></a>后续步骤
 
-用户现在可以使用部署源进行[持续部署](https://docs.microsoft.com/azure/app-service/deploy-continuous-deployment)、[本地 Git 部署](https://docs.microsoft.com/azure/app-service/deploy-local-git)和[云文件夹同步](https://docs.microsoft.com/azure/app-service-web/deploy-content-sync)等操作。
+用户现在可以使用部署源进行[持续部署](https://docs.microsoft.com/azure/app-service/deploy-continuous-deployment)、[本地 Git 部署](https://docs.microsoft.com/azure/app-service/deploy-local-git)和[云文件夹同步](https://docs.microsoft.com/azure/app-service/deploy-content-sync)等操作。
 
 <!--Image references-->
 [1]: ./media/azure-stack-app-service-configure-deployment-sources/App-service-provider-admin.png

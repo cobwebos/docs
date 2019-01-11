@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 09/24/2018
 ms.author: mabrigg
 ms.reviewer: Anjay.Ajodha
-ms.openlocfilehash: f1151c845797d74bbb9a5e50feeeb288a4ab349b
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 917f9a5ff2f6f9f6101b19dccee05fe5ab25c5a9
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53714842"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54214770"
 ---
 # <a name="tutorial-create-a-geo-distributed-app-solution-with-azure-and-azure-stack"></a>教程：使用 Azure 和 Azure Stack 创建异地分布式应用解决方案
 
@@ -81,7 +81,7 @@ ms.locfileid: "53714842"
 
 > [!div class="checklist"]
 > - 创建 Web 应用并发布
-> - 将代码添加到 Azure 存储库
+> - 向 Azure Repos 中添加代码
 > - 将应用生成指向多个云目标。
 > - 管理和配置 CD 过程
 
@@ -106,11 +106,11 @@ ms.locfileid: "53714842"
 设置混合 CI/CD，以将 Web 应用部署到 Azure 和 Azure Stack，并自动将更改推送到这两个云中。
 
 > [!Note]  
-> 需要在 Azure Stack 上创建适当的合成映像用于运行 Windows Server 和 SQL，并需要部署应用服务。 查看应用服务文档中面向 Azure Stack 操作员的[开始使用 Azure Stack 上的应用服务之前](/articles/azure-stack/azure-stack-app-service-before-you-get-started)部分。
+> 需要在 Azure Stack 上创建适当的合成映像用于运行 Windows Server 和 SQL，并需要部署应用服务。 查看应用服务文档[开始使用 Azure Stack 上的应用服务之前](../azure-stack-app-service-before-you-get-started.md)部分，了解 Azure Stack 操作员。
 
-#### <a name="add-code-to-azure-repos"></a>将代码添加到 Azure 存储库
+#### <a name="add-code-to-azure-repos"></a>向 Azure Repos 中添加代码
 
-1. 登录到 Visual Studio**具有项目创建权限帐户**Azure 存储库。
+1. 使用在 Azure Repos 上**拥有项目创建权限的帐户**登录到 Visual Studio。
 
     混合持续集成/持续交付 (CI/CD) 可同时应用到应用程序代码和基础结构代码。 使用 [Azure 资源管理器模板](https://azure.microsoft.com/resources/templates/)进行专用与托管的云开发。
 
@@ -126,13 +126,13 @@ ms.locfileid: "53714842"
 
     ![Alt text](media/azure-stack-solution-geo-distributed/image3.png)
 
-1.  **签入到 Azure 存储库代码**使用团队资源管理器。
+1.  使用团队资源管理器**将代码签入到 Azure Repos**。
 
-2.  确认**应用程序代码**已签入到 Azure 存储库。
+2.  确认**应用程序代码**已签入到 Azure Repos。
 
 ### <a name="create-the-build-definition"></a>创建生成定义
 
-1. **登录到 Azure 管道**确认能够创建生成定义。
+1. **登录到 Azure Pipelines** 以确认能够创建生成定义。
 
 2. 添加 **-r win10-x64** 代码。 在 .Net Core 中触发独立部署时需要此代码。
 
@@ -142,11 +142,11 @@ ms.locfileid: "53714842"
 
 **使用 Azure 托管代理**
 
-在 Azure 管道中使用托管的代理是一个方便的选项来生成和部署 web 应用。 Microsoft Azure 会自动执行维护和升级，可实现持续不间断的开发、测试和部署。
+在 Azure Pipelines 中使用托管代理是生成和部署 Web 应用的便捷做法。 Microsoft Azure 会自动执行维护和升级，可实现持续不间断的开发、测试和部署。
 
 ### <a name="manage-and-configure-the-cd-process"></a>管理和配置 CD 过程
 
-Azure DevOps 和 Azure DevOps 服务器提供高度可配置和可管理管道发布到多个环境，如开发、 过渡、 QA 和生产环境;包括在特定阶段需要审批。
+Azure DevOps 和 Azure DevOps Server 提供高度可配置、可管理的管道，用于将内容发布到多个环境（例如开发、过渡、QA 和生产环境）；在特定的阶段要求审批。
 
 #### <a name="create-release-definition"></a>创建发布定义
 
