@@ -20,7 +20,7 @@ ms.lasthandoff: 06/27/2018
 ms.locfileid: "37046007"
 ---
 # <a name="create-predictive-pipelines-using-azure-machine-learning-and-azure-data-factory"></a>使用 Azure 机器学习和 Azure 数据工厂创建预测管道
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="选择您正在使用的 Data Factory 服务的版本:"]
 > * [第 1 版](v1/data-factory-azure-ml-batch-execution-activity.md)
 > * [当前版本](transform-data-using-machine-learning.md)
 
