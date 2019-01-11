@@ -10,12 +10,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/20/2018
 ms.author: jingwang
-ms.openlocfilehash: 7373cc23654e2168963a364e4b4069331bf196c5
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 8a0808c0e82ee31a5fd684d449fa30cd331d3dba
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53969924"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54063856"
 ---
 # <a name="copy-data-from-amazon-simple-storage-service-using-azure-data-factory"></a>使用 Azure 数据工厂从 Amazon 简单存储服务复制数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -31,7 +31,7 @@ ms.locfileid: "53969924"
 具体而言，此 Amazon S3 连接器支持按原样复制文件，或者使用[受支持的文件格式和压缩编解码器](supported-file-formats-and-compression-codecs.md)分析文件。
 
 >[!TIP]
->可以使用此 Amazon S3 连接器从**任何兼容 S3 的存储提供程序**（例如 [Google 云存储](#copy-from-google-cloud-storage)）复制数据。 在链接的服务配置中指定相应的服务 URL。
+>可以使用此 Amazon S3 连接器从**任何兼容 S3 的存储提供程序**（例如 [Google 云存储](connector-google-cloud-storage.md)）复制数据。 在链接的服务配置中指定相应的服务 URL。
 
 ## <a name="required-permissions"></a>所需的权限
 
@@ -52,7 +52,7 @@ ms.locfileid: "53969924"
 
 Amazon S3 链接的服务支持以下属性：
 
-| 属性 | 说明 | 必需 |
+| 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为“AmazonS3”。 | 是 |
 | accessKeyId | 机密访问键 ID。 |是 |
@@ -95,7 +95,7 @@ Amazon S3 链接的服务支持以下属性：
 
 要从 Amazon S3 复制数据，请将数据集的 type 属性设置为“AmazonS3Object”。 支持以下属性：
 
-| 属性 | 说明 | 必需 |
+| 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 数据集的 type 属性必须设置为：AmazonS3Object |是 |
 | bucketName | S3 存储桶的名称。 不支持通配符筛选器。 |对于复制/查找活动，为“是”；对于 GetMetadata 活动，为“否” |
@@ -177,7 +177,7 @@ Amazon S3 链接的服务支持以下属性：
 
 要从 Amazon S3 复制数据，请将复制活动中的源类型设置为“FileSystemSource”（这包含 Amazon S3）。 复制活动源部分支持以下属性：
 
-| 属性 | 说明 | 必需 |
+| 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 复制活动源的 type 属性必须设置为：FileSystemSource |是 |
 | recursive | 指示是要从子文件夹中以递归方式读取数据，还是只从指定的文件夹中读取数据。 当 recursive 设置为 true 且接收器是基于文件的存储时，将不会在接收器上复制/创建空的文件夹/子文件夹。<br/>允许的值为：true（默认）、false | 否 |
@@ -212,35 +212,6 @@ Amazon S3 链接的服务支持以下属性：
         }
     }
 ]
-```
-
-## <a name="copy-from-google-cloud-storage"></a>从 Google 云存储进行复制
-
-因为 Google 云存储提供了兼容 S3 的互操作性，所以你可以使用 Amazon S3 连接器将数据从 Google 云存储复制到任何[受支持的接收器数据存储](copy-activity-overview.md#supported-data-stores-and-formats)。 
-
-可以在 ADF 创作 UI 连接器库中查找特定的 Google 云存储条目，该条目自动将服务 URL 填写为 `https://storage.googleapis.com`。 若要查找访问密钥和机密，请转到“Google 云存储” > “设置” > “互操作性”。 有关使用 S3 连接器复制数据的详细概述，请从头开始参阅本文。
-
-**链接的服务示例：**
-
-```json
-{
-    "name": "GoogleCloudStorageLinkedService",
-    "properties": {
-        "type": "AmazonS3",
-        "typeProperties": {
-            "accessKeyId": "<access key id>",
-            "secretAccessKey": {
-                "type": "SecureString",
-                "value": "<secret access key>"
-            },
-            "serviceUrl": "https://storage.googleapis.com"
-        },
-        "connectVia": {
-            "referenceName": "<name of Integration Runtime>",
-            "type": "IntegrationRuntimeReference"
-        }
-    }
-}
 ```
 
 ## <a name="next-steps"></a>后续步骤

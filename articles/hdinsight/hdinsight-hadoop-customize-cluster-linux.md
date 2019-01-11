@@ -9,18 +9,18 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: hrasheed
-ms.openlocfilehash: 5ef7ddc068fea7703dad67b80b96c292bfd26943
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: e655624a30332630c28cbd555dac26098adeb68b
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52870693"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53976913"
 ---
 # <a name="customize-linux-based-hdinsight-clusters-using-script-actions"></a>使用脚本操作自定义基于 Linux 的 HDInsight 群集
 
 HDInsight 提供一个称为**脚本操作**的配置方法，该方法可调用用于自定义群集的自定义脚本。 这些脚本用于安装附加组件和更改配置设置。 可以在创建群集期间或创建群集后使用脚本操作。
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > 只有基于 Linux 的 HDInsight 群集能够在运行中的群集上使用脚本操作。
 >
 > Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight 在 Windows 上停用](hdinsight-component-versioning.md#hdinsight-windows-retirement)。
@@ -53,12 +53,12 @@ HDInsight 提供一个称为**脚本操作**的配置方法，该方法可调用
 
 * 必须存储在可从 HDInsight 群集访问的 URI 上。 下面是可能的存储位置：
 
-    * HDInsight 群集可访问的 **Azure Data Lake Store** 帐户。 有关将 Azure Data Lake Store 与 HDInsight 配合使用的信息，请参阅[快速入门：在 HDInsight 中设置群集](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)。
+    * HDInsight 群集可访问的 **Azure Data Lake Storage** 帐户。 有关将 Azure Data Lake Storage 与 HDInsight 配合使用的信息，请参阅[快速入门：在 HDInsight 中设置群集](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)。
 
-        使用存储在 Data Lake Store 中的脚本时，URI 格式为 `adl://DATALAKESTOREACCOUNTNAME.azuredatalakestore.net/path_to_file`。
+        使用存储在 Data Lake Storage 中的脚本时，URI 格式为 `adl://DATALAKESTOREACCOUNTNAME.azuredatalakestore.net/path_to_file`。
 
-        > [!NOTE]
-        > 用于访问 Data Lake Store 的服务主体 HDInsight 必须具有对脚本的读取访问权限。
+        > [!NOTE]  
+        > 用于访问 Data Lake Storage 的服务主体 HDInsight 必须具有对脚本的读取访问权限。
 
     * **Azure 存储帐户**中的一个 blob，该存储帐户可以是 HDInsight 群集的主存储帐户，也可以是其附加存储帐户。 在创建群集期间，已将这两种存储帐户的访问权限都授予 HDInsight。
 
@@ -66,7 +66,7 @@ HDInsight 提供一个称为**脚本操作**的配置方法，该方法可调用
 
         有关示例 URI，请参阅[脚本操作脚本示例](#example-script-action-scripts)部分。
 
-        > [!WARNING]
+        > [!WARNING]  
         > HDInsight 仅支持具有标准性能层的 Azure 存储帐户中的 Blob。 
 
 * 可限制为**只对特定的节点类型运行**，例如头节点或辅助角色节点。
@@ -75,12 +75,12 @@ HDInsight 提供一个称为**脚本操作**的配置方法，该方法可调用
 
     **持久化**脚本用于自定义通过缩放操作添加到群集的新工作节点。 进行缩放操作时，持久化脚本还可以将更改应用于其他节点类型，如头节点。
 
-  > [!IMPORTANT]
+  > [!IMPORTANT]  
   > 持久化脚本操作必须有唯一的名称。
 
     **即席**脚本不会持久保存。 它们在运行后不会应用于添加到群集的辅助节点。 以后可将即席脚本升级为持久化脚本，或将持久化脚本降级为即席脚本。
 
-  > [!IMPORTANT]
+  > [!IMPORTANT]  
   > 创建群集期间使用的脚本操作会自动持久保存下来。
   >
   > 即使明确指出应予保存，也不会持久保存失败的脚本。
@@ -93,7 +93,7 @@ HDInsight 提供一个称为**脚本操作**的配置方法，该方法可调用
 
 群集保留已运行的所有脚本的历史记录。 需要查找要升级或降级的脚本的 ID 时，历史记录很有用。
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > 没有任何自动方式可撤销脚本操作所做的更改。 手动撤消更改，或者提供一个脚本来撤消更改。
 
 ### <a name="script-action-in-the-cluster-creation-process"></a>群集创建过程中的脚本操作
@@ -110,13 +110,13 @@ HDInsight 提供一个称为**脚本操作**的配置方法，该方法可调用
 
 脚本在配置 HDInsight 时运行。 脚本在群集中的所有指定节点上并行运行，并且在节点上使用 root 权限运行。
 
-> [!NOTE]
+> [!NOTE]  
 > 可以执行停止和启动服务（包括 Apache Hadoop 相关服务）等操作。 如果停止服务，必须确保 Ambari 服务及其他 Hadoop 相关服务在脚本完成运行之前正在运行。 这些服务必须在群集创建时，成功地确定群集的运行状况和状态。
 
 
 在创建群集期间，可以同时使用多个脚本操作。 按照这些脚本的指定顺序调用它们。
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > 脚本操作必须在 60 分钟内完成，否则会超时。 在群集预配期间，脚本将与其他安装和配置进程一同运行。 争用 CPU 时间和网络带宽等资源可能导致完成脚本所需的时间要长于在开发环境中所需的时间。
 >
 > 若要让运行脚本所花费的时间降到最低，请避免从源下载和编译应用程序等任务。 预编译应用程序，并将二进制文件存储在 Azure 存储中。
@@ -126,7 +126,7 @@ HDInsight 提供一个称为**脚本操作**的配置方法，该方法可调用
 
 在运行中群集上运行的脚本发生失败并不会自动导致群集更改为失败状态。 脚本完成后，群集应该恢复“正在运行”状态。
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > 即使群集处于“正在运行”状态，失败的脚本也可能已损坏。 例如，脚本无法删除群集所需的文件。
 >
 > 使用 root 权限运行的脚本操作。 确保先了解脚本的作用，然后再将它应用到群集。
@@ -138,7 +138,7 @@ HDInsight 提供一个称为**脚本操作**的配置方法，该方法可调用
     EndTime           : 8/14/2017 7:41:05 PM
     Status            : Succeeded
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > 如果在创建群集后更改群集用户 (admin) 的密码，针对此群集运行的脚本操作可能会失败。 如果任何持久性脚本操作以辅助节点为目标，则缩放群集时，这些脚本可能失败。
 
 ## <a name="example-script-action-scripts"></a>脚本操作脚本示例
@@ -242,16 +242,17 @@ HDInsight .NET SDK 提供客户端库，可简化从 .NET 应用程序中使用 
 
 ### <a name="apply-a-script-action-to-a-running-cluster-from-the-azure-portal"></a>从 Azure 门户将脚本操作应用到正在运行的群集
 
-1. 在 [Azure 门户](https://portal.azure.com)中，选择 HDInsight 群集。
+从 [Azure 门户](https://portal.azure.com)：
 
-2. 从 HDInsight 群集概述中，选择“脚本操作”磁贴。
+1. 在左侧菜单中，选择“所有服务”。
 
-    ![脚本操作磁贴](./media/hdinsight-hadoop-customize-cluster-linux/scriptactionstile.png)
+1. 在“ANALYTICS”下，选择“HDInsight 群集”。
 
-   > [!NOTE]
-   > 也可以从“设置”部分中依次选择“所有设置”和“脚本操作”。
+1. 从列表中选择群集，随即将打开默认视图。
 
-3. 从“脚本操作”部分顶部选择“提交新项”。
+1. 在默认视图中的“设置”下，选择“脚本操作”。
+
+1. 在“脚本操作”页顶部，选择“+ 提交新项”。
 
     ![将脚本添加到正在运行的群集](./media/hdinsight-hadoop-customize-cluster-linux/add-script-running-cluster.png)
 
@@ -342,14 +343,15 @@ HDInsight .NET SDK 提供客户端库，可简化从 .NET 应用程序中使用 
 
 ### <a name="using-the-azure-portal"></a>使用 Azure 门户
 
-1. 在 [Azure 门户](https://portal.azure.com)中，选择 HDInsight 群集。
+1. 登录到 [Azure 门户](https://portal.azure.com)。
 
-2. 从 HDInsight 群集概述中，选择“脚本操作”磁贴。
+1. 在左侧菜单中，选择“所有服务”。
 
-    ![脚本操作磁贴](./media/hdinsight-hadoop-customize-cluster-linux/scriptactionstile.png)
+1. 在“ANALYTICS”下，选择“HDInsight 群集”。
 
-   > [!NOTE]
-   > 也可以从“设置”部分中依次选择“所有设置”和“脚本操作”。
+1. 从列表中选择群集，随即将打开默认视图。
+
+1. 在默认视图中的“设置”下，选择“脚本操作”。
 
 4. 此群集的脚本历史记录显示在“脚本操作”部分上。 此信息包含持久化脚本列表。 在下面的屏幕截图中，可以看到 Solr 脚本已在此群集上运行。 该屏幕截图不显示任何持久化脚本。
 
@@ -372,7 +374,7 @@ HDInsight .NET SDK 提供客户端库，可简化从 .NET 应用程序中使用 
 | Set-AzureRmHDInsightPersistedScriptAction |将即席脚本操作升级为持久化脚本操作 |
 | Remove-AzureRmHDInsightPersistedScriptAction |将持久化脚本操作降级为即席脚本操作 |
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > 使用 `Remove-AzureRmHDInsightPersistedScriptAction` 不会撤消脚本执行的操作。 此 cmdlet 仅删除持久化标志。
 
 以下示例脚本演示如何使用 cmdlet 来升级再降级脚本。
@@ -390,14 +392,14 @@ HDInsight .NET SDK 提供客户端库，可简化从 .NET 应用程序中使用 
 | `azure hdinsight script action persisted set <clustername> <scriptexecutionid>` |将即席脚本操作升级为持久化脚本操作 |
 | `azure hdinsight script-action persisted delete <clustername> <scriptname>` |将持久化脚本操作降级为即席脚本操作 |
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > 使用 `azure hdinsight script-action persisted delete` 不会撤消脚本执行的操作。 此 cmdlet 仅删除持久化标志。
 
 ### <a name="using-the-hdinsight-net-sdk"></a>使用 HDInsight .NET SDK
 
 有关使用 .NET SDK 从群集中检索脚本历史记录、升级或降级脚本的示例，请参阅 [https://github.com/Azure-Samples/hdinsight-dotnet-script-action](https://github.com/Azure-Samples/hdinsight-dotnet-script-action)。
 
-> [!NOTE]
+> [!NOTE]  
 > 本示例还演示了如何使用 .NET SDK 安装 HDInsight 应用程序。
 
 ## <a name="support-for-open-source-software-used-on-hdinsight-clusters"></a>支持 HDInsight 群集上使用的开放源代码软件
@@ -409,10 +411,10 @@ HDInsight 服务中有两种类型的开放源代码组件：
 * **内置组件** - 这些组件预先安装在 HDInsight 群集上，并提供在群集的核心功能。 例如，[Apache Hadoop YARN](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html) ResourceManager、Hive 查询语言 ([HiveQL](https://cwiki.apache.org/confluence/display/Hive/LanguageManual)) 及 [Apache Mahout](https://mahout.apache.org/) 库均属于此类别。 [HDInsight 提供的 Hadoop 群集版本有哪些新功能](hdinsight-component-versioning.md)中提供了群集组件的完整列表。
 * **自定义组件** - 作为群集用户，可以安装，或者在工作负荷中使用由社区提供的或自己创建的任何组件。
 
-> [!WARNING]
+> [!WARNING]  
 > HDInsight 群集提供的组件受到完全支持。 Microsoft 支持部门可帮助找出并解决与这些组件相关的问题。
 >
-> 自定义组件可获得合理范围的支持，以帮助你进一步排查问题。 Microsoft 支持部门也许能够解决问题，也可能要求你参与可用的开放源代码技术渠道，获取该技术的深入专业知识。 有许多可以使用的社区站点，例如：[面向 HDInsight 的 MSDN 论坛](https://social.msdn.microsoft.com/Forums/azure/home?forum=hdinsight)、[http://stackoverflow.com](http://stackoverflow.com)。 此外，Apache 项目在 [http://apache.org](http://apache.org) 上提供了项目站点，例如：[Hadoop](http://hadoop.apache.org/)。
+> 自定义组件可获得合理范围的支持，以帮助你进一步排查问题。 Microsoft 支持部门也许能够解决问题，也可能要求你参与可用的开放源代码技术渠道，获取该技术的深入专业知识。 例如，有许多可以使用的社区站点，例如：[面向 HDInsight 的 MSDN 论坛](https://social.msdn.microsoft.com/Forums/azure/home?forum=hdinsight)、[https://stackoverflow.com](https://stackoverflow.com)。 此外，Apache 项目在 [https://apache.org](https://apache.org) 上有项目站点，例如：[Hadoop](https://hadoop.apache.org/)。
 
 HDInsight 服务提供多种方式来使用自定义组件。 不论在群集上使用组件或安装组件的方式为何，均适用相同级别的支持。 以下列表介绍 HDInsight 群集上最常见的自定义组件用法：
 
@@ -474,7 +476,7 @@ HDInsight 服务提供多种方式来使用自定义组件。 不论在群集上
 
 ### <a name="ambari-watchdog"></a>Ambari 监视程序
 
-> [!WARNING]
+> [!WARNING]  
 > 不要在基于 Linux 的 HDInsight 群集上更改 Ambari 监视程序 (hdinsightwatchdog) 的密码。 更改此帐户的密码将无法在 HDInsight 群集上运行新脚本操作。
 
 ### <a name="cant-import-name-blobservice"></a>无法导入名称 BlobService

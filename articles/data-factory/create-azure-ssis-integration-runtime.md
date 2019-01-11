@@ -8,26 +8,26 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/28/2018
+ms.date: 12/26/2018
 author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: 75b5246b83106b7d331ad3d467de2005e8d1f854
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: f5305c2d077f909a4b6c7c5e6905376d655dd60d
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51279087"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53794560"
 ---
-# <a name="create-the-azure-ssis-integration-runtime-in-azure-data-factory"></a>在 Azure 数据工厂中创建 Azure-SSIS 集成运行时
-本文提供在 Azure 数据工厂中配置 Azure-SSIS 集成运行时所要执行的步骤。 然后，可以使用 SQL Server Data Tools (SSDT) 或 SQL Server Management Studio (SSMS) 在 Azure 的此运行时中部署并运行 SQL Server Integration Services (SSIS) 包。 
+# <a name="create-azure-ssis-integration-runtime-in-azure-data-factory"></a>在 Azure 数据工厂中创建 Azure-SSIS 集成运行时
+本文提供在 Azure 数据工厂 (ADF) 中配置 Azure-SSIS 集成运行时 (IR) 所要执行的步骤。 然后，可以使用 SQL Server Data Tools (SSDT) 或 SQL Server Management Studio (SSMS) 在 Azure 的此集成运行时中部署并运行 SQL Server Integration Services (SSIS) 包。 
 
-[教程：将 SQL Server Integration Services 包 (SSIS) 部署到 Azure](tutorial-create-azure-ssis-runtime-portal.md) 介绍了如何使用 Azure SQL 数据库来承载 SSIS 目录，以创建 Azure-SSIS 集成运行时 (IR)。 本文对该教程的内容做了延伸，介绍了如何执行以下操作： 
+[教程：将 SSIS 包部署到 Azure](tutorial-create-azure-ssis-runtime-portal.md) 介绍了如何使用 Azure SQL 数据库来承载 SSIS 目录数据库 (SSISDB)，以创建 Azure-SSIS IR。 本文对该教程的内容做了延伸，介绍了如何执行以下操作： 
 
-- （可选）结合虚拟网络服务终结点/用作数据库服务器的托管实例，使用 Azure SQL 数据库来托管 SSIS 目录（SSISDB 数据库）。 有关选择用来托管 SSISDB 的数据库服务器类型的指导，请参阅[比较 SQL 数据库逻辑服务器和 SQL 数据库托管实例](create-azure-ssis-integration-runtime.md#compare-sql-database-logical-server-and-sql-database-managed-instance)。 作为先决条件，需将 Azure-SSIS IR 加入虚拟网络，并根据需要配置虚拟网络权限和设置。 请参阅[将 Azure-SSIS IR 加入虚拟网络](https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network)。 
+- （可选）使用 Azure SQL 数据库服务器与虚拟网络服务终结点/托管实例来托管 SSISDB。 有关如何选择用于托管 SSISDB 的数据库服务器类型的指导，请参阅[比较 Azure SQL 数据库服务器和托管实例](create-azure-ssis-integration-runtime.md#compare-sql-database-logical-server-and-sql-database-managed-instance)。 作为先决条件，需将 Azure-SSIS IR 加入虚拟网络，并根据需要配置虚拟网络权限/设置。 请参阅[将 Azure-SSIS IR 加入虚拟网络](https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network)。 
 
-- （可选）对 Azure 数据工厂的托管标识使用 Azure Active Directory (AAD) 身份验证，以连接到数据库服务器。 作为先决条件，需将 ADF 的托管标识添加到有权访问数据库服务器的 AAD 组中。具体请参阅[为 Azure-SSIS IR 启用 AAD 身份验证](https://docs.microsoft.com/azure/data-factory/enable-aad-authentication-azure-ssis-ir)。 
+- （可选）对 ADF 的托管标识使用 Azure Active Directory (AAD) 身份验证，以连接到数据库服务器。 作为先决条件，需将 ADF 的托管标识添加为能够在 Azure SQL 数据库服务器/托管实例中创建 SSISDB 的包含的数据库用户。具体请参阅[为 Azure-SSIS IR 启用 AAD 身份验证](https://docs.microsoft.com/azure/data-factory/enable-aad-authentication-azure-ssis-ir)。 
 
 ## <a name="overview"></a>概述
 本文演示预配 Azure-SSIS IR 的不同方法： 
@@ -36,41 +36,41 @@ ms.locfileid: "51279087"
 - [Azure PowerShell](#azure-powershell) 
 - [Azure 资源管理器模板](#azure-resource-manager-template) 
 
-创建 Azure-SSIS IR 时，数据工厂服务将连接到 Azure SQL 数据库以准备 SSIS 目录数据库 (SSISDB)。 它还会配置虚拟网络的权限和设置（如果已指定），并将 Azure SSIS 集成运行时的新实例加入虚拟网络中。 
+创建 Azure-SSIS IR 时，ADF 服务将连接到 Azure SQL 数据库服务器/托管实例以准备 SSISDB。 它还会配置虚拟网络的权限/设置（如果已指定），并将 Azure-SSIS IR 加入虚拟网络中。 
 
-预配 Azure-SSIS IR 的实例时，还会安装 Azure Feature Pack for SSIS 和 Access Redistributable。 除了内置组件支持的数据源外，这些组件还提供与 Excel 和 Access 文件和各种 Azure 数据源的连接。 还可以安装其他组件。 有关详细信息，请参阅 [Azure-SSIS 集成运行时的自定义设置](how-to-configure-azure-ssis-ir-custom-setup.md)。 
+预配 Azure-SSIS IR 时，还会安装 Azure Feature Pack for SSIS 和 Access Redistributable。 除了内置组件支持的数据源外，这些组件还提供与 Excel/Access 文件和各种 Azure 数据源的连接。 还可以安装其他组件。 有关详细信息，请参阅 [Azure-SSIS 集成运行时的自定义设置](how-to-configure-azure-ssis-ir-custom-setup.md)。 
 
 ## <a name="prerequisites"></a>先决条件 
 - **Azure 订阅**。 如果没有订阅，可以创建一个[免费试用](https://azure.microsoft.com/pricing/free-trial/)帐户。 
 
-- **Azure SQL 数据库逻辑服务器或托管实例**。 如果还没有数据库服务器，请在启动之前在 Azure 门户中创建一个。 此服务器承载着 SSIS 目录数据库 (SSISDB)。 建议在集成运行时所在的同一 Azure 区域中创建数据库服务器。 此配置允许集成运行时将执行日志写入 SSISDB 而无需跨 Azure 区域。 根据所选数据库服务器的不同，SSISDB 的创建方式也不相同：可以代表你作为单个数据库创建、可以充当弹性池的一部分创建，也可以在托管实例中创建，并可在公用网络中访问或者通过加入虚拟网络来访问。 有关受支持的 Azure SQL 数据库定价层列表，请参阅 [SQL 数据库资源限制](../sql-database/sql-database-resource-limits.md)。 
+- **Azure SQL 数据库服务器或托管实例**。 如果没有数据库服务器，可在开始之前先在 Azure 门户中创建一个。 此服务器将承载 SSISDB。 建议在集成运行时所在的同一 Azure 区域中创建数据库服务器。 此配置允许集成运行时将执行日志写入 SSISDB 而无需跨 Azure 区域。 根据所选数据库服务器的不同，SSISDB 的创建方式也不相同：可以代表你作为单个数据库创建、可以充当弹性池的一部分创建，也可以在托管实例中创建，并可在公用网络中访问或者通过加入虚拟网络来访问。 有关受支持的 Azure SQL 数据库定价层列表，请参阅 [SQL 数据库资源限制](../sql-database/sql-database-resource-limits.md)。 
 
-    确保 Azure SQL 数据库逻辑服务器或托管实例没有 SSIS 目录（SSIDB 数据库）。 预配 Azure-SSIS IR 时不支持使用现有 SSIS 目录。 
+    确保 Azure SQL 数据库服务器/托管实例不包含 SSISDB。 预配 Azure-SSIS IR 时不支持使用现有 SSISDB。 
 
-- **经典或 Azure 资源管理器虚拟网络（可选）**。 如果下列条件中至少有一个属实，则必须具有 Azure 虚拟网络： 
-    - 要在 Azure SQL 数据库中托管 SSIS 目录数据库，该 SQL 数据库包含虚拟网络中的虚拟网络服务终结点/托管实例。 
-    - 想要从 Azure-SSIS 集成运行时中运行的 SSIS 包连接到本地数据存储。 
+- **Azure 资源管理器虚拟网络（可选）**。 如果下列条件中至少有一个属实，则必须配置 Azure 资源管理器虚拟网络： 
+    - 要在 Azure SQL 数据库服务器中承载 SSISDB，该服务器包含虚拟网络中的虚拟网络服务终结点或托管实例。 
+    - 要从 Azure-SSIS IR 中运行的 SSIS 包连接到本地据存储。 
 
-- **Azure PowerShell**。 如果使用 PowerShell 运行脚本来预配在云中运行 SSIS 包的 Azure-SSIS 集成运行时，请遵照[如何安装和配置 Azure PowerShell](/powershell/azure/install-azurerm-ps) 中的说明。 
+- **Azure PowerShell**。 若要运行 PowerShell 脚本来预配 Azure-SSIS IR，请遵照[如何安装和配置 Azure PowerShell](/powershell/azure/install-azurerm-ps) 中的说明。 
 
 ### <a name="region-support"></a>区域支持
-如需目前提供数据工厂和 Azure-SSIS 集成运行时的 Azure 区域的列表，请参阅 [ADF + SSIS IR 可用性（按区域）](https://azure.microsoft.com/global-infrastructure/services/?products=data-factory&regions=all)。 
+有关目前提供 ADF 和 Azure-SSIS IR 的 Azure 区域的列表，请参阅 [ADF + SSIS IR 可用性（按区域）](https://azure.microsoft.com/global-infrastructure/services/?products=data-factory&regions=all)。 
 
 ### <a name="compare-sql-database-logical-server-and-sql-database-managed-instance"></a>比较 SQL 数据库逻辑服务器和 SQL 数据库托管实例
 
-下表比较了 SQL 数据库逻辑服务器和 SQL 数据库托管实例与 Azure-SSIR IR 相关的一些功能：
+下表比较了 Azure SQL 数据库服务器和托管实例与 Azure-SSIR IR 相关的某些功能：
 
-| 功能 | SQL 数据库逻辑服务器| SQL 数据库 - 托管实例 |
+| Feature | Azure SQL 数据库服务器| 托管实例 |
 |---------|--------------|------------------|
-| **计划** | SQL Server 代理不可用。<br/><br/>请参阅[将包计划为 Azure 数据工厂管道一部分](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-schedule-packages?view=sql-server-2017#activity)。| 可以使用托管实例代理。 |
-| **身份验证** | 可以使用包含的数据库用户帐户（代表 dbmanager 角色中的任意 Azure Active Directory 用户）创建数据库。<br/><br/>请参阅[在 Azure SQL 数据库上启用 Azure AD](enable-aad-authentication-azure-ssis-ir.md#enable-azure-ad-on-azure-sql-database)。 | 不可以使用包含的数据库用户帐户（代表除 Azure AD 管理员以外的任意 Azure Active Directory 用户）创建数据库。 <br/><br/>请参阅[在 Azure SQL 数据库托管实例上启用 Azure AD](enable-aad-authentication-azure-ssis-ir.md#enable-azure-ad-on-azure-sql-database-managed-instance)。 |
-| **服务层** | 在 SQL 数据库上创建 Azure-SSIS IR 时，可以选择 SSISDB 服务层。 有多个服务层。 | 在托管实例上创建 Azure-SSIS IR 时，不能选择 SSISDB 服务层。 同一托管实例上的所有数据库都共享分配给该实例的相同资源。 |
-| **虚拟网络** | 如果配合虚拟网络服务终结点使用 Azure SQL 数据库或需要访问本地数据，可以使用 Azure-SSIS IR 可加入的  Azure 资源管理器和经典虚拟网络。 | 仅支持 Azure-SSIS IR 可加入的 Azure 资源管理器虚拟网络。 虚拟网络是必需的。<br/><br/>如果将 Azure-SSIS IR 加入与托管实例相同的虚拟网络，请确保 Azure-SSIS IR 位于与托管实例不同的子网中。 如果将 Azure-SSIS IR 加入与托管实例不同的虚拟网络，我们建议使用虚拟网络对等互连（限于相同的区域）或虚拟网络间连接。 请参阅[将应用程序连接到 Azure SQL 数据库托管实例](../sql-database/sql-database-managed-instance-connect-app.md)。 |
-| **分布式事务** | 通过弹性事务支持。 不支持 Microsoft 分布式事务处理协调器 (MSDTC) 事务。 如果 SSIS 包使用 MSDTC 协调分布式事务，请考虑迁移到 SQL 数据库弹性事务。 有关详细信息，请参阅[跨云数据库的分布式事务](../sql-database/sql-database-elastic-transactions-overview.md)。 | 不支持。 |
+| **计划** | SQL Server 代理不可用。<br/><br/>请参阅[在 ADF 管道中计划包执行](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-schedule-packages?view=sql-server-2017#activity)。| 可以使用托管实例代理。 |
+| **身份验证** | 可以使用包含的数据库用户创建 SSISDB。该用户充当 **db_owner** 角色，代表具有 ADF 托管标识的任意 AAD 组。<br/><br/>请参阅[在 Azure SQL 数据库服务器中启用 Azure AD 身份验证以创建 SSISDB](enable-aad-authentication-azure-ssis-ir.md#enable-azure-ad-on-azure-sql-database)。 | 可以使用代表 ADF 托管标识的包含的数据库用户创建 SSISDB。 <br/><br/>请参阅[在 Azure SQL 数据库托管实例中启用 Azure AD 身份验证以创建 SSISDB](enable-aad-authentication-azure-ssis-ir.md#enable-azure-ad-on-azure-sql-database-managed-instance)。 |
+| **服务层** | 在 Azure SQL 数据库服务器上创建 Azure-SSIS IR 时，可以选择 SSISDB 的服务层。 有多个服务层。 | 在托管实例上创建 Azure-SSIS IR 时，无法选择 SSISDB 的服务层。 托管实例上的所有数据库共享分配给该实例的相同资源。 |
+| **虚拟网络** | 如果配合虚拟网络服务终结点使用 Azure SQL 数据库服务器或需要访问本地数据存储，则只能使用 Azure-SSIS IR 可加入的 Azure 资源管理器虚拟网络。 | 仅支持 Azure-SSIS IR 可加入的 Azure 资源管理器虚拟网络。 始终需要配置虚拟网络。<br/><br/>如果将 Azure-SSIS IR 加入与托管实例相同的虚拟网络，请确保 Azure-SSIS IR 位于与托管实例不同的子网中。 如果将 Azure-SSIS IR 加入与托管实例不同的虚拟网络，我们建议使用虚拟网络对等互连或虚拟网络间的连接。 请参阅[将应用程序连接到 Azure SQL 数据库托管实例](../sql-database/sql-database-managed-instance-connect-app.md)。 |
+| **分布式事务** | 通过弹性事务支持。 不支持 Microsoft 分布式事务处理协调器 (MSDTC) 事务。 如果 SSIS 包使用 MSDTC 协调分布式事务，请考虑迁移到 Azure SQL 数据库弹性事务。 有关详细信息，请参阅[跨云数据库的分布式事务](../sql-database/sql-database-elastic-transactions-overview.md)。 | 不支持。 |
 | | | |
 
 ## <a name="azure-portal"></a>Azure 门户
-在本部分中，使用 Azure 门户（具体的说是数据工厂 UI）创建 Azure-SSIS IR。 
+在本部分，我们将使用 Azure 门户（具体的说是 ADF 用户界面 (UI)/应用）创建 Azure-SSIS IR。 
 
 ### <a name="create-a-data-factory"></a>创建数据工厂 
 1. 启动 **Microsoft Edge** 或 **Google Chrome** Web 浏览器。 目前，仅 Microsoft Edge 和 Google Chrome Web 浏览器支持数据工厂 UI。 
@@ -99,7 +99,7 @@ ms.locfileid: "51279087"
 1. 选择数据工厂的**位置**。 列表中只会显示支持创建数据工厂的位置。 
 1. 选择“固定到仪表板”。 
 1. 单击“创建”。 
-1. 在仪表板上，会看到状态为“正在部署数据工厂”的以下磁贴。 
+1. 在仪表板上，你会看状态如下的以下磁贴：“正在部署数据工厂”。 
 
     ![“正在部署数据工厂”磁贴](media/tutorial-create-azure-ssis-runtime-portal/deploying-data-factory.png)
 
@@ -128,7 +128,7 @@ ms.locfileid: "51279087"
 
     e. 对于“节点数”，请选择集成运行时群集中的节点数。 仅显示支持的节点数。 如果需要并行运行多个包，请选择包含许多节点的大型群集（横向扩展）。 
 
-    f. 对于“版本/许可证”，请选择集成运行时的 SQL Server 版本/许可证：Standard 或 Enterprise。 如果需要在集成运行时上使用高级功能，请选择“Enterprise”。 
+    f. 对于“版本/许可证”，请选择集成运行时的 SQL Server 版本/许可证：“标准”或“企业”。 如果需要在集成运行时上使用高级功能，请选择“Enterprise”。 
 
     g. 对于“节省资金”，请选择适用于集成运行时的 Azure 混合权益 (AHB) 选项：“是”或“否”。 如果需要自带具有软件保障的 SQL Server 许可证，以便充分利用使用混合权益带来的成本节省，请选择“是”。 
 
@@ -144,13 +144,13 @@ ms.locfileid: "51279087"
 
     c. 对于“目录数据库服务器终结点”，请选择用于承载 SSISDB 的数据库服务器的终结点。 根据所选数据库服务器的不同，SSISDB 的创建方式也不相同：可以代表你作为单个数据库创建、可以充当弹性池的一部分创建，也可以在托管实例中创建，并可在公用网络中访问或者通过加入虚拟网络来访问。 
 
-    d. 在“使用 AAD 身份验证...”复选框中，选择数据库服务器用来托管 SSISDB 的身份验证方法：SQL 或 Azure 数据工厂托管标识的 Azure Active Directory (AAD)。 如果勾选它，则需将 ADF 的托管标识添加到有权访问数据库服务器的 AAD 组中，具体请参阅[为 Azure-SSIS IR 启用 AAD 身份验证](https://docs.microsoft.com/azure/data-factory/enable-aad-authentication-azure-ssis-ir)。 
+    d. 在“使用 AAD 身份验证...”复选框中，选择数据库服务器用来承载 SSISDB 的身份验证方法：SQL或 Azure 数据工厂托管标识的 Azure Active Directory (AAD)。 如果勾选它，则需将 ADF 的托管标识添加到有权访问数据库服务器的 AAD 组中，具体请参阅[为 Azure-SSIS IR 启用 AAD 身份验证](https://docs.microsoft.com/azure/data-factory/enable-aad-authentication-azure-ssis-ir)。 
 
     e. 对于“管理员用户名”，请输入用于承载 SSISDB 的数据库服务器的 SQL 身份验证用户名。 
 
     f. 对于“管理员密码”，请输入用于承载 SSISDB 的数据库服务器的 SQL 身份验证密码。 
 
-    g. 对于“目录数据库服务层”，请选择用于托管 SSISDB 的数据库服务器的服务层：基本/标准/高级层或弹性池名称。 
+    g. 对于“目录数据库服务层”，请选择用于承载 SSISDB 的数据库服务器的服务层：基本/标准/高级层或弹性池名称。 
 
     h. 单击“测试连接”，如果成功，则单击“下一步”。 
 

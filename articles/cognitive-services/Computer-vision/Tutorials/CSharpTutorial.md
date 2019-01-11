@@ -10,12 +10,13 @@ ms.component: computer-vision
 ms.topic: article
 ms.date: 08/28/2018
 ms.author: pafarley
-ms.openlocfilehash: d1fa468874cdc51bad3421f700a69f3ffb268635
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.custom: seodec18
+ms.openlocfilehash: 8640d89c5fb9e38fc6c982e21147361ad690964a
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49342647"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53584439"
 ---
 # <a name="tutorial-build-an-image-processing-app---c35"></a>教程：构建图像处理应用 - C#
 
@@ -101,7 +102,7 @@ git clone --recurse-submodules https://github.com/Microsoft/Cognitive-Face-Windo
    > Microsoft 会收到上传的图像，并且可能会将其用于改进计算机视觉 API 和相关服务。 提交图像即表明你确认遵循我们的[开发人员行为准则](https://azure.microsoft.com/support/legal/developer-code-of-conduct/)。
 
    以下屏幕截图展示了在分析样本图像后为分析图像场景提供的页面。
-   ![分析图像场景页面](../Images/Analyze_Image_Example.PNG)
+   ![“分析图像”页的屏幕截图](../Images/Analyze_Image_Example.PNG)
 
 ## <a name="explore-the-sample-app"></a>探索示例应用
 
