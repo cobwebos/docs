@@ -250,7 +250,7 @@ Azure 门户通过选择数据库并单击“概述”窗格中的图表来显�
 
 #### <a name="dynamic-management-views"></a>动态管理视图
 
-可以查询 [sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) 动态管理视图，以返回最近一个小时的资源使用统计信息历史记录，也可以查询 sys.resource_stats 系统目录视图，返回过去 14 天的历史记录。
+可以查询 [sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) 动态管理视图，以返回最近一个小时的资源使用统计信息历史记录，也可以查询 [sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) 系统目录视图，返回过去 14 天的历史记录。
 
 #### <a name="query-performance-insight"></a>查询性能见解
 
