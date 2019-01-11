@@ -20,7 +20,7 @@ ms.lasthandoff: 11/28/2018
 ms.locfileid: "52444022"
 ---
 # <a name="transform-data-by-using-the-sql-server-stored-procedure-activity-in-azure-data-factory"></a>在 Azure 数据工厂中使用 SQL Server 存储过程活动转换数据
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="选择您正在使用的 Data Factory 服务的版本:"]
 > * [版本 1](v1/data-factory-stored-proc-activity.md)
 > * [当前版本](transform-data-using-stored-procedure.md)
 
