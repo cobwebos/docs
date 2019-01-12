@@ -13,12 +13,13 @@ ms.topic: tutorial
 ms.date: 11/26/2018
 ms.author: mabrigg
 ms.reviewer: johnhas
-ms.openlocfilehash: 3c3e064ea229db97c59cc5b49107b568a2fdaa98
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ROBOTS: NOINDEX
+ms.openlocfilehash: ce276b5fcedecc53c379d41de55080bf61e2386e
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52334442"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54243655"
 ---
 # <a name="automate-azure-stack-validation-with-powershell"></a>自动执行使用 PowerShell 的 Azure Stack 验证
 
@@ -69,7 +70,7 @@ ms.locfileid: "52334442"
 
     **参数**
 
-    | 参数 | 说明 |
+    | 参数 | 描述 |
     | --- | --- |
     | VaaSUserld | VaaS 用户 ID。 |
     | VaaSUserPassword | VaaS 密码。 |

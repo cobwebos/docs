@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/05/2019
 ms.author: sethm
-ms.reviewer: ''
-ms.openlocfilehash: 34804dae53fcf06d1a18bf503cdabea61f272585
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.reviewer: unknown
+ms.openlocfilehash: 9ed7655600749118423ae2a46fed7c0ac13cfb15
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54065386"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54245032"
 ---
 # <a name="azure-resource-manager-template-considerations"></a>Azure 资源管理器模板注意事项
 

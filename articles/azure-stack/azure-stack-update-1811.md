@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/11/2019
+ms.date: 01/12/2019
 ms.author: sethm
 ms.reviewer: adepue
-ms.openlocfilehash: f5826b2a6935bb448a7a3ef94d9a5f27f1ed9426
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.openlocfilehash: 4f5558d17e2f290ed7255350f304ed2057a6d783
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54214583"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54247616"
 ---
 # <a name="azure-stack-1811-update"></a>Azure Stack 1811 更新
 
@@ -40,9 +40,9 @@ Azure Stack 1811 更新内部版本号是**1.1811.0.101**。
 Azure Stack 释放定期修补程序。 请务必安装[最新的 Azure Stack 修补程序](#azure-stack-hotfixes)为 1809 到 1811年更新 Azure Stack 之前。
 
 > [!TIP]  
-> 订阅以下*RRS*或*Atom*源，以保持与 Azure Stack 修补程序：
-> - RRS： https://support.microsoft.com/app/content/api/content/feeds/sap/en-us/32d322a8-acae-202d-e9a9-7371dccf381b/rss … 
-> - Atom： https://support.microsoft.com/app/content/api/content/feeds/sap/en-us/32d322a8-acae-202d-e9a9-7371dccf381b/atom …
+> 订阅以下*RSS*或*Atom*源，以保持与 Azure Stack 修补程序：
+> - [RSS](https://support.microsoft.com/app/content/api/content/feeds/sap/en-us/32d322a8-acae-202d-e9a9-7371dccf381b/rss)
+> - [Atom](https://support.microsoft.com/app/content/api/content/feeds/sap/en-us/32d322a8-acae-202d-e9a9-7371dccf381b/atom)
 
 ### <a name="azure-stack-hotfixes"></a>Azure Stack 修补程序
 
@@ -162,7 +162,7 @@ Azure Stack 释放定期修补程序。 请务必安装[最新的 Azure Stack �
 
 - 1811，从 Get AzsCsvsRecoveryKeys 到 Get AzsRecoveryKeys 中重命名现有的 PEP cmdlet 来检索 BitLocker 恢复密钥。 有关如何检索 BitLocker 恢复密钥的详细信息，请参阅[说明如何检索密钥](azure-stack-security-bitlocker.md)。
 
-## <a name="common-vulnerabilities-and-exposures"></a>常见漏洞和风险
+## <a name="common-vulnerabilities-and-exposures"></a>通用漏洞和披露
 
 此更新安装以下安全更新：  
 
@@ -260,6 +260,8 @@ Azure Stack 释放定期修补程序。 请务必安装[最新的 Azure Stack �
    `'Failed to start virtual machine 'vm-name'. Error: Failed to update serial output settings for VM 'vm-name'`
 
    如果 VM 上启用启动诊断，但删除启动诊断存储帐户后，将发生此错误。 若要解决此问题，请重新创建具有您之前从未使用过与同名的存储帐户。
+
+- 创建时[Dv2 系列 VM](./user/azure-stack-vm-considerations.md#virtual-machine-sizes)，D11 14v2 Vm，您可以分别创建 4、 8、 16 和 32 个数据磁盘。 但是，创建 VM 窗格将显示 8、 16、 32 和 64 个数据磁盘。
 
 <!-- 3235634 – IS, ASDK -->
 - 若要将 Vm 部署包含的大小**v2**后缀; 例如， **Standard_A2_v2**，指定作为后缀**Standard_A2_v2** (小写 v)。 请勿使用 **Standard_A2_V2**（大写 V）。 这适用于全球 Azure，在 Azure Stack 上有不一致的问题。

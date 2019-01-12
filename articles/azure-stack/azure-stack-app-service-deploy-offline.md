@@ -12,14 +12,14 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/13/2018
+ms.date: 01/11/2019
 ms.author: anwestg
-ms.openlocfilehash: a3703133e5dc5f0525638562fab98f9416bcf26e
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: db4c0f2d1197a190b33bd297bb597fd19057d875
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54104652"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54230333"
 ---
 # <a name="add-an-app-service-resource-provider-to-a-disconnected-azure-stack-environment-secured-by-ad-fs"></a>将应用服务资源提供程序添加到受 AD FS 保护且已断开连接的 Azure Stack 环境
 
@@ -27,14 +27,15 @@ ms.locfileid: "54104652"
 
 > [!IMPORTANT]
 > 请将 1809 更新应用于 Azure Stack 集成系统，或部署最新的 Azure Stack 开发工具包，然后部署 Azure 应用服务 1.4。
->
->
 
 按照本文中的说明操作即可将[应用服务资源提供程序](azure-stack-app-service-overview.md)安装到符合以下条件的 Azure Stack 环境：
 
 - 未连接到 Internet
 - 受 Active Directory 联合身份验证服务 (AD FS) 保护。
 
+ > [!IMPORTANT]
+ > 在部署之前的资源提供程序，查看发行说明以了解有关新功能、 修复和可能会影响你的部署任何已知的问题的信息。
+ 
 若要将应用服务资源提供程序添加到脱机的 Azure Stack 部署，必须完成以下顶级任务：
 
 1. 完成[先决条件步骤](azure-stack-app-service-before-you-get-started.md)（例如购买证书，可能需要数天才能接收到）。

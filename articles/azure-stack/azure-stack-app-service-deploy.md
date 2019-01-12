@@ -12,14 +12,14 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/29/2018
+ms.date: 01/11/2019
 ms.author: anwestg
-ms.openlocfilehash: 504cd5a0bfbae1ff91f7914abe12aa35b699ee80
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: bbb8e39e60500a2d8310159cfbac5659964fc387
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54104754"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54230010"
 ---
 # <a name="add-an-app-service-resource-provider-to-azure-stack"></a>将应用服务资源提供程序添加到 Azure Stack
 
@@ -46,6 +46,9 @@ ms.locfileid: "54104754"
  - 为应用服务中创建 DNS 区域和条目。
  - 注册应用服务资源提供程序。
  - 注册应用服务库项。
+
+ > [!IMPORTANT]
+ > 在部署之前的资源提供程序，查看发行说明以了解有关新功能、 修复和可能会影响你的部署任何已知的问题的信息。
 
 若要部署应用服务资源提供程序，请执行以下步骤：
 

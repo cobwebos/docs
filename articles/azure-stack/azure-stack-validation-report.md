@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 10/23/2018
 ms.author: sethm
-ms.reviewer: ''
-ms.openlocfilehash: 1b2b06c02dc54c4369dd8490b714d1444d4b3b01
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.reviewer: unknown
+ms.openlocfilehash: 0eed7943d782bda134c2df2de6cf9eeeb58bfa3b
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49986179"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54243859"
 ---
 # <a name="azure-stack-validation-report"></a>Azure Stack 验证报表
 使用 Azure Stack 就绪性检查器工具运行验证来为 Azure Stack 环境的部署和维护提供支持。 该工具将结果写入到 .json 报表文件。 该报表显示有关 Azure Stack 部署的先决条件状态的详细数据和汇总数据。 该报表还显示有关现有 Azure Stack 部署的机密轮换的信息。  
@@ -125,7 +125,7 @@ Azure Stack ADFS Validation results not available.
 - 图形
 - ADFS
 - 作业   
-- 全部  
+- All  
 
 例如，若要仅查看证书的报表摘要，请使用以下 PowerShell 命令行： 
  > `Read-AzsReadinessReport -ReportPath .\Contoso-AzsReadinessReport.json -ReportSections Certificate – Summary`

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 01/05/2019
 ms.author: sethm
 ms.reviewer: jiahan
-ms.openlocfilehash: 3445974cf832b7ed594f704615482e1d9b0e351c
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: 78cb969aa96378dd84243545be1678ae4eaf0e0e
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54159360"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54232526"
 ---
 # <a name="azure-stack-managed-disks-differences-and-considerations"></a>Azure Stack 托管磁盘： 差异和注意事项
 
@@ -65,14 +65,14 @@ Azure Stack 托管磁盘支持以下 API 版本：
 
 - 2017-03-30
 
-## <a name="known-issues"></a>已知问题
+## <a name="configuration"></a>配置
 
-在应用更新后 1808年后, 可能部署包含托管磁盘的 Vm 时遇到以下问题：
+应用 1808年后更新或更高版本，必须执行以下配置，然后才能使用托管磁盘：
 
-- 如果订阅是在 1808 更新之前创建的，则部署具有托管磁盘的 VM 可能会失败并出现内部错误消息。 若要解决此错误，请针对每个订阅执行以下步骤：
+- 如果订阅 1808年更新之前创建的请执行以下步骤可更新订阅。 否则，此订阅中部署 Vm 可能会失败并显示错误消息"磁盘管理器内部错误。"
    1. 在租户门户中转到“订阅”，找到相应订阅。 依次单击“资源提供程序”、“Microsoft.Compute”、“重新注册”。
    2. 在同一订阅下，转到“访问控制(标识和访问管理)”，验证“Azure Stack - 托管磁盘”是否已列出。
-- 如果已配置多租户环境，在与来宾目录相关联的订阅中部署 VM 可能会失败并出现内部错误消息。 若要解决错误，请执行[此文章](../azure-stack-enable-multitenancy.md#registering-azure-stack-with-the-guest-directory)中的步骤来重新配置每个来宾目录。
+- 如果使用多租户环境，询问您的云运营商 （可能在您自己的组织或服务提供商提供） 来重新配置每个来宾目录中执行以下步骤[这篇文章](../azure-stack-enable-multitenancy.md#registering-azure-stack-with-the-guest-directory)。 否则，在与来宾目录关联的订阅中部署 Vm 可能会失败并显示错误消息"磁盘管理器内部错误。"
 
 
 ## <a name="next-steps"></a>后续步骤

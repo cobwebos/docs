@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/16/2018
+ms.date: 01/11/2019
 ms.author: jeffgilb
-ms.reviewer: quying
-ms.openlocfilehash: 360661402289ab9b06eb01be447dc98942c93302
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.reviewer: jiahan
+ms.openlocfilehash: 68665cc588f8a6340de393330c7a248503b07125
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49364077"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54244981"
 ---
 # <a name="sql-resource-provider-maintenance-operations"></a>SQL 资源提供程序维护操作
 
@@ -33,16 +33,6 @@ SQL 资源提供程序在锁定的虚拟机上运行。 若要启用维护操作
 
 由于资源提供程序在用户虚拟机上运行，因此需要应用已发布的修补升级。 可以使用修补升级周期提供的 Windows 更新包将更新应用到 VM。
 
-## <a name="backuprestoredisaster-recovery"></a>备份/还原/灾难恢复
-
- 由于 SQL 资源提供程序是一个加载项组件，在 Azure Stack 业务连续性灾难恢复 (BCDR) 过程中不会备份它。 Microsoft 将提供以下操作的脚本：
-
-- 备份状态信息（存储在 Azure Stack 存储帐户中）。
-- 还原资源提供程序（如果需要完整堆栈恢复）。
-
->[!NOTE]
->如果需要执行恢复，则必须在还原资源提供程序之前恢复数据库服务器。
-
 ## <a name="updating-sql-credentials"></a>更新 SQL 凭据
 
 你需要负责在 SQL 服务器上创建和维护 sysadmin 帐户。 资源提供程序需要拥有这些特权的帐户才能代表用户管理数据库，但无需访问用户的数据。 如果需要更新 SQL 服务器上的 sysadmin 密码，可以使用资源提供程序的管理员界面来更改存储的密码。 这些密码存储在 Azure Stack 实例上的 Key Vault 中。
@@ -55,7 +45,7 @@ SQL 资源提供程序在锁定的虚拟机上运行。 若要启用维护操作
 
 *这些说明仅适用于 Azure Stack 集成系统。*
 
-如果 SQL 和 MySQL 资源提供程序中使用 Azure Stack 集成系统，Azure Stack 运营商将负责轮换以下的资源提供程序基础结构机密，以确保它们不过期：
+在 Azure Stack 集成系统中使用 SQL 和 MySQL 资源提供程序时，Azure Stack 操作员负责轮换以下资源提供程序基础结构机密以确保它们不会过期：
 
 - [部署期间提供的](azure-stack-pki-certs.md)外部 SSL 证书。
 - 部署期间提供的资源提供程序 VM 本地管理员帐户密码。
@@ -109,7 +99,7 @@ SQL 资源提供程序在锁定的虚拟机上运行。 若要启用维护操作
 
 ### <a name="secretrotationsqlproviderps1-parameters"></a>SecretRotationSQLProvider.ps1 参数
 
-|参数|说明|
+|参数|描述|
 |-----|-----|
 |AzCredential|Azure Stack 服务管理员帐户凭据。|
 |CloudAdminCredential|Azure Stack 云管理域帐户凭据。|

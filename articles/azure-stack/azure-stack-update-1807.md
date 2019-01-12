@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/07/2018
 ms.author: sethm
 ms.reviewer: justini
-ms.openlocfilehash: 7f87f93ebc739d75c796859c7091d4cf62a820a0
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 82343daa9fafe27ac814b6246a303e661a0a22d1
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53714978"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54231030"
 ---
 # <a name="azure-stack-1807-update"></a>Azure Stack 1807 更新
 
@@ -143,7 +143,7 @@ Azure Stack 1807 更新内部版本号为 **1.1807.0.76**。
 
 <!-- ### Additional releases timed with this update    -->
 
-### <a name="common-vulnerabilities-and-exposures"></a>常见漏洞和风险
+### <a name="common-vulnerabilities-and-exposures"></a>通用漏洞和披露
 Azure Stack 使用 Windows Server 2016 的 Server Core 安装来托管重要基础结构。 此发行版本在 Azure Stack 的基础结构服务器上安装下述 Windows Server 2016 更新： 
 - [CVE-2018-8206](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/CVE-2018-8206)
 - [CVE-2018-8222](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/CVE-2018-8222)

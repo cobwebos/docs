@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/22/2018
+ms.date: 01/12/2019
 ms.author: sethm
 ms.reviewer: justini
-ms.openlocfilehash: 86f4e99401278d13a17f40c4c021060e8bd15f8a
-ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
+ms.openlocfilehash: 8d477997e71843307f6c756a6974a23267842015
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/22/2018
-ms.locfileid: "53754537"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54244964"
 ---
 # <a name="azure-stack-1808-update"></a>Azure Stack 1808 更新
 
@@ -99,7 +99,7 @@ Azure Stack 1808 更新内部版本号为 **1.1808.0.97**。
 <!--  TBD – IS, ASDK --> 
 - 通过门户[创建虚拟机规模集](azure-stack-compute-add-scalesets.md) (VMSS) 时，不再使用“基本 A”虚拟机大小。 若要按照此大小来创建 VMSS，请使用 PowerShell 或模板。  
 
-### <a name="common-vulnerabilities-and-exposures"></a>常见漏洞和风险
+### <a name="common-vulnerabilities-and-exposures"></a>通用漏洞和披露
 
 此更新安装以下更新：  
 
@@ -163,7 +163,7 @@ Azure Stack 1808 更新内部版本号为 **1.1808.0.97**。
 > 让 Azure Stack 部署准备好使用扩展主机。 遵照[为 Azure Stack 准备扩展主机](azure-stack-extension-host-prepare.md)中的指导准备系统。
 
 安装此更新之后，请安装所有适用的修补程序。 有关详细信息，请查看以下知识库文章，以及我们的[服务策略](azure-stack-servicing-policy.md)。 
-- [KB 4481066 – Azure Stack 修补程序 Azure Stack 修补程序 1.1808.9.117](https://support.microsoft.com/help/4481066/)
+- [知识库文章 4481066 – Azure Stack 修补程序 1.1808.9.117](https://support.microsoft.com/help/4481066/)
 
 
 ## <a name="known-issues-post-installation"></a>已知问题（安装后）
@@ -255,6 +255,8 @@ Azure Stack 1808 更新内部版本号为 **1.1808.0.97**。
 
 ### <a name="compute"></a>计算
 
+- 创建时[Dv2 系列 VM](./user/azure-stack-vm-considerations.md#virtual-machine-sizes)，D11 14v2 Vm，您可以分别创建 4、 8、 16 和 32 个数据磁盘。 但是，创建 VM 窗格将显示 8、 16、 32 和 64 个数据磁盘。
+
 <!-- 3164607 – IS, ASDK -->
 - 将分离的磁盘重新附加到具有相同名称和 LUN 的同一虚拟机 (VM) 失败，并发生类似于“无法将数据磁盘 'datadisk' 附加到 VM 'vm1'”的错误。 之所以发生该错误，是原因该磁盘目前已分离，或上次分离操作失败。 请等到磁盘完全分离后重试，或再次显式删除/分离磁盘。 解决方法是使用其他名称，或者在其他 LUN 上重新附加磁盘。 
 
@@ -276,10 +278,10 @@ Azure Stack 1808 更新内部版本号为 **1.1808.0.97**。
 从 Azure Stack 用量 Api 生成的使用情况报告显示正确的数量和可用。
 
 <!-- 3507629 - IS, ASDK --> 
-- 托管的磁盘创建两个新[计算配额类型](azure-stack-quota-types.md#compute-quota-types)来限制可以预配的托管磁盘的最大容量。 默认情况下，为每个托管的磁盘配额类型分配 GiB。 但是，您可能会遇到以下问题：
+- 托管磁盘创建了两个新的[计算配额类型](azure-stack-quota-types.md#compute-quota-types)来限制可以预配的托管磁盘的最大容量。 默认情况下将为每个托管磁盘配额类型分配 2048 GiB。 不过，你可能会遇到以下问题：
 
-   - 对于 1808年更新之前创建的配额，托管磁盘配额将显示 0 值在管理员门户中，尽管分配 GiB。 你可以增加或减少值基于您的实际需求，并使用新设置配额值将覆盖 2048 GiB 默认值。
-   - 如果您更新的配额值为 0，相当于 GiB 的默认值。 作为一种解决方法，设置为 1 的配额值。
+   - 对于在 1808 更新之前创建的配额，托管磁盘配额在管理门户中将显示为值 0，虽然分配了 2048 GiB。 你可以根据实际需求增大或减小该值，新设置的配额值将替代 2048 GiB 默认值。
+   - 如果将配额值更新为 0，则它等效于默认值 2048 GiB。 作为一种解决方法，请将配额值设置为 1。
 
 <!-- 2869209 – IS, ASDK --> 
 - 使用 [**Add-AzsPlatformImage** cmdlet](https://docs.microsoft.com/powershell/module/azs.compute.admin/add-azsplatformimage?view=azurestackps-1.4.0) 时，必须使用 **-OsUri** 参数作为存储帐户 URI（在其中上传磁盘）。 如果使用磁盘的本地路径，则此 cmdlet 会失败并显示以下错误：长时间运行的操作失败，状态为 'Failed'。 

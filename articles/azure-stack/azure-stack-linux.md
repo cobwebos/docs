@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/16/2018
 ms.author: sethm
-ms.reviewer: ''
-ms.openlocfilehash: 3154c3a5a677f208973d442ff3875bb5ee8df6a1
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.reviewer: unknown
+ms.openlocfilehash: 98a1235532ec4cc225ac6a5117265e145b21034b
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52160624"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54245153"
 ---
 # <a name="add-linux-images-to-azure-stack"></a>将 Linux 映像添加到 Azure Stack
 
@@ -29,7 +29,7 @@ ms.locfileid: "52160624"
 
 ## <a name="marketplace-management"></a>市场管理
 
-若要从 Azure Marketplace 下载 Linux 映像，请使用中的过程[从 Azure marketplace 项下载到 Azure Stack](azure-stack-download-azure-marketplace-item.md)一文。 选择要在 Azure Stack 上提供给用户的 Linux 映像。 
+若要从 Azure 市场下载 Linux 映像，请使用[将市场项从 Azure 下载到 Azure Stack](azure-stack-download-azure-marketplace-item.md) 一文中的过程。 选择要在 Azure Stack 上提供给用户的 Linux 映像。 
 
 请注意，这些映像频繁更新，因此请经常查看市场管理以保持最新。
 
@@ -56,7 +56,7 @@ Azure Linux 代理（通常称为 `WALinuxAgent` 或 `walinuxagent`）是必需�
 
 ## <a name="next-steps"></a>后续步骤
 
-请参阅以下文章，了解详细信息：
+有关详细信息，请参阅以下文章：
 
-- [从 Azure marketplace 项下载到 Azure Stack](azure-stack-download-azure-marketplace-item.md)
-- [Azure Stack Marketplace 概述](azure-stack-marketplace.md)
+- [将市场项从 Azure 下载到 Azure Stack](azure-stack-download-azure-marketplace-item.md)
+- [Azure Stack 市场概述](azure-stack-marketplace.md)

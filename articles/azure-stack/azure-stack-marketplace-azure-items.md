@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/04/2019
 ms.author: sethm
-ms.reviewer: ''
-ms.openlocfilehash: 05a0e0d88f09853274d6bc6b65f66cf66369f77d
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.reviewer: unknown
+ms.openlocfilehash: 3a4eefe2850c99a5ab07b04443a2bc1ddd7f0d5f
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54044189"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54247634"
 ---
 # <a name="azure-marketplace-items-available-for-azure-stack"></a>适用于 Azure Stack 的 Azure 市场项
 

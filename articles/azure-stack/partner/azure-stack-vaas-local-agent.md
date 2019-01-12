@@ -13,12 +13,13 @@ ms.topic: quickstart
 ms.date: 11/26/2018
 ms.author: mabrigg
 ms.reviewer: johnhas
-ms.openlocfilehash: 0608da33e816b40f7fadbeb1b5da3feb926c28aa
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ROBOTS: NOINDEX
+ms.openlocfilehash: f0ffb4a4c4ea12292639b5a94b7f2990db6e45bd
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52334051"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54247803"
 ---
 # <a name="deploy-the-local-agent"></a>部署本地代理
 
@@ -76,7 +77,7 @@ Azure Stack 是接受测试的系统。 计算机不应是 Azure Stack 的一部
 
     **参数**
 
-    | 参数 | 说明 |
+    | 参数 | 描述 |
     | --- | --- |
     | aadServiceAdminUser | Azure AD 租户的全局管理员用户。 例如，它可以是 vaasadmin@contoso.onmicrosoft.com。 |
     | aadServiceAdminPassword | 全局管理员用户的密码。 |
@@ -118,7 +119,7 @@ Azure Stack 是接受测试的系统。 计算机不应是 Azure Stack 的一部
     ````
 
       **参数**  
-    | 参数 | 说明 |
+    | 参数 | 描述 |
     | --- | --- |
     | VaaSUserId | 用于登录到 VaaS 门户的用户 ID（例如 UserName@Contoso.com） |
     | VaaSTenantId | 注册到验证即服务的 Azure 帐户的 Azure AD 租户 ID。 |
@@ -138,4 +139,4 @@ Azure Stack 是接受测试的系统。 计算机不应是 Azure Stack 的一部
 
 - [对验证作为服务进行故障排除](azure-stack-vaas-troubleshoot.md)
 - [作为服务的关键概念验证](azure-stack-vaas-key-concepts.md)
-- [快速入门： 使用验证的服务门户，作为计划第一次测试](azure-stack-vaas-schedule-test-pass.md)
+- [快速入门：用于验证的服务门户，作为计划第一次测试](azure-stack-vaas-schedule-test-pass.md)

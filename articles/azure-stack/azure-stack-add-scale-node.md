@@ -1,5 +1,5 @@
 ---
-title: Azure Stack 添加缩放节点 |Microsoft Docs
+title: Azure Stack 添加缩放节点 | Microsoft Docs
 description: 在 Azure Stack 中将节点添加到缩放单元。
 services: azure-stack
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 09/17/2018
 ms.author: jeffgilb
 ms.reviewer: thoroet
-ms.openlocfilehash: 3ce74cdb610f2902133459b913f53bb7809cb4b7
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: ff068ff5aa4401a80f2220df79fdac93db21cfb3
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45982991"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54232866"
 ---
 # <a name="add-additional-scale-unit-nodes-in-azure-stack"></a>在 Azure Stack 中添加更多的缩放单元节点
 
@@ -64,7 +64,7 @@ Azure Stack 操作员可以通过添加更多的物理计算机来提高现有�
 ### <a name="use-the-admin-portal"></a>使用管理员门户
 
 1. 以 Azure Stack 操作员身份登录到 Azure Stack 管理员门户。
-2. 导航到 **+ 创建资源** > **容量** > **缩放单位节点**。
+2. 导航到“+ 创建资源” > “容量” > “缩放单元节点”。
    ![缩放单元节点](media/azure-stack-add-scale-node/select-node1.png)
 3. 在“添加节点”窗格中选择“区域”，然后选择要向其添加节点的“缩放单元”。 另请指定要添加的缩放单元节点的“BMC IP 地址”。 一次只能添加一个节点。
    ![添加节点详细信息](media/azure-stack-add-scale-node/select-node2.png)
@@ -105,7 +105,8 @@ Azure Stack 操作员可以通过添加更多的物理计算机来提高现有�
 
 ### <a name="status-for-the-add-node-operation"></a>“添加节点”操作的状态 
 **对于缩放单元：**
-|状态               |说明  |
+
+|状态               |描述  |
 |---------------------|---------|
 |正在运行              |所有节点都积极参与缩放单元。|
 |已停止              |缩放单元节点已停机或不可访问。|
@@ -115,7 +116,8 @@ Azure Stack 操作员可以通过添加更多的物理计算机来提高现有�
 
 
 **对于缩放单元节点：**
-|状态                |说明  |
+
+|状态                |描述  |
 |----------------------|---------|
 |正在运行               |节点都积极参与缩放单元。|
 |已停止               |节点不可用。|
@@ -128,17 +130,17 @@ Azure Stack 操作员可以通过添加更多的物理计算机来提高现有�
 ## <a name="troubleshooting"></a>故障排除
 下面是添加节点时的常见问题。 
 
-**场景 1：**“添加缩放单元节点”操作失败，但一个或多个节点在列出时，其状态为“已停止”。  
-- 修正：使用修复操作来修复一个或多个节点。 一次只能运行一个修复操作。
+**方案 1:** 添加缩放单位节点操作将失败，但一个或多个节点列出且状态为已停止。  
+- 补救措施：使用修复操作修复一个或多个节点。 一次只能运行一个修复操作。
 
-**场景 2：** 添加了一个或多个缩放单元节点，但存储扩展失败。 在这种情况下，缩放单元节点对象报告的状态为“正在运行”，但“配置存储”任务未启动。  
-- 修正：通过运行以下 PowerShell cmdlet，使用特权终结点来查看存储运行状况：
+**方案 2:** 一个或多个缩放单位节点已添加但存储扩展失败。 在这种情况下，缩放单元节点对象报告的状态为“正在运行”，但“配置存储”任务未启动。  
+- 补救措施：使用特权终结点来通过运行以下 PowerShell cmdlet 查看存储运行状况：
   ```powershell
      Get-VirtualDisk -CimSession s-cluster | Get-StorageJob
   ```
  
-**场景 3：** 收到一个警报，指出存储横向扩展作业失败。  
-- 修正：在这种情况下，存储配置任务已失败。 此问题需要联系支持部门。
+**方案 3:** 你收到警报，指示存储向外缩放作业失败。  
+- 补救措施：在这种情况下，存储配置任务已失败。 此问题需要联系支持部门。
 
 
 ## <a name="next-steps"></a>后续步骤 

@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/22/2018
+ms.date: 01/12/2019
 ms.author: sethm
 ms.reviewer: justini
-ms.openlocfilehash: 97b7defded39e572a1fecae3e93d389014b15a6b
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 4cbbc482a05e125f92efd98b0824ec38ae1ddefd
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54077957"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54244690"
 ---
 # <a name="azure-stack-1809-update"></a>Azure Stack 1809 更新
 
@@ -59,7 +59,7 @@ Azure Stack 1809 更新内部版本号为 **1.1809.0.90**。
 <!-- TBD - IS ASDK --> 
 - 修复了以下问题：在 Azure Stack 用户门户中创建虚拟机时，该门户显示的可以附加到 DS 系列 VM 的数据磁盘数不正确。 DS 系列 VM 可以容纳的数据磁盘数取决于 Azure 配置。
 
-- 以下的托管的磁盘问题固定的中 1809，而且还修复中 1808年[Azure Stack 修补程序 1.1808.9.117](https://support.microsoft.com/help/4481066/): 
+- 以下托管磁盘问题已在 1809 中修复，同时已在 1808 [Azure Stack 修补程序 1.1808.9.117](https://support.microsoft.com/help/4481066/) 中修复： 
 
    <!--  2966665 – IS, ASDK --> 
    - 修复了以下问题：将 SSD 数据磁盘附加到高级大小的托管磁盘虚拟机（DS、DSv2、Fs、Fs_V2）失败并出现以下错误：无法更新虚拟机 ‘vmname’ 的磁盘。错误:由于 VM 大小 ‘Standard_DS/Ds_V2/FS/Fs_v2’ 不支持存储帐户类型 ‘Premium_LRS’，因此请求的操作无法执行。 
@@ -81,7 +81,7 @@ Azure Stack 1809 更新内部版本号为 **1.1809.0.90**。
 > [!IMPORTANT]  
 > 如果防火墙不允许从公共 VIP 网络连接到文件服务器，此项更改会导致基础结构备份因“错误 53: 找不到网络路径”而失败。 这是一项重大更改具有合理的解决方法。 根据客户反馈，Microsoft 将恢复此修补程序中的更改。 请查看[发布更新步骤一节](#post-update-steps)有关 1809年上可用的修补程序详细信息。 发布修补程序后，请确保只在网络策略不允许公共 VIP 网络访问基础结构资源的情况下，才在更新到 1809 之后应用该修补程序。 在 1811 中，此项更改将应用到所有系统。 如果在 1809 中应用该修补程序，则无需采取进一步的措施。  
 
-### <a name="common-vulnerabilities-and-exposures"></a>常见漏洞和风险
+### <a name="common-vulnerabilities-and-exposures"></a>通用漏洞和披露
 
 此更新安装以下安全更新：  
 
@@ -134,7 +134,7 @@ Azure Stack 1809 更新内部版本号为 **1.1809.0.90**。
 
 ### <a name="prerequisites"></a>必备组件
 
-- 为 1808年应用 1809年之前安装最新的 Azure Stack 修补程序。 有关详细信息，请参阅[KB 4481066 – Azure Stack 修补程序 Azure Stack 修补程序 1.1808.9.117](https://support.microsoft.com/help/4481066/)。
+- 为 1808年应用 1809年之前安装最新的 Azure Stack 修补程序。 有关详细信息，请参阅[知识库文章 4481066 – Azure Stack 修补程序 1.1808.9.117](https://support.microsoft.com/help/4481066/)。
 
   > [!TIP]  
   > 订阅下述 *RRS* 或 *Atom* 源，了解 Azure Stack 修补程序的最新更新：
@@ -164,7 +164,7 @@ Azure Stack 1809 更新内部版本号为 **1.1809.0.90**。
 > 让 Azure Stack 部署准备好使用后续更新包启用的扩展主机。 遵照[为 Azure Stack 准备扩展主机](azure-stack-extension-host-prepare.md)中的指导准备系统。
 
 安装此更新之后，请安装所有适用的修补程序。 有关详细信息，请查看以下知识库文章，以及我们的[服务策略](azure-stack-servicing-policy.md)。  
-- [KB 4481548 – Azure Stack 修补程序 Azure Stack 修补程序 1.1809.12.114](https://support.microsoft.com/help/4481548/)  
+- [知识库文章 4481548 – Azure Stack 修补程序 1.1809.12.114](https://support.microsoft.com/help/4481548/)  
 
 ## <a name="known-issues-post-installation"></a>已知问题（安装后）
 
@@ -252,8 +252,10 @@ Azure Stack 1809 更新内部版本号为 **1.1809.0.90**。
 
 ### <a name="compute"></a>计算
 
+- 创建时[Dv2 系列 VM](./user/azure-stack-vm-considerations.md#virtual-machine-sizes)，D11 14v2 Vm，您可以分别创建 4、 8、 16 和 32 个数据磁盘。 但是，创建 VM 窗格将显示 8、 16、 32 和 64 个数据磁盘。
+
 <!-- 3235634 – IS, ASDK -->
-- 若要将 Vm 部署包含的大小**v2**后缀; 例如， **Standard_A2_v2**，请指定作为后缀**Standard_A2_v2** (小写 v)。 不要使用**Standard_A2_V2** （大写 V）。 这适用于全球 Azure，Azure Stack 上的不一致。
+- 若要部署大小包含 **v2** 后缀的 VM（例如 **Standard_A2_v2**），请将后缀指定为 **Standard_A2_v2**（小写 v）。 请勿使用 **Standard_A2_V2**（大写 V）。 这适用于全球 Azure，Azure Stack 上的不一致。
 
 <!-- 3099544 – IS, ASDK --> 
 - 使用 Azure Stack 门户创建新的虚拟机 (VM) 并选择 VM 大小时，“美元/月”列在显示时会出现“不可用”消息。 此列不应显示；Azure Stack 不支持显示 VM 定价列。
@@ -284,18 +286,18 @@ Azure Stack 1809 更新内部版本号为 **1.1809.0.90**。
    若要查找指标数据，例如 VM 的 CPU 百分比图表，请转到指标窗口并显示所有受支持的 Windows VM 来宾指标。
 
 <!-- 3507629 - IS, ASDK --> 
-- 托管的磁盘创建两个新[计算配额类型](azure-stack-quota-types.md#compute-quota-types)来限制可以预配的托管磁盘的最大容量。 默认情况下，为每个托管的磁盘配额类型分配 GiB。 但是，您可能会遇到以下问题：
+- 托管磁盘创建了两个新的[计算配额类型](azure-stack-quota-types.md#compute-quota-types)来限制可以预配的托管磁盘的最大容量。 默认情况下将为每个托管磁盘配额类型分配 2048 GiB。 不过，你可能会遇到以下问题：
 
-   - 对于 1808年更新之前创建的配额，托管磁盘配额将显示 0 值在管理员门户中，尽管分配 GiB。 你可以增加或减少值基于您的实际需求，并使用新设置配额值将覆盖 2048 GiB 默认值。
-   - 如果您更新的配额值为 0，相当于 GiB 的默认值。 作为一种解决方法，设置为 1 的配额值。
+   - 对于在 1808 更新之前创建的配额，托管磁盘配额在管理门户中将显示为值 0，虽然分配了 2048 GiB。 你可以根据实际需求增大或减小该值，新设置的配额值将替代 2048 GiB 默认值。
+   - 如果将配额值更新为 0，则它等效于默认值 2048 GiB。 作为一种解决方法，请将配额值设置为 1。
 
 <!-- TBD - IS ASDK --> 
 - 更新应用 1809年后，部署包含托管磁盘的 Vm 时，您可能会遇到以下问题：
 
-   - 如果 1808年更新，使用托管磁盘部署 VM 之前创建的订阅可能会失败并显示内部错误消息。 若要解决此错误，请针对每个订阅执行以下步骤：
+   - 如果订阅是在 1808 更新之前创建的，则部署具有托管磁盘的 VM 可能会失败并出现内部错误消息。 若要解决此错误，请针对每个订阅执行以下步骤：
       1. 在租户门户中转到“订阅”，找到相应订阅。 依次单击“资源提供程序”、“Microsoft.Compute”、“重新注册”。
       2. 在同一订阅下，转到“访问控制(标识和访问管理)”，验证“Azure Stack - 托管磁盘”是否已列出。
-   2. 如果已配置多租户环境中，在与来宾目录关联的订阅中部署虚拟机内部的错误消息可能会失败。 若要解决此错误，请按照中的步骤[这篇文章](azure-stack-enable-multitenancy.md#registering-azure-stack-with-the-guest-directory)重新配置每个来宾目录。
+   2. 如果已配置多租户环境，在与来宾目录相关联的订阅中部署 VM 可能会失败并出现内部错误消息。 若要解决错误，请执行[此文章](azure-stack-enable-multitenancy.md#registering-azure-stack-with-the-guest-directory)中的步骤来重新配置每个来宾目录。
 
 - 创建具有 SSH 授权启用的 Ubuntu 18.04 VM 将不允许要使用 SSH 密钥登录。 解决此问题，请使用 VM 访问 for Linux 扩展预配后，实现 SSH 密钥，或使用基于密码的身份验证。
 

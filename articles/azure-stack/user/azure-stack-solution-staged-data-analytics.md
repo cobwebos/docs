@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/01/2018
 ms.author: mabrigg
-ms.reviewer: Anjay.Ajodha
-ms.openlocfilehash: d63faf63012360d4448166ac5d69eba6ede9d0ed
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.reviewer: anajod
+ms.openlocfilehash: 88c72994ec0c6cfc6222ccb31cabae7e354412eb
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52969526"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54245525"
 ---
 # <a name="tutorial-create-a-staged-data-analytics-solution-with-azure-and-azure-stack"></a>教程：使用 Azure 和 Azure Stack 创建临时数据分析解决方案 
 
@@ -81,25 +81,25 @@ Azure Functions 和存储解决方案可以通过缩放来满足数据量和处�
 
 3.  使用下述适用于帐户的信息：
 
-    a.  名称：**由你选择**
+    a.  姓名：**由用户选择**
 
     b.  部署模型：**资源管理器**
 
     c.  帐户类型：**存储(常规用途 V1)**
 
-    d.  位置：“美国西部”
+    d.  位置：**美国西部**
 
-    e.  复制：**本地冗余存储(LRS)**
+    e.  复制：**本地冗余存储 (LRS)**
 
     f.  性能：**标准**
 
-    g.  需要安全传输：**禁用**
+    g.  需要安全传输：**已禁用**
 
-    h.  订阅：选择一个订阅
+    h.  订阅：选择一个
 
-    i.  资源组：指定新的资源组或选择现有的资源组
+    i.  资源组：指定新资源组或选择现有资源组
 
-    j.  配置虚拟网络：**禁用**
+    j.  配置虚拟网络：**已禁用**
 
 4.  选择“创建”以创建存储帐户。
 
@@ -113,9 +113,9 @@ Azure Functions 和存储解决方案可以通过缩放来满足数据量和处�
 
     ![Alt text](media/azure-stack-solution-staged-data-analytics/image2.png)
 
-8.  名称：**由你选择**
+8.  姓名：**由你选择**
 
-9.  公共访问级别：**容器(对容器和 Blob 进行匿名读取访问)**
+9.  公共访问级别：**容器**(对容器和 Blob 进行匿名读取访问)
 
 10.  选择“确定”。
 
@@ -131,7 +131,7 @@ Azure Functions 和存储解决方案可以通过缩放来满足数据量和处�
 
 4.  使用图像下面的表中指定的设置创建函数应用。
 
-    | 设置 | 建议的值 | 说明 |
+    | 设置 | 建议的值 | 描述 |
     | ---- | ---- | ---- |
     | 应用程序名称 | 全局唯一名称 | 用于标识新 Function App 的名称。 有效字符为 `a`-`z`、`0``-9` 和 `-`。 |
     | 订阅 | 订阅 | 要在其下创建此新函数应用的订阅。 |
@@ -168,7 +168,7 @@ Azure Functions 和存储解决方案可以通过缩放来满足数据量和处�
 
     ![Alt text](media/azure-stack-solution-staged-data-analytics/image4.png)
 
-3.  选择“C\#”作为“语言”，并将函数命名为 `upload-to-azure`  将计划设置为 `0 0 * * * *`，按照 CRON 表示法，这表示每小时一次。
+3.  选择 **C\#** 作为语言并对函数进行命名：`upload-to-azure`  将计划设置为 `0 0 * * * *`，在 CRON 表示法中这表示每小时一次。
 
     ![Alt text](media/azure-stack-solution-staged-data-analytics/image5.png)
 
@@ -182,7 +182,7 @@ Azure Functions 和存储解决方案可以通过缩放来满足数据量和处�
 
 3.  使用下表中指定的设置：
 
-    | 设置 | 建议的值 | 说明 |
+    | 设置 | 建议的值 | 描述 |
     | ------- | ------- | ------- |
     | 名称 | 在 Function App 中唯一 | 此 Blob 触发函数的名称。 |
     | 路径 | \<上述存储位置的路径> | 所监视的 Blob 存储中的位置。 Blob 的文件名作为 name 参数在绑定中传入。 |
@@ -242,7 +242,7 @@ Azure Functions 和存储解决方案可以通过缩放来满足数据量和处�
 
 2.  使用下表中指定的设置：
 
-    | 设置 | 建议的值 | 说明 |
+    | 设置 | 建议的值 | 描述 |
     | ------- | ------- | ------- |
     | 名称 | 在 Function App 中唯一 | 此队列触发函数的名称。 |
     | 路径 | \<上述存储位置的路径> | 所监视的存储中的位置。 队列的文件名作为 name 参数在绑定中传入。 |

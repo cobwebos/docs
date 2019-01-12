@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/24/2018
 ms.author: sethm
-ms.reviewer: ''
-ms.openlocfilehash: 9f1c433be7e8adc0779860c3ec3bfb5d7174fca5
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.reviewer: unknown
+ms.openlocfilehash: 920d06a84f82db00b5161d2b3152c7db6f8314a6
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52970716"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54247446"
 ---
 #  <a name="add-marketplace-items-using-publishing-tool"></a>使用发布工具添加市场项
 
@@ -28,7 +28,7 @@ ms.locfileid: "52970716"
 
 ## <a name="prerequisites"></a>必备组件
 
- - 必须在 Azure Stack 主机上运行该工具包或具有[VPN](./asdk/asdk-connect.md#connect-with-vpn)从其运行该工具的计算机连接到 ASDK 主机。
+ - 必须在 Azure Stack 主机上运行此工具包，或者已从运行此工具的计算机到 ASDK 主机建立 [VPN](./asdk/asdk-connect.md#connect-with-vpn) 连接。
 
  - 下载 [Azure Stack 快速入门模板](https://github.com/Azure/AzureStack-QuickStart-Templates/archive/master.zip)并解压缩。
 
@@ -76,7 +76,7 @@ ms.locfileid: "52970716"
 
 1.  向导需要以下信息来发布解决方案：
     
-    |字段|说明|
+    |字段|描述|
     |-----|-----|
     | 服务管理员名称 | 服务管理员帐户。  示例： ServiceAdmin@mydomain.onmicrosoft.com |
     | 密码 | 服务管理员帐户的密码。 |
@@ -92,7 +92,7 @@ ms.locfileid: "52970716"
 
 ## <a name="support-files"></a>支持文件
 
-| 说明 | 示例 |
+| 描述 | 示例 |
 | ----- | ----- |
 | 40x40 .png 图标 | ![](./media/azure-stack-marketplace-publisher/image1.png) |
 | 90x90 .png 图标 | ![](./media/azure-stack-marketplace-publisher/image2.png) |

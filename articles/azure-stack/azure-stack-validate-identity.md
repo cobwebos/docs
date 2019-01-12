@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 12/04/2018
 ms.author: sethm
-ms.reviewer: ''
-ms.openlocfilehash: 61562450d484f34385b4e6e111bf62326eaca159
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.reviewer: unknown
+ms.openlocfilehash: 2cfa789b9817562eba5224257a365f8552cdf833
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52888369"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54245934"
 ---
 # <a name="validate-azure-identity"></a>验证 Azure 标识 
 使用 Azure Stack 就绪性检查器工具 (AzsReadinessChecker) 验证 Azure Active Directory (Azure AD) 是否已准备好与 Azure Stack 配合使用。 在开始 Azure Stack 部署之前，请验证 Azure 标识解决方案。  
@@ -63,7 +63,7 @@ ms.locfileid: "52888369"
    - 指定 Azure Active Directory 租户名称替换*contoso.onmicrosoft.com*。 
 
    > `Invoke-AzsAzureIdentityValidation -AADServiceAdministrator $serviceAdminCredential -AzureEnvironment <environment name> -AADDirectoryTenantName contoso.onmicrosoft.com`
-4. 运行该工具后，查看输出。 确认状态是否**确定**有关安装要求。 成功的验证如下图所示： 
+4. 运行该工具后，查看输出。 对于安装要求，确认状态为“正常”。 成功的验证如下图所示： 
  
 ````PowerShell
 Invoke-AzsAzureIdentityValidation v1.1809.1005.1 started.
@@ -112,7 +112,7 @@ Log location (contains PII): C:\Users\username\AppData\Local\Temp\AzsReadinessCh
 Report location (contains PII): C:\Users\username\AppData\Local\Temp\AzsReadinessChecker\AzsReadinessCheckerReport.json
 Invoke-AzsAzureIdentityValidation Completed
 ````
-**原因**-因为密码已过期，或者是临时的帐户不能登录。     
+**原因** - 因为密码已过期或者是临时的，所以帐户无法登录。     
 
 **解决方法** - 在 PowerShell 中，运行以下命令，然后根据提示来重置密码。  
 > `Login-AzureRMAccount`
@@ -135,9 +135,9 @@ Log location (contains PII): C:\Users\username\AppData\Local\Temp\AzsReadinessCh
 Report location (contains PII): C:\Users\username\AppData\Local\Temp\AzsReadinessChecker\AzsReadinessCheckerReport.json
 Invoke-AzsAzureIdentityValidation Completed
 ````
-**原因**-帐户无法登录到指定的 Azure Active Directory (AADDirectoryTenantName)。 在本例中，将 *AzureChinaCloud* 指定为了 *AzureEnvironment*。
+**原因** - 帐户无法登录到指定的 Azure Active Directory (AADDirectoryTenantName)。 在本例中，将 *AzureChinaCloud* 指定为了 *AzureEnvironment*。
 
-**解决方法** - 确认帐户对指定的 Azure 环境有效。 在 PowerShell 中运行以下命令以验证该帐户是否对特定环境有效： Login-azurermaccount-EnvironmentName AzureChinaCloud 
+**解决方法** - 确认帐户对指定的 Azure 环境有效。 在 PowerShell 中，运行以下命令来验证帐户对特定的环境有效： Login-azurermaccount-EnvironmentName AzureChinaCloud 
 ### <a name="account-is-not-an-administrator"></a>帐户不是管理员 
  
 ````PowerShell
