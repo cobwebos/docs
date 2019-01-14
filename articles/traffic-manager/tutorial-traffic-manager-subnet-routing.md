@@ -1,10 +1,9 @@
 ---
-title: 使用 Azure 流量管理器配置子网流量路由方法 | Microsoft Docs
+title: 使用 Azure 流量管理器配置子网流量路由方法
 description: 本文介绍了如何配置流量管理器以将流量从用户子网路由到特定终结点。
 services: traffic-manager
 documentationcenter: ''
 author: KumudD
-manager: jpconnock
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: tutorial
@@ -12,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/24/2018
 ms.author: kumud
-ms.openlocfilehash: 20c34b820eb326a18be1c4298b0850a58599be64
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 8243130fc9752a47661b4c80826000d573da35c8
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46956228"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54053068"
 ---
 # <a name="direct-traffic-to-specific-endpoints-based-on-user-subnet-using-traffic-manager"></a>使用流量管理器，基于用户子网，将流量定向到特定终结点
 
@@ -183,7 +182,7 @@ ms.locfileid: "46956228"
     | 名称                   | 此名称必须在 trafficmanager.net 区域中唯一，并可生成用于访问流量管理器配置文件的 DNS 名称 (trafficmanager.net)。                                   |
     | 路由方法          | 选择“子网”路由方法。                                       |
     | 订阅            | 选择订阅。                          |
-    | 资源组          | 选择“现有”，然后输入 *myResourceGroupTM1*。 |
+    | 资源组          | 选择“现有”，然后输入 myResourceGroupTM1。 |
     | |                              |
     |
   
@@ -199,7 +198,7 @@ ms.locfileid: "46956228"
 
     | 设置                 | 值                                              |
     | ---                     | ---                                                |
-    | Type                    | Azure 终结点                                   |
+    | 类型                    | Azure 终结点                                   |
     | 名称           | myInternalWebSiteEndpoint                                        |
     | 目标资源类型           | 公共 IP 地址                          |
     | 目标资源          | **选择公共 IP 地址**以显示同一订阅下具有公共 IP 地址的资源列表。 在“资源”中，选择名为 InternalWebsite-ip 的公共 IP 地址。 这是美国东部的 IIS 服务器 VM 的公共 IP 地址。|

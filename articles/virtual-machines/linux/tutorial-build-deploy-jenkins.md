@@ -1,7 +1,7 @@
 ---
 title: 教程 - 使用 Azure DevOps Services 通过 Jenkins 实现到 Azure VM 的 CI/CD | Microsoft Docs
 description: 本教程介绍如何从 Visual Studio Team Services 或 Microsoft Team Foundation Server 中的 Release Management，通过使用 Jenkins 将 Node.js 应用设置为持续集成 (CI) 和持续部署 (CD) 到 Azure VM
-author: tomarcher
+author: tomarchermsft
 manager: jpconnock
 tags: azure-resource-manager
 ms.assetid: ''
@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 07/31/2018
 ms.author: tarcher
 ms.custom: jenkins
-ms.openlocfilehash: 4e91c0287bfe50b297b9a3ef118ececb67909f21
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 651e8505c6d3a3952347bba5e598ec9a0a518e8e
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49388472"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54074761"
 ---
 # <a name="tutorial-deploy-your-app-to-linux-virtual-machines-in-azure-with-using-jenkins-and-azure-devops-services"></a>教程：使用 Jenkins 和 Azure DevOps Services 将应用部署到 Azure 中的 Linux 虚拟机
 
@@ -68,7 +68,7 @@ ms.locfileid: "49388472"
 
 ## <a name="configure-jenkins-plug-ins"></a>配置 Jenkins 插件
 
-首先，必须配置两个 Jenkins 插件：NodeJS 和 VS Team Services 持续部署。
+首先，必须配置两个 Jenkins 插件：**NodeJS** 和 **VS Team Services 持续部署**。
 
 1. 打开你的 Jenkins 帐户，并选择“管理 Jenkins”。
 2. 在“管理 Jenkins”页面上，选择“管理插件”。

@@ -1,5 +1,5 @@
 ---
-title: 教程：使用复制向导创建管道 | Microsoft 文档
+title: 教程：使用复制向导创建管道 | Microsoft Docs
 description: 在本教程中，通过使用数据工厂所支持的复制向导，创建带有复制活动的 Azure 数据工厂管道。
 services: data-factory
 documentationcenter: ''
@@ -9,19 +9,18 @@ ms.assetid: b87afb8e-53b7-4e1b-905b-0343dd096198
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 85cea4bea0b1cff65464a2ad692e500efdc50c10
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: ace2ffdacf775a3c0c5a579e9a4208641c20f661
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43095368"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54025753"
 ---
-# <a name="tutorial-create-a-pipeline-with-copy-activity-using-data-factory-copy-wizard"></a>教程：使用数据工厂复制向导创建带有复制活动的管道
+# <a name="tutorial-create-a-pipeline-with-copy-activity-using-data-factory-copy-wizard"></a>教程：使用数据工厂复制向导创建包含复制活动的管道
 > [!div class="op_single_selector"]
 > * [概述与先决条件](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 > * [复制向导](data-factory-copy-data-wizard-tutorial.md)
@@ -64,7 +63,7 @@ ms.locfileid: "43095368"
       - 选择“使用现有资源组”并选择一个现有的资源组。
       - 选择“新建”并输入资源组的名称。
           
-        本教程中的一些步骤假定使用 **ADFTutorialResourceGroup** 作为资源组名称。 若要了解有关资源组的详细信息，请参阅 [使用资源组管理 Azure 资源](../../azure-resource-manager/resource-group-overview.md)。
+        本教程中的某些步骤假定你对资源组使用以下名称：**ADFTutorialResourceGroup**。 若要了解有关资源组的详细信息，请参阅 [使用资源组管理 Azure 资源](../../azure-resource-manager/resource-group-overview.md)。
    4. 选择数据工厂的**位置**。
    5. 选中位于边栏选项卡底部的“固定到仪表板”复选框。  
    6. 单击“创建”。

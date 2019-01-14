@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 12/07/2018
 ms.author: barbkess
 ms.reviewer: japere
-ms.openlocfilehash: 8f76c53964d062db76ea7d40cdb0ced2d015fc79
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 926a339bc8214c989da4ef934ae41012eea58d1e
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53716000"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54120727"
 ---
 # <a name="tutorial-add-an-on-premises-application-for-remote-access-through-application-proxy-in-azure-active-directory"></a>教程：在 Azure Active Directory 中添加一个本地应用程序以通过应用程序代理进行远程访问
 
@@ -25,10 +25,10 @@ Azure Active Directory (Azure AD) 具有可让用户使用其 Azure AD 帐户登
 本教程：
 
 > [!div class="checklist"]
-> * 打开出站流量的端口并允许访问特定的 URL
-> * 在 Windows 服务器上安装连接器并将其注册到应用程序代理
-> * 验证是否正确安装并注册了连接器
-> * 将本地应用程序添加到 Azure AD 租户
+> * 打开出站流量的端口并允许访问特定的 URL。
+> * 在 Windows 服务器上安装连接器并将其注册到应用程序代理。
+> * 验证是否正确安装并注册了连接器。
+> * 将本地应用程序添加到 Azure AD 租户。
 > * 验证测试用户是否可以使用 Azure AD 帐户登录到该应用程序。
 
 ## <a name="before-you-begin"></a>开始之前

@@ -14,12 +14,12 @@ ms.date: 08/28/2017
 ms.author: lizross
 ms.reviewer: krbain
 ms.custom: it-pro
-ms.openlocfilehash: 3b2264817dce63885ce0c428fe4df8427f7cdde6
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: 090c6c2d20bf169a3b3362cc796f6fc5c04b3c83
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44049229"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54155025"
 ---
 # <a name="restore-a-deleted-office-365-group-in-azure-active-directory"></a>在 Azure Active Directory 中还原已删除的 Office 365 组
 
@@ -73,7 +73,7 @@ ms.locfileid: "44049229"
 
 - 该组显示在 Exchange 的左侧导航栏中
 - 该组的计划会显示在 Planner 中
-- 将显示所有 Sharepoint 站点及其所有内容
+- 任何 SharePoint 站点及其所有内容都将可用
 - 可从任何 Exchange 终结点以及支持 Office 365 组的其他 Office 365 工作负荷访问该组
 
 ## <a name="next-steps"></a>后续步骤

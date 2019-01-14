@@ -1,5 +1,5 @@
 ---
-title: 教程 - 使用 Azure 流量管理器路将流量路由到加权终结点 | Microsoft Docs
+title: 教程 - 将流量路由到加权终结点 - Azure 流量管理器
 description: 本教程文章介绍如何使用流量管理器将流量路由到加权终结点。
 services: traffic-manager
 author: KumudD
@@ -8,12 +8,12 @@ ms.service: traffic-manager
 ms.topic: tutorial
 ms.date: 10/15/2018
 ms.author: kumud
-ms.openlocfilehash: 0f5b1f3525ab75f8c14f7921e23b30a1c58e8c73
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: f70f3804bb1c6f385081b56fe6139b1b680a95cf
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50158816"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54055007"
 ---
 # <a name="tutorial-control-traffic-routing-with-weighted-endpoints-by-using-traffic-manager"></a>教程：使用流量管理器控制加权终结点的流量路由 
 
@@ -33,7 +33,7 @@ ms.locfileid: "50158816"
 
 ## <a name="prerequisites"></a>先决条件
 为了查看流量管理器的运作方式，请为本教程部署以下各项：
-- 在不同 Azure 区域（“美国东部”和“西欧”）运行的基本网站的两个实例。
+- 在以下不同 Azure 区域运行的基本网站的两个实例：“美国东部”和“西欧”。
 - 用于测试流量管理器的两个测试 VM：一个位于“美国东部”，另一个 VM 位于“西欧”。 测试 VM 用于演示流量管理器如何将用户流量路由到分配给其终结点的权重更高的网站。
 
 ### <a name="sign-in-to-azure"></a>登录 Azure 

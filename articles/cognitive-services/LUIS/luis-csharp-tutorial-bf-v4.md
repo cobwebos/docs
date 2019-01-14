@@ -9,14 +9,14 @@ manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: tutorial
-ms.date: 09/25/2018
+ms.date: 01/09/2019
 ms.author: diberry
-ms.openlocfilehash: 113e5769ee6a58785a46182064684bea5825c12c
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: d233f1df40d9580edfaaeb6b819c014952ad3b0c
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53138904"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54189264"
 ---
 # <a name="tutorial-luis-bot-in-c-with-the-bot-framework-4x-and-the-azure-web-app-bot"></a>教程：使用 Bot Framework 4.x 和 Azure Web 应用机器人的 C# 中的 LUIS 机器人
 使用 C#，可以构建集成了语言理解 (LUIS) 的聊天机器人。 此机器人使用 HomeAutomation 应用来实现机器人解决方案。 此机器人是使用 Azure [Web 应用机器人](https://docs.microsoft.com/azure/bot-service/)和 [Bot Framework 版本](https://github.com/Microsoft/botbuilder-js) v4 构建的。
@@ -301,6 +301,7 @@ Azure 机器人服务使用 Bot Framework SDK。 详细了解该 SDK 和机器�
 
 我们创建了一个 Azure 机器人服务，复制了机器人机密和 `.bot` 文件路径，并下载了代码的 zip 文件。 我们已将预生成的 HomeAutomation 域添加到在创建新 Azure 机器人服务过程中创建的 LUIS 应用，然后重新训练和并发布了该应用。 我们提取了代码项目，创建了环境文件 (`.env`)，并设置了机器人机密和 `.bot` 文件路径。 在 bot.js 文件中，我们添加了用于处理两个新意向的代码。 然后，我们在模拟器中测试了机器人，以查看针对某个新意向的话语做出的 LUIS 响应。 
 
+查看更多使用聊天机器人的[示例](https://github.com/Microsoft/AI)。 
 
 > [!div class="nextstepaction"]
 > [在 LUIS 中生成自定义域](luis-quickstart-intents-only.md)

@@ -4,17 +4,17 @@ description: 了解如何使用 Yeoman 在 Azure 中创建 Terraform 基模板�
 services: terraform
 ms.service: terraform
 keywords: terraform, devops, 虚拟机, azure, yeoman
-author: v-mavick
+author: tomarchermsft
 manager: jeconnoc
-ms.author: v-mavick
+ms.author: tarcher
 ms.topic: tutorial
 ms.date: 11/08/2018
-ms.openlocfilehash: 15ef4795544044427805e21f7a8e98646c9cf9bd
-ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
+ms.openlocfilehash: 36e4b424cdb961920fccdf7f050e28447ccbd6cf
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52284329"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54074501"
 ---
 # <a name="create-a-terraform-base-template-in-azure-using-yeoman"></a>使用 Yeoman 在 Azure 中创建 Terraform 基模板
 
@@ -28,7 +28,7 @@ ms.locfileid: "52284329"
 
 ## <a name="prerequisites"></a>先决条件
 
-- **Azure 订阅**：如果还没有 Azure 订阅，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/)。
+- **Azure 订阅**：如果还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/)。
 - **Visual Studio Code**：我们会使用 [Visual Studio Code](https://www.bing.com/search?q=visual+studio+code+download&form=EDGSPH&mkt=en-us&httpsmsn=1&refig=dffc817cbc4f4cb4b132a8e702cc19a3&sp=3&ghc=1&qs=LS&pq=visual+studio+code&sk=LS1&sc=8-18&cvid=dffc817cbc4f4cb4b132a8e702cc19a3&cc=US&setlang=en-US) 来检查 Yeoman 生成器创建的文件。 但是，可以自行选择使用任何代码编辑器。
 - **Terraform**：需安装 [Terraform](https://docs.microsoft.com/azure/virtual-machines/linux/terraform-install-configure ) 才能运行 Yeoman 创建的模块。
 - **Docker**：我们将使用 [Docker](https://www.docker.com/get-started) 来运行 Yeoman 生成器创建的模块。 （如果你愿意，可以使用 Ruby 代替 Docker 来运行示例模块。）
@@ -140,8 +140,8 @@ Yeoman 模板在**当前目录**中生成文件。 由于此原因，需创建�
 
 定义生成步骤。 这些步骤包括：
 
-- **build**：验证 main.tf 文件的格式。
-- **unit**：生成的模块框架不包括单元测试的代码。 如需指定单元测试方案，则请在此处添加该代码。
+- **编译**：验证 main.tf 文件的格式。
+- **单元**：生成的模块框架不包括单元测试的代码。 如需指定单元测试方案，则请在此处添加该代码。
 - **e2e**：运行模块的端到端测试。
 
 ### <a name="test"></a>测试
@@ -248,11 +248,11 @@ Yeoman 模板在**当前目录**中生成文件。 由于此原因，需创建�
 
 1. 此时，Cloud Shell 已经在环境变量中配置了 GOPATH。 若要查看路径，请输入 `go env`。
 
-1. 创建 $GOPATH 文件夹（如果尚不存在）：输入 `mkdir ~/go`。
+1. 创建 $GOPATH 文件夹（如果尚不存在）：输入 `mkdir ~/go` 。
 
-1. 在 $GOPATH 文件夹中创建一个文件夹：输入 `mkdir ~/go/src`。 该文件夹将用于保存和组织你可能会创建的不同的项目文件夹，例如在下一步创建的 <your-module-name> 文件夹。
+1. 在 $GOPATH 文件夹中创建一个文件夹：输入 `mkdir ~/go/src` 。 该文件夹将用于保存和组织你可能会创建的不同的项目文件夹，例如在下一步创建的 <your-module-name> 文件夹。
 
-1. 创建用于保存 Terraform 模块的文件夹：输入 `mkdir ~/go/src/<your-module-name>`。
+1. 创建用于保存 Terraform 模块的文件夹：输入 `mkdir ~/go/src/<your-module-name>` 。
 
     >[!NOTE]
     >在此示例中，我们选择了 `my-module-name` 作为文件夹名称。

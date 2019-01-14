@@ -3,17 +3,17 @@ title: 使用 Ansible 缩放 Azure 应用服务 Web 应用
 description: 了解如何使用 Ansible 在 Linux 上的应用服务中创建采用 Java 8 和 Tomcat 容器运行时的 Web 应用
 ms.service: ansible
 keywords: ansible, azure, devops, bash, playbook, Azure 应用服务, Web 应用, 缩放, Java
-author: tomarcher
+author: tomarchermsft
 manager: jeconnoc
-ms.author: kyliel
+ms.author: tarcher
 ms.topic: tutorial
 ms.date: 12/08/2018
-ms.openlocfilehash: 740ff6d6a636377f9d58a5231692c87f935ae6d2
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 4ef8320d3eba841ee64557e31e63b4e79ee3aa92
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53601859"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54159887"
 ---
 # <a name="scale-azure-app-service-web-apps-by-using-ansible"></a>使用 Ansible 缩放 Azure 应用服务 Web 应用
 [Azure 应用服务 Web 应用](https://docs.microsoft.com/azure/app-service/overview)（简称 Web 应用）可托管 Web 应用程序、REST API 和移动后端。 可以使用 .NET、NET Core、Java、Ruby、Node.js、PHP 或 Python 等偏好的语言进行开发。
@@ -39,7 +39,7 @@ ms.locfileid: "53601859"
     location: eastus
 
   tasks:
-  - name: Get facts of existing App serivce plan
+  - name: Get facts of existing App service plan
     azure_rm_appserviceplan_facts:
       resource_group: "{{ resource_group }}"
       name: "{{ plan_name }}"
@@ -80,7 +80,7 @@ PLAY [localhost] **************************************************************
 TASK [Gathering Facts] ********************************************************
 ok: [localhost]
 
-TASK [Get facts of existing App serivce plan] **********************************************************
+TASK [Get facts of existing App service plan] **********************************************************
  [WARNING]: Azure API profile latest does not define an entry for WebSiteManagementClient
 
 ok: [localhost]

@@ -1,7 +1,7 @@
 ---
 title: 回归模型教程：准备数据
 titleSuffix: Azure Machine Learning service
-description: 本教程的第一部分介绍如何在 Python 中准备数据，以便使用 Azure ML SDK 进行回归建模。
+description: 本教程的第一部分介绍如何在 Python 中准备数据，以便使用 Azure 机器学习 SDK 进行回归建模。
 services: machine-learning
 ms.service: machine-learning
 ms.component: core
@@ -11,31 +11,33 @@ ms.author: cforbe
 ms.reviewer: trbye
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: d20ff1fabfb73c899153cf42bb6f2d7a8f233e21
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 8f7e414d2aa4962534a90a295e104f8e8ebabbd9
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53314680"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54079232"
 ---
 # <a name="tutorial-prepare-data-for-regression-modeling"></a>教程：为回归建模准备数据
 
-本教程介绍如何准备数据，以便使用 Azure 机器学习数据准备 SDK 进行回归建模。 执行各种转换，以便筛选并组合两个不同的纽约市出租车数据集。 本教程系列的最终目标是根据数据特性（包括上车时间、星期几、乘客数和坐标）训练一个模型，以便预测出租车打车费用。 本教程是由两个部分构成的系列教程的第一部分。
+本教程介绍如何准备数据，以便使用 Azure 机器学习数据准备 SDK 进行回归建模。 运行各种转换，以便筛选并组合两个不同的纽约市出租车数据集。  
+
+本教程是由两个部分构成的系列教程的第一部分。 完成这一系列的教程以后，即可根据数据特性训练一个模型，以便预测出租车打车费用。 这些特性包括上车日期和时间、乘客数和上车位置。
 
 本教程介绍以下操作：
 
 > [!div class="checklist"]
-> * 设置 Python 环境并导入包
-> * 加载两个包含不同字段名称的数据集
-> * 清理数据，删除异常数据
-> * 使用智能转换来转换数据，以便创建新特性
-> * 保存可以在回归模型中使用的数据流对象
+> * 设置 Python 环境并导入包。
+> * 加载两个包含不同字段名称的数据集。
+> * 清理数据，删除异常数据。
+> * 使用智能转换来转换数据，以便创建新特性。
+> * 保存可以在回归模型中使用的数据流对象。
 
 可以使用 [Azure 机器学习数据准备 SDK](https://aka.ms/data-prep-sdk) 在 Python 中准备数据。
 
 ## <a name="get-the-notebook"></a>获取 Notebook
 
-为方便起见，本教程以 [Jupyter Notebook](https://github.com/Azure/MachineLearningNotebooks/blob/master/tutorials/regression-part1-data-prep.ipynb) 的形式提供。 在 Azure Notebooks 或你自己的 Jupyter Notebook 服务器中运行 `regression-part1-data-prep.ipynb` Notebook。
+为方便起见，本教程以 [Jupyter Notebook](https://github.com/Azure/MachineLearningNotebooks/blob/master/tutorials/regression-part1-data-prep.ipynb) 的形式提供。 在 Azure Notebooks 或你自己的 Jupyter Notebook 服务器中运行 **regression-part1-data-prep.ipynb** 笔记本。
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-in-azure-notebook.md)]
 
@@ -50,7 +52,7 @@ import azureml.dataprep as dprep
 
 ## <a name="load-data"></a>加载数据
 
-将两个不同的纽约市出租车数据集下载到数据流对象中。  这些数据集包含的字段稍有不同。 方法 `auto_read_file()` 自动识别输入文件类型。
+将两个不同的纽约市出租车数据集下载到数据流对象中。 这两个数据集的字段稍有不同。 `auto_read_file()` 方法自动识别输入文件类型。
 
 
 ```python
@@ -60,7 +62,7 @@ green_path = "/".join([dataset_root, "green-small/*"])
 yellow_path = "/".join([dataset_root, "yellow-small/*"])
 
 green_df = dprep.read_csv(path=green_path, header=dprep.PromoteHeadersMode.GROUPED)
-# auto_read_file will automatically identify and parse the file type, and is useful if you don't know the file type
+# auto_read_file automatically identifies and parses the file type, which is useful when you don't know the file type.
 yellow_df = dprep.auto_read_file(path=yellow_path)
 
 display(green_df.head(5))
@@ -69,7 +71,7 @@ display(yellow_df.head(5))
 
 ## <a name="cleanse-data"></a>清理数据
 
-现在，请在某些变量中填充将要应用到所有数据流的快捷方式转换。 变量 `drop_if_all_null` 将用于删除所有字段均为 null 的记录。 变量 `useful_columns` 保存列说明的数组，这些说明保留在每个数据流中。
+现在，请在某些变量中填充将要应用到所有数据流的快捷方式转换。 `drop_if_all_null` 变量用于删除所有字段均为 null 的记录。 `useful_columns` 变量保存列说明的数组，这些说明保留在每个数据流中。
 
 ```python
 all_columns = dprep.ColumnSelector(term=".*", use_regex=True)
@@ -80,7 +82,7 @@ useful_columns = [
 ]
 ```
 
-首先处理绿色出租车数据，使之具有有效的形状，能够与黄色出租车数据组合在一起。 创建临时数据流 `tmp_df`。 使用已创建的快捷方式转换变量来调用 `replace_na()`、`drop_nulls()` 和 `keep_columns()` 函数。 另外，请将 dataframe 中的所有列重命名，使之与 `useful_columns` 中的名称匹配。
+首先处理绿色出租车数据，使之具有有效的形状，能够与黄色出租车数据组合在一起。 创建名为 `tmp_df` 的临时数据流。 使用已创建的快捷方式转换变量来调用 `replace_na()`、`drop_nulls()` 和 `keep_columns()` 函数。 另外，请将 dataframe 中的所有列重命名，使之与 `useful_columns` 变量中的名称匹配。
 
 
 ```python
@@ -209,13 +211,13 @@ tmp_df.head(5)
 </table>
 </div>
 
-使用在上一步中的 `tmp_df` 上执行的转换覆盖 `green_df` 变量。
+使用在上一步的 `tmp_df` 数据流上运行的转换覆盖 `green_df` 变量。
 
 ```python
 green_df = tmp_df
 ```
 
-对黄色出租车数据执行相同的转换步骤。
+对黄色出租车数据运行相同的转换步骤。
 
 
 ```python
@@ -247,7 +249,7 @@ tmp_df = (yellow_df
 tmp_df.head(5)
 ```
 
-再次使用 `tmp_df` 来覆盖 `yellow_df`，然后针对绿色出租车数据调用 `append_rows()` 函数，以便追加黄色出租车数据，创建新的组合 dataframe。
+再次使用 `tmp_df` 数据流来覆盖 `yellow_df` 数据流。 然后，针对绿色出租车数据调用 `append_rows()` 函数，以便追加黄色出租车数据。 此时会创建新的组合 dataframe。
 
 
 ```python
@@ -257,7 +259,7 @@ combined_df = green_df.append_rows([yellow_df])
 
 ### <a name="convert-types-and-filter"></a>转换类型和筛选器 
 
-检查上车和下车的坐标摘要统计信息，了解数据的分布情况。 首先定义一个 `TypeConverter` 对象，将纬度/经度字段更改为十进制类型。 接下来调用 `keep_columns()` 函数，使输出仅限纬度/经度字段，然后调用 `get_profile()`。
+检查上车和下车的坐标摘要统计信息，了解数据的分布情况。 首先定义一个 `TypeConverter` 对象，将纬度和经度字段更改为十进制类型。 接下来调用 `keep_columns()` 函数，使输出仅限纬度和经度字段，然后调用 `get_profile()` 函数。
 
 
 ```python
@@ -401,7 +403,7 @@ combined_df.keep_columns(columns=[
 
 
 
-从摘要统计信息输出中可以看到，有的坐标缺失，有的坐标不在纽约市。 请筛选出不在城市边界中的坐标，方法是：链接 `filter()` 函数中的列筛选器命令，然后定义每个字段的最小和最大边界。 然后再次调用 `get_profile()`，验证转换。
+从摘要统计信息输出中可以看到，有的坐标缺失，有的坐标不在纽约市。 筛选掉位置在城市边缘之外的坐标。 链接 `filter()` 函数中的列筛选器命令，定义每个字段的最小和最大边界。 然后再次调用 `get_profile()` 函数，验证转换。
 
 
 ```python
@@ -553,7 +555,7 @@ tmp_df.keep_columns(columns=[
 
 
 
-使用对 `tmp_df` 所做的转换覆盖 `combined_df`。
+使用对 `tmp_df` 数据流所做的转换覆盖 `combined_df` 数据流。
 
 
 ```python
@@ -627,14 +629,14 @@ combined_df.keep_columns(columns='store_forward').get_profile()
 
 
 
-从 `store_forward` 的数据配置文件输出中可以看到，数据不一致且存在缺失值/null 值。 使用 `replace()` 和 `fill_nulls()` 函数替换这些值，两种情况下均更改为字符串“N”。
+注意，`store_forward` 列中的数据配置文件输出显示，数据不一致且存在缺失值或 null 值。 使用 `replace()` 和 `fill_nulls()` 函数将这些值替换为字符串“N”：
 
 
 ```python
 combined_df = combined_df.replace(columns="store_forward", find="0", replace_with="N").fill_nulls("store_forward", "N")
 ```
 
-执行另一个 `replace` 函数，这一次针对 `distance` 字段。 这将重新格式化错误标记为 `.00` 的距离值，并用 0 填充任何空值。 将 `distance` 字段转换为数值格式。
+执行 `distance` 字段上的 `replace` 函数。 此函数将重新格式化错误标记为 `.00` 的距离值，并用 0 填充任何 null 值。 将 `distance` 字段转换为数值格式。
 
 
 ```python
@@ -642,7 +644,7 @@ combined_df = combined_df.replace(columns="distance", find=".00", replace_with=0
 combined_df = combined_df.to_number(["distance"])
 ```
 
-将上车和下车日期时间拆分为相应的日期和时间列。 使用 `split_column_by_example()` 进行拆分。 在此示例中，`split_column_by_example()` 的可选 `example` 参数已省略。 因此，函数会自动根据数据来确定在何处进行拆分。
+将上车和下车日期/时间值拆分为相应的日期和时间列。 使用 `split_column_by_example()` 函数进行拆分。 在此示例中，`split_column_by_example()` 函数的可选 `example` 参数已省略。 因此，函数会自动根据数据来确定在何处进行拆分。
 
 
 ```python
@@ -780,7 +782,7 @@ tmp_df.head(5)
 </div>
 
 
-将 `split_column_by_example()` 生成的列重命名为有意义的名称。
+将 `split_column_by_example()` 函数生成的列重命名，使用有意义的名称。
 
 
 ```python
@@ -794,7 +796,7 @@ tmp_df_renamed = (tmp_df
 tmp_df_renamed.head(5)
 ```
 
-使用执行的转换来覆盖 `combined_df`，然后调用 `get_profile()`，以便查看进行所有转换之后的完整摘要统计信息。
+使用所执行的转换覆盖 `combined_df` 数据流。 然后调用 `get_profile()` 函数，以便查看进行所有转换之后的完整摘要统计信息。
 
 
 ```python
@@ -804,9 +806,9 @@ combined_df.get_profile()
 
 ## <a name="transform-data"></a>转换数据
 
-将上车和下车日期进一步拆分为星期几、月份日期和月份。 若要确定是星期几，请使用 `derive_column_by_example()` 函数。 此函数采用示例对象的数组作为参数，这些对象定义输入数据和所需输出。 然后，此函数会自动确定所需的转换。 对于上车和下车时间列，请使用 `split_column_by_example()` 函数将其拆分为小时、分钟和秒，不带示例参数。
+将上车和下车日期进一步拆分为星期几、月份日期和月份值。 若要确定是星期几，请使用 `derive_column_by_example()` 函数。 此函数采用示例对象的数组参数，这些对象定义输入数据和首选输出。 此函数会自动确定你的首选转换。 对于上车和下车时间列，请使用不带示例参数的 `split_column_by_example()` 函数将时间拆分为小时、分钟和秒。
 
-生成这些新特性后，请通过 `drop_columns()` 删除原始字段，以便使用新生成的特性。 将所有剩余字段重命名，以便准确地进行描述。
+生成这些新特性后，请通过 `drop_columns()` 函数删除原始字段，因为新生成的特性是首选特性。 重命名其余字段，使用有意义的说明。
 
 
 ```python
@@ -824,7 +826,7 @@ tmp_df = (combined_df
           
     .split_column_by_example(source_column="pickup_time")
     .split_column_by_example(source_column="dropoff_time")
-    # the following two split_column_by_example calls reference the generated column names from the above two calls
+    # The following two calls to split_column_by_example reference the column names generated from the previous two calls.
     .split_column_by_example(source_column="pickup_time_1")
     .split_column_by_example(source_column="dropoff_time_1")
     .drop_columns(columns=[
@@ -999,7 +1001,7 @@ tmp_df.head(5)
 </table>
 </div>
 
-从上面的数据可以看出，通过派生的转换生成的上车和下车日期和时间组件是正确的。 请删除 `pickup_datetime` 和 `dropoff_datetime` 列，因为已不再需要它们。
+注意，数据显示通过派生的转换生成的上车和下车日期和时间组件是正确的。 请删除 `pickup_datetime` 和 `dropoff_datetime` 列，因为已不再需要它们。
 
 
 ```python
@@ -1034,7 +1036,7 @@ type_infer
     'dropoff_latitude': [FieldType.DECIMAL],
     'cost': [FieldType.DECIMAL]
 
-根据数据来看，推断结果看起来是正确的，因此现在可以将类型转换应用到数据流了。
+根据数据来看，推断结果看起来是正确的。 现在请将类型转换应用到数据流。
 
 
 ```python
@@ -1042,14 +1044,14 @@ tmp_df = type_infer.to_dataflow()
 tmp_df.get_profile()
 ```
 
-在打包数据流之前，请对数据集执行两个最终筛选器。 若要消除不正确的数据点，请对 `cost` 和 `distance` 都大于零的记录筛选数据流。
+在打包数据流之前，请对数据集运行两个最终筛选器。 若要消除不正确的数据点，请对 `cost` 和 `distance` 变量值都大于零的记录筛选数据流。
 
 ```python
 tmp_df = tmp_df.filter(dprep.col("distance") > 0)
 tmp_df = tmp_df.filter(dprep.col("cost") > 0)
 ```
 
-目前已经有了完全转换和准备好的数据流对象，可以在机器学习模型中使用了。 此 SDK 包含对象序列化功能，其用法如下。
+目前已经有了完全转换和准备好的数据流对象，可以在机器学习模型中使用了。 此 SDK 包含对象序列化功能，其用法如以下代码片段所示。
 
 ```python
 import os
@@ -1062,19 +1064,21 @@ package.save(file_path)
 
 ## <a name="clean-up-resources"></a>清理资源
 
-如果不希望继续学习本教程的第二部分，请删除当前目录中的 `dflows.dprep` 文件（不管是在本地还是在 Azure Notebooks 中运行）。 如果继续学习第二部分，则需要当前目录中的 `dflows.dprep` 文件。
+若要继续学习教程第二部分，需要当前目录中的 **dflows.dprep** 文件。
+
+如果不打算继续学习第二部分，请删除当前目录中的 **dflows.dprep** 文件。 不管是在本地还是在 Azure Notebooks 中运行此执行操作，均请删除此文件。
 
 ## <a name="next-steps"></a>后续步骤
 
 在本教程的第一部分，你完成了以下操作：
 
 > [!div class="checklist"]
-> * 设置开发环境
-> * 加载并清理数据集
-> * 使用智能转换根据示例来预测逻辑
-> * 合并并打包用于机器学习训练的数据集
+> * 设置开发环境。
+> * 加载并清理数据集。
+> * 使用智能转换根据示例来预测逻辑。
+> * 合并并打包用于机器学习训练的数据集。
 
-现在可以在本系列教程的下一部分使用此训练数据了：
+现在可以在本教程的第二部分使用此训练数据了：
 
 > [!div class="nextstepaction"]
-> [教程 #2：训练回归模型](tutorial-auto-train-models.md)
+> [教程（第二部分）：训练回归模型](tutorial-auto-train-models.md)

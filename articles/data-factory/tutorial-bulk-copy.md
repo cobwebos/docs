@@ -9,16 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: jingwang
-ms.openlocfilehash: 1bf93ce9aa1733634b46c2a15b587d4cc0826ba1
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: c15c79e90b69fd72ed6b8968d35be95da50f838b
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43090927"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54023855"
 ---
 # <a name="copy-multiple-tables-in-bulk-by-using-azure-data-factory"></a>使用 Azure 数据工厂批量复制多个表
 本教程演示如何**将 Azure SQL 数据库中的多个表复制到 Azure SQL 数据仓库**。 在其他复制方案中，也可以应用相同的模式。 例如，将 SQL Server/Oracle 中的表复制到 Azure SQL 数据库/数据仓库/Azure Blob，将 Blob 中的不同路径复制到 Azure SQL 数据库表。
@@ -108,7 +107,7 @@ ms.locfileid: "43090927"
         ```
 
     * 只有 Azure 订阅的参与者或管理员才可以创建数据工厂实例。
-    * 要查看目前提供数据工厂的 Azure 区域的列表，请在以下页面上选择感兴趣的区域，然后展开“分析”以找到“数据工厂”：[可用产品（按区域）](https://azure.microsoft.com/global-infrastructure/services/)。 数据工厂使用的数据存储（Azure 存储、Azure SQL 数据库，等等）和计算资源（HDInsight 等）可以位于其他区域中。
+    * 若要查看目前提供数据工厂的 Azure 区域的列表，请在以下页面上选择感兴趣的区域，然后展开“分析”以找到“数据工厂”：[各区域的产品可用性](https://azure.microsoft.com/global-infrastructure/services/)。 数据工厂使用的数据存储（Azure 存储、Azure SQL 数据库，等等）和计算资源（HDInsight 等）可以位于其他区域中。
 
 ## <a name="create-linked-services"></a>创建链接服务
 
@@ -116,7 +115,7 @@ ms.locfileid: "43090927"
 
 ### <a name="create-the-source-azure-sql-database-linked-service"></a>创建源 Azure SQL 数据库链接服务
 
-1. 在 **C:\ADFv2TutorialBulkCopy** 文件夹中，创建包含以下内容的名为 **AzureSqlDatabaseLinkedService.json** 的 JSON 文件：（如果文件夹 ADFv2TutorialBulkCopy 不存在，请创建该文件夹。）
+1. 在 **C:\ADFv2TutorialBulkCopy** 文件夹中，创建包含以下内容的名为 **AzureSqlDatabaseLinkedService.json** 的 JSON 文件：（如果 ADFv2TutorialBulkCopy 文件夹尚不存在，则创建该文件夹。）
 
     > [!IMPORTANT]
     > 保存文件之前，请将 &lt;servername&gt;、&lt;databasename&gt;、&lt;username&gt;@&lt;servername&gt; 和 &lt;password&gt; 替换为 Azure SQL 数据库的值。
@@ -138,7 +137,7 @@ ms.locfileid: "43090927"
 
 2. 在 **Azure PowerShell** 中，切换到 **ADFv2TutorialBulkCopy** 文件夹。
 
-3. 运行 **Set-AzureRmDataFactoryV2LinkedService** cmdlet 创建链接服务：**AzureSqlDatabaseLinkedService**。 
+3. 运行 **Set-AzureRmDataFactoryV2LinkedService** cmdlet 来创建链接服务：**AzureSqlDatabaseLinkedService**。 
 
     ```powershell
     Set-AzureRmDataFactoryV2LinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "AzureSqlDatabaseLinkedService" -File ".\AzureSqlDatabaseLinkedService.json"
@@ -271,7 +270,7 @@ ms.locfileid: "43090927"
 
 ### <a name="create-a-dataset-for-sink-sql-data-warehouse"></a>为接收器 SQL 数据仓库创建数据集
 
-1. 在 **C:\ADFv2TutorialBulkCopy** 文件夹中，创建包含以下内容的名为 **AzureSqlDWDataset.json** 的 JSON 文件：“tableName”设置为参数，稍后，引用此数据集的复制活动会在此数据集中传入实际值。
+1. 在 **C:\ADFv2TutorialBulkCopy** 文件夹中，创建包含以下内容的名为 **AzureSqlDWDataset.json** 的 JSON 文件：将“tableName”设置为参数，稍后引用此数据集的复制活动会将实际值传递给数据集。
 
     ```json
     {

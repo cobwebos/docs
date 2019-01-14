@@ -6,27 +6,21 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: overview
-ms.date: 10/30/2018
+ms.date: 01/09/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand what Data Box Disk is and how it works so I can use it to import on-premises data into Azure.
-ms.openlocfilehash: f965d455b3ada48caabb80458d44e841329cf787
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 874142df31d96de36b2b5be81a863c2f31317c52
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51229605"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54158034"
 ---
-# <a name="what-is-azure-data-box-disk-preview"></a>什么是 Azure Data Box 磁盘？ （预览版）
+# <a name="what-is-azure-data-box-disk"></a>什么是 Azure Data Box 磁盘？
 
 使用 Microsoft Azure Data Box 磁盘解决方案可以通过快速、经济、可靠的方式将 TB 量级的本地数据发送到 Azure。 Microsoft 会向你寄送 1 到 5 块固态硬盘 (SSD)，帮助加速安全数据传输。 这些加密的 8 TB 磁盘将通过区域承运人寄送到你的数据中心。 
 
 可以通过 Azure 门户中的 Data Box 服务快速配置、连接和解锁这些磁盘。 将数据复制到磁盘，然后将磁盘寄回到 Azure。 在 Azure 数据中心，将会通过高速专用上传链路，将数据自动从驱动器上传到云中。
-
-
-> [!IMPORTANT]
-> - Data Box 磁盘以预览版提供。 在部署此解决方案之前，请查看 [Azure 预览版服务的条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。 
-> - 需要注册此服务。 若要注册，请转到[预览门户](https://aka.ms/azuredataboxfromdiskdocs)。
-> - 在预览期，Data Box 磁盘可以寄送到美国和欧盟的客户。 有关详细信息，请参阅[适用区域](#region-availability)。
 
 ## <a name="use-cases"></a>用例
 
@@ -95,7 +89,7 @@ Data Box 磁盘旨在将大量数据移到 Azure，且不影响网络。 该解�
 
 ## <a name="region-availability"></a>上市区域
 
-在预览期，Data Box 磁盘可将数据传输到以下 Azure 区域：
+目前，Data Box Disk 可将数据传输到以下 Azure 区域：
 
 
 |Azure 区域  |Azure 区域  |
@@ -112,7 +106,7 @@ Data Box 磁盘旨在将大量数据移到 Azure，且不影响网络。 该解�
 
 ## <a name="pricing"></a>定价
 
-有关定价的信息，请访问[预览版定价页](https://azure.microsoft.com/pricing/details/storage/databox/disk/)。
+有关定价的信息，请访问[定价页](https://azure.microsoft.com/pricing/details/storage/databox/disk/)。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 01/02/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: ff862dcee77fb874511ea1b9bcc907a5e4b60dcc
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 50b2973f2b245cfb42ed7212e443fec1c66217cf
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53998976"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54015266"
 ---
 # <a name="quickstart-create-a-cognitive-search-pipeline-using-skills-and-sample-data"></a>快速入门：使用技能和示例数据创建认知搜索管道
 
@@ -26,9 +26,9 @@ ms.locfileid: "53998976"
 
 > [!div class="checklist"]
 > * 从 Azure Blob 存储中的示例数据开始
-> * 为认知索引编制和扩充配置[导入数据向导](search-import-data-portal.md) 
+> * 为认知索引编制和扩充配置[**导入数据**](search-import-data-portal.md)向导 
 > * 运行向导（实体技能将检测人员、地点和组织）
-> * 使用[搜索浏览器](search-explorer.md)查询扩充的数据
+> * 使用[**搜索浏览器**](search-explorer.md)查询扩充的数据
 
 ## <a name="supported-regions"></a> 支持的区域
 
@@ -98,9 +98,9 @@ ms.locfileid: "53998976"
 
 1. [下载示例数据](https://1drv.ms/f/s!As7Oy81M_gVPa-LCb5lC_3hbS-4)，其中包括不同类型的小型文件集。 
 
-1. 注册 Azure Blob 存储，创建存储帐户，登录到存储资源管理器，并创建容器。 将公共访问级别设置为“容器”。 有关详细信息，请参阅搜索非结构化的数据教程中的[“创建容器”部分](../storage/blobs/storage-unstructured-search.md#create-a-container)。
+1. 注册 Azure Blob 存储，创建存储帐户，打开 Blob 服务页并创建容器。 在容器上将公共访问级别设置为“容器”。 有关详细信息，请参阅*搜索非结构化数据*教程中的[“创建容器”部分](../storage/blobs/storage-unstructured-search.md#create-a-container)。
 
-1. 在创建的容器中单击“上传”以上传示例文件。
+1. 在创建的容器中，单击“上传”以上传在上一步中下载的示例文件。
 
   ![Azure Blob 存储中的源文件](./media/cognitive-search-quickstart-blob/sample-data.png)
 

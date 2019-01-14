@@ -6,41 +6,46 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
-ms.date: 11/05/2018
+ms.date: 01/09/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: 961352dc99a164b8537fb588e038ad1b385941cc
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: db10361707d83fcda20f0e4bf2adc2abc4176808
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51567445"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54156165"
 ---
-# <a name="tutorial-order-an-azure-data-box-disk-preview"></a>教程：订购 Azure Data Box 磁盘（预览版）
+# <a name="tutorial-order-an-azure-data-box-disk"></a>教程：订购 Azure Data Box Disk
 
 Azure Data Box Disk 是一个混合云解决方案，可用于快速、方便、可靠地将本地数据导入 Azure 中。 你可以将数据传输到 Microsoft 提供的固态硬盘 (SSD)，并寄回磁盘。 然后，此数据将上传到 Azure。
 
 本教程介绍如何订购 Azure Data Box 磁盘。 本教程的介绍内容包括：
 
 > [!div class="checklist"]
-> * 注册 Data Box 磁盘
 > * 订购 Data Box 磁盘
 > * 跟踪订单
 > * 取消订单
 
-如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+## <a name="prerequisites"></a>先决条件
 
-> [!IMPORTANT]
-> - Data Box 磁盘以预览版提供。 在订购和部署此解决方案之前，请查看 [Azure 预览版服务的条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。 
-> - 在预览期间，Data Box Disk 可以寄送到美国、西欧和北欧、加拿大和澳大利亚的客户。 有关详细信息，请参阅[适用区域](data-box-disk-overview.md#region-availability)。
+在部署之前，请完成适用于 Data Box 服务和 Data Box Disk 的以下配置先决条件。
 
-## <a name="sign-up"></a>注册
+### <a name="for-service"></a>对于服务
 
-Data Box 磁盘以预览版提供，需要注册该服务。 执行以下步骤注册 Data Box 服务：
+在开始之前，请确保：
+- 具有 Microsoft Azure 存储帐户和访问凭据。
+- 确保用于 Data Box 服务的订阅是下述类型之一：
+    - Microsoft 企业协议 (EA)。 详细了解 [EA 订阅](https://azure.microsoft.com/pricing/enterprise-agreement/)。
+    - 云解决方案提供商 (CSP)。 详细了解 [Azure CSP 计划](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-overview)。
+- 确保有订阅的所有者或参与者访问权限，以便创建 Data Box 订单。
 
-1. 登录到 Azure 门户：[https://aka.ms/azuredataboxfromdiskdocs](https://aka.ms/azuredataboxfromdiskdocs)。
-2. 选择要为预览版启用的订阅。 回答有关数据大小、数据所在国家/地区、时间范围和数据传输频率的问题。 单击“注册!”。
-3. 注册并为预览版启用订阅后，即可订购 Data Box 磁盘。
+### <a name="for-device"></a>对于设备
+
+在开始之前，请确保：
+- 你有一台可用的客户端计算机，可以从中复制数据。 客户端计算机必须：
+    - 运行[支持的操作系统](data-box-disk-system-requirements.md#supported-operating-systems-for-clients)。
+    - 已安装其他[所需软件](data-box-disk-system-requirements.md#other-required-software-for-windows-clients)（如果是 Windows 客户端）。  
 
 ## <a name="order-data-box-disk"></a>订购 Data Box 磁盘
 
@@ -97,7 +102,7 @@ Data Box 磁盘以预览版提供，需要注册该服务。 执行以下步骤�
  
 ## <a name="track-the-order"></a>跟踪订单
 
-下单后，可以从 Azure 预览门户跟踪订单状态。 转到自己的订单，然后转到“概况”查看状态。 门户中会显示作业处于“已订购”状态。 
+下单后，可以从 Azure 门户跟踪订单状态。 转到自己的订单，然后转到“概况”查看状态。 门户中会显示作业处于“已订购”状态。 
 
 ![“已订购”Data Box 磁盘状态](media/data-box-disk-deploy-ordered/data-box-portal-ordered.png) 
 
@@ -111,17 +116,15 @@ Data Box 磁盘以预览版提供，需要注册该服务。 执行以下步骤�
 
 然后，Microsoft 会安排区域承运人发运磁盘。 磁盘发货后，你会收到跟踪号。 门户会显示订单处于“已发运”状态。
 
-
-
 ## <a name="cancel-the-order"></a>取消订单
 
-若要取消此订单，请在 Azure 预览门户中转到“概况”，然后在命令栏中单击“取消”。 
+若要取消此订单，请在 Azure 门户中转到“概览”，然后在命令栏中单击“取消”。 
 
 只能在订购磁盘后我们正在处理订单交货时取消订单。 一旦订单已处理，就再也不能取消订单。 
 
 ![取消订单](media/data-box-disk-deploy-ordered/cancel-order1.png)
 
-若要删除已取消的订单，请转到“概况”，然后在命令栏中单击“删除”。 
+若要删除已取消的订单，请转到“概况”，然后在命令栏中单击“删除”。
 
 
 ## <a name="next-steps"></a>后续步骤
@@ -129,7 +132,6 @@ Data Box 磁盘以预览版提供，需要注册该服务。 执行以下步骤�
 本教程介绍了有关 Azure Data Box 的主题，例如：
 
 > [!div class="checklist"]
-> * 注册 Data Box 磁盘
 > * 订购 Data Box 磁盘
 > * 跟踪订单
 > * 取消订单

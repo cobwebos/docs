@@ -5,16 +5,16 @@ services: iot-edge
 author: shizn
 manager: philmea
 ms.author: xshi
-ms.date: 11/25/2018
+ms.date: 01/04/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: f69babb4520b4829a8cf59e2dac7763471a2db65
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: 62ea3e3ee13ee52462e1c93ac34e98ae179d251c
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53557083"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54053919"
 ---
 # <a name="tutorial-develop-and-deploy-a-nodejs-iot-edge-module-to-your-simulated-device"></a>教程：开发 Node.js IoT Edge 模块并将其部署到模拟设备
 
@@ -45,13 +45,13 @@ Azure IoT Edge 设备：
 开发资源：
 
 * [Visual Studio Code](https://code.visualstudio.com/)。 
-* 适用于 Visual Studio Code 的 [Azure IoT Edge 扩展](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge)。 
+* 适用于 Visual Studio Code 的 [Azure IoT 工具](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge)。 
 * [Docker CE](https://docs.docker.com/engine/installation/)。 
 * [Node.js 和 npm](https://nodejs.org)。 npm 包是随 Node.js 分发的，也就是说，下载 Node.js 时，npm 会自动安装在计算机上。
 
 ## <a name="create-a-container-registry"></a>创建容器注册表
 
-本教程将使用适用于 Visual Studio Code 的 Azure IoT Edge 扩展来生成模块并从文件创建**容器映像**。 然后将该映像推送到用于存储和管理映像的**注册表**。 最后，从注册表部署在 IoT Edge 设备上运行的映像。  
+本教程将使用适用于 Visual Studio Code 的 Azure IoT 工具来生成模块并从文件创建**容器映像**。 然后将该映像推送到用于存储和管理映像的**注册表**。 最后，从注册表部署在 IoT Edge 设备上运行的映像。  
 
 可以使用任意兼容 Docker 的注册表来保存容器映像。 两个常见 Docker 注册表服务分别是 [Azure 容器注册表](https://docs.microsoft.com/azure/container-registry/)和 [Docker 中心](https://docs.docker.com/docker-hub/repos/#viewing-repository-tags)。 本教程使用 Azure 容器注册表。 
 
@@ -77,7 +77,7 @@ Azure IoT Edge 设备：
 7. 复制“登录服务器”、“用户名”和“密码”的值。 本教程后面会用到这些值来访问容器注册表。 
 
 ## <a name="create-an-iot-edge-module-project"></a>创建 IoT Edge 模块项目
-以下步骤介绍如何使用 Visual Studio Code 和 Azure IoT Edge 扩展来创建 IoT Edge Node.js 模块。
+以下步骤介绍如何使用 Visual Studio Code 和 Azure IoT 工具来创建 IoT Edge Node.js 模块。
 
 ### <a name="create-a-new-solution"></a>创建新的解决方案
 
@@ -180,15 +180,21 @@ VS Code 窗口将加载你的 IoT Edge 解决方案空间。 解决方案工作�
     });
     ```
 
-9. 保存此文件。
+9. 保存 app.js 文件。
 
-10. 在 VS Code 资源管理器的 IoT Edge 解决方案工作区中打开 **deployment.template.json** 文件。 
+10. 在 VS Code 资源管理器的 IoT Edge 解决方案工作区中打开 **deployment.template.json** 文件。 此文件告知 IoT Edge 代理部署哪些模块（在本例中为 **tempSensor** 和 **NodeModule**），并告知 IoT Edge 中心如何在它们之间路由消息。 Visual Studio Code 扩展会自动填充部署模板中所需的大部分信息，但确保解决方案的所有内容都是准确的： 
 
-   此文件告知 `$edgeAgent` 部署两个模块：**tempSensor**，用于模拟设备数据，以及 **NodeModule**。 在 VS Code 状态栏中将 IoT Edge 的默认平台设置为 **amd64**，这意味着将 **NodeModule** 设置为映像的 Linux amd64 版本。 在状态栏中将默认平台从 **amd64** 更改为 **arm32v7** 或 **windows-amd64**（如果这就是 IoT Edge 设备的体系结构）。 若要详细了解部署清单，请参阅[了解如何使用、配置和重用 IoT Edge 模块](module-composition.md)。 
+   1. 在 VS Code 状态栏中将 IoT Edge 的默认平台设置为 **amd64**，这意味着将 **NodeModule** 设置为映像的 Linux amd64 版本。 在状态栏中将默认平台从 **amd64** 更改为 **arm32v7** 或 **windows-amd64**（如果这就是 IoT Edge 设备的体系结构）。 
 
-   此文件也包含注册表凭据。 在模板文件中，用户名和密码会使用占位符填充。 生成部署清单时，这些字段会被更新为添加到 **.env** 的值。 
+      ![更新模块映像平台](./media/tutorial-node-module/image-platform.png)
 
-12. 将 NodeModule 模块孪生添加到部署清单。 在 `moduleContent` 节底部 `$edgeHub` 模块孪生后插入以下 JSON 内容： 
+   2. 验证该模板具有正确的模块名称，而不是具有在创建 IoT Edge 解决方案时你更改的默认 **SampleModule** 名称。
+
+   3. **registryCredentials** 节会存储 Docker 注册表凭据，以便 IoT Edge 代理可以拉取模块映像。 实际的用户名和密码对存储在 git 忽略的 .env 文件中。 将凭据添加到 .env 文件中（如果尚未这样做）。  
+
+   4. 如果想要了解有关部署清单的更多信息，请参阅[了解如何在 IoT Edge 中部署模块和建立路由](module-composition.md)。
+
+11. 将 NodeModule 模块孪生添加到部署清单。 在 `moduleContent` 节底部 `$edgeHub` 模块孪生后插入以下 JSON 内容： 
 
    ```json
        "NodeModule": {
@@ -200,7 +206,7 @@ VS Code 窗口将加载你的 IoT Edge 解决方案空间。 解决方案工作�
 
    ![将模块孪生添加到部署模板](./media/tutorial-node-module/module-twin.png)
 
-13. 保存此文件。
+12. 保存 deployment.template.json 文件。
 
 
 ## <a name="build-your-iot-edge-solution"></a>生成 IoT Edge 解决方案

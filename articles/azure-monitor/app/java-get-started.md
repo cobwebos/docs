@@ -75,7 +75,7 @@ Application Insights 支持 Linux、Unix 或 Windows 上运行的 Java 应用。
 ```
 
 * *发生了生成或校验和验证错误？* 尝试使用特定版本，例如：`<version>2.0.n</version>`。 可以在 [SDK release notes](https://github.com/Microsoft/ApplicationInsights-Java#release-notes)（SDK 发行说明）或 [Maven artifacts](https://search.maven.org/#search%7Cga%7C1%7Capplicationinsights)（Maven 项目）中找到最新版本。
-* *需要更新到新 SDK？*  请刷新项目的依赖项。
+* *需要更新到新 SDK？* 请刷新项目的依赖项。
 
 #### <a name="if-youre-using-gradle-a-namegradle-setup-"></a>如果使用 Gradle... <a name="gradle-setup" />
 如果项目已设置为使用 Gradle 进行生成，请将以下代码合并到 build.gradle 文件。

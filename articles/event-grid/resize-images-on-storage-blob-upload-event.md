@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 09/29/2018
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: dd6d25d05f59d9561eadb0b55d2a1ec528c27b56
-ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
+ms.openlocfilehash: 4d35ab9df17055b798207aafd0e0bdf3b17426fb
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/22/2018
-ms.locfileid: "53753942"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54188464"
 ---
 # <a name="tutorial-automate-resizing-uploaded-images-using-event-grid"></a>教程：使用事件网格自动调整上传图像的大小
 
@@ -170,8 +170,8 @@ az functionapp deployment source config --name <function_app> \
     | **订阅者类型** |  自动生成 |  预定义为 Webhook。 |
     | 订阅者终结点 | 自动生成 | 使用为你生成的终结点 URL。 | 
     | **名称** | imageresizersub | 标识新事件订阅的名称。 | 
-
-4. 单击“创建”以添加事件订阅。 这将创建一个事件订阅。在将 Blob 添加到图像容器时，该订阅会触发 `imageresizerfunc`。 此函数重设图像大小，然后将图像添加到 *thumbnails* 容器。
+4. *可选：* 如果你将来需要在同一个 blob 存储中创建其他容器以用于其他目的，则可以使用“筛选器”标签页中的“主题筛选”功能来更精细地定位 blob 事件，以确保只有当 blob 特别添加到“图像”容器时才会调用你的函数应用。 
+5. 单击“创建”以添加事件订阅。 这将创建一个事件订阅。在将 Blob 添加到图像容器时，该订阅会触发 `imageresizerfunc`。 此函数重设图像大小，然后将图像添加到 *thumbnails* 容器。
 
 至此，已配置后端服务，可在示例 Web 应用中测试调整图像大小功能。 
 

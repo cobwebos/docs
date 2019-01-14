@@ -1,19 +1,19 @@
 ---
 title: Azure Cosmos DB 中的 Azure 表存储支持
 description: 了解 Azure Cosmos DB 表 API 和 Azure 存储表如何协同工作。
-services: cosmos-db
-author: SnehaGunda
 ms.service: cosmos-db
-ms.component: cosmosdb-table
+ms.subservice: cosmosdb-table
 ms.topic: overview
 ms.date: 11/15/2017
-ms.author: sngun
-ms.openlocfilehash: 6c6b0650ae8f4ed780b72e8fcd414e3f26e4f5f3
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+author: wmengmsft
+ms.author: wmeng
+ms.reviewer: sngun
+ms.openlocfilehash: b105cf6c220534927a16be83ca5db8801c88f6c0
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52878731"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54035587"
 ---
 # <a name="developing-with-azure-cosmos-db-table-api-and-azure-table-storage"></a>使用 Azure 表存储 API 和 Azure Cosmos DB 进行开发
 
@@ -29,7 +29,7 @@ Azure Cosmos DB 表 API 和 Azure 表存储通过其 SDK 共享相同的表数�
 - [Java SDK](table-sdk-java.md)。 此 Azure 存储 SDK 能够使用表 API 连接到 Azure Cosmos DB 帐户。
 - [Node.js SDK](table-sdk-nodejs.md)。 此 Azure 存储 SDK 能够使用表 API 连接到 Azure Cosmos DB 帐户。
 
-[常见问题解答：使用表 API 进行开发](faq.md#table)一文中提供了有关使用表 API 的其他信息。
+有关使用表 API 的其他信息可在[常见问题解答：使用表 API 进行开发](faq.md#table)一文中找到。
 
 ## <a name="developing-with-azure-table-storage"></a>使用 Azure 表存储进行开发
 

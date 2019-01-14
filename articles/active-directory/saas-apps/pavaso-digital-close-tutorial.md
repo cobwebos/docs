@@ -1,33 +1,33 @@
 ---
-title: 教程：Azure Active Directory 与 Trello 集成 | Microsoft Docs
-description: 了解如何在 Azure Active Directory 和 Trello 之间配置单一登录。
+title: 教程：Azure Active Directory 与 Pavaso Digital Close 的集成 | Microsoft Docs
+description: 了解如何在 Azure Active Directory 和 Pavaso Digital Close 之间配置单一登录。
 services: active-directory
 documentationCenter: na
 author: jeevansd
 manager: mtillman
 ms.reviewer: barbkess
-ms.assetid: cd5ae365-9ed6-43a6-920b-f7814b993949
+ms.assetid: 23d83f82-39c3-4fc2-88c9-f8074cc44d43
 ms.service: Azure-Active-Directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 01/02/2019
+ms.date: 01/03/2019
 ms.author: jeedes
-ms.openlocfilehash: 981bcb6bc9160969e7225342a0e4cda6afc3ed7c
+ms.openlocfilehash: d07e203203b4edd1bd62be084f245825371559b1
 ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 01/07/2019
-ms.locfileid: "54064554"
+ms.locfileid: "54067545"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-trello"></a>教程：Azure Active Directory 与 Trello 集成
+# <a name="tutorial-azure-active-directory-integration-with-pavaso-digital-close"></a>教程：Azure Active Directory 与 Pavaso Digital Close 的集成
 
-在本教程中，了解如何将 Trello 与 Azure Active Directory (Azure AD) 集成。
-将 Trello 与 Azure AD 集成提供以下优势：
+本教程介绍如何将 Pavaso Digital Close 与 Azure Active Directory (Azure AD) 集成。
+将 Pavaso Digital Close 与 Azure AD 集成具有以下优势：
 
-* 可在 Azure AD 中控制谁有权访问 Trello。
-* 可以让用户使用其 Azure AD 帐户自动登录到 Trello（单一登录）。
+* 可以在 Azure AD 中控制谁有权访问 Pavaso Digital Close。
+* 可以让用户使用其 Azure AD 帐户自动登录到 Pavaso Digital Close（单一登录）。
 * 可在中心位置（即 Azure 门户）管理帐户。
 
 如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
@@ -35,24 +35,22 @@ ms.locfileid: "54064554"
 
 ## <a name="prerequisites"></a>先决条件
 
-若要配置 Azure AD 与 Trello 的集成，需要以下项：
+若要配置 Azure AD 与 Pavaso Digital Close 的集成，需要具备以下项：
 
 * 一个 Azure AD 订阅。 如果你没有 Azure AD 环境，可以在[此处](https://azure.microsoft.com/pricing/free-trial/)获取一个月的试用版。
-* 已启用 Trello 单一登录的订阅
+* 已启用 Pavaso Digital Close 单一登录的订阅
 
 ## <a name="scenario-description"></a>方案描述
 
 本教程会在测试环境中配置和测试 Azure AD 单一登录。
 
-* Trello 支持 **SP 和 IDP** 发起的 SSO
+* Pavaso Digital Close 支持 SP 和 IDP 发起的 SSO
 
-* Trello 支持**实时**用户预配
+## <a name="adding-pavaso-digital-close-from-the-gallery"></a>从库中添加 Pavaso Digital Close
 
-## <a name="adding-trello-from-the-gallery"></a>从库中添加 Trello
+若要配置 Pavaso Digital Close 与 Azure AD 的集成，需要从库中将 Pavaso Digital Close 添加到托管 SaaS 应用列表。
 
-要配置 Trello 与 Azure AD 的集成，需要从库中将 Trello 添加到托管 SaaS 应用列表。
-
-**若要从库中添加 Trello，请执行以下步骤：**
+**若要从库中添加 Pavaso Digital Close，请执行以下步骤：**
 
 1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”图标。
 
@@ -66,9 +64,9 @@ ms.locfileid: "54064554"
 
     ![“新增应用程序”按钮](common/add-new-app.png)
 
-4. 在搜索框中，键入“Trello”，在结果面板中选择“Trello”，然后单击“添加”按钮添加该应用程序。
+4. 在搜索框中，键入“Pavaso Digital Close”，在结果面板中选择“Pavaso Digital Close”，然后单击“添加”按钮添加该应用程序。
 
-     ![结果列表中的 Trello](common/search-new-app.png)
+     ![结果列表中的 Pavaso Digital Close](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
 
@@ -78,22 +76,19 @@ ms.locfileid: "54064554"
 若要配置和测试 [应用程序名称] 的 Azure AD 单一登录，需要完成以下构建基块：
 
 1. **[配置 Azure AD 单一登录](#configure-azure-ad-single-sign-on)** - 使用户能够使用此功能。
-2. **[配置 Trello 单一登录](#configure-trello-single-sign-on)** - 在应用程序端配置单一登录设置。
+2. **[配置 Pavaso Digital Close 单一登录](#configure-pavaso-digital-close-single-sign-on)** - 在应用程序端配置单一登录设置。
 3. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
 4. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
-5. **[创建 Trello 测试用户](#create-trello-test-user)** - 在 Trello 中创建 Britta Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
+5. [创建 Pavaso Digital Close 测试用户](#create-pavaso-digital-close-test-user) - 在 Pavaso Digital Close 中创建 Britta Simon 的对应用户，并将其链接到用户的 Azure AD 表示形式。
 6. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
 
 在本部分中，将在 Azure 门户中启用 Azure AD 单一登录。
 
-> [!NOTE]
-> 应从 Trello 获取**\<企业\>** 数据域。 如果没有数据域值，请联系 [Trello 支持团队](mailto:support@trello.com)为企业获取数据域。
-
 若要配置 [应用程序名称] 的 Azure AD 单一登录，请执行以下步骤：
 
-1. 在 [Azure 门户](https://portal.azure.com/)中的 Trello 应用程序集成页上，选择“单一登录”。
+1. 在 [Azure 门户](https://portal.azure.com/)中的“Pavaso Digital Close”应用程序集成页上，选择“单一登录”。
 
     ![配置单一登录链接](common/select-sso.png)
 
@@ -107,56 +102,26 @@ ms.locfileid: "54064554"
 
 4. 如果要在 **IDP** 发起的模式下配置应用程序，请在“基本 SAML 配置”部分中执行以下步骤：
 
-    ![Trello 域和 URL 单一登录信息](common/idp-intiated.png)
+    ![Pavaso Digital Close 域和 URL 单一登录信息](common/idp-intiated.png)
 
-    a. 在“标识符”文本框中，使用以下模式键入 URL：`https://trello.com/auth/saml/metadata`
+    a. 在“标识符”文本框中，使用以下模式键入 URL：`https://<SUBDOMAIN>.pavaso.com/AuthServices`
 
-    b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://trello.com/auth/saml/consume/<enterprise>`
+    b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<SUBDOMAIN>.pavaso.com/AuthServices/Acs`
 
 5. 如果要在 SP 发起的模式下配置应用程序，请单击“设置其他 URL”，并执行以下步骤：
 
-    ![Trello 域和 URL 单一登录信息](common/metadata-upload-additional-signon.png)
+    在“登录 URL”文本框中，使用以下模式键入 URL：`https://<SUBDOMAIN>.pavaso.com`。
 
-    在“登录 URL”文本框中，使用以下模式键入 URL：`https://trello.com/auth/saml/login/<enterprise>`
+    ![Pavaso Digital Close 域和 URL 单一登录信息](common/metadata-upload-additional-signon.png)
 
     > [!NOTE]
-    > 这些不是实际值。 请使用实际的“标识符”、“回复 URL”和“登录 URL”更新这些值。 请联系 [Trello 客户端支持团队](mailto:support@trello.com)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”部分中显示的模式。
+    > 这些不是实际值。 请使用实际的“标识符”、“回复 URL”和“登录 URL”更新这些值。 请联系 [Pavaso Digital Close 客户端支持团队](mailto:support@pavaso.com)来获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”部分中显示的模式。
 
-6. Trello 应用程序需要特定格式的 SAML 断言。 请为此应用程序配置以下声明。 可以在应用程序集成页的“用户属性”部分管理这些属性的值。 在“使用 SAML 设置单一登录”页上，单击“编辑”按钮以打开“用户属性”对话框。
+6. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分，单击“下载”以根据要求下载从给定选项提供的“联合元数据 XML”并将其保存在计算机上。
 
-    ![图像](common/edit-attribute.png)
+    ![证书下载链接](common/metadataxml.png)
 
-7. 在“用户属性”对话框的“用户声明”部分中，按上图所示配置 SAML 令牌属性，并执行以下步骤：
-
-    | 名称 |  源属性|
-    | --- | --- |
-    | User.Email | user.mail |
-    | User.FirstName | user.givenname |
-    | User.LastName | user.surname |
-
-    a. 单击“添加新声明”以打开“管理用户声明”对话框。
-
-    ![图像](common/new-save-attribute.png)
-
-    ![图像](common/new-attribute-details.png)
-
-    b. 在“名称”文本框中，键入为该行显示的属性名称。
-
-    c. 将“命名空间”留空。
-
-    d. 选择“源”作为“属性”。
-
-    e. 在“源属性”列表中，键入为该行显示的属性值。
-
-    f. 单击“确定”
-
-    g. 单击“ **保存**”。
-
-8. 在“使用 SAML 设置单一登录”页上，在“SAML 签名证书”部分中，单击“下载”以根据要求从给定的选项下载**证书(Base64)** 并将其保存在计算机上。
-
-    ![证书下载链接](common/certificatebase64.png)
-
-9. 在“设置 Trello”部分中，根据要求复制相应 URL。
+7. 在“设置 Pavaso Digital Close”部分中，根据要求复制相应的 URL。
 
     ![复制配置 URL](common/copy-configuration-urls.png)
 
@@ -166,11 +131,11 @@ ms.locfileid: "54064554"
 
     c. 注销 URL
 
-### <a name="configure-trello-single-sign-on"></a>配置 Trello 单一登录
+### <a name="configure-pavaso-digital-close-single-sign-on"></a>配置 Pavaso Digital Close 单一登录
 
-若要在 **Trello** 端配置单一登录，需要将下载的**证书 (Base64)** 以及从 Azure 门户复制的相应 URL 发送给 [Trello 支持团队](mailto:support@trello.com)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
+若要在“Pavaso Digital Close”端配置单一登录，需要将下载的“联合元数据 XML”以及从 Azure 门户复制的相应 URL 发送至 [Pavaso Digital Close 支持团队](mailto:support@pavaso.com)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
 
-### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户 
+### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 
 本部分的目的是在 Azure 门户中创建名为 Britta Simon 的测试用户。
 
@@ -197,15 +162,15 @@ ms.locfileid: "54064554"
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
-在本部分中，通过授予 Britta Simon 访问 Trello 的权限，使她能够使用 Azure 单一登录。
+本部分通过授予 Britta Simon 访问 Pavaso Digital Close 的权限，使其能够使用 Azure 单一登录。
 
-1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”和“Trello”。
+1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”、“Pavaso Digital Close”。
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
-2. 在应用程序列表中，选择“Trello”。
+2. 在应用程序列表中，选择“Pavaso Digital Close”。
 
-    ![应用程序列表中的 Trello 链接](common/all-applications.png)
+    ![应用程序列表中的 Pavaso Digital Close 链接](common/all-applications.png)
 
 3. 在左侧菜单中，选择“用户和组”。
 
@@ -221,18 +186,15 @@ ms.locfileid: "54064554"
 
 7. 在“添加分配”对话框中，单击“分配”按钮。
 
-### <a name="create-trello-test-user"></a>创建 Trello 测试用户
+### <a name="create-pavaso-digital-close-test-user"></a>创建 Pavaso Digital Close 测试用户
 
-在本部分中，我们会在 Trello 中创建一个名为 Britta Simon 的用户。 Trello 支持默认启用的实时用户预配。 此部分不存在任何操作项。 如果 Trello 中尚不存在用户，则会在身份验证后创建一个新用户。
-
-> [!Note]
-> 如果需要手动创建用户，请联系  [Trello 支持团队](mailto:support@trello.com)。
+本部分将在 Pavaso Digital Close 中创建一个名为“Britta Simon”的用户。 通过  [Pavaso Digital Close 支持团队](mailto:support@pavaso.com)，在 Pavaso Digital Close 平台中添加用户。 使用单一登录前，必须先创建并激活用户。
 
 ### <a name="test-single-sign-on"></a>测试单一登录 
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-单击访问面板中的 Trello 磁贴时，应当会自动登录到已为其设置了 SSO 的 Trello。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+单击访问面板中的 Pavaso Digital Close 磁贴时，应当会自动登录到为其设置了 SSO 的 Pavaso Digital Close。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 
@@ -241,4 +203,3 @@ ms.locfileid: "54064554"
 - [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-

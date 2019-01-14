@@ -109,7 +109,7 @@
 ##### [管理存储帐户](storsimple-8000-manage-storage-accounts.md)
 ##### [管理卷容器](storsimple-8000-manage-volume-containers.md)
 ##### [管理卷 - 最新版](storsimple-8000-manage-volumes-u2.md)
-###### [常见问题：本地固定卷](storsimple-8000-local-volume-faq.md)
+###### [常见问题解答：本地固定卷](storsimple-8000-local-volume-faq.md)
 ##### [基于角色的访问控制](storsimple-8000-role-based-access-control.md)
 ##### [管理 ACR](storsimple-8000-manage-acrs.md)
 ##### [管理带宽模板](storsimple-8000-manage-bandwidth-templates.md)
@@ -209,7 +209,7 @@
 ## 引用
 ### [REST API](https://docs.microsoft.com/rest/api/storsimple)
 ### [Windows PowerShell for StorSimple cmdlet](https://technet.microsoft.com/library/dn688168.aspx)
-
+### [资源管理器模板](/azure/templates/microsoft.storsimple/allversions)
 
 # StorSimple 数据管理器
 
@@ -235,7 +235,7 @@
 ## 发行说明
 ### [StorSimple 发行说明](https://aka.ms/storsimple-virtual-array-latest-relnote)
 ### [CSP 发行说明](https://partner.microsoft.com/Support/whats-new)
-### [StorSimple for CSP：常见问题](storsimple-partner-csp-faq.md)
+### [StorSimple for CSP：常见问题解答](storsimple-partner-csp-faq.md)
 
 # 相关内容
 ## [StorSimple 5000-7000 系列](http://onlinehelp.storsimple.com)

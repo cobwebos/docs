@@ -8,16 +8,15 @@ manager: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: overview
 ms.date: 04/09/2018
 ms.author: makromer
-ms.openlocfilehash: aecb193d1d9a10dbb5c936401f9900c4b2be071f
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.openlocfilehash: f898b21e84cc57327991c97d2694e9e44e608417
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49638233"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54014890"
 ---
 # <a name="compare-azure-data-factory-with-data-factory-version-1"></a>Azure 数据工厂与数据工厂版本 1 之对比
 本文将数据工厂与数据工厂版本 1 进行了比较。 有关数据工厂的简介，请参阅[数据工厂简介](introduction.md)。有关数据工厂版本 1 的简介，请参阅 [Azure 数据工厂简介](v1/data-factory-introduction.md)。 
@@ -25,7 +24,7 @@ ms.locfileid: "49638233"
 ## <a name="feature-comparison"></a>功能比较
 下表将数据工厂的功能与数据工厂版本 1 的功能进行了比较。 
 
-| 功能 | 版本 1 | 当前版本 | 
+| Feature | 版本 1 | 当前版本 | 
 | ------- | --------- | --------- | 
 | 数据集 | 数据的命名视图，以输入和输出的形式引用活动中要使用的数据。 数据集可识别不同数据存储（如表、文件、文件夹和文档）中的数据。 例如，Azure Blob 数据集可在 Azure Blob 存储中指定供活动读取数据的 Blob 容器和文件夹。<br/><br/>**可用性**定义数据集的处理时段切片模型（例如，每小时、每天等）。 | 数据集在当前版本中相同。 但不需要为数据集定义**可用性**计划。 可以定义触发器资源，以便根据时钟计划程序范例来计划管道。 有关详细信息，请参阅[触发器](concepts-pipeline-execution-triggers.md#triggers)和[数据集](concepts-datasets-linked-services.md)。 | 
 | 链接服务 | 链接服务十分类似于连接字符串，用于定义数据工厂连接到外部资源时所需的连接信息。 | 链接服务与数据工厂 V1 中的相同，但有一个新的 **connectVia** 属性，可以利用数据工厂的当前版本的集成运行时计算环境。 有关详细信息，请参阅 [Azure 数据工厂中的 Integration Runtime](concepts-integration-runtime.md) 和 [Azure Blob 存储的链接服务属性](connector-azure-blob-storage.md#linked-service-properties)。 |
@@ -117,9 +116,9 @@ Azure-SSIS Integration Runtime 是由 Azure VM（节点）构成的完全托管�
 ## <a name="sdks"></a>SDK
  数据工厂的当前版本提供了可以用来创作、管理和监视管道的更为丰富的一组 SDK。
 
-- **.NET SDK**：.NET SDK 在当前版本中进行了更新。
+- .NET SDK：.NET SDK 在当前版本中进行了更新。
 
-- **PowerShell**：PowerShell cmdlet 在当前版本中进行了更新。 当前版本的 cmdlet 在名称中带有 **DataFactoryV2**，例如：Get-AzureRmDataFactoryV2。 
+- PowerShell：PowerShell cmdlet 在当前版本中进行了更新。 当前版本的 cmdlet 在名称中带有 **DataFactoryV2**，例如：Get-AzureRmDataFactoryV2。 
 
 - **Python SDK**：此 SDK 是当前版本中新增的。
 

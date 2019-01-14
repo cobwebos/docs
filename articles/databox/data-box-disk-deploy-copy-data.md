@@ -6,17 +6,17 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
-ms.date: 11/01/2018
+ms.date: 01/09/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: 807453d6af67fd2dccf06a1b4a2beaca47dc865a
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
+ms.openlocfilehash: 10750b5005810ec9034d2b4c7907578949ca6821
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50913789"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54155195"
 ---
-# <a name="tutorial-copy-data-to-azure-data-box-disk-and-verify"></a>教程：将数据复制到 Azure Data Box 磁盘并验证
+# <a name="tutorial-copy-data-to-azure-data-box-disk-and-verify"></a>教程：将数据复制到 Azure Data Box Disk 并进行验证
 
 本教程介绍如何从主机复制数据，然后生成校验和来验证数据完整性。
 
@@ -29,7 +29,7 @@ ms.locfileid: "50913789"
 ## <a name="prerequisites"></a>先决条件
 
 在开始之前，请确保：
-- 已完成[教程：安装和配置 Azure Data Box 磁盘](data-box-disk-deploy-set-up.md)。
+- 已完成[教程：安装和配置 Azure Data Box Disk](data-box-disk-deploy-set-up.md)。
 - 磁盘已解锁，并且已连接到客户端计算机。
 - 用来将数据复制到磁盘的客户端计算机必须运行[受支持的操作系统](data-box-disk-system-requirements.md##supported-operating-systems-for-clients)。
 - 请确保数据的预期存储类型与[支持的存储类型](data-box-disk-system-requirements.md#supported-storage-types)匹配。
@@ -148,19 +148,32 @@ ms.locfileid: "50913789"
     C:\Users>
     ```
  
+    若要优化性能，请在复制数据时使用以下 robocopy 参数。
+
+    |    平台    |    大多为小于 512 KB 的小型文件                           |    大多为 512 KB-1 MB 的中型文件                      |    大多为 1 MB 以上的大型文件                             |   
+    |----------------|--------------------------------------------------------|--------------------------------------------------------|--------------------------------------------------------|---|
+    |    Data Box Disk        |    4 个 Robocopy 会话* <br> 每个会话 16 个线程    |    2 个 Robocopy 会话* <br> 每个会话 16 个线程    |    2 个 Robocopy 会话* <br> 每个会话 16 个线程    |  |
     
-7. 打开目标文件夹，查看并验证复制的文件。 如果复制过程中遇到任何错误，请下载用于故障排除的日志文件。 日志文件位于 robobopy 命令中指定的位置。
+    **每个 Robocopy 会话最多可包含 7,000 个目录和 1.5 亿个文件。*
+    
+    >[!NOTE]
+    > 上面建议的参数基于内部测试中使用的环境。
+    
+    有关 Robocopy 命令的详细信息，请转到 [Robocopy 和几个示例](https://social.technet.microsoft.com/wiki/contents/articles/1073.robocopy-and-a-few-examples.aspx)。
+
+6. 打开目标文件夹，查看并验证复制的文件。 如果复制过程中遇到任何错误，请下载用于故障排除的日志文件。 日志文件位于 robobopy 命令中指定的位置。
  
-
-
 > [!IMPORTANT]
 > - 你需要负责确保将数据复制到与适当数据格式对应的文件夹中。 例如，将块 Blob 数据复制到块 Blob 的文件夹。 如果数据格式与相应的文件夹（存储类型）不匹配，则在后续步骤中，数据将无法上传到 Azure。
-> -  复制数据时，请确保数据大小符合 [Azure 存储和 Data Box 磁盘限制](data-box-disk-limits.md)中所述的大小限制。 
+> -  复制数据时，请确保数据大小符合 [Azure 存储和 Data Box 磁盘限制](data-box-disk-limits.md)中所述的大小限制。
 > - 如果 Data Box 磁盘正在上传的数据同时已由 Data Box 磁盘外部的其他应用程序上传，则可能会导致上传作业失败和数据损坏。
 
 ### <a name="split-and-copy-data-to-disks"></a>拆分数据并将其复制到磁盘
 
 如果使用多个磁盘，并且需要拆分大型数据集并将其复制到所有磁盘中，则可以使用此可选过程。 借助 Data Box 拆分复制工具可以在 Windows 计算机上拆分和复制数据。
+
+>[!IMPORTANT]
+> Data Box 拆分复制工具还会验证数据。 如果使用 Data Box 拆分复制工具复制数据，则可以跳过[验证步骤](#validate-data)。
 
 1. 在 Windows 计算机上，请确保将 Data Box 拆分复制工具下载并提取到某个本地文件夹中。 下载适用于 Windows 的 Data Box Disk 工具集时已下载此工具。
 2. 打开文件资源管理器。 记下分配给 Data Box Disk 的数据源驱动器和驱动器号。 
@@ -176,26 +189,26 @@ ms.locfileid: "50913789"
 
          ![拆分复制数据 ](media/data-box-disk-deploy-copy-data/split-copy-3.png)
  
-4. 转到该软件已提取到的文件夹。 在该文件夹中找到 SampleConfig.json 文件。 这是一个可以修改和保存的只读文件。
+4. 转到该软件已提取到的文件夹。 在该文件夹中找到 `SampleConfig.json` 文件。 这是一个可以修改和保存的只读文件。
 
    ![拆分复制数据 ](media/data-box-disk-deploy-copy-data/split-copy-4.png)
  
-5. 修改 SampleConfig.json 文件。
+5. 修改 `SampleConfig.json` 文件。
  
     - 提供作业名称。 这会在 Data Box Disk 中创建一个文件夹，该文件夹最终将成为与这些磁盘关联的 Azure 存储帐户中的容器。 作业名称必须遵循 Azure 容器命名约定。 
-    - 在 SampleConfigFile.json 中提供源路径并记下路径格式。 
+    - 在 `SampleConfigFile.json` 中提供源路径并记下路径格式。 
     - 输入对应于目标磁盘的驱动器号。 数据取自源路径，并在多个磁盘之间复制。
-    - 提供日志文件的路径。 默认情况下，日志将发送到 .exe 所在的当前目录中。
+    - 提供日志文件的路径。 默认情况下，日志文件将发送到 `.exe` 所在的当前目录中。
 
      ![拆分复制数据 ](media/data-box-disk-deploy-copy-data/split-copy-5.png)
 
-6. 若要验证文件格式，请转到 JSONlint。 将文件保存为 ConfigFile.json。 
+6. 若要验证文件格式，请转到 `JSONlint`。 将文件另存为 `ConfigFile.json`。 
 
      ![拆分复制数据 ](media/data-box-disk-deploy-copy-data/split-copy-6.png)
  
 7. 打开命令提示符窗口。 
 
-8. 运行 DataBoxDiskSplitCopy.exe。 类型
+8. 运行 `DataBoxDiskSplitCopy.exe`。 类型
 
     `DataBoxDiskSplitCopy.exe PrepImport /config:<Your-config-file-name.json>`
 
@@ -214,7 +227,7 @@ ms.locfileid: "50913789"
     ![拆分复制数据](media/data-box-disk-deploy-copy-data/split-copy-10.png)
     ![拆分复制数据](media/data-box-disk-deploy-copy-data/split-copy-11.png)
      
-    如果进一步检查 n: 驱动器的内容，将会看到已创建了对应于块 Blob 和页 Blob 格式数据的两个子文件夹。
+    如果进一步检查 `n:` 驱动器的内容，将会看到已创建了对应于块 Blob 和页 Blob 格式数据的两个子文件夹。
     
      ![拆分复制数据 ](media/data-box-disk-deploy-copy-data/split-copy-12.png)
 
@@ -222,15 +235,14 @@ ms.locfileid: "50913789"
 
     `DataBoxDiskSplitCopy.exe PrepImport /config:<configFile.json> /ResumeSession`
 
+数据复制完成后，可以继续验证数据。 如果使用了拆分复制工具，请跳过验证（拆分复制工具也会验证）并继续学习下一教程。
 
-数据复制完成后，下一步是验证数据。 
 
+## <a name="validate-data"></a>验证数据
 
-## <a name="validate-data"></a>验证数据 
+如果未使用拆分复制工具复制数据，则需要验证数据。 若要验证数据，请执行以下步骤。
 
-若要验证数据，请执行以下步骤。
-
-1. 运行 `DataBoxDiskValidation.cmd` 以在驱动器的 *DataBoxDiskImport* 文件夹中进行校验和验证。 
+1. 运行 `DataBoxDiskValidation.cmd` 以在驱动器的 *DataBoxDiskImport* 文件夹中进行校验和验证。
     
     ![Data Box Disk 验证工具输出](media/data-box-disk-deploy-copy-data/data-box-disk-validation-tool-output.png)
 
@@ -240,7 +252,7 @@ ms.locfileid: "50913789"
 
     > [!TIP]
     > - 在两次运行之间请重置工具。
-    > - 只有在处理包含小文件（数 KB）的大型数据集时才使用选项 1 来验证文件。 在这些情况下，校验和生成可能需要很长时间，并且执行速度可能会非常慢。
+    > - 如果要处理包含小文件（数 KB）的大型数据集，请使用选项 1。 此选项仅验证文件，因为校验和生成可能需要很长时间，并且执行速度可能会非常慢。
 
 3. 如果使用了多个磁盘，请对每个磁盘运行该命令。
 
@@ -256,4 +268,3 @@ ms.locfileid: "50913789"
 
 > [!div class="nextstepaction"]
 > [将 Azure Data Box 寄回到 Microsoft](./data-box-disk-deploy-picked-up.md)
-

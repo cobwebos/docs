@@ -9,16 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 06/22/2018
 ms.author: jingwang
-ms.openlocfilehash: e7c134881cbf8745a4e4ef9102a418f7d47a6f8c
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 37aa248af30c4beae3f9d170174842c908933339
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43098022"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54020007"
 ---
 # <a name="copy-multiple-tables-in-bulk-by-using-azure-data-factory"></a>使用 Azure 数据工厂批量复制多个表
 本教程演示如何**将 Azure SQL 数据库中的多个表复制到 Azure SQL 数据仓库**。 在其他复制方案中，也可以应用相同的模式。 例如，将 SQL Server/Oracle 中的表复制到 Azure SQL 数据库/数据仓库/Azure Blob，将 Blob 中的不同路径复制到 Azure SQL 数据库表。
@@ -93,10 +92,10 @@ ms.locfileid: "43098022"
          
       若要了解有关资源组的详细信息，请参阅 [使用资源组管理 Azure 资源](../azure-resource-manager/resource-group-overview.md)。  
 1. 选择“V2”作为“版本”。
-1. 选择数据工厂的**位置**。 要查看目前提供数据工厂的 Azure 区域的列表，请在以下页面上选择感兴趣的区域，然后展开“分析”以找到“数据工厂”：[可用产品（按区域）](https://azure.microsoft.com/global-infrastructure/services/)。 数据工厂使用的数据存储（Azure 存储、Azure SQL 数据库，等等）和计算资源（HDInsight 等）可以位于其他区域中。
+1. 选择数据工厂的**位置**。 若要查看目前提供数据工厂的 Azure 区域的列表，请在以下页面上选择感兴趣的区域，然后展开“分析”以找到“数据工厂”：[各区域的产品可用性](https://azure.microsoft.com/global-infrastructure/services/)。 数据工厂使用的数据存储（Azure 存储、Azure SQL 数据库，等等）和计算资源（HDInsight 等）可以位于其他区域中。
 1. 选择“固定到仪表板”。     
 1. 单击“创建”。
-1. 在仪表板上，会看到状态为“正在部署数据工厂”的以下磁贴。 
+1. 在仪表板上，你会看状态如下的以下磁贴：“正在部署数据工厂”。 
 
     ![“正在部署数据工厂”磁贴](media//tutorial-bulk-copy-portal/deploying-data-factory.png)
 1. 创建完成后，可以看到图中所示的“数据工厂”页。
@@ -208,7 +207,7 @@ ms.locfileid: "43098022"
     ![数据集参数生成器](./media/tutorial-bulk-copy-portal/dataset-parameter-builder.png)
 
 ## <a name="create-pipelines"></a>创建管道
-在本教程中，请创建两个管道：**IterateAndCopySQLTables** 和 **GetTableListAndTriggerCopyData**。 
+在本教程中创建两个管道：**IterateAndCopySQLTables** 和 **GetTableListAndTriggerCopyData**。 
 
 **GetTableListAndTriggerCopyData** 管道执行两个步骤：
 

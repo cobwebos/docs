@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/24/2018
 ms.author: jeedes
-ms.openlocfilehash: 2fc81cc06063c0fee0a4f875b4b0f8bd1343cf85
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.openlocfilehash: 789f58699f39f4b7eac453f4cf79ea55a5bfc8d3
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53810451"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54159496"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sharepoint-on-premises"></a>教程：Azure Active Directory 与本地 SharePoint 的集成
 
@@ -104,7 +104,7 @@ ms.locfileid: "53810451"
 
     ![本地 SharePoint 域和 URL 单一登录信息](common/sp-identifier-reply.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<YourSharePointServerURL>/_trust/default.aspx`。
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<YourSharePointServerURL>/_trust/default.aspx`。
 
     b. 在“标识符”框中，使用以下模式键入 URL：`urn:sharepoint:federation`
 
@@ -118,7 +118,7 @@ ms.locfileid: "53810451"
     ![证书下载链接](common/certificatebase64.png)
 
     > [!Note]
-    > 请记下你将证书文件下载到的文件路径，因为稍后需要在用于配置的 PowerShell 脚本中使用它。
+    > 记下下载证书文件的文件路径。 稍后在 PowerShell 脚本中进行配置时需要该文件。
 
 6. 在“设置本地 SharePoint”部分，根据要求复制相应 URL。 对于“单一登录服务 URL”，请使用采用以下模式的值：`https://login.microsoftonline.com/_my_directory_id_/wsfed` 
 
@@ -134,7 +134,7 @@ ms.locfileid: "53810451"
     c. 注销 URL
 
     > [!NOTE]
-    > 本地 SharePoint 应用程序使用 SAML 1.1 令牌，因此，Azure AD 预期 WS 联合身份验证请求来自 SharePoint 服务器；身份验证后，它会颁发 SAML 1.1 令牌。
+    > 本地 SharePoint 应用程序使用 SAML 1.1 令牌，因此，Azure AD 预期 WS 联合身份验证请求来自 SharePoint 服务器；身份验证后，它会颁发 SAML 1.1。 令牌。
 
 ### <a name="configure-sharepoint-on-premises-single-sign-on"></a>配置本地 SharePoint 单一登录
 
@@ -162,7 +162,7 @@ ms.locfileid: "53810451"
 
     接下来，遵循以下步骤为应用程序启用受信任的标识提供者：
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在管理中心，导航到“管理 Web 应用程序”并选择要使用 Azure AD 保护的 Web 应用程序。
+    a. 在管理中心，导航到“管理 Web 应用程序”并选择要使用 Azure AD 保护的 Web 应用程序。
 
     b. 在功能区中单击“身份验证提供程序”，然后选择要使用的区域。
 
@@ -175,7 +175,7 @@ ms.locfileid: "53810451"
     ![配置身份验证提供程序](./media/sharepoint-on-premises-tutorial/fig10-configauthprovider.png)
 
     > [!NOTE]
-    > 某些外部用户将不能使用此单一登录集成，因为其 UPN 将具有扭曲的值，例如 `MYEMAIL_outlook.com#ext#@TENANT.onmicrosoft.com`。 不久，我们将允许客户应用配置如何根据用户类型来处理 UPN。 在那之后，所有来宾用户应当都能够与组织员工一样无缝地使用 SSO。
+    > 某些外部用户将不能使用此单一登录集成，因为其 UPN 将具有错位值，例如 `MYEMAIL_outlook.com#ext#@TENANT.onmicrosoft.com`。 不久，我们将允许自定义应用配置根据用户类型来处理 UPN。 在那之后，所有来宾用户应当都能够与组织员工一样无缝地使用 SSO。
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 

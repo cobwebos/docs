@@ -1,5 +1,5 @@
 ---
-title: 快速入门：获取备用翻译，Python - 文本翻译 API
+title: 快速入门：使用双语字典、Python 查找字词 - 文本翻译 API
 titleSuffix: Azure Cognitive Services
 description: 本快速入门介绍如何使用 Python 和文本翻译 REST API 查找指定文本的备用翻译和用法示例。
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.component: translator-text
 ms.topic: quickstart
 ms.date: 10/21/2018
 ms.author: erhopf
-ms.openlocfilehash: ab8a6d5b6d4bb52863e77b844a4008bb80d840be
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 52820a9162a20b680b85d07f8c49ac5305d4979a
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52993933"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54158000"
 ---
-# <a name="quickstart-use-the-translator-text-api-to-get-alternate-translations-using-python"></a>快速入门：使用 Python 通过文本翻译 API 获取备用翻译
+# <a name="quickstart-look-up-words-with-bilingual-dictionary-using-python"></a>快速入门：通过 Python 使用双语字典查找字词
 
 本快速入门介绍如何使用 Python 和文本翻译 REST API 查找指定文本的备用翻译和用法示例。
 

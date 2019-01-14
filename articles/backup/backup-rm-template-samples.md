@@ -9,16 +9,16 @@ ms.topic: sample
 ms.date: 04/18/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: bf6bca668ff97b30789a99dab2f1f3d409ab0624
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: ffd153490938c232bdf8b5d4e40a2d43ced9f57b
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52867909"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54063262"
 ---
 # <a name="azure-resource-manager-templates-for-azure-backup"></a>用于 Azure 备份的 Azure 资源管理器模板
 
-下表包含可以与恢复服务保管库和 Azure 备份功能配合使用的 Azure 资源管理器模板的链接。
+下表包含可以与恢复服务保管库和 Azure 备份功能配合使用的 Azure 资源管理器模板的链接。 若要了解 JSON 语法和属性，请参阅 [Microsoft.RecoveryServices 资源类型](/azure/templates/microsoft.recoveryservices/allversions)。
 
 |   |   |
 |---|---|

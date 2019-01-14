@@ -1,135 +1,142 @@
 ---
-title: 教程：Azure Active Directory 与 OpenAthens 集成 | Microsoft Docs
+title: 教程：Azure Active Directory 与 OpenAthens 的集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 与 OpenAthens 之间配置单一登录。
 services: active-directory
 documentationCenter: na
 author: jeevansd
 manager: mtillman
-ms.reviewer: joflore
+ms.reviewer: barbkess
 ms.assetid: dd4adfc7-e238-41d5-8b25-1811f08078b6
-ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.service: Azure-Active-Directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 09/05/2017
+ms.topic: tutorial
+ms.date: 1/4/2019
 ms.author: jeedes
-ms.openlocfilehash: 269b216a94b1233c5f9f9a634fda3c05e46cac90
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: b5765485ba9f45f95db7235a87bdba5b0dc5f9bd
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39435894"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54062173"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-openathens"></a>教程：Azure Active Directory 与 OpenAthens 集成
+# <a name="tutorial-azure-active-directory-integration-with-openathens"></a>教程：Azure Active Directory 与 OpenAthens 的集成
 
 在本教程中，了解如何将 OpenAthens 与 Azure Active Directory (Azure AD) 集成。
-
 将 OpenAthens 与 Azure AD 集成提供以下优势：
 
-- 可以在 Azure AD 中控制谁有权访问 OpenAthens。
-- 可以让用户使用其 Azure AD 帐户自动登录到 OpenAthens（单一登录）。
-- 可在一个中心位置（即 Azure 门户）管理帐户。
+* 可以在 Azure AD 中控制谁有权访问 OpenAthens。
+* 可以让用户使用其 Azure AD 帐户自动登录到 OpenAthens（单一登录）。
+* 可在中心位置（即 Azure 门户）管理帐户。
 
-有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)。
+如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
 ## <a name="prerequisites"></a>先决条件
 
 若要配置 Azure AD 与 OpenAthens 的集成，需要以下项：
 
-- Azure AD 订阅
-- 已启用 OpenAthens 单一登录的订阅
-
-测试本教程中的步骤应遵循以下建议：
-
-- 除非必要，请勿使用生产环境。
-- 如果没有 Azure AD 试用环境，可以[获取一个月免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
+* 一个 Azure AD 订阅。 如果你没有 Azure AD 环境，可以在[此处](https://azure.microsoft.com/pricing/free-trial/)获取一个月的试用版。
+* 启用了单一登录的 OpenAthens 订阅
 
 ## <a name="scenario-description"></a>方案描述
-在本教程中，将在测试环境中测试 Azure AD 单一登录。 本教程中概述的方案包括两个主要构建基块：
 
-1. 从库中添加 OpenAthens
-1. 配置和测试 Azure AD 单一登录
+本教程会在测试环境中配置和测试 Azure AD 单一登录。
+
+* OpenAthens 支持 **IDP** 发起的 SSO
+
+* OpenAthens 支持**实时**用户预配
 
 ## <a name="adding-openathens-from-the-gallery"></a>从库中添加 OpenAthens
+
 若要配置 OpenAthens 与 Azure AD 的集成，需要从库中将 OpenAthens 添加到托管 SaaS 应用列表。
 
-**从库中添加 OpenAthens**
+**若要从库中添加 OpenAthens，请执行以下步骤：**
 
-1. 在 [Azure 门户](https://portal.azure.com)的左窗格中，选择“Azure Active Directory”图标。 
+1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”图标。
 
-    ![“Azure Active Directory”按钮][1]
+    ![“Azure Active Directory”按钮](common/select-azuread.png)
 
-1. 浏览到“企业应用程序”，并转到“所有应用程序”。
+2. 转到“企业应用”，并选择“所有应用”选项。
 
-    ![“企业应用程序”窗格][2]
-    
-1. 若要添加新应用程序，请选择对话框顶部的“新建应用程序”按钮。
+    ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
-    ![“新增应用程序”按钮][3]
+3. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
 
-1. 在搜索框中，键入“OpenAthens”，在结果面板中选择“OpenAthens”，并选择“添加”按钮。
+    ![“新增应用程序”按钮](common/add-new-app.png)
 
-    ![结果列表中的 OpenAthens](./media/openathens-tutorial/tutorial_openathens_addfromgallery.png)
+4. 在搜索框中，键入“OpenAthens”，在结果面板中选择“OpenAthens”，然后单击“添加”按钮添加该应用程序。
+
+     ![结果列表中的 OpenAthens](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
 
-在本部分中，基于一个名为“Britta Simon”的测试用户使用 OpenAthens 配置和测试 Azure AD 单一登录。
-
-若要运行单一登录，Azure AD 需要知道与 Azure AD 用户相对应的 OpenAthens 用户。 换句话说，需要建立 Azure AD 用户与 OpenAthens 中相关用户的关联关系。
-
-可通过将 Azure AD 中“用户名”的值指定为 OpenAthens 中“用户名”的值来建立此链接关系。
+在本部分中，将基于名为 **Britta Simon** 的测试用户配置和测试 OpenAthens 的 Azure AD 单一登录。
+若要运行单一登录，需要在 Azure AD 用户与 OpenAthens 中相关用户之间建立链接关系。
 
 若要配置并测试 OpenAthens 的 Azure AD 单一登录，需要完成以下构建基块：
 
-1. [配置 Azure AD 单一登录](#configure-azure-ad-single-sign-on)，以使用户能够使用此功能。
-1. [创建 Azure AD 测试用户](#create-an-azure-ad-test-user)，目的是通过 Britta Simon 测试 Azure AD 单一登录。
-1. [创建 OpenAthens 测试用户](#create-a-openathens-test-user)：在 OpenAthens 中创建 Britta Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
-1. [分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)，使 Britta Simon 能够使用 Azure AD 单一登录。
-1. [测试单一登录](#test-single-sign-on)，验证配置是否正常工作。
+1. **[配置 Azure AD 单一登录](#configure-azure-ad-single-sign-on)** - 使用户能够使用此功能。
+2. **[配置 OpenAthens 单一登录](#configure-openathens-single-sign-on)** - 在应用程序端配置单一登录。
+3. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
+4. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
+5. **[创建 OpenAthens 测试用户](#create-openathens-test-user)** - 在 OpenAthens 中创建 Britta Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
+6. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
 
-在本部分中，将在 Azure 门户中启用 Azure AD 单一登录并在 OpenAthens 应用程序中配置单一登录。
+在本部分中，将在 Azure 门户中启用 Azure AD 单一登录。
 
-**配置 OpenAthens 的 Azure AD 单一登录**
+若要配置 OpenAthens 的 Azure AD 单一登录，请执行以下步骤：
 
-1. 在 Azure 门户中的 **OpenAthens** 应用程序集成页上，选择“单一登录”。
+1. 在 [Azure 门户](https://portal.azure.com/)中，在 **OpenAthens** 应用程序集成页上，选择“单一登录”。
 
-    ![配置单一登录链接][4]
+    ![配置单一登录链接](common/select-sso.png)
 
-1. 若要启用单一登录，请在“单一登录”对话框中，选择“基于 SAML 的单一登录”作为“模式”。
- 
-    ![“单一登录”对话框](./media/openathens-tutorial/tutorial_openathens_samlbase.png)
+2. 在“选择单一登录方法”对话框中，选择 SAML/WS-Fed 模式以启用单一登录。
 
-1. 在“OpenAthens 域和 URL”部分的“标识符”文本框中输入值 `https://login.openathens.net/saml/2/metadata-sp`。
+    ![单一登录选择模式](common/select-saml-option.png)
 
-    ![OpenAthens 域和 URL 单一登录信息](./media/openathens-tutorial/tutorial_openathens_url.png)
+3. 在“使用 SAML 设置单一登录”页上，单击“编辑”图标以打开“基本 SAML 配置”对话框。
 
-1. 在“SAML 签名证书”部分中，选择“元数据 XML”，并在计算机上保存元数据文件。
+    ![编辑基本 SAML 配置](common/edit-urls.png)
 
-    ![AMSL 签名证书下载链接](./media/openathens-tutorial/tutorial_openathens_certificate.png) 
+5. 在“基本 SAML 配置”部分中，上传**服务提供程序元数据文件**，本教程下文中介绍了相关的步骤。
 
-1. 选择“保存”按钮。
+    a. 单击“上传元数据文件”。
 
-    ![单一登录“保存”按钮](./media/openathens-tutorial/tutorial_general_400.png)
+    ![Openathens 上传元数据](common/upload-metadata.png)
+
+    b. 单击“文件夹徽标”来选择元数据文件并单击“上传”。
+
+    ![Openathens 浏览上传元数据](common/browse-upload-metadata.png)
+
+    c. 成功上传元数据文件后，**标识符**值会自动填充在“基本 SAML 配置”部分的文本框中：
+
+    ![OpenAthens 域和 URL 单一登录信息](common/idp-identifier.png)
+
+6. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分，单击“下载”以根据要求下载从给定选项提供的“联合元数据 XML”并将其保存在计算机上。
+
+    ![证书下载链接](common/metadataxml.png)
+
+### <a name="configure-openathens-single-sign-on"></a>配置 OpenAthens 单一登录
 
 1. 在另一个 Web 浏览器窗口中，以管理员身份登录 OpenAthens 公司站点。
 
-1. 在“管理”选项卡下的列表中选择“连接”。 
+2. 在“管理”选项卡下的列表中选择“连接”。 
 
     ![配置单一登录](./media/openathens-tutorial/tutorial_openathens_application1.png)
 
-1. 选择“SAML 1.1/2.0”，再选择“配置”按钮。
+3. 选择“SAML 1.1/2.0”，再选择“配置”按钮。
 
     ![配置单一登录](./media/openathens-tutorial/tutorial_openathens_application2.png)
     
-1. 若要添加配置，请选择“浏览”按钮上传已从 Azure 门户下载的元数据 .xml 文件，再选择“添加”。
+4. 若要添加配置，请选择“浏览”按钮上传已从 Azure 门户下载的元数据 .xml 文件，再选择“添加”。
 
     ![配置单一登录](./media/openathens-tutorial/tutorial_openathens_application3.png)
 
-1. 在“详细信息”选项卡下执行以下步骤。
+5. 在“详细信息”选项卡下执行以下步骤。
 
     ![配置单一登录](./media/openathens-tutorial/tutorial_openathens_application4.png)
 
@@ -147,98 +154,76 @@ ms.locfileid: "39435894"
 
     g. 选择“保存更改”。
 
-> [!TIP]
-> 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了。 从“Active Directory” > “企业应用程序”部分添加该应用后，选择“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 有关嵌入式文档功能的详细信息，请参阅 [Azure AD 嵌入式文档](https://go.microsoft.com/fwlink/?linkid=845985)。
+    h. 在“信赖方”选项卡上，复制**元数据 URL** 并在浏览器中将其打开以下载 **SP 元数据 XML** 文件。 在 Azure AD 中的“基本 SAML 配置”部分中上传此 SP 元数据文件。
 
-### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
+    ![配置单一登录](./media/openathens-tutorial/tutorial_openathens_application5.png)
 
-本部分的目的是在 Azure 门户中创建名为“Britta Simon”的测试用户。
+### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户 
 
-   ![创建 Azure AD 测试用户][100]
+本部分的目的是在 Azure 门户中创建名为 Britta Simon 的测试用户。
 
-**在 Azure AD 中创建测试用户**
+1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”。
 
-1. 在 Azure 门户的左窗格中，选择“Azure Active Directory”。
+    ![“用户和组”以及“所有用户”链接](common/users.png)
 
-    ![“Azure Active Directory”按钮](./media/openathens-tutorial/create_aaduser_01.png)
+2. 选择屏幕顶部的“新建用户”。
 
-1. 若要显示用户列表，请转到“用户和组”，选择“所有用户”。
+    ![“新建用户”按钮](common/new-user.png)
 
-    ![“用户和组”以及“所有用户”链接](./media/openathens-tutorial/create_aaduser_02.png)
+3. 在“用户属性”中，按照以下步骤操作。
 
-1. 若要打开“用户”对话框，请在“所有用户”对话框顶部选择“添加”。
+    ![“用户”对话框](common/user-properties.png)
 
-    ![“添加”按钮](./media/openathens-tutorial/create_aaduser_03.png)
-
-1. 在“用户”对话框中，执行以下步骤：
-
-    ![“用户”对话框](./media/openathens-tutorial/create_aaduser_04.png)
-
-    a. 在“名称”文本框中，键入“BrittaSimon”。
-
-    b. 在“用户名”文本框中，键入 Britta Simon 的电子邮件地址。
-
-    c. 选中“显示密码”复选框，然后记下“密码”文本框中显示的值。
-
-    d. 选择**创建**。
+    a. 在“名称”字段中，输入 BrittaSimon。
   
-### <a name="create-an-openathens-test-user"></a>创建 OpenAthens 测试用户
+    b. 在“用户名”字段中键入 brittasimon@yourcompanydomain.extension  
+    例如： BrittaSimon@contoso.com
 
-OpenAthens 支持实时预配，并在成功身份验证后自动创建用户。 在本部分中无需执行任何操作。
+    c. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
+
+    d. 单击“创建”。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
 在本部分中，通过授予 Britta Simon 访问 OpenAthens 的权限，允许她使用 Azure 单一登录。
 
-![分配用户角色][200] 
+1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”和“OpenAthens”。
 
-**将 Britta Simon 分配到 OpenAthens**
+    ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
-1. 在 Azure 门户中，打开应用程序视图，浏览到目录视图，转到“企业应用程序”，并选择“所有应用程序”。
+2. 在应用程序列表中，键入并选择“OpenAthens”。
 
-    ![分配用户][201] 
+    ![应用程序列表中的 OpenAthens 链接](common/all-applications.png)
 
-1. 在“应用程序”列表中，选择“OpenAthens”。
+3. 在左侧菜单中，选择“用户和组”。
 
-    ![应用程序列表中的 OpenAthens 链接](./media/openathens-tutorial/tutorial_openathens_app.png)  
+    ![“用户和组”链接](common/users-groups-blade.png)
 
-1. 在左侧菜单中，选择“用户和组”。
+4. 单击“添加用户”按钮，然后在“添加分配”对话框中选择“用户和组”。
 
-    ![“用户和组”链接][202]
+    ![“添加分配”窗格](common/add-assign-user.png)
 
-1. 选择“添加”按钮。 然后，在“添加分配”窗格中选择“用户和组”。
+5. 在“用户和组”对话框中，选择“用户”列表中的 Britta Simon，然后单击屏幕底部的“选择”按钮。
 
-    ![“添加分配”窗格][203]
+6. 如果你在 SAML 断言中需要任何角色值，请在“选择角色”对话框中从列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。
 
-1. 在“用户和组”列表中，选择“Britta Simon”。
+7. 在“添加分配”对话框中，单击“分配”按钮。
 
-1. 在“用户和组”列表中，选择“选择”按钮。
+### <a name="create-openathens-test-user"></a>创建 OpenAthens 测试用户
 
-1. 在“添加分配”窗格中选择“分配”按钮。
-    
-### <a name="test-single-sign-on"></a>测试单一登录
+在本部分中，我们将在 OpenAthens 中创建一个名为 Britta Simon 的用户。 OpenAthens 支持默认情况下启用的**实时用户预配**。 此部分不存在任何操作项。 如果 OpenAthens 中尚不存在用户，则会在身份验证后创建一个新用户。
+
+### <a name="test-single-sign-on"></a>测试单一登录 
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-选择访问面板中的“OpenAthens”磁贴时，应会自动登录到 OpenAthens 应用程序。
-有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
+单击访问面板中的 OpenAthens 磁贴时，应当会自动登录到你为其设置了 SSO 的 OpenAthens。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 
-* 有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表，请参阅[有关配合 Azure AD 使用 SaaS 应用集成的教程](tutorial-list.md)。
-* 有关 Azure Active Directory 的应用程序访问和单一登录的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)。
+- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-<!--Image references-->
+- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-[1]: ./media/openathens-tutorial/tutorial_general_01.png
-[2]: ./media/openathens-tutorial/tutorial_general_02.png
-[3]: ./media/openathens-tutorial/tutorial_general_03.png
-[4]: ./media/openathens-tutorial/tutorial_general_04.png
-
-[100]: ./media/openathens-tutorial/tutorial_general_100.png
-
-[200]: ./media/openathens-tutorial/tutorial_general_200.png
-[201]: ./media/openathens-tutorial/tutorial_general_201.png
-[202]: ./media/openathens-tutorial/tutorial_general_202.png
-[203]: ./media/openathens-tutorial/tutorial_general_203.png
+- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

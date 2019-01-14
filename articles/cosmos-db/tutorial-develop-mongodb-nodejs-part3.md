@@ -4,18 +4,19 @@ titleSuffix: Azure Cosmos DB
 description: 本教程系列的第 3 部分，介绍如何通过 Angular 和 Node 在 Azure Cosmos DB 上创建 MongoDB 应用，所使用的 API 与用于 MongoDB 的 API 完全相同。
 author: johnpapa
 ms.service: cosmos-db
-ms.component: cosmosdb-mongo
+ms.subservice: cosmosdb-mongo
 ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 12/26/2018
 ms.author: jopapa
 ms.custom: seodec18
-ms.openlocfilehash: 462d0ea036ee50a3eea6812d87772bba9559125c
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.reviewer: sngun
+ms.openlocfilehash: 286ccfe84f511ffccdc8919b2e717cd21f124c2b
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53788576"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54158697"
 ---
 # <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---build-the-ui-with-angular"></a>使用 Azure Cosmos DB 的用于 MongoDB 的 API 创建 Angular 应用 - 使用 Angular 生成 UI
 
@@ -416,7 +417,7 @@ ms.locfileid: "53788576"
 
 2. 在 Visual Studio Code 中返回到 heroes.components.ts。 请注意，`constructor(private heroService: HeroService) {}` 行（第 13 行）的 `HeroService` 下方有一条红线。 单击 `HeroService`，此时会在代码块左侧出现灯泡。 单击该灯泡，然后单击“从 "./hero.service" 导入 HeroService” 或“从 ‘/app/hero.service’ 导入 HeroService”。
 
-    单击灯泡会在第 2 行中插入新的代码行。 如果第 2 行引用 /app/hero.service 文件夹，请对其进行修改，使之引用本地文件夹中的 hero 文件 (./hero.serivce)。 第 2 行应如下所示：
+    单击灯泡会在第 2 行中插入新的代码行。 如果第 2 行引用 /app/hero.service 文件夹，请对其进行修改，使之引用本地文件夹中的 hero 文件 (./hero.service)。 第 2 行应如下所示：
     
     ```javascript
     import { HeroService } from "./hero.service"

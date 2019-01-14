@@ -1,5 +1,5 @@
 ---
-title: 快速入门：查找备用翻译，Go - 文本翻译 API
+title: 快速入门：使用双语字典、Go 查找字词 - 文本翻译 API
 titleSuffix: Azure Cognitive Services
 description: 在本快速入门中，你将使用文本翻译 API 和 Go 查找字词的备用翻译和示例。
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.component: translator-text
 ms.topic: quickstart
 ms.date: 12/05/2018
 ms.author: erhopf
-ms.openlocfilehash: bcda716d143bd675f9510b1ecf5974ab9c28a394
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: c1a75a32e60e337d07bda9d6f6d39efa58c679e2
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53000590"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54158561"
 ---
-# <a name="quickstart-use-the-translator-text-api-to-get-alternate-translations-using-go"></a>快速入门：使用 Go 通过文本翻译 API 获取备用翻译
+# <a name="quickstart-look-up-words-with-bilingual-dictionary-using-go"></a>快速入门：通过 Go 使用双语字典查找字词
 
 本快速入门介绍如何使用 Go 和文本翻译 REST API 查找指定文本的备用翻译和用法示例。
 

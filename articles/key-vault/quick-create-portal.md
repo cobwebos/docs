@@ -9,17 +9,16 @@ ms.assetid: 98cf8387-34de-468e-ac8f-5c02c9e83e68
 ms.service: key-vault
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 05/10/2018
+ms.date: 01/07/2019
 ms.author: barclayn
-ms.openlocfilehash: 864c80fe0ab8b061439b5a80a111edbd1b2004b6
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: c3b605507c3878770db2c7dcb53a2ff9bb512b6b
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44027021"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54078382"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-the-azure-portal"></a>快速入门：使用 Azure 门户在 Azure Key Vault 中设置和检索机密
 
@@ -41,16 +40,16 @@ Azure Key Vault 是一项云服务，它为机密提供了安全的存储。 可
 4. 在“Key Vault”部分，选择“创建”。
 5. 在“创建密钥保管库”部分，提供以下信息：
     - **名称**：必须提供唯一的名称。 对于本快速入门，请使用 **Contoso-vault2**。 
-    - **订阅**：选择一个订阅。
+    - **订阅**：选择订阅。
     - 在“资源组”下选择“新建”，然后输入资源组名称。
     - 在“位置”下拉菜单中选择一个位置。
     - 勾选“固定到仪表板”复选框。
     - 让其他选项保留默认值。
 6. 提供上述信息后，选择“创建”。
 
-记下下面列出的两项属性：
+请记下下面列出的两个属性：
 
-* **保管库名称**：在本示例中为 **Contoso-Vault2**。 将在其他步骤中使用此名称。
+* **保管库名称**：在本示例中，此项为 **Contoso-Vault2**。 将在其他步骤中使用此名称。
 * **保管库 URI**：在本示例中，此项为 https://contoso-vault2.vault.azure.net/。 通过其 REST API 使用保管库的应用程序必须使用此 URI。
 
 目前，只有你的 Azure 帐户有权对这个新保管库执行操作。
@@ -76,7 +75,7 @@ Azure Key Vault 是一项云服务，它为机密提供了安全的存储。 可
 ## <a name="clean-up-resources"></a>清理资源
 
 其他 Key Vault 快速入门和教程是在本快速入门的基础上制作的。 如果打算继续使用后续的快速入门和教程，则可能需要保留这些资源。
-如果不再需要资源组，可以将其删除，这将删除 Key Vault 和相关的资源。 若要通过门户删除资源组，请执行以下操作：
+如果不再需要资源组，可以将其删除，这将删除 Key Vault 和相关的资源。 要通过门户删除资源组，请执行以下操作：
 
 1. 在门户顶部的“搜索”框中输入资源组的名称。 在搜索结果中看到在本快速入门中使用的资源组后，将其选中。
 2. 选择“删除资源组”。

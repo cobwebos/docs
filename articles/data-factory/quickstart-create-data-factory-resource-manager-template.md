@@ -9,16 +9,15 @@ editor: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: quickstart
 ms.date: 11/28/2018
 ms.author: douglasl
-ms.openlocfilehash: 2baadd0bcb5aba401e2dd6cec9a82ca401b3c9bd
-ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
+ms.openlocfilehash: 5a883d922944552b53b152546cc891a0a2f4a31f
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52620483"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54042727"
 ---
 # <a name="tutorial-create-an-azure-data-factory-using-azure-resource-manager-template"></a>教程：使用 Azure 资源管理器模板创建 Azure 数据工厂
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -39,6 +38,8 @@ ms.locfileid: "52620483"
 若要了解 Azure 资源管理器模板的一般信息，请参阅[创作 Azure 资源管理器模板](../azure-resource-manager/resource-group-authoring-templates.md)。 
 
 以下部分提供了用于定义数据工厂实体的完整 Resource Manager 模板，以便可以快速完成整个教程并测试模板。 若要了解每个数据工厂实体的定义方式，请参阅[模板中的数据工厂实体](#data-factory-entities-in-the-template)部分。
+
+若要了解模板中数据工厂资源的 JSON 语法和属性，请参阅 [Microsoft.DataFactory 资源类型](/azure/templates/microsoft.datafactory/allversions)。
 
 ## <a name="data-factory-json"></a>数据工厂 JSON 
 在 **C:\ADFTutorial** 文件夹中，创建包含以下内容的名为 **ADFTutorialARM.json** 的 JSON 文件：
@@ -444,7 +445,7 @@ DeploymentDebugLogLevel :
 5. 单击“操作”列中的链接。 
 
     ![管道操作链接](media/quickstart-create-data-factory-resource-manager-template/pipeline-actions-link.png)
-6. 此时会看到与管道运行相关联的活动运行。 在本快速入门中，管道只有一个类型为“复制”的活动。 因此会看到该活动的一个运行。 
+6. 此时会看到与管道运行相关联的活动运行。 在本快速入门中，管道只有一个活动，其类型为：“复制”。 因此会看到该活动的一个运行。 
 
     ![活动运行](media/quickstart-create-data-factory-resource-manager-template/activity-runs.png)
 1. 单击“输出”列下的链接。 此时会在“输出”窗口中看到复制操作的输出。 单击最大化按钮可查看完整输出。 可以关闭最大化输出窗口，也可以直接关闭它。 

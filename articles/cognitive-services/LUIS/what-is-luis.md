@@ -7,14 +7,14 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: overview
-ms.date: 12/10/2018
+ms.date: 01/09/2018
 ms.author: diberry
-ms.openlocfilehash: ca92a6a2eb92e3b7fed9452d135c0a6bce55a57c
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: f587791dd1b864d0088408c377001c23546654c5
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53273232"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54191269"
 ---
 # <a name="what-is-language-understanding-luis"></a>什么是语言理解 (LUIS)？
 
@@ -115,6 +115,10 @@ LUIS 的顶级客户端应用程序是：
 * [语音服务](../Speech-Service/overview.md)可将口述语言请求转化成文本。 
 * 可以使用[聊天学习器](https://docs.microsoft.com/azure/cognitive-services/labs/conversation-learner/overview)，通过 LUIS 更快速地生成机器人聊天内容。
 * [项目个性聊天](https://docs.microsoft.com/azure/cognitive-services/project-personality-chat/overview)，用于处理机器人小型谈话。
+
+使用 LUIS 的示例：
+* [对话 AI](https://github.com/Microsoft/AI) GitHub 存储库。
+* [语言理解](https://github.com/Azure-Samples/cognitive-services-language-understanding) Azure 示例
 
 ## <a name="next-steps"></a>后续步骤
 

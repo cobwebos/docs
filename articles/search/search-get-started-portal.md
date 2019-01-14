@@ -7,15 +7,15 @@ tags: azure-portal
 services: search
 ms.service: search
 ms.topic: tutorial
-ms.date: 01/02/2019
+ms.date: 01/07/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 3f75cd61d948f3f6df34124a9b16b333f6c5e6d5
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 9bdc2e197b4d7aea270c954305a96a01a1371945
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54001781"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54121543"
 ---
 # <a name="quickstart-use-built-in-portal-tools-for-azure-search-import-indexing-and-queries"></a>快速入门：使用内置门户工具在 Azure 搜索中进行导入、索引编制和查询
 
@@ -48,7 +48,7 @@ ms.locfileid: "54001781"
 
 服务仪表板上的部分显示你已有多少个索引、索引器和数据源。 
 
-![索引、索引器和数据源列表][media/search-get-started-portal/tiles-indexers-datasources2.png]
+![索引、索引器和数据源的列表](media/search-get-started-portal/tiles-indexers-datasources2.png)
 
 ## <a name="create-index"></a> 创建索引并加载数据
 
@@ -124,9 +124,13 @@ ms.locfileid: "54001781"
 
 ## <a name="view-the-index"></a>查看索引
 
-“索引”列表显示现有索引，包括刚刚在向导中创建的“realestate-us-sample”索引。
+主服务页提供指向 Azure 搜索服务中创建的资源的链接。  若要查看刚刚创建的索引，请单击链接列表中的**索引**。 
 
-从此列表中，可以查看索引架构，还可选择添加新字段，但不能更改现有字段。 现有字段在 Azure 搜索中具有实际的表示形式，因此不可修改，即使在代码中也是如此。 若要从根本上更改现有字段，请创建新索引并丢弃原始索引。
+   ![服务仪表板上的索引列表](media/search-get-started-portal/indexes-list.png)
+
+从此列表中，可以单击刚刚创建的 *realestate-us-sample* 索引，查看索引架构， 并可以选择添加新字段。 
+
+“字段”选项卡显示索引架构。 滚动到列表底部可输入新字段。 在大多数情况下，不能更改现有字段。 现有字段在 Azure 搜索中具有实际的表示形式，因此不可修改，即使在代码中也是如此。 若要从根本上更改现有字段，请创建新索引并丢弃原始索引。
 
    ![示例索引定义](media/search-get-started-portal/sample-index-def.png)
 
@@ -137,6 +141,8 @@ ms.locfileid: "54001781"
 ## <a name="query-index"></a>使用搜索浏览器查询
 
 我们继续。现在应已创建了一个可以使用内置[**搜索资源管理器**](search-explorer.md)查询页查询的搜索索引。 该页提供了一个搜索框，用于测试任意查询字符串。
+
+**搜索浏览器**仅用于处理 [REST API 请求](https://docs.microsoft.com/rest/api/searchservice/search-documents)，但它接受[简单查询语法](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search)和[完整 Lucene 查询分析器](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search)的语法，加上可在[搜索文档 REST API](https://docs.microsoft.com/rest/api/searchservice/search-documents#bkmk_examples) 操作中使用的所有搜索参数。
 
 > [!TIP]
 > 以下步骤在 [Azure 搜索概述视频](https://channel9.msdn.com/Events/Connect/2016/138)第 6 分 8 秒处开始演示。
@@ -150,11 +156,9 @@ ms.locfileid: "54001781"
 
    ![索引和 API 命令](media/search-get-started-portal/search-explorer-changeindex-se2.png)
 
-3. 在搜索栏中输入以下查询字符串，并单击“搜索”。
+3. 在搜索栏中粘贴以下查询字符串，并单击“搜索”。
 
-    > [!NOTE]
-    > “搜索资源管理器”仅供用于处理 [REST API 请求](https://docs.microsoft.com/rest/api/searchservice/search-documents)。 搜索浏览器接受[简单查询语法](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search)和[完整 Lucene 查询分析器](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search)的语法，加上可在[搜索文档](https://docs.microsoft.com/rest/api/searchservice/search-documents)操作中使用的所有搜索参数。
-    >
+   ![查询字符串和搜索按钮](media/search-get-started-portal/search-explorer-query-string-example.png)
 
 ## <a name="example-queries"></a>查询示例
 

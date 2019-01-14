@@ -118,7 +118,7 @@ window.appInsights=appInsights,appInsights.queue&&0===appInsights.queue.length&&
 
 ![在 portal.azure.com 中，打开应用的资源，并单击“设置”、“浏览器”](./media/javascript/03.png)
 
-还没有数据？ 单击页面顶部的“刷新”**。 仍然没有数据？ 请参阅 [疑难解答](../../azure-monitor/app/troubleshoot-faq.md)。
+还没有数据？ 单击页面顶部的**刷新**。 仍然没有数据？ 请参阅 [疑难解答](../../azure-monitor/app/troubleshoot-faq.md)。
 
 “浏览器”边栏选项卡是一个[指标资源管理器边栏选项卡](../../azure-monitor/app/metrics-explorer.md)，其中包含预设筛选器和图表选项。 如果需要，可以编辑时间范围、筛选器和图表配置，将结果另存为收藏项目。 单击“还原默认值”可恢复原始边栏选项卡配置。
 
@@ -146,11 +146,11 @@ window.appInsights=appInsights,appInsights.queue&&0===appInsights.queue.length&&
 
 单击 `...` 获取该事件的属性的完整列表，或检查 Ajax 调用和相关事件。 如果它们是同步的，缓慢的 Ajax 调用会影响整体页面加载时间。 相关事件包含服务器对同一 URL 的请求（如果已在 Web 服务器上设置 Application Insights）。
 
-**一段时间内的页面性能。**  返回“浏览器”边栏选项卡，将“页面视图加载时间”网格更改为折线图，查看在特定时间是否出现高峰：
+**一段时间内的页面性能。** 返回“浏览器”边栏选项卡，将“页面视图加载时间”网格更改为折线图，查看在特定时间是否出现高峰：
 
 ![单击网格标题，并选择新图表类型](./media/javascript/10-page-perf-area.png)
 
-**按其他维度分段。**  也许页面在特定浏览器、客户端 OS 或用户位置的加载速度较缓慢？ 添加具有 **分组依据** 维度的图表和试验。
+**按其他维度分段。** 也许页面在特定浏览器、客户端 OS 或用户位置的加载速度较缓慢？ 添加具有 **分组依据** 维度的图表和试验。
 
 ![](./media/javascript/21.png)
 

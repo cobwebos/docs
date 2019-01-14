@@ -3,17 +3,17 @@ title: 使用 Ansible 将应用程序部署到 Azure 中的虚拟机规模集
 description: 了解如何使用 Ansible 配置虚拟机规模集并将应用程序部署到 Azure 中的虚拟机规模集上
 ms.service: ansible
 keywords: ansible, azure, devops, bash, playbook, 虚拟机, 虚拟机规模集, vmss
-author: tomarcher
+author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 09/11/2018
-ms.openlocfilehash: 049fc711d0cf6a69b584ad3926bd9e9c0fc9e27d
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: 4f3712a45fdb2474eedeb8d4eac034060723010d
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53408368"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54156538"
 ---
 # <a name="deploy-applications-to-virtual-machine-scale-sets-in-azure-using-ansible"></a>使用 Ansible 将应用程序部署到 Azure 中的虚拟机规模集
 使用 Ansible 可以在环境中自动部署和配置资源。 可以使用 Ansible 将应用程序部署到 Azure。 本文介绍如何将 Java 应用程序部署到 Azure 虚拟机规模集 (VMSS)。  
@@ -150,7 +150,7 @@ Ansible playbook 中的以下部分在名为 **saclesethosts** 的主机组上�
 可以将前面的示例 Ansible playbook 保存为 `vmss-setup-deploy.yml`，或[下载整个示例 playbook](https://github.com/Azure-Samples/ansible-playbooks/blob/master/vmss)。 
 
 若要将 ssh 连接类型与密码一起使用，必须安装 sshpass 程序。 
-  - 对于 Ubunto 16.04，请运行命令 `apt-get install sshpass`。
+  - 对于 Ubuntu 16.04，请运行命令 `apt-get install sshpass`。
   - 对于 CentOS 7.4，请运行命令 `yum install sshpass`。
 
 你可能会看到如下错误：“不可以使用 SSH 密码而不是密钥，因为启用了主机密钥检查并且 sshpass 不支持此密码。请将此主机的指纹添加到 known_hosts 文件，以便管理此主机”。 如果看到此错误，可以通过将以下行添加到 `/etc/ansible/ansible.cfg` 文件或 `~/.ansible.cfg` 文件来禁用主机密钥检查：

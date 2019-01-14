@@ -4,17 +4,17 @@ description: 了解如何在 Visual Studio Code 中安装和使用 Azure Terrafo
 services: terraform
 ms.service: terraform
 keywords: terraform, azure, devops, visual studio code, 扩展
-author: tomarcher
+author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 08/31/2018
-ms.openlocfilehash: be0140606302335884d62ba60c875a049949b495
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: 137a57638207a05f797692b25a5d5a31bd66ce3d
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49353044"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54074574"
 ---
 # <a name="install-and-use-the-azure-terraform-visual-studio-code-extension"></a>安装并使用 Azure Terraform Visual Studio Code 扩展
 
@@ -27,7 +27,7 @@ Microsoft Azure Terraform Visual Studio Code 扩展旨在让开发人员在创�
 > * 使用 Visual Studio Code 编写、规划和执行 Terraform 计划。
 
 ## <a name="prerequisites"></a>先决条件
-- **Azure 订阅**：如果还没有 Azure 订阅，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
+- **Azure 订阅**：如果还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 
 - **Terraform**：[安装和配置 Terraform](/azure/virtual-machines/linux/terraform-install-configure)。
 
@@ -95,7 +95,7 @@ Microsoft Azure Terraform Visual Studio Code 扩展旨在让开发人员在创�
 
 现即可在 Visual Studio Code 内的 Cloud Shell 环境中运行所有受支持的 Terraform 命令。
 
-## <a name="exercise-1-basic-terraform-commands-walk-through"></a>练习 1：Terraform 命令基本演练
+## <a name="exercise-1-basic-terraform-commands-walk-through"></a>练习 1：基本 Terraform 命令演练
 
 在本练习中，你会创建和执行一个基本的 Terraform 配置文件，它将预配一个新的 Azure 资源组。
 
@@ -196,7 +196,7 @@ Terraform plan 命令用于检查一组更改的执行计划是否按预期执�
 
     ![Terraform apply](media/terraform-vscode-extension/tf-terraform-apply.png)
 
-1. 输入 `yes`。
+1. 输入 `yes` 。
 
     ![Terraform apply 是](media/terraform-vscode-extension/tf-terraform-apply-yes.png)
 
@@ -235,7 +235,7 @@ Terraform plan 命令用于检查一组更改的执行计划是否按预期执�
 
     ![验证是否已销毁资源组](media/terraform-vscode-extension/tf-refresh-resource-groups-button.png)
 
-## <a name="exercise-2-terraform-compute-module"></a>练习 2：Terraform 计算模块
+## <a name="exercise-2-terraform-compute-module"></a>练习 2：Terraform *计算*模块
 
 在本练习中，了解如何将 Terraform *compute* 模块加载到 Visual Studio Code 环境中。
 

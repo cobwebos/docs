@@ -13,12 +13,12 @@ ms.devlang: na
 ms.date: 11/13/2018
 ms.topic: quickstart
 ms.author: jgao
-ms.openlocfilehash: 515ab6a4ee832c702cfe19f2aca9022f208b409d
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: 15940d952dad62b3f71bfef6aa1cd8598d044605
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51612782"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54104720"
 ---
 # <a name="quickstart-create-and-deploy-azure-resource-manager-templates-by-using-the-azure-portal"></a>快速入门：使用 Azure 门户创建和部署 Azure 资源管理器模板
 
@@ -97,7 +97,7 @@ Azure 要求每个 Azure 服务都具有唯一的名称。 如果输入已存在
 
     ```json
     {
-        "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+        "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
         "contentVersion": "1.0.0.0",
         "parameters": {
             "location": {
@@ -147,7 +147,7 @@ Azure 要求每个 Azure 服务都具有唯一的名称。 如果输入已存在
     - **位置**：选择存储帐户的位置。  可以使用与资源组相同的位置。
     - **帐户类型**：对于本快速入门，请输入 **Standard_LRS**。
     - **种类**：对于本快速入门，请输入“StorageV2”。
-    - **访问层**：在本快速入门中，请输入**热**。
+    - **访问层**：对于本快速入门，请输入“Hot”。
     - **启用仅限 Https 流量**。  对于本快速入门，请选择“true”。
     - **我同意上述条款和条件**：（选中）
 
@@ -164,7 +164,7 @@ Azure 要求每个 Azure 服务都具有唯一的名称。 如果输入已存在
 
     ![Azure 资源管理器模板部署资源组](./media/resource-manager-quickstart-create-templates-use-the-portal/azure-resource-manager-template-tutorial-portal-deployment-resource-group.png)
 
-    可以看到部署状态为成功，资源组中只有一个存储帐户。 存储帐户名称是模板生成的唯一字符串。 若要了解有关使用 Azure 存储帐户的更多信息，请参阅[快速入门：使用 Azure 门户上载、下载和列出 blob](../storage/blobs/storage-quickstart-blobs-portal.md)。
+    可以看到部署状态为成功，资源组中只有一个存储帐户。 存储帐户名称是模板生成的唯一字符串。 若要详细了解如何使用 Azure 存储帐户，请参阅[快速入门：使用 Azure 门户上传、下载和列出 Blob](../storage/blobs/storage-quickstart-blobs-portal.md)。
 
 ## <a name="clean-up-resources"></a>清理资源
 

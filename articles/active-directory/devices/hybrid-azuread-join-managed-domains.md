@@ -1,6 +1,6 @@
 ---
-title: 如何配置联接到混合 Azure Active Directory 的设备 | Microsoft Docs
-description: 了解如何配置联接到混合 Azure Active Directory 的设备。
+title: 为托管域配置混合 Azure Active Directory 加入 | Microsoft Docs
+description: 了解如何为托管域配置混合 Azure Active Directory 加入。
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 11/01/2018
+ms.date: 01/08/2019
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: b8d45e72e15ff86b53f7355634e8f197b94260bd
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: b87bc4387b7e979aaf3b79a42b81baecc530a8aa
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53435423"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54105128"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-join-for-managed-domains"></a>教程：为托管域配置混合 Azure Active Directory 加入
 
@@ -113,7 +113,7 @@ ms.locfileid: "53435423"
 
     ![SCP](./media/hybrid-azuread-join-managed-domains/16.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 选择林。
+    a. 选择林。
 
     b. 选择身份验证服务。
 

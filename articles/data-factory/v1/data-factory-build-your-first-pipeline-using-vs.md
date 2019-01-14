@@ -10,17 +10,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.custom: vs-azure
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: b152ea46c9d744f557157b2dac7478c8513d97fd
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: ceaabdd9aa15e5979d8ab163a9b64986a03c8332
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50243140"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54023069"
 ---
 # <a name="tutorial-create-a-data-factory-by-using-visual-studio"></a>教程：使用 Visual Studio 创建数据工厂
 > [!div class="op_single_selector" title="Tools/SDKs"]
@@ -33,7 +32,7 @@ ms.locfileid: "50243140"
 
 
 > [!NOTE]
-> 本文适用于数据工厂版本 1。 如果使用当前版本数据工厂服务，请参阅[快速入门：使用 Azure 数据工厂创建数据工厂](../quickstart-create-data-factory-dot-net.md)。
+> 本文适用于数据工厂版本 1。 如果使用的是数据工厂服务的当前版本，请参阅[快速入门：使用 Azure 数据工厂创建数据工厂](../quickstart-create-data-factory-dot-net.md)。
 
 本教程演示如何使用 Visual Studio 创建 Azure 数据工厂。 你可以使用数据工厂项目模板创建 Visual Studio 项目，以 JSON 格式定义数据工厂实体（链接服务、数据集和管道），并将这些实体发布/部署到云。 
 
@@ -66,7 +65,7 @@ ms.locfileid: "50243140"
 3. 必须在计算机上安装了以下软件：
    * Visual Studio 2013 或 Visual Studio 2015
    * 下载用于 Visual Studio 2013 或 Visual Studio 2015 的 Azure SDK。 导航到 [Azure 下载页](https://azure.microsoft.com/downloads/)，在“.NET”部分中单击“VS 2013”或“VS 2015”。
-   * 下载用于 Visual Studio 的最新 Azure 数据工厂插件：[VS 2013](https://visualstudiogallery.msdn.microsoft.com/754d998c-8f92-4aa7-835b-e89c8c954aa5) 或 [VS 2015](https://visualstudiogallery.msdn.microsoft.com/371a4cf9-0093-40fa-b7dd-be3c74f49005)。 还可通过执行以下步骤更新插件：在菜单上，依次单击“工具” -> “扩展和更新” -> “联机” -> “Visual Studio 库” -> “适用于 Visual Studio 的 Microsoft Azure 数据工厂工具” -> “更新”。
+   * 下载用于 Visual Studio 的最新 Azure 数据工厂插件：[VS 2013](https://visualstudiogallery.msdn.microsoft.com/754d998c-8f92-4aa7-835b-e89c8c954aa5) 或 [VS 2015](https://visualstudiogallery.msdn.microsoft.com/371a4cf9-0093-40fa-b7dd-be3c74f49005)。 还可以执行以下步骤来更新插件：在菜单上，依次单击“工具” -> “扩展和更新” -> “联机” -> “Visual Studio 库” -> “适用于 Visual Studio 的 Microsoft Azure 数据工厂工具” -> “更新”。
 
 现在，使用 Visual Studio 创建 Azure 数据工厂。
 
@@ -80,7 +79,7 @@ ms.locfileid: "50243140"
     ![解决方案资源管理器](./media/data-factory-build-your-first-pipeline-using-vs/solution-explorer.png)
 
 ### <a name="create-linked-services"></a>创建链接服务
-在此步骤中，将创建两项链接服务：**Azure 存储**和**按需 HDInsight**。 
+此步骤创建两个链接服务：**Azure 存储**和 **HDInsight 按需**。 
 
 Azure 存储链接服务通过提供连接信息将 Azure 存储帐户链接到数据工厂。 数据工厂在运行时使用链接服务设置中的连接字符串连接到 Azure 存储。 该存储保存管道的输入和输出数据，以及 Hive 活动所使用的 Hive 脚本文件。 
 
@@ -215,7 +214,7 @@ Azure 存储链接服务通过提供连接信息将 Azure 存储帐户链接到�
 4. 保存 **OutputDataset.json** 文件。
 
 ### <a name="create-pipeline"></a>创建管道
-目前已创建 Azure 存储链接服务，以及输入和输出数据集。 现在，请创建 **HDInsightHive** 活动的管道。 Hive 活动的“输入”设置为 **AzureBlobInput**，“输出”设置为 **AzureBlobOutput**。 输入数据集的切片每月都会提供（频率：每月，间隔：1），输出切片也是每月都会生成。 
+目前已创建 Azure 存储链接服务，以及输入和输出数据集。 现在，请创建 **HDInsightHive** 活动的管道。 Hive 活动的“输入”设置为 **AzureBlobInput**，“输出”设置为 **AzureBlobOutput**。 每月获取输入数据集的切片（frequency：Month；interval：1），每月也生成输出切片。 
 
 1. 在“解决方案资源管理器”中，右键单击“管道”，指向“添加”，并单击“新建项”。
 2. 从列表中选择“Hive 转换管道”，并单击“添加”。
@@ -324,7 +323,7 @@ Azure 存储链接服务通过提供连接信息将 Azure 存储帐户链接到�
 
 重要注意事项：
 
-- 如果收到错误：“该订阅未注册，无法使用命名空间 Microsoft.DataFactory”，请执行下列操作之一，尝试再次发布：
+- 如果收到错误：“该订阅未注册，无法使用命名空间 Microsoft.DataFactory”，请执行下列操作之一，再尝试重新发布：
     - 在 Azure PowerShell 中运行以下命令，注册数据工厂提供程序。
         ```PowerShell   
         Register-AzureRmResourceProvider -ProviderNamespace Microsoft.DataFactory
@@ -346,7 +345,7 @@ Azure 存储链接服务通过提供连接信息将 Azure 存储帐户链接到�
    1. 单击“更多服务”，并单击“数据工厂”。
        
         ![浏览数据工厂](./media/data-factory-build-your-first-pipeline-using-vs/browse-datafactories.png)
-   2. 从数据工厂列表中选择数据工厂的名称（例如： **DataFactoryUsingVS09152016**）。
+   2. 从数据工厂列表中选择数据工厂的名称（例如：**DataFactoryUsingVS09152016**）。
    
        ![选择数据工厂](./media/data-factory-build-your-first-pipeline-using-vs/select-first-data-factory.png)
 2. 在数据工厂的主页中单击“图示”。
@@ -557,7 +556,7 @@ Azure 存储链接服务通过提供连接信息将 Azure 存储帐户链接到�
 4. 创建了包含 **HDInsight Hive** 活动的**管道**。  
 
 ## <a name="next-steps"></a>后续步骤
-本文创建了可在按需 HDInsight 群集上运行 Hive 脚本、包含转换活动（HDInsight 活动）的管道。 若要了解如何使用复制活动将数据从 Azure Blob 复制到 Azure SQL，请参阅 [Tutorial: Copy data from an Azure blob to Azure SQL](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)（教程：将数据从 Azure Blob 复制到 Azure SQL）。
+本文创建了可在按需 HDInsight 群集上运行 Hive 脚本、包含转换活动（HDInsight 活动）的管道。 若要了解如何使用复制活动将数据从 Azure Blob 复制到 Azure SQL，请参阅[教程：将数据从 Azure Blob 复制到 Azure SQL](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
 
 通过将一个活动的输出数据集设置为另一个活动的输入数据集，可链接两个活动（两个活动先后运行）。 有关详细信息，请参阅[数据工厂中的计划和执行情况](data-factory-scheduling-and-execution.md)。 
 

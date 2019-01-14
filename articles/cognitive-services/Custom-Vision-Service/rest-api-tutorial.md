@@ -1,5 +1,5 @@
 ---
-title: 教程：使用自定义影像服务 REST API
+title: 教程：使用自定义视觉服务 REST API
 titlesuffix: Azure Cognitive Services
 description: 使用 REST API 创建、训练、测试和导出自定义影像模型。
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.component: custom-vision
 ms.topic: tutorial
 ms.date: 08/07/2018
 ms.author: larryfr
-ms.openlocfilehash: afdc306a3d5a3130ecb44f88910e76f23f7c0c0e
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.openlocfilehash: 5e5cf04bb631585c14d2ec7403bf0332f41dc626
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52334714"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54054203"
 ---
-# <a name="tutorial-use-the-custom-vision-rest-api"></a>教程：使用自定义影像 REST API
+# <a name="tutorial-use-the-custom-vision-rest-api"></a>教程：使用自定义视觉 REST API
 
 了解如何使用自定义影像 REST API 来创建、训练、测试和导出模型。
 

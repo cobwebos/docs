@@ -8,12 +8,12 @@ ms.workload: identity
 ms.date: 10/19/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 586f3c81fad79f49b3506b0bd84a4f7b218d8605
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 54d23bca29c38f258334d7b641b8c1f480da55e1
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52426479"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54054956"
 ---
 # <a name="azure-ad-connect--adsynctools-powershell-reference"></a>Azure AD Connect：ADSyncTools PowerShell 参考
 以下文档提供了 Azure AD Connect 随附的 ADSyncTools.psm1 PowerShell 模块的参考信息。
@@ -338,7 +338,7 @@ Get-ADSyncToolsADuser [-User] <Object> [<CommonParameters>]
 ```
 
 ### <a name="description"></a>说明
-返回 AD 对象（TO DO: 多林支持）
+返回 AD 对象 TO DO：多林支持
 
 ### <a name="examples"></a>示例
 
@@ -470,7 +470,7 @@ Accept wildcard characters: False
 ## <a name="get-adsynctoolsrunhistory"></a>Get-ADSyncToolsRunHistory
 
 ### <a name="synopsis"></a>摘要
-获取 AAD 连接运行历史记录
+获取 AAD Connect 运行历史记录
 
 ### <a name="syntax"></a>语法
 
@@ -479,7 +479,7 @@ Get-ADSyncToolsRunHistory [[-Days] <Int32>] [<CommonParameters>]
 ```
 
 ### <a name="description"></a>说明
-以 XML 格式返回 AAD 连接运行历史记录的函数
+以 XML 格式返回 AAD Connect 运行历史记录的函数
 
 ### <a name="examples"></a>示例
 
@@ -526,7 +526,7 @@ Get-ADSyncToolsSourceAnchorChanged [-sourcePath] <Object> [-outputPath] <Object>
 ```
 
 ### <a name="description"></a>说明
-函数将查询 AAD 连接运行历史记录，并导出报告了“SourceAnchor 属性已更改”错误的所有用户。
+函数将查询 AAD Connect 运行历史记录，并导出报告以下错误的所有用户：“SourceAnchor 属性已更改”。
 
 ### <a name="examples"></a>示例
 
@@ -593,7 +593,7 @@ Import-ADSyncToolsImmutableIdMigration [-Output] <String> [-IncludeSyncUsersFrom
 ```
 
 ### <a name="description"></a>说明
-生成包含所有 Azure AD 同步用户的文件，这些用户具有符合 GUID 格式要求的 ImmutableID 值：MSOnline PowerShell 模块
+生成一个文件，其中包含所有与 Azure AD 同步的用户，这些用户具有符合 GUID 格式要求的 ImmutableID 值：MSOnline PowerShell 模块
 
 ### <a name="examples"></a>示例
 
@@ -719,7 +719,7 @@ Remove-ADSyncToolsExpiredCertificates [-TargetOU] <String> [[-BackupOnly] <Boole
 此脚本采用 Active Directory 域的目标组织单位中的所有对象（已按对象类（用户/计算机）筛选），并删除 UserCertificate 属性中的所有已过期证书。
 默认情况下（仅限 BackupOnly 模式），它只会将已过期的证书备份到文件，而不会在 AD 中执行任何更改。
 如果使用 -BackupOnly $false，则在将这些对象的 UserCertificate 属性中的任何已过期证书复制到文件后，会从 AD 中删除该证书。
-每个证书将备份到单独的文件名：ObjectClass_ObjectGUID_CertThumprint.cer。该脚本还会创建 CSV 格式的日志文件，其中显示证书有效或已过期的所有用户，包括执行的实际操作（已跳过/已导出/已删除）。
+每个证书都将备份到单独的文件名：ObjectClass_ObjectGUID_CertThumprint.cer。该脚本还将创建 CSV 格式的日志文件，其中显示证书有效或已过期的所有用户，包括执行的实际操作（“已跳过”/“已导出”/“已删除”）。
 
 ### <a name="examples"></a>示例
 
@@ -1227,7 +1227,7 @@ Update-ADSyncToolsConsistencyGuidMigration [[-DistinguishedName] <String>] [-Imm
 ```
 
 ### <a name="description"></a>说明
-使用取自 ConsistencyGuid 报告的新 ConsistencyGuid (ImmutableId) 值更新用户。此函数支持 WhatIf 开关。注意：必须导入制表符分隔的 ConsistencyGuid 报告
+使用从 ConsistencyGuid 报告获得的新 ConsistencyGuid (ImmutableId) 值更新用户。此函数支持 WhatIf 开关。注意：必须导入制表符分隔的 ConsistencyGuid 报告
 
 ### <a name="examples"></a>示例
 

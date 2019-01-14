@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/7/2018
 ms.author: jeedes
-ms.openlocfilehash: 1a28a4f8dd5087377d559c50ef3432251510810b
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 088fc2b7aeb318481a81387770f1dcef2883241d
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53194834"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54064094"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler-internet-access-administrator"></a>教程：Azure Active Directory 与 Zscaler Internet Access Administrator 的集成
 
@@ -38,7 +38,7 @@ ms.locfileid: "53194834"
 若要配置 Azure AD 与 Zscaler Internet Access Administrator 的集成，需准备好以下各项：
 
 * 一个 Azure AD 订阅。 如果你没有 Azure AD 环境，可以在[此处](https://azure.microsoft.com/pricing/free-trial/)获取一个月的试用版。
-* 已启用 Zscaler Internet Access Administrator 单一登录的订阅
+* Zscaler Internet Access Administrator 订阅
 
 ## <a name="scenario-description"></a>方案描述
 
@@ -104,7 +104,8 @@ ms.locfileid: "53194834"
 
     ![Zscaler Internet Access Administrator 域和 URL 单一登录信息](common/idp-intiated.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“标识符”文本框中，根据要求键入 URL：
+    a. 在“标识符”文本框中，根据要求键入 URL：
+    
     | |
     |--|
     | `https://admin.zscaler.net` |
@@ -115,6 +116,7 @@ ms.locfileid: "53194834"
     | `https://admin.zscalerbeta.net` |
 
     b. 在“回复 URL”文本框中，根据要求键入 URL：
+    
     | |
     |--|
     | `https://admin.zscaler.net/adminsso.do` |
@@ -134,7 +136,7 @@ ms.locfileid: "53194834"
     | ---------| ------------ |
     | 角色     | user.assignedroles |
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 单击“添加新声明”以打开“管理用户声明”对话框。
+    a. 单击“添加新声明”以打开“管理用户声明”对话框。
 
     ![图像](./common/new-save-attribute.png)
     
@@ -165,41 +167,23 @@ ms.locfileid: "53194834"
 
 ### <a name="configure-zscaler-internet-access-administrator-single-sign-on"></a>配置 Zscaler Internet Access Administrator 单一登录
 
-9. 在另一个 Web 浏览器窗口中，以管理员身份登录到 Zscaler Internet Access Administrator 公司站点。
+1. 在另一个 Web 浏览器窗口中，登录到 Zscaler Internet Access 管理员 UI。
 
-10. 转到“管理”>“身份验证”>“身份验证设置”并执行以下步骤：
+2. 转到“管理”>“管理员管理”执行以下步骤，然后单击“保存”：
    
-    ![管理](./media/zscaler-internet-access-administrator-tutorial/ic800206.png "Administration")
+    ![管理](./media/zscaler-internet-access-administrator-tutorial/AdminSSO.png "Administration")
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“身份验证类型”下选择“SAML”。
+    a. 选中“启用 SAML 身份验证”。
 
-    b. 单击“配置 SAML”。
-
-11. 在“编辑 SAML”窗口中，执行以下步骤并单击“保存”。  
-            
-    ![管理用户和身份验证](./media/zscaler-internet-access-administrator-tutorial/ic800208.png "管理用户和身份验证")
+    b. 单击“上传”，以上传从 Azure 门户的“公共 SSL 证书”中下载的 Azure SAML 签名证书。
     
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“SAML 门户 URL”文本框中，粘贴从 Azure 门户复制的“登录 URL”。
+    c. （可选）为了提高安全性，请添加**颁发者**详细信息以验证 SAML 响应的颁发者。
 
-    b. 在“登录名属性”文本框中，输入 **NameID**。
-
-    c. 单击“上传”，以上传从 Azure 门户的“公共 SSL 证书”中下载的 Azure SAML 签名证书。
-
-    d. 切换“启用 SAML 自动预配”。
-
-    e. 若要为 displayName 属性启用 SAML 自动预配，请在“用户显示名称属性”文本框中输入 **displayName**。
-
-    f. 若要为 memberOf 属性启用 SAML 自动预配，请在“组名称属性”文本框中输入 **memberOf**。
-
-    g. 若要为 department 属性启用 SAML 自动预配，请在“部门名称属性”中输入 **department**。
-
-    i. 单击“ **保存**”。
-
-12. 在“配置用户身份验证”对话框页上，执行以下步骤：
+3. 在管理员 UI 中，执行以下步骤：
 
     ![管理](./media/zscaler-internet-access-administrator-tutorial/ic800207.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 将鼠标悬停在左下角附近的“激活”菜单上。
+    a. 将鼠标悬停在左下角附近的“激活”菜单上。
 
     b. 单击“激活”。
 
@@ -256,15 +240,16 @@ ms.locfileid: "53194834"
 
 ### <a name="create-zscaler-internet-access-administrator-test-user"></a>创建 Zscaler Internet Access Administrator 测试用户
 
-本部分的目的是在 Zscaler Internet Access Administrator 中创建名为 Britta Simon 的用户。 Zscaler Internet Access Administrator 支持默认启用的实时预配。 此部分不存在任何操作项。 如果用户尚不存在，则在尝试访问 Zscaler Internet Access Administrator 期间会创建一个新用户。
->[!Note]
->如需手动创建用户，请联系  [Zscaler Internet Access Administrator 支持团队](Phone: +1-408-701-0534 URL: help.zscaler.com)。
+本部分的目的是在 Zscaler Internet Access Administrator 中创建名为 Britta Simon 的用户。 Zscaler Internet Access 不支持实时预配管理员 SSO。 你需要手动创建管理员帐户。
+有关如何创建管理员帐户的步骤，请参阅 Zscaler 文档：
+
+https://help.zscaler.com/zia/adding-admins
 
 ### <a name="test-single-sign-on"></a>测试单一登录 
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-在访问面板中单击“Zscaler Internet Access Administrator”磁贴时，应会自动登录到设置了 SSO 的 Zscaler Internet Access Administrator。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+单击访问面板中的“Zscaler Internet Access Administrator”磁贴时，应当会自动登录到已为其设置了 SSO 的 Zscaler Internet Access 管理员 UI。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 

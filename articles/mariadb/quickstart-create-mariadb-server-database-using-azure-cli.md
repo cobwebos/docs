@@ -6,14 +6,14 @@ ms.author: andrela
 ms.service: mariadb
 ms.devlang: azurecli
 ms.topic: quickstart
-ms.date: 09/24/2018
+ms.date: 01/09/2019
 ms.custom: mvc
-ms.openlocfilehash: 19c1952a25e6a6db9b81b74f79bdcd2970cb2c78
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 0a629b9b068694960178c1c5727ba2f38b0e8af7
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53538732"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54190322"
 ---
 # <a name="create-an-azure-database-for-mariadb-server-by-using-the-azure-cli"></a>使用 Azure CLI 创建 Azure Database for MariaDB 服务器
 
@@ -71,6 +71,10 @@ admin-password | 你的密码 | 管理员用户的密码。 密码必须包含 8
 ```azurecli-interactive
 az mariadb server create --resource-group myresourcegroup --name mydemoserver  --location westus --admin-user myadmin --admin-password <server_admin_password> --sku-name GP_Gen5_2 --version 10.2
 ```
+
+> [!NOTE]
+> 如果轻量级计算和 I/O 足以满足工作负荷要求，请考虑使用“基本”定价层。 请注意，在“基本”定价层中创建的服务器以后不能扩展到“常规用途”或“内存优化”定价层。 有关详细信息，请参阅[定价页](https://azure.microsoft.com/pricing/details/mariadb/)。
+> 
 
 ## <a name="configure-a-firewall-rule"></a>配置防火墙规则
 

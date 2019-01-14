@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.date: 09/07/2018
 ms.author: glenga
 ms.custom: mvc, devcenter
-ms.openlocfilehash: c5889d89ec8c913d9300fa85318a16b4eb452d3b
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: d265c391b12a46f509c8663c64892372c8d806ba
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52633752"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54104516"
 ---
 # <a name="create-your-first-function-using-visual-studio-code"></a>使用 Visual Studio Code 创建你的第一个函数
 
@@ -27,11 +27,11 @@ Azure Functions 用于在[无服务器](https://azure.microsoft.com/solutions/se
 
 ![Visual Studio 项目中的 Azure Functions 代码](./media/functions-create-first-function-vs-code/functions-vscode-intro.png)
 
-该扩展当前支持 C#、JavaScript 和 Java 函数。 本文中的步骤可能会因你为 Azure Functions 项目所选的语言而异。 此扩展目前为预览版。 若要了解详细信息，请参阅[适用于 Visual Studio Code 的 Azure Functions 扩展]页。
+该扩展目前完全支持 C#、JavaScript 和 Java 函数，Python 支持目前处于预览状态。 本文中的步骤可能会因你为 Azure Functions 项目所选的语言而异。 此扩展目前为预览版。 若要了解详细信息，请参阅[适用于 Visual Studio Code 的 Azure Functions 扩展]页。
 
 ## <a name="prerequisites"></a>先决条件
 
-完成本快速入门教程：
+完成本快速入门教程需要：
 
 * 在某一[受支持的平台](https://code.visualstudio.com/docs/supporting/requirements#_platforms)上安装 [Visual Studio Code](https://code.visualstudio.com/)。 本文是在运行 macOS (High Sierra) 的设备上开发并测试的。
 
@@ -55,7 +55,7 @@ Azure Functions 用于在[无服务器](https://azure.microsoft.com/solutions/se
 
 ## <a name="create-an-http-triggered-function"></a>创建 HTTP 触发的函数
 
-1. 从“Azure: Functions”区域中选择“创建函数”图标。
+1. 从 **Azure：Functions** 区域中，选择“创建函数”图标。
 
     ![创建函数](./media/functions-create-first-function-vs-code/create-function.png)
 
@@ -93,7 +93,7 @@ Azure Functions 用于在[无服务器](https://azure.microsoft.com/solutions/se
 
     ![浏览器中的函数 localhost 响应](./media/functions-create-first-function-vs-code/functions-test-local-browser.png)
 
-1. 若要停止调试，请按 Shift + F1。
+1. 若要停止调试，请按 Shift + F5。
 
 确认该函数可以在本地计算机上正确运行以后，即可将项目发布到 Azure。
 

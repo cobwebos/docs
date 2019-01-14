@@ -6,21 +6,18 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: overview
-ms.date: 07/10/2018
+ms.date: 01/09/2019
 ms.author: alkohli
-ms.openlocfilehash: 569442f5dfdf96f03a95f7210bfe1ed7dc3af8de
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: 569f89d389e4bc8c7f2d1f46f3713e9792d4e466
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49091481"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54159683"
 ---
-# <a name="azure-data-box-disk-security-and-data-protection-preview"></a>Azure Data Box 磁盘安全性和数据保护（预览版）
+# <a name="azure-data-box-disk-security-and-data-protection"></a>Azure Data Box Disk 安全性和数据保护
 
 本文介绍帮助保护每个 Data Box 解决方案组件及其存储的数据的 Azure Data Box 磁盘安全功能。 
-
-> [!IMPORTANT]
-> Data Box 磁盘以预览版提供。 在部署此解决方案之前，请查看 [Azure 预览版服务的条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 ## <a name="data-flow-through-components"></a>通过组件运行的数据流
 

@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 01/30/2018
 ms.author: v-gedod
 ms.custom: seodec2018
-ms.openlocfilehash: d116f2553ce35c2d4041f37cc3fe4567e1595adc
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 5b3e68765fbcff12dcb5337aec38623b8994882c
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53258757"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54156793"
 ---
 # <a name="quickstart-perform-a-news-search-with-the-bing-news-search-sdk-for-c"></a>快速入门：使用适用于 C# 的必应新闻搜索 SDK 执行新闻搜索
 
@@ -35,14 +35,14 @@ Git Hub 上提供了 [C# 必应新闻搜索 SDK 示例的源代码](https://gith
 * Newtonsoft.Json
 
 ## <a name="news-search-client"></a>新闻搜索客户端
-若要创建 `NewsSearchAPI` 客户端的实例，请添加 using 指令：
+若要创建 `NewsSearchClient` 的实例，请添加 using 指令：
 ```
 using Microsoft.Azure.CognitiveServices.Search.NewsSearch;
 
 ```
 然后对该客户端进行实例化：
 ```
-var client = new NewsSearchAPI(new ApiKeyServiceClientCredentials("YOUR-ACCESS-KEY"));
+var client = new NewsSearchClient(new ApiKeyServiceClientCredentials("YOUR-ACCESS-KEY"));
 
 
 ```
@@ -56,7 +56,7 @@ Console.WriteLine("Search news for query \"Quantum  Computing\" with market and 
 ```
 if (newsResults.Value.Count > 0)
 {
-    var firstNewsResult = newsResults.Value.First();
+    var firstNewsResult = newsResults.Value[0];
 
     Console.WriteLine($"TotalEstimatedMatches value: {newsResults.TotalEstimatedMatches}");
     Console.WriteLine($"News result count: {newsResults.Value.Count}");
@@ -64,7 +64,7 @@ if (newsResults.Value.Count > 0)
     Console.WriteLine($"First news url: {firstNewsResult.Url}");
     Console.WriteLine($"First news description: {firstNewsResult.Description}");
     Console.WriteLine($"First news published time: {firstNewsResult.DatePublished}");
-    Console.WriteLine($"First news provider: {firstNewsResult.Provider.First().Name}");
+    Console.WriteLine($"First news provider: {firstNewsResult.Provider[0].Name}");
 }
 
 else
@@ -88,7 +88,7 @@ namespace NewsSrchSDK
     {
         static void Main(string[] args)
         {
-            var client = new NewsSearchAPI(new ApiKeyServiceClientCredentials("YOUR-ACCESS-KEY"));
+            var client = new NewsSearchClient(new ApiKeyServiceClientCredentials("YOUR-ACCESS-KEY"));
 
             try
             {
@@ -141,7 +141,7 @@ namespace NewsSrchSDK
 ## <a name="recent-news-freshness-and-sortby-parameters"></a>最新新闻，freshness 和 sortBy 参数
 下面的代码使用 `freshness` 和 `sortBy` 参数搜索关于“Artificial Intelligence”的最新新闻。 它验证结果数，并输出第一个新闻结果的 `totalEstimatedMatches`、`name`、`url`、`description`、`published time` 和 `name`。
 ```
-        public static void NewsSearchWithFilters(NewsSearchAPI client)
+        public static void NewsSearchWithFilters(NewsSearchClient client)
         {
             try
             {
@@ -184,7 +184,7 @@ namespace NewsSrchSDK
 ## <a name="category-news-safe-search"></a>分类新闻，安全搜索
 下面的代码使用安全搜索搜索关于电影和电视娱乐的分类新闻。  它验证结果数，并输出第一个新闻结果的 `category`、`name`、`url`、`description`、`published time` 和提供者 `name`。
 ```
-        public static void NewsCategory(NewsSearchAPI client)
+        public static void NewsCategory(NewsSearchClient client)
         {
             try
             {
@@ -226,7 +226,7 @@ namespace NewsSrchSDK
 ## <a name="trending-topics"></a>热门主题
 以下代码在必应中搜索新闻热门主题。 它验证结果数，并输出第一个新闻结果的 `name`、`text of query`、`webSearchUrl`、`newsSearchUrl` 和 `image.Url`。
 ```
-        public static void TrendingTopics(NewsSearchAPI client)
+        public static void TrendingTopics(NewsSearchClient client)
         {
             try
             {

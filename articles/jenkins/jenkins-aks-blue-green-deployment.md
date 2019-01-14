@@ -3,17 +3,17 @@ title: 使用 Jenkins 和蓝/绿部署模式部署到 Azure Kubernetes 服务 (A
 description: 了解如何使用 Jenkins 和蓝/绿部署模式部署到 Azure Kubernetes 服务 (AKS)。
 ms.service: jenkins
 keywords: jenkins, azure, devops, kubernetes, k8s, aks, 蓝绿部署, 持续交付, cd
-author: tomarcher
+author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 10/11/2018
-ms.openlocfilehash: 6cd3938844d7f6977c7b0912acffbfb1679dc42e
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 9bd601aee87ab0776069c80bfdeffb70b06c3c86
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49387373"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54073877"
 ---
 # <a name="deploy-to-azure-kubernetes-service-aks-by-using-jenkins-and-the-bluegreen-deployment-pattern"></a>使用 Jenkins 和蓝/绿部署模式部署到 Azure Kubernetes 服务 (AKS)
 
@@ -259,7 +259,7 @@ GitHub 上的 Microsoft 存储库中提供了一个演示如何使用 Jenkins �
 
 ## <a name="run-the-job"></a>运行作业
 
-1. 验证是否可以成功在本地环境中运行项目。 请参阅[在本地计算机上运行项目](https://github.com/Microsoft/todo-app-java-on-azure/blob/master/README.md#run-it)。
+1. 验证是否可以成功在本地环境中运行项目。 方法如下：[在本地计算机上运行项目](https://github.com/Microsoft/todo-app-java-on-azure/blob/master/README.md#run-it)。
 
 1. 运行 Jenkins 作业。 首次运行该作业时，Jenkins 会将待办事项应用部署到蓝色环境（默认的非活动环境）。 
 

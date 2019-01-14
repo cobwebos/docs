@@ -1,21 +1,19 @@
 ---
 title: Azure Cosmos DB：SQL API 入门教程
 description: 使用 SQL API 创建联机数据库和 C# 控制台应用程序的教程。
-keywords: nosql 教程, 联机数据库, c# 控制台应用程序
-services: cosmos-db
 author: SnehaGunda
 ms.service: cosmos-db
-ms.component: cosmosdb-sql
+ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 08/16/2017
 ms.author: sngun
-ms.openlocfilehash: 100524eacb30f77e06204fb3b31e6477dd1320a4
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: d73638e0c02af5dc07e80084dd2ce5a7e090ecd2
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52867523"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54043441"
 ---
 # <a name="azure-cosmos-db-sql-api-getting-started-tutorial"></a>Azure Cosmos DB：SQL API 入门教程
 
@@ -156,7 +154,7 @@ ms.locfileid: "52867523"
 
 祝贺你！ 已成功连接到 Azure Cosmos DB 帐户，现在让我们看看如何使用 Azure Cosmos DB 资源。  
 
-## <a name="step-4-create-a-database"></a>第 4 步：创建数据库
+## <a name="step-4-create-a-database"></a>步骤 4：创建数据库
 在添加创建数据库的代码之前，添加一个用于向控制台写入的帮助器方法。
 
 将 **WriteToConsoleAndPromptToContinue** 方法复制并粘贴到 **GetStartedDemo** 方法后面。
@@ -205,7 +203,7 @@ ms.locfileid: "52867523"
 
 祝贺你！ 已成功创建了 Azure Cosmos DB 文档集合。  
 
-## <a id="CreateDoc"></a>第 6 步：创建 JSON 文档
+## <a id="CreateDoc"></a>步骤 6：创建 JSON 文档
 可以通过使用 **DocumentClient** 类的 [CreateDocumentAsync](https://msdn.microsoft.com/library/microsoft.azure.documents.client.documentclient.createdocumentasync.aspx) 方法创建文档。 文档为用户定义的（任意）JSON 内容。 现在，我们可以插入一个或多个文档。 如果已有要在数据库中存储的数据，则可以使用 Azure Cosmos DB 的[数据迁移工具](import-data.md)将数据导入数据库。
 
 在本例中，首先需要创建 **Family** 类来表示存储在 Azure Cosmos DB 中的对象。 此外还将创建 **Family** 中使用的 **Parent**、**Child**、**Pet** 和 **Address** 子类。 请注意，文档必须将 **ID** 属性序列化为 JSON 格式的 **ID**。 通过在 **GetStartedDemo** 方法后添加以下内部子类来创建这些类。
@@ -538,7 +536,7 @@ Azure Cosmos DB 支持删除 JSON 文档。
 
 
 ## <a name="next-steps"></a>后续步骤
-* 需要更复杂的 ASP.NET MVC 教程？ 请参阅 [ASP.NET MVC 教程：使用 Azure Cosmos DB 开发 Web 应用程序](sql-api-dotnet-application.md)。
+* 需要更复杂的 ASP.NET MVC 教程？ 请参阅 [ASP.NET MVC 教程：使用 Azure Cosmos DB 进行 Web 应用程序开发](sql-api-dotnet-application.md)。
 * 希望使用 Azure Cosmos DB 执行规模和性能测试？ 请参阅[使用 Azure Cosmos DB 执行性能和扩展测试](performance-testing.md)
 * 了解如何[监视 Azure Cosmos DB 请求、使用情况和存储](monitor-accounts.md)。
 * 在 [Query Playground](https://www.documentdb.com/sql/demo)中对示例数据集运行查询。

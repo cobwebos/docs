@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 12/27/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 60ecf08d7f0c40a04472b3e2bf5ef739e51c32e8
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 2af1ad35ee5f7548352180026f1d613d27b6af46
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53794424"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54103487"
 ---
 # <a name="set-up-disaster-recovery-for-azure-vms-to-a-secondary-azure-region"></a>为 Azure VM 设置到 Azure 次要区域的灾难恢复
 
@@ -43,7 +43,7 @@ ms.locfileid: "53794424"
 在除了源区域之外的任意区域中创建保管库。
 
 1. 登录到 [Azure 门户](https://portal.azure.com) > **恢复服务**。
-2. 单击“创建资源” > “监视和管理” > “备份和站点恢复”。
+2. 单击“创建资源” > “管理工具” > “备份和 Site Recovery”。
 3. 在“名称”中，指定一个友好名称以标识该保管库。 如果有多个订阅，请选择合适的一个。
 4. 创建一个资源组或选择一个现有的资源组。 指定 Azure 区域。 若要查看受支持的区域，请参阅 [Azure Site Recovery 定价详细信息](https://azure.microsoft.com/pricing/details/site-recovery/)中的“地域可用性”。
 5. 若要从仪表板快速访问保管库，请单击“固定到仪表板”，然后单击“创建”。
@@ -172,7 +172,8 @@ Site Recovery 会针对目标区域创建默认设置和复制策略。 可以�
 
 5. 若要将 VM 添加到新的或现有的复制组，请在“自定义”中选择“是”以确保多 VM 一致性。 使 VM 成为复制组的一部分。 然后单击“确定”。
 
-    - 故障转移时，复制组中的所有计算机将具有共享的崩溃一致性恢复点和应用程序一致性恢复点。 启用多 VM 一致性可能会影响工作负荷性能，因此，仅当计算机运行相同的工作负荷并且需要跨多个计算机的一致性时，才应使用该设置。
+    - 故障转移时，复制组中的所有计算机将具有共享的崩溃一致性恢复点和应用程序一致性恢复点。 启用多 VM 一致性可能会影响工作负荷性能（因为它是 CPU 密集型），因此，仅当计算机运行相同的工作负荷并且需要跨多个计算机的一致性时，才应使用该设置。
+    - 可以选择在复制组中最多包含 16 个虚拟机。
     - 如果启用了多 VM 一致性，则复制组中的计算机将通过端口 20004 相互通信。 请确保没有防火墙设备阻止 VM 之间通过端口 20004 进行的内部通信。 如果想要 Linux VM 成为复制组的一部分，请确保按照特定 Linux 版本的指南手动打开端口 20004 上的出站流量。
 
 ### <a name="configure-encryption-settings"></a>配置加密设置

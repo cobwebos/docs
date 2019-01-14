@@ -37,7 +37,7 @@ Microsoft 建议迁移 Azure 移动服务来利用 Azure 应用服务的各项�
 * 内置的 DevOps 工具，包括[过渡槽]、回滚和生产环境内测试。
 * [自动缩放]、负载均衡和[性能监视]。
 
-有关 Azure 应用服务优点的详细信息，请参阅 [Mobile Services vs.App Service]（移动服务与应用服务的比较）主题。
+有关 Azure 应用服务优点的详细信息，请参阅 [移动服务和应用服务]主题。
 
 ## <a name="before-you-begin"></a>准备工作
 在站点上开始任何主要任务之前，应该先备份移动服务脚本和 SQL 数据库。
@@ -349,7 +349,7 @@ Azure 应用服务中通常会禁用诊断日志记录。  若要启用诊断日
 </configuration>
 ```
 
-有关详细信息，请参阅 GitHub 上的 [XDT 转换示例]（XDT 转换示例）文档。
+有关详细信息，请参阅 GitHub 上的 [XDT 转换示例]文档。
 
 ### <a name="migrated-mobile-services-cannot-be-added-to-traffic-manager"></a>无法将迁移的移动服务添加到流量管理器
 创建流量管理器配置文件时，无法直接为配置文件选择已迁移的移动服务。  请使用“外部终结点”。  外部终结点只能通过 PowerShell 来添加。  有关详细信息，请参阅[流量管理器教程](https://azure.microsoft.com/blog/azure-traffic-manager-external-endpoints-and-weighted-round-robin-via-powershell/)。
@@ -390,7 +390,7 @@ Azure 应用服务中通常会禁用诊断日志记录。  若要启用诊断日
 [Hybrid Connections]: ../app-service/app-service-hybrid-connections.md
 [日志记录]: ../app-service/troubleshoot-diagnostic-logs.md
 [移动应用 Node.js SDK]: https://github.com/azure/azure-mobile-apps-node
-[Mobile Services vs.App Service]: app-service-mobile-value-prop-migration-from-mobile-services.md
+[移动服务和应用服务]: app-service-mobile-value-prop-migration-from-mobile-services.md
 [通知中心]: ../notification-hubs/notification-hubs-push-notification-overview.md
 [性能监视]: ../app-service/web-sites-monitor.md
 [Postman]: https://www.getpostman.com/

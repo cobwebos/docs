@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 12/07/2018
+ms.date: 01/04/2019
 ms.topic: tutorial
 ms.service: cost-management
 manager: dougeby
 ms.custom: seodec18
-ms.openlocfilehash: 4614a1417213ed8b4d57c3b7ab21ac7424d75949
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 4ad93dad2044526f5825823540325b73f2d0d7ae
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53087927"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54053528"
 ---
 # <a name="tutorial-create-and-manage-exported-data"></a>教程：创建和管理导出的数据
 
@@ -61,6 +61,22 @@ ms.locfileid: "53087927"
 新导出将出现在导出列表中。 默认情况下，新导出为启用状态。 如果要禁用或删除计划的导出，请单击列表中的任何项，然后再单击“禁用”或“删除”。
 
 最初，在导出运行之前，可能需要一到两个小时。 但是，在导出文件中显示数据之前，它可能需要四个小时。
+
+### <a name="export-schedule"></a>导出计划
+
+计划的导出受刚开始创建导出时的时间以及星期几的影响。 创建计划的导出以后，随后的每次导出都会在一天的同一时间运行。 例如，你创建了一个在每日下午 1:00 进行的导出。 下一次导出在第二天下午 1:00 运行。 当前时间以相同的方式影响所有其他的导出类型—它们始终在一天的同一时间运行，与刚开始创建导出时的运行时间一样。 在另一示例中，你创建一个在每周一下午 4:00 进行的导出。 下一次导出在下一个星期一的下午 4:00 运行。 导出的数据在运行导出后四小时内即可可用。
+
+每次导出都会创建新文件，因此旧的导出不会被覆盖。
+
+有三种类型的导出选项：
+
+**每日导出本月至今的成本** – 初始导出立即运行。 后续导出在第二天运行，其时间与初始导出一样。 最新数据是根据以前的每日导出聚合的。
+
+**过去七天的每周成本** – 初始导出立即运行。 后续导出在每周的特定星期几运行，其时间与初始导出一样。 成本是过去七天的。
+
+**自定义** – 可以使用 week-to-date 和 month-to-date 选项计划每周和每月的导出。 初始导出会立即运行。
+
+![“新建导出 - 基本信息”选项卡，显示自定义的每周 week-to-date 选择](./media/tutorial-export-acm-data/tutorial-export-schedule-weekly-week-to-date.png)
 
 ## <a name="verify-that-data-is-collected"></a>验证收集的数据
 

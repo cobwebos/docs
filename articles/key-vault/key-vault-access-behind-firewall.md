@@ -42,8 +42,8 @@ ms.locfileid: "54073718"
 
 | 主体类型 | 终结点：端口 |
 | --- | --- |
-| 使用 Microsoft 帐户的用户<br> （例如，user@hotmail.com） |**全局：**<br> login.microsoftonline.com:443<br><br> **Azure China：**<br> login.chinacloudapi.cn:443<br><br>**Azure US Government：**<br> login.microsoftonline.us:443<br><br>**Azure Germany：**<br>  login.microsoftonline.de:443<br><br> 和 <br>login.live.com:443 |
-| 使用 Azure AD 的工作或学校帐户的用户或服务主体（例如，user@contoso.com） |**全局：**<br> login.microsoftonline.com:443<br><br> **Azure China：**<br> login.chinacloudapi.cn:443<br><br>**Azure US Government：**<br> login.microsoftonline.us:443<br><br>**Azure Germany：**<br>  login.microsoftonline.de:443 |
+| 使用 Microsoft 帐户的用户<br> （例如，user@hotmail.com） |**全局：**<br> login.microsoftonline.com:443<br><br> **Azure China：**<br> login.chinacloudapi.cn:443<br><br>**Azure US Government：**<br> login.microsoftonline.us:443<br><br>**Azure Germany：**<br> login.microsoftonline.de:443<br><br> 和 <br>login.live.com:443 |
+| 使用 Azure AD 的工作或学校帐户的用户或服务主体（例如，user@contoso.com） |**全局：**<br> login.microsoftonline.com:443<br><br> **Azure China：**<br> login.chinacloudapi.cn:443<br><br>**Azure US Government：**<br> login.microsoftonline.us:443<br><br>**Azure Germany：**<br> login.microsoftonline.de:443 |
 | 使用工作或学校帐户，以及 Active Directory 联合身份验证服务 (AD FS) 或其他联合终结点的用户或服务主体（例如，user@contoso.com） |工作或学校帐户的所有终结点，以及 AD FS 或其他联合终结点 |
 
 还可能存在一些其他复杂情况。 有关其他信息，请参阅 [Azure Active Directory 身份验证流](../active-directory/develop/authentication-scenarios.md)、[将应用程序与 Azure Active Directory 集成](../active-directory/develop/active-directory-how-to-integrate.md)和 [Active Directory 身份验证协议](https://msdn.microsoft.com/library/azure/dn151124.aspx)。  

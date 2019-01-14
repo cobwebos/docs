@@ -1,6 +1,6 @@
 ---
-title: 如何配置联接到混合 Azure Active Directory 的设备 | Microsoft Docs
-description: 了解如何配置联接到混合 Azure Active Directory 的设备。
+title: 为联盟域配置混合 Azure Active Directory 加入 | Microsoft Docs
+description: 了解如何为联盟域配置混合 Azure Active Directory 加入。
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 12/04/2018
+ms.date: 01/08/2019
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: 3bce57f919490e1689ce40f59a3799ce451ee6e7
-ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
+ms.openlocfilehash: 2f904690187f6f2b020cb9cc32f9a20712d8bb53
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/22/2018
-ms.locfileid: "53752786"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54107559"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-join-for-federated-domains"></a>教程：为联盟域配置混合 Azure Active Directory 加入
 
@@ -123,7 +123,7 @@ ms.locfileid: "53752786"
 
     ![SCP](./media/hybrid-azuread-join-federated-domains/16.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 选择林。
+    a. 选择林。
 
     b. 选择身份验证服务。 除非你的组织仅有 Windows 10 客户端且你已配置计算机/设备同步或者你的组织使用 SeamlessSSO，否则必须选择 AD FS 服务器。
 

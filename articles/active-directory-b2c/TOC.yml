@@ -19,7 +19,13 @@ items:
   items:
   - name: 1 - 创建 B2C 租户
     href: tutorial-create-tenant.md
-  - name: 2 - 对帐户进行身份验证
+  - name: 2 - 注册应用程序
+    href: tutorial-register-applications.md
+  - name: 3 - 创建用户流
+    href: tutorial-create-user-flows.md
+  - name: 4 - 自定义 UI
+    href: tutorial-customize-ui.md
+  - name: 对帐户进行身份验证
     items:
     - name: ASP.NET
       href: active-directory-b2c-tutorials-web-app.md
@@ -27,7 +33,7 @@ items:
       href: active-directory-b2c-tutorials-desktop-app.md
     - name: 单页
       href: active-directory-b2c-tutorials-spa.md
-  - name: 3 - 授予 API 访问权限
+  - name: 授予 API 访问权限
     items:
     - name: ASP.NET
       href: active-directory-b2c-tutorials-web-api.md
@@ -35,8 +41,6 @@ items:
       href: active-directory-b2c-tutorials-desktop-app-webapi.md
     - name: 单页
       href: active-directory-b2c-tutorials-spa-webapi.md
-  - name: 自定义 UI
-    href: tutorial-customize-ui.md
 - name: 示例
   href: code-samples.md
 - name: 概念
@@ -45,16 +49,12 @@ items:
     href: active-directory-b2c-apps.md
   - name: 身份验证协议
     href: active-directory-b2c-reference-protocols.md
-  - name: 用户流
-    href: active-directory-b2c-reference-policies.md
   - name: 标识体验框架
     items:
     - name: 自定义策略
       href: active-directory-b2c-overview-custom.md
     - name: 用户访问权限
       href: manage-user-access.md
-    - name: 用户数据
-      href: manage-user-data.md
   - name: OAuth 2.0
     href: active-directory-b2c-reference-oauth-code.md
   - name: OpenId Connect
@@ -65,6 +65,10 @@ items:
     href: active-directory-b2c-reference-tokens.md
   - name: 用户帐户
     href: user-overview.md
+  - name: 用户数据
+    href: manage-user-data.md
+  - name: 用户流
+    href: active-directory-b2c-reference-policies.md
   - name: 用户界面自定义
     href: customize-ui-overview.md
 - name: 操作指南
@@ -264,8 +268,6 @@ items:
     href: active-directory-b2c-access-tokens.md
   - name: 传递访问令牌
     href: idp-pass-through-user-flow.md
-  - name: 注册应用程序
-    href: active-directory-b2c-app-registration.md
   - name: 报告使用情况
     href: active-directory-b2c-reference-usage-reporting-api.md
   - name: 资源所有者密码凭据
@@ -316,9 +318,9 @@ items:
     href: active-directory-b2c-support.md
   - name: 视频
     href: https://azure.microsoft.com/documentation/videos/index/?services=active-directory-b2c
-ms.openlocfilehash: b8a8db0dc15877cc772efbb1e9656c12f27f426a
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: c7f7036e52c5c9d0f9d7c51a882474028ba63aef
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53788275"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54244386"

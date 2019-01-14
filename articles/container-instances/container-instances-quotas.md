@@ -7,12 +7,12 @@ ms.service: container-instances
 ms.topic: overview
 ms.date: 12/17/2018
 ms.author: danlep
-ms.openlocfilehash: 86c169c84e905362e8fdb069e8ceadcb5e19fe67
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 647890517e6f08a4602ebed8ee1057cb45f10cbe
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53602386"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54075492"
 ---
 # <a name="quotas-and-region-availability-for-azure-container-instances"></a>Azure 容器实例的配额和区域可用性
 
@@ -24,7 +24,7 @@ ms.locfileid: "53602386"
 
 ## <a name="region-availability"></a>上市区域
 
-Azure 容器实例在具有指定 CPU 和内存限制的以下区域中可用。 在本文发布时，值是最新的。 有关最新信息，请使用[列表功能](/rest/api/container-instances/listcapabilities/listcapabilities) API。
+Azure 容器实例在具有指定 CPU 和内存限制的以下区域中可用。 在本文发布时，值是最新的。 有关最新信息，请使用[列表功能](/rest/api/container-instances/listcapabilities/listcapabilities) API。 将 Azure 容器实例与[虚拟网络](container-instances-vnet.md)（预览）或 [GPU 资源](container-instances-gpu.md)（预览）一起使用时，可用性和资源限制可能会有所不同。
 
 | 位置 | 操作系统 | CPU | 内存 (GB) |
 | -------- | -- | :---: | :-----------: |

@@ -63,7 +63,7 @@ Application Insights Profiler 是随 Windows Azure 诊断 (WAD) 扩展安装的�
       </WadCfg>
       ```
 
-    >   **注意：** 如果 diagnostics.wadcfgx* 文件还包含 `ApplicationInsights` 类型的其他接收器，则以下三个检测密钥都必须匹配：  
+    >   **注意：** 如果 *diagnostics.wadcfgx* 文件还包含 `ApplicationInsights` 类型的其他接收器，则以下三个检测密钥都必须匹配：  
     >  * 应用程序使用的密钥。  
     >  * `ApplicationInsights` 接收器使用的密钥。  
     >  * `ApplicationInsightsProfiler` 接收器使用的密钥。  

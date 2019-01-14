@@ -9,16 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/11/2018
 ms.author: jingwang
-ms.openlocfilehash: f4edd1632203e2f8723fa7880683727f8fb69c4d
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: af764557a6bd3d3f60a3aa628834d5929e073a82
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51614015"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54021979"
 ---
 # <a name="copy-data-from-an-on-premises-sql-server-database-to-azure-blob-storage"></a>将数据从本地 SQL Server 数据库复制到 Azure Blob 存储
 本教程使用 Azure 数据工厂用户界面 (UI) 创建一个数据工厂管道，用于将数据从本地 SQL Server 数据库复制到 Azure Blob 存储。 同时创建一个自承载 Integration Runtime，用其在本地数据存储和云数据存储之间移动数据。
@@ -209,7 +208,7 @@ ms.locfileid: "51614015"
 
 1. 在“新建链接服务”窗口中执行以下步骤：
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”下输入 **SqlServerLinkedService**。
+    a. 在“名称”下输入 **SqlServerLinkedService**。
 
     b. 在“通过集成运行时进行连接”下，确认已显示前面创建的自承载 Integration Runtime。
 
@@ -229,7 +228,7 @@ ms.locfileid: "51614015"
 
 1. 此时应已返回到打开了源数据集的窗口。 在“属性”窗口的“连接”选项卡中执行以下步骤： 
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“链接服务”中，确认显示了“SqlServerLinkedService”。
+    a. 在“链接服务”中，确认显示了“SqlServerLinkedService”。
 
     b. 在“表”中选择“[dbo].[emp]”。
 
@@ -257,7 +256,7 @@ ms.locfileid: "51614015"
 
 1. 在“新建链接服务”窗口中执行以下步骤：
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”下输入 **AzureStorageLinkedService**。
+    a. 在“名称”下输入 **AzureStorageLinkedService**。
 
     b. 在“存储帐户名称”下选择自己的 Azure 存储帐户。
 
@@ -269,7 +268,7 @@ ms.locfileid: "51614015"
 
 1. 此时应已返回到打开了接收器数据集的窗口。 在“连接”选项卡中执行以下步骤： 
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“链接服务”中，确认选择了“AzureStorageLinkedService”。
+    a. 在“链接服务”中，确认选择了“AzureStorageLinkedService”。
 
     b. 对于**文件路径**的**文件夹**/ **目录**部分，输入 **adftutorial/fromonprem**。 如果 adftutorial 容器中不包含 output 文件夹，数据工厂会自动创建 output 文件夹。
 

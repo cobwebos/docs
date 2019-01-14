@@ -1,5 +1,5 @@
 ---
-title: 快速入门：获取备用翻译，Java - 文本翻译 API
+title: 快速入门：使用双语字典、Java 查找字词 - 文本翻译 API
 titleSuffix: Azure Cognitive Services
 description: 本快速入门介绍如何使用 Java 和文本翻译 API 获取术语的备用翻译，以及这些备用翻译的使用示例。
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.component: translator-text
 ms.topic: quickstart
 ms.date: 12/03/2018
 ms.author: erhopf
-ms.openlocfilehash: 2c5517b470e46423631f6a63a24ceccf5de0a919
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.openlocfilehash: 001aa2a813816562cdc5e95a00b858d8958a6756
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52888812"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54157813"
 ---
-# <a name="quickstart-use-the-translator-text-api-to-get-alternate-translations-using-java"></a>快速入门：使用 Java 通过文本翻译 API 获取备用翻译
+# <a name="quickstart-look-up-words-with-bilingual-dictionary-using-java"></a>快速入门：通过 Java 使用双语字典查找字词
 
 本快速入门介绍如何使用 Java 和文本翻译 API 获取术语的备用翻译，以及这些备用翻译的使用示例。
 

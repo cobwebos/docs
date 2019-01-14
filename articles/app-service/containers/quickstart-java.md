@@ -15,12 +15,12 @@ ms.topic: quickstart
 ms.date: 12/10/2018
 ms.author: msangapu
 ms.custom: mvc
-ms.openlocfilehash: 0c72318f6c80563d138d9c885ea5984a22c5c7fa
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.openlocfilehash: fe134591a979569048072877632260ea9728b4fc
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53653894"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54159751"
 ---
 # <a name="quickstart-create-a-java-app-in-app-service-on-linux"></a>快速入门：在 Linux 上的应用服务中创建 Java 应用
 
@@ -108,7 +108,7 @@ mvn package azure-webapp:deploy
 
 ## <a name="next-steps"></a>后续步骤
 
-在本快速入门中，你已使用 Maven 创建了一个 Java 应用，配置了[适用于 Azure Web 应用的 Maven 插件](https://github.com/Microsoft/azure-maven-plugins/tree/develop/azure-webapp-maven-plugin)，然后将 Web 存档打包的 Java 应用部署到了 Linux 上的应用服务。 有关在 Linux 上的应用服务上托管 Java 应用程序的详细信息，请参阅以下教程和操作指南文章。
+在本快速入门中，你已使用 Maven 创建了一个 Java 应用，配置了[适用于 Azure Web 应用的 Maven 插件](https://github.com/Microsoft/azure-maven-plugins/tree/develop/azure-webapp-maven-plugin)，然后将 Web 存档打包的 Java 应用部署到了 Linux 上的应用服务。 有关在 Linux 上的应用服务中托管 Java 应用程序的详细信息，请参阅以下教程和操作指南文章。
 
 - [教程：使用 PostgreSQL 部署 Java 企业应用](tutorial-java-enterprise-postgresql-app.md)
 - [配置 Tomcat 数据源](app-service-linux-java.md#connecting-to-data-sources)

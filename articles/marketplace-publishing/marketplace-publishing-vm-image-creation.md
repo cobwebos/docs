@@ -3,7 +3,7 @@ title: 为 Azure 市场创建虚拟机映像 | Microsoft Docs
 description: 详细说明了如何为 Azure 市场创建虚拟机映像，以供其他人购买。
 services: Azure Marketplace
 documentationcenter: ''
-author: HannibalSII
+author: v-miclar
 manager: hascipio
 editor: ''
 ms.assetid: 5c937b8e-e28d-4007-9fef-624046bca2ae
@@ -14,12 +14,13 @@ ms.tgt_pltfrm: Azure
 ms.workload: na
 ms.date: 01/05/2017
 ms.author: hascipio; v-divte
-ms.openlocfilehash: 0dc33c669a73dd92926eef6a9c4a476160ce60a4
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ROBOTS: NOINDEX
+ms.openlocfilehash: 6737e16efa93370b5b5d2b46026fce3bbc22d38f
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51686358"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54075152"
 ---
 # <a name="guide-to-create-a-virtual-machine-image-for-the-azure-marketplace"></a>为 Azure 市场创建虚拟机映像指南
 本文的**步骤 2** 将引导用户完成虚拟硬盘 (VHD) 的准备工作，并将其部署到 Azure 市场。 VHD 是 SKU 的基础。 此过程各有不同，具体取决于提供的是基于 Linux 还是基于 Windows 的 SKU。 本文对这两种方案都做了介绍。 此过程可与[帐户创建和注册][link-acct-creation] 并行执行。
@@ -30,14 +31,14 @@ ms.locfileid: "51686358"
 产品/服务是其所有 SKU 的“父级”。 用户可以拥有多个产品/服务。 用户决定如何构造套餐。 将产品/服务推送到过渡环境时，它会随其所有的 SKU 一起推送。 请仔细考虑 SKU 标识符，因为它们会显示在 URL 中：
 
 * Azure.com： http://azure.microsoft.com/marketplace/partners/{PartnerNamespace}/{OfferIdentifier}-{SKUidentifier}
-* Azure 预览门户： https://portal.azure.com/#gallery/{PublisherNamespace}.{OfferIdentifier}{SKUIDdentifier}  
+* Azure 门户： https://portal.azure.com/#gallery/{PublisherNamespace}.{OfferIdentifier}{SKUIDdentifier}  
 
 SKU 是 VM 映像的商业名称。 一个 VM 映像包含一个操作系统磁盘以及零个或更多数据磁盘。 它本质上是虚拟机的完整存储配置文件。 每个磁盘都需要一个 VHD。 即使空白数据磁盘也需要创建 VHD。
 
 无论使用何种操作系统，都仅添加 SKU 所需的最少数据磁盘数。 客户无法在部署时删除作为映像一部分的磁盘，但是始终可以在部署过程中或之后添加磁盘（如果需要）。
 
 > [!IMPORTANT]
-> **请勿在新映像版本中更改磁盘计数。** 如果必须在映像中重新配置数据磁盘，请定义新 SKU。 发布不同磁盘计数的新映像版本可能会在通过 ARM 模板和其他方案自动扩展和部署时，中断基于新映像版本的新部署。
+> *请勿在新映像版本中更改磁盘计数。* 如果必须在映像中重新配置数据磁盘，请定义新 SKU。 发布不同磁盘计数的新映像版本可能会在通过 ARM 模板和其他方案自动扩展和部署时，中断基于新映像版本的新部署。
 >
 >
 
@@ -81,13 +82,13 @@ SKU 是 VM 映像的商业名称。 一个 VM 映像包含一个操作系统磁�
 >
 
 ### <a name="32-create-your-windows-based-vm"></a>3.2 创建基于 Windows 的 VM
-在 Microsoft Azure 门户中，只需几个简单步骤便可以基于批准的基本映像创建 VM。 下面是过程概述：
+在 Microsoft Azure 门户中，只需几个简单步骤便可以基于批准的基本映像创建 VM。 下表提供了该过程的概述：
 
 1. 在基本映像页面中，选择“创建虚拟机”可定向到新的 [Microsoft Azure 门户][link-azure-portal]。
 
     ![绘制][img-acom-1]
 2. 通过要使用的 Azure 订阅的 Microsoft 帐户和密码登录该门户。
-3. 按照提示使用选择的基本映像创建 VM。 需要为 VM 提供主机名（计算机名称）、用户名（以管理员身份注册的用户）和密码。
+3. 按照提示使用选择的基本映像创建 VM。 针对 VM 提供主机名（计算机的名称）、用户名（以管理员身份注册的用户）以及密码。
 
     ![绘制][img-portal-vm-create]
 4. 选择要部署的 VM 大小：
@@ -110,7 +111,7 @@ SKU 是 VM 映像的商业名称。 一个 VM 映像包含一个操作系统磁�
 
     a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。    如果计划在本地开发 VHD，位置则无关紧要，因为映像将稍后上传到 Azure。
 
-    b.    如果计划在 Azure 中开发映像，请考虑从开始便使用一个位于美国的 Microsoft Azure 区域。 这会加快 VHD 复制过程，Microsoft 会在提交映像进行认证时代表你执行该过程。
+    b.    如果计划在 Azure 中开发映像，请考虑从开始便使用一个位于美国的 Microsoft Azure 区域。 这项选择操作会加快 Microsoft 代表你在你提交映像以进行认证时执行的 VHD 复制过程。
 
     ![绘制][img-portal-vm-location]
 7. 单击“创建”。 开始部署 VM。 在几分钟内便会部署成功，可以开始为 SKU 创建映像。
@@ -152,7 +153,7 @@ SKU 是 VM 映像的商业名称。 一个 VM 映像包含一个操作系统磁�
 
 **配置 VM 并创建 SKU**
 
-下载了操作系统 VHD 之后，可使用 Hyper-V 并配置 VM 以开始创建 SKU。 可以在以下 TechNet 链接处找到详细步骤：[安装 Hyper-V 和配置 VM](https://technet.microsoft.com/library/hh846766.aspx)。
+在操作系统 VHD 下载之后，请使用 hyperv 并配置 VM 以开始创建 SKU。 详细步骤可在以下 TechNet 链接处找到：[安装 hyperv 并配置 VM](https://technet.microsoft.com/library/hh846766.aspx)。
 
 ### <a name="34-choose-the-correct-vhd-size"></a>3.4 选择正确的 VHD 大小
 VM 映像中的 Windows 操作系统 VHD 应创建为 128 GB 的固定格式的 VHD。  
@@ -168,7 +169,7 @@ VM 映像中的 Windows 操作系统 VHD 应创建为 128 GB 的固定格式的 
 如果需要其他配置，请考虑使用在启动时运行的计划任务，以便在部署 VM 之后对它进行任何最终更改：
 
 * 让任务在成功执行之后删除自己是最佳做法。
-* 不应有任何配置依赖于驱动器 C 或 D 之外的驱动器，因为这两个驱动器是仅有的始终保证存在的驱动器。 驱动器 C 是操作系统磁盘，而驱动器 D 是临时的本地磁盘。
+* 任何配置都不应依赖于驱动器 C 或 D 之外的驱动器，因为这些驱动器是仅有的两个始终保证存在的驱动器。 驱动器 C 是操作系统磁盘，而驱动器 D 是临时的本地磁盘。
 
 ### <a name="37-generalize-the-image"></a>3.7 一般化映像
 Azure 市场中的所有映像必须可采用一般形式重复使用。 换句话说，必须对操作系统 VHD 进行一般化：
@@ -178,10 +179,10 @@ Azure 市场中的所有映像必须可采用一般形式重复使用。 换句�
 
         sysprep.exe /generalize /oobe /shutdown
 
-  以下 MSDN 文章的步骤提供了有关如何对操作系统执行 sysprep 操作的指南：[创建 Windows Server VHD 并上传到 Azure](../virtual-machines/windows/classic/createupload-vhd.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)。
+  以下 MSDN 文章的步骤提供了有关如何对操作系统执行 sysprep 操作的指南：[创建 Windows Server VHD 并将其上传到 Azure](../virtual-machines/windows/classic/createupload-vhd.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)。
 
 ## <a name="4-deploy-a-vm-from-your-vhds"></a>4.从 VHD 部署 VM
-将 VHD（一般化操作系统 VHD 以及零个或更多数据磁盘 VHD）上传到 Azure 存储器帐户之后，可将它们注册为用户 VM 映像。 然后可以测试该映像。 请注意，因为操作系统 VHD 已经一般化，所以无法通过提供 VHD URL 来直接部署 VM。
+将 VHD（一般化操作系统 VHD 以及零个或更多数据磁盘 VHD）上传到 Azure 存储器帐户之后，可将它们注册为用户 VM 映像。 然后可以测试该映像。 由于操作系统 VHD 已通用化，因此无法通过提供 VHD URL 来直接部署 VM。
 
 若要了解关于 VM 映像的详细信息，请查看以下博客文章：
 
@@ -189,20 +190,20 @@ Azure 市场中的所有映像必须可采用一般形式重复使用。 换句�
 * [VM 映像 PowerShell 方法](https://azure.microsoft.com/blog/vm-image-powershell-how-to-blog-post/)
 * [关于 Azure 中的 VM 映像](https://msdn.microsoft.com/library/azure/dn790290.aspx)
 
-### <a name="set-up-the-necessary-tools-powershell-and-azure-classic-cli"></a>设置所需工具、PowerShell 和 Azure 经典 CLI
+### <a name="set-up-the-necessary-tools-powershell-and-azure-classic-cli"></a>设置必需的工具、PowerShell 和 Azure 经典 CLI
 * [如何设置 PowerShell](/powershell/azure/overview)
 * [如何设置 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
 
 ### <a name="41-create-a-user-vm-image"></a>4.1 创建用户 VM 映像
 #### <a name="capture-vm"></a>捕获 VM
-请阅读下面给出的链接，获取有关使用 API/PowerShell/Azure CLI 捕获 VM 的指南。
+请阅读下面提供的链接，以获取有关如何使用 API/PowerShell/Azure CLI 捕获 VM 的指南。
 
 * [API](https://msdn.microsoft.com/library/mt163560.aspx)
 * [PowerShell](../virtual-machines/windows/capture-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 * [Azure CLI](../virtual-machines/linux/capture-image.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
 ### <a name="generalize-image"></a>一般化映像
-请阅读下面给出的链接，获取有关使用 API/PowerShell/Azure CLI 捕获 VM 的指南。
+请阅读下面提供的链接，以获取有关如何使用 API/PowerShell/Azure CLI 捕获 VM 的指南。
 
 * [API](https://msdn.microsoft.com/library/mt269439.aspx)
 * [PowerShell](../virtual-machines/windows/capture-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
@@ -225,7 +226,7 @@ Azure 市场中的所有映像必须可采用一般形式重复使用。 换句�
 
 **从 PowerShell 部署 VM**
 
-要从刚创建的一般化 VM 映像部署大型 VM，可以使用以下 cmdlet。
+若要通过新建的通用化 VM 映像部署大型 VM，可以使用以下 cmdlet。
 
     $img = Get-AzureVMImage -ImageName "myVMImage"
     $user = "user123"
@@ -276,7 +277,7 @@ Azure 市场中的所有映像必须可采用一般形式重复使用。 换句�
 
 ![Windows VM 映像的测试用例][img-cert-vm-test-win]
 
-如果任何测试失败，不会认证映像。 如果发生这种情况，请查看要求并作出任何必要更改。
+如果任何测试失败，不会认证映像。 如果出现这一问题，请查看相关要求并做出任何必要的更改。
 
 自动测试后，将通过调查表屏幕要求用户提供有关 VM 映像的其他输入。  填写这些问题，并选择“下一步”。
 
@@ -289,18 +290,18 @@ Azure 市场中的所有映像必须可采用一般形式重复使用。 换句�
 ![保存认证测试结果][img-cert-vm-results]
 
 ### <a name="52-get-the-shared-access-signature-uri-for-your-vm-images"></a>5.2 为 VM 映像获取共享访问签名 URI
-在发布过程中，指定导向为 SKU 创建的所有 VHD 的统一资源标识符 (URI)。 Microsoft 需要在认证过程中访问这些 VHD。 因此需要为每个 VHD 创建共享访问签名 URI。 这是应在发布门户的“映像”选项卡中输入的 URI。
+在发布过程中，指定导向为 SKU 创建的所有 VHD 的统一资源标识符 (URI)。 Microsoft 需要在认证过程中访问这些 VHD。 因此需要为每个 VHD 创建共享访问签名 URI。 此 URI 应在发布门户的“映像”选项卡中输入。
 
 创建的共享访问签名 URI 应符合以下要求：
 
-注意：以下说明仅适用于非托管磁盘，这是唯一支持的类型。
+以下说明仅适用于非托管磁盘，只有这些类型的磁盘才受支持。
 
 * 为 VHD 生成共享访问签名 URI 时，“列出”和“读取”权限已足够使用。 请不要提供“写入”或“删除”访问权限。
 * 访问的持续时间应至少是三 (3) 周，从创建共享访问签名 URI 时算起。
 * 为了保证 UTC 时间，请选择当前日期的前一天。 例如，如果当前时间是 2014 年 10 月 6 日，则选择 10/5/2014。
 
 可以通过多种方式生成 SAS URL，以便向 Azure 市场共享 VHD。
-以下是 3 个建议的工具：
+下面是 3 种建议的工具：
 
 1.  Azure 存储资源管理器
 2.  Microsoft 存储资源管理器
@@ -323,7 +324,7 @@ Azure 市场中的所有映像必须可采用一般形式重复使用。 换句�
 
     ![绘制](media/marketplace-publishing-vm-image-creation/img5.2_03.png)
 
-5. 指定存储帐户名称、存储帐户密钥和存储终结点域。 这是 Azure 订阅中的存储帐户，通过其将 VHD 保存在 Azure 门户中。
+5. 指定存储帐户名称、存储帐户密钥和存储终结点域。 此存储帐户位于 Azure 订阅中，是你在 Azure 门户中保存 VHD 的位置。
 
     ![绘制](media/marketplace-publishing-vm-image-creation/img5.2_04.png)
 
@@ -347,11 +348,11 @@ Azure 市场中的所有映像必须可采用一般形式重复使用。 换句�
 
     ![绘制](media/marketplace-publishing-vm-image-creation/img5.2_09.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 **允许访问开始日期**：为了保证 UTC 时间，请选择当前日期的前一天。 例如，如果当前时间是 2014 年 10 月 6 日，则选择 10/5/2014。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 **允许访问开始日期：** 为了保证 UTC 时间，请选择当前日期的前一天。 例如，如果当前时间是 2014 年 10 月 6 日，则选择 10/5/2014。
 
-    b. **允许访问结束日期**：选择“允许访问开始日期”后至少 3 周的日期。
+    b. **允许访问结束日期：** 选择“允许访问开始日期”时间后至少 3 周的日期。
 
-    c. **允许的操作**：选择“列出”和“读取”权限。
+    c. **允许的操作：** 选择“列出”和“读取”权限。
 
     d. 如果已正确选择 .vhd 文件，则文件显示在“要访问的 Blob 名称”中，并带有扩展名 .vhd。
 
@@ -360,12 +361,12 @@ Azure 市场中的所有映像必须可采用一般形式重复使用。 换句�
     f. 在“此容器中生成的共享访问签名 URI”中，查看以下在上文中亮显的内容：
 
        - 请确保映像文件名称和“.vhd”均在 URI 中。
-       - 在签名末尾，确保显示“=rl”。 这显示“读取”和“列出”访问权限已成功提供。
-       - 在签名中间，确保显示“sr=c”。 这表示你拥有容器级别访问权限
+       - 在签名末尾，确保显示“=rl”。 该值表明“读取”和“列出”访问权限已成功提供。
+       - 在签名中间，确保显示“sr=c”。 该值表明你拥有容器级别访问权限
 
 11. 若要确保生成的共享访问签名 URI 可运行，请单击“在浏览器中测试”。 这应开始下载过程。
 
-12. 复制共享访问签名 URI。 这是要粘贴到发布门户中的 URI。
+12. 复制共享访问签名 URI。 将此 URI 粘贴到发布门户中。
 
 13. 对 SKU 中的每个 VHD 重复步骤 6-10。
 
@@ -381,7 +382,7 @@ Azure 市场中的所有映像必须可采用一般形式重复使用。 换句�
 
 3.  单击“添加帐户”。
 
-4.  登录到帐户，在订阅中配置 Microsoft Azure 存储资源管理器
+4.  登录到你的帐户，以将 Microsoft Azure 存储资源管理器配置到你的订阅
 
     ![绘制](media/marketplace-publishing-vm-image-creation/img5.2_11.png)
 
@@ -391,15 +392,15 @@ Azure 市场中的所有映像必须可采用一般形式重复使用。 换句�
 
     ![绘制](media/marketplace-publishing-vm-image-creation/img5.2_12.png)
 
-7.  按照以下所示更新“开始时间”、“到期时间”和“权限”
+7.  更新“开始时间”、“到期时间”和“权限”，如下所示
 
     ![绘制](media/marketplace-publishing-vm-image-creation/img5.2_13.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。  **开始时间**：为了保证 UTC 时间，请选择当前日期的前一天。 例如，如果当前时间是 2014 年 10 月 6 日，则选择 10/5/2014。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。  **开始时间：** 为了保证 UTC 时间，请选择当前日期的前一天。 例如，如果当前时间是 2014 年 10 月 6 日，则选择 10/5/2014。
 
-    b.  **到期时间**：选择至少为“开始时间”后 3 周的日期。
+    b.  **到期时间：** 选择“开始时间”日期后至少 3 周的日期。
 
-    c.  **权限**：选择“列出”和“读取”权限
+    c.  **权限：** 选择“列出”和“读取”权限
 
 8.  复制容器共享访问签名 URI
 
@@ -418,12 +419,12 @@ Azure 市场中的所有映像必须可采用一般形式重复使用。 换句�
     TestRGVM201631920152.vhd 为 VHD 名称，则 VHD SAS URL 将为 `https://testrg009.blob.core.windows.net/vhds/TestRGVM201631920152.vhd?st=2016-04-22T23%3A05%3A00Z&se=2016-04-30T23%3A05%3A00Z&sp=rl&sv=2015-04-05&sr=c&sig=J3twCQZv4L4EurvugRW2klE2l2EFB9XyM6K9FkuVB58%3D`
 
     - 请确保映像文件名称和“.vhd”均在 URI 中。
-    - 在签名中间，确保显示“sp=rl”。 这显示“读取”和“列出”访问权限已成功提供。
-    - 在签名中间，确保显示“sr=c”。 这表示你拥有容器级别访问权限
+    - 在签名中间，确保显示“sp=rl”。 该值表明“读取”和“列出”访问权限已成功提供。
+    - 在签名中间，确保显示“sr=c”。 该值表明你拥有容器级别访问权限
 
 9.  若要确保生成的共享访问签名 URI 可正常运行，请在浏览器中测试它。 这应开始下载过程
 
-10. 复制共享访问签名 URI。 这是要粘贴到发布门户中的 URI。
+10. 复制共享访问签名 URI。 将此 URI 粘贴到发布门户中。
 
 11. 对 SKU 中的每个 VHD 重复这些步骤。
 
@@ -435,7 +436,7 @@ Azure 市场中的所有映像必须可采用一般形式重复使用。 换句�
 
 1.  从[此处](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)下载 Microsoft Azure CLI。 还可以找到用于 **[Windows](https://docs.microsoft.com/cli/azure/install-azure-cli-windows?view=azure-cli-latest)** 和 **[MAC OS](https://docs.microsoft.com/cli/azure/install-azure-cli-macos?view=azure-cli-latest)** 的不同链接。
 
-2.  下载后，请安装
+2.  在下载此工具后，请安装它。
 
 3.  使用以下代码创建 Bash 文件（或其他等效脚本可执行文件）并将其保存在本地
 
@@ -447,20 +448,20 @@ Azure 市场中的所有映像必须可采用一般形式重复使用。 换句�
 
     更新上述代码中的以下参数
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 `<Storage Account Name>`：指定存储帐户名称
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 **`<Storage Account Name>`**：提供存储帐户名称
 
-    b. **`<VHD Blob Name>`**：指定 VHD blob 的名称。
+    b. **`<VHD Blob Name>`**：提供 VHD blob 的名称。
 
-    选择开始日期后至少 3 周的日期（默认为生成 sas-token 的时间）。 示例值为：**2018-10-11T23:56Z**。
+    选择开始日期后至少 3 周的日期（默认为生成 SAS 令牌的时间）。 示例值如下：`2018-10-11T23:56Z`。
 
-    下面是更新适当参数后的示例代码     export AZURE_STORAGE_ACCOUNT=vhdstorage1ba78dfb6bc2d8     EXPIRY=$(date -d "3 weeks" '+%Y-%m-%dT%H:%MZ')     CONTAINER_SAS=$(az storage container generate-sas -n vhds --permissions rl --expiry $EXPIRY -otsv)     BLOB_URL=$(az storage blob url -c vhds -n osdisk_1ba78dfb6b.vhd -otsv)     echo $BLOB_URL\?$CONTAINER_SAS
+    下面是更新适当参数后的示例代码     export AZURE_STORAGE_ACCOUNT=vhdstorage1ba78dfb6bc2d8     EXPIRY=$(date -d "three weeks" '+%Y-%m-%dT%H:%MZ')     CONTAINER_SAS=$(az storage container generate-sas -n vhds --permissions rl --expiry $EXPIRY -otsv)     BLOB_URL=$(az storage blob url -c vhds -n osdisk_1ba78dfb6b.vhd -otsv)     echo $BLOB_URL\?$CONTAINER_SAS
 
 4.  运行该脚本，它将提供用于容器级别访问的 SAS URL。
 
 5.  检查 SAS URL。
 
     - 请确保映像文件名称和“.vhd”均在 URI 中。
-    -   在签名中间，确保显示“sp=rl”。 这显示“读取”和“列出”访问权限已成功提供。
+    -   在签名中间，确保显示“sp=rl”。 该值表明“读取”和“列出”访问权限已成功提供。
     -   在签名中间，确保显示“sr=c”。 这表示你拥有容器级别访问权限
 
     示例：
@@ -469,7 +470,7 @@ Azure 市场中的所有映像必须可采用一般形式重复使用。 换句�
 
 8.  若要确保生成的共享访问签名 URI 可正常运行，请在浏览器中测试它。 这应开始下载过程
 
-9.  复制共享访问签名 URI。 这是要粘贴到发布门户中的 URI。
+9.  复制共享访问签名 URI。 将此 URI 粘贴到发布门户中。
 
 10. 对 SKU 中的每个 VHD 重复这些步骤。
 
@@ -483,7 +484,7 @@ Azure 市场中的所有映像必须可采用一般形式重复使用。 换句�
 4. 在“SKU”部分下填写属性。
 5. 在“操作系统系列”下，选择与操作系统 VHD 关联的操作系统类型。
 6. 在“操作系统”框下，描述操作系统。 请考虑诸如操作系统系列、类型、版本和更新这样的格式。 一个示例是“Windows Server Datacenter 2014 R2”。
-7. 选择最多六个建议的虚拟机大小。 在客户决定购买和部署映像时，这些是在 Azure 门户的“定价层”边栏选项卡中向他们显示的建议。 **这些仅仅是建议。客户能够选择可容纳在映像中指定的磁盘的任何 VM 大小。**
+7. 选择最多六个建议的虚拟机大小。 这些是建议的大小，在客户决定购买并部署你的映像时，这些大小会在 Azure 门户的“定价层”边栏选项卡中显示给他们。 **这些仅仅是建议。客户能够选择可容纳在映像中指定的磁盘的任何 VM 大小。**
 8. 输入版本。 版本字段封装标识产品及其更新的语义版本：
    * 版本格式应为 X.Y.Z，X、Y 和 Z 是整数。
    * 不同 SKU 中的映像拥有不同的主版本和次版本。
@@ -507,7 +508,7 @@ Azure 市场中的所有映像必须可采用一般形式重复使用。 换句�
 |复制映像失败 - SAS URL“st”和“se”参数不具有完整的日期时间格式|失败：复制映像。 由于 SAS URL 错误，无法下载 blob |SAS URL 开始日期和结束日期参数（“st”、“se”）需要具有完整的日期时间格式（如 11-02-2017T00:00:00Z），不能仅具有日期或采用时间的缩写形式。 使用 Azure CLI 2.0 或更高版本时很可能会遇到这种情况。 请务必提供完整的日期时间格式并重新生成 SAS URL。|[https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/](https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/)|
 
 ## <a name="next-step"></a>后续步骤
-填写完 SKU 详细信息后，可前进到 [Azure Marketplace 市场营销内容指南][link-pushstaging]。 在发布过程的该步骤中，提供市场营销内容、定价和其他必要信息，并执行**步骤 3：在过渡环境中测试 VM 产品/服务**，具体是先测试各种用例方案，然后将产品/服务部署到 Azure Marketplace，使公众都可以看到和购买。  
+填写完 SKU 详细信息后，可前进到 [Azure Marketplace 市场营销内容指南][link-pushstaging]。 在发布过程的这一步骤中，你需要在执行**步骤 3：在过渡过程中测试 VM 产品/服务**之前，提供营销内容、定价以及其他必要的信息。在步骤 3 中，你需要在该产品/服务部署到 Azure 市场以对公众可见并可供购买之前，对各种用例方案进行测试。  
 
 ## <a name="see-also"></a>另请参阅
 * [入门：如何将产品/服务发布到 Azure 市场](marketplace-publishing-getting-started.md)

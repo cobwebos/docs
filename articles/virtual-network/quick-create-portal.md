@@ -1,14 +1,12 @@
 ---
-title: 创建虚拟网络 - 快速入门 - Azure 门户 | Microsoft Docs
+title: 创建虚拟网络 - 快速入门 - Azure 门户
+titlesuffix: Azure Virtual Network
 description: 本快速入门介绍如何使用 Azure 门户创建虚拟网络。 虚拟网络能让 Azure 资源（例如虚拟机）彼此之间私下通信以及与 Internet 进行通信。
 services: virtual-network
 documentationcenter: virtual-network
 author: jimdial
-manager: jeconnoc
-editor: ''
 tags: azure-resource-manager
 Customer intent: I want to create a virtual network so that virtual machines can communicate with privately with each other and with the internet.
-ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: quickstart
@@ -16,13 +14,12 @@ ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 11/30/2018
 ms.author: jdial
-ms.custom: mvc
-ms.openlocfilehash: d627d54686cb40714e9e8574ceae56a8900cb45e
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 346299dff8354bfca56a1f348c8f66e90da89632
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53269458"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54020823"
 ---
 # <a name="quickstart-create-a-virtual-network-using-the-azure-portal"></a>快速入门：使用 Azure 门户创建虚拟网络
 
@@ -98,7 +95,7 @@ ms.locfileid: "53269458"
 
 1. 选择“下一步:管理”。
 
-1. 在“创建虚拟机 - 管理”中，对于“诊断存储帐户”，选择“新建”。
+1. 在“创建虚拟机 - 管理”中，为“诊断存储帐户”选择“新建”。
 
 1. 在“创建存储帐户”中，输入或选择以下信息：
 
@@ -142,7 +139,7 @@ ms.locfileid: "53269458"
 
 1. 选择“下载 RDP 文件”。 Azure 创建远程桌面协议 (.rdp) 文件，并下载到计算机。
 
-1. 打开下载的 .rdp 文件。
+1. 打开下载的 *.rdp* 文件。
 
     1. 出现提示时，选择“连接”。
 

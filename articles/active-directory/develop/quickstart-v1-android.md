@@ -17,12 +17,12 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: dadobali
 ms.custom: aaddev
-ms.openlocfilehash: 7f7ae858f633a910b796f544ed69a582e749beaf
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: d5d284e8f7756e3e9bff5b08d28a8ed911a60572
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53311059"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54158867"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-android-app"></a>快速入门：从 Android 应用登录用户并调用 Microsoft Graph API
 
@@ -127,7 +127,7 @@ mAuthResult.getAccessToken()
 
 1. 有关库机制以及如何配置新方案和功能的详细信息，请查看 [ADAL Android Wiki](https://github.com/AzureAD/azure-activedirectory-library-for-android/wiki)。
 2. 在本机方案中，应用将使用嵌入式 Web 视图，并且不会退出应用。 `Redirect URI` 可以是任意值。
-3. 发现任何问题或有任何要求？ 可以在 Stackoverflow 上使用标记 `azure-active-directory` 创建问题或发贴。
+3. 发现任何问题或有任何要求？ 可以在 Stack Overflow 上使用标记 `azure-active-directory` 创建问题或发贴。
 
 ### <a name="cross-app-sso"></a>跨应用 SSO
 

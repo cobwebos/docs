@@ -39,7 +39,7 @@ ms.locfileid: "54106760"
   Add-AzureAccount
   ```
 
-2.  选择适当的 Azure 订阅。
+2. 选择适当的 Azure 订阅。
 
   ```powershell
   Select-AzureSubscription "<Enter Subscription Name here>"
@@ -68,7 +68,7 @@ ms.locfileid: "54106760"
   Connect-AzureRmAccount
   ```
 
-2.  选择适当的 Azure 订阅。
+2. 选择适当的 Azure 订阅。
 
   ```powershell
   Get-AzureRmSubscription -SubscriptionName "<Enter Subscription Name here>" | Select-AzureRmSubscription

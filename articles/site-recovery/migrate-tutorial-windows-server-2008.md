@@ -9,12 +9,12 @@ ms.tgt_pltfrm: na
 ms.date: 11/27/2018
 ms.author: bsiva
 ms.custom: MVC
-ms.openlocfilehash: 32b8337121c2552a29f9af35e50f540972a1add7
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 2497793ce5d24ed2516636e76b8b947417dd9f74
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52847637"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54039939"
 ---
 # <a name="migrate-servers-running-windows-server-2008-to-azure"></a>将运行 Windows Server 2008 的服务器迁移到 Azure
 
@@ -89,7 +89,7 @@ ms.locfileid: "52847637"
 ## <a name="create-a-recovery-services-vault"></a>创建恢复服务保管库
 
 1. 登录到 [Azure 门户](https://portal.azure.com) > **恢复服务**。
-2. 单击“创建资源” > “监视和管理” > “备份和站点恢复”。
+2. 单击“创建资源” > “管理工具” > “备份和 Site Recovery”。
 3. 在“名称”中，指定友好名称 **W2K8-migration**。 如果有多个订阅，请选择合适的一个。
 4. 创建资源组 **w2k8migrate**。
 5. 指定 Azure 区域。 若要查看受支持的区域，请参阅 [Azure Site Recovery 定价详细信息](https://azure.microsoft.com/pricing/details/site-recovery/)中的“地域可用性”。
@@ -163,4 +163,4 @@ ms.locfileid: "52847637"
 
 
 > [!WARNING]
-> **请勿取消正在进行的故障转移**：在故障转移开始前，VM 复制已停止。 如果取消正在进行的故障转移，故障转移会停止，但 VM 将不再进行复制。
+> **不会取消正在进行的故障转移**：在故障转移开始前，VM 复制已停止。 如果取消正在进行的故障转移，故障转移会停止，但 VM 将不再进行复制。

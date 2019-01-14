@@ -1,14 +1,12 @@
 ---
-title: 筛选网络流量 - 教程 - Azure 门户 | Microsoft Docs
+title: 筛选网络流量 - 教程 - Azure 门户
+titlesuffix: Azure Virtual Network
 description: 本教程介绍如何在 Azure 门户中使用网络安全组筛选发往子网的网络流量。
 services: virtual-network
 documentationcenter: virtual-network
 author: jimdial
-manager: jeconnoc
-editor: ''
 tags: azure-resource-manager
 Customer intent: I want to filter network traffic to virtual machines that perform similar functions, such as web servers.
-ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: ''
 ms.topic: tutorial
@@ -16,13 +14,12 @@ ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 12/13/2018
 ms.author: jdial
-ms.custom: ''
-ms.openlocfilehash: 68fdb158a7d4c723bffb54f33203120afb72a8ef
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: caf9b91d5b98d028d7c9e971df30ad1f6ec448ad
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53385391"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54019021"
 ---
 # <a name="tutorial-filter-network-traffic-with-a-network-security-group-using-the-azure-portal"></a>教程：使用 Azure 门户通过网络安全组筛选网络流量
 

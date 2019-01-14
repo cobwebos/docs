@@ -5,16 +5,16 @@ services: iot-edge
 author: shizn
 manager: philmea
 ms.author: xshi
-ms.date: 11/25/2018
+ms.date: 01/04/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: f1fdffe7b5cd217c61864328830d1eba2cbdc42b
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 659d960881f143655e98c6f1d38696f44def3ae8
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53340719"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54055092"
 ---
 # <a name="tutorial-develop-a-c-iot-edge-module-and-deploy-to-your-simulated-device"></a>教程：开发 C IoT Edge 模块并将其部署到模拟设备
 
@@ -47,7 +47,7 @@ Azure IoT Edge 设备：
 
 * [Visual Studio Code](https://code.visualstudio.com/)。
 * 用于 Visual Studio Code 的 [C/C++ 扩展](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools)。
-* 适用于 Visual Studio Code 的 [Azure IoT Edge 扩展](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge)。
+* 适用于 Visual Studio Code 的 [Azure IoT 工具](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)。
 * [Docker CE](https://docs.docker.com/install/)。
 
 >[!Note]
@@ -55,7 +55,7 @@ Azure IoT Edge 设备：
 
 ## <a name="create-a-container-registry"></a>创建容器注册表
 
-本教程将使用适用于 Visual Studio Code 的 Azure IoT Edge 扩展来生成模块并从文件创建**容器映像**。 然后将该映像推送到用于存储和管理映像的**注册表**。 最后，从注册表部署在 IoT Edge 设备上运行的映像。
+本教程将使用适用于 Visual Studio Code 的 Azure IoT 工具来生成模块并从文件创建**容器映像**。 然后将该映像推送到用于存储和管理映像的**注册表**。 最后，从注册表部署在 IoT Edge 设备上运行的映像。
 
 可以使用任意兼容 Docker 的注册表来保存容器映像。 两个常见 Docker 注册表服务分别是 [Azure 容器注册表](https://docs.microsoft.com/azure/container-registry/)和 [Docker 中心](https://docs.docker.com/docker-hub/repos/#viewing-repository-tags)。 本教程使用 Azure 容器注册表。
 
@@ -81,7 +81,7 @@ Azure IoT Edge 设备：
 7. 复制“登录服务器”、“用户名”和“密码”的值。 本教程后面会用到这些值来访问容器注册表。
 
 ## <a name="create-an-iot-edge-module-project"></a>创建 IoT Edge 模块项目
-以下步骤介绍如何使用 Visual Studio Code 和 Azure IoT Edge 扩展来创建基于 .NET Core 2.0 的 IoT Edge 模块项目。
+以下步骤介绍如何使用 Visual Studio Code 和 Azure IoT 工具来创建基于 .NET Core 2.0 的 IoT Edge 模块项目。
 
 ### <a name="create-a-new-solution"></a>创建新的解决方案
 
@@ -89,9 +89,9 @@ Azure IoT Edge 设备：
 
 1. 选择“视图” > “命令面板”，打开 VS Code 命令面板。
 
-2. 在命令面板中，键入并运行命令“Azure: Sign in”并按照说明登录 Azure 帐户。 如果已登录，则可跳过此步骤。
+2. 在命令面板中，键入并运行 **Azure:Sign in** 命令并按照说明登录到 Azure 帐户。 如果已登录，则可跳过此步骤。
 
-3. 在命令面板中，键入并运行“Azure IoT Edge: New IoT Edge solution”命令。 按命令面板中的提示创建解决方案。
+3. 在命令面板中，键入并运行 **Azure IoT Edge:New IoT Edge solution** 命令。 按命令面板中的提示创建解决方案。
 
    | 字段 | 值 |
    | ----- | ----- |
@@ -292,9 +292,19 @@ VS Code 窗口将加载你的 IoT Edge 解决方案空间。 解决方案工作�
     }
     ```
 
-11. 保存 **main.c** 文件。
+11. 保存 main.c 文件。
 
-12. 在 VS Code 资源管理器的 IoT Edge 解决方案工作区中打开 **deployment.template.json** 文件。 此文件告知 `$edgeAgent` 部署两个模块：**tempSensor** 和 **CModule**。 在 VS Code 状态栏中将 IoT Edge 的默认平台设置为 **amd64**，这意味着将 **NodeModule** 设置为映像的 Linux amd64 版本。 在状态栏中将默认平台从 **amd64** 更改为 **arm32v7**（如果这就是 IoT Edge 设备的体系结构）。 若要详细了解部署清单，请参阅[了解如何使用、配置和重用 IoT Edge 模块](module-composition.md)。
+12. 在 VS Code 资源管理器的 IoT Edge 解决方案工作区中打开 **deployment.template.json** 文件。 此文件告知 IoT Edge 代理部署哪些模块（在本例中为 **tempSensor** 和 **CModule**），并告知 IoT Edge 中心如何在它们之间路由消息。 Visual Studio Code 扩展会自动填充部署模板中所需的大部分信息，但确保解决方案的所有内容都是准确的： 
+
+   1. 在 VS Code 状态栏中将 IoT Edge 的默认平台设置为 **amd64**，这意味着将 **CModule** 设置为映像的 Linux amd64 版本。 在状态栏中将默认平台从 **amd64** 更改为 **arm32v7** 或 **windows-amd64**（如果这就是 IoT Edge 设备的体系结构）。 
+
+      ![更新模块映像平台](./media/tutorial-c-module/image-platform.png)
+
+   2. 验证该模板具有正确的模块名称，而不是具有在创建 IoT Edge 解决方案时你更改的默认 **SampleModule** 名称。
+
+   3. **registryCredentials** 节会存储 Docker 注册表凭据，以便 IoT Edge 代理可以拉取模块映像。 实际的用户名和密码对存储在 git 忽略的 .env 文件中。 将凭据添加到 .env 文件中（如果尚未这样做）。  
+
+   4. 如果想要了解有关部署清单的更多信息，请参阅[了解如何在 IoT Edge 中部署模块和建立路由](module-composition.md)。
 
 13. 将 CModule 模块孪生添加到部署清单。 在 `moduleContent` 节底部 `$edgeHub` 模块孪生后插入以下 JSON 内容：
 
@@ -335,7 +345,7 @@ VS Code 窗口将加载你的 IoT Edge 解决方案空间。 解决方案工作�
 
 在用于设置 IoT Edge 设备的快速入门文章中，已使用 Azure 门户部署了一个模块。 还可以使用用于 Visual Studio Code 的 Azure IoT 中心工具包扩展（以前称为 Azure IoT 工具包扩展）来部署模块。 你已经为方案准备了部署清单，即 **deployment.json** 文件。 现在需要做的就是选择一个设备来接收部署。
 
-1. 在 VS Code 命令面板中，运行“Azure IoT 中心: 选择 IoT 中心”。
+1. 在 VS Code 命令面板中，运行 **Azure IoT Hub:Select IoT Hub** 命令。
 
 2. 选择包含要配置的 IoT Edge 设备的订阅和 IoT 中心。
 
@@ -363,7 +373,7 @@ VS Code 窗口将加载你的 IoT Edge 解决方案空间。 解决方案工作�
 
 1. 若要监视到达 IoT 中心的数据，请单击“...”，然后选择“开始监视 D2C 消息”。
 2. 若要监视特定设备的 D2C 消息，请右键单击列表中的设备，然后选择“开始监视 D2C 消息”。
-3. 若要停止监视数据，请在命令面板中运行“Azure IoT Hub: Stop monitoring D2C message”命令。
+3. 若要停止监视数据，请在命令面板中运行 **Azure IoT Hub:Stop monitoring D2C message** 命令。
 4. 若要查看或更新模块孪生，请右键单击列表中的模块，然后选择“编辑模块孪生”。 若要更新模块孪生，请保存孪生 JSON 文件，然后右键单击编辑器区域并选择“更新模块孪生”。
 5. 若要查看 Docker 日志，可以安装用于 VS Code 的 [Docker](https://marketplace.visualstudio.com/items?itemName=PeterJausovec.vscode-docker)，然后通过 Docker 资源管理器在本地找到正在运行的模块。 在上下文菜单中单击“显示日志”，在集成终端中进行查看。
 
