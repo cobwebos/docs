@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: af95c2a5182a8adca9aeb40f047c7767413b9b1c
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: dcfbc014eaa191c7992a2da195f9bcd10b44194f
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53973656"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54191473"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-linux-x64-device"></a>快速入门：将第一个 IoT Edge 模块部署到 Linux x64 设备
 
@@ -238,7 +238,9 @@ IoT Edge 设备现在已配置好。 它可以运行云部署型模块了。
 
 ## <a name="view-generated-data"></a>查看生成的数据
 
-此快速入门中，创建了新的 IoT Edge 设备，并在该设备上安装了 IoT Edge 运行时。 然后，使用了 Azure 门户推送 IoT Edge 模块，使其在不更改设备本身的情况下在设备上运行。 这种情况下，推送的模块创建可用于本教程的环境数据。
+此快速入门中，创建了新的 IoT Edge 设备，并在该设备上安装了 IoT Edge 运行时。 然后，使用了 Azure 门户部署 IoT Edge 模块，使其在不更改设备本身的情况下在设备上运行。 
+
+在这种情况下，推送的模块会创建可用于测试的样本数据。 模拟温度传感器模块会生成可用于以后测试的环境数据。 模拟传感器正在监视一台计算机和该计算机周围的环境。 例如，该传感器可能位于服务器机房中、工厂地板上或风力涡轮机上。 该消息包括环境温度和湿度、机器温度和压力以及时间戳。 IoT Edge 教程使用此模块创建的数据作为测试数据进行分析。
 
 再次打开 IoT Edge 设备上的命令提示符。 确认从云中部署的模块正在 IoT Edge 设备上运行：
 
@@ -258,8 +260,6 @@ IoT Edge 设备现在已配置好。 它可以运行云部署型模块了。
    >引用模块名称时，IoT Edge 命令区分大小写。
 
    ![查看模块中的数据](./media/quickstart-linux/iotedge-logs.png)
-
-如果在日志中看到的最后一行是“使用传输 Mqtt_Tcp_Only”，则说明温度传感器模块可能正等待连接到 Edge 中心。 尝试终止该模块，然后让 Edge 代理重启它。 可以使用 `sudo docker stop SimulatedTemperatureSensor` 命令来终止它。
 
 也可以使用 [Visual Studio Code 的 Azure IoT Toolkit 扩展](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit)（以前称为 Azure IoT 工具包扩展）查看到达 IoT 中心的消息。 
 
@@ -285,20 +285,6 @@ IoT Edge 设备现在已配置好。 它可以运行云部署型模块了。
 
    ```bash
    sudo apt-get remove --purge iotedge
-   ```
-
-删除 IoT Edge 运行时以后，已创建的容器会被停止，但仍存在于设备上。 查看所有容器。
-
-   ```bash
-   sudo docker ps -a
-   ```
-
-通过 IoT Edge 运行时删除在设备上创建的容器。 
-
-   ```bash
-   sudo docker rm -f SimulatedTemperatureSensor
-   sudo docker rm -f edgeHub
-   sudo docker rm -f edgeAgent
    ```
 
 删除容器运行时。

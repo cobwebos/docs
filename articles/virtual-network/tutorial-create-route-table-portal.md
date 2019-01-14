@@ -1,5 +1,6 @@
 ---
-title: 路由网络流量 - 教程 - Azure 门户 | Microsoft Docs
+title: 路由网络流量 - 教程 - Azure 门户
+titlesuffix: Azure Virtual Network
 description: 本教程介绍如何使用 Azure 门户通过路由表路由网络流量。
 services: virtual-network
 documentationcenter: virtual-network
@@ -17,12 +18,12 @@ ms.workload: infrastructure
 ms.date: 12/12/2018
 ms.author: jdial
 ms.custom: mvc
-ms.openlocfilehash: fbbc624bbc3d20a70a54c50296f5b74634002a67
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: 3422219e33c04d7cb130e064790896f5da28649a
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53409065"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54025039"
 ---
 # <a name="tutorial-route-network-traffic-with-a-route-table-using-the-azure-portal"></a>教程：使用 Azure 门户通过路由表路由网络流量
 
@@ -94,7 +95,7 @@ ms.locfileid: "53409065"
 
     | 设置 | 值 |
     | ------- | ----- |
-    | 名称 | 输入 *myVirtualNetwork*。 |
+    | 名称 | 输入 myVirtualNetwork。 |
     | 地址空间 | 输入 *10.0.0.0/16*。 |
     | 订阅 | 选择订阅。 |
     | 资源组 | 选择“选择现有项” > “myResourceGroup”。 |
@@ -170,7 +171,7 @@ NVA 是帮助实现网络功能（例如路由和防火墙优化）的 VM。 如
     | **节省资金** |  |
     | 已有 Windows 许可证？ | 保留默认值“否”。 |
 
-1. 选择“下一步:磁盘”。
+1. 选择“下一步:** 磁盘”。
 
 1. 在“创建虚拟机 - 磁盘”中，选择符合需求的设置。
 
