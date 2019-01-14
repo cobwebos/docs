@@ -21,7 +21,7 @@ ms.lasthandoff: 08/17/2018
 ms.locfileid: "42146328"
 ---
 # <a name="copy-data-from-db2-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 DB2 复制数据
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="选择您正在使用的 Data Factory 服务的版本:"]
 > * [第 1 版](v1/data-factory-onprem-db2-connector.md)
 > * [当前版本](connector-db2.md)
 
