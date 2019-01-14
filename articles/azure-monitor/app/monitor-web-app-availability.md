@@ -208,7 +208,7 @@ Web 测试插件提供时间参数化方式。
 ![创建体验](./media/monitor-web-app-availability/appinsights-71webtestUpload.png)
 
 > [!NOTE]
->  使用[新的统一警报](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups)时，必须在警报体验中配置预警规则严重性和**操作组**的通知首选项。 如果不执行以下步骤，则只会收到门户内通知。
+>  使用[新的统一警报](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-unified-alerts)时，必须在警报体验中配置预警规则严重性和[操作组](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups)的通知首选项。 如果不执行以下步骤，则只会收到门户内通知。
 
 1. 保存可用性测试后，在详细信息选项卡上单击你刚才所做的测试旁边的省略号。 单击“编辑警报”。
 ![保存后编辑](./media/monitor-web-app-availability/9editalert.png)
