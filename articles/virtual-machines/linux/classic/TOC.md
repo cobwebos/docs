@@ -1,4 +1,4 @@
-# [概述](../overview.md)
+# 概述
 ## [VM 扩展](agents-and-extensions-classic.md)
 ## [可用性](configure-availability-classic.md)
 ## [常见问题](faq-classic.md)
@@ -49,7 +49,6 @@
 ## [Azure PowerShell](/powershell/azure/overview)
 ## [Azure CLI](/cli/azure/vm)
 ## [Java](/java/api)
-## [创建资源管理器模板](../../../azure-resource-manager/resource-group-authoring-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 ## [社区模板](https://azure.microsoft.com/documentation/templates)
 ## [计算 REST](https://msdn.microsoft.com/library/jj157206.aspx)
 ## [网络 REST](https://msdn.microsoft.com/library/jj157182.aspx)

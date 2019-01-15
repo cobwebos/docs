@@ -233,20 +233,10 @@ items:
       href: luis-how-to-collaborate.md
     - name: 管理创作密钥
       href: luis-how-to-account-settings.md
-    - name: 管理终结点使用情况
-      items:
-      - name: 使用 PowerShell 查看终结点使用情况
-        href: luis-how-to-manage-from-cloud-shell.md
-      - name: 使用流量管理器将终结点配额分布在各个密钥上
-        href: luis-traffic-manager.md
+    - name: 使用流量管理器将终结点配额分布在各个密钥上
+      href: luis-traffic-manager.md
   - name: 迁移到 V2 REST API
     href: luis-migration-api-v1-to-v2.md
-  - name: 以编程方式查找区域
-    items:
-    - name: 使用 REST API 和 C#
-      href: luis-find-region-csharp.md
-    - name: 使用 REST API 和 Node.js
-      href: luis-find-region-nodejs.md
   - name: 使用容器
     items:
     - name: 安装并运行容器
@@ -399,9 +389,9 @@ items:
     href: https://blog.botframework.com/category/luis/
   - name: 知识库
     href: https://cognitive.uservoice.com/knowledgebase/topics/127872-luis-language-understanding-intelligent-service
-ms.openlocfilehash: eee038c67b910c7bf54e6aa361806c1ef04675ae
-ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
+ms.openlocfilehash: 175d21f23f204f564608613fb490af989eeab42d
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/22/2018
-ms.locfileid: "53753227"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54261428"

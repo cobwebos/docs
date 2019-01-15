@@ -1,24 +1,24 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 73b8b8c0224382d0959203a1060868ad91cb4239
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 542bd4f23c32d4d59b11875ef96f8e1f261605ba
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53546158"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54302261"
 documentType: LandingData
 title: Azure 机器学习工作室文档
 metadata:
-  title: Azure 机器学习工作室文档
-  description: 了解如何使用 Azure 机器学习工作室。
+  title: 文档 - Azure 机器学习工作室教程和参考 | Microsoft Docs
+  description: Azure 机器学习工作室是一个协作型拖放式工具，可用于根据数据构建、测试和部署预测分析解决方案。 教程、视频和示例模型演示了如何使用工作室来生成及部署机器学习模型。
   services: machine-learning
-  author: j-martens
   ms.service: machine-learning
   ms.component: studio
+  ms.topic: landing-page
+  author: j-martens
+  ms.author: jmartens
   ms.tgt_pltfrm: na
   ms.devlang: na
-  ms.topic: landing-page
   ms.date: 09/24/2018
-  ms.author: jmartens
 abstract:
   description: Azure 机器学习工作室是一个协作型拖放式工具，可用于根据数据构建、测试和部署预测分析解决方案。 教程、视频和示例模型演示了如何使用工作室来生成及部署机器学习模型。
 sections:

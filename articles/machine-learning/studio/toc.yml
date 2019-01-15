@@ -85,8 +85,6 @@ items:
       href: gallery-collections.md
     - name: 自定义模块
       href: gallery-custom-modules.md
-    - name: 查看和删除帐户数据
-      href: ai-gallery-control-personal-data-dsr.md
 - name: 概念
   items:
   - name: 模型管理
@@ -214,18 +212,20 @@ items:
       href: consume-web-service-with-web-app-template.md
     - name: 使用 Batch 池
       href: dedicated-capacity-for-bes-jobs.md
+  - name: 查看和删除帐户数据
+    href: ai-gallery-control-personal-data-dsr.md
 - name: 引用
   items:
+  - name: 算法和模块参考
+    href: https://msdn.microsoft.com/library/azure/dn905974.aspx
   - name: Azure PowerShell 模块（新版）
     href: https://docs.microsoft.com/powershell/module/azurerm.machinelearning
   - name: Azure PowerShell 模块（经典）
     href: powershell-module.md
-  - name: 算法和模块参考
-    href: https://msdn.microsoft.com/library/azure/dn905974.aspx
-  - name: REST 管理 API
-    href: /rest/api/machinelearning
   - name: Web 服务错误代码
     href: web-service-error-codes.md
+  - name: REST 管理 API
+    href: /rest/api/machinelearning
 - name: 资源
   items:
   - name: 定价
@@ -240,9 +240,9 @@ items:
     href: http://stackoverflow.com/questions/tagged/azure-machine-learning
   - name: R 开发人员指南
     href: ../r-developers-guide.md
-ms.openlocfilehash: 16c610345c063be9149d841c71d27f73e22d143d
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: c7b407e7db087992a2b667162aaf4572d657f380
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53974109"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54303491"

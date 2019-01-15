@@ -6,12 +6,12 @@ description: 了解如何使用 Microsoft Azure 云服务构建和管理功能�
 ms.topic: hub-page
 featureFlags:
 - clicktale
-ms.openlocfilehash: af59a3f4d631992c2319a79f40a721c45535bb91
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: 32500e4c7319411555e028889d6ec94150776250
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53581056"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54306584"
 ---
 <div id="main" class="v2">
     <div class="container">
@@ -211,6 +211,7 @@ Go</a>
                                                 <ul class="noBullet">
                                                     <li><a class="barLink" href="/azure/machine-learning/">机器学习</a></li>
                                                     <li><a class="barLink" href="/azure/cognitive-services/">认知服务</a></li>
+                                                    <li><a class="barLink" href="/azure/notebooks/">Azure Notebook</a></li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -780,6 +781,11 @@ Azure DevOps Projects </a>
                                             </a>
                                         </li>
                                         <li>
+                                            <a href="/azure/notebooks">
+                                                <img src="media/index/notebooks.svg" alt="" />
+                                                <p>Azure Notebook</p>
+                                            </a>
+                                        </li>                                        <li>
                                             <a href="/azure/search/">
                                                 <img src="media/index/Search.svg" alt="" />
                                                 <p>Azure 搜索</p>
@@ -3562,7 +3568,7 @@ Azure DevOps Projects </a>
                         <a href="#ai">AI + 机器学习</a>
                         <ul id="ai" class="cardsA">
                             <li class="fullSpan">
-                                <h2>人工智能</h2>
+                                <h2>人工智能 + 机器学习</h2>
                             </li>
                             <li>
                                 <a href="/azure/azure-databricks/">
@@ -3672,6 +3678,25 @@ Azure DevOps Projects </a>
                                                 <div class="cardText">
                                                     <h3>认知服务</h3>
                                                     <p>向应用、网站和机器人注入智能，以便观察、倾听、说话和理解</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/azure/notebooks/">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage">
+                                                        <img src="media/index/notebooks.svg" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>Azure Notebook</h3>
+                                                    <p>在预配置的云环境中托管和运行 Jupyter 笔记本</p>
                                                 </div>
                                             </div>
                                         </div>
