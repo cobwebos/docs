@@ -20,7 +20,7 @@ ms.lasthandoff: 01/04/2019
 ms.locfileid: "54022273"
 ---
 # <a name="copy-data-from-sap-business-warehouse-using-azure-data-factory"></a>使用 Azure 数据工厂从 SAP Business Warehouse 复制数据
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="选择您正在使用的 Data Factory 服务的版本:"]
 > * [版本 1](v1/data-factory-sap-business-warehouse-connector.md)
 > * [当前版本](connector-sap-business-warehouse.md)
 
