@@ -8,16 +8,15 @@ manager: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/12/2018
+ms.date: 01/09/2019
 ms.author: douglasl
-ms.openlocfilehash: 950336db215bbca76f20c15527397212c6fe5ffd
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: 23114a1d2fff081c802ddedc7bf5430938c45b3b
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53554922"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54191779"
 ---
 # <a name="continuous-integration-and-delivery-cicd-in-azure-data-factory"></a>在 Azure 数据工厂中进行持续集成和交付 (CI/CD)
 
@@ -99,7 +98,7 @@ ms.locfileid: "53554922"
 
 1.  添加 Azure 资源管理器部署任务：
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。  创建新的任务，然后搜索并添加“Azure 资源组部署”。
+    a.  创建新的任务，然后搜索并添加“Azure 资源组部署”。
 
     b.  在部署任务中选择目标数据工厂对应的订阅、资源组和位置，然后根据需要提供凭据。
 
@@ -162,7 +161,7 @@ ms.locfileid: "53554922"
     ![](media/continuous-integration-deployment/continuous-integration-image8.png)
 
 ### <a name="grant-permissions-to-the-azure-pipelines-agent"></a>向 Azure Pipelines 代理授权
-第一次时，Azure Key Vault 任务可能会失败，出现“拒绝访问”错误。 请下载此发布的日志，并使用此命令找到 `.ps1` 文件，以便向 Azure Pipelines 代理授权。 可以直接运行此命令，也可以从文件中复制主体 ID，然后在 Azure 门户中手动添加访问策略。 （“获取”和“列出”是所需的最小权限）。
+最初，Azure Key Vault 任务在执行集成运行时期间可能失败，并出现“拒绝访问”错误。 请下载此发布的日志，并使用此命令找到 `.ps1` 文件，以便向 Azure Pipelines 代理授权。 可以直接运行此命令，也可以从文件中复制主体 ID，然后在 Azure 门户中手动添加访问策略。 （“获取”和“列出”是所需的最小权限）。
 
 ### <a name="update-active-triggers"></a>更新活动触发器
 如果尝试更新活动触发器，部署可能会失败。 若要更新活动触发器，需手动将其停止，在部署后再将其启动。 可以为此添加 Azure Powershell 任务，如以下示例所示：
@@ -184,7 +183,7 @@ ms.locfileid: "53554922"
 可以在部署后按照类似的步骤并使用类似的代码（通过 `Start-AzureRmDataFactoryV2Trigger` 函数）来重启触发器。
 
 > [!IMPORTANT]
-> 在持续集成和部署方案中，不同环境之间的集成运行时类型必须相同。 例如，如果在开发环境中有自承载集成运行时 (IR)，则在测试和生产等其他环境中同一 IR 的类型必须为自承载。 同样，如果跨多个阶段共享集成运行时，则必须在所有环境（如开发、测试和生产）中将 IR 配置为“链接自承载”。
+> 在持续集成和部署方案中，不同环境之间的集成运行时类型必须相同。 例如，如果在开发环境中有自承载集成运行时 (IR)，则在测试和生产等其他环境中同一 IR 的类型必须为自承载。 同样，如果跨多个阶段共享集成运行时，则必须在所有环境（如开发、测试和生产）中将集成运行时配置为“链接自承载”。
 
 ## <a name="sample-deployment-template"></a>示例部署模板
 
@@ -854,7 +853,7 @@ else {
 
 下面是编写自定义参数文件时要使用一些准则。 若要查看此语法的示例，请参阅以下部分：[示例自定义参数文件](#sample)。
 
-1. 在定义文件中指定了数组时，你需要指示模板中的匹配属性是一个数组。 数据工厂使用数组的第一个对象中指定的定义来遍历数组中的所有对象。 第二个对象（一个字符串）成为属性的名称，这用作每次遍历的参数的名称。
+1. 在定义文件中指定了数组时，你需要指示模板中的匹配属性是一个数组。 数据工厂使用数组的集成运行时对象中指定的定义来遍历数组中的所有对象。 第二个对象（一个字符串）成为属性的名称，这用作每次遍历的参数的名称。
 
     ```json
     ...
@@ -989,3 +988,23 @@ else {
 不要忘记在执行部署任务之前和之后在 CI/CD 管道中添加数据工厂脚本。
 
 如果没有配置 Git，则可以通过**导出 ARM 模板**操作访问链接的模板。
+
+## <a name="best-practices-for-cicd"></a>CI/CD 最佳做法
+
+如果你使用数据工厂的 Git 集成，并且某个 CI/CD 管道会将更改从“开发”环境依次转移到“测试”和“生产”环境，则我们建议采用以下最佳做法：
+
+-   **Git 集成**。 只需使用 Git 集成配置开发数据工厂。 对测试和生产做出的更改将通过 CI/CD 部署，不需要采用 Git 集成。
+
+-   **数据工厂 CI/CD 脚本**。 在执行 CI/CD 中的资源管理器部署步骤之前，必须处理好停止触发器、执行不同类型的工厂清理等任务。 我们建议使用[此脚本](#sample-script-to-stop-and-restart-triggers-and-clean-up)，它可以处理所有这些任务。 使用相应的标志，在部署之前和之后各运行该脚本一次。
+
+-   **集成运行时和共享**。 集成运行时是数据工厂中的基础结构组件之一，它们不经常会发生更改，在 CI/CD 的各个阶段都是类似的。 因此，数据工厂预期集成运行时在 CI/CD 的所有阶段具有相同的名称和类型。 若要在所有阶段共享集成运行时 - 例如，自承载集成运行时 - 共享方法之一是将自承载 IR 托管在仅用于包含共享的集成运行时的三元工厂中。 然后，可以在开发/测试/生产环境中将这些集成运行时用作链接的 IR 类型。
+
+-   **Key Vault**。 使用建议的基于 Azure Key Vault 的链接服务时，可以通过为开发/测试/生产环境保留独立的 Key Vault，来进一步发挥 Key Vault 的优势。此外，可为每个 Key Vault 单独配置权限级别。 你可能不希望团队成员有权访问生产机密。 此外，我们建议在所有阶段保留相同的机密名称。 如果保留相同的名称，则无需在 CI/CD 中更改资源管理器模板，因为唯一需要更改的设置是 Key Vault 名称，这是一个资源管理器模板参数。
+
+## <a name="unsupported-features"></a>不支持的功能
+
+-   无法发布单个资源，因为数据工厂实体相互依赖。 例如，触发器依赖于管道，管道依赖于数据集和其他管道，等等。很难跟踪更改依赖项。 即使可以选择手动发布的资源，也可能只能选择整个更改集中的某个子集，导致发布后出现意外的行为。
+
+-   无法从专用分支发布。
+
+-   无法在 Bitbucket 上托管项目。

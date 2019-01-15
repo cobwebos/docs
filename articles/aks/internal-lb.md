@@ -19,7 +19,7 @@ ms.locfileid: "53001232"
 若要限制访问 Azure Kubernetes 服务 (AKS) 中的应用程序，可以创建和使用内部负载均衡器。 内部负载均衡使得仅 Kubernetes 群集所在的同一虚拟网络中运行的应用程序能够访问 Kubernetes 服务。 本文介绍如何通过 Azure Kubernetes 服务 (AKS) 创建和使用内部负载均衡器。
 
 > [!NOTE]
-> Azure 负载均衡器以两种 SKU 提供：“基本”和“标准”。 有关详细信息，请参阅 [Azure 负载均衡器 SKU 比较][azure-lb-comparison]。 AKS 目前支持“基本”SKU。 如果想要使用“标准”SKU，可以使用上游 [][aks-engine]。
+> Azure 负载均衡器以两种 SKU 提供：“基本”和“标准”。 有关详细信息，请参阅 [Azure 负载均衡器 SKU 比较][azure-lb-comparison]。 AKS 目前支持“基本”SKU。 如果想要使用“*标准*”SKU，可以使用上游 [aks-引擎][aks-engine]。
 
 ## <a name="create-an-internal-load-balancer"></a>创建内部负载均衡器
 
