@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 11/07/2018
 ms.author: mabrigg
 ms.reviewer: anajod
-ms.openlocfilehash: 49f1d7e1fac1125984f7376cffdcaf2e60f5611b
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: 984f6713445b53429758d616945a6e64245b42bc
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54247871"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54263214"
 ---
 # <a name="tutorial-deploy-apps-to-azure-and-azure-stack"></a>教程：将应用部署到 Azure 和 Azure Stack
 
@@ -288,7 +288,7 @@ Azure DevOps 服务作为服务终结点配置的一部分，需要**租户 ID**
 | 作用域级别 | 订阅 | 连接的作用域。 |
 | 订阅 ID | 65710926-XXXX-4F2A-8FB2-64C63CD2FAE9 | 从 Azure Stack 用户的订阅 ID |
 | 订阅名称 | name@contoso.com | 从 Azure Stack 用户订阅名称。 |
-| 服务主体客户端 ID | FF74AACF-XXXX-4776-93 FC-C63E6E021D59 | 中的主体 ID[这](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-solution-pipeline#create-a-service-principal)这篇文章中的部分。 |
+| 服务主体客户端 ID | FF74AACF-XXXX-4776-93FC-C63E6E021D59 | 中的主体 ID[这](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-solution-pipeline#create-a-service-principal)这篇文章中的部分。 |
 | 服务主体键 | THESCRETGOESHERE = | 从同一篇文章 （或如果使用脚本的密码） 键。 |
 | 租户 ID | D073C21E-XXXX-4AD0-B77E-8364FCA78A94 | 以下处的指令检索租户 ID[获取租户 ID](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-solution-pipeline#get-the-tenant-id)。  |
 | 连接:  | 未验证 | 验证到服务主体的连接设置。 |
@@ -313,7 +313,7 @@ Azure DevOps 的最新更新，即可创建使用服务主体使用证书进行�
 | 作用域级别 | 订阅 | 连接的作用域。 |
 | 订阅 ID | 65710926-XXXX-4F2A-8FB2-64C63CD2FAE9 | 从 Azure Stack 用户的订阅 ID |
 | 订阅名称 | name@contoso.com | 从 Azure Stack 用户订阅名称。 |
-| 服务主体客户端 ID | FF74AACF-XXXX-4776-93 FC-C63E6E021D59 | 为 AD FS 创建从服务主体的客户端 ID。 |
+| 服务主体客户端 ID | FF74AACF-XXXX-4776-93FC-C63E6E021D59 | 为 AD FS 创建从服务主体的客户端 ID。 |
 | 证书 | `<certificate>` |  将证书文件从 PFX 转换为 PEM。 将证书 PEM 文件内容粘贴到此字段。 <br> 将 PFX 转换为 PEM:<br>`openssl pkcs12 -in file.pfx -out file.pem -nodes -password pass:<password_here>` |
 | 租户 ID | D073C21E-XXXX-4AD0-B77E-8364FCA78A94 | 以下处的指令检索租户 ID[获取租户 ID](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-solution-pipeline#get-the-tenant-id)。 |
 | 连接:  | 未验证 | 验证到服务主体的连接设置。 |

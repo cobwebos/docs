@@ -14,12 +14,12 @@ ms.topic: get-started-article
 ms.date: 09/28/2018
 ms.author: mabrigg
 ms.reviewer: xiaofmao
-ms.openlocfilehash: af7500d6bf12ef34e6919aa255185a87525310b3
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 8eed0b4f2d14d22bdd9eddac9dbb4c0e02404975
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51240709"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54302708"
 ---
 # <a name="manage-storage-accounts-in-azure-stack"></a>管理 Azure Stack 中的存储帐户
 了解如何管理 Azure Stack 中的存储帐户，以根据业务需求查找、恢复和回收存储容量。
@@ -27,19 +27,19 @@ ms.locfileid: "51240709"
 ## <a name="find"></a>查找存储帐户
 可在 Azure Stack 中通过以下方式查看区域中的存储帐户列表：
 
-1. 登录到[管理门户](https://adminportal.local.azurestack.external)。
+1. 登录到[管理员门户](https://adminportal.local.azurestack.external)。
 
-2. 选择**所有服务** > **区域管理**下**管理**。
+2. 在“管理”下选择“所有服务” > “区域管理”。
 
 3. 从“资源提供程序”列表中选择“存储”。
    
    ![存储资源提供程序](media/azure-stack-manage-storage-accounts/image1.png)
 
-5. 选择**存储帐户**中**存储**。
+5. 在“存储”中选择“存储帐户”。
    
    ![](media/azure-stack-manage-storage-accounts/image2.png)
    
-   在边栏选项卡显示在该区域中的存储帐户的列表。
+   此边栏选项卡显示该区域中的存储帐户列表。
    
    ![](media/azure-stack-manage-storage-accounts/image4.png)
 
@@ -75,7 +75,7 @@ ms.locfileid: "51240709"
 
 在 Azure Stack 中，可通过一种简单的方法实现此目的：
 
-1. 浏览到存储帐户列表。 请参阅[查找存储帐户](#find)中此文章了解详细信息。
+1. 浏览到存储帐户列表。 有关详细信息，请参阅本文中的[查找存储帐户](#find)。
 2. 在列表中找到该特定帐户。 可能需要执行筛选。
 3. 检查帐户的状态。 状态应显示为“已删除”。
 4. 选择该帐户，这会打开帐户详细信息窗格。
@@ -96,15 +96,15 @@ ms.locfileid: "51240709"
   超出保留期意味着已删除的帐户超出了保留期，可能无法恢复。
 * 已删除的帐户未显示在帐户列表中。
   
-  删除的帐户已作为垃圾回收后，该帐户可能不会显示在帐户列表中。 在此情况下，无法恢复该帐户。 请参阅[回收容量](#reclaim)这篇文章中。
+  删除的帐户已作为垃圾回收后，该帐户可能不会显示在帐户列表中。 在此情况下，无法恢复该帐户。 请参阅本文中的[回收容量](#reclaim)。
 
 ## <a name="set-the-retention-period"></a>设置保留期
 云操作员可以使用保留期设置来指定时间间隔天数（0 到 9999 天），在此期间，任何已删除的帐户都有可能能够恢复。 默认保留期设置为 0 天。 将值设置为“0”表示任何已删除的帐户会立即超出保留期，并标记为定期进行垃圾回收。
 
 **更改保留期：**
 
-1. 登录到[管理门户](https://adminportal.local.azurestack.external)。
-2. 选择**所有服务** > **区域管理**下**管理**。
+1. 登录到[管理员门户](https://adminportal.local.azurestack.external)。
+2. 在“管理”下选择“所有服务” > “区域管理”。
 3. 从“资源提供程序”列表中选择“存储”。
 4. 选择顶部的“设置”打开设置窗格。
 5. 选择“配置”，然后编辑保留期值。
@@ -148,7 +148,7 @@ ms.locfileid: "51240709"
     Start-AzsReclaimStorageCapacity -FarmName $farm_name
 ````
 
-有关详细信息，请参阅 [Azure Stack PowerShell 文档](https://docs.microsoft.com/powershell/module/azurerm.azurestackstorage)。
+有关详细信息，请参阅[Azure Stack PowerShell 文档](https://docs.microsoft.com/powershell/azure/azure-stack/overview)。
  
 
 ## <a name="next-steps"></a>后续步骤

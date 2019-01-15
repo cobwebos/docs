@@ -15,12 +15,12 @@ ms.topic: get-started-article
 ms.date: 12/04/2018
 ms.author: sethm
 ms.reviewer: unknown
-ms.openlocfilehash: 2cfa789b9817562eba5224257a365f8552cdf833
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: 9ca777275aa4aa09a16c0248f6e3b1ecc76ac5b2
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54245934"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54267328"
 ---
 # <a name="validate-azure-identity"></a>验证 Azure 标识 
 使用 Azure Stack 就绪性检查器工具 (AzsReadinessChecker) 验证 Azure Active Directory (Azure AD) 是否已准备好与 Azure Stack 配合使用。 在开始 Azure Stack 部署之前，请验证 Azure 标识解决方案。  
@@ -48,7 +48,7 @@ ms.locfileid: "54245934"
 **Azure Active Directory 环境：**
  - 标识将用于 Azure Stack 的 Azure AD 帐户并确保它是 Azure Active Directory 全局管理员。
  - 标识 Azure AD 租户名称。 该租户名称必须是你的 Azure Active Directory 的“主”域名。 例如， *contoso.onmicrosoft.com*。 
- - 确定将使用的 AzureEnvironement。 支持的环境名称参数值为 AzureCloud、 AzureChinaCloud 或 AzureUSGovernment 具体取决于正在使用的 Azure 订阅。
+ - 确定将使用的 AzureEnvironment。 支持的环境名称参数值为 AzureCloud、 AzureChinaCloud 或 AzureUSGovernment 具体取决于正在使用的 Azure 订阅。
 
 ## <a name="validate-azure-identity"></a>验证 Azure 标识 
 1. 在满足先决条件的计算机上，打开一个管理 PowerShell 提示符，然后运行以下命令来安装 AzsReadinessChecker：  

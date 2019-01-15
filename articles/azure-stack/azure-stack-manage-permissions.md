@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/10/2018
+ms.date: 1/14/2019
 ms.author: mabrigg
 ms.reviewer: thoroet
-ms.openlocfilehash: ab61e1f892f46ad36df741b7a72afcfcbaa0ed87
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: 26ce7139b856fc2f8d7d2cad549b3dd3c0f5e406
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44376929"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54304675"
 ---
 # <a name="manage-role-based-access-control"></a>管理基于角色的访问控制
 
@@ -27,9 +27,9 @@ ms.locfileid: "44376929"
 
 Azure Stack 中的用户可以是订阅、资源组或服务的每个实例的读者、所有者或参与者。 例如，用户 A 可能对订阅 1 具有读者权限，但对虚拟机 7 则具有所有者权限。
 
- - 读者：用户可查看所有内容，但不能进行任何更改。
- - 参与者：用户可管理除对资源的访问权限以外的所有内容。
- - 所有者：用户可管理所有内容，包括对资源的访问权限。
+ - 读者：用户可以查看所有内容，但不能进行任何更改。
+ - 参与者：用户可以管理所有内容（对资源的访问权限除外）。
+ - 所有者：用户可以管理所有内容，包括对资源的访问权限。
 
 ## <a name="set-access-permissions-for-a-user"></a>设置用户的访问权限
 

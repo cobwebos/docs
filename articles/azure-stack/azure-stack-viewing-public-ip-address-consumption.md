@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 09/10/2018
+ms.date: 1/14/2019
 ms.author: mabrigg
-ms.openlocfilehash: 6207a77555d0d4656c0728dddec769e483f4d762
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: 072702b323a41e4c4c51edc7054ad41591dde4d7
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44378238"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54303525"
 ---
 # <a name="view-public-ip-address-consumption-in-azure-stack"></a>查看 Azure Stack 中的公共 IP 地址使用情况
 
@@ -38,7 +38,7 @@ ms.locfileid: "44378238"
 ## <a name="view-the-public-ip-address-usage-information"></a>查看公共 IP 地址用量信息
 查看区域中已使用的公共 IP 地址总数：
 
-1. 在 Azure Stack 管理员门户中，选择**所有服务**。 然后，在**ADMINISTRATION**类别中，选择**网络**。
+1. 在 Azure Stack 管理员门户中，选择“所有服务”。 然后，在“管理”类别下，选择“网络”。
 1. “网络”窗格会在“概览”部分显示“公共 IP 池用量”磁贴。
 
 ![“网络资源提供程序”窗格](media/azure-stack-viewing-public-ip-address-consumption/image01.png)

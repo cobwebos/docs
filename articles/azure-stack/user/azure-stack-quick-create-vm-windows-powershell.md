@@ -11,15 +11,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 09/10/2018
+ms.date: 1/14/2019
 ms.author: mabrigg
 ms.custom: mvc
-ms.openlocfilehash: 4795de2126a34907ecdec69e87a059dbadd0c3d0
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: cddf301db847a5e62afb4383c4da9b10edbfe82f
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44380380"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54306007"
 ---
 # <a name="quickstart-create-a-windows-server-virtual-machine-by-using-powershell-in-azure-stack"></a>快速入门：在 Azure Stack 中使用 PowerShell 创建 Windows Server 虚拟机
 
@@ -36,11 +36,11 @@ ms.locfileid: "44380380"
 
 ## <a name="prerequisites"></a>必备组件
 
-* 请确保添加了 Azure Stack 操作员**Windows Server 2016**到 Azure Stack marketplace 映像。
+* 确保 Azure Stack 操作员已将“Windows Server 2016”映像添加到 Azure Stack 市场。
 
-* Azure Stack 需要使用特定版本的 Azure PowerShell 来创建和管理资源。 如果没有针对 Azure Stack 配置 PowerShell，请按照步骤[安装](azure-stack-powershell-install.md)PowerShell。
+* Azure Stack 需要使用特定版本的 Azure PowerShell 来创建和管理资源。 如果未针对 Azure Stack 配置 PowerShell，请遵循[安装](azure-stack-powershell-install.md) PowerShell 的步骤。
 
-* 使用 Azure Stack PowerShell 设置，你将需要连接到 Azure Stack 环境。 有关说明，请参阅[连接到 Azure Stack 使用 PowerShell 以用户身份](azure-stack-powershell-configure-user.md)。
+* 设置 Azure Stack PowerShell 后，将需要连接到 Azure Stack 环境。 有关说明，请参阅[以用户身份使用 PowerShell 连接到 Azure Stack](azure-stack-powershell-configure-user.md)。
 
 ## <a name="create-a-resource-group"></a>创建资源组
 

@@ -11,15 +11,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/29/2018
+ms.date: 01/11/2019
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.openlocfilehash: 0cac5658d5f6f32795b5988008b3b895024ecc06
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: e89575323b87ba28ef4f062da098fea4f0e27035
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52960528"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54264048"
 ---
 # <a name="add-kubernetes-to-the-azure-stack-marketplace"></a>将 Kubernetes 添加到 Azure Stack 市场
 
@@ -72,10 +72,10 @@ ms.locfileid: "52960528"
 
 1. 输入 `UbuntuServer` 。
 
-1. 选择最新版本的服务器。 检查的完整版本，并确保有最新版本：
+1. 选择最新版本的服务器。 检查完整版本并确保已安装最新版本：
     - **发布者**：Canonical
-    - **套餐**：UbuntuServer
-    - **版本**: 16.04.201806120
+    - **产品/服务**：UbuntuServer
+    - **版本**：16.04.201806120 （或更高版本）
     - **SKU**：16.04-LTS
 
 1. 选择“下载”。
@@ -93,12 +93,12 @@ ms.locfileid: "52960528"
 1. 输入 `Custom Script for Linux` 。
 
 1. 选择具有以下配置文件的服务器：
-    - **套餐**：适用于 Linux 2.0 的自定义脚本
-    - **版本**：2.0.6
+    - **产品/服务**：适用于 Linux 的自定义脚本 2.0
+    - **版本**：2.0.6 （或更高版本）
     - **发布者**：Microsoft Corp
 
     > [!Note]  
-    > 可能会列出适用于 Linux 的自定义脚本的多个版本。 你需要添加匹配的版本。 Kubernetes 需要该项的确切版本。
+    > 可能会列出适用于 Linux 的自定义脚本的多个版本。 你将需要添加的项的最新版本。
 
 1. 选择“下载”。
 
@@ -149,7 +149,5 @@ ms.locfileid: "52960528"
 ## <a name="next-steps"></a>后续步骤
 
 [将 Kubernetes 部署到 Azure Stack](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-solution-template-kubernetes-deploy)
-
-
 
 [在 Azure Stack 中提供服务概述](azure-stack-offer-services-overview.md)

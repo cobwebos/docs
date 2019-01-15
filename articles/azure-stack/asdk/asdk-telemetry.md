@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/15/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: 0e8138f66c9284531b9610c9bc2996974e2075ad
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 831c233672e162462439056e56a244e6fb8a2f31
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49339503"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54264201"
 ---
 # <a name="azure-stack-telemetry"></a>Azure Stack 遥测
 
@@ -68,7 +68,7 @@ Microsoft 无意收集敏感信息，例如信用卡号、用户名和密码、�
 在开发工具包主机上部署 Azure Stack 之前，请先引导至 CloudBuilder.vhdx，然后在权限提升的 PowerShell 窗口中运行以下脚本：
 
 ```powershell
-### Get current AllowTelmetry value on DVM Host
+### Get current AllowTelemetry value on DVM Host
 (Get-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\DataCollection" `
 -Name AllowTelemetry).AllowTelemetry
 ### Set & Get updated AllowTelemetry value for ASDK-Host
@@ -91,7 +91,7 @@ Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies
   - 存储属性，例如驱动器数目、类型和大小。
 - **遥测功能**，包括已上传事件、已删除事件的百分比，以及上次上传时间。
 - **质量相关的信息**，帮助 Microsoft 初步了解 Azure Stack 的运行情况。 示例是针对特定硬件配置发出的严重警报计数。
-- **兼容性数据**，这有助于提供的了解哪些资源提供程序系统和虚拟机上安装，以及识别潜在的兼容性问题。
+- **兼容性数据**，帮助了解系统和虚拟机上已安装哪些资源提供程序，以及识别潜在的兼容性问题。
 
 **2（增强）**。 其他见解，包括：操作系统和其他 Azure Stack 服务的用法、工作原理、高级可靠性数据，以及来自“基本”和“安全”级别的数据。
 

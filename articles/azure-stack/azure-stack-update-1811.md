@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/12/2019
+ms.date: 01/15/2019
 ms.author: sethm
 ms.reviewer: adepue
-ms.openlocfilehash: 4f5558d17e2f290ed7255350f304ed2057a6d783
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: 2d5c658dabd03eb706c24fbe5e8adb0c46fc65cd
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54247616"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54267311"
 ---
 # <a name="azure-stack-1811-update"></a>Azure Stack 1811 更新
 
@@ -96,7 +96,7 @@ Azure Stack 释放定期修补程序。 请务必安装[最新的 Azure Stack �
 
 - 添加了的对服务主体与 Active Directory 联合身份验证服务 (AD FS) 使用客户端机密。 有关详细信息，请参阅[为 AD FS 创建服务主体](azure-stack-create-service-principals.md#manage-service-principal-for-ad-fs)。
 
-- 此版本添加了对以下 Azure 存储服务 API 版本的支持：**2017-07-29**， **2017年-11-09**。 此外添加了以下 Azure 存储资源提供程序 API 版本的支持：**2016-05-01**， **2016年-12-01**， **2017年-06-01**，并且**2017年-10-01**。 有关详细信息，请参阅 [Azure Stack 存储：差异和注意事项](./user/azure-stack-acs-differences.md)。
+- 此版本添加了对以下 Azure 存储服务 API 版本的支持：**2017-07-29**, **2017-11-09**. 此外添加了以下 Azure 存储资源提供程序 API 版本的支持：**2016-05-01**， **2016年-12-01**， **2017年-06-01**，并且**2017年-10-01**。 有关详细信息，请参阅 [Azure Stack 存储：差异和注意事项](./user/azure-stack-acs-differences.md)。
 
 - 添加了新特权终结点命令更新和删除 ADFS 服务主体。 有关详细信息，请参阅[为 AD FS 创建服务主体](azure-stack-create-service-principals.md#manage-service-principal-for-ad-fs)。
 
@@ -166,25 +166,25 @@ Azure Stack 释放定期修补程序。 请务必安装[最新的 Azure Stack �
 
 此更新安装以下安全更新：  
 
-- [CVE 2018 8256](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2018-8256)
-- [CVE 2018 8407](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2018-8407)
-- [CVE 2018 8408](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2018-8408)
-- [CVE 2018 8415](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2018-8415)
-- [CVE 2018 8417](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2018-8417)
-- [CVE 2018 8450](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2018-8450)
-- [CVE 2018 8471](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2018-8471)
-- [CVE 2018 8476](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2018-8476)
-- [CVE 2018 8485](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2018-8485)
-- [CVE 2018 8544](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2018-8544)
-- [CVE 2018 8547](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2018-8547)
-- [CVE 2018 8549](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2018-8549)
-- [CVE 2018 8550](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2018-8550)
-- [CVE 2018 8553](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2018-8553)
-- [CVE 2018 8561](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2018-8561)
-- [CVE 2018 8562](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2018-8562)
-- [CVE 2018 8565](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2018-8565)
-- [CVE 2018 8566](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2018-8566)
-- [CVE 2018 8584](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2018-8584)
+- [CVE-2018-8256](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2018-8256)
+- [CVE-2018-8407](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2018-8407)
+- [CVE-2018-8408](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2018-8408)
+- [CVE-2018-8415](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2018-8415)
+- [CVE-2018-8417](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2018-8417)
+- [CVE-2018-8450](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2018-8450)
+- [CVE-2018-8471](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2018-8471)
+- [CVE-2018-8476](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2018-8476)
+- [CVE-2018-8485](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2018-8485)
+- [CVE-2018-8544](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2018-8544)
+- [CVE-2018-8547](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2018-8547)
+- [CVE-2018-8549](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2018-8549)
+- [CVE-2018-8550](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2018-8550)
+- [CVE-2018-8553](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2018-8553)
+- [CVE-2018-8561](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2018-8561)
+- [CVE-2018-8562](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2018-8562)
+- [CVE-2018-8565](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2018-8565)
+- [CVE-2018-8566](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2018-8566)
+- [CVE-2018-8584](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2018-8584)
 
 
 有关这些漏洞的详细信息，单击上面的链接，或请参阅 Microsoft 知识库文章[4467684](https://support.microsoft.com/help/4467684)。
@@ -262,6 +262,14 @@ Azure Stack 释放定期修补程序。 请务必安装[最新的 Azure Stack �
    如果 VM 上启用启动诊断，但删除启动诊断存储帐户后，将发生此错误。 若要解决此问题，请重新创建具有您之前从未使用过与同名的存储帐户。
 
 - 创建时[Dv2 系列 VM](./user/azure-stack-vm-considerations.md#virtual-machine-sizes)，D11 14v2 Vm，您可以分别创建 4、 8、 16 和 32 个数据磁盘。 但是，创建 VM 窗格将显示 8、 16、 32 和 64 个数据磁盘。
+
+- Azure Stack 上的使用情况记录可能包含意外的大小写;例如：
+
+   `{"Microsoft.Resources":{"resourceUri":"/subscriptions/<subid>/resourceGroups/ANDREWRG/providers/Microsoft.Compute/
+   virtualMachines/andrewVM0002","location":"twm","tags":"null","additionalInfo":
+   "{\"ServiceType\":\"Standard_DS3_v2\",\"ImageType\":\"Windows_Server\"}"}}`
+
+   在此示例中，资源组的名称应该是**AndrewRG**。 您可以放心地忽略此不一致。
 
 <!-- 3235634 – IS, ASDK -->
 - 若要将 Vm 部署包含的大小**v2**后缀; 例如， **Standard_A2_v2**，指定作为后缀**Standard_A2_v2** (小写 v)。 请勿使用 **Standard_A2_V2**（大写 V）。 这适用于全球 Azure，在 Azure Stack 上有不一致的问题。

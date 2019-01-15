@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 09/24/2018
+ms.date: 01/14/2019
 ms.author: mabrigg
 ms.reviewer: anajod
-ms.openlocfilehash: 85400269be13295161aaff5936a6ae8c7d503b34
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: da6c9fa416d19916243860178d15619306aaf3c0
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54245865"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54305309"
 ---
 # <a name="tutorial-create-a-geo-distributed-app-solution-with-azure-and-azure-stack"></a>教程：使用 Azure 和 Azure Stack 创建异地分布式应用解决方案
 
@@ -41,7 +41,7 @@ ms.locfileid: "54245865"
 
 #### <a name="scalability-considerations"></a>可伸缩性注意事项
 
-在本教程中构建的解决方案无法处理可伸缩性。 但是，如果与其他 Azure 和本地技术以及解决方案结合使用，则可以满足可伸缩性方面的要求。 有关通过流量管理器创建可自动缩放的混合解决方案的信息，请参阅[在 Azure 中创建跨云缩放解决方案](azure-stack-solution-cloud-burst.md)。
+在本教程中构建的解决方案无法处理可伸缩性。 但是，如果与其他 Azure 和本地技术以及解决方案结合使用，则可以满足可伸缩性方面的要求。 有关自动缩放通过流量管理器创建混合解决方案的信息，请参阅[使用 Azure 创建跨云缩放解决方案](azure-stack-solution-cloud-burst.md)。
 
 #### <a name="availability-considerations"></a>可用性注意事项
 
@@ -93,7 +93,7 @@ ms.locfileid: "54245865"
 
 ### <a name="obtain-a-custom-domain-and-configure-dns"></a>获取自定义域并配置 DNS
 
-更新 DNS 区域文件 foCreate web 应用和 publishr 域。 然后，Azure AD 可以验证自定义域名的所有权。 将 [Azure DNS](https://docs.microsoft.com/azure/dns/dns-getstarted-portal) 用于 Azure 中的 Azure/Office 365/外部 DNS 记录，或在[其他 DNS 注册机构](https://support.office.com/article/Create-DNS-records-for-Office-365-when-you-manage-your-DNS-records-b0f3fdca-8a80-4e8e-9ef3-61e8a2a9ab23/)中添加 DNS 条目。
+更新域的 DNS 区域文件。 然后，Azure AD 可以验证自定义域名的所有权。 将 [Azure DNS](https://docs.microsoft.com/azure/dns/dns-getstarted-portal) 用于 Azure 中的 Azure/Office 365/外部 DNS 记录，或在[其他 DNS 注册机构](https://support.office.com/article/Create-DNS-records-for-Office-365-when-you-manage-your-DNS-records-b0f3fdca-8a80-4e8e-9ef3-61e8a2a9ab23/)中添加 DNS 条目。
 
 1. 向公共注册机构注册自定义域。
 
@@ -273,7 +273,7 @@ Azure DevOps 和 Azure DevOps Server 提供高度可配置、可管理的管道�
 
 -   通过添加 Azure AD 提供的 DNS 条目来更新域的 DNS 区域文件。
 
-例如，若要添加 northwindcloud.com 和 www.northwindcloud.com 的 DNS 条目，请配置 northwindcloud.com 根域的 DNS 设置。
+例如，若要添加的 northwindcloud.com 和 www.northwindcloud.com DNS 条目，请配置 northwindcloud.com 根域的 DNS 设置。
 
 > [!Note]  
 >  可使用购买的域名[Azure 门户](https://docs.microsoft.com/azure/app-service/manage-custom-dns-buy-domain)。  
@@ -302,7 +302,7 @@ Azure DevOps 和 Azure DevOps Server 提供高度可配置、可管理的管道�
 
 2.  添加一条 CNAME 记录来将子域映射到应用的默认主机名。
 
-  Www.northwindcloud.comdomain 示例中，将添加 CNAME 记录映射 namewwwto < 应用\_名称 >。 azurewebsites.net。
+  Www.northwindcloud.com 域示例中，将添加 CNAME 记录映射到名称 < 应用\_名称 >。 azurewebsites.net。
 
 添加 CNAME 后，DNS 记录页类似于以下示例：
 

@@ -1,6 +1,6 @@
 ---
 title: 使用 ASDK 验证 Azure Stack 备份 | Microsoft Docs
-description: 如何使用 ASDK 验证 Azure Stack 集成系统备份。
+description: 如何验证使用 ASDK 的 Azure Stack 集成的系统备份。
 services: azure-stack
 author: jeffgilb
 manager: femila
@@ -10,18 +10,18 @@ ms.topic: article
 ms.date: 09/05/2018
 ms.author: jeffgilb
 ms.reviewer: hectorl
-ms.openlocfilehash: 181f37fb72584e18cc963ba1ffde070379a1b0c6
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 12d5c2448bc6a5241f6aa4e283acdf9c5a0f602a
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52961403"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54265645"
 ---
 # <a name="use-the-asdk-to-validate-an-azure-stack-backup"></a>使用 ASDK 验证 Azure Stack 备份
 在部署 Azure Stack 并预配用户资源（例如套餐、计划、配额、订阅）以后，应[启用 Azure Stack 基础结构备份](../azure-stack-backup-enable-backup-console.md)。 计划并运行定期基础结构备份可确保在硬件或服务出现灾难性故障时基础结构管理数据不会丢失。
 
 > [!TIP]
-> 建议在开始此过程之前[运行按需备份](../azure-stack-backup-back-up-azure-stack.md)，确保有最新基础结构数据的副本可用。 确保在备份成功完成以后捕获备份 ID。 在云恢复过程中，将需要此 ID。 
+> 我们建议您[运行按需备份](../azure-stack-backup-back-up-azure-stack.md)之前开始此过程以确保拥有最新可用的基础结构数据的副本。 确保在备份成功完成以后捕获备份 ID。 在云恢复过程中，将需要此 ID。 
 
 Azure Stack 基础结构备份包含有关云的重要数据，这些数据可以在重新部署 Azure Stack 的过程中还原。 可以使用 ASDK 来验证这些备份，不影响生产云。 
 
@@ -49,7 +49,7 @@ Azure Stack 基础结构备份包含有关云的重要数据，这些数据可�
 ### <a name="cloud-recovery-prerequisites"></a>云恢复先决条件
 在开始对 ASDK 进行云恢复部署之前，请确保有以下信息：
 
-|先决条件|说明|
+|先决条件|描述|
 |-----|-----|
 |备份共享路径。|最新 Azure Stack 备份的 UNC 文件共享路径，该备份将用于恢复 Azure Stack 基础结构信息。 此本地共享将在云恢复部署过程中创建。|
 |备份加密密钥。|此加密密钥用于通过 Azure Stack 管理门户计划要运行的基础结构备份。|

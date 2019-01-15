@@ -12,21 +12,21 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 10/09/2018
+ms.date: 01/14/2019
 ms.author: patricka
-ms.reviewer: unknown
-ms.openlocfilehash: 53c739c17007b99d90cd146e6bf01ea4a120cabd
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.reviewer: fiseraci
+ms.openlocfilehash: 4ffbf552b2c35039ceadfdf6940873a22cb194aa
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54245678"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54306533"
 ---
 # <a name="overview-of-identity-for-azure-stack"></a>Azure Stack 的标识概述
 
 Azure Stack 要求使用 Active Directory 所支持的 Azure Active Directory (Azure AD) 或 Active Directory 联合身份验证服务 (AD FS) 作为标识提供者。 提供者的选择是首次部署 Azure Stack 时做出的一次性决定。 本文中的概念和授权详细信息可帮助你选择适当的标识提供者。
 
-选择 Azure AD 还是 AD FS 可能取决于 Azure Stack 的部署模式：
+Azure Stack 部署的模式取决于所选的 Azure AD 或 AD FS:
 
 - 在连接模式下部署时，可以使用 Azure AD 或 AD FS。
 - 在未建立 Internet 连接的离线模式下部署时，仅支持 AD FS。

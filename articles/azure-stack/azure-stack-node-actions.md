@@ -11,15 +11,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: PowerShell
 ms.topic: article
-ms.date: 12/06/2018
+ms.date: 1/14/2019
 ms.author: mabrigg
 ms.reviewer: ppacent
-ms.openlocfilehash: ced6e2edb570e12b17d14e0552030902161b5d53
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 7e01feff1344557c90f23bb006520111f58e437a
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53725246"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54302674"
 ---
 # <a name="scale-unit-node-actions-in-azure-stack"></a>Azure Stack 中的缩放单元节点操作
 
@@ -74,7 +74,7 @@ ms.locfileid: "53725246"
 
 节点的工作状态确定了哪些选项可用。
 
-你将需要安装 Azure Stack PowerShell 模块。 这些 cmdlet 位于**Azs.Fabric.Admin**模块。 若要安装或验证适用于 Azure Stack 的 PowerShell 安装，请参阅[安装适用于 Azure Stack 的 PowerShell](azure-stack-powershell-install.md)。
+需要安装 Azure Stack PowerShell 模块。 这些 cmdlet 位于**Azs.Fabric.Admin**模块。 若要安装或验证适用于 Azure Stack 的 PowerShell 安装，请参阅[安装适用于 Azure Stack 的 PowerShell](azure-stack-powershell-install.md)。
 
 ## <a name="stop"></a>停止
 

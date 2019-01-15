@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 01/09/2019
 ms.author: sethm
 ms.reviewer: sijuman
-ms.openlocfilehash: df3222c361e4a8f6451326d967d574b1eb8eed1b
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: 0e7d624c77447f537e6d47ea19d9054c1117d742
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54157439"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54263641"
 ---
 # <a name="use-api-version-profiles-with-ruby-in-azure-stack"></a>在 Azure Stack 中将 API 版本配置文件与 Ruby 配合使用
 
@@ -90,7 +90,7 @@ gem install 'azure_sdk
 | 客户端 ID | AZURE_CLIENT_ID | 在本文档上一部分创建服务主体时保存的服务主体应用程序 ID。  |
 | 订阅 ID | AZURE_SUBSCRIPTION_ID | [订阅 ID](https://docs.microsoft.com/azure/azure-stack/azure-stack-plan-offer-quota-overview#subscriptions) 用于访问 Azure Stack 中的套餐。 |
 | 客户端机密 | AZURE_CLIENT_SECRET | 创建服务主体时保存的服务主体应用程序机密。 |
-| 资源管理器终结点 | ARM_ENDPOINT | 请参阅 [Azure Stack 资源管理器终结点](#The-azure-stack-resource-manager-endpoint)。  |
+| 资源管理器终结点 | ARM_ENDPOINT | 请参阅[Azure Stack 资源管理器终结点](#The-azure-stack-resource-manager-endpoint)。  |
 
 ### <a name="the-azure-stack-resource-manager-endpoint"></a>Azure Stack 资源管理器终结点
 

@@ -10,15 +10,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/10/2018
+ms.date: 01/14/2019
 ms.author: mabrigg
 ms.reviewer: thoroet
-ms.openlocfilehash: 945c5df9aa76cef6d55b759e3cef7c00bf54e1c4
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: fe516d1d34496d190ae45e00893deb646fc08408
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49078324"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54306550"
 ---
 <!--  cblackuk and charliejllewellyn. This is a community contribution by cblackuk-->
 
@@ -34,7 +34,7 @@ ms.locfileid: "49078324"
 
 查看配合常规 REST 客户端（例如 **cURL**）使用 Azure Stack REST API 的整个过程有助于了解基础请求，该过程还显示了应可以在响应有效负载中收到的内容。
 
-本文不会介绍可用于检索令牌，例如交互式登录或创建专用的应用 Id 的所有选项。 若要获取有关这些主题的信息，请参阅 [Azure REST API 参考](https://docs.microsoft.com/rest/api/)。
+本文并未探索可用于检索令牌的所有选项，例如交互式登录或创建专用应用 ID。 若要获取有关这些主题的信息，请参阅 [Azure REST API 参考](https://docs.microsoft.com/rest/api/)。
 
 ## <a name="get-a-token-from-azure"></a>从 Azure 获取令牌
 
@@ -116,7 +116,7 @@ grant_type=password
   可供特定方案使用的替代选项：
 
   
-  | Application | ApplicationID |
+  | 应用程序 | ApplicationID |
   | --------------------------------------- |:-------------------------------------------------------------:|
   | LegacyPowerShell | 0a7bdc5c-7b57-40be-9939-d4c5fc7cd417 |
   | PowerShell | 1950a258-227b-4e31-a9cf-717495945fc2 |

@@ -11,14 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/9/2018
+ms.date: 01/14/2019
 ms.author: patricka
-ms.openlocfilehash: 8b478c1ba60df679d69d5fced660836c16079e6a
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.reviewer: fiseraci
+ms.openlocfilehash: cd3aa913bd17498ddc58994196bc8faa96c4de51
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53727083"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54306448"
 ---
 # <a name="azure-stack-infrastructure-security-posture"></a>Azure Stack 基础结构安全局势
 
@@ -70,7 +71,7 @@ Azure Stack 中的每个组件（Hyper-V 主机和虚拟机）受到 Windows Def
 在联网场景中，防病毒定义和引擎更新每天应用多次。 在离线场景中，反恶意软件更新作为 Azure Stack 的每月更新的一部分应用。 有关详细信息，请参阅[更新 Azure Stack 上的 Windows Defender Antivirus](azure-stack-security-av.md)。
 
 ## <a name="constrained-administration-model"></a>受约束的管理模型
-Azure Stack 中的管理是使用三个入口点来控制的，其中每个入口点有特定的用途： 
+在 Azure Stack 中的管理控制通过三个入口点，每个都有特定用途： 
 1. [管理员门户](azure-stack-manage-portals.md)针对日常管理操作提供点击式体验。
 2. Azure 资源管理器通过 PowerShell 和 Azure CLI 使用的 REST API 公开管理员门户的所有管理操作。 
 3. 对于特定的低级操作（例如数据中心集成或支持方案），Azure Stack 公开一个称作[特权终结点](azure-stack-privileged-endpoint.md)的 PowerShell 终结点。 此终结点只公开一组已添加到允许列表的 cmdlet，并且经常接受审核。

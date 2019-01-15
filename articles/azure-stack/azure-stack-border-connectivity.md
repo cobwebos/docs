@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 08/30/2018
 ms.author: jeffgilb
 ms.reviewer: wamota
-ms.openlocfilehash: 12219e2df875d317aece73cabebdfb55115f7b41
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 51f9d2dbc8a0aef6dc84e76755a71eeb73149192
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54021078"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54262738"
 ---
 # <a name="border-connectivity"></a>边界连接 
 网络集成规划是成功进行 Azure Stack 集成系统部署、操作和管理的重要先决条件。 边界连接规划首先是要选择是否将动态路由与边界网关协议 (BGP) 配合使用。 这需要分配 16 位的 BGP 自治系统编号（公共或专用），或者使用静态路由（在这种情况下会将静态默认路由分配给边界设备）。
@@ -29,7 +29,7 @@ ms.locfileid: "54021078"
 > 架顶式 (TOR) 交换机需要在物理接口上配置具有点到点 IP（/30 网络）的第 3 层上行链路。 不支持将第 2 层上行链路用于支持 Azure Stack 操作的 TOR 交换机。 
 
 ## <a name="bgp-routing"></a>BGP 路由
-使用 BGP 等动态路由协议可以保证系统始终会注意到网络更改和便于管理。 为了增强安全性，密码可能会设置上 BGP 对等互连 TOR 和边框之间。 
+使用 BGP 等动态路由协议可以保证系统始终会注意到网络更改和便于管理。 为了增强安全性，密码可能设置上 BGP 对等互连之间 TOR 与边界。 
 
 下图中所示的专用 IP 播发 TOR 交换机上的空间会阻止使用前缀列表。 前缀列表拒绝专用网络的播发和作为路由映射 TOR 与边界之间的连接上应用该策略。
 

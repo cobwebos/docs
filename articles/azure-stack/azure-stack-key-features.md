@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/10/2018
+ms.date: 01/14/2019
 ms.author: jeffgilb
 ms.reviewer: unknown
-ms.openlocfilehash: d4c5def3cc61c1920ae99d5aa9f97b46cbda0045
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: 1b533c945fdcfc3d1072a7d8a513126ca3f1f72a
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54244488"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54303578"
 ---
 # <a name="key-features-and-concepts-in-azure-stack"></a>Azure Stack 中的重要功能和概念
 如果不太熟悉 Microsoft Azure Stack，本文的术语和功能说明可能会有所帮助。
@@ -129,23 +129,13 @@ Azure 队列存储用于在应用程序组件之间进行云消息传送。 在�
 KeyVault RP 针对密码和证书等机密提供管理与审核。 例如，在 VM 部署期间，租户可以使用 KeyVault RP 来提供管理员密码或密钥。
 
 ## <a name="high-availability-for-azure-stack"></a>Azure Stack 的高可用性
-*适用于：Azure Stack 1802 或更高版本*
+若要实现高可用性的 Azure 中的多 VM 生产系统，虚拟机都将置于[可用性集](https://docs.microsoft.com/azure/virtual-machines/windows/manage-availability#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy)的分布这些流量跨多个容错域和更新域。 Azure Stack 的较小的规模，可用性组中的容错域被指缩放单位中的单个节点。  
 
-为了在 Azure 中实现多 VM 生产系统的高可用性，可以将 VM 置于横跨多个容错域和更新域的可用性集中。 这样可确保[部署在可用性集中的 VM](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-availability-sets) 在物理上彼此隔离（位于不同的服务器架上），因此可以进行故障还原，如下图所示：
-
-  ![Azure Stack 高可用性](media/azure-stack-key-features/high-availability.png)
-
-### <a name="availability-sets-in-azure-stack"></a>Azure Stack 中的可用性集
 在发生硬件故障时，虽然 Azure Stack 的基础结构已具备故障还原能力，但基础技术（故障转移群集功能）的局限仍会导致受影响物理服务器上的 VM 出现停机。 为了与 Azure 保持一致，Azure Stack 支持的可用性集最多有三个容错域。
 
 - **容错域**。 置于可用性集中的 VM 在物理上是彼此隔离的，换句话说，会尽可能均衡地让其分散到多个容错域（Azure Stack 节点）中。 出现硬件故障时，发生故障的容错域中的 VM 会在其他容错域中重启，但在将其置于容错域中时，会尽可能让其与同一可用性集中的其他 VM 隔离。 当硬件重新联机时，会对 VM 重新进行均衡操作，以维持高可用性。 
  
 - **更新域**。 更新域是另一可以在可用性集中提供高可用性的 Azure 概念。 更新域是可以同时维护的基础硬件逻辑组。 同一个更新域中的 VM 会在计划内维护期间一起重启。 当租户在可用性集内创建 VM 时，Azure 平台会自动将 VM 分布到这些更新域。 在 Azure Stack 中，VM 会先跨群集中的其他联机主机进行实时迁移，然后其基础主机才会进行更新。 由于在主机更新期间不会造成租户停机，因此 Azure Stack 上存在更新域功能只是为了确保与 Azure 实现模板兼容。 
-
-### <a name="upgrade-scenarios"></a>升级方案 
-在 Azure Stack 版本 1802 之前创建的可用性集中的 VM 有一个默认的容错域和升级域数目（分别为 1 和 1）。 对于这些预先存在的可用性集中的 VM，若要实现高可用性，必须先删除现有的 VM，然后使用正确的容错域和更新域计数将其重新部署到新的可用性集中，如[更改 Windows VM 的可用性集](https://docs.microsoft.com/azure/virtual-machines/windows/change-availability-set)中所述。 
-
-对于虚拟机规模集，将会在内部使用默认的容错域和更新域计数（分别为 3 和 5）创建可用性集。 在 1802 更新之前创建的任何虚拟机规模集都会置于具有默认容错域和更新域计数（分别为 1 和 1）的可用性集中。 若要更新这些虚拟机规模集实例，以便让其重新进行分布，请按 1802 更新之前存在的实例数对虚拟机规模集进行横向扩展，然后删除较旧的虚拟机规模集实例。 
 
 ## <a name="role-based-access-control-rbac"></a>基于角色的访问控制 (RBAC)
 可以使用 RBAC 向已获授权的用户、组和服务授予系统访问权限：在订阅、资源组或单个资源的级别为其分配角色即可。 每个角色定义了用户、组或服务对 Microsoft Azure Stack 资源拥有的访问级别。

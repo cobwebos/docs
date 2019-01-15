@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 01/12/2019
 ms.author: sethm
 ms.reviewer: justini
-ms.openlocfilehash: 4cbbc482a05e125f92efd98b0824ec38ae1ddefd
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: d47a90851777b3256474a88e5881afd8f52547f2
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54244690"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54263316"
 ---
 # <a name="azure-stack-1809-update"></a>Azure Stack 1809 更新
 
@@ -79,7 +79,7 @@ Azure Stack 1809 更新内部版本号为 **1.1809.0.90**。
 - 基础结构备份服务已从[公共基础结构网络](https://docs.microsoft.com/azure/azure-stack/azure-stack-network#public-infrastructure-network)转移到[公共 VIP 网络](https://docs.microsoft.com/azure/azure-stack/azure-stack-network#public-vip-network)。 客户需确保该服务有权访问公共 VIP 网络中的备份存储位置。  
 
 > [!IMPORTANT]  
-> 如果防火墙不允许从公共 VIP 网络连接到文件服务器，此项更改会导致基础结构备份因“错误 53: 找不到网络路径”而失败。 这是一项重大更改具有合理的解决方法。 根据客户反馈，Microsoft 将恢复此修补程序中的更改。 请查看[发布更新步骤一节](#post-update-steps)有关 1809年上可用的修补程序详细信息。 发布修补程序后，请确保只在网络策略不允许公共 VIP 网络访问基础结构资源的情况下，才在更新到 1809 之后应用该修补程序。 在 1811 中，此项更改将应用到所有系统。 如果在 1809 中应用该修补程序，则无需采取进一步的措施。  
+> 如果防火墙不允许从公共 VIP 网络连接到文件服务器，此项更改会导致基础结构备份因“错误 53: 找不到网络路径”而失败。 这是一项重大更改具有合理的解决方法。 根据客户反馈，Microsoft 将恢复此修补程序中的更改。 请查看[更新后的步骤部分](#post-update-steps)，以获取有关 1809 可用的修补程序的详细信息。 可用修补程序后，请确保将其应用更新到 1809年，仅当您的网络策略不允许访问基础结构资源的公共 VIP 网络后。 在 1811 中，此项更改将应用到所有系统。 如果在 1809 中应用该修补程序，则无需采取进一步的措施。  
 
 ### <a name="common-vulnerabilities-and-exposures"></a>通用漏洞和披露
 

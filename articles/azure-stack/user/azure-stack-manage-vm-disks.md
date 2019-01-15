@@ -6,21 +6,20 @@ documentationcenter: ''
 author: mattbriggs
 manager: femila
 editor: ''
-ms.assetid: 4e5833cf-4790-4146-82d6-737975fb06ba
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 09/05/2018
+ms.date: 12/03/2018
 ms.author: mabrigg
 ms.reviewer: jiahan
-ms.openlocfilehash: bdf31c72fbcd8941161e6b9df0a490df7f6a16e0
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: 473fb95de5da4a14c81d0fa3a5aafa33302d9ab2
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44026512"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54258673"
 ---
 # <a name="provision-virtual-machine-disk-storage-in-azure-stack"></a>在 Azure Stack 中预配虚拟机磁盘存储
 
@@ -30,11 +29,11 @@ ms.locfileid: "44026512"
 
 ## <a name="overview"></a>概述
 
-从版本 1808年，Azure Stack 支持的操作系统 (OS) 和数据磁盘作为虚拟机上使用托管的磁盘和非托管的磁盘。 之前的版本 1808年，支持仅非托管的磁盘。 
+从版本 1808 开始，Azure Stack 支持在虚拟机上使用托管磁盘和非托管磁盘，作为操作系统 (OS) 磁盘和数据磁盘。 在版本 1808 之前，仅支持非托管磁盘。 
 
-**[托管磁盘](https://docs.microsoft.com/azure/virtual-machines/windows/about-disks-and-vhds#managed-disks)** 通过管理与 VM 磁盘关联的存储帐户来简化 Azure IaaS Vm 的磁盘管理。 只需指定大小所需的磁盘，以及 Azure Stack 创建并管理磁盘。
+**[托管磁盘](https://docs.microsoft.com/azure/virtual-machines/windows/about-disks-and-vhds#managed-disks)** 通过管理与 VM 磁盘关联的存储帐户简化了 Azure IaaS VM 的磁盘管理。 只需指定所需的磁盘大小，Azure Stack 即可为你创建和管理磁盘。
 
-**[非托管磁盘](https://docs.microsoft.com/azure/virtual-machines/windows/about-disks-and-vhds#unmanaged-disks)**，要求您在创建[存储帐户](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account)存储的磁盘。 你创建的磁盘称为 VM 磁盘并且存储在存储帐户中的容器中。
+**[非托管磁盘](https://docs.microsoft.com/azure/virtual-machines/windows/about-disks-and-vhds#unmanaged-disks)**，要求你创建[存储帐户](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account)以存储磁盘。 你创建的磁盘称为 VM 磁盘并且存储在存储帐户中的容器中。
 
  
 
@@ -65,31 +64,31 @@ ms.locfileid: "44026512"
 
 添加的每个非托管磁盘都应当放置在单独的容器中。
 
->[!NOTE]
+>[!NOTE]  
 >由 Azure 创建并管理的磁盘称为[托管磁盘](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview)。
 
 ### <a name="use-the-portal-to-create-and-attach-a-new-data-disk"></a>使用门户创建并附加新的数据磁盘
 
 1.  在门户中，选择“虚拟机”。    
-    ![示例：VM 仪表板](media/azure-stack-manage-vm-disks/vm-dashboard.png)
+    示例：![VM 仪表板](media/azure-stack-manage-vm-disks/vm-dashboard.png)
 
 2.  选择以前预配过的虚拟机。   
     ![示例：在仪表板中选择 VM](media/azure-stack-manage-vm-disks/select-a-vm.png)
 
 3.  对于虚拟机，选择“磁盘” > “附加新磁盘”。       
-    ![示例：将新磁盘附加到 VM](media/azure-stack-manage-vm-disks/Attach-disks.png)    
+    示例：![将新磁盘附加到 VM](media/azure-stack-manage-vm-disks/Attach-disks.png)    
 
 4.  在“附加新磁盘”窗格中，选择“位置”。 默认情况下，“位置”设置为 OS 磁盘所在的容器。      
-    ![示例：设置磁盘位置](media/azure-stack-manage-vm-disks/disk-location.png)
+    示例：![设置磁盘位置](media/azure-stack-manage-vm-disks/disk-location.png)
 
 5.  选择要使用的**存储帐户**。 接下来，选择要在其中放置数据磁盘的**容器**。 可以根据需要在“容器”页中创建新的容器。 然后，可以将新磁盘的位置更改为其自己的容器。 为每个磁盘使用单独的容器时，数据磁盘的位置是分散的，这样可以改进性能。 选择“选择”以保存所做的选择。     
-    ![示例：选择容器](media/azure-stack-manage-vm-disks/select-container.png)
+    示例：![选择容器](media/azure-stack-manage-vm-disks/select-container.png)
 
 6.  在“附加新磁盘”页中，更新磁盘的“名称”、“类型”、“大小”和“主机缓存”设置。 然后选择“确定”以保存 VM 的新磁盘配置。  
-    ![示例：完成磁盘附加操作](media/azure-stack-manage-vm-disks/complete-disk-attach.png)  
+    示例：![完成磁盘附加操作](media/azure-stack-manage-vm-disks/complete-disk-attach.png)  
 
 7.  在 Azure Stack 创建磁盘并将磁盘附加到虚拟机之后，新磁盘列在“数据磁盘”下的虚拟机磁盘设置中。   
-    ![示例：查看磁盘](media/azure-stack-manage-vm-disks/view-data-disk.png)
+    示例：![查看磁盘](media/azure-stack-manage-vm-disks/view-data-disk.png)
 
 
 ### <a name="attach-an-existing-data-disk-to-a-vm"></a>将现有数据磁盘附加到 VM
@@ -100,25 +99,25 @@ ms.locfileid: "44026512"
   ![示例：上传 VHD 文件](media/azure-stack-manage-vm-disks/upload-vhd.png)
 
 2.  上传 .vhd 文件以后，即可将该 VHD 附加到 VM。 在左侧菜单中选择“虚拟机”。  
- ![示例：在仪表板中选择 VM](media/azure-stack-manage-vm-disks/vm-dashboard.png)
+ 示例：![在仪表板中选择 VM](media/azure-stack-manage-vm-disks/vm-dashboard.png)
 
 3.  从列表中选择虚拟机。    
   ![示例：在仪表板中选择 VM](media/azure-stack-manage-vm-disks/select-a-vm.png)
 
 4.  在该虚拟机的页面上，选择“磁盘” > “附加现有磁盘”。   
-  ![示例：附加现有磁盘](media/azure-stack-manage-vm-disks/attach-disks2.png)
+  示例：![附加现有磁盘](media/azure-stack-manage-vm-disks/attach-disks2.png)
 
 5.  在“附加现有磁盘”页面中，选择“VHD 文件”。 此时会打开“存储帐户”页。    
-  ![示例：选择 VHD 文件](media/azure-stack-manage-vm-disks/select-vhd.png)
+  示例：![选择 VHD 文件](media/azure-stack-manage-vm-disks/select-vhd.png)
 
 6.  在“存储帐户”下选择要使用的帐户，然后选择一个容器，用于容纳以前上传的 .vhd 文件。 选择该 .vhd 文件，然后选择“选择”以保存所做的选择。    
-  ![示例：选择容器](media/azure-stack-manage-vm-disks/select-container2.png)
+  示例：![选择容器](media/azure-stack-manage-vm-disks/select-container2.png)
 
 7.  在“附加现有磁盘”下，选择的文件列在“VHD 文件”下。 更新磁盘的“主机缓存”设置，然后选择“确定”以保存 VM 的新磁盘配置。    
-  ![示例：附加 VHD 文件](media/azure-stack-manage-vm-disks/attach-vhd.png)
+  示例：![附加 VHD 文件](media/azure-stack-manage-vm-disks/attach-vhd.png)
 
 8.  在 Azure Stack 创建磁盘并将磁盘附加到虚拟机之后，新磁盘列在“数据磁盘”下的虚拟机磁盘设置中。   
-  ![示例：完成磁盘附加操作](media/azure-stack-manage-vm-disks/complete-disk-attach.png)
+  示例：![完成磁盘附加操作](media/azure-stack-manage-vm-disks/complete-disk-attach.png)
 
 
 ## <a name="use-powershell-to-add-multiple-unmanaged-disks-to-a-vm"></a>使用 PowerShell 将多个非托管磁盘添加到 VM
@@ -130,45 +129,45 @@ ms.locfileid: "44026512"
 以下示例使用 PowerShell 命令来创建具有三个数据磁盘的 VM，每个磁盘放置在不同的容器中。
 
 第一个命令创建虚拟机对象，然后将其存储在 *$VirtualMachine* 变量中。 此命令用于向虚拟机分配名称和大小。
-  ```
+  ```powershell
   $VirtualMachine = New-AzureRmVMConfig -VMName "VirtualMachine" `
                                       -VMSize "Standard_A2"
   ```
 
 后续的三个命令将三个数据磁盘的路径分配给 *$DataDiskVhdUri01*、*$DataDiskVhdUri02* 和 *$DataDiskVhdUri03* 变量。 在 URL 中定义另一路径名称，使磁盘分布到不同的容器。     
-  ```
+  ```powershell
   $DataDiskVhdUri01 = "https://contoso.blob.local.azurestack.external/test1/data1.vhd"
   ```
 
-  ```
+  ```powershell
   $DataDiskVhdUri02 = "https://contoso.blob.local.azurestack.external/test2/data2.vhd"
   ```
 
-  ```
+  ```powershell
   $DataDiskVhdUri03 = "https://contoso.blob.local.azurestack.external/test3/data3.vhd"
   ```
 
 最后三个命令将数据磁盘添加到 *$VirtualMachine* 中存储的虚拟机。 每个命令都会指定磁盘的名称、位置和其他属性。 每个磁盘的 URI 存储在 *$DataDiskVhdUri01*、*$DataDiskVhdUri02* 和 *$DataDiskVhdUri03* 中。
-  ```
+  ```powershell
   $VirtualMachine = Add-AzureRmVMDataDisk -VM $VirtualMachine -Name 'DataDisk1' `
                   -Caching 'ReadOnly' -DiskSizeInGB 10 -Lun 0 `
                   -VhdUri $DataDiskVhdUri01 -CreateOption Empty
   ```
 
-  ```
+  ```powershell
   $VirtualMachine = Add-AzureRmVMDataDisk -VM $VirtualMachine -Name 'DataDisk2' `
                  -Caching 'ReadOnly' -DiskSizeInGB 11 -Lun 1 `
                  -VhdUri $DataDiskVhdUri02 -CreateOption Empty
   ```
 
-  ```
+  ```powershell
   $VirtualMachine = Add-AzureRmVMDataDisk -VM $VirtualMachine -Name 'DataDisk3' `
                   -Caching 'ReadOnly' -DiskSizeInGB 12 -Lun 2 `
                   -VhdUri $DataDiskVhdUri03 -CreateOption Empty
   ```
 
 使用以下 PowerShell 命令将 OS 磁盘和网络配置添加到 VM，然后启动新 VM。
-  ```
+  ```powershell
   #set variables
   $rgName = "myResourceGroup"
   $location = "local"
@@ -193,7 +192,7 @@ ms.locfileid: "44026512"
   $pip = New-AzureRmPublicIpAddress -Name $ipName -ResourceGroupName $rgName -Location $location `
       -AllocationMethod Dynamic
 
-  # Create a network security group cnfiguration
+  # Create a network security group configuration
   $nsgName = "myNsg"
   $rdpRule = New-AzureRmNetworkSecurityRuleConfig -Name myRdpRule -Description "Allow RDP" `
       -Access Allow -Protocol Tcp -Direction Inbound -Priority 110 `
@@ -219,34 +218,34 @@ ms.locfileid: "44026512"
 ### <a name="add-data-disks-to-an-existing-virtual-machine"></a>将数据磁盘添加到现有的虚拟机
 以下示例使用 PowerShell 命令将三个数据磁盘添加到现有的 VM。
 第一个命令通过 **Get-AzureRmVM** cmdlet 获取名为 VirtualMachine 的虚拟机。 该命令在 *$VirtualMachine* 变量中存储虚拟机。
-  ```
+  ```powershell
   $VirtualMachine = Get-AzureRmVM -ResourceGroupName "myResourceGroup" `
                                   -Name "VirtualMachine"
   ```
 后续的三个命令将三个数据磁盘的路径分配给 $DataDiskVhdUri01、$DataDiskVhdUri02 和 $DataDiskVhdUri03 变量。  vhduri 中的不同路径名称表示用于放置磁盘的不同容器。
-  ```
+  ```powershell
   $DataDiskVhdUri01 = "https://contoso.blob.local.azurestack.external/test1/data1.vhd"
   ```
-  ```
+  ```powershell
   $DataDiskVhdUri02 = "https://contoso.blob.local.azurestack.external/test2/data2.vhd"
   ```
-  ```
+  ```powershell
   $DataDiskVhdUri03 = "https://contoso.blob.local.azurestack.external/test3/data3.vhd"
   ```
 
 
   后续三个命令将数据磁盘添加到 *$VirtualMachine* 变量中存储的虚拟机。 每个命令都会指定磁盘的名称、位置和其他属性。 每个磁盘的 URI 存储在 *$DataDiskVhdUri01*、*$DataDiskVhdUri02* 和 *$DataDiskVhdUri03* 中。
-  ```
+  ```powershell
   Add-AzureRmVMDataDisk -VM $VirtualMachine -Name "disk1" `
                         -VhdUri $DataDiskVhdUri01 -LUN 0 `
                         -Caching ReadOnly -DiskSizeinGB 10 -CreateOption Empty
   ```
-  ```
+  ```powershell
   Add-AzureRmVMDataDisk -VM $VirtualMachine -Name "disk2" `
                         -VhdUri $DataDiskVhdUri02 -LUN 1 `
                         -Caching ReadOnly -DiskSizeinGB 11 -CreateOption Empty
   ```
-  ```
+  ```powershell
   Add-AzureRmVMDataDisk -VM $VirtualMachine -Name "disk3" `
                         -VhdUri $DataDiskVhdUri03 -LUN 2 `
                         -Caching ReadOnly -DiskSizeinGB 12 -CreateOption Empty
@@ -254,7 +253,7 @@ ms.locfileid: "44026512"
 
 
   最后一个命令更新虚拟机的状态，该虚拟机存储在 -*ResourceGroupName* 的 *$VirtualMachine* 中。
-  ```
+  ```powershell
   Update-AzureRmVM -ResourceGroupName "myResourceGroup" -VM $VirtualMachine
   ```
 <!-- Pending scripts  
