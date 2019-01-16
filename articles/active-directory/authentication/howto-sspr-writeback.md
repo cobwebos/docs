@@ -10,16 +10,14 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: e8a09a9fc87bff692b5d5b4c54f87839f2591b63
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.openlocfilehash: ce1bcb26b3a3510b22ced57471016999156bb0cf
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50086941"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54040653"
 ---
-# <a name="how-to-configure-password-writeback"></a>操作说明：配置密码写回
-
-使用密码写回时，我们建议使用 [Azure AD Connect](../hybrid/how-to-connect-install-express.md) 的自动更新功能。
+# <a name="how-to-configure-password-writeback"></a>操作说明：配置密码写回服务
 
 若要执行以下步骤，需要已在环境中使用[快速](../hybrid/how-to-connect-install-express.md)或[自定义](../hybrid/how-to-connect-install-custom.md)设置配置了 Azure AD Connect。
 
@@ -27,7 +25,7 @@ ms.locfileid: "50086941"
 2. 在“欢迎”页上，选择“配置”。
 3. 在“其他任务”页上，依次选择“自定义同步选项”和“下一步”。
 4. 在“连接到 Azure AD”页上，输入全局管理员凭据，再选择“下一步”。
-5. 在“连接目录”和“域/OU 筛选”页上，选择“下一步”。
+5. 在“连接目录”和“域/组织单位”筛选页上，选择“下一步”。
 6. 在“可选功能”页上，选中“密码写回”旁边的框，并选择“下一步”。
    ![在 Azure AD Connect 中启用密码写回][Writeback]
 7. 在“已准备好进行配置”页上，选择“配置”，并等待进程完成。
@@ -38,7 +36,25 @@ ms.locfileid: "50086941"
 > [!WARNING]
 > 当 [Azure访问控制服务 (ACS) 于 2018 年 11 月 7 日停用时](../develop/active-directory-acs-migration.md)，密码写回将不再用于使用 Azure AD Connect 版本 1.0.8641.0 及更早版本的客户。 届时，Azure AD Connect 版本 1.0.8641.0 及更早版本将不再允许进行密码写回，因为它们依赖于 ACS 来实现该功能。
 >
-> 要避免服务中断，请从以前版本的 Azure AD Connect 升级到较新版本，请参阅文章 [Azure AD Connect：从先前版本升级到最新版本](../hybrid/how-to-upgrade-previous-version.md)
+> 要避免服务中断，请从以前版本的 Azure AD Connect 升级到更新版本，请参阅文章 [Azure AD Connect：从以前版本升级到最新版本](../hybrid/how-to-upgrade-previous-version.md)
+>
+
+## <a name="licensing-requirements-for-password-writeback"></a>密码写回的许可要求
+
+**通过本地写回实现自助密码重置/更改/解锁是 Azure AD 的一项高级功能**。 有关许可的详细信息，请参阅 [Azure Active Directory 定价站点](https://azure.microsoft.com/pricing/details/active-directory/)。
+
+若要使用密码写回，必须在租户中分配以下许可证之一：
+
+* Azure AD Premium P1
+* Azure AD Premium P2
+* 企业移动性 + 安全性 E3 或 A3
+* 企业移动性 + 安全性 E5 或 A5
+* Microsoft 365 E3 或 A3
+* Microsoft 365 E5 或 A5
+* Microsoft 365 F1
+
+> [!WARNING]
+> 独立 Office 365 许可计划不支持“通过本地写回实现自助密码重置/更改/解锁”，要使此功能正常工作，需要使用上述计划之一。
 >
 
 ## <a name="active-directory-permissions"></a>Active Directory 权限

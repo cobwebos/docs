@@ -9,16 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/04/2018
 ms.author: shlo
-ms.openlocfilehash: b3b26869a84b8519ced19a4c93a6d39d6ed20f9b
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 787c9393e2700bd7ed349b501e70abc4a0687b9c
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37050346"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54021826"
 ---
 # <a name="filter-activity-in-azure-data-factory"></a>Azure 数据工厂中的 Filter 活动
 可以在管道中使用 Filter 活动将筛选器表达式应用到输入数组。 
@@ -47,7 +46,7 @@ items | 应该应用筛选器的输入数组。 | 表达式 | 是
 
 ## <a name="example"></a>示例
 
-在此示例中，管道有两个活动：Filter 和 ForEach。 Filter 活动配置为筛选输入数组中值大于 3 的项。 然后，ForEach 活动会循环访问筛选的值，并等待当前值所指定的秒数。
+在此示例中，管道包含两个活动：**Filter** 和 **ForEach**。 Filter 活动配置为筛选输入数组中值大于 3 的项。 然后，ForEach 活动会循环访问筛选的值，并等待当前值所指定的秒数。
 
 ```json
 {

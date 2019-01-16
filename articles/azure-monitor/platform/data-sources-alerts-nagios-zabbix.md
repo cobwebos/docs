@@ -1,6 +1,6 @@
 ---
-title: 在 Azure Monitor 中收集 Nagios 和 Zabbix 警报 | Microsoft Docs
-description: Nagios 和 Zabbix 是开源监视工具。 可以将来自这些工具的警报收集到 Azure Monitor 中，以便将其与来自其他来源的警报一起进行分析。  本文介绍了如何配置 Log Analytics Linux 代理，以便收集来自这些系统的警报。
+title: 在 Log Analytics 中收集 Nagios 和 Zabbix 警报 | Microsoft Docs
+description: Nagios 和 Zabbix 是开源监视工具。 可以将来自这些工具的警报收集到 Log Analytics 中，以便将其与来自其他来源的警报一起进行分析。  本文介绍了如何配置 Log Analytics Linux 代理，以便收集来自这些系统的警报。
 services: log-analytics
 documentationcenter: ''
 author: mgoedtel
@@ -13,17 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/27/2018
 ms.author: magoedte
-ms.openlocfilehash: cccc42cd925c123b52c0f2416599bb989ce44d8a
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 1ae719237cb1afee6d2340e1734d008799da8a86
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53713491"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54107525"
 ---
 # <a name="collect-alerts-from-nagios-and-zabbix-in-azure-monitor-from-log-analytics-agent-for-linux"></a>通过适用于 Linux 的 Log Analytics 代理将来自 Nagios 和 Zabbix 的警报收集到 Azure Monitor 中 
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]
 
-[Nagios](https://www.nagios.org/) 和 [Zabbix](http://www.zabbix.com/) 是开源监视工具。 可以将来自这些工具的警报收集到 Azure Monitor 中，以便将其与来自其他源的日志数据一起进行分析。  本文介绍了如何配置 Log Analytics Linux 代理，以便收集来自这些系统的警报。
+[Nagios](https://www.nagios.org/) 和 [Zabbix](http://www.zabbix.com/) 是开源监视工具。 可以将来自这些工具的警报收集到 Log Analytics 中，以便将其与来自其他源的日志数据一起进行分析。  本文介绍了如何配置 Log Analytics Linux 代理，以便收集来自这些系统的警报。
+
 
 > [!NOTE]
 > [Azure Monitor 创建的警报](../../monitoring-and-diagnostics/monitoring-overview-alerts.md)与日志数据分开存储，无法通过日志查询进行访问。
@@ -83,7 +84,7 @@ Log Analytics Linux 代理支持从 Nagios（最高版本 4.2.x）和 Zabbix（�
 
 
 ## <a name="alert-records"></a>警报记录
-可以使用 Azure Monitor 中的[日志查询](../log-query/log-query-overview.md)来检索来自 Nagios 和 Zabbix 的警报记录。
+可以使用 Log Analytics 中的[日志查询](../log-query/log-query-overview.md)来检索来自 Nagios 和 Zabbix 的警报记录。
 
 ### <a name="nagios-alert-records"></a>Nagios 警报记录
 

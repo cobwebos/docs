@@ -12,12 +12,12 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
 ms.date: 12/10/2018
-ms.openlocfilehash: 21f6331276155ec926b47a5db8310486835cb3ae
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 0be1ddea4d5eaa253850ae640152b2538b39d0ca
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54001271"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54035417"
 ---
 # <a name="automated-backups"></a>自动备份
 
@@ -42,7 +42,7 @@ SQL 数据库使用 SQL Server 技术创建[完整](https://docs.microsoft.com/s
 
 ## <a name="how-long-are-backups-kept"></a>备份保留多长时间？
 
-每个 SQL 数据库的默认备份保留期为 7 到 35 天，具体取决于[购买模型和服务层](#pitr-retention-period)。 可以在 Azure Logical Server 上更新数据库的备份保持期。 有关详细信息，请参阅[更改备份保持期](#how-to-change-the-pitr-backup-retention-period)。
+每个 SQL 数据库的默认备份保留期为 7 到 35 天，具体取决于购买模型和服务层。 可以在 Azure 逻辑服务器上更新数据库的备份保留期。 有关详细信息，请参阅[更改备份保持期](#how-to-change-the-pitr-backup-retention-period)。
 
 如果删除一个数据库，SQL 数据库将保留其备份，就像保留联机数据库的备份一样。 例如，如果删除保留期为 7 天的基本数据库，已保留 4 天的备份将继续保存 3 天。
 
@@ -109,7 +109,7 @@ Azure SQL 数据库工程团队持续不断地自动测试整个服务中数据�
 
 ### <a name="change-pitr-backup-retention-period-using-the-azure-portal"></a>使用 Azure 门户更改 PITR 备份保持期
 
-若要使用 Azure 门户更改 PITR 备份保留期，请导航到要在门户中更改其保留期的服务器对象，然后根据要修改的服务器对象选择适当的选项。 
+若要使用 Azure 门户更改 PITR 备份保留期，请导航到要在门户中更改其保留期的服务器对象，然后根据要修改的服务器对象选择适当的选项。
 
 #### <a name="change-pitr-for-a-logical-server"></a>更改逻辑服务器的 PITR
 

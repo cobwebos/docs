@@ -9,21 +9,20 @@ ms.assetid: 67543a20-b7d5-4d19-8b5e-af4c1fd7bc75
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/05/2017
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 6b13c70d86af195e50190083aa562811236cdd4b
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 3d0a3014fa224d6b5c85142e492afb0679f9f0b1
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38299854"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54014675"
 ---
 # <a name="move-data-by-using-copy-activity"></a>使用复制活动移动数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [第 1 版](data-factory-data-movement-activities.md)
+> * [版本 1](data-factory-data-movement-activities.md)
 > * [版本 2（当前版本）](../copy-activity-overview.md)
 
 > [!NOTE]
@@ -79,7 +78,7 @@ ms.locfileid: "38299854"
 ### <a name="supported-file-formats"></a>支持的文件格式
 可使用“复制活动”在两个基于文件的数据存储之间“按原样复制文件”，可以同时在输入和输出数据集定义中跳过[格式部分](data-factory-create-datasets.md)。 无需任何序列化/反序列化操作即可有效复制数据。
 
-“复制活动”还以指定格式从文件中读取并写入到文件：**Text、JSON、Avro、ORC 和 Parquet**，并且压缩编解码器**GZip、Deflate、BZip2 和 ZipDeflate** 也受支持。 有关详细信息，请参阅[支持的文件和压缩格式](data-factory-supported-file-and-compression-formats.md)。
+复制活动还可读取和写入特定格式的文件：支持文本、JSON、Avro、ORC 和 Parquet，以及压缩编解码器 GZip、Deflate、BZip2 和 ZipDeflate。 有关详细信息，请参阅[支持的文件和压缩格式](data-factory-supported-file-and-compression-formats.md)。
 
 例如，可执行以下复制活动：
 

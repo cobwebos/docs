@@ -11,13 +11,13 @@ author: rmatchoro
 ms.author: ronmat
 ms.reviewer: vanto, carlrab
 manager: craigg
-ms.date: 10/25/2018
-ms.openlocfilehash: f081ccc1eb6c414d62b1bd0e74b6023bc1f0faba
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.date: 01/03/2019
+ms.openlocfilehash: 587c0718e333f121d0ff8b32d8c2a7dad6b8f774
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53003155"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54037134"
 ---
 # <a name="azure-sql-database-threat-detection"></a>Azure SQL 数据库威胁检测
 
@@ -25,22 +25,25 @@ ms.locfileid: "53003155"
 
 威胁检测包含在 [SQL 高级威胁防护](sql-advanced-threat-protection.md) (ATP) 产品中，该产品是高级 SQL 安全功能统一软件包。 可通过中心 SQL ATP 门户访问和管理威胁检测。
 
-> [!NOTE] 
+> [!NOTE]
 > 本主题适用于 Azure SQL 服务器，同时也适用于在 Azure SQL 服务器中创建的 SQL 数据库和 SQL 数据仓库数据库。 为简单起见，在提到 SQL 数据库和 SQL 数据仓库时，本文统称 SQL 数据库。
 
 威胁检测服务按每个逻辑服务器或托管实例的所有数据集 15 美元/月来计费，前 30 天免费。
 
 ## <a name="what-is-threat-detection"></a>什么是威胁检测？
 
-SQL 威胁检测提供新的安全层，在发生异常活动时会提供安全警报，让客户检测潜在威胁并做出响应。 出现可疑数据库活动、潜在漏洞、SQL 注入攻击和异常数据库访问和查询模式时，用户将收到警报。 SQL 威胁检测将警报与 [Azure 安全中心](https://azure.microsoft.com/services/security-center/)集成，其中包含可疑活动的详细信息以及如何调查和缓解威胁的建议操作。 不必是安全专家，也不需要管理先进的安全监视系统，就能使用 SQL 威胁检测轻松解决数据库的潜在威胁。 
+SQL 威胁检测提供新的安全层，在发生异常活动时会提供安全警报，让客户检测潜在威胁并做出响应。 出现可疑数据库活动、潜在漏洞、SQL 注入攻击和异常数据库访问和查询模式时，用户将收到警报。 SQL 威胁检测将警报与 [Azure 安全中心](https://azure.microsoft.com/services/security-center/)集成，其中包含可疑活动的详细信息以及如何调查和缓解威胁的建议操作。 不必是安全专家，也不需要管理先进的安全监视系统，就能使用 SQL 威胁检测轻松解决数据库的潜在威胁。
 
 为了提供完整的调查体验，建议启用 [SQL 数据库审核](sql-database-auditing.md)，它会将数据库事件写入到 Azure 存储帐户中的审核日志。  
 
-## <a name="azure-sql-database-threat-detection-alerts"></a>Azure SQL 数据库威胁检测警报 
+## <a name="azure-sql-database-threat-detection-alerts"></a>Azure SQL 数据库威胁检测警报
+
 Azure SQL 数据库威胁检测可检测异常活动（指示异常和可能有害的数据库访问或使用企图），并可触发以下警报：
+
 - **存在易受 SQL 注入攻击的漏洞**：当某个应用程序在数据库中生成错误的 SQL 语句时，会触发此警报。 此警报会指示可能存在易受 SQL 注入攻击的漏洞。 生成错误语句的可能原因有两个：
-   - 应用程序代码中的缺陷导致构造出错误的 SQL 语句
-   - 应用程序代码或存储过程在构造错误的 SQL 语句时无法清理用户输入，使该语句被 SQL 注入攻击利用
+
+  - 应用程序代码中的缺陷导致构造出错误的 SQL 语句
+  - 应用程序代码或存储过程在构造错误的 SQL 语句时无法清理用户输入，使该语句被 SQL 注入攻击利用
 - **潜在 SQL 注入**：当 SQL 攻击有效利用已识别到的应用程序漏洞时，会触发此警报。 这意味着，攻击者正在尝试使用有漏洞的应用程序代码或存储过程注入恶意 SQL 语句。
 - **来自异常位置的访问**：当 SQL Server 的访问模式发生更改，有人从异常的地理位置登录到 SQL Server 时，会触发此警报。 在某些情况下，警报会检测合法操作（发布新应用程序或开发人员维护）。 在其他情况下，警报会检测恶意操作（以前的员工、外部攻击者）。
 - **来自异常 Azure 数据中心的访问**：当 SQL Server 的访问模式发生更改，有人从最近在此服务器上出现过的 Azure 数据中心登录到 SQL Server 时，会触发此警报。 在某些情况下，警报会检测合法操作（在 Azure、Power BI 或 Azure SQL 查询编辑器中发布新应用程序）。 在其他情况下，警报会检测通过 Azure 资源/服务执行的恶意操作（以前的员工、外部攻击者）。
@@ -53,7 +56,7 @@ Azure SQL 数据库威胁检测可检测异常活动（指示异常和可能有�
 检测到异常数据库活动时，将收到电子邮件通知。 电子邮件将提供可疑安全事件的相关信息，包括异常活动的性质、数据库名称、服务器名称、应用程序名称和事件时间。 此外，电子邮件还会提供可能原因和建议操作的相关信息，帮助调查和缓解数据库的潜在威胁。
 
 ![异常活动报告](./media/sql-database-threat-detection/anomalous_activity_report.png)
-     
+
 1. 单击电子邮件中“查看最近的 SQL 警报”链接以启动 Azure 门户并显示“Azure 安全中心警报”页，该页面提供在 SQL 数据库上检测到的活动威胁的概述。
 
    ![活动威胁](./media/sql-database-threat-detection/active_threats.png)
@@ -71,14 +74,14 @@ SQL 数据库威胁检测功能将其警报与 [Azure 安全中心](https://azur
 单击“威胁检测警报”以启动“Azure 安全中心警报”页，并获取在数据库或数据仓库中检测到的活动 SQL 威胁的概述。
 
    ![威胁检测警报](./media/sql-database-threat-detection/threat_detection_alert.png)
-   
+
    ![威胁检测警报 2](./media/sql-database-threat-detection/threat_detection_alert_atp.png)
 
 ## <a name="next-steps"></a>后续步骤
 
-* 详细了解[单一数据库中的威胁检测](sql-database-threat-detection.md)。 
-* 详细了解[托管实例中的威胁检测](sql-database-managed-instance-threat-detection.md)。 
-* 详细了解 [SQL 高级威胁防护](sql-advanced-threat-protection.md)。 
-* 了解有关 [Azure SQL 数据库审核](sql-database-auditing.md)的详细信息
-* 了解有关 [Azure 安全中心](https://docs.microsoft.com/azure/security-center/security-center-intro)的详细信息
-* 有关定价的更多详细信息，请参阅 [SQL 数据库定价页](https://azure.microsoft.com/pricing/details/sql-database/)  
+- 详细了解[单一数据库中的威胁检测](sql-database-threat-detection.md)。
+- 详细了解[托管实例中的威胁检测](sql-database-managed-instance-threat-detection.md)。
+- 详细了解 [SQL 高级威胁防护](sql-advanced-threat-protection.md)。
+- 了解有关 [Azure SQL 数据库审核](sql-database-auditing.md)的详细信息
+- 了解有关 [Azure 安全中心](https://docs.microsoft.com/azure/security-center/security-center-intro)的详细信息
+- 有关定价的更多详细信息，请参阅 [SQL 数据库定价页](https://azure.microsoft.com/pricing/details/sql-database/)  

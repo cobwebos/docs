@@ -9,20 +9,19 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 1ded69225319e447ad210aed267741b2803889ac
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: cdd83c3ff9d34a5e8b7f2c164136ab82f498ffb5
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37048070"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54022965"
 ---
 # <a name="copy-data-from-sap-hana-using-azure-data-factory"></a>使用 Azure 数据工厂从 SAP HANA 复制数据
-> [!div class="op_single_selector" title1="选择您正在使用的 Data Factory 服务的版本:"]
-> * [第 1 版](v1/data-factory-sap-hana-connector.md)
+> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> * [版本 1](v1/data-factory-sap-hana-connector.md)
 > * [当前版本](connector-sap-hana.md)
 
 本文概述了如何使用 Azure 数据工厂中的复制活动从 SAP HANA 数据库复制数据。 它是基于概述复制活动总体的[复制活动概述](copy-activity-overview.md)一文。
@@ -61,7 +60,7 @@ SAP HANA 链接的服务支持以下属性：
 |:--- |:--- |:--- |
 | type | type 属性必须设置为：**SapHana** | 是 |
 | server | SAP HANA 实例所驻留的服务器的名称。 如果服务器使用的是自定义端口，则指定 `server:port`。 | 是 |
-| authenticationType | 用于连接 SAP HANA 数据库的身份验证类型。<br/>允许的值为：**Basic** 和 **Windows** | 是 |
+| authenticationType | 用于连接 SAP HANA 数据库的身份验证类型。<br/>允许值包括：**Basic** 和 **Windows** | 是 |
 | userName | 有权访问 SAP 服务器的用户名。 | 是 |
 | password | 用户密码。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 是 |
 | connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 如[先决条件](#prerequisites)中所述，需要自承载集成运行时。 |是 |
@@ -92,7 +91,7 @@ SAP HANA 链接的服务支持以下属性：
 
 ## <a name="dataset-properties"></a>数据集属性
 
-有关可用于定义数据集的各个部分和属性的完整列表，请参阅数据集一文。 本部分提供 SAP HANA 数据集支持的属性列表。
+有关可用于定义数据集的各部分和属性的完整列表，请参阅数据集一文。 本部分提供 SAP HANA 数据集支持的属性列表。
 
 要从 SAP HANA 复制数据，请将数据集的 type 属性设置为“RelationalTable”。 RelationalTable 类型的 SAP HANA 数据集不支持任何类型特定的属性时。
 
@@ -118,11 +117,11 @@ SAP HANA 链接的服务支持以下属性：
 
 ### <a name="sap-hana-as-source"></a>以 SAP HANA 作为源
 
-要从 SAP HANA 复制数据，请将复制活动中的源类型设置为“RelationalSource”。 复制活动**源**部分支持以下属性：
+要从 SAP HANA 复制数据，请将复制活动中的源类型设置为“RelationalSource”。 复制活动源部分支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
-| type | 复制活动源的 type 属性必须设置为：RelationalSource | 是 |
+| type | 复制活动源的 type 属性必须设置为：**RelationalSource** | 是 |
 | query | 指定要从 SAP HANA 实例读取数据的 SQL 查询。 | 是 |
 
 **示例：**

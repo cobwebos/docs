@@ -1,21 +1,19 @@
 ---
 title: Azure Cosmos DB：SQL .NET Core API、SDK 和资源
 description: 了解有关 SQL .NET Core API 和 SDK 的所有信息，包括发布日期、停用日期和 Azure Cosmos DB .NET Core SDK 各版本之间所做的更改。
-services: cosmos-db
-author: rnagpal
+author: SnehaGunda
 ms.service: cosmos-db
-ms.component: cosmosdb-sql
+ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: reference
 ms.date: 03/22/2018
-ms.author: rnagpal
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d947974575cf996ed880f2c1b5f8f7700b81ffd3
-ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
+ms.author: sngun
+ms.openlocfilehash: 5eb04f30fd6766b8df65998b8a4d53797b8341ba
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53413500"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54053545"
 ---
 # <a name="azure-cosmos-db-net-core-sdk-for-sql-api-release-notes-and-resources"></a>适用于 SQL API 的 Azure Cosmos DB .NET Core SDK：发行说明和资源
 > [!div class="op_single_selector"]
@@ -53,14 +51,22 @@ Azure Cosmos DB .NET Core SDK 具有与最新版 [Azure Cosmos DB .NET SDK](sql-
 
 ### <a name="a-name3001-preview3001-preview"></a><a name="3.0.0.1-preview"/>3.0.0.1-preview
 * .NET SDK [版本 3.0.0](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/) 的预览版 1（公共预览版）。
-* 针对 .NET Standard，后者支持 .NET framework 4.6.1+ 和 .NET Core 2.0+
+* 适用于 .NET Standard，.NET Standard 支持 .NET Framework 4.6.1+ 和 .NET Core 2.0+
 * 新对象模型，使用顶级 CosmosClient 和方法拆分成相关的 CosmosDatabases、CosmosContainers 和 CosmosItems 类。
 * 支持流。
-* 从服务器更新了 CosmosResponseMessage 以返回状态代码，并且仅在未返回响应时引发异常。
+* 对来自服务器的 CosmosResponseMessage 进行了更新以返回状态代码，并且仅在未返回响应时引发异常。
+
+### <a name="a-name221221"></a><a name="2.2.1"/>2.2.1
+
+* 对 StoredProcedure 执行调用故障转移期间的重试逻辑进行了改进。
+
+* 将 DocumentClientEventSource 设为单一实例。 
+
+* 修复了 GatewayAddressCache 超时不遵守 ConnectionPolicy RequestTimeout 的问题。
 
 ### <a name="a-name220220"></a><a name="2.2.0"/>2.2.0
 
-* 对于直接/TCP 传输诊断，添加了 TransportException，这是该 SDK 的内部异常类型。 出现在异常消息中时，此类型会输出附加信息，以便排查客户端连接问题。
+* 对于直接/TCP 传输诊断，添加了 TransportException，这是该 SDK 的一个内部异常类型。 出现在异常消息中时，此类型会输出附加信息，以便排查客户端连接问题。
 
 * 添加了新的构造函数重载，它采用 HttpMessageHandler，后者是用于发送 HttpClient 请求的 HTTP 处理程序堆栈（例如，HttpClientHandler）。
 
@@ -227,6 +233,7 @@ Azure Cosmos DB .NET Core 预览版 SDK 与最新版 [Azure Cosmos DB .NET SDK](
 
 | 版本 | 发布日期 | 停用日期 |
 | --- | --- | --- |
+| [2.2.1](#2.2.1) |2018 年 12 月 24 日 |--- |
 | [2.2.0](#2.2.0) |2018 年 12 月 7 日 |--- |
 | [2.1.3](#2.1.3) |2018 年 10 月 15 日 |--- |
 | [2.1.2](#2.1.2) |2018 年 10 月 4 日 |--- |

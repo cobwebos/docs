@@ -10,12 +10,12 @@ ms.component: consume
 ms.date: 04/17/2018
 ms.author: kavithaj
 ms.reviewer: igorstan
-ms.openlocfilehash: 514516dcc28e99d03611c7db6ec09c7b4a48ff0e
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: 0fbb389120857a167867a5804c670e181f5232b6
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43306657"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54051435"
 ---
 # <a name="visualize-data-with-power-bi"></a>使用 Power BI 可视化数据
 本教程说明如何使用 Power BI 连接到 SQL 数据仓库，并创建一些基本的视觉效果。
@@ -77,7 +77,7 @@ ms.locfileid: "43306657"
 
 随时可以通过单击“文件”，并选择“保存”来保存进度。
 
-## <a name="using-direct-connnect"></a>使用直接连接
+## <a name="using-direct-connect"></a>使用直接连接
 在 Azure SQL 数据库中，SQL 数据仓库直接连接可以使用逻辑下推，以及 Power BI 的分析功能。 使用直接连接，可在浏览数据时将查询实时发回 Azure SQL 数据仓库。  此项功能与 SQL 数据仓库的缩放性相结合，用户可在数分钟内针对 TB 量级的数据创建动态报表。 此外，“在 Power BI 中打开”按钮的引入可让用户直接将 Power BI 连接到其 SQL 数据仓库，而无需从其他 Azure 部分收集信息。
 
 使用直接连接时，请注意：

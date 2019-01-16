@@ -1,26 +1,23 @@
 ---
-title: Azure 虚拟网络流量路由 | Microsoft Docs
+title: Azure 虚拟网络流量路由
+titlesuffix: Azure Virtual Network
 description: 了解 Azure 如何路由虚拟网络流量，以及你如何自定义 Azure 的路由。
 services: virtual-network
 documentationcenter: na
 author: jimdial
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: NA
-ms.topic: get-started-article
+ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/26/2017
 ms.author: jdial
-ms.custom: ''
-ms.openlocfilehash: c0b60b523409225e93cd4849b42fb5cfb318bea9
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: b2a262e6829aca75f03db41ff72ab0cc067c93be
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53135723"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54025787"
 ---
 # <a name="virtual-network-traffic-routing"></a>虚拟网络流量路由
 

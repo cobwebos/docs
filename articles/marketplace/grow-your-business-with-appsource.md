@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 06/07/2018
 ms.author: ellacroi
-ms.openlocfilehash: f39392518f89ac51afd9a18fe59bcef46840478d
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 2a4343b036716e6c49f7a05a8a480c6e74463760
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37054167"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54077991"
 ---
 # <a name="grow-your-business-with-appsource"></a>通过 AppSource 发展业务  
 企业客户可以通过 AppSource 查找、试用和获取业务线软件即服务 (SaaS) 应用和实施服务，这一可以推动业务成果，减少创造价值所需的时间。  
@@ -67,7 +67,7 @@ ms.locfileid: "37054167"
 下列清单提供了构建要在 AppSource 上发布的产品/服务时要参考的市场营销最佳做法和资源：  
 *   **请注意《Microsoft 商标和品牌指南》。**  
     命名应用和参考 Microsoft 商标以及 Microsoft 软件、产品和服务的名称时，请遵守《Microsoft 商标和品牌指南》以及相关的产品特定指南。  
-    *   有关 Microsoft 商标和品牌的详细信息，请访问《Microsoft 商标和品牌指南》页：[www.microsoft.com/legal/intellectualproperty/trademarks/usage/general.aspx](https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks/usage/general.aspx)。  
+    *   有关 Microsoft 商标和品牌的详细信息，请访问《Microsoft 商标和品牌指南》页：[www.microsoft.com/legal/intellectualproperty/trademarks/usage/general.aspx](https://www.microsoft.com/legal/intellectualproperty/trademarks/usage/general.aspx)。  
 *   **为应用启用“立即获得”体验、免费试用版产品/服务或体验版体验。**  
     业务用户希望首先体验你的应用。  
 *   **形成强价值主张。**  
@@ -102,20 +102,20 @@ AppSource 中的列表可能是你与潜在客户的第一次互动。 你希望
 
 **产品/服务标识**  
 
-| 产品/服务设置 | 最佳实践 | 
+| 产品/服务设置 | 最佳做法 | 
 |:---------------------------------------- |:----------------------------------------------------- |
-| 名称 | **命名产品/服务**<br />选择应用名称是一项关键决策。 基于优势的名称比描述性名称更为有效。 应用名称应传达客户可收获的核心价值。 此外，在应用标题中包含搜索关键字可帮助应用在搜索引擎结果中获得更高排名。 参考 Microsoft 商标以及 Microsoft 软件、产品和服务的名称时，请遵守《Microsoft 商标和品牌指南》以及相关的产品特定指南。<ul> <li>有关 Microsoft 商标和品牌的详细信息，请访问《Microsoft 商标和品牌指南》页：[www.microsoft.com/legal/intellectualproperty/trademarks/usage/general.aspx](https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks/usage/general.aspx)。</li> </ul> |
+| **名称** | **命名产品/服务**<br />选择应用名称是一项关键决策。 基于优势的名称比描述性名称更为有效。 应用名称应传达客户可收获的核心价值。 此外，在应用标题中包含搜索关键字可帮助应用在搜索引擎结果中获得更高排名。 参考 Microsoft 商标以及 Microsoft 软件、产品和服务的名称时，请遵守《Microsoft 商标和品牌指南》以及相关的产品特定指南。<ul> <li>有关 Microsoft 商标和品牌的详细信息，请访问《Microsoft 商标和品牌指南》页：[www.microsoft.com/legal/intellectualproperty/trademarks/usage/general.aspx](https://www.microsoft.com/legal/intellectualproperty/trademarks/usage/general.aspx)。</li> </ul> |
 
 **店面详细信息 - 产品/服务详细信息**  
 
-| 店面设置 | 最佳实践 | 
+| 店面设置 | 最佳做法 | 
 |:---------------------------------------- |:----------------------------------------------------- |
 | **产品/服务名称** | 产品/服务摘要显示在 AppSource 主页和应用库上的产品/服务搜索页上。 在产品/服务摘要中包含搜索关键字，帮助提升应用在搜索引擎结果中的排名。 |
 | **产品/服务描述** | **提供良好的产品/服务说明**<br />在前几句描述中清晰描述产品/服务的价值主张。 请牢记，前几句话可能在搜索引擎结果中显示。<br />不要依赖于特性和功能来销售产品。 而应该强调提供的价值。 尽可能多使用行业特定用语或基于优势的措辞。<br />核心价值主张应包含以下相关信息：<ul> <li>产品简介</li>  <li>产品的最大受益者</li> <li>产品可解决哪些需求或难题。</li> </ul>告知客户，使用你的解决方案后其业务或工作生活会有何不同。<br />在产品/服务描述中包含搜索关键字和关键字变体，帮助提升产品/服务在搜索引擎结果中的排名。<br />使用简单的 HTML 提供产品/服务描述。<br />下面是简单的产品/服务列表页的示例（如上面的列表示例所示），其中先后提供了产品/服务摘要和关键功能列表。 最大字符数为 3,000。<br />*示例 HTML*<br />Dynamics 365（联机）组织见解可为 Dynamics 365 组织提供重要的采用和使用情况指标，还能提供用于提前发现性能和支持问题的工具。 <ul> <li>**自定义仪表板**<br />设置仪表板以提供丰富的用户体验和重要数据的快照。<ul> <li>**监视采用和使用情况**<br />识别最活跃的用户、页面请求数量以及最常用的实体、工作流等。</li> </ul></li> </ul>支持的最低平台版本：`8.1.1` |
 
 **店面详细信息 - 列表详细信息**  
 
-| 店面设置 | 最佳实践 | 
+| 店面设置 | 最佳做法 | 
 |:--- |:--- |
 | **行业（最多 2 个）** | 如果产品/服务可解决行业特定需求，请最多设置两个行业。 确保在产品/服务描述中突出强调这些行业特定功能。 |
 | **类别（最多 3 个）** | 最多选择 3 个与产品/服务最相关的类别。 请认真选择类别，因为用户会使用这些类别搜索相关应用。 确保在产品/服务描述中突出强调你的产品/服务如何满足特定类别的需求。 |
@@ -124,7 +124,7 @@ AppSource 中的列表可能是你与潜在客户的第一次互动。 你希望
 
 **店面详细信息 - 营销项目**  
 
-| 店面设置 | 最佳实践 | 
+| 店面设置 | 最佳做法 | 
 |:--- |:--- |
 | 产品/服务徽标（.png 格式，48x48） | 徽标应面向数字媒体进行设计和优化。<br />在产品/服务的搜索页面以 PNG 格式上传徽标。 |
 | **产品/服务徽标 (.png.216 x 216)** | 徽标应面向数字媒体进行设计和优化。<br />在产品/服务的应用详细信息列表页面以 PNG 格式上传徽标。 |
@@ -153,7 +153,7 @@ https://appsource.microsoft.com/product/dynamics-365/mscrm.04931187-431c-415d-87
 ```  
 
 >[!Important]  
->准备 URL 时，不要包含语言代码，如 `/en-us/`。  
+>准备 URL 时，不要包含语言代码，如 ``。  
 
 
 #### <a name="link-to-gtm-benefits"></a>GTM 权益的链接

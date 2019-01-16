@@ -1,5 +1,5 @@
 ---
-title: 教程：Azure Active Directory 与 SkyDesk Email 集成 | Microsoft 文档
+title: 教程：Azure Active Directory 与 SkyDesk Email 集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 和 SkyDesk Email 之间配置单一登录。
 services: active-directory
 documentationCenter: na
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: jeedes
-ms.openlocfilehash: 058aad72ea8e5741bc632b3c27c032613683ae78
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 4dc34a390303ffe5e4bafc6b71d77a19e554374c
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39444076"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54052183"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-skydesk-email"></a>教程：Azure Active Directory 与 SkyDesk Email 集成
 
@@ -115,7 +115,7 @@ ms.locfileid: "39444076"
     在“登录 URL”文本框中，使用以下模式键入 URL： `https://mail.skydesk.jp/portal/<companyname>`
 
     > [!NOTE] 
-    > 此值不是真实值。 请使用实际登录 URL 更新此值。 请联系 [SkyDesk Email 客户端支持团队](https://www.skydesk.sg/support/)获取这些值。 
+    > 此值不是真实值。 请使用实际登录 URL 更新此值。 请联系 [SkyDesk Email 客户端支持团队](https://www.skydesk.jp/apps/support/)获取这些值。 
  
 1. 在“SAML 签名证书”部分中，单击“证书(base64)”，并在计算机上保存证书文件。
 
@@ -177,7 +177,7 @@ ms.locfileid: "39444076"
     f. 单击“确定”以保存更改。
 
 > [!TIP]
-> 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[ Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
+> 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
 ### <a name="creating-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
@@ -220,7 +220,7 @@ ms.locfileid: "39444076"
     ![配置单一登录](./media/skydeskemail-tutorial/tutorial_skydeskemail_58.png)
 
 >[!NOTE] 
->如果需要批量创建用户，则需要联系 [SkyDesk Email 客户端支持团队](https://www.skydesk.sg/support/)。
+>如果需要批量创建用户，则需要联系 [SkyDesk Email 客户端支持团队](https://www.skydesk.jp/apps/support/)。
 
 
 ### <a name="assigning-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
@@ -262,7 +262,7 @@ ms.locfileid: "39444076"
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](tutorial-list.md)
-* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
+* [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
 
 

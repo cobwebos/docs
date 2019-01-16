@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 10/05/2018
 ms.author: yijenj
-ms.openlocfilehash: 8bb964308e11d238def4eed3f194ffc9ef8ab086
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: abaad7eabf92b6f3f53d7807af132959533552b9
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52840157"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54076954"
 ---
 # <a name="lead-management-for-cloud-marketplace"></a>云市场的潜在顾客管理
 
@@ -91,7 +91,7 @@ ms.locfileid: "52840157"
 
 **无法将潜在顾客保存到 Dynamics CRM。LastCRMError：请求通道在等待回复时，00:02:00 后超时。增加传递给 Request 调用的超时值或增加 Binding 上的 SendTimeout 值。分配给此操作的时间可能是较长超时的一部分。**  
 
-> 解决方法：登录云合作伙伴门户，查看“店面详细信息”>>“潜在顾客目标”>>“URL”，查看它是否为有效的 Dynamic CRM 实例
+> 解决方法：登录云合作伙伴门户，查看“店面详细信息”>>“潜在顾客目标”>>“URL”，检查它是否为有效的 Dynamic CRM 实例
 
 ## <a name="frequently-asked-questions"></a>常见问题
 

@@ -12,18 +12,18 @@ ms.date: 01/29/2018
 ms.author: lizross
 ms.reviewer: vincesm
 ms.custom: it-pro, seodec18
-ms.openlocfilehash: 496f751c263d17d3c5d8e10321bef8330c2f1a24
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 58354bf95b11e497f05fdf08ba4740b3f55c6d6e
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53096558"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54022778"
 ---
 # <a name="what-are-the-default-user-permissions-in-azure-active-directory"></a>Azure Active Directory 中的默认用户权限是什么？
 在 Azure Active Directory (Azure AD) 中，所有用户都被授予一组默认权限。 用户的访问权限由用户的类型、其[角色成员身份](https://docs.microsoft.com/azure/active-directory/active-directory-users-assign-role-azure-portal)及其对单个对象的所有权构成。 本文将会介绍这些默认权限，并将成员和来宾用户的默认权限进行比较。
 
 ## <a name="member-and-guest-users"></a>成员和来宾用户
-获得的默认权限集取决于该用户是租户的本机成员（成员用户），还是 B2B 协作来宾（来宾用户）。 有关 B2B 协作和来宾用户的详细信息，请参阅[什么是 Azure AD B2B 协作？](../b2b/what-is-b2b.md) 
+获得的默认权限集取决于该用户是租户的本机成员（成员用户），还是 B2B 协作来宾（来宾用户）。 有关 B2B 协作和来宾用户的详细信息，请参阅[什么是 Azure AD B2B 协作？](../b2b/what-is-b2b.md)。 
 * 成员用户可以注册应用程序、管理自己的个人资料照片和手机号码、更改自己的密码，以及邀请 B2B 来宾。 此外，用户可以读取所有目录信息（少数用户除外）。 
 * Azure AD B2B 来宾用户的目录权限受到限制。 例如，来宾用户只能浏览自己的个人资料信息，而不能浏览租户中的其他信息。 但是，来宾用户可以通过提供用户主体名称或 objectId 来检索有关另一用户的信息。 来宾无法查看有关其他租户对象（例如组和应用程序）的任何信息。
 

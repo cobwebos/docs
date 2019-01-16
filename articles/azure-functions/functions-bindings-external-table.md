@@ -10,16 +10,16 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 04/12/2017
 ms.author: cshoe
-ms.openlocfilehash: 62924488b776a1a89e1abf492db1881a44585b1a
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 38f0d03698ff8b11e1a6a06dc29102f407e0e90f
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52997810"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54156861"
 ---
 # <a name="external-table-binding-for-azure-functions-experimental"></a>Azure Functions 的外部表绑定（实验性）
 
-本文介绍如何在 Azure Functions 中处理 SaaS 提供程序（如 Sharepoint 和 Dynamics）中的表格数据。 Azure Functions 支持外部表的输入和输出绑定。
+本文介绍如何在 Azure Functions 中处理 SaaS 提供程序（如 SharePoint 和 Dynamics）中的表格数据。 Azure Functions 支持外部表的输入和输出绑定。
 
 > [!IMPORTANT]
 > 外部表绑定是实验性的，可能永远不会达到正式发布 (GA) 状态。 该表绑定仅包括在 Azure Functions 1.x 中，没有计划将它添加到 Azure Functions 2.x。 对于需要访问 SaaS 提供程序中数据的方案，请考虑使用[调用函数的逻辑应用](functions-twitter-email.md)。

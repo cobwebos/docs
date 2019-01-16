@@ -12,12 +12,12 @@ ms.topic: troubleshooting
 ms.workload: infrastructure
 ms.date: 5/22/2017
 ms.author: xujing
-ms.openlocfilehash: b996d42e5c543235d09b46d29889bc5eaeafd52a
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 80b99880362c3979ae5ead6d1cdff4091d23d065
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47411218"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54118969"
 ---
 # <a name="understand-common-error-messages-when-you-manage-virtual-machines-in-azure"></a>了解在 Azure 中管理虚拟机时遇到的常见错误消息
 
@@ -171,7 +171,7 @@ Azure VM 使用以下 JSON 格式进行错误响应：
 |  OperationNotAllowed  |  无法重设 VM 大小，因为请求的大小 {0} 不可用于当前分配有可用性集的群集。 可用的大小为: {1}。 访问 https://aka.ms/azure-resizevm 详细了解重设 VM 大小的策略。  |
 |  OperationNotAllowed  |  无法重设 VM 大小，因为请求的大小 {0} 不可用于当前分配有 VM 的群集。 要将 VM 重设为 {1}，请解除分配(此操作为 Azure 门户中的“停止”操作)并重试重设大小操作。 访问 https://aka.ms/azure-resizevm 详细了解重设 VM 大小的策略。  |
 |  OSProvisioningClientError  |  VM“{0}”的 OS 预配失败，因为当前正在预配来宾 OS。  |
-|  OSProvisioningClientError  |  VM“{0}”的 OS 预配失败。 错误详细信息: {1} 请确保已正确准备(通用化)映像。 <ul><li>适用于 Windows 的说明: https://azure.microsoft.com/documentation/articles/virtual-machines-windows-upload-image/  </li></ul> |
+|  OSProvisioningClientError  |  VM“{0}”的 OS 预配失败。 错误详细信息：{1} 请确保已正确准备(通用化)映像。 <ul><li>适用于 Windows 的说明: https://azure.microsoft.com/documentation/articles/virtual-machines-windows-upload-image/  </li></ul> |
 |  OSProvisioningClientError  |  SSH 主机密钥生成失败。 错误详细信息: {0}。 若要解决此问题，请验证 Linux 代理是否设置正确。 <ul><li>可以查看以下位置的说明: https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux/ </li></ul> |
 |  OSProvisioningClientError  |  为 VM 指定的用户名对于此 Linux 分发版无效。 错误详细信息: {0}。  |
 |  OSProvisioningInternalError  |  VM“{0}”的 OS 预配因内部错误而失败。  |

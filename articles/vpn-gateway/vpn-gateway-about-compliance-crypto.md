@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/22/2017
 ms.author: yushwang
-ms.openlocfilehash: d2f3da47f1d4eebe1b81964790ff6612dd78155d
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 060e647badcc3bad7b44d7cef3530c36b8ecdf57
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 01/07/2019
 ms.locfileid: "23125175"
 ---
 # <a name="about-cryptographic-requirements-and-azure-vpn-gateways"></a>关于加密要求和 Azure VPN 网关
@@ -29,7 +29,7 @@ ms.locfileid: "23125175"
 ## <a name="about-ipsec-and-ike-policy-parameters-for-azure-vpn-gateways"></a>关于 Azure VPN 网关的 IPsec 和 IKE 策略参数
 IPsec 和 IKE 协议标准支持采用各种组合的各种加密算法。 如果客户不要求使用特定加密算法和参数组合，则 Azure VPN 网关会使用一组默认方案。 选择默认策略集，最大限度地实现默认配置中各种第三方 VPN 设备的互操作性。 因此，策略和方案数无法涵盖所有可能的可用加密算法和密钥强度组合。
 
-[关于用于站点到站点 VPN 网关连接的 VPN 设备和 IPsec/IKE 参数](vpn-gateway-about-vpn-devices.md)一文中列出了 Azure VPN 网关的默认策略集。
+文档中列出了 Azure VPN 网关的默认策略集：[关于用于站点到站点 VPN 网关连接的 VPN 设备和 IPsec/IKE 参数](vpn-gateway-about-vpn-devices.md)。
 
 ## <a name="cryptographic-requirements"></a>加密要求
 对于需特定加密算法或参数的通信，通常由于符合性或安全性要求，客户现在可配置其 Azure VPN 网关，使用具有特定加密算法和密钥强度的自定义 IPsec/IKE 策略，而不是使用 Azure 默认策略集。

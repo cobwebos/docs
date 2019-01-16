@@ -1,5 +1,5 @@
 ---
-title: 教程：Azure Active Directory 与 SAP NetWeaver 的集成 | Microsoft Docs
+title: 教程：Azure Active Directory 与 SAP NetWeaver 集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 和 SAP NetWeaver 之间配置单一登录。
 services: active-directory
 documentationCenter: na
@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/19/2018
 ms.author: jeedes
-ms.openlocfilehash: fac22508e679c1e1c93ec62a5b120ba9c7c52317
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: 607d05818966e62407795640d223f1aed2f59bbb
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52162320"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54156742"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-sap-netweaver"></a>教程：将 Azure Active Directory 与 SAP NetWeaver 的集成
+# <a name="tutorial-azure-active-directory-integration-with-sap-netweaver"></a>教程：Azure Active Directory 与 SAP NetWeaver 集成
 
 在本教程中，了解如何将 SAP NetWeaver 与 Azure Active Directory (Azure AD) 集成。
 
@@ -106,7 +106,7 @@ ms.locfileid: "52162320"
 
 3. 登录到 SAP 系统 (T01) 的业务客户端（需要 SSO）并激活 HTTP 安全会话管理。
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 转到事务代码“SICF_SESSIONS”。 它显示具有当前值的所有相关配置文件参数。 这些参数如下所示：
+    a. 转到事务代码“SICF_SESSIONS”。 它显示具有当前值的所有相关配置文件参数。 这些参数如下所示：
     ```
     login/create_sso2_ticket = 2
     login/accept_sso2_ticket = 1
@@ -142,7 +142,7 @@ ms.locfileid: "52162320"
 
     ![证书下载链接](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_userpwd.png)
 
-6. 将“提供程序名称”从 T01122 替换为 http://T01122，然后单击“保存”。
+6. 将“提供程序名称”从 T01122 替换为 `http://T01122`，然后单击“保存”。
 
     > [!NOTE]
     > 默认情况下，提供程序名称为 <sid> <client> 格式，但 Azure AD 需要格式为 <protocol>://<name> 的名称，建议将提供程序名称保留为 https://<sid><client> 以允许在 Azure AD 中配置多个 SAP NetWeaver ABAP 引擎。
@@ -153,7 +153,7 @@ ms.locfileid: "52162320"
 
     ![证书下载链接](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_generatesp.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 转到“本地提供程序”选项卡。
+    a. 转到“本地提供程序”选项卡。
 
     b. 单击“元数据”。
 
@@ -173,7 +173,7 @@ ms.locfileid: "52162320"
 
 11. 在“基本 SAML 配置”部分中，按照以下步骤操作：
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 单击“上传元数据文件”以上传之前获取的“服务提供程序元数据文件”。
+    a. 单击“上传元数据文件”以上传之前获取的“服务提供程序元数据文件”。
 
     ![上传元数据文件](common/editmetadataupload.png)
 
@@ -193,7 +193,7 @@ ms.locfileid: "52162320"
 
 13. 在“用户属性”对话框的“用户声明”部分中，按上图所示配置 SAML 令牌属性，并执行以下步骤：
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 单击“编辑”图标，以打开“管理用户声明”对话框。
+    a. 单击“编辑”图标，以打开“管理用户声明”对话框。
     
     ![“属性”部分](./media/sapnetweaver-tutorial/nameidattribute.png)
 
@@ -215,7 +215,7 @@ ms.locfileid: "52162320"
 
 15. 在“设置 SAP NetWeaver”部分中，根据要求复制相应的 URL。
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 登录 URL
+    a. 登录 URL
 
     b. Azure AD 标识符
 
@@ -277,7 +277,7 @@ ms.locfileid: "52162320"
 
     ####<a name="scenario-sap-user-to-azure-ad-user-mapping"></a>场景：SAP 用户到 Azure AD 用户的映射。
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 从 SAP 获取 NameID 详细信息的屏幕截图。
+    a. 从 SAP 获取 NameID 详细信息的屏幕截图。
 
     ![配置单一登录](./media/sapnetweaver-tutorial/nameiddetails.png)
 
@@ -287,7 +287,7 @@ ms.locfileid: "52162320"
 
     ####<a name="scenario-select-sap-user-id-based-on-configured-email-address-in-su01-in-this-case-email-id-should-be-configured-in-su01-for-each-user-who-requires-sso"></a>场景：根据 SU01 中配置的电子邮件地址选择 SAP 用户 ID。 在这种情况下，应在 su01 中为每个需要 SSO 的用户配置电子邮件 ID。
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。  从 SAP 获取 NameID 详细信息的屏幕截图。
+    a.  从 SAP 获取 NameID 详细信息的屏幕截图。
 
     ![配置单一登录](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_nameiddetails1.png)
 
@@ -319,7 +319,7 @@ ms.locfileid: "52162320"
 
     ![创建 Azure AD 测试用户](common/create_aaduser_02.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”字段中，输入 BrittaSimon。
+    a. 在“名称”字段中，输入 BrittaSimon。
   
     b. 在“用户名”字段中键入 brittasimon@yourcompanydomain.extension  
     例如： BrittaSimon@contoso.com

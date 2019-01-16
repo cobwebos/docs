@@ -10,12 +10,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/27/2017
-ms.openlocfilehash: 23cbdb4d72a6b88563d9d2c2bd0e4e3c8223377f
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: c86fd2affa08999ae574f55315c6a0b32fa58fca
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53723665"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54076784"
 ---
 # <a name="use-azure-hdinsight-tools-for-visual-studio-code"></a>使用用于 Visual Studio Code 的 Azure HDInsight 工具
 
@@ -127,7 +127,7 @@ ms.locfileid: "53723665"
 
 1. 按 CTRL+SHIFT+P 打开命令面板，然后输入“HDInsight:链接群集”。
 2. 选择“通用 Livy 终结点”。
-3. 输入通用 Livy 终结点，例如 http://10.172.41.42:18080。
+3. 输入通用 Livy 终结点，例如 http\://10.172.41.42:18080。
 4. 需要为通用 Livy 终结点授权时请选择“基本”，否则请选择“无”。
 5. 在步骤 4 中选择“基本”时请输入用户名。
 6. 在步骤 4 中选择“基本”时请输入密码。

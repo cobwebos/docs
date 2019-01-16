@@ -9,19 +9,18 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/08/2018
 ms.author: jingwang
-ms.openlocfilehash: cd137462235431f0a0c1562e15a32951fe2a41c5
-ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
+ms.openlocfilehash: fcf5b5d0064292c11abeb361b0c046b5a3388457
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51346694"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54025685"
 ---
 # <a name="copy-data-to-or-from-azure-sql-database-by-using-azure-data-factory"></a>使用 Azure 数据工厂向/从 Azure SQL 数据库复制数据
-> [!div class="op_single_selector" title1="选择您正在使用的 Data Factory 服务的版本:"]
+> [!div class="op_single_selector" title1="Select the version of Data Factory service you use:"]
 > * [版本 1](v1/data-factory-azure-sql-connector.md)
 > * [当前版本](connector-azure-sql-database.md)
 
@@ -503,7 +502,7 @@ create table dbo.TargetTbl
 
 当内置复制机制无法使用时，还可使用存储过程。 如果在将源数据最终插入目标表之前必须执行 upsert、insert plus update 或额外处理，则一般会使用存储过程。 额外处理包括合并列、查找其他值以及插入多个表等。
 
-以下示例演示如何使用存储过程在 Azure SQL 数据库数据库中的表内执行 upsert。 假设输入数据和接收器 Marketing 表中各具有三列：ProfileID、State 和 Category。 基于 ProfileID 列执行 upsert，并仅将其应用于特定类别。
+以下示例演示如何使用存储过程在 Azure SQL 数据库数据库中的表内执行 upsert。 假设输入数据和接收器“Marketing”表各具有三列：**ProfileID**、**State** 和 **Category**。 基于 ProfileID 列执行 upsert，并仅将其应用于特定类别。
 
 #### <a name="output-dataset"></a>输出数据集
 

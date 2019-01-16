@@ -13,18 +13,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/26/2018
 ms.author: apimpm
-ms.openlocfilehash: a00328608c582dcd28dbc78b5b56829f9d1ab500
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: eae36aa6e60e3da03c59952a1d9e035e6a773d2d
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52585382"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54156691"
 ---
 # <a name="feature-based-comparison-of-the-azure-api-management-tiers"></a>Azure API 管理层的基于功能的比较
 
 每个 API 管理[定价层](https://aka.ms/apimpricing)都提供了一组不同的功能和每单位[容量](api-management-capacity.md)。 下表总结了每个层中提供的主要功能。 某些功能可能根据层以不同的方式工作或具有不同的能力。 在这种情况下，介绍这些功能的文档文章中指出了差异。
 
-| 功能                                                                                      | 消耗<sup>预览版</sup> | 开发人员      | 基本          | 标准       | 高级        |
+| Feature                                                                                      | 消耗<sup>预览版</sup> | 开发人员      | 基本          | 标准       | 高级        |
 | -------------------------------------------------------------------------------------------- | ----------------------------- | -------------- | -------------- | -------------- | -------------- |
 | Azure AD 集成<sup>1</sup>                                                             | 否                            | 是            | 否             | 是            | 是            |
 | 虚拟网络 (VNet) 支持                                                               | 否                            | 是            | 否             | 否             | 是            |

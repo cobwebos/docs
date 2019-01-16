@@ -1,5 +1,6 @@
 ---
-title: Azure 虚拟网络常见问题 | Microsoft 文档
+title: Azure 虚拟网络常见问题解答
+titlesuffix: Azure Virtual Network
 description: 有关 Microsoft Azure 虚拟网络的常见问题的解答。
 services: virtual-network
 documentationcenter: na
@@ -11,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/04/2018
 ms.author: jdial
-ms.openlocfilehash: 686985c705b4026ccc26238fc5919296c98d5cb7
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 5a92f4543f865141d446f5b681674961f6fef046
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53277516"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54021027"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Azure 虚拟网络常见问题 (FAQ)
 

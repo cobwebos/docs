@@ -9,17 +9,16 @@ editor: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 58f612906af55575e9d42307af924ea0a8501ca1
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: bc8cacd6d52de0367a0ea14748e548b9d32f47ef
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42145490"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54016761"
 ---
 # <a name="data-management-gateway---high-availability-and-scalability-preview"></a>数据管理网关 - 高可用性和可伸缩性（预览）
 > [!NOTE]
@@ -171,7 +170,7 @@ ms.locfileid: "42145490"
 - 针对 SSL 证书支持受 Windows Server 2012 R2 支持的任何密钥大小。
 - 不支持使用 CNG 密钥的证书。
 
-#### <a name="faq-when-would-i-not-enable-this-encryption"></a>FAQ：何时禁用此加密？
+#### <a name="faq-when-would-i-not-enable-this-encryption"></a>常见问题解答：何时不启用此加密？
 启用加密会增加一定的基础结构成本（拥有公用证书）。因此，在下列情况下，可以跳过启用加密：
 - 当集成运行时在受信任的网络上运行，或在采用透明加密（如 IP/SEC）的网络上运行时。 由于这种通道通信仅在受信任的网络中受限，因此可能无需其他加密。
 - 当集成运行时不是在生产环境中运行时。 这样有助于降低 TLS/SSL 证书成本。

@@ -5,16 +5,16 @@ description: 存储帐户密钥在 Azure Key Vault 与 Azure 存储帐户基于�
 ms.topic: conceptual
 services: key-vault
 ms.service: key-vault
-author: bryanla
-ms.author: bryanla
+author: prashanthyv
+ms.author: pryerram
 manager: mbaldwin
 ms.date: 10/03/2018
-ms.openlocfilehash: e110a24af6a0d49ea949db6bc30ab344c81d0f48
-ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
+ms.openlocfilehash: 3ee0d19c174490d558a8ff06d3f5e038ffff211f
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52619276"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54064434"
 ---
 # <a name="azure-key-vault-managed-storage-account---cli"></a>Azure Key Vault 托管存储帐户 - CLI
 
@@ -32,7 +32,7 @@ ms.locfileid: "52619276"
 1. [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) 安装 Azure CLI   
 2. [创建存储帐户](https://azure.microsoft.com/services/storage/)
     - 请按照此[文档](https://docs.microsoft.com/azure/storage/)中的步骤创建一个存储帐户  
-    - **命名指导原则：** 存储帐户名称必须为 3 到 24 个字符，并且只能包含数字和小写字母。        
+    - **命名指南：** 存储帐户名称必须为 3 到 24 个字符，并且只能包含数字和小写字母。        
       
 <a name="step-by-step-instructions-on-how-to-use-key-vault-to-manage-storage-account-keys"></a>有关如何使用 Key Vault 管理存储帐户密钥的分步说明
 --------------------------------------------------------------------------------

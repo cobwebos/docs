@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/10/2019
+ms.date: 01/16/2019
 ms.author: sethm
-ms.openlocfilehash: 570c1adc2f4615e78cbe5656c13b0e22b863baf7
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 3fcbf2b3160d57e56a59ba9c374c9b1b2a75a159
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54192395"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54330239"
 ---
 # <a name="store-service-principal-credentials-in-key-vault"></a>将服务主体凭据存储在密钥保管库
 
@@ -83,7 +83,7 @@ ms.locfileid: "54192395"
 
 2. 在中**机密**窗格中，选择**生成/导入**。
 
-3. 在中**创建机密**窗格中，从列表中的选项选择**手动**。
+3. 在中**创建机密**窗格中，从列表中的选项选择**手动**。 如果已创建服务主体使用证书，从下拉列表中，选择的证书，然后上载该文件。
 
 4. 输入**应用程序 ID**复制的服务主体中作为你的密钥的名称。 项名称可以包含字母数字字符和连字符 （-） 字符。
 

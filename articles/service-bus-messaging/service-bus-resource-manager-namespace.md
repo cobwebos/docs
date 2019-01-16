@@ -14,12 +14,12 @@ ms.tgt_pltfrm: dotnet
 ms.workload: na
 ms.date: 11/06/2018
 ms.author: spelluru
-ms.openlocfilehash: c616ad86e6846800d214feeaf100f63e311f78b0
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 248ac7ed2a855dd1df71e6e44d1aa7065ddd8ba4
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51282724"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54062061"
 ---
 # <a name="create-a-service-bus-namespace-using-an-azure-resource-manager-template"></a>使用 Azure 资源管理器模板创建服务总线命名空间
 在本快速入门中，我们将创建一个 Azure 资源管理器模板，用于创建采用**标准** SKU 的类型为 **Messaging** 的服务总线命名空间。 本文还定义了为执行部署指定的参数。 可将此模板用于自己的部署，或自定义此模板以满足要求。 有关创建模板的详细信息，请参阅[创作 Azure 资源管理器模板][Authoring Azure Resource Manager templates]。 有关完整的模板，请参阅 GitHub 上的[服务总线命名空间模板][Service Bus namespace template]。
@@ -96,7 +96,7 @@ ms.locfileid: "51282724"
 }
 ```
 
-此模板创建一个标准服务总线命名空间。
+此模板创建一个标准服务总线命名空间。 有关 JSON 语法和属性，请参见[命名空间](/azure/templates/microsoft.servicebus/namespaces)模板参考。
 
 ## <a name="create-the-parameters-json"></a>创建参数 JSON
 在上一步骤中创建的模板包含名为 `Parameters` 的节。 请根据要部署的项目或根据目标环境，为这些值定义参数。 此模板定义以下参数：**serviceBusNamespaceName**、**serviceBusSku** 和 **location**。 若要详细了解服务总线的 SKU，请参阅[服务总线 SKU](https://azure.microsoft.com/pricing/details/service-bus/)。

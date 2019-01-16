@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 07/17/2018
 ms.author: nberdy
-ms.openlocfilehash: 17402911fee5363d707547e73df7da30be6dcd0e
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: ab196645cc14acb3ed2e56ee785d4790a8df3c23
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53343796"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54052530"
 ---
 # <a name="understand-and-invoke-direct-methods-from-iot-hub"></a>了解和调用 IoT 中心的直接方法
 
@@ -203,4 +203,4 @@ IoT 中心开发人员指南中的其他参考主题包括：
 若要尝试本文中介绍的一些概念，可以根据兴趣学习以下 IoT 中心教程：
 
 * [使用直接方法](quickstart-control-device-node.md)
-* [使用用于 VS Code 的 Azure IoT 中心工具包进行设备管理](iot-hub-device-management-iot-toolkit.md)
+* [使用适用于 VS Code 的 Azure IoT 工具进行设备管理](iot-hub-device-management-iot-toolkit.md)

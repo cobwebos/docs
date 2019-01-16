@@ -12,13 +12,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 01/02/2019
-ms.openlocfilehash: e9f322198cf94232dd2d87aa1f27dbbd6a282b72
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.date: 01/03/2019
+ms.openlocfilehash: c1ef32256569d1718f6848a968585216f43f333a
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53994991"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54033445"
 ---
 # <a name="choose-the-right-sql-server-option-in-azure---paas-or-iaas"></a>在 Azure 中选择适当的 SQL Server 选项 - PaaS 或 IaaS
 
@@ -87,10 +87,11 @@ ms.locfileid: "53994991"
 ## <a name="business-motivations-for-choosing-azure-sql-database-or-sql-server-on-azure-vms"></a>选择 Azure SQL 数据库或 Azure VM 上的 SQL Server 时的业务动机
 
 有多个因素可能会影响你决定选择 PaaS 或 IaaS 来托管 SQL 数据库：
+
 - [成本](#cost) - PaaS 和 IaaS 选项都包括基本价格，其中涵盖了底层基础结构和许可证的费用。 但是，使用 IaaS 选项时，需要投入额外的时间和资源来管理数据库，而 PaaS 的价格已包括这些管理功能的费用。 选择 IaaS 选项可以在不使用资源时将其关闭，以降低成本；对于 PaaS 版本，除非你删除资源，然后在需要时重新创建资源，否则它会一直运行。
 - [管理](#administration) - PaaS 选项可以减少管理数据库所要投入的时间量。 但是，它也会阻止你执行某些可以提高工作负荷性能的自定义管理任务。
 - [服务级别协议](#service-level-agreement-sla) - IaaS 和 PaaS 都提供较高的行业标准 SLA。 在基础结构方面，PaaS 选项保证 99.99% 的 SLA，而 IaaS 保证 99.95% 的 SLA，这意味着，需要实施附加的机制才能确保数据库的可用性。 在极端情况下，若要实施与 PaaS 相当的高可用性解决方案，可能需要在 VM 中创建附加的 SQL Server 并配置 AlwaysOn 可用性组，而这可能会数据库成本翻倍。
-- [迁移到云所需的时间](#time-to-move-to-cloud) - Azure VM 中 SQL Server 与环境完全匹配，因此，从本地迁移到 Azure SQL VM，与在不同的本地服务器之间迁移数据库没有什么不同。 托管实例还可以实现极其轻松的迁移；但是，在迁移到托管实例之前，可能需要应用某些更改。
+- [迁移到 Azure 所需的时间](#market) - Azure VM 中 SQL Server 与你的环境完全匹配，因此，从本地迁移到 Azure SQL VM，与在不同的本地服务器之间迁移数据库没有什么不同。 托管实例还可以实现极其轻松的迁移；但是，在迁移到托管实例之前，可能需要应用某些更改。
 
 以下部分将更详细地讨论这些因素。
 
@@ -102,10 +103,8 @@ ms.locfileid: "53994991"
 
 目前，**SQL 数据库**以服务的形式出售，在多个服务层中可用，根据资源采用不同的价格，所有资源根据所选的服务层和计算大小，以固定费率向你收取每小时费用。
 使用 SQL 单一数据库时，可根据需求选择各种价格的服务层，基本层的价格为 5 美元/月。
-使用 Azure SQL 数据库托管实例时，还可以自带许可证。 有关自带许可的详细信息，请参阅 [Azure 上通过软件保障实现的许可移动性](https://azure.microsoft.com/pricing/license-mobility/)，或使用 [Azure 混合权益计算器](https://azure.microsoft.com/en-us/pricing/hybrid-benefit/#sql-database)来了解如何将成本**最高节省 40%**。
+使用 Azure SQL 数据库托管实例时，还可以自带许可证。 有关自带许可的详细信息，请参阅 [Azure 上通过软件保障实现的许可移动性](https://azure.microsoft.com/pricing/license-mobility/)，或使用 [Azure 混合权益计算器](https://azure.microsoft.com/pricing/hybrid-benefit/#sql-database)来了解如何将成本**最高节省 40%**。
 此外，需要对固定的 [数据传输速率](https://azure.microsoft.com/pricing/details/data-transfers/)的 Internet 传出流量付费。 可以动态调整服务层和计算大小，以满足应用程序的不同吞吐量需求。 有关当前支持的服务层的最新信息，请参阅[基于 DTU 的购买模型](sql-database-service-tiers-dtu.md)和[基于 vCore 的购买模型](sql-database-service-tiers-vcore.md)。 还可以创建[弹性池](sql-database-elastic-pool.md)，在数据库实例之间共享资源，以降低成本和应对使用高峰期。
-
-
 
 使用 **Azure SQL 数据库**，Microsoft 会自动配置、修补和升级数据库软件，从而可以降低管理成本。 此外，它的 [内置备份](sql-database-automated-backups.md) 功能可帮助你大幅降低成本，尤其是拥有大量的数据库时。
 

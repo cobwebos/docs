@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: powerbi
 ms.date: 09/25/2017
 ms.author: maghan
-ms.openlocfilehash: eed970d46c8a895001ce0a6d7d7f37acf6c02a55
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 83f4ebd9c3f5ad05173b045b3fa15804ddc88df6
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51249194"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54157558"
 ---
 # <a name="power-bi-workspace-collections-faq"></a>Power BI 工作区集合常见问题解答
 
@@ -77,7 +77,7 @@ Power BI 工作区集合服务使用“应用令牌”进行身份验证和授�
 开发人员/员工操作或创建应用程序时会需要具有 AAD 用户帐户才能通过 Azure 门户管理 Azure 订阅和工作区集合。 开发人员可以使用编程 API 导入报表、修改连接字符串、获取嵌入式 URL、改用应用令牌进行身份验证，因此无需使用 AAD。
 
 ## <a name="where-can-i-learn-more"></a>可以从何处了解详细信息？
-可以访问 [Power BI 工作区集合文档页](get-started.md)。 通过访问 [Power BI 博客](https://powerbi.microsoft.com/blog/)或通过访问 dev.powerbi.com 中的 Power BI 开发人员中心，可以了解该服务的最新信息。 也可以在 [Stackoverflow](http://stackoverflow.com/questions/tagged/powerbi) 上提问。
+可以访问 [Power BI 工作区集合文档页](get-started.md)。 通过访问 [Power BI 博客](https://powerbi.microsoft.com/blog/)或通过访问 dev.powerbi.com 中的 Power BI 开发人员中心，可以了解该服务的最新信息。 也可以在 [Stack Overflow](http://stackoverflow.com/questions/tagged/powerbi) 上提问。
 
 ## <a name="how-do-i-get-started"></a>如何入门？
 可以立即开始体验免费版！ 如果拥有 Azure 订阅，现在就可以直接从 Azure 门户预配 Power BI 工作区集合。 也可以创建[免费 Azure 帐户](https://azure.microsoft.com/free/)。 一旦 Power BI 工作区集合服务预配完毕，就可以直接轻松使用 Power BI REST API，或使用 [GitHub](https://go.microsoft.com/fwlink/?LinkID=746472) 上提供的开发人员 SDK。 关于如何使用开发人员 SDK 提供的示例。

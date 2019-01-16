@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: bc6e77643783e1e9f124bc98ea1eb910304a5f32
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 33edfdc58d82530bc1a5d0245b5e18e94b0a6dc1
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52846464"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54077549"
 ---
 # <a name="become-a-cloud-marketplace-publisher"></a>成为云市场发布者
 
@@ -97,15 +97,15 @@ Microsoft 帐户（例如 *@outlook.com 或 @live.com*）用于访问多个 Micr
 完成[开发人员中心](https://developer.microsoft.com/store/register)注册以后，请将云合作伙伴配置文件与[开发人员中心](https://developer.microsoft.com/store/register)帐户关联在一起（在此处查看详细步骤）。 此步骤必须在发布交易套餐之前完成。 
 
 >[!Note]
->若要免除 99 美元的开发人员中心注册费，请完成[市场注册表](https://azuremarketplace.microsoft.com/en-us/sell/signup)，然后就会收到包含促销代码的电子邮件。 
+>若要免除 99 美元的开发人员中心注册费，请完成[市场注册表](https://azuremarketplace.microsoft.com/sell/signup)，然后就会收到包含促销代码的电子邮件。 
 
 >[!Important]
 >在创建 Microsoft 开发人员中心帐户之前，请确认组织尚未创建开发人员中心帐户，以免出现重复帐户。 有关详细信息，请访问[在开发人员中心注册](https://docs.microsoft.com/azure/marketplace/register-dev-center)部分。
 
 
 ## <a name="next-steps"></a>后续步骤
-* 了解市场店面：[比较 AppSource 和 Azure 市场](https://docs.microsoft.com/azure/marketplace/comparing-appsource-azure-marketplace)
-*   [确定解决方案的列表类型](https://docs.microsoft.com/azure/marketplace/determine-your-listing-type)
+* 了解市场店面：[比较 AppSource 和 Azure 市场](https://docs.microsoft.com/azure/marketplace/comparing-appsource-azure-marketplace)。
+*   [确定解决方案的列表类型](https://docs.microsoft.com/azure/marketplace/determine-your-listing-type)。
 
  
 ---  

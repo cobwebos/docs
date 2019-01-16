@@ -8,12 +8,12 @@ ms.service: firewall
 ms.topic: article
 ms.date: 12/01/2018
 ms.author: victorh
-ms.openlocfilehash: 86fdbbacf3e8064afe0aaaaebea1d6ef6c25f9d4
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: a15ffa23b64f944d8b2c088113bcc29443ce6873
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52865815"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54038953"
 ---
 # <a name="deploy-azure-firewall-using-a-template"></a>使用模板部署 Azure 防火墙
 
@@ -51,6 +51,8 @@ ms.locfileid: "52865815"
    创建资源可能需要几分钟。 
    
 1. 浏览使用防火墙创建的资源。 
+
+若要了解模板中防火墙的 JSON 语法和属性，请参阅 [Microsoft.Network/azureFirewalls](/azure/templates/microsoft.network/azurefirewalls)。
 
 ## <a name="clean-up-resources"></a>清理资源
 

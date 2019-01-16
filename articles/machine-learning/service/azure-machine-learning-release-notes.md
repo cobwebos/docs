@@ -11,16 +11,23 @@ ms.author: haining
 ms.reviewer: j-martens
 ms.date: 12/20/2018
 ms.custom: seodec18
-ms.openlocfilehash: 8a67a20beff306cd23b08e1d651ab5dc4c779fd2
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.openlocfilehash: 157591897adb7495382b540dc1517c4c652a2632
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53742756"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54190709"
 ---
 # <a name="azure-machine-learning-service-release-notes"></a>Azure 机器学习服务发行说明
 
 本文介绍 Azure 机器学习服务版本。 
+
+### <a name="azure-machine-learning-data-prep-sdk-v106"></a>Azure 机器学习数据准备 SDK v1.0.6
+
++ **SDK 参考文档**： https://aka.ms/data-prep-sdk
+
++ **Bug 修复**
+  + 修复了从 Spark 上的公共可读 Azure Blob 容器读取时出现的 bug
 
 ## <a name="2018-12-20"></a>2018-12-20： 
 
@@ -271,85 +278,7 @@ Azure 机器学习服务的 Azure 门户具有以下更新：
 
 新的已刷新的 Azure 机器学习版本：了解有关此版本的详细信息： https://azure.microsoft.com/blog/what-s-new-in-azure-machine-learning-service/
 
-## <a name="older-notes-sept-2017---jun-2018"></a>旧版说明：2017 年 9 月 - 2018 年 6 月
-### <a name="2018-05-sprint-5"></a>2018-05（冲刺 (sprint) 5）
-
-使用此版本的 Azure 机器学习，可以：
-+ 使用量化版本 ResNet 50 将映像特征化，基于这些特征训练分类器，并[将该模型部署到 Azure 上的 FPGA](../service/how-to-deploy-fpga-web-service.md)，以便进行超低延迟推断。
-
-+ 使用[自定义 Azure 机器学习包](../desktop-workbench/reference-python-package-overview.md)快速生成和部署高度准确的机器学习和深度学习模型
-
-### <a name="2018-03-sprint-4"></a>2018-03（冲刺 (sprint) 4）
-**版本号**：0.1.1801.24353 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（[查找你的版本](../desktop-workbench/known-issues-and-troubleshooting-guide.md#find-the-workbench-build-number)）
-
-下面的许多更新就是针对你的反馈的直接结果。 请持续关注！
-
-**值得注意的新功能和更改**
-
-- 除了支持基于远程 docker 的执行外，还支持在你自己环境中的远程 Ubuntu VM 上本机运行脚本。
-- Workbench 应用中的全新环境体验，除了我们的基于 CLI 的体验外，还允许创建计算目标和运行配置。
-![“环境”选项卡](media/azure-machine-learning-release-notes/environment-page.png)
-- 可自定义运行历史记录报告 ![新运行历史记录报告的图像](media/azure-machine-learning-release-notes/new-run-history-reports.png)
-
-**详细的更新**
-
-下面列出了此冲刺 (sprint) 中 Azure 机器学习的每个组件区域中的详细更新。
-
-#### <a name="workbench-ui"></a>Workbench UI
-- 可自定义运行历史记录报告
-  - 运行历史记录报告的改进图表配置
-    - 可以更改使用的入口点
-    - 可以添加和修改顶级筛选器 ![添加筛选器](media/azure-machine-learning-release-notes/add-filters.jpg)
-    - 可以添加或修改（以及拖放和重新排列）图表和统计信息。
-    ![创建新图表](media/azure-machine-learning-release-notes/configure-charts.png)
-
-  - 运行历史记录报告的 CRUD
-  - 将所有现有运行历史记录列表视图配置文件移动到了服务器端报告，其行为与从所选入口点运行的管道类似。
-
-- “环境”选项卡
-  - 轻松将新计算目标和运行配置文件添加到项目 ![新建计算目标](media/azure-machine-learning-release-notes/add-new-environments.png)
-  - 使用简单的基于窗体的 UX 管理和更新配置文件
-  - 用于准备执行环境的新按钮
-
-- 对侧栏中文件列表的性能改进
-
-#### <a name="data-preparation"></a>数据准备工作 
-- Azure Machine Learning Workbench 现在允许使用已知列的名称搜索列。
-
-
-#### <a name="experimentation"></a>试验
-- Azure Machine Learning Workbench 现在支持在你自己的 python 或 pyspark 环境中本机运行脚本。 为实现此功能，用户在远程 VM 上创建和管理自己的环境并使用 Azure Machine Learning Workbench 对该目标运行其脚本。 请参阅[配置 Azure 机器学习试验服务](../desktop-workbench/experimentation-service-configuration.md) 
-
-#### <a name="model-management"></a>模型管理
-- 支持自定义已部署的容器：通过允许使用 apt-get 等安装外部库来支持自定义容器映像。它不再限制为 pip 可安装库。 有关详细信息，请参阅[文档](../desktop-workbench/model-management-custom-container.md)。
-  - 请将 `--docker-file myDockerStepsFilename` 标志和文件名用于清单、映像或服务创建命令。
-  - 基础映像是 Ubuntu，不能修改。
-  - 示例命令： 
-  
-    ```shell
-    $ az ml image create -n myimage -m mymodel.pkl -f score.py --docker-file mydockerstepsfile
-    ```
-
-### <a name="2018-01-sprint-3"></a>2018-01（冲刺 (sprint) 3） 
-**版本号**：0.1.1712.18263 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（[查找你的版本](../desktop-workbench/known-issues-and-troubleshooting-guide.md#find-the-workbench-build-number)）
-
-下面是此冲刺 (sprint) 中的更新和改进。 其中许多更新是用户反馈的直接结果。 
-
-### <a name="2017-12-sprint-2"></a>2017-12（冲刺 (Sprint) 2）
-**版本号**：0.1.1711.15263 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（[查找你的版本](../desktop-workbench/known-issues-and-troubleshooting-guide.md#find-the-workbench-build-number)）
-
-此版本是 Azure 机器学习的第三个更新。 此更新包括 Workbench 应用、命令行接口 (CLI) 以及后端服务中的改进。 非常感谢你向我们发送微笑和哭脸。 下面的许多更新就是针对你的反馈的直接结果。 
-
-### <a name="2017-11-sprint-1"></a>2017-11（冲刺 (sprint) 1） 
-**版本号**：0.1.1710.31013 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（[查找你的版本](../desktop-workbench/known-issues-and-troubleshooting-guide.md#find-the-workbench-build-number)）
-
-在此版本中，我们改进了 Workbench 应用、CLI 及后端服务层中的安全性、稳定性及可维护性。 
-
-### <a name="2017-10-sprint-0"></a>2017-10（冲刺 (sprint) 0） 
-**版本号**：0.1.1710.31013 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（[查找你的版本](../desktop-workbench/known-issues-and-troubleshooting-guide.md#find-the-workbench-build-number)）
-
-此版本是自 Microsoft Ignite 2017 大会发布 Azure Machine Learning Workbench 初始公共预览版以来的首个更新。 此发行版中的主要更新是可靠性和稳定性修复。 
 
 ## <a name="next-steps"></a>后续步骤
 
-阅读 [Azure 机器学习](../service/overview-what-is-azure-ml.md)的概述。
+阅读 [Azure 机器学习服务](../service/overview-what-is-azure-ml.md)的概述。

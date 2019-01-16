@@ -9,21 +9,20 @@ ms.assetid: e17c1255-62c2-4e2e-bb60-d25274903e80
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/01/2017
 ms.author: douglasl
 robots: noindex
-ms.openlocfilehash: 534fbeaa8ba3c27c8d3f3bbcc59717d8bdb5c654
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 7631b103d6d14cceb2c320d56e9f68d9ea57e4d8
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37050312"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54020840"
 ---
 # <a name="transform-data-by-running-u-sql-scripts-on-azure-data-lake-analytics"></a>通过在 Azure Data Lake Analytics 上运行 U-SQL 脚本来转换数据 
-> [!div class="op_single_selector" title1="选择您正在使用的 Data Factory 服务的版本:"]
-> * [第 1 版](data-factory-usql-activity.md)
+> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> * [版本 1](data-factory-usql-activity.md)
 > * [版本 2（当前版本）](../transform-data-using-data-lake-analytics.md)
 
 > [!NOTE]
@@ -49,7 +48,7 @@ U-SQL 活动支持对 Data Lake Analytics 进行以下类型的身份验证：
 
 | 属性 | 说明 | 必选 |
 | --- | --- | --- |
-| type |类型属性应设置为 **AzureDataLakeAnalytics**。 |是 |
+| type |类型属性应设置为：AzureDataLakeAnalytics。 |是 |
 | **accountName** |Azure Data Lake Analytics 帐户名。 |是 |
 | **dataLakeAnalyticsUri** |Azure Data Lake Analytics URI。 |否 |
 | **subscriptionId** |Azure 订阅 ID |否（如果未指定，则使用数据工厂的订阅）。 |
@@ -96,7 +95,7 @@ U-SQL 活动支持对 Data Lake Analytics 进行以下类型的身份验证：
 | **authorization** | 单击数据工厂编辑器中的“授权”按钮，并输入凭据以会自动生成的授权 URL 分配给此属性。 | 是 |
 | **sessionId** | OAuth 授权会话中的 OAuth 会话 ID。 每个会话 ID 都是唯一的，并且只能使用一次。 使用数据工厂编辑器时会自动生成此设置。 | 是 |
 
-**示例：用户凭据身份验证**
+示例：**用户凭据身份验证**
 ```json
 {
     "name": "AzureDataLakeAnalyticsLinkedService",
@@ -115,7 +114,7 @@ U-SQL 活动支持对 Data Lake Analytics 进行以下类型的身份验证：
 ```
 
 #### <a name="token-expiration"></a>令牌过期
-使用“授权”按钮生成的授权代码在一段时间后便会过期。 请参阅下表，了解不同类型用户帐户的过期时间。 身份验证**令牌过期**时可能会看到以下错误消息：凭据操作错误: invalid_grant-AADSTS70002: 验证凭据时出错。 AADSTS70008：提供的访问权限已过期或已被吊销。 跟踪 ID: d18629e8-af88-43c5-88e3-d8419eb1fca1 相关 ID: fac30a0c-6be6-4e02-8d69-a776d2ffefd7 时间戳: 2015-12-15 21:09:31Z
+使用“授权”按钮生成的授权代码在一段时间后便会过期。 请参阅下表，了解不同类型用户帐户的过期时间。 身份验证**令牌过期**时，可能会看到以下错误消息：凭据操作错误：invalid_grant - AADSTS70002：验证凭据时出错。 AADSTS70008：提供的访问权限已过期或已被吊销。 跟踪 ID：d18629e8-af88-43c5-88e3-d8419eb1fca1 相关 ID：fac30a0c-6be6-4e02-8d69-a776d2ffefd7 时间戳：2015-12-15 21:09:31Z
 
 | 用户类型 | 过期时间 |
 |:--- |:--- |
@@ -149,7 +148,7 @@ if (linkedService.Properties.TypeProperties is AzureDataLakeStoreLinkedService |
 }
 ```
 
-请参阅 [AzureDataLakeStoreLinkedService 类](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakestorelinkedservice.aspx)、[AzureDataLakeAnalyticsLinkedService 类](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakeanalyticslinkedservice.aspx)和 [AuthorizationSessionGetResponse 类](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.authorizationsessiongetresponse.aspx)主题，了解关于代码中使用的数据工厂类的详细信息。 针对 WindowsFormsWebAuthenticationDialog 类向 Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll 添加引用。 
+请参阅 [AzureDataLakeStoreLinkedService 类](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakestorelinkedservice.aspx)、[AzureDataLakeAnalyticsLinkedService 类](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakeanalyticslinkedservice.aspx)和 [AuthorizationSessionGetResponse 类](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.authorizationsessiongetresponse.aspx)主题，了解关于代码中使用的数据工厂类的详细信息。 对于 WindowsFormsWebAuthenticationDialog 类，请添加对以下项的引用：Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll。 
 
 ## <a name="data-lake-analytics-u-sql-activity"></a>Data Lake Analytics U-SQL 活动
 以下 JSON 代码段定义了具有 Data Lake Analytics U-SQL 活动的管道。 活动定义具有对之前创建的 Azure Data Lake Analytics 链接服务的引用。   
@@ -218,7 +217,7 @@ if (linkedService.Properties.TypeProperties is AzureDataLakeStoreLinkedService |
 | priority            | 确定应在所有排队的作业中选择哪些作业首先运行。 编号越低，优先级越高。 | 否                                       |
 | parameters          | U-SQL 脚本的参数          | 否                                       |
 | runtimeVersion      | 要使用的 U-SQL 引擎的运行时版本 | 否                                       |
-| compilationMode     | <p>U-SQL 编译模式。 必须是这些值之一：</p> <ul><li>Semantic：只执行语义检查和必要的健全性检查。</li><li>Full：执行完整编译，包括语法检查、优化、代码生成等。</li><li>SingleBox：执行完整编译，且 TargetType 设置为 SingleBox。</li></ul><p>如果该属性未指定值，则服务器将确定最佳编译模式。 </p> | 否                                       |
+| compilationMode     | <p>U-SQL 编译模式。 必须是这些值之一：</p> <ul><li>**Semantic：** 只执行语义检查和必要的健全性检查。</li><li>**Full：** 执行完整编译，包括语法检查、优化、代码生成等。</li><li>**SingleBox：** 执行完整编译，且 TargetType 设置为 SingleBox。</li></ul><p>如果该属性未指定值，则服务器将确定最佳编译模式。 </p> | 否                                       |
 
 请参阅 [SearchLogProcessing.txt 脚本定义](#sample-u-sql-script)了解有关脚本定义的信息。 
 

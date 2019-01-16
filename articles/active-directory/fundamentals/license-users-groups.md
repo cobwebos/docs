@@ -13,12 +13,12 @@ ms.date: 09/05/2018
 ms.author: lizross
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
-ms.openlocfilehash: 6cf3e9a9b767dfaa6f04d151864f64123e3d6ae7
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 0d3f417b5a169b3d8d91d85b5f47496064c8f5f3
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53077445"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54063346"
 ---
 # <a name="assign-or-remove-licenses-using-the-azure-active-directory-portal"></a>使用 Azure Active Directory 门户分配或删除许可证 | Microsoft Docs
 许多 Azure Active Directory (Azure AD) 服务要求激活 Azure AD 产品并且针对该产品向每个用户或组（以及关联成员）授予许可。 只有具有活动许可证的用户才能访问和使用已许可的 Azure AD 服务。
@@ -57,7 +57,8 @@ ms.locfileid: "53077445"
 ## <a name="assign-licenses-to-users-or-groups"></a>向用户或组分配许可证
 确保使用已许可 Azure AD 服务的任何人都具有相应的许可证。 由你决定是要将许可权添加到单个用户还是整个组。
 
->![注意] 基于组的许可是 Azure AD 的一项公共预览版功能，可通过任何付费 Azure AD 许可证计划获得。 有关预览版的详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。<br><br>有关如何添加用户的详细信息，请参阅[如何在 Azure Active Directory 中添加或删除用户](add-users-azure-active-directory.md)。 有关如何创建组并添加成员的详细信息，请参阅[创建基本组并添加成员](active-directory-groups-create-azure-portal.md)。
+>[!Note]
+>基于组的许可是 Azure AD 的一项公共预览版功能，可通过任何付费 Azure AD 许可证计划获得。 有关预览版的详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。<br><br>有关如何添加用户的详细信息，请参阅[如何在 Azure Active Directory 中添加或删除用户](add-users-azure-active-directory.md)。 有关如何创建组并添加成员的详细信息，请参阅[创建基本组并添加成员](active-directory-groups-create-azure-portal.md)。
 
 ### <a name="to-assign-a-license-to-a-specific-user"></a>向特定用户分配许可证
 1. 在“产品”页上，选择要分配给用户的版本的名称。 例如 Azure Active Directory Premium Plan 2。

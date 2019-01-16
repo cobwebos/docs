@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 08/15/2018
 ms.reviewer: klam, LADocs
 ms.suite: integration
-ms.openlocfilehash: 179d8fc0f17bf43792db6a9b0e15a6f63349f002
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.openlocfilehash: 43ca62191f0dc5a306ea5891f31a316242694a02
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52890936"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54107865"
 ---
 # <a name="functions-reference-for-workflow-definition-language-in-azure-logic-apps"></a>Azure 逻辑应用中工作流定义语言的函数引用
 
@@ -102,6 +102,7 @@ ms.locfileid: "52890936"
 | [empty](../logic-apps/workflow-definition-language-functions-reference.md#empty) | 检查集合是否为空。 | 
 | [first](../logic-apps/workflow-definition-language-functions-reference.md#first) | 返回集合中的第一个项。 | 
 | [intersection](../logic-apps/workflow-definition-language-functions-reference.md#intersection) | 返回其中仅包含指定集合的共有项的一个集合。 | 
+| [item](../logic-apps/workflow-definition-language-functions-reference.md#item) | 位于针对数组的重复操作中时，返回在操作的当前迭代过程中数组中的当前项。 | 
 | [join](../logic-apps/workflow-definition-language-functions-reference.md#join) | 返回一个字符串，其中包含某个数组中的所有项并以指定的分隔符分隔每个项。 | 
 | [last](../logic-apps/workflow-definition-language-functions-reference.md#last) | 返回集合中的最后一个项。 | 
 | [length](../logic-apps/workflow-definition-language-functions-reference.md#length) | 返回字符串或数组中的项数。 | 
@@ -4014,7 +4015,7 @@ xml('<value>')
 
 | 参数 | 必选 | 类型 | Description | 
 | --------- | -------- | ---- | ----------- | 
-| <*value*> | 是 | String | 要转换的包含 JSON 对象的字符串 <p>该 JSON 对象必须只有一个根属性。 <br>请使用反斜杠字符 (\\) 作为双引号 (") 的转义字符。 | 
+| <*value*> | 是 | String | 要转换的包含 JSON 对象的字符串 <p>该 JSON 对象必须只有一个根属性，该属性不能是数组。 <br>请使用反斜杠字符 (\\) 作为双引号 (") 的转义字符。 | 
 ||||| 
 
 | 返回值 | 类型 | Description | 

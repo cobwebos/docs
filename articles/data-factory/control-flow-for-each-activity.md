@@ -9,16 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/26/2018
 ms.author: shlo
-ms.openlocfilehash: e38a0ec39227b0064175c3c39d32bf87970ef9f5
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 90c36e728a8ec91606f93c080258eeca9c3825e6
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52423722"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54020772"
 ---
 # <a name="foreach-activity-in-azure-data-factory"></a>Azure 数据工厂中的 ForEach 活动
 ForEach 活动在管道中定义重复的控制流。 此活动用于循环访问集合，并在循环中执行指定的活动。 此活动的循环实现类似于采用编程语言的 Foreach 循环结构。
@@ -86,7 +85,7 @@ Items | 返回要循环访问的 JSON 数组的表达式。 | 表达式（返回
 在 ForEach 活动中，为属性 **items** 提供要循环访问的数组。 使用 `@item()` 循环访问 ForEach 活动中的单个枚举。 例如，如果 **items** 是数组：[1, 2, 3]，则 `@item()` 在第一次迭代中返回 1，在第二次迭代中返回 2，在第三次迭代中返回 3。
 
 ## <a name="iterating-over-a-single-activity"></a>循环访问单个活动
-**方案：** 将 Azure Blob 中的同一源文件复制到 Azure Blob 中的多个目标文件。
+**场景：** 从 Azure Blob 中的同一源文件复制到 Azure Blob 中的多个目标文件。
 
 ### <a name="pipeline-definition"></a>管道定义
 
@@ -237,7 +236,7 @@ Items | 返回要循环访问的 JSON 数组的表达式。 | 表达式（返回
 
 ```
 ### <a name="example"></a>示例
-**方案：** 在包含执行管道活动的 ForEach 活动中循环访问 InnerPipeline。 内部管道使用参数化的架构定义进行复制。
+**场景：** 在包含执行管道活动的 ForEach 活动中循环访问 InnerPipeline。 内部管道使用参数化的架构定义进行复制。
 
 #### <a name="master-pipeline-definition"></a>主管道定义
 

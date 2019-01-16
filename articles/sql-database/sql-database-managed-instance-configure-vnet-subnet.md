@@ -11,26 +11,27 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: bonova, carlrab
 manager: craigg
-ms.date: 09/20/2018
-ms.openlocfilehash: 53aba5192ddf57598965fcfe0db5f2b18423c7e9
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.date: 01/03/2019
+ms.openlocfilehash: 1718177a0902bc7049eb6986e5a1d128eeb3f233
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53344998"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54040952"
 ---
 # <a name="configure-an-existing-vnet-for-azure-sql-database-managed-instance"></a>为 Azure SQL 数据库托管实例配置现有 VNet
 
-Azure SQL 数据库托管实例必须部署在专用于托管实例的 Azure [虚拟网络 (VNet)](../virtual-network/virtual-networks-overview.md) 和子网中。 如果现有 VNet 和子网是根据[托管实例 VNet 要求](sql-database-managed-instance-connectivity-architecture.md#network-requirements)配置的，则可以使用现有 VNet 和子网。 
+Azure SQL 数据库托管实例必须部署在专用于托管实例的 Azure [虚拟网络 (VNet)](../virtual-network/virtual-networks-overview.md) 和子网中。 如果现有 VNet 和子网是根据[托管实例 VNet 要求](sql-database-managed-instance-connectivity-architecture.md#network-requirements)配置的，则可以使用现有 VNet 和子网。
 
-如果你有尚未配置的新子网，并且不确定该子网是否满足[要求](sql-database-managed-instance-connectivity-architecture.md#network-requirements)，或者你在进行一些更改后想要检查子网是否仍满足[网络要求](sql-database-managed-instance-connectivity-architecture.md#network-requirements)，则可以使用本部分中介绍的脚本验证并修改你的网络。 
+如果你有尚未配置的新子网，并且不确定该子网是否满足[要求](sql-database-managed-instance-connectivity-architecture.md#network-requirements)，或者你在进行一些更改后想要检查子网是否仍满足[网络要求](sql-database-managed-instance-connectivity-architecture.md#network-requirements)，则可以使用本部分中介绍的脚本验证并修改你的网络。
 
   > [!Note]
-  > 只能在资源管理器虚拟网络中创建托管实例。 不支持使用经典部署模型部署的 Azure VNet。 请确保按照[确定托管实例的子网大小](#determine-the-size-of-subnet-for-managed-instances)中的准则计算子网大小，因为在子网中部署资源后将无法调整子网大小。
+  > 只能在资源管理器虚拟网络中创建托管实例。 不支持使用经典部署模型部署的 Azure VNet。 请确保按照[确定托管实例的子网大小](sql-database-managed-instance-determine-size-vnet-subnet.md)一文中的准则计算子网大小，因为在子网中部署资源后将无法调整子网大小。
 
-## <a name="validate-and-modify-an-existing-virtual-network"></a>验证并修改现有虚拟网络 
+## <a name="validate-and-modify-an-existing-virtual-network"></a>验证并修改现有虚拟网络
 
 如果希望在现有子网内创建托管实例，建议使用以下 PowerShell 脚本来准备子网：
+
 ```powershell
 $scriptUrlBase = 'https://raw.githubusercontent.com/Microsoft/sql-server-samples/master/samples/manage/azure-sql-db-managed-instance/prepare-subnet'
 
@@ -43,6 +44,7 @@ $parameters = @{
 
 Invoke-Command -ScriptBlock ([Scriptblock]::Create((iwr ($scriptUrlBase+'/prepareSubnet.ps1?t='+ [DateTime]::Now.Ticks)).Content)) -ArgumentList $parameters
 ```
+
 子网准备是通过三个简单步骤完成的：
 
 1. 验证 - 针对托管实例网络要求验证所选的虚拟网络和子网。

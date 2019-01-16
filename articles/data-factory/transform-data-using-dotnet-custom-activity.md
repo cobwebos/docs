@@ -8,19 +8,18 @@ manager: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/26/2018
 ms.author: douglasl
-ms.openlocfilehash: bfacad5064862f8ff20fc33b2b242c00ec416661
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 34a3b00fdc0644294a97272be7b3a06715c029a1
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54000339"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54121322"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>在 Azure 数据工厂管道中使用自定义活动
-> [!div class="op_single_selector" title1="选择您正在使用的 Data Factory 服务的版本:"]
+> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [版本 1](v1/data-factory-use-custom-activities.md)
 > * [当前版本](transform-data-using-dotnet-custom-activity.md)
 
@@ -104,12 +103,12 @@ ms.locfileid: "54000339"
 | type                  | 对于自定义活动，活动类型为 **Custom**。 | 是      |
 | linkedServiceName     | Azure Batch 的链接服务。 若要了解此链接服务，请参阅[计算链接服务](compute-linked-services.md)一文。  | 是      |
 | command               | 要执行的自定义应用程序的命令。 如果应用程序在 Azure Batch 池节点上已可用，可以跳过 resourceLinkedService 和 folderPath。 例如，可以将命令指定为 `cmd /c dir`，Windows Batch 池节点针对该命令提供了本机支持。 | 是      |
-| resourceLinkedService | 存储着自定义应用程序的存储帐户的 Azure 存储链接服务 | 否&#42;       |
-| folderPath            | 自定义应用程序及其所有依赖项所在的文件夹的路径<br/><br/>如果将依赖项存储在子文件夹中（即 *folderPath* 下的分层文件夹结构中），目前当文件复制到 Azure Batch 时，文件夹结构将被平展。 也就是说，所有文件将复制到没有子文件夹的单个文件夹中。 若要解决此行为，请考虑压缩文件，复制压缩文件，然后在所需位置使用自定义代码解压缩文件。 | 否&#42;       |
+| resourceLinkedService | 存储着自定义应用程序的存储帐户的 Azure 存储链接服务 | 否 &#42;       |
+| folderPath            | 自定义应用程序及其所有依赖项所在的文件夹的路径<br/><br/>如果将依赖项存储在子文件夹中（即 *folderPath* 下的分层文件夹结构中），目前当文件复制到 Azure Batch 时，文件夹结构将被平展。 也就是说，所有文件将复制到没有子文件夹的单个文件夹中。 若要解决此行为，请考虑压缩文件，复制压缩文件，然后在所需位置使用自定义代码解压缩文件。 | 否 &#42;       |
 | referenceObjects      | 现有链接服务和数据集的数组。 所引用的链接服务和数据集采用 JSON 格式传递到自定义应用程序，因此，自定义代码可以引用数据工厂的资源 | 否       |
 | extendedProperties    | 可以采用 JSON 格式传递到自定义应用程序的用户定义属性，以便自定义代码可以引用更多属性 | 否       |
 
-&#42;属性 `resourceLinkedService` 和 `folderPath` 应该一起指定或一起省略。
+&#42; 属性 `resourceLinkedService` 和 `folderPath` 必须同时指定或同时省略。
 
 ## <a name="custom-activity-permissions"></a>自定义活动权限
 
@@ -293,7 +292,7 @@ namespace SampleApp
 如果要在下游活动中使用 stdout.txt 的内容，则可以在表达式“\@activity('MyCustomActivity').output.outputs[0]”中获取 stdout.txt 文件的路径。 
 
   > [!IMPORTANT]
-  > - activity.json、linkedServices.json 和 datasets.json 存储在 Batch 任务的 runtime 文件夹中。 在此示例中，activity.json、linkedServices.json 和 datasets.json 存储在“https://adfv2storage.blob.core.windows.net/adfjobs/<GUID>/runtime/”路径中。 必要时需要单独清理它们。 
+  > - activity.json、linkedServices.json 和 datasets.json 存储在 Batch 任务的 runtime 文件夹中。 在此示例中，activity.json、linkedServices.json 和 datasets.json 存储在“https://adfv2storage.blob.core.windows.net/adfjobs/\<GUID>/runtime/”路径中。 必要时需要单独清理它们。 
   > - 对于使用自承载集成运行时的链接服务，将通过自承载集成运行时对敏感信息（例如密钥或密码）进行加密，以确保凭据保留在客户定义的专用网络环境中。 以此方式在自定义应用程序代码中进行引用时，可能会丢掉一些敏感字段。 如果需要，请在 extendedProperties 中使用 SecureString 而非使用链接服务引用。 
 
 ## <a name="pass-outputs-to-another-activity"></a>将输出传递给另一个活动

@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 10/29/2018
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.openlocfilehash: 07cacc4a127c333e4c19c4979b7520226919c14b
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 064a9fc48ae60e530a11633b0823764a2f862811
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53722390"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54320015"
 ---
 # <a name="deploy-kubernetes-to-azure-stack"></a>将 Kubernetes 部署到 Azure Stack
 
@@ -139,7 +139,7 @@ ms.locfileid: "53722390"
 
 1. 输入 **SSH 公钥**，用于向所有作为 Kubernetes 群集和 DVM 的一部分创建的 Linux 计算机授权。
 
-1. 输入特定于区域的**主配置文件 DNS 前缀**。 这必须是特定于区域的名称，例如 `k8s-12345`。 最佳做法是尝试选择与资源组名称相同的名称。
+1. 输入特定于区域的**主配置文件 DNS 前缀**。 这必须是特定于区域的名称，例如 `k8s-12345`。 尝试将其作为最佳实践的资源组名称相同。
 
     > [!Note]  
     > 为每个群集使用新且唯一的主配置文件 DNS 前缀。
@@ -150,9 +150,9 @@ ms.locfileid: "53722390"
 
 1. 选择“Kubernetes 节点池配置文件计数”。 此计数包含群集中的代理数。 
 
-1. 选择“存储配置文件”。 可以选择“Blob 磁盘”或“托管磁盘”。 这指定 Kubernetes 节点 VM 的 VM 大小。 
+1. 选择“存储配置文件”。 可以选择“Blob 磁盘”或“托管磁盘”。 
 
-1. 输入**服务主体 ClientId**，供 Kubernetes Azure 云提供程序使用。 创建服务主体时标识为应用程序 ID 的客户端 ID。
+1. 输入**服务主体 ClientId**，供 Kubernetes Azure 云提供程序使用。 客户端 ID 已被确定为应用程序 ID 时您创建服务主体。
 
 1. 输入在创建服务主体时创建的**服务主体客户端机密**。
 
@@ -160,7 +160,7 @@ ms.locfileid: "53722390"
 
 ### <a name="3-summary"></a>3.摘要
 
-1. 选择“摘要”。 此边栏选项卡显示针对 Kubernetes 群集配置设置的验证消息。
+1. 选择“摘要”。 在边栏选项卡显示的验证消息的 Kubernetes 群集配置设置。
 
     ![部署解决方案模板](media/azure-stack-solution-template-kubernetes-deploy/04_preview.png)
 

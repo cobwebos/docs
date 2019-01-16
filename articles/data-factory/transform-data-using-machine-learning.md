@@ -8,20 +8,19 @@ manager: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/16/2018
 ms.author: douglasl
-ms.openlocfilehash: 87a71cff07d18dde25fa5c58b3718e7a57e3ce8d
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 494aa435f2b3e682ae330baa61d4778f3d91d789
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37046007"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54025736"
 ---
 # <a name="create-predictive-pipelines-using-azure-machine-learning-and-azure-data-factory"></a>使用 Azure 机器学习和 Azure 数据工厂创建预测管道
-> [!div class="op_single_selector" title1="选择您正在使用的 Data Factory 服务的版本:"]
-> * [第 1 版](v1/data-factory-azure-ml-batch-execution-activity.md)
+> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> * [版本 1](v1/data-factory-azure-ml-batch-execution-activity.md)
 > * [当前版本](transform-data-using-machine-learning.md)
 
 通过 [Azure 机器学习](https://azure.microsoft.com/documentation/services/machine-learning/)，可以生成、测试和部署预测分析解决方案。 从高层次的角度来看，这可通过三个步骤完成：
@@ -196,14 +195,14 @@ Azure 机器学习支持将经典 Web 服务和新 Web 服务用于预测试验�
 ### <a name="scenario-2-experiments-using-readerwriter-modules-to-refer-to-data-in-various-storages"></a>方案 2：使用读取器/写入器模块引用各种存储中的数据的试验
 创建 Azure ML 试验时，另一种常见方案是使用“导入数据”和“输出数据”模块。 “导入数据”模块用于将数据加载到试验，“输出数据”模块用于保存试验中的数据。 有关“导入数据”和“输出数据”模块的详细信息，请参阅 MSDN 库中的[导入数据](https://msdn.microsoft.com/library/azure/dn905997.aspx)和[输出数据](https://msdn.microsoft.com/library/azure/dn905984.aspx)主题。     
 
-使用“导入数据”和“输出数据”模块时，最好对这些模块的每个属性使用 Web 服务参数。 使用这些 Web 参数，可在运行时配置值。 例如，可通过使用 Azure SQL 数据库 XXX.database.windows.net 的“导入数据”模块创建试验。 部署 Web 服务后，需要让 Web 服务使用者能够指定另一个名为 `YYY.database.windows.net` 的 Azure SQL Server。 Web 服务参数可用于允许配置此值。
+使用“导入数据”和“输出数据”模块时，最好对这些模块的每个属性使用 Web 服务参数。 使用这些 Web 参数，可在运行时配置值。 例如，可通过使用 Azure SQL 数据库的导入数据模块创建试验：XXX.database.windows.net。 部署 Web 服务后，需要让 Web 服务使用者能够指定另一个名为 `YYY.database.windows.net` 的 Azure SQL Server。 Web 服务参数可用于允许配置此值。
 
 > [!NOTE]
 > Web 服务输入和输出与 Web 服务参数不同。 在第一个方案中，已了解了可为 Azure 机器学习 Web 服务指定输入和输出的方法。 在此方案中，为 Web 服务传递对应于“导入数据”/“输出数据”模块属性的参数。
 >
 > 
 
-我们来看看使用 Web 服务参数的情况。 有一个已部署的 Azure 机器学习 Web 服务，它使用读取器模块从 Azure 机器学习支持的一个数据源（例如：Azure SQL 数据库）读取数据。 完成批处理执行后，使用读取器模块（Azure SQL 数据库）写入结果。  实验中未定义任何 Web 服务输入和输出。 在此情况下，建议为读取器和编写器模块配置相关的 Web 服务参数。 此配置允许在使用 AzureMLBatchExecution 活动时配置读取器/编写器模块。 在活动 JSON 中的 **globalParameters** 部分指定 Web 服务参数，如下所示。
+我们来看看使用 Web 服务参数的情况。 有一个已部署的 Azure 机器学习 Web 服务，它使用读取器模块从 Azure 机器学习支持的一个数据源（例如：读取数据。 完成批处理执行后，使用读取器模块（Azure SQL 数据库）写入结果。  实验中未定义任何 Web 服务输入和输出。 在此情况下，建议为读取器和编写器模块配置相关的 Web 服务参数。 此配置允许在使用 AzureMLBatchExecution 活动时配置读取器/编写器模块。 在活动 JSON 中的 **globalParameters** 部分指定 Web 服务参数，如下所示。
 
 ```JSON
 "typeProperties": {

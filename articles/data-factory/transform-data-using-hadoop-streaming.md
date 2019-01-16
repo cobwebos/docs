@@ -8,20 +8,19 @@ manager: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/16/2018
 ms.author: douglasl
-ms.openlocfilehash: 4c2bf83fec3d8f961a84523365e4a98fe3bf7603
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: b498e09e53f8b0844470bf3948a664d8ad4337b7
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37052361"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54022217"
 ---
 # <a name="transform-data-using-hadoop-streaming-activity-in-azure-data-factory"></a>使用 Azure 数据工厂中的 Hadoop 流式处理活动转换数据
-> [!div class="op_single_selector" title1="选择您正在使用的 Data Factory 服务的版本:"]
-> * [第 1 版](v1/data-factory-hadoop-streaming-activity.md)
+> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> * [版本 1](v1/data-factory-hadoop-streaming-activity.md)
 > * [当前版本](transform-data-using-hadoop-streaming.md)
 
 数据工厂[管道](concepts-pipelines-activities.md)中的 HDInsight 流式处理活动会在[自己的](compute-linked-services.md#azure-hdinsight-linked-service)或[按需](compute-linked-services.md#azure-hdinsight-on-demand-linked-service) HDInsight 群集上执行 Hadoop 流式处理程序。 本文基于[数据转换活动](transform-data.md)一文，它概述了数据转换和受支持的转换活动。
@@ -82,7 +81,7 @@ ms.locfileid: "37052361"
 | filePath          | 提供由 fileLinkedService 引用的 Azure 存储中存储的映射器、合并器和化简器程序的路径数组。 该路径区分大小写。 | 是      |
 | input             | 指定映射器输入文件的 WASB 路径。 | 是      |
 | output            | 指定化简器输出文件的 WASB 路径。 | 是      |
-| getDebugInfo      | 指定何时将日志文件复制到 HDInsight 群集使用的（或者）scriptLinkedService 指定的 Azure 存储。 允许的值：None、Always 或 Failure。 默认值：None。 | 否       |
+| getDebugInfo      | 指定何时将日志文件复制到 HDInsight 群集使用的（或者）scriptLinkedService 指定的 Azure 存储。 允许的值：None、Always 或 Failure。 默认值：无。 | 否       |
 | arguments         | 指定 Hadoop 作业的参数数组。 参数以命令行参数的形式传递到每个任务。 | 否       |
 | 定义           | 在 Hive 脚本中指定参数作为键/值对，以供引用。 | 否       | 
 

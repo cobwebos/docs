@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/02/2019
 ms.author: tomfitz
-ms.openlocfilehash: 7734ff6c5992ebb27ff63c0329afa03e5bf96a2a
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.openlocfilehash: 5266959e3c08721b79af8c11eb50b7a659e70ffc
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53995076"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54158850"
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>将资源移到新资源组或订阅中
 
-本文说明了如何将 Azure 资源移动到另一 Azure 订阅，或移动到同一订阅下的另一资源组。 可以使用 Azure 门户、Azure PowerShell、Azure CLI 或 REST API 移动资源。 
+本文说明了如何将 Azure 资源移动到另一 Azure 订阅，或移动到同一订阅下的另一资源组。 可以使用 Azure 门户、Azure PowerShell、Azure CLI 或 REST API 移动资源。
 
 在移动操作过程中，源组和目标组都会锁定。 在完成移动之前，将阻止对资源组执行写入和删除操作。 此锁意味着将无法添加、更新或删除资源组中的资源，但并不意味着资源已被冻结。 例如，如果将 SQL Server 及其数据库移动到新的资源组中，则使用该数据库的应用程序将不会遇到停机的情况。 它仍可读取和写入到数据库。
 
@@ -98,7 +98,7 @@ ms.locfileid: "53995076"
 * 门户仪表板
 * Power BI - Power BI Embedded 和 Power BI 工作区集合
 * 公共 IP - 可以移动基本 SKU 公共 IP。 不能移动标准 SKU 公共 IP。
-* 恢复服务保管库 - 必须注册专用预览版。 请参阅[恢复服务限制](#recovery-services-limitations)。
+* 恢复服务保管库 - 你必须注册[受限公共预览版](https://docs.microsoft.com/azure/backup/backup-azure-move-recovery-services-vault)。
 * Azure Redis 缓存 - 如果 Azure Redis 缓存实例配置了虚拟网络，则实例无法被移动到其他订阅。 请参阅[虚拟网络限制](#virtual-networks-limitations)。
 * 计划程序
 * 搜索 - 不能一次性移动不同区域中的多个搜索资源。 只能通过多个单独的操作移动它们。
@@ -135,7 +135,7 @@ ms.locfileid: "53995076"
 * Data Box
 * Dev Spaces
 * Dynamics LCS
-* Express Route
+* ExpressRoute
 * Kubernetes 服务
 * 实验室服务 - 支持移动到同一订阅中的新资源组，但不支持跨订阅移动。
 * 托管应用程序
@@ -305,9 +305,9 @@ _在订阅之间_移动 Web 应用时存在以下限制：
 
 ### <a name="recovery-services-limitations"></a>恢复服务限制
 
-若要移动恢复服务保管库，必须注册专用预览版。 若要试用，请发邮件至 AskAzureBackupTeam@microsoft.com。
+若要移动恢复服务保管库，你必须注册[受限公共预览版](https://docs.microsoft.com/azure/backup/backup-azure-move-recovery-services-vault)。
 
-目前，每个区域一次可以移动一个恢复服务保管库。 不能移动在 IaaS 虚拟机中备份 Azure 文件、Azure 文件同步或 SQL 的保管库。 
+目前，每个区域一次可以移动一个恢复服务保管库。 不能移动在 IaaS 虚拟机中备份 Azure 文件、Azure 文件同步或 SQL 的保管库。
 
 如果虚拟机不随保管库移动，则当前虚拟机恢复点会保留在保管库中，直至过期。 不管虚拟机是否随保管库移动，均可根据保管库的备份历史记录还原虚拟机。
 

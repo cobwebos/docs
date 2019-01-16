@@ -1,6 +1,6 @@
 ---
 title: 在 Azure Monitor 中收集自定义 JSON 数据 | Microsoft Docs
-description: 可以使用适用于 Linux 的 Log Analytics 代理将自定义 JSON 数据源收集到 Azure Monitor 中。  这些自定义数据源可以是返回 JSON 的简单脚本，例如 curl 或 FluentD 的 300 多个插件之一。 本文介绍此数据收集所需的配置。
+description: 使用 Log Analytics Linux 代理将自定义 JSON 数据源收集到 Log Analytics 中。  这些自定义数据源可以是返回 JSON 的简单脚本，例如 curl 或 FluentD 的 300 多个插件之一。 本文介绍此数据收集所需的配置。
 services: log-analytics
 documentationcenter: ''
 author: mgoedtel
@@ -13,16 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/28/2018
 ms.author: magoedte
-ms.openlocfilehash: 64f1d7b1437ea018a25db18e5f92bffaac8f7099
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 36f914109d8d3879d23511cb37055d20db4d670c
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53438449"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54105213"
 ---
 # <a name="collecting-custom-json-data-sources-with-the-log-analytics-agent-for-linux-in-azure-monitor"></a>在 Azure Monitor 中使用适用于 Linux 的 Log Analytics 代理收集自定义 JSON 数据源
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]
-可以使用适用于 Linux 的 Log Analytics 代理将自定义 JSON 数据源收集到 [Azure Monitor 日志](data-collection.md)中。  这些自定义数据源可以是返回 JSON 的简单脚本，例如 [curl](https://curl.haxx.se/) 或 [FluentD 的 300 多个插件](http://www.fluentd.org/plugins/all)之一。 本文介绍此数据收集所需的配置。
+
+使用适用于 Linux 的 Log Analytics 代理将自定义 JSON 数据源收集到 [Log Analytics](data-collection.md) 中。  这些自定义数据源可以是返回 JSON 的简单脚本，例如 [curl](https://curl.haxx.se/) 或 [FluentD 的 300 多个插件](http://www.fluentd.org/plugins/all)之一。 本文介绍此数据收集所需的配置。
+
 
 > [!NOTE]
 > Log Analytics Linux v1.1.0-217+ 代理是自定义 JSON 数据所必需的
@@ -31,7 +33,7 @@ ms.locfileid: "53438449"
 
 ### <a name="configure-input-plugin"></a>配置输入插件
 
-要在 Azure Monitor 中收集 JSON 数据，请将 `oms.api.` 添加到输入插件中 FluentD 标记的起始位置。
+要在 Log Analytics 中收集 JSON 数据，请将 `oms.api.` 添加到输入插件中 FluentD 标记的起始位置。
 
 例如，下面是 `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.d/` 中一个单独的配置文件 `exec-json.conf`。  此配置文件使用 FluentD 插件 `exec` 每隔 30 秒运行一个 curl 命令。  此命令的输出由 JSON 输出插件收集。
 
@@ -85,9 +87,9 @@ ms.locfileid: "53438449"
     sudo /opt/microsoft/omsagent/bin/service_control restart 
 
 ## <a name="output"></a>输出
-数据将以记录类型 `<FLUENTD_TAG>_CL` 收集到 Log Analytics 日志中。
+将在 Log Analytics 中收集具有 `<FLUENTD_TAG>_CL` 记录类型的数据。
 
-例如，Azure Monitor 中具有 `tomcat_CL` 记录类型的自定义标记 `tag oms.api.tomcat`。  可以使用以下日志查询检索此类型的所有记录。
+例如，Log Analytics 中具有 `tomcat_CL` 记录类型的自定义标记 `tag oms.api.tomcat`。  可以使用以下日志查询检索此类型的所有记录。
 
     Type=tomcat_CL
 

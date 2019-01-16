@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 01/12/2017
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: c0040958cbf748d3eafb3ee60806b064e4e0b1ba
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 43daae3f3cb8a2b95413983464e41a69e69fcf36
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53435780"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54120557"
 ---
 # <a name="use-mapreduce-in-apache-hadoop-on-hdinsight-with-remote-desktop"></a>通过远程桌面在 HDInsight 上的 Apache Hadoop 中使用 MapReduce
 [!INCLUDE [mapreduce-selector](../../../includes/hdinsight-selector-use-mapreduce.md)]
@@ -74,7 +74,7 @@ ms.locfileid: "53435780"
 
         hadoop fs -cat wasb:///example/data/WordCountOutput/part-r-00000
 
-    这会显示 **wasbs://example/data/gutenberg/davinci.txt** 文件中包含的单词列表，以及每个单词的出现次数。 下面是要包含在文件中的数据示例：
+    这会显示 **wasbs://example/data/gutenberg/davinci.txt** 文件中包含的单词列表，以及每个单词出现的次数。 下面是要包含在文件中的数据示例：
 
         wreathed        3
         wreathing       1

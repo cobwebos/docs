@@ -9,17 +9,16 @@ ms.assetid: 9b0fdc59-5bbe-44d1-9ebc-8be14d44def9
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/30/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 843b92c20b2ec930ce67659802a4287328a08650
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 77c55657f57af655b5b8154dbcf58472434396a6
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39618863"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54015486"
 ---
 # <a name="monitor-and-manage-azure-data-factory-pipelines-by-using-the-azure-portal-and-powershell"></a>使用 Azure 门户和 PowerShell 监视和管理 Azure 数据工厂管道
 > [!div class="op_single_selector"]
@@ -162,7 +161,7 @@ ms.locfileid: "39618863"
 
 ![状态图](./media/data-factory-monitor-manage-pipelines/state-diagram.png)
 
-数据工厂中的数据集状态转换流如下：“等待”->“正在进行/正在进行（正在验证）”->“就绪/失败”。
+数据工厂中的数据集状态转换流程如下：正在等待 - > 正在进行/正在进行（正在验证）- > 就绪/失败。
 
 切片从“等待”状态开始，等待满足前提条件后执行。 然后，活动开始执行，切片进入“正在进行”状态。 活动执行可能成功，也可能失败。 根据执行结果，切片被标记为“就绪”或“失败”。
 

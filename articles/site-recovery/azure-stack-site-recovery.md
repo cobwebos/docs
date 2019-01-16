@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: site-recovery
 ms.date: 12/27/2018
 ms.author: raynew
-ms.openlocfilehash: 02e6d6407a515314d99ea747dac3646d665c47ae
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: c353c40cc838dc4082d3d4b843a48a5fedb6e1f5
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53976573"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54039463"
 ---
 # <a name="replicate-azure-stack-vms-to-azure"></a>将 Azure Stack VM 复制到 Azure
 
@@ -142,7 +142,7 @@ Site Recovery 有助于实现业务连续性和灾难恢复 (BCDR) 策略。 该
 
 ## <a name="step-2-create-a-vault-and-select-a-replication-goal"></a>步骤 2：创建保管库并选择复制目标
 
-1. 在 Azure 门户中，选择“创建资源” > “监视 + 管理” > “备份和站点恢复”。
+1. 在 Azure 门户中，选择“创建资源” > “管理工具” > “备份和站点恢复”。
 2. 在“名称”中，输入一个友好名称以标识此保管库。 
 3. 在“资源”组中，创建或选择资源组。 我们将使用 contosoRG。
 4. 在“位置”中，输入 Azure 区域。 我们将使用“西欧”。

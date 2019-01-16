@@ -9,19 +9,19 @@ ms.service: application-insights
 ms.workload: TBD
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 04/25/2017
+ms.date: 01/07/2019
 ms.reviewer: sergkanz
 ms.author: mbullwin
-ms.openlocfilehash: 91f6254fe756f256a2c88429fb4d96156867ef4a
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: d39ec71315bec98c35ac7fb76ed9a88a094817ca
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54001900"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54117140"
 ---
 # <a name="request-telemetry-application-insights-data-model"></a>请求遥测：Application Insights 数据模型
 
-[Application Insights](../../application-insights/app-insights-overview.md) 中的请求遥测项表示由应用程序的外部请求触发的执行的逻辑序列。 每个请求执行由包含所有执行参数的唯一 `ID` 和 `url` 标识。 可以按逻辑 `name` 将请求分组，并定义此请求的 `source`。 代码执行的结果可能是 `success` 或 `fail`，并且具有特定的 `duration`。 可以进一步根据 `resultCode` 将成功和失败的执行分组。 请求遥测的开始时间在信封级别定义。
+[Application Insights](../../azure-monitor/app/app-insights-overview.md) 中的请求遥测项表示由应用程序的外部请求触发的执行的逻辑序列。 每个请求执行由包含所有执行参数的唯一 `ID` 和 `url` 标识。 可以按逻辑 `name` 将请求分组，并定义此请求的 `source`。 代码执行的结果可能是 `success` 或 `fail`，并且具有特定的 `duration`。 可以进一步根据 `resultCode` 将成功和失败的执行分组。 请求遥测的开始时间在信封级别定义。
 
 请求遥测使用自定义的 `properties` 和 `measurements` 支持标准可扩展性模型。
 
@@ -65,7 +65,7 @@ ms.locfileid: "54001900"
 
 指示调用成功还是失败。 此字段是必填的。 如果未显式设置为 `false` - 将请求视为成功。 如果操作被异常中断或者返回错误结果代码，请将此值设置为 `false`。
 
-对于 Web 应用程序，如果响应代码小于 `400` 或等于 `401`，Application Insights 会将请求定义为失败。 但是，在某些情况下，此默认映射与应用程序的语义不匹配。 响应代码 `404` 可能指示“无记录”，这可能是常规流的一部分。 它也可能指示链接断开。 对于断开的链接，甚至可以实现更高级的逻辑。 仅当通过分析 URL 引用站点确定这些断开的链接位于同一站点时，才可以将这些链接标记为失败。 或者，在从公司的移动应用程序访问这些链接时，可将其标记为失败。 同样，在从不支持重定向的客户端访问这些链接时，`301` 和 `302` 将指示失败。
+对于 Web 应用程序，如果响应代码小于 `400` 或等于 `401`，Application Insights 会将请求定义为成功。 但是，在某些情况下，此默认映射与应用程序的语义不匹配。 响应代码 `404` 可能指示“无记录”，这可能是常规流的一部分。 它也可能指示链接断开。 对于断开的链接，甚至可以实现更高级的逻辑。 仅当通过分析 URL 引用站点确定这些断开的链接位于同一站点时，才可以将这些链接标记为失败。 或者，在从公司的移动应用程序访问这些链接时，可将其标记为失败。 同样，在从不支持重定向的客户端访问这些链接时，`301` 和 `302` 将指示失败。
 
 部分接受的内容 `206` 可能指示整个请求失败。 例如，Application Insights 终结点以单个请求的形式接收一批遥测项。 未成功处理该批中的某些项时，该终结点将返回 `206`。 `206` 比率提高指示出现了需要调查的问题。 类似的逻辑适用于 `207` 多状态，其中的成功结果可能是不同响应代码的最差结果。
 

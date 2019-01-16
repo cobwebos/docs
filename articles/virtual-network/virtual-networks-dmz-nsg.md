@@ -5,8 +5,6 @@ services: virtual-network
 documentationcenter: na
 author: tracsman
 manager: rossort
-editor: ''
-ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
@@ -14,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/03/2017
 ms.author: jonor
-ms.openlocfilehash: 2f399b5084ab65736adfebb5cf0a77ccfbc972e8
-ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
+ms.openlocfilehash: 680b47fd65cfde1fe01dfff9b74ddd42d1a73c1f
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49457283"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54052387"
 ---
 # <a name="example-1--build-a-simple-dmz-using-nsgs-with-an-azure-resource-manager-template"></a>示例 1 – 使用 NSG 和 Azure 资源管理器模板构建简单的外围网络
 [返回安全边界最佳实践页面][HOME]
@@ -51,8 +49,8 @@ ms.locfileid: "49457283"
 
 **若要构建此环境**，请参阅本文档参考部分中的详细说明；
 
-1. 通过以下链接部署 Azure 资源管理器模板：[Azure 快速启动模板][Template]
-2. 通过以下链接安装示例应用程序：[示例应用程序脚本][SampleApp]
+1. 部署 Azure 资源管理器模板，请参阅：[Azure 快速入门模板][Template]
+2. 安装示例应用程序，请参阅：[示例应用程序脚本][SampleApp]
 
 >[!NOTE]
 >为了能够通过 RDP 连接到此实例中的任何后端服务器，我们使用了 IIS 服务器作为“跳接箱”。 首先通过 RDP 连接到 IIS 服务器，然后在 IIS 服务器上通过 RDP 连接到后端服务器。 或者，可将一个公共 IP 与每个服务器 NIC 相关联，方便建立 RDP 连接。
@@ -350,7 +348,7 @@ ms.locfileid: "49457283"
 若要删除此部署，请删除资源组，这会同时所有子资源。
 
 #### <a name="sample-application-scripts"></a>示例应用程序脚本
-成功运行模板后，可以设置 Web 服务器，此外还可以设置应用服务器并在其中包含一个简单的 Web 应用程序，以便使用此外围网络配置进行测试。 若要为此安装示例应用程序和其他外围网络示例，以下链接提供了所需的示例：[应用程序脚本示例][SampleApp]
+成功运行模板后，可以设置 Web 服务器，此外还可以设置应用服务器并在其中包含一个简单的 Web 应用程序，以便使用此外围网络配置进行测试。 若要为此安装示例应用程序和其他外围网络示例，以下链接提供了所需的示例：[示例应用程序脚本][SampleApp]
 
 ## <a name="next-steps"></a>后续步骤
 

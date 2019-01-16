@@ -12,12 +12,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 05/25/2017
 ms.author: glenga
-ms.openlocfilehash: 428e1bed4e62b4fcbd7a4e03601cfc5c630b6583
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 488b3797c7e18855a60b84a77a05e4e0a5654475
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53715522"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54023647"
 ---
 # <a name="automate-resource-deployment-for-your-function-app-in-azure-functions"></a>为 Azure Functions 中的函数应用自动执行资源部署
 
@@ -36,6 +36,12 @@ ms.locfileid: "53715522"
 * [Azure 存储](../storage/index.yml)帐户
 * 托管计划（消耗计划或应用服务计划）
 * 函数应用 
+
+有关这些资源的 JSON 语法和属性，请参阅：
+
+* [Microsoft.Storage/storageAccounts](/azure/templates/microsoft.storage/storageaccounts)
+* [Microsoft.Web/serverfarms](/azure/templates/microsoft.web/serverfarms)
+* [Microsoft.Web/sites](/azure/templates/microsoft.web/sites)
 
 ### <a name="storage-account"></a>存储帐户
 

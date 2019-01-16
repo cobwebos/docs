@@ -1,12 +1,10 @@
 ---
-title: 在 Azure 中为 SMTP 横幅检查配置反向查找区域 | Microsoft Docs
+title: 在 Azure 中为 SMTP 横幅检查配置反向查找区域
+titlesuffix: Azure Virtual Network
 description: 介绍如何在 Azure 中为 SMTP 横幅检查配置反向查找区域
 services: virtual-network
 documentationcenter: virtual-network
 author: genlin
-manager: WillChen
-editor: ''
-tags: azure-resource-manager
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
@@ -14,13 +12,12 @@ ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 10/31/2018
 ms.author: genli
-ms.custom: ''
-ms.openlocfilehash: 815e3c711850eab11aef63e04a1c512c4510a910
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: 6d5e8f199380aca86da005823536a5be4a599e90
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51684270"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54052949"
 ---
 #  <a name="configure-reverse-lookup-zones-for-an-smtp-banner-check"></a>为 SMTP 横幅检查配置反向查找区域
 
@@ -30,7 +27,7 @@ ms.locfileid: "51684270"
 
 如果在 Microsoft Azure 中托管 SMTP 服务器，则通过自远程邮件服务器收发邮件时，可能收到以下错误消息：
 
-**554: 无 PTR 记录** 
+**554：无 PTR 记录** 
 
 ## <a name="solution"></a>解决方案
 

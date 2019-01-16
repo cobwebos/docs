@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/01/2016
 ms.author: jonor;sivae
-ms.openlocfilehash: cc0e8a3fa749eb2e6f65ef92c2d3cb404cfc8bc0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: fdc4885c079a3659d394517f0a10394eff0720c8
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23126925"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54119147"
 ---
 # <a name="example-2--build-a-dmz-to-protect-applications-with-a-firewall-and-nsgs"></a>示例 2 – 构建外围网络以通过防火墙和 NSG 保护应用程序
 [返回安全边界最佳实践页面][HOME]
@@ -32,7 +32,7 @@ ms.locfileid: "23126925"
 在本示例中，有一个包含以下项的订阅：
 
 * 两个云服务：“FrontEnd001”和“BackEnd001”
-* 具有两个子网的虚拟网络“CorpNetwork”：“FrontEnd”和“BackEnd”
+* 虚拟网络“CorpNetwork”，包含下面两个子网：“FrontEnd”和“BackEnd”
 * 应用到这两个子网的单个网络安全组
 * 一个与前端子网连接的网络虚拟设备（在本示例中为 Barracuda NextGen Firewall）
 * 一个代表应用程序 Web 服务器的 Windows Server（“IIS01”）
@@ -56,8 +56,8 @@ ms.locfileid: "23126925"
 
 成功运行脚本后，可执行以下脚本后续步骤：
 
-1. 设置防火墙规则，下面的“防火墙规则”部分中对此进行了介绍。
-2. （可选）“参考”部分中提供了两个脚本，用于设置 Web 服务器和包含简单 Web 应用程序的应用服务器，以便能使用此外围网络配置进行测试。
+1. 设置防火墙规则，这将在下面标题为“防火墙规则”的部分中进行介绍。
+2. （可选）“参考”部分中提供了两个脚本，用于设置 Web 服务器和应用服务器；还提供了一个简单的 Web 应用程序，用于测试此外围网络配置。
 
 下一部分介绍与网络安全组相关的大部分脚本语句。
 
@@ -80,14 +80,14 @@ ms.locfileid: "23126925"
 
 将这些规则绑定到每个子网后，如果有从 Internet 到 Web 服务器的入站 HTTP 请求，那么规则 3（允许）和规则 5（拒绝）均适用，但由于规则 3 具有较高的优先级，因此只应用规则 3 并忽略规则 5。 这样就会允许 HTTP 请求传往防火墙。 如果相同的流量尝试传往 DNS01 服务器，则会先应用规则 5（拒绝），因此不允许该流量传递到服务器。 规则 6（拒绝）阻止前端子网与后端子网对话（规则 1 和 4 允许的流量除外），这可在攻击者入侵前端上的 Web 应用程序时保护后端网络，攻击者只能对后端的“受保护”网络进行有限访问（只能访问 AppVM01 服务器上公开的资源）。
 
-有一个默认出站规则可允许流量外流到 Internet。 在此示例中，我们允许出站流量，且未修改任何出站规则。 要锁定双向流量需要用户定义的路由，这在另一示例中进行了探究，可以在[主要安全边界文档][HOME]中查找。
+有一个默认出站规则可允许流量外流到 Internet。 在本示例中，我们允许出站流量，且未修改任何出站规则。 要锁定双向流量需要用户定义的路由，这在另一示例中进行了探究，可以在[主要安全边界文档][HOME]中查找。
 
 上述 NSG 规则与[示例 1 - 使用 NSG 构建简单的外围网络][Example1]中的 NSG 规则非常相似。 请查看该文档中的 NSG 说明，详细了解每个 NSG 规则及其属性。
 
 ## <a name="firewall-rules"></a>防火墙规则
 电脑上必须安装管理客户端才能管理防火墙和创建所需的配置。 有关如何管理设备的信息，请参阅防火墙（或其他 NVA）供应商提供的文档。 本部分的其余内容介绍如何通过供应商的管理客户端（即，不使用 Azure 门户或 PowerShell）来配置防火墙本身。
 
-有关下载客户端和连接到本示例所用 Barracuda 的说明，可在以下位置找到：[Barracuda NG Admin](https://techlib.barracuda.com/NG61/NGAdmin)
+有关下载客户端和连接到本示例所用的 Barracuda 的说明，可在以下位置找到：[Barracuda NG Admin](https://techlib.barracuda.com/NG61/NGAdmin)
 
 需要在防火墙上创建转发规则。 本示例只将 Internet 流量入站路由到防火墙，再传送到 Web 服务器，因此只需要一条转发 NAT 规则。 在本示例使用的 Barracuda NextGen Firewall 上，此规则就是目标 NAT 规则（“Dst NAT”），由它传递此流量。
 
@@ -95,7 +95,7 @@ ms.locfileid: "23126925"
 
 创建一条新规则并为其命名，例如“WebTraffic”。 
 
-“目标 NAT 规则”图标类似于：![“目标 NAT”图标][2]
+目标 NAT 规则图标类似于：![“目标 NAT”图标][2]
 
 规则的外观类似于：
 
@@ -427,7 +427,7 @@ Web 服务器、IIS01 和防火墙都在相同的云服务中，因此共享相�
             Else { Write-Host "The deployment location was found in the network config file." -ForegroundColor Green}}
 
     If ($FatalError) {
-        Write-Host "A fatal error has occured, please see the above messages for more information." -ForegroundColor Red
+        Write-Host "A fatal error has occurred, please see the above messages for more information." -ForegroundColor Red
         Return}
     Else { Write-Host "Validation passed, now building the environment." -ForegroundColor Green}
 
@@ -568,7 +568,7 @@ Web 服务器、IIS01 和防火墙都在相同的云服务中，因此共享相�
     </NetworkConfiguration>
 
 #### <a name="sample-application-scripts"></a>示例应用程序脚本
-如果需要为其安装示例应用程序和其他外围网络示例，以下链接提供了所需示例：[应用程序脚本示例][SampleApp]
+如果希望为此外围网络示例以及其他外围网络示例安装一个示例应用程序，可以使用以下链接上提供的应用程序：[示例应用程序脚本][SampleApp]
 
 <!--Image References-->
 [1]: ./media/virtual-networks-dmz-nsg-fw-asm/example2design.png "使用 NSG 的入站外围网络"
