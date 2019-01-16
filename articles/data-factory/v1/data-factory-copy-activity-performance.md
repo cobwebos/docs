@@ -9,22 +9,21 @@ ms.assetid: 4b9a6a4f-8cf5-4e0a-a06f-8133a2b7bc58
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/25/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 505f7345af6224b767d6d3719c123d91f54e48f5
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 632e605a6f7c9885f3854ca1f7b69ed337a1eacc
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37054286"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54025872"
 ---
 # <a name="copy-activity-performance-and-tuning-guide"></a>复制活动性能和优化指南
 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [第 1 版](data-factory-copy-activity-performance.md)
+> * [版本 1](data-factory-copy-activity-performance.md)
 > * [版本 2（当前版本）](../copy-activity-performance.md)
 
 > [!NOTE]
@@ -73,7 +72,7 @@ Azure 提供了一组企业级数据存储和数据仓库解决方案，并且�
     </tr>
     <tr>
         <td>网络</td>
-        <td>Internet 接口：10 Gbps；intranet 接口：40 Gbps</td>
+        <td>Internet 接口：10 Gbps；Intranet 接口：40 Gbps</td>
     </tr>
     </table>
 
@@ -207,7 +206,7 @@ Azure 提供了一组企业级数据存储和数据仓库解决方案，并且�
 ### <a name="configuration"></a>配置
 在复制活动中配置 **enableStaging** 设置，指定在将数据加载到目标数据存储之前是否要在 Blob 存储中暂存。 将 **enableStaging** 设置为 TRUE 时，指定下一个表中列出的其他属性。 如果未指定，则还需要创建 Azure 存储或存储共享访问签名链接服务供暂存用。
 
-| 属性 | 说明 | 默认值 | 必选 |
+| 属性 | 说明 | 默认值 | 必需 |
 | --- | --- | --- | --- |
 | **enableStaging** |指定是否要通过过渡暂存存储复制数据。 |False |否 |
 | **linkedServiceName** |指定 [AzureStorage](data-factory-azure-blob-connector.md#azure-storage-linked-service) 或 [AzureStorageSas ](data-factory-azure-blob-connector.md#azure-storage-sas-linked-service) 链接服务的名称，这指用作过渡暂存存储的存储实例。 <br/><br/> 不能使用具有共享访问签名的存储通过 PolyBase 将数据加载到 SQL 数据仓库。 可在其他任何情况下使用它。 |不适用 |将 **enableStaging** 设置为 TRUE 时，则为是 |
@@ -311,7 +310,7 @@ Azure 提供了一组企业级数据存储和数据仓库解决方案，并且�
 ### <a name="file-based-data-stores"></a>基于文件的数据存储
 （包括 Blob 存储、Data Lake Store、Amazon S3、本地文件系统和本地 HDFS）
 
-* **复制行为**：如果从基于文件的不同数据存储复制数据，则复制活动可通过 **copyBehavior** 属性提供三个选项。 它将保留层次结构、平展层次结构或合并文件。 保留或平展层次结构有少量的性能开销或没有性能开销，但合并文件会导致性能开销增加。
+* **复制行为**：如果从基于文件的不同数据存储复制数据，则复制活动可通过 copyBehavior 属性提供三个选项。 它将保留层次结构、平展层次结构或合并文件。 保留或平展层次结构有少量的性能开销或没有性能开销，但合并文件会导致性能开销增加。
 * **文件格式和压缩**：有关提高性能的更多方法，请参阅[序列化和反序列化注意事项](#considerations-for-serialization-and-deserialization)和[压缩注意事项](#considerations-for-compression)部分。
 * **Blob 存储**：目前，对于优化的数据传输和吞吐量，Blob 存储仅支持块 blob。
 * 对于需要使用**数据管理网关**的**本地文件系统**方案，请参阅[数据管理网关注意事项](#considerations-for-data-management-gateway)部分。
@@ -319,7 +318,7 @@ Azure 提供了一组企业级数据存储和数据仓库解决方案，并且�
 ### <a name="relational-data-stores"></a>关系数据存储
 （包括 SQL 数据库、SQL 数据仓库、SQL Server 数据库和 Oracle 数据库）
 
-* **复制行为**：根据已为 **sqlSink** 设置的属性，复制活动以不同的方式将数据写入目标数据库。
+* **复制行为**：根据已为 sqlSink 设置的属性，复制活动以不同的方式将数据写入目标数据库。
   * 数据移动服务默认使用大容量复制 API 以追加模式插入数据，这提供最佳性能。
   * 如果在接收器中配置存储过程，数据库一次会应用一行数据，而不是大容量加载。 性能会大大降低。 如果数据集较大，请考虑切换为使用 **sqlWriterCleanupScript** 属性（如适用）。
   * 如果为每个复制活动运行配置 **sqlWriterCleanupScript** 属性，该服务将触发脚本，然后使用大容量复制 API 插入数据。 例如，若要使用最新数据覆盖整个表，可指定一个脚本，先删除所有记录，再从源大容量加载新数据。
@@ -369,7 +368,7 @@ Azure 提供了一组企业级数据存储和数据仓库解决方案，并且�
 请谨慎对待需要数据工厂同时连接到同一数据存储的数据集数和复制活动数。 许多并发复制作业可能会限制数据存储，并导致性能下降，复制作业内部重试，甚至在某些情况下导致执行失败。
 
 ## <a name="sample-scenario-copy-from-an-on-premises-sql-server-to-blob-storage"></a>示例方案：从本地 SQL Server 复制到 Blob 存储
-**方案**：构建管道，以 CSV 格式将数据从本地 SQL Server 复制到 Blob 存储。 要使复制作业更快，应将 CSV 文件压缩为 bzip2 格式。
+**场景**：构建管道，以 CSV 格式将数据从本地 SQL Server 复制到 Blob 存储。 要使复制作业更快，应将 CSV 文件压缩为 bzip2 格式。
 
 **测试和分析**：复制活动的吞吐量小于 2 MBps，这比性能基准慢得多。
 
@@ -379,7 +378,7 @@ Azure 提供了一组企业级数据存储和数据仓库解决方案，并且�
 2. **序列化和压缩数据**：网关将数据流序列化为 CSV 格式，并将数据压缩为 bzip2 流。
 3. **写入数据**：网关通过 Internet 将 bzip2 流上传到 Blob 存储。
 
-如你所见，数据以流式处理顺序方式进行处理和移动：SQL Server > LAN> 网关 > WAN > Blob 存储。 **整体性能受管道中最小吞吐量的限制**。
+如你所见，数据以流式处理顺序方式进行处理和移动：SQL Server > LAN > 网关 > WAN > Blob 存储。 **整体性能受管道中最小吞吐量的限制**。
 
 ![数据流](./media/data-factory-copy-activity-performance/case-study-pic-1.png)
 
@@ -387,7 +386,7 @@ Azure 提供了一组企业级数据存储和数据仓库解决方案，并且�
 
 * **源**：SQL Server 本身由于负载过重而吞吐量低。
 * **数据管理网关**：
-  * **LAN**：网关的位置离 SQL Server 计算机很远，且带宽连接低。
+  * **LAN**：网关的位置离 SQL Server 计算机很远，且具有低带宽连接。
   * **网关**：网关已达到其执行以下操作的负载限制：
     * **序列化**：将数据流序列化为 CSV 格式时吞吐量缓慢。
     * **压缩**：选择慢速压缩编解码器（例如，bzip2，其采用 Core i7，速度为 2.8 MBps）。
@@ -411,7 +410,7 @@ Azure 提供了一组企业级数据存储和数据仓库解决方案，并且�
 
 **方案 III**：个别文件大小大于几十 MB 且总量很大。
 
-**分析和优化性能**：因为单一云 DMU 的资源限制，增加 **parallelCopies** 不会产生更好的复制性能。 而应指定更多云 DMU，获取更多资源来执行数据移动。 请勿指定 **parallelCopies** 属性的值。 数据工厂处理并行度。 在此情况下，如果将 **cloudDataMovementUnits** 设置为 4，则会产生大约 4 倍的吞吐量。
+**分析和性能优化**：因为单一云 DMU 的资源限制，增加 **parallelCopies** 不会产生更好的复制性能。 而应指定更多云 DMU，获取更多资源来执行数据移动。 请勿指定 **parallelCopies** 属性的值。 数据工厂处理并行度。 在此情况下，如果将 **cloudDataMovementUnits** 设置为 4，则会产生大约 4 倍的吞吐量。
 
 ![方案 3](./media/data-factory-copy-activity-performance/scenario-3.png)
 
@@ -423,4 +422,4 @@ Azure 提供了一组企业级数据存储和数据仓库解决方案，并且�
 * Azure SQL 数据仓库：其功能以数据仓库单位 (DWU) 衡量；请参阅[管理 Azure SQL 数据仓库中的计算能力（概述）](../../sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md)
 * Azure Cosmos DB：[Azure Cosmos DB 中的性能级别](../../cosmos-db/performance-levels.md)
 * 本地 SQL Server：[监视和优化性能](https://msdn.microsoft.com/library/ms189081.aspx)
-* 本地文件服务器：[Performance tuning for file servers](https://msdn.microsoft.com/library/dn567661.aspx)（文件服务器性能优化）
+* 本地文件服务器：[文件服务器性能优化](https://msdn.microsoft.com/library/dn567661.aspx)

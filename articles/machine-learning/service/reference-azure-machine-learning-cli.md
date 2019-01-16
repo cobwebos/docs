@@ -11,12 +11,12 @@ ms.author: jordane
 author: jpe316
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: e16506773e38f1732a55161cdd58ffb7523602d4
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: bbe843f3481c6cd15f2c14386088cbb8d2d355d6
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53277278"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54053119"
 ---
 # <a name="use-the-cli-extension-for-azure-machine-learning-service"></a>将 CLI 扩展用于 Azure 机器学习服务
 
@@ -52,7 +52,7 @@ CLI 不能取代 Azure 机器学习 SDK。 它是一个经过优化的补充工�
 若要安装机器学习 CLI 扩展，请使用以下命令：
 
 ```azurecli-interactive
-az extension add -s https://azuremlsdktestpypi.blob.core.windows.net/wheels/sdk-release/Preview/E7501C02541B433786111FE8E140CAA1/azure_cli_ml-1.0.2-py2.py3-none-any.whl --pip-extra-index-urls  https://azuremlsdktestpypi.azureedge.net/sdk-release/Preview/E7501C02541B433786111FE8E140CAA1
+az extension add -s https://azuremlsdktestpypi.blob.core.windows.net/wheels/sdk-release/Preview/E7501C02541B433786111FE8E140CAA1/azure_cli_ml-1.0.6-py2.py3-none-any.whl --pip-extra-index-urls  https://azuremlsdktestpypi.azureedge.net/sdk-release/Preview/E7501C02541B433786111FE8E140CAA1
 ```
 
 出现提示时，选择 `y` 安装该扩展。
@@ -91,7 +91,7 @@ az extension remove -n azure-cli-ml
     az configure --defaults aml_workspace=myworkspace group=myresourcegroup
     ```
 
-+ 为分布式定型创建托管的计算目标：
++ 为分布式训练创建托管的计算目标：
 
     ```azurecli-interactive
     az ml computetarget create amlcompute -n mycompute --max_nodes 4 --size Standard_NC6
@@ -103,7 +103,7 @@ az extension remove -n azure-cli-ml
     az ml computetarget update --name mycompute --workspace –-group --max_nodes 4 --min_nodes 2 --idle_time 300
     ```
 
-* 附加非托管计算目标以进行定型或部署：
+* 附加非托管计算目标以进行训练或部署：
 
     ```azurecli-interactive
     az ml computetarget attach aks -n myaks -i myaksresourceid -g myrg -w myworkspace
@@ -119,11 +119,15 @@ az extension remove -n azure-cli-ml
     az ml project attach --experiment-name myhistory
     ```
 
-* 开始运行试验。 使用此命令时，请指定计算目标。 在此示例中，`local` 使用本地计算机通过 `train.py` 脚本训练模型：
+* 开始运行试验。 使用此命令时，请指定包含运行配置的 `.runconfig` 文件的名称。 计算目标使用运行配置来为模型创建训练环境。 在此示例中，运行配置是从 `./aml_config/myrunconfig.runconfig` 文件加载的。
 
     ```azurecli-interactive
-    az ml run submit -c local train.py
+    az ml run submit -c myrunconfig train.py
     ```
+
+    在使用 `az ml project attach` 命令附加项目时会创建名为 `docker.runconfig` 和 `local.runconfig` 的默认 `.runconfig` 文件。 在使用它们来训练模型之前可能需要修改它们。 
+
+    还可以使用 [RunConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfig.runconfiguration?view=azure-ml-py) 类以编程方式创建运行配置。 在创建后，可以使用 `save()` 方法来创建 `.runconfig` 文件。
 
 * 查看提交的试验列表：
 

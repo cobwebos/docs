@@ -3,7 +3,7 @@ title: 如何在创建 VHD 期间对常见问题进行故障排除 | Microsoft D
 description: 创建 VHD 时常见疑难解答问题和难题的答案。
 services: Azure Marketplace
 documentationcenter: ''
-author: HannibalSII
+author: v-miclar
 manager: ''
 editor: ''
 ms.assetid: e39563d8-8646-4cb7-b078-8b10ac35b494
@@ -14,15 +14,16 @@ ms.tgt_pltfrm: Azure
 ms.workload: na
 ms.date: 09/26/2016
 ms.author: hascipio; v-divte
-ms.openlocfilehash: c4e88a9fbb15dd90d619b159ae1065dfacc1907f
-ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
+ROBOTS: NOINDEX
+ms.openlocfilehash: e58a5f8901b2ab53d47095e1d5fd232783e3b1ba
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39713391"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54079130"
 ---
 # <a name="how-to-troubleshoot-common-issues-encountered-during-vhd-creation"></a>如何对 VHD 创建期间遇到的常见问题进行故障排除
-提供本文的目的是在发布或管理虚拟机解决方案时，帮助可能遇到问题或有常见问题的 Azure 市场发布者和/或联合管理员。
+提供本文的目的是帮助在发布或管理虚拟机解决方案时可能遇到问题或有常见问题的 Azure 市场发布者和/或共同管理员。
 
 1. 如何更改主机名称？
    
@@ -54,4 +55,4 @@ ms.locfileid: "39713391"
    有关支持策略的详细信息，请参阅以下链接：[https://support.microsoft.com/kb/2721672](https://support.microsoft.com/kb/2721672)
 10. 每当我尝试从 VHD 中创建图像时，都会在 PowerShell 中收到错误“VHD 已通过图像存储库注册为资源”。 我之前没有创建任何图像，也没在 Azure 中找到任何带有此名称的图像。 如何解决此问题？
     
-    如果用户从此 VHD 预配 VM，而该 VHD 没有锁定，通常会发生此情况。 请查看是否有 VM 分配自此 VHD。 如果错误仍然存在，请使用此链接或从有关的发布门户提出支持票证（详细信息在问题 11 的答案中提供）。
+    如果用户从此 VHD 预配 VM，而该 VHD 上有锁，则通常会发生此情况。 请检查是否没有从此 VHD 分配过 VM。 如果错误仍然存在，请使用此链接或从发布门户提出支持票证（详细信息在问题 11 的解答中提供）。

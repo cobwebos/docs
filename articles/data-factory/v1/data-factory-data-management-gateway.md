@@ -9,17 +9,16 @@ ms.assetid: b9084537-2e1c-4e96-b5bc-0e2044388ffd
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 988c264ef6052b4b41de493944ac8d39a197a083
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 728adae62677eb2edb1e203df9b0d9f11f6acecf
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43698751"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54022302"
 ---
 # <a name="data-management-gateway"></a>数据管理网关
 > [!NOTE]
@@ -140,7 +139,7 @@ ms.locfileid: "43698751"
 
 在企业防火墙级别，需配置以下域和出站端口：
 
-| 域名 | 端口 | Description |
+| 域名 | 端口 | 说明 |
 | --- | --- | --- |
 | * .servicebus.windows.net |443 |用于与数据移动服务后端进行通信 |
 | *.core.windows.net |443 |用于使用 Azure Blob 的暂存复制（如果已配置）|
@@ -152,7 +151,7 @@ ms.locfileid: "43698751"
 
 > [!NOTE]
 > 1. 根据源/接收器，可能需要在企业/Windows 防火墙中将其他域和出站端口加入允许列表。
-> 2. 对于部分云数据库（例如，[Azure SQL 数据库](https://docs.microsoft.com/azure/sql-database/sql-database-configure-firewall-settings)、[Azure Data Lake](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-secure-data#set-ip-address-range-for-data-access) 等），可能需要在其防火墙配置中将网关计算机的 IP 地址加入允许列表。
+> 2. 对于某些云数据库（例如：[Azure SQL 数据库](https://docs.microsoft.com/azure/sql-database/sql-database-configure-firewall-settings)、[Azure Data Lake](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-secure-data#set-ip-address-range-for-data-access)，等等），可能需要在其防火墙配置中将网关计算机的 IP 地址加入允许列表。
 >
 >
 
@@ -307,7 +306,7 @@ ms.locfileid: "43698751"
 安装网关后，可以通过以下方式之一来启动数据管理网关配置管理器：
 
 1. 在“搜索”窗口中，键入“数据管理网关”，以访问此实用程序。
-2. 在文件夹 **C:\Program Files\Microsoft Data Management Gateway\2.0\Shared** 中查找可执行文件 **ConfigManager.exe**
+2. 在以下文件夹中找到可执行文件 **ConfigManager.exe**：**C:\Program Files\Microsoft Data Management Gateway\2.0\Shared**
 
 ### <a name="home-page"></a>主页
 在主页中可执行以下操作：
@@ -360,7 +359,7 @@ ms.locfileid: "43698751"
 
 下表介绍“网关节点”列表中的列：  
 
-监视属性 | Description
+监视属性 | 说明
 :------------------ | :---------- 
 名称 | 逻辑网关和与网关关联的节点的名称。 节点是已在其上安装网关的本地 Windows 计算机。 有关在单个逻辑网关中采用多个节点（最多 4 个）的信息，请参阅[数据管理网关 - 高可用性和可伸缩性](data-factory-data-management-gateway-high-availability-scalability.md)。    
 状态 | 逻辑网关和网关节点的状态。 示例：联机/脱机/受限等。有关这些状态的信息，请参阅[网关状态](#gateway-status)部分。 
@@ -470,7 +469,7 @@ CPU 使用率 | 网关节点的 CPU 使用率。 此值为近实时快照。
 
 使用“设置凭据”应用程序时，门户使用网关计算机上“网关配置管理器”的“证书”选项卡上指定的证书来加密凭据。
 
-如果正在寻找基于 API 的方法来加密凭据，可以使用 [New-AzureRmDataFactoryEncryptValue](https://docs.microsoft.com/powershell/module/azurerm.datafactories/new-azurermdatafactoryencryptvalue) PowerShell cmdlet 来加密凭据。 此 cmdlet 使用的证书是配置网关加密凭据所用的证书。 将加密凭据添加到 JSON 中 **connectionString** 的 **EncryptedCredential** 元素中。 将 JSON 用于 [New-AzureRmDataFactoryLinkedService](https://docs.microsoft.com/powershell/module/azurerm.datafactories/new-azurermdatafactorylinkedservice) cmdlet 或在数据工厂编辑器。
+如果正在寻找基于 API 的方法来加密凭据，可以使用 [New-AzureRmDataFactoryEncryptValue](https://docs.microsoft.com/powershell/module/azurerm.datafactories/new-azurermdatafactoryencryptvalue) PowerShell cmdlet 来加密凭据。 此 cmdlet 使用的证书是配置网关加密凭据所用的证书。 将加密凭据添加到 JSON 中 **connectionString** 的 **EncryptedCredential** 元素中。 通过 [New-AzureRmDataFactoryLinkedService](https://docs.microsoft.com/powershell/module/azurerm.datafactories/new-azurermdatafactorylinkedservice) cmdlet 或在数据工厂编辑器中使用 JSON。
 
 ```JSON
 "connectionString": "Data Source=<servername>;Initial Catalog=<databasename>;Integrated Security=True;EncryptedCredential=<encrypted credential>",
@@ -510,7 +509,7 @@ CPU 使用率 | 网关节点的 CPU 使用率。 此值为近实时快照。
     Key               : ADF#00000000-0000-4fb8-a867-947877aef6cb@fda06d87-f446-43b1-9485-78af26b8bab0@4707262b-dc25-4fe5-881c-c8a7c3c569fe@wu#nfU4aBlq/heRyYFZ2Xt/CD+7i73PEO521Sj2AFOCmiI
     ```
 
-1. 在 Azure PowerShell 中，切换到文件夹：**C:\Program Files\Microsoft Data Management Gateway\2.0\PowerShellScript\\**。 运行与本地变量 $Key 关联的 RegisterGateway.ps1，如以下命令所示。 此脚本使用之前创建的逻辑网关注册安装在计算机上的客户端代理。
+1. 在 Azure PowerShell 中，切换到文件夹：**C:\Program Files\Microsoft Data Management Gateway\2.0\PowerShellScript\\**。 运行与本地变量 **$Key** 关联的 **RegisterGateway.ps1**，如以下命令所示。 此脚本使用之前创建的逻辑网关注册安装在计算机上的客户端代理。
 
     ```PowerShell
     PS C:\> .\RegisterGateway.ps1 $MyDMG.Key

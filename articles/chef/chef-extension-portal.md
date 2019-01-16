@@ -3,23 +3,23 @@ title: 通过 Azure 门户安装 Chef 客户端
 description: 了解如何通过 Azure 门户部署和配置 Chef 客户端
 keywords: azure, chef, devops, 客户端, 安装, 门户
 ms.service: virtual-machines-linux
-author: tomarcher
+author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.date: 05/15/2018
 ms.topic: article
-ms.openlocfilehash: e121cd038b8becee1e9c4c12659dbbee0696a9f1
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: e5de21e8e493871150d302f1d2c0e31d067affde
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44378646"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54051322"
 ---
 # <a name="install-the-chef-client-from-the-azure-portal"></a>通过 Azure 门户安装 Chef 客户端
 通过 Azure 门户创建或修改 Linux 或 Windows 虚拟机时，可将 Chef 扩展添加到该虚拟机。 本文逐步讲解如何使用新 Linux 虚拟机完成该过程。
 
 ## <a name="prerequisites"></a>先决条件
-- **Azure 订阅**：如果还没有 Azure 订阅，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
+- **Azure 订阅**：如果还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 
 - **Chef**：如果没有有效的 Chef 帐户，请注册 [Hosted Chef 免费试用版](https://manage.chef.io/signup)。 若要遵循本文中的说明，需要从 Chef 帐户获取以下值： 
     - organization_validation key
@@ -27,7 +27,7 @@ ms.locfileid: "44378646"
     - run_list
 
 ## <a name="install-the-chef-extension-on-a-new-linux-virtual-machine"></a>在新 Linux 虚拟机上安装 Chef 扩展
-在本部分，我们首先使用 Azure 门户来创建 Linux 虚拟机。 在此过程中，我们还会了解如何在新虚拟机上安装 Chef 扩展。
+在本部分中，你首先使用 Azure 门户来创建 Linux 虚拟机。 在此过程中，你还将了解如何在新虚拟机上安装 Chef 扩展。
 
 1. 浏览到 [Azure 门户](http://portal.azure.com)。
 
@@ -87,7 +87,7 @@ ms.locfileid: "44378646"
     - **验证客户端名称** - 输入 Chef 验证客户端名称。 例如，*tarcher-validator*。
     - **验证密钥** - 选择包含启动计算机时使用的验证密钥的文件。 
     - **客户端配置文件** - 选择 Chef 客户端的配置文件。 这可以保留为空。
-    - **Chef 客户端版本** - 输入要安装的 Chef 客户端版本。 这可以保留为空。 使用空白值会安装最新版本。 
+    - **Chef 客户端版本** - 输入要安装的 Chef 客户端版本。 这可以保留为空。 空白值将导致安装最新版本。 
     - **SSL 验证模式** - 选择“无”或“对等”。 对于演示，选择了“无”。
     - **Chef 环境** - 输入此节点所属的 Chef 环境。 这可以保留为空。
     - **加密数据包机密** - 选择一个文件，其中包含此计算机应有权访问的加密数据包的机密。 这可以保留为空。

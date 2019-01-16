@@ -9,21 +9,20 @@ editor: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: f475135f019994900f39a0a4007e8c4cf49af484
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 96d16552cfadca9b345d0f0cd0a344249897f571
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37054630"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54020942"
 ---
 # <a name="move-data-from-sap-hana-using-azure-data-factory"></a>使用 Azure 数据工厂从 SAP HANA 移动数据
-> [!div class="op_single_selector" title1="选择您正在使用的 Data Factory 服务的版本:"]
-> * [第 1 版](data-factory-sap-hana-connector.md)
+> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> * [版本 1](data-factory-sap-hana-connector.md)
 > * [版本 2（当前版本）](../connector-sap-hana.md)
 
 > [!NOTE]
@@ -43,8 +42,8 @@ ms.locfileid: "37054630"
 ## <a name="getting-started"></a>入门
 可使用不同的工具/API 创建包含复制活动的管道，以从本地 SAP HANA 数据存储移动数据。 
 
-- 创建管道的最简单方法是使用复制向导。 请参阅[教程：使用复制向导创建管道](data-factory-copy-data-wizard-tutorial.md)，以快速了解如何使用复制数据向导创建管道。 
-- 也可以使用以下工具创建管道：Azure 门户、Visual Studio、Azure PowerShell、Azure 资源管理器模板、.NET API 和 REST API。 有关创建包含复制活动的管道的分步说明，请参阅[复制活动教程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。 
+- 创建管道的最简单方法是使用复制向导。 有关分步说明，请参阅[教程：使用复制向导创建管道](data-factory-copy-data-wizard-tutorial.md)，以快速了解如何使用复制数据向导创建管道。 
+- 还可以使用以下工具来创建管道：Azure 门户、Visual Studio、Azure PowerShell、Azure 资源管理器模板、.NET API 和 REST API。 有关创建包含复制活动的管道的分步说明，请参阅[复制活动教程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。 
 
 无论使用工具还是 API，执行以下步骤都可创建管道，以便将数据从源数据存储移到接收器数据存储：
 
@@ -165,7 +164,7 @@ encryptedCredential | 加密的凭据字符串。 | 字符串 | 否
 ```
 
 ### <a name="azure-blob-output-dataset"></a>Azure Blob 输出数据集
-此数据集定义输出 Azure Blob 数据集。 type 属性设置为 AzureBlob。 typeProperties 节提供从 SAP HANA 实例复制的数据的存储位置。 数据将写入到新 blob，每隔一小时进行一次（频率：小时，间隔：1）。 根据正在处理的切片的开始时间，动态计算 blob 的文件夹路径。 文件夹路径使用开始时间的年、月、日和小时部分。
+此数据集定义输出 Azure Blob 数据集。 type 属性设置为 AzureBlob。 typeProperties 节提供从 SAP HANA 实例复制的数据的存储位置。 数据每小时向新的 blob 写入一次（frequency：hour，interval：1）。 根据处理中切片的开始时间，动态计算 blob 的文件夹路径。 文件夹路径使用开始时间的年、月、日和小时部分。
 
 ```json
 {

@@ -1,6 +1,6 @@
 ---
-title: 使用用于 Visual Studio Code 的 Azure IoT 中心工具包扩展管理 Azure IoT 中心云设备消息传送 | Microsoft Docs
-description: 了解如何使用用于 Visual Studio Code 的 Azure IoT 中心工具包扩展来监视设备到云消息，并在 Azure IoT 中心中发送云到设备消息。
+title: 使用适用于 Visual Studio Code 的 Azure IoT 工具管理 Azure IoT 中心云设备消息传送 | Microsoft Docs
+description: 了解如何使用适用于 Visual Studio Code 的 Azure IoT 工具来监视设备到云消息，并在 Azure IoT 中心中发送云到设备消息。
 author: formulahendry
 ms.service: iot-hub
 services: iot-hub
@@ -8,36 +8,36 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 7/20/2018
 ms.author: junhan
-ms.openlocfilehash: afb0a2ce4dfdd5d3a98a6dad03ee78eeaafbd308
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 5f3c4a1c03757d78bd907baa3aef5c2e06d6a8dd
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53338373"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54053953"
 ---
-# <a name="use-azure-iot-hub-toolkit-extension-for-visual-studio-code-to-send-and-receive-messages-between-your-device-and-iot-hub"></a>使用用于 Visual Studio Code 的 Azure IoT 中心工具包扩展在设备和 IoT 中心之间发送和接收消息
+# <a name="use-azure-iot-tools-for-visual-studio-code-to-send-and-receive-messages-between-your-device-and-iot-hub"></a>使用适用于 Visual Studio Code 的 Azure IoT 工具在设备和 IoT 中心之间发送和接收消息
 
 ![端到端关系图](media/iot-hub-get-started-e2e-diagram/2.png)
 
-[Azure IoT 中心工具包](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit)（以前称为 Azure IoT 工具包）是一个有用的 Visual Studio Code 扩展，可以使 IoT 中心管理更加轻松。 本文重点介绍如何使用用于 Visual Studio Code 的 Azure IoT 中心工具包扩展在设备和 IoT 中心之间发送和接收消息。
+[Azure IoT 工具](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit)是一个有用的 Visual Studio Code 扩展，可以使 IoT 中心管理和 IoT 应用程序开发更加容易。 本文重点介绍了如何使用适用于 Visual Studio Code 的 Azure IoT 工具在设备和 IoT 中心之间发送和接收消息。
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-partial.md)]
 
 ## <a name="what-you-will-learn"></a>要学习的知识
 
-了解如何使用用于 Visual Studio Code 的 Azure IoT 中心工具包扩展来监视设备到云消息，并发送云到设备消息。 设备到云的消息可能是设备收集的，随后要发送到 IoT 中心的传感器数据。 云到设备的消息可能是 IoT 中心发送到设备的，用于闪烁连接到设备的 LED 的命令。
+了解如何使用适用于 Visual Studio Code 的 Azure IoT 工具来监视设备到云消息，并发送云到设备消息。 设备到云的消息可能是设备收集的，随后要发送到 IoT 中心的传感器数据。 云到设备的消息可能是 IoT 中心发送到设备的，用于闪烁连接到设备的 LED 的命令。
 
 ## <a name="what-you-will-do"></a>执行的操作
 
-- 使用用于 Visual Studio Code 的 Azure IoT 中心工具包扩展来监视设备到云消息。
-- 使用用于 Visual Studio Code 的 Azure IoT 中心工具包扩展来发送云到设备消息。
+- 使用适用于 Visual Studio Code 的 Azure IoT 工具来监视设备到云消息。
+- 使用适用于 Visual Studio Code 的 Azure IoT 工具来发送云到设备消息。
 
 ## <a name="what-you-need"></a>所需条件
 
 - 一个有效的 Azure 订阅。
 - 已在订阅中创建一个 Azure IoT 中心。
 - [Visual Studio Code](https://code.visualstudio.com/)
-- [Azure IoT 中心工具包](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit)
+- [适用于 VS Code 的 Azure IoT 工具](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)
 
 ## <a name="sign-in-to-access-your-iot-hub"></a>登录以访问 IoT 中心
 

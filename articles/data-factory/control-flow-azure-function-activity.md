@@ -9,16 +9,15 @@ editor: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 12/20/2018
+ms.date: 01/09/2019
 ms.author: douglasl
-ms.openlocfilehash: 4b185236e5925152acb5f8a733e117186a2318cf
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.openlocfilehash: 0fd9b679411dd06336fd65bcb400b152316146fa
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53740886"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54188634"
 ---
 # <a name="azure-function-activity-in-azure-data-factory"></a>Azure 数据工厂中的 Azure 函数活动
 
@@ -26,7 +25,7 @@ ms.locfileid: "53740886"
 
 ## <a name="azure-function-linked-service"></a>Azure 函数链接服务
 
-Azure 函数的返回类型必须是有效的 JObject。 其他任何类型都会失败并引发通用用户错误“调用终结点时出错”。
+Azure 函数的返回类型必须是有效的 `JObject`。 （请记住：[JArray](https://www.newtonsoft.com/json/help/html/T_Newtonsoft_Json_Linq_JArray.htm) 不是 `JObject`。）除 `JObject` 之外的任何其他返回类型都会失败并引发通用用户错误“调用终结点时出错”。
 
 | **属性** | **说明** | **必需** |
 | --- | --- | --- |

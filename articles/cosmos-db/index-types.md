@@ -6,22 +6,22 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/5/2018
 ms.author: rimman
-ms.openlocfilehash: f3c5d7bc1907e94ff2e590fe77cc531ac4b01f4c
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 44fe262dc28a016af9eb01f28278b2c3d81d9034
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51628308"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54034077"
 ---
 # <a name="index-types-in-azure-cosmos-db"></a>Azure Cosmos DB 中的索引类型
 
 可以使用多个选项来配置路径的索引策略。 可以为每个路径指定一个或多个索引定义︰
 
-- **数据类型**：String、Number、Point、Polygon 或 LineString（每个路径每种数据类型只能包含一个条目）。
+- **数据类型：** String、Number、Point、Polygon 或 LineString（每个路径每种数据类型只能包含一个条目）。
 
-- **索引种类**：哈希（等式查询）、范围（等式、范围或 ORDER BY 查询）或空间（空间查询）。
+- **索引种类：** 哈希（等式查询）、范围（等式、范围或 ORDER BY 查询）或空间（空间查询）。
 
-- **精度**：对于字符串和数字的哈希索引，此值从 1 到 8 变化，默认值为 3。 对于范围索引，最大精度值为 -1。 对于字符串或数字值，此值可在 1 到 100（最大精度）之间变化。
+- **精度：** 对于字符串和数字的哈希索引，此值从 1 到 8 变化，默认值为 3。 对于范围索引，最大精度值为 -1。 对于字符串或数字值，此值可在 1 到 100（最大精度）之间变化。
 
 ## <a name="index-kind"></a>索引种类
 
@@ -31,7 +31,7 @@ ms.locfileid: "51628308"
 
 - **范围索引**支持高效的等式查询、范围查询（使用 >、<、>=、<=、!=）和 ORDER BY 查询。 默认情况下，ORDER BY 查询还需要最大索引精度 (-1)。 数据类型可以是字符串或数字。
 
-- **空间查询**支持高效的空间（范围内和距离）查询。 数据类型可以是 Point、Polygon 或 LineString。 对于可为 Point、Polygon 或 LineString 数据类型指定为每个路径，Azure Cosmos DB 还支持空间索引种类。 指定路径中的值必须是有效的 GeoJSON 片段，如 {"type": "Point", "coordinates": [0.0, 10.0]}。 Azure Cosmos DB 支持为 Point、Polygon 和 LineString 数据类型自动编制索引。
+- **空间查询**支持高效的空间（范围内和距离）查询。 数据类型可以是 Point、Polygon 或 LineString。 对于可为 Point、Polygon 或 LineString 数据类型指定为每个路径，Azure Cosmos DB 还支持空间索引种类。 指定路径中的值必须是有效的 GeoJSON 片段，如 {"type":"Point", "coordinates": [0.0, 10.0]}。 Azure Cosmos DB 支持为 Point、Polygon 和 LineString 数据类型自动编制索引。
 
 下面是可以使用哈希、范围和空间索引提供的查询示例：
 
@@ -39,7 +39,7 @@ ms.locfileid: "51628308"
 | ---------- | ---------------- |
 | 哈希  | /prop/? (or /) 可用于有效完成下列查询：<br><br>SELECT FROM collection c WHERE c.prop = "value"<br><br>Hash over /props/[]/? (or / or /props/) 可用于有效完成下列查询：<br><br>SELECT tag FROM collection c JOIN tag IN c.props WHERE tag = 5  |
 | 范围  | /prop/? (or /) 可用于有效完成下列查询：<br><br>SELECT FROM collection c WHERE c.prop = "value"<br><br>SELECT FROM collection c WHERE c.prop > 5<br><br>SELECT FROM collection c ORDER BY c.prop   |
-| 空间     | /prop/? (or /) 可用于有效完成下列查询：<br><br>SELECT FROM collection c<br><br>WHERE ST_DISTANCE(c.prop, {"type": "Point", "coordinates": [0.0, 10.0]}) < 40<br><br>SELECT FROM collection c WHERE ST_WITHIN(c.prop, {"type": "Polygon", ... }) --启用对点的索引编制<br><br>SELECT FROM collection c WHERE ST_WITHIN({"type": "Point", ... }, c.prop) -- 已启用对多边形的索引编制。     |
+| 空间     | /prop/? (or /) 可用于有效完成下列查询：<br><br>SELECT FROM collection c<br><br>WHERE ST_DISTANCE(c.prop, {"type":"Point", "coordinates": [0.0, 10.0]}) < 40<br><br>SELECT FROM collection c WHERE ST_WITHIN(c.prop, {"type":"Polygon", ... }) --启用对点的索引编制<br><br>SELECT FROM collection c WHERE ST_WITHIN({"type":"Point", ... }, c.prop) --启用对多边形的索引编制。     |
 
 ## <a name="default-behavior-of-index-kinds"></a>索引种类的默认行为
 

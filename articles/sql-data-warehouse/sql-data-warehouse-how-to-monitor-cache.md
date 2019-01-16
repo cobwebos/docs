@@ -5,17 +5,17 @@ services: sql-data-warehouse
 author: kevinvngo
 manager: craigg
 ms.service: sql-data-warehouse
+ms.component: performance
 ms.topic: how-to
-ms.component: monitor and tune
 ms.date: 09/06/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 1d366850bc886dc48afc59ffaf0958b39314ebb1
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 2a0504ae0e5c3dbf70ad84526176beae52f55870
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49385526"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54103120"
 ---
 # <a name="how-to-monitor-the-gen2-cache"></a>如何监视 Gen2 缓存
 Gen2 存储体系结构自动将最常查询的列存储段归类到特定的缓存中，该缓存位于基于 NVMe 且专为 Gen2 数据仓库设计的 SSD 中。 如果查询检索驻留在缓存中的段，则可提高性能。 本文介绍如何监视和排查查询性能下降的问题，只需确定工作负荷是否在充分利用 Gen2 缓存即可。  
@@ -41,7 +41,7 @@ Gen2 存储体系结构自动将最常查询的列存储段归类到特定的缓
 
 **场景 1：** 你的缓存使用已优化。 [排查](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-manage-monitor)可能导致查询速度变慢的其他方面的情况。
 
-**场景 2：** 当前工作数据集不适合放置在缓存中，引发物理读取困难，导致缓存命中百分比低。 考虑提升性能级别并重新运行工作负荷，以便填充缓存。
+**场景 2：** 当前工作数据集不适合放置在缓存中，这会因物理读取导致缓存命中百分比低。 考虑提升性能级别并重新运行工作负荷，以便填充缓存。
 
 **场景 3：** 查询运行速度慢的原因可能与缓存无关。 [排查](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-manage-monitor)可能导致查询速度变慢的其他方面的情况。 也可以考虑[缩减实例](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-manage-monitor)，通过缩减缓存大小来节省成本。 
 

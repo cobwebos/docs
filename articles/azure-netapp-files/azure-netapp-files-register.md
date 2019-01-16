@@ -36,7 +36,7 @@ ms.locfileid: "54103989"
 
       ![Azure Cloud Shell 图标](../media/azure-netapp-files/azure-netapp-files-azure-cloud-shell.png)
 
-2. 如果你的 Azure 帐户上有多个订阅，请选择已列入 Azure NetApp 文件的白名单的订阅：
+2. 如果你的 Azure 帐户上有多个订阅，请选择已列入 Azure NetApp 文件的允许列表的订阅：
     
         az account set --subscription <subscriptionId>
 

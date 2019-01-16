@@ -93,7 +93,7 @@ Azure Active Directory (Azure AD) 具有可让用户使用其 Azure AD 帐户登
 | mscrl.microsoft.com:80<br>crl.microsoft.com:80<br>ocsp.msocsp.com:80<br>www.microsoft.com:80 | Azure 使用以下 URL 来验证证书 |
 | login.windows.net<br>login.microsoftonline.com | 在注册过程中，连接器将使用这些 URL。 |
 
-如果防火墙或代理允许执行 DNS 允许列表，可将与 \*.msappproxy.net 和 \*.servicebus.windows.net 的连接加入白名单。 否则，需要允许访问 [Azure 数据中心 IP 范围](https://www.microsoft.com/download/details.aspx?id=41653)。 IP 范围每周更新。
+如果防火墙或代理允许执行 DNS 允许列表，可将与 \*.msappproxy.net 和 \*.servicebus.windows.net 的连接加入允许列表。 否则，需要允许访问 [Azure 数据中心 IP 范围](https://www.microsoft.com/download/details.aspx?id=41653)。 IP 范围每周更新。
 
 ## <a name="install-and-register-a-connector"></a>安装并注册连接器
 若要使用应用程序代理，需在选择与应用程序代理服务配合使用的每个 Windows 服务器上安装一个连接器。 连接器是一个代理，可以管理从本地应用程序服务器到 Azure AD 中应用程序代理的出站连接。 可以在同时安装了其他身份验证代理（例如 Azure AD Connect）的服务器上安装连接器。

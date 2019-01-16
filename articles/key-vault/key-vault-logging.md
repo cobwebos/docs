@@ -10,16 +10,15 @@ ms.assetid: 43f96a2b-3af8-4adc-9344-bc6041fface8
 ms.service: key-vault
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/02/2019
+ms.date: 01/07/2019
 ms.author: barclayn
-ms.openlocfilehash: 8e3076f2176739f5b9df5776f27d7483c9fd2692
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 2a36993e9406613ad9182d01c3681056114dca18
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54000404"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54159955"
 ---
 # <a name="azure-key-vault-logging"></a>Azure 密钥保管库日志记录
 
@@ -39,7 +38,7 @@ ms.locfileid: "54000404"
 > [!NOTE]
 > 本教程不包含有关如何创建密钥保管库、密钥或机密的说明。 有关这方面的信息，请参阅 [Get started with Azure Key Vault](key-vault-get-started.md)（Azure 密钥保管库入门）。 或者，有关跨平台命令行接口说明，请参阅 [此对应教程](key-vault-manage-with-cli2.md)。
 >
-> 目前，无法在 Azure 门户中配置 Azure 密钥保管库。 请改用这些 Azure PowerShell 说明。
+> 本文提供有关更新诊断日志记录的 Azure PowerShell 说明。 但是，可以在 Azure 门户的“诊断日志”部分使用 Azure Monitor 来启用相同的功能。 
 >
 >
 
@@ -113,7 +112,7 @@ $kv = Get-AzureRmKeyVault -VaultName 'ContosoKeyVault'
 Set-AzureRmDiagnosticSetting -ResourceId $kv.ResourceId -StorageAccountId $sa.Id -Enabled $true -Categories AuditEvent
 ```
 
-此命令的输出包含：
+输出如下所示：
 
     StorageAccountId   : /subscriptions/<subscription-GUID>/resourceGroups/ContosoResourceGroup/providers/Microsoft.Storage/storageAccounts/ContosoKeyVaultLogs
     ServiceBusRuleId   :
@@ -156,7 +155,7 @@ $container = 'insights-logs-auditevent'
 Get-AzureStorageBlob -Container $container -Context $sa.Context
 ```
 
-输出如下所示：
+输出与此类似：
 
 **容器 URI： https://contosokeyvaultlogs.blob.core.windows.net/insights-logs-auditevent**
 
@@ -230,6 +229,7 @@ Get-AzureRmKeyVault -VaultName 'contosokeyvault'`
 
 将返回类似于下面所示的日志条目：
 
+```json
     {
         "records":
         [
@@ -250,6 +250,7 @@ Get-AzureRmKeyVault -VaultName 'contosokeyvault'`
             }
         ]
     }
+```
 
 下表列出了字段的名称和描述。
 

@@ -10,17 +10,16 @@ ms.assetid: f904972f-cd33-48db-9755-2b3196ae4168
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 8b74a431664faa95e8be9c9ff90970fd6e7c0ec7
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 90f78428601d7b039d00d39c1ca8339ab3ace9ba
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37048714"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54020347"
 ---
 # <a name="copy-or-move-data-easily-with-azure-data-factory-copy-wizard"></a>使用 Azure 数据工厂复制向导轻松复制或移动数据
 > [!NOTE]
@@ -41,7 +40,7 @@ Azure 数据工厂复制向导用于简化数据引入过程，这通常是端�
 > 
 > 
 
-设计之初，该向导便以大数据为理念。 它能简单高效地创作数据工厂管道，这些管道利用复制数据向导可以移动数百文件夹、文件或表。 该向导支持三种功能：自动数据预览、架构捕获和映射，以及筛选数据。 
+设计之初，该向导便以大数据为理念。 它能简单高效地创作数据工厂管道，这些管道利用复制数据向导可以移动数百文件夹、文件或表。 该向导支持以下三种功能：自动数据预览、架构捕获和映射，以及筛选数据。 
 
 ## <a name="automatic-data-preview"></a>自动数据预览
 通过复制向导可查看所选数据源的部分数据，以验证该数据是否是想要复制的数据。 此外，如果源数据在文本文件中，复制向导会自动分析文本文件，以了解行和列分隔符以及架构。 
@@ -94,5 +93,5 @@ Azure 数据工厂复制向导用于简化数据引入过程，这通常是端�
 ![计划属性](./media/data-factory-copy-wizard/scheduling-properties.png)
 
 ## <a name="next-steps"></a>后续步骤
-有关使用数据工厂复制向导创建具有复制活动的管道的快速演练，请参阅[教程：使用复制向导创建管道](data-factory-copy-data-wizard-tutorial.md)。
+有关使用数据工厂复制向导创建包含复制活动的管道的快速演练，请参阅[教程：使用复制向导创建管道](data-factory-copy-data-wizard-tutorial.md)。
 

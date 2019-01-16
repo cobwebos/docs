@@ -1,28 +1,31 @@
 ---
-title: 使用 Azure 门户创建 SQL 数据库警报 | Microsoft 文档
+title: 使用 Azure 门户设置警报和通知 | Microsoft Docs
 description: 使用 Azure 门户创建 SQL 数据库警报，可在满足指定条件时触发通知或自动化。
 services: sql-database
 ms.service: sql-database
 ms.subservice: monitor
 ms.custom: ''
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: howto
 author: aamalvea
 ms.author: aamalvea
 ms.reviewer: jrasnik, carlrab
 manager: craigg
 ms.date: 11/02/2018
-ms.openlocfilehash: ddd704b41e6d1463bc635f13135cc9a388e677fe
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 64e743010b3ae615817639d9b2531b2f99979498
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53634603"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54156896"
 ---
-# <a name="use-azure-portal-to-create-alerts-for-azure-sql-database-and-data-warehouse"></a>使用 Azure 门户为 Azure SQL 数据库和数据仓库创建警报
+# <a name="create-alerts-for-azure-sql-database-and-data-warehouse-using-azure-portal"></a>使用 Azure 门户为 Azure SQL 数据库和数据仓库创建警报
 
 ## <a name="overview"></a>概述
-本文介绍如何使用 Azure 门户设置 Azure SQL 数据库和数据仓库警报。 本文还提供了有关设置警报期限的最佳做法。    
+本文介绍如何使用 Azure 门户设置 Azure SQL 数据库和数据仓库警报。 当某些指标（例如数据库大小或 CPU 使用率）达到阈值时，警报可以向你发送电子邮件或调用 Webhook。 本文还提供了有关设置警报期限的最佳做法。    
+
+> [!IMPORTANT]
+> 此功能在托管实例中尚不可用。 作为替代方法，你可以使用 SQL 代理根据[动态管理视图](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/system-dynamic-management-views)发送某些指标的电子邮件警报。
 
 可以根据监控指标或事件接收 Azure 服务的警报。
 

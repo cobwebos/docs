@@ -1,13 +1,10 @@
 ---
-title: 创建、更改或删除 Azure 公共 IP 地址前缀 | Microsoft Docs
+title: 创建、更改或删除 Azure 公共 IP 地址前缀
+titlesuffix: Azure Virtual Network
 description: 了解如何创建、更改或删除公共 IP 地址前缀。
 services: virtual-network
 documentationcenter: na
 author: anavinahar
-manager: narayan
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: NA
 ms.topic: article
@@ -15,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/24/2018
 ms.author: anavin
-ms.openlocfilehash: a0ae1f3fbf9189068cae4b18ac92f0bea0498f67
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 4207698c57b907cf60fd860bc409c8f8d5a4c565
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52427567"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54015264"
 ---
 # <a name="create-change-or-delete-a-public-ip-address-prefix"></a>创建、更改或删除公共 IP 地址前缀
 
@@ -29,13 +26,13 @@ ms.locfileid: "52427567"
 ## <a name="before-you-begin"></a>开始之前
 
 > [!IMPORTANT]
-> 公共 IP 前缀在有限区域中以公共预览版提供。 可以[在预览版中了解其含义](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。 公共 IP 前缀目前在以下区域可用：美国中西部、美国西部、美国西部 2、美国中部、北欧、西欧和东南亚。 有关更新的区域列表，请访问 [Azure 更新](https://azure.microsoft.com/updates/?product=virtual-network)。
+> 公共 IP 前缀在有限区域中以公共预览版提供。 可以[在预览版中了解其含义](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。 公共 IP 前缀目前可用于：美国中西部、美国西部、美国西部 2、美国中部、北欧、西欧和东南亚。 有关更新的区域列表，请访问 [Azure 更新](https://azure.microsoft.com/updates/?product=virtual-network)。
 
 在完成本文任何部分中的步骤之前，请完成以下任务：
 
 - 如果还没有 Azure 帐户，请注册[免费试用帐户](https://azure.microsoft.com/free)。
 - 如果使用门户，请打开 https://aka.ms/publicipprefixportal，并使用 Azure 帐户登录。
-- 如果使用 PowerShell 命令来完成本文中的任务，请运行 [Azure Cloud Shell](https://shell.azure.com/powershell) 中的命令，或从计算机运行 PowerShell。 Azure Cloud Shell 是免费的交互式 shell，可以使用它运行本文中的步骤。 它预安装有常用 Azure 工具并将其配置与帐户一起使用。 本教程需要 AzureRm.Network PowerShell 模块 6.3.1 或更高版本。 运行 `Get-Module -ListAvailable AzureRM.Network` 查找已安装的版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](https://github.com/Azure/azure-powershell/releases/tag/AzureRm.Network.6.3.1)。 如果在本地运行 PowerShell，则还需运行 `Connect-AzureRmAccount` 以创建与 Azure 的连接。
+- 如果使用 PowerShell 命令来完成本文中的任务，请运行 [Azure Cloud Shell](https://shell.azure.com/powershell) 中的命令，或从计算机运行 PowerShell。 Azure Cloud Shell 是免费的交互式 shell，可以使用它运行本文中的步骤。 它预安装有常用 Azure 工具并将其配置与帐户一起使用。 本教程需要 AzureRm.Network PowerShell 模块 6.3.1 或更高版本。 运行 `Get-Module -ListAvailable AzureRM.Network` 查找已安装的版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](https://github.com/Azure/azure-powershell/releases/tag/AzureRm.Network.6.3.1)。 如果在本地运行 PowerShell，则还需运行 `Connect-AzureRmAccount` 来创建与 Azure 的连接。
 - 如果使用 Azure 命令行接口 (CLI) 命令来完成本文中的任务，请运行 [Azure Cloud Shell](https://shell.azure.com/bash) 中的命令，或从计算机运行 CLI。 本教程需要 Azure CLI 2.0.41 或更高版本。 运行 `az --version` 查找已安装的版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI 2.0](/cli/azure/install-azure-cli)。 如果在本地运行 Azure CLI，则还需运行 `az login` 以创建与 Azure 的连接。
 
 登录或连接到 Azure 所用的帐户必须分配有[网络参与者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)角色或者分配有可执行[权限](#permissions)中列出的适当操作的[自定义角色](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
@@ -84,8 +81,8 @@ ms.locfileid: "52427567"
 1. 在 Azure 门户顶部包含“搜索资源”文本的框中，键入“公共 IP 地址前缀”。 当“公共 IP 地址前缀”出现在搜索结果中时，请选择它。
 2. 选择要查看、更改其设置或从列表中删除的公共 IP 地址前缀的名称。
 3. 根据是要查看、删除还是更改公共 IP 地址前缀，完成以下选项之一。
-    - 视图：“概述”部分显示公共 IP 地址前缀的关键设置，如前缀。
-    - 删除：若要删除公共 IP 地址前缀，请在“概述”部分中选择“删除”。 如果前缀中的地址关联到公共 IP 地址资源，必须先删除公共 IP 地址资源。 请参阅[删除公共 IP 地址](virtual-network-public-ip-address.md#view-change-settings-for-or-delete-a-public-ip-address)。
+    - **视图**：“概述”部分显示公共 IP 地址前缀的关键设置，如前缀。
+    - **删除**：若要删除公共 IP 地址前缀，请在“概述”部分中选择“删除”。 如果前缀中的地址关联到公共 IP 地址资源，必须先删除公共 IP 地址资源。 请参阅[删除公共 IP 地址](virtual-network-public-ip-address.md#view-change-settings-for-or-delete-a-public-ip-address)。
 
 **命令**
 

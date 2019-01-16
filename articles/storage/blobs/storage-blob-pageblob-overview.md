@@ -1,23 +1,23 @@
 ---
-title: Azure 页 Blob 的独特功能 | Microsoft Docs
+title: Azure 页 Blob 概述 | Microsoft Docs
 description: 概述了 Azure 页 Blob 及其优势，包括用例和示例脚本。
 services: storage
 author: anasouma
 ms.service: storage
 ms.topic: article
-ms.date: 04/30/2018
+ms.date: 01/03/2019
 ms.author: wielriac
 ms.component: blobs
-ms.openlocfilehash: dc15dcb9f7b342d2d5140199ecf34c1a4781fa25
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: 6d1c443cfe3454d1b1e50a7270bd78598f69f6de
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44022682"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54063924"
 ---
-# <a name="unique-features-of-azure-page-blobs"></a>Azure 页 Blob 的独特功能
+# <a name="overview-of-azure-page-blobs"></a>Azure 页 Blob 概述
 
-Azure 存储提供三种类型的 Blob 存储：块 Blob、追加 Blob 和页 Blob。 块 Blob 由块组成，非常适合用于存储文本或二进制文件，以及高效上传大型文件。 追加 Blob 也由块组成，但它们已针对追加操作进行优化，因此非常适合用于日志记录方案。 页 Blob 由总大小可达 8 TB 的 512 字节页面组成，专为频繁的随机读/写操作而设计。 页 Blob 是 Azure IaaS 磁盘的基础。 本文重点介绍页 Blob 的功能和优势。
+Azure 存储提供了三种类型的 Blob 存储：块 Blob、追加 Blob 和页 Blob。 块 Blob 由块组成，非常适合用于存储文本或二进制文件，以及高效上传大型文件。 追加 Blob 也由块组成，但它们已针对追加操作进行优化，因此非常适合用于日志记录方案。 页 Blob 由总大小可达 8 TB 的 512 字节页面组成，专为频繁的随机读/写操作而设计。 页 Blob 是 Azure IaaS 磁盘的基础。 本文重点介绍页 Blob 的功能和优势。
 
 页 Blob 是 512 字节页面的集合，提供读/写任意字节范围的功能。 因此，页 Blob 非常适用于存储基于索引的稀疏数据结构，如虚拟机和数据库的 OS 磁盘与数据磁盘。 例如，Azure SQL 数据库使用页 Blob 作为数据库的基础持久性存储。 此外，页 Blob 往往还用于支持基于范围的更新的文件。  
 

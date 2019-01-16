@@ -6,14 +6,14 @@ ms.service: security
 ms.subservice: Azure Disk Encryption
 ms.topic: article
 ms.author: mstewart
-ms.date: 12/07/2018
+ms.date: 01/08/2018
 ms.custom: seodec18
-ms.openlocfilehash: a6cf415112f245421b3225c2e2ccb07a7bbf9332
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 36ecfe8942d263ed84e430b01727743ed2cad00c
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53098284"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54103159"
 ---
 # <a name="azure-disk-encryption-troubleshooting-guide"></a>Azure 磁盘加密故障排除指南
 
@@ -72,6 +72,9 @@ ProgressMessage            : OS disk successfully encrypted, please reboot the V
 
 ### <a name="azure-key-vault-behind-a-firewall"></a>防火墙保护下的 Azure Key Vault
 VM 必须能够访问 Key Vault。 请参阅有关从 [Azure Key Vault](../key-vault/key-vault-access-behind-firewall.md) 团队维护的防火墙后面访问 Key Vault 的指导。 
+
+### <a name="azure-instance-metadata-service"></a>Azure 实例元数据服务 
+VM 必须能够访问这样的 [Azure 实例元数据服务](../virtual-machines/windows/instance-metadata-service.md)终结点：该终结点使用只能从 VM 内访问的已知不可路由 IP 地址 (`169.254.169.254`)。
 
 ### <a name="linux-package-management-behind-a-firewall"></a>防火墙保护下的 Linux 程序包管理
 

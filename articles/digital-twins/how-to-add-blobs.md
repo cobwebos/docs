@@ -6,21 +6,21 @@ manager: alinast
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 12/28/2018
+ms.date: 01/02/2019
 ms.author: adgera
 ms.custom: seodec18
-ms.openlocfilehash: 604093dcec048b0991bbc9beac3ef998cc47e351
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 36f4caac38f2f4891af6f61b78b55c7eff15eae4
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53974501"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54116732"
 ---
 # <a name="add-blobs-to-objects-in-azure-digital-twins"></a>将 Blob 添加到 Azure 数字孪生中的对象
 
 Blob 是常见文件类型（例如图片和日志）的非结构化表示形式。 Blob 使用 MIME 类型（例如“image/jpeg”）和元数据（名称、说明、类型等）来跟踪它们表示的数据类型。
 
-Azure 数字孪生支持将 Blob 附加到设备、空间和用户。 Blob 可以表示用户个人资料图片、设备照片、视频、地图或日志。
+Azure 数字孪生支持将 Blob 附加到设备、空间和用户。 Blob 可以表示用户个人资料图片、设备照片、视频、地图、固件 zip、JSON 数据、日志，等等。
 
 [!INCLUDE [Digital Twins Management API familiarity](../../includes/digital-twins-familiarity.md)]
 
@@ -28,27 +28,11 @@ Azure 数字孪生支持将 Blob 附加到设备、空间和用户。 Blob 可�
 
 可以使用多部分请求将 Blob 上传到特定的终结点及其相应功能。
 
-> [!IMPORTANT]
-> 多部分请求需要三个必不可少的信息片段：
-> * **Content-Type** 标头：
->   * `application/json; charset=utf-8`
->   * `multipart/form-data; boundary="USER_DEFINED_BOUNDARY"`
-> * **Content-Disposition**：`form-data; name="metadata"`
-> * 要上传的文件内容
->
-> Content-Type 和 Content-Disposition 信息根据使用方案的不同而异。
-
-向 Azure 数字孪生管理 API 发出的多部分请求包含两个部分：
-
-* Blob 元数据，例如，上述 Content-Type 和 Content-Disposition 信息的关联 MIME 类型
-
-* 实际的 Blob 内容（文件的非结构化内容）  
-
-对于 PATCH 请求，上述两个部分都不是必需的。 对于 **POST** 请求或 create 操作，两者都是必需的。
+[!INCLUDE [Digital Twins multipart requests](../../includes/digital-twins-multipart.md)]
 
 ### <a name="blob-metadata"></a>Blob 元数据
 
-除了 Content-Type 和 Content-Disposition 以外，多部分请求还必须指定正确的 JSON 正文。 要提交哪个 JSON 正文取决于执行的 HTTP 请求操作的类型。
+除了 **Content-Type** 和 **Content-Disposition** 之外，Azure 数字孪生 blob 多部分请求还必须指定正确的 JSON 正文。 要提交哪个 JSON 正文取决于执行的 HTTP 请求操作的类型。
 
 四个主要 JSON 架构是：
 
@@ -64,12 +48,15 @@ Swagger 文档完整详细地介绍了这些模型架构。
 
 [!INCLUDE [Digital Twins Management API](../../includes/digital-twins-management-api.md)]
 
-若要发出以 Blob 形式上传文本文件的 POST 请求并将它与某个空间相关联：
+若要将文本文件上传为 blob 并将其与某个空间相关联，请向以下项发出经身份验证的 HTTP POST 请求：
 
 ```plaintext
-POST YOUR_MANAGEMENT_API_URL/spaces/blobs HTTP/1.1
-Content-Type: multipart/form-data; boundary="USER_DEFINED_BOUNDARY"
+YOUR_MANAGEMENT_API_URL/spaces/blobs
+```
 
+使用以下正文：
+
+```plaintext
 --USER_DEFINED_BOUNDARY
 Content-Type: application/json; charset=utf-8
 Content-Disposition: form-data; name="metadata"
@@ -112,6 +99,16 @@ multipartContent.Add(fileContents, "contents");
 var response = await httpClient.PostAsync("spaces/blobs", multipartContent);
 ```
 
+在这两个示例中：
+
+1. 验证标头是否包括：`Content-Type: multipart/form-data; boundary="USER_DEFINED_BOUNDARY"`。
+1. 验证正文由多个部分组成：
+
+   - 第一部分包含所需的 blob 元数据。
+   - 第二部分包含文本文件。
+
+1. 验证该文本文件提供为 `Content-Type: text/plain`。
+
 ## <a name="api-endpoints"></a>API 终结点
 
 以下部分介绍与核心 blob 相关的 API 终结点及其功能。
@@ -122,7 +119,7 @@ var response = await httpClient.PostAsync("spaces/blobs", multipartContent);
 
 ![设备 Blob][2]
 
-例如，为了更新或创建某个 Blob 并将其附加到设备，发出了以下 PATCH 请求：
+例如，若要更新或创建某个 Blob 并将其附加到设备，请向以下项发出经身份验证的 HTTP PATCH 请求：
 
 ```plaintext
 YOUR_MANAGEMENT_API_URL/devices/blobs/YOUR_BLOB_ID
@@ -142,13 +139,13 @@ YOUR_MANAGEMENT_API_URL/devices/blobs/YOUR_BLOB_ID
 > [!TIP]
 > 使用上表处理成功返回的请求数据。
 
-### <a name="spaces"></a>空格
+### <a name="spaces"></a>空间
 
 此外，还可以将 blob 附加到空间。 下图列出了负责处理 Blob 的所有空间 API 终结点。 此外，它还列出了传入这些终结点的所有路径参数。
 
 ![空间 Blob][3]
 
-例如，为了返回附加到某个空间的 Blob，发出了以下 GET 请求：
+例如，若要返回附加到某个空间的 Blob，请向以下项发出经身份验证的 HTTP GET 请求：
 
 ```plaintext
 YOUR_MANAGEMENT_API_URL/spaces/blobs/YOUR_BLOB_ID
@@ -158,7 +155,7 @@ YOUR_MANAGEMENT_API_URL/spaces/blobs/YOUR_BLOB_ID
 | --- | --- |
 | *YOUR_BLOB_ID* | 所需的 Blob ID |
 
-向同一终结点发出 PATCH 请求可以更新元数据说明并创建 Blob 的新版本。 HTTP 请求是通过 PATCH 方法以及任何所需的元和多部分表单数据发出的。
+对同一终结点发出的 PATCH 请求将更新元数据说明并创建 blob 的新版本。 HTTP 请求是通过 PATCH 方法以及任何所需的元和多部分表单数据发出的。
 
 成功的操作将返回符合以下架构的 SpaceBlob 对象。 可以使用此对象利用返回的数据。
 
@@ -173,7 +170,7 @@ YOUR_MANAGEMENT_API_URL/spaces/blobs/YOUR_BLOB_ID
 
 ![用户 Blob][4]
 
-例如，若要提取附加到某个用户的 Blob，可发出以下包含所有必需表单数据的 GET 请求：
+例如，若要提取附加到某个用户的 Blob，请向以下项发出包含所有必需表单数据的经身份验证的 HTTP GET 请求：
 
 ```plaintext
 YOUR_MANAGEMENT_API_URL/users/blobs/YOUR_BLOB_ID
@@ -205,7 +202,7 @@ YOUR_MANAGEMENT_API_URL/users/blobs/YOUR_BLOB_ID
 
 ## <a name="next-steps"></a>后续步骤
 
-若要详细了解 Azure 数字孪生 Swagger 参考文档，请阅读[使用数字孪生 Swagger](how-to-use-swagger.md)。
+- 若要详细了解 Azure 数字孪生 Swagger 参考文档，请阅读[使用数字孪生 Swagger](how-to-use-swagger.md)。
 
 <!-- Images -->
 [1]: media/how-to-add-blobs/blob-models.PNG

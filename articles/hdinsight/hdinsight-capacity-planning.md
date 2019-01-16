@@ -121,7 +121,7 @@ VM 大小和类型由 CPU 处理能力、RAM 大小和网络延迟决定：
 1. 在“查看 + 创建”选项卡中，单击“创建”。
 
 > [!NOTE]  
-> 如果需要增加专用区域中的 HDInsight 核心配额，请[提交白名单请求](https://aka.ms/canaryintwhitelist)。
+> 如果需要增加专用区域中的 HDInsight 核心配额，请[提交允许列表请求](https://aka.ms/canaryintwhitelist)。
 
 可以[联系支持部门来请求提高配额](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request)。
 

@@ -9,21 +9,20 @@ ms.assetid: 3c20aa95-a8a1-4aae-9180-a6a16d64a109
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/15/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 848616bb69aa0eae384b9c4e7ea1c2ac3da3c04e
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: 1ccf66da14bbbd4993f29da2e40d996cb564864e
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49167114"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54024903"
 ---
 # <a name="copy-data-to-or-from-oracle-on-premises-by-using-azure-data-factory"></a>使用 Azure 数据工厂在 Oracle 本地复制或粘贴数据
 
-> [!div class="op_single_selector" title1="选择您正在使用的 Data Factory 服务的版本:"]
+> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [版本 1](data-factory-onprem-oracle-connector.md)
 > * [版本 2（当前版本）](../connector-oracle.md)
 
@@ -70,7 +69,7 @@ Oracle 连接器支持两个版本的驱动程序：
     > 目前，适用于 Oracle 的 Microsoft 驱动程序仅支持从 Oracle 复制数据。 该驱动程序不支持写入 Oracle。 数据管理网关“诊断”选项卡中的测试连接功能不支持此驱动程序。 或者，可以使用复制向导验证连接。
     >
 
-- **用于 .NET 的 Oracle 数据提供程序**：可以使用 Oracle 数据提供程序在 Oracle 中复制或粘贴数据。 该组件包含在[适用于 Windows 的 Oracle 数据访问组件](http://www.oracle.com/technetwork/topics/dotnet/downloads/)中。 在装有网关的计算机上安装相关版本（32 位或 64 位）。 [Oracle 数据提供程序 .NET 12.1](http://docs.oracle.com/database/121/ODPNT/InstallSystemRequirements.htm#ODPNT149) 可访问 Oracle Database 10g 版本 2 及更高版本。
+- **适用于 .NET 的 Oracle 数据提供程序**：可以使用 Oracle 数据提供程序在 Oracle 中复制或粘贴数据。 该组件包含在[适用于 Windows 的 Oracle 数据访问组件](http://www.oracle.com/technetwork/topics/dotnet/downloads/)中。 在装有网关的计算机上安装相关版本（32 位或 64 位）。 [Oracle 数据提供程序 .NET 12.1](http://docs.oracle.com/database/121/ODPNT/InstallSystemRequirements.htm#ODPNT149) 可访问 Oracle Database 10g 版本 2 及更高版本。
 
     如果选择“XCopy 安装”，请完成 readme.htm 文件中所述的步骤。 我们建议选择具有 UI 的安装程序（而不是 XCopy 安装程序）。
 
@@ -82,7 +81,7 @@ Oracle 连接器支持两个版本的驱动程序：
 
 可以创建包含复制活动的管道。 该管道使用各种工具或 API 将数据移入或移出本地 Oracle 数据库。
 
-创建管道最简单的方法是使用复制向导。 有关使用复制数据向导创建管道的快速演练，请参阅[教程：使用复制向导创建管道](data-factory-copy-data-wizard-tutorial.md)。
+创建管道最简单的方法是使用复制向导。 请参阅[教程：使用复制向导创建管道](data-factory-copy-data-wizard-tutorial.md)来快速了解如何使用复制数据向导创建管道。
 
 也可以使用以下工具之一创建管道：**Azure 门户**、**Visual Studio**、**Azure PowerShell**、**Azure 资源管理器模板**、**.NET API** 或 **REST API**。 有关如何创建包含复制活动的管道的分步说明，请参阅[复制活动教程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
 
@@ -101,7 +100,7 @@ Oracle 连接器支持两个版本的驱动程序：
 
 下表描述了特定于 Oracle 链接服务的 JSON 元素：
 
-| 属性 | 说明 | 必选 |
+| 属性 | 说明 | 必需 |
 | --- | --- | --- |
 | type |**type** 属性必须设置为 **OnPremisesOracle**。 |是 |
 | driverType | 指定在 Oracle 数据库中复制或粘贴数据所使用的驱动程序。 允许的值为 **Microsoft** 和 **ODP**（默认值）。 请参阅[支持的版本和安装](#supported-versions-and-installation)以了解驱动程序详细信息。 | 否 |
@@ -111,7 +110,7 @@ Oracle 连接器支持两个版本的驱动程序：
 **示例：使用 Microsoft 驱动程序**
 
 > [!TIP]
-> 如果遇到错误消息指出“ORA-01025: UPI 参数超出范围”，且 Oracle 版本为 8i，请将 `WireProtocolMode=1` 添加到连接字符串并重试：
+> 如果看到错误“ORA-01025:UPI 参数超出范围”，且 Oracle 版本为 8i，请将 `WireProtocolMode=1` 添加到连接字符串并重试：
 
 ```json
 {
@@ -153,7 +152,7 @@ User Id=<user name>;Password=<password>;",
 
 每种数据集的 typeProperties 部分有所不同，该部分提供有关数据在数据存储区中的位置信息。 **OracleTable** 类型的数据集的 **typeProperties** 节具有以下属性：
 
-| 属性 | 说明 | 必选 |
+| 属性 | 说明 | 必需 |
 | --- | --- | --- |
 | tableName |链接服务引用的 Oracle 数据库中表的名称。 |否（如果指定了 **oracleReaderQuery** 或 **OracleSource**） |
 
@@ -172,7 +171,7 @@ User Id=<user name>;Password=<password>;",
 
 在复制活动中，如果源的类型为 **OracleSource**，则可以在 **typeProperties** 节中使用以下属性：
 
-| 属性 | 说明 | 允许的值 | 必选 |
+| 属性 | 说明 | 允许的值 | 必需 |
 | --- | --- | --- | --- |
 | oracleReaderQuery |使用自定义查询读取数据。 |SQL 查询字符串。 例如：“select \* from **MyTable**”。 <br/><br/>如果未指定，则执行此 SQL 语句：“select \* from **MyTable**” |否<br />（如果指定了**数据集**的 **tableName**） |
 
@@ -180,7 +179,7 @@ User Id=<user name>;Password=<password>;",
 
 **OracleSink** 支持以下属性：
 
-| 属性 | 说明 | 允许的值 | 必选 |
+| 属性 | 说明 | 允许的值 | 必需 |
 | --- | --- | --- | --- |
 | writeBatchTimeout |超时前等待批插入操作完成的时间。 |**timespan**<br/><br/> 示例：00:30:00（30 分钟） |否 |
 | writeBatchSize |当缓冲区大小达到 **writeBatchSize** 值时，向 SQL 表插入数据。 |整数（行数） |否（默认值：100） |
@@ -268,7 +267,7 @@ User Id=<user name>;Password=<password>;",
 
 **Azure Blob 输出数据集**
 
-数据写入到新的 blob，每小时进行一次（**frequency**：**hour**，**interval**：**1**）。 根据正在处理的切片的开始时间，动态计算 blob 的文件夹路径和文件名。 文件夹路径使用开始时间的年、月、日和小时部分。
+每小时向新的 blob 写入一次数据（**frequency**：**hour**，**interval**：**1**）。 根据正在处理的切片的开始时间，动态计算 blob 的文件夹路径和文件名。 文件夹路径使用开始时间的年、月、日和小时部分。
 
 ```json
 {

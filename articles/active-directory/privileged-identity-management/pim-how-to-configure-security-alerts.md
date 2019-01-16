@@ -10,15 +10,15 @@ ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.component: pim
-ms.date: 11/21/2018
+ms.date: 01/04/2019
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 4a715020e37d5885dac26ac0573efe985c3f2cfb
-ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
+ms.openlocfilehash: 0231eaad26fbc3e7157999c0023c5001f37d70d5
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2018
-ms.locfileid: "52291209"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54063277"
 ---
 # <a name="configure-security-alerts-for-azure-ad-directory-roles-in-pim"></a>在 PIM 中为 Azure AD 目录角色配置安全警报
 
@@ -30,9 +30,9 @@ ms.locfileid: "52291209"
 
 本部分列出目录角色的所有安全警报，以及如何修复和防止这些警报。 严重性的含义如下：
 
-* **高**：因策略冲突需要立即采取措施。
-* **中**：不需要立即采取措施但有潜在的策略冲突。
-* **低**：不需要立即采取措施，但建议考虑可取的策略更改。
+* **高**：因策略违反需要立即采取措施。
+* **中**：不需要立即采取措施但指示潜在的策略违反。
+* **低**：不需要立即采取措施，但建议考虑更可取的策略更改。
 
 ### <a name="administrators-arent-using-their-privileged-roles"></a>管理员不使用其特权角色
 
@@ -69,7 +69,7 @@ ms.locfileid: "52291209"
 | | |
 | --- | --- |
 | **严重性** | 中型 |
-| **为何收到此警报？** | 最近未更改其密码的帐户可能是不受维护的服务或共享帐户。 这些充当特权角色的帐户容易受到攻击。 |
+| **为何收到此警报？** | 具有特权角色但在过去 90 天内未更改密码的帐户。 这些帐户可能是未维护且易受攻击者攻击的服务帐户或共享帐户。 |
 | **如何修复？** | 请检查列表中的帐户。 如果它们不再需要访问权限，请将其从特权角色中删除。 |
 | **预防** | 确保当知道密码的用户有变化时，共享的帐户会轮换使用强密码。 </br>使用[访问评审](pim-how-to-start-security-review.md)定期审查具有特权角色的帐户，并删除不再需要的角色分配。 |
 | **门户中的缓解措施** | 从用户的特权角色中删除其帐户。 |

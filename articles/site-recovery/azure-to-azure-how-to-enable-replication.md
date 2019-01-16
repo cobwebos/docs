@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: asgang
-ms.openlocfilehash: 797cef2d3a0e2cfeb28411c30a7da8a5b6f2d953
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 79ad4b3598c227ad2c2e3b76562cf95a30e82ad3
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52834513"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54101541"
 ---
 # <a name="replicate-azure-virtual-machines-to-another-azure-region"></a>将 Azure 虚拟机复制到另一个 Azure 区域
 
@@ -65,7 +65,7 @@ ms.locfileid: "52834513"
     - **复制策略**：定义恢复点保留期历史记录和应用一致性快照频率的设置。 默认情况下，Azure Site Recovery 会使用恢复点保留期为“24 小时”、应用一致性快照频率为“60 分钟”的默认设置创建新的复制策略。
 
     ![启用复制](./media/site-recovery-replicate-azure-to-azure/enabledrwizard3.PNG)
-
+  
 ## <a name="customize-target-resources"></a>自定义目标资源
 
 可以修改 Site Recovery 使用的默认目标设置。
@@ -79,7 +79,13 @@ ms.locfileid: "52834513"
     - 在“目标存储帐户”中，选择要使用的帐户。
 
         ![启用复制](./media/site-recovery-replicate-azure-to-azure/customize.PNG)
-
+1. 单击“自定义:”以修改默认设置。
+   - 在“多 VM 一致性”中，选择要一起复制的 VM 
+   - 故障转移时，复制组中的所有计算机将具有共享的崩溃一致性恢复点和应用程序一致性恢复点。 启用多 VM 一致性可能会影响工作负荷性能（因为它是 CPU 密集型），因此，仅当计算机运行相同的工作负荷并且需要跨多个计算机的一致性时，才应使用该设置。 例如，如果应用程序有 2 个 sql 虚拟机和 2 个 Web 服务器，则应当仅将 sql 虚拟机添加为复制组的一部分。
+   - 可以选择在复制组中包含最多 16 个虚拟机。
+   - 如果启用了多 VM 一致性，则复制组中的计算机将通过端口 20004 相互通信。 请确保没有防火墙设备阻止 VM 之间通过端口 20004 进行的内部通信。 如果想要 Linux VM 成为复制组的一部分，请确保按照特定 Linux 版本的指南手动打开端口 20004 上的出站流量。
+![启用复制](./media/site-recovery-replicate-azure-to-azure/multivmsettings.PNG)
+    
 2. 单击“创建目标资源” > “启用复制”。
 3. 为 VM 启用复制后，可以在“复制的项”下检查 VM 的运行状况
 

@@ -10,16 +10,16 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 83054c505689768c14d168841764a4557c3e1f8b
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: 6da0bddc3f6c90d0ecd3a554988f510e1063caac
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39158992"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54043033"
 ---
 # <a name="licensing-requirements-for-azure-ad-self-service-password-reset"></a>Azure AD 自助密码重置的授权要求
 
-Azure Active Directory (Azure AD) 提供 4 个版本：Free、Basic、Premium P1 和 Premium P2。 有几个不同的功能可以构成自助密码重置，包括更改、重置、解锁和写回，这些功能在 Azure AD 的不同版本中可用。 本文尝试说明这些差异。 可以在 [Azure Active Directory 定价页](https://azure.microsoft.com/pricing/details/active-directory/)上找到每个Azure AD 版本中包含的功能的更多详细信息。
+Azure Active Directory (Azure AD) 提供 4 个版本：免费版、基本版、高级版 P1 和高级版 P2。 有几个不同的功能可以构成自助密码重置，包括更改、重置、解锁和写回，这些功能在 Azure AD 的不同版本中可用。 本文尝试说明这些差异。 可以在 [Azure Active Directory 定价页](https://azure.microsoft.com/pricing/details/active-directory/)上找到每个Azure AD 版本中包含的功能的更多详细信息。
 
 ## <a name="compare-editions-and-features"></a>比较版本和功能
 
@@ -41,7 +41,7 @@ Azure AD 自助密码重置是按用户许可的，为了维护合规性，需�
    * 此功能包含在 Azure Premium P1 或 Premium P2 版本中。
 
 > [!WARNING]
-> 独立 Office 365 许可计划**不支持密码写回**，要使此功能正常工作，需要使用 Azure AD Premium P1 或 Premium P2 版本。
+> 独立 Office 365 许可计划不支持“通过本地写回实现自助密码重置/更改/解锁”，要使此功能正常工作，需要包含 Azure AD Premium P1 或 Premium P2 版本的计划。
 >
 
 可在以下页上找到其他许可信息（包括成本）：

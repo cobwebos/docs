@@ -44,7 +44,7 @@ Azure Batch AI 服务即将在 3 月停用。 Batch AI 的大规模培训和评�
 
 希望迁移到更全面的 [Azure 机器学习服务](https://aka.ms/aml-docs)的现有客户可以获得支持。
 
-如果 Azure 机器学习服务无法满足你的需求，而 Batch AI 服务中提供支持的功能，请向支持团队发起 Batch AI 支持请求，将你的订阅列入白名单，以使用 Batch AI 直到服务停用。
+如果 Azure 机器学习服务无法满足你的需求，而 Batch AI 服务中提供支持的功能，请向支持团队发起 Batch AI 支持请求，将你的订阅列入允许列表，以使用 Batch AI 直到服务停用。
 
 ## <a name="next-steps"></a>后续步骤
 

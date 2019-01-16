@@ -1,6 +1,6 @@
 ---
-title: Azure Monitor 中的 IIS 日志 | Microsoft Docs
-description: Internet 信息服务 (IIS) 会将用户活动存储在日志文件中，并可通过 Azure Monitor 进行收集。  本文介绍了如何配置 IIS 日志收集以及在 Azure Monitor 中创建的记录的详细信息。
+title: Log Analytics 中的 IIS 日志 | Microsoft Docs
+description: Internet 信息服务 (IIS) 会将用户活动存储在日志文件中，并可通过 Log Analytics 进行收集。  本文介绍了如何配置 IIS 日志收集以及在 Log Analytics 中创建的记录的详细信息。
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -13,34 +13,34 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/28/2018
 ms.author: bwren
-ms.openlocfilehash: cd28eef249ae6b07b9e3f74b80c32a4b53370215
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: cd63c63344f322f7d761a2907f52e97f1009e3b8
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53436732"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54101949"
 ---
-# <a name="collect-iis-logs-in-azure-monitor"></a>在 Azure Monitor 中收集 IIS 日志
-Internet 信息服务 (IIS) 会将用户活动存储在日志文件中，并可通过 Azure Monitor 进行收集并将其存储为[日志数据](data-collection.md)。
+# <a name="collect-iis-logs-in-log-analytics"></a>在 Log Analytics 中收集 IIS 日志
+Internet Information Services (IIS) 会将用户活动存储在日志文件中，这些日志文件由 Log Analytics 收集并将其存储为[日志数据](data-collection.md)。
 
 ![IIS 日志](media/data-sources-iis-logs/overview.png)
 
 ## <a name="configuring-iis-logs"></a>配置 IIS 日志
-Azure Monitor 会从 IIS 创建的日志文件中收集条目，因此，必须[配置 IIS 以进行日志记录](https://technet.microsoft.com/library/hh831775.aspx)。
+Log Analytics 会从 IIS 创建的日志文件中收集条目，因此，必须[配置 IIS 以进行日志记录](https://technet.microsoft.com/library/hh831775.aspx)。
 
-Azure Monitor 仅支持以 W3C 格式存储的 IIS 日志文件，不支持自定义字段或 IIS 高级日志记录。 Azure Monitor 不会收集 NCSA 或 IIS 本机格式的日志。
+Log Analytics 仅支持以 W3C 格式存储的 IIS 日志文件，不支持自定义字段或 IIS 高级日志记录。 Azure Monitor 不会收集 NCSA 或 IIS 本机格式的日志。
 
-在 Azure Monitor 中通过[“高级设置”菜单](agent-data-sources.md#configuring-data-sources)配置 IIS 日志。  只需选择**收集 W3C 格式 IIS 日志文件**，即可完成配置。
+在 Log Analytics 中通过[“高级设置”菜单](agent-data-sources.md#configuring-data-sources)配置 IIS 日志。  只需选择**收集 W3C 格式 IIS 日志文件**，即可完成配置。
 
 
 ## <a name="data-collection"></a>数据收集
-每次关闭日志并创建新日志时，Azure Monitor 都会从每个代理收集 IIS 日志条目。 此频率由 IIS 站点的**日志文件滚动更新计划**设置控制，默认情况下为每天一次。 例如，如果此设置为“每小时”，则 Azure Monitor 将每小时收集一次日志。  例如，如果此设置为“每日”，则 Azure Monitor 将每 24 小时收集一次日志。
+每次关闭日志并创建新日志时，Log Analytics 都会从每个代理收集 IIS 日志条目。 此频率由 IIS 站点的**日志文件滚动更新计划**设置控制，默认情况下为每天一次。 例如，如果此设置为“每小时”，则 Log Analytics 将每小时收集一次日志。  例如，如果此设置为“每日”，则 Log Analytics 将每 24 小时收集一次日志。
 
 
 ## <a name="iis-log-record-properties"></a>IIS 日志记录属性
 IIS 日志记录的类型为 **W3CIISLog**，并具有下表中的属性：
 
-| 属性 | 说明 |
+| 属性 | Description |
 |:--- |:--- |
 | Computer |从中收集事件的计算机的名称。 |
 | cIP |客户端的 IP 地址。 |
@@ -67,7 +67,7 @@ IIS 日志记录的类型为 **W3CIISLog**，并具有下表中的属性：
 ## <a name="log-queries-with-iis-logs"></a>使用 IIS 日志的日志查询
 下表提供了检索 IIS 日志记录的日志查询的不同示例。
 
-| 查询 | 说明 |
+| Query | Description |
 |:--- |:--- |
 | W3CIISLog |所有 IIS 日志记录。 |
 | W3CIISLog &#124; where scStatus==500 |返回状态为 500 的所有 IIS 日志记录。 |
@@ -76,5 +76,5 @@ IIS 日志记录的类型为 **W3CIISLog**，并具有下表中的属性：
 | W3CIISLog &#124; summarize sum(csBytes) by Computer &#124; take 500000 |每台 IIS 计算机接收的总字节数。 |
 
 ## <a name="next-steps"></a>后续步骤
-* 配置 Azure Monitor 以收集其他[数据源](agent-data-sources.md)进行分析。
+* 配置 Log Analytics 以收集其他[数据源](agent-data-sources.md)进行分析。
 * 了解[日志查询](../../log-analytics/log-analytics-queries.md)以便分析从数据源和解决方案中收集的数据。

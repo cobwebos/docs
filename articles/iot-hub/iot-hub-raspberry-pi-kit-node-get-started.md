@@ -10,12 +10,12 @@ ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 04/11/2018
 ms.author: rangv
-ms.openlocfilehash: 8a533b3bf90ac2635ee05c6511c28d18784ddfec
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: a4e64259b941a4f2c2727afc8730c6cb0102a061
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53343847"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54054873"
 ---
 # <a name="connect-raspberry-pi-to-azure-iot-hub-nodejs"></a>将 Raspberry Pi 连接到 Azure IoT 中心 (Node.js)
 
@@ -83,7 +83,7 @@ ms.locfileid: "53343847"
 
 1. 下载 Raspbian。
 
-   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 [下载 Raspbian Stretch](http://downloads.raspberrypi.org/raspbian/images/raspbian-2017-07-05/)（.zip 文件）。
+   a. [下载 Raspbian Stretch](http://downloads.raspberrypi.org/raspbian/images/raspbian-2017-07-05/)（.zip 文件）。
 
    > [!WARNING]
    > 请使用上面的链接来下载 `raspbian-2017-07-5` zip 映像。 Raspbian 映像的最新版本具有与接线 Pi 节点相关的已知问题，这可能会导致在接下来的步骤中发生故障。
@@ -92,7 +92,7 @@ ms.locfileid: "53343847"
 
 2. 将 Raspbian 安装到 microSD 卡。
 
-   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 [下载并安装 Etcher SD 卡刻录机实用工具](https://etcher.io/)。
+   a. [下载并安装 Etcher SD 卡刻录机实用工具](https://etcher.io/)。
 
    b. 运行 Etcher 并选择你在步骤 1 中提取的 Raspbian 映像。
 
@@ -163,7 +163,7 @@ BME280 传感器可收集温度和湿度数据。 当设备向云发送消息云
    
    **Windows 用户**
   
-   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 下载并安装 [PuTTY](http://www.putty.org/) for Windows。 
+   a. 下载并安装 [PuTTY](http://www.putty.org/) for Windows。 
 
    b. 将 Pi 的 IP 地址复制到主机名（或 IP 地址）部分，并选择 SSH 作为连接类型。
    
@@ -240,6 +240,6 @@ BME280 传感器可收集温度和湿度数据。 当设备向云发送消息云
 
 ## <a name="next-steps"></a>后续步骤
 
-此时已运行示例应用程序，以收集传感器数据并将其发送到 IoT 中心。 若要查看 Raspberry Pi 已发送到 IoT 中心的消息或向 Raspberry Pi 发送消息，请参阅[使用用于 Visual Studio Code 的 Azure IoT 中心工具包扩展在设备和 IoT 中心之间发送和接收消息](iot-hub-vscode-iot-toolkit-cloud-device-messaging.md)。
+此时已运行示例应用程序，以收集传感器数据并将其发送到 IoT 中心。 若要查看 Raspberry Pi 已发送到 IoT 中心的消息或向 Raspberry Pi 发送消息，请参阅[使用用于 Visual Studio Code 的 Azure IoT 工具在设备和 IoT 中心之间发送和接收消息](iot-hub-vscode-iot-toolkit-cloud-device-messaging.md)。
 
 [!INCLUDE [iot-hub-get-started-next-steps](../../includes/iot-hub-get-started-next-steps.md)]

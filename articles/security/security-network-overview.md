@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/29/2018
 ms.author: terrylan
-ms.openlocfilehash: ad711fe998a3c250775c5d4f4d76305ffb7cf860
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: a5943c1d2e6b04564e1de732b8f3924a67393753
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51244587"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54065675"
 ---
 # <a name="azure-network-security-overview"></a>Azure 网络安全概述
 
@@ -316,8 +316,8 @@ Azure 以 Azure DNS 的形式提供一个高可用性且高性能的外部 DNS �
 分布式拒绝服务 (DDoS) 攻击是将应用程序移动到云的客户所面临的一些最大的可用性和安全性问题。 DDoS 攻击尝试耗尽应用程序的资源，使应用程序对于合法用户不可用。 DDoS 攻击可能会将任何可通过 Internet 公开访问的终结点作为目标。
 Microsoft 提供“基本”DDoS 防护作为 Azure 平台的一部分。 此防护功能是免费的，包含针对常见网络级攻击的不间断监视和实时缓解。 除了“基本”DDoS 防护随附的保护以外，还可以启用“标准”选项。 DDoS 保护标准功能包括：
 
-* **本机平台集成：** 本机集成到 Azure 中。 包括通过 Azure 门户进行配置。 DDoS 保护标准了解你的资源和资源配置。
-* **统包保护：** 一旦启用 DDoS 保护标准，简化后的配置会立即保护虚拟网络上的所有资源。 要求没有干预或用户定义。 一旦检测到攻击，标准 DDoS 保护会立即自动减轻攻击。
+* **本机平台集成：** 以本机方式集成到 Azure 中。 包括通过 Azure 门户进行配置。 DDoS 保护标准了解你的资源和资源配置。
+* **成套保护：** 一旦启用 DDoS 保护标准，简化后的配置会立即保护虚拟网络上的所有资源。 要求没有干预或用户定义。 一旦检测到攻击，标准 DDoS 保护会立即自动减轻攻击。
 * **始终可用的流量监控：** 应用程序流量模式将全天候受到监控，以寻找 DDoS 攻击的迹象。 将在超出保护策略范围时执行缓解措施。
 * **攻击缓解报表** 攻击缓解报表使用聚合的网络流数据提供有关针对你的资源的攻击的详细信息。
 * **攻击缓解流日志** 通过攻击缓解流日志，可在活动 DDoS 攻击期间近乎实时地查看丢弃的流量、转发的流量和其他攻击数据。
@@ -394,7 +394,7 @@ Azure 安全中心帮助预防、检测和响应威胁，同时提高 Azure 资�
 
 对任何网络安全方案而言，网络级别的日志记录都是一项关键功能。 在 Azure 中，可以记录针对 NSG 获得的信息，以获取网络级别的日志记录信息。 使用 NSG 日志记录，可以从以下日志中获取信息：
 
-* [活动日志](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md)。 使用这些日志查看提交到 Azure 订阅的所有操作。 默认情况下，将启用这些日志并可在 Azure 门户中使用。 这些日志以前称为审核或运行日志。
+* [活动日志](../azure-monitor/platform/activity-logs-overview.md)。 使用这些日志查看提交到 Azure 订阅的所有操作。 默认情况下，将启用这些日志并可在 Azure 门户中使用。 这些日志以前称为审核或运行日志。
 * 事件日志。 这些日志提供有关应用了哪些 NSG 规则的信息。
 * 计数器日志。 通过这些日志，可知道所应用每个 NSG 规则拒绝或允许流量的次数。
 

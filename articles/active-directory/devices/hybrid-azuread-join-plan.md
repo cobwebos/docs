@@ -1,5 +1,5 @@
 ---
-title: 如何配置联接到混合 Azure Active Directory 的设备 | Microsoft Docs
+title: 如何在 Azure Active Directory (Azure AD) 中规划混合 Azure Active Directory 加入实现 | Microsoft Docs
 description: 了解如何配置联接到混合 Azure Active Directory 的设备。
 services: active-directory
 documentationcenter: ''
@@ -13,17 +13,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/01/2018
+ms.date: 01/08/2019
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: c951d4f646fdaec9731ec4b6320e5f625ad91a42
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.openlocfilehash: bddd183c517c611373afd1df64f22bfcd6a0cea8
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53993275"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54102272"
 ---
-# <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>如何规划混合 Azure Active Directory 加入实现
+# <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>如何：规划混合 Azure Active Directory 加入实现
 
 与用户类似，设备将成为要保护的另一标识，并且也用于随时保护资源和位置。 为此，可通过下述某一方法将设备的标识引入 Azure AD：
 
@@ -54,7 +54,6 @@ ms.locfileid: "53993275"
 
 
  
-
 
 ## <a name="review-supported-devices"></a>查看支持的设备 
 
@@ -112,6 +111,11 @@ Windows 下层设备的混合 Azure AD 加入：
 
 混合 Azure AD 加入是自动将已加入域的本地设备注册到 Azure AD 的过程。 在某些情况下，你并不希望自动注册所有设备。 如果遇到这种情况，请参阅[如何控制设备的混合 Azure AD 加入](hybrid-azuread-join-control.md)。
 
+如果加入 Windows 10 域的设备在你的租户中[已注册 Azure AD](https://docs.microsoft.com/en-us/azure/active-directory/devices/overview#azure-ad-registered-devices)，则在启用混合 Azure AD 加入之前应当考虑删除该状态。 不支持设备具有双重状态，即同时具有混合 Azure AD 加入与已注册 Azure AD 状态。 从 Windows 10 1809 版本开始，进行了以下更改来避免此双重状态： 
+ - 在设备加入混合 Azure AD 后，会自动删除任何现有的已注册 Azure AD 状态。 
+ - 可以通过添加以下注册表项阻止将已加入域的设备注册到 Azure AD - HKLM\SOFTWARE\Policies\Microsoft\Windows\WorkplaceJoin, "BlockAADWorkplaceJoin"=dword:00000001
+
+
 ## <a name="review-how-to-control-the-hybrid-azure-ad-join-of-your-devices"></a>查看如何控制设备的混合 Azure AD 加入
 
 混合 Azure AD 联接是自动将已加入域的本地设备注册到 Azure AD 的过程。 在某些情况下，你并不希望自动注册所有设备。 例如，在初始部署期间验证一切是否都按预期运行时，这一点就非常必要。
@@ -146,7 +150,7 @@ Windows 下层设备的混合 Azure AD 加入：
 
 ## <a name="alternate-login-id-support-in-hybrid-azure-ad-join"></a>混合 Azure AD 加入中的备用登录 ID 支持
 
-Windows 10 混合 Azure AD 加入根据备用登录 ID 的类型、[身份验证方法](https://docs.microsoft.com/azure/security/azure-ad-choose-authn)、域类型和 Windows 10 版本对[备用登录 ID](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configuring-alternate-login-id) 提供有限支持。 你的环境中可以存在两种类型的备用登录 ID。
+Windows 10 混合 Azure AD 加入根据备用登录 ID 的类型、[身份验证方法](https://docs.microsoft.com/azure/security/azure-ad-choose-authn)、域类型和 Windows 10 版本对[备用登录 ID](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configuring-alternate-login-id) 提供有限支持。 你的环境中可以存在两种类型的备用登录 ID：
 
  - 可路由的备用登录 ID：可路由的备用登录 ID 具有向域注册机构注册的有效已验证域。 例如，如果 contoso.com 是主域，则 contoso.org 和 contoso.co.uk 是 Contoso拥有的且[已在 Azure AD 中验证的](https://docs.microsoft.com/azure/active-directory/fundamentals/add-custom-domain)有效域。
  
@@ -154,7 +158,7 @@ Windows 10 混合 Azure AD 加入根据备用登录 ID 的类型、[身份验证
  
 下表提供了 Windows 10 混合 Azure AD 加入中对这两种备用登录 ID 的支持的详细信息
 
-|备用登录 ID 的类型|域类型|Windows 10 版本|Description|
+|备用登录 ID 的类型|域类型|Windows 10 版本|说明|
 |-----|-----|-----|-----|
 |可路由的|联合 |从 1703 版本开始|正式发布|
 |可路由的|托管|从 1709 版本开始|当前为个人预览版。 不支持 Azure AD SSPR |

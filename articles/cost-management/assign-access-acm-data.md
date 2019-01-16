@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 12/06/2018
+ms.date: 01/04/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: vitavor
 ms.custom: secdec18
-ms.openlocfilehash: ab5f334b1c830ea5e9c0164b8e75ef0f4fab8e1b
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 50f048dc36b0248cdbbd85d91c00b7947f9ddc1f
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53075635"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54052132"
 ---
 # <a name="assign-access-to-cost-management-data"></a>分配对成本管理数据的访问权限
 
@@ -39,6 +39,10 @@ ms.locfileid: "53075635"
 <sup>1</sup> 计费帐户还称为“企业协议”或“合约”。
 
 <sup>2</sup> 合约帐户还称为“帐户所有者”。
+
+下图说明了成本管理范围与角色和 EA 门户设置之间的关系。
+
+![此图说明了成本管理范围与角色和 EA 门户设置之间的关系](./media/assign-access-acm-data/scope-access-relationship-diagram.png)
 
 ## <a name="enable-access-to-costs-in-the-ea-portal"></a>启动对 EA 门户中的成本的访问
 

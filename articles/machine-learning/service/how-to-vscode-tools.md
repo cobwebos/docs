@@ -10,12 +10,12 @@ ms.author: shwinne
 author: swinner95
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 898fd7d0416d1e1b27a25cabf524e72a7de44fde
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 902c659d2c51d69f2e9d0ef3a7401326e0e530eb
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53269578"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54013139"
 ---
 # <a name="get-started-with-azure-machine-learning-for-visual-studio-code"></a>Azure Machine Learning for Visual Studio Code 入门
 
@@ -80,7 +80,8 @@ ms.locfileid: "53269578"
 
 1. 单击 Visual Studio Code 活动栏中的 Azure 图标。 此时会显示“Azure 机器学习”边栏。
 
-   [![边栏](./media/vscode-tools-for-ai/CreateNewWorkspace.gif)](./media/vscode-tools-for-ai/CreateNewWorkspace.gif#lightbox)
+   [![安装](./media/vscode-tools-for-ai/CreateaWorkspace.gif)](./media/vscode-tools-for-ai/CreateaWorkspace.gif#lightbox)
+
 
 1. 右键单击你的 Azure 订阅，然后选择“创建工作区”。 此时将显示一个列表。 在动画图像中，订阅名称是“Free Trial”，工作区是“TeamWorkspace”。 
 
@@ -96,11 +97,11 @@ ms.locfileid: "53269578"
  
 1. 点击 Enter 键，此时将创建新的试验。 它显示在工作区名称下方的树中。
 
-1. 右键单击试验名称，并选择“将文件夹附加到试验”。 此文件夹应包含本地 Python 脚本。 该文件夹随后链接到云中的试验。 
+1. 可以右键单击工作区中的试验，然后选择“设置为活动试验”。 “活动”试验是你当前正在使用的试验，你在 VS Code 中打开的文件夹将链接到云中的此试验。 此文件夹应包含本地 Python 脚本。
 
-   现在，每个试验都会运行你的实验，因此，所有关键指标都会存储在试验历史记录中，你培训的模型将自动上传到 Azure 机器学习并与试验指标和日志一起存储。
+   现在，你的每个试验都会与你的试验一起运行，因此，所有关键指标都会存储在试验历史记录中，你培训的模型将自动上传到 Azure 机器学习并与试验指标和日志一起存储。
 
-   [![在 VS Code 中附加文件夹](./media/vscode-tools-for-ai/CreateNewExperimentandFolder.gif)](./media/vscode-tools-for-ai/CreateNewExperimentandFolder.gif#lightbox)
+   [![在 VS Code 中附加文件夹](./media/vscode-tools-for-ai/CreateAnExperiment.gif)](./media/vscode-tools-for-ai/CreateAnExperiment.gif#lightbox)
 
 ### <a name="use-keyboard-shortcuts"></a>使用键盘快捷键
 

@@ -1,5 +1,5 @@
 ---
-title: 如何管理 Azure Maps 帐户和密钥 | Microsoft Docs
+title: 管理 Azure Maps 帐户和密钥 | Microsoft Docs
 description: 可以使用 Azure 门户管理 Azure Maps 帐户和访问密钥。
 author: walsehgal
 ms.author: v-musehg
@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 351bc26d6c5b3dcfa9479138f2bd523f64a2912a
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 81746279e935f9fa5b6ef00bc8d31e75f4d3bd20
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53335806"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54103038"
 ---
-# <a name="how-to-manage-your-azure-maps-account-and-keys"></a>如何管理 Azure Maps 帐户和密钥
+# <a name="manage-your-azure-maps-account-and-keys"></a>管理 Azure Maps 帐户和密钥
 
 可以通过 Azure 门户管理 Azure Maps 帐户和密钥。 获得帐户和密钥后，可以在你的网站或移动应用程序中实现 API。
 
@@ -23,11 +23,11 @@ ms.locfileid: "53335806"
 
 ## <a name="create-a-new-account"></a>创建新帐户
 
-1. 登录到 [Azure 门户](http://portal.azure.com)。
+1. 登录到 [Azure 门户](https://portal.azure.com)。
 
-2. 在 Azure 门户的左上角单击“创建资源”。
+2. 在 Azure 门户的左上角，选择“创建资源”。
 
-3. 搜索并选择“地图”，然后单击“创建”。
+3. 搜索并选择“Maps”。 然后选择“创建”。
 
 4. 输入新帐户的信息。
 
@@ -35,9 +35,9 @@ ms.locfileid: "53335806"
 
 ## <a name="manage-keys-on-the-account-page"></a>在帐户页上管理密钥
 
-在创建帐户后，将会得到两个随机生成的密钥。 当希望检索地图数据或者创建新的 JavaScript 地图实例时，将使用这些密钥根据 Maps API 进行身份验证。
+在创建帐户后，将会得到两个随机生成的密钥。 若要检索地图数据或者创建新的 JavaScript 地图实例，请使用这些密钥根据 Maps API 进行身份验证。
 
-可以在 Azure 门户中找到密钥。 导航到你的帐户，然后从菜单中选择“密钥”。
+可以在 Azure 门户中找到密钥。 导航到你的帐户。 然后从菜单中选择“密钥”。
 
 ![在门户中管理帐户密钥](./media/how-to-manage-account-keys/account-keys-portal.png)
 
@@ -53,10 +53,10 @@ ms.locfileid: "53335806"
 
 ## <a name="next-steps"></a>后续步骤
 
-了解如何管理 Azure Maps 帐户定价层：
-> [!div class="nextstepaction"]
-> [管理定价层](./how-to-manage-pricing-tier.md)
+* 了解如何管理 Azure Maps 帐户定价层：
+    > [!div class="nextstepaction"] 
+    > [管理定价层](./how-to-manage-pricing-tier.md)
 
-了解如何查看 Azure Maps 帐户的 API 使用情况指标：
-> [!div class="nextstepaction"]
-> [查看使用情况指标](./how-to-view-api-usage.md)
+* 了解如何查看 Azure Maps 帐户的 API 使用情况指标：
+    > [!div class="nextstepaction"] 
+    > [查看使用情况指标](./how-to-view-api-usage.md)

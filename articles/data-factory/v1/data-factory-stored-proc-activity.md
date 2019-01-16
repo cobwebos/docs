@@ -9,17 +9,16 @@ ms.assetid: 1c46ed69-4049-44ec-9b46-e90e964a4a8e
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: douglasl
 robots: noindex
-ms.openlocfilehash: b10fbd953eb9ca904043973ebc1f7c6adb9f9abc
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: e1c563f33030795d52cc686bf52497f927ace6bc
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37047381"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54017695"
 ---
 # <a name="sql-server-stored-procedure-activity"></a>SQL Server 存储过程活动
 > [!div class="op_single_selector" title1="Transformation Activities"]
@@ -223,7 +222,7 @@ ms.locfileid: "37047381"
 ## <a name="chaining-with-other-activities"></a>与其他活动链接
 如果想要将上游活动与此活动链接，请将上游活动的输出指定为此活动的输入。 执行此操作后，在上游活动完成且上游活动的输出数据集可用（处于“就绪”状态）后，存储过程活动才会运行。 可以将多个上游活动的输出数据集指定为存储过程活动的输入数据集。 执行此操作后，仅在所有输入数据集切片可用时存储过程活动才会运行。  
 
-在下面的示例中，复制活动的输出是 OutputDataset，这是存储过程活动的输入。 因此，在复制活动完成且 OutputDataset 切片可用（处于“就绪”状态）之前，存储过程活动将不会运行。 如果指定了多个输入数据集，在所有输入数据集切片可用（处于“就绪”状态）前，存储过程活动将不会运行。 输入数据集不能直接用作存储过程活动的参数。 
+在以下示例中，复制活动的输出为：OutputDataset，这是存储过程活动的输入。 因此，在复制活动完成且 OutputDataset 切片可用（处于“就绪”状态）之前，存储过程活动将不会运行。 如果指定了多个输入数据集，在所有输入数据集切片可用（处于“就绪”状态）前，存储过程活动将不会运行。 输入数据集不能直接用作存储过程活动的参数。 
 
 有关链接活动的详细信息，请参阅[管道中的多个活动](data-factory-create-pipelines.md#multiple-activities-in-a-pipeline)
 

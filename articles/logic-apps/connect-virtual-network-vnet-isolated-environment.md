@@ -9,19 +9,19 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 12/06/2018
-ms.openlocfilehash: b0fd2466d72b1aae65a54b9e9813a5af51bf1672
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 31f3cf9bd8f83c5da32569ed370de1ed35299749
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52997513"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54062377"
 ---
 # <a name="connect-to-azure-virtual-networks-from-azure-logic-apps-through-an-integration-service-environment-ise"></a>通过集成服务环境 (ISE) 从 Azure 逻辑应用连接到 Azure 虚拟网络
 
 > [!NOTE]
 > 此功能在个人预览版中提供。 若要请求访问权限，[请在此处创建加入请求](https://aka.ms/iseprivatepreview)。
 
-对于逻辑应用和集成帐户需要访问 [ Azure 虚拟网络](../virtual-network/virtual-networks-overview.md)的情况，请创建[集成服务环境 (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)。 ISE 是专用的隔离环境，它使用独立于公共服务或全局逻辑应用服务的专用存储和其他资源。 这种分离还减少了其他 Azure 租户可能对应用性能产生的影响。 可以将 ISE 注入到 Azure 虚拟环境，后者然后会将逻辑应用服务部署到虚拟网络中。 创建逻辑应用或集成帐户时，请选择此 ISE 作为其位置。 然后，逻辑应用或集成帐户可以直接访问虚拟网络中的虚拟机 (VM)、服务器、系统和服务等资源。 
+对于逻辑应用和集成帐户需要访问 [ Azure 虚拟网络](../virtual-network/virtual-networks-overview.md)的情况，请创建[集成服务环境 (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)。 ISE 是专用的隔离环境，它使用独立于公共服务或“全局”逻辑应用服务的专用存储和其他资源。 这种分离还减少了其他 Azure 租户可能对应用性能产生的影响。 可以将 ISE 注入到 Azure 虚拟环境，后者然后会将逻辑应用服务部署到虚拟网络中。 创建逻辑应用或集成帐户时，请选择此 ISE 作为其位置。 然后，逻辑应用或集成帐户可以直接访问虚拟网络中的虚拟机 (VM)、服务器、系统和服务等资源。 
 
 ![选择集成服务环境](./media/connect-virtual-network-vnet-isolated-environment/select-logic-app-integration-service-environment.png)
 
@@ -40,6 +40,9 @@ ms.locfileid: "52997513"
 ## <a name="prerequisites"></a>先决条件
 
 * Azure 订阅。 如果没有 Azure 订阅，请<a href="https://azure.microsoft.com/free/" target="_blank">注册一个免费 Azure 帐户</a>。 
+
+  > [!IMPORTANT]
+  > 运行在 ISE 中的逻辑应用、内置操作和连接器使用不同的定价计划，而不是基于消费的定价计划。 有关详细信息，请参阅[逻辑应用定价](../logic-apps/logic-apps-pricing.md)。
 
 * [Azure 虚拟网络](../virtual-network/virtual-networks-overview.md)。 如果没有虚拟网络，请了解如何[创建 Azure 虚拟网络](../virtual-network/quick-create-portal.md)。 
 
@@ -103,15 +106,15 @@ ms.locfileid: "52997513"
 
    ![提供环境详细信息](./media/connect-virtual-network-vnet-isolated-environment/integration-service-environment-details.png)
 
-   | 属性 | 必选 | 值 | Description |
+   | 属性 | 必需 | 值 | 说明 |
    |----------|----------|-------|-------------|
    | **订阅** | 是 | <*Azure-subscription-name*> | 用于环境的 Azure 订阅 | 
    | **资源组** | 是 | <*Azure-resource-group-name*> | 要在其中创建环境的 Azure 资源组 |
    | **集成服务环境名称** | 是 | <*environment-name*> | 为环境指定的名称 | 
    | **位置** | 是 | <*Azure-datacenter-region*> | 要在其中部署环境的 Azure 数据中心区域 | 
-   | **容量** | 是 | 0、1、2、3 | 用于此 ISE 资源的处理单元数 | 
+   | **额外容量** | 是 | 0、1、2、3 | 用于此 ISE 资源的处理单元数 | 
    | **虚拟网络** | 是 | <Azure-virtual-network-name> | 要注入环境以便该环境中的逻辑应用可以访问虚拟网络的 Azure 虚拟网络。 如果没有网络，可以在此处创建一个。 <p>**重要说明**：创建 ISE 时可以仅执行此注入。 但是，在创建此关系之前，请确保已[在 Azure 逻辑应用的虚拟网络中设置基于角色的访问控制](#vnet-access)。 | 
-   | **子网** | 是 | <*IP-address-range*> | ISE 需要四个空子网。 这些子网未授权给任何服务并用于在环境中创建资源。 创建环境后无法更改这些 IP 范围。 <p><p>要创建每个子网，请[按照此表下方的步骤操作](#create-subnet)。 每个子网必须满足以下条件： <p>- 不得存在于所选虚拟网络的相同地址范围，也不得存在于连接虚拟网络的任何其他专用 IP 地址。 <br>- 使用不以数字或连字符开头的名称。 <br>- 使用[无类别域际路由 (CIDR) 格式](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)。 <br>- 需要 B 类地址空间。 <br>- 包括 `/27`。 例如，此处的每个子网指定一个 32 位的地址范围：`10.0.0.0/27`、`10.0.0.32/27`、`10.0.0.64/27` 和 `10.0.0.96/27`。 <br>- 必须为空。 |
+   | **子网** | 是 | <*subnet-resource-list*> | ISE 需要四个空的子网来在环境中创建资源。 因此，请确保这些子网未委派到任何服务。 创建环境后无法更改这些子网地址。 <p><p>要创建每个子网，请[按照此表下方的步骤操作](#create-subnet)。 每个子网必须满足以下条件： <p>- 必须为空。 <br>- 使用不以数字或连字符开头的名称。 <br>- 使用[无类别域际路由 (CIDR) 格式](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)和 B 类地址空间。 <br>- 在地址空间中至少包括 `/27`，以便子网至少获得 32 个地址。 若要了解如何计算地址数目，请参阅 [IPv4 CIDR 块](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing#IPv4_CIDR_blocks)。 例如： <p>- `10.0.0.0/24` 有 256 个地址，因为 2<sup>(32-24)</sup> 是 2<sup>8</sup> 或 256。 <br>- `10.0.0.0/27` 有 32 个地址，因为 2<sup>(32-27)</sup> 是 2<sup>5</sup> 或 32。 <br>- `10.0.0.0/28` 只有 16 个地址，因为 2<sup>(32-28)</sup> 是 2<sup>4</sup> 或 16。 |
    |||||
 
    <a name="create-subnet"></a>

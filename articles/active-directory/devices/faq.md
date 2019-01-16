@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: a0cfd65aa2444956336e5363d20acab61a404c68
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 8d1e44eae7e87a450ac5f36e621d559fca92ca74
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53309172"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54016148"
 ---
 # <a name="azure-active-directory-device-management-faq"></a>Azure Active Directory 设备管理常见问题解答
 
@@ -180,6 +180,9 @@ USER 设备下面只会列出以下设备：
 
 - [排查已加入 Azure AD 域的计算机的自动注册问题 - Windows 下层客户端](troubleshoot-hybrid-join-windows-legacy.md)
  
+**问：对于 Azure AD 设备列表中已加入 Windows 10 混合 Azure AD 的设备，我为何看到了重复的 Azure AD 已注册记录？**
+
+**答：** 当你的用户在已加入域的设备上将其帐户添加到应用时，可能会提示他们“是否将帐户添加到 Windows?”。 在提示上单击“是”将导致向 Azure AD 注册设备，并且会将信任类型标记为已注册 Azure AD。 在你的组织中启用混合 Azure AD 加入时，还会将设备加入到混合 Azure AD。 因此，对于同一设备将会显示两个设备状态。 但是，混合 Azure AD 加入优先于已注册 Azure AD 状态。 因此，对于任何身份验证和条件访问评估，将会认为你的设备已加入混合 Azure AD。 因此，可以安全地从 Azure AD 门户中删除已注册 Azure AD 设备记录。 请查看混合 Azure AD 加入文章中的[此部分](https://docs.microsoft.com/azure/active-directory/devices/hybrid-azuread-join-plan#review-things-you-should-know)来了解在 Windows 10 计算机上如何避免或清除此双重状态。 
 
 ---
 

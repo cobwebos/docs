@@ -144,16 +144,16 @@ timeToLiveSecs 参数的默认值为 7200 秒，即 2 小时。
 
 * **有用提示**
     * 检查出站/入站配置
-    * 将连接加入白名单
+    * 将连接加入允许列表
     * 配置为通过代理进行通信
 
 ### <a name="review-outboundinbound-configuration"></a>检查出站/入站配置
 
 Azure IoT 中心与 IoT Edge 之间的信道始终配置为出站。 对于大多数 IoT Edge 方案，只需建立三个连接。 容器引擎需要连接到保存模块映像的一个或多个容器注册表。 IoT Edge 运行时需要连接到 IoT 中心，以检索设备配置信息，以及发送消息和遥测数据。 如果使用自动预配，则 IoT Edge 守护程序需要连接到设备预配服务。 有关详细信息，请参阅[防火墙和端口配置规则](troubleshoot.md#firewall-and-port-configuration-rules-for-iot-edge-deployment)。
 
-### <a name="whitelist-connections"></a>将连接加入白名单
+### <a name="whitelist-connections"></a>将连接加入允许列表
 
-如果网络设置要求显式将从 IoT Edge 设备建立的连接加入白名单，请查看以下 IoT Edge 组件列表：
+如果网络设置要求显式将从 IoT Edge 设备建立的连接加入允许列表，请查看以下 IoT Edge 组件列表：
 
 * **IoT Edge 代理**可能通过 WebSocket 来与 IoT 中心建立持久性 AMQP/MQTT 连接。 
 * **IoT Edge 中心**可能通过 WebSocket 来与 IoT 中心建立一个持久性 AMQP 连接或多个 MQTT 连接。 

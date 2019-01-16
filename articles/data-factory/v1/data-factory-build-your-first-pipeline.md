@@ -10,19 +10,18 @@ ms.assetid: 81f36c76-6e78-4d93-a3f2-0317b413f1d0
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 63ae8699af5213634eeac7dfc5045a3fc888b6c0
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: 266d16311115f788283eadc60ca16f95b433d6b0
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45734246"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54015944"
 ---
-# <a name="tutorial-build-your-first-pipeline-to-transform-data-using-hadoop-cluster"></a>教程：使用 Hadoop 群集构建用于转换数据的第一个管道
+# <a name="tutorial-build-your-first-pipeline-to-transform-data-using-hadoop-cluster"></a>教程：使用 Hadoop 群集构建你的第一个管道来转换数据
 > [!div class="op_single_selector"]
 > * [概述与先决条件](data-factory-build-your-first-pipeline.md)
 > * [Azure 门户](data-factory-build-your-first-pipeline-using-editor.md)
@@ -33,11 +32,11 @@ ms.locfileid: "45734246"
 
 
 > [!NOTE]
-> 本文适用于数据工厂版本 1。 如果使用当前版本数据工厂服务，请参阅[快速入门：使用 Azure 数据工厂创建数据工厂](../quickstart-create-data-factory-dot-net.md)。
+> 本文适用于数据工厂版本 1。 如果使用的是数据工厂服务的当前版本，请参阅[快速入门：使用 Azure 数据工厂创建数据工厂](../quickstart-create-data-factory-dot-net.md)。
 
 在本教程中，将使用数据管道生成第一个 Azure 数据工厂。 管道通过在 Azure HDInsight (Hadoop) 群集上运行 Hive 脚本转换输入数据以生成输出数据。  
 
-本文提供了此教程的概述和先决条件。 具备先决条件后，可以使用以下工具/SDK 之一完成此教程：Azure 门户、Visual Studio、PowerShell、Resource Manager 模板、REST API。 在本文开头的下拉列表中选择一个选项，或者选择本文末尾的链接以使用其中一个选项完成此教程。    
+本文提供了此教程的概述和先决条件。 完成先决条件之后，可以使用下列工具/SDK 之一完成本教程：Azure 门户、Visual Studio、PowerShell、资源管理器模板、REST API。 在本文开头的下拉列表中选择一个选项，或者选择本文末尾的链接以使用其中一个选项完成此教程。    
 
 ## <a name="tutorial-overview"></a>教程概述
 将在本教程中执行以下步骤：
@@ -45,12 +44,12 @@ ms.locfileid: "45734246"
 1. 创建**数据工厂**。 数据工厂可包含用于移动和转换数据的一个或多个数据管道。 
 
     在本教程中，会在数据工厂中创建一个管道。 
-2. 创建**管道**。 管道可以具有一个或多个活动（示例：复制活动、HDInsight Hive 活动）。 此示例使用的是 HDInsight Hive 活动，在 HDInsight Hadoop 群集上运行 Hive 脚本。 该脚本首先创建表，以引用存储在 Azure Blob 存储中的原始 Web 日志数据，然后按年和月对原始数据进行分区。
+2. 创建**管道**。 管道可以包含一个或多个活动（示例：复制活动、HDInsight Hive 活动）。 此示例使用的是 HDInsight Hive 活动，在 HDInsight Hadoop 群集上运行 Hive 脚本。 该脚本首先创建表，以引用存储在 Azure Blob 存储中的原始 Web 日志数据，然后按年和月对原始数据进行分区。
 
     在本教程中，管道通过在 Azure HDInsight Hadoop 群集上运行 Hive 查询使用 Hive 活动转换数据。 
 3. 创建**链接服务**。 创建一个链接服务，将数据存储或计算服务链接到数据工厂。 数据存储（如 Azure 存储）会将输入/输出数据保留在管道中。 计算服务（如 HDInsight Hadoop 群集）会处理/转换数据。
 
-    在本教程中，将创建两个链接服务：**Azure 存储**和 **Azure HDInsight**。 Azure 存储链接服务将保存输入/输出数据的 Azure 存储帐户链接到数据工厂。 Azure HDInsight 链接服务用于转换数据的 Azure HDInsight 群集链接到数据工厂。 
+    在本教程中，你将创建两个链接服务：**Azure 存储**和 **Azure HDInsight**。 Azure 存储链接服务将保存输入/输出数据的 Azure 存储帐户链接到数据工厂。 Azure HDInsight 链接服务用于转换数据的 Azure HDInsight 群集链接到数据工厂。 
 3. 创建输入和输出**数据集**。 输入数据集表示管道中活动的输入，输出数据集表示活动的输出。
 
     在本教程中，输入和输出数据集指定 Azure Blob 存储中输入和输出数据的位置。 Azure 存储链接服务指定使用什么 Azure 存储帐户。 输入数据集指定输入文件所在位置，输出数据集指定输出文件所放置到的位置。 
@@ -63,7 +62,7 @@ ms.locfileid: "45734246"
 ![数据工厂教程中的图示视图](media/data-factory-build-your-first-pipeline/data-factory-tutorial-diagram-view.png)
 
 
-在本教程中，**adfgetstarted** Azure blob 容器的 **inputdata** 文件夹包含名为 input.log 的文件。 此日志文件包含三个月的条目：2016 年 1 月、2 月和 3 月。 以下是针对输入文件中的每个月的示例行。 
+在本教程中，**adfgetstarted** Azure blob 容器的 **inputdata** 文件夹包含名为 input.log 的文件。 此日志文件包含以下三个月的条目：2016 年 1 月、2 月和 3 月。 以下是针对输入文件中的每个月的示例行。 
 
 ```
 2016-01-01,02:01:09,SAMPLEWEBSITE,GET,/blogposts/mvc4/step2.png,X-ARR-LOG-ID=2ec4b8ad-3cf0-4442-93ab-837317ece6a1,80,-,1.54.23.196,Mozilla/5.0+(Windows+NT+6.3;+WOW64)+AppleWebKit/537.36+(KHTML,+like+Gecko)+Chrome/31.0.1650.63+Safari/537.36,-,http://weblogs.asp.net/sample/archive/2007/12/09/asp-net-mvc-framework-part-4-handling-form-edit-and-post-scenarios.aspx,\N,200,0,0,53175,871 

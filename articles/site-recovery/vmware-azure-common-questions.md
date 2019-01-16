@@ -8,12 +8,12 @@ services: site-recovery
 ms.date: 12/31/2018
 ms.topic: conceptual
 ms.author: rayne
-ms.openlocfilehash: 920ae8ff09cb8e936a1ba70b2c862bd9bc076046
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: e229fcc2c9eb6b8e1b49293dfd741a2f96f62871
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53974686"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54077379"
 ---
 # <a name="common-questions---vmware-to-azure-replication"></a>常见问题 - VMware 到 Azure 的复制
 
@@ -108,6 +108,12 @@ Site Recovery 通过公共终结点或使用 ExpressRoute 公共对等互连将�
 ### <a name="can-i-modify-vms-that-are-replicating-by-adding-or-resizing-disks"></a>是否可以通过添加磁盘或调整磁盘大小来修改正在复制的 VM？
 
 对于从 VMware 复制到 Azure，可以修改磁盘大小。 如果要添加新磁盘，则需要为 VM 添加磁盘并重新启用保护。
+
+### <a name="can-i-migrate-on-prem-machines-to-a-new-vcenter-without-impacting-ongoing-replication"></a>是否可以在不影响进行中复制的情况下将本地计算机迁移到新的 Vcenter？
+否，更改 Vcenter 或迁移将影响正在进行的复制。 你需要为 ASR 设置新的 Vcenter 并为计算机启用复制。
+
+### <a name="can-i-replicate-to-cachetarget-storage-account-which-has-a-vnet-with-azure-storage-firewalls-configured-on-it"></a>是否可以复制到在其上配置了 Vnet（具有 Azure 存储防火墙）的缓存/目标存储帐户？
+否，Azure Site Recovery 不支持复制到 Vnet 上的存储。
 
 ## <a name="configuration-server"></a>配置服务器
 
@@ -225,9 +231,10 @@ Azure 具有复原能力。 Site Recovery 能够根据 Azure SLA 故障转移到
 可以。故障转移到 Azure 后，如果原始位置不可用，可以故障回复到不同的位置。 [了解详细信息](concepts-types-of-failback.md#alternate-location-recovery-alr)。
 
 ### <a name="why-do-i-need-a-vpn-or-expressroute-to-fail-back"></a>为何需要使用 VPN 或 ExpressRoute 进行故障回复？
-
 从 Azure 故障回复时，Azure 中的数据将复制回到本地 VM，这需要提供私人访问权限。
 
+### <a name="can-i-resize-the-azure-vm-after-failover"></a>是否可以在故障转移后调整 Azure VM 的大小？
+否，无法在故障转移后更改目标 VM 的大小。
 
 
 ## <a name="automation-and-scripting"></a>自动化和脚本

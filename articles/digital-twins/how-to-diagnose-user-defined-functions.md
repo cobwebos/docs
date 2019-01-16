@@ -9,41 +9,41 @@ ms.topic: conceptual
 ms.date: 12/27/2018
 ms.author: stefanmsft
 ms.custom: seodec18
-ms.openlocfilehash: e373e7c3ca83a0200cd1b6b945c5e4cb43b77a51
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: ebeed6d2a52937a6e80dfe28574ad854643fa7f2
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53974856"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54119199"
 ---
 # <a name="how-to-debug-user-defined-functions-in-azure-digital-twins"></a>如何在 Azure 数字孪生中调试用户定义的函数
 
-本文概述如何诊断用户定义的函数。 然后，本文介绍了使用用户定义的函数时可能会遇到的一些最常见情况。
+本文概述了如何诊断和调试用户定义的函数。 然后，它介绍了调试这些函数时遇到的一些最常见情况。
 
 >[!TIP]
 > 若要详细了解如何使用活动日志、诊断日志和 Azure Monitor 在 Azure 数字孪生中设置调试工具，请阅读[如何配置监视和日志记录](./how-to-configure-monitoring.md)。
 
 ## <a name="debug-issues"></a>调试问题
 
-了解如何诊断 Azure 数字孪生实例中出现的任何问题将帮助你有效地确定问题、问题的原因和解决方案。
+了解如何诊断 Azure 数字孪生实例中出现的任何问题可帮助你有效地确定问题、问题的原因和解决方案。
 
 ### <a name="enable-log-analytics-for-your-instance"></a>为实例启用 Log Analytics
 
-Azure 数字孪生实例的日志和指标通过 Azure Monitor 公开。 以下文档假设你已通过 [Azure 门户](../azure-monitor/learn/quick-create-workspace.md)、通过 [Azure CLI](../azure-monitor/learn/quick-create-workspace-cli.md) 或通过 [PowerShell](../azure-monitor/learn/quick-create-workspace-posh.md) 创建了 [Azure Log Analytics](../azure-monitor/log-query/log-query-overview.md) 工作区。
+Azure 数字孪生实例的日志和指标显示在 Azure Monitor 中。 本文档假设你已通过 [Azure 门户](../azure-monitor/learn/quick-create-workspace.md)、通过 [Azure CLI](../azure-monitor/learn/quick-create-workspace-cli.md) 或通过 [PowerShell](../azure-monitor/learn/quick-create-workspace-posh.md) 创建了 [Azure Log Analytics](../azure-monitor/log-query/log-query-overview.md) 工作区。
 
 > [!NOTE]
 > 首次向 Azure Log Analytics 发送事件时，可能会出现 5 分钟的延迟。
 
 若要为 Azure 数字孪生资源配置监视和日志记录，请阅读[如何配置监视和日志记录](./how-to-configure-monitoring.md)。
 
-有关如何通过 Azure 门户、Azure CLI 或 PowerShell 为 Azure 数字孪生实例配置诊断日志设置的综合概述，请阅读[从 Azure 资源收集和使用日志数据](../azure-monitor/platform/diagnostic-logs-overview.md)一文。
+请阅读[从 Azure 资源收集和使用日志数据](../azure-monitor/platform/diagnostic-logs-overview.md)一文，了解如何通过 Azure 门户、Azure CLI 或 PowerShell 配置 Azure 数字孪生中的诊断设置。
 
 >[!IMPORTANT]
 > 请务必选择所有日志类别、指标和 Azure Log Analytics 工作区。
 
 ### <a name="trace-sensor-telemetry"></a>跟踪传感器遥测数据
 
-请确保在 Azure 数字孪生实例上启用了诊断设置，选择了所有日志类别，并且将日志发送到 Azure Log Analytics。
+若要跟踪传感器遥测数据，请验证为 Azure 数字孪生实例启用了诊断设置。 然后，确保选择所需的全部日志类别。 最后，确认将所需的日志发送到 Azure Log Analytics。
 
 要将传感器遥测数据消息与其各自的日志进行匹配，可以在要发送的事件数据上指定相关 ID。 为此，请将 `x-ms-client-request-id` 属性设置为 GUID。
 
@@ -58,7 +58,7 @@ AzureDiagnostics
 | --- | --- |
 | YOUR_CORRELATION_IDENTIFIER | 已在事件数据中指定的相关 ID |
 
-如果记录用户定义的函数，这些日志将显示在 Azure Log Analytics 实例中，类别为 `UserDefinedFunction`。 若要检索这些日志，请在 Azure Log Analytics 中输入以下查询条件：
+如果为用户定义的函数启用了日志记录，这些日志将显示在 Azure Log Analytics 实例中，类别为 `UserDefinedFunction`。 若要检索这些日志，请在 Azure Log Analytics 中输入以下查询条件：
 
 ```Kusto
 AzureDiagnostics
@@ -69,11 +69,11 @@ AzureDiagnostics
 
 ## <a name="identify-common-issues"></a>识别常见问题
 
-在对解决方案进行故障排查时，诊断和识别常见问题都很重要。 下面汇总了开发用户定义的函数时经常遇到的几个问题。
+在对解决方案进行故障排查时，诊断和识别常见问题都很重要。 下面的各个子部分汇总了开发用户定义的函数时经常遇到的几个问题。
 
 [!INCLUDE [Digital Twins Management API](../../includes/digital-twins-management-api.md)]
 
-### <a name="ensure-a-role-assignment-was-created"></a>确保已创建角色分配
+### <a name="check-if-a-role-assignment-was-created"></a>检查是否创建了角色分配
 
 如果没有在管理 API 中创建角色分配，用户定义的函数将无权执行任何操作，例如发送通知、检索元数据以及在拓扑中设置计算值。
 
@@ -89,7 +89,7 @@ GET YOUR_MANAGEMENT_API_URL/roleassignments?path=/&traverse=Down&objectId=YOUR_U
 
 如果不存在任何角色分配，请了解[如何为用户定义的函数创建角色分配](./how-to-user-defined-functions.md)。
 
-### <a name="check-if-the-matcher-will-work-for-a-sensors-telemetry"></a>检查匹配程序是否适用于传感器的遥测数据
+### <a name="check-if-the-matcher-works-for-a-sensors-telemetry"></a>检查匹配程序是否针对传感器的遥测数据工作
 
 通过针对 Azure 数字孪生实例的管理 API 的以下调用，能够确定给定的匹配程序是否适用于给定的传感器。
 
@@ -113,9 +113,9 @@ GET YOUR_MANAGEMENT_API_URL/matchers/YOUR_MATCHER_IDENTIFIER/evaluate/YOUR_SENSO
 }
 ```
 
-### <a name="check-what-a-sensor-will-trigger"></a>检查传感器要触发的内容
+### <a name="check-what-a-sensor-triggers"></a>检查传感器要触发的内容
 
-通过针对 Azure 数字孪生实例的管理 API 的以下调用，能够确定将由给定传感器的传入遥测数据触发的用户定义的函数的标识符：
+通过针对 Azure 数字孪生管理 API 的以下调用，能够确定由给定传感器的传入遥测数据触发的用户定义的函数的标识符：
 
 ```plaintext
 GET YOUR_MANAGEMENT_API_URL/sensors/YOUR_SENSOR_IDENTIFIER/matchers?includes=UserDefinedFunctions
@@ -123,7 +123,7 @@ GET YOUR_MANAGEMENT_API_URL/sensors/YOUR_SENSOR_IDENTIFIER/matchers?includes=Use
 
 | 参数 | 替换为 |
 | --- | --- |
-| *YOUR_SENSOR_IDENTIFIER* | 将发送遥测数据的传感器的 ID |
+| *YOUR_SENSOR_IDENTIFIER* | 要发送遥测数据的传感器的 ID |
 
 响应：
 
@@ -156,7 +156,7 @@ GET YOUR_MANAGEMENT_API_URL/sensors/YOUR_SENSOR_IDENTIFIER/matchers?includes=Use
 
 ### <a name="issue-with-receiving-notifications"></a>接收通知的问题
 
-如果未从触发的用户定义函数中接收通知，请确保拓扑对象类型参数与正在使用的标识符的类型匹配。
+如果未从触发的用户定义函数收到通知，请确认拓扑对象类型参数是否与正在使用的标识符的类型匹配。
 
 不正确示例：
 
@@ -201,12 +201,12 @@ function process(telemetry, executionContext) {
 
 如果启用诊断设置，可能会遇到以下常见异常：
 
-1. 限制：如果用户定义的函数超出[服务限制](./concepts-service-limits.md)一文中列出的执行速率限制，它将受到限制。 在限制到期之前，限制不需要进一步的操作成功执行。
+1. 限制：如果用户定义的函数超出[服务限制](./concepts-service-limits.md)一文中列出的执行速率限制，它将受到限制。 在限制失效之前，任何进一步的操作都不会成功执行。
 
-1. 找不到数据：如果用户定义的函数尝试访问不存在的元数据，操作将失败。
+1. **找不到数据：** 如果用户定义的函数尝试访问不存在的元数据，操作将失败。
 
-1. 未授权：如果用户定义的函数没有设置角色分配或缺少从拓扑中访问某些元数据的足够权限，操作将失败。
+1. **未经授权：** 如果用户定义的函数没有设置角色分配或缺少从拓扑中访问某些元数据的足够权限，操作将失败。
 
 ## <a name="next-steps"></a>后续步骤
 
-了解如何在 Azure 数字孪生中启用[监视和日志](../azure-monitor/platform/activity-logs-overview.md)。
+- 了解如何在 Azure 数字孪生中启用[监视和日志](../azure-monitor/platform/activity-logs-overview.md)。

@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pbutlerm
-ms.openlocfilehash: ff3ca665382efc9133a4c4ce3f3fde25c03c5e52
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: ad22f1944d3fe9a088b66da4cf4df7136db497f7
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48805853"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54075324"
 ---
 <a name="make-your-virtual-machine-offer-live-on-azure-marketplace"></a>让虚拟机产品/服务在 Azure 市场推出
 =========================================================
@@ -51,13 +51,13 @@ ms.locfileid: "48805853"
 
 单击“发布”时，系统会进行自动检查，确保已填充了产品/服务的所有必填字段。 如果有字段未填充，则会在该字段旁边显示警告。需要准确填充该字段，并再次单击“发布”。
 
-正确完成此步骤以后，会显示一个弹出窗口，要求提供电子邮件地址。 该地址是在接下来的发布过程中用于接收发布状态通知的电子邮件地址。 提交电子邮件地址以后，此步骤即告完成。
+正确完成此步骤以后，会显示一个弹出窗口，提示输入电子邮件地址。 该地址是在接下来的发布过程中用于接收发布状态通知的电子邮件地址。 提交电子邮件地址以后，此步骤即告完成。
 
 ![产品/服务推出步骤 4 - 发布产品/服务](./media/cloud-partner-portal-offer-go-live-azure-marketplace/publishyouroffer.png)
 
 **认证（\<5 天）**
 
-我们会在此步骤运行多项测试，确保 VM 映像满足 Azure 认证要求。 [此处](https://docs.microsoft.com/azure/marketplace-publishing/marketplace-publishing-vm-image-creation-prerequisites)提供了需要的所有指南，确保满足认证要求。
+我们会在此步骤运行多项测试，确保 VM 映像满足 Azure 认证要求。 [此处](../cloud-partner-portal/virtual-machine/cpp-prerequisites.md)提供了需要的所有指南，确保满足认证要求。
 
 由于此步骤可能需要数天的时间，你可以注销云合作伙伴门户。 如果存在需要你解决的错误，我们会向你发送电子邮件通知。 如果一切成功通过，会自动进入“预配”步骤。
 
@@ -75,17 +75,17 @@ ms.locfileid: "48805853"
 
 会收到通知电子邮件，告知你产品/服务已成功完成必需步骤，目前允许以预览方式访问该产品/服务。 应该在这一步预览产品/服务，确保一切正常，且 VM 已正常部署在过渡环境中。
 
-**只有已列入允许列表的订阅能够执行此验证。**\*
+只有已列入允许列表的订阅能够执行此验证。
 
 **发布者签收**
 
-在预览版中验证一切正确并可正常运行以后，即可推出产品/服务。 为此，请单击“状态”选项卡下的“推出”，我们就会启动相关步骤，让产品/服务以产品形式发布，在网站上推出。 从你单击“推出”到产品/服务在网站上推出，通常需数小时。 产品/服务在网站上正式推出以后，我们会向你发送电子邮件通知。
+在预览版中验证一切正确并可正常运行以后，即可推出产品/服务。 单击“状态”选项卡下的“推出”，我们就会启动相关步骤，让产品/服务以产品形式发布，在网站上推出。 从你单击“推出”到产品/服务在网站上推出，通常需要数小时。 产品/服务在网站上正式推出以后，我们会向你发送电子邮件通知。
 
 ![产品/服务推出步骤 5 - 推出](./media/cloud-partner-portal-offer-go-live-azure-marketplace/golive.png)
 
 **推出**
 
-套餐现已在 Azure 市场和 Azure 门户推出，客户可以在其 Azure 订阅中查看和部署虚拟机。 可以随时单击“所有产品/服务”选项卡，查看在右侧栏中列出的所有产品/服务的状态。 单击状态即可详细查看产品/服务的发布流状态。
+产品/服务现已在 Azure 市场和 Azure 门户推出，客户可以在其 Azure 订阅中查看和部署虚拟机。 可以随时单击“所有产品/服务”选项卡，查看在右侧栏中列出的所有产品/服务的状态。 单击状态即可详细查看产品/服务的发布流状态。
 
 <a name="error-handling"></a>错误处理
 --------------
@@ -94,7 +94,7 @@ ms.locfileid: "48805853"
 
 ![产品/服务推出步骤 6 - 错误消息](./media/cloud-partner-portal-offer-go-live-azure-marketplace/errormessage.png)
 
-如果在发布过程中遇到错误，则需纠正这些错误，然后单击“发布”，重新启动发布过程。 纠正错误以后，如果需要重新发布，必须从头开始发布步骤，即从“验证先决条件”开始。
+如果在发布过程中遇到错误，则需解决这些问题，然后单击“发布”，重新启动发布过程。 纠正错误以后，如果需要重新发布，必须从头开始发布步骤，即从“验证先决条件”开始。
 
 如果解决不了错误，则应提出支持请求，从我们的支持工程师处获取帮助。
 

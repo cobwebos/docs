@@ -307,6 +307,12 @@ items:
         href: sql-database-performance.md
       - name: 数据库顾问性能建议
         href: sql-database-advisor.md
+  - name: 加载和移动数据
+    items:
+    - name: SQL 数据同步
+      href: sql-database-sync-data.md
+    - name: 事务复制
+      href: sql-database-managed-instance-transactional-replication.md
   - name: 数据库功能
     items:
     - name: 数据库功能
@@ -329,7 +335,7 @@ items:
       href: sql-database-cloud-migrate.md
     - name: 在迁移后管理 SQL 数据库
       href: sql-database-manage-after-migration.md
-    - name: 配置事务复制
+    - name: 配置复制
       href: replication-to-sql-database.md
     - name: 配置威胁检测
       href: sql-database-threat-detection.md
@@ -439,8 +445,6 @@ items:
       href: sql-database-export.md
     - name: 数据同步
       items:
-      - name: SQL 数据同步
-        href: sql-database-sync-data.md
       - name: 数据同步代理
         href: sql-database-data-sync-agent.md
       - name: 复制架构更改
@@ -682,9 +686,9 @@ items:
       href: sql-database-elastic-jobs-getting-started.md
     - name: 卸载弹性作业（已弃用）
       href: sql-database-elastic-jobs-uninstall.md
-ms.openlocfilehash: 500fd22c19e0aab2cbecf0267329d5a86a5ccda2
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: 634018a1807e23700141ac11a961bd1b1411b8a8
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54230895"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54331395"

@@ -10,12 +10,12 @@ ms.date: 05/30/2018
 ms.service: logic-apps
 ms.reviewer: klam, LADocs
 ms.suite: integration
-ms.openlocfilehash: c0f2802bae366637fd93d47e33619746b7142f53
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: bb84c7d5e483b0a2abc3b7d1a37de8760513d203
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50231621"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54063210"
 ---
 # <a name="create-variables-for-saving-and-managing-values-in-azure-logic-apps"></a>在 Azure 逻辑应用中创建用于保存和管理值的变量
 
@@ -28,7 +28,10 @@ ms.locfileid: "50231621"
 * 将不同的值赋给变量。
 * 插入或追加变量值作为字符串或数组中的最后一个时间。
 
-变量只在创建它们的逻辑应用实例中存在并保持全局性。 另外，它们保留在逻辑应用实例中的任何循环迭代之间。 引用变量时，请使用变量的名称作为令牌，而不要使用操作的名称。操作名称通常用于引用操作的输出。
+变量只在创建它们的逻辑应用实例中存在并保持全局性。 另外，它们保留在逻辑应用实例中的任何循环迭代之间。 引用变量时，请使用变量的名称作为令牌，而不要使用操作的名称。操作名称通常用于引用操作的输出。 
+
+> [!IMPORTANT]
+> 默认情况下，“Foreach”循环中的周期并行运行。 在循环中使用变量时，[按顺序](../logic-apps/logic-apps-control-flow-loops.md#sequential-foreach-loop)运行循环，以便变量返回可预测的结果。 
 
 如果没有 Azure 订阅，请<a href="https://azure.microsoft.com/free/" target="_blank">注册一个免费 Azure 帐户</a>。 
 

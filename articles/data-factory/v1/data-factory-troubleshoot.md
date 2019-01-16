@@ -9,17 +9,16 @@ ms.assetid: 38fd14c1-5bb7-4eef-a9f5-b289ff9a6942
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: douglasl
 robots: noindex
-ms.openlocfilehash: cbd51c48ec5b1801062e7aaf0b77e7b347018b31
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: c41f03494720c9283bb3ce91fda6e3981f305084
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37051859"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54023013"
 ---
 # <a name="troubleshoot-data-factory-issues"></a>排查数据工厂问题
 > [!NOTE]
@@ -28,7 +27,7 @@ ms.locfileid: "37051859"
 本文提供有关 Azure 数据工厂使用问题的故障排除提示。 本文未列出使用该服务时可能出现的所有问题，但涵盖了部分问题和常见故障排除的提示。   
 
 ## <a name="troubleshooting-tips"></a>故障排除提示
-### <a name="error-the-subscription-is-not-registered-to-use-namespace-microsoftdatafactory"></a>错误: 该订阅未注册为使用命名空间 'Microsoft.DataFactory'
+### <a name="error-the-subscription-is-not-registered-to-use-namespace-microsoftdatafactory"></a>错误：该订阅未注册，无法使用命名空间 'Microsoft.DataFactory'
 出现此错误表示未在计算机上注册 Azure 数据工厂资源提供程序。 请执行以下操作：
 
 1. 启动 Azure PowerShell。
@@ -63,7 +62,7 @@ ms.locfileid: "37051859"
 ### <a name="problem-fail-to-connect-to-on-premises-sql-server"></a>问题：无法连接到本地 SQL Server
 在网关计算机上启动“数据管理网关”，并使用“疑难解答”选项卡测试从网关计算机到 SQL Server 的链接。 请参阅[网关问题故障排除](data-factory-data-management-gateway.md#troubleshooting-gateway-issues)，了解连接/网关相关问题的故障排除提示。   
 
-### <a name="problem-input-slices-are-in-waiting-state-for-ever"></a>问题：输入切片始终处于等待状态
+### <a name="problem-input-slices-are-in-waiting-state-for-ever"></a>问题：输入切片始终处于 Waiting 状态
 切片处于“等待”状态的原因有多种。 其中一个常见原因是 **external** 属性未设置为 **true**。 在 Azure 数据工厂范围外部生成的任何数据集都应标记为 **external** 属性。 此属性表示该数据是外部的，且不由数据工厂内的任何管道提供支持。 当数据出现在相应的存储中后，数据切片将标记为 **Ready**。
 
 有关 **external** 属性的用法，请参阅以下示例。 将 external 设置为 true 时，可以选择指定 **externalData** \*。

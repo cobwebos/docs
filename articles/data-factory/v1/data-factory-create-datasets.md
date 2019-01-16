@@ -9,21 +9,20 @@ ms.assetid: 0614cd24-2ff0-49d3-9301-06052fd4f92a
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: f33ff3f588dac49e295a5aa96d71557d32407e46
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 77e81dce7857433481f501410419f1067a51c3fc
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38667432"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54020330"
 ---
 # <a name="datasets-in-azure-data-factory"></a>Azure 数据工厂中的数据集
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [第 1 版](data-factory-create-datasets.md)
+> * [版本 1](data-factory-create-datasets.md)
 > * [版本 2（当前版本）](../concepts-datasets-linked-services.md)
 
 > [!NOTE]
@@ -41,7 +40,7 @@ ms.locfileid: "38667432"
 
 创建数据集之前，请创建一个链接服务，将数据存储链接到数据工厂。 链接的服务类似于连接字符串，它定义数据工厂连接到外部资源时所需的连接信息。 数据集可识别链接的数据存储（如 SQL 表、文件、文件夹和文档）中的数据。 例如，Azure 存储链接服务可将存储帐户链接到数据工厂。 Azure Blob 数据集表示 blob 容器以及包含要处理的输入 blob 的文件夹。 
 
-下面是一个示例方案。 要将数据从 Blob 存储复制到 SQL 数据库，请创建两个链接服务，即 Azure 存储和 Azure SQL 数据库。 然后创建两个数据集：Azure Blob 数据集（即 Azure 存储链接服务）和 Azure SQL 表数据集（即 Azure SQL 数据库链接服务）。 Azure 存储和 Azure SQL 数据库链接服务分别包含数据工厂在运行时用于连接到 Azure 存储和 Azure SQL 数据库的连接字符串。 Azure Blob 数据集指定 blob 容器和 blob 文件夹，该文件夹包含 Blob 存储中的输入 blob。 Azure SQL 表数据集指定要向其复制数据的 SQL 数据库中的 SQL 表。
+下面是一个示例方案。 要将数据从 Blob 存储复制到 SQL 数据库，请创建以下两个链接服务：Azure 存储和 Azure SQL 数据库。 然后创建两个数据集：Azure Blob 数据集（即 Azure 存储链接服务）和 Azure SQL 表数据集（即 Azure SQL 数据库链接服务）。 Azure 存储和 Azure SQL 数据库链接服务分别包含数据工厂在运行时用于连接到 Azure 存储和 Azure SQL 数据库的连接字符串。 Azure Blob 数据集指定 blob 容器和 blob 文件夹，该文件夹包含 Blob 存储中的输入 blob。 Azure SQL 表数据集指定要向其复制数据的 SQL 数据库中的 SQL 表。
 
 下图显示了数据工厂中管道、活动、数据集和链接服务之间的关系： 
 
@@ -85,7 +84,7 @@ ms.locfileid: "38667432"
 | 名称 |数据集名称。 若要了解命名规则，请参阅 [Azure 数据工厂 - 命名规则](data-factory-naming-rules.md)。 |是 |NA |
 | type |数据集的类型。 指定数据工厂支持的类型之一（例如：AzureBlob、AzureSqlTable）。 <br/><br/>有关详细信息，请参阅[数据集类型](#Type)。 |是 |NA |
 | structure |数据集的架构。<br/><br/>有关详细信息，请参阅[数据集结构](#Structure)。 |否 |NA |
-| typeProperties | 每种类型（例如 Azure Blob、Azure SQL 表）的类型属性各不相同。 若要详细了解受支持的类型及其属性，请参阅[数据集类型](#Type)。 |是 |NA |
+| typeProperties | 每种类型的类型属性各不相同（例如：Azure Blob、Azure SQL 表）。 若要详细了解受支持的类型及其属性，请参阅[数据集类型](#Type)。 |是 |NA |
 | external | 布尔标志，用于指定数据集是否由数据工厂管道显式生成。 如果活动的输入数据集不由当前管道生成，请将此标志设置为 true。 针对管道中第一个活动的输入数据集，将此标志设置为 true。  |否 |false |
 | availability | 定义数据集生产的处理时段（如每小时或每天）或切片模型。 活动运行使用和生成的每个数据单元称为数据切片。 如果输出数据集的可用性设置为每天（频率 - 天，间隔 - 1），则将每天生成一个切片。 <br/><br/>有关详细信息，请参阅[数据集可用性](#Availability)。 <br/><br/>有关数据集切片模型的详细信息，请参阅[计划和执行](data-factory-scheduling-and-execution.md)一文。 |是 |NA |
 | policy |定义数据集切片必须满足的标准或条件。 <br/><br/>有关详细信息，请参阅[数据集策略](#Policy)部分。 |否 |NA |
@@ -151,7 +150,7 @@ AzureSqlLinkedService 定义如下：
 [!INCLUDE [data-factory-supported-data-stores](../../../includes/data-factory-supported-data-stores.md)]
 
 > [!NOTE]
-> 包含 * 的数据存储可为本地，也可为 Azure 服务架构 (IaaS)。 这些数据存储要求安装[数据管理网关](data-factory-data-management-gateway.md)。
+> 包含 * 的数据存储可为本地，也可为 Azure 基础结构即服务 (IaaS)。 这些数据存储要求安装[数据管理网关](data-factory-data-management-gateway.md)。
 
 在上一节中的示例中，数据集的类型设置为 AzureSqlTable。 同样，对于 Azure Blob 数据集，数据集的类型设置为 AzureBlob，如以下 JSON 中所示：
 
@@ -207,7 +206,7 @@ structure:
     由于类型信息已可用于结构化数据源，因此包含结构部分时不应包含类型信息。
 * 对于读取数据源（尤其是 Blob 存储）的架构，可以选择存储数据但不存储数据的任何架构或类型信息。 对于这些类型的数据源，当希望将源列映射到接收器列时请包括“结构”。 当数据集是复制活动的输入数据集并且需要将源数据集的数据类型转换为接收器的本机类型时，也请将“结构”包括在内。 
     
-    数据工厂支持以下值，用于在结构中提供类型信息：Int16、Int32、Int64、Single、Double、Decimal、Byte[]、Bool、String、Guid、Datetime、Datetimeoffset 和 Timespan。 这些值符合公共语言规范 (CLS)，且基于 .NET 的类型值。
+    数据工厂支持使用以下值提供结构中的类型信息：**Int16、Int32、Int64、Single、Double、Decimal、Byte[]、Boolean、String、Guid、Datetime、Datetimeoffset 和 Timespan**。 这些值符合公共语言规范 (CLS)，且基于 .NET 的类型值。
 
 将数据从源数据存储移到接收器数据存储时，数据工厂自动执行类型转换。 
   
@@ -241,7 +240,7 @@ structure:
 | 频率 |指定数据集切片生成的时间单位。<br/><br/><b>支持的频率</b>：Minute、Hour、Day、Week、Month |是 |NA |
 | interval |指定频率的乘数。<br/><br/>“频率 x 间隔”确定生成切片的频率。 例如，如果需要数据集每小时生成切片，请将“frequency”<b></b>设置为“Hour”<b></b>，将“interval”<b></b>设置为“1”<b></b>。<br/><br/>注意：如果将“frequency”指定为“Minute”，则应将“interval”设置为小于 15 的值。 |是 |NA |
 | style |指定是否应在间隔的开头/结尾生成切片。<ul><li>StartOfInterval</li><li>EndOfInterval</li></ul>若将“frequency”设置为“Month”，将“style”设置为“EndOfInterval”，则会在每月的最后一天生成切片。 若将“style”设置为“StartOfInterval”，则会在每月的第一天生成切片。<br/><br/>若将“frequency”设置为“Day”，将“style”设置为“EndOfInterval”，则会在一天的最后一小时生成切片。<br/><br/>若将 **frequency** 设置为 **Hour**，**style** 设置为 **EndOfInterval**，则会在一小时结束时生成切片。 例如，对于下午 1 点到下午 2 点期间的切片，则在下午 2 点生成切片。 |否 |EndOfInterval |
-| anchorDateTime |定义计划程序用于计算数据集切片边界的时间中的绝对位置。 <br/><br/>注意：如果此属性的日期部分比指定的频率更精细，则忽略更精细部分。 例如，如果“interval”是“每小时”（frequency: hour 且 interval: 1），而 anchorDateTime 包含“分钟和秒”，则将忽略 anchorDateTime 的“分钟和秒”部分。 |否 |01/01/0001 |
+| anchorDateTime |定义计划程序用于计算数据集切片边界的时间中的绝对位置。 <br/><br/>注意：如果此属性的日期部分比指定的频率更精细，则忽略更精细部分。 例如，如果“间隔”是“每小时”（frequency：hour 且 interval：1），而 **anchorDateTime** 包含**分钟和秒**，则将忽略 **anchorDateTime** 的分钟和秒部分。 |否 |01/01/0001 |
 | offset |所有数据集切片的开始和结束之间偏移的时间跨度。 <br/><br/>注意：如果同时指定了 anchorDateTime 和 offset，则结果是组合偏移。 |否 |NA |
 
 ### <a name="offset-example"></a>偏移示例
@@ -283,7 +282,7 @@ structure:
 数据集定义中的“策略”部分定义了数据集切片必须满足的标准或条件。
 
 ### <a name="validation-policies"></a>验证策略
-| 策略名称 | 说明 | 适用对象 | 必选 | 默认 |
+| 策略名称 | Description | 适用对象 | 必选 | 默认 |
 | --- | --- | --- | --- | --- |
 | minimumSizeMB |验证 Azure Blob 存储中的数据是否满足最小大小要求（以兆字节为单位）。 |Azure Blob 存储 |否 |NA |
 | minimumRows |验证 **Azure SQL 数据库**中的数据或 **Azure 表**是否包含最小行数。 |<ul><li>Azure SQL 数据库</li><li>Azure 表</li></ul> |否 |NA |
@@ -319,7 +318,7 @@ minimumRows：
 
 除非由数据工厂生成数据集，否则应将其标记为“external”。 此设置通常适用于管道中第一个活动的输入，除非正在使用活动或管道链接。
 
-| 名称 | 说明 | 必选 | 默认值 |
+| 名称 | Description | 必选 | 默认值 |
 | --- | --- | --- | --- |
 | dataDelay |延迟检查给定切片外部数据的可用性的时间。 例如，可使用此设置延迟每小时检查。<br/><br/>该设置仅适用于当前时间。  例如，如果现在是下午 1:00 且此值为 10 分钟，则从下午 1:10 开始验证。<br/><br/>请注意，此设置不影响过去的切片。 处理包含 Slice End Time + dataDelay < Now 的切片不会有任何延迟。<br/><br/>大于 23:59 小时的时间应使用 `day.hours:minutes:seconds` 格式进行指定。 例如，若要指定 24 小时，请不要使用 24:00:00。 请改用 1.00:00:00。 如果使用 24:00:00，则将它视为 24 天 (24.00:00:00)。 对于 1 天又 4 小时，请指定 1:04:00:00。 |否 |0 |
 | retryInterval |失败与下一次尝试之间的等待时间。 此设置适用于当前时间。 如果上一次尝试失败，则在 retryInterval 时间段后进行下一次尝试。 <br/><br/>如果现在是下午 1:00，我们将开始第一次尝试。 如果完成第一次验证检查的持续时间为 1 分钟，并且操作失败，则下一次重试为 1:00 + 1 分钟（持续时间）+ 1 分钟（重试间隔）= 下午 1:02。 <br/><br/>对于过去的切片，没有任何延迟。 重试会立即发生。 |否 |00:01:00（1 分钟） |

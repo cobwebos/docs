@@ -3,7 +3,7 @@ title: 将产品/服务部署到 Azure 市场 | Microsoft Docs
 description: 了解并分步遵循说明，以便将产品/服务（虚拟机映像、开发人员服务、数据服务等）部署到 Azure 市场。
 services: marketplace-publishing
 documentationcenter: ''
-author: HannibalSII
+author: v-miclar
 manager: hascipio
 editor: ''
 ms.assetid: 8f79b891-84e2-4f41-ba0d-66420e2c6b2e
@@ -14,12 +14,13 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/02/2016
 ms.author: hascipio
-ms.openlocfilehash: 12dc81642905cd9449a1032c7ab57298e6b69ba8
-ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
+ROBOTS: NOINDEX
+ms.openlocfilehash: 058f50853795453617593a6a07e2951f15f28174
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39714275"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54076105"
 ---
 # <a name="deploy-your-offer-to-the-azure-marketplace"></a>将产品/服务部署到 Azure 市场
 如果对产品/服务感到满意（即，已测试客户方案、市场营销内容等）并为启动做好准备，请在“发布”选项卡上请求“推动到生产”。  
@@ -57,21 +58,20 @@ ms.locfileid: "39714275"
 * SKU 标题和产品/服务摘要不应该相同。
 * 对于具有多个 SKU 的产品/服务，SKU 标题不应该相同。
 
-
-  **Azure 市场徽标准则**
+**Azure 市场徽标准则**
 
 * Azure 设计具有简单的调色板。 保持徽标上的主要和辅助颜色数较低。
 * Azure 门户的主题颜色为白色和黑色。 因此，应避免将这些颜色用作徽标的背景色。 使用一些可使徽标在 Azure 门户中突出显示的颜色。 我们建议使用简单的主要颜色。 如果使用的是透明背景，请确保徽标/文本不为白色或黑色。
 * 不要在徽标上使用渐变背景。
-* 避免在徽标上放置文本，即使是公司或品牌名称也不可以。
+* 请避免在徽标上放置文本，即使是公司或品牌名称也不可以。
 * 徽标的外观应“平整”，并且应避免渐变。
 * 徽标应未被拉伸。
 
 **特大徽标的其他准则：**
 
 * 特大徽标是可选项。 发布者可以选择不上载特大徽标。 **但是，在上传特大图标后，将无法将其从发布门户中删除。此时，合作伙伴必须遵循特大图标的 Azure 市场准则，否则产品/服务将不批准用于生产。**
-* 发布者显示名称、SKU 标题和套餐详细摘要以白色字体颜色显示。 因此，应避免在特大图标的背景中保留任何浅色。 特大图标不允许使用黑色、白色和透明背景。
-* 在套餐推出后，发布者显示名称、SKU 标题、套餐详细摘要和创建按钮以编程方式嵌入在特大徽标内。 因此，在设计特大徽标时，不应输入任何文本。 请仅在右侧保留空白区域，因为我们将以编程方式将文本（即，发布者显示名称、SKU 标题、套餐长摘要）放置在那里。 右侧文本的空白区域应为 415x100（并按 370px 从左侧偏移）。
+* 发布者显示名称、SKU 标题和产品/服务详细摘要以白色字体颜色显示。 因此，应避免在特大图标的背景中保留任何浅色。 特大图标不允许使用黑色、白色和透明背景。
+* 在套餐推出后，发布者显示名称、SKU 标题、套餐详细摘要和创建按钮以编程方式嵌入在特大徽标内。 因此，在设计特大徽标时，不应输入任何文本。 请仅在右侧保留空白区域，因为我们将以编程方式将文本（即，发布者显示名称、SKU 标题、产品/服务长摘要）放置在那里。 右侧文本的空白区域应为 415x100（并从左侧按 370 像素的幅度进行偏移）。
 
 ## <a name="additional-production-checklist-for-already-listed-virtual-machine-offers"></a>已列出的虚拟机产品/服务的附加生产清单
 * 检查是否已经存在与公司的产品/服务同名的产品/服务。 如果存在，应在现有产品/服务中添加新的 SKU 版本，而不是创建新的重复产品/服务。
@@ -82,8 +82,7 @@ ms.locfileid: "39714275"
 一旦产品/服务可用，便会测试客户方案，以验证所有合同和功能在生产环境中正常运行，因为已在过渡环境中进行测试和验证。
 
 ## <a name="see-also"></a>另请参阅
-* 
-  [入门：如何将产品/服务发布到 Azure 市场](marketplace-publishing-getting-started.md)
+* [入门：如何将产品/服务发布到 Azure 市场](marketplace-publishing-getting-started.md)
 
 [img-pubportal-walkthru-checked]:media/marketplace-publishing-push-to-production/pubportal-walkthru-checked.png
 [img-pubportal-menu-publish]:media/marketplace-publishing-push-to-production/pubportal-menu-publish.png

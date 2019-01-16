@@ -1,6 +1,6 @@
 ---
 title: 用于 VM 的 Azure Monitor（预览版）的已知问题 | Microsoft Docs
-description: 本文介绍用于 VM 的 Azure Monitor 的已知问题。用于 VM 的 Azure Monitor 是 Azure 中的一个解决方案，它结合了 Azure VM 操作系统的运行状况和性能监视功能。 用于 VM 的 Azure Monitor 可自动发现应用程序组件以及与其他资源的依赖关系并映射它们之间的通信。
+description: 本文介绍了用于 VM 的 Azure Monitor 的已知问题。用于 VM 的 Azure Monitor 是 Azure 中的一个解决方案，它组合了 Azure VM 操作系统的运行状况、应用程序依赖项发现和性能监视功能。
 services: azure-monitor
 documentationcenter: ''
 author: mgoedtel
@@ -11,52 +11,30 @@ ms.service: azure-monitor
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/26/2018
+ms.date: 01/09/2018
 ms.author: magoedte
-ms.openlocfilehash: c329e1fa80c6647bb78b11917ecd012461e62ea4
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 038c6afe94ccfea707eea3b4032a2e45f69e5102
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53790497"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54187068"
 ---
 # <a name="known-issues-with-azure-monitor-for-vms-preview"></a>用于 VM 的 Azure Monitor（预览版）的已知问题
 
-本文介绍用于 VM 的 Azure Monitor 的已知问题。用于 VM 的 Azure Monitor 是 Azure 中的一个解决方案，它结合了 Azure VM 操作系统的运行状况和性能监视功能。 
+本文介绍了用于 VM 的 Azure Monitor 的已知问题。用于 VM 的 Azure Monitor 是 Azure 中的一个解决方案，它组合了 Azure VM 操作系统的运行状况、应用程序组件发现和性能监视功能。 
 
-下面是“运行状况”功能的已知问题：
+## <a name="health"></a>运行状况 
+下面是“运行状况”功能的当前版本的已知问题：
 
-- 针对连接到 Log Analytics 工作区的所有 VM 启用“运行状况”功能。 即使操作在单个 VM 中开始和结束，也是如此。
-- 对于 Linux VM，列出单个 VM 视图的运行状况条件的页标题包含 VM 的整个域名，而不是用户定义的 VM 名称。  
-- 使用支持的方法对 VM 禁用监视功能后，再次尝试部署该 VM 时，应将它部署在同一个工作区中。 如果使用新工作区并尝试查看该 VM 的运行状况，它可能显示异常行为。
 - 如果删除了某个 Azure VM，该 VM 会在 VM 列表视图中显示一段时间。 此外，单击已删除 VM 的状态会打开“运行状况诊断”视图，然后启动加载循环。 选择已删除 VM 的名称会打开一个窗格，其中显示一条指出该 VM 已被删除的消息。
-- 在此版本中，无法修改运行状况条件的时间段和频率。 
-- 无法禁用运行状况条件。 
-- 部署后，可能需要经过一段时间，数据才会显示在“Azure Monitor” > “虚拟机” > “运行状况”窗格或“VM 资源” > “见解”窗格中。
-- 运行状况诊断体验的更新速度比其他任何视图更快。 在视图之间切换时，信息可能会延迟。 
-- 用于 VM 的 Azure Monitor 随附的“警报”摘要仅显示在受监视 Azure VM 中检测到的运行状况问题所导致的警报。
-- 关闭 VM 会将一些运行状况条件更新为“关键”，将另一些运行状况条件更新为“正常”。 网络 VM 状态显示为“关键”。
-- 运行状况警报严重性不能修改，只能启用或禁用。 另外，某些严重性会根据运行状况条件的状态进行更新。   
-- 如果修改某个运行状况条件实例的任何设置，则会修改 VM 上相同类型的所有运行状况条件实例。 例如，如果修改对应于逻辑磁盘 C: 的磁盘可用空间运行状况条件实例的阈值，则该阈值会应用到在同一 VM 中发现和监视的其他所有逻辑磁盘。  
-- 针对 Windows VM 的运行状况条件的阈值不可修改，因为其运行状况状态已设置为“正在运行”或“可用”。 从[工作负荷监视器 API](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/workloadmonitor/resource-manager) 查询运行状态时，如果出现以下情况，则会服务或实例的 **LessThan** 或 **GreaterThan** 的 *comparisonOperator* 值，以及阈值 **4**：
-   - DNS 客户端服务运行状况 - 服务未运行。 
-   - DHCP 客户端服务运行状况 - 服务未运行。 
-   - RPC 服务运行状况 - 服务未运行。 
-   - Windows 防火墙服务运行状况 - 服务未运行。
-   - Windows 事件日志服务运行状况 - 服务未运行。 
-   - 服务器服务运行状况 - 服务未运行。 
-   - Windows 远程管理服务运行状况 - 服务未运行。 
-   - 文件系统错误或损坏 - 逻辑磁盘不可用。
-
-- 以下 Linux 运行状况条件的阈值不可修改，因为其运行状态已设置为 *true*。 从实体的工作负荷监视 API 查询时，运行状态会显示带有值 **LessThan** 的 *comparisonOperator* 以及阈值 **1**，具体取决于上下文：
-   - 逻辑磁盘状态 - 逻辑磁盘未联机/不可用
-   - 磁盘状态 - 磁盘未联机/不可用
-   - 网络适配器状态 - 网络适配器已禁用  
-
 - 即使门户或工作负荷监视器 API 可以立即更新，但配置更改（例如更新阈值）最长需要 30 分钟才会生效。 
-- Windows 中不提供单独的处理器和逻辑处理器级运行状况条件。 只为 Windows VM 提供“总 CPU 利用率”。 
-- 为每个运行状况条件定义的警报规则不会在 Azure 门户中显示。 只能在[工作负荷监视器 API](https://docs.microsoft.com/rest/api/monitor/microsoft.workloadmonitor/components) 中启用或禁用运行状况警报规则。 
-- 无法在 Azure 门户中为运行状况警报分配 [Azure Monitor 操作组](../../azure-monitor/platform/action-groups.md)。 只能使用通知设置 API 来配置每当激发运行状况警报时要触发的操作组。 目前，可以针对 VM 分配操作组，以便针对 VM 激发的所有运行状况警报都会触发相同的操作组。 如传统的 Azure 警报不同，每个运行状况警报规则没有单独的操作组概念。 此外，触发运行状况警报时，仅支持配置为提供电子邮件或短信通知的操作组。 
+- 运行状况诊断体验的更新速度比其他视图更快。 在它们之间切换时，信息可能会延迟。 
+- 关闭 VM 会将一些运行状况条件更新为“关键”，将另一些运行状况条件更新为“正常”。 网络 VM 状态显示为“关键”。
+- 对于 Linux VM，列出单个 VM 视图的运行状况条件的页标题包含 VM 的整个域名，而不是用户定义的 VM 名称。 
+- 使用支持的方法之一对 VM 禁用监视功能后，再次尝试部署该 VM 时，应将它部署在同一个工作区中。 如果选择了另一个工作区并尝试查看该 VM 的运行状况，则它可能会显示不一致的行为。
+- Windows 的“总 CPU 使用率”运行状况标准显示了不等于 **4** 的阈值，意味着 CPU 使用率高于 95%，并且系统队列长度大于 15。 在此预览版中，此运行状况标准不可配置。  
+- 从工作区中删除解决方案组件后，可以继续查看 Azure VM 的运行状况；具体而言，在门户中导航到任一视图时，可以查看性能和映射数据。 一段时间后，数据最终会在“性能”和“映射”视图中停止显示；但是，“运行状况”视图将继续显示 VM 的运行状况。 将提供“立即尝试”选项，用以仅从“性能”和“映射”视图中重新加入。
 
 ## <a name="next-steps"></a>后续步骤
 若要了解有关为虚拟机启用监视的要求和方法，请参阅[部署用于 VM 的 Azure Monitor](vminsights-onboard.md)。

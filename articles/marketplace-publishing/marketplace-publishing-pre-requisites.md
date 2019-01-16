@@ -3,7 +3,7 @@ title: 为 Azure 市场创建产品/服务的非技术先决条件 | Microsoft D
 description: 了解创建产品/服务并将其部署到 Azure 市场以供其他人购买的要求。
 services: marketplace-publishing
 documentationcenter: ''
-author: HannibalSII
+author: v-miclar
 manager: hascipio
 editor: ''
 ms.assetid: 3dae463b-8f48-4f52-8fa8-4e3975f09f43
@@ -14,12 +14,13 @@ ms.tgt_pltfrm: Azure
 ms.workload: na
 ms.date: 08/18/2016
 ms.author: hascipio
-ms.openlocfilehash: ef19380372354b8f34343f9f94ebf6b384996f14
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ROBOTS: NOINDEX
+ms.openlocfilehash: 4b925522186d2d9ae537431c1d96d39b107ad967
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51261547"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54073163"
 ---
 # <a name="general-prerequisites-for-creating-an-offer-for-the-azure-marketplace"></a>为 Azure 市场创建产品/服务的一般先决条件
 了解推进其他产品/服务过程所需的一般、以业务流程为中心的先决条件。
@@ -27,10 +28,10 @@ ms.locfileid: "51261547"
 ## <a name="ensure-that-you-are-registered-as-a-seller-with-microsoft"></a>确保向 Microsoft 注册为卖家
 有关向 Microsoft 注册卖家帐户的详细说明，请转到[帐户创建和注册](marketplace-publishing-accounts-creation-registration.md)。
 
-* **如果公司已在开发人员中心中注册为卖家，并且希望创建新的产品/服务**，则使用完成开发人员中心注册所使用的相同电子邮件 ID 登录到发布门户。 为了使开发人员中心和发布门户相互链接，必需执行此步骤。
-* **如果公司已在开发人员中心中注册为卖家，并且希望编辑现有产品/服务**，则使用管理员帐户或在发布门户中添加为共同管理员的帐户登录到发布门户。 下面提供了添加共同管理员帐户的步骤。
+* 如果公司已在开发人员中心中注册为卖家，并且希望创建新的产品/服务，则使用完成开发人员中心注册所使用的相同电子邮件 ID 登录到发布门户。 为了使开发人员中心和发布门户相互链接，必需执行此步骤。
+* 如果公司已在开发人员中心中注册为卖家，并且希望编辑现有产品/服务，则使用管理员帐户或在发布门户中添加为共同管理员的帐户登录到发布门户。 下面提供了添加共同管理员帐户的步骤。
 
-## <a name="steps-to-add-a-co-admin-in-the-publishing-portal"></a>在发布门户中添加共同管理员的步骤
+## <a name="steps-to-add-a-coadmin-in-the-publishing-portal"></a>在发布门户中添加共同管理员的步骤
 发布门户的管理员可添加公司的其他成员，这些成员在发布门户中以共同管理员身份处理应用程序。 **假设你是管理员，** 下面提供了添加共同管理员的步骤。
 
 > [!NOTE]
@@ -44,19 +45,19 @@ ms.locfileid: "51261547"
 4. 现在，使用管理员电子邮件 ID 登录到发布门户。
 5. 导航到“发布者”->依次选择帐户->“管理员”->“添加共同管理员”（下面提供了屏幕截图）
    
-    ![绘制](media/marketplace-publishing-pre-requisites/imgAddAdmin_05.png)
+    ![绘图](media/marketplace-publishing-pre-requisites/imgAddAdmin_05.png)
 6. 确保监视在发布过程的各个阶段（例如开发人员中心、发布门户）中提供的电子邮件 ID 是否收到任何来自 Microsoft 的通信。
-7. 对于开发人员中心注册，请避免使用与个人相关联的帐户。 建议这样做是为了消除对单个个人的依赖性。
+7. 对于开发人员中心注册，请避免使用与个人相关联的帐户。 此建议删除了对个人的依赖性。
 8. 如果遇到任何开发人员中心注册问题，请使用此[链接](https://developer.microsoft.com/en-us/windows/support)提出票证。
 
-## <a name="steps-to-delete-a-co-admin-in-the-publishing-portal"></a>在发布门户中删除共同管理员的步骤
+## <a name="steps-to-delete-a-coadmin-in-the-publishing-portal"></a>在发布门户中删除共同管理员的步骤
 **假设你是管理员，** 下面提供了删除共同管理员的步骤。
 
 1. 使用管理员电子邮件 ID 登录到发布门户。
 2. 导航到“发布者”->依次选择帐户->“管理员” -> “共同管理员”。
-3. 单击要删除的共同管理员旁边的“X”按钮（下面提供了屏幕截图）。
+3. 单击要删除的共同管理员旁边的 **X** 按钮（下面提供了屏幕截图）。
    
-    ![绘制](media/marketplace-publishing-pre-requisites/imgDeleteAdmin_03.png)
+    ![绘图](media/marketplace-publishing-pre-requisites/imgDeleteAdmin_03.png)
 
 > [!IMPORTANT]
 > 如果打算仅发布免费套餐（或自带许可证），则无需完成公司税务和银行信息。
@@ -66,7 +67,7 @@ ms.locfileid: "51261547"
 > 
 
 ## <a name="acquire-an-azure-pay-as-you-go-subscription"></a>获取“即付即用”订阅
-这是用于创建 VM 映像并将这些映像分发到 [Azure 市场](https://azure.microsoft.com/marketplace/)的订阅。 如果没有现有订阅，请在 https://account.windowsazure.com/signup?offer=ms-azr-0003p 注册。
+此值是用于创建 VM 映像并将这些映像分发到 [Azure 市场](https://azure.microsoft.com/marketplace/)的订阅。 如果没有现有订阅，则在 https://account.windowsazure.com/signup?offer=ms-azr-0003p 进行注册。
 
 ## <a name="sell-from-countries"></a>“销售”国家/地区
 > [!WARNING]

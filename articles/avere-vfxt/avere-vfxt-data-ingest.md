@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 10/31/2018
 ms.author: v-erkell
-ms.openlocfilehash: bf16c0fbc7090bf9b548796765502cde1731aef9
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: a3d6cb745c782d2a7166208f2a8dd1202a330b15
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50669704"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54050483"
 ---
 # <a name="moving-data-to-the-vfxt-cluster---parallel-data-ingest"></a>将数据移到 vFXT 群集 - 并行数据引入 
 
@@ -272,7 +272,7 @@ for i in 1 2 3 4 5 6; do for j in $(cat /tmp/client${i}); do echo "cp -p -R /mnt
 1. 安装 msrsync 及其必备组件（rsync 和 Python 2.6 或更高版本）
 1. 确定要复制的文件和目录总数。
 
-   例如，结合参数 ```prime.py --directory /path/to/some/directory``` 使用 Avere 实用工具 ``prime.py``（可通过 URL https://raw.githubusercontent.com/Azure/Avere/master/src/dataingestor/prime.py) 下载）。
+   例如，结合参数 ```prime.py --directory /path/to/some/directory``` 使用 Avere 实用工具 ``prime.py``（可通过 URL https://github.com/Azure/Avere/blob/master/src/clientapps/dataingestor/prime.py) 下载）。
 
    如果不使用 ``prime.py``，则可以使用 Gnu ``find`` 工具计算项数，如下所示：
 

@@ -10,12 +10,12 @@ ms.author: shwinne
 author: swinner95
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 0910cce92c410a68dce6e2c44d29e72e594cd153
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: e7df9086fa5ffc6273a6cb063bdee3cfdfa73e34
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53271702"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54013309"
 ---
 # <a name="use-visual-studio-code-to-train-and-deploy-machine-learning-models"></a>使用 Visual Studio Code 训练和部署机器学习模型
 
@@ -43,7 +43,7 @@ Azure 机器学习支持在本地和远程计算目标上运行试验。 对于�
 
 **若要创建计算目标，请执行以下操作：**
 
-1. 单击 Visual Studio Code 活动栏中的 Azure 图标。 此时将显示“Azure：机器学习”边栏。
+1. 单击 Visual Studio Code 活动栏中的 Azure 图标。 此时会显示“Azure 机器学习”边栏。
 
 2. 在树视图中，展开 Azure 订阅和 Azure 机器学习服务工作区。 在动画图像中，订阅名称是“Free Trial”，工作区是“TeamWorkspace”。 
 
@@ -51,27 +51,25 @@ Azure 机器学习支持在本地和远程计算目标上运行试验。 对于�
 
 4. 从列表中选择计算目标类型。 
 
-5. 指定在新标签页内打开的 JSON 配置文件中的所有高级属性。可以在此文件中指定计算目标的唯一名称。
+5. 在命令面板中，选择一个虚拟机大小。
 
-6. 配置完计算目标后，单击右下方的“提交”。
+6. 在命令面板中，在字段中输入计算目标的名称。 
 
-下面是 Azure 机器学习计算（AMLCompute）的一个示例：[![在 VS Code 中创建 AML 计算](./media/vscode-tools-for-ai/CreateAMLCompute.gif)](./media/vscode-tools-for-ai/CreateAMLCompute.gif#lightbox)
+7. 指定在新标签页内打开的 JSON 配置文件中的所有高级属性。可以指定最大节点计数之类的属性。
 
-### <a name="use-remote-computes-for-experiments-in-vs-code"></a>在 VS Code 中使用远程计算目标进行试验
+8. 配置完计算目标后，单击屏幕右下角的“提交”。
 
-必须创建运行配置文件，才能在定型时使用远程计算目标。 此文件不仅指示 Azure 机器学习在何处运行试验，还指示如何准备环境。
+下面是有关创建 Azure 机器学习计算（AMLCompute）的一个示例：[![在 VS Code 中创建 AML 计算](./media/vscode-tools-for-ai/CreateARemoteCompute.gif)](./media/vscode-tools-for-ai/CreateARemoteCompute.gif#lightbox)
 
 #### <a name="the-run-configuration-file"></a>“运行配置”文件
 
-VS Code 扩展会自动在本地计算机上为本地和 docker 环境创建运行配置。
+VS Code 扩展会自动在本地计算机上为本地和 docker 环境创建本地计算目标并运行配置。 可以在关联的计算目标下找到运行配置文件。 
 
-下面是默认运行配置文件中的代码片段。
-
-若要自行安装所有库/依赖项，请先设置 `userManagedDependencies: True`，然后本地试验运行会使用 VS Code Python 扩展指定的默认 Python 环境。
+下面是默认的本地运行配置文件中的代码片段。 默认情况下，`userManagedDependencies: True`，因此你必须自行安装所有库/依赖项，然后，本地试验运行会使用 VS Code Python 扩展指定的默认 Python 环境。
 
 ```yaml
-# user_managed_dependencies=True indicates that the environment will be user managed. False indicates that AzureML will manage the user environment.
-    userManagedDependencies: False
+# user_managed_dependencies = True indicates that the environment will be user managed. False indicates that AzureML will manage the user environment.
+    userManagedDependencies: True
 # The python interpreter path
     interpreterPath: python
 # Path to the conda dependencies file to use for this run. If a project
@@ -83,6 +81,30 @@ VS Code 扩展会自动在本地计算机上为本地和 docker 环境创建运�
 # Set True to perform this run inside a Docker container.
     enabled: false
 ```
+
+## <a name="train-and-tune-models"></a>训练和优化模型
+
+使用 Azure Machine Learning for VS Code（预览版），可快速循环访问代码、单步执行和调试，并能使用选定源代码管理解决方案。 
+
+**若要使用 Azure 机器学习在本地运行试验，请执行以下操作：**
+
+1. 单击 Visual Studio Code 活动栏中的 Azure 图标。 此时会显示“Azure 机器学习”边栏。
+
+1. 在树视图中，展开 Azure 订阅和 Azure 机器学习服务工作区。 
+
+1. 在工作区节点下，展开“计算”节点，再右键单击要使用的计算“运行配置”。 
+
+1. 选择“运行试验”。
+
+1. 选择要从文件资源管理器中运行的脚本。 
+
+1. 单击“查看试验运行”，以查看集成的 Azure 机器学习门户，从而监视运行并查看已训练模型。
+
+下面是有关在本地运行试验的一个示例：[![在本地运行试验](./media/vscode-tools-for-ai/RunExperimentLocally.gif)](./media/vscode-tools-for-ai/RunExperimentLocally.gif#lightbox)
+
+### <a name="use-remote-computes-for-experiments-in-vs-code"></a>在 VS Code 中使用远程计算目标进行试验
+
+必须创建运行配置文件，才能在训练时使用远程计算目标。 此文件不仅指示 Azure 机器学习在何处运行试验，还指示如何准备环境。
 
 #### <a name="the-conda-dependencies-file"></a>conda 依赖项文件
 
@@ -101,6 +123,7 @@ dependencies:
   # Currently Azure ML only supports 3.5.2 and later.
 
 - python=3.6.2
+- tensorflow
 
 - pip:
     # Required packages for AzureML execution, history, and data preparation.
@@ -111,44 +134,50 @@ dependencies:
 
 ```
 
-## <a name="train-and-tune-models"></a>定型和优化模型
+**若要在远程计算目标上使用 Azure 机器学习运行试验，请执行以下操作：**
 
-使用 Azure Machine Learning for VS Code（预览版），可快速循环访问代码、单步执行和调试，并能使用选定源代码管理解决方案。 
-
-**若要使用 Azure 机器学习运行试验，请执行以下操作：**
-
-1. 单击 Visual Studio Code 活动栏中的 Azure 图标。 此时将显示“Azure：机器学习”边栏。
+1. 单击 Visual Studio Code 活动栏中的 Azure 图标。 此时会显示“Azure 机器学习”边栏。
 
 1. 在树视图中，展开 Azure 订阅和 Azure 机器学习服务工作区。 
 
-1. 在工作区节点下，展开“计算”节点，再右键单击要使用的计算的“运行配置”。 
+1. 在编辑器窗口中，右键单击你的 python 脚本并选择 **AML:在 Azure 中作为试验运行**。 
 
-1. 选择“运行试验”。
+1. 在命令面板中，选择计算目标。 
 
-1. 单击“查看试验运行”，以查看集成的 Azure 机器学习门户，从而监视运行并查看已定型模型。
+1. 在命令面板中，在字段中输入运行配置名称。 
+
+1. 编辑 conda_dependencies.yml 文件以指定试验的运行时依赖项，然后单击屏幕右下角的“提交”。 
+
+1. 单击“查看试验运行”，以查看集成的 Azure 机器学习门户，从而监视运行并查看已训练模型。
+
+下面是有关在远程计算目标上运行试验的一个示例：[![在远程目标上运行试验](./media/vscode-tools-for-ai/runningOnARemoteTarget.gif)](./media/vscode-tools-for-ai/runningOnARemoteTarget.gif#lightbox)
+
 
 ## <a name="deploy-and-manage-models"></a>部署和管理模型
 使用 Azure 机器学习，可以在云中和 Edge 上部署和管理机器学习模型。 
 
 ### <a name="register-your-model-to-azure-machine-learning-from-vs-code"></a>在 VS Code 中向 Azure 机器学习注册模型
 
-至此，已定型模型，可以在工作区中注册它了。
+至此，你已训练了模型，可以在工作区中注册它了。
 已注册模型可供跟踪和部署。
 
 **若要注册模型，请执行以下操作：**
 
-1. 单击 Visual Studio Code 活动栏中的 Azure 图标。 此时将显示“Azure：机器学习”边栏。
+1. 单击 Visual Studio Code 活动栏中的 Azure 图标。 此时会显示“Azure 机器学习”边栏。
 
 1. 在树视图中，展开 Azure 订阅和 Azure 机器学习服务工作区。
 
 1. 在工作区节点下，右键单击“模型”，再选择“注册模型”。
 
+1. 在命令面板中，在字段中输入一个模型名称。 
+
 1. 在列表中，选择是要上传“模型文件”（对于单个模型），还是要上传“模型文件夹”（对于包含多个文件的模型，如 Tensorflow）。 
 
 1. 选择你的文件夹或文件。
 
-1. 配置完模型属性后，单击右下方的“提交”。 
+1. 配置完模型属性后，单击屏幕右下角的“提交”。 
 
+下面是有关将模型注册到 AML 的一个示例：[![将模型注册到 AML](./media/vscode-tools-for-ai/RegisteringAModel.gif)](./media/vscode-tools-for-ai/RegisteringAModel.gif#lightbox)
 
 
 ### <a name="deploy-your-service-from-vs-code"></a>在 VS Code 中部署服务
@@ -163,7 +192,7 @@ dependencies:
 
 **若要部署 Web 服务，请执行以下操作：**
 
-1. 单击 Visual Studio Code 活动栏中的 Azure 图标。 此时将显示“Azure：机器学习”边栏。
+1. 单击 Visual Studio Code 活动栏中的 Azure 图标。 此时会显示“Azure 机器学习”边栏。
 
 1. 在树视图中，展开 Azure 订阅和 Azure 机器学习服务工作区。
 
@@ -173,15 +202,17 @@ dependencies:
 
 1. 在命令面板中，从列表中选择要部署到的计算目标。 
 
-1. 在字段中，输入此服务的名称。 
+1. 在命令面板中，在字段中输入此服务的名称。  
 
 1. 在命令面板中，在键盘上按 Enter 键以浏览并选择脚本文件。
 
 1. 在命令面板中，在键盘上按 Enter 键以浏览并选择 Conda 依赖项文件。
 
-1. 配置完服务属性后，单击右下方的“提交”。 在此服务属性文件中，可以指定可能要使用的本地 Docker 文件或 schema.json 文件。
+1. 配置完服务属性后，单击屏幕右下角的“提交”以进行部署。 在此服务属性文件中，可以指定可能要使用的本地 Docker 文件或 schema.json 文件。
 
 此时，Web 服务已部署。
+
+下面是有关部署 Web 服务的一个示例：[![部署 Web 服务](./media/vscode-tools-for-ai/CreatingAnImage.gif)](./media/vscode-tools-for-ai/CreatingAnImage.gif#lightbox)
 
 ## <a name="next-steps"></a>后续步骤
 

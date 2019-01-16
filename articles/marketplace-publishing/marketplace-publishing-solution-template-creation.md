@@ -3,7 +3,7 @@ title: 为市场创建解决方案模板指南 | Microsoft Docs
 description: 有关如何创建、验证和部署在 Azure 市场上提供购买的多 VM 映像解决方案模板的详细说明。
 services: marketplace-publishing
 documentationcenter: ''
-author: HannibalSII
+author: v-miclar
 manager: hascipio
 editor: ''
 ms.assetid: e14e05f2-2385-4ce0-b351-0747cb74ba19
@@ -14,24 +14,25 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/27/2016
 ms.author: hascipio; v-divte
-ms.openlocfilehash: 4a72f11b55d1c315a9dce62de3e6d23c340baa51
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ROBOTS: NOINDEX
+ms.openlocfilehash: 914dece4ba064af00c5b2c34d43dedbb1d62e2e2
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51232855"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54073723"
 ---
 # <a name="guide-to-create-a-solution-template-for-azure-marketplace"></a>为 Azure 市场创建解决方案模板指南
 完成步骤 1 [帐户创建和注册][link-acct-creation]后，我们已通过[创建解决方案模板的技术先决条件](marketplace-publishing-solution-template-creation-prerequisites.md)指导创建 Azure 兼容的解决方案模板。 现在，我们指导完成在 Azure 市场的[发布门户][link-pubportal]上为多个 VM 创建解决方案模板的步骤。
 
 ## <a name="create-your-solution-template-offer-in-the-publishing-portal"></a>在发布门户中创建解决方案模板产品/服务
-转到 [https://publish.windowsazure.com](http://publish.windowsazure.com)。 首次登录到[发布门户](https://publish.windowsazure.com/)时，使用的帐户应与注册公司卖方配置文件时所使用的帐户相同。 稍后，可以添加公司的任何员工作为发布门户中的共同管理员。
+转到 [https://publish.windowsazure.com](http://publish.windowsazure.com)。 首次登录到[发布门户](https://publish.windowsazure.com/)时，使用的帐户应与注册公司卖方配置文件时所使用的帐户相同。 稍后，可以在发布门户中将公司的任何员工添加为共同管理员。
 
 ### <a name="1-select-solution-templates"></a>1.选择“解决方案模板”
-  ![绘制][img-pubportal-menu-sol-templ]
+  ![绘图][img-pubportal-menu-sol-templ]
 
 ### <a name="2-create-a-new-solution-template"></a>2.创建新的解决方案模板
-  ![绘制][img-pubportal-sol-templ-new]
+  ![绘图][img-pubportal-sol-templ-new]
 
 ### <a name="3-start-with-topologies"></a>3.从拓扑开始
 解决方案模板是其所有拓扑的“父级”。 可以在一个产品/解决方案模板中定义多个拓扑。 将产品推送到过渡环境时，它会随其所有拓扑一起推送。 按照以下步骤定义产品/服务：     
@@ -44,7 +45,7 @@ ms.locfileid: "51232855"
 * 添加新版本。
 
 ### <a name="4-get-your-topology-versions-certified"></a>4.认证拓扑版本
-上传包含所有必需文件的 zip 文件，以便预配该特定版本的拓扑。 此 zip 文件包含以下内容：
+上传包含所有必需文件的 zip 文件，以便预配该特定版本的拓扑。 此 zip 文件必须包含以下文件：
 
 * 位于其根目录中的 *mainTemplate.json* 和 *createUiDefinition.json* 文件。
 * 任何链接的模板和所有必需的脚本。
@@ -55,7 +56,7 @@ ms.locfileid: "51232855"
   >
 
 ## <a name="next-steps"></a>后续步骤
-既然已创建解决方案模板并且已上传 zip 文件，在将产品/服务推送到过渡环境前，请遵循 [Marketplace 市场营销内容指南](marketplace-publishing-push-to-staging.md)中的说明。 要查看完整的商城发布文章集，请访问[入门：如何将产品/服务发布到 Azure 市场](marketplace-publishing-getting-started.md)。
+既然已创建解决方案模板并且已上传 zip 文件，在将产品/服务推送到过渡环境前，请遵循 [Marketplace 市场营销内容指南](marketplace-publishing-push-to-staging.md)中的说明。 若要查看完整的市场发布文章集，请访问[入门：如何将产品/服务发布到 Azure 市场](marketplace-publishing-getting-started.md)。
 
 也有可能对下列相关文章感兴趣：
 

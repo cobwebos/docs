@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 12/11/2018
+ms.date: 01/04/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: dougeby
 ms.custom: seodec18
-ms.openlocfilehash: ab2ea762ac8cc289ff24136f3cafac2b80fa1a9f
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 7ffceaf761d459667e4118e3e10b733898ea2710
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53268438"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54053970"
 ---
 # <a name="tutorial-create-and-manage-azure-budgets"></a>教程：创建和管理 Azure 预算
 
@@ -51,9 +51,7 @@ ms.locfileid: "53268438"
 
 ## <a name="create-a-budget-in-the-azure-portal"></a>在 Azure 门户中创建预算
 
-可以按月、按季或按年创建 Azure 订阅预算。 Azure 门户中的导航内容决定了你是为订阅还是为资源组创建预算。
-
-在 Azure 门户中，导航到“成本管理 + 计费”&gt;“订阅”，选择一个订阅，然后选择“预算”。 在此示例中，创建的预算是针对所选订阅的。
+可以按月、按季或按年创建 Azure 订阅预算。 Azure 门户中的导航内容决定了你是为订阅还是为资源组创建预算。 例如，在 Azure 门户中，导航至“订阅”&gt; 选择订阅 &gt;“预算”。 在此示例中，创建的预算是针对所选订阅的。 如果要为资源组创建预算，请导航到“资源组” > 选择资源组 >“预算”。
 
 创建预算后，会显示一个简单的视图，其中说明了当前支出与预算的对比情况。
 
