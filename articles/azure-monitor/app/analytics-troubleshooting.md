@@ -12,19 +12,19 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 07/11/2016
 ms.author: mbullwin
-ms.openlocfilehash: 1dc312598fa9bbacedc085480b0771adeb2d182a
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: bf999e15c04a64f717bcd7bac87e357d5ccc92e6
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53729978"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54189926"
 ---
 # <a name="troubleshoot-analytics-in-application-insights"></a>排查 Application Insights 中的分析问题
 [Application Insights Analytics](analytics.md) 出现了问题？ 从此处开始。 Analytics 是 Azure Application Insights 的强大搜索工具。
 
 ## <a name="limits"></a>限制
 * 目前，查询结果限制为过去一周的数据。
-* 我们已测试过的浏览器：最新版本的 Chrome、Edge 和 Internet Explorer。
+* 我们已测试过的浏览器：最新版本的 Chrome、Microsoft Edge 和 Internet Explorer。
 
 ## <a name="known-incompatible-browser-extensions"></a>已知不兼容的浏览器扩展
 * Ghostery
@@ -54,7 +54,7 @@ ms.locfileid: "53729978"
 2. 是否使用了收藏夹、书签或保存的链接来打开 Analytics 门户？ 登录时使用的凭据与保存链接时使用的凭据是否不同？
 3. 尝试使用 InPrivate/incognito 浏览器窗口（在关闭所有此类窗口之后）。 需要提供凭据。 
 4. 打开另一个（普通）浏览器窗口并转到 [Azure](https://portal.azure.com)。 注销。然后打开链接并使用正确的凭据登录。
-5. 如果受信任区域设置不受支持，Edge 和 Internet Explorer 的用户也会收到此错误。
+5. 如果受信任区域设置不受支持，Microsoft Edge 和 Internet Explorer 的用户也会收到此错误。
    
     检查 [Analytics 门户](https://portal.azure.com)和 [Azure Active Directory 门户](https://portal.azure.com)是否位于相同的安全区域：
    
@@ -78,7 +78,7 @@ ms.locfileid: "53729978"
 
 无权在 Analytics 中打开此应用程序。
 
-* 链接是其他人提供的吗？ 请求他们你将设置为[此资源组的读取者或参与者](../../application-insights/app-insights-resources-roles-access-control.md)。
+* 链接是其他人提供的吗？ 请求他们你将设置为[此资源组的读取者或参与者](../../azure-monitor/app/resources-roles-access-control.md)。
 * 保存链接时是否使用了不同的凭据？ 请打开 [Azure 门户](https://portal.azure.com)，注销，提供正确的凭据，并重试打开此链接。
 
 ## <a name="html-storage"></a>403 ...HTML5 存储
