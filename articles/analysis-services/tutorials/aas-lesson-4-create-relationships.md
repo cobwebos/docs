@@ -5,24 +5,24 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/18/2018
+ms.date: 01/09/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 7e791514cc25c645775de260e7f190ee20812d4b
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 4a595e4c955b08bda6fcf49b9ca6a050e8440621
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49428483"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54187495"
 ---
 # <a name="create-relationships"></a>创建关系
 
 本课程介绍如何验证导入数据时自动创建的关系，以及在不同的表之间添加新关系。 关系是两个表之间的连接，规定如何关联这些表中的数据。 例如，在 DimProduct 表与 DimProductSubcategory 表之间，基于每种产品属于某个子类别这一事实建立了关系。 若要了解详细信息，请参阅[关系](https://docs.microsoft.com/sql/analysis-services/tabular-models/relationships-ssas-tabular)。
   
-本课预计完成时间：**10 分钟**  
+本课程预计完成时间：10 分钟  
   
 ## <a name="prerequisites"></a>先决条件  
-本主题是表格建模教程的一部分，应当按顺序完成。 在执行本课程中的任务之前，应已完成上一课：[第 3 课：标记为日期表](../tutorials/aas-lesson-3-mark-as-date-table.md)。 
+本主题是表格建模教程的一部分，应当按顺序完成。 在执行本课中的任务之前，应当已完成上一课：[第 3 课：标记为日期表](../tutorials/aas-lesson-3-mark-as-date-table.md)。 
   
 ## <a name="review-existing-relationships-and-add-new-relationships"></a>查看现有关系和添加新关系  
 使用“获取数据”导入数据时，可以从 AdventureWorksDW2014 数据库获取 7 个表。 一般情况下，从关系源导入数据时，现有关系会连同数据一起自动导入。 若要通过“获取数据”自动在数据模型中创建关系，必须在数据源的表之间存在关系。
@@ -60,7 +60,7 @@ ms.locfileid: "49428483"
     |是|**FactInternetSales [CustomerKey]**|**DimCustomer [CustomerKey]**|  
     |是|**FactInternetSales [ProductKey]**|**DimProduct [ProductKey]**|  
   
-    如果缺少任意关系，请验证模型是否包含以下表：DimCustomer、DimDate、DimGeography、DimProduct、DimProductCategory、DimProductSubcategory 和 FactInternetSales。 如果在不同时间导入同一数据源连接中的表，则无法创建这些表之间的任何关系，而必须手动创建。 如果没有关系出现，这意味着在数据源中没有任何关系。 可以在数据模型中手动创建它们。
+    如果缺少任何关系，请验证模型是否包含以下各表：“DimCustomer”、“DimDate”、“DimGeography”、“DimProduct”、“DimProductCategory”、“DimProductSubcategory”和“FactInternetSales”。 如果在不同时间导入同一数据源连接中的表，则无法创建这些表之间的任何关系，而必须手动创建。 如果没有关系出现，这意味着在数据源中没有任何关系。 可以在数据模型中手动创建它们。
 
 ### <a name="take-a-closer-look"></a>详细查看
 在图示视图中，可看到一个箭头、一个星号，以及显示表之间关系的线条上的数字。

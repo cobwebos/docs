@@ -16,12 +16,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/25/2018
 ms.author: markvi
-ms.openlocfilehash: 24c7ddff1eea16fc2be3f99d04abd90ee0791f4c
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 9f3d171a8f0e353d5860f410a8c32149f8872338
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51247290"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54189382"
 ---
 # <a name="settings-and-data-roaming-faq"></a>设置和数据漫游常见问题
 本文将解答 IT 管理员可能会遇到的一些设置和应用数据同步问题。
@@ -31,7 +31,7 @@ ms.locfileid: "51247290"
 
 * 主题，包括桌面主题和任务栏设置等功能。
 * Internet Explorer 设置，包括最近打开的选项卡和收藏夹。
-* Microsoft Edge 浏览器设置，如收藏夹和读取列表。
+* Microsoft Edge 浏览器设置，如收藏夹和阅读列表。
 * 密码，包括 Internet 密码、Wi-fi 配置文件等。
 * 语言首选项，包括键盘布局、系统语言、日期和时间等设置。
 * 轻松访问功能，如高对比度主题、讲述人和放大镜。

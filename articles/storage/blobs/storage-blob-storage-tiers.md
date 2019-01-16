@@ -5,15 +5,15 @@ services: storage
 author: kuhussai
 ms.service: storage
 ms.topic: article
-ms.date: 10/18/2018
+ms.date: 01/09/2018
 ms.author: kuhussai
 ms.component: blobs
-ms.openlocfilehash: e12e29a5a627110ce845cd44be6dd97b717f9b26
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 21e442c7a0cdd0edcce77c862b11ae368d4a3abc
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53014491"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54191660"
 ---
 # <a name="azure-blob-storage-premium-preview-hot-cool-and-archive-storage-tiers"></a>Azure Blob 存储：高级（预览版）、热、冷、存档存储层
 
@@ -63,7 +63,7 @@ Blob 存储和 GPv2 帐户在帐户级别公开“访问层”属性，方便你
 
 - 作为本地冗余存储 (LRS) 提供
 - 仅在以下区域中提供：美国东部 2、美国中部和美国西部
-- 不支持自动分层和数据生命周期管理
+- 不支持使用数据生命周期管理进行对象级别分层或自动分层
 
 若要了解如何注册高级访问层预览版，请参阅 [Azure 高级 Blob 存储简介](https://aka.ms/premiumblob)。
 
@@ -86,7 +86,8 @@ Blob 存储和 GPv2 帐户在帐户级别公开“访问层”属性，方便你
 
 与热存储和冷存储相比，存档存储的存储费用最低，但数据检索费用较高。 此层适用于可以容忍数小时的检索延迟且会保留在存档层至少 180 天的数据。
 
-当某个 Blob 位于存档存储中时，其状态为脱机，不能读取（元数据除外，其处于联机和可用状态）、复制、覆盖或修改。 也不能创建存档存储中 Blob 的快照。 但是，可以通过现有操作删除、列出、获取 Blob 属性/元数据，或者更改 Blob 的层。
+如果 Blob 位于存档存储中，则 Blob 数据处于脱机状态，不能读取、复制、覆盖或修改。 也不能创建存档存储中 Blob 的快照。 但是，Blob 元数据会保持联机和可用状态，因而可列出 Blob 及其属性。 对于“存档”中的 Blob，仅以下操作有效：GetBlobProperties、GetBlobMetadata、ListBlobs、SetBlobTier 和 DeleteBlob。 
+
 
 存档存储层的示例使用方案包括：
 
@@ -110,7 +111,8 @@ Blob 存储和 GPv2 帐户在帐户级别公开“访问层”属性，方便你
 > [!NOTE]
 > 存档存储和 Blob 级别分层仅支持块 Blob。 也不能更改包含快照的块 Blob 的层。
 
-存储在高级访问层中的数据无法使用[设置 Blob 层](/rest/api/storageservices/set-blob-tier)或使用 Azure Blob 存储生命周期管理分层到热、冷或存档访问层。 若要移动数据，必须使用[通过 URL 放置块 API](/rest/api/storageservices/put-block-from-url) 或支持此 API 的 AzCopy 版本，将 blob 从高级访问层同步复制到热访问层。 *通过 URL 放置块* API 同步复制服务器上的数据，这意味着只有在所有数据都从原服务器位置移动到目标位置后，调用才会完成。
+> [!NOTE]
+> 存储在高级访问层中的数据目前无法使用[设置 Blob 层](/rest/api/storageservices/set-blob-tier)或使用 Azure Blob 存储生命周期管理分层到热、冷或存档访问层。 若要移动数据，必须使用[通过 URL 放置块 API](/rest/api/storageservices/put-block-from-url) 或支持此 API 的 AzCopy 版本，将 blob 从高级访问层同步复制到热访问层。 *通过 URL 放置块* API 同步复制服务器上的数据，这意味着只有在所有数据都从原服务器位置移动到目标位置后，调用才会完成。
 
 ### <a name="blob-lifecycle-management"></a>Blob 生命周期管理
 Blob 存储生命周期管理（预览版）提供丰富的基于规则的策略，用于将数据转移到最适合的访问层，并在数据的生命周期结束时使数据过期。 请参阅[管理 Azure Blob 存储生命周期](storage-lifecycle-management-concepts.md)来了解详细信息。  
@@ -119,11 +121,17 @@ Blob 存储生命周期管理（预览版）提供丰富的基于规则的策略
 
 将 Blob 移到更冷的层（热->冷、热->存档或冷->存档）时，操作按目标层写入操作计费，具体说来就是按目标层的写入操作次数（以 10,000 次为单位）和数据写入量（以 GB 为单位）收费。 将 Blob 移到更暖的层（存档->冷、存档->热或冷->热）时，操作按从源层读取计费，具体说来就是按源层的读取操作次数（以 10,000 次为单位）和数据检索量（以 GB 为单位）收费。
 
+| | **编写费用** | **读取费用** 
+| ---- | ----- | ----- |
+| **SetBlobTier 方向** | 热->冷、热->存档、冷->存档 | 存档->冷、存档->热、冷->热
+
 如果将帐户层从热切换为冷，则只按 GPv2 帐户中没有设置层的所有 Blob 的写入操作次数（以 10,000 次为单位）收费。 不会在 Blob 存储帐户中对此更改收费。 如果将 Blob 存储或 GPv2 帐户从冷切换为热，则会按读取操作次数（以 10,000 次为单位）和数据检索量（以 GB 为单位）收费。 也可能还会收取从池或存档层移出的任何 Blob 的早期删除费用。
 
 ### <a name="cool-and-archive-early-deletion"></a>冷层和存档层提前删除
 
 除了按 GB 和按月收费，移到冷层（仅限 GPv2 帐户）中的 Blob 会有一个 30 天的冷层早期删除期限，移到存档层中的 Blob 会有一个 180 天的存档层早期删除期限。 此项费用按比例计算。 例如，如果将某个 Blob 移到存档层，然后在 45 天后将其删除或移到热层，则需支付相当于将该 Blob 存储在存档层中 135（180 减 45）天的早期删除费用。
+
+如果没有访问层更改，则可以使用 blob 属性“creation-time”来计算早期删除费用。 否则，可以通过查看 Blob 属性（即“access-tier-change-time”）来使用最后一次将访问层修改为“冷”或“存档”的时间。 有关 Blob 属性的详细信息，请参阅[获取 Blob 属性](https://docs.microsoft.com/rest/api/storageservices/get-blob-properties)。
 
 ## <a name="comparison-of-the-storage-tiers"></a>存储层的比较
 
@@ -140,7 +148,7 @@ Blob 存储生命周期管理（预览版）提供丰富的基于规则的策略
 | **可伸缩性和性能目标** | 与通用存储帐户相同 | 与通用存储帐户相同 | 与通用存储帐户相同 |
 
 > [!NOTE]
-> Blob 存储帐户支持与通用存储帐户相同的性能和可伸缩性目标。 有关详细信息，请参阅 [Azure 存储的可伸缩性和性能目标](../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) 。
+> Blob 存储帐户支持与通用存储帐户相同的性能和可伸缩性目标。 有关详细信息，请参阅 [Azure 存储可伸缩性和性能目标](../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)。 
 
 ## <a name="quickstart-scenarios"></a>快速入门方案
 

@@ -11,16 +11,16 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 11/15/2018
 ms.author: glenga
-ms.openlocfilehash: da676b5d1cb3c25adc72d04882915ee0440c2d98
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: d0c24fbd749a344d9041e9c50c34e6e58ab8fd38
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54002325"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54121214"
 ---
 # <a name="monitor-azure-functions"></a>监视 Azure Functions
 
-[Azure Functions](functions-overview.md) 提供与 [Azure Application Insights](../application-insights/app-insights-overview.md) 的内置集成来监视函数。 本文展示了如何配置 Functions 来将系统生成的日志文件发送到 Application Insights。
+[Azure Functions](functions-overview.md) 提供与 [Azure Application Insights](../azure-monitor/app/app-insights-overview.md) 的内置集成来监视函数。 本文展示了如何配置 Functions 来将系统生成的日志文件发送到 Application Insights。
 
 ![Application Insights 指标资源管理器](media/functions-monitoring/metrics-explorer.png)
 
@@ -329,7 +329,7 @@ v2.x 运行时使用 [.NET Core 日志记录筛选器层次结构](https://docs.
 
 ## <a name="configure-sampling"></a>配置采样
 
-Application Insights 具有[采样](../application-insights/app-insights-sampling.md)功能，可以防止在峰值负载时生成太多的遥测数据。 当传入遥测的速率超过指定的阈值时，Application Insights 开始随机忽略某些传入项。 默认的每秒最大项数设置为 5。 可以在 [host.json](functions-host-json.md) 中配置采样。  下面是一个示例：
+Application Insights 具有[采样](../azure-monitor/app/sampling.md)功能，可以防止在峰值负载时生成太多的遥测数据。 当传入遥测的速率超过指定的阈值时，Application Insights 开始随机忽略某些传入项。 默认的每秒最大项数设置为 5。 可以在 [host.json](functions-host-json.md) 中配置采样。  下面是一个示例：
 
 ### <a name="version-2x"></a>版本 2.x 
 
@@ -360,7 +360,7 @@ Application Insights 具有[采样](../application-insights/app-insights-samplin
 ```
 
 > [!NOTE]
-> [采样](../application-insights/app-insights-sampling.md)是默认启用的。 如果你看起来缺少数据，则可能需要调整采样设置来适应你的具体监视方案。
+> [采样](../azure-monitor/app/sampling.md)是默认启用的。 如果你看起来缺少数据，则可能需要调整采样设置来适应你的具体监视方案。
 
 ## <a name="write-logs-in-c-functions"></a>在 C# 函数中编写日志
 
@@ -414,7 +414,7 @@ logger.LogInformation("partitionKey={partitionKey}, rowKey={rowKey}", partitionK
 在 C# 脚本函数中，可以使用 `ILogger` 上的 `LogMetric` 扩展方法来在 Application Insights 中创建自定义指标。 下面是示例方法调用：
 
 ```csharp
-logger.LogMetric("TestMetric", 1234); 
+logger.LogMetric("TestMetric", 1234);
 ```
 
 此代码是一种替代方法，使用[适用于 .NET 的 Application Insights API](#custom-telemetry-in-c-functions) 调用 `TrackMetric`。
@@ -429,10 +429,10 @@ context.log('JavaScript HTTP trigger function processed a request.' + context.in
 
 ### <a name="logging-custom-metrics"></a>记录自定义指标  
 
-在 Node.js 函数中，可以使用 `context.log.metric` 方法来在 Application Insights 中创建自定义指标。 下面是示例方法调用：
+在 Functions 运行时的 [1.x 版](functions-versions.md#creating-1x-apps)上运行时，Node.js 函数可以使用 `context.log.metric` 方法在 Application Insights 中创建自定义指标。 2.x 版目前不支持此方法。 下面是示例方法调用：
 
 ```javascript
-context.log.metric("TestMetric", 1234); 
+context.log.metric("TestMetric", 1234);
 ```
 
 此代码是一种替代方法，使用[适用于 Application Insights 的 Node.js SDK](#custom-telemetry-in-javascript-functions) 调用 `trackMetric`。

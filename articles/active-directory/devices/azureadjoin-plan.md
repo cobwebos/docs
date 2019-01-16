@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 11/21/2018
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: 3154d5401389d46eb1b9fad335aa18362c5f21f7
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: cb604bec1860da25e18c1c3a56a012882e5ea58e
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53310362"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54189507"
 ---
 # <a name="how-to-plan-your-azure-ad-join-implementation"></a>如何：计划 Azure AD 加入实现
 
@@ -113,7 +113,7 @@ Azure AD 联接适用于托管环境和联合环境。
 
 - **Azure AD**，无需进行其他设置。
 
-Azure AD 联接设备不支持[替代登录 ID](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configuring-alternate-login-id)。 如果用户使用替代登录 ID，你应计划转换成使用其 Azure AD 中的主 UPN。
+Azure AD 加入设备不支持与 Azure AD UPN 不同的本地 UPN。 如果用户使用本地 UPN，你应计划转换成使用其 Azure AD 中的主 UPN。
 
 
 
@@ -167,7 +167,7 @@ Azure AD 联接设备的设备管理基于 MDM 平台（如 Intune）和 MDM CSP
 
 ### <a name="cloud-based-applications"></a>基于云的应用程序
 
-如果将应用程序添加到 Azure AD 应用库，则用户通过 Azure AD 联接设备获得 SSO。 无需指定其他配置。 用户在 Edge 和 Chrome 浏览器上获取 SSO。 对于 Chrome，需要部署 [Windows 10 帐户扩展](https://chrome.google.com/webstore/detail/windows-10-accounts/ppnbnpeolgkicgegkbkbjmhlideopiji)。 
+如果将应用程序添加到 Azure AD 应用库，则用户通过 Azure AD 联接设备获得 SSO。 无需指定其他配置。 用户在 Microsoft Edge 和 Chrome 浏览器上获取 SSO。 对于 Chrome，需要部署 [Windows 10 帐户扩展](https://chrome.google.com/webstore/detail/windows-10-accounts/ppnbnpeolgkicgegkbkbjmhlideopiji)。 
 
 所有 Win32 应用程序，其：
 

@@ -1,18 +1,18 @@
 ---
 title: 使用 Azure Cosmos DB 数据库、容器和项
 description: 本文介绍如何创建和使用 Azure Cosmos DB 数据库、容器和项
-author: dharmas
+author: dharmas-cosmos
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/08/2018
 ms.author: dharmas
 ms.reviewer: sngun
-ms.openlocfilehash: 6757f887376e1b399d6af18f114e203991c16a67
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.openlocfilehash: d5714e43c9ba58cdec33ca5fd1eae31eb6a88f51
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53807680"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54107729"
 ---
 # <a name="working-with-azure-cosmos-databases-containers-and-items"></a>使用 Azure Cosmos 数据库、容器和项
 
@@ -45,7 +45,7 @@ ms.locfileid: "53807680"
 
 ## <a name="azure-cosmos-containers"></a>Azure Cosmos 容器
 
-Azure Cosmos 容器是预配的吞吐量和项目存储的缩放单元。 容器会进行水平分区，然后在多个区域间复制。 添加到容器的项以及针对容器预配的吞吐量将基于分区键自动分配给一组逻辑分区之间（水平）。 若要详细了解分区和分区键，请参阅[逻辑分区](partition-data.md)一文。 
+Azure Cosmos 容器是预配的吞吐量和项目存储的缩放单元。 容器会进行水平分区，然后在多个区域间复制。 添加到容器的项以及针对容器预配的吞吐量将基于分区键自动分配给一组逻辑分区。 若要详细了解分区和分区键，请参阅[逻辑分区](partition-data.md)一文。 
 
 在创建 Azure Cosmos 容器时，会在以下某个模式中配置吞吐量：
 
@@ -77,10 +77,10 @@ Azure Cosmos 容器具备一组系统定义的属性。 根据所选的 API，�
 
 | **系统定义的属性** | **是系统生成的还是可由用户设置的？** | **用途** | **SQL API** | **Cassandra API** | **Azure Cosmos DB 的 API for MongoDB** | **Gremlin API** | **表 API** |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-|__rid | 系统生成的 | 容器的唯一标识符 | 是 | 否 | 否 | 否 | 否 |
-|__etag | 系统生成的 | 用于乐观并发控制的实体标记 | 是 | 否 | 否 | 否 | 否 |
-|__ts | 系统生成的 | 容器上次更新的时间戳 | 是 | 否 | 否 | 否 | 否 |
-|__self | 系统生成的 | 容器的可寻址 URI | 是 | 否 | 否 | 否 | 否 |
+|_rid | 系统生成的 | 容器的唯一标识符 | 是 | 否 | 否 | 否 | 否 |
+|_etag | 系统生成的 | 用于乐观并发控制的实体标记 | 是 | 否 | 否 | 否 | 否 |
+|_ts | 系统生成的 | 容器上次更新的时间戳 | 是 | 否 | 否 | 否 | 否 |
+|_self | 系统生成的 | 容器的可寻址 URI | 是 | 否 | 否 | 否 | 否 |
 |id | 用户可配置 | 用户定义的容器唯一名称 | 是 | 是 | 是 | 是 | 是 |
 |indexingPolicy | 用户可配置 | 提供更改索引路径、精度和一致性模型的功能。 | 是 | 否 | 否 | 否 | 是 |
 |TimeToLive | 用户可配置 | 提供在一段时间以后从容器自动删除项的功能。 有关详细信息，请参阅[生存时间](time-to-live.md)一文。 | 是 | 否 | 否 | 否 | 是 |
@@ -113,10 +113,10 @@ Azure Cosmos 容器支持使用任何 Azure Cosmos API 执行的以下操作。
 
 |**系统定义的属性** | **是系统生成的还是可由用户设置的？**| **用途** | **SQL API** | **Cassandra API** | **Azure Cosmos DB 的 API for MongoDB** | **Gremlin API** | **表 API** |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-|__id | 系统生成的 | 项的唯一标识符 | 是 | 否 | 否 | 否 | 否 |
-|__etag | 系统生成的 | 用于乐观并发控制的实体标记 | 是 | 否 | 否 | 否 | 否 |
-|__ts | 系统生成的 | 项上次更新的时间戳 | 是 | 否 | 否 | 否 | 否 |
-|__self | 系统生成的 | 项的可寻址 URI | 是 | 否 | 否 | 否 | 否 |
+|_id | 系统生成的 | 项的唯一标识符 | 是 | 否 | 否 | 否 | 否 |
+|_etag | 系统生成的 | 用于乐观并发控制的实体标记 | 是 | 否 | 否 | 否 | 否 |
+|_ts | 系统生成的 | 项上次更新的时间戳 | 是 | 否 | 否 | 否 | 否 |
+|_self | 系统生成的 | 项的可寻址 URI | 是 | 否 | 否 | 否 | 否 |
 |id | 任一个 | 逻辑分区内用户定义的唯一名称。 如果用户没有指定该 ID，则系统会自动生成一个。 | 是 | 是 | 是 | 是 | 是 |
 |任意用户定义的属性 | 用户定义 | 用户定义的属性以 API 本机表示形式表示（JSON、BSON、CQL 等等） | 是 | 是 | 是 | 是 | 是 |
 

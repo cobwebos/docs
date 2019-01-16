@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/26/2018
 ms.author: sedusch
-ms.openlocfilehash: 8a552356163e9c585ce9fea18e8cd5208c26a8be
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 1332a06cf955be3fe2a77194f455c9315993998c
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49956351"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54159904"
 ---
 # <a name="azure-virtual-machines-deployment-for-sap-netweaver"></a>适用于 SAP NetWeaver 的 Azure 虚拟机部署
 
@@ -400,7 +400,7 @@ ms.locfileid: "49956351"
 
 有多个选项可用于在 Azure 中部署 VM 和关联的磁盘。 了解这些部署选项之间的区别非常重要，你可能需要根据所选的部署类型采取不同的步骤为部署准备 VM。
 
-### <a name="db477013-9060-4602-9ad4-b0316f8bb281"></a>方案 1：为 SAP 部署来自 Azure 市场的 VM
+### <a name="db477013-9060-4602-9ad4-b0316f8bb281"></a>场景 1：为 SAP 部署来自 Azure 市场的 VM
 
 可以使用 Azure 市场中由 Microsoft 或第三方提供的映像来部署 VM。 市场提供了 Windows Server 和各种 Linux 分发的一些标准 OS 映像。 还可以部署包括数据库管理系统 (DBMS) SKU（例如 Microsoft SQL Server）的映像。 有关使用包含 DBMS SKU 的映像的详细信息，请参阅[适用于 SAP NetWeaver 的 Azure 虚拟机 DBMS 部署][dbms-guide]。
 
@@ -423,22 +423,22 @@ ms.locfileid: "49956351"
 1. **基本信息**：
  * **名称**：资源的名称（虚拟机名称）。
  * **VM 磁盘类型**：选择 OS 磁盘的磁盘类型。 若要对数据磁盘使用高级存储，我们建议也对 OS 磁盘使用高级存储。
- * **用户名和密码**或者 **SSH 公钥**：输入在预配期间创建的用户的用户名和密码。 对于 Linux 虚拟机，可以输入用来登录计算机的公用安全外壳 (SSH) 密钥。
+ * 用户名和密码或 SSH 公钥：输入在预配期间创建的用户的用户名和密码。 对于 Linux 虚拟机，可以输入用来登录计算机的公用安全外壳 (SSH) 密钥。
  * **订阅**：选择要用于预配新虚拟机的订阅。
  * **资源组**：VM 的资源组的名称。 可以输入一个新资源组的名称或已存在的资源组的名称。
  * **位置**：要将新虚拟机部署到的地方。 如果想要将虚拟机连接到本地网络，请确保选择将 Azure 连接到本地网络的虚拟网络的位置。 有关详细信息，请参阅[适用于 SAP NetWeaver 的 Azure 虚拟机规划和实施][planning-guide]中的 [Microsoft Azure 网络][planning-guide-microsoft-azure-networking]。
 1. **大小**：
 
-     有关支持的 VM 类型的列表，请查看 SAP 说明 [1928533]。 如果想要使用 Azure 高级存储，请确保选择正确的 VM 类型。 并非所有 VM 类型都支持高级存储。 有关详细信息，请参阅[适用于 SAP NetWeaver 的 Azure 虚拟机规划和实施][planning-guide]中的[存储：Microsoft Azure 存储和数据磁盘][planning-guide-storage-microsoft-azure-storage-and-data-disks]与 [Azure 高级存储][planning-guide-azure-premium-storage]。
+     有关支持的 VM 类型的列表，请查看 SAP 说明 [1928533]。 如果想要使用 Azure 高级存储，请确保选择正确的 VM 类型。 并非所有 VM 类型都支持高级存储。 有关详细信息，请参阅[存储：Microsoft Azure 存储和数据磁盘][planning-guide-storage-microsoft-azure-storage-and-data-disks]与 [Azure 高级存储][planning-guide-azure-premium-storage]（见[适用于 SAP NetWeaver 的 Azure 虚拟机规划和实施][planning-guide]）。
 
 1. **设置**：
   * **存储**
     * **磁盘类型**：选择 OS 磁盘的磁盘类型。 若要对数据磁盘使用高级存储，我们建议也对 OS 磁盘使用高级存储。
     * **使用托管磁盘**：若要使用托管磁盘，请选择“是”。 有关托管磁盘的详细信息，请参阅规划指南中的[托管磁盘][planning-guide-managed-disks]一章。
-    * **存储帐户**：选择一个现有存储帐户，或创建一个新的存储帐户。 并未所有存储类型都适合用来运行 SAP 应用程序。 有关存储类型的详细信息，请参阅[适用于 SAP NetWeaver 的 Azure 虚拟机 DBMS 部署][dbms-guide]中的 [Microsoft Azure 存储][dbms-guide-2.3]。
+    * **存储帐户**：选择现有存储帐户，或者新建存储帐户。 并未所有存储类型都适合用来运行 SAP 应用程序。 有关存储类型的详细信息，请参阅[用于 RDBMS 部署的 VM 的存储结构](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_general#65fa79d6-a85f-47ee-890b-22e794f51a64)。
   * **网络**
-    * **虚拟网络**和**子网**：要将虚拟机与内部网络相集成，请选择连接到本地网络的虚拟网络。
-    * **公用 IP 地址**：选择想要使用的公用 IP 地址，或输入参数来创建新的公用 IP 地址。 可以使用公用 IP 地址通过 Internet 访问虚拟机。 请确保同时创建网络安全组来帮助保护对虚拟机的访问。
+    * 虚拟网络和子网：要将虚拟机与内部网络相集成，请选择连接到本地网络的虚拟网络。
+    * **公共 IP 地址**：选择想要使用的公用 IP 地址，或输入参数来创建新的公用 IP 地址。 可以使用公用 IP 地址通过 Internet 访问虚拟机。 请确保同时创建网络安全组来帮助保护对虚拟机的访问。
     * **网络安全组**：有关详细信息，请参阅[使用网络安全组控制网络流量][virtual-networks-nsg]。
   * **扩展**：可以通过将虚拟机扩展添加到部署来安装这些扩展。 不需要在此步骤中添加扩展。 稍后会安装 SAP 支持所需的扩展。 请参阅本指南中的[配置适用于 SAP 的 Azure 增强型监视扩展][deployment-guide-4.5]一章。
   * **高可用性**：选择一个可用性集，或输入参数来创建新的可用性集。 有关详细信息，请参阅 [Azure 可用性集][planning-guide-3.2.3]。
@@ -474,7 +474,7 @@ ms.locfileid: "49956351"
 1. **基本信息**：
   * **订阅**：要用来部署模板的订阅。
   * **资源组**：要用来部署模板的资源组。 可以创建一个新的资源组，也可以选择订阅中的一个现有资源组。
-  * **位置**：要将模板部署到的地方。 如果选择了一个现有资源组，则会使用该资源组的位置。
+  * **位置**：部署模板的位置。 如果选择了一个现有资源组，则会使用该资源组的位置。
 
 1. **设置**：
   * **SAP 系统 ID**：SAP 系统 ID (SID)。
@@ -487,14 +487,14 @@ ms.locfileid: "49956351"
   * **系统可用性**（仅限三层模板）：系统可用性。
 
     对于适用于高可用性安装的配置，请选择“HA”。 将创建两个数据库服务器和两个用于 ABAP SAP 中心服务 (ASCS) 的服务器。
-  * **存储类型**（仅限两层模板）：要使用的存储的类型。
+  * **存储类型**（仅限双层模板）：要使用的存储类型。
 
     对于较大的系统，我们强烈建议使用 Azure 高级存储。 有关存储类型的详细信息，请参阅以下资源：
       * [Azure 高级 SSD 存储对 SAP DBMS 实例的使用][2367194]
-      * [适用于 SAP NetWeaver 的 Azure 虚拟机 DBMS 部署][dbms-guide]中的 [Microsoft Azure 存储][dbms-guide-2.3]
+      * [用于 RDBMS 部署的 VM 的存储结构](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_general#65fa79d6-a85f-47ee-890b-22e794f51a64)
       * [高级存储：适用于 Azure 虚拟机工作负荷的高性能存储][storage-premium-storage-preview-portal]
       * [Microsoft Azure 存储简介][storage-introduction]
-  * **管理员用户名**和**管理员密码**：用户名和密码。
+  * 管理员用户名和管理员密码：用户名和密码。
     将创建一个新用户，用于登录到虚拟机。
   * **新子网或现有子网**：确定是要创建新的虚拟网络和子网，还是使用现有子网。 如果已有连接到本地网络的虚拟网络，请选择“现有”。
   * **子网 ID**：如果要将 VM 部署到现有 VNet 中，并且该 VNet 中已定义了 VM 应分配到的子网，请指定该特定子网的 ID。 ID 通常如下所示：/subscriptions/&lt;订阅 id>/resourceGroups/&lt;资源组名称>/providers/Microsoft.Network/virtualNetworks/&lt;虚拟网络名称>/subnets/&lt;子网名称>
@@ -528,7 +528,7 @@ ms.locfileid: "49956351"
 
 将 VM 部署到 Azure 中之后，需要像在本地环境中一样，遵照相同的准则并使用相同的工具在 VM 上安装 SAP 软件。 若要在 Azure VM 上安装 SAP 软件，SAP 和 Microsoft 都建议将 SAP 安装媒体上传并存储到 Azure VHD 或托管磁盘中，或者创建一个充当文件服务器并包含所有必需 SAP 安装媒体的 Azure VM。
 
-### <a name="54a1fc6d-24fd-4feb-9c57-ac588a55dff2"></a>方案 2：使用自定义映像为 SAP 部署 VM
+### <a name="54a1fc6d-24fd-4feb-9c57-ac588a55dff2"></a>场景 2：使用自定义映像为 SAP 部署 VM
 
 因为不同版本的操作系统或 DBMS 具有不同的修补程序要求，因此，在 Azure 市场中找到的映像不一定能满足需求。 可能需要使用自己的 OS/DBMS VM 映像创建一个 VM，而且以后可以再次部署该 VM。
 为 Linux 创建专用映像时使用的步骤不同于为 Windows 创建专用映像时使用的步骤。
@@ -563,21 +563,21 @@ ms.locfileid: "49956351"
 1. **基本信息**：
  * **名称**：资源的名称（虚拟机名称）。
  * **VM 磁盘类型**：选择 OS 磁盘的磁盘类型。 若要对数据磁盘使用高级存储，我们建议也对 OS 磁盘使用高级存储。
- * **用户名和密码**或者 **SSH 公钥**：输入在预配期间创建的用户的用户名和密码。 对于 Linux 虚拟机，可以输入用来登录计算机的公用安全外壳 (SSH) 密钥。
+ * 用户名和密码或 SSH 公钥：输入在预配期间创建的用户的用户名和密码。 对于 Linux 虚拟机，可以输入用来登录计算机的公用安全外壳 (SSH) 密钥。
  * **订阅**：选择要用于预配新虚拟机的订阅。
  * **资源组**：VM 的资源组的名称。 可以输入一个新资源组的名称或已存在的资源组的名称。
  * **位置**：要将新虚拟机部署到的地方。 如果想要将虚拟机连接到本地网络，请确保选择将 Azure 连接到本地网络的虚拟网络的位置。 有关详细信息，请参阅[适用于 SAP NetWeaver 的 Azure 虚拟机规划和实施][planning-guide]中的 [Microsoft Azure 网络][planning-guide-microsoft-azure-networking]。
 1. **大小**：
 
-     有关支持的 VM 类型的列表，请查看 SAP 说明 [1928533]。 如果想要使用 Azure 高级存储，请确保选择正确的 VM 类型。 并非所有 VM 类型都支持高级存储。 有关详细信息，请参阅[适用于 SAP NetWeaver 的 Azure 虚拟机规划和实施][planning-guide]中的[存储：Microsoft Azure 存储和数据磁盘][planning-guide-storage-microsoft-azure-storage-and-data-disks]与 [Azure 高级存储][planning-guide-azure-premium-storage]。
+     有关支持的 VM 类型的列表，请查看 SAP 说明 [1928533]。 如果想要使用 Azure 高级存储，请确保选择正确的 VM 类型。 并非所有 VM 类型都支持高级存储。 有关详细信息，请参阅[存储：Microsoft Azure 存储和数据磁盘][planning-guide-storage-microsoft-azure-storage-and-data-disks]与 [Azure 高级存储][planning-guide-azure-premium-storage]（见[适用于 SAP NetWeaver 的 Azure 虚拟机规划和实施][planning-guide]）。
 
 1. **设置**：
   * **存储**
     * **磁盘类型**：选择 OS 磁盘的磁盘类型。 若要对数据磁盘使用高级存储，我们建议也对 OS 磁盘使用高级存储。
     * **使用托管磁盘**：若要使用托管磁盘，请选择“是”。 有关托管磁盘的详细信息，请参阅规划指南中的[托管磁盘][planning-guide-managed-disks]一章。
   * **网络**
-    * **虚拟网络**和**子网**：要将虚拟机与内部网络相集成，请选择连接到本地网络的虚拟网络。
-    * **公用 IP 地址**：选择想要使用的公用 IP 地址，或输入参数来创建新的公用 IP 地址。 可以使用公用 IP 地址通过 Internet 访问虚拟机。 请确保同时创建网络安全组来帮助保护对虚拟机的访问。
+    * 虚拟网络和子网：要将虚拟机与内部网络相集成，请选择连接到本地网络的虚拟网络。
+    * **公共 IP 地址**：选择想要使用的公用 IP 地址，或输入参数来创建新的公用 IP 地址。 可以使用公用 IP 地址通过 Internet 访问虚拟机。 请确保同时创建网络安全组来帮助保护对虚拟机的访问。
     * **网络安全组**：有关详细信息，请参阅[使用网络安全组控制网络流量][virtual-networks-nsg]。
   * **扩展**：可以通过将虚拟机扩展添加到部署来安装这些扩展。 不需要在此步骤中添加扩展。 稍后会安装 SAP 支持所需的扩展。 请参阅本指南中的[配置适用于 SAP 的 Azure 增强型监视扩展][deployment-guide-4.5]一章。
   * **高可用性**：选择一个可用性集，或输入参数来创建新的可用性集。 有关详细信息，请参阅 [Azure 可用性集][planning-guide-3.2.3]。
@@ -613,7 +613,7 @@ ms.locfileid: "49956351"
 1. **基本信息**：
   * **订阅**：要用来部署模板的订阅。
   * **资源组**：要用来部署模板的资源组。 可以创建一个新的资源组，也可以选择订阅中的一个现有资源组。
-  * **位置**：要将模板部署到的地方。 如果选择了一个现有资源组，则会使用该资源组的位置。
+  * **位置**：部署模板的位置。 如果选择了一个现有资源组，则会使用该资源组的位置。
 1. **设置**：
   * **SAP 系统 ID**：SAP 系统 ID。
   * **OS 类型**：要部署的操作系统类型（Windows 或 Linux）。
@@ -623,17 +623,17 @@ ms.locfileid: "49956351"
   * **系统可用性**（仅限三层模板）：系统可用性。
 
     对于适用于高可用性安装的配置，请选择“HA”。 将创建两个数据库服务器和两个用于 ASCS 的服务器。
-  * **存储类型**（仅限两层模板）：要使用的存储的类型。
+  * **存储类型**（仅限双层模板）：要使用的存储类型。
 
     对于较大的系统，我们强烈建议使用 Azure 高级存储。 有关存储类型的详细信息，请参阅以下资源：
       * [Azure 高级 SSD 存储对 SAP DBMS 实例的使用][2367194]
-      * [适用于 SAP NetWeaver 的 Azure 虚拟机 DBMS 部署][dbms-guide]中的 [Microsoft Azure 存储][dbms-guide-2.3]
+      * [用于 RDBMS 部署的 VM 的存储结构](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_general#65fa79d6-a85f-47ee-890b-22e794f51a64)
       * [高级存储：适用于 Azure 虚拟机工作负荷的高性能存储][storage-premium-storage-preview-portal]
       * [Microsoft Azure 存储简介][storage-introduction]
   * **用户映像 VHD URI**（仅限非托管磁盘映像模板）：专用 OS 映像 VHD 的 URI，例如 https://&lt;accountname>.blob.core.windows.net/vhds/userimage.vhd。
-  * **用户映像存储帐户**（仅限非托管磁盘映像模板）：存储专用 OS 映像的存储帐户的名称，例如 https://&lt;accountname>.blob.core.windows.net/vhds/userimage.vhd 中的 &lt;accountname>。
+  * **用户映像存储帐户**（仅限非托管磁盘映像模板）：存储着专用 OS 映像的存储帐户的名称，例如 &lt;accountname> in https://&lt;accountname>.blob.core.windows.net/vhds/userimage.vhd。
   * **userImageId**（仅限托管磁盘映像模板）：要使用的托管磁盘映像的 ID
-  * **管理员用户名**和**管理员密码**：用户名和密码。
+  * 管理员用户名和管理员密码：用户名和密码。
 
     将创建一个新用户，用于登录到虚拟机。
   * **新子网或现有子网**：确定是要创建新的虚拟网络和子网，还是使用现有子网。 如果已有连接到本地网络的虚拟网络，请选择“现有”。
@@ -665,9 +665,9 @@ ms.locfileid: "49956351"
 根据[检查端到端监视设置并对其进行故障排除][deployment-guide-troubleshooting-chapter]中所述，检查监视是否正常运行。
 
 
-### <a name="a9a60133-a763-4de8-8986-ac0fa33aa8c1"></a>方案 3：使用包含 SAP 的非通用化 Azure VHD 移动本地 VM
+### <a name="a9a60133-a763-4de8-8986-ac0fa33aa8c1"></a>场景 3：使用包含 SAP 的非通用化 Azure VHD 移动本地 VM
 
-在此方案中，打算将特定的 SAP 系统从本地环境移动到 Azure。 可以通过将包含 OS、SAP 二进制文件并最终包含 DBMS 二进制文件的 VHD，以及包含 DBMS 数据和日志文件的 VHD 上传到 Azure 来实现此目的。 与[方案 2：使用自定义映像为 SAP 部署 VM][deployment-guide-3.3]中所述的方案不同，在本例中，需要在 Azure VM 中保留主机名、SAP SID 和 SAP 用户帐户，因为它们已在本地环境中进行了配置。 不需要对 OS 进行通用化。 此方案通常应用于跨界情况，在这种情况下，SAP 布局有一部分在本地运行，另一部分在 Azure 上运行。
+在此方案中，打算将特定的 SAP 系统从本地环境移动到 Azure。 可以通过将包含 OS、SAP 二进制文件并最终包含 DBMS 二进制文件的 VHD，以及包含 DBMS 数据和日志文件的 VHD 上传到 Azure 来实现此目的。 与[方案 2：使用自定义映像为 SAP 部署 VM][deployment-guide-3.3] 中所述的方案不同，在本例中，需要在 Azure VM 中保留主机名、SAP SID 和 SAP 用户帐户，因为它们已在本地环境中进行了配置。 不需要对 OS 进行通用化。 此方案通常应用于跨界情况，在这种情况下，SAP 布局有一部分在本地运行，另一部分在 Azure 上运行。
 
 在此方案中，在部署期间**不会**自动安装 VM 代理。 由于在 Azure 上运行 SAP NetWeaver 需要 VM 代理和适用于 SAP 的 Azure 增强型监视扩展，因此，在创建虚拟机后，需要手动下载、安装并启用这两个组件。
 
@@ -708,18 +708,18 @@ ms.locfileid: "49956351"
 1. **基本信息**：
   * **订阅**：要用来部署模板的订阅。
   * **资源组**：要用来部署模板的资源组。 可以创建一个新的资源组，也可以选择订阅中的一个现有资源组。
-  * **位置**：要将模板部署到的地方。 如果选择了一个现有资源组，则会使用该资源组的位置。
+  * **位置**：部署模板的位置。 如果选择了一个现有资源组，则会使用该资源组的位置。
 1. **设置**：
   * **SAP 系统 ID**：SAP 系统 ID。
   * **OS 类型**：要部署的操作系统类型（Windows 或 Linux）。
   * **SAP 系统大小**：SAP 系统的大小。
 
     新系统提供的 SAPS 的数量。 如果不确定系统需要多少 SAPS，请咨询 SAP 技术合作伙伴或系统集成商。
-  * **存储类型**（仅限两层模板）：要使用的存储的类型。
+  * **存储类型**（仅限双层模板）：要使用的存储类型。
 
     对于较大的系统，我们强烈建议使用 Azure 高级存储。 有关存储类型的详细信息，请参阅以下资源：
       * [Azure 高级 SSD 存储对 SAP DBMS 实例的使用][2367194]
-      * [适用于 SAP NetWeaver 的 Azure 虚拟机 DBMS 部署][dbms-guide]中的 [Microsoft Azure 存储][dbms-guide-2.3]
+      * [用于 RDBMS 部署的 VM 的存储结构](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/dbms_guide_general#65fa79d6-a85f-47ee-890b-22e794f51a64)
       * [高级存储：适用于 Azure 虚拟机工作负荷的高性能存储][storage-premium-storage-preview-portal]
       * [Microsoft Azure 存储简介][storage-introduction]
   * **OS 磁盘 VHD URI**（仅限非托管磁盘模板）：专用 OS 磁盘的 URI，例如 https://&lt;accountname>.blob.core.windows.net/vhds/osdisk.vhd。
@@ -1036,7 +1036,7 @@ azure --version
 
 1.  登录到 Azure 虚拟机（不需要使用管理员帐户）。
 1.  打开命令提示符窗口。
-1.  在命令提示符下，将目录切换到适用于 SAP 的 Azure 增强型监视扩展的安装文件夹：C:\\Packages\\Plugins\\Microsoft.AzureCAT.AzureEnhancedMonitoring.AzureCATExtensionHandler\\&lt;版本>\\drop
+1.  在命令提示符下，将目录更改为适用于 SAP 的 Azure 增强型监视扩展的安装文件夹：C:\\Packages\\Plugins\\Microsoft.AzureCAT.AzureEnhancedMonitoring.AzureCATExtensionHandler\\&lt;version>\\drop
 
   监视扩展的路径中的*版本*可能因具体情况而异。 如果在安装文件夹中看到了监视扩展的多个版本的文件夹，请检查 Windows 服务 AzureEnhancedMonitoring 的配置，并切换到“可执行文件的路径”指示的文件夹。
 
@@ -1087,7 +1087,7 @@ Azperflib.exe 输出会显示针对 SAP 的所有已填充的 Azure 性能计数
 
  b. 运行 `cat /var/lib/AzureEnhancedMonitor/PerfCounters | grep Error`
 
-   **预期结果**：返回一个行，其中，错误为 **none**，例如 **3;config;Error;;0;0;none;0;1456416792;tst-servercs;**
+   **预期结果**：返回一个行，其中，错误为“none”，例如“3;config;Error;;0;0;none;0;1456416792;tst-servercs;”
 
   c. 运行 `more /var/lib/AzureEnhancedMonitor/LatestErrorRecord`
 

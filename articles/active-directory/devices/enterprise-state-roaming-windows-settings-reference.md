@@ -16,12 +16,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/25/2018
 ms.author: markvi
-ms.openlocfilehash: c225761f18a89539ea4966fab620104a25d1270e
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: 45bf554e457e48704684fe8ac3b32c29f3f646b2
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50128836"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54189268"
 ---
 # <a name="windows-10-roaming-settings-reference"></a>Windows 10 漫游设置参考
 以下为会在 Windows 10 中漫游或备份的所有设置的完整列表。 
@@ -48,7 +48,7 @@ Windows 设置通常会默认进行同步，但某些设置只会进行备份，
 * 语言首选项：拼写字典、系统语言设置 
 * 轻松访问：讲述人、屏幕键盘、放大镜 
 * 其他 Windows 设置：请参阅 Windows 设置详细信息
-* Edge 浏览器设置：Microsoft Edge 收藏夹、读取列表和其他设置
+* Microsoft Edge 浏览器设置：Microsoft Edge 收藏夹、读取列表和其他设置
 
 ![](./media/enterprise-state-roaming-windows-settings-reference/active-directory-enterprise-state-roaming-syncyoursettings.png)
 
@@ -108,7 +108,7 @@ Windows 设置通常会默认进行同步，但某些设置只会进行备份，
 | **Microsoft Edge 浏览器**：cookie 首选项 <sup>[[1]](#footnote-1)</sup> |sync |sync |内部 |
 | **Microsoft Edge 浏览器**：允许站点保存设备中受保护的媒体许可证 <sup>[[1]](#footnote-1)</sup> |sync |sync |内部 |
 | **Microsoft Edge 浏览器**：屏幕阅读器设置 <sup>[[1]](#footnote-1)</sup> |sync |sync |内部 |
-| **高对比度**：打开或关闭 |sync |X |轻松访问 |
+| **高对比度**：“打开”或“关闭” |sync |X |轻松访问 |
 | **高对比度**：主题设置 |sync |X |轻松访问 |
 | **Internet Explorer**：打开选项卡（URL 和标题） |sync |sync |Internet Explorer |
 | **Internet Explorer**：读取列表 |sync |sync |Internet Explorer |
@@ -122,7 +122,7 @@ Windows 设置通常会默认进行同步，但某些设置只会进行备份，
 | **键盘**：开启粘滞键（默认为关闭） |sync |X |轻松访问 |
 | **键盘**：开启筛选键（默认为关闭） |sync |X |轻松访问 |
 | **键盘**：开启切换键（默认为关闭） |sync |X |轻松访问 |
-| **Internet Explorer**：域语言：中文 (CHS) 标准键盘 - 启用自学习 |sync |X |语言 |
+| **Internet Explorer**：域语言：简体中文 (CHS) 标准键盘 - 启用自学习 |sync |X |语言 |
 | **语言**：CHS 标准键盘 - 启用动态候选项排名 |sync |X |语言 |
 | **语言**：CHS 标准键盘 - 字符集简体中文 |sync |X |语言 |
 | **语言**：CHS 标准键盘 - 字符集繁体中文 |sync |X |语言 |
@@ -131,7 +131,7 @@ Windows 设置通常会默认进行同步，但某些设置只会进行备份，
 | **语言**：CHS 标准键盘 - 完整拼音 |sync |X |语言 |
 | **语言**：CHS 标准键盘 - 双拼音 |sync |X |语言 |
 | **语言**：CHS 标准键盘 - 读取自动更正 |sync |X |语言 |
-| **语言**：CHS 标准键盘 - C/E 切换键，shift |sync |X |语言 |
+| **语言**：CHS 标准键盘 - C/E 切换键，Shift |sync |X |语言 |
 | **语言**：CHS 标准键盘 - C/E 切换键，Ctrl |sync |X |语言 |
 | **语言**：CHS 五笔 - 单字符输入模式 |sync |X |语言 |
 | **语言**：CHS 五笔 - 显示候选项的剩余编码 |sync |X |语言 |

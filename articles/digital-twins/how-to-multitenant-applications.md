@@ -1,60 +1,76 @@
 ---
 title: 使用 Azure 数字孪生启用多租户应用程序 | Microsoft Docs
-description: 了解如何使用 Azure 数字孪生注册客户的 Azure Active Directory 租户
+description: 如何为 Azure 数字孪生配置多租户 Azure Active Directory 应用程序。
 author: mavoge
 manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 10/08/2018
+ms.date: 01/03/2019
 ms.author: mavoge
-ms.openlocfilehash: a2d9ece119003c341f49ee03d735d5636b179a32
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 2b4f9bf87122f047e496dca1dbd425db8ad7c16c
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51259881"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54119962"
 ---
 # <a name="enable-multitenant-applications-with-azure-digital-twins"></a>使用 Azure 数字孪生启用多租户应用程序
 
-使用 Azure 数字孪生的开发人员通常想要生成多租户应用程序。 *多租户应用程序*是支持多个客户的单个预配实例。 每个客户都有自己的独立数据和特权。
+借助 Azure 数字孪生进行生成的解决方案开发者可能希望通过单个服务或解决方案为多个客户提供支持。 事实上，多租户应用程序是最常见的 Azure 数字孪生配置。
 
-本文档详细介绍如何创建支持多个 Azure Active Directory (Azure AD) 租户和客户的 Azure 数字孪生多租户应用。
+本文档介绍如何配置 Azure 数字孪生应用以支持多个 Azure Active Directory 租户和客户。
 
-## <a name="scenario-summary"></a>方案摘要
+## <a name="multitenancy"></a>多租户
 
-在本方案中，假设存在开发人员 D 和客户 C：
+多租户资源是支持多个客户的单个预配实例。 每个客户都有自己的独立数据和特权。 每个客户的体验都是相互独立的，如此应用程序为其呈现的内容也是截然不同的。
 
-- 开发人员 D 拥有包含 Azure AD 租户的 Azure 订阅。
-- 开发人员 D 已将 Azure 数字孪生实例部署到其 Azure 订阅中。
-- 开发人员 D 的 Azure AD 租户中的用户可以获得针对 Azure 数字孪生服务的令牌，因为 Azure AD 已在开发人员 D的 Azure AD 租户中创建了服务主体。
-- 现在，开发人员 D 创建一个可以与 Azure 数字孪生的管理 API 直接集成的移动应用。
-- 开发人员 D 允许客户 C 使用该移动应用程序。
-- 客户 C 必须被授权才能使用开发人员 D 的应用程序中的 Azure 数字孪生管理 API。
+若要了解有关多租户的详细信息，请参阅 [Azure 中的多租户应用程序](https://docs.microsoft.com/azure/dotnet-develop-multitenant-applications)。
 
-  > [!IMPORTANT]
-  > - 当客户 C 登录到开发人员 D 的应用程序时，该应用将无法获取客户 C 的用户用以与管理 API 对话的令牌。
-  > - Azure AD 将引发错误，指示无法在客户 C 的目录中识别 Azure 数字孪生。
+## <a name="problem-scenario"></a>问题情景
 
-## <a name="solution"></a>解决方案
+在此情景中，假设有一位生成 Azure 数字孪生解决方案的开发人员（开发人员），和一位使用该解决方案的客户（客户）：
 
-要解决上述情况，需要执行以下操作，在客户 C 的 Azure AD 租户中创建 Azure 数字孪生服务主体：
+- 开发人员拥有包含 Azure Active Directory 租户的 Azure 订阅。
+- 开发人员将 Azure 数字孪生实例部署到其 Azure 订阅中。 Azure Active Directory 在开发人员的 Azure Active Directory 租户中自动创建了一个服务主体。
+- 随后，开发人员的 Azure Active Directory 租户中的用户可通过 Azure 数字孪生服务[获取 OAuth 2.0 令牌](./security-authenticating-apis.md)。
+- 现在，开发人员创建了一个可以与 Azure 数字孪生管理 API 直接集成的移动应用。
+- 开发人员允许客户使用该移动应用程序。
+- 客户必须获得授权才能使用 开发人员应用程序中的 Azure 数字孪生管理 API。
 
-- 如果客户 C 尚不具有包含 Azure AD 租户的 Azure 订阅，则：
+问题：
 
-  - 客户 C 的 Azure AD 租户管理员必须获取[即用即付 Azure 订阅](https://azure.microsoft.com/offers/ms-azr-0003p/)。
-  - 然后客户 C 的 Azure AD 租户管理员必须[将其租户与新订阅进行链接](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect)。
+- 当客户登录到开发人员的应用程序时，该应用将无法获取客户的用户用以对 Azure 数字孪生管理 API 进行身份验证的令牌。
+- Azure Active Directory 中发生异常，指示 Azure 数字孪生未在 CUSTOMER 的目录中识别。
 
-- 在 [Azure 门户](https://portal.azure.com)中，客户 C 的 Azure AD 租户管理员执行以下步骤：
+## <a name="problem-solution"></a>问题解决方案
+
+要解决上述情况，需要执行以下操作，在 CUSTOMER 的 Azure Active Directory 租户中创建 Azure 数字孪生服务主体：
+
+- 如果 CUSTOMER 尚不具有包含 Azure Active Directory 租户的 Azure 订阅，则：
+
+  - CUSTOMER 的 Azure Active Directory 租户管理员必须获取[即用即付 Azure 订阅](https://azure.microsoft.com/offers/ms-azr-0003p/)。
+  - 然后 CUSTOMER 的 Azure Active Directory 租户管理员必须[将其租户与新订阅进行链接](https://docs.microsoft.com/azure/active-directory/hybrid/whatis-hybrid-identity)。
+
+- 在 [Azure 门户](https://portal.azure.com)中，CUSTOMER 的 Azure Active Directory 租户管理员执行以下步骤：
 
   1. 打开“订阅”。
-  1. 选择一个订阅，该订阅需具有要在开发人员 D 的应用程序中使用的 Azure AD 租户。
+  1. 选择一个订阅，该订阅需具有要在开发人员的应用程序中使用的 Azure Active Directory 租户。
+
+     ![Azure Active Directory 订阅][1]
+
   1. 选择“资源提供程序”。
   1. 搜索 Microsoft.IoTSpaces。
   1. 选择“注册”。
+
+     ![Azure Active Directory 资源提供程序][2]
   
 ## <a name="next-steps"></a>后续步骤
 
-若要详细了解如何将用户定义的函数与 Azure 数字孪生配合使用，请阅读 [Azure 数字孪生 UDF](how-to-user-defined-functions.md)。
+- 若要深入了解如何将用户定义的函数与 Azure 数字孪生配合使用，请阅读[如何创建 Azure 数字孪生用户定义的函数](./how-to-user-defined-functions.md)。
 
-若要了解如何使用基于角色的访问控制进一步保护具有角色分配的应用程序，请阅读 [Azure 数字孪生基于角色的访问控制](security-create-manage-role-assignments.md)。
+- 若要了解如何使用基于角色的访问控制进一步保护具有角色分配的应用程序，请阅读[如何创建和管理 Azure 数字孪生基于角色的访问控制](./security-create-manage-role-assignments.md)。
+
+<!-- Images -->
+[1]: media/multitenant/ad-subscriptions.png
+[2]: media/multitenant/ad-resource-providers.png

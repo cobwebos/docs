@@ -9,20 +9,19 @@ ms.assetid: 8dd7ba14-15d2-4fd9-9ada-0b2c684327e9
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: douglasl
 robots: noindex
-ms.openlocfilehash: b7a2f9350633be5ec0cb8d5a7c6e7cc5048f956a
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.openlocfilehash: 4ed919b76ddebde8337337c18c04093bc6072e82
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52275989"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54121254"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>在 Azure 数据工厂管道中使用自定义活动
-> [!div class="op_single_selector" title1="选择您正在使用的 Data Factory 服务的版本:"]
+> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [版本 1](data-factory-use-custom-activities.md)
 > * [版本 2（当前版本）](../transform-data-using-dotnet-custom-activity.md)
 
@@ -32,16 +31,16 @@ ms.locfileid: "52275989"
 在 Azure 数据工厂管道中可使用两类活动。
 
 - [数据移动活动](data-factory-data-movement-activities.md)：在[支持的源与接收器数据存储](data-factory-data-movement-activities.md#supported-data-stores-and-formats)之间移动数据。
-- [数据转换活动](data-factory-data-transformation-activities.md)：使用 Azure HDInsight、Azure Batch 和 Azure 机器学习等计算服务转换数据。 
+- [数据转换活动](data-factory-data-transformation-activities.md)：使用 Azure HDInsight、Azure Batch 和 Azure 机器学习等计算服务转换数据。
 
-要将数据移入/移出数据工厂不支持的数据存储，需使用自己的数据移动逻辑创建**自定义活动**，然后在管道中使用该活动。 同样，要以数据工厂不支持的方式转换/处理数据，需使用自己的数据转换逻辑创建自定义活动，并在管道中使用该活动。 
+要将数据移入/移出数据工厂不支持的数据存储，需使用自己的数据移动逻辑创建**自定义活动**，然后在管道中使用该活动。 同样，要以数据工厂不支持的方式转换/处理数据，需使用自己的数据转换逻辑创建自定义活动，并在管道中使用该活动。
 
 可将自定义活动配置为在虚拟机的“Azure Batch”池中运行。 使用 Azure Batch 时，只能使用现有的 Azure Batch 池。
 
-以下演练提供有关创建自定义 .NET 活动和在管道中使用自定义活动的分步说明。 本演练使用 **Azure Batch**链接服务。 
+以下演练提供有关创建自定义 .NET 活动和在管道中使用自定义活动的分步说明。 本演练使用 **Azure Batch**链接服务。
 
 > [!IMPORTANT]
-> - 无法使用自定义活动中的数据管理网关来访问本地数据源。 目前，[数据管理网关](data-factory-data-management-gateway.md)仅支持数据工厂中的复制活动和存储过程活动。   
+> - 无法使用自定义活动中的数据管理网关来访问本地数据源。 目前，[数据管理网关](data-factory-data-management-gateway.md)仅支持数据工厂中的复制活动和存储过程活动。
 
 ## <a name="walkthrough-create-a-custom-activity"></a>演练：创建自定义活动
 ### <a name="prerequisites"></a>先决条件
@@ -57,7 +56,7 @@ ms.locfileid: "52275989"
 2. 记下 Azure Batch 帐户名称、帐户密钥、URI 和池名称。 随后需要使用这些信息来创建 Azure Batch 链接服务。
     1. 在 Azure Batch 帐户的主页上，可以看到采用以下格式的 **URL**：`https://myaccount.westus.batch.azure.com`。 在本示例中，**myaccount** 是 Azure Batch 帐户的名称。 在链接服务定义中使用的 URI 是不带帐户名称的 URL。 例如：`https://<region>.batch.azure.com`。
     2. 在左侧菜单中单击“密钥”并复制“主访问密钥”。
-    3. 要使用现有池，请在菜单中单击“池”，并记下该池的 **ID**。 如果没有池，会转到下一步。     
+    3. 要使用现有池，请在菜单中单击“池”，并记下该池的 **ID**。 如果没有池，会转到下一步。
 2. 创建 **Azure Batch 池**。
 
    1. 在 [Azure 门户](https://portal.azure.com)中，单击左侧菜单中的“浏览”，并单击“Batch 帐户”。
@@ -70,36 +69,33 @@ ms.locfileid: "52275989"
       4. 输入 **2** 作为“目标专用”设置的值。
       5. 输入 **2** 作为“每个节点最大任务”设置的值。
    5. 单击“确定”创建池。
-   6. 记下该池的 **ID**。 
-
-
+   6. 记下该池的 **ID**。
 
 ### <a name="high-level-steps"></a>高级步骤
-下面是在学习本演练的过程中需要执行的两个高级步骤： 
+下面是在学习本演练的过程中需要执行的两个高级步骤：
 
 1. 创建包含简单数据转换/处理逻辑的自定义活动。
 2. 创建一个 Azure 数据工厂，其中包含一个使用自定义活动的管道。
 
 ### <a name="create-a-custom-activity"></a>创建自定义活动
-若要创建 .NET 自定义活动，请使用实现 **IDotNetActivity** 接口的类创建 **.NET 类库**项目。 此接口仅包含一个方法：[Execute](https://msdn.microsoft.com/library/azure/mt603945.aspx)，其签名是：
+若要创建 .NET 自定义活动，请使用实现 **IDotNetActivity** 接口的类创建 **.NET 类库**项目。 此接口只包含一个方法：[执行](https://msdn.microsoft.com/library/azure/mt603945.aspx)，其签名是：
 
 ```csharp
 public IDictionary<string, string> Execute(
-        IEnumerable<LinkedService> linkedServices,
-        IEnumerable<Dataset> datasets,
-        Activity activity,
-        IActivityLogger logger)
+    IEnumerable<LinkedService> linkedServices,
+    IEnumerable<Dataset> datasets,
+    Activity activity,
+    IActivityLogger logger)
 ```
-
 
 该方法采用四个参数：
 
-- **linkedServices**。 此属性是活动的输入/输出数据集引用的“数据存储”链接服务的可枚举列表。   
+- **linkedServices**。 此属性是活动的输入/输出数据集引用的“数据存储”链接服务的可枚举列表。
 - **数据集**。 此属性是活动的输入/输出数据集的可枚举列表。 可使用此参数获取输入和输出数据集定义的位置和架构。
 - **活动**。 此属性表示当前活动。 可以使用它来访问与自定义活动关联的扩展属性。 有关详细信息，请参阅[访问扩展属性](#access-extended-properties)。
 - **记录器**。 使用此对象可以编写会在管道用户日志中显示的调试注释。
 
-该方法返回一个字典，此字典可在以后将自定义活动链接在一起。 此功能尚未实现，因此该方法将返回空字典。  
+该方法返回一个字典，此字典可在以后将自定义活动链接在一起。 此功能尚未实现，因此该方法将返回空字典。
 
 ### <a name="procedure"></a>过程
 1. 创建 **.NET 类库**项目。
@@ -112,7 +108,7 @@ public IDictionary<string, string> Execute(
      <li>对于“位置”<b></b>，选择“C:\ADFGetStarted”<b></b>。</li>
      <li>单击“确定”以创建该项目 <b></b> 。</li>
    </ol>
-   
+
 2. 单击“工具”，指向“NuGet 包管理器”，并单击“包管理器控制台”。
 
 3. 在“包管理器控制台”中，执行以下命令导入 **Microsoft.Azure.Management.DataFactories**。
@@ -127,7 +123,7 @@ public IDictionary<string, string> Execute(
     ```
 
     > [!IMPORTANT]
-    > 数据工厂服务启动器需要 4.3 版本 的 WindowsAzure.Storage。 如果在自定义活动项目中添加更高版本 Azure 存储程序集的引用，会在活动执行时出现错误。 若要解决此错误，请参阅 [Appdomain 隔离](#appdomain-isolation)部分。 
+    > 数据工厂服务启动器需要 4.3 版本 的 WindowsAzure.Storage。 如果在自定义活动项目中添加更高版本 Azure 存储程序集的引用，会在活动执行时出现错误。 若要解决此错误，请参阅 [Appdomain 隔离](#appdomain-isolation)部分。
 5. 将以下 **using** 语句添加到项目中的源文件。
 
     ```csharp
@@ -170,7 +166,7 @@ public IDictionary<string, string> Execute(
     ```csharp
     /// <summary>
     /// Execute method is the only method of IDotNetActivity interface you must implement.
-    /// In this sample, the method invokes the Calculate method to perform the core logic.  
+    /// In this sample, the method invokes the Calculate method to perform the core logic.
     /// </summary>
     
     public IDictionary<string, string> Execute(
@@ -183,35 +179,35 @@ public IDictionary<string, string> Execute(
         // (for example: SliceStart)
         DotNetActivity dotNetActivity = (DotNetActivity)activity.TypeProperties;
         string sliceStartString = dotNetActivity.ExtendedProperties["SliceStart"];
-    
+
         // to log information, use the logger object
-        // log all extended properties            
+        // log all extended properties
         IDictionary<string, string> extendedProperties = dotNetActivity.ExtendedProperties;
         logger.Write("Logging extended properties if any...");
         foreach (KeyValuePair<string, string> entry in extendedProperties)
         {
             logger.Write("<key:{0}> <value:{1}>", entry.Key, entry.Value);
         }
-    
+
         // linked service for input and output data stores
         // in this example, same storage is used for both input/output
         AzureStorageLinkedService inputLinkedService;
 
         // get the input dataset
         Dataset inputDataset = datasets.Single(dataset => dataset.Name == activity.Inputs.Single().Name);
-    
+
         // declare variables to hold type properties of input/output datasets
         AzureBlobDataset inputTypeProperties, outputTypeProperties;
-        
+
         // get type properties from the dataset object
         inputTypeProperties = inputDataset.Properties.TypeProperties as AzureBlobDataset;
     
         // log linked services passed in linkedServices parameter
         // you will see two linked services of type: AzureStorage
-        // one for input dataset and the other for output dataset 
+        // one for input dataset and the other for output dataset
         foreach (LinkedService ls in linkedServices)
             logger.Write("linkedService.Name {0}", ls.Name);
-    
+
         // get the first Azure Storage linked service from linkedServices object
         // using First method instead of Single since we are using the same
         // Azure Storage linked service for input and output.
@@ -220,18 +216,18 @@ public IDictionary<string, string> Execute(
             linkedService.Name ==
             inputDataset.Properties.LinkedServiceName).Properties.TypeProperties
             as AzureStorageLinkedService;
-    
+
         // get the connection string in the linked service
         string connectionString = inputLinkedService.ConnectionString;
-    
+
         // get the folder path from the input dataset definition
         string folderPath = GetFolderPath(inputDataset);
         string output = string.Empty; // for use later.
-    
+
         // create storage client for input. Pass the connection string.
         CloudStorageAccount inputStorageAccount = CloudStorageAccount.Parse(connectionString);
         CloudBlobClient inputClient = inputStorageAccount.CreateCloudBlobClient();
-    
+
         // initialize the continuation token before using it in the do-while loop.
         BlobContinuationToken continuationToken = null;
         do
@@ -246,29 +242,29 @@ public IDictionary<string, string> Execute(
     
             // Calculate method returns the number of occurrences of
             // the search term (“Microsoft”) in each blob associated
-               // with the data slice. definition of the method is shown in the next step.
-    
+            // with the data slice. definition of the method is shown in the next step.
+
             output = Calculate(blobList, logger, folderPath, ref continuationToken, "Microsoft");
-    
+
         } while (continuationToken != null);
-    
+
         // get the output dataset using the name of the dataset matched to a name in the Activity output collection.
         Dataset outputDataset = datasets.Single(dataset => dataset.Name == activity.Outputs.Single().Name);
 
         // get type properties for the output dataset
         outputTypeProperties = outputDataset.Properties.TypeProperties as AzureBlobDataset;
-    
+
         // get the folder path from the output dataset definition
         folderPath = GetFolderPath(outputDataset);
 
         // log the output folder path   
         logger.Write("Writing blob to the folder: {0}", folderPath);
-    
+
         // create a storage object for the output blob.
         CloudStorageAccount outputStorageAccount = CloudStorageAccount.Parse(connectionString);
         // write the name of the file.
         Uri outputBlobUri = new Uri(outputStorageAccount.BlobEndpoint, folderPath + "/" + GetFileName(outputDataset));
-    
+
         // log the output file name
         logger.Write("output blob URI: {0}", outputBlobUri.ToString());
 
@@ -276,20 +272,20 @@ public IDictionary<string, string> Execute(
         CloudBlockBlob outputBlob = new CloudBlockBlob(outputBlobUri, outputStorageAccount.Credentials);
         logger.Write("Writing {0} to the output blob", output);
         outputBlob.UploadText(output);
-    
+
         // The dictionary can be used to chain custom activities together in the future.
-        // This feature is not implemented yet, so just return an empty dictionary.  
-    
+        // This feature is not implemented yet, so just return an empty dictionary.
+
         return new Dictionary<string, string>();
     }
     ```
-9. 添加以下帮助器方法： 
+9. 添加以下帮助器方法：
 
     ```csharp
     /// <summary>
     /// Gets the folderPath value from the input/output dataset.
     /// </summary>
-    
+
     private static string GetFolderPath(Dataset dataArtifact)
     {
         if (dataArtifact == null || dataArtifact.Properties == null)
@@ -303,13 +299,13 @@ public IDictionary<string, string> Execute(
         {
             return null;
         }
-    
+
         // return the folder path found in the type properties
         return blobDataset.FolderPath;
     }
-    
+
     /// <summary>
-    /// Gets the fileName value from the input/output dataset.   
+    /// Gets the fileName value from the input/output dataset.
     /// </summary>
     
     private static string GetFileName(Dataset dataArtifact)
@@ -358,7 +354,7 @@ public IDictionary<string, string> Execute(
     }
     ```
 
-    GetFolderPath 方法返回数据集所指向的文件夹路径，GetFileName 方法返回数据集指向的 blob/文件名称。 如果使用变量（如 {Year}、{Month}、{Day} 等）定义 folderPath，该方法将原样返回字符串，而不会将它们替换为运行时值。 有关访问 SliceStart、SliceEnd 等的详细信息，请参阅[访问扩展属性](#access-extended-properties)部分。    
+    GetFolderPath 方法返回数据集所指向的文件夹路径，GetFileName 方法返回数据集指向的 blob/文件名称。 如果使用变量（如 {Year}、{Month}、{Day} 等）定义 folderPath，该方法将原样返回字符串，而不会将它们替换为运行时值。 有关访问 SliceStart、SliceEnd 等的详细信息，请参阅[访问扩展属性](#access-extended-properties)部分。
 
     ```JSON
     "name": "InputDataset",
@@ -377,14 +373,14 @@ public IDictionary<string, string> Execute(
     > 将 4.5.2 版本的 .NET Framework 作为项目的目标框架：右键单击项目，然后单击“属性”设置目标框架。 数据工厂不支持针对低于 4.5.2 的 .NET Framework 版本编译的自定义活动。
 
 11. 启动 **Windows 资源管理器**，并根据版本类型导航到 **bin\debug** 或 **bin\release** 文件夹。
-12. 在 <project folder>\bin\Debug 文件夹内创建包含所有二进制文件的 zip 文件 **MyDotNetActivity.zip**。 包含 **MyDotNetActivity.pdb** 文件以便获取其他详细信息，例如出现故障时引发问题的源代码中的行号。 
+12. 创建 zip 文件“MyDotNetActivity.zip”，其中包含 \<project folder\>\bin\Debug 文件夹中的所有二进制文件。 包含 **MyDotNetActivity.pdb** 文件以便获取其他详细信息，例如出现故障时引发问题的源代码中的行号。
 
     > [!IMPORTANT]
     > 在 zip 文件中，用于自定义活动的所有文件必须在不包含任何子文件夹的**顶级**目录中。
 
     ![二进制输出文件](./media/data-factory-use-custom-activities/Binaries.png)
 14. 创建名为 **customactivitycontainer** 的 Blob 容器（如果不存在）。 
-15. 将 MyDotNetActivity.zip 作为 Blob 上传到 AzureStorageLinkedService 引用的通用 Azure Blob 存储（不是热/冷 Blob 存储）中的 customactivitycontainer。  
+15. 将 MyDotNetActivity.zip 作为 Blob 上传到 AzureStorageLinkedService 引用的通用 Azure Blob 存储（不是热/冷 Blob 存储）中的 customactivitycontainer。
 
 > [!IMPORTANT]
 > 若将此 .NET 活动项目添加到包含数据工厂项目的 Visual Studio 中的解决方案内，并从数据工厂应用程序项目添加对 .NET 活动项目的引用，则无需执行手动创建 zip 文件并将其上传到通用 Azure Blob 存储的最后两个步骤。 使用 Visual Studio 发布数据工厂实体时，发布过程会自动完成这些步骤。 有关详细信息，请参阅 [Visual Studio 中的数据工厂项目](#data-factory-project-in-visual-studio)部分。
@@ -394,7 +390,7 @@ public IDictionary<string, string> Execute(
 
 自定义活动的输入数据集表示 Blob 存储中 adftutorial 容器的 customactivityinput 文件夹中的 Blob（文件）。 活动的输出数据集表示 Blob 存储中 adftutorial 容器的 customactivityoutput 文件夹中的输出 Blob。
 
-创建包含以下内容的 **file.txt** 文件，并将它上传到 **adftutorial** 容器的 **customactivityinput** 文件夹中。 创建 adftutorial 容器（如果不存在）。 
+创建包含以下内容的 **file.txt** 文件，并将它上传到 **adftutorial** 容器的 **customactivityinput** 文件夹中。 创建 adftutorial 容器（如果不存在）。
 
 ```
 test custom activity Microsoft test custom activity Microsoft
@@ -417,7 +413,7 @@ test custom activity Microsoft test custom activity Microsoft
 4. 创建使用自定义活动的**管道**。
 
 > [!NOTE]
-> 创建 **file.txt** 并将其上传到 blob 容器中（如果尚未进行此操作）。 请参阅上一部分中的说明。   
+> 创建 **file.txt** 并将其上传到 blob 容器中（如果尚未进行此操作）。 请参阅上一部分中的说明。
 
 ### <a name="step-1-create-the-data-factory"></a>步骤 1：创建数据工厂
 1. 请在登录到 Azure 门户后执行以下步骤：
@@ -426,7 +422,7 @@ test custom activity Microsoft test custom activity Microsoft
    3. 单击“数据分析”边栏选项卡中的“数据工厂”。
    
     ![“新建 Azure 数据工厂”菜单](media/data-factory-use-custom-activities/new-azure-data-factory-menu.png)
-2. 在“新建数据工厂”边栏选项卡中，输入 **CustomActivityFactory** 作为“名称”。 Azure 数据工厂的名称必须全局唯一。 如果收到错误：**数据工厂名称“CustomActivityFactory”不可用**，请更改数据工厂名称（例如改为 **yournameCustomActivityFactory**），并再次尝试创建。
+2. 在“新建数据工厂”边栏选项卡中，输入 **CustomActivityFactory** 作为“名称”。 Azure 数据工厂的名称必须全局唯一。 如果收到错误：数据工厂名称“CustomActivityFactory”不可用，请更改数据工厂名称（例如改为 yournameCustomActivityFactory），并再次尝试创建。
 
     ![“新建 Azure 数据工厂”边栏选项卡](media/data-factory-use-custom-activities/new-azure-data-factory-blade.png)
 3. 单击“资源组名称”，并选择现有资源组或创建资源组。
@@ -459,28 +455,26 @@ test custom activity Microsoft test custom activity Microsoft
    1. 指定 **accountName** 属性的 Azure Batch 帐户名称。 “Azure Batch 帐户”边栏选项卡的 **URL** 采用以下格式：`http://accountname.region.batch.azure.com`。 对于 JSON 中的 **batchUri** 属性，需要从 URL 中删除 `accountname.`，并将 `accountname` 用于 `accountName` JSON 属性。
    2. 指定 **accessKey** 属性的 Azure Batch 帐户密钥。
    3. 指定作为 **poolName** 属性先决条件一部分所创建的池的名称。 也可指定池 ID 而非池名称。
-   4. 指定 **batchUri** 属性的 Azure Batch URI。 示例：`https://westus.batch.azure.com`。  
+   4. 指定 **batchUri** 属性的 Azure Batch URI。 示例：`https://westus.batch.azure.com`。
    5. 指定 **linkedServiceName** 属性的 **AzureStorageLinkedService**。
 
         ```json
         {
-         "name": "AzureBatchLinkedService",
-         "properties": {
-           "type": "AzureBatch",
-           "typeProperties": {
-             "accountName": "myazurebatchaccount",
-             "batchUri": "https://westus.batch.azure.com",
-             "accessKey": "<yourbatchaccountkey>",
-             "poolName": "myazurebatchpool",
-             "linkedServiceName": "AzureStorageLinkedService"
-           }
-         }
+          "name": "AzureBatchLinkedService",
+          "properties": {
+            "type": "AzureBatch",
+            "typeProperties": {
+              "accountName": "myazurebatchaccount",
+              "batchUri": "https://westus.batch.azure.com",
+              "accessKey": "<yourbatchaccountkey>",
+              "poolName": "myazurebatchpool",
+              "linkedServiceName": "AzureStorageLinkedService"
+            }
+          }
         }
         ```
 
        对于 **poolName** 属性，也可指定池 ID 而非池名称。
-
-    
 
 ### <a name="step-3-create-datasets"></a>步骤 3：创建数据集
 在此步骤中，创建表示输入和输出数据的数据集。
@@ -491,27 +485,27 @@ test custom activity Microsoft test custom activity Microsoft
 
     ```json
     {
-     "name": "InputDataset",
-     "properties": {
-         "type": "AzureBlob",
-         "linkedServiceName": "AzureStorageLinkedService",
-         "typeProperties": {
-             "folderPath": "adftutorial/customactivityinput/",
-             "format": {
-                 "type": "TextFormat"
-             }
-         },
-         "availability": {
-             "frequency": "Hour",
-             "interval": 1
-         },
-         "external": true,
-         "policy": {}
-     }
+        "name": "InputDataset",
+        "properties": {
+            "type": "AzureBlob",
+            "linkedServiceName": "AzureStorageLinkedService",
+            "typeProperties": {
+                "folderPath": "adftutorial/customactivityinput/",
+                "format": {
+                    "type": "TextFormat"
+                }
+            },
+            "availability": {
+                "frequency": "Hour",
+                "interval": 1
+            },
+            "external": true,
+            "policy": {}
+        }
     }
     ```
 
-   稍后在本演练中创建管道，开始时间：2016-11-16T00:00:00Z，结束时间：2016-11-16T05:00:00Z。 计划按小时生成数据，因此存在 5 个输入/输出切片 (**00**:00:00 -> **05**:00:00)。
+   稍后在本演练中创建相应管道，其中开始时间为：2016-11-16T00:00:00Z，结束时间为：2016-11-16T05:00:00Z。 计划按小时生成数据，因此存在 5 个输入/输出切片 (**00**:00:00 -> **05**:00:00)。
 
    输入数据集的**频率**和**间隔**设置为**小时**和 **1**，这意味着每小时皆可使用输入切片。 在此示例中，它是 intputfolder 中的相同文件 (file.txt)。
 
@@ -566,7 +560,7 @@ test custom activity Microsoft test custom activity Microsoft
 3. 若要部署 **OutputDataset**，请在命令栏上单击“部署”。
 
 ### <a name="create-and-run-a-pipeline-that-uses-the-custom-activity"></a>创建并运行使用自定义活动的管道
-1. 在“数据工厂编辑器”中，单击“...**更多”**，并在命令栏上选择“新建管道”。 
+1. 在“数据工厂编辑器”中，单击“...**更多”**，并在命令栏上选择“新建管道”。
 2. 将右窗格中的 JSON 替换为以下 JSON 脚本：
 
     ```JSON
@@ -616,9 +610,9 @@ test custom activity Microsoft test custom activity Microsoft
 
     请注意以下几点：
 
-   * **Concurrency** 设置为 **2**，以便在 Azure Batch 池中通过 2 个 VM 并行处理 2 个切片。
-   * 在活动部分中包含一个活动，其类型为：**DotNetActivity**。
-   * **AssemblyName** 设置为 DLL 的名称：**MyDotnetActivity.dll**。
+   * 将**并发**设置为 **2**以便在 Azure Batch 池通过 2 个 VM 并行处理 2 个切片。
+   * 在活动部分中包含一个活动，其类型为：DotNetActivity。
+   * AssemblyName 设置为 DLL：MyDotnetActivity.dll 的名称。
    * **EntryPoint** 设置为 **MyDotNetActivityNS.MyDotNetActivity**。
    * **PackageLinkedService** 设置为 **AzureStorageLinkedService**，它指向包含自定义活动 zip 文件的 blob 存储。 如果对输入/输出文件和自定义活动 zip 文件使用不同的 Azure 存储帐户，则需创建另一个 Azure 存储链接服务。 本文假定使用相同的 Azure 存储帐户。
    * **PackageFile** 设置为 **customactivitycontainer/MyDotNetActivity.zip**。 采用以下格式：containerforthezip/nameofthezip.zip。
@@ -635,7 +629,7 @@ test custom activity Microsoft test custom activity Microsoft
 2. 现在在“图示”视图中，单击“OutputDataset”。
 
     ![图示视图](./media/data-factory-use-custom-activities/diagram.png)
-3. 应会看到 5 个输出切片处于“就绪”状态。 如果它们不处于“就绪”状态，则表示它们尚未生成。 
+3. 应会看到 5 个输出切片处于“就绪”状态。 如果它们不处于“就绪”状态，则表示它们尚未生成。
 
    ![输出切片](./media/data-factory-use-custom-activities/OutputSlices.png)
 4. 验证输出文件是否在 **adftutorial** 容器的 blob 存储中生成。
@@ -650,24 +644,23 @@ test custom activity Microsoft test custom activity Microsoft
 
    ![下载自定义活动的日志][image-data-factory-download-logs-from-custom-activity]
 
-有关监视数据集和管道的详细步骤，请参阅[监视和管理管道](data-factory-monitor-manage-pipelines.md)。      
+有关监视数据集和管道的详细步骤，请参阅[监视和管理管道](data-factory-monitor-manage-pipelines.md)。
 
-## <a name="data-factory-project-in-visual-studio"></a>Visual Studio 中的数据工厂项目  
+## <a name="data-factory-project-in-visual-studio"></a>Visual Studio 中的数据工厂项目
 可以使用 Visual Studio（而非使用 Azure 门户）创建和发布数据工厂实体。 有关如何使用 Visual Studio 创建和发布数据工厂实体的详细信息，请参阅[使用 Visual Studio 生成第一个管道](data-factory-build-your-first-pipeline-using-vs.md)和[将数据从 Azure Blob 复制到 Azure SQL](data-factory-copy-activity-tutorial-using-visual-studio.md)。
 
 如果要在 Visual Studio 中创建数据工厂项目，请执行以下附加步骤：
- 
-1. 将数据工厂项目添加到包含自定义活动项目的 Visual Studio 解决方案。 
-2. 从数据工厂项目添加对 .NET 活动项目的引用。 右键单击数据工厂项目，指向“添加”，并单击“引用”。 
+
+1. 将数据工厂项目添加到包含自定义活动项目的 Visual Studio 解决方案。
+2. 从数据工厂项目添加对 .NET 活动项目的引用。 右键单击数据工厂项目，指向“添加”，并单击“引用”。
 3. 在“添加引用”对话框中，选择“MyDotNetActivity”项目，并单击“确定”。
 4. 生成并发布解决方案。
 
     > [!IMPORTANT]
-    > 发布数据工厂实体时，会自动创建 zip 文件并将其上传到 blob 容器：customactivitycontainer。 如果 blob 容器不存在，也会自动创建。  
-
+    > 发布数据工厂实体时，会自动创建 zip 文件并将其上传到 blob 容器：customactivitycontainer。 如果 blob 容器不存在，也会自动创建。
 
 ## <a name="data-factory-and-batch-integration"></a>数据工厂和 Batch 集成
-数据工厂服务在 Azure Batch 中创建一个作业，名称为：**adf-poolname: job-xxx**。 在左侧菜单中单击“作业”。 
+数据工厂服务在 Azure Batch 中创建一个作业，名称为：**adf-poolname: job-xxx**。 在左侧菜单中单击“作业”。
 
 ![Azure 数据工厂 - Batch 作业](media/data-factory-use-custom-activities/data-factory-batch-jobs.png)
 
@@ -682,18 +675,18 @@ test custom activity Microsoft test custom activity Microsoft
 ## <a name="troubleshoot-failures"></a>排除故障
 故障排除包括一些基本技巧：
 
-1. 如果看到以下错误，表示可能使用了热/冷 Blob 存储，而不是通用 Azure Blob 存储。 请将 zip 文件上传到**通用 Azure 存储帐户**。 
- 
+1. 如果看到以下错误，表示可能使用了热/冷 Blob 存储，而不是通用 Azure Blob 存储。 请将 zip 文件上传到**通用 Azure 存储帐户**。
+
     ```
     Error in Activity: Job encountered scheduling error. Code: BlobDownloadMiscError Category: ServerError Message: Miscellaneous error encountered while downloading one of the specified Azure Blob(s).
-    ``` 
-2. 如果出现以下错误，请确认 CS 文件中的类名称是否与为管道 JSON 中的 **EntryPoint** 属性指定的名称匹配。 在演练中，类的名称为：MyDotNetActivity，JSON 中的 EntryPoint 名称为：MyDotNetActivityNS.**MyDotNetActivity**。
+    ```
+2. 如果出现以下错误，请确认 CS 文件中的类名称是否与为管道 JSON 中的 **EntryPoint** 属性指定的名称匹配。 在本演练中，类的名称是：MyDotNetActivity，JSON 中的入口点是：MyDotNetActivityNS.**MyDotNetActivity**。
 
     ```
     MyDotNetActivity assembly does not exist or doesn't implement the type Microsoft.DataFactories.Runtime.IDotNetActivity properly
     ```
 
-   如果名称匹配，请确认是否所有二进制文件都在 zip 文件的**根文件夹**中。 也就是说，打开 zip 文件时，应看到所有文件均在根文件夹中，而非在任何子文件夹中。   
+   如果名称匹配，请确认是否所有二进制文件都在 zip 文件的**根文件夹**中。 也就是说，打开 zip 文件时，应看到所有文件均在根文件夹中，而非在任何子文件夹中。
 3. 如果输入切片未设置为 **Ready**，请确认输入文件夹结构正确，并且 **file.txt** 存在于输入文件夹中。
 3. 在自定义活动的 **Execute** 方法中，使用 **IActivityLogger** 对象记录可帮助解决问题的信息。 记录的消息会显示在用户日志文件（一个或多个文件，命名为 user-0.log、user-1.log、user-2.log 等）中。
 
@@ -708,28 +701,28 @@ test custom activity Microsoft test custom activity Microsoft
 5. 在 zip 文件中，用于自定义活动的所有文件必须在不包含任何子文件夹的**顶级**目录中。
 6. 确保 **assemblyName** (MyDotNetActivity.dll)、**entryPoint** (MyDotNetActivityNS.MyDotNetActivity)、**packageFile** (customactivitycontainer/MyDotNetActivity.zip) 和 **packageLinkedService**（应指向包含 zip 文件的**通用** Azure Blob 存储）已设置为正确的值。
 7. 如果解决了错误并想要重新处理切片，请在“OutputDataset”边栏选项卡中右键单击该切片，然后单击“运行”。
-8. 如果出现以下错误，则表示正在使用 4.3.0 以上版本的 Azure 存储包。 数据工厂服务启动器需要 4.3 版本 的 WindowsAzure.Storage。 如果必须使用 Azure 存储程序集的更高版本，请参阅 [Appdomain 隔离](#appdomain-isolation)部分解决此问题。 
+8. 如果出现以下错误，则表示正在使用 4.3.0 以上版本的 Azure 存储包。 数据工厂服务启动器需要 4.3 版本 的 WindowsAzure.Storage。 如果必须使用 Azure 存储程序集的更高版本，请参阅 [Appdomain 隔离](#appdomain-isolation)部分解决此问题。
 
     ```
-    Error in Activity: Unknown error in module: System.Reflection.TargetInvocationException: Exception has been thrown by the target of an invocation. ---> System.TypeLoadException: Could not load type 'Microsoft.WindowsAzure.Storage.Blob.CloudBlob' from assembly 'Microsoft.WindowsAzure.Storage, Version=4.3.0.0, Culture=neutral, 
+    Error in Activity: Unknown error in module: System.Reflection.TargetInvocationException: Exception has been thrown by the target of an invocation. ---> System.TypeLoadException: Could not load type 'Microsoft.WindowsAzure.Storage.Blob.CloudBlob' from assembly 'Microsoft.WindowsAzure.Storage, Version=4.3.0.0, Culture=neutral,
     ```
 
-    如果可以使用 4.3.0 版本的 Azure 存储包，请删除对 4.3.0 以上版本的 Azure.Storage 包的现有引用。 然后，从 NuGet 包管理器控制台运行以下命令。 
+    如果可以使用 4.3.0 版本的 Azure 存储包，请删除对 4.3.0 以上版本的 Azure.Storage 包的现有引用。 然后，从 NuGet 包管理器控制台运行以下命令。
 
     ```PowerShell
     Install-Package WindowsAzure.Storage -Version 4.3.0
     ```
 
-    生成项目。 从 bin\Debug 文件夹中删除 4.3.0 版本以上的 Azure.Storage 程序集。 创建包含二进制代码的 zip 文件和 PDB 文件。 使用 blob 容器 (customactivitycontainer) 中的此文件替换旧的 zip 文件。 重新运行失败的切片（右击切片，并单击“运行”）。   
+    生成项目。 从 bin\Debug 文件夹中删除 4.3.0 版本以上的 Azure.Storage 程序集。 创建包含二进制代码的 zip 文件和 PDB 文件。 使用 blob 容器 (customactivitycontainer) 中的此文件替换旧的 zip 文件。 重新运行失败的切片（右击切片，并单击“运行”）。
 8. 自定义活动不使用包中的 **app.config** 文件。 因此，如果代码从配置文件读取任何连接字符串，其在运行时无效。 使用 Azure Batch 时的最佳做法是在 **Azure KeyVault** 中保存所有机密，使用基于证书的服务主体来保护 **keyvault**，并将该证书分发到 Azure Batch 池。 然后，.NET 自定义活动可以在运行时从 KeyVault 访问机密。 该解决方案是一种通用解决方法，可以延伸到任何类型的机密，而不仅仅是连接字符串。
 
-   有一个更容易的解决方法（但非最佳做法）：可通过连接字符串设置创建 **Azure SQL 链接服务**，再创建使用该链接服务的数据集，并将作为虚拟输入数据集的数据集链接到自定义 .NET 活动。 然后，可访问自定义活动代码中的链接服务连接字符串。  
+   有一个更容易的解决方法（但非最佳做法）：可通过连接字符串设置创建 **Azure SQL 链接服务**，再创建使用该链接服务的数据集，并将作为虚拟输入数据集的数据集链接到自定义 .NET 活动。 然后，可访问自定义活动代码中的链接服务连接字符串。
 
 ## <a name="update-custom-activity"></a>更新自定义活动
 如果要更新自定义活动的代码，请生成该代码，然后将包含新二进制文件的 zip 文件上传到 blob 存储。
 
 ## <a name="appdomain-isolation"></a>Appdomain 隔离
-请参阅[跨 AppDomain 示例](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/CrossAppDomainDotNetActivitySample)，其中介绍了如何创建一个不受数据工厂启动器使用的程序集版本（例如 WindowsAzure.Storage v4.3.0、Newtonsoft.Json v6.0.x 等）限制的自定义活动。
+请参阅[跨 AppDomain 示例](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/CrossAppDomainDotNetActivitySample)，其中介绍了如何创建不受数据工厂启动器所使用的程序集版本（例如：WindowsAzure.Storage v4.3.0、Newtonsoft.Json v6.0.x 等）约束的自定义活动。
 
 ## <a name="access-extended-properties"></a>访问扩展属性
 可以在活动 JSON 中声明扩展属性，如以下示例中所示：
@@ -747,8 +740,7 @@ test custom activity Microsoft test custom activity Microsoft
 },
 ```
 
-
-本示例中有两个扩展属性：**SliceStart** 和 **DataFactoryName**。 SliceStart 的值基于 SliceStart 系统变量。 有关受支持的系统变量列表，请参阅[系统变量](data-factory-functions-variables.md)。 DataFactoryName 的值硬编码为 CustomActivityFactory。
+本示例中有两个扩展属性：“SliceStart”和“DataFactoryName”。 SliceStart 的值基于 SliceStart 系统变量。 有关受支持的系统变量列表，请参阅[系统变量](data-factory-functions-variables.md)。 DataFactoryName 的值硬编码为 CustomActivityFactory。
 
 若要访问 **Execute** 方法中的这些扩展属性，请使用如下类似代码：
 
@@ -757,7 +749,7 @@ test custom activity Microsoft test custom activity Microsoft
 DotNetActivity dotNetActivity = (DotNetActivity)activity.TypeProperties;
 string sliceStartString = dotNetActivity.ExtendedProperties["SliceStart"];
 
-// to log all extended properties                               
+// to log all extended properties
 IDictionary<string, string> extendedProperties = dotNetActivity.ExtendedProperties;
 logger.Write("Logging extended properties if any...");
 foreach (KeyValuePair<string, string> entry in extendedProperties)
@@ -767,13 +759,13 @@ foreach (KeyValuePair<string, string> entry in extendedProperties)
 ```
 
 ## <a name="auto-scaling-of-azure-batch"></a>Azure Batch 的自动缩放
-还可以使用**自动缩放**功能创建 Azure Batch 池。 例如，可以根据挂起任务的数量不使用专用 VM 但使用自动缩放公式创建 Azure 批处理池。 
+还可以使用**自动缩放**功能创建 Azure Batch 池。 例如，可以根据挂起任务的数量不使用专用 VM 但使用自动缩放公式创建 Azure 批处理池。
 
-此处的示例公式实现以下行为：最初创建池时，它从 1 个 VM 开始。 $PendingTasks 度量值定义处于正在运行状态和活动（已排队）状态中的任务数。  该公式查找过去 180 秒内的平均挂起任务数，并相应地设置 TargetDedicated。 它可确保 TargetDedicated 永不超过 25 个 VM。 因此，随着新任务的提交，池会自动增长；随着任务的完成，VM 会逐个释放，并且自动缩放功能会收缩这些 VM。 可根据自己的需要调整 startingNumberOfVMs 和 maxNumberofVMs。
+此处的示例公式可实现以下行为：最初创建池之后，它开始时包含 1 个 VM。 $PendingTasks 度量值定义处于正在运行状态和活动（已排队）状态中的任务数。  该公式查找过去 180 秒内的平均挂起任务数，并相应地设置 TargetDedicated。 它可确保 TargetDedicated 永不超过 25 个 VM。 因此，随着新任务的提交，池会自动增长；随着任务的完成，VM 会逐个释放，并且自动缩放功能会收缩这些 VM。 可根据自己的需要调整 startingNumberOfVMs 和 maxNumberofVMs。
 
 自动缩放公式：
 
-``` 
+```
 startingNumberOfVMs = 1;
 maxNumberofVMs = 25;
 pendingTaskSamplePercent = $PendingTasks.GetSamplePercent(180 * TimeInterval_Second);
@@ -787,7 +779,7 @@ $TargetDedicated=min(maxNumberofVMs,pendingTaskSamples);
 
 
 ## <a name="create-a-custom-activity-by-using-net-sdk"></a>使用 .NET SDK 创建自定义活动
-在本文的演练中，将通过 Azure 门户使用包含自定义活动的管道创建数据工厂。 以下代码演示如何改用 .NET SDK 创建数据工厂。 可以在[使用 .NET API 创建包含复制活动的管道](data-factory-copy-activity-tutorial-using-dotnet-api.md)一文中找到有关使用 SDK 以编程方式创建管道的更多详细信息。 
+在本文的演练中，将通过 Azure 门户使用包含自定义活动的管道创建数据工厂。 以下代码演示如何改用 .NET SDK 创建数据工厂。 可以在[使用 .NET API 创建包含复制活动的管道](data-factory-copy-activity-tutorial-using-dotnet-api.md)一文中找到有关使用 SDK 以编程方式创建管道的更多详细信息。
 
 ```csharp
 using System;
@@ -1027,8 +1019,7 @@ namespace DataFactoryAPITestApp
 ```
 
 ## <a name="debug-custom-activity-in-visual-studio"></a>在 Visual Studio 中调试自定义活动
-GitHub 上的 [Azure 数据工厂 - 本地环境](https://github.com/gbrueckl/Azure.DataFactory.LocalEnvironment)示例包括一个工具，可用于在 Visual Studio 中调试自定义 .NET 活动。  
-
+GitHub 上的 [Azure 数据工厂 - 本地环境](https://github.com/gbrueckl/Azure.DataFactory.LocalEnvironment)示例包括一个工具，可用于在 Visual Studio 中调试自定义 .NET 活动。
 
 ## <a name="sample-custom-activities-on-github"></a>GitHub 上的示例自定义活动
 | 示例 | 自定义活动的功能 |

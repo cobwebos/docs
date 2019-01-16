@@ -3,8 +3,8 @@ title: 测试 Microsoft Azure SUSE Linux VM 上的 SAP NetWeaver | Microsoft Doc
 description: 测试 Microsoft Azure SUSE Linux VM 上的 SAP NetWeaver
 services: virtual-machines-linux
 documentationcenter: ''
-author: hermanndms
-manager: jeconnoc
+author: msjuergent
+manager: patfilot
 editor: ''
 tags: azure-resource-manager
 keywords: ''
@@ -15,17 +15,18 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/14/2017
-ms.author: hermannd
-ms.openlocfilehash: 8a16fa9f639a6a4a17d6904d6bc9a0e31f774e0c
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.author: juergent
+ms.custom: H1Hack27Feb2017
+ms.openlocfilehash: 032ab2a221f64d01af25056a4eff3ee3384de0c3
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46950040"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54157218"
 ---
 # <a name="running-sap-netweaver-on-microsoft-azure-suse-linux-vms"></a>运行 Microsoft Azure SUSE Linux VM 上的 SAP NetWeaver
 此文介绍在 Microsoft Azure SUSE Linux 虚拟机 (VM) 上运行 SAP NetWeaver 时应注意的各个事项。 自 2016 年 5 月 19 日起，Azure 上的 SUSE Linux VM 已正式支持 SAP NetWeaver。 有关 Linux 版本、SAP 内核版本和其他必备组件的所有详细信息，请参阅 SAP 说明 1928533“Azure 上的 SAP 应用程序：支持的产品和 Azure VM 类型”。
-有关 Linux VM 上 SAP 的更多文档可在此处找到：[在 Linux 虚拟机 (VM) 上使用 SAP](get-started.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
+有关 Linux VM 上 SAP 的更多文档可在此处找到：[ Linux 虚拟机 (VM) 上的 SAP](get-started.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
 
 以下信息应有助于避免一些潜在的陷阱。
 
@@ -75,7 +76,7 @@ ms.locfileid: "46950040"
 * [SUSE](https://www.suse.com/communities/blog/suse-linux-enterprise-server-configuration-for-windows-azure/)
 
 ## <a name="sap-enhanced-monitoring"></a>SAP“增强型监视”
-SAP“增强型监视”是在 Azure 上运行 SAP 的必要先决条件。 请查看 SAP 说明 2191498“Azure 上的 Linux 版 SAP：增强型监视”中的详细信息。
+SAP“增强型监视”是在 Azure 上运行 SAP 的必要先决条件。 有关详细信息，请参阅 SAP 说明 2191498“Azure 的 Linux 上的 SAP：增强型监视”。
 
 ## <a name="attaching-azure-data-disks-to-an-azure-linux-vm"></a>将 Azure 数据磁盘附加到 Azure Linux VM
 请勿使用设备 ID 将 Azure 数据磁盘装载到 Azure Linux VM 中。 而应该使用全局唯一标识符 (UUID)。 例如，使用图形化工具装载 Azure 数据磁盘时应小心。 请仔细检查 /etc/fstab 中的条目。
@@ -125,7 +126,7 @@ SAP“增强型监视”是在 Azure 上运行 SAP 的必要先决条件。 请�
 对于官方 SAP-Azure 认证，引入了一种新机制来计算用于 SAP 许可证的 SAP 硬件密钥。 SAP 内核必须进行修改才能利用新算法。 适用于 Linux 的旧 SAP 内核版本不包括此代码更改。 因此，在某些情况下（例如 Azure VM 重设大小），SAP 硬件密钥会发生变化，SAP 许可证不再有效。 提供的解决方案包含更多最新的 SAP Linux 内核。  SAP 说明 1928533 中记录了详细的 SAP 内核修补程序。
 
 ## <a name="suse-sapconf-package--tuned-adm"></a>SUSE sapconf 包/tuned-adm
-SUSE 提供了一个名为“sapconf”的包，该包可管理一组特定于 SAP 的设置。 有关此包的作用、安装方式和用法的详细信息，请参阅：[使用 sapconf 来准备要运行 SAP 系统的 SUSE Linux Enterprise Server](https://www.suse.com/communities/blog/using-sapconf-to-prepare-suse-linux-enterprise-server-to-run-sap-systems/) 和[什么是 sapconf 或如何准备要运行 SAP 系统的 SUSE Linux Enterprise Server？](http://scn.sap.com/community/linux/blog/2014/03/31/what-is-sapconf-or-how-to-prepare-a-suse-linux-enterprise-server-for-running-sap-systems)。
+SUSE 提供了一个名为“sapconf”的包，该包可管理一组特定于 SAP 的设置。 有关此程序包的功能以及如何安装和使用它的详细信息，请参阅：[Using sapconf to prepare a SUSE Linux Enterprise Server to run SAP systems](https://www.suse.com/communities/blog/using-sapconf-to-prepare-suse-linux-enterprise-server-to-run-sap-systems/)（使用 sapconf 准备运行 SAP 系统的 SUSE Linux Enterprise Server）和 [What is sapconf or how to prepare a SUSE Linux Enterprise Server for running SAP systems?](http://scn.sap.com/community/linux/blog/2014/03/31/what-is-sapconf-or-how-to-prepare-a-suse-linux-enterprise-server-for-running-sap-systems)（什么是 sapconf 或如何准备运行 SAP 系统的 SUSE Linux Enterprise Server？）。
 
 在此期间，有一种新工具将替换“sapconf - tuned-adm”。 可通过以下两个链接详细了解此工具：
 

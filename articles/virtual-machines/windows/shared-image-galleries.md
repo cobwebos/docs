@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.date: 09/21/2018
+ms.date: 12/13/2018
 ms.author: akjosh; cynthn
 ms.custom: ''
-ms.openlocfilehash: 534479a5f9c9de383266fc652dfde96a5405730a
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 4bba8a14096e420a539974ebf520cebda3b13c91
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47045607"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54188277"
 ---
 # <a name="shared-image-gallery-overview"></a>共享映像库概述
 
@@ -31,4 +31,4 @@ ms.locfileid: "47045607"
 
 ## <a name="next-steps"></a>后续步骤
 
-了解如何[使用 Azure CLI 部署共享映像](../linux/shared-images.md)。
+了解如何[使用 Azure PowerShell 部署共享映像](shared-images.md)。

@@ -5,15 +5,15 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 12/11/2018
+ms.date: 01/09/2019
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to work with routing tables for NVA.
-ms.openlocfilehash: 821aecf5549548365d95ef83ea1fcdeb017a4a21
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: 7d5cd8aab0f368ffec636e6dfcacf127c910dafc
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53321437"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54190164"
 ---
 # <a name="create-a-virtual-hub-route-table-to-steer-traffic-to-a-network-virtual-appliance"></a>创建一个虚拟中心路由表来将流量引导到网络虚拟设备。
 
@@ -21,7 +21,7 @@ ms.locfileid: "53321437"
 
 ![虚拟 WAN 示意图](./media/virtual-wan-route-table/vwanroute.png)
 
-在本文中，你将学习如何：
+本文介绍如何执行以下操作：
 
 * 创建 WAN
 * 创建中心
@@ -43,7 +43,7 @@ ms.locfileid: "53321437"
 
 ## <a name="signin"></a>1.登录
 
-确保安装最新版本的资源管理器 PowerShell cmdlet。 有关安装 PowerShell cmdlet 的详细信息，请参阅[如何安装和配置 Azure PowerShell](/powershell/azure/overview)。 这很重要，因为早期版本的 cmdlet 不包含本练习所需的最新值。
+确保安装最新版本的资源管理器 PowerShell cmdlet。 有关安装 PowerShell cmdlet 的详细信息，请参阅[如何安装和配置 Azure PowerShell](/powershell/azure/azurerm/overview)。 这很重要，因为早期版本的 cmdlet 不包含本练习所需的最新值。 以下示例中的模块是 Azure RM。 本文将在将来更新为 Azure Az。
 
 1. 使用提升的权限打开 PowerShell 控制台，并登录到你的 Azure 帐户。 该 cmdlet 会提示你输入登录凭据。 登录后，它会下载帐户设置，供 Azure PowerShell 使用。
 

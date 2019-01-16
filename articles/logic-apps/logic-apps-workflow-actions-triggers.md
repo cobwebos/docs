@@ -9,12 +9,12 @@ ms.reviewer: klam, LADocs
 ms.suite: integration
 ms.topic: reference
 ms.date: 06/22/2018
-ms.openlocfilehash: 4b124b79eeacf0df5f1b9dff798ebeea20d82090
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 27c074b12d2b151015e6946c483302387726dfc5
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48044767"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54190802"
 ---
 # <a name="trigger-and-action-types-reference-for-workflow-definition-language-in-azure-logic-apps"></a>Azure 逻辑应用中工作流定义语言的触发器和操作类型引用
 
@@ -54,8 +54,8 @@ ms.locfileid: "48044767"
 | <trigger-name> | String | 触发器的名称 | 
 | <trigger-type> | String | 触发器类型，例如“Http”或“ApiConnection” | 
 | <trigger-inputs> | JSON 对象 | 定义触发器行为的输入 | 
-| <time-unit> | String | 时间单位，描述触发器触发的频率：“秒”、“分”、“小时”、“天”、“周”、“月” | 
-| <number-of-time-units> | Integer | 指定触发器触发频率的值，即触发器再次触发之前需等待的时间单位数 <p>下面是最小和最大间隔： <p>- 月：1-16 个月 </br>- 天：1-500 天 </br>- 小时：1-12,000 小时 </br>- 分钟：1-72,000 分钟 </br>- 秒：1-9,999,999 秒<p>例如，如果间隔为 6，频率为“月”，则重复周期为每 6 个月。 | 
+| <time-unit> | String | 用于描述触发器触发频率的时间单位：“秒”、“分钟”、“小时”、“天”、“周”、“月” | 
+| <number-of-time-units> | Integer | 指定触发器触发频率的值，即触发器再次触发之前需等待的时间单位数 <p>下面是最小和最大间隔： <p>- 月：1-16 个月 </br>- 天：1-500 天 </br>- 小时：1-12,000 个小时 </br>- 分钟：1-72,000 分钟 </br>- 秒：1-9,999,999 秒<p>例如，如果间隔为 6，频率为“月”，则重复周期为每 6 个月。 | 
 |||| 
 
 可选
@@ -135,8 +135,8 @@ ms.locfileid: "48044767"
 | <connection-name> | String | 工作流使用的托管 API 连接的名称 | 
 | <method-type> | String | 与托管 API 通信的 HTTP 方法：“GET”、“PUT”、“POST”、“PATCH”、“DELETE” | 
 | <api-operation> | String | 要调用的 API 操作 | 
-| <time-unit> | String | 时间单位，描述触发器触发的频率：“秒”、“分”、“小时”、“天”、“周”、“月” | 
-| <number-of-time-units> | Integer | 指定触发器触发频率的值，即触发器再次触发之前需等待的时间单位数 <p>下面是最小和最大间隔： <p>- 月：1-16 个月 </br>- 天：1-500 天 </br>- 小时：1-12,000 小时 </br>- 分钟：1-72,000 分钟 </br>- 秒：1-9,999,999 秒<p>例如，如果间隔为 6，频率为“月”，则重复周期为每 6 个月。 | 
+| <time-unit> | String | 用于描述触发器触发频率的时间单位：“秒”、“分钟”、“小时”、“天”、“周”、“月” | 
+| <number-of-time-units> | Integer | 指定触发器触发频率的值，即触发器再次触发之前需等待的时间单位数 <p>下面是最小和最大间隔： <p>- 月：1-16 个月 </br>- 天：1-500 天 </br>- 小时：1-12,000 个小时 </br>- 分钟：1-72,000 分钟 </br>- 秒：1-9,999,999 秒<p>例如，如果间隔为 6，频率为“月”，则重复周期为每 6 个月。 | 
 |||| 
 
 可选
@@ -306,8 +306,8 @@ ms.locfileid: "48044767"
 |-------|------|-------------| 
 | <method-type> | String | 用于轮询指定终结点的 HTTP 方法：“GET”、“PUT”、“POST”、“PATCH”、“DELETE” | 
 | <endpoint-URL> | String | 要轮询的终结点的 HTTP 或 HTTPS URL <p>最大字符串大小：2 KB | 
-| <time-unit> | String | 时间单位，描述触发器触发的频率：“秒”、“分”、“小时”、“天”、“周”、“月” | 
-| <number-of-time-units> | Integer | 指定触发器触发频率的值，即触发器再次触发之前需等待的时间单位数 <p>下面是最小和最大间隔： <p>- 月：1-16 个月 </br>- 天：1-500 天 </br>- 小时：1-12,000 小时 </br>- 分钟：1-72,000 分钟 </br>- 秒：1-9,999,999 秒<p>例如，如果间隔为 6，频率为“月”，则重复周期为每 6 个月。 | 
+| <time-unit> | String | 用于描述触发器触发频率的时间单位：“秒”、“分钟”、“小时”、“天”、“周”、“月” | 
+| <number-of-time-units> | Integer | 指定触发器触发频率的值，即触发器再次触发之前需等待的时间单位数 <p>下面是最小和最大间隔： <p>- 月：1-16 个月 </br>- 天：1-500 天 </br>- 小时：1-12,000 个小时 </br>- 分钟：1-72,000 分钟 </br>- 秒：1-9,999,999 秒<p>例如，如果间隔为 6，频率为“月”，则重复周期为每 6 个月。 | 
 |||| 
 
 可选
@@ -495,8 +495,8 @@ ms.locfileid: "48044767"
 
 | 值 | 类型 | Description | 
 |-------|------|-------------| 
-| <time-unit> | String | 时间单位，描述触发器触发的频率：“秒”、“分”、“小时”、“天”、“周”、“月” | 
-| <number-of-time-units> | Integer | 指定触发器触发频率的值，即触发器再次触发之前需等待的时间单位数 <p>下面是最小和最大间隔： <p>- 月：1-16 个月 </br>- 天：1-500 天 </br>- 小时：1-12,000 小时 </br>- 分钟：1-72,000 分钟 </br>- 秒：1-9,999,999 秒<p>例如，如果间隔为 6，频率为“月”，则重复周期为每 6 个月。 | 
+| <time-unit> | String | 用于描述触发器触发频率的时间单位：“秒”、“分钟”、“小时”、“天”、“周”、“月” | 
+| <number-of-time-units> | Integer | 指定触发器触发频率的值，即触发器再次触发之前需等待的时间单位数 <p>下面是最小和最大间隔： <p>- 月：1-16 个月 </br>- 天：1-500 天 </br>- 小时：1-12,000 个小时 </br>- 分钟：1-72,000 分钟 </br>- 秒：1-9,999,999 秒<p>例如，如果间隔为 6，频率为“月”，则重复周期为每 6 个月。 | 
 |||| 
 
 可选
@@ -507,7 +507,7 @@ ms.locfileid: "48044767"
 | <time-zone> | String | 仅当指定启动时间时才适用，因为此触发器不接受 [UTC 时差](https://en.wikipedia.org/wiki/UTC_offset)。 指定要应用的时区。 | 
 | <one-or-more-hour-marks> | 整数或整数数组 | 如果为 `frequency` 指定“Day”或“Week”，可以从 0 到 23 范围内指定一个或多个整数（用逗号分隔），作为一天中要运行工作流的时间点。 <p>例如，如果指定“10”、“12”和“14”，则会将上午 10 点、中午 12 点和下午 2 点作为小时标记。 | 
 | <one-or-more-minute-marks> | 整数或整数数组 | 如果为 `frequency` 指定“Day”或“Week”，可以从 0 到 59 范围内指定一个或多个整数（用逗号分隔），作为要运行工作流的分钟。 <p>例如，可以指定“30”作为分钟标记并使用前面示例中的当天小时时间，这样，便可以指定10:30 AM、12:30 PM 和 2:30 PM 作为开始时间。 | 
-| 工作日 | 字符串或字符串数组 | 如果为 `frequency` 指定“Week”，则可以指定一天或多天（用逗号分隔）作为运行工作流的时间：“Monday”、“Tuesday”、“Wednesday”、“Thursday”、“Friday”、“Saturday”和“Sunday” | 
+| 工作日 | 字符串或字符串数组 | 如果 `frequency` 指定为“周”，则可以指定一天或多天（用逗号分隔）作为运行工作流的时间：“星期一”、“星期二”、“星期三”、“星期四”、“星期五”、“星期六”和“星期日” | 
 | <max-runs> | Integer | 默认情况下，逻辑应用工作流实例同时或并行（最多达到[默认限制](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)）运行。 若要通过设置新的 <count> 值更改此限制，请参阅[更改触发器并发](#change-trigger-concurrency)。 | 
 | <max-runs-queue> | Integer | 当逻辑应用已运行最大数量的实例（可基于 `runtimeConfiguration.concurrency.runs` 属性进行更改）时，任何新运行的实例都会被放入此队列（最多达到[默认限制](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)）。 若要更改此默认限制，请参阅[更改等待的运行限制](#change-waiting-runs)。 | 
 | <operation-option> | String | 通过设置 `operationOptions` 属性可更改默认行为。 有关详细信息，请参阅[操作选项](#operation-options)。 | 
@@ -612,7 +612,7 @@ ms.locfileid: "48044767"
 
 | 值 | 类型 | Description | 
 |-------|------|-------------| 
-| <method-type> | String | 传入请求必须用以调用逻辑应用的方法：“GET”、“PUT”、“POST”、“PATCH”或“DELETE” |
+| <method-type> | String | 传入请求必须用以调用逻辑应用的方法：“GET”、“PUT”、“POST”、“PATCH”、“DELETE” |
 | <relative-path-for-accepted-parameter> | String | 终结点的 URL 可接受的参数的相对路径 | 
 | <required-properties> | Array | 需要值的一个或多个属性 | 
 | <max-runs> | Integer | 默认情况下，逻辑应用工作流实例同时或并行（最多达到[默认限制](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)）运行。 若要通过设置新的 <count> 值更改此限制，请参阅[更改触发器并发](#change-trigger-concurrency)。 | 
@@ -1666,7 +1666,7 @@ ID,Product_Name
 
 | 值 | 类型 | Description | 
 |-------|------|-------------| 
-| <status> | String | 针对运行所返回的状态：“Failed”、“Cancelled”或“Succeeded” |
+| <status> | String | 运行返回的状态：“失败”、“已取消”或者“已成功” |
 |||| 
 
 可选
@@ -1737,7 +1737,7 @@ ID,Product_Name
 | 值 | 类型 | Description | 
 |-------|------|-------------| 
 | <number-of-units> | Integer | 对于 Delay 操作，要等待的单位数 | 
-| <*interval*> | String | 对于 Delay 操作，要等待的时间间隔：“秒”、“分”、“小时”、“天”、“周”、“月” | 
+| <*interval*> | String | 对于“延迟”操作，等待间隔时间为：“秒”、“分钟”、“小时”、“天”、“周”、“月” | 
 | <date-time-stamp> | String | 对于 Delay Until 操作，执行的恢复日期和时间。 该值必须使用 [UTC 日期时间格式](https://en.wikipedia.org/wiki/Coordinated_Universal_Time)。 | 
 |||| 
 
@@ -2350,9 +2350,9 @@ ID,Product_Name
 
 1. 在触发器的右上角选择省略号 (...) 按钮，然后选择“设置”。
 
-2. 在“并发控制”下，将“替代默认值”设为“开启”。 
+2. 在“并发控制”下，将“限制”设为“开启”。 
 
-3. 将“并行度”滑块拖到所需值处。 
+3. 将“并行度”滑块拖到所需值处。 若要按顺序运行逻辑应用，请将滑块值拖到 1。
 
 <a name="change-for-each-concurrency"></a>
 
@@ -2387,9 +2387,9 @@ ID,Product_Name
 
 1. 在“For each”操作中，从右上角选择省略号 (...) 按钮，然后选择“设置”。
 
-2. 在“并发控制”下，将“替代默认值”设为“开启”。 
+2. 在“并发控制”下，将“并发控制”设置为“开启”。 
 
-3. 将“并行度”滑块拖到所需值处。 
+3. 将“并行度”滑块拖到所需值处。 若要按顺序运行逻辑应用，请将滑块值拖到 1。
 
 <a name="change-waiting-runs"></a>
 
@@ -2465,7 +2465,7 @@ ID,Product_Name
 
 1. 在触发器的右上角选择省略号 (...) 按钮，然后选择“设置”。
 
-2. 在“并发控制”下，将“替代默认值”设为“开启”。 
+2. 在“并发控制”下，将“限制”设为“开启”。 
 
 3. 将“并行度”滑块拖到数字 `1`。 
 
@@ -2516,7 +2516,7 @@ ID,Product_Name
 
 1. 在“For each”操作的右上角选择省略号 (...) 按钮，然后选择“设置”。
 
-2. 在“并发控制”下，将“替代默认值”设为“开启”。 
+2. 在“并发控制”下，将“并发控制”设置为“开启”。 
 
 3. 将“并行度”滑块拖到数字 `1`。 
 
@@ -2644,7 +2644,7 @@ HTTP 终结点支持不同类型的身份验证。 可为以下 HTTP 触发器�
 | **secret** | 是（仅适用于 "Secret" 凭据类型） | <*secret-for-authentication*> | 客户端用来请求授权的 base64 编码机密 |
 ||||| 
 
-例如，下面是当触发器或操作使用 "Secret" 凭据类型时 `authentication` 对象的格式：有关保护参数的详细信息，请参阅[保护敏感信息](#secure-info)。 
+例如，下面是触发器或操作定义使用“Secret”凭据类型时，`authentication` 对象的格式：有关保护参数的详细信息，请参阅[保护敏感信息](#secure-info)。 
 
 ```javascript
 "authentication": {
@@ -2706,7 +2706,7 @@ HTTP 终结点支持不同类型的身份验证。 可为以下 HTTP 触发器�
 },
 ```
 
-若要创建或使用 Azure 资源管理器部署模板，则还必须为模板定义包含一个外部 `parameters` 节。 有关保护参数的详细信息，请参阅[安全访问逻辑应用](../logic-apps/logic-apps-securing-a-logic-app.md#secure-parameters-and-inputs-within-a-workflow)。 
+若要创建或使用 Azure 资源管理器部署模板，则还必须为模板定义包含一个外部 `parameters` 节。 有关保护参数的详细信息，请参阅[安全访问逻辑应用](../logic-apps/logic-apps-securing-a-logic-app.md#secure-action-parameters)。 
 
 ## <a name="next-steps"></a>后续步骤
 

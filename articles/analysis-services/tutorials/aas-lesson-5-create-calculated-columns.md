@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/18/2018
+ms.date: 01/09/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 2d92edd0bda15ecd57a5a29375adae3a51c661c2
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: bb0a17d4b7e11dd83439d943abf0bdd34ef915ae
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49428124"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54187444"
 ---
 # <a name="create-calculated-columns"></a>创建计算列
 
@@ -23,7 +23,7 @@ ms.locfileid: "49428124"
 
 还将在本课中首次使用数据分析表达式 (DAX)。 DAX 是一种特殊语言，用于为表格模型创建可高度自定义的公式表达式。 在本教程中，将使用 DAX 创建计算列、度量值和角色筛选器。 若要了解详细信息，请参阅[表格模型中的 DAX](https://docs.microsoft.com/sql/analysis-services/tabular-models/understanding-dax-in-tabular-models-ssas-tabular)。 
   
-本课预计完成时间：**15 分钟**  
+本课程预计完成时间：15 分钟  
   
 ## <a name="prerequisites"></a>先决条件  
 本主题是表格建模教程的一部分，应当按顺序完成。 在执行本课中的任务之前，应当已完成上一课：[第 4 课：创建关系](../tutorials/aas-lesson-4-create-relationships.md)。 
@@ -42,7 +42,7 @@ ms.locfileid: "49428124"
   
     一个名为“Calculated Column 1”的新列将插入到“Calendar Quarter”列的左侧。  
   
-4.  在表上方的编辑栏中，键入以下 DAX 公式：“自动完成”，这可帮助键入列和表的完全限定名称，并列出可用函数。  
+4.  在表上方的公式栏中，键入以下 DAX 公式：“自动完成”可帮助你键入列和表的完全限定名称，并将列出可用的函数。  
   
     ```  
     =RIGHT(" " & FORMAT([MonthNumberOfYear],"#0"), 2) & " - " & [EnglishMonthName]  

@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 08/29/2018
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 3939d8dce641d066a2470612068df7102b317a70
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: d22b181baa9b9e6d01fb92a3644078ecbd6af7be
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53630455"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54191592"
 ---
 # <a name="networking-considerations-for-an-app-service-environment"></a>应用服务环境的网络注意事项 #
 
@@ -131,7 +131,7 @@ ASE 入站访问依赖项如下：
 
 ## <a name="functions-and-web-jobs"></a>函数和 Web 作业 ##
 
-函数和 Web 作业依赖于 SCM 站点，但支持在门户中使用，即使应用位于 ILB ASE 中，但前提是浏览器可以访问 SCM 站点。  如果在 ILB ASE 上使用自签名证书，需要让浏览器信任该证书。  对于 IE 和 Edge 而言，这意味着该证书必须在计算机信任存储中。  如果使用的是 Chrome，则意味着已提前接受浏览器中的证书，因为假设直接访问了 SCM 站点。  最佳解决方法是使用浏览器信任链中的商业证书。  
+函数和 Web 作业依赖于 SCM 站点，但支持在门户中使用，即使应用位于 ILB ASE 中，但前提是浏览器可以访问 SCM 站点。  如果在 ILB ASE 上使用自签名证书，需要让浏览器信任该证书。  对于 IE 和 Microsoft Edge 而言，这意味着该证书必须位于计算机信任存储区。  如果使用的是 Chrome，则意味着已提前接受浏览器中的证书，因为假设直接访问了 SCM 站点。  最佳解决方法是使用浏览器信任链中的商业证书。  
 
 ## <a name="ase-ip-addresses"></a>ASE IP 地址 ##
 

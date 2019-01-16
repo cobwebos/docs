@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 7/19/2018
 ms.author: wgries
 ms.component: files
-ms.openlocfilehash: af738b655b4070da1cfe7555daff82c0e40ff91c
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 05e5c0a37d2de78393048728b73d9bcf6e56c491
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53138579"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54159160"
 ---
 # <a name="azure-files-scalability-and-performance-targets"></a>Azure 文件可伸缩性和性能目标
 [Azure 文件](storage-files-introduction.md)在云中提供完全托管的文件共享，这些共享项可通过行业标准 SMB 协议进行访问。 本文讨论了 Azure 文件和 Azure 文件同步的可伸缩性和性能目标。
@@ -60,8 +60,8 @@ Azure 文件共享的父资源是 Azure 存储帐户。 存储帐户表示 Azure
 | 对象数 | 1000 万个对象 | 
 | 数据集大小| ~4 TiB |
 | 平均文件大小 | ~500 KiB（最大的文件：100 GiB） |
-| 上传吞吐量 | 每秒 15 个对象 |
-| 命名空间下载吞吐量* | 每秒 350 个对象 |
+| 上传吞吐量 | 每秒 20 个对象 |
+| 命名空间下载吞吐量* | 每秒 400 个对象 |
  
 *当创建新的服务器终结点时，Azure 文件同步代理不下载任何文件内容。 它将首先同步整个命名空间，然后触发后台调用来将文件整体下载，或者根据服务器终结点上设置的云分层策略进行下载（如果启用了云分层）。
 
@@ -70,8 +70,8 @@ Azure 文件共享的父资源是 Azure 存储帐户。 存储帐户表示 Azure
 | 同步的对象数| 125,000 个对象（~1% 的改动） | 
 | 数据集大小| 50 GiB |
 | 平均文件大小 | ~500 KiB |
-| 上传吞吐量 | 每秒 20 个对象 |
-| 完整下载吞吐量* | 每秒 30 个对象 |
+| 上传吞吐量 | 每秒 30 个对象 |
+| 完整下载吞吐量* | 每秒 60 个对象 |
  
 *如果启用了云分层，则性能可能更好，因为只会下载一部分文件数据。 只有当已缓存文件的数据在任何终结点上发生更改时，Azure 文件同步才会下载这些数据。 对于任何已分层的或新创建的文件，代理不会下载文件数据，而仅会将命名空间同步到所有服务器终结点。 代理还支持在用户访问已分层文件时下载这些文件的一部分。 
  

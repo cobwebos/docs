@@ -12,15 +12,15 @@ ms.workload: ''
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/07/2018
+ms.date: 01/07/2019
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: a1d733e918d4b53ea9dd220f5e379e0c8133c03a
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 787c10ab75a3534a73e04f1bd60462ea02fcf42a
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53540650"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54191711"
 ---
 # <a name="choose-a-vm-size-for-compute-nodes-in-an-azure-batch-pool"></a>选择 Azure Batch 池中计算节点的 VM 大小
 
@@ -42,6 +42,16 @@ ms.locfileid: "53540650"
 | 基本 A 系列 | Basic_A0 (A0) |
 | A 系列 | Standard_A0 |
 | B 系列 | All |
+| DC 系列 | All | 
+| 最佳内存优化 | All |
+| Hb 系列 <sup>1</sup> | All | 
+| Hc 系列 <sup>1</sup> | All |
+| Lsv2 系列 | All |
+| NDv2 系列 <sup>1</sup> | All |
+| NVv2 系列 <sup>1</sup> | All |
+| SAP HANA | All |
+
+<sup>1</sup> 目前不受支持，但将来会受到支持。
 
 仅低优先级节点支持以下 VM 大小：
 

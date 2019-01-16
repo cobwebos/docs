@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.openlocfilehash: 9f0a4369d794eda047185844d5fafa49bc8a2e0d
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 24644faab85305f18fe4b657d3e982a306a41c16
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53337914"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54157065"
 ---
 # <a name="developer-guidance-for-azure-active-directory-conditional-access"></a>Azure Active Directory 条件访问的开发人员指南
 
@@ -92,11 +92,11 @@ Azure AD 条件性访问是 [Azure AD Premium](https://docs.microsoft.com/azure/
 
 ## <a name="scenario-app-accessing-microsoft-graph"></a>方案：访问 Microsoft Graph 的应用
 
-此应用场景介绍 Web 应用请求访问 Microsoft Graph 的情况。 可以将此场景中的条件访问策略分配到通过 Microsoft Graph 将其作为工作负荷访问的 SharePoint、Exchange 或其他的一些服务。 在此示例中，假定有关于 Sharepoint Online 的条件性访问策略。
+此应用场景介绍 Web 应用请求访问 Microsoft Graph 的情况。 可以将此场景中的条件访问策略分配到通过 Microsoft Graph 将其作为工作负荷访问的 SharePoint、Exchange 或其他的一些服务。 在此示例中，假定有关于 SharePoint Online 的条件访问策略。
 
 ![访问 Microsoft Graph 流的应用示意图](./media/conditional-access-dev-guide/app-accessing-microsoft-graph-scenario.png)
 
-应用首先向 Microsoft Graph 请求授权，此过程需要访问没有条件访问策略的下游工作负荷。 请求成功且未调用任何策略，应用收到 Microsoft Graph 的令牌。 此时，应用可以在所请求的终结点的持有者请求中使用此访问令牌。 现在，应用需要访问 Microsoft Graph 的 Sharepoint Online 终结点，例如：`https://graph.microsoft.com/v1.0/me/mySite`
+应用首先向 Microsoft Graph 请求授权，此过程需要访问没有条件访问策略的下游工作负荷。 请求成功且未调用任何策略，应用收到 Microsoft Graph 的令牌。 此时，应用可以在所请求的终结点的持有者请求中使用此访问令牌。 现在，应用需要访问 Microsoft Graph 的 SharePoint Online 终结点，例如：`https://graph.microsoft.com/v1.0/me/mySite`
 
 应用已拥有 Microsoft Graph 的有效令牌，因此，它可以执行新请求，而无需获取新令牌。 此请求失败，并且 Microsoft Graph 以包含 ```WWW-Authenticate``` 质询的“HTTP 403 禁止访问”的形式发出声明质询。
 
@@ -108,7 +108,7 @@ error=insufficient_claims
 www-authenticate="Bearer realm="", authorization_uri="https://login.windows.net/common/oauth2/authorize", client_id="<GUID>", error=insufficient_claims, claims={"access_token":{"polids":{"essential":true,"values":["<GUID>"]}}}"
 ```
 
-声明质询位于 ```WWW-Authenticate``` 标头内，可以分析它来提取下一个请求的声明参数。 将其追加到新请求后，Azure AD 知道了要在用户登录时评估条件性访问策略，并且现在应用已符合条件性访问策略。 重新请求 Sharepoint Online 终结点成功。
+声明质询位于 ```WWW-Authenticate``` 标头内，可以分析它来提取下一个请求的声明参数。 将其追加到新请求后，Azure AD 知道了要在用户登录时评估条件性访问策略，并且现在应用已符合条件性访问策略。 重新请求 SharePoint Online 终结点成功。
 
 ```WWW-Authenticate``` 标头确实包含唯一的结构，但为提取值而进行分析并不是件小事。 以下是可帮助的简短方法。
 

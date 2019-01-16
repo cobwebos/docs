@@ -5,15 +5,15 @@ author: dkamstra
 services: monitoring
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 4/12/2017
+ms.date: 4/12/2018
 ms.author: dukek
 ms.component: logs
-ms.openlocfilehash: 8603ccf4643d7b1abd977cc372cde3fe24f98e07
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 2dec2b1f9bdca8c83669b753d424204218f7a9ae
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53724842"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54190691"
 ---
 # <a name="view-service-health-notifications-by-using-the-azure-portal"></a>使用 Azure 门户查看服务运行状况通知
 
@@ -49,52 +49,36 @@ category | 此属性始终为 ServiceHealth。
 resourceId | 受影响的资源的资源 ID。
 Properties.title | 此通信的本地化标题。 默认为英语。
 Properties.communication | 带 HTML 标记的通信的经过本地化的详细信息。 默认为英语。
-Properties.incidentType | 以下值之一：**ActionRequired**、**Information**、**Incident**、**Maintenance** 或 **Security**。
+Properties.incidentType | 以下值之一：ActionRequired、Informational、Incident、Maintenance 或 Security。
 Properties.trackingId | 与此事件关联的事件。 使用此属性将与某一事件相关的事件关联起来。
 Properties.impactedServices | 转义 JSON blob，描述受事件影响的服务和区域。 属性包括服务列表，每个服务具有一个 ServiceName，以及一个 受影响区域的列表，其中每个区域具有一个 RegionName。
 Properties.defaultLanguageTitle | 英语通信。
 Properties.defaultLanguageContent | HTML 标记或纯文本格式的英语通信。
-Properties.stage | **Incident** 和 **Security** 的可能值为 **Active**、**Resolved** 或 **RCA**。 对于 **ActionRequired** 或 **Information**，唯一的值为 **Active**。 对于 **Maintenance**，可能的值为：**Active**、**Planned**、**InProgress**、**Canceled**、**Rescheduled**、**Resolved** 或 **Complete**。
+Properties.stage | **Incident** 和 **Security** 的可能值为 **Active**、**Resolved** 或 **RCA**。 对于 ActionRequired 或 Informational，唯一的值为 Active。 对于 **Maintenance**，可能的值为：**Active**、**Planned**、**InProgress**、**Canceled**、**Rescheduled**、**Resolved** 或 **Complete**。
 Properties.communicationId | 与此事件关联的通信。
 
 ### <a name="details-on-service-health-level-information"></a>服务运行状况级别信息的详细信息
-  <ul>
-    <li><b>需要采取操作</b> (properties.incidentType == ActionRequired) <dl>
-            <dt>信息</dt>
-            <dd>需要管理员采取操作来防止影响现有服务</dd>
-        </dl>
-    </li>
-    <li><b>维护</b> (properties.incidentType == Maintenance) <dl>
-            <dt>警告</dt>
-            <dd>紧急维护<dd>
-            <dt>信息</dt>
-            <dd>标准计划内维护</dd>
-        </dl>
-    </li>
-    <li><b>信息</b> (properties.incidentType == Information) <dl>
-            <dt>信息</dt>
-            <dd>可能需要管理员采取操作来防止影响现有服务</dd>
-        </dl>
-    </li>
-    <li><b>安全性</b> (properties.incidentType == Security) <dl>
-            <dt>错误</dt>
-            <dd>访问多个区域中的多项服务时普遍出现的问题影响大批客户。</dd>
-            <dt>警告</dt>
-            <dd>访问特定服务和/或特定区域时出现的问题影响一部分客户。</dd>
-            <dt>信息</dt>
-            <dd>出现了影响管理操作和/或延迟，但不影响服务可用性的问题。</dd>
-        </dl>
-    </li>
-    <li><b>服务问题</b> (properties.incidentType == Incident) <dl>
-            <dt>错误</dt>
-            <dd>访问多个区域中的多项服务时普遍出现的问题影响大批客户。</dd>
-            <dt>警告</dt>
-            <dd>访问特定服务和/或特定区域时出现的问题影响一部分客户。</dd>
-            <dt>信息</dt>
-            <dd>出现了影响管理操作和/或延迟，但不影响服务可用性的问题。</dd>
-        </dl>
-    </li>
-  </ul>
+
+**需要采取操作** (properties.incidentType == ActionRequired)
+    - 信息 - 需要管理员采取操作来防止影响现有服务
+    
+**维护** (properties.incidentType == Maintenance)
+    - 警告 - 紧急维护
+    - 信息 - 标准计划内维护
+
+**信息** (properties.incidentType == Information)
+    - 信息 - 可能需要管理员采取操作来防止影响现有服务
+
+**安全性** (properties.incidentType == Security)
+    - 错误 - 访问多个区域中多项服务时普遍出现的问题影响大批客户。
+    - 警告 - 访问特定服务和/或特定区域时出现的问题影响一部分客户。
+    - 信息 - 出现了影响管理操作和/或延迟，但不影响服务可用性的问题。
+
+**服务问题** (properties.incidentType == Incident)
+    - 错误 - 访问多个区域中多项服务时普遍出现的问题影响大批客户。
+    - 警告 - 访问特定服务和/或特定区域时出现的问题影响一部分客户。
+    - 信息 - 出现了影响管理操作和/或延迟，但不影响服务可用性的问题。
+
 
 ## <a name="view-your-service-health-notifications-in-the-azure-portal"></a>在 Azure 门户中查看服务运行状况通知
 1.  在 [Azure 门户](https://portal.azure.com)中，选择“监视”。

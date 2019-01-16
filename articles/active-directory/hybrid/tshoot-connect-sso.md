@@ -1,5 +1,5 @@
 ---
-title: Azure Active Directory Connect：无缝单一登录故障排除 | Microsoft 文档
+title: Azure Active Directory Connect：无缝单一登录故障排除 | Microsoft Docs
 description: 本主题介绍了如何排除 Azure Active Directory 无缝单一登录故障
 services: active-directory
 author: billmath
@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 09/24/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: a020f0f22f16d8aaa959c41a912ca5839be05312
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.openlocfilehash: 308623b4643724d95777d7e21d1138f808e9c1c9
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47055894"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54190419"
 ---
 # <a name="troubleshoot-azure-active-directory-seamless-single-sign-on"></a>排除 Azure Active Directory 无缝单一登录故障
 
@@ -36,13 +36,13 @@ ms.locfileid: "47055894"
 - 如果某个用户属于 Active Directory 中过多的组，则该用户的 Kerberos 票证可能会太大而无法处理，这会导致无缝 SSO 失败。 Azure AD HTTPS 请求可以具有最大大小为 50 KB 的标头；Kerberos 票证需要远小于该限制，才能容纳其他 Azure AD 项目（通常 2 - 5 KB），比如 cookie。 我们的建议是减少用户的组成员身份，然后重试。
 - 如果你要同步 30 个或更多的 Active Directory 林，则不能通过 Azure AD Connect 启用无缝 SSO。 作为一种解决方法，可以在租户中[手动启用](#manual-reset-of-the-feature)该功能。
 - 将 Azure AD 服务 URL (https://autologon.microsoftazuread-sso.com) 添加到“受信任的站点”区域，而非会阻止用户登录的“本地 Intranet”区域。
-- 无缝 SSO 对 Kerberos 使用 **RC4_HMAC_MD5** 加密类型。 禁止在 Active Directory 设置中使用 **RC4_HMAC_MD5** 加密类型将中断无缝 SSO。 在“组策略管理编辑器”工具中，确保“计算机配置”->“Windows 设置”->“安全设置”->“本地策略”->“安全选项”->“网络安全：配置 Kerberos 允许的加密类型”下的 RC4_HMAC_MD5 的策略值为“已启用”。 此外，无缝 SSO 无法使用其他加密类型，因此请确保这些加密类型**已禁用**。
+- 无缝 SSO 对 Kerberos 使用 **RC4_HMAC_MD5** 加密类型。 禁止在 Active Directory 设置中使用 **RC4_HMAC_MD5** 加密类型将中断无缝 SSO。 在“组策略管理编辑器”工具中，确保“计算机配置”->“Windows 设置”->“安全设置”->“本地策略”->“安全选项”->“网络安全：配置 Kerberos 允许的加密类型”下 RC4_HMAC_MD5 的策略值为“已启用”。 此外，无缝 SSO 无法使用其他加密类型，因此请确保这些加密类型**已禁用**。
 
 ## <a name="check-status-of-feature"></a>检查功能状态
 
 确保租户上的无缝 SSO 功能仍处于“已启用”状态。 你可以通过转到 [Azure Active Directory 管理中心](https://aad.portal.azure.com/)中的“Azure AD Connect”窗格来检查状态。
 
-![Azure Active Directory 管理中心：Azure AD Connect 窗格](./media/tshoot-connect-sso/sso10.png)
+![Azure Active Directory 管理中心：“Azure AD Connect”窗格](./media/tshoot-connect-sso/sso10.png)
 
 点击浏览所有支持无缝 SSO 的 AD 林。
 
@@ -110,12 +110,12 @@ ms.locfileid: "47055894"
 2. 浏览到 `%programfiles%\Microsoft Azure Active Directory Connect` 文件夹。
 3. 使用以下命令导入无缝 SSO PowerShell 模块：`Import-Module .\AzureADSSO.psd1`。
 
-### <a name="step-2-get-the-list-of-active-directory-forests-on-which-seamless-sso-has-been-enabled"></a>步骤 2：获取已在其中启用了无缝 SSO 的 Active Directory 林列表
+### <a name="step-2-get-the-list-of-active-directory-forests-on-which-seamless-sso-has-been-enabled"></a>步骤 2：获取已启用了无缝 SSO 的 Active Directory 林列表
 
 1. 以管理员身份运行 PowerShell。 在 PowerShell 中，调用 `New-AzureADSSOAuthenticationContext`。 出现提示时，输入租户的全局管理员凭据。
 2. 调用 `Get-AzureADSSOStatus`。 此命令可提供已在其中启用了此功能的 Active Directory 林列表（请查看“域”列表）。
 
-### <a name="step-3-disable-seamless-sso-for-each-active-directory-forest-where-youve-set-up-the-feature"></a>步骤 3：禁用在其中设置了该功能的每个 Active Directory 林的无缝 SSO
+### <a name="step-3-disable-seamless-sso-for-each-active-directory-forest-where-youve-set-up-the-feature"></a>步骤 3：禁用已设置了该功能的每个 Active Directory 林的无缝 SSO
 
 1. 调用 `$creds = Get-Credential`。 出现提示时，输入目标 Active Directory 林的域管理员凭据。
 

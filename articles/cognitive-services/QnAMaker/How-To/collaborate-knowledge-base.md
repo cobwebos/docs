@@ -8,14 +8,14 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: qna-maker
 ms.topic: article
-ms.date: 09/12/2018
+ms.date: 01/08/2018
 ms.author: tulasim
-ms.openlocfilehash: bb074b1f256275c26889a30435dff28c86060a7b
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: ec26e7ab535084fa5d8f52c11c671212eeab0f13
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47035226"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54119815"
 ---
 # <a name="collaborate-on-your-knowledge-base"></a>针对知识库展开协作
 
@@ -35,7 +35,7 @@ ms.locfileid: "47035226"
 
     ![QnA Maker IAM 添加](../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-iam-add.PNG)
 
-4. 选择“所有者”或“参与者”角色。
+4. 选择“所有者”或“参与者”角色。 不能通过基于角色的访问控制授予只读访问权限。 所有者和参与者角色拥有 QnA Maker 服务的读写权限。
 
     ![QnA Maker IAM 添加角色](../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-iam-add-role.PNG)
 

@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 09/11/2018
 ms.author: lizross
 ms.reviewer: asteen
-ms.openlocfilehash: 129f77ec9ea4d4e2633e1ea0b02795bc0df26433
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 1f51fb1d92fdec93fdb57fd25f8ca1cbaeb4fc46
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52834700"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54188923"
 ---
 # <a name="what-is-the-myapps-portal"></a>什么是 MyApps 门户？
 
@@ -65,7 +65,7 @@ MyApps 门户至少要求使用支持 JavaScript 且已启用 CSS 的浏览器�
 
 
 MyApps 门户扩展当前适用于：
-- **Microsoft Edge**：Windows 10 周年纪念版或更高版本上。 
+- **Microsoft Edge**：Windows 10 周年纪念版或更高版本。 
 - **Chrome**：在 Windows 7 或更高版本上，以及在 MacOS X 或更高版本上。
 - **Firefox 26.0 或更高版本**：在 Windows XP SP2 或更高版本上，以及在 Mac OS X 10.6 或更高版本上。
 - **Internet Explorer 11**：在 Windows 7 或更高版本上（支持受限）。

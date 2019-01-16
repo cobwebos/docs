@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/12/2018
 ms.author: cawa
-ms.openlocfilehash: 94c1f255d7aae63d6faf44cc500c48c68bf6d3fc
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: bd6384dcd132ffb53e3531707c600465e8d0b649
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53608947"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54190011"
 ---
 # <a name="microsoft-azure-storage-explorer-release-notes"></a>Microsoft Azure 存储资源管理器发行说明
 
@@ -27,15 +27,18 @@ ms.locfileid: "53608947"
 
 [Microsoft Azure 存储资源管理器](./vs-azure-tools-storage-manage-with-storage-explorer.md)是一款独立应用，可用于在 Windows、macOS 和 Linux 上轻松处理 Azure 存储数据。
 
-## <a name="version-161"></a>版本 1.6.1
-2018/12/18
+## <a name="version-162"></a>版本 1.6.2
+2019/1/9
 
-### <a name="download-azure-storage-explorer-161"></a>下载 Azure 存储资源管理器 1.6.1
-- [适用于 Windows 的 Azure 存储资源管理器 1.6.1](https://go.microsoft.com/fwlink/?LinkId=708343)
-- [适用于 Mac 的 Azure 存储资源管理器 1.6.1](https://go.microsoft.com/fwlink/?LinkId=708342)
-- [适用于 Linux 的 Azure 存储资源管理器 1.6.1](https://go.microsoft.com/fwlink/?LinkId=722418)
+### <a name="download-azure-storage-explorer-162"></a>下载 Azure 存储资源管理器 1.6.2
+- [适用于 Windows 的 Azure 存储资源管理器 1.6.2](https://go.microsoft.com/fwlink/?LinkId=708343)
+- [适用于 Mac 的 Azure 存储资源管理器 1.6.2](https://go.microsoft.com/fwlink/?LinkId=708342)
+- [适用于 Linux 的 Azure 存储资源管理器 1.6.2](https://go.microsoft.com/fwlink/?LinkId=722418)
 
 ### <a name="hotfixes"></a>修补程序
+* 在 1.6.1 中，通过 ObjectId 添加到 ADLS Gen2 ACL 的实体（非用户）始终作为组添加。 现在，只能将组作为组添加，并将企业应用程序和服务主体等实体添加为用户。 [#1049](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1049)
+* 如果 ADLS Gen2 存储帐户没有容器且附加了名称和密钥，则存储资源管理器将不会检测到存储帐户为 ADLS Gen2。 此问题已解决。 [#1048](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1048)
+* 在 1.6.0 中，复制和粘贴期间的冲突不会提示解决方案。 相反，发生冲突的副本将失败。 现在，在第一次发生冲突时，你会被问及希望如何解决此问题。 [#1014](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1014)
 * 由于 API 限制，已禁用“管理访问权限”对话框中 ObjectIds 的所有验证。 现在将仅对用户 UPN 进行验证。 [#954](https://www.github.com/Microsoft/AzureStorageExplorer/issues/954)
 * 在“ADLS Gen2 管理访问权限”对话框中，无法修改组权限。 此问题已解决。 [#958](https://www.github.com/Microsoft/AzureStorageExplorer/issues/958)
 * 已对 ADLS Gen2 编辑器添加了拖放上传支持。 [#953](https://www.github.com/Microsoft/AzureStorageExplorer/issues/953)
@@ -103,6 +106,7 @@ ms.locfileid: "53608947"
 
 ## <a name="previous-releases"></a>以前的版本
 
+* [版本 1.6.1](#version-161)
 * [版本 1.6.0](#version-160)
 * [版本 1.5.0](#version-150)
 * [版本 1.4.4](#version-144)
@@ -135,6 +139,75 @@ ms.locfileid: "53608947"
 * [版本 0.7.20160129.1](#version-07201601291)
 * [版本 0.7.20160105.0](#version-07201601050)
 * [版本 0.7.20151116.0](#version-07201511160)
+
+## <a name="version-161"></a>版本 1.6.1
+2018/12/18
+
+### <a name="hotfixes"></a>修补程序
+* 由于 API 限制，已禁用“管理访问权限”对话框中 ObjectIds 的所有验证。 现在将仅对用户 UPN 进行验证。 [#954](https://www.github.com/Microsoft/AzureStorageExplorer/issues/954)
+* 在“ADLS Gen2 管理访问权限”对话框中，无法修改组权限。 此问题已解决。 [#958](https://www.github.com/Microsoft/AzureStorageExplorer/issues/958)
+* 已对 ADLS Gen2 编辑器添加了拖放上传支持。 [#953](https://www.github.com/Microsoft/AzureStorageExplorer/issues/953)
+* ADLS Gen2 文件和文件夹的属性对话框中的 URL 属性有时缺少“/”。 此问题已解决。 [#960](https://www.github.com/Microsoft/AzureStorageExplorer/issues/960)
+* 如果获取 ADLS Gen2 容器、文件或文件夹的当前权限失败，则错误现在会正确显示在活动日志中。 [#965](https://www.github.com/Microsoft/AzureStorageExplorer/issues/965)
+* 已缩短用于打开文件而创建的临时路径，以降低创建长于 Windows 上的 MAX_PATH 路径的可能性。 [#93](https://www.github.com/Microsoft/AzureStorageExplorer/issues/93)
+* 现在，当没有已登录用户且未附加任何资源时会正确显示“连接”对话框。 [#944](https://www.github.com/Microsoft/AzureStorageExplorer/issues/944)
+* 在 1.6.0 版本中，保存非 HNS Blob 和文件会对每个属性的值进行编码。 这会导致对仅包含 ASCII 字符的值进行不必要的编码操作。 现在，仅当值包含 ASCII 字符时，才会对其进行编码。 [#986](https://www.github.com/Microsoft/AzureStorageExplorer/issues/986)
+* 如果使用了 SAS，并且该 SAS 不具有读取权限，则无法将文件夹上传到非 HNS Blob 容器。 此问题已解决。 [#970](https://www.github.com/Microsoft/AzureStorageExplorer/issues/970)
+* 无法取消 AzCopy 传输。 此问题已解决。 [#943](https://www.github.com/Microsoft/AzureStorageExplorer/issues/943)
+* 如果某文件夹的名称包含空格，则尝试从 ADLS Gen2 Blob 容器中下载该文件夹时，AzCopy 会失败。 此问题已解决。 [#990](https://www.github.com/Microsoft/AzureStorageExplorer/issues/990)
+* CosmosDB 编辑器在 1.6.0 版本中出现中断。 现已修复。 [#950](https://www.github.com/Microsoft/AzureStorageExplorer/issues/950)
+        
+### <a name="new"></a>新建
+
+* 现在可以使用存储资源管理器以通过 [RBAC](https://go.microsoft.com/fwlink/?linkid=2045904&clcid=0x409) 访问 Blob 数据。 如果已登录，且存储资源管理器无法检索存储帐户的密钥，那么与数据进行交互时将使用 OAuth 标记进行身份验证。
+* 存储资源管理器现支持 ADLS Gen2 存储帐户。 当存储资源管理器检测到已为存储帐户启用分层命名空间时，存储帐户名称旁边会显示“（ADLS Gen2 预览版）”。 存储资源管理器可以检测登录时是否启用了分层命名空间，或者是否已对存储帐户附加了名称和密钥。 对于 ADLS Gen2 存储帐户，可使用存储资源管理器执行以下操作：
+    * 创建和删除容器
+    * 管理容器属性和权限（左侧）
+    * 查看和导航容器内的数据
+    * 创建新文件夹
+    * 上传、下载、重命名并删除文件和文件夹
+    * 管理文件和文件夹属性和权限（右侧）。
+    
+    当前不提供其他典型的 Blob 功能，例如软删除和快照。 管理权限仅在登录时可用。 此外，使用 ADLS Gen2 存储帐户时，存储资源管理器会使用 AzCopy 进行所有上传和下载操作，并且默认使用名称和密钥凭据进行所有操作（若可用）。
+* 在经过强烈的用户反馈之后，中断租用可再次用于同时中断多个 Blob 上的租用。
+
+### <a name="known-issues"></a>已知问题
+
+* 从 ADLS Gen2 存储帐户中下载时，如果已存在某个要传输的文件，那么 AzCopy 有时会出现故障。 我们会在即将发布的修补程序中修复此缺陷。
+* 从通过 SAS URI 附加的资源（例如 Blob 容器）进行分离可能会导致一个错误，该错误会阻止其他附件正确显示。 若要解决此问题，只需刷新组节点。 有关详细信息，请参阅 #537。
+* 如果使用用于 Mac 的 VS 并曾经创建过自定义 AAD 配置，可能无法登录。 若要解决此问题，请删除 ~/.IdentityService/AadConfigurations 的内容。 如果这样做不能对你解除阻止，请对此问题发表评论。
+* Azurite 还没有完全实现所有存储 API。 因此，在使用 Azurite 进行开发存储时可能会出现意外的错误或行为。
+* 在极少数情况下，树焦点可能会停滞在“快速访问”上。 要使焦点取消停滞，可以单击“全部刷新”。
+* 由于 NodeJS 中的 bug，从 OneDrive 文件夹上传不正常工作。 该 bug 已修复，但尚未集成到 Electron 中。 若要在向/从 Blob 容器上传或下载时解决此问题，可以使用试验性的 AzCopy 功能。
+* 当以 Azure Stack 为目标时，将某些文件作为追加 blob 进行上传可能会失败。
+* 对任务单击“取消”后，可能需要一段时间才能取消该任务。 这是因为我们使用的是此处介绍的“取消筛选”解决办法。
+* 如果选择错误的 PIN/智能卡证书，需要重启存储资源管理器使其忘记该选择。
+* 重命名 blob（单独地或在已重命名的 blob 容器中）不保留快照。 重命名期间保留 blob、文件和实体的所有其他属性和元数据。
+* Azure Stack 不支持以下功能。 在处理 Azure Stack 资源时尝试使用这些功能可能会导致意外错误。
+   * 文件共享
+   * 访问层级
+   * 软删除
+* 存储资源管理器使用的 Electron shell 在进行某项 GPU（图形处理单元）硬件加速时出现问题。 如果存储资源管理器显示了一个空白（空的）主窗口，则可以尝试从命令行启动存储资源管理器，并通过添加 `--disable-gpu` 开关禁用 GPU 加速。
+
+    ```
+    ./StorageExplorer.exe --disable-gpu
+    ```
+
+* 对于 Linux 用户，需要安装 [.NET Core 2.0](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x)。
+* 对于 Ubuntu 14.04 用户，需确保 GCC 是最新版本 - 为此，可运行以下命令并重启计算机：
+
+    ```
+    sudo add-apt-repository ppa:ubuntu-toolchain-r/test
+    sudo apt-get update
+    sudo apt-get upgrade
+    sudo apt-get dist-upgrade
+    ```
+
+* 对于 Ubuntu 17.04 用户，需要安装 GConf - 通过运行以下命令，然后重启计算机即可完成：
+
+    ```
+    sudo apt-get install libgconf-2-4
+    ```
 
 ## <a name="version-160"></a>版本 1.6.0
 2018/12/5

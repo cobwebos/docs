@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 11/16/2018
-ms.openlocfilehash: 62235c0c06621169997cc4ad16816c0a4d638e78
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.openlocfilehash: e5c5d1a3e0316c96a6df7e01e6d6796d6a72506a
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51853823"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54159020"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Azure 逻辑应用的限制和配置信息
 
@@ -85,10 +85,10 @@ ms.locfileid: "51853823"
 
 | 名称 | 限制 | 说明 | 
 | ---- | ----- | ----- | 
-| 触发器并发 | 50 | 默认限制为 20。 此限制描述可以在同一时间或并行运行的逻辑应用实例的最大数。 <p><p>若要将默认限制更改为介于 1 到 50 之间（含）的值，请参阅[更改触发器并发](../logic-apps/logic-apps-workflow-actions-triggers.md#change-trigger-concurrency)或[按顺序触发实例](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-trigger)。 | 
-| 最大等待运行数 | 100 | 默认限制为 10。 此限制描述当逻辑应用已在运行最大数量并发实例时，可等待运行的最大逻辑应用实例数。 <p><p>若要将默认限制更改为介于 0 和 100 之间的值，请参阅[更改等待的运行限制](../logic-apps/logic-apps-workflow-actions-triggers.md#change-waiting-runs)。 | 
-| Foreach 项 | 100,000 | 此限制描述“for each”循环可以处理的最大数组项数。 <p><p>可以使用[查询操作](../connectors/connectors-native-query.md)筛选更大数组。 | 
-| Foreach 迭代 | 50 | 默认限制为 20。 此限制描述可同时或并行运行的最大“for each”循环迭代数。 <p><p>若要将默认限制更改为介于 1 到 50 之间（含）的值，请参阅[更改“for each”并发](../logic-apps/logic-apps-workflow-actions-triggers.md#change-for-each-concurrency)或[按顺序运行“for each”循环](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-for-each)。 | 
+| 触发器并发 | 限制并发时为 50 | 启用触发器的并发控制时，默认限制为 25。 此限制描述可以在同一时间或并行运行的逻辑应用实例的最大数。 <p><p>若要将默认限制更改为介于 1 到 50 之间（含）的值，请参阅[更改触发器并发限制](../logic-apps/logic-apps-workflow-actions-triggers.md#change-trigger-concurrency)或[按顺序触发实例](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-trigger)。 | 
+| 最大等待运行数 | 限制并发时为 100 | 当你启用触发器的并发控制时，默认限制为 10。 此限制描述当逻辑应用已在运行最大数量并发实例时，可等待运行的最大逻辑应用实例数。 <p><p>若要将默认限制更改为介于 0 和 100 之间的值，请参阅[更改等待的运行限制](../logic-apps/logic-apps-workflow-actions-triggers.md#change-waiting-runs)。 | 
+| Foreach 数组项 | 100,000 | 此限制描述“for each”循环可以处理的最大数组项数。 <p><p>可以使用[查询操作](../connectors/connectors-native-query.md)筛选更大数组。 | 
+| Foreach 并发 | 限制并发时为 50 | 启用此循环的并发控制时，默认限制为 20。 此限制描述可同时或并行运行的最大“for each”循环迭代数。 <p><p>若要将默认限制更改为介于 1 到 50 之间（含）的值，请参阅[更改“for each”并发限制](../logic-apps/logic-apps-workflow-actions-triggers.md#change-for-each-concurrency)或[按顺序运行“for each”循环](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-for-each)。 | 
 | SplitOn 项 | 100,000 | | 
 | Until 迭代 | 5,000 | | 
 |||| 
@@ -104,8 +104,8 @@ ms.locfileid: "51853823"
 | 操作：每 5 分钟执行的次数 | 300,000 | 默认限制为 100,000。 若要更改此默认限制，请参阅处于预览阶段的[在“高吞吐量”模式下运行逻辑应用](../logic-apps/logic-apps-workflow-actions-triggers.md#run-high-throughput-mode)。 或者，你可根据需要在多个逻辑应用之间分配工作负荷。 | 
 | 操作：并发传出调用数 | ~2,500 | 你可减少并发请求数，或根据需要减少持续时间。 | 
 | 运行时终结点：并发传入调用数 | ~1,000 | 你可减少并发请求数，或根据需要减少持续时间。 | 
-| 运行时终结点：每 5 分钟读取的调用数  | 60,000 | 可根据需要在多个应用中分发工作负荷。 | 
-| 运行时终结点：每 5 分钟调用的调用数 | 45,000 | 可根据需要在多个应用中分发工作负荷。 | 
+| 运行时终结点：每 5 分钟读取调用  | 60,000 | 可根据需要在多个应用中分发工作负荷。 | 
+| 运行时终结点：每 5 分钟调用调用 | 45,000 | 可根据需要在多个应用中分发工作负荷。 | 
 | 每 5 分钟的内容吞吐量 | 600 MB | 可根据需要在多个应用中分发工作负荷。 | 
 |||| 
 
@@ -119,9 +119,9 @@ ms.locfileid: "51853823"
 
 | 名称 | 限制 | 说明 |
 |------|-------|-------|
-| FTP | 50 MB | 若要解决此限制问题，请参阅[使用分块处理大型消息](../logic-apps/logic-apps-handle-large-messages.md)。 但是，某些连接器和 API 可能不支持分块，甚至不支持默认限制。 | 
-| SFTP | 50 MB | 要解决此限制问题，请使用 [SFTP-SSH 连接器](../connectors/connectors-sftp-ssh.md)或参阅[通过分块处理大型消息](../logic-apps/logic-apps-handle-large-messages.md)。 但是，某些连接器和 API 可能不支持分块，甚至不支持默认限制。 | 
-| SFTP-SSH | 1 GB | 若要解决此限制问题，请参阅[使用分块处理大型消息](../logic-apps/logic-apps-handle-large-messages.md)。 但是，某些连接器和 API 可能不支持分块，甚至不支持默认限制。 | 
+| FTP | 50 MB | 若要超出此限制，请参阅[使用分块处理大型消息](../logic-apps/logic-apps-handle-large-messages.md)。 但是，某些连接器和 API 可能不支持分块，甚至不支持默认限制。 | 
+| SFTP | 50 MB | 若要超出此限制，请使用 [SFTP-SSH 连接器](../connectors/connectors-sftp-ssh.md)或参阅[通过分块处理大型消息](../logic-apps/logic-apps-handle-large-messages.md)。 但是，某些连接器和 API 可能不支持分块，甚至不支持默认限制。 | 
+| SFTP-SSH | 1 GB | 若要超出此限制，请参阅[使用分块处理大型消息](../logic-apps/logic-apps-handle-large-messages.md)。 但是，某些连接器和 API 可能不支持分块，甚至不支持默认限制。 | 
 |||| 
 
 <a name="request-limits"></a>
@@ -238,10 +238,10 @@ ms.locfileid: "51853823"
 | ---- | ----- | ----- | 
 | 架构 | 8 MB | 若要上传大于 2 MB 的文件，请使用 [blob URI](../logic-apps/logic-apps-enterprise-integration-schemas.md)。 | 
 | 映射（XSLT 文件） | 2 MB | | 
-| 运行时终结点：每 5 分钟读取的调用数 | 60,000 | 你可根据需要在多个帐户之间分配工作负荷。 | 
-| 运行时终结点：每 5 分钟调用的调用数 | 45,000 | 你可根据需要在多个帐户之间分配工作负荷。 | 
-| 运行时终结点：每 5 分钟跟踪的调用数 | 45,000 | 你可根据需要在多个帐户之间分配工作负荷。 | 
-| 运行时终结点：阻止并发调用数 | ~1,000 | 你可减少并发请求数，或根据需要减少持续时间。 | 
+| 运行时终结点：每 5 分钟读取调用 | 60,000 | 你可根据需要在多个帐户之间分配工作负荷。 | 
+| 运行时终结点：每 5 分钟调用调用 | 45,000 | 你可根据需要在多个帐户之间分配工作负荷。 | 
+| 运行时终结点：每 5 分钟跟踪调用 | 45,000 | 你可根据需要在多个帐户之间分配工作负荷。 | 
+| 运行时终结点：阻止并发调用 | ~1,000 | 你可减少并发请求数，或根据需要减少持续时间。 | 
 ||||  
 
 <a name="b2b-protocol-limits"></a>
@@ -259,7 +259,7 @@ ms.locfileid: "51853823"
 
 <a name="configuration"></a>
 
-## <a name="configuration-ip-addresses"></a>配置：IP 地址
+## <a name="configuration-ip-addresses"></a>配置:IP 地址
 
 ### <a name="azure-logic-apps-service"></a>Azure 逻辑应用服务
 

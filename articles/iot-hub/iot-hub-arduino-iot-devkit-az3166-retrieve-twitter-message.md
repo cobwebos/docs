@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 03/07/2018
 ms.author: liydu
-ms.openlocfilehash: 722f350c4f11648753465e302e84949fc340e281
-ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
+ms.openlocfilehash: f488f8aa991b3d4baae05097af9b6e2f2db481cc
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/11/2018
-ms.locfileid: "42141025"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54158918"
 ---
 # <a name="shake-shake-for-a-tweet----retrieve-a-twitter-message-with-azure-functions"></a>摇一摇，摇一条推文 - 使用 Azure Functions 检索 Twitter 消息
 
@@ -52,7 +52,7 @@ ms.locfileid: "42141025"
 展开左侧的“ARDUINO 示例”部分，浏览到 MXCHIP AZ3166 的示例”>“AzureIoT”，然后选择“ShakeShake”。 此时会打开一个新的 VS Code 窗口，其中显示项目文件夹。 如果看不到“MXCHIP AZ3166”部分，请确保设备已正确连接，并重启 Visual Studio Code。  
 ![mini-solution-examples](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/vscode_examples.png)
 
-也可从命令面板打开示例项目。 单击 `Ctrl+Shift+P` (macOS: `Cmd+Shift+P`) 打开命令面板，键入“Arduino”，然后找到并选择“Arduino: Examples”。
+也可从命令面板打开示例项目。 单击 `Ctrl+Shift+P` (macOS: `Cmd+Shift+P`) 打开命令面板，键入“Arduino”，然后找到并选择“Arduino:Examples”。
 
 ## <a name="provision-azure-services"></a>预配 Azure 服务
 
@@ -118,7 +118,7 @@ static const char* iot_event = "{\"topic\":\"iot\"}";
 
 2. DevKit 将重新启动并开始运行代码。
 
-可能会出现“错误: AZ3166: 未知的包”错误消息。 如果未正确刷新开发板包索引，则会出现此错误。 要解决此问题，请查看 [IoT DevKit 常见问题解答中的“unknown package”（未知程序包）错误](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/#development)。
+你可能会收到“错误:AZ3166:未知程序包”错误消息。 如果未正确刷新开发板包索引，则会出现此错误。 要解决此问题，请查看 [IoT DevKit 常见问题解答中的“unknown package”（未知程序包）错误](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/#development)。
 
 ## <a name="test-the-project"></a>测试项目
 
@@ -202,7 +202,7 @@ Arduino 草图将事件发送到 Azure IoT 中心。 此事件触发 Azure Funct
 如果遇到其他问题，请参阅 [IoT DevKit 常见问题解答](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/)，或通过以下渠道联系我们：
 
 * [Gitter.im](http://gitter.im/Microsoft/azure-iot-developer-kit)
-* [堆栈溢出](https://stackoverflow.com/questions/tagged/iot-devkit)
+* [Stack Overflow](https://stackoverflow.com/questions/tagged/iot-devkit)
 
 ## <a name="next-steps"></a>后续步骤
 

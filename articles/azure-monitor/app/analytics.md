@@ -12,15 +12,15 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 02/08/2018
 ms.author: mbullwin
-ms.openlocfilehash: 52b18f3f6f1166650fb13694f3eed54c28bbc0a9
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 24a911978d6c9f9a33c81254a5e2f5951029ff3a
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53729965"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54120880"
 ---
 # <a name="analytics-in-application-insights"></a>Application Insights 中的 Analytics
-Analytics 是 [Application Insights](../../application-insights/app-insights-overview.md) 的强大搜索和查询工具。 Analytics 是一个 Web 工具，因此不需要安装。 如果已经为某个应用配置了 Application Insights，则可以通过从该应用的[概述边栏选项卡](../../azure-monitor/app/app-insights-dashboards.md)打开 Analytics 来对应用数据进行分析。
+Analytics 是 [Application Insights](../../azure-monitor/app/app-insights-overview.md) 的强大搜索和查询工具。 Analytics 是一个 Web 工具，因此不需要安装。 如果已经为某个应用配置了 Application Insights，则可以通过从该应用的[概述边栏选项卡](../../azure-monitor/app/app-insights-dashboards.md)打开 Analytics 来对应用数据进行分析。
 
 ![依次打开 portal.azure.com 和 Application Insights 资源，并单击“Analytics”。](./media/analytics/001.png)
 
@@ -48,7 +48,7 @@ requests
 该语言具有许多相当不错的功能：
 
 * 按任何字段（包括自定义属性和指标）[筛选](/azure/kusto/query/whereoperator)原始应用遥测。
-* [联接](/azure/kusto/query/joinoperator)多个表：将请求与页面视图、依赖项调用、异常和日志跟踪关联起来。
+* [加入](/azure/kusto/query/joinoperator)多个表 - 将请求与页面视图、依赖项调用、异常和日志跟踪关联起来。
 * 功能强大的统计[聚合](/azure/kusto/query/summarizeoperator)。
 * 功能强大的即时可视化效果。
 * 可以用来以编程方式运行查询的 [REST API](https://dev.applicationinsights.io/)，例如通过 PowerShell。

@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 12/21/2018
 ms.author: willzhan
 ms.custom: seodec18
-ms.openlocfilehash: 7b3f6410e65e9a43578d50d6aacaec0ea4ec4684
-ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
+ms.openlocfilehash: 3e9909de5ec05710214279357134112804ab4ceb
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/22/2018
-ms.locfileid: "53753483"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54191235"
 ---
 # <a name="design-of-a-multi-drm-content-protection-system-with-access-control"></a>设计带访问控制的多 DRM 内容保护系统 
 
@@ -51,7 +51,7 @@ ms.locfileid: "53753483"
 | **客户端平台** | **原生 DRM** | **EME** |
 | --- | --- | --- | --- |
 | **智能电视、STB** | PlayReady、Widevine 和/或其他 | 适用于 PlayReady 和/或 Widevine 的嵌入式浏览器/EME|
-| **Windows 10** | PlayReady | 适用于 PlayReady 的 MS Edge/IE11|
+| **Windows 10** | PlayReady | 适用于 PlayReady 的 Microsoft Edge/IE11|
 | **Android 设备（手机、平板电脑、电视）** |Widevine |适用于 Widevine 的 Chrome |
 | **iOS** | FairPlay | 适用于 FairPlay 的 Safari（自 iOS 11.2 起） |
 | **macOS** | FairPlay | 适用于 FairPlay 的 Safari（自 Mac OS X 10.11 + El Capitan 版 Safari 9+ 起）|

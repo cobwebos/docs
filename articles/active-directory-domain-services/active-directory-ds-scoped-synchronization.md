@@ -1,5 +1,5 @@
 ---
-title: Azure Active Directory 域服务：范围内同步 | Microsoft Docs
+title: Azure Active Directory 域服务：具有作用域的同步 | Microsoft Docs
 description: 配置从 Azure AD 到托管域的范围内同步
 services: active-directory-ds
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2018
 ms.author: ergreenl
-ms.openlocfilehash: 1df9b07d5a0a9e5018fc024038e65723c606ef71
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.openlocfilehash: ae51151bd20d2c715d868e916f7bc633040efa40
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52442975"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54121514"
 ---
 # <a name="configure-scoped-synchronization-from-azure-ad-to-your-managed-domain"></a>配置从 Azure AD 到托管域的范围内同步
 本文介绍了如何仅将特定用户帐户配置为从 Azure AD 目录同步到 Azure AD 域服务托管域。
@@ -79,7 +79,7 @@ ms.locfileid: "52442975"
   > 必须在已配置范围内同步的组列表中添加“AAD DC 管理员”组。 如果未添加此组，将无法使用托管域。
   >
 
-4. 现在，创建托管域，并为托管域启用基于组的范围内同步。 在 ```Properties``` 参数中添加属性 ```"filteredSync" = "Enabled"```。 例如，请参阅复制自[任务 7：预配 Azure AD 域服务托管域](active-directory-ds-enable-using-powershell.md#task-7-provision-the-azure-ad-domain-services-managed-domain)的以下脚本片段。
+4. 现在，创建托管域，并为托管域启用基于组的范围内同步。 在 ```Properties``` 参数中添加属性 ```"filteredSync" = "Enabled"```。 例如，请参阅以下复制自[任务 7：预配 Azure AD 域服务托管域](active-directory-ds-enable-using-powershell.md#task-7-provision-the-azure-ad-domain-services-managed-domain)的脚本片段。
 
   ```powershell
   $AzureSubscriptionId = "YOUR_AZURE_SUBSCRIPTION_ID"
@@ -173,7 +173,7 @@ foreach ($id in $newGroupIds)
     }
     catch
     {
-        Write-Error "Exception occured assigning Object-ID: $id. Exception: $($_.Exception)."
+        Write-Error "Exception occurred assigning Object-ID: $id. Exception: $($_.Exception)."
     }
 }
 

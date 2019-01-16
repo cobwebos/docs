@@ -10,19 +10,19 @@ ms.service: active-directory
 ms.component: users-groups-roles
 ms.topic: article
 ms.workload: identity
-ms.date: 04/06/2017
+ms.date: 01/08/2019
 ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro
-ms.openlocfilehash: c07b87d88b884b22f44fe108bb28877cb30f973e
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 8e11d370f58028ee4c1665d84d0e48541e7d3344
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52837165"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54121186"
 ---
 # <a name="take-over-an-unmanaged-directory-as-administrator-in-azure-active-directory"></a>在 Azure Active Directory 中以管理员身份接管非托管目录
-本文介绍了在 Azure Active Directory (Azure AD) 的非托管目录中接管 DNS 域名的两种方式。 当自助服务用户注册一个使用 Azure AD 的云服务时，会根据其电子邮件域将其添加到非托管 Azure AD 目录。 有关自助服务或“迅速传播的”服务注册的详细信息，请参阅[什么是 Azure Active Directory 的自助服务注册？](https://docs.microsoft.com/azure/active-directory/active-directory-self-service-signup)
+本文介绍了在 Azure Active Directory (Azure AD) 的非托管目录中接管 DNS 域名的两种方式。 当自助服务用户注册一个使用 Azure AD 的云服务时，系统会根据其电子邮件域将其添加到非托管 Azure AD 目录。 有关自助服务或“迅速传播的”服务注册的详细信息，请参阅[什么是 Azure Active Directory 的自助服务注册？](directory-self-service-signup.md)
 
 ## <a name="decide-how-you-want-to-take-over-an-unmanaged-directory"></a>决定非托管目录的接管方式
 在管理员接管的过程中，可按[向 Azure AD 添加自定义域名](../fundamentals/add-custom-domain.md)中所述，证明所有权。 以下部分更详细地介绍了管理员体验，不过本文只会提供摘要：
@@ -41,7 +41,7 @@ ms.locfileid: "52837165"
 
 3. 在来自 Power BI 的确认电子邮件中，选择“是，是我”。
 
-4. 使用 Power BI 用户帐户登录到 [Office 365 管理中心](https://portal.office.com/adminportal/Home)。 会收到一条消息，指示如何“成为管理员”，即成为已在非托管租户中经过验证的域名的管理员。 选择“是，我想成为管理员”。
+4. 使用 Power BI 用户帐户登录到 [Office 365 管理中心](https://portal.office.com/admintakeover)。 会收到一条消息，指示如何“成为管理员”，即成为已在非托管租户中经过验证的域名的管理员。 选择“是，我想成为管理员”。
   
   ![“成为管理员”的首个屏幕截图](./media/domains-admin-takeover/become-admin-first.png)
   
@@ -53,9 +53,9 @@ ms.locfileid: "52837165"
 
 完成上述步骤后，便获得 Office 365 中 Fourth Coffee 租户的全局管理员身份。 若要将域名与其他 Azure 服务集成，可将其从 Office 365 中删除并移动到 Azure 中的另一个托管租户。
 
-### <a name="adding-the-domain-name-to-a-managed-tenant-in-azure-ad"></a>将域名添加到 Azure AD 中的托管租户 
+### <a name="adding-the-domain-name-to-a-managed-tenant-in-azure-ad"></a>将域名添加到 Azure AD 中的托管租户
 
-1. 打开 [Office 365 管理中心](https://portal.office.com/adminportal/Home)。
+1. 打开 [Office 365 管理中心](https://portal.office.com/admintakeover)。
 2. 选择“用户”选项卡，并使用 user@fourthcoffeexyz.onmicrosoft.com 等不使用自定义域名的名称新建用户帐户。 
 3. 请确保新的用户帐户对 Azure AD 租户拥有全局管理员权限。
 4. 打开 Office 365 管理中心中的“域”选项卡，选择域名，然后选择“删除”。 

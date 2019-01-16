@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/13/2018
+ms.date: 01/09/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 8cfbc72e239a7a5b38cee6752803e79735e2adc9
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: 775de554f39df8359c3852a2d7fa876fd12199d2
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49321268"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54190803"
 ---
 # <a name="azure-analysis-services-scale-out"></a>Azure Analysis Services 横向扩展
 
@@ -74,15 +74,19 @@ ms.locfileid: "49321268"
 ![横向扩展滑块](media/analysis-services-scale-out/aas-scale-out-sync.png)
 
 ### <a name="rest-api"></a>REST API
+
 使用**同步**操作。
 
 #### <a name="synchronize-a-model"></a>同步模型   
+
 `POST https://<region>.asazure.windows.net/servers/<servername>:rw/models/<modelname>/sync`
 
 #### <a name="get-sync-status"></a>获取同步状态  
+
 `GET https://<region>.asazure.windows.net/servers/<servername>/models/<modelname>/sync`
 
 ### <a name="powershell"></a>PowerShell
+
 在使用 PowerShell 之前，请[安装或更新最新的 AzureRM 模块](https://github.com/Azure/azure-powershell/releases)。 
 
 若要设置查询副本数，请使用 [Set-AzureRmAnalysisServicesServer](https://docs.microsoft.com/powershell/module/azurerm.analysisservices/set-azurermanalysisservicesserver)。 指定可选的 `-ReadonlyReplicaCount` 参数。
@@ -101,7 +105,7 @@ ms.locfileid: "49321268"
 
 ## <a name="troubleshoot"></a>故障排除
 
-**问题：** 用户收到错误 **Cannot find server '\<Name of the server>' instance in connection mode 'ReadOnly'.**（在连接模式 "ReadOnly" 下找不到服务器“<服务器名称>”实例。）
+**问题：** 用户收到错误“在连接模式 "ReadOnly" 下找不到服务器“\<服务器名称>”实例”。
 
 **解决方案：** 选择“从查询池分离处理服务器”选项时，使用默认连接字符串（不带 :rw）的客户端连接将重定向到查询池副本。 如果查询池中的副本因尚未完成同步而尚未联机，则重定向的客户端连接可能会失败。 若要防止连接失败，在完成横向扩展和同步操作之前，请不要选择从查询池分离处理服务器。 可以使用内存和 QPU 指标来监视同步状态。
 

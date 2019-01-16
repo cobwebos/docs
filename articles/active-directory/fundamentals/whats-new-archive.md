@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/10/2018
 ms.author: lizross
 ms.reviewer: dhanyahk
-ms.openlocfilehash: d727c9c3a9add701263e799dba778b37e637adef
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: bc9892882cfd4c3f68118648baaaf278133bb2a8
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53194277"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54191915"
 ---
 # <a name="archive-for-whats-new-in-azure-active-directory"></a>Azure Active Directory 的新增功能存档
 
@@ -37,7 +37,7 @@ ms.locfileid: "53194277"
 ### <a name="expressroute-support-changes"></a>ExpressRoute 支持更改
 
 **类型：** 更改计划  
-**服务类别：** 身份验证(登录)  
+**服务类别：** 身份验证（登录）  
 **产品功能：** 平台  
 
 软件即服务产品/服务，例如 Azure Active Directory (Azure AD)，设计为直接通过 Internet 时工作性能最好，不需要使用 ExpressRoute 或任何其他专用 VPN 隧道。 因此，在 **2018 年 8 月 1 日**，我们将停止支持将 ExpressRoute 用于使用 Azure 公共对等互连的 Azure AD 服务和 Microsoft 对等互连中的 Azure 社区。 受此更改影响的所有服务可能会注意到 Azure AD 流量逐步从 ExpressRoute 转移到 Internet。
@@ -205,7 +205,7 @@ AADConnect 的 5 月发布内容包括与 PingFederate 的集成、重要安全�
 ### <a name="id-tokens-can-no-longer-be-returned-using-the-query-responsemode-for-new-apps"></a>对于新应用，无法再使用 query response_mode 返回 ID 令牌。 
 
 **类型：** 已更改的功能  
-**服务类别：** 身份验证(登录)  
+**服务类别：** 身份验证（登录）  
 **产品功能：** 用户身份验证
  
 在 2018 年 4 月 25 日当天或以后创建的应用将不再能够使用 query response_mode 来请求 id_token。  这样可以为 Azure AD 提供内联的 OIDC 规范，有助于减少应用的受攻击面。  在 2018 年 4 月 25 之前创建的应用可以将 query response_mode 与值为 id_token 的 response_type 配合使用。  从 AAD 请求 id_token 时，返回的错误为“AADSTS70007: 在请求令牌时，‘query’ 是 ‘response_mode’ 的不受支持的值”。
@@ -449,7 +449,7 @@ Powershell GA 模块现已提供应用程序代理 cmdlet 的支持！ 这需要
 ### <a name="office-365-native-clients-are-supported-by-seamless-sso-using-a-non-interactive-protocol"></a>使用非交互式协议的无缝 SSO 支持 Office 365 本机客户端
 
 **类型：** 新功能  
-**服务类别：** 身份验证(登录)  
+**服务类别：** 身份验证（登录）  
 **产品功能：** 用户身份验证
  
 使用 Office 365 本机客户端（16.0.8730.xxxx 和更高版本）的用户在使用无缝 SSO 时会获得静默登录体验。 这项支持是通过在 Azure AD 中添加非交互式协议 (WS-Trust) 提供的。
@@ -461,7 +461,7 @@ Powershell GA 模块现已提供应用程序代理 cmdlet 的支持！ 这需要
 ### <a name="users-get-a-silent-sign-on-experience-with-seamless-sso-if-an-application-sends-sign-in-requests-to-azure-ads-tenant-endpoints"></a>如果应用程序将登录请求发送到 Azure AD 的租用终结点，则用户在使用无缝 SSO 时会获得静默登录体验
 
 **类型：** 新功能  
-**服务类别：** 身份验证(登录)  
+**服务类别：** 身份验证（登录）  
 **产品功能：** 用户身份验证
  
 如果应用程序（例如 `https://contoso.sharepoint.com`）向 Azure AD 的租户终结点（即 `https://login.microsoftonline.com/contoso.com/<..>` 或 `https://login.microsoftonline.com/<tenant_ID>/<..>`）而不是 Azure AD 的普通终结点 (`https://login.microsoftonline.com/common/<...>`) 发送登录请求，用户在使用无缝 SSO 时可以获得静默登录体验。
@@ -473,7 +473,7 @@ Powershell GA 模块现已提供应用程序代理 cmdlet 的支持！ 这需要
 ### <a name="need-to-add-only-one-azure-ad-url-instead-of-two-urls-previously-to-users-intranet-zone-settings-to-roll-out-seamless-sso"></a>只需将一个 Azure AD URL（以前为两个 URL）添加到用户的 Intranet 区域设置，即可实施无缝 SSO
 
 **类型：** 新功能  
-**服务类别：** 身份验证(登录)  
+**服务类别：** 身份验证（登录）  
 **产品功能：** 用户身份验证
  
 若要向用户实施无缝 SSO，只需使用 Active Directory 中的组策略将一个 Azure AD URL 添加到用户的 Intranet 区域设置：`https://autologon.microsoftazuread-sso.com`。 以前，客户需要添加两个 URL。
@@ -513,7 +513,7 @@ Powershell GA 模块现已提供应用程序代理 cmdlet 的支持！ 这需要
 ### <a name="adding-optional-claims-to-your-apps-tokens-public-preview"></a>将可选声明添加到应用令牌（公共预览版）
 
 **类型：** 新功能  
-**服务类别：** 身份验证(登录)  
+**服务类别：** 身份验证（登录）  
 **产品功能：** 用户身份验证
  
 Azure AD 应用现在可以在 JWT 或 SAML 令牌中请求自定义或可选声明。  因为大小或适用性方面的约束，这些有关用户或租户的声明默认不会包含在令牌中。  此功能目前已在 v1.0 和 v2.0 终结点上的 Azure AD 应用公共预览版中提供。  请参阅文档，以了解可添加的声明，以及如何编辑应用程序清单来请求这些声明。  
@@ -525,7 +525,7 @@ Azure AD 应用现在可以在 JWT 或 SAML 令牌中请求自定义或可选声
 ### <a name="azure-ad-supports-pkce-for-more-secure-oauth-flows"></a>Azure AD 支持使用 PKCE 来提高 OAuth 流的安全性
 
 **类型：** 新功能  
-**服务类别：** 身份验证(登录)  
+**服务类别：** 身份验证（登录）  
 **产品功能：** 用户身份验证
  
 已更新 Azure AD 文档来指明对 PKCE 的支持。使用 PKCE 可以在执行 OAuth 2.0 授权代码授予流期间提高通信的安全性。  v1.0 和 v2.0 终结点上同时支持 S256 和纯文本 code_challenges。 
@@ -562,7 +562,7 @@ Azure AD 应用现在可以在 JWT 或 SAML 令牌中请求自定义或可选声
 ### <a name="improved-sign-out-behavior-with-seamless-sso"></a>改进了无缝 SSO 的注销行为
 
 **类型：** 已更改的功能  
-**服务类别：** 身份验证(登录)  
+**服务类别：** 身份验证（登录）  
 **产品功能：** 用户身份验证
  
 以前，即使用户显式注销受 Azure AD 保护的应用程序，但如果他们尝试在其企业网络中从已加入域的设备再次访问 Azure AD 应用程序，系统也仍会使用无缝 SSO 自动将其登录。 实施此项更改后，将会支持注销。  这可以让用户选择使用相同或不同的 Azure AD 帐户登录，而不是使用无缝 SSO 自动登录。
@@ -857,7 +857,7 @@ Azure AD Connect 是在 Azure AD 与本地数据源（包括 Windows Server Acti
 - 从应用登录页直接登录到基于密码 SSO 的应用
 - 使用快速搜索功能启动任何应用
 - 在扩展中使用快捷方式访问最近使用的应用
-- 该扩展适用于 Microsoft Edge、Chrome 和 Firefox。
+- 此扩展适用于 Microsoft Edge、Chrome 和 Firefox。
  
 有关详细信息，请参阅[我的应用安全登录扩展](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction#my-apps-secure-sign-in-extension)。
 
@@ -1013,7 +1013,7 @@ Azure AD 目录角色的审批工作流程已正式发布。
 ### <a name="pass-through-authentication-skype-for-business-support"></a>传递身份验证：Skype For Business 支持
 
 **类型：** 已更改的功能  
-**服务类别：** 身份验证(登录)  
+**服务类别：** 身份验证（登录）  
 **产品功能：** 用户身份验证
 
 传递身份验证现在支持用户登录到支持新式身份验证的 Skype for Business 客户端应用程序，包括联机和混合拓扑。 

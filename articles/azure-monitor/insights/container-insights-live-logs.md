@@ -11,17 +11,17 @@ ms.service: azure-monitor
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/06/2018
+ms.date: 01/09/2019
 ms.author: magoedte
-ms.openlocfilehash: da11bb0669bf6bde2c65b2a7a0badaa1ae35abda
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 1a51e9b636e15f178de072af8372404af1dc47e2
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53189111"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54187988"
 ---
 # <a name="how-to-view-container-logs-real-time-with-azure-monitor-for-containers-preview"></a>如何使用用于容器的 Azure Monitor（预览版）实时查看容器日志
-此功能目前为预览版，可以实时查看 Azure Kubernetes 服务 (AKS) 容器日志 (stdout/stderr)，不需运行 kubectl 命令。 选择此选项时，会在“容器”视图的容器性能数据表下显示新的窗格，它会显示由容器引擎生成的实时日志记录，用于进一步以实时方式排查问题。  
+此功能目前为预览版，可以实时查看 Azure Kubernetes 服务 (AKS) 容器日志 (stdout/stderr)，不需运行 kubectl 命令。 选择此选项后，“容器”视图上的容器性能数据表下方将显示新窗格。  它显示了容器引擎生成的实时日志记录，以进一步帮助实时解决问题。  
 
 实时日志支持以三种不同的方式来控制对日志的访问：
 
@@ -31,7 +31,7 @@ ms.locfileid: "53189111"
 
 ## <a name="kubernetes-cluster-without-rbac-enabled"></a>未启用 RBAC 的 Kubernetes 群集
  
-如果 Kubernetes 群集未配置 Kubernetes RBAC 授权或集成 Azure AD 单一登录，则不需执行这些步骤。 由于 Kubernetes 授权使用 kube-api，因此需要只读权限。
+如果 Kubernetes 群集未配置 Kubernetes RBAC 授权或集成 Azure AD 单一登录，则不需执行这些步骤。 Kubernetes 授权使用 kube-api，因此需要只读权限。
 
 ## <a name="kubernetes-rbac-authorization"></a>Kubernetes RBAC 授权
 如果已启用 Kubernetes RBAC 授权，则需应用群集角色绑定。 以下示例步骤演示如何从此 yaml 配置模板配置群集角色绑定。   
@@ -39,33 +39,33 @@ ms.locfileid: "53189111"
 1. 复制并粘贴 yaml 文件，然后将其另存为 LogReaderRBAC.yaml。  
 
    ```
-   kind: ClusterRole 
    apiVersion: rbac.authorization.k8s.io/v1 
-   metadata:   
+   kind: ClusterRole 
+   metadata: 
       name: containerHealth-log-reader 
    rules: 
-      - apiGroups: [""]   
-        resources: ["pods/log"]   
+      - apiGroups: [""] 
+        resources: ["pods/log"] 
         verbs: ["get"] 
    --- 
-   kind: ClusterRoleBinding 
    apiVersion: rbac.authorization.k8s.io/v1 
-   metadata:   
+   kind: ClusterRoleBinding 
+   metadata: 
       name: containerHealth-read-logs-global 
-   subjects:   
-      - kind: User     
-        name: clusterUser
-        apiGroup: rbac.authorization.k8s.io 
-    roleRef:   
-       kind: ClusterRole
-       name: containerHealth-log-reader
+   roleRef: 
+       kind: ClusterRole 
+       name: containerHealth-log-reader 
        apiGroup: rbac.authorization.k8s.io 
+   subjects: 
+      - kind: User 
+        name: clusterUser 
+        apiGroup: rbac.authorization.k8s.io 
    ```
 
 2. 运行以下命令以创建群集规则绑定：`kubectl create -f LogReaderRBAC.yaml`。 
 
 ## <a name="configure-aks-with-azure-active-directory"></a>为 AKS 配置 Azure Active Directory
-可将 AKS 配置为使用 Azure Active Directory (AD) 进行用户身份验证。 如果是第一次进行此项配置，请参阅[将 Azure Active Directory 与 Azure Kubernetes 服务集成](../../aks/aad-integration.md)。 在创建[客户端应用程序](../../aks/aad-integration.md#create-client-application)并指定**重定向 URI** 的过程中，需将另一 URI 添加到列表 ** https://ininprodeusuxbase.microsoft.com/***。  
+可将 AKS 配置为使用 Azure Active Directory (AD) 进行用户身份验证。 如果是第一次进行此项配置，请参阅[将 Azure Active Directory 与 Azure Kubernetes 服务集成](../../aks/aad-integration.md)。 在创建[客户端应用程序](../../aks/aad-integration.md#create-client-application)并指定“重定向 URI”的过程中，需向列表添加另一个 URI `https://ininprodeusuxbase.microsoft.com/*`。  
 
 >[!NOTE]
 >通过 Azure Active Directory 配置身份验证以便实现单一登录的操作只能在初次部署新 AKS 群集过程中完成。 不能为已部署的 AKS 群集配置单一登录。  

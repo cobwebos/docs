@@ -1,12 +1,12 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 32554b3bf88318dd8d775022369e2673d4e51a0f
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: cfc5779768ccd1efdc406da6b2701b52f2ab81cf
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53435627"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54121458"
 documentType: LandingData
-title: Azure SQL 数据库 - 单一数据库
+title: Azure SQL 数据库：单一数据库
 metadata:
   document_id: 36d89c48-3646-380e-34a0-ae3ac62e2641
   title: Azure SQL 数据库文档 - 教程和 API 参考
@@ -28,7 +28,7 @@ abstract:
       height: 110
       src: https://docs.microsoft.com/azure/sql-database/media/index/create-sql-database-on-azure.png
       width: 250
-    title: 在 Azure 上创建单一 SQL 数据库。 (3:12)
+    title: 在 Azure 上创建单一 SQL 数据库 (3:12)
     href: https://azure.microsoft.com/resources/videos/create-sql-database-on-azure/
     width: 250
 sections:
@@ -48,24 +48,24 @@ sections:
       html: <p>逻辑服务器是一个集中管理点，可用于在服务器中的一组数据库上配置安全性、优化、备份策略和其他配置属性。</p>
       image:
         src: media/index/i_mi.svg
-    - title: 价格/服务层
+    - title: 价格和服务层
       href: /azure/sql-database/sql-database-service-tiers
       html: <p>通过灵活的服务层（跨度从经济实惠的 $5/月的数据库到功能强大的 80 核数据库）定制符合你的需求的价格/性能比。</p>
       image:
         src: media/index/i_perftier.svg
     - title: 可伸缩性
       href: /azure/sql-database/sql-database-scale-resources
-      html: <p>根据需要轻松地对数据库进行纵向扩展，以提高应用程序性能。</p>
+      html: <p>轻松扩展数据库以提高应用程序的性能。</p>
       image:
         src: media/index/i_scale.svg
     - title: 平台即服务
       href: /azure/sql-database/sql-database-paas
-      html: <p>内置的高可用性、自动备份和异地复制将防止维护操作、基础结构或硬件故障停止你的业务。</p>
+      html: <p>内置的高可用性、自动备份和异地复制将协助防止维护操作、基础结构故障或硬件故障停止你的业务。</p>
       image:
         src: media/index/gear.svg
     - title: 高级安全
       href: /azure/sql-database/sql-database-security-index
-      html: <p>使用 Azure AD 身份验证、虚拟网络、防火墙、Always Encrypted 连接保护数据库。 通过内置的安全功能识别威胁和漏洞。</p>
+      html: <p>使用 Azure AD 身份验证、虚拟网络、防火墙、Always Encrypted 连接协助保护数据库。 通过内置的安全功能识别威胁和漏洞。</p>
       image:
         src: media/index/i_security.svg
 - title: 新功能和预览版功能
@@ -79,10 +79,10 @@ sections:
     - html: （预览版）新的 SQL Server 2019 <a href="https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing?toc=%2Fazure%2Fsql-database%2Ftoc.json&view=sql-server-2017">智能查询处理</a>功能，例如<a href="https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing?toc=%2Fazure%2Fsql-database%2Ftoc.json&view=sql-server-2017#table-variable-deferred-compilation">表变量延迟编译</a>、<a href="https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing?toc=%2Fazure%2Fsql-database%2Ftoc.json&view=sql-server-2017#batch-mode-on-rowstore">行存储表上的批处理模式</a>以及<a href="https://docs.microsoft.com/sql/relational-databases/user-defined-functions/scalar-udf-inlining?view=azuresqldb-current&toc=%2Fazure%2Fsql-database%2Ftoc.json">标量 UDF 内联</a>。
     - html: （预览版）新的 Transact-SQL 语言功能，例如 <a href="https://docs.microsoft.com/sql/t-sql/functions/approx-count-distinct-transact-sql?toc=%2Fazure%2Fsql-database%2Ftoc.json&view=sql-server-2017">APPROX_COUNT_DISTINCT 聚合</a>和<a href="https://docs.microsoft.com/sql/relational-databases/import-export/examples-of-bulk-access-to-data-in-azure-blob-storage?toc=%2Fazure%2Fsql-database%2Ftoc.json&view=sql-server-2017">从 Azure Blob 存储进行批量导入</a>。
     - html: （预览版）新的 SQL Server 2019 Online <a href="https://docs.microsoft.com/sql/t-sql/statements/create-columnstore-index-transact-sql?toc=%2Fazure%2Fsql-database%2Ftoc.json&view=sql-server-2017#online--on--off">生成</a>和重新生成 CLUSTERED COLUMNSTORE 索引操作。
-- title: 5 分钟快速入门
+- title: 五分钟快速入门
   items:
   - type: paragraph
-    text: 可以通过 Azure 门户、Azure CLI 和 Azure PowerShell 使用 Azure SQL 数据库轻松地执行基本的管理任务。 了解如何使用以下快速入门示例执行基本的管理任务：
+    text: 可以通过 Azure 门户、Azure CLI 和 Azure PowerShell 使用 Azure SQL 数据库执行基本的管理任务。 了解如何使用以下快速入门示例执行基本的管理任务：
   - type: table
     style: dataMatrix
     columns:
@@ -125,14 +125,14 @@ sections:
 - title: 分步教程
   items:
   - type: paragraph
-    text: 了解如何使用 SQL DB 创建、管理和迁移数据库
+    text: 了解如何使用 Azure SQL 数据库创建、管理和迁移数据库。
   - type: list
     style: ordered
     items:
-    - html: 使用 <a href="/azure/sql-database/sql-database-design-first-database">SSMS</a> 或 <a href="/azure/sql-database/sql-database-design-first-database-csharp">.NET</a> 创建和设计新 SQL 数据库的架构
-    - html: 使用<a href="/azure/sql-database/sql-database-migrate-your-sql-server-database">数据库迁移助手</a>或 <a href="/azure/sql-database/sql-database-import">BACPAC 导入</a>将现有数据库迁移到 Azure
-    - html: <a href="/azure/sql-database/sql-database-security-tutorial">保护 SQL 数据库</a>
-    - html: 使用<a href="/azure/sql-database/sql-database-implement-geo-distributed-database">地理分散的数据库</a>在全球分布数据
+    - html: 使用 <a href="/azure/sql-database/sql-database-design-first-database">SSMS</a> 或 <a href="/azure/sql-database/sql-database-design-first-database-csharp">.NET</a> 创建和设计新 SQL 数据库的架构。
+    - html: 使用<a href="/azure/sql-database/sql-database-migrate-your-sql-server-database">数据库迁移助手</a>或 <a href="/azure/sql-database/sql-database-import">BACPAC 导入</a>将现有数据库迁移到 Azure。
+    - html: <a href="/azure/sql-database/sql-database-security-tutorial">保护 SQL 数据库</a>。
+    - html: 使用<a href="/azure/sql-database/sql-database-implement-geo-distributed-database">地理分散的数据库</a>在全球分布数据。
     - html: 查找可以帮助你配置数据库的更多<a href="sql-database-howto-single-database.md">操作指南</a>。
 - title: 示例
   items:

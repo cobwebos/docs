@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 12/31/2018
 ms.author: adgera
 ms.custom: seodec18
-ms.openlocfilehash: 7d079f543f8b564c396560c97225897c12f3cd24
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 9a1d328f79405b14ffd84e07cb915566bd686c8e
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53975638"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54120948"
 ---
 # <a name="azure-digital-twins-swagger-reference-documentation"></a>Azure 数字孪生 Swagger 参考文档
 
@@ -55,7 +55,7 @@ Swagger 是一种非常便利的工具，可用于帮助执行对 Azure 数字�
 
 ![Swagger 模型][3]
 
-生成的 Swagger 对象模型可方便地用于查看所有可用的 Azure 数字孪生[对象和 API](./concepts-objectmodel-spatialgraph.md)。 在 Azure 数字孪生上构建解决方案时，开发人员可以使用此资源。
+生成的 Swagger 对象模型可方便地用于查看所有可用的 Azure 数字孪生[对象和 API](./concepts-objectmodel-spatialgraph.md)。 开发人员在 Azure 数字孪生上生成解决方案时可以使用此资源。
 
 ## <a name="endpoint-summary"></a>终结点摘要
 
@@ -79,7 +79,7 @@ Swagger 提供的一个强大功能是能够直接通过文档 UI 测试 API 终
 
 ![Swagger 试用][5]
 
-展开该部分会显示每个必需字段和可选参数的输入字段。 输入相应的值，然后选择“执行”。
+展开该部分会显示每个必需字段和可选参数的输入字段。 输入正确的值，并选择“执行”。
 
 ![已试用 Swagger][6]
 
@@ -102,9 +102,9 @@ Swagger 提供的一个强大功能是能够直接通过文档 UI 测试 API 终
 
 ## <a name="next-steps"></a>后续步骤
 
-若要阅读有关 Azure 数字孪生对象模型和空间智能图的详细信息，请阅读[了解 Azure 数字孪生对象模型](./concepts-objectmodel-spatialgraph.md)。
+- 若要阅读有关 Azure 数字孪生对象模型和空间智能图的详细信息，请阅读[了解 Azure 数字孪生对象模型](./concepts-objectmodel-spatialgraph.md)。
 
-若要了解如何使用管理 API 进行身份验证，请阅读[使用 API 进行身份验证](./security-authenticating-apis.md)。
+- 若要了解如何使用管理 API 进行身份验证，请阅读[使用 API 进行身份验证](./security-authenticating-apis.md)。
 
 <!-- Images -->
 [1]: media/how-to-use-swagger/swagger_management_top.PNG

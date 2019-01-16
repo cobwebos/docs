@@ -7,18 +7,18 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 12/20/2018
 ms.author: absha
-ms.openlocfilehash: 6750276cf31d0c804b38cdf3ea6e41a4505c93f1
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: ccdfbc38cb39f2c0aa839dc56022192e9e389d95
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53971812"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54187411"
 ---
 # <a name="rewrite-http-headers-with-application-gateway-public-preview"></a>使用应用程序网关（公共预览版）重写 HTTP 标头
 
 HTTP 标头可让客户端和服务器连同请求或响应一起传递附加的信息。 重写这些 HTTP 标头可帮助实现多个重要方案，例如，添加安全相关的标头字段（如 HSTS/ X-XSS-Protection），或者删除可能会透露敏感信息（如后端服务器名称）的响应标头字段。
 
-应用程序网关现在支持重写传入 HTTP 请求和传出 HTTP 响应的标头。 当请求/响应数据包在客户端与后端池之间移动时，你可以添加、删除或更新 HTTP 请求和响应标头。 可以重写标准标头字段（[RFC 2616](https://www.ietf.org/rfc/rfc2616.txt) 中已定义）和非标准标头字段。
+应用程序网关现在支持重写传入 HTTP 请求和传出 HTTP 响应的标头。 当请求/响应数据包在客户端与后端池之间移动时，你可以添加、删除或更新 HTTP 请求和响应标头。 可以重写标准和非标准标头字段。
 
 > [!NOTE] 
 >
@@ -35,7 +35,7 @@ HTTP 标头可让客户端和服务器连同请求或响应一起传递附加的
    - **RequestHeaderConfiguration**：此对象用于指定要重写的请求标头字段以及需要重写的原始标头的新值。
    - **ResponseHeaderConfiguration**：此对象用于指定要重写的响应标头字段以及需要重写的原始标头的新值。
    - **ActionSet**：此对象包含上面指定的请求和响应标头的配置。 
-   - **RewriteRule**：此对象包含上面指定的所有 actionSets。 
+   - **RewriteRule**：此对象包含上面指定的所有“actionSets”。 
    - **RewriteRuleSet** - 此对象包含所有 rewriteRules，并且需要附加到（基本或基于路径的）请求路由规则。
 2. 然后，需要使用路由规则附加重写规则集。 创建此重写配置后，会通过路由规则将其附加到源侦听器。 使用基本路由规则时，标头重写配置与源侦听器相关联，并且是全局标头重写。 使用基于路径的路由规则时，将在 URL 路径映射中定义标头重写配置。 因此，它仅适用于站点的特定路径区域。
 
@@ -84,7 +84,11 @@ HTTP 标头可让客户端和服务器连同请求或响应一起传递附加的
 
 - 上述的组合。
 
-上面提及的服务器变量提供以下相关信息：服务器、与客户端的连接以及连接上的当前请求。 此功能支持将标头重写为以下服务器变量：
+## <a name="server-variables"></a>服务器变量
+
+服务器变量在 Web 服务器上存储有用的信息。 这些变量提供有关服务器、与客户端的连接以及连接上的当前请求（例如，客户端的 IP 地址或 Web 浏览器类型）的信息。 这些信息在加载新页面或发布表单等时会动态更改。  使用这些变量，用户可以设置请求标头和响应标头。 
+
+此功能支持将标头重写为以下服务器变量：
 
 | 支持的服务器变量 | Description                                                  |
 | -------------------------- | :----------------------------------------------------------- |
@@ -100,7 +104,7 @@ HTTP 标头可让客户端和服务器连同请求或响应一起传递附加的
 | http_status                | 会话状态，例如：200、400、403 等。                       |
 | http_version               | 请求协议，通常为"HTTP/1.0"、"HTTP/1.1"或者"HTTP/2.0" |
 | query_string               | 请求 URL 中“?”后面的变量-值对的列表。 |
-| received_byte              | 请求长度（包括请求行、标头和请求正文） |
+| received_bytes             | 请求长度（包括请求行、标头和请求正文） |
 | request_query              | 请求行中的参数                                |
 | request_scheme             | 请求方案，“http”或者“https”                            |
 | request_uri                | 完整原始请求 URI（带参数）                   |

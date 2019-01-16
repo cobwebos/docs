@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 07/11/2017
 ms.author: barbkess
 ms.reviewer: japere
-ms.openlocfilehash: 830fc1d96825e28aad41aac9afee499b9bc1f7ae
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 02aa4eb37437861d428c6f361b3ff21def56b49b
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44354692"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54189824"
 ---
 # <a name="problems-signing-in-to-an-application-from-the-access-panel"></a>从访问面板登录应用程序时出现的问题
 
@@ -96,7 +96,7 @@ ms.locfileid: "44354692"
 
 -   [Chrome 访问面板扩展](https://chrome.google.com/webstore/detail/access-panel-extension/ggjhpefgjjfobnfoldnjipclpcfbgbhl)
 
--   [Edge 访问面板扩展](https://www.microsoft.com/store/apps/9pc9sckkzk84)
+-   [Microsoft Edge 访问面板扩展](https://www.microsoft.com/store/apps/9pc9sckkzk84)
 
 ## <a name="how-to-configure-federated-single-sign-on-for-an-azure-ad-gallery-application"></a>如何配置 Azure AD 库应用程序的联合单一登录
 
@@ -285,7 +285,7 @@ ms.locfileid: "44354692"
 
   1. 要将应用程序配置为 IdP 启动的 SSO，请输入“回复 URL”和“标识符”。
 
-  2. **可选：** 要将应用程序配置为 SP 启动的 SSO，则“登录 URL”是必需值。
+  2. **可选：** 若要将应用程序配置为 SP 启动的 SSO，则“登录 URL”是必需值。
 
 12. 在“用户属性”的“用户标识符”下拉列表中，为用户选择唯一标识符。
 
@@ -500,7 +500,7 @@ ms.locfileid: "44354692"
 
 11. 将鼠标悬停在列表中的“用户”上方以显示“复选框”。 单击用户个人资料头像或徽标旁边的复选框，将用户添加到“已选择”列表。
 
-12. **可选：** 如果想要**添加多个用户**，请在“按名称或电子邮件地址搜索”搜索框中，键入其他**全名**或**电子邮件地址**，然后单击复选框以将此用户添加到“已选择”列表。
+12. **可选：** 如果要“添加多个用户”，请在“按名称或电子邮件地址搜索”搜索框中键入其他“全名”或“电子邮件地址”，然后单击复选框以将此用户添加到“已选择”列表。
 
 13. 在完成用户的选择后，单击“选择”按钮将他们添加到要分配给应用程序的用户和组列表。
 

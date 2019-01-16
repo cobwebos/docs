@@ -1,18 +1,17 @@
 ---
-title: 基于 URL 的内容路由概述 | Microsoft Docs
-description: 本页提供基于应用程序网关 URL 的内容路由、UrlPathMap 配置和 PathBasedRouting 规则的概述。
+title: Azure 应用程序网关基于 URL 的内容路由概述
+description: 本页概述基于 Azure 应用程序网关 URL 的内容路由、UrlPathMap 配置和 PathBasedRouting 规则。
 services: application-gateway
 author: vhorne
-manager: jpconnock
 ms.service: application-gateway
-ms.date: 11/7/2018
+ms.date: 1/8/2019
 ms.author: victorh
-ms.openlocfilehash: bc123307a3cc3a5040e93e517c60604dc75fc7e7
-ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
+ms.openlocfilehash: 1ada74f5c85ef327957ec4981e83f68bcafea858
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51218417"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54188753"
 ---
 # <a name="url-path-based-routing-overview"></a>基于 URL 路径的路由概述
 
@@ -62,8 +61,37 @@ UrlPathMap 元素用于指定后端服务器池映射的路径模式。 以下�
 }]
 ```
 
-> [!NOTE]
-> PathPattern：此设置是要匹配的路径模式列表。 每个模式必须以 / 开头，只允许在后接“/”的末尾处添加“*”。 提供给路径匹配器的字符串在第一个“?” 或“#”之后不包含任何文本，而且这些字符不允许在这里。 否则，URL 中允许的任何字符在 PathPattern 中都是允许的。
+### <a name="pathpattern"></a>PathPattern
+
+PathPattern 是要匹配的路径模式列表。 每个模式必须以 / 开头，只允许在后接“/”的末尾处添加“*”。 提供给路径匹配器的字符串在第一个“?” 或“#”之后不包含任何文本，而且这些字符不允许在这里。 否则，URL 中允许的任何字符在 PathPattern 中都是允许的。
+
+受支持的模式取决于是部署应用程序网关 v1 还是 v2：
+
+#### <a name="v1"></a>v1
+
+路径规则不区分大小写。
+
+|v1 路径模式  |是否支持？  |
+|---------|---------|
+|`/images/*`     |是|
+|`/images*`     |否|
+|`/images/*.jpg`     |否|
+|`/*.jpg`     |否|
+|`/Repos/*/Comments/*`     |否|
+|`/CurrentUser/Comments/*`     |是|
+
+#### <a name="v2"></a>v2
+
+路径规则区分大小写。
+
+|v2 路径模式  |是否支持？  |
+|---------|---------|
+|`/images/*`     |是|
+|`/images*`     |是|
+|`/images/*.jpg`     |否|
+|`/*.jpg`     |否|
+|`/Repos/*/Comments/*`     |否|
+|`/CurrentUser/Comments/*`     |是|
 
 有关详细信息，可以查看[使用基于 URL 的路由的 Resource Manager 模板](https://azure.microsoft.com/documentation/templates/201-application-gateway-url-path-based-routing)。
 

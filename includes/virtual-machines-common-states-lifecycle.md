@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/09/2018
 ms.author: vashan, cynthn, rajsqr
 ms.custom: include file
-ms.openlocfilehash: e1dc637d2f629b5002c2e8796fbd29a95478c392
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: b48de6a6eeed997fe162cabe4d57e6770e016971
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50035280"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54122796"
 ---
 Azure 虚拟机 (VM) 经历的不同状态可以归类为“预配”状态和“电源”状态。 本文旨在介绍这些状态并专门突出显示了何时会对客户收取实例使用费用。 
 
@@ -108,7 +108,7 @@ Azure 虚拟机 (VM) 经历的不同状态可以归类为“预配”状态和�
  ]</code><br>
 </td>
 <td>
-<p><b>不计费&#42;</b></p>
+<p><b>计费&#42;</b></p>
 </td>
 </tr>
 <tr>
@@ -151,7 +151,7 @@ Azure 虚拟机 (VM) 经历的不同状态可以归类为“预配”状态和�
 </table>
 
 
-&#42;某些 Azure 资源（例如磁盘和网络）不管实例状态如何均收费。 
+&#42;*某些 Azure 资源（如磁盘和网络）会产生费用。 实例上的软件许可证不产生费用。
 
 ## <a name="provisioning-states"></a>预配状态
 

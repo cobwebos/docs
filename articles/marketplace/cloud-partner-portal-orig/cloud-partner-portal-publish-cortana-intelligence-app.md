@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/18/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 74cde720af012b3355b813cf6da2b2bdf10b9b8e
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: a6357640ceeb7c5f1bde4eea85aa5265990935f4
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51257201"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54157150"
 ---
 # <a name="publish-a-cortana-intelligence-offer-using-the-cloud-partner-portal"></a>使用云合作伙伴门户发布 Cortana Intelligence 产品/服务
 
@@ -50,7 +50,7 @@ ms.locfileid: "51257201"
 
 “产品/服务设置”提供了产品/服务的基本信息，如产品/服务 ID、发布者 ID 和产品/服务名称。
 
-### <a name="offer-id"></a>套餐 ID
+### <a name="offer-id"></a>产品/服务 ID
 
 这是发布者个人资料内产品/服务的唯一标识符。
 此 ID 显示在产品 URL 中。 它只能由小写字母数字字符或短划线 (-) 组成。 ID 不得以破折号结尾，且长度不得超过 50 个字符。 
@@ -126,7 +126,7 @@ ms.locfileid: "51257201"
 3. [开始录制](https://support.office.com/article/Share-sites-or-documents-with-people-outside-your-organization-80e49744-e30f-44db-8d51-16661b1d4232)
 4. 停止录制后，请[使用录制管理器发布录制](https://support.office.com/article/Recording-Manager-save-and-publish-59a3beb7-c700-40cf-ab21-bc82a2b06351)
 
-将录制的视频上传到允许生成共享 URL 的服务。 例如，[OneDrive 或 Sharepoint 中的来宾链接](https://support.office.com/article/Share-sites-or-documents-with-people-outside-your-organization-80e49744-e30f-44db-8d51-16661b1d4232)。
+将录制的视频上传到允许生成共享 URL 的服务。 例如，[OneDrive 或 SharePoint 中的来宾链接](https://support.office.com/article/Share-sites-or-documents-with-people-outside-your-organization-80e49744-e30f-44db-8d51-16661b1d4232)。
 
 ### <a name="supported-regions"></a>支持的区域
 
@@ -292,7 +292,7 @@ ms.locfileid: "51257201"
 
 选择用于存储潜在客户的 CRM 系统。 
 
-如果使用的是下列 CRM 系统之一，请选择“Azure 表”：Salesforce、Marketo 或 Microsoft Dynamics CRM。 
+如果使用这些 CRM 系统之一，请选择“Azure 表”：Salesforce、Marketo 或 Microsoft Dynamics CRM。 
 
 若要详细了解要使用的 CRM 系统，请选择以下受支持系统的链接之一。
 

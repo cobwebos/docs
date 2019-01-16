@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 09/06/2018
 ms.author: jeffpatt
 ms.component: files
-ms.openlocfilehash: c9e31bdc2b526c442b4ac62d98725254a38e5967
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 852ffdafefeef7f4b8fd6bf3a9c5d175d872e077
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53794543"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54157626"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>对 Azure 文件同步进行故障排除
 使用 Azure 文件同步，即可将组织的文件共享集中在 Azure 文件中，同时又不失本地文件服务器的灵活性、性能和兼容性。 Azure 文件同步可将 Windows Server 转换为 Azure 文件共享的快速缓存。 可以使用 Windows Server 上可用的任意协议本地访问数据，包括 SMB、NFS 和 FTPS。 并且可以根据需要在世界各地具有多个缓存。
@@ -145,11 +145,13 @@ Set-AzureRmStorageSyncServerEndpoint `
 
 服务器终结点可能会出于以下原因而未记录同步活动：
 
-- 服务器已达到最大并发同步会话数。 Azure 文件同步目前支持每个处理器 2 个活动或每个服务器最多 8 个活动的同步会话。
+- 该服务器具有活动的 VSS 同步会话 (SnapshotSync)。 某个服务器终结点的 VSS 同步会话处于活动状态时，在 VSS 同步会话完成之前，同一卷上的其他服务器终结点无法启动同步会话。
 
-- 该服务器具有活动的 VSS 同步会话 (SnapshotSync)。 某个服务器终结点的 VSS 同步会话处于活动状态的时，在 VSS 同步会话完成之前，该服务器上的其他服务器终结点无法启动同步会话。
+    若要检查服务器上当前的同步活动，请参阅[如何监视当前同步会话的进度？](#how-do-i-monitor-the-progress-of-a-current-sync-session)。
 
-若要检查服务器上当前的同步活动，请参阅[如何监视当前同步会话的进度？](#how-do-i-monitor-the-progress-of-a-current-sync-session)。
+- 服务器已达到最大并发同步会话数。 
+    - 代理版本 4.x 及更高版本：限制因可用系统资源而异。
+    - 代理版本 3.x：每个处理器 2 个活动的同步会话，或每个服务器最多 8 个活动的同步会话。
 
 > [!Note]  
 > 如果已注册服务器边栏选项卡上的服务器状态为“显示脱机”，请执行[服务终结点运行状态为“无活动”或“挂起”，已注册服务器边栏选项卡上的服务器状态为“显示脱机”](#server-endpoint-noactivity)部分中记录的步骤。
@@ -244,13 +246,14 @@ PerItemErrorCount: 1006.
 **ItemResults 日志 - 按项列出的同步错误**  
 | HRESULT | HRESULT（十进制） | 错误字符串 | 问题 | 补救 |
 |---------|-------------------|--------------|-------|-------------|
-| 0x80c80065 | -2134376347 | ECS_E_DATA_TRANSFER_BLOCKED | 文件在同步期间生成了永久性错误，因此每天只尝试同步一次。 可在以前的事件日志中找到基本错误。 | 在代理 R2 (2.0) 和更高版本中，会显示原始错误而不是此错误。 请升级到最新的代理以查看基础错误，或查看以前的事件日志，找到原始错误的原因。 |
-| 0x7b | 123 | ERROR_INVALID_NAME | 文件或目录名称无效。 | 重命名有问题的文件或目录。 请参阅 [Azure 文件命名准则](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#directory-and-file-names)，以及下面的不受支持的字符列表。 |
-| 0x8007007b | -2147024773 | STIERR_INVALID_DEVICE_NAME | 文件或目录名称无效。 | 重命名有问题的文件或目录。 请参阅 [Azure 文件命名准则](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#directory-and-file-names)，以及下面的不受支持的字符列表。 |
-| 0x80c8031d | -2134375651 | ECS_E_CONCURRENCY_CHECK_FAILED | 文件已更改，但同步尚未检测到此项更改。检测到此项更改后，同步将会恢复。 | 无需采取措施。 |
-| 0x80c80018 | -2134376424 | ECS_E_SYNC_FILE_IN_USE | 文件已被使用，因此无法将其同步。 不再使用该文件时，会将其同步。 | 无需采取措施。 Azure 文件同步每天在服务器上创建临时 VSS 快照一次，以同步包含开放句柄的文件。 |
-| 0x20 | 32 | ERROR_SHARING_VIOLATION | 文件已被使用，因此无法将其同步。 不再使用该文件时，会将其同步。 | 无需采取措施。 |
 | 0x80c80207 | -2134375929 | ECS_E_SYNC_CONSTRAINT_CONFLICT | 由于尚未同步某个相关的文件夹，无法同步文件或目录更改。 在同步相关的更改后，此项将会同步。 | 无需采取措施。 |
+| 0x7b | 123 | ERROR_INVALID_NAME | 文件或目录名称无效。 | 重命名有问题的文件或目录。 有关详细信息，请参阅[处理不支持的字符](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#handling-unsupported-characters)。 |
+| 0x8007007b | -2147024773 | STIERR_INVALID_DEVICE_NAME | 文件或目录名称无效。 | 重命名有问题的文件或目录。 有关详细信息，请参阅[处理不支持的字符](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#handling-unsupported-characters)。 |
+| 0x80c80018 | -2134376424 | ECS_E_SYNC_FILE_IN_USE | 文件已被使用，因此无法将其同步。 不再使用该文件时，会将其同步。 | 无需采取措施。 Azure 文件同步每天在服务器上创建临时 VSS 快照一次，以同步包含开放句柄的文件。 |
+| 0x80c8031d | -2134375651 | ECS_E_CONCURRENCY_CHECK_FAILED | 文件已更改，但同步尚未检测到此项更改。检测到此项更改后，同步将会恢复。 | 无需采取措施。 |
+| 0x80c8603e | -2134351810 | ECS_E_AZURE_STORAGE_SHARE_SIZE_LIMIT_REACHED | 无法同步该文件，因为已达到 Azure 文件共享限制。 | 要解决此问题，请参阅疑难解答指南中的[达到 Azure 文件共享存储限制](https://docs.microsoft.com/en-us/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#-2134351810)部分。 |
+| 0x80070005 | -2147024891 | E_ACCESSDENIED | 如果文件由不受支持的解决方案（如 NTFS EFS）加密或文件具有删除待定状态，则会发生此错误。 | 如果文件由不受支持的解决方案加密，请解密该文件并使用支持的加密解决方案。 有关支持解决方案的列表，请参阅计划指南中的[加密解决方案](https://docs.microsoft.com/en-us/azure/storage/files/storage-sync-files-planning#encryption-solutions)部分。 如果文件处于删除待定状态，一旦关闭所有打开的文件句柄，将删除该文件。 |
+| 0x20 | 32 | ERROR_SHARING_VIOLATION | 文件已被使用，因此无法将其同步。 不再使用该文件时，会将其同步。 | 无需采取措施。 |
 | 0x80c80017 | -2134376425 | ECS_E_SYNC_OPLOCK_BROKEN | 同步期间更改了文件，因此需要重新同步。 | 无需采取措施。 |
 
 #### <a name="handling-unsupported-characters"></a>处理不受支持的字符
@@ -549,6 +552,16 @@ PerItemErrorCount: 1006.
 | **所需的补救措施** | 是 |
 
 确保路径存在、位于本地 NTFS 卷上，且不是重新分析点或现有服务器终结点。
+
+<a id="-2134375817"></a>同步失败，因为筛选器驱动程序版本与代理版本不兼容  
+| | |
+|-|-|
+| **HRESULT** | 0x80C80277 |
+| **HRESULT（十进制）** | -2134375817 |
+| **错误字符串** | ECS_E_INCOMPATIBLE_FILTER_VERSION |
+| **所需的补救措施** | 是 |
+
+发生此错误的原因是加载的云分层筛选器驱动程序 (StorageSync.sys) 版本与 Storage Sync Agent (FileSyncSvc) 服务不兼容。 如果已升级 Azure 文件同步代理，请重启服务器以完成安装。 如果错误继续发生，请卸载代理，重启服务器并重新安装 Azure 文件同步代理。
 
 <a id="-2134376373"></a>**服务当前不可用。**  
 | | |

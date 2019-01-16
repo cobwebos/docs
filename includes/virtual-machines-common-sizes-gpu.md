@@ -8,16 +8,21 @@ ms.topic: include
 ms.date: 11/14/2018
 ms.author: cynthn;azcspmt;jonbeck
 ms.custom: include file
-ms.openlocfilehash: bc311ca5c49584ae3715fa4507e1fd678bcc93bb
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: db37515926bf3872a1183467e0449035f7bf6097
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53007921"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54122830"
 ---
 GPU 优化 VM 大小是具有单个或多个 NVIDIA GPU 的专用虚拟机。 这些大小是针对计算密集型、图形密集型和可视化工作负荷设计的。 本文介绍有关 GPU、vCPU、数据磁盘和 NIC 的数量和类型的信息。 此分组中的每个大小还包括存储吞吐量及网络带宽。 
 
 * NC、NCv2、NCv3 ND 和 NDv2 的大小针对计算密集型和网络密集型应用程序和算法进行了优化。 一些示例包括基于 CUDA 和 OpenCL 的应用程序和模拟、AI 和深度学习。 NCv3 系列专用于采用 NVIDIA Tesla V100 GPU 的高性能计算工作负载。  ND 系列专用于进行深度学习的培训和推理方案。 该系列使用 NVIDIA Tesla P40 GPU。
+
+* NC 系列采用 Intel Xeon® E5-2690 v3 2.60GHz 处理器。
+
+* NCSv3、NCSv2 和 ND 系列采用 Intel Xeon® E5-2690 v4 2.60GHz 处理器。
+                      
 * **NV 和 NVv2** 大小已使用 OpenGL 和 DirectX 之类的框架针对远程可视化效果、流式处理、游戏、编码和 VDI 方案进行了优化和设计。  这些 VM 由 NVIDIA Tesla M60 GPU 提供支持。
 
 
