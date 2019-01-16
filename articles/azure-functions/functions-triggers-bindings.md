@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 09/24/2018
 ms.author: cshoe
-ms.openlocfilehash: ba2441044d63e63b969054e84e163352d2b376e8
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.openlocfilehash: a44b348e0c41e96c575555f2b5c275e196284c5b
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53993779"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54074502"
 ---
 # <a name="azure-functions-triggers-and-bindings-concepts"></a>Azure Functions 触发器和绑定概念
 
@@ -674,6 +674,10 @@ public class BlobName
 ## <a name="functionjson-file-schema"></a>function.json 文件架构
 
 *function.json* 文件架构位于 [http://json.schemastore.org/function](http://json.schemastore.org/function)。
+
+## <a name="testing-bindings"></a>测试绑定
+
+在本地开发函数时，可使用 Visual Studio 2017 或 Visual Studio Code 测试绑定。 若要了解详细信息，请参阅[在 Azure Functions 中测试代码的策略](functions-test-a-function.md)。 此外，还可以使用 REST API 调用非 HTTP 绑定。 若要了解详细信息，请参阅[手动运行非 HTTP 触发的函数](functions-manually-run-non-http.md)。
 
 ## <a name="handling-binding-errors"></a>处理绑定错误
 

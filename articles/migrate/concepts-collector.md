@@ -4,15 +4,15 @@ description: 介绍 Azure Migrate 中的收集器设备。
 author: snehaamicrosoft
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 12/05/2018
+ms.date: 01/08/2019
 ms.author: snehaa
 services: azure-migrate
-ms.openlocfilehash: 255f5b34e53ddfb1a503130f0bccbac16a420f9a
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 6f843fedafd68d4e04d181af2c6d7542baaf0144
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53255969"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54104195"
 ---
 # <a name="about-the-collector-appliance"></a>关于收集器设备
 
@@ -63,7 +63,7 @@ Azure Migrate 收集器是一种轻量级设备，可用于在迁移到 Azure �
     - 如果打算迁移到 Azure 商业版云，请选择 Azure 全局。
     - 根据此处指定的云，设备将向各自的终结点发送已发现的元数据。
 - **检查 Internet 连接**：收集器可直接或通过代理连接到 Internet。
-    - 先决条件检查验证是否能连接到[必需和可选 URL](#connect-to-urls)。
+    - 先决条件检查验证是否能连接到[必需和可选 URL](#urls-for-connectivity)。
     - 如果可以直接连接到 Internet，则无需特定操作，否则要确保收集器可以访问所需的 URL。
     - 如果要通过代理进行连接，请注意[下面的要求](#connect-via-a-proxy)。
 - **验证时间同步**：收集器应与 Internet 时间服务器同步，以确保向服务发出的请求经过身份验证。
@@ -105,7 +105,7 @@ Azure Migrate 收集器是一种轻量级设备，可用于在迁移到 Azure �
 
 
 
-### <a name="connect-to-urls"></a>连接到 URL
+### <a name="urls-for-connectivity"></a>用于连接的 URL
 
 验证连接检查的方法是连接到一系列 URL。
 

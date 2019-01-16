@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/16/2018
 ms.author: aljo
-ms.openlocfilehash: 9482b1a33caaf73838101431dfc1faac7020ee42
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: cd4871e3e4613973a50c8ee0994fe0440150eddf
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "40234647"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54044019"
 ---
 # <a name="create-a-service-fabric-cluster-resource-manager-template"></a>创建 Service Fabric 群集 Resource Manager 模板
 
@@ -258,6 +258,14 @@ Test-AzureRmResourceGroupDeployment -ResourceGroupName "myresourcegroup" -Templa
 ## <a name="next-steps"></a>后续步骤
 现在，你已有了用于群集的模板，请学习如何[将群集部署到 Azure](service-fabric-cluster-creation-via-arm.md)。  在部署生产群集之前，如果尚未阅读[生产就绪情况核对清单](service-fabric-production-readiness-checklist.md)，请阅读该内容。
 
+若要了解本文中部署的资源的 JSON 语法和属性，请参阅：
+
+* [Microsoft.ServiceFabric/clusters](/azure/templates/microsoft.servicefabric/clusters)
+* [Microsoft.Storage/storageAccounts](/azure/templates/microsoft.storage/storageaccounts)
+* [Microsoft.Network/virtualNetworks](/azure/templates/microsoft.network/virtualnetworks)
+* [Microsoft.Network/publicIPAddresses](/azure/templates/microsoft.network/publicipaddresses)
+* [Microsoft.Network/loadBalancers](/azure/templates/microsoft.network/loadbalancers)
+* [Microsoft.Compute/virtualMachineScaleSets](/azure/templates/microsoft.compute/virtualmachinescalesets)
 
 <!-- Links -->
 [service-fabric-cluster-security]: service-fabric-cluster-security.md

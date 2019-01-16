@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 10/08/2018
 ms.author: raynew
-ms.openlocfilehash: 37f0ba800cca4b096691a8bb6b43eb33a636d833
-ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
+ms.openlocfilehash: c36572230387ffc33a46913dbcc1259ea65f84f5
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52284857"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54104227"
 ---
 # <a name="contoso---scale-a-migration-to-azure"></a>Contoso - 到 Azure 的大规模迁移
 
@@ -30,7 +30,7 @@ ms.locfileid: "52284857"
 [文章 4：在 Azure VM 和 SQL 数据库托管实例上重新托管应用](contoso-migration-rehost-vm-sql-managed-instance.md) | Contoso 将其本地 SmartHotel360 应用直接迁移到 Azure。 Contoso 使用 [Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/site-recovery-overview) 迁移应用前端 VM。 Contoso 使用 [Azure 数据库迁移服务](https://docs.microsoft.com/azure/dms/dms-overview)将应用数据库迁移到 Azure SQL 数据库托管实例。 | 可用   
 [文章 5：在 Azure VM 上重新托管应用](contoso-migration-rehost-vm.md) | Contoso 使用 Site Recovery 服务将其 SmartHotel360 应用 VM 迁移到 Azure VM。 | 可用
 [文章 6：在 Azure VM 和 SQL Server AlwaysOn 可用性组中重新托管应用](contoso-migration-rehost-vm-sql-ag.md) | Contoso 使用 Site Recovery 来迁移应用 VM，同时使用数据库迁移服务将应用数据库迁移到受 AlwaysOn 可用性组保护的 SQL Server 群集，从而迁移应用。 | 可用
-[文章 7：将 Linux 应用重新托管到 Azure VM](contoso-migration-rehost-linux-vm.md) | Contoso 使用 Site Recovery 服务将其 Linux osTicket 应用直接迁移到 Azure VM。 | 可用
+[文章 7：在 Azure VM 上重新托管 Linux 应用](contoso-migration-rehost-linux-vm.md) | Contoso 使用 Site Recovery 服务将其 Linux osTicket 应用直接迁移到 Azure VM。 | 可用
 [文章 8：在 Azure VM 和 Azure Database for MySQL 上重新托管 Linux 应用](contoso-migration-rehost-linux-vm-mysql.md) | Contoso 使用 Site Recovery 将其 Linux osTicket 应用迁移到 Azure VM。 它使用 MySQL Workbench 将应用数据库迁移到 Azure Database for MySQL。 | 可用
 [文章 9：在 Azure Web 应用和 Azure SQL 数据库中重构应用](contoso-migration-refactor-web-app-sql.md) | Contoso 将其 SmartHotel360 应用迁移到 Azure Web 应用，并使用数据库迁移助手将应用数据库迁移到 Azure SQL Server 实例。 | 可用    
 [文章 10：在 Azure Web 应用和 Azure Database for MySQL 中重构 Linux 应用](contoso-migration-refactor-linux-app-service-mysql.md) | Contoso 将其 Linux osTicket 应用迁移到多个站点中的 Azure Web 应用。 该 Web 应用与 GitHub 集成以便持续交付。 Contoso 将应用数据库迁移到 Azure Database for MySQL 实例。 | 可用
@@ -44,11 +44,11 @@ ms.locfileid: "52284857"
 IT 领导团队与其业务合作伙伴密切协作，以了解合作伙伴希望在本次迁移中实现的目标：
 
 - **满足业务增长**：Contoso 在不断壮大，这给本地系统和基础结构造成了压力。
-- **增加效率**：Contoso 需要摒弃不必要的流程，简化开发人员和用户流程。 业务要求 IT 反应迅速，不浪费时间金钱，从而更快满足客户需求。
+- **提高效率**：Contoso 需要删除不必要的过程，为开发者和用户简化流程。 业务要求 IT 反应迅速，不浪费时间金钱，从而更快满足客户需求。
 - **提高灵活性**：Contoso IT 需要对业务需求更加敏感。 它必须能够抢在市场变化之前作出反应，这样才能在全球经济中取得成功。 同时它不能阻碍发展，成为业务的绊脚石。
-- 扩展：随着业务成功发展，Contoso IT 团队必须提供能够同步成长的系统。
+- **缩放**：随着业务成功发展，Contoso IT 团队必须提供能够同步成长的系统。
 - **改进成本模型**：Contoso 希望降低 IT 预算中的资本需求。  Contoso 希望使用云功能进行扩展并降低昂贵硬件的需求。
-- **较低许可成本**：Contoso 希望将云成本降至最低。
+- **更低的许可成本**：Contoso 希望云成本降至最低。
 
 
 ## <a name="migration-goals"></a>迁移目标
@@ -89,7 +89,7 @@ Contoso 云团队制定了本次迁移的目标。 这些目标用于确定最�
 上述阶段在组织中不是连续的。 Contoso 的迁移项目的每个部分将处于评估和迁移过程的不同阶段。 优化、安全和管理将贯穿整个过程。
 
 
-## <a name="phase-1-assess"></a>第 1 阶段：评估
+## <a name="phase-1-assess"></a>阶段 1：评估
 
 Contoso 从发现和评估本地应用、数据和基础结构开始迁移过程。 下面是 Contoso 要做的事项：
 
@@ -174,7 +174,7 @@ Contoso 确定用于发现、评估和生成清单的工具。 Contoso 可确定
     - Azure Migrate 通过运行 Migrate 收集器的 VMware VM 执行发现。 相同收集器可以发现不同 vCenter 服务器上的 VM，并向不同项目发送数据。
 1. 评估就绪性：评估本地计算机是否适合在 Azure 中运行。 评估内容包括：
     - 大小建议：获取 Azure VM 的大小建议，具体取决于本地 VM 的性能历史记录。
-    - 估算每月成本：获取在 Azure 中运行本地计算机的估算成本。
+    - 每月估计成本：获取在 Azure 中运行本地计算机的估算成本。
 2. 标识依赖项：可视化本地计算机的依赖项，以创建用于评估和迁移的最佳计算机组。
 
 
@@ -289,8 +289,8 @@ Contoso 需要了解如何根据容量注意事项部署这些组件。
 --- | ---
 **最大每日更改率** | 单个进程服务器可以处理多达 2 TB 的每日更改率。 由于 VM 只能使用一个进程服务器，因此复制的 VM 支持的最大每日数据更改率为 2 TB。
 **最大吞吐量** | 标准 Azure 存储帐户每秒最多可以处理 20,000 个请求，因此要复制的 VM 中的每秒输入/输出操作数 (IOPS) 应保持在此限制内。 例如，如果 VM 有 5 个磁盘，每个磁盘在 VM 上生成 120 IOPS（8K 大小），则处于 Azure 的单磁盘 IOPS 限制 (500) 内。<br/><br/> 注意：所需的存储帐户数等于源计算机总 IOPS 除以 20,000。 在 Azure 中，一个复制的计算机只能属于一个存储帐户。
-**配置服务器** | 根据 Contoso 总共复制 100=200 VM 的估计和[配置服务器大小调整要求](../site-recovery/site-recovery-plan-capacity-vmware.md#size-recommendations-for-the-configuration-server)，Contoso 估计需要如下所示的配置服务器计算机：<br/><br/> CPU：16 个 vCPU（2 个插槽 * 8 个核心 @ 2.5 GHz）<br/><br/> 内存：32 GB<br/><br/> 缓存磁盘：1 TB<br/><br/> 数据更改率：1-2 TB。<br/><br/> 除大小调整要求外，Contoso 还需要确保配置服务器处于最佳位置，即应位于与将迁移的 VM 相同的网络和 LAN 区段中。
-**进程服务器** | Contoso 将部署独立的专用进程服务器，使其能够复制 100-200 个 VM：<br/><br/> CPU：16 个 vCPU（2 个插槽 * 8 个核心 @ 2.5 GHz）<br/><br/> 内存：32 GB<br/><br/> 缓存磁盘：1 TB<br/><br/> 数据更改率：1-2 TB。<br/><br/> 进程服务器将努力工作，并且在此情况下，它们应位于可以处理复制所需的磁盘 I/O、网络流量和 CPU 的 ESXi 主机。 为此，Contoso 将考虑使用专用主机。 
+**配置服务器** | 根据 Contoso 总共复制 100=200 VM 的估计和[配置服务器大小调整要求](../site-recovery/site-recovery-plan-capacity-vmware.md#size-recommendations-for-the-configuration-server-and-inbuilt-process-server)，Contoso 估计需要如下所示的配置服务器计算机：<br/><br/> CPU：16 个 vCPU（2 个插槽 * 8 个核心 @ 2.5 GHz）<br/><br/> 内存: 32 GB<br/><br/> 缓存磁盘：1 TB<br/><br/> 数据更改率：1 TB 至 2 TB。<br/><br/> 除大小调整要求外，Contoso 还需要确保配置服务器处于最佳位置，即应位于与将迁移的 VM 相同的网络和 LAN 区段中。
+**进程服务器** | Contoso 将部署独立的专用进程服务器，使其能够复制 100-200 个 VM：<br/><br/> CPU：16 个 vCPU（2 个插槽 * 8 个核心 @ 2.5 GHz）<br/><br/> 内存: 32 GB<br/><br/> 缓存磁盘：1 TB<br/><br/> 数据更改率：1 TB 至 2 TB。<br/><br/> 进程服务器将努力工作，并且在此情况下，它们应位于可以处理复制所需的磁盘 I/O、网络流量和 CPU 的 ESXi 主机。 为此，Contoso 将考虑使用专用主机。 
 **网络** | Contoso 检查了当前的站点到站点 VPN 基础结构，并决定实现 Azure ExpressRoute。 此实现至关重要，因为它可降低延迟，并将带宽提高到 Contoso 的美国东部 2 的主要 Azure 区域。<br/><br/> **监视**：Contoso 需要密切监视源自进程服务器的数据流。 如果数据使网络带宽过载，Contoso 将考虑[限制进程服务器带宽](../site-recovery/site-recovery-plan-capacity-vmware.md#control-network-bandwidth)。
 **Azure 存储** | 对于迁移，Contoso 还需创建适当类型和数量的目标 Azure 存储帐户。  Site Recovery 将 VM 数据复制到 Azure 存储。<br/><br/> Site Recovery 可复制到标准或高级 (SSD) 存储帐户。<br/><br/> 若要确定存储，Contoso 必须检查[存储限制](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage)，并随着时间的推移考虑预期的增长和使用量的增加。 鉴于速度和迁移优先级，Contoso 决定使用高级存储帐户。<br/><br/> 迁移过程期间，他们将创建并重复使用多个存储帐户。
 Contoso 已决定对要部署到 Azure 的所有 VM 使用托管磁盘。  所需的 IOPS 将确定磁盘为标准版 (HDD) 还是高级版 (SSD)。<br/>.<br/>
@@ -327,7 +327,7 @@ DMS 不是唯一的 Microsoft 数据库迁移工具。 获取[工具和服务比
 - 此外，还可使用多种[合作伙伴工具](https://azure.microsoft.com/migration/partners/)进行迁移。
 
 
-## <a name="phase-3-optimize"></a>第 3 阶段：优化
+## <a name="phase-3-optimize"></a>阶段 3：优化
 
 Contoso 将资源移到 Azure 后，他们需要对其进行简化来提高性能，并使用成本管理工具实现 ROI 最大化。 鉴于 Azure 是按需付费服务，因此了解系统表现并确保其大小合适对 Contoso 至关重要。
 

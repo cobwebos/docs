@@ -10,16 +10,16 @@ ms.reviewer: estfan, LADocs
 ms.assetid: d565873c-6b1b-4057-9250-cf81a96180ae
 ms.topic: article
 ms.date: 03/15/2018
-ms.openlocfilehash: 1c8abc153084f0c6491cab3677b93f8c450ad908
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 638b29dd2a15d0467c41e20ecfed9f333b34c04d
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50229411"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54061051"
 ---
 # <a name="create-streaming-customer-insights-dashboard-with-azure-logic-apps-and-azure-functions"></a>使用 Azure 逻辑应用和 Azure Functions 创建流式处理客户见解仪表板
 
-Azure 提供无服务器工具，可帮助在云中快速构建和托管应用程序，而无需考虑基础结构问题。 在本教程中，我们将创建一个仪表板，以便针对客户反馈触发相关操作、通过机器学习分析反馈，以及通过 Power BI 或 Azure Data Lake 之类的源发布见解。
+Azure 提供[无服务器](https://azure.microsoft.com/solutions/serverless/)工具，可帮助在云中快速构建和托管应用程序，而无需考虑基础结构问题。 在本教程中，我们将创建一个仪表板，以便针对客户反馈触发相关操作、通过机器学习分析反馈，以及通过 Power BI 或 Azure Data Lake 之类的源发布见解。
 
 对于此解决方案，我们将使用无服务器应用的以下关键 Azure 组件：[Azure Functions](https://azure.microsoft.com/services/functions/) 和 [Azure 逻辑应用](https://azure.microsoft.com/services/logic-apps/)。
 Azure 逻辑应用在云中提供无服务器工作流引擎，以便能够跨无服务器组件提供业务流程，以及连接到 200 多个服务和 API。 Azure Functions 在云中提供无服务器计算。 此解决方案使用 Azure Functions 根据预定义的关键字来标记客户推文。
@@ -34,7 +34,7 @@ Azure 逻辑应用在云中提供无服务器工作流引擎，以便能够跨�
 
    如果你不熟悉逻辑应用，请查看 [Azure 门户快速入门](../logic-apps/quickstart-create-first-logic-app-workflow.md)或 [Visual Studio 快速入门](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md)。
 
-2. 在逻辑应用设计器中，找到并添加可执行以下操作的 Twitter 触发器：“发布新推文时”
+2. 在逻辑应用设计器中，找到并添加可执行以下操作的 Twitter 触发器：**发布新推文时**
 
 3. 将此触发器设置为根据关键字或井号标签侦听推文。
 
@@ -60,7 +60,7 @@ Azure 逻辑应用在云中提供无服务器工作流引擎，以便能够跨�
 
 获取推文数据以及有关推文的见解后，可以使用其他许多相关的连接器及其操作：
 
-* **Power BI - 向流式处理数据集添加行**：在 Power BI 仪表板上查看传入的推文。
+* **Power BI - 将行添加到流式处理数据集**：查看 Power BI 仪表板上的传入推文。
 * **Azure Data Lake - 追加文件**：将客户数据添加到要包括在分析作业中的 Azure Data Lake 数据集。
 * **SQL - 添加行**：将数据存储在数据库中，方便以后检索。
 * **Slack - 发送消息**：告知 Slack 通道存在负面反馈，可能需要采取措施。

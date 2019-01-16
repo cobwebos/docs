@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/23/2018
 ms.author: raynew
-ms.openlocfilehash: 6b4b1b74ace534517157edc20c33236d516205c5
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: c2afd1c5a85ec393acfb0f754dd4ca9d77162061
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52635010"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54065488"
 ---
 # <a name="contoso-migration-assess-on-premises-workloads-for-migration-to-azure"></a>Contoso 迁移：评估本地工作负荷是否适合迁移到 Azure
 
@@ -29,7 +29,7 @@ ms.locfileid: "52635010"
 [文章 4：在 Azure VM 和 SQL 数据库托管实例上重新托管应用](contoso-migration-rehost-vm-sql-managed-instance.md) | Contoso 将其本地 SmartHotel360 应用直接迁移到 Azure。 它使用 Azure Site Recovery 服务迁移应用前端。 它使用 Azure 数据库迁移服务将应用数据库迁移到 Azure SQL 数据库托管实例。 | 可用
 [文章 5：在 Azure VM 上重新托管应用](contoso-migration-rehost-vm.md) | Contoso 使用 Site Recovery 服务将其 SmartHotel360 应用 VM 迁移到 Azure VM。 | 可用
 [文章 6：在 Azure VM 和 SQL Server AlwaysOn 可用性组中重新托管应用](contoso-migration-rehost-vm-sql-ag.md) | Contoso 使用 Site Recovery 来迁移应用 VM，同时使用数据库迁移服务将应用数据库迁移到受 AlwaysOn 可用性组保护的 SQL Server 群集，从而迁移 SmartHotel360 应用。 | 可用
-[文章 7：将 Linux 应用重新托管到 Azure VM](contoso-migration-rehost-linux-vm.md) | Contoso 使用 Site Recovery 服务将其 Linux osTicket 应用直接迁移到 Azure VM。 | 可用
+[文章 7：在 Azure VM 上重新托管 Linux 应用](contoso-migration-rehost-linux-vm.md) | Contoso 使用 Site Recovery 服务将其 Linux osTicket 应用直接迁移到 Azure VM。 | 可用
 [文章 8：在 Azure VM 和 Azure Database for MySQL 上重新托管 Linux 应用](contoso-migration-rehost-linux-vm-mysql.md) | Contoso 使用 Site Recovery 将其 Linux osTicket 应用迁移到 Azure VM。 它使用 MySQL Workbench 将应用数据库迁移到 Azure Database for MySQL。 | 可用
 [文章 9：在 Azure Web 应用和 Azure SQL 数据库中重构应用](contoso-migration-refactor-web-app-sql.md) | Contoso 将其 SmartHotel360 应用迁移到 Azure Web 应用，并使用数据库迁移助手将应用数据库迁移到 Azure SQL Server 实例。 | 可用
 [文章 10：在 Azure Web 应用和 Azure Database for MySQL 中重构 Linux 应用](contoso-migration-refactor-linux-app-service-mysql.md) | Contoso 使用 Azure 流量管理器将其 Linux osTicket 应用迁移到多个 Azure 区域上的 Azure Web 应用，并与 GitHub 集成以实现持续交付。 Contoso 将应用数据库迁移到 Azure Database for MySQL 实例。 | 可用
@@ -68,10 +68,10 @@ osTicket<br/><br/> （Contoso 服务台应用） | 通过 MySQL PHP (LAMP) 在 L
 
 Contoso 的 IT 领导团队与公司的业务合作伙伴密切协作，以了解本次迁移要实现的业务目标：
 
-- **应对业务增长**：Contoso 正在发展壮大。 因此，公司的本地系统和基础结构面临的压力也越来越大。
-- **增加效率**：Contoso 需要摒弃不必要的流程，简化开发人员和用户流程。 业务要求 IT 反应迅速，不浪费时间或金钱，让公司可以更快满足客户需求。
+- **满足业务增长**：Contoso 在不断发展。 因此，公司的本地系统和基础结构面临的压力也越来越大。
+- **提高效率**：Contoso 需要摒弃不必要的流程，简化开发人员和用户流程。 业务要求 IT 反应迅速，不浪费时间或金钱，让公司可以更快满足客户需求。
 - **提高灵活性**：Contoso IT 需要对业务需求更加敏感。 它必须能够抢在市场变化之前作出反应，这样才能让公司在全球经济中取得成功。 同时它不能阻碍发展，成为业务的绊脚石。
-- **扩展**：随着公司业务成功发展，Contoso IT 部门必须提供能够同步成长的系统。
+- **缩放**：随着公司业务成功发展，Contoso IT 部门必须提供能够同步成长的系统。
 
 ## <a name="assessment-goals"></a>评估目标
 
@@ -136,11 +136,11 @@ Contoso 使用 Microsoft 工具进行迁移评估。 这些工具符合公司的
 
 > [!div class="checklist"]
 > * **步骤 1：下载并安装数据迁移助手**：Contoso 准备数据迁移助手，用于对本地 SQL Server 数据库进行评估。
-> * **步骤 2：使用数据迁移助手评估数据库**：Contoso 运行并分析数据库评估。
+> * **步骤 2：使用数据迁移助手评估本地数据库**：Contoso 运行并分析数据库评估。
 > * **步骤 3：使用 Azure Migrate 进行 VM 评估准备**：Contoso 设置本地帐户并调整 VMware 设置。
-> * **步骤 4：使用 Azure Migrate 发现本地 VM**：Contoso 创建 Azure Migrate 收集器 VM。 然后，Contoso 运行收集器以发现要评估的 VM。
-> * **步骤 5：使用 Azure Migrate 进行依赖关系分析准备**：Contoso 在 VM 上安装 Azure Migrate 代理，以便了解 VM 之间的依赖关系映射。
-> * **步骤 6：使用 Azure Migrate 评估 VM**：Contoso 检查依赖关系、对 VM 分组，然后运行评估。 在评估就绪以后，Contoso 对其进行分析，做好迁移准备。
+> * **步骤 4：使用 Azure Migrate 查找本地 VM**：Contoso 创建 Azure Migrate 收集器 VM。 然后，Contoso 运行收集器以发现要评估的 VM。
+> * **步骤 5：使用 Azure Migrate 进行依赖项分析准备**：Contoso 在 VM 上安装 Azure Migrate 代理，因此公司可以查看 VM 之间的依赖项映射。
+> * **步骤 6：使用 Azure Migrate 评估 VM**：Contoso 检查依赖项、对 VM 分组，然后运行评估。 在评估就绪以后，Contoso 对其进行分析，做好迁移准备。
 
 ## <a name="step-1-download-and-install-data-migration-assistant"></a>步骤 1：下载并安装数据迁移助手
 
@@ -217,8 +217,8 @@ Contoso 需要创建可供 Azure Migrate 用来自动发现待评估 VM 的 VMwa
 
 VM 发现需要 vCenter Server 中具有以下属性的只读帐户：
 
-- **用户类型**：至少为只读用户。
-- **权限**：对于数据中心对象，选中“传播到子对象”复选框。 对于“角色”，选中“只读”。
+- **用户类型**：至少一个只读用户。
+- **权限**：对于数据中心对象，请选中“传播到子对象”复选框。 对于“角色”，选中“只读”。
 - **详细信息**：用户在数据中心级别进行分配，因此可以访问数据中心内的所有对象。
 - 若要限制访问权限，请在选中“传播到子对象”的情况下将“无访问权”角色分配给子对象（vSphere 主机、数据存储、VM 和网络）。
 

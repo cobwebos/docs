@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 12/19/2018
 ms.author: martincoetzer
-ms.openlocfilehash: b6640e4ef9751e235c0310b0d725cd7e27ff2b40
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.openlocfilehash: caabc5a396c015b806778bfc5887b0708897101e
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53745493"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54101915"
 ---
 # <a name="create-a-resilient-access-control-management-strategy-with-azure-active-directory"></a>使用 Azure Active Directory 创建可复原的访问控制管理策略
 
@@ -230,7 +230,7 @@ ms.locfileid: "53745493"
 如果你的组织使用的是每用户 MFA 旧策略，则可以考虑以下替代方法：
 
 1. 如果有公司网络出站 IP 地址，则可以将它们添加为受信任的 IP，以便仅对公司网络启用身份验证。
- 2. 如果没有出站 IP 地址清单，或者你需要在公司网络内外均启用访问，则可以使用 CIDR 表示法将整个 IPv4 地址空间添加为受信任的 IP（例如，192.168.1.1/24）。
+ 2. 如果没有出站 IP 地址清单，或需要在公司网络内外均启用访问，则可通过指定 0.0.0.0/1 和 128.0.0.0/1 将整个 IPv4 地址空间添加为可信 IP。
 
 >[!IMPORTANT]
  > 如果通过扩大受信任 IP 地址的范围来取消阻止访问，则不会生成与 IP 地址关联的风险事件（例如，无法实现的行程或不熟悉的位置）。

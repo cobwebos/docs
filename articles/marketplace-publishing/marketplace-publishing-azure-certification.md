@@ -3,7 +3,7 @@ title: 通过 Microsoft Azure 认证计划获得预先批准 | Microsoft Docs
 description: 了解 Microsoft Azure 认证合作伙伴计划，以及如何在 Azure 市场上销售虚拟机映像、解决方案模板、开发人员服务或数据服务
 services: marketplace-publishing
 documentationcenter: na
-author: HannibalSII
+author: v-miclar
 manager: hascipio
 editor: ''
 tags: ''
@@ -15,12 +15,13 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/05/2016
 ms.author: hascipio
-ms.openlocfilehash: 300b94aea0c06092a5fb6bdecd49771ef1cd517d
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ROBOTS: NOINDEX
+ms.openlocfilehash: d0bfb4112aabda00355e670e1e20735bbe40a26b
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51234181"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54073754"
 ---
 # <a name="get-pre-approved-via-the-microsoft-azure-certified-program"></a>通过 Microsoft Azure 认证计划获得预先批准
 本文提供有关如何取得 Microsoft Azure 认证，从而将解决方案发布到 Azure 市场并取得营销权益资格的说明。 有关 Microsoft Azure 认证计划及其优势的详细概述，请访问 [http://azure.com/certified](http://azure.com/certified)。
@@ -38,7 +39,7 @@ ms.locfileid: "51234181"
 
 
 ## <a name="next-step"></a>后续步骤
-收到来自 Microsoft Azure 认证计划的预先批准后，则可以转到[将 Microsoft 帐户注册为 Microsoft 卖方](marketplace-publishing-accounts-creation-registration.md)。
+收到来自 Microsoft Azure 认证计划的预先批准后，则可以[将 Microsoft 帐户注册为 Microsoft 卖方](marketplace-publishing-accounts-creation-registration.md)。
 
 ## <a name="see-also"></a>另请参阅
 * [入门：如何将产品/服务发布到 Azure 市场](marketplace-publishing-getting-started.md)

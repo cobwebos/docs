@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/06/2018
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: dc78c8794923a180264058fc984a58aa29171c58
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: b992947245175803f8f2f8c6a5aba70fe13bde2c
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52978846"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54084015"
 ---
 内存优化 VM 大小提供适用于关系数据库服务器、中到大型规模的缓存和内存中分析的高内存 CPU 比率。 本文介绍了此分组中各个大小的 vCPU 数、数据磁盘数、NIC 数、存储吞吐量及网络带宽的相关信息。 
 
@@ -109,7 +109,7 @@ ACU：160-180 <sup>1</sup>
 | Standard_M64s  | 64 | 1,024   | 2,048 | 64 | 80,000 / 800 (6,348)| 40,000 / 1,000 | 8 / 16,000          |
 | Standard_M64ls  | 64 | 512    | 2,048 | 64 | 80,000 / 800 (6,348) | 40,000 / 1,000 | 8 / 16,000 |
 | Standard_M64ms&nbsp;<sup>3</sup>  | 64   | 1,792 | 2,048 | 64 | 80,000 / 800 (6,348)| 40,000 / 1,000 | 8 / 16,000          |
-| Standard_M128s&nbsp;<sup>2,&nbsp;3</sup> | 128  | 2,048        | 4,096  | 64 | 160,000/1,600 (12,696) | 80,000 / 2,000                            | 8 / 30,000          |
+| Standard_M128s&nbsp;<sup>2</sup> | 128  | 2,048        | 4,096  | 64 | 160,000/1,600 (12,696) | 80,000 / 2,000                            | 8 / 30,000          |
 | Standard_M128ms&nbsp;<sup>2,&nbsp;3,&nbsp;4</sup> | 128  | 3,892  | 4,096 | 64 | 160,000/1,600 (12,696) | 80,000 / 2,000                            | 8 / 30,000          |
 | Standard_M64   | 64  | 1,024 | 7,168  | 64 | 80,000 / 800 (1,228) | 40,000 / 1,000 | 8 / 16,000 |
 | Standard_M64m  | 64  | 1,792 | 7,168  | 64 | 80,000 / 800 (1,228) | 40,000 / 1,000 | 8 / 16,000 |

@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 08/23/2018
 ms.author: meladie
-ms.openlocfilehash: 3505d65b55807010904494079532fe5741e6df77
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 8fd3725a5f3cd45da261aca17bf0f89a3e5a5aa0
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53601162"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54055177"
 ---
 # <a name="azure-security-and-compliance-blueprint---paas-web-application-for-australia-protected"></a>Azure 安全性与合规性蓝图 - 符合 Australia PROTECTED 的 PaaS Web 应用程序
 
@@ -73,7 +73,7 @@ ms.locfileid: "53601162"
 ## <a name="deployment-architecture"></a>部署体系结构
 以下部分详细描述了部署和实施要素。
 
-**Azure 资源管理器**：[Azure 资源管理器](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)使客户能够作为一个组使用解决方案中的资源。 客户可以通过一个协调的操作为解决方案部署、更新或删除所有资源。 客户可以使用一个模板来完成部署，该模板适用于不同的环境，例如测试、过渡和生产。 资源管理器提供安全、审核和标记功能，以帮助客户在部署后管理资源。
+**Azure 资源管理器**：借助[Azure 资源管理器](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)，客户可以以组的形式使用解决方案中的资源。 客户可以通过一个协调的操作为解决方案部署、更新或删除所有资源。 客户可以使用一个模板来完成部署，该模板适用于不同的环境，例如测试、过渡和生产。 资源管理器提供安全、审核和标记功能，以帮助客户在部署后管理资源。
 
 **守护主机**：守护主机是允许用户访问此环境中已部署资源的单一入口点。 守护主机通过仅允许来自安全列表上的公共 IP 地址的远程流量来提供到已部署资源的安全连接。 要允许远程桌面 (RDP) 流量，需要在网络安全组中定义流量的源。
 
@@ -201,7 +201,7 @@ Azure 服务广泛记录系统和用户活动以及系统运行状况：
 
 **Azure Monitor**：[Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/) 通过使组织能够审核、创建警报和存档数据（包括在用户的 Azure 资源中跟踪 API 调用），帮助用户跟踪性能、维护安全性和确定趋势。
 
-Azure 网络观察程序： [Azure 网络观察程序]9 https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview) 提供所需的工具用于监视、诊断 Azure 虚拟网络中的资源、查看其指标，以及为其启用或禁用日志。  英联邦实体应为 NSG 和虚拟机实施网络观察程序流日志。 这些日志只能存储在专门用于存储安全日志的存储帐户中，对该存储帐户的访问应受基于角色的访问控制的保护。
+Azure 网络观察程序：[Azure 网络观察程序](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview)提供所需的工具，用于监视、诊断 Azure 虚拟网络中的资源、查看其指标，以及为其启用或禁用日志。  英联邦实体应为 NSG 和虚拟机实施网络观察程序流日志。 这些日志只能存储在专门用于存储安全日志的存储帐户中，对该存储帐户的访问应受基于角色的访问控制的保护。
 
 ## <a name="threat-model"></a>威胁模型
 

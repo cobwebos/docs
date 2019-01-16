@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 11/17/2018
 ms.author: yijenj
-ms.openlocfilehash: fad023b7593b0e13b05d081a11333f5e92c8ecef
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: da8fd886afa6028959247caa0c6e007df20fdd1b
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53602165"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54077736"
 ---
 # <a name="azure-partner-customer-usage-attribution"></a>Azure 合作伙伴和客户使用情况归因
 
@@ -36,10 +36,8 @@ Microsoft 合作伙伴可将 Azure 使用情况与其代表客户预配的任何
 
 ## <a name="use-resource-manager-templates"></a>使用 Resource Manager 模板
 
-许多合作伙伴解决方案都是使用资源管理器模板部署在客户订阅中的。 如果在 Azure 市场、GitHub 或 QuickStart 中拥有 Azure 资源管理器模板，则应该可以直接修改模板以启用这一新跟踪方法。 如果未使用 Azure 资源管理器模板，可以借助以下链接更好地了解资源管理器模板及创建方式： 
+许多合作伙伴解决方案都是使用资源管理器模板部署在客户订阅中的。 如果在 Azure 市场、GitHub 或 QuickStart 中拥有 Azure 资源管理器模板，则应该可以直接修改模板以启用这一新跟踪方法。 有关详细信息，请参阅[创建和部署第一个资源管理器模板](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-create-first-template)。
 
-*   [创建和部署第一个资源管理器模板](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-create-first-template)
-*   [为 Azure 市场创建解决方案模板](https://docs.microsoft.com/azure/marketplace-publishing/marketplace-publishing-solution-template-creation)
 
 ## <a name="add-a-guid-to-your-template"></a>将 GUID 添加到模板
 
@@ -270,11 +268,15 @@ Microsoft 为合作伙伴提供其模板的客户部署情况以及有关受其�
 
 **谁可以向模板添加 GUID？**
 
-跟踪资源旨在将合作伙伴的解决方案与客户的 Azure 使用情况关联。 使用情况数据与合作伙伴的 Microsoft 合作伙伴网络标识 (MPN ID) 相关联。 
+跟踪资源旨在将合作伙伴的解决方案与客户的 Azure 使用情况关联。 使用情况数据与合作伙伴的 Microsoft 合作伙伴网络标识 (MPN ID) 相关联。 报告通过 CPP 向合作伙伴提供。
 
 **添加 GUID 后是否可对其进行更改？**
  
 是，客户或实现合作伙伴可以自定义模板，并且可以更改或删除 GUID。 我们建议合作伙伴主动向其客户和合作伙伴介绍资源和 GUID 的角色，以防止删除或编辑跟踪 GUID。 更改 GUID 只会影响新的部署和资源，而不会影响现有部署和资源。
+
+**报告何时可用？**
+
+报告的 beta 版本应该很快就会上线。 报告将集成到 CPP 中。
 
 **我是否可以跟踪通过非 Microsoft 存储库（如 GitHub）部署的模板？**
 

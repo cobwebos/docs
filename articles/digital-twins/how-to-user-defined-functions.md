@@ -1,20 +1,20 @@
 ---
 title: 如何在 Azure 数字孪生中创建用户定义函数 | Microsoft Docs
-description: 有关如何使用 Azure 数字孪生创建用户定义的函数、匹配程序和角色分配的指南。
+description: 如何在 Azure 数字孪生中创建用户定义的函数、匹配程序和角色分配。
 author: alinamstanciu
 manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 12/27/2018
+ms.date: 01/02/2019
 ms.author: alinast
 ms.custom: seodec18
-ms.openlocfilehash: 91c0b5700fbc648f1fcd1355a438694cecc07a04
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.openlocfilehash: 7208f96d99127247b51510e0c43c1733bb327dfb
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53993394"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54076240"
 ---
 # <a name="how-to-create-user-defined-functions-in-azure-digital-twins"></a>如何在 Azure 数字孪生中创建用户定义函数
 
@@ -73,21 +73,17 @@ YOUR_MANAGEMENT_API_URL/matchers
 
 ## <a name="create-a-user-defined-function"></a>创建用户定义函数
 
-创建匹配程序后，使用以下经过身份验证的 HTTP POST 请求来上传函数代码片段：
+创建用户定义的函数涉及向 Azure 数字孪生管理 API 发出多部分 HTTP 请求。
+
+[!INCLUDE [Digital Twins multipart requests](../../includes/digital-twins-multipart.md)]
+
+创建匹配程序后，使用以下经过身份验证的多部分 HTTP POST 请求来上传函数代码片段：
 
 ```plaintext
 YOUR_MANAGEMENT_API_URL/userdefinedfunctions
 ```
 
-> [!IMPORTANT]
-> - 验证标头是否包括：`Content-Type: multipart/form-data; boundary="USER_DEFINED_BOUNDARY"`。
-> - 提供的正文包含多个部分：
->   - 第一部分包含所需的 UDF 元数据。
->   - 第二部分包含 JavaScript 计算逻辑。
-> - 在“USER_DEFINED_BOUNDARY”部分中，替换“spaceId”(`YOUR_SPACE_IDENTIFIER`) 和“matchers”(`YOUR_MATCHER_IDENTIFIER`) 值。
-> - 请注意，JavaScript UDF 作为 `Content-Type: text/javascript` 提供。
-
-使用以下 JSON 体：
+使用以下正文：
 
 ```plaintext
 --USER_DEFINED_BOUNDARY
@@ -116,6 +112,15 @@ function process(telemetry, executionContext) {
 | USER_DEFINED_BOUNDARY | 多部分内容边界名称 |
 | YOUR_SPACE_IDENTIFIER | 空间标识符  |
 | YOUR_MATCHER_IDENTIFIER | 要使用的匹配程序的 ID |
+
+1. 验证标头是否包括：`Content-Type: multipart/form-data; boundary="USER_DEFINED_BOUNDARY"`。
+1. 验证正文为多个部分：
+
+   - 第一部分包含所需的用户定义的函数元数据。
+   - 第二部分包含 JavaScript 计算逻辑。
+
+1. 在“USER_DEFINED_BOUNDARY”部分中，替换“spaceId”(`YOUR_SPACE_IDENTIFIER`) 和“matchers”(`YOUR_MATCHER_IDENTIFIER`) 值。
+1. 验证 JavaScript 用户定义的函数是否作为 `Content-Type: text/javascript` 提供。
 
 ### <a name="example-functions"></a>示例函数
 
@@ -190,16 +195,16 @@ function process(telemetry, executionContext) {
 
 ## <a name="create-a-role-assignment"></a>创建角色分配
 
-创建角色分配，以便用户定义函数依据其运行。 如果用户定义函数不存在任何角色分配，则它将没有与管理 API 交互的适当权限，或者无权访问图形对象。用户定义函数可以执行的操作通过以下方式指定和定义：Azure 数字孪生管理 API 中基于角色的访问控制。 例如，用户定义函数可通过指定特定角色或特定访问控制路径来限制这些操作的范围。 有关详细信息，请参阅[基于角色的访问控制](./security-role-based-access-control.md)文档。
+创建角色分配，以便用户定义函数依据其运行。 如果用户定义的函数不存在角色分配，则它将没有与管理 API 交互的适当权限，也没有对图形对象执行操作的权限。 用户定义的函数可以执行的操作是通过 Azure 数字孪生管理 API 中基于角色的访问控制来指定和定义的。 例如，用户定义函数可通过指定特定角色或特定访问控制路径来限制这些操作的范围。 有关详细信息，请参阅[基于角色的访问控制](./security-role-based-access-control.md)文档。
 
-1. 针对所有角色[查询系统 API](./security-create-manage-role-assignments.md#all) 以获取要分配给 UDF 的角色 ID。 可通过发出经过身份验证的 HTTP GET 请求执行此操作，以便：
+1. [查询所有角色的系统 API](./security-create-manage-role-assignments.md#all) 以获取要分配给用户定义函数的角色 ID。 可通过发出经过身份验证的 HTTP GET 请求执行此操作，以便：
 
     ```plaintext
     YOUR_MANAGEMENT_API_URL/system/roles
     ```
    保留所需的角色 ID。 它将作为下面的 JSON 体属性“roleId”(`YOUR_DESIRED_ROLE_IDENTIFIER`) 传递。
 
-1. objectId (`YOUR_USER_DEFINED_FUNCTION_ID`) 就是先前创建的 UDF ID。
+1. “objectId”(`YOUR_USER_DEFINED_FUNCTION_ID`) 将是先前创建的用户定义的函数 ID。
 1. 通过使用 `fullpath` 查询你的空间来查找“path”(`YOUR_ACCESS_CONTROL_PATH`) 的值。
 1. 复制返回的 `spacePaths` 值。 稍后你将使用该值。 向以下对象发出经过身份验证的 HTTP GET 请求：
 
@@ -211,7 +216,7 @@ function process(telemetry, executionContext) {
     | --- | --- |
     | YOUR_SPACE_NAME | 要使用的空间名称 |
 
-1. 将返回的 `spacePaths` 值粘贴到“path”，以通过向以下对象发出经过身份验证的 HTTP POST 请求来创建 UDF 角色分配：
+1. 将返回的 `spacePaths` 值粘贴到“路径”，以通过向以下对象发出经过身份验证的 HTTP POST 请求来创建用户定义的函数角色分配：
 
     ```plaintext
     YOUR_MANAGEMENT_API_URL/roleassignments
@@ -230,12 +235,12 @@ function process(telemetry, executionContext) {
     | 值 | 替换为 |
     | --- | --- |
     | YOUR_DESIRED_ROLE_IDENTIFIER | 所需角色的标识符 |
-    | YOUR_USER_DEFINED_FUNCTION_ID | 要使用的 UDF 的 ID |
-    | YOUR_USER_DEFINED_FUNCTION_TYPE_ID | 指定 UDF 类型的 ID |
+    | YOUR_USER_DEFINED_FUNCTION_ID | 要使用的用户定义的函数 ID |
+    | YOUR_USER_DEFINED_FUNCTION_TYPE_ID | 指定用户定义的函数类型的 ID |
     | YOUR_ACCESS_CONTROL_PATH | 访问控制路径 |
 
 >[!TIP]
-> 请阅读文章[如何创建和管理角色分配](./security-create-manage-role-assignments.md)，获取有关 UDF 相关管理 API 操作和终结点的详细信息。
+> 有关用户定义的函数管理 API 操作和终结点的详细信息，请参阅文章[如何创建和管理角色分配](./security-create-manage-role-assignments.md)。
 
 ## <a name="send-telemetry-to-be-processed"></a>发送要处理的遥测数据
 

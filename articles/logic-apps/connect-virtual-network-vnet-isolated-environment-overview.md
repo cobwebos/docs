@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 12/03/2018
-ms.openlocfilehash: 5046b1012e0074e9548cad050c16eef25c00cee0
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 2b11d74436907380811acda3b7427ebe8011afb4
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52845189"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54061017"
 ---
 # <a name="access-to-azure-virtual-network-resources-from-azure-logic-apps-by-using-integration-service-environments-ises"></a>使用集成服务环境 (ISE) 从 Azure 逻辑应用访问 Azure 虚拟网络资源
 
@@ -33,7 +33,7 @@ ms.locfileid: "52845189"
 
 ## <a name="isolated-versus-global"></a>独立与全局
 
-在 Azure 中创建集成服务环境 (ISE) 时，选择在其中注入环境的 Azure 虚拟网络。 Azure 将逻辑应用服务的一个专用实例部署到虚拟网络中。 此操作将创建一个独立环境，可以在专用资源上创建和运行逻辑应用。 创建逻辑应用时，选择此环境作为应用的位置，以此逻辑应用可以直接访问虚拟网络中的资源。 
+在 Azure 中创建集成服务环境 (ISE) 时，选择要在其中“注入”ISE 的 Azure 虚拟网络。 Azure 将逻辑应用服务的一个专用实例部署到虚拟网络中。 此操作将创建一个独立环境，可以在专用资源上创建和运行逻辑应用。 创建逻辑应用时，选择此环境作为应用的位置，以此逻辑应用可以直接访问虚拟网络中的资源。 
 
 ISE 中的逻辑应用可提供与全局逻辑应用服务相同的用户体验和类似的功能。 不仅可以使用全局逻辑应用服务中的相同内置操作和连接器，而且可以使用 ISE 特定的连接器。 例如，下面是一些提供在 ISE 中运行的版本的标准连接器：
  

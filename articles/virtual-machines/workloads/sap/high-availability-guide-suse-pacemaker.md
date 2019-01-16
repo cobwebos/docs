@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/16/2018
 ms.author: sedusch
-ms.openlocfilehash: c6dee6fc26f540ad93f5a4b4e6e2f9432f757a6c
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 00e50d60ed7f13a2f28338891b39b1b55b7adbfa
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53076349"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54074370"
 ---
 # <a name="setting-up-pacemaker-on-suse-linux-enterprise-server-in-azure"></a>在 Azure 中的 SUSE Linux Enterprise Server 上设置 Pacemaker
 
@@ -483,12 +483,12 @@ o- / ...........................................................................
 
 STONITH 设备使用服务主体对 Microsoft Azure 授权。 请按照以下步骤创建服务主体。
 
-1. 转到 <https://portal.azure.com>
+1. 转到 <https\://portal.azure.com>
 1. 打开“Azure Active Directory”边栏选项卡  
    转到“属性”并记下目录 ID。 这是“租户 ID”。
 1. 单击“应用注册”
 1. 单击“添加”
-1. 输入一个名称，选择应用程序类型“Web 应用/API”，输入登录 URL（例如 http://localhost) ），并单击“创建”
+1. 输入名称，选择应用程序类型“Web 应用/API”，输入登录 URL（例如 http\://localhost），并单击“创建”
 1. 不会使用登录 URL，可为它输入任何有效的 URL
 1. 选择新应用，并在“设置”选项卡中单击“密钥”
 1. 输入新密钥的说明，选择“永不过期”，并单击“保存”
@@ -525,7 +525,7 @@ STONITH 设备使用服务主体对 Microsoft Azure 授权。 请按照以下步
 
 将在最后一章中创建的自定义角色“Linux 隔离代理角色”分配给服务主体。 不要再使用“所有者”角色！
 
-1. 转到 https://portal.azure.com
+1. 转到 https\://portal.azure.com
 1. 打开“所有资源”边栏选项卡
 1. 选择第一个群集节点的虚拟机
 1. 选择“访问控制(IAM)”

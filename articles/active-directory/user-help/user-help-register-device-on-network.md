@@ -9,15 +9,15 @@ ms.service: active-directory
 ms.component: user-help
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 08/03/2018
+ms.date: 01/04/2019
 ms.author: lizross
 ms.reviewer: jairoc
-ms.openlocfilehash: 7126a47bd90168c7d86fe9fcc05fab0a60955063
-ms.sourcegitcommit: 1aedb52f221fb2a6e7ad0b0930b4c74db354a569
+ms.openlocfilehash: dc3a0974eed7b044e137b45ec367c56d7534cee6
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "40180424"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54054072"
 ---
 # <a name="register-your-personal-device-on-your-organizations-network"></a>在组织的网络上注册个人设备
 在组织的网络上注册个人设备（通常为电话或平板电脑）。 设备注册后，将能够访问组织的受限资源。
@@ -34,7 +34,7 @@ ms.locfileid: "40180424"
 
 - （可选）根据组织的选择，可能会自动注册移动设备管理，如 Microsoft Intune。 有关在 Microsoft Intune 中注册的详细信息，请参阅[在 Intune 中注册设备](https://docs.microsoft.com/intune-user-help/enroll-your-device-in-intune-all)。
 
-- 将使用个人 Microsoft 帐户的用户名和密码完成登录过程。
+- 使用工作或学校帐户的用户名和密码完成登录过程。
 
 ## <a name="to-register-your-windows-device"></a>注册 Windows 设备
 
@@ -44,30 +44,26 @@ ms.locfileid: "40180424"
 
     ![“设置上的帐户”屏幕](./media/user-help-register-device-on-network/register-device-settings-accounts.png)
 
-2. 选择“电子邮件和帐户”，然后选择“加入 Microsoft 帐户”。
+2. 选择“访问工作单位或学校”，然后从“访问工作单位或学校”屏幕中选择“连接”。
 
-    ![“电子邮件和帐户”及“添加 Microsoft 帐户”链接](./media/user-help-register-device-on-network/register-device-email-and-accounts.png)
+    ![突出显示“访问工作单位或学校”和“连接”选项的屏幕](./media/user-help-register-device-on-network/register-device-access-work-school-connect.png)
 
-3. 在“添加 Microsoft 帐户”屏幕上，键入个人 Microsoft 帐户的电子邮件地址。
+3. 在“添加工作或学校帐户”屏幕上，键入工作或学校帐户的电子邮件地址，然后选择“下一步”。 例如，alain@contoso.com。
 
-    ![“添加 Microsoft 帐户”屏幕，含电子邮件](./media/user-help-register-device-on-network/register-device-add-accounts.png)
-
-4. 在“输入密码”屏幕上，键入个人 Microsoft 帐户的密码，然后选择“登录”。
-
-    ![“输入密码”屏幕](./media/user-help-register-device-on-network/register-device-enter-password.png)
+4. 登录工作或学校帐户，然后选择“登录”。
 
 5. 完成注册过程的其余部分，包括审批你的身份验证请求（如果你使用双重验证）和设置 Windows Hello（如有必要）。
 
-## <a name="to-make-sure-youre-registered"></a>确保你已注册
+## <a name="to-verify-that-youre-registered"></a>验证是否已注册
 可以通过查看你的设置确保已注册。
 
 1. 打开“设置”，然后选择“帐户”。
 
     ![“设置上的帐户”屏幕](./media/user-help-register-device-on-network/register-device-settings-accounts.png)
 
-2. 选择“电子邮件和帐户”，确保看到个人 Microsoft 帐户。
+2. 选择“访问工作单位或学校”，确保能看到工作或学校帐户。
 
-    ![“访问工作单位或学校”屏幕，含已连接的 contoso 帐户](./media/user-help-register-device-on-network/register-device-verify-account.png)
+    ![“访问工作单位或学校”屏幕，含已连接的 contoso 帐户](./media/user-help-register-device-on-network/register-device-setup-verify.png)
 
 ## <a name="next-steps"></a>后续步骤
 将个人设备注册到组织的网络中后，应该能够访问大多数资源。

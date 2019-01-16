@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure 自定义路由通过强制隧道启用 KMS 激活 | Microsoft Docs
-description: 介绍如何在 Azure 中使用 Azure 自定义路由通过强制隧道启用 KMS 激活。
+description: 介绍如何在 Azure 中使用强制隧道时，使用 Azure 自定义路由启用 KMS 激活。
 services: virtual-machines-windows, azure-resource-manager
 documentationcenter: ''
 author: genlin
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 12/20/2018
 ms.author: genli
-ms.openlocfilehash: f1e2ab6a954361a7807d78dc2baf5d24af52a679
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 71330e72ef27b62472622472b37e2ec8c78211d7
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53797333"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54075560"
 ---
 # <a name="windows-activation-fails-in-forced-tunneling-scenario"></a>在强制隧道方案中，Windows 激活失败
 
@@ -27,17 +27,17 @@ ms.locfileid: "53797333"
 
 ## <a name="symptom"></a>症状
 
-在 Azure 虚拟网络子网上启用[强制隧道](../../vpn-gateway/vpn-gateway-forced-tunneling-rm.md)，以将所有绑定 Internet 的流量重新定向到本地网络。 在此方案中，运行 Windows Server 2012 R2 或更高版本的 Azure 虚拟机 (VM) 可成功激活 Windows。 然而，运行 Windows 以前版本的 VM 无法激活 Windows。 
+在 Azure 虚拟网络子网上启用[强制隧道](../../vpn-gateway/vpn-gateway-forced-tunneling-rm.md)，以将所有 Internet 绑定的流量定向回本地网络。 在此方案中，运行 Windows Server 2012 R2（或更高版本的 Windows ）的 Azure 虚拟机 (VM) 可成功激活 Windows。 但是，运行 Windows 早期版本的 VM 无法激活 Windows。
 
 ## <a name="cause"></a>原因
 
-Azure Windows VM 需要连接到 Azure KMS 服务器才能激活 Windows。 激活要求激活请求必须来自 Azure 公共 IP 地址。 在强制隧道方案中，激活将失败，因为激活请求来自本地网络而不是来自 Azure 公共 IP。 
+Azure Windows VM 需要连接到 Azure KMS 服务器才能激活 Windows。 激活要求激活请求来自 Azure 公共 IP 地址。 在强制隧道方案中，激活失败，因为激活请求来自本地网络而不是来自 Azure 公共 IP。
 
 ## <a name="solution"></a>解决方案
 
-若要解决此问题，请使用 Azure 自定义路由，将激活流量路由到 Azure KMS 服务器 (23.102.135.246)。 
+若要解决此问题，请使用 Azure 自定义路由，将激活流量路由到 Azure KMS 服务器。
 
-IP 地址 23.102.135.246 是 Azure 全球云的 KMS 服务器的 IP 地址。 其 DNS 名称是 kms.core.windows.net。 如果使用其他 Azure 平台（如 Azure 德国），则必须使用相应 KMS 服务器的 IP 地址。 有关详细信息，请参阅下表：
+Azure 全球云的 KMS 服务器的 IP 地址为 23.102.135.246。 其 DNS 名称是 kms.core.windows.net。 如果使用其他 Azure 平台（如 Azure 德国），则必须使用相应 KMS 服务器的 IP 地址。 有关详细信息，请参阅下表：
 
 |平台| KMS DNS|KMS IP|
 |------|-------|-------|
@@ -55,11 +55,11 @@ IP 地址 23.102.135.246 是 Azure 全球云的 KMS 服务器的 IP 地址。 �
 2. 运行以下命令：
 
     ```powershell
-    # First, we will get the virtual network hosts the VMs that has activation problems. In this case, I get virtual network ArmVNet-DM in Resource Group ArmVNet-DM
+    # First, get the virtual network that hosts the VMs that have activation problems. In this case, we get virtual network ArmVNet-DM in Resource Group ArmVNet-DM:
 
     $vnet = Get-AzureRmVirtualNetwork -ResourceGroupName "ArmVNet-DM" -Name "ArmVNet-DM"
 
-    # Next, we create a route table and specify that traffic bound to the KMS IP (23.102.135.246) will go directly out
+    # Next, create a route table and specify that traffic bound to the KMS IP (23.102.135.246) will go directly out:
 
     $RouteTable = New-AzureRmRouteTable -Name "ArmVNet-DM-KmsDirectRoute" -ResourceGroupName "ArmVNet-DM" -Location "centralus"
 
@@ -67,7 +67,7 @@ IP 地址 23.102.135.246 是 Azure 全球云的 KMS 服务器的 IP 地址。 �
 
     Set-AzureRmRouteTable -RouteTable $RouteTable
     ```
-3. 转到存在激活问题的 VM，使用 [PsPing](https://docs.microsoft.com/sysinternals/downloads/psping) 测试它是否可以访问 KMS 服务器：
+3. 请转到存在激活问题的 VM。 使用 [PsPing](https://docs.microsoft.com/sysinternals/downloads/psping) 测试其是否能够访问 KMS 服务器：
 
         psping kms.core.windows.net:1688
 
@@ -79,21 +79,21 @@ IP 地址 23.102.135.246 是 Azure 全球云的 KMS 服务器的 IP 地址。 �
 2. 运行以下命令：
 
     ```powershell
-    # First, we will create a new route table
+    # First, create a new route table:
     New-AzureRouteTable -Name "VNet-DM-KmsRouteGroup" -Label "Route table for KMS" -Location "Central US"
 
-    # Next, get the routetable that was created
+    # Next, get the route table that was created:
     $rt = Get-AzureRouteTable -Name "VNet-DM-KmsRouteTable"
 
-    # Next, create a route
+    # Next, create a route:
     Set-AzureRoute -RouteTable $rt -RouteName "AzureKMS" -AddressPrefix "23.102.135.246/32" -NextHopType Internet
 
-    # Apply KMS route table to the subnet that host the problem VMs (in this case, I will apply it to the subnet named Subnet-1)
+    # Apply the KMS route table to the subnet that hosts the problem VMs (in this case, we apply it to the subnet that's named Subnet-1):
     Set-AzureSubnetRouteTable -VirtualNetworkName "VNet-DM" -SubnetName "Subnet-1" 
     -RouteTableName "VNet-DM-KmsRouteTable"
     ```
 
-3. 转到存在激活问题的 VM，使用 [PsPing](https://docs.microsoft.com/sysinternals/downloads/psping) 测试它是否可以访问 KMS 服务器：
+3. 请转到存在激活问题的 VM。 使用 [PsPing](https://docs.microsoft.com/sysinternals/downloads/psping) 测试其是否能够访问 KMS 服务器：
 
         psping kms.core.windows.net:1688
 

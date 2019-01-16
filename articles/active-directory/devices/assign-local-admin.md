@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/09/2018
+ms.date: 01/08/2019
 ms.author: markvi
 ms.reviewer: ravenn
-ms.openlocfilehash: 702ebdc0966a72396ac644b154ba13d2321fd5d4
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: a4671d383c46bf0b932ce528f4eacb7255bad5e7
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53631339"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54105400"
 ---
 # <a name="how-to-manage-the-local-administrators-group-on-azure-ad-joined-devices"></a>如何管理已加入 Azure AD 的设备上的本地管理员组
 
@@ -64,7 +64,10 @@ Azure AD 还会将 Azure AD 设备管理员角色添加到本地管理员组，�
 
 ![其他本地管理员](./media/assign-local-admin/10.png)
 
- 
+>[!NOTE]
+> 此选项需要 Azure AD Premium 租户。 
+
+
 设备管理员已分配给所有已加入 Azure AD 的设备。 无法将设备管理员范围限定为一组特定设备。 更新设备管理员角色不一定会对受影响的用户产生直接影响。 对于用户已登录的设备，在以下情况下会发生特权更新：
      
 

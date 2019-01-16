@@ -10,12 +10,12 @@ ms.reviewer: klam, LADocs
 ms.topic: article
 ms.assetid: 85928ec6-d7cb-488e-926e-2e5db89508ee
 ms.date: 10/18/2016
-ms.openlocfilehash: c953d4635ce43ee05fe7c507076c5bd11e9d8c81
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 8714c91079d087b16a62af4af8b381edf6871f8b
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54000557"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54065726"
 ---
 # <a name="create-azure-resource-manager-templates-for-deploying-logic-apps"></a>使用 Azure 资源管理器模板部署逻辑应用
 
@@ -34,7 +34,7 @@ ms.locfileid: "54000557"
 * **连接**：指单独的资源，用于安全存储有关任何连接器连接的元数据，例如连接字符串和访问令牌。
 在逻辑应用资源中，逻辑应用在 `parameters` 节引用这些资源。
 
-可以使用诸如 [Azure 资源管理器](http://resources.azure.com)之类的工具查看现有逻辑应用的所有这些资源。
+可以使用诸如 [Azure 资源管理器](http://resources.azure.com)之类的工具查看现有逻辑应用的所有这些资源。 有关 JSON 语法和属性，请参阅 [Microsoft.Logic 资源类型](/azure/templates/microsoft.logic/allversions)。
 
 要创建逻辑应用模板以用于资源组部署，必须先定义资源并根据需要将其参数化。
 例如，如果部署到开发、测试和生产环境，则可能想要在每个环境中使用不同的连接字符串连接到 SQL 数据库。

@@ -6,15 +6,15 @@ author: jeffpatt24
 tags: storage
 ms.service: storage
 ms.topic: article
-ms.date: 10/30/2018
+ms.date: 01/02/2019
 ms.author: jeffpatt
 ms.component: files
-ms.openlocfilehash: caa078aa522e20a0e09d0b4d97461358c1698fc7
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.openlocfilehash: a7ab2e76280458326539fe83d3507dfb4e4a486e
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53744221"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54023071"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows"></a>在 Windows 中排查 Azure 文件问题
 
@@ -261,6 +261,15 @@ net use 命令会将正斜杠 (/) 解释为命令行选项。 如果用户帐户
  
 例如，可将其设置为 0x100000，并查看性能是否有所提高。
 
+## <a name="error-aaddstenantnotfound-in-enabling-azure-active-directory-authentication-for-azure-files-unable-to-locate-active-tenants-with-tenant-id-aad-tenant-id"></a>为 Azure 文件存储启用 Azure Active Directory 身份验证时，出现错误 AadDsTenantNotFound：“找不到具有租户 ID aad-tenant-id 的活动租户”
+
+### <a name="cause"></a>原因
+
+如果存储帐户在关联订阅的 AAD 租户上未创建 [AAD Domain Service(AAD DS)](https://docs.microsoft.com/en-us/azure/active-directory-domain-services/active-directory-ds-overview)则在该帐户上[为 Azure 文件存储启用 Azure Active Directory 身份验证](https://docs.microsoft.com/en-us/azure/storage/files/storage-files-active-directory-enable)时，会发生错误 AadDsTenantNotFound。  
+
+### <a name="solution"></a>解决方案
+
+在部署存储帐户的订阅的 AAD 租户上启用 AAD DS。 需要 AAD 租户的管理员权限才能创建托管域。 如果你不是 Azure AD 租户的管理员，请与管理员联系并按照分步指南操作，以[使用 Azure 门户启用 Azure Active Directory 域服务](https://docs.microsoft.com/en-us/azure/active-directory-domain-services/active-directory-ds-getting-started)。
 
 ## <a name="need-help-contact-support"></a>需要帮助？ 联系支持人员。
 如果仍需帮助，请[联系支持人员](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)，以快速解决问题。

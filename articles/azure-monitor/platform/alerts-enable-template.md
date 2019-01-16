@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 4/27/2018
 ms.author: johnkem
 ms.component: metrics
-ms.openlocfilehash: a5e38f1400b99c6030799121d37721c26e16649c
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: ac2987b6329d85c06d78d93341fe71f5c9120fcd
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53721132"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54105451"
 ---
 # <a name="create-a-classic-metric-alert-with-a-resource-manager-template"></a>使用资源管理器模板创建经典指标警报
 本文说明如何使用 [Azure 资源管理器模板](../../azure-resource-manager/resource-group-authoring-templates.md)配置 Azure 指标警报。 这样，便可以在创建资源时自动对资源设置警报，确保正确监视所有资源。
@@ -186,7 +186,7 @@ ms.locfileid: "53721132"
 
 ```json
 {
-    "$schema": "http://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "newStorageAccountName": {
@@ -404,4 +404,4 @@ ms.locfileid: "53721132"
 ## <a name="next-steps"></a>后续步骤
 * [详细了解警报](alerts-overview.md)
 * [将诊断设置添加](../../azure-monitor/platform/diagnostic-logs-stream-template.md)到 Resource Manager 模板
-
+* 有关 JSON 语法和属性，请参阅 [Microsoft.Insights/alertrules](/azure/templates/microsoft.insights/alertrules) 模板参考。

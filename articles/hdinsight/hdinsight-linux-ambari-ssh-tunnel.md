@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/30/2018
 ms.author: hrasheed
-ms.openlocfilehash: 280d56951053870d5dc1bb8fba52cc089e842757
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.openlocfilehash: 3cf13dc7b3a57435e4e93d6f01da482a2b992bb9
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53743849"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54065301"
 ---
 # <a name="use-ssh-tunneling-to-access-apache-ambari-web-ui-jobhistory-namenode-apache-oozie-and-other-web-uis"></a>使用 SSH 隧道访问 Apache Ambari Web UI、JobHistory、NameNode、Apache Oozie 和其他 Web UI
 
@@ -126,10 +126,10 @@ ssh -C2qTnNf -D 9876 sshuser@clustername-ssh.azurehdinsight.net
 
 建立群集后，请通过以下步骤验证是否可以从 Ambari Web 访问服务 Web UI：
 
-1. 在浏览器中转到 http://headnodehost:8080。 `headnodehost` 地址通过隧道发送到群集，并解析为运行 Ambari 的头节点。 出现提示时，请输入群集的管理员用户名 (admin) 和密码。 Ambari Web UI 可能会再次出现提示。 如果出现，请重新输入信息。
+1. 在浏览器中，转到 http\://headnodehost:8080。 `headnodehost` 地址通过隧道发送到群集，并解析为运行 Ambari 的头节点。 出现提示时，请输入群集的管理员用户名 (admin) 和密码。 Ambari Web UI 可能会再次出现提示。 如果出现，请重新输入信息。
 
    > [!NOTE]  
-   > 如果使用 http://headnodehost:8080 地址连接到群集，则将通过隧道进行连接。 通信的安全是通过使用 SSH 隧道而非 HTTPS 实现的。 若要使用 HTTPS 通过 Internet 进行连接，请使用 https://clustername.azurehdinsight.net，其中 **clustername** 是群集的名称。
+   > 如果使用 http\://headnodehost:8080 地址连接到群集，则将通过隧道进行连接。 通信的安全是通过使用 SSH 隧道而非 HTTPS 实现的。 若要使用 HTTPS 通过 Internet 进行连接，请使用 https\://clustername.azurehdinsight.net，其中“clustername”是群集的名称。
 
 2. 在 Ambari Web UI 中，请选择页面左侧列表中的“HDFS”。
 
@@ -149,7 +149,7 @@ ssh -C2qTnNf -D 9876 sshuser@clustername-ssh.azurehdinsight.net
     ![NameNode UI 的截图](./media/hdinsight-linux-ambari-ssh-tunnel/namenode.png)
 
    > [!NOTE]  
-   > 请注意此页的 URL；它应类似于 **http://hn1-CLUSTERNAME.randomcharacters.cx.internal.cloudapp.net:8088/cluster**。 此 URL 使用了节点的内部完全限定的域名 (FQDN)，仅在使用 SSH 隧道时可以访问。
+   > 请注意此页的 URL，它应类似于 http\://hn1-CLUSTERNAME.randomcharacters.cx.internal.cloudapp.net:8088/cluster。 此 URL 使用了节点的内部完全限定的域名 (FQDN)，仅在使用 SSH 隧道时可以访问。
 
 ## <a name="next-steps"></a>后续步骤
 

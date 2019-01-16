@@ -12,14 +12,14 @@ ms.workload: ''
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: article
-ms.date: 06/05/2018
+ms.date: 12/19/2018
 ms.author: ellacroi
-ms.openlocfilehash: 1c850b16492f725114fb23a8503f6345e1509212
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 3cd0766fa4308df41172c323aa933e1c048f1e9d
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52868661"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54073996"
 ---
 # <a name="requirements-by-listing-type"></a>按商品信息类型列出的要求  
 技术和营销内容要求因店面、产品/服务类型和商品信息类型而异。 请查看以下规范，以确认是否合规。  
@@ -40,7 +40,7 @@ ms.locfileid: "52868661"
 | ***适合企业的软件即服务 (SaaS) 应用*** | 应用必须满足以下要求。<ul> <li>是业务线 SaaS 应用</li> <li>专注于业务流程</li> <li>以企业客户为目标</li> <li>允许用户使用其工作凭据（用户名和密码）登录</li> </ul> | 必选 |  
 | ***免费试用期和试用体验*** | 应用必须包含以下选项之一，使客户能够在有限的时间内免费使用你的应用。<ul> <li>提供 `try` 选项，使客户能够在 AppSource 中开始试用应用</li> <li>在 AppSource 中提供 `request trial` 选项，使客户能够请求应用的试用版</li> </ul>提供的免费试用版必须为客户提供一段预先规定的时间让他们试用应用，且不收取额外的费用。 | 必选 |  
 | ***可轻松配置、随时可用的解决方案*** | 应用的配置和设置必须便捷，不需要自定义。 | 必选 |  
-| ***潜在客户管理*** | 在从店面收获商机之前，必须启用 CRM 来接收商机数据。<ul> <li>CRM 的例子包括 Marketo、Microsoft Dynamics 或 Salesforce</li> </ul> | 必选 |  
+| ***潜在客户管理*** | 在从店面收获商机之前，请启用 CRM 来接收潜在顾客数据。<ul> <li>CRM 的例子包括 Marketo、Microsoft Dynamics 或 Salesforce</li> </ul> | 必选 |  
 | ***隐私策略和使用条款*** | 应用必须使用公共 URL 提供隐私政策页面的链接。 发布期间必须以文本形式提供使用条款。 | 必选 |  
 | ***支持*** | 应用必须使用公共 URL 提供客户支持页面的链接。 如果应用是试用版，则必须在试用期间提供支持，且不收取额外的费用。 | 必选 |  
 
@@ -49,10 +49,10 @@ ms.locfileid: "52868661"
 
 | 要求 | 详细信息 | 商品类型 |  
 |:--- |:--- |:--- |  
-| ***参与策略*** | 必须遵循 Azure 市场参与政策。<ul> <li>有关参与政策的详细信息，请访问“Azure 市场参与政策”页：[azure.microsoft.com/support/legal/marketplace/participation-policies](https://azure.microsoft.com/support/legal/marketplace/participation-policies)。</li></ul> | list<br />事务处理<br />试用 |  
+| ***参与策略*** | 应用必须遵循 Azure 市场参与政策。<ul> <li>有关参与政策的详细信息，请访问“Azure 市场参与政策”页：[azure.microsoft.com/support/legal/marketplace/participation-policies](https://azure.microsoft.com/support/legal/marketplace/participation-policies)。</li></ul> | list<br />事务处理<br />试用 |  
 | ***与 Microsoft 集成*** | 产品/服务应利用或扩展 Microsoft Azure 服务（例如计算、网络或存储）。 产品/服务应按现有 Azure 市场类别进行分类（例如数据库、安全性或网络等）。<ul> <li>有关市场产品/服务的详细信息，请访问“市场应用”页：[azuremarketplace.microsoft.com/marketplace/apps](https://azuremarketplace.microsoft.com/marketplace/apps)。</li> </ul> | list<br />事务处理<br />试用 |  
 | ***受众*** | 产品/服务必须面向 IT 专业人员、云开发人员或其他技术型客户角色。 | list<br />事务处理<br />试用 |  
-| ***潜在客户管理*** | 在从店面收获商机之前，必须启用 CRM（Marketo、Microsoft Dynamics 或 Salesforce）来接收商机数据。 | list<br />事务处理<br />试用 |  
+| ***潜在客户管理*** | 在从店面收获商机之前，请启用 CRM（Marketo、Microsoft Dynamics 或 Salesforce）来接收潜在顾客数据。 | list<br />事务处理<br />试用 |  
 | ***隐私策略和使用条款*** | 应用必须使用公共 URL 提供隐私政策页面的链接。 发布期间必须以文本形式提供使用条款。 | list<br />事务处理<br />试用 |  
 | ***支持*** | 产品/服务必须使用公共 URL 提供客户支持页面的链接。 如果产品/服务是试用版，则必须在试用期间提供支持，且不收取额外的费用。 | 事务处理<br />试用 |    
 
@@ -164,9 +164,8 @@ ms.locfileid: "52868661"
 | 要求 | 详细信息 |  
 |:--- |:--- | 
 | 计费和计量 | VM 必须支持 BYOL 或即用即付每月计费。 |  
-| 与 Azure 兼容的虚拟硬盘 (VHD) | 必须基于 Windows 或 Linux 构建 VM。<ul> <li>有关创建 Linux VHD 的详细信息，请访问 [docs.microsoft.com/azure/marketplace-publishing/marketplace-publishing-vm-image-creation#2-create-an-azure-compatible-vhd-linux-based](https://docs.microsoft.com/azure/marketplace-publishing/marketplace-publishing-vm-image-creation#2-create-an-azure-compatible-vhd-linux-based) 上的“创建与 Azure 兼容的 VHD（基于 Linux）”部分。</li> <li>有关创建 Windows VHD 的详细信息，请访问 [docs.microsoft.com/azure/marketplace-publishing/marketplace-publishing-vm-image-creation#3-create-an-azure-compatible-vhd-windows-based](https://docs.microsoft.com/azure/marketplace-publishing/marketplace-publishing-vm-image-creation#3-create-an-azure-compatible-vhd-windows-based) 上的“创建与 Azure 兼容的 VHD（基于 Windows）”部分。</li> </ul> |  
+| 与 Azure 兼容的虚拟硬盘 (VHD) | 必须基于 Windows 或 Linux 构建 VM。<ul> <li>有关创建 Linux VHD 的详细信息，请参阅 [Azure 认可的 Linux 发行版](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros)。</li> <li>有关创建 Windows VHD 的详细信息，请参阅[创建与 Azure 兼容的 VHD](./cloud-partner-portal/virtual-machine/cpp-create-vhd.md)。</li> </ul> |  
 
 ## <a name="next-steps"></a>后续步骤
 *   访问 [Azure 市场和 AppSource 发布者指南](./marketplace-publishers-guide.md)页。  
- 
----  
+

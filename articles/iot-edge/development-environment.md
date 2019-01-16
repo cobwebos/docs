@@ -4,16 +4,16 @@ description: 了解可帮助你创建 IoT Edge 模块的支持系统和第一方
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 12/17/2018
+ms.date: 01/04/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 46b007cfa7156c0c7718b7f4bd4f735a58c722fc
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: f3d1fb393138aeb590bc0645d6abe93652a52a5b
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53797318"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54052575"
 ---
 # <a name="prepare-your-development-and-test-environment-for-iot-edge"></a>为 IoT Edge 准备开发和测试环境
 
@@ -45,7 +45,7 @@ Visual Studio 和 Visual Studio Code 都具有附加扩展，可帮助开发 IoT
 
 适用于 Visual Studio Code 的 Azure IoT Edge 扩展提供了基于编程语言（包括 C、C#、Java、Node.js 和 Python 以及 C# 中的 Azure Functions）构建的 IoT Edge 模块模板。 
 
-有关详细信息和下载，请参阅[适用于 Visual Studio Code 的 Azure IoT Edge](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge)。
+有关详细信息和下载，请参阅 [Azure IoT Tools for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)（适用于 Visual Studio Code 的 Azure IoT Tools）。
 
 除 IoT Edge 扩展外，你可能会发现安装其他扩展也有助于开发。 例如，可使用[适用于 Visual Studio Code 的 Docker 支持](https://marketplace.visualstudio.com/items?itemName=PeterJausovec.vscode-docker)来管理映像、容器和注册表。 此外，所有主要支持的语言都具有 Visual Studio Code 的扩展，可在开发模块时提供帮助。 
 

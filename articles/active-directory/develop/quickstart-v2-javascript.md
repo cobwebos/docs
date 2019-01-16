@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 09/24/2018
 ms.author: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: d044b1ad18df6eee1235e881038bbb9734a999ff
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 99ea7e7db9d0cc80bfd37a256fc1be388feaa530
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52317341"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54043883"
 ---
 # <a name="quickstart-sign-in-users-and-acquire-an-access-token-from-a-javascript-application"></a>快速入门：通过 JavaScript 应用程序登录用户并获取访问令牌
 
@@ -31,7 +31,18 @@ ms.locfileid: "52317341"
 ![本快速入门生成的示例应用如何工作](media/quickstart-v2-javascript/javascriptspa-intro.png)
 
 > [!div renderon="docs"]
-> ## <a name="register-your-application-and-download-your-quickstart-app"></a>注册应用程序并下载快速入门应用
+> ## <a name="register-and-download-your-quickstart-application"></a>注册并下载快速入门应用程序
+> 可以使用两个选项来启动快速入门应用程序：
+> * [快速][选项 1：注册并自动配置应用，然后下载代码示例](#option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample)
+> * [手动][选项 2：注册并手动配置应用程序和代码示例](#option-2-register-and-manually-configure-your-application-and-code-sample)
+>
+> ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>选项 1：注册并自动配置应用，然后下载代码示例
+>
+> 1. 访问 [Azure 门户 - 应用程序注册（预览）](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/JavascriptSpaQuickstartPage/sourceType/docs)
+> 1. 输入应用程序的名称，然后单击“注册”。
+> 1. 遵照说明下载内容，并一键式自动配置新应用程序。
+>
+> ### <a name="option-2-register-and-manually-configure-your-application-and-code-sample"></a>选项 2：注册并手动配置应用程序和代码示例
 >
 > #### <a name="step-1-register-your-application"></a>步骤 1：注册应用程序
 >

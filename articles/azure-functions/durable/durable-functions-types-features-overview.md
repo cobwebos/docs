@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 359594ab91b903033ecc303eccd270988be19810
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: fbfee92343bfecfbe8395f95775ae1f107b99299
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53336520"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54037270"
 ---
 # <a name="overview-of-function-types-and-features-for-durable-functions-azure-functions"></a>Durable Functions 的函数类型和功能概述 (Azure Functions)
 
@@ -37,7 +37,7 @@ Durable Functions 提供函数执行的有状态业务流程。 Durable Function
 
 ### <a name="orchestrator-functions"></a>业务流程协调程序函数
 
-业务流程协调程序函数是 Durable Function 的核心。  业务流程协调程序函数描述执行操作的方式和顺序。  业务流程协调程序函数描述代码（C# 或 JavaScript）中的业务流程，如[s 概述](durable-functions-overview.md)中所示。  业务流程可以有许多不同类型的操作，例如[活动函数](#activity-functions)、[子业务流程](#sub-orchestrations)、[等待外部事件](#external-events)和[计时器](#durable-timers)。  
+业务流程协调程序函数是 Durable Function 的核心。  业务流程协调程序函数描述执行操作的方式和顺序。  业务流程协调程序函数描述了代码（C# 或 JavaScript）中的业务流程，如 [Durable Functions 模式和技术概念](durable-functions-concepts.md)中所示。  业务流程可以有许多不同类型的操作，例如[活动函数](#activity-functions)、[子业务流程](#sub-orchestrations)、[等待外部事件](#external-events)和[计时器](#durable-timers)。  
 
 必须由[业务流程触发器](durable-functions-bindings.md#orchestration-triggers)触发业务流程协调程序函数。
 

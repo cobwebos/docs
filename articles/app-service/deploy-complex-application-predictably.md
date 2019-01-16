@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 01/06/2016
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: f9b2d1a227a210b09e64db8a61d99b216b9b362a
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.openlocfilehash: 657211378d7b38b88ccd40aa31a175058e1ad67c
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53653146"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54015550"
 ---
 # <a name="provision-and-deploy-microservices-predictably-in-azure"></a>按可预见的方式在 Azure 中设置和部署微服务
 本教程演示如何通过使用 JSON 资源组模板和 PowerShell 脚本以一种可预见的方式，在 [Azure 应用服务](https://azure.microsoft.com/services/app-service/)中由[微服务](https://en.wikipedia.org/wiki/Microservices)构成的应用程序设置并部署为单个单元。 
@@ -269,3 +269,14 @@ ms.locfileid: "53653146"
 * [将 Azure PowerShell 与 Azure 资源管理器配合使用](../azure-resource-manager/powershell-azure-resource-manager.md)
 * [Azure 中的资源组部署故障排除](../azure-resource-manager/resource-manager-common-deployment-errors.md)
 
+## <a name="next-steps"></a>后续步骤
+
+要了解本文中部署的资源类型的 JSON 语法和属性，请参阅：
+
+* [Microsoft.Sql/servers](/azure/templates/microsoft.sql/servers)
+* [Microsoft.Sql/servers/databases](/azure/templates/microsoft.sql/servers/databases)
+* [Microsoft.Sql/servers/firewallRules](/azure/templates/microsoft.sql/servers/firewallrules)
+* [Microsoft.Web/serverfarms](/azure/templates/microsoft.web/serverfarms)
+* [Microsoft.Web/sites](/azure/templates/microsoft.web/sites)
+* [Microsoft.Web/sites/slots](/azure/templates/microsoft.web/sites/slots)
+* [Microsoft.Insights/autoscalesettings](/azure/templates/microsoft.insights/autoscalesettings)

@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 12/17/2018
 ms.reviewer: sdash
 ms.author: mbullwin
-ms.openlocfilehash: e89ba38b7993b8f2d17704ff592eecd3d02d303e
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 238b75681ec525187ea27f60ac8b21b05b13954d
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53729950"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54063108"
 ---
 # <a name="application-map-triage-distributed-applications"></a>应用程序映射：会审分布式应用程序
 
@@ -191,7 +191,7 @@ appInsights.context.addTelemetryInitializer((envelope) => {
 
 如果无法让应用程序映射按预期方式工作，请尝试以下步骤：
 
-1. 确保你使用的是官方支持的 SDK。 不受支持的/社区 SDK 可能不支持关联。
+1. 请确保你使用的是官方支持的 SDK。 不受支持的/社区 SDK 可能不支持关联。
 
     有关受支持的 SDK 的列表，请参考此[文章](https://docs.microsoft.com/azure/application-insights/app-insights-platforms)。
 

@@ -1,5 +1,5 @@
 ---
-title: ClearDB MySql 数据库与 Azure 应用服务搭配使用时的常见问题解答 | Microsoft Docs
+title: ClearDB MySql 数据库搭配 Azure 应用服务的 FAQ
 description: 解答将 ClearDB MySQL 数据库与 Azure 应用服务搭配使用时的常见问题。
 documentationcenter: php
 services: mysql
@@ -7,17 +7,16 @@ author: sunbuild
 manager: yochayk
 tags: mysql
 ms.service: multiple
-ms.workload: data-management
 ms.topic: article
 ms.date: 10/27/2016
 ms.author: sumuth
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 253f817099bd2705d8b9ea98741dc8fd28f09efe
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 0887f58ca455dfec0474c8d6a1acba584224f0d7
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52421651"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54074404"
 ---
 # <a name="faq-for-cleardb-mysql-databases-with-azure-app-service"></a>ClearDB MySql 数据库搭配 Azure 应用服务的 FAQ
 此 FAQ 解答了为 Azure Web 应用使用和购买 ClearDB MySQL 数据库的常见问题。
@@ -27,23 +26,21 @@ ms.locfileid: "52421651"
 >
 > 有关详细信息和后续步骤，请参阅[对 ClearDB 服务计划所做的更改](https://w2.cleardb.net/important-change-of-billing-notice-for-all-azure-cleardb-service-plans/)。
 
-
 ## <a name="what-options-do-i-have-for-mysql-on-azure"></a>Azure 上的 MySQL 有哪些选项？
-有几种选项：
+有关该服务的最新信息，请参阅 [ClearDB](https://w2.cleardb.net/)。 ClearDB 是一种 MySQL 托管服务，可管理 MySQL 基础结构。 
 
-* [ClearDB 共享 MySQL 数据库](/marketplace/partners/cleardb/databases/)
-* [ClearDB MySQL Premium 群集](/marketplace/partners/cleardb-clusters/cluster/)
+还可以使用其他几种可用于在 Azure 中托管 MySQL 的选项：
+* [Azure Database for MySQL](https://azure.microsoft.com/services/mysql/)
 * [Azure VM 上运行的 MySQL 群集](https://github.com/azure/azure-quickstart-templates/tree/master/mysql-replication)
 * [Azure VM 上运行的单个 MySQL 实例](virtual-machines/windows/classic/mysql-2008r2.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
 
-ClearDB 是一种 MySQL 托管服务，可管理 MySQL 基础结构。 在 Azure 虚拟机上运行自己的 MySQL 群集或数据库时，必须设置 MySQL 服务器，并使用补丁使其保持更新。
 
 ## <a name="do-i-need-a-credit-card-for-the-web-app--mysql-template-in-the-azure-marketplace"></a>要获取 Azure 市场中的 Web 应用和 MySQL 模板需要使用信用卡吗？
 这取决于所使用订阅的类型。 下面是一些常用订阅类型：
 
 * [即用即付](https://azure.microsoft.com/offers/ms-azr-0003p/)：需要信用卡，购买付费的 MySQL 数据库时会向信用卡收费。
 * [免费试用版](https://azure.microsoft.com/pricing/free-trial/)：包括可用于 Microsoft Azure 服务的信用额度，但不允许购买第三方资源。 若要购买第三方服务或付费的 MySQL 数据库，需使用支持信用卡的订阅。 对于 Web 应用，可以创建免费的 ClearDB MySQL 数据库。
-* [MSDN 订阅](https://azure.microsoft.com/pricing/member-offers/msdn-benefits/)和 **MSDN 即用即付开发/测试**：类似于免费试用版，MSDN 订阅需要用户使用信用卡从 ClearDB 购买付费的 MySQL 解决方案。
+* [MSDN 订阅](https://azure.microsoft.com/pricing/member-offers/msdn-benefits/)和 MSDN 开发即付即用开发/测试：类似于免费试用版，MSDN 订阅需要用户使用信用卡从 ClearDB 购买付费的 MySQL 解决方案。
 * [企业协议 (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/)：每季以单独的合并发票按照 EA 向客户从 Azure 市场（第三方）购买的所有商品收费。 针对任何市场购买，以货币承诺付款以外的方式收费。 请注意，Azure 应用商店目前无法供在阿塞拜疆、克罗地亚、挪威和波多黎各注册的客户使用。 
 
 ## <a name="why-was-i-charged-350-for-a-web-app--mysql-from-the-azure-marketplace"></a>为什么我要为 Azure 市场中的 Web 应用和 MySQL 付 3.50 美元的费用？
@@ -53,7 +50,7 @@ ClearDB 是一种 MySQL 托管服务，可管理 MySQL 基础结构。 在 Azure
 是的。 只要 Azure VM 已向 Web 应用授予远程访问权限，Web 应用就能连接到数据库。 有关详细信息，请参阅[在虚拟机上安装 MySQL](virtual-machines/windows/classic/mysql-2008r2.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)。
 
 ## <a name="in-which-countries-are-cleardb-premium-mysql-clusters-supported"></a>支持 ClearDB Premium MySQL 群集的国家/地区有哪些？
-除印度、澳大利亚、巴西南部和中国之外的所有 Azure 区域都可以使用 [ClearDB Premium MySQL 群集](/marketplace/partners/cleardb-clusters/cluster/)。
+除印度、澳大利亚、巴西南部和中国之外的所有 Azure 区域都可以使用 ClearDB 高级 MySQL 群集。
 
 ## <a name="can-i-create-a-new-cluster-prior-to-creating-a-database-with-cleardb-premium-cluster-solution"></a>是否可以在创建数据库之前使用 ClearDB Premium 群集解决方案创建新群集？
 否，不支持创建空的 ClearDB 群集。 通过 Azure 门户，可以在群集中创建数据库，同时可能会创建新的群集。
@@ -65,7 +62,7 @@ ClearDB 是一种 MySQL 托管服务，可管理 MySQL 基础结构。 在 Azure
 Azure 市场无法供在阿塞拜疆、克罗地亚、挪威或波多黎各注册的客户使用。 这些区域不提供 ClearDB。
 
 ## <a name="what-pricing-tier-should-i-choose-for-a-production-web-app-and-database"></a>针对生产 Web 应用和数据库，应该选择哪个定价层？
-对 Web 应用使用“基本”或更高的定价层。 对于 ClearDB，建议使用 Saturn 或 Jupiter 计划。 请查看 [Web 应用](https://azure.microsoft.com/pricing/details/app-service/)和 [ClearDB MySQL 数据库](/marketplace/partners/cleardb/databases/)每个定价层的功能和限制，以选择符合需要的定价层。
+对 Web 应用使用“基本”或更高的定价层。 对于 ClearDB，建议使用 Saturn 或 Jupiter 计划。 请查看 [Web 应用](https://azure.microsoft.com/pricing/details/app-service/)和 [ClearDB MySQL 数据库](https://w2.cleardb.net/important-change-of-billing-notice-for-all-azure-cleardb-service-plans/)每个定价层的功能和限制，以选择符合需要的定价层。
 
 ## <a name="how-do-i-upgrade-my-cleardb-database-from-one-plan-to-another"></a>如何将 ClearDB 数据库从一个计划升级到另一个计划？
 在 [Azure 门户](https://portal.azure.com)中，可以纵向扩展 ClearDB 共享的托管数据库。 请阅读本篇[文章](https://blogs.msdn.microsoft.com/appserviceteam/2016/10/06/upgrade-your-cleardb-mysql-database-in-azure-portal/)，了解详细信息。 当前不支持在 Azure 门户中升级 ClearDB 高级群集。

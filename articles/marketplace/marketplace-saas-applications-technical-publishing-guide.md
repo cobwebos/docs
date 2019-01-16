@@ -14,16 +14,16 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 07/09/2018
 ms.author: keithcharlie
-ms.openlocfilehash: f1a6825cdfab2375f1a6f1858ef14684d374dae2
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 19600ccbc2a424d210c686d7027b52bc6254de57
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43123476"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54074710"
 ---
 # <a name="saas-applications-offer-publishing-guide"></a>SaaS 应用程序产品/服务发布指南
 
-SaaS 应用程序可以使用三种不同的号召性用语在市场上发布：“与我联系”，“立即尝试”和“立即获取”。 本指南介绍这三个选项，包括每个选项的要求。 
+SaaS 应用程序可以使用三种不同的号召性用语在市场上发布：“与我联系”，“立即试用”和“立即获取”。 本指南介绍这三个选项，包括每个选项的要求。 
 
 ## <a name="offer-overview"></a>产品/服务概述  
 
@@ -34,8 +34,8 @@ SaaS 应用程序在两个 Azure 店面中均提供。下表介绍了当前的�
 | AppSource | 是(与我联系) | 是(PowerBI/Dynamics) |
 | Azure 市场 | 否 | 是(SaaS 应用) |   
 
-**列表**：“列表”发布选项包含“与我联系”产品/服务类型，是在试用级别或交易级别的参与不可行时使用的。 此方法的好处是帮助在市场中发布解决方案的发布者立即开始获取潜在顾客，这些潜在客户可能会产生交易，从而扩大你的业务。  
-**试用/交易**：客户可以选择直接购买，也可以请求试用解决方案。 提供试用体验可以提升客户参与度，让客户在购买前体验解决方案。 借助面向客户的试用体验，发布者能获得更好的店面促销商机，随着参与客户的增多，可获得越来越多的潜在顾客。 试用版必须包含免费支持（至少在试用时间内）。  
+**列表：**“列表”发布选项包含“与我联系”产品/服务类型，在试用级别或交易级别的参与不可行时使用。 此方法的好处是帮助在市场中发布解决方案的发布者立即开始获取潜在顾客，这些潜在客户可能会产生交易，从而扩大你的业务。  
+**试用/交易：** 客户可以选择直接购买，也可以请求试用解决方案。 提供试用体验可以提升客户参与度，让客户在购买前体验解决方案。 借助面向客户的试用体验，发布者能获得更好的店面促销商机，随着参与客户的增多，可获得越来越多的潜在顾客。 试用版必须包含免费支持（至少在试用时间内）。  
 
 | SaaS 应用产品/服务 | 业务要求 | 技术要求 |  
 | --- | --- | --- |  
@@ -94,7 +94,7 @@ SaaS 应用程序的技术要求非常简单。 发布者只需与要发布的 A
 * [侧重于 Active Directory 的 Microsoft Azure 视频](https://azure.microsoft.com/resources/videos/index/?services=active-directory)
 
 以下网站提供免费的 Azure Active Directory 培训：  
-* [面向 IT 专业人士的 Microsoft Azure 内容系列：Azure Active Directory](https://mva.microsoft.com/en-US/training-courses/microsoft-azure-for-it-pros-content-series-azure-active-directory-16754?l=N0e23wtxC_2106218965)
+* [面向 IT 专业人士的 Microsoft Azure 内容系列：Azure Active Directory](https://mva.microsoft.com/training-courses/microsoft-azure-for-it-pros-content-series-azure-active-directory-16754?l=N0e23wtxC_2106218965)
 
 另外，Azure Active Directory 还提供一个用于查找服务更新的站点   
 * [Azure AD 服务更新](https://azure.microsoft.com/updates/?product=active-directory)
@@ -145,10 +145,11 @@ Microsoft 托管商业事务。 Microsoft 代你向客户计费。 若要以订�
 | 订阅 API | 公开一个服务，该服务可以通过与 SaaS 订阅交互来创建、更新和删除用户帐户和服务计划。 必须在 24 小时内支持关键 API 更改。 非关键 API 更改将定期发布。 |  
 
 ## <a name="next-steps"></a>后续步骤
-如果尚未注册， 
+如果尚未注册，
 
-- 请在市场中[注册](https://azuremarketplace.microsoft.com/sell)
+- 请在市场中[注册](https://azuremarketplace.microsoft.com/sell)。
 
 如果已注册并正在创建新套餐或正在使用现有套餐，
 
-- [登录到云合作伙伴门户](https://cloudpartner.azure.com)创建或完成套餐
+- [登录到云合作伙伴门户](https://cloudpartner.azure.com)，创建或完成套餐。
+- 请参阅 [Azure SaaS 应用程序产品/服务](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-offer)获取详细信息。

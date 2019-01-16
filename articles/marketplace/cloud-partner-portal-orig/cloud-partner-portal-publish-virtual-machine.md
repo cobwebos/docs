@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/18/2018
 ms.author: pbutlerm
-ms.openlocfilehash: d77dad52e75253de02fd079d791861356c4c5e1f
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 519867b1e0607a769948c86af263c172e810d107
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51247069"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54078110"
 ---
 # <a name="publish-a-virtual-machine-to-azure-marketplace"></a>将虚拟机发布到 Azure 市场
 
@@ -31,35 +31,23 @@ ms.locfileid: "51247069"
 
 ### <a name="technical"></a>技术方面
 
--   [为 Azure 市场创建虚拟机映像的技术先决条件](https://docs.microsoft.com/azure/marketplace-publishing/marketplace-publishing-vm-image-creation-prerequisites)
-
+-   [为 Azure 市场创建虚拟机映像的技术先决条件](../cloud-partner-portal/virtual-machine/cpp-create-technical-assets.md)
 -   [创建并上传 Linux VHD](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-create-upload-generic?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-
 -   [从映像创建并测试 Linux VM](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-upload-vhd)
-
 -   [创建并上传 Windows VHD ](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-prepare-for-upload-vhd-image?toc=/azure/virtual-machines/windows/toc.json)
-
 -   [从映像创建并测试 Windows VM](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-create-vm-generalized-managed?toc=/azure/virtual-machines/windows/toc.json)
-
--   [如何对在 VHD 创建期间遇到的常见问题进行故障排除](https://docs.microsoft.com/azure/marketplace-publishing/marketplace-publishing-vm-image-creation-troubleshooting)
-
+-   [如何对在 VHD 创建期间遇到的常见问题进行故障排除](../cloud-partner-portal/virtual-machine/cpp-common-vhd-creation-issues.md)
 -   [适用于 Azure 市场映像的安全建议](https://docs.microsoft.com/azure/security/security-recommendations-azure-marketplace-images)
 
 
 ### <a name="non-technical-business-requirements"></a>非技术方面（业务要求）
 
  -   公司（或其子公司）位于 Azure 市场支持的销售国家/地区
-
 -   产品必须以兼容 Azure 市场支持的计费模型的方式获得许可
-
 -   你需要以商业上合理的方式负责向客户提供技术支持。 支持形式可以为免费、付费或社区支持。
-
 -   负责获得自己的软件和任何第三方软件依赖项的许可。
-
--   提供的内容必须满足在 Azure 市场上和 Azure 管理门户中列出的产品/服务的标准。
-
+-   提供的内容必须满足在 Azure 市场上和 Azure 门户中列出的产品/服务的标准。
 -   同意 Azure 市场参与政策与发布者协议的条款。
-
 -   同意遵守[使用条款](https://azure.microsoft.com/support/legal/website-terms-of-use/)、[Microsoft 隐私声明](https://www.microsoft.com/privacystatement/default.aspx)和 [Microsoft Azure 认证计划协议](https://azure.microsoft.com/support/legal/marketplace/certified-program-agreement/)。
 
 ## <a name="before-you-begin"></a>开始之前
@@ -140,7 +128,7 @@ SKU 显示在 Azure 市场的父套餐下，并在 Azure 门户中以可购买�
 
 ### <a name="hide-this-sku"></a>隐藏此 SKU
 
-使用此设置可管理 SKU 可见性。 如果“隐藏此 SKU”处于关闭状态，则 SKU 在 [Azure 市场](https://azuremarketplace.microsoft.com)和 [Azure 门户](https://portal.azure.com/)中对客户可见。 在只想让此 SKU 通过解决方案模板可用，而不能用于单独购买的情况下，用户可能想要隐藏 SKU。
+使用此设置可管理 SKU 可见性。 如果“隐藏此 SKU”处于关闭状态，则客户可以在 [Azure 市场](https://azuremarketplace.microsoft.com)和 [Azure 门户](https://portal.azure.com/)中看见 SKU。 在只想让此 SKU 通过解决方案模板可用，而不能用于单独购买的情况下，用户可能想要隐藏 SKU。
 
 ### <a name="cloud-availability"></a>云可用性
 
@@ -177,7 +165,7 @@ SKU 显示在 Azure 市场的父套餐下，并在 Azure 门户中以可购买�
 
 #### <a name="usage-based-monthly-billed-sku"></a>基于使用情况的按月计费的 SKU
 
-根据发布者按 VM 大小设置的费率，以每小时为单位向客户收取费用。 如果使用 SKU 的**每小时计费**模型，总价格将为发布者收取的软件成本和 Microsoft 收取的基础结构成本的总和。 当客户考虑购买时，此总成本以每小时和每月价格形式显示给客户。 在这种情况下，计费按月计算。
+根据发布者按 VM 大小设置的费率，以每小时为单位向客户收取费用。 如果使用**每小时计费**模型，总价格将是发布者收取的软件成本和 Microsoft 收取的基础结构成本的总和。 当客户考虑购买时，此总成本以每小时和每月价格形式显示给客户。 在这种情况下，计费按月计算。
 
 在基于使用情况的模型内，用户还要求提供其他设置。
 
@@ -188,7 +176,7 @@ SKU 显示在 Azure 市场的父套餐下，并在 Azure 门户中以可购买�
 
 **每核心定价**
 
-可以为 SKU 设置每核心定价。 对此，只需要为单个核心输入基本价格，即可自动计算剩余核心的价格。 在门户中输入价格（以美元为单位），我们会自动计算其他区域的价格。 可以通过使用**导出定价数据**验证其他区域的价格
+可以为 SKU 设置每核心定价。 对于此选项，只需要为单个核心输入基本价格，即可自动计算剩余核心的价格。 在门户中输入价格（以美元为单位），我们会自动计算其他区域的价格。 可以通过使用**导出定价数据**验证其他区域的价格
 
 ![每核心定价](./media/cloud-partner-portal-publish-virtual-machine/publishvm6.png)
 
@@ -201,8 +189,8 @@ SKU 显示在 Azure 市场的父套餐下，并在 Azure 门户中以可购买�
 
 **导出/导入定价**
 
-可以灵活导出通过门户配置的定价，以通过 Excel 界面进行更改。 这样也可以验证每个区域的定价以及以当地货币表示的定价。
-单击“导出定价”，下载预填充了定价详细信息的 Excel 文件。 可以在 Excel 中编辑这些定价，并使用“导入定价”导入更改后的定价。
+可以灵活导出通过门户配置的定价，以通过 Excel 界面进行更改。 此选项还允许验证每个区域的定价以及以本地货币表示的定价。
+单击“导出定价”将下载预填充了定价详细信息的 Excel 文件。 可以在电子表格中编辑这些详细信息，并使用“导入定价”导入更改后的定价。
 导入的定价也会反映在门户中。
 
 在此定价 Excel 内，不同区域的价格以当地货币的形式列出。 使用的汇率每天都在刷新。
@@ -219,24 +207,18 @@ SKU 显示在 Azure 市场的父套餐下，并在 Azure 门户中以可购买�
 
 要完成的下一部分将是 VM 映像部分。 在转到此部分前，需要准备好要发布的 VHD。 下面的一些链接有助于创建 VHD：
 
--   [为 Azure 市场创建虚拟机映像的技术先决条件](https://docs.microsoft.com/azure/marketplace-publishing/marketplace-publishing-vm-image-creation-prerequisites)
-
+-   [为 Azure 市场创建虚拟机映像的技术先决条件](../cloud-partner-portal/virtual-machine/cpp-prerequisites.md)
 -   [创建并上传 Linux VHD](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-create-upload-generic?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-
 -   [从映像创建并测试 Linux VM](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-upload-vhd)
-
 -   [创建并上传 Windows VHD ](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-prepare-for-upload-vhd-image?toc=/azure/virtual-machines/windows/toc.json)
-
 -   [从映像创建并测试 Windows VM](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-create-vm-generalized-managed?toc=/azure/virtual-machines/windows/toc.json)
+-   [如何对在 VHD 创建期间遇到的常见问题进行故障排除](../cloud-partner-portal/virtual-machine/cpp-common-vhd-creation-issues.md)
 
--   [如何对在 VHD 创建期间遇到的常见问题进行故障排除](https://docs.microsoft.com/azure/marketplace-publishing/marketplace-publishing-vm-image-creation-troubleshooting)
-
-VHD 准备就绪后，可以开始填写此部分。
-下面是某些字段的一些详细信息。
+VHD 准备就绪后，可以开始填写此部分。  下面是某些字段的一些详细信息。
 
 ### <a name="recommended-vm-sizes"></a>建议的 VM 大小
 
-选择最多六个建议的虚拟机大小。 在客户决定购买和部署映像时，这些建议会在 Azure 市场与 Azure 门户的“定价层”边栏选项卡中显示给客户。 **这些仅仅是建议。客户能够选择可容纳在映像中指定的磁盘的任何 VM 大小。**  以下屏幕截图显示了客户将在 Azure 门户中看到的建议的 VM 大小。
+选择最多六个建议的虚拟机大小。 在客户决定购买和部署映像时，这些建议会在 Azure 市场与 Azure 门户的“定价层”边栏选项卡中显示给客户。 *这些大小仅仅是建议。客户能够选择可容纳在映像中指定的磁盘的任何 VM 大小。*  以下屏幕截图显示了客户将在 Azure 门户中看到的建议的 VM 大小。
 
 
 ![建议的 VM 大小](./media/cloud-partner-portal-publish-virtual-machine/publishvm9.png)
@@ -248,9 +230,9 @@ VHD 准备就绪后，可以开始填写此部分。
 
 ### <a name="adding-vm-images"></a>添加 VM 映像
 
-下一步是为 SKU 添加 VM 映像。 每个 SKU 最多可以添加 8 个磁盘版本。 只有特定 SKU 的最高磁盘版本号将显示在 Azure 市场中。 其他版本号将通过 API 显示。
+下一步是为 SKU 添加 VM 映像。 每个 SKU 最多可以添加八个磁盘版本。 只有特定 SKU 的最高磁盘版本号将显示在 Azure 市场中。 其他版本号将通过 API 显示。
 
-在“磁盘版本”下，选择“+ 新建版本”。 这将显示以下需要填写的字段。
+在“磁盘版本”下，选择“+ 新建版本”。 此选项将显示需要填写的以下字段。
 
 #### <a name="vm-image-version"></a>VM 映像版本
 
@@ -258,17 +240,17 @@ VHD 准备就绪后，可以开始填写此部分。
 
 #### <a name="os-vhd-url"></a>OS VHD URL
 
-输入为操作系统 VHD 创建的[共享访问签名 URI](https://docs.microsoft.com/azure/marketplace-publishing/marketplace-publishing-vm-image-creation#52-get-the-shared-access-signature-uri-for-your-vm-images)。
+输入为操作系统 VHD 创建的[共享访问签名 URI](../cloud-partner-portal/virtual-machine/cpp-get-sas-uri.md)。
 
 如果存在与此 SKU 关联的数据磁盘，则可以通过选择“ + 新建数据磁盘”链接来选择添加这些磁盘。 此操作会显示可供填写的其他字段。
 
 #### <a name="lun-vhd-url"></a>LUN VHD URL
 
-为数据磁盘输入[共享访问签名 URI](https://docs.microsoft.com/azure/marketplace-publishing/marketplace-publishing-vm-image-creation#52-get-the-shared-access-signature-uri-for-your-vm-images)。
+为数据磁盘输入[共享访问签名 URI](../cloud-partner-portal/virtual-machine/cpp-get-sas-uri.md)。
 
-#### <a name="lun-number"></a>LUN 数字
+#### <a name="lun-number"></a>LUN 编号
 
-为此 LUN 分配一个数字。 此数字将针对该数据磁盘保留在此 SKU 中。
+为此 LUN 分配一个编号。 此数字将针对该数据磁盘保留在此 SKU 中。
 
 >[!Note]
 >使用给定的 VM 版本和数据磁盘发布 SKU 后，这些内容就会处于锁定状态且无法更改。 对于已添加到 SKU 的任何其他 VM 版本，需要支持的数据磁盘数量无法更改。
@@ -294,7 +276,7 @@ VHD 准备就绪后，可以开始填写此部分。
 
 ### <a name="suggested-categories"></a>建议的类别
 
-从提供的可以与产品/服务关联最密切的列表中最多选择 5 种类别。 所选的类别用于将产品/服务映射到在 [Azure 市场](https://azuremarketplace.microsoft.com)和 [Azure 门户](https://portal.azure.com/)中提供的产品类别。
+从提供的列表中选择最多五个与产品/服务最相关的类别。 所选的类别用于将产品/服务映射到在 [Azure 市场](https://azuremarketplace.microsoft.com)和 [Azure 门户](https://portal.azure.com/)中提供的产品类别。
 
 以下示例显示 Azure 市场和 Azure 门户中的市场信息。
 
@@ -316,7 +298,6 @@ VHD 准备就绪后，可以开始填写此部分。
 ![publishvm12](./media/cloud-partner-portal-publish-virtual-machine/publishvm12.png)
 
 
-
 ![publishvm13](./media/cloud-partner-portal-publish-virtual-machine/publishvm13.png)
 
 
@@ -333,7 +314,7 @@ VHD 准备就绪后，可以开始填写此部分。
 
 -   不要在徽标上使用渐变背景。
 
--   避免在徽标中插入文本， 包括公司名称或品牌名称。 徽标的外观应平整，应避免渐变。
+-   避免在徽标上放置文本，即使是公司或品牌名称也不可以。  徽标的外观应平整，应避免渐变。
 
 -   不应拉伸徽标。
 
@@ -345,7 +326,7 @@ VHD 准备就绪后，可以开始填写此部分。
 
 -   发布者显示名称、计划标题和套餐详细摘要使用白色字体显示。 避免在背景中使用任何亮色。 主图标不允许使用黑色、白色和透明背景。
 
--   列出套餐后，发布者显示名称、计划标题、套餐详细摘要和创建按钮以编程方式嵌入在主徽标内。 设计主徽标时，请勿输入任何文本。 在徽标右侧保留空白空间。 此空间应为 415 x 100 像素，并与左侧保留 370 像素的间距。
+-   列出产品/服务后，发布者显示名称、计划标题、套餐详细摘要和创建按钮以编程方式嵌入在主徽标内。 设计主徽标时，请勿输入任何文本。 在徽标右侧保留空白空间。 此空间应为 415 x 100 像素，并与左侧保留 370 像素的间距。
 
 ![特大徽标示例](./media/cloud-partner-portal-publish-virtual-machine/publishvm14.png)
 

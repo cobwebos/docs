@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: rogoya
-ms.openlocfilehash: 9f701f0f6d00d2913eaf5b237435fd375b2030e0
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 80b1896c55d00a4ac8e5dea62afc08ace1a84249
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53435270"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54078518"
 ---
 # <a name="azure-active-directory-smart-lockout"></a>Azure Active Directory 智能锁定
 
@@ -70,6 +70,14 @@ ms.locfileid: "53435270"
 > 如果锁定后的首次登录也失败了，则帐户再次锁定。 如果帐户重复锁定，则锁定持续时间增加。
 
 ![在 Azure 门户中自定义 Azure AD 智能锁定策略](./media/howto-password-smart-lockout/azure-active-directory-custom-smart-lockout-policy.png)
+
+## <a name="how-to-determine-if-the-smartlockout-feature-is-working-or-not"></a>如何确定 Smartlockout 功能是否正常运行
+
+触发 smartlockout 阈值后，将在帐户锁定时收到以下消息：
+
+**帐户暂时锁定以防止未经授权的使用。请稍后再试！如果仍有问题，请与管理员联系。**
+
+
 ## <a name="next-steps"></a>后续步骤
 
 [了解如何使用 Azure AD 禁止组织中的错误密码。](howto-password-ban-bad.md)

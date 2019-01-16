@@ -1,13 +1,10 @@
 ---
-title: 教程 - 使用 Azure 流量管理器路由流量以改善网站响应 | Microsoft Docs
+title: 教程 - 使用 Azure 流量管理器路由流量以改善网站响应
 description: 本教程文章介绍如何创建流量管理器配置文件，以生成具有高响应能力的网站。
 services: traffic-manager
 documentationcenter: ''
 author: kumudd
-manager: jeconnoc
-editor: ''
 Customer intent: As an IT Admin, I want to route traffic so I can improve website response by choosing the endpoint with lowest latency.
-ms.assetid: ''
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
@@ -15,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/23/2018
 ms.author: kumud
-ms.openlocfilehash: 087dcda5826d96ad064c472fc897be7e61133387
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: fcbacb14ae1cf0d8fa31d84e281c96fab5e3b0d3
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47392495"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54052081"
 ---
 # <a name="tutorial-improve-website-response-using-traffic-manager"></a>教程：使用流量管理器改善网站响应 
 
@@ -93,7 +90,7 @@ ms.locfileid: "47392495"
 
 #### <a name="install-iis-and-customize-the-default-web-page"></a>安装 IIS 并自定义默认网页
 
-在本部分，我们将在 *myIISVMEastUS* 和 *myIISVMWEurope* 这两个 VM 上安装 IIS 服务器，然后更新默认网站页面。 自定义网站页面显示从 Web 浏览器访问网站时要连接到的 VM 的名称。
+在本部分，我们将在 *myIISVMEastUS*  &  和 *myIISVMWEurope* 这两个 VM 上安装 IIS 服务器，然后更新默认网站页面。 自定义网站页面显示从 Web 浏览器访问网站时要连接到的 VM 的名称。
 
 1. 在左侧菜单中选择“所有资源”，然后在资源列表中，单击位于 *myResourceGroupTM1* 资源组中的“myIISVMEastUS”。
 2. 在“概述”页上单击“连接”，然后在“连接到虚拟机”中选择“下载 RDP 文件”。 
@@ -189,7 +186,7 @@ ms.locfileid: "47392495"
 
     | 设置                 | 值                                              |
     | ---                     | ---                                                |
-    | Type                    | Azure 终结点                                   |
+    | 类型                    | Azure 终结点                                   |
     | 名称           | myEastUSEndpoint                                        |
     | 目标资源类型           | 公共 IP 地址                          |
     | 目标资源          | **选择公共 IP 地址**以显示同一订阅下具有公共 IP 地址的资源列表。 在“资源”中，选择名为 *myIISVMEastUS-ip* 的公共 IP 地址。 这是美国东部的 IIS 服务器 VM 的公共 IP 地址。|

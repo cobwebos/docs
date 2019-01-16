@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 06/07/2018
 ms.author: Barclayn
 ms.custom: AzLog
-ms.openlocfilehash: 4653803623ed0c847fa63663204b5842f7a03d08
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: 8b03c3627d476ec83fda402545c7a7d73346385f
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53584201"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54063907"
 ---
 # <a name="azure-log-integration-tutorial-process-azure-key-vault-events-by-using-event-hubs"></a>Azure 日志集成教程：使用事件中心处理 Azure Key Vault 事件
 
@@ -25,7 +25,7 @@ ms.locfileid: "53584201"
 
 可以使用 Azure 日志集成检索已记录的事件并使其可供安全信息和事件管理 (SIEM) 系统使用。 本教程展示如何使用 Azure 日志集成处理通过 Azure 事件中心获取的日志。
 
-用于集成 Azure 日志的首选方法是，使用 SIEM 供应商的 Azure Monitor 连接器并遵循这些[说明](../azure-monitor/platform/stream-monitoring-data-event-hubs.md)。 但是，如果你的 SIEM 供应商未提供 Azure Monitor 连接器，你或许可以使用 Azure 日志集成作为临时解决方案（如果你的 SIEM 受 Azure 日志集成支持），直到有此类连接器可用。
+集成 Azure 日志的首选方法是，使用 SIEM 供应商的 Azure Monitor 连接器并遵循这些[说明](../azure-monitor/platform/stream-monitoring-data-event-hubs.md)。 但是，如果你的 SIEM 供应商未提供 Azure Monitor 连接器，你或许可以使用 Azure 日志集成作为临时解决方案（如果你的 SIEM 受 Azure 日志集成支持），直到有此类连接器可用。
 
  
 应使用本教程，按照以下示例步骤操作，了解 Azure 日志集成和事件中心如何协同工作以及每个步骤如何支持该解决方案。 然后可使用此处学到的内容，创建自己的步骤来满足公司的独特需求。
@@ -80,7 +80,7 @@ ms.locfileid: "53584201"
 ## <a name="create-supporting-infrastructure-elements"></a>创建支持基础结构元素
 
 1. 打开一个提升权限的 PowerShell 窗口并转至 **C:\Program Files\Microsoft Azure Log Integration**。
-1. 通过运行脚本 LoadAzLogModule.ps1 导入 AzLog cmdlet。 输入 `.\LoadAzLogModule.ps1` 命令。 （请注意该命令中的“.\”。）应看到与下面类似的内容：</br>
+1. 通过运行脚本 LoadAzLogModule.ps1 导入 AzLog cmdlet。 输入 `.\LoadAzLogModule.ps1` 命令。 （请注意该命令中的“\"。）应看到与下面类似的内容：</br>
 
    ![已加载的模块列表](./media/security-azure-log-integration-keyvault-eventhub/loaded-modules.png)
 
@@ -93,7 +93,7 @@ ms.locfileid: "53584201"
 
    ![PowerShell 窗口](./media/security-azure-log-integration-keyvault-eventhub/login-azurermaccount.png)
 1. 创建变量来存储后面将使用的值。 输入以下每个 PowerShell 行。 可能需要调整值来匹配你的环境。
-    - ```$subscriptionName = �Visual Studio Ultimate with MSDN�```（你的订阅名称可能不同。 可以在前面命令的输出中看到该名称。）
+    - ```$subscriptionName = 'Visual Studio Ultimate with MSDN'```（你的订阅名称可能不同。 可以在前面命令的输出中看到该名称。）
     - ```$location = 'West US'```（此变量将用来传递应当在其中创建资源的位置。 可以将此变量更改为你选择的任何位置。）
     - ```$random = Get-Random```
     - ``` $name = 'azlogtest' + $random```（名称可以是任何内容，但应当仅包含 小写字母和数字。）

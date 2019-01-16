@@ -1,13 +1,10 @@
 ---
-title: 创建、更改或删除 Azure 路由表 | Microsoft Docs
+title: 创建、更改或删除 Azure 路由表
+titlesuffix: Azure Virtual Network
 description: 了解如何创建、更改或删除路由表。
 services: virtual-network
 documentationcenter: na
 author: jimdial
-manager: jeconnoc
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: NA
 ms.topic: article
@@ -15,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/09/2018
 ms.author: jdial
-ms.openlocfilehash: 7c3c4eea80eb0ceddc48d30fd51cf23524df5640
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 45c7a07231cbdcdc64ec348ed425a62b63bd822a
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53540752"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54016556"
 ---
 # <a name="create-change-or-delete-a-route-table"></a>创建、更改或删除路由表
 

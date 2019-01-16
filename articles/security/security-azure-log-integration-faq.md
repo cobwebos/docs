@@ -15,12 +15,12 @@ ms.workload8: na
 ms.date: 06/07/2018
 ms.author: barclayn
 ms.custom: azlog
-ms.openlocfilehash: 458b615ea872b62a412a71cbbb0b3827ccb4d9b8
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: eb81e5202b5705c59bae8e07cbf2ade43b03f075
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53580920"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54064468"
 ---
 # <a name="azure-log-integration-faq"></a>Azure 日志集成常见问题解答
 
@@ -31,7 +31,7 @@ ms.locfileid: "53580920"
 
 Azure 日志集成是 Windows 操作系统服务，可用来将 Azure 资源中的原始日志集成到本地安全信息和事件管理 (SIEM) 系统。 此集成为本地或云端的所有资产提供统一的仪表板。 对于与应用程序相关的安全事件，可进行聚合、关联、分析和警报等操作。
 
-用于集成 Azure 日志的首选方法是使用 SIEM 供应商的 Azure Monitor 连接器并遵循这些[说明](../azure-monitor/platform/stream-monitoring-data-event-hubs.md)。 但是，如果你的 SIEM 供应商未提供 Azure Monitor 连接器，你或许可以使用 Azure 日志集成作为临时解决方案（如果 SIEM 受 Azure 日志集成支持），直到有此类连接器可用。
+集成 Azure 日志的首选方法是，使用 SIEM 供应商的 Azure Monitor 连接器并遵循这些[说明](../azure-monitor/platform/stream-monitoring-data-event-hubs.md)。 但是，如果你的 SIEM 供应商未提供 Azure Monitor 连接器，你或许可以使用 Azure 日志集成作为临时解决方案（如果你的 SIEM 受 Azure 日志集成支持），直到有此类连接器可用。
 
 ## <a name="is-the-azure-log-integration-software-free"></a>Azure 日志集成软件是否免费？
 

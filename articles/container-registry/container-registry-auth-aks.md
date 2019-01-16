@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/08/2018
 ms.author: danlep
-ms.openlocfilehash: 850919f8ca8bb68af544ae528a779e16068424b1
-ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
+ms.openlocfilehash: 0dbdf2261b851b303a0c606e5de70354578c6d2e
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/22/2018
-ms.locfileid: "53752531"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54078773"
 ---
 # <a name="authenticate-with-azure-container-registry-from-azure-kubernetes-service"></a>使用 Azure 容器注册表从 Azure Kubernetes 服务进行身份验证
 
@@ -44,7 +44,7 @@ az role assignment create --assignee $CLIENT_ID --role acrpull --scope $ACR_ID
 
 ## <a name="access-with-kubernetes-secret"></a>使用 Kubernetes 机密访问
 
-在某些情况下，可能无法向自动生成的 AKS 服务主体分配授予其访问 ACR 权限所需的角色。 例如，由于组织的安全模型，你可能在 Azure AD 目录中没有足够的权限将角色分配给 AKS 生成的服务主体。 在这种情况下，可以创建新的服务主体，然后向其授予使用 Kubernetes 映像请求机密访问容器注册表的权限。
+在某些情况下，可能无法向自动生成的 AKS 服务主体分配授予其访问 ACR 权限所需的角色。 例如，由于组织的安全模型，你可能没有足够的权限在 Azure Active Directory 租户中为 AKS 生成的服务主体分配角色。 将角色分配给服务主体要求 Azure AD 帐户具有对 Azure AD 租户的写入权限。 如果没有权限，则可以创建新的服务主体，然后使用 Kubernetes 映像请求机密向其授予容器注册表的访问权限。
 
 使用以下脚本创建新的服务主体（你将使用其凭据来获取 Kubernetes 映像请求机密）。 在运行脚本之前，修改环境的 `ACR_NAME` 变量。
 

@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 8/16/2018
 ms.author: trinadhk
-ms.openlocfilehash: 6ec178a8cb457973f39ea2dd929a3486a7696c55
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 063b13f76e2fcbe4df0b13d7e77e34718ec756d4
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53972186"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54041282"
 ---
 # <a name="frequently-asked-questions-azure-backup"></a>常见问题 - Azure 备份
 
@@ -63,7 +63,7 @@ Azure 备份可使用最多 16 个磁盘备份 VM。 Azure VM 备份堆栈 V2 �
 Azure 备份支持[标准 SSD 托管磁盘](https://azure.microsoft.com/blog/announcing-general-availability-of-standard-ssd-disks-for-azure-virtual-machine-workloads/)。 SSD 托管磁盘为 Azure VM 提供了一种新型的持久存储。 Azure VM 备份堆栈 V2 的[最新版本](backup-upgrade-to-vm-backup-stack-v2.md)对 SSD 托管磁盘提供支持。
 
 ### <a name="can-we-back-up-a-vm-with-a-write-accelerator-wa-enabled-disk"></a>可使用支持写入加速器 (WA) 的磁盘备份 VM 吗？
-无法在已启用 WA 的磁盘上拍摄快照。 但是，Azure 备份服务可以从备份中排除已启用 WA 的磁盘。 仅升级到 Azure VM 备份堆栈 V2 的订阅支持已启用 WA 的磁盘的 VM 磁盘排除。 要升级到 Azure VM 备份堆栈 V2，请参阅本[项目](backup-upgrade-to-vm-backup-stack-v2.md)。 此功能目前在日本东部、北欧、东南亚、美国东部、美国西部 2、西欧和美国东部 2 可用。
+无法在已启用 WA 的磁盘上拍摄快照。 但是，Azure 备份服务可以从备份中排除已启用 WA 的磁盘。 仅升级到 Azure VM 备份堆栈 V2 的订阅支持已启用 WA 的磁盘的 VM 磁盘排除。 要升级到 Azure VM 备份堆栈 V2，请参阅[本文](backup-upgrade-to-vm-backup-stack-v2.md)。 此功能目前在日本东部、北欧、东南亚、美国东部、美国西部 2、西欧和美国东部 2 可用。
 
 
 ### <a name="i-have-a-vm-with-write-accelerator-wa-disks-and-sap-hana-installed-how-do-i-back-up"></a>我有一个安装了写入加速器 (WA) 磁盘和 SAP HANA 的 VM。 我该如何备份？
