@@ -11,12 +11,12 @@ ms.component: text-analytics
 ms.topic: conceptual
 ms.date: 01/02/2019
 ms.author: diberry
-ms.openlocfilehash: acab20f7fa9594d6b86a2cc63a69e91759b57b38
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 628cc8759610a794d5fb5dbcb76b679304ed6def
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53975553"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54243927"
 ---
 # <a name="configure-text-analytics-docker-containers"></a>配置文本分析 docker 容器
 
@@ -41,7 +41,7 @@ ms.locfileid: "53975553"
 
 [!INCLUDE [Container shared configuration ApplicationInsights settings](../../../includes/cognitive-services-containers-configuration-shared-settings-application-insights.md)]
 
-## <a name="billing-configuration-setting"></a>账单配置设置
+## <a name="billing-configuration-setting"></a>Billing 配置设置
 
 `Billing` 设置指定 Azure 上用于计量容器的账单信息的文本分析资源的终结点 URI。 必须为此配置设置指定值，并且该值必须是 Azure 上的_文本分析_资源的有效终结点 URI。
 
@@ -49,7 +49,7 @@ ms.locfileid: "53975553"
 
 * Azure 门户：**文本分析的**概述，标签为 `Endpoint`
 
-|必需| 名称 | 数据类型 | 说明 |
+|必选| 名称 | 数据类型 | Description |
 |--|------|-----------|-------------|
 |是| `Billing` | String | 账单终结点 URI<br><br>示例：<br>`Billing=https://westus.api.cognitive.microsoft.com/text/analytics/v2.0` |
 
@@ -74,7 +74,7 @@ ms.locfileid: "53975553"
 
 主机确切语法的安装位置因主机操作系统不同而异。 此外，由于 docker 服务帐户使用的权限与主机安装位置权限之间的冲突，可能无法访问[主计算机](how-tos/text-analytics-how-to-install-containers.md#the-host-computer)的装载位置。 
 
-|可选| 名称 | 数据类型 | 说明 |
+|可选| 名称 | 数据类型 | Description |
 |-------|------|-----------|-------------|
 |不允许| `Input` | String | 文本分析容器不使用此项。|
 |可选| `Output` | String | 输出装入点的目标。 默认值为 `/output`。 这是日志的位置。 这包括容器日志。 <br><br>示例：<br>`--mount type=bind,src=c:\output,target=/output`|
