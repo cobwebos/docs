@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 08/28/2018
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 8640d89c5fb9e38fc6c982e21147361ad690964a
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: f4f588ad9123ec98cbae9f9bf03c08ec551a31a5
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53584439"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54232747"
 ---
 # <a name="tutorial-build-an-image-processing-app---c35"></a>教程：构建图像处理应用 - C#
 
@@ -97,9 +97,6 @@ git clone --recurse-submodules https://github.com/Microsoft/Cognitive-Face-Windo
    |识别文本 (OCR) | 使用 [OCR](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) 操作识别图像并从图像中提取打印的文本。 可以选择要使用的语言，也可以让计算机视觉自动检测语言。 |
    |识别文本 V2（英语） | 使用[识别文本](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2c6a154055056008f200)和[获取识别文本操作结果](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2cf1154055056008f201)操作以异步方式识别图像和提取图像中的打印文本或手写文本。 |
    |获取缩略图 | 使用[获取缩略图](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fb)操作生成本地或远程图像的缩略图。 |
-
-   > [!IMPORTANT]
-   > Microsoft 会收到上传的图像，并且可能会将其用于改进计算机视觉 API 和相关服务。 提交图像即表明你确认遵循我们的[开发人员行为准则](https://azure.microsoft.com/support/legal/developer-code-of-conduct/)。
 
    以下屏幕截图展示了在分析样本图像后为分析图像场景提供的页面。
    ![“分析图像”页的屏幕截图](../Images/Analyze_Image_Example.PNG)

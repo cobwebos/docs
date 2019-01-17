@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 12/20/2018
 ms.author: absha
-ms.openlocfilehash: ccdfbc38cb39f2c0aa839dc56022192e9e389d95
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 3e40dbb96b27df4b228c52e7a8f70d047a556c31
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 01/10/2019
-ms.locfileid: "54187411"
+ms.locfileid: "54198519"
 ---
 # <a name="rewrite-http-headers-with-application-gateway-public-preview"></a>使用应用程序网关（公共预览版）重写 HTTP 标头
 
@@ -116,8 +116,6 @@ HTTP 标头可让客户端和服务器连同请求或响应一起传递附加的
 ## <a name="limitations"></a>限制
 
 - 这种重写 HTTP 标头的功能目前只能通过 Azure PowerShell、Azure API 和 Azure SDK 获取。 不久即可通过门户和 Azure CLI 获取支持。
-
-- 在应用程序网关上应用标头重写后，在门户支持该功能之前，不应该使用门户对该应用程序网关进行任何后续更改。 如果在应用重写规则后使用门户对应用程序网关进行更改，则标头会重写规则。 可以继续使用 Azure PowerShell、Azure API 或 Azure SDK 进行更改。
 
 - 仅 新的 SKU [Standard_V2](https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant) 支持 HTTP 标头重写支持。 旧的 SKU 将不支持此功能。
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/12/2018
 ms.author: bwren
-ms.openlocfilehash: a7b91bfdc616e19fde9f74246d05cf14ecbd335e
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 5ba596a85abbb529990efdf7b15ac50515de011b
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54117259"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54214447"
 ---
 # <a name="continuous-monitoring-with-azure-monitor"></a>使用 Azure Monitor 进行持续监视
 
@@ -47,7 +47,7 @@ ms.locfileid: "54117259"
 - 为环境中的不同应用程序和服务添加[监视解决方案](insights/solutions-inventory.md)。
 
 
-[基础结构即代码](/devops/learn/what-is-infrastructure-as-code)是描述性模型中的基础结构的管理系统，它使用版本控制方式与 DevOps 团队用于源代码管理的方式相同。 它提高了环境的可靠性和可伸缩性，并让你利用管理应用程序时所用的类似流程。
+[基础结构即代码](/azure/devops/learn/what-is-infrastructure-as-code)是描述性模型中的基础结构的管理系统，它使用版本控制方式与 DevOps 团队用于源代码管理的方式相同。 它提高了环境的可靠性和可伸缩性，并让你利用管理应用程序时所用的类似流程。
 
 -  使用[资源管理器模板](platform/template-workspace-configuration.md)可以针对大量的资源启用监视和配置警报。
 - 使用 [Azure Policy](../governance/policy/overview.md) 可对资源强制实施不同的规则。 这可以确保这些资源始终符合企业标准和服务级别协议。 
@@ -63,7 +63,7 @@ ms.locfileid: "54117259"
 
 
 - 使用 [Azure Pipelines](/azure/devops/pipelines) 可以实现持续部署，并可以根据 CI/CD 测试，自动化将代码提交到生产环境的整个流程。
-- 使用[质量门限](/devops/pipelines/release/approvals/gates)可将监视功能集成到部署前或部署后的流程。 这可以确保应用程序从开发环境转移到生产环境时可以符合关键的运行状况/性能指标 (KPI)，并且基础结构环境或规模的任何差异不会对 KPI 造成负面影响。
+- 使用[质量门限](/azure/devops/pipelines/release/approvals/gates)可将监视功能集成到部署前或部署后的流程。 这可以确保应用程序从开发环境转移到生产环境时可以符合关键的运行状况/性能指标 (KPI)，并且基础结构环境或规模的任何差异不会对 KPI 造成负面影响。
 - 在开发、测试、Canary 和生产等不同的部署环境之间[维护独立的监视实例](../azure-monitor/app/separate-resources.md)。这可以确保收集的数据与关联的应用程序和基础结构相关。 如果需要跨环境关联数据，可以使用[指标资源管理器中的多资源图表](../azure-monitor/platform/metrics-charts.md)，或者[在 Log Analytics 中创建跨资源查询](log-query/cross-workspace-query.md)。
 
 

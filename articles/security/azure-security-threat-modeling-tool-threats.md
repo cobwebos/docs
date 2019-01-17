@@ -3,9 +3,9 @@ title: 威胁 - Microsoft 威胁建模工具 - Azure | Microsoft 文档
 description: Microsoft 威胁建模工具的威胁类别页，包含所有常见的已发生威胁的类别。
 services: security
 documentationcenter: na
-author: RodSan
-manager: RodSan
-editor: RodSan
+author: jegeib
+manager: jegeib
+editor: jegeib
 ms.assetid: na
 ms.service: security
 ms.workload: na
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: rodsan
-ms.openlocfilehash: 704f9995828866d4d2e4969e3aa922ed1e23c4ea
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: fd7c5fd929163dc7fcd22fbb045dee0fe3070394
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23043302"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54359028"
 ---
 # <a name="microsoft-threat-modeling-tool-threats"></a>Microsoft 威胁建模工具威胁
 
@@ -37,7 +37,7 @@ ms.locfileid: "23043302"
 
 为了更好地阐明此类突出问题，Microsoft 使用了 STRIDE 模型，它可以将不同类型的威胁分类，简化整体安全交流。
 
-| 类别 | 说明 |
+| 类别 | Description |
 | -------- | ----------- |
 | **欺骗** | 先进行非法访问，并使用另一用户的身份验证信息，例如用户名和密码 |
 | **篡改** | 恶意修改数据。 示例包括未经授权更改持久保存的数据（例如保存在数据库中的数据），更改通过开放网络（例如 Internet）在两台计算机之间传输的数据 |

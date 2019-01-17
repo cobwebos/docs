@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 11/13/2018
 ms.author: genli
-ms.openlocfilehash: 2299dd6c723aa3059c293170c655918e5236ca0e
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 5842c5edd0402d61f564ab15e34e8f69c0e718d7
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53138154"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54213444"
 ---
 #  <a name="cannot-rdp-to-azure-virtual-machines-because-the-dhcp-client-service-is-disabled"></a>由于 DHCP 客户端服务被禁用，因此无法对 Azure 虚拟机进行 RDP
 
@@ -62,8 +62,8 @@ DHCP 客户端服务未在 VM 上运行。
 
 ### <a name="use-serial-control"></a>使用串行控制台
 
-1. 连接到[串行控制台并打开 CMD 实例](./serial-console-windows.md#use-cmd-or-powershell-in-serial-console
-)。 如果未在 VM 上启用串行控制台，请参阅[重置网络接口](reset-network-interface.md)。
+1. 连接到[串行控制台并打开 CMD 实例](serial-console-windows.md#use-cmd-or-powershell-in-serial-console)。
+）。 如果未在 VM 上启用串行控制台，请参阅[重置网络接口](reset-network-interface.md)。
 2. 在网络接口上检查是否禁用了 DHCP：
 
         sc query DHCP
@@ -95,7 +95,7 @@ DHCP 客户端服务未在 VM 上运行。
 
 #### <a name="dhcp-client-service-is-stopped-because-of-an-access-denied-error"></a>DHCP 客户端服务由于访问被拒绝错误而停止
 
-1. 连接到[串行控制台](serial-console-windows.md#)并打开 PowerShell 实例。
+1. 连接到[串行控制台](serial-console-windows.md)并打开 PowerShell 实例。
 2. 运行以下脚本下载进程监视器工具：
 
    ```

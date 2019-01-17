@@ -11,13 +11,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 01/03/2019
-ms.openlocfilehash: 30efbcd5ba36ea912a7238eef9e300085cb1d3d1
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.date: 01/11/2019
+ms.openlocfilehash: 43ee1cb33d5d747671cde7463c8f2fcb6e020662
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54040194"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54246511"
 ---
 # <a name="managed-api-reference-for-azure-sql-database-managed-instances"></a>Azure SQL 数据库托管实例的托管 API 引用
 
@@ -62,7 +62,6 @@ ms.locfileid: "54040194"
 |[az sql midb create](https://docs.microsoft.com/cli/azure/sql/midb#az-sql-midb-create) |创建托管数据库|
 |[az sql midb list](https://docs.microsoft.com/cli/azure/sql/midb#az-sql-midb-list)|列出可用的托管数据库|
 |[az sql midb restore](https://docs.microsoft.com/cli/azure/sql/midb#az-sql-midb-restore)|还原托管数据库|
-|[az sql midb update](https://docs.microsoft.com/cli/azure/sql/midb#az-sql-midb-update)|更新托管数据库|
 |[az sql midb delete](https://docs.microsoft.com/cli/azure/sql/midb#az-sql-midb-delete)|删除托管数据库|
 
 ## <a name="transact-sql-manage-logical-servers-and-databases"></a>Transact-SQL：管理逻辑服务器和数据库

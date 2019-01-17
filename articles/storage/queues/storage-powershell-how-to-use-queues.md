@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 09/14/2017
 ms.author: rogarana
 ms.component: queues
-ms.openlocfilehash: fef6858383028d62a16472bd530bf456d01ee7d3
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 016d6b1991085e3ed881deb68317dbde0ee46326
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53634416"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54213223"
 ---
 # <a name="perform-azure-queue-storage-operations-with-azure-powershell"></a>使用 Azure PowerShell 执行 Azure 队列存储操作
 
@@ -77,7 +77,7 @@ $ctx = $storageAccount.Context
 
 ## <a name="create-a-queue"></a>创建队列
 
-以下示例首先使用存储帐户上下文（包括存储帐户名称及其访问密钥）与 Azure 存储建立连接。 接下来，它将调用 [New-AzStorageQueue](/powershell/module/azure.storage/new-AzStoragequeue) cmdlet 以创建名为“queuename”的队列。
+以下示例首先使用存储帐户上下文（包括存储帐户名称及其访问密钥）与 Azure 存储建立连接。 接下来，它将调用 [New-AzStorageQueue](/powershell/module/az.storage/New-AzStorageQueue) cmdlet 以创建名为“queuename”的队列。
 
 ```powershell
 $queueName = "howtoqueue"
@@ -88,7 +88,7 @@ $queue = New-AzStorageQueue –Name $queueName -Context $ctx
 
 ## <a name="retrieve-a-queue"></a>检索队列
 
-可以查询和检索存储帐户中的特定队列，或者所有队列的列表。 以下示例演示如何检索存储帐户中的所有队列以及特定队列；这两个命令都使用 [Get-AzStorageQueue](/powershell/module/azure.storage/get-AzStoragequeue) cmdlet。
+可以查询和检索存储帐户中的特定队列，或者所有队列的列表。 以下示例演示如何检索存储帐户中的所有队列以及特定队列；这两个命令都使用 [Get-AzStorageQueue](/powershell/module/az.storage/Get-AzStorageQueue) cmdlet。
 
 ```powershell
 # Retrieve a specific queue

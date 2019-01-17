@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/09/2018
 ms.author: artemuwka
 ms.component: common
-ms.openlocfilehash: af45081df280f5542b5ba70892ee74c05b3e99cc
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.openlocfilehash: 2d0f3292a12505249ebc8594c58234a0c6e81a8a
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53808105"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54212492"
 ---
 # <a name="transfer-data-with-the-azcopy-v10-preview"></a>使用 AzCopy v10（预览版）传输数据
 
@@ -55,7 +55,7 @@ AzCopy v10 不需要安装。 打开首选命令行应用程序并导航到 `azc
 
 使用 Azure 存储进行身份验证时，AzCopy v10 允许你使用以下选项：
 - **Azure Active Directory [在 Blob 和 ADLS Gen2 上受支持]**。 借助 Azure Active Directory，使用 ```.\azcopy login``` 登录。  用户应具有[分配的“存储 Blob 数据参与者”角色](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac)，以便使用 Azure Active Directory 身份验证写入 Blob 存储。
-- **SAS 令牌 [在 Blob 和文件服务上受支持]**。 在命令行上将 SAS 令牌追加到 blob 路径以使用它。 可以使用 Azure 门户、[存储资源管理器](https://blogs.msdn.microsoft.com/jpsanders/2017/10/12/easily-create-a-sas-to-download-a-file-from-azure-storage-using-azure-storage-explorer/)、[PowerShell](https://docs.microsoft.com/powershell/module/azure.storage/new-AzStorageblobsastoken) 或所选择的其他工具生成 SAS 令牌。 有关详细信息，请参阅[示例](https://docs.microsoft.com/azure/storage/blobs/storage-dotnet-shared-access-signature-part-2)。
+- **SAS 令牌 [在 Blob 和文件服务上受支持]**。 在命令行上将 SAS 令牌追加到 blob 路径以使用它。 可以使用 Azure 门户、[存储资源管理器](https://blogs.msdn.microsoft.com/jpsanders/2017/10/12/easily-create-a-sas-to-download-a-file-from-azure-storage-using-azure-storage-explorer/)、[PowerShell](https://docs.microsoft.com/powershell/module/az.storage/new-azstorageblobsastoken) 或所选择的其他工具生成 SAS 令牌。 有关详细信息，请参阅[示例](https://docs.microsoft.com/azure/storage/blobs/storage-dotnet-shared-access-signature-part-2)。
 
 ## <a name="getting-started"></a>入门
 

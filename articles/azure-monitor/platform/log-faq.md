@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: magoedte
-ms.openlocfilehash: a2213ac9b31623aed18855ce87e7e00870b05247
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: c3aef8c0c05c8f018a3218e15fd102163b89084f
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54107212"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54214736"
 ---
 # <a name="log-analytics-faq"></a>Log Analytics 常见问题解答
 此 Microsoft 常见问题解答是有关 Microsoft Azure 中 Log Analytics 的常见问题列表。 如果有与 Log Analytics 有关的任何其他问题，请转到[论坛](https://social.msdn.microsoft.com/Forums/azure/home?forum=opinsights)并发布问题。 当某个问题经常被问到时，我们会将该问题添加到本文中，以便可以轻松快捷地找到该问题。
@@ -63,7 +63,7 @@ Azure 门户中的新的日志体验基于高级分析门户，但是仍然可�
 
 ### <a name="q-why-can-i-can-access-my-workspace-in-oms-portal-but-i-get-the-error-you-have-no-access-in-the-azure-portal"></a>问： 为什么我可以访问 OMS 门户中的工作区，但在 Azure 门户中却获得“你没有访问权限”错误？  
 
-答：若要访问 Azure 中的工作区，必须获得 Azure 权限。 在某些情况下，你可能没有相应的访问权限。 在这些示例中，管理员必须在 Azure 中为你授予相关权限。有关详细信息，请参阅[从 OMS 门户转到 Azure](/../../azure-monitor/platform/oms-portal-transition.md)。
+答：若要访问 Azure 中的工作区，必须获得 Azure 权限。 在某些情况下，你可能没有相应的访问权限。 在这些示例中，管理员必须在 Azure 中为你授予相关权限。有关详细信息，请参阅[从 OMS 门户转到 Azure](oms-portal-transition.md)。
 
 ### <a name="q-why-cant-i-cant-see-view-designer-entry-in-logs"></a>问： 为什么在日志中看不到“视图设计器”条目？ 
 答：视图设计器在日志中仅供分配了“参与者”权限或更高权限的用户使用。

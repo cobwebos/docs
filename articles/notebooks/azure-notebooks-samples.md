@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/04/2018
+ms.date: 01/11/2019
 ms.author: kraigb
-ms.openlocfilehash: 238d84c32a145c00648ce3923efaa86a8fa3d08e
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: f71f1e086e584d1d26b067de001bf83d15bf7961
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53971710"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54243672"
 ---
 # <a name="discover-and-use-sample-notebooks"></a>发现和使用示例笔记本
 
@@ -33,7 +33,7 @@ Internet 上有很多有趣且有用的 Jupyter Notebook，可以轻松将这些
 
 - [Azure Notebooks 入门集](https://notebooks.azure.com/#sample-redirect)包括 Python、R 和 F# 的介绍，以及演示数据访问、Azure 机器学习服务和一些数据科学练习的笔记本。
 - [Jupyter Notebook 简介](https://nbviewer.jupyter.org/github/jupyter/notebook/blob/master/docs/source/examples/Notebook/Notebook%20Basics.ipynb) (jupyter.org)
-- [数据科学简介](https://github.com/jakevdp/PythonDataScienceHandbook/tree/master/code_listings)（Jake Vanderplas 著）。
+- [数据科学简介](https://github.com/jakevdp/PythonDataScienceHandbook/tree/master/notebooks)（Jake Vanderplas 著）。
 - [有趣笔记本的库](https://github.com/ipython/ipython/wiki/A-gallery-of-interesting-IPython-Notebooks)（GitHub 上的 Jupyter 项目）
 - [nbviewer.jupyter.org](https://nbviewer.jupyter.org)
 - [伦敦帝国理工学院物理系](https://notebooks.azure.com/cvanbreu/libraries)的物理指导

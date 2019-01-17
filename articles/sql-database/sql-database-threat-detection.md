@@ -11,19 +11,19 @@ author: rmatchoro
 ms.author: ronmat
 ms.reviewer: vanto, carlrab
 manager: craigg
-ms.date: 01/03/2019
-ms.openlocfilehash: 3f4a120e2aaf2925805bec26f721d5cfb4194bf1
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.date: 01/11/2019
+ms.openlocfilehash: 330726eecc19659d978b1072ad02ad6d5a4ccb8b
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54041537"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54244369"
 ---
 # <a name="azure-sql-database-threat-detection-for-single-database"></a>针对单一数据库的 Azure SQL 数据库威胁检测
 
 针对 [SQL 数据库](sql-database-technical-overview.md)单一数据库的 Azure SQL [威胁检测](sql-database-threat-detection-overview.md)可以检测异常活动，这些活动指示数据库遭到了异常以及可能对数据库有害的访问或利用尝试。 威胁检测可以识别“潜在的 SQL 注入”、“来自异常位置或数据中心的访问”、“来自陌生主体或可能有害的应用程序的访问”以及“暴力攻击 SQL 凭据”- 请在[威胁检测警报](sql-database-threat-detection-overview.md#azure-sql-database-threat-detection-alerts)中查看详细信息。
 
-你可以通过[电子邮件通知](sql-database-threat-detection-overview.md#explore-anomalous-database-activities-upon-detection-of-a-suspicious-event)或 [Azure 门户](sql-database-threat-detection.md#explore-threat-detection-alerts-for-your-database-in-the-azure-portal)接收有关检测到的威胁的通知
+你可以通过[电子邮件通知](sql-database-threat-detection-overview.md#explore-anomalous-database-activities-upon-detection-of-a-suspicious-event)或 [Azure 门户](sql-database-threat-detection-overview.md#explore-threat-detection-alerts-for-your-database-in-the-azure-portal)接收有关检测到的威胁的通知
 
 [威胁检测](sql-database-threat-detection-overview.md)是 [SQL 高级威胁防护](sql-advanced-threat-protection.md) (ATP) 产品/服务（它是高级 SQL 安全功能的一个统一包）的一部分。 可通过中心 SQL ATP 门户访问和管理威胁检测。 威胁检测服务按每个逻辑服务器 15 美元/月来计费，前 30 天免费。
 

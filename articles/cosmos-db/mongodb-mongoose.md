@@ -9,12 +9,12 @@ ms.date: 12/26/2018
 author: sivethe
 ms.author: sivethe
 ms.custom: seodec18
-ms.openlocfilehash: 34ec22550106f03bc90c95b407af088327b7837f
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 6cdfa7492a9916cc3e2300ad71e21acfb68e3d30
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54036165"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54352234"
 ---
 # <a name="connect-a-nodejs-mongoose-application-to-azure-cosmos-db"></a>将 Node.js Mongoose 应用程序连接到 Azure Cosmos DB
 
@@ -183,7 +183,7 @@ Mongoose 还存在称作[鉴别器](https://mongoosejs.com/docs/discriminators.h
 
 1. 现在，请转到 Azure 门户，可以看到 Cosmos DB 中创建了两个集合。
 
-    ![Node.js 教程 - Azure 门户的屏幕截图，其中显示 Azure Cosmos DB 帐户，并突出显示了多个集合名称 - Node 数据库][mutiple-coll]
+    ![Node.js 教程 - Azure 门户的屏幕截图，其中显示 Azure Cosmos DB 帐户，并突出显示了多个集合名称 - Node 数据库][multiple-coll]
 
 1. 最后，我们从 Cosmos DB 读取数据。 由于我们使用的是默认 Mongoose 操作模型，读取操作与 Mongoose 的其他读取操作相同。
 
@@ -313,4 +313,4 @@ Mongoose 还存在称作[鉴别器](https://mongoosejs.com/docs/discriminators.h
 - 使用 Azure Cosmos DB 的用于 MongoDB 的 API 浏览 MongoDB [示例](mongodb-samples.md)。
 
 [alldata]: ./media/mongodb-mongoose/mongo-collections-alldata.png
-[mutiple-coll]: ./media/mongodb-mongoose/mongo-mutliple-collections.png
+[multiple-coll]: ./media/mongodb-mongoose/mongo-mutliple-collections.png

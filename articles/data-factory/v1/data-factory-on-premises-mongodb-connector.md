@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 04/13/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 4059d8d2f6020a23e3593bb906c2e3fc64a4779e
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 433a8b2f9fb1f4c4599afbb807e9270992a98a52
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54025583"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54331531"
 ---
 # <a name="move-data-from-mongodb-using-azure-data-factory"></a>使用 Azure 数据工厂从 MongoDB 移动数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -31,7 +31,7 @@ ms.locfileid: "54025583"
 
 本文介绍如何使用 Azure 数据工厂中的复制活动从本地 MongoDB 数据库移动数据。 它基于[数据移动活动](data-factory-data-movement-activities.md)一文，其中总体概述了如何使用复制活动移动数据。
 
-可以将数据从本地 MongoDB 数据存储复制到任何支持的接收器数据存储。 有关复制活动支持作为接收器的数据存储列表，请参阅[支持的数据存储](data-factory-data-movement-activities.md#supported-data-stores-and-formats)表。 数据工厂当前仅支持将数据从 MongoDB 数据存储移至其他数据存储，而不支持将数据从其他数据存储移至 MongoDB 数据存储。 
+可以将数据从本地 MongoDB 数据存储复制到任何支持的接收器数据存储。 有关复制活动支持作为接收器的数据存储列表，请参阅[支持的数据存储](data-factory-data-movement-activities.md#supported-data-stores-and-formats)表。 数据工厂当前仅支持将数据从 MongoDB 数据存储移至其他数据存储，而不支持将数据从其他数据存储移至 MongoDB 数据存储。
 
 ## <a name="prerequisites"></a>先决条件
 若要使 Azure 数据工厂服务能够连接到本地 MongoDB 数据库，必须安装以下组件：
@@ -49,15 +49,15 @@ ms.locfileid: "54025583"
 
 创建管道的最简单方法是使用复制向导。 有关分步说明，请参阅[教程：使用复制向导创建管道](data-factory-copy-data-wizard-tutorial.md)，以快速了解如何使用复制数据向导创建管道。
 
-还可以使用以下工具来创建管道：Azure 门户、Visual Studio、Azure PowerShell、Azure 资源管理器模板、.NET API 和 REST API。 有关创建包含复制活动的管道的分步说明，请参阅[复制活动教程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。 
+还可以使用以下工具来创建管道：Azure 门户、Visual Studio、Azure PowerShell、Azure 资源管理器模板、.NET API 和 REST API。 有关创建包含复制活动的管道的分步说明，请参阅[复制活动教程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
 
-无论使用工具还是 API，执行以下步骤都可创建管道，以便将数据从源数据存储移到接收器数据存储： 
+无论使用工具还是 API，执行以下步骤都可创建管道，以便将数据从源数据存储移到接收器数据存储：
 
 1. 创建链接服务可将输入和输出数据存储链接到数据工厂。
-2. 创建数据集以表示复制操作的输入和输出数据。 
-3. 创建包含复制活动的管道，该活动将一个数据集作为输入，将一个数据集作为输出。 
+2. 创建数据集以表示复制操作的输入和输出数据。
+3. 创建包含复制活动的管道，该活动将一个数据集作为输入，将一个数据集作为输出。
 
-使用向导时，会自动创建这些数据工厂实体（链接服务、数据集和管道）的 JSON 定义。 使用工具/API（.NET API 除外）时，使用 JSON 格式定义这些数据工厂实体。  有关用于从本地 MongoDB 数据存储复制数据的数据工厂实体的 JSON 定义示例，请参阅本文的 [JSON 示例：将数据从 MongoDB 复制到 Azure Blob](#json-example-copy-data-from-mongodb-to-azure-blob) 部分。 
+使用向导时，会自动创建这些数据工厂实体（链接服务、数据集和管道）的 JSON 定义。 使用工具/API（.NET API 除外）时，使用 JSON 格式定义这些数据工厂实体。  有关用于从本地 MongoDB 数据存储复制数据的数据工厂实体的 JSON 定义示例，请参阅本文的 [JSON 示例：将数据从 MongoDB 复制到 Azure Blob](#json-example-copy-data-from-mongodb-to-azure-blob) 部分。
 
 对于特定于 MongoDB 源的数据工厂实体，以下部分提供了有关用于定义这些实体的 JSON 属性的详细信息：
 
@@ -68,7 +68,7 @@ ms.locfileid: "54025583"
 | --- | --- | --- |
 | type |type 属性必须设置为：**OnPremisesMongoDb** |是 |
 | server |MongoDB 服务器的 IP 地址或主机名。 |是 |
-| port |MongoDB 服务器用于侦听客户端连接的 TCP 端口。 |（可选）默认值：27017 |
+| port |MongoDB 服务器用于侦听客户端连接的 TCP 端口。 |可选，默认值：27017 |
 | authenticationType |Basic 或 Anonymous。 |是 |
 | username |用于访问 MongoDB 的用户帐户。 |是（如果使用基本身份验证）。 |
 | password |用户密码。 |是（如果使用基本身份验证）。 |
@@ -125,11 +125,11 @@ ms.locfileid: "54025583"
         "typeProperties":
         {
             "authenticationType": "<Basic or Anonymous>",
-            "server": "< The IP address or host name of the MongoDB server >",  
+            "server": "< The IP address or host name of the MongoDB server >",
             "port": "<The number of the TCP port that the MongoDB server uses to listen for client connections.>",
             "username": "<username>",
             "password": "<password>",
-           "authSource": "< The database that you want to use to check your credentials for authentication. >",
+            "authSource": "< The database that you want to use to check your credentials for authentication. >",
             "databaseName": "<database name>",
             "gatewayName": "<mygateway>"
         }
@@ -155,12 +155,12 @@ ms.locfileid: "54025583"
 
 ```json
 {
-     "name":  "MongoDbInputDataset",
+    "name": "MongoDbInputDataset",
     "properties": {
         "type": "MongoDbCollection",
         "linkedServiceName": "OnPremisesMongoDbLinkedService",
         "typeProperties": {
-            "collectionName": "<Collection name>"    
+            "collectionName": "<Collection name>"
         },
         "availability": {
             "frequency": "Hour",
@@ -246,7 +246,7 @@ ms.locfileid: "54025583"
                 "typeProperties": {
                     "source": {
                         "type": "MongoDbSource",
-                        "query": "$$Text.Format('select * from  MyTable where LastModifiedDate >= {{ts\'{0:yyyy-MM-dd HH:mm:ss}\'}} AND LastModifiedDate < {{ts\'{1:yyyy-MM-dd HH:mm:ss}\'}}', WindowStart, WindowEnd)"
+                        "query": "$$Text.Format('select * from MyTable where LastModifiedDate >= {{ts\'{0:yyyy-MM-dd HH:mm:ss}\'}} AND LastModifiedDate < {{ts\'{1:yyyy-MM-dd HH:mm:ss}\'}}', WindowStart, WindowEnd)"
                     },
                     "sink": {
                         "type": "BlobSink",

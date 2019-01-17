@@ -7,13 +7,13 @@ ms.author: mamccrea
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 12/07/2018
-ms.openlocfilehash: 9b721ab614bf1797604fe342de117c78ba703f96
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.date: 01/10/2019
+ms.openlocfilehash: c84b814ddc06c583fc2f07288c7aa5cd65cc70a0
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53557591"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54232118"
 ---
 # <a name="azure-stream-analytics-preview-features"></a>Azure 流分析预览功能
 
@@ -26,10 +26,6 @@ ms.locfileid: "53557591"
 ### <a name="integration-with-azure-machine-learning"></a>与 Azure 机器学习集成
 
 可使用机器学习 (ML) 函数缩放流分析作业。 若要详细了解如何在流分析作业中使用 ML 函数，请访问[使用 Azure 机器学习函数缩放流分析作业](stream-analytics-scale-with-machine-learning-functions.md)。 查看[使用 Azure 流分析和 Azure 机器学习执行情绪分析](stream-analytics-machine-learning-integration-tutorial.md)的实际方案。
-
-### <a name="session-windows"></a>会话窗口
-
-流分析提供对开窗函数的本机支持，使开发人员能够最小的工作量创建复杂的流进程作业。 [会话窗口](https://msdn.microsoft.com/azure/stream-analytics/reference/session-window-azure-stream-analytics)对差不多同时到达的事件进行分组，筛选出没有数据的时间段。 若要详细了解开窗函数，请访问[流分析开窗函数简介](stream-analytics-window-functions.md)。
 
 ### <a name="blob-output-partitioning-by-custom-time"></a>按自定义时间划分的 Blob 输出分区
 

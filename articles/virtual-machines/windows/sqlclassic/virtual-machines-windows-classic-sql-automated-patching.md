@@ -3,7 +3,7 @@ title: 自动修补 SQL Server VM（经典）| Microsoft Docs
 description: 介绍在 Azure 中运行且使用经典部署模式的 SQL Server 虚拟机的自动修补功能。
 services: virtual-machines-windows
 documentationcenter: na
-author: rothja
+author: MashaMSFT
 manager: craigg
 editor: ''
 tags: azure-service-management
@@ -14,17 +14,18 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 03/07/2018
-ms.author: jroth
-ms.openlocfilehash: 4bb13ec9d835959273801c2f53c8d736491080a6
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.author: mathoma
+ms.reviewer: jroth
+ms.openlocfilehash: aa912e3eb76d72e7a79c83d7e51d493310bd36b3
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37061329"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54331310"
 ---
 # <a name="automated-patching-for-sql-server-in-azure-virtual-machines-classic"></a>在 Azure 虚拟机（经典）中对 SQL Server 进行自动修补
 > [!div class="op_single_selector"]
-> * [资源管理器](../sql/virtual-machines-windows-sql-automated-patching.md)
+> * [Resource Manager](../sql/virtual-machines-windows-sql-automated-patching.md)
 > * [经典](../classic/sql-automated-patching.md)
 > 
 > 
@@ -37,7 +38,7 @@ ms.locfileid: "37061329"
 自动修补依赖于 [SQL Server IaaS 代理扩展](../classic/sql-server-agent-extension.md)。
 
 > [!IMPORTANT] 
-> Azure 提供两个不同的部署模型用于创建和处理资源：[资源管理器和经典模型](../../../azure-resource-manager/resource-manager-deployment-model.md)。 本文介绍如何使用经典部署模型。 Microsoft 建议大多数新部署使用资源管理器模型。 若要查看本文的 Resource Manager 版本，请参阅[在 Azure 虚拟机 Resource Manager 中自动修补 SQL Server](../sql/virtual-machines-windows-sql-automated-patching.md)。
+> Azure 具有用于创建和处理资源的两个不同部署模型：[资源管理器部署模型和经典部署模型](../../../azure-resource-manager/resource-manager-deployment-model.md)。 本文介绍如何使用经典部署模型。 Microsoft 建议大多数新部署使用资源管理器模型。 若要查看本文的 Resource Manager 版本，请参阅[在 Azure 虚拟机 Resource Manager 中自动修补 SQL Server](../sql/virtual-machines-windows-sql-automated-patching.md)。
 
 ## <a name="prerequisites"></a>先决条件
 若要使用自动修补，请考虑以下先决条件：
@@ -65,7 +66,7 @@ ms.locfileid: "37061329"
 ## <a name="settings"></a>设置
 下表描述了可为自动修补配置的选项。 对于经典 VM，必须使用 PowerShell 配置以下设置。
 
-| 设置 | 可能的值 | 说明 |
+| 设置 | 可能的值 | Description |
 | --- | --- | --- |
 | **自动修补** |启用/禁用（已禁用） |为 Azure 虚拟机启用或禁用自动修补。 |
 | **维护计划** |每天、星期一、星期二、星期三、星期四、星期五、星期六、星期日 |为虚拟机下载和安装 Windows、SQL Server 和 Microsoft 更新的计划。 |

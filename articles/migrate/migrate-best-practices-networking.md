@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 12/04/2018
 ms.author: raynew
-ms.openlocfilehash: c6a995c20beefb3a939aa1421eed537137037922
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.openlocfilehash: 6d679cc3d24e2f0f2cb79eb2c9f02422d0818c80
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53994957"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54215263"
 ---
 # <a name="best-practices-to-set-up-networking-for-workloads-migrated-to-azure"></a>为迁移到 Azure 的工作负荷设置网络的最佳做法
 
@@ -185,7 +185,7 @@ DEV-DB-EUS2 | 10.245.24.0/23 | 507 | 数据库 VM
 **了解更多：**
 
 - [查看](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpn-devices)兼容的本地 VPN 设备。
-- [概要了解](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateway) VPN 网关。
+- [概要了解](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways) VPN 网关。
 - [了解](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-highlyavailable)高可用 VPN 连接。
 - [了解有关](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-plan-design)计划和设计 VPN 网关的信息。
 - [查看](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpn-gateway-settings#gwsku) VPN 网关设置。

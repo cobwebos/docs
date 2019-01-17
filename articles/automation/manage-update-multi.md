@@ -6,15 +6,15 @@ ms.service: automation
 ms.component: update-management
 author: georgewallace
 ms.author: gwallace
-ms.date: 10/25/2018
+ms.date: 01/10/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 2ba34a6d1ecc33e8a4d355aeacb0da8a764a784d
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: 3897225ef6ed7fcc0db75e82058e5b5b273ccbd4
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52679515"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54214022"
 ---
 # <a name="manage-updates-for-multiple-machines"></a>管理多个计算机的更新
 
@@ -113,7 +113,11 @@ Linux 代理必须具有访问更新存储库的权限。
 
 ### <a name="collection-frequency"></a>收集频率
 
-对于每台托管的 Windows 计算机，每天运行两次扫描。 每隔 15 分钟就会调用一次 Windows API 来查询上次更新时间，以确定状态是否已更改。 如果状态已更改，则会启动符合性扫描。 对于每台托管的 Linux 计算机，每 3 小时运行一次扫描。
+在计算机完成更新符合性扫描以后，代理会将信息批量转发到 Azure Log Analytics。 在 Windows 计算机上，符合性扫描默认情况下每 12 小时运行一次。
+
+如果 MMA 重启，除了按扫描计划扫描，更新符合性扫描还会在更新安装前和更新安装后的 15 分钟内启动。
+
+对于 Linux 计算机，符合性扫描默认情况下每 3 小时执行一次。 如果 MMA 代理重启，则会在 15 分钟内启动符合性扫描。
 
 可能需要 30 分钟到 6 小时，仪表板才会显示受托管计算机提供的已更新数据。
 

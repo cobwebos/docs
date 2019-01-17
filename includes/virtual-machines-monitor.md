@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
-ms.openlocfilehash: 0bc44dc31de4a45127468b956d01d7c3f8d92985
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 47b58e74f57640098751b38c1a4fb504838c9ced
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54122813"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54242357"
 ---
 通过收集、查看和分析诊断与日志数据，可以利用很多机会来监视 VM。 若要执行简单的 VM [监视](../articles/azure-monitor/overview.md)，可以在 Azure 门户中使用 VM 的“概述”屏幕。 可以使用[扩展](../articles/virtual-machines/windows/extensions-features.md)配置 VM 的诊断以收集更多指标数据。 还可以使用更多高级监视选项，如 [Application Insights](../articles/azure-monitor/app/app-insights-overview.md) 和 [Log Analytics](../articles/azure-monitor/log-query/log-query-overview.md)。
 
@@ -31,7 +31,7 @@ ms.locfileid: "54122813"
 
 ## <a name="alerts"></a>警报
 
-可以根据特定的性能指标创建[警报](../articles/azure-monitor/platform/alerts-overview.md)。 举例来说，可以根据以下问题生成警报，平均 CPU 使用率超过特定的阈值，或者可用磁盘空间低于特定的空间量。 可以在 [Azure 门户](../articles/monitoring-and-diagnostics/insights-alerts-portal.md)中或者使用 [Azure PowerShell](../articles/monitoring-and-diagnostics/insights-alerts-powershell.md) 或 [Azure CLI](../articles/monitoring-and-diagnostics/insights-alerts-command-line-interface.md) 来配置警报。
+可以根据特定的性能指标创建[警报](../articles/azure-monitor/platform/alerts-overview.md)。 举例来说，可以根据以下问题生成警报，平均 CPU 使用率超过特定的阈值，或者可用磁盘空间低于特定的空间量。 可以在 [Azure 门户](../articles/azure-monitor/platform/alerts-classic-portal.md)中或者使用 [Azure PowerShell](../articles/azure-monitor/platform/alerts-classic-portal.md#with-powershell) 或 [Azure CLI](../articles/azure-monitor/platform/alerts-classic-portal.md#with-azure-cli) 来配置警报。
 
 ## <a name="azure-service-health"></a>Azure 服务运行状况
 

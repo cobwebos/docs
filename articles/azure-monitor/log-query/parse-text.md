@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/04/2018
 ms.author: bwren
-ms.openlocfilehash: 03268981bcfe90f14f35c74effe5799dd31e4ac0
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 0d589156824c7b9f3f6a8c31591d69479d11780a
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53185777"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54214124"
 ---
 # <a name="parse-text-data-in-log-analytics"></a>在 Log Analytics 中分析文本字段
 由 Log Analytics 收集的某些数据会在单个属性中包括多条信息。 将此数据分析为多个属性可以更轻松地在查询中进行使用。 一个常见示例是收集在单个属性中包含多个值的整个日志项目的[自定义日志](../../log-analytics/log-analytics-data-sources-custom-logs.md)。 通过为不同值创建单独属性，可以对每个值进行搜索和聚合。
@@ -98,7 +98,7 @@ AzureActivity
 
 
 ### <a name="regular-expressions"></a>正则表达式
-如果可以使用正则表达式标识数据，则可以通过[使用正则表达式的函数](/azure/kusto/query/re2)提取各个值。 下面的示例使用[提取](/kusto/query/extractfunction)分解 _AzureActivity_ 记录中的 _UPN_ 字段，然后返回非重复用户。
+如果可以使用正则表达式标识数据，则可以通过[使用正则表达式的函数](/azure/kusto/query/re2)提取各个值。 下面的示例使用[提取](/azure/kusto/query/extractfunction)分解 _AzureActivity_ 记录中的 _UPN_ 字段，然后返回非重复用户。
 
 ```Kusto
 AzureActivity

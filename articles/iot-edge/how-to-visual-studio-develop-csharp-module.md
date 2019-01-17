@@ -5,16 +5,16 @@ services: iot-edge
 author: shizn
 manager: philmea
 ms.author: xshi
-ms.date: 12/21/2018
+ms.date: 01/04/2019
 ms.topic: article
 ms.service: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 954fb0fd4c8b9773edad904fa82a0a90111a66fa
-ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
+ms.openlocfilehash: 9a6c892a71c452a0c6c0dcd43509e345280a810e
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/22/2018
-ms.locfileid: "53754588"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54054912"
 ---
 # <a name="use-visual-studio-2017-to-develop-and-debug-c-modules-for-azure-iot-edge-preview"></a>使用 Visual Studio 2017 开发和调试适用于 Azure IoT Edge 的 C# 模块（预览版）
 
@@ -37,7 +37,7 @@ ms.locfileid: "53754588"
 
 Visual Studio 2017 准备就绪后，还需要以下工具和组件：
 
-- 从 Visual Studio Marketplace 中下载并安装 [Azure IoT Edge 扩展](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vsiotedgetools)，以在 Visual Studio 2017 中创建 IoT Edge 项目。
+- 从 Visual Studio Marketplace 中下载并安装 [Azure IoT Edge 扩展（预览版）](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vsiotedgetools)，以在 Visual Studio 2017 中创建 IoT Edge 项目。
 
 - 在开发计算机上下载并安装 [Docker 社区版](https://docs.docker.com/install/)，以生成和运行模块映像。 需要将 Docker CE 设置为在 Linux 容器模式或 Windows 容器模式下运行。
 
@@ -82,7 +82,7 @@ Visual Studio 中的 Azure IoT Edge 项目模板创建了一个项目，它可�
 
    ![新建项目](./media/how-to-visual-studio-develop-csharp-module/create-new.jpg)
 
-1. 在“IoT Edge 模块配置”窗口中，选择“C# 模块”，并指定模块名和模块映像存储库。 Visual Studio 使用“localhost:5000/<模块名\>自动填充模块名。 将其替换为你自己的注册表信息。 如果使用本地 Docker 注册表进行测试，则可以使用 localhost。 如果使用 Azure 容器注册表，那么请从注册表的设置中使用登录服务器。 登录服务器如下所示：\<注册表名\>.azurecr.io。 仅替换字符串的“localhost:5000”部分，以使最终结果看起来像*\<注册表名\>.azurecr.io/*\<模块名\>****。 默认的模块名称为 IoTEdgeModule1
+1. 在“IoT Edge 模块配置”窗口中，选择“C# 模块”，并指定模块名和模块映像存储库。 Visual Studio 使用“localhost:5000/<模块名\>自动填充模块名。 将其替换为你自己的注册表信息。 如果使用本地 Docker 注册表进行测试，则可以使用 localhost。 如果使用 Azure 容器注册表，那么请从注册表的设置中使用登录服务器。 登录服务器如下所示：*\<注册表名称\>*.azurecr.io。 仅替换字符串的**localhost:5000”** 部分，以使最终结果看起来像**\<* 注册表名*\>.azurecr.io/*\<模块名\>***。 默认的模块名称为 IoTEdgeModule1
 
 1. 选择“确定”，通过 C# 模块创建 Azure IoT Edge 项目。
 

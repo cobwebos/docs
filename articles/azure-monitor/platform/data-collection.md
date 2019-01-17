@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/05/2018
 ms.author: bwren
-ms.openlocfilehash: 84ab63d145d9726fad83b7b2337542fef5c8743d
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: b96a00fb5dbf96a7b57adbaaacf24af319d86950
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53718956"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54215382"
 ---
 # <a name="monitoring-data-collected-by-azure-monitor"></a>Azure Monitor 收集的监视数据
 [Azure Monitor](../overview.md) 是可以帮助你监视应用程序及其依赖的资源的服务。 存储来自受监视源的遥测数据和其他数据是此功能的核心所在。 本文提供有关 Azure Monitor 如何存储和使用此类数据的完整说明。
@@ -156,7 +156,7 @@ Azure Monitor 可从 Azure 和本地资源中的各种源收集日志数据。 �
 Azure Monitor 中的所有日志数据都是使用以[数据资源管理器查询语言](../log-query/get-started-queries.md)编写的[日志查询](../log-query/log-query-overview.md)检索的，这使得你可以快速检索、合并和分析所收集的数据。 可以在 Azure 门户中使用 [Log Analytics](../log-query/portals.md) 编写和测试查询。 可以通过交互方式使用结果，也可以将其固定到某个仪表板，与其他可视化效果一起查看。 还可以使用 [Azure 监视 REST API](../../monitoring-and-diagnostics/monitoring-rest-api-walkthrough.md) 来检索日志。
 
 > [!IMPORTANT]
-> 来自 Application Insights 的数据存储在一个单独的分区中，与 Azure Monitor 中的其他日志数据相隔离。 这样，便可以支持针对其他日志数据所用的相同功能，但必须使用 [Application Insights 控制台](/azure-monitor/app/analytics.md)或 [Application Insights API](https://dev.applicationinsights.io/) 访问这些数据。 可以使用[跨资源查询](../log-query/cross-workspace-query.md)，连同其他日志数据一起分析应用程序数据。
+> 来自 Application Insights 的数据存储在一个单独的分区中，与 Azure Monitor 中的其他日志数据相隔离。 这样，便可以支持针对其他日志数据所用的相同功能，但必须使用 [Application Insights 控制台](../app/analytics.md)或 [Application Insights API](https://dev.applicationinsights.io/) 访问这些数据。 可以使用[跨资源查询](../log-query/cross-workspace-query.md)，连同其他日志数据一起分析应用程序数据。
 
 ![日志](media/data-collection/logs.png)
 

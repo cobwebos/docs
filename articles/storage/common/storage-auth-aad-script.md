@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/15/2018
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: b5a129c2a92c18b979a3b0c2eeea7fa19791551c
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 29b44e4b281ded635359148e251527c44efaa6d4
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53633759"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54214039"
 ---
 # <a name="use-an-azure-ad-identity-to-access-azure-storage-with-cli-or-powershell-preview"></a>使用 Azure AD 标识通过 CLI 或 PowerShell 访问 Azure 存储（预览版）
 
@@ -84,7 +84,7 @@ az storage blob download --account-name storagesamples --container sample-contai
    Install-Module Az.Storage -Repository PSGallery -AllowPrerelease -AllowClobber -Force
    ```
 1. 关闭并重新打开 PowerShell 窗口。
-1. 调用 [New-AzStorageContext](https://docs.microsoft.com/powershell/module/azure.storage/new-AzStoragecontext) cmdlet 以创建上下文，并添加 `-UseConnectedAccount` 参数。 
+1. 调用 [New-AzStorageContext](https://docs.microsoft.com/powershell/module/az.storage/new-azstoragecontext) cmdlet 以创建上下文，并添加 `-UseConnectedAccount` 参数。 
 1. 若要使用 Azure AD 标识调用 cmdlet，请将新创建的上下文传递给 cmdlet。
 
 以下示例演示如何使用 Azure AD 标识通过 Azure PowerShell 列出容器中的 blob。 请务必将占位符帐户名称和容器名称替换为自己的值： 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: jamesbak
 ms.component: data-lake-storage-gen2
-ms.openlocfilehash: ac36499475ffe02ae4d5140f35507530e6cf089e
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.openlocfilehash: 898080f445c54c93543a481bdd0487c70e772160
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53994328"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54214383"
 ---
 # <a name="introduction-to-azure-data-lake-storage-gen2-preview"></a>Azure Data Lake Storage Gen2 预览版简介
 
@@ -51,7 +51,7 @@ Data Lake Storage Gen2 的一个基本部分是向 Blob 存储添加[分层命�
 
 ### <a name="cost-effectiveness"></a>成本效益
 
-基于 Azure Blob 存储生成 Data Lake Storage Gen2 的多个好处之一是存储容量和事务的低成本。 与其他云存储服务不同，在执行分析之前不需要移动或转换存储在 Data Lake Storage Gen2 中的数据。 有关定价的详细信息，请参阅 [Azure 存储定价]((https://azure.microsoft.com/pricing/details/storage))。
+基于 Azure Blob 存储生成 Data Lake Storage Gen2 的多个好处之一是存储容量和事务的低成本。 与其他云存储服务不同，在执行分析之前不需要移动或转换存储在 Data Lake Storage Gen2 中的数据。 有关定价的详细信息，请参阅 [Azure 存储定价](https://azure.microsoft.com/pricing/details/storage)。
 
 此外，[分层命名空间](data-lake-storage-namespace.md)等功能可显著提高许多分析作业的整体性能。 这一性能方面的提升意味着你需要较少的计算能力来处理相同数量的数据，从而降低端到端分析作业的总拥有成本 (TCO)。
 

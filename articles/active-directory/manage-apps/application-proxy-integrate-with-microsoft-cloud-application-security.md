@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 12/19/2018
 ms.author: barbkess
 ms.reviewer: japere
-ms.openlocfilehash: 33da0b09339460d66650c492ec125461bc0980b0
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 3be75f2fe004939eff6bf6cc960759db69bfb93a
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53729946"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54215093"
 ---
 # <a name="configure-real-time-application-access-monitoring-with-microsoft-cloud-app-security-and-azure-active-directory"></a>使用 Microsoft Cloud App Security 和 Azure Active Directory 配置实时应用程序访问监视
 在 Azure Active Directory (Azure AD) 中配置本地应用程序，以使用 Microsoft Cloud App Security (MCAS) 进行实时监视。 MCAS 使用条件访问应用控制以基于条件访问策略实时监视并控制会话。 可以将这些策略应用于 Azure Active Directory (Azure AD) 中使用应用程序代理的本地应用程序。
@@ -27,7 +27,7 @@ ms.locfileid: "53729946"
 - 使用客户端证书或设备符合性阻止非管理的设备访问特定应用程序。
 - 限制来自非公司网络的用户会话。 对于从公司外部网络访问应用程序的用户，可以限制他们的访问权限。 例如，受限制的访问权限可阻止用户下载敏感文档。
 
-有关详细信息，请参阅[使用 Microsoft Cloud App Security 条件访问应用控制保护应用](/cloud-app-security/proxy-intro-aad.md)。
+有关详细信息，请参阅[使用 Microsoft Cloud App Security 条件访问应用控制保护应用](/cloud-app-security/proxy-intro-aad)。
 
 ## <a name="requirements"></a>要求
 

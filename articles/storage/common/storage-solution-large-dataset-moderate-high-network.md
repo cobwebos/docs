@@ -8,12 +8,12 @@ ms.subservice: blob
 ms.topic: article
 ms.date: 12/07/2018
 ms.author: alkohli
-ms.openlocfilehash: 7243edbe0b51a3cca69bec018d6cbb15e9aa1674
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: bc5668d826395fb71ee70907f095303a43f1ec7f
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53263502"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54214311"
 ---
 # <a name="data-transfer-for-large-datasets-with-moderate-to-high-network-bandwidth"></a>具有中高速网络带宽的大型数据集的数据传输
  
@@ -102,7 +102,7 @@ ms.locfileid: "53263502"
     - [使用 Data Box 传输数据](https://docs.microsoft.com/azure/databox/data-box-quickstart-portal)。
 - [使用 AzCopy 传输数据](/azure/storage/common/storage-use-azcopy-v10)。
 - 了解如何：
-    - [使用 Data Box Gateway 传输数据](https://docs.microsoft.com/azure/databox-online/data-box-gateway-deploy-add-shares.md)。
+    - [使用 Data Box Gateway 传输数据](https://docs.microsoft.com/azure/databox-online/data-box-gateway-deploy-add-shares)。
     - [在将数据发送到 Azure 之前使用 Data Box Edge 转换数据](https://docs.microsoft.com/azure/databox-online/data-box-edge-deploy-configure-compute)。
 - [了解如何使用 Azure 数据工厂传输数据](https://docs.microsoft.com/azure/data-factory/quickstart-create-data-factory-portal)。
 - 使用 REST API 传输数据

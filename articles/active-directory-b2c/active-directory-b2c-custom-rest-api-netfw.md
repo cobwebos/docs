@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/30/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: b8718e02bc0306db1ac8cd4f5b133ebdb17a4ec3
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: fb0ad8efcd73b304ea5c68f0d3c45a38ce1b80e8
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53557275"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54304901"
 ---
 # <a name="integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-user-journey-as-validation-of-user-input"></a>在 Azure AD B2C 用户旅程中以用户输入验证的形式集成 REST API 声明交换
 
@@ -50,7 +50,7 @@ ms.locfileid: "53557275"
 * 在用户旅程中使用 RESTful 服务。
 * 发送输入声明，并在代码中读取这些声明。
 * 验证用户的名字。
-* 发回会员号。 
+* 发回会员号。
 * 将会员号添加到 JSON Web 令牌 (JWT)。
 
 ## <a name="prerequisites"></a>先决条件
@@ -77,11 +77,11 @@ ms.locfileid: "53557275"
 ## <a name="step-2-prepare-the-rest-api-endpoint"></a>步骤 2：准备 REST API 终结点
 
 ### <a name="step-21-add-data-models"></a>步骤 2.1：添加数据模型
-模型代表 RESTful 服务中的输入声明和输出声明数据。 代码通过将输入声明模型从 JSON 字符串反序列化为 C# 对象（你的模型）来读取输入数据。 ASP.NET Web API 将输出声明模型自动反序列化回到 JSON，然后将序列化的数据写入 HTTP 响应消息的正文。 
+模型代表 RESTful 服务中的输入声明和输出声明数据。 代码通过将输入声明模型从 JSON 字符串反序列化为 C# 对象（你的模型）来读取输入数据。 ASP.NET Web API 将输出声明模型自动反序列化回到 JSON，然后将序列化的数据写入 HTTP 响应消息的正文。
 
 执行以下操作，创建一个代表输入声明的模型：
 
-1. 如果解决方案资源管理器尚未打开，请选择“视图” > “解决方案资源管理器”。 
+1. 如果解决方案资源管理器尚未打开，请选择“视图” > “解决方案资源管理器”。
 2. 在“解决方案资源管理器”中，右键单击“模型”文件夹，选择“添加”，并选择“类”。
 
     ![添加模型](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-add-model.png)
@@ -128,13 +128,13 @@ ms.locfileid: "53557275"
                 this.userMessage = message;
                 this.status = (int)status;
                 this.version = Assembly.GetExecutingAssembly().GetName().Version.ToString();
-            }    
+            }
         }
     }
     ```
 
 ### <a name="step-22-add-a-controller"></a>步骤 2.2：添加控制器
-在 Web API 中， _控制器_ 是处理 HTTP 请求的对象。 该控制器返回输出声明；如果名字无效，该控制器会引发“HTTP 冲突”错误消息。
+在 Web API 中，控制器是处理 HTTP 请求的对象。 该控制器返回输出声明；如果名字无效，该控制器会引发“HTTP 冲突”错误消息。
 
 1. 在“解决方案资源管理器”中，右键单击“控制器”文件夹，选择“添加”，并选择“控制器”。
 
@@ -241,20 +241,20 @@ ms.locfileid: "53557275"
 </BuildingBlocks>
 ```
 
-## <a name="step-5-add-a-claims-provider"></a>步骤 5：添加声明提供程序 
-每个声明提供程序必须包含一个或多个用于确定终结点的技术配置文件，以及与该声明提供程序通信所需的协议。 
+## <a name="step-5-add-a-claims-provider"></a>步骤 5：添加声明提供程序
+每个声明提供程序必须包含一个或多个用于确定终结点的技术配置文件，以及与该声明提供程序通信所需的协议。
 
-一个声明提供程序可出于由于各种原因包含多个技术配置文件。 例如，由于声明提供程序支持多个协议、终结点可以包含不同的功能，或者版本可以包含采用不同保障级别的声明，因此可以定义多个技术配置文件。 可以接受在一个用户旅程中发放敏感声明，但不接受在另一个用户旅程中发放此类声明。 
+一个声明提供程序可出于由于各种原因包含多个技术配置文件。 例如，由于声明提供程序支持多个协议、终结点可以包含不同的功能，或者版本可以包含采用不同保障级别的声明，因此可以定义多个技术配置文件。 可以接受在一个用户旅程中发放敏感声明，但不接受在另一个用户旅程中发放此类声明。
 
 以下 XML 片段包含具有两个技术配置文件的声明提供程序节点：
 
-* **TechnicalProfile Id="REST-API-SignUp"**：定义 RESTful 服务。 
-   * `Proprietary` 描述为基于 RESTful 的提供程序的协议。 
-   * `InputClaims` 定义要从 Azure AD B2C 发送到 REST 服务的声明。 
+* **TechnicalProfile Id="REST-API-SignUp"**：定义 RESTful 服务。
+   * `Proprietary` 描述为基于 RESTful 的提供程序的协议。
+   * `InputClaims` 定义要从 Azure AD B2C 发送到 REST 服务的声明。
 
    在此示例中，声明 `givenName` 的内容作为 `firstName` 发送到 REST 服务，声明 `surname` 的内容作为 `lastName` 发送到 REST 服务，`email` 按原样发送。 `OutputClaims` 元素定义要从 RESTful 服务检索回到 Azure AD B2C 的声明。
 
-* **TechnicalProfile Id="LocalAccountSignUpWithLogonEmail"**：将验证技术配置文件添加到现有技术配置文件（在基本策略中定义）。 在执行注册旅程期间，验证技术配置文件调用上述技术配置文件。 如果 RESTful 服务返回 HTTP 错误 409（冲突错误），会向用户显示错误消息。 
+* **TechnicalProfile Id="LocalAccountSignUpWithLogonEmail"**：将验证技术配置文件添加到现有技术配置文件（在基本策略中定义）。 在执行注册旅程期间，验证技术配置文件调用上述技术配置文件。 如果 RESTful 服务返回 HTTP 错误 409（冲突错误），会向用户显示错误消息。
 
 找到 `<ClaimsProviders>` 节点，然后在 `<ClaimsProviders>` 节点下添加以下 XML 片段：
 
@@ -329,7 +329,7 @@ ms.locfileid: "53557275"
 
 2. 选择“标识体验框架”。
 
-3. 打开“所有策略”。 
+3. 打开“所有策略”。
 
 4. 选择“上传策略”。
 
@@ -354,7 +354,7 @@ ms.locfileid: "53557275"
 
     ![测试策略](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-test.png)
 
-4.  在“名”框中键入一个名称（不要键入“Test”）。  
+4. 在“名”框中键入一个名称（不要键入“Test”）。  
     Azure AD B2C 会注册该用户，然后将 loyaltyNumber 发送到应用程序。 请注意此 JWT 中的编号。
 
 ```
@@ -381,7 +381,7 @@ ms.locfileid: "53557275"
 ## <a name="optional-download-the-complete-policy-files-and-code"></a>（可选）下载完整的策略文件和代码
 * 完成[自定义策略入门](active-directory-b2c-get-started-custom.md)演练后，我们建议你使用自己的自定义策略文件来构建方案。 我们已提供[示例策略文件](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/aadb2c-ief-rest-api-netfw)用于参考。
 * 可以从 [Visual Studio 解决方案参考示例](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/aadb2c-ief-rest-api-netfw/)下载完整代码。
-    
+
 ## <a name="next-steps"></a>后续步骤
 * [使用基本身份验证（用户名和密码）保护 RESTful API](active-directory-b2c-custom-rest-api-netfw-secure-basic.md)
 * [使用客户端证书保护 RESTful API](active-directory-b2c-custom-rest-api-netfw-secure-cert.md)

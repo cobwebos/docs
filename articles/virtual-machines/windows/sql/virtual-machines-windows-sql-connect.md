@@ -3,7 +3,7 @@ title: 连接到 SQL Server 虚拟机 (Resource Manager) | Microsoft Docs
 description: 了解如何连接到 Azure 中虚拟机上运行的 SQL Server。 本主题使用经典部署模型。 方案根据网络配置和客户端位置的不同而异。
 services: virtual-machines-windows
 documentationcenter: na
-author: rothja
+author: MashaMSFT
 manager: craigg
 tags: azure-resource-manager
 ms.assetid: aa5bf144-37a3-4781-892d-e0e300913d03
@@ -13,13 +13,14 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 12/12/2017
-ms.author: jroth
-ms.openlocfilehash: 522ece2528e43c1037dc6bb707201ecda8074dd9
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.author: mathoma
+ms.reviewer: jroth
+ms.openlocfilehash: 3baa4a9b91e76b9072714229b6a46e9fca69bcdd
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38705956"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54331378"
 ---
 # <a name="connect-to-a-sql-server-virtual-machine-on-azure"></a>连接到 Azure 上的 SQL Server 虚拟机
 
@@ -39,7 +40,7 @@ ms.locfileid: "38705956"
 
 用于连接的选项包括：
 
-| 选项 | 说明 |
+| 选项 | Description |
 |---|---|
 | 公共 | 通过 Internet 连接到 SQL Server |
 | 专用 | 连接到同一虚拟网络中的 SQL Server |
@@ -133,7 +134,7 @@ Server=mysqlvm;Integrated Security=true
 
 下表列出了连接到在 Azure VM 中运行的 SQL Server 的要求。
 
-| 要求 | 说明 |
+| 要求 | Description |
 |---|---|
 | [启用 SQL Server 身份验证模式](https://docs.microsoft.com/sql/database-engine/configure-windows/change-server-authentication-mode#SSMSProcedure) | 除非已在虚拟网络上配置 Active Directory，否则需要进行 SQL Server 身份验证才能连接到远程 VM。 |
 | [创建 SQL 登录名](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/create-a-login) | 如果使用的是 SQL 身份验证，则需要提供 SQL 登录名，并且用户名和密码还有权访问目标数据库。 |
