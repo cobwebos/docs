@@ -5,15 +5,15 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: quickstart
-ms.date: 1/8/2019
+ms.date: 1/11/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: cb5a6a21cd6d33316e0560d7641bee99b2102373
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: 9edfa85105bbc20cf7f149d4c31b60d9e570a7ad
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54159819"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54243723"
 ---
 # <a name="quickstart-direct-web-traffic-with-azure-application-gateway---azure-powershell"></a>快速入门：使用 Azure 应用程序网关定向 Web 流量 - Azure PowerShell
 
@@ -25,7 +25,7 @@ ms.locfileid: "54159819"
 
 ## <a name="run-azure-powershell-locally"></a>在本地运行 Azure PowerShell
 
-如果选择在本地安装并使用 Azure PowerShell，则本教程需要安装 Azure PowerShell 模块 3.6 或更高版本。 
+如果选择在本地安装并使用 Azure PowerShell，则本教程需要安装 Azure PowerShell 模块 3.6 或更高版本。
 
 1. 要查找版本，请运行 `Get-Module -ListAvailable AzureRM`。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-azurerm-ps)。 
 2. 若要创建与 Azure 的连接，请运行 `Login-AzureRmAccount`。
@@ -79,7 +79,7 @@ New-AzureRmPublicIpAddress `
     
 ```azurepowershell-interactive
 $vnet   = Get-AzureRmVirtualNetwork -ResourceGroupName myResourceGroupAG -Name myVNet
-$subnet = Get-AzureRmVirtualNetworkSubnetConfig -VirtualNetwork myVNet -Name myBackendSubnet
+$subnet = Get-AzureRmVirtualNetworkSubnetConfig -VirtualNetwork $vnet -Name myBackendSubnet
 $cred = Get-Credential
 for ($i=1; $i -le 2; $i++)
 {
@@ -131,7 +131,7 @@ for ($i=1; $i -le 2; $i++)
 
 ```azurepowershell-interactive
 $vnet   = Get-AzureRmVirtualNetwork -ResourceGroupName myResourceGroupAG -Name myVNet
-$subnet = Get-AzureRmVirtualNetworkSubnetConfig -VirtualNetwork myVNet -Name myAGSubnet
+$subnet = Get-AzureRmVirtualNetworkSubnetConfig -VirtualNetwork $vnet -Name myAGSubnet
 $pip    = Get-AzureRmPublicIPAddress -ResourceGroupName myResourceGroupAG -Name myAGPublicIPAddress 
 $gipconfig = New-AzureRmApplicationGatewayIPConfiguration `
   -Name myAGIPConfig `

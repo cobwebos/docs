@@ -11,12 +11,12 @@ ms.topic: sample
 ms.date: 01/20/2017
 ms.author: kefre
 ms.custom: seodec18
-ms.openlocfilehash: 140e45270cf29eec48df260efa29b8aacac2d855
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: cb8964bdbdfe575630f6e65a79d53aac76a76d45
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53580461"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54232101"
 ---
 # <a name="how-to-analyze-videos-in-real-time"></a>如何实时分析视频
 本指南将演示如何对从实时视频流中获取的帧执行近实时分析。 此类系统的基本组成如下：
@@ -195,12 +195,6 @@ namespace VideoFrameConsoleApplication
         
 
 当准备好进行集成时，只需从你自己的项目中引用 VideoFrameAnalyzer 库。 
-
-
-
-## <a name="developer-code-of-conduct"></a>开发人员行为准则
-与所有认知服务一样，使用我们的 API 和示例进行开发的开发人员需遵循“[Microsoft 认知服务开发人员行为准则](https://azure.microsoft.com/support/legal/developer-code-of-conduct/)”。 
-
 
 VideoFrameAnalyzer 的图像、语音、视频或文本理解功能使用 Azure 认知服务。 Microsoft 将接收你（通过此应用）上传的图像、音频、视频和其他数据，并可能将其用于服务改进目的。 你的应用发送了用户的数据给 Azure 认知服务，请协助我们保护这些用户。 
 

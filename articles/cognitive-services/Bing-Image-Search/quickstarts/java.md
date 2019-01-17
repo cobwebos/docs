@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.date: 8/20/2018
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 17dcf33074e7ee097a8778b3b867cb196cd814c2
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 227dcfd6c27c19e986807c66e317c22cdcf6593c
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53258162"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54212526"
 ---
 # <a name="quickstart-search-for-images-using-the-bing-image-search-rest-api-and-java"></a>快速入门：使用必应图像搜索 REST API 和 Java 来搜索图像
 
@@ -107,7 +107,6 @@ ms.locfileid: "53258162"
     JsonObject first_result = (JsonObject)results.get(0);
     String resultURL = first_result.get("thumbnailUrl").getAsString();
     ```
-4. 请不要忘记从应用程序代码中删除订阅密钥。
 
 ## <a name="json-response"></a>JSON 响应
 

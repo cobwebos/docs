@@ -1,6 +1,6 @@
 ---
 title: 策略模板示例 | Microsoft Docs
-description: 适用于虚拟网络的 Azure 策略模板示例。
+description: 适用于虚拟网络的 Azure Policy 模板示例。
 services: virtual-network
 documentationcenter: ''
 author: jimdial
@@ -16,16 +16,16 @@ ms.workload: ''
 ms.date: 05/02/2018
 ms.author: jdial
 ms.custom: mvc
-ms.openlocfilehash: 2b8766a5353b015030872176e9032034afb7cb9d
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: a0153cf11c3fe817ce397b4d0c47a786a4334f39
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/03/2018
-ms.locfileid: "32779522"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54214804"
 ---
-# <a name="azure-policy-sample-templates-for-virtual-network"></a>适用于虚拟网络的 Azure 策略示例模板
+# <a name="azure-policy-sample-templates-for-virtual-network"></a>适用于虚拟网络的 Azure Policy 示例模板
 
-下表包含示例 [Azure 策略](../azure-policy/azure-policy-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json)模板的链接。 示例位于 [Azure 策略示例存储库](https://github.com/Azure/azure-policy)中。
+下表包含示例 [Azure Policy](../azure-policy/azure-policy-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 模板的链接。 示例位于 [Azure Policy 示例存储库](https://github.com/Azure/azure-policy)中。
 
 | | |
 |---|---|
@@ -43,7 +43,7 @@ ms.locfileid: "32779522"
 | [需要匹配模式](../azure-policy/scripts/enforce-match-pattern.md?toc=%2fazure%2fvirtual-network%2ftoc.json) | 确保资源名称与指定的命名模式匹配。 |
 | [需要标记匹配模式](../azure-policy/scripts/enforce-tag-match-pattern.md?toc=%2fazure%2fvirtual-network%2ftoc.json) | 确保标记值与文本模式匹配。 |
 |**标记**||
-| [计费标记策略计划](../azure-policy/scripts/billing-tags-policy-init.md?toc=%2fazure%2fvirtual-network%2ftoc.json) | 要求成本中心和产品名称有指定的标记值。 使用内置策略来应用并强制执行所需标记。 指定所需的标记值。  |
+| [计费标记策略计划](../governance/policy/samples/billing-tags-policy-initiative.md?toc=%2fazure%2fvirtual-network%2ftoc.json) | 要求成本中心和产品名称有指定的标记值。 使用内置策略来应用并强制执行所需标记。 指定所需的标记值。  |
 | [在资源组强制执行标记及其值](../azure-policy/scripts/enforce-tag-rg.md?toc=%2fazure%2fvirtual-network%2ftoc.json) | 要求资源组有标记和值。 由你指定标记名称和值。  |
 | [强制实施标记和值](../azure-policy/scripts/enforce-tag-val.md?toc=%2fazure%2fvirtual-network%2ftoc.json) | 需要指定的标记名称和值。 指定要强制实施的标记名称和值。  |
 | [应用标记及其默认值](../azure-policy/scripts/apply-tag-def-val.md?toc=%2fazure%2fvirtual-network%2ftoc.json) | 如果未提供标记，追加指定的标记名称和值。 由你指定要应用的标记名称和值。  |

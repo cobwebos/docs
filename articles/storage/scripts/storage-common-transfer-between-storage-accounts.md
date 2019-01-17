@@ -13,12 +13,12 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.date: 02/01/2018
 ms.author: rogarana
-ms.openlocfilehash: 2c83526ac5fd6fb6c757bffab08414d940694998
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: eddf85df3f9efb6a742e226e9582e2e284cbd4cf
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53635419"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54215127"
 ---
 # <a name="migrate-blobs-across-storage-accounts-using-azcopy-on-windows"></a>使用 Windows 版 AzCopy 跨存储帐户迁移 blob
 
@@ -68,8 +68,8 @@ AzCopyPath: C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\AzCopy.exe
 
 | 命令 | 说明 |
 |---|---|
-| [Get-AzStorageContainer](/powershell/module/azure.storage/Get-AzStorageContainer) | 返回与此存储帐户关联的容器。 |
-| [New-AzStorageContext](/powershell/module/azure.storage/New-AzStorageContext) | 创建 Azure 存储上下文。 |
+| [Get-AzStorageContainer](/powershell/module/az.storage/Get-AzStorageContainer) | 返回与此存储帐户关联的容器。 |
+| [New-AzStorageContext](/powershell/module/az.storage/New-AzStorageContext) | 创建 Azure 存储上下文。 |
 
 ## <a name="next-steps"></a>后续步骤
 

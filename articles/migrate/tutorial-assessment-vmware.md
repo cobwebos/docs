@@ -4,15 +4,15 @@ description: 介绍如何发现和评估要使用 Azure Migrate 迁移到 Azure 
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: tutorial
-ms.date: 01/02/2019
+ms.date: 01/11/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 8971bba1e25a8e87ed57463dcc9b013fea56a0ff
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 186d532f159db7d51ba4f93a250c00c7627280e0
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53976828"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54229518"
 ---
 # <a name="discover-and-assess-on-premises-vmware-vms-for-migration-to-azure"></a>发现和评估要迁移到 Azure 的本地 VMware VM
 
@@ -59,7 +59,8 @@ Azure Migrate 需要访问 VMware 服务器才能自动发现用于评估的 VM�
 **地域** | **存储位置**
 --- | ---
 Azure Government  | 美国政府弗吉尼亚州
-欧洲 | 北欧或西欧
+亚洲 | 东南亚
+欧洲 | 欧洲北部或欧洲西部
 美国 | 美国东部或美国中西部
 
 ![Azure Migrate](./media/tutorial-assessment-vmware/project-1.png)

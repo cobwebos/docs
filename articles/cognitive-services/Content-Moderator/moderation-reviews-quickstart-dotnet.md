@@ -8,14 +8,14 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: content-moderator
 ms.topic: quickstart
-ms.date: 09/10/2018
+ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: 6409011c1a7c125dd03bb706f49ccad1a1fd49a4
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 8a5c11df1b6353a100dd5f1cf388308b9c048932
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53538865"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54258857"
 ---
 # <a name="quickstart-create-reviews-using-net"></a>快速入门：使用 .NET 创建审阅
 
@@ -30,8 +30,7 @@ ms.locfileid: "53538865"
 
 ## <a name="sign-up-for-content-moderator"></a>注册内容审查器
 
-必须有订阅密钥，才能通过 REST API 或 SDK 使用内容审查器服务。
-请参阅[快速入门](quick-start.md)，了解如何获取密钥。
+必须有订阅密钥，才能通过 REST API 或 SDK 使用内容审查器服务。 按照[创建认知服务帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)中的说明订阅内容审查器并获取密钥。
 
 ## <a name="sign-up-for-a-review-tool-account-if-not-completed-in-the-previous-step"></a>注册评审工具帐户（如果未在上一步中完成）
 

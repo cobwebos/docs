@@ -8,12 +8,12 @@ ms.devlang: java
 ms.topic: quickstart
 ms.date: 10/24/2018
 ms.author: sngun
-ms.openlocfilehash: 70aa5c62afb6706fa9084d1ed081f70517d8d89e
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 8fd99b1c68be08ca7c2f4b7cdeaaa8b5b64859e4
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54039429"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54197414"
 ---
 # <a name="create-and-manage-resources-of-an-azure-cosmos-db-sql-api-account-using-a-java-application"></a>使用 Java 应用程序创建和管理 Azure Cosmos DB SQL API 帐户的资源
 
@@ -75,7 +75,7 @@ ms.locfileid: "54039429"
 
 此步骤是可选的。 如果有意了解如何使用代码创建数据库资源，可以查看以下代码片段。 否则，可以跳到[运行应用](#run-the-app)。 
 
-* `AsyncDocumentClient` 初始化。 [AsyncDocumentClient](https://docs.microsoft.com/java/api/com.microsoft.azure.cosmosdb.rx._async_document_client) 为 Azure Cosmos DB 数据库服务提供客户端逻辑表示。 此客户端用于对服务配置和执行请求。
+* `AsyncDocumentClient` 初始化。 [AsyncDocumentClient](https://docs.microsoft.com/java/api/com.microsoft.azure.cosmosdb.rx.asyncdocumentclient) 为 Azure Cosmos DB 数据库服务提供客户端逻辑表示。 此客户端用于对服务配置和执行请求。
 
     ```java
     client = new AsyncDocumentClient.Builder()
@@ -86,7 +86,7 @@ ms.locfileid: "54039429"
              .build();
     ```
 
-* [Database](https://docs.microsoft.com/java/api/com.microsoft.azure.cosmosdb._database) 创建。
+* [Database](https://docs.microsoft.com/java/api/com.microsoft.azure.cosmosdb.database) 创建。
 
     ```java
     Database databaseDefinition = new Database();
@@ -97,7 +97,7 @@ ms.locfileid: "54039429"
             .await();
     ```
 
-* [DocumentCollection](https://docs.microsoft.com/java/api/com.microsoft.azure.cosmosdb._document_collection) 创建。
+* [DocumentCollection](https://docs.microsoft.com/java/api/com.microsoft.azure.cosmosdb.documentcollection) 创建。
 
     ```java
     DocumentCollection collectionDefinition = new DocumentCollection();
@@ -110,7 +110,7 @@ ms.locfileid: "54039429"
             .await();
     ```
 
-* 使用 [createDocument](https://docs.microsoft.com/java/api/com.microsoft.azure.cosmosdb._document) 方法创建文档。
+* 使用 [createDocument](https://docs.microsoft.com/java/api/com.microsoft.azure.cosmosdb.document) 方法创建文档。
 
     ```java
     // Any Java object within your code
@@ -127,7 +127,7 @@ ms.locfileid: "54039429"
 
     ```
 
-* 使用 [queryDocuments](https://docs.microsoft.com/java/api/com.microsoft.azure.cosmosdb.rx._async_document_client.querydocuments?view=azure-java-stable) 方法，对 JSON 执行 SQL 查询。
+* 使用 [queryDocuments](https://docs.microsoft.com/java/api/com.microsoft.azure.cosmosdb.rx.asyncdocumentclient.querydocuments?view=azure-java-stable) 方法，对 JSON 执行 SQL 查询。
 
     ```java
     FeedOptions queryOptions = new FeedOptions();
