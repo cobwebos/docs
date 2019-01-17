@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/09/2018
 ms.author: scottwhi
 ms.custom: include file
-ms.openlocfilehash: a8d588b186652ab86ee1e8152bd9be08f0f1ef04
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 6016b13fe7d3e1f3b673bd2446d2f68b04878cd6
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52978839"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54193292"
 ---
 必应统计信息为必应搜索 API 提供分析。 分析包括调用量、最常用的查询字符串、地理分布，等等。 若要在必应搜索付费订阅中启用必应统计信息，请导航到 [Azure 仪表板](https://portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7)，选择自己的付费订阅，然后单击“启用必应统计信息”。 启用必应统计信息会略微增加订阅费用（请参阅[定价](https://aka.ms/bingstatisticspricing)）。
 
@@ -85,7 +85,7 @@ For example, if you don't include the User-Agent header in your calls, the dashb
 
 - **响应代码分布**：在报告时段发出的所有调用的 HTTP 状态代码。
 
-- **调用来源分布**：用户使用的浏览器类型。 例如 Edge、Chrome、Safari 和 FireFox。 从浏览器外部（例如机器人、Postman）发出的调用，或在控制台应用中使用 curl 发出的调用，将分组到“库”下面。 来源是使用请求的 User-Agent 标头值确定的。 如果请求不包含 User-Agent 标头，则必应会尝试从其他信号派生来源。  
+- **调用来源分布**：用户使用的浏览器类型。 例如 Microsoft Edge、Chrome、Safari 和 FireFox。 从浏览器外部（例如机器人、Postman）发出的调用，或在控制台应用中使用 curl 发出的调用，将分组到“库”下面。 来源是使用请求的 User-Agent 标头值确定的。 如果请求不包含 User-Agent 标头，则必应会尝试从其他信号派生来源。  
 
 - **安全搜索分布**：安全搜索值的分布。 例如 off、moderate 或 strict。 `safeSearch` 查询参数包含该值（如果已指定）。 否则，必应使用默认值 moderate。  
 

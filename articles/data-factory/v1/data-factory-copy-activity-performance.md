@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 05/25/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 632e605a6f7c9885f3854ca1f7b69ed337a1eacc
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 572f4535044e077ed245b0a231ccc9fa973a8a9b
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54025872"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54331634"
 ---
 # <a name="copy-activity-performance-and-tuning-guide"></a>复制活动性能和优化指南
 
@@ -108,7 +108,7 @@ Azure 提供了一组企业级数据存储和数据仓库解决方案，并且�
 若要替代此默认值，请如下所示指定 **cloudDataMovementUnits** 属性的值。 **cloudDataMovementUnits** 属性的**允许值**为 2、4、8、16 和 32。 复制操作在运行时使用的**云 DMU 的实际数量**等于或小于配置的值，具体取决于数据模式。 有关为特定复制源和接收器配置更多单元时可能获得的性能增益级别的信息，请参阅[性能参考](#performance-reference)。
 
 ```json
-"activities":[  
+"activities":[
     {
         "name": "Sample copy activity",
         "description": "",
@@ -135,7 +135,7 @@ Azure 提供了一组企业级数据存储和数据仓库解决方案，并且�
 ### <a name="parallelcopies"></a>parallelCopies
 可使用 **parallelCopies** 属性指示要让“复制活动”使用的并行度。 可将此属性视为复制活动内，可从源并行读取或并行写入接收器数据存储的最大线程数。
 
-对于每个复制活动运行，数据工厂确定用于将数据从源数据存储复制到目标数据存储的并行复制数。 它使用的默认并行复制数取决于使用的源和接收器类型。  
+对于每个复制活动运行，数据工厂确定用于将数据从源数据存储复制到目标数据存储的并行复制数。 它使用的默认并行复制数取决于使用的源和接收器类型。
 
 | 源和接收器 | 由服务确定的默认并行复制计数 |
 | --- | --- |
@@ -146,7 +146,7 @@ Azure 提供了一组企业级数据存储和数据仓库解决方案，并且�
 默认行为通常应可提供最佳吞吐量。 但是，若要控制托管数据存储的计算机上的负载或优化复制性能，可选择替代默认值并为 **parallelCopies** 属性指定值。 该值必须介于 1 和 32 之间（两者均含）。 在运行时，为了获得最佳性能，复制活动使用小于或等于所设置的值。
 
 ```json
-"activities":[  
+"activities":[
     {
         "name": "Sample copy activity",
         "description": "",
@@ -176,7 +176,7 @@ Azure 提供了一组企业级数据存储和数据仓库解决方案，并且�
 >
 >
 
-若要更好地使用这两个属性，并提高数据移动吞吐量，请参阅[示例用例](#case-study-use-parallel-copy)。 无需配置 **parallelCopies** 即可利用默认行为。 如果已配置且 **parallelCopies** 太小，则可能不能充分利用多个云 DMU。  
+若要更好地使用这两个属性，并提高数据移动吞吐量，请参阅[示例用例](#case-study-use-parallel-copy)。 无需配置 **parallelCopies** 即可利用默认行为。 如果已配置且 **parallelCopies** 太小，则可能不能充分利用多个云 DMU。
 
 ### <a name="billing-impact"></a>计费影响
 请**务必**记住，会根据复制操作的总时间向你收费。 如果复制作业过去使用 1 个云单元花费 1 小时，现在使用 4 个单元花费 15 分钟，则总费用几乎相同。 例如，使用 4 个云单元。 第一个云单元花费 10 分钟，第二个花费 10 分钟，第三个花费 5 分钟，第四个花费 5 分钟，这些都属于一个复制活动运行。 将对总复制（数据移动）时间进行收费，即 10 + 10 + 5 + 5 = 30 分钟。 使用 **parallelCopies** 不会影响计费。
@@ -206,7 +206,7 @@ Azure 提供了一组企业级数据存储和数据仓库解决方案，并且�
 ### <a name="configuration"></a>配置
 在复制活动中配置 **enableStaging** 设置，指定在将数据加载到目标数据存储之前是否要在 Blob 存储中暂存。 将 **enableStaging** 设置为 TRUE 时，指定下一个表中列出的其他属性。 如果未指定，则还需要创建 Azure 存储或存储共享访问签名链接服务供暂存用。
 
-| 属性 | 说明 | 默认值 | 必需 |
+| 属性 | 说明 | 默认值 | 必选 |
 | --- | --- | --- | --- |
 | **enableStaging** |指定是否要通过过渡暂存存储复制数据。 |False |否 |
 | **linkedServiceName** |指定 [AzureStorage](data-factory-azure-blob-connector.md#azure-storage-linked-service) 或 [AzureStorageSas ](data-factory-azure-blob-connector.md#azure-storage-sas-linked-service) 链接服务的名称，这指用作过渡暂存存储的存储实例。 <br/><br/> 不能使用具有共享访问签名的存储通过 PolyBase 将数据加载到 SQL 数据仓库。 可在其他任何情况下使用它。 |不适用 |将 **enableStaging** 设置为 TRUE 时，则为是 |
@@ -216,7 +216,7 @@ Azure 提供了一组企业级数据存储和数据仓库解决方案，并且�
 以下是具有上表所述属性的复制活动的示例定义：
 
 ```json
-"activities":[  
+"activities":[
 {
     "name": "Sample copy activity",
     "type": "Copy",
@@ -273,9 +273,9 @@ Azure 提供了一组企业级数据存储和数据仓库解决方案，并且�
 3. **将配置扩展至整个数据集**。 对执行结果和性能满意时，可以扩展定义和管道活动期以覆盖整个数据集。
 
 ## <a name="considerations-for-data-management-gateway"></a>数据管理网关注意事项
-**网关设置**：建议使用专用计算机托管数据管理网关。 请参阅[使用数据管理网关的注意事项](data-factory-data-management-gateway.md#considerations-for-using-gateway)。  
+**网关设置**：建议使用专用计算机托管数据管理网关。 请参阅[使用数据管理网关的注意事项](data-factory-data-management-gateway.md#considerations-for-using-gateway)。
 
-**网关监视和纵向/横向扩展**：具有一个或多个网关节点的单个逻辑网关可同时用于在同一时间运行的多个复制活动。 可在网关计算机上查看资源利用率（CPU、内存、网络（入站/出站）等）的近实时快照，以及在 Azure 门户中运行的并发作业数与限制。有关详细信息，请参阅[在门户中监视网关](data-factory-data-management-gateway.md#monitor-gateway-in-the-portal)。 如果非常需要包含大量并发复制活动运行或需要复制大量数据的混合数据移动，请考虑[纵向或横向扩展网关](data-factory-data-management-gateway-high-availability-scalability.md#scale-considerations)，以便更好地利用资源或设置更多资源以允许复制。 
+**网关监视和纵向/横向扩展**：具有一个或多个网关节点的单个逻辑网关可同时用于在同一时间运行的多个复制活动。 可在网关计算机上查看资源利用率（CPU、内存、网络（入站/出站）等）的近实时快照，以及在 Azure 门户中运行的并发作业数与限制。有关详细信息，请参阅[在门户中监视网关](data-factory-data-management-gateway.md#monitor-gateway-in-the-portal)。 如果非常需要包含大量并发复制活动运行或需要复制大量数据的混合数据移动，请考虑[纵向或横向扩展网关](data-factory-data-management-gateway-high-availability-scalability.md#scale-considerations)，以便更好地利用资源或设置更多资源以允许复制。
 
 ## <a name="considerations-for-the-source"></a>有关源的注意事项
 ### <a name="general"></a>常规
@@ -404,7 +404,7 @@ Azure 提供了一组企业级数据存储和数据仓库解决方案，并且�
 
 **方案 II**：将 20 个 Blob（每个 500 MB）从 Blob 存储复制到 Data Lake Store Analytics，然后优化性能。
 
-**分析和性能优化**：在此方案中，数据工厂通过使用单个复制（**parallelCopies** 设置为 1）和单一云数据移动单位，将数据从 Blob 存储复制到 Data Lake Store。 观察到的吞吐量将接近[性能参考部分](#performance-reference)中描述的吞吐量。   
+**分析和性能优化**：在此方案中，数据工厂通过使用单个复制（**parallelCopies** 设置为 1）和单一云数据移动单位，将数据从 Blob 存储复制到 Data Lake Store。 观察到的吞吐量将接近[性能参考部分](#performance-reference)中描述的吞吐量。
 
 ![方案 2](./media/data-factory-copy-activity-performance/scenario-2.png)
 

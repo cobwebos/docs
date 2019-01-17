@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 01/03/2019
-ms.openlocfilehash: 2a862a6f1165b0cdd4dfe46e638dc6b10eae9ee5
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 46febbeb2675c38bf68c6ba0b911f799b268e208
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 01/10/2019
-ms.locfileid: "54191320"
+ms.locfileid: "54201102"
 ---
 # <a name="use-data-dependent-routing-to-route-a-query-to-appropriate-database"></a>使用数据依赖型路由可将查询路由到相应的数据库
 
@@ -68,7 +68,7 @@ public SqlConnection OpenConnectionForKey<TKey>(TKey key, string connectionStrin
 
 * **key** 参数在分片映射中用作查找键，以确定该请求的相应数据库。
 * **connectionString** 用于仅传递所需连接的用户凭据。 此 connectionString 中不包含数据库名称或服务器名称，因为该方法使用 ShardMap 确定数据库和服务器。
-* 在分片映射可能会发生更改并且行可能会由于拆分或合并操作而移到其他数据库的环境中，connectionOptions（[Java](/java/api/com.microsoft.azure.elasticdb.shard.mapper._connection_options)、[.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.connectionoptions)）应设置为 ConnectionOptions.Validate。 此验证涉及在将连接传送到应用程序之前，在目标数据库上简要查询局部分片映射（而不是全局分片映射）。
+* 在分片映射可能会发生更改并且行可能会由于拆分或合并操作而移到其他数据库的环境中，connectionOptions（[Java](/java/api/com.microsoft.azure.elasticdb.shard.mapper.connectionoptions)、[.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.connectionoptions)）应设置为 ConnectionOptions.Validate。 此验证涉及在将连接传送到应用程序之前，在目标数据库上简要查询局部分片映射（而不是全局分片映射）。
 
 如果针对局部分片映射进行的验证失败（指示缓存不正确），分片映射管理器会查询全局分片映射来获取新的正确值以供查找、更新缓存以及获取和返回相应的数据库连接。
 

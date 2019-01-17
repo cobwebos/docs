@@ -2,18 +2,18 @@
 title: 查看用于将 Hyper-V VM 灾难恢复到 Azure 的 Azure Site Recovery 部署规划器成本估算报告 | Microsoft Docs
 description: 本文介绍如何查看 Azure Site Recovery 部署规划器生成的针对从 Hyper-V 灾难恢复到 Azure 的成本估算报告。
 services: site-recovery
-author: nsoneji
-manager: garavd
+author: mayurigupta13
+manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
-ms.author: nisoneji
-ms.openlocfilehash: eaccbc93fa1e78132527798dcef27babc8a2cc09
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.author: mayg
+ms.openlocfilehash: 03f71e4e10b65d9f295e13cdd8bc6881622c523d
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52845019"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54320271"
 ---
 # <a name="cost-estimation-report-by-azure-site-recovery-deployment-planner"></a>Azure Site Recovery 部署规划器成本估算报表 
 
@@ -107,7 +107,7 @@ Azure Site Recovery 部署规划器报表以[建议](hyper-v-deployment-planner-
 
 1. 根据与此配置相符的大致 VM 大小和 VM 数填充以下列： 
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 **VM 数**
+    a. **VM 数**
 
     b. **IaaS 大小(你的选择)**
 

@@ -5,6 +5,7 @@ description: 本教程介绍了如何使用 Azure 负载均衡器配置端口转
 services: load-balancer
 documentationcenter: na
 author: KumudD
+manager: twooley
 Customer intent: As an IT administrator, I want to configure port forwarding in Azure Load Balancer to remotely connect to VMs in an Azure virtual network.
 ms.service: load-balancer
 ms.devlang: na
@@ -14,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 12/11/18
 ms.author: kumud
 ms.custom: seodec18
-ms.openlocfilehash: e3431ff7ee6991e5af3ecab0e734cc587009dcde
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: da41b33f3e5d24c0391c8486d9c0b372877eff21
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53273503"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54232186"
 ---
 # <a name="tutorial-configure-port-forwarding-in-azure-load-balancer-using-the-portal"></a>教程：使用门户在 Azure 负载均衡器中配置端口转发
 
@@ -47,7 +48,7 @@ ms.locfileid: "53273503"
    
 1. 在“创建负载均衡器”窗格中，键入或选择以下值：
    
-   - **名称**：键入“MyLoadBalancer”。
+   - **名称**：键入 *MyLoadBalancer*。
    - **类型**：选择“公共”。 
    - **SKU**：选择“标准”。
    - **公共 IP 地址**：选择“新建”并在字段中键入“MyPublicIP”。
@@ -74,7 +75,7 @@ ms.locfileid: "53273503"
    
    - **名称**：键入“MyVNet”。
    - **ResourceGroup**：下拉“选择现有项”列表并选择“MyResourceGroupLB”。 
-   - **子网** > **名称**：键入“MyBackendSubnet”。
+   - “子网” > “名称”：键入“MyBackendSubnet”。
    
 1. 选择“创建”。
 
@@ -92,7 +93,7 @@ ms.locfileid: "53273503"
    - **密码**：键入“Azure1234567”。 
      在“确认密码”字段中，重新键入该密码。
    
-1. 选择“网络”选项卡，或选择“下一步:磁盘”，然后选择“下一步:网络”。 
+1. 选择“网络”选项卡，或选择“下一步:磁盘”，然后选择“下一步:网络”**。 
    
    确保选中以下项：
    - **虚拟网络**：**MyVNet**
@@ -186,12 +187,12 @@ ms.locfileid: "53273503"
    
 1. 在“添加运行状况探测”页上，键入或选择以下值：
    
-   - **名称**：键入“MyHealthProbe”。
+   - **名称**：键入 *MyHealthProbe*。
    - **协议**：下拉并选择“HTTP”。 
-   - **端口**：键入 80。 
-   - **路径**：接受 / 作为默认 URI。 可以将此值替换为任何其他的 URI。 
-   - **时间间隔**：键入 15。 时间间隔是两次探测尝试之间的秒数。
-   - **不正常阈值**：键入 2。 此值是将 VM 视为不正常之前发生的连续探测失败次数。
+   - **端口**：键入 *80*。 
+   - **路径**：接受 */* 作为默认 URI。 可以将此值替换为任何其他的 URI。 
+   - **时间间隔**：键入 *15*。 时间间隔是两次探测尝试之间的秒数。
+   - **不正常阈值**：键入 *2*。 此值是将 VM 视为不正常之前发生的连续探测失败次数。
    
 1. 选择“确定”。
    
@@ -211,8 +212,8 @@ ms.locfileid: "53273503"
    
    - **名称**：键入“MyLoadBalancerRule”。
    - **协议**：选择“TCP”。
-   - **端口**：键入 80。
-   - **后端端口**：键入 80。
+   - **端口**：键入 *80*。
+   - **后端端口**：键入 *80*。
    - **后端池**：选择“MyBackendPool”。
    - **运行状况探测**：选择“MyHealthProbe”。 
    

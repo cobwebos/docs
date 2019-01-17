@@ -5,6 +5,7 @@ description: 本教程展示了如何使用 Azure 门户创建内部的基本负
 services: load-balancer
 documentationcenter: na
 author: KumudD
+manager: twooley
 Customer intent: As an IT administrator, I want to create a load balancer that load balances incoming internal traffic to virtual machines within a specific zone in a region.
 ms.service: load-balancer
 ms.devlang: na
@@ -14,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 11/28/2018
 ms.author: kumud
 ms.custom: seodec18
-ms.openlocfilehash: 1ed77e8573479665d0caac15941d6b6c6ab790cb
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 16c9eea61391511f7515308131b3541e186cd7ae
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53262344"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54232611"
 ---
 # <a name="tutorial-balance-internal-traffic-load-with-a-basic-load-balancer-in-the-azure-portal"></a>教程：在 Azure 门户中通过基本负载均衡器对内部流量负载进行均衡
 
@@ -41,9 +42,9 @@ ms.locfileid: "53262344"
    
 1. 在“创建虚拟网络”窗格中键入或选择以下值：
    
-   - **名称**：键入 *MyVNet*。
+   - **名称**：键入“MyVNet”。
    - **资源组**：选择“新建”，输入 *MyResourceGroupLB*，然后选择“确定”。 
-   - **子网** > **名称**：键入 *MyBackendSubnet*。
+   - **子网** > **名称**：键入“MyBackendSubnet”。
    
 1. 选择“创建”。
 
@@ -60,7 +61,7 @@ ms.locfileid: "53262344"
      1. 在下拉列表中选择“可用性集”。 
      2. 选择“新建”，键入 *MyAvailabilitySet*，然后选择“确定”。
    
-1. 选择“网络”选项卡，或选择“下一步: 磁盘”，然后选择“下一步:网络”。 
+1. 选择“网络”选项卡，或选择“下一步: 磁盘”，然后选择“下一步:网络”**。 
    
    确保选中以下项：
    - **虚拟网络**：**MyVNet**

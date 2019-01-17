@@ -2,7 +2,6 @@
 title: 教程 - 使用 Azure 流量管理器路由流量以改善网站响应
 description: 本教程文章介绍如何创建流量管理器配置文件，以生成具有高响应能力的网站。
 services: traffic-manager
-documentationcenter: ''
 author: kumudd
 Customer intent: As an IT Admin, I want to route traffic so I can improve website response by choosing the endpoint with lowest latency.
 ms.service: traffic-manager
@@ -12,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/23/2018
 ms.author: kumud
-ms.openlocfilehash: fcbacb14ae1cf0d8fa31d84e281c96fab5e3b0d3
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 1b12e17bb8dd666bd48e937b7fed40e40f22ecf0
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54052081"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54200762"
 ---
 # <a name="tutorial-improve-website-response-using-traffic-manager"></a>教程：使用流量管理器改善网站响应 
 

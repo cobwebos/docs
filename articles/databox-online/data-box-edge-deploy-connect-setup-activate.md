@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 01/09/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to connect and activate Data Box Edge so I can use it to transfer data to Azure.
-ms.openlocfilehash: e5f2ecd2cdff0ae5f3f5f086bde0741f7f6d2dbb
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: e5477807e4cff6dc745ccfd0383fd216719a7aa5
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54121611"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54259596"
 ---
 # <a name="tutorial-connect-set-up-and-activate-azure-data-box-edge-preview"></a>教程：连接、设置和激活 Azure Data Box Edge（预览版） 
 
@@ -95,7 +95,7 @@ ms.locfileid: "54121611"
    
    在“Web 代理设置”页上，执行以下操作：
    
-   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“Web 代理 URL”框中，按以下格式输入 URL：`http://host-IP address or FDQN:Port number`。 不支持 HTTPS URL。
+   a. 在“Web 代理 URL”框中，按以下格式输入 URL：`http://host-IP address or FQDN:Port number`。 不支持 HTTPS URL。
 
    b. 在“身份验证”下选择“无”或“NTLM”。
 
@@ -110,7 +110,7 @@ ms.locfileid: "54121611"
     
     在“时间设置”页上，执行以下操作：
     
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“时区”下拉列表中选择时区，使之与部署设备的地理位置相对应。  
+    a. 在“时区”下拉列表中选择时区，使之与部署设备的地理位置相对应。  
         设备的默认时区为太平洋标准时间。 设备将此时区用于所有计划操作。
 
     b. 在“主 NTP 服务器”框中输入设备的主服务器，或者接受默认值：time.windows.com。  
@@ -122,7 +122,7 @@ ms.locfileid: "54121611"
 
 6. 在左窗格中选择“云设置”，然后通过 Azure 门户中的 Data Box Edge 服务激活设备。
     
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“激活密钥”框中，为 Data Box Edge 输入你在[获取激活密钥](data-box-edge-deploy-prep.md#get-the-activation-key)中获取的激活密钥。
+    a. 在“激活密钥”框中，为 Data Box Edge 输入你在[获取激活密钥](data-box-edge-deploy-prep.md#get-the-activation-key)中获取的激活密钥。
 
     b. 选择“应用”。 
        

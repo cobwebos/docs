@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 05/15/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 1ccf66da14bbbd4993f29da2e40d996cb564864e
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: aa6f891cc68d19e638bb2b7281f4b332de26bd26
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54024903"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54332636"
 ---
 # <a name="copy-data-to-or-from-oracle-on-premises-by-using-azure-data-factory"></a>使用 Azure 数据工厂在 Oracle 本地复制或粘贴数据
 
@@ -73,7 +73,7 @@ Oracle 连接器支持两个版本的驱动程序：
 
     如果选择“XCopy 安装”，请完成 readme.htm 文件中所述的步骤。 我们建议选择具有 UI 的安装程序（而不是 XCopy 安装程序）。
 
-    安装提供程序后，使用服务小程序或数据管理网关配置管理器在计算机上重启数据管理网关主机服务。  
+    安装提供程序后，使用服务小程序或数据管理网关配置管理器在计算机上重启数据管理网关主机服务。
 
 如果使用复制向导来创作复制管道，则会自动确定驱动程序类型。 除非网关版本低于 2.7 版或选择 Oracle 作为接收器，否则默认使用 Microsoft 驱动程序。
 
@@ -81,18 +81,18 @@ Oracle 连接器支持两个版本的驱动程序：
 
 可以创建包含复制活动的管道。 该管道使用各种工具或 API 将数据移入或移出本地 Oracle 数据库。
 
-创建管道最简单的方法是使用复制向导。 请参阅[教程：使用复制向导创建管道](data-factory-copy-data-wizard-tutorial.md)来快速了解如何使用复制数据向导创建管道。
+创建管道最简单的方法是使用复制向导。 有关分步说明，请参阅[教程：使用复制向导创建管道](data-factory-copy-data-wizard-tutorial.md)来快速了解如何使用复制数据向导创建管道。
 
 也可以使用以下工具之一创建管道：**Azure 门户**、**Visual Studio**、**Azure PowerShell**、**Azure 资源管理器模板**、**.NET API** 或 **REST API**。 有关如何创建包含复制活动的管道的分步说明，请参阅[复制活动教程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
 
 无论使用工具还是 API，完成以下步骤都可创建将数据从源数据存储移至接收器数据存储的管道：
 
-1. 创建**数据工厂**。 数据工厂可以包含一个或多个管道。 
+1. 创建**数据工厂**。 数据工厂可以包含一个或多个管道。
 2. 创建链接服务可将输入和输出数据存储链接到数据工厂。 例如，如果要将数据从 Oracle 数据库复制到 Azure Blob 存储，可创建两个链接服务，将 Oracle 数据库和 Azure 存储帐户链接到数据工厂。 有关特定于 Oracle 的链接服务属性，请参阅[链接服务属性](#linked-service-properties)。
 3. 创建数据集以表示复制操作的输入和输出数据。 在上一步的示例中，创建了一个数据集来指定 Oracle 数据库中包含输入数据的表。 创建了另一个数据集来指定 blob 容器和用于保存从 Oracle 数据库复制的数据的文件夹。 有关特定于 Oracle 的数据集属性，请参阅[数据集属性](#dataset-properties)。
-4. 创建包含复制活动的**管道**，该活动将一个数据集作为输入，将一个数据集作为输出。 在上一个示例中，对复制活动使用 **OracleSource** 作为源，**BlobSink** 作为接收器。 同样，如果要从 Azure Blob 存储复制到 Oracle 数据库，则在复制活动中使用 **BlobSource** 和 **OracleSink**。 有关特定于 Oracle 数据库的复制活动属性，请参阅[复制活动属性](#copy-activity-properties)。 有关如何将数据存储用作源或接收器的详细信息，请选择上一部分中的相应数据存储链接。 
+4. 创建包含复制活动的**管道**，该活动将一个数据集作为输入，将一个数据集作为输出。 在上一个示例中，对复制活动使用 **OracleSource** 作为源，**BlobSink** 作为接收器。 同样，如果要从 Azure Blob 存储复制到 Oracle 数据库，则在复制活动中使用 **BlobSource** 和 **OracleSink**。 有关特定于 Oracle 数据库的复制活动属性，请参阅[复制活动属性](#copy-activity-properties)。 有关如何将数据存储用作源或接收器的详细信息，请选择上一部分中的相应数据存储链接。
 
-使用向导时，会自动创建这些数据工厂实体的 JSON 定义：链接服务、数据集和管道。 使用工具或 API（.NET API 除外）时，使用 JSON 格式定义这些数据工厂实体。  有关提供用于在本地 Oracle 数据库中复制或粘贴数据的数据工厂实体 JSON 定义的示例，请参阅 [JSON 示例](#json-examples-for-copying-data-to-and-from-oracle-database)。
+使用向导时，会自动创建这些数据工厂实体的 JSON 定义：链接服务、数据集和管道。 使用工具或 API（.NET API 除外）时，使用 JSON 格式定义这些数据工厂实体。 有关提供用于在本地 Oracle 数据库中复制或粘贴数据的数据工厂实体 JSON 定义的示例，请参阅 [JSON 示例](#json-examples-for-copying-data-to-and-from-oracle-database)。
 
 以下部分提供了有关用于定义数据工厂实体的 JSON 属性的详细信息。
 
@@ -100,14 +100,14 @@ Oracle 连接器支持两个版本的驱动程序：
 
 下表描述了特定于 Oracle 链接服务的 JSON 元素：
 
-| 属性 | 说明 | 必需 |
+| 属性 | 说明 | 必选 |
 | --- | --- | --- |
 | type |**type** 属性必须设置为 **OnPremisesOracle**。 |是 |
 | driverType | 指定在 Oracle 数据库中复制或粘贴数据所使用的驱动程序。 允许的值为 **Microsoft** 和 **ODP**（默认值）。 请参阅[支持的版本和安装](#supported-versions-and-installation)以了解驱动程序详细信息。 | 否 |
 | connectionString | 为 **connectionString** 属性指定连接到 Oracle 数据库实例所需的信息。 | 是 |
 | gatewayName | 用于连接到本地 Oracle 服务器的网关的名称。 |是 |
 
-**示例：使用 Microsoft 驱动程序**
+示例：**使用 Microsoft 驱动程序**
 
 > [!TIP]
 > 如果看到错误“ORA-01025:UPI 参数超出范围”，且 Oracle 版本为 8i，请将 `WireProtocolMode=1` 添加到连接字符串并重试：
@@ -126,7 +126,7 @@ Oracle 连接器支持两个版本的驱动程序：
 }
 ```
 
-**示例：使用 ODP 驱动程序**
+示例：**使用 ODP 驱动程序**
 
 若要了解允许的格式，请参阅[用于 .NET ODP 的 Oracle 数据提供程序](https://www.connectionstrings.com/oracle-data-provider-for-net-odp-net/)。
 
@@ -136,8 +136,7 @@ Oracle 连接器支持两个版本的驱动程序：
     "properties": {
         "type": "OnPremisesOracle",
         "typeProperties": {
-            "connectionString": "Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=<host name>)(PORT=<port number>))(CONNECT_DATA=(SERVICE_NAME=<service ID>)));
-User Id=<user name>;Password=<password>;",
+            "connectionString": "Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=<host name>)(PORT=<port number>))(CONNECT_DATA=(SERVICE_NAME=<service ID>))); User Id=<user name>;Password=<password>;",
             "gatewayName": "<gateway name>"
         }
     }
@@ -146,19 +145,19 @@ User Id=<user name>;Password=<password>;",
 
 ## <a name="dataset-properties"></a>数据集属性
 
-有关可用于定义数据集的各部分和属性的完整列表，请参阅[创建数据集](data-factory-create-datasets.md)。 
+有关可用于定义数据集的各部分和属性的完整列表，请参阅[创建数据集](data-factory-create-datasets.md)。
 
 在数据集 JSON 文件中，所有数据集类型（例如 Oracle、Azure Blob 存储和 Azure 表存储）的 structure、availability 和 policy 等节均类似。
 
 每种数据集的 typeProperties 部分有所不同，该部分提供有关数据在数据存储区中的位置信息。 **OracleTable** 类型的数据集的 **typeProperties** 节具有以下属性：
 
-| 属性 | 说明 | 必需 |
+| 属性 | 说明 | 必选 |
 | --- | --- | --- |
 | tableName |链接服务引用的 Oracle 数据库中表的名称。 |否（如果指定了 **oracleReaderQuery** 或 **OracleSource**） |
 
 ## <a name="copy-activity-properties"></a>复制活动属性
 
-有关可用于定义活动的各节和属性的完整列表，请参阅[创建管道](data-factory-create-pipelines.md)。 
+有关可用于定义活动的各节和属性的完整列表，请参阅[创建管道](data-factory-create-pipelines.md)。
 
 名称、说明、输入和输出表格等属性和策略可用于所有类型的活动。
 
@@ -171,7 +170,7 @@ User Id=<user name>;Password=<password>;",
 
 在复制活动中，如果源的类型为 **OracleSource**，则可以在 **typeProperties** 节中使用以下属性：
 
-| 属性 | 说明 | 允许的值 | 必需 |
+| 属性 | 说明 | 允许的值 | 必选 |
 | --- | --- | --- | --- |
 | oracleReaderQuery |使用自定义查询读取数据。 |SQL 查询字符串。 例如：“select \* from **MyTable**”。 <br/><br/>如果未指定，则执行此 SQL 语句：“select \* from **MyTable**” |否<br />（如果指定了**数据集**的 **tableName**） |
 
@@ -179,7 +178,7 @@ User Id=<user name>;Password=<password>;",
 
 **OracleSink** 支持以下属性：
 
-| 属性 | 说明 | 允许的值 | 必需 |
+| 属性 | 说明 | 允许的值 | 必选 |
 | --- | --- | --- | --- |
 | writeBatchTimeout |超时前等待批插入操作完成的时间。 |**timespan**<br/><br/> 示例：00:30:00（30 分钟） |否 |
 | writeBatchSize |当缓冲区大小达到 **writeBatchSize** 值时，向 SQL 表插入数据。 |整数（行数） |否（默认值：100） |
@@ -188,9 +187,9 @@ User Id=<user name>;Password=<password>;",
 
 ## <a name="json-examples-for-copying-data-to-and-from-the-oracle-database"></a>在 Oracle 数据库中复制和粘贴数据的 JSON 示例
 
-以下示例提供示例 JSON 定义，可使用该定义通过 [Azure 门户](data-factory-copy-activity-tutorial-using-azure-portal.md)、[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) 或 [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) 创建管道。 这些示例展示如何在 Oracle 数据库和 Azure Blob 存储之间复制数据。 但是，使用 Azure 数据工厂中的复制活动，可以将数据复制到[支持的数据存储和格式](data-factory-data-movement-activities.md#supported-data-stores-and-formats)中列出的任何接收器。   
+以下示例提供示例 JSON 定义，可使用该定义通过 [Azure 门户](data-factory-copy-activity-tutorial-using-azure-portal.md)、[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) 或 [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) 创建管道。 这些示例展示如何在 Oracle 数据库和 Azure Blob 存储之间复制数据。 但是，使用 Azure 数据工厂中的复制活动，可以将数据复制到[支持的数据存储和格式](data-factory-data-movement-activities.md#supported-data-stores-and-formats)中列出的任何接收器。
 
-**示例：将数据从 Oracle 复制到 Azure Blob 存储**
+示例：**将数据从 Oracle 复制到 Azure Blob 存储**
 
 此示例具有以下数据工厂实体：
 
@@ -254,12 +253,12 @@ User Id=<user name>;Password=<password>;",
             "anchorDateTime": "2014-02-27T12:00:00",
             "frequency": "Hour"
         },
-        "policy": {     
-            "externalData": {        
-                "retryInterval": "00:01:00",    
-                "retryTimeout": "00:10:00",       
-                "maximumRetry": 3       
-            }     
+        "policy": {
+            "externalData": {
+                "retryInterval": "00:01:00",
+                "retryTimeout": "00:10:00",
+                "maximumRetry": 3
+            }
         }
     }
 }
@@ -327,16 +326,16 @@ User Id=<user name>;Password=<password>;",
 
 **包含复制活动的管道**
 
-管道包含配置为使用输入和输出数据集且计划每小时运行一次的复制活动。 在管道 JSON 定义中，将 **source** 类型设置为 **OracleSource**，将 **sink** 类型设置为 **BlobSink**。  使用 **oracleReaderQuery** 属性指定的 SQL 查询选择复制过去一小时的数据。
+管道包含配置为使用输入和输出数据集且计划每小时运行一次的复制活动。 在管道 JSON 定义中，将 **source** 类型设置为 **OracleSource**，将 **sink** 类型设置为 **BlobSink**。 使用 **oracleReaderQuery** 属性指定的 SQL 查询选择复制过去一小时的数据。
 
 ```json
-{  
+{
     "name":"SamplePipeline",
-    "properties":{  
+    "properties":{
         "start":"2014-06-01T18:00:00",
         "end":"2014-06-01T19:00:00",
         "description":"pipeline for a copy activity",
-        "activities":[  
+        "activities":[
             {
                 "name": "OracletoBlob",
                 "description": "copy activity",
@@ -376,9 +375,9 @@ User Id=<user name>;Password=<password>;",
 }
 ```
 
-**示例：将数据从 Azure Blob 存储复制到 Oracle**
+示例：**将数据从 Azure Blob 存储复制到 Oracle**
 
-该示例展示如何将数据从 Azure Blob 存储帐户复制到本地 Oracle 数据库。 但是，使用 Azure 数据工厂中的复制活动，可以*直接*从[支持的数据存储和格式](data-factory-data-movement-activities.md#supported-data-stores-and-formats)中列出的任何源复制数据。  
+该示例展示如何将数据从 Azure Blob 存储帐户复制到本地 Oracle 数据库。 但是，使用 Azure 数据工厂中的复制活动，可以*直接*从[支持的数据存储和格式](data-factory-data-movement-activities.md#supported-data-stores-and-formats)中列出的任何源复制数据。
 
 此示例具有以下数据工厂实体：
 
@@ -503,16 +502,16 @@ User Id=<user name>;Password=<password>;",
 
 **包含复制活动的管道**
 
-管道包含配置为使用输入和输出数据集且计划每小时运行一次的复制活动。 在管道 JSON 定义中，**源**类型设置为 **BlobSource**，**接收器**类型设置为 **OracleSink**。  
+管道包含配置为使用输入和输出数据集且计划每小时运行一次的复制活动。 在管道 JSON 定义中，**源**类型设置为 **BlobSource**，**接收器**类型设置为 **OracleSink**。
 
 ```json
-{  
+{
     "name":"SamplePipeline",
-    "properties":{  
+    "properties":{
         "start":"2014-06-01T18:00:00",
         "end":"2014-06-05T19:00:00",
         "description":"pipeline with a copy activity",
-        "activities":[  
+        "activities":[
             {
                 "name": "AzureBlobtoOracle",
                 "description": "Copy Activity",
@@ -558,7 +557,7 @@ User Id=<user name>;Password=<password>;",
 
 **错误消息**
 
-    Copy activity met invalid parameters: 'UnknownParameterName', Detailed message: Unable to find the requested .Net Framework Data Provider. It may not be installed.  
+    Copy activity met invalid parameters: 'UnknownParameterName', Detailed message: Unable to find the requested .Net Framework Data Provider. It may not be installed.
 
 **可能的原因**
 
@@ -584,7 +583,7 @@ User Id=<user name>;Password=<password>;",
 
 可能需要根据 Oracle 数据库中日期的配置方式来调整复制活动中的查询字符串。 下面是使用 **to_date** 函数的示例：
 
-    "oracleReaderQuery": "$$Text.Format('select * from MyTable where timestampcolumn >= to_date(\\'{0:MM-dd-yyyy HH:mm}\\',\\'MM/DD/YYYY HH24:MI\\')  AND timestampcolumn < to_date(\\'{1:MM-dd-yyyy HH:mm}\\',\\'MM/DD/YYYY HH24:MI\\') ', WindowStart, WindowEnd)"
+    "oracleReaderQuery": "$$Text.Format('select * from MyTable where timestampcolumn >= to_date(\\'{0:MM-dd-yyyy HH:mm}\\',\\'MM/DD/YYYY HH24:MI\\') AND timestampcolumn < to_date(\\'{1:MM-dd-yyyy HH:mm}\\',\\'MM/DD/YYYY HH24:MI\\') ', WindowStart, WindowEnd)"
 
 
 ## <a name="type-mapping-for-oracle"></a>Oracle 的类型映射

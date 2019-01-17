@@ -12,12 +12,12 @@ ms.date: 08/14/2018
 ms.author: danlep
 ms.custom: mvc
 ROBOTS: NOINDEX
-ms.openlocfilehash: 1e9a4c6355c60b18bb78aae362c1e2f142e2d864
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: c1ebcae04b51fbf18da22872e3e4160a37a7e2fe
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53407994"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54201153"
 ---
 # <a name="store-batch-ai-job-input-and-output-with-azure-storage"></a>使用 Azure 存储来存储 Batch AI 作业输入和输出
 
@@ -79,7 +79,7 @@ Azure 存储是 Microsoft 提供的云存储解决方案。 Batch AI 支持将 A
 - <FILE_SHARE_NAME>：文件共享的名称
 - <BLOB_CONTAINER_NAME>：Blob 容器的名称
 
-若要使用 Azure Batch AI SDK 装载 Azure 存储卷，请在 `JobCreateParameters` 上设置 `mount_volumes` (Python) 或 `MountVolumes`（C#、Java）属性。 使用 Azure Batch AI SDK 装载卷时，必须提供存储帐户的凭据。 请查看在 [Python](https://docs.microsoft.com/python/api/azure-mgmt-batchai/azure.mgmt.batchai.models.MountVolumes?view=azure-python)、[C#](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.batchai.models.mountvolumes?view=azure-dotnet) 和 [Java](https://docs.microsoft.com/java/api/com.microsoft.azure.management.batchai._mount_volumes?view=azure-java-stable) 中装载卷的架构。
+若要使用 Azure Batch AI SDK 装载 Azure 存储卷，请在 `JobCreateParameters` 上设置 `mount_volumes` (Python) 或 `MountVolumes`（C#、Java）属性。 使用 Azure Batch AI SDK 装载卷时，必须提供存储帐户的凭据。 请查看在 [Python](https://docs.microsoft.com/python/api/azure-mgmt-batchai/azure.mgmt.batchai.models.MountVolumes?view=azure-python)、[C#](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.batchai.models.mountvolumes?view=azure-dotnet) 和 [Java](https://docs.microsoft.com/java/api/com.microsoft.azure.management.batchai.mountvolumes?view=azure-java-stable) 中装载卷的架构。
 
 ### <a name="mount-volumes-to-a-cluster"></a>将卷装载到群集
 

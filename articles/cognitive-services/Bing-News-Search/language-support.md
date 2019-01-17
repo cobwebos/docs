@@ -8,14 +8,14 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-news-search
 ms.topic: conceptual
-ms.date: 09/25/2018
+ms.date: 1/10/2019
 ms.author: v-gedod
-ms.openlocfilehash: a8f7ccdb199f934011b6d64d813eb36cc9dff952
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 1d8a46287d2b84735ffb6d5159346cb9b8243472
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48804542"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54263982"
 ---
 # <a name="language-and-region-support-for-the-bing-news-search-api"></a>必应新闻搜索 API 的语言和区域支持
 

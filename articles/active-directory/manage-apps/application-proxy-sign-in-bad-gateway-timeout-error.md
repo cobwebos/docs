@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 05/21/2018
 ms.author: barbkess
 ms.reviewer: asteen
-ms.openlocfilehash: c26f9c319a8260f4c19933d640310923b9c36db7
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 768a9d930314882f88eab630365475d69aa5f83b
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53134822"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54213716"
 ---
 # <a name="cant-access-this-corporate-application-error-when-using-an-application-proxy-application"></a>使用应用程序代理应用程序时出现“无法访问此企业应用程序”错误
 
@@ -62,7 +62,7 @@ ms.locfileid: "53134822"
 
 如果出现禁止访问错误，则表明用户未分配到该应用程序。 此错误可能会出现在 Azure Active Directory 中或后端应用程序上。
 
-要了解如何将用户分配到 Azure 中的应用程序，请参阅[配置文档](https://docs.microsoft.com/azure/active-directory/application-proxy-add-on-premises-application#add-a-test-user)。
+要了解如何将用户分配到 Azure 中的应用程序，请参阅[配置文档](application-proxy-add-on-premises-application.md#test-the-application)。
 
 如果确认用户已分配到 Azure 中的应用程序，请检查后端应用程序中的用户配置。 如果你正在使用 Kerberos 约束委派/集成 Windows 身份验证，请参阅“KCD 故障排除”页，以了解指导原则。
 

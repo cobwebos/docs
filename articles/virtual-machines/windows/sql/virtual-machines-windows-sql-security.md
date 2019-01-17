@@ -3,7 +3,7 @@ title: Azure 中的 SQL Server 的安全注意事项 | Microsoft Docs
 description: 本主题提供有关保护 Azure 虚拟机中运行的 SQL Server 的一般指导。
 services: virtual-machines-windows
 documentationcenter: na
-author: rothja
+author: MashaMSFT
 manager: craigg
 editor: ''
 tags: azure-service-management
@@ -14,13 +14,14 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 03/23/2018
-ms.author: jroth
-ms.openlocfilehash: bba9f62a78dea4db1d88f877029796739b023e46
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.author: mathoma
+ms.reviewer: jroth
+ms.openlocfilehash: 61cfc458ed965fd4f1446ff8cfb5e9a6e244f246
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34365196"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54332381"
 ---
 # <a name="security-considerations-for-sql-server-in-azure-virtual-machines"></a>Azure 虚拟机中的 SQL Server 的安全注意事项
 

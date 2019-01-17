@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 9b7104d27e7f8c384c742a3988ad7400c232d162
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 13e00acaf287a9e153aaa8e5ce7d630f8d198f02
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54023033"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54330409"
 ---
 # <a name="copy-data-to-and-from-azure-sql-database-using-azure-data-factory"></a>使用 Azure 数据工厂向 Azure SQL 数据库以及从 Azure SQL 数据库复制数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -28,7 +28,7 @@ ms.locfileid: "54023033"
 > [!NOTE]
 > 本文适用于数据工厂版本 1。 如果使用数据工厂服务的当前版本，请参阅 [V2 中的 Azure SQL 数据库连接器](../connector-azure-sql-database.md)。
 
-本文介绍如何使用 Azure 数据工厂中的复制活动将数据移入/移出 Azure SQL 数据库。 它基于[数据移动活动](data-factory-data-movement-activities.md)一文，其中总体概述了如何使用复制活动移动数据。  
+本文介绍如何使用 Azure 数据工厂中的复制活动将数据移入/移出 Azure SQL 数据库。 它基于[数据移动活动](data-factory-data-movement-activities.md)一文，其中总体概述了如何使用复制活动移动数据。
 
 ## <a name="supported-scenarios"></a>支持的方案
 可以将数据**从 Azure SQL 数据库**复制到以下数据存储：
@@ -47,18 +47,18 @@ Azure SQL 数据库连接器支持基本身份验证。
 
 创建管道的最简单方法是使用复制向导。 有关分步说明，请参阅[教程：使用复制向导创建管道](data-factory-copy-data-wizard-tutorial.md)，以快速了解如何使用复制数据向导创建管道。
 
-还可以使用以下工具来创建管道：Azure 门户、Visual Studio、Azure PowerShell、Azure 资源管理器模板、.NET API 和 REST API。 有关创建包含复制活动的管道的分步说明，请参阅[复制活动教程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。 
+还可以使用以下工具来创建管道：Azure 门户、Visual Studio、Azure PowerShell、Azure 资源管理器模板、.NET API 和 REST API。 有关创建包含复制活动的管道的分步说明，请参阅[复制活动教程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
 
-无论使用工具还是 API，执行以下步骤都可创建管道，以便将数据从源数据存储移到接收器数据存储： 
+无论使用工具还是 API，执行以下步骤都可创建管道，以便将数据从源数据存储移到接收器数据存储：
 
-1. 创建**数据工厂**。 数据工厂可以包含一个或多个管道。 
-2. 创建链接服务可将输入和输出数据存储链接到数据工厂。 例如，如果要将数据从 Azure Blob 存储复制到 Azure SQL 数据库，可创建两个链接服务，将 Azure 存储帐户和 Azure SQL 数据库链接到数据工厂。 有关特定于 Azure SQL 数据库的链接服务属性，请参阅[链接服务属性](#linked-service-properties)部分。 
+1. 创建**数据工厂**。 数据工厂可以包含一个或多个管道。
+2. 创建链接服务可将输入和输出数据存储链接到数据工厂。 例如，如果要将数据从 Azure Blob 存储复制到 Azure SQL 数据库，可创建两个链接服务，将 Azure 存储帐户和 Azure SQL 数据库链接到数据工厂。 有关特定于 Azure SQL 数据库的链接服务属性，请参阅[链接服务属性](#linked-service-properties)部分。
 3. 创建数据集以表示复制操作的输入和输出数据。 在上一个步骤所述的示例中，创建了一个数据集来指定 Blob 容器和包含输入数据的文件夹。 创建了另一个数据集来指定 Azure SQL 数据库中用于保存从 Blob 存储复制的数据的 SQL 表。 有关特定于 Azure Data Lake Store 的数据集属性，请参阅[数据集属性](#dataset-properties)部分。
 4. 创建包含复制活动的管道，该活动将一个数据集作为输入，将一个数据集作为输出。 在前面所述的示例中，在复制活动中使用 BlobSource 作为源，SqlSink 作为接收器。 同样，如果从 Azure SQL 数据库复制到 Azure Blob 存储，则在复制活动中使用 SqlSource 和 BlobSink。 有关特定于 Azure SQL 数据库的复制活动属性，请参阅[复制活动属性](#copy-activity-properties)部分。 有关如何将数据存储用作源或接收器的详细信息，请单击前面章节中的相应数据存储链接。
 
-使用向导时，会自动创建这些数据工厂实体（链接服务、数据集和管道）的 JSON 定义。 使用工具/API（.NET API 除外）时，使用 JSON 格式定义这些数据工厂实体。  有关用于向/从 Azure SQL 数据库复制数据的数据工厂实体的 JSON 定义示例，请参阅本文的 [JSON 示例](#json-examples-for-copying-data-to-and-from-sql-database)部分。 
+使用向导时，会自动创建这些数据工厂实体（链接服务、数据集和管道）的 JSON 定义。 使用工具/API（.NET API 除外）时，使用 JSON 格式定义这些数据工厂实体。 有关用于向/从 Azure SQL 数据库复制数据的数据工厂实体的 JSON 定义示例，请参阅本文的 [JSON 示例](#json-examples-for-copying-data-to-and-from-sql-database)部分。
 
-对于特定于 Azure SQL 数据库的数据工厂实体，以下部分提供了有关用于定义这些实体的 JSON 属性的详细信息： 
+对于特定于 Azure SQL 数据库的数据工厂实体，以下部分提供了有关用于定义这些实体的 JSON 属性的详细信息：
 
 ## <a name="linked-service-properties"></a>链接服务属性
 Azure SQL 链接服务可将 Azure SQL 数据库链接到数据工厂。 下表描述了 Azure SQL 链接服务的专属 JSON 元素。
@@ -72,7 +72,7 @@ Azure SQL 链接服务可将 Azure SQL 数据库链接到数据工厂。 下表�
 > 配置 [Azure SQL 数据库防火墙](https://msdn.microsoft.com/library/azure/ee621782.aspx#ConnectingFromAzure)数据库服务器以[允许 Azure 服务访问该服务器](https://msdn.microsoft.com/library/azure/ee621782.aspx#ConnectingFromAzure)。 此外，如果将数据从 Azure 外部（包括配有数据工厂网关的本地数据源）复制到 Azure SQL 数据库，请针对将数据发送到 Azure SQL 数据库的计算机配置适当 IP 地址范围。
 
 ## <a name="dataset-properties"></a>数据集属性
-要指定数据集来表示 Azure SQL 数据库中的输入或输出数据，可以将数据集的类型属性设置为：**AzureSqlTable**。 将数据集的 **linkedServiceName** 属性设置为 Azure SQL 链接服务的名称。  
+要指定数据集来表示 Azure SQL 数据库中的输入或输出数据，可以将数据集的类型属性设置为：**AzureSqlTable**。 将数据集的 **linkedServiceName** 属性设置为 Azure SQL 链接服务的名称。
 
 有关可用于定义数据集的节和属性的完整列表，请参阅[创建数据集](data-factory-create-datasets.md)一文。 结构、可用性和数据集 JSON 的策略等部分与所有数据集类型（Azure SQL、Azure blob、Azure 表等）类似。
 
@@ -134,9 +134,9 @@ CREATE PROCEDURE CopyTestSrcStoredProcedureWithParameters
 AS
 SET NOCOUNT ON;
 BEGIN
-     select *
-     from dbo.UnitTestSrcTable
-     where dbo.UnitTestSrcTable.stringData != stringData
+    select *
+    from dbo.UnitTestSrcTable
+    where dbo.UnitTestSrcTable.stringData != stringData
     and dbo.UnitTestSrcTable.identifier != identifier
 END
 GO
@@ -184,7 +184,7 @@ GO
 4. [Azure Blob](data-factory-azure-blob-connector.md#dataset-properties) 类型的输出[数据集](data-factory-create-datasets.md)。
 5. 包含复制活动的[管道](data-factory-create-pipelines.md)，该复制活动使用 [SqlSource](#copy-activity-properties) 和 [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties)。
 
-示例每隔一小时将（每小时、每天等）时间序列数据从 Azure SQL 数据库中的表复制到 blob。 对于这些示例中使用的 JSON 属性，在示例后的部分对其进行描述。  
+示例每隔一小时将（每小时、每天等）时间序列数据从 Azure SQL 数据库中的表复制到 blob。 对于这些示例中使用的 JSON 属性，在示例后的部分对其进行描述。
 
 **Azure SQL 数据库链接服务：**
 
@@ -248,11 +248,11 @@ GO
 }
 ```
 
-有关此数据集类型支持的属性列表，请参阅 [Azure SQL 数据集类型属性](#dataset)部分。  
+有关此数据集类型支持的属性列表，请参阅 [Azure SQL 数据集类型属性](#dataset)部分。
 
 **Azure Blob 输出数据集：**
 
-数据每小时向新的 blob 写入一次（frequency：hour，interval：1）。 根据处理中切片的开始时间，动态计算 blob 的文件夹路径。 文件夹路径使用开始时间的年、月、日和小时部分。
+数据将写入到新 blob，每隔一小时进行一次（频率：小时，间隔：1）。 根据处理中切片的开始时间，动态计算 blob 的文件夹路径。 文件夹路径使用开始时间的年、月、日和小时部分。
 
 ```JSON
 {
@@ -309,20 +309,20 @@ GO
   }
 }
 ```
-有关此数据集类型支持的属性列表，请参阅 [Azure Blob 数据集类型属性](data-factory-azure-blob-connector.md#dataset-properties)部分。  
+有关此数据集类型支持的属性列表，请参阅 [Azure Blob 数据集类型属性](data-factory-azure-blob-connector.md#dataset-properties)部分。
 
 **管道中使用 SQL 源和 Blob 接收器的复制活动：**
 
 管道包含配置为使用输入和输出数据集、且计划每小时运行一次的复制活动。 在管道 JSON 定义中，**源**类型设置为 **SqlSource**，**接收器**类型设置为 **BlobSink**。 为 **SqlReaderQuery** 属性指定的 SQL 查询选择复制过去一小时的数据。
 
 ```JSON
-{  
-    "name":"SamplePipeline",
-    "properties":{  
+{
+  "name":"SamplePipeline",
+  "properties":{
     "start":"2014-06-01T18:00:00",
     "end":"2014-06-01T19:00:00",
     "description":"pipeline for copy activity",
-    "activities":[  
+    "activities":[
       {
         "name": "AzureSQLtoBlob",
         "description": "copy activity",
@@ -346,7 +346,7 @@ GO
             "type": "BlobSink"
           }
         },
-       "scheduler": {
+        "scheduler": {
           "frequency": "Hour",
           "interval": 1
         },
@@ -357,8 +357,8 @@ GO
           "timeout": "01:00:00"
         }
       }
-     ]
-   }
+    ]
+  }
 }
 ```
 在本例中，为 SqlSource 指定了 **sqlReaderQuery**。 复制活动针对 Azure SQL 数据库源运行此查询以获取数据。 此外，也可以通过指定 **sqlReaderStoredProcedureName** 和 **storedProcedureParameters** 来指定存储过程（如果存储过程获取参数）。
@@ -368,7 +368,7 @@ GO
 有关 SqlSource 和 BlobSink 支持的属性列表，请参阅 [Sql Source](#sqlsource) 和 [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties) 部分。
 
 ### <a name="example-copy-data-from-azure-blob-to-azure-sql-database"></a>示例：将数据从 Azure Blob 复制到 Azure SQL 数据库
-此示例定义以下数据工厂实体：  
+此示例定义以下数据工厂实体：
 
 1. [AzureSqlDatabase](#linked-service-properties) 类型的链接服务。
 2. [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties) 类型的链接服务。
@@ -411,7 +411,7 @@ GO
 
 **Azure Blob 输入数据集：**
 
-每小时从新的 blob 获取数据一次（frequency：hour，interval：1）。 根据处理中切片的开始时间，动态评估 blob 的文件夹路径和文件名。 文件夹路径使用开始时间的年、月和日部分，文件名使用开始时间的小时部分。 “external”: ”true”设置将告知数据工厂服务：表在数据工厂外部且不由数据工厂中的活动生成。
+每小时从新的 blob 获取一次数据（frequency：hour，interval：1）。 根据处理中切片的开始时间，动态评估 blob 的文件夹路径和文件名。 文件夹路径使用开始时间的年、月和日部分，文件名使用开始时间的小时部分。 “external”: ”true”设置将告知数据工厂服务：表在数据工厂外部且不由数据工厂中的活动生成。
 
 ```JSON
 {
@@ -506,13 +506,13 @@ GO
 管道包含配置为使用输入和输出数据集、且计划每小时运行一次的复制活动。 在管道 JSON 定义中，**源**类型设置为 **BlobSource**，**接收器**类型设置为 **SqlSink**。
 
 ```JSON
-{  
-    "name":"SamplePipeline",
-    "properties":{  
+{
+  "name":"SamplePipeline",
+  "properties":{
     "start":"2014-06-01T18:00:00",
     "end":"2014-06-01T19:00:00",
     "description":"pipeline with copy activity",
-    "activities":[  
+    "activities":[
       {
         "name": "AzureBlobtoSQL",
         "description": "Copy Activity",
@@ -536,7 +536,7 @@ GO
             "type": "SqlSink"
           }
         },
-       "scheduler": {
+        "scheduler": {
           "frequency": "Hour",
           "interval": 1
         },
@@ -547,8 +547,8 @@ GO
           "timeout": "01:00:00"
         }
       }
-      ]
-   }
+    ]
+  }
 }
 ```
 有关 SqlSink 和 BlobSource 支持的属性列表，请参阅 [Sql Sink](#sqlsink) 和 [BlobSource](data-factory-azure-blob-connector.md#copy-activity-properties) 部分。
@@ -561,8 +561,8 @@ GO
 ```SQL
 create table dbo.SourceTbl
 (
-       name varchar(100),
-       age int
+    name varchar(100),
+    age int
 )
 ```
 **目标表：**
@@ -570,9 +570,9 @@ create table dbo.SourceTbl
 ```SQL
 create table dbo.TargetTbl
 (
-       identifier int identity(1,1),
-       name varchar(100),
-       age int
+    identifier int identity(1,1),
+    name varchar(100),
+    age int
 )
 ```
 请注意，目标表包含标识列。
@@ -618,14 +618,14 @@ create table dbo.TargetTbl
         },
         "external": false,
         "policy": {}
-    }    
+    }
 }
 ```
 
 请注意，源表和目标表具有不同架构（目标表具有一个额外标识列）。 在本方案中，需在不包含标识列的目标数据集定义中指定 structure 属性。
 
 ## <a name="invoke-stored-procedure-from-sql-sink"></a>调用 SQL 接收器的存储过程
-有关在管道的复制活动中调用 SQL 接收器的存储过程的示例，请参阅[在复制活动中调用 SQL 接收器的存储过程](data-factory-invoke-stored-procedure-from-copy-activity.md)一文。 
+有关在管道的复制活动中调用 SQL 接收器的存储过程的示例，请参阅[在复制活动中调用 SQL 接收器的存储过程](data-factory-invoke-stored-procedure-from-copy-activity.md)一文。
 
 ## <a name="type-mapping-for-azure-sql-database"></a>Azure SQL 数据库的类型映射
 如[数据移动活动](data-factory-data-movement-activities.md)一文中所述，复制活动通过以下 2 步方法执行从源类型到接收器类型的自动类型转换：
@@ -674,7 +674,7 @@ create table dbo.TargetTbl
 要了解如何将源数据集中的列映射到接收器数据集中的列，请参阅[映射 Azure 数据工厂中的数据集列](data-factory-map-columns.md)。
 
 ## <a name="repeatable-copy"></a>可重复复制
-将数据复制到 SQL Server 数据库时，默认情况下复制活动将数据追加到接收器表后面。 若要改为执行 UPSERT，请参阅[可重复写入 SqlSink](data-factory-repeatable-copy.md#repeatable-write-to-sqlsink) 一文。 
+将数据复制到 SQL Server 数据库时，默认情况下复制活动将数据追加到接收器表后面。 若要改为执行 UPSERT，请参阅[可重复写入 SqlSink](data-factory-repeatable-copy.md#repeatable-write-to-sqlsink) 一文。
 
 从关系数据源复制数据时，请注意可重复性，以免发生意外结果。 在 Azure 数据工厂中，可手动重新运行切片。 还可以为数据集配置重试策略，以便在出现故障时重新运行切片。 无论以哪种方式重新运行切片，都需要确保读取相同的数据，而与运行切片的次数无关。 请参阅[从关系源进行可重复读取](data-factory-repeatable-copy.md#repeatable-read-from-relational-sources)。
 

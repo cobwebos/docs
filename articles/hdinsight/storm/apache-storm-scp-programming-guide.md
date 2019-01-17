@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2016
-ms.openlocfilehash: 9b3fc80d129a42e68e877f4d1210e3ab10e0664a
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: d017a2758ccd1530c4558f3dc92559f807df36b9
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53631815"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54332092"
 ---
 # <a name="scp-programming-guide"></a>SCP 编程指南
 SCP 是一个用于构建实时、可靠、一致和高性能的数据处理应用程序的平台。 它在 [Apache Storm](https://storm.incubator.apache.org/) 的基础上构建而成 -- Storm 是开源软件 (OSS) 社区设计的一个流处理系统。 Storm 由 Nathan Marz 设计，在 Twitter 上进行开源。 其利用 [Apache ZooKeeper](https://zookeeper.apache.org/)（另一个 Apache 项目）来实现高可靠性的分布式协调和状态管理。 
@@ -228,7 +228,7 @@ SCP 应用程序可使用 `State` 对象在 [Apache ZooKeeper](https://zookeeper
     /// <summary>
     /// Retrieve all states that were previously uncommitted, excluding all aborted states 
     /// </summary>
-    /// <returns>Uncommited States</returns>
+    /// <returns>Uncommitted States</returns>
     public IEnumerable<State> GetUnCommitted();
 
     /// <summary>
@@ -249,7 +249,7 @@ SCP 应用程序可使用 `State` 对象在 [Apache ZooKeeper](https://zookeeper
     /// List all the committed states
     /// </summary>
     /// <returns>Registries contain the Committed State </returns> 
-    public IEnumerable<Registry> Commited();
+    public IEnumerable<Registry> Committed();
 
     /// <summary>
     /// List all the Aborted State in the StateStore

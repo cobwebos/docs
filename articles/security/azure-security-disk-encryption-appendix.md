@@ -6,14 +6,14 @@ ms.service: security
 ms.subservice: Azure Disk Encryption
 ms.topic: article
 ms.author: mstewart
-ms.date: 12/12/2018
+ms.date: 01/14/2019
 ms.custom: seodec18
-ms.openlocfilehash: f10a3c02e98db5777b5231aec04951a7ed1ad9ad
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: b6d0b702a334bf1127f570bff026fa4332331209
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53310653"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54260109"
 ---
 # <a name="appendix-for-azure-disk-encryption"></a>有关 Azure 磁盘加密的附录 
 
@@ -103,7 +103,7 @@ ms.locfileid: "53310653"
      ```
 
 ### <a name="bkmk_prereq-script"></a>使用 Azure 磁盘加密先决条件 PowerShell 脚本
-如果你已熟悉进行 Azure 磁盘加密的先决条件，则可以使用 [Azure 磁盘加密先决条件 PowerShell 脚本](https://raw.githubusercontent.com/Azure/azure-powershell/master/src/ResourceManager/Compute/Commands.Compute/Extension/AzureDiskEncryption/Scripts/AzureDiskEncryptionPreRequisiteSetup.ps1 )。 有关此 PowerShell 脚本的用法示例，请参阅[有关加密 VM 的快速入门](quick-encrypt-vm-powershell.md)。 可以删除脚本的某个部分中的注释（从第 211 行开始），以加密现有资源组中现有 VM 的所有磁盘。 
+如果你已熟悉进行 Azure 磁盘加密的先决条件，则可以使用 [Azure 磁盘加密先决条件 PowerShell 脚本](https://raw.githubusercontent.com/Azure/azure-powershell/master/src/Compute/Compute/Extension/AzureDiskEncryption/Scripts/AzureDiskEncryptionPreRequisiteSetup.ps1 )。 有关此 PowerShell 脚本的用法示例，请参阅[有关加密 VM 的快速入门](quick-encrypt-vm-powershell.md)。 可以删除脚本的某个部分中的注释（从第 211 行开始），以加密现有资源组中现有 VM 的所有磁盘。 
 
 下表显示了可在 PowerShell 脚本中使用的参数： 
 
@@ -216,7 +216,7 @@ ms.locfileid: "53310653"
 * VM 必须使用与 [Azure 磁盘加密常见问题解答](azure-security-disk-encryption-faq.md#bkmk_LinuxOSSupport)中列出的 OS 磁盘加密兼容的分发版 
 * 必须从 Azure 资源管理器中的市场映像创建 VM。
 * Azure VM，至少具有 4 GB RAM（建议大小为 7 GB）。
-* （针对 RHEL 和 CentOS）禁用 SELinux。 若要禁用 SELinux，请参阅  [SELinux User's and Administrator's Guide](https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/html/SELinux_Users_and_Administrators_Guide/sect-Security-Enhanced_Linux-Working_with_SELinux-Changing_SELinux_Modes.html#sect-Security-Enhanced_Linux-Enabling_and_Disabling_SELinux-Disabling_SELinux)（SELinux 用户和管理员指南）中针对 VM 的“4.4.2. Disabling SELinux（4.4.2. 禁用 SELinux）”。
+* （针对 RHEL 和 CentOS）禁用 SELinux。 若要禁用 SELinux，请参阅 [SELinux User's and Administrator's Guide](https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/html/SELinux_Users_and_Administrators_Guide/sect-Security-Enhanced_Linux-Working_with_SELinux-Changing_SELinux_Modes.html#sect-Security-Enhanced_Linux-Enabling_and_Disabling_SELinux-Disabling_SELinux)（SELinux 用户和管理员指南）中针对 VM 的“4.4.2. Disabling SELinux（4.4.2. 禁用 SELinux）”。
 * 禁用 SELinux 后，重启 VM 至少一次。
 
 ### <a name="steps"></a>Steps

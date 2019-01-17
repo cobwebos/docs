@@ -1,18 +1,18 @@
 ---
 title: 分析 Azure Site Recovery 部署规划器报告，以便从 VMware 灾难恢复到 Azure | Microsoft Docs
 description: 本文介绍如何分析 Azure Site Recovery 部署规划器生成的报告，以便从 VMware 灾难恢复到 Azure。
-author: nsoneji
-manager: garavd
+author: mayurigupta13
+manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
-ms.author: nisoneji
-ms.openlocfilehash: 995c4bbbde87315e92c182fbc91b58ee34cda04e
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.author: mayg
+ms.openlocfilehash: ecb1d4cca5ebc8a699988c6556b080ffa810eca8
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52839545"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54319840"
 ---
 # <a name="analyze-the-azure-site-recovery-deployment-planner-report-for-vmware-disaster-recovery-to-azure"></a>分析 Azure Site Recovery 部署规划器报告，以便从 VMware 灾难恢复到 Azure
 

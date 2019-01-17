@@ -10,13 +10,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
-ms.date: 10/09/2018
-ms.openlocfilehash: 816b67488acc567d81bf1916735d13c0e480fe5d
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.date: 01/11/2019
+ms.openlocfilehash: b066c7f6c32b6e9fe1c1f63b5db88b4deaa2edae
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53719551"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54231812"
 ---
 # <a name="known-issuesmigration-limitations-with-online-migrations-to-azure-sql-db"></a>联机迁移到 Azure SQL 数据库时存在的已知问题/迁移限制
 
@@ -84,7 +84,7 @@ ms.locfileid: "53719551"
 如果大型对象 (LOB) 列的长度超过 32 KB，目标上的数据可能会截断。 可使用以下查询检查 LOB 列的长度： 
 
 ``` 
-SELECT max(len(ColumnName)) as LEN from TableName
+SELECT max(DATALENGTH(ColumnName)) as LEN from TableName
 ```
 
 **解决方法**

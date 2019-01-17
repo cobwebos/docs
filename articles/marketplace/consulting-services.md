@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 10/29/2018
 ms.author: yijenj
-ms.openlocfilehash: 85f88d9234acbb1831ea76188d06ef47199703ca
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 53281af4cf3ce49272ffe9fc48ab0f85cea276b2
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54074081"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54213615"
 ---
 # <a name="consulting-services-for-azure-marketplace-and-appsource"></a>Azure 市场和 AppSource 的咨询服务
 Azure 市场和 AppSource 中的咨询服务使 Microsoft 合作伙伴可实现将客户与服务相连以支持和扩展他们对 Azure 的使用的目标以及业务目标。 
@@ -69,7 +69,7 @@ Azure 市场和 AppSource 支持 Microsoft 系统集成商 (SI) 合作伙伴提�
 |Dynamics 365 for Finance and Operations Enterprise Edition  |  银级或金级[企业资源规划](https://partner.microsoft.com/membership/enterprise-resource-planning-competency)资格，后续 12 个月的云运营最低收入达到 25,000 美元。       |
 |Dynamics 365 for Finance and Operations Business Edition  |  充当至少一个客户的[云服务提供商 (CSP)](https://partner.microsoft.com/cloud-solution-provider) 或[数字记录合作伙伴 (DPOR)](https://partner.microsoft.com/membership/digital-partner-of-record)      |
 |Power BI、Power BI 自定义视觉对象 | 满足[解决方案合作伙伴的条件](https://www.microsoftpartnerserverandcloud.com/_layouts/download.aspx?SourceUrl=/Hosted%20Documents/BI%20Partner%20Program%20Overview%20%26%20Incentives.pdf)。|
-|PowerApps | 具有已发布的[合作伙伴展示]()解决方案
+|PowerApps | 具有已发布的[合作伙伴展示](https://appsource.microsoft.com/partners)解决方案
 
 <b>有关详细信息，请参阅 [Microsoft 合作伙伴网络的资质](https://partner.microsoft.com/membership/competencies)。</b>
  

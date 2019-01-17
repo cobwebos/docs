@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 02/15/2018
 ms.custom: seodec18
-ms.openlocfilehash: f0110ea79d05c0da57ac2d2e1f52194bed12152c
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: a14f568e2485e59cb3e567eb9ee5c5eb20b02afc
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53555551"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54198416"
 ---
 # <a name="create-a-reference-data-set-for-your-time-series-insights-environment-using-the-azure-portal"></a>使用 Azure 门户为时序见解环境创建引用数据集
 
@@ -98,4 +98,4 @@ ms.locfileid: "53555551"
 
 ## <a name="next-steps"></a>后续步骤
 * 以编程方式[管理引用数据](time-series-insights-manage-reference-data-csharp.md)。
-* 如需完整的 API 引用，请参阅[引用数据 API](/rest/api/time-series-insights/time-series-insights-reference-reference-data-api)文档。
+* 如需完整的 API 引用，请参阅[引用数据 API](/rest/api/time-series-insights/ga-reference-data-api)文档。

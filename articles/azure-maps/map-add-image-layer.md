@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: d36179685e2098455e00186827d35e6de18bf975
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.openlocfilehash: 5396fefca3a60dea7a503f8b4e84cc575753ea30
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52892814"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54229109"
 ---
 # <a name="add-an-image-layer-to-a-map"></a>将图像层添加到地图
 
@@ -31,7 +31,7 @@ ms.locfileid: "52892814"
 
 ## <a name="add-an-image-layer"></a>添加图像层
 
-此示例显示如何在地图上叠加 [1922 年新泽西州纽瓦克地图]((https://www.lib.utexas.edu/maps/historical/newark_nj_1922.jpg))的图像。
+此示例显示如何在地图上叠加 [1922 年新泽西州纽瓦克地图](https://www.lib.utexas.edu/maps/historical/newark_nj_1922.jpg)的图像。
 
 <br/>
 
@@ -40,7 +40,7 @@ ms.locfileid: "52892814"
 
 在上面的代码中，第一个代码块构造 Map 对象。 有关说明，可以参阅[创建地图](./map-create.md)。
 
-在第二个代码块中，通过将 URL 传递给图像并以 `[Top Left Corner, Top Right Corner, Bottom Right Conter, Bottom Left Corner]` 格式设置四个角的坐标来创建 [ImageLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.imagelayer?view=azure-iot-typescript-latest)。
+在第二个代码块中，通过将 URL 传递给图像并以 `[Top Left Corner, Top Right Corner, Bottom Right Corner, Bottom Left Corner]` 格式设置四个角的坐标来创建 [ImageLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.imagelayer?view=azure-iot-typescript-latest)。
 
 ## <a name="import-a-kml-ground-overlay"></a>导入 KML 地面叠加
 
