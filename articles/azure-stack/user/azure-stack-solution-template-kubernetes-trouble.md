@@ -11,15 +11,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/29/2018
+ms.date: 01/16/2019
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.openlocfilehash: e9eb3cc029e60acd18fc6611ca14817488a2d983
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: dc6994cd682997dd00e76b57b4996ebad1f73fbb
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54266547"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54352387"
 ---
 # <a name="troubleshoot-your-deployment-to-kubernetes-to-azure-stack"></a>排查部署到 Kubernetes (K8) 以及向 Azure Stack 部署 Kubernetes (K8) 的问题
 

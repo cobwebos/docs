@@ -11,23 +11,21 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/13/2018
+ms.date: 01/16/2019
 ms.author: anwestg
-ms.openlocfilehash: e8a75afe2c7dbe91c7c98d0d35c319088f40748f
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: cfbf71d4cfbd01eb8544d4b577292c5d7f8faf66
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51612672"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54359096"
 ---
 # <a name="update-azure-app-service-on-azure-stack"></a>更新 Azure Stack 上的 Azure 应用服务
 
 *适用于：Azure Stack 集成系统和 Azure Stack 开发工具包*
 
 > [!IMPORTANT]  
-> 适用于 Azure Stack 集成系统的 1809年更新或部署 Azure 应用服务 1.4 之前部署最新的 Azure Stack 开发工具包。
->
->
+> 应用 1809年更新或更高版本到 Azure Stack 集成系统，或部署 Azure 应用服务 1.4 之前部署最新的 Azure Stack 开发工具包。 更新资源提供程序之前, 查看发行说明以了解有关新功能、 修复和可能会影响你的部署任何已知的问题的信息。
 
 遵循本文中的说明可以升级部署在已连接到 Internet 的 Azure Stack 环境中的[应用服务资源提供程序](azure-stack-app-service-overview.md)。
 
@@ -64,7 +62,7 @@ ms.locfileid: "51612672"
 
 5. 查看并接受第三方许可条款，然后单击“下一步”。
 
-6. 确保 Azure Stack Azure 资源管理器终结点和 Active Directory 租户信息正确。 如果在 Azure Stack 开发工具包部署过程中使用了默认设置，可以接受此处的默认值。 但是，如果在部署 Azure Stack 时自定义选项，则必须编辑此窗口中的值。 例如，如果使用域后缀 *mycloud.com*，则必须将“Azure Stack”Azure 资源管理器终结点更改为 *management.region.mycloud.com*。 确认信息后，单击“下一步”。
+6. 确保 Azure Stack Azure 资源管理器终结点和 Active Directory 租户信息正确。 如果在 Azure Stack 开发工具包部署过程中使用了默认设置，可以接受此处的默认值。 但是，如果在部署 Azure Stack 时自定义了选项，则必须编辑此窗口中的值。 例如，如果使用域后缀 *mycloud.com*，则必须将“Azure Stack”Azure 资源管理器终结点更改为 *management.region.mycloud.com*。 确认信息后，单击“下一步”。
 
     ![Azure Stack 云信息][2]
 
@@ -75,7 +73,7 @@ ms.locfileid: "51612672"
         * 如果使用 Active Directory 联合身份验证服务 (AD FS)，请提供管理员帐户。 例如，*cloudadmin@azurestack.local*。 输入密码，并单击“登录”。
    2. 在“Azure Stack 订阅”框中，选择“默认提供商订阅”。
    3. 在“Azure Stack 位置”框中，选择要部署到的区域所对应的位置。 例如，如果要部署到 Azure Stack 开发工具包，请选择“本地”。
-   4. 如果检测到现有应用服务部署，然后资源组和存储帐户将会填充并灰显状态。
+   4. 如果检测到现有的应用服务部署，则资源组和存储帐户将被填充并灰显。
    5. 按“下一步”查看升级摘要。
 
     ![检测到应用服务安装][3]
