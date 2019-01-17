@@ -12,19 +12,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/28/2018
+ms.date: 1/15/2019
 ms.author: rkarlin
-ms.openlocfilehash: 977c464e0c172a25d069fa7db55d8aefb78d89d9
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: f6267bd2d97dabd71c007bcb8112936093124f74
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53339087"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54267022"
 ---
 # <a name="protecting-azure-sql-service-and-data-in-azure-security-center"></a>在 Azure 安全中心保护 Azure SQL 服务和数据
 Azure 安全中心可分析 Azure 资源的安全状态。 在安全中心识别潜在的安全漏洞时，它会创建一些建议，这些建议会指导完成配置所需控件的过程。  适用于 Azure 资源类型的建议：虚拟机 (VM)、网络、SQL 和数据，以及应用程序。
 
-本文介绍适用于 Azure SQL 服务和数据的建议。 启用 Azure SQL 服务器和数据库审核、启用 SQL 数据库加密和启用 Azure 存储帐户加密的建议中心。  使用下表作为参考，以便了解可用的 SQL 服务和数据的建议，以及应用建议后每个建议的做法。
+
 ### <a name="monitor-data-security"></a>监视数据安全性
 
 单击“预防”部分中的“数据安全性”时，“数据资源”会打开，其中显示了有关 SQL 和存储的建议。 此外还有针对数据库常规运行状况的[建议](security-center-sql-service-recommendations.md)。 有关存储加密的详细信息，请阅读 [Enable encryption for Azure storage account in Azure Security Center](security-center-enable-encryption-for-storage-account.md)（在 Azure 安全中心为 Azure 存储帐户启用加密）。
@@ -60,7 +60,6 @@ Azure 安全中心可分析 Azure 资源的安全状态。 在安全中心识别
 |SQL|15|对 SQL 数据库启用审核|启用 Azure SQL 数据库的审核。 （仅 Azure SQL 服务。 不包括在虚拟机上运行的 SQL。）|
 |Data Lake Analytics|15|启用 Data Lake Analytics 的静态加密|启用透明数据加密以保护 Data Lake Analytics 中的静态数据。 静态加密是透明的，这意味着，Data Lake Analytics 会自动在保存之前加密数据，在检索之前解密数据。 无需出于加密而在与 Data Lake Analytics 交互的应用程序和服务中进行更改。 静态加密可以最大程度地减少由于实物失窃造成的数据丢失风险，而且还有助于满足合规性要求。|
 |Data Lake Store|15|启用 Data Lake Store 的静态加密|启用透明数据加密以保护 Data Lake Store 中的静态数据。 静态加密是透明的，这意味着，Data Lake Store 会自动在保存之前加密数据，在检索之前解密数据。 无需为了适应加密，而在与 Data Lake Store 交互的应用程序和服务中进行更改。 静态加密可以最大程度地减少由于实物失窃造成的数据丢失风险，而且还有助于满足合规性要求。|
-|存储帐户|15|为 Azure 存储帐户启用加密|为静态数据启用 Azure 存储服务加密。 存储服务加密 (SSE) 的工作原理是，在将数据写入 Azure 存储时对数据进行加密，以及在检索前对数据进行解密。 SSE 当前仅适用于 Azure Blob 服务，并可用于块 blob、页 blob 和追加 blob。|
 |Data Lake Analytics|5|启用 Data Lake Analytics 中的诊断日志|启用日志并将其保留长达一年。 这样便可以在发生安全事件或网络遭泄露时，重新创建活动线索用于调查目的。 |
 |Data Lake Store|5|启用 Azure Data Lake Store 中的诊断日志|启用日志并将其保留长达一年。 这样便可以在发生安全事件或网络遭泄露时，重新创建活动线索用于调查目的。 |
 |SQL|30|修复 SQL 数据库中的漏洞|SQL 漏洞评估会扫描数据库中的安全漏洞，并显示与最佳实践之间的任何偏差，如配置错误、权限过多和敏感数据未受保护。 解决发现的漏洞可以极大地改善数据库安全态势。|

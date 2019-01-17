@@ -11,12 +11,12 @@ author: tedway
 ms.reviewer: jmartens
 ms.date: 10/24/2018
 ms.custom: seodec18
-ms.openlocfilehash: bc08025f070fb31d83fed26bfec00cec11cee061
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 3aa98026d7293f1486f5450cc9ab17057807c031
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53313626"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54306109"
 ---
 # <a name="what-are-fpgas-and-project-brainwave"></a>什么是 FPGA 和 Project Brainwave？
 
@@ -30,7 +30,7 @@ FPGA 包含一组可编程的逻辑块以及由可反复配置的互连组成的
 
 ![Azure 机器学习服务 FPGA 比较示意图](./media/concept-accelerate-with-fpgas/azure-machine-learning-fpga-comparison.png)
 
-|处理器||说明|
+|处理器||Description|
 |---|:-------:|------|
 |特定于应用程序的集成电路|ASIC|自定义电路（例如 Google 的 TensorFlow 处理器单元 (TPU)）的效率最高。 它们不能根据需求的变化重新配置。|
 |现场可编程门阵列|FPGA|FPGA（例如 Azure 上提供的那些）提供接近于 ASIC 的性能。 它们也是灵活的，并且可以在一段时间后重新配置以实现新逻辑。|
@@ -39,7 +39,7 @@ FPGA 包含一组可编程的逻辑块以及由可反复配置的互连组成的
 
 ## <a name="project-brainwave-on-azure"></a>Azure 上的 Project Brainwave
 
-[Project Brainwave](https://www.microsoft.com/research/project/project-brainwave/) 是 Microsoft 提供的硬件体系结构。 它基于 Intel 的 FPGA 设备，数据科学家和开发人员使用这种设备来加快实时 AI 计算速度。 这种启用了 FPGA 的体系结构提供了高性能、灵活性和可伸缩性，可以在 Azure 上使用。
+[Project Brainwave](https://www.microsoft.com/en-us/research/project/project-brainwave/) 是 Microsoft 提供的硬件体系结构。 它基于 Intel 的 FPGA 设备，数据科学家和开发人员使用这种设备来加快实时 AI 计算速度。 这种启用了 FPGA 的体系结构提供了高性能、灵活性和可伸缩性，可以在 Azure 上使用。
 
 可以通过 FPGA 确保实时推断请求的低延迟。 不需要使用异步请求（批处理）。 批处理可能导致延迟，因为需要处理更多的数据。 Brainwave 在实现神经处理单元时不需批处理，因此与 CPU 和 GPU 处理器相比，其延迟降低很多倍。
 

@@ -12,12 +12,12 @@ ms.author: genemi
 ms.reviewer: ''
 manager: craigg
 ms.date: 01/03/2019
-ms.openlocfilehash: 29a6c7107a57babb5dc81fa22146897d3958f0f0
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 874aa2610ae1785e9f40841ed3c3279aac42d660
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54036335"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54321817"
 ---
 # <a name="connectivity-libraries-and-frameworks-for-sql-server"></a>适用于 SQL Server 的连接库和框架
 
@@ -40,11 +40,11 @@ ms.locfileid: "54036335"
 | 语言 | 平台 | ORM |
 | :-- | :-- | :-- |
 | C# | Windows、Linux、macOS | [实体框架](https://docs.microsoft.com/ef)<br>[实体框架核心](https://docs.microsoft.com/ef/core/index) |
-| Java | Windows、Linux、macOS |[Hibernate ORM](http://hibernate.org/orm)|
+| Java | Windows、Linux、macOS |[Hibernate ORM](https://hibernate.org/orm)|
 | PHP | Windows、Linux、macOS | [Laravel (Eloquent)](https://laravel.com/docs/5.0/eloquent) |
-| Node.js | Windows、Linux、macOS | [Sequelize ORM](http://docs.sequelizejs.com) |
+| Node.js | Windows、Linux、macOS | [Sequelize ORM](https://docs.sequelizejs.com) |
 | Python | Windows、Linux、macOS |[Django](https://www.djangoproject.com/) |
-| Ruby | Windows、Linux、macOS | [Ruby on Rails](http://rubyonrails.org/) |
+| Ruby | Windows、Linux、macOS | [Ruby on Rails](https://rubyonrails.org/) |
 ||||
 
 ## <a name="related-links"></a>相关链接

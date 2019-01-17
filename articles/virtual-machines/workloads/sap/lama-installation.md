@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 17/07/2018
 ms.author: sedusch
-ms.openlocfilehash: 2a0934fa3bb46eebba02029a8292b9bee6b12c62
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: d5d344f47fa46e9fe0adea048db200ec67a3fadc
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52728219"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54262570"
 ---
 # <a name="sap-lama-connector-for-azure"></a>适用于 Azure 的 SAP LaMa 连接器
 
@@ -116,7 +116,7 @@ ms.locfileid: "52728219"
 
 ## <a name="provision-a-new-adaptive-sap-system"></a>预配新的自适应 SAP 系统
 
-可以手动部署新虚拟机，或使用[快速入门存储库](https://github.com/Azure/azure-quickstart-templates)中的 Azure 模板之一。 该存储库包含 [SAP NetWeaver ASCS](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-lama-ascs)、[SAP NetWeaver 应用程序服务器](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-lama-apps)和[数据库](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-lama-db)的模板。 还可以使用这些模板来预配新主机作为系统副本/复本等的一部分。
+可以手动部署新虚拟机，或使用[快速入门存储库](https://github.com/Azure/azure-quickstart-templates)中的 Azure 模板之一。 该存储库包含 [SAP NetWeaver ASCS](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-lama-ascs)、[SAP NetWeaver 应用程序服务器](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-lama-apps)和[数据库](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-lama-database)的模板。 还可以使用这些模板来预配新主机作为系统副本/复本等的一部分。
 
 我们建议对你想要通过 SAP LaMa 管理的所有虚拟机使用单独的子网，而不要使用动态 IP 地址，以防止在部署新虚拟机并且未准备好 SAP 实例时发生 IP 地址“窃用”。
 

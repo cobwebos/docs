@@ -10,18 +10,19 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: c9d6a66a9d54c75fbb20775f0ae4de4d22a7d599
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 3d2019101abf1086a58d0224ab31f2aa27afe8de
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52840855"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54350585"
 ---
 # <a name="set-up-self-service-password-reset-for-your-customers"></a>为客户设置自助密码重置
+
 借助自助密码重置功能，已注册了本地帐户的客户可以将密码重置为他们自己的密码。 这样可以显著减少支持人员的负担，尤其当有数百万客户定期使用应用程序时。 目前，使用已验证的电子邮件地址是唯一受支持的恢复方法。
 
 > [!NOTE]
-> 本文适用于在 V1 登录用户流的上下文中使用的自助服务密码重置，它将本地帐户登录用作标识提供者。 如果需要从应用程序调用完全可自定义的密码重置用户流，请参阅[本文](active-directory-b2c-reference-policies.md#create-a-password-reset-user-flow)。
+> 本文适用于在 V1 登录用户流的上下文中使用的自助服务密码重置，它将本地帐户登录用作标识提供者。 如果需要从应用程序调用完全可自定义的密码重置用户流，请参阅[本文](active-directory-b2c-reference-policies.md)。
 > 
 > 
 

@@ -5,13 +5,13 @@ author: jan-eng
 ms.author: janeng
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 10/10/2018
-ms.openlocfilehash: 3760e2a5ccae1d21574412ec223cade03bebda1e
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.date: 01/15/2019
+ms.openlocfilehash: 49c9d908970425165fcdd76171c20ab65454f42a
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53548919"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54318570"
 ---
 # <a name="azure-database-for-postgresql-pricing-tiers"></a>Azure Database for PostgreSQL 定价层
 
@@ -53,14 +53,14 @@ ms.locfileid: "53548919"
 | 美国中南部 | X | X |
 | 美国西部 | X | X |
 | 美国西部 2 |  | X |
+| 巴西南部 | X | X |
 | 加拿大中部 | X | X |
 | 加拿大东部 | X | X |
-| 巴西南部 | X | X |
 | 北欧 | X | X |
 | 西欧 |  | X |
 | 法国中部 |  | X |
-| 英国西部 |  | X |
 | 英国南部 |  | X |
+| 英国西部 |  | X |
 | 东亚 | X | X |
 | 东南亚 | X | X |
 | 澳大利亚东部 |  | X |
@@ -68,17 +68,22 @@ ms.locfileid: "53548919"
 | 澳大利亚中部 2 |  | X |
 | 澳大利亚东南部 |  | X |
 | 印度中部 | X | X |
-| 印度西部 | X | X |
 | 印度南部 |  | X |
+| 印度西部 | X | X |
 | 日本东部 | X | X |
 | 日本西部 | X | X |
 | 韩国中部 |  | X |
 | 韩国南部 |  | X |
+| 中国东部 1 | X |  |
+| 中国东部 2 |  | X |
+| 中国北部 1 | X |  |
+| 中国北部 2 |  | X |
 | 德国中部 |  | X |
 | 美国 DoD 中部  | X |  |
 | 美国 DoD 东部  | X |  |
 | 美国亚利桑那州政府 |  | X |
 | 美国德克萨斯州政府 |  | X |
+| 美国政府弗吉尼亚州 |  | X |
 
 ## <a name="storage"></a>存储
 

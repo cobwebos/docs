@@ -12,30 +12,23 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/21/2017
+ms.date: 01/14/2019
 ms.author: terrylan
-ms.openlocfilehash: 8ca9f0b75627e7ad366b3c02ec3126713a283ed2
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 4945978fdc27a298daf4de0604b894c53ba51dbe
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50233729"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54321395"
 ---
 # <a name="application-architecture-on-azure"></a>Azure 上的应用程序体系结构
 要在 Microsoft Azure 上帮助保护基于云的解决方案，坚实的体系结构基础是至关重要的。 架构师、设计师和实施者全部受益于应用程序和服务体系结构的扎实的知识。 此基础知识可帮助你了解基于云的解决方案的所有组件，并且更加轻松地将安全集成到设计和实现的各个方面。
 
 我们可在体系结构调查和设计方面提供下列帮助：
 
-* 体系结构信息图
 * 体系结构蓝图
 * 云和企业符号集
 * 3D Blueprint Visio 模板
-
-## <a name="architectural-infographics"></a>体系结构信息图
-Microsoft 发布了几个与体系结构相关的海报/信息图。 这些权限包括：
-
-* [构建实际云应用程序](https://azure.microsoft.com/documentation/infographics/building-real-world-cloud-apps/)
-* [使用云服务进行缩放](https://azure.microsoft.com/documentation/infographics/cloud-services/)
 
 ## <a name="architectural-blueprints"></a>体系结构蓝图
 Microsoft 发布了一套高级别的[体系结构蓝图](https://aka.ms/azblueprints)，介绍如何使用 Microsoft 产品构建特定类型的系统。

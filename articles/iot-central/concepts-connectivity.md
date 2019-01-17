@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: timlt
-ms.openlocfilehash: 7e90fb6bcfa1bfab59177cbc6c717fefc163a67a
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 3671f6a3e3832a384e968fbf38128aff6bfb2252
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52960087"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54247667"
 ---
 # <a name="device-connectivity-in-azure-iot-central"></a>Azure IoT Central 中的设备连接
 
@@ -54,14 +54,13 @@ Azure IoT Central 使用 [Azure IoT 中心设备预配服务 (DPS)](https://docs
 
     下面是你可能想要使用的其他语言的参考。
 
-    *   **C 语言：** 如果使用的是 C，请按照[此 C 示例设备客户端](https://github.com/Azure/azure-iot-sdk-c/blob/dps_symm_key/provisioning_client/devdoc/using_provisioning_client.md)来连接示例设备。 在示例中使用以下设置。   
+    *   **C 语言：** 如果使用的是 C，请按照[此 C 示例设备客户端](https://github.com/Azure/azure-iot-sdk-c/blob/master/provisioning_client/devdoc/using_provisioning_client.md)来连接示例设备。 在示例中使用以下设置。   
 
          ```
          hsm_type = SECURE_DEVICE_TYPE_SYMMETRIC_KEY;
-         
-         static const char* const SYMMETRIC_KEY_VALUE = "Enter Primary Symmetric key here";
 
-         static const char* const REGISTRATION_NAME = "Enter Device Id here";
+         ## Enter the Device Id and Symmetric keys 
+         prov_dev_set_symmetric_key_info("<Device Id>", "<Enter Primary Symmetric key here>");
         ```
 
     *   **Node.js：** 如果要使用 Node.js，请[使用此处的分步说明](tutorial-add-device.md#prepare-the-client-code)，从“准备客户端代码”部分开始。
@@ -118,12 +117,12 @@ CSV 文件要求：该 CSV 文件应包含以下列（和标头）
 
 下面是你可能想要使用的其他语言的参考。
 
-   *   **C 语言：** 如果使用的是 C，请按照[此 C 示例设备客户端](https://github.com/Azure/azure-iot-sdk-c/blob/dps_symm_key/provisioning_client/devdoc/using_provisioning_client.md)来连接示例设备。 在示例中使用以下设置。   
+   *   **C 语言：** 如果使用的是 C，请按照[此 C 示例设备客户端](https://github.com/Azure/azure-iot-sdk-c/blob/master/provisioning_client/devdoc/using_provisioning_client.md)来连接示例设备。 在示例中使用以下设置。   
          ```
          hsm_type = SECURE_DEVICE_TYPE_SYMMETRIC_KEY;
 
-         static const char* const SYMMETRIC_KEY_VALUE = "Enter Primary Symmetric key here";
-         static const char* const REGISTRATION_NAME = "Enter Device Id here";
+         ## Enter the Device Id and Symmetric keys 
+         prov_dev_set_symmetric_key_info("<Device Id>", "<Enter Primary Symmetric key here>");
         ```
     * **Node.js：** 如果要使用 Node.js，请[使用此处的分步说明](tutorial-add-device.md#prepare-the-client-code)，从“准备客户端代码”部分开始。
 

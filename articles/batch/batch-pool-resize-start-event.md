@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 04/20/2017
 ms.author: danlep
-ms.openlocfilehash: b4412764c313669dc154fccaa56f22417262994d
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 3cabf18cfd771151e62d64dc1d2b47b250ac5471
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2018
-ms.locfileid: "30312603"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54258265"
 ---
 # <a name="pool-resize-start-event"></a>池调整大小开始事件
 

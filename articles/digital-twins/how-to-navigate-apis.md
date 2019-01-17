@@ -2,18 +2,18 @@
 title: 在 Azure 数字孪生 API 中导航 | Microsoft Docs
 description: 了解 Azure 数字孪生管理 API 的常用查询模式。
 author: dsk-2015
-manager: bertvanhoof
+manager: philmea
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 1/7/2019
 ms.author: dkshir
-ms.openlocfilehash: 2221e8b22450a353da42564e5b93342a11e59f71
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 9cfcdc879e36b93e21bff6f91886536d799553bb
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54109392"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54200949"
 ---
 # <a name="how-to-use-azure-digital-twins-management-apis"></a>如何使用 Azure 数字孪生管理 API
 
@@ -25,11 +25,11 @@ Azure 数字孪生管理 API 为 IoT 应用提供强大的功能。 本文介绍
 
 * [/spaces](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#!/Spaces)：这些 API 与设置中的物理位置交互。 这些 API 可帮助你创建、删除和管理物理位置的、[空间图形](concepts-objectmodel-spatialgraph.md#spatial-intelligence-graph)形式的数字映射。
 
-* [/resources](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#!/Resources)：这些 API 可帮助你为数字孪生实例设置资源，例如 IoT 中心。
-
 * [/devices](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#!/Devices)：这些 API 与设置中的设备交互。 这些设备可以管理一个或多个传感器。 例如，设备可能是手机、Raspberry Pi 传感器 Pod、Lora 网关，等等。
 
 * [/sensors](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#!/Sensors)：这些 API 可帮助你与设备和物理位置关联的传感器通信。 传感器记录并发送环境值，然后，这些值可用于操纵空间环境。  
+
+* [/resources](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#!/Resources)：这些 API 可帮助你为数字孪生实例设置资源，例如 IoT 中心。
 
 * [/types](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#!/Types)：这些 API 用于将扩展类型与数字孪生对象相关联，以将特定的特征添加到这些对象。 使用这些类型可以轻松在 UI 中筛选和分组对象，以及用于处理遥测数据的自定义函数。 扩展类型的示例包括 *DeviceType*、*SensorType*、*SensorDataType*、*SpaceType*、*SpaceSubType*、*SpaceBlobType*、*SpaceResourceType*，等等。
 

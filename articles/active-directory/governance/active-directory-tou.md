@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.component: compliance
-ms.date: 12/20/2018
+ms.date: 01/10/2019
 ms.author: rolyon
-ms.openlocfilehash: 859d81239cfad9eb5396a30f5db316bc73285831
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 341565bf621fa63ad578489cd04bcfff3510265b
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54188414"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54229466"
 ---
 # <a name="azure-active-directory-terms-of-use-feature"></a>Azure Active Directory 使用条款功能
 组织可以通过 Azure AD 使用条款这种简单的方法向最终用户显示信息。 可以通过这样的呈现方式确保用户看到法律要求或符合性要求的相关免责声明。 本文介绍如何快速了解使用条款。
@@ -87,9 +87,7 @@ Azure AD 使用条款使用 PDF 格式显示内容。 此 PDF 文件可以是任
 
 1. 如果要求最终用户在接受使用条款之前先查看条款，请将“要求用户展开使用条款”设置为“打开”。
 
-1. 如果要求最终用户在每台访问设备上接受使用条款，请将“要求用户在每台设备上同意”设置为“打开”。
-
-    如果没有看到“要求用户必须在每台设备上都同意”设置，则是因为此功能尚未部署到区域。 此功能预期于 2019 年 1 月初完全部署。 有关详细信息，请参阅[按设备实施的使用条款](#per-device-terms-of-use)。
+1. 如果要求最终用户在每台访问设备上接受使用条款，请将“要求用户在每台设备上同意”设置为“打开”。 有关详细信息，请参阅[按设备实施的使用条款](#per-device-terms-of-use)。
 
 1. 若要按计划使使用条款同意状态过期，请将“使同意状态过期”设置为“打开”。 设置为“打开”时，会显示另外两项计划设置。
 
@@ -253,9 +251,6 @@ Azure AD 使用条款包括审核日志，方便你查看其他活动。 每次�
 ## <a name="per-device-terms-of-use"></a>按设备实施的使用条款
 
 使用“要求用户在每台设备上同意”设置可以要求最终用户在每台访问设备上接受使用条款。 最终用户必须将其设备加入 Azure AD。 加入设备后，使用设备 ID 在每台设备上强制实施使用条款。
-
-> [!NOTE]
-> 如果创建新的使用条款时没有看到“要求用户必须在每台设备上都同意”设置，则是因为此功能尚未部署到区域。 此功能预期于 2019 年 1 月初完全部署。
 
 下面是支持的平台和软件列表。
 

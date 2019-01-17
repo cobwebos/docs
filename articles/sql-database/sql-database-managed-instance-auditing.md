@@ -13,13 +13,13 @@ author: vainolo
 ms.author: vainolo
 ms.reviewer: vanto
 manager: craigg
-ms.date: 09/20/2018
-ms.openlocfilehash: 045314980d0051e8b5ef71bdf95023084eff1880
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.date: 01/12/2019
+ms.openlocfilehash: 716c4caa1b28cc40470d366e5fc6901de9462f9a
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54063861"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54267260"
 ---
 # <a name="get-started-with-azure-sql-database-managed-instance-auditing"></a>开始使用 Azure SQL 数据库托管实例审核
 
@@ -172,9 +172,9 @@ ms.locfileid: "54063861"
 
 - 使用系统函数 `sys.fn_get_audit_file` (T-SQL) 以表格格式返回审核日志数据。 有关使用此函数的详细信息，请参阅 [sys.fn_get_audit_file 文档](https://docs.microsoft.com/sql/relational-databases/system-functions/sys-fn-get-audit-file-transact-sql)。
 
-- 可使用 Azure 存储资源管理器等工具浏览审核日志。 在 Azure 存储中，审核日志以 Blob 文件集合的形式保存在名为 sqldbauditlogs 的容器中。 有关存储文件夹层次、命名约定和日志格式的详细信息，请参阅 Blob 审核日志格式参考。
+- 可使用 [Azure 存储资源管理器](https://azure.microsoft.com/en-us/features/storage-explorer/)等工具浏览审核日志。 在 Azure 存储中，审核日志以 Blob 文件集合的形式保存在名为 sqldbauditlogs 的容器中。 有关存储文件夹层次、命名约定和日志格式的详细信息，请参阅 [Blob 审核日志格式参考](https://go.microsoft.com/fwlink/?linkid=829599)。
 
-- 有关审核日志使用方法的完整列表，请参阅 [SQL 数据库审核入门](https://docs.microsoft.com/ azure/sql-database/sql-database-auditing)。
+- 有关审核日志使用方法的完整列表，请参阅 [SQL 数据库审核入门](https://docs.microsoft.com/azure/sql-database/sql-database-auditing)。
 
 > [!IMPORTANT]
 > 对于托管实例，当前不可以从 Azure 门户查看审核记录（“审核记录”窗格）。

@@ -10,19 +10,19 @@ ms.workload: identity
 ms.date: 08/04/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 31f0517cd4d61fa324072eae954404c899451cc3
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 93ca61c610856ebba64bff46b2338090f317ad56
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54117395"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54302028"
 ---
 # <a name="accessing-azure-ad-b2c-audit-logs"></a>访问 Azure AD B2C 审核日志
 
 Azure Active Directory B2C (Azure AD B2C) 发出审核日志，其中包含有关 B2C 资源、颁发的令牌和管理员访问权限的活动信息。 本文简要概述了通过审核日志可获取的信息并介绍了如何为 Azure AD B2C 租户访问此数据。
 
 > [!IMPORTANT]
-> 审核日志仅保留七天。 如果需要保留更长时间，请使用下示方法计划下载并存储日志。 
+> 审核日志仅保留七天。 如果需要保留更长时间，请使用下示方法计划下载并存储日志。
 
 ## <a name="overview-of-activities-available-in-the-b2c-category-of-audit-logs"></a>审核日志 B2C 类别中的可用活动概述
 审核日志中的“B2C”类别包含以下类型的活动：
@@ -30,7 +30,7 @@ Azure Active Directory B2C (Azure AD B2C) 发出审核日志，其中包含有�
 |---------|---------|
 |授权 |涉及授权用户访问 B2C 资源（例如，管理员访问 B2C 策略列表）的活动         |
 |Directory |与管理员使用 Azure 门户登录时检索到的目录属性相关的活动 |
-|Application | 与 B2C 应用程序相关的 CRUD 操作 |
+|应用程序 | 与 B2C 应用程序相关的 CRUD 操作 |
 |密钥 |与 B2C 密钥容器中存储的密钥相关的 CRUD 操作 |
 |资源 |与 B2C 资源（如策略和标识提供者）相关的 CRUD 操作
 |身份验证 |用户凭据和令牌颁发的验证|
@@ -43,7 +43,7 @@ Azure Active Directory B2C (Azure AD B2C) 发出审核日志，其中包含有�
 
 ## <a name="accessing-audit-logs-through-the-azure-portal"></a>通过 Azure 门户访问审核日志
 1. 转到 [Azure 门户](https://portal.azure.com)。 请确保位于 B2C 目录。
-2. 单击左侧收藏夹栏中的“Azure Active Directory” 
+2. 单击左侧收藏夹栏中的“Azure Active Directory”
     
     ![审核日志 - AAD 按钮](./media/active-directory-b2c-reference-audit-logs/audit-logs-portal-aad.png)
 
@@ -56,14 +56,14 @@ Azure Active Directory B2C (Azure AD B2C) 发出审核日志，其中包含有�
 
     ![审核日志 - 类别](./media/active-directory-b2c-reference-audit-logs/audit-logs-portal-category.png)
 
-可看到最近七天记录的活动列表。 
+可看到最近七天记录的活动列表。
 - 使用“活动资源类型”下拉列表，按上述活动类型进行筛选
 - 使用“日期范围”下拉列表，筛选所示活动的日期范围
 - 如果单击列表中的特定行，右侧的上下文框会显示与该活动关联的其他属性
 - 单击“下载”可将活动下载为 csv 文件
 
 ## <a name="accessing-audit-logs-through-the-azure-ad-reporting-api"></a>通过 Azure AD 报告 API 访问审核日志
-审核日志将发布到与 Azure Active Directory 其他活动相同的管道，因此可通过 [Azure Active Directory 报告 API](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-api-audit-reference)进行访问。 
+审核日志将发布到与 Azure Active Directory 其他活动相同的管道，因此可通过 [Azure Active Directory 报告 API](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-api-audit-reference)进行访问。
 
 ### <a name="prerequisites"></a>先决条件
 若要向 Azure AD 报告 API 进行身份验证，首先需要注册应用程序。 请确保遵循[访问 Azure AD 报告 API 的先决条件](https://azure.microsoft.com/documentation/articles/active-directory-reporting-api-getting-started/)中的步骤。
@@ -82,7 +82,7 @@ Azure Active Directory B2C (Azure AD B2C) 发出审核日志，其中包含有�
 # Constants
 $ClientID       = "your-client-application-id-here"       # Insert your application's Client ID, a Globally Unique ID (registered by Global Admin)
 $ClientSecret   = "your-client-application-secret-here"   # Insert your application's Client Key/Secret string
-$loginURL       = "https://login.microsoftonline.com"     
+$loginURL       = "https://login.microsoftonline.com"
 $tenantdomain   = "your-b2c-tenant.onmicrosoft.com"       # AAD B2C Tenant; for example, contoso.onmicrosoft.com
 $resource       = "https://graph.windows.net"             # Azure AD Graph API resource URI
 $7daysago       = "{0:s}" -f (get-date).AddDays(-7) + "Z" # Use 'AddMinutes(-5)' to decrement minutes, for example
@@ -93,13 +93,13 @@ $body       = @{grant_type="client_credentials";resource=$resource;client_id=$Cl
 $oauth      = Invoke-RestMethod -Method Post -Uri $loginURL/$tenantdomain/oauth2/token?api-version=1.0 -Body $body
 
 # Parse audit report items, save output to file(s): auditX.json, where X = 0 thru n for number of nextLink pages
-if ($oauth.access_token -ne $null) {   
+if ($oauth.access_token -ne $null) {
     $i=0
     $headerParams = @{'Authorization'="$($oauth.token_type) $($oauth.access_token)"}
-    $url = 'https://graph.windows.net/' + $tenantdomain + '/activities/audit?api-version=beta&$filter=category eq ''B2C''and activityDate gt ' + $7daysago 
+    $url = 'https://graph.windows.net/' + $tenantdomain + '/activities/audit?api-version=beta&$filter=category eq ''B2C''and activityDate gt ' + $7daysago
 
     # loop through each query page (1 through n)
-    Do{
+    Do {
         # display each event on the console window
         Write-Output "Fetching data using Uri: $url"
         $myReport = (Invoke-WebRequest -UseBasicParsing -Headers $headerParams -Uri $url)
@@ -117,4 +117,3 @@ if ($oauth.access_token -ne $null) {
     Write-Host "ERROR: No Access Token"
 }
 ```
-

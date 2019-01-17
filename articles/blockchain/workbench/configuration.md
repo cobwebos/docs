@@ -5,17 +5,17 @@ services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 1/8/2019
+ms.date: 01/08/2019
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: brendal
 manager: femila
-ms.openlocfilehash: f93bfcb076bfae5c50c751ac664a145e1b375f23
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 6024a11f518432b735ccec6a3d89db687aed8ae6
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54107763"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54332585"
 ---
 # <a name="azure-blockchain-workbench-configuration-reference"></a>Azure Blockchain Workbench 配置参考
 
@@ -35,7 +35,7 @@ ms.locfileid: "54107763"
 * 有权启动每个操作的用户角色
 * 表示代码文件中业务逻辑的智能合约
 
-## <a name="application"></a>Application
+## <a name="application"></a>应用程序
 
 区块链应用程序包含配置元数据、工作流，以及可以操作或参与应用程序的用户角色。
 

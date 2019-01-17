@@ -1,18 +1,18 @@
 ---
 title: 在 Azure Site Recovery 部署规划器中查看成本估算报告 | Microsoft Docs
 description: 本文介绍如何在 Azure Site Recovery 部署规划器中查看针对从 VMware 到 Azure 灾难恢复的成本估算报告。
-author: nsoneji
-manager: garavd
+author: mayurigupta13
+manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
-ms.author: nisoneji
-ms.openlocfilehash: 46ec116b357df8cc5de889f64d4620544c062979
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.author: mayg
+ms.openlocfilehash: d1e406567b5f56f6ad08e4d276202ebf43d92534
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52848334"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54321478"
 ---
 # <a name="review-the-cost-estimation-report-in-the-site-recovery-deployment-planner-for-vmware-disaster-recovery-to-azure"></a>在 Site Recovery 部署规划器中查看针对从 VMware 灾难恢复到 Azure 的成本估算报告
 
@@ -120,7 +120,7 @@ ms.locfileid: "52848334"
 
 **存储类型**：VM 使用的存储类型。 可以是标准存储或高级存储。
 
-**VM 总存储大小 (GB)**：VM 总存储。
+**VM 总存储大小 (GB)**：VM 的总存储。
 
 **一年的 DR 演练次数**：一年中进行 DR 演练的次数。 默认为一年 4 次。 可以修改特定 VM 的持续时间或将新值应用到所有 VM，只需在顶部行中输入新值，然后单击“应用到所有项”按钮即可。 可以根据一年的 DR 演练次数和每次 DR 演练的持续时间来计算总 DR 演练成本。  
 

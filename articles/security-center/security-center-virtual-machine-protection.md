@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/19/2018
+ms.date: 1/15/2019
 ms.author: rkarlin
-ms.openlocfilehash: 9c1eff58be52b0b4bd9561db51986c9f509d64ee
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 3a2ccd04cd7ec36cafdf56830b9ad8249f89eb7e
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53723223"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54321579"
 ---
 # <a name="protecting-your-machines-and-applications-in-azure-security-center"></a>在 Azure 安全中心保护计算机和应用程序
 Azure 安全中心可分析 Azure 资源的安全状态。 在安全中心识别潜在的安全漏洞时，它会创建一些建议，这些建议会指导完成配置所需控件的过程。 建议适用于以下 Azure 资源类型：虚拟机 (VM) 和计算机、应用程序、网络、SQL，以及“标识和访问”。
@@ -44,7 +44,6 @@ Azure 安全中心可分析 Azure 资源的安全状态。 在安全中心识别
 - **云服务**：列出安全中心监视的 Web 角色和辅助角色。
 - **应用服务(预览版)**：列出应用服务环境及其当前安全状态。
 - **容器(预览)**：列出在 IaaS Linux 计算机上托管的容器，并对其 Docker 配置进行安全评估。
-- **VM 规模集(预览)**：列出规模集以及针对每个规模集的建议。
 - **计算资源(预览)**：列出针对计算资源（例如 Service Fabric 群集和事件中心）的建议。
 
 若要继续，请在“资源安全机制”下选择“计算和应用”。
@@ -68,7 +67,7 @@ Azure 安全中心可分析 Azure 资源的安全状态。 在安全中心识别
 “应用系统更新”以图形格式汇总了关键更新，分别适用于 Windows 和 Linux。 第二部分有一个表，其中包含以下信息：
 
 - **名称**：所缺更新的名称。
-- VM 和和计算机的数量**：缺少此更新的 VM 和计算机的总数。
+- **VM 和和计算机的数量**：缺少此更新的 VM 和计算机的总数。
 - **更新严重性**：描述该特定建议的严重性：
 
     - **严重**：重要资源（应用程序、虚拟机或网络安全组）存在漏洞，需要引起注意。
@@ -162,24 +161,6 @@ Azure 安全中心可分析 Azure 资源的安全状态。 在安全中心识别
 
     ![应用服务修正](./media/security-center-virtual-machine-recommendations/app-service-remediation.png)
 
-## <a name="virtual-machine-scale-sets-preview"></a>虚拟机规模集（预览）
-安全中心会自动发现你是否有规模集，并会建议你在这些规模集上安装 Microsoft Monitoring Agent。 
-
-若要安装 Microsoft Monitoring Agent，请执行以下操作： 
-
-1. 选择建议“在虚拟机规模集上安装监视代理”。 你会获得未收监视的规模集的列表。
-2. 选择不正常的规模集。 按照说明操作，使用现有的已填充工作区或新建的工作区安装监视代理。 确保设置工作区[定价层](security-center-pricing.md)（如果尚未设置）。
-
- ![安装 MMS](./media/security-center-virtual-machine-recommendations/install-mms.png)
-
-若要将新规模集设置为自动安装 Microsoft Monitoring Agent，请执行以下操作：
-1. 转到 Azure Policy，单击“定义”。
-2. 搜索策略“为 Windows VM 规模集部署 Log Analytics 代理”，然后单击它。
-3. 单击“分配”。
-4. 设置“范围”和“Log Analytics 工作区”，然后单击“分配”。
-
-若要将所有现有的规模集设置为安装 Microsoft Monitoring Agent，请在 Azure Policy 中转到“修正”，将现有的策略应用到现有的规模集。
-
 
 ## <a name="compute-and-app-recommendations"></a>计算和应用建议
 |资源类型|安全功能分数|建议|Description|
@@ -238,11 +219,7 @@ Azure 安全中心可分析 Azure 资源的安全状态。 在安全中心识别
 |计算机|30|在虚拟机上安装漏洞评估解决方案|在虚拟机上安装漏洞评估解决方案|
 |计算机|1|将虚拟机迁移到新的 Azure 资源管理器资源|为虚拟机使用 Azure 资源管理器以提供安全增强功能，例如：更强的访问控制 (RBAC)、更好的审核、基于资源管理器的部署和治理、托管标识访问权限、用于存储机密的密钥保管库的访问权限、基于 Azure AD 的身份验证以及可实现更轻松安全管理的标记和资源组支持。 |
 |计算机|30|通过漏洞评估解决方案修复漏洞|会持续评估为其部署了漏洞评估第三方解决方案的虚拟机的应用程序和 OS 漏洞。 只要发现此类漏洞，就会在建议中提供详细信息。|
-|虚拟机规模集 |4|启用虚拟机规模集中的诊断日志|启用日志并将其保留长达一年的时间。 这样可以重新创建用于调查的活动线索。 这适用于发生安全事件或网络受到危害的情况。|
-|虚拟机规模集|35|修复虚拟机规模集上安全配置中的漏洞|修复虚拟机规模集上安全配置中的漏洞，使其免受攻击。 |
-|虚拟机规模集|5|修复虚拟机规模集上的 Endpoint Protection 运行状况故障|修复虚拟机规模集上的 Endpoint Protection 运行状况故障，使其免受威胁和漏洞的侵害。 |
-|虚拟机规模集|10|在虚拟机规模集上安装 Endpoint Protection 解决方案|在虚拟机规模集上安装 Endpoint Protection 解决方案，使其免受威胁和漏洞的侵害。 |
-|虚拟机规模集|40|在虚拟机规模集上安装系统更新|安装缺少的系统安全更新和关键更新，保护 Windows 和 Linux 虚拟机规模集。 |
+
  
 
 

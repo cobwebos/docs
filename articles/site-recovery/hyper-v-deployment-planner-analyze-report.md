@@ -2,18 +2,18 @@
 title: 分析 Azure Site Recovery 部署规划器报告，以便将 Hyper-V VM 灾难恢复到 Azure | Microsoft Docs
 description: 本文介绍如何分析 Azure Site Recovery 部署规划器生成的报告，以便将 Hyper-V VM 灾难恢复到 Azure。
 services: site-recovery
-author: nsoneji
-manager: garavd
+author: mayurigupta13
+manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
-ms.author: nisoneji
-ms.openlocfilehash: 4c857afb6fbec8501c1f5836935dd6e78f89e67d
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.author: mayg
+ms.openlocfilehash: 5fbcfd102518dc231ad61c54e626c14381bf5a02
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52847739"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54321613"
 ---
 # <a name="analyze-the-azure-site-recovery-deployment-planner-report"></a>分析 Azure Site Recovery 部署规划器报告
 本文介绍 Azure Site Recovery 部署规划器针对 Hyper-V 到 Azure 方案生成的 Excel 报表中包含的工作表。
@@ -127,7 +127,7 @@ Hyper-V 到 Azure 报表的建议表根据选定的所需 RPO 提供以下详细
  
 可以按月或按年查看成本。 详细了解[支持的目标区域](./hyper-v-deployment-planner-cost-estimation.md#supported-target-regions)和[支持的货币](./hyper-v-deployment-planner-cost-estimation.md#supported-currencies)。
 
-**按组件成本**：总 DR 成本分为四个部分：计算成本、存储成本、网络成本和 Site Recovery 许可证成本。 成本计算取决于在复制和 DR 演练时相关资源的使用情况。 用于计算的资源包括计算、存储（高级和标准）、在本地站点和 Azure 之间配置的 ExpressRoute/VPN、Site Recovery 许可证。
+**按组件显示成本**：总 DR 成本分为四个部分：计算成本、存储成本、网络成本和 Site Recovery 许可证成本。 成本计算取决于在复制和 DR 演练时相关资源的使用情况。 用于计算的资源包括计算、存储（高级和标准）、在本地站点和 Azure 之间配置的 ExpressRoute/VPN、Site Recovery 许可证。
 
 **按状态成本**：总灾难恢复成本按两种不同的状态（“复制”和“DR 演练”）分类。 
 

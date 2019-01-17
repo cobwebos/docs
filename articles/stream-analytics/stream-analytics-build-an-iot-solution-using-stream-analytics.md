@@ -9,12 +9,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.custom: seodec18
-ms.openlocfilehash: 820a918b9ab5dd7a399dc43bcfed29fb3b94e99b
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: f372c2a85a9a03c7ead779bd4db64722891c9a4c
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53971097"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54321562"
 ---
 # <a name="build-an-iot-solution-by-using-stream-analytics"></a>使用流分析构建 IoT 解决方案
 
@@ -36,7 +36,7 @@ ms.locfileid: "53971097"
 ## <a name="scenario-introduction-hello-toll"></a>方案简介：“你好，收费站！”
 收费站是常见景象。 在世界各地的高速公路、桥梁和隧道旁边都会看到它们。 每个收费站有多个收费亭。 在手动收费亭前，要停下来向办事员支付通行费。 在自动收费亭前，穿过收费亭时，每个收费亭上的传感器将扫描安装在汽车挡风玻璃上的 RFID 卡。 我们可以轻松地将车辆通过这些收费站的情况想象成能够执行许多有趣操作的事件流。
 
-![收费亭前汽车的图片](media/stream-analytics-build-an-iot-solution-using-stream-analytics/cars-in-toll-booth .jpg)
+![收费亭前汽车的图片](media/stream-analytics-build-an-iot-solution-using-stream-analytics/cars-in-toll-booth.jpg)
 
 ## <a name="incoming-data"></a>传入的数据
 本解决方案使用两个数据流。 安装在收费站入口和出口的传感器产生第一个流。 第二个流是包含汽车注册数据的静态查找数据集。

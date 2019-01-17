@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 12/04/2018
 ms.author: pbutlerm
-ms.openlocfilehash: d51fffad897ba2658c7bee51c26e7e3be9f10e88
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: bbe757ccd1d6a37cbcf04f3ecd6dd088ef1ff211
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53188752"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54353004"
 ---
 # <a name="virtual-machine-offer"></a>虚拟机套餐
 
@@ -32,7 +32,7 @@ ms.locfileid: "53188752"
 
 视频 [Optimize Your Azure Marketplace Offer](https://channel9.msdn.com/Events/Build/2017/P4026?ocid=player)（优化 Azure 市场套餐）详细概述了 Azure 市场，包括如何在该市场（使用虚拟机解决方案）进行发布、如何使用产品页面和可选的“体验版”体验优化用户体验、如何生成用户引导和使用用户引导，以及如何优化客户参与。
 
-> [!VIDEO https://channel9.msdn.com/Events/Build/2017/P4026]
+> [!VIDEO https://channel9.msdn.com/Events/Build/2017/P4026/player]
 
 
 ## <a name="vm-publishing-process-flow"></a>VM 发布流程

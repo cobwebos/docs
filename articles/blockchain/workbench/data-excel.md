@@ -5,17 +5,17 @@ services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 10/1/2018
+ms.date: 01/14/2019
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: mmercuri
 manager: femila
-ms.openlocfilehash: 3c257a47c796636d0b86aa6b246b17c0fd39bae3
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: 560958c2b420d3a1ec592e6bd7e0124ecad7c984
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48240745"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54332347"
 ---
 # <a name="view-azure-blockchain-workbench-data-with-microsoft-excel"></a>使用 Microsoft Excel 查看 Azure Blockchain Workbench 数据
 
@@ -59,7 +59,7 @@ ms.locfileid: "48240745"
 
 接下来的示例展示了如何将数据从视图加载到 Excel 工作簿中。
 
-1. 在“导航器”滚动条中，选择“vwContractAction”视图。 “vwContractAction”预览显示与 Blockchain Workbench 数据库中的某个合约相关的所有操作。
+1. 在“导航器”滚动条中，选择“vwContractAction”视图。 “vwContractAction”预览显示与 Blockchain Workbench 数据库中的某个合同相关的所有操作。
 2. 选择“加载”来检索该视图中的所有数据并将其置于 Excel 工作簿中。
 
    ![从视图加载的数据](./media/data-excel/view-data.png)
