@@ -14,12 +14,12 @@ ms.topic: overview
 ms.date: 07/07/2016
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 2cf73607f0cb286f06a5aa043fd8b30816e6a80f
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 05afbd9a621752b8b665c7d2f68cd8cfcc8a1d1a
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53729686"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54322021"
 ---
 # <a name="azure-app-service-virtual-machines-service-fabric-and-cloud-services-comparison"></a>Azure 应用服务、虚拟机、Service Fabric 和云服务的比较
 
@@ -53,7 +53,7 @@ Azure 应用服务是大多数 Web 应用的最佳选择。 部署和管理都�
 | 向外扩展到多个实例且无需重新部署 |X |X |X |X |虚拟机可以扩大到多个实例，但必须编写这些虚拟机上运行的服务，来处理向外扩展。必须配置负载均衡器以在计算机之间路由请求，并且请确保[可用性集](../virtual-machines/windows/manage-availability.md)中有多个 VM 实例。 |
 | 支持 SSL |X |X |X |X |对于应用服务 Web 应用，只有基本和标准模式支持自定义域名的 SSL。 若要了解如何结合使用 SSL 和 Web 应用，请参阅[为 Azure 网站配置 SSL 证书](app-service-web-tutorial-custom-ssl.md)。 |
 | Visual Studio 集成 |X |X |X |X | |
-| 远程调试 |X |X |X | | |
+| 远程调试 |X |X |X |X | |
 | 使用 TFS 部署代码 |X |X |X |X | |
 | 使用 [Azure 虚拟网络](/azure/virtual-network/)进行网络隔离 |X |X |X |X |另请参阅 [Azure 网站的虚拟网络集成](https://azure.microsoft.com/blog/2014/09/15/azure-websites-virtual-network-integration/) |
 | 支持 [Azure 流量管理器](/azure/traffic-manager/) |X |X |X |X | |
