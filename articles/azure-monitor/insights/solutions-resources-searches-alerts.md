@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 06/18/2018
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6f16325183f0a13382dd4533fd867a518f1750c3
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: a2c45807f846dbe9d1c6bd91ce8c87958949ab17
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53344289"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54231319"
 ---
 # <a name="adding-log-analytics-saved-searches-and-alerts-to-management-solution-preview"></a>将 Log Analytics 保存的搜索和警报添加到管理解决方案（预览版）
 
@@ -153,7 +153,7 @@ Log Analytics 中的所有资源都包含在[工作区](../../azure-monitor/plat
 警报操作具有以下结构。  这包括常见变量和参数，以便可以将此代码片段复制并粘贴到解决方案文件，并更改参数名称。 
 
 
-```
+```json
     {
         "name": "[concat(parameters('workspaceName'), '/', variables('SavedSearch').Name, '/', variables('Schedule').Name, '/', variables('Alert').Name)]",
         "type": "Microsoft.OperationalInsights/workspaces/savedSearches/schedules/actions",
@@ -290,7 +290,7 @@ Webhook 操作通过调用 URL 和提供要发送的负载（可选）启动进�
 |:--|:--|:--|
 | type | 是 | 操作的类型。  Webhook 操作的类型是 Webhook。 |
 | 名称 | 是 | 操作的显示名称。  控制台中不显示此名称。 |
-| wehookUri | 是 | Webhook 的 URI。 |
+| webhookUri | 是 | Webhook 的 URI。 |
 | customPayload | 否 | 发送到 Webhook 的自定义负载。 格式取决于 Webhook 的期望。 |
 
 
@@ -304,7 +304,7 @@ Webhook 操作通过调用 URL 和提供要发送的负载（可选）启动进�
 
 此示例使用的是解决方案中常用的[标准解决方案参数]( solutions-solution-file.md#parameters)变量，不同于资源定义中使用的硬编码值。
 
-```
+```json
     {
         "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
         "contentVersion": "1.0",
@@ -462,7 +462,7 @@ Webhook 操作通过调用 URL 和提供要发送的负载（可选）启动进�
 ```
 
 下方参数文件提供了此解决方案的示例值。
-```
+```json
     {
         "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
         "contentVersion": "1.0.0.0",

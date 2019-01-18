@@ -4,7 +4,7 @@ items:
 - name: 概述
   items:
   - name: 什么是 Azure 备份？
-    href: backup-introduction-to-azure-backup.md
+    href: backup-overview.md
 - name: 快速入门
   items:
   - name: 备份 VM - 门户
@@ -34,6 +34,10 @@ items:
     href: backup-rm-template-samples.md
 - name: 概念
   items:
+  - name: 备份体系结构
+    href: backup-architecture.md
+  - name: 备份支持矩阵
+    href: backup-support-matrix.md
   - name: 常见问题解答
     items:
     - name: 恢复服务保管库常见问题解答
@@ -256,9 +260,9 @@ items:
     href: https://azure.microsoft.com/updates/?product=backup
   - name: 视频
     href: https://azure.microsoft.com/documentation/videos/index/?services=backup
-ms.openlocfilehash: 4f5d8a19fe45aa493183fd5de027a1ecd159622e
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 23a52de757f7b12633f77708b7475ccb92a582e6
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54267481"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54359674"

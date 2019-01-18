@@ -1,3 +1,11 @@
+---
+ms.openlocfilehash: 050eb5e51ec4f589d160ac20322ffc02f77efc61
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54358603"
+---
 # 概述
 ## [关于 Windows SQL Server VM](virtual-machines-windows-sql-server-iaas-overview.md) 
 ## [发行说明](virtual-machines-windows-sql-server-iaas-release-notes.md) 
@@ -11,6 +19,12 @@
 ### [性能最佳实践](virtual-machines-windows-sql-performance.md)
 ### [安全注意事项](virtual-machines-windows-sql-security.md)
 ### [应用程序模式](virtual-machines-windows-sql-server-app-patterns-dev-strategies.md)
+## 业务连续性
+### [高可用性选项](virtual-machines-windows-sql-high-availability-dr.md) 
+### [Always On 可用性组](virtual-machines-windows-portal-sql-availability-group-overview.md)
+### [备份和还原](virtual-machines-windows-sql-backup-recovery.md)
+### [SQL Server 2014 自动备份](virtual-machines-windows-sql-automated-backup.md)
+### [SQL Server 2016+ 自动备份](virtual-machines-windows-sql-automated-backup-v2.md)
 ## 管理
 ### [连接到 VM](virtual-machines-windows-sql-connect.md)
 ### [配置存储](virtual-machines-windows-sql-server-storage-configuration.md)
@@ -18,22 +32,19 @@
 #### [使用 SQL Server IaaS 代理扩展](virtual-machines-windows-sql-server-agent-extension.md)
 #### [自动修补](virtual-machines-windows-sql-automated-patching.md)
 #### [配置 Azure 密钥保管库集成](virtual-machines-windows-ps-sql-keyvault.md)
-## 备份和还原
-### [备份和还原](virtual-machines-windows-sql-backup-recovery.md)
-### [SQL Server 2014 自动备份](virtual-machines-windows-sql-automated-backup.md)
-### [SQL Server 2016+ 自动备份](virtual-machines-windows-sql-automated-backup-v2.md)
-### [使用 Azure 存储进行备份和还原](virtual-machines-windows-use-storage-sql-server-backup-restore.md)
 
 # 操作指南
 ## 创建 SQL VM
 ### [使用门户](virtual-machines-windows-portal-sql-server-provision.md)
 ### [使用 Azure PowerShell](virtual-machines-windows-ps-sql-create.md)
+## [更改 SQL VM 的许可模型](virtual-machines-windows-sql-ahb.md)
 ## 迁移
 ### [迁移 SQL Server 数据库](virtual-machines-windows-migrate-sql.md)
 ## 配置高可用性
-### [高可用性选项](virtual-machines-windows-sql-high-availability-dr.md) 
-### [Always On 可用性组](virtual-machines-windows-portal-sql-availability-group-overview.md)
-#### [自动 - 使用模板](virtual-machines-windows-portal-sql-alwayson-availability-groups.md)
+### [使用 Azure 存储进行备份和还原](virtual-machines-windows-use-storage-sql-server-backup-restore.md)
+### Always On 可用性组
+#### [使用 Azure 门户模板](virtual-machines-windows-portal-sql-alwayson-availability-groups.md)
+#### [使用快速入门模板](virtual-machines-windows-sql-availability-group-quickstart-template.md)
 #### [手动 - 先决条件](virtual-machines-windows-portal-sql-availability-group-prereq.md)
 #### [手动 - 教程](virtual-machines-windows-portal-sql-availability-group-tutorial.md)
 #### [负载均衡器 - Azure 门户](virtual-machines-windows-portal-sql-alwayson-int-listener.md)
@@ -41,7 +52,7 @@
 #### [多个区域](virtual-machines-windows-portal-sql-availability-group-dr.md)
 ### 故障转移群集实例
 #### [配置](virtual-machines-windows-portal-sql-create-failover-cluster.md)
-## [更改 SQL VM 的许可模型](virtual-machines-windows-sql-ahb.md)
+
 
 # 引用
 ## [Azure PowerShell](/powershell/azure/overview)
