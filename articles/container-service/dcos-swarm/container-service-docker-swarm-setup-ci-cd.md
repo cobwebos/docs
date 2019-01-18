@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 12/08/2016
 ms.author: jucoriol
 ms.custom: mvc
-ms.openlocfilehash: db0a16fa44dd23cbc32159889fe8b8ec28c77a5f
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 93046fa8225d8c85172d113d3c7f9e979c336770
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52992546"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54331429"
 ---
 # <a name="deprecated-full-cicd-pipeline-to-deploy-a-multi-container-application-on-azure-container-service-with-docker-swarm-using-azure-devops-services"></a>（已弃用）用于通过 Azure DevOps Services 在包含 Docker Swarm 的 Azure 容器服务中部署多容器应用程序的完整 CI/CD 管道
 
@@ -137,7 +137,7 @@ Microsoft 提供一个 Azure DevOps Services 扩展用于在 Azure Pipelines 流
 * ProductsApi
 * 代理
 * RatingsApi
-* RecommandationsApi
+* RecommendationsApi
 * ShopFront
 
 需要为每个映像添加两个 Docker 步骤，其中一个步骤用于生成映像，另一个用于将映像推送到 Azure 容器注册表中。 
@@ -162,7 +162,7 @@ Microsoft 提供一个 Azure DevOps Services 扩展用于在 Azure Pipelines 流
 
 1. 为每个映像（共五个）配置生成和推送步骤后，请在生成工作流中另外添加两个步骤。
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 一个命令行任务，使用 Bash 脚本将 docker-compose.yml 文件中出现的 BuildNumber 替换为当前生成 ID。请参阅以下屏幕截图中的详细信息。
+    a. 一个命令行任务，使用 Bash 脚本将 docker-compose.yml 文件中出现的 BuildNumber 替换为当前生成 ID。请参阅以下屏幕截图中的详细信息。
 
     ![Azure DevOps Services - 更新 Compose 文件](./media/container-service-docker-swarm-setup-ci-cd/vsts-build-replace-build-number.png)
 
