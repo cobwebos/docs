@@ -18,8 +18,8 @@ ms.locfileid: "34600623"
 # <a name="consumption-model"></a>消耗模型
 
 联机路由提供了一组参数，可详细描述特定车辆的消耗模型。
-具体取决于 vehicleEngineType 的值，支持以下两种主要消耗模型：燃料和电力。 在同一请求中指定属于不同模型的参数是错误的做法。
-消耗模型不能与 travelMode 值“自行车”和“步行”一起使用。
+具体取决于 **vehicleEngineType** 的值，支持以下两种主要消耗模型： _Combustion_ 和 _Electric_。 在同一请求中指定属于不同模型的参数是错误的做法。
+消耗模型不能与 **travelMode** 值 _bicycle_ 和 _pedestrian_ 一起使用。
 
 ## <a name="parameter-constraints-for-consumption-model"></a>消耗模型的参数约束
 
@@ -38,7 +38,7 @@ ms.locfileid: "34600623"
 
 ## <a name="combustion-consumption-model"></a>燃料消耗模型
 
-如果将 vehicleEngineType 设置为燃料，则使用燃料消耗模型。
+如果将 **vehicleEngineType** 设置为 _combustion_ ，则使用燃料消耗模型。
 下面是属于此模型的参数列表。 参阅“参数”部分，获取详细说明。
 
 * constantSpeedConsumptionInLitersPerHundredkm
@@ -53,7 +53,7 @@ ms.locfileid: "34600623"
 
 ## <a name="electric-consumption-model"></a>电力消耗模型
 
-如果将 vehicleEngineType 设置为电力，则使用电力消耗模型。
+如果将 **vehicleEngineType** 设置为 _electric_ ，则使用电力消耗模型。
 下面是属于此模型的参数列表。 参阅“参数”部分，获取详细说明。
 
 * constantSpeedConsumptionInkWhPerHundredkm
