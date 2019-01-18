@@ -25,7 +25,7 @@ ms.locfileid: "49338363"
 ## <a name="get-a-subscription-key"></a>获取订阅密钥
 1. 可以通过下面两种方式之一，从 Azure 门户获取订阅密钥：
 
-    * 转到 [Azure 门户](https://ms.portal.azure.com)，通过搜索“认知服务”添加新认知服务 API，再选择“认知服务 API”。
+    * 转到 [Azure 门户](https://ms.portal.azure.com)，通过搜索 _Cognitive Services_ 添加新 Cognitive Services API，再选择 **“Cognitive Services APIs”**。
 
       ![搜索“认知服务”](../../../media/cognitive-services/custom-speech-service/custom-speech-azure-subscription.png)
 
