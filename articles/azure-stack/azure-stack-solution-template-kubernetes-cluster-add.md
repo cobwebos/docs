@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 01/16/2019
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.openlocfilehash: e11db0cacb14ab94c40ebbf6cac356a08cc016f1
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: 81a47a730978a9ecdda7a09bbad0707d436fb116
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54352676"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54388472"
 ---
 # <a name="add-kubernetes-to-the-azure-stack-marketplace"></a>将 Kubernetes 添加到 Azure Stack 市场
 
@@ -60,7 +60,7 @@ ms.locfileid: "54352676"
 
     e. 选择“套餐”。 选择你创建的套餐的名称。 记下订阅 ID。
 
-## <a name="create-a-service-principle-and-credentials-in-ad-fs"></a>在 AD FS 中创建服务主体和凭据
+## <a name="create-a-service-principal-and-credentials-in-ad-fs"></a>在 AD FS 中创建服务主体和凭据
 
 如果您使用 Active Directory 联合身份验证服务 (AD FS) 标识管理服务，需要创建服务主体的用户部署 Kubernetes 群集。
 
@@ -117,7 +117,7 @@ ms.locfileid: "54352676"
     - 使用提升的提示符打开 PowerShell。 使用更新为你的值的参数运行以下脚本：
 
         ```PowerShell  
-        #Create service principle using the certificate
+        #Create service principal using the certificate
         $privilegedendpoint="<ERCS IP>"
         $applicationName="<application name>"
         #certificate store location. Eg. Cert:\LocalMachine\My
@@ -132,7 +132,7 @@ ms.locfileid: "54352676"
         # Creating a PSSession to the ERCS PrivilegedEndpoint
         $session = New-PSSession -ComputerName $privilegedendpoint -ConfigurationName PrivilegedEndpoint -Credential $creds
 
-        # Get Service Principle Information
+        # Get Service principal Information
         $ServicePrincipal = Invoke-Command -Session $session -ScriptBlock { New-GraphApplication -Name "$using:applicationName" -ClientCertificates $using:cert}
 
         # Get Stamp information

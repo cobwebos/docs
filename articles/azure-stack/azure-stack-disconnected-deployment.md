@@ -15,17 +15,17 @@ ms.topic: article
 ms.date: 12/11/2018
 ms.author: jeffgilb
 ms.reviewer: wfayed
-ms.openlocfilehash: 33512b47eff75421ce07b02f9c17ae3028152568
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 3262720f52bc75ba5d430e941da25568a105fe0d
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53276241"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54391262"
 ---
 # <a name="azure-disconnected-deployment-planning-decisions-for-azure-stack-integrated-systems"></a>Azure Stack 集成系统的 Azure 断开连接部署计划决策
 在决定[如何将 Azure Stack 集成到混合云环境](azure-stack-connection-models.md)后，可以完成 Azure Stack 部署决策。
 
-可以部署和使用 Azure Stack 没有连接到 internet。 但是，使用断开连接部署，你将受限于一个 AD FS 标识存储和基于容量的计费模型。 因为多租户模式要求使用 Azure AD，断开连接部署不支持多租户模式。 
+无需连接到 Internet 即可部署和使用 Azure Stack。 但是，使用断开连接部署，你将受限于一个 AD FS 标识存储和基于容量的计费模型。 由于多租户需要使用 Azure AD，因此断开连接的部署不支持多租户。 
 
 适合选择此选项的情况如下所述：
 - 如果存在要求你在未连接到 Internet 的环境中部署 Azure Stack 的安全性或其他限制。
@@ -49,7 +49,7 @@ Azure Stack 设计为在连接到 Azure 的情况下功能最佳，因此请务�
 |Marketplace – 选择并直接从 Azure Marketplace 添加库包的功能|被削弱-在 Azure Stack 部署在断开连接模式下 （不带任何 Internet 连接） 时，不能使用 Azure Stack 门户下载 marketplace 项。 但是，可以使用[市场联合工具](https://docs.microsoft.com/azure/azure-stack/azure-stack-download-azure-marketplace-item#download-marketplace-items-in-a-disconnected-or-a-partially-connected-scenario-with-limited-internet-connectivity)将市场项下载到有 Internet 连接的计算机，然后再将这些项转移到 Azure Stack 环境。|
 |使用 Azure Active Directory 联合身份验证帐户管理 Azure Stack 部署|不可用-此功能要求连接到 Azure。 必须改用具有本地 Active Directory 实例的 AD FS。|
 |应用服务|被损坏 - WebApps 可能需要访问 Internet 以获取更新的内容。|
-|命令行接口 (CLI)|被削弱-CLI 减少了在身份验证和预配的服务原则方面的功能。|
+|命令行接口 (CLI)|被削弱-CLI 减少了在身份验证和预配服务主体的方面的功能。|
 |Visual Studio – Cloud discovery|被削弱-Cloud Discovery 将发现不同的云，或将无法工作。|
 |Visual Studio – AD FS|被削弱-只有 Visual Studio Enterprise 支持 AD FS。
 遥测|不可用-适用于 Azure Stack 作为依赖于遥测数据以及任何第三方库包的遥测数据。|
@@ -58,7 +58,7 @@ Azure Stack 设计为在连接到 Azure 的情况下功能最佳，因此请务�
 
 ## <a name="learn-more"></a>了解详细信息
 - 有关用例、购买、合作伙伴和 OEM 硬件供应商的信息，请参阅 [Azure Stack](https://azure.microsoft.com/overview/azure-stack/) 产品页。
-- 了解路线图和上市区域 Azure Stack 集成的系统，请参阅白皮书：[Azure Stack:Azure 的扩展](https://azure.microsoft.com/resources/azure-stack-an-extension-of-azure/)。 
+- 有关 Azure Stack 集成系统的路线图和上市区域的信息，请参阅白皮书：[Azure Stack：Azure 的扩展](https://azure.microsoft.com/resources/azure-stack-an-extension-of-azure/)。 
 - 若要了解有关 Microsoft Azure Stack 打包和定价的详细信息[下载此.pdf](https://azure.microsoft.com/mediahandler/files/resourcefiles/5bc3f30c-cd57-4513-989e-056325eb95e1/Azure-Stack-packaging-and-pricing-datasheet.pdf)。 
 
 ## <a name="next-steps"></a>后续步骤

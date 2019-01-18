@@ -15,12 +15,12 @@ ms.topic: get-started-article
 ms.date: 10/15/2018
 ms.author: jeffgilb
 ms.reviewer: comartin
-ms.openlocfilehash: 190a80d5807dcc8ad9666d3ba450691bc6453b41
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 471232fee5245426afce89993d9faebccc6a8ea8
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54265611"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54389395"
 ---
 # <a name="azure-stack-telemetry"></a>Azure Stack 遥测
 
@@ -40,7 +40,7 @@ Azure Stack 遥测基于 Windows Server 2016 互连用户体验与遥测组件�
 
 ## <a name="privacy-considerations"></a>隐私注意事项
 
-ETW 服务将遥测数据发回到受保护的云存储。 最低特权原则支配遥测数据的访问。 只有具有有效业务需求的 Microsoft 人员才能访问遥测数据。 除非客户自行要求，或者符合 [Microsoft 隐私声明](https://privacy.microsoft.com/PrivacyStatement)中所述的受限目的，否则 Microsoft 不会与第三方共享客户个人数据。 与 OEM 和合作伙伴共享的业务报告包含聚合的匿名数据。 数据共享决策由 Microsoft 内部团队（包括隐私、法律和数据管理利益干系人）做出。
+ETW 服务将遥测数据发回到受保护的云存储。 最小权限原则引导到遥测数据的访问。 只有具有有效业务需求的 Microsoft 人员才能访问遥测数据。 除非客户自行要求，或者符合 [Microsoft 隐私声明](https://privacy.microsoft.com/PrivacyStatement)中所述的受限目的，否则 Microsoft 不会与第三方共享客户个人数据。 与 OEM 和合作伙伴共享的业务报告包含聚合的匿名数据。 数据共享决策由 Microsoft 内部团队（包括隐私、法律和数据管理利益干系人）做出。
 
 Microsoft 相信并实行信息最小化。 我们尽量只收集所需的信息，并且只在服务所需或进行分析时才存储这些信息。 许多有关 Azure Stack 系统和 Azure 服务工作原则的信息在六个月内删除。 汇总或聚合的数据保留更长一段时间。
 

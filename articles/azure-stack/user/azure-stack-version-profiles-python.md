@@ -14,12 +14,12 @@ ms.date: 01/05/2019
 ms.author: sethm
 ms.reviewer: sijuman
 <!-- dev: viananth -->
-ms.openlocfilehash: cafae6d71401bc44813b2e366f8e72f7b806236b
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: 8049db848e34b0aa9bc23f08169a8c63f765791a
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54062769"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54389756"
 ---
 # <a name="use-api-version-profiles-with-python-in-azure-stack"></a>在 Azure Stack 中将 API 版本配置文件与 Python 配合使用
 
@@ -29,11 +29,12 @@ ms.locfileid: "54062769"
 
 Python SDK 支持 API 版本配置文件将不同的云平台（例如 Azure Stack 和 Azure 公有云）用作目标。 可以使用 API 配置文件为混合云创建解决方案。 Python SDK 支持以下 API 配置文件：
 
-1. **latest**  
-    该配置文件以 Azure 平台中所有服务提供程序的最新 API 版本为目标。
-2. **2017-03-09-profile**  
-   **2017-03-09-profile**  
-   该配置文件以 Azure Stack 支持的资源提供程序 API 版本为目标。
+- **latest**  
+    此配置文件以在 Azure 平台中的所有服务提供程序为都目标的最新的 API 版本。
+- **2018-03-01-hybrid**     
+    此配置文件以在 Azure Stack 平台中的所有资源提供程序为都目标的最新的 API 版本。
+- **2017-03-09-profile**  
+    此配置文件以支持 Azure Stack 的资源提供程序的最兼容的 API 版本为目标。
 
    有关 API 配置文件和 Azure Stack 的详细信息，请参阅[管理 Azure Stack 中的 API 版本配置文件](azure-stack-version-profiles.md)。
 
@@ -56,10 +57,19 @@ Python SDK 支持 API 版本配置文件将不同的云平台（例如 Azure Sta
 | 订阅 ID | AZURE_SUBSCRIPTION_ID | [订阅 ID](../azure-stack-plan-offer-quota-overview.md#subscriptions) 用于访问 Azure Stack 中的套餐。 |
 | 客户端机密 | AZURE_CLIENT_SECRET | 创建服务主体时保存的服务主体应用程序机密。 |
 | 资源管理器终结点 | ARM_ENDPOINT | 请参阅[Azure Stack 资源管理器终结点](azure-stack-version-profiles-ruby.md#the-azure-stack-resource-manager-endpoint)。 |
+| 资源位置 | AZURE_RESOURCE_LOCATION | Azure Stack 环境的资源位置。
 
 ## <a name="python-samples-for-azure-stack"></a>适用于 Azure Stack 的 Python 示例
 
-可以使用以下代码示例对 Azure Stack 中的虚拟机执行常见管理任务。 代码示例展示了如何执行以下任务：
+下面是一些可用于 Azure Stack 使用 Python SDK 的代码示例：
+
+- [管理资源和资源组](https://azure.microsoft.com/resources/samples/hybrid-resourcemanager-python-manage-resources/)。
+- [管理存储帐户](https://azure.microsoft.com/resources/samples/hybrid-storage-python-manage-storage-account/)。
+- [管理虚拟机](https://azure.microsoft.com/resources/samples/hybrid-compute-python-manage-vm/)。
+
+## <a name="python-manage-virtual-machine-sample"></a>Python 管理虚拟机示例
+
+下面的代码示例可用于在 Azure Stack 中的虚拟机执行常见管理任务。 此代码示例介绍了为：
 
 - 创建虚拟机：
   - 创建 Linux 虚拟机
@@ -76,7 +86,7 @@ Python SDK 支持 API 版本配置文件将不同的云平台（例如 Azure Sta
 - 列出虚拟机
 - 删除虚拟机
 
-若要查看代码执行这些操作，请参阅**run_example()** Python 脚本中的函数**Hybrid/unmanaged-disks/example.py** GitHub 存储库中[虚拟机-python-管理](https://github.com/Azure-Samples/virtual-machines-python-manage)。
+若要查看代码执行这些操作，请参阅**run_example()** Python 脚本中的函数**example.py** GitHub 存储库中[混合-计算-Python 的管理的 VM](https://github.com/Azure-Samples/Hybrid-Compute-Python-Manage-VM).
 
 每个操作都清晰地带有注释和一个 print 函数。 这些示例并不一定是此列表中显示的顺序。
 
@@ -99,13 +109,13 @@ Python SDK 支持 API 版本配置文件将不同的云平台（例如 Azure Sta
 4. 克隆存储库：
 
     ```bash
-    git clone https://github.com/Azure-Samples/virtual-machines-python-manage.git
+    git clone https://github.com/Azure-Samples/Hybrid-Compute-Python-Manage-VM.git
     ```
 
 5. 安装使用 pip 的依赖项：
 
     ```bash
-    cd virtual-machines-python-manage\Hybrid
+    cd Hybrid-Compute-Python-Manage-VM
     pip install -r requirements.txt
     ```
 
@@ -119,6 +129,7 @@ Python SDK 支持 API 版本配置文件将不同的云平台（例如 Azure Sta
     export AZURE_CLIENT_SECRET={your client secret}
     export AZURE_SUBSCRIPTION_ID={your subscription id}
     export ARM_ENDPOINT={your AzureStack Resource Manager Endpoint}
+    export AZURE_RESOURCE_LOCATION={your AzureStack Resource location}
     ```
 
 8. 若要运行此示例，Ubuntu 16.04-LTS 和 windows Server 2012 R2 Datacenter 映像必须位于 Azure Stack marketplace。 这些可以是[从 Azure 下载](../azure-stack-download-azure-marketplace-item.md)，或添加到[平台映像存储库](../azure-stack-add-vm-image.md)。
@@ -126,17 +137,9 @@ Python SDK 支持 API 版本配置文件将不同的云平台（例如 Azure Sta
 9. 运行示例：
 
     ```python
-    python unmanaged-disks\example.py
+    python example.py
     ```
 
-## <a name="notes"></a>说明
-
-你可能会尝试使用 `virtual_machine.storage_profile.os_disk` 检索 VM 的 OS 磁盘。 在某些情况下，这可能满足您的要求，但请注意，让您**OSDisk**对象。 若要更新为 OS 磁盘大小， `example.py` ，则**磁盘**对象，而不**OSDisk**对象。 `example.py` 获取**磁盘**对象具有以下属性：
-
-```python
-os_disk_name = virtual_machine.storage_profile.os_disk.name
-os_disk = compute_client.disks.get(GROUP_NAME, os_disk_name)
-```
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -11,15 +11,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: PowerShell
 ms.topic: article
-ms.date: 12/07/2018
+ms.date: 01/17/2019
 ms.author: mabrigg
 ms.reviewer: thoroet
-ms.openlocfilehash: 7a744520fe2a3b53b1306d4c80a5eca7d86258a7
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: eed3cbbcdc02d0d2faa5f9076bd6fc2dd4328bd8
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54104533"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54391051"
 ---
 # <a name="connect-to-azure-stack-with-powershell-as-an-operator"></a>以操作员身份使用 PowerShell 连接到 Azure Stack
 
@@ -29,7 +29,7 @@ ms.locfileid: "54104533"
 
 ## <a name="prerequisites"></a>必备组件
 
-如果已[通过 VPN 连接到 ASDK](./asdk/asdk-connect.md#connect-with-vpn)，请通过[开发工具包](./asdk/asdk-connect.md#connect-with-rdp)或基于 Windows 的外部客户端运行以下先决条件操作。 
+运行以下先决条件[开发工具包](./asdk/asdk-connect.md#connect-with-rdp)或基于 Windows 的外部客户端如果[连接到通过 VPN ASDK](./asdk/asdk-connect.md#connect-with-vpn)。 
 
  - 安装 [Azure Stack 兼容的 Azure PowerShell 模块](azure-stack-powershell-install.md)。  
  - 下载[使用 Azure Stack 所需的工具](azure-stack-powershell-download.md)。  
@@ -67,15 +67,13 @@ Add-AzureRMEnvironment -Name "AzureStackAdmin" -ArmEndpoint "https://adminmanage
 
   # Sign in to your environment
 
-  $cred = get-credential
-
   Login-AzureRmAccount `
     -EnvironmentName "AzureStackAdmin" `
-    -TenantId $tenantId `
-    -Credential $cred
+    -TenantId $tenantId
   ```
 
-
+> [!Note]  
+> AD FS 仅支持交互式身份验证的用户标识。 如果是必需的凭据对象，则必须使用服务主体 (SPN)。 设置服务主体与 Azure Stack 和 AS FS 作为标识管理服务的详细信息，请参阅[适用于 AD FS 管理服务主体](azure-stack-create-service-principals.md#manage-service-principal-for-ad-fs)。
 
 ## <a name="test-the-connectivity"></a>测试连接
 

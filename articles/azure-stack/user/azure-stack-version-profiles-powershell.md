@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 01/05/2019
 ms.author: sethm
 ms.reviewer: sijuman
-ms.openlocfilehash: 890ca3abf08e280dcf0a48355ab1dea87331805b
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: f6fd560d6ecb9feaa3df14b288cee5d98ce55aee
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54063448"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54391100"
 ---
 # <a name="use-api-version-profiles-for-powershell-in-azure-stack"></a>在 Azure Stack 中使用 PowerShell 的 API 版本配置文件
 
@@ -42,6 +42,7 @@ Install-Module -Name AzureRm.BootStrapper
 
 | 版本号 | API 版本配置文件 | PS 管理员模块名字对象 |
 | --- | --- | --- |
+| 1811 或更高版本 | 2018-03-01-hybrid | 1.6.0 |
 | 1808 或更高版本 | 2018-03-01-hybrid | 1.5.0 |
 | 1804 或更高版本 | 2017-03-09-profile | 1.4.0 |
 | 1804 以前的版本 | 2017-03-09-profile | 1.2.11 |

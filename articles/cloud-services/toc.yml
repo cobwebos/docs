@@ -13,8 +13,6 @@ items:
     href: cloud-services-dotnet-get-started.md
   - name: Visual Studio 云服务的 Python 示例
     href: cloud-services-python-ptvs.md
-  - name: 使用 Microsoft HPC Pack 设置混合 HPC 群集
-    href: cloud-services-setup-hybrid-hpcpack-cluster.md
 - name: 如何
   items:
   - name: 计划
@@ -200,9 +198,9 @@ items:
     href: https://azure.microsoft.com/updates/?product=cloud-services&updatetype=&platform=
   - name: 视频
     href: https://azure.microsoft.com/documentation/videos/index/?services=cloud-services
-ms.openlocfilehash: 0bd6d1123bce29fae377dca41d9084094597c3fa
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: 426de5d59de97e949996a1484d44276f8cf6e9aa
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53320806"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54390532"
