@@ -234,17 +234,19 @@ items:
     href: https://azure.microsoft.com/pricing/details/machine-learning/
   - name: Azure 路线图
     href: https://azure.microsoft.com/roadmap/
-  - name: Net# 神经网络语言
-    href: azure-ml-netsharp-reference-guide.md
   - name: MSDN 论坛
     href: https://social.msdn.microsoft.com/forums/azure/home?forum=MachineLearning
   - name: 堆栈溢出
     href: http://stackoverflow.com/questions/tagged/azure-machine-learning
   - name: R 开发人员指南
     href: ../r-developers-guide.md
-ms.openlocfilehash: f8fa65cfb7c61cd3d359331f1872d279ab113d19
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+  - name: 使用 Net# 的自定义神经网络
+    href: azure-ml-netsharp-reference-guide.md
+  - name: 比较我们的 ML 产品
+    href: ../service/overview-more-machine-learning.md
+ms.openlocfilehash: 821a6ffb787aef0d75dbc0f9e1ab331ad35dafa0
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54320508"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54389916"
