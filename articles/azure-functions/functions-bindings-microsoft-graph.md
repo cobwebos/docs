@@ -42,7 +42,7 @@ Microsoft Graph 扩展提供了以下绑定：
 
 ## <a name="setting-up-the-extensions"></a>设置扩展
 
-可通过 _绑定扩展_ 获取 Microsoft Graph 绑定。 绑定扩展是 Azure Functions 运行时的可选组件。 本部分介绍如何设置 Microsoft Graph 扩展和身份验证令牌扩展。
+可通过绑定扩展获取 Microsoft Graph 绑定。 绑定扩展是 Azure Functions 运行时的可选组件。 本部分介绍如何设置 Microsoft Graph 扩展和身份验证令牌扩展。
 
 ### <a name="enabling-functions-20-preview"></a>启用 Functions 2.0 预览版
 
