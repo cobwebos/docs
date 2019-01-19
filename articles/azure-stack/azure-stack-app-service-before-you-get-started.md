@@ -14,21 +14,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/11/2018
 ms.author: anwestg
-ms.openlocfilehash: add4a7f1ce8133b5c3891f731fc98ee7fdb26ebd
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 31fe0ede202b72a3e71c8028543ef0677a44a335
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53275663"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54413016"
 ---
 # <a name="before-you-get-started-with-app-service-on-azure-stack"></a>在 Azure Stack 上开始使用应用服务之前
 
-*适用于：Azure Stack 集成系统和 Azure Stack 开发工具包*
+适用于：Azure Stack 集成系统和 Azure Stack 开发工具包
 
 在 Azure Stack 上部署 Azure 应用服务之前，必须完成本文中的先决条件步骤。
 
 > [!IMPORTANT]
-> 将 1809年更新应用于 Azure Stack 集成系统，或在部署 Azure 应用服务 1.4 之前部署最新 Azure Stack 开发工具包 (ASDK)。
+> 请将 1809 更新应用于 Azure Stack 集成系统，或部署最新的 Azure Stack 开发工具包 (ASDK)，然后部署 Azure 应用服务 1.4。
 
 ## <a name="download-the-installer-and-helper-scripts"></a>下载安装程序与帮助器脚本
 
@@ -45,9 +45,9 @@ ms.locfileid: "53275663"
    - 模块文件夹
      - GraphAPI.psm1
 
-## <a name="syndicate-the-custom-script-extension-from-the-marketplace"></a>联合在 Marketplace 中的自定义脚本扩展
+## <a name="syndicate-the-custom-script-extension-from-the-marketplace"></a>从市场合成自定义脚本扩展版本
 
-Azure Stack 上的 azure 应用服务需要自定义脚本扩展 v1.9.0。  扩展必须[从 Marketplace 联合](https://docs.microsoft.com/azure/azure-stack/azure-stack-download-azure-marketplace-item)开始在 Azure Stack 上部署或升级 Azure 应用服务之前
+Azure Stack 上的 Azure 应用服务需要自定义脚本扩展 v1.9.0。  开始部署或升级 Azure Stack 上的 Azure 应用服务之前，必须先[从市场合成](https://docs.microsoft.com/azure/azure-stack/azure-stack-download-azure-marketplace-item)该扩展
 
 ## <a name="high-availability"></a>高可用性
 
@@ -65,7 +65,7 @@ Azure Stack 1802 更新增加了对容错域的支持。 Azure Stack 上新的 A
 
 从帮助器脚本提取到的文件夹运行 *Get-AzureStackRootCert.ps1* 脚本。 此脚本在应用服务所需的、用于创建证书的脚本所在的同一文件夹中创建一个根证书。
 
-运行以下 PowerShell 命令时，你必须提供 AzureStack\CloudAdmin 特权终结点和凭据。
+运行以下 PowerShell 命令时，必须为 AzureStack\CloudAdmin 提供特权终结点和凭据。
 
 ```PowerShell
     Get-AzureStackRootCert.ps1
@@ -73,7 +73,7 @@ Azure Stack 1802 更新增加了对容错域的支持。 Azure Stack 上新的 A
 
 #### <a name="get-azurestackrootcertps1-script-parameters"></a>Get-AzureStackRootCert.ps1 脚本参数
 
-| 参数 | 必需还是可选 | 默认值 | 说明 |
+| 参数 | 必需还是可选 | 默认值 | 描述 |
 | --- | --- | --- | --- |
 | PrivilegedEndpoint | 需要 | AzS-ERCS01 | 特权终结点 |
 | CloudAdminCredential | 需要 | AzureStack\CloudAdmin | Azure Stack 云管理的域帐户凭据 |
@@ -98,7 +98,7 @@ Azure Stack 1802 更新增加了对容错域的支持。 Azure Stack 上新的 A
 
 #### <a name="create-appservicecertsps1-script-parameters"></a>Create-AppServiceCerts.ps1 脚本参数
 
-| 参数 | 必需还是可选 | 默认值 | 说明 |
+| 参数 | 必需还是可选 | 默认值 | 描述 |
 | --- | --- | --- | --- |
 | pfxPassword | 需要 | Null | 帮助保护证书私钥的密码 |
 | DomainName | 需要 | local.azurestack.external | Azure Stack 区域和域后缀 |
@@ -155,14 +155,14 @@ API 证书放在“管理”角色上。 资源提供程序使用它来帮助保
 
 
 ### <a name="validate-certificates"></a>验证证书
-在部署之前应用服务资源提供程序，您应该[验证要使用的证书](azure-stack-validate-pki-certs.md#perform-platform-as-a-service-certificate-validation)使用可从 Azure Stack 就绪性检查器工具[PowerShell 库](https://aka.ms/AzsReadinessChecker)。 Azure Stack 就绪状态检查器工具验证生成的 PKI 证书适用于应用服务部署。 
+在部署应用服务资源提供程序之前，应当使用 [PowerShell 库](https://aka.ms/AzsReadinessChecker)中提供的 Azure Stack 准备情况检查器工具来[验证要使用的证书](azure-stack-validate-pki-certs.md#perform-platform-as-a-service-certificate-validation)。 Azure Stack 准备情况检查器工具验证生成的 PKI 证书是否适用于应用服务部署。 
 
-作为最佳做法，当在使用任何所需[Azure Stack PKI 证书](azure-stack-pki-certs.md)，则应该计划将保留足够的时间来测试和重新颁发证书，如有必要。 
+作为最佳做法，当使用任何所需的 [Azure Stack PKI 证书](azure-stack-pki-certs.md)时，如果需要，应当计划留出足够的时间来测试和重新颁发证书。 
 
 ## <a name="virtual-network"></a>虚拟网络
 
 > [!NOTE]
-> 预创建自定义虚拟网络是可选的因为 Azure Stack 上的 Azure 应用服务可以创建所需的虚拟网络，但然后将需要与 SQL 和通过公共 IP 地址的文件服务器进行通信。
+> 预先创建自定义虚拟网络是可选操作，因为 Azure Stack 上的 Azure 应用服务可以创建所需的虚拟网络，但之后需要通过公共 IP 地址来与 SQL 和文件服务器通信。
 
 Azure Stack 上的 Azure 应用服务允许将资源提供程序部署到现有的虚拟网络，或者允许在部署时创建虚拟网络。 使用现有虚拟网络可以通过内部 IP 连接到 Azure Stack 上的 Azure 应用服务所需的文件服务器和 SQL Server。 在 Azure Stack 上安装 Azure 应用服务之前，必须为虚拟网络配置以下地址范围和子网：
 
@@ -180,18 +180,18 @@ Azure Stack 上的 Azure 应用服务允许将资源提供程序部署到现有�
 
 Azure 应用服务需要使用文件服务器。 在生产部署中，必须将文件服务器配置为高度可用，且能够应对故障。
 
-### <a name="quickstart-template-for-file-server-for-deployments-of-azure-app-service-on-asdk"></a>在 ASDK 上的 Azure 应用服务的部署文件服务器快速入门模板。
+### <a name="quickstart-template-for-file-server-for-deployments-of-azure-app-service-on-asdk"></a>用于部署 ASDK 上的 Azure应用服务的文件服务器快速入门模板。
 
 如果只部署 Azure Stack 开发工具包，则可以使用[示例 Azure 资源管理器部署模板](https://aka.ms/appsvconmasdkfstemplate)来部署已配置的单节点文件服务器。 单节点文件服务器位于工作组中。
 
-### <a name="quickstart-template-for-highly-available-file-server-and-sql-server"></a>高度可用文件服务器和 SQL Server 的快速入门模板
+### <a name="quickstart-template-for-highly-available-file-server-and-sql-server"></a>高可用性文件服务器和 SQL Server 的快速入门模板
 
-一个[参考体系结构快速入门模板](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/appservice-fileserver-sqlserver-ha)现已推出，它将部署文件服务器，SQL Server，支持 Active Directory 中虚拟网络基础结构配置为支持的高度可用的部署在 Azure Stack 上的 azure 应用服务。  
+现已推出一个[参考体系结构快速入门模板](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/appservice-fileserver-sqlserver-ha)，用于部署文件服务器、SQL Server，并在配置为支持 Azure Stack 上的 Azure 应用服务高可用性部署的虚拟网络中支持 Active Directory 基础结构。  
 
 ### <a name="steps-to-deploy-a-custom-file-server"></a>部署自定义文件服务器的步骤
 
 >[!IMPORTANT]
-> 如果你选择部署应用服务中现有的虚拟网络，应将文件服务器部署到单独的子网从应用服务中。
+> 如果选择在现有虚拟网络中部署应用服务，应将文件服务器部署到独立于应用服务的子网中。
 
 #### <a name="provision-groups-and-accounts-in-active-directory"></a>在 Active Directory 中预配组和帐户
 
@@ -327,7 +327,7 @@ icacls %WEBSITES_FOLDER% /grant *S-1-1-0:(OI)(CI)(IO)(RA,REA,RD)
 执行以下步骤:
 
 1. 以 azurestack\AzureStackAdmin 身份打开 PowerShell 实例。
-2. 转到在[先决条件步骤](https://docs.microsoft.com/azure/azure-stack/azure-stack-app-service-before-you-get-started#download-the-azure-app-service-on-azure-stack-installer-and-helper-scripts)中下载并提取的脚本所在的位置。
+2. 转到在[先决条件步骤](https://docs.microsoft.com/azure/azure-stack/azure-stack-app-service-before-you-get-started)中下载并提取的脚本所在的位置。
 3. [安装适用于 Azure Stack 的 PowerShell](azure-stack-powershell-install.md)。
 4. 运行 **Create-AADIdentityApp.ps1** 脚本。 根据提示输入部署 Azure Stack 时使用的 Azure AD 租户 ID。 例如，输入**myazurestack.onmicrosoft.com**。
 5. 在“凭据”窗口中，输入 Azure AD 服务管理帐户和密码。 选择“确定”。
@@ -345,7 +345,7 @@ icacls %WEBSITES_FOLDER% /grant *S-1-1-0:(OI)(CI)(IO)(RA,REA,RD)
     Create-AADIdentityApp.ps1
 ```
 
-| 参数 | 必需还是可选 | 默认值 | 说明 |
+| 参数 | 必需还是可选 | 默认值 | 描述 |
 | --- | --- | --- | --- |
 | DirectoryTenantName | 需要 | Null | Azure AD 租户 ID。 提供 GUID 或字符串。 例如，myazureaaddirectory.onmicrosoft.com。 |
 | AdminArmEndpoint | 需要 | Null | Azure 资源管理器管理终结点。 例如 adminmanagement.local.azurestack.external。 |
@@ -371,7 +371,7 @@ icacls %WEBSITES_FOLDER% /grant *S-1-1-0:(OI)(CI)(IO)(RA,REA,RD)
 执行以下步骤:
 
 1. 以 azurestack\AzureStackAdmin 身份打开 PowerShell 实例。
-2. 转到在[先决条件步骤](https://docs.microsoft.com/azure/azure-stack/azure-stack-app-service-before-you-get-started#download-the-azure-app-service-on-azure-stack-installer-and-helper-scripts)中下载并提取的脚本所在的位置。
+2. 转到在[先决条件步骤](https://docs.microsoft.com/azure/azure-stack/azure-stack-app-service-before-you-get-started)中下载并提取的脚本所在的位置。
 3. [安装适用于 Azure Stack 的 PowerShell](azure-stack-powershell-install.md)。
 4. 运行 **Create-ADFSIdentityApp.ps1** 脚本。
 5. 在“凭据”窗口中，输入 AD FS 云管理帐户和密码。 选择“确定”。
@@ -381,7 +381,7 @@ icacls %WEBSITES_FOLDER% /grant *S-1-1-0:(OI)(CI)(IO)(RA,REA,RD)
     Create-ADFSIdentityApp.ps1
 ```
 
-| 参数 | 必需还是可选 | 默认值 | 说明 |
+| 参数 | 必需还是可选 | 默认值 | 描述 |
 | --- | --- | --- | --- |
 | AdminArmEndpoint | 需要 | Null | Azure 资源管理器管理终结点。 例如 adminmanagement.local.azurestack.external。 |
 | PrivilegedEndpoint | 需要 | Null | 特权终结点。 例如 AzS-ERCS01。 |
