@@ -10,17 +10,16 @@ ms.assetid: ''
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/27/2018
+ms.date: 01/10/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: a20e4d713440ca6fe1adaf5b89bff347a8fd0bde
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.openlocfilehash: 262c81dbf2c094b6a823a8320a0657f2767bc20c
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53744082"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54332313"
 ---
 # <a name="manage-usage-and-costs-for-log-analytics"></a>管理 Log Analytics 的使用情况和成本
 
@@ -67,7 +66,7 @@ Log Analytics 费用将添加到 Azure 帐单。 可以在 Azure 门户的“计
 
 1. 在工作区的左窗格中，选择“使用情况和预估成本”。
 2. 在所选工作区的“使用情况和预估成本”页面顶部，单击“数据量管理”。 
-5. 每日上限默认为“关闭”– 单击“打开”将其启用，然后设置数据量限制（以 GB/天为单位）。<br><br> ![Log Analytics 配置数据限制](media/manage-cost-storage/set-daily-volume-cap-01.png)
+3. 每日上限默认为“关闭”– 单击“打开”将其启用，然后设置数据量限制（以 GB/天为单位）。<br><br> ![Log Analytics 配置数据限制](media/manage-cost-storage/set-daily-volume-cap-01.png)
 
 ### <a name="alert-when-daily-cap-reached"></a>达到每日上限时发出警报
 尽管在达到数据限制阈值时，Azure 门户中会显示视觉提示，但此行为不一定符合需要立即关注的操作问题的处理方式。  若要接收警报通知，可以在 Azure Monitor 中创建一个新的警报规则。  有关详细信息，请参阅[如何创建、查看和管理警报](alerts-metric.md)。      
@@ -98,6 +97,25 @@ Log Analytics 费用将添加到 Azure 帐单。 可以在 Azure 门户的“计
 ## <a name="legacy-pricing-tiers"></a>旧版定价层
 
 2018 年 7 月 1 日以前签订企业协议的客户或者已在订阅中创建 Log Analytics 工作区的客户，仍可以访问免费计划。 如果订阅未绑定到现有的 EA 注册，那么，2018 年 4 月 2 日后，在新订阅中创建工作区时免费层不再可用。  免费层数据最多保留 7 天。  对于旧版“独立”或“每个节点”层，以及当前的 2018 单一定价层，收集的数据在过去 31 天内可用。 “免费”层的每日引入限制为 500 MB。如果发现一直超出允许的量，可将工作区更改为另一计划，从而收集超出该限制的数据。 
+
+> [!NOTE]
+> 若要使用通过购买用于 System Center 的 OMS E1 套件、OMS E2 套件或 OMS 附加产品所获得的权利，请选择 Log Analytics 的“按节点”定价层。
+
+## <a name="changing-pricing-tier"></a>更改定价层
+
+如果 Log Analytics 工作区可以访问旧版定价层，则可以在旧版定价层之间进行更改：
+
+1. 在 Azure 门户 中的 Log Analytics 订阅窗格中选择一个工作区。
+
+2. 在工作区窗格的“常规”下，选择“定价层”。  
+
+3. 在“定价层”下选择一个定价层，并单击“选择”。  
+    ![选择定价计划](media/manage-cost-storage/workspace-pricing-tier-info.png)
+
+如果要将工作区移到当前定价层，则需要[在 Azure Monitor 中更改订阅的监视定价模型](https://docs.microsoft.com/en-us/azure/azure-monitor/platform/usage-estimated-costs#moving-to-the-new-pricing-model)，这将更改该订阅中所有工作区的定价层。
+
+> [!NOTE]
+> 如果工作区关联到自动化帐户，则在选择“单独(按 GB)”定价层之前，必须删除任何“自动化和控制”解决方案，并取消自动化帐户的关联。 在工作区边栏选项卡的“常规”下，单击“解决方案”查看和删除解决方案。 若要取消自动化帐户的关联，请在“定价层”边栏选项卡上单击自动化帐户的名称。
 
 
 ## <a name="troubleshooting-why-log-analytics-is-no-longer-collecting-data"></a>排查 Log Analytics 不再收集数据的原因
@@ -136,22 +154,55 @@ Log Analytics 费用将添加到 Azure 帐单。 可以在 Azure 门户的“计
 
 ### <a name="nodes-sending-data"></a>发送数据的节点
 
-若要了解在上一个月报告数据的节点数，请使用
+若要了解在上个月每天报告数据的计算机（节点）数，请使用：
 
 `Heartbeat | where TimeGenerated > startofday(ago(31d))
-| summarize dcount(ComputerIP) by bin(TimeGenerated, 1d)    
+| summarize dcount(Computer) by bin(TimeGenerated, 1d)    
 | render timechart`
+
+若要获取发送**计费数据类型**的计算机列表（某些数据类型是免费的），请使用 [_IsBillable](log-standard-properties.md#isbillable) 属性：
+
+`union withsource = tt * 
+| where _IsBillable == true 
+| extend computerName = tolower(tostring(split(Computer, '.')[0]))
+| where computerName != ""
+| summarize TotalVolumeBytes=sum(_BilledSize) by computerName`
+
+请谨慎使用这些 `union withsource = tt *` 查询，因为跨数据类型执行扫描的开销很大。 
+
+这可以扩展为返回每小时发送计费数据类型的计算机数量：
+
+`union withsource = tt * 
+| where _IsBillable == true 
+| extend computerName = tolower(tostring(split(Computer, '.')[0]))
+| where computerName != ""
+| summarize dcount(computerName) by bin(TimeGenerated, 1h) | sort by TimeGenerated asc`
+
+若要查看每台计算机引入的可计费事件的**大小**，请使用 `_BilledSize` 属性（以字节为单位提供大小）：
+
+`union withsource = tt * 
+| where _IsBillable == true 
+| summarize Bytes=sum(_BilledSize) by  Computer | sort by Bytes nulls last `
+
+此查询将使用 Usage 数据类型替换旧的查询方式。 
 
 若要查看每台计算机引入的事件数，请使用：
 
 `union withsource = tt *
-| summarize count() by Computer |sort by count_ nulls last`
+| summarize count() by Computer | sort by count_ nulls last`
 
-请谨慎使用此查询，因为它的执行开销很大。 若要查看哪些数据类型在向特定计算机发送数据，请使用：
+若要查看每台计算机引入的计费事件数，请使用： 
+
+`union withsource = tt * 
+| where _IsBillable == true 
+| summarize count() by Computer  | sort by count_ nulls last`
+
+若要查看向特定计算机发送数据的计费数据类型计数，请使用：
 
 `union withsource = tt *
-| where Computer == "*computer name*"
-| summarize count() by tt |sort by count_ nulls last `
+| where Computer == "computer name"
+| where _IsBillable == true 
+| summarize count() by tt | sort by count_ nulls last `
 
 > [!NOTE]
 > 使用情况数据类型的某些字段虽然仍在架构中，但已弃用，其值将不再填充。 这些是**计算机**以及与引入相关的字段（**TotalBatches**、**BatchesWithinSla**、**BatchesOutsideSla**、**BatchesCapped** 和 **AverageProcessingTimeMs**）。

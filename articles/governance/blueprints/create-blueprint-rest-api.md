@@ -4,17 +4,17 @@ description: 使用 Azure 蓝图创建、定义和部署项目。
 services: blueprints
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 11/07/2018
+ms.date: 01/15/2019
 ms.topic: quickstart
 ms.service: blueprints
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 9e44a44b76e79375076f71cf808d6d30eebc5cdb
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: b66a1c2c12a97ea8754377a138b51a4ca1739c21
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53311416"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54320678"
 ---
 # <a name="define-and-assign-an-azure-blueprint-with-rest-api"></a>使用 REST API 定义和分配 Azure 蓝图
 
@@ -68,7 +68,7 @@ $response = Invoke-RestMethod -Uri $restUri -Method Get -Headers $authHeader
 
 在每个 REST API URI 中，包含替换为自己的值所使用的变量：
 
-- `{YourMG}` - 替换为管理组的名称
+- `{YourMG}` - 替换为管理组的 ID
 - `{subscriptionId}` - 替换为订阅 ID
 
 1. 创建初始 blueprint 对象。 请求正文包括有关蓝图的属性、要创建的任何资源组，以及所有蓝图级别参数。 参数在分配过程中设置并由在后续步骤中添加的项目使用。
@@ -130,7 +130,7 @@ $response = Invoke-RestMethod -Uri $restUri -Method Get -Headers $authHeader
      }
      ```
 
-1. 在订阅中添加角色分配。 请求正文可定义项目的种类、与角色定义标识符一致的属性以及以值的数组形式传递的主体标识。 在下面的示例中，主体标识被授予指定的角色，配置为蓝图分配过程中所设置的参数。
+1. 在订阅中添加角色分配。 请求正文可定义项目的种类、与角色定义标识符一致的属性以及以值的数组形式传递的主体标识。 在下面的示例中，主体标识被授予指定的角色，配置为蓝图分配过程中所设置的参数。 此示例使用 GUID 为 `b24988ac-6180-42a0-ab88-20f7382dd24c` 的“参与者”内置角色。
 
    - REST API URI
 
@@ -150,7 +150,7 @@ $response = Invoke-RestMethod -Uri $restUri -Method Get -Headers $authHeader
      }
      ```
 
-1. 在订阅中添加策略分配。 请求正文可定义项目的种类、与策略或计划定义一致的属性，并配置策略分配，以使用要在蓝图分配过程中配置的已定义蓝图参数。
+1. 在订阅中添加策略分配。 请求正文可定义项目的种类、与策略或计划定义一致的属性，并配置策略分配，以使用要在蓝图分配过程中配置的已定义蓝图参数。 此示例使用 GUID 为 `49c88fc8-6fd1-46fd-a676-f12d1d3a4c71` 的“将标记及其默认值应用于资源组”内置策略。
 
    - REST API URI
 
@@ -178,7 +178,7 @@ $response = Invoke-RestMethod -Uri $restUri -Method Get -Headers $authHeader
      }
      ```
 
-1. 在订阅中为存储标记（重复使用 storageAccountType 参数）添加其他策略分配。 此附加的策略分配项目演示了蓝图上定义的参数可由多个项目使用。 在示例中，storageAccountType 用于在资源组上设置一个标记。 此值提供有关下一步骤中创建的存储帐户的信息。
+1. 在订阅中为存储标记（重复使用 storageAccountType 参数）添加其他策略分配。 此附加的策略分配项目演示了蓝图上定义的参数可由多个项目使用。 在示例中，storageAccountType 用于在资源组上设置一个标记。 此值提供有关下一步骤中创建的存储帐户的信息。 此示例使用 GUID 为 `49c88fc8-6fd1-46fd-a676-f12d1d3a4c71` 的“将标记及其默认值应用于资源组”内置策略。
 
    - REST API URI
 
@@ -292,7 +292,7 @@ $response = Invoke-RestMethod -Uri $restUri -Method Get -Headers $authHeader
      }
      ```
 
-1. 在资源组下添加角色分配。 与上一角色分配项类似，以下示例对“所有者”角色使用定义标识符，并向其提供不同于蓝图参数的另一参数。
+1. 在资源组下添加角色分配。 与上一角色分配项类似，以下示例对“所有者”角色使用定义标识符，并向其提供不同于蓝图参数的另一参数。 此示例使用 GUID 为 `8e3af657-a8ff-443c-a75c-2fe8c4bcb635` 的“所有者”内置角色。
 
    - REST API URI
 

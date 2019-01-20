@@ -3,7 +3,7 @@ title: 在 SQL VM (Resource Manager) 上自动完成管理任务 | Microsoft 文
 description: 本文介绍如何管理可以自动执行特定 SQL Server 管理任务的 SQL Server 代理扩展。 这些任务包括自动备份、自动修补和 Azure 密钥保管库集成。
 services: virtual-machines-windows
 documentationcenter: ''
-author: rothja
+author: MashaMSFT
 manager: craigg
 editor: ''
 tags: azure-resource-manager
@@ -14,13 +14,14 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 07/12/2018
-ms.author: jroth
-ms.openlocfilehash: 5ffee3bb5cbeff4e2222307e2a1afb4691ae93d5
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.author: mathoma
+ms.reviewer: jroth
+ms.openlocfilehash: 1b5c32d79e3664caf18cfc81fca563b295574cf4
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54053034"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54329311"
 ---
 # <a name="automate-management-tasks-on-azure-virtual-machines-with-the-sql-server-agent-extension-resource-manager"></a>使用 SQL Server 代理扩展 (Resource Manager) 在 Azure 虚拟机上自动完成管理任务
 > [!div class="op_single_selector"]
@@ -74,7 +75,7 @@ Set-AzureRmVMSqlServerExtension -ResourceGroupName "resourcegroupname" -VMName "
 ```
 
 > [!IMPORTANT]
-> 如果尚未安装该扩展，安装该扩展将会重新启动 SQL Server 服务。
+> 如果尚未安装该扩展，安装该扩展将会重新启动 SQL Server 服务。 但是，更新 SQL IaaS 扩展不会重新启动 SQL Server 服务。 
 
 > [!NOTE]
 > SQL Server IaaS 代理扩展仅在 [SQL Server VM 库映像](virtual-machines-windows-sql-server-iaas-overview.md#get-started-with-sql-vms)（即用即付或自带许可）上受支持。 如果在仅限 OS 的 Windows Server 虚拟机上手动安装 SQL Server，或者部署自定义的 SQL Server VM VHD，则不支持此扩展。 在这些情况下，可以使用 PowerShell 手动安装和管理扩展，但无法在 Azure 门户中获得 SQL Server 配置设置。 但是，强烈建议你改为安装 SQL Server VM 库映像，然后对其进行自定义。

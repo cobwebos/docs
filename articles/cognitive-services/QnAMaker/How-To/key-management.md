@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/26/2018
 ms.author: tulasim
 ms.custom: seodec18
-ms.openlocfilehash: 3984ac84271728b9066aba15a582065ea3121c76
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: 2b199e10b1a70bc44065d422d32acd3bea182721
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53581753"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54302045"
 ---
 # <a name="how-to-manage-keys-in-qna-maker"></a>如何管理 QnA Maker 中的密钥
 
@@ -42,7 +42,7 @@ QnA Maker 服务处理两种密钥：**订阅密钥**和**终结点密钥**。
 
 可以从 [QnA Maker 门户](https://qnamaker.ai)管理终结点密钥。
 
-1. 登录到 [QnA Maker 门户](https://qnamaker.ai)，然后转到“服务设置”。
+1. 登录 [QnA Maker 门户](https://qnamaker.ai)，转到你的个人资料，然后单击“服务设置”。
 
     ![终结点密钥](../media/qnamaker-how-to-key-management/Endpoint-keys.png)
 

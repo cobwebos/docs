@@ -1,26 +1,8 @@
 ---
-title: 使用 R 扩展试验 - Azure 机器学习工作室 | Microsoft Docs
-description: 如何使用执行 R 脚本模块通过 R 语言扩展 Azure 机器学习工作室的功能。
-services: machine-learning
-documentationcenter: ''
-author: ericlicoding
-ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
-ms.author: amlstudiodocs
-editor: cgronlun
-ms.assetid: 2c038a45-ba4d-42ea-9a88-e67391ef8c0a
-ms.service: machine-learning
-ms.component: studio
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 03/20/2017
-ms.openlocfilehash: 74f08421de893a4fe8916a052f8a32134cd222a5
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
-ms.translationtype: HT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53272059"
+title:使用 R 扩展试验 titleSuffix: Azure 机器学习工作室 description:如何使用执行 R 脚本模块通过 R 语言扩展 Azure 机器学习工作室的功能。
+services: machine-learning ms.service: machine-learning ms.component: studio ms.topic: article
+
+author: ericlicoding ms.author: amlstudiodocs ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro ms.date:03/20/2017
 ---
 # <a name="azure-machine-learning-studio-extend-your-experiment-with-r"></a>Azure 机器学习工作室：使用 R 扩展试验 
 如何使用[执行 R 脚本][execute-r-script]模块通过 R 语言扩展 Azure 机器学习工作室的功能。

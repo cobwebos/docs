@@ -1,26 +1,8 @@
 ---
-title: 步骤 1：创建工作区 - Azure 机器学习工作室 | Microsoft Docs
-description: 开发预测解决方案演练的第 1 步：了解如何设置新的 Azure 机器学习工作室工作区。
-services: machine-learning
-documentationcenter: ''
-author: garyericson
-ms.custom: seodec18
-ms.author: garye
-editor: cgronlun
-ms.assetid: b3c97e3d-16ba-4e42-9657-2562854a1e04
-ms.service: machine-learning
-ms.component: studio
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 03/23/2017
-ms.openlocfilehash: bc83fa6e3fa7d5ef31515309f5c1cd0b025c8906
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
-ms.translationtype: HT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53256360"
+title:“步骤 1：创建工作区” titleSuffix: Azure 机器学习工作室 description:“开发预测解决方案演练的步骤 1：了解如何设置新的 Azure 机器学习工作室工作区。”
+services: machine-learning ms.service: machine-learning ms.component: studio ms.topic: article
+
+author: garyericson ms.author: garye ms.custom: seodec18 ms.date:03/23/2017
 ---
 # <a name="walkthrough-step-1-create-an-azure-machine-learning-studio-workspace"></a>演练步骤 1：创建 Azure 机器学习工作室工作区
 这是演练[在 Azure 机器学习中开发预测分析解决方案](walkthrough-develop-predictive-solution.md)的第一步。

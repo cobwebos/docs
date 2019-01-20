@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/07/2018
 ms.author: bwren
-ms.openlocfilehash: ee0de5d03de29adddd8f77efbe7491603cc0e4c4
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: ea1c44d95dfb00fdb2b0af9e5cd8560fdee3d361
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53188786"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54231336"
 ---
 # <a name="configure-service-map-in-azure"></a>在 Azure 中配置服务映射
 服务映射自动发现 Windows 和 Linux 系统上的应用程序组件并映射服务之间的通信。 借助它，你可以按照自己的想法，将服务器作为提供重要服务的互连系统。 服务映射显示任何 TCP 连接的体系结构中服务器、进程和端口之间的连接，只需安装代理，无需任何其他配置。
@@ -335,7 +335,7 @@ Node localhost
 ```
 
 ## <a name="remove-the-dependency-agent"></a>删除 Dependency Agent
-### <a name="uinstall-agent-on-windows"></a>在 Windows 上卸载代理
+### <a name="uninstall-agent-on-windows"></a>在 Windows 上卸载代理
 管理员可通过“控制面板”卸载适用于 Windows 的 Dependency Agent。
 
 管理员还可以运行 %Programfiles%\Microsoft Dependency Agent\Uninstall.exe 卸载 Dependency Agent。

@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.workload: Active
 ms.date: 06/21/2018
 ms.author: alehall
-ms.openlocfilehash: 6e75e549486fb260f3ccbdead7fe1dea02593f3c
-ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
+ms.openlocfilehash: 16095dabb0e5e3e303e82126c7f57cb4ff3fe8dd
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51707140"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54200915"
 ---
 # <a name="tutorial-stream-data-into-azure-databricks-using-event-hubs"></a>教程：使用事件中心将数据流式传输到 Azure Databricks
 
@@ -168,7 +168,7 @@ ms.locfileid: "51707140"
 
 ## <a name="send-tweets-to-event-hubs"></a>将推文发送到事件中心
 
-在 **SendTweetsToEventHub** 笔记本中粘贴以下代码，并将占位符替换为前面创建的事件中心命名空间和 Twitter 应用程序的值。 此笔记本会将包含关键字“Azure”的推文实时流式传输到事件中心。
+在 **SendTweetsToEventHub** 笔记本中粘贴以下代码，并将占位符替换为前面创建的事件中心命名空间和 Twitter 应用程序的值。 此 Notebook 会将包含关键字“Azure”的推文实时流式传输到事件中心。
 
 ```scala
     import java.util._

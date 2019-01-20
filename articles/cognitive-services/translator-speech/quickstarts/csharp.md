@@ -10,12 +10,12 @@ ms.component: translator-speech
 ms.topic: quickstart
 ms.date: 3/5/2018
 ms.author: v-jaswel
-ms.openlocfilehash: a05ab716c8aea958e13ebba0dc9ceb09bf3d7cce
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
+ms.openlocfilehash: b873dbd3132e549c529280400d5a9644174232f9
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50913523"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54259016"
 ---
 # <a name="quickstart-translator-speech-api-with-c"></a>快速入门：将语音翻译 API 与 C# 配合使用 
 <a name="HOLTop"></a>
@@ -26,7 +26,7 @@ ms.locfileid: "50913523"
 
 ## <a name="prerequisites"></a>先决条件
 
-需要使用 [Visual Studio 2017](https://www.visualstudio.com/downloads/) 才能在 Windows 上运行此代码。 （免费的社区版也可以。）如果使用 Mac OS 或 Linux，还可以使用文本编辑器 [Visual Studio Code] (https://code.visualstudio.com/Download) 作为替代方法。
+需要使用 [Visual Studio 2017](https://www.visualstudio.com/downloads/) 才能在 Windows 上运行此代码。 （免费的社区版也可以。）如果使用的是 Mac OS 或 Linux，还可以使用文本编辑器 [Visual Studio Code](https://code.visualstudio.com/Download) 作为替代方法。
 
 将需要一个名为“speak.wav”的 .wav 文件，该文件与从以下代码编译的可执行文件位于同一文件夹中。 此 .wav 文件应采用标准 PCM、16 位、16 kHz 单声道格式。
 

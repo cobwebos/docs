@@ -1,23 +1,21 @@
 ---
-title: 如何选择 Azure 机器学习工作室算法 | Microsoft Docs
+title: 如何选择算法
+titleSuffix: Azure Machine Learning Studio
 description: 如何在聚类、分类或回归试验中选择监督式和非监督式学习的 Azure 机器学习工作室算法。
 services: machine-learning
-author: ericlicoding
-ms.custom: previous-ms.author=pakalra, previous-author=pakalra
-ms.author: amlstudiodocs
-editor: cgronlun
-tags: ''
-ms.assetid: a3b23d7f-f083-49c4-b6b1-3911cd69f1b4
 ms.service: machine-learning
 ms.component: studio
 ms.topic: article
+author: ericlicoding
+ms.author: amlstudiodocs
+ms.custom: previous-ms.author=pakalra, previous-author=pakalra
 ms.date: 12/18/2017
-ms.openlocfilehash: 9e601464f97a7717a2ccef0e60172357d3169697
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 20debfe2a1f3cf92e1a90867ca2b3a01852f7f9c
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53256921"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54267345"
 ---
 # <a name="how-to-choose-algorithms-for-azure-machine-learning-studio"></a>如何选择 Azure 机器学习工作室算法
 

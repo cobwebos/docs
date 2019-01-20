@@ -7,14 +7,14 @@ author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 12/06/2018
+ms.date: 01/14/2019
 ms.author: erhopf
-ms.openlocfilehash: 11259b99ea9d2486c8c0afde21398710ccc6ccd8
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 81a902c6cf6b9b3491933e4bc14dc1e774185869
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53726284"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54305445"
 ---
 # <a name="authenticate-requests-to-azure-cognitive-services"></a>对 Azure 认知服务的请求进行身份验证
 
@@ -58,6 +58,8 @@ curl -X POST 'https://api.cognitive.microsofttranslator.com/translate?api-versio
 --data-raw '[{ "text": "How much for the cup of coffee?" }]' | json_pp
 ```
 
+以下视频演示如何使用认知服务密钥。 
+
 ## <a name="authenticate-with-a-multi-service-subscription-key"></a>使用多服务订阅密钥进行身份验证
 
 >[!WARNING]
@@ -66,6 +68,8 @@ curl -X POST 'https://api.cognitive.microsofttranslator.com/translate?api-versio
 此选项仍使用订阅密钥对请求进行身份验证。 主要区别在于订阅密钥未绑定到特定服务，而单个密钥可用于对多个认知服务的请求进行身份验证。 有关区域可用性、支持的功能和定价的信息，请参阅[认知服务定价](https://azure.microsoft.com/pricing/details/cognitive-services/)。
 
 订阅密钥在每个请求中作为 `Ocp-Apim-Subscription-Key` 标头提供。
+
+[![认知服务的多服务订阅密钥演示](./media/index/single-key-demonstration-video.png)](https://www.youtube.com/watch?v=psHtA1p7Cas&feature=youtu.be)
 
 ### <a name="supported-regions"></a>支持的区域
 

@@ -11,14 +11,14 @@ ms.topic: article
 ms.date: 05/22/2018
 ms.author: tdsp
 ms.custom: seodec18, previous-author=jainr, previous-ms.author=jainr
-ms.openlocfilehash: a3c570d3d22742afcbba86f35a9dd1f6a85c0b8f
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: bace951141ea1d437d102b11ac4f548beaf5c75e
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53134278"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54329406"
 ---
-# <a name="creating-continous-integration-pipeline-on-azure-using-docker-kubernetes-and-python-flask-application"></a>使用 Docker、Kubernetes 和 Python Flask 应用程序在 Azure 上创建连续集成管道
+# <a name="creating-continuous-integration-pipeline-on-azure-using-docker-kubernetes-and-python-flask-application"></a>使用 Docker、Kubernetes 和 Python Flask 应用程序在 Azure 上创建持续集成管道
 对于 AI 应用程序，通常有两个工作流：数据科学家构建机器学习模型，应用开发人员构建应用程序并将其公开给最终用户供使用。 在本文中，我们演示了如何为 AI 应用程序实现持续集成 (CI)/持续交付 (CD) 管道。 AI 应用程序是嵌入在预先训练的机器学习 (ML) 模型中的应用程序代码的组合。 在本文中，我们将从一个专用 Azure blob 存储帐户中提取预先训练的模型，它也可以是 AWS S3 帐户。 对于本文，我们将使用一个简单的 python flask Web 应用程序。
 
 > [!NOTE]

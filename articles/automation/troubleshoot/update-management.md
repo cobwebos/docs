@@ -8,12 +8,12 @@ ms.date: 12/05/2018
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: d0d6ed03b6e28df9767e24170ebf5ec92bb9fe9a
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 01f72b8d41c1a973c7d187f519a43ce62929a23e
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53434726"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54359351"
 ---
 # <a name="troubleshooting-issues-with-update-management"></a>排查更新管理问题
 
@@ -177,6 +177,11 @@ Unable to Register Machine for Patch Management, Registration Failed with Except
 |`0x8024402C`     | 如果使用 WSUS 服务器，请确保注册表项 `HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate` 下 `WUServer` 和 `WUStatusServer` 的注册表值具有正确的 WSUS 服务器。        |
 |`The service cannot be started, either because it is disabled or because it has no enabled devices associated with it. (Exception from HRESULT: 0x80070422)`     | 请确保 Windows 更新服务 (wuauserv) 正在运行，并且未禁用。        |
 |任何其他一般异常     | 在 Internet 上搜索可能的解决方案，并与本地 IT 支持人员合作。         |
+
+此外，你可以下载并运行 [Windows 更新疑难解答](https://support.microsoft.com/help/4027322/windows-update-troubleshooter)，以检查计算机上的 Windows 更新是否存在任何问题。
+
+> [!NOTE]
+> [Windows 更新疑难解答](https://support.microsoft.com/help/4027322/windows-update-troubleshooter)指出它适用于 Windows 客户端，但它也适用于 Windows Server。
 
 ## <a name="linux"></a>Linux
 

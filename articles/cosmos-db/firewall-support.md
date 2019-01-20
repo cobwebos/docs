@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: govindk
-ms.openlocfilehash: 84e56610cb0f9090d8cacc461a73bf41d05f2251
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 2bb3665f0d0ab15f212741a6ce032fcd7ac2620d
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54033479"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54358107"
 ---
 # <a name="ip-firewall-for-azure-cosmos-accounts"></a>Azure Cosmos 帐户的 IP 防火墙
 
@@ -19,7 +19,7 @@ ms.locfileid: "54033479"
 
 ## <a id="ip-access-control-overview"></a>IP 访问控制概述
 
-默认情况下，只要请求附有有效的授权令牌，即可从 Internet 访问你的 Azure Cosmos 帐户。 若要配置基于 IP 策略的访问控制，用户必须提供 CIDR（无类域间路由）格式的、要作为客户端 IP 允许列表包含的 IP 地址或 IP 地址范围集，这样才能访问给定的 Azure Cosmos 帐户。 应用此配置后，源自此允许列表外部的计算机的所有请求将收到 404（未找到）响应。 使用 IP 防火墙时，我们建议允许 Azure 门户访问你的帐户。 需有相应的访问权限才能允许使用数据资源管理器，以及检索 Azure 门户中显示的帐户指标。
+默认情况下，只要请求附有有效的授权令牌，即可从 Internet 访问你的 Azure Cosmos 帐户。 若要配置基于 IP 策略的访问控制，用户必须提供 CIDR（无类域间路由）格式的、要作为客户端 IP 允许列表包含的 IP 地址或 IP 地址范围集，这样才能访问给定的 Azure Cosmos 帐户。 应用此配置后，源自此允许列表外部的计算机的所有请求将收到 403（禁止访问）响应。 使用 IP 防火墙时，我们建议允许 Azure 门户访问你的帐户。 需有相应的访问权限才能允许使用数据资源管理器，以及检索 Azure 门户中显示的帐户指标。
 
 可将基于 IP 的防火墙与子网和 VNET 访问控制结合使用。 将这两种策略相结合，可以限制访问具有某个公共 IP 的任何源，和/或从 VNET 中的特定子网访问任何源。 若要详细了解如何使用基于子网和 VNET 的访问控制，请参阅[从虚拟网络访问 Azure Cosmos DB 资源](vnet-service-endpoint.md)。
 

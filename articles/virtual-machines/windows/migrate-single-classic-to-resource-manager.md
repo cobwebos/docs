@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/15/2017
 ms.author: cynthn
-ms.openlocfilehash: d0307b26741a6bbbf29626e670467cdd72697646
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: a662a61d737dbb620d07fa6d114649e70c082796
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33943575"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54329763"
 ---
-# <a name="manually-migrate-a-classic-vm-to-a-new-arm-managed-disk-vm-from-the-vhd"></a>手动将经典 VM 从 VHD 迁移到新的 ARM 托管磁盘 VM 
+# <a name="migrate-a-classic-vm-to-use-a-managed-disk"></a>迁移经典 VM 以使用托管磁盘 
 
 
 本部分有助于将现有 Azure VM 从经典部署模型迁移到 Resource Manager 部署模型中的[托管磁盘](managed-disks-overview.md)。
@@ -33,35 +33,35 @@ ms.locfileid: "33943575"
 本部分有助于在 VM 和磁盘类型方面做出最佳决策。
 
 
-### <a name="location"></a>Location
+### <a name="location"></a>位置
 
-选择 Azure 托管磁盘的可用位置。 如果要迁移到高级托管磁盘，还请确保高级存储在计划迁移到的目标区域中可用。 有关可用位置的最新信息，请参阅 [Azure 服务（按区域）](https://azure.microsoft.com/regions/#services)。
+选择托管磁盘的可用位置。 如果要迁移到高级存储支持的托管磁盘，还要确保该区域中的高级存储可用。 有关可用位置的最新信息，请参阅 [Azure 服务（按区域）](https://azure.microsoft.com/regions/#services)。
 
 ### <a name="vm-sizes"></a>VM 大小
 
-如果要迁移到高级托管磁盘，必须将 VM 的大小更新为该 VM 所在区域中提供的支持高级存储的大小。 查看支持高级存储的 VM 大小。 [虚拟机大小](sizes.md)中列出了 Azure VM 大小规范。
+如果要迁移到使用高级存储的托管磁盘，必须将 VM 的大小更新为该 VM 所在区域中提供的支持高级存储的大小。 查看支持高级存储的 VM 大小。 [虚拟机大小](sizes.md)中列出了 Azure VM 大小规范。
 查看适用于高级存储的虚拟机的性能特征并选择最适合工作负荷的 VM 大小。 确保 VM 上有足够的带宽来驱动磁盘通信。
 
 ### <a name="disk-sizes"></a>磁盘大小
 
-**高级托管磁盘**
+**高级**
 
-有七种类型的高级托管磁盘可用于 VM，每种磁盘都具有特定的 IOPS 和吞吐量限制。 根据应用程序在容量、性能、可伸缩性和峰值负载方面的需要为 VM 选择高级磁盘类型时，需要考虑这些限制。
+有七种类型的高级存储可用于 VM，每种存储都具有特定的 IOPS 和吞吐量限制。 根据应用程序在容量、性能、可伸缩性和峰值负载方面的需要为 VM 选择高级磁盘类型时，需要考虑这些限制。
 
-| 高级磁盘类型  | P4    | P6    | P10   | P20   | P30   | P40   | P50   | 
+| 高级磁盘类型  | P4    | P6    | P10   | P20   | P30   | P40   | P50   | 
 |---------------------|-------|-------|-------|-------|-------|-------|-------|
-| 磁盘大小           | 128 GB| 512 GB| 128 GB| 512 GB            | 1024 GB (1 TB)    | 2048 GB (2 TB)    | 4095 GB (4 TB)    | 
-| 每个磁盘的 IOPS       | 120   | 240   | 500   | 2300              | 5000              | 7500              | 7500              | 
-| 每个磁盘的吞吐量 | 每秒 25 MB  | 每秒 50 MB  | 每秒 100 MB | 每秒 150 MB | 每秒 200 MB | 每秒 250 MB | 每秒 250 MB | 
+| 磁盘大小           | 128 GB| 512 GB| 128 GB| 512 GB            | 1024 GB (1 TB)    | 2048 GB (2 TB)    | 4095 GB (4 TB)    | 
+| 每个磁盘的 IOPS       | 120   | 240   | 500   | 2300              | 5000              | 7500              | 7500              | 
+| 每个磁盘的吞吐量 | 每秒 25 MB  | 每秒 50 MB  | 每秒 100 MB | 每秒 150 MB | 每秒 200 MB | 每秒 250 MB | 每秒 250 MB | 
 
-**标准托管磁盘**
+**标准**
 
-有七种类型的标准托管磁盘可用于 VM。 每种类型的磁盘具有不同的容量，但具有相同的 IOPS 和吞吐量限制。 根据应用程序的容量需求选择标准托管磁盘的类型。
+有七种类型的标准磁盘可用于 VM。 每种类型的磁盘具有不同的容量，但具有相同的 IOPS 和吞吐量限制。 根据应用程序的容量需求选择标准托管磁盘的类型。
 
-| 标准磁盘类型  | S4               | S6               | S10              | S20              | S30              | S40              | S50              | 
+| 标准磁盘类型  | S4               | S6               | S10              | S20              | S30              | S40              | S50              | 
 |---------------------|---------------------|---------------------|------------------|------------------|------------------|------------------|------------------| 
-| 磁盘大小           | 30 GB            | 64 GB            | 128 GB           | 512 GB           | 1024 GB (1 TB)   | 2048 GB (2 TB)    | 4095 GB (4 TB)   | 
-| 每个磁盘的 IOPS       | 500              | 500              | 500              | 500              | 500              | 500             | 500              | 
+| 磁盘大小           | 30 GB            | 64 GB            | 128 GB           | 512 GB           | 1024 GB (1 TB)   | 2048 GB (2 TB)    | 4095 GB (4 TB)   | 
+| 每个磁盘的 IOPS       | 500              | 500              | 500              | 500              | 500              | 500             | 500              | 
 | 每个磁盘的吞吐量 | 每秒 60 MB | 每秒 60 MB | 每秒 60 MB | 每秒 60 MB | 每秒 60 MB | 每秒 60 MB | 每秒 60 MB | 
 
 
@@ -73,7 +73,7 @@ ms.locfileid: "33943575"
 
 ### <a name="pricing"></a>定价
 
-查看[托管磁盘定价](https://azure.microsoft.com/pricing/details/managed-disks/)。 高级托管磁盘的定价与高级非托管磁盘相同。 但标准托管磁盘的定价与标准非托管磁盘不同。
+查看[托管磁盘定价](https://azure.microsoft.com/pricing/details/managed-disks/)。 托管高级磁盘的定价与非托管高级磁盘相同。 但托管标准磁盘的定价与非托管标准磁盘不同。
 
 
 ## <a name="checklist"></a>清单
@@ -96,77 +96,104 @@ ms.locfileid: "33943575"
 本部分需要 Azure PowerShell 模块 6.0.0 或更高版本。 运行 ` Get-Module -ListAvailable AzureRM` 即可查找版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-azurerm-ps)。 此外，还需要运行 `Connect-AzureRmAccount` 以创建与 Azure 的连接。
 
 
-1.  首先，设置公共参数：
+为常用参数创建变量。
 
-    ```powershell
-    $resourceGroupName = 'yourResourceGroupName'
-    
-    $location = 'your location' 
-    
-    $virtualNetworkName = 'yourExistingVirtualNetworkName'
-    
-    $virtualMachineName = 'yourVMName'
-    
-    $virtualMachineSize = 'Standard_DS3'
-    
-    $adminUserName = "youradminusername"
-    
-    $adminPassword = "yourpassword" | ConvertTo-SecureString -AsPlainText -Force
-    
-    $imageName = 'yourImageName'
-    
-    $osVhdUri = 'https://storageaccount.blob.core.windows.net/vhdcontainer/osdisk.vhd'
-    
-    $dataVhdUri = 'https://storageaccount.blob.core.windows.net/vhdcontainer/datadisk1.vhd'
-    
-    $dataDiskName = 'dataDisk1'
-    ```
+```powershell
+$resourceGroupName = 'yourResourceGroupName'
 
-2.  使用经典 VM 中的 VHD 创建托管 OS 磁盘。
+$location = 'your location' 
 
-    确保已为 $osVhdUri 参数提供 OS VHD 的完整 URI。 此外，根据要迁移到的磁盘类型（高级或标准），输入“-AccountType”作为“Premium_LRS”或“Standard_LRS”。
+$virtualNetworkName = 'yourExistingVirtualNetworkName'
 
-    ```powershell
-    $osDisk = New-AzureRmDisk -DiskName $osDiskName -Disk (New-AzureRmDiskConfig '
-    -AccountType Premium_LRS -Location $location -CreateOption Import -SourceUri $osVhdUri) '
-    -ResourceGroupName $resourceGroupName
-    ```
+$virtualMachineName = 'yourVMName'
 
-3.  将 OS 磁盘附加到新的 VM。
+$virtualMachineSize = 'Standard_DS3'
 
-    ```powershell
-    $VirtualMachine = New-AzureRmVMConfig -VMName $virtualMachineName -VMSize $virtualMachineSize
-    $VirtualMachine = Set-AzureRmVMOSDisk -VM $VirtualMachine -ManagedDiskId $osDisk.Id '
-    -StorageAccountType Premium_LRS -DiskSizeInGB 128 -CreateOption Attach -Windows
-    ```
+$adminUserName = "youradminusername"
 
-4.  从数据 VHD 文件中创建托管数据磁盘，并将其添加到新的 VM。
+$adminPassword = "yourpassword" | ConvertTo-SecureString -AsPlainText -Force
 
-    ```powershell
-    $dataDisk1 = New-AzureRmDisk -DiskName $dataDiskName -Disk (New-AzureRmDiskConfig '
-    -AccountType Premium_LRS -Location $location -CreationDataCreateOption Import '
-    -SourceUri $dataVhdUri ) -ResourceGroupName $resourceGroupName
+$imageName = 'yourImageName'
+
+$osVhdUri = 'https://storageaccount.blob.core.windows.net/vhdcontainer/osdisk.vhd'
+
+$dataVhdUri = 'https://storageaccount.blob.core.windows.net/vhdcontainer/datadisk1.vhd'
+
+$dataDiskName = 'dataDisk1'
+```
+
+使用经典 VM 中的 VHD 创建托管 OS 磁盘。 确保已为 $osVhdUri 参数提供 OS VHD 的完整 URI。 此外，根据要迁移到的磁盘类型（高级或标准），将“-AccountType”输入为“Premium_LRS”或“Standard_LRS”。
+
+```powershell
+$osDisk = New-AzureRmDisk -DiskName $osDiskName '
+   -Disk (New-AzureRmDiskConfig '
+   -AccountType Premium_LRS '
+   -Location $location '
+   -CreateOption Import '
+   -SourceUri $osVhdUri) '
+   -ResourceGroupName $resourceGroupName
+```
+
+将 OS 磁盘附加到新的 VM。
+
+```powershell
+$VirtualMachine = New-AzureRmVMConfig -VMName $virtualMachineName -VMSize $virtualMachineSize
+$VirtualMachine = Set-AzureRmVMOSDisk '
+   -VM $VirtualMachine '
+   -ManagedDiskId $osDisk.Id '
+   -StorageAccountType Premium_LRS '
+   -DiskSizeInGB 128 '
+   -CreateOption Attach -Windows
+```
+
+从数据 VHD 文件中创建托管数据磁盘，并将其添加到新的 VM。
+
+```powershell
+$dataDisk1 = New-AzureRmDisk '
+   -DiskName $dataDiskName '
+   -Disk (New-AzureRmDiskConfig '
+   -AccountType Premium_LRS '
+   -Location $location '
+   -CreationOption Import '
+   -SourceUri $dataVhdUri ) '
+   -ResourceGroupName $resourceGroupName
     
-    $VirtualMachine = Add-AzureRmVMDataDisk -VM $VirtualMachine -Name $dataDiskName '
-    -CreateOption Attach -ManagedDiskId $dataDisk1.Id -Lun 1
-    ```
+$VirtualMachine = Add-AzureRmVMDataDisk '
+   -VM $VirtualMachine '
+   -Name $dataDiskName '
+   -CreateOption Attach '
+   -ManagedDiskId $dataDisk1.Id '
+   -Lun 1
+```
 
-5.  通过设置公共 IP、虚拟网络和 NIC 创建新的 VM。
+通过设置公共 IP、虚拟网络和 NIC 创建新的 VM。
 
-    ```powershell
-    $publicIp = New-AzureRmPublicIpAddress -Name ($VirtualMachineName.ToLower()+'_ip') '
-    -ResourceGroupName $resourceGroupName -Location $location -AllocationMethod Dynamic
+```powershell
+$publicIp = New-AzureRmPublicIpAddress '
+   -Name ($VirtualMachineName.ToLower()+'_ip') '
+   -ResourceGroupName $resourceGroupName '
+   -Location $location '
+   -AllocationMethod Dynamic
     
-    $vnet = Get-AzureRmVirtualNetwork -Name $virtualNetworkName -ResourceGroupName $resourceGroupName
+$vnet = Get-AzureRmVirtualNetwork '
+   -Name $virtualNetworkName '
+   -ResourceGroupName $resourceGroupName
     
-    $nic = New-AzureRmNetworkInterface -Name ($VirtualMachineName.ToLower()+'_nic') '
-    -ResourceGroupName $resourceGroupName -Location $location -SubnetId $vnet.Subnets[0].Id '
-    -PublicIpAddressId $publicIp.Id
+$nic = New-AzureRmNetworkInterface '
+   -Name ($VirtualMachineName.ToLower()+'_nic') '
+   -ResourceGroupName $resourceGroupName '
+   -Location $location '
+   -SubnetId $vnet.Subnets[0].Id '
+   -PublicIpAddressId $publicIp.Id
     
-    $VirtualMachine = Add-AzureRmVMNetworkInterface -VM $VirtualMachine -Id $nic.Id
+$VirtualMachine = Add-AzureRmVMNetworkInterface '
+   -VM $VirtualMachine '
+   -Id $nic.Id
     
-    New-AzureRmVM -VM $VirtualMachine -ResourceGroupName $resourceGroupName -Location $location
-    ```
+New-AzureRmVM -VM $VirtualMachine '
+   -ResourceGroupName $resourceGroupName '
+   -Location $location
+```
 
 > [!NOTE]
 >本指南可能未涵盖支持应用程序所要执行的其他步骤。

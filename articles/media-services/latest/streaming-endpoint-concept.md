@@ -9,20 +9,26 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 12/20/2018
+ms.date: 01/16/2019
 ms.author: juliako
-ms.openlocfilehash: 8f3bcc3c631f17880c66e482234effcc4ea6424d
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.openlocfilehash: e286617897ecc9201c3880affd0a974f7330305a
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53744517"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54359625"
 ---
 # <a name="streaming-endpoints"></a>流式处理终结点
 
 在 Microsoft Azure 媒体服务 (AMS)中，[流式处理终结点](https://docs.microsoft.com/rest/api/media/streamingendpoints) 实体表示一个流服务，该服务可以直接将内容传递给客户端播放器应用程序，也可以传递给内容分发网络 (CDN) 以进一步分发。 流式处理终结点服务的出站流可以是实时流，也可以是媒体服务帐户中的视频点播资产。 用户创建媒体服务帐户时，将为用户创建一个处于“已停止”状态的默认流式处理终结点。 无法删除“默认”流式处理终结点。 可以在帐户下创建其他流式处理终结点。 若要开始流式处理视频，需启动要从中流式处理视频的流式处理终结点。 
 
-## <a name="streamingendpoint-types"></a>StreamingEndpoint 类型  
+## <a name="naming-convention"></a>命名约定
+
+对于默认终结点：`{AccountName}-{DatacenterAbbreviation}.streaming.media.azure.net`
+
+对于任何其他终结点：`{EndpointName}-{AccountName}-{DatacenterAbbreviation}.streaming.media.azure.net`
+
+## <a name="types"></a>类型  
 
 有两种类型的 StreamingEndpoint：标准和高级。 类型由用户为流式处理终结点分配的缩放单元（`scaleUnits`）数定义。 
 
@@ -37,13 +43,16 @@ ms.locfileid: "53744517"
 
 在大多数情况下，应该启用 CDN。 但是，如果预计最大并发低于 500 个查看者，则建议禁用 CDN，因为 CDN 最适用于随并发缩放。
 
+> [!NOTE]
+> 无论你是否启用 CDN，流式处理终结点 `hostname` 和流式处理 URL 都保持不变。
+
 ### <a name="detailed-explanation-of-how-caching-works"></a>有关缓存工作原理的详细说明
 
 添加 CDN 时没有特定的带宽值，因为启用 CDN 的流式处理终结点所需的带宽量会有所不同。 很大程度上取决于内容的类型，它的受欢迎程度、比特率和协议。 CDN 仅缓存所请求的内容。 这意味着，只要缓存了视频片段，就会直接从 CDN 提供受欢迎的内容。 可能会缓存实时内容，因为通常会有很多人观看完全相同的内容。 按需内容可能有点棘手，因为你可能会有一些受欢迎的内容，也有一些不受欢迎的内容。 如果你有数百万的视频资产，其中没有一个是受欢迎的（每周只有 1 或 2 个查看者），但有成千上万的人观看所有不同的视频，CDN 的效果会大打折扣。 如果此缓存失误，则会增加流式处理终结点的负载。
  
 还需要考虑自适应流式处理的工作原理。 每个单独的视频片段都作为自己的实体进行缓存。 例如，如果第一次观看某个视频，此人在此处仅仅观看几秒钟就跳过，那么只有与此人观看内容相关联的视频片段会被缓存在 CDN 中。 使用自适应流式处理，你通常会有 5 到 7 种不同的视频比特率。 如果一个人正在观看一种比特率并且另一个人在观看不同的比特率，则它们会在 CDN 中单独缓存。 即使两个人在观看相同的比特率，他们也可以通过不同的协议进行流式处理。 每个协议（HLS、MPEG-DASH、平滑流式处理）都是单独缓存的。 因此，会单独缓存每个比特率和协议，并且仅缓存已请求的视频片段。
  
-## <a name="streamingendpoint-properties"></a>StreamingEndpoint 属性 
+## <a name="properties"></a>属性 
 
 本部分提供了一些 StreamingEndpoint 属性的详细信息。 有关如何创建新流式处理终结点和所有属性描述的示例，请参阅[流式处理终结点](https://docs.microsoft.com/rest/api/media/streamingendpoints/create)。 
 

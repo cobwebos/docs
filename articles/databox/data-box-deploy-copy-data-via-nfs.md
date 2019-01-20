@@ -1,19 +1,19 @@
 ---
 title: 通过 NFS 将数据复制到 Microsoft Azure Data Box | Microsoft Docs
-description: 了解如何将数据复制到 Azure Data Box
+description: 了解如何通过 NFS 将数据复制到 Azure Data Box
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 11/20/2018
+ms.date: 01/16/2019
 ms.author: alkohli
-ms.openlocfilehash: 7ba6bc2cf3cf5286719bc6da519aabb364302af3
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 1cd88e24b945bc6ce627b25b0645bf961039037b
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53550228"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54359810"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-via-nfs"></a>教程：通过 NFS 将数据复制到 Azure Data Box 
 
@@ -44,12 +44,13 @@ ms.locfileid: "53550228"
 
 块 Blob 和页 Blob 共享下的一级实体为容器，二级实体为 Blob。 在 Azure 文件共享下，一级实体为共享，二级实体为文件。
 
-请考虑以下示例。 
-
-- 存储帐户：*Mystoracct*
-- 块 blob 的共享：*Mystoracct_BlockBlob/my-container/blob*
-- 页 blob 的共享：*Mystoracct_PageBlob/my-container/blob*
-- 文件的共享：*Mystoracct_AzFile/my-share*
+下表显示了 Data Box 上共享的 UNC 路径以及上传数据的 Azure 存储路径 URL。 最终的 Azure 存储路径 URL 可以从 UNC 共享路径派生。
+ 
+|                   |                                                            |
+|-------------------|--------------------------------------------------------------------------------|
+| Azure 块 Blob | <li>UNC 共享路径：`//<DeviceIPAddress>/<StorageAccountName_BlockBlob>/<ContainerName>/files/a.txt`</li><li>Azure 存储 URL：`https://<StorageAccountName>.blob.core.windows.net/<ContainerName>/files/a.txt`</li> |  
+| Azure 页 Blob  | <li>UNC 共享路径：`//<DeviceIPAddres>/<StorageAccountName_PageBlob>/<ContainerName>/files/a.txt`</li><li>Azure 存储 URL：`https://<StorageAccountName>.blob.core.windows.net/<ContainerName>/files/a.txt`</li>   |  
+| Azure 文件       |<li>UNC 共享路径：`//<DeviceIPAddres>/<StorageAccountName_AzFile>/<ShareName>/files/a.txt`</li><li>Azure 存储 URL：`https://<StorageAccountName>.file.core.windows.net/<ShareName>/files/a.txt`</li>        |
 
 如果使用 Linux 主机，请执行以下步骤将 Data Box 配置为允许 NFS 客户端访问。
 
@@ -71,14 +72,17 @@ ms.locfileid: "53550228"
 
     `sudo mount -t nfs 10.161.23.130:/Mystoracct_Blob /home/databoxubuntuhost/databox`
 
+    **始终为要复制到共享下的文件创建一个文件夹，然后将文件复制到该文件夹**。 在块 blob 和页 blob 共享下创建的文件夹表示将数据作为 blob 上传到的容器。 无法将文件直接复制到存储帐户中的 $root 文件夹。
+
 ## <a name="copy-data-to-data-box"></a>将数据复制到 Data Box
 
-连接到 Data Box 共享后，下一步是复制数据。 在复制数据之前，请务必查看以下注意事项：
+连接到 Data Box 共享后，下一步是复制数据。 在开始复制数据之前，请查看以下注意事项：
 
 - 确保将数据复制到与适当数据格式对应的共享中。 例如，将块 Blob 数据复制到块 Blob 的共享中。 如果数据格式与相应的共享类型不匹配，则在后续步骤中，数据将无法上传到 Azure。
 -  复制数据时，请确保数据大小符合 [Azure 存储和 Data Box 限制](data-box-limits.md)中所述的大小限制。 
 - 如果 Data Box 正在上传的数据同时已由 Data Box 外部的其他应用程序上传，则可能会导致上传作业失败和数据损坏。
 - 我们建议不要同时使用 SMB 和 NFS，也不要将相同的数据复制到 Azure 上的同一个最终目标。 在这种情况下，最终的结果不可确定。
+- **始终为要复制到共享下的文件创建一个文件夹，然后将文件复制到该文件夹**。 在块 blob 和页 blob 共享下创建的文件夹表示将数据作为 blob 上传到的容器。 无法将文件直接复制到存储帐户中的 $root 文件夹。
 
 如果使用 Linux 主机，请使用类似于 Robocopy 的复制实用工具。 在 Linux 中可用的一些替代工具包括 [rsync](https://rsync.samba.org/)、[FreeFileSync](https://www.freefilesync.org/)、[Unison](https://www.cis.upenn.edu/~bcpierce/unison/) 或 [Ultracopier](https://ultracopier.first-world.info/)。  
 
@@ -117,6 +121,10 @@ ms.locfileid: "53550228"
      其中，j 指定并行化数目，X 为并行副本数
 
      我们建议从 16 个并行副本开始，并根据可用的资源增加线程数。
+
+- 为确保数据完整性，复制数据时将以内联方式计算校验和。 复制完成后，检查设备上的已用空间和可用空间。
+    
+   ![在仪表板上检查可用空间和已用空间](media/data-box-deploy-copy-data/verify-used-space-dashboard.png)
 
 ## <a name="prepare-to-ship"></a>准备交付
 

@@ -1,26 +1,8 @@
 ---
-title: 使用 PowerShell 重新训练新的机器学习工作室 Web 服务 - Azure | Microsoft Docs
-description: 了解如何使用机器学习管理 PowerShell cmdlet 以编程方式重新训练模型并更新 Web 服务，以在 Azure 中使用新的训练模型。
-services: machine-learning
-documentationcenter: ''
-author: ericlicoding
-ms.custom: seodec18
-ms.author: amlstudiodocs
-editor: cgronlun
-ms.assetid: 3953a398-6174-4d2d-8bbd-e55cf1639415
-ms.service: machine-learning
-ms.component: studio
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 03/28/2017
-ms.openlocfilehash: 0dc41b001ecca26239c0a9e8f69e2709d6927fcd
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
-ms.translationtype: HT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53250567"
+title:使用 PowerShell 重新训练新的机器学习工作室 Web 服务 titleSuffix: Azure 机器学习工作室 description:了解如何使用机器学习管理 PowerShell cmdlet 以编程方式重新训练模型并更新 Web 服务，以在 Azure 中使用新的训练模型。
+services: machine-learning ms.service: machine-learning ms.component: studio ms.topic: article
+
+author: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18 ms.date:03/28/2017
 ---
 # <a name="retrain-a-new-resource-manager-based-studio-web-service-using-powershell"></a>使用 Powershell 重新训练基于资源管理器的 新工作室 Web 服务
 重新训练新的 Web 服务时，将更新预测 Web 服务定义以引用新的训练模型。

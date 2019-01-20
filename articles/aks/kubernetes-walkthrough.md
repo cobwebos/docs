@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 12/18/2018
 ms.author: iainfou
 ms.custom: H1Hack27Feb2017, mvc, devcenter
-ms.openlocfilehash: 7c7881f08828572c01a5e0decb270c653416ef9b
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: de11ebdc38ae5085fef274181084310ccc02a329
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54024257"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54304000"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-using-the-azure-cli"></a>快速入门：使用 Azure CLI 部署 Azure Kubernetes 服务 (AKS) 群集
 
@@ -31,7 +31,7 @@ Azure Kubernetes 服务 (AKS) 是可用于快速部署和管理群集的托管�
 
 ## <a name="create-a-resource-group"></a>创建资源组
 
-Azure 资源组是在其中部署和管理 Azure 资源的逻辑组。 创建资源组时，系统会要求你指定一个位置， 该位置是资源在 Azure 中运行的地方。 使用 [az group create][az-group-create] 命令创建资源组。
+Azure 资源组是在其中部署和管理 Azure 资源的逻辑组。 创建资源组时，系统会要求你指定一个位置， 此位置是资源组元数据的存储位置，如果你在创建资源期间未指定另一个区域，则它还是你的资源在 Azure 中的运行位置。 使用 [az group create][az-group-create] 命令创建资源组。
 
 以下示例在 *eastus* 位置创建名为 *myAKSCluster* 的资源组。
 
@@ -268,7 +268,7 @@ az group delete --name myResourceGroup --yes --no-wait
 
 ## <a name="next-steps"></a>后续步骤
 
-在本快速入门中，部署了 Kubernetes 群集，并向该群集部署了多容器应用程序。
+在本快速入门中，部署了 Kubernetes 群集，并向该群集部署了多容器应用程序。  为你刚才创建的群集[访问 Kubernetes Web 仪表板][kubernetes-dashboard]。
 
 若要详细了解 AKS 并演练部署示例的完整代码，请继续阅读“Kubernetes 群集”教程。
 
@@ -297,3 +297,4 @@ az group delete --name myResourceGroup --yes --no-wait
 [azure-portal]: https://portal.azure.com
 [kubernetes-deployment]: concepts-clusters-workloads.md#deployments-and-yaml-manifests
 [kubernetes-service]: concepts-network.md#services
+[kubernetes-dashboard]: kubernetes-dashboard.md

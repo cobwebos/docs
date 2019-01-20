@@ -10,15 +10,14 @@ ms.topic: conceptual
 ms.date: 01/07/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 47b501fef8d6e0e3fecf944e3b67d563b8cce5eb
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 5c89673f6154c77a40fb71ae483151998596e7fb
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54117905"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54354410"
 ---
-# <a name="azure-ad-b2c-secure-a-web-api-by-using-nodejs"></a>Azure AD B2C：使用 Node.js 保护 Web API
-<!-- TODO [AZURE.INCLUDE [active-directory-b2c-devquickstarts-web-switcher](../../includes/active-directory-b2c-devquickstarts-web-switcher.md)]-->
+# <a name="secure-a-web-api-by-using-nodejs-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中使用 Node.js 保护 Web API
 
 借助 Azure Active Directory (Azure AD) B2C，可以使用 OAuth 2.0 访问令牌来保护 Web API。 这些令牌允许使用 Azure AD B2C 的客户端应用对 API 进行身份验证。 本文说明如何创建一个“待办事项列表”API，使用户能够添加和列出任务。 Web API 使用 Azure AD B2C 进行保护，只允许经过身份验证的用户管理其待办事项列表。
 
@@ -36,7 +35,7 @@ ms.locfileid: "54117905"
 3. 配置一个客户端应用程序用于调用“待办事项列表”Web API。
 
 ## <a name="get-an-azure-ad-b2c-directory"></a>获取 Azure AD B2C 目录
-只有在创建目录或租户之后，才可使用 Azure AD B2C。  目录是所有用户、应用、组等对象的容器。  如果没有容器，请先 [创建 B2C 目录](active-directory-b2c-get-started.md) ，再继续。
+只有在创建目录或租户之后，才可使用 Azure AD B2C。  目录是所有用户、应用、组等对象的容器。  如果没有容器，请先 [创建 B2C 目录](tutorial-create-tenant.md) ，再继续。
 
 ## <a name="create-an-application"></a>创建应用程序
 接下来，需要在 B2C 目录中创建一个应用，以便为 Azure AD 提供一些必要信息，使它与应用安全通信。 在本例中，由于客户端应用与 Web API 构成一个逻辑应用，因此由单个 **应用程序 ID**表示。 若要创建应用，请遵循 [这些说明](active-directory-b2c-app-registration.md)。 请务必：
@@ -47,17 +46,13 @@ ms.locfileid: "54117905"
 * 复制分配给应用的 **应用程序 ID** 。 稍后需要此数据。
 
 ## <a name="create-your-policies"></a>创建策略
-在 Azure AD B2C 中，每个用户体验由 [策略](active-directory-b2c-reference-policies.md)定义。 此应用包含两种标识体验：注册和登录。 需要按 [策略参考文章](active-directory-b2c-reference-policies.md#create-a-sign-up-user-flow)中所述，为每个类型创建一个策略。  创建三个策略时，请务必：
+在 Azure AD B2C 中，每个用户体验由 [策略](active-directory-b2c-reference-policies.md)定义。 此应用程序包含两种标识体验：注册和登录。 你需要为每种类型创建一个策略。  创建策略时，请务必：
 
 * 在注册策略中，选择“显示名称”和其他注册属性。
 * 在每个策略中，选择“显示名称”和“对象 ID”应用程序声明。  也可以选择其他声明。
 * 创建每个策略后，请复制策略的 **名称** 。 其前缀应为 `b2c_1_`。  稍后需要这些策略名称。
 
-[!INCLUDE [active-directory-b2c-devquickstarts-policy](../../includes/active-directory-b2c-devquickstarts-policy.md)]
-
-创建三个策略后，可以开始构建应用。
-
-若要了解 Azure AD B2C 中策略的工作原理，请先阅读 [.NET Web 应用入门教程](active-directory-b2c-devquickstarts-web-dotnet.md)。
+创建策略后，可以开始构建应用。
 
 ## <a name="download-the-code"></a>下载代码
 本教程的代码 [保留在 GitHub 上](https://github.com/AzureADQuickStarts/B2C-WebAPI-NodeJS)。 若要根据说明构建示例，请 [下载 .zip 文件格式的骨干项目](https://github.com/AzureADQuickStarts/B2C-WebAPI-NodeJS/archive/skeleton.zip)。 也可以克隆骨干项目：

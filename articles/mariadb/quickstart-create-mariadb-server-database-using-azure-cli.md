@@ -8,12 +8,12 @@ ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 01/09/2019
 ms.custom: mvc
-ms.openlocfilehash: 0a629b9b068694960178c1c5727ba2f38b0e8af7
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 7d45c11345312fe48312bd4e744433397a17a62d
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54190322"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54359317"
 ---
 # <a name="create-an-azure-database-for-mariadb-server-by-using-the-azure-cli"></a>使用 Azure CLI 创建 Azure Database for MariaDB 服务器
 
@@ -59,10 +59,10 @@ storage-size | **51200** | 服务器的存储容量（单位是兆字节）。 �
 admin-user | **myadmin** | 用于管理员登录的用户名。 admin-user 参数不能是“azure_superuser”、“admin”、“administrator”、“root”、“guest”或“public”。
 admin-password | 你的密码 | 管理员用户的密码。 密码必须包含 8 到 128 个字符。 密码必须包含以下三个类别的字符：英文大写字母、英文小写字母、数字和非字母数字字符。
 
-**sku-name** 参数值遵循*定价层*\_*计算代*\_*vCore 数*约定，如以下示例所示：
-+ `--sku-name B_Gen5_4` 映射到“基本”定价层、“第 5 代”计算代、4 vCore。
-+ `--sku-name GP_Gen5_32` 映射到“常规用途”定价层、“第 5 代”计算代、32 vCore。
-+ `--sku-name MO_Gen5_2` 映射到“内存优化”定价层、“第 5 代”计算代、2 vCore。
+sku-name 参数值遵循 {定价层}\_{计算层代}\_{vCore 数} 约定，如以下示例中所示：
++ `--sku-name B_Gen5_1` 映射到基本、第 5 代和 1 个 vCore。 此选项是可用的最小 SKU。
++ `--sku-name GP_Gen5_32` 映射到常规用途、第 5 层和 32 个 vCore。
++ `--sku-name MO_Gen5_2` 映射到内存优化、第 5 层和 2 个 vCore。
 
 若要按区域和层了解有效值，请参阅[定价层](./concepts-pricing-tiers.md)。
 

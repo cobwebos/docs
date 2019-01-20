@@ -12,19 +12,28 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/20/2018
+ms.date: 1/9/2018
 ms.author: rkarlin
-ms.openlocfilehash: 1948cee033ecb8b50fdd75513a07766490568600
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 3c2da9830a8ddbce842d959ba086bf4eb30d5fdb
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53337251"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54258758"
 ---
 # <a name="provide-security-contact-details-in-azure-security-center"></a>在 Azure 安全中心提供安全联系人详细信息
 Azure 安全中心建议对 Azure 订阅提供安全联系人的详细信息（如果尚未提供）。 如果 Microsoft 安全响应中心 (MSRC) 发现用户的客户数据被某方非法访问或未经授权访问，Microsoft 会使用该信息联系用户。 MSRC 会执行 Azure 网络和基础结构的选择安全监视，并接收来自第三方的威胁情报和恶意投诉。
 
-每日第一个警报发生时会发送电子邮件通知（仅对于高严重级别的警报）。 只能对订阅策略配置电子邮件首选项。 订阅内的资源组将继承这些设置。
+每日第一个警报发生时会发送电子邮件通知（仅对于高严重级别的警报）。 只能对订阅策略配置电子邮件首选项。 订阅内的资源组将继承这些设置。 
+
+将会发送警报电子邮件通知：
+- 仅适用于高严重性警报
+- 每天每种警报类型发送给一个电子邮件收件人  
+- 一天之内发送给一个收件人的电子邮件不得超过 3 封
+- 每封电子邮件都包含一个警报，而不是警报的聚合
+ 
+例如，如果已发送电子邮件消息提醒你有关 RDP 攻击的信息，则即使有其他警报触发，你也不会在同一天收到有关 RDP 攻击的其他电子邮件。 
+ 
 
 > [!NOTE]
 > 本文档将使用示例部署介绍该服务。  这并非一份循序渐进的指南。

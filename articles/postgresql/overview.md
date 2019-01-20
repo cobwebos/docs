@@ -7,12 +7,12 @@ ms.custom: mvc
 ms.service: postgresql
 ms.topic: overview
 ms.date: 11/14/2018
-ms.openlocfilehash: 775c9990c85feb3e9e180af6470e7c9a1aa124f3
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.openlocfilehash: 318778a83c82b0ddb88f8bbd852442ab389fedb3
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53808972"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54352251"
 ---
 # <a name="what-is-azure-database-for-postgresql"></a>什么是用于 PostgreSQL 的 Azure 数据库？
 
@@ -48,7 +48,7 @@ Azure 行业领先的 99.99% 可用性服务级别协议 (SLA)（由 Microsoft �
 ## <a name="secure-your-data"></a>保护数据
 Azure 数据库沿袭了 Azure Database for PostgreSQL 的若干数据安全性功能，包括限制访问、保护静止和移动数据以及帮助监视活动等。 有关 Azure 平台安全性的信息，请访问 [Azure 信任中心](https://azure.microsoft.com/overview/trusted-cloud/)。
 
-用于 PostgreSQL 的 Azure 数据库服务对静态数据使用存储加密。 包括备份在内的数据都在磁盘中加密（运行查询时由引擎创建的临时文件除外）。 该服务使用包含在 Azure 存储加密中的 AES 256 位密码，并且密钥由系统进行管理。 存储加密始终处于启用状态，无法禁用。
+Azure Database for PostgreSQL 服务对静态数据使用存储加密，并且符合 FIPS 140-2 标准。 包括备份在内的数据都在磁盘中加密（运行查询时由引擎创建的临时文件除外）。 该服务使用包含在 Azure 存储加密中的 AES 256 位密码，并且密钥由系统进行管理。 存储加密始终处于启用状态，无法禁用。
 
 默认情况下，用于 PostgreSQL 的 Azure 数据库服务被配置为要求整个网络中的动态数据具备 [SSL 连接安全性](./concepts-ssl-connection-security.md)。 通过在数据库服务器与客户端应用程序之间强制实施 SSL 连接，可以加密服务器与应用程序之间的数据流，有助于防止“中间人”攻击。 （可选）如果客户端应用程序不支持 SSL 连接，则可以禁止要求 SSL 连接到数据库服务。
 

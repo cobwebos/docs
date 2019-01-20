@@ -8,12 +8,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 12/17/2018
-ms.openlocfilehash: 5d7a16ebda088d0ed42021e9def20a398e914ad9
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: 29672a75408e42fb9239e5d826784b46e7280805
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54158119"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54332262"
 ---
 # <a name="create-change-or-delete-an-azure-route-table-using-ansible"></a>使用 Ansible 创建、更改或删除 Azure 路由表
 Azure 自动在 Azure 子网、虚拟网络与本地网络之间路由流量。 若要更改 Azure 上的任何默认路由，可以创建一个[路由表](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview)。
@@ -51,7 +51,7 @@ ansible-playbook route_table_create.yml
 ## <a name="associate-a-route-table-to-a-subnet"></a>将路由表关联到子网
 子网可以没有或有一个与其相关联的路由表。 一个路由表可与零个或多个子网相关联。 由于路由表不会关联到虚拟网络，因此，必须将路由表关联到每个相关子网。 如果虚拟网络已连接到 Azure 虚拟网络网关（ExpressRoute 或 VPN，如果结合 VPN 网关使用 BGP），则离开子网的所有流量将会根据路由表中创建的路由、[默认路由](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview#default)以及从本地网络传播的路由进行路由。 只能将路由表关联到该路由表所在的同一 Azure 位置和订阅中的虚拟网络内的子网。
 
-本部分提供了一个示例 Ansible playbook，它创建虚拟网络和提交，然后将路由表关联至子网。
+本部分提供了一个示例 Ansible playbook，它用于创建一个虚拟网络和一个子网，然后将路由表关联到该子网。
 
 ```yml
 - hosts: localhost

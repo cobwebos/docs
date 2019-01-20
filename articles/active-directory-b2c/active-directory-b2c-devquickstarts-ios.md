@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 9dbe88e1e179df4560d5094cf3f58ca770541323
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: e6e0904efdb86376688710a94920cdb44c2804ec
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52842266"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54353118"
 ---
 # <a name="azure-ad-b2c-sign-in-using-an-ios-application"></a>Azure AD B2C：使用 iOS 应用程序登录
 
@@ -29,7 +29,7 @@ Microsoft 标识平台使用开放式标准，例如 OAuth2 和 OpenID Connect�
 对于 OAuth2 或 OpenID Connect 的新手，该示例配置中的大部分内容可能较难理解。 建议查看 [此处所述的简要协议概述](active-directory-b2c-reference-protocols.md)。
 
 ## <a name="get-an-azure-ad-b2c-directory"></a>获取 Azure AD B2C 目录
-只有在创建目录或租户之后，才可使用 Azure AD B2C。 目录是所有用户、应用、组等对象的容器。 如果没有容器，请先 [创建 B2C 目录](active-directory-b2c-get-started.md) ，再继续。
+只有在创建目录或租户之后，才可使用 Azure AD B2C。 目录是所有用户、应用、组等对象的容器。 如果没有容器，请先 [创建 B2C 目录](tutorial-create-tenant.md) ，再继续。
 
 ## <a name="create-an-application"></a>创建应用程序
 接下来，需要在 B2C 目录中创建应用。 应用注册为 Azure AD 提供所需的 Azure AD 信息，使之能够与应用安全通信。 若要创建移动应用，请遵循[这些说明](active-directory-b2c-app-registration.md)。 请务必：
@@ -39,13 +39,11 @@ Microsoft 标识平台使用开放式标准，例如 OAuth2 和 OpenID Connect�
 * 使用自定义方案（例如 com.onmicrosoft.fabrikamb2c.exampleapp://oauth/redirect）设置“重定向 URI”。 稍后需要用到此 URI。
 
 ## <a name="create-your-user-flows"></a>创建用户流
-在 Azure AD B2C 中，每个用户体验由[用户流](active-directory-b2c-reference-policies.md)定义。 此应用包含一个标识体验：合并的登录和注册。 按照[用户流参考文章](active-directory-b2c-reference-policies.md#create-a-sign-up-user-flow)中的说明创建此用户流。 创建用户流时，请务必：
+在 Azure AD B2C 中，每个用户体验由[用户流](active-directory-b2c-reference-policies.md)定义。 此应用程序包含一个标识体验：合并的登录和注册。 创建用户流时，请务必：
 
 * 在“注册属性”下，选择“显示名称”属性。  还可选择其他属性。
 * 在“应用程序声明”下，选择“显示名称”和“用户的对象 ID”声明。 也可选择其他声明。
 * 创建用户流后，请复制每个用户流的名称。 保存用户流时，用户流名称带有前缀 `b2c_1_`。  稍后需要用户流名称。
-
-[!INCLUDE [active-directory-b2c-devquickstarts-policy](../../includes/active-directory-b2c-devquickstarts-policy.md)]
 
 创建用户流后，可以开始构建应用。
 

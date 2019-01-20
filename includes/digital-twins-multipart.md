@@ -5,15 +5,15 @@ services: digital-twins
 author: kingdomofends
 ms.service: digital-twins
 ms.topic: include
-ms.date: 01/02/2019
+ms.date: 01/11/2019
 ms.author: adgera
 ms.custom: include file
-ms.openlocfilehash: 6eb7993b4dbec3ab4901dc7071d18eae98ab8ae4
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: ac6b008597b6d6e557a0cc412c00c2202231bc3d
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54079249"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54267720"
 ---
 > [!NOTE]
 > 多部分请求通常需要三个信息片段：
@@ -26,11 +26,11 @@ ms.locfileid: "54079249"
 >
 > **Content-Type** 和 **Content-Disposition** 将因使用方案而异。
 
-可以通过 REST 客户端或诸如 [Postman](https://www.getpostman.com/) 的工具以编程方式（通过 C#）进行多部分请求。 各种 REST 客户端工具对复杂的多部分请求可能具有不同的支持级别。 请验证哪个工具最适合你的需求。
+可以通过 REST 客户端或诸如 [Postman](https://docs.microsoft.com/azure/digital-twins/how-to-configure-postman#multi) 的工具以编程方式（通过 C#）进行多部分请求。 各种 REST 客户端工具对复杂的多部分请求可能具有不同的支持级别。 不同工具的配置设置也可能略有不同。 请验证哪个工具最适合你的需求。
 
 > [!IMPORTANT]
-> 向 Azure 数字孪生管理 API 发出的多部分请求包含两个部分：
-> * 由 **Content-Type** 和 **Content-Disposition** 声明的 Blob 元数据（例如关联的 MIME 类型）
+> 向 Azure 数字孪生管理 API 发出的多部分请求通常包含两个部分：
+> * 由 **Content-Type** 和/或 **Content-Disposition** 声明的 Blob 元数据（例如关联的 MIME 类型）
 > * 包括要上传的文件的非结构化内容的 Blob 内容
 >
 > 对于 PATCH 请求，上述两个部分都不是必需的。 对于 **POST** 请求或 create 操作，两者都是必需的。

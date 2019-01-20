@@ -12,14 +12,14 @@ ms.topic: overview
 ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/20/2018
+ms.date: 01/11/2019
 ms.author: kumud
-ms.openlocfilehash: 7b0a837bf23145c5ac5e5775d4324582fa3a6b20
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: e66acd6a94b891ac3f727fddb7a88a9c56f465d3
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54120829"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54246562"
 ---
 # <a name="what-is-azure-load-balancer"></a>什么是 Azure 负载均衡器？
 
@@ -153,7 +153,13 @@ _最佳做法是显式指定 SKU，尽管目前不强制要求这样做。_  目
 图：使用公共和内部负载均衡器对多层应用程序进行负载均衡
 
 ## <a name="pricing"></a>定价
-根据配置的负载均衡规则数量以及处理的入站和出站数据量计收标准负载均衡器的费用。 有关标准负载均衡器的定价信息，请访问[负载均衡器定价](https://azure.microsoft.com/pricing/details/load-balancer/)页。
+
+使用标准负载均衡器是收费的。
+
+- 已配置的负载均衡规则和出站规则的数量（入站 NAT 规则不计入规则总数）
+- 处理的入站和出站数据的数量，与规则无关。 
+
+有关标准负载均衡器的定价信息，请访问[负载均衡器定价](https://azure.microsoft.com/pricing/details/load-balancer/)页。
 
 基本负载均衡器是免费提供的。
 

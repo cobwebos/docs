@@ -7,13 +7,13 @@ manager: cgronlun
 ms.author: grhuynh
 ms.service: genomics
 ms.topic: quickstart
-ms.date: 12/07/2017
-ms.openlocfilehash: 152aa51c6dee12216dc9e5fac70f43f638c2c8da
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.date: 01/11/2019
+ms.openlocfilehash: 4c8d488021ca12a704a5c0a06bb0c491588bcaed
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51242851"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54261683"
 ---
 # <a name="quickstart-run-a-workflow-through-the-microsoft-genomics-service"></a>快速入门：通过 Microsoft 基因组学服务运行工作流
 
@@ -38,9 +38,9 @@ ms.locfileid: "51242851"
 
  |**设置**          |  **建议的值**  | **字段说明** |
  |:-------------       |:-------------         |:----------            |
- |帐户名         | MyGenomicsAccount     |选择唯一的帐户标识符。 请参阅[命名规则](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)，了解什么是有效的名称 |
  |订阅         | 订阅名称|这是 Azure 服务的计费单位 - 有关订阅的详细信息，请参阅[订阅](https://account.azure.com/Subscriptions) |      
  |资源组       | MyResourceGroup       |  可以通过资源组将多个 Azure 资源（存储帐户、基因组学帐户等）分到一个组中，方便管理。 有关详细信息，请参阅[资源组](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#resource-groups)。 请参阅[命名规则](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)，了解什么是有效的资源组名称 |
+ |帐户名         | MyGenomicsAccount     |选择唯一的帐户标识符。 请参阅[命名规则](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)，了解什么是有效的名称 |
  |位置                   | 美国西部 2                    |    在美国西部 2、西欧和东南亚提供服务 |
 
 
@@ -112,28 +112,22 @@ Microsoft 基因组学服务要求将输入作为块 Blob 存储在 Azure 存储
 
 ![存储的“创建”边栏选项卡](./media/quickstart-run-genomics-workflow-portal/genomics-storage-create-blade.png "存储的“创建”边栏选项卡")
 
-为存储帐户配置以下信息，如上图所示。 对存储帐户使用大多数标准选项，仅指定帐户是 Blob 存储帐户，不是常规用途帐户。 Blob 存储帐户的下载和上传速度是常规用途帐户的 2-5 倍。 
+为存储帐户配置以下信息，如上图所示。 对存储帐户使用大多数标准选项，仅指定帐户是 Blob 存储帐户，不是常规用途帐户。 Blob 存储帐户的下载和上传速度是常规用途帐户的 2-5 倍。  建议使用默认的部署模型，即资源管理器。  
 
 
  |**设置**          |  **建议的值**  | **字段说明** |
  |:-------------------------       |:-------------         |:----------            |
- |名称         | MyStorageAccount     |选择唯一的帐户标识符。 请参阅[命名规则](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)，了解什么是有效的名称 |
- |部署模型         | 资源管理器| 建议使用“资源管理器”部署模型。 有关详细信息，请参阅[了解资源管理器部署](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-deployment-model) |      
- |帐户类型       | Blob 存储       |  Blob 存储帐户的下载和上传速度可以是常规用途帐户的 2-5 倍。 |
- |性能                  | 标准                   | 默认值为“标准”。 有关标准和高级存储帐户的更多详细信息，请参阅 [Microsoft Azure 存储简介](https://docs.microsoft.com/azure/storage/common/storage-introduction)    |
- |复制                  | 本地冗余存储                  | 本地冗余存储在创建存储帐户时所在区域的数据中心内复制数据。 有关详细信息，请参阅 [Azure 存储复制](https://docs.microsoft.com/azure/storage/common/storage-redundancy)    |
- |需要安全传输                  | 已禁用                 | 默认为禁用。 有关数据传输安全性的详细信息，请参阅[需要安全传输](https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer)    |
- |访问层                  | 热                   | 热访问是指存储帐户中对象的访问频率会更高。    |
  |订阅         | Azure 订阅 |有关订阅的详细信息，请参阅[订阅](https://account.azure.com/Subscriptions) |      
  |资源组       | MyResourceGroup       |  可以选择同一资源组作为基因组学帐户。 请参阅[命名规则](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)，了解什么是有效的资源组名称 |
- |位置                  | 美国西部 2                  | 使用的位置与基因组学帐户的位置相同，目的是降低传出费用和延迟。 在美国西部 2、西欧和东南亚提供基因组学服务    |
- |虚拟网络                | 已禁用                   | 默认为禁用。 有关详细信息，请参阅 [Azure 虚拟网络](https://docs.microsoft.com/azure/storage/common/storage-network-security)    |
+ |存储帐户名称         | MyStorageAccount     |选择唯一的帐户标识符。 请参阅[命名规则](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)，了解什么是有效的名称 |
+ |位置                  | 美国西部 2                  | 使用的位置与基因组学帐户的位置相同，目的是降低传出费用和延迟。  | 
+ |性能                  | 标准                   | 默认值为“标准”。 有关标准和高级存储帐户的更多详细信息，请参阅 [Microsoft Azure 存储简介](https://docs.microsoft.com/azure/storage/common/storage-introduction)    |
+ |帐户类型       | Blob 存储       |  Blob 存储帐户的下载和上传速度可以是常规用途帐户的 2-5 倍。 |
+ |复制                  | 本地冗余存储                  | 本地冗余存储在创建存储帐户时所在区域的数据中心内复制数据。 有关详细信息，请参阅 [Azure 存储复制](https://docs.microsoft.com/azure/storage/common/storage-redundancy)    |
+ |访问层                  | 热                   | 热访问是指存储帐户中对象的访问频率会更高。    |
 
 
-
-
-
-然后单击“创建”以创建存储帐户。 与创建基因组学帐户时的操作一样，单击顶部菜单栏中的“通知”即可监视部署过程。 
+然后单击 `Review + create` 以创建存储帐户。 与创建基因组学帐户时的操作一样，单击顶部菜单栏中的“通知”即可监视部署过程。 
 
 
 ## <a name="upload-input-data-to-your-storage-account"></a>将输入数据上传到存储帐户
@@ -156,6 +150,11 @@ Microsoft 基因组学服务要求使用双端读数作为输入文件。 进行
 
 
 ![基因组学配置](./media/quickstart-run-genomics-workflow-portal/genomics-config.png "基因组学配置")
+
+
+如果想要运行 GATK4，请将 `process_name` 参数设置为 gatk4 或 gatk4-promo。 有关 GATK4 提升的详细信息，请访问[此页](https://aka.ms/msgatk4)。
+
+默认情况下，基因组学服务将输出 VCF 文件。 如果需要 gVCF 输出而非 VCF 输出（等效于 GATK 3.x 中的 `-emitRefConfidence` 和 GATK 4.x 中的 `emit-ref-confidence`），请将 `emit_ref_confidence` 参数添加到 `config.txt` 并将它设置为 `gvcf`，如上图中所示。  若要更改回 VCF 输出，请将它从 `config.txt` 文件中删除，或者将 `emit_ref_confidence` 参数设置为 `none`。 
 
 ### <a name="submit-your-workflow-to-the-microsoft-genomics-service-the-microsoft-genomics-client"></a>使用 Microsoft 基因组学客户端将工作流提交到 Microsoft 基因组学服务
 

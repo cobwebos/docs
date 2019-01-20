@@ -1,59 +1,33 @@
 ---
-title: 使用 Azure SQL 数据库托管实例进行复制 | Microsoft Docs
-description: 了解如何对 Azure SQL 数据库托管实例使用 SQL Server 复制
+title: 在 Azure SQL 数据库托管实例中配置复制 | Microsoft Docs
+description: 了解如何在 Azure SQL 数据库托管实例中配置事务复制
 services: sql-database
 ms.service: sql-database
 ms.subservice: data-movement
 ms.custom: ''
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: howto
 author: allenwux
 ms.author: xiwu
 ms.reviewer: mathoma
 manager: craigg
-ms.date: 09/25/2018
-ms.openlocfilehash: 4a272b028e1e3ef2778227f259c0b1b980af885d
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.date: 01/16/2019
+ms.openlocfilehash: 568b239cf41c802cc5d25b638f6d1501f58eccdf
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53547586"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54360082"
 ---
-# <a name="replication-with-sql-database-managed-instance"></a>使用 SQL 数据库托管实例进行复制
+# <a name="configure-replication-in-azure-sql-database-managed-instance"></a>在 Azure SQL 数据库托管实例中配置复制
 
-[Azure SQL 数据库托管实例](sql-database-managed-instance.md)上的公共预览版可以使用复制。 托管实例可以托管发布服务器、分发服务器和订阅服务器数据库。
-
-## <a name="common-configurations"></a>常用配置
-
-通常情况下，发布服务器和分发服务器必须都在云中，或者都在本地。 支持以下配置：
-
-- **带本地分发服务器的发布服务器位于托管实例上**
-
-   ![Replication-with-azure-sql-db-single-managed-instance-publisher-distributor](./media/replication-with-sql-database-managed-instance/01-single-instance-asdbmi-pubdist.png)
-
-   在单个托管实例上配置发布服务器和分发服务器数据库。
-
-- **带远程分发服务器的发布服务器位于托管实例上**
-
-   ![Replication-with-azure-sql-db-separate-managed-instances-publisher-distributor](./media/replication-with-sql-database-managed-instance/02-separate-instances-asdbmi-pubdist.png)
-
-   在两个托管实例上配置发布服务器和分发服务器。 在此配置中：
-
-  - 两个托管实例都位于同一 vNet 中。
-
-  - 两个托管实例都位于同一位置。
-
-- **发布服务器和分发服务器位于本地，订阅服务器位于托管实例上**
-
-   ![Replication-from-on-premises-to-azure-sql-db-subscriber](./media/replication-with-sql-database-managed-instance/03-azure-sql-db-subscriber.png)
-
-   在此配置中，Azure SQL 数据库是订阅服务器。 此配置支持从本地迁移到 Azure。 在订阅服务器角色中，SQL 数据库不需要托管实例，但是你可以在从本地迁移到 Azure 的步骤中使用 SQL 数据库托管实例。 有关 SQL 数据库订阅服务器的详细信息，请参阅[复制到 SQL 数据库](replication-to-sql-database.md)。
+通过事务复制，可以将数据从 SQL Server 或 Azure SQL 数据库托管实例数据库复制到托管实例，或将托管实例的数据库中所做的更改推送到其他 SQL Server、Azure 单一数据库或其他托管实例。 复制在 [Azure SQL 数据库托管实例](sql-database-managed-instance.md)上以公共预览版提供。 托管实例可以托管发布服务器、分发服务器和订阅服务器数据库。 有关可用配置，请参阅[事务复制配置](sql-database-managed-instance-transactional-replication.md#common-configurations)。
 
 ## <a name="requirements"></a>要求
 
 Azure SQL 数据库上的发布服务器和分发服务器需要：
 
-- Azure SQL 数据库托管实例。
+- 不在异地灾难恢复配置中的 Azure SQL 数据库托管实例。
 
    >[!NOTE]
    >尚未使用托管实例进行配置的 Azure SQL 数据库只能是订阅服务器。
@@ -74,7 +48,13 @@ Azure SQL 数据库上的发布服务器和分发服务器需要：
 
 - 订阅服务器可以是本地的，可以是 Azure SQL 数据库中的单一数据库，还可以是 Azure SQL 数据库弹性池中的池化数据库。
 
-- 单向或双向复制
+- 单向或双向复制。
+
+不支持以下功能：
+
+- 可更新的订阅。
+
+- 活动异地复制。
 
 ## <a name="configure-publishing-and-distribution-example"></a>配置发布和分发示例
 
@@ -87,7 +67,7 @@ Azure SQL 数据库上的发布服务器和分发服务器需要：
 
    在下面的示例脚本中，请将 `<Publishing_DB>` 替换为此数据库的名称。
 
-4. 使用适用于发布服务器的 SQL 身份验证创建数据库用户。 请参阅[创建数据库用户](https://docs.microsoft.com/azure/sql-database/sql-database-security-tutorial#creating-database-users)。 使用安全密码。
+4. 使用适用于发布服务器的 SQL 身份验证创建数据库用户。 使用安全密码。
 
    在下面的示例脚本中，将 `<SQL_USER>` 和 `<PASSWORD>` 与此 SQL Server 帐户数据库用户和密码配合使用。
 
@@ -188,15 +168,8 @@ Azure SQL 数据库上的发布服务器和分发服务器需要：
                 @job_password = N'<PASSWORD>'
    GO
    ```
-
-## <a name="limitations"></a>限制
-
-不支持以下功能：
-
-- 可更新的订阅
-
-- 活动异地复制
-
+   
 ## <a name="see-also"></a>另请参阅
 
+- [事务复制](sql-database-managed-instance-transactional-replication.md)
 - [什么是托管实例？](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance)

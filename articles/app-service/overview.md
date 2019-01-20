@@ -15,16 +15,16 @@ ms.topic: overview
 ms.date: 01/04/2017
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 1abd9aac5f06eb8f588f4169fa3288bade2d08b9
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 5f3fed9255b86696b0e71c70adcd7ff23c0573d9
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53720350"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54352438"
 ---
 # <a name="app-service-overview"></a>应用服务概述
 
-Azure 应用服务是用于托管 Web 应用程序、REST API 和移动后端的服务。 可以使用 .NET、NET Core、Java、Ruby、Node.js、PHP 或 Python 等偏好的语言进行开发。 在基于 Windows 的环境中，应用程序可以轻松地运行和缩放。 对于基于 Linux 的环境，请参阅 [Linux 上的应用服务](containers/app-service-linux-intro.md)。 
+Azure 应用服务是用于托管 Web 应用程序、REST API 和移动后端的服务。 可以使用 .NET、NET Core、Java、Ruby、Node.js、PHP 或 Python 等偏好的语言进行开发。 在基于 Windows 和 Linux 的环境中，应用程序都可以轻松地运行和缩放。 对于基于 Linux 的环境，请参阅 [Linux 上的应用服务](containers/app-service-linux-intro.md)。 
 
 应用服务不仅可将 Microsoft Azure 的强大功能（例如安全性、负载均衡、自动缩放和自动管理）添加到应用程序。 还能利用其 DevOps 功能，例如来自 Azure DevOps、GitHub、Docker 中心和其他源的持续部署，以及包管理、过渡环境、自定义域和 SSL 证书。 
 

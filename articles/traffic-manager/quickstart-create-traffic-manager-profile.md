@@ -2,8 +2,7 @@
 title: 快速入门 - 使用 Azure 门户创建流量管理器配置文件以确保应用程序的高度可用性
 description: 本快速入门文章介绍如何创建流量管理器配置文件，以便生成高度可用的 Web 应用程序。
 services: traffic-manager
-documentationcenter: ''
-author: kumudd
+dauthor: kumudd
 Customer intent: As an IT admin, I want to direct user traffic to ensure high availability of web applications.
 ms.service: traffic-manager
 ms.devlang: na
@@ -12,14 +11,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/28/2018
 ms.author: kumud
-ms.openlocfilehash: 5520b78ce3899c39167663ac426fa6702369c944
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: f24bcebb04c3cb17b5e0420695504541c54e88f3
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52634772"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54198213"
 ---
-# <a name="quickstart-create-a-traffic-manager-profile-for-a-highly-available-web-application"></a>快速入门：为高度可用的 Web 应用程序创建流量管理器配置文件。
+# <a name="quickstart-create-a-traffic-manager-profile-for-a-highly-available-web-application"></a>快速入门：为高度可用的 Web 应用程序创建流量管理器配置文件
 
 本快速入门介绍如何创建流量管理器配置文件，以便实现 Web 应用程序的高度可用性。
 

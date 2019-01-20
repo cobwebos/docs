@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 7/10/2018
 ms.author: sogup
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 40f8f1e9470201292c9dee27187d2155c879e13b
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: 6793a83002029c009e3d4e124b4386feabecd5f8
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53583062"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54201068"
 ---
 # <a name="back-up-and-restore-encrypted-virtual-machines-with-azure-backup"></a>使用 Azure 备份来备份和还原已加密的虚拟机
 本文介绍使用 Azure 备份来备份和还原虚拟机 (VM) 的步骤。 此外，提供有关受支持的方案、先决条件以及针对错误案例的疑难解答步骤的详细信息。
@@ -45,7 +45,7 @@ ms.locfileid: "53583062"
 ### <a name="configure-backup"></a>配置备份
 1. 如果已打开恢复服务保管库，请转到下一步。 如果未打开恢复服务保管库，而是位于 Azure 门户中，请选择“所有服务”。
 
-   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在资源列表中，键入“恢复服务”。
+   a. 在资源列表中，键入“恢复服务”。
 
    b. 开始键入时，会根据输入筛选该列表。 出现“**恢复服务保管库**”时，请选择它。
 
@@ -128,6 +128,8 @@ ms.locfileid: "53583062"
 成功提供权限后，可继续为加密的 VM 启用备份。
 
 ## <a name="restore-an-encrypted-vm"></a>还原已加密的 VM
+除了以前提供的对带有 Azure AD 的 Azure 加密 VM 还原支持外，Azure 备份现在还支持还原[不带 Azure AD 的 Azure 加密 VM](https://docs.microsoft.com/azure/security/azure-security-disk-encryption-prerequisites-aad)。<br>
+
 若要还原已加密的 VM，请先遵循[选择 VM 还原配置](backup-azure-arm-restore-vms.md#choose-a-vm-restore-configuration)的“还原已备份的磁盘”部分中所述的步骤来还原磁盘。 之后，可以使用以下选项之一：
 
 * 遵循[从已还原的磁盘创建 VM](backup-azure-vms-automation.md#create-a-vm-from-restored-disks) 中的 PowerShell 步骤从已还原的磁盘创建完整 VM。

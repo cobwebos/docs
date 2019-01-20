@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 12/07/2018
 ms.author: mjbrown
 ms.custom: seodec18
-ms.openlocfilehash: 9e589c582e52aafb9bdd93f80a702b581b883a59
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 9ec8ecf7b875b32d0ea5715e407b444fa1b25c50
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54044376"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54354460"
 ---
 # <a name="azure-cosmos-db-sql-language-reference"></a>Azure Cosmos DB SQL 语言参考 
 
@@ -2331,7 +2331,7 @@ SELECT STARTSWITH("abc", "b"), STARTSWITH("abc", "a")
  **语法**  
   
 ```  
-SUBSTRING(<str_expr>, <num_expr> [, <num_expr>])  
+SUBSTRING(<str_expr>, <num_expr>, <num_expr>)  
 ```  
   
  **参数**  
@@ -2342,7 +2342,7 @@ SUBSTRING(<str_expr>, <num_expr> [, <num_expr>])
   
 -   `num_expr`  
   
-     为任何有效的数值表达式。  
+     是表示开始和结束字符的任何有效数字表达式。    
   
  返回类型  
   
@@ -2543,7 +2543,7 @@ SELECT ARRAY_CONCAT(["apples", "strawberries"], ["bananas"])
 ```  
   
 ####  <a name="bk_array_contains"></a> ARRAY_CONTAINS  
-返回一个布尔，它指示数组是否包含指定的值。 可以指定是要执行完全还是部分匹配。 
+返回一个布尔，它指示数组是否包含指定的值。 可以通过在命令中使用布尔表达式来检查对象的部分匹配或完全匹配。 
 
  **语法**  
   
@@ -2563,7 +2563,7 @@ ARRAY_CONTAINS (<arr_expr>, <expr> [, bool_expr])
 
 -   `bool_expr`  
   
-     为任何布尔表达式。       
+     为任何布尔表达式。 如果将其设置为“true”，并且指定的搜索值是对象，则该命令将检查部分匹配（搜索对象是其中一个对象的子集）。 如果将其设置为“false”，则该命令将检查数组中所有对象的完全匹配。 如果未指定，默认值为“false”。 
   
  返回类型  
   

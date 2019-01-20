@@ -1,26 +1,8 @@
 ---
-title: 重新训练经典 Web 服务 - Azure 机器学习工作室 | Microsoft Docs
-description: 了解如何以编程方式重新训练模型并更新 Web 服务以使用 Azure 机器学习中的最新训练模型。
-services: machine-learning
-documentationcenter: ''
-author: ericlicoding
-ms.custom: seodec18, previous-ms.author=yahajiza, previous-author=YasinMSFT
-ms.author: amlstudiodocs
-editor: cgronlun
-ms.assetid: e36e1961-9e8b-4801-80ef-46d80b140452
-ms.service: machine-learning
-ms.component: studio
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 04/19/2017
-ms.openlocfilehash: 5aa52805afcd50ebf7a9ac0ddcae95f21dd329f1
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
-ms.translationtype: HT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53554752"
+title:重新训练经典 Web 服务 titleSuffix: Azure 机器学习工作室 description:了解如何以编程方式重新训练模型并更新 Web 服务以使用 Azure 机器学习中的最新训练模型。
+services: machine-learning ms.service: machine-learning ms.component: studio ms.topic: article
+
+author: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18, previous-ms.author=yahajiza, previous-author=YasinMSFT ms.date:04/19/2017
 ---
 # <a name="retrain-a-classic-azure-machine-learning-studio-web-service"></a>重新训练经典 Azure 机器学习工作室 Web 服务
 部署的预测 Web 服务是默认的评分终结点。 默认终结点与原始训练和评分实验保持同步，因此不能替换默认终结点的训练模型。 要重新训练 Web 服务，必须将新的终结点添加到 Web 服务。

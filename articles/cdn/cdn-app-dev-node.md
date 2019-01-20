@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: 46ae8cd9775432d126cbde856c1fb06ea319297e
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 70bae1558860b763d17d04e10d5d926b39300101
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38301558"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54321239"
 ---
 # <a name="get-started-with-azure-cdn-development"></a>Azure CDN 开发入门
 > [!div class="op_single_selector"]
@@ -340,7 +340,7 @@ function cdnDelete() {
 现在可以使用我们最喜爱的调试器，或在控制台执行我们的 Node.js 程序。
 
 > [!TIP]
-> 如果使用 Visual Studio Code 作为调试器，则需要设置环境以传递命令行参数。  Visual Studio Code 在 **lanuch.json** 文件中执行此操作。  寻找名为 **args** 的属性，并为参数添加一个字符串值数组，以使其看起来类似于：`"args": ["list", "profiles"]`。
+> 如果使用 Visual Studio Code 作为调试器，则需要设置环境以传递命令行参数。  Visual Studio Code 在 **launch.json** 文件中执行此操作。  寻找名为 **args** 的属性，并为参数添加一个字符串值数组，以使其看起来类似于：`"args": ["list", "profiles"]`。
 > 
 > 
 

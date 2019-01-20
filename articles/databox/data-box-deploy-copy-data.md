@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 12/19/2018
+ms.date: 01/16/2019
 ms.author: alkohli
-ms.openlocfilehash: 6349ced07385ede42b21c9a8401dd3e0a23bcfbe
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 2b6db4977b585b50168c2fa523db9210ca031ff3
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53790294"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54359283"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-via-smb"></a>教程：通过 SMB 将数据复制到 Azure Data Box
 
@@ -85,9 +85,11 @@ ms.locfileid: "53790294"
 
     此时应能看到文件夹形式的共享。
     
+    ![通过文件资源管理器连接到共享 2](media/data-box-deploy-copy-data/connect-shares-file-explorer2.png)    
+
     **始终为要复制到共享下的文件创建一个文件夹，然后将文件复制到该文件夹**。 在块 blob 和页 blob 共享下创建的文件夹表示将数据作为 blob 上传到的容器。 无法将文件直接复制到存储帐户中的 $root 文件夹。
     
-    ![通过文件资源管理器连接到共享 2](media/data-box-deploy-copy-data/connect-shares-file-explorer2.png) 
+     
 
 ## <a name="copy-data-to-data-box"></a>将数据复制到 Data Box
 
@@ -96,7 +98,11 @@ ms.locfileid: "53790294"
 - 确保将数据复制到与适当数据格式对应的共享中。 例如，将块 Blob 数据复制到块 Blob 的共享中。 如果数据格式与相应的共享类型不匹配，则在后续步骤中，数据将无法上传到 Azure。
 -  复制数据时，请确保数据大小符合 [Azure 存储和 Data Box 限制](data-box-limits.md)中所述的大小限制。
 - 如果 Data Box 正在上传的数据同时已由 Data Box 外部的其他应用程序上传，则可能会导致上传作业失败和数据损坏。
-- 我们建议不要同时使用 SMB 和 NFS，也不要将相同的数据复制到 Azure 上的同一个最终目标。 在这些情况下，最终的结果不可确定。
+- 我们建议：
+    - 不同时使用 SMB 和 NFS。
+    - 将相同的数据复制到 Azure 上的同一个最终目标。 
+     
+  在这些情况下，最终的结果不可确定。
 - 始终为要复制到共享下的文件创建一个文件夹，然后将文件复制到该文件夹。 在块 blob 和页 blob 共享下创建的文件夹表示将数据作为 blob 上传到的容器。 无法将文件直接复制到存储帐户中的 $root 文件夹。
 
 连接到 SMB 共享后，开始数据复制。 可以使用与 SMB 兼容的任何文件复制工具（例如 Robocopy）复制数据。 可以使用 Robocopy 启动多个复制作业。 请使用以下命令：

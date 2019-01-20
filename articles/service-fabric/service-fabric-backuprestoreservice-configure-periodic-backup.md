@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/01/2018
 ms.author: hrushib
-ms.openlocfilehash: f2a1cd79a99e16460c96d28ebeb0a2bd68975361
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 91813e31c6237cf47a744a4290e3e2d7736195f0
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53794237"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54322089"
 ---
 # <a name="understanding-periodic-backup-configuration-in-azure-service-fabric"></a>了解 Azure Service Fabric 中的定期备份配置
 
@@ -45,7 +45,7 @@ ms.locfileid: "53794237"
 
 * **备份计划**：要执行定期备份的时间或频率。 可以将备份安排为按指定的时间间隔或者每日/每周在固定的时间进行。
 
-    1. **基于频率的备份计划**：如果需要按固定时间间隔执行数据备份，应使用此计划类型。 两个连续备份之间的所需时间间隔是使用 ISO8601 格式定义的。 基于频率的备份计划支持的最高时间间隔分辨率为分钟。
+    1. **基于频率的备份计划**：如果需要按固定时间间隔执行数据备份，应使用此计划类型。 两个连续备份之间的所需时间间隔是使用 ISO8601 格式定义的。 基于频率的备份计划支持的时间间隔分辨率为分钟。
         ```json
         {
             "ScheduleKind": "FrequencyBased",

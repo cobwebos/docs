@@ -8,16 +8,16 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: content-moderator
 ms.topic: quickstart
-ms.date: 09/10/2018
+ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: 6045d6daf2abace6e2b38bd6fd6e22516e3a60a0
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: f55906aa9de6faa5979ecedbc3ef288f164fd6c8
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47227414"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54261939"
 ---
-# <a name="quickstart-start-moderation-jobs-using-net"></a>快速入门：使用 .NET 启动审查作业
+# <a name="quickstart-start-moderation-jobs-using-net"></a>快速入门：使用 .NET 启动审核工作
 
 本文中的信息和代码示例可帮助你快速开始使用[适用于 .NET 的内容审查器 SDK](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/)来执行下列操作：
  
@@ -30,8 +30,7 @@ ms.locfileid: "47227414"
 
 ## <a name="sign-up-for-content-moderator"></a>注册内容审查器
 
-必须有订阅密钥，才能通过 REST API 或 SDK 使用内容审查器服务。
-请参阅[快速入门](quick-start.md)，了解如何获取密钥。
+必须有订阅密钥，才能通过 REST API 或 SDK 使用内容审查器服务。 按照[创建认知服务帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)中的说明订阅内容审查器并获取密钥。
 
 ## <a name="sign-up-for-a-review-tool-account-if-not-completed-in-the-previous-step"></a>注册评审工具帐户（如果未在上一步中完成）
 

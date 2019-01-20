@@ -1,5 +1,5 @@
 ---
-title: 关于
+title: 什么是
 titleSuffix: Azure Machine Learning service
 description: Azure 机器学习服务概述 - 这是一个集成式的端到端数据科学解决方案，能够让专业数据科学家以云规模开发、试验和部署高级分析应用程序。
 services: machine-learning
@@ -11,12 +11,12 @@ author: garyericson
 ms.author: garye
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 3d9517bfc03a4d5696a2a97bd41f391e904e4dc8
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: 14ba6438fe5b797d0070dde773855b9b84322a2c
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53580580"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54263565"
 ---
 # <a name="what-is-azure-machine-learning-service"></a>什么是 Azure 机器学习服务？
 

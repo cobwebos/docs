@@ -8,14 +8,14 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: custom-vision
 ms.topic: overview
-ms.date: 10/26/2018
+ms.date: 01/10/2019
 ms.author: anroth
-ms.openlocfilehash: 5e8e675b32bfd4c741b82b1ab341a80adbb0529d
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.openlocfilehash: d9b5473e87d83912dd2f33c00e983e346226e4aa
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50741634"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54242941"
 ---
 # <a name="what-is-azure-custom-vision"></a>什么是 Azure 自定义视觉？
 
@@ -27,7 +27,7 @@ Azure 自定义视觉 API 是一种认知服务，用于生成、部署和改进
 
 ### <a name="classification-and-object-detection"></a>分类和对象检测
 
-可以将自定义视觉功能分为两种功能。 **图像分类**可以为每个图像分配类别。 **对象检测**与之类似，但还在图像中返回坐标，坐标中可以找到应用的标记。
+可以将自定义视觉功能分为两种功能。 **图像分类**可以为每个图像分配类别。 同时支持多分类（每个图像一个标记）和多标签（每个图像任意数目的标记）分类模型。 **对象检测**类似于多标签分类，但是还会在图像中返回坐标，可以在图像中找到所应用的标签。
 
 ### <a name="optimization"></a>优化
 
@@ -39,6 +39,10 @@ Azure 自定义视觉 API 是一种认知服务，用于生成、部署和改进
 自定义视觉服务以一组本机 SDK 的形式提供，另外也可通过[自定义视觉主页](https://customvision.ai/)上的基于 Web 的界面来获取它。 可以通过一种或两种界面来创建、测试和训练模型。
 
 ![Chrome 浏览器窗口中的自定义视觉主页](media/browser-home.png)
+
+## <a name="data-privacy-and-security"></a>数据隐私和安全性
+
+与所有认知服务一样，使用自定义视觉服务的开发人员应该了解 Microsoft 针对客户数据的政策。 请参阅 Microsoft 信任中心上的[“认知服务”页面](https://www.microsoft.com/trustcenter/cloudservices/cognitiveservices)来了解详细信息。
 
 ## <a name="next-steps"></a>后续步骤
 

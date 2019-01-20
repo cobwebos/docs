@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: troubleshooting
 ms.date: 12/03/2018
 ms.author: genli
-ms.openlocfilehash: a0f002266764ace07482023a0412366b90acec63
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: c779344f4cb0544009952423b6771b75482c3061
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53789851"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54353952"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>对 Azure 备份失败进行故障排除：代理或扩展的问题
 
@@ -52,7 +52,7 @@ ms.locfileid: "53789851"
 * 如果每天触发多个备份，则也可能发生此问题。 目前，我们建议每天只创建一个备份，因为即时 RP 只保留 7 天，并且在任意给定时间，只能将 18 个即时 RP 与一个 VM 相关联。 <br>
 
 建议的操作：<br>
-若要解决此问题，请删除 VM 资源组中的锁，并重试触发清理的操作。 
+若要解决此问题，请删除 VM 资源组中的锁，并重试触发清理的操作。
 > [!NOTE]
     > 备份服务将创建一个单独的资源组而非 VM 的资源组来存储还原点集合。 建议客户不要锁定为备份服务使用而创建的资源组。 备份服务创建的资源组的命名格式为：AzureBackupRG_`<Geo>`_`<number>` 例如：AzureBackupRG_northeurope_1
 
@@ -105,14 +105,14 @@ ms.locfileid: "53789851"
 **错误代码**：UserErrorUnsupportedDiskSize <br>
 **错误消息**：当前 Azure 备份不支持大于 1023GB 的磁盘大小 <br>
 
-对磁盘大小大于 1023GB 的 VM 进行备份时，备份操作可能会失败，因为你的保管库未升级到 Azure VM 备份堆栈 V2。 升级到 Azure VM 备份堆栈 V2 后，最多可支持 4TB。 首先查看这些[优势](backup-upgrade-to-vm-backup-stack-v2.md)、[注意事项](backup-upgrade-to-vm-backup-stack-v2.md#considerations-before-upgrade)，然后根据这些[说明](backup-upgrade-to-vm-backup-stack-v2.md#upgrade)继续进行升级。  
+对磁盘大小大于 1023GB 的 VM 进行备份时，备份操作可能会失败，因为你的保管库未升级到即时还原。 升级到即时还原将提供高达 4TB 的支持，请参阅[此文](backup-instant-restore-capability.md)。  
 
 ## <a name="usererrorstandardssdnotsupported---currently-azure-backup-does-not-support-standard-ssd-disks"></a>UserErrorStandardSSDNotSupported - 当前，Azure 备份不支持标准 SSD 磁盘
 
 **错误代码**：UserErrorStandardSSDNotSupported <br>
 **错误消息**：当前，Azure 备份不支持标准 SSD 磁盘 <br>
 
-当前，只有对于已升级到 Azure VM 备份堆栈 V2 的保管库，Azure 备份才支持标准 SSD 磁盘。 首先查看这些[优势](backup-upgrade-to-vm-backup-stack-v2.md)、[注意事项](backup-upgrade-to-vm-backup-stack-v2.md#considerations-before-upgrade)，然后根据这些[说明](backup-upgrade-to-vm-backup-stack-v2.md#upgrade)继续进行升级。
+目前，Azure 备份仅支持升级到[即时还原](backup-instant-restore-capability.md)的保管库的标准 SSD 磁盘。
 
 
 ## <a name="causes-and-solutions"></a>原因和解决方法
@@ -122,33 +122,8 @@ VM 无法根据部署要求访问 Internet。 或者现有的限制阻止访问 
 
 若要正常工作，备份扩展需要连接到 Azure 公共 IP 地址。 扩展将命令发送到 Azure 存储终结点 (HTTPS URL)，以管理 VM 快照。 如果扩展无法访问公共 Internet，则备份最终会失败。
 
-可以部署代理服务器来路由 VM 流量。
-##### <a name="create-a-path-for-https-traffic"></a>创建 HTTPS 流量路径
-
-1. 若有网络限制（例如，网络安全组），请部署 HTTPS 代理服务器来路由流量。
-2. 若要允许从 HTTPS 代理服务器访问 Internet，请将规则（若有）添加到网络安全组。
-
-若要了解如何为 VM 备份设置 HTTPS 代理，请参阅[准备环境以备份 Azure 虚拟机](backup-azure-arm-vms-prepare.md#establish-network-connectivity)。
-
-无论是备份的 VM 还是路由流量的代理服务器，都需要对 Azure 公共 IP 地址的访问权限
-
 ####  <a name="solution"></a>解决方案
-若要解决此问题，请尝试下列方法：
-
-##### <a name="allow-access-to-azure-storage-that-corresponds-to-the-region"></a>允许访问与该区域对应的 Azure 存储
-
-可以使用[服务标记](../virtual-network/security-overview.md#service-tags)允许与特定区域存储建立连接。 确保允许访问存储帐户的规则的优先级高于阻止 Internet 访问的规则。
-
-![使用区域存储标记的网络安全组](./media/backup-azure-arm-vms-prepare/storage-tags-with-nsg.png)
-
-若要了解配置服务标记的分步过程，请观看[此视频](https://youtu.be/1EjLQtbKm1M)。
-
-> [!WARNING]
-> 存储服务标记以预览版提供。 它们只在特定的区域中可用。 有关区域列表，请参阅[存储的服务标记](../virtual-network/security-overview.md#service-tags)。
-
-如果使用 Azure 托管磁盘，可能需要在防火墙上打开另一个端口 (8443)。
-
-此外，如果子网不具有 Internet 出站流量的路由，则需要将具有服务标记“Microsoft.Storage”的服务终结点添加到子网。
+若要解决网络问题，请参阅[建立网络连接](backup-azure-arm-vms-prepare.md#establish-network-connectivity)。
 
 ### <a name="the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms"></a>代理安装在 VM 中，但无响应（针对 Windows VM）
 

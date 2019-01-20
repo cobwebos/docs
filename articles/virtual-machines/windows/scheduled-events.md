@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2018
 ms.author: ericrad
-ms.openlocfilehash: ae21dbe675d78c663fc9d05364d91eca3288dd46
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 9130bf5c2708f7eecf6fc1b5db2ffbb3c2fffc30
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53435406"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54201272"
 ---
 # <a name="azure-metadata-service-scheduled-events-for-windows-vms"></a>Azure 元数据服务：适用于 Windows VM 的计划事件
 
@@ -64,7 +64,7 @@ Azure 元数据服务使用可从 VM 内访问的 REST 终结点公开有关正�
 
 | 版本 | 发布类型 | 区域 | 发行说明 | 
 | - | - | - | - |
-| 2017-08-01 | 正式版 | All | <li> 已从 Iaas VM 的资源名称中删除下划线<br><li>针对所有请求强制执行元数据标头要求 | 
+| 2017-08-01 | 正式版 | All | <li> 已从 IaaS VM 的资源名称中删除前置下划线<br><li>针对所有请求强制执行元数据标头要求 | 
 | 2017-03-01 | 预览 | All |<li>初始版本
 
 > [!NOTE] 

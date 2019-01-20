@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 3fec0952f4b164327942d5dee108f89b17613042
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 3b5425bd9f86bce289cc1f60c088febfd8f05ee3
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54015533"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54332619"
 ---
 # <a name="copy-data-to-and-from-data-lake-storage-gen1-by-using-data-factory"></a>使用数据工厂向/从 Data Lake Storage Gen1 复制数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -45,7 +45,7 @@ ms.locfileid: "54015533"
 ## <a name="supported-authentication-types"></a>支持的身份验证类型
 Data Lake Store 连接器支持以下身份验证类型：
 * 服务主体身份验证
-* 用户凭据 (OAuth) 身份验证 
+* 用户凭据 (OAuth) 身份验证
 
 建议使用服务主体身份验证，特别是在进行已计划的数据复制时。 使用用户凭据身份验证时可能会出现令牌过期行为。 有关配置详细信息，请参阅[链接服务属性](#linked-service-properties)部分。
 
@@ -58,12 +58,12 @@ Data Lake Store 连接器支持以下身份验证类型：
 
 无论使用工具还是 API，执行以下步骤都可创建管道，以便将数据从源数据存储移到接收器数据存储：
 
-1. 创建**数据工厂**。 数据工厂可以包含一个或多个管道。 
-2. 创建链接服务可将输入和输出数据存储链接到数据工厂。 例如，如果要将数据从 Azure Blob 存储复制到 Azure Data Lake Store，可创建两个链接服务，将 Azure 存储帐户和 Azure Data Lake Store 链接到数据工厂。 有关特定于 Azure Data Lake Store 的链接服务属性，请参阅[链接服务属性](#linked-service-properties)部分。 
+1. 创建**数据工厂**。 数据工厂可以包含一个或多个管道。
+2. 创建链接服务可将输入和输出数据存储链接到数据工厂。 例如，如果要将数据从 Azure Blob 存储复制到 Azure Data Lake Store，可创建两个链接服务，将 Azure 存储帐户和 Azure Data Lake Store 链接到数据工厂。 有关特定于 Azure Data Lake Store 的链接服务属性，请参阅[链接服务属性](#linked-service-properties)部分。
 2. 创建数据集以表示复制操作的输入和输出数据。 在上一个步骤所述的示例中，创建了一个数据集来指定 Blob 容器和包含输入数据的文件夹。 创建了另一个数据集来指定 Data Lake Store 中用于保存从 Blob 存储复制的数据的文件夹和文件路径。 有关特定于 Azure Data Lake Store 的数据集属性，请参阅[数据集属性](#dataset-properties)部分。
-3. 创建包含复制活动的管道，该活动将一个数据集作为输入，将一个数据集作为输出。 在前面所述的示例中，在复制活动中使用 BlobSource 作为源，AzureDataLakeStoreSink 作为接收器。 同样，如果从 Azure Data Lake Store 复制到 Azure Blob 存储，则在复制活动中使用 AzureDataLakeStoreSource 和 BlobSink。 有关特定于 Azure Data Lake Store 的复制活动属性，请参阅[复制活动属性](#copy-activity-properties)部分。 有关如何将数据存储用作源或接收器的详细信息，请单击前面章节中的相应数据存储链接。  
+3. 创建包含复制活动的管道，该活动将一个数据集作为输入，将一个数据集作为输出。 在前面所述的示例中，在复制活动中使用 BlobSource 作为源，AzureDataLakeStoreSink 作为接收器。 同样，如果从 Azure Data Lake Store 复制到 Azure Blob 存储，则在复制活动中使用 AzureDataLakeStoreSource 和 BlobSink。 有关特定于 Azure Data Lake Store 的复制活动属性，请参阅[复制活动属性](#copy-activity-properties)部分。 有关如何将数据存储用作源或接收器的详细信息，请单击前面章节中的相应数据存储链接。
 
-使用向导时，会自动创建这些数据工厂实体（链接服务、数据集和管道）的 JSON 定义。 使用工具/API（.NET API 除外）时，使用 JSON 格式定义这些数据工厂实体。  有关用于向/从 Azure Data Lake Store 复制数据的数据工厂实体的 JSON 定义示例，请参阅本文的 [JSON 示例](#json-examples-for-copying-data-to-and-from-data-lake-store)部分。
+使用向导时，会自动创建这些数据工厂实体（链接服务、数据集和管道）的 JSON 定义。 使用工具/API（.NET API 除外）时，使用 JSON 格式定义这些数据工厂实体。 有关用于向/从 Azure Data Lake Store 复制数据的数据工厂实体的 JSON 定义示例，请参阅本文的 [JSON 示例](#json-examples-for-copying-data-to-and-from-data-lake-store)部分。
 
 对于特定于 Data Lake Store 的数据工厂实体，以下部分提供了有关用于定义这些实体的 JSON 属性的详细信息。
 
@@ -80,7 +80,7 @@ Data Lake Store 连接器支持以下身份验证类型：
 ### <a name="service-principal-authentication-recommended"></a>服务主体身份验证（推荐）
 若要使用服务主体身份验证，请在 Azure Active Directory (Azure AD) 中注册一个应用程序实体并授予其访问 Data Lake Store 的权限。 有关详细步骤，请参阅[服务到服务身份验证](../../data-lake-store/data-lake-store-authenticate-using-active-directory.md)。 记下下面的值，这些值用于定义链接服务：
 * 应用程序 ID
-* 应用程序密钥 
+* 应用程序密钥
 * 租户 ID
 
 > [!IMPORTANT]
@@ -233,7 +233,7 @@ if (linkedService.Properties.TypeProperties is AzureDataLakeStoreLinkedService |
     ```
 
 ## <a name="dataset-properties"></a>数据集属性
-要指定一个数据集来表示 Data Lake Store 中的输入数据，可以将该数据集的 **type** 属性设置为 **AzureDataLakeStore**。 将该数据集的 **linkedServiceName** 属性设置为 Data Lake Store 链接服务的名称。 有关可用于定义数据集的 JSON 节和属性的完整列表，请参阅[创建数据集](data-factory-create-datasets.md)一文。 在 JSON 中，所有数据集类型（例如 Azure SQL 数据库、Azure Blob 和 Azure 表）的 **structure**、**availability** 和 **policy** 等节均类似。 每种数据集的 **typeProperties** 节均有所不同，该节提供数据在数据存储中的位置、格式等信息。 
+要指定一个数据集来表示 Data Lake Store 中的输入数据，可以将该数据集的 **type** 属性设置为 **AzureDataLakeStore**。 将该数据集的 **linkedServiceName** 属性设置为 Data Lake Store 链接服务的名称。 有关可用于定义数据集的 JSON 节和属性的完整列表，请参阅[创建数据集](data-factory-create-datasets.md)一文。 在 JSON 中，所有数据集类型（例如 Azure SQL 数据库、Azure Blob 和 Azure 表）的 **structure**、**availability** 和 **policy** 等节均类似。 每种数据集的 **typeProperties** 节均有所不同，该节提供数据在数据存储中的位置、格式等信息。
 
 **AzureDataLakeStore** 类型的数据集的 **typeProperties** 节包含以下属性：
 
@@ -264,14 +264,14 @@ if (linkedService.Properties.TypeProperties is AzureDataLakeStoreLinkedService |
 "folderPath": "wikidatagateway/wikisampledataout/{Year}/{Month}/{Day}",
 "fileName": "{Hour}.csv",
 "partitionedBy":
- [
+[
     { "name": "Year", "value": { "type": "DateTime", "date": "SliceStart", "format": "yyyy" } },
     { "name": "Month", "value": { "type": "DateTime", "date": "SliceStart", "format": "MM" } },
     { "name": "Day", "value": { "type": "DateTime", "date": "SliceStart", "format": "dd" } },
     { "name": "Hour", "value": { "type": "DateTime", "date": "SliceStart", "format": "hh" } }
 ],
 ```
-有关时序数据集、计划和切片的更多详细信息，请参阅 [Azure 数据工厂中的数据集](data-factory-create-datasets.md)和[数据工厂计划和执行](data-factory-scheduling-and-execution.md)这两篇文章。 
+有关时序数据集、计划和切片的更多详细信息，请参阅 [Azure 数据工厂中的数据集](data-factory-create-datasets.md)和[数据工厂计划和执行](data-factory-scheduling-and-execution.md)这两篇文章。
 
 
 ## <a name="copy-activity-properties"></a>复制活动属性
@@ -284,7 +284,6 @@ if (linkedService.Properties.TypeProperties is AzureDataLakeStoreLinkedService |
 | 属性 | 说明 | 允许的值 | 必选 |
 | --- | --- | --- | --- |
 | **recursive** |指示是要从子文件夹中以递归方式读取数据，还是只从指定的文件夹中读取数据。 |True（默认值）、False |否 |
-
 
 **AzureDataLakeStoreSink** 支持 **typeProperties** 节中的以下属性：
 
@@ -308,7 +307,7 @@ if (linkedService.Properties.TypeProperties is AzureDataLakeStoreLinkedService |
 有关详细信息，请参阅 [Azure 数据工厂中的文件和压缩格式](data-factory-supported-file-and-compression-formats.md)一文。
 
 ## <a name="json-examples-for-copying-data-to-and-from-data-lake-store"></a>向/从 Data Lake Store 复制数据的 JSON 示例
-以下示例提供 JSON 示例定义。 可以使用这些示例定义通过 [Azure 门户](data-factory-copy-activity-tutorial-using-azure-portal.md)、[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) 或 [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) 创建管道。 以下示例演示如何向/从 Data Lake Store 和 Azure Blob 存储复制数据。 但是，可以从任何源将数据_直接_复制到任何受支持的接收器。 有关详细信息，请参阅[使用复制活动移动数据](data-factory-data-movement-activities.md)一文中的“支持的数据存储和格式”部分。  
+以下示例提供 JSON 示例定义。 可以使用这些示例定义通过 [Azure 门户](data-factory-copy-activity-tutorial-using-azure-portal.md)、[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) 或 [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) 创建管道。 以下示例演示如何向/从 Data Lake Store 和 Azure Blob 存储复制数据。 但是，可以从任何源将数据_直接_复制到任何受支持的接收器。 有关详细信息，请参阅[使用复制活动移动数据](data-factory-data-movement-activities.md)一文中的“支持的数据存储和格式”部分。
 
 ### <a name="example-copy-data-from-azure-blob-storage-to-azure-data-lake-store"></a>示例：将数据从 Azure Blob 存储复制到 Azure Data Lake Store
 本部分中的示例代码演示：
@@ -319,7 +318,7 @@ if (linkedService.Properties.TypeProperties is AzureDataLakeStoreLinkedService |
 * [AzureDataLakeStore](#dataset-properties) 类型的输出[数据集](data-factory-create-datasets.md)。
 * 包含复制活动的[管道](data-factory-create-pipelines.md)，该复制活动使用 [BlobSource](data-factory-azure-blob-connector.md#copy-activity-properties) 和 [AzureDataLakeStoreSink](#copy-activity-properties)。
 
-以下示例每隔一小时将时序数据从 Azure Blob 存储复制到 Data Lake Store。 
+以下示例每隔一小时将时序数据从 Azure Blob 存储复制到 Data Lake Store。
 
 **Azure 存储链接服务**
 
@@ -428,68 +427,67 @@ if (linkedService.Properties.TypeProperties is AzureDataLakeStoreLinkedService |
 ```JSON
 {
     "name": "AzureDataLakeStoreOutput",
-      "properties": {
+    "properties": {
         "type": "AzureDataLakeStore",
         "linkedServiceName": "AzureDataLakeStoreLinkedService",
         "typeProperties": {
             "folderPath": "datalake/output/"
         },
         "availability": {
-              "frequency": "Hour",
-              "interval": 1
+            "frequency": "Hour",
+            "interval": 1
         }
-      }
+    }
 }
 ```
-
 
 **管道中使用 Blob 源和 Data Lake Store 接收器的复制活动**
 
 在下面的示例中，管道包含配置为使用输入和输出数据集的复制活动。 该复制活动计划每小时运行一次。 在管道 JSON 定义中，`source` 类型设置为 `BlobSource`，`sink` 类型设置为 `AzureDataLakeStoreSink`。
 
 ```json
-{  
+{
     "name":"SamplePipeline",
     "properties":
-    {  
+    {
         "start":"2014-06-01T18:00:00",
         "end":"2014-06-01T19:00:00",
         "description":"pipeline with copy activity",
         "activities":
-        [  
-              {
+        [
+            {
                 "name": "AzureBlobtoDataLake",
                 "description": "Copy Activity",
                 "type": "Copy",
                 "inputs": [
-                  {
-                    "name": "AzureBlobInput"
-                  }
+                    {
+                        "name": "AzureBlobInput"
+                    }
                 ],
                 "outputs": [
-                  {
-                    "name": "AzureDataLakeStoreOutput"
-                  }
+                    {
+                        "name": "AzureDataLakeStoreOutput"
+                    }
                 ],
                 "typeProperties": {
                     "source": {
                         "type": "BlobSource"
-                      },
-                      "sink": {
+                    },
+                    "sink": {
                         "type": "AzureDataLakeStoreSink"
-                      }
+                    }
                 },
-                   "scheduler": {
-                      "frequency": "Hour",
-                      "interval": 1
+                "scheduler": {
+                    "frequency": "Hour",
+                    "interval": 1
                 },
                 "policy": {
-                      "concurrency": 1,
-                      "executionPriorityOrder": "OldestFirst",
-                      "retry": 0,
-                      "timeout": "01:00:00"
+                    "concurrency": 1,
+                    "executionPriorityOrder": "OldestFirst",
+                    "retry": 0,
+                    "timeout": "01:00:00"
                 }
-              }
+            }
         ]
     }
 }
@@ -504,7 +502,7 @@ if (linkedService.Properties.TypeProperties is AzureDataLakeStoreLinkedService |
 * [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties) 类型的输出[数据集](data-factory-create-datasets.md)。
 * 包含复制活动的[管道](data-factory-create-pipelines.md)，该复制活动使用 [AzureDataLakeStoreSource](#copy-activity-properties) 和 [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties)。
 
-此代码每隔一小时将时序数据从 Data Lake Store 复制到 Azure Blob。 
+此代码每隔一小时将时序数据从 Data Lake Store 复制到 Azure Blob。
 
 **Azure Data Lake Store 链接服务**
 
@@ -547,7 +545,7 @@ if (linkedService.Properties.TypeProperties is AzureDataLakeStoreLinkedService |
 ```json
 {
     "name": "AzureDataLakeStoreInput",
-      "properties":
+    "properties":
     {
         "type": "AzureDataLakeStore",
         "linkedServiceName": "AzureDataLakeStoreLinkedService",
@@ -563,16 +561,16 @@ if (linkedService.Properties.TypeProperties is AzureDataLakeStoreLinkedService |
         "external": true,
         "availability": {
             "frequency": "Hour",
-              "interval": 1
+            "interval": 1
         },
         "policy": {
-              "externalData": {
+            "externalData": {
                 "retryInterval": "00:01:00",
                 "retryTimeout": "00:10:00",
                 "maximumRetry": 3
-              }
+            }
         }
-      }
+    }
 }
 ```
 **Azure Blob 输出数据集**
@@ -640,47 +638,47 @@ if (linkedService.Properties.TypeProperties is AzureDataLakeStoreLinkedService |
 在下面的示例中，管道包含配置为使用输入和输出数据集的复制活动。 该复制活动计划每小时运行一次。 在管道 JSON 定义中，`source` 类型设置为 `AzureDataLakeStoreSource`，`sink` 类型设置为 `BlobSink`。
 
 ```json
-{  
+{
     "name":"SamplePipeline",
-    "properties":{  
+    "properties":{
         "start":"2014-06-01T18:00:00",
         "end":"2014-06-01T19:00:00",
         "description":"pipeline for copy activity",
-        "activities":[  
-              {
+        "activities":[
+            {
                 "name": "AzureDakeLaketoBlob",
                 "description": "copy activity",
                 "type": "Copy",
                 "inputs": [
-                  {
-                    "name": "AzureDataLakeStoreInput"
-                  }
+                    {
+                        "name": "AzureDataLakeStoreInput"
+                    }
                 ],
                 "outputs": [
-                  {
-                    "name": "AzureBlobOutput"
-                  }
+                    {
+                        "name": "AzureBlobOutput"
+                    }
                 ],
                 "typeProperties": {
                     "source": {
                         "type": "AzureDataLakeStoreSource",
-                      },
-                      "sink": {
+                    },
+                    "sink": {
                         "type": "BlobSink"
-                      }
+                    }
                 },
-                   "scheduler": {
-                      "frequency": "Hour",
-                      "interval": 1
+                "scheduler": {
+                    "frequency": "Hour",
+                    "interval": 1
                 },
                 "policy": {
-                      "concurrency": 1,
-                      "executionPriorityOrder": "OldestFirst",
-                      "retry": 0,
-                      "timeout": "01:00:00"
+                    "concurrency": 1,
+                    "executionPriorityOrder": "OldestFirst",
+                    "retry": 0,
+                    "timeout": "01:00:00"
                 }
-              }
-         ]
+            }
+        ]
     }
 }
 ```

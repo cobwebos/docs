@@ -5,17 +5,17 @@ services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 10/1/2018
+ms.date: 01/14/2019
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: mmercuri
 manager: femila
-ms.openlocfilehash: 3a0b4db77e6dfb8be3a2f943052925001e5f7715
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 32606f988152b061fa1923c409207b2a650e64ba
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53259777"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54332449"
 ---
 # <a name="using-azure-blockchain-workbench-data-with-sql-server-management-studio"></a>通过 SQL Server Management Studio 使用 Azure Blockchain Workbench 数据
 
@@ -34,7 +34,7 @@ ms.locfileid: "53259777"
 
 3. 在“连接到服务器”对话框中，输入服务器名称和数据库凭据。
 
-    如果使用由 Azure Blockchain Workbench 部署过程创建的凭据，则用户名将是 **dbadmin** 并且密码将是在部署过程中提供的密码。
+    如果使用由 Azure Blockchain Workbench 部署过程创建的凭据，则用户名是 **dbadmin** 并且密码是在部署过程中提供的密码。
 
     ![输入 SQL 凭据](./media/data-sql-management-studio/sql-creds.png)
 

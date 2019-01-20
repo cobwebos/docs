@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
 ms.author: daveba
-ms.openlocfilehash: 24975fe0e3c423a3f356bd4a5a961456c511c96b
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 3cc61cfdfb131babb7fdf4e48553706da1d6ec76
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53253028"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54303796"
 ---
 # <a name="use-a-linux-vm-system-assigned-managed-identity-to-access-azure-resource-manager"></a>使用 Linux VM 系统分配的托管标识访问 Azure 资源管理器
 
@@ -55,12 +55,12 @@ ms.locfileid: "53253028"
 
 1. 在门户中，转到 Linux VM，并单击“概述”中的“连接”。  
 2. 使用所选的 SSH 客户端连接到 VM。 
-3. 在终端窗口中，使用 CURL 向 Azure 资源终结点的本地托管标识发出请求，以获取 Azure 资源管理器的访问令牌。
+3. 在终端窗口中，使用 `curl` 向 Azure 资源终结点的本地托管标识发出请求，以获取 Azure 资源管理器的访问令牌。  
  
-    下面是用于获取访问令牌的 CURL 请求。  
+    下面是对访问令牌的 `curl` 请求。  
     
     ```bash
-    curl 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fmanagement.azure.com%2F' -H Metadata:true   
+    curl 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https://management.azure.com/' -H Metadata:true   
     ```
     
     > [!NOTE]

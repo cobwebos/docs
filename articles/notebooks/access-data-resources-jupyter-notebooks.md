@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2018
 ms.author: kraigb
-ms.openlocfilehash: a034e41f5b12ffb8f043f14d90284617316f18d2
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 0e3022296dd1a3e1221bb44c94df787660df2a70
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53723036"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54359878"
 ---
 # <a name="access-cloud-data-in-a-notebook"></a>在笔记本中访问云数据
 
@@ -69,7 +69,7 @@ Azure 存储提供了几种不同类型的非关系存储，具体取决于你�
 Azure Cosmos DB 为 JSON 文档提供了完全索引的 NoSQL 存储。 以下文章提供了许多使用 Python 的 Cosmos DB 的不同方法：
 
 - [使用 Python 生成 SQL API 应用](https://docs.microsoft.com/azure/cosmos-db/create-sql-api-python)
-- [使用 Azure Cosmos DB for MongoDB API 构建 Flask 应用](https://docs.microsoft.com/azure/cosmos-db/create-mongodb-flask)
+- [使用 Azure Cosmos DB 的 API for MongoDB 构建 Flask 应用](https://docs.microsoft.com/azure/cosmos-db/create-mongodb-flask)
 - [使用 Python 和 Gremlin API 创建图形数据库](https://docs.microsoft.com/azure/cosmos-db/create-graph-python)
 - [使用 Python 和 Azure Cosmos DB 生成 Cassandra 应用](https://docs.microsoft.com/azure/cosmos-db/create-cassandra-python)
 - [使用 Python 和 Azure Cosmos DB 生成表 API 应用](https://docs.microsoft.com/azure/cosmos-db/create-table-python)

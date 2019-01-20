@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 05/14/2018
 ms.author: jomolesk
-ms.openlocfilehash: f5f04fdaa12c716b21bafcc0abccc719428fe791
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 08e078841a6fb7f43db6d052ecefca3aabec8687
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51242069"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54263367"
 ---
 # <a name="azure-security-and-compliance-blueprint---iaas-web-application-for-gdpr"></a>Azure 安全性和符合性蓝图 - 符合 GDPR 的 IaaS Web 应用程序
 
@@ -101,7 +101,7 @@ Microsoft 为 Azure 设计了业界领先的安全措施和隐私策略，以保
 ### <a name="data-at-rest"></a>静态数据
 该体系结构通过多种措施保护静态数据，包括加密和数据库审核。
 
-**Azure 存储**：为了满足静态数据加密要求，所有 [Azure 存储](https://azure.microsoft.com/services/storage/)均使用[存储服务加密](https://docs.microsoft.com/azure/storage/storage-service-encryption)。 这有助于保护和维护个人数据，以支持 GDPR 定义的组织安全承诺和符合性需求。
+**Azure 存储**：为了满足静态数据加密要求，所有 [Azure 存储](https://azure.microsoft.com/services/storage/)都使用[存储服务加密](https://docs.microsoft.com/azure/storage/storage-service-encryption)。 这有助于保护和维护个人数据，以支持 GDPR 定义的组织安全承诺和符合性需求。
 
 **Azure 磁盘加密**：Azure 磁盘加密用于加密 Windows IaaS 虚拟机磁盘。 [Azure 磁盘加密](https://docs.microsoft.com/azure/security/azure-security-disk-encryption)利用 Windows 的 BitLocker 功能，为 OS 和数据磁盘提供卷加密。 此解决方案与 Azure Key Vault 集成，用于控制和管理磁盘加密密钥。
 
@@ -126,7 +126,7 @@ Microsoft 为 Azure 设计了业界领先的安全措施和隐私策略，以保
 - 可以通过部署的 IaaS Active Directory 实例在 OS 级别对部署的 IaaS 虚拟机进行标识管理。
 
 ### <a name="security"></a>安全
-**机密管理**：解决方案使用 [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) 管理密钥和机密。 Azure 密钥保管库可帮助保护云应用程序和服务使用的加密密钥和机密。 以下 Azure Key Vault 功能可帮助客户保护个人数据以及此类数据的访问：
+**机密管理**：此解决方案使用 [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) 管理密钥和机密。 Azure 密钥保管库可帮助保护云应用程序和服务使用的加密密钥和机密。 以下 Azure Key Vault 功能可帮助客户保护个人数据以及此类数据的访问：
 - 根据需要配置高级访问权限策略。
 - 使用对密钥和机密所需的最低权限来定义 Key Vault 访问策略。
 - Key Vault 中的所有密钥和机密都有过期日期。
@@ -157,27 +157,27 @@ Microsoft 为 Azure 设计了业界领先的安全措施和隐私策略，以保
 
 **高可用性**：解决方案在[可用性集](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-availability-sets)中部署所有虚拟机。 可用性集可确保虚拟机能够跨多个隔离的硬件群集分布，从而改进可用性。 计划内或计划外维护活动期间，至少有一台虚拟机可用，满足 99.95% Azure SLA。
 
-**恢复服务保管库**：[恢复服务保管库](https://docs.microsoft.com/azure/backup/backup-azure-recovery-services-vault-overview)存储备份数据并保护此体系结构中的所有 Azure 虚拟机配置。 通过恢复服务保管库，客户可以从 IaaS VM 还原文件和文件夹，而无需还原整个 VM，从而实现更快的还原时间。
+**恢复服务保管库**：[恢复服务保管库](https://docs.microsoft.com/azure/backup/backup-azure-recovery-services-vault-overview)存储备份数据并保护此体系结构中的所有 Azure 虚拟机配置。 通过恢复服务保管库，客户可以从 IaaS VM 还原文件和文件夹，而无需还原整个 VM，从而缩短还原时间。
 
 **云见证**：[云见证](https://docs.microsoft.com/windows-server/failover-clustering/whats-new-in-failover-clustering#BKMK_CloudWitness)是在 Windows Server 2016 中利用 Azure 作为仲裁点的一种故障转移群集仲裁见证。 与其他任何仲裁见证一样，云见证可获得投票并可参与仲裁计算，但它使用标准公开可用的 Azure Blob 存储。 这消除了在公有云中托管的 VM 的额外维护开销。
 
 ### <a name="logging-and-auditing"></a>日志记录和审核
 
 Log Analytics 可广泛记录系统和用户活动以及系统运行状况。 [Log Analytics](https://azure.microsoft.com/services/log-analytics/) 解决方案收集并分析 Azure 和本地环境中的资源生成的数据。
-- **活动日志**：[活动日志](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs)提供针对订阅中资源执行的操作的深入信息。 活动日志可帮助确定操作的发起方、发生的时间和状态。
+- **活动日志**：[活动日志](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs)提供针对订阅中资源执行的操作的见解。 活动日志可帮助确定操作的发起方、发生的时间和状态。
 - **诊断日志**：[诊断日志](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)包括每个资源发出的所有日志。 这些日志包括 Windows 事件系统日志、Azure 存储日志、Key Vault 审核日志以及应用程序网关访问和防火墙日志。
-- **日志存档**：所有诊断日志都将写入集中式加密 Azure 存储帐户进行存档。 保留期允许用户进行配置，最长为 730 天，具体取决于组织的保留期要求。 这些日志连接到 Azure Log Analytics 进行处理、存储和仪表板报告。
+- **日志存档**：所有诊断日志都将写入集中式加密 Azure 存储帐户进行存档。 保留期是允许用户配置的，最长为 730 天，具体取决于组织的保留期要求。 这些日志连接到 Azure Log Analytics 进行处理、存储和仪表板报告。
 
 此外，以下监视解决方案作为此体系结构的一部分包括在内：
 -   [AD 评估](https://docs.microsoft.com/azure/log-analytics/log-analytics-ad-assessment)：Active Directory 运行状况检查解决方案按固定时间间隔评估服务器环境的风险和运行状况，并且提供特定于部署服务器基础结构的优先建议列表。
--   [反恶意软件评估](https://docs.microsoft.com/azure/log-analytics/log-analytics-malware)：反恶意软件解决方案报告恶意软件、威胁和防护状态。
--   [Azure 自动化](https://docs.microsoft.com/azure/automation/automation-hybrid-runbook-worker)：Azure 自动化解决方案存储、运行和管理 Runbook。
+-   [反恶意软件评估](https://docs.microsoft.com/azure/log-analytics/log-analytics-malware)：反恶意软件解决方案用于报告恶意软件、威胁和防护状态。
+-   [Azure 自动化](https://docs.microsoft.com/azure/automation/automation-hybrid-runbook-worker)：Azure 自动化解决方案用于存储、运行和管理 runbook。
 -   [安全和审核](https://docs.microsoft.com/azure/operations-management-suite/oms-security-getting-started)：“安全和审核”仪表板通过提供有关安全域、值得注意的问题、检测、威胁智能和常见安全性查询的指标，提供对资源安全状态的高级见解。
--   [SQL 评估](https://docs.microsoft.com/azure/log-analytics/log-analytics-sql-assessment)：SQL 运行状况检查解决方案定期评估服务器环境的风险和运行状况，并且为客户提供特定于已部署服务器基础结构的优先建议列表。
--   [更新管理](https://docs.microsoft.com/azure/operations-management-suite/oms-solution-update-management)：“更新管理”解决方案允许客户管理操作系统安全更新，包括可用更新的状态以及安装所需更新的过程。
--   [代理运行状况](https://docs.microsoft.com/azure/operations-management-suite/oms-solution-agenthealth)：“代理运行状况”解决方案报告已部署代理的数量及其地理分布，以及无响应的代理数量和提交操作数据的代理数量。
+-   [SQL 评估](https://docs.microsoft.com/azure/log-analytics/log-analytics-sql-assessment)：SQL 运行状况检查解决方案按固定时间间隔评估服务器环境的风险和运行状况，并为客户提供特定于部署服务器基础结构的优先建议列表。
+-   [更新管理](https://docs.microsoft.com/azure/operations-management-suite/oms-solution-update-management)：更新管理解决方案允许客户管理操作系统安全更新，包括可用更新的状态以及安装所需更新的过程。
+-   [代理运行状况](https://docs.microsoft.com/azure/operations-management-suite/oms-solution-agenthealth)：代理运行状况解决方案报告已部署代理的数量及其地理分布，以及无响应的代理数量和提交操作数据的代理数量。
 -   [Azure 活动日志](https://docs.microsoft.com/azure/log-analytics/log-analytics-activity)：Activity Log Analytics 解决方案可帮助分析客户的所有 Azure 订阅的 Azure 活动日志。
--   [更改跟踪](https://docs.microsoft.com/azure/log-analytics/log-analytics-activity)：“更改跟踪”解决方案使得客户能够轻松识别环境中的更改。
+-   [更改跟踪](https://docs.microsoft.com/azure/log-analytics/log-analytics-activity)：更改跟踪解决方案使得客户能够轻松识别环境中的更改。
 
 ## <a name="threat-model"></a>威胁模型
 

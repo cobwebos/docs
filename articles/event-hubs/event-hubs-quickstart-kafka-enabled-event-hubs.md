@@ -8,12 +8,12 @@ ms.service: event-hubs
 ms.topic: quickstart
 ms.custom: seodec18
 ms.date: 12/06/2018
-ms.openlocfilehash: d6e293b80df1ab227a3100040a54b189f48d8027
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 19d903a4083c432ac3932189ad8a6890be9014fb
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53102803"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54354223"
 ---
 # <a name="stream-into-event-hubs-for-the-apache-kafka"></a>流式传输到用于 Apache Kafka 的事件中心
 本快速入门演示如何在不更改协议客户端或运行自己的群集的情况下，流式传输到已启用 Kafka 的事件中心。 你将了解如何只需更改应用程序配置，即可使用生产者和使用者与已启用 Kafka 的事件中心通信。 Azure 事件中心支持 [Apache Kafka 版本 1.0](https://kafka.apache.org/10/documentation.html)。
@@ -34,13 +34,13 @@ ms.locfileid: "53102803"
 
 ## <a name="create-a-kafka-enabled-event-hubs-namespace"></a>创建启用了 Kafka 的事件中心命名空间
 
-1. 登录到 [Azure 门户][Azure 门户]，单击屏幕左上角的“创建资源”。
+1. 登录到 [Azure 门户](https://portal.azure.com)，单击屏幕左上角的“创建资源”。
 
 2. 搜索事件中心并选择此处显示的选项：
     
     ![在门户中搜索事件中心](./media/event-hubs-create-kafka-enabled/event-hubs-create-event-hubs.png)
  
-3. 提供唯一名称并在命名空间上启用 Kafka。 单击“创建”。
+3. 提供唯一名称并在命名空间上启用 Kafka。 单击“创建”。 注意：只有标准和专用层事件中心支持用于 Kafka 的事件中心。 基本层事件中心将返回主题授权错误来响应任何 Kafka 操作。
     
     ![创建命名空间](./media/event-hubs-create-kafka-enabled/create-kafka-namespace.jpg)
  

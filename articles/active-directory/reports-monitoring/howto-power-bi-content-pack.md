@@ -14,12 +14,12 @@ ms.component: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 16026adc2eb0179cd2b42f449494cbbc6547b946
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.openlocfilehash: c2d121106218c0965cd8f4e07776cf8d2578543f
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53651446"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54354155"
 ---
 # <a name="how-to-use-the-azure-active-directory-power-bi-content-pack"></a>如何使用 Azure Active Directory Power BI 内容包
 
@@ -101,13 +101,45 @@ Azure AD Power BI 内容包中包含以下报表。 这些报表包含**过去 3
 
 确认新版内容包可按预期方式工作后，可根据需要删除旧的版本，方法是删除与该内容包关联的基础报表和数据集。
 
-## <a name="still-having-issues"></a>仍然存在问题？ 
+## <a name="troubleshoot-content-pack-errors"></a>对内容包错误进行故障排除
 
-请查看[故障排除指南](troubleshoot-content-pack.md)。 有关 Power BI 的常规帮助，请查看这些[帮助文章](https://powerbi.microsoft.com/documentation/powerbi-service-get-started/)。
+在使用内容包时，可能会遇到以下错误： 
+
+- [刷新失败](#refresh-failed) 
+- [无法更新数据源凭据](#failed-to-update-data-source-credentials) 
+- [导入数据的时间过长](#data-import-is-too-slow) 
+
+有关 Power BI 的常规帮助，请查看这些[帮助文章](https://powerbi.microsoft.com/documentation/powerbi-service-get-started/)。
+
+### <a name="refresh-failed"></a>刷新失败 
+ 
+**此错误是如何发现的**：根据 Power BI 的电子邮件或刷新历史记录中的失败状态。 
+
+
+| 原因 | 如何解决 |
+| ---   | ---        |
+| 当连接到内容包的用户的凭据被重置，但在内容包的连接设置中未更新时，可能会导致刷新失败错误。 | 在 Power BI 中，找到与 Azure AD 活动日志仪表板（**Azure Active Directory 活动日志**）相对应的数据集，选择计划刷新，然后输入你的 Azure AD 凭据。 |
+| 由于基础内容包中的数据问题可能会导致刷新失败。 | [提交一个支持票证](../fundamentals/active-directory-troubleshooting-support-howto.md)。|
  
+ 
+### <a name="failed-to-update-data-source-credentials"></a>无法更新数据源凭据 
+ 
+**此错误是如何发现的**：在 Power BI 中，当连接到 Azure AD 活动日志内容包时，会出现此错误。 
+
+| 原因 | 如何解决 |
+| ---   | ---        |
+| 连接的用户既不是全局管理员，也不是安全读者或安全管理员。 | 使用全局管理员、安全读者或安全管理员的帐户来访问内容包。 |
+| 你的租户不是高级租户，或者至少没有一个拥有高级许可文件的用户。 | [提交一个支持票证](../fundamentals/active-directory-troubleshooting-support-howto.md)。|
  
+### <a name="data-import-is-too-slow"></a>数据导入速度太慢 
+ 
+**此错误是如何发现的**：在 Power BI 中，在连接内容包后，数据导入过程开始为 Azure AD 活动日志准备仪表板。 将显示以下消息：**正在导入数据...** 且没有进一步的进展。  
+
+| 原因 | 如何解决 |
+| ---   | ---        |
+| 根据租户大小，此步骤可能会需要从几分钟到 30 分钟不等的时间。 | 如果该消息在一个小时内没有更改显示你的仪表板，请[提交一个支持票证](../fundamentals/active-directory-troubleshooting-support-howto.md)。|
+  
 ## <a name="next-steps"></a>后续步骤
 
 * [安装 Power BI 内容包](quickstart-install-power-bi-content-pack.md)。
-* [对内容包错误进行故障排除](troubleshoot-content-pack.md)。
 * [什么是 Azure AD 报告？](overview-reports.md)。

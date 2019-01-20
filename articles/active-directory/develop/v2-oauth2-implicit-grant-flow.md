@@ -17,12 +17,12 @@ ms.date: 10/02/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: e9de2c9b7f79dd6cba3050d84ccfa0795bc2d09a
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: ce54ad77893557b595f9777dfc82939aacf41608
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52962573"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54321511"
 ---
 # <a name="v20-protocols---spas-using-the-implicit-flow"></a>v2.0 协议 - 使用隐式流的 SPA
 

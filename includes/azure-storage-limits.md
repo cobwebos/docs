@@ -5,15 +5,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: include
-ms.date: 10/23/2018
+ms.date: 01/11/2018
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: 84333b26ac70db4b400f7236d4255f4b57a6ca7d
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: 1dd11e22361e25721effe2ed919f175d9cb1b9e4
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51571846"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54249635"
 ---
 下表介绍 Azure 存储的默认限制。 “传入”限制是指发送到存储帐户的所有数据（请求）。 “传出”限制是指从存储帐户接收的所有数据（响应）。
 
@@ -29,15 +29,20 @@ ms.locfileid: "51571846"
 | 常规用途 v1 存储帐户的最大出口（美国区域） | 如果已启用 RA-GRS/GRS，则为 20 Gbps；对于 LRS/ZRS <sup>2</sup>，为 30 Gbps |
 | 常规用途 v1 存储帐户的最大出口（非美国区域） | 如果已启用 RA-GRS/GRS，则为 10 Gbps；对于 LRS/ZRS <sup>2</sup>，为 15 Gbps |
 
-<sup>1</sup> Azure 存储帐户根据请求支持更高的入口上限。 若要请求提高帐户入口上限，请与 [Azure 支持](https://azure.microsoft.com/support/faq/)联系。
+<sup>1</sup> Azure 存储帐户根据请求支持更高的流入量和 IOPS 上限。 若要请求提高帐户上限，请与 [Azure 支持](https://azure.microsoft.com/support/faq/)联系。
 
-<sup>2</sup>[Azure 存储复制](https://docs.microsoft.com/azure/storage/common/storage-redundancy)选项包括：
+<sup>2</sup> [Azure 存储复制](https://docs.microsoft.com/azure/storage/common/storage-redundancy)选项包括：
 * **RA-GRS**：读取访问异地冗余存储。 如果已启用 RA-GRS，辅助位置的出口目标与主要位置的出口目标相同。
 * **GRS**：异地冗余存储。 
 * **ZRS**：区域冗余存储。
 * **LRS**：本地冗余存储。 
 
+> [!NOTE]
+> Microsoft 建议对大多数方案使用常规用途 v2 存储帐户。 可以轻松将常规用途 v1 或 Blob 存储帐户升级到常规用途 v2 帐户，无需停机且无需复制数据。
+>
+> 有关 Azure 存储帐户的详细信息，请参阅[存储帐户概述](../articles/storage/common/storage-account-overview.md)。 
+
 如果应用程序的需求超过单个存储帐户的伸缩性目标，则可以构建使用多个存储帐户的应用程序。 然后，可以将数据对象分布到这些存储帐户中。 有关批量定价的信息，请参阅 [Azure 存储定价](https://azure.microsoft.com/pricing/details/storage/) 。
 
-所有存储帐户都在扁平网络拓扑上运行，无论它们创建于何时，都支持本文所述的可伸缩性和性能目标。 有关 Azure 存储的扁平网络体系结构和可伸缩性的详细信息，请参阅 [Microsoft Azure Storage: A Highly Available Cloud Storage Service with Strong Consistency](http://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx)（Microsoft Azure 存储：具有高度一致性的高可用云存储服务）。
+所有存储帐户都在扁平网络拓扑上运行，无论它们创建于何时，都支持本文所述的可伸缩性和性能目标。 有关 Azure 存储的扁平网络体系结构和可伸缩性的详细信息，请参阅 [Microsoft Azure 存储：具有非常一致性的高可用云存储服务](http://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx)。
 

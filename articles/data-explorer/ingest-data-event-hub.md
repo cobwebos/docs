@@ -8,12 +8,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 09/24/2018
-ms.openlocfilehash: ff512ac3bef1ce721860172dbaf9d9b68512a518
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: b33a646c52ca5ce85e0525b04e9be5009cc6f90d
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54064689"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54352919"
 ---
 # <a name="quickstart-ingest-data-from-event-hub-into-azure-data-explorer"></a>快速入门：将数据从事件中心引入到 Azure 数据资源管理器
 
@@ -189,7 +189,7 @@ Azure 数据资源管理器是一项快速且高度可缩放的数据探索服�
     ![消息结果集](media/ingest-data-event-hub/message-result-set.png)
 
     > [!NOTE]
-    > ADX 具有用于数据引入的聚合（批处理）策略，旨在优化引入过程。 该策略配置为 5 分钟，因此你可能会遇到延迟。
+    > Azure 数据资源管理器具有用于数据引入的聚合（批处理）策略，旨在优化引入过程。 该策略配置为 5 分钟，因此你可能会遇到延迟。
 
 ## <a name="clean-up-resources"></a>清理资源
 

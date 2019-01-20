@@ -8,15 +8,15 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: conceptual
-ms.date: 12/06/2018
+ms.date: 01/14/2019
 ms.author: mahilleb
 ms.custom: seodec18
-ms.openlocfilehash: d41213d72d40555d8dc5aeab76040fc556dae774
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: d302fc67225213ad55687797c97c7a2a8a17cc6d
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53091639"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54329501"
 ---
 # <a name="speech-service-supported-regions"></a>语音服务支持的区域
 
@@ -46,11 +46,24 @@ ms.locfileid: "53091639"
 
 ### <a name="intent-recognition"></a>意向识别
 
-语音 SDK 的“意向识别”与 LIUS 共享区域支持。 有关可用区域的完整列表，请参阅[发布区域和终结点 - LUIS](https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions)
+通过语音 SDK 实现**意向识别**的可用区域如下：
 
-若要了解哪些区域可通过语音 SDK 进行**意向识别**，请参阅[语言理解服务区域页](/azure/cognitive-services/luis/luis-reference-regions)。
+ 全球区域 | 区域 | 语音 SDK 参数
+ ------|-------|--------
+ 亚洲 | 东亚 | `eastasia`
+ 亚洲 | 东南亚 | `southeastasia`
+ 澳大利亚 | 澳大利亚东部 | `australiaeast`
+ 欧洲 | 北欧 | `northeurope`
+ 欧洲 | 西欧 | `westeurope`
+ 北美 | 美国东部 | `eastus`
+ 北美 | 美国东部 2 | `eastus2`
+ 北美 | 美国中南部 | `southcentralus`
+ 北美 | 美国中西部 | `westcentralus`
+ 北美 | 美国西部 | `westus`
+ 北美 | 美国西部 2 | `westus2`
+ 南美洲 | 巴西南部 | `brazilsouth`
 
-对于列出的每个发布区域，请使用提供的“API 区域名称”。 例如，对美国西部使用 `westus`。
+这是[语言理解服务 (LUIS)](/azure/cognitive-services/luis/luis-reference-regions) 支持的发布区域的子集。
 
 ## <a name="rest-apis"></a>REST API
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/10/2018
 ms.author: tomfitz
-ms.openlocfilehash: 06719f3a92dae805081ea85c346df97ebed0e0dc
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: a885fda23bb76091705ebe388f40a6eae7b56416
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49078064"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54351503"
 ---
 # <a name="use-azure-key-vault-to-pass-secure-parameter-value-during-deployment"></a>在部署过程中使用 Azure Key Vault 传递安全参数值
 
@@ -84,14 +84,14 @@ Add-Type -AssemblyName System.Web
 [System.Web.Security.Membership]::GeneratePassword(16,3)
 ```
 
-对于使用资源管理器模板：请参阅[教程：在资源管理器模板部署中集成 Azure Key Vault](./resource-manager-tutorial-use-key-vault.md#prepare-the-key-vault)。
+对于使用资源管理器模板：有关分步说明，请参阅[教程：在资源管理器模板部署中集成 Azure Key Vault](./resource-manager-tutorial-use-key-vault.md#prepare-the-key-vault)。
 
 > [!NOTE]
 > 每个 Azure 服务具有特定的密码要求。 例如，Azure 虚拟机的要求可以在[创建 VM 时，密码有什么要求？](../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm)中找到。
 
 ## <a name="enable-access-to-the-secret"></a>启用密钥访问权限
 
-不是将 `enabledForTemplateDeployment` 设置为 `true`，部署模板的用户必须在包含密钥保管库的范围内（包括资源组和密钥保管库）具有 `Microsoft.KeyVault/vaults/deploy/action` 权限。 [所有者](../role-based-access-control/built-in-roles.md#owner)和[参与者](../role-based-access-control/built-in-roles.md#contributor)角色均应授予该权限。 如果你创建密钥保管库，则你是所有者，因此你具有权限。 如果密钥保管库位于不同的订阅中，则密钥保管库的所有者必须授予访问权限。
+不是将 `enabledForTemplateDeployment` 设置为 `true`，部署模板的用户必须在包含密钥保管库的范围内（包括资源组和密钥保管库）具有 `Microsoft.KeyVault/vaults/deploy/action` 权限。 [所有者](../role-based-access-control/built-in-roles.md#owner)和[参与者](../role-based-access-control/built-in-roles.md#contributor)角色均应授予该权限。 如果你创建密钥保管库，则你是所有者，因此你具有权限。 如果密钥保管库在不同的订阅下，则密钥保管库的所有者必须授予访问权限。
 
 以下过程展示了如何创建具有最小权限的角色，以及如何分配用户
 1. 创建自定义角色定义 JSON 文件：

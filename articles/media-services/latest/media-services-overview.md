@@ -13,15 +13,15 @@ ms.devlang: multiple
 ms.topic: overview
 ms.tgt_pltfrm: multiple
 ms.workload: media
-ms.date: 12/14/2018
+ms.date: 01/14/2019
 ms.author: juliako
 ms.custom: mvc
-ms.openlocfilehash: f959ce8d29975fc7c667185ef5bc2547825bccc0
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: c58c31a0d6238720d643d5b1508a7ec04749887b
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53406907"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54352115"
 ---
 # <a name="what-is-azure-media-services-v3"></a>什么是 Azure 媒体服务 v3？
 
@@ -34,11 +34,11 @@ Azure 媒体服务是一个基于云的平台，用于生成解决方案，以�
 * 提供各种格式的视频，以便通过各种浏览器和设备播放视频。 对于面向多种客户端（移动设备、电视、电脑等）的按需和实时流式传输交付，需要对视频和音频进行适当的编码和打包。 要了解如何交付和流式传输此类内容，请参阅[快速入门：编码和流式传输文件](stream-files-dotnet-quickstart.md)。
 * 向大量在线观众流式传输实时体育赛事，例如足球、棒球、大学和高中体育运动等等。 
 * 广播公共会议和活动，例如市政厅、市议会和立法机构。
-* 分析录制的视频或音频内容。 例如，为了实现更高的客户满意度，组织可以提取语音转文本并生成搜索索引和仪表板。 然后，他们可以提取围绕常见的投诉、投诉原因以及其他相关数据的情报。 
+* 分析录制的视频或音频内容。 例如，为了实现更高的客户满意度，组织可以提取语音转文本并生成搜索索引和仪表板。 然后，他们可以提取围绕常见的投诉、投诉原因以及其他相关数据的情报。
 * 当客户（例如电影工作室）需要限制对版权所有作品的访问和使用时，创建订阅视频服务并流式传输受 DRM 保护的内容。
 * 提供脱机内容，以便在飞机、火车和汽车上播放。 如果客户希望断开网络连接，可能需要将内容下载到手机或平板电脑上播放。
-* 为视频添加字幕和描述文字，满足更多受众的需求（例如，听力障碍人士或想用不同语言阅读的人）。 
-* 使用 Azure 媒体服务和 [Azure 认知服务 API](https://docs.microsoft.com/azure/#pivot=products&panel=ai) 实现教育在线学习视频平台，提供语音转文本字幕，多种语言翻译等等。
+* 使用 Azure 媒体服务和 [Azure 认知服务 API](https://docs.microsoft.com/azure/#pivot=products&panel=ai) 实现教育在线学习视频平台，提供语音转文本字幕，多种语言翻译等等。 
+* 将 Azure 媒体服务与 [Azure 认知服务 API](https://docs.microsoft.com/azure/#pivot=products&panel=ai) 配合使用来为视频添加字幕和描述文字，满足更多受众的需求（例如，听力障碍人士或想用不同语言阅读的人）。
 * 启用 Azure CDN 实现大幅度缩放，更好地处理即时高负载（例如在产品发布活动开始时）。 
 
 ## <a name="v3-capabilities"></a>v3 功能
@@ -72,41 +72,7 @@ V3 API 的主要设计原则之一是使 API 更安全。 v3 API 不在 **Get** 
 * 不在 ContentKeyPolicy 的 Get 中返回限制密钥， 
 * 不返回作业的 HTTP 输入 URL 的查询字符串部分（删除签名）。
 
-下面的 .NET 示例展示了如何从现有策略中获取签名密钥。 需要使用 **GetPolicyPropertiesWithSecretsAsync** 来访问密钥。
-
-```csharp
-private static async Task<ContentKeyPolicy> GetOrCreateContentKeyPolicyAsync(
-    IAzureMediaServicesClient client,
-    string resourceGroupName,
-    string accountName,
-    string contentKeyPolicyName)
-{
-    ContentKeyPolicy policy = await client.ContentKeyPolicies.GetAsync(resourceGroupName, accountName, contentKeyPolicyName);
-
-    if (policy == null)
-    {
-        // Configure and create a new policy.
-        
-        . . . 
-        policy = await client.ContentKeyPolicies.CreateOrUpdateAsync(resourceGroupName, accountName, contentKeyPolicyName, options);
-    }
-    else
-    {
-        var policyProperties = await client.ContentKeyPolicies.GetPolicyPropertiesWithSecretsAsync(resourceGroupName, accountName, contentKeyPolicyName);
-        var restriction = policyProperties.Options[0].Restriction as ContentKeyPolicyTokenRestriction;
-        if (restriction != null)
-        {
-            var signingKey = restriction.PrimaryVerificationKey as ContentKeyPolicySymmetricTokenKey;
-            if (signingKey != null)
-            {
-                TokenSigningKey = signingKey.KeyValue;
-            }
-        }
-    }
-
-    return policy;
-}
-```
+请参阅[获取内容密钥策略 - .NET](get-content-key-policy-dotnet-howto.md) 示例。
 
 ## <a name="how-can-i-get-started-with-v3"></a>如何开始使用 v3？
 

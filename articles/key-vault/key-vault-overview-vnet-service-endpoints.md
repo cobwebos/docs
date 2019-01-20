@@ -10,12 +10,12 @@ ms.date: 01/02/2019
 ms.service: key-vault
 ms.workload: identity
 ms.topic: conceptual
-ms.openlocfilehash: 1d53fc6cef022f627bb1cd1f832ebf65698207a9
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 2c035b7c6bbd687ca2922d5f52e2ddaa0c96e50c
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54002412"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54351418"
 ---
 # <a name="virtual-network-service-endpoints-for-azure-key-vault"></a>Azure Key Vault 的虚拟网络服务终结点
 
@@ -74,6 +74,7 @@ ms.locfileid: "54002412"
 |Azure SQL 数据库|[使用 Azure SQL 数据库和数据仓库的“创建自己的密钥”支持进行透明数据加密](../sql-database/transparent-data-encryption-byok-azure-sql.md?view=sql-server-2017&viewFallbackFrom=azuresqldb-current)。|
 |Azure 存储|[在 Azure Key Vault 中使用客户托管密钥进行存储服务加密](../storage/common/storage-service-encryption-customer-managed-keys.md)。|
 |Azure Data Lake Store|[在 Azure Data Lake Store 中使用客户托管密钥进行数据加密](../data-lake-store/data-lake-store-encryption.md)。|
+|Azure databricks|[基于 Apache Spark 的快速、简单、协作分析服务](../azure-databricks/what-is-azure-databricks.md)|
 
 
 

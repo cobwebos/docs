@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/19/2018
 ms.author: pareshmu
-ms.openlocfilehash: bc7f43c61cef8ef504d24c03c1cdc3e74f404610
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: ded3ecd973dae74104bd09a46717ca99e8d3251a
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54052847"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54360065"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute 合作伙伴和对等位置
 
@@ -43,7 +43,7 @@ ms.locfileid: "54052847"
 | **地缘政治区域** | **区域** | **Azure 区域** | **ExpressRoute 位置** |
 | --- | --- | --- | --- |
 | **澳大利亚政府** | 1 | 澳大利亚中部、澳大利亚中部 2 |堪培拉、堪培拉 2 |
-| **欧洲** | 1 |法国中部、法国南部、北欧、西欧、英国西部、英国南部 |阿姆斯特丹、阿姆斯特丹 2、都柏林、伦敦、马赛、纽波特（威尔士）、巴黎 |
+| **欧洲** | 1 |法国中部、法国南部、北欧、西欧、英国西部、英国南部 |阿姆斯特丹、阿姆斯特丹 2、都柏林、伦敦、伦敦 2、马赛、纽波特（威尔士）、巴黎 |
 | **北美** | 1 |美国东部、美国西部、美国东部 2 区、美国西部 2 区、美国中部、美国中南部、美国中北部、美国中西部、加拿大中部、加拿大东部 |亚特兰大、芝加哥、达拉斯、丹佛、拉斯维加斯、洛杉矶、迈阿密、纽约、圣安东尼奥、西雅图、硅谷、华盛顿特区、蒙特利尔、魁北克市、多伦多 |
 | **亚洲** | 2 |东亚、东南亚 |香港特别行政区、吉隆坡、新加坡、新加坡 2 |
 | **澳大利亚** | 2 |澳大利亚东南部、澳大利亚东部 |墨尔本、悉尼 | 
@@ -83,7 +83,7 @@ ms.locfileid: "54052847"
 | **[AT&T NetBond](https://www.synaptic.att.com/clouduser/html/productdetail/ATT_NetBond.htm)** |支持 |支持 |阿姆斯特丹、芝加哥、达拉斯、伦敦、硅谷、新加坡、悉尼、东京、多伦多、华盛顿特区 |
 | **[Bell Canada](https://business.bell.ca/shop/enterprise/cloud-connect-access-to-cloud-partner-services)** |支持 |支持 |蒙特利尔、多伦多、魁北克市 |
 | **[British Telecom](https://globalservices.bt.com/en/solutions/products/bt-compute-for-microsoft-azure)** |支持 |支持 |阿姆斯特丹、香港特别行政区、伦敦、圣保罗、硅谷、新加坡、悉尼、东京、华盛顿特区 |
-| **[C3ntro](https://c3ntro.com/data/express-route/)** |即将支持 |即将支持 |迈阿密 |
+| **C3ntro** |即将支持 |即将支持 |迈阿密 |
 | **CDC** | 支持 | 支持 | 堪培拉、堪培拉 2 |
 | **[CenturyLink Cloud Connect](http://www.centurylink.com/cloudconnect)** |支持 |支持 |拉斯维加斯、纽约、圣安东尼奥、硅谷、东京、多伦多 |
 | **China Telecom Global** |支持 |不支持 |香港特别行政区 |
@@ -93,7 +93,7 @@ ms.locfileid: "54052847"
 | **[CoreSite](http://www.coresite.com/solutions/cloud-services/public-cloud-providers/microsoft-azure-expressroute)** |支持 |支持 |芝加哥、丹佛、洛杉矶、纽约、硅谷、华盛顿特区 |
 | **eir** |支持 |支持 |都柏林|
 | **Epsilon Global Communications** |支持 |支持 |新加坡 |
-| **[Equinix](http://www.equinix.com/partners/microsoft-azure/)** |支持 |支持 |阿姆斯特丹、亚特兰大、芝加哥、达拉斯、都柏林、香港特别行政区、伦敦、洛杉矶、墨尔本、迈阿密、纽约、大阪、巴黎、圣保罗、西雅图、硅谷、新加坡、悉尼、东京、多伦多、华盛顿特区 |
+| **[Equinix](http://www.equinix.com/partners/microsoft-azure/)** |支持 |支持 |阿姆斯特丹、亚特兰大、芝加哥、达拉斯、都柏林、香港特别行政区、伦敦、伦敦 2、洛杉矶、墨尔本、迈阿密、纽约、大阪、巴黎、圣保罗、西雅图、硅谷、新加坡、悉尼、东京、多伦多、华盛顿特区 |
 | **euNetworks** |支持 |支持 |阿姆斯特丹、都柏林、伦敦 |
 | **GÉANT** |支持 |支持 |阿姆斯特丹 |
 | **[Global Cloud Xchange (GCX)](http://globalcloudxchange.com/cloud-platform/cloud-x-fusion/cloud-x-fusion-for-azure/)** | 支持| 支持 | 金奈、孟买 |
@@ -130,13 +130,13 @@ ms.locfileid: "54052847"
 | **[Telefonica](https://www.business-solutions.telefonica.com/es/enterprise/solutions/efficient-infrastructure/managed-voice-data-connectivity/)** |支持 |支持 |阿姆斯特丹、圣保罗 |
 | **[Telehouse - KDDI](http://www.telehouse.net/solutions/cloud-services/cloud-link)** |支持 |支持 |伦敦 |
 | **Telenor** |支持 |支持 |阿姆斯特丹、伦敦 |
-| **[Telia Carrier](https://teliacarrier.com/our-services/connectivity/cloud-connect.html?title=Cloud%20Connect)** | 支持 | 支持 |阿姆斯特丹、伦敦、华盛顿特区 |
+| **[Telia Carrier](https://teliacarrier.com/our-services/connectivity/cloud-connect.html?title=Cloud%20Connect)** | 支持 | 支持 |阿姆斯特丹、芝加哥、达拉斯、伦敦、华盛顿特区 |
 | **Telmex Uninet**| 即将支持 | 即将支持 | 达拉斯+ |
 | **[Telstra Corporation](http://www.telstra.com.au/business-enterprise/network-services/networks/cloud-direct-connect/)** |支持 |支持 |墨尔本、新加坡、悉尼 |
 | **[Telus](http://www.telus.com)** |支持 |支持 |蒙特利尔、多伦多 |
 | **[Teraco](https://www.teraco.co.za/services/africa-cloud-exchange/)** |支持 |支持 |开普敦、约翰内斯堡 |
 | **TIME dotCom** | 支持 | 支持 | 吉隆坡 |
-| **[UOLDIVEO](http://www.uoldiveo.com.br/solucoes/cloud.html#rmcl)** |支持 |支持 |圣保罗 |
+| **[UOLDIVEO](https://www.uoldiveo.com.br/)** |支持 |支持 |圣保罗 |
 | **[Verizon](https://enterprise.verizon.com/products/network/application-enablement/secure-cloud-interconnect/)** |支持 |支持 |阿姆斯特丹、芝加哥、达拉斯、香港特别行政区、伦敦、硅谷、新加坡、悉尼、东京、华盛顿特区 |
 | **[Vodafone](http://www.vodafone.com/business/global-enterprise/global-connectivity/vodafone-ip-vpn-cloud-connect)** |支持 |不支持 |伦敦、新加坡 |
 | **Vodafone Idea** | 支持 | 支持 | 孟买 2 |
@@ -240,7 +240,7 @@ ms.locfileid: "54052847"
 | **[ThinkTel](http://www.thinktel.ca/services/agile-ix-data/expressroute/)** | Equinix | 多伦多 | 
 | **[Transtelco](http://www.transtelco.net/tcloud/microsoft)** |Equinix | 达拉斯、洛杉矶 |  
 | **[United Information Highway (UIH)](https://www.uih.co.th/en/internet-solution/cloud-direct/uih-cloud-direct-for-microsoft-azure-expressroute)**| Equinix | 新加坡 |
-| **[Venha Pra Nuvem](http://venhapranuvem.com.br/infraestrutura/oferta-especial-digital-edge-expressroute/)** | Equinix | 圣保罗 |
+| **[Venha Pra Nuvem](http://venhapranuvem.com.br/)** | Equinix | 圣保罗 |
 | **[Webair](https://www.webair.com/microsoft-express-route-partnership/)**| Megaport | 纽约 |
 | **[Windstream](http://www.windstreambusiness.com/solutions/cloud-services/cloud-and-managed-hosting-services)**| Equinix | 芝加哥、硅谷、华盛顿特区 |
 | **Zain** |Equinix |伦敦|
@@ -296,7 +296,7 @@ ms.locfileid: "54052847"
 | **[Perficient](http://www.perficient.com/Partners/Microsoft/Cloud/Azure-ExpressRoute)** | 北美 |
 | **[Presidio](http://info.presidio.com/microsoft-azure-expressroute)** | 北美 |
 | **[sol-tec](https://www.sol-tec.com/services)** | 欧洲 |
-| **[Venha Pra Nuvem](http://venhapranuvem.com.br/infraestrutura/oferta-especial-digital-edge-expressroute/)** | 南美洲 |
+| **[Venha Pra Nuvem](http://venhapranuvem.com.br/)** | 南美洲 |
 | **[Vigilant.IT](https://vigilant.it/expressroute)** | 澳大利亚 |
 
 ## <a name="next-steps"></a>后续步骤

@@ -9,25 +9,18 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 11/08/2017
 ms.custom: seodec2018
-ms.openlocfilehash: 40291b105eb39b44da0b0697f5808d819291e457
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 5a39021367c2f51125876081e9174eb372d7b9c9
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53630207"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54353152"
 ---
-# <a name="indexes-in-azure-search"></a>Azure 搜索中的索引
-> [!div class="op_single_selector"]
-> * [概述](search-what-is-an-index.md)
-> * [门户](search-create-index-portal.md)
-> * [.NET](search-create-index-dotnet.md)
-> * [REST](search-create-index-rest-api.md)
-> 
-> 
+# <a name="indexes-and-indexing-overview-in-azure-search"></a>Azure 搜索中的索引和编制索引概述
 
-在 Azure 搜索中，索引是 Azure 搜索服务使用的文档及其他结构的永久存储。 文档是索引中的一个可搜索数据单元。 例如，电子商务零售商可能有所销售每件商品的文档，新闻机构可能有每篇报道的文档。 将这些概念对应到更为熟悉的数据库等效对象：*索引*在概念上类似于*表*，*文档*大致相当于表中的*行*。
+在 Azure 搜索中，*索引*是用于在 Azure 搜索服务上进行筛选和全文搜索的*文档*和其他构造的持久存储。 文档是索引中的一个可搜索数据单元。 例如，电子商务零售商可能有所销售每件商品的文档，新闻机构可能有每篇报道的文档。 将这些概念对应到更为熟悉的数据库等效对象：*索引*在概念上类似于*表*，*文档*大致相当于表中的*行*。
 
-在 Azure 搜索中添加/上传文档以及提交搜索查询时，提交的是搜索服务中特定索引的请求。
+在 Azure 搜索中添加或上传文档或者提交搜索查询时，你将向搜索服务中的特定索引发送请求。 将文档添加到索引的过程称为“编制索引”。
 
 ## <a name="field-types-and-attributes-in-an-azure-search-index"></a>Azure 搜索索引中的字段类型和属性
 定义架构时，必须在索引中指定每个字段的名称、类型和属性。 字段类型的作用是对该字段中存储的数据进行分类。 对各个字段设置属性的目的是指定字段的使用方式。 下表枚举了可以指定的类型和属性。

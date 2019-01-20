@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/19/2018
 ms.author: jeedes
-ms.openlocfilehash: 9d9f9d1e9a87802960fd2f004f3e19f47fdd3fe0
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 5be86017926e09b5db5fd08f1c33d316b9031bc4
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53971795"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54264285"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-salesforce"></a>教程：Azure Active Directory 与 Salesforce 集成
 
@@ -96,7 +96,7 @@ ms.locfileid: "53971795"
 
     ![配置单一登录链接](common/select-sso.png)
 
-2. 在“选择单一登录方法”对话框中，选择 SAML/WS-Fed 模式以启用单一登录。
+2. 在**选择单一登录方法**对话框中，选择 **SAML/WS-Fed**模式以启用单一登录。
 
     ![单一登录选择模式](common/select-saml-option.png)
 
@@ -108,7 +108,7 @@ ms.locfileid: "53971795"
 
     ![Salesforce 域和 URL 单一登录信息](common/sp-identifier.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“登录 URL”文本框中，使用以下模式键入值：
+    a. 在“登录 URL”文本框中，使用以下模式键入值：
 
     企业帐户：`https://<subdomain>.my.salesforce.com`
 

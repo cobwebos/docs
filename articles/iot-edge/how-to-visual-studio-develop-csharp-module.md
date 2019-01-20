@@ -5,16 +5,16 @@ services: iot-edge
 author: shizn
 manager: philmea
 ms.author: xshi
-ms.date: 01/04/2019
+ms.date: 01/10/2019
 ms.topic: article
 ms.service: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 9a6c892a71c452a0c6c0dcd43509e345280a810e
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 3091e53b47d85e3e58c32b255dc9dcebd54ab2c5
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54054912"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54264931"
 ---
 # <a name="use-visual-studio-2017-to-develop-and-debug-c-modules-for-azure-iot-edge-preview"></a>使用 Visual Studio 2017 开发和调试适用于 Azure IoT Edge 的 C# 模块（预览版）
 
@@ -27,8 +27,11 @@ ms.locfileid: "54054912"
 - 在 C# 中编写 Azure IoT 模块的代码，同时兼具 Visual Studio 开发的所有优势。
 - 使用 UI 管理 Azure IoT Edge 设备和模块。
 
-本文介绍了如何通过用于 Visual Studio 2017 的 Azure IoT Edge 工具在 C# 中部署 IoT Edge 模块。 你还将了解如何将项目部署到 Azure IoT Edge 设备。
+本文介绍了如何通过用于 Visual Studio 2017 的 Azure IoT Edge 工具在 C# 中部署 IoT Edge 模块。 你还将了解如何将项目部署到 Azure IoT Edge 设备。 
 
+  > [!TIP]
+  > Visual Studio 创建的 IoT Edge 项目结构与 Visual Studio Code 中的不同。
+  
 ## <a name="prerequisites"></a>先决条件
 
 本文假设你使用运行 Windows 的计算机或虚拟机作为开发计算机。 IoT Edge 设备可以是另一台物理设备。
@@ -58,7 +61,7 @@ Visual Studio 2017 准备就绪后，还需要以下工具和组件：
 
 1. 在“工具”菜单上，选择“扩展和更新”。 依次展开“已安装”>“工具”，可在此处找到“Azure IoT Edge 工具”和“Cloud Explorer for Visual Studio”。
 
-1. 请记下所安装的版本。 可将此版本与 Visual Studio Marketplace 中的最新版本（[Cloud Explorer](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.CloudExplorerForVS)、[Azure IoT Edge](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge)）进行比较
+1. 请记下所安装的版本。 可将此版本与 Visual Studio Marketplace 中的最新版本（[Cloud Explorer](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.CloudExplorerForVS)、[Azure IoT Edge](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vsiotedgetools)）进行比较
 
 1. 如果你的版本比 Visual Studio Marketplace 上的版本旧，则可在 Visual Studio 中更新工具，如以下部分中所示。
 

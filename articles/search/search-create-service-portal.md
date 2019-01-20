@@ -9,22 +9,22 @@ ms.topic: quickstart
 ms.date: 01/02/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 5165dd16b77a242ca83d3e5864b6e60f3e12a567
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: dfb6ccac01933ea114694de361c2f1d4d5a649b0
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54002631"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54230520"
 ---
 # <a name="create-an-azure-search-service-in-the-portal"></a>在门户中创建 Azure 搜索服务
 
-Azure 搜索是用于将搜索体验添加到自定义应用的独立资源。 你可以将 Azure 搜索与许多其他 Azure 服务轻松集成；也可以通过托管在网络服务器上的应用或在其他云平台上运行的软件，单独使用它。 
+Azure 搜索是用于在自定义应用中插入搜索体验的独立资源。 虽然 Azure 搜索可以与其他 Azure 服务轻松集成，但也可以单独将其用于网络服务器上的应用或在其他云平台上运行的软件。 
 
 本文介绍如何在 [Azure 门户](https://portal.azure.com/)中创建 Azure 搜索资源。 
 
 ![门户中的 Azure 搜索资源](media/search-create-service-portal/azure-search-resource-label.png)
 
-更喜欢 PowerShell？ 使用 Azure 资源管理器[服务模板](https://azure.microsoft.com/resources/templates/101-azure-search-create/)。 有关如何入门的帮助，请参阅[使用 PowerShell 管理 Azure 搜索](search-manage-powershell.md)了解背景知识。
+更喜欢 PowerShell？ 使用 Azure 资源管理器[服务模板](https://azure.microsoft.com/resources/templates/101-azure-search-create/)。 有关如何入门的帮助，请参阅[使用 PowerShell 管理 Azure 搜索](search-manage-powershell.md)。
 
 ## <a name="subscribe-free-or-paid"></a>订阅（免费或付费）
 

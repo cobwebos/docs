@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 02/08/2017
 ms.author: sngun
-ms.openlocfilehash: 0ff92ad58cc8b7206b7061c88f8aadbb701870f0
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 765596500e3ac294dc79f0785b12b03370fa652a
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54044512"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54354478"
 ---
 # <a name="notifying-patients-of-hl7-fhir-health-care-record-changes-using-logic-apps-and-azure-cosmos-db"></a>使用逻辑应用和 Azure Cosmos DB 通知患者 HL7 FHIR 医疗保健记录的更改
 
@@ -130,11 +130,11 @@ API 应用将连接到 Azure Cosmos DB，并按资源类型查询新的或修改
             /// <param name="maximumItemCount">-1 returns all (default)</param>
             /// <returns></returns>
             [Metadata("Get New or Modified FHIR Documents",
-                "Query for new or modifed FHIR Documents By Resource Type " +
+                "Query for new or modified FHIR Documents By Resource Type " +
                 "from Last Run Date or Beginning of Collection creation"
             )]
             [SwaggerResponse(HttpStatusCode.OK, type: typeof(Task<dynamic>))]
-            [SwaggerResponse(HttpStatusCode.NotFound, "No New or Modifed Documents found")]
+            [SwaggerResponse(HttpStatusCode.NotFound, "No New or Modified Documents found")]
             [SwaggerOperation("GetNewOrModifiedFHIRDocuments")]
             public async Task<dynamic> GetNewOrModifiedFhirDocuments(
                 [Metadata("Database Id", "Database Id")] string databaseId,
@@ -217,7 +217,7 @@ API 应用将连接到 Azure Cosmos DB，并按资源类型查询新的或修改
 
 ## <a name="summary"></a>摘要
 
-- 现已明确 Azure Cosmos DB 具有对新文档或修改后文档通知的原生支持，并且此功能简单易用。 
+- 已了解 Azure Cosmos DB 具有对新文档或修改后文档通知的原生支持，以及使用此功能非常简单。 
 - 通过利用逻辑应用，可以创建工作流，而无需编写任何代码。
 - 使用 Azure 服务总线队列处理 HL7 FHIR 文档的分布。
 

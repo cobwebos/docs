@@ -11,13 +11,13 @@ author: oslake
 ms.author: moslake
 ms.reviewer: vanto, genemi
 manager: craigg
-ms.date: 12/20/2018
-ms.openlocfilehash: 33e0b66541e5ead5f3c05d2310ecc07e8a62324c
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.date: 1/16/2019
+ms.openlocfilehash: 2c022bd002700426eea2c6b38a667cd5a1381c02
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53728119"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54359844"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-sql"></a>使用适用于 Azure SQL 数据库的虚拟网络服务终结点和规则
 
@@ -118,8 +118,9 @@ RBAC 备用：
 
 - 虚拟网络规则仅适用于 Azure 资源管理器虚拟网络，不适用于[经典部署模型][arm-deployment-model-568f]网络。
 
-- 如果启用 Azure SQL 数据库的虚拟网络服务终结点，会同时启用 MySQL 和 PostgreSQL Azure 服务的终结点。 但是，启用终结点后，尝试从终结点连接到 MySQL 或 PostgreSQL 实例会失败。
-  - 根本原因是 MySQL 和 PostgreSQL 目前不支持 ACLing。
+- 如果启用 Azure SQL 数据库的虚拟网络服务终结点，会同时启用 MySQL 和 PostgreSQL Azure 服务的终结点。 但是，启用终结点后，尝试从终结点连接到 MySQL 或 PostgreSQL 实例可能会失败。
+  - 根本原因是 MySQL 和 PostgreSQL 可能没有配置虚拟网络规则。 必须为 Azure Database for MySQL 和 Azure Database for PostgreSQL 配置虚拟网络规则，连接才会成功。
+
 - 在防火墙上，IP 地址范围适用于以下网络项，但虚拟网络规则并不适用：
   - [站点到站点 (S2S) 虚拟专用网络 (VPN)][vpn-gateway-indexmd-608y]
   - 通过 [Expressroute][expressroute-indexmd-744v] 进行的本地连接

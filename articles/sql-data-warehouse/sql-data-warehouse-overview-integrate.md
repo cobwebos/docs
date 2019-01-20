@@ -10,12 +10,12 @@ ms.component: consume
 ms.date: 04/17/2018
 ms.author: kavithaj
 ms.reviewer: igorstan
-ms.openlocfilehash: 5b302be582bd22a7b38601c90f5fe475062afb26
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 0d9d10214f8bc61a914de3f72ddae13679f2811e
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51239665"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54358501"
 ---
 # <a name="integrate-other-services-with-sql-data-warehouse"></a>使用 SQL 数据仓库集成其他服务
 除了本身的核心功能以外，SQL 数据仓库还允许用户集成 Azure 中的其他许多服务。 这些服务包括：
@@ -41,20 +41,20 @@ Azure 数据工厂为用户提供一个托管平台，用于创建复杂的提�
 * **存储过程**：协调 SQL 数据仓库上存储过程的执行。
 * **复制**：使用 ADF 将数据移动到 SQL 数据仓库。 实际上，此操作可以使用 ADF 标准数据移动机制或封面下的 PolyBase。 
 
-有关详细信息，请参阅[与 Azure 数据工厂集成](sql-data-warehouse-get-started-visualize-with-power-bi.md)。
+有关详细信息，请参阅[与 Azure 数据工厂集成](https://docs.microsoft.com/en-us/azure/data-factory/load-azure-sql-data-warehouse?toc=/azure/sql-data-warehouse/toc.json)。
 
 ## <a name="azure-machine-learning"></a>Azure 机器学习
 Azure 机器学习是完全托管的分析服务，因此你可以使用大量预测工具创建复杂的模型。 支持将 SQL 数据仓库用作模型的源和目标，这些模型具有以下功能：
 
-* **读取数据**：使用 T-SQL 针对 SQL 数据仓库大规模驱动模型。
-* **写入数据**：将任一模型中的更改提交回到 SQL 数据仓库。
+* **读取数据：** 使用 T-SQL 针对 SQL 数据仓库大规模驱动模型。
+* **写入数据：** 将任一模型中的更改提交回到 SQL 数据仓库。
 
 有关详细信息，请参阅[与 Azure 机器学习集成](sql-data-warehouse-get-started-analyze-with-azure-machine-learning.md)。
 
 ## <a name="azure-stream-analytics"></a>Azure 流分析
 Azure 流分析是复杂、完全托管的基础结构，用于处理和使用从 Azure 事件中心生成的事件数据。  通过与 SQL 数据仓库集成，可以有效地处理流数据，并将其与关系数据一起存储以实现更深入、更高级的分析。  
 
-* **作业输出**：将流分析作业的输出直接发送到 SQL 数据仓库。
+* **作业输出：** 将流分析作业的输出直接发送到 SQL 数据仓库。
 
 有关详细信息，请参阅[与 Azure 流分析集成](sql-data-warehouse-integrate-azure-stream-analytics.md)。
 

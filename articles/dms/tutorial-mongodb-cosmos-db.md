@@ -1,6 +1,6 @@
 ---
-title: 教程：使用 Azure 数据库迁移服务将 MongoDB 脱机迁移到 Azure Cosmos DB Mongo API | Microsoft Docs
-description: 了解如何使用 Azure 数据库迁移服务从本地 MongoDB 脱机迁移到 Azure Cosmos DB Mongo API。
+title: 教程：使用 Azure 数据库迁移服务将 MongoDB 脱机迁移到 Azure Cosmos DB 的用于 MongoDB 的 API | Microsoft Docs
+description: 了解如何使用 Azure 数据库迁移服务从本地 MongoDB 脱机迁移到 Azure Cosmos DB 的用于 MongoDB 的 API。
 services: dms
 author: pochiraju
 ms.author: rajpo
@@ -11,15 +11,15 @@ ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
 ms.date: 12/11/2018
-ms.openlocfilehash: 4651c9afab99577622af71297e1fb6465a20097f
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: b4f8d2bdbce20fc7a932280edc26cb3ddfbe6471
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53713091"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54247599"
 ---
-# <a name="tutorial-migrate-mongodb-to-azure-cosmos-db-mongo-api-offline-using-dms"></a>教程：使用 DMS 将 MongoDB 脱机迁移到 Azure Cosmos DB Mongo API
-可以使用 Azure 数据库迁移服务将数据库从 MongoDB 的本地或云实例脱机（一次性）迁移到 Azure Cosmos DB Mongo API。
+# <a name="tutorial-migrate-mongodb-to-azure-cosmos-dbs-api-for-mongodb-offline-using-dms"></a>教程：使用 DMS 将 MongoDB 脱机迁移到 Azure Cosmos DB 的用于 MongoDB 的 API
+可以使用 Azure 数据库迁移服务将数据库从 MongoDB 的本地或云实例脱机（一次性）迁移到 Azure Cosmos DB 的用于 MongoDB 的 API。
 
 本教程介绍如何执行下列操作：
 > [!div class="checklist"]
@@ -28,11 +28,11 @@ ms.locfileid: "53713091"
 > * 运行迁移。
 > * 监视迁移。
 
-在本教程中，请使用 Azure 数据库迁移服务，将在 Azure 虚拟机中托管的 MongoDB 中的 **Wingtips** 数据集迁移到 Azure Cosmos DB for MongoDB API。 如果尚未设置 MongoDB 源，请参阅[在 Azure 中的 Windows VM 上安装和配置 MongoDB](https://docs.microsoft.com/azure/virtual-machines/windows/install-mongodb) 一文。
+在本教程中，你将使用 Azure 数据库迁移服务，将 Azure 虚拟机中托管的 MongoDB 中的某个数据集迁移到 Azure Cosmos DB 的用于 MongoDB 的 API。 如果尚未设置 MongoDB 源，请参阅[在 Azure 中的 Windows VM 上安装和配置 MongoDB](https://docs.microsoft.com/azure/virtual-machines/windows/install-mongodb) 一文。
 
 ## <a name="prerequisites"></a>先决条件
 要完成本教程，需要：
-- [创建 Azure Cosmos DB for MongoDB API 帐户](https://ms.portal.azure.com/#create/Microsoft.DocumentDB)。
+- [创建 Azure Cosmos DB 的用于 MongoDB 的 API 帐户](https://ms.portal.azure.com/#create/Microsoft.DocumentDB)。
 - 使用 Azure 资源管理器部署模型创建 Azure 数据库迁移服务的 VNET，它将使用 [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) 或 [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways) 为本地源服务器提供站点到站点连接。
 - 确保 Azure 虚拟网络 (VNET) 网络安全组规则未阻止以下通信端口：443、53、9354、445、12000。 有关 Azure VNET NSG 流量筛选的更多详细信息，请参阅[使用网络安全组筛选网络流量](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg)一文。
 - 打开 Windows 防火墙，使 Azure 数据库迁移服务能够访问源 MongoDB 服务器（默认情况下为 TCP 端口 27017）。
@@ -66,7 +66,7 @@ ms.locfileid: "53713091"
 
 5. 选择现有虚拟网络 (VNET) 或创建一个新的。
 
-    VNET 为 Azure 数据库迁移服务提供源 SQL Server 和目标 Azure SQL 数据库实例的访问权限。
+    VNET 为 Azure 数据库迁移服务提供对源 MongoDB 实例和目标 Azure Cosmos DB 帐户的访问权限。
 
     若要深入了解如何在 Azure 门户中创建 VNET，请参阅[使用 Azure 门户创建虚拟网络](https://aka.ms/DMSVnet)一文。
 
@@ -103,7 +103,7 @@ ms.locfileid: "53713091"
    也可使用连接字符串模式，为在其中转储了要迁移的集合数据的博客存储文件容器提供一个位置。
 
    > [!NOTE]
-   > Azure 数据库迁移服务也可将 bson 文档或 json 文档迁移到 Azure Cosmos DB Mongo API 集合。
+   > Azure 数据库迁移服务也可将 bson 文档或 json 文档迁移到 Azure Cosmos DB 的用于 MongoDB 的 API 集合。
     
    即使不能使用 DNS 名称解析，也可使用 IP 地址。
 
@@ -112,7 +112,7 @@ ms.locfileid: "53713091"
 2. 选择“保存”。
 
 ## <a name="specify-target-details"></a>指定目标详细信息
-1. 在“迁移目标详细信息”屏幕上，指定目标 Azure Cosmos DB 帐户的连接详细信息，该帐户是要将 MongoDB 数据迁移到其中的已提前预配的 Azure Cosmos DB MongoDB 帐户。
+1. 在“迁移目标详细信息”屏幕上，指定目标 Azure Cosmos DB 帐户的连接详细信息，该帐户是要将 MongoDB 数据迁移到其中的已提前预配的 Azure Cosmos DB 的用于 MongoDB 的 API 帐户。
 
     ![指定目标详细信息](media/tutorial-mongodb-to-cosmosdb/dms-specify-target.png)
 
@@ -163,7 +163,7 @@ ms.locfileid: "53713091"
 
 ## <a name="verify-data-in-cosmos-db"></a>验证 Cosmos DB 中的数据
 
-- 在迁移完成后，可以检查 Azure Cosmos DB for MongoDB API 帐户，验证所有集合是否已成功迁移。
+- 在迁移完成后，可以检查你的 Azure Cosmos DB 帐户，验证所有集合是否已成功迁移。
 
     ![活动状态为“已完成”](media/tutorial-mongodb-to-cosmosdb/dms-cosmosdb-data-explorer.png)
 

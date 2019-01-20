@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/29/2018
+ms.date: 01/14/2019
 ms.author: mstewart
 ms.custom: seodec18
-ms.openlocfilehash: ee2a4be97b2b56f9c659639a34e821e37c188828
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 6f94ec1a64108cde6ff69a572559960a988a1b7c
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53087858"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54261275"
 ---
 # <a name="quickstart-encrypt-a-windows-iaas-vm-with-azure-powershell"></a>快速入门：使用 Azure PowerShell 加密 Windows IaaS VM
 
@@ -30,9 +30,9 @@ Azure 磁盘加密用于加密 Windows 和 Linux IaaS 虚拟机磁盘。 此解�
 ## <a name="prerequisites"></a>先决条件
 
 - Windows PowerShell ISE
-- 安装或更新到最新版本的 [Azure PowerShell](/powershell/azure/install-azurerm-ps)
+- 安装或更新到[最新版本的 AzureRM PowerShell 模块](/powershell/azure/azurerm/install-azurerm-ps?view=azurermps-6.13.0)
     - AzureRM 模块版本需要是 6.0.0 或更高版本。 `Get-Module AzureRM -ListAvailable | Select-Object -Property Name,Version,Path`
-- [Azure 磁盘加密先决条件脚本](https://raw.githubusercontent.com/Azure/azure-powershell/master/src/ResourceManager/Compute/Commands.Compute/Extension/AzureDiskEncryption/Scripts/AzureDiskEncryptionPreRequisiteSetup.ps1)的副本。
+- [Azure 磁盘加密先决条件脚本](https://raw.githubusercontent.com/Azure/azure-powershell/master/src/Compute/Compute/Extension/AzureDiskEncryption/Scripts/AzureDiskEncryptionPreRequisiteSetup.ps1)的副本。
     - 如果已经有此脚本，请下载新的副本，因为它最近进行了更改。 
     - 请使用 **CTRL-A** 选择所有文本，然后使用 **CTRL-C** 将所有文本复制到记事本中。
     - 将文件另存为 **ADEPrereqScript.ps1**

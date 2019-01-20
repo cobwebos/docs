@@ -8,12 +8,12 @@ ms.author: tarcher
 manager: jeconnoc
 ms.topic: tutorial
 ms.date: 11/15/2018
-ms.openlocfilehash: 786fc427e4cb631c4aedd0f795daebebd9fb15bc
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 3554151490215f128efc6725b7aaa0628d503366
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54077430"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54260105"
 ---
 # <a name="tutorial-deploy-from-github-to-azure-app-service-with-jenkins-continuous-integration-and-deployment"></a>教程：使用 Jenkins 持续集成和部署从 GitHub 部署到 Azure 应用服务
 
@@ -162,7 +162,7 @@ az ad sp create-for-rbac --name "yourAzureServicePrincipalName" --password yourS
 
    ![添加 Azure 服务主体凭据](media/tutorial-jenkins-deploy-web-app-azure-app-service/add-service-principal-credentials.png)
 
-   | 属性 | 值 | Description | 
+   | 属性 | 值 | 说明 | 
    |----------|-------|-------------| 
    | **订阅 ID** | <*yourAzureSubscription-ID*> | 你的 Azure 订阅的 GUID 值 <p>**提示**：如果你不知道自己的 Azure 订阅 ID，请从命令行或 Cloud Shell 运行以下 Azure CLI 命令，然后使用 `id` GUID 值： <p>`az account list` | 
    | **客户端 ID** | <*yourAzureServicePrincipal-ID*> | 之前为 Azure 服务主体生成的 `appId` GUID 值 | 

@@ -6,14 +6,14 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: java
 ms.topic: reference
-ms.date: 11/29/2018
+ms.date: 1/15/2019
 ms.author: moderakh
-ms.openlocfilehash: fbb1757cfb1118380e2f7d79566f6dc9832fce23
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 760a54a09dd612cef93de0de1e8ac2fd59b04b26
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54041487"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54329372"
 ---
 # <a name="azure-cosmos-db-async-java-sdk-for-sql-api-release-notes-and-resources"></a>适用于 SQL API 的 Azure Cosmos DB Async Java SDK：发行说明和资源
 > [!div class="op_single_selector"]
@@ -36,7 +36,7 @@ SQL API Async Java SDK 与 SQL API Java SDK 的区别在于，前者通过支持
 
 <tr><td>**SDK 下载**</td><td>[Maven](https://mvnrepository.com/artifact/com.microsoft.azure/azure-cosmosdb)</td></tr>
 
-<tr><td>**API 文档**</td><td>[Java API 参考文档](https://docs.microsoft.com/java/api/com.microsoft.azure.cosmosdb.rx._asyncdocumentclient?view=azure-java-stable)</td></tr>
+<tr><td>**API 文档**</td><td>[Java API 参考文档](https://docs.microsoft.com/java/api/com.microsoft.azure.cosmosdb.rx.asyncdocumentclient?view=azure-java-stable)</td></tr>
 
 <tr><td>**参与 SDK**</td><td>[GitHub](https://github.com/Azure/azure-cosmosdb-java)</td></tr>
 
@@ -50,6 +50,11 @@ SQL API Async Java SDK 与 SQL API Java SDK 的区别在于，前者通过支持
 </table></br>
 
 ## <a name="release-notes"></a>发行说明
+
+### <a name="a-name231231"></a><a name="2.3.1"/>2.3.1
+* 修复了处理非常大的查询响应时遇到的问题。
+* 修复了实例化客户端时的资源令牌处理 ([github #78](https://github.com/Azure/azure-cosmosdb-java/issues/78))。
+* 升级了易受攻击的依赖项 jackson-databind ([github #77](https://github.com/Azure/azure-cosmosdb-java/pull/77))。
 
 ### <a name="a-name230230"></a><a name="2.3.0"/>2.3.0
 * 修复了资源泄漏 bug。
@@ -125,6 +130,7 @@ Microsoft 至少会在停用 SDK 的 **12 个月**之前发出通知，以便顺
 
 | 版本 | 发布日期 | 停用日期 |
 | --- | --- | --- |
+| [2.3.1](#2.3.1) |2019 年 1 月 15 日|--- |
 | [2.3.0](#2.3.0) |2018 年 11 月 29 日|--- |
 | [2.2.2](#2.2.2) |2018 年 11 月 8 日|--- |
 | [2.2.1](#2.2.1) |2018 年 11 月 2日|--- |

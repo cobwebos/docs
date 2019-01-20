@@ -11,13 +11,13 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: Carlrab
 manager: craigg
-ms.date: 11/28/2018
-ms.openlocfilehash: 4b8c67cfff89b54b4776ebc8b4586cd8f52950b3
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.date: 01/15/2019
+ms.openlocfilehash: 201ba431a4382741815536db2bb4d08f0068be80
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53342606"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54329535"
 ---
 # <a name="quickstart-create-an-azure-sql-database-managed-instance"></a>快速入门：创建 Azure SQL 数据库托管实例
 
@@ -47,6 +47,7 @@ ms.locfileid: "53342606"
    |**托管实例名称**|任何有效的名称|请参阅[命名规则和限制](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)，了解什么是有效的名称。|
    |**托管实例管理员登录名**|任何有效的用户名|请参阅[命名规则和限制](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)，了解什么是有效的名称。 不要使用“serveradmin”，因为这是保留的服务器级角色。|
    |**密码**|任何有效的密码|密码必须至少 16 个字符，且符合[定义的复杂性要求](../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm)。|
+   |**排序规则**|要为托管实例使用的排序规则|有关排序规则的信息，请参阅[排序规则](https://docs.microsoft.com/sql/t-sql/statements/collations)。|
    |**位置**|你要在其中创建托管实例的位置|有关区域的信息，请参阅 [Azure 区域](https://azure.microsoft.com/regions/)。|
    |**虚拟网络**|选择“创建新的虚拟网络”或有效的虚拟网络和子网。| 如果网络/子网是灰色的，则必须先[对其进行修改以满足网络要求](sql-database-managed-instance-configure-vnet-subnet.md)，然后再选择它作为新托管实例的目标。 若要了解为托管实例配置网络环境的要求，请参阅[为 Azure SQL 数据库托管实例配置 VNet](sql-database-managed-instance-connectivity-architecture.md)。 |
    |**资源组**|新的或现有的资源组|如需有效的资源组名称，请参阅 [Naming rules and restrictions](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)（命名规则和限制）。|

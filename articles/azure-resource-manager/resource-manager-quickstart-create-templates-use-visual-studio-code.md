@@ -10,15 +10,15 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 11/13/2018
+ms.date: 01/11/2019
 ms.topic: quickstart
 ms.author: jgao
-ms.openlocfilehash: 6a52355360ef2c892cb45af77366e09864cd7837
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: f4657209dfda2b515e29b4d462368ae6b5c1eae7
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51611788"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54302487"
 ---
 # <a name="quickstart-create-azure-resource-manager-templates-by-using-visual-studio-code"></a>快速入门：使用 Visual Studio Code 创建 Azure 资源管理器模板
 
@@ -55,7 +55,7 @@ ms.locfileid: "51611788"
 
 ## <a name="edit-the-template"></a>编辑模板
 
-若要了解如何使用 Visual Studio Code 编辑模板，请将额外的一个元素添加到 `outputs` 节。
+若要体验如何使用 Visual Studio Code 来编辑模板，请将额外的一个元素添加到 `outputs` 节以显示存储 URI。
 
 1. 将额外的一个输出添加到导出的模板：
 
@@ -89,12 +89,12 @@ ms.locfileid: "51611788"
 
 ## <a name="deploy-the-template"></a>部署模板
 
-可通过多种方法来部署模板。  在本快速入门中，请使用 Azure Cloud shell。 Cloud Shell 支持 Azure CLI 和 Azure PowerShell。
+可通过多种方法来部署模板。  在本快速入门中，请使用 Azure Cloud shell。 Cloud shell 是一个 Web 应用程序，不需要进行任何配置。 它同时支持 Azure CLI 和 Azure PowerShell。
 
 1. 登录到 [Azure Cloud Shell](https://shell.azure.com)
 
     ![Azure 门户 - Cloud Shell - CLI](./media/resource-manager-quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-choose-cli.png)
-2. 在 Cloud Shell 的左上角，它会显示 **PowerShell** 或 **Bash**。 若要使用 CLI，需打开一个 Bash 会话。 若要运行 PowerShell，需打开一个 PowerShell 会话。 选择向下箭头可在 Bash 与 PowerShell 之间切换。 请参阅上面的屏幕截图。 进行切换时，需重启 shell。
+2. 通过在左上角选择“PowerShell”或“Bash”来选择你喜欢使用的环境。 若要使用 CLI，需打开一个 Bash 会话。 若要运行 Azure PowerShell，需打开一个 PowerShell 会话。 选择向下箭头可在 Bash 与 PowerShell 之间切换。 请参阅上面的屏幕截图。 进行切换时，需重启 shell。
 3. 依次选择“上传/下载文件”、“上传”。
 
     # <a name="clitabcli"></a>[CLI](#tab/CLI)
@@ -107,9 +107,9 @@ ms.locfileid: "51611788"
     
     ---
 
-    必须先上传模板文件，然后才能通过 shell 来部署它。
-5. 选择在上一部分保存的文件。 默认名称为 **azuredeploy.json**。
-6. 在 Cloud Shell 中，运行 **ls** 命令来验证是否已成功上传文件。 还可以使用 **cat** 命令来验证模板内容。 下图显示如何从 Bash 运行命令。  使用的命令与 PowerShell 会话中的命令相同。
+    选择在上一部分保存的文件。 默认名称为 **azuredeploy.json**。 必须可以从 shell 访问模板文件。
+
+    还可以选择使用 **ls** 命令和 **cat** 命令来验证文件是否已成功上传。 
 
     # <a name="clitabcli"></a>[CLI](#tab/CLI)
 
@@ -120,7 +120,7 @@ ms.locfileid: "51611788"
     ![Azure 门户 - Cloud Shell - 列出文件](./media/resource-manager-quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-list-file-powershell.png)
     
     ---
-7. 在 Cloud Shell 中运行以下命令。 选择用于显示 PowerShell 代码或 CLI 代码的选项卡。
+4. 在 Cloud Shell 中运行以下命令。 选择用于显示 PowerShell 代码或 CLI 代码的选项卡。
 
     # <a name="clitabcli"></a>[CLI](#tab/CLI)
     ```azurecli
@@ -163,7 +163,7 @@ ms.locfileid: "51611788"
 
     输出部分的存储帐户名称和存储 URL 在屏幕截图上突出显示。 在下一步需要此存储帐户名称。
 
-7. 运行以下 CLI 或 PowerShell 命令，列出新建的存储帐户：
+5. 运行以下 CLI 或 PowerShell 命令，列出新建的存储帐户：
 
     # <a name="clitabcli"></a>[CLI](#tab/CLI)
     ```azurecli
@@ -184,6 +184,8 @@ ms.locfileid: "51611788"
     
     ---
 
+若要详细了解如何使用 Azure 存储帐户，请参阅[快速入门：使用 Azure 门户上传、下载和列出 Blob](../storage/blobs/storage-quickstart-blobs-portal.md)。
+
 ## <a name="clean-up-resources"></a>清理资源
 
 不再需要 Azure 资源时，请通过删除资源组来清理部署的资源。
@@ -195,7 +197,7 @@ ms.locfileid: "51611788"
 
 ## <a name="next-steps"></a>后续步骤
 
-本快速入门的主要关注点是如何使用 Visual Studio Code 来编辑 Azure 快速入门模板中的现有模板。 此外还介绍了如何使用 Azure Cloud Shell 中的 CLI 或 PowerShell 来部署模板。 Azure 快速入门模板中的模板可能并未提供你所需的一切。 下一教程介绍如何从模板参考中查找信息，以便创建加密的 Azure 存储帐户。
+本快速入门的主要关注点是如何使用 Visual Studio Code 来编辑 Azure 快速入门模板中的现有模板。 你还学习了如何从 Azure Cloud Shell 中使用 CLI 或 PowerShell 来部署模板。 Azure 快速入门模板中的模板可能并未提供你所需的一切。 下一教程介绍如何从模板参考中查找信息，以便创建加密的 Azure 存储帐户。
 
 > [!div class="nextstepaction"]
 > [创建加密的存储帐户](./resource-manager-tutorial-create-encrypted-storage-accounts.md)

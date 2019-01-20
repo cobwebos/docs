@@ -1,25 +1,25 @@
 ---
 title: 教程：Facebook 内容审核 - Azure 内容审查器
 titlesuffix: Azure Cognitive Services
-description: 使用内容审查器审查 Facebook 页面。
+description: 在本教程中，你将了解如何使用基于机器学习的内容审查器帮助审查 Facebook 帖子和评论。
 services: cognitive-services
 author: sanjeev3
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: content-moderator
 ms.topic: tutorial
-ms.date: 09/18/2017
+ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: 048f2f40714fd7675c073337825d75443e58039b
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 085ddaf757f2a11b4db4aadb22ad16009d29231e
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53255425"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54260429"
 ---
 # <a name="tutorial-facebook-content-moderation-with-content-moderator"></a>教程：使用内容审查器执行 Facebook 内容审核
 
-本教程介绍如何使用基于机器学习的内容审查器帮助审查 Facebook 帖子和评论。
+在本教程中，你将了解如何使用基于机器学习的内容审查器帮助审查 Facebook 帖子和评论。
 
 教程将指导完成以下步骤：
 
@@ -35,7 +35,7 @@ ms.locfileid: "53255425"
 
 ## <a name="create-a-content-moderator-team"></a>创建内容审查器团队
 
-请参阅[快速入门](quick-start.md)页面，以注册内容审查器和创建团队。
+请参阅[在 Web 上试用内容审查器](quick-start.md)快速入门来注册内容审查器并创建团队。
 
 ## <a name="configure-image-moderation-workflow-threshold"></a>配置图像审查工作流（阈值）
 
@@ -65,7 +65,7 @@ ms.locfileid: "53255425"
 > 例如，应为 westeurope，而不是 West Europe；应为 westcentralus，而不是 West Central US，以此类推。
 >
 
-| 应用设置 | Description   | 
+| 应用设置 | 说明   | 
 | -------------------- |-------------|
 | cm:TeamId   | 内容审查器 TeamId  | 
 | cm:SubscriptionKey | 内容审查器的订阅密钥 - 请参阅[凭据](review-tool-user-guide/credentials.md) | 
@@ -152,10 +152,6 @@ ms.locfileid: "53255425"
 ## <a name="license"></a>许可
 
 所有 Microsoft 认知服务 SDK 和示例均获得 MIT 许可证的许可。 有关详细信息，请参阅[许可证](https://microsoft.mit-license.org/)。
-
-## <a name="developer-code-of-conduct"></a>开发人员行为准则
-
-使用认知服务（包括此客户端库和示例）的开发人员应遵循“面向 Microsoft 认知服务的开发人员行为准则”（参见 http://go.microsoft.com/fwlink/?LinkId=698895）。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -12,21 +12,41 @@ ms.author: xiwu
 ms.reviewer: douglasl
 manager: craigg
 ms.date: 08/09/2018
-ms.openlocfilehash: a287f985ce015ac6b886f4e5c2b86d6b3793e7d5
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 2afdd3f78a99d9aae5e84bc2fdf1b21cbdc150d2
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53721829"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54306380"
 ---
 # <a name="sync-data-across-multiple-cloud-and-on-premises-databases-with-sql-data-sync"></a>使用 SQL 数据同步跨多个云和本地数据库同步数据
 
 使用 SQL 数据同步这项基于 Azure SQL 数据库的服务，可以跨多个 SQL 数据库和 SQL Server 实例双向同步选定数据。
 
 > [!IMPORTANT]
-> 目前，Azure SQL 数据同步**不**支持 Azure SQL 数据库托管实例。
+> 目前，Azure SQL 数据同步不支持 Azure SQL 数据库托管实例。
 
-## <a name="architecture-of-sql-data-sync"></a>SQL 数据同步的体系结构
+## <a name="when-to-use-data-sync"></a>何时使用 SQL 数据同步
+
+如果需要跨多个 Azure SQL 数据库或 SQL Server 数据库使数据保持最新，则数据同步非常有用。 下面是 SQL 数据同步的主要用例：
+
+-   **混合数据同步：** 借助数据同步，可以在本地数据库和 Azure SQL 数据库之间保持数据同步，以便启用混合应用程序。 此功能可能会吸引在考虑迁移到云中，并希望启用 Azure 应用程序的客户。
+
+-   **分布式应用程序：** 在许多情况下，跨各个数据库分散不同的工作负载会大有裨益。 例如，如果有大型生产数据库，但还需要对此数据运行报表或分析工作负载，那么使用第二个数据库来处理此额外工作负载将会有所帮助。 这种方法可最大限度地减轻对生产工作负载造成的性能影响。 可以使用 SQL 数据同步来同步这两个数据库。
+
+-   **全球分布的应用程序：** 许多企业的业务分布在多个区域，甚至是多个国家/地区。 为了最大限度地缩短网络延迟时间，最好将数据存储在靠近的区域中。 借助 SQL 数据同步，可轻松同步世界各地区域中的数据库。
+
+数据同步不是以下场景的首选解决方案：
+
+| 场景 | 一些建议的解决方案 |
+|----------|----------------------------|
+| 灾难恢复 | [Azure 异地冗余备份](sql-database-automated-backups.md) |
+| 读取缩放 | [使用只读副本对只读的查询工作负荷进行负载均衡（预览版）](sql-database-read-scale-out.md) |
+| ETL（OLTP 到 OLAP） | [Azure 数据工厂](https://azure.microsoft.com/services/data-factory/)或 [SQL Server Integration Services](https://docs.microsoft.com/sql/integration-services/sql-server-integration-services?view=sql-server-2017) |
+| 从本地 SQL Server 迁移到 Azure SQL 数据库 | [Azure 数据库迁移服务](https://azure.microsoft.com/services/database-migration/) |
+|||
+
+## <a name="overview-of-sql-data-sync"></a>SQL 数据同步概述
 
 SQL 数据同步以同步组的概念为依据。 同步组是一组要同步的数据库。
 
@@ -50,26 +70,6 @@ SQL 数据同步使用中心辐射型拓扑来同步数据。 将同步组中的
 
 -   “冲突解决策略”是组级别策略，可以是“中心胜出”，也可以是“成员胜出”。
 
-## <a name="when-to-use-data-sync"></a>何时使用 SQL 数据同步
-
-如果需要跨多个 Azure SQL 数据库或 SQL Server 数据库使数据保持最新，则数据同步非常有用。 下面是 SQL 数据同步的主要用例：
-
--   **混合数据同步：** 借助数据同步，可以在本地数据库和 Azure SQL 数据库之间保持数据同步，以便启用混合应用程序。 此功能可能会吸引在考虑迁移到云中，并希望启用 Azure 应用程序的客户。
-
--   **分布式应用程序：** 在许多情况下，跨各个数据库分散不同的工作负载会大有裨益。 例如，如果有大型生产数据库，但还需要对此数据运行报表或分析工作负载，那么使用第二个数据库来处理此额外工作负载将会有所帮助。 这种方法可最大限度地减轻对生产工作负载造成的性能影响。 可以使用 SQL 数据同步来同步这两个数据库。
-
--   **全球分布的应用程序：** 许多企业的业务分布在多个区域，甚至是多个国家/地区。 为了最大限度地缩短网络延迟时间，最好将数据存储在靠近的区域中。 借助 SQL 数据同步，可轻松同步世界各地区域中的数据库。
-
-数据同步不是以下场景的首选解决方案：
-
-| 场景 | 一些建议的解决方案 |
-|----------|----------------------------|
-| 灾难恢复 | [Azure 异地冗余备份](sql-database-automated-backups.md) |
-| 读取缩放 | [使用只读副本对只读的查询工作负荷进行负载均衡（预览版）](sql-database-read-scale-out.md) |
-| ETL（OLTP 到 OLAP） | [Azure 数据工厂](https://azure.microsoft.com/services/data-factory/)或 [SQL Server Integration Services](https://docs.microsoft.com/sql/integration-services/sql-server-integration-services?view=sql-server-2017) |
-| 从本地 SQL Server 迁移到 Azure SQL 数据库 | [Azure 数据库迁移服务](https://azure.microsoft.com/services/database-migration/) |
-|||
-
 ## <a name="how-does-data-sync-work"></a>SQL 数据同步的工作原理 
 
 -   **跟踪数据更改：** SQL 数据同步使用插入、更新和删除触发器来跟踪更改。 更改记录在用户数据库中的端表内。 请注意，默认情况下 BULK INSERT 不会激发触发器。 如果未指定 FIRE_TRIGGERS，则不执行任何插入触发器操作。 添加 FIRE_TRIGGERS 选项，以便数据同步可以跟踪这些插入。 
@@ -79,6 +79,14 @@ SQL 数据同步使用中心辐射型拓扑来同步数据。 将同步组中的
 -   **解决冲突：** SQL 数据同步提供两个冲突解决选项，即“中心胜出”或“成员胜出”。
     -   如果选择“中心胜出”，中心内的更改始终覆盖成员内的更改。
     -   如果选择“成员胜出”，成员内的更改覆盖中心内的更改。 如果有多个成员，最终值取决于哪个成员最先同步。
+
+## <a name="compare-data-sync-with-transactional-replication"></a>将数据同步与事务复制进行比较
+
+| | 数据同步 | 事务复制 |
+|---|---|---|
+| 优点 | - 主动-主动支持<br/>- 在本地和 Azure SQL 数据库之间双向同步 | - 更低的延迟<br/>- 事务一致性<br/>- 迁移后重用现有拓扑 |
+| 缺点 | - 5 分钟或更长的延迟<br/>- 无事务一致性<br/>- 更高的性能影响 | - 无法从 Azure SQL 数据库单一数据库发布<br/>- 维护成本高 |
+| | | |
 
 ## <a name="get-started-with-sql-data-sync"></a>SQL 数据同步入门
 

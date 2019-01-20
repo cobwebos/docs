@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: include
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 12/05/2018
+ms.date: 01/15/2019
 ms.author: jgao
 ms.custom: include file
-ms.openlocfilehash: 711688b5b414e7b9a931190de3f7e6321d97ba3e
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 11bcfa1b4719d6def5bfc4a6a189bd2b58896b5b
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53729333"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54334343"
 ---
 ## <a name="quickstarts-and-tutorials"></a>快速入门和教程
 
@@ -48,5 +48,6 @@ ms.locfileid: "53729333"
     |[部署 SQL 扩展](../articles/azure-resource-manager/resource-manager-tutorial-deploy-sql-extensions-bacpac.md)|使用扩展执行部署后任务。 在本教程中，你将部署客户脚本扩展以在虚拟机上安装 Web 服务器。 |
     |[保护项目](../articles/azure-resource-manager/resource-manager-tutorial-secure-artifacts.md)|保护完成部署所需的项目。 本教程介绍如何保护“部署 SQL 扩展”教程中使用的项目。 |
     |[使用安全部署做法](../articles/azure-resource-manager/deployment-manager-tutorial.md)|使用 Azure 部署管理器。 |
+    |[教程：对资源管理器模板部署进行故障排除](../articles/azure-resource-manager/resource-manager-tutorial-troubleshoot.md)|排查模板部署问题。|
 
 这些教程可以单独使用，也可以作为一系列用于学习主要的资源管理器模板开发概念。

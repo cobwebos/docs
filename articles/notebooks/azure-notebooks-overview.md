@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 12/04/2018
+ms.date: 01/11/2019
 ms.author: kraigb
-ms.openlocfilehash: 2640316ce8915018df30fc94df0e1fbb207e894b
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: ba06e568b3d7b0125d5868c1ad4a85e5e42f7e18
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53713601"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54246205"
 ---
 # <a name="overview-of-azure-notebooks"></a>Azure Notebooks 概述
 
@@ -57,7 +57,7 @@ Azure Notebooks 是免费的托管服务，用于在云中开发和运行 Jupyte
 
 Azure Notebooks 是一项免费服务，但每个项目有 4-GB 内存和 1-GB 数据的限制，防止滥用。 超过这些限制的用户会看到 Captcha 质询，回答正确后即可继续运行笔记本。
 
-若要取消所有限制，请将帐户与 Azure 订阅相关联，这样就可以选择高级计算层。
+若要解除所有限制，请通过使用 Azure Active Directory 的某个帐户（例如公司帐户）登录到 Azure Notebooks。 如果该帐户与某个 Azure 订阅相关联，可以使用 Azure Data Science Virtual Machine 计算层。
 
 ## <a name="available-kernels-and-environments"></a>可用内核和环境
 

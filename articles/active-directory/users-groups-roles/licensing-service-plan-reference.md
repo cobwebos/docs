@@ -1,10 +1,10 @@
 ---
-title: Azure Active Directory 中用于许可的产品名称和服务计划标识符 | Microsoft Docs
-description: 用于在 Azure 门户、Office 365 门户、PowerShell 或 Microsoft Graph 中管理 Azure AD 许可的标识符映射
+title: 用于许可的产品名称和服务计划标识符 - Azure AD | Microsoft Docs
+description: 用于在 Azure 门户、Office 365 门户、PowerShell 或 Microsoft Graph 中管理 Azure Active Directory 许可的标识符映射
 services: active-directory
 keywords: Azure Active Directory 许可服务计划
 documentationcenter: ''
-author: piotrci
+author: curtand
 manager: mtillman
 editor: ''
 ms.assetid: ''
@@ -13,14 +13,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 8/17/2018
-ms.author: piotrci
-ms.openlocfilehash: 7ebf0149af9e012d3b0135c7ee9b8167c4cf76c9
-ms.sourcegitcommit: 1aedb52f221fb2a6e7ad0b0930b4c74db354a569
+ms.date: 01/14/2019
+ms.author: curtand
+ms.reviewer: sumitp
+ms.openlocfilehash: 9d229dfa11a317c1f3b3121cdc7c1cdfa7df9c5e
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42140629"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54321630"
 ---
 # <a name="product-names-and-service-plan-identifiers-for-licensing"></a>用于许可的产品名称和服务计划标识符
 
@@ -137,7 +138,7 @@ ms.locfileid: "42140629"
 | DYN365_ENTERPRISE_TEAM_MEMBERS    | 6a54b05e-4fab-40e7-9828-428db3b336fa |
 | EMPLOYEE_SELF_SERVICE | ba5f0cfa-d54a-4ea0-8cf4-a7e1dc4423d8 |
 
-### <a name="service-exchange-online"></a>服务：*Exchange Online*
+### <a name="service-exchange-online"></a>服务：Exchange Online
 
 无法一起分配以下服务计划：
 
@@ -198,7 +199,7 @@ ms.locfileid: "42140629"
 | MCOPSTN2  | 5a10155d-f5c1-411a-a8ec-e99aae125390 |
 | MCOPSTN5  | 54a152dc-90de-4996-93d2-bc47e670fc06 |
 
-### <a name="service-yammer"></a>服务：*Yammer*
+### <a name="service-yammer"></a>服务：Yammer
 
 无法一起分配以下服务计划：
 

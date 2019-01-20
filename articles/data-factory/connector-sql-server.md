@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/08/2018
 ms.author: jingwang
-ms.openlocfilehash: 776b1eb71b4f15c3376644de92205a4eeb77e4b2
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 54db7cc65e05b383b251c21aa95569c6c2d58194
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54020517"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54306159"
 ---
 # <a name="copy-data-to-and-from-sql-server-using-azure-data-factory"></a>使用 Azure 数据工厂向/从 SQL Server 复制数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -95,11 +95,11 @@ SQL Server 链接服务支持以下属性：
                 "type": "SecureString",
                 "value": "Data Source=<servername>\\<instance name if using named instance>;Initial Catalog=<databasename>;Integrated Security=True;"
             },
-             "userName": "<domain\\username>",
-             "password": {
+            "userName": "<domain\\username>",
+            "password": {
                 "type": "SecureString",
                 "value": "<password>"
-             }
+            }
         },
         "connectVia": {
             "referenceName": "<name of Integration Runtime>",
@@ -238,9 +238,9 @@ CREATE PROCEDURE CopyTestSrcStoredProcedureWithParameters
 AS
 SET NOCOUNT ON;
 BEGIN
-     select *
-     from dbo.UnitTestSrcTable
-     where dbo.UnitTestSrcTable.stringData != stringData
+    select *
+    from dbo.UnitTestSrcTable
+    where dbo.UnitTestSrcTable.stringData != stringData
     and dbo.UnitTestSrcTable.identifier != identifier
 END
 GO
@@ -343,8 +343,8 @@ GO
 ```sql
 create table dbo.SourceTbl
 (
-       name varchar(100),
-       age int
+    name varchar(100),
+    age int
 )
 ```
 
@@ -353,9 +353,9 @@ create table dbo.SourceTbl
 ```sql
 create table dbo.TargetTbl
 (
-       identifier int identity(1,1),
-       name varchar(100),
-       age int
+    identifier int identity(1,1),
+    name varchar(100),
+    age int
 )
 ```
 
@@ -475,7 +475,7 @@ CREATE TYPE [dbo].[MarketingType] AS TABLE(
 存储过程功能利用[表值参数](https://msdn.microsoft.com/library/bb675163.aspx)。
 
 >[!NOTE]
->如果要通过调用存储过程写入 Money/Smallmoney 数据类型，值可能会舍入。 在 TVP 中将相应的数据类型指定为十进制而不是 Money/Smallmoney 来缓解。 
+>如果要通过调用存储过程写入 Money/Smallmoney 数据类型，值可能会舍入。 在 TVP 中将相应的数据类型指定为十进制而不是 Money/Smallmoney 来缓解。
 
 ## <a name="data-type-mapping-for-sql-server"></a>SQL Server 的数据类型映射
 
@@ -534,7 +534,6 @@ CREATE TYPE [dbo].[MarketingType] AS TABLE(
 4. 切换到“IP 地址”选项卡。向下滚动以查看 IPAll 部分。 记下 TCP 端口（默认值是 1433）。
 5. 在计算机上创建 Windows 防火墙规则，以便允许通过此端口传入流量。  
 6. **验证连接**：若要使用完全限定名称连接到 SQL Server，请从另一台计算机使用 SQL Server Management Studio。 例如：`"<machine>.<domain>.corp.<company>.com,1433"`。
-
 
 ## <a name="next-steps"></a>后续步骤
 有关 Azure 数据工厂中复制活动支持作为源和接收器的数据存储的列表，请参阅[支持的数据存储](copy-activity-overview.md##supported-data-stores-and-formats)。

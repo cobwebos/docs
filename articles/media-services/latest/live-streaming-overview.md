@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 12/26/2018
+ms.date: 01/15/2019
 ms.author: juliako
-ms.openlocfilehash: 3a2b3752926a3a4391ae9479ba636694533c97a8
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 91e24fb274c1f9895046e8e2e7d760d02d196ccd
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53788202"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54354172"
 ---
 # <a name="live-streaming-with-azure-media-services-v3"></a>使用 Azure 媒体服务 v3 实时传送视频流
 
@@ -29,6 +29,22 @@ ms.locfileid: "53788202"
 - 媒体服务中的组件，用于引入、预览、打包、记录、加密实时事件并将其广播给客户，或者广播给 CDN 进行进一步分发。
 
 本文将提供使用媒体服务的实时传送视频流涉及的主要组件的详细概述、指导和关系图。
+
+## <a name="live-streaming-workflow"></a>实时传送视频流工作流
+
+下面是实时传送视频流工作流的步骤：
+
+1. 创建**实时事件**。
+2. 创建新的**资产**对象。
+3. 创建**实时输出**并使用创建的资产名称。
+4. 若要使用 DRM 加密内容，请创建**流式处理策略**和**内容密钥**。
+5. 如果不使用 DRM，则使用内置的**流式处理策略**类型创建**流式处理定位器**。
+6. 列出**流式处理策略**的路径，以取回要使用的 URL（这些是确定性的）。
+7. 获取要从中流式传输的**流式处理终结点**的主机名（确保该流式处理终结点正在运行）。 
+8. 将步骤 6 中的 URL 与步骤 7 中的主机名合并，以获取完整的 URL。
+9. 如果希望停止查看**实时事件**，则需要通过删除**流式处理定位器**来停止流式传输事件。
+
+有关详细信息，请参阅基于 [Live .NET Core](https://github.com/Azure-Samples/media-services-v3-dotnet-core-tutorials/tree/master/NETCore/Live) 示例的[实时传送视频流教程](stream-live-tutorial-with-api.md)。
 
 ## <a name="overview-of-main-components"></a>主要组件概述
 
@@ -89,9 +105,10 @@ ms.locfileid: "53788202"
 
 使用 [LiveOutput](https://docs.microsoft.com/rest/api/media/liveoutputs) 可以控制传出实时流的属性，例如，记录的流数量（如云 DVR 的容量），以及观看者是否可以开始观看实时流。 **LiveEvent** 及其 **LiveOutput** 之间的关系类似于传统的电视广播，其中的频道 (**LiveEvent**) 表示恒定的视频流，录制 (**LiveOutput**) 限定为特定的时间分段（例如，下午 6:30 到 7:00 的晚间新闻）。 可以使用数字视频录像机 (DVR) 录制电视节目 – LiveEvents 中的等效功能是通过 ArchiveWindowLength 属性管理的。 它是一个 ISO-8601 时间跨度持续时间（例如 PTHH:MM:SS），指定 DVR 的容量，最小可设置为 3 分钟，最大为 25 小时。
 
-
 > [!NOTE]
-> **LiveOutput** 在创建时启动，在删除后停止。 删除 **LiveOutput** 不会删除基础**资产**和资产中的内容。  
+> **LiveOutput** 在创建时启动，在删除后停止。 删除 **LiveOutput** 不会删除基础**资产**和该资产中的内容。 
+>
+> 如果已在 **LiveOutput** 的资产上发布了**流式处理定位器**，则事件（最长可达 DVR 窗口长度）将继续可查看，直到**流式处理定位器**结束时或删除定位器时为止，具体取决于哪一时间先到。   
 
 有关详细信息，请参阅[使用云 DVR](live-event-cloud-dvr.md)。
 
@@ -110,21 +127,6 @@ ms.locfileid: "53788202"
 ## <a name="latency"></a>Latency
 
 有关 LiveEvent 延迟的详细信息，请参阅[延迟](live-event-latency.md)。
-
-## <a name="live-streaming-workflow"></a>实时传送视频流工作流
-
-下面是实时传送视频流工作流的步骤：
-
-1. 创建 LiveEvent。
-2. 创建新的资产对象。
-3. 创建 LiveOutput 并使用创建的资产名称。
-4. 若要使用 DRM 加密内容，则创建流式处理策略和内容密钥。
-5. 如果不使用 DRM，则使用内置的流式处理策略类型创建流式处理定位符。
-6. 列出流式处理策略中的路径，以取回要使用的 URL（确定性）。
-7. 获取要从中流式传输的流式处理终结点的主机名。 
-8. 将步骤 6 中的 URL 与步骤 7 中的主机名合并，以获取完整的 URL。
-
-有关详细信息，请参阅基于 [Live .NET Core](https://github.com/Azure-Samples/media-services-v3-dotnet-core-tutorials/tree/master/NETCore/Live) 示例的[实时传送视频流教程](stream-live-tutorial-with-api.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

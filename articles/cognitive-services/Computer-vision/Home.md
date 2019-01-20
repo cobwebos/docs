@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 08/22/2018
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 4c952c847aa56b385065a878b664b3d1d98763f4
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: cd4eca669936a206241069f1f8a8d9440f45be33
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53584014"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54229772"
 ---
 # <a name="what-is-computer-vision"></a>什么是计算机视觉？
 
@@ -34,7 +34,7 @@ ms.locfileid: "53584014"
 
 计算机视觉在分析图像时，可执行以下操作：
 
-| 操作 | Description |
+| 操作 | 说明 |
 | ------ | ----------- |
 |**[标记视觉特性](concept-tagging-images.md)**|从数千个可识别对象、生物、风景和操作识别并标记图像中的视觉对象特性。 如果标记含混不清或者不常见，API 响应会提供“提示”，明确已知设置上下文中的标记的含义。 标记并不局限于主体（如前景中的人员），还包括设置（室内或室外）、家具、工具、工厂、动物、附件、小工具等。|
 |**[检测对象](concept-object-detection.md)**| 对象检测类似于添加标记，但 API 返回应用于每个标记的边框坐标。 例如，如果图像包含狗、猫和人，检测操作将列出这些对象及其在图像中的坐标。 可以使用此功能进一步处理图像中各对象之间的关系。 图像中有多个相同标记的实例时，还会通知于你。|
@@ -69,6 +69,10 @@ ms.locfileid: "53584014"
 - 图像的文件大小必须不到 4 兆字节 (MB)
 - 图像的尺寸必须大于 50 x 50 像素  
   对于 OCR，图像的尺寸必须介于 50 x 50 和 4200 x 4200 像素之间
+
+## <a name="data-privacy-and-security"></a>数据隐私和安全性
+
+与所有认知服务一样，使用计算机视觉服务的开发人员应该了解 Microsoft 针对客户数据的政策。 请参阅 Microsoft 信任中心上的[“认知服务”页面](https://www.microsoft.com/trustcenter/cloudservices/cognitiveservices)来了解详细信息。
 
 ## <a name="next-steps"></a>后续步骤
 

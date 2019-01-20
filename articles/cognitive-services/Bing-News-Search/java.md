@@ -8,107 +8,103 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-news-search
 ms.topic: quickstart
-ms.date: 9/21/2017
+ms.date: 1/10/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 9933f1c54e6081ed3f1004712543610a7883736b
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: f8a98133d68cb73958664dd04bb2d959c97195cf
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53260950"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54263843"
 ---
 # <a name="quickstart-perform-a-news-search-using-java-and-the-bing-news-search-rest-api"></a>快速入门：使用 Java 和必应新闻搜索 REST API 执行新闻搜索
 
-本文展示了如何使用 Azure 上的 Microsoft 认知服务中包含的必应搜索 API。 虽然本文是使用 Java 编写的，但 API 是一种 RESTful Web 服务，与任何可以发出 HTTP 请求并分析 JSON 的编程语言兼容。 
+使用本快速入门对必应新闻搜索 API 进行你的第一次调用并查看 JSON 响应。 这个简单的 Java 应用程序会向该 API 发送一个新闻搜索查询并显示响应。
 
-编写的示例代码作为控制台应用程序在 Java 7 下运行。
+虽然此应用程序是使用 Java 编写的，但 API 是一种 RESTful Web 服务，与大多数编程语言兼容。
 
-有关 API 的技术详细信息，请参阅 [API 参考](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference)。
+该示例的源代码可在 [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/Search/BingNewsSearchv7.java) 上获得 
 
 ## <a name="prerequisites"></a>先决条件
 
-必须拥有包含必应搜索 API 的[认知服务 API 帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)。 [免费试用版](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)足以满足本快速入门的要求。 你需要使用激活免费试用版时提供的访问密钥，也可以使用 Azure 仪表板中的付费订阅密钥。 另请参阅[认知服务定价 - 必应搜索 API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)。
+* [Java 开发工具包 (JDK) 7 或 8](https://aka.ms/azure-jdks)
 
-## <a name="bing-news-search"></a>必应新闻搜索
+* [Gson 库](https://github.com/google/gson)
 
-[必应新闻搜索 API](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference) 从必应搜索引擎返回新闻结果。
 
-1. 下载或安装 [gson 库](https://github.com/google/gson)。
-2. 在你喜欢使用的 IDE 或编辑器中新建一个 Java 项目。
-3. 添加下面提供的代码。
-4. 使用对订阅有效的访问密钥替换 `subscriptionKey` 值。
-5. 运行该程序。
+[!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../includes/cognitive-services-bing-news-search-signup-requirements.md)]
 
-```java
-import java.net.*;
-import java.util.*;
-import java.io.*;
-import javax.net.ssl.HttpsURLConnection;
+另请参阅[认知服务定价 - 必应搜索 API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)。
 
-/*
- * Gson: https://github.com/google/gson
- * Maven info:
- *     groupId: com.google.code.gson
- *     artifactId: gson
- *     version: 2.8.1
- *
- * Once you have compiled or downloaded gson-2.8.1.jar, assuming you have placed it in the
- * same folder as this file (BingNewsSearch.java), you can compile and run this program at
- * the command line as follows.
- *
- * javac BingNewsSearch.java -classpath .;gson-2.8.1.jar -encoding UTF-8
- * java -cp .;gson-2.8.1.jar BingNewsSearch
- */
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
+## <a name="create-and-initialize-a-project"></a>创建并初始化项目
 
-public class BingNewsSearch {
+1. 在你最喜欢的 IDE 或编辑器中新建一个 Java 项目，并导入以下库。
 
-// ***********************************************
-// *** Update or verify the following values. ***
-// **********************************************
+    ```java
+    import java.net.*;
+    import java.util.*;
+    import java.io.*;
+    import javax.net.ssl.HttpsURLConnection;
+    import com.google.gson.Gson;
+    import com.google.gson.GsonBuilder;
+    import com.google.gson.JsonObject;
+    import com.google.gson.JsonParser;
+    ```
 
-    // Replace the subscriptionKey string value with your valid subscription key.
-    static String subscriptionKey = "enter key here";
+2. 创建一个新类，并在其中包含用于 API 终结点、订阅密钥和搜索词的变量。
 
-    // Verify the endpoint URI.  At this writing, only one endpoint is used for Bing
-    // search APIs.  In the future, regional endpoints may be available.  If you
-    // encounter unexpected authorization errors, double-check this value against
-    // the endpoint for your Bing Web search instance in your Azure dashboard.
-    static String host = "https://api.cognitive.microsoft.com";
-    static String path = "/bing/v7.0/news/search";
-
-    static String searchTerm = "Microsoft";
-
+    ```java
     public static SearchResults SearchNews (String searchQuery) throws Exception {
-        // construct URL of search request (endpoint + query string)
+        static String subscriptionKey = "enter key here";
+        static String host = "https://api.cognitive.microsoft.com";
+        static String path = "/bing/v7.0/news/search";
+        static String searchTerm = "Microsoft";
+    //...
+    }
+    ```
+
+## <a name="construct-the-search-request-and-recieve-a-json-response"></a>构造搜索请求并接收 JSON 响应
+
+1. 使用上一个步骤中的变量来设置 API 请求的搜索 URL 的格式。 注意，将搜索词附加到请求之前，必须进行 URL 编码。
+
+    ```java
+    public static SearchResults SearchNews (String searchQuery) throws Exception {
+        // construct the search request URL (in the form of URL + query string)
         URL url = new URL(host + path + "?q=" +  URLEncoder.encode(searchQuery, "UTF-8"));
         HttpsURLConnection connection = (HttpsURLConnection)url.openConnection();
         connection.setRequestProperty("Ocp-Apim-Subscription-Key", subscriptionKey);
-
-        // receive JSON body
-        InputStream stream = connection.getInputStream();
-        String response = new Scanner(stream).useDelimiter("\\A").next();
-
-        // construct result object for return
-        SearchResults results = new SearchResults(new HashMap<String, String>(), response);
-
-        // extract Bing-related HTTP headers
-        Map<String, List<String>> headers = connection.getHeaderFields();
-        for (String header : headers.keySet()) {
-            if (header == null) continue;      // may have null key
-            if (header.startsWith("BingAPIs-") || header.startsWith("X-MSEdge-")) {
-                results.relevantHeaders.put(header, headers.get(header).get(0));
-            }
-        }
-
-        stream.close();
-        return results;
     }
+    ```
 
+2. 接收来自必应新闻搜索 API 的 JSON 响应，并构建结果对象。
+
+    ```java
+    // receive JSON body
+    InputStream stream = connection.getInputStream();
+    String response = new Scanner(stream).useDelimiter("\\A").next();
+    // construct result object for return
+    SearchResults results = new SearchResults(new HashMap<String, String>(), response);
+    ```
+
+## <a name="process-the-json-response"></a>处理 JSON 响应
+
+1. 将必应相关 HTTP 标头与 JSON 正文相分离，然后关闭流并返回 API 响应。
+    ```java
+    // extract Bing-related HTTP headers
+    Map<String, List<String>> headers = connection.getHeaderFields();
+    for (String header : headers.keySet()) {
+        if (header == null) continue;      // may have null key
+        if (header.startsWith("BingAPIs-") || header.startsWith("X-MSEdge-")) {
+            results.relevantHeaders.put(header, headers.get(header).get(0));
+        }
+    }
+    stream.close();
+    return results;
+    ```
+
+2. 创建一个方法来分析并重新序列化 JSON
+    ```java
     // pretty-printer for JSON; uses GSON parser to parse and re-serialize
     public static String prettify(String json_text) {
         JsonParser parser = new JsonParser();
@@ -116,39 +112,23 @@ public class BingNewsSearch {
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         return gson.toJson(json);
     }
+    ```
 
-    public static void main (String[] args) {
-        try {
-            System.out.println("Searching the Web for: " + searchTerm);
-
-            SearchResults result = SearchNews(searchTerm);
-
-            System.out.println("\nRelevant HTTP Headers:\n");
-            for (String header : result.relevantHeaders.keySet())
-                System.out.println(header + ": " + result.relevantHeaders.get(header));
-
-            System.out.println("\nJSON Response:\n");
-            System.out.println(prettify(result.jsonResponse));
-        }
-        catch (Exception e) {
-            e.printStackTrace(System.out);
-            System.exit(1);
-        }
+3. 在应用程序的 main 方法中，调用搜索方法，并显示结果。
+    ```csharp
+   public static void main (String[] args) {
+       System.out.println("Searching the Web for: " + searchTerm);
+       SearchResults result = SearchNews(searchTerm);
+    
+       System.out.println("\nRelevant HTTP Headers:\n");
+       for (String header : result.relevantHeaders.keySet())
+             System.out.println(header + ": " + result.relevantHeaders.get(header));  
+    System.out.println("\nJSON Response:\n");
+    System.out.println(prettify(result.jsonResponse));
     }
-}
+    ```
 
-// Container class for search results encapsulates relevant headers and JSON data
-class SearchResults{
-    HashMap<String, String> relevantHeaders;
-    String jsonResponse;
-    SearchResults(HashMap<String, String> headers, String json) {
-        relevantHeaders = headers;
-        jsonResponse = json;
-    }
-}
-```
-
-**响应**
+## <a name="json-response"></a>JSON 响应
 
 在 JSON 中返回成功的响应，如以下示例所示：
 
@@ -247,8 +227,4 @@ class SearchResults{
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [对新闻进行分页](paging-news.md)
-> [使用修饰标记来突出显示文本](hit-highlighting.md)
-> [在网上搜索新闻](search-the-web.md)   
-> [试试看](https://azure.microsoft.com/services/cognitive-services/bing-news-search-api/)
-
+> [创建单页 Web 应用](tutorial-bing-news-search-single-page-app.md)

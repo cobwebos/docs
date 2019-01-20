@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 01/03/2019
 ms.author: iainfou
-ms.openlocfilehash: 9cf0c378271841277e6dfd770bf8d186494b9d48
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: a8fefdf352507f0e0c0757625297f667907eb9bc
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54040738"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54230588"
 ---
 # <a name="enable-and-review-kubernetes-master-node-logs-in-azure-kubernetes-service-aks"></a>启用和查看 Azure Kubernetes 服务 (AKS) 中 Kubernetes 主节点的日志
 
@@ -36,6 +36,19 @@ ms.locfileid: "54040738"
     * 如果需要创建工作区，请提供一个名称、资源组和位置。
 1. 在可用日志列表中，选择要启用的日志。 默认情况下，kube-apiserver、kube-controller-manager 和 kube-scheduler 日志已启用。 你可以启用其他日志，例如 kube-audit 和 cluster-autoscaler。 启用 Log Analytics 后，可以返回并更改收集的日志。
 1. 准备就绪后，选择“保存”以启用选定日志的收集。
+
+> [!NOTE]
+> AKS 仅捕获在订阅上启用功能标志后创建或升级的群集的审核日志。 若要注册 *AKSAuditLog* 功能标志，请使用 [az feature register][az-feature-register] 命令，如以下示例所示：
+>
+> `az feature register --name AKSAuditLog --namespace Microsoft.ContainerService`
+>
+> 等待状态显示“已注册”。 可以使用 [az feature list][az-feature-list] 命令检查注册状态：
+>
+> `az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/AKSAuditLog')].{Name:name,State:properties.state}"`
+>
+> 准备就绪后，使用 [az provider register][az-provider-register] 命令刷新 AKS 资源提供程序的注册状态：
+>
+> `az provider register --namespace Microsoft.ContainerService`
 
 以下示例门户屏幕截图显示了“诊断设置”窗口，以及用于创建 Log Analytics 工作区的选项：
 
@@ -133,3 +146,6 @@ AzureDiagnostics
 [analyze-log-analytics]: ../azure-monitor/learn/tutorial-viewdata.md
 [kubelet-logs]: kubelet-logs.md
 [aks-ssh]: ssh.md
+[az-feature-register]: /cli/azure/feature#az-feature-register
+[az-feature-list]: /cli/azure/feature#az-feature-list
+[az-provider-register]: /cli/azure/provider#az-provider-register

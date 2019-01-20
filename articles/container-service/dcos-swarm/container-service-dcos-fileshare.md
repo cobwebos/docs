@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 06/07/2017
 ms.author: juliens
 ms.custom: mvc
-ms.openlocfilehash: 728f8ddbda35f27c0f89e1d72e98fd2d7669320e
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: e6651fc5988a1e1830807219cda02ab057db9a4f
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52999860"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54329814"
 ---
 # <a name="deprecated-create-and-mount-a-file-share-to-a-dcos-cluster"></a>（已弃用）创建文件共享并将其装载到 DC/OS 群集
 
@@ -35,7 +35,7 @@ ms.locfileid: "52999860"
 
 ## <a name="create-a-file-share-on-microsoft-azure"></a>在 Microsoft Azure 上创建文件共享
 
-使用与 ACS DC/OS 群集共享 Azure 文件功能前，必须创建存储帐户和文件共享。 运行以下脚本来创建存储和文件共享。 使用环境中的内容更新参数。
+使用与 ACS DC/OS 群集共享 Azure 文件功能前，必须创建存储帐户和文件共享。 运行以下脚本来创建存储和文件共享。 将参数更新为你的环境中的值。
 
 ```azurecli-interactive
 # Change these four parameters

@@ -1,27 +1,8 @@
 ---
-title: 将数据从其他试验导入机器学习工作室 - Azure | Microsoft Docs
-description: 如何保存 Azure 机器学习工作室中的训练数据并将其用于其他实验。
-keywords: 导入数据, 数据, 数据源, 训练数据
-services: machine-learning
-documentationcenter: ''
-author: ericlicoding
-ms.custom: previous-ms.author=deguhath, previous-author=deguhath
-ms.author: amlstudiodocs
-editor: cgronlun
-ms.assetid: 7da9dcec-5693-4bb6-8166-15904e7f75c3
-ms.service: machine-learning
-ms.component: studio
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 03/20/2017
-ms.openlocfilehash: ea6e813d78cafa4e31ea37afa2675f30bccc5c4f
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
-ms.translationtype: HT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53258062"
+title:将数据从其他试验导入机器学习工作室 titleSuffix: Azure 机器学习工作室 description:如何保存 Azure 机器学习工作室中的训练数据并将其用于其他实验。
+services: machine-learning ms.service: machine-learning ms.component: studio ms.topic: article
+
+author: ericlicoding ms.author: amlstudiodocs ms.custom: previous-ms.author=deguhath, previous-author=deguhath ms.date:03/20/2017
 ---
 # <a name="import-your-data-into-azure-machine-learning-studio-from-another-experiment"></a>将数据从另一个试验导入 Azure 机器学习工作室
 

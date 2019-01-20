@@ -1,26 +1,7 @@
 ---
-title: 部署和使用 - Azure 机器学习工作室 | Microsoft Docs
-description: 可以使用 Azure 机器学习来部署机器学习工作流和模型作为 Web 服务。 然后，可以使用这些 Web 服务，通过 Internet 从应用程序调用机器学习模型，从而实时或者在批处理模式下进行预测。
-services: machine-learning
-documentationcenter: ''
-author: ericlicoding
-ms.custom: seodec18
-ms.author: amlstudiodocs
-editor: cgronlun
-ms.assetid: 47635376-d1f4-4ea4-a6af-bd1f99f69a69
-ms.service: machine-learning
-ms.component: studio
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 04/19/2017
-ms.openlocfilehash: ed57f80a210cdb9c7ff8e77da2269d8494892fcc
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
-ms.translationtype: HT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53268421"
+title:部署和使用 titleSuffix: Azure 机器学习工作室 description:可以使用 Azure 机器学习来部署机器学习工作流和模型作为 Web 服务。 然后，可以使用这些 Web 服务，通过 Internet 从应用程序调用机器学习模型，从而实时或者在批处理模式下进行预测。 services: machine-learning ms.service: machine-learning ms.component: studio ms.topic: article
+
+author: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18 ms.date:04/19/2017
 ---
 # <a name="azure-machine-learning-studio-web-services-deployment-and-consumption"></a>Azure 机器学习工作室 Web 服务：部署和使用
 可以使用 Azure 机器学习来部署机器学习工作流和模型作为 Web 服务。 然后，可以使用这些 Web 服务，通过 Internet 从应用程序调用机器学习模型，从而实时或者在批处理模式下进行预测。 由于 Web 服务是 RESTful，可以从各种编程语言和平台（如 .NET 和 Java）以及应用程序（如 Excel）调用它们。

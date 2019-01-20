@@ -3,7 +3,7 @@ title: 适用于 Linux 的 Azure N 系列 GPU 驱动程序安装 | Microsoft Doc
 description: 如何为 Azure 中运行 Linux 的 N 系列 VM 安装 NVIDIA GPU 驱动程序
 services: virtual-machines-linux
 documentationcenter: ''
-author: dlepow
+author: cynthn
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 09/24/2018
-ms.author: danlep
+ms.date: 01/09/2019
+ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2bd9f8508f67a3c4b87533fb514854b5f66a5f6b
-ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
+ms.openlocfilehash: df78852e309054bb5c27a779b37bb2310d9f7a01
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48017257"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54201034"
 ---
 # <a name="install-nvidia-gpu-drivers-on-n-series-vms-running-linux"></a>在运行 Linux 的 N 系列 VM 上安装 NVIDIA GPU 驱动程序
 
@@ -51,9 +51,9 @@ lspci | grep -i NVIDIA
 
 然后，运行特定于分发的安装命令。
 
-### <a name="ubuntu-1604-lts"></a>Ubuntu 16.04 LTS
+### <a name="ubuntu"></a>Ubuntu 
 
-1. 下载并安装 CUDA 驱动程序。
+1. 从 NVIDIA 网站下载并安装 CUDA 驱动程序。 例如，对于 Ubuntu 16.04 LTS：
   ```bash
   CUDA_REPO_PKG=cuda-repo-ubuntu1604_10.0.130-1_amd64.deb
 
@@ -97,7 +97,7 @@ sudo apt-get install cuda-drivers
 sudo reboot
 ```
 
-### <a name="centos-or-red-hat-enterprise-linux-73-or-74"></a>CentOS 或 Red Hat Enterprise Linux 7.3 或 7.4
+### <a name="centos-or-red-hat-enterprise-linux"></a>CentOS 或 Red Hat Enterprise Linux
 
 1. 更新内核（建议）。 如果选择不更新内核，请确保 `kernel-devel` 和 `dkms` 的版本适合你的内核。
 
@@ -174,7 +174,7 @@ sudo reboot
 
 若要在 NV 或 NVv2 系列 VM 上安装 NVIDIA GRID 驱动程序，请通过 SSH 连接到每个 VM，并执行 Linux 发行版的步骤。 
 
-### <a name="ubuntu-1604-lts"></a>Ubuntu 16.04 LTS
+### <a name="ubuntu"></a>Ubuntu 
 
 1. 运行 `lspci` 命令。 验证 NVIDIA M60 卡是否显示为 PCI 设备。
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/20/2016
 ms.author: timlt
-ms.openlocfilehash: 6b5acac1b8647c324988c316cd5602b3dba98a1d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 40e91b4ba7ee62976b49975769bd1d1e656525f2
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "22997982"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54328862"
 ---
 # <a name="managing-azure-cloud-services-using-azure-automation"></a>使用 Azure 自动化管理 Azure 云服务
 本指南介绍 Azure 自动化服务，以及如何使用它来简化 Azure 云服务的管理。

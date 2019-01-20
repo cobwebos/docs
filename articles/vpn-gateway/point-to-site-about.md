@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 12/14/2018
 ms.author: cherylmc
-ms.openlocfilehash: bf84ec16d5d13439796b386a8ab4f40840ca4eaa
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 682d1d123d3381a52c9d356cd1bf226d2a847df4
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53438401"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54352863"
 ---
 # <a name="about-point-to-site-vpn"></a>关于点到站点 VPN
 
@@ -22,7 +22,7 @@ ms.locfileid: "53438401"
 
 点到站点 VPN 可使用以下协议之一：
 
-* OpenVPN，一种基于 SSL/TLS 的 VPN 协议。 由于大多数防火墙都会打开 SSL 所用的 TCP 端口 443，因此 SSL VPN 解决方案可以穿透防火墙。 OpenVPN 可用于从 Android、iOS、Linux 和 Mac 设备进行连接（OSX 10.11 和更高版本）。
+* OpenVPN，一种基于 SSL/TLS 的 VPN 协议。 由于大多数防火墙都会打开 SSL 所用的 TCP 端口 443，因此 SSL VPN 解决方案可以穿透防火墙。 OpenVPN 可用于从 Android、iOS（版本 11.0 和更高版本）、Linux 和 Mac 设备进行连接（OSX 10.13 和更高版本）。
 
 * 安全套接字隧道协议 (SSTP)，这是一种基于 SSL 的专属协议。 由于大多数防火墙都会打开 SSL 所用的 TCP 端口 443，因此 SSL VPN 解决方案可以穿透防火墙。 只有 Windows 设备支持 SSTP。 Azure 支持所有采用 SSTP 的 Windows 版本（Windows 7 和更高版本）。
 

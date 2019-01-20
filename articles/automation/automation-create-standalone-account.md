@@ -6,15 +6,15 @@ ms.service: automation
 ms.component: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 03/15/2018
+ms.date: 01/15/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: dc369f5bc3d80a476e45d46cfe25541216484b1c
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 2e419da4ed84f3d202113f9616050c3e7c29f240
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49958799"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54322038"
 ---
 # <a name="create-a-standalone-azure-automation-account"></a>创建独立的 Azure 自动化帐户
 
@@ -69,7 +69,7 @@ ms.locfileid: "49958799"
   >
   > ![添加自动化帐户警报](media/automation-create-standalone-account/create-account-without-perms.png)
 
-1. 在“添加自动化帐户”窗格的“名称”框中，输入新自动化帐户的名称。 此名称选定后即不可更改。 每个区域和资源组的自动化帐户名称都是唯一的。
+1. 在“添加自动化帐户”窗格的“名称”框中，输入新自动化帐户的名称。 此名称选定后即不可更改。 每个区域和资源组的自动化帐户名称都是唯一的。已删除的自动化帐户的名称可能无法立即可用。
 1. 如果有多个订阅，请在“订阅”框中为新帐户指定一个订阅。
 1. 对于“资源组”，请输入或选择新的或现有的资源组。
 1. 对于“位置”，请选择一个 Azure 数据中心位置。

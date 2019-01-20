@@ -1,23 +1,18 @@
 ---
-title: 监视应用程序网关的访问日志、性能日志、后端运行状况及指标
-description: 了解如何启用和管理应用程序网关的访问日志和性能日志
+title: 监视 Azure 应用程序网关的访问日志、性能日志、后端运行状况及指标
+description: 了解如何启用和管理 Azure 应用程序网关的访问日志和性能日志
 services: application-gateway
-author: amitsriva
-manager: rossort
-tags: azure-resource-manager
+author: vhorne
 ms.service: application-gateway
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 6/20/2018
+ms.date: 1/11/2019
 ms.author: amitsriva
-ms.openlocfilehash: 45a13bca32593895e51fa7fe3c5bd7ce1ba547e6
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 6cd21448742778b0a2a27aea41f7940b1a216cdc
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53437463"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54231098"
 ---
 # <a name="back-end-health-diagnostic-logs-and-metrics-for-application-gateway"></a>应用程序网关的后端运行状况、诊断日志和指标
 
@@ -98,7 +93,7 @@ az network application-gateway show-backend-health --resource-group AdatumAppGat
 可在 Azure 中使用不同类型的日志来对应用程序网关进行管理和故障排除。 可通过门户访问其中部分日志。 可从 Azure Blob 存储提取所有日志并在 [Log Analytics](../azure-monitor/insights/azure-networking-analytics.md)、Excel 和 Power BI 等各种工具中查看。 可从以下列表了解有关不同类型日志的详细信息：
 
 * **活动日志**：可使用 [Azure 活动日志](../monitoring-and-diagnostics/insights-debugging-with-events.md)（以前称为运行日志和审核日志）查看提交到 Azure 订阅的所有操作及其状态。 默认情况下会收集活动日志条目，可在 Azure 门户中查看这些条目。
-* **访问日志**：可使用此日志查看应用程序网关访问模式并分析重要信息，包括调用方 IP、请求的 URL、响应延迟、返回代码、输入和输出字节数。每隔 300 秒会收集一次访问日志。 此日志包含每个应用程序网关实例的一条记录。 应用程序网关实例可由 instanceId 属性标识。
+* **访问日志**：可以使用此日志查看应用程序网关访问模式并分析重要信息。 此日志包括调用方的 IP、请求的 URL、响应延迟、返回代码，以及传入和传出的字节数。每隔 300 秒会收集一次访问日志。 此日志包含每个应用程序网关实例的一条记录。 应用程序网关实例由 instanceId 属性标识。
 * **性能日志**：可使用此日志查看应用程序网关实例的执行情况。 此日志会捕获每个实例的性能信息，包括服务的总请求数、吞吐量（以字节为单位）、失败请求计数、正常和不正常的后端实例计数。 每隔 60 秒会收集一次性能日志。
 * **防火墙日志**：可使用此日志查看通过应用程序网关（配置有 Web 应用程序防火墙）的检测模式或阻止模式记录的请求。
 
@@ -167,7 +162,7 @@ az network application-gateway show-backend-health --resource-group AdatumAppGat
 只有在每个应用程序网关实例上启用了访问日志，才会生成此日志，如上述步骤所示。 数据存储在启用日志记录时指定的存储帐户中。 应用程序网关的每次访问均以 JSON 格式记录，如以下示例所示：
 
 
-|值  |说明  |
+|值  |Description  |
 |---------|---------|
 |instanceId     | 为请求服务的应用程序网关实例。        |
 |clientIP     | 请求的初始 IP。        |
@@ -211,13 +206,13 @@ az network application-gateway show-backend-health --resource-group AdatumAppGat
 只有在每个应用程序网关实例上启用了性能日志，才会生成此日志，如上述步骤所示。 数据存储在启用日志记录时指定的存储帐户中。 每隔 1 分钟生成性能日志数据。 将记录以下数据：
 
 
-|值  |说明  |
+|值  |Description  |
 |---------|---------|
 |instanceId     |  正在为其生成性能数据的应用程序网关实例。 对于多实例应用程序网关，每个实例有一行性能数据。        |
 |healthyHostCount     | 后端池中运行正常的主机数。        |
 |unHealthyHostCount     | 后端池中运行不正常的主机数。        |
 |requestCount     | 服务的请求数。        |
-|latency | 从实例到请求服务后端的请求的延迟（以毫秒为单位）。 |
+|latency | 从实例到请求服务后端的请求的平均延迟（以毫秒为单位）。 |
 |failedRequestCount| 失败的请求数。|
 |throughput| 自最后一个日志后的平均吞吐量，以每秒字节数为单位。|
 
@@ -248,7 +243,7 @@ az network application-gateway show-backend-health --resource-group AdatumAppGat
 只有为每个应用程序网关启用了防火墙日志，才会生成此日志，如上述步骤所示。 此日志还需在应用程序网关上配置 Web 应用程序防火墙。 数据存储在启用日志记录时指定的存储帐户中。 将记录以下数据：
 
 
-|值  |说明  |
+|值  |Description  |
 |---------|---------|
 |instanceId     | 正在为其生成防火墙数据的应用程序网关实例。 对于多实例应用程序网关，每个实例有一行性能数据。         |
 |clientIp     |   请求的初始 IP。      |

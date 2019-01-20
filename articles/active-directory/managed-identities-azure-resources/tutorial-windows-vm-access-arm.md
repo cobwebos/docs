@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
 ms.author: daveba
-ms.openlocfilehash: 53f9850d794061f5aaebc556743291ae8f3305fb
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: e4f2362e6baca14c540070a47b2c71fd99465f33
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52721283"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54305411"
 ---
 # <a name="use-a-windows-vm-system-assigned-managed-identity-to-access-resource-manager"></a>使用 Windows VM 系统分配的托管标识访问资源管理器
 
@@ -50,15 +50,15 @@ ms.locfileid: "52721283"
 
 ## <a name="get-an-access-token-using-the-vms-system-assigned-managed-identity-and-use-it-to-call-azure-resource-manager"></a>使用 VM 的系统分配的托管标识获取访问令牌并使用它来调用 Azure 资源管理器 
 
-在此部分中将需要使用 PowerShell。  如果尚未安装 **PowerShell**，请从[此处](https://docs.microsoft.com/powershell/azure/overview?view=azurermps-4.3.1)下载。 
+在此部分中将需要使用 PowerShell。  如果尚未安装 **PowerShell**，请从[此处](https://docs.microsoft.com/powershell/azure/overview)下载。 
 
 1.  在门户中，导航到“虚拟机”并转到 Windows 虚拟机，然后在“概述”中，单击“连接”。 
 2.  输入创建 Windows VM 时添加的用户名和密码。 
 3.  现在，已经创建了与虚拟机的远程桌面连接，请在远程会话中打开 PowerShell。 
-4.  使用 Powershell 的 Invoke-WebRequest，向 Azure 资源终结点的本地托管标识发出请求以获取 Azure 资源管理器的访问令牌。
+4.  使用 Invoke-WebRequest cmdlet，向 Azure 资源终结点的本地托管标识发出请求以获取 Azure 资源管理器的访问令牌。
 
     ```powershell
-       $response = Invoke-WebRequest -Uri 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fmanagement.azure.com%2F' -Method GET -Headers @{Metadata="true"}
+       $response = Invoke-WebRequest -Uri 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https://management.azure.com/' -Method GET -Headers @{Metadata="true"}
     ```
     
     > [!NOTE]
@@ -75,7 +75,7 @@ ms.locfileid: "52721283"
     $ArmToken = $content.access_token
     ```
     
-    最后，使用访问令牌调用 Azure 资源管理器。 在此示例中，我们还使用 PowerShell 的 Invoke-WebRequest 调用 Azure 资源管理器，并将访问令牌包含在授权标头中。
+    最后，使用访问令牌调用 Azure 资源管理器。 在此示例中，我们还使用 Invoke-WebRequest cmdlet 调用 Azure 资源管理器，并将访问令牌包含在授权标头中。
     
     ```powershell
     (Invoke-WebRequest -Uri https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP>?api-version=2016-06-01 -Method GET -ContentType "application/json" -Headers @{ Authorization ="Bearer $ArmToken"}).content

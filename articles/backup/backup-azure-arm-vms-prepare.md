@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 12/17/2018
 ms.author: raynew
-ms.openlocfilehash: ee7a9c407a26f9334a854c98793db8fc01244e2a
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.openlocfilehash: 65e4c6d66e410e8cd761128028b7a47e21db86eb
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53994668"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54354495"
 ---
 # <a name="prepare-to-back-up-azure-vms"></a>准备备份 Azure VM
 
@@ -61,8 +61,6 @@ ms.locfileid: "53994668"
     - 无需指定存储帐户即可存储备份数据。 保管库和 Azure 备份服务会自动处理这种情况。
 - 确认要备份的 Azure VM 上是否安装了 VM 代理。
 
-
-
 ### <a name="install-the-vm-agent"></a>安装 VM 代理
 
 为了启用备份，Azure 备份会将一个备份扩展（“VM 快照”或“VM 快照 Linux”）安装到 Azure VM 上运行的 VM 代理。
@@ -79,12 +77,14 @@ ms.locfileid: "53994668"
 
 ### <a name="establish-network-connectivity"></a>建立网络连接
 
-VM 上运行的备份扩展必须能够对 Azure 公共 IP 地址进行出站访问。 若要进行访问，可以：
+VM 上运行的备份扩展必须能够对 Azure 公共 IP 地址进行出站访问。
 
+> [!NOTE]
+> Azure VM 与 Azure 备份服务通信不需要显式的出站网络访问权限。 但是，某些较旧的虚拟机可能会遇到问题并因错误 **ExtensionSnapshotFailedNoNetwork** 而失败，要解决此错误，请选择以下选项之一允许备份扩展与 Azure 公共 IP 地址通信，从而提供明确的路径用于备份流量。
 
-- **NSG 规则**：允许 [Azure 数据中心 IP 范围](https://www.microsoft.com/download/details.aspx?id=41653)。 可以添加一个允许使用[服务标记](../virtual-network/security-overview.md#service-tags)访问 Azure 备份服务的规则，而无需单独允许每个地址范围并持续对其进行管理。
+- **NSG 规则**：允许 [Azure 数据中心 IP 范围](https://www.microsoft.com/download/details.aspx?id=41653)。 可以添加一个允许使用[服务标记](backup-azure-arm-vms-prepare.md#set-up-an-nsg-rule-to-allow-outbound-access-to-azure)访问 Azure 备份服务的规则，而无需单独允许每个地址范围并持续对其进行管理。 有关服务标记的详细信息，请参阅[此文](../virtual-network/security-overview.md#service-tags)。
 - **代理**：部署 HTTP 代理服务器来路由流量。
-- **Azure 防火墙**：使用 Azure 备份服务的 FQDN 标记允许流量通过 VM 上的 Azure 防火墙。
+- **Azure 防火墙**：使用 Azure 备份服务的 FQDN 标记允许流量通过 VM 上的 Azure 防火墙
 
 在选项之间做出抉择时，请考虑到每个选项的利弊。
 
@@ -94,20 +94,15 @@ VM 上运行的备份扩展必须能够对 Azure 公共 IP 地址进行出站访
 **HTTP 代理** | 允许对存储 URL 进行精细控制。<br/><br/> 对 VM 进行单点 Internet 访问。<br/><br/> 代理不产生额外的成本。
 **FQDN 标记** | 如果在 VNet 子网中设置了 Azure 防火墙，则 FQDN 标记很容易使用 | 无法创建自己的 FQDN 标记，无法修改标记中的 FQDN。
 
-
-
 如果使用 Azure 托管磁盘，可能需要在防火墙上打开另一个端口 (8443)。
-
-
 
 ### <a name="set-up-an-nsg-rule-to-allow-outbound-access-to-azure"></a>设置一个 NSG 规则以允许对 Azure 进行出站访问
 
 如果对 Azure VM 的访问由 NSG 管理，请允许通过所需的范围和端口对备份存储进行出站访问。
 
-
-
 1. 在“VM”>“网络”中，单击“添加出站端口规则”。
-- 如果某个规则拒绝访问，则新的允许规则的优先级必须更高。 例如，如果为 **Deny_All** 规则设置的优先级为 1000，则必须将新规则的优先级设置为 1000 以下。
+
+  - 如果某个规则拒绝访问，则新的允许规则的优先级必须更高。 例如，如果为 **Deny_All** 规则设置的优先级为 1000，则必须将新规则的优先级设置为 1000 以下。
 2. 在“添加出站安全规则”中，单击“高级”。
 3. 在“源”中，选择“VirtualNetwork”。
 4. 在“源端口范围”中键入一个星号 (*)，以允许从任何端口进行出站访问。
@@ -117,9 +112,9 @@ VM 上运行的备份扩展必须能够对 Azure 公共 IP 地址进行出站访
     - 使用非托管磁盘和未加密存储帐户的 VM：80
     - 使用非托管磁盘和加密存储帐户的 VM：443（默认设置）
     - 托管 VM：8443。
-1. 在“协议”中，选择“TCP”。
-2. 在“优先级”中，为此规则分配一个优先级值，该值必须小于任何具有更高优先级的拒绝规则。
-3. 提供规则的名称和说明，然后单击“确定”。
+7. 在“协议”中，选择“TCP”。
+8. 在“优先级”中，为此规则分配一个优先级值，该值必须小于任何具有更高优先级的拒绝规则。
+9. 提供规则的名称和说明，然后单击“确定”。
 
 可将 NSG 规则应用到多个 VM，以允许 Azure 备份对 Azure 进行出站访问。
 
@@ -127,12 +122,12 @@ VM 上运行的备份扩展必须能够对 Azure 公共 IP 地址进行出站访
 
 >[!VIDEO https://www.youtube.com/embed/1EjLQtbKm1M]
 
-
+> [!WARNING]
+> 存储服务标记以预览版提供。 它们只在特定的区域中可用。 有关区域列表，请参阅[存储的服务标记](../virtual-network/security-overview.md#service-tags)。
 
 ### <a name="route-backup-traffic-through-a-proxy"></a>通过代理路由备份流量
 
 可以通过代理路由备份流量，然后允许代理访问所需的 Azure 区域。
-
 应将代理 VM 配置为允许以下操作：
 
 - Azure VM 应该通过代理路由所有发往公共 Internet 的 HTTP 流量。
@@ -167,8 +162,9 @@ VM 上运行的备份扩展必须能够对 Azure 公共 IP 地址进行出站访
 
 #### <a name="allow-incoming-connections-on-the-proxy"></a>在代理上允许传入连接
 
-1. 在代理设置中允许传入连接。
-2. 例如，打开“高级安全 Windows 防火墙”。
+在代理设置中允许传入连接。
+
+- 例如，打开“高级安全 Windows 防火墙”。
     - 右键单击“入站规则” > “新建规则”。
     - 在“规则类型”中，选择“自定义” > “下一步”。
     - 在“程序”中，选择“所有程序” > “下一步”。
@@ -186,13 +182,13 @@ VM 上运行的备份扩展必须能够对 Azure 公共 IP 地址进行出站访
     Get-AzureNetworkSecurityGroup -Name "NSG-lockdown" |
     Set-AzureNetworkSecurityRule -Name "allow-proxy " -Action Allow -Protocol TCP -Type Outbound -Priority 200 -SourceAddressPrefix "10.0.0.5/32" -SourcePortRange "*" -DestinationAddressPrefix Internet -DestinationPortRange "80-443"
     ```
+
 ### <a name="allow-firewall-access-with-fqdn-tag"></a>使用 FQDN 标记允许通过防火墙访问
 
 可以设置 Azure 防火墙，以允许网络流量对 Azure 备份进行出站访问。
 
 - [了解](https://docs.microsoft.com/azure/firewall/tutorial-firewall-deploy-portal)如何部署 Azure 防火墙。
 - [了解](https://docs.microsoft.com/azure/firewall/fqdn-tags) FQDN 标记。
-
 
 ## <a name="create-a-vault"></a>创建保管库
 
@@ -227,7 +223,7 @@ VM 上运行的备份扩展必须能够对 Azure 公共 IP 地址进行出站访
 
 ## <a name="set-up-storage-replication"></a>设置存储复制
 
-默认情况下，保管库采用[异地冗余存储 (GRS)](https://docs.microsoft.com/azure/storage/common/storage-redundancy-grs)。 我们建议对主要备份使用 GRS，但也可以使用更经济的[本地冗余存储](https://docs.microsoft.com/azure/storage/common/storage-redundancy-lrs?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)。 
+默认情况下，保管库采用[异地冗余存储 (GRS)](https://docs.microsoft.com/azure/storage/common/storage-redundancy-grs)。 我们建议对主要备份使用 GRS，但也可以使用更经济的[本地冗余存储](https://docs.microsoft.com/azure/storage/common/storage-redundancy-lrs?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)。
 
 按如下所述修改存储复制：
 
@@ -285,5 +281,5 @@ VM 上运行的备份扩展必须能够对 Azure 公共 IP 地址进行出站访
 
 ## <a name="next-steps"></a>后续步骤
 
-- 排查 [Azure VM 代理](/backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md)或 [Azure VM 备份](backup-azure-vms-troubleshoot.md)出现的任何问题。
+- 排查 [Azure VM 代理](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md)或 [Azure VM 备份](backup-azure-vms-troubleshoot.md)出现的任何问题。
 - [备份 Azure VM](backup-azure-vms-first-look-arm.md)

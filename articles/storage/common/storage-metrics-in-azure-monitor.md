@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 09/05/2017
 ms.author: fryu
 ms.component: common
-ms.openlocfilehash: 51c0fefc0d18127da1f5fc513b493407510a071b
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.openlocfilehash: 4bae38b7596504d8de452e445c05e1c973aba78a
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53994430"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54354573"
 ---
 # <a name="azure-storage-metrics-in-azure-monitor"></a>Azure Monitor 中的 Azure 存储指标
 
@@ -341,6 +341,7 @@ Azure 存储在 Azure Monitor 中提供以下容量指标。
 | BlobCapacity | 存储帐户中使用的 Blob 存储总计。 <br/><br/> 单位：字节 <br/> 聚合类型：平均值 <br/> 值示例：1024 <br/> 维度：BlobType（[定义](#metrics-dimensions)） |
 | BlobCount    | 在存储帐户中存储的 Blob 对象数。 <br/><br/> 单位：Count <br/> 聚合类型：平均值 <br/> 值示例：1024 <br/> 维度：BlobType（[定义](#metrics-dimensions)） |
 | ContainerCount    | 存储帐户中的容器数。 <br/><br/> 单位：Count <br/> 聚合类型：平均值 <br/> 值示例：1024 |
+| IndexCapacity     | ADLS Gen2 分层索引所使用的存储量 <br/><br/> 单位：字节 <br/> 聚合类型：平均值 <br/> 值示例：1024 |
 
 ### <a name="table-storage"></a>表存储
 
@@ -368,7 +369,7 @@ Azure 存储在 Azure Monitor 中提供以下容量指标。
 
 ## <a name="transaction-metrics"></a>事务度量值
 
-事务指标每隔一分钟从 Azure 存储发送到 Azure Monitor。 所有事务指标在帐户和服务级别（Blob 存储、表存储、Azure 文件和队列存储）提供。 时间粒度定义呈现指标值的时间间隔。 所有事务指标的受支持时间粒度为 PT1H 和 PT1M。
+从 Azure 存储到 Azure Monitor 的每个存储帐户请求都会发出事务指标。 如果存储帐户中没有任何活动，则在此期间不会有关于事务指标的数据。 所有事务指标在帐户和服务级别（Blob 存储、表存储、Azure 文件和队列存储）提供。 时间粒度定义呈现指标值的时间间隔。 所有事务指标的受支持时间粒度为 PT1H 和 PT1M。
 
 Azure 存储在 Azure Monitor 中提供以下事务指标。
 

@@ -7,12 +7,12 @@ services: iot-fundamentals
 ms.topic: overview
 ms.date: 10/11/2018
 ms.author: robinsh
-ms.openlocfilehash: 2480aa92dec8d8e8879db813b1cfcddc26f77b7e
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: e1cb588d68153a88d8b55b2696b376c4eb8704f5
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53792520"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54199257"
 ---
 # <a name="what-is-azure-internet-of-things-iot"></a>Azure 物联网 (IoT) 是什么？
 
@@ -34,6 +34,8 @@ IoT 解决方案的主要部分如下：设备、后端服务以及二者之间�
 * 房间中的存在传感器
 
 频繁用于原型制作的两种设备是 Microsoft 提供的基本 MX 芯片 IoT Devkit，以及 Raspberry PI 设备。 MX 芯片 Devkit 内置了用于温度、压强、湿度的传感器，此外还有陀螺仪、加速计、磁力仪和 Wi-Fi 芯片。 Raspberry PI 是一种 IoT 设备，可以为其附加多种不同的传感器，因此可以根据方案的需要进行具体的选择。 
+
+有关可用的 IoT 设备的详细信息，请查看行业最大的 [IoT 认证设备目录](https://catalog.azureiotsolutions.com/alldevices)。
 
 可以通过 [IoT 设备 SDK](../iot-hub/iot-hub-devguide-sdks.md) 生成在设备上运行的应用，以便执行所需任务。 可以通过 SDK 将遥测数据发送到 IoT 中心、从 IoT 中心接收消息和更新，等等。
 

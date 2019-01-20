@@ -9,12 +9,12 @@ ms.date: 11/27/2018
 ms.topic: conceptual
 ms.service: service-fabric-mesh
 manager: jeconnoc
-ms.openlocfilehash: ecdb36af786d96a5b343d11cd689642d59528445
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.openlocfilehash: 81d9fc7babef7c1d14a0acc420d0c16c05b83215
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52888522"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54354317"
 ---
 # <a name="state-management-with-service-fabric"></a>Service Fabric 的状态管理
 
@@ -30,7 +30,7 @@ Service Fabric 支持用于状态存储的许多不同选项。 有关状态管�
 
 ### <a name="service-fabric-reliable-volume"></a>Service Fabric Reliable Volume
 
-Service Fabric Reliable Volume 是用于将本地卷装载到容器的 Docker 卷驱动程序。 读取和写入是本地操作，非常快速。 数据将复制到辅助节点，使其高度可用。 故障转移也非常快速。 当容器崩溃时，将故障转移到已具有数据的副本的节点。 请参阅[如何使用 Service Fabric Reliable Volume 部署应用](https://github.com/Azure-Samples/service-fabric-mesh/tree/2018-09-01-preview/templates/counter)查看相关示例。
+Service Fabric Reliable Volume 是用于将本地卷装载到容器的 Docker 卷驱动程序。 读取和写入是本地操作，非常快速。 数据将复制到辅助节点，使其高度可用。 故障转移也非常快速。 当容器崩溃时，将故障转移到已具有数据的副本的节点。 有关示例，请参阅[如何使用 Service Fabric Reliable Volume 部署应用](service-fabric-mesh-howto-deploy-app-sfreliable-disk-volume.md)。
 
 ### <a name="azure-files-volume"></a>Azure 文件卷
 

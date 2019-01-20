@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 12/14/2018
 ms.author: victorh
 customer intent: As an administrator, I want to control network access from an on-premises network to an Azure virtual network.
-ms.openlocfilehash: abbbec05dfb6d81a65941619a36b7f3afcdc1fba
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: fc02f754682046ead3f546fc1253e1c9ac0a63b9
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53435559"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54261462"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-in-a-hybrid-network-using-azure-powershell"></a>教程：使用 Azure PowerShell 在混合网络中部署和配置 Azure 防火墙
 
@@ -49,9 +49,9 @@ ms.locfileid: "53435559"
 
 若要正常开展此方案，必须符合三项关键要求：
 
-- 分支子网中有一个指向 Azure 防火墙 IP 地址（用作默认网关）的用户定义的路由。 必须在此路由表中**禁用** BGP 路由传播。
-- 中心网关子网中的用户定义的路由必须指向用作分支网络下一跃点的防火墙 IP 地址。
-- 无需在 Azure 防火墙子网中创建用户定义的路由，因为它会从 BGP 探测路由。
+- 分支子网中有一个指向 Azure 防火墙 IP 地址（用作默认网关）的用户定义的路由 (UDR)。 必须在此路由表中**禁用** BGP 路由传播。
+- 中心网关子网中的 UDR 必须指向用作分支网络下一跃点的防火墙 IP 地址。
+- 无需在 Azure 防火墙子网中创建 UDR，因为它会从 BGP 探测路由。
 - 在 VNet-Hub 与 VNet-Spoke 之间建立对等互连时，请务必设置 **AllowGatewayTransit**；在 VNet-Spoke 与 VNet-Hub 之间建立对等互连时，请务必设置 **UseRemoteGateways**。
 
 请参阅本教程的[创建路由](#create-routes)部分了解如何创建这些路由。
@@ -60,7 +60,7 @@ ms.locfileid: "53435559"
 >Azure 防火墙必须具有直接的 Internet 连接。 如果已通过 ExpressRoute 或应用程序网关启用到本地的强制隧道，则需要配置 UDR 0.0.0.0/0，并将 **NextHopType** 值设置为 **Internet**，然后将其分配到 **AzureFirewallSubnet**。
 
 >[!NOTE]
->即使 UDE 指向作为默认网关的 Azure 防火墙，也会直接路由直接对等互连 VNet 之间的流量。 若要在此方案中将子网到子网流量发送到防火墙，UDR 必须在这两个子网上显式地包含目标子网网络前缀。
+>即使 UDR 指向作为默认网关的 Azure 防火墙，也会直接路由直接对等互连 VNet 之间的流量。 若要在此方案中将子网到子网流量发送到防火墙，UDR 必须在这两个子网上显式地包含目标子网网络前缀。
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 

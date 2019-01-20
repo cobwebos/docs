@@ -10,18 +10,18 @@ ms.topic: conceptual
 ms.date: 01/07/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 43da5b32fe3ad8891f89544d0f9bdbd1d4d127d0
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: fc32cf40266bdad1aa5365b30a27210ad735f299
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53606176"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54354376"
 ---
 # <a name="azure-ad-b2c-build-a-windows-desktop-app"></a>Azure AD B2C：构建 Windows 桌面应用
 通过使用 Azure Active Directory (Azure AD) B2C，只需几个简短的步骤即可将强大的自助服务标识管理功能添加到桌面应用。 本文将说明如何创建 .NET Windows Presentation Foundation (WPF)“待办事项列表”应用，其中包括用户注册、登录和配置文件管理。 该应用将支持使用用户名或电子邮件进行注册和登录。 该应用还将支持使用社交帐户（如 Facebook 和 Google）进行注册和登录。
 
 ## <a name="get-an-azure-ad-b2c-directory"></a>获取 Azure AD B2C 目录
-只有在创建目录或租户之后，才可使用 Azure AD B2C。 目录是所有用户、应用、组等对象的容器。 如果没有容器，请先 [创建 B2C 目录](active-directory-b2c-get-started.md) ，然后继续执行本指南中的步骤。
+只有在创建目录或租户之后，才可使用 Azure AD B2C。 目录是所有用户、应用、组等对象的容器。 如果没有容器，请先 [创建 B2C 目录](tutorial-create-tenant.md) ，然后继续执行本指南中的步骤。
 
 ## <a name="create-an-application"></a>创建应用程序
 接下来，需要在 B2C 目录中创建应用。 此应用为 Azure AD 提供所需的 Azure AD 信息，使之能够与应用安全通信。 若要创建应用，请遵循 [这些说明](active-directory-b2c-app-registration.md)。 请务必：
@@ -31,16 +31,14 @@ ms.locfileid: "53606176"
 * 复制分配给应用的 **应用程序 ID** 。 稍后需要用到此值。
 
 ## <a name="create-your-policies"></a>创建策略
-在 Azure AD B2C 中，每个用户体验由 [策略](active-directory-b2c-reference-policies.md)定义。 本代码示例包含三个标识体验：注册、登录和编辑配置文件。 需要按照[策略参考文章](active-directory-b2c-reference-policies.md#create-a-sign-up-user-flow)中所述，为每个类型创建一个策略。 创建三个策略时，请务必：
+在 Azure AD B2C 中，每个用户体验由 [策略](active-directory-b2c-reference-policies.md)定义。 本代码示例包含三个标识体验：注册、登录和编辑配置文件。 创建策略时，请务必：
 
 * 在标识提供者边栏选项卡中，选择“用户 ID 注册”或“电子邮件注册”。
 * 在注册策略中，选择“显示名称”和其他注册属性。
 * 针对每个策略选择“显示名称”和“对象 ID”声明作为应用程序声明。 也可以选择其他声明。
 * 创建每个策略后，请复制策略的 **名称** 。 其前缀应为 `b2c_1_`。 稍后需要用到这些策略名称。
 
-[!INCLUDE [active-directory-b2c-devquickstarts-policy](../../includes/active-directory-b2c-devquickstarts-policy.md)]
-
-成功创建三个策略后，可以开始构建应用。
+成功创建策略后，可以开始构建应用。
 
 ## <a name="download-the-code"></a>下载代码
 本教程的代码 [保留在 GitHub 上](https://github.com/AzureADQuickStarts/B2C-NativeClient-DotNet)。 若要根据说明构建示例，请 [下载 .zip 文件格式的骨干项目](https://github.com/AzureADQuickStarts/B2C-NativeClient-DotNet/archive/skeleton.zip)。 也可以克隆骨干项目：

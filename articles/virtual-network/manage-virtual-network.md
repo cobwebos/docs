@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/09/2018
+ms.date: 01/10/2019
 ms.author: jdial
-ms.openlocfilehash: 3f158d040654b251faebceaa2e89d0462f13c217
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: a43988f8d4d6ae318f409cf1e79d8ad2ff8c8af1
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54016014"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54247820"
 ---
 # <a name="create-change-or-delete-a-virtual-network"></a>创建、更改或删除虚拟网络
 
@@ -99,7 +99,13 @@ ms.locfileid: "54016014"
 
 ## <a name="add-or-remove-an-address-range"></a>添加或删除地址范围
 
-可以为虚拟网络添加和删除地址范围。 地址范围必须以 CIDR 表示法指定，并且不能和同一虚拟网络中的其他地址范围重叠。 定义的地址范围可以是公共或专用 (RFC 1918) 地址。 无论是将地址范围定义为公用还是专用，地址范围都只能从虚拟网络内、从互联的虚拟网络以及从任何已连接到虚拟网络的本地网络进行访问。 无法添加以下的地址范围：
+可以为虚拟网络添加和删除地址范围。 地址范围必须以 CIDR 表示法指定，并且不能和同一虚拟网络中的其他地址范围重叠。 定义的地址范围可以是公共或专用 (RFC 1918) 地址。 无论是将地址范围定义为公用还是专用，地址范围都只能从虚拟网络内、从互联的虚拟网络以及从任何已连接到虚拟网络的本地网络进行访问。 
+
+如果没有与虚拟网络关联的子网，可以减小其地址范围。 否则，只能扩展地址范围，例如，将 /16 更改为 /8。 你可以从一个较小的地址范围开始，以后对其进行扩展或添加其他范围。
+
+<!-- the last two sentences above are added per GitHub issue https://github.com/MicrosoftDocs/azure-docs/issues/20572 -->
+
+无法添加以下的地址范围：
 
 - 224.0.0.0/4（多播）
 - 255.255.255.255/32（广播）

@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 10/10/2017
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 44f5ea606efafbb310e4740d75cbf86b7069e7ca
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: f2c9385e55559e53c9118e047bdddbe178a10770
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53722509"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54359555"
 ---
 # <a name="build-a-nodejs-and-mongodb-app-in-azure-app-service-on-linux"></a>在 Linux 上的 Azure 应用服务中生成 Node.js 和 MongoDB 应用
 
@@ -28,14 +28,14 @@ ms.locfileid: "53722509"
 > 本文将应用部署到基于 Linux 的应用服务。 若要部署到基于 _Windows_ 的应用服务，请参阅[在 Azure 中生成 Node.js 和 MongoDB 应用](../app-service-web-tutorial-nodejs-mongodb-app.md)。
 >
 
-[Linux 应用服务](app-service-linux-intro.md)使用 Linux 操作系统，提供高度可缩放的自修补 Web 托管服务。 本教程演示如何创建一个 Node.js 应用，在本地将其连接到 MongoDB 数据库，然后将其部署为 Azure Cosmos DB for MongoDB API 数据库。 完成操作后，将拥有一个在 Linux 应用服务中运行的 MEAN 应用程序（MongoDB、Express、AngularJS 和 Node.js）。 为简单起见，示例应用程序使用了 [MEAN.js Web 框架](https://meanjs.org/)。
+[Linux 应用服务](app-service-linux-intro.md)使用 Linux 操作系统，提供高度可缩放的自修补 Web 托管服务。 本教程展示了如何创建一个 Node.js 应用，在本地将其连接到 MongoDB 数据库，然后将其部署到 Azure Cosmos DB 的用于 MongoDB 的 API 中的一个数据库。 完成操作后，将拥有一个在 Linux 应用服务中运行的 MEAN 应用程序（MongoDB、Express、AngularJS 和 Node.js）。 为简单起见，示例应用程序使用了 [MEAN.js Web 框架](https://meanjs.org/)。
 
 ![在 Azure 应用服务中运行的 MEAN.js 应用](./media/tutorial-nodejs-mongodb-app/meanjs-in-azure.png)
 
 你将学习如何：
 
 > [!div class="checklist"]
-> * 使用 Azure Cosmos DB for MongoDB API 创建数据库
+> * 使用 Azure Cosmos DB 的用于 MongoDB 的 API 创建数据库
 > * 将 Node.js 应用连接到 MongoDB
 > * 将应用部署到 Azure
 > * 更新数据模型并重新部署应用
@@ -121,7 +121,7 @@ MEAN.js 示例应用程序将用户数据存储在数据库中。 如果创建�
 
 ## <a name="create-production-mongodb"></a>创建生产 MongoDB
 
-此步骤在 Azure 中创建一个使用 MongoDB API 进行配置的 Cosmos 数据库。 应用部署到 Azure 后，它将使用该云数据库。
+在此步骤中，你将使用 Azure Cosmos DB 的用于 MongoDB 的 API 创建一个数据库帐户。 应用部署到 Azure 后，它将使用该云数据库。
 
 ### <a name="create-a-resource-group"></a>创建资源组
 
@@ -157,7 +157,7 @@ az cosmosdb create --name <cosmosdb_name> --resource-group myResourceGroup --kin
 }
 ```
 
-## <a name="connect-app-to-production-cosmos-db-configured-with-mongodb-api"></a>将应用连接到使用 MongoDB API 配置的生产 Cosmos DB
+## <a name="connect-app-to-production-configured-with-azure-cosmos-dbs-api-for-mongodb"></a>将应用连接到使用 Azure Cosmos DB 的用于 MongoDB 的 API 配置的生产环境
 
 在此步骤中，将使用 MongoDB 连接字符串将 MEAN.js 示例应用程序连接至刚创建的 Cosmos DB 数据库。
 
@@ -317,7 +317,7 @@ http://<app_name>.azurewebsites.net
 
 单击菜单顶部的“注册”，创建虚拟用户。
 
-如果操作成功，且创建的用户可自动登录到应用，则表示 Azure 中的 MEAN.js 应用已连接到 Azure Cosmos DB for MongoDB API。
+如果操作成功，且创建的用户可自动登录到应用，则表示 Azure 中的 MEAN.js 应用已连接到 Azure Cosmos DB 的用于 MongoDB 的 API。
 
 ![在 Azure 应用服务中运行的 MEAN.js 应用](./media/tutorial-nodejs-mongodb-app/meanjs-in-azure.png)
 
@@ -472,7 +472,7 @@ git push azure master
 你已了解：
 
 > [!div class="checklist"]
-> * 使用 Azure Cosmos DB for MongoDB API 创建数据库
+> * 使用 Azure Cosmos DB 的用于 MongoDB 的 API 创建数据库
 > * 将 Node.js 应用连接到数据库
 > * 将应用部署到 Azure
 > * 更新数据模型并重新部署应用

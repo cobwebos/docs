@@ -3,7 +3,7 @@ title: 对 SQL Server 虚拟机（经典）进行自动备份 | Microsoft Docs
 description: '介绍在使用 Resource Manager 的 Azure 虚拟机中运行的 SQL Server 的自动备份功能。 '
 services: virtual-machines-windows
 documentationcenter: na
-author: rothja
+author: MashaMSFT
 manager: craigg
 editor: ''
 tags: azure-service-management
@@ -14,13 +14,14 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 01/23/2018
-ms.author: jroth
-ms.openlocfilehash: 3bca1c6c357527a32de499ac9207b1bb734dad7b
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.author: mathoma
+ms.reviewer: jroth
+ms.openlocfilehash: 3aba118354c51285d714bb127e6f5984f8a50057
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32187117"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54329746"
 ---
 # <a name="automated-backup-for-sql-server-in-azure-virtual-machines-classic"></a>在 Azure 虚拟机（经典）中对 SQL Server 进行自动备份
 > [!div class="op_single_selector"]
@@ -32,7 +33,7 @@ ms.locfileid: "32187117"
 自动备份会在运行 SQL Server 2014 Standard 或 Enterprise 的 Azure VM 上，自动为所有现有数据库和新数据库配置[向 Microsoft Azure 的托管备份](https://msdn.microsoft.com/library/dn449496.aspx)。 这样，便可以配置使用持久 Azure Blob 存储的定期数据库备份。 自动备份依赖于 [SQL Server IaaS 代理扩展](../classic/sql-server-agent-extension.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)。
 
 > [!IMPORTANT] 
-> Azure 提供两个不同的部署模型用于创建和处理资源：[资源管理器和经典模型](../../../azure-resource-manager/resource-manager-deployment-model.md)。 本文介绍如何使用经典部署模型。 Microsoft 建议大多数新部署使用资源管理器模型。 若要查看本文中的 Resource Manager 版本，请参阅[在 Azure 虚拟机 Resource Manager 中对 SQL Server 进行自动备份](../sql/virtual-machines-windows-sql-automated-backup.md)。
+> Azure 具有用于创建和处理资源的两个不同部署模型：[资源管理器部署模型和经典部署模型](../../../azure-resource-manager/resource-manager-deployment-model.md)。 本文介绍如何使用经典部署模型。 Microsoft 建议大多数新部署使用资源管理器模型。 若要查看本文中的 Resource Manager 版本，请参阅[在 Azure 虚拟机 Resource Manager 中对 SQL Server 进行自动备份](../sql/virtual-machines-windows-sql-automated-backup.md)。
 
 ## <a name="prerequisites"></a>先决条件
 若要使用自动备份，请考虑以下先决条件：
@@ -66,7 +67,7 @@ ms.locfileid: "32187117"
 ## <a name="settings"></a>设置
 下表描述了可为自动备份配置的选项。 对于经典 VM，必须使用 PowerShell 配置以下设置。
 
-| 设置 | 范围（默认值） | 说明 |
+| 设置 | 范围（默认值） | Description |
 | --- | --- | --- |
 | **自动备份** |启用/禁用（已禁用） |为运行 SQL Server 2014 Standard 或 Enterprise 的 Azure VM 启用或禁用自动备份。 |
 | **保留期** |1-30 天（30 天） |保留备份的天数。 |

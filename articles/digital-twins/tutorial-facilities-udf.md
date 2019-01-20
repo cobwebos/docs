@@ -6,14 +6,14 @@ author: dsk-2015
 ms.custom: seodec18
 ms.service: digital-twins
 ms.topic: tutorial
-ms.date: 10/26/2018
+ms.date: 12/27/2018
 ms.author: dkshir
-ms.openlocfilehash: 077dee19bbe32379bc88919117b3c61177828094
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: 465dd2a69ad42b8b6a88268eb35a1aa7d8d922c5
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53556095"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54229390"
 ---
 # <a name="tutorial-provision-your-building-and-monitor-working-conditions-with-azure-digital-twins"></a>教程：使用 Azure 数字孪生预配大楼并监视工作条件
 
@@ -30,6 +30,7 @@ ms.locfileid: "53556095"
 ## <a name="prerequisites"></a>先决条件
 
 本教程假定你已[完成 Azure 数字孪生设置](tutorial-facilities-setup.md)。 在继续操作之前，请确保已具备以下条件：
+
 - 一个 [Azure 帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 - 一个正在运行的数字孪生实例。 
 - 在工作计算机上下载并解压缩的[数字孪生 C# 示例](https://github.com/Azure-Samples/digital-twins-samples-csharp)。 
@@ -37,6 +38,7 @@ ms.locfileid: "53556095"
 - [Visual Studio Code](https://code.visualstudio.com/)，用于探索示例代码。 
 
 ## <a name="define-conditions-to-monitor"></a>定义要监视的条件
+
 可以定义一组需要在设备或传感器数据中监视的具体条件，称为“匹配程序”。 然后可以定义名为“用户定义函数”的函数。 用户定义函数用于在匹配程序所指定的条件符合的时候对来自空间和设备的数据执行自定义逻辑。 有关详细信息，请阅读[数据处理和用户定义的函数](concepts-user-defined-functions.md)。 
 
 在 **occupancy-quickstart** 示例项目中，通过 Visual Studio Code 打开 **src\actions\provisionSample.yaml** 文件。 请注意以类型 **matchers** 开头的节。 此类型下的每个条目使用指定的**名称**创建一个匹配程序。 该匹配程序用于监视类型为 **dataTypeValue** 的传感器。 请注意它与名为“专注室 A1”的空间的关系，该专注室有一个“设备”节点，，节点中包含一些传感器。 若要预配一个匹配程序，用于跟踪这其中的一个传感器，则请确保其 **dataTypeValue** 与该传感器的 **dataType** 匹配。 
@@ -48,14 +50,15 @@ ms.locfileid: "53556095"
         dataTypeValue: Temperature
 ```
 
-此匹配程序会跟踪已在[第一个教程](tutorial-facilities-setup.md)中添加的 SAMPLE_SENSOR_TEMPERATURE 传感器。 这些行也存在 *provisionSample.yaml* 文件中，属于已注释掉的行。 可以取消注释这些行，方法是删除每一行前面的 `#` 字符。 
+此匹配程序会跟踪已在[第一个教程](tutorial-facilities-setup.md)中添加的 SAMPLE_SENSOR_TEMPERATURE 传感器。 这些行也存在 *provisionSample.yaml* 文件中，属于已注释掉的行。 可以取消注释这些行，方法是删除每一行前面的 `#` 字符。
 
-<a id="udf" />
+<a id="udf"></a>
 
 ## <a name="create-a-user-defined-function"></a>创建用户定义函数
+
 可以通过用户定义的函数来自定义传感器数据的处理。 这些函数是自定义 JavaScript 代码，在符合匹配程序所述的具体条件时，可以在 Azure 数字孪生实例中运行。 可以为每个需要监视的传感器创建匹配程序和用户定义的函数。 有关详细信息，请阅读[数据处理和用户定义的函数](concepts-user-defined-functions.md)。 
 
-在示例性的 provisionSample.yaml 文件中，查找以 **userdefinedfunctions** 类型开头的节。 该节预配具有给定**名称**的用户定义函数。 该 UDF 作用于 **matcherNames** 下的匹配程序的列表。 请注意如何以**脚本**形式提供自己的适用于 UDF 的 JavaScript 文件。 
+在示例性的 provisionSample.yaml 文件中，查找以 **userdefinedfunctions** 类型开头的节。 该节预配具有给定**名称**的用户定义函数。 该 UDF 作用于 **matcherNames** 下的匹配程序的列表。 请注意如何以**脚本**形式提供自己的适用于 UDF 的 JavaScript 文件。
 
 另请注意名为 **roleassignments** 的节。 它向用户定义的函数分配“空间管理员”角色。 该函数可以通过此角色访问来自任何已预配空间的事件。 
 
@@ -72,7 +75,7 @@ ms.locfileid: "53556095"
    > [!NOTE]
    > 此节修改 *src\actions\userDefinedFunctions\availability.js* 文件，因此你可以详细了解如何编写用户定义的函数。 但是，可以选择在设置中直接使用 [src\actions\userDefinedFunctions\availabilityForTutorial.js](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/actions/userDefinedFunctions/availabilityForTutorial.js) 文件。 该文件包含本教程所需的所有更改。 如果改用此文件，请确保使用对 [src\actions\provisionSample.yaml](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/actions/provisionSample.yaml) 中的 **script** 键来说正确的文件名。
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在文件顶部 `// Add your sensor type here` 注释下方，添加下述适用于温度的行：
+    a. 在文件顶部 `// Add your sensor type here` 注释下方，添加下述适用于温度的行：
 
     ```JavaScript
         var temperatureType = "Temperature";
@@ -188,7 +191,7 @@ ms.locfileid: "53556095"
 > [!TIP]
 > 如果在预配过程中出现类似于“由于线程退出或应用程序请求，I/O 操作已中止”的错误消息，请尝试再次运行该命令。 如果 HTTP 客户端因网络问题而超时，则可能出现这种情况。
 
-<a id="simulate" />
+<a id="simulate"></a>
 
 ## <a name="simulate-sensor-data"></a>模拟传感器数据
 
@@ -202,13 +205,13 @@ ms.locfileid: "53556095"
     dotnet restore
     ```
 
-1. 在编辑器中打开 **appSettings.json** 文件，编辑以下值：
+1. 在编辑器中打开 [appsettings.json](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/device-connectivity/appsettings.json) 文件，编辑以下值：
 
-   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 **DeviceConnectionString**：在上一部分的输出窗口中分配 `ConnectionString` 的值。 完整地复制引号中的这个字符串，以便模拟器能够正确连接 IoT 中心。
+   a. **DeviceConnectionString**：在上一部分的输出窗口中分配 `ConnectionString` 的值。 完整地复制引号中的这个字符串，以便模拟器能够正确连接 IoT 中心。
 
    b. **Sensors** 数组中的 **HardwareId**：由于是模拟已预配到 Azure 数字孪生实例的传感器中的事件，因此此文件中的硬件 ID 和传感器的名称应该与 provisionSample.yaml 文件的 `sensors` 节点匹配。
 
-      为温度传感器添加新条目。 appSettings.json 中的 **Sensors** 节点应该如下所示：
+      为温度传感器添加新条目。 appsettings.json 中的 **Sensors** 节点应该如下所示：
 
       ```JSON
       "Sensors": [{
@@ -233,6 +236,7 @@ ms.locfileid: "53556095"
    > 由于模拟示例不直接与数字孪生实例通信，因此不需要你进行身份验证。
 
 ## <a name="get-results-of-the-user-defined-function"></a>获取用户定义函数的结果
+
 每次实例收到设备和传感器数据时，用户定义的函数就会运行。 此部分查询 Azure 数字孪生实例，以便获取用户定义函数的结果。 可以以近实时的方式查看何时房间可用、空气清新且温度合适。 
 
 1. 打开用于预配示例的命令窗口或新的命令窗口，再次转到示例的 **occupancy-quickstart\src** 文件夹。

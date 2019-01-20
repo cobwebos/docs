@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 01/07/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 29ec56f3b360a4a19269555c1504ae7ff6446f8e
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 901dfc502470e52600e3a0fafe3f6b91b7686197
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 01/10/2019
-ms.locfileid: "54189144"
+ms.locfileid: "54201323"
 ---
 # <a name="sap-workload-on-azure-planning-and-deployment-checklist"></a>Azure 上的 SAP 工作负荷规划和部署清单 
 
@@ -83,7 +83,7 @@ ms.locfileid: "54189144"
 试点阶段可以在项目规划和准备阶段之前运行，也可以并行运行。 该阶段还可用于测试规划和准备阶段确定的方法和设计。 试点阶段可以延伸到实际的概念证明。 建议在试点部署期间设置和验证完整的 HA/DR 解决方案和安全设计。 在某些客户案例中，可伸缩性测试也可以在此阶段进行。 另一些客户则将 SAP 沙盒系统的部署用作试点阶段。 因此，我们假设你确定了一个要迁移到 Azure 以便运行试点的系统。
 
 1.  优化将数据传输到 Azure 的过程。 如果快速线路有足够的带宽，那么通过 [Azure ExpressRoute](https://azure.microsoft.com/services/expressroute/) 从本地进行传输的速度最快（主要取决于客户案例）。 对于其他客户来说，上网速度更快
-2.  在 SAP 异构平台迁移的情况下，这涉及到数据库数据的导出和导入、测试以及优化导出和导入阶段。 对于涉及 SQL Server 作为目标平台的大型迁移，可以在[此处](https://blogs.msdn.microsoft.com/saponsqlserver/2017/05/08/sap-osdb-migration-to-sql-server-faq-v6-2-april-2017/)找到建议。 在合并迁移和 SAP 版本升级并实现某些源和目标 DBMS 平台组合（如 [SUM 2.0 SP04 的数据库迁移选项 (DMO)](https://launchpad.support.sap.com/#/notes/2644872) 中提供的组合）时，如果不需要合并的版本升级或 [SAP DMO](https://blogs.sap.com/2013/11/29/database-migration-option-dmo-of-sum-introduction/) 过程，你可以采用迁移监视器/SWPM 的方法。 
+2.  在 SAP 异构平台迁移的情况下，这涉及到数据库数据的导出和导入、测试以及优化导出和导入阶段。 对于涉及 SQL Server 作为目标平台的大型迁移，可以在[此处](https://blogs.msdn.microsoft.com/saponsqlserver/2017/05/08/sap-osdb-migration-to-sql-server-faq-v6-2-april-2017/)找到建议。 在合并迁移和 SAP 版本升级并实现某些源和目标 DBMS 平台组合（如 [SUM 2.0 SP03 的数据库迁移选项 (DMO)](https://launchpad.support.sap.com/#/notes/2631152) 中所述）时，如果不需要合并的版本升级或 [SAP DMO](https://blogs.sap.com/2013/11/29/database-migration-option-dmo-of-sum-introduction/) 过程，你可以采用迁移监视器/SWPM 的方法。 
     1.  导出到源、导出上传到 Azure 的文件和导入性能。  使导出和导入之间的重叠最大化
     2.  评估目标和目标平台之间的数据库容量，以反映到基础结构的大小调整中    
     3.  验证并优化执行时间 

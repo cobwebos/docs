@@ -1,6 +1,7 @@
 ---
-title: 概述 - Azure 机器学习工作室 | Microsoft Docs
-description: 概述 Azure 机器学习工作室：一个拖放式工具，可以通过现成可用的算法库和模块快速构建模型。
+title: 什么是
+titleSuffix: Azure Machine Learning Studio
+description: Azure 机器学习工作室是一个拖放式工具，可以通过现成可用的算法库和模块快速构建模型。
 keywords: azure 机器学习,azure ml, 机器学习工作室
 services: machine-learning
 documentationcenter: ''
@@ -15,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
 ms.date: 03/28/2018
-ms.openlocfilehash: b1c0d3da6dba4bf56baaf583d89c58fdc13ef83f
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 04c9803909fb5dfd1072840a0c1d7e33814ad1a3
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53250512"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54264354"
 ---
 # <a name="what-is-azure-machine-learning-studio"></a>什么是 Azure 机器学习工作室？
 Microsoft Azure 机器学习工作室是一个协作型拖放式工具，可用于根据数据构建、测试和部署预测分析解决方案。 机器学习工作室将模型发布为可让自定义应用或 BI 工具（如 Excel）方便使用的 Web 服务。

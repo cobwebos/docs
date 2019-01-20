@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/19/2018
 ms.author: shlo
-ms.openlocfilehash: e733b82e1b5870d98de5d65771bd621d9bffdf44
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 4188fb413cc1001b6e4813fe69518a016c8c0656
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54024881"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54354257"
 ---
 # <a name="get-metadata-activity-in-azure-data-factory"></a>Azure 数据工厂中的获取元数据活动
 GetMetadata 活动可用于检索 Azure 数据工厂中的任何数据的**元数据**。 此活动可用于以下方案：
@@ -33,7 +33,7 @@ GetMetadata 活动可用于检索 Azure 数据工厂中的任何数据的**元�
 
 ## <a name="supported-capabilities"></a>支持的功能
 
-GetMetadata 活动将数据集作为必要输入，并输出可用作活动输出的元数据信息。 目前支持以下连接器，这些连接器具有可检索的相应元数据，并且支持的最大元数据大小达 1 MB。
+GetMetadata 活动将数据集作为必要输入，并输出可用作活动输出的元数据信息。 目前，支持具有相应可检索元数据的以下连接器，并且支持的最大元数据大小高达 **1MB**。
 
 >[!NOTE]
 >如果在自承载 Integration Runtime 上运行 GetMetadata 活动，3.6 或更高版本将支持该最新功能。 

@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/20/2018
+ms.date: 01/15/2019
 ms.author: rolyon
 ms.reviewer: skwan
-ms.openlocfilehash: 4cfd3c38631778373e99872fd305d8316cdadb75
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.openlocfilehash: b824d122a5d26c17c41a0e2ea1c595c9e2dd7206
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52274732"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54354342"
 ---
 # <a name="manage-access-to-azure-management-with-conditional-access"></a>使用条件访问管理对 Azure 管理的访问
 
@@ -32,7 +32,7 @@ Azure Active Directory (Azure AD) 中的条件访问基于指定的特定条件�
 
 ![用于 Azure 管理的条件访问](./media/conditional-access-azure-management/conditional-access-azure-mgmt.png)
 
-创建的策略适用于所有 Azure 管理终结点，包括经典 Azure 门户、Azure 门户、Azure 资源管理器提供程序、经典服务管理 API 和 Azure PowerShell。 请注意，该策略适用于调用 Azure 资源管理器 API 的 Azure PowerShell。 它不适用于调用 Microsoft Graph 的 [Azure AD PowerShell](/powershell/azure/active-directory/install-adv2)。
+创建的策略适用于所有 Azure 管理终结点，包括 Azure 门户、Azure 资源管理器提供程序、经典服务管理 API、Azure PowerShell 和 Visual Studio 订阅管理员门户。 请注意，该策略适用于调用 Azure 资源管理器 API 的 Azure PowerShell。 它不适用于调用 Microsoft Graph 的 [Azure AD PowerShell](/powershell/azure/active-directory/install-adv2)。
 
 > [!CAUTION]
 > 在设置策略以管理对 Azure 管理的访问之前，请确保了解条件访问的工作原理。 请确保不创建可能会阻止自己访问门户的条件。

@@ -8,14 +8,14 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: content-moderator
 ms.topic: overview
-ms.date: 10/22/2018
+ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: 076948e7434802af7f0ad47f279335009817d40e
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: f7fef00cfff9295036d7545470f86e27314e6451
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50209576"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54258691"
 ---
 # <a name="what-is-azure-content-moderator"></a>什么是 Azure 内容审查器？
 
@@ -41,7 +41,7 @@ Azure 内容审查器 API 是一项认知服务，用于检查文本、图像和
 
 内容审查器服务包括适用于以下方案的 API。
 
-| 操作 | Description |
+| 操作 | 说明 |
 | ------ | ----------- |
 |[**文本审查**](text-moderation-api.md)| 扫描文本中是否存在冒犯性内容、明确的或暗示性的色情内容、不雅内容和个人身份信息 (PII)。|
 |[**自定义术语列表**](try-terms-list-api.md)| 扫描文本中是否存在内置的术语和一系列的自定义术语。 根据你自己的内容策略，使用自定义列表阻止或允许内容。|  
@@ -58,6 +58,9 @@ Azure 内容审查器 API 是一项认知服务，用于检查文本、图像和
 
 使用使用审阅 API，根据指定的筛选器来设置团队审阅，对文本、图像和视频内容进行审阅。 然后，审查人员可以进行最终的审查决策。 人工输入不会训练服务，但是将服务与人工审阅团队组合起来以后，开发人员就可以在效率和准确性之间取得适当的平衡。
 
+## <a name="data-privacy-and-security"></a>数据隐私和安全性
+与所有认知服务一样，使用内容审查器服务的开发人员应该了解 Microsoft 针对客户数据的政策。 请参阅 Microsoft 信任中心上的[“认知服务”页面](https://www.microsoft.com/trustcenter/cloudservices/cognitiveservices)来了解详细信息。
+
 ## <a name="next-steps"></a>后续步骤
 
-按照[快速入门](quick-start.md)的步骤开始使用内容审查器。
+按照[在 Web 上试用内容审查器](quick-start.md)中的说明开始使用内容审查器服务。

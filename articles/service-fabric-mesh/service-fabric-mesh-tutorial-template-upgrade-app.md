@@ -12,17 +12,17 @@ ms.devlang: dotNet
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 09/18/2018
+ms.date: 01/11/2019
 ms.author: ryanwi
 ms.custom: mvc, devcenter
-ms.openlocfilehash: f617be79cb61932f79728feef76f056ce72ae0ab
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.openlocfilehash: d27cc555a8cf96a07818e83b342cf145d9e98a96
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52891123"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54265901"
 ---
-# <a name="tutorial-upgrade-a-service-fabric-application-running-in-service-fabric-mesh"></a>教程：升级 Azure Service Fabric 网格中运行的应用程序
+# <a name="tutorial-upgrade-a-service-fabric-application-running-in-service-fabric-mesh"></a>教程：升级 Service Fabric 网格中运行的 Service Fabric 应用程序
 
 本教程是一个系列中的第三部分。 本教程介绍如何通过增加分配的 CPU 资源来升级[之前部署到 Service Fabric 网格中的 Service Fabric 应用程序](service-fabric-mesh-tutorial-template-deploy-app.md)。  完成本教程后，你将拥有一个使用更高 CPU 资源运行的 Web 前端服务。
 
@@ -53,7 +53,7 @@ ms.locfileid: "52891123"
 
 将应用程序部署到 Service Fabric 网格的一个主要优势是能够轻松地更新应用程序配置。  例如，更新服务的 CPU 或内存资源。
 
-本教程使用“待办事项列表”示例作为示例，该示例[以前已部署](service-fabric-mesh-tutorial-template-deploy-app.md)，现在应该处于运行状态。 应用程序有两项服务：WebFrontEnd 和 ToDoService。 每项服务在起初部署时的 CPU 资源数为 0.5。  若要查看 WebFrontEnd 服务的 CPU 资源数，请运行以下命令：
+本教程使用“待办事项列表”示例作为示例，该示例[以前已部署](service-fabric-mesh-tutorial-template-deploy-app.md)，现在应该处于运行状态。 此应用程序有两个服务：WebFrontEnd 和 ToDoService。 每项服务在起初部署时的 CPU 资源数为 0.5。  若要查看 WebFrontEnd 服务的 CPU 资源数，请运行以下命令：
 
 ```azurecli
 az mesh service show --resource-group myResourceGroup --name WebFrontEnd --app-name todolistapp

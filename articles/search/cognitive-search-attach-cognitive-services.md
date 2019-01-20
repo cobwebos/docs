@@ -1,5 +1,5 @@
 ---
-title: 将认知服务资源与技能集相关联 - Azure 搜索
+title: 将认知服务资源与技能集联系起来 - Azure 搜索
 description: 说明如何将认知服务一体化订阅附加到 Azure 搜索中的认知扩充管道。
 manager: cgronlun
 author: LuisCabrer
@@ -7,36 +7,36 @@ services: search
 ms.service: search
 ms.devlang: NA
 ms.topic: conceptual
-ms.date: 01/07/2018
+ms.date: 01/14/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: 509125e7c93f34b9ce28c58cb1ec96db1074d995
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 5bffeacaa07f90a11c374061eb6c0d36fc8f86a9
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54119639"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54351452"
 ---
-# <a name="associate-a-cognitive-services-resource-with-a-skillset-in-azure-search"></a>将认知服务资源与 Azure 搜索中的技能集相关联 
+# <a name="attach-a-cognitive-services-resource-with-a-skillset-in-azure-search"></a>将认知服务资源与 Azure 搜索中的技能集联系起来 
 
-驱动[认知搜索](cognitive-search-concept-intro.md)管道处理非结构化数据的 AI 算法基于[**认知服务资源**](https://azure.microsoft.com/services/cognitive-services/)。 例如，[**计算机视觉**](https://azure.microsoft.com/services/cognitive-services/computer-vision/)资源提供图像分析和光学字符识别 (OCR) 用于从图像文件中提取文本和结构，而[**文本分析**](https://azure.microsoft.com/services/cognitive-services/text-analytics/)资源则提供自然语言处理，如实体识别、关键短语提取，等等。
+驱动[认知搜索管道](cognitive-search-concept-intro.md)处理非结构化数据的 AI 算法基于[**认知服务资源**](https://azure.microsoft.com/services/cognitive-services/)。 例如，[**计算机视觉**](https://azure.microsoft.com/services/cognitive-services/computer-vision/)等资源提供图像分析和光学字符识别 (OCR) 用于从图像文件中提取文本和结构，而[**文本分析**](https://azure.microsoft.com/services/cognitive-services/text-analytics/)资源则提供自然语言处理，如实体识别、关键短语提取，等等。
 
-可以免费扩充有限数量的文档，或者附加付费的认知服务资源来处理更大、更频繁的工作负荷。 本文介绍如何将认知服务资源关联到认知技能集，以便在编制索引期间扩充数据。
+可以免费扩充有限数量的文档，或者附加付费的认知服务资源来处理更大、更频繁的工作负荷。 本文介绍如何将认知服务资源关联到认知技能集，以便在 [Azure 搜索索引编制](search-what-is-an-index.md)期间扩充数据。
 
 如果管道仅由[自定义技能](cognitive-search-create-custom-skill-example.md)组成，则不需要附加认知服务资源。
 
 > [!NOTE]
 > 自 2018 年 12 月 21 日起，可将认知服务资源与 Azure 搜索技能集进行关联。 这样，我们就可以开始收取技能集的执行费。 在此日期，我们还会开始将图像提取视为文档破解阶段的一部分进行计费。 我们将继续提供文档文本提取服务而不收取额外费用。
 >
-> 执行[内置认知技能](cognitive-search-predefined-skills.md)将按[认知服务即用即付价格](https://azure.microsoft.com/pricing/details/cognitive-services/)进行计费，其费率与以往独立于 Azure 搜索执行任务的费率相同。 图像提取费用将按预览版定价进行计费，详见 [Azure 搜索定价页面](https://go.microsoft.com/fwlink/?linkid=2042400)。
+> 执行[内置认知技能](cognitive-search-predefined-skills.md)将按[认知服务即用即付价格](https://azure.microsoft.com/pricing/details/cognitive-services)进行计费，其费率与以往直接执行任务的费率相同。 图像提取是 Azure 搜索可计费事件，目前以预览价格提供。 有关详细信息，请参见 [Azure 搜索定价页](https://go.microsoft.com/fwlink/?linkid=2042400)或[如何计费](search-sku-tier.md#how-billing-works)。
 
 
 ## <a name="use-free-resources"></a>使用免费资源
 
-可以使用有限的免费处理选项每日扩充 20 个文档，这足以完成认知搜索教程和快速入门练习。 
+可以使用有限的免费处理选项来完成认知搜索教程和快速入门练习。 
 
 > [!Important]
-> 从 2019 年 2 月 1 日开始，“免费(有限扩充)”选项限制为每日 20 个文档。 
+> 从 2019 年 2 月 1 日开始，“免费(有限扩充)”选项将限制为每日 20 个文档。 
 
 1. 打开“导入数据”向导。
 

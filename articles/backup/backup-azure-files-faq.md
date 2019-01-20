@@ -8,12 +8,12 @@ ms.date: 2/21/2018
 ms.topic: tutorial
 ms.service: backup
 manager: carmonm
-ms.openlocfilehash: 51952196bd2c44ba79e96266436860106a0753c4
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 875eb20a05a96d094a17229699bb2d87b3377a62
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53793506"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54359895"
 ---
 # <a name="questions-about-backing-up-azure-files"></a>有关如何备份 Azure 文件的问题
 本文回答了有关如何备份 Azure 文件的常见问题。 某些答案提供内含全面信息的文章的链接。 也可以在 [论坛](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup)中发布有关 Azure 备份服务的问题。
@@ -94,11 +94,14 @@ Azure 文件共享的备份不支持启用了虚拟网络的存储帐户。 在�
 
 ## <a name="manage-backup"></a>管理备份
 
+### <a name="can-i-use-powershell-to-configuremanagerestore-backups-of-azure-file-shares-br"></a>是否可以使用 PowerShell 配置/管理/还原 Azure 文件共享的备份？ <br/>
+是的。 请参阅[此处](backup-azure-afs-automation.md)的详细文档
+
 ### <a name="can-i-access-the-snapshots-taken-by-azure-backups-and-mount-it-br"></a>能否访问 Azure 备份生成的快照并将其装载？ <br/>
 可以访问 Azure 备份生成的所有快照，只需在门户、PowerShell 或 CLI 中查看快照即可。 若要详细了解 Azure 文件共享快照，请参阅 [Azure 文件的共享快照（预览版）概述](../storage/files/storage-snapshots-files.md)。
 
 ### <a name="what-is-the-maximum-retention-i-can-configure-for-backups-br"></a>可以为备份配置的最长保留期是多长？ <br/>
-Azure 文件共享备份允许保留每日备份长达 120 天。
+Azure 文件共享的备份提供了配置保留期最多为 180 天的策略的功能。 但是，使用 [PowerShell 中的“按需备份”选项](backup-azure-afs-automation.md#trigger-an-on-demand-backup)，你甚至可以将恢复点保留 10 年。
 
 ### <a name="what-happens-when-i-change-the-backup-policy-for-an-azure-file-share-br"></a>更改 Azure 文件共享的备份策略时，会发生什么情况？ <br/>
 在文件共享上应用新策略时，将遵循新策略的计划和保留期。 如果延长保留期，则会对现有的恢复点进行标记，按新策略要求保留它们。 如果缩短保留期，则会将其标记为在下一清理作业中删除，然后就会将其删除。

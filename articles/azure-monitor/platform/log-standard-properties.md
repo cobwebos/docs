@@ -10,14 +10,14 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 09/27/2018
+ms.date: 01/14/2019
 ms.author: bwren
-ms.openlocfilehash: d2db9d426da58b3783b07210165a55cc6ec27658
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: abcf3100dc5252db9e3a5e7b446417333a9b37ca
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53185947"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54321885"
 ---
 # <a name="standard-properties-in-log-analytics-records"></a>Log Analytics 记录中的标准属性
 [Log Analytics](../log-query/log-query-overview.md) 中的数据以一组记录的形式存储，每个记录都有一个特定的数据类型，该数据类型具有一组独特属性。 许多数据类型都具有在多种类型中通用的标准属性。 本文介绍这些属性，并提供如何在查询中使用它们的示例。
@@ -84,6 +84,70 @@ AzureActivity
    | summarize LoggedOnAccounts = makeset(Account) by _ResourceId 
 ) on _ResourceId  
 ```
+
+## <a name="isbillable"></a>\_IsBillable
+**\_IsBillable** 属性指定是否对引入的数据进行计费。 **\_IsBillable** 等于 _false_ 的数据是免费收集的，不会向你的 Azure 帐户收费。
+
+### <a name="examples"></a>示例
+若要获取发送计费数据类型的计算机列表，请使用以下查询：
+
+> [!NOTE]
+> 请谨慎使用带 `union withsource = tt *` 的查询，因为跨数据类型执行扫描的开销很大。 
+
+```Kusto
+union withsource = tt * 
+| where _IsBillable == true 
+| extend computerName = tolower(tostring(split(Computer, '.')[0]))
+| where computerName != ""
+| summarize TotalVolumeBytes=sum(_BilledSize) by computerName
+```
+
+这可以扩展为返回每小时发送计费数据类型的计算机数量：
+
+```Kusto
+union withsource = tt * 
+| where _IsBillable == true 
+| extend computerName = tolower(tostring(split(Computer, '.')[0]))
+| where computerName != ""
+| summarize dcount(computerName) by bin(TimeGenerated, 1h) | sort by TimeGenerated asc
+```
+
+## <a name="billedsize"></a>\_BilledSize
+**\_BilledSize** 属性指定 **\_IsBillable** 为 true 时将向 Azure 帐户计费的数据字节大小。
+
+### <a name="examples"></a>示例
+若要查看每台计算机引入的可计费事件的大小，请使用 `_BilledSize` 属性（以字节为单位提供大小）：
+
+```Kusto
+union withsource = tt * 
+| where _IsBillable == true 
+| summarize Bytes=sum(_BilledSize) by  Computer | sort by Bytes nulls last 
+```
+
+若要查看每台计算机引入的事件数，请使用以下查询：
+
+```Kusto
+union withsource = tt *
+| summarize count() by Computer | sort by count_ nulls last
+```
+
+若要查看每台计算机引入的可计费事件数，请使用以下查询： 
+
+```Kusto
+union withsource = tt * 
+| where _IsBillable == true 
+| summarize count() by Computer  | sort by count_ nulls last
+```
+
+若要查看向特定计算机发送数据的可计费数据类型计数，请使用以下查询：
+
+```Kusto
+union withsource = tt *
+| where Computer == "computer name"
+| where _IsBillable == true 
+| summarize count() by tt | sort by count_ nulls last 
+```
+
 
 ## <a name="next-steps"></a>后续步骤
 

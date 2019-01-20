@@ -1,26 +1,8 @@
 ---
-title: Net# 神经网络 - Azure 机器学习工作室 | Microsoft Docs
-description: 有关 Net# 神经网络规范语言的语法，以及如何使用 Net# 和 Azure 机器学习工作室创建自定义神经网络模型的示例。
-services: machine-learning
-documentationcenter: ''
-author: ericlicoding
-ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
-ms.author: amlstudiodocs
-editor: cgronlun
-ms.assetid: cfd1454b-47df-4745-b064-ce5f9b3be303
-ms.service: machine-learning
-ms.component: studio
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: reference
-ms.date: 03/01/2018
-ms.openlocfilehash: ec33ac469d33a07d00f379beef2db9f4405e4679
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
-ms.translationtype: HT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53631119"
+title:Net# 神经网络 titleSuffix: Azure 机器学习工作室 description:有关 Net# 神经网络规范语言的语法，以及如何使用 Net# 和 Azure 机器学习工作室创建自定义神经网络模型的示例。
+services: machine-learning ms.service: machine-learning ms.component: studio ms.topic: reference
+
+author: ericlicoding ms.author: amlstudiodocs ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro ms.date:03/01/2018
 ---
 # <a name="guide-to-net-neural-network-specification-language-for-azure-machine-learning-studio"></a>有关 Azure 机器学习工作室的 Net# 神经网络规范语言的指南
 

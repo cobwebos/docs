@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: jingwang
-ms.openlocfilehash: b712b576e1dd47698de66889d4edf9dda026a16c
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 65d6685947c5796a65985aff0b789223736df0b8
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54017984"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54354274"
 ---
 # <a name="copy-data-from-google-adwords-using-azure-data-factory-preview"></a>使用 Azure 数据工厂（预览版）从 Google AdWords 复制数据
 
@@ -46,11 +46,11 @@ Google AdWords 链接服务支持以下属性：
 |:--- |:--- |:--- |
 | type | Type 属性必须设置为：**GoogleAdWords** | 是 |
 | clientCustomerID | 需提取其报表数据的 AdWords 帐户的客户端客户 ID。  | 是 |
-| developerToken | 与管理员帐户相关联的开发人员令牌，该帐户用来授予对 AdWords API 的访问权限。  可以选择将此字段标记为 SecureString 以将其安全地存储在 ADF，或在 Azure Key Vault 中存储密码，并允许在此处 ADF 复制活动请求时执行数据复制 - 在[在 Key Vault 中存储凭据](store-credentials-in-key-vault.md)中了解详细信息。 | 是 |
+| developerToken | 与管理员帐户相关联的开发人员令牌，该帐户用来授予对 AdWords API 的访问权限。  可选择将此字段标记为 SecureString，将其安全地存储在 ADF 中，或在 Azure Key Vault 中存储密码，并允许 ADF 复制活动在执行数据复制时从此处拉取（请参阅[在 Key Vault 中存储凭据](store-credentials-in-key-vault.md)了解详细信息）。 | 是 |
 | authenticationType | 用于身份验证的 OAuth 2.0 身份验证机制。 ServiceAuthentication 只能在自托管 IR 上使用。 <br/>允许值包括：ServiceAuthentication、UserAuthentication | 是 |
-| refreshToken | 从 Google 获得的刷新令牌，用于授权访问 AdWords 以进行用户身份验证。 可以选择将此字段标记为 SecureString 以将其安全地存储在 ADF，或在 Azure Key Vault 中存储密码，并允许在此处 ADF 复制活动请求时执行数据复制 - 在[在 Key Vault 中存储凭据](store-credentials-in-key-vault.md)中了解详细信息。 | 否 |
-| clientId | Google 应用程序的客户端 ID，用户获取刷新令牌。 可以选择将此字段标记为 SecureString 以将其安全地存储在 ADF，或在 Azure Key Vault 中存储密码，并允许在此处 ADF 复制活动请求时执行数据复制 - 在[在 Key Vault 中存储凭据](store-credentials-in-key-vault.md)中了解详细信息。 | 否 |
-| clientSecret | Google 应用程序的客户端机密，用户获取刷新令牌。 可以选择将此字段标记为 SecureString 以将其安全地存储在 ADF，或在 Azure Key Vault 中存储密码，并允许在此处 ADF 复制活动请求时执行数据复制 - 在[在 Key Vault 中存储凭据](store-credentials-in-key-vault.md)中了解详细信息。 | 否 |
+| refreshToken | 从 Google 获得的刷新令牌，用于授权访问 AdWords 以进行用户身份验证。 可选择将此字段标记为 SecureString，将其安全地存储在 ADF 中，或在 Azure Key Vault 中存储密码，并允许 ADF 复制活动在执行数据复制时从此处拉取（请参阅[在 Key Vault 中存储凭据](store-credentials-in-key-vault.md)了解详细信息）。 | 否 |
+| clientId | Google 应用程序的客户端 ID，用户获取刷新令牌。 可选择将此字段标记为 SecureString，将其安全地存储在 ADF 中，或在 Azure Key Vault 中存储密码，并允许 ADF 复制活动在执行数据复制时从此处拉取（请参阅[在 Key Vault 中存储凭据](store-credentials-in-key-vault.md)了解详细信息）。 | 否 |
+| clientSecret | Google 应用程序的客户端机密，用户获取刷新令牌。 可选择将此字段标记为 SecureString，将其安全地存储在 ADF 中，或在 Azure Key Vault 中存储密码，并允许 ADF 复制活动在执行数据复制时从此处拉取（请参阅[在 Key Vault 中存储凭据](store-credentials-in-key-vault.md)了解详细信息）。 | 否 |
 | 电子邮件 | 用于 ServiceAuthentication 的服务帐户电子邮件 ID，只能在自托管 IR 上使用。  | 否 |
 | keyFilePath | .p12 密钥文件的完整路径，该文件用于对服务帐户电子邮件地址进行身份验证，只能在自托管 IR 上使用。  | 否 |
 | trustedCertPath | 包含受信任 CA 证书（通过 SSL 进行连接时用于验证服务器）的 .pem 文件的完整路径。 只有在自托管 IR 上使用 SSL 时才能设置此属性。 默认值是随 IR 一起安装的 cacerts.pem 文件。  | 否 |

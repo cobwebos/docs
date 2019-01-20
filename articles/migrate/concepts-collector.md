@@ -4,15 +4,15 @@ description: 介绍 Azure Migrate 中的收集器设备。
 author: snehaamicrosoft
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 01/08/2019
+ms.date: 01/14/2019
 ms.author: snehaa
 services: azure-migrate
-ms.openlocfilehash: 6f843fedafd68d4e04d181af2c6d7542baaf0144
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: b9387814b8bdab56117dec27de1e3d5b44ce39b4
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54104195"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54262602"
 ---
 # <a name="about-the-collector-appliance"></a>关于收集器设备
 
@@ -126,12 +126,9 @@ Azure Migrate 收集器是一种轻量级设备，可用于在迁移到 Azure �
 
 收集器连接到 vCenter Server，并查询 VM 元数据和性能计数器。 以下是执行此连接所需的组件。
 
-- 仅支持 vCenter Server 5.5、6.0 和 6.5 版。
+- 仅支持 vCenter Server 5.5、6.0、6.5 和 6.7 版。
 - 需要使用具有下面概述的权限的只读帐户进行发现。 只能访问该帐户可访问的数据中心以进行发现。
 - 默认情况下，连接到带有 FQDN 或 IP 地址的 vCenter Server。 如果 vCenter Server 在不同端口上侦听，则使用 IPAddress:Port_Number 或 FQDN:Port_Number 的形式连接到该端口。
-- 若要收集存储和网络的性能数据，vCenter Server 的统计信息设置必须设置为三级。
-- 如果级别低于三级，则可进行发现，但无法收集性能数据。 可能收集一些计数器，但其他计数器将设为零。
-- 如果无法收集存储和网络的性能数据，则评估大小建议基于 CPU 和内存的性能数据，以及磁盘和网络适配器的配置数据。
 - 收集器应该具有网络视线，可以看到 vCenter Server。
 
 #### <a name="account-permissions"></a>帐户权限

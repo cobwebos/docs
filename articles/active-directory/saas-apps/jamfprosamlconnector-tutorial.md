@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/19/2018
 ms.author: jeedes
-ms.openlocfilehash: e30ede3e69711fefcf5026202ed7b004d00cb02e
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.openlocfilehash: ebd9f2115116e8f9cf976c86e4914f0b7f6beb39
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53810808"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54322106"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-jamf-pro"></a>教程：Azure Active Directory 与 Jamf Pro 集成
 
@@ -92,7 +92,7 @@ ms.locfileid: "53810808"
 
     ![配置单一登录链接](common/select-sso.png)
 
-2. 在“选择单一登录方法”对话框中，选择 SAML/WS-Fed 模式以启用单一登录。
+2. 在**选择单一登录方法**对话框中，选择 **SAML/WS-Fed**模式以启用单一登录。
 
     ![单一登录选择模式](common/select-saml-option.png)
 
@@ -104,7 +104,7 @@ ms.locfileid: "53810808"
 
     ![Jamf Pro 域和 URL 单一登录信息](common/idp-intiated.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“标识符”文本框中，使用以下模式键入 URL：`https://<subdomain>.jamfcloud.com/saml/metadata`
+    a. 在“标识符”文本框中，使用以下模式键入 URL：`https://<subdomain>.jamfcloud.com/saml/metadata`
 
     b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<subdomain>.jamfcloud.com/saml/SSO`
 
@@ -145,7 +145,7 @@ ms.locfileid: "53810808"
 
     ![Jamf Pro 单一登录](./media/jamfprosamlconnector-tutorial/tutorial_jamfprosamlconnector_single.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 选择“Jamf Pro Server”以启用单一登录访问。
+    a. 选择“Jamf Pro Server”以启用单一登录访问。
 
     b. 如果选择“允许所有用户绕过”，则用户不会重定向到用于身份验证的标识提供者登录页，但可以直接登录到 Jamf Pro。 当用户尝试通过标识提供者访问 Jamf Pro 时，会发生 IdP 发起的 SSO 身份验证和授权。
 
@@ -155,11 +155,11 @@ ms.locfileid: "53810808"
 
     e. 在“组属性名称”文本框中粘贴值 `http://schemas.microsoft.com/ws/2008/06/identity/claims/groups`。
 
-7. 在同一页上，一直向下滚动到“单一登录”部分下的“标识提供者”，并执行以下步骤：
+7. 在同一页上，滚动到“单一登录”部分下的“标识提供者”，并执行以下步骤：
 
     ![Jamf Pro 配置](./media/jamfprosamlconnector-tutorial/configure3.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 从“标识提供者”下拉菜单中选择选项“其他”。
+    a. 从“标识提供者”下拉菜单中选择选项“其他”。
 
     b. 在“其他提供程序”文本框中输入“Azure AD”。
 
@@ -251,7 +251,7 @@ ms.locfileid: "53810808"
 
     ![添加员工](./media/jamfprosamlconnector-tutorial/user4.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“用户名”文本框中键入“BrittaSimon”的全名。
+    a. 在“用户名”文本框中键入“BrittaSimon”的全名。
 
     b. 根据你的组织为“访问级别”、“特权设置”和“访问状态”选择合适的选项。
 

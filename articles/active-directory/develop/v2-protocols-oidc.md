@@ -17,12 +17,12 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 756d00786005fb6de26ff363d4e233fc28b48687
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 01d73d9c42f99dde02a801af9967430c9735932d
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52426836"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54320950"
 ---
 # <a name="azure-active-directory-v20-and-the-openid-connect-protocol"></a>Azure Active Directory v2.0 和 OpenID Connect 协议
 
@@ -86,7 +86,7 @@ https://login.microsoftonline.com/{tenant}/v2.0/.well-known/openid-configuration
 * 请求必须包含 `nonce` 参数。
 
 > [!IMPORTANT]
-> 为了成功请求 ID 令牌，[注册门户](https://apps.dev.microsoft.com)中的应用注册必须已为 Web 客户端启用[隐式授权](v2-oauth2-implicit-grant-flow.md)。 如果未启用，将返回 `unsupported_response` 错误：“输入参数“response_type”提供的值不允许用于此客户端。 预期值为“code””
+> 为了成功请求 ID 令牌，[注册门户](https://apps.dev.microsoft.com)中的应用注册必须已为 Web 客户端启用[隐式授权](v2-oauth2-implicit-grant-flow.md)。 如果未启用，将返回 `unsupported_response` 错误：“为输入参数 'response_type' 提供的值不允许用于此客户端。 预期值为“code””
 
 例如：
 

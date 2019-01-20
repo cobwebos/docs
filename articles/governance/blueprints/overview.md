@@ -9,12 +9,12 @@ ms.topic: overview
 ms.service: blueprints
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: f1ebbc10109563b771c5417a0449efec12138526
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: bea01e8f017622f1407bbac993e50112140cc472
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52967685"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54246239"
 ---
 # <a name="what-is-azure-blueprints"></a>什么是 Azure 蓝图？
 
@@ -54,7 +54,7 @@ Azure 蓝图服务由全球分布的 [Azure Cosmos DB](../../cosmos-db/introduct
 
 蓝图由项目组成。 蓝图目前支持以下资源作为项目：
 
-|资源  | 层次结构选项| Description  |
+|资源  | 层次结构选项| 说明  |
 |---------|---------|---------|
 |资源组     | 订阅 | 创建新资源组以供蓝图中的其他项目使用。  通过这些占位符资源组，可以按照所需方式组织资源，并为包含的策略和角色分配项目以及 Azure 资源管理器模板提供范围限制。         |
 |Azure 资源管理器模板      | 订阅、资源组 | 模板用于组合复杂的环境。 示例环境：SharePoint 场、Azure 自动化状态配置或 Log Analytics 工作区。 |

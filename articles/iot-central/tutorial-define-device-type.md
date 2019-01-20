@@ -1,22 +1,22 @@
 ---
 title: 在 Azure IoT Central 中定义新设备类型 | Microsoft Docs
 description: 本教程向构建人员介绍如何在 Azure IoT Central 应用程序中定义新设备类型。 其中介绍了如何为类型定义遥测、状态、属性和设置。
-author: tbhagwat3
-ms.author: tanmayb
+author: dominicbetts
+ms.author: dobett
 ms.date: 10/30/2018
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-manager: peterpr
-ms.openlocfilehash: dd81c10bcda6665de7ffabe94a4c1be991687797
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+manager: philmea
+ms.openlocfilehash: d50059fb6fe03309609c91b56fb3763bad32e46b
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50963579"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54199963"
 ---
-# <a name="tutorial-define-a-new-device-type-in-your-azure-iot-central-application"></a>教程：在 Azure IoT Central 应用程序中定义新设备类型
+# <a name="tutorial-define-a-new-device-type-in-your-azure-iot-central-application"></a>教程：在 Azure IoT Central 应用程序中定义新的设备类型
 
 本教程向构建人员介绍如何使用设备模板在 Microsoft Azure IoT Central 应用程序中定义新的设备类型。 设备模板定义设备类型的遥测、状态、属性和设置。
 
@@ -269,7 +269,7 @@ ms.locfileid: "50963579"
     | 最小值        | 20              |
     | 最大值        | 200             |
     | 初始值        | 80              |
-    | Description          | 设置空调的目标温度 |
+    | 说明          | 设置空调的目标温度 |
 
     然后选择“保存”：
 
@@ -299,7 +299,7 @@ ms.locfileid: "50963579"
     | 显示名称         | 位置             |
     | 字段名称           | 位置             |
     | 初始值        | 华盛顿州西雅图          |
-    | Description          | 设备位置      |
+    | 说明          | 设备位置      |
 
     在其他字段中保留默认值。
 
@@ -316,7 +316,7 @@ ms.locfileid: "50963579"
     | 显示名称         | 最后维修日期       |
     | 字段名称           | serviceDate             |
     | 初始值        | 2018/1/1                |
-    | Description          | 最后维修日期           |
+    | 说明          | 最后维修日期           |
 
     ![配置设备属性](./media/tutorial-define-device-type/configureproperties2.png)
 
@@ -335,7 +335,7 @@ ms.locfileid: "50963579"
     | 显示名称         | 固件版本        |
     | 字段名称           | firmwareVersion         |
     | 数据类型            | text                    |
-    | Description          | 空调的固件版本 |
+    | 说明          | 空调的固件版本 |
 
     ![配置固件版本](./media/tutorial-define-device-type/configureproperties3.png)
     
@@ -350,7 +350,7 @@ ms.locfileid: "50963579"
     | 显示名称         | 序列号           |
     | 字段名称           | serialNumber            |
     | 数据类型            | text                    |
-    | Description          | 空调的序列号  |
+    | 说明          | 空调的序列号  |
 
     ![配置序列号](./media/tutorial-define-device-type/configureproperties4.png)
     
@@ -377,7 +377,7 @@ ms.locfileid: "50963579"
     | 字段名称           | echo            |
     | 默认超时      | 30              |
     | 显示类型         | text            |
-    | Description          | 设备命令  |  
+    | 说明          | 设备命令  |  
 
     可以向命令添加其他输入，方法是针对“输入字段”单击“+”。
 

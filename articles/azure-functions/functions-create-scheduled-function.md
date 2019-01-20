@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.date: 03/28/2018
 ms.author: glenga
 ms.custom: mvc, cc996988-fb4f-47
-ms.openlocfilehash: 4809c09b5aa7b8212981cc13589602a365a23a37
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.openlocfilehash: d82e80530d375a9d0f0a6d3f491d3070942ca02f
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49113608"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54331905"
 ---
 # <a name="create-a-function-in-azure-that-is-triggered-by-a-timer"></a>在 Azure 中创建由计时器触发的函数
 
@@ -43,30 +43,30 @@ ms.locfileid: "49113608"
 
 ## <a name="create-a-timer-triggered-function"></a>创建计时器触发的函数
 
-1. 展开 Function App，单击“Functions”旁边的 + 按钮。 如果这是 Function App 中的第一个函数，请选择“自定义函数”。 此时将显示函数模板的完整集合。
+1. 展开 Function App，单击“Functions”旁边的 + 按钮。 如果这是函数应用中的第一个函数，请依次选择“门户中”、“继续”。 否则，请转到第三步。
 
-    ![Azure 门户中的 Functions 快速入门页](./media/functions-create-scheduled-function/add-first-function.png)
+   ![Azure 门户中的 Functions 快速入门页](./media/functions-create-scheduled-function/function-app-quickstart-choose-portal.png)
 
-2. 在搜索栏中键入 `timer`，然后选择需要用于计时器触发器模板的语言。 
+2. 依次选择“更多模板”、“完成并查看模板”。
 
-    ![选择计时器触发函数模板。](./media/functions-create-scheduled-function/functions-create-timer-trigger.png)
+    ![Functions 快速入门选择更多模板](./media/functions-create-scheduled-function/add-first-function.png)
 
-3. 使用图像下面的表中指定的设置来配置新的触发器。
+3. 在搜索字段中，键入 `timer` 并使用图像下面的表中指定的设置来配置新的触发器。
 
     ![在 Azure 门户中创建计时器触发的函数。](./media/functions-create-scheduled-function/functions-create-timer-trigger-2.png)
 
     | 设置 | 建议的值 | 说明 |
     |---|---|---|
-    | **Name** | 默认 | 定义计时器触发的函数的名称。 |
+    | **名称** | 默认 | 定义计时器触发的函数的名称。 |
     | **计划** | 0 \*/1 \* \* \* \* | 六字段 [CRON 表达式](functions-bindings-timer.md#cron-expressions)，计划函数每分钟运行一次。 |
 
-2. 单击“创建”。 将使用所选语言创建一个每分钟运行一次的函数。
+4. 单击“创建”。 将使用所选语言创建一个每分钟运行一次的函数。
 
-3. 通过查看写入日志的跟踪信息来验证执行情况。
+5. 通过查看写入日志的跟踪信息来验证执行情况。
 
     ![Azure 门户中的“函数日志”查看器。](./media/functions-create-scheduled-function/functions-timer-trigger-view-logs2.png)
 
-现在可以更改函数的计划，使之每小时运行一次，而不是每分钟运行一次。 
+现在可以更改函数的计划，使之每小时运行一次，而不是每分钟运行一次。
 
 ## <a name="update-the-timer-schedule"></a>更新计时器计划
 

@@ -13,14 +13,14 @@ ms.topic: overview
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/5/2018
+ms.date: 1/15/2019
 ms.author: rkarlin
-ms.openlocfilehash: 88aa9a9003363f86db9214c62adff962bbd345cf
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: d1c948527c919ed8f81f16cf30a986591b414662
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53344153"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54263548"
 ---
 # <a name="what-is-azure-security-center"></a>什么是 Azure 安全中心？
 
@@ -52,9 +52,11 @@ Azure 安全中心解决了三个最紧急的安全性挑战：
 
 从代理和 Azure 收集的事件在安全分析引擎中相关联，从而提供定制的建议（强化任务）（应遵循这些建议以确保工作负荷是安全的）以及威胁检测警报。 应尽快调查此类警报以确保没有针对工作负荷发生的恶意攻击。
 
+当启用安全中心时，内置到安全中心的安全策略将作为内置的计划反映在 Azure Policy 中，位于“安全中心”类别下。 内置的计划自动分配给安全中心注册的所有订阅（免费或标准层）。 内置的计划仅包含审核策略。 有关 Azure Policy 中的安全中心策略的详细信息，请参阅[使用安全策略](tutorial-security-policy.md)。
+
 ## <a name="strengthen-security-posture"></a>加强安全态势
 
-通过 Azure 安全中心可以加强安全态势。 这意味着它可以帮助识别和执行建议作为安全最佳做法的强化任务，并跨计算机、数据服务和应用实现这些任务。 这包括管理和强制实施安全策略，以及确保 Azure 虚拟机、非 Azure 服务器和 Azure PaaS 服务的符合性。 安全中心提供了对工作负荷进行鸟瞰所需的工具，并且使你能够集中查看网络安全资产。
+通过 Azure 安全中心可以加强安全态势。 这意味着它可以帮助识别和执行建议作为安全最佳做法的强化任务，并跨计算机、数据服务和应用实现这些任务。 这包括管理和强制实施安全策略，以及确保 Azure 虚拟机、非 Azure 服务器和 Azure PaaS 服务的符合性。 安全中心提供了对工作负荷进行鸟瞰所需的工具，并且使你能够集中查看网络安全资产。 
 
 ### <a name="manage-organization-security-policy-and-compliance"></a>管理组织安全策略和符合性
 

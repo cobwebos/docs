@@ -5,17 +5,17 @@ services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 10/1/2018
+ms.date: 01/14/2019
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: zeyadr
 manager: femila
-ms.openlocfilehash: e205fce8b718e68200face33447e37cd3317298f
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 9f0f32bc1fb6b88dc85f09e13aebc60ff74ec723
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49405478"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54329727"
 ---
 # <a name="azure-blockchain-workbench-troubleshooting"></a>Azure Blockchain Workbench 故障排除
 
@@ -26,7 +26,7 @@ PowerShell 脚本用于协助开发人员进行调试或提供支持。 此脚�
 * Application Insights
 * Azure 监视 (Log Analytics)
 
-可以根据此信息确定后续步骤和问题的根本原因。 
+可以根据此信息确定后续步骤和问题的根本原因。
 
 ## <a name="troubleshooting-script"></a>故障排除脚本
 
@@ -75,4 +75,4 @@ collectBlockchainWorkbenchTroubleshooting.ps1 -SubscriptionID "<subscription_id>
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [Azure Blockchain Workbench 体系结构](architecture.md)
+> [Azure Blockchain Workbench Application Insights 故障排除指南](https://aka.ms/workbenchtroubleshooting)

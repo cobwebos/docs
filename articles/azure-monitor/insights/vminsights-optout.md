@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/05/2018
 ms.author: magoedte
-ms.openlocfilehash: f0addcc0b6220bcf877c3cac20f2d1376eb19e61
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: c6a8322998b391b9021292a3a7213ded56b67feb
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54191065"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54263350"
 ---
 # <a name="how-to-disable-monitoring-of-your-virtual-machines-with-azure-monitor-for-vms-preview"></a>如何在用于 VM 的 Azure Monitor（预览版）中禁用虚拟机监视
 
@@ -31,7 +31,7 @@ ms.locfileid: "54191065"
 * Log Analytics 工作区，用于存储从 VM 和其他源收集的监视数据。
 * 性能计数器的收集在工作区中配置，此项配置会更新已连接到该工作区的所有 VM 上的监视配置。
 * 工作区中配置了两个监视解决方案 - **InfrastructureInsights** 和 **ServiceMap**，此项配置会更新已连接到该工作区的所有 VM 上的监视配置。
-* 两个 Azure 虚拟机扩展 - **MicrosoftMonitoringAgent** 和 **DepenendencyAgent**，用于收集数据并将其发送到工作区。
+* 两个 Azure 虚拟机扩展 - **MicrosoftMonitoringAgent** 和 **DependencyAgent**，用于收集数据并将其发送到工作区。
 
 准备在用于 VM 的 Azure Monitor 中禁用虚拟机监视时，请考虑以下问题：
 
@@ -43,7 +43,7 @@ ms.locfileid: "54191065"
 
 ## <a name="complete-removal-of-azure-monitor-for-vms"></a>完全删除用于 VM 的 Azure Monitor
 
-以下步骤说明在仍然需要 Log Analytics 工作区的情况下，如何完全删除用于 VM 的 Azure Monitor。 要从工作区中删除 **InfastructureInsights** 和 **ServiceMap** 解决方案。  
+以下步骤说明在仍然需要 Log Analytics 工作区的情况下，如何完全删除用于 VM 的 Azure Monitor。 要从工作区中删除 **InfrastructureInsights** 和 **ServiceMap** 解决方案。  
 
 >[!NOTE]
 >如果以前使用了服务映射监视解决方案来启用用于 VM 的 Azure Monitor，并且现在仍依赖于该解决方案，请不要按以下步骤 6 中所述删除该解决方案。  

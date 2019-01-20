@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/11/2018
 ms.author: yexu
-ms.openlocfilehash: ad490630d3ce5d625bce05c75c20fa71a7aa2d29
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: b9e9c0b141987f8af563944c8eee216b8218846c
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54014533"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54352880"
 ---
 # <a name="incrementally-load-data-from-an-azure-sql-database-to-azure-blob-storage"></a>以增量方式将 Azure SQL 数据库中的数据加载到 Azure Blob 存储
 在本教程中，请创建一个带管道的 Azure 数据工厂，将增量数据从 Azure SQL 数据库中的表加载到 Azure Blob 存储。 
@@ -135,7 +135,7 @@ ms.locfileid: "54014533"
 运行以下命令，在 SQL 数据库中创建存储过程：
 
 ```sql
-CREATE PROCEDURE sp_write_watermark @LastModifiedtime datetime, @TableName varchar(50)
+CREATE PROCEDURE usp_write_watermark @LastModifiedtime datetime, @TableName varchar(50)
 AS
 
 BEGIN
@@ -302,7 +302,7 @@ END
     ![存储过程活动 - SQL 帐户](./media/tutorial-incremental-copy-portal/sp-activity-sql-account-settings.png)
 26. 切换到“存储过程”选项卡，然后执行以下步骤： 
 
-    1. 至于“存储过程名称”，请选择 **sp_write_watermark**。 
+    1. 对于“存储过程名称”，请选择 **usp_write_watermark**。 
     2. 若要指定存储过程参数的值，请单击“导入参数”，然后为参数输入以下值： 
 
         | 名称 | 类型 | 值 | 

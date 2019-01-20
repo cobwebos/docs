@@ -1,26 +1,8 @@
 ---
-title: Azure AI 库 - Azure 机器学习工作室 | Microsoft Docs
-description: 在 Azure AI 库中共享和发现分析资源以及更多内容。 学习其他人的经验，为社区做出自己的贡献。
-services: machine-learning
-documentationcenter: ''
-author: ericlicoding
-ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
-ms.author: amlstudiodocs
-editor: cgronlun
-ms.assetid: cf518538-6046-4657-a7cb-a0bc487c67e6
-ms.service: machine-learning
-ms.component: studio
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 03/31/2017
-ms.openlocfilehash: c9acd902eb536bbd252f0aca6d162ff92d9e6e00
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
-ms.translationtype: HT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53270954"
+title:Azure AI 库 titleSuffix: Azure 机器学习工作室 description:在 Azure AI 库中共享和发现分析资源以及更多内容。 学习其他人的经验，为社区做出自己的贡献。
+services: machine-learning ms.service: machine-learning ms.component: studio ms.topic: article
+
+author: ericlicoding ms.author: amlstudiodocs ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro ms.date:03/31/2017
 ---
 # <a name="share-and-discover-resources-in-the-azure-ai-gallery"></a>在 Azure AI 库中共享和发现资源
 

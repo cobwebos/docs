@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 12/26/2018
 author: sivethe
 ms.author: sivethe
-ms.openlocfilehash: 7bf8258524b0b5e73c1a499fb6d3578098a0821e
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 08638f0b55c84a6b0e42d3782246ef5b2ce833f3
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54039157"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54359062"
 ---
 # <a name="use-azure-cosmos-dbs-api-for-mongodb-support-for-mongodb-features-and-syntax"></a>使用 Azure Cosmos DB 的 MongoDB API 支持 MongoDB 功能和语法
 
@@ -20,13 +20,13 @@ Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服�
 
 通过使用 Azure Cosmos DB 的 MongoDB API，可以像以往一样从 MongoDB 中受益，并且可使用 Cosmos DB 提供的所有企业功能：[全局分发](distribute-data-globally.md)、[自动分片](partition-data.md)、可用性和延迟保证、自动编制每个字段的索引、静态加密和备份等。
 
-## <a name="mongodb-protocol-support"></a>MongoDB 协议支持
+## <a name="protocol-support"></a>协议支持
 
-默认情况下，Azure Cosmos DB 的 MongoDB API 兼容 MongoDB Server 版本 3.2。 支持的运算符以及限制或例外已列在下面。 在 MongoDB 版本 **3.4** 中添加的功能或查询运算符目前以预览版功能形式提供。 任何理解这些协议的客户端驱动程序应该都能够连接到 Azure Cosmos DB 的 MongoDB API。
+默认情况下，Azure Cosmos DB 的 MongoDB API 兼容 MongoDB Server 版本 **3.2**。 支持的运算符以及限制或例外已列在下面。 在 MongoDB 版本 **3.4** 中添加的功能或查询运算符目前以预览版功能形式提供。 任何理解这些协议的客户端驱动程序应该都能够连接到 Azure Cosmos DB 的 MongoDB API。
 
 [MongoDB 聚合管道](#aggregation-pipeline)目前也以单独的预览版功能形式提供。
 
-## <a name="mongodb-query-language-support"></a>MongoDB 查询语言支持
+## <a name="query-language-support"></a>查询语言支持
 
 Azure Cosmos DB 的 MongoDB API 全面支持 MongoDB 查询语言构造。 可以在下面查找当前支持的操作、运算符、阶段、命令和选项的详细列表。
 
@@ -333,8 +333,8 @@ Cosmos DB 支持服务器端自动分片。 不支持手动分片命令。
 
 ## <a name="next-steps"></a>后续步骤
 
-- 了解如何配合[使用 Studio 3T](mongodb-mongochef.md) 与 Azure Cosmos DB 的用于 MongoDB 的 API。
-- 了解如何配合[使用 Robo 3T](mongodb-robomongo.md) 与 Azure Cosmos DB 的用于 MongoDB 的 API。
+- 了解如何将 [Studio 3T](mongodb-mongochef.md) 与 Azure Cosmos DB 的用于 MongoDB 的 API 配合使用。
+- 了解如何将 [Robo 3T](mongodb-robomongo.md) 与 Azure Cosmos DB 的用于 MongoDB 的 API 配合使用。
 - 使用 Azure Cosmos DB 的用于 MongoDB 的 API 浏览 MongoDB [示例](mongodb-samples.md)。
 
 <sup>注意：本文介绍了可与 MongoDB 数据库实现网络协议兼容的 Azure Cosmos DB 功能。Microsoft 不会运行 MongoDB 数据库来提供此服务。Azure Cosmos DB 并不隶属于 MongoDB, inc.</sup>

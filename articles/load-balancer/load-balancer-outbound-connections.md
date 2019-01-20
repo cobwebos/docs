@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/01/2018
 ms.author: kumud
-ms.openlocfilehash: 09de0a3aa0303e169d0b90690016909b29dc4a9b
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: d8ca70efd3b1ba77b1b1bb0e11a9234e5fd440c4
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53190962"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54201374"
 ---
 # <a name="outbound-connections-in-azure"></a>Azure 中的出站连接
 
@@ -91,9 +91,9 @@ SNAT 端口是根据[了解 SNAT 和 PAT](#snat) 部分中所述预先分配的�
 
 ### <a name="multife"></a>对出站流使用多个前端
 
-#### <a name="load-balancer-standard"></a>负载均衡器标准版
+#### <a name="standard-load-balancer"></a>标准负载均衡器
 
-存在[多个（公共）IP 前端](load-balancer-multivip-overview.md)时，负载均衡器标准版同时使用出站流的所有候选项。 如果对出站连接启用了负载均衡规则，则每个前端的可用预分配 SNAT 端口数将会倍增。
+存在[多个（公共）IP 前端](load-balancer-multivip-overview.md)时，标准负载均衡器同时使用出站流的所有候选项。 如果对出站连接启用了负载均衡规则，则每个前端的可用预分配 SNAT 端口数将会倍增。
 
 可以使用一个新的负载均衡规则选项，来禁止对出站连接使用某个前端 IP 地址：
 

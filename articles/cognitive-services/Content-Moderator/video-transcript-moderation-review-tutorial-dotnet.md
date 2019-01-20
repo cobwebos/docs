@@ -1,27 +1,27 @@
 ---
 title: 教程：在 .NET 中审查视频和脚本 - 内容审查器
 titlesuffix: Azure Cognitive Services
-description: 如何在 .NET 中使用内容审查器来审查视频和脚本。
+description: 本教程可帮助你了解如何使用机器辅助审查和人工介入评论创建，来生成完整的视频和脚本审查解决方案。
 services: cognitive-services
 author: sanjeev3
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: content-moderator
 ms.topic: tutorial
-ms.date: 1/27/2018
+ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: e5958eeb4aca4cdc41bbc263a4cc38378927874b
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 45f1b4d16bd982e17b67d6fb337e0d917f635851
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54118568"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54332687"
 ---
 # <a name="tutorial-video-and-transcript-moderation"></a>教程：视频和脚本审查
 
 可使用内容审查器的视频 API 审查视频并在人工评论工具中创建视频评论。 
 
-此详细教程可帮助了解如何使用机器辅助审查和人工介入评论创建，来生成完整的视频和脚本审查解决方案。
+本教程可帮助你了解如何使用机器辅助审查和人工介入评论创建，来生成完整的视频和脚本审查解决方案。
 
 为本教程下载 [C# 控制台应用程序](https://github.com/MicrosoftContentModerator/VideoReviewConsoleApp)。 此控制台应用程序使用 SDK 和相关包来执行以下任务：
 
@@ -241,7 +241,7 @@ ms.locfileid: "54118568"
 
 - 检查以确保 `App.config` 中的配置包含所有必要数据
 - 检查以确保存在 `ffmpeg` 二进制文件
-- 通过将 `_c.mp4` 附加到文件的基本名称（例如 `Example.mp4` -> `E>xample_c.mp4`）来生成输出文件名
+- 通过将 `_c.mp4` 附加到文件的基本名称（例如 `Example.mp4` -> `Example_c.mp4`）来生成输出文件名
 - 生成命令行字符串以执行转换
 - 使用命令行启动 `ffmpeg` 进程
 - 等待处理视频

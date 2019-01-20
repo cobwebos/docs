@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: tutorial
 ms.date: 12/12/2018
 ms.author: cshoe
-ms.openlocfilehash: 00a72c8c7fb42c763a8b0bad1fa3914ac27c496f
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: 6c77e58e626ba370a6278a0f01b09578930cba09
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53406924"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54247106"
 ---
 # <a name="manually-run-a-non-http-triggered-function"></a>手动运行非 HTTP 触发的函数
 
@@ -51,19 +51,20 @@ ms.locfileid: "53406924"
 
 打开 Postman 并执行以下步骤：
 
-1. **在 URL 文本框中输入请求位置**。 
-2. **单击**“标头”选项卡。
-3. 输入 **x-functions-key** 作为第一个**密钥**，并将主密钥（从剪贴板）粘贴到“值”框中。
-4. 输入 **Content-Type** 作为第二个**密钥**，然后输入 **application/json** 作为**值**。
+1. **在 URL 文本框中输入请求位置**。
+2. 确保 HTTP 方法设置为 **POST**。
+3. **单击**“标头”选项卡。
+4. 输入 **x-functions-key** 作为第一个**密钥**，并将主密钥（从剪贴板）粘贴到“值”框中。
+5. 输入 **Content-Type** 作为第二个**密钥**，然后输入 **application/json** 作为**值**。
 
     ![Postman 标头设置](./media/functions-manually-run-non-http/functions-manually-run-non-http-headers.png)
 
-5. **单击**“正文”选项卡。
-6. 输入 **{ "input": "test" }** 作为请求的正文。
+6. **单击**“正文”选项卡。
+7. 输入 **{ "input": "test" }** 作为请求的正文。
 
     ![Postman 正文设置](./media/functions-manually-run-non-http/functions-manually-run-non-http-body.png)
 
-7. 单击“Send”。
+8. 单击“Send”。
 
     ![通过 Postman 发送请求](./media/functions-manually-run-non-http/functions-manually-run-non-http-send.png)
 

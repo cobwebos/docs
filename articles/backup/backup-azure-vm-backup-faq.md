@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 8/16/2018
 ms.author: trinadhk
-ms.openlocfilehash: 063b13f76e2fcbe4df0b13d7e77e34718ec756d4
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 31a708f3a0da76ab13e789b099f312cca1f86e08
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54041282"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54332245"
 ---
 # <a name="frequently-asked-questions-azure-backup"></a>常见问题 - Azure 备份
 
@@ -57,14 +57,13 @@ ms.locfileid: "54041282"
 不是。 本地计算机上的日期和时间是本地的，当前已应用夏令时。 由于 DST，为计划备份设置的时间可能与本地时间不同。
 
 ### <a name="how-many-data-disks-can-i-attach-to-a-vm-backed-up-by-azure-backup"></a>可将多少个数据磁盘附加到 VM 以供 Azure 备份执行备份？
-Azure 备份可使用最多 16 个磁盘备份 VM。 Azure VM 备份堆栈 V2 的[最新版本](backup-upgrade-to-vm-backup-stack-v2.md)对 16 个磁盘提供支持。
+Azure 备份可使用最多 16 个磁盘备份 VM。 [即时还原](backup-instant-restore-capability.md)中提供了对 16 个磁盘的支持。
 
 ### <a name="does-azure-backup-support-standard-ssd-managed-disk"></a>Azure 备份是否支持标准 SSD 托管磁盘？
-Azure 备份支持[标准 SSD 托管磁盘](https://azure.microsoft.com/blog/announcing-general-availability-of-standard-ssd-disks-for-azure-virtual-machine-workloads/)。 SSD 托管磁盘为 Azure VM 提供了一种新型的持久存储。 Azure VM 备份堆栈 V2 的[最新版本](backup-upgrade-to-vm-backup-stack-v2.md)对 SSD 托管磁盘提供支持。
+Azure 备份支持[标准 SSD 托管磁盘](https://azure.microsoft.com/blog/announcing-general-availability-of-standard-ssd-disks-for-azure-virtual-machine-workloads/)。 SSD 托管磁盘为 Azure VM 提供了一种新型的持久存储。 [即时还原](backup-instant-restore-capability.md)中提供了对 SSD 托管磁盘的支持。
 
 ### <a name="can-we-back-up-a-vm-with-a-write-accelerator-wa-enabled-disk"></a>可使用支持写入加速器 (WA) 的磁盘备份 VM 吗？
-无法在已启用 WA 的磁盘上拍摄快照。 但是，Azure 备份服务可以从备份中排除已启用 WA 的磁盘。 仅升级到 Azure VM 备份堆栈 V2 的订阅支持已启用 WA 的磁盘的 VM 磁盘排除。 要升级到 Azure VM 备份堆栈 V2，请参阅[本文](backup-upgrade-to-vm-backup-stack-v2.md)。 此功能目前在日本东部、北欧、东南亚、美国东部、美国西部 2、西欧和美国东部 2 可用。
-
+无法在已启用 WA 的磁盘上拍摄快照。 但是，Azure 备份服务可以从备份中排除已启用 WA 的磁盘。 仅对升级到即时还原的订阅支持已启用 WA 的磁盘的 VM 磁盘排除。
 
 ### <a name="i-have-a-vm-with-write-accelerator-wa-disks-and-sap-hana-installed-how-do-i-back-up"></a>我有一个安装了写入加速器 (WA) 磁盘和 SAP HANA 的 VM。 我该如何备份？
 Azure 备份无法备份已启用 WA 的磁盘，但可以将其从备份中排除。 但是，备份不会提供数据库一致性，因为未备份已启用 WA 的磁盘上的信息。 如果需要备份操作系统磁盘和备份未启用 WA 的磁盘，则可以使用此配置备份磁盘。
@@ -77,7 +76,7 @@ Azure 备份无法备份已启用 WA 的磁盘，但可以将其从备份中排�
 ### <a name="how-do-i-decide-whether-to-restore-disks-only-or-a-full-vm"></a>如何确定仅还原磁盘还是完整 VM？
 将 VM 还原视为 Azure VM 的快速创建选项。 此选项可更改磁盘名称、磁盘使用的容器、公共 IP 地址和网络接口名称。 创建 VM 时，更改将维护唯一资源。 未将 VM 添加到可用性集。
 
-若要执行以下操作，请使用还原磁盘选项：
+若要执行以下操作，可使用还原磁盘选项：
   * 自定义创建的 VM。 例如，更改大小。
   * 添加备份时不存在的配置设置
   * 控制创建的资源的命名约定。
@@ -104,7 +103,7 @@ Azure 备份无法备份已启用 WA 的磁盘，但可以将其从备份中排�
 对于托管磁盘 Azure VM，通过在还原为托管磁盘时在模板中提供选项来启用还原到可用性集。 此模板具有名为“可用性集”的输入参数。
 
 ### <a name="how-do-we-get-faster-restore-performances"></a>如何获得更快的还原性能？
-为了提高还原性能，我们建议移动到 VM 备份堆栈 V2 并使用[即时 RP 功能](backup-upgrade-to-vm-backup-stack-v2.md)。
+为了获得更快的还原性能，我们正在转到[即时还原](backup-instant-restore-capability.md)功能。
 
 ## <a name="manage-vm-backups"></a>管理 VM 备份
 

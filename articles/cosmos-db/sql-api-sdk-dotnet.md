@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 03/09/2018
 ms.author: sngun
-ms.openlocfilehash: f135281ad8bfe8222fd799e3d18c4022c627d23c
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 470813b1a51db183476dd046dc102eb89d73debd
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54051945"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54354563"
 ---
 # <a name="azure-cosmos-db-net-sdk-for-sql-api-download-and-release-notes"></a>适用于 SQL API 的 Azure Cosmos DB .NET SDK：下载和发行说明
 > [!div class="op_single_selector"]
@@ -265,7 +265,7 @@ ms.locfileid: "54051945"
 ### <a name="a-name180180"></a><a name="1.8.0"/>1.8.0
 * 添加了对多区域数据库帐户的支持。
 * 添加了对重试限制请求的支持。  用户可以通过配置 ConnectionPolicy.RetryOptions 属性来自定义重试次数和最长等待时间。
-* 添加新的 IDocumentClient 接口，用于定义所有 DocumenClient 属性和方法的签名。  在做出此项更改的同时，已用于创建 IQueryable 和 IOrderedQueryable 的扩展方法更改为 DocumentClient 类本身的方法。
+* 添加了新的 IDocumentClient 接口，用于定义所有 DocumentClient 属性和方法的签名。  在做出此项更改的同时，已用于创建 IQueryable 和 IOrderedQueryable 的扩展方法更改为 DocumentClient 类本身的方法。
 * 添加了配置选项，以便设置给定 Azure Cosmos DB 终结点 URI 的 ServicePoint.ConnectionLimit。  使用 ConnectionPolicy.MaxConnectionLimit 可以更改默认值（设置为 50）。
 * 已弃用 IPartitionResolver 及其实现。  对 IPartitionResolver 的支持现已过时。 建议使用分区集合来提高存储和吞吐量。
 

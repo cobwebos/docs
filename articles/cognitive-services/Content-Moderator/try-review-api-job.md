@@ -1,21 +1,21 @@
 ---
 title: 使用 API 控制台运行内容审查作业 - 内容审查器
 titlesuffix: Azure Cognitive Services
-description: 了解如何运行 API 控制台中的内容审查作业。
+description: 使用审阅 API 的 Job 操作，可以在 Azure 内容审查器中对图像或文本内容启动端到端内容审查作业。
 services: cognitive-services
 author: sanjeev3
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: content-moderator
 ms.topic: conceptual
-ms.date: 08/03/2017
+ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: 240b26cd86a6985825e3145c5bc43ef31524d7b7
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 4d1f96cbf7a94c59476f077cc4e72a26ee9c8296
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47227091"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54259103"
 ---
 # <a name="start-a-moderation-job-from-the-api-console"></a>启动 API 控制台中的审查作业
 
@@ -33,7 +33,7 @@ ms.locfileid: "47227091"
 若要使用联机控制台试用 API，需要在控制台中输入下面一些值：
     
 - `teamName`：使用“审阅”工具的“凭据”屏幕中的 `Id` 字段。 
-- `ContentId`：此字符串传递到 API，并通过回叫返回。 ContentId 用于将内部标识符或元数据与审查作业结果相关联。- `Workflowname`：在上一部分中[创建的工作流](Review-Tool-User-Guide/Workflows.md)的名称。
+- `ContentId`：此字符串将传递给 API，并通过回调返回。 **ContentId** 在关联内部标识符或元数据与审查作业结果时十分有用。- `Workflowname`：在上一部分中[创建的工作流](Review-Tool-User-Guide/Workflows.md)的名称。
 - `Ocp-Apim-Subscription-Key`：位于“设置”选项卡中。有关详细信息，请参阅[概述](overview.md)。
 
 在“凭据”窗口中访问 API 控制台。

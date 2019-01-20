@@ -7,20 +7,19 @@ author: Juliako
 writer: juliako
 manager: femila
 editor: ''
-ms.assetid: 097ab5e5-24e1-4e8e-b112-be74172c2701
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/24/2018
+ms.date: 01/16/2019
 ms.author: juliako
-ms.openlocfilehash: 06f219b9cf7d17e80699aebc1082b14e2de45c8b
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 6b4acf2a8effaef6d9572a4ca36b29af19f2970d
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50240216"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54359981"
 ---
 # <a name="streaming-endpoints-overview"></a>流式处理终结点概述 
 
@@ -28,20 +27,26 @@ ms.locfileid: "50240216"
 
 在 Microsoft Azure 媒体服务 (AMS)中，“流式处理终结点”表示一个流服务，该服务可以直接将内容分发给客户端播放器应用程序，也可以传递给内容分发网络 (CDN) 以进一步分发。 媒体服务还提供无缝 Azure CDN 集成。 StreamingEndpoint 服务的出站流可以是媒体服务帐户中的实时流、点播视频或渐进式下载的资产。 每个 Azure 媒体服务帐户均包括一个默认的流式处理终结点。 可以在帐户下创建其他流式处理终结点。 有两个版本的流式处理终结点：1.0 和 2.0。 从 2017 年 1 月 10 日开始，任何新创建的 AMS 帐户将包括版本 2.0 的**默认**流式处理终结点。 可添加到此帐户的其他流式处理终结点也是版本 2.0。 此更改不会影响现有帐户；现有流式处理终结点将是版本 1.0，可以升级到版本 2.0。 此更改将导致行为、计费和功能更改（有关详细信息，请参阅下面所述的**流式处理类型和版本**部分）。
 
-此外，从 2.15 版本（已于 2017 年 1 月发布）开始，Azure 媒体服务对于流式处理终结点实体添加了以下属性：**CdnProvider**、**CdnProfile**、**FreeTrialEndTime**、**StreamingEndpointVersion**。 有关这些属性的详细概述，请参阅[此文](https://docs.microsoft.com/rest/api/media/operations/streamingendpoint)。 
+Azure 媒体服务将以下属性添加到流式处理终结点实体：**CdnProvider**、**CdnProfile**、**FreeTrialEndTime**、**StreamingEndpointVersion**。 有关这些属性的详细概述，请参阅[本主题](https://docs.microsoft.com/rest/api/media/operations/streamingendpoint)。 
 
 用户创建 Azure 媒体服务帐户时，将为用户创建一个处于“已停止”状态的默认标准流式处理终结点。 无法删除默认流式处理终结点。 根据目标区域中的 Azure CDN 可用性，默认情况下新创建的默认流式处理终结点还提供“StandardVerizon”CDN 提供程序集成。 
-
->[!NOTE]
->可以在启动流式处理终结点之前禁用 Azure CDN 集成。
+                
+> [!NOTE]
+> 可以在启动流式处理终结点之前禁用 Azure CDN 集成。 无论你是否启用 CDN，`hostname` 和流式处理 URL 都保持不变。
 
 本主题概述了流式处理终结点提供的主要功能。
+
+## <a name="naming-conventions"></a>命名约定
+
+对于默认终结点：`{AccountName}.streaming.mediaservices.windows.net`
+
+对于任何其他终结点：`{EndpointName}-{AccountName}.streaming.mediaservices.windows.net`
 
 ## <a name="streaming-types-and-versions"></a>流式处理类型和版本
 
 ### <a name="standardpremium-types-version-20"></a>标准/高级类型（版本 2.0）
 
-从 2017 年 1 月发布的媒体服务开始，可使用两种流式处理类型：**标准**和**高级**。 这些类型属于流式处理终结点版本“2.0”。
+从 2017 年 1 月发布的媒体服务开始，可使用两种流式处理类型：标准和高级。 这些类型属于流式处理终结点版本“2.0”。
 
 类型|Description
 ---|---
@@ -75,7 +80,7 @@ ms.locfileid: "50240216"
 
 ### <a name="features"></a>功能
 
-功能|标准|高级
+Feature|标准|高级
 ---|---|---
 前 15 天免费| 是 |否
 Throughput |未使用 Azure CDN 时，最多可达 600 Mbps。 使用 CDN 进行缩放。|每个流单元 (SU) 200 Mbps。 使用 CDN 进行缩放。

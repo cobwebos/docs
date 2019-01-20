@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 08/30/2018
 ms.author: mikeray
-ms.openlocfilehash: 42a4ea1e4dc352e56fbd65f69c9ed71e3b0c1038
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.openlocfilehash: 65ccf45ea8ea1f8f553be0b2c599f5c1433fc3e8
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "51238069"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54359708"
 ---
 # <a name="configure-always-on-availability-group-in-azure-vm-manually"></a>在 Azure VM 中手动配置 Always On 可用性组
 
@@ -51,6 +51,9 @@ ms.locfileid: "51238069"
 
 
 开始本教程之前，需要[完成先决条件以便在 Azure 虚拟机中创建 Always On 可用性组](virtual-machines-windows-portal-sql-availability-group-prereq.md)。 如果已完成这些先决条件，可跳到[创建群集](#CreateCluster)。
+
+  >[!NOTE]
+  > 本教程中的许多步骤都可以使用 Azure 快速入门模板自动执行。 有关详细信息，请参阅[使用 Azure 快速入门模板在 SQL Server VM 上为 Always On 可用性组创建 WSFC、侦听器和配置 ILB](virtual-machines-windows-sql-availability-group-quickstart-template.md)。
 
 
 <!--**Procedure**: *This is the first “step”. Make titles H2’s and short and clear – H2’s appear in the right pane on the web page and are important for navigation.*-->
@@ -296,7 +299,7 @@ Repeat these steps on the second SQL Server.
 
     ![新建可用性组向导，选择初始数据同步](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/66-endpoint.png)
 
-8. 在“选择初始数据同步”页上，选择“完全同步”，并指定一个共享网络位置。 具体位置，使用[创建的备份共享](#backupshare)。 在本示例中为 **\\\\\<第一个 SQL Server\>\Backup\\**。 单击“下一步”。
+8. 在“选择初始数据同步”页上，选择“完全同步”，并指定一个共享网络位置。 具体位置，使用[创建的备份共享](#backupshare)。 在本示例中为 **\\\\\<第一个 SQL Server\>\Backup\\\**。 单击“下一步”。
 
    >[!NOTE]
    >完全同步对 SQL Server 第一个实例上的数据库进行完整备份，并将其还原到第二个实例。 对于大型数据库，不建议使用完全同步，因为这可能要花费很长时间。 可以通过使用 `NO RECOVERY` 对数据库进行手动备份和还原来降低该时间。 如果配置可用性组之前，已在 SQL Server 上使用 `NO RECOVERY` 对数据库进行还原，请选择“仅联接”。 若想在配置可用性组之后进行备份，请选择“跳过初始数据同步”。

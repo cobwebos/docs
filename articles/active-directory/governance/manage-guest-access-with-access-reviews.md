@@ -15,12 +15,12 @@ ms.component: compliance
 ms.date: 12/13/2018
 ms.author: rolyon
 ms.reviewer: mwahl
-ms.openlocfilehash: d3cc5f5a7642ba827a46ab5cbc2b0da2cda38731
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 4d1a9696587ae128b35970414c6c8753179c3f81
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53385119"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54332568"
 ---
 # <a name="manage-guest-access-with-azure-ad-access-reviews"></a>使用 Azure AD 访问评审管理来宾访问权限
 
@@ -43,11 +43,11 @@ ms.locfileid: "53385119"
 
 ## <a name="create-and-perform-an-access-review-for-guests"></a>创建和执行来宾的访问评审
 
-首先，使访问评审显示在审阅者的访问面板上。 以全局管理员或用户帐户管理员身份，转到[访问评审页面](https://portal.azure.com/#blade/Microsoft_AAD_ERM/DashboardBlade/)。 
+首先，作为全局管理员或用户帐户管理员，请转到[访问评审页](https://portal.azure.com/#blade/Microsoft_AAD_ERM/DashboardBlade/)，确保访问评审已为你的组织准备就绪。 
 
 Azure AD 支持采用多种方案评审来宾用户。
 
-选择以下方案之一：
+你可以评审以下任何一项：
 
  - Azure AD 中具有一个或多个来宾成员的组。
  - 连接到 Azure AD（已为其分配一个或多个来宾用户）的应用程序。 
@@ -66,7 +66,7 @@ Azure AD 支持采用多种方案评审来宾用户。
 
 3. 审阅者提供输入后，将停止访问评审并应用更改。 有关详细信息，请参阅[完成访问评审](complete-access-review.md)。
 
-4. 除了表明自己不需要持续访问权限的用户以外，还可以删除未做出答复的用户。 未做出答复的用户可能不会再收到电子邮件。
+4. 除了表明自己不需要持续访问权限的这些用户以外，还可以删除未做出答复的用户。 未做出答复的用户可能不会再收到电子邮件。
 
 5. 如果未将组用于访问管理，还可以删除未选择参与评审的用户，因为他们未接受邀请。 未接受邀请可能表示受邀用户的电子邮件地址拼写错误。 如果某个组被用作通讯组，则可能没有选择某些来宾用户让其参与，因为他们是联系人对象。
 
@@ -86,7 +86,7 @@ Azure AD 支持采用多种方案评审来宾用户。
 
 1. 若要针对应用程序启动访问评审，选择仅包括来宾的评审，然后，这些用户会评审自己的访问权限。 有关详细信息，请参阅[创建访问评审](create-access-review.md)。
 
-2. 让每个来宾自我评审他们对应用程序的访问权限。 默认情况下，接受邀请的每个来宾会收到来自 Azure AD 的电子邮件，其中包含组织访问面板中访问评审的链接。 Azure AD 为来宾提供了有关[如何评审其访问权限](perform-access-review.md)的说明。
+2. 让每个来宾自我评审他们对应用程序的访问权限。 默认情况下，接受邀请的每个来宾会收到来自 Azure AD 的电子邮件。 该电子邮件中包含指向组织访问面板中访问评审的链接。 Azure AD 为来宾提供了有关[如何评审其访问权限](perform-access-review.md)的说明。
 
 3. 审阅者提供输入后，将停止访问评审并应用更改。 有关详细信息，请参阅[完成访问评审](complete-access-review.md)。
 
@@ -109,7 +109,7 @@ Azure AD 支持采用多种方案评审来宾用户。
 > [!NOTE]
 > 早期版本的 Azure 门户不允许 UserType 为“来宾”的用户具有管理访问权限。 在某些情况下，目录中的管理员可能已使用 PowerShell 将来宾的 UserType 值更改为“成员”。 如果之前目录中已发生此更改，则之前的查询可能不包括以前具有管理访问权限的所有来宾用户。 在这种情况下，需要更改来宾的 UserType 或手动将来宾包含在组成员身份中。
 
-1. 如果尚不存在适当的组，请在 Azure AD 中创建一个安全组并在其中以成员的形式包含来宾。 例如，可以创建一个组并在其中包含手动维护的来宾成员身份。 或者，可以针对 Contoso 租户中 UserType 属性值为“来宾”的用户，以类似于“Guests of Contoso”的名称创建一个动态组。  为提高效率，请确保组主要是来宾 - 不要选择包含不需要被评审的用户的组。
+1. 如果尚不存在适当的组，请在 Azure AD 中创建一个安全组并在其中以成员的形式包含来宾。 例如，可以创建一个组并在其中包含手动维护的来宾成员身份。 或者，可以针对 Contoso 租户中 UserType 属性值为“来宾”的用户，以类似于“Guests of Contoso”的名称创建一个动态组。  为了提高效率，请确保该组主要是来宾 - 不要选择包含成员用户的组，因为成员用户不需要进行评审。  另外，请记住，作为组成员的来宾用户可以看到该组的其他成员。
 
 2. 若要针对该组启动访问评审，请将成员自己选择为评审者。 有关详细信息，请参阅[创建访问评审](create-access-review.md)。
 

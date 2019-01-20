@@ -12,15 +12,15 @@ ms.devlang: dotNet
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 09/18/2018
+ms.date: 01/11/2019
 ms.author: ryanwi
 ms.custom: mvc, devcenter
-ms.openlocfilehash: af733b75780787f07ec28ff45bda6810c3d96baa
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.openlocfilehash: 70620b5ec57f6bf4403ac959c4c69026ae80b887
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52888114"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54261394"
 ---
 # <a name="tutorial-scale-an-application-running-in-service-fabric-mesh"></a>教程：缩放在 Service Fabric 网格中运行的应用程序
 
@@ -53,7 +53,7 @@ ms.locfileid: "52888114"
 
 将应用程序部署到 Service Fabric 网格的一个主要优势是能够轻松地对服务进行横向缩放。此功能应该用于处理服务上的各种数量的负载，或者用于改进可用性。
 
-本教程使用“待办事项列表”示例作为示例，该示例[以前已部署](service-fabric-mesh-tutorial-template-deploy-app.md)，现在应该处于运行状态。 应用程序有两项服务：WebFrontEnd 和 ToDoService。 每项服务在一开始部署时，副本计数为 1。  若要查看 WebFrontEnd 服务的正在运行的副本数，请运行以下命令：
+本教程使用“待办事项列表”示例作为示例，该示例[以前已部署](service-fabric-mesh-tutorial-template-deploy-app.md)，现在应该处于运行状态。 此应用程序有两个服务：WebFrontEnd 和 ToDoService。 每项服务在一开始部署时，副本计数为 1。  若要查看 WebFrontEnd 服务的正在运行的副本数，请运行以下命令：
 
 ```azurecli
 az mesh service show --resource-group myResourceGroup --name WebFrontEnd --app-name todolistapp --query "replicaCount"

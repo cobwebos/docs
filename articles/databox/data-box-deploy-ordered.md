@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 01/09/2019
+ms.date: 01/16/2019
 ms.author: alkohli
-ms.openlocfilehash: 00c001b5c0c2c3dab86477fca798ec651f7b6c93
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 5ce8217629cff702ecd3ec274d77918e54efacc6
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54189960"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54359113"
 ---
 # <a name="tutorial-order-azure-data-box"></a>教程：订购 Azure Data Box
 
@@ -22,7 +22,7 @@ Azure Data Box 是一个混合解决方案，可用于快速、方便、可靠�
 本教程介绍如何订购 Azure Data Box。 本教程的介绍内容包括：
 
 > [!div class="checklist"]
-> * 注册 Data Box
+> * 部署 Data Box 的先决条件
 > * 订购 Data Box
 > * 跟踪订单
 > * 取消订单
@@ -63,7 +63,7 @@ Azure Data Box 是一个混合解决方案，可用于快速、方便、可靠�
 4. 检查 Data Box 服务是否在你的区域可用。 输入或选择以下信息，然后单击“应用”。 
     |设置  |值  |
     |---------|---------|
-    |订阅     | 针对 Data Box 服务选择“EA”、“CSP”或“即用即付”订阅。 <br> 订阅链接到计费帐户。       |
+    |订阅     | 对于 Data Box 服务，选择一个 EA、CSP 或 Azure 赞助订阅。 <br> 订阅链接到计费帐户。       |
     |传输类型     | 选择“导入到 Azure”。        |
     |来源国家/地区     |   选择数据当前所在的国家/地区。         |
     |目标 Azure 区域     |     选择要在其中传输数据的 Azure 区域。        |
@@ -79,7 +79,7 @@ Azure Data Box 是一个混合解决方案，可用于快速、方便、可靠�
     |名称     |  提供友好名称用于跟踪订单。 <br> 名称可以为 3 到 24 个字符，包括字母、数字和连字符。 <br> 名称必须以字母或数字开头和结尾。      |
     |资源组     |   使用现有资源组，或创建新的资源组。 <br> 资源组是可以统一管理或部署的资源的逻辑容器。         |
     |目标 Azure 区域     | 选择存储帐户的区域。 <br> 有关详细信息，请转到[适用区域](data-box-overview.md#region-availability)。        |
-    |存储帐户     | 根据指定的 Azure 区域，从现有存储帐户的筛选列表中选择一个或多个存储帐户。 Data Box 可以与最多 10 个存储帐户链接。 <br> 也可以创建新的**常规用途 v1**、**常规用途 v2** 或 **Blob 存储帐户**。        |
+    |存储帐户     | 根据指定的 Azure 区域，从现有存储帐户的筛选列表中选择一个或多个存储帐户。 Data Box 可以与最多 10 个存储帐户链接。 <br> 也可以创建新的**常规用途 v1**、**常规用途 v2** 或 **Blob 存储帐户**。 无法使用已配置了规则的存储帐户。 存储帐户必须在防火墙和虚拟网络部分中**允许来自所有网络的访问**。|
     
 7. 在“寄送地址”中，提供你的姓名、公司的名称和邮政地址，以及有效的电话号码。 单击“验证地址”。 服务将验证寄送地址，以确定服务是否在该区域可用。 如果服务在指定的寄送地址可用，则会将结果通知给你。 单击“下一步”。
 
@@ -94,7 +94,7 @@ Azure Data Box 是一个混合解决方案，可用于快速、方便、可靠�
 
 ## <a name="track-the-order"></a>跟踪订单
 
-下单后，可以从 Azure 门户跟踪订单状态。 转到自己的订单，然后转到“概况”查看状态。 门户中会显示订单处于“已订购”状态。
+下单后，可以从 Azure 门户跟踪订单状态。 转到你的 Data Box 订单，然后转到“概述”来查看状态。 门户中会显示订单处于“已订购”状态。
 
 如果设备缺货，你会收到通知。 如果设备有货，Microsoft 会确定要发货的设备，并准备发货。 在设备准备期间，会执行以下操作：
 

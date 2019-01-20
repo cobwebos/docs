@@ -10,12 +10,12 @@ ms.component: manage
 ms.date: 04/11/2018
 ms.author: kavithaj
 ms.reviewer: igorstan
-ms.openlocfilehash: 199095c3cffc8df7f9755f1f2c4bb5a1acba3748
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: d35ac7cac5c14a7bd57913046e8f4c09a22f177a
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51260374"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54267430"
 ---
 # <a name="auditing-in-azure-sql-data-warehouse"></a>Azure SQL 数据仓库中的审核
 
@@ -107,7 +107,7 @@ SQL 数据仓库审核允许用户将数据库中的事件记录到 Azure 存储
 
 5. 单击“确定”按钮保存存储详细信息配置。
 6. 在“按事件记录日志”下，单击“成功”和“失败”以记录所有事件，或者选择单个事件类别。
-7. 如果要为某个数据库配置审核，可能需要更改客户端的连接字符串，以确保正确捕获数据审核。 对于下层客户端连接，请查看[修改连接字符串中的服务器 FDQN](sql-data-warehouse-auditing-downlevel-clients.md) 主题。
+7. 如果要为某个数据库配置审核，可能需要更改客户端的连接字符串，以确保正确捕获数据审核。 对于下层客户端连接，请查看[修改连接字符串中的服务器 FQDN](sql-data-warehouse-auditing-downlevel-clients.md) 主题。
 8. 单击“确定”。
 
 ## <a id="subheading-3"></a>分析审核日志和报告
@@ -196,7 +196,7 @@ SQL 数据仓库审核允许用户将数据库中的事件记录到 Azure 存储
 * JDBC（JDBC 虽然支持 TDS 7.4，但不完全支持 TDS 重定向功能）
 * Tedious（适用于 Node.JS）
 
-**注释：** 前面的服务器 FDQN 修改可能还可用于应用 SQL Server 级别的审核策略，而无需在每个数据库中进行配置（临时缓解）。     
+**注释：** 前面的服务器 FQDN 修改可能还可用于应用 SQL Server 级别的审核策略，而无需在每个数据库中进行配置（临时缓解）。     
 
 
 

@@ -1,23 +1,23 @@
 ---
 title: 图像审查 - 内容审查器
 titlesuffix: Azure Cognitive Services
-description: 使用图像审查来调整不适当的图像
+description: 使用内容审查器的机器辅助图像审查和人工循环评审工具来调整具有成人和猥亵内容的图像。
 services: cognitive-services
 author: sanjeev3
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: content-moderator
 ms.topic: conceptual
-ms.date: 01/20/2018
+ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: 044aa9a127aa8130340719147314961ddb38167a
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.openlocfilehash: 952777af0a233f0233f14c749fe0ebfdeaa8344a
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51852701"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54262925"
 ---
-# <a name="image-moderation"></a>图像审查
+# <a name="learn-image-moderation-concepts"></a>了解图像审查概念
 
 使用内容审查器的机器辅助图像审查和[人工循环评审工具](Review-Tool-User-Guide/human-in-the-loop.md)来调整具有成人和猥亵内容的图像。 扫描图像以查找文本内容并提取该文本，以及检测人脸。 可以将图像与自定义列表进行匹配，并执行进一步操作。
 

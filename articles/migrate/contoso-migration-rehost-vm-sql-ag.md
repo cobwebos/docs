@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/11/2018
 ms.author: raynew
-ms.openlocfilehash: 5ff8f5c51f17375208fdb32e521bfc85ee3f0c77
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: c1fdd09023c07808226c95ed82d0c22e09d09ec4
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52880210"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54267379"
 ---
 # <a name="contoso-migration-rehost-an-on-premises-app-on-azure-vms-and-sql-server-alwayson-availability-group"></a>Contoso 迁移：在 Azure VM 和 SQL Server AlwaysOn 可用性组上重新托管本地应用
 
@@ -95,7 +95,7 @@ Contoso 云团队制定了本次迁移的目标。 这些目标用于确定最�
 
 ### <a name="database-considerations"></a>数据库注意事项
 
-在解决方案设计过程中，Contoso 对 Azure SQL 数据库和 SQL Server 做了功能比较。 以下考虑因素使得他们决定使用运行 SQL Server 的 Azure Iaas VM：
+在解决方案设计过程中，Contoso 对 Azure SQL 数据库和 SQL Server 做了功能比较。 以下考虑因素使得他们决定使用运行 SQL Server 的 Azure IaaS VM：
 
  - 如果 Contoso 需要自定义操作系统或数据库服务器，或者需要在同一个 VM 上共置和运行第三方应用，则使用运行 SQL Server 的 Azure VM 似乎是最佳解决方案。
  - Contoso 可以使用数据迁移助手轻松评估和迁移到 Azure SQL 数据库。
@@ -107,7 +107,7 @@ Contoso 通过将利弊清单放置在一起来评估其建议的设计。
 
 **注意事项** | **详细信息**
 --- | ---
-**优点** | 无需更改 WEBVM 即可将它移到 Azure，因此迁移过程非常简单。<br/><br/> SQL Server 层将在 SQL Server 2017 和 Windows Server 2016 上运行。 因此，他们淘汰了当前的 Windows Server 2008 R2 操作系统，而运行 SQL Server 2017 可以支持 Contoso 的技术要求和目标。 从 SQL Server 2008 R2 迁移时，IT 可提供 100% 的兼容性。<br/><br/> Contoso 可以通过 Azure 混合权益利用其在软件保障方面的投资。<br/><br/> Auzre 中的高可用性 SQL Server 部署提供容错能力，使应用数据层不再是单一故障转移点。
+**优点** | 无需更改 WEBVM 即可将它移到 Azure，因此迁移过程非常简单。<br/><br/> SQL Server 层将在 SQL Server 2017 和 Windows Server 2016 上运行。 因此，他们淘汰了当前的 Windows Server 2008 R2 操作系统，而运行 SQL Server 2017 可以支持 Contoso 的技术要求和目标。 从 SQL Server 2008 R2 迁移时，IT 可提供 100% 的兼容性。<br/><br/> Contoso 可以通过 Azure 混合权益利用其在软件保障方面的投资。<br/><br/> Azure 中的高可用性 SQL Server 部署提供容错能力，使应用数据层不再是单一故障转移点。
 **缺点** | WEBVM 正在运行 Windows Server 2008 R2。 Azure 支持特定角色的操作系统（2018 年 7 月）。 [了解详细信息](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines)。<br/><br/> 应用的 Web 层保持为单一故障转移点。</br><br/> Contoso 需要继续支持用作 Azure VM 的 Web 层，而不是迁移到 Azure 应用服务等托管服务。<br/><br/> 使用所选的解决方案时，Contoso 需要继续管理两个 SQL Server VM，而不能迁移到 Azure SQL 数据库托管实例等托管平台。 此外，凭借软件保障，Contoso 可在 Azure SQL 数据库托管实例上以折扣价格交换现有的许可证。
 
 

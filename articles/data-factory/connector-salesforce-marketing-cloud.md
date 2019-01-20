@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 01/09/2019
 ms.author: jingwang
-ms.openlocfilehash: 6b45284f8fe4bd7fb45e89eeecf13ae7b9b2969b
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: de472cd25997b0c48f258927b2617c2399b2bb21
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54016675"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54353356"
 ---
 # <a name="copy-data-from-salesforce-marketing-cloud-using-azure-data-factory-preview"></a>使用 Azure 数据工厂（预览版）从 Salesforce Marketing Cloud 复制数据
 
@@ -31,6 +31,9 @@ ms.locfileid: "54016675"
 可以将数据从 Salesforce Marketing Cloud 复制到任何支持的接收器数据存储。 有关复制活动支持作为源/接收器的数据存储列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)表。
 
 Azure 数据工厂提供内置的驱动程序用于启用连接，因此无需使用此连接器手动安装任何驱动程序。
+
+>[!NOTE]
+>此连接器不支持检索自定义对象或自定义数据扩展。
 
 ## <a name="getting-started"></a>入门
 
@@ -46,7 +49,7 @@ Salesforce Marketing Cloud 链接的服务支持以下属性：
 |:--- |:--- |:--- |
 | type | type 属性必须设置为：**SalesforceMarketingCloud** | 是 |
 | clientId | 与 Salesforce Marketing Cloud 应用程序关联的客户端 ID。  | 是 |
-| clientSecret | 与 Salesforce Marketing Cloud 应用程序关联的客户端密码。 可以选择将此字段标记为 SecureString 以将其安全地存储在 ADF，或在 Azure Key Vault 中存储密码，并允许在此处 ADF 复制活动请求时执行数据复制 - 在[在 Key Vault 中存储凭据](store-credentials-in-key-vault.md)中了解详细信息。 | 是 |
+| clientSecret | 与 Salesforce Marketing Cloud 应用程序关联的客户端密码。 可选择将此字段标记为 SecureString，将其安全地存储在 ADF 中，或在 Azure Key Vault 中存储密码，并允许 ADF 复制活动在执行数据复制时从此处拉取（请参阅[在 Key Vault 中存储凭据](store-credentials-in-key-vault.md)了解详细信息）。 | 是 |
 | useEncryptedEndpoints | 指定是否使用 HTTPS 加密数据源终结点。 默认值为 true。  | 否 |
 | useHostVerification | 指定通过 SSL 连接时是否需要服务器证书中的主机名匹配服务器的主机名。 默认值为 true。  | 否 |
 | usePeerVerification | 指定通过 SSL 连接时是否要验证服务器的标识。 默认值为 true。  | 否 |

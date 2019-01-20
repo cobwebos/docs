@@ -6,14 +6,14 @@ author: jamesbak
 ms.component: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
-ms.date: 12/06/2018
+ms.date: 01/15/2019
 ms.author: jamesbak
-ms.openlocfilehash: 95aff0bb37a91c1e2ac117f2f3b90c726e9f88d8
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 791598da593c25a135c05d72b6846053af3ff344
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53792879"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54353849"
 ---
 # <a name="quickstart-set-up-clusters-in-hdinsight"></a>快速入门：在 HDInsight 中设置群集
 
@@ -25,6 +25,10 @@ Hadoop 群集由用于对任务进行分布式处理的多个虚拟机（节点�
 >创建群集后便开始 HDInsight 群集计费，删除群集后停止计费。 群集以每分钟按比例收费，因此无需再使用群集时，应始终将其删除。 了解如何[删除群集](../../hdinsight/hdinsight-delete-cluster.md)。
 
 具有 Data Lake Storage Gen2 功能的存储帐户在此快速入门中用作数据层。 借助其分层命名空间服务和 [Hadoop 驱动程序](data-lake-storage-abfs-driver.md)，Data Lake Storage Gen2 针对分布式处理和分析进行优化。 即使在删除了 HDInsight 群集后，存储在已启用 Data Lake Storage Gen2 的存储帐户中的数据仍会存在。
+
+## <a name="prerequisites"></a>先决条件
+
+- 你需要创建一个用户分配的托管标识，然后将“Blob 存储参与者”角色分配给该标识。 请参阅[使用 Azure 门户创建、列出、删除用户分配的托管标识或为其分配角色](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal)。
 
 ## <a name="cluster-setup-methods"></a>群集设置方法
 
@@ -104,8 +108,7 @@ Azure HDInsight 目前提供以下几种群集类型，每种类型都具有一�
 
 ![群集存储设置：与 HDFS 兼容的存储终结点](media/data-lake-storage-quickstart-create-connect-hdi-cluster/hdinsight-cluster-creation-storage2.png)
 
-> [!IMPORTANT]
-> 确保“禁用 Data Lake Store 访问”。 此设置指的是旧版 Data Lake Store 功能，为了 Data Lake Storage 功能正常运行，需要禁用此设置。
+在“用户分配的托管标识”中，请确保选择作为本文先决条件创建的用户管理用户分配的托管标识。
 
 [!INCLUDE [secure-transfer-enabled-storage-account](../../../includes/hdinsight-secure-transfer.md)]
 

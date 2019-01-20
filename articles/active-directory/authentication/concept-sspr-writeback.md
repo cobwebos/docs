@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.component: authentication
 ms.topic: conceptual
-ms.date: 10/04/2018
+ms.date: 01/16/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 4d311794c1c0f2dd6b9a0b2a44983b47bfeef362
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 06a3ac4520a40369c095e57f8e92978fdb280b51
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54040534"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54359574"
 ---
 # <a name="what-is-password-writeback"></a>什么是密码写回？
 
@@ -30,7 +30,7 @@ ms.locfileid: "54040534"
 > [!WARNING]
 > 当 [Azure访问控制服务 (ACS) 于 2018 年 11 月 7 日停用时](../develop/active-directory-acs-migration.md)，密码写回将不再用于使用 Azure AD Connect 版本 1.0.8641.0 及更早版本的客户。 届时，Azure AD Connect 版本 1.0.8641.0 及更早版本将不再允许进行密码写回，因为它们依赖于 ACS 来实现该功能。
 >
-> 要避免服务中断，请从以前版本的 Azure AD Connect 升级到较新版本，请参阅文章 [Azure AD Connect：从先前版本升级到最新版本](../hybrid/how-to-upgrade-previous-version.md)
+> 要避免服务中断，请从以前版本的 Azure AD Connect 升级到更新版本，请参阅文章 [Azure AD Connect：从先前版本升级到最新版本](../hybrid/how-to-upgrade-previous-version.md)
 >
 
 密码写回提供：
@@ -42,7 +42,7 @@ ms.locfileid: "54040534"
 * **不需要任何入站防火墙规则**：密码写回服务使用 Azure 服务总线中继作为基础信道。 所有通信都是通过端口 443 进行的出站通信。
 
 > [!Note]
-> 密码写回不适用于本地 Active Directory 中受保护组内的用户帐户。 有关受保护组的详细信息，请参阅 [Active Directory 中的受保护帐户和组](https://technet.microsoft.com/library/dn535499.aspx)。
+> 密码写回不适用于本地 Active Directory 中受保护组内的用户帐户。 本地 AD 中受保护组内的管理员帐户可与密码写回一起使用。 有关受保护组的详细信息，请参阅 [Active Directory 中的受保护帐户和组](https://technet.microsoft.com/library/dn535499.aspx)。
 >
 
 ## <a name="licensing-requirements-for-password-writeback"></a>密码写回的许可要求
@@ -58,6 +58,7 @@ ms.locfileid: "54040534"
 * Microsoft 365 E3 或 A3
 * Microsoft 365 E5 或 A5
 * Microsoft 365 F1
+* Microsoft 365 商业版
 
 > [!WARNING]
 > 独立 Office 365 许可计划不支持“通过本地写回实现自助密码重置/更改/解锁”，要使此功能正常工作，需要使用上述计划之一。

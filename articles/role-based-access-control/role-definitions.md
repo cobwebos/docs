@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 08/07/2018
+ms.date: 01/15/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: ''
-ms.openlocfilehash: 3d88ac7adc950e2c216824f74586ff6ef4f70712
-ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
+ms.openlocfilehash: 065695f9ce0f0d8dfbb9a43877131c8ab7fada5e
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39715764"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54354308"
 ---
 # <a name="understand-role-definitions"></a>了解角色定义
 
@@ -172,6 +172,14 @@ Bob 的权限限制为[存储 Blob 数据参与者（预览版）](built-in-role
 | [Azure for Java](/java/azure/) | 1.9.0 或更高版本 |
 | [Azure for Python](/python/azure) | 0.40.0 或更高版本 |
 | [用于 Ruby 的 Azure SDK](https://rubygems.org/gems/azure_sdk) | 0.17.1 或更高版本 |
+
+若要查看和使用 REST API 中的数据操作，必须将 **api-version** 参数设置为以下版本或更高版本：
+
+- 2018-01-01-preview
+
+Azure 门户还允许用户通过 Azure AD 预览体验浏览和管理队列和 Blob 容器的内容。 若要查看和管理队列或 Blob 容器的内容，请单击“存储帐户概述”上的“使用 Azure AD 预览版浏览数据”。
+
+![使用 Azure AD 预览版探索队列和 Blob 容器](./media/role-definitions/rbac-dataactions-browsing.png)
 
 ## <a name="actions"></a>操作
 

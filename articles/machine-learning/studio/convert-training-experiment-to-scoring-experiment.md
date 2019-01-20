@@ -1,26 +1,8 @@
 ---
-title: 为部署准备模型 - Azure 机器学习工作室 | Microsoft Docs
-description: 如何将机器学习工作室训练实验转换为预测实验，为将要部署为 Web 服务的训练模型做准备。
-services: machine-learning
-documentationcenter: ''
-author: ericlicoding
-ms.custom: seodec18
-ms.author: amlstudiodocs
-editor: cgronlun
-ms.assetid: eb943c45-541a-401d-844a-c3337de82da6
-ms.service: machine-learning
-ms.component: studio
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 03/28/2017
-ms.openlocfilehash: ef54281b91147060e9c00bcc6e45e0db0fb8933a
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
-ms.translationtype: HT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53273096"
+title:为部署准备模型 titleSuffix: Azure 机器学习工作室 description:如何将机器学习工作室训练实验转换为预测实验，为将要部署为 Web 服务的训练模型做准备。
+services: machine-learning ms.service: machine-learning ms.component: studio ms.topic: article
+
+author: ericlicoding ms.author: amlstudiodocs ms.date:03/28/2017
 ---
 # <a name="how-to-prepare-your-model-for-deployment-in-azure-machine-learning-studio"></a>如何准备在 Azure 机器学习工作室中部署的模型
 

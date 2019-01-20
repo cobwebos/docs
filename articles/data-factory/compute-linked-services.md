@@ -9,14 +9,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 07/31/2018
+ms.date: 01/15/2019
 ms.author: douglasl
-ms.openlocfilehash: 110005469d5ff42af10b29fcee97c2f130ecdc2d
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 5e620b03f5588369fc73a62f2019d857766596fd
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52873813"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54321936"
 ---
 # <a name="compute-environments-supported-by-azure-data-factory"></a>Azure 数据工厂支持的计算环境
 本文介绍可用于处理或转换数据的不同计算环境。 同时还详细介绍了配置将这些计算环境链接到 Azure 数据工厂的链接服务时，数据工厂所支持的不同配置（按需和自带）。
@@ -34,11 +34,11 @@ ms.locfileid: "52873813"
 
 >  
 
-## <a name="on-demand-compute-environment"></a>按需计算环境
+## <a name="on-demand-hdinsight-compute-environment"></a>按需 HDInsight 计算环境
 在此类型的配置中，计算环境由 Azure 数据工厂服务完全管理。 作业提交到进程数据前，数据工厂服务会自动创建计算环境，作业完成后则自动将其删除。 可以为按需计算环境创建并配置链接服务，以及控制作业执行、群集管理和引导操作的粒度设置。
 
 > [!NOTE]
-> 按需配置目前仅支持 Azure HDInsight 群集。
+> 按需配置目前仅支持 Azure HDInsight 群集。 Azure Databricks 还支持使用作业群集的按需作业，有关详细信息，请参阅 [Azure Databricks 链接服务](#azure-databricks-linked-service)。
 
 ## <a name="azure-hdinsight-on-demand-linked-service"></a>Azure HDInsight 按需链接服务
 Azure 数据工厂服务可自动创建按需 HDInsight 群集，以处理数据。 群集创建在与该群集相关联的存储帐户（JSON 中的 linkedServiceName 属性）所在的同一区域中。 存储帐户必须是通用的标准 Azure 存储帐户。 
@@ -48,7 +48,7 @@ Azure 数据工厂服务可自动创建按需 HDInsight 群集，以处理数据
 * 按需 HDInsight 群集在 Azure 订阅下创建。 当群集启动并运行时，你可以在 Azure 门户中查看群集。 
 * 在按需 HDInsight 群集上运行的作业日志将复制到与 HDInsight 群集相关联的存储帐户。 在链接的服务定义中定义的 clusterUserName、clusterPassword、clusterSshUserName、clusterSshPassword 用于登录到群集，以便在群集的生命周期内进行深入故障排除。 
 * 仅对 HDInsight 群集启动并运行作业的时间进行收费。
-* Azure HDInsight 按需链接服务现在支持脚本操作。  
+* 可以对 Azure HDInsight 按需链接服务使用**脚本操作**。  
 
 > [!IMPORTANT]
 > 按需预配 Azure HDInsight 群集通常需要 **20 分钟**或更长时间。
@@ -103,7 +103,7 @@ Azure 数据工厂服务可自动创建按需 HDInsight 群集，以处理数据
 | linkedServiceName            | 由按需群集用于存储和处理数据的 Azure 存储链接服务。 HDInsight 群集在创建时与此 Azure 存储帐户位于同一区域。 Azure HDInsight 会限制可在其支持的每个 Azure 区域中使用的核心总数。 确保在 Azure 区域中有足够的内核配额来满足所需的 clusterSize。 有关详细信息，请参阅[使用 Hadoop、Spark、Kafka 等在 HDInsight 中设置群集](../hdinsight/hdinsight-hadoop-provision-linux-clusters.md)<p>目前，无法创建使用 Azure Data Lake Store 作为存储的按需 HDInsight 群集。 如果想要存储在 Azure Data Lake Store 中处理的来自 HDInsight 的结果数据，请使用复制活动将数据从 Azure Blob 存储复制到 Azure Data Lake Store。 </p> | 是      |
 | clusterResourceGroup         | 在此资源组中创建 HDInsight 群集。 | 是      |
 | timetolive                   | 按需 HDInsight 群集允许的空闲时间。 指定当活动运行完成后，如果群集中没有其他的活动作业，按需 HDInsight 群集保持活动状态的时间。 允许的最小值为 5 分钟 (00: 05:00)。<br/><br/>例如，如果一个活动运行需要 6 分钟，而 timetolive 的设置是 5 分钟，则当 6 分钟的活动运行处理结束后，群集将保持 5 分钟的活动状态。 如果在这 6 分钟的时间内执行其他的活动运行，则由同一群集进行处理。<br/><br/>创建按需 HDInsight 群集是一项开销非常大的操作（可能会花费一定的时间），因此请根据需要使用此设置，以通过重复使用一个按需 HDInsight 群集来提高数据工厂的性能。<br/><br/>如果将 timetolive 值设置为 0，则将会在活动运行处理完后立即删除群集。 然而，如果设置了较高的值，则群集可能会保持空闲状态，以方便你登录进行某些故障排除工作，但这可能会导致成本高昂。 因此，根据具体需要设置适当的值非常重要。<br/><br/>如果 timetolive 属性值设置适当，多个管道则可共享按需 HDInsight 群集实例。 | 是      |
-| clusterType                  | 要创建的 HDInsight 群集的类型。 允许的值是“hadoop”和“spark”。 如果未指定，默认值为 hadoop。 目前不支持启用了企业安全性套餐的群集 | 否       |
+| clusterType                  | 要创建的 HDInsight 群集的类型。 允许的值是“hadoop”和“spark”。 如果未指定，默认值为 hadoop。 无法按需创建启用企业安全性套餐的群集，请改用[现有群集/自带计算](#azure-hdinsight-linked-service)。 | 否       |
 | 版本                      | HDInsight 群集的版本。 如果未指定较高的值，则使用当前 HDInsight 定义的默认版本。 | 否       |
 | hostSubscriptionId           | 用于创建 HDInsight 群集的 Azure 订阅 ID。 如果未指定，则使用 Azure 登录上下文的订阅 ID。 | 否       |
 | clusterNamePrefix           | HDI 群集名称的前缀，将自动在群集名称末尾追加时间戳| 否       |
@@ -116,14 +116,14 @@ Azure 数据工厂服务可自动创建按需 HDInsight 群集，以处理数据
 | clusterPassword                   | 用于访问群集的安全字符串类型密码。 | 否       |
 | clusterSshUserName         | 用于 SSH 远程连接到群集节点的用户名（适用于 Linux）。 | 否       |
 | clusterSshPassword         | 用于 SSH 远程连接到群集节点的安全字符串类型密码（适用于 Linux）。 | 否       |
+| scriptActions | 在按需创建群集期间指定 [HDInsight 群集自定义](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-customize-cluster-linux)的脚本。 <br />目前，Azure 数据工厂的用户界面创作工具仅支持指定 1 个脚本操作，但你可以通过 JSON 解决此限制（在 JSON 中指定多个脚本操作）。 | 否 |
 
 
 > [!IMPORTANT]
 > HDInsight 支持多个可部署的 Hadoop 群集版本。 每个版本选项创建 Hortonworks 数据平台 (HDP) 分发的特定版本和该分发内包含的一组组件。 支持的 HDInsight 版本列表会不断更新，以提供最新的 Hadoop 生态系统组件和修补程序。 请确保始终参考[支持的 HDInsight 版本和操作系统类型](../hdinsight/hdinsight-component-versioning.md#supported-hdinsight-versions)的最新信息，以确保使用的是受支持的 HDInsight 版本。 
 >
-> 
 > [!IMPORTANT]
-> 目前，HDInsight 链接服务不支持 HBase、Interactive Query (Hive LLAP)、Storm 和启用了企业安全性（已加入域）的群集。 
+> 目前，HDInsight 链接服务不支持 HBase、交互式查询 (Hive LLAP)、Storm。 
 >
 > 
 
@@ -284,20 +284,21 @@ Azure 数据工厂服务可自动创建按需 HDInsight 群集，以处理数据
 ```
 
 ### <a name="properties"></a>属性
-| 属性          | 说明                              | 必选 |
-| ----------------- | ---------------------------------------- | -------- |
-| type              | 类型属性应设置为 **HDInsight**。 | 是      |
-| clusterUri        | HDInsight 群集的 URI。        | 是      |
+| 属性          | 说明                                                  | 必选 |
+| ----------------- | ------------------------------------------------------------ | -------- |
+| type              | 类型属性应设置为 **HDInsight**。            | 是      |
+| clusterUri        | HDInsight 群集的 URI。                            | 是      |
 | username          | 指定用于连接到现有 HDInsight 群集的用户的名称。 | 是      |
-| password          | 指定用户帐户的密码。   | 是      |
+| password          | 指定用户帐户的密码。                       | 是      |
 | linkedServiceName | Azure 存储链接服务（指 HDInsight 群集使用的 Azure Blob 存储）的名称。 <p>目前，不能为此属性指定 Azure Data Lake Store 链接服务。 如果 HDInsight 群集有权访问 Data Lake Store，则可从 Hive/Pig 脚本访问 Azure Data Lake Store 中的数据。 </p> | 是      |
-| connectVia        | 用于将活动分发到此链接服务的集成运行时。 可以使用 Azure 集成运行时或自托管集成运行时。 如果未指定，则使用默认 Azure Integration Runtime。 | 否       |
+| isEspEnabled      | 如果 HDInsight 群集启用了[企业安全性套餐](https://docs.microsoft.com/azure/hdinsight/domain-joined/apache-domain-joined-introduction)，请指定“true”。 默认值为“false”。 | 否       |
+| connectVia        | 用于将活动分发到此链接服务的集成运行时。 可以使用 Azure 集成运行时或自托管集成运行时。 如果未指定，则使用默认 Azure Integration Runtime。 <br />对于启用了企业安全性套餐 (ESP) 的 HDInsight 群集，可以使用自承载集成运行时，该运行时具有群集的视线，或者应该与 ESP HDInsight 群集部署在同一虚拟网络内。 | 否       |
 
 > [!IMPORTANT]
 > HDInsight 支持多个可部署的 Hadoop 群集版本。 每个版本选项创建 Hortonworks 数据平台 (HDP) 分发的特定版本和该分发内包含的一组组件。 支持的 HDInsight 版本列表会不断更新，以提供最新的 Hadoop 生态系统组件和修补程序。 请确保始终参考[支持的 HDInsight 版本和操作系统类型](../hdinsight/hdinsight-component-versioning.md#supported-hdinsight-versions)的最新信息，以确保使用的是受支持的 HDInsight 版本。 
 >
 > [!IMPORTANT]
-> 目前，HDInsight 链接服务不支持 HBase、Interactive Query (Hive LLAP)、Storm 和启用了企业安全性（已加入域）的群集。 
+> 目前，HDInsight 链接服务不支持 HBase、交互式查询 (Hive LLAP)、Storm。 
 >
 > 
 

@@ -10,12 +10,12 @@ ms.component: bing-visual-search
 ms.topic: tutorial
 ms.date: 07/10/2018
 ms.author: scottwhi
-ms.openlocfilehash: 23e6d044a1c08fb585e01d61a97deaf87e24cbb9
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.openlocfilehash: aa221569cec6df298db4a90560ac7ea0992dd120
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53743096"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54318722"
 ---
 # <a name="tutorial-uploading-images-to-the-bing-visual-search-api"></a>教程：将图像上传到必应视觉搜索 API
 
@@ -628,7 +628,7 @@ function addDivContent(div, tag, json) {
 
 ### <a name="products-insights"></a>Products 见解
 
-`addProducts()` 函数通过循环访问 `Products` 操作的列表，并将 `<img>` 标记添加到每个操作的外部 `<div>`，来为返回的任何购物结果创建一个链接。
+`addProducts()` 函数通过循环访问 `Products` 操作的列表，并将 `<img>` 标记添加到每个操作的外部 `<div>`，来为返回的任何产品结果创建一个链接。
 
 ```javascript
 

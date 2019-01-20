@@ -1,22 +1,22 @@
 ---
 title: 代码示例 - 内容审查器、.NET
-description: 在应用程序中使用内容审查器
+description: 通过 SDK 在 .NET 应用程序中使用内容审查器。
 services: cognitive-services
 author: sanjeev3
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: content-moderator
 ms.topic: sample
-ms.date: 01/10/2018
+ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: c5465a2de0924037eb93b9de652e93e85f166737
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 6911b9b718edfc84a7c219be448dee06f4a0f835
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47223145"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54259184"
 ---
-# <a name="net-sdk-samples"></a>.NET SDK 示例
+# <a name="content-moderator-net-sdk-samples"></a>内容审查器 .NET SDK 示例
 
 下面列出了使用用于 .NET 的 Azure 内容审查器 SDK 生成的代码示例的链接。
 
@@ -47,4 +47,4 @@ ms.locfileid: "47223145"
 - **视频审阅**：[创建人机回环视频审阅](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/blob/master/ContentModerator/VideoReviews/Program.cs)。 请参阅[快速入门](video-reviews-quickstart-dotnet.md)
 - **视频脚本审阅**：[创建人机回环视频脚本审阅](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/blob/master/ContentModerator/VideoTranscriptReviews/Program.cs)。请参阅[快速入门](video-reviews-quickstart-dotnet.md)
 
-请在 [GitHub 上的内容审查器 .NET 示例](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/ContentModerator)中查看所有的 .NET 示例。
+请参阅 [GitHub 上内容审查器 .NET 示例](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/ContentModerator)中的所有 .NET 示例。
