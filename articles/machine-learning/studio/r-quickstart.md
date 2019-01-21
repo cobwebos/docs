@@ -1,27 +1,8 @@
 ---
-title: 适用于机器学习工作室的 R 语言快速入门教程 - Azure | Microsoft Docs
-description: 通过此 R 编程教程，快速在 Azure 机器学习工作室中使用 R 语言创建预测解决方案。
-keywords: 快速入门, r 语言, r 编程语言, r 编程教程
-services: machine-learning
-documentationcenter: ''
-author: ericlicoding
-ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
-ms.author: amlstudiodocs
-editor: cgronlun
-ms.assetid: 99a3a0fd-b359-481a-b236-66868deccd96
-ms.service: machine-learning
-ms.component: studio
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 01/06/2017
-ms.openlocfilehash: ddd9c1fd8b51c6ae43878cf50ee16737511c82e9
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
-ms.translationtype: HT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53278655"
+title:R 语言的快速入门教程 titleSuffix: Azure 机器学习工作室 description:通过此 R 编程教程，快速在 Azure 机器学习工作室中使用 R 语言创建预测解决方案。
+services: machine-learning ms.service: machine-learning ms.component: studio ms.topic: article
+
+author: ericlicoding ms.author: amlstudiodocs ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro ms.date:01/06/2017
 ---
 # <a name="quickstart-tutorial-for-the-r-programming-language-for-azure-machine-learning-studio"></a>适用于 Azure 机器学习工作室的 R 编程语言快速入门教程
 
