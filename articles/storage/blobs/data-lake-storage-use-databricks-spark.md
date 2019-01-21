@@ -6,14 +6,14 @@ author: dineshmurthy
 ms.component: data-lake-storage-gen2
 ms.service: storage
 ms.topic: tutorial
-ms.date: 12/06/2018
+ms.date: 01/14/2019
 ms.author: dineshm
-ms.openlocfilehash: b0382d31f9d16228ca3447ace9c7d4f171b206f6
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: e72a4f71a42a892d14fad076b124426f0c32ac7d
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53548980"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54321800"
 ---
 # <a name="tutorial-access-data-lake-storage-gen2-preview-data-with-azure-databricks-using-spark"></a>教程：使用 Spark 通过 Azure Databricks 访问 Data Lake Storage Gen2 预览版数据
 
@@ -36,12 +36,31 @@ ms.locfileid: "53548980"
 2. 选择“下载”并将结果保存到计算机。
 3. 记下下载内容的文件名和路径；在后面的步骤中需要此信息。
 
-若要完成本教程，需要一个具有分析功能的存储帐户。 我们建议完成有关该主题的[快速入门](data-lake-storage-quickstart-create-account.md)，以一个存储帐户。 创建存储帐户后，导航到该存储帐户以检索配置设置。
+若要完成本教程，需要一个具有分析功能的存储帐户。 我们建议完成有关该主题的[快速入门](data-lake-storage-quickstart-create-account.md)，以一个存储帐户。 
 
-1. 在“设置”下，选择“访问密钥”。
-2. 选择“密钥 1”旁边的“复制”按钮以复制密钥值。
+## <a name="set-aside-storage-account-configuration"></a>保留存储帐户配置
 
-本教程后面的步骤需要此帐户名称和密钥。 打开一个文本编辑器，在其中存储此帐户名称和密钥，供将来引用。
+需要存储帐户的名称，以及文件系统终结点 URI。
+
+若要在 Azure 门户中获取存储帐户的名称，请选择“所有服务”，然后使用“存储”一词进行筛选。 然后选择“存储帐户”，找到你的存储帐户。
+
+若要获取文件系统终结点 URI，请选择“属性”，然后在属性窗格中找到“主 ADLS 文件系统终结点”字段的值。
+
+将这两个值都粘贴到文本文件中。 很快你就会需要它们。
+
+<a id="service-principal"/>
+
+## <a name="create-a-service-principal"></a>创建服务主体
+
+遵循以下主题中的指导创建服务主体：[如何：使用门户创建可访问资源的 Azure AD 应用程序和服务主体](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)。
+
+在执行该文中的步骤时，需要完成一些特定的事项。
+
+:heavy_check_mark:在执行文章的[创建 Azure Active Directory 应用程序](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#create-an-azure-active-directory-application)部分的步骤时，请确保将“创建”对话框的“登录 URL”字段设置为刚收集的终结点 URI。
+
+:heavy_check_mark:在执行文章的[将应用程序分配给角色](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-the-application-to-a-role)部分的步骤时，请确保将应用程序分配给“Blob 存储参与者”角色。
+
+:heavy_check_mark:在执行文章的[获取用于登录的值](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)部分的步骤时，请将租户 ID、应用程序 ID 和身份验证密钥值粘贴到文本文件中。{0}{0} 很快就会需要这些值。
 
 ## <a name="create-a-databricks-cluster"></a>创建 Databricks 群集
 
@@ -63,22 +82,24 @@ ms.locfileid: "53548980"
 14. 在“名称”字段中输入选择的名称，然后选择“Python”作为语言。
 15. 所有其他字段可以保留默认值。
 16. 选择“创建”。
-17. 将以下代码粘贴到 **Cmd 1** 单元中。 将示例中括号内显示的占位符替换为自己的值：
+17. 将以下代码块复制并粘贴到第一个单元格中，但目前请勿运行此代码。
 
-    ```scala
-    %python%
+    ```Python
     configs = {"fs.azure.account.auth.type": "OAuth",
-        "fs.azure.account.oauth.provider.type": "org.apache.hadoop.fs.azurebfs.oauth2.ClientCredsTokenProvider",
-        "fs.azure.account.oauth2.client.id": "<service-client-id>",
-        "fs.azure.account.oauth2.client.secret": "<service-credentials>",
-        "fs.azure.account.oauth2.client.endpoint": "https://login.microsoftonline.com/<tenant-id>/oauth2/token"}
-        
+           "fs.azure.account.oauth.provider.type": "org.apache.hadoop.fs.azurebfs.oauth2.ClientCredsTokenProvider",
+           "fs.azure.account.oauth2.client.id": "<application-id>",
+           "fs.azure.account.oauth2.client.secret": "<authentication-id>",
+           "fs.azure.account.oauth2.client.endpoint": "https://login.microsoftonline.com/<tenant-id>/oauth2/token",
+           "fs.azure.createRemoteFileSystemDuringInitialization": "true"}
+
     dbutils.fs.mount(
-        source = "abfss://dbricks@<account-name>.dfs.core.windows.net/folder1",
-        mount_point = "/mnt/flightdata",
-        extra_configs = configs)
+    source = "abfss://<file-system-name>@<storage-account-name>.dfs.core.windows.net/folder1",
+    mount_point = "/mnt/flightdata",
+    extra_configs = configs)
     ```
-18. 按 **SHIFT + ENTER** 运行代码单元。
+18. 在此代码块中，请将 `storage-account-name`、`application-id`、`authentication-id`、`tenant-id` 占位符的值替换为你在完成此文的[保存存储帐户配置](#config)和[创建服务主体](#service-principal)部分的步骤时收集的值。 将 `file-system-name` 占位符替换为你要为文件系统提供的任何名称。
+
+19. 按 **SHIFT + ENTER** 键，运行此块中的代码。
 
 ## <a name="ingest-data"></a>引入数据
 
