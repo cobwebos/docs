@@ -6,15 +6,15 @@ manager: alinast
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 01/02/2019
+ms.date: 01/11/2019
 ms.author: adgera
 ms.custom: seodec18
-ms.openlocfilehash: 36f4caac38f2f4891af6f61b78b55c7eff15eae4
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: ffd7d71c33b569b396b9f8babf8105968ee525b9
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54116732"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54263061"
 ---
 # <a name="add-blobs-to-objects-in-azure-digital-twins"></a>将 Blob 添加到 Azure 数字孪生中的对象
 
@@ -24,7 +24,7 @@ Azure 数字孪生支持将 Blob 附加到设备、空间和用户。 Blob 可�
 
 [!INCLUDE [Digital Twins Management API familiarity](../../includes/digital-twins-familiarity.md)]
 
-## <a name="uploading-blobs-an-overview"></a>上传 Blob：概述
+## <a name="uploading-blobs-overview"></a>上传 Blob 概述
 
 可以使用多部分请求将 Blob 上传到特定的终结点及其相应功能。
 
@@ -38,13 +38,94 @@ Azure 数字孪生支持将 Blob 附加到设备、空间和用户。 Blob 可�
 
 ![JSON 架构][1]
 
+JSON Blob 元数据符合以下模型：
+
+```JSON
+{
+    "parentId": "00000000-0000-0000-0000-000000000000",
+    "name": "My First Blob",
+    "type": "Map",
+    "subtype": "GenericMap",
+    "description": "A well chosen description",
+    "sharing": "None"
+  }
+```
+
+| 属性 | 类型 | Description |
+| --- | --- | --- |
+| **parentId** | String | 要与 Blob 关联的父实体（空间、设备或用户） |
+| name |String | Blob 的用户友好名称 |
+| type | String | Blob 的类型 - 不能使用 *type* 和 *typeId*  |
+| **typeId** | Integer | Blob 类型 ID - 不能使用 *type* 和 *typeId* |
+| **subtype** | String | Blob 子类型 - 不能使用 *subtype* 和 *subtypeId* |
+| **subtypeId** | Integer | Blob 的子类型 ID - 不能使用 *subtype* 和 *subtypeId* |
+| **说明** | String | Blob 的自定义说明 |
+| **sharing** | String | 是否可以共享 Blob - enum [`None`, `Tree`, `Global`] |
+
+Blob 元数据始终提供为具有 **Content-Type** `application/json` 的第一个区块，或提供为 `.json` 文件。 文件数据在第二个区块中提供，可以是任何受支持的 MIME 类型。
+
 Swagger 文档完整详细地介绍了这些模型架构。
 
 [!INCLUDE [Digital Twins Swagger](../../includes/digital-twins-swagger.md)]
 
 请阅读[如何使用 Swagger](./how-to-use-swagger.md) 了解如何使用参考文档。
 
-### <a name="examples"></a>示例
+<div id="blobModel"></div>
+
+### <a name="blobs-response-data"></a>Blob 响应数据
+
+单独返回的 Blob 符合以下 JSON 架构：
+
+```JSON
+{
+  "id": "00000000-0000-0000-0000-000000000000",
+  "name": "string",
+  "parentId": "00000000-0000-0000-0000-000000000000",
+  "type": "string",
+  "subtype": "string",
+  "typeId": 0,
+  "subtypeId": 0,
+  "sharing": "None",
+  "description": "string",
+  "contentInfos": [
+    {
+      "type": "string",
+      "sizeBytes": 0,
+      "mD5": "string",
+      "version": "string",
+      "lastModifiedUtc": "2019-01-12T00:58:08.689Z",
+      "metadata": {
+        "additionalProp1": "string",
+        "additionalProp2": "string",
+        "additionalProp3": "string"
+      }
+    }
+  ],
+  "fullName": "string",
+  "spacePaths": [
+    "string"
+  ]
+}
+```
+
+| 属性 | 类型 | Description |
+| --- | --- | --- |
+| **id** | String | Blob 的唯一标识符 |
+| name |String | Blob 的用户友好名称 |
+| **parentId** | String | 要与 Blob 关联的父实体（空间、设备或用户） |
+| type | String | Blob 的类型 - 不能使用 *type* 和 *typeId*  |
+| **typeId** | Integer | Blob 类型 ID - 不能使用 *type* 和 *typeId* |
+| **subtype** | String | Blob 子类型 - 不能使用 *subtype* 和 *subtypeId* |
+| **subtypeId** | Integer | Blob 的子类型 ID - 不能使用 *subtype* 和 *subtypeId* |
+| **sharing** | String | 是否可以共享 Blob - enum [`None`, `Tree`, `Global`] |
+| **说明** | String | Blob 的自定义说明 |
+| **contentInfos** | Array | 指定包括版本的非结构化元数据信息 |
+| **fullName** | String | Blob 的全名 |
+| **spacePaths** | String | 空间路径 |
+
+Blob 元数据始终提供为具有 **Content-Type** `application/json` 的第一个区块，或提供为 `.json` 文件。 文件数据在第二个区块中提供，可以是任何受支持的 MIME 类型。
+
+### <a name="blob-multipart-request-examples"></a>Blob 多部分请求示例
 
 [!INCLUDE [Digital Twins Management API](../../includes/digital-twins-management-api.md)]
 
@@ -92,6 +173,7 @@ var metadataContent = new StringContent(JsonConvert.SerializeObject(metaData), E
 metadataContent.Headers.ContentType = MediaTypeHeaderValue.Parse("application/json; charset=utf-8");
 multipartContent.Add(metadataContent, "metadata");
 
+//MY_BLOB.txt is the String representation of your text file
 var fileContents = new StringContent("MY_BLOB.txt");
 fileContents.Headers.ContentType = MediaTypeHeaderValue.Parse("text/plain");
 multipartContent.Add(fileContents, "contents");
@@ -99,15 +181,27 @@ multipartContent.Add(fileContents, "contents");
 var response = await httpClient.PostAsync("spaces/blobs", multipartContent);
 ```
 
-在这两个示例中：
+最后，[cURL](https://curl.haxx.se/) 用户可以相同的方式发出多部分表单请求：
 
-1. 验证标头是否包括：`Content-Type: multipart/form-data; boundary="USER_DEFINED_BOUNDARY"`。
-1. 验证正文由多个部分组成：
+![设备 Blob][5]
 
-   - 第一部分包含所需的 blob 元数据。
-   - 第二部分包含文本文件。
+```bash
+curl
+ -X POST "YOUR_MANAGEMENT_API_URL/spaces/blobs"
+ -H "Authorization: Bearer YOUR_TOKEN"
+ -H "Accept: application/json"
+ -H "Content-Type: multipart/form-data"
+ -F "meta={\"ParentId\": \"YOUR_SPACE_ID\",\"Name\":\"My CURL Blob",\"Type\":\"Map\",\"SubType\":\"GenericMap\",\"Description\": \"A well chosen description\", \"Sharing\": \"None\"};type=application/json"
+ -F "text=PATH_TO_FILE;type=text/plain"
+```
 
-1. 验证该文本文件提供为 `Content-Type: text/plain`。
+| 值 | 替换为 |
+| --- | --- |
+| YOUR_TOKEN | 有效的 OAuth 2.0 令牌 |
+| YOUR_SPACE_ID | 要与 Blob 关联的空间的 ID |
+| PATH_TO_FILE | 文本文件的路径 |
+
+成功的 POST 返回新 Blob 的 ID（上文以红色突出显示）。
 
 ## <a name="api-endpoints"></a>API 终结点
 
@@ -129,17 +223,9 @@ YOUR_MANAGEMENT_API_URL/devices/blobs/YOUR_BLOB_ID
 | --- | --- |
 | *YOUR_BLOB_ID* | 所需的 Blob ID |
 
-成功的请求将在响应中返回 DeviceBlob JSON 对象。 DeviceBlob 对象符合以下 JSON 架构：
+成功的请求返回[如前所述](#blobModel)的 JSON 对象。
 
-| 属性 | 类型 | 说明 | 示例 |
-| --- | --- | --- | --- |
-| **DeviceBlobType** | String | 可附加到设备的 Blob 类别 | `Model` 和 `Specification` |
-| **DeviceBlobSubtype** | String | 比 DeviceBlobType 更明确的 Blob 子类别 | `PhysicalModel`、`LogicalModel`、`KitSpecification` 和 `FunctionalSpecification` |
-
-> [!TIP]
-> 使用上表处理成功返回的请求数据。
-
-### <a name="spaces"></a>空间
+### <a name="spaces"></a>空格
 
 此外，还可以将 blob 附加到空间。 下图列出了负责处理 Blob 的所有空间 API 终结点。 此外，它还列出了传入这些终结点的所有路径参数。
 
@@ -155,14 +241,9 @@ YOUR_MANAGEMENT_API_URL/spaces/blobs/YOUR_BLOB_ID
 | --- | --- |
 | *YOUR_BLOB_ID* | 所需的 Blob ID |
 
-对同一终结点发出的 PATCH 请求将更新元数据说明并创建 blob 的新版本。 HTTP 请求是通过 PATCH 方法以及任何所需的元和多部分表单数据发出的。
+成功的请求返回[如前所述](#blobModel)的 JSON 对象。
 
-成功的操作将返回符合以下架构的 SpaceBlob 对象。 可以使用此对象利用返回的数据。
-
-| 属性 | 类型 | 说明 | 示例 |
-| --- | --- | --- | --- |
-| **SpaceBlobType** | String | 可附加到空间的 Blob 类别 | `Map` 和 `Image` |
-| **SpaceBlobSubtype** | String | 比 SpaceBlobType 更明确的 Blob 子类别 | `GenericMap`、`ElectricalMap`、`SatelliteMap` 和 `WayfindingMap` |
+对同一个终结点发出 PATCH 请求会更新元数据说明并创建 Blob 的版本。 HTTP 请求是通过 PATCH 方法以及任何所需的元和多部分表单数据发出的。
 
 ### <a name="users"></a>用户
 
@@ -180,16 +261,11 @@ YOUR_MANAGEMENT_API_URL/users/blobs/YOUR_BLOB_ID
 | --- | --- |
 | *YOUR_BLOB_ID* | 所需的 Blob ID |
 
-返回的 JSON（UserBlob 对象）符合以下 JSON 模型：
-
-| 属性 | 类型 | 说明 | 示例 |
-| --- | --- | --- | --- |
-| **UserBlobType** | String | 可附加到用户的 Blob 类别 | `Image` 和 `Video` |
-| **UserBlobSubtype** |  String | 比 UserBlobType 更明确的 Blob 子类别 | `ProfessionalImage`、`VacationImage` 和 `CommercialVideo` |
+成功的请求返回[如前所述](#blobModel)的 JSON 对象。
 
 ## <a name="common-errors"></a>常见错误
 
-一种常见错误为未包含正确的标头信息：
+一种常见错误的原因是未提供正确的标头信息：
 
 ```JSON
 {
@@ -200,12 +276,22 @@ YOUR_MANAGEMENT_API_URL/users/blobs/YOUR_BLOB_ID
 }
 ```
 
+若要解决此错误，请检查整个请求是否包含相应的 **Content-Type** 标头：
+
+* `multipart/mixed`
+* `multipart/form-data`
+
+此外，检查每个多部分区块是否包含所需的相应 **Content-Type**。
+
 ## <a name="next-steps"></a>后续步骤
 
 - 若要详细了解 Azure 数字孪生 Swagger 参考文档，请阅读[使用数字孪生 Swagger](how-to-use-swagger.md)。
+
+- 若要通过 Postman 上传 Blob，请参阅[如何配置 Postman](./how-to-configure-postman.md)。
 
 <!-- Images -->
 [1]: media/how-to-add-blobs/blob-models.PNG
 [2]: media/how-to-add-blobs/blobs-device-api.PNG
 [3]: media/how-to-add-blobs/blobs-space-api.PNG
 [4]: media/how-to-add-blobs/blobs-users-api.PNG
+[5]: media/how-to-add-blobs/curl.PNG

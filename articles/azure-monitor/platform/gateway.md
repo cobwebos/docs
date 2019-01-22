@@ -11,20 +11,21 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/02/2018
+ms.date: 01/15/2019
 ms.author: magoedte
-ms.openlocfilehash: 5236cff7a4afe508a8e11c6d75484fcdc9d43f91
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 551e7c0ca3b4b5e0e94aca39e19d9a35d08e4e05
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53194226"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54353033"
 ---
 # <a name="connect-computers-without-internet-access-using-the-log-analytics-gateway"></a>使用 Log Analytics 网关连接无法访问 Internet 的计算机
 本文档介绍直接连接或 Operations Manager 监视的计算机无法访问 Internet 时，如何使用 Log Analytics 网关，配置与 Azure 自动化和 Log Analytics 的通信。  Log Analytics 网关是使用 HTTP CONNECT 命令，支持 HTTP 隧道的 HTTP 转发代理，它可以收集数据，然后代表这些设备将数据发送到 Azure 自动化和 Log Analytics。  
 
 Log Analytics 网关支持：
 
+* 向配置了该网关的最多四个相同 Log Analytics 工作区代理发送报告  
 * Azure 自动化混合 Runbook 辅助角色  
 * 装有 Microsoft Monitoring Agent，可直接连接到 Log Analytics 工作区的 Windows 计算机
 * 装有 Log Analytics Linux 代理可直接连接到 Log Analytics 工作区的 Linux 计算机  
@@ -36,11 +37,11 @@ Log Analytics 网关支持：
 
 若要为通过网关与 Log Analytics 通信的直接连接的组或 Operations Management 组提供高可用性，可以使用网络负载均衡在多个网关服务器之间重定向和分配流量。  如果一台网关服务器发生故障，流量将重定向到另一个可用节点。  
 
-运行 Log Analytics 网关的计算机需要 Log Analytics 代理，以便识别需要与之通信的服务终结点并监视用于分析其性能或事件数据的 Log Analytics 网关。
+运行 Log Analytics 网关的计算机上需要 Log Analytics Windows 代理，这样，该计算机不仅可以识别需要与其通信的服务终结点，而且还能向网关后的代理或 Operations Manager 管理组中配置的相同工作区报告。 网关必须允许这些组件与其已分配的工作区通信。 一个网关最多可以多重驻留到四个工作区，这是 Windows 代理支持的工作区总数。  
 
-每个代理必须与其网关建立网络连接，这样，代理才能自动与网关相互传输数据。 建议不要在域控制器上安装网关。
+每个代理必须与网关建立网络连接，这样，代理才能自动与网关相互传输数据。 建议不要在域控制器上安装网关。
 
-下图显示了如何使用网关服务器将数据从直接代理传送到 Azure 自动化和 Log Analytics。  代理中的代理配置必须与 Log Analytics 网关中配置用来与服务通信的同一端口匹配。  
+下图显示了如何使用网关服务器将数据从直接代理传送到 Azure 自动化和 Log Analytics。 代理的配置必须与 Log Analytics 网关中配置的同一端口相匹配。  
 
 ![直接代理与服务通信的示意图](./media/gateway/oms-omsgateway-agentdirectconnect.png)
 
@@ -56,7 +57,7 @@ Log Analytics 网关支持：
 * Windows Server 2016、Windows Server 2012 R2、Windows Server 2012、Windows Server 2008 R2 和 Windows Server 2008
 * .Net Framework 4.5
 * 4 核处理器，8 GB 内存（最低要求） 
-* 适用于 Windows 的 Log Analytics 代理 
+* 已安装并配置[适用于 Windows 的 Log Analytics 代理](agent-windows.md)，以便代理通过网关通信时，能够向同一工作区报告。  
 
 ### <a name="language-availability"></a>语言可用性
 
@@ -83,12 +84,12 @@ Log Analytics 网关提供了以下语言：
 Log Analytics 网关仅支持传输层安全性 (TLS) 1.0、1.1 和 1.2。  它不支持安全套接字层 (SSL)。  为确保传输到 Log Analytics 的数据的安全性，强烈建议将网关配置为至少使用传输层安全性 (TLS) 1.2。 我们发现旧版 TLS/安全套接字层 (SSL) 容易受到攻击，尽管目前出于向后兼容，这些协议仍可正常工作，但我们**不建议使用**。  有关其他信息，请查看[使用 TLS 1.2 安全地发送数据](../../azure-monitor/platform/data-security.md#sending-data-securely-using-tls-12)。 
 
 ### <a name="supported-number-of-agent-connections"></a>支持的代理连接数
-下表突出显示了支持与网关服务器通信的代理数量。  支持基于代理每 6 秒上传 200KB 数据计算。 测试的每个代理的数据量约为每天 2.7GB。
+下表突出显示了支持与网关服务器通信的代理数量。  此项支持基于代理每 6 秒上传约 200 KB 数据。 测试的每个代理的数据量约为每天 2.7 GB。
 
 |网关 |支持的代理近似数量|  
 |--------|----------------------------------|  
-|- CPU：Intel XEON CPU E5-2660 v3 \@ 2.6GHz 双核<br> - 内存：4 GB<br> - 网络带宽：1 Gbps| 600|  
-|- CPU：Intel XEON CPU E5-2660 v3 \@ 2.6GHz 四核<br> - 内存：8 GB<br> - 网络带宽：1 Gbps| 1000|  
+|- CPU：Intel XEON CPU E5-2660 v3 \@ 2.6 GHz 双核<br> - 内存：4 GB<br> - 网络带宽：1 Gbps| 600|  
+|- CPU：Intel XEON CPU E5-2660 v3 \@ 2.6 GHz 4 核<br> - 内存：8 GB<br> - 网络带宽：1 Gbps| 1000|  
 
 ## <a name="download-the-log-analytics-gateway"></a>下载 Log Analytics 网关
 
@@ -124,7 +125,8 @@ Log Analytics 网关仅支持传输层安全性 (TLS) 1.0、1.1 和 1.2。  它�
 1. 如果尚未启用 Microsoft 更新，会显示“Microsoft 更新”页，可以在其中选择启用 Microsoft 更新。 做出选择，并单击“下一步”。 否则，继续执行下一步。
 1. 在“目标文件夹”页上，保留默认文件夹 C:\Program Files\OMS Gateway 或键入网关的安装位置，并单击“下一步”。
 1. 在“准备安装”页上，单击“安装”。 此时可能会显示“用户帐户控制”，请求提供安装权限。 在此情况下，请单击“是”。
-1. 安装完成后，单击“完成”。 可以验证该服务是否正在运行，方法是打开 services.msc 管理单元，并检查服务列表中是否出现“Log Analytics 网关”并且其状态为“正在运行”。<br><br> ![服务 – Log Analytics 网关](./media/gateway/gateway-service.png)  
+1. 安装完成后，单击“完成”。 可以验证该服务是否正在运行，方法是打开 services.msc 管理单元，并检查服务列表中是否出现“OMS 网关”并且其状态为“正在运行”。<br><br> ![服务 – Log Analytics 网关](./media/gateway/gateway-service.png)  
+
 
 ## <a name="configure-network-load-balancing"></a>配置网络负载均衡 
 可以使用 Microsoft 网络负载均衡 (NLB) 或基于硬件的负载均衡器来配置网关，使其具有高可用性。  负载均衡器通过在其节点之间重定向 Log Analytics 代理或 Operations Manager 管理服务器请求的连接来管理流量。 如果一台网关服务器出现故障，流量将重定向到其他节点。
@@ -133,14 +135,18 @@ Log Analytics 网关仅支持传输层安全性 (TLS) 1.0、1.1 和 1.2。  它�
 
 1. 使用管理帐户登录到属于 NLB 群集的 Windows 服务器。  
 1. 在服务器管理器中打开网络负载均衡管理器，单击“工具”，并单击“网络负载均衡管理器”。
-1. 要连接装有 Microsoft Monitoring Agent 的 Log Analytics 网关服务器，请右键单击群集的 IP 地址，然后单击“将主机添加到群集”。<br><br> ![网络负载均衡管理器 – 将主机添加到群集](./media/gateway/nlb02.png)<br> 
+1. 若要连接装有 Microsoft Monitoring Agent 的 Log Analytics 网关服务器，请右键单击群集的 IP 地址，然后单击“将主机添加到群集”。<br><br> ![网络负载均衡管理器 – 将主机添加到群集](./media/gateway/nlb02.png)<br> 
 1. 输入要连接的网关服务器的 IP 地址。<br><br> ![网络负载均衡管理器 – 将主机添加到群集：连接](./media/gateway/nlb03.png) 
     
 ## <a name="configure-log-analytics-agent-and-operations-manager-management-group"></a>配置 Log Analytics 代理和 Operations Manager 管理组
 以下部分包含有关如何使用 Log Analytics 网关配置直接连接的 Log Analytics 代理、Operations Manager 管理组或 Azure 自动化混合 Runbook 辅助角色，使其与 Azure 自动化或 Log Analytics 通信的步骤。  
 
 ### <a name="configure-standalone-log-analytics-agent"></a>配置独立的 Log Analytics 代理
-若要了解有关在直接连接到 Log Analytics 的 Windows 计算机上如何安装 Log Analytics 代理的要求和步骤，请参阅[将 Windows 计算机连接到 Log Analytics](agent-windows.md)；对于 Linux 计算机，请参阅[将 Linux 计算机连接到 Log Analytics](../../azure-monitor/learn/quick-collect-linux-computer.md)。 不是在配置代理时指定代理服务器，而是将该值替换为 Log Analytics 网关服务器的 IP 地址及其端口号。  如果在网络负载均衡器后面部署了多个网关服务器，Log Analytics 代理的代理配置为 NLB 的虚拟 IP 地址。  
+若要了解有关在网关和直接连接到 Log Analytics 的 Windows 计算机上如何安装 Log Analytics 代理的要求和步骤，请参阅[将 Windows 计算机连接到 Log Analytics](agent-windows.md)；对于 Linux 计算机，请参阅[将 Linux 计算机连接到 Log Analytics](../../azure-monitor/learn/quick-collect-linux-computer.md)。 不是在配置代理时指定代理服务器，而是将该值替换为 Log Analytics 网关服务器的 IP 地址及其端口号。 如果在网络负载均衡器后面部署了多个网关服务器，Log Analytics 代理的代理配置为 NLB 的虚拟 IP 地址。  
+
+在网关服务器上安装代理后，可将其配置为向与网关通信的工作区或工作区代理报告。 如果未在网关上安装 Log Analytics Windows 代理，则会将事件 300 写入 **OMS 网关日志**事件日志，指示需要安装代理。 如果代理已安装，但未配置为在代理通过它通信时向同一工作区报告，则会将事件 105 写入相同的事件日志，指出需要将网关上的代理配置为在代理与网关通信时，向同一工作区报告。
+
+完成后配置，需要重启 **OMS 网关**服务才能使更改生效。 否则，网关将拒绝代理尝试与 Log Analytics 通信，并在 **OMS 网关日志**事件日志中报告事件 ID 105。 在网关服务器上的代理配置中添加或删除工作区时，这一点同样适用。   
 
 有关自动化混合 Runbook 辅助角色的信息，请参阅[部署混合 Runbook 辅助角色](../../automation/automation-hybrid-runbook-worker.md)。
 
@@ -149,18 +155,20 @@ Log Analytics 网关仅支持传输层安全性 (TLS) 1.0、1.1 和 1.2。  它�
 
 若要使用网关来支持 Operations Manager，必须满足以下条件：
 
-* 在网关服务器上安装 Microsoft Monitoring Agent（代理版本 – 8.0.10900.0 或以上），并根据要通信的 Log Analytics 工作区配置该代理。
+* 已在网关服务器上安装 Microsoft Monitoring Agent（代理版本 – **8.0.10900.0** 或以上），并在其中配置了相同的 Log Analytics 工作区，管理组已配置为向这些工作区报告。
 * 该网关必须已建立 Internet 连接，或者已连接到可访问 Internet 的代理服务器。
 
 > [!NOTE]
 > 如果未指定网关的值，会将空值推送到所有代理。
 > 
 
-如果这是首次向 Log Analytics 工作区注册 Operations Manager 管理组，为管理组指定代理配置的选项在操作控制台中不可用。  必须成功向服务注册管理组后，此选项才可用。  需使用 Netsh，对运行操作控制台以配置集成的系统，以及管理组中的所有管理服务器进行系统代理配置的更新。  
+如果这是首次向 Log Analytics 工作区注册 Operations Manager 管理组，为管理组指定代理配置的选项在操作控制台中不可用。  必须成功向服务注册管理组后，此选项才可用。  使用 Netsh，对运行操作控制台以配置集成的系统，以及管理组中的所有管理服务器进行系统代理配置的更新。  
 
 1. 打开提升的命令指示符。
-   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 转到“启动”，然后键入“cmd”。
-   b. 右键单击“命令提示符”然后选择“以管理员身份运行”**。
+
+    a. 转到“启动”，然后键入“cmd”。  
+    b. 右键单击“命令提示符”并选择“以管理员身份运行”。  
+
 1. 键入以下命令并按 Enter：
 
     `netsh winhttp set proxy <proxy>:<port>`
@@ -307,7 +315,7 @@ Log Analytics 网关仅支持传输层安全性 (TLS) 1.0、1.1 和 1.2。  它�
 
 ## <a name="get-assistance"></a>获取帮助
 登录到 Azure 门户后，可以针对 Log Analytics 网关或其他任何 Azure 服务或服务的功能创建支持请求。
-要请求帮助，请单击门户右上角的问号，并单击“新建支持请求”。 接下来，填写新建支持请求的表单。
+若要请求帮助，请单击门户右上角的问号，然后单击“新建支持请求”。 接下来，填写新建支持请求的表单。
 
 ![新建支持请求](./media/gateway/support.png)
 

@@ -1,6 +1,6 @@
 ---
-title: Azure SQL 数据库托管实例配置现有 VNet/子网 | Microsoft Docs
-description: 本主题介绍了如何配置可在其中部署 Azure SQL 数据库托管实例的现有虚拟网络 (VNet) 和子网。
+title: 为 Azure SQL 数据库托管实例配置现有虚拟网络 | Microsoft Docs
+description: 本文介绍如何配置可在其中部署 Azure SQL 数据库托管实例的现有虚拟网络和子网。
 services: sql-database
 ms.service: sql-database
 ms.subservice: managed-instance
@@ -12,21 +12,26 @@ ms.author: srbozovi
 ms.reviewer: bonova, carlrab
 manager: craigg
 ms.date: 01/03/2019
-ms.openlocfilehash: 1718177a0902bc7049eb6986e5a1d128eeb3f233
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 16684619ccf542783e425852a075eaa74e96e592
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54040952"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54332177"
 ---
-# <a name="configure-an-existing-vnet-for-azure-sql-database-managed-instance"></a>为 Azure SQL 数据库托管实例配置现有 VNet
+# <a name="configure-an-existing-virtual-network-for-azure-sql-database-managed-instance"></a>为 Azure SQL 数据库托管实例配置现有虚拟网络
 
-Azure SQL 数据库托管实例必须部署在专用于托管实例的 Azure [虚拟网络 (VNet)](../virtual-network/virtual-networks-overview.md) 和子网中。 如果现有 VNet 和子网是根据[托管实例 VNet 要求](sql-database-managed-instance-connectivity-architecture.md#network-requirements)配置的，则可以使用现有 VNet 和子网。
+Azure SQL 数据库托管实例必须部署在专用于托管实例的 Azure [虚拟网络](../virtual-network/virtual-networks-overview.md)和子网中。 如果现有虚拟网络和子网是根据[托管实例虚拟网络要求](sql-database-managed-instance-connectivity-architecture.md#network-requirements)配置的，则可以使用现有虚拟网络和子网。
 
-如果你有尚未配置的新子网，并且不确定该子网是否满足[要求](sql-database-managed-instance-connectivity-architecture.md#network-requirements)，或者你在进行一些更改后想要检查子网是否仍满足[网络要求](sql-database-managed-instance-connectivity-architecture.md#network-requirements)，则可以使用本部分中介绍的脚本验证并修改你的网络。
+如果存在以下情况，可以使用本文中所述的脚本来验证和修改网络：
 
-  > [!Note]
-  > 只能在资源管理器虚拟网络中创建托管实例。 不支持使用经典部署模型部署的 Azure VNet。 请确保按照[确定托管实例的子网大小](sql-database-managed-instance-determine-size-vnet-subnet.md)一文中的准则计算子网大小，因为在子网中部署资源后将无法调整子网大小。
+* 仍未配置某个新子网。
+* 不确定该子网是否符合[要求](sql-database-managed-instance-connectivity-architecture.md#network-requirements)。
+* 进行更改后想要检查子网是否仍符合[网络要求](sql-database-managed-instance-connectivity-architecture.md#network-requirements)。
+
+
+> [!Note]
+> 只能在通过 Azure 资源管理器部署模型创建的虚拟网络中创建托管实例。 不支持通过经典部署模型创建的 Azure 虚拟网络。 根据[确定托管实例的子网大小](sql-database-managed-instance-determine-size-vnet-subnet.md)一文中的指导计算子网大小。 在子网中部署资源后，无法调整子网大小。
 
 ## <a name="validate-and-modify-an-existing-virtual-network"></a>验证并修改现有虚拟网络
 
@@ -45,14 +50,14 @@ $parameters = @{
 Invoke-Command -ScriptBlock ([Scriptblock]::Create((iwr ($scriptUrlBase+'/prepareSubnet.ps1?t='+ [DateTime]::Now.Ticks)).Content)) -ArgumentList $parameters
 ```
 
-子网准备是通过三个简单步骤完成的：
+该脚本通过三个步骤来准备子网：
 
-1. 验证 - 针对托管实例网络要求验证所选的虚拟网络和子网。
-2. 确认 - 向用户显示为托管实例部署准备子网而需要执行的一组更改并请求用户同意。
-3. 准备 - 正确配置虚拟网络和子网。
+1. 验证：根据托管实例的网络要求验证所选虚拟网络和子网。
+2. 确认：向用户显示为托管实例部署准备子网而需要执行的一组更改。 同时请求用户同意。
+3. 准备：正确配置虚拟网络和子网。
 
 ## <a name="next-steps"></a>后续步骤
 
-- 有关概述，请参阅[什么是托管实例](sql-database-managed-instance.md)
-- 有关如何创建 VNet、创建托管实例，以及从数据库备份还原数据库的教程，请参阅[创建 Azure SQL 数据库托管实例](sql-database-managed-instance-get-started.md)。
+- 有关概述，请参阅[什么是托管实例？](sql-database-managed-instance.md)。
+- 有关如何创建虚拟网络、创建托管实例，以及从数据库备份还原数据库的教程，请参阅[创建 Azure SQL 数据库托管实例](sql-database-managed-instance-get-started.md)。
 - 有关 DNS 问题，请参阅[配置自定义 DNS](sql-database-managed-instance-custom-dns.md)。

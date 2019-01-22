@@ -1,7 +1,7 @@
 ---
 title: 设置 Python 开发环境
 titleSuffix: Azure Machine Learning service
-description: 了解在使用 Azure 机器学习服务时如何配置开发环境。 本文介绍如何使用 Conda 环境、创建配置文件，以及配置 Jupyter Notebook、Azure Notebooks、IDE、代码编辑器和 Data Science Virtual Machine。
+description: 了解在使用 Azure 机器学习服务时如何配置开发环境。 本文介绍如何使用 Conda 环境、创建配置文件，以及配置 Jupyter Notebook、Azure Notebooks、Azure Databricks、IDE、代码编辑器和 Data Science Virtual Machine。
 services: machine-learning
 author: rastala
 ms.author: roastala
@@ -10,14 +10,14 @@ ms.component: core
 ms.reviewer: larryfr
 manager: cgronlun
 ms.topic: conceptual
-ms.date: 12/04/2018
+ms.date: 01/14/2018
 ms.custom: seodec18
-ms.openlocfilehash: 46a1872d2ac5d1670620148edf7ee273580826d3
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.openlocfilehash: 4ef62157644e55ed291562f581389228b5776f51
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53811267"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54353220"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>配置 Azure 机器学习的开发环境
 
@@ -221,7 +221,7 @@ Visual Studio Code 是跨平台代码编辑器。 它依赖于本地 Python 3 �
 1. 若要选择 Conda 环境，请打开 VS Code，然后按 Ctrl-Shift-P（Linux 和 Windows）或 Command-Shift-P (Mac)。  
     此时会打开“命令面板”。 
 
-1. 输入 __Python:Select Interpreter__，然后选择 Conda 环境。
+1. 输入 Python:__Select Interpreter__，然后选择 Conda 环境。
 
 1. 若要验证是否可以使用 SDK，请创建并运行包含以下代码的新 Python 文件 (.py)。
 
@@ -242,28 +242,70 @@ Visual Studio Code 是跨平台代码编辑器。 它依赖于本地 Python 3 �
 
 准备 Databricks 群集并获取示例笔记本：
 
-1. 使用 Python 3 创建 Databricks 运行时版本为 4.x（首选高并发性）的 [Databricks 群集](https://docs.microsoft.com/azure/azure-databricks/quickstart-create-databricks-workspace-portal)。 
+1. 使用以下设置创建 [Databricks 群集](https://docs.microsoft.com/azure/azure-databricks/quickstart-create-databricks-workspace-portal)：
 
-1. 若要安装适用于 Python 的 Azure 机器学习 SDK `azureml-sdk[databricks]` PyPi 包并将其附加到群集，请[创建一个库](https://docs.databricks.com/user-guide/libraries.html#create-a-library)。  
-    完成后，按下图所示附加该库。 请注意这些[常见 Databricks 问题](resource-known-issues.md#databricks)。
+    | 设置 | 值 |
+    |----|---|
+    | 群集名称 | yourclustername |
+    | Databricks 运行时 | 任何非机器学习运行时（非机器学习 4.x、5.x） |
+    | Python 版本 | 3 |
+    | 工作节点 | 2 个或以上 |
 
-   ![Databricks 上安装的 SDK ](./media/how-to-azure-machine-learning-on-databricks/sdk-installed-on-databricks.jpg)
+    仅当要在 Databricks 上使用自动化机器学习时，才使用这些设置：
+    
+    |   设置 | 值 |
+    |----|---|
+    | 工作节点 VM 类型 | 首选内存优化的 VM |
+    | 启用自动缩放 | 取消选中 |
+    
+    Databricks 群集中的工作节点数决定了自动化机器学习设置中的最大并发迭代数。  
+
+    创建群集需要几分钟的时间。 请等待群集运行完成，然后继续操作。
+
+1. 安装 Azure 机器学习 SDK 包并将其附加到群集。  
+
+    * 使用以下设置之一[创建库](https://docs.databricks.com/user-guide/libraries.html#create-a-library)（只选择下列其中一个选项）：
+    
+        * 若要安装不带自动化机器学习功能的 Azure 机器学习 SDK：
+            | 设置 | 值 |
+            |----|---|
+            |源 | 上传 Python Egg 或 PyPI
+            |PyPi 名称 | azureml-sdk[databricks]
+    
+        * 若要安装带有自动化机器学习功能的 Azure 机器学习 SDK：
+            | 设置 | 值 |
+            |----|---|
+            |源 | 上传 Python Egg 或 PyPI
+            |PyPi 名称 | azureml-sdk[automl_databricks]
+    
+    * 不要选择“自动附加到所有群集”
+
+    * 选择群集名称旁边的“附加”
+
+    * 确保在状态更改为“已附加”之前一直不会出现错误。 这可能需要几分钟时间才能完成。
+
+    如果使用的是旧版 SDK，请从群集的已安装库中取消选择该版本，并将其移到垃圾桶中。 安装新的 SDK 版本并重启群集。 如果完成此操作后出现问题，请分离并重新附加群集。
+
+    完成后，将按下图所示附加该库。 请注意这些[常见 Databricks 问题](resource-known-issues.md#databricks)。
+
+    * 如果安装了不带自动化机器学习功能的 Azure 机器学习 SDK![Databricks 上安装的不带自动化机器学习功能的 SDK](./media/how-to-configure-environment/amlsdk-withoutautoml.jpg)
+
+    * 如果安装了带有自动化机器学习功能的 Azure 机器学习 SDK![Databricks 上安装的带有自动化机器学习功能的 SDK](./media/how-to-configure-environment/automlonadb.jpg)
 
    如果此步骤失败，请执行以下操作重启群集：
 
-   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在左窗格中，选择“群集”。 
+   a. 在左窗格中，选择“群集”。 
    
    b. 在表中选择你的群集名称。 
 
    c. 在“库”选项卡上，选择“重启”。
 
-1. 下载 [Azure Databricks/Azure 机器学习 SDK Notebook 存档文件](https://github.com/Azure/MachineLearningNotebooks/blob/master/databricks/Databricks_AMLSDK_github.dbc)。
+1. 下载 [Azure Databricks/Azure 机器学习 SDK Notebook 存档文件](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/azure-databricks/Databricks_AMLSDK_1-4_6.dbc)。
 
    >[!Warning]
    > 多个示例笔记本可与 Azure 机器学习服务一起使用。 只有[这些示例 Notebook](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/azure-databricks) 可与 Azure Databricks 一起使用。
-   > 
 
-1.  [将此存档文件导入](https://docs.azuredatabricks.net/user-guide/notebooks/notebook-manage.html#import-an-archive) Databricks 群集，并根据[机器学习 Notebook](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/azure-databricks) 页中所述开始浏览。
+1.  [将存档文件导入](https://docs.azuredatabricks.net/user-guide/notebooks/notebook-manage.html#import-an-archive) Databricks 群集，并根据[机器学习 Notebook](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/azure-databricks) 页中所述开始浏览。
 
 
 ## <a id="workspace"></a>创建工作区配置文件
@@ -311,6 +353,6 @@ Visual Studio Code 是跨平台代码编辑器。 它依赖于本地 Python 3 �
 
 ## <a name="next-steps"></a>后续步骤
 
-- [使用 MNIST 数据集对 Azure 机器学习的模型进行定型](tutorial-train-models-with-aml.md)
-- [适用于 Python 的 Azure 机器学习 SDK](https://aka.ms/aml-sdk)
-- [Azure 机器学习数据准备 SDK](https://aka.ms/data-prep-sdk)
+- 在 Azure 机器学习中使用 MNIST 数据集[训练模型](tutorial-train-models-with-aml.md)
+- 查看[适用于 Python 的 Azure 机器学习 SDK](https://aka.ms/aml-sdk) 参考文档
+- 了解 [Azure 机器学习数据准备 SDK](https://aka.ms/data-prep-sdk)

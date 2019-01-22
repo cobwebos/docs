@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/11/2018
 ms.author: mikeray
-ms.openlocfilehash: 382027782044a5a1011976560b7460047544f521
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: a882ad2bbb700c7d1a1c812d7a05aa14b8038f9a
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51237958"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54359929"
 ---
 # <a name="configure-sql-server-failover-cluster-instance-on-azure-virtual-machines"></a>在 Azure 虚拟机上配置 SQL Server 故障转移群集实例
 
@@ -71,8 +71,10 @@ S2D 支持两种类型的体系结构 - 聚合与超聚合。 本文档中所述
 ### <a name="what-to-know"></a>要了解的事项
 应该对以下技术有实际的了解：
 
-- [Windows 群集技术](https://technet.microsoft.com/library/hh831579.aspx)
-- [SQL Server 故障转移群集实例](https://msdn.microsoft.com/library/ms189134.aspx)
+- [Windows 群集技术](https://docs.microsoft.com/windows-server/failover-clustering/failover-clustering-overview)
+- [SQL Server 故障转移群集实例](https://docs.microsoft.com/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server)
+
+一个重要的差别在于，在 Azure IaaS VM 来宾故障转移群集上，我们建议每个服务器（群集节点）使用一个 NIC 和一个子网。 Azure 网络具有物理冗余，这使得在 Azure IaaS VM 来宾群集上不需要额外的 NIC 和子网。 虽然群集验证报告将发出警告，指出节点只能在单个网络上访问，但在 Azure IaaS VM 来宾故障转移群集上可以安全地忽略此警告。 
 
 另外，应该对以下技术有大致的了解：
 
@@ -398,7 +400,7 @@ S2D 的磁盘需是空的，不包含分区或其他数据。 若要清除磁盘
    - **名称**：运行状况探测的名称。
    - **协议**：TCP。
    - **端口**：设置为可用的 TCP 端口。 此端口需是打开的防火墙端口。 使用在防火墙中为运行状况探测设置的[同一端口](#ports)。
-   - **间隔**：5 秒。
+   - **时间间隔**：5 秒。
    - **不正常阈值**：2 次连续失败。
 
 1. 单击“确定”。
@@ -418,7 +420,7 @@ S2D 的磁盘需是空的，不包含分区或其他数据。 若要清除磁盘
    - **后端池**：使用前面配置的后端池名称。
    - **运行状况探测**：使用前面配置的运行状况探测。
    - **会话持久性**：无。
-   - **空闲超时(分钟)**：4。
+   - **空闲超时(分钟)**：4.
    - **浮动 IP (直接服务器返回)**：已启用
 
 1. 单击“确定”。

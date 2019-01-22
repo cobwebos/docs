@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: addd901e1b3a9bb537278082763081a7e39b21da
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: 06130a5ade63e23fdcd139902a19694a510393a3
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51824279"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54332296"
 ---
 # <a name="introduction-to-flow-logging-for-network-security-groups"></a>针对网络安全组进行流日志记录简介
 
@@ -33,10 +33,12 @@ ms.locfileid: "51824279"
 ```
 https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecuritygroupflowevent/resourceId=/SUBSCRIPTIONS/{subscriptionID}/RESOURCEGROUPS/{resourceGroupName}/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/{nsgName}/y={year}/m={month}/d={day}/h={hour}/m=00/macAddress={macAddress}/PT1H.json
 ```
- 
+可以使用[流量分析](traffic-analytics.md)来分析流日志并获取网络流量的见解。
+
 适用于其他日志的保留策略也适用于流日志。 可以设置日志保留策略，时间范围为 1 天至 2147483647 天。 如果未设置保留策略，则会永久保留日志。
 
-还可以使用[流量分析](traffic-analytics.md)分析流日志。
+> [!NOTE] 
+> 将 NSG 流日志记录与保留策略功能结合使用可能会导致存储操作量和相关成本增加。 如果不需要使用保留策略功能，我们建议将此值设置为 0。
 
 
 ## <a name="log-file"></a>日志文件
@@ -63,7 +65,7 @@ https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecurity
                     * **Protocol** - 流的协议。 有效值为 **T**（表示 TCP）和 **U**（表示 UDP）
                     * **Traffic Flow** - 流的方向。 有效值为 **I**（表示入站）和 **O**（表示出站）。
                     * **Traffic Decision** - 是允许了还是拒绝了流。 有效值为 **A**（表示已允许）和 **D**（表示已拒绝）。
-                    * **Flow State - 仅限版本 2** - 捕获流的状态。 可能的状态为 **B**：开始（创建流时）。 未提供统计信息。 C：继续执行正在进行的流。 以 5 分钟的时间间隔提供统计信息。 E：终止流时结束。 已提供统计信息。
+                    * **Flow State - 仅限版本 2** - 捕获流的状态。 可能的状态包括 **B**：创建流时开始。 未提供统计信息。 **C**：继续执行正在进行的流。 以 5 分钟的时间间隔提供统计信息。 **E**：在流终止时结束。 已提供统计信息。
                     * **Packets - 源到目标 - 仅限版本 2** 自上次更新以来，从源发送到目标的 TCP 或 UDP 数据包的总数。
                     * **Bytes sent - 源到目标 - 仅限版本 2** 自上次更新以来，从源发送到目标的 TCP 或 UDP 数据包字节的总数。 数据包字节包括数据包标头和有效负载。
                     * **Packets - 目标到源 - 仅限版本 2** 自上次更新以来，从目标发送到源的 TCP 或 UDP 数据包的总数。
@@ -71,7 +73,7 @@ https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecurity
 
 ## <a name="nsg-flow-logs-version-2"></a>NSG 流日志版本 2
 > [!NOTE] 
-> Flow Logs 版本 2 仅在美国中西部区域推出。 配置可通过 Azure 门户和 REST API 获取。 在不支持的区域启用版本 2 日志时，版本 1 日志会输出到存储帐户中。
+> Flow Logs 版本 2 仅在美国中西部区域推出。 在不支持的区域启用版本 2 日志时，版本 1 日志会输出到存储帐户中。
 
 版本 2 的日志引入了流状态。 可以配置接收的流日志的版本。 要了解如何启用流日志，请参阅[启用 NSG 流日志记录](network-watcher-nsg-flow-logging-portal.md)。
 
@@ -79,13 +81,19 @@ https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecurity
 
 对于延续 C 和结束 E 流状态，字节和数据包计数是从上一次流元祖记录时集合的计数。 引用上一示例会话，传输的数据包的总数是 1021+52+8005+47 = 9125。 传输的字节总数是 588096+29952+4610880+27072 = 5256000。
 
-示例：介于 185.170.185.105:35370 和 10.2.0.4:23 之间的 TCP 对话中的流元组：
+**示例**：介于 185.170.185.105:35370 和 10.2.0.4:23 之间的 TCP 对话中的流元组：
 
 "1493763938,185.170.185.105,10.2.0.4,35370,23,T,I,A,B,,,," "1493695838,185.170.185.105,10.2.0.4,35370,23,T,I,A,C,1021,588096,8005,4610880" "1493696138,185.170.185.105,10.2.0.4,35370,23,T,I,A,E,52,29952,47,27072"
 
 对于延续 C 和结束 E 流状态，字节和数据包计数是从上一次流元祖记录时集合的计数。 引用上一示例会话，传输的数据包的总数是 1021+52+8005+47 = 9125。 传输的字节总数是 588096+29952+4610880+27072 = 5256000。
 
 以下文本是流日志的示例。 可以看到，有多个记录遵循前一部分描述的属性列表。
+
+## <a name="nsg-flow-logging-considerations"></a>NSG 流日志记录注意事项
+
+**在附加到资源的所有 NSG 上启用 NSG 流日志记录**：Azure 中的流日志记录是在 NSG 资源上配置的。 一个流只与一个 NSG 规则相关联。 如果利用多个 NSG，则我们建议在应用资源子网或网络接口的所有 NSG 上启用 NSG 流日志记录，以确保记录所有流量。 有关网络安全组的详细信息，请参阅[流量评估方式](../virtual-network/security-overview.md#how-traffic-is-evaluated)。 
+
+**流日志记录成本**：NSG 流日志记录按生成的日志量计费。 流量较高时，流日志的量和相关成本可能会增大。 NSG 流日志定价不包括基本的存储成本。 将 NSG 流日志记录与保留策略功能结合使用可能会导致存储操作量和相关成本增加。 如果不需要使用保留策略功能，我们建议将此值设置为 0。 有关更多详细信息，请参阅[网络观察程序定价](https://azure.microsoft.com/en-us/pricing/details/network-watcher/)和 [Azure 存储定价](https://azure.microsoft.com/en-us/pricing/details/storage/)。
 
 ## <a name="sample-log-records"></a>示例日志记录
 

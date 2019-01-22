@@ -14,15 +14,31 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/20/2018
 ms.author: rkarlin
-ms.openlocfilehash: 5f6334f80b9c48832facba97b816d254baeb94bc
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: b5cb1fe623062816955278da7b0a9e63cbc19254
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53341297"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54258469"
 ---
 # <a name="understand-azure-security-center-container-recommendations"></a>了解 Azure 安全中心容器建议
 
+迁移整体应用程序以运行生产环境中的任务关键型容器化云原生应用程序时，可以利用容器的功能，包括简单快速的部署和更新。 随着部署的容器数不断增加，需要部署安全解决方案，以洞察容器的安全状态并帮助防范它们受到威胁。
+
+Azure 安全中心提供以下功能来帮助保护容器：
+
+- **洞察 IaaS Linux 计算机上托管的容器**<br>Azure 安全中心的“容器”选项卡会显示使用 Docker 部署的所有虚拟机。 浏览虚拟机上的安全问题时，安全中心会提供计算机上的容器相关的其他信息，例如 Docker 版本以及主机上运行的映像数。
+
+    ![容器选项卡](./media/security-center-container-recommendations/docker-recommendation.png)
+
+
+- **基于 Docker CIS 基准的安全建议**<br>安全中心扫描 Docker 配置，并提供已评估的所有失败规则列表让你洞察错误配置。 安全中心提供指导来帮助你快速解决这些问题，因此可节省时间。 安全中心持续评估 Docker 配置，并提供其最新状态。
+
+    ![容器选项卡](./media/security-center-container-recommendations/container-cis-benchmark.png)
+
+- **实时容器威胁检测**<br> 安全中心为配备 AuditD 组件的 Linux 计算机上的容器提供实时威胁检测结果。 警报中会指明多种可疑的 Docker 活动，例如，在主机上创建特权容器、指示安全外壳 (SSH) 服务器在 Docker 容器中运行，或使用加密货币采矿程序。 可以使用此信息快速补救安全问题，并提高容器的安全性。
+
+    ![容器选项卡](./media/security-center-container-recommendations/docker-threat-detection.png)
 
 ## <a name="recommendations"></a>建议
 使用下表作为参考，帮助了解 IaaS Linux 计算机上托管的可用容器以及 Docker 配置的安全性评估。

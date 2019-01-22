@@ -1,5 +1,5 @@
 ---
-title: 如何在 Azure 中更改 SQL VM 的许可模型 | Microsoft Docs
+title: 如何在 Azure 中更改 SQL Server VM 的许可模型 | Microsoft Docs
 description: 了解如何在 Azure 中切换 SQL 虚拟机的许可。
 services: virtual-machines-windows
 documentationcenter: na
@@ -15,31 +15,38 @@ ms.workload: iaas-sql-server
 ms.date: 11/14/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: cd784163047f4fe15fde719ce56aba64eed60dd2
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 1b1c7192eb8389d3ad3a1c7c935d9c7e2d8769a9
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53336979"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54359912"
 ---
 # <a name="how-to-change-the-licensing-model-for-a-sql-server-virtual-machine-in-azure"></a>如何在 Azure 中更改 SQL Server 虚拟机的许可模型
-本文介绍如何在 Azure 中使用新的 SQL 资源提供程序 **Microsoft.SqlVirtualMachine** 来更改 SQL Server 虚拟机的许可模型。 对于托管 SQL Server 的虚拟机 (VM) 来说，有两个许可模型 -“按使用情况付费”和“自带许可证(BYOL)”。 现在可以通过 PowerShell 或 Azure CLI 对 SQL VM 使用哪个许可模型进行修改。 
+本文介绍如何在 Azure 中使用新的 SQL VM 资源提供程序 **Microsoft.SqlVirtualMachine** 来更改 SQL Server 虚拟机的许可模型。 对于托管 SQL Server 的虚拟机 (VM) 来说，有两个许可模型 -“按使用情况付费”和“自带许可证(BYOL)”。 现在可以通过 PowerShell 或 Azure CLI 对 SQL Server VM 使用哪个许可模型进行修改。 
 
 “按使用情况付费”模型意味着 Azure VM 的每秒运行成本包括 SQL Server 许可证的费用。
 
-“自带许可证”模型也称 [Azure 混合权益](https://azure.microsoft.com/pricing/hybrid-benefit/)，允许在运行 SQL Server 的 VM 中使用你自己的 SQL Server 许可证。 有关价格的详细信息，请参阅 [SQL VM 定价指南](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-pricing-guidance)。
+“自带许可证”模型也称 [Azure 混合权益](https://azure.microsoft.com/pricing/hybrid-benefit/)，允许在运行 SQL Server 的 VM 中使用你自己的 SQL Server 许可证。 有关价格的详细信息，请参阅 [SQL Server VM 定价指南](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-pricing-guidance)。
 
 在两个许可证模型之间进行切换不会导致停机，不会重启 VM，不会增加费用（事实上，激活 AHB 会降低费用），并且会立即生效。 
 
+## <a name="prerequisites"></a>先决条件
+使用 SQL VM 资源提供程序需要安装 SQL IaaS 扩展。 因此，若要继续利用 SQL VM 提供程序，需要：
+- 一个 [Azure 订阅](https://azure.microsoft.com/free/)。
+- 一个装有 [SQL IaaS 扩展](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-agent-extension)的 [SQL Server VM](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision)。 
 
-## <a name="register-existing-sql-vm-with-new-resource-provider"></a>将现有 SQL VM 注册到新的资源提供程序
-在许可模型之间进行切换是新的 SQL VM 资源提供程序 (Microsoft.SqlVirtualMachine) 提供的一项功能。 目前，若要切换许可模型，首先需将新提供程序注册到订阅，然后将现有 VM 注册到新的 SQL VM 资源提供程序。 若要利用 SQL VM 资源提供程序，还必须安装 SQL IaaS 扩展。 这样做将允许你注册使用 VHD 部署的 VM。 有关详细信息，请参阅 [SQL IaaS 扩展](virtual-machines-windows-sql-server-agent-extension.md)。 
 
-  >[!IMPORTANT]
+## <a name="register-existing-sql-server-vm-with-new-resource-provider"></a>将现有 SQL Server VM 注册到新的资源提供程序
+在许可模型之间进行切换是新的 SQL VM 资源提供程序 (Microsoft.SqlVirtualMachine) 提供的一项功能。 在 2018 年 12 月之后部署的 SQL Server VM 会自动注册到新的资源提供程序。 但是，在此日期之前部署的现有 VM 需要手动注册到资源提供程序，然后它们才能切换许可模型。 
+
+
+
+
   > 如果删除 SQL VM 资源，则会回退到映像的硬编码许可证设置。 
 
-### <a name="powershell"></a>PowerShell
 
+### <a name="powershell"></a>PowerShell
 
 下面的代码片段将你连接到 Azure 并验证你正在使用哪个订阅 ID。 
 ```PowerShell
@@ -54,13 +61,14 @@ Get-AzureRmContext
 Set-AzureRmContext -SubscriptionId <Subscription_ID>
 ```
 
-以下代码片段首先为你的订阅注册新的 SQL 资源提供程序，然后将现有 SQL VM 注册到新的资源提供程序。 
+以下代码片段首先为你的订阅注册新的 SQL 资源提供程序，然后将现有 SQL Server VM 注册到新的资源提供程序。 
 
 ```powershell
 # Register the new SQL resource provider for your subscription
 Register-AzureRmResourceProvider -ProviderNamespace Microsoft.SqlVirtualMachine
 
-# Register your existing SQL VM with the new resource provider
+
+# Register your existing SQL Server VM with the new resource provider
 # example: $vm=Get-AzureRmVm -ResourceGroupName AHBTest -Name AHBTest
 $vm=Get-AzureRmVm -ResourceGroupName <ResourceGroupName> -Name <VMName>
 New-AzureRmResource -ResourceName $vm.Name -ResourceGroupName $vm.ResourceGroupName -Location $vm.Location -ResourceType Microsoft.SqlVirtualMachine/sqlVirtualMachines -Properties @{virtualMachineResourceId=$vm.Id}
@@ -78,13 +86,17 @@ New-AzureRmResource -ResourceName $vm.Name -ResourceGroupName $vm.ResourceGroupN
 
 
 ## <a name="use-powershell"></a>使用 PowerShell 
-可以使用 PowerShell 更改许可模型。  请确保在切换许可模型之前，SQL VM 已注册到新的 SQL 资源提供程序。 
+可以使用 PowerShell 更改许可模型。  请确保在切换许可模型之前，SQL Server VM 已注册到新的 SQL 资源提供程序。 
 
 以下代码片段将“按使用情况付费”许可证模型切换为“BYOL”（或者使用 Azure 混合权益）： 
 ```PowerShell
 #example: $SqlVm = Get-AzureRmResource -ResourceType Microsoft.SqlVirtualMachine/SqlVirtualMachines -ResourceGroupName AHBTest -ResourceName AHBTest
 $SqlVm = Get-AzureRmResource -ResourceType Microsoft.SqlVirtualMachine/SqlVirtualMachines -ResourceGroupName <resource_group_name> -ResourceName <VM_name>
 $SqlVm.Properties.sqlServerLicenseType="AHUB"
+<# the following code snippet is only necessary if using Azure Powershell version > 4
+$SqlVm.Kind= "LicenseChange"
+$SqlVm.Plan= [Microsoft.Azure.Management.ResourceManager.Models.Plan]::new()
+$SqlVm.Sku= [Microsoft.Azure.Management.ResourceManager.Models.Sku]::new() #>
 $SqlVm | Set-AzureRmResource -Force 
 ``` 
 
@@ -93,15 +105,19 @@ $SqlVm | Set-AzureRmResource -Force
 #example: $SqlVm = Get-AzureRmResource -ResourceType Microsoft.SqlVirtualMachine/SqlVirtualMachines -ResourceGroupName AHBTest -ResourceName AHBTest
 $SqlVm = Get-AzureRmResource -ResourceType Microsoft.SqlVirtualMachine/SqlVirtualMachines -ResourceGroupName <resource_group_name> -ResourceName <VM_name>
 $SqlVm.Properties.sqlServerLicenseType="PAYG"
+<# the following code snippet is only necessary if using Azure Powershell version > 4
+$SqlVm.Kind= "LicenseChange"
+$SqlVm.Plan= [Microsoft.Azure.Management.ResourceManager.Models.Plan]::new()
+$SqlVm.Sku= [Microsoft.Azure.Management.ResourceManager.Models.Sku]::new() #>
 $SqlVm | Set-AzureRmResource -Force 
 ```
 
   >[!NOTE]
-  > 若要在许可证之间进行切换，必须使用新的 SQL VM 资源提供程序。 如果你在将 SQL VM 注册到新提供程序之前尝试运行这些命令，可能会遇到以下错误：`Get-AzureRmResource : The Resource 'Microsoft.SqlVirtualMachine/SqlVirtualMachines/AHBTest' under resource group 'AHBTest' was not found. The property 'sqlServerLicenseType' cannot be found on this object. Verify that the property exists and can be set. ` 如果你看到此错误，请[将 SQL VM 注册到新的资源提供程序](#register-existing-SQL-vm-with-new-resource-provider)。 
+  > 若要在许可证之间进行切换，必须使用新的 SQL VM 资源提供程序。 如果你在将 SQL Server VM 注册到新提供程序之前尝试运行这些命令，可能会遇到以下错误：`Get-AzureRmResource : The Resource 'Microsoft.SqlVirtualMachine/SqlVirtualMachines/AHBTest' under resource group 'AHBTest' was not found. The property 'sqlServerLicenseType' cannot be found on this object. Verify that the property exists and can be set. ` 如果你看到此错误，请[将 SQL Server VM 注册到新的资源提供程序](#register-existing-SQL-vm-with-new-resource-provider)。 
  
 
 ## <a name="use-azure-cli"></a>使用 Azure CLI
-可以通过 Azure CLI 更改许可模型。  请确保在切换许可模型之前，SQL VM 已注册到新的 SQL 资源提供程序。 
+可以通过 Azure CLI 更改许可模型。  请确保在切换许可模型之前，SQL Server VM 已注册到新的 SQL 资源提供程序。 
 
 以下代码片段将“按使用情况付费”许可证模型切换为“BYOL”（或者使用 Azure 混合权益）：
 ```azurecli
@@ -116,17 +132,48 @@ az resource update -g <resource_group_name> -n <sql_virtual_machine_name> --reso
 ```
 
   >[!NOTE]
-  >若要在许可证之间进行切换，必须使用新的 SQL VM 资源提供程序。 如果你在将 SQL VM 注册到新提供程序之前尝试运行这些命令，可能会遇到以下错误：`The Resource 'Microsoft.SqlVirtualMachine/SqlVirtualMachines/AHBTest' under resource group 'AHBTest' was not found. ` 如果你看到此错误，请[将 SQL VM 注册到新的资源提供程序](#register-existing-SQL-vm-with-new-resource-provider)。 
+  >若要在许可证之间进行切换，必须使用新的 SQL VM 资源提供程序。 如果你在将 SQL Server VM 注册到新提供程序之前尝试运行这些命令，可能会遇到以下错误：`The Resource 'Microsoft.SqlVirtualMachine/SqlVirtualMachines/AHBTest' under resource group 'AHBTest' was not found. ` 如果你看到此错误，请[将 SQL Server VM 注册到新的资源提供程序](#register-existing-SQL-vm-with-new-resource-provider)。 
 
 ## <a name="view-current-licensing"></a>查看当前许可 
 
-可以使用以下代码片段查看 SQL VM 的当前许可模型。 
+可以使用以下代码片段查看 SQL Server VM 的当前许可模型。 
 
 ```PowerShell
-# View current licensing model for your SQL VM
+# View current licensing model for your SQL Server VM
 #example: $SqlVm = Get-AzureRmResource -ResourceType Microsoft.SqlVirtualMachine/SqlVirtualMachines -ResourceGroupName <resource_group_name> -ResourceName <VM_name>
 $SqlVm = Get-AzureRmResource -ResourceType Microsoft.SqlVirtualMachine/SqlVirtualMachines -ResourceGroupName <resource_group_name> -ResourceName <VM_name>
 $SqlVm.Properties.sqlServerLicenseType
+```
+
+## <a name="known-errors"></a>已知错误
+
+### <a name="sql-iaas-extension-is-not-installed-on-virtual-machine"></a>虚拟机上未安装 SQL IaaS 扩展
+必须安装 SQL IaaS 扩展才能将 SQL Server VM 注册到 SQL VM 资源提供程序。 如果尝试在安装 SQL IaaS 扩展之前注册 SQL Server VM，将遇到以下错误：
+
+`Sql IaaS Extension is not installed on Virtual Machine: '{0}'. Please make sure it is installed and in running state and try again later.`
+
+若要解决此问题，请在尝试注册 SQL Server VM 之前先安装 SQL IaaS 扩展。 
+
+  > [!NOTE]
+  > 安装 SQL IaaS 扩展会重启 SQL Server 服务，请只在维护时段进行安装。 有关详细信息，请参阅 [SQL IaaS 扩展安装](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-agent-extension#installation)。 
+
+### <a name="cannot-validate-argument-on-parameter-sku"></a>无法验证参数“Sku”中的自变量
+尝试使用 4.0 以上版本的 Azure PowerShell 更改 SQL Server VM 许可模型时，可能会遇到以下错误：
+
+`Set-AzureRmResource : Cannot validate argument on parameter 'Sku'. The argument is null or empty. Provide an argument that is not null or empty, and then try the command again.`
+
+若要解决此错误，请在切换许可模型时，取消注释上述 PowerShell 代码片段中的以下行： 
+```PowerShell
+# the following code snippet is necessary if using Azure Powershell version > 4
+$SqlVm.Kind= "LicenseChange"
+$SqlVm.Plan= [Microsoft.Azure.Management.ResourceManager.Models.Plan]::new()
+$SqlVm.Sku= [Microsoft.Azure.Management.ResourceManager.Models.Sku]::new()
+```
+
+使用以下代码验证 Azure PowerShell 版本：
+
+```PowerShell
+Get-Module -ListAvailable -Name Azure -Refresh
 ```
 
 ## <a name="next-steps"></a>后续步骤

@@ -4,14 +4,14 @@ description: 解答有关 Azure Migrate 的常见问题
 author: snehaamicrosoft
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 01/02/2019
+ms.date: 01/11/2019
 ms.author: snehaa
-ms.openlocfilehash: 787e3f53cb75b33b03c29b61b319270fdf7a63ca
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 2efa450b6b0cfa299370df3941224f4f64e91b4b
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53975468"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54230758"
 ---
 # <a name="azure-migrate---frequently-asked-questions-faq"></a>Azure Migrate - 常见问题解答 (FAQ)
 
@@ -53,6 +53,7 @@ Azure Migrate 当前支持将欧洲、美国和 Azure 政府作为项目地域�
 **地域** | **元数据存储位置**
 --- | ---
 Azure Government  | 美国政府弗吉尼亚州
+亚洲 | 东南亚
 欧洲 | 欧洲北部或欧洲西部
 美国 | 美国东部或美国中西部
 
@@ -63,6 +64,17 @@ Azure Government  | 美国政府弗吉尼亚州
 ### <a name="can-i-harden-the-vm-set-up-with-the-ova-template"></a>我可以使用 OVA 模板强化 VM 设置吗？
 
 只要 Azure Migrate 设备工作所需的通信和防火墙规则保持不变，就可以将其他组件（例如防病毒）添加到 OVA 模板中。   
+
+### <a name="to-harden-the-azure-migrate-appliance-what-are-the-recommended-antivirus-av-exclusions"></a>若要强化 Azure Migrate 设备，你们建议从防病毒软件 (AV) 中排除哪些项？
+
+在运行防病毒扫描的设备中，需要排除以下文件夹：
+
+- 包含 Azure Migrate 服务二进制文件的文件夹。 排除所有子文件夹。
+  %ProgramFiles%\ProfilerService  
+- Azure Migrate Web 应用程序。 排除所有子文件夹。
+  %SystemDrive%\inetpub\wwwroot
+- 数据库和日志文件的本地缓存。 Azure Migrate 服务需要对此文件夹拥有 RW 访问权限。
+  %SystemDrive%\Profiler
 
 ## <a name="discovery"></a>发现
 
@@ -136,6 +148,7 @@ Azure Migrate 支持两种发现：基于设备的发现和基于代理的发现
 
 在单个迁移项目中可以发现 1500 个虚拟机。 如果本地环境包含更多的计算机，请[详细了解](how-to-scale-assessment.md)如何在 Azure Migrate 中发现大型环境。
 
+
 ## <a name="assessment"></a>评估
 
 ### <a name="does-azure-migrate-support-enterprise-agreement-ea-based-cost-estimation"></a>Azure Migrate 是否支持基于企业协议 (EA) 的成本估计？
@@ -144,6 +157,13 @@ Azure Migrate 目前不支持[企业协议套餐](https://azure.microsoft.com/of
 
   ![折扣](./media/resources-faq/discount.png)
 
+### <a name="what-is-the-difference-between-as-on-premises-sizing-and-performance-based-sizing"></a>基于本地的大小和基于性能的大小之间的区别是什么？
+
+将大小调整标准指定为本地大小调整时，Azure Migrate 不会考虑 VM 的性能数据，也不会根据内部部署配置调整 VM 的大小。 如果调整大小条件是基于性能的，则调整大小操作是根据使用率数据完成的。 例如，如果某个本地 VM 具有 4 个核心和 8 GB 内存，CPU 利用率为 50% 且内存利用率为 50%。 如果大小调整标准与本地的大小调整标准相同，则会建议采用具有 4 个核心和 8 GB 内存的 Azure VM SKU；但是，如果大小调整标准是基于性能的，则会建议采用具有 2 个核心和 4 GB 内存的 VM SKU，因为在提出大小建议时会考虑利用率百分比。 同样，对于磁盘，磁盘大小调整取决于两个评估属性 - 大小调整标准和存储类型。 如果大小调整标准是基于性能的并且存储类型是自动，则会考虑磁盘的 IOPS 和吞吐量值来确定目标磁盘类型（标准或高级）。 如果大小调整标准是基于性能的并且存储类型是高级，则会建议采用高级磁盘，并且会基于本地磁盘的大小选择 Azure 中的高级磁盘 SKU。 当大小调整标准与本地大小调整标准相同并且存储类型为标准或高级时，将使用同一逻辑来执行磁盘大小调整。
+
+### <a name="what-impact-does-performance-history-and-percentile-utilization-have-on-the-size-recommendations"></a>性能历史记录和利用百分率对大小建议有什么影响？
+
+这些属性仅适用于基于性能的大小调整。 Azure Migrate 收集本地计算机的性能历史记录并使用它来针对 Azure 中的 VM 大小和磁盘类型提出建议。 收集器设备持续分析本地环境，每 20 秒收集一次实时利用率数据。 设备对时长 20 秒的样本进行汇总，每隔 15 分钟创建单个数据点。 为了创建单个数据点，设备从所有时长 20 秒的样本中选择峰值并将其发送到 Azure。 当你在 Azure 中创建评估时，Azure Migrate 会根据性能持续时间和性能历史记录百分位值计算有效利用率值并使用它进行大小调整。 例如，如果你将性能持续时间设置为 1 天，将百分位值设置为 95%，则 Azure Migrate 将使用收集器在上一天发送的 15 分钟样本点，按升序对其进行排序，并选取第 95 百分位值作为有效利用率。 第 95 百分位值可以确保忽略任何离群值，如果选取第 99 百分位值，可能会出现离群值。 如果希望选取期间的峰值利用率并且不希望错过任何离群值，则应当选择第 99 百分位值。
 
 ## <a name="dependency-visualization"></a>依赖项可视化
 

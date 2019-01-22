@@ -7,19 +7,19 @@ manager: cgronlun
 tags: azure-portal
 ms.service: search
 ms.topic: conceptual
-ms.date: 09/25/2018
+ms.date: 01/15/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 3c5e4d568e7118d50ce8779402526fca77ccdda7
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 664e31590f578b65da09f1e0fe8f57d579ed3cfc
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53315547"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54354546"
 ---
 # <a name="choose-a-pricing-tier-for-azure-search"></a>选择 Azure 搜索的定价层
 
-在 Azure 搜索中，[服务是在某个定价层或 SKU 中预配的](search-create-service-portal.md)，该定价层或 SKU 在该服务的整个生存期内是固定的。 层包括“免费”、“基本”或“标准”，其中“标准”在多个配置和容量中均可用。 大多数客户从“免费”层开始进行评估，然后升级到“标准”层进行开发和生产部署。 可以在“免费”层上完成所有快速入门和教程，包括资源密集型认知搜索的教程。 
+在 Azure 搜索中，[资源是在某个定价层或 SKU 中创建的](search-create-service-portal.md)，该定价层或 SKU 在该服务的整个生存期内是固定的。 层包括“免费”、“基本”或“标准”，其中“标准”提供多种配置和容量。 大多数客户从“免费”层开始进行评估，然后升级到“标准”层进行开发和生产部署。 可以在“免费”层上完成所有快速入门和教程，包括资源密集型认知搜索的教程。 
 
 层确定容量而不是功能，其区分依据如下：
 
@@ -32,7 +32,7 @@ ms.locfileid: "53315547"
 > 功能奇偶一致性的例外情况是[索引器](search-indexer-overview.md)，它们不可用于 S3HD。
 >
 
-在某个层中，可以[调整副本和分区资源](search-capacity-planning.md)以优化性能。 尽管可以从两个或三个资源着手，但也可以暂时提高重度索引工作负荷的计算能力。 在层中优化资源级别的功能可以增大灵活性，但也会略微增大分析的复杂性。 可能需要进行试验，以确定资源/副本数更多的较低层所提供的性价比，是否高于资源数更少的较高层。 若要详细了解何时以及为何调整容量，请参阅[性能和优化注意事项](search-performance-optimization.md)。
+在某个层中，可以[调整副本和分区资源](search-capacity-planning.md)以优化性能。 可以从两个或三个资源着手，然后暂时提高重度索引工作负荷的计算能力。 在层中优化资源级别的功能可以增大灵活性，但也会略微增大分析的复杂性。 可能需要进行试验，以确定资源/副本数更多的较低层所提供的性价比，是否高于资源数更少的较高层。 若要详细了解何时以及为何调整容量，请参阅[性能和优化注意事项](search-performance-optimization.md)。
 
 <!---
 The purpose of this article is to help you choose a tier. It supplements the [pricing page](https://azure.microsoft.com/pricing/details/search/) and [Service Limits](search-limits-quotas-capacity.md) page with a digest of billing concepts and consumption patterns associated with various tiers. It also recommends an iterative approach for understanding which tier best meets your needs. 
@@ -40,23 +40,46 @@ The purpose of this article is to help you choose a tier. It supplements the [pr
 
 ## <a name="how-billing-works"></a>计费原理
 
-在 Azure 搜索中，要了解的最重要计费概念是搜索单位 (SU)。 由于 Azure 搜索依赖于副本和分区来运行，因此只是按其中一个或另一个来计费都是没有意义的。 相反，应基于两者的组合来计费。 
+在门户中创建搜索资源时，有四个方面会产生 Azure 搜索费用：
+
+* 添加用于常规索引和查询任务的副本与分区。 可以从一个副本与分区着手，但也可以通过选择并支付更多的资源级别，来增加副本和/或分区以提高容量。 
+* 索引期间的数据流出费用。 从 Azure SQL 数据库或 Cosmos DB 数据源提取数据时，在这些资源的帐单中可以看到事务费用。
+* （仅适用于[认知搜索](cognitive-search-concept-intro.md)）文档破解期间的图像提取费用根据从文档中提取的图像数量计算。 文本提取目前是免费的。
+* （仅适用于[认知搜索](cognitive-search-concept-intro.md)）基于[内置认知技能](cognitive-search-predefined-skills.md)的扩充费用是针对认知服务资源计算的。 扩充费率与直接使用认知服务执行任务的费率相同。
+
+如果未使用[认知搜索](cognitive-search-concept-intro.md)或 [Azure 搜索索引器](search-indexer-overview.md)，则费用只与用于常规索引和查询工作负荷的实际使用的副本与分区相关。
+
+### <a name="billing-for-general-purpose-indexing-and-queries"></a>常规用途索引和查询的计费
+
+对于 Azure 搜索操作，要了解的最重要计费概念是搜索单位 (SU)。 由于 Azure 搜索必须同时使用副本和分区进行索引编制和查询，因此无法按其中的一个进行计费。 相反，应基于两者的组合来计费。 
 
 SU 是服务使用的副本数和分区数的乘积：**`(R X P = SU)`**
 
-每个服务至少从 1 个 SU（1 个分区乘以 1 个副本）开始。 所有服务的最大 SU 值均为 36，这可以通过多种方式来实现：6 个分区 x 6 个副本，或 3 个分区 x 12 个副本，等等。 
-
-通常使用小于总容量的值。 例如，3 副本、3 分区的服务按 9 个 SU 计费。 
+每个服务至少从 1 个 SU（1 个分区乘以 1 个副本）开始。 所有服务的最大 SU 值均为 36，这可以通过多种方式来实现：6 个分区 x 6 个副本，或 3 个分区 x 12 个副本，等等。 通常使用小于总容量的值。 例如，3 副本、3 分区的服务按 9 个 SU 计费。 
 
 费率**按每个 SU 每小时**计算，每个层的费率渐进式提高。 层越高，分区越大且速度越快，因此，每小时的总费率更高。 有关每层的费率，请参阅 [Pricing Details](https://azure.microsoft.com/pricing/details/search/)（定价详细信息）。 
 
 大多数客户只是联机使用一部分总容量，将剩余的容器保持预留状态。 在计费方面，实际支付的每小时费用取决于联机的分区和副本数量（使用 SU 公式计算）。
 
-### <a name="tips-for-reducing-costs"></a>有关降低成本的提示
+### <a name="billing-for-image-extraction-in-cognitive-search"></a>认知搜索中图像提取的计费
+
+如果从认知搜索索引管道中的文件提取图像，则 Azure 搜索帐单会收取该操作的费用。 触发图像提取的参数是[索引器配置](https://docs.microsoft.com/erest/api/searchservice/create-indexer#indexer-parameters)中的 **imageAction**。 如果 **imageAction** 设置为 none（默认值），则图像提取不产生费用。
+
+定价随时可能会更改，但 Azure 搜索的[定价详细信息](https://azure.microsoft.com/pricing/details/search/)页中始终会阐明定价。 
+
+### <a name="billing-for-built-in-skills-in-cognitive-search"></a>认知搜索中内置技能的计费
+
+设置扩充管道时，该管道中使用的任何[内置技能](cognitive-search-predefined-skills.md)基于机器学习模型。 这些模型由认知服务提供。 在编制索引期间使用这些模型的费率与直接请求资源的费率相同。
+
+例如，假设某个管道包括用于处理已扫描的 JPEG 图像文件的光学字符识别 (OCR)，其中的生成文本将推送到 Azure 搜索索引，以进行自由形式的搜索查询。 索引管道将包含一个带有 [OCR 技能](cognitive-search-skill-ocr.md)的索引器，而该技能将[附加到认知服务资源](cognitive-search-attach-cognitive-services.md)。 运行该索引器时，认知资源帐单上会显示 OCR 执行费用。
+
+## <a name="tips-for-reducing-costs"></a>有关降低成本的提示
 
 关闭服务不能降低费用。 专用资源全天候运行，是在服务的生存期内专门分配给你使用的。 降低费用的唯一方法是将副本和分区数减少到一个较低的水平，但仍能提供可接受的性能并[遵从 SLA](https://azure.microsoft.com/support/legal/sla/search/v1_0/)。 
 
-降低成本的一种手段是选择每小时费率较低的层。 S1 的每小时费率低于 S2 或 S3 的费率。 可以预配一个旨在满足预测负载下限的服务。 如果该服务无法满足需求，请创建另一个较大层的服务，在该服务上重建索引，然后删除第一个服务。 如果针对本地服务器做了容量规划，则会知道，常见的做法是“超量购买”，以便可以应对预测的增长。 但使用云服务时，可以采用更激进的方式来追求成本节省，因为你并不会受限于购买特定的产品。 如果当前服务能力不足，始终可以切换到更高层的服务。
+降低成本的一种手段是选择每小时费率较低的层。 S1 的每小时费率低于 S2 或 S3 的费率。 假设你预配了一个面向低端负载预测的服务。若要扩充该服务，可以创建另一个具有较大层的服务，在该服务上重建索引，然后删除第一个服务。 
+
+如果针对本地服务器做了容量规划，则会知道，常见的做法是“超量购买”，以便可以应对预测的增长。 但使用云服务时，可以采用更激进的方式来追求成本节省，因为你并不会受限于购买特定的产品。 如果当前服务能力不足，始终可以切换到更高层的服务。
 
 ### <a name="capacity-drill-down"></a>容量向下钻取
 
@@ -143,9 +166,9 @@ SU 是服务使用的副本数和分区数的乘积：**`(R X P = SU)`**
 
 **查询量注意事项**
 
-每秒查询数 (QPS) 是在性能调整过程中突出显示的一个指标，但通常不是层级考虑因素，除非你期望在一开始就有很高的查询量。
+每秒查询数 (QPS) 是在性能调整过程中突出显示的一个指标，但通常不是层级考虑因素，除非你期望在一开始就有较高的查询量。
 
-所有标准层都可以实现副本与分区的均衡，通过额外的负载均衡副本和并行处理分区来支持更快的查询周转速度。 你可以在预配服务后调整新能。
+标准层都可以实现副本与分区的均衡，通过额外的负载均衡副本和并行处理分区来支持更快的查询周转速度。 你可以在预配服务后调整新能。
 
 期待从一开始就拥有强大的持续查询量的客户，应该考虑由更强大的硬件支持的更高层级。 如果无法实现这些查询量，你可以使分区和副本脱机，或者甚至切换到较低层级的服务。 有关如何计算查询吞吐量的详细信息，请参阅 [Azure 搜索性能和优化](search-performance-optimization.md)。
 
