@@ -212,23 +212,21 @@ items:
     href: /azure/templates/microsoft.machinelearning/allversions
 - name: 资源
   items:
-  - name: 定价
-    href: https://azure.microsoft.com/pricing/details/machine-learning/
   - name: Azure 路线图
     href: https://azure.microsoft.com/roadmap/
-  - name: MSDN 论坛
-    href: https://social.msdn.microsoft.com/forums/azure/home?forum=MachineLearning
-  - name: 堆栈溢出
-    href: http://stackoverflow.com/questions/tagged/azure-machine-learning
+  - name: 定价
+    href: https://azure.microsoft.com/pricing/details/machine-learning/
   - name: R 开发人员指南
     href: ../r-developers-guide.md
   - name: 使用 Net# 的自定义神经网络
     href: azure-ml-netsharp-reference-guide.md
+  - name: 获取支持
+    href: support-aml-studio.md
   - name: 比较我们的 ML 产品
     href: ../service/overview-more-machine-learning.md
-ms.openlocfilehash: a79ff2e7b2fba67e5c341468b462eacd07e2693c
-ms.sourcegitcommit: c31a2dd686ea1b0824e7e695157adbc219d9074f
+ms.openlocfilehash: 585310705bebbceb0aa4576977ef096704d87483
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/18/2019
-ms.locfileid: "54401939"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54424779"
