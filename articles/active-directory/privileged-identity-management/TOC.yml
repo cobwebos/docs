@@ -7,9 +7,9 @@ items:
     href: pim-configure.md
 - name: 概念
   items:
-  - name: 订阅要求
+  - name: 许可要求
     href: subscription-requirements.md
-  - name: 可以管理的目录角色
+  - name: 你不能管理的角色
     href: pim-roles.md
   - name: 保护特权访问
     href: ../users-groups-roles/directory-admin-roles-secure.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json
@@ -19,8 +19,6 @@ items:
     href: pim-resource-roles-overview-dashboards.md
   - name: 电子邮件通知
     href: pim-email-notifications.md
-  - name: 分配类型
-    href: pim-resource-roles-eligible-visibility.md
   - name: Microsoft 图形 API
     href: pim-apis.md
 - name: 操作指南
@@ -41,8 +39,8 @@ items:
       href: pim-resource-roles-discover-resources.md
     - name: 将访问权限授予其他人以管理 PIM
       href: pim-how-to-give-access-to-pim.md
-    - name: 启用订阅管理
-      href: pim-resource-roles-enable-subscription-management.md
+    - name: 提升访问权限来管理所有订阅
+      href: ../../role-based-access-control/elevate-access-global-admin.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json
   - name: 管理目录角色
     items:
     - name: 分配角色
@@ -94,9 +92,9 @@ items:
       - name: 完成访问评审
         href: pim-resource-roles-complete-access-review.md
   expanded: true
-ms.openlocfilehash: 235d0444428072aa10558989904b92222e6fdbd1
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 2f68fbbf3ad2a8e2aa39d74a69c2bda12c5ec97a
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52723357"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54433197"

@@ -1,3 +1,11 @@
+---
+ms.openlocfilehash: 493ca6018a7eb94181deff946c6542463507761a
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54437974"
+---
 # [数据库迁移服务文档](index.yml)
 
 # 概述
@@ -25,16 +33,27 @@
 ## [数据库迁移方案状态](resource-scenario-status.md)
 ## [先决条件概述](pre-reqs.md)
 ## [Azure SQL DB 托管实例迁移的网络拓扑](resource-network-topologies.md)
-## [已知问题 - 联机迁移到 Azure SQL DB](known-issues-azure-sql-online.md)
-## [已知问题 - 联机迁移到用于 MySQL 的 Azure DB](known-issues-azure-mysql-online.md)
-## [已知问题 - 联机迁移到用于 PostgreSQL 的 Azure DB](known-issues-azure-postgresql-online.md)
-## [可用于数据迁移方案的服务和工具](dms-tools-matrix.md)
+## 已知问题
+### [已知问题 - 联机迁移到 Azure SQL DB](known-issues-azure-sql-online.md)
+### [已知问题 - 联机迁移到用于 MySQL 的 Azure DB](known-issues-azure-mysql-online.md)
+### [已知问题 - 联机迁移到用于 PostgreSQL 的 Azure DB](known-issues-azure-postgresql-online.md)
+## 视频
+### [使用数据库迁移指南](https://azure.microsoft.com/resources/videos/how-to-use-the-azure-database-migration-guide/)
+### [迁移过程和建议的工具/服务](https://azure.microsoft.com/resources/videos/overview-of-migration-and-recommended-tools-services/)
+### [满足先决条件并创建 DMS 实例](https://azure.microsoft.com/resources/videos/how-to-address-prerequisites-and-create-a-dms-instance/)
+### [将 SQL Server 2008 迁移到 Azure SQL 数据库托管实例](https://azure.microsoft.com/resources/videos/how-to-migrate-sql-server-2008-or-r2-to-azure-sqldbmi/)
+### [将 PostgreSQL 迁移到 Azure Database for PostgreSQL](https://azure.microsoft.com/resources/videos/how-to-migrate-postgresql-to-azure-postgresql-online-dms-and-cli/)
+### [监视联机迁移并执行直接转换](https://azure.microsoft.com/resources/videos/how-to-monitor-online-migration-and-perform-cutover/)
+### [将 Oracle 迁移到 Azure SQL 数据库](https://azure.microsoft.com/resources/videos/how-to-migrate-oracle-to-sqldb-online/)
+### [将 MongoDB 迁移到 Azure Cosmos DB](https://azure.microsoft.com/resources/videos/how-to-migrate-mongodb-to-cosmos-db/)
+## 工具和指南
+### [可用于数据迁移方案的服务和工具](dms-tools-matrix.md)
+### [数据库迁移指南](https://aka.ms/datamigration)
+### [Data Migration Assistant](https://aka.ms/dma)
+### [SQL Server 迁移助手](https://aka.ms/ssma)
+### [数据库实验助手](https://aka.ms/dea-docs)
 ## [常见问题](faq.md)
 ## [用户语音反馈](https://feedback.azure.com/forums/906100-azure-database-migration-service)
 ## [定价](https://aka.ms/dms-pricing)
 ## [服务更新](https://azure.microsoft.com/updates/?product=database-migration)
-## [数据库迁移指南](https://aka.ms/datamigration)
-## [Data Migration Assistant](https://aka.ms/dma)
-## [SQL Server 迁移助手](https://aka.ms/ssma)
-## [数据库实验助手](https://aka.ms/dea-docs)
 ## [Azure 路线图](https://azure.microsoft.com/roadmap/)
