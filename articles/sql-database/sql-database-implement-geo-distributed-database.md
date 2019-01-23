@@ -11,183 +11,116 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
-ms.date: 11/01/2018
-ms.openlocfilehash: e16e10067f358d90f801a80eec32fba4e14c017e
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.date: 01/03/2018
+ms.openlocfilehash: 679a02c760d8b37d94a734bc9b023ed8fe59acad
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53599665"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54198178"
 ---
 # <a name="tutorial-implement-a-geo-distributed-database"></a>教程：实现地理分散的数据库
 
-在本教程中，将配置 Azure SQL 数据库和应用程序以便故障转移到远程区域中，然后测试故障转移计划。 学习如何：
+配置 Azure SQL 数据库和应用程序以便故障转移到远程区域中并测试故障转移计划。 学习如何：
 
 > [!div class="checklist"]
-> - 创建数据库用户并授予权限
-> - 设置数据库级防火墙规则
 > - 创建[故障转移组](sql-database-auto-failover-group.md)
-> - 创建并编译 Java 应用程序以查询 Azure SQL 数据库
-> - 执行灾难恢复演练
+> - 运行 Java 应用程序以查询 Azure SQL 数据库
+> - 测试故障转移
 
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
 ## <a name="prerequisites"></a>先决条件
 
-若要完成本教程，请确保已完成了以下先决条件：
+若要完成本教程，请确保已安装以下各项：
 
-- 安装最新的 [Azure PowerShell](https://docs.microsoft.com/powershell/azureps-cmdlets-docs)。
-- 安装 Azure SQL 数据库。 本教程使用以下任一快速入门中名为“mySampleDatabase”的 AdventureWorksLT 示例数据库：
+- [Azure PowerShell](/powershell/azureps-cmdlets-docs)
+- Azure SQL 数据库。 若要创建一个，请使用以下各项：
+  - [门户](sql-database-get-started-portal.md)
+  - [CLI](sql-database-cli-samples.md)
+  - [PowerShell](sql-database-powershell-samples.md)
 
-  - [创建 DB - 门户](sql-database-get-started-portal.md)
-  - [创建 DB - CLI](sql-database-cli-samples.md)
-  - [创建 DB - PowerShell](sql-database-powershell-samples.md)
+  > [!NOTE]
+  > 本教程使用 AdventureWorksLT 示例数据库。
 
-- 已确定了对数据库执行 SQL 脚本的一种方法，可以使用以下查询工具之一：
-  - [Azure 门户](https://portal.azure.com)中的查询编辑器。 有关在 Azure 门户中使用查询编辑器的详细信息，请参阅[使用查询编辑器进行连接和查询](sql-database-get-started-portal.md#query-the-sql-database)。
-  - 最新版本的 [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) 是用于管理任何 SQL 基础结构的集成环境，这些基础结构包括从 Microsoft Windows 的 SQL Server 到 SQL 数据库等不同的结构。
-  - 最新版本的 [Visual Studio Code](https://code.visualstudio.com/docs) 是一种图形代码编辑器，适用于 Linux、macOS 和 Windows，并且支持各种扩展，其中包括 [mssql 扩展](https://aka.ms/mssql-marketplace)（用于查询 Microsoft SQL Server、Azure SQL 数据库和 SQL 数据仓库）。 有关在 Azure SQL 数据库中使用此工具的详细信息，请参阅[使用 VS 代码进行连接和查询](sql-database-connect-query-vscode.md)。
+- Java 和 Maven，请参阅[使用 SQL Server 生成应用](https://www.microsoft.com/sql-server/developer-get-started/)，突出显示“Java”并选择环境，然后按步骤操作。
 
-## <a name="create-database-users-and-grant-permissions"></a>创建数据库用户并授予权限
-
-使用以下查询工具之一连接到数据库并创建用户帐号：
-
-- Azure 门户中的查询编辑器
-- SQL Server Management Studio
-- Visual Studio Code
-
-这些用户帐号将自动复制到辅助服务器（并保持同步）。 如果进行连接的客户端所在的 IP 地址尚未配置防火墙，若要使用 SQL Server Management Studio 或 Visual Studio Code，则需要配置防火墙规则。 有关详细步骤，请参阅[创建服务器级防火墙规则](sql-database-get-started-portal-firewall.md)。
-
-- 在查询窗口中，执行以下查询以在数据库中创建两个用户帐户。 此脚本向“app_admin”帐户授予“db_owner”权限，并向“app_user”帐户授予“选择”和“更新”权限。
-
-   ```sql
-   CREATE USER app_admin WITH PASSWORD = 'ChangeYourPassword1';
-   --Add SQL user to db_owner role
-   ALTER ROLE db_owner ADD MEMBER app_admin;
-   --Create additional SQL user
-   CREATE USER app_user WITH PASSWORD = 'ChangeYourPassword1';
-   --grant permission to SalesLT schema
-   GRANT SELECT, INSERT, DELETE, UPDATE ON SalesLT.Product TO app_user;
-   ```
-
-## <a name="create-database-level-firewall"></a>创建数据库级防火墙
-
-为 SQL 数据库创建一个[数据库级防火墙规则](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-set-database-firewall-rule-azure-sql-database)。 此数据库级防火墙规则将自动复制到本教程中创建的辅助服务器。 为简单起见（在本教程中），请使用本教程中执行步骤的计算机的公共 IP 地址。 若要确定用于当前计算机的服务器级防火墙规则的 IP 地址，请参阅[创建服务器级防火墙](sql-database-get-started-portal-firewall.md)。  
-
-- 在打开的查询窗口中，将之前的查询替换为以下查询，将 IP 地址替换为环境中相应的 IP 地址。  
-
-   ```sql
-   -- Create database-level firewall setting for your public IP address
-   EXECUTE sp_set_database_firewall_rule @name = N'myGeoReplicationFirewallRule',@start_ip_address = '0.0.0.0', @end_ip_address = '0.0.0.0';
-   ```
+> [!IMPORTANT]
+> 请务必设置防火墙规则，以使用本教程中执行步骤的计算机的公共 IP 地址。 数据库级防火墙规则会自动复制到辅助服务器。
+>
+> 有关详细信息，请参阅[创建数据库级防火墙规则](/sql/relational-databases/system-stored-procedures/sp-set-database-firewall-rule-azure-sql-database)，或参阅[创建服务器级防火墙](sql-database-get-started-portal-firewall.md)，确定用于计算机的服务器级防火墙规则的 IP 地址。  
 
 ## <a name="create-a-failover-group"></a>创建故障转移组
 
-使用 Azure PowerShell 在现有 Azure SQL Server 和 Azure 区域中新的空白 Azure SQL Server 之间创建[故障转移组](sql-database-auto-failover-group.md)，然后将示例数据库添加到故障转移组。
+使用 Azure PowerShell，在现有 Azure SQL 服务器和另一个区域中的新 Azure SQL 服务器之间创建[故障转移组](sql-database-auto-failover-group.md)。 然后将示例数据库添加到故障转移组。
 
 > [!IMPORTANT]
-> 这些 cmdlet 需要 Azure PowerShell 4.0。 [!INCLUDE [sample-powershell-install](../../includes/sample-powershell-install-no-ssh.md)]
->
+> [!INCLUDE [sample-powershell-install](../../includes/sample-powershell-install-no-ssh.md)]
 
-1. 使用现有服务器和示例数据库的值填充 PowerShell 脚本的变量，并为故障转移组名称提供全局唯一值。
-
-   ```powershell
-   $adminlogin = "ServerAdmin"
-   $password = "ChangeYourAdminPassword1"
-   $myresourcegroupname = "<your resource group name>"
-   $mylocation = "<your resource group location>"
-   $myservername = "<your existing server name>"
-   $mydatabasename = "mySampleDatabase"
-   $mydrlocation = "<your disaster recovery location>"
-   $mydrservername = "<your disaster recovery server name>"
-   $myfailovergroupname = "<your unique failover group name>"
-   ```
-
-2. 在故障转移区域中创建空的备份服务器。
+若要创建故障转移组，请运行以下脚本：
 
    ```powershell
-   $mydrserver = New-AzureRmSqlServer -ResourceGroupName $myresourcegroupname `
-      -ServerName $mydrservername `
-      -Location $mydrlocation `
-      -SqlAdministratorCredentials $(New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList $adminlogin, $(ConvertTo-SecureString -String $password -AsPlainText -Force))
-   $mydrserver
+    # Set variables for your server and database
+    $adminlogin = "<your admin>"
+    $password = "<your password>"
+    $myresourcegroupname = "<your resource group name>"
+    $mylocation = "<your resource group location>"
+    $myservername = "<your existing server name>"
+    $mydatabasename = "<your database name>"
+    $mydrlocation = "<your disaster recovery location>"
+    $mydrservername = "<your disaster recovery server name>"
+    $myfailovergroupname = "<your globally unique failover group name>"
+
+    # Create a backup server in the failover region
+    New-AzureRmSqlServer -ResourceGroupName $myresourcegroupname `
+       -ServerName $mydrservername `
+       -Location $mydrlocation `
+       -SqlAdministratorCredentials $(New-Object -TypeName System.Management.Automation.PSCredential `
+          -ArgumentList $adminlogin, $(ConvertTo-SecureString -String $password -AsPlainText -Force))
+
+    # Create a failover group between the servers
+    New-AzureRMSqlDatabaseFailoverGroup `
+       –ResourceGroupName $myresourcegroupname `
+       -ServerName $myservername `
+       -PartnerServerName $mydrservername  `
+       –FailoverGroupName $myfailovergroupname `
+       –FailoverPolicy Automatic `
+       -GracePeriodWithDataLossHours 2
+
+    # Add the database to the failover group
+    Get-AzureRmSqlDatabase `
+       -ResourceGroupName $myresourcegroupname `
+       -ServerName $myservername `
+       -DatabaseName $mydatabasename | `
+     Add-AzureRmSqlDatabaseToFailoverGroup `
+       -ResourceGroupName $myresourcegroupname `
+       -ServerName $myservername `
+       -FailoverGroupName $myfailovergroupname
    ```
 
-3. 在两个服务器之间创建故障转移组。
+还可以通过选择数据库，然后选择“设置” > “异地复制”，在 Azure 门户中更改异地复制设置。
 
-   ```powershell
-   $myfailovergroup = New-AzureRMSqlDatabaseFailoverGroup `
-      –ResourceGroupName $myresourcegroupname `
-      -ServerName $myservername `
-      -PartnerServerName $mydrservername  `
-      –FailoverGroupName $myfailovergroupname `
-      –FailoverPolicy Automatic `
-      -GracePeriodWithDataLossHours 2
-   $myfailovergroup
-   ```
+![异地复制设置](./media/sql-database-implement-geo-distributed-database/geo-replication.png)
 
-4. 将数据库添加到故障转移组。
+## <a name="run-the-sample-project"></a>运行示例项目
 
-   ```powershell
-   $myfailovergroup = Get-AzureRmSqlDatabase `
-      -ResourceGroupName $myresourcegroupname `
-      -ServerName $myservername `
-      -DatabaseName $mydatabasename | `
-    Add-AzureRmSqlDatabaseToFailoverGroup `
-      -ResourceGroupName $myresourcegroupname ` `
-      -ServerName $myservername `
-      -FailoverGroupName $myfailovergroupname
-   $myfailovergroup
-   ```
-
-## <a name="install-java-software"></a>安装 Java 软件
-
-为了能够执行此部分中的步骤，需要熟悉如何使用 Java 开发，但不需要熟悉如何使用 Azure SQL 数据库。
-
-### <a name="mac-os"></a>Mac OS
-
-打开终端并导航到要在其中创建 Java 项目的目录。 输入以下命令安装 **brew** 和 **Maven**：
-
-```bash
-ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-brew update
-brew install maven
-```
-
-有关安装和配置 Java 和 Maven 环境的详细指导，请转到[使用 SQL Server 构建应用](https://www.microsoft.com/sql-server/developer-get-started/)，选择“Java”，选择“MacOS”，然后按照步骤 1.2 和 1.3 中配置 Java 和 Maven 的详细说明进行操作。
-
-### <a name="linux-ubuntu"></a>Linux (Ubuntu)
-
-打开终端并导航到要在其中创建 Java 项目的目录。 输入以下命令安装 **Maven**：
-
-```bash
-sudo apt-get install maven
-```
-
-有关安装和配置 Java 和 Maven 环境的详细指导，请转[使用 SQL Server 构建应用](https://www.microsoft.com/sql-server/developer-get-started/)，选择“Java”，选择“Ubuntu”然后按照步骤 1.2、1.3 和 1.4 中配置 Java 和 Maven 的详细说明进行操作。
-
-### <a name="windows"></a>Windows
-
-使用官方安装程序安装 [Maven](https://maven.apache.org/download.cgi)。 使用 Maven 帮助管理依赖项、内部版本、测试和运行 Java 项目。 有关安装和配置 Java 和 Maven 环境的详细指导，请转[使用 SQL Server 构建应用](https://www.microsoft.com/sql-server/developer-get-started/)，选择“Java”，选择“Windows”，然后按照步骤 1.2 和 1.3 中配置 Java 和 Maven 的详细说明进行操作。
-
-## <a name="create-sqldbsample-project"></a>创建 SqlDbSample 项目
-
-1. 在命令控制台（例如 Bash）中，创建 Maven 项目。
+1. 在控制台中，使用以下命令创建一个 Maven 项目：
 
    ```bash
    mvn archetype:generate "-DgroupId=com.sqldbsamples" "-DartifactId=SqlDbSample" "-DarchetypeArtifactId=maven-archetype-quickstart" "-Dversion=1.0.0"
    ```
 
-2. 键入“Y”，然后单击“输入”。
-3. 将目录更改到新创建的项目中。
+1. 键入“Y”，然后按 ENTER。
+
+1. 将目录切换到新项目。
 
    ```bash
-   cd SqlDbSamples
+   cd SqlDbSample
    ```
 
-4. 使用喜爱的编辑器，打开项目文件夹中的 pom.xml 文件夹。
+1. 使用喜爱的编辑器，打开项目文件夹中的 pom.xml 文件夹。
 
-5. 通过打开喜爱的文本编辑器并将以下行复制并粘贴到 pom.xml 文件中，将 Microsoft JDBC Driver for SQL Server 依赖项添加到 Maven 项目。 不要覆盖文件中预填充的现有值。 JDBC 依赖项必须粘贴在更大的“依赖项”部分（）中。
+1. 通过添加以下 `dependency` 部分添加 Microsoft JDBC Driver for SQL Server。 依赖项必须粘贴在更大的 `dependencies` 部分中。
 
    ```xml
    <dependency>
@@ -197,7 +130,7 @@ sudo apt-get install maven
    </dependency>
    ```
 
-6. 通过在“依赖项”部分之后的 pom.xml 文件中添加以下“属性”部分，指定编译项目时面向的 Java 版本。
+1. 通过在 `dependencies` 部分后添加 `properties` 部分来指定 Java 版本：
 
    ```xml
    <properties>
@@ -206,7 +139,7 @@ sudo apt-get install maven
    </properties>
    ```
 
-7. 在“属性”部分之后的 pom.xml 文件中添加以下“构建”部分，以支持 jar 中的清单文件。
+1. 通过在 `properties` 部分后添加 `build` 部分来支持清单文件：
 
    ```xml
    <build>
@@ -227,8 +160,9 @@ sudo apt-get install maven
    </build>
    ```
 
-8. 保存并关闭 pom.xml 文件。
-9. 打开 App.java 文件 (C:\apache-maven-3.5.0\SqlDbSample\src\main\java\com\sqldbsamples\App.java) 并将内容替换为以下内容。 将故障转移组名称替换为自己的故障转移组名称。 如果更改过数据库名称、用户或密码的值，则同时也更改这些值。
+1. 保存并关闭 pom.xml 文件。
+
+1. 打开 App.java 文件（位于 ..\SqlDbSample\src\main\java\com\sqldbsamples）并将内容替换为以下代码：
 
    ```java
    package com.sqldbsamples;
@@ -244,14 +178,20 @@ sudo apt-get install maven
 
    public class App {
 
-      private static final String FAILOVER_GROUP_NAME = "myfailovergroupname";
+      private static final String FAILOVER_GROUP_NAME = "<your failover group name>";  // add failover group name
   
-      private static final String DB_NAME = "mySampleDatabase";
-      private static final String USER = "app_user";
-      private static final String PASSWORD = "ChangeYourPassword1";
+      private static final String DB_NAME = "<your database>";  // add database name
+      private static final String USER = "<your admin>";  // add database user
+      private static final String PASSWORD = "<your password>";  // add database password
 
-      private static final String READ_WRITE_URL = String.format("jdbc:sqlserver://%s.database.windows.net:1433;database=%s;user=%s;password=%s;encrypt=true;hostNameInCertificate=*.database.windows.net;loginTimeout=30;", FAILOVER_GROUP_NAME, DB_NAME, USER, PASSWORD);
-      private static final String READ_ONLY_URL = String.format("jdbc:sqlserver://%s.secondary.database.windows.net:1433;database=%s;user=%s;password=%s;encrypt=true;hostNameInCertificate=*.database.windows.net;loginTimeout=30;", FAILOVER_GROUP_NAME, DB_NAME, USER, PASSWORD);
+      private static final String READ_WRITE_URL = String.format("jdbc:" +
+         "sqlserver://%s.database.windows.net:1433;database=%s;user=%s;password=%s;encrypt=true;" +
+         "hostNameInCertificate=*.database.windows.net;loginTimeout=30;", +
+         FAILOVER_GROUP_NAME, DB_NAME, USER, PASSWORD);
+      private static final String READ_ONLY_URL = String.format("jdbc:" +
+         "sqlserver://%s.secondary.database.windows.net:1433;database=%s;user=%s;password=%s;encrypt=true;" +
+         "hostNameInCertificate=*.database.windows.net;loginTimeout=30;", +
+         FAILOVER_GROUP_NAME, DB_NAME, USER, PASSWORD);
 
       public static void main(String[] args) {
          System.out.println("#######################################");
@@ -264,9 +204,11 @@ sudo apt-get install maven
          try {
             for(int i = 1; i < 1000; i++) {
                 //  loop will run for about 1 hour
-                System.out.print(i + ": insert on primary " + (insertData((highWaterMark + i))?"successful":"failed"));
+                System.out.print(i + ": insert on primary " +
+                   (insertData((highWaterMark + i))?"successful":"failed"));
                 TimeUnit.SECONDS.sleep(1);
-                System.out.print(", read from secondary " + (selectData((highWaterMark + i))?"successful":"failed") + "\n");
+                System.out.print(", read from secondary " +
+                   (selectData((highWaterMark + i))?"successful":"failed") + "\n");
                 TimeUnit.SECONDS.sleep(3);
             }
          } catch(Exception e) {
@@ -275,8 +217,9 @@ sudo apt-get install maven
    }
 
    private static boolean insertData(int id) {
-      // Insert data into the product table with a unique product name that we can use to find the product again later
-      String sql = "INSERT INTO SalesLT.Product (Name, ProductNumber, Color, StandardCost, ListPrice, SellStartDate) VALUES (?,?,?,?,?,?);";
+      // Insert data into the product table with a unique product name so we can find the product again
+      String sql = "INSERT INTO SalesLT.Product " +
+         "(Name, ProductNumber, Color, StandardCost, ListPrice, SellStartDate) VALUES (?,?,?,?,?,?);";
 
       try (Connection connection = DriverManager.getConnection(READ_WRITE_URL);
               PreparedStatement pstmt = connection.prepareStatement(sql)) {
@@ -293,7 +236,7 @@ sudo apt-get install maven
    }
 
    private static boolean selectData(int id) {
-      // Query the data that was previously inserted into the primary database from the geo replicated database
+      // Query the data previously inserted into the primary database from the geo replicated database
       String sql = "SELECT Name, Color, ListPrice FROM SalesLT.Product WHERE Name = ?";
 
       try (Connection connection = DriverManager.getConnection(READ_ONLY_URL);
@@ -308,7 +251,7 @@ sudo apt-get install maven
    }
 
    private static int getHighWaterMarkId() {
-      // Query the high water mark id that is stored in the table to be able to make unique inserts
+      // Query the high water mark id stored in the table to be able to make unique inserts
       String sql = "SELECT MAX(ProductId) FROM SalesLT.Product";
       int result = 1;
       try (Connection connection = DriverManager.getConnection(READ_WRITE_URL);
@@ -325,21 +268,21 @@ sudo apt-get install maven
    }
    ```
 
-10. 保存并关闭 App.java 文件。
+1. 保存并关闭 App.java 文件。
 
-## <a name="compile-and-run-the-sqldbsample-project"></a>编译并运行 SqlDbSample 项目
-
-1. 在命令控制台中执行以下命令。
+1. 在命令控制台中运行以下命令：
 
    ```bash
    mvn package
    ```
 
-2. 完成后，执行以下命令以运行该应用程序（将运行约 1 小时，除非手动停止）：
+1. 启动应用程序，该应用程序将运行约 1 小时，一直到手动停止，从而留出时间来运行故障转移测试。
 
    ```bash
    mvn -q -e exec:java "-Dexec.mainClass=com.sqldbsamples.App"
+   ```
 
+   ```output
    #######################################
    ## GEO DISTRIBUTED DATABASE TUTORIAL ##
    #######################################
@@ -347,60 +290,52 @@ sudo apt-get install maven
    1. insert on primary successful, read from secondary successful
    2. insert on primary successful, read from secondary successful
    3. insert on primary successful, read from secondary successful
+   ...
    ```
 
-## <a name="perform-disaster-recovery-drill"></a>执行灾难恢复演练
+## <a name="test-failover"></a>测试故障转移
 
-1. 调用故障转移组的手动故障转移。
+运行下列脚本来模拟故障转移并观察应用程序结果。 请注意数据库迁移过程中某些插入和选择的失败方法。
 
-   ```powershell
-   Switch-AzureRMSqlDatabaseFailoverGroup `
-   -ResourceGroupName $myresourcegroupname  `
-   -ServerName $mydrservername `
-   -FailoverGroupName $myfailovergroupname
-   ```
-
-2. 在故障转移期间观察应用程序结果。 DNS 缓存刷新时，某些插入将失败。
-
-3. 找出灾难恢复服务器正在执行的角色。
+此外，还可以在测试期间使用以下命令检查灾难恢复服务器的角色：
 
    ```powershell
-   $mydrserver.ReplicationRole
-   ```
-
-4. 故障回复。
-
-   ```powershell
-   Switch-AzureRMSqlDatabaseFailoverGroup `
-   -ResourceGroupName $myresourcegroupname  `
-   -ServerName $myservername `
-   -FailoverGroupName $myfailovergroupname
-   ```
-
-5. 故障回复期间观察应用程序结果。 DNS 缓存刷新时，某些插入将失败。
-
-6. 找出灾难恢复服务器正在执行的角色。
-
-   ```powershell
-   $fileovergroup = Get-AzureRMSqlDatabaseFailoverGroup `
+   (Get-AzureRMSqlDatabaseFailoverGroup `
       -FailoverGroupName $myfailovergroupname `
       -ResourceGroupName $myresourcegroupname `
-      -ServerName $mydrservername
-   $fileovergroup.ReplicationRole
+      -ServerName $mydrservername).ReplicationRole
+   ```
+
+若要测试故障转移，请执行以下操作：
+
+1. 启动故障转移组的手动故障转移：
+
+   ```powershell
+   Switch-AzureRMSqlDatabaseFailoverGroup `
+      -ResourceGroupName $myresourcegroupname `
+      -ServerName $mydrservername `
+      -FailoverGroupName $myfailovergroupname
+   ```
+
+1. 将故障转移组还原为主服务器：
+
+   ```powershell
+   Switch-AzureRMSqlDatabaseFailoverGroup `
+      -ResourceGroupName $myresourcegroupname `
+      -ServerName $myservername `
+      -FailoverGroupName $myfailovergroupname
    ```
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，已学习配置 Azure SQL 数据库和应用程序以便故障转移到远程区域，然后测试故障转移计划。  你已了解如何：
+在本教程中，已配置 Azure SQL 数据库和应用程序以便故障转移到远程区域中，并测试了故障转移计划。 你已了解如何：
 
 > [!div class="checklist"]
-> - 创建数据库用户并授予权限
-> - 设置数据库级防火墙规则
 > - 创建异地复制故障转移组
-> - 创建并编译 Java 应用程序以查询 Azure SQL 数据库
-> - 执行灾难恢复演练
+> - 运行 Java 应用程序以查询 Azure SQL 数据库
+> - 测试故障转移
 
-转到下一教程，了解如何使用 DMS 将 SQL Server 迁移到 Azure SQL 数据库托管实例。
+转到下一教程，其中介绍了如何使用 DMS 进行迁移。
 
 > [!div class="nextstepaction"]
->[使用 DMS 将 SQL Server 迁移到 Azure SQL 数据库托管实例](../dms/tutorial-sql-server-to-managed-instance.md)
+> [使用 DMS 将 SQL Server 迁移到 Azure SQL 数据库托管实例](../dms/tutorial-sql-server-to-managed-instance.md)

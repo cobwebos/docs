@@ -12,118 +12,66 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/18/2017
+ms.date: 1/2/2019
 ms.author: rkarlin
-ms.openlocfilehash: d496f3f28cee711109c5c200102d48482bf6cd9c
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: b973bb0e5cd9504725be385ab8505adbb140c950
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53340685"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54261853"
 ---
 # <a name="use-azure-security-center-recommendations-to-enhance-security"></a>使用 Azure 安全中心建议增强安全性
 可以通过配置安全策略，并实施 Azure 安全中心提供的建议，降低发生重大安全事件的可能性。 本文说明了如何使用安全中心内的安全策略和建议来帮助减少安全攻击。
 
-> [!NOTE]
-> 本文基于安全中心[规划和操作指南](security-center-planning-and-operations-guide.md)中引入的的角色和概念。 在继续阅读本文之前，最好先查看该规划指南。
->
->
-
-## <a name="managing-security-recommendations"></a>管理安全建议
-安全策略用于定义一组控制，这些控制是针对指定订阅或资源组中的资源建议的。 在安全中心内定义策略时，需考虑到公司的安全要求。 若要了解详细信息，请参阅[在安全中心设置安全策略](tutorial-security-policy.md)。
-
-资源组的安全策略从订阅级别继承。
-
-![安全策略继承][1]
-
-若需在特定资源组中应用自定义策略，可以在资源组中禁用继承。 要禁用，请将“安全策略”边栏选项卡上的“继承”设置为“唯一”，并且对安全中心将为哪些控件显示建议进行自定义。
-
-例如，如果有不需要 SQL 数据库透明数据加密 (TDE) 策略的工作负荷，请在订阅级别关闭该策略，仅在需要 SQL TDE 的资源组中启用。
-
-> [!NOTE]
-> 在订阅级别策略与资源组级别策略冲突时，以资源组级别策略为准。
->
->
-
-安全中心将分析 Azure 资源的安全状态。 安全中心识别到潜在的安全漏洞时，会基于安全策略中设置的控件创建建议。 这些建议将指导用户完成配置所需安全控件的过程。
-
-安全中心内的当前策略建议聚焦于系统更新、操作系统配置、有关子网和虚拟机 (VM) 的网络安全组、SQL 数据库审核、SQL 数据库 TDE，以及 Web 应用程序防火墙。 有关安全中心建议的最新覆盖范围，请参阅[管理安全中心内的安全建议](security-center-recommendations.md)。
+安全中心将分析 Azure 资源的安全状态。 在安全中心识别潜在的安全漏洞时，它会创建一些建议，这些建议会指导完成配置所需安全控件的过程。
 
 ## <a name="scenario"></a>场景
-此方案显示如何通过监视安全中心建议并采取措施，来使用安全中心帮助降低发生重大安全事件的可能性。 本方案使用虚构的公司 Contoso，以及安全中心[规划和操作指南](security-center-planning-and-operations-guide.md#security-roles-and-access-controls)中提供的角色。 这些角色代表了可以使用安全中心执行不同的安全相关任务的个人和团队。 这些角色为：
+此方案显示如何通过监视安全中心建议并采取措施，来使用安全中心帮助降低发生安全事件的可能性。 本方案使用虚构的公司 Contoso，以及安全中心[规划和操作指南](security-center-planning-and-operations-guide.md#security-roles-and-access-controls)中提供的角色。 在此方案中，我们将着重探讨以下角色：
 
-![方案角色][2]
+![方案角色](./media/security-center-using-recommendations/scenario-roles.png)
 
-Contoso 最近将其某些本地资源迁移到了 Azure。 Contoso 希望实施并维护保护措施，减少对其云中的资源发起的安全攻击可利用的漏洞。
+Contoso 最近将其某些本地资源迁移到了 Azure。 Contoso 希望保护其资源并减少其云中资源的漏洞。
 
-## <a name="recommended-solution"></a>建议的解决方案
-一种解决方案是使用安全中心来预防并检测安全漏洞。 Contoso 有权通过其 Azure 订阅访问安全中心。 所有 Azure 订阅上均自动启用安全中心的[免费层](security-center-pricing.md)，并且其订阅中的所有 VM 上均会启用数据收集。
+## <a name="use-azure-security-center"></a>使用 Azure 安全中心
+Contoso 的 IT 安全部门的 David 已选择将 Contoso 订阅上的安全中心载入 Azure 安全中心，以预防和检测安全漏洞。 
 
-Contoso 的 IT 安全部门的 David 使用安全中心配置**安全策略**。 安全中心将分析 Contoso 的 Azure 资源安全状态。 安全中心识别到潜在的安全漏洞时，会基于安全策略中设置的控件创建**建议**。
+安全中心自动分析 Contoso 的 Azure 资源的安全状态，并应用默认安全策略。 安全中心识别到潜在的安全漏洞时，会基于安全策略中设置的控件创建**建议**。 
 
-云工作负荷所有者 Jeff 负责根据 Contoso 的安全策略实施和维护各种保护措施。 Jeff 可监视安全中心创建的建议，以应用保护措施。 这些建议将指导 Jeff 完成配置所需安全控件的过程。
+David 在其所有订阅中运行 Azure 安全标准层，以获取可用的建议和安全功能的完整套件。 Jeff 也将所有尚未迁移的现有本地服务器载入云，以便他可以跨 [Windows](quick-onboard-windows-computer.md) 和 [Linux](quick-onboard-linux-computer.md) 服务器利用安全中心的混合支持。
 
-为了使 Jeff 可以实施和维护保护措施并消除安全漏洞，他需要：
+Jeff 是云工作负荷所有者。 Jeff 负责根据 Contoso 的安全策略应用安全控件。 
+
+Jeff 执行以下任务：
 
 - 监视安全中心提供的安全建议
 - 评估安全建议，并决定他是应当应用还是取消
 - 应用安全建议
 
-让我们按照 Jeff 的步骤，了解他如何使用安全中心建议来指导他完成配置控件以消除安全漏洞的过程。
+### <a name="remediate-threats-using-recommendations"></a>使用建议修正威胁
+作为每日监视活动的一部分，Jeff 登录 Azure 并打开安全中心。 
 
-## <a name="how-to-implement-this-solution"></a>如何实施该解决方案
-Jeff 登录到 [Azure 门户](https://azure.microsoft.com/features/azure-portal/)，并打开安全中心控制台。 作为其每日监视活动的一部分，他会通过执行以下步骤来查看是否有安全建议：
+1. Jeff 选择其工作负荷的订阅。
 
-1. Jeff 选择“建议”磁贴以打开“建议”。
-   ![选择“建议”磁贴][3]
-2. Jeff 查看建议列表。 他会看到安全中心已按优先级顺序（从最高优先级到最低优先级）提供了建议列表。 他决定处理列表上的高优先级建议。 他在“建议”下选择“安装终结点保护”。
-3. “安装终结点保护”将打开，显示未启用反恶意软件的 VM 列表。 Jeff 查看 VM 列表，选择所有 VM，并选择“在 3 个 VM 上安装”。
-   ![安装终结点保护][4]
-4. “选择终结点保护”将打开，向 Jeff 提供两个反恶意软件解决方案。 Jeff 选择“Microsoft 反恶意软件”解决方案。
-5. 将显示有关反恶意软件解决方案的其他信息。 Jeff 选择“创建”。
-   ![Microsoft 反恶意软件][5]
-6. Jeff 在“安装”下输入所需的配置设置，并选择“确定”。
+2. Jeff 查看自己的安全功能分数，以全面了解订阅的安全状态，他看到分数是 548。
 
-[Microsoft 反恶意软件](../security/azure-security-antimalware.md)目前在所选 VM 上处于活动状态。
+3. Jeff 必须决定要首先处理哪些建议。 因此，Jeff 单击安全功能分数并开始根据其提高[安全功能分数影响](security-center-secure-score.md)的程度来处理建议。
 
-Jeff 继续浏览高优先级和中优先级建议，进行有关实施的决策。 Jeff 参考[管理安全建议](security-center-recommendations.md)文章，了解建议以及实施每个建议后的效果。
+4. 由于 Jeff 有大量连接的 VM 和服务器，因此他决定关注“计算和应用”。
 
-Jeff 获悉 [Microsoft 安全响应中心 (MSRC)](../security/azure-security-response-center.md) 会执行 Azure 网络和基础结构的选择安全监视，并接收来自第三方的威胁情报和滥用行为投诉。 如果 Jeff 为 Contoso 的 Azure 订阅提供安全联系人详细信息，那么在 MSRC 发现 Contoso 的客户数据已被非法的一方或未经授权方访问时，Microsoft 将联系 Contoso。 当 Jeff 应用“提供安全联系人详细信息”建议（上面的建议列表中严重性为“中”的建议）时，让我们按照他的步骤执行操作。
+5. 当 Jeff 单击“计算和应用”时，他会看到建议列表，并根据安全功能分数影响处理这些建议。
 
-1. Jeff 选择“建议”下的“提供安全联系人详细信息”，这会打开“提供安全联系人详细信息”。
-2. Jeff 选择要提供联系人信息的 Azure 订阅。 会再打开一个“提供安全联系人详细信息”边栏选项卡。
-   ![安全联系人详细信息][6]
-3. 在“提供安全联系人详细信息”下，Jeff 输入：
+6. Jeff 拥有许多面向 VM 的 Internet，并且由于其端口是公开的，所以他担心攻击者可能控制服务器。 因此 Jeff 选择使用（实时 VM 访问）[security-center-just-in-time.md]。
 
-  - 由逗号分隔的安全联系人电子邮件地址（他可以输入的电子邮件地址数没有限制）
-  - 一个安全联系人电话号码
-
-4. Jeff 也会启用选项“向我发送有关警报的电子邮件”，以便接收有关高严重性警报的电子邮件。
-5. Jeff 选择“确定”，将安全联系人信息应用到 Contoso 的订阅。
-
-最后，Jeff 查看低优先级建议“修正 OS 漏洞”并确定此建议不适用。 他想要取消该建议。 Jeff 选择显示在右侧的三个点，并选择“取消”。
-   ![取消建议][7]
+Jeff 继续浏览高优先级和中优先级建议，并进行有关实施的决策。 对于每项建议，Jeff 会查看安全中心提供的详细信息，以了解受影响的资源、安全功能分数的影响、每项建议的含义以及缓解每个问题的修正步骤。
 
 ## <a name="conclusion"></a>结束语
-监视安全中心内的建议可有助于在发生攻击之前消除安全漏洞。 可以通过使用安全中心内的安全策略来实施和维护保护措施，从而防止安全事件发生。
+监视安全中心内的建议有助于在发生攻击之前消除安全漏洞。 修正建议时，安全功能分数和工作负荷的安全状况会提高。 安全中心自动发现部署的新资源，根据安全策略对其进行评估，并提供新的建议对其进行保护。
+
 
 ## <a name="next-steps"></a>后续步骤
+确保拥有一个适当的监视进程，定期检查安全中心中的建议，以便可以确保在一段时间内保护资源的安全。
+
 此方案说明了如何使用安全中心内的安全策略和建议来帮助减少安全攻击。 请参阅[事件响应方案](security-center-incident-response.md)，了解如何在攻击发生之前制定事件响应计划。
 
-若要了解有关安全中心的详细信息，请参阅：
-
-* [安全运行状况监视](security-center-monitoring.md) — 了解如何监视 Azure 资源的运行状况。
-* [管理和响应安全警报](security-center-managing-and-responding-alerts.md) — 了解如何管理和响应安全警报。
-* [监视和处理安全事件](security-center-events-dashboard.md) - 了解如何监视和处理随着时间的推移收集到的安全事件。
-* [监视合作伙伴解决方案](security-center-partner-solutions.md) — 了解如何监视合作伙伴解决方案的运行状态。
-* [Azure Security Center FAQ](security-center-faq.md) （Azure 安全中心常见问题）- 查找有关如何使用服务的常见问题。
-* [Azure 安全博客](https://blogs.msdn.com/b/azuresecurity/) — 获取最新的 Azure 安全新闻和信息。
-
-<!--Image references-->
-[1]: ./media/security-center-using-recommendations/security-center-policy-inheritance.png
-[2]: ./media/security-center-using-recommendations/scenario-roles.png
-[3]: ./media/security-center-using-recommendations/select-recommendations-tile.png
-[4]: ./media/security-center-using-recommendations/install-endpoint-protection.png
-[5]:./media/security-center-using-recommendations/microsoft-antimalware.png
-[6]: ./media/security-center-using-recommendations/provide-security-contact-details.png
-[7]: ./media/security-center-using-recommendations/dismiss-recommendation.png
+了解如何通过[事件响应](security-center-incident-response.md)来响应威胁。
