@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 14b108a836424e92a251f50b42ed93963038a333
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: e9fc8351b5e9a4f2274f0906d4071f86dcbcff26
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53192050"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54259676"
 ---
 # <a name="install-the-azure-virtual-machine-agent-in-offline-mode"></a>在脱机模式下安装 Azure 虚拟机代理 
 
@@ -35,6 +35,14 @@ Azure 虚拟机代理（VM 代理）可提供多种有用的功能，例如本�
 ## <a name="how-to-install-the-vm-agent-in-offline-mode"></a>如何在脱机模式下安装 VM 代理
 
 可以使用以下步骤，在脱机模式下安装 VM 代理。
+
+> [!NOTE]
+> 可以在脱机模式下自动执行 VM 代理的安装过程。
+> 若要执行此操作，请使用 [Azure VM 恢复脚本](https://github.com/Azure/azure-support-scripts/blob/master/VMRecovery/ResourceManager/README.md)。 如果选择使用 Azure VM 恢复脚本，则可以使用以下过程：
+> 1. 使用脚本将受影响的 VM 的 OS 磁盘附加到恢复 VM，则可跳过步骤 1。
+> 2. 请按照步骤 2 - 10 应用补救措施。
+> 3. 使用脚本重新生成 VM，则可跳过步骤 11。
+> 4. 请遵循步骤 12。
 
 ### <a name="step-1-attach-the-os-disk-of-the-vm-to-another-vm-as-a-data-disk"></a>步骤 1：将 VM 的 OS 磁盘作为数据磁盘附加到另一 VM
 

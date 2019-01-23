@@ -13,12 +13,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/16/2016
 ms.author: kasparks
-ms.openlocfilehash: 963960657fb8c16307dbf062c0b16cd74a4a7b3f
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 3caf838fec3a5c0ab847ded85b269df7a66859e0
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54101711"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54266739"
 ---
 # <a name="advisor-performance-recommendations"></a>顾问性能建议
 
@@ -32,7 +32,7 @@ Azure 顾问将识别配置了较长 TTL 的流量管理器配置文件，并建
 
 ## <a name="improve-database-performance-with-sql-db-advisor"></a>通过 SQL DB 顾问提高数据库性能
 
-顾问针对所有 Azure 资源提供一个一致且统一的建议视图。 它与 SQL 数据库顾问集成，提供建议以改进 SQL Azure 数据库性能。 SQL 数据库顾问通过分析使用情况历史记录来评估 SQL Azure 数据库的性能。 提供的建议最适合运行数据库典型工作负荷。 
+顾问针对所有 Azure 资源提供一个一致且统一的建议视图。 它与 SQL 数据库顾问集成，提供建议以改进 SQL Azure 数据库性能。 SQL 数据库顾问通过分析使用情况历史记录来评估 SQL Azure 数据库的性能。 提供的建议最适合运行数据库典型工作负荷。
 
 > [!NOTE]
 > 若要获取建议，数据库必须具有一周左右的使用量，且该周内必须有一些一致的活动。 SQL 数据库顾问优化一致的查询模式比优化随机的突发活动更加轻松。
@@ -43,7 +43,7 @@ Azure 顾问将识别配置了较长 TTL 的流量管理器配置文件，并建
 
 Azure 顾问集成最佳做法建议，可改善应用服务体验，并发现相关平台的功能。 以下为应用服务建议示例：
 * 检测其中应用运行时已耗尽内存或 CPU 资源的实例，并提出缓解措施。
-* 检测在其中并置资源（如 Web 应用和数据库）的实例，以改善性能并降低成本。 
+* 检测在其中并置资源（如 Web 应用和数据库）的实例，以改善性能并降低成本。
 
 有关应用服务建议的详细信息，请参阅 [Best Practices for Azure App Service](https://azure.microsoft.com/documentation/articles/app-service-best-practices/)（Azure 应用服务的最佳实践）。
 
@@ -75,7 +75,10 @@ Azure 顾问会检测 SQL 数据仓库是否具有高缓存使用百分比和低
 
 ## <a name="migrate-your-storage-account-to-azure-resource-manager-to-get-all-of-the-latest-azure-features"></a>将存储帐户迁移到 Azure 资源管理器来获取所有最新 Azure 功能。
 
-将存储帐户部署模型迁移到 Azure 资源管理器 (ARM) 可利用模板部署和更多的安全选项，并可升级到 GPv2 帐户来利用 Azure 存储的最新功能。 顾问将识别使用经典部署模型的任何独立存储帐户，并建议迁移到 ARM 部署模型。 
+将存储帐户部署模型迁移到 Azure 资源管理器 (ARM) 可利用模板部署和更多的安全选项，并可升级到 GPv2 帐户来利用 Azure 存储的最新功能。 顾问将识别使用经典部署模型的任何独立存储帐户，并建议迁移到 ARM 部署模型。
+
+> [!NOTE]
+> Azure Monitor 中的经典警报宣布将在 2019 年 6 月停用，建议将经典存储帐户升级到 ARM 以通过新平台保留警报功能。 有关详细信息，请参阅[经典警报停用](https://azure.microsoft.com/updates/classic-alerting-monitoring-retirement/)。
 
 ## <a name="how-to-access-performance-recommendations-in-advisor"></a>如何访问顾问中的性能建议
 
@@ -92,4 +95,3 @@ Azure 顾问会检测 SQL 数据仓库是否具有高缓存使用百分比和低
 * [顾问成本建议](advisor-performance-recommendations.md)
 * [顾问高可用性建议](advisor-high-availability-recommendations.md)
 * [顾问安全性建议](advisor-security-recommendations.md)
-

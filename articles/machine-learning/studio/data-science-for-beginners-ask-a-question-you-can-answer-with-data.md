@@ -1,27 +1,8 @@
 ---
-title: 提出数据可解答的问题 - Azure 机器学习工作室 | Microsoft Docs
-description: 通过学习“适合初学者的数据科学”视频 3，了解如何将棘手的数据科学问题公式化。 包括分类和回归问题的比较。
-keywords: 数据科学问题，数据科学问题，公式化问题，回归问题，分类问题，针对性问题
-services: machine-learning
-documentationcenter: na
-author: garyericson
-ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
-ms.author: garye
-editor: cjgronlund
-ms.assetid: 5b9501e3-9964-417a-8ffc-8913103da77b
-ms.service: machine-learning
-ms.component: studio
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 01/03/2018
-ms.openlocfilehash: 8f117a8c47d7c98f13101efe0ca5147ce8d8c25a
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
-ms.translationtype: HT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53250971"
+title:提出数据可解答的问题 titleSuffix: Azure 机器学习工作室 description:通过学习“适合初学者的数据科学”视频 3，了解如何将棘手的数据科学问题公式化。 包括分类和回归问题的比较。
+services: machine-learning ms.service: machine-learning ms.component: studio ms.topic: article
+
+author: garyericson ms.author: garye ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro ms.date:2018/01/03
 ---
 # <a name="ask-a-question-you-can-answer-with-data"></a>提出数据方面的可解答问题
 ## <a name="video-3-data-science-for-beginners-series"></a>视频 3：适合初学者的数据科学系列

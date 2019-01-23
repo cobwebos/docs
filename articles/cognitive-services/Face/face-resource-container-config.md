@@ -11,12 +11,12 @@ ms.component: text-analytics
 ms.topic: conceptual
 ms.date: 11/14/2018
 ms.author: diberry
-ms.openlocfilehash: 18c9eace306522f9ac9f04e19b9571db67561ae0
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: eabbe8d771520d5b1d5360a3d86b96d27ea08277
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53725044"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54359436"
 ---
 # <a name="configure-containers"></a>配置容器
 
@@ -116,7 +116,7 @@ ms.locfileid: "53725044"
   人脸容器使用 Azure 存储和 Azure Cosmos DB 在持久存储中分发这四种类型的数据。 Azure 存储处理 blob 和队列数据。 由 Azure Cosmos DB 处理元数据和缓存数据。 如果停止或删除人脸容器，则该容器的所有存储数据仍保存在 Azure 存储和 Azure Cosmos DB 中。  
   Azure 存储方案使用的资源具有以下附加要求
   * Azure 存储资源必须使用 StorageV2 帐户类型
-  * Azure Cosmos DB 资源必须使用 Azure Cosmos DB for MongoDB API
+  * Azure Cosmos DB 资源必须使用用于 MongoDB 的 Auzre Cosmos DB API
 
 存储方案和关联的配置设置由 `Storage` 对象在 `CloudAI` 配置部分下进行管理。 `Storage` 对象中提供了以下配置设置：
 

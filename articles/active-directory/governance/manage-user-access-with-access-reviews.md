@@ -15,12 +15,12 @@ ms.component: compliance
 ms.date: 06/21/2018
 ms.author: rolyon
 ms.reviewer: mwahl
-ms.openlocfilehash: 5af1d91a51b090821b5bbb314834db0d5cbe6a26
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.openlocfilehash: 9ada31066b905ca4335acf78ae87534e4c359651
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45606857"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54331854"
 ---
 # <a name="manage-user-access-with-azure-ad-access-reviews"></a>使用 Azure AD 访问评审管理用户访问权限
 
@@ -44,11 +44,11 @@ ms.locfileid: "45606857"
 
 2. 决定是由每个用户评审自己的访问权限，还是由一个或多个用户评审每个人的访问权限。
 
-3. 使访问评审能够显示在审阅者的访问面板上。 以全局管理员或用户帐户管理员身份，转到[访问评审页面](https://portal.azure.com/#blade/Microsoft_AAD_ERM/DashboardBlade/)。
+3. 以全局管理员或用户帐户管理员身份，转到[访问评审页面](https://portal.azure.com/#blade/Microsoft_AAD_ERM/DashboardBlade/)。
 
-4. 开始访问评审。 有关详细信息，请参阅[创建访问评审](create-access-review.md)。
+4. 创建访问评审。 有关详细信息，请参阅[创建访问评审](create-access-review.md)。
 
-5. 要求审阅者提供输入。 默认情况下，他们会收到来自 Azure AD 的电子邮件（其中包含访问面板的链接），他们将在该访问面板中[执行访问评审](perform-access-review.md)。
+5. 访问评审开始时，要求审阅者提供输入。 默认情况下，他们会收到来自 Azure AD 的电子邮件（其中包含访问面板的链接），他们将在该访问面板中[执行访问评审](perform-access-review.md)。
 
 6. 如果审阅者尚未提供输入，可以要求 Azure AD 向他们发送提醒。 默认情况下，Azure AD 自动在中途向还未作出回复的审阅者发送结束日期提醒。
 

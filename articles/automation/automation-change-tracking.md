@@ -6,16 +6,16 @@ ms.service: automation
 ms.component: change-inventory-management
 author: georgewallace
 ms.author: gwallace
-ms.date: 10/12/2018
+ms.date: 01/04/2019
 ms.topic: conceptual
 manager: carmonm
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 27bacb12c66ac57a0bf1aea88a447d395b6dde8c
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: 1d08471a3e0faa99cb245709cf72f9af097bc495
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53408912"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54213206"
 ---
 # <a name="track-changes-in-your-environment-with-the-change-tracking-solution"></a>使用更改跟踪解决方案跟踪环境中的更改
 
@@ -51,15 +51,14 @@ Windows 代理官方支持以下版本的 Windows 操作系统：
 * Debian GNU/Linux 8 和 9
 * Ubuntu Linux 14.04 LTS 和 16.04 LTS
 
-## <a name="enable-change-tracking-and-inventory"></a>启用更改跟踪和库存
+## <a name="onboard"></a>启用更改跟踪和库存
 
-若要开始跟踪更改，需要为自动化帐户启用更改跟踪和库存解决方案。
+若要开始跟踪更改，需要启用更改跟踪和库存解决方案。 可通过多种方法将计算机加入到更改跟踪和库存。 以下是推荐和支持的方法，可用于加入此解决方案。
 
-1. 在 Azure 门户中，导航到自动化帐户
-2. 选择“配置”下的“更改跟踪”。
-3. 选择现有的 Log Analytics 工作区，或“创建新工作区”并单击“启用”。
-
-此操作将启用自动化帐户的解决方案。 启用解决方案最多可能需要 15 分钟。 启用解决方案后，蓝色横幅会通知你。 导航回到“更改跟踪”页以管理解决方案。
+* [通过虚拟机](automation-onboard-solutions-from-vm.md)
+* [通过浏览多个计算机](automation-onboard-solutions-from-browse.md)
+* [通过自动化帐户](automation-onboard-solutions-from-automation-account.md)
+* [使用 Azure 自动化 runbook](automation-onboard-solutions.md)
 
 ## <a name="configuring-change-tracking-and-inventory"></a>配置更改跟踪和库存
 

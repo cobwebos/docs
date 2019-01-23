@@ -8,12 +8,12 @@ ms.date: 01/04/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: f5663842a4d861ed6eb76de859b870aa7114cb04
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: 3968b05f119227552f88a50e96d3acbce6a19143
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54063635"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54199113"
 ---
 # <a name="troubleshoot-errors-with-runbooks"></a>Runbook 错误故障排除
 
@@ -397,7 +397,7 @@ Runbook 超出了 Azure 沙盒中公平份额允许的 3 小时限制。
 * 结构与自动化所需的模块结构不符。
 * 该模块依赖于其他模块，而后者尚未部署到自动化帐户。
 * 该模块的文件夹中缺少依赖项。
-* 使用了 `New-AzureRmAutomationModule` cmdlet 来上传该模块，但你尚未提供完整的存储路径，或者尚未使用可公开访问的 URL 来加载该模块。
+* 将使用 `New-AzureRmAutomationModule` cmdlet 来上传该模块，但尚未提供完整的存储路径，或者尚未使用可公开访问的 URL 来加载该模块。
 
 #### <a name="resolution"></a>解决方法
 

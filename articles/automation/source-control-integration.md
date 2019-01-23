@@ -6,15 +6,15 @@ ms.service: automation
 ms.component: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 09/26/2018
+ms.date: 01/15/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 95355a6d1a0aff9829d75789df86f37768d25e22
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 94d948267286ad716aa200cb5aa858acf2eb2624
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53342232"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54330755"
 ---
 # <a name="source-control-integration-in-azure-automation"></a>Azure 自动化中的源代码管理集成
 
@@ -59,6 +59,9 @@ Azure 自动化支持 3 种类型的源代码管理：
 |Description     | 用于提供其他详细信息的一个文本字段        |
 
 ![源代码管理摘要](./media/source-control-integration/source-control-summary.png)
+
+> [!NOTE]
+> 配置源代码管理时请确保使用正确的帐户登录。 如果有疑问，请在浏览器中打开新的选项卡并从 visualstudio.com 或 github.com 中注销，然后再次尝试连接源代码管理。
 
 ## <a name="syncing"></a>同步
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 12/20/2018
 ms.author: jingwang
-ms.openlocfilehash: 1a3855b7b95224e0f872764f6710f9fa907780a7
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: c2f58a3510699cdf74e3150d3ad5882929f4f05b
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54025447"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54358705"
 ---
 # <a name="schema-mapping-in-copy-activity"></a>复制活动中的架构映射
 本文介绍在执行数据复制操作时，Azure 数据工厂复制活动如何将架构和数据类型从源数据映射到接收器数据。
@@ -142,7 +142,7 @@ ms.locfileid: "54025447"
 
 ## <a name="schema-mapping"></a>架构映射
 
-在分层数据和表格形式的数据之间复制数据（例如，将数据从 MongoDB/REST 复制到文本文件以及从 SQL 复制到 Azure Cosmos DB MongoDB API）时，适用架构映射。 复制活动 `translator` 部分支持以下属性：
+在分层数据和表格形式的数据之间复制数据（例如，将数据从 MongoDB/REST 复制到文本文件以及从 SQL 复制到 MangoDB 的 Auzre Cosmos DB API）时，适用架构映射。 复制活动 `translator` 部分支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |

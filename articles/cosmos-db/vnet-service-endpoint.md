@@ -7,18 +7,18 @@ ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: 148a83cb57675e2e8bda8147041987180df998f0
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 25a05df42029fe444b8d5ceddb2972f779f1b232
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54037389"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54358722"
 ---
 # <a name="access-azure-cosmos-db-resources-from-virtual-networks"></a>从虚拟网络访问 Azure Cosmos DB 资源
 
 可将 Azure Cosmos 帐户配置为仅允许从虚拟网络 (VNET) 的特定子网进行访问。 启用[服务终结点](../virtual-network/virtual-network-service-endpoints-overview.md)来访问虚拟网络中子网上的 Azure Cosmos DB 后，来自该子网的流量将发送到具有该子网和虚拟网络的标识的 Azure Cosmos DB。 启用 Azure Cosmos DB 服务终结点后，可以通过将子网添加到 Azure Cosmos 帐户来限制对该子网的访问。
 
-默认情况下，如果请求附带有效的授权令牌，则可从任何源访问 Azure Cosmos 帐户。 在 VNET 中添加一个或多个子网后，只有源自这些子网的请求才能获取有效响应。 源自其他任何源的请求将收到 404（未找到）响应。 
+默认情况下，如果请求附带有效的授权令牌，则可从任何源访问 Azure Cosmos 帐户。 在 VNET 中添加一个或多个子网后，只有源自这些子网的请求才能获取有效响应。 源自其他任何源的请求将收到 403（禁止访问）响应。 
 
 ## <a name="frequently-asked-questions"></a>常见问题
 
@@ -34,7 +34,7 @@ ms.locfileid: "54037389"
 
 ### <a name="will-virtual-network-acls-and-ip-firewall-reject-requests-or-connections"></a>虚拟网络 ACL 和 IP 防火墙是否会拒绝请求或连接？ 
 
-添加 IP 防火墙或虚拟网络访问规则后，只有来自受允许源的请求才能获取有效响应。 将拒绝其他请求并返回 404（未找到）错误。 必须将 Azure Cosmos 帐户的防火墙与连接级别的防火墙区分开来。 源仍可以连接到服务，连接本身不会遭到拒绝。
+添加 IP 防火墙或虚拟网络访问规则后，只有来自受允许源的请求才能获取有效响应。 将拒绝其他请求并返回 403（禁止访问）错误。 必须将 Azure Cosmos 帐户的防火墙与连接级别的防火墙区分开来。 源仍可以连接到服务，连接本身不会遭到拒绝。
 
 ### <a name="my-requests-started-getting-blocked-when-i-enabled-service-endpoint-to-azure-cosmos-db-on-the-subnet-what-happened"></a>在子网中为 Azure Cosmos DB 启用服务终结点后，我的请求开始遭到阻止。 发生了什么情况？
 

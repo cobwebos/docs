@@ -10,17 +10,17 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 06/23/2018
+ms.date: 01/15/2019
 ms.author: jingwang
-ms.openlocfilehash: 1f3d6434c7226465f9e054d5e5bf35fbb228b311
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: c14bf7c108251a4ec00f5e2f0b1254f83121866e
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54014481"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54321103"
 ---
 # <a name="copy-data-from-mysql-using-azure-data-factory"></a>使用 Azure 数据工厂从 MySQL 复制数据
-> [!div class="op_single_selector" title1="选择您正在使用的 Data Factory 服务的版本:"]
+> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [版本 1](v1/data-factory-onprem-mysql-connector.md)
 > * [当前版本](connector-mysql.md)
 
@@ -30,7 +30,7 @@ ms.locfileid: "54014481"
 
 可以将数据从 MySQL 数据库复制到任何支持的接收器数据存储。 有关复制活动支持作为源/接收器的数据存储列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)表。
 
-具体而言，此 MySQL 连接器支持 **5.1 版本和更高版本**的 MySQL。
+具体而言，此 MySQL 连接器支持 5.6 和5.7 版本的 MySQL。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -70,8 +70,8 @@ MySQL 链接的服务支持以下属性：
         "type": "MySql",
         "typeProperties": {
             "connectionString": {
-                 "type": "SecureString",
-                 "value": "Server=<server>;Port=<port>;Database=<database>;UID=<username>;PWD=<password>"
+                "type": "SecureString",
+                "value": "Server=<server>;Port=<port>;Database=<database>;UID=<username>;PWD=<password>"
             }
         },
         "connectVia": {
@@ -227,7 +227,6 @@ MySQL 链接的服务支持以下属性：
 | `tinytext` |`String` |
 | `varchar` |`String` |
 | `year` |`Int` |
-
 
 ## <a name="next-steps"></a>后续步骤
 有关 Azure 数据工厂中复制活动支持作为源和接收器的数据存储的列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)。

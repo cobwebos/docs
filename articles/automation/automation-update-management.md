@@ -6,15 +6,15 @@ ms.service: automation
 ms.component: update-management
 author: georgewallace
 ms.author: gwallace
-ms.date: 12/11/2018
+ms.date: 01/04/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 0066a4ea5d91369bf6724dbaea4743a10bd8db0b
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: d8df48511f2bfd2500dbc0a1dfaa95e488fad63b
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53631849"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54214991"
 ---
 # <a name="update-management-solution-in-azure"></a>Azure 中的更新管理解决方案
 
@@ -125,6 +125,15 @@ Windows 代理必须配置为与 WSUS 服务器通信或必须有权访问 Micro
 > [!NOTE]
 > 对于使用 Operations Manger 代理的系统，若要能够由更新管理完全托管，需要将代理更新为 Microsoft Monitoring Agent。 若要了解如何更新代理，请参阅[如何升级 Operations Manager 代理](https://docs.microsoft.com/system-center/scom/deploy-upgrade-agents)。
 
+## <a name="onboard"></a>启用更新管理
+
+要开始修补系统，需要启用更新管理解决方案。 可使用多种方法将计算机加入到更新管理。 以下是推荐和支持的方法，可用于加入此解决方案：
+
+* [通过虚拟机](automation-onboard-solutions-from-vm.md)
+* [通过浏览多个计算机](automation-onboard-solutions-from-browse.md)
+* [通过自动化帐户](automation-onboard-solutions-from-automation-account.md)
+* [使用 Azure 自动化 runbook](automation-onboard-solutions.md)
+  
 ### <a name="confirm-that-non-azure-machines-are-onboarded"></a>确认非 Azure 计算机已加入
 
 若要确认直接连接的计算机是否正在与 Log Analytics 通信，可在数分钟后运行以下日志搜索之一。

@@ -1,26 +1,8 @@
 ---
-title: 在机器学习工作室中解释模型结果 | Microsoft Docs
-description: 如何为使用并可视化评分模型输出的算法选择最佳的参数集。
-services: machine-learning
-documentationcenter: ''
-author: ericlicoding
-ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
-ms.author: amlstudiodocs
-editor: cgronlun
-ms.assetid: 6230e5ab-a5c0-4c21-a061-47675ba3342c
-ms.service: machine-learning
-ms.component: studio
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 11/29/2017
-ms.openlocfilehash: 9f8ff93efb74bca427cf74351af9d2442f9ab757
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
-ms.translationtype: HT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53276479"
+title:在机器学习工作室中解释模型结果 titleSuffix: Azure 机器学习工作室 description:如何为使用并可视化评分模型输出的算法选择最佳的参数集。
+services: machine-learning ms.service: machine-learning ms.component: studio ms.topic: article
+
+author: ericlicoding ms.author: amlstudiodocs ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro ms.date:2017/11/29
 ---
 # <a name="interpret-model-results-in-azure-machine-learning-studio"></a>在 Azure 机器学习工作室中解释模型结果
 本主题说明如何在 Azure 机器学习工作室中可视化和解释预测结果。 训练模型并根据它进行预测（“为模型评分”）后，需要了解并解释预测结果。

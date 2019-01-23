@@ -16,12 +16,12 @@ ms.component: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 298d4a7a003963e3466b595243c294679f581346
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: b8051ea7f8e7c188e4ed287db626f2a989def619
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53582178"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54231745"
 ---
 # <a name="azure-ad-activity-logs-in-azure-monitor-preview"></a>Azure Monitor 中的 Azure AD 活动日志（预览版）
 
@@ -116,6 +116,12 @@ ms.locfileid: "53582178"
 **问：执行某项操作之后，相应的日志多快会在存储帐户中显示？**
 
 **答**：就 Azure 存储帐户而言，执行操作之后，日志的显示会有 5-15 分钟的延迟。
+
+---
+
+**问：如果管理员更改诊断设置的保持期，会发生什么情况？**
+
+**答**：新的保留策略将应用于更改后收集的日志。 策略更改前收集的日志将不会受到影响。
 
 ---
 

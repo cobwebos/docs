@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/14/2018
 ms.author: magoedte
-ms.openlocfilehash: 5a40e215c6dd5bf4dc1178595716f95ae21adcb4
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: dececc961e40d83cf44442dc61054bc8833208f0
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53438194"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54265021"
 ---
 # <a name="overview-of-the-azure-monitoring-agents"></a>Azure 监视代理概述 
 Microsoft Azure 提供多种方式用于从 Azure、数据中心或其他云提供商托管的，运行 Microsoft Windows 和 Linux 的虚拟机收集各种数据。 可用于监视 VM 的三种代理包括：
@@ -76,5 +76,5 @@ Microsoft Azure 提供多种方式用于从 Azure、数据中心或其他云提�
 
 ## <a name="next-steps"></a>后续步骤
 
-- 参阅 [Log Analytics 代理概述](../../azure-monitor/platform/log-analytics-agent.md)，了解将代理部署到 Auzre、数据中心或其他云环境中托管的计算机所要满足的要求和支持的方法。
+- 请参阅 [Log Analytics 代理概述](../../azure-monitor/platform/log-analytics-agent.md)，了解将代理部署到 Auzre、数据中心或其他云环境中托管的计算机所要满足的要求和支持的方法。
 

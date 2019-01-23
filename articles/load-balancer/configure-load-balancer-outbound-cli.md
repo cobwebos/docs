@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure CLI 在标准负载均衡器中配置负载均衡和出站规则
+title: 使用 Azure CLI 配置负载均衡和出站规则
 titlesuffix: Azure Load Balancer
 description: 本文介绍如何使用 Azure CLI 在标准负载均衡器中配置负载均衡和出站规则。
 services: load-balancer
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/24/2018
 ms.author: kumud
-ms.openlocfilehash: 97a7e09994ab93eb75881a2eae2b49821ca8289f
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: a1fbe541d9cb2f9b5a839d90fcfa9c7b017efce9
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53085002"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54198502"
 ---
 # <a name="configure-load-balancing-and-outbound-rules-in-standard-load-balancer-using-azure-cli"></a>使用 Azure CLI 在标准负载均衡器中配置负载均衡和出站规则
 

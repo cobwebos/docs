@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.date: 12/12/2018
 ms.topic: conceptual
 ms.author: asgang
-ms.openlocfilehash: 20311f904356f16b34f64d0aaf6ed438ba692857
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: 7e70fe52646c2f61e97b4eee2badd7884d95d5f5
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54155144"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54260458"
 ---
 # <a name="common-questions-azure-to-azure-replication"></a>常见问题：Azure 到 Azure 的复制
 
@@ -74,10 +74,16 @@ ms.locfileid: "54155144"
 
 目前，大多数应用程序都可以从崩溃一致性快照正常恢复。 对于无数据库的操作系统以及文件服务器、DHCP 服务器、打印服务器等应用程序而言，崩溃一致性恢复点通常已足够。
 
+### <a name="what-is-the-frequency-of-crash-consistent-recovery-point-generation"></a>崩溃一致性恢复点生成的频率是多少？
+Site Recovery 每隔 5 分钟创建崩溃一致性恢复点。
+
 ### <a name="what-is-an-application-consistent-recovery-point"></a>什么是应用程序一致性恢复点？ 
 应用程序一致性恢复点是从应用程序一致性快照创建的。 应用程序一致性快照捕获的数据与崩溃一致性快照相同，此外还会加上内存中的数据，以及所有正在进行的事务。 
 
 由于包含额外的内容，应用程序一致性快照涉及的操作最多，且执行时间最长。 我们建议对数据库操作系统以及 SQL Server 等应用程序使用应用程序一致性恢复点。
+
+### <a name="what-is-the-minimum-frequency-of-application-consistent-recovery-point-generation"></a>应用程序一致性恢复点生成的最低频率是多少？
+Site Recovery 可以创建一个应用程序一致性的恢复点，最小频率为 1 小时。
 
 ### <a name="how-are-recovery-points-generated-and-saved"></a>如何生成和保存恢复点？
 若要了解 Site Recovery 如何生成恢复点，让我们查看一个复制策略的示例，其中，恢复点保留期为 24 小时，应用一致性快照的频率为 1 小时。
@@ -153,6 +159,9 @@ Site Recovery 提供“多 VM 一致性”选项，选择该选项会创建一�
 
 ### <a name="if-im-replicating-between-two-azure-regions-what-happens-if-my-primary-region-experiences-an-unexpected-outage"></a>如果我在两个 Azure 区域之间进行复制，当我的主要区域发生意外的服务中断时，会出现什么情况？
 可以在服务中断后触发故障转移。 Site Recovery 不需要从主要区域建立连接即可执行故障转移。
+
+### <a name="what-is-a-rto-of-a-virtual-machine-failover-"></a>什么是虚拟机故障转移的 RTO？
+Site Recovery 的 [RTO SLA 为 2小时](https://azure.microsoft.com/support/legal/sla/site-recovery/v1_2/)。 但是，大多数情况下，Site Recovery 会在几分钟内对虚拟机进行故障转移。 可以转到故障转移作业来计算 RTO，该作业显示启动 VM 所需的时间。 有关恢复计划 RTO，请参阅以下部分。 
 
 ## <a name="recovery-plan"></a>恢复计划
 

@@ -6,14 +6,14 @@ ms.service: security
 ms.subservice: Azure Disk Encryption
 ms.topic: article
 ms.author: mstewart
-ms.date: 01/09/2019
+ms.date: 01/14/2019
 ms.custom: seodec18
-ms.openlocfilehash: efb8c885daf78ad279a229257492a34c6dbf1c6a
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: f8164a78c726e6d2e5397a42488bdc04871c5489
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54156504"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54265220"
 ---
 # <a name="azure-disk-encryption-prerequisites"></a>Azure 磁盘加密先决条件
 
@@ -35,7 +35,7 @@ ms.locfileid: "54156504"
 - 仅基于特定 Azure 库的 Linux 服务器分发和版本支持 Azure 磁盘加密。 有关当前受支持版本的列表，请参阅 [Azure 磁盘加密常见问题解答](azure-security-disk-encryption-faq.md#bkmk_LinuxOSSupport)。
 - Azure 磁盘加密要求 Key Vault 和 VM 位于同一 Azure 区域和订阅。 在不同区域中配置资源会导致启用 Azure 磁盘加密功能失败。
 
-## <a name="bkmk_LinuxPrereq"></a>适用于 Linux Iaas VM 的其他先决条件 
+## <a name="bkmk_LinuxPrereq"></a>适用于 Linux IaaS VM 的其他先决条件 
 
 - 要在[支持的映像](azure-security-disk-encryption-faq.md#bkmk_LinuxOSSupport)中启用 OS 磁盘加密，适用于 Linux 的 Azure 磁盘加密要求 VM 上有 7 GB RAM。 完成 OS 磁盘加密过程后，可将 VM 配置为以更少的内存运行。
 - 在启用加密之前，要加密的数据磁盘需在 /etc/fstab 中正确列出。 为此条目使用永久性块设备名，因为每次重新启动后，不能依赖于使用“/dev/sdX”格式的设备名来与同一磁盘相关联，尤其是应用加密后。 有关此行为的更多详细信息，请参阅：[排查 Linux VM 设备名称更改问题](../virtual-machines/linux/troubleshoot-device-names-problems.md)
@@ -123,7 +123,7 @@ ms.locfileid: "54156504"
 
 
 ## <a name="prerequisite-workflow-for-key-vault"></a>Key Vault 的先决条件工作流
-如果你已熟悉进行 Azure 磁盘加密时的 Key Vault 和 Azure AD 先决条件，则可以使用 [Azure 磁盘加密先决条件 PowerShell 脚本](https://raw.githubusercontent.com/Azure/azure-powershell/master/src/ResourceManager/Compute/Commands.Compute/Extension/AzureDiskEncryption/Scripts/AzureDiskEncryptionPreRequisiteSetup.ps1 )。 有关使用先决条件脚本的详细信息，请参阅[加密 VM 快速入门](quick-encrypt-vm-powershell.md)和 [Azure 磁盘加密附录](azure-security-disk-encryption-appendix.md#bkmk_prereq-script)。 
+如果你已熟悉进行 Azure 磁盘加密时的 Key Vault 和 Azure AD 先决条件，则可以使用 [Azure 磁盘加密先决条件 PowerShell 脚本](https://raw.githubusercontent.com/Azure/azure-powershell/master/src/Compute/Compute/Extension/AzureDiskEncryption/Scripts/AzureDiskEncryptionPreRequisiteSetup.ps1 )。 有关使用先决条件脚本的详细信息，请参阅[加密 VM 快速入门](quick-encrypt-vm-powershell.md)和 [Azure 磁盘加密附录](azure-security-disk-encryption-appendix.md#bkmk_prereq-script)。 
 
 1. 如果需要，请创建资源组。
 2. 创建密钥保管库。 

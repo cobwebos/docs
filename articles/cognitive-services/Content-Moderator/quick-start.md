@@ -1,23 +1,23 @@
 ---
-title: 内容审查器快速入门
+title: 快速入门：尝试在 Web 上使用内容审查器 - 内容审查器
 titlesuffix: Azure Cognitive Services
-description: 如何开始使用内容审查器。
+description: 本快速入门将使用联机内容审查器评审工具来测试内容审查器的基本功能，且无需编写任何代码。
 services: cognitive-services
 author: sanjeev3
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: content-moderator
 ms.topic: conceptual
-ms.date: 10/10/2018
+ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: 259919f3b7cb0b614450c94f876cff933a5e01e8
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.openlocfilehash: 382401bd8ca073bec6f77fadf1096e42ab1e1d72
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51852684"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54266461"
 ---
-# <a name="quickstart-get-familiar-with-content-moderator"></a>快速入门：熟悉内容审查器
+# <a name="quickstart-try-content-moderator-on-the-web"></a>快速入门：尝试在 Web 上使用内容审查器
 
 本快速入门将使用联机内容审查器评审工具来测试内容审查器的基本功能，且无需编写任何代码。 若要更快速地将此服务集成到应用中，请参阅[后续步骤](#next-steps)部分中的其他快速入门。
 

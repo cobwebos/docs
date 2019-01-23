@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 07/12/2018
 ms.author: v-shysun
-ms.openlocfilehash: 0956d9bdbf6390f2d64f15ca267545ca15289a46
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 837c9d2b4b7dc0ce2c5ee3b25106eb5fea4ed7ea
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53339393"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54358977"
 ---
 # <a name="frequently-asked-questions-for-sql-server-running-on-windows-virtual-machines-in-azure"></a>Azure 的 Windows 虚拟机上运行的 SQL Server 常见问题解答
 
@@ -49,13 +49,19 @@ ms.locfileid: "53339393"
 
    是的。 Azure 只为每个主要版本维护一个映像。 例如，发布新的 SQL Server Service Pack 时，Azure 会将新映像添加到该 Service Pack 的库。 先前 Service Pack 的 SQL Server 映像将立即从 Azure 门户中删除。 但是，在接下来的三个月，仍可以通过 PowerShell 预配该映像。 三个月之后，先前的 Service Pack 映像不再可用。 如果 SQL Server 版本由于生命周期结束而不受支持，则也会应用此删除策略。
 
+
+1. **是否可以部署 Azure 门户中不可见的较旧的 SQL Server 映像？**
+
+   是的，使用 PowerShell。 有关使用 PowerShell 部署 SQL Server VM 的详细信息，请参阅[如何使用 Azure PowerShell 预配 SQL Server 虚拟机](virtual-machines-windows-ps-sql-create.md)。
+
 1. **是否可以从 SQL Server VM 创建 VHD 映像？**
 
    可以，但需注意以下事项。 如果将此 VHD 部署到 Azure 中的新 VM，则无法在门户网站中获取 SQL Server 配置部分。 此时必须通过 PowerShell 管理 SQL Server 配置选项。 此外，将会按该映像最初基于的 SQL VM 的费率进行计费。 即使在部署前已从 VHD 中删除 SQL Server，也是如此。 
 
 1. **是否可以设置虚拟机库中未显示的配置（例如 Windows 2008 R2 + SQL Server 2012）？**
 
-   不是。 对于包含 SQL Server 的虚拟机库映像，必须选择提供的的映像之一。
+   不是。 对于包含 SQL Server 的虚拟机图库映像，必须通过 Azure 门户或 [PowerShell](virtual-machines-windows-ps-sql-create.md) 选择提供的某个映像。 
+
 
 ## <a name="creation"></a>创建
 

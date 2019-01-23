@@ -1,9 +1,11 @@
 ---
-title: 嵌套式流量管理器配置文件 | Microsoft Docs
+title: Azure 中的嵌套式流量管理器配置文件
+titlesuffix: Azure Traffic Manager
 description: 本文介绍了 Azure 流量管理器的“嵌套式配置文件”功能
 services: traffic-manager
 documentationcenter: ''
 author: kumudd
+manager: twooley
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
@@ -11,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/22/2018
 ms.author: kumud
-ms.openlocfilehash: 876305c7195a186671c30c4bdd9bb0c6b5331e9a
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: 6fb6b3e4476efec87b15d175d354afab777e6830
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49648592"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54228820"
 ---
 # <a name="nested-traffic-manager-profiles"></a>嵌套式流量管理器配置文件
 

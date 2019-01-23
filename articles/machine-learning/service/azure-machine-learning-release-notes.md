@@ -11,16 +11,36 @@ ms.author: haining
 ms.reviewer: j-martens
 ms.date: 12/20/2018
 ms.custom: seodec18
-ms.openlocfilehash: 157591897adb7495382b540dc1517c4c652a2632
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 5341c4901ca2a7aa0b4935e13d06c8fb5a1f0d1b
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54190709"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54304086"
 ---
 # <a name="azure-machine-learning-service-release-notes"></a>Azure 机器学习服务发行说明
 
 本文介绍 Azure 机器学习服务版本。 
+
+## <a name="2019-01-14"></a>2019-01-14
+
+### <a name="azure-machine-learning-sdk-for-python-v108"></a>适用于 Python 的 Azure 机器学习 SDK v1.0.8
+
++ **SDK 参考文档**： https://aka.ms/aml-sdk
+
++ **Bug 修复**：此版本主要包含次要 Bug 修复
+
+### <a name="azure-machine-learning-data-prep-sdk-v107"></a>Azure 机器学习数据准备 SDK v1.0.7
+
++ **SDK 参考文档**： https://aka.ms/data-prep-sdk
+
++ **新功能**
+  + 数据存储改进（记录在[数据存储区操作指南](https://github.com/Microsoft/AMLDataPrepDocs/tree/master/how-to-guides/datastore.ipynb)中）
+    + 添加了在扩展中读取和写入 Azure 文件共享和 ADLS 数据存储的功能。
+    + 使用数据存储时，数据准备现在支持使用服务主体身份验证而不是交互式身份验证。
+    + 添加了的对 wasb 和 wasbs url 的支持。
+
+## <a name="2019-01-09"></a>2019-01-09
 
 ### <a name="azure-machine-learning-data-prep-sdk-v106"></a>Azure 机器学习数据准备 SDK v1.0.6
 
@@ -29,7 +49,7 @@ ms.locfileid: "54190709"
 + **Bug 修复**
   + 修复了从 Spark 上的公共可读 Azure Blob 容器读取时出现的 bug
 
-## <a name="2018-12-20"></a>2018-12-20： 
+## <a name="2018-12-20"></a>2018-12-20 
 
 ### <a name="azure-machine-learning-sdk-for-python-v106"></a>适用于 Python 的 Azure 机器学习 SDK v1.0.6
 
@@ -114,7 +134,7 @@ Azure 机器学习服务现已公开发布。
   + 了解如何[创建你的第一个管道](how-to-create-your-first-pipeline.md)
   + 了解如何[使用管道运行批量预测](how-to-run-batch-predictions.md)
 + Azure 机器学习计算目标
-  + [示例笔记本] (https://aka.ms/aml-notebooks)现已更新，可以使用新的托管计算。
+  + [示例笔记本](https://aka.ms/aml-notebooks)现已更新，可以使用新的托管计算。
   + [了解此计算](how-to-set-up-training-targets.md#amlcompute)
 
 ### <a name="azure-portal-new-features"></a>Azure 门户：新功能
@@ -135,7 +155,7 @@ Azure 机器学习服务现已公开发布。
 
 + **重大更改** 
   * azureml.train.widgets 命名空间已移至 azureml.widgets。
-  * azureml.core.compute.AmlCompute 弃用了以下类 - azureml.core.compute.BatchAICompute 和 azureml.core.compute.DSVMCompute。 后续版本中将删除后一类。 AmlCompute 类现在有一个更简单的定义，只需要 vm_size 和 max_nodes，并在提交作业时自动将集群从 0 扩展到 max_nodes。 我们的[示例笔记本]（ https://github.com/Azure/MachineLearningNotebooks/tree/master/training) 已更新该信息，并且会提供使用示例。 我们希望你喜欢这种简化以及即将发布的版本中更多令人兴奋的功能！
+  * azureml.core.compute.AmlCompute 弃用了以下类 - azureml.core.compute.BatchAICompute 和 azureml.core.compute.DSVMCompute。 后续版本中将删除后一类。 AmlCompute 类现在有一个更简单的定义，只需要 vm_size 和 max_nodes，并在提交作业时自动将集群从 0 扩展到 max_nodes。 我们的[示例笔记本](https://github.com/Azure/MachineLearningNotebooks/tree/master/training)已更新该信息，并且会提供使用示例。 我们希望你喜欢这种简化以及即将发布的版本中更多令人兴奋的功能！
 
 ### <a name="azure-machine-learning-data-prep-sdk-v051"></a>Azure 机器学习数据准备 SDK v0.5.1 
 

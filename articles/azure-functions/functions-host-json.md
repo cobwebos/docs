@@ -10,16 +10,16 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 09/08/2018
 ms.author: glenga
-ms.openlocfilehash: 4da64f01f3b4f39bd10fd3cb1b67910ffca886b8
-ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
+ms.openlocfilehash: e24c5b2be1df41d84fa4461250f51cb009f77529
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53413262"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54331211"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x"></a>Azure Functions 2.x 的 host.json 参考  
 
-> [!div class="op_single_selector" title1="选择您正在使用的 Azure Functions 运行时的版本: "]
+> [!div class="op_single_selector" title1="Select the version of the Azure Functions runtime you are using: "]
 > * [版本 1](functions-host-json-v1.md)
 > * [第 2 版](functions-host-json.md)
 
@@ -108,6 +108,9 @@ ms.locfileid: "53413262"
     }
 }
 ```
+
+> [!NOTE]
+> 日志采样可能会导致一些执行不会显示在 Application Insights 监视器边栏选项卡中。
 
 |属性  |默认 | Description |
 |---------|---------|---------| 

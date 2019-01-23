@@ -12,21 +12,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/5/2018
+ms.date: 1/15/2019
 ms.author: rkarlin
-ms.openlocfilehash: 3a377441758fcd7dd91deefb5cae91579e881498
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 4bc426e291a47ae42e7628ad911e2960e654819f
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51007038"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54261292"
 ---
 # <a name="improve-your-secure-score-in-azure-security-center"></a>提高 Azure 安全中心的安全评分
 
 
 在有很多服务提供安全权益的情况下，通常很难知道首先要采取哪些措施来保护并强化工作负荷。 Azure 安全评分评审你的安全建议并确定其优先级，以便你知道要首先执行哪些建议。 这可帮助你找到最严重的安全漏洞，因此你可以确定调查优先级。 安全评分是一个可帮助你评估工作负荷安全状况的工具。
-
-![安全评分仪表板](./media/security-center-secure-score/secure-score-dashboard.png)
 
 ## <a name="secure-score-calculation"></a>安全评分的计算
 
@@ -43,11 +41,25 @@ Azure 安全中心会不断检查活动建议并根据它们计算安全评分�
 
 若要查看整体安全评分：
 
-1. 在 Azure 安全中心仪表板中，单击“安全中心”，然后单击“建议”。
-2. 可在顶部看到“安全评分”，表示每个策略、每个所选订阅的分数。 
-2. 下表列出了建议，可在其中看到每个建议都有表示“安全评分影响”的一列。 此数字表示遵循建议能提高的整体安全评分。 例如，在下面的屏幕中，如果“修正容器安全配置中的漏洞”，安全评分将增加 35 分。
+1. 在 Azure 安全中心仪表板中，单击“安全中心”，然后单击“安全功能分数”。
+2. 可以在顶部看见安全功能分数突出显示：
+   - 总体安全功能分数表示每个策略、每个所选订阅的分数
+   - 按类别的安全功能分数显示哪些资源需要最多的关注
+   - 安全功能分数影响的最重要建议提供了一些建议列表，可以在进行修复时提高安全功能分数。
+ 
+   ![安全评分](./media/security-center-secure-score/secure-score-dashboard.png)
+
+3. 在下表中可以看到每个订阅和及其总体安全功能分数。
+
+   > [!NOTE]
+   > 每个订阅的安全功能分数总和不等于总体安全功能分数。 安全功能分数是基于健康资源与每个建议的总资源之间的比率计算的，而不是基于订阅的安全功能分数的总和。 
+   >
+4. 单击“查看建议”以查看可以修复的订阅建议，提高安全功能分数。
+4. 在建议列表中，可在其中看到每个建议都有表示“安全功能分数影响”的一列。 此数字表示遵循建议能提高的整体安全评分。 例如，在下面的屏幕中，如果“修正容器安全配置中的漏洞”，安全评分将增加 35 分。
 
    ![安全评分](./media/security-center-secure-score/security-center-secure-score1.png)
+
+
 
 ## <a name="individual-secure-score"></a>单项安全评分
 
@@ -60,6 +72,12 @@ Azure 安全中心会不断检查活动建议并根据它们计算安全评分�
 该建议显示不执行修正步骤时工作负荷所面临的威胁。
 
 ![单项建议安全评分](./media/security-center-secure-score/indiv-recommendation-secure-score.png)
+
+
+
+
+
+
 
 ## <a name="next-steps"></a>后续步骤
 本介绍了如何使用 Azure 安全中心中的“安全评分”来改进安全状况。 若要了解有关安全中心的详细信息，请参阅：

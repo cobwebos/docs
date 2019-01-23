@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/04/2018
+ms.date: 01/11/2019
 ms.author: kraigb
-ms.openlocfilehash: 123365f1aa149c0df158eedcc156280a3fe771d2
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 110ba7f13b2a0d44277c881d67f0c794c8658cd1
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53106663"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54244573"
 ---
 # <a name="tutorial-create-and-run-a-jupyter-notebook-with-python"></a>教程：使用 Python 创建并运行 Jupyter Notebook
 
@@ -28,13 +28,13 @@ ms.locfileid: "53106663"
 
 ## <a name="create-the-project"></a>创建项目
 
-1. 转到 [Azure Notebooks](https://notebooks.azure.com) 并登录。 （有关详细信息，请参阅[快速入门 - 登录到 Azure Notebooks](quickstart-sign-in-azure-notebooks.md)）。
+1. 转到 [Azure Notebooks](https://notebooks.azure.com) 并登录。 （有关详细信息，请参阅[快速入门 - 登录 Azure Notebooks](quickstart-sign-in-azure-notebooks.md)）。
 
-1. 在公共个人资料页面中，选择页面顶部的“我的项目”：
+1. 在公用个人资料页面中，选择页面顶部的“我的项目”：
 
     ![浏览器窗口顶部的“我的项目”链接](media/quickstarts/my-projects-link.png)
 
-1. 在“我的项目”页面上，选择“+ 新建项目”（键盘快捷方式：N）；如果浏览器窗口较窄，该按钮可能仅显示为 **+**：
+1. 在“我的项目”页面上，选择“+ 新建项目”（键盘快捷方式：N）；如果浏览器窗口较窄，该按钮可能仅显示为 +：
 
     ![“我的项目”页面上的“新建项目”命令](media/quickstarts/new-project-command.png)
 
@@ -411,17 +411,13 @@ Jupyter 提供主要 UI 元素的内置导航功能。 选择“帮助” > “�
 
 ## <a name="debug-notebooks-using-visual-studio-code"></a>使用 Visual Studio Code 调试 Notebook
 
-如果 Notebook 中代码单元的行为不符合预期，则可能表示代码中存在 bug 或其他缺陷。 但是，Jupyter Notebook 不提供任何调试工具，只能使用 `print` 语句来显示变量的值。
+如果 Notebook 中代码单元的行为不符合预期，则可能表示代码中存在 bug 或其他缺陷。 但是，典型的 Jupyter 环境不提供任何调试工具，只能使用 `print` 语句来显示变量的值。
 
-幸运的是，适用于 Visual Studio Code 的 Python 扩展可以使用注释中的 Markdown 单元，直接将 Jupyter Notebook 导入为单个代码文件。 然后，你可以运行 Visual Studio Code 调试程序来逐步运行代码、设置断点、检查状态，等等。 
+幸运的是，可以下载笔记本的 .ipynb 文件，然后使用 Python 扩展在 Visual Studio Code 中打开它。 该扩展直接将笔记本作为单个代码文件导入，在注释中保留 Markdown 单元。 导入笔记本后，可以使用 Visual Studio Code 调试程序来逐步运行代码、设置断点、检查状态，等等。 在对代码进行更正后，从 Visual Studio Code 导出 .ipynb 文件并将其上传回 Azure Notebooks。
 
-更正代码后，保存 *.ipynb* 文件，然后将其上传到 Azure Notebooks。
+有关详细信息，请参阅 Visual Studio Code 文档中的[调试 Jupyter 笔记本](https://code.visualstudio.com/docs/python/jupyter-support#debug-a-jupyter-notebook)。
 
-有关详细信息，请参阅 Visual Studio Code 文档中的以下文章：
-
-- [VS Code 中的 Jupyter Notebook 概述](https://code.visualstudio.com/docs/languages/python#_jupyter-notebooks)
-- [Python 教程 - 配置和运行调试程序](https://code.visualstudio.com/docs/python/python-tutorial#_configure-and-run-the-debugger)
-- [编辑 - Jupyter 代码单元](https://code.visualstudio.com/docs/python/editing#_jupyter-code-cells)
+另请参阅 [Visual Studio Code - Jupyter 支持](https://code.visualstudio.com/docs/python/jupyter-support)，了解适用于 Jupyter 笔记本的 Visual Studio Code 的其他功能。
 
 ## <a name="next-steps"></a>后续步骤
 

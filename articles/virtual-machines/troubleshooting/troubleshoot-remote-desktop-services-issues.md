@@ -13,19 +13,19 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/23/2018
 ms.author: genli
-ms.openlocfilehash: 904387def0fd8842f196e80cfcf72d9dd1639458
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 3d747f3b8f54dfefe7e96c378eddbce320bcc8f7
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50957686"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54215110"
 ---
 # <a name="remote-desktop-services-isnt-starting-on-an-azure-vm"></a>远程桌面服务在 Azure VM 上不启动
 
 本文介绍如何排查连接到 Azure 虚拟机 (VM) 时远程桌面服务 (TermService) 不启动或无法启动的问题。
 
 > [!NOTE]  
-> Azure 提供两种不同的部署模型用于创建和处理资源：[Azure 资源管理器模型和经典模型](../../azure-resource-manager/resource-manager-deployment-model.md)。 本文介绍资源管理器部署模型的用法。 建议为新部署使用此模型，而不是使用经典部署模型。
+> Azure 具有两种不同的部署模型可用来创建和处理资源：[Azure 资源管理器部署模型和经典部署模型](../../azure-resource-manager/resource-manager-deployment-model.md)。 本文介绍资源管理器部署模型的用法。 建议为新部署使用此模型，而不是使用经典部署模型。
 
 ## <a name="symptoms"></a>症状
 
@@ -37,16 +37,16 @@ ms.locfileid: "50957686"
 
 - 在使用事件查看器远程查看 VM 中的事件日志时， 你发现远程桌面服务 (TermService) 未启动或无法启动。 下面是日志示例：
 
-    **日志名称**: 系统 </br>
-    **源**: 服务控制管理器 </br>
-    **日期**: 12/16/2017 11:19:36 AM</br>
-    **事件 ID**: 7022</br>
-    **任务类别**: 无</br>
-    **级别**: 错误</br>
-    **关键字**: 经典</br>
-    **用户**: 不适用</br>
+    **日志名称**：    系统 </br>
+    **源**：      服务控制管理器 </br>
+    **日期**：        2017 年 12 月 16 日上午 11:19:36</br>
+    **事件 ID**：    7022</br>
+    **任务类别**：无</br>
+    **级别**：       错误</br>
+    **关键字**：    经典</br>
+    **用户**：        不适用</br>
     **计算机**: vm.contoso.com</br>
-    **说明**: 远程桌面服务服务在启动时挂起。 
+    **说明**：远程桌面服务服务在启动时挂起。 
 
     也可以使用串行访问控制台功能运行以下查询来查找这些错误： 
 
@@ -112,7 +112,7 @@ ms.locfileid: "50957686"
     
 #### <a name="termservice-service-is-stopped-because-of-an-access-denied-problem"></a>TermService 服务由于访问被拒绝问题而停止
 
-1. 连接到[串行控制台](serial-console-windows.md#)并打开 PowerShell 实例。
+1. 连接到[串行控制台](serial-console-windows.md)并打开 PowerShell 实例。
 2. 运行以下脚本下载进程监视器工具：
 
    ```

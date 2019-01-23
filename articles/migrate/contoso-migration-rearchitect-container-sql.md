@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/11/2018
 ms.author: raynew
-ms.openlocfilehash: 9fd83124585e3a0eb19c43e278eeeacb6ec4409c
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: 6f894310157432a6e03e6ec4753f5efc2d8ac66d
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49094099"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54267413"
 ---
 # <a name="contoso-migration-rearchitect-an-on-premises-app-to-an-azure-container-and-azure-sql-database"></a>Contoso 迁移：将本地应用重新架构到 Azure 容器和 Azure SQL 数据库
 
@@ -28,12 +28,12 @@ ms.locfileid: "49094099"
 [文章 4：在 Azure VM 和 SQL 数据库托管实例上重新托管应用](contoso-migration-rehost-vm-sql-managed-instance.md) | Contoso 将其本地 SmartHotel360 应用直接迁移到 Azure。 Contoso 使用 [Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/site-recovery-overview) 迁移应用前端 VM。 Contoso 使用 [Azure 数据库迁移服务](https://docs.microsoft.com/azure/dms/dms-overview)将应用数据库迁移到 Azure SQL 数据库托管实例。 | 可用   
 [文章 5：在 Azure VM 上重新托管应用](contoso-migration-rehost-vm.md) | Contoso 使用 Site Recovery 服务将其 SmartHotel360 应用 VM 迁移到 Azure VM。 | 可用
 [文章 6：在 Azure VM 和 SQL Server AlwaysOn 可用性组中重新托管应用](contoso-migration-rehost-vm-sql-ag.md) | Contoso 迁移 SmartHotel360 应用。 Contoso 使用 Site Recovery 迁移应用 VM。 它使用数据库迁移服务将应用数据库迁移到受 AlwaysOn 可用性组保护的 SQL Server 群集。 | 可用 
-[文章 7：将 Linux 应用重新托管到 Azure VM](contoso-migration-rehost-linux-vm.md) | Contoso 使用 Azure Site Recovery 将 Linux osTicket 应用直接迁移到 Azure VM | 可用
+[文章 7：在 Azure VM 上重新托管 Linux 应用](contoso-migration-rehost-linux-vm.md) | Contoso 使用 Azure Site Recovery 将 Linux osTicket 应用直接迁移到 Azure VM | 可用
 [文章 8：在 Azure VM 和 Azure MySQL 上重新托管 Linux 应用](contoso-migration-rehost-linux-vm-mysql.md) | Contoso 使用 Azure Site Recovery 将 Linux osTicket 应用迁移到 Azure VM，并使用 MySQL 工作台将应用数据库迁移到 Azure MySQL 服务器实例。 | 可用
 [文章 9：基于 Azure Web 应用和 Azure SQL 数据库重构应用](contoso-migration-refactor-web-app-sql.md) | Contoso 将 SmartHotel360 应用迁移到 Azure Web 应用，并使用数据库迁移助手将应用数据库迁移到 Azure SQL Server 实例 | 可用
 [文章 10：基于 Azure Web 应用和 Azure MySQL 重构 Linux 应用](contoso-migration-refactor-linux-app-service-mysql.md) | Contoso 使用 Azure 流量管理器将其 Linux osTicket 应用迁移到多个 Azure 区域上的 Azure Web 应用，并与 GitHub 集成以实现持续交付。 Contoso 将应用数据库迁移到 Azure Database for MySQL 实例。 | 可用 
-[文章 11：重构 Azure DevOps Services 上的 TFS](contoso-migration-tfs-vsts.md) | Contoso 将其本地 Team Foundation Server 部署迁移到 Azure 中的 Azure DevOps Services。 | 可用
-文章 12：在 Azure 容器和 Azure SQL 数据库上重构应用 | Contoso 将其 SmartHotel 应用迁移到 Azure。 然后，它将应用 Web 层重新架构为 Azure Service Fabric 中运行的 Windows 容器，以及具有 Azure SQL 数据库的数据库。 | 本文
+[文章 11：在 Azure DevOps Services 上重构 TFS](contoso-migration-tfs-vsts.md) | Contoso 将其本地 Team Foundation Server 部署迁移到 Azure 中的 Azure DevOps Services。 | 可用
+文章 12：在 Azure 容器和 Azure SQL 数据库上重塑应用架构 | Contoso 将其 SmartHotel 应用迁移到 Azure。 然后，它将应用 Web 层重新架构为 Azure Service Fabric 中运行的 Windows 容器，以及具有 Azure SQL 数据库的数据库。 | 本文
 [文章 13：在 Azure 中重新生成应用](contoso-migration-rebuild.md) | Contoso 使用一系列 Azure 功能和服务（包括 Azure 应用服务、Azure Kubernetes 服务 (AKS)、Azure Functions、Azure 认知服务和 Azure Cosmos DB）重新生成其 SmartHotel 应用。 | 可用 
 [文章 14：到 Azure 的大规模迁移](contoso-migration-scale.md) | 尝试过组合迁移后，Contoso 准备大规模整体迁移到 Azure。 | 可用
 
@@ -44,9 +44,9 @@ ms.locfileid: "49094099"
 Contoso IT 领导团队与其业务合作伙伴密切协作，以了解合作伙伴希望在本次迁移中实现的目标：
 
 - **满足业务增长**：Contoso 在不断壮大，这给本地系统和基础结构造成了压力。
-- **增加效率**：Contoso 需要摒弃不必要的流程，简化开发人员和用户流程。  业务要求 IT 反应迅速，不浪费时间金钱，从而更快满足客户需求。
+- **提高效率**：Contoso 需要删除不必要的过程，为开发者和用户简化流程。  业务要求 IT 反应迅速，不浪费时间金钱，从而更快满足客户需求。
 - **提高灵活性**：Contoso IT 需要对业务需求更加敏感。 它必须能够抢在市场变化之前作出反应，这样才能在全球经济中取得成功。  同时它不能阻碍发展，成为业务的绊脚石。
-- **扩展**：随着业务成功发展，Contoso IT 必须提供能够同步成长的系统。
+- **缩放**：随着业务成功发展，Contoso IT 必须提供能够同步成长的系统。
 - **成本**：Contoso 希望将许可成本降至最低。
 
 ## <a name="migration-goals"></a>迁移目标
@@ -136,11 +136,11 @@ Contoso 按如下方式运行迁移：
 > [!div class="checklist"]
 > * **步骤 1：在 Azure 中预配 SQL 数据库实例**：Contoso 在 Azure 中预配 SQL 实例。 将前端 Web VM 迁移到 Azure 容器后，具有应用 Web 前端的容器实例将指向此数据库。
 > * **步骤 2：创建 Azure 容器注册表 (ACR)**：Contoso 为 Docker 容器映像预配企业容器注册表。
-> * **步骤 3：预配 Azure Service Fabric**：预配一个 Service Fabric 群集。
-> * 步骤 4：管理 Service Fabric 证书：Contoso 设置证书，使 Azure DevOps Services 能够访问群集。
+> * **步骤 3：预配 Azure Service Fabric**：预配 Service Fabric 群集。
+> * **步骤 4：管理 Service Fabric 证书**：Contoso 设置证书，使 Azure DevOps Services 能够访问群集。
 > * **步骤 5：使用 DMA 迁移数据库**：使用数据库迁移助手迁移应用数据库。
-> * 步骤 6：设置 Azure DevOps Services：Contoso 在 Azure DevOps Services 中设置新项目，并将代码导入 Git 存储库。
-> * 步骤 7：转换应用：Contoso 使用 Azure DevOps 和 SDK 工具将应用转换为容器。
+> * **步骤 6：设置 Azure DevOps Services**：Contoso 在 Azure DevOps Services 中设置新项目，并将代码导入 Git 存储库。
+> * **步骤 8：转换应用**：Contoso 使用 Azure DevOps 和 SDK 工具将应用转换为容器。
 > * **步骤 8：设置生成和发布**：Contoso 设置生成和发布管道，以创建应用并将其发布到 ACR 和 Service Fabric 群集。
 > * **步骤 9：扩展应用**：在应用公开后，Contoso 扩展该应用以利用 Azure 功能，并使用管道将其重新发布到 Azure。
 
@@ -403,7 +403,7 @@ Contoso 管理员使用 Visual Studio 和 SDK 工具将应用转换为容器，�
 5. 现在，检查解决方案发生了哪些变化。
 
     - 新的应用是 **SmartHotel.RegistrationApplication/**
-    - 它包含两个服务：**SmartHotel.Registration.WCF** 和 **SmartHotel.Registration.Web**。
+    - 该应用包含两个服务：SmartHotel.Registration.WCF 和 SmartHotel.Registration.Web。
 
     ![容器](./media/contoso-migration-rearchitect-container-sql/container4.png)
 

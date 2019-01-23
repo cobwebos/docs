@@ -1,23 +1,23 @@
 ---
 title: 审查工作流 - 内容审查器
 titlesuffix: Azure Cognitive Services
-description: 配合使用工作流和内容审核。
+description: 配合使用工作流和评审 API 的作业操作，以便基于内容策略和阈值自动执行“人工介入”评审。
 services: cognitive-services
 author: sanjeev3
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: content-moderator
 ms.topic: conceptual
-ms.date: 02/04/2018
+ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: 3de45c62eb208671cc2d1d4de5309d2f9d75adc9
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 3a3ff5ed325205c5ae17aaff053127f4e84504bf
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47226868"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54262653"
 ---
-# <a name="moderation-workflows"></a>审查工作流
+# <a name="automate-moderation-reviews-with-workflows"></a>使用工作流执行自动审查
 
 内容审查器包括用于管理工作流的工具和 API。 配合使用工作流和[评审 API 的作业操作](review-api.md)，以便基于内容策略和阈值自动执行“人工介入”评审创建。
 
@@ -220,7 +220,7 @@ ms.locfileid: "47226868"
 
 - **team**：设置[评审工具帐户](https://contentmoderator.cognitive.microsoft.com/)时创建的团队 ID。 
 - **workflowname**：工作流的名称。 以 `default` 开头。
-- **Ocp-Apim-Subscription-Key**：位于“设置”选项卡。有关详细信息，请参阅[概述](overview.md)。
+- **Ocp-Apim-Subscription-Key**：位于“设置”选项卡中。有关详细信息，请参阅[概述](overview.md)。
 
 如果该操作成功，“响应状态”将为 `200 OK`，且“响应内容”框将以 JSON 格式显示工作流定义。
 要了解详细信息，请阅读[工作流 API 控制台快速入门](try-review-api-job.md)。
@@ -233,7 +233,7 @@ ms.locfileid: "47226868"
 
 - **team**：设置[评审工具帐户](https://contentmoderator.cognitive.microsoft.com/)时创建的团队 ID。 
 - **workflowname**：工作流的名称。 以 `default` 开头。
-- **Ocp-Apim-Subscription-Key**：位于“设置”选项卡。有关详细信息，请参阅[概述](overview.md)。
+- **Ocp-Apim-Subscription-Key**：位于“设置”选项卡中。有关详细信息，请参阅[概述](overview.md)。
 
 如果该操作成功，“响应状态”将为 `200 OK`，且“响应内容”框显示 `true`。 要了解详细信息，请[体验 `Create` 操作](try-review-api-job.md)。
 

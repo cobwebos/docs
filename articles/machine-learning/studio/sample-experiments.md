@@ -1,27 +1,8 @@
 ---
-title: 根据示例创建机器学习工作室试验 - Azure | Microsoft Docs
-description: 了解如何通过 Azure AI 库和 Azure 机器学习工作室使用示例机器学习试验来创建新试验。
-keywords: 机器学习示例, 示例试验, 示例性机器学习, AI 示例
-services: machine-learning
-documentationcenter: ''
-author: ericlicoding
-ms.custom: seodec18, previous-author=heatherbshapiro, previous-ms.author=hshapiro
-ms.author: amlstudiodocs
-editor: cgronlun
-ms.assetid: 81e6c1d8-682c-4db3-bfd5-d7bfb1150ff3
-ms.service: machine-learning
-ms.component: studio
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: conceptual
-ms.date: 01/05/2018
-ms.openlocfilehash: 6b2a07b105252ca1fb5eb37c2571601c3eb74179
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
-ms.translationtype: HT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53276428"
+title:根据示例创建机器学习工作室试验 titleSuffix: Azure 机器学习工作室 description:了解如何通过 Azure AI 库和 Azure 机器学习工作室使用示例机器学习试验来创建新试验。
+services: machine-learning ms.service: machine-learning ms.component: studio ms.topic: conceptual
+
+author: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18, previous-author=heatherbshapiro, previous-ms.author=hshapiro ms.date:2018/01/05
 ---
 # <a name="create-azure-machine-learning-studio-experiments-from-working-examples-in-azure-ai-gallery"></a>根据 Azure AI 库中的工作示例创建 Azure 机器学习工作室试验
 

@@ -5,14 +5,14 @@ services: dns
 author: vhorne
 ms.service: dns
 ms.topic: article
-ms.date: 12/4/2018
+ms.date: 1/16/2019
 ms.author: victorh
-ms.openlocfilehash: 663ba97ce96244aa890bef45d1229c12ca170802
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 1d4182f491dae9597add4b688b89faa9dd291429
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52880142"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54352914"
 ---
 # <a name="azure-dns-faq"></a>Azure DNS 常见问题解答
 
@@ -94,7 +94,7 @@ Azure DNS 仅支持托管静态 DNS 域，其中对某给定的 DNS 记录来说
 
 是的。 Azure DNS 支持适用于 TXT 记录集的扩展 ASCII 编码集。 但是，必须使用最新版本的 Azure REST API、SDK、PowerShell 和 CLI。 低于 2017 年 10 月 1 日版的版本或 SDK 2.1 不支持扩展的 ASCII 集。 
 
-例如，用户可能会提供一个字符串作为 TXT 记录的值，其中包含扩展的 ASCII 字符 \128。 例如“abcd\128efgh”。 Azure DNS 会在内部表示形式中使用此字符的字节值（即 128）。 在进行 DNS 解析时，此字节值会在响应中返回。 另请注意，在考虑到解析的情况下，“abc”和“\097\098\099”是可以互换的。 
+例如，你可能会提供一个字符串作为 TXT 记录的值，其中包含扩展的 ASCII 字符 \128。 例如“abcd\128efgh”。 Azure DNS 会在内部表示形式中使用此字符的字节值（即 128）。 在进行 DNS 解析时，此字节值会在响应中返回。 另请注意，在考虑到解析的情况下，“abc”和“\097\098\099”是可以互换的。 
 
 我们遵循适用于 TXT 记录的 [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt) 区域文件母版格式转义规则。 例如，按照 RFC 规则，`\` 现在实际上可以对所有内容进行转义操作。 如果指定 `A\B` 作为 TXT 记录值，则会在呈现时，仅将其解析为 `AB`。 如果确实需要让 TXT 记录在解析时呈现为 `A\B`，则需对 `\` 再次执行转义操作。 例如，指定 `A\\B`。
 
@@ -195,7 +195,7 @@ Azure DNS 仅支持托管静态 DNS 域，其中对某给定的 DNS 记录来说
 
 对专用域的支持是使用专用区域功能实现的。 此功能目前以公共预览版提供。 专用区域是使用与面向 Internet 的 Azure DNS 区域的相同工具管理的。 专用区域只能从指定的虚拟网络内部进行解析。 有关详细信息，请参阅[概述](private-dns-overview.md)。
 
-目前，Azure 门户不支持专用区域。 
+目前，Azure 门户不支持专用区域。
 
 有关 Azure 中其他内部 DNS 选项的信息，请参阅 [VM 和角色实例的名称解析](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md)。
 
@@ -217,7 +217,7 @@ Azure DNS 仅支持托管静态 DNS 域，其中对某给定的 DNS 记录来说
 
 ### <a name="can-a-virtual-network-that-belongs-to-a-different-subscription-be-added-as-a-resolution-virtual-network-to-a-private-zone"></a>是否可以在专用区域中，将属于不同订阅的虚拟网络添加为解析虚拟网络？
 
-是的。 用户必须对虚拟网络和专用 DNS 区域拥有“写入”操作权限。 可向多个 RBAC 角色授予“写入”权限。 例如，经典网络参与者 RBAC 角色对虚拟网络拥有写入权限。 有关 RBAC 角色的详细信息，请参阅[基于角色的访问控制](../role-based-access-control/overview.md)。
+是的。 你必须对虚拟网络和专用 DNS 区域拥有写入操作权限。 可向多个 RBAC 角色授予“写入”权限。 例如，经典网络参与者 RBAC 角色对虚拟网络拥有写入权限。 有关 RBAC 角色的详细信息，请参阅[基于角色的访问控制](../role-based-access-control/overview.md)。
 
 ### <a name="will-the-automatically-registered-virtual-machine-dns-records-in-a-private-zone-be-automatically-deleted-when-the-virtual-machines-are-deleted-by-the-customer"></a>客户删除虚拟机后，是否会自动删除在专用区域中自动注册的虚拟机 DNS 记录？
 
@@ -257,7 +257,7 @@ Azure DNS 仅支持托管静态 DNS 域，其中对某给定的 DNS 记录来说
 * 如果指定了注册虚拟网络，则无法通过 PowerShell、CLI 或 API 查看或检索注册到专用区域的虚拟网络中的 VM 的 DNS 记录。 VM 记录可成功注册和解析。
 * 反向 DNS 仅适用于注册虚拟网络中的专用 IP 空间。
 * 未在专用区域中注册的专用 IP的反向 DNS 将返回“internal.cloudapp.net”作为 DNS 后缀。 此后缀不可解析。 一个例子是作为解析虚拟网络链接到专用区域的虚拟网络中的虚拟机专用 IP。
-* 在首次作为注册或解析虚拟网络链接到专用区域时，虚拟网络中不能附加任何包含 NIC 的虚拟机。 换言之，该虚拟网络必须是空的。 以后作为注册或解析虚拟网络链接到其他专用区域时，虚拟网络可以是非空的。 
+* 当虚拟网络首次链接到专用区域作为注册或解析虚拟网络时，它必须为空。 以后作为注册或解析虚拟网络链接到其他专用区域时，虚拟网络可以是非空的。
 * 例如，不支持使用条件转发来实现 Azure 与本地网络之间的解析。 了解客户如何通过其他机制实现此方案。 请参阅 [VM 和角色实例的名称解析](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md)
 
 ### <a name="are-there-any-quotas-or-limits-on-zones-or-records-for-private-zones"></a>专用区域的区域数或记录数是否存在任何配额或限制？

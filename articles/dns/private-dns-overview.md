@@ -5,20 +5,20 @@ services: dns
 author: vhorne
 ms.service: dns
 ms.topic: article
-ms.date: 012/5/2018
+ms.date: 1/10/2019
 ms.author: victorh
-ms.openlocfilehash: 4d817e71cffd782bdcfdfb91492dbd5d08fb8479
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: e426e38ce5366f7c0d8b8bc20a639d827ea9e261
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52967089"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54200508"
 ---
 # <a name="use-azure-dns-for-private-domains"></a>将 Azure DNS 用于专用域
 
 域名系统（或称为 DNS）负责将服务名称转换（或解析）为其 IP 地址。 Azure DNS 是 DNS 域的托管服务，它使用 Microsoft Azure 基础结构提供名称解析。 除了支持面向 Internet 的 DNS 域之外，作为一项预览版功能，Azure DNS 现在还支持专用 DNS 域。
 
-Azure DNS 提供了可靠、安全的 DNS 服务来管理和解析虚拟网络中的域名，无需添加自定义 DNS 解决方案。 借助专用 DNS 区域，可以使用自定义域名而不使用当前可用的由 Azure 提供的名称。 使用自定义域名可帮助你定制虚拟网络体系结构以便最好地满足组织需求。 它在虚拟网络内以及在虚拟网络之间针对虚拟机 (VM) 提供名称解析。 除此之外，还可以通过水平分割视图配置区域名称，从而允许专用和公用 DNS 区域共享相同的名称。
+Azure DNS 提供了可靠、安全的 DNS 服务来管理和解析虚拟网络中的域名，无需添加自定义 DNS 解决方案。 借助专用 DNS 区域，可以使用自定义域名而不使用当前可用的由 Azure 提供的名称。 使用自定义域名可帮助你定制虚拟网络体系结构以便最好地满足组织需求。 它在虚拟网络内以及在虚拟网络之间针对虚拟机 (VM) 提供名称解析。 除此之外，还可以通过水平分割视图配置区域名称，从而允许专用和公用 DNS 区域共享名称。
 
 如果指定了注册虚拟网络，则无法通过 Azure Powershell 和 Azure CLI API 查看或检索注册到专用区域的虚拟网络中的 VM 的 DNS 记录，但是，VM 记录确实已注册并且会成功解析。
 
@@ -57,11 +57,11 @@ Azure DNS 提供以下功能：
 
 * **在作为“解析”虚拟网络链接到专用区域的虚拟网络之间支持正向 DNS 解析**。 对于跨虚拟网络 DNS 解析，不会明确要求虚拟网络彼此对等互连。 不过，对于其他场景（例如 HTTP 流量），客户可能希望将虚拟网络对等互连。
 
-* **在虚拟网络范围内支持反向 DNS 查找**。 对分配到专用区域的虚拟网络中的专用 IP 进行反向 DNS 查找将返回 FQDN，其中包括主机/记录名称以及作为后缀的区域名称。
+* **在虚拟网络范围内支持反向 DNS 查找**。 对分配到专用区域的虚拟网络中的专用 IP 进行反向 DNS 查找会返回 FQDN，其中包括主机/记录名称以及作为后缀的区域名称。
 
 ## <a name="limitations"></a>限制
 
-Azure DNS 存在以下限制：
+Azure DNS 具有以下限制：
 
 * 只允许在每个专用区域中使用 1 个“注册”虚拟网络。
 * 最多允许在每个专用区域中使用 10 个“解析”虚拟网络。
@@ -70,14 +70,14 @@ Azure DNS 存在以下限制：
 * 如果指定了注册虚拟网络，则无法通过 Azure Powershell 和 Azure CLI API 查看或检索注册到专用区域的虚拟网络中的 VM 的 DNS 记录。 VM 记录确实已注册并且会成功解析。
 * 反向 DNS 仅适用于注册虚拟网络中的专用 IP 空间。
 * 未注册到专用区域中的专用 IP（例如，作为解析虚拟网络链接到专用区域的虚拟网络中的虚拟机专用 IP）的反向 DNS 将返回 *internal.cloudapp.net* 作为 DNS 后缀。 但此后缀不可解析。
-* 在最初（即首次） 作为“注册”或“解析”虚拟网络链接到专用区域时，虚拟网络需要是空的（即没有 VM 记录）。 但是，以后作为注册或解析虚拟网络链接到其他专用区域时，虚拟网络可以是非空的。
-* 目前不支持条件转发（例如，为了启用 Azure 与本地网络之间的解析）。 有关客户可以如何通过其他机制实现此方案的信息，请参阅 [VM 和角色实例的名称解析](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md)。
+* 当虚拟网络首次链接到专用区域作为注册或解析虚拟网络时，它必须完全为空。 但是，以后作为注册或解析虚拟网络链接到其他专用区域时，虚拟网络可以是非空的。
+* 当前不支持条件转发（例如，为了启用 Azure 与本地网络之间的解析）。 有关客户可以如何通过其他机制实现此方案的信息，请参阅 [VM 和角色实例的名称解析](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md)。
 
 有关 Azure DNS 中的专用区域的一些常见问题和解答，包括对于某些类型的操作可以期待的特定 DNS 注册和解析行为，请参阅[常见问题解答](./dns-faq.md#private-dns)。  
 
 ## <a name="pricing"></a>定价
 
-在公共预览期，专用 DNS 区域功能免费。 在公式版发布后，此功能将提供基于用量的定价模型，这与现有的 Azure DNS 产品/服务类似。 
+在公共预览期，专用 DNS 区域功能免费。 在公开上市期间，此功能会提供基于用量的定价模型，这与现有的 Azure DNS 产品/服务类似。 
 
 ## <a name="next-steps"></a>后续步骤
 

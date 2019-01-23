@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/15/2018
 ms.author: erikre
-ms.openlocfilehash: bddb72f2b76d6e652dd26f2e383b7d06fded881b
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: 297b1d5e683a8ad505a37c43ab74c8b888ec87f2
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47395451"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54265747"
 ---
 # <a name="review-azure-resource-usage-using-the-rest-api"></a>使用 REST API 查看 Azure 资源使用情况
 
@@ -39,7 +39,7 @@ Content-Type: application/json
 Authorization: Bearer
 ```
 
-`{subscriptionGuid}` 参数是必需的，应该包含可以使用 API 令牌中提供的凭据读取的订阅 ID。 `{reportName}`
+`{subscriptionGuid}` 参数是必需的，应该包含可使用 API 令牌中提供的凭据进行读取的订阅 ID。 `{reportName}`
 
 以下标头是必需的： 
 

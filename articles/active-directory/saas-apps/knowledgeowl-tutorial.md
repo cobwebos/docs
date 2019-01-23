@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/27/2018
 ms.author: jeedes
-ms.openlocfilehash: e902f5969611dd3b1074e899003abe5067857c04
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 80d8d1664100cdfbbf6d537b41823c2db0204040
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39446129"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54318911"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-knowledgeowl"></a>教程：Azure Active Directory 与 KnowledgeOwl 集成
 
@@ -142,7 +142,7 @@ ms.locfileid: "39446129"
     |||
      
     > [!NOTE]
-    > 这些不是实际值。 将需要从实际的标识符、答复 URL 和登录 URL 更新这些值（本教程稍后会介绍）。
+    > 这些不是实际值。 将需要从实际的标识符、回复 URL 和登录 URL 更新这些值（本教程稍后会介绍）。
 
 1. KnowledgeOwl 应用程序需要特定格式的 SAML 断言，这要求向 SAML 令牌属性配置添加自定义属性映射。 请为此应用程序配置以下声明。 可以在应用程序集成页的“用户属性”部分管理这些属性的值。
 
@@ -186,7 +186,7 @@ ms.locfileid: "39446129"
 
     ![KnowledgeOwl 配置](./media/knowledgeowl-tutorial/configure1.png)
 
-1. 向下滚动至“SAML SSO 集成”并执行以下步骤：
+1. 滚动至“SAML SSO 集成”并执行以下步骤：
     
     ![KnowledgeOwl 配置](./media/knowledgeowl-tutorial/configure2.png)
 
@@ -254,7 +254,7 @@ ms.locfileid: "39446129"
 
 本部分的目的是在 KnowledgeOwl 中创建名为 Britta Simon 的用户。 KnowledgeOwl 支持在默认情况下启用的实时预配。 此部分不存在任何操作项。 如果用户尚不存在，则在尝试访问 KnowledgeOwl 期间会创建一个新用户。
 >[!Note]
->如果需要手动创建用户，请联系 [KnowledgeOwl 支持团队](mailto:support@knowledgeowl.com)。
+>如果需要手动创建用户，请联系  [KnowledgeOwl 支持团队](mailto:support@knowledgeowl.com)。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
@@ -291,12 +291,12 @@ ms.locfileid: "39446129"
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 单击访问面板中的 KnowledgeOwl 磁贴时，应自动登录到 KnowledgeOwl 应用程序。
-有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
+有关访问面板的详细信息，请参阅[访问面板简介](../user-help/active-directory-saas-access-panel-introduction.md)。 
 
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](tutorial-list.md)
-* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
+* [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
 
 

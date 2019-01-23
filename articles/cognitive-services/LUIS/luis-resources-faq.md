@@ -9,14 +9,14 @@ services: cognitive-services
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 12/04/2018
+ms.date: 01/11/2018
 ms.author: diberry
-ms.openlocfilehash: 9a8bfa2e89e6bc0cbbd5af2efdff60aa406b3f1d
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: e75fa6560feb01ae912ad2040df7a8748ed0077b
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53714196"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54246545"
 ---
 # <a name="language-understanding-frequently-asked-questions-faq"></a>语言理解常见问题解答 (FAQ)
 
@@ -84,6 +84,14 @@ LUIS 根据[区域性](luis-language-support.md#tokenization)将表述[标记化
 应用的“仪表板”中的终结点总命中数会定期更新，但 Azure 门户中与 LUIS 终结点密钥相关联的指标的更新频率更高。
 
 如果在“仪表板”中看不到更新的终结点命中数，请登录到 Azure 门户，找到与 LUIS 终结点密钥相关联的资源，然后打开“指标”以选择“总调用数”指标。 如果将终结点密钥用于多个 LUIS 应用，则 Azure 门户中的指标会显示使用该密钥的所有 LUIS 应用进行的调用的聚合数。
+
+### <a name="is-there-a-powershell-command-to-the-endpoint-quota"></a>终结点配额是否有 PowerShell 命令？
+
+可以使用 PowerShell 命令查看终结点配额：
+
+```powershell
+Get-AzureRmCognitiveServicesAccountUsage -ResourceGroupName <your-resource-group> -Name <your-resource-name>
+``` 
 
 ### <a name="my-luis-app-was-working-yesterday-but-today-im-getting-403-errors-i-didnt-change-the-app-how-do-i-fix-it"></a>我的 LUIS 应用昨天还可以正常使用，但今天却出现 403 错误。 我没有更改应用。 如何解决问题？
 根据下一常见问题解答中的[说明](#how-do-i-create-and-assign-a-luis-endpoint-key)创建一个 LUIS 终结点密钥，然后将其分配给应用。 然后，必须更改针对此终结点的 HTTP 请求才能[使用新终结点密钥](luis-concept-keys.md#use-endpoint-key-in-query)。
@@ -194,6 +202,12 @@ LUIS 根据[区域性](luis-language-support.md#tokenization)将表述[标记化
 
 ### <a name="what-luis-regions-support-bot-framework-speech-priming"></a>什么 LUIS 区域支持 Bot Framework 语音启动？
 仅中部（美国）实例中的 LUIS 应用支持[语音启动](https://docs.microsoft.com/bot-framework/bot-service-manage-speech-priming)。
+
+## <a name="api-programming-strategies"></a>API 编程策略
+
+### <a name="how-do-i-programmatically-get-the-luis-region-of-a-resource"></a>如何以编程方式获取资源的 LUIS 区域？ 
+
+通过 C# 或 Node.Js 使用 LUIS 示例以编程方式[查找区域](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/find-region)。 
 
 ## <a name="luis-service"></a>LUIS 服务
 

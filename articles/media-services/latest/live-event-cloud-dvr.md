@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 11/28/2018
+ms.date: 01/14/2019
 ms.author: juliako
-ms.openlocfilehash: 8df43a9b2c518e77d14dd5cb392b042b0b4846e2
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: 8543f00ccaecd8fd3f46132b05c2af925e6de10a
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53407960"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54352353"
 ---
 # <a name="using-a-cloud-dvr"></a>使用云 DVR
 
@@ -35,7 +35,10 @@ ms.locfileid: "53407960"
 一个 **LiveEvent** 最多支持三个并发运行的 **LiveOutput**，因此，从一个直播流最多可以创建 3 个录制文件/存档。 这样，便可以根据需要发布和存档事件的不同部分。 假设你需要广播全天候的直播线性源，并需要全天创建不同节目的“录制内容”，以便将其作为点播内容提供给客户，供其抽时间观看。 对于这种情况，请先创建一个主要 LiveOutput，其存档窗口较短，为 1 小时或更短 - 这是供观看者欣赏的主要直播流。 可为此 **LiveOutput** 创建一个 **StreamingLocator**，然后将其作为“直播”源发布到应用程序或网站。 当 **LiveEvent** 处于运行状态时，可以在节目开始时通过编程方式创建另一个并发 **LiveOutput**（也可提前 5 分钟这样做，以便提供一些可供以后剪裁的句柄）。 在结束节目 5 分钟之后，可以删除第二个 **LiveOutput**。 使用第二个**资产**可以创建新的 **StreamingLocator**，以便在应用程序的目录中将此节目发布为点播资产。 可以针对需要作为点播视频共享的其他节目边界或突出显示内容多次重复此过程，同时第一个 **LiveOutput** 提供的“直播”源可以继续广播线性源。 
 
 > [!NOTE]
-> **LiveOutput** 在创建时启动，在删除后停止。 删除 **LiveOutput** 不会删除基础**资产**和资产中的内容。  
+> **LiveOutput** 在创建时启动，在删除后停止。 删除 LiveOutput 不会删除基础资产和该资产中的内容。 
+>
+> 如果已在 LiveOutput 的资产上发布了流式处理定位器，则事件（最长可达 DVR 窗口长度）将继续可查看，直到流式处理定位器结束时或删除定位器时为止，具体取决于哪一时间先到。   
+  
 
 ## <a name="next-steps"></a>后续步骤
 

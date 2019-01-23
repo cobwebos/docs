@@ -16,12 +16,12 @@ ms.component: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: e5ceae2959f79c677f5b89c0c3f0a487f92ad1c6
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: c6d36f3e1cef4fffbe38b0a70d42069577590627
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51623164"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54212254"
 ---
 # <a name="azure-active-directory-reporting-latencies"></a>Azure Active Directory 报告延迟
 
@@ -40,14 +40,18 @@ ms.locfileid: "51623164"
 > **延迟 (95%)** 是指报告 95% 的日志所用的时间，**延迟 (99%)** 是指报告 99% 的日志所用的时间。 
 >
 
-| 报表 | 延迟 (95%) |延迟 (99%)|
-| :-- | --- | --- | 
-| 审核日志 | 2 分钟  | 5 分钟  |
-| 登录 | 2 分钟  | 5 分钟 |
+| 报表 | 延迟 (95%) |延迟 (99%)|报告日志的时间范围|
+| :-- | --- | --- | --- |
+| 审核日志 | 2 分钟  | 5 分钟  | 2-60 分钟 |
+| 登录 | 2 分钟  | 5 分钟 | 2-120 分钟 |
+
+### <a name="how-soon-can-i-see-activities-data-after-getting-a-premium-license"></a>获得高级许可证后多久可看见活动数据？
+
+如果已经拥有免费许可证的活动数据，则可在升级时立即看到这些数据。 升级到高级许可证后，如果没有任何数据，则需要在一到两天后，数据才会显示在报告中。
 
 ## <a name="security-reports"></a>安全报表
 
-有两种类型的安全报告：
+有两种类型的安全报表：
 
 - [风险登录](concept-risky-sign-ins.md) - 风险登录是指可能由非用户帐户合法拥有者进行的登录尝试。 
 - [已标记为存在风险的用户](concept-user-at-risk.md) - 风险用户是指可能已泄露的用户帐户。 

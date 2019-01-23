@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/27/2017
 ms.author: wesmc
-ms.openlocfilehash: 444f1aaee496666745be548bcdfadf3a4f162699
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 5d70e4beb97a23212bc85d529382d8e89f09336d
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54104057"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54199907"
 ---
 # <a name="azure-cache-for-redis-faq"></a>用于 Redis 的 Azure 缓存常见问题解答
 了解 Azure Redis 缓存的常见问题、模式和最佳做法。
@@ -120,7 +120,7 @@ Azure Redis 缓存基于热门开源软件 [Redis](https://redis.io/)。 这使�
 <a name="cache-performance"></a>
 
 ### <a name="azure-cache-for-redis-performance"></a>Azure Redis 缓存性能
-下表显示了在 Iaas VM 中使用 `redis-benchmark.exe` 针对 Azure Redis 缓存终结点测试各种大小的标准缓存和高级缓存时，所观测到的最大带宽值。 对于 SSL 吞吐量，将 redis 基准用于 stunnel 以连接到 Azure Redis 缓存终结点。
+下表显示了在 IaaS VM 中使用 `redis-benchmark.exe` 针对 Redis 终结点的 Azure 缓存测试各种大小的标准缓存和高级缓存时，所观测到的最大带宽值。 对于 SSL 吞吐量，将 redis 基准用于 stunnel 以连接到 Azure Redis 缓存终结点。
 
 >[!NOTE] 
 >这些值是没有保证的，并且不存在针对这些数字的 SLA，但它们反映了典型的情况。 应该对自己的应用程序进行负载测试，以确定适合应用程序的缓存大小。

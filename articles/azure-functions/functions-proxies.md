@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: alkarche
-ms.openlocfilehash: 81f76b31f7af3643e2b654e8e26c70d0481d60b8
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 507927934c442c8b217ed8fea371f505bb517d35
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54017100"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54198705"
 ---
 # <a name="work-with-azure-functions-proxies"></a>使用 Azure Functions 代理
 

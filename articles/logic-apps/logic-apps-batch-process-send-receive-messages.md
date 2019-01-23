@@ -8,13 +8,13 @@ author: divyaswarnkar
 ms.author: divswa
 ms.reviewer: estfan, jonfan, LADocs
 ms.topic: article
-ms.date: 08/19/2018
-ms.openlocfilehash: bd31de8f60fff5630141f708714083fe76220d11
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.date: 01/16/2019
+ms.openlocfilehash: c33b1d46ecf710f050fc998ce27f6448337c6b78
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47410147"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54352506"
 ---
 # <a name="send-receive-and-batch-process-messages-in-azure-logic-apps"></a>在 Azure 逻辑应用中发送、接收和批处理消息
 
@@ -48,22 +48,29 @@ ms.locfileid: "47410147"
 
 在将消息发送到某个批之前，该批必须存在且充当这些消息要发送到的目标。 因此，首先必须创建可以通过“批处理”触发器启动的“批接收方”逻辑应用。 这样，在创建“批发送方”逻辑应用时，便可以选择批接收方逻辑应用。 批接收方会持续收集消息，直到满足发布和处理这些消息的指定条件。 尽管批接收方不需要知道有关批发送方的任何信息，但批发送方必须知道要将消息发送到的目标。 
 
-1. 在 [Azure 门户](https://portal.azure.com)或 Visual Studio 中，创建名为“BatchReceiver”的逻辑应用 
+1. 在 [Azure 门户](https://portal.azure.com)或 Visual Studio 中，创建具有以下名称的逻辑应用：“BatchReceiver” 
 
-2. 在逻辑应用设计器中，添加**批**触发器，这会启动逻辑应用工作流。 在搜索框中，输入“批”作为筛选器。 选择此触发器：“批处理消息”
+2. 在逻辑应用设计器中，添加**批**触发器，这会启动逻辑应用工作流。 在搜索框中，输入“批”作为筛选器。 选择此触发器：**批消息**
 
    ![添加“批处理消息”触发器](./media/logic-apps-batch-process-send-receive-messages/add-batch-receiver-trigger.png)
 
-3. 设置批接收方属性： 
+3. 为批接收方设置以下属性： 
 
    | 属性 | Description | 
    |----------|-------------|
-   | **批处理模式** | - **内联**：用于在批处理触发器中定义发布条件 <br>- **集成帐户**：用于通过[集成帐户](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)定义多个发布条件配置。 使用集成帐户可在一个位置而不是独立的逻辑应用中维护这些配置。 | 
+   | **批处理模式** | - 内联：用于在批触发器中定义发布条件 <br>- 集成帐户：用于通过[集成帐户](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)定义多个发布条件配置。 使用集成帐户可在一个位置而不是独立的逻辑应用中维护这些配置。 | 
    | **批名称** | 批的名称（在本示例中为“TestBatch”），仅适用于“内联”批处理模式 |  
-   | **发布条件** | 仅适用于“内联”批处理模式，选择在处理每个批之前所要满足的条件： <p>- **基于消息计数**：要在批中收集的消息数，例如 10 个消息 <br>- **基于大小**：以字节为单位的最大批大小，例如 100 MB <br>- **基于计划**：发布批的间隔时间和频率，例如 10 分钟。 最小重复周期为 60 秒或 1 分钟。 分数分钟值有效地向上舍入到 1 分钟。 若要指定开始日期和时间，请选择“显示高级选项”。 <br>- **全选**：使用所有指定的条件。 | 
+   | **发布条件** | 仅适用于“内联”批处理模式，选择在处理每个批之前所要满足的条件： <p>- 基于消息计数：根据批收集的消息数发布批。 <br>- 基于大小：根据批收集的所有消息的总大小（以字节为单位）发布批。 <br>- 计划：根据指定间隔和频率的定期计划发布批。 在高级选项中，还可以选择时区，并提供开始日期和时间。 <br>- 全选：使用所有指定的条件。 | 
+   | **消息计数** | 要在批中收集的消息数，例如 10 条消息。 批的限制为 8,000 条消息。 | 
+   | **批大小** | 批中要收集的总大小（以字节为单位），例如10 MB。 批的大小上限是 80 MB。 | 
+   | **计划** | 发布批的间隔时间和频率，例如 10 分钟。 最小重复周期为 60 秒或 1 分钟。 分数分钟有效地向上舍入到 1 分钟。 要指定时区或开始日期和时间，请选择“显示高级选项”。 | 
    ||| 
-   
-   本示例选择所有条件：
+
+   > [!NOTE]
+   > 
+   > 如果在触发器仍具有已批处理但未发送的消息时更改发布条件，则触发器将使用更新的发布条件来处理未发送的消息。 
+
+   此示例显示了所有条件，但是对于自己的测试，请仅尝试一个条件：
 
    ![提供批触发器详细信息](./media/logic-apps-batch-process-send-receive-messages/batch-receiver-criteria.png)
 
@@ -76,12 +83,12 @@ ms.locfileid: "47410147"
 
    2. 在搜索框中，输入“发送电子邮件”作为筛选器。
    基于电子邮件提供商，选择电子邮件连接器。
-      
+
       例如，如果你有个人帐户（如 @outlook.com 或 @hotmail.com），请选择 Outlook.com 连接器。 
       如果具有 Gmail 帐户，则选择 Gmail 连接器。 
       本示例使用 Office 365 Outlook。 
 
-   3. 选择此操作：“发送电子邮件”- <电子邮件提供程序>
+   3. 选择此操作：“发送电子邮件 - <电子邮件提供商>”
 
       例如：
 
@@ -98,7 +105,7 @@ ms.locfileid: "47410147"
 
      ![从“动态内容”列表中选择“分区名称”](./media/logic-apps-batch-process-send-receive-messages/send-email-action-details.png)
 
-     在后面的部分，可以指定唯一分区键，它将目标批划分为可以向其发送消息的逻辑子集。 
+     稍后，在批发送方中，可以指定唯一分区键，将目标批划分为可以在其中发送消息的逻辑子集。 
      每个集都具有批发送方逻辑应用生成的唯一编号。 
      此功能使你可以使用具有多个子集的单个批，并且使用你提供的名称定义每个子集。
 
@@ -143,7 +150,7 @@ ms.locfileid: "47410147"
    1. 在定期触发器下，选择“新建步骤”。
 
    2. 在搜索框中，输入“批”作为筛选器。 
-   选择“操作”列表，然后选择此操作：“选择具有批处理触发器的逻辑应用工作流 - 将消息发送到批”
+   选择“操作”列表，并选择此操作：选择具有批触发器的逻辑应用工作流 - 将消息发送到批
 
       ![选择“选择具有批处理触发器的逻辑应用工作流”](./media/logic-apps-batch-process-send-receive-messages/send-messages-batch-action.png)
 

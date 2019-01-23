@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 02/27/2017
 ms.author: alkohli
-ms.openlocfilehash: 076df176d7cd40c009aea27004fe0f4415999c80
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6466dc1ec0dcaae6045fadfae7f3a552345be2e8
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23112275"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54267278"
 ---
 # <a name="deploy-storsimple-virtual-array--set-up-as-an-iscsi-server-via-azure-portal"></a>部署 StorSimple 虚拟阵列 - 通过 Azure 门户设置为 iSCSI 服务器
 
@@ -75,7 +75,7 @@ ms.locfileid: "23112275"
 5. DNS 服务器是必需的，因为在设备尝试与云存储服务提供程序通信时，需要用到这些服务器；在按名称解析设备时，也需要用到这些配置为文件服务器的服务器。 在“DNS 服务器”下的“网络设置”页上：
    
    1. 将自动配置主 DNS 服务器和辅助 DNS 服务器。 如果选择配置静态 IP 地址，则可指定 DNS 服务器。 为了确保高可用性，建议同时配置主 DNS 服务器和辅助 DNS 服务器。
-   2. 单击“应用” 。 此时会应用和验证网络设置。
+   2. 单击“应用”。 此时会应用和验证网络设置。
 6. 在“设备设置”页上：
    
    1. 为设备指定唯一“名称”。 该名称长度为 1-15 个字符，并可包含字母、数字和连字符。
@@ -88,20 +88,20 @@ ms.locfileid: "23112275"
       > 如果将 iSCSI 服务器加入域，请确保虚拟阵列采用其自身的适用于 Microsoft Azure Active Directory 的组织单位 (OU)，没有对其应用任何组策略对象 (GPO)。
       > 
       > 
-   4. 此时会显示一个对话框。 按指定格式输入域凭据。 单击选中图标  ![选中图标](./media/storsimple-virtual-array-deploy3-iscsi-setup/image15.png)。 此时会验证域凭据。 如果凭据不正确，则会显示错误消息。
+   4. 此时会显示一个对话框。 按指定格式输入域凭据。 设置筛选器后，单击选中图标  ![选中图标](./media/storsimple-virtual-array-deploy3-iscsi-setup/image15.png)。 此时会验证域凭据。 如果凭据不正确，则会显示错误消息。
       
        ![凭据](./media/storsimple-virtual-array-deploy3-iscsi-setup/image8.png)
-   5. 单击“应用” 。 此时会应用和验证设备设置。
+   5. 单击“应用”。 此时会应用和验证设备设置。
 7. （可选）配置 Web 代理服务器。 尽管 Web 代理服务器配置是可选项，仍应注意，在使用 Web 代理时，只能在此处配置它。
    
     ![配置 Web 代理](./media/storsimple-virtual-array-deploy3-iscsi-setup/image9.png)
    
     在“Web 代理”页上：
    
-   1. 以下述格式提供“Web 代理 URL”：*http://主机 IP 地址*或 *FDQN:端口号*。 请注意，不支持 HTTPS URL。
+   1. 以下述格式提供“Web 代理 URL”： http://host-IP 地址或 FQDN:端口号。 请注意，不支持 HTTPS URL。
    2. 将“身份验证”指定为“基本”或“无”。
    3. 如果使用身份验证，则还需提供“用户名”和“密码”。
-   4. 单击“应用” 。 此时会验证并应用配置的 Web 代理设置。
+   4. 单击“应用”。 此时会验证并应用配置的 Web 代理设置。
 8. （可选）配置设备的时间设置，例如时区以及主 NTP 服务器和辅助 NTP 服务器。 NTP 服务器是必需的，因为设备必须同步时间，才能通过云服务提供程序进行身份验证。
    
     ![时间设置](./media/storsimple-virtual-array-deploy3-iscsi-setup/image10.png)
@@ -109,7 +109,7 @@ ms.locfileid: "23112275"
     在“时间设置”页上：
    
    1. 根据部署设备的地理位置，从下拉列表中选择相应的“时区” 。 设备的默认时区为太平洋标准时间。 设备将此时区用于所有计划操作。
-   2. 为设备指定“主 NTP 服务器”，或者接受默认值：time.windows.com。确保网络允许 NTP 流量从数据中心传递到 Internet。
+   2. 为设备指定“主 NTP 服务器”，或者接受默认值：time.windows.com。 确保网络允许 NTP 流量从数据中心传递到 Internet。
    3. （可选）为设备指定“辅助 NTP 服务器”。
    4. 单击“应用” 。 此时会验证并应用配置的时间设置。
 9. 配置设备的云设置。 此步骤需完成本地设备配置，然后将设备注册到 StorSimple Device Manager 服务。

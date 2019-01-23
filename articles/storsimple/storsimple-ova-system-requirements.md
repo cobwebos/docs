@@ -12,14 +12,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 11/14/2017
+ms.date: 01/11/2019
 ms.author: alkohli
-ms.openlocfilehash: 5d01523f326bd7e2518bff06e62ae62db8f318d3
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 7e5cf79613bdbd62427e99a0d1f2aa29ed8f85be
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2017
-ms.locfileid: "24815222"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54245185"
 ---
 # <a name="storsimple-virtual-array-system-requirements"></a>StorSimple 虚拟阵列系统要求
 ## <a name="overview"></a>概述
@@ -42,13 +42,13 @@ ms.locfileid: "24815222"
 | **虚拟机监控程序** | **版本** |
 | --- | --- |
 | Hyper-V |Windows Server 2008 R2 SP1 和更高版本 |
-| VMware ESXi |5.0、5.5 和 6.0 <br> （不支持 6.5。） |
+| VMware ESXi |5.0、5.5、6.0 和 6.5。 |
 
 > [!IMPORTANT]
 > 不要将 VMware 工具安装在 StorSimple 虚拟阵列上，这将导致不支持的配置。
 
 ### <a name="virtual-device-requirements"></a>虚拟设备要求
-| **组件** | **要求** |
+| 组件 | 要求 |
 | --- | --- |
 | 虚拟处理器的最小数目（核） |4 |
 | 最小内存 (RAM) |8 GB <br> 对于文件服务器，小于 200 万个文件时为 8 GB，200 万 - 400 万个文件时为 16 GB|
@@ -61,7 +61,7 @@ ms.locfileid: "24815222"
 <sup>2</sup> - 网络要求可能会根据每日数据更改频率而有所不同。 例如，如果设备在一天中需要备份 10 GB 或更多更改，则通过 5 Mbps 连接进行的每日备份可能耗时长达 4.25 小时（如果无法压缩数据或删除重复数据）。
 
 ### <a name="supported-web-browsers"></a>受支持的 Web 浏览器
-| **组件** | **版本** | **其他要求/说明** |
+| 组件 | **版本** | **其他要求/说明** |
 | --- | --- | --- |
 | Microsoft Edge |最新版本 | |
 | Internet Explorer |最新版本 |使用 Internet Explorer 11 测试 |
@@ -94,7 +94,7 @@ ms.locfileid: "24815222"
 
 | **端口号<sup>1</sup>** | **入或出** | **端口范围** | **必需** | **说明** |
 | --- | --- | --- | --- | --- |
-| TCP 80 (HTTP) |出 |WAN |否 |出站端口用于 Internet 访问以检索更新。 <br></br>用户可配置出站 Web 代理。 |
+| TCP 80 (HTTP) |出 |WAN |否 |出站端口用于 Internet 访问以检索更新。 <br></br>出站 Web 代理可由用户配置。 |
 | TCP 443 (HTTPS) |出 |WAN |是 |出站端口用于访问云中的数据。 <br></br>用户可配置出站 Web 代理。 |
 | UDP 53 (DNS) |出 |WAN |在某些情况下；请参阅说明。 |仅当使用基于 Internet 的 DNS 服务器时，才需要此端口。 <br></br> 注意，如果部署文件服务器，建议使用本地 DNS 服务器。 |
 | UDP 123 (NTP) |出 |WAN |在某些情况下；请参阅说明。 |仅当使用基于 Internet 的 NTP 服务器时，才需要此端口。<br></br> 注意，如果部署文件服务器，建议与 Active Directory 域控制器同步时间。 |

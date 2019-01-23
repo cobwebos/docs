@@ -10,12 +10,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/20/2018
 ms.author: jingwang
-ms.openlocfilehash: b829528daeeb49be9b46206d8ae0add88c4441bd
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: 0ad54a32620a47927707fa3367b3408dbfd31eef
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54068935"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54352183"
 ---
 # <a name="copy-data-from-google-cloud-storage-using-azure-data-factory"></a>使用 Azure 数据工厂从 Google 云存储复制数据
 
@@ -47,7 +47,7 @@ ms.locfileid: "54068935"
 
 Google 云存储链接服务支持以下属性：
 
-| 属性 | 说明 | 必需 |
+| 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为“AmazonS3”。 | 是 |
 | accessKeyId | 机密访问键 ID。 若要查找访问密钥和机密，请转到“Google 云存储” > “设置” > “互操作性”。 |是 |
@@ -84,7 +84,7 @@ Google 云存储链接服务支持以下属性：
 
 若要从 Google 云存储复制数据，请将数据集的 type 属性设置为 **AmazonS3Object**。 支持以下属性：
 
-| 属性 | 说明 | 必需 |
+| 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 数据集的 type 属性必须设置为：AmazonS3Object |是 |
 | bucketName | S3 存储桶的名称。 不支持通配符筛选器。 |对于复制/查找活动，为“是”；对于 GetMetadata 活动，为“否” |
@@ -137,7 +137,7 @@ Google 云存储链接服务支持以下属性：
 
 若要从 Google 云存储复制数据，请将复制活动中的源类型设置为 **FileSystemSource**。 复制活动源部分支持以下属性：
 
-| 属性 | 说明 | 必需 |
+| 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 复制活动源的 type 属性必须设置为：FileSystemSource |是 |
 | recursive | 指示是要从子文件夹中以递归方式读取数据，还是只从指定的文件夹中读取数据。 当 recursive 设置为 true 且接收器是基于文件的存储时，将不会在接收器上复制/创建空的文件夹/子文件夹。<br/>允许的值为：true（默认）、false | 否 |

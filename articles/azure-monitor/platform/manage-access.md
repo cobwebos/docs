@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: magoedte
-ms.openlocfilehash: 71987fcde08c5098d98d21405ce79e61d3094424
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 6c8f48ce71e11d1de0c28b4dab5327ab03e54f28
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53186049"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54231778"
 ---
 # <a name="manage-workspaces"></a>管理工作区
 
@@ -40,7 +40,7 @@ ms.locfileid: "53186049"
 
 * 数据存储的地理位置
 * 数据隔离，以定义不同的用户访问权限
-* 设置配置的范围，如保留期和数据上限
+* 设置配置的范围，如[定价层](https://docs.microsoft.com/en-us/azure/azure-monitor/platform/manage-cost-storage#changing-pricing-tier)、[保留期](https://docs.microsoft.com/en-us/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period)和[数据上限](https://docs.microsoft.com/en-us/azure/azure-monitor/platform/manage-cost-storage#daily-cap) 
 
 从使用角度来看，我们建议尽量减少创建的工作区数量。 这可带来更轻松快捷的管理和查询体验。 但是，基于上述特征，在以下情况下可能需要创建多个工作区：
 
@@ -145,96 +145,6 @@ Log Analytics 参与者角色包括以下 Azure 操作：
 - 资源 - 仅访问指定工作区
 
 我们建议你在资源级别（工作区）执行分配，以确保准确的访问控制。  使用[自定义角色](../../role-based-access-control/custom-roles.md)，创建具有所需的特定权限的角色。
-
-## <a name="link-an-existing-workspace-to-an-azure-subscription"></a>将现有工作区链接到 Azure 订阅
-2016 年 9 月 26 日之后创建的所有工作区必须在创建时链接到 Azure 订阅。 此日期之前创建的工作区必须在登录时链接到某工作区。 从 Azure 门户创建工作区或者将工作区链接到 Azure 订阅时，Azure Active Directory 会链接为组织帐户。
-
-### <a name="to-link-a-workspace-to-an-azure-subscription-in-the-azure-portal"></a>将工作区链接到 Azure 门户中的 Azure 订阅
-1. 在 Azure 门户中，单击“所有服务”。 在资源列表中，键入“Log Analytics”。 开始键入时，会根据输入筛选该列表。 选择“Log Analytics”。  
-
-2. 在 Log Analytics 订阅窗格中，单击“添加”。  
-
-    ![工作区列表](./media/manage-access/workspace-link-existing-01.png)
-
-3. 在“Log Analytics 工作区”窗格中，单击“链接现有项”。  
-
-4. 单击“配置所需设置”。  
-
-5. 随即会看到尚未链接到 Azure 帐户的工作区列表。 选择工作区。  
-   
-6. 如果需要，可以更改以下项的值：
-   * 订阅
-   * 资源组
-   * 位置
-   * 定价层  
-
-7. 单击“确定”。 工作区现已链接到 Azure 帐户。
-
-> [!NOTE]
-> 如果找不到要链接的工作区，则 Azure 订阅无法访问使用 OMS 门户创建的工作区。  要通过 OMS 门户授予此帐户的访问权限，请参阅[将用户添加到现有工作区](#add-a-user-to-an-existing-workspace)。
->
->
-
-## <a name="upgrade-a-workspace-to-a-paid-plan"></a>将工作区升级为付费计划
-有三个用于 OMS 的工作区计划类型：**免费**、**独立**和 **OMS**。  如果使用免费计划，则每天发送到 Log Analytics 的数据大小限制为 500 MB。  如果超量，需要将工作区更改为付费计划，避免无法收集超出此限制的数据。 可以随时更改计划类型。  有关 OMS 定价的详细信息，请参阅[定价详细信息](https://www.microsoft.com/en-us/cloud-platform/operations-management-suite-pricing)。
-
-### <a name="using-entitlements-from-an-oms-subscription"></a>使用 OMS 订阅中的权利
-若要使用通过购买用于 System Center 的 OMS E1、OMS E2 OMS 或 OMS 附加设备所获得的权利，请选择 OMS Log Analytics 的 OMS  计划。
-
-购买 OMS 订阅时，相应权利将添加到企业协议。 依据本协议创建的任何 Azure 订阅都可以使用这些权利。 这些订阅的所有工作区都使用 OMS 权利。
-
-若要确保工作区的使用情况适用于 OMS 订阅中的权利，需要：
-
-1. 在 Azure 订阅（包含 OMS 订阅的企业协议的一部分）中创建工作区
-
-2. 为工作区选择 *OMS* 计划
-
-> [!NOTE]
-> 如果工作区创建于 2016 年 9 月 26 日之前，并且 Log Analytics 定价计划为*高级*，此工作区将使用用于 System Center 的 OMS 附加设备中的权利。 更改为 *OMS* 定价层也可使用这些权利。
->
->
-
-OMS 订阅权利在 Azure 门户中不可见。 可在企业门户中看到权利和使用情况。  
-
-如果需要更改工作区链接到的 Azure 订阅，可以使用 Azure PowerShell [Move-AzureRmResource](https://msdn.microsoft.com/library/mt652516.aspx) cmdlet。
-
-### <a name="using-azure-commitment-from-an-enterprise-agreement"></a>使用企业协议中的 Azure 承诺
-如果没有 OMS 订阅，则需单独为 OMS 的每个组件付费，使用量会显示在 Azure 帐单上。
-
-如果在 Azure 订阅链接到的企业许可登记表上有 Azure 资金承诺，Log Analytics 的使用量都会自动从资金承诺余额抵扣。
-
-如果需要更改工作区链接到的 Azure 订阅，可以使用 Azure PowerShell [Move-AzureRmResource](https://msdn.microsoft.com/library/mt652516.aspx) cmdlet。  
-
-### <a name="change-a-workspace-to-a-paid-pricing-tier-in-the-azure-portal"></a>在 Azure 门户中将工作区更改为付费定价层
-1. 在 Azure 门户 中的 Log Analytics 订阅窗格中选择一个工作区。
-
-2. 在工作区窗格的“常规”下，选择“定价层”。  
-
-3. 在“定价层”下选择一个定价层，并单击“选择”。  
-    ![选择定价计划](./media/manage-access/workspace-pricing-tier-info.png)
-
-> [!NOTE]
-> 如果工作区关联到自动化帐户，则在选择“单独(按 GB)”定价层之前，必须删除任何“自动化和控制”解决方案，并取消自动化帐户的关联。 在工作区边栏选项卡的“常规”下，单击“解决方案”查看和删除解决方案。 若要取消自动化帐户的关联，请在“定价层”边栏选项卡上单击自动化帐户的名称。
->
->
-
-### <a name="change-a-workspace-to-a-paid-pricing-tier-in-the-oms-portal"></a>在 OMS 门户中将工作区更改为付费定价层
-
-要通过 OMS 门户更改定价层，必须具有 Azure 订阅。
-
-1. 在 OMS 门户中，单击“设置”磁贴。
-
-2. 单击“帐户”选项卡，并单击“Azure 订阅和数据计划”选项卡。
-
-3. 单击要使用的定价层。
-
-4. 单击“ **保存**”。  
-
-    ![订阅和数据计划](./media/manage-access/subscription-tab.png)
-
-新数据计划会显示网页顶部的 OMS 门户功能区。
-
-![OMS 功能区](./media/manage-access/data-plan-changed.png)
 
 ## <a name="next-steps"></a>后续步骤
 * 请参阅 [Log Analytics 代理概述](../../azure-monitor/platform/log-analytics-agent.md)，以从数据中心或其他云环境中的计算机收集数据。

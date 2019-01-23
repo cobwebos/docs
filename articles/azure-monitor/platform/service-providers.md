@@ -1,6 +1,6 @@
 ---
 title: 适用于服务提供商的 Log Analytics | Microsoft Docs
-description: Log Analytics 可以帮助托管服务提供商 (MSP)、大型企业、独立软件供应商 (ISV) 和托管服务提供商管理和监视客户本地或云基础结构中的服务器。
+description: Log Analytics 可以帮助托管服务提供商 (MSP)、大型企业、独立软件供应商 (ISV) 和主机托管服务提供商管理和监视客户本地或云基础结构中的服务器。
 services: log-analytics
 documentationcenter: ''
 author: MeirMen
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 07/11/2018
 ms.author: meirm
-ms.openlocfilehash: ac34cc467cc8ff7d231551683da130c0f7565800
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 294dd56a7eb62510c30f4fbb0dbeeafc81b790f2
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53340532"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54264762"
 ---
 # <a name="log-analytics-for-service-providers"></a>适用于服务提供商的 Log Analytics
 Log Analytics 可以帮助托管服务提供商 (MSP)、大型企业、独立软件供应商 (ISV) 和主机托管服务提供商管理和监视客户本地或云基础结构中的服务器。 

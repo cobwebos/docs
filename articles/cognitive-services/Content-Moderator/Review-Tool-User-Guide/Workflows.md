@@ -1,20 +1,21 @@
 ---
-title: 在 Azure 内容审查器中定义和使用工作流 | Microsoft Docs
-description: 了解如何根据内容策略来创建自定义工作流。
+title: 定义和使用内容审核工作流 - 内容审查器
+titlesuffix: Azure Cognitive Services
+description: 使用 Azure 内容审查器工作流设计器和 API，可以根据内容策略来定义自定义工作流和阈值。
 services: cognitive-services
 author: sanjeev3
 manager: mikemcca
 ms.service: cognitive-services
 ms.component: content-moderator
 ms.topic: article
-ms.date: 01/07/2018
+ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: dfe3ba8a2ef1bcbc69ef585b504a9367d9420bf0
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 265d5a2bd6a256d287e6ae164e883ade783f960f
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35365466"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54262398"
 ---
 # <a name="define-test-and-use-workflows"></a>定义、测试和使用工作流
 

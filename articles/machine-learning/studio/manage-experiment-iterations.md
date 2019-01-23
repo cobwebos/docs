@@ -1,26 +1,8 @@
 ---
-title: 在机器学习工作室中管理试验迭代 - Azure | Microsoft Docs
-description: 如何在 Azure机器学习工作室中管理试验迭代。 可以在任何时候复查前面运行的试验，以便质询、回顾并最终确认或优化以前的假设。
-services: machine-learning
-documentationcenter: ''
-author: ericlicoding
-ms.custom: seodec18
-ms.author: amlstudiodocs
-editor: cgronlun
-ms.assetid: 6a53530f-20d5-40ae-9b49-7b499ccb44b7
-ms.service: machine-learning
-ms.component: studio
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 03/20/2017
-ms.openlocfilehash: ebcae3e8e8f13904936dbe122f285a01a2a71459
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
-ms.translationtype: HT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53270444"
+title:在机器学习工作室中管理迭代实验 titleSuffix: Azure 机器学习工作室 description:如何在 Azure机器学习工作室中管理试验迭代。 可以在任何时候复查前面运行的试验，以便质询、回顾并最终确认或优化以前的假设。
+services: machine-learning ms.service: machine-learning ms.component: studio ms.topic: article
+
+author: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18 ms.date:2017/03/20
 ---
 # <a name="manage-experiment-iterations-in-azure-machine-learning-studio"></a>在 Azure机器学习工作室中管理试验迭代
 开发预测分析模型是一个迭代过程 - 在修改试验的各种函数和参数时，结果会不断聚合，直到对经过培训的有效模型感到满意为止。 此过程的关键是跟踪试验参数和配置的各种迭代。

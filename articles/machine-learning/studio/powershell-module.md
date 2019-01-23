@@ -1,27 +1,8 @@
 ---
-title: 机器学习工作室 PowerShell 模块 - Azure | Microsoft Docs
-description: Azure 机器学习 PowerShell 模块可在公共预览模式下使用。 使用 PowerShell 创建和管理工作区、实验和 Web 服务等。
-keywords: 试验, 线性回归, 机器学习算法, 机器学习教程, 预测建模技术, 数据科研试验
-services: machine-learning
-documentationcenter: ''
-author: ericlicoding
-ms.custom: previous-ms.author=haining, previous-author=hning86
-ms.author: amlstudiodocs
-editor: cgronlun
-ms.assetid: a9001cc2-3aa0-47e1-b175-1f76408ba1d1
-ms.service: machine-learning
-ms.component: studio
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 03/15/2017
-ms.openlocfilehash: 6539ec36c23feccfa52c8214784590106fa5a01e
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
-ms.translationtype: HT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53257516"
+title:机器学习工作室 PowerShell 模块 titleSuffix: Azure 机器学习工作室 description:Azure 机器学习 PowerShell 模块可在公共预览模式下使用。 使用 PowerShell 创建和管理工作区、实验和 Web 服务等。
+services: machine-learning ms.service: machine-learning ms.component: studio ms.topic: article
+
+author: ericlicoding ms.author: amlstudiodocs ms.custom: previous-ms.author=haining, previous-author=hning86 ms.date:2017/03/15
 ---
 # <a name="powershell-module-for-azure-machine-learning-studio"></a>Azure 机器学习工作室 PowerShell 模块
 Azure 机器学习的 PowerShell 模块是一个功能强大的工具，使你可以使用 Windows PowerShell 来管理工作区、试验、数据集、经典 Web 服务等。

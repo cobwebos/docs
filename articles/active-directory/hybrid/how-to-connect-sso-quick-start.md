@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/14/2018
+ms.date: 01/10/2019
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 2a842646d2696c0d7d26ad7218d298d2df0be1a1
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 2aab7929539fb4a4b9001da89770730d8afbe286
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54187631"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54244653"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-quick-start"></a>Azure Active Directory 无缝单一登录：快速入门
 
@@ -192,7 +192,7 @@ Mozilla Firefox 不会自动使用 Kerberos 身份验证。 每个用户必须�
 
 如果已替代环境中的 [AuthNegotiateDelegateWhitelist](https://www.chromium.org/administrators/policy-list-3#AuthNegotiateDelegateWhitelist) 或 [AuthServerWhitelist](https://www.chromium.org/administrators/policy-list-3#AuthServerWhitelist) 策略设置，请确保也向其添加 Azure AD 的 URL (`https://autologon.microsoftazuread-sso.com`)。
 
-#### <a name="google-chrome-macos-only"></a>Google Chrome（仅限 macOS）
+#### <a name="google-chrome-macos-and-other-non-windows-platforms"></a>Google Chrome（macOS 和其他非 Windows 平台）
 
 对于 Mac OS 和其他非 Windows 平台上的 Google Chrome，请参阅 [Chromium 项目策略列表](https://dev.chromium.org/administrators/policy-list-3#AuthServerWhitelist)，了解有关如何针对集成身份验证将 Azure AD URL 列入允许列表的信息。
 

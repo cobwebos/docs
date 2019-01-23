@@ -8,12 +8,12 @@ ms.date: 12/07/2018
 author: wmengmsft
 ms.author: wmeng
 ms.custom: seodec18
-ms.openlocfilehash: 9784d08a8e3e471a8b516c3bc285430c537857a8
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 5b418f28cb8cb48d8c9ee369289c899c7f6525bc
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54044172"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54331956"
 ---
 # <a name="azure-storage-table-design-guide-designing-scalable-and-performant-tables"></a>Azure 存储表设计指南：设计可伸缩的高性能表
 
@@ -213,7 +213,7 @@ EGT 还引入了潜在的权衡，以便在设计中进行评估：使用的分�
 * 其次是***范围查询***，它使用 **PartitionKey**并筛选一系列 **RowKey** 值，从而返回多个实体。 **PartitionKey** 值确定特定分区，**RowKey** 值确定该分区中的实体子集。 例如：$filter=PartitionKey eq 'Sales' and RowKey ge 'S' and RowKey lt 'T'  
 * 然后是***分区扫描***，它使用 **PartitionKey** 并根据另一个非键属性进行筛选，可能会返回多个实体。 **PartitionKey** 值确定特定分区，而属性值将选择该分区中的实体子集。 例如：$filter=PartitionKey eq 'Sales' and LastName eq 'Smith'  
 * ***表扫描***不包括 **PartitionKey** 且效率较低，因为它会依次搜索构成表的所有分区，查找所有匹配的实体。 无论筛选器是否使用 **RowKey**它都将执行表扫描。 例如：$filter=LastName eq 'Jones'  
-* 返回多个实体的查询将按 **PartitionKey** 和 **RowKey** 顺序返回实体。 若要避免对客户端中的实体重新排序，请选择定义最常见排序顺序的 **RowKey**。  
+* 返回多个实体的 Azure Table Storage 查询将按 PartitionKey 和 RowKey 顺序返回实体。 若要避免对客户端中的实体重新排序，请选择定义最常见排序顺序的 **RowKey**。 Azure Cosmso DB 中 Azure 表 API 返回的查询结果不按分区键或行键排序。 有关功能差异详细列表的信息，请参阅 [Azure Cosmos DB 和 Azure 表存储中的表 API 之间的差异](faq.md#where-is-table-api-not-identical-with-azure-table-storage-behavior)。
 
 使用“**or**”指定基于 **RowKey** 值的筛选器将导致分区扫描，而不会视为范围查询。 因此，应避免使用筛选器 （如查询：$filter=PartitionKey eq 'Sales' and (RowKey eq '121' or RowKey eq '322')  
 
@@ -251,7 +251,13 @@ EGT 还引入了潜在的权衡，以便在设计中进行评估：使用的分�
 * [索引实体模式](#index-entities-pattern) - 维护索引实体，实现返回实体列表的高效搜索。  
 
 ### <a name="sorting-data-in-the-table-service"></a>对表服务中的数据进行排序
-表服务依次按 **PartitionKey** 和 **RowKey** 以升序排序返回实体。 这些键是字符串值，以确保数字值正确排序，应将值转换为固定长度并使用零进行填充。 例如，如果用作 **RowKey** 的员工 ID 值是个整数值，则应将员工 ID **123** 转换为 **00000123**。  
+
+返回的查询结果按照 PartitionKey 的升序排序，然后按 RowKey 排序。
+
+> [!NOTE]
+> Azure Cosmso DB 中 Azure 表 API 返回的查询结果不按分区键或行键排序。 有关功能差异详细列表的信息，请参阅 [Azure Cosmos DB 和 Azure 表存储中的表 API 之间的差异](faq.md#where-is-table-api-not-identical-with-azure-table-storage-behavior)。
+
+Azure 存储表中的键是字符串值，以确保数字值正确排序，应将值转换为固定长度并使用零进行填充。 例如，如果用作 **RowKey** 的员工 ID 值是个整数值，则应将员工 ID **123** 转换为 **00000123**。 
 
 许多应用程序要求使用按不同顺序排序的数据：例如，按名称或按加入日期对员工进行排序。 [表设计模式](#table-design-patterns)部分中的以下模式介绍了如何替换实体的排序顺序：  
 

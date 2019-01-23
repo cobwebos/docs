@@ -1,5 +1,5 @@
 ---
-title: 管理员接管 Azure Active Directory 中的非托管目录或阴影租户 | Microsoft Docs
+title: 接管非托管目录 - 管理员 - Azure Active Directory | Microsoft Docs
 description: 如何接管 Azure Active Directory 中非托管目录（阴影租户）中的 DNS 域名。
 services: active-directory
 documentationcenter: ''
@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.component: users-groups-roles
 ms.topic: article
 ms.workload: identity
-ms.date: 01/08/2019
+ms.date: 01/14/2019
 ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro
-ms.openlocfilehash: 8e11d370f58028ee4c1665d84d0e48541e7d3344
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 44fe3b54e2dfedb71b50a75befce96121ecebe05
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54121186"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54320236"
 ---
 # <a name="take-over-an-unmanaged-directory-as-administrator-in-azure-active-directory"></a>在 Azure Active Directory 中以管理员身份接管非托管目录
 本文介绍了在 Azure Active Directory (Azure AD) 的非托管目录中接管 DNS 域名的两种方式。 当自助服务用户注册一个使用 Azure AD 的云服务时，系统会根据其电子邮件域将其添加到非托管 Azure AD 目录。 有关自助服务或“迅速传播的”服务注册的详细信息，请参阅[什么是 Azure Active Directory 的自助服务注册？](directory-self-service-signup.md)

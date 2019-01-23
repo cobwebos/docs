@@ -10,14 +10,14 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 01/08/2018
+ms.date: 01/08/2019
 ms.author: bwren
-ms.openlocfilehash: 3dc574b3aab3600895376c0271b5c6224a70d3b6
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: fe1f08b7b597a2e521f2b13af1d0a4a4d7d4b7a2
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54119198"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54213993"
 ---
 # <a name="oms-portal-moving-to-azure"></a>OMS 门户即将转移到 Azure
 
@@ -92,7 +92,7 @@ Azure 门户是所有 Azure 服务的中心，提供丰富的管理体验和功�
 OMS 移动应用将随 OMS 门户一起淘汰。 无需使用 OMS 移动应用来访问有关 IT 基础结构、仪表板和保存的查询的信息，可以直接通过移动设备中的浏览器访问 Azure 门户。 若要获取警报，应配置 [Azure 操作组](../../azure-monitor/platform/action-groups.md)来接收短信或语音呼叫形式的通知
 
 ## <a name="application-insights-connector-and-solution"></a>Application Insights 连接器和解决方案
-使用 [Application Insights 连接器](../../azure-monitor/platform/app-insights-connector.md)可将 Application Insights 数据包括在 Log Analytics 工作区中。 需要进行这种数据复制才能实现跨基础结构和应用程序数据的可见性。 利用将于 2019 年 3 月推出的 Application Insights 延长数据保留期支持以及执行[跨资源查询](../../azure-monitor/log-query/cross-workspace-query.md)的能力，不再需要从 Application Insights 资源复制数据并将其发送到 Log Analytics。 此外，连接器会将应用程序属性的一个子集发送到 Log Analytics，同时，跨资源查询提供了增强的灵活性。  
+使用 [Application Insights 连接器](../../azure-monitor/platform/app-insights-connector.md)可将 Application Insights 数据包括在 Log Analytics 工作区中。 需要进行这种数据复制才能实现跨基础结构和应用程序数据的可见性。 通过将于 2019 年 3 月推出的 Application Insights 延长数据保留期支持以及执行[跨资源查询](../../azure-monitor/log-query/cross-workspace-query.md)的能力，除了能够[查看多个 Azure Monitor Application Insights 资源](../log-query/unify-app-resource-data.md)，不再需要从 Application Insights 资源复制数据并将其发送到 Log Analytics。 此外，连接器会将应用程序属性的一个子集发送到 Log Analytics，同时，跨资源查询提供了增强的灵活性。  
 
 这样，随着 OMS 门户在 2019 年 3 月 30 日被弃用，Application Insights 连接器也会被弃用并从 Azure 市场中删除，而现有连接将继续工作到 2019 年 6 月30 日。 随着 OMS 门户被弃用，将无法从门户中配置和删除现有的连接。 将支持使用 2019 年 1 月推出的 REST API 来执行上述操作，并且将在 [Azure 更新](https://azure.microsoft.com/updates/)中发布通知。 
 

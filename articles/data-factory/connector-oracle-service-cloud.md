@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 3cf59db2e6f8fcffd9eefc38fcd22c25ba646456
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: b65bcfa5252a150c8101322eaf6d84ce46eef755
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54018630"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54352285"
 ---
 # <a name="copy-data-from-oracle-service-cloud-using-azure-data-factory-preview"></a>使用 Azure 数据工厂（预览版）从 Oracle 服务云复制数据
 
@@ -47,7 +47,7 @@ Oracle 服务云链接服务支持以下属性：
 | type | type 属性必须设置为：OracleServiceCloud | 是 |
 | host | Oracle 服务云实例的 URL。  | 是 |
 | username | 用于访问 Oracle 服务云服务器的用户名。  | 是 |
-| password | 在用户名键中提供的用户名所对应的密码。 可以选择将此字段标记为 SecureString 以将其安全地存储在 ADF，或在 Azure Key Vault 中存储密码，并允许在此处 ADF 复制活动请求时执行数据复制 - 在[在 Key Vault 中存储凭据](store-credentials-in-key-vault.md)中了解详细信息。 | 是 |
+| password | 在用户名键中提供的用户名所对应的密码。 可选择将此字段标记为 SecureString，将其安全地存储在 ADF 中，或在 Azure Key Vault 中存储密码，并允许 ADF 复制活动在执行数据复制时从此处拉取（请参阅[在 Key Vault 中存储凭据](store-credentials-in-key-vault.md)了解详细信息）。 | 是 |
 | useEncryptedEndpoints | 指定是否使用 HTTPS 加密数据源终结点。 默认值为 true。  | 否 |
 | useHostVerification | 指定通过 SSL 连接时是否需要服务器证书中的主机名匹配服务器的主机名。 默认值为 true。  | 否 |
 | usePeerVerification | 指定通过 SSL 连接时是否要验证服务器的标识。 默认值为 true。  | 否 |

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 02/05/2016
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: 3ee1cfaa9e5eb08b2fe6ee7d210dcb84a8c39d78
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: ec80be0ece3596eab418ac39507954142944e34a
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53715318"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54260481"
 ---
 # <a name="install-and-use-apache-giraph-on-windows-based-hdinsight-clusters"></a>在基于 Windows 的 HDInsight 群集上安装并使用 Apache Giraph
 
@@ -73,7 +73,7 @@ ms.locfileid: "53715318"
 
     将 tiny_graph.txt 文件上传到 HDInsight 群集的主存储。 有关如何上传数据的说明，请参阅[在 HDInsight 中上传 Apache Hadoop 作业的数据](hdinsight-upload-data.md)。
 
-    此数据使用 [source\_id, source\_value,[[dest\_id], [edge\_value],...]] 格式，描述定向图形中对象之间的关系。每一行代表 sourceid** 对象与一个或多个 **dest\_id** 对象之间的关系。 **edge\_value**（或权重）可被视为 **source_id** 和 **dest\_id** 之间的连接强度或距离。
+    此数据使用 [source\_id, source\_value,[[dest\_id], [edge\_value],...]] 格式，描述定向图形中对象之间的关系。每一行代表 **source\_id** 对象与一个或多个 **dest\_id** 对象之间的关系。 **edge\_value**（或权重）可被视为 **source_id** 和 **dest\_id** 之间的连接强度或距离。
 
     使用表示对象间距离的值（或权重）绘制图形后，上述数据可能与下面类似。
 
@@ -153,7 +153,7 @@ ms.locfileid: "53715318"
 
     ![将对象绘制为圆圈，并绘制对象之间的最短路径](./media/hdinsight-hadoop-giraph-install/giraph-graph-out.png)
 
-## <a name="install-giraph-using-aure-powershell"></a>使用 Azure PowerShell 安装 Giraph
+## <a name="install-giraph-using-azure-powershell"></a>使用 Azure PowerShell 安装 Giraph
 请参阅[使用脚本操作自定义 HDInsight 群集](hdinsight-hadoop-customize-cluster.md#call-scripts-using-azure-powershell)。  此示例演示如何使用 Azure PowerShell 安装 Apache Spark。 需要自定义脚本以使用 [https://hdiconfigactions.blob.core.windows.net/giraphconfigactionv01/giraph-installer-v01.ps1](https://hdiconfigactions.blob.core.windows.net/giraphconfigactionv01/giraph-installer-v01.ps1)。
 
 ## <a name="install-giraph-using-net-sdk"></a>使用 .NET SDK 安装 Giraph

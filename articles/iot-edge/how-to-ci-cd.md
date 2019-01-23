@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 3c4f5d6888d581cb44702a8d76e1ebbb13845091
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: aef88a4fbc7d71ee1438333afd9773d1aba3ed9c
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53582909"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54359147"
 ---
 # <a name="continuous-integration-and-continuous-deployment-to-azure-iot-edge"></a>向 Azure IoT Edge 进行持续集成和持续部署
 
@@ -68,8 +68,8 @@ ms.locfileid: "53582909"
 1. 在管道编辑器中，选择代理池。 
     
     * 若要在用于 Linux 容器的 amd64 平台中生成模块，请选择“托管 Ubuntu 1604”
-    * 若要在用于 Windows 容器的 amd64 平台中生成模块，请选择“托管 VS2017” 
-    * 若要在用于 Linux 容器的 arm32v7 平台中生成模块，则需要通过访问“管理”按钮来设置自己的生成代理。
+    * 如果想在平台 amd64 中为 Windows 1809 容器生成模块，则需要[在 Windows 上设置自托管代理](https://docs.microsoft.com/azure/devops/pipelines/agents/v2-windows?view=vsts)。
+    * 如果想在平台 arm32v7 中为 Linux 容器生成模块，则需要[在 Linux 上设置自托管代理](https://blogs.msdn.microsoft.com/iotdev/2018/11/13/setup-azure-iot-edge-ci-cd-pipeline-with-arm-agent/)。
     
     ![配置生成代理池](./media/how-to-ci-cd/configure-env.png)
 

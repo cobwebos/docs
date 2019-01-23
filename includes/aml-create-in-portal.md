@@ -9,16 +9,16 @@ manager: cgronlund
 ms.custom: include file
 ms.topic: include
 ms.date: 09/24/2018
-ms.openlocfilehash: 6f73b15ed16cfe26bf14e60a5206568e1a1564fd
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: 8bbdd2d49171ee8f4e7eb3cc0def1c7a6e59806b
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53594155"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54193289"
 ---
 使用将所使用的 Azure 订阅的凭据登录到 [Azure 门户](https://portal.azure.com/)。 
 
-门户的工作区仪表板仅在 Edge、Chrome 和 Firefox 浏览器上受支持。
+门户的工作区仪表板仅在 Microsoft Edge、Chrome 和 Firefox 浏览器上受支持。
 
    ![Azure 门户](./media/aml-create-in-portal/portal-dashboard.png)
 

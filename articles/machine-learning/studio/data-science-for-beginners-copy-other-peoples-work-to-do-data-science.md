@@ -1,27 +1,8 @@
 ---
-title: 复制他人的数据科学示例 - Azure 机器学习工作室 | Microsoft Docs
-description: 数据科学的商业机密：让他人为你完成工作。 从 Azure AI 库获取机器学习示例。
-keywords: 数据科学示例, 机器学习示例, 聚类分析算法, 聚类分析算法示例
-services: machine-learning
-documentationcenter: na
-author: garyericson
-ms.custom: seodec18
-ms.author: garye
-editor: cjgronlund
-ms.assetid: ec2be823-c325-4ad8-b8b2-3e664f1a44b4
-ms.service: machine-learning
-ms.component: studio
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 01/05/2018
-ms.openlocfilehash: acd0899396ac5a47dade5fac16e451b2029ec0c2
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
-ms.translationtype: HT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53260372"
+title:复制其他数据科学示例 titleSuffix: Azure 机器学习工作室 description:“数据科学的商业机密：让他人为你完成工作。 从 Azure AI 库获取机器学习示例。”
+services: machine-learning ms.service: machine-learning ms.component: studio ms.topic: article
+
+author: garyericson ms.author: garye ms.custom: seodec18 ms.date:2018/01/05
 ---
 # <a name="copy-other-peoples-work-to-do-data-science"></a>复制其他人的工作以执行数据科研
 ## <a name="video-5-data-science-for-beginners-series"></a>视频 5：适合初学者的数据科学系列

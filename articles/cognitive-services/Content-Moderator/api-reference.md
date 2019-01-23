@@ -1,7 +1,7 @@
 ---
 title: API 参考 - 内容审查器
 titlesuffix: Azure Cognitive Services
-description: 了解内容审查器的内容审核和评审 API。
+description: 了解多种内容审查器的内容审核和评审 API。
 services: cognitive-services
 author: sanjeev3
 manager: cgronlun
@@ -10,19 +10,19 @@ ms.component: content-moderator
 ms.topic: reference
 ms.date: 06/25/2017
 ms.author: sajagtap
-ms.openlocfilehash: ecc22b097c14fc7597d8ee0e31f9691098a2211d
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 4a64b2f7ce54d5ace26ad18c0ca1a9facb66245e
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51229741"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54266954"
 ---
 # <a name="content-moderator-api-reference"></a>内容审查器 API 参考
 
 可以通过以下方式开始使用 Azure 内容审查器 API：（另请参阅[管理凭据](review-tool-user-guide/credentials.md)。）
 
 - 在 Azure 门户中，[订阅内容审查器 API](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesContentModerator)。
-- 注册[内容审查器审阅工具](https://contentmoderator.cognitive.microsoft.com/)。 请参阅[快速入门](quick-start.md)。
+- 注册[内容审查器审阅工具](https://contentmoderator.cognitive.microsoft.com/)。 请参阅[尝试在 Web 上使用内容审查器](quick-start.md)。
 
 ## <a name="moderation-apis"></a>审查 API
 

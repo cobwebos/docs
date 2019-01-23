@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.component: authentication
 ms.topic: conceptual
-ms.date: 07/17/2018
+ms.date: 01/11/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 6da0bddc3f6c90d0ecd3a554988f510e1063caac
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 6a23ea08ee14efbc7850e555d9ad84daf855638f
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54043033"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54320729"
 ---
 # <a name="licensing-requirements-for-azure-ad-self-service-password-reset"></a>Azure AD 自助密码重置的授权要求
 
@@ -33,15 +33,15 @@ Azure AD 自助密码重置是按用户许可的，为了维护合规性，需�
 * 云用户的自助密码重置
    * 我是**仅限云用户**并且忘记了密码。
       * 我想要将我的密码**重置**为我知道的密码。
-   * 此功能包含在 Azure AD Basic、Premium P1 或 Premium P2 版本中。
+   * 此功能包含在 Azure AD Basic、Premium P1 或 P2 版本，或 Microsoft 365 商业版中。
 
 * **通过本地写回**实现自助密码重置/更改/解锁
    * 我是**混合用户**，我的本地 Active Directory 用户帐户已使用 Azure AD Connect 与我的 Azure AD 帐户同步。 我想要更改密码、已忘记密码或已被锁定。
       * 我想要更改密码或将其重置为我知道的密码，或者解锁我的帐户，**并**将此更改同步回本地 Active Directory。
-   * 此功能包含在 Azure Premium P1 或 Premium P2 版本中。
+   * 此功能包含在 Azure AD Premium P1 或 P2 版本，或 Microsoft 365 商业版中。
 
 > [!WARNING]
-> 独立 Office 365 许可计划不支持“通过本地写回实现自助密码重置/更改/解锁”，要使此功能正常工作，需要包含 Azure AD Premium P1 或 Premium P2 版本的计划。
+> 独立 Office 365 许可计划不支持“通过本地写回实现自助式密码重置/更改/解锁”，要使此功能正常工作，需要包含 Azure AD Premium P1 版本、Premium P2 版本，或 Microsoft 365 商业版的计划。
 >
 
 可在以下页上找到其他许可信息（包括成本）：
@@ -50,6 +50,7 @@ Azure AD 自助密码重置是按用户许可的，为了维护合规性，需�
 * [Azure Active Directory 特性和功能](https://www.microsoft.com/cloud-platform/azure-active-directory-features)
 * [企业移动性 + 安全性](https://www.microsoft.com/cloud-platform/enterprise-mobility-security)
 * [Microsoft 365 企业版](https://www.microsoft.com/microsoft-365/enterprise)
+* [Microsoft 365 商业版服务说明](https://docs.microsoft.com/office365/servicedescriptions/microsoft-365-business-service-description)
 
 ## <a name="enable-group-or-user-based-licensing"></a>启用基于组或基于用户的许可
 

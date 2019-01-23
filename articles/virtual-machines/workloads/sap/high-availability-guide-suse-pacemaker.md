@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/16/2018
 ms.author: sedusch
-ms.openlocfilehash: 00e50d60ed7f13a2f28338891b39b1b55b7adbfa
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 2cec9e9b9724ca401778d4493d03def2aefc4ee9
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54074370"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54304476"
 ---
 # <a name="setting-up-pacemaker-on-suse-linux-enterprise-server-in-azure"></a>在 Azure 中的 SUSE Linux Enterprise Server 上设置 Pacemaker
 
@@ -483,7 +483,7 @@ o- / ...........................................................................
 
 STONITH 设备使用服务主体对 Microsoft Azure 授权。 请按照以下步骤创建服务主体。
 
-1. 转到 <https\://portal.azure.com>
+1. 转到 [https://portal.azure.com](https://portal.azure.com)
 1. 打开“Azure Active Directory”边栏选项卡  
    转到“属性”并记下目录 ID。 这是“租户 ID”。
 1. 单击“应用注册”

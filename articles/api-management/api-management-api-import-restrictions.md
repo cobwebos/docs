@@ -14,27 +14,39 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/29/2017
 ms.author: apipm
-ms.openlocfilehash: bad87931feb11012f23f0ef19bd853b38566c07c
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 251caa840446e75ff13d9b4dcebcbae3a36473c8
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54106818"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54265441"
 ---
 # <a name="api-import-restrictions-and-known-issues"></a>API 导入限制和已知问题
 ## <a name="about-this-list"></a>关于此列表
 导入 API 时，可能会遇到一些限制或识别问题，需要对其进行纠正才能成功导入。 本文记录了这些限制或问题，并按照 API 的导入格式对其进行了组织。
 
 ## <a name="open-api"> </a>OpenAPI/Swagger
-如果在导入 OpenAPI 文档时遇到错误，请确保已通过使用 Azure 门户中的设计器（设计 - 前端 - OpenAPI 规范编辑器）或使用第三方工具（例如 <a href="https://editor.swagger.io">Swagger 编辑器</a>）对其进行了验证。
 
-* 仅支持 JSON 格式的 OpenAPI。
-* 路径和查询所需的参数必须具有唯一名称。 （在 OpenAPI 中，参数名称只需要在一个位置内是惟一的，例如路径、查询、标头。  但是，在 API 管理中，我们允许操作通过路径和查询参数进行区分（OpenAPI 不支持此方法）。 因此，我们要求参数名称在整个 URL 模板中是唯一的。）
-* 使用 **$ref** 属性引用的架构不能包含其他 **$ref** 属性。
+如果在导入 OpenAPI 文档时收到错误，请确保事先已对其进行了验证。 可以使用 Azure 门户中的设计器（设计 - 前端 - OpenAPI 规范编辑器）或使用第三方工具（例如 <a href="https://editor.swagger.io">Swagger 编辑器</a>）进行验证。
+
+### <a name="open-api-general"> </a>常规
+
+* 路径和查询所需的参数必须具有唯一名称。 （在 OpenAPI 中，参数名称只需要在一个位置内是唯一的，例如路径、查询、标头。 但是，在 API 管理中，我们允许操作通过路径和查询参数进行区分（OpenAPI 不支持此方法）。 这就是要求参数名称在整个 URL 模板中是唯一的原因。）
 * **$ref** 指针不能引用外部文件。
 * 仅支持 **x-ms-paths** 和 **x-servers** 扩展。
 * 自定义扩展在导入时将被忽略，并且不会为导出保存或保留。
-* **递归** - APIM 不支持以递归方式定义的类型（例如，引用这些类型本身的数组）。
+* **递归** - API 管理目前不支持以递归方式定义的定义（例如，引用自身的架构）。
+* 源文件 URL（如果可用）应用于相对服务器 URL。
+
+### <a name="open-api-v2"> </a>OpenAPI 版本 2
+
+* 仅支持 JSON 格式。
+
+### <a name="open-api-v3"> </a>OpenAPI 版本 3
+
+* 如果指定了多个服务器，API 管理将尝试选择第一个 HTTP URL。 如果不存在任何 HTTP URL，则为第一个 HTTP URL。 如果不存在任何 HTTP URL，则服务器 URL 将为空。
+* 不支持“Examples”，但支持“example”。
+* 不支持“Multipart/form-data”。
 
 > [!IMPORTANT]
 > 如需与 OpenAPI 导入相关的重要信息和提示，请参阅此[文档](https://blogs.msdn.microsoft.com/apimanagement/2018/04/11/important-changes-to-openapi-import-and-export/)。

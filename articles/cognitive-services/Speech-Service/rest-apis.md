@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/13/2018
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 0b38c61f4fe884137204cba6d99d5e383b3259a0
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: b7f5d4683f0042b95399b86cd4f53c93518c3c56
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53338884"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54330664"
 ---
 # <a name="speech-service-rest-apis"></a>语音服务 REST API
 
@@ -272,7 +272,7 @@ public class Authentication
 |------|-------------|---------------------|
 | `Ocp-Apim-Subscription-Key` | 语音服务订阅密钥。 | 此标头或 `Authorization` 是必需的。 |
 | `Authorization` | 前面带有单词 `Bearer` 的授权令牌。 有关详细信息，请参阅[身份验证](#authentication)。 | 此标头或 `Ocp-Apim-Subscription-Key` 是必需的。 |
-| `Content-type` | 描述所提供音频数据的格式和编解码器。 接受的值为 `audio/wav; codec=audio/pcm; samplerate=16000` 和 `audio/ogg; codec=audio/pcm; samplerate=16000`。 | 必选 |
+| `Content-type` | 描述所提供音频数据的格式和编解码器。 接受的值为 `audio/wav; codecs=audio/pcm; samplerate=16000` 和 `audio/ogg; codecs=opus`。 | 必选 |
 | `Transfer-Encoding` | 指定要发送分块的音频数据，而不是单个文件。 仅当要对音频数据进行分块时才使用此标头。 | 可选 |
 | `Expect` | 如果使用分块传输，则发送 `Expect: 100-continue`。 语音服务将确认初始请求并等待附加的数据。| 如果发送分块的音频数据，则是必需的。 |
 | `Accept` | 如果提供此标头，则值必须是 `application/json`。 语音服务以 JSON 格式提供结果。 如果未指定默认值，则某些 Web 请求框架会提供不兼容的默认值，因此，最佳做法是始终包含 `Accept`。 | 可选，但建议提供。 |
@@ -296,7 +296,7 @@ public class Authentication
 ```HTTP
 POST speech/recognition/conversation/cognitiveservices/v1?language=en-US&format=detailed HTTP/1.1
 Accept: application/json;text/xml
-Content-Type: audio/wav; codec=audio/pcm; samplerate=16000
+Content-Type: audio/wav; codecs=audio/pcm; samplerate=16000
 Ocp-Apim-Subscription-Key: YOUR_SUBSCRIPTION_KEY
 Host: westus.stt.speech.microsoft.com
 Transfer-Encoding: chunked
@@ -330,7 +330,7 @@ Expect: 100-continue
     request.Method = "POST";
     request.ProtocolVersion = HttpVersion.Version11;
     request.Host = host;
-    request.ContentType = @"audio/wav; codec=""audio/pcm""; samplerate=16000";
+    request.ContentType = @"audio/wav; codecs=audio/pcm; samplerate=16000";
     request.Headers["Ocp-Apim-Subscription-Key"] = args[1];
     request.AllowWriteStreamBuffering = false;
 
@@ -469,7 +469,10 @@ using (fs = new FileStream(audioFile, FileMode.Open, FileAccess.Read))
 
 ### <a name="request-body"></a>请求正文
 
-作为 HTTP `POST` 请求正文发送的文本。 可以是纯文本（ASCII 或 UTF-8），或[语音合成标记语言](speech-synthesis-markup.md) (SSML) 格式 (UTF-8)。 纯文本请求使用语音服务的默认语音和语言。 使用 SSML 可以指定语音和语言。
+每个 `POST` 请求的正文作为[语音合成标记语言 (SSML)](speech-synthesis-markup.md) 发送。 SSML 允许选择文本到语音转换服务返回的合成语音的语音和语言。 有关受支持的语音的完整列表，请参阅[语言支持](language-support.md#text-to-speech)。
+
+> [!NOTE]
+> 如果使用自定义语音，请求正文可以作为纯文本（ASCII 或 UTF-8）发送。
 
 ### <a name="sample-request"></a>示例请求
 

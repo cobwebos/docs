@@ -1,27 +1,8 @@
 ---
-title: 数据评估 - Azure 机器学习工作室 | Microsoft Docs
-description: 数据可用于数据科学需要满足的四个条件。 本视频提供具体示例，帮助了解基本数据评估。
-keywords: 相关数据, 评估数据, 准备数据, 数据条件, 数据就绪情况
-services: machine-learning
-documentationcenter: na
-author: garyericson
-ms.custom: seodec18
-ms.author: garye
-editor: cjgronlund
-ms.assetid: d502062c-da70-4b21-9054-0bfd9902612e
-ms.service: machine-learning
-ms.component: studio
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 01/03/2018
-ms.openlocfilehash: 2a9101ed510c617df81f422aea92ca1ef2b28cd8
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
-ms.translationtype: HT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53261222"
+title:数据评估 titleSuffix: Azure 机器学习工作室 description:数据可用于数据科学需要满足的四个条件。 本视频提供具体示例，帮助了解基本数据评估。
+services: machine-learning ms.service: machine-learning ms.component: studio ms.topic: article
+
+author: garyericson ms.author: garye ms.custom: seodec18 ms.date:2018/01/03
 ---
 # <a name="is-your-data-ready-for-data-science"></a>数据是否可用于数据科研？
 ## <a name="video-2-data-science-for-beginners-series"></a>视频 2：适合初学者的数据科学系列

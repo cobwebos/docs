@@ -4,14 +4,14 @@ description: 概述 Azure Migrate 服务中的已知问题，并针对常见错�
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 12/05/2018
+ms.date: 01/10/2019
 ms.author: raynew
-ms.openlocfilehash: 9a6b40aa86d4d81482d9c3724f0e230e0b811276
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: f91f6386df01050cc67968d05a1e1562e0f9ed01
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54189490"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54261224"
 ---
 # <a name="troubleshoot-azure-migrate"></a>排查 Azure Migrate 问题
 
@@ -29,6 +29,18 @@ ms.locfileid: "54189490"
 
 - 删除 VM：由于设备的设计方式，即使停止并启动发现，也不会反映出 VM 已删除这一更改。 这是因为后续发现的数据会追加到较旧的发现后，而不是进行覆盖。 在这种情况下，可以通过从组中删除 VM 并重新计算评估来直接忽略门户中的 VM。
 
+### <a name="deletion-of-azure-migrate-projects-and-associated-log-analytics-workspace"></a>删除 Azure Migrate 项目和关联的 Log Analytics 工作区
+
+删除 Azure Migrate 项目时，会删除迁移项目以及所有组和评估。 但是，如果已将 Log Analytics 工作区附加到项目，则不会自动删除 Log Analytics 工作区。 这是因为相同的 Log Analytics 工作区可能用于多个用例。 如果也想要删除 Log Analytics 工作区，需要手动执行该操作。
+
+1. 浏览到附加到该项目的 Log Analytics 工作区。
+   a. 如果尚未删除迁移项目，则可以从“Essentials”部分的项目概述页中找到指向工作区的链接。
+
+   ![LA 工作区](./media/troubleshooting-general/LA-workspace.png)
+
+   b. 如果已删除迁移项目，请单击 Azure 门户左窗格中的“资源组”，然后转到创建工作区的资源组，然后浏览到该资源组。
+2. 按照[本文](https://docs.microsoft.com/azure/azure-monitor/platform/delete-workspace)中的说明删除工作区。
+
 ### <a name="migration-project-creation-failed-with-error-requests-must-contain-user-identity-headers"></a>无法创建迁移项目，错误消息为“请求必须包含用户标识头”
 
 如果用户无权访问组织的 Azure Active Directory (Azure AD) 租户，可能会发生此问题。 首次添加到 Azure AD 租户中时，用户会收到一封电子邮件，邀请其加入租户。 用户需要访问电子邮件并接受邀请，才能被成功添加到租户中。 如果看不到电子邮件，请联系已有权访问租户的用户，让其按照[此处](https://docs.microsoft.com/azure/active-directory/b2b/add-users-administrator#resend-invitations-to-guest-users)介绍的步骤操作，重新向你发送邀请。
@@ -41,13 +53,13 @@ ms.locfileid: "54189490"
 
 1. 在计算机上安装“armclient”（如果尚未安装）：
 
-  a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在管理员命令提示符窗口中，运行以下命令：```@powershell -NoProfile -ExecutionPolicy Bypass -Command "iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))" && SET "PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin"```
+  a. 在管理员命令提示符窗口中，运行以下命令：```@powershell -NoProfile -ExecutionPolicy Bypass -Command "iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))" && SET "PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin"```
 
   b. 在管理员 Windows PowerShell 窗口中，运行以下命令：```choco install armclient```
 
 2.  使用 Azure Migrate REST API 获取评估报告的下载 URL
 
-  a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。    在管理员 Windows PowerShell 窗口中，运行以下命令：```armclient login```
+  a.    在管理员 Windows PowerShell 窗口中，运行以下命令：```armclient login```
 
   此操作将打开 Azure 登录弹出窗口，你需要在此窗口中登录 Azure。
 
@@ -80,13 +92,13 @@ esourceGroups/ContosoDemo/providers/Microsoft.Migrate/projects/Demo/groups/conto
 
    ![项目位置](./media/troubleshooting-general/geography-location.png)
 
-## <a name="collector-errors"></a>收集器错误
+## <a name="collector-issues"></a>收集器问题
 
 ### <a name="deployment-of-azure-migrate-collector-failed-with-the-error-the-provided-manifest-file-is-invalid-invalid-ovf-manifest-entry"></a>Azure Migrate 收集器的部署失败，并显示以下错误：提供的清单文件无效：OVF 清单条目无效。
 
 1. 通过检查其哈希值，验证是否已正确下载 Azure Migrate 收集器 OVA 文件。 请参阅[本文](https://docs.microsoft.com/azure/migrate/tutorial-assessment-vmware#verify-the-collector-appliance)来验证哈希值。 如果哈希值不匹配，请再次下载 OVA 文件并重试部署。
 2. 如果仍然失败，并且使用的是 VMware vSphere 客户端来部署 OVF，请尝试通过 vSphere Web 客户端对其进行部署。 如果仍然失败，请尝试使用其他 Web 浏览器。
-3. 如果使用的是 vSphere Web 客户端并尝试在 vCenter Server 6.5 上部署，请按照以下步骤尝试直接在 ESXi 主机上部署 OVA：
+3. 如果使用的是 vSphere Web 客户端并尝试在 vCenter Server 6.5 或 6.7 上部署，请按照以下步骤尝试直接在 ESXi 主机上部署 OVA：
   - 使用 Web 客户端（ https://<主机 IP 地址>/ui）直接连接 ESXi 主机（而不是 vCenter Server）
   - 转到“主页”>“库存”
   - 单击“文件”>“部署 OVF 模板”>“浏览到 OVA”，并完成部署
@@ -156,6 +168,17 @@ Azure Migrate 收集器下载 PowerCLI，并在设备上安装它。 无法安�
 2. 如果步骤 1 失败，请尝试通过 IP 地址连接到 vCenter Server。
 3. 确定可连接到 vCenter 的正确端口号。
 4. 最后检查 vCenter Server 是否已启动并运行。
+
+### <a name="antivirus-exclusions"></a>防病毒排除项
+
+若要强化 Azure Migrate 设备，需要从防病毒扫描中排除设备中的以下文件夹：
+
+- 具有 Azure Migrate 服务的二进制文件的文件夹。 排除所有子文件夹。
+  %ProgramFiles%\ProfilerService  
+- Azure Migrate Web 应用程序。 排除所有子文件夹。
+  %SystemDrive%\inetpub\wwwroot
+- 数据库和日志文件的本地缓存。 Azure 迁移服务需要 RW 访问此文件夹。
+  %SystemDrive%\Profiler
 
 ## <a name="dependency-visualization-issues"></a>依赖项可视化效果问题
 

@@ -15,18 +15,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/15/2015
 ms.author: ningk
-ms.openlocfilehash: 8c04c9fffbb85bb4db7a369b0dbbad6279f5d6f6
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 5a5d052052be447ea2ccbd9231d3b03d38c7615c
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50420075"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54266937"
 ---
 # <a name="set-up-tomcat7-on-a-linux-virtual-machine-with-azure"></a>使用 Azure 在 Linux 虚拟机上设置 Tomcat7
 Apache Tomcat（简称 Tomcat，以前也称为 Jakarta Tomcat）是由 Apache Software Foundation (ASF) 开发的一个开源 Web 服务器和 servlet 容器。 Tomcat 实现了 Sun Microsystems 提出的 Java Servlet 和 JavaServer Pages (JSP) 规范。 Tomcat 提供用于运行 Java 代码的纯 Java HTTP Web 服务器环境。 在最简单的配置中，Tomcat 在单个操作系统进程中运行。 此进程运行 Java 虚拟机 (JVM)。 浏览器向 Tomcat 发出的每个 HTTP 请求都作为 Tomcat 进程中的单独线程进行处理。  
 
 > [!IMPORTANT]
-> Azure 提供两个不同的部署模型用于创建和处理资源：[Azure 资源管理器和经典模型](../../../resource-manager-deployment-model.md)。 本文介绍如何使用经典部署模型。 我们建议在大多数新部署中使用 Resource Manager 模型。 若要使用 Resource Manager 模板通过 Open JDK 和 Tomcat 部署 Ubuntu VM，请参阅[此文](https://azure.microsoft.com/documentation/templates/openjdk-tomcat-ubuntu-vm/)。
+> Azure 具有用于创建和处理资源的两个不同部署模型：[Azure 资源管理器部署模型和经典部署模型](../../../resource-manager-deployment-model.md)。 本文介绍如何使用经典部署模型。 我们建议在大多数新部署中使用 Resource Manager 模型。 若要使用 Resource Manager 模板通过 Open JDK 和 Tomcat 部署 Ubuntu VM，请参阅[此文](https://azure.microsoft.com/documentation/templates/openjdk-tomcat-ubuntu-vm/)。
 > [!INCLUDE [virtual-machines-common-classic-createportal](../../../../includes/virtual-machines-classic-portal.md)]
 
 在本文中，我们会在 Linux 映像中安装 Tomcat7，并将其部署到 Azure。  
@@ -126,7 +126,7 @@ TCP 端口 8080 是 Tomcat 用来侦听的默认端口号。 如果使用 Azure 
 8. 输入在本文“第 1 阶段：创建映像”部分中创建虚拟机时使用的用户名。 会看到如下内容：  
 ![显示身份验证确认的屏幕截图][13]
 
-## <a name="phase-3-install-software"></a>第 3 阶段：安装软件
+## <a name="phase-3-install-software"></a>阶段 3：安装软件
 在此阶段，我们将安装 Java 运行时环境、Tomcat7 和其他 Tomcat7 组件。  
 
 ### <a name="java-runtime-environment"></a>Java 运行时环境
@@ -141,7 +141,7 @@ Tomcat 是用 Java 编写的。 有关如何获取完全支持的 Java 运行时
 可以使用如下命令测试是否已正确安装 Java 运行时环境：  
     java 版本  
 
-应会看到如下消息：![指出成功安装 OpenJDK 的消息][14]
+应看到类似于下面的消息：![指出成功安装 OpenJDK 的消息][14]
 
 
 ### <a name="install-tomcat7"></a>安装 Tomcat7

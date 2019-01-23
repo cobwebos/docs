@@ -1,27 +1,8 @@
 ---
-title: 通过 Web 应用模板使用工作室 Web 服务 - Azure 机器学习工作室 | Microsoft Docs
-description: 利用 Azure 市场中的 web 应用模板来是使用 Azure 机器学习中的预测 web 服务。
-keywords: web 服务，操作化，REST API，机器学习
-services: machine-learning
-documentationcenter: ''
-author: ericlicoding
-ms.custom: seodec18
-ms.author: amlstudiodocs
-editor: cgronlun
-ms.assetid: e0d71683-61b9-4675-8df5-09ddc2f0d92d
-ms.service: machine-learning
-ms.component: studio
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 03/20/2017
-ms.openlocfilehash: 6a6da1af937338637cd875abe4e9d539b2e2b6e2
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
-ms.translationtype: HT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53273878"
+title:通过 Web 应用模板使用 Studio Web 服务 titleSuffix: Azure 机器学习工作室 description:利用 Azure 市场中的 web 应用模板来是使用 Azure 机器学习中的预测 web 服务。
+services: machine-learning ms.service: machine-learning ms.component: studio ms.topic: article
+
+author: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18 ms.date:2017/03/20
 ---
 # <a name="consume-an-azure-machine-learning-studio-web-service-by-using-a-web-app-template"></a>通过 Web 应用模板使用 Azure 机器学习工作室 Web 服务
 

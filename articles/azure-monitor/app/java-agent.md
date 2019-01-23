@@ -10,14 +10,14 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 08/24/2016
+ms.date: 01/10/2019
 ms.author: mbullwin
-ms.openlocfilehash: c0478b320afca1b82a79fa43e7b60c29a2cb2e7c
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: dbca662f38f13833a4b9e642a4d8f690017d999a
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53997922"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54262126"
 ---
 # <a name="monitor-dependencies-caught-exceptions-and-method-execution-times-in-java-web-apps"></a>监视 Java Web 应用中的依赖项、捕获的异常和方法执行时间
 
@@ -34,7 +34,7 @@ ms.locfileid: "53997922"
 若要使用 Java 代理，请在服务器上安装该代理。 必须使用 [Application Insights Java SDK][java] 检测 Web 应用。 
 
 ## <a name="install-the-application-insights-agent-for-java"></a>安装适用于 Java 的 Application Insights 代理
-1. 在运行 Java 服务器的计算机上[下载该代理](https://github.com/Microsoft/ApplicationInsights-Java/releases/latest)。 请确保下载与 Application Insights Java SDK 核心和 Web 包版本相同的 Java 代理版本。
+1. 在运行 Java 服务器的计算机上[下载该代理](https://github.com/Microsoft/ApplicationInsights-Java/releases/latest)。 请确保下载与 Application Insights Java SDK 核心和 Web 程序包版本相同的 Java 代理版本。
 2. 编辑应用程序服务器启动脚本，并添加以下 JVM：
    
     `javaagent:`*代理 JAR 文件的完整路径*
@@ -89,6 +89,32 @@ ms.locfileid: "53997922"
 必须针对各个方法启用报告异常和方法计时。
 
 默认情况下，`reportExecutionTime` 为 true，`reportCaughtExceptions` 为 false。
+
+### <a name="spring-boot-agent-additional-config"></a>Spring Boot 代理其他配置
+
+`java -javaagent:/path/to/agent.jar -jar path/to/TestApp.jar`
+
+> [!NOTE]
+> AI-Agent.xml 和代理 jar 文件应位于同一文件夹中。 它们通常一起放在该项目的 `/resources` 文件夹中。 
+
+#### <a name="enable-w3c-distributed-tracing"></a>启用 W3C 分布式跟踪
+
+将以下代码添加到 AI-Agent.xml：
+
+```xml
+<Instrumentation>
+        <BuiltIn enabled="true">
+            <HTTP enabled="true" W3C="true" enableW3CBackCompat="true"/>
+        </BuiltIn>
+    </Instrumentation>
+```
+
+> [!NOTE]
+> 默认情况下启用向后兼容性模式，并且 enableW3CBackCompat 参数是可选的，且仅在要将其关闭时使用。 
+
+理想情况下，所有服务都已更新为支持 W3C 协议的较新版 SDK 时，就会出现这种情况。 强烈建议尽快迁移到提供 W3C 支持的新版 SDK。
+
+请确保[传入](correlation.md#w3c-distributed-tracing)和传出（代理）配置完全相同。
 
 ## <a name="view-the-data"></a>查看数据
 在 Application Insights 资源中，聚合的远程依赖项和方法执行时间显示在[“性能”磁贴下][metrics]。

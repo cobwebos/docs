@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 02/05/2016
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: c0f4af863162d004b6a557f8c7a04e31ee66d9b7
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 749a599936825f5f69ae18affad0fa89a4f1118f
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53713550"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54259625"
 ---
 # <a name="install-and-use-apache-solr-on-windows-based-hdinsight-clusters"></a>在基于 Windows 的 HDInsight 群集上安装并使用 Apache Solr
 
@@ -166,7 +166,7 @@ ms.locfileid: "53713550"
 
    此命令会将快照复制到与群集关联的默认存储帐户中容器下方的 /example/data/。
 
-## <a name="install-solr-using-aure-powershell"></a>使用 Azure PowerShell 安装 Solr
+## <a name="install-solr-using-azure-powershell"></a>使用 Azure PowerShell 安装 Solr
 请参阅[使用脚本操作自定义 HDInsight 群集](hdinsight-hadoop-customize-cluster.md#call-scripts-using-azure-powershell)。  此示例演示如何使用 Azure PowerShell 安装 Apache Spark。 需要自定义脚本以使用 [https://hdiconfigactions.blob.core.windows.net/solrconfigactionv01/solr-installer-v01.ps1](https://hdiconfigactions.blob.core.windows.net/solrconfigactionv01/solr-installer-v01.ps1)。
 
 ## <a name="install-solr-using-net-sdk"></a>使用 .NET SDK 安装 Solr

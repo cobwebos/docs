@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 09/05/2018
 ms.author: mbullwin
-ms.openlocfilehash: 1558d8e8392ff49e2661e9f8bc41e41c5bbc6dd5
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 463b2e8c7e349fa46737a9d630bd027fb28e7780
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 01/10/2019
-ms.locfileid: "54189842"
+ms.locfileid: "54199379"
 ---
 # <a name="instrument-web-apps-at-runtime-with-application-insights-status-monitor"></a>在运行时使用 Application Insights 状态监视器检测 Web 应用
 
@@ -96,14 +96,14 @@ ms.locfileid: "54189842"
 - 确认 applicationInsights.config 文件在目标应用目录中并且包含 ikey。
 
 - 如果怀疑缺失数据，可在 [Analytics](../log-query/get-started-portal.md) 中运行简单的查询，列出目前正在发送遥测数据的所有云角色。
-
 ```Kusto
 union * | summarize count() by cloud_RoleName, cloud_RoleInstance
 ```
 
 - 如果需要确认 Application Insights 已成功附加，可在命令窗口中运行 [Sysinternals Handle](https://docs.microsoft.com/sysinternals/downloads/handle)，确认 IIS 已加载该 applicationinsights.dll。
-
-`handle.exe /p w3wp.exe`
+```cmd
+handle.exe /p w3wp.exe
+```
 
 
 ### <a name="cant-connect-no-telemetry"></a>无法连接？ 没有遥测数据？
@@ -113,7 +113,7 @@ union * | summarize count() by cloud_RoleName, cloud_RoleInstance
 ### <a name="unable-to-login"></a>无法登录
 
 * 如果不能登录状态监视器，请改为安装命令行。 状态监视器尝试登录以收集 ikey，但可使用以下命令手动提供该信息： 
-```
+```powershell
 Import-Module 'C:\Program Files\Microsoft Application Insights\Status Monitor\PowerShell\Microsoft.Diagnostics.Agent.StatusMonitor.PowerShell.dll
 Start-ApplicationInsightsMonitoring -Name appName -InstrumentationKey 00000000-000-000-000-0000000
 ```
@@ -123,7 +123,7 @@ Start-ApplicationInsightsMonitoring -Name appName -InstrumentationKey 00000000-0
 启用 Application Insights 后，可能会收到此错误。 这是因为安装程序将在 bin 目录中替换此 dll。
 若要修复此错误，请更新 web.config：
 
-```
+```xml
 <dependentAssembly>
     <assemblyIdentity name="System.Diagnostics.DiagnosticSource" publicKeyToken="cc7b13ffcd2ddd51"/>
     <bindingRedirect oldVersion="0.0.0.0-4.*.*.*" newVersion="4.0.2.1"/>

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 12/20/2018
 ms.author: jingwang
-ms.openlocfilehash: 0d66c7d714aeac28a46adb31fdb73b4781ac81f3
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 6dd7707c489bbbad7a97a0ec0a76e7c631bd1465
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54024716"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54359249"
 ---
 # <a name="copy-data-to-or-from-azure-cosmos-db-sql-api-by-using-azure-data-factory"></a>使用 Azure 数据工厂在 Azure Cosmos DB (SQL API) 中复制或粘贴数据
 
@@ -28,7 +28,7 @@ ms.locfileid: "54024716"
 本文概述如何使用 Azure 数据工厂中的复制活动在 Azure Cosmos DB (SQL API) 中复制和粘贴数据。 本文是根据总体概述复制活动的 [Azure 数据工厂中的复制活动](copy-activity-overview.md)编写的。
 
 >[!NOTE]
->此连接器仅支持向/从 Cosmos DB SQL API 复制数据。 对于 MongoDB API，请参阅 [Cosmos DB MongoDB API 连接器](connector-azure-cosmos-db-mongodb-api.md)。 目前不支持其他 API 类型。
+>此连接器仅支持向/从 Cosmos DB SQL API 复制数据。 有关 MongoDB，请参阅[适用于 MangoDB 的 Auzre Cosmos DB API 的连接器](connector-azure-cosmos-db-mongodb-api.md)。 目前不支持其他 API 类型。
 
 ## <a name="supported-capabilities"></a>支持的功能
 

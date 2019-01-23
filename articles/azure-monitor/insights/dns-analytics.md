@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 03/20/2018
 ms.author: magoedte
-ms.openlocfilehash: 5641792c058d10bba1bfd468f3c5c90b9217226e
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 29b76620494fbb325f8c43bf90a07c9df0faff56
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53187647"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54266327"
 ---
 # <a name="gather-insights-about-your-dns-infrastructure-with-the-dns-analytics-preview-solution"></a>使用 DNS Analytics 预览解决方案收集有关 DNS 基础结构的见解
 
@@ -76,11 +76,11 @@ DNS Analytics 可帮助：
 
 如果使用 Microsoft Monitoring Agent 连接到 Log Analytics 工作区，则将安装以下管理包：
 
-- Microsoft DNS 数据收集器智能包 (Microsft.IntelligencePacks.Dns)
+- Microsoft DNS 数据收集器智能包 (Micrsoft.IntelligencePacks.Dns)
 
 如果 Operations Manager 管理组已连接到 Log Analytics 工作区，则添加此解决方案时会在 Operations Manager 中安装以下管理包。 无需对这些管理包进行任何配置或维护：
 
-- Microsoft DNS 数据收集器智能包 (Microsft.IntelligencePacks.Dns)
+- Microsoft DNS 数据收集器智能包 (Micrsoft.IntelligencePacks.Dns)
 - Microsoft System Center Advisor DNS Analytics 配置 (Microsoft.IntelligencePack.Dns.Configuration)
 
 有关如何更新解决方案管理包的详细信息，请参阅[将 Operations Manager 连接到 Log Analytics](../../azure-monitor/platform/om-agents.md)。
@@ -169,7 +169,7 @@ DNS Analytics 可帮助：
 
     ![DnsEvents 日志搜索](./media/dns-analytics/log-search-dnsevents.png)  
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 若要查看查找查询的日志数据，请在左侧的分面控件中选择“LookUpQuery”作为“子类型”筛选器。 此时会显示一个表格，其中列出了所选时间段内的所有查找查询事件。
+    a. 若要查看查找查询的日志数据，请在左侧的分面控件中选择“LookUpQuery”作为“子类型”筛选器。 此时会显示一个表格，其中列出了所选时间段内的所有查找查询事件。
 
     b. 若要查看动态注册的日志数据，请在左侧的分面控件中选择“DynamicRegistration”作为“子类型”筛选器。 此时会显示一个表格，其中列出了所选时间段内的所有动态注册事件。
 

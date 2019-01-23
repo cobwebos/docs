@@ -1,26 +1,8 @@
 ---
-title: 使用示例数据集 - Azure 机器学习工作室 | Microsoft Docs
-description: 机器学习工作室中包含的示例模型中使用的数据集说明。 可以将这些示例数据集用于实验。
-services: machine-learning
-documentationcenter: ''
-author: ericlicoding
-ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
-ms.author: amlstudiodocs
-editor: cgronlun
-ms.assetid: 03a0b844-e8a7-4896-996f-d3c7a0db7a50
-ms.service: machine-learning
-ms.component: studio
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 01/19/2018
-ms.openlocfilehash: 2fde43417ffc907a93b4e568b90ebbda228c4cfe
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
-ms.translationtype: HT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53270478"
+title:使用示例数据集 titleSuffix: Azure 机器学习工作室 description:机器学习工作室中包含的示例模型中使用的数据集说明。 可以将这些示例数据集用于实验。
+services: machine-learning ms.service: machine-learning ms.component: studio ms.topic: article
+
+author: ericlicoding ms.author: amlstudiodocs ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro ms.date:2018/01/19
 ---
 # <a name="use-the-sample-datasets-in-azure-machine-learning-studio"></a>在 Azure 机器学习工作室中使用示例数据集
 [top]: #machine-learning-sample-datasets

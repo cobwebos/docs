@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/27/2017
 ms.author: daveba
-ms.openlocfilehash: a29980da64775ca39f103b7430239f38c98a43fc
-ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
+ms.openlocfilehash: 4d4775169c40190e4cffb7b93c04abd58babc928
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51578446"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54320916"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-an-azure-vm-using-powershell"></a>使用 PowerShell 在 Azure VM 上配置 Azure 资源的托管标识
 
@@ -88,6 +88,34 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
    ```
     > [!NOTE]
     > 此步骤是可选的，因为也可以使用 Azure 实例元数据服务 (IMDS) 标识终结点来检索令牌。
+
+### <a name="add-vm-system-assigned-identity-to-a-group"></a>将 VM 系统分配的标识添加到组
+
+在 VM 上启用系统分配的标识后，可以将其添加到组中。  以下过程将 VM 的系统分配的标识添加到组。
+
+1. 使用 `Login-AzureRmAccount` 登录到 Azure 门户。 使用与包含 VM 的 Azure 订阅关联的帐户。
+
+   ```powershell
+   Login-AzureRmAccount
+   ```
+
+2. 检索并记下 VM 服务主体的 `ObjectID`（在返回值的 `Id` 字段中指定）：
+
+   ```powerhshell
+   Get-AzureRmADServicePrincipal -displayname "myVM"
+   ```
+
+3. 检索并记下组中的 `ObjectID`（在返回值的 `Id` 字段中指定）：
+
+   ```powershell
+   Get-AzureRmADGroup -searchstring "myGroup"
+   ```
+
+4. 将 VM 的服务主体添加到组：
+
+   ```powershell
+   Add-AzureADGroupMember -ObjectId "<objectID of group>" -RefObjectId "<object id of VM service principal>"
+   ```
 
 ## <a name="disable-system-assigned-managed-identity-from-an-azure-vm"></a>从 Azure VM 中禁用系统分配的托管标识
 

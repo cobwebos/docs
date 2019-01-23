@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/19/2018
 ms.author: pbutlerm
-ms.openlocfilehash: c37ed908b61ca54957affed3f81526353bc3f53b
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: c8056bd4912605a4cd3ee333b1be87d4f3a6d5ba
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49389558"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54198042"
 ---
 # <a name="the-iot-edge-module-certification-process"></a>IoT Edge 模块认证流程
 
@@ -118,7 +118,7 @@ ms.locfileid: "49389558"
     - [C\#](https://hub.docker.com/_/mysql/)
     - [C](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/Iothub_sdk_options.md)
     - [Python](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/Iothub_sdk_options.md)
-    - [Java](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.device._product_info?view=azure-java-stable)
+    - [Java](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.device.productinfo?view=azure-java-stable)
 
 -   对于不使用 IoT 模块 SDK 的模块，将通过云合作伙伴门户提供不太精确的深入信息。 例如下载次数。
 

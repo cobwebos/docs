@@ -1,8 +1,7 @@
 ---
-title: Azure 流量管理器中的指标和警报 | Microsoft Docs
+title: Azure 流量管理器中的指标和警报
 description: 本文介绍了 Azure 中针对流量管理器提供的指标。
 services: traffic-manager
-documentationcenter: ''
 author: KumudD
 ms.service: traffic-manager
 ms.devlang: na
@@ -11,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/11/2018
 ms.author: kumud
-ms.openlocfilehash: bb7817b082da11de3071925d01a3402902410a6f
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 0bce0d407246ceab05c3951dc976884dd6f15b08
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53437956"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54200184"
 ---
 # <a name="traffic-manager-metrics-and-alerts"></a>流量管理器指标和警报
 
@@ -24,15 +23,15 @@ ms.locfileid: "53437956"
 
 ## <a name="metrics-available-in-traffic-manager"></a>流量管理器中提供的指标 
 
-流量管理器针对每个配置文件提供了以下指标，客户可以使用这些指标来了解其流量管理器的使用情况以及该配置文件管理的终结点的状态。  
+流量管理器针对每个配置文件提供了以下指标，客户可用于了解其流量管理器的使用情况以及该配置文件管理的终结点的状态。  
 
 ### <a name="queries-by-endpoint-returned"></a>按终结点返回的查询
-使用[此指标](../azure-monitor/platform/metrics-supported.md)可以查看流量管理器配置文件在指定的时间段内处理的查询数。 还可以在终结点级别粒度查看同一信息，这可帮助你了解某个终结点在来自流量管理器的查询响应中返回了多少次。
+使用[此指标](../azure-monitor/platform/metrics-supported.md)可以查看流量管理器配置文件进程在指定的时间段内处理的查询数。 还可以在终结点级别粒度查看同一信息，这可帮助你了解某个终结点在来自流量管理器的查询响应中返回了多少次。
 
 在下面的示例中，图 1 显示了流量管理器配置文件返回的所有查询响应。 
 
   
-![流量管理器指标 - 所有查询的聚合视图](./media/traffic-manager-metrics-alerts/traffic-manager-metrics-queries-aggregate-view.png)
+![所有查询的聚合视图](./media/traffic-manager-metrics-alerts/traffic-manager-metrics-queries-aggregate-view.png)
 
 图 1：包含所有查询的聚合视图
   
@@ -44,10 +43,10 @@ ms.locfileid: "53437956"
 
 ## <a name="endpoint-status-by-endpoint"></a>按终结点显示的终结点状态
 使用[此指标](../azure-monitor/platform/metrics-supported.md#microsoftnetworktrafficmanagerprofiles)可以了解配置文件中的终结点的运行状况状态。 它采用两个值：
- - 如果终结点正常运行，则使用 **1**。
+ - 如果终结点正常运行，则使用 1。
  - 如果终结点发生故障，则使用 **0**。
 
-此指标可以显示为聚合值，表示所有指标的状态（图 3），也可以拆分（参见图 4）来显示特定终结点的状态。 对于前者，如果聚合级别选择为“平均值”，则此指标的值是所有终结点的状态的算术平均值。 例如，如果某个配置文件具有两个终结点并且只有一个终结点正常，则此指标的值将是 **0.50**，如图 3 所示。 
+此指标可以显示为聚合值，表示所有指标的状态（图 3），也可以拆分（参见图 4）来显示特定终结点的状态。 如果为前者，聚合级别选择为“平均值”时，此指标的值是所有终结点的状态的算术平均值。 例如，如果某个配置文件具有两个终结点并且只有一个终结点正常，则此指标的值将是 0.50，如图 3 所示。 
 
 
 ![流量管理器指标 - 终结点状态的复合视图](./media/traffic-manager-metrics-alerts/traffic-manager-metrics-endpoint-status-composite-view.png)
@@ -66,4 +65,4 @@ ms.locfileid: "53437956"
 
 ## <a name="next-steps"></a>后续步骤
 - 详细了解 [Azure Monitor 服务](../azure-monitor/platform/metrics-supported.md)
-- 了解如何[使用 Azure Monitor 创建新图表](../azure-monitor/platform/metrics-charts.md#create-a-new-chart)
+- 了解如何[使用 Azure Monitor 创建图表](../azure-monitor/platform/metrics-charts.md#create-a-new-chart)

@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/18/2018
+ms.date: 1/9/2019
 ms.author: rkarlin
-ms.openlocfilehash: 2dcc72e0e3b9caef9ab01d9f754671cb0365a358
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 98d2d29e7822d9ca97ba488fcf67298a0b40efbf
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53608828"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54265458"
 ---
 # <a name="platforms-and-features-supported-by-azure-security-center"></a>Azure 安全中心支持的平台和功能
 
@@ -74,10 +74,10 @@ ms.locfileid: "53608828"
 |环境|Azure|非 Azure|Azure|非 Azure|
 |VMBA 威胁检测警报|✔|✔|✔（在支持的版本上）|✔|
 |基于网络的威胁检测警报|✔|X|✔|X|
-|Windows Defender ATP 集成*|✔（在支持的版本上）|✔|X|X|
+|Windows Defender ATP 集成|✔（在支持的版本上）|✔|X|X|
 |允许缺失修补程序|✔|✔|✔|✔|
 |安全配置|✔|✔|✔|✔|
-|反恶意软件程序|✔|✔|X|X|
+|终结点保护|✔|✔|X|X|
 |JIT VM 访问|✔|X|✔|X|
 |自适应应用程序控制|✔|X|X|X|
 |FIM|✔|✔|✔|✔|
@@ -88,8 +88,27 @@ ms.locfileid: "53608828"
 |网络映射|✔|X|✔|X|
 |自适应网络控制|✔|X|✔|X|
 
-\* 公共预览版目前支持这些功能。
 
+### <a name="supported-endpoint-protection-solutions"></a>受支持的终结点保护解决方案
+
+下表提供了一个矩阵：
+ - 是否可以使用 Azure 安全中心安装每个解决方案。
+ - 安全中心可以发现哪些保护解决方案。 如果发现其中一个终结点保护解决方案，安全中心将建议不要安装。
+
+| 终结点保护| 平台 | 安全中心安装 | 安全中心发现 |
+|------|------|-----|-----|
+| Windows Defender (Microsoft Antimalware)| Windows Server 2016| 否，内置到 OS| 是 |
+| System Center Endpoint Protection (Microsoft Antimalware) | Windows Server 2012 R2、2012、2008 R2（请参阅以下备注） | 通过扩展 | 是 |
+| Trend Micro – 所有版本 | Windows Server 系列  | 否 | 是 |
+| Symantec v12.1.1100+| Windows Server 系列  | 否 | 是 |
+| McAfee v10+ | Windows Server 系列  | 否 | 是 |
+| Kaspersky| Windows Server 系列  | 否 | 否  |
+| Sophos| Windows Server 系列  | 否 | 否  |
+
+> [!NOTE]
+> - 在 Windows Server 2008 R2 虚拟机上检测 System Center Endpoint Protection (SCEP) 需要在 PowerShell 3.0（或更高版本）之后安装 SCEP。
+>
+>
 
 ## <a name="supported-paas-features"></a>支持的 PaaS 功能 
 
@@ -109,6 +128,8 @@ ms.locfileid: "53608828"
 |订阅|✔| ✔|
 
 \* 公共预览版目前支持这些功能。 
+
+
 
 ## <a name="next-steps"></a>后续步骤
 

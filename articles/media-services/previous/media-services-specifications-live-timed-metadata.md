@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/13/2018
 ms.author: johndeu;
-ms.openlocfilehash: b4dec5430d93cd2634fc541ae688a6bc425f5491
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: f29efb9a58c0b269f64d637fa3c5d59bb3610bbc
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53384677"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54265884"
 ---
 # <a name="signaling-timed-metadata-in-live-streaming"></a>实时传送视频流中的超时元数据信号
 
@@ -89,7 +89,7 @@ RTMP 支持超时元数据信号作为 RTMP 流中嵌入的 AMF 提示消息发�
 
 ---------------------------
 
-#### <a name="211-cancelation-and-updates"></a>2.1.1 取消和更新
+#### <a name="211-cancellation-and-updates"></a>2.1.1 取消和更新
 
 可以通过发送多条具有相同呈现时间和 ID 的消息来取消或更新消息。 呈现时间和 ID 用于唯一标识事件，并且针对具体呈现时间收到的满足前置式约束的最后一条消息为待处理的消息。 已更新的事件将替换以前接收的任何消息。 前置式约束为 4 秒。 在呈现时间前的至少 4 秒内收到的消息将有待处理。
 
@@ -157,7 +157,7 @@ MediaDataBox（“mdat”）块必须具有以下格式：
 ------------------------------
 
 
-### <a name="224-cancelation-and-updates"></a>2.2.4 取消和更新
+### <a name="224-cancellation-and-updates"></a>2.2.4 取消和更新
 可以通过发送多条具有相同呈现时间和 ID 的消息来取消或更新消息。  呈现时间和 ID 可唯一标识事件。 针对具体呈现时间收到的满足前置式约束的最后一条消息为待处理的消息。 已更新的消息将替换以前接收的任何消息。  前置式约束为 4 秒。 在呈现时间前的至少 4 秒内收到的消息将有待处理。 
 
 

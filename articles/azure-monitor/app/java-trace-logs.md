@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 02/12/2018
 ms.author: mbullwin
-ms.openlocfilehash: e1575afde326875558cea437de775515b8606f01
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: d3f8e5ac1f85483d04da99744809f4bc72295024
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53981403"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54266188"
 ---
 # <a name="explore-java-trace-logs-in-application-insights"></a>在 Application Insights 中浏览 Java 跟踪日志
 如果使用 Logback 或 Log4J（v1.2 或 v2.0）进行跟踪，可将跟踪日志自动发送到 Application Insights，以便在其中发现和搜索日志。
@@ -156,7 +156,7 @@ Application Insights 追加器可由配置的任何记录器（而不一定是�
 ## <a name="explore-your-traces-in-the-application-insights-portal"></a>在 Application Insights 门户中浏览跟踪
 将项目配置为向 Application Insights 发送跟踪后，可以在 Application Insights 门户的[搜索][diagnostic]边栏选项卡中查看和搜索这些跟踪。
 
-通过记录器提交的异常将作为异常遥测显示在门户上。
+通过记录器提交的异常将作为异常遥测显示在门户中。
 
 ![在 Application Insights 门户中打开“搜索”](./media/java-trace-logs/10-diagnostics.png)
 

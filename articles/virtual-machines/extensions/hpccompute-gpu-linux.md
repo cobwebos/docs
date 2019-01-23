@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 11/15/2018
+ms.date: 01/09/2019
 ms.author: roiyz
-ms.openlocfilehash: e36390bbdc243237c97d605d4721fc1ad2cbe0ea
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 3e3d31f146fb49fdab8d955754572e4ea74dd3f6
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52498884"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54198382"
 ---
 # <a name="nvidia-gpu-driver-extension-for-linux"></a>适用于 Linux 的 NVIDIA GPU 驱动程序扩展
 
@@ -35,11 +35,11 @@ ms.locfileid: "52498884"
 
 此扩展支持以下 OS 发行版，具体取决于特定 OS 版本对驱动程序的支持。
 
-| 发行版 | 版本 |
+| 分发 | 版本 |
 |---|---|
 | Linux：Ubuntu | 16.04 LTS、18.04 LTS |
-| Linux：Red Hat Enterprise Linux | 7.3、7.4、7.5 |
-| Linux：CentOS | 7.3、7.4、7.5 |
+| Linux：Red Hat Enterprise Linux | 7.3, 7.4, 7.5, 7.6 |
+| Linux：CentOS | 7.3, 7.4, 7.5, 7.6 |
 
 ### <a name="internet-connectivity"></a>Internet 连接
 
@@ -82,11 +82,11 @@ ms.locfileid: "52498884"
 
 所有设置都是可选的。 默认行为是，如果安装驱动程序时不要求更新内核，则不进行更新，请安装最新的受支持驱动程序和 CUDA 工具包（根据情况）。
 
-| 名称 | 说明 | 默认值 | 有效值 | 数据类型 |
+| 名称 | Description | 默认值 | 有效值 | 数据类型 |
 | ---- | ---- | ---- | ---- | ---- |
-| updateOS | 更新内核，即使安装驱动程序时不需要更新 | false | true、false | 布尔 |
-| driverVersion | NV：GRID 驱动程序版本<br> NC/ND：CUDA 工具包版本。 将自动安装所选 CUDA 的最新驱动程序。 | latest | GRID：“410.71”、“390.75”、“390.57”、“390.42”<br> CUDA：“10.0.130”、“9.2.88”、“9.1.85” | 字符串 |
-| installCUDA | 安装 CUDA 工具包。 仅适用于 NC/ND 系列 VM。 | true | true、false | 布尔 |
+| updateOS | 更新内核，即使安装驱动程序时不需要更新 | false | true、false | 布尔值 |
+| driverVersion | NV：GRID 驱动程序版本<br> NC/ND：CUDA 工具包版本。 将自动安装所选 CUDA 的最新驱动程序。 | 最新 | GRID：“410.71”、“390.75”、“390.57”、“390.42”<br> CUDA：“10.0.130”、“9.2.88”、“9.1.85” | 字符串 |
+| installCUDA | 安装 CUDA 工具包。 仅适用于 NC/ND 系列 VM。 | true | true、false | 布尔值 |
 
 
 ## <a name="deployment"></a>部署

@@ -2,22 +2,17 @@
 title: 通过 Azure 应用程序网关配置端到端 SSL
 description: 本文介绍如何使用 PowerShell 通过 Azure 应用程序网关配置端到端 SSL
 services: application-gateway
-documentationcenter: na
 author: vhorne
-manager: jpconnock
 ms.service: application-gateway
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 10/23/2018
+ms.date: 1/10/2019
 ms.author: victorh
-ms.openlocfilehash: 5ea022d38970122b88ae35c592af3e4a9351190b
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.openlocfilehash: 32dd31c659e1906e8cf59f4c6d06c2b4436284cd
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49945325"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54214056"
 ---
 # <a name="configure-end-to-end-ssl-by-using-application-gateway-with-powershell"></a>使用 PowerShell 通过应用程序网关配置端到端 SSL
 
@@ -45,9 +40,9 @@ Azure 应用程序网关支持对流量进行端到端加密。 应用程序网�
 
 ## <a name="before-you-begin"></a>开始之前
 
-若要对应用程序网关配置端到端 SSL，需要网关证书和后端服务器证书。 网关证书用于加密和解密通过 SSL 发送给网关的流量。 网关证书需要采用个人信息交换 (PFX) 格式。 此文件格式适用于导出私钥，后者是应用程序网关对流量进行加解密所必需的。
+若要对应用程序网关配置端到端 SSL，需要网关证书和后端服务器证书。 网关证书用于根据 SSL 协议规范派生对称密钥。 然后使用对称密钥加密和解密发送到网关的流量。 网关证书需要采用个人信息交换 (PFX) 格式。 此文件格式适用于导出私钥，后者是应用程序网关对流量进行加解密所必需的。
 
-若要加密端到端 SSL，后端必须已加入应用程序网关的允许列表。 需将后端服务器的公用证书上传到应用程序网关。 添加证书后，可确保应用程序网关仅与已知后端实例通信。 从而进一步保护端到端通信。
+若要加密端到端 SSL，后端必须已加入应用程序网关的允许列表。 将后端服务器的公用证书上传到应用程序网关。 添加证书后，可确保应用程序网关仅与已知后端实例通信。 从而进一步保护端到端通信。
 
 配置过程在以下部分中介绍。
 
@@ -258,7 +253,7 @@ $appgw = New-AzureRmApplicationGateway -Name appgateway -SSLCertificates $cert -
 
    ```
 
-   3. 最后，更新网关。 请注意，最后一步耗时较长。 完成后，应用程序网关上即已配置端到端 SSL。
+   3. 最后，更新网关。 最后一步耗时较长。 完成后，应用程序网关上即已配置端到端 SSL。
 
    ```powershell
    $gw | Set-AzureRmApplicationGateway

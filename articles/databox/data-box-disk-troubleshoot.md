@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: article
-ms.date: 01/09/2019
+ms.date: 01/10/2019
 ms.author: alkohli
-ms.openlocfilehash: 8e75aa31941fe7368ef56f344db14d9b376e6238
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 13e42ae9b25c769a468a8c9839fd1aaf0abf2787
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54191694"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54213138"
 ---
 # <a name="troubleshoot-issues-in-azure-data-box-disk"></a>排查 Azure Data Box Disk 中的问题
 
@@ -96,12 +96,11 @@ ms.locfileid: "54191694"
 
 这可能是由于文件系统不干净造成。 
 
-- 将驱动器重新装载为读取不适用于 Data Box Disk。 dislocker 解密的驱动器不支持此方案。 
-- 重新装载为读写将无法工作。 你可能已使用以下命令成功重新装载设备： 
+将驱动器重新装载为读写不适用于 Data Box Disk。 dislocker 解密的驱动器不支持此方案。 你可能已使用以下命令成功重新装载设备： 
 
     `# mount -o remount, rw / mnt / DataBoxDisk / mountVol1 ß`
 
-   虽然重新装载成功，但不会保留数据。
+虽然重新装载成功，但不会保留数据。
 
 **解决方法**
 
@@ -125,11 +124,11 @@ ms.locfileid: "54191694"
  
 如果是这种情况，请参阅[将驱动器装载为只读](#issue-drive-getting-mounted-as-read-only)的解决方法。
 
-如果不是这种情况，从系统[下载诊断日志](#download-diagnostic-logs)并[联系 Microsoft 支持部门](data-box-disk-contact-microsoft-support.md)。
+如果不是这种情况，请从具有 Data Box Disk 解锁工具的文件夹中复制日志，然后[联系 Microsoft 支持部门](data-box-disk-contact-microsoft-support.md)。
 
 ## <a name="deployment-issues-for-windows"></a>Windows 的部署问题
 
-本部分详细介绍了在使用 Linux 客户端进行数据复制时部署 Data Box Disk 所遇到的一些常见问题
+本部分详细介绍了在使用 Windows 客户端进行数据复制时部署 Data Box Disk 所遇到的一些常见问题
 
 ### <a name="issue-could-not-unlock-drive-from-bitlocker"></a>问题：无法从 BitLocker 解锁驱动器
  
@@ -139,7 +138,7 @@ ms.locfileid: "54191694"
 
 **解决方法**
 
-若要解锁 Data Box Disk，需要使用 Data Box Disk解锁工具并从 Azure 门户提供密码。
+若要解锁 Data Box Disk，需要使用 Data Box Disk解锁工具并从 Azure 门户提供密码。 有关详细信息，请转到[教程：打开包装、连接和解锁 Azure Data Box Disk](data-box-disk-deploy-set-up.md#connect-to-disks-and-get-the-passkey)。
  
 ### <a name="issue-could-not-unlock-or-verify-some-volumes-contact-microsoft-support"></a>问题：无法解锁或验证某些卷。 请联系 Microsoft 支持。
  
@@ -155,7 +154,7 @@ ms.locfileid: "54191694"
 
 可以安装 [Windows PowerShell v 5.0](https://www.microsoft.com/download/details.aspx?id=54616) 并重试该操作。
  
-如果仍无法解锁卷，请[与 Microsoft 支持部门联系](data-box-disk-contact-microsoft-support.md)。
+如果仍无法解锁卷，请从具有 Data Box Disk 解锁工具的文件夹中复制日志，然后[联系 Microsoft 支持部门](data-box-disk-contact-microsoft-support.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

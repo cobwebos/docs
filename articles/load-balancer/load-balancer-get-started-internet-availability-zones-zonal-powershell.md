@@ -1,10 +1,11 @@
 ---
-title: 创建具有区域性前端 IP 的公用标准负载均衡器标准 - Azure PowerShell
+title: 创建具有区域前端的负载均衡器 - Azure PowerShell
 titlesuffix: Azure Load Balancer
-description: 了解如何使用 Azure PowerShell 创建具有区域性公用 IP 地址前端的公用负载均衡器标准
+description: 了解如何使用 Azure PowerShell 创建带有区域性前端的标准负载均衡器
 services: load-balancer
 documentationcenter: na
 author: KumudD
+manager: twooley
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
@@ -13,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/26/2018
 ms.author: kumud
-ms.openlocfilehash: da30bce34425d3537f9610c6e1f64ded4a836fd7
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 861759eec266f0ab66d30a466c06e7d2ee14bf06
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53100678"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54247151"
 ---
-#  <a name="create-a-public-load-balancer-standard-with-zonal-frontend-using-azure-powershell"></a>使用 Azure PowerShell 创建具有区域性前端的公用负载均衡器标准
+#  <a name="create-a-standard-load-balancer-with-zonal-frontend-using-azure-powershell"></a>使用 Azure PowerShell 创建具有区域性前端的标准负载均衡器
 
-本文分步指导你使用公用 IP 标准地址创建具有区域性前端的公用[负载均衡器标准](https://aka.ms/azureloadbalancerstandard)。 若要了解可用性区域如何与标准负载均衡器配合工作，请参阅[标准负载均衡器和可用性区域](load-balancer-standard-availability-zones.md)。 
+本文逐步讲解如何使用公共 IP 标准地址创建具有区域性前端的公共[标准负载均衡器](https://aka.ms/azureloadbalancerstandard)。 若要了解可用性区域如何与标准负载均衡器配合工作，请参阅[标准负载均衡器和可用性区域](load-balancer-standard-availability-zones.md)。 
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
@@ -86,7 +87,7 @@ $probe = New-AzureRmLoadBalancerProbeConfig -Name 'myHealthProbe' -Protocol Http
 ```
 
 ## <a name="create-a-load-balancer"></a>创建负载均衡器
-使用以下命令创建负载均衡器标准：
+使用以下命令创建标准负载均衡器：
 
 ```powershell
 $lb = New-AzureRmLoadBalancer -ResourceGroupName myResourceGroupZLB -Name 'MyLoadBalancer' -Location westeurope `

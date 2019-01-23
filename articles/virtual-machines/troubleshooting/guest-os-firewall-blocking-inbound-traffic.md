@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 11/22/2018
 ms.author: delhan
-ms.openlocfilehash: 19ba7013b461917c4aea8ae96f689d7e39859652
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 0a0da446385c592bfeda2e01e209ef1fb75b7de3
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53134431"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54213105"
 ---
 # <a name="azure-vm-guest-os-firewall-is-blocking-inbound-traffic"></a>Azure VM 来宾 OS 防火墙阻止入站流量
 
@@ -142,7 +142,7 @@ ms.locfileid: "53134431"
 
 #### <a name="mitigation-1"></a>缓解措施 1
 
-请参阅 [如何在来宾 OS DOC 上启用/禁用某个防火墙规则]()。
+请参阅 [如何在来宾 OS 上启用/禁用某个防火墙规则](enable-disable-firewall-rule-guest-os.md)。
 
 #### <a name="mitigation-2"></a>缓解措施 2
 

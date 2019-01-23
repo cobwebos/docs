@@ -3,7 +3,7 @@ title: 适用于 SQL Server 2016/2017 Azure VM 的自动备份 v2 | Microsoft Do
 description: 介绍适用于 Azure 中运行的 SQL Server 2016/2017 VM 的自动备份功能。 本文仅适用于使用 Resource Manager 的 VM。
 services: virtual-machines-windows
 documentationcenter: na
-author: rothja
+author: MashaMSFT
 manager: craigg
 tags: azure-resource-manager
 ms.assetid: ebd23868-821c-475b-b867-06d4a2e310c7
@@ -13,13 +13,14 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/03/2018
-ms.author: jroth
-ms.openlocfilehash: 664a0036b8aa753de9636688d22afff0163f031f
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.author: mathoma
+ms.reviewer: jroth
+ms.openlocfilehash: 432df6d73b2eaa42645fe25ad9c743b7fcef06a8
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51246814"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54331638"
 ---
 # <a name="automated-backup-v2-for-azure-virtual-machines-resource-manager"></a>适用于 Azure 虚拟机（资源管理器）的自动备份 v2
 
@@ -73,7 +74,7 @@ ms.locfileid: "51246814"
 
 | 设置 | 范围（默认值） | Description |
 | --- | --- | --- |
-| **系统数据库备份** | 启用/禁用（已禁用） | 如果启用，此功能还会备份系统数据库：Master、MSDB 和 Model。 对于 MSDB 和 Model 数据库，如果想要创建日志备份，请验证这些数据库是否处于完整恢复模式。 永远不会针对 Master 数据库创建日志备份。 此外，不会创建 TempDB 的备份。 |
+| **系统数据库备份** | 启用/禁用（已禁用） | 启用后，此功能还会备份系统数据库：Master、MSDB 和 Model。 对于 MSDB 和 Model 数据库，如果想要创建日志备份，请验证这些数据库是否处于完整恢复模式。 永远不会针对 Master 数据库创建日志备份。 此外，不会创建 TempDB 的备份。 |
 | **备份计划** | 手动/自动（自动） | 默认情况下，系统会根据日志的增长情况自动确定备份计划。 用户可以使用手动备份计划来指定备份时段。 此情况下，仅按指定的频率、在特定日期的指定时段内进行备份。 |
 | **完整备份频率** | 每日/每周 | 完整备份的频率。 上述两种情况下，均在下一个计划的时间段内开始完整备份。 如果选择“每周”，备份可能会跨越好几天，直到所有数据库都已成功备份。 |
 | **完整备份开始时间** | 00:00 – 23:00 (01:00) | 在给定的日期可以开始执行完整备份的时间。 |
@@ -89,9 +90,9 @@ ms.locfileid: "51246814"
 在星期一，用户使用以下设置启用了自动备份 v2：
 
 - 备份计划：**手动**
-- 完整备份频率：**每周**
-- 完整备份开始时间：**01:00**
-- 完整备份时段：**1 小时**
+- 完整备份频率：每周
+- 完整备份开始时间：01:00
+- 完整备份时段：1 小时
 
 这意味着，下一个可用备份时段为星期二凌晨 1 点，持续时间为 1 小时。 到时，自动备份将开始逐个备份数据库。 在此方案中，由于数据库非常大，完整备份将完成前几个数据库。 但是，一小时后，并非所有数据库都能得到备份。
 
@@ -331,7 +332,7 @@ Set-AzureRmVMSqlServerExtension -AutoBackupSettings $autobackupconfig `
 ## <a name="next-steps"></a>后续步骤
 自动备份 v2 在 Azure VM 上配置托管备份。 因此，请务必[查看有关托管备份的文档](https://msdn.microsoft.com/library/dn449496.aspx)，了解其行为和影响。
 
-可在以下文章中找到针对 Azure VM 上的 SQL Server 的其他备份和还原指导：[Azure 虚拟机中 SQL Server 的备份和还原](virtual-machines-windows-sql-backup-recovery.md)。
+可以在以下文章中找到针对 Azure VM 上 SQL Server 的其他备份和还原指导：[Azure 虚拟机中 SQL Server 的备份和还原](virtual-machines-windows-sql-backup-recovery.md)。
 
 有关其他可用自动化任务的信息，请参阅 [SQL Server IaaS 代理扩展](virtual-machines-windows-sql-server-agent-extension.md)。
 

@@ -5,20 +5,17 @@ services: virtual-machines
 author: axayjo
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 09/20/2018
+ms.date: 01/09/2018
 ms.author: akjosh; cynthn
 ms.custom: include file
-ms.openlocfilehash: 48404c8b6f45ab79a9136154c44c7fd44572a3e6
-ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
+ms.openlocfilehash: c65fb1f0f635e79d594a7f080124827e3218f612
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51678165"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54193290"
 ---
-共享映像库是可以帮助你围绕自定义 VM 映像生成结构和组织的服务。 共享映像库提供三项主要价值主张：
-- 简单的管理
-- 缩放客户映像
-- 共享映像 - 与组织内部的不同用户、服务主体或 AD 组共享映像，以及使用多区域复制与不同的区域共享映像
+共享映像库是可以帮助你围绕自定义托管 VM 映像生成结构和组织的服务。 使用共享映像库，可以将映像共享给组织内的不同用户、服务主体或 AD 组。 共享映像可以复制到多个区域，以便更快地扩展部署。
 
 托管映像是完整 VM（包括任何附加的数据磁盘）的副本或者只是 OS 磁盘的副本，具体取决于映像的创建方式。 从映像创建 VM 时，将使用该映像中的 VHD 副本来为新 VM 创建磁盘。 托管映像保留在存储中，可反复用来创建新的 VM。
 
@@ -28,10 +25,10 @@ ms.locfileid: "51678165"
 
 | 资源 | Description|
 |----------|------------|
-| **托管映像** | 这是一个基准映像，可以单独使用，或者用于在映像库中创建多个**共享映像版本**。|
+| **托管映像** | 这是基本映像，可以单独使用，也可用于在映像库中创建“映像版本”。 托管映像是从通用 VM 创建的。 托管映像是一种特殊的 VHD 类型，可用于生成多个 VM，并且现在可用于创建共享映像版本。 |
 | **映像库** | 与 Azure 市场一样，**映像库**是用于管理和共享映像的存储库，但你可以控制谁有权访问这些映像。 |
-| **库映像** | 映像在库中定义，携带有关该映像及其在内部使用的要求的信息。 这包括了该映像是 Windows 还是 Linux 映像、发行说明以及最低和最高内存要求。 此类映像是资源管理器部署模型中的资源，但不直接用于创建 VM。 它是某种映像类型的定义。 |
-| **共享映像版本** | 使用库时，将使用**映像版本**来创建 VM。 可根据环境的需要创建多个映像版本。 与托管映像一样，在使用**映像版本**创建 VM 时，将使用映像版本来创建 VM 的新磁盘。 可以多次使用映像版本。 |
+| **映像定义** | 映像在库中定义，携带有关该映像及其在内部使用的要求的信息。 这包括了该映像是 Windows 还是 Linux 映像、发行说明以及最低和最高内存要求。 它是某种映像类型的定义。 |
+| **映像版本** | 使用库时，将使用**映像版本**来创建 VM。 可根据环境的需要创建多个映像版本。 与托管映像一样，在使用**映像版本**创建 VM 时，将使用映像版本来创建 VM 的新磁盘。 可以多次使用映像版本。 |
 
 <br>
 
@@ -44,21 +41,19 @@ ms.locfileid: "51678165"
 
 | 创建库的位置  | 将版本复制到 |
 |--------------------|----------------------|
-| 美国中西部    |美国中南部|
-| 美国东部 2          |美国东部|
-| 美国中南部   |美国东部 2|
-| 东南亚     |美国西部|
-| 西欧        |美国西部 2|
-|                    |美国中部|
-|                    |美国中北部|
-|                    |加拿大中部|
-|                    |加拿大东部|
-|                    |北欧|
-|                    |西欧|
-|                    |印度南部|
-|                    |东南亚|
+| 美国中西部    |所有公共区域 &#42;|
+| 美国东部 2          ||
+| 美国中南部   ||
+| 东南亚     ||
+| 西欧        ||
+| 美国西部            ||
+| 美国东部            ||
+| 加拿大中部     ||
+|                    ||
 
 
+
+&#42; 要复制到澳大利亚中部和澳大利亚中部 2，需要将订阅列入白名单。 要请求白名单，请转到： https://www.microsoft.com/en-au/central-regions-eligibility/
 
 ## <a name="scaling"></a>扩展
 使用共享映像库可以指定要让 Azure 保留的映像副本数。 这有助于实现多 VM 部署方案，因为可将 VM 部署分散到不同的副本，减少单个副本过载导致实例创建过程受到限制的可能性。
@@ -67,7 +62,9 @@ ms.locfileid: "51678165"
 
 
 ## <a name="replication"></a>复制
-使用共享映像库还可以自动将映像复制到其他 Azure 区域。 可以根据组织的需要，将每个共享映像版本复制到不同的区域。 例如，始终在多个区域复制最新的映像，而只在 1 个区域提供所有旧版本。 这有助于节省共享映像版本的存储成本。 创建共享映像版本后，可以更新该版本要复制到的区域。 复制到不同区域所需的时间取决于要复制的数据量，以及该版本要复制到的区域数。 在某些情况下，这可能需要几个小时。 在复制期间，可以查看每个区域的复制状态。 在一个区域中完成映像复制后，接着可以在该区域中使用该映像版本部署 VM 或 VMSS。
+使用共享映像库还可以自动将映像复制到其他 Azure 区域。 可以根据组织的需要，将每个共享映像版本复制到不同的区域。 例如，始终在多个区域复制最新的映像，而只在 1 个区域提供所有旧版本。 这有助于节省共享映像版本的存储成本。 
+
+创建共享映像版本后，可以更新该版本要复制到的区域。 复制到不同区域所需的时间取决于要复制的数据量，以及该版本要复制到的区域数。 在某些情况下，这可能需要几个小时。 在复制期间，可以查看每个区域的复制状态。 在一个区域中完成映像复制后，接着可以在该区域中使用该映像版本部署 VM 或 VMSS。
 
 ![演示如何复制映像的示意图](./media/shared-image-galleries/replication.png)
 
@@ -87,6 +84,25 @@ ms.locfileid: "51678165"
 使用共享映像库服务不会产生额外的费用。 以下资源会产生费用：
 - 存储共享映像版本的存储费用。 这取决于版本的副本数，以及版本要复制到的区域数。
 - 从版本源区域复制到目标区域的网络传出费用。
+
+## <a name="sdk-support"></a>SDK 支持
+
+以下 SDK 支持创建共享映像库：
+
+- [.NET](https://docs.microsoft.com/dotnet/api/overview/azure/virtualmachines/management?view=azure-dotnet)
+- [Java](https://docs.microsoft.com/java/azure/?view=azure-java-stable)
+- [Node.js](https://docs.microsoft.com/javascript/api/azure-arm-compute/?view=azure-node-latest)
+- [Python](https://docs.microsoft.com/python/api/overview/azure/virtualmachines?view=azure-python)
+- [Go](https://docs.microsoft.com/go/azure/)
+
+## <a name="templates"></a>模板
+
+可以使用模板创建共享映像库资源。 提供多个 Azure 快速入门模板： 
+
+- [创建共享映像库](https://azure.microsoft.com/resources/templates/101-sig-create/)
+- [在共享的映像库中创建映像定义](https://azure.microsoft.com/resources/templates/101-sig-image-definition-create/)
+- [在共享映像库中创建映像版本](https://azure.microsoft.com/resources/templates/101-sig-image-version-create/)
+- [根据映像版本创建 VM](https://azure.microsoft.com/resources/templates/101-vm-from-sig/)
 
 ## <a name="frequently-asked-questions"></a>常见问题 
 
@@ -135,11 +151,11 @@ Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Compute
  
  A. 是的。 根据映像的类型，可能存在 3 种场景。
 
- 场景 1：如果你有托管映像，则可以从该映像创建映像定义和映像版本。
+ 方案 1：如果你有托管映像，则可以从该映像创建映像定义和映像版本。
 
- 场景 2：如果你有非托管的通用化映像，可以从该映像创建托管映像，然后从该托管映像创建映像定义和映像版本。 
+ 方案 2：如果你有非托管的通用化映像，可以从该映像创建托管映像，然后从该托管映像创建映像定义和映像版本。 
 
- 场景 3：如果本地文件系统中包含 VHD，则需要上传 VHD、创建托管映像，然后可以从该映像创建映像定义和映像版本。 
+ 方案 3：如果本地文件系统中包含 VHD，则需要上传 VHD、创建托管映像，然后可以从该映像创建映像定义和映像版本。 
     - 如果 VHD 适用于 Windows VM，请参阅[上传通用化 VHD](https://docs.microsoft.com/azure/virtual-machines/windows/upload-generalized-managed)。
     - 如果 VHD 适用于 Linux VM，请参阅[上传 VHD](https://docs.microsoft.com/azure/virtual-machines/linux/upload-vhd#option-1-upload-a-vhd)
 
@@ -221,7 +237,7 @@ Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Compute
 1. 区域副本计数：指定要在每个区域创建的副本数。 
 2. 通用副本计数：未指定区域副本计数时每个区域的默认计数。 
 
-若要指定区域副本计数，请传递位置以及要在该区域中创建的副本数，例如“South Central US=2”。 
+若要指定区域副本计数，请传递位置以及要在该区域中创建的副本数，例如：“美国中南部=2”。 
 
 如果未为每个位置指定区域副本计数，则默认副本数将是指定的通用副本计数。 
 

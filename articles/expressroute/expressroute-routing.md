@@ -5,15 +5,15 @@ services: expressroute
 author: ganesr
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 12/13/2018
+ms.date: 01/11/2019
 ms.author: ganesr
 ms.custom: seodec18
-ms.openlocfilehash: 5dde36bb8710190627a8780ed740957e62a57da0
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.openlocfilehash: 72489ea48aef9317d97e4d6f19b465db6a9a039d
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53994575"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54245661"
 ---
 # <a name="expressroute-routing-requirements"></a>ExpressRoute 路由要求
 若要使用 ExpressRoute 连接到 Microsoft 云服务，需要设置并管理路由。 某些连接服务提供商以托管服务形式提供路由的设置和管理。 请咨询连接服务提供商，以确定他们是否提供此类服务。 如果不提供，则必须遵守以下要求：
@@ -215,7 +215,7 @@ ExpressRoute 不能配置为传输路由器。 必须依赖连接服务提供商
 | Azure 全球服务* | 12076:5050 |
 | 其他 Office 365 Online 服务 | 12076:5100 |
 
-*Azure 全球服务包括 Azure DevOps
+*本次 Azure 全球服务仅包括 Azure DevOps。
 
 
 > [!NOTE]

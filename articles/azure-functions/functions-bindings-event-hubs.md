@@ -12,12 +12,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 11/08/2017
 ms.author: cshoe
-ms.openlocfilehash: bc7ed9051f95877760bccec65ff2fa7f49e44993
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 1df948d2b3127ede7129d26401cd5f0c80e964fb
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53002161"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54331735"
 ---
 # <a name="azure-event-hubs-bindings-for-azure-functions"></a>Azure Functions 的 Azure 事件中心绑定
 
@@ -423,6 +423,7 @@ public static void Run([EventHubTrigger("samples-workitems", Connection = "Event
 |**consumerGroup** |**ConsumerGroup** | 一个可选属性，用于设置[使用者组](../event-hubs/event-hubs-features.md#event-consumers)，该组用于订阅事件中心中的事件。 如果将其省略，则会使用 `$Default` 使用者组。 |
 |**基数** | 不适用 | 适用于 JavaScript。 设为 `many` 以启用批处理。  如果省略或设为 `one`，将向函数传递一条消息。 |
 |**连接** |**Connection** | 应用设置的名称，该名称中包含事件中心命名空间的连接字符串。 单击 [命名空间](../event-hubs/event-hubs-create.md#create-an-event-hubs-namespace) （而不是事件中心本身）的“连接信息”按钮，以复制此连接字符串。 此连接字符串必须至少具有读取权限才可激活触发器。|
+|**路径**|**EventHubName**|事件中心的名称。 可以通过应用设置 `%eventHubName%` 引用|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 

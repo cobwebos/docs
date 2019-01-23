@@ -7,15 +7,15 @@ manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 09/26/2018
+ms.date: 01/11/2019
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 7571e5f4d95320ab92fa3b69b0ea1f05ff9c771f
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 982932f538f13ac3cb8f842a32f9439f717d971f
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47408396"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54247769"
 ---
 # <a name="tutorial-create-an-azure-active-directory-b2c-tenant"></a>教程：创建 Azure Active Directory B2C 租户
 
@@ -44,10 +44,11 @@ ms.locfileid: "47408396"
 
     ![创建租户](./media/tutorial-create-tenant/create-tenant.png)
 
-    在此示例中，租户名称是 contoso0926Tenant.onmicrosoft.com
+    在此示例中，租户名是 contoso0926Tenant.onmicrosoft.com
 
-6. 在“创建新的 B2C 租户或链接到现有租户”页上，选择“将现有 Azure AD B2C 租户链接到我的 Azure 订阅”，选择创建的租户，然后选择订阅，单击“新建”并输入将包含租户的资源组名称，选择位置，然后单击“创建”。
-7. 若要开始使用新租户，请确保使用包含 Azure AD B2C 租户的目录，方法是单击顶部菜单中的“目录和订阅筛选器”，然后选择包含租户的目录。
+6. 在“创建新的 B2C 租户或链接到现有租户”页上，选择“将现有 Azure AD B2C 租户链接到 Azure 订阅”，依次选择已创建的租户和订阅，然后单击“新建”。
+7. 输入将包含该租户的资源组名，选择位置，然后单击“创建”。
+8. 若要开始使用新租户，请确保使用包含 Azure AD B2C 租户的目录，方法是单击顶部菜单中的“目录和订阅筛选器”，然后选择包含租户的目录。
 
     ![切换到租户目录](./media/tutorial-create-tenant/switch-directories.png)
 
@@ -60,4 +61,4 @@ ms.locfileid: "47408396"
 > * 将租户链接到订阅
 
 > [!div class="nextstepaction"]
-> [使 Web 应用程序能够使用帐户进行身份验证](active-directory-b2c-tutorials-web-app.md)
+> [注册应用程序](tutorial-register-applications.md)

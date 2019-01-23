@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: mstewart
 ms.date: 12/21/2018
 ms.custom: seodec18
-ms.openlocfilehash: 4f940170168147e4e778714e947ab6b558cb2bd5
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 3afe60e7a00cb4fc4aca5046da8e26aaf3c77a29
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54076665"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54198807"
 ---
 # <a name="azure-disk-encryption-for-iaas-vms-faq"></a>适用于 IaaS VM 的 Azure 磁盘加密常见问题解答
 

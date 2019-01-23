@@ -9,13 +9,13 @@ ms.author: estfan
 ms.reviewer: divswa, LADocs
 ms.topic: article
 tags: connectors
-ms.date: 10/31/2018
-ms.openlocfilehash: 336288aaf3817fe267d58a225249bf54cca691bc
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
+ms.date: 01/15/2019
+ms.openlocfilehash: e0f0230241bdffa97b94c88eb4b2d76fd44bcdea
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50979091"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54320780"
 ---
 # <a name="monitor-create-and-manage-sftp-files-by-using-ssh-and-azure-logic-apps"></a>使用 SSH 和 Azure 逻辑应用监视、创建和管理 SFTP 文件
 
@@ -27,7 +27,7 @@ ms.locfileid: "50979091"
 * 获取文件内容和元数据。
 * 将存档提取到文件夹。
 
-与 [SFTP 连接器](../connectors/connectors-create-api-sftp.md)相比，SFTP-SSH 连接器可以读取或写入最大 *1 GB* 的文件。 对于大于 1 GB 的文件，可以结合使用 SFTP-SSH 连接器以及[用于处理大消息的分块](../logic-apps/logic-apps-handle-large-messages.md)。 有关其他差异，请查看本文稍后的 [SFTP-SSH 与 SFTP 的比较](#comparison)。
+与 [SFTP 连接器](../connectors/connectors-create-api-sftp.md)相比，SFTP-SSH 连接器可以读取或写入最大 *1 GB* 的文件。 有关其他差异，请查看本文稍后的 [SFTP-SSH 与 SFTP 的比较](#comparison)。
 
 可以使用触发器来监视 SFTP 服务器上的事件，并使输出可用于其他操作。 可以使用操作针对 SFTP 服务器执行各种任务。 还可以让逻辑应用中的其他操作使用 SFTP 操作的输出。 例如，如果你定期从 SFTP 服务器检索文件，则可以使用 Office 365 Outlook 连接器或 Outlook.com 连接器发送有关这些文件及其内容的电子邮件警报。
 如果你不熟悉逻辑应用，请查看[什么是 Azure 逻辑应用？](../logic-apps/logic-apps-overview.md)
@@ -48,7 +48,7 @@ ms.locfileid: "50979091"
   > * **加密算法**：DES-EDE3-CBC、DES-EDE3-CFB、DES-CBC、AES-128-CBC、AES-192-CBC 和 AES-256-CBC
   > * **指纹**：MD5
 
-* 可读取或写入最大 *1 GB* 的文件，而 SFTP 连接器则不可以。 对于大于 1 GB 的文件，可使用[用于处理大消息的分块](../logic-apps/logic-apps-handle-large-messages.md)。 
+* 可读取或写入最大 1 GB 的文件，而 SFTP 连接器则不可以，但以 50 MB（而非 1 GB）为一批处理该数据。
 
 * 提供“创建文件夹”操作，用于在 SFTP 服务器上的指定路径中创建文件夹。
 
@@ -137,13 +137,13 @@ SFTP-SSH 触发器的工作原理是轮询 SFTP 文件系统并查找自上次�
 
 ## <a name="examples"></a>示例
 
-### <a name="sftp---ssh-trigger-when-a-file-is-added-or-modified"></a>SFTP-SSH 触发器：添加或修改文件时
+### <a name="sftp---ssh-trigger-when-a-file-is-added-or-modified"></a>SFTP - SSH 触发器：添加或修改文件时
 
 在 SFTP 服务器上添加或更改文件时，此触发器将启动逻辑应用工作流。 例如，可以添加一个条件，用于检查文件内容，并根据该内容是否符合指定的条件来获取内容。 然后可以添加一个操作，用于获取文件内容并将其放在 SFTP 服务器上的某个文件夹中。 
 
 **企业示例**：可以使用此触发器监视 SFTP 文件夹中表示客户订单的新文件。 然后，可以使用“获取文件内容”等 SFTP 操作来获取订单内容以做进一步处理，并将该订单存储在订单数据库中。
 
-### <a name="sftp---ssh-action-get-content"></a>SFTP-SSH 操作：获取内容
+### <a name="sftp---ssh-action-get-content"></a>SFTP - SSH 操作：获取内容
 
 此操作从 SFTP 服务器上的文件中获取内容。 例如，可以在前面的示例中添加触发器，并添加文件内容必须符合的条件。 如果条件为 true，则可以运行获取内容的操作。 
 

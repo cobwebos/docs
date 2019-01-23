@@ -6,15 +6,15 @@ ms.service: automation
 ms.component: shared-capabilities
 author: georgewallace
 ms.author: gwallace
-ms.date: 03/16/2018
+ms.date: 01/15/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: ea6aae349bfbec0d1b6538010df42e7a0fb22d8e
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: aaf8671ec4bfc4bcf6fecaa357f6ae983eb04499
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34196094"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54330511"
 ---
 # <a name="variable-assets-in-azure-automation"></a>Azure 自动化中的变量资产
 
@@ -31,7 +31,7 @@ ms.locfileid: "34196094"
 创建变量时，可以指定将其加密存储。 当变量加密后，它将安全地存储在 Azure 自动化中并且不能从 Azure PowerShell 模块随附的 [Get-AzureRmAutomationVariable](/powershell/module/AzureRM.Automation/Get-AzureRmAutomationVariable) cmdlet 检索变量值。 可以检索加密值的唯一方法是从 Runbook 或 DSC 配置中的 **Get-AutomationVariable** 活动进行检索。
 
 >[!NOTE]
->Azure 自动化中的安全资产包括凭据、证书、连接和加密的变量。 这些资产已使用针对每个自动化帐户生成的唯一密钥加密并存储在 Azure 自动化中。 此密钥存储在密钥保管库中。 在存储安全资产之前，从密钥保管库加载密钥，然后使用该密钥加密资产。
+>Azure 自动化中的安全资产包括凭据、证书、连接和加密的变量。 这些资产已使用针对每个自动化帐户生成的唯一密钥加密并存储在 Azure 自动化中。 此密钥存储在系统托管的密钥保管库中。 在存储安全资产之前，从密钥保管库加载密钥，然后使用该密钥加密资产。 此过程由 Azure 自动化管理。
 
 ## <a name="variable-types"></a>变量类型
 
@@ -44,13 +44,13 @@ ms.locfileid: "34196094"
 * String
 * Integer
 * DateTime
-* 布尔
+* Boolean
 * Null
 
 ## <a name="azurerm-powershell-cmdlets"></a>AzureRM PowerShell cmdlet
 对于 AzureRM，下表中的 cmdlet 用于通过 Windows PowerShell 创建和管理自动化凭据资产。 可在自动化 Runbook 和 DSC 配置中使用的 [AzureRM.Automation 模块](/powershell/azure/overview)已随附了这些 cmdlet。
 
-| Cmdlet | 说明 |
+| Cmdlet | Description |
 |:---|:---|
 |[Get-AzureRmAutomationVariable](/powershell/module/AzureRM.Automation/Get-AzureRmAutomationVariable)|检索现有变量的值。|
 |[New-AzureRmAutomationVariable](/powershell/module/AzureRM.Automation/New-AzureRmAutomationVariable)|创建新变量并设置变量值。|
@@ -60,7 +60,7 @@ ms.locfileid: "34196094"
 ## <a name="activities"></a>活动
 下表中的活动用于在 Runbook 和 DSC 配置中访问凭据。
 
-| 活动 | 说明 |
+| 活动 | Description |
 |:---|:---|
 |Get-AutomationVariable|检索现有变量的值。|
 |Set-AutomationVariable|设置现有变量的值。|
@@ -70,7 +70,7 @@ ms.locfileid: "34196094"
 
 下表中的函数用于在 Python2 Runbook 中访问和检索变量。 
 
-|Python2 函数|说明|
+|Python2 函数|Description|
 |:---|:---|
 |automationassets.get_automation_variable|检索现有变量的值。 |
 |automationassets.set_automation_variable|设置现有变量的值。 |

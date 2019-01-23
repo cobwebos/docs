@@ -13,12 +13,12 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 09/13/2018
 ms.author: spelluru
-ms.openlocfilehash: 804e0dd4b510b40c1ebbc5790308a429c2715724
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: e8d168e4171c96441162f1090a215cab8a70b7d1
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45573308"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54198688"
 ---
 # <a name="how-to-use-service-bus-queues-with-java"></a>如何通过 Java 使用服务总线队列
 [!INCLUDE [service-bus-selector-queues](../../includes/service-bus-selector-queues.md)]
@@ -109,13 +109,13 @@ public void run() throws Exception {
 
 ```
 
-发送到服务总线队列的消息，并从中接收的消息是 [Message](/java/api/com.microsoft.azure.servicebus._message?view=azure-java-stable) 类的实例。 Message 对象包含一组标准属性（如 Label 和 TimeToLive）、一个用来保存自定义应用程序特定属性的词典以及大量随机应用程序数据。 应用程序可通过将任何可序列化对象传入到 Message 的构造函数中来设置消息的正文，然后将使用适当的序列化程序来序列化对象。 或者，可提供 java.IO.InputStream 对象。
+发送到服务总线队列的消息，并从中接收的消息是 [Message](/java/api/com.microsoft.azure.servicebus.message?view=azure-java-stable) 类的实例。 Message 对象包含一组标准属性（如 Label 和 TimeToLive）、一个用来保存自定义应用程序特定属性的词典以及大量随机应用程序数据。 应用程序可通过将任何可序列化对象传入到 Message 的构造函数中来设置消息的正文，然后将使用适当的序列化程序来序列化对象。 或者，可提供 java.IO.InputStream 对象。
 
 
 服务总线队列在[标准层](service-bus-premium-messaging.md)中支持的最大消息大小为 256 KB，在[高级层](service-bus-premium-messaging.md)中则为 1 MB。 标头最大大小为 64 KB，其中包括标准和自定义应用程序属性。 一个队列可包含的消息数不受限制，但消息的总大小受限。 此队列大小是在创建时定义的，上限为 5 GB。
 
 ## <a name="receive-messages-from-a-queue"></a>从队列接收消息
-从队列接收消息的主要方法是使用 ServiceBusContract 对象。 收到的消息可在两种不同模式下工作：ReceiveAndDelete 和 PeekLock。
+从队列接收消息的主要方法是使用 ServiceBusContract 对象。 收到的消息可在两种不同模式下工作：ReceiveAndDelete 或 PeekLock。
 
 当使用 ReceiveAndDelete 模式时，接收是一项单次操作，即，当服务总线接收到队列中某条消息的读取请求时，它会将该消息标记为“已使用”并将其返回给应用程序。 ReceiveAndDelete 模式（默认模式）是最简单的模式，最适合应用程序可容忍出现故障时不处理消息的情景。 为了理解这一点，可以考虑这样一种情形：使用方发出接收请求，但在处理该请求前发生了崩溃。
 由于服务总线已将消息标记为“已使用”，因此当应用程序重启并重新开始使用消息时，它就漏掉了在发生故障前使用的消息。

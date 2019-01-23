@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 04/27/2018
+ms.date: 01/16/2019
 ms.author: jingwang
-ms.openlocfilehash: a5df9d4d323158ee52c872b0122fdd28d9f74979
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 161683b48ae66edc621981142c538f8bce44a2b6
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54019854"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54352166"
 ---
 # <a name="copy-data-from-hdfs-using-azure-data-factory"></a>使用 Azure 数据工厂从 HDFS 复制数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -39,6 +39,9 @@ ms.locfileid: "54019854"
 ## <a name="prerequisites"></a>先决条件
 
 若要从不可公开访问的 HDFS 复制数据，需要设置自承载集成运行时。 要了解详细信息，请参阅[自承载集成运行时](concepts-integration-runtime.md)一文。
+
+> [!NOTE]
+> 请确保 Integration Runtime 可以访问所有[名称节点服务器]:[名称节点端口]和 Hadoop 群集的[数据节点服务器]:[数据节点端口]。 默认[名称节点端口]为 50070，默认[数据节点端口]为 50075。
 
 ## <a name="getting-started"></a>入门
 

@@ -6,22 +6,22 @@ ms.service: automation
 ms.component: shared-capabilities
 author: georgewallace
 ms.author: gwallace
-ms.date: 03/15/2018
+ms.date: 01/15/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 7aeb9a9557694f8773af4fe67f47950bf82afe87
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: d91a7ba8d2c05e2d24738764438ce91325743699
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51621405"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54330851"
 ---
 # <a name="certificate-assets-in-azure-automation"></a>Azure 自动化中的证书资产
 
 可以安全地将证书存储在 Azure 自动化中，以便可以使用 Azure 资源管理器资源的 Get-AzureRmAutomationCertificate 活动通过 Runbook 或 DSC 配置访问这些证书。 此功能允许创建使用证书进行身份验证的 Runbook 和 DSC 配置，或者将证书添加到 Azure 或第三方资源。
 
 >[!NOTE]
->Azure 自动化中的安全资产包括凭据、证书、连接和加密的变量。 这些资产已使用针对每个自动化帐户生成的唯一密钥加密并存储在 Azure 自动化中。 此密钥存储在密钥保管库中。 在存储安全资产之前，从密钥保管库加载密钥，然后使用该密钥加密资产。
+>Azure 自动化中的安全资产包括凭据、证书、连接和加密的变量。 这些资产已使用针对每个自动化帐户生成的唯一密钥加密并存储在 Azure 自动化中。 此密钥存储在系统托管的密钥保管库中。 在存储安全资产之前，从密钥保管库加载密钥，然后使用该密钥加密资产。 此过程由 Azure 自动化管理。
 
 ## <a name="azurerm-powershell-cmdlets"></a>AzureRM PowerShell cmdlet
 对于 AzureRM，下表中的 cmdlet 用于通过 Windows PowerShell 创建和管理自动化凭据资产。 可在自动化 Runbook 和 DSC 配置中使用的 [AzureRM.Automation 模块](/powershell/azure/overview)已随附了这些 cmdlet。
@@ -57,7 +57,7 @@ ms.locfileid: "51621405"
 
 ## <a name="creating-a-new-certificate"></a>创建新证书
 
-创建新证书时，需要将 .cer 或 .pfx 文件上传到 Azure 自动化。 将证书标记为可导出后，可以将其转出 Azure 自动化证书存储区。 如果证书不可导出，则它只可用于在 Runbook 或 DSC 配置中签名。 Azure 自动化要求证书具有以下提供程序：Microsoft Enhanced RSA 和 AES 加密提供程序。
+创建新证书时，需要将 .cer 或 .pfx 文件上传到 Azure 自动化。 将证书标记为可导出后，可以将其转出 Azure 自动化证书存储区。 如果证书不可导出，则它只可用于在 Runbook 或 DSC 配置中签名。 Azure 自动化要求证书具有以下提供程序：Microsoft 增强 RSA 和 AES 加密提供程序。
 
 ### <a name="to-create-a-new-certificate-with-the-azure-portal"></a>使用 Azure 门户创建新证书
 

@@ -10,12 +10,12 @@ ms.component: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 0d2cca335206ee59b922a31ed3cf3ba24ef4ecd7
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 63d13235ec7244978193ed97aac8d11b2ff65eeb
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53790769"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54198127"
 ---
 # <a name="what-is-conversation-learner"></a>什么是对话学习器？
 

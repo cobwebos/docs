@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/28/2017
+ms.date: 01/11/2019
 ms.author: byvinyal
 ms.custom: seodec18
-ms.openlocfilehash: d9f25b7a10b7a50663198120a895220b02818d7b
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.openlocfilehash: 3a49b30caa087295bbdcffe8762796fdc92f154b
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53994940"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54247234"
 ---
 # <a name="monitor-apps-in-azure-app-service"></a>监视 Azure 应用服务中的应用
 [Azure 应用服务](https://go.microsoft.com/fwlink/?LinkId=529714)针对 [Azure 门户](https://portal.azure.com)中的 Web 应用、移动后端和 API 应用提供内置监视功能。
@@ -72,7 +72,7 @@ ms.locfileid: "53994940"
 | 指标 | Description |
 | --- | --- |
 | **平均响应时间** | 应用处理请求的平均时间，以毫秒为单位。 |
-| **平均内存工作集** | 应用使用的平均内存量，以 MiB 为单位。 |
+| **平均内存工作集** | 应用使用的平均内存量，以兆字节 (MiB) 为单位。 |
 | **CPU 时间** | 应用消耗的 CPU 量，以秒为单位。 有关此指标的详细信息，请参阅 [CPU 时间与 CPU 百分比](#cpu-time-vs-cpu-percentage)。 |
 | **数据输入** | 应用消耗的传入带宽量，以 MiB 为单位。 |
 | **数据输出** | 应用消耗的传出带宽量，以 MiB 为单位。 |
@@ -141,14 +141,12 @@ ms.locfileid: "53994940"
 ## <a name="alerts-and-autoscale"></a>警报和自动缩放
 可将应用或应用服务计划的指标挂接到警报。 有关详细信息，请参阅[接收警报通知](../monitoring-and-diagnostics/insights-alerts-portal.md)。
 
-托管在“基本”、“标准”或“高级”应用服务计划中的应用服务应用支持自动缩放。 使用自动缩放可以配置用于监视应用服务计划指标的规则。 规则可以增加或减少实例计数，并根据需要提供更多的资源。 规则还有助于避免过度预配应用，从而节省资金。 
+托管在“基本”、“标准”或“高级”应用服务计划中的应用服务应用支持自动缩放。 使用自动缩放可以配置用于监视应用服务计划指标的规则。 规则可以增加或减少实例计数，并根据需要提供更多的资源。 规则还有助于避免过度预配应用，从而节省资金。
 
 有关自动缩放的详细信息，请参阅[如何缩放](../monitoring-and-diagnostics/insights-how-to-scale.md)以及[有关 Azure Monitor 自动缩放的最佳做法](../azure-monitor/platform/autoscale-best-practices.md)。
 
 [fzilla]:https://go.microsoft.com/fwlink/?LinkId=247914
 [vmsizes]:https://go.microsoft.com/fwlink/?LinkID=309169
-
-
 
 <!-- Images. -->
 [http403]: ./media/web-sites-monitor/http403.png

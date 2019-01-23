@@ -9,14 +9,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 10/31/2018
+ms.date: 01/15/2019
 ms.author: abnarain
-ms.openlocfilehash: 9a3e061902de53859ea98791048453db8cf00085
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: f8827f3013ee83d8f4846e7e15d34ea7c6553f24
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54021112"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54331803"
 ---
 # <a name="create-and-configure-a-self-hosted-integration-runtime"></a>创建和配置自承载集成运行时
 集成运行时 (IR) 是 Azure 数据工厂用于在不同的网络环境之间提供数据集成功能的计算基础结构。 有关 IR 的详细信息，请参阅[集成运行时概述](concepts-integration-runtime.md)。
@@ -86,7 +86,7 @@ ms.locfileid: "54021112"
 ## <a name="install-and-register-self-hosted-ir-from-the-download-center"></a>从下载中心安装并注册自承载 IR
 
 1. 转到 [Microsoft 集成运行时下载页](https://www.microsoft.com/download/details.aspx?id=39717)。
-2. 选择“下载”，选择适当的版本（“32 位”或“64 位”），然后选择“下一步”。
+2. 选择“下载”，然后选择 64 位版本（不支持 32 位版本），再选择“下一步”。
 3. 直接运行 MSI 文件或将其保存到硬盘再运行。
 4. 在“欢迎”页上选择语言，然后选择“下一步”。
 5. 接受 Microsoft 软件许可条款，然后选择“下一步”。
@@ -100,7 +100,7 @@ ms.locfileid: "54021112"
     ```
 11. 在计算机上运行的 Microsoft Integration Runtime Configuration Manager 的“注册集成运行时(自承载)”页上，执行以下步骤：
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 将身份验证密钥粘贴到文本区域。
+    a. 将身份验证密钥粘贴到文本区域。
 
     b. 或者选择“显示身份验证密钥”，以查看密钥文本。
 

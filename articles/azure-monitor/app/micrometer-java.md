@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 11/01/2018
 ms.author: lagayhar
-ms.openlocfilehash: 95a76cd46a86f70213ca381df4d52463666ace8d
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 778690fb2796cea3154b3acbb662341fdaea87da
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54109582"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54259591"
 ---
 # <a name="how-to-use-micrometer-with-azure-application-insights-java-sdk"></a>如何将 Micrometer 与 Azure Application Insights Java SDK 配合使用
 Micrometer 应用程序监视功能可以度量基于 JVM 的应用程序代码的指标，并可用于将数据导出到偏爱的监视系统。 本文介绍如何对 Spring Boot 和非 Spring Boot 应用程序配合使用 Micrometer 与 Application Insights。
@@ -89,7 +89,7 @@ Steps
 *    为 Tomcat、JVM 自动配置的指标、Logback 指标、Log4J 指标、运行时间指标、处理器指标、FileDescriptorMetrics。
 *    例如，如果类路径中存在 netflix hystrix，则我们也可以获取这些指标。 
 *    可通过添加相应的 bean 来获取以下指标。 
-        - CacheMetrics（CaffineCache、EhCache2、GuavaCache、HazelcaseCache、Jcache）     
+        - CacheMetrics (CaffeineCache, EhCache2, GuavaCache, HazelcaseCache, Jcache)     
         - DataBaseTableMetrics 
         - HibernateMetrics 
         - JettyMetrics 

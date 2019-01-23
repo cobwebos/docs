@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/30/2017
 ms.author: msfussell
-ms.openlocfilehash: ae7eba9997c4f567eb7b07e23ab42c9ac7740698
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 70305468ca20c48bdc26e7e000a0e5edb63508cd
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49388103"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54261564"
 ---
 # <a name="partition-service-fabric-reliable-services"></a>Service Fabric Reliable Services 分区
 本文介绍 Azure Service Fabric Reliable Services 分区的基本概念。 本文中使用的源代码也可以在 [GitHub](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/classic/Services/AlphabetPartitions) 上获取。
@@ -234,7 +234,7 @@ Service Fabric 提供了三个分区方案可供选择：
             return String.Format(
                 "User {0} {1}",
                 user,
-                addResult ? "sucessfully added" : "already exists");
+                addResult ? "successfully added" : "already exists");
         }
     }
     ```
@@ -365,7 +365,7 @@ Service Fabric 提供了三个分区方案可供选择：
 该示例的完整源代码位于 [GitHub](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/classic/Services/AlphabetPartitions)。
 
 ## <a name="reliable-services-and-actor-forking-subprocesses"></a>Reliable Services 和 Reliable Actors 创建分支子进程
-Service Fabric 不支持 Reliable Services，因此也不支持 Reliable Actors 创建分支子进程。 这里举例说明其不受支持的原因：[CodePackageActivationContext](https://docs.microsoft.com/dotnet/api/system.fabric.codepackageactivationcontext?view=azure-dotnet) 不能用于注册不受支持的子进程，并且取消令牌仅发送到已注册进程；若子进程在父进程收到取消令牌后未关闭，会导致各种问题，例如升级失败。 
+Service Fabric 不支持 Reliable Services，因此也不支持 Reliable Actors 创建分支子进程。 这里举例说明其不受支持的原因：[CodePackageActivationContext](https://docs.microsoft.com/dotnet/api/system.fabric.codepackageactivationcontext?view=azure-dotnet) 不能用于注册不受支持的子过程，并且取消令牌仅发送到已注册过程；若子过程在父过程收到取消令牌后未关闭，会导致各种问题，例如升级失败。 
 
 ## <a name="next-steps"></a>后续步骤
 有关 Service Fabric 概念的信息，请参阅以下内容：

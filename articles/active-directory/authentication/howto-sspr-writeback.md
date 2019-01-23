@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.component: authentication
 ms.topic: conceptual
-ms.date: 10/04/2018
+ms.date: 01/11/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: ce1bcb26b3a3510b22ced57471016999156bb0cf
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: f64331c2b75df84f44486f192e17a744b43fcf9b
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54040653"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54244896"
 ---
 # <a name="how-to-configure-password-writeback"></a>操作说明：配置密码写回服务
 
@@ -52,6 +52,7 @@ ms.locfileid: "54040653"
 * Microsoft 365 E3 或 A3
 * Microsoft 365 E5 或 A5
 * Microsoft 365 F1
+* Microsoft 365 商业版
 
 > [!WARNING]
 > 独立 Office 365 许可计划不支持“通过本地写回实现自助密码重置/更改/解锁”，要使此功能正常工作，需要使用上述计划之一。

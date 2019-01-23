@@ -7,19 +7,19 @@ manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: article
-ms.date: 10/12/2018
+ms.date: 01/14/2019
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: b05b3fee5c49f69979f5e778f897d4be863a3715
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.openlocfilehash: c7b1d74c7750a281f8c961789d39a7ae323f304e
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53809873"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54304034"
 ---
 # <a name="azure-ad-connectconfigure-ad-ds-connector-account-permissions"></a>Azure AD Connect： 配置 AD DS 连接器帐户权限 
 
-内部版本 1.1.880.0（发布于 2018 年 8 月）中引入了名为 [ADSyncConfig.psm1](reference-connect-adsyncconfig.md) 的新 PowerShell 模块，其中包括有助于为 Azure AD Connect 部署配置正确 Active Directory 权限的 cmdlet 集合。 
+内部版本 1.1.880.0（发布于 2018 年 8 月）中引入了名为 [ADSyncConfig.psm1](reference-connect-adsyncconfig.md) 的 PowerShell 模块，其中包括有助于为 Azure AD Connect 部署配置正确 Active Directory 权限的 cmdlet 集合。 
 
 ## <a name="overview"></a>概述 
 对于要在 Azure AD Connect 中启用的每个功能，可以使用以下 PowerShell cmdlet 设置 AD DS Connector 帐户的 Active Directory 权限。 为了防止出现任何问题，每当要使用自定义域帐户安装 Azure AD Connect 以连接林时，都应提前准备 Active Directory 权限。 部署 Azure AD Connect 后，此 ADSyncConfig 模块还可用于配置权限。
@@ -280,7 +280,7 @@ Set-ADSyncRestrictedPermissions [-ADConnectorAccountDN] <String> [-Credential] <
 
 ``` powershell
 $credential = Get-Credential 
-Set-ADSyncRestrictedPermissions -ObjectDN 'CN=ADConnectorAccount,CN=Users,DC=Contoso,DC=com' -Credential $credential  
+Set-ADSyncRestrictedPermissions -ADConnectorAccountDN'CN=ADConnectorAccount,CN=Users,DC=Contoso,DC=com' -Credential $credential  
 ```
 
 此 cmdlet 将设置以下权限： 

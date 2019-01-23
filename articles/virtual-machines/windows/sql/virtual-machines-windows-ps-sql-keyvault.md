@@ -3,7 +3,7 @@ title: 将 Key Vault 与 Azure 中 Windows VM 上的 SQL Server 集成 (Resource
 description: 了解如何自动配置用于 Azure 密钥保管库的 SQL Server 加密。 本主题说明如何将 Azure 密钥保管库集成用于通过 Resource Manager 创建的 SQL Server 虚拟机。
 services: virtual-machines-windows
 documentationcenter: ''
-author: rothja
+author: MashaMSFT
 manager: craigg
 editor: ''
 tags: azure-service-management
@@ -14,13 +14,14 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 04/30/2018
-ms.author: jroth
-ms.openlocfilehash: d80526768c59bbb746408a026915b3228747e18a
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.author: mathoma
+ms.reviewer: jroth
+ms.openlocfilehash: 6ad8eea21c10726b2c3eaf1e10bfd5efba4d1e48
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51251164"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54358687"
 ---
 # <a name="configure-azure-key-vault-integration-for-sql-server-on-azure-virtual-machines-resource-manager"></a>在 Azure 虚拟机上配置 SQL Server 的 Azure Key Vault 集成 (Resource Manager)
 
@@ -36,6 +37,10 @@ SQL Server 加密功能多种多样，包括[透明数据加密 (TDE)](https://m
 启用此功能后，它会自动安装 SQL Server 连接器，配置 EKM 提供程序以访问 Azure Key Vault，并创建允许你访问保管库的凭据。 在前面提到的本地文档列出的步骤中，可以看到此功能自动完成步骤 2 和步骤 3。 仍需手动执行的唯一操作是创建密钥保管库和密钥。 之后，会自动进行 SQL VM 的整个设置。 在此功能完成设置后，可以执行 T-SQL 语句，以按照通常的方式加密数据库或备份。
 
 [!INCLUDE [AKV Integration Prepare](../../../../includes/virtual-machines-sql-server-akv-prepare.md)]
+
+  >[!NOTE]
+  > EKM 提供程序版本 1.0.4.0 通过 [SQL IaaS 扩展](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-agent-extension)安装在 SQL Server VM 上。 更新 SQL IaaS 扩展将不会更新提供程序版本。 如有需要（例如，迁移到 SQL 托管实例时），请考虑手动更新 EKM 提供程序版本。
+
 
 ## <a name="enabling-and-configuring-akv-integration"></a>启用和配置 AKV 集成
 为现有 VM 预配或配置 AKV 集成时可以启用该集成。

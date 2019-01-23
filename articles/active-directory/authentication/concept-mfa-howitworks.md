@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: michmcla
-ms.openlocfilehash: 4a90dc1d97121426e7b161b1d5c92df78b0925a6
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.openlocfilehash: 4e1dc4ded48330f19a11db193fa5fe400326b420
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49114152"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54232815"
 ---
 # <a name="how-it-works-azure-multi-factor-authentication"></a>工作原理：Azure 多重身份验证
 
@@ -27,7 +27,7 @@ ms.locfileid: "49114152"
 
 <center>![概念身份验证方法图像](./media/concept-mfa-howitworks/methods.png)</center>
 
-Azure 多重身份验证 (MFA) 有助于保护对数据和应用程序的访问，同时满足用户对简单性的需求。 它通过要求第二种形式的身份验证提供额外的安全性，并通过一系列简单的[身份验证方法](concept-authentication-methods.md)提供增强式身份验证。
+Azure 多重身份验证 (MFA) 有助于保护对数据和应用程序的访问，同时满足用户对简单性的需求。 它通过要求第二种形式的身份验证提供额外的安全性，并通过一系列简单的[身份验证方法](concept-authentication-methods.md)提供增强式身份验证。 根据管理员制定的配置决策，用户可能会受到 MFA 的质疑，也可能不会受到 MFA 的质疑。
 
 ## <a name="how-to-get-multi-factor-authentication"></a>如何获取多重身份验证？
 

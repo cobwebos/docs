@@ -16,12 +16,12 @@ ms.component: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 5607dd0f3c682915f1a64edcc5e946491bab5279
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.openlocfilehash: e1b1102594e7e4470c08cb0f18068dd368c0fe7a
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53653350"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54245083"
 ---
 # <a name="sign-in-activity-reports-in-the-azure-active-directory-portal"></a>Azure Active Directory 门户中的“登录活动”报告
 
@@ -44,7 +44,7 @@ Azure Active Directory (Azure AD) 中的报告体系结构由以下部分组成�
 * 此外，任何用户（非管理员）都可以访问自己的登录活动 
 
 ### <a name="what-azure-ad-license-do-you-need-to-access-sign-in-activity"></a>访问登录活动需要什么 Azure AD 许可证？
-* 租户必须具有与之关联的 Azure AD Premium 许可证，才能查看包含所有登录活动的报告。 请参阅 [Azure Active Directory Premium 入门](../fundamentals/active-directory-get-started-premium.md)来升级 Azure Active Directory 版本。
+* 租户必须具有与之关联的 Azure AD Premium 许可证，才能查看包含所有登录活动的报告。 请参阅 [Azure Active Directory Premium 入门](../fundamentals/active-directory-get-started-premium.md)来升级 Azure Active Directory 版本。 请注意，如果在升级之前没有任何活动数据，则在升级到高级版许可证后，数据需要经过几天才会显示在报表中。
 
 ## <a name="sign-ins-report"></a>登录报告
 
@@ -54,7 +54,7 @@ Azure Active Directory (Azure AD) 中的报告体系结构由以下部分组成�
 * 多少用户超过一周都有登录行为？
 * 这些登录的状态怎样？
 
-可以通过在 [Azure 门户](https://portal.azure.com)的“Azure Active Directory”边栏选项卡的“活动”部分中选择“登录”来访问登录报告。
+可以通过在 [Azure 门户](https://portal.azure.com)的“Azure Active Directory”边栏选项卡的“活动”部分中选择“登录”来访问登录报告。 请注意，某些登录记录最多可能需要两个小时才会显示在门户中。
 
 ![登录活动](./media/concept-sign-ins/61.png "登录活动")
 
@@ -96,7 +96,7 @@ Azure Active Directory (Azure AD) 中的报告体系结构由以下部分组成�
 若要将所报告数据的范围缩小到适当的级别，可以使用以下默认字段筛选登录数据：
 
 - 用户
-- Application
+- 应用程序
 - 登录状态
 - 条件性访问
 - 日期
@@ -196,7 +196,7 @@ Azure Active Directory (Azure AD) 中的报告体系结构由以下部分组成�
 - 用户
 - 用户名
 - 应用程序 ID
-- Application
+- 应用程序
 - Client
 - 位置
 - IP 地址
@@ -233,6 +233,12 @@ Azure Active Directory (Azure AD) 中的报告体系结构由以下部分组成�
 **登录** 选项可提供应用程序的所有登录事件的完整概览。
 
 ![登录活动](./media/concept-sign-ins/11.png "登录活动")
+
+## <a name="office-365-activity-logs"></a>Office 365 活动日志
+
+可以从 [Office 365 管理中心](https://docs.microsoft.com/office365/admin/admin-overview/about-the-admin-center)查看 Office 365 活动日志。 尽管 Office 365 活动和 Azure AD 活动日志共享大量的目录资源，但只有 Office 365 管理中心提供 Office 365 活动日志的完整视图。 
+
+此外可以使用 [Office 365 管理 API](https://docs.microsoft.com/office/office-365-management-api/office-365-management-apis-overview) 以编程方式访问 Office 365 活动日志。
 
 ## <a name="next-steps"></a>后续步骤
 

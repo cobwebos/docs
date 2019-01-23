@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2018
 ms.author: ericrad
-ms.openlocfilehash: fc9ceb06eb51d1e88306f0971ad055facd05f9fb
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: df7f3dfa525c59ff8862c3b1a46f70be53a93a32
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53437259"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54198739"
 ---
 # <a name="azure-metadata-service-scheduled-events-for-linux-vms"></a>Azure 元数据服务：适用于 Linux VM 的计划事件
 
@@ -74,7 +74,7 @@ ms.locfileid: "53437259"
 
 | 版本 | 发布类型 | 区域 | 发行说明 | 
 | - | - | - | - | 
-| 2017-08-01 | 正式版 | All | <li> 已从 Iaas VM 的资源名称中删除下划线<br><li>针对所有请求强制执行元数据标头要求 | 
+| 2017-08-01 | 正式版 | All | <li> 已从 IaaS VM 的资源名称中删除前置下划线<br><li>针对所有请求强制执行元数据标头要求 | 
 | 2017-03-01 | 预览 | All | <li>初始版本
 
 

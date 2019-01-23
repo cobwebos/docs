@@ -1,26 +1,8 @@
 ---
-title: 重新训练机器学习工作室模型 - Azure | Microsoft Docs
-description: 了解如何重新训练模型并更新 Web 服务以使用 Azure 机器学习中的最新训练模型。
-services: machine-learning
-documentationcenter: ''
-author: ericlicoding
-ms.custom: seodec18
-ms.author: amlstudiodocs
-editor: cgronlun
-ms.assetid: d1cb6088-4f7c-4c32-94f2-f7523dad9059
-ms.service: machine-learning
-ms.component: studio
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 04/19/2017
-ms.openlocfilehash: 614a342dd28b711e3030c19f347fa432e3994a86
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
-ms.translationtype: HT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53257574"
+title:重新训练机器学习工作室模型 titleSuffix: Azure 机器学习工作室 description:了解如何重新训练模型并更新 Web 服务以使用 Azure 机器学习中的最新训练模型。
+services: machine-learning ms.service: machine-learning ms.component: studio ms.topic: article
+
+author: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18 ms.date:2017/04/19
 ---
 # <a name="retrain-an-azure-machine-learning-studio-model"></a>重新训练 Azure 机器学习工作室模型
 作为 Azure 机器学习中机器学习模型操作过程的一部分，模型被训练并保存。 然后使用它来创建预测 Web 服务。 然后可以在网站、仪表板和移动应用中使用 Web 服务。 

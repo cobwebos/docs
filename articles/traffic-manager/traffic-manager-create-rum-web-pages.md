@@ -4,6 +4,7 @@ description: 设置网页将实际用户度量发送到流量管理器
 services: traffic-manager
 documentationcenter: traffic-manager
 author: KumudD
+manager: twooley
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
@@ -12,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 03/16/2018
 ms.author: kumud
 ms.custom: ''
-ms.openlocfilehash: 19a641ba86333047b90c36cef242d524ccad5fe1
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: c994190ed4ccbd8e5b90f17b70ec6b65477fb0d8
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50138153"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54231999"
 ---
 # <a name="how-to-send-real-user-measurements-to-azure-traffic-manager-using-web-pages"></a>如何使用网页将实际用户度量发送到 Azure 流量管理器
 
@@ -35,13 +36,13 @@ ms.locfileid: "50138153"
  
   ![生成实际用户度量密钥](./media/traffic-manager-create-rum-visual-studio/generate-rum-key.png)
 
-   **图 1：生成实际用户度量密钥**
+   图 1：生成真实用户度量密钥
 
 5. 该边栏选项卡现在显示生成的 RUM 密钥和需要嵌入到 HTML 页中的 JavaScript 代码片段。
  
     ![实际用户度量密钥的 Javascript 代码](./media/traffic-manager-create-rum-web-pages/rum-javascript-code.png)
 
-    **图 2：实际用户度量密钥和度量 JavaScript**
+    图 2：真实用户度量密钥和度量 JavaScript
  
 6.  单击“复制”按钮复制 JavaScript 代码。 
 
@@ -57,7 +58,7 @@ ms.locfileid: "50138153"
  
     ![将 Javascript 代码嵌入到实际用户度量网页中](./media/traffic-manager-create-rum-web-pages/real-user-measurement-embed-script.png)  
 
-    **图 3：嵌入实际用户度量 JavaScript 的简单 HTML**
+    图 3：嵌入真实用户度量 JavaScript 的简单 HTML
 
 3.  保存 HTML 文件并将托管在连接到 Internet 的 Web 服务器上。 
 4. 下一次在 Web 浏览器中呈现此页时，将下载引用的 JavaScript，并且脚本将执行度量和报告操作。

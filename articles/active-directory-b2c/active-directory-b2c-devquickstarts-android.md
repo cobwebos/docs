@@ -10,14 +10,14 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: a5bf15289e91cc568524e8110702b5608118bc2d
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 413a69f31125c6c8f18401bb997a490c0f99f948
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52833918"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54352081"
 ---
-# <a name="azure-ad-b2c-sign-in-using-an-android-application"></a>Azure AD B2C：使用 Android 应用程序登录
+# <a name="sign-in-using-an-android-application-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中使用 Android 应用程序登录
 
 Microsoft 标识平台使用开放式标准，例如 OAuth2 和 OpenID Connect。 这些标准允许你利用任何你希望与 Azure Active Directory B2C 集成的库。 为了帮助使用其他库，可以使用演练（例如本演练），演示如何配置第三方库，使其连接到 Microsoft 标识平台。 大部分实施 [RFC6749 OAuth2 规范](https://tools.ietf.org/html/rfc6749)的库都能连接到 Microsoft 标识平台。
 
@@ -30,7 +30,7 @@ Microsoft 标识平台使用开放式标准，例如 OAuth2 和 OpenID Connect�
 
 ## <a name="get-an-azure-ad-b2c-directory"></a>获取 Azure AD B2C 目录
 
-只有在创建目录或租户之后，才可使用 Azure AD B2C。 目录是所有用户、应用、组等对象的容器。 如果没有容器，请先 [创建 B2C 目录](active-directory-b2c-get-started.md) ，再继续。
+只有在创建目录或租户之后，才可使用 Azure AD B2C。 目录是所有用户、应用、组等对象的容器。 如果没有容器，请先 [创建 B2C 目录](tutorial-create-tenant.md) ，再继续。
 
 ## <a name="create-an-application"></a>创建应用程序
 
@@ -42,13 +42,11 @@ Microsoft 标识平台使用开放式标准，例如 OAuth2 和 OpenID Connect�
 
 ## <a name="create-your-user-flows"></a>创建用户流
 
-在 Azure AD B2C 中，每个用户体验都是由[用户流](active-directory-b2c-reference-policies.md)定义的，这是一组控制 Azure AD 行为的策略。 此应用包含一个标识体验：合并的登录和注册用户流。 需要按照[用户流参考文章](active-directory-b2c-reference-policies.md#create-a-sign-up-user-flow)中的说明创建此用户流。 创建用户流时，请务必：
+在 Azure AD B2C 中，每个用户体验都是由[用户流](active-directory-b2c-reference-policies.md)定义的，这是一组控制 Azure AD 行为的策略。 该应用程序需要登录和注册用户流。 创建用户流时，请务必：
 
 * 选择“显示名称”作为用户流中的注册属性。
 * 在每个用户流中，选择“显示名称”和“对象 ID”应用程序声明。 也可以选择其他声明。
 * 创建用户流后，请复制每个用户流的名称。 其前缀应为 `b2c_1_`。  稍后需要用户流名称。
-
-[!INCLUDE [active-directory-b2c-devquickstarts-policy](../../includes/active-directory-b2c-devquickstarts-policy.md)]
 
 创建用户流后，可以开始构建应用。
 
@@ -134,6 +132,4 @@ AuthorizationRequest req = new AuthorizationRequest.Builder(
 ```
 
 有关如何完成余下的过程，请参阅 [AppAuth 指南](https://openid.github.io/AppAuth-Android/)。 如果需要快速开始创建一个正常运行的应用，请查看[我们的示例](https://github.com/Azure-Samples/active-directory-android-native-appauth-b2c)。 遵循 [README.md](https://github.com/Azure-Samples/active-directory-android-native-appauth-b2c/blob/master/README.md) 中的步骤输入自己的 Azure AD B2C 配置。
-
-我们始终乐于接受反馈和建议！ 如果在学习本文的过程中遇到任何难题，或者在改进此内容方面有任何建议，请在页面底部提供反馈，我们将不胜感激。 对于功能请求，请将其添加到 [UserVoice](https://feedback.azure.com/forums/169401-azure-active-directory/category/160596-b2c)。
 

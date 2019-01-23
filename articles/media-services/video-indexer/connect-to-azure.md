@@ -7,14 +7,14 @@ author: Juliako
 manager: femila
 ms.service: media-services
 ms.topic: article
-ms.date: 11/19/2018
+ms.date: 01/12/2019
 ms.author: juliako
-ms.openlocfilehash: f220aee3fa0d9a79723383fc31fec0eed2554bb4
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 55828ea2235e42920a5179846d81711b1ada5dc2
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52833680"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54261547"
 ---
 # <a name="create-a-video-indexer-account-connected-to-azure"></a>创建连接到 Azure 的视频索引器帐户
 
@@ -97,6 +97,9 @@ Azure AD 域中的用户和成员。 将视频索引器帐户连接到 Azure 时
 ## <a name="connect-to-azure-manually-advanced-option"></a>手动连接到 Azure（高级选项）
 
 如果与 Azure 的连接失败，你可以尝试通过手动连接来排除并解决问题。
+
+> [!NOTE]
+> 强烈建议在同一区域中拥有以下三个帐户：与媒体服务帐户连接的视频索引器帐户，以及连接到同一媒体服务帐户的 Azure 存储帐户。
 
 ### <a name="create-and-configure-a-media-services-account"></a>创建和配置媒体服务帐户
 

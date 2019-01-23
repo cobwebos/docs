@@ -14,12 +14,12 @@ ms.component: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 2e4406a75ea1d9f1968d994ae2294b39ca7613d5
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 8e92288883a7779130e3b7f7a8433b61f76aa18c
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51623853"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54244709"
 ---
 # <a name="risky-sign-ins-report-in-the-azure-active-directory-portal"></a>Azure Active Directory 门户中的“有风险的登录”报告
 
@@ -49,7 +49,7 @@ Azure Active Directory (Azure AD) 可以检测到与用户帐户相关的可疑�
 
 ## <a name="what-azure-ad-license-do-you-need-to-access-a-security-report"></a>访问安全报表需要什么 Azure AD 许可证？  
 
-所有版本的 Azure AD 都提供风险登录报告。 但是，各版本的报告粒度级别有所不同： 
+所有版本的 Azure AD 都提供风险登录报告。 但是，各版本的报表粒度级别有所不同： 
 
 - 在 **Azure Active Directory 免费版和基本版**中，你将得到其中包含风险登录的列表。 
 
@@ -85,12 +85,11 @@ Azure AD 免费版和基本版提供针对用户检测到的有风险的登录�
 
 ![有风险的登录](./media/concept-risky-sign-ins/93.png)
 
-
 ## <a name="risky-sign-ins-report-for-azure-ad-premium-editions"></a>Azure Active Directory Premium 版的风险登录报告
 
 Azure AD Premium 版的风险登录报告提供：
 
-- 有关已检测到的[风险事件类型](concept-risk-events.md)的聚合信息
+- 有关已检测到的[风险事件类型](concept-risk-events.md)的聚合信息。 使用 **Azure AD Premium P1 版本**时，许可证未涵盖的检测项会显示为风险事件“登录时检测到其他风险”。 使用 **Azure AD Premium P2 版本**时，可以获取有关所有基础检测的最详细的信息。
 
 - 一个用于下载报表的选项
 

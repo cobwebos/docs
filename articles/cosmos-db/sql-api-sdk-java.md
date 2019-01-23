@@ -8,12 +8,12 @@ ms.devlang: java
 ms.topic: reference
 ms.date: 11/29/2018
 ms.author: sngun
-ms.openlocfilehash: e62276debf121cc39fc5642ed8e5a9faf6b876ed
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: cf011558ab984ecaf8181a4dc4ffcb80851f24fb
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54039633"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54352948"
 ---
 # <a name="azure-cosmos-db-java-sdk-for-sql-api-release-notes-and-resources"></a>适用于 SQL API 的 Azure Cosmos DB Java SDK：发行说明和资源
 > [!div class="op_single_selector"]
@@ -137,7 +137,7 @@ SQL API Java SDK 支持同步操作。 如需异步支持，请使用 [SQL API A
 
 ### <a name="a-name193193"></a><a name="1.9.3"/>1.9.3
 * 修复了连接管理中的 bug，防止直接连接模式下的连接泄漏。
-* 修复了 TOP 查询中可能会引发 NullReferenece 异常的 bug。
+* 修复了 TOP 查询中可能会引发 NullReference 异常的 bug。
 * 通过减少调用内部缓存的网络数提高了性能。
 * 在 DocumentClientException 中添加了状态代码、ActivityID 和请求 URI，以更好地进行故障排除。
 

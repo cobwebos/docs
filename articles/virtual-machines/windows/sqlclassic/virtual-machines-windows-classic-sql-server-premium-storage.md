@@ -3,7 +3,7 @@ title: 在 SQL Server 上使用 Azure 高级存储 | Microsoft Docs
 description: 本文使用通过经典部署模型创建的资源并介绍如何对 Azure 虚拟机上运行的 SQL Server 使用 Azure 高级存储。
 services: virtual-machines-windows
 documentationcenter: ''
-author: rothja
+author: MashaMSFT
 manager: craigg
 editor: monicar
 tags: azure-service-management
@@ -14,20 +14,21 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/01/2017
-ms.author: jroth
-ms.openlocfilehash: 0b7e7f43724b3facd04b8da05ca054fd5ea0022b
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.author: mathoma
+ms.reviewer: jroth
+ms.openlocfilehash: ac5b3bec9915574dd33d40ae2dcbc5aa3c91280a
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52317750"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54332160"
 ---
 # <a name="use-azure-premium-storage-with-sql-server-on-virtual-machines"></a>将 Azure 高级存储用于虚拟机上的 SQL Server
 ## <a name="overview"></a>概述
 [Azure 高级存储](../premium-storage.md)是下一代提供低延迟和高吞吐量 IO 的存储。 它最适用于关键 IO 密集型工作负荷，例如 IaaS [虚拟机](https://azure.microsoft.com/services/virtual-machines/)上的 SQL Server。
 
 > [!IMPORTANT]
-> Azure 提供两个不同的部署模型用于创建和处理资源：[Resource Manager 和经典模型](../../../azure-resource-manager/resource-manager-deployment-model.md)。 本文介绍如何使用经典部署模型。 Microsoft 建议大多数新部署使用资源管理器模型。
+> Azure 具有用于创建和处理资源的两个不同部署模型：[资源管理器部署模型和经典部署模型](../../../azure-resource-manager/resource-manager-deployment-model.md)。 本文介绍如何使用经典部署模型。 Microsoft 建议大多数新部署使用资源管理器模型。
 
 本文提供迁移运行 SQL Server 的虚拟机以使用高级存储的规划和指南。 这包括 Azure 基础结构（网络、存储）以及来宾 Windows VM 步骤。 [附录](#appendix-migrating-a-multisite-always-on-cluster-to-premium-storage)中的示例显示如何移动较大的 VM 以通过 PowerShell 利用改进的本地 SSD 存储的完整全面的端到端迁移。
 
@@ -41,7 +42,7 @@ ms.locfileid: "52317750"
 
 有关 Azure 虚拟机中的 SQL Server 的更多背景信息，请参阅 [Azure 虚拟机中的 SQL Server](../sql/virtual-machines-windows-sql-server-iaas-overview.md)。
 
-**作者：** Daniel Sol **技术审阅人员：** Luis Carlos Vargas Herring、Sanjay Mishra、Pravin Mital、Juergen Thomas、Gonzalo Ruiz。
+**作者：** Daniel Sol 技术审阅人员：Luis Carlos Vargas Herring、Sanjay Mishra、Pravin Mital、Juergen Thomas、Gonzalo Ruiz。
 
 ## <a name="prerequisites-for-premium-storage"></a>高级存储的先决条件
 使用高级存储有多个先决条件。
@@ -219,7 +220,7 @@ $containerName = 'vhds'
 New-AzureStorageContainer -Name $containerName -Context $xioContext
 ```
 
-#### <a name="step-5-placing-os-vhd-on-standard-or-premium-storage"></a>步骤 5：将操作系统 VHD 放置在标准或高级存储上
+#### <a name="step-5-placing-os-vhd-on-standard-or-premium-storage"></a>步骤 5：将 OS VHD 放置在标准或高级存储上
 
 ```powershell
 #NOTE: Set up subscription and default storage account which is used to place the OS VHD in
@@ -350,7 +351,7 @@ Add-AzureVMImage -ImageName $newimageName -MediaLocation $imageMediaLocation
 >
 >
 
-#### <a name="step-7--build-the-vm"></a>步骤 7：生成 VM
+#### <a name="step-7--build-the-vm"></a>步骤 7：构建 VM
 在此处可基于映像生成 VM 并附加两个高级存储 VHD：
 
 ```powershell
@@ -606,7 +607,7 @@ $vmConfigsl2 | New-AzureVM –ServiceName $destcloudsvc -VNetName $vnet
 
 ![Appendix2][12]
 
-### <a name="pre-steps-connect-to-subscription"></a>预先步骤：连接到订阅
+### <a name="pre-steps-connect-to-subscription"></a>前期步骤：连接到订阅
 
 ```powershell
 Add-AzureAccount

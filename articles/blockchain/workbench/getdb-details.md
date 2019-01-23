@@ -5,17 +5,17 @@ services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 10/1/2018
+ms.date: 01/14/2019
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: mmercuri
 manager: femila
-ms.openlocfilehash: 4020500e20973e8818320424833815c1b5224f6c
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: 0d806491c58c4b1881adc2fd830de7c7b9f0859d
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48240731"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54331922"
 ---
 # <a name="get-information-about-your-azure-blockchain-workbench-database"></a>获取有关 Azure Blockchain Workbench 数据库的信息
 
@@ -23,7 +23,7 @@ ms.locfileid: "48240731"
 
 ## <a name="overview"></a>概述
 
-在 Blockchain Workbench SQL DB 中，有关应用程序、工作流和智能合约执行的信息是使用数据库视图提供的。 当使用诸如 Microsoft Excel、PowerBI、Visual Studio 和 SQL Server Management Studio 之类的工具时，开发人员可以使用此信息。
+在 Blockchain Workbench SQL DB 中，有关应用程序、工作流和智能合约执行的信息是使用数据库视图提供的。 当使用诸如 Microsoft Excel、Power BI、Visual Studio 和 SQL Server Management Studio 之类的工具时，开发人员可以使用此信息。
 
 开发人员需要执行以下操作，然后才能连接到数据库：
 
@@ -34,7 +34,7 @@ ms.locfileid: "48240731"
 
 若要连接到数据库，请执行以下操作：
 
-1. 使用对 Azure Blockchain Workbench 资源具有**所有者**权限的帐户登录到 Azure 门户。
+1. 使用对 Azure Blockchain Workbench 资源具有所有者权限的帐户登录到 Azure 门户。
 2. 在左侧导航窗格中，选择“资源组”。
 3. 选择你的 Blockchain Workbench 部署的资源组的名称。
 4. 选择“类型”来对资源列表进行排序，然后选择你的 **SQL Server**。 下面的屏幕截图中的已排序列表显示了两个 SQL 数据库，一个是“master”，另一个是使用“lhgn”作为**资源前缀**的数据库。

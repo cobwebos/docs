@@ -1,23 +1,23 @@
 ---
 title: 审查作业和人在回路评审 - 内容审查器
 titlesuffix: Azure Cognitive Services
-description: 为了获得最佳结果，请在计算机辅助审查中引入人工监督。
+description: 为了获得最佳业务结果，请使用 Azure 内容审查器的审阅 API，将计算机辅助审查与人机回环功能相结合。
 services: cognitive-services
 author: sanjeev3
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: content-moderator
 ms.topic: conceptual
-ms.date: 1/21/2018
+ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: b4a2f62b1c9cefb716cb217baf7389c3e7c790b8
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: a348b18d1ecc9c0e4405c54a8e554d932781ec92
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47223247"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54265339"
 ---
-# <a name="moderation-jobs-and-reviews"></a>审查作业和审阅
+# <a name="content-moderation-jobs-and-reviews"></a>内容审查作业和审阅
 
 为了获得最佳业务结果，请使用 Azure 内容审查器的[审阅 API](https://westus.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/580519483f9b0709fc47f9c5)，将计算机辅助审查与人机回环功能相结合。
 
@@ -60,7 +60,7 @@ ms.locfileid: "47223247"
 响应包含以下信息：
 
 - 已创建审阅的标识符。 （此 ID 可用于获取最终审阅结果。）
-- 作业状态（已完成或进行中）：分配的审查标记（键值对）。
+- 作业的状态（已完成或正在进行）：已分配的审查标记（键值对）。
 - 作业执行报告。
  
  

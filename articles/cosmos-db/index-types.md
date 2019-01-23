@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/5/2018
 ms.author: rimman
-ms.openlocfilehash: 44fe262dc28a016af9eb01f28278b2c3d81d9034
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 50e8e63c9508aa9e81222f242ca330637075e42d
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54034077"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54199062"
 ---
 # <a name="index-types-in-azure-cosmos-db"></a>Azure Cosmos DB 中的索引类型
 
@@ -29,6 +29,9 @@ ms.locfileid: "54034077"
 
 - **哈希索引**支持高效的等式查询和联接查询。 在大多数使用情况下，哈希索引需要的精度不会高于 3 个字节的默认值。 数据类型可以是字符串或数字。
 
+  > [!NOTE]
+  > Azure Cosmos 容器支持不再使用哈希索引种类的新索引布局。 如果在索引策略上指定哈希索引种类，容器上的 CRUD 会以无提示方式忽略索引种类和来自容器的只包含范围索引种类的响应。 默认情况下，所有新的 Cosmos 容器都使用新索引布局。 
+  
 - **范围索引**支持高效的等式查询、范围查询（使用 >、<、>=、<=、!=）和 ORDER BY 查询。 默认情况下，ORDER BY 查询还需要最大索引精度 (-1)。 数据类型可以是字符串或数字。
 
 - **空间查询**支持高效的空间（范围内和距离）查询。 数据类型可以是 Point、Polygon 或 LineString。 对于可为 Point、Polygon 或 LineString 数据类型指定为每个路径，Azure Cosmos DB 还支持空间索引种类。 指定路径中的值必须是有效的 GeoJSON 片段，如 {"type":"Point", "coordinates": [0.0, 10.0]}。 Azure Cosmos DB 支持为 Point、Polygon 和 LineString 数据类型自动编制索引。
@@ -58,6 +61,9 @@ ms.locfileid: "54034077"
 - 空间索引始终为所有类型（Point、LineString 和 Polygon）使用默认索引精度。 无法重写空间索引的默认索引精度。
 
 当查询使用 ORDER BY，但针对最大精度的查询路径没有范围索引时，Azure Cosmos DB 会返回一个错误。
+
+> [!NOTE]
+> Azure Cosmos 容器支持新的索引布局，不再需要除最大精度值 (-1) 之外的自定义索引精度。 使用此方法，路径将始终以最大精度编制索引。 如果在索引策略上指定精度值，容器上的 CRUD 会以无提示方式忽略精度值和来自容器的只包含最大精度值 (-1) 的响应。  默认情况下，所有新的 Cosmos 容器都使用新索引布局。
 
 ## <a name="next-steps"></a>后续步骤
 

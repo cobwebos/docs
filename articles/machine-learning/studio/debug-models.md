@@ -1,34 +1,17 @@
 ---
-title: 调试模型 - Azure 机器学习工作室 | Microsoft Docs
-description: 如何在 Azure 机器学习工作室中调试“训练模型”和“评分模型”模块生成的错误。
-services: machine-learning
-documentationcenter: ''
-author: ericlicoding
-ms.custom: seodec18
-ms.author: amlstudiodocs
-editor: cgronlun
-ms.assetid: 629dc45e-ac1e-4b7d-b120-08813dc448be
-ms.service: machine-learning
-ms.component: studio
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 03/14/2017
-ms.openlocfilehash: 0464dec9e747e57e4b95a691aeb5a0992cf8d9cc
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
-ms.translationtype: HT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53268880"
+title:调试模型 titleSuffix: Azure 机器学习工作室 description:如何在 Azure 机器学习工作室中调试“训练模型”和“评分模型”模块生成的错误。
+services: machine-learning ms.service: machine-learning ms.component: studio ms.topic: article
+
+author: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18 ms.date:2017/03/14
 ---
 # <a name="debug-your-model-in-azure-machine-learning-studio"></a>在 Azure 机器学习工作室中调试模型
 
-本文解释了运行模型时可能遇到以下两种故障之一的潜在原因：
+运行模型时，可能会遇到以下错误：
 
 * [训练模型][train-model]模块产生错误 
 * [评分模型][score-model]模块生成不正确的结果 
 
+本文介绍了导致这些错误的可能原因。
 
 
 ## <a name="train-model-module-produces-an-error"></a>训练模型模块产生错误
@@ -38,7 +21,7 @@ ms.locfileid: "53268880"
 [训练模型][train-model]模块需要两个输入：
 
 1. 来自 Azure 机器学习提供的模型集合的机器学习模型的类型。
-2. 包含指定标签列的训练数据，标签列指定要预测的变量（其余列假定为特征）。
+2. 包含指定“标签”列的训练数据，该标签列指定要预测的变量（其余列假定为“特征”）。
 
 在以下情况下，此模块可能引发错误：
 
@@ -63,7 +46,7 @@ ms.locfileid: "53268880"
 
 1. 如果指定标签分类，并且基于数据训练回归模型，则[评分模型][score-model]模块会生成不正确的输出。 这是因为回归需要连续响应变量。 在这种情况下，更适合使用分类模型。 
 
-2. 同样地，如果基于标签列中具有浮点数的数据集训练分类模型，可能会生成不合需要的结果。 这是因为分类需要离散响应变量，其值仅允许有限范围、通常略小的类集。
+2. 同样地，如果基于标签列中具有浮点数的数据集训练分类模型，可能会生成不合需要的结果。 这是因为分类需要离散响应变量，其值仅允许有限范围、小的类集。
 
 3. 如果评分数据集未包含用于训练模型的所有特征，[评分模型][score-model]会生成错误。
 

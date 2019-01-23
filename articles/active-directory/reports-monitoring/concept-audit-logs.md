@@ -16,12 +16,12 @@ ms.component: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 883f521040c67cb8fe9578bc5c490bc3dfccba28
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 03206baf0e70e7be247e9848bfd5a80a1a1e1b35
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51624652"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54247752"
 ---
 # <a name="audit-activity-reports-in-the-azure-active-directory-portal"></a>Azure Active Directory 门户中的“审核活动”报告 
 
@@ -45,7 +45,7 @@ ms.locfileid: "51624652"
 
 ## <a name="audit-logs"></a>审核日志
 
-Azure AD 审核日志提供系统活动的记录以实现符合性。 若要访问审核数据，请在 **Azure Active Directory** 的“活动”部分中选择“审核日志”。 
+Azure AD 审核日志提供系统活动的记录以实现符合性。 若要访问审核数据，请在 **Azure Active Directory** 的“活动”部分中选择“审核日志”。 请注意，审核日志的延迟可能长达一个小时，因此在完成任务后，审核活动数据可能需要很长时间才能显示在门户中。
 
 ![审核日志](./media/concept-audit-logs/61.png "审核日志")
 
@@ -97,7 +97,7 @@ Azure AD 审核日志提供系统活动的记录以实现符合性。 若要访�
 
 “类别”筛选器用于选择下述筛选器之一：
 
-- 所有
+- All
 - 核心类别
 - 核心目录
 - 自助服务密码管理
@@ -110,9 +110,9 @@ Azure AD 审核日志提供系统活动的记录以实现符合性。 若要访�
 
 “活动资源类型”筛选器用于选择下述筛选器之一：
 
-- 所有 
+- All 
 - 组
-- 目录
+- Directory
 - 用户
 - 应用程序
 - 策略
@@ -178,6 +178,11 @@ Azure AD 审核日志提供系统活动的记录以实现符合性。 若要访�
 
 ![审核日志](./media/concept-audit-logs/25.png "审核日志")
 
+## <a name="office-365-activity-logs"></a>Office 365 活动日志
+
+可以从 [Office 365 管理中心](https://docs.microsoft.com/office365/admin/admin-overview/about-the-admin-center)查看 Office 365 活动日志。 尽管 Office 365 活动和 Azure AD 活动日志共享大量的目录资源，但只有 Office 365 管理中心提供 Office 365 活动日志的完整视图。 
+
+此外可以使用 [Office 365 管理 API](https://docs.microsoft.com/office/office-365-management-api/office-365-management-apis-overview) 以编程方式访问 Office 365 活动日志。
 
 ## <a name="next-steps"></a>后续步骤
 

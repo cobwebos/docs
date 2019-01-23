@@ -10,14 +10,14 @@ ms.service: log-analytics
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/14/2018
+ms.date: 01/08/2019
 ms.author: bwren
-ms.openlocfilehash: d8d8e344ce9ee317a7f864492514162b1dc085f9
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 5db963b1ffea656455c06092c82ac95e85d87826
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52884619"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54213121"
 ---
 # <a name="data-ingestion-time-in-log-analytics"></a>Log Analytics 中的数据引入时间
 Azure Log Analytics 是 Azure Monitor 中的一种大规模数据服务，每月为成千上万的客户发送数 TB 的数据，并且此数据仍在不断增长。 关于数据收集后需要多长时间才能在 Log Analytics 中使用，大家通常存有疑问。 本文将对影响此延迟的不同因素进行说明。
@@ -46,7 +46,7 @@ Azure Log Analytics 是 Azure Monitor 中的一种大规模数据服务，每月
 为确保 Log Analytics 代理保持轻型，代理会缓冲日志并定期将其上传到 Log Analytics。 上传频率在 30 秒到 2 分钟之间变化，具体取决于数据类型。 大多数数据可在 1 分钟内上传。 网络状况可能会对数据抵达 Log Analytics 引入点的延迟产生负面影响。
 
 ### <a name="azure-logs-and-metrics"></a>Azure 日志和指标 
-活动日志数据大约需要 5 分钟才可在 Log Analytics 中使用。 诊断日志和指标中的数据可能需要 1-5 分钟才能使用，具体取决于 Azure 服务。 随后，要将数据发送到 Log Analytics 引入点，对于日志还需要 30-60 秒，而指标则需要 3 分钟。
+活动日志数据大约需要 5 分钟才可在 Log Analytics 中使用。 诊断日志和指标中的数据可能需要 1-15 分钟才可供处理，具体取决于 Azure 服务。 可用之后，要将数据发送到 Log Analytics 引入点，对于日志还需要 30-60 秒，而指标则需要 3 分钟。
 
 ### <a name="management-solutions-collection"></a>管理解决方案收集
 某些解决方案不从代理收集其数据，并且可能使用会引入额外延迟的收集方法。 一些解决方案以固定时间间隔收集数据，而不尝试近实时收集。 具体示例包括：
@@ -73,22 +73,60 @@ Log Analytics 的首要任务是确保不会丢失任何客户数据，因此系
 
 
 ## <a name="checking-ingestion-time"></a>检查引入时间
-可以使用检测信号表来估算代理数据的延迟。 由于检测信号每分钟发送一次，因此当前时间与上一次检测信号记录之间的差异最好尽可能在一分钟左右。
+由于在不同情况下，不同资源的引入时间可能会有所不同。 可以使用日志查询来识别环境的特定行为。
 
-使用以下查询列出具有最高延迟的计算机。
+### <a name="ingestion-latency-delays"></a>引入延迟延迟
+可以通过比较 [ingestion_time()](/azure/kusto/query/ingestiontimefunction) 函数的结果和 TimeGenerated 字段来测量特定记录的延迟。 此数据可用于各种聚合，以查找引入延迟的行为方式。 检查引入时间的某些百分位数，以获取大量数据的见解。 
 
-    Heartbeat 
-    | summarize IngestionTime = now() - max(TimeGenerated) by Computer 
-    | top 50 by IngestionTime asc
+例如，以下查询将显示哪些计算机当天的引入时间最长： 
 
+``` Kusto
+Heartbeat
+| where TimeGenerated > ago(8h) 
+| extend E2EIngestionLatency = ingestion_time() - TimeGenerated 
+| summarize percentiles(E2EIngestionLatency,50,95) by Computer 
+| top 20 by percentile_E2EIngestionLatency_95 desc  
+```
  
-在大型环境中使用以下查询总结所有计算机不同百分比的延迟。
+如果想要在一段时间内对特定计算机的引入时间向下钻取，请使用以下可直观显示图形中的数据的查询： 
 
-    Heartbeat 
-    | summarize IngestionTime = now() - max(TimeGenerated) by Computer 
-    | summarize percentiles(IngestionTime, 50,95,99)
+``` Kusto
+Heartbeat 
+| where TimeGenerated > ago(24h) and Computer == "ContosoWeb2-Linux"  
+| extend E2EIngestionLatencyMin = todouble(datetime_diff("Second",ingestion_time(),TimeGenerated))/60 
+| summarize percentiles(E2EIngestionLatencyMin,50,95) by bin(TimeGenerated,30m) 
+| render timechart  
+```
+ 
+使用以下查询显示计算机引入时间，按它们基于 IP 地址所在的国家/地区显示： 
 
+``` Kusto
+Heartbeat 
+| where TimeGenerated > ago(8h) 
+| extend E2EIngestionLatency = ingestion_time() - TimeGenerated 
+| summarize percentiles(E2EIngestionLatency,50,95) by RemoteIPCountry 
+```
+ 
+源自代理的不同数据类型可能具有不同的引入延迟时间，因此先前的查询可以与其他类型一起使用。 使用以下查询来检查各种 Azure 服务的引入时间： 
 
+``` Kusto
+AzureDiagnostics 
+| where TimeGenerated > ago(8h) 
+| extend E2EIngestionLatency = ingestion_time() - TimeGenerated 
+| summarize percentiles(E2EIngestionLatency,50,95) by ResourceProvider
+```
+
+### <a name="resources-that-stop-responding"></a>停止响应的资源 
+在某些情况下，资源无法停止发送数据。 若要了解资源是否正在发送数据，请查看由标准 TimeGenerated 字段标识的最新记录。  
+
+使用检测信号表来检查 VM 的可用性，因为检测信号由代理每分钟发送一次。 使用以下查询列出最近尚未报告过检测信号的活动计算机： 
+
+``` Kusto
+Heartbeat  
+| where TimeGenerated > ago(1d) //show only VMs that were active in the last day 
+| summarize NoHeartbeatPeriod = now() - max(TimeGenerated) by Computer  
+| top 20 by NoHeartbeatPeriod desc 
+```
 
 ## <a name="next-steps"></a>后续步骤
 * 参阅 Log Analytics 的[服务级别协议 (SLA)](https://azure.microsoft.com/support/legal/sla/log-analytics/v1_1/)。

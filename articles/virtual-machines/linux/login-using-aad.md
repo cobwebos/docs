@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/17/2018
 ms.author: cynthn
-ms.openlocfilehash: bc556991cc304aa8c5edc04dba1d333dc77ad230
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: c242d8dd64dc58b0c20b6fb15747f201f85cc482
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54073401"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54320921"
 ---
 # <a name="log-in-to-a-linux-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>使用 Azure Active Directory 身份验证（预览版）登录到 Azure 中的 Linux 虚拟机
 
@@ -45,10 +45,13 @@ ms.locfileid: "54073401"
 
 | 分发 | 版本 |
 | --- | --- |
-| CentOS | CentOS 6.9 和 CentOS 7.4 |
+| CentOS | CentOS 6，CentOS 7 |
 | Debian | Debian 9 |
+| openSUSE | openSUSE Leap 42.3 |
 | RedHat Enterprise Linux | RHEL 6 和 RHEL 7 | 
+| SUSE Linux Enterprise Server | SLES 12 |
 | Ubuntu Server | Ubuntu 14.04 LTS、Ubuntu Server 16.04、Ubuntu Server 17.10 和 Ubuntu Server 18.04 |
+
 
 下面是目前（此功能的预览期间）受支持的 Azure 区域：
 

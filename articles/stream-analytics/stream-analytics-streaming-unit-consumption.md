@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 04/12/2018
-ms.openlocfilehash: 84f0c000f54852bbab60a53ecb686656ac86b3de
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 5f85f0a6b1869571a8db29586e5fe113e0f47433
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54002648"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54304833"
 ---
 # <a name="understand-and-adjust-streaming-units"></a>了解和调整流式处理单元
 
@@ -58,6 +58,8 @@ SU % 利用率指标（范围从 0% 到 100%）描述了工作负载的内存使
 时态（时间导向）的查询元素是流分析提供的有状态运算符的核心集。 流分析通过管理内存消耗量、为复原创建检查点，并在服务升级期间恢复状态，代表用户在内部管理这些操作的状态。 尽管流分析能够全面管理状态，但用户还是应该考虑一些最佳做法建议。
 
 请注意，具有复杂查询逻辑的作业即使在不连续接收输入事件时也可能具有较高的 SU% 利用率。 这可能发生在输入和输出事件突然激增之后。 如果查询很复杂，作业可能会继续在内存中维护状态。
+
+在回到预期水平之前，SU% 利用率可能会在短时间内突然降至 0。 发生这种情况是由于暂时性错误或系统启动升级。
 
 ## <a name="stateful-query-logicin-temporal-elements"></a>时态元素中的有状态查询逻辑
 Azure 流分析作业的独有功能之一是执行有状态的处理，如开窗聚合、临时联接和临时分析函数。 其中的每个运算符都会保存状态信息。 这些查询元素的最大窗口大小为 7 天。 

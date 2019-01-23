@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/28/2018
 ms.author: magoedte
-ms.openlocfilehash: cd55e97edb6cd0b4a2a3eceee406ce5718db8bd4
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 041cc302f05b109de2b79697dd048a6bc0752a4f
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53186491"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54232917"
 ---
 # <a name="using-service-map-solution-in-azure"></a>使用 Azure 中的服务映射解决方案
 服务映射自动发现 Windows 和 Linux 系统上的应用程序组件并映射服务之间的通信。 可使用服务映射如所想一般作为提供重要服务的互连系统查看服务器。 服务映射显示 TCP 连接的任何体系结构中服务器、进程、入站和出站连接延迟和端口之间的连接，只需安装代理，无需任何其他配置。

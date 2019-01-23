@@ -8,20 +8,20 @@ editor: TomShinder
 ms.assetid: ''
 ms.service: security
 ms.topic: article
-ms.date: 06/07/2018
+ms.date: 01/14/2019
 ms.author: Barclayn
 ms.custom: AzLog
-ms.openlocfilehash: 8b03c3627d476ec83fda402545c7a7d73346385f
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: 790f49f0fae98162b3443c78d813b1070e4514a0
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54063907"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54303881"
 ---
 # <a name="azure-log-integration-tutorial-process-azure-key-vault-events-by-using-event-hubs"></a>Azure 日志集成教程：使用事件中心处理 Azure Key Vault 事件
 
 >[!IMPORTANT]
-> Azure 日志集成功能将于 2019/06/01 弃用。 AzLog 下载将于 2018 年 6 月 27 日禁用。 有关下一步该怎么做的指导，请查看文章[使用 Azure Monitor 与 SIEM 工具集成](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/) 
+> Azure 日志集成功能将于 2019/06/01 弃用。 AzLog 下载已于 2018 年 6 月 27 日禁用。 有关下一步该怎么做的指导，请查看文章[使用 Azure Monitor 与 SIEM 工具集成](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/) 
 
 可以使用 Azure 日志集成检索已记录的事件并使其可供安全信息和事件管理 (SIEM) 系统使用。 本教程展示如何使用 Azure 日志集成处理通过 Azure 事件中心获取的日志。
 
@@ -56,22 +56,22 @@ ms.locfileid: "54063907"
  
 1. 一个能够访问 Internet 且满足 Azure 日志集成安装要求的系统。 该系统可以位于云服务中，也可以托管在本地。
 
-1. 已安装了 [Azure 日志集成](https://www.microsoft.com/download/details.aspx?id=53324)。 若要安装它，请执行以下操作：
+1. 已安装了 Azure 日志集成。 若要安装它，请执行以下操作：
 
-   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 使用远程桌面连接到步骤 2 中提到的系统。   
-   b. 将 Azure 日志集成安装程序复制到该系统。 可以[下载安装文件](https://www.microsoft.com/download/details.aspx?id=53324)。   
-   c. 启动安装程序，并接受 Microsoft 软件许可条款。   
-   d. 如果你将提供遥测信息，请使复选框保持选中状态。 如果不希望向 Microsoft 发送使用情况信息，请清除复选框。
-   
+   a. 使用远程桌面连接到步骤 2 中提到的系统。   
+   b. 将 Azure 日志集成安装程序复制到该系统。 c. 启动安装程序，并接受 Microsoft 软件许可条款。
+
+1. 如果你将提供遥测信息，请使复选框保持选中状态。 如果不希望向 Microsoft 发送使用情况信息，请清除复选框。
+
    有关 Azure 日志集成以及如何安装它的详细信息，请参阅[包含 Azure 诊断日志记录和 Windows 事件转发功能的 Azure 日志集成](security-azure-log-integration-get-started.md)。
 
 1. 最新 PowerShell 版本。
- 
+
    如果已安装了 Windows Server 2016，则已至少具有 PowerShell 5.0。 如果使用的是任何其他版本的 Windows Server，则可能安装了较早版本的 PowerShell。 可以通过在 PowerShell 窗口中输入 ```get-host``` 来检查版本。 如果未安装 PowerShell 5.0，可以[下载它](https://www.microsoft.com/download/details.aspx?id=50395)。
 
    在至少具有 PowerShell 5.0 后，可以继续安装最新版本：
-   
-   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在 PowerShell 窗口中输入 ```Install-Module Azure``` 命令。 完成安装步骤。    
+
+   a. 在 PowerShell 窗口中输入 ```Install-Module Azure``` 命令。 完成安装步骤。    
    b. 输入 ```Install-Module AzureRM``` 命令。 完成安装步骤。
 
    有关详细信息，请参阅[安装 Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-4.0.0)。
@@ -121,7 +121,7 @@ ms.locfileid: "54063907"
     ```$sbruleid = $eventHubNameSpace.Id +'/authorizationrules/RootManageSharedAccessKey' ```
 1. 获取所有可能的 Azure 位置并将名称添加到可以在后面的步骤中使用的变量：
     
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 ```$locationObjects = Get-AzureRMLocation```    
+    a. ```$locationObjects = Get-AzureRMLocation```    
     b. ```$locations = @('global') + $locationobjects.location```
     
     如果此时输入 `$locations`，则会看到位置名称，且不会看到 Get-AzureRmLocation 返回的其他信息。
@@ -161,7 +161,7 @@ ms.locfileid: "54063907"
    ```Get-AzureRmStorageAccountKey -Name $storagename -ResourceGroupName $rgname  | ft -a```
 1. 设置并读取机密来生成其他日志条目：
     
-   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 ```Set-AzureKeyVaultSecret -VaultName $name -Name TestSecret -SecretValue (ConvertTo-SecureString -String 'Hi There!' -AsPlainText -Force)``` b. ```(Get-AzureKeyVaultSecret -VaultName $name -Name TestSecret).SecretValueText```
+   a. ```Set-AzureKeyVaultSecret -VaultName $name -Name TestSecret -SecretValue (ConvertTo-SecureString -String 'Hi There!' -AsPlainText -Force)``` b. ```(Get-AzureKeyVaultSecret -VaultName $name -Name TestSecret).SecretValueText```
 
    ![返回的机密](./media/security-azure-log-integration-keyvault-eventhub/keyvaultsecret.png)
 

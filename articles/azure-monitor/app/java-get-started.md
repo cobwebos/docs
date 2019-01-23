@@ -10,14 +10,14 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 10/09/2018
+ms.date: 01/10/2019
 ms.author: lagayhar
-ms.openlocfilehash: b662f5c4baa9c4c6e7689f3f463761dbd456f33f
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: e16432022c8c8525c95fab46bc61197f67fb8f37
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54074166"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54260051"
 ---
 # <a name="get-started-with-application-insights-in-a-java-web-project"></a>Java Web 项目中的 Application Insights 入门
 
@@ -358,6 +358,14 @@ Application Insights 中显示两种类型的数据：聚合数据（存储并�
 
 ## <a name="monitor-method-calls-and-external-dependencies"></a>监视方法调用和外部依赖项
 [安装 Java 代理](java-agent.md) ，记录指定的内部方法、通过 JDBC 发出的调用以及计时数据。
+
+## <a name="w3c-distributed-tracing"></a>W3C 分布式跟踪
+
+Application Insights Java SDK 现支持 [W3C 分布式跟踪](https://w3c.github.io/trace-context/)。
+
+有关[关联](correlation.md#w3c-distributed-tracing)的文章中进一步解释了传入的 SDK 配置。
+
+[AI-Agent.xml](java-agent.md) 文件中定义了传出 SDK 配置。
 
 ## <a name="performance-counters"></a>性能计数器
 打开“设置”、“服务器”，查看一系列性能计数器。

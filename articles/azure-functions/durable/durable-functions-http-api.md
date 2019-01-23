@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 577147ad91c6a35a45fd40ca9e6424863ea196d6
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: c2ffa623ad7a6c6da5b799d2c7d5f35c9f65e503
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53340770"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54215399"
 ---
 # <a name="http-apis-in-durable-functions-azure-functions"></a>Durable Functions 中的 HTTP API (Azure Functions)
 
@@ -44,7 +44,7 @@ Durable Task 扩展公开了一组 HTTP API，可用于执行以下任务：
 
 这些示例函数生成以下 JSON 响应数据。 所有字段的数据类型均为 `string`。
 
-| 字段             |说明                           |
+| 字段             |Description                           |
 |-------------------|--------------------------------------|
 | id                |业务流程实例的 ID。 |
 | statusQueryGetUri |业务流程实例的状态 URL。 |
@@ -90,15 +90,15 @@ Location: https://{host}/runtime/webhooks/durabletask/instances/34ce9a28a6834d84
 
 由扩展实现的所有 HTTP API 均采用以下参数。 所有参数的数据类型均为 `string`。
 
-| 参数  | 参数类型  | 说明 |
+| 参数  | 参数类型  | Description |
 |------------|-----------------|-------------|
 | instanceId | 代码             | 业务流程实例的 ID。 |
 | taskHub    | 查询字符串    | [任务中心](durable-functions-task-hubs.md)的名称。 如果未指定，则使用当前函数应用的任务中心名称。 |
 | 连接 | 查询字符串    | 用于存储帐户的连接字符串的名称。 如果未指定，则使用函数应用的默认连接字符串。 |
 | systemKey  | 查询字符串    | 需要授权密钥才可调用 API。 |
-| showInput  | 查询字符串    | 可选参数。 如果设置为 `false`，则执行输入不会包括在响应有效负载中。|
-| showHistory| 查询字符串    | 可选参数。 如果设置为 `true`，业务流程执行历史记录将包含在响应有效负载中。|
-| showHistoryOutput| 查询字符串    | 可选参数。 如果设置为 `true`，活动输出将包含在业务流程执行历史记录中。|
+| showInput  | 查询字符串    | 可选参数；仅单实例请求。 如果设置为 `false`，则执行输入不会包括在响应有效负载中。|
+| showHistory| 查询字符串    | 可选参数；仅单实例请求。 如果设置为 `true`，业务流程执行历史记录将包含在响应有效负载中。|
+| showHistoryOutput| 查询字符串    | 可选参数；仅单实例请求。 如果设置为 `true`，活动输出将包含在业务流程执行历史记录中。|
 | createdTimeFrom  | 查询字符串    | 可选参数。 指定后，筛选在给定 ISO8601 时间戳当时或之后创建的返回实例列表。|
 | createdTimeTo    | 查询字符串    | 可选参数。 指定后，筛选在给定 ISO8601 时间戳当时或之前创建的返回实例列表。|
 | runtimeStatus    | 查询字符串    | 可选参数。 指定后，根据其运行时状态筛选返回实例列表。 若要查看可能的运行时状态值列表，请参阅[查询实例](durable-functions-instance-management.md)主题。 |
@@ -138,7 +138,7 @@ GET /runtime/webhooks/durabletask/instances/{instanceId}?taskHub={taskHub}&conne
 
 值为 HTTP 200 和 HTTP 202 时的响应负载是包含以下字段的 JSON 对象：
 
-| 字段           | 数据类型 | 说明 |
+| 字段           | 数据类型 | Description |
 |-----------------|-----------|-------------|
 | runtimeStatus   | 字符串    | 实例的运行时状态。 相关的值为：正在运行、挂起、失败、已取消、已终止和已完成。 |
 | input           | JSON      | 用于初始化实例的 JSON 数据。 如果 `showInput` 查询字符串参数设置为 `false`，则此字段为 `null`。|
@@ -146,7 +146,7 @@ GET /runtime/webhooks/durabletask/instances/{instanceId}?taskHub={taskHub}&conne
 | output          | JSON      | 实例的 JSON 输出。 如果实例不是已完成状态，则该字段为 `null`。 |
 | createdTime     | 字符串    | 创建实例的时间。 使用 ISO 8601 扩展表示法。 |
 | lastUpdatedTime | 字符串    | 实例持续的时间。 使用 ISO 8601 扩展表示法。 |
-| historyEvents   | JSON      | 包含业务流程执行历史记录的 JSON 数组。 除非 `showHistory` 查询字符串参数设置为 `true`，否则此字段为 `null`。  |
+| historyEvents   | JSON      | 包含业务流程执行历史记录的 JSON 数组。 除非 `showHistory` 查询字符串参数设置为 `true`，否则此字段为 `null`。 |
 
 下面是包括业务流程执行历史记录和活动输出的示例响应有效负载（为提高可读性已设置格式）：
 
@@ -339,7 +339,7 @@ POST /runtime/webhooks/durabletask/instances/{instanceId}/raiseEvent/{eventName}
 
 此 API 的请求参数包括前面提及的默认集及以下唯一参数：
 
-| 字段       | 参数类型  | 数据类型 | 说明 |
+| 字段       | 参数类型  | 数据类型 | Description |
 |-------------|-----------------|-----------|-------------|
 | eventName   | 代码             | 字符串    | 目标业务流程正在等待的事件的名称。 |
 | {content}   | 请求内容 | JSON      | JSON 格式的事件负载。 |
@@ -385,7 +385,7 @@ POST /runtime/webhooks/durabletask/instances/{instanceId}/terminate?reason={reas
 
 此 API 的请求参数包括前面提及的默认集及以下唯一参数。
 
-| 字段       | 参数类型  | 数据类型 | 说明 |
+| 字段       | 参数类型  | 数据类型 | Description |
 |-------------|-----------------|-----------|-------------|
 | 原因      | 查询字符串    | 字符串    | 可选。 终止业务流程实例的原因。 |
 
@@ -425,7 +425,7 @@ POST /runtime/webhooks/durabletask/instances/{instanceId}/rewind?reason={reason}
 
 此 API 的请求参数包括前面提及的默认集及以下唯一参数。
 
-| 字段       | 参数类型  | 数据类型 | 说明 |
+| 字段       | 参数类型  | 数据类型 | Description |
 |-------------|-----------------|-----------|-------------|
 | 原因      | 查询字符串    | 字符串    | 可选。 回退业务流程实例的原因。 |
 

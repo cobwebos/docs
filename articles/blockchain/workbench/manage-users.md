@@ -5,17 +5,17 @@ services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 10/1/2018
+ms.date: 01/14/2019
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: zeyadr
 manager: femila
-ms.openlocfilehash: adb4b57ce304a3c6e369d6cc68dbb7c5857fb9fe
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: a481f5b073b7e8db9135d7b10cf602168290738a
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48240589"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54331361"
 ---
 # <a name="manage-users-in-azure-blockchain-workbench"></a>在 Azure Blockchain Workbench 中管理用户
 
@@ -38,7 +38,7 @@ Azure Blockchain Workbench 将 Azure Active Directory (Azure AD) 用于身份验
 
     ![新建用户](./media/manage-users/add-ad-user.png)
 
-5.  完成新用户的必填字段。 选择**创建**。
+5.  完成新用户的必填字段。 选择“创建”。
 
 若要更详细地了解如何管理 Azure AD 中的用户，请访问 [Azure AD](../../active-directory/fundamentals/add-users-azure-active-directory.md) 文档。
 

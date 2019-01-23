@@ -10,12 +10,12 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: brendal
 manager: femila
-ms.openlocfilehash: 2c5e3664a9ef26319eb8a51d03ddef6a5392ffa9
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: fcba3aef29e1566f9dfb2b151c15fe683be94fdb
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54102986"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54266581"
 ---
 # <a name="deploy-azure-blockchain-workbench"></a>部署 Azure Blockchain Workbench
 
@@ -240,7 +240,7 @@ Blockchain Workbench 部署要求注册 Azure AD 应用程序。 需要使用 Az
     > [!IMPORTANT]
     > 需要使用“管理员”值来标识 Blockchain Workbench 管理员。
 
-4. 在清单中，还需要将 **Oauth2AllowImplictFlow** 值更改为 **true**。
+4. 在清单中，还需要将“Oauth2AllowImplicitFlow”值更改为“true”。
 
     ``` json
     "oauth2AllowImplicitFlow": true,

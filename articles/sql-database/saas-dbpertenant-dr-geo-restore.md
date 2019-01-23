@@ -1,5 +1,5 @@
 ---
-title: SaaS 应用程序：使用 Azure SQL 数据库异地冗余备份进行灾难恢复 | Microsoft Docs
+title: SaaS 应用：使用 Azure SQL 数据库异地冗余备份进行灾难恢复 | Microsoft Docs
 description: 了解发生中断时，应如何使用 Azure SQL 数据库异地冗余备份来恢复多租户 SaaS 应用
 services: sql-database
 ms.service: sql-database
@@ -12,12 +12,12 @@ ms.author: ayolubek
 ms.reviewer: sstein
 manager: craigg
 ms.date: 10/15/2018
-ms.openlocfilehash: a78632ed6215c467f53938569621cfb18f9e51ca
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: acc1b9e9561b9468a4638c7073a066e4cb34d911
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49352918"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54264744"
 ---
 # <a name="use-geo-restore-to-recover-a-multitenant-saas-application-from-database-backups"></a>使用异地还原通过数据库备份恢复多租户 SaaS 应用程序
 
@@ -320,7 +320,7 @@ ms.locfileid: "49352918"
   
 1. 在 PowerShell ISE 中，打开 ...\Learning Modules\Business Continuity 和 Disaster Recovery\DR-RestoreFromBackup\Demo-RestoreFromBackup.ps1 脚本，请验证是否仍在其 PowerShell 实例中运行目录同步进程。 必要时，可通过进行如下设置将其重启：
 
-    $DemoScenario = 1：开始将租户服务器、池和数据库配置信息同步到目录中.
+    $DemoScenario = 1：开始将租户服务器、池和数据库配置信息同步到目录中。
 
     选择 F5 运行脚本。
 

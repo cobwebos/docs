@@ -1,5 +1,5 @@
 ---
-title: 在 Azure 内容审查器中审阅文本 | Microsoft Docs
+title: 在 Azure 内容审查器中评审文本 - 内容审查器
 description: 了解如何在内容审查器中审阅文本，以查看分数和检测到的标记。 此类信息可用于确定内容是否合适。
 services: cognitive-services
 author: sanjeev3
@@ -7,16 +7,16 @@ manager: mikemcca
 ms.service: cognitive-services
 ms.component: content-moderator
 ms.topic: article
-ms.date: 02/03/2017
+ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: 60a8d03a6562c9a66c2f6781ebbc330c989b343e
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.openlocfilehash: 005e6ed853cbc6013d74e7ff479097dcbb0a1043
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51852089"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54259557"
 ---
-# <a name="review-text"></a>审阅文本
+# <a name="let-human-reviewers-review-text"></a>允许人工审阅者评审文本
 
 可以在 Azure 内容审查器中通过查看分数和检测到的标记来审阅文本。 此类信息可用于确定内容是否合适。 
 

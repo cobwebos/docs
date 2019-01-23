@@ -8,14 +8,14 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: content-moderator
 ms.topic: conceptual
-ms.date: 01/19/2018
+ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: 4e862a8b74339bc8dd1de6c0b231ddb15425974c
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 672d801b9a6c45a8ab3eb9964b6e061eeee11f59
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47220930"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54266818"
 ---
 # <a name="create-video-transcript-reviews-using-net"></a>使用 .NET 创建视频脚本评论
 
@@ -33,12 +33,11 @@ ms.locfileid: "47220930"
 
 ## <a name="sign-up-for-content-moderator"></a>注册内容审查器
 
-必须有订阅密钥，才能通过 REST API 或 SDK 使用内容审查器服务。
-请参阅[快速入门](quick-start.md)，了解如何获取密钥。
+必须有订阅密钥，才能通过 REST API 或 SDK 使用内容审查器服务。 按照[创建认知服务帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)中的说明订阅内容审查器并获取密钥。
 
 ## <a name="sign-up-for-a-review-tool-account-if-not-completed-in-the-previous-step"></a>注册评审工具帐户（如果未在上一步中完成）
 
-如果从 Azure 门户获得了内容审查器，还[注册评审工具帐户](https://contentmoderator.cognitive.microsoft.com/)并创建评审团队。 需要使用团队 ID 和评审工具来调用评审 API 以启动作业并在评审工具中查看评审。
+如果从 Azure 门户获得了内容审查器，还需要[注册评审工具帐户](https://contentmoderator.cognitive.microsoft.com/)并创建评审团队。 需要使用团队 ID 和评审工具来调用评审 API 以启动作业并在评审工具中查看评审。
 
 ## <a name="ensure-your-api-key-can-call-the-review-api-job-creation"></a>确保 API 密钥可以调用评审 API（创建作业）
 
@@ -215,7 +214,7 @@ ms.locfileid: "47220930"
 1. **CreateVideoReviews** 返回的视频评论 ID。
 1. 包含脚本的 **Stream** 对象。
 
-脚本必须采用 WebVTT 格式。 有关详细信息，请参阅 [WebVTT: The Web Video Text Tracks Format](https://www.w3.org/TR/webvtt1/)（WebVTT：Web 视频文本轨道格式）。
+脚本必须采用 WebVTT 格式。 有关更多信息，请参阅 [WebVTT：Web 视频文本轨道格式](https://www.w3.org/TR/webvtt1/)。
 
 > [!NOTE]
 > 该程序使用 VTT 格式的示例脚本。 在实际解决方案中，可使用 Azure Media Indexer 服务根据视频[生成脚本](https://docs.microsoft.com/azure/media-services/media-services-index-content)。
@@ -252,7 +251,7 @@ ms.locfileid: "47220930"
 - **Term**。 一个包含该词语的字符串。
 - **Timestamp**。 一个字符串，包含在脚本中找到词语的时间（以秒为单位）。
 
-脚本必须采用 WebVTT 格式。 有关详细信息，请参阅 [WebVTT: The Web Video Text Tracks Format](https://www.w3.org/TR/webvtt1/)（WebVTT：Web 视频文本轨道格式）。
+脚本必须采用 WebVTT 格式。 有关更多信息，请参阅 [WebVTT：Web 视频文本轨道格式](https://www.w3.org/TR/webvtt1/)。
 
 将以下方法定义添加到 VideoTranscriptReviews 命名空间中的 Program 类。 此方法将脚本提交到 **ContentModeratorClient.TextModeration.ScreenText** 方法。 它还将结果转换为 IList<TranscriptModerationBodyItem>，并提交到 **AddVideoTranscriptModerationResult**。
 

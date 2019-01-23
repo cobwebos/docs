@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 05/14/2018
 ms.author: jomolesk
-ms.openlocfilehash: 805c983c0c2db4256dade641f32363ca6514023c
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 1a99ffb751414d255f2aacfe514e5a8f474255bd
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53600805"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54267209"
 ---
 # <a name="azure-security-and-compliance-blueprint---paas-web-application-for-gdpr"></a>Azure 安全性和符合性蓝图 - 符合 GDPR 的 PaaS Web 应用程序
 
@@ -35,7 +35,7 @@ Microsoft 为 Azure 设计了业界领先的安全措施和隐私策略，以保
 ## <a name="architecture-diagram-and-components"></a>体系结构示意图和组件
 此解决方案为具有 Azure SQL 数据库后端的 PaaS Web 应用程序提供参考体系结构。 该 Web 应用程序托管在独立的 Azure 应用服务环境中，该环境是 Azure 数据中心内的私有专用环境。 该环境会对 Azure 托管的 VM 上的 Web 应用程序流量进行负载均衡。 此体系结构还包括网络安全组、应用程序网关、Azure DNS 和负载均衡器。 此外，Azure Monitor 还提供系统运行状况的实时分析。 **Azure 建议配置 VPN 或 ExpressRoute 连接，以便进行管理和将数据导入参考体系结构子网。**
 
-![符合 GDPR 的 PaaS Web 应用程序的参考体系结构关系图](images/gdpr-paaswa-architecture.png?raw=true "符合 GDPR 的 PaaS Web 应用程序的参考体系结构关系图")
+![符合 GDPR 的 PaaS Web 应用程序的参考体系结构关系图](images/gdpr-paaswa-architecture.png?raw=true "PaaS Web Application for GDPR reference architecture diagram")
 
 此解决方案使用以下 Azure 服务。 [部署体系结构](#deployment-architecture)部分提供了部署体系结构的详细信息。
 
@@ -79,7 +79,7 @@ ASE 经隔离后只运行单个客户的应用程序，始终可部署到虚拟�
 - [WAF – 限制数据](https://docs.microsoft.com/azure/app-service-web/app-service-app-service-environment-web-application-firewall)
 - 允许 [Azure SQL 数据库流量](https://docs.microsoft.com/azure/app-service-web/app-service-app-service-environment-network-architecture-overview)
 
-**Azure Web 应用**：[Azure 应用服务](https://docs.microsoft.com/azure/app-service/)使得客户可以采用所选编程语言构建和托管 Web 应用程序，而无需管理基础结构。 它提供自动缩放和高可用性，支持 Windows 和 Linux，并支持从 GitHub、Azure DevOps 或任何 Git 存储库进行自动部署。
+**Azure Web 应用**：使用 [Azure 应用服务](https://docs.microsoft.com/azure/app-service/)，客户可以采用所选编程语言构建和托管 Web 应用程序，而无需管理基础结构。 它提供自动缩放和高可用性，支持 Windows 和 Linux，并支持从 GitHub、Azure DevOps 或任何 Git 存储库进行自动部署。
 
 ### <a name="virtual-network"></a>虚拟网络
 此体系结构定义了一个地址空间为 10.200.0.0/16 的专用 VNet。
@@ -97,7 +97,7 @@ ASE 经隔离后只运行单个客户的应用程序，始终可部署到虚拟�
 
 **Azure DNS**：域名系统或 DNS 负责将网站或服务名称转换（或解析）为它的 IP 地址。 [Azure DNS](https://docs.microsoft.com/azure/dns/dns-overview) 是 DNS 域的托管服务，它使用 Azure 基础结构提供名称解析。 通过在 Azure 中托管域，用户可以使用与其他 Azure 服务相同的凭据、API、工具和账单来管理 DNS 记录。 Azure DNS 还支持 DNS 专用域。
 
-**Azure 负载均衡器**：[Azure 负载均衡器](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview)使得客户可以缩放应用程序，并为服务创建高可用性。 负载均衡器支持入站和出站场景、提供低延迟和高吞吐量，以及为所有 TCP 和 UDP 应用程序纵向扩展到数以百万计的流。
+**Azure 负载均衡器**：使用 [Azure 负载均衡器](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview)，客户可以缩放应用程序，并为服务创建高可用性。 负载均衡器支持入站和出站场景、提供低延迟和高吞吐量，以及为所有 TCP 和 UDP 应用程序纵向扩展到数以百万计的流。
 
 ### <a name="data-in-transit"></a>传输中的数据
 默认情况下，Azure 会加密与 Azure 数据中心之间的所有通信。 通过 Azure 门户到 Azure 存储的所有事务均通过 HTTPS 进行。
@@ -181,7 +181,7 @@ Azure Monitor 可广泛记录系统和用户活动以及系统运行状况。 �
 
 此参考体系结构的数据流图可供[下载](https://aka.ms/gdprPaaSdfd)，也可以在下面找到。 此模型有助于客户在做出修改时了解系统基础结构中存在的潜在风险点。
 
-![符合 GDPR 的 PaaS Web 应用程序的威胁模型](images/gdpr-paaswa-threat-model.png?raw=true "符合 GDPR 的 PaaS Web 应用程序的威胁模型")
+![符合 GDPR 的 PaaS Web 应用程序的威胁模型](images/gdpr-paaswa-threat-model.png?raw=true "PaaS Web Application for GDPR threat model")
 
 ## <a name="compliance-documentation"></a>符合性文档
 [Azure 安全性和符合性蓝图 - GDPR 客户责任矩阵](https://aka.ms/gdprCRM)列出了所有 GDPR 项目的控制方和处理方责任。 请注意，对于 Azure 服务，客户通常是控制方，Microsoft 充当处理方。

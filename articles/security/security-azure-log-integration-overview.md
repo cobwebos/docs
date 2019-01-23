@@ -12,20 +12,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/07/2018
+ms.date: 01/14/2019
 ms.author: TomSh
 ms.custom: azlog
-ms.openlocfilehash: e9b547b6b582e38a51196815522132dd807c971b
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 93ed7620636535d45791a657d012a9c7056be09d
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54079028"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54303184"
 ---
 # <a name="introduction-to-azure-log-integration"></a>Azure 日志集成简介
 
 >[!IMPORTANT]
-> Azure 日志集成功能将于 2019/06/01 弃用。 AzLog 下载将于 2018 年 6 月 27 日禁用。 有关下一步该怎么做的指导，请查看文章[使用 Azure Monitor 与 SIEM 工具集成](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/) 
+> Azure 日志集成功能将于 2019/06/01 弃用。 AzLog 下载已于 2018 年 6 月 27 日禁用。 有关下一步该怎么做的指导，请查看文章[使用 Azure Monitor 与 SIEM 工具集成](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/) 
 
 Azure 日志集成可用于简化将 Azure 日志与本地安全信息和事件管理 (SIEM) 系统集成的任务。
 

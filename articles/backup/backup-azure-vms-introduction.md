@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 01/08/2019
 ms.author: raynew
-ms.openlocfilehash: cac219414418277ace09ba3a0b442f3bf74e6025
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 09464342bd39e57f6e637ce90adc7190d08340a9
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54107423"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54265407"
 ---
 # <a name="about-azure-vm-backup"></a>关于 Azure VM 备份
 
@@ -55,6 +55,10 @@ ms.locfileid: "54107423"
         [HKEY_LOCAL_MACHINE\SOFTWARE\MICROSOFT\BCDRAGENT]
         ""USEVSSCOPYBACKUP"="TRUE"
         ```
+        - 从提升（作为管理员）命令提示符运行以下命令，以设置上述注册表项：
+          ```
+          REG ADD "HKLM\SOFTWARE\Microsoft\BcdrAgent" /v USEVSSCOPYBACKUP /t REG_SZ /d TRUE /f
+          ```
 - **Linux VM**：若要在 Azure 备份拍摄快照时确保 Linux VM 是应用程序一致的，可以使用 Linux 前脚本和后脚本框架。 可以编写自定义脚本来确保创建 VM 快照时的一致性。
     -  Azure 备份只调用你编写的操作前脚本和操作后脚本。
     - 如果操作前脚本和操作后脚本成功执行，Azure 备份会将恢复点标记为应用程序一致。 但是，你最终为使用自定义脚本时的应用程序一致性负责。
@@ -132,11 +136,10 @@ Azure 备份存在许多关于订阅和保管库的限制。
 
 建议在为 VM 配置备份时遵循以下做法：
 
-- 将保管库升级到即时 RP。 首先查看这些[优势](backup-upgrade-to-vm-backup-stack-v2.md)、[注意事项](backup-upgrade-to-vm-backup-stack-v2.md#considerations-before-upgrade)，然后根据这些[说明](backup-upgrade-to-vm-backup-stack-v2.md#upgrade)继续进行升级。  
 - 请考虑修改默认提供的策略时间（例如， 如果默认策略时间是上午 12:00，请考虑将其递增几分钟），同时采用数据快照以确保最佳地使用资源。
 - 对于非即时 RP 功能上的高级 VM 备份，分配约 50% 的总存储帐户空间。 备份服务需要此空间，以将快照复制到同一存储帐户并将其传输到保管库。
 - 要从单个保管库还原 VM，强烈建议使用不同的  [v2 存储帐户](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade) ，以确保目标存储帐户不会受到限制。 例如，每个 VM 必须具有不同的存储帐户（如果还原 10 个 VM，请考虑使用 10 个不同的存储帐户）。
-- 第 1 层存储层（快照）的还原将在几分钟内完成（因为它是相同的存储帐户），而第 2 层存储层（保管库）可能需要数小时。 针对数据在第 1 层中可用的情况，建议使用[即时 RP](backup-upgrade-to-vm-backup-stack-v2.md) 功能以便更快地还原（如果必须从保管库还原数据，则需要时间）。
+- 第 1 层存储层（快照）的还原将在几分钟内完成（因为它是相同的存储帐户），而第 2 层存储层（保管库）可能需要数小时。 针对数据在第 1 层中可用的情况，建议使用[即时还原](backup-instant-restore-capability.md)功能以便更快地还原（如果必须从保管库还原数据，则需要时间）。
 - 每个存储帐户的磁盘数限制与 IaaS VM 上运行的应用程序访问磁盘的大小有关。 请验证单个存储帐户是否托管了多个磁盘。 通常情况下，如果单个存储帐户上存在 5 至 10 个或以上磁盘，则通过将一些磁盘移动到单独的存储帐户以均衡负载。
 
 ## <a name="backup-costs"></a>备份成本

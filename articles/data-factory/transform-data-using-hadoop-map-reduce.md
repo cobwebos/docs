@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/16/2018
 ms.author: douglasl
-ms.openlocfilehash: 7ba1c4e0f358a2168c06ab9172229525cd4c136c
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 4543982f731feb44a8f02581c11714dec2b206f9
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54016110"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54214498"
 ---
 # <a name="transform-data-using-hadoop-mapreduce-activity-in-azure-data-factory"></a>在 Azure 数据工厂中使用 Hadoop MapReduce 活动转换数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -25,9 +25,9 @@ ms.locfileid: "54016110"
 
 数据工厂[管道](concepts-pipelines-activities.md)中的 HDInsight MapReduce 活动会在[自己的](compute-linked-services.md#azure-hdinsight-linked-service)或[按需](compute-linked-services.md#azure-hdinsight-on-demand-linked-service) HDInsight 群集上调用 MapReduce 程序。 本文基于[数据转换活动](transform-data.md)一文，它概述了数据转换和受支持的转换活动。
 
-如果不熟悉 Azure 数据工厂，请在阅读本文之前，先通读 [Azure 数据工厂简介](introduction.md)，并学习以下教程：[教程：转换数据](tutorial-transform-data-spark-powershell.md)。 
+如果不熟悉 Azure 数据工厂，请在阅读本文之前，先通读 [Azure 数据工厂简介](introduction.md)，并学习以下教程：[教程：转换数据](tutorial-transform-data-spark-powershell.md)。
 
-请参阅 [Pig](transform-data-using-hadoop-pig.md) 和 [Hive](transform-data-using-hadoop-hive.md)，深入了解如何使用 HDInsight Pig 和 Hive 活动通过管道在 HDInsight 群集上运行 Pig/Hive 脚本。 
+请参阅 [Pig](transform-data-using-hadoop-pig.md) 和 [Hive](transform-data-using-hadoop-hive.md)，深入了解如何使用 HDInsight Pig 和 Hive 活动通过管道在 HDInsight 群集上运行 Pig/Hive 脚本。
 
 ## <a name="syntax"></a>语法
 
@@ -49,10 +49,10 @@ ms.locfileid: "54016110"
         "jarFilePath": "MyAzureStorage/jars/sample.jar",
         "getDebugInfo": "Failure",
         "arguments": [
-          "-SampleHadoopJobArgument1"
+            "-SampleHadoopJobArgument1"
         ],
         "defines": {
-          "param1": "param1Value"
+            "param1": "param1Value"
         }
     }
 }
@@ -79,7 +79,7 @@ ms.locfileid: "54016110"
 ## <a name="example"></a>示例
 可使用 HDInsight MapReduce 活动在 HDInsight 群集中运行任何 MapReduce jar 文件。 在管道的以下示例 JSON 定义中，配置了HDInsight 活动，以便运行 Mahout JAR 文件。
 
-```json   
+```json
 {
     "name": "MapReduce Activity for Mahout",
     "description": "Custom MapReduce to generate Mahout result",
@@ -113,7 +113,7 @@ ms.locfileid: "54016110"
 可以在**参数**部分为 MapReduce 程序指定任意参数。 运行时，可在 MapReduce 框架中看到几个额外的参数（例如：mapreduce.job.tags）。 要区分自己的参数和 MapReduce 参数，请考虑将选项和值同时作为参数使用，如下例所示（-s、--input、--output 等选项后紧跟有相应的值）。
 
 ## <a name="next-steps"></a>后续步骤
-参阅以下文章了解如何以其他方式转换数据： 
+参阅以下文章了解如何以其他方式转换数据：
 
 * [U-SQL 活动](transform-data-using-data-lake-analytics.md)
 * [Hive 活动](transform-data-using-hadoop-hive.md)

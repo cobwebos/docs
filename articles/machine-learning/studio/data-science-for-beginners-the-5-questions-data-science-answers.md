@@ -1,27 +1,8 @@
 ---
-title: 适合初学者的数据科学 - Azure 机器学习工作室 | Microsoft Docs
-description: 适合初学者的数据科学以 5 个较短的视频讲授基本概念，从 5 个数据科学可解答的问题开始。 来自 Azure 机器学习。
-keywords: 研究数据科学，数据科学初学者，适合初学者的数据科学，数据科学基础知识，数据科学问题，数据科学视频，数据科学简介
-services: machine-learning
-documentationcenter: na
-author: garyericson
-ms.custom: seodec18
-ms.author: garye
-editor: cjgronlund
-ms.assetid: a01f93ee-01eb-4afe-abbd-cfa035c119b0
-ms.service: machine-learning
-ms.component: studio
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 01/03/2018
-ms.openlocfilehash: 9f6d951dcbb0a0a01961bf3f6c924a0c40fd4d29
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
-ms.translationtype: HT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53252909"
+title:适合初学者的数据科学 titleSuffix:Azure 机器学习工作室 description:适合初学者的数据科学以 5 个较短的视频讲授基本概念，从 5 个数据科学可解答的问题开始。 来自 Azure 机器学习。
+services: machine-learning ms.service: machine-learning ms.component: studio ms.topic: article
+
+author: garyericson ms.author: garye ms.custom: seodec18 ms.date:2018/01/03
 ---
 # <a name="data-science-for-beginners-video-1-the-5-questions-data-science-answers"></a>适合初学者的数据科学视频 1：5 个数据科学可解答的问题
 通过顶级数据科学家制作的“适合初学者的数据科学”的五个简短视频，快速了解数据科学。 这些视频介绍基础知识，但无论是对研究数据科学感兴趣还是与数据科学家合作，这些内容都非常有用。

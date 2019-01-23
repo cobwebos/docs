@@ -8,12 +8,12 @@ ms.service: azure-functions
 ms.topic: article
 ms.date: 12/03/2018
 ms.author: alkarche
-ms.openlocfilehash: 042d41e9125e5d4fa0af04fd6edeba5f0b33123a
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 1140c23a0aa5344119c35434316ec73cc3918f90
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53001593"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54198365"
 ---
 # <a name="integrate-a-function-app-with-an-azure-virtual-network"></a>将 Function App 与 Azure 虚拟网络集成
 该分布教程展示如何使用 Azure Functions 连接 Azure VNET 中的资源。 

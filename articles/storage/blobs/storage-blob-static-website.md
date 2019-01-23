@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/19/18
 ms.author: tamram
 ms.component: blobs
-ms.openlocfilehash: 2bae07643407e8672ef26fb59da588661eb9f0d1
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 0663f569edd0dec47949053b6ecf7fe49fa24a17
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54191813"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54229296"
 ---
 # <a name="static-website-hosting-in-azure-storage"></a>Azure 存储中的静态网站托管
 使用 Azure 存储 GPv2 帐户可以直接通过名为 *$web* 的存储容器提供静态内容（HTML、CSS、JavaScript 和图像文件）。 利用 Azure 存储中的托管，可以使用无服务器体系结构，包括 [Azure Functions](/azure/azure-functions/functions-overview) 和其他 PaaS 服务。
@@ -144,7 +144,7 @@ az storage blob upload-batch -s <SOURCE_PATH> -d \$web --account-name <ACCOUNT_N
 
 ![Azure 存储静态网站指标 - GetWebContent](./media/storage-blob-static-website/storage-blob-static-website-metrics-getwebcontent.png)
 
-启用后，指标仪表板会报告有关 *$web* 容器中的文件的流量统计信息。
+启用后，指标仪表板会报告有关 $web 容器中的文件的流量统计信息。
 
 ## <a name="faq"></a>常见问题解答
 

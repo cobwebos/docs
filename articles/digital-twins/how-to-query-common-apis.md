@@ -8,12 +8,12 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 1/7/2019
 ms.author: dkshir
-ms.openlocfilehash: 0112853bf36c6b7b594400d303234d204b2ea24a
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: ff8638042fa10c939ff9c5fa7af99a660fcdc753
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54109352"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54198637"
 ---
 # <a name="how-to-query-azure-digital-twins-apis-for-common-tasks"></a>如何在常见任务中查询 Azure 数字孪生 API
 
@@ -26,7 +26,7 @@ ms.locfileid: "54109352"
 
 本部分演示用于获取有关预配空间的详细信息的示例查询。 使用示例查询发出经过身份验证的 GET HTTP 请求（请将占位符替换为你的设置中的值）。 
 
-- 获取根节点。
+- 获取作为根节点的空间。
 
     ```plaintext
     YOUR_MANAGEMENT_API_URL/spaces?$filter=ParentSpaceId eq null
@@ -38,7 +38,7 @@ ms.locfileid: "54109352"
     YOUR_MANAGEMENT_API_URL/spaces?name=Focus Room A1&includes=fullpath,devices,sensors,values,sensorsvalues
     ```
 
-- 获取其父级为给定区域 ID 的空间，并包含依赖项。 
+- 获取空间及其设备/传感器信息，其父级是给定的空间 ID，且[相对于给定空间](how-to-navigate-apis.md#api-navigation)，则位于级别 2 到 5。 
 
     ```plaintext
     YOUR_MANAGEMENT_API_URL/spaces?spaceId=YOUR_SPACE_ID&includes=fullpath,devices,sensors,values,sensorsvalues&traverse=Down&minLevel=1&minRelative=true&maxLevel=5&maxRelative=true
@@ -91,7 +91,7 @@ ms.locfileid: "54109352"
     YOUR_MANAGEMENT_API_URL/roleassignments?path=/A_SPATIAL_PATH
     ```
 
-## <a name="queries-for-device-management"></a>针对设备管理的查询
+## <a name="queries-for-devices"></a>查询设备
 
 本部分通过一些示例来演示如何使用管理 API 获取有关设备的具体信息。 所有 API 调用需是经过身份验证的 GET HTTP 请求。
 
@@ -167,7 +167,7 @@ ms.locfileid: "54109352"
     YOUR_MANAGEMENT_API_URL/devices?spaceId=YOUR_SPACE_ID&traverse=Span&minLevel=0&minRelative=true&maxLevel=0&maxRelative=true
     ```
 
-- 获取特定设备的 IoT 中心连接字符串。
+- 获取设备的 IoT 中心设备连接字符串。
 
     ```plaintext
     YOUR_MANAGEMENT_API_URL/devices/YOUR_DEVICE_ID?includes=ConnectionString

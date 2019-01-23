@@ -1,21 +1,21 @@
 ---
-title: 通过 API 控制台使用自定义列表来审查图像 - 内容审查器
+title: 通过自定义列表和 API 控制台来审查图像 - 内容审查器
 titlesuffix: Azure Content Moderator
-description: 在内容审查器 API 控制台中测试运行自定义图像列表。
+description: 在 Azure 内容审查器中使用列表管理 API 创建自定义图像列表。
 services: cognitive-services
 author: sanjeev3
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: content-moderator
 ms.topic: conceptual
-ms.date: 08/05/2017
+ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: 5e573262879b6a16e3cd530757900b86228ae299
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: c42fdb037e1803db8255518f5c7ae7b2abd90c60
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47219951"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54259353"
 ---
 # <a name="moderate-with-custom-image-lists-in-the-api-console"></a>借助 API 控制台中的自定义列表进行审查
 

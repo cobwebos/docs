@@ -11,21 +11,21 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 06/29/2018
+ms.date: 01/10/2019
 ms.author: magoedte
-ms.openlocfilehash: 6b725d7912fa4b0d6b46acb35eda80ae66e4a38c
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 4c9fe269ffa351c1efdb3f94a15a10bae65432d8
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54121407"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54199644"
 ---
 # <a name="application-insights-connector-management-solution-preview"></a>Application Insights 连接器管理解决方案（预览版）
 
 ![Application Insights 符号](./media/app-insights-connector/app-insights-connector-symbol.png)
 
 >[!NOTE]
-> 在[跨资源查询](../../azure-monitor/log-query/cross-workspace-query.md)的支持下，不再需要 Application Insights 连接器管理解决方案，并且将弃用它。 从 7 月开始，无法将新的 Application Insights 资源链接到 Log Analytics 工作区。 在 2018 年 11 月之前，现有的链接和仪表板将继续正常运行。 有关详细信息，请参阅 [OMS 门户即将转移到 Azure](../../azure-monitor/platform/oms-portal-transition.md)。
+> 在[跨资源查询](../../azure-monitor/log-query/cross-workspace-query.md)和[查看多个 Azure Monitor Application Insights 资源](../log-query/unify-app-resource-data.md)的支持下，将不再需要 Application Insights 连接器管理解决方案。 Application Insights 连接器将被弃用并从 Azure 市场中删除；同时 Azure 商业云的 OMS 门户将于 2019 年 1 月 15 日正式弃用，Azure 美国政府云的 OMS 门户将于 2019 年 3 月 30 日正式弃用。 现有连接将继续运行到 2019 年 6 月 30 日为止。 随着 OMS 门户被弃用，将无法从门户中配置和删除现有的连接。 将支持使用 2019 年 1 月推出的 REST API 来执行上述操作，并且将在 [Azure 更新](https://azure.microsoft.com/updates/)中发布通知。 有关详细信息，请参阅 [OMS 门户即将转移到 Azure](../../azure-monitor/platform/oms-portal-transition.md)。
 
 可以借助 Application Insights 连接器解决方案诊断性能问题，以及了解用户在使用 [Application Insights](../../azure-monitor/app/app-insights-overview.md) 监视的应用中执行的操作。 Log Analytics 中提供了 Application Insights 中向开发人员显示的相同应用程序遥测数据视图。 但是，将 Application Insights 应用与 Log Analytics 集成时，将操作和应用程序数据放在一个位置可以增强应用程序的可见性。 使用相同的视图有助于与应用开发人员协作。 常见的视图可帮助减少检测和解决应用程序与平台问题的时间。
 

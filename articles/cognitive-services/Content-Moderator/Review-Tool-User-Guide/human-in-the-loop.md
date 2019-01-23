@@ -1,22 +1,23 @@
 ---
-title: 内容审查器中的计算机辅助内容审核和人工评审 | Microsoft Docs
+title: 将人工评审纳入内容审核 - 内容审查器
+titlesuffix: Azure Cognitive Services
 description: 人机如何协同为内容审核提供最佳结果
 services: cognitive-services
 author: sanjeev3
 manager: mikemcca
-ms.date: 03/16/2018
+ms.date: 01/10/2019
 ms.service: cognitive-services
 ms.component: content-moderator
 ms.topic: article
 ms.author: sajagtap
-ms.openlocfilehash: f1a3a401363866bdd803093e894615d90536f408
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.openlocfilehash: 7d2e87ac5353f103e654f4dcb6656916e4b271ae
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51854214"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54264727"
 ---
-# <a name="review-tool-overview"></a>“审阅”工具概述
+# <a name="learn-about-the-review-tool"></a>了解评审工具
 
 当人机协作进行内容审核时，你将获得最佳结果。 计算机可以有效地增强人工评审，在现实世界环境中，必须辅助或调节预测置信度。 其结果是，相比人工或计算机单独工作的效果，一个混合内容审核过程的效果更佳。
 

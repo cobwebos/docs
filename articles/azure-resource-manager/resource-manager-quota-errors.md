@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 03/09/2018
 ms.author: tomfitz
-ms.openlocfilehash: 6d9048ae531abedb89b70989ce1c962357c514cd
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 2cf9f914aeaee25cda8fd426454cb39a1afa0b4f
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34357038"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54260220"
 ---
 # <a name="resolve-errors-for-resource-quotas"></a>解决资源配额错误
 
@@ -101,7 +101,7 @@ Virtual Machines                             0 10000 Count
 >
 >
 
-1. 选择“订阅”。
+1. 选择 **订阅**。
 
    ![订阅](./media/resource-manager-quota-errors/subscriptions.png)
 

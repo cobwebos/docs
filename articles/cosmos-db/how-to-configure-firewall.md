@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: govindk
-ms.openlocfilehash: 7d451f7eae16426c85ed5540b35993cd9b218b83
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: d209e1f6924e5c7d6bba7512606504b7165f0ed3
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54033136"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54359419"
 ---
 # <a name="configure-an-ip-firewall-for-your-azure-cosmos-db-account"></a>为 Azure Cosmos DB 帐户配置 IP 防火墙
 
@@ -145,10 +145,10 @@ az cosmosdb update \
 为 Azure Cosmos DB 帐户启用 IP 访问控制策略后，将阻止从 IP 地址范围的允许列表外部的计算机向帐户发出的所有请求。 若要启用门户数据平面操作，例如浏览容器和查询文档，需要使用门户中的“防火墙”窗格显式允许访问 Azure 门户。
 
 ### <a name="sdks"></a>SDK 
-使用不在允许列表内的计算机访问 Azure Cosmos DB 资源时，将返回一般的“404 找不到”响应，但不提供其他任何详细信息。 验证帐户的允许 IP 列表并确保 Azure Cosmos DB 帐户中应用了正确的策略配置。 
+使用不在允许列表内的计算机访问 Azure Cosmos DB 资源时，将返回一般的“403 禁止访问”响应，但不提供其他任何详细信息。 验证帐户的允许 IP 列表并确保 Azure Cosmos DB 帐户中应用了正确的策略配置。 
 
 ### <a name="source-ips-in-blocked-requests"></a>受阻止请求中的源 IP
-对 Azure Cosmos DB 帐户启用诊断日志记录。 这些日志显示每个请求和响应。 在内部，将会记录带有 403 返回代码的防火墙相关消息。 通过筛选这些消息，可以查看已阻止请求的源 IP。 请参阅 [Azure Cosmos DB 诊断日志记录](logging.md)。
+对 Azure Cosmos DB 帐户启用诊断日志记录。 这些日志显示每个请求和响应。 会记录带有 403 返回代码的防火墙相关消息。 通过筛选这些消息，可以查看已阻止请求的源 IP。 请参阅 [Azure Cosmos DB 诊断日志记录](logging.md)。
 
 ### <a name="requests-from-a-subnet-with-a-service-endpoint-for-azure-cosmos-db-enabled"></a>来自已启用 Azure Cosmos DB 服务终结点的子网的请求
 来自虚拟网络中已启用 Azure Cosmos DB 服务终结点的子网的请求向 Azure Cosmos DB 帐户发送虚拟网络和子网标识。 这些请求不包含源的公共 IP，因此 IP 筛选器将拒绝它们。 若要允许从虚拟网络中的特定子网进行访问，请添加[如何为 Azure Cosmos DB 帐户配置基于虚拟网络和子网的访问](how-to-configure-vnet-service-endpoint.md)中所述的访问控制列表。 应用防火墙规则最多可能需要 15 分钟。

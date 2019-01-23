@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: active-directory
 ms.component: msi
 manager: mtillman
-ms.openlocfilehash: 3fdbac019849bc97e8d336b75f26a8fe0a05c449
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: ca7ce29adb0b83215b64065ef83ff476025b8e81
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53713108"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54199708"
 ---
 # <a name="services-that-support-managed-identities-for-azure-resources"></a>支持 Azure 资源托管标识的服务
 
@@ -27,28 +27,125 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 
 以下 Azure 服务支持 Azure 资源托管标识：
 
-| 服务 | 系统分配的状态 | 用户分配的状态| 配置 | 获取令牌 |
-| ------- | ------ | ---- | --------- | ----------- |
-| Azure 虚拟机 | 可用 | 预览 | [Azure 门户](qs-configure-portal-windows-vm.md)<br>[PowerShell](qs-configure-powershell-windows-vm.md)<br>[Azure CLI](qs-configure-cli-windows-vm.md)<br>[Azure 资源管理器模板](qs-configure-template-windows-vm.md)<br>[REST](qs-configure-rest-vm.md) | [REST](how-to-use-vm-token.md#get-a-token-using-http)<br>[.NET](how-to-use-vm-token.md#get-a-token-using-c)<br>[Bash/Curl](how-to-use-vm-token.md#get-a-token-using-curl)<br>[Go](how-to-use-vm-token.md#get-a-token-using-go)<br>[PowerShell](how-to-use-vm-token.md#get-a-token-using-azure-powershell) |
-| 虚拟机规模集 | 可用 | 预览 | [Azure 门户](qs-configure-portal-windows-vmss.md)<br>[PowerShell](qs-configure-powershell-windows-vmss.md)<br>[Azure CLI](qs-configure-cli-windows-vmss.md)<br>[Azure 资源管理器模板](qs-configure-template-windows-vmss.md)<br>[REST](qs-configure-rest-vmss.md) | [REST](how-to-use-vm-token.md#get-a-token-using-http)<br>[.NET](how-to-use-vm-token.md#get-a-token-using-c)<br>[Bash/Curl](how-to-use-vm-token.md#get-a-token-using-curl)<br>[Go](how-to-use-vm-token.md#get-a-token-using-go)<br>[PowerShell](how-to-use-vm-token.md#get-a-token-using-azure-powershell)
-| Azure 应用服务 | Windows:可用 <br> Linux：预览 | 预览 | [Azure 门户](/azure/app-service/overview-managed-identity#using-the-azure-portal)<br>[Azure CLI](/azure/app-service/overview-managed-identity#using-the-azure-cli)<br>[Azure PowerShell](/azure/app-service/overview-managed-identity#using-azure-powershell)<br>[Azure 资源管理器模板](/azure/app-service/overview-managed-identity#using-an-azure-resource-manager-template) | [REST](/azure/app-service/overview-managed-identity#using-the-rest-protocol)<br>[.NET](/azure/app-service/overview-managed-identity#asal)<br>[JavaScript](/azure/app-service/overview-managed-identity#token-js)<br>[PowerShell](/azure/app-service/overview-managed-identity#token-powershell)  |
-| Azure Functions | 可用 | 预览 | [Azure 门户](/azure/app-service/overview-managed-identity#using-the-azure-portal)<br>[Azure CLI](/azure/app-service/overview-managed-identity#using-the-azure-cli)<br>[Azure PowerShell](/azure/app-service/overview-managed-identity#using-azure-powershell)<br>[Azure 资源管理器模板](/azure/app-service/overview-managed-identity#using-an-azure-resource-manager-template) | [REST](/azure/app-service/overview-managed-identity#using-the-rest-protocol)<br>[.NET](/azure/app-service/overview-managed-identity#asal)<br>[JavaScript](/azure/app-service/overview-managed-identity#token-js)<br>[PowerShell](/azure/app-service/overview-managed-identity#token-powershell) |
-| Azure 逻辑应用 | 可用 | 不可用 | [Azure 门户](/azure/logic-apps/create-managed-service-identity#azure-portal)<br>[Azure 资源管理器模板](/azure/app-service/overview-managed-identity#deployment-template) |  |
-| Azure 数据工厂 V2 | 可用 | 不可用 | [Azure 门户](~/articles/data-factory/data-factory-service-identity.md#generate-service-identity)<br>[PowerShell](~/articles/data-factory/data-factory-service-identity.md#generate-service-identity-using-powershell)<br>[REST](~/articles/data-factory/data-factory-service-identity.md#generate-service-identity-using-rest-api)<br>[SDK](~/articles/data-factory/data-factory-service-identity.md#generate-service-identity-using-sdk) |
-| Azure API 管理 | 可用 | 不可用 | [Azure 资源管理器模板](/azure/api-management/api-management-howto-use-managed-service-identity) |
-| Azure 容器实例 | Linux：预览<br>Windows:不可用 | Linux：预览<br>Windows:不可用 | [Azure CLI](~/articles/container-instances/container-instances-managed-identity.md)<br>[Azure 资源管理器模板](~/articles/container-instances/container-instances-managed-identity.md#enable-managed-identity-using-resource-manager-template)<br>[YAML](~/articles/container-instances/container-instances-managed-identity.md#enable-managed-identity-using-yaml-file) |  |
+### <a name="azure-virtual-machines"></a>Azure 虚拟机
+
+|托管标识类型 |  所有正式发布版<br>全球 Azure 区域 | Azure Government |Azure 德国|Azure 中国世纪互联|
+| --- | --- | --- | --- | --- |
+| 系统分配 | 可用 | 预览 | 预览 | 预览 | 预览 |
+| 用户分配 | 预览 | 预览 | 预览 | 预览 | 预览
+
+请参阅以下列表来配置 Azure 虚拟机的托管标识（在可用的区域中）：
+
+- [Azure 门户](qs-configure-portal-windows-vm.md)
+- [PowerShell](qs-configure-powershell-windows-vm.md)
+- [Azure CLI](qs-configure-cli-windows-vm.md)
+- [Azure 资源管理器模板](qs-configure-template-windows-vm.md)
+- [REST](qs-configure-rest-vm.md)
+
+### <a name="azure-virtual-machine-scale-sets"></a>Azure 虚拟机规模集
+
+|托管标识类型 |  所有正式发布版<br>全球 Azure 区域 | Azure Government |Azure 德国|Azure 中国世纪互联|
+| --- | --- | --- | --- | --- |
+| 系统分配 | 可用 | 预览 | 预览 | 预览 |
+| 用户分配 | 预览 | 预览 | 预览 | 预览
+
+请参阅以下列表来配置 Azure 虚拟机规模集的托管标识（在可用的区域中）：
+
+- [Azure 门户](qs-configure-portal-windows-vm.md)
+- [PowerShell](qs-configure-powershell-windows-vm.md)
+- [Azure CLI](qs-configure-cli-windows-vm.md)
+- [Azure 资源管理器模板](qs-configure-template-windows-vm.md)
+- [REST](qs-configure-rest-vm.md)
+
+### <a name="azure-app-service"></a>Azure 应用服务
+
+|托管标识类型 |  所有正式发布版<br>全球 Azure 区域 | Azure Government |Azure 德国|Azure 中国世纪互联|
+| --- | --- | --- | --- | --- |
+| 系统分配 | 可用 | 可用 | 可用 | 可用 |
+| 用户分配 | 预览 | 不可用 | 不可用 | 不可用
+
+请参阅以下列表来配置 Azure 应用服务的托管标识（在可用的区域中）：
+
+- [Azure 门户](/azure/app-service/overview-managed-identity#using-the-azure-portal)
+- [Azure CLI](/azure/app-service/overview-managed-identity#using-the-azure-cli)
+- [Azure PowerShell](/azure/app-service/overview-managed-identity#using-azure-powershell)
+- [Azure 资源管理器模板](/azure/app-service/overview-managed-identity#using-an-azure-resource-manager-template)
+
+### <a name="azure-functions"></a>Azure Functions
+
+托管标识类型 |  所有正式发布版<br>全球 Azure 区域 | Azure Government |Azure 德国|Azure 中国世纪互联|
+| --- | --- | --- | --- | --- |
+| 系统分配 | 可用 | 可用 | 可用 | 可用 |
+| 用户分配 | 预览 | 不可用 | 不可用 | 不可用
+
+请参阅以下列表来配置 Azure Functions 的托管标识（在可用的区域中）：
+
+- [Azure 门户](/azure/app-service/overview-managed-identity#using-the-azure-portal)
+- [Azure CLI](/azure/app-service/overview-managed-identity#using-the-azure-cli)
+- [Azure PowerShell](/azure/app-service/overview-managed-identity#using-azure-powershell)
+- [Azure 资源管理器模板](/azure/app-service/overview-managed-identity#using-an-azure-resource-manager-template)
+
+### <a name="azure-logic-apps"></a>Azure 逻辑应用
+
+托管标识类型 |  所有正式发布版<br>全球 Azure 区域 | Azure Government |Azure 德国|Azure 中国世纪互联|
+| --- | --- | --- | --- | --- |
+| 系统分配 | 可用 | 可用 | 可用 | 可用 |
+| 用户分配 | 不可用 | 不可用 | 不可用 | 不可用
+
+请参阅以下列表来配置 Azure 逻辑应用的托管标识（在可用的区域中）：
+
+- [Azure 门户](/azure/logic-apps/create-managed-service-identity#azure-portal)
+- [Azure 资源管理器模板](/azure/app-service/overview-managed-identity#deployment-template)
+
+### <a name="azure-data-factory-v2"></a>Azure 数据工厂 V2
+
+托管标识类型 |  所有正式发布版<br>全球 Azure 区域 | Azure Government |Azure 德国|Azure 中国世纪互联|
+| --- | --- | --- | --- | --- |
+| 系统分配 | 可用 | 不可用 | 不可用 | 不可用 |
+| 用户分配 | 不可用 | 不可用 | 不可用 | 不可用
+
+请参阅以下列表来配置 Azure 数据工厂 V2 的托管标识（在可用的区域中）：
+
+- [Azure 门户](~/articles/data-factory/data-factory-service-identity.md#generate-service-identity)
+- [PowerShell](~/articles/data-factory/data-factory-service-identity.md#generate-service-identity-using-powershell)
+- [REST](~/articles/data-factory/data-factory-service-identity.md#generate-service-identity-using-rest-api)
+- [SDK](~/articles/data-factory/data-factory-service-identity.md#generate-service-identity-using-sdk)
+
+### <a name="azure-api-management"></a>Azure API 管理
+
+托管标识类型 |  所有正式发布版<br>全球 Azure 区域 | Azure Government |Azure 德国|Azure 中国世纪互联|
+| --- | --- | --- | --- | --- |
+| 系统分配 | 可用 | 可用 | 不可用 | 不可用 |
+| 用户分配 | 不可用 | 不可用 | 不可用 | 不可用
+
+请参阅以下列表来配置 Azure API 管理的托管标识（在可用的区域中）：
+
+- [Azure 资源管理器模板](/azure/api-management/api-management-howto-use-managed-service-identity)
+
+### <a name="azure-container-instances"></a>Azure 容器实例
+
+托管标识类型 |  所有正式发布版<br>全球 Azure 区域 | Azure Government |Azure 德国|Azure 中国世纪互联|
+| --- | --- | --- | --- | --- |
+| 系统分配 | Linux：预览<br>Windows:不可用 | 不可用 | 不可用 | 不可用 |
+| 用户分配 | Linux：预览<br>Windows:不可用 | 不可用 | 不可用 | 不可用
+
+请参阅以下列表来配置 Azure 容器实例的托管标识（在可用的区域中）：
+
+- [Azure CLI](~/articles/container-instances/container-instances-managed-identity.md)
+- [Azure 资源管理器模板](~/articles/container-instances/container-instances-managed-identity.md#enable-managed-identity-using-resource-manager-template)
+- [YAML](~/articles/container-instances/container-instances-managed-identity.md#enable-managed-identity-using-yaml-file)
 
 
 ## <a name="azure-services-that-support-azure-ad-authentication"></a>支持 Azure AD 身份验证的 Azure 服务
 
 以下服务支持 Azure AD 身份验证，已通过使用 Azure 资源托管标识的客户端服务进行测试。
 
-| 服务 | 资源 ID | 状态 | 日期 | 分配访问权限 |
+| 服务 | 资源 ID | 状态 | 分配访问权限 |
 | ------- | ----------- | ------ | ---- | ------------- |
-| Azure 资源管理器 | `https://management.azure.com/` | 可用 | 2017 年 9 月 | [Azure 门户](howto-assign-access-portal.md) <br>[PowerShell](howto-assign-access-powershell.md) <br>[Azure CLI](howto-assign-access-CLI.md) <br>[Azure 资源管理器模板](../../role-based-access-control/role-assignments-template.md) |
-| Azure 密钥保管库 | `https://vault.azure.net` | 可用 | 2017 年 9 月 | |
-| Azure Data Lake | `https://datalake.azure.net/` | 可用 | 2017 年 9 月 | |
-| Azure SQL | `https://database.windows.net/` | 可用 | 2017 年 10 月 | |
-| Azure 事件中心 | `https://eventhubs.azure.net` | 预览 | 2017 年 12 月 | |
-| Azure 服务总线 | `https://servicebus.azure.net` | 预览 | 2017 年 12 月 | |
-| Azure 存储 | `https://storage.azure.com/` | 预览 | 2018 年 5 月 | |
+| Azure 资源管理器 | `https://management.azure.com/` | 可用 | [Azure 门户](howto-assign-access-portal.md) <br>[PowerShell](howto-assign-access-powershell.md) <br>[Azure CLI](howto-assign-access-CLI.md) <br>[Azure 资源管理器模板](../../role-based-access-control/role-assignments-template.md) |
+| Azure 密钥保管库 | `https://vault.azure.net` | 可用 |  
+| Azure Data Lake | `https://datalake.azure.net/` | 可用 |
+| Azure SQL | `https://database.windows.net/` | 可用 |
+| Azure 事件中心 | `https://eventhubs.azure.net` | 预览 |
+| Azure 服务总线 | `https://servicebus.azure.net` | 预览 |
+| Azure 存储 | `https://storage.azure.com/` | 预览 |

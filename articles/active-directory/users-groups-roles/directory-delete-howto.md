@@ -9,18 +9,19 @@ ms.service: active-directory
 ms.workload: identity
 ms.component: users-groups-roles
 ms.topic: article
-ms.date: 06/13/2018
+ms.date: 01/07/2019
 ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro
-ms.openlocfilehash: ab752799c9e64e47abe0200a26215f9e01c489f6
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: 39682ac04b914809aec36f46889feb5c4b59af51
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50139680"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54243876"
 ---
 # <a name="delete-an-azure-active-directory-tenant"></a>删除 Azure Active Directory 租户
+
 删除租户时，也会删除包含在该租户中的所有资源。 最小化租户及其关联的资源，做好准备后再将其删除。 只有 Azure Active Directory (Azure AD) 全局管理员可从门户中删除 Azure AD 租户。
 
 ## <a name="prepare-the-tenant-for-deletion"></a>准备租户以便进行删除
@@ -59,17 +60,17 @@ ms.locfileid: "50139680"
 活动（30 天试用）  | 所有用户均可访问数据    | <li>用户可正常访问 Office 365 文件或应用<li>管理员可正常访问 Office 365 管理中心和资源 
 已到期（30 天）   | 所有用户均可访问数据    | <li>用户可正常访问 Office 365 文件或应用<li>管理员可正常访问 Office 365 管理中心和资源
 已禁用（30 天） | 仅管理员可访问数据  | <li>用户无法访问 Office 365 文件或应用<li>管理员可以访问 Office 365 管理中心，但无法向用户分配许可证，也无法更新用户
-已取消预配（禁用后 30 天） | 已删除数据（没有使用其他服务时自动删除） | <li>用户无法访问 Office 365 文件或应用<li>管理员可以访问 Office 365 管理中心购买和管理其他订阅 
+已取消预配（禁用后 30 天） | 已删除数据（没有使用其他服务时自动删除） | <li>用户无法访问 Office 365 文件或应用<li>管理员可以访问 Office 365 管理中心购买和管理其他订阅
 
 可将订阅置于“已取消预配”状态，通过适用于企业的 Microsoft Store 管理中心在 3 天后删除。 Office 365 管理中心也即将推出此功能。
 
 1. 使用租户的全局管理员帐户登录到[适用于企业的 Microsoft Store 管理中心](https://businessstore.microsoft.com/manage/)。 如果尝试删除具有初始默认域 contoso.onmicrosoft.com 的“Contoso”租户，请使用 UPN（例如 admin@contoso.onmicrosoft.com）登录。
 
-2. 转到“管理”选项卡，选择“产品和服务”然后选择想要取消的订阅。 单击“取消”后，刷新该页面。
+2. 转到“管理”选项卡，选择“产品和服务”，然后选择想要取消的订阅，并选择“删除”。
   
   ![删除用于删除订阅的链接](./media/directory-delete-howto/delete-command.png)
   
-3. 选择“删除”，删除订阅并接受条款和条件。 所有数据将在三天内永久删除。 如果改变心意，可在这三天时间内重新激活订阅。
+3. 选择“删除订阅”以接受条款和条件，并删除订阅。 所有数据将在三天内永久删除。 如果改变了主意，可在接下来的三天内重新激活订阅。
   
   ![条款和条件](./media/directory-delete-howto/delete-terms.png)
 

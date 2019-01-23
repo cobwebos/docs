@@ -6,15 +6,15 @@ ms.service: automation
 ms.component: shared-capabilities
 author: georgewallace
 ms.author: gwallace
-ms.date: 03/15/2018
+ms.date: 01/16/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 2a28c8056e6dc25148299415a63a32993e874e01
-ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
+ms.openlocfilehash: 9687276323598d8600aa6930df8ef18bcc171cc1
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52284534"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54358824"
 ---
 # <a name="connection-assets-in-azure-automation"></a>Azure 自动化中的连接资产
 
@@ -23,7 +23,17 @@ ms.locfileid: "52284534"
 创建连接时，必须指定“连接类型”。 连接类型是定义了一组属性的模板。 连接为其连接类型中定义的每个属性定义值。 连接类型通过集成模块添加到 Azure 自动化，或使用 [Azure 自动化 API](https://msdn.microsoft.com/library/azure/mt163818.aspx) 进行创建，前提是集成模块包含连接类型，并且已导入到自动化帐户中。 否则，需创建指定自动化连接类型的元数据文件。  此方面的详细信息，请参阅[集成模块](automation-integration-modules.md)。  
 
 >[!NOTE]
->Azure 自动化中的安全资产包括凭据、证书、连接和加密的变量。 这些资产已使用针对每个自动化帐户生成的唯一密钥加密并存储在 Azure 自动化中。 此密钥存储在密钥保管库中。 在存储安全资产之前，从密钥保管库加载密钥，然后使用该密钥加密资产。
+>Azure 自动化中的安全资产包括凭据、证书、连接和加密的变量。 这些资产已使用针对每个自动化帐户生成的唯一密钥加密并存储在 Azure 自动化中。 此密钥存储在系统托管的密钥保管库中。 在存储安全资产之前，从密钥保管库加载密钥，然后使用该密钥加密资产。 此过程由 Azure 自动化管理。
+
+## <a name="connection-types"></a>连接类型
+
+Azure 自动化中有三种类型的内置连接：
+
+* **Azure** - 此连接可以用于管理经典资源。
+* **AzureClassicCertificate** - AzureClassicRunAs 帐户使用此连接。
+* **AzureServicePrincipal** - AzureRunAs 帐户使用此连接。
+
+在大多数情况下不需要创建连接资源，因为在创建 [RunAs 帐户](manage-runas-account.md)时已经创建了该连接。
 
 ## <a name="windows-powershell-cmdlets"></a>Windows PowerShell Cmdlet
 

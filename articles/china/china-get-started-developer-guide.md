@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/29/2017
 ms.author: v-wimarc
-ms.openlocfilehash: 411194030c73a0e56a3639b5a6e45e9a56751359
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
+ms.openlocfilehash: be9ab20ac0dae469c89822cd046ccdb4e6f15709
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50978307"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54261937"
 ---
 # <a name="developer-guide-for-azure-china-21vianet"></a>Azure 中国世纪互联开发人员指南
 Microsoft 提供所需的工具来帮助开发人员创建云应用程序并将其部署到全球 Microsoft Azure 服务（“全球服务”）和世纪互联运营的 Microsoft Azure（Azure 中国世纪互联）。 大多数当前可用的技术内容（例如 [Azure 文档中心](https://azure.microsoft.com/documentation/)）都假设应用程序是针对全球 Azure 开发的，因此，必须了解哪些[服务和功能](https://www.azure.cn/home/features/products-by-region)可在 Microsoft Azure 中国世纪互联中使用。
@@ -72,7 +72,7 @@ Microsoft Azure 中国世纪互联与全球 Azure 有所不同，因此，必须
 | MySQL PaaS | | \*.mysqldb.chinacloudapi.cn |
 | Azure Service Fabric 群集 | \*.cloudapp.azure.com | \*.chinaeast.chinacloudapp.cn |
 | Azure Active Directory (AD) | \*.onmicrosoft.com | \*.partner.onmschina.cn |
-| Azure AD 登录 | [https://login.windows.net](https://login.windows.net/) | [https://login.chinacloudapi.cn](https://login.chinacloudapi.cn/) |
+| Azure AD 登录 | [https://login.microsoftonline.com](https://login.windows.net/) | [https://login.partner.microsoftonline.cn](https://login.chinacloudapi.cn/) |
 | Azure AD 图形 API | [https://graph.windows.net](https://graph.windows.net/) | [https://graph.chinacloudapi.cn](https://graph.chinacloudapi.cn/) |
 | 认知服务 | <https://api.projectoxford.ai/face/v1.0> | <https://api.cognitive.azure.cn/face/v1.0> |
 | Azure Key Vault API | \*.vault.azure.net | \*.vault.azure.cn |

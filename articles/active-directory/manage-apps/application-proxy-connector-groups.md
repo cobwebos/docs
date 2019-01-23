@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 11/08/2018
 ms.author: barbkess
 ms.reviewer: japere
-ms.openlocfilehash: e2e78eae924cf079ccc03d3f907cd64194b98921
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 52dc78b03a1be73763b5a3c494404f4d439d04ca
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53139018"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54198025"
 ---
 # <a name="publish-applications-on-separate-networks-and-locations-using-connector-groups"></a>使用连接器组在单独的网络和位置上发布应用程序。
 
@@ -73,11 +73,11 @@ ms.locfileid: "53139018"
 
 例如，组织有许多虚拟机连接到其自己的 IaaS 托管虚拟网络。 为了允许员工使用这些应用程序，这些专用网络使用站点到站点 VPN 连接到公司网络。 这为位于本地的员工提供了良好的体验。 但是，这可能不适合远程员工，因为它需要额外的本地基础结构来路由访问权限，如下图所示：
 
-![AzureAD Iaas 网络](./media/application-proxy-connector-groups/application-proxy-iaas-network.png)
+![AzureAD IaaS 网络](./media/application-proxy-connector-groups/application-proxy-iaas-network.png)
   
 使用 Azure AD 应用程序代理连接器组，可以启用常见服务来保护对所有应用程序的访问，而不会对公司网络创建额外的依赖项：
 
-![AzureAD Iaas 多个云供应商](./media/application-proxy-connector-groups/application-proxy-multiple-cloud-vendors.png)
+![AzureAD IaaS 的多个云供应商](./media/application-proxy-connector-groups/application-proxy-multiple-cloud-vendors.png)
 
 ### <a name="multi-forest--different-connector-groups-for-each-forest"></a>多林 - 每个林使用不同连接器组
 

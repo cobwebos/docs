@@ -1,26 +1,8 @@
 ---
-title: 步骤 3：创建新的机器学习工作室实验 - Azure | Microsoft Docs
-description: 开发预测解决方案演练的步骤 3：在Azure 机器学习工作室中创建新的训练实验。
-services: machine-learning
-documentationcenter: ''
-author: garyericson
-ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
-ms.author: garye
-editor: cgronlun
-ms.assetid: 660e3c27-55ef-4c33-a4e9-dff4d1224630
-ms.service: machine-learning
-ms.component: studio
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 03/23/2017
-ms.openlocfilehash: 5f3f73e2c2cb281887e795d974403a17cffd5978
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
-ms.translationtype: HT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53260780"
+title:“步骤 3：创建新的机器学习工作室实验”titleSuffix： Azure 机器学习工作室 description:“开发预测解决方案演练的步骤 3：在 Azure 机器学习工作室中创建新的训练实验。”
+services: machine-learning ms.service: machine-learning ms.component: studio ms.topic: article
+
+author: garyericson ms.author: garye ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro ms.date:2017/03/23
 ---
 # <a name="walkthrough-step-3-create-a-new-azure-machine-learning-studio-experiment"></a>演练步骤 3：创建新的 Azure 机器学习工作室实验
 这是演练的第三步，[在 Azure 机器学习中开发预测分析解决方案](walkthrough-develop-predictive-solution.md)
@@ -28,7 +10,7 @@ ms.locfileid: "53260780"
 1. [创建机器学习工作区](walkthrough-1-create-ml-workspace.md)
 2. [上传现有数据](walkthrough-2-upload-data.md)
 3. **创建新试验**
-4. [定型和评估模型](walkthrough-4-train-and-evaluate-models.md)
+4. [培训和评估模型](walkthrough-4-train-and-evaluate-models.md)
 5. [部署 Web 服务](walkthrough-5-publish-web-service.md)
 6. [访问 Web 服务](walkthrough-6-access-web-service.md)
 

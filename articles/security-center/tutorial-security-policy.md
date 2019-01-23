@@ -13,14 +13,14 @@ ms.topic: conceptual
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/4/2018
+ms.date: 1/4/2019
 ms.author: rkarlin
-ms.openlocfilehash: f9cc6f5c35b528d3a545293b9a946bc3eda3d7ac
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 52af6051b4534ba65b4822205cb5395a59ef9d6a
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53339326"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54259958"
 ---
 # <a name="working-with-security-policies"></a>使用安全策略
 
@@ -28,12 +28,15 @@ ms.locfileid: "53339326"
 
 有关如何使用 PowerShell 设置策略的说明，请参阅[快速入门：使用 Azure RM PowerShell 模块创建策略分配以识别不合规资源](../azure-policy/assign-policy-definition-ps.md)。
 
+>[!NOTE]
+> 安全中心使用 Azure Policy 开始集成。 现有客户将自动迁移到 Azure Policy 中新的内置计划，而不是安全中心中的旧的安全策略。 除了 Azure Policy 中存在新计划外，此更改不会影响资源或环境。
+
 ## <a name="what-are-security-policies"></a>什么是安全策略？
 安全策略定义了工作负载的相应配置，有助于确保用户遵守公司或法规方面的安全要求。 在 Azure Policy 中，可定义 Azure 订阅策略，并根据工作负载类型或数据机密性进行量身定制。 例如，使用受管制数据（如个人身份信息）的应用程序可能需要比其他工作负载更高级别的安全性。 若要跨订阅或管理组设置策略，请在 [Azure Policy](../azure-policy/azure-policy-introduction.md) 中进行设置。
 
-
-
 安全策略驱动在 Azure 安全中心获得的安全建议。 可以使用它们监视符合性以帮助识别潜在漏洞和缓解威胁。 若要详细了解如何确定适合你的选项，请参阅[内置安全性策略](security-center-policy-definitions.md)列表。
+
+当启用安全中心时，内置到安全中心的安全策略将作为内置的计划反映在 Azure Policy 中，位于“安全中心”类别下。 内置的计划自动分配给安全中心注册的所有订阅（免费或标准层）。 内置的计划仅包含审核策略。 
 
 
 ### <a name="management-groups"></a>管理组
@@ -57,8 +60,6 @@ Azure Policy 由以下组件构成：
 - “计划”是一个策略集合。
 - “分配”是将计划或策略应用于特定的范围（管理组、订阅或资源组）。
 
-资源将根据分配给它的策略进行评估，并且将根据资源符合的策略数收到符合率。
-
 ## <a name="view-security-policies"></a>查看安全策略
 
 要在安全中心内查看安全策略，请执行以下操作：
@@ -76,12 +77,9 @@ Azure Policy 由以下组件构成：
   表中的列显示了：
 
  - **策略计划分配** – 分配给订阅或管理组的“安全中心”[内置策略](security-center-policy-definitions.md)和计划。
- - **符合性** – 管理组、订阅或工作区的总体符合性得分。 得分是各个分配的加权平均值。 加权平均值取决于单个分配中的策略数以及该分配应用于的资源数。
-
- 例如，如果订阅有两台 VM 和一个分配有五个策略的计划，则订阅中有 10 项评估。 如果其中一台 VM 不符合其中的两个策略，则订阅的分配的总体符合性得分为 80%。
-
  - **覆盖范围** – 标识管理组、订阅或工作区在其上运行的定价层：免费或标准。  若要详细了解安全中心的定价层，请参阅[定价](security-center-pricing.md)。
  - **设置** – 订阅有“编辑设置”链接。 选择“编辑设置”，可为每个订阅或管理组更新[安全中心设置](security-center-policies-overview.md)。
+ - **安全分数** - [安全分数](security-center-secure-score.md)可衡量工作负载安全状况的安全程度，并帮助确定改进建议的优先级。
 
 2. 选择想要查看其策略的订阅或管理组。
 

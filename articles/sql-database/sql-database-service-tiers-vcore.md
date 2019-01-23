@@ -12,19 +12,19 @@ ms.author: carlrab
 ms.reviewer: sashan, moslake
 manager: craigg
 ms.date: 01/08/2019
-ms.openlocfilehash: 9d5a1493316fbfa9a703655f37a40276ee3ffaf7
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: 6b5ff7294735048347c500d64b411f16bda5422f
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54156808"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54212922"
 ---
 # <a name="vcore-service-tiers-azure-hybrid-benefit-and-migration"></a>vCore 服务层、Azure 混合权益和迁移
 
 使用基于 vCore 的购买模型，可以单独缩放计算和存储资源，匹配本地性能，以及优化价格。 它还允许你选择硬件世代：
 
 - 第 4 代 - 最多 24 个基于 Intel E5-2673 v3 (Haswell) 2.4 GHz 处理器的逻辑 CPU，vCore = 1 PP（物理核心），每核心 7 GB，附加了 SSD
-- 第 5 代 - 最多 80 个基于 Intel E5-2673 v4 (Broadwell) 2.3 GHz 处理器的逻辑 CPU，vCore=1 LP（超线程），每个核心 5.1。 每核心 5.5 GB，快速 eNVM SSD
+- 第 5 代 - 最多 80 个基于 Intel E5-2673 v4 (Broadwell) 2.3 GHz 处理器的逻辑 CPU，vCore=1 LP（超线程），每个核心 5.1 GB，快速 eNVM SSD
 
 vCore 模式还允许使用[适用于 SQL Server 的 Azure 混合权益](https://azure.microsoft.com/pricing/hybrid-benefit/)来节省成本。
 

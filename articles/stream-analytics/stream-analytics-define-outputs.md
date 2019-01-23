@@ -9,12 +9,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/21/2018
 ms.custom: seodec18
-ms.openlocfilehash: 6d7c8aa73f72f6db93c6ef78c333c36e1d26b74e
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.openlocfilehash: 805df837d5d33c5f21799e39145c62e71afdb4b5
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53995059"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54231387"
 ---
 # <a name="understand-outputs-from-azure-stream-analytics"></a>了解 Azure 流分析的输出
 本文将介绍适用于 Azure 流分析作业的不同类型的输出。 输出可帮助存储和保存流分析作业的结果。 使用输出数据，可进一步进行业务分析和数据的数据仓储。
@@ -73,6 +73,8 @@ ms.locfileid: "53995059"
 | 用户名 | 有权写入到数据库的用户名。 流分析仅支持 SQL 身份验证。 |
 | 密码 | 用于连接到数据库的密码。 |
 | 表 | 将写入输出的表名称。 表名称区分大小写，并且该表架构应与字段数量以及作业输出正在生成的字段类型完全匹配。 |
+|继承分区方案| 这可以继承先前查询步骤的分区方案，以启用具有多个表的写入器的完全并行拓扑。 有关详细信息，请参阅从 [Azure 流分析输出到 Azure SQL 数据库](stream-analytics-sql-output-perf.md)。|
+|匹配批数| 每个批量插入事务一起发送的推荐记录数上限。|
 
 > [!NOTE]
 > 目前，流分析中的作业输出支持 Azure SQL 数据库产品/服务。 但是，不支持带有附加数据库，运行 SQL Server 的 Azure 虚拟机。 这在将来的版本中可能会有所改变。

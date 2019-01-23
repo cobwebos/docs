@@ -1,22 +1,23 @@
 ---
-title: Azure 内容审查器中的凭据 | Microsoft Docs
-description: 管理要与 API 一起使用的内容审查器凭据。
+title: 在 Azure 内容审查器中管理凭据 - 内容审查器
+titlesuffix: Azure Cognitive Services
+description: 管理需要用于使用 API 的内容审查器凭据。
 services: cognitive-services
 author: sanjeev3
 manager: mikemcca
 ms.service: cognitive-services
 ms.component: content-moderator
 ms.topic: article
-ms.date: 06/25/2017
+ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: 5910961ee54c953ea241baf9bce78b79b0dfeaea
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 3d183870938f44cd71f1dab4105eec390ba12d94
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51260085"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54266139"
 ---
-# <a name="manage-credentials"></a>管理凭据
+# <a name="manage-content-moderator-service-credentials"></a>管理内容审查器服务凭据
 
 内容审查器凭据的创建位置如下：
 

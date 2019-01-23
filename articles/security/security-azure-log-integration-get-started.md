@@ -12,21 +12,21 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ums.workload: na
-ms.date: 06/07/2018
+ms.date: 01/14/2019
 ms.author: barclayn
 ms.custom: azlog
-ms.openlocfilehash: a6bbc61afcc1ed25d5eac8673b9abfa59e72dba9
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: bf39e22c0edc23d2e452d96103c8933e0a47af9e
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53602182"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54304399"
 ---
 # <a name="azure-log-integration-with-azure-diagnostics-logging-and-windows-event-forwarding"></a>将 Azure 日志集成与 Azure 诊断日志记录和 Windows 事件转发相结合
 
 
 >[!IMPORTANT]
-> Azure 日志集成功能将于 2019/06/01 弃用。 AzLog 下载将于 2018 年 6 月 27 日禁用。 有关下一步该怎么做的指导，请查看文章[使用 Azure Monitor 与 SIEM 工具集成](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/) 
+> Azure 日志集成功能将于 2019/06/01 弃用。 AzLog 下载已于 2018 年 6 月 27 日禁用。 有关下一步该怎么做的指导，请查看文章[使用 Azure Monitor 与 SIEM 工具集成](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/) 
 
 如果无法从安全事件和事件管理 (SIEM) 供应商获取 [Azure Monitor](../monitoring-and-diagnostics/monitoring-get-started.md) 连接器，应仅使用 Azure 日志集成。
 
@@ -85,7 +85,7 @@ Azure 日志集成服务在运行 Windows Server 2008 R2 或更高版本（最�
 
 ## <a name="install-azure-log-integration"></a>安装 Azure 日志集成
 
-若要安装 Azure 日志集成，请下载 [Azure 日志集成](https://www.microsoft.com/download/details.aspx?id=53324)安装文件。 完成安装过程。 选择是否向 Microsoft 提供遥测信息。
+执行安装例程。 选择是否向 Microsoft 提供遥测信息。
 
 Azure 日志集成服务会收集安装了该服务的计算机中的遥测数据。  
 
@@ -245,7 +245,6 @@ Azure 活动日志是一种方便用户深入了解 Azure 中发生的订阅级�
 
 若要详细了解 Azure 日志集成，请参阅以下文章：必须先查看“入门”文章并完成其中的步骤，然后才能尝试本文中的步骤。
 
-* [适用于 Azure 日志的 Microsoft Azure 日志集成](https://www.microsoft.com/download/details.aspx?id=53324)。 下载中心提供有关 Azure 日志集成的详细信息、系统要求和安装说明。
 * [Azure 日志集成简介](security-azure-log-integration-overview.md)。 此文介绍 Azure 日志集成、其主要功能和工作原理。
 * [合作伙伴配置步骤](https://blogs.msdn.microsoft.com/azuresecurity/2016/08/23/azure-log-siem-configuration-steps/)。 此博客文章介绍如何配置 Azure 日志集成，以使用 Splunk、HP ArcSight 和 IBM QRadar 合作伙伴解决方案。 它是有关如何配置 SIEM 组件的最新指导。 有关其他详细信息，请咨询 SIEM 供应商。
 * [Azure 日志集成常见问题 (FAQ)](security-azure-log-integration-faq.md)。 此文提供有关 Azure 日志集成的常见问题的解答。

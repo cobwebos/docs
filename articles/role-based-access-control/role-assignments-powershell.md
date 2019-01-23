@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/06/2018
+ms.date: 01/14/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 7a27fbb4530f8aca1c45888cdff0fae7dea667e0
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: a22b35ff9455f0849dd407df163ac3f8895dd874
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44095022"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54304629"
 ---
 # <a name="manage-access-using-rbac-and-azure-powershell"></a>使用 RBAC 和 Azure PowerShell 管理访问权限
 
@@ -175,7 +175,7 @@ Scope              : /subscriptions/00000000-0000-0000-0000-000000000000/resourc
 若要列出分配给特定用户的所有角色，请使用 [Get-AzureRmRoleAssignment](/powershell/module/azurerm.resources/get-azurermroleassignment)。
 
 ```azurepowershell
-Get-AzureRmRoleAssignment -SignInName <user email>
+Get-AzureRmRoleAssignment -SignInName <email, userprincipalname>
 ```
 
 ```Example
@@ -189,7 +189,7 @@ Scope              : /subscriptions/00000000-0000-0000-0000-000000000000/resourc
 若要列出分配给特定用户的所有角色和分配给该用户所属组的所有角色，请使用 [Get-AzureRmRoleAssignment](/powershell/module/azurerm.resources/get-azurermroleassignment)。
 
 ```azurepowershell
-Get-AzureRmRoleAssignment -SignInName <user email> -ExpandPrincipalGroups
+Get-AzureRmRoleAssignment -SignInName <email, userprincipalname> -ExpandPrincipalGroups
 ```
 
 ```Example
@@ -253,7 +253,7 @@ CanDelegate        : False
 若要向资源组范围内的用户授予访问权限，请使用 [New-AzureRmRoleAssignment](/powershell/module/azurerm.resources/new-azurermroleassignment)。
 
 ```azurepowershell
-New-AzureRmRoleAssignment -SignInName <email of user> -RoleDefinitionName <role name in quotes> -ResourceGroupName <resource group name>
+New-AzureRmRoleAssignment -SignInName <email, userprincipalname> -RoleDefinitionName <role name in quotes> -ResourceGroupName <resource group name>
 ```
 
 ```Example

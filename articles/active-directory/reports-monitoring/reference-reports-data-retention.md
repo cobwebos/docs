@@ -16,12 +16,12 @@ ms.component: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 6188b141ec1a514d999f290366cd9ffbafc1d96c
-ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
+ms.openlocfilehash: 0ed23c8efcf43213b288945c2910edf4c97bb63e
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/22/2018
-ms.locfileid: "53753126"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54214464"
 ---
 # <a name="azure-active-directory-report-retention-policies"></a>Azure Active Directory 报告保留策略
 
@@ -40,6 +40,18 @@ ms.locfileid: "53753126"
 
 - **立即** - 如果已在 Azure 门户中使用报告。
 - **2 小时内** - 如果尚未在 Azure 门户中启用报告。
+
+---
+
+### <a name="how-soon-can-i-see-activities-data-after-getting-a-premium-license"></a>获得高级许可证后多久可看见活动数据？
+
+如果已经拥有免费许可证的活动数据，则可在升级时立即看到这些数据。 升级到高级许可证后，如果没有任何数据，则需要在一到两天后，数据才会显示在报告中。
+
+---
+
+### <a name="can-i-see-last-months-data-after-getting-an-azure-ad-premium-license"></a>获得 Azure AD Premium 许可证后是否能查看上个月的数据？
+
+如果最近刚切换到高级版本（包括试用版），则最初最多能看到 7 天的数据。 随着数据累积，可以看到过去 30 天的数据。
 
 ---
 

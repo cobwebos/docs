@@ -11,14 +11,14 @@ ms.service: log-analytics
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/27/2018
+ms.date: 01/09/2018
 ms.author: bwren
-ms.openlocfilehash: dc1de1bb43295d2ff9f260613ae568cdd2fbe6ae
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 624091d4b5c1e17a301d9087f56ec5f9b0fecc5c
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54103469"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54198773"
 ---
 # <a name="custom-logs-in-log-analytics"></a>Log Analytics 中的自定义日志
 Log Analytics 中的自定义日志数据源可以从 Windows 和 Linux 计算机上的文本文件中收集事件。 许多应用程序将信息记录到文本文件，而不是标准日志记录服务（例如 Windows 事件日志或 Syslog）。 在收集后，可以将数据分析到查询中的各个字段，或者在收集期间将数据提取到各个字段。
@@ -164,6 +164,18 @@ Log Analytics 大概每隔 5 分钟就会从每个自定义日志中收集新条
 我们使用自定义字段来定义“EventTime”、“Code”、“Status”和“Message”字段，这样就可以看到查询返回的记录中的差异。
 
 ![具有自定义字段的日志查询](media/data-sources-custom-logs/query-02.png)
+
+## <a name="alternatives-to-custom-logs"></a>自定义日志的替代方法
+虽然如果数据符合列出的条件，则自定义日志很有用，但如下所示的情况需要其他策略：
+
+- 数据不符合所需的结构，如具有不同格式的时间戳。
+- 日志文件不符合要求，如文件编码或不受支持的文件夹结构。
+- 集合之前需要对数据进行预处理或筛选。 
+
+在不能使用自定义日志收集数据的情况下，请考虑下列备用策略：
+
+- 使用自定义脚本或其它方式将数据写入到 Log Analytics 收集的 [Windows 事件](data-sources-windows-events.md)或 [Syslog](data-sources-syslog.md)。 
+- 使用 [HTTP 数据收集器 API](data-collector-api.md) 将数据直接发送到 Log Analytics。 [使用 Azure 自动化 runbook 收集 Log Analytics 中的数据](runbook-datacollect.md)中提供了使用 Azure 自动化 runbook 的示例。
 
 ## <a name="next-steps"></a>后续步骤
 * 请参阅[在 Log Analytics 中分析文本数据](../log-query/parse-text.md)来了解用于将每个导入的日志条目分析到多个属性中的方法。

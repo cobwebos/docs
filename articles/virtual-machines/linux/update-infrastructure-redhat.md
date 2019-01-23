@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 1/7/2019
 ms.author: borisb
-ms.openlocfilehash: 1a1038bec66cd90e2cd0cbc8b125857403317d89
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 61d2c82f875c4f40e370515fd249e23601e91678
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54078246"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54232050"
 ---
 # <a name="red-hat-update-infrastructure-for-on-demand-red-hat-enterprise-linux-vms-in-azure"></a>用于 Azure 中按需 Red Hat Enterprise Linux VM 的 Red Hat 更新基础结构
  [Red Hat 更新基础结构](https://access.redhat.com/products/red-hat-update-infrastructure) (RHUI) 允许云提供程序（如 Azure）镜像 Red Hat 托管的存储库内容，创建包含 Azure 特定内容的自定义存储库，并将其提供给最终用户 VM 使用。
@@ -27,6 +27,8 @@ ms.locfileid: "54078246"
 已预先配置 Red Hat Enterprise Linux (RHEL) 即用即付 (PAYG) 映像来访问 Azure RHUI。 不需要任何其他配置。 要获取最新更新，请在 RHEL 实例准备好后运行 `sudo yum update`。 RHEL PAYG 软件费涵盖了此服务。
 
 [此处](./rhel-images.md)提供了关于 Azure 中的 RHEL 映像的更多信息，包括发布和保留策略。
+
+可以在 [Red Hat Enterprise Linux Life Cycle](https://access.redhat.com/support/policy/updates/errata)（Red Hat Enterprise Linux 生命周期）页找到有关 RHEL 所有版本的 Red Hat 支持策略的信息。
 
 ## <a name="important-information-about-azure-rhui"></a>有关 Azure RHUI 的重要信息
 * Azure RHUI 目前仅支持每个 RHEL 系列（RHEL6 或 RHEL7）中的最新次要版本。 要将连接到 RHUI 的 RHEL VM 实例升级到最新次要版本，请运行 `sudo yum update`。
@@ -218,4 +220,4 @@ sudo yum update -y --disablerepo=* --enablerepo=rhui-microsoft-* rhui-usgov-rhel
 ## <a name="next-steps"></a>后续步骤
 * 要通过 Azure 市场 PAYG 映像创建 Red Hat Enterprise Linux VM 并利用 Azure 托管的 RHUI，请转到 [Azure 市场](https://azure.microsoft.com/marketplace/partners/redhat/)。
 * 若要详细了解 Azure 中的 Red Hat 映像，请转到此[文档页面](./rhel-images.md)。
-
+* 可以在 [Red Hat Enterprise Linux Life Cycle](https://access.redhat.com/support/policy/updates/errata)（Red Hat Enterprise Linux 生命周期）页找到有关 RHEL 所有版本的 Red Hat 支持策略的信息。

@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 06/01/2018
 ms.author: jomolesk
-ms.openlocfilehash: 50a49a8bcb6bec6c177823ea61cc340da6876357
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 9bfd748e6b10106587e3fce64e15d7f1f6d50e59
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53602080"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54261581"
 ---
 # <a name="azure-security-and-compliance-blueprint-paas-web-application-for-fedramp"></a>Azure 安全性与合规性蓝图：适用于 FedRAMP 的 PaaS Web 应用
 
@@ -53,7 +53,7 @@ ms.locfileid: "53602080"
 ## <a name="deployment-architecture"></a>部署体系结构
 以下部分详细描述了部署和实施要素。
 
-**Azure 资源管理器**：客户可以使用 [Azure 资源管理器](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)以组的方式处理解决方案中的资源。 客户可以通过一个协调的操作为解决方案部署、更新或删除所有资源。 客户可以使用一个模板来完成部署，该模板适用于不同的环境，例如测试、过渡和生产。 资源管理器提供安全、审核和标记功能，以帮助客户在部署后管理资源。
+**Azure 资源管理器**：借助[Azure 资源管理器](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)，客户可以以组的形式使用解决方案中的资源。 客户可以通过一个协调的操作为解决方案部署、更新或删除所有资源。 客户可以使用一个模板来完成部署，该模板适用于不同的环境，例如测试、过渡和生产。 资源管理器提供安全、审核和标记功能，以帮助客户在部署后管理资源。
 
 **应用服务环境 v2**：[Azure 应用服务环境](https://docs.microsoft.com/azure/app-service/environment/intro)是一项应用服务功能，可提供完全隔离和专用的环境，以便高度安全地运行应用服务应用程序。
 
@@ -165,7 +165,7 @@ Azure Monitor 可广泛记录系统和用户活动以及系统运行状况。 �
 
 此参考体系结构的数据流图可供[下载](https://aka.ms/fedrampPaaSWebAppDFD)，也可以在下面找到。 此模型有助于客户在做出修改时了解系统基础结构中存在的潜在风险点。
 
-![符合 FedRAMP 威胁模型的 PaaS Web 应用程序](images/fedramp-paaswa-threat-model.png?raw=true "符合 FedRAMP 威胁模型的 PaaS Web 应用程序")
+![符合 FedRAMP 威胁模型的 PaaS Web 应用程序](images/fedramp-paaswa-threat-model.png?raw=true "PaaS Web Application for FedRAMP threat model")
 
 ## <a name="compliance-documentation"></a>符合性文档
 [Azure 安全性和符合性蓝图 - FedRAMP 高客户责任表](https://aka.ms/blueprinthighcrm)列出 FedRAMP 高基线所需的所有安全性控件。 此表说明每个控件的实现是 Microsoft 的责任还是客户的责任，亦或是两者共同的责任。

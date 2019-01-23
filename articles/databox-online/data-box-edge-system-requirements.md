@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 11/06/2018
+ms.date: 01/14/2019
 ms.author: alkohli
-ms.openlocfilehash: 4d6060c1774b2ad09c3b813bc107b73309dae801
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 05f6208788060459e67a787507a56adeed980e2d
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54020211"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54318988"
 ---
 # <a name="azure-data-box-edge-system-requirements-preview"></a>Azure Data Box Edge系统要求（预览版）
 
@@ -78,6 +78,8 @@ Azure IoT Edge 允许使用支持的 IoT 中心协议从本地 Edge 设备来与
 > - 设备（源）IP 应始终设置为所有已启用云的网络接口。
 > - 目标 IP 应设置为 [Azure 数据中心 IP 范围](https://www.microsoft.com/download/confirmation.aspx?id=41653)。
 
+### <a name="url-patterns-for-gateway-feature"></a>网关功能的 URL 模式
+
 |    URL 模式                                                                                                                                                                                                                                                                                                                                                                                                                                                      |    组件或功能                                                                           |
 |---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------|
 |    https://\*.databoxedge.azure.com/\*<br>https://\*.servicebus.windows.net/\*<br>https://login.windows.net                                                                                                                                                                                                                                                                                                                                                           |    Azure Data Box Edge 服务<br>Azure 服务总线<br>身份验证服务                           |
@@ -89,6 +91,15 @@ Azure IoT Edge 允许使用支持的 IoT 中心协议从本地 Edge 设备来与
 |    https://\*.partners.extranet.microsoft.com/\*                                                                                                                                                                                                                                                                                                                                                                                                                    |    支持包                                                                                      |
 |    http://\*.data.microsoft.com                                                                                                                                                                                                                                                                                                                                                                                                                                     |    Windows 中的遥测服务，请参阅客户体验和诊断遥测的更新      |
 |                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |                                                                                                         |
+
+
+### <a name="url-patterns-for-compute-feature"></a>计算功能的 URL 模式
+
+| URL 模式                      | 组件或功能                     |   |
+|----------------------------------|---------------------------------------------|---|
+| https://mcr.microsoft.com<br></br>https://\*.cdn.mscr.io | Microsoft 容器注册表（必填）               |   |
+| https://\*.azurecr.io                     | 个人和第三方容器注册表（可选） |   |
+| https://\*.azure-devices.net              | Iot 中心访问权限（必填）                             |   |
 
 ## <a name="internet-bandwidth"></a>Internet 带宽
 

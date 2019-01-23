@@ -7,15 +7,15 @@ manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 11/30/2018
+ms.date: 01/11/2019
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 91102b9fe57b2291ce1d1678b71b3a8b0b834864
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 5d90e9440758f457aca591e5c2792c6670868685
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52721963"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54245474"
 ---
 # <a name="applications-types-that-can-be-used-in-active-directory-b2c"></a>可在 Azure Active Directory B2C 中使用的应用程序类型
 
@@ -41,7 +41,7 @@ Azure Active Directory (Azure AD) B2C 支持各种新式应用程序体系结构
 
 ## <a name="web-applications"></a>Web 应用程序
 
-对于托管在服务器中通过浏览器访问的 Web 应用程序（包括 .NET、PHP、Java、Ruby、Python 和 Node.js），Azure AD B2C 支持使用 [OpenID Connect](active-directory-b2c-reference-protocols.md) 实现所有用户体验。 这包括登录、注册和配置文件管理。 在 OpenID Connect 的 Azure AD B2C 实现中，Web 应用程序通过向 Azure AD 发出身份验证请求，来发起这些用户体验。 请求的结果是 `id_token`。 此安全令牌代表用户的标识。 它还以声明形式提供用户的相关信息：
+对于托管在服务器中通过浏览器访问的 Web 应用程序（包括 .NET、PHP、Java、Ruby、Python 和 Node.js），Azure AD B2C 支持使用 [OpenID Connect](active-directory-b2c-reference-protocols.md) 实现所有用户体验。 在 OpenID Connect 的 Azure AD B2C 实现中，Web 应用程序通过向 Azure AD 发出身份验证请求，来发起用户体验。 请求的结果是 `id_token`。 此安全令牌代表用户的标识。 它还以声明形式提供用户的相关信息：
 
 ```
 // Partial raw id_token
@@ -68,7 +68,7 @@ eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6ImtyaU1QZG1Cd...
 6. 验证 `id_token` 并设置会话 Cookie。
 7. 安全页返回至用户。
 
-使用从 Azure AD 收到的公共签名密钥来验证 `id_token` ，就足以验证用户的标识。 这也会设置可在后续页面请求中用于识别用户的会话 Cookie。
+使用从 Azure AD 收到的公共签名密钥来验证 `id_token` ，就足以验证用户的标识。 此进程也会设置可在后续页面请求中用于识别用户的会话 Cookie。
 
 若要查看此方案的实际运行情况，请尝试运行 [入门部分](active-directory-b2c-overview.md)中提供的 Web 应用程序登录代码示例之一。
 
@@ -124,58 +124,18 @@ Web API 可从许多类型的客户端（包括 Web 应用程序、桌面和移�
 
 #### <a name="web-api-chains-on-behalf-of-flow"></a>Web API 链（代理流）
 
-许多体系结构包含需要调用另一个下游 Web API 的 Web API，这两者都受 Azure AD B2C 的保护。 此方案常见于包含 Web API 后端的本机客户端。 然后，此 Web API 将调用 Azure AD 图形 API 等 Microsoft 联机服务。
+许多体系结构包含需要调用另一个下游 Web API 的 Web API，这两者都受 Azure AD B2C 的保护。 此方案常见于具有 Web API 后端的本机客户端，并调用 Azure AD B2C 图形 API 等 Microsoft Online 服务。
 
 可以使用 OAuth 2.0 JWT 持有者凭据授权（也称为“代理流”）来支持这种链接的 Web API 方案。  但是，Azure AD B2C 中目前尚未实现代理流。
 
-### <a name="reply-url-values"></a>回复 URL 值
-
-使用 Azure AD B2C 注册的应用目前仅限使用一组有限的回复 URL 值。 Web 应用和服务的回复 URL 必须以方案 `https` 开头，并且所有回复 URL 值必须共享一个 DNS 域。 例如，无法注册具有以下回复 URL 的 Web 应用：
-
-`https://login-east.contoso.com`
-
-`https://login-west.contoso.com`
-
-注册系统会将现有回复 URL 的完整 DNS 名称与要添加的回复 URL 的 DNS 名称相比较。 如果满足以下任一条件，添加 DNS 名称的请求会失败：
-
-- 新回复 URL 的完整 DNS 名称与现有回复 URL 的 DNS 名称不匹配。
-- 新回复 URL 的完整 DNS 名称不是现有回复 URL 的子域。
-
-例如，如果应用具有以下回复 URL：
-
-`https://login.contoso.com`
-
-可以向其添加，如下所示：
-
-`https://login.contoso.com/new`
-
-在这种情况下，DNS 名称将完全匹配。 或者，可以执行下面的操作：
-
-`https://new.login.contoso.com`
-
-在这种情况下，将引用 login.contoso.com 的 DNS 子域。 如果希望应用使用 login-east.contoso.com 和 login-west.contoso.com 作为回复 URL，必须按以下顺序添加这些回复 URL：
-
-`https://contoso.com`
-
-`https://login-east.contoso.com`
-
-`https://login-west.contoso.com`
-
-可以添加后两个回复 URL，因为它们是第一个回复 URL (contoso.com) 的子域。 
-
-创建移动/本机应用程序时，可以定义**重定向 URI** 而不是**重播 URL**。 选择重定向 URI 时，有两个重要的考虑事项：
-
-- **唯一**：每个应用程序的重定向 URI 的方案应是唯一的。 在示例 `com.onmicrosoft.contoso.appname://redirect/path` 中，`com.onmicrosoft.contoso.appname` 为方案。 应遵循此模式。 如果两个应用程序共享同一方案，用户会看到“选择应用”对话框。 如果用户的选择不正确，登录会失败。
-- **完整**：重定向 URI 必须同时包含方案和路径。 路径必须在域之后包含至少一个正斜杠。 例如，`//contoso/` 有效，而 `//contoso` 会失败。 请确保重定向 URI 中没有下划线等特殊字符。
-
 ### <a name="faulted-apps"></a>出错的应用
 
-不应按以下方式编辑 Azure AD B2C 应用程序：
+请勿以这些方式编辑 Azure AD B2C 应用程序：
 
 - 在其他应用程序管理门户（如 [应用程序注册门户](https://apps.dev.microsoft.com/)）中编辑。
 - 使用图形 API 或 PowerShell 编辑。
 
-如果在 Azure 门户外部编辑 Azure AD B2C 应用程序，它将成为出错的应用程序，并且不再可用于 Azure AD B2C。 需删除应用程序，然后重新创建它。
+如果在 Azure 门户外部编辑 Azure AD B2C 应用程序，它将成为出错的应用程序，并且不再可用于 Azure AD B2C。 删除应用程序，然后重新创建它。
 
 若要删除应用程序，请转到[应用程序注册门户](https://apps.dev.microsoft.com/)并在该处删除应用程序。 若要使应用程序可见，须为该应用程序的所有者（而不仅仅是租户管理员）。
 

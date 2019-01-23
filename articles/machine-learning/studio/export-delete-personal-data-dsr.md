@@ -1,22 +1,10 @@
 ---
-title: 从机器学习工作室中导出和删除数据 - Azure | Microsoft Docs
-description: 通过 Azure 门户或经过身份验证的 REST API，可导出和删除 Azure 机器学习工作室存储的产品内数据。 可通过 Azure 隐私门户访问遥测数据。 本文介绍相关实现方法。
-services: machine-learning
-author: ericlicoding
-ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
-ms.author: amlstudiodocs
-ms.reviewer: jmartens, mldocs
-ms.service: machine-learning
-ms.component: studio
-ms.topic: conceptual
-ms.date: 05/25/2018
-ms.openlocfilehash: e69883022937ccb4ad0f83f144afef0b5b1e0e56
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
-ms.translationtype: HT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53276248"
+title:从机器学习工作室中导出和删除数据 titleSuffix: Azure 机器学习工作室 description:通过 Azure 门户或经过身份验证的 REST API，可导出和删除 Azure 机器学习工作室存储的产品内数据。 可通过 Azure 隐私门户访问遥测数据。 本文介绍相关实现方法。
+services: machine-learning ms.service: machine-learning ms.component: studio ms.topic: conceptual
+
+author: ericlicoding ms.author: amlstudiodocs ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro ms.date:2018/05/25
 ---
+
 # <a name="export-and-delete-in-product-user-data-from-azure-machine-learning-studio"></a>从 Azure 机器学习工作室中导出和删除产品内用户数据
 
 可以使用 Azure 门户、工作室界面、PowerShell 和经过验证的 REST API 删除或导出 Azure 机器学习工作室存储的产品内数据。 本文介绍了相关实现方法。 
