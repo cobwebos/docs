@@ -1,3 +1,11 @@
+---
+ms.openlocfilehash: a9e46bdb97899957f09a847f0fef03a6fec5dc6a
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54452884"
+---
 # 概述
 ## [入门](get-started.md)
 ## [认证](sap-certifications.md)
@@ -68,7 +76,6 @@
 ### [跨 Azure 区域的 Azure 上的 SAP HANA 可用性](sap-hana-availability-across-regions.md)
 ## [Azure 虚拟机上的 SAP Business One](business-one-azure.md)
 ## [Windows/SQL Server SAP CAL 上的 SAP IDES 部署指南](cal-ides-erp6-erp7-sp3-sql.md)
-## [Azure Linux VM 上的 SAP NetWeaver](suse-quickstart.md)
 ## [适用于 Azure 的 SAP LaMa 连接器](lama-installation.md)
 ## Windows 和 Linux 上的高可用性 (HA)
 ### [概述](sap-high-availability-guide-start.md)

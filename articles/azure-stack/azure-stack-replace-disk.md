@@ -12,14 +12,14 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 1/14/2019
+ms.date: 01/22/2019
 ms.author: mabrigg
-ms.openlocfilehash: ad1234b6a0296a2fa46fe56786bbca4aca9ed470
-ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
+ms.openlocfilehash: d0b455261649fad95a92f7ad75f7af26d633cf5a
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54305955"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54476880"
 ---
 # <a name="replace-a-physical-disk-in-azure-stack"></a>更换 Azure Stack 中的物理磁盘
 
@@ -29,10 +29,10 @@ ms.locfileid: "54305955"
 
 可以将此过程用于集成系统，以及用于具有热插拔磁盘的开发工具包部署。
 
-实际的磁盘更换步骤将因原始设备制造商 (OEM) 硬件供应商而异。 有关你系统特有的详细步骤，请参阅供应商的现场可更换部件 (FRU) 文档。 
+实际的磁盘更换步骤将因原始设备制造商 (OEM) 硬件供应商而异。 有关你系统特有的详细步骤，请参阅供应商的现场可更换部件 (FRU) 文档。
 
 ## <a name="review-disk-alert-information"></a>查看磁盘警报信息
-当磁盘发生故障时，你会收到一条警报，告知你物理磁盘的连接已丢失。 
+当磁盘发生故障时，你会收到通知你物理磁盘已丢失的警报。
 
  ![显示物理磁盘连接丢失的警报](media/azure-stack-replace-disk/DiskAlert.png)
 
@@ -47,7 +47,7 @@ ms.locfileid: "54305955"
 
 为了防止在集成系统中使用不支持的磁盘，系统会阻止供应商不支持的磁盘。 如果尝试使用不支持的磁盘，则会有新警报通知你因为不支持该磁盘的型号或固件，所以已将该磁盘隔离。
 
-更换磁盘后，Azure Stack 会自动发现新磁盘，并启动虚拟磁盘修复过程。  
+更换磁盘后，Azure Stack 会自动发现新磁盘，并启动虚拟磁盘修复过程。
  
  ## <a name="check-the-status-of-virtual-disk-repair"></a>检查虚拟磁盘修复状态
  

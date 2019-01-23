@@ -11,36 +11,27 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: PowerShell
 ms.topic: get-started-article
-ms.date: 09/28/2018
+ms.date: 01/18/2019
 ms.author: mabrigg
 ms.reviewer: xiaofmao
-ms.openlocfilehash: 8eed0b4f2d14d22bdd9eddac9dbb4c0e02404975
-ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
+ms.openlocfilehash: 149da2c186ae1e0c3fa5af14a630a0edef7deb25
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54302708"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54470267"
 ---
 # <a name="manage-storage-accounts-in-azure-stack"></a>管理 Azure Stack 中的存储帐户
+
 了解如何管理 Azure Stack 中的存储帐户，以根据业务需求查找、恢复和回收存储容量。
 
-## <a name="find"></a>查找存储帐户
+## <a name="find-a-storage-account"></a>查找存储帐户
 可在 Azure Stack 中通过以下方式查看区域中的存储帐户列表：
 
 1. 登录到[管理员门户](https://adminportal.local.azurestack.external)。
 
-2. 在“管理”下选择“所有服务” > “区域管理”。
+2. 选择**所有服务** > **存储帐户**。
 
-3. 从“资源提供程序”列表中选择“存储”。
-   
-   ![存储资源提供程序](media/azure-stack-manage-storage-accounts/image1.png)
-
-5. 在“存储”中选择“存储帐户”。
-   
-   ![](media/azure-stack-manage-storage-accounts/image2.png)
-   
-   此边栏选项卡显示该区域中的存储帐户列表。
-   
    ![](media/azure-stack-manage-storage-accounts/image4.png)
 
 默认显示前 10 个帐户。 可以单击列表底部的“加载更多”链接来提取更多的帐户。
@@ -84,7 +75,7 @@ ms.locfileid: "54302708"
    
    ![](media/azure-stack-manage-storage-accounts/image8.png)
 7. 恢复过程随即显示“正在处理...请稍候”，表示恢复成功。
-   也可以选择门户顶部的铃铛图标查看进度指示。
+   此外可以选择查看进度指示在门户顶部的铃铛图标。
    
    ![](media/azure-stack-manage-storage-accounts/image9.png)
    
@@ -99,7 +90,7 @@ ms.locfileid: "54302708"
   删除的帐户已作为垃圾回收后，该帐户可能不会显示在帐户列表中。 在此情况下，无法恢复该帐户。 请参阅本文中的[回收容量](#reclaim)。
 
 ## <a name="set-the-retention-period"></a>设置保留期
-云操作员可以使用保留期设置来指定时间间隔天数（0 到 9999 天），在此期间，任何已删除的帐户都有可能能够恢复。 默认保留期设置为 0 天。 将值设置为“0”表示任何已删除的帐户会立即超出保留期，并标记为定期进行垃圾回收。
+云操作员可以使用保留期设置来指定时间间隔天数（0 到 9999 天），在此期间，任何已删除的帐户都有可能能够恢复。 默认保留期设置为 0 天。 将值设置为"0"表示任何已删除的帐户会立即超出保留期并标记为定期进行垃圾回收。
 
 **更改保留期：**
 
