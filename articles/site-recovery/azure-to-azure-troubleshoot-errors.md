@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: sujayt
-ms.openlocfilehash: e120c10468ca95b604ef8f857959607d3a066ea0
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 8023129bf700793447b63f0686acd22f6ac2b25c
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53973547"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54264999"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-replication-issues"></a>Azure 到 Azure VM 复制问题故障排除
 
@@ -286,6 +286,39 @@ Azure Site Recovery 当前强制要求源区域资源组和虚拟机应位于同
 --- | --- | ---
 150172<br></br>**消息**：无法为虚拟机启用保护，因为它具有 (DiskName)，其大小 (DiskSize) 小于最小支持的大小 10 GB。 | - 磁盘小于支持的大小 (1024 MB)| 请确保磁盘大小在支持的大小范围内，然后重试该操作。 
 
+## <a name="enable-protection-failed-as-device-name-mentioned-in-the-grub-configuration-instead-of-uuid-error-code-151126"></a>启用保护失败，因为 GRUB 配置中提到的设备名不是 UUID（错误代码 151126）
 
-## <a name="next-steps"></a>后续步骤
-[复制 Azure 虚拟机](site-recovery-replicate-azure-to-azure.md)
+**可能的原因：** </br>
+GRUB 配置文件（“/boot/grub/menu.lst”、“/boot/grub/grub.cfg”、“/boot/grub2/grub.cfg”或“/etc/default/grub”）可能包含参数“root”和“resume”的值作为实际设备名而非 UUID。 Site Recovery 要求 UUID 方法，因为设备名可能会在 VM 重启时发生更改，由于故障转移时 VM 可能不会出现相同的名称，从而导致问题。 例如： </br>
+
+
+- 以下行来自 GRUB 文件 /boot/grub2/grub.cfg。 <br>
+*linux   /boot/vmlinuz-3.12.49-11-default **root=/dev/sda2**  ${extra_cmdline} **resume=/dev/sda1** splash=silent quiet showopts*
+
+
+- 以下行来自 GRUB 文件 /boot/grub/menu.lst
+*kernel /boot/vmlinuz-3.0.101-63-default **root=/dev/sda2** **resume=/dev/sda1** splash=silent crashkernel=256M-:128M showopts vga=0x314*
+
+如果发现上面的粗体字符串，GRUB 具有参数“root”和“resume”的实际设备名，而不是 UUID。
+ 
+**如何修复：**<br>
+设备名应替换为相应的 UUID。<br>
+
+
+1. 执行命令“blkid <device name>”找到设备的 UUID。 例如：<br>
+```
+blkid /dev/sda1 
+```<br>
+```/dev/sda1: UUID="6f614b44-433b-431b-9ca1-4dd2f6f74f6b" TYPE="swap" ```<br>
+```blkid /dev/sda2```<br> 
+```/dev/sda2: UUID="62927e85-f7ba-40bc-9993-cc1feeb191e4" TYPE="ext3" 
+```<br>
+
+
+
+1. Now replace the device name with its UUID in the format like "root=UUID=<UUID>". For example, if we replace the device names with UUID for root and resume parameter mentioned above in the files "/boot/grub2/grub.cfg", "/boot/grub2/grub.cfg" or "/etc/default/grub: then the lines in the files looks like. <br>
+*kernel /boot/vmlinuz-3.0.101-63-default **root=UUID=62927e85-f7ba-40bc-9993-cc1feeb191e4** **resume=UUID=6f614b44-433b-431b-9ca1-4dd2f6f74f6b** splash=silent crashkernel=256M-:128M showopts vga=0x314*
+
+
+## Next steps
+[Replicate Azure virtual machines](site-recovery-replicate-azure-to-azure.md)
