@@ -2,20 +2,20 @@
 title: Azure Stack 数据中心集成 - 标识
 description: 了解如何将 Azure Stack AD FS 与数据中心 AD FS 集成
 services: azure-stack
-author: jeffgilb
+author: PatAltimore
 manager: femila
 ms.service: azure-stack
 ms.topic: article
-ms.date: 01/08/19
-ms.author: jeffgilb
-ms.reviewer: wfayed
+ms.date: 01/23/19
+ms.author: patricka
+ms.reviewer: thoroet
 keywords: ''
-ms.openlocfilehash: 63ac30728cceae76f869f5529905cd6d3dde9ae2
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 4f599379de07a9628ee81425ddac2374411bdf97
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54263780"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54852756"
 ---
 # <a name="azure-stack-datacenter-integration---identity"></a>Azure Stack 数据中心集成 - 标识
 可以使用 Azure Active Directory (Azure AD) 或 Active Directory 联合身份验证服务 (AD FS) 作为标识提供者来部署 Azure Stack。 必须在部署 Azure Stack 之前做出选择。 使用 AD FS 的部署也称为在断开连接模式下部署 Azure Stack。
@@ -193,16 +193,21 @@ Azure Stack 中的 Graph 服务使用以下协议和端口来与目标 Active Di
 
 对于此过程，请使用可以与 Azure Stack 中的特权终结点进行通信的计算机，并且该计算机可以访问在上一步中创建的元数据文件。
 
-1. 打开提升的 Windows PowerShell 会话。
+1. 打开权限提升的 Windows PowerShell 会话并连接到特权终结点。
 
    ```PowerShell  
    $federationMetadataFileContent = get-content c:\metadata.xml
    $creds=Get-Credential
    Enter-PSSession -ComputerName <IP Address of ERCS> -ConfigurationName PrivilegedEndpoint -Credential $creds
-   Register-CustomAdfs -CustomAdfsName Contoso -CustomADFSFederationMetadataFileContent $using:federationMetadataFileContent
    ```
 
-2. 使用适用于环境的参数运行以下命令，更新默认提供商订阅的所有者：
+2. 连接到特权终结点之后，使用适用于环境的参数运行以下命令：
+
+    ```PowerShell
+    Register-CustomAdfs -CustomAdfsName Contoso -CustomADFSFederationMetadataFileContent $using:federationMetadataFileContent
+    ```
+
+3. 使用适用于环境的参数运行以下命令，更新默认提供商订阅的所有者：
 
    ```PowerShell  
    Set-ServiceAdminOwner -ServiceAdminOwnerUpn "administrator@contoso.com"

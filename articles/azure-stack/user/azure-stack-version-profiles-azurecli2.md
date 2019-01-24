@@ -10,15 +10,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/03/2019
+ms.date: 01/24/2019
 ms.author: sethm
 ms.reviewer: sijuman
-ms.openlocfilehash: 2ab696436a8cf139eff92edc3b8ff2c27b40a7aa
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 15354cd7472e7cffb7a40ca431bc23eb65b9a9a9
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54018375"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54845888"
 ---
 # <a name="use-api-version-profiles-with-azure-cli-in-azure-stack"></a>在 Azure Stack 中将 API 版本配置文件与 Azure CLI 配合使用
 
@@ -147,7 +147,7 @@ Write-Host "Python Cert store was updated to allow the Azure Stack CA root certi
         --endpoint-active-directory-resource-id=<URI of the ActiveDirectoryServiceEndpointResourceID> \
         --profile 2018-03-01-hybrid
       ```
-    d. 若要在 AD FS 环境中注册的用户，使用：
+    d. 若要在 AD FS 环境中注册用户，请使用：
 
       ```azurecli
       az cloud register \
@@ -212,16 +212,13 @@ Write-Host "Python Cert store was updated to allow the Azure Stack CA root certi
       ```
     * AD FS 环境
 
-        * 以使用 web 浏览器的用户身份登录：  
-              ```azurecli  
-              az login
-              ```
-        * 以与设备代码中使用 web 浏览器的用户身份登录：  
-              ```azurecli  
-              az login --use-device-code
-              ```
-        > [!Note]  
-        >运行此命令会提供一个 URL 以及身份验证时必须使用的代码。
+        * 将 Web 浏览器与设备代码配合使用，以用户身份登录：  
+           ```azurecli  
+           az login --use-device-code
+           ```
+
+           > [!NOTE]  
+           >运行此命令会提供一个 URL 以及身份验证时必须使用的代码。
 
         * 以服务主体身份登录：
         
@@ -231,7 +228,7 @@ Write-Host "Python Cert store was updated to allow the Azure Stack CA root certi
         
             * 将 pfx 转换为 pem （使用 OpenSSL 实用程序）。
 
-          2.  登录到 CLI:
+          2.  登录到 CLI：
             ```azurecli  
             az login --service-principal \
               -u <Client ID from the Service Principal details> \

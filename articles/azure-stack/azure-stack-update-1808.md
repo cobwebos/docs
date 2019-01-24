@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/12/2019
+ms.date: 01/24/2019
 ms.author: sethm
 ms.reviewer: justini
-ms.openlocfilehash: 8d477997e71843307f6c756a6974a23267842015
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: b91da771587dea60048a83471ec1f585690f2a33
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54244964"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54848608"
 ---
 # <a name="azure-stack-1808-update"></a>Azure Stack 1808 更新
 
@@ -268,7 +268,7 @@ Azure Stack 1808 更新内部版本号为 **1.1808.0.97**。
 
    1. 如果订阅是在 1808 更新之前创建的，通过托管磁盘部署 VM 可能会失败并出现内部错误消息。 若要解决此错误，请针对每个订阅执行以下步骤：
       1. 在租户门户中转到“订阅”，找到相应订阅。 依次单击“资源提供程序”、“Microsoft.Compute”、“重新注册”。
-      2. 在同一订阅下，转到“访问控制(标识和访问管理)”，验证“Azure Stack - 托管磁盘”是否已列出。
+      2. 在同一个订阅，请转到**访问控制 (IAM)**，并确认**客户端 DiskRP AzureStack**列出角色。
    2. 如果已配置多租户环境，在与来宾目录相关联的订阅中部署 VM 可能会失败并出现内部错误消息。 若要解决该错误，请执行以下步骤：
       1. 应用 [1808 Azure Stack 修补程序](https://support.microsoft.com/help/4481066/)。
       2. 执行[此文](azure-stack-enable-multitenancy.md#registering-azure-stack-with-the-guest-directory)中的步骤，重新配置每个来宾目录。
@@ -316,7 +316,7 @@ Azure Stack 1808 更新内部版本号为 **1.1808.0.97**。
 
    若要查找 VM 的“CPU 百分比”图表，请转到“指标”边栏选项卡并查看所有受支持的 Windows VM 来宾指标。
 
-- 创建具有 SSH 授权启用的 Ubuntu 18.04 VM 将不允许要使用 SSH 密钥登录。 解决此问题，请使用 VM 访问 for Linux 扩展预配后，实现 SSH 密钥，或使用基于密码的身份验证。
+- 如果使用创建时已启用 SSH 授权的 Ubuntu 18.04 VM，则无法使用 SSH 密钥登录。 若要解决此问题，请在预配后使用针对 Linux 扩展的 VM 访问权限来实现 SSH 密钥，或者使用基于密码的身份验证。
 
 ### <a name="networking"></a>网络  
 
@@ -365,7 +365,7 @@ Azure Stack 1808 更新内部版本号为 **1.1808.0.97**。
 
 可从[此处](https://aka.ms/azurestackupdatedownload)下载 Azure Stack 1808 更新包。 
 
-在连接的方案，Azure Stack 部署定期检查受保护的终结点，并自动通知你是否可以更新，可用于你的云。 有关详细信息，请参阅[适用于 Azure Stack 中管理更新](azure-stack-updates.md)。
+只有在连接的情况下，Azure Stack 部署才会定期检查某个安全的终结点，并在已发布云更新的情况下自动通知你。 有关详细信息，请参阅[管理 Azure Stack 的更新](azure-stack-updates.md)。
 
 ## <a name="next-steps"></a>后续步骤
 - 若要查看 Azure Stack 集成系统的服务策略，以及必须如何做才能使系统保持在受支持的状态，请参阅 [Azure Stack 服务策略](azure-stack-servicing-policy.md)。  

@@ -13,18 +13,28 @@ ms.topic: article
 ms.date: 11/26/2018
 ms.author: mabrigg
 ms.reviewer: johnhas
-ms.openlocfilehash: 735f1d7cce8621a29e5a582917d3eea8ee399b8f
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.openlocfilehash: ce16ab3b723b9a6c87c7b980e3cc76c389609da6
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54319641"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54847894"
 ---
 # <a name="release-notes-for-validation-as-a-service"></a>作为一项服务验证的发行说明
 
 [!INCLUDE [Azure_Stack_Partner](./includes/azure-stack-partner-appliesto.md)]
 
 本文包含有关作为服务进行 Azure Stack 验证发行说明。
+
+## <a name="version-405"></a>版本 4.0.5
+2019 年 1 月 17日
+
+-  更新地址存储池不一致的磁盘标识测试。 版本:5.1.14.0  -> 5.1.15.0
+-  Azure Stack 每月更新验证更新地址为已批准的软件和内容验证不一致。 版本:5.1.14.0  -> 5.1.15.0
+-  OEM 扩展包验证更新，以执行必要的检查*之前*Azure Stack 更新步骤。 版本:5.1.14.0  -> 5.1.15.0
+-  内部的 bug 修复
+
+
 
 ## <a name="version-402"></a>版本 4.0.2
 

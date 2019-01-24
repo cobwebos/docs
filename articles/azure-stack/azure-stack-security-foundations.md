@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 01/14/2019
 ms.author: patricka
 ms.reviewer: fiseraci
-ms.openlocfilehash: cd3aa913bd17498ddc58994196bc8faa96c4de51
-ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
+ms.openlocfilehash: fba4020c5e947c135d9e17cfb1d0b2a79ad8a502
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54306448"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54819333"
 ---
 # <a name="azure-stack-infrastructure-security-posture"></a>Azure Stack 基础结构安全局势
 
@@ -41,7 +41,7 @@ Azure Stack 的安全局势功能旨在防范新式威胁，为符合主要合�
 由于 Azure Stack 是以集成系统的形式交付的，因此 Azure Stack 基础结构的安全局势由 Microsoft 定义。 如同在 Azure 中一样，租户需负责定义其租户工作负荷的安全局势。 本文档提供有关 Azure Stack 基础结构安全局势的基础知识。
 
 ## <a name="data-at-rest-encryption"></a>静态数据加密
-所有 Azure Stack 基础结构和租户静态数据都以 Bitlocker 加密。 这种加密可以防范 Azure Stack 存储组件的实物遗失或失窃。 有关详细信息，请参阅[在 Azure Stack 中的静态加密数据](azure-stack-security-bitlocker.md)。
+静态使用 BitLocker 进行加密的所有 Azure Stack 基础结构和租户数据。 这种加密可以防范 Azure Stack 存储组件的实物遗失或失窃。 有关详细信息，请参阅[在 Azure Stack 中的静态加密数据](azure-stack-security-bitlocker.md)。
 
 ## <a name="data-in-transit-encryption"></a>传输中数据加密
 Azure Stack 基础结构组件使用以 TLS 1.2 加密的通道进行通信。 加密证书由基础结构自行管理。 
