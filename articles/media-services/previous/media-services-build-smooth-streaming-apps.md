@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/11/2017
 ms.author: juliako
-ms.openlocfilehash: 953cd536c390e571ee4c40dc670316197718eff2
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 7b742840f461744e0be8c7a4ab4d9b392238de4e
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51279188"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54232679"
 ---
 # <a name="how-to-build-a-smooth-streaming-windows-store-application"></a>如何生成平滑流式处理 Windows 应用商店应用程序
 
@@ -95,7 +95,7 @@ ms.locfileid: "51279188"
 
 1. 在解决方案资源管理器中，双击“MainPage.xaml”以在设计视图中将它打开。
 2. 在该 XAML 文件中找到 **&lt;Grid&gt;** 和 **&lt;/Grid&gt;** 标记，并在这两个标记之间粘贴以下代码：
-```xml
+   ```xml
          <Grid.RowDefinitions>
 
             <RowDefinition Height="20"/>    <!-- spacer -->
@@ -138,7 +138,7 @@ ms.locfileid: "51279188"
                FontSize="16" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center" />
             <TextBox x:Name="txtStatus" FontSize="10" Width="700" VerticalAlignment="Center"/>
          </StackPanel>
-```
+   ```
    MediaElement 控件用于播放媒体。 在下一课，我们将使用名为 sliderProgress 的滚动条控件来控制媒体进度。
 3. 按 **CTRL+S** 保存文件。
 
@@ -160,7 +160,7 @@ MediaElement 控件并非原本就支持平滑流式处理内容。 若要启用
         extensions.RegisterByteStreamHandler("Microsoft.Media.AdaptiveStreaming.SmoothByteStreamHandler", ".ism", "text/xml");
         extensions.RegisterByteStreamHandler("Microsoft.Media.AdaptiveStreaming.SmoothByteStreamHandler", ".ism", "application/vnd.ms-sstr+xml");
 5. 在 MainPage 类的末尾，粘贴以下代码：
-```csharp
+   ```csharp
          # region UI Button Click Events
          private void btnPlay_Click(object sender, RoutedEventArgs e)
          {
@@ -202,7 +202,7 @@ MediaElement 控件并非原本就支持平滑流式处理内容。 若要启用
          mediaElement.Position = new TimeSpan(0, 0, (int)(sliderProgress.Value));
          }
          # endregion
-```
+   ```
 现已定义 sliderProgress_PointerPressed 事件处理程序。  要使它正常工作，还需要执行其他操作，本教程的下一课将予以介绍。
 6. 按 **CTRL+S** 保存文件。
 
@@ -221,7 +221,7 @@ MediaElement 控件并非原本就支持平滑流式处理内容。 若要启用
 
 第 1 课到此结束。  在本课中，已学习如何使用 MediaElement 控件来播放平滑流式处理内容。  在下一课，将要添加一个滚动条，用于控制平滑流式处理内容的进度。
 
-## <a name="lesson-2-add-a-slider-bar-to-control-the-media-progress"></a>第2 课：添加滚动条以控制媒体进度
+## <a name="lesson-2-add-a-slider-bar-to-control-the-media-progress"></a>第 2 课：添加滚动条以控制媒体进度
 
 在第 1 课，已使用 MediaElement XAML 控件创建了一个 Windows 应用商店应用程序，用于播放平滑流式处理媒体内容。  该应用程序带有基本的媒体功能，例如开始、停止和暂停。  在本课中，将要在该应用程序中添加一个滚动条控件。
 
@@ -242,25 +242,29 @@ MediaElement 控件并非原本就支持平滑流式处理内容。 若要启用
 
 1. 在解决方案资源管理器中，右键单击“MainPage.xaml”，并单击“查看代码”。
 2. 在该文件的开头，添加以下 using 语句：
-```csharp
+
+   ```csharp
         using Microsoft.Media.AdaptiveStreaming;
-```
+   ```
 3. 在 MainPage 类的开头，添加以下数据成员：
-```csharp
+
+   ```csharp
          private Windows.Foundation.Collections.PropertySet propertySet = new Windows.Foundation.Collections.PropertySet();             
          private IAdaptiveSourceManager adaptiveSourceManager;
-```
+   ```
 4. 在 **MainPage** 构造函数中的 **this.Initialize Components();** 行以及在上一课编写的注册代码行的后面添加以下代码：
-```csharp
+
+   ```csharp
         // Gets the default instance of AdaptiveSourceManager which manages Smooth 
         //Streaming media sources.
         adaptiveSourceManager = AdaptiveSourceManager.GetDefault();
         // Sets property key value to AdaptiveSourceManager default instance.
         // {A5CE1DE8-1D00-427B-ACEF-FB9A3C93DE2D}" must be hardcoded.
         propertySet["{A5CE1DE8-1D00-427B-ACEF-FB9A3C93DE2D}"] = adaptiveSourceManager;
-```
+   ```
 5. 在 **MainPage** 构造函数中，修改两个 RegisterByteStreamHandler 方法以添加第四个参数：
-```csharp
+
+   ```csharp
          // Registers Smooth Streaming byte-stream handler for ".ism" extension and, 
          // "text/xml" and "application/vnd.ms-ss" mime-types and pass the propertyset. 
          // http://*.ism/manifest URI resources will be resolved by Byte-stream handler.
@@ -276,18 +280,20 @@ MediaElement 控件并非原本就支持平滑流式处理内容。 若要启用
             ".ism", 
             "application/vnd.ms-sstr+xml", 
          propertySet);
-```
+   ```
 6. 按 **CTRL+S** 保存文件。
 
 **添加自适应源管理器级别事件处理程序**
 
 1. 在解决方案资源管理器中，右键单击“MainPage.xaml”，并单击“查看代码”。
 2. 在 **MainPage** 类中，添加以下数据成员：
-```csharp
+
+   ```csharp
      private AdaptiveSource adaptiveSource = null;
-```
+   ```
 3. 在 **MainPage** 类的末尾，添加以下事件处理程序：
-```csharp
+
+   ```csharp
          # region Adaptive Source Manager Level Events
          private void mediaElement_AdaptiveSourceOpened(AdaptiveSource sender, AdaptiveSourceOpenedEventArgs args)
          {
@@ -296,24 +302,27 @@ MediaElement 控件并非原本就支持平滑流式处理内容。 若要启用
          }
 
          # endregion Adaptive Source Manager Level Events
-```
+   ```
 4. 在 **MainPage** 构造函数的末尾，添加以下行以订阅自适应源打开事件：
-```csharp
+
+   ```csharp
          adaptiveSourceManager.AdaptiveSourceOpenedEvent += 
            new AdaptiveSourceOpenedEventHandler(mediaElement_AdaptiveSourceOpened);
-```
+   ```
 5. 按 **CTRL+S** 保存文件。
 
 **添加自适应源级别事件处理程序**
 
 1. 在解决方案资源管理器中，右键单击“MainPage.xaml”，并单击“查看代码”。
 2. 在 **MainPage** 类中，添加以下数据成员：
-```csharp
+
+   ```csharp
      private AdaptiveSourceStatusUpdatedEventArgs adaptiveSourceStatusUpdate; 
      private Manifest manifestObject;
-```
+   ```
 3. 在 **MainPage** 类的末尾，添加以下事件处理程序：
-```csharp
+
+   ```csharp
          # region Adaptive Source Level Events
          private void mediaElement_ManifestReady(AdaptiveSource sender, ManifestReadyEventArgs args)
          {
@@ -335,8 +344,10 @@ MediaElement 控件并非原本就支持平滑流式处理内容。 若要启用
          }
 
          # endregion Adaptive Source Level Events
-4. At the end of the **mediaElement AdaptiveSourceOpened** method, add the following code to subscribe to the events:
-   
+   ```
+4. 在 **mediaElement AdaptiveSourceOpened** 方法的末尾，添加以下代码以订阅事件：
+
+   ```csharp
          adaptiveSource.ManifestReadyEvent +=
 
                     mediaElement_ManifestReady;
@@ -346,7 +357,7 @@ MediaElement 控件并非原本就支持平滑流式处理内容。 若要启用
          adaptiveSource.AdaptiveSourceFailedEvent += 
 
             mediaElement_AdaptiveSourceFailed;
-```
+   ```
 5. 按 **CTRL+S** 保存文件。
 
 相同的事件也可以在自适应源管理器级别使用，因此可用于处理应用程序中所有媒体元素通用的功能。 每个 AdaptiveSource 包含其自身的事件，所有 AdaptiveSource 事件将级联在 AdaptiveSourceManager 下面。
@@ -355,7 +366,8 @@ MediaElement 控件并非原本就支持平滑流式处理内容。 若要启用
 
 1. 在解决方案资源管理器中，右键单击“MainPage.xaml”，并单击“查看代码”。
 2. 在 **MainPage** 类的末尾，添加以下事件处理程序：
-```csharp
+
+   ```csharp
          # region Media Element Event Handlers
          private void MediaOpened(object sender, RoutedEventArgs e)
          {
@@ -376,35 +388,40 @@ MediaElement 控件并非原本就支持平滑流式处理内容。 若要启用
          }
 
          # endregion Media Element Event Handlers
-```
+   ```
 3. 在 **MainPage** 构造函数的末尾，添加以下代码以订阅事件：
-```csharp
+
+   ```csharp
          mediaElement.MediaOpened += MediaOpened;
          mediaElement.MediaEnded += MediaEnded;
          mediaElement.MediaFailed += MediaFailed;
-```
+   ```
 4. 按 **CTRL+S** 保存文件。
 
 **添加滚动条相关的代码**
 
 1. 在解决方案资源管理器中，右键单击“MainPage.xaml”，并单击“查看代码”。
 2. 在该文件的开头，添加以下 using 语句：
-```csharp
+
+   ```csharp
         using Windows.UI.Core;
-```
+   ```
 3. 在 **MainPage** 类中，添加以下数据成员：
-```csharp
+
+   ```csharp
          public static CoreDispatcher _dispatcher;
          private DispatcherTimer sliderPositionUpdateDispatcher;
-```
+   ```
 4. 在 **MainPage** 构造函数的末尾，添加以下代码：
-```csharp
+
+   ```csharp
          _dispatcher = Window.Current.Dispatcher;
          PointerEventHandler pointerpressedhandler = new PointerEventHandler(sliderProgress_PointerPressed);
          sliderProgress.AddHandler(Control.PointerPressedEvent, pointerpressedhandler, true);    
-```
+   ```
 5. 在 **MainPage** 类的末尾，添加以下代码：
-```csharp
+
+   ```csharp
          # region sliderMediaPlayer
          private double SliderFrequency(TimeSpan timevalue)
          {
@@ -486,30 +503,32 @@ MediaElement 控件并非原本就支持平滑流式处理内容。 若要启用
          }
 
          # endregion sliderMediaPlayer
-```
+   ```
 
->[!NOTE]
->CoreDispatcher 用于从非 UI 线程对 UI 线程作出更改。 如果调度程序线程出现瓶颈，开发人员可以选择使用他（她）想要更新的 UI 元素提供的调度程序。  例如：
+   > [!NOTE]
+   > CoreDispatcher 用于从非 UI 线程对 UI 线程作出更改。 如果调度程序线程出现瓶颈，开发人员可以选择使用他（她）想要更新的 UI 元素提供的调度程序。  例如：
 
-```csharp
+   ```csharp
          await sliderProgress.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () => { TimeSpan 
 
          timespan = new TimeSpan(adaptiveSourceStatusUpdate.EndTime); 
          double absvalue  = (int)Math.Round(timespan.TotalSeconds, MidpointRounding.AwayFromZero); 
 
          sliderProgress.Maximum = absvalue; }); 
-```
+   ```
 6. 在 **mediaElement_AdaptiveSourceStatusUpdated** 方法的末尾，添加以下代码：
-```csharp
+
+   ```csharp
          setSliderStartTime(args.StartTime);
          setSliderEndTime(args.EndTime);
-```
+   ```
 7. 在 **MediaOpened** 方法的末尾，添加以下代码：
-```csharp
+
+   ```csharp
          sliderProgress.StepFrequency = SliderFrequency(mediaElement.NaturalDuration.TimeSpan);
          sliderProgress.Width = mediaElement.Width;
          setupTimer();
-```
+   ```
 8. 按 **CTRL+S** 保存文件。
 
 **编译和测试应用程序**
@@ -533,7 +552,8 @@ MediaElement 控件并非原本就支持平滑流式处理内容。 若要启用
 
 1. 在解决方案资源管理器中，右键单击“MainPage.xaml”，并单击“查看设计器”。
 2. 找到 &lt;Grid.RowDefinitions&gt;，并按如下所示修改 RowDefinitions：
-```xml
+
+   ```xml
          <Grid.RowDefinitions>            
             <RowDefinition Height="20"/>
             <RowDefinition Height="50"/>
@@ -541,9 +561,10 @@ MediaElement 控件并非原本就支持平滑流式处理内容。 若要启用
             <RowDefinition Height="80"/>
             <RowDefinition Height="50"/>
          </Grid.RowDefinitions>
-```
+   ```
 3. 在 &lt;Grid&gt;&lt;/Grid&gt; 标记中，添加以下代码以定义一个列表框控件，使用户能够看到可用流的列表及选择流：
-```xml
+
+   ```xml
          <Grid Name="gridStreamAndBitrateSelection" Grid.Row="3">
             <Grid.RowDefinitions>
                 <RowDefinition Height="300"/>
@@ -567,14 +588,15 @@ MediaElement 控件并非原本就支持平滑流式处理内容。 若要启用
                 </ListBox>
             </StackPanel>
          </Grid>
-```
+   ```
 4. 按 **CTRL+S** 保存更改。
 
 **修改代码隐藏文件**
 
 1. 在解决方案资源管理器中，右键单击“MainPage.xaml”，并单击“查看代码”。
 2. 在 SSPlayer 命名空间中添加一个新类：
-```csharp
+
+   ```csharp
         #region class Stream
    
         public class Stream
@@ -619,16 +641,17 @@ MediaElement 控件并非原本就支持平滑流式处理内容。 若要启用
             }
         }
         #endregion class Stream
-```
+   ```
 3. 在 MainPage 类的开头，添加以下变量定义：
-```csharp
+
+   ```csharp
          private List<Stream> availableStreams;
          private List<Stream> availableAudioStreams;
          private List<Stream> availableTextStreams;
          private List<Stream> availableVideoStreams;
-```
+   ```
 4. 在 MainPage 类中，添加以下区域：
-```csharp
+   ```csharp
         #region stream selection
         ///<summary>
         ///Functionality to select streams from IManifestStream available streams
@@ -764,15 +787,15 @@ MediaElement 控件并非原本就支持平滑流式处理内容。 若要启用
             }
         }
         #endregion stream selection
-```
+   ```
 5. 找到 mediaElement_ManifestReady 方法，并在函数的末尾追加以下代码：
-```csharp
+   ```csharp
         getStreams(manifestObject);
         refreshAvailableStreamsListBoxItemSource();
-```
-    So when MediaElement manifest is ready, the code gets a list of the available streams, and populates the UI list box with the list.
+   ```
+    因此，当 MediaElement 清单准备就绪时，该代码将获取可用流的列表，并将该列表的内容填充到 UI 列表框。
 6. 在 MainPage 类中，找到 UI 按钮单击事件区域，并添加以下函数定义：
-```csharp
+   ```csharp
         private void btnChangeStream_Click(object sender, RoutedEventArgs e)
         {
             List<IManifestStream> selectedStreams = new List<IManifestStream>();
@@ -783,7 +806,7 @@ MediaElement 控件并非原本就支持平滑流式处理内容。 若要启用
             // Change streams on the presentation
             changeStreams(selectedStreams);
         }
-```
+   ```
 **编译和测试应用程序**
 
 1. 按 **F6** 编译项目。 
@@ -805,7 +828,7 @@ MediaElement 控件并非原本就支持平滑流式处理内容。 若要启用
 
 1. 在解决方案资源管理器中，右键单击“MainPage.xaml”，并单击“查看设计器”。
 2. 找到名为 **gridStreamAndBitrateSelection** 的 &lt;Grid&gt; 标记，并在该标记的末尾追加以下代码：
-```xml
+   ```xml
          <StackPanel Name="spBitRateSelection" Grid.Row="1" Grid.Column="1">
          <StackPanel Orientation="Horizontal">
              <TextBlock Name="tbBitRate" Text="Available Bitrates:" FontSize="16" VerticalAlignment="Center"/>
@@ -820,14 +843,14 @@ MediaElement 控件并非原本就支持平滑流式处理内容。 若要启用
              </ListBox.ItemTemplate>
          </ListBox>
          </StackPanel>
-```
+   ```
 3. 按 **CTRL+S** 保存更改
 
 **修改代码隐藏文件**
 
 1. 在解决方案资源管理器中，右键单击“MainPage.xaml”，并单击“查看代码”。
 2. 在 SSPlayer 命名空间中添加一个新类：
-```csharp
+   ```csharp
         #region class Track
         public class Track
         {
@@ -864,13 +887,13 @@ MediaElement 控件并非原本就支持平滑流式处理内容。 若要启用
             //public Track() { }
         }
         #endregion class Track
-```
+   ```
 3. 在 MainPage 类的开头，添加以下变量定义：
-```csharp
+   ```csharp
         private List<Track> availableTracks;
-```
+   ```
 4. 在 MainPage 类中，添加以下区域：
-```csharp
+   ```csharp
         #region track selection
         /// <summary>
         /// Functionality to select video streams
@@ -967,14 +990,14 @@ MediaElement 控件并非原本就支持平滑流式处理内容。 若要启用
             }
         }
         #endregion track selection
-```
+   ```
 5. 找到 mediaElement_ManifestReady 方法，并在函数的末尾追加以下代码：
-```csharp
+   ```csharp
          getTracks(manifestObject);
          refreshAvailableTracksListBoxItemSource();
-```
+   ```
 6. 在 MainPage 类中，找到 UI 按钮单击事件区域，并添加以下函数定义：
-```csharp
+   ```csharp
          private void btnChangeStream_Click(object sender, RoutedEventArgs e)
          {
             List<IManifestStream> selectedStreams = new List<IManifestStream>();
@@ -985,7 +1008,7 @@ MediaElement 控件并非原本就支持平滑流式处理内容。 若要启用
             // Change streams on the presentation
             changeStreams(selectedStreams);
          }
-```
+   ```
 **编译和测试应用程序**
 
 1. 按 **F6** 编译项目。 

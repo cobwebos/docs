@@ -1,27 +1,8 @@
 ---
-title: 导入文件中的数据 - Azure 机器学习工作室 | Microsoft Docs
-description: 了解如何将训练数据文件从硬盘驱动器上传到 Azure 机器学习工作室。 这会在工作区中创建一个数据集模块。
-keywords: 导入数据, 数据格式, 数据类型, 数据源, 训练数据
-services: machine-learning
-documentationcenter: ''
-author: ericlicoding
-ms.custom: seodec18
-ms.author: amlstudiodocs
-editor: cgronlun
-ms.assetid: c0dd9e90-23c4-4f64-8b8f-489ad79f047b
-ms.service: machine-learning
-ms.component: studio
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 03/20/2017
-ms.openlocfilehash: 096d2d4a8c1ee1727b124a5416ec77e8281c97d7
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
-ms.translationtype: HT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53254854"
+title:从文件导入数据 title Suffix: Azure 机器学习工作室 description:了解如何将训练数据文件从硬盘驱动器上传到 Azure 机器学习工作室。 这会在工作区中创建一个数据集模块。
+services: machine-learning ms.service: machine-learning ms.component: studio ms.topic: article
+
+author: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18 ms.date:2017/03/20
 ---
 # <a name="import-training-data-from-a-file-on-your-hard-drive-into-azure-machine-learning-studio"></a>将硬盘驱动器上某个文件中的训练数据导入 Azure 机器学习工作室
 
