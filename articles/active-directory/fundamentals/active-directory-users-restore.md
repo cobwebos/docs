@@ -3,7 +3,7 @@ title: 还原或永久删除最近删除的用户 - Azure Active Directory | Mic
 description: 如何使用 Azure Active Directory 查看可还原的用户、还原已删除的用户或永久删除用户。
 services: active-directory
 author: eross-msft
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.component: fundamentals
@@ -12,12 +12,12 @@ ms.date: 12/17/2018
 ms.author: lizross
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
-ms.openlocfilehash: 066c9189e0c3cea409a99217e0ab4b46002df1f9
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: 995a6a9da637c23663c51fe2f4b175741f5849b6
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53556775"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54450313"
 ---
 # <a name="restore-or-remove-a-recently-deleted-user-using-azure-active-directory"></a>使用 Azure Active Directory 还原或删除最近删除的用户
 删除用户后，帐户将保持挂起状态 30 天。 在此 30 天期间，可以还原用户帐户及其所有属性。 30 天期限过后，将自动且永久删除用户。
@@ -59,9 +59,6 @@ ms.locfileid: "53556775"
 2. 选择“还原用户”。
 
     ![“用户 - 已删除的用户”页，其中突出显示“还原用户”选项](media/active-directory-users-restore/users-deleted-users-restore-user.png)
-
->[!NOTE]
->以前，将用户从本地同步范围中删除并在云中删除时，该帐户的 DirSyncEnabled 状态被错误地设置为“False”。 如果之后从 Azure AD 回收站手动还原了该用户，则会显示“仅限云”帐户的错误状态。 现已修复此问题，将用户从同步范围中删除，然后软删除并从 Azure AD 回收站手动还原时，DirSyncEnabled 状态的值始终保持为“True”。
 
 ## <a name="permanently-delete-a-user"></a>永久删除用户
 可从目录中永久删除用户，无需等待 30 天后自动删除。 你本人、其他管理员和 Microsoft 客户支持人员不能还原已永久删除的用户。

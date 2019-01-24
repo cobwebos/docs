@@ -7,13 +7,13 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: vinagara
-ms.component: alerts
-ms.openlocfilehash: 26c98a87b736132eb50cddffd06c1173d205c34d
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.subservice: alerts
+ms.openlocfilehash: 0765e5978f62a60b7a9b405c04c2471508947c60
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54265424"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54433163"
 ---
 # <a name="webhook-actions-for-log-alert-rules"></a>用于日志警报规则的 Webhook 操作
 [在 Azure 中创建日志警报](alerts-log.md)时，可以选择[使用操作组配置](action-groups.md)以执行一个或多个操作。  本文介绍可用的不同 Webhook 操作，以及有关配置基于 JSON 的自定义 Webhook 的详细信息。
@@ -25,7 +25,7 @@ ms.locfileid: "54265424"
 
 Webhook 操作需要下表中的属性：
 
-| 属性 | Description |
+| 属性 | 说明 |
 |:--- |:--- |
 | Webhook URL |Webhook 的 URL。 |
 | 自定义 JSON 负载 |如果在创建警报期间选择了此选项，请自定义要通过 webhook 发送的有效负载。 [管理日志警报](alerts-log.md)中提供了详细信息 |
@@ -36,7 +36,7 @@ Webhook 操作需要下表中的属性：
 Webhooks 包括 URL 和 JSON 格式的负载（即发送到外部服务的数据）。  默认情况下，有效负载包括下表中的值：可以选择将此负载替换成自己的自定义负载。  在这种情况下，可以使用下表中每个参数的变量，将其值包含在自定义负载中。
 
 
-| 参数 | 变量 | Description |
+| 参数 | 变量 | 说明 |
 |:--- |:--- |:--- |
 | AlertRuleName |#alertrulename |警报规则的名称。 |
 | 严重性 |#severity |为触发的日志警报设置的严重性。 |
@@ -202,3 +202,4 @@ Webhooks 包括 URL 和 JSON 格式的负载（即发送到外部服务的数据
 - 创建和管理 [Azure 门户中的操作组](action-groups.md)
 - 详细了解 [Application Insights](../../azure-monitor/app/analytics.md)
 - 详细了解 [Log Analytics](../../azure-monitor/log-query/log-query-overview.md)。 
+

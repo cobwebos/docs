@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/13/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: fec649706be1b3db01a5c6cbc8f395e8c7e1a4d2
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 076e2aec249407406d42357df0dc8e74e9362992
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53134329"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54446657"
 ---
 # <a name="heading"></a>对 Azure 上 SQL Server 中的数据进行采样
 
@@ -76,7 +76,7 @@ Python 中的 [Pandas](http://pandas.pydata.org/) 库提供一组丰富的数据
     import pandas as pd
 
     # Query database and load the returned results in pandas data frame
-    data_frame = pd.read_sql('''select column1, cloumn2... from <table_name> tablesample (0.1 percent)''', conn)
+    data_frame = pd.read_sql('''select column1, column2... from <table_name> tablesample (0.1 percent)''', conn)
 
 现在，可以在 Pandas 数据帧中处理采样的数据。 
 

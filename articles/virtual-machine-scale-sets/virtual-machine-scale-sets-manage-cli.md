@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/29/2018
 ms.author: zarhoads
-ms.openlocfilehash: bbed197eb78e34c6e53802dfcfdcc192f780df33
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: 84e01c319ab058c9abb05cd9882f4c25bea5cffb
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49465653"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54462024"
 ---
 # <a name="manage-a-virtual-machine-scale-set-with-the-azure-cli"></a>使用 Azure CLI 管理虚拟机规模集
 在虚拟机规模集的整个生命周期内，可能需要运行一个或多个管理任务。 此外，可能还需要创建自动执行各种生命周期任务的脚本。 本文详细介绍了执行这些任务常用的一些 Azure CLI 命令。
@@ -37,7 +37,7 @@ az vmss show --resource-group myResourceGroup --name myScaleSet
 
 
 ## <a name="view-vms-in-a-scale-set"></a>查看规模集中的 VM
-要在规模集中查看 VM 实例的列表，请使用 [az vmss list-instances](/cli/azure/vmss#list-instances)。 以下示例将列出 myResourceGroup 资源组中 myScaleSet 规模集的所有 VM 实例。 为这些名称提供自己的值：
+要在规模集中查看 VM 实例的列表，请使用 [az vmss list-instances](/cli/azure/vmss)。 以下示例将列出 myResourceGroup 资源组中 myScaleSet 规模集的所有 VM 实例。 为这些名称提供自己的值：
 
 ```azurecli
 az vmss list-instances \
@@ -46,7 +46,7 @@ az vmss list-instances \
     --output table
 ```
 
-要查看与特定 VM 实例有关的其他信息，请将 `--instance-id` 参数添加到 [az vmss get-instance-view](/cli/azure/vmss#get-instance-view)，并指定要查看的实例。 以下示例将查看与 myScaleSet 规模集和 myResourceGroup 资源组中 VM 实例“0”有关的信息。 按如下所示输入自己的名称：
+要查看与特定 VM 实例有关的其他信息，请将 `--instance-id` 参数添加到 [az vmss get-instance-view](/cli/azure/vmss)，并指定要查看的实例。 以下示例将查看与 myScaleSet 规模集和 myResourceGroup 资源组中 VM 实例“0”有关的信息。 按如下所示输入自己的名称：
 
 ```azurecli
 az vmss get-instance-view \
@@ -108,7 +108,7 @@ az vmss deallocate --resource-group myResourceGroup --name myScaleSet --instance
 
 
 ### <a name="start-vms-in-a-scale-set"></a>启动规模集中的 VM
-要在规模集中启动一个或多个 VM，请使用 [az vmss start](/cli/azure/vmss#az_vmss_start)。 通过 `--instance-ids` 参数，可指定要启动的一个或多个 VM。 若不指定实例 ID，则启动规模集中的所有 VM。 要启动多个 VM，请用空格分隔每个实例 ID。
+要在规模集中启动一个或多个 VM，请使用 [az vmss start](/cli/azure/vmss)。 通过 `--instance-ids` 参数，可指定要启动的一个或多个 VM。 若不指定实例 ID，则启动规模集中的所有 VM。 要启动多个 VM，请用空格分隔每个实例 ID。
 
 以下示例将启动 myScaleSet 规模集和 myResourceGroup 资源组中的实例“0”。 请按照如下所示，提供值：
 

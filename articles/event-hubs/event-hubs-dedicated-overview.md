@@ -15,12 +15,12 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: ed1fedab45ce59af2c67ed8a2ef60714d26d5801
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: d418715ab651721d03b67bd411eb90607391bf10
+ms.sourcegitcommit: c31a2dd686ea1b0824e7e695157adbc219d9074f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53091020"
+ms.lasthandoff: 01/18/2019
+ms.locfileid: "54402330"
 ---
 # <a name="overview-of-event-hubs-dedicated"></a>专用事件中心概述
 
@@ -32,7 +32,7 @@ ms.locfileid: "53091020"
 | --- |:---:|:---:|:---:|
 | 入口事件 | 按每百万个事件支付 | 附送 |
 | 吞吐量单位（传入为 1 MB/秒，传出为 2 MB/秒） | 按每小时支付 | 附送 |
-| 消息大小 | 256 KB | 1 MB |
+| 消息大小 | 1 MB | 1 MB |
 | 发布者策略 | 是 | 是 |   
 | 使用者组 | 20 | 20 |
 | 消息重播 | 是 | 是 |
@@ -47,7 +47,6 @@ ms.locfileid: "53091020"
 使用专用事件中心具有以下优点：
 
 * 单个租户托管，免除来自其他租户的干扰。
-* 与标准事件中心的 256 KB 相比，消息大小增至 1 MB。
 * 每次可重复性能。
 * 有保障的容量，满足迸发需求。
 * 包括事件中心的[捕获](event-hubs-capture-overview.md)功能，提供与微批处理和长期保留的集成。

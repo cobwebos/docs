@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 01/03/2019
+ms.date: 01/21/2019
 ms.author: raynew
-ms.openlocfilehash: 7e5f72ca637cb657369a3b384aee666e0935b9d0
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: fa25c144737c4d070b2dbd08700c68e617950e0d
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54263538"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54452252"
 ---
 # <a name="support-matrix-for-replicating-from-one-azure-region-to-another"></a>用于在 Azure 区域之间进行复制的支持矩阵
 
@@ -26,7 +26,7 @@ ms.locfileid: "54263538"
 --- | ---
 **Azure 门户** | 支持
 **PowerShell** | [使用 PowerShell 进行 Azure 到 Azure 的复制](azure-to-azure-powershell.md)
-**REST API** | 目前不支持
+**REST API** | 支持
 **CLI** | 目前不支持
 
 

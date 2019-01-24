@@ -3,7 +3,7 @@ title: 规划 Azure Active Directory 中的条件访问策略 | Microsoft Docs
 description: 本文介绍如何为 Azure Active Directory 规划条件访问策略。
 services: active-directory
 author: MarkusVi
-manager: mtillman
+manager: daveba
 tags: azuread
 ms.service: active-directory
 ms.component: conditional-access
@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 12/13/2018
 ms.author: markvi
 ms.reviewer: martincoetzer
-ms.openlocfilehash: 1c483b7f3fcb22aa617ff55699cb8f4d4da95912
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: 1911dd189e21a6d29b2bf1ba3d179b41e948f469
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54354999"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54450501"
 ---
 # <a name="how-to-plan-your-conditional-access-deployment-in-azure-active-directory"></a>如何：规划 Azure Active Directory 中的条件访问部署
 
@@ -54,7 +54,7 @@ ms.locfileid: "54354999"
 
 |发生这种情况时：|这样做：|
 |-|-|
-|尝试访问：<br>- 访问云应用*<br>- 由用户和组*<br>使用：<br>- 条件 1（例如，外部企业网络）<br>- 条件 2（例如，登录风险）|阻止访问应用程序|
+|尝试访问：<br>- 访问云应用<br>- 由用户和组<br>使用：<br>- 条件 1（例如，外部企业网络）<br>- 条件 2（例如，登录风险）|阻止访问应用程序|
 |尝试访问：<br>- 访问云应用<br>- 由用户和组<br>使用：<br>- 条件 1（例如，外部企业网络）<br>- 条件 2（例如，登录风险）|使用 (AND) 授予访问权限：<br>- 要求 1（例如，MFA）<br>- 要求 2（例如，设备合规性）|
 |尝试访问：<br>- 访问云应用<br>- 由用户和组<br>使用：<br>- 条件 1（例如，外部企业网络）<br>- 条件 2（例如，登录风险）|使用 (OR) 授予访问权限：<br>- 要求 1（例如，MFA）<br>- 要求 2（例如，设备合规性）|
 

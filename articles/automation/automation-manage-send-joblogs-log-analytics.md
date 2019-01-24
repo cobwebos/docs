@@ -3,18 +3,18 @@ title: 将 Azure 自动化作业数据转发到 Log Analytics
 description: 本文展示了如何将作业状态和 Runbook 作业流发送到 Azure Log Analytics，以提供更多见解和管理信息。
 services: automation
 ms.service: automation
-ms.component: process-automation
+ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
 ms.date: 06/12/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 8a1f7e367b3f8f06e33bbcd11f8090c9578c1d30
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 0125c64a96929db9c8846ca7ad731fa3dc795f98
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53269560"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54432959"
 ---
 # <a name="forward-job-status-and-job-streams-from-automation-to-log-analytics"></a>将作业状态和作业流从自动化转发到 Log Analytics
 
@@ -84,7 +84,7 @@ Get-AzureRmDiagnosticSetting -ResourceId $automationAccountId
 来自 Azure 自动化的诊断将在 Log Analytics 中创建两种类型的记录，并标记为 **AzureDiagnostics**。 下面的查询使用了升级后的 Log Analytics 查询语言。 有关旧查询语言与新 Azure Log Analytics 查询语言之间的共有查询的相关信息，请访问 [Legacy to new Azure Log Analytics Query Language cheat sheet](https://docs.loganalytics.io/docs/Learn/References/Legacy-to-new-to-Azure-Log-Analytics-Language)（新旧 Azure Log Analytics 查询语言速查表）。
 
 ### <a name="job-logs"></a>作业日志
-| 属性 | Description |
+| 属性 | 说明 |
 | --- | --- |
 | TimeGenerated |执行 Runbook 作业的日期和时间。 |
 | RunbookName_s |Runbook 的名称。 |
@@ -106,7 +106,7 @@ Get-AzureRmDiagnosticSetting -ResourceId $automationAccountId
 
 
 ### <a name="job-streams"></a>作业流
-| 属性 | Description |
+| 属性 | 说明 |
 | --- | --- |
 | TimeGenerated |执行 Runbook 作业的日期和时间。 |
 | RunbookName_s |Runbook 的名称。 |
@@ -183,3 +183,4 @@ Log Analytics 可以更直观地显示自动化作业的运行情况，并且可
 * 若要了解如何通过 Runbook 创建和检索输出及错误消息，请参阅 [Runbook 输出和消息](automation-runbook-output-and-messages.md)。
 * 若要详细了解 Runbook 执行方式、如何监视 Runbook 作业和其他技术详细信息，请参阅[跟踪 Runbook 作业](automation-runbook-execution.md)。
 * 若要了解有关 Log Analytics 和数据收集源的详细信息，请参阅[在 Log Analytics 中收集 Azure 存储数据概述](../azure-monitor/platform/collect-azure-metrics-logs.md)。
+

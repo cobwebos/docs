@@ -3,18 +3,18 @@ title: 管理 Azure 自动化数据
 description: 本文包含管理 Azure 自动化环境的多个主题。  Azure 自动化目前包括数据保留和备份 Azure 自动化灾难恢复。
 services: automation
 ms.service: automation
-ms.component: shared-capabilities
+ms.subservice: shared-capabilities
 author: georgewallace
 ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 05da900e9ddf4cbb99df5c6d62ddb569059e2c4b
-ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
+ms.openlocfilehash: b133947a7daf1977f084ee4008599882b51d9e8b
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "42140412"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54428471"
 ---
 # <a name="managing-azure-automation-data"></a>管理 Azure 自动化数据
 本文包含管理 Azure 自动化环境的多个主题。
@@ -34,7 +34,7 @@ Azure 自动化会自动删除并永久移除 90 天之前的作业。
 | Runbook |在资源被用户删除 90 天后或者在包含该资源的帐户被用户删除 90 天后将其永久移除。 |
 | 作业 |在上次修改 90 天后删除并永久移除。 这可能发生在作业已完成、已停止或已暂停之后。 |
 | 节点配置/MOF 文件 |生成新节点配置 90 天后，将永久删除旧节点配置。 |
-| DSC 节点 |在使用 Azure 门户或 Windows PowerShell 中的 [Unregister-AzureRMAutomationDscNode cmdlet](https://docs.microsoft.com/powershell/module/azurerm.automation/unregister-azurermautomationdscnode) 从自动化帐户中取消注册节点 90 天后，将永久删除该节点。 在用户删除保存节点的帐户 90 天后，也会永久删除该节点。 |
+| DSC 节点 |在使用 Azure 门户或 Windows PowerShell 中的 [Unregister-AzureRMAutomationDscNode cmdlet](https://docs.microsoft.com/powershell/module/azurerm.automation/unregister-azurermautomationdscnode) 从自动化帐户中取消注册节点 90 天后，永久删除该节点。 在用户删除保存节点的帐户 90 天后，也会永久删除该节点。 |
 | 节点报告 |在生成该节点的新报告 90 天后永久删除 |
 
 保留策略应用于所有用户并且当前无法自定义。
@@ -76,4 +76,5 @@ Azure 自动化帐户中标配的异地复制可将帐户数据备份到其他�
 | 日本东部 |日本西部 |
 
 如果主要区域发生数据丢失（这种情况很少见），Microsoft 将尝试恢复数据。 如果主数据无法恢复，系统将执行异地故障转移，并通过订阅通知受影响的客户。
+
 

@@ -5,7 +5,7 @@ services: active-directory
 keywords: 对应用的条件访问, 使用 Azure AD 进行条件访问, 保护对公司资源的访问, 条件访问策略, 使用条款
 documentationcenter: ''
 author: MarkusVi
-manager: mtillman
+manager: daveba
 ms.assetid: ''
 ms.service: active-directory
 ms.component: conditional-access
@@ -16,12 +16,12 @@ ms.workload: identity
 ms.date: 12/14/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: 3cb403b7f2ac529c79af5f83a1cbe436dc670a25
-ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
+ms.openlocfilehash: 3a628fbf7570ed6682fe2407ab8face2597c363d
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53413364"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54450960"
 ---
 # <a name="quickstart-require-terms-of-use-to-be-accepted-before-accessing-cloud-apps"></a>快速入门：在访问云应用之前要求接受使用条款 
 
@@ -94,7 +94,7 @@ ms.locfileid: "53413364"
 
     ![使用条款](./media/require-tou/112.png) 
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”文本框中，键入“我的 TOU”。
+    a. 在“名称”文本框中，键入“我的 TOU”。
 
     b. 在“显示名称”文本框中，键入“我的 TOU”。
 
@@ -145,7 +145,7 @@ ms.locfileid: "53413364"
 
     ![用户和组](./media/require-tou/24.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 单击“选择用户和组”，然后选择“用户和组”。
+    a. 单击“选择用户和组”，然后选择“用户和组”。
 
     b. 单击“选择”。
 
@@ -161,7 +161,7 @@ ms.locfileid: "53413364"
 
     ![选择云应用](./media/require-tou/26.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 单击“选择应用”。
+    a. 单击“选择应用”。
 
     b. 单击“选择”。
 
@@ -178,9 +178,9 @@ ms.locfileid: "53413364"
 
     ![授权](./media/require-tou/111.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 选择“授予访问权限”。
+    a. 选择“授予访问权限”。
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 选择“我的 TOU”。
+    a. 选择“我的 TOU”。
 
     b. 单击“选择”。
 
@@ -224,7 +224,7 @@ ms.locfileid: "53413364"
 
     ![云应用](./media/require-tou/16.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 单击“云应用”。
+    a. 单击“云应用”。
 
     b. 在“云应用”页上，单击“选择应用”。
 

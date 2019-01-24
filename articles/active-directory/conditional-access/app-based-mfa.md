@@ -5,7 +5,7 @@ services: active-directory
 keywords: 对应用的条件性访问, 使用 Azure AD 进行条件性访问, 保护对公司资源的访问, 条件性访问策略
 documentationcenter: ''
 author: MarkusVi
-manager: mtillman
+manager: daveba
 ms.assetid: ''
 ms.service: active-directory
 ms.component: conditional-access
@@ -16,12 +16,12 @@ ms.workload: identity
 ms.date: 12/14/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: 1c61286a24c3562e32cb4c734ea081526d38837a
-ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
+ms.openlocfilehash: 05d447a7d36e0e8ca9da35407e825eb8f49fb4a3
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53413143"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54448269"
 ---
 # <a name="quickstart-require-mfa-for-specific-apps-with-azure-active-directory-conditional-access"></a>快速入门：要求使用 Azure Active Directory 条件访问对特定应用进行 MFA 
 
@@ -105,7 +105,7 @@ ms.locfileid: "53413143"
 
     ![用户和组](./media/app-based-mfa/24.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 单击“选择用户和组”，然后选择“用户和组”。
+    a. 单击“选择用户和组”，然后选择“用户和组”。
 
     b. 单击“选择”。
 
@@ -121,7 +121,7 @@ ms.locfileid: "53413143"
 
     ![选择云应用](./media/app-based-mfa/26.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 单击“选择应用”。
+    a. 单击“选择应用”。
 
     b. 单击“选择”。
 
@@ -138,9 +138,9 @@ ms.locfileid: "53413143"
 
     ![授权](./media/app-based-mfa/11.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 选择“授予访问权限”。
+    a. 选择“授予访问权限”。
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 选择“需要多重身份验证”。
+    a. 选择“需要多重身份验证”。
 
     b. 单击“选择”。
 
@@ -183,7 +183,7 @@ ms.locfileid: "53413143"
 
     ![云应用](./media/app-based-mfa/16.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 单击“云应用”。
+    a. 单击“云应用”。
 
     b. 在“云应用”页上，单击“选择应用”。
 

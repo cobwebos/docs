@@ -3,18 +3,18 @@ title: 在 Azure 自动化混合 Runbook 辅助角色上运行 runbook
 description: 本文介绍如何使用混合 Runbook 辅助角色在本地数据中心或云提供商的计算机上运行 runbook。
 services: automation
 ms.service: automation
-ms.component: process-automation
+ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
 ms.date: 07/17/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 89f8b4a842c9a632c661d9770d17c1ec01d4211e
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: 0d622f6f03f9d132f3c57910d8a60c5731ad7c94
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53582246"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54425773"
 ---
 # <a name="running-runbooks-on-a-hybrid-runbook-worker"></a>在混合 Runbook 辅助角色上运行 runbook
 
@@ -255,3 +255,4 @@ Set-AuthenticodeSignature .\TestRunbook.ps1 -Certificate $SigningCert
 
 * 若要详细了解其他可用于启动 Runbook 的方法，请参阅[在 Azure 自动化中启动 Runbook](automation-starting-a-runbook.md)。
 * 若要了解如何通过不同过程使用文本编辑器在 Azure 自动化中处理 PowerShell runbook，请参阅[在 Azure 自动化中编辑 runbook](automation-edit-textual-runbook.md)
+

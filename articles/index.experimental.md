@@ -1,14 +1,8 @@
----
+--- 
 layout: HubPage
 hide_bc: true
 title: Microsoft Azure 文档
 description: 了解如何使用 Microsoft Azure 云服务构建和管理功能强大的应用程序。 获取文档、示例代码、教程等等。
-ms.openlocfilehash: c8ba57b9173fbbfa4e00472972921073f32cb2f7
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
-ms.translationtype: HT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53017784"
 ---
 <div id="main" class="v2">
     <div class="container">
@@ -3318,7 +3312,7 @@ ms.locfileid: "53017784"
                                                     <a href="/powershell/azure/get-started-azureps">入门</a>
                                                 </p>
                                                 <p>
-                                                    <a href="/powershell/azure/install-azurerm-ps">下载 PowerShell</a>
+                                                    <a href="/powershell/azure/azurerm/install-azurerm-ps">下载 PowerShell</a>
                                                 </p>
                                                 <p>
                                                     <a href="/powershell/azure/overview">参考</a>

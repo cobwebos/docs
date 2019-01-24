@@ -11,14 +11,14 @@ ms.service: key-vault
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 01/07/2019
+ms.date: 01/18/2019
 ms.author: barclayn
-ms.openlocfilehash: 2a36993e9406613ad9182d01c3681056114dca18
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: 7229cedf2ad5e211847054b53c34e54f633f57e0
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54159955"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54434761"
 ---
 # <a name="azure-key-vault-logging"></a>Azure 密钥保管库日志记录
 
@@ -254,7 +254,7 @@ Get-AzureRmKeyVault -VaultName 'contosokeyvault'`
 
 下表列出了字段的名称和描述。
 
-| 字段名称 | Description |
+| 字段名称 | 说明 |
 | --- | --- |
 | time |日期和时间 (UTC)。 |
 | resourceId |Azure 资源管理器资源 ID。 对于密钥保管库日志，这始终是密钥保管库资源 ID。 |

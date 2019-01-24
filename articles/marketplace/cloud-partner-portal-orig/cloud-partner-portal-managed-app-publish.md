@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pbutlerm
-ms.openlocfilehash: bc044c8b59c939163336ecab01546fc26a7a2643
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 6e5bcd6d9923b4051d44d51ff1a2534bc5e02f41
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48805741"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54445654"
 ---
 <a name="publish-an-azure-managed-application-to-azure-marketplace"></a>将 Azure 托管应用程序发布到 Azure 市场 
 ========================================================
@@ -68,7 +68,7 @@ ms.locfileid: "48805741"
 
 **产品**
 
-Azure 应用程序产品/服务对应于发布者提供的一类产品/服务。 如果要在 Azure 市场中发布新的解决方案/应用程序，则可以使用新的产品/服务。 产品/服务是 SKU 的集合。 每个产品/服务在 Azure 市场中以自有实体的方式显示。
+Azure 应用程序套餐对应于发布者提供的一类产品套餐。 如果要在 Azure 市场中发布新的解决方案/应用程序，则可以使用新的产品/服务。 产品/服务是 SKU 的集合。 每个产品/服务在 Azure 市场中以自有实体的方式显示。
 
 **SKU**
 
@@ -88,7 +88,7 @@ SKU 显示在 Azure 市场的父产品/服务下，同时在 azure.com 中以可
 
 3.  新产品/服务的“编辑器”视图现在会打开，可以开始创作了。\"\"
 
-4.  需要填写的窗体显示在“编辑器”视图中的左侧。\"\"\"\" 每个窗体都包含一组要填写的字段。\"\"必填字段标记有红色的星号 (\*)。
+4.  需要填写的窗体显示在“编辑器”视图中的左侧。\"\"\"\" 每个\"窗体\"都包含一组要填写的字段。必填字段标有红色的星号 (\*)。
 
     > 有 4 个用于创作托管应用程序的主要窗体
 
@@ -119,7 +119,7 @@ SKU 显示在 Azure 市场的父产品/服务下，同时在 azure.com 中以可
 
 产品/服务的显示名称。 该名称将显示在 Azure 市场和 Azure 门户中。 该名称不能超过 50 个字符。 指导原则是在其中包含产品的可识别品牌名称。 除非销售需要，否则不要在此处包含公司名称。 如果要在自己的网站上销售此产品/服务，请确保名称正是在网站上显示的名称。
 
-单击“保存”保存进度。\"\" 下一步是为产品/服务添加 SKU。
+单击“保存”以保存进度。\"\" 下一步是为产品/服务添加 SKU。
 
 <a name="how-to-create-skus"></a>如何创建 SKU 
 ------------------

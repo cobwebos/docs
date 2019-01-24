@@ -4,18 +4,18 @@ description: 基于角色的访问控制 (RBAC) 可用于对 Azure 资源进行�
 keywords: 自动化 rbac, 基于角色的访问控制, azure rbac
 services: automation
 ms.service: automation
-ms.component: shared-capabilities
+ms.subservice: shared-capabilities
 author: georgewallace
 ms.author: gwallace
 ms.date: 05/17/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 538208c39d6436c15b95760133e00c980e2e8277
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 4fb90dbdb02fc0a0448b8cb6723c980c0fe41bd6
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52727896"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54424313"
 ---
 # <a name="role-based-access-control-in-azure-automation"></a>Azure 自动化中基于角色的访问控制
 
@@ -47,7 +47,7 @@ ms.locfileid: "52727896"
 
 所有者可管理所有内容，包括访问权限。 下表显示了授予角色的权限：
 
-|操作|Description|
+|操作|说明|
 |---|---|
 |Microsoft.Automation/automationAccounts/|创建和管理所有类型的资源。|
 
@@ -428,3 +428,4 @@ New-AzureRmRoleAssignment -ObjectId $userId -RoleDefinitionName "Automation Runb
 * 有关为 Azure 自动化配置 RBAC 的不同方式的信息，请参阅 [使用 Azure PowerShell 管理 RBAC](../role-based-access-control/role-assignments-powershell.md)。
 * 有关以不同方式启动 Runbook 的详细信息，请参阅 [启动 Runbook](automation-starting-a-runbook.md)
 * 有关不同 Runbook 类型的信息，请参阅 [Azure 自动化 Runbook 类型](automation-runbook-types.md)
+
