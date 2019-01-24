@@ -3,25 +3,25 @@ title: Azure 自动化中的 Runbook 输出和消息
 description: 介绍如何创建和检索 Azure 自动化中 Runbook 的输出和错误消息。
 services: automation
 ms.service: automation
-ms.component: process-automation
+ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
 ms.date: 12/04/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: cc1ef2a3ab09ec5b86d1dc0b4c139afd43ba356d
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 82382ecc3adf0d0621f51438a082f7807b031fc9
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52969118"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54431208"
 ---
 # <a name="runbook-output-and-messages-in-azure-automation"></a>Azure 自动化中的 Runbook 输出和消息
 大多数 Azure 自动化 runbook 都有某种形式的输出。 此输出可能是发给用户的错误消息，也可能是你打算用于另一个 runbook 的复杂对象。 Windows PowerShell 提供[多个流](/powershell/module/microsoft.powershell.core/about/about_redirection)，以便从脚本或工作流发送输出。 Azure 自动化以不同方式处理每个流。 在创建 runbook 时，应遵循如何使用每种方法的最佳实践。
 
 下表简要介绍了 Azure 门户中的每个流及其对已发布的 runbook 的行为以及[测试 runbook](automation-testing-runbook.md) 的时间。 后面的部分将提供有关每个流的更多详细信息。
 
-| Stream | Description | 已发布 | 测试 |
+| Stream | 说明 | 已发布 | 测试 |
 |:--- |:--- |:--- |:--- |
 | 输出 |对象旨在由其他 Runbook 使用。 |写入作业历史记录。 |显示在测试输出窗格中。 |
 | 警告 |面向用户的警告消息。 |写入作业历史记录。 |显示在测试输出窗格中。 |
@@ -234,4 +234,5 @@ Get-AzureRmAutomationJobOutput -ResourceGroupName "ResourceGroup01" `
 ## <a name="next-steps"></a>后续步骤
 * 若要详细了解 Runbook 执行方式、如何监视 Runbook 作业和其他技术详细信息，请参阅 [Track a runbook job](automation-runbook-execution.md)（跟踪 Runbook 作业）
 * 若要了解如何设计和使用子 Runbook，请参阅 [Azure 自动化中的子 Runbook](automation-child-runbooks.md)
+
 

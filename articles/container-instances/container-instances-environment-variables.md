@@ -7,12 +7,12 @@ ms.service: container-instances
 ms.topic: article
 ms.date: 11/19/2018
 ms.author: danlep
-ms.openlocfilehash: 4dde10c5cb4a764a268b8b9d3ebfaebc008e13ed
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: ce6c3364c594bc515abd9f0c02bd69bf500e4f4e
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52162498"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54436563"
 ---
 # <a name="set-environment-variables"></a>设置环境变量。
 
@@ -22,7 +22,7 @@ ms.locfileid: "52162498"
 
 *NumWords*：发送到 STDOUT 的单词数。
 
-*MinLength*：单词中最少包含几个字符才将它统计为一个单词。 如果指定较大的数字，将会忽略“of”和“the”等常见单词。
+*MinLength*：单词中最少包含几个字符才将它计为一个单词。 如果指定较大的数字，将会忽略“of”和“the”等常见单词。
 
 如果需要以环境变量的形式传递机密，Azure 容器实例支持 Windows 和 Linux 容器的[安全值](#secure-values)。
 
@@ -255,6 +255,6 @@ my-secret-value
 [az-container-show]: /cli/azure/container#az-container-show
 [azure-cli-install]: /cli/azure/
 [azure-instance-log]: /powershell/module/azurerm.containerinstance/get-azurermcontainerinstancelog
-[azure-powershell-install]: /powershell/azure/install-azurerm-ps
+[azure-powershell-install]: /powershell/azure/azurerm/install-azurerm-ps
 [new-azurermcontainergroup]: /powershell/module/azurerm.containerinstance/new-azurermcontainergroup
 [portal]: https://portal.azure.com

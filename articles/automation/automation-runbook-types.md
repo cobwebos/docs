@@ -3,24 +3,24 @@ title: Azure 自动化 Runbook 类型
 description: '介绍可以在 Azure 自动化中使用的不同 Runbook 类型，以及在确定要使用的具体类型时需要考虑的注意事项。 '
 services: automation
 ms.service: automation
-ms.component: process-automation
+ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
 ms.date: 09/11/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: ad24f53c7ca58756aa4028c8af2e4a83cfcfe76a
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: 572d887a14aa25e45f0ad74660c5d3fbb1d32851
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45984316"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54425622"
 ---
 # <a name="azure-automation-runbook-types"></a>Azure 自动化 Runbook 类型
 
 Azure 自动化支持多种类型的 Runbook，下表进行了简要描述。  以下各个部分提供了每种类型的详细信息，包括如何选择在何时使用每种类型。
 
-| Type | Description |
+| 类型 | 说明 |
 |:--- |:--- |
 | [图形](#graphical-runbooks) |基于 Windows PowerShell，只能在 Azure 门户上的图形编辑器中创建和编辑。 |
 | [图形 PowerShell 工作流](#graphical-runbooks) |基于 Windows PowerShell 工作流，只能在 Azure 门户上的图形编辑器中创建和编辑。 |
@@ -115,3 +115,4 @@ PowerShell 工作流 Runbook 是基于 [Windows PowerShell 工作流](automation
 * 若要详细了解图形 Runbook 创作，请参阅 [Azure 自动化中的图形创作](automation-graphical-authoring-intro.md)
 * 若要了解 Runbook 的 PowerShell 和 PowerShell 工作流之间的差异，请参阅[了解 Windows PowerShell 工作流](automation-powershell-workflow.md)
 * 有关如何创建或导入 Runbook 的详细信息，请参阅[创建或导入 Runbook](automation-creating-importing-runbook.md)
+

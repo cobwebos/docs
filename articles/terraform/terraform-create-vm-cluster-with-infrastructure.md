@@ -9,12 +9,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 11/13/2017
-ms.openlocfilehash: 9870eac87204f24993ab71e373dcab3a8ead3e89
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: a53fee8ee492de4d9eaa8b45a8d4a88e692da02d
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54075329"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54410364"
 ---
 # <a name="create-a-vm-cluster-with-terraform-and-hcl"></a>使用 Terraform 和 HCL 创建 VM 群集
 
@@ -32,7 +32,7 @@ ms.locfileid: "54075329"
 ## <a name="1-set-up-azure-authentication"></a>1.设置 Azure 身份验证
 
 > [!NOTE]
-> 如果[使用 Terraform 环境变量](/azure/virtual-machines/linux/terraform-install-configure#set-environment-variables)或在 [Azure Cloud Shell](terraform-cloud-shell.md) 中运行此教程，请跳过此部分。
+> 如果[使用 Terraform 环境变量](/azure/virtual-machines/linux/terraform-install-configure)或在 [Azure Cloud Shell](terraform-cloud-shell.md) 中运行此教程，请跳过此部分。
 
 此部分中，将生成 Azure 服务主体和两个包含安全性主体中的凭据的 Terraform 配置文件。
 

@@ -3,19 +3,19 @@ title: 将 JSON 对象传递到 Azure 自动化 Runbook
 description: 如何将参数作为 JSON 对象传递给 runbook
 services: automation
 ms.service: automation
-ms.component: process-automation
+ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: conceptual
 manager: carmonm
 keywords: powershell, runbook, json, azure 自动化
-ms.openlocfilehash: 5e1ab8d6bd2de24251851cfc60d270a2fef4090d
-ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
+ms.openlocfilehash: 65f3bfcebdde50352d5e9e2748036d4522b2a991
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42918812"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54424884"
 ---
 # <a name="pass-a-json-object-to-an-azure-automation-runbook"></a>将 JSON 对象传递到 Azure 自动化 Runbook
 
@@ -32,7 +32,7 @@ PowerShell Runbook 会启动一个 Azure VM，从传入的 JSON 获取 VM 的参
 * Azure 订阅。 如果还没有帐户，则可以[激活 MSDN 订户权益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)或[注册免费帐户](https://azure.microsoft.com/free/)。
 * [自动化帐户](automation-sec-configure-azure-runas-account.md) ，用来保存 Runbook 以及向 Azure 资源进行身份验证。  此帐户必须有权启动和停止虚拟机。
 * Azure 虚拟机。 我们需停止和启动该虚拟机，因此其不应为生产用 VM。
-* 在本地计算机上安装的 Azure Powershell。 若要详细了解如何获得 Azure PowerShell，请参阅 [Install and configure Azure Powershell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-4.1.0)（安装和配置 Azure PowerShell）。
+* 在本地计算机上安装的 Azure Powershell。 若要详细了解如何获得 Azure PowerShell，请参阅 [Install and configure Azure Powershell](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps?view=azurermps-4.1.0)（安装和配置 Azure PowerShell）。
 
 ## <a name="create-the-json-file"></a>创建 JSON 文件
 
@@ -90,7 +90,7 @@ Start-AzureRmVM -Name $json.VMName -ResourceGroupName $json.ResourceGroup
 
 1. 获取 JSON 文件的内容并将其转换为字符串：
     ```powershell
-    $json =  (Get-content -path 'JsonPath\test.json' -Raw) | Out-string
+    $json =  (Get-content -path 'JsonPath\test.json' -Raw) | Out-string
     ```
     `JsonPath` 是保存 JSON 文件的位置路径。
 1. 将 `$json` 的字符串内容转换为 PowerShell 对象：
@@ -118,5 +118,6 @@ Runbook 将使用 JSON 文件中的值来启动 VM。
 
 * 若要了解有关使用文本编辑器编辑 PowerShell 和 PowerShell 工作流 Runbook 的详细信息，请参阅 [编辑 Azure 自动化中的文本 Runbook](automation-edit-textual-runbook.md) 
 * 若要了解创建和导入 Runbook 的详细信息，请参阅[在 Azure 自动化中创建或导入 Runbook](automation-creating-importing-runbook.md)
+
 
 

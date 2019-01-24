@@ -3,18 +3,18 @@ title: Azure 自动化中的连接资产
 description: Azure 自动化中的连接资产包含从 Runbook 或 DSC 配置连接到外部服务或应用程序所需的信息。 本文介绍了有关连接的详细信息，以及如何在文本和图形创作中使用连接。
 services: automation
 ms.service: automation
-ms.component: shared-capabilities
+ms.subservice: shared-capabilities
 author: georgewallace
 ms.author: gwallace
 ms.date: 01/16/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 9687276323598d8600aa6930df8ef18bcc171cc1
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.openlocfilehash: e00eb5756d34c7ca8cecc741b4832c583a6ed087
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54358824"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54439011"
 ---
 # <a name="connection-assets-in-azure-automation"></a>Azure 自动化中的连接资产
 
@@ -39,7 +39,7 @@ Azure 自动化中有三种类型的内置连接：
 
 下表中的 cmdlet 用于通过 Windows PowerShell 创建和管理自动化连接。 可在自动化 Runbook 和 DSC 配置中使用的 [Azure PowerShell 模块](/powershell/azure/overview)已随附了这些 cmdlet。
 
-|Cmdlet|Description|
+|Cmdlet|说明|
 |:---|:---|
 |[Get-AzureRmAutomationConnection](/powershell/module/azurerm.automation/get-azurermautomationconnection)|检索连接。 包括一个哈希表，其中包括连接的字段的值。|
 |[New-AzureRmAutomationConnection](/powershell/module/azurerm.automation/new-azurermautomationconnection)|创建新连接。|
@@ -50,7 +50,7 @@ Azure 自动化中有三种类型的内置连接：
 
 下表中的活动用于在 Runbook 或 DSC 配置中访问连接。
 
-|活动|Description|
+|活动|说明|
 |---|---|
 |[Get-AutomationConnection](/powershell/module/servicemanagement/azure/get-azureautomationconnection?view=azuresmps-3.7.0)|获取要使用的连接。 返回包括该连接属性的哈希表。|
 
@@ -61,7 +61,7 @@ Azure 自动化中有三种类型的内置连接：
 ## <a name="python2-functions"></a>Python2 函数 
 下表中的函数用于在 Python2 Runbook 中访问连接。 
 
-| 函数 | Description | 
+| 函数 | 说明 | 
 |:---|:---| 
 | automationassets.get_automation_connection | 检索连接。 返回包括该连接属性的字典。 | 
 
@@ -164,3 +164,4 @@ azure_credential = get_automation_runas_credential(runas_connection)
 - 查看[图形创作中的链接](automation-graphical-authoring-intro.md#links-and-workflow)，了解如何引导和控制 Runbook 中的逻辑流。  
 
 - 要详细了解 Azure 自动化如何使用 PowerShell 模块，以及如何根据最佳实践创建自己的 PowerShell 模块（充当 Azure 自动化中的集成模块），请参阅[集成模块](automation-integration-modules.md)。  
+

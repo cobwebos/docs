@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 05/17/2017
-ms.openlocfilehash: 4b6eb0aa7011226fda667370f3e854081b795ae6
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.openlocfilehash: d336d659a15f5b4cb1cbc917a8ae10ab8224d029
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53744864"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54426312"
 ---
 # <a name="work-in-the-apache-hadoop-ecosystem-on-hdinsight-from-a-windows-pc"></a>使用 Windows 电脑在 HDInsight 上的 Apache Hadoop 生态系统中工作
 
@@ -30,7 +30,7 @@ Azure PowerShell 是一个脚本编写环境，使用它可以通过 Windows 在
 * [使用 PowerShell 运行 Apache Hive 查询](hadoop/apache-hadoop-use-hive-powershell.md)。
 * [使用 PowerShell 管理群集](hdinsight-administer-use-powershell.md)。
 
-请遵循[安装和配置 Azure Powershell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps) 的步骤来获取最新版本。 如果脚本需要修改后才能使用 Azure 资源管理器的新 cmdlet，请参阅[迁移到基于 Azure 资源管理器的面向 HDInsight 群集的开发工具](hdinsight-hadoop-development-using-azure-resource-manager.md)。
+请遵循[安装和配置 Azure Powershell](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps) 的步骤来获取最新版本。 如果脚本需要修改后才能使用 Azure 资源管理器的新 cmdlet，请参阅[迁移到基于 Azure 资源管理器的面向 HDInsight 群集的开发工具](hdinsight-hadoop-development-using-azure-resource-manager.md)。
 
 ## <a name="utilities-you-can-run-in-a-browser"></a>可在浏览器中运行的实用工具
 以下实用工具提供可在浏览器中运行的 Web UI：

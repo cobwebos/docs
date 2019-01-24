@@ -4,7 +4,7 @@ description: 本教程将指导你完成使用 Linux VM 系统分配的托管标
 services: active-directory
 documentationcenter: ''
 author: daveba
-manager: mtillman
+manager: daveba
 editor: ''
 ms.service: active-directory
 ms.component: msi
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/09/2018
 ms.author: daveba
-ms.openlocfilehash: 3b608f9f099b2c4d030eefe96ea96c5d3effdc53
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 50db901640a53bc6004c491a2d3f8a232ee5d37d
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52725227"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54422518"
 ---
 # <a name="tutorial-use-a-linux-vm-system-assigned-managed-identity-to-access-azure-storage"></a>教程：使用 Linux VM 系统分配的托管标识访问 Azure 存储 
 

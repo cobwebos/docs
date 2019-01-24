@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: d25142cecd62fc34a08939d5f1915ba9b2cee749
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: cd6927cccfa85c8409d612a40a4e708e81af746a
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49387423"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54413543"
 ---
 # <a name="find-an-address-using-the-azure-maps-search-service"></a>使用 Azure Maps 搜索服务查找地址
 
@@ -158,7 +158,7 @@ Maps 搜索服务是一组 RESTful API，可让开发人员搜索地址、地点
     |-----|------------|
     | 数字 | true |
 
-    如果连同请求一起发送了 [number](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse#search_getsearchaddressreverse_uri_parameters) 查询参数，则响应可能包含街道的边侧（左/右），以及该编号的偏移位置。
+    如果连同请求一起发送了 [number](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) 查询参数，则响应可能包含街道的边侧（左/右），以及该编号的偏移位置。
   
 6. 将以下键/值对添加至 Params 部分，并单击“发送”：
 
@@ -166,7 +166,7 @@ Maps 搜索服务是一组 RESTful API，可让开发人员搜索地址、地点
     |-----|------------|
     | returnSpeedLimit | true |
   
-    如果设置了 [returnSpeedLimit](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse#search_getsearchaddressreverse_uri_parameters) 查询参数，响应将返回发布的速度限制。
+    如果设置了 [returnSpeedLimit](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) 查询参数，响应将返回发布的速度限制。
 
 7. 将以下键/值对添加至 Params 部分，并单击“发送”：
 
@@ -174,7 +174,7 @@ Maps 搜索服务是一组 RESTful API，可让开发人员搜索地址、地点
     |-----|------------|
     | returnRoadUse | true |
 
-    如果设置了 [returnRoadUse](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse#search_getsearchaddressreverse_uri_parameters) 查询参数，响应将返回街道级别的反向地理编码的道路用途数组。
+    如果设置了 [returnRoadUse](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) 查询参数，响应将返回街道级别的反向地理编码的道路用途数组。
 
 8. 将以下键/值对添加至 Params 部分，并单击“发送”：
 
@@ -182,7 +182,7 @@ Maps 搜索服务是一组 RESTful API，可让开发人员搜索地址、地点
     |-----|------------|
     | roadUse | true |
 
-    可以使用 [roadUse](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse#search_getsearchaddressreverse_uri_parameters) 查询参数，将反向地理编码查询限制为特定类型的道路用途。
+    可以使用 [roadUse](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) 查询参数，将反向地理编码查询限制为特定类型的道路用途。
   
 ## <a name="search-for-the-cross-street-using-reverse-address-cross-street-search"></a>使用反向地址十字路口搜索搜索十字路口
 
