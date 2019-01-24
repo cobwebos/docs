@@ -4,7 +4,7 @@ description: 本文档介绍 Azure AD Connect Health 的用户隐私。
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.service: active-directory
 ms.workload: identity
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/26/2018
 ms.author: billmath
-ms.openlocfilehash: 7d3f625524161703b7be822c1db0fd5b21030dca
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: bda199e5affb2ffad7285eb6e55ed18b46f92801
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46306346"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54477920"
 ---
 # <a name="user-privacy-and-azure-ad-connect-health"></a>用户隐私和 Azure AD Connect Health 
 

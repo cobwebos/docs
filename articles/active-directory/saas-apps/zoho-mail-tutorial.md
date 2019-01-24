@@ -4,7 +4,7 @@ description: 了解如何在 Azure Active Directory 和 Zoho 之间配置单一�
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: barbkess
 ms.assetid: 9874e1f3-ade5-42e7-a700-e08b3731236a
 ms.service: Azure-Active-Directory
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/26/2018
 ms.author: jeedes
-ms.openlocfilehash: bae52a16a73048355a327408bfb58b04cb5e4a55
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 2ae9a99a88ae2bd08af5b871a00a7514a80130ed
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53976692"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54815610"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zoho"></a>教程：Azure Active Directory 与 Zoho 集成
 
@@ -92,7 +92,7 @@ ms.locfileid: "53976692"
 
     ![配置单一登录链接](common/select-sso.png)
 
-2. 在“选择单一登录方法”对话框中，选择 SAML/WS-Fed 模式以启用单一登录。
+2. 在**选择单一登录方法**对话框中，选择 **SAML/WS-Fed**模式以启用单一登录。
 
     ![单一登录选择模式](common/select-saml-option.png)
 
@@ -139,7 +139,7 @@ ms.locfileid: "53976692"
    
     ![SAML 身份验证详细信息](./media/zoho-mail-tutorial/ic789609.png "SAML 身份验证详细信息")
    
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“登录 URL”文本框中，粘贴从 Azure 门户复制的“登录 URL”。
+    a. 在“登录 URL”文本框中，粘贴从 Azure 门户复制的“登录 URL”。
    
     b. 在“注销 URL”文本框中，粘贴从 Azure 门户复制的“注销 URL”。
    
@@ -223,7 +223,7 @@ ms.locfileid: "53976692"
    
     ![添加用户](./media/zoho-mail-tutorial/ic789612.png "添加用户")
    
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名字”文本框中，键入用户的名字（如“Britta”）。
+    a. 在“名字”文本框中，键入用户的名字（如“Britta”）。
 
     b. 在“姓氏”文本框中，键入用户的姓氏（如“Simon”）。
 

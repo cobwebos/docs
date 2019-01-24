@@ -4,7 +4,7 @@ description: 了解如何在 Azure Active Directory 和 Lifesize Cloud 之间配
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: barbkess
 ms.assetid: 75fab335-fdcd-4066-b42c-cc738fcb6513
 ms.service: Azure-Active-Directory
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 1/4/2019
 ms.author: jeedes
-ms.openlocfilehash: 312d1c8a1fdeb202d137b32a92e275b42c9934ee
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: 09c162a905a64c59080486bf6d83127df4f066c2
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54064264"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54808232"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-lifesize-cloud"></a>教程：Azure Active Directory 与 Lifesize Cloud 的集成
 
@@ -94,7 +94,7 @@ ms.locfileid: "54064264"
 
     ![配置单一登录链接](common/select-sso.png)
 
-2. 在“选择单一登录方法”对话框中，选择 SAML/WS-Fed 模式以启用单一登录。
+2. 在**选择单一登录方法**对话框中，选择 **SAML/WS-Fed**模式以启用单一登录。
 
     ![单一登录选择模式](common/select-saml-option.png)
 

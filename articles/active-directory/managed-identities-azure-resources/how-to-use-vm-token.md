@@ -4,7 +4,7 @@ description: 在虚拟机上使用 Azure 资源的托管标识获取 OAuth 访�
 services: active-directory
 documentationcenter: ''
 author: daveba
-manager: mtillman
+manager: daveba
 editor: ''
 ms.service: active-directory
 ms.component: msi
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/01/2017
 ms.author: daveba
-ms.openlocfilehash: 10cc8007c4f54808b5d7eb41ad2caa008b5c7107
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: d737f1b17322d4b2ea0ab00a8e0bd386e8cb1747
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54078994"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54422400"
 ---
 # <a name="how-to-use-managed-identities-for-azure-resources-on-an-azure-vm-to-acquire-an-access-token"></a>如何在 Azure VM 上使用 Azure 资源的托管标识获取访问令牌 
 
@@ -69,7 +69,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 GET 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https://management.azure.com/' HTTP/1.1 Metadata: true
 ```
 
-| 元素 | Description |
+| 元素 | 说明 |
 | ------- | ----------- |
 | `GET` | HTTP 谓词，指示想要从终结点检索数据。 在本例中，该数据为 OAuth 访问令牌。 | 
 | `http://169.254.169.254/metadata/identity/oauth2/token` | 实例元数据服务的 Azure 资源的托管标识终结点。 |
@@ -86,7 +86,7 @@ GET http://localhost:50342/oauth2/token?resource=https%3A%2F%2Fmanagement.azure.
 Metadata: true
 ```
 
-| 元素 | Description |
+| 元素 | 说明 |
 | ------- | ----------- |
 | `GET` | HTTP 谓词，指示想要从终结点检索数据。 在本例中，该数据为 OAuth 访问令牌。 | 
 | `http://localhost:50342/oauth2/token` | Azure 资源的托管标识终结点，其中 50342 是可配置的默认端口。 |
@@ -112,7 +112,7 @@ Content-Type: application/json
 }
 ```
 
-| 元素 | Description |
+| 元素 | 说明 |
 | ------- | ----------- |
 | `access_token` | 请求的访问令牌。 调用受保护 REST API 时，该令牌将作为“持有者”令牌嵌入在 `Authorization` 请求标头字段中，使 API 能够对调用方进行身份验证。 | 
 | `refresh_token` | 未由 Azure 资源的托管标识使用。 |
@@ -361,7 +361,7 @@ Azure 资源的托管标识终结点通过 HTTP 响应消息标头的状态代�
 
 如果发生错误，相应的 HTTP 响应正文将包含 JSON 和错误详细信息：
 
-| 元素 | Description |
+| 元素 | 说明 |
 | ------- | ----------- |
 | error   | 错误标识符。 |
 | error_description | 错误的详细说明。 **错误说明随时可能更改。请不要编写会根据错误说明中的值生成分支片段的代码。**|

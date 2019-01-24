@@ -3,19 +3,19 @@ title: Azure Active Directory B2C 中的审核日志示例和定义 | Microsoft 
 description: 访问 Azure AD B2C 审核日志的指南和示例。
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 08/04/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 93ca61c610856ebba64bff46b2338090f317ad56
-ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
+ms.openlocfilehash: 56bd0dec5a829b055148668c4cad17055b2ed0e5
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54302028"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54843666"
 ---
 # <a name="accessing-azure-ad-b2c-audit-logs"></a>访问 Azure AD B2C 审核日志
 
@@ -26,7 +26,7 @@ Azure Active Directory B2C (Azure AD B2C) 发出审核日志，其中包含有�
 
 ## <a name="overview-of-activities-available-in-the-b2c-category-of-audit-logs"></a>审核日志 B2C 类别中的可用活动概述
 审核日志中的“B2C”类别包含以下类型的活动：
-|活动类型 |Description  |
+|活动类型 |说明  |
 |---------|---------|
 |授权 |涉及授权用户访问 B2C 资源（例如，管理员访问 B2C 策略列表）的活动         |
 |Directory |与管理员使用 Azure 门户登录时检索到的目录属性相关的活动 |

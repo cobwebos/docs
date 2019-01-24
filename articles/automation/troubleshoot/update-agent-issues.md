@@ -7,14 +7,14 @@ ms.author: gwallace
 ms.date: 12/14/2018
 ms.topic: conceptual
 ms.service: automation
-ms.component: update-management
+ms.subservice: update-management
 manager: carmonm
-ms.openlocfilehash: 9a16498c527af2d23840c53af11103f7580d80bb
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: 5637d409233abc68983bd7cf1e55f406f15e3b59
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53582552"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54432982"
 ---
 # <a name="understand-the-windows-agent-check-results-in-update-management"></a>了解更新管理中的 Windows 代理检查结果
 
@@ -22,9 +22,9 @@ ms.locfileid: "53582552"
 
 下表列出计算机可能处于的三个就绪状态：
 
-* **就绪**：更新代理已部署且距上次查看不超过 1 小时。
-* **断开连接**：更新代理已部署且距上次查看超过 1 小时。
-* **未配置**：未找到更新代理或尚未完成载入。
+* **就绪** - 更新代理已部署且距上次查看不超过 1 小时。
+* **断开连接** - 更新代理已部署且距上次查看超过 1 小时。
+* **未配置** - 未找到更新代理或尚未完成载入。
 
 ## <a name="start-the-troubleshooter"></a>启动“故障排除”
 
@@ -201,3 +201,4 @@ CheckResultMessageArguments : {}
 ## <a name="next-steps"></a>后续步骤
 
 若要排查混合 Runbook 辅助角色的更多问题，请参阅[混合 Runbook 辅助角色的故障排除](hybrid-runbook-worker.md)。
+

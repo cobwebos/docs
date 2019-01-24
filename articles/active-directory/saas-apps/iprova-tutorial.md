@@ -4,7 +4,7 @@ description: 了解如何在 Azure Active Directory 与 iProva 之间配置单�
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: barbkess
 ms.assetid: 1eaeef9b-4479-4a9f-b1b2-bc13b857c75c
 ms.service: Azure-Active-Directory
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/24/2018
 ms.author: jeedes
-ms.openlocfilehash: eb64fd7a7270c3bae03a94385fc77581637ac675
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: ba3b0e06630665082b62e070dac64e8bc572f6dc
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53981211"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54811700"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-iprova"></a>教程：Azure Active Directory 与 iProva 集成
 
@@ -110,7 +110,7 @@ ms.locfileid: "53981211"
 
     ![配置单一登录链接](common/select-sso.png)
 
-2. 在“选择单一登录方法”对话框中，选择 SAML/WS-Fed 模式以启用单一登录。
+2. 在**选择单一登录方法**对话框中，选择 **SAML/WS-Fed**模式以启用单一登录。
 
     ![单一登录选择模式](common/select-saml-option.png)
 
@@ -120,7 +120,7 @@ ms.locfileid: "53981211"
 
 4. 在“基本 SAML 配置”部分中，按照以下步骤操作：
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“标识符”字段中填写 iProva SAML2 信息页上标签“EntityID”后面显示的值（仍在其他浏览器标签页中打开）。
+    a. 在“标识符”字段中填写 iProva SAML2 信息页上标签“EntityID”后面显示的值（仍在其他浏览器标签页中打开）。
 
     b. 在“Reply-URL”字段中填写 iProva SAML2 信息页上标签“Reply-URL”后面显示的值（仍在其他浏览器标签页中打开）。
 
@@ -139,7 +139,7 @@ ms.locfileid: "53981211"
     | `samaccountname` | `user.onpremisessamaccountname`| `http://schemas.xmlsoap.org/ws/2005/05/identity/claims`|
     | | |
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 单击“添加新声明”以打开“管理用户声明”对话框。
+    a. 单击“添加新声明”以打开“管理用户声明”对话框。
 
     ![图像](common/new-save-attribute.png)
 
@@ -219,7 +219,7 @@ ms.locfileid: "53981211"
 
     ![“用户”对话框](common/user-properties.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”字段中输入名称，如 BrittaSimon。
+    a. 在“名称”字段中输入名称，如 BrittaSimon。
   
     b. 在“用户名”字段中键入 yourname@yourcompanydomain.extension  
     例如： BrittaSimon@contoso.com

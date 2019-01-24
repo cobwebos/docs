@@ -7,13 +7,13 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 4/12/2018
 ms.author: dukek
-ms.component: logs
-ms.openlocfilehash: 2dec2b1f9bdca8c83669b753d424204218f7a9ae
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.subservice: logs
+ms.openlocfilehash: 9bd5ec3471fc3447d1e29d875c154793daf8e9e5
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54190691"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54474024"
 ---
 # <a name="view-service-health-notifications-by-using-the-azure-portal"></a>使用 Azure 门户查看服务运行状况通知
 
@@ -30,7 +30,7 @@ ms.locfileid: "54190691"
 
 每个服务运行状况通知将包含有关适用范围和资源所受影响的详细信息。 详细信息包括：
 
-属性名称 | Description
+属性名称 | 说明
 -------- | -----------
 channels | 以下值之一：**Admin** 或 **Operation**。
 correlationId | 通常为字符串格式的 GUID。 属于同一操作的事件通常共享相同的 correlationId。
@@ -95,3 +95,4 @@ Properties.communicationId | 与此事件关联的通信。
 ## <a name="next-steps"></a>后续步骤
 每当[发布服务运行状况通知时接收警报通知](../../azure-monitor/platform/alerts-activity-log-service-notifications.md)。  
 详细了解[活动日志警报](../../azure-monitor/platform/activity-log-alerts.md)。
+

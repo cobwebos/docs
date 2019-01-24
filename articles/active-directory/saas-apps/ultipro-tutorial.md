@@ -4,7 +4,7 @@ description: 了解如何在 Azure Active Directory 和 UltiPro 之间配置单�
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: barbkess
 ms.assetid: afc0f2b9-2eac-47ec-af04-65ed0fb0ca5a
 ms.service: Azure-Active-Directory
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/24/2018
 ms.author: jeedes
-ms.openlocfilehash: 5ad89a8d5a0e9329e9951b7a8f7145a24910277e
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 1cefc69ee3fa997a5f8a924a6ed443a8d300ba0b
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53970553"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54808096"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ultipro"></a>教程：Azure Active Directory 与 UltiPro 集成
 
@@ -92,7 +92,7 @@ ms.locfileid: "53970553"
 
     ![配置单一登录链接](common/select-sso.png)
 
-2. 在“选择单一登录方法”对话框中，选择 SAML/WS-Fed 模式以启用单一登录。
+2. 在**选择单一登录方法**对话框中，选择 **SAML/WS-Fed**模式以启用单一登录。
 
     ![单一登录选择模式](common/select-saml-option.png)
 
@@ -104,7 +104,7 @@ ms.locfileid: "53970553"
 
     ![UltiPro 域和 URL 单一登录信息](common/sp-identifier-reply.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“登录 URL”文本框中，使用以下模式键入 URL：
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL：
     | |
     |--|
     | `https://<companyname>.ultipro.com/`|

@@ -3,18 +3,18 @@ title: Azure 自动化中的证书资产
 description: 可以安全地将证书存储在 Azure 自动化中，以便可以通过 Runbook 或 DSC 配置访问这些证书，对 Azure 和第三方资源进行身份验证。  本文介绍了有关证书的详细信息，以及如何在文本和图形创作中使用证书。
 services: automation
 ms.service: automation
-ms.component: shared-capabilities
+ms.subservice: shared-capabilities
 author: georgewallace
 ms.author: gwallace
 ms.date: 01/15/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: d91a7ba8d2c05e2d24738764438ce91325743699
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: 714bf5f915cb588a99552a8bbbc5ffa76aa16846
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54330851"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54426125"
 ---
 # <a name="certificate-assets-in-azure-automation"></a>Azure 自动化中的证书资产
 
@@ -26,7 +26,7 @@ ms.locfileid: "54330851"
 ## <a name="azurerm-powershell-cmdlets"></a>AzureRM PowerShell cmdlet
 对于 AzureRM，下表中的 cmdlet 用于通过 Windows PowerShell 创建和管理自动化凭据资产。 可在自动化 Runbook 和 DSC 配置中使用的 [AzureRM.Automation 模块](/powershell/azure/overview)已随附了这些 cmdlet。
 
-|Cmdlet|Description|
+|Cmdlet|说明|
 |:---|:---|
 |[Get-AzureRmAutomationCertificate](https://docs.microsoft.com/powershell/module/azurerm.automation/get-azurermautomationcertificate)|检索有关要在 Runbook 或 DSC 配置中使用的证书的信息。 只能从 Get-AutomationCertificate 活动中检索证书本身。|
 |[New-AzureRmAutomationCertificate](https://docs.microsoft.com/powershell/module/azurerm.automation/new-azurermautomationcertificate)|将新证书创建到 Azure 自动化中。|
@@ -37,7 +37,7 @@ ms.locfileid: "54330851"
 ## <a name="activities"></a>活动
 下表中的活动用于在 Runbook 和 DSC 配置中访问证书。
 
-| 活动 | Description |
+| 活动 | 说明 |
 |:---|:---|
 |Get-AutomationCertificate|在 Runbook 或 DSC 配置中获取要使用的证书。 返回一个 [System.Security.Cryptography.X509Certificates.X509Certificate2](https://msdn.microsoft.com/library/system.security.cryptography.x509certificates.x509certificate2.aspx) 对象。|
 
@@ -48,7 +48,7 @@ ms.locfileid: "54330851"
 
 下表中的函数用于在 Python2 Runbook 中访问证书。
 
-| 函数 | Description |
+| 函数 | 说明 |
 |:---|:---|
 | automationassets.get_automation_certificate | 检索有关证书资产的信息。 |
 
@@ -121,3 +121,4 @@ print cert
 ## <a name="next-steps"></a>后续步骤
 
 - 若要详细了解如何使用链接控制 runbook 旨在执行的活动的逻辑流，请参阅[图形创作中的链接](automation-graphical-authoring-intro.md#links-and-workflow)。 
+

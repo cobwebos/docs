@@ -4,7 +4,7 @@ description: 规划混合标识解决方案时，确定适用于业务的数据�
 documentationcenter: ''
 services: active-directory
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: 40dc4baa-fe82-4ab6-a3e4-f36fa9dcd0df
 ms.service: active-directory
@@ -16,12 +16,12 @@ ms.date: 05/30/2018
 ms.component: hybrid
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: c317c2bab26a44fc78e42fe440744bd26add1f2e
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 34c284f3fdd78d8b2f56ec7c36e139f9ac9d78bf
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46310566"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54473497"
 ---
 # <a name="plan-for-enhancing-data-security-through-a-strong-identity-solution"></a>通过强标识解决方案增强数据安全性的计划
 保护数据的第一步是标识谁可以访问该数据。 此外，需要具有可与你的系统集成的标识解决方案，以提供身份验证和授权功能。 身份验证与授权经常给人造成混淆，并且其角色容易令人误解。 事实上它们是不同的，如下图中所示：

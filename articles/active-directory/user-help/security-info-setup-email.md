@@ -3,7 +3,7 @@ title: 设置安全信息以使用电子邮件 - Azure Active Directory | Micros
 description: 设置安全信息，以使用工作或学校电子邮件地址验证身份。
 services: active-directory
 author: eross-msft
-manager: mtillman
+manager: daveba
 ms.reviewer: sahenry
 ms.service: active-directory
 ms.workload: identity
@@ -11,12 +11,12 @@ ms.component: user-help
 ms.topic: conceptual
 ms.date: 07/30/2018
 ms.author: lizross
-ms.openlocfilehash: f6a574f169310f2779fb20353fda748e6893a4bd
-ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
+ms.openlocfilehash: 33ac67e7ef7313fcf54e0507d8c3d83b1d42ca2d
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48016734"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54816137"
 ---
 # <a name="set-up-security-info-to-use-email-preview"></a>设置安全信息以使用电子邮件（预览）
 

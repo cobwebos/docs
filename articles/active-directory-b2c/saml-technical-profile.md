@@ -3,19 +3,19 @@ title: 定义采用 Azure Active Directory B2C 的自定义策略的 SAML 技术
 description: 定义采用 Azure Active Directory B2C 的自定义策略的 SAML 技术配置文件。
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 12/21/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: ff9d51a96335af110aa0377c7db57ae665c44893
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 0efe78fa994353e7fd64d9954d07a0731685fa60
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53970519"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54856515"
 ---
 # <a name="define-a-saml-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>定义采用 Azure Active Directory B2C 的自定义策略的 SAML 技术配置文件
 
@@ -136,7 +136,7 @@ https://your-tenant-name.b2clogin.com/your-tenant-name/your-policy/samlp/metadat
 
 ## <a name="metadata"></a>元数据
 
-| 属性 | 必选 | Description |
+| 属性 | 必选 | 说明 |
 | --------- | -------- | ----------- |
 | PartnerEntity | 是 | SAML 身份提供程序的元数据的 URL。 复制身份提供程序元数据并将其添加到 CDATA 元素 `<![CDATA[Your IDP metadata]]>` |
 | WantsSignedRequests | 否 | 指示技术配置文件是否要求对所有传出身份验证请求进行签名。 可能的值：`true` 或 `false`。 默认值为 `true`。 当该值设置为 `true` 时，需要指定 SamlMessageSigning 加密密钥，并对所有传出的身份验证请求进行签名。 如果该值设置为 `false`，则请求中将省略 SigAlg 和 Signature 参数（查询字符串或 post 参数）。 此元数据还控制元数据的 AuthnRequestsSigned 属性，该属性在与身份提供程序共享的 Azure AD B2C 技术配置文件的元数据中输出。 如果技术配置文件元数据中的 **WantsSignedRequests** 设置为 `false`且标识提供者元数据 **WantAuthnRequestsSigned** 设置为 `false` 或未指定，则 Azure AD B2C 不会对请求签名。 |
@@ -155,7 +155,7 @@ https://your-tenant-name.b2clogin.com/your-tenant-name/your-policy/samlp/metadat
 
 <**CryptographicKeys**> 元素包含以下属性：
 
-| 属性 |必选 | Description |
+| 属性 |必选 | 说明 |
 | --------- | ----------- | ----------- |
 | SamlMessageSigning |是 | X509 证书（RSA 密钥集），用于对 SAML 消息进行签名。 Azure AD B2C 使用此密钥对请求进行签名并将其发送给身份提供程序。 |
 | SamlAssertionDecryption |是 | X509 证书（RSA 密钥集），用于解密 SAML 消息。 此证书应由身份提供程序提供。 Azure AD B2C 使用此证书解密身份提供程序发送的数据。 |

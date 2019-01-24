@@ -3,19 +3,19 @@ title: 在 Azure Active Directory B2C 中使用客户端证书保护 RESTful 服
 description: 使用客户端证书保护 Azure AD B2C 中的自定义 REST API 声明交换
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/25/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 89663db23962cbc82ead331f05cb39c0ef5d2e87
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: c0a8ef9600406e94c1077436861d6578847b5ade
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53722560"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54845014"
 ---
 # <a name="secure-your-restful-service-by-using-client-certificates"></a>使用客户端证书保护 RESTful 服务
 

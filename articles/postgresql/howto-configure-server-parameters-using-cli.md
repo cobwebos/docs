@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.devlang: azurecli
 ms.topic: conceptual
 ms.date: 02/28/2018
-ms.openlocfilehash: d566f317595e314c91cf510ba2459638e624d8c3
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: fb9123d792c3b522debb3b1c8d539cbd6cd24f59
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53539726"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54843625"
 ---
 # <a name="customize-server-configuration-parameters-using-azure-cli"></a>使用 Azure CLI 自定义服务器配置参数
 可以使用命令行接口 (Azure CLI) 列出、显示和更新 Azure PostgreSQL 服务器的配置参数。 会在服务器级别公开引擎配置的一个子集，并且可以进行修改。 
@@ -30,7 +30,7 @@ ms.locfileid: "53539726"
 az postgres server configuration list --resource-group myresourcegroup --server mydemoserver
 ```
 ## <a name="show-server-configuration-parameter-details"></a>显示服务器配置参数详细信息
-若要显示服务器的某个特定配置参数的详细信息，请运行 [az postgres server configuration show](/cli/azure/postgres/server/configuration#az_postgres_server_configuration_show) 命令。
+若要显示服务器的某个特定配置参数的详细信息，请运行 [az postgres server configuration show](/cli/azure/postgres/server/configuration) 命令。
 
 此示例显示了资源组“myresourcegroup”下服务器 mydemoserver.postgres.database.azure.com 的服务器配置参数 log\_min\_messages 的详细信息。
 ```azurecli-interactive

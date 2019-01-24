@@ -3,7 +3,7 @@ title: 默认用户权限 - Azure Active Directory | Microsoft Docs
 description: 了解 Azure Active Directory 中各种可用的用户权限。
 services: active-directory
 author: eross-msft
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.component: fundamentals
 ms.workload: identity
@@ -12,12 +12,12 @@ ms.date: 01/29/2018
 ms.author: lizross
 ms.reviewer: vincesm
 ms.custom: it-pro, seodec18
-ms.openlocfilehash: 58354bf95b11e497f05fdf08ba4740b3f55c6d6e
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: e1ec57dd058caff076d3fe8877928efb293ee5fa
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54022778"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54451334"
 ---
 # <a name="what-are-the-default-user-permissions-in-azure-active-directory"></a>Azure Active Directory 中的默认用户权限是什么？
 在 Azure Active Directory (Azure AD) 中，所有用户都被授予一组默认权限。 用户的访问权限由用户的类型、其[角色成员身份](https://docs.microsoft.com/azure/active-directory/active-directory-users-assign-role-azure-portal)及其对单个对象的所有权构成。 本文将会介绍这些默认权限，并将成员和来宾用户的默认权限进行比较。

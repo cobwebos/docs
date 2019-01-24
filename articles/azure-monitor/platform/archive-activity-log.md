@@ -7,13 +7,13 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 06/07/2018
 ms.author: johnkem
-ms.component: logs
-ms.openlocfilehash: 9714cb8ce1c3380ac74150148c8d84bd410e3fc4
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.subservice: logs
+ms.openlocfilehash: d9abfe90296b27918594c41a207befe2b59027b9
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53715201"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54461587"
 ---
 # <a name="archive-the-azure-activity-log"></a>存档 Azure 活动日志
 本文介绍如何使用 Azure 门户、PowerShell Cmdlet 或跨平台 CLI 将 [**Azure 活动日志**](../../azure-monitor/platform/activity-logs-overview.md)存档到存储帐户中。 此选项适用于对保留时长超过 90 天的活动日志进行审核、静态分析或备份（对保留策略具备完全控制权限）。 如果只需将事件保留 90 天或更短的时间，则不需设置到存储帐户的存档，因为在不启用存档的情况下，活动日志事件保留在 Azure 平台中的时间是 90 天。
@@ -62,7 +62,7 @@ ms.locfileid: "53715201"
    Add-AzureRmLogProfile -Name $logProfileName -Location $locations -StorageAccountId $storageAccountId
    ```
 
-| 属性 | 必选 | Description |
+| 属性 | 必选 | 说明 |
 | --- | --- | --- |
 | StorageAccountId |是 |应该将活动日志保存到其中的存储帐户的资源 ID。 |
 | 位置 |是 |要为其收集活动日志事件的逗号分隔区域的列表。 可以使用 `(Get-AzureRmLocation).Location` 查看订阅的所有区域列表。 |
@@ -75,7 +75,7 @@ ms.locfileid: "53715201"
    az monitor log-profiles create --name "default" --location null --locations "global" "eastus" "westus" --categories "Delete" "Write" "Action"  --enabled false --days 0 --storage-account-id "/subscriptions/<YOUR SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.Storage/storageAccounts/<STORAGE ACCOUNT NAME>"
    ```
 
-| 属性 | 必选 | Description |
+| 属性 | 必选 | 说明 |
 | --- | --- | --- |
 | 名称 |是 |日志配置文件的名称。 |
 | storage-account-id |是 |应该将活动日志保存到其中的存储帐户的资源 ID。 |
@@ -158,7 +158,7 @@ insights-operational-logs/name=default/resourceId=/SUBSCRIPTIONS/s1id1234-5679-0
 ```
 
 
-| 元素名称 | Description |
+| 元素名称 | 说明 |
 | --- | --- |
 | time |处理与事件对应的请求的 Azure 服务生成事件时的时间戳。 |
 | resourceId |受影响资源的资源 ID。 |
@@ -184,4 +184,5 @@ insights-operational-logs/name=default/resourceId=/SUBSCRIPTIONS/s1id1234-5679-0
 * [下载 blob 进行分析](../../storage/blobs/storage-quickstart-blobs-dotnet.md)
 * [将活动日志流式传输到事件中心](../../azure-monitor/platform/activity-logs-stream-event-hubs.md)
 * [详细了解活动日志](../../azure-monitor/platform/activity-logs-overview.md)
+
 

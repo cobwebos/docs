@@ -3,7 +3,7 @@ title: 将工作设备加入组织的网络 - Azure Active Directory | Microsoft
 description: 了解如何将工作设备加入组织的网络。
 services: active-directory
 author: eross-msft
-manager: mtillman
+manager: daveba
 ms.assetid: 54e1b01b-03ee-4c46-bcf0-e01affc0419d
 ms.service: active-directory
 ms.component: user-help
@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 08/03/2018
 ms.author: lizross
 ms.reviewer: jairoc
-ms.openlocfilehash: 34d3c12c83aeac7e92aa019abc38d9c4109883bd
-ms.sourcegitcommit: 1aedb52f221fb2a6e7ad0b0930b4c74db354a569
+ms.openlocfilehash: 9a860135d8b8bf5e3e0699e408365c7de9466aef
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "40180425"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54820387"
 ---
 # <a name="join-your-work-device-to-your-organizations-network"></a>将工作设备加入组织的网络
 将工作专用的 Windows 10 设备加入组织的网络，以便能够访问可能受限的资源。

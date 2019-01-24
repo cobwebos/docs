@@ -4,7 +4,7 @@ description: 了解如何在 Azure Active Directory 和 SAP Cloud for Customer �
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: barbkess
 ms.assetid: 90154dab-eba2-4563-bcf0-f2acc797ea97
 ms.service: Azure-Active-Directory
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/19/2018
 ms.author: jeedes
-ms.openlocfilehash: 6f2fb29e705edde24d6f54faafd17b580ae131b5
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.openlocfilehash: c25196f03d9c4e70a43b9ea8c3a24ed6c0e39ead
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53809856"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54816001"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sap-cloud-for-customer"></a>教程：将 Azure Active Directory 与 SAP Cloud for Customer 集成
 
@@ -92,7 +92,7 @@ ms.locfileid: "53809856"
 
     ![配置单一登录链接](common/select-sso.png)
 
-2. 在“选择单一登录方法”对话框中，选择 SAML/WS-Fed 模式以启用单一登录。
+2. 在**选择单一登录方法**对话框中，选择 **SAML/WS-Fed**模式以启用单一登录。
 
     ![单一登录选择模式](common/select-saml-option.png)
 
@@ -104,7 +104,7 @@ ms.locfileid: "53809856"
 
     ![SAP Cloud for Customer 域和 URL 单一登录信息](common/sp-identifier.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<server name>.crm.ondemand.com`
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<server name>.crm.ondemand.com`
 
     b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`https://<server name>.crm.ondemand.com`
 
@@ -117,7 +117,7 @@ ms.locfileid: "53809856"
 
 6. 在“用户属性和声明”对话框中的“用户属性”部分，执行以下步骤：
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 单击“编辑图标”，打开“管理用户声明”对话框。
+    a. 单击“编辑图标”，打开“管理用户声明”对话框。
 
     ![图像](./media/sap-customer-cloud-tutorial/tutorial_usermail.png)
 

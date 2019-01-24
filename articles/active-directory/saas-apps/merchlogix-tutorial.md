@@ -4,7 +4,7 @@ description: 了解如何在 Azure Active Directory 和 Merchlogix 之间配置�
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: joflore
 ms.assetid: a1f49bb8-6b17-433d-8f25-9d26fb390e77
 ms.service: active-directory
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: jeedes
-ms.openlocfilehash: dae953276fb89b798ff0a152994dc19f1e7c85a5
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 76aeed01e9ae579c928aa9e2ad11526222f8ebec
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52834229"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54827546"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-merchlogix"></a>教程：Azure Active Directory 与 Merchlogix 的集成
 
@@ -110,7 +110,7 @@ ms.locfileid: "52834229"
 
     ![Merchlogix 域和 URL 单一登录信息](./media/merchlogix-tutorial/tutorial_merchlogix_url.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“登录 URL”文本框中，使用以下模式键入 URL： `https://<DOMAIN>/login.php?saml=true`
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL： `https://<DOMAIN>/login.php?saml=true`
 
     b. 在“标识符”文本框中，使用以下模式键入 URL：`https://<DOMAIN>/simplesaml/module.php/saml/sp/metadata.php/<SAML_NAME>`
     
@@ -159,7 +159,7 @@ ms.locfileid: "52834229"
 
     ![“用户”对话框](./media/merchlogix-tutorial/create_aaduser_04.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“姓名”框中，键入“BrittaSimon”。
+    a. 在“姓名”框中，键入“BrittaSimon”。
 
     b. 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
 

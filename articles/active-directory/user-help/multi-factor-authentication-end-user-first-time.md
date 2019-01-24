@@ -4,7 +4,7 @@ description: 如果公司已配置 Azure 多重身份验证，系统会提示注
 services: active-directory
 keywords: 如何使用 azure 目录, 云中的 active directory, active directory 教程
 author: eross-msft
-manager: mtillman
+manager: daveba
 ms.reviewer: richagi
 ms.assetid: 46f83a6a-dbdd-4375-8dc4-e7ea77c16357
 ms.workload: identity
@@ -13,12 +13,12 @@ ms.component: user-help
 ms.topic: conceptual
 ms.date: 05/15/2017
 ms.author: lizross
-ms.openlocfilehash: 9f602b08e94071a335d0c88377912ea9b53f37b2
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: a5cb5a879687bdbea043d582526f4dd357a2a620
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51244434"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54809915"
 ---
 # <a name="set-up-my-account-for-two-step-verification"></a>为帐户设置双重验证
 双重验证是额外的安全保障步骤，通过加大他人攻破的难度，帮助保护帐户安全。 如果正在阅读本文，可能已收到公司或学校管理员发送的有关多重身份验证的电子邮件。 或者，可能已尝试登录，但收到要求设置其他安全验证的消息。 如果是这种情况，**除非完成自动注册过程，否则无法登录**。
@@ -39,7 +39,7 @@ ms.locfileid: "51244434"
 
 注册过程中的第一个问题是希望使用哪种联系方式。 请查看表中的选项，通过链接了解每种方法的设置步骤。
 
-| 联系方式 | Description |
+| 联系方式 | 说明 |
 | --- | --- |
 | [移动应用](#use-a-mobile-app-as-the-contact-method) |- 接收验证通知。 此选项将通知推送到智能手机或平板电脑上的验证器应用。 查看通知，如果合法，则在应用中选择“身份验证”。 公司或学校可能要求在身份验证之前，输入 PIN。<br>- 使用验证码。 在此模式下，验证器应用生成每隔 30 秒更新一次的验证码。 在登录界面中输入最新验证码。<br>Microsoft Authenticator 应用适用于 [Android](https://go.microsoft.com/fwlink/?linkid=866594)、[iOS](https://go.microsoft.com/fwlink/?linkid=866594) 和 [Windows Phone](https://go.microsoft.com/fwlink/?Linkid=825071)。 |
 | [移动电话呼叫或短信](#use-your-mobile-phone-as-the-contact-method) |- 电话呼叫向你提供的手机号码进行自动语音呼叫。 接听电话，并按电话键盘上的 # 进行身份验证。<br>- 短信发送包含验证码的短信。 遵循短信中的提示，回复短信或在登录界面中输入提供的验证码。 |

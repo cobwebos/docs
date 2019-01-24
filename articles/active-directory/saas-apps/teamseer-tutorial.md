@@ -4,7 +4,7 @@ description: 了解如何在 Azure Active Directory 和 TeamSeer 之间配置单
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: 6ec4806f-fe0f-4ed7-8cfa-32d1c840433f
 ms.service: active-directory
 ms.component: saas-app-tutorial
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/09/2017
 ms.author: jeedes
-ms.openlocfilehash: 2b9f3c7905fbb301c74a040a259b2f8666c75377
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: ffe94d8d3e08bb35cf8ea20f4b1e32b1ec84aa35
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52834480"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54814148"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-teamseer"></a>教程：Azure Active Directory 与 TeamSeer 集成
 
@@ -147,7 +147,7 @@ ms.locfileid: "52834480"
    
     ![SAML 设置](./media/teamseer-tutorial/ic789637.png "SAML 设置")   
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 将“单一登录服务 URL”值粘贴到“URL”文本框中。
+    a. 将“单一登录服务 URL”值粘贴到“URL”文本框中。
           
     b. 在记事本中打开 base-64 编码证书，将其内容复制到剪贴板，然后将其粘贴到“IdP 公共证书”文本框中。
 
@@ -155,7 +155,7 @@ ms.locfileid: "52834480"
     
     ![SAML 设置](./media/teamseer-tutorial/ic789638.png "SAML 设置") 
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“测试电子邮件地址”中，键入测试用户的电子邮件地址。 
+    a. 在“测试电子邮件地址”中，键入测试用户的电子邮件地址。 
   
     b. 在“颁发者”文本框中，键入服务提供商的颁发者 URL。 
   
@@ -188,7 +188,7 @@ ms.locfileid: "52834480"
  
     ![创建 Azure AD 测试用户](./media/teamseer-tutorial/create_aaduser_04.png) 
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
+    a. 在“名称”文本框中，键入 **BrittaSimon**。
 
     b. 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
@@ -208,7 +208,7 @@ ms.locfileid: "52834480"
    
     ![HR 管理员](./media/teamseer-tutorial/ic789640.png "HR 管理员")  
  
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 转到“HR 管理员”\>“用户”。
+    a. 转到“HR 管理员”\>“用户”。
   
     b. 单击“运行新建用户向导”。
 
@@ -216,7 +216,7 @@ ms.locfileid: "52834480"
    
     ![用户详细信息](./media/teamseer-tutorial/ic789641.png "用户详细信息")
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在相关文本框中键入要预配的有效 AAD 帐户的“名字”、“姓氏”和“用户名(电子邮件地址)”。
+    a. 在相关文本框中键入要预配的有效 AAD 帐户的“名字”、“姓氏”和“用户名(电子邮件地址)”。
   
     b. 单击“下一步”。
 

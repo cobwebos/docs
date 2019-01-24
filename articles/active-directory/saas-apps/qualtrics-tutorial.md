@@ -4,7 +4,7 @@ description: 了解如何在 Azure Active Directory 和 Qualtrics 之间配置�
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: joflore
 ms.assetid: 4df889ab-2685-4d15-a163-1ba26567eeda
 ms.service: active-directory
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/26/2017
 ms.author: jeedes
-ms.openlocfilehash: b7dedef2075ea9877a55a52a3f9a392f79c52300
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 7b4c0316b57e2ee7dd23feea7a68179378f876ed
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53016753"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54813638"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-qualtrics"></a>教程：Azure Active Directory 与 Qualtrics 集成
 
@@ -110,7 +110,7 @@ ms.locfileid: "53016753"
 
     ![Qualtrics 域和 URL 单一登录信息](./media/qualtrics-tutorial/tutorial_qualtrics_url.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“登录 URL”文本框中，使用以下模式键入 URL： `https://<companyname>.qualtrics.com`
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL： `https://<companyname>.qualtrics.com`
 
     b. 在“标识符”文本框中，使用以下模式键入 URL：
     
@@ -160,7 +160,7 @@ ms.locfileid: "53016753"
 
     ![“用户”对话框](./media/qualtrics-tutorial/create_aaduser_04.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“姓名”框中，键入“BrittaSimon”。
+    a. 在“姓名”框中，键入“BrittaSimon”。
 
     b. 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
 

@@ -3,7 +3,7 @@ title: 将应用从 AD FS 移到 Azure AD。 | Microsoft Docs
 description: 本文旨在帮助组织了解如何将应用程序移到 Azure AD，并着重介绍联合 SaaS 应用程序。
 services: active-directory
 author: barbkess
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.component: app-mgmt
 ms.topic: conceptual
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.date: 03/02/2018
 ms.author: barbkess
-ms.openlocfilehash: 7657ac2e2d5a169607c73b8934328ce41ecea78e
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: cf8ce4d39d0097c1ec1866a0aad071a2b5d8908f
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53141928"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54474262"
 ---
 # <a name="move-applications-from-ad-fs-to-azure-ad"></a>将应用程序从 AD FS 移到 Azure AD 
 
@@ -95,7 +95,7 @@ AD FS 和 Azure AD 的工作原理类似，因此配置信任、登录和注销 
 - AD FS 术语：信赖方或信赖方信任。
 - Azure AD 术语：企业应用程序或应用注册（具体取决于应用类型）。
 
-|应用配置元素|Description|在 AD FS 配置中的位置|在 Azure AD 配置中的相应位置|SAML 令牌元素|
+|应用配置元素|说明|在 AD FS 配置中的位置|在 Azure AD 配置中的相应位置|SAML 令牌元素|
 |-----|-----|-----|-----|-----|
 |应用登录 URL|此应用程序的登录页的 URL。 这是用户进入后在 SP 启动的 SAML 流中登录到应用的位置。|不适用|在 Azure AD 中，登录 URL 在 Azure 门户中配置，具体说来是在应用程序的“单一登录属性”中作为登录 URL 配置。</br></br>（可能需要选择“显示高级 URL 设置”才能看到登录 URL。）|不适用|
 |应用回复 URL|从标识提供者 (IdP) 的角度来看应用的 URL。 这是在用户于 IdP 处登录以后，发送用户和令牌的位置。</br></br> 这有时称为“SAML 断言使用方终结点”。|在应用的 AD FS 信赖方信任中查找它。 右键单击信赖方，选择“属性”，然后选择“终结点”选项卡。|在 Azure AD 中，回复 URL 在 Azure 门户中配置，具体说来是在应用程序的“单一登录属性”中作为回复 URL 配置。</br></br>（可能需要选择“显示高级 URL 设置”才能看到回复 URL。）|映射到 SAML 令牌中的 **Destination** 元素。</br></br> 示例值： https://contoso.my.salesforce.com|
@@ -118,7 +118,7 @@ AD FS 和 Azure AD 的工作原理类似，因此配置信任、登录和注销 
 
 下表介绍了在应用中配置 SSO 设置时的关键 IdP 配置元素，以及其在 AD FS 和 Azure AD 中的值或位置。 表的参考框架为 SaaS 应用，该应用需要知道将身份验证请求发送到何处，以及如何验证收到的令牌。
 
-|配置元素|Description|AD FS|Azure AD|
+|配置元素|说明|AD FS|Azure AD|
 |---|---|---|---|
 |IdP </br>登录 </br>代码|从应用的角度来看，IdP 的登录 URL（将用户重定向到其中以便进行登录的位置）。|AD FS 登录 URL 是 AD FS 联合身份验证服务名称后跟“/adfs/ls/”。 例如：https&#58;//fs.contoso.com/adfs/ls/|Azure AD 的相应值遵循以下模式，其中的 {tenant-id} 将替换为你的租户 ID。 该 ID 在 Azure 门户中的“Azure Active Directory” > “属性”下显示为“目录 ID”。</br></br>对于使用 SAML-P 协议的应用：https&#58;//login.microsoftonline.com/{tenant-id}/saml2 </br></br>对于使用 WS 联合身份验证协议的应用：https&#58;//login.microsoftonline.com/{tenant-id}/wsfed|
 |IdP </br>注销 </br>代码|从应用的角度来看，IdP 的注销 URL（当用户选择注销应用时将用户重定向到其中的位置）。|对于 AD FS，注销 URL 是与登录 URL 相同的 URL，或者是附加了“wa=wsignout1.0”的同一 URL。 例如：https&#58;//fs.contoso.com/adfs/ls/?wa=wsignout1.0|Azure AD 的相应值取决于应用是否支持 SAML 2.0 注销。</br></br>如果应用支持 SAML 注销，则该值遵循以下模式，其中，{tenant-id} 的值将替换为租户 ID。 该 ID 在 Azure 门户中的“Azure Active Directory” > “属性”下显示为“目录 ID”：https&#58;//login.microsoftonline.com/{tenant-id}/saml2</br></br>如果应用不支持 SAML 注销：https&#58;//login.microsoftonline.com/common/wsfederation?wa=wsignout1.0|

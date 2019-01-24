@@ -4,7 +4,7 @@ description: 了解如何在 Azure Active Directory 和 Qlik Sense Enterprise �
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: barbkess
 ms.assetid: 8c27e340-2b25-47b6-bf1f-438be4c14f93
 ms.service: Azure-Active-Directory
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/17/2018
 ms.author: jeedes
-ms.openlocfilehash: 5ecb26a7ca0f164c2ba8d9a9de26bf19777653a0
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.openlocfilehash: 1bf11bc93065c4c590b5224a805b8e1dbeadbb61
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53810621"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54816902"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-qlik-sense-enterprise"></a>教程：Azure Active Directory 与 Qlik Sense Enterprise 集成
 
@@ -92,7 +92,7 @@ ms.locfileid: "53810621"
 
     ![配置单一登录链接](common/select-sso.png)
 
-2. 在“选择单一登录方法”对话框中，选择 SAML/WS-Fed 模式以启用单一登录。
+2. 在**选择单一登录方法**对话框中，选择 **SAML/WS-Fed**模式以启用单一登录。
 
     ![单一登录选择模式](common/select-saml-option.png)
 
@@ -104,7 +104,7 @@ ms.locfileid: "53810621"
 
     ![Qlik Sense Enterprise 域和 URL 单一登录信息](common/sp-identifier-reply.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“登录 URL”文本框中，使用以下模式键入 URL： `https://<Qlik Sense Fully Qualifed Hostname>:4443/azure/hub`
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL： `https://<Qlik Sense Fully Qualifed Hostname>:4443/azure/hub`
 
     b. 在“标识符”文本框中，使用以下模式键入 URL：
     | |
@@ -133,7 +133,7 @@ ms.locfileid: "53810621"
 
     ![QlikSense][qs24]
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在文本编辑器中打开从 Azure 门户下载的 FederationMetaData.xml 文件。
+    a. 在文本编辑器中打开从 Azure 门户下载的 FederationMetaData.xml 文件。
 
     b. 搜索值“RoleDescriptor”。  会出现四个条目（两对开始和结束元素标记）。
 
@@ -159,7 +159,7 @@ ms.locfileid: "53810621"
 
     ![QlikSense][qs8]  
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 “说明”字段是虚拟代理配置的友好名称。  输入说明的值。
+    a. “说明”字段是虚拟代理配置的友好名称。  输入说明的值。
 
     b. “前缀”字段标识虚拟代理终结点，用于通过 Azure AD 单一登录连接到 Qlik Sense。  输入此虚拟代理服务器的唯一前缀名称。
 
@@ -171,7 +171,7 @@ ms.locfileid: "53810621"
 
     ![QlikSense][qs10]
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 “匿名访问模式”下拉列表决定匿名用户是否可以通过虚拟代理访问 Qlik Sense。  默认选项为非匿名用户。
+    a. “匿名访问模式”下拉列表决定匿名用户是否可以通过虚拟代理访问 Qlik Sense。  默认选项为非匿名用户。
 
     b. “身份验证方法”下拉列表决定了虚拟代理要使用的身份验证方案。  从下拉列表中选择“SAML”。  会出现更多选项。
 

@@ -7,13 +7,13 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 04/03/2017
 ms.author: ancav
-ms.component: autoscale
-ms.openlocfilehash: c655f117009c0c7c682ad92a951edc7e12255bc2
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.subservice: autoscale
+ms.openlocfilehash: 248167eca532beb957c723f5074fc1546982efc8
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53325305"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54463297"
 ---
 # <a name="use-autoscale-actions-to-send-email-and-webhook-alert-notifications-in-azure-monitor"></a>使用自动缩放操作在 Azure 监视器中发送电子邮件和 webhook 警报通知
 本文演示如何设置触发器，以便可以在 Azure 中基于自动缩放操作调用特定 Web URL 或发送电子邮件。  
@@ -59,7 +59,7 @@ ms.locfileid: "53325305"
       }
     ]
 ```
-| 字段 | 必需？ | Description |
+| 字段 | 必需？ | 说明 |
 | --- | --- | --- |
 | operation |是 |值必须是“规模” |
 | sendToSubscriptionAdministrator |是 |值必须是“true”或“false” |
@@ -102,7 +102,7 @@ webhook 可使用基于令牌的身份验证进行身份验证：将具有令牌
 ```
 
 
-| 字段 | 必需？ | Description |
+| 字段 | 必需？ | 说明 |
 | --- | --- | --- |
 | status |是 |指示生成自动缩放操作的状态 |
 | operation |是 |对于实例的增加，它会是“Scale Out”，对于实例的减少，它会是“Scale In” |
@@ -120,3 +120,4 @@ webhook 可使用基于令牌的身份验证进行身份验证：将具有令牌
 | oldCapacity |是 |自动缩放执行缩放操作时的当前（旧）实例计数 |
 | newCapacity |是 |自动缩放将资源缩放到的新实例计数 |
 | 属性 |否 |可选。 <键, 值> 对集（例如字典 <String, String>）。 properties 字段是可选的。 在自定义用户界面或基于逻辑应用的工作流中，可以输入可使用有效负载传递的键和值。 将自定义属性传递回传出 webhook 调用的替代方法是使用 webhook URI 本身（作为查询参数） |
+

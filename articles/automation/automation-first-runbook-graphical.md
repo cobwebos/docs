@@ -4,18 +4,18 @@ description: 本教程指导完成创建、 测试和发布一个简单图形 Ru
 keywords: runbook, runbook 模板, runbook 自动化, azure runbook
 services: automation
 ms.service: automation
-ms.component: process-automation
+ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
 ms.date: 04/13/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 6a9e6bbf3bc507a4d45af03c791104c9490cd36f
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: be811d0dc2ce2eca0b20ca12165eaf0799bd6b5d
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34195890"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54426776"
 ---
 # <a name="my-first-graphical-runbook"></a>我的第一个图形 Runbook
 
@@ -229,4 +229,5 @@ Runbook 目前在资源组中启动虚拟机，该虚拟机已在 **Start-AzureR
 * 若要了解有关图形创作的详细信息，请参阅 [Azure 自动化中的图形创作](automation-graphical-authoring-intro.md)
 * 若要开始使用 PowerShell Runbook，请参阅 [我的第一个 PowerShell Runbook](automation-first-runbook-textual-powershell.md)
 * 若要开始使用 PowerShell 工作流 Runbook，请参阅 [我的第一个 PowerShell 工作流 Runbook](automation-first-runbook-textual.md)
+
 

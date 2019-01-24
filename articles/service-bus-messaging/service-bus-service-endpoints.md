@@ -3,19 +3,20 @@ title: 适用于 Azure 服务总线的虚拟网络服务终结点和规则 | Mic
 description: 将 Microsoft.ServiceBus 服务终结点添加到虚拟网络。
 services: service-bus
 documentationcenter: ''
-author: clemensv
+author: axisc
 manager: timlt
+editor: spelluru
 ms.service: service-bus
 ms.devlang: na
 ms.topic: article
 ms.date: 09/05/2018
-ms.author: clemensv
-ms.openlocfilehash: 87a89ffd627454752924bfc69e44da87b071b5e5
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.author: aschhab
+ms.openlocfilehash: 3e55da5a6ebb0db26b32f51d67f013cb65438104
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53651429"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54854796"
 ---
 # <a name="use-virtual-network-service-endpoints-with-azure-service-bus"></a>使用具有 Azure 服务总线的虚拟网络服务终结点
 

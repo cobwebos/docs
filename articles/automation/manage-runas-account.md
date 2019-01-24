@@ -3,18 +3,18 @@ title: 管理 Azure 自动化运行方式帐户
 description: 本文介绍如何使用 PowerShell 或门户管理运行方式帐户。
 services: automation
 ms.service: automation
-ms.component: shared-capabilities
+ms.subservice: shared-capabilities
 author: georgewallace
 ms.author: gwallace
 ms.date: 09/12/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 7bd84b42cfa61d199d70e02345f9229a45fd7704
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 34c8a7d547acf023af442599708f9c183e5b9ae9
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52726162"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54431191"
 ---
 # <a name="manage-azure-automation-run-as-accounts"></a>管理 Azure 自动化运行方式帐户
 
@@ -389,3 +389,4 @@ The Run As account is incomplete. Either one of these was deleted or not created
 
 * 有关服务主体的详细信息，请参阅 [Application Objects and Service Principal Objects](../active-directory/develop/app-objects-and-service-principals.md)（应用程序对象和服务主体对象）。
 * 有关证书和 Azure 服务的详细信息，请参阅 [Azure 云服务证书概述](../cloud-services/cloud-services-certs-create.md)。
+

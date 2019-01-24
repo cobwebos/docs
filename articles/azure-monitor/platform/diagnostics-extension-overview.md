@@ -8,13 +8,13 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 09/20/2018
 ms.author: robb
-ms.component: diagnostic-extension
-ms.openlocfilehash: dc8b8e37224201062d0cf53174f3248f04ca0cc3
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.subservice: diagnostic-extension
+ms.openlocfilehash: 5e3b42b1e1f72ccc4d1127f2926ee53c51d66291
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53789750"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54470505"
 ---
 # <a name="what-is-azure-diagnostics-extension"></a>什么是 Azure 诊断扩展
 Azure 诊断扩展是 Azure 中可对部署的应用程序启用诊断数据收集的代理。 可以使用于自许多不同源的诊断扩展。 目前支持 Azure 云服务（经典）Web 和辅助角色、虚拟机、虚拟机规模集，以及 Service Fabric。 其他 Azure 服务具有不同的诊断方法。 请参阅 [Azure 中的监控概述](../../azure-monitor/overview.md)。
@@ -25,7 +25,7 @@ Azure 诊断扩展是 Azure 中可对部署的应用程序启用诊断数据收�
 ## <a name="data-you-can-collect"></a>可以收集的数据
 Azure 诊断扩展可收集以下类型的数据：
 
-| 数据源 | Description |
+| 数据源 | 说明 |
 | --- | --- |
 | 性能计数器 |操作系统和自定义性能计数器 |
 | 应用程序日志 |应用程序写入的跟踪消息 |
@@ -85,3 +85,4 @@ Azure 诊断扩展可收集以下类型的数据：
 ## <a name="general-articles"></a>一般文章
 * 了解如何[在 Azure 诊断中使用性能计数器](../../cloud-services/diagnostics-performance-counters.md)。
 * 如果在开始诊断时或者在 Azure 存储表中查找数据时遇到问题，请参阅 [Azure 诊断故障排除](diagnostics-extension-troubleshooting.md)
+

@@ -4,17 +4,17 @@ description: 本文概述了如何使用 Azure 自动化更新管理来管理 Az
 services: automation
 author: zjalexander
 ms.service: automation
-ms.component: update-management
+ms.subservice: update-management
 ms.topic: tutorial
 ms.date: 12/04/2018
 ms.author: zachal
 ms.custom: mvc
-ms.openlocfilehash: 83647dfb0965b8aac8ede5f2e9669ae3d7722c41
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: bd7072ce8212366bf3d8a0a9e0a30000debea2ea
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53184978"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54434608"
 ---
 # <a name="manage-windows-updates-by-using-azure-automation"></a>使用 Azure 自动化管理 Windows 更新
 
@@ -92,7 +92,7 @@ ms.locfileid: "53184978"
 
 单击“添加条件”以选择适合更新部署的信号。 下表显示了更新部署的两个可用信号的详细信息：
 
-|信号名称|维度|Description|
+|信号名称|维度|说明|
 |---|---|---|
 |**汇总更新部署运行**|- 更新部署名称</br>- 状态|此信号用于提醒更新部署的总体状态。|
 |**汇总更新部署计算机运行**|- 更新部署名称</br>- 状态</br>- 目标计算机</br>- 更新部署运行 ID|此信号用于提醒针对特定计算机的更新部署的状态|
@@ -215,3 +215,4 @@ ms.locfileid: "53184978"
 
 > [!div class="nextstepaction"]
 > [更新管理解决方案](../operations-management-suite/oms-solution-update-management.md?toc=%2fazure%2fautomation%2ftoc.json)
+

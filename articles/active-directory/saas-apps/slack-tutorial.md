@@ -4,7 +4,7 @@ description: 了解如何在 Azure Active Directory 和 Slack 之间配置单一
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: barbkess
 ms.assetid: ffc5e73f-6c38-4bbb-876a-a7dd269d4e1c
 ms.service: Azure-Active-Directory
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/31/2018
 ms.author: jeedes
-ms.openlocfilehash: fd868e02987c61e6bdd992c45a95cb775d1778ca
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 238999448f719ca8c95d8c170a9f2e6b6d7bc851
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53969535"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54814108"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-slack"></a>教程：Azure Active Directory 与 Slack 集成
 
@@ -94,7 +94,7 @@ ms.locfileid: "53969535"
 
     ![配置单一登录链接](common/select-sso.png)
 
-2. 在“选择单一登录方法”对话框中，选择 SAML/WS-Fed 模式以启用单一登录。
+2. 在**选择单一登录方法**对话框中，选择 **SAML/WS-Fed**模式以启用单一登录。
 
     ![单一登录选择模式](common/select-saml-option.png)
 
@@ -106,7 +106,7 @@ ms.locfileid: "53969535"
 
     ![Slack 域和 URL 单一登录信息](common/sp-identifier.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<companyname>.slack.com`。
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<companyname>.slack.com`。
 
     b. 在“标识符(实体 ID)”文本框中，将值更新为登录 URL。 这是你的工作区域。 例如：`https://contoso.slack.com`。
 
@@ -177,7 +177,7 @@ ms.locfileid: "53969535"
 
     ![在应用端配置单一登录](./media/slack-tutorial/tutorial_slack_003.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。  在“SAML 2.0 终结点(HTTP)”文本框中，粘贴从 Azure 门户复制的“登录 URL”值。
+    a.  在“SAML 2.0 终结点(HTTP)”文本框中，粘贴从 Azure 门户复制的“登录 URL”值。
 
     b.  在“标识提供者颁发者”文本框中，粘贴从 Azure 门户复制的“Azure AD 标识符”值。
 

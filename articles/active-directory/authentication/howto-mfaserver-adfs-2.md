@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.date: 07/11/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: mtillman
+manager: daveba
 ms.reviewer: michmcla
-ms.openlocfilehash: ff8afabb425f16b62b86bf6b23fd24a744d40186
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: cbb64069ab8fa3da6309ff56afc0ab36582908c0
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39158407"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54430358"
 ---
 # <a name="configure-azure-multi-factor-authentication-server-to-work-with-ad-fs-20"></a>将 Azure 多重身份验证服务器配置为与 AD FS 2.0 配合使用
 
@@ -29,7 +29,7 @@ ms.locfileid: "39158407"
 ### <a name="configure-iis-authentication"></a>配置 IIS 身份验证
 1. 在 Azure 多重身份验证服务器中，单击左侧菜单中的“IIS 身份验证”图标。
 2. 单击“基于表单”选项卡。
-3. 单击 **“添加”**。
+3. 单击“添加”。
 
    <center>![设置](./media/howto-mfaserver-adfs-2/setup1.png)</center>
 
@@ -87,7 +87,7 @@ ms.locfileid: "39158407"
 
 1. 在 Azure 多重身份验证服务器内，单击左侧菜单中的“IIS 身份验证”图标。
 2. 单击“HTTP”选项卡。
-3. 单击 **“添加”**。
+3. 单击“添加”。
 4. 在“添加基 URL”对话框的“基 URL”字段中输入进行 HTTP 身份验证的 AD FS 网站的 URL（例如 https://sso.domain.com/adfs/ls/auth/integrated)）。 然后，输入应用程序名称（可选）。 应用程序名称将出现在 Azure 多重身份验证报告中，并可能会显示在短信或移动应用身份验证消息中。
 5. 如果需要，请调整空闲超时和会话时间上限。
 6. 如果所有用户均已导入或将导入到该服务器并接受双重验证，请选中“需要 Azure 多重身份验证用户匹配”框。 如果大量用户尚未导入到该服务器并且/或者将免除进行多重身份验证，请使该框处于未选中状态。

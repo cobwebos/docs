@@ -7,13 +7,13 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 10/01/2018
 ms.author: vinagara
-ms.component: alerts
-ms.openlocfilehash: 2028b9555ec20fc5e97511a2a908351b66aec216
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.subservice: alerts
+ms.openlocfilehash: e2f2a739f78072a0479e77e68e84c8f4b395468f
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53385493"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54422220"
 ---
 # <a name="extend-log-analytics-alerts-to-azure-alerts"></a>将 Log Analytics 警报扩展到 Azure 警报
 
@@ -62,3 +62,4 @@ Azure Log Analytics 包含自身的警报功能，可以根据 Log Analytics 数
 * 了解[启动将警报从 Log Analytics 扩展到 Azure 的流程](alerts-extend-tool.md)时使用的工具。
 * 详细了解 [Azure 警报体验](../../azure-monitor/platform/alerts-overview.md)。
 * 了解然后创建 [Azure 警报中的日志警报](alerts-unified-log.md)。
+

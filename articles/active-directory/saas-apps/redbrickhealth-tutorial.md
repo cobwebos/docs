@@ -4,7 +4,7 @@ description: 了解如何在 Azure Active Directory 和 RedBrick Health 之间�
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: barbkess
 ms.assetid: 26290c65-9aa3-42ab-8ba5-901b14dc8e73
 ms.service: Azure-Active-Directory
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 1/3/2019
 ms.author: jeedes
-ms.openlocfilehash: b757da1f218d446c56c318d91d3c9015ed08c967
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: 66ff2e7c2f9fb71bcf54cc5946afed34628809b2
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54065454"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54816681"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-redbrick-health"></a>教程：Azure Active Directory 与 RedBrick Health 的集成
 
@@ -96,7 +96,7 @@ ms.locfileid: "54065454"
 
     ![配置单一登录链接](common/select-sso.png)
 
-2. 在“选择单一登录方法”对话框中，选择 SAML/WS-Fed 模式以启用单一登录。
+2. 在**选择单一登录方法**对话框中，选择 **SAML/WS-Fed**模式以启用单一登录。
 
     ![单一登录选择模式](common/select-saml-option.png)
 

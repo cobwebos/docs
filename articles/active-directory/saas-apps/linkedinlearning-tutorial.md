@@ -4,7 +4,7 @@ description: 了解如何在 Azure Active Directory 和 LinkedIn Learning 之间
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: barbkess
 ms.assetid: d5857070-bf79-4bd3-9a2a-4c1919a74946
 ms.service: Azure-Active-Directory
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/18/2018
 ms.author: jeedes
-ms.openlocfilehash: e8d829c4990aa798ce77ecc9caae51ace4c53023
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.openlocfilehash: be5dd0a0fd1eb45c505a2f0ddf1489d21bfd38e6
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53808037"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54821172"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-linkedin-learning"></a>教程：Azure Active Directory 与 LinkedIn Learning 集成
 
@@ -93,7 +93,7 @@ ms.locfileid: "53808037"
 
     ![配置单一登录链接](common/select-sso.png)
 
-2. 在“选择单一登录方法”对话框中，选择 SAML/WS-Fed 模式以启用单一登录。
+2. 在**选择单一登录方法**对话框中，选择 **SAML/WS-Fed**模式以启用单一登录。
 
     ![单一登录选择模式](common/select-saml-option.png)
 
@@ -105,7 +105,7 @@ ms.locfileid: "53808037"
 
     ![LinkedIn Learning 域和 URL 单一登录信息](common/idp-intiated.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“标识符”文本框中，输入从 LinkedIn 门户复制的“实体 ID”。 
+    a. 在“标识符”文本框中，输入从 LinkedIn 门户复制的“实体 ID”。 
 
     b. 在“回复 URL”文本框中，输入从 LinkedIn 门户复制的“断言使用者服务(ACS) URL”。
 
@@ -131,7 +131,7 @@ ms.locfileid: "53808037"
     | 名  | user.givenname  |
     | 姓  | user.surname  |
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 单击“添加新声明”以打开“管理用户声明”对话框。
+    a. 单击“添加新声明”以打开“管理用户声明”对话框。
 
     ![图像](./media/linkedinlearning-tutorial/tutorial_usermail.png)
 

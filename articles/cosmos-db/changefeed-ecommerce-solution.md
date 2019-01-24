@@ -7,12 +7,12 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 08/12/2018
 ms.author: sngun
-ms.openlocfilehash: b04a31ec46194d68dbbc5e5a4eb2b600968d7be5
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 3f42e149b88c2405a37366c3c7b886c7a8613e00
+ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54037100"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54382549"
 ---
 # <a name="use-azure-cosmos-db-change-feed-to-visualize-real-time-data-analytics"></a>使用 Azure Cosmos DB 更改源将实时数据分析可视化
 
@@ -254,7 +254,7 @@ Power BI 是一套商业分析工具，可以分析数据和分享见解。 在�
 
 7. 现在，若要可视化更多的指标，可以返回到“streamjob1”，并使用以下字段额外创建三个输出。
 
-   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 **输出别名：** incomingRevenueOutput；数据集名称：incomingRevenue；表名称：incomingRevenue  
+   a. **输出别名：** incomingRevenueOutput；数据集名称：incomingRevenue；表名称：incomingRevenue  
    b. **输出别名：** top5Output；数据集名称：top5；表名称：top5  
    c. **输出别名：** uniqueVisitorCountOutput；数据集名称：uniqueVisitorCount；表名称：uniqueVisitorCount
 

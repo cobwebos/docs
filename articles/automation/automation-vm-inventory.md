@@ -3,19 +3,19 @@ title: 使用清单收集管理 Azure 虚拟机 | Microsoft Docs
 description: 使用清单收集管理虚拟机
 services: automation
 ms.service: automation
-ms.component: change-inventory-management
+ms.subservice: change-inventory-management
 keywords: 清单, 自动化, 更改, 跟踪
 author: jennyhunter-msft
 ms.author: jehunte
 ms.date: 03/30/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 761bb1a6974afd5e7b851efb0c60101ab7d8958b
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 9fabaa2be850e5b15f10fc78adb14dfd5c112906
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49403604"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54426040"
 ---
 # <a name="manage-an-azure-virtual-machine-with-inventory-collection"></a>使用清单收集管理 Azure 虚拟机
 
@@ -65,7 +65,7 @@ ms.locfileid: "49403604"
 |已启用     | 确定是否应用了设置        |
 |项名称     | 要跟踪的文件的友好名称        |
 |组     | 一个组名，用于对文件进行逻辑分组        |
-|Windows 注册表项   | 用于查看文件的路径，例如“HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders\Common Startup”      |
+|Windows 注册表项   | 用于查看文件的路径，例如：“HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders\Common Startup”      |
 
 ### <a name="windows-files"></a>Windows 文件
 
@@ -126,3 +126,4 @@ ms.locfileid: "49403604"
 
 * 若要了解如何管理虚拟机上文件和注册表设置中的更改，请参阅[使用更改跟踪解决方案跟踪环境中的软件更改](../log-analytics/log-analytics-change-tracking.md)。
 * 若要了解如何管理虚拟机上的 Windows 和程序包更新，请参阅 [Azure 中的更新管理解决方案](../operations-management-suite/oms-solution-update-management.md)。
+

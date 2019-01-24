@@ -4,7 +4,7 @@ description: 了解如何在 Azure Active Directory 和 CylancePROTECT 之间配
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: barbkess
 ms.assetid: ea392d8c-c8aa-4475-99d0-b08524ef0f3a
 ms.service: Azure-Active-Directory
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/02/2019
 ms.author: jeedes
-ms.openlocfilehash: 2a9d5fb7d9ec150113a45b628b2b98c34146b8ab
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: ef66726fd065af67ea87d84e0e543a7d736af443
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54063516"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54818347"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cylanceprotect"></a>教程：Azure Active Directory 与 CylancePROTECT 集成
 
@@ -92,7 +92,7 @@ ms.locfileid: "54063516"
 
     ![配置单一登录链接](common/select-sso.png)
 
-2. 在“选择单一登录方法”对话框中，选择 SAML/WS-Fed 模式以启用单一登录。
+2. 在**选择单一登录方法**对话框中，选择 **SAML/WS-Fed**模式以启用单一登录。
 
     ![单一登录选择模式](common/select-saml-option.png)
 

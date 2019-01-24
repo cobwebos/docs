@@ -5,7 +5,7 @@ services: active-directory
 keywords: 对应用的条件性访问, 使用 Azure AD 进行条件性访问, 保护对公司资源的访问, 条件性访问策略
 documentationcenter: ''
 author: MarkusVi
-manager: mtillman
+manager: daveba
 editor: ''
 ms.component: conditional-access
 ms.assetid: 8c1d978f-e80b-420e-853a-8bbddc4bcdad
@@ -17,12 +17,12 @@ ms.workload: identity
 ms.date: 12/10/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: c40db6c253899d7aab21d277e93b23dd0c6feb97
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 7ffb3bfb4985f56e7e2e81a2a6d08a6ff7469fdb
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53314000"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54445399"
 ---
 # <a name="how-to-require-mfa-for-access-from-untrusted-networks-with-conditional-access"></a>如何：使用条件访问要求来自不受信任网络的访问进行 MFA   
 

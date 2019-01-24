@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 04/24/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 4ca8d42c1b2eece82fa31283b0df0d450e2f5afc
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 3036c53fa95b40ac0bfc7dbe5bed69581236918d
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46978873"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54411877"
 ---
 # <a name="quickstart-create-a-windows-virtual-machine-with-the-azure-cli"></a>快速入门：使用 Azure CLI 创建 Windows 虚拟机
 
@@ -81,7 +81,7 @@ az vm open-port --port 80 --resource-group myResourceGroup --name myVM
 
 ## <a name="connect-to-virtual-machine"></a>连接到虚拟机
 
-从本地计算机使用以下命令创建远程桌面会话。 将 IP 地址替换为你的 VM 的公用 IP 地址。 出现提示时，输入创建 VM 时使用的凭据：
+使用以下命令从本地计算机创建远程桌面会话。 将 IP 地址替换为你的 VM 的公用 IP 地址。 出现提示时，输入创建 VM 时使用的凭据：
 
 ```powershell
 mstsc /v:publicIpAddress
@@ -105,7 +105,7 @@ IIS 已安装，并且现在已从 Internet 打开 VM 上的端口 80 - 可以�
 
 ## <a name="clean-up-resources"></a>清理资源
 
-如果不再需要资源组、VM 和所有相关的资源，可以使用 [az group delete](/cli/azure/group#az_group_delete) 命令将其删除：
+如果不再需要资源组、VM 和所有相关的资源，可以使用 [az group delete](/cli/azure/group) 命令将其删除：
 
 ```azurecli-interactive
 az group delete --name myResourceGroup

@@ -4,7 +4,7 @@ description: 了解如何在 Azure Active Directory 和 Pacific Timesheet 之间
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: e546e8ba-821a-4942-9545-c84b0670beab
 ms.service: active-directory
 ms.component: saas-app-tutorial
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/28/2017
 ms.author: jeedes
-ms.openlocfilehash: 8b821da194ce41fc419e769336eeeb5927306684
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: ec300052b00af451003a86a72a7154b1114d5484
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52843642"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54808181"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-pacific-timesheet"></a>教程：Azure Active Directory 与 Pacific Timesheet 的集成
 
@@ -112,7 +112,7 @@ ms.locfileid: "52843642"
 
     ![配置单一登录](./media/pacific-timesheet-tutorial/tutorial_pacifictimesheet_url.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“标识符”文本框中，使用以下模式键入 URL：`https://<InstanceID>.pacifictimesheet.com/timesheet/home.do`
+    a. 在“标识符”文本框中，使用以下模式键入 URL：`https://<InstanceID>.pacifictimesheet.com/timesheet/home.do`
 
     b. 在 **“回复 URL”** 文本框中，使用以下模式键入 URL：`https://<InstanceID>.pacifictimesheet.com/timesheet/home.do`
 
@@ -160,7 +160,7 @@ ms.locfileid: "52843642"
  
     ![创建 Azure AD 测试用户](./media/pacific-timesheet-tutorial/create_aaduser_04.png) 
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
+    a. 在“名称”文本框中，键入 **BrittaSimon**。
 
     b. 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 

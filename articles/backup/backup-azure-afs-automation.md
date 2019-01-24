@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/12/2018
 ms.author: pullabhk
 ms.assetid: 80da8ece-2cce-40dd-8dce-79960b6ae073
-ms.openlocfilehash: 4ead84ef415dcb85682b15414380055d8799b54c
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: bbeccd03fffb699c95d52d50ec5c45e38b43ef51
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54051214"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54430392"
 ---
 # <a name="use-powershell-to-back-up-and-restore-azure-file-shares"></a>使用 PowerShell 备份和还原 Azure 文件共享
 
@@ -34,7 +34,7 @@ ms.locfileid: "54051214"
 ## <a name="setup-and-registration"></a>安装和注册
 
 > [!NOTE]
-> 如[安装 Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-6.13.0)中所述，对 AzureRM 模块中新功能的支持将于 2018 年 11 月结束。 现已公开发布对新 Azure PowerShell 模块与 Azure 文件共享的备份提供支持。
+> 如[安装 Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps?view=azurermps-6.13.0)中所述，对 AzureRM 模块中新功能的支持将于 2018 年 11 月结束。 现已公开发布对新 Azure PowerShell 模块与 Azure 文件共享的备份提供支持。
 
 请按照下列步骤开始。
 

@@ -7,13 +7,13 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 05/30/2018
 ms.author: johnkem
-ms.component: logs
-ms.openlocfilehash: 7f454cb0979fb2379490d4b275b14afee8706f0f
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.subservice: logs
+ms.openlocfilehash: f5d09600829a3efa2682721bf4aedbed7e5cf969
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53715369"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54439062"
 ---
 # <a name="monitor-subscription-activity-with-the-azure-activity-log"></a>使用 Azure 活动日志监视订阅活动
 
@@ -140,7 +140,7 @@ Get-AzureRmLogProfile
 Add-AzureRmLogProfile -Name my_log_profile -StorageAccountId /subscriptions/s1/resourceGroups/myrg1/providers/Microsoft.Storage/storageAccounts/my_storage -serviceBusRuleId /subscriptions/s1/resourceGroups/Default-ServiceBus-EastUS/providers/Microsoft.ServiceBus/namespaces/mytestSB/authorizationrules/RootManageSharedAccessKey -Location global,westus,eastus -RetentionInDays 90 -Category Write,Delete,Action
 ```
 
-| 属性 | 必选 | Description |
+| 属性 | 必选 | 说明 |
 | --- | --- | --- |
 | 名称 |是 |日志配置文件的名称。 |
 | StorageAccountId |否 |应该将活动日志保存到其中的存储帐户的资源 ID。 |
@@ -185,3 +185,4 @@ az monitor log-profiles delete --name <profile name>
 ## <a name="next-steps"></a>后续步骤
 * [详细了解活动日志（以前称为审核日志）](../../azure-resource-manager/resource-group-audit.md)
 * [将 Azure 活动日志流式传输到事件中心](../../azure-monitor/platform/activity-logs-stream-event-hubs.md)
+

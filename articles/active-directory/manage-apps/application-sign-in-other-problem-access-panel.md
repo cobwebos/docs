@@ -4,7 +4,7 @@ description: 如何对从位于 myapps.microsoft.com 的 Microsoft Azure AD 访�
 services: active-directory
 documentationcenter: ''
 author: barbkess
-manager: mtillman
+manager: daveba
 ms.assetid: ''
 ms.service: active-directory
 ms.component: app-mgmt
@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 07/11/2017
 ms.author: barbkess
 ms.reviewer: japere
-ms.openlocfilehash: 02aa4eb37437861d428c6f361b3ff21def56b49b
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 834656791592921ce6059904d7c10a0305107069
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54189824"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54466806"
 ---
 # <a name="problems-signing-in-to-an-application-from-the-access-panel"></a>从访问面板登录应用程序时出现的问题
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/17/2016
 ms.author: jimdial
-ms.openlocfilehash: b383bd601335e8c828c4c734ad8015b650fdc9f3
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: c51ac79ce1ee6835b8ce125c5f7a5f227e428668
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54055109"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54449038"
 ---
 # <a name="assign-multiple-ip-addresses-to-virtual-machines-using-the-azure-cli"></a>使用 Azure CLI 将多个 IP 地址分配给虚拟机
 
@@ -46,7 +46,7 @@ az group create --name $RgName --location $Location
     
 # Create a public IP address resource with a static IP address using the `--allocation-method Static` option. If you
 # do not specify this option, the address is allocated dynamically. The address is assigned to the resource from a pool
-# of IP adresses unique to each Azure region. Download and view the file from
+# of IP addresses unique to each Azure region. Download and view the file from
 # https://www.microsoft.com/en-us/download/details.aspx?id=41653 that lists the ranges for each region.
 
 PipName="myPublicIP"

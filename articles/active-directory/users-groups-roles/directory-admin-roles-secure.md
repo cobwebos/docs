@@ -13,16 +13,16 @@ ms.workload: identity
 ms.component: users-groups-roles
 ms.custom: it-pro
 ms.reviewer: martincoetzer, MarkMorow
-ms.openlocfilehash: da53fa7d20c66b09e06c70222f29f060fa5803c8
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: c2ee0834b0c6872d96bebe71231f1a9424ff261a
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53387074"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54438144"
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>确保 Azure AD 中混合部署和云部署的特权访问安全性
 
-在现代组织中，大多数或所有业务资产的安全性取决于管理 IT 系统的特权帐户的完整性。 恶意操作者（包括网络攻击者）通常会以管理员帐户和特权访问的其他元素为目标，试图通过凭据窃取攻击快速获得敏感数据和系统的访问权限。 就云服务来说，预防此类攻击并对其做出响应是云服务提供商和客户的共同责任。 若要详细了解对终结点和云的最新威胁，请参阅 [Microsoft 安全情报报告](https://www.microsoft.com/security/sir/default.aspx)。 本文有助于你制定路线图，消除当前计划和此处所述指南的差距。
+在现代组织中，大多数或所有业务资产的安全性取决于管理 IT 系统的特权帐户的完整性。 恶意操作者（包括网络攻击者）通常会以管理员帐户和特权访问的其他元素为目标，试图通过凭据窃取攻击快速获得敏感数据和系统的访问权限。 就云服务来说，预防此类攻击并对其做出响应是云服务提供商和客户的共同责任。 若要详细了解对终结点和云的最新威胁，请参阅 [Microsoft 安全情报报告](https://www.microsoft.com/security/operations/security-intelligence-report)。 本文有助于你制定路线图，消除当前计划和此处所述指南的差距。
 
 > [!NOTE] 
 > Microsoft 致力于实现最高信任度、透明度、合标性和合规性。 若要详细了解 Microsoft 全球事件响应团队如何减轻云服务攻击影响，以及如何将安全措施内置到 Microsoft 商业产品和云服务中，请参阅 [Microsoft 信任中心 - 安全性](https://www.microsoft.com/trustcenter/security)；若要了解 Microsoft 符合性目标，请参阅 [Microsoft 信任中心 - 符合性](https://www.microsoft.com/trustcenter/compliance)。

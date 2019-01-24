@@ -4,7 +4,7 @@ description: 了解如何在 Azure Active Directory 和 eDigitalResearch 之间�
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: joflore
 ms.assetid: c6b66ea0-16ba-45b4-b550-e81c56262b1f
 ms.service: active-directory
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/20/2017
 ms.author: jeedes
-ms.openlocfilehash: d5c86186cd6ee02d83800c6483a2e35d8f1fb3c7
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: e7333e2530ae3174f3d94478e496f0883764409c
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52848708"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54817514"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-edigitalresearch"></a>教程：Azure Active Directory 与 eDigitalResearch 的集成
 
@@ -110,7 +110,7 @@ ms.locfileid: "52848708"
 
     ![eDigitalResearch 域和 URL 单一登录信息](./media/edigitalresearch-tutorial/tutorial_edigitalresearch_url.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“标识符”文本框中，使用以下模式键入 URL：`https://<company-name>.edigitalresearch.com`
+    a. 在“标识符”文本框中，使用以下模式键入 URL：`https://<company-name>.edigitalresearch.com`
 
     b. 在 **“回复 URL”** 文本框中，使用以下模式键入 URL：`https://<company-name>.edigitalresearch.com/login/consume`
 
@@ -160,7 +160,7 @@ ms.locfileid: "52848708"
 
     ![“用户”对话框](./media/edigitalresearch-tutorial/create_aaduser_04.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“姓名”框中，键入“BrittaSimon”。
+    a. 在“姓名”框中，键入“BrittaSimon”。
 
     b. 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
 

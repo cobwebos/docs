@@ -3,18 +3,19 @@ title: Azure Monitor 中的 Azure 服务总线指标（预览版）| Microsoft D
 description: 使用 Azure 监视来监视服务总线实体
 services: service-bus-messaging
 documentationcenter: .NET
-author: spelluru
+author: axisc
 manager: timlt
+editor: spelluru
 ms.service: service-bus-messaging
 ms.topic: article
 ms.date: 11/06/2018
-ms.author: spelluru
-ms.openlocfilehash: 5175d768f4aa62365e4151b4c8fed372038f1d95
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.author: aschhab
+ms.openlocfilehash: fda6ca26c39d49c0d16c9933cc0a14f0bfea90a9
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53548793"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54857108"
 ---
 # <a name="azure-service-bus-metrics-in-azure-monitor-preview"></a>Azure Monitor 中的 Azure 服务总线指标（预览版）
 
@@ -58,7 +59,7 @@ Azure Monitor 提供多种访问指标的方法。 可通过 [Azure 门户](http
 
 计算数据量和管理操作请求数。
 
-| 指标名称 | Description |
+| 指标名称 | 说明 |
 | ------------------- | ----------------- |
 | 传入的请求数（预览版） | 在指定的期间内向服务总线服务发出的请求数。 <br/><br/> 单位：Count <br/> 聚合类型：总计 <br/> 维度：EntityName|
 |成功的请求数（预览版）|在指定的期间内向服务总线服务发出的成功请求数。<br/><br/> 单位：Count <br/> 聚合类型：总计 <br/> 维度：EntityName|
@@ -76,7 +77,7 @@ Azure Monitor 提供多种访问指标的方法。 可通过 [Azure 门户](http
 
 ## <a name="message-metrics"></a>消息指标
 
-| 指标名称 | Description |
+| 指标名称 | 说明 |
 | ------------------- | ----------------- |
 |传入的消息数（预览版）|在指定的期间内发送到服务总线的事件或消息数。<br/><br/> 单位：Count <br/> 聚合类型：总计 <br/> 维度：EntityName|
 |传出的消息数（预览版）|在指定的期间内从服务总线收到的事件或消息数。<br/><br/> 单位：Count <br/> 聚合类型：总计 <br/> 维度：EntityName|
@@ -85,7 +86,7 @@ Azure Monitor 提供多种访问指标的方法。 可通过 [Azure 门户](http
 
 ## <a name="connection-metrics"></a>连接指标
 
-| 指标名称 | Description |
+| 指标名称 | 说明 |
 | ------------------- | ----------------- |
 |ActiveConnections（预览版）|命名空间以及实体上的活动连接数。<br/><br/> 单位：Count <br/> 聚合类型：总计 <br/> 维度：EntityName|
 |打开的连接数（预览版）|打开的连接数。<br/><br/> 单位：Count <br/> 聚合类型：总计 <br/> 维度：EntityName|
@@ -96,7 +97,7 @@ Azure Monitor 提供多种访问指标的方法。 可通过 [Azure 门户](http
 > [!NOTE] 
 > 以下指标仅适用于高级层。 
 
-| 指标名称 | Description |
+| 指标名称 | 说明 |
 | ------------------- | ----------------- |
 |每个命名空间的 CPU 使用率（预览版）|命名空间的 CPU 使用百分比。<br/><br/> 单位：百分比 <br/> 聚合类型：最大值 <br/> 维度：EntityName|
 |每个命名空间的内存使用量（预览版）|命名空间的内存使用百分比。<br/><br/> 单位：百分比 <br/> 聚合类型：最大值 <br/> 维度：EntityName|
@@ -105,7 +106,7 @@ Azure Monitor 提供多种访问指标的方法。 可通过 [Azure 门户](http
 
 Azure 总线服务支持对 Azure Monitor 中的指标使用以下维度。 为指标添加维度是可选的。 如果不添加维度，则指标是在命名空间级别指定的。 
 
-|维度名称|Description|
+|维度名称|说明|
 | ------------------- | ----------------- |
 |EntityName| 总线服务支持命名空间下的消息实体。|
 

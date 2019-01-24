@@ -4,7 +4,7 @@ description: 了解如何在 Azure Active Directory 和 BlueJeans 之间配置�
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: barbkess
 ms.assetid: dfc634fd-1b55-4ba8-94a8-b8288429b6a9
 ms.service: Azure-Active-Directory
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/31/2018
 ms.author: jeedes
-ms.openlocfilehash: e92aadd2550e19b97eb94d42a11b76fa0f0cc748
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 12585974cf8e6fcaeee18293038f81989e55dfd6
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53974533"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54824417"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bluejeans"></a>教程：Azure Active Directory 与 BlueJeans 集成
 
@@ -94,7 +94,7 @@ ms.locfileid: "53974533"
 
     ![配置单一登录链接](common/select-sso.png)
 
-2. 在“选择单一登录方法”对话框中，选择 SAML/WS-Fed 模式以启用单一登录。
+2. 在**选择单一登录方法**对话框中，选择 **SAML/WS-Fed**模式以启用单一登录。
 
     ![单一登录选择模式](common/select-saml-option.png)
 
@@ -137,7 +137,7 @@ ms.locfileid: "53974533"
 
     ![SAML 单一登录](./media/bluejeans-tutorial/IC785869.png "SAML 单一登录")
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 选择“SAML 单一登录”。
+    a. 选择“SAML 单一登录”。
 
     b. 选择“启用自动预配”。
 
@@ -145,7 +145,7 @@ ms.locfileid: "53974533"
 
     ![证书路径](./media/bluejeans-tutorial/IC785870.png "证书路径")
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 单击“选择文件”，上传从 Azure 门户下载的 base-64 编码的证书。
+    a. 单击“选择文件”，上传从 Azure 门户下载的 base-64 编码的证书。
 
     b. 在“登录 URL”文本框中，粘贴从 Azure 门户复制的“登录 URL”值。
 
@@ -157,7 +157,7 @@ ms.locfileid: "53974533"
 
     ![保存更改](./media/bluejeans-tutorial/IC785874.png "保存更改")
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“用户 ID”文本框中，键入 `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`。
+    a. 在“用户 ID”文本框中，键入 `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`。
 
     b. 在“电子邮件”文本框中，键入 `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`。
 
@@ -233,7 +233,7 @@ ms.locfileid: "53974533"
 
     ![添加用户](./media/bluejeans-tutorial/IC785886.png "添加用户")
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名字”文本框中，输入用户的名字，如 Britta。
+    a. 在“名字”文本框中，输入用户的名字，如 Britta。
 
     b. 在“姓氏”文本框中，输入用户的姓氏，例如 **simon**。
 

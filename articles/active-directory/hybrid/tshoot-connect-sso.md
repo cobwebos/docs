@@ -4,7 +4,7 @@ description: 本主题介绍了如何排除 Azure Active Directory 无缝单一�
 services: active-directory
 author: billmath
 ms.reviewer: swkrish
-manager: mtillman
+manager: daveba
 ms.assetid: 9f994aca-6088-40f5-b2cc-c753a4f41da7
 ms.service: active-directory
 ms.workload: identity
@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 09/24/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 308623b4643724d95777d7e21d1138f808e9c1c9
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 369b3d2e35b20aac7067c444a7057df6d8320b24
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54190419"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54472922"
 ---
 # <a name="troubleshoot-azure-active-directory-seamless-single-sign-on"></a>排除 Azure Active Directory 无缝单一登录故障
 

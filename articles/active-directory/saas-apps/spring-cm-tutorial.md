@@ -4,7 +4,7 @@ description: 了解如何在 Azure Active Directory 和 SpringCM 之间配置单
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: 4a42f797-ac58-4aca-a8e6-53bfe5529083
 ms.service: active-directory
 ms.component: saas-app-tutorial
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/26/2017
 ms.author: jeedes
-ms.openlocfilehash: 777586bc24c0962ec1f0ba3913397bfe26d0d0d5
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 7c42ff6a78e66e602abb06dc40a413f27ec7ea52
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52841058"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54820285"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-springcm"></a>教程：Azure Active Directory 与 SpringCM 集成
 
@@ -139,7 +139,7 @@ ms.locfileid: "52841058"
    
     ![标识提供者配置](./media/spring-cm-tutorial/ic797052.png "标识提供者配置")
     
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 若要上传已下载的 Azure Active Directory 证书，请单击“选择颁发者证书”或“更改颁发者证书”。
+    a. 若要上传已下载的 Azure Active Directory 证书，请单击“选择颁发者证书”或“更改颁发者证书”。
     
     b. 将从 Azure 门户复制的“SAML 实体 ID”值粘贴到“颁发者”文本框中。
     
@@ -176,7 +176,7 @@ ms.locfileid: "52841058"
  
     ![创建 Azure AD 测试用户](./media/spring-cm-tutorial/create_aaduser_04.png) 
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
+    a. 在“名称”文本框中，键入 **BrittaSimon**。
 
     b. 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 

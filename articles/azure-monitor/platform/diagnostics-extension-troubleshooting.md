@@ -8,13 +8,13 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 07/12/2017
 ms.author: robb
-ms.component: diagnostic-extension
-ms.openlocfilehash: 8a8883989a731265fb358c119d44fa4243b54a5e
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.subservice: diagnostic-extension
+ms.openlocfilehash: 305aa28127e453c01de9b55ab6cb0ff3471afad9
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54103938"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54473803"
 ---
 # <a name="azure-diagnostics-troubleshooting"></a>Azure 诊断故障排除
 本文介绍有关使用 Azure 诊断的故障排除信息。 有关 Azure 诊断的详细信息，请参阅 [Azure 诊断概述](diagnostics-extension-overview.md)。
@@ -224,7 +224,7 @@ Azure 存储中保存 ETW 事件的表是使用以下代码命名的：
 ### <a name="azure-diagnostics-plugin-exit-codes"></a>Azure 诊断插件退出代码
 该插件返回以下退出代码：
 
-| 退出代码 | Description |
+| 退出代码 | 说明 |
 | --- | --- |
 | 0 |成功。 |
 | -1 |常规错误。 |
@@ -293,3 +293,4 @@ System.IO.FileLoadException: Could not load file or assembly 'System.Threading.T
 - 存储中的数据是否有英文计数器名称。 如果计数器名称不是英文，门户指标图表将无法识别它。 **缓解措施**：将系统帐户的计算机语言更改为英语。 要执行此操作，请选择“控制面板” > “区域” > “管理” > “复制设置”。 接下来，取消选择“欢迎界面和系统帐户”，以免将自定义语言应用到系统帐户。
 
 - 如果在性能计数器名称中使用通配符 (\*)，则在将性能计数器发送到 Azure 存储接收器时，门户将无法关联已配置和已收集的计数器。 **缓解措施**：要确保可以使用通配符并让门户展开 (\*)，请将性能计数器路由到[“Azure Monitor”接收器](diagnostics-extension-schema.md#diagnostics-extension-111)。
+

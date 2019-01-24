@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 11/16/2018
-ms.openlocfilehash: ef3d26112c631ee0ed3c754394339092020add53
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: c33952f893d5ef2cfb9020acbf813d30b6c105e7
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54332534"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54469726"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Azure 逻辑应用的限制和配置信息
 
@@ -265,7 +265,7 @@ ms.locfileid: "54332534"
 
 若要支持 [Microsoft 托管的连接器](../connectors/apis-list.md)发出的调用，请根据逻辑应用所在的区域，使用这些连接器所用的所有[出站](#outbound) IP 地址对防火墙进行设置。 这些地址显示在本部分的“出站”标题下，并按区域进行排序。 
 
-对于 [Azure 政府](/azure-government/documentation-government-welcome)和 [Azure 中国世纪互联](/azure/china/china-welcome)，连接器的保留 IP 地址目前不可用。
+对于 [Azure 政府](../azure-government/documentation-government-overview.md)和 [Azure 中国世纪互联](/azure/china/china-welcome)，连接器的保留 IP 地址目前不可用。
 
 > [!IMPORTANT]
 > 

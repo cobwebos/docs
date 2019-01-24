@@ -4,7 +4,7 @@ description: 了解如何在 Azure Active Directory 和 Promapp 之间配置单�
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: 418d0601-6e7a-4997-a683-73fa30a2cfb5
 ms.service: active-directory
 ms.component: saas-app-tutorial
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/17/2017
 ms.author: jeedes
-ms.openlocfilehash: 6ed07ea3cc625c518d6733f7a86f4542f91f425c
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 392bd8cf660ce1e394d25693bf1cd74d882fb028
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53017110"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54810127"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-promapp"></a>教程：Azure Active Directory 与 Promapp 的集成
 
@@ -112,7 +112,7 @@ ms.locfileid: "53017110"
 
     ![配置单一登录](./media/promapp-tutorial/tutorial_promapp_url.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“标识符”文本框中，使用以下模式键入 URL：
+    a. 在“标识符”文本框中，使用以下模式键入 URL：
     
     | |
     |--|
@@ -162,7 +162,7 @@ ms.locfileid: "53017110"
    
     ![Azure AD 单一登录][14]
     
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 将从 Azure 门户复制的“SAML 单一登录服务 URL”粘贴到“SSO 登录 URL”文本框中。
+    a. 将从 Azure 门户复制的“SAML 单一登录服务 URL”粘贴到“SSO 登录 URL”文本框中。
     
     b. 选择“可选”作为“SSO - 单一登录模式”，并单击“保存”。
 
@@ -198,7 +198,7 @@ ms.locfileid: "53017110"
  
     ![创建 Azure AD 测试用户](./media/promapp-tutorial/create_aaduser_04.png) 
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
+    a. 在“名称”文本框中，键入 **BrittaSimon**。
 
     b. 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 

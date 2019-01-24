@@ -3,19 +3,19 @@ title: 使用 Azure 自动化跟踪更改
 description: 借助更改跟踪解决方案可以确定环境中发生的软件和 Windows 服务更改。
 services: automation
 ms.service: automation
-ms.component: change-inventory-management
+ms.subservice: change-inventory-management
 author: georgewallace
 ms.author: gwallace
 ms.date: 01/04/2019
 ms.topic: conceptual
 manager: carmonm
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1d08471a3e0faa99cb245709cf72f9af097bc495
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.openlocfilehash: d29a2020d7e7a16e0bac0802a887a28e12630f03
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54213206"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54433010"
 ---
 # <a name="track-changes-in-your-environment-with-the-change-tracking-solution"></a>使用更改跟踪解决方案跟踪环境中的更改
 
@@ -279,3 +279,4 @@ Windows 服务的默认收集频率为 30 分钟。 若要配置该频率，请�
 > [故障排除环境中的更改](automation-tutorial-troubleshoot-changes.md)
 
 * 使用 [Log Analytics 中的日志搜索](../log-analytics/log-analytics-log-searches.md)以查看详细的更改跟踪数据。
+

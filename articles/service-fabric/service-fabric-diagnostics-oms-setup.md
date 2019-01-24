@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/21/2018
 ms.author: srrengar
-ms.openlocfilehash: 00fc04afd26da2ef5741eec308835bb8c897c26b
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: dc48194f4740216089f3daa869576596899e272b
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53077335"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54439045"
 ---
 # <a name="set-up-log-analytics-for-a-cluster"></a>为群集设置 Log Analytics
 
@@ -95,7 +95,7 @@ Azure 资源管理器可检测出此命令要更新到现有资源。 它仅处�
 
 ## <a name="deploy-log-analytics-with-azure-powershell"></a>使用 Azure PowerShell 部署 Log Analytics
 
-还可使用 `New-AzureRmOperationalInsightsWorkspace` 命令通过 PowerShell 部署 Log Analytics 资源。 要使用此方法，请确保已安装 [Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-5.1.1)。 使用此脚本新建 Log Analytics 工作区，并向其添加 Service Fabric 解决方案： 
+还可使用 `New-AzureRmOperationalInsightsWorkspace` 命令通过 PowerShell 部署 Log Analytics 资源。 要使用此方法，请确保已安装 [Azure PowerShell](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps?view=azurermps-5.1.1)。 使用此脚本新建 Log Analytics 工作区，并向其添加 Service Fabric 解决方案： 
 
 ```PowerShell
 

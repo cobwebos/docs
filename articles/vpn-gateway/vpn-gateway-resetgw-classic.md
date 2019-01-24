@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/24/2017
 ms.author: cherylmc
-ms.openlocfilehash: d23ed383bee3346cfbb20c6935dd3630e137c179
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 72e990516ce6ae3276c6db6f12d1a5dda4d0386f
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45573888"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54432500"
 ---
 # <a name="reset-a-vpn-gateway"></a>重置 VPN 网关
 
@@ -62,7 +62,7 @@ VPN 网关由在活动备用配置中运行的两个 VM 实例组成。 重置�
 
 ### <a name="resource-manager-deployment-model"></a>Resource Manager 部署模型
 
-用于重置网关的 cmdlet 是 Reset-AzureRmVirtualNetworkGateway。 进行重置前，请确保拥有最新版本的 [Resource Manager PowerShell cmdlet](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-4.0.0)。 以下示例将重置 TestRG1 资源组中名为 VNet1GW 的虚拟网络网关：
+用于重置网关的 cmdlet 是 Reset-AzureRmVirtualNetworkGateway。 进行重置前，请确保拥有最新版本的 [Resource Manager PowerShell cmdlet](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps?view=azurermps-4.0.0)。 以下示例将重置 TestRG1 资源组中名为 VNet1GW 的虚拟网络网关：
 
 ```powershell
 $gw = Get-AzureRmVirtualNetworkGateway -Name VNet1GW -ResourceGroupName TestRG1

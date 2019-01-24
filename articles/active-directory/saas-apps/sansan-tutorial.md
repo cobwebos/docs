@@ -4,7 +4,7 @@ description: 了解如何在 Azure Active Directory 和 Sansan 之间配置单�
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: f653a0f2-c44a-4670-b936-68c136b578ea
 ms.service: active-directory
 ms.component: saas-app-tutorial
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/16/2018
 ms.author: jeedes
-ms.openlocfilehash: 9e14f923b1e25f5fbc522cd39763ac53ddf37617
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 6bd84e42bf46885a9dced363724538cbd4d2066a
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52872248"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54814998"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sansan"></a>教程：Azure Active Directory 与 Sansan 集成
 
@@ -137,7 +137,7 @@ ms.locfileid: "52872248"
 
     ![配置单一登录对象](./media/sansan-tutorial/tutorial_sansan_objid.png)  
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 转到“Sansan”应用程序的“属性”页，使用“复制”按钮复制对象 ID 并将其粘贴到记事本中。
+    a. 转到“Sansan”应用程序的“属性”页，使用“复制”按钮复制对象 ID 并将其粘贴到记事本中。
 
     b. 从 Azure 门户复制的对象 ID 将在本教程后面用作 PowerShell 脚本中的 ServicePrincipalObjectId。 
 
@@ -224,7 +224,7 @@ ms.locfileid: "52872248"
  
     ![创建 Azure AD 测试用户](./media/sansan-tutorial/create_aaduser_04.png) 
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
+    a. 在“名称”文本框中，键入 **BrittaSimon**。
 
     b. 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 

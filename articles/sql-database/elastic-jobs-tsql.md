@@ -12,18 +12,18 @@ author: jaredmoo
 ms.reviewer: sstein
 manager: craigg
 ms.date: 06/14/2018
-ms.openlocfilehash: eda71351b0375789d41808f9351cf000945b5f4c
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: e00722259abaa02d3dce6ca26c8cd0ea7c42db29
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53606803"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54449395"
 ---
 # <a name="use-transact-sql-t-sql-to-create-and-manage-elastic-database-jobs"></a>使用 Transact-SQL (T-SQL) 创建和管理弹性数据库作业
 
 本文通过许多示例方案说明了如何使用 T-SQL 来完成弹性作业的入门。
 
-这些示例使用[作业数据库](elastic-jobs-overview.md#job-database)中提供的[存储过程](#job-stored-procedures)和[视图](#job-views)。
+这些示例使用[作业数据库](sql-database-job-automation-overview.md#job-database)中提供的[存储过程](#job-stored-procedures)和[视图](#job-views)。
 
 Transact-SQL (T-SQL) 用于创建、配置、执行和管理作业。 T-SQL 不支持创建弹性作业代理，因此必须先使用门户或 [PowerShell](elastic-jobs-powershell.md#create-the-elastic-job-agent) 创建弹性作业代理。
 
@@ -53,7 +53,7 @@ GO
 ## <a name="create-a-target-group-servers"></a>创建目标组（服务器）
 
 以下示例演示如何针对服务器中的所有数据库执行作业。  
-连接到[作业数据库](elastic-jobs-overview.md#job-database)，然后运行以下命令：
+连接到[作业数据库](sql-database-job-automation-overview.md#job-database)，然后运行以下命令：
 
 
 ```sql
@@ -78,7 +78,7 @@ SELECT * FROM jobs.target_group_members WHERE target_group_name='ServerGroup1';
 ## <a name="exclude-a-single-database"></a>排除单一数据库
 
 以下示例演示如何针对服务器中的所有数据库执行作业，名为 *MappingDB* 的数据库除外。  
-连接到[作业数据库](elastic-jobs-overview.md#job-database)，然后运行以下命令：
+连接到[作业数据库](sql-database-job-automation-overview.md#job-database)，然后运行以下命令：
 
 ```sql
 --Connect to the job database specified when creating the job agent
@@ -121,7 +121,7 @@ SELECT * FROM [jobs].target_group_members WHERE target_group_name = N'ServerGrou
 ## <a name="create-a-target-group-pools"></a>创建目标组（池）
 
 以下示例演示如何以一个或多个弹性池中的所有数据库为目标。  
-连接到[作业数据库](elastic-jobs-overview.md#job-database)，然后运行以下命令：
+连接到[作业数据库](sql-database-job-automation-overview.md#job-database)，然后运行以下命令：
 
 ```sql
 --Connect to the job database specified when creating the job agent
@@ -146,7 +146,7 @@ SELECT * FROM jobs.target_group_members WHERE target_group_name = N'PoolGroup';
 ## <a name="deploy-new-schema-to-many-databases"></a>将新架构部署到多个数据库
 
 以下示例演示如何将新架构部署到所有数据库。  
-连接到[作业数据库](elastic-jobs-overview.md#job-database)，然后运行以下命令：
+连接到[作业数据库](sql-database-job-automation-overview.md#job-database)，然后运行以下命令：
 
 
 ```sql
@@ -195,7 +195,7 @@ CREATE TABLE [dbo].[Test]([TestId] [int] NOT NULL);',
 2. 数据类型为 uniqueidentifier 的 internal_execution_id 的其他列。
 3. internal_execution_id 列上名为“IX_<TableName>_Internal_Execution_ID”的非聚集索引。
 
-连接到[作业数据库](elastic-jobs-overview.md#job-database)，然后运行以下命令：
+连接到[作业数据库](sql-database-job-automation-overview.md#job-database)，然后运行以下命令：
 
 ```sql
 --Connect to the job database specified when creating the job agent
@@ -266,7 +266,7 @@ SELECT elastic_pool_name , end_time, elastic_pool_dtu_limit, avg_cpu_percent, av
 ## <a name="view-job-definitions"></a>查看作业定义
 
 以下示例演示了如何查看当前的作业定义。  
-连接到[作业数据库](elastic-jobs-overview.md#job-database)，然后运行以下命令：
+连接到[作业数据库](sql-database-job-automation-overview.md#job-database)，然后运行以下命令：
 
 ```sql
 --Connect to the job database specified when creating the job agent
@@ -287,7 +287,7 @@ select * from jobs.jobsteps
 ## <a name="begin-ad-hoc-execution-of-a-job"></a>开始即席执行作业
 
 以下示例演示如何立即启动作业。  
-连接到[作业数据库](elastic-jobs-overview.md#job-database)，然后运行以下命令：
+连接到[作业数据库](sql-database-job-automation-overview.md#job-database)，然后运行以下命令：
 
 ```sql
 --Connect to the job database specified when creating the job agent
@@ -310,7 +310,7 @@ exec jobs.sp_start_job 'CreateTableTest', 1
 ## <a name="schedule-execution-of-a-job"></a>计划作业的执行
 
 以下示例演示如何计划一项将来执行的作业。  
-连接到[作业数据库](elastic-jobs-overview.md#job-database)，然后运行以下命令：
+连接到[作业数据库](sql-database-job-automation-overview.md#job-database)，然后运行以下命令：
 
 ```sql
 --Connect to the job database specified when creating the job agent
@@ -325,7 +325,7 @@ EXEC jobs.sp_update_job
 ## <a name="monitor-job-execution-status"></a>监视作业执行状态
 
 以下示例演示如何查看所有作业的执行状态详细信息。  
-连接到[作业数据库](elastic-jobs-overview.md#job-database)，然后运行以下命令：
+连接到[作业数据库](sql-database-job-automation-overview.md#job-database)，然后运行以下命令：
 
 ```sql
 --Connect to the job database specified when creating the job agent
@@ -354,7 +354,7 @@ ORDER BY start_time DESC
 ## <a name="cancel-a-job"></a>取消作业
 
 以下示例演示如何取消作业。  
-连接到[作业数据库](elastic-jobs-overview.md#job-database)，然后运行以下命令：
+连接到[作业数据库](sql-database-job-automation-overview.md#job-database)，然后运行以下命令：
 
 ```sql
 --Connect to the job database specified when creating the job agent
@@ -373,7 +373,7 @@ EXEC jobs.sp_stop_job '01234567-89ab-cdef-0123-456789abcdef'
 ## <a name="delete-old-job-history"></a>删除旧的作业历史记录
 
 以下示例演示如何删除特定日期之前的作业历史记录。  
-连接到[作业数据库](elastic-jobs-overview.md#job-database)，然后运行以下命令：
+连接到[作业数据库](sql-database-job-automation-overview.md#job-database)，然后运行以下命令：
 
 ```sql
 --Connect to the job database specified when creating the job agent
@@ -387,7 +387,7 @@ EXEC jobs.sp_purge_jobhistory @job_name='ResultPoolsJob', @oldest_date='2016-07-
 ## <a name="delete-a-job-and-all-its-job-history"></a>删除作业及其所有历史记录
 
 以下示例演示如何删除作业以及所有相关的作业历史记录。  
-连接到[作业数据库](elastic-jobs-overview.md#job-database)，然后运行以下命令：
+连接到[作业数据库](sql-database-job-automation-overview.md#job-database)，然后运行以下命令：
 
 ```sql
 --Connect to the job database specified when creating the job agent
@@ -402,11 +402,11 @@ EXEC jobs.sp_delete_job @job_name='ResultsPoolsJob'
 
 ## <a name="job-stored-procedures"></a>作业存储过程
 
-以下存储过程位于[作业数据库](elastic-jobs-overview.md#job-database)中。
+以下存储过程位于[作业数据库](sql-database-job-automation-overview.md#job-database)中。
 
 
 
-|存储过程  |Description  |
+|存储过程  |说明  |
 |---------|---------|
 |[sp_add_job](#spaddjob)     |     添加新的作业。    |
 |[sp_update_job ](#spupdatejob)    |      更新现有的作业。   |
@@ -1190,10 +1190,10 @@ GO
 
 ## <a name="job-views"></a>作业视图
 
-以下视图在[作业数据库](elastic-jobs-overview.md#job-database)中提供。
+以下视图在[作业数据库](sql-database-job-automation-overview.md#job-database)中提供。
 
 
-|查看  |Description  |
+|查看  |说明  |
 |---------|---------|
 |[jobs_executions](#jobsexecutions-view)     |  显示作业执行历史记录。      |
 |[jobs](#jobs-view)     |   显示所有作业。      |
@@ -1211,7 +1211,7 @@ GO
 显示作业执行历史记录。
 
 
-|列名称|   数据类型   |Description|
+|列名称|   数据类型   |说明|
 |---------|---------|---------|
 |**job_execution_id**   |uniqueidentifier|  一个作业执行操作实例的唯一 ID。
 |**job_name**   |nvarchar(128)  |作业的名称。
@@ -1239,7 +1239,7 @@ GO
 
 显示所有作业。
 
-|列名称|   数据类型|  Description|
+|列名称|   数据类型|  说明|
 |------|------|-------|
 |**job_name**|  nvarchar(128)   |作业的名称。|
 |**job_id**|    uniqueidentifier    |作业的唯一 ID。|
@@ -1257,7 +1257,7 @@ GO
 
 显示所有作业版本。
 
-|列名称|   数据类型|  Description|
+|列名称|   数据类型|  说明|
 |------|------|-------|
 |**job_name**|  nvarchar(128)   |作业的名称。|
 |**job_id**|    uniqueidentifier    |作业的唯一 ID。|
@@ -1270,7 +1270,7 @@ GO
 
 显示每项作业的当前版本中的所有步骤。
 
-|列名称    |数据类型| Description|
+|列名称    |数据类型| 说明|
 |------|------|-------|
 |**job_name**   |nvarchar(128)| 作业的名称。|
 |**job_id** |uniqueidentifier   |作业的唯一 ID。|
@@ -1311,7 +1311,7 @@ GO
 
 列出所有目标组。
 
-|列名称|数据类型| Description|
+|列名称|数据类型| 说明|
 |-----|-----|-----|
 |**target_group_name**| nvarchar(128)   |目标组（数据库集合）的名称。 
 |**target_group_id**    |uniqueidentifier   |目标组的唯一 ID。
@@ -1322,7 +1322,7 @@ GO
 
 显示所有目标组的所有成员。
 
-|列名称|数据类型| Description|
+|列名称|数据类型| 说明|
 |-----|-----|-----|
 |**target_group_name**  |nvarchar(128|目标组（数据库集合）的名称。 |
 |**target_group_id**    |uniqueidentifier   |目标组的唯一 ID。|

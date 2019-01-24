@@ -5,7 +5,7 @@ keywords: Azure AD Connect 介绍, Azure AD Connect 概述, 什么是 Azure AD C
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: 2bcb0caf-5d97-46cb-8c32-bda66cc22dad
 ms.service: active-directory
@@ -16,12 +16,12 @@ ms.topic: get-started-article
 ms.date: 07/12/2017
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 545ec1d4f5cd817b1fa02a135d305b997c9945bc
-ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
+ms.openlocfilehash: 9ea28e1215c989e7cb64c54dde7eac5363699089
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51705389"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54464232"
 ---
 # <a name="azure-ad-connect-in-microsoft-cloud-germany---public-preview"></a>德国 Microsoft 云中的 Azure AD Connect - 公共预览版
 ## <a name="introduction"></a>介绍
@@ -53,7 +53,7 @@ Azure AD Connect 提供本地 Active Directory 和 Azure Active Directory 之间
 
 下表描述了边栏选项卡中所示的功能。
 
-| 标题 | Description |
+| 标题 | 说明 |
 | --- | --- |
 | 同步状态 |指示同步处于启用状态，还是处于禁用状态。 |
 | 上次同步 |上次成功执行同步的时间。 |

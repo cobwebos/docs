@@ -3,18 +3,18 @@ title: Azure 自动化中的变量资产
 description: 变量资产是可供 Azure 自动化中的所有 Runbook 和 DSC 配置使用的值。  本文介绍了变量的详细信息，以及如何在文本和图形创作中使用变量。
 services: automation
 ms.service: automation
-ms.component: shared-capabilities
+ms.subservice: shared-capabilities
 author: georgewallace
 ms.author: gwallace
 ms.date: 01/15/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: aaf8671ec4bfc4bcf6fecaa357f6ae983eb04499
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: e60c5eee20caafc1c5ad41e3ccf568f4bd944745
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54330511"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54434421"
 ---
 # <a name="variable-assets-in-azure-automation"></a>Azure 自动化中的变量资产
 
@@ -50,7 +50,7 @@ ms.locfileid: "54330511"
 ## <a name="azurerm-powershell-cmdlets"></a>AzureRM PowerShell cmdlet
 对于 AzureRM，下表中的 cmdlet 用于通过 Windows PowerShell 创建和管理自动化凭据资产。 可在自动化 Runbook 和 DSC 配置中使用的 [AzureRM.Automation 模块](/powershell/azure/overview)已随附了这些 cmdlet。
 
-| Cmdlet | Description |
+| Cmdlet | 说明 |
 |:---|:---|
 |[Get-AzureRmAutomationVariable](/powershell/module/AzureRM.Automation/Get-AzureRmAutomationVariable)|检索现有变量的值。|
 |[New-AzureRmAutomationVariable](/powershell/module/AzureRM.Automation/New-AzureRmAutomationVariable)|创建新变量并设置变量值。|
@@ -60,7 +60,7 @@ ms.locfileid: "54330511"
 ## <a name="activities"></a>活动
 下表中的活动用于在 Runbook 和 DSC 配置中访问凭据。
 
-| 活动 | Description |
+| 活动 | 说明 |
 |:---|:---|
 |Get-AutomationVariable|检索现有变量的值。|
 |Set-AutomationVariable|设置现有变量的值。|
@@ -70,7 +70,7 @@ ms.locfileid: "54330511"
 
 下表中的函数用于在 Python2 Runbook 中访问和检索变量。 
 
-|Python2 函数|Description|
+|Python2 函数|说明|
 |:---|:---|
 |automationassets.get_automation_variable|检索现有变量的值。 |
 |automationassets.set_automation_variable|设置现有变量的值。 |
@@ -201,3 +201,4 @@ ms.locfileid: "54330511"
 
 * 要了解有关在图形创作中将活动连接在一起的详细信息，请参阅[图形创作中的链接](automation-graphical-authoring-intro.md#links-and-workflow)
 * 若要开始使用图形 Runbook，请参阅 [我的第一个图形 Runbook](automation-first-runbook-graphical.md) 
+

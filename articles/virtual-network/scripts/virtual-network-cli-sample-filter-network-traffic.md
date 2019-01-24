@@ -15,12 +15,12 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 03/20/2018
 ms.author: jdial
-ms.openlocfilehash: 427403443de55ddf55c5026af80509e792ab5d97
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 179a30524aed3063384673c11c4dd3b0424ce2a4
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46980883"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54473905"
 ---
 # <a name="filter-inbound-and-outbound-vm-network-traffic-script-sample"></a>筛选入站和出站 VM 网络流量脚本示例
 
@@ -55,7 +55,7 @@ az group delete --name MyResourceGroup --yes
 | [az network public-ip create](/cli/azure/network/public-ip#az_network_public_ip_create) | 创建用于从 Internet 访问 VM 的公共 IP 地址。 |
 | [az network nic create](/cli/azure/network/nic#az_network_nic_create) | 创建虚拟网络接口，并将其附加到虚拟网络的前端和后端子网。 |
 | [az network nsg create](/cli/azure/network/nsg#az_network_nsg_create) | 创建关联到前端和后端子网的网络安全组 (NSG)。 |
-| [az network nsg rule create](/cli/azure/network/nsg/rule#az_network_nsg_rule_create) |创建 NSG 规则，允许或阻止特定子网的特定端口。 |
+| [az network nsg rule create](/cli/azure/network/nsg/rule) |创建 NSG 规则，允许或阻止特定子网的特定端口。 |
 | [az vm create](/cli/azure/vm#az_vm_create) | 创建虚拟机，并将 NIC 附加到每个 VM。 此命令还指定要使用的虚拟机映像和管理凭据。 |
 | [az group delete](/cli/azure/group#az_group_delete) | 删除资源组及其包含的所有资源。 |
 

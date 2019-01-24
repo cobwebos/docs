@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/27/2018
 ms.author: cynthn
-ms.openlocfilehash: 9dc57876467deb24a763a3c3772209e3e2e0ca0d
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.openlocfilehash: 967bd0d980bf0f9c184287c10fd531758c992247
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54360031"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54437852"
 ---
 # <a name="create-a-managed-image-of-a-generalized-vm-in-azure"></a>在 Azure 中创建通用 VM 的托管映像
 
@@ -85,7 +85,7 @@ Sysprep 将删除所有个人帐户和安全信息，并准备好要用作映像
 直接从 VM 创建映像，可确保映像包含所有与该 VM 关联的磁盘，包括 OS 磁盘和任何数据磁盘。 本示例演示如何从使用托管磁盘的 VM 创建托管映像。
 
 
-开始前，请确保具有最新版本的 AzureRM.Compute PowerShell 模块（必须是 5.7.0 版本或更高版本）。 若要查找版本，请在 PowerShell 中运行 `Get-Module -ListAvailable AzureRM.Compute`。 如需升级，请参阅[使用 PowerShellGet 在 Windows 上安装 Azure PowerShell](/powershell/azure/install-azurerm-ps)。 如果在本地运行 PowerShell，则运行 `Connect-AzureRmAccount` 以创建与 Azure 的连接。
+开始前，请确保具有最新版本的 AzureRM.Compute PowerShell 模块（必须是 5.7.0 版本或更高版本）。 若要查找版本，请在 PowerShell 中运行 `Get-Module -ListAvailable AzureRM.Compute`。 如需升级，请参阅[使用 PowerShellGet 在 Windows 上安装 Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps)。 如果在本地运行 PowerShell，则运行 `Connect-AzureRmAccount` 以创建与 Azure 的连接。
 
 
 > [!NOTE]

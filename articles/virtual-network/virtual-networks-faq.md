@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/04/2018
 ms.author: jdial
-ms.openlocfilehash: 5a92f4543f865141d446f5b681674961f6fef046
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 769dcd3be33ec5dfecf0607ab3e45a11486c48d4
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54021027"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54412863"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Azure 虚拟网络常见问题 (FAQ)
 
@@ -52,7 +52,12 @@ Azure 虚拟网络 (VNet) 是自己的网络在云中的表示形式。 它是�
 * 网络配置文件（netcfg - 仅用于经典 VNet）。 请参阅[使用网络配置文件配置 VNet](virtual-networks-using-network-configuration-file.md) 一文。
 
 ### <a name="what-address-ranges-can-i-use-in-my-vnets"></a>在我的 VNet 中可以使用哪些地址范围？
-[RFC 1918](http://tools.ietf.org/html/rfc1918)中定义的任何 IP 地址范围。 例如 10.0.0.0/16。
+[RFC 1918](http://tools.ietf.org/html/rfc1918)中定义的任何 IP 地址范围。 例如 10.0.0.0/16。 无法添加以下的地址范围：
+* 224.0.0.0/4（多播）
+* 255.255.255.255/32（广播）
+* 127.0.0.0/8（环回）
+* 169.254.0.0/16（本地链路）
+* 168.63.129.16/32（内部 DNS）
 
 ### <a name="can-i-have-public-ip-addresses-in-my-vnets"></a>我的 VNet 中是否可以有公共 IP 地址？
 是的。 有关公用 IP 地址范围的详细信息，请参阅[创建虚拟网络](manage-virtual-network.md#create-a-virtual-network)。 无法从 Internet 直接访问公用 IP 地址。

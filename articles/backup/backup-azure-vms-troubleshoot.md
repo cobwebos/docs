@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 8/7/2018
 ms.author: trinadhk
-ms.openlocfilehash: 9bbaf23999c04eba5157ebe7dff73ed47418c99a
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 1714a29e4b27f6363d748ceb180f56ba98c713bb
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53634178"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54809517"
 ---
 # <a name="troubleshoot-azure-virtual-machine-backup"></a>Azure 虚拟机备份疑难解答
 可使用下表中所列出的信息排查使用 Azure 备份时遇到的错误：
@@ -42,7 +42,7 @@ ms.locfileid: "53634178"
 | 由于配置分析失败，因此快照操作失败。 |发生此错误的原因是 MachineKeys 目录 %systemdrive%\programdata\microsoft\crypto\rsa\machinekeys 上的权限已更改。 <br> 请运行以下命令，并验证“MachineKeys”目录的权限是否为默认值：<br>icacls %systemdrive%\programdata\microsoft\crypto\rsa\machinekeys。 <br><br>默认权限如下： <ul><li>Everyone:(R,W) <li>BUILTIN\Administrators：(F)</ul> 如果在“MachineKeys”目录中看到的权限与默认值不同，请执行以下步骤以更正权限、删除证书以及触发备份： <ol><li>修复“MachineKeys”目录上的权限。 通过在目录中使用 Explorer 安全属性和高级安全设置，将权限重新设为默认值。 从目录中删除所有用户对象（默认值除外），确保 Everyone 权限具有以下特殊访问权限： <ul><li>列出文件夹/读取数据 <li>读取属性 <li>读取扩展的属性 <li>创建文件/写入数据 <li>创建文件夹/附加数据<li>写入属性<li>写入扩展的属性<li>读取权限 </ul><li>删除其中发布对象为经典部署模式或“Windows Azure CRP 证书生成器”的所有证书：<ol><li>[在本地计算机控制台上打开证书](https://msdn.microsoft.com/library/ms788967(v=vs.110).aspx)。<li>在“个人” > “证书”下，删除其中发布对象为经典部署模式或 Windows Azure CRP 证书生成器的所有证书。</ol> <li>触发 VM 备份作业。 </ol>|
 | Azure 备份服务对 Azure Key Vault 没有足够的权限来备份加密的虚拟机。 |通过使用[从还原的磁盘创建 VM](backup-azure-vms-automation.md) 中的步骤，在 PowerShell 中为备份服务提供这些权限。 |
 |快照扩展安装失败，出现错误“COM+ 无法与 Microsoft 分布式事务处理协调器通信”。 | 通过提升的命令提示符，启动 Windows 服务“COM+ 系统应用程序”。 例如，net start COMSysApp。 如果该服务无法启动，请执行以下步骤：<ol><li> 确保服务“分布式事务处理协调器”的登录帐户为“网络服务”。 如果不是，请将登录帐户更改为“网络服务”并重启该服务。 然后尝试启动“COM+ 系统应用程序”。<li>如果“COM+ 系统应用程序”无法启动，请按照以下步骤卸载/安装服务“分布式事务处理协调器”： <ol><li>停止 MSDTC 服务。 <li>打开命令提示符“(cmd)”。 <li>运行命令 ```msdtc -uninstall```。 <li>运行命令 ```msdtc -install```。 <li>启动 MSDTC 服务。 </ol> <li>启动 Windows 服务“COM+ 系统应用程序”。 “COM+ 系统应用程序”启动后，从 Azure 门户触发备份作业。</ol> |
-|  由于 COM+ 错误，快照操作失败。 | 我们建议通过提升的命令提示符“net start COMSysApp”重启 Windows 服务“COM+ 系统应用程序”。 如果此问题一再出现，请重启 VM。 如果重启 VM 不起作用，请尝试[删除 VMSnapshot 扩展](https://docs.microsoft.com/azure/backup/backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout#cause-3-the-backup-extension-fails-to-update-or-load)并手动触发备份。 |
+|  由于 COM+ 错误，快照操作失败。 | 我们建议通过提升的命令提示符“net start COMSysApp”重启 Windows 服务“COM+ 系统应用程序”。 如果此问题一再出现，请重启 VM。 如果重启 VM 不起作用，请尝试[删除 VMSnapshot 扩展](https://docs.microsoft.com/azure/backup/backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout)并手动触发备份。 |
 | 备份无法冻结一个或多个 VM 装入点以获取文件系统一致性快照。 | 执行以下步骤： <ul><li>通过使用“tune2fs”命令来检查所有装入设备的文件系统状态。 例如，*tune2fs -l /dev/sdb1\*。| grep 文件系统状态。 <li>使用“umount”命令卸载未清除文件系统状态的设备。 <li> 使用“fsck”命令在这些设备上运行文件系统一致性检查。 <li> 再次装入设备，并尝试备份。</ol> |
 | 由于无法创建安全的网络通信通道，因此快照操作失败。 | <ol><li> 通过在权限提升模式下运行“regedit.exe”来打开注册表编辑器。 <li> 标识系统中存在的所有 .NET Framework 版本。 它们位于注册表项“HKEY_LOCAL_MACHINE \ SOFTWARE \ Microsoft”的层次结构下。 <li> 请为注册表项中存在的每个 .Net Framework 添加以下键： <br> “SchUseStrongCrypto"=dword:00000001”。 </ol>|
 | 由于 Visual C++ Redistributable for Visual Studio 2012 安装失败，因此快照操作失败。 | 导航到 C:\Packages\Plugins\Microsoft.Azure.RecoveryServices.VMSnapshot\agentVersion and install vcredist2012_x64。 请确保允许此服务安装的注册表项值设置为正确的值。 也就是说，注册表项“HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Msiserver”的值设置为“3”，而不是“4”。 <br><br>如果仍然遇到安装问题，请通过权限提升的命令提示符运行“MSIEXEC /UNREGISTER”，接着运行“MSIEXEC /REGISTER”来重启安装服务。  |
@@ -57,6 +57,7 @@ ms.locfileid: "53634178"
 | 备份未能取消作业： <br>请等待作业完成。 |无 |
 
 ## <a name="restore"></a>还原
+
 | 错误详细信息 | 解决方法 |
 | --- | --- |
 | 还原失败，发生云内部错误。 |<ol><li>尝试还原的云服务使用 DNS 设置进行配置。 可以检查： <br>“$deployment = Get-AzureDeployment -ServiceName "ServiceName" -Slot "Production"     Get-AzureDns -DnsSettings $deployment.DnsSettings”。<br>如果配置了“地址”，则配置了 DNS 设置。<br> <li>尝试还原的云服务配置了“ReservedIP”，且云服务中的现有 VM 处于停止状态。 可以使用以下 PowerShell cmdlet 检查云服务是否已保留 IP：$deployment = Get-AzureDeployment -ServiceName "servicename" -Slot "Production" $dep.ReservedIPName。 <br><li>正在尝试将具有以下特殊网络配置的虚拟机还原到同一个云服务中： <ul><li>采用负载均衡器配置的虚拟机（内部和外部）。<li>具有多个保留 IP 的虚拟机。 <li>具有多个 NIC 的虚拟机。 </ul><li>请在 UI 中选择新的云服务，或参阅[还原注意事项](backup-azure-arm-restore-vms.md#restore-vms-with-special-network-configurations)，了解具有特殊网络配置的 VM。</ol> |
@@ -100,7 +101,7 @@ ms.locfileid: "53634178"
 * 要更新 Linux VM 代理，请按照[更新 Linux VM 代理](../virtual-machines/linux/update-agent.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)一文中的说明进行操作。
 
     > [!NOTE]
-    > 始终使用分发存储库来更新代理。 
+    > 始终使用分发存储库来更新代理。
 
     请勿从 GitHub 下载代理代码。 如果最新代理不适用于发行版，请与分发支持部门联系，获取有关获取最新代理的说明。 还可以在 GitHub 存储库中查看最新的 [Windows Azure Linux 代理](https://github.com/Azure/WALinuxAgent/releases)信息。
 

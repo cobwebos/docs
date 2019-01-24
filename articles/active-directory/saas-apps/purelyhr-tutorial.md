@@ -4,7 +4,7 @@ description: 了解如何在 Azure Active Directory 和 PurelyHR 之间配置单
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: 86a9c454-596d-4902-829a-fe126708f739
 ms.service: active-directory
 ms.component: saas-app-tutorial
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/20/2017
 ms.author: jeedes
-ms.openlocfilehash: 88388be1a0687c3e56fd39dde2f70e40cf578f2a
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 0e389f43586bd88f1d03a6cb8d714908d299977f
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52841041"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54826388"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-purelyhr"></a>教程：Azure Active Directory 与 PurelyHR 的集成
 
@@ -143,7 +143,7 @@ ms.locfileid: "52841041"
 
     ![配置单一登录](./media/purelyhr-tutorial/purelyhr-dashboard-sso-settings.png)  
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在记事本中打开从 Azure 门户下载的 **Certificate(Bas64)** 并复制证书值。 将复制的值粘贴到“X.509 证书”框中。
+    a. 在记事本中打开从 Azure 门户下载的 **Certificate(Bas64)** 并复制证书值。 将复制的值粘贴到“X.509 证书”框中。
 
     b. 在“Idp 颁发者 URL”中，粘贴从 Azure 门户复制的“SAML 实体 ID”。
 
@@ -180,7 +180,7 @@ ms.locfileid: "52841041"
  
     ![创建 Azure AD 测试用户](./media/purelyhr-tutorial/create_aaduser_04.png) 
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
+    a. 在“名称”文本框中，键入 **BrittaSimon**。
 
     b. 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 

@@ -4,7 +4,7 @@ description: 了解如何在 Azure Active Directory 和 G Suite 之间配置单�
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: barbkess
 ms.assetid: 38a6ca75-7fd0-4cdc-9b9f-fae080c5a016
 ms.service: Azure-Active-Directory
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/02/2019
 ms.author: jeedes
-ms.openlocfilehash: 31dc45dbe8d7e3ed9b701f8623fd4e1425320316
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: f37873fdbc26e1c82b6c1d9e6be8132641d94773
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54107457"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54809167"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-g-suite"></a>教程：Azure Active Directory 与 G Suite 集成
 
@@ -134,7 +134,7 @@ ms.locfileid: "54107457"
 
     ![配置单一登录链接](common/select-sso.png)
 
-2. 在“选择单一登录方法”对话框中，选择 SAML/WS-Fed 模式以启用单一登录。
+2. 在**选择单一登录方法**对话框中，选择 **SAML/WS-Fed**模式以启用单一登录。
 
     ![单一登录选择模式](common/select-saml-option.png)
 
@@ -146,7 +146,7 @@ ms.locfileid: "54107457"
 
     ![G Suite 域和 URL 单一登录信息](common/sp-identifier.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“登录 URL”文本框中，使用以下模式键入 URL：`https://www.google.com/a/<yourdomain.com>/ServiceLogin?continue=https://mail.google.com`
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://www.google.com/a/<yourdomain.com>/ServiceLogin?continue=https://mail.google.com`
 
     b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：
     | |
@@ -169,7 +169,7 @@ ms.locfileid: "54107457"
     | ---------------| --------------- |
     | 唯一用户标识符 | User.mail |
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 单击“添加新声明”以打开“管理用户声明”对话框。
+    a. 单击“添加新声明”以打开“管理用户声明”对话框。
 
     ![图像](common/new-save-attribute.png)
 
@@ -217,7 +217,7 @@ ms.locfileid: "54107457"
 
     ![配置 SSO][12]
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 选择“使用第三方标识提供者设置 SSO”。
+    a. 选择“使用第三方标识提供者设置 SSO”。
 
     b. 在 G Suite 中的“登录页 URL”字段中，粘贴从 Azure 门户复制的“登录 URL”的值 **。** 
 

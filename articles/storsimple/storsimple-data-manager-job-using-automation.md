@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 01/16/2018
 ms.author: alkohli
-ms.openlocfilehash: 1e5fcbee664271058ac1c7fa80bb285e09b8579a
-ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
+ms.openlocfilehash: 38852e80948f9937ce2711ee3d29d6a37e1da5c3
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2018
-ms.locfileid: "27862190"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54428573"
 ---
 # <a name="use-azure-automation-to-trigger-a-job"></a>使用 Azure 自动化来触发作业
 
@@ -34,7 +34,7 @@ ms.locfileid: "27862190"
 
 在开始之前，请确保具备以下条件：
 
-*   安装在客户端计算机上的 Azure PowerShell。 [下载 Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps)。
+*   安装在客户端计算机上的 Azure PowerShell。 [下载 Azure PowerShell](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps)。
 *   资源组内 StorSimple 数据管理器服务中正确配置的作业定义。
 *   从 GitHub 存储库下载 [`DataTransformationApp.zip`](https://github.com/Azure-Samples/storsimple-dotnet-data-manager-get-started/raw/master/Azure%20Automation%20For%20Data%20Manager/DataTransformationApp.zip) 文件。 
 *   从 GitHub 存储库下载 [`Trigger-DataTransformation-Job.ps1`](https://github.com/Azure-Samples/storsimple-dotnet-data-manager-get-started/blob/master/Azure%20Automation%20For%20Data%20Manager/Trigger-DataTransformation-Job.ps1) 脚本。
@@ -43,7 +43,7 @@ ms.locfileid: "27862190"
 
 ### <a name="set-up-the-automation-account"></a>设置自动化帐户
 
-1. 在 Azure 门户中创建 Azure 运行方式自动化帐户。 为此，请转到“Azure Marketplace”>“所有”，并搜索“自动化”。 选择“自动化帐户”。
+1. 在 Azure 门户中创建 Azure 运行方式自动化帐户。 为此，请转到“Azure 市场”&gt;“所有”，并搜索“自动化”。 选择“自动化帐户”。
 
     ![创建自动化运行方式帐户](./media/storsimple-data-manager-job-using-automation/search-automation-account1.png)
 

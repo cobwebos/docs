@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/11/2018
 ms.author: raynew
-ms.openlocfilehash: 35d2234ee52516c4ebf3e354e1ab6890144cdd5d
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 6e15d4376fae576f615cac7c094f53dfcc22618e
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52879462"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54826609"
 ---
 # <a name="contoso-migration-rehost-an-on-premises-app-on-an-azure-vm-and-sql-database-managed-instance"></a>Contoso 迁移：在 Azure VM 和 SQL 数据库托管实例上重新托管本地应用
 
@@ -131,7 +131,7 @@ Contoso 通过将利弊清单放置在一起来评估其建议的设计。
 
 ### <a name="azure-services"></a>Azure 服务
 
-服务 | Description | 成本
+服务 | 说明 | 成本
 --- | --- | ---
 [数据库迁移服务](https://docs.microsoft.com/azure/dms/dms-overview) | 使用数据库迁移服务可从多个数据库源无缝迁移到 Azure 数据平台，且会尽量缩短停机时间。 | 了解[支持的区域](https://docs.microsoft.com/azure/dms/dms-overview#regional-availability)和[数据库迁移服务定价](https://azure.microsoft.com/pricing/details/database-migration/)。
 [Azure SQL 数据库托管实例](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance) | 托管实例是一个托管数据库服务，表示 Azure 云中完全托管的 SQL Server 实例。 它与最新版本的 SQL Server 数据库引擎使用相同的代码，并具有最新的功能、性能改进和安全修补。 | 使用 Azure 中运行的 SQL 数据库托管实例会产生容量相关的费用。 详细了解[托管实例定价](https://azure.microsoft.com/pricing/details/sql-database/managed/)。 
@@ -238,7 +238,7 @@ Contoso 会考虑以下因素：
     
 *需要更多帮助？*
 
-了解如何[为托管实例设置路由](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-create-tutorial-portal#create-new-route-table-and-a-route)。
+了解如何[为托管实例设置路由](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-create-tutorial-portal)。
 
 ### <a name="create-a-managed-instance"></a>创建托管实例
 

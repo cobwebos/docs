@@ -12,12 +12,12 @@ ms.prod: ''
 ms.service: key-vault
 ms.technology: ''
 ms.assetid: 4be434c4-0c99-4800-b775-c9713c973ee9
-ms.openlocfilehash: e3239d57b34af396ee4b23f3b9b01b367eb3daa6
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 216a2e31074f7afe944611de12fe2d45d9d236cf
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54050109"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54413747"
 ---
 # <a name="service-to-service-authentication-to-azure-key-vault-using-net"></a>使用 .NET 向 Azure Key Vault 进行服务到服务身份验证
 
@@ -55,7 +55,7 @@ ms.locfileid: "54050109"
 
 `AzureServiceTokenProvider` 类将令牌缓存在内存中，在过期前才将其从 Azure AD 检索出来。 结果就是，不再需要在调用 `GetAccessTokenAsync` 方法之前检查是否过期。 在需要使用令牌时直接调用该方法即可。 
 
-`GetAccessTokenAsync` 方法需要资源标识符。 若要了解详细信息，请参阅[哪些 Azure 服务支持 Azure 资源托管标识](https://docs.microsoft.com/azure/active-directory/msi-overview#which-azure-services-support-managed-service-identity)。
+`GetAccessTokenAsync` 方法需要资源标识符。 若要了解详细信息，请参阅[哪些 Azure 服务支持 Azure 资源托管标识](https://docs.microsoft.com/azure/active-directory/msi-overview)。
 
 
 <a name="samples"></a>

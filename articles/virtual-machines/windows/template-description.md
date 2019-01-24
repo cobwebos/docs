@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/03/2019
 ms.author: cynthn
-ms.openlocfilehash: 5856824ba4aec2998ad38ac73cc5acc0840584cd
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: efd645faf3bf85f181b086fea8e55b0ab78be412
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54023832"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54412846"
 ---
 # <a name="virtual-machines-in-an-azure-resource-manager-template"></a>Azure 资源管理器模板中的虚拟机
 
@@ -162,7 +162,7 @@ ms.locfileid: "54023832"
 
 可通过以下方式获取最新的 API 版本：
 
-- REST API - [列出所有资源提供程序](https://docs.microsoft.com/rest/api/resources/providers#Providers_List)
+- REST API - [列出所有资源提供程序](https://docs.microsoft.com/rest/api/resources/providers)
 - PowerShell - [Get-AzureRmResourceProvider](/powershell/module/azurerm.resources/get-azurermresourceprovider)
 - Azure CLI - [az provider show](https://docs.microsoft.com/cli/azure/provider#az_provider_show)
 

@@ -4,7 +4,7 @@ description: 介绍如何对 Azure AD Connect 同步中的配置进行更改。
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: 7b9df836-e8a5-4228-97da-2faec9238b31
 ms.service: active-directory
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 08/30/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 6579e2ced3742eb1a70ccca96b9608fc6da628ee
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 50088dd00b0410ea32b6b61516021563c7ae061f
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53190622"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54463365"
 ---
 # <a name="azure-ad-connect-sync-make-a-change-to-the-default-configuration"></a>Azure AD Connect 同步：更改默认配置
 本文旨在介绍如何对 Azure Active Directory (Azure AD) Connect 同步中的默认配置进行更改。其中提供了一些常见方案的步骤。 了解这些知识后，用户应该能够根据自己的业务规则对自己的配置进行简单的更改。
@@ -268,7 +268,7 @@ Azure AD Connect 支持 1.1.524.0 及更高版本中 **User** 对象的 **UserTy
     | 属性 | 值 | 详细信息 |
     | --- | --- | --- |
     | 名称 | *提供名称* | 例如 *In from AD – User UserType* |
-    | Description | *提供说明* |  |
+    | 说明 | *提供说明* |  |
     | 连接的系统 | *选择本地 AD 连接器* |  |
     | 连接的系统对象类型 | **User** |  |
     | Metaverse 对象类型 | **Person** |  |
@@ -310,7 +310,7 @@ Azure AD Connect 支持 1.1.524.0 及更高版本中 **User** 对象的 **UserTy
     | 属性 | 值 | 详细信息 |
     | ----- | ------ | --- |
     | 名称 | *提供名称* | 例如 *Out to AAD – User UserType* |
-    | Description | *提供说明* ||
+    | 说明 | *提供说明* ||
     | 连接的系统 | *选择 AAD 连接器* ||
     | 连接的系统对象类型 | **User** ||
     | Metaverse 对象类型 | **Person** ||

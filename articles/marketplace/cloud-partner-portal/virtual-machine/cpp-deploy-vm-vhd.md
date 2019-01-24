@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 11/30/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 9157ce7f8f16bc60a6d5c16fa992a5402cf2d7ad
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 3ab98669e01c9cfb2d4f46b8ddd83ff69653337b
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53190724"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54434166"
 ---
 # <a name="deploy-a-vm-from-your-vhds"></a>从 VHD 部署 VM
 
@@ -37,7 +37,7 @@ ms.locfileid: "53190724"
 
 遵照以下说明安装 Azure PowerShell 和 Azure CLI（如果尚未这样做）：
 
-- [使用 PowerShellGet 在 Windows 上安装 Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps)
+- [使用 PowerShellGet 在 Windows 上安装 Azure PowerShell](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps)
 - [安装 Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli)
 
 

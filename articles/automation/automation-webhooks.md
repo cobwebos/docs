@@ -3,18 +3,18 @@ title: 通过 Webhook 启动 Azure 自动化 Runbook
 description: 一个可供客户端通过 HTTP 调用在 Azure 自动化中启动 Runbook 的 Webhook。  本文介绍了如何创建 Webhook，以及如何通过调用 Webhook 来启动 Runbook。
 services: automation
 ms.service: automation
-ms.component: process-automation
+ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
 ms.date: 10/06/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 381f8c5fb59379c0494dabcd22f4675be9535837
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 19a771d75cd1f2a2a18a3a4c42fcc34e55afb111
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53016685"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54438841"
 ---
 # <a name="starting-an-azure-automation-runbook-with-a-webhook"></a>通过 Webhook 启动 Azure 自动化 Runbook
 
@@ -27,7 +27,7 @@ Webhook 可以用来在 Azure 自动化中通过单个 HTTP 请求来启动特�
 
 下表介绍了必须为 webhook 配置的属性。
 
-| 属性 | Description |
+| 属性 | 说明 |
 |:--- |:--- |
 | 名称 |可以提供用于 Webhook 的任何名称，因为该名称不会公开给客户端。 它只用来标识 Azure 自动化中的 Runbook。 <br> 最好是为 Webhook 提供一个名称，该名称需要与使用它的客户端相关。 |
 | 代码 |Webhook 的 URL 是客户端通过 HTTP POST 来调用的唯一地址，用于启动链接到 Webhook 的 Runbook。 它是在创建 Webhook 时自动生成的。 不能指定自定义 URL。 <br> <br> URL 包含一个允许第三方系统调用 Runbook 的安全令牌，不需要进一步进行身份验证。 因此，应将其视为密码。 出于安全原因，只能在创建 Webhook 时通过 Azure 门户查看该 URL。 请将保存在安全位置的 URL 记下来，供将来使用。 |
@@ -44,7 +44,7 @@ Webhook 可以定义 Runbook 参数的值，当该 Webhook 启动 Runbook 时会
 
 $WebhookData 对象具有以下属性：
 
-| 属性 | Description |
+| 属性 | 说明 |
 |:--- |:--- |
 | WebhookName |Webhook 的名称。 |
 | RequestHeader |包含传入 POST 请求标头的哈希表。 |
@@ -107,7 +107,7 @@ http://<Webhook Server>/token?=<Token Value>
 
 客户端从 POST 请求中接收以下返回代码之一。
 
-| 代码 | 文本 | Description |
+| 代码 | 文本 | 说明 |
 |:--- |:--- |:--- |
 | 202 |已接受 |已接受该请求，并已成功将 Runbook 排队。 |
 | 400 |错误的请求 |出于以下原因之一，未接受该请求： <ul> <li>Webhook 已过期。</li> <li>Webhook 已禁用。</li> <li>URL 中的令牌无效。</li>  </ul> |
@@ -226,3 +226,4 @@ $jobid = (ConvertFrom-Json ($response.Content)).jobids[0]
 ## <a name="next-steps"></a>后续步骤
 
 * 若要了解如何使用 Azure 自动化对 Azure 警报执行操作，请参阅[使用警报触发 Azure 自动化 Runbook](automation-create-alert-triggered-runbook.md)。
+

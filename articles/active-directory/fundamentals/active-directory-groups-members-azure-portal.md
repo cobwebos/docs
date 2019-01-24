@@ -3,7 +3,7 @@ title: 添加或删除组成员 - Azure Active Directory | Microsoft Docs
 description: 介绍如何使用 Azure Active Directory 在组中添加或删除组成员。
 services: active-directory
 author: eross-msft
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.component: fundamentals
@@ -12,12 +12,12 @@ ms.date: 08/23/2018
 ms.author: lizross
 ms.custom: it-pro, seodec18
 ms.reviewer: krbain
-ms.openlocfilehash: 42b80b53ca7c860143f1de1005a609b3e921e650
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: c92ac805fe9c8f3554044aa85306ecc43464411b
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53076132"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54445331"
 ---
 # <a name="add-or-remove-group-members-using-azure-active-directory"></a>使用 Azure Active Directory 添加或删除组成员
 使用 Azure Active Directory，可继续添加和删除组成员。

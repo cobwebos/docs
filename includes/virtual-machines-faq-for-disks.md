@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/03/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 5835e8275bedebaca01d585a992930d6856edfd7
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: edf99f57fe2166e5ea7f91817dde978015af9348
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53553317"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54841393"
 ---
 # <a name="frequently-asked-questions-about-azure-iaas-vm-disks-and-managed-and-unmanaged-premium-disks"></a>有关 Azure IaaS VM 磁盘以及托管和非托管高级磁盘的常见问题解答
 
@@ -101,6 +101,10 @@ ms.locfileid: "53553317"
 
 是的，非托管磁盘和托管磁盘均受支持。 我们建议你对新的工作负荷使用托管磁盘，并将当前的工作负荷迁移到托管磁盘。
 
+是否可以在同一 VM 上归置非托管和托管磁盘？
+
+不是。
+
 **如果创建 128 GB 磁盘，然后将该大小增加到 130 GiB，是否会针对下一磁盘大小 (256 GiB) 进行收费？**
 
 是的。
@@ -124,10 +128,6 @@ Azure 托管磁盘当前仅支持本地冗余存储托管磁盘。
 在哪里可找到用于使用托管磁盘创建 VM 的示例 Azure 资源管理器模板？
 * [使用托管磁盘的模板列表](https://github.com/Azure/azure-quickstart-templates/blob/master/managed-disk-support-list.md)
 * https://github.com/chagarw/MDPP
-
-是否可以在同一 VM 上归置非托管和托管磁盘？
-
-不是。
 
 **基于 blob 创建磁盘时，与该源 blob 之间是否会一直保持任何现有关系？**
 

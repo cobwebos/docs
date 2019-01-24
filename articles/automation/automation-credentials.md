@@ -3,18 +3,18 @@ title: Azure 自动化中的凭据资产
 description: Azure 自动化中的凭据资产包含可用于向 Runbook 或 DSC 配置访问的资源进行身份验证的安全凭据。 本文介绍如何创建凭据资产并在 Runbook 或 DSC 配置中使用它们。
 services: automation
 ms.service: automation
-ms.component: shared-capabilities
+ms.subservice: shared-capabilities
 author: georgewallace
 ms.author: gwallace
 ms.date: 05/08/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 07452a97ba16d7745d48e210dd90ce077be64683
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 9884138127d62e2dc524dc1b6d9e827d1ee0fac8
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51233433"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54439181"
 ---
 # <a name="credential-assets-in-azure-automation"></a>Azure 自动化中的凭据资产
 
@@ -29,7 +29,7 @@ ms.locfileid: "51233433"
 
 下表中的 cmdlet 用于通过 Windows PowerShell 创建和管理自动化凭据资产。  可在自动化 Runbook 和 DSC 配置中使用的 [Azure PowerShell 模块](/powershell/azure/overview)已随附了这些 cmdlet。
 
-| Cmdlet | Description |
+| Cmdlet | 说明 |
 |:--- |:--- |
 | [Get-AzureAutomationCredential](/powershell/module/servicemanagement/azure/get-azureautomationcredential?view=azuresmps-3.7.0) |检索有关凭据资产的信息。 只能从 **Get-AutomationPSCredential** 活动中检索凭据本身。 |
 | [New-AzureAutomationCredential](/powershell/module/servicemanagement/azure/new-azureautomationcredential?view=azuresmps-3.7.0) |创建新的自动化凭据。 |
@@ -40,7 +40,7 @@ ms.locfileid: "51233433"
 
 对于 AzureRM，下表中的 cmdlet 用于通过 Windows PowerShell 创建和管理自动化凭据资产。  可在自动化 Runbook 和 DSC 配置中使用的 [AzureRM.Automation 模块](/powershell/azure/overview)已随附了这些 cmdlet。
 
-| Cmdlet | Description |
+| Cmdlet | 说明 |
 |:--- |:--- |
 | [Get-AzureRmAutomationCredential](/powershell/module/azurerm.automation/get-azurermautomationcredential?view=azurermps-4.4.0) |检索有关凭据资产的信息。  |
 | [New-AzureRmAutomationCredential](/powershell/module/azurerm.automation/new-azurermautomationcredential?view=azurermps-4.4.0) |创建新的自动化凭据。 |
@@ -51,7 +51,7 @@ ms.locfileid: "51233433"
 
 下表中的活动用于在 Runbook 和 DSC 配置中访问凭据。
 
-| 活动 | Description |
+| 活动 | 说明 |
 |:--- |:--- |
 | Get-AutomationPSCredential |在 Runbook 或 DSC 配置中获取要使用的凭据。 返回 [System.Management.Automation.PSCredential](https://msdn.microsoft.com/library/system.management.automation.pscredential) 对象。 |
 
@@ -62,7 +62,7 @@ ms.locfileid: "51233433"
 
 下表中的函数用于在 Python2 Runbook 中访问凭据。
 
-| 函数 | Description |
+| 函数 | 说明 |
 |:---|:---|
 | automationassets.get_automation_credential | 检索有关凭据资产的信息。 |
 
@@ -142,4 +142,5 @@ print cred["password"]
 * 若要开始使用图形 Runbook，请参阅 [我的第一个图形 Runbook](automation-first-runbook-graphical.md)
 * 若要开始使用 PowerShell 工作流 Runbook，请参阅 [我的第一个 PowerShell 工作流 Runbook](automation-first-runbook-textual.md) 
 * 若要开始使用 Python2 Runbook，请参阅[第一个 Python2 Runbook](automation-first-runbook-textual-python2.md) 
+
 

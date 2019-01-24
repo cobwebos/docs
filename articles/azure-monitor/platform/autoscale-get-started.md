@@ -7,13 +7,13 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 07/07/2017
 ms.author: rajram
-ms.component: autoscale
-ms.openlocfilehash: 640a939f6f9aabb00ad830f9ba27e396b329ce7f
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.subservice: autoscale
+ms.openlocfilehash: 0535c84a8ee0776c2c35a46d3c7510a2cd615cf6
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53439614"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54469485"
 ---
 # <a name="get-started-with-autoscale-in-azure"></a>Azure 中的自动缩放入门
 本文介绍如何在 Microsoft Azure 门户中为资源指定自动缩放设置。
@@ -48,7 +48,7 @@ Azure Monitor 自动缩放仅适用于[虚拟机规模集](https://azure.microso
   ![为 Web 应用创建缩放设置][6]
 1. 现已创建第一个缩放规则。 请注意，UX 建议了最佳做法，并指出“建议至少在规则中包含一个缩放设置”。 为此，请执行以下操作：
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 单击“添加规则”。
+    a. 单击“添加规则”。
 
     b. 将“运算符”设置为“小于”。
 
@@ -133,3 +133,4 @@ Azure Monitor 自动缩放仅适用于[虚拟机规模集](https://azure.microso
 [12]: ./media/autoscale-get-started/scale-definition-json.png
 [13]: ./media/autoscale-get-started/disable-autoscale.png
 [14]: ./media/autoscale-get-started/set-manualscale.png
+

@@ -4,7 +4,7 @@ description: 在 Azure AD Connect 同步中引用声明性设置表达式。
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: 4f525ca0-be0e-4a2e-8da1-09b6b567ed5f
 ms.service: active-directory
@@ -15,14 +15,14 @@ ms.topic: article
 ms.date: 07/12/2017
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: db427d0c171e164cb03d7280103fa85e5add4dd1
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: cad9cec83ac5cc75ba5b4e5fc395e7f68f7d2770
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54157473"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54471169"
 ---
-# <a name="azure-ad-connect-sync-functions-reference"></a>Azure AD Connect 同步：函数参考
+# <a name="azure-ad-connect-sync-functions-reference"></a>Azure AD Connect 同步：函数引用
 在 Azure AD Connect 中，函数用于在同步期间操作属性值。  
 函数的语法使用以下格式表示：  
 `<output type> FunctionName(<input type> <position name>, ..)`
@@ -49,7 +49,7 @@ ms.locfileid: "54157473"
 
 **mvbin**、**mvstr** 和 **mvref** 类型的函数只适用于多值属性。 **bin**、**str** 和 **ref** 类型的函数只适用于单值和多值属性。
 
-## <a name="functions-reference"></a>函数参考
+## <a name="functions-reference"></a>函数引用
 | 函数列表 |  |  |  |  |
 | --- | --- | --- | --- | --- | --- |
 | **证书** | | | | |
@@ -78,7 +78,7 @@ ms.locfileid: "54157473"
 | [Contains](#contains) |[Count](#count) |[Item](#item) |[ItemOrNull](#itemornull) | |
 | [Join](#join) |[RemoveDuplicates](#removeduplicates) |[Split](#split) | | |
 | **Program Flow** | | | | |
-| [Error](#error) |[IIF](#iif) |[Select](#select) |[Switch](#switch) | |
+| [错误](#error) |[IIF](#iif) |[Select](#select) |[Switch](#switch) | |
 | [Where](#where) |[With](#with) | | | |
 | **Text** | | | | |
 | [GUID](#guid) |[InStr](#instr) |[InStrRev](#instrrev) |[LCase](#lcase) | |
@@ -146,7 +146,7 @@ CDate 函数通过字符串返回 UTC DateTime。 DateTime 不是 Sync 中的原
 **语法：**  
 `dt CDate(str value)`
 
-* Value：具有日期、时间和可选时区的字符串
+* 值：具有日期、时间和可选时区的字符串
 
 **备注：**  
 返回的字符串始终采用 UTC 格式。
@@ -556,7 +556,7 @@ DNComponentRev 函数返回从右边起（末尾）的指定 DN 组件的值。
 
 * dn：要解释的引用属性
 * ComponentNumber - 要返回的 DN 中的组件
-* Options：DC – 忽略具有“dc=”的所有组件
+* 选项：DC – 忽略具有“dc=”的所有组件
 
 **示例：**  
 如果 dn 为 "cn=Joe,ou=Atlanta,ou=GA,ou=US, dc=contoso,dc=com"，则  
@@ -852,7 +852,7 @@ Join 函数使用多值字符串，并返回每个项之间插入指定分隔符
 `str Join(mvstr attribute)`  
 `str Join(mvstr attribute, str Delimiter)`
 
-* attribute：包含要联接的字符串的多值属性。
+* 属性：包含要联接的字符串的多值属性。
 * delimiter：任意字符串，用于分隔返回的字符串中的子字符串。 如果省略，则使用空格字符（“ ”）。 如果分隔符为零长度字符串（“”）或零，则列表中的所有项都不使用分隔符连接。
 
 **备注**  

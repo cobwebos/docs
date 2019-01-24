@@ -4,7 +4,7 @@ description: 了解如何在 Azure Active Directory 与 Zscaler Internet Access 
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: barbkess
 ms.assetid: ea555097-bf62-45dd-9b45-b75c50324a69
 ms.service: Azure-Active-Directory
@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 12/7/2018
+ms.date: 01/17/2019
 ms.author: jeedes
-ms.openlocfilehash: 088fc2b7aeb318481a81387770f1dcef2883241d
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: 153c6517560614b8a1eb9c0241aefc121b391d19
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54064094"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54823583"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler-internet-access-administrator"></a>教程：Azure Active Directory 与 Zscaler Internet Access Administrator 的集成
 
@@ -78,8 +78,8 @@ ms.locfileid: "54064094"
 1. **[配置 Azure AD 单一登录](#configure-azure-ad-single-sign-on)** - 使用户能够使用此功能。
 2. **[配置 Zscaler Internet Access Administrator 单一登录](#configure-zscaler-internet-access-administrator-single-sign-on)** - 在应用程序端配置单一登录。
 3. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-4. **[创建 Zscaler Internet Access Administrator 测试用户](#create-zscaler-internet-access-administrator-test-user)** - 在 Zscaler Internet Access Administrator 中创建用户 Britta Simon 的对应用户，并将其链接到其 Azure AD 表示形式。
-5. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
+4. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
+5. **[创建 Zscaler Internet Access Administrator 测试用户](#create-zscaler-internet-access-administrator-test-user)** - 在 Zscaler Internet Access Administrator 中创建用户 Britta Simon 的对应用户，并将其链接到其 Azure AD 表示形式。
 6. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
@@ -92,7 +92,7 @@ ms.locfileid: "54064094"
 
     ![配置单一登录链接](common/select-sso.png)
 
-2. 在“选择单一登录方法”对话框中，选择 SAML/WS-Fed 模式以启用单一登录。
+2. 在**选择单一登录方法**对话框中，选择 **SAML/WS-Fed**模式以启用单一登录。
 
     ![单一登录选择模式](common/select-saml-option.png)
 
@@ -105,25 +105,25 @@ ms.locfileid: "54064094"
     ![Zscaler Internet Access Administrator 域和 URL 单一登录信息](common/idp-intiated.png)
 
     a. 在“标识符”文本框中，根据要求键入 URL：
-    
+
     | |
     |--|
     | `https://admin.zscaler.net` |
-    | `https://admin.zscalerone.net` | 
+    | `https://admin.zscalerone.net` |
     | `https://admin.zscalertwo.net` |
     | `https://admin.zscalerthree.net` |
     | `https://admin.zscloud.net` |
     | `https://admin.zscalerbeta.net` |
 
     b. 在“回复 URL”文本框中，根据要求键入 URL：
-    
+
     | |
     |--|
     | `https://admin.zscaler.net/adminsso.do` |
-    | `https://admin.zscalerone.net/adminsso.do` | 
-    | `https://admin.zscalertwo.net/adminsso.do` | 
-    | `https://admin.zscalerthree.net/adminsso.do` | 
-    | `https://admin.zscloud.net/adminsso.do` | 
+    | `https://admin.zscalerone.net/adminsso.do` |
+    | `https://admin.zscalertwo.net/adminsso.do` |
+    | `https://admin.zscalerthree.net/adminsso.do` |
+    | `https://admin.zscloud.net/adminsso.do` |
     | `https://admin.zscalerbeta.net/adminsso.do` |
 
 5. Zscaler Internet Access Administrator 应用程序需要特定格式的 SAML 断言。 请为此应用程序配置以下声明。 可以在应用程序集成页的“用户属性和声明”部分管理这些属性的值。 在“使用 SAML 设置单一登录”页上，单击“编辑”按钮打开“用户属性和声明”对话框。
@@ -151,11 +151,11 @@ ms.locfileid: "54064094"
     > [!NOTE]
     > 若要了解如何在 Azure AD 中配置角色，请单击[此处](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-app-role-management)
 
-4. 在“使用 SAML 设置单一登录”页上，在“SAML 签名证书”部分中，单击“下载”以根据要求从给定的选项下载**证书(Base64)** 并将其保存在计算机上。
+7. 在“使用 SAML 设置单一登录”页上，在“SAML 签名证书”部分中，单击“下载”以根据要求从给定的选项下载**证书(Base64)** 并将其保存在计算机上。
 
     ![证书下载链接](common/certificatebase64.png)
 
-6. 在“设置 Zscaler Internet Access Administrator”部分，根据要求复制相应的 URL。
+8. 在“设置 Zscaler Internet Access Administrator”部分，根据要求复制相应的 URL。
 
     ![复制配置 URL](common/copy-configuration-urls.png)
 
@@ -170,13 +170,13 @@ ms.locfileid: "54064094"
 1. 在另一个 Web 浏览器窗口中，登录到 Zscaler Internet Access 管理员 UI。
 
 2. 转到“管理”>“管理员管理”执行以下步骤，然后单击“保存”：
-   
+
     ![管理](./media/zscaler-internet-access-administrator-tutorial/AdminSSO.png "Administration")
 
     a. 选中“启用 SAML 身份验证”。
 
     b. 单击“上传”，以上传从 Azure 门户的“公共 SSL 证书”中下载的 Azure SAML 签名证书。
-    
+
     c. （可选）为了提高安全性，请添加**颁发者**详细信息以验证 SAML 响应的颁发者。
 
 3. 在管理员 UI 中，执行以下步骤：
@@ -245,7 +245,7 @@ ms.locfileid: "54064094"
 
 https://help.zscaler.com/zia/adding-admins
 
-### <a name="test-single-sign-on"></a>测试单一登录 
+### <a name="test-single-sign-on"></a>测试单一登录
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
@@ -258,4 +258,3 @@ https://help.zscaler.com/zia/adding-admins
 - [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-

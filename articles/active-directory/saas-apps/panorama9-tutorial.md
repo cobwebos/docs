@@ -4,7 +4,7 @@ description: 了解如何在 Azure Active Directory 和 Panorama9 之间配置�
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: 5e28d7fa-03be-49f3-96c8-b567f1257d44
 ms.service: active-directory
 ms.component: saas-app-tutorial
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/05/2017
 ms.author: jeedes
-ms.openlocfilehash: ad2a9dba54df3ae7a3e2604437c8a65c88dcca94
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: aa4bf1208e4f588e6fe74f2d0ec157da9176b670
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52850884"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54823362"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-panorama9"></a>教程：Azure Active Directory 与 Panorama9 集成
 
@@ -113,7 +113,7 @@ ms.locfileid: "52850884"
 
     ![配置单一登录](./media/panorama9-tutorial/tutorial_panorama9_url.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“登录 URL”文本框中，键入 URL `https://dashboard.panorama9.com/saml/access/3262`
+    a. 在“登录 URL”文本框中，键入 URL `https://dashboard.panorama9.com/saml/access/3262`
 
     b. 在“标识符”文本框中，使用以下模式键入 URL：`https://www.panorama9.com/saml20/<tenant-name>`
 
@@ -144,7 +144,7 @@ ms.locfileid: "52850884"
    
    ![设置](./media/panorama9-tutorial/ic790025.png "设置")
    
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“标识提供者 URL”文本框中，粘贴从 Azure 门户复制的“单一登录服务 URL”值。
+    a. 在“标识提供者 URL”文本框中，粘贴从 Azure 门户复制的“单一登录服务 URL”值。
    
     b. 在“证书指纹”文本框中，粘贴从 Azure 门户复制的证书“指纹”值。    
          
@@ -177,7 +177,7 @@ ms.locfileid: "52850884"
  
     ![创建 Azure AD 测试用户](./media/panorama9-tutorial/create_aaduser_04.png) 
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
+    a. 在“名称”文本框中，键入 **BrittaSimon**。
 
     b. 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 

@@ -4,7 +4,7 @@ description: 介绍使用 Azure AD 应用程序代理时的网络拓扑注意事
 services: active-directory
 documentationcenter: ''
 author: barbkess
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.component: app-mgmt
 ms.workload: identity
@@ -15,12 +15,12 @@ ms.date: 07/28/2017
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 976118514dbcb4cee9675ae357d857e7b90e8c0c
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: e7cfb9dffdebfc5abaaf5840a6c81af6a7e9d556
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53140466"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54474655"
 ---
 # <a name="network-topology-considerations-when-using-azure-active-directory-application-proxy"></a>使用 Azure Active Directory 应用程序代理时的网络拓扑注意事项
 
@@ -117,7 +117,7 @@ ms.locfileid: "53140466"
 
 ### <a name="use-case-1"></a>用例 1
 
-**场景：** 应用位于组织在美国部署的网络中，其用户位于同一区域。 Azure 数据中心与企业网络之间不存在 ExpressRoute 或 VPN。
+**场景：** 该应用位于组织在美国部署的网络中，其用户位于同一区域。 Azure 数据中心与企业网络之间不存在 ExpressRoute 或 VPN。
 
 **建议：** 遵循上一部分中所述的模式 1。 为了降低延迟，可以根据需要考虑使用 ExpressRoute。
 
@@ -127,7 +127,7 @@ ms.locfileid: "53140466"
 
 ### <a name="use-case-2"></a>用例 2
 
-**场景：** 应用位于组织在美国部署的网络中，其用户遍布全球各地。 Azure 数据中心与企业网络之间不存在 ExpressRoute 或 VPN。
+**场景：** 该应用位于组织在美国部署的网络中，其用户遍布全球各地。 Azure 数据中心与企业网络之间不存在 ExpressRoute 或 VPN。
 
 **建议：** 遵循上一部分中所述的模式 1。 
 
@@ -137,7 +137,7 @@ ms.locfileid: "53140466"
 
 ### <a name="use-case-3"></a>用例 3
 
-**场景：** 应用位于组织在美国部署的网络中。 Azure 与企业网络之间存在采用 Microsoft 对等互连的 ExpressRoute。
+**场景：** 该应用位于组织在美国部署的网络中。 Azure 与企业网络之间存在采用 Microsoft 对等互连的 ExpressRoute。
 
 **建议：** 遵循上一部分中所述的模式 1 和模式 2。
 
@@ -149,7 +149,7 @@ ms.locfileid: "53140466"
 
 ### <a name="use-case-4"></a>用例 4
 
-**场景：** 应用位于组织在美国部署的网络中。 Azure 与企业网络之间存在结合专用对等互连的 ExpressRoute。
+**场景：** 该应用位于组织在美国部署的网络中。 Azure 与企业网络之间存在结合专用对等互连的 ExpressRoute。
 
 **建议：** 遵循上一部分中所述的模式 3。
 

@@ -4,7 +4,7 @@ description: 了解如何在 Azure Active Directory 和 Predictix Ordering 之�
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: joflore
 ms.assetid: 2fe2f976-e97f-4368-9695-3e1624409e8b
 ms.service: active-directory
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/20/2017
 ms.author: jeedes
-ms.openlocfilehash: f805fde861413fe84f1ad15ade1ce2923a9531ce
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 7dadb3f8680acee0c67e03ad719826f93c8486ae
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53011719"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54809016"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-predictix-ordering"></a>教程：Azure Active Directory 与 Predictix Ordering 集成
 
@@ -110,7 +110,7 @@ ms.locfileid: "53011719"
 
     ![Predictix Ordering 域和 URL 单一登录信息](./media/predictixordering-tutorial/tutorial_predictixordering_url.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“登录 URL”文本框中，使用以下模式键入 URL： `https://<companyname-pricing>.ordering.predictix.com/sso/request`
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL： `https://<companyname-pricing>.ordering.predictix.com/sso/request`
 
     b. 在“标识符”文本框中，使用以下模式键入 URL： 
     
@@ -163,7 +163,7 @@ ms.locfileid: "53011719"
 
     ![“用户”对话框](./media/predictixordering-tutorial/create_aaduser_04.png)
 
-   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“姓名”框中，键入“BrittaSimon”。
+   a. 在“姓名”框中，键入“BrittaSimon”。
 
    b. 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
 

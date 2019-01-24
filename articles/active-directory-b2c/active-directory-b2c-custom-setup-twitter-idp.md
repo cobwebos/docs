@@ -3,19 +3,19 @@ title: 在 Azure Active Directory B2C 中使用自定义策略设置使用 Twitt
 description: 在 Azure Active Directory B2C 中使用自定义策略设置使用 Twitter 帐户的登录。
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/20/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 75d26387c8a9db1fa9acdc9d6b71bde63453c22d
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: e1b99b405bd11c01f986162ecbf499d9fa4cf110
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48887337"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54851022"
 ---
 # <a name="set-up-sign-in-with-a-twitter-account-by-using-custom-policies-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中使用自定义策略设置使用 Twitter 帐户的登录
 

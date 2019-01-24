@@ -4,7 +4,7 @@ description: 了解如何在 Azure Active Directory 和 Greenhouse 之间配置�
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: joflore
 ms.assetid: 78ec1766-4f79-4f16-9a66-d5584c4b6151
 ms.service: active-directory
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/19/2017
 ms.author: jeedes
-ms.openlocfilehash: 14cdf0ddf648fb4441785106d3a8123d73a4bde9
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 39bc573fea09654c5f87c218b1ea0fb3ece5d2bc
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52835890"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54815202"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-greenhouse"></a>教程：Azure Active Directory 与 Greenhouse 集成
 
@@ -110,7 +110,7 @@ ms.locfileid: "52835890"
 
     ![Greenhouse 域和 URL 单一登录信息](./media/greenhouse-tutorial/tutorial_greenhouse_url.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“登录 URL”文本框中，使用以下模式键入 URL： `https://<companyname>.greenhouse.io`
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL： `https://<companyname>.greenhouse.io`
 
     b. 在“标识符”文本框中，使用以下模式键入 URL：`https://<companyname>.greenhouse.io`
 
@@ -157,7 +157,7 @@ ms.locfileid: "52835890"
 
     ![“用户”对话框](./media/greenhouse-tutorial/create_aaduser_04.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“姓名”框中，键入“BrittaSimon”。
+    a. 在“姓名”框中，键入“BrittaSimon”。
 
     b. 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
 
@@ -188,7 +188,7 @@ ms.locfileid: "52835890"
    
    ![添加新用户](./media/greenhouse-tutorial/ic790793.png "添加新用户")
 
-   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“输入用户电子邮件”文本框中，键入要预配的有效 Azure Active Directory 帐户的电子邮件地址。
+   a. 在“输入用户电子邮件”文本框中，键入要预配的有效 Azure Active Directory 帐户的电子邮件地址。
 
    b. 单击“ **保存**”。    
    

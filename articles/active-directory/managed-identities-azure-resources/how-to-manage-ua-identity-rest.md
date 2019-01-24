@@ -4,7 +4,7 @@ description: 分步说明如何创建、列出和删除用户分配托管标识�
 services: active-directory
 documentationcenter: ''
 author: daveba
-manager: mtillman
+manager: daveba
 editor: ''
 ms.service: active-directory
 ms.component: msi
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 06/26/2018
 ms.author: daveba
-ms.openlocfilehash: 86d2f013567d768437e589df366c5c131e1bcf50
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 9ac036b11734e40d0f601f2416ef4892646e6390
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52421903"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54425461"
 ---
 # <a name="create-list-or-delete-a-user-assigned-managed-identity-using-rest-api-calls"></a>使用 REST API 调用创建、列出或删除用户分配托管标识
 
@@ -59,14 +59,14 @@ s/<RESOURCE GROUP>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<U
 
 **请求标头**
 
-|请求标头  |Description  |
+|请求标头  |说明  |
 |---------|---------|
 |*Content-Type*     | 必需。 设置为 `application/json`。        |
 |*授权*     | 必需。 设置为有效的 `Bearer` 访问令牌。        |
 
 **请求正文**
 
-|名称  |Description  |
+|名称  |说明  |
 |---------|---------|
 |位置     | 必需。 资源位置。        |
 
@@ -82,7 +82,7 @@ curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroup
 GET https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP>/providers/Microsoft.ManagedIdentity/userAssignedIdentities?api-version=2015-08-31-preview HTTP/1.1
 ```
 
-|请求标头  |Description  |
+|请求标头  |说明  |
 |---------|---------|
 |*Content-Type*     | 必需。 设置为 `application/json`。        |
 |*授权*     | 必需。 设置为有效的 `Bearer` 访问令牌。        |
@@ -102,7 +102,7 @@ s/<RESOURCE GROUP>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<U
 ```HTTP
 DELETE https://management.azure.com/subscriptions/80c696ff-5efa-4909-a64d-f1b616f423ca/resourceGroups/TestRG/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<USER ASSIGNED IDENTITY NAME>?api-version=2015-08-31-preview HTTP/1.1
 ```
-|请求标头  |Description  |
+|请求标头  |说明  |
 |---------|---------|
 |*Content-Type*     | 必需。 设置为 `application/json`。        |
 |*授权*     | 必需。 设置为有效的 `Bearer` 访问令牌。        |

@@ -4,7 +4,7 @@ description: 了解如何在 Azure Active Directory 与 Atlassian Cloud 之间�
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: barbkess
 ms.assetid: 729b8eb6-efc4-47fb-9f34-8998ca2c9545
 ms.service: Azure-Active-Directory
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/20/2018
 ms.author: jeedes
-ms.openlocfilehash: 517c92336b8c5c6827717d4c2287c41eaaa14b55
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.openlocfilehash: 55c1aa4a478031ebc49ec5ab7ea5744d9d980470
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53810520"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54825749"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-atlassian-cloud"></a>教程：Azure Active Directory 与 Atlassian Cloud 的集成
 
@@ -92,7 +92,7 @@ ms.locfileid: "53810520"
 
     ![配置单一登录链接](common/select-sso.png)
 
-2. 在“选择单一登录方法”对话框中，选择 SAML/WS-Fed 模式以启用单一登录。
+2. 在**选择单一登录方法**对话框中，选择 **SAML/WS-Fed**模式以启用单一登录。
 
     ![单一登录选择模式](common/select-saml-option.png)
 
@@ -104,7 +104,7 @@ ms.locfileid: "53810520"
 
     ![[应用程序名称] 域和 URL 单一登录信息](common/idp-relay.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“标识符”文本框中，使用以下模式键入 URL：`https://auth.atlassian.com/saml/<unique ID>`
+    a. 在“标识符”文本框中，使用以下模式键入 URL：`https://auth.atlassian.com/saml/<unique ID>`
 
     b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://auth.atlassian.com/login/callback?connection=saml-<unique ID>`
 
@@ -132,7 +132,7 @@ ms.locfileid: "53810520"
 
 7. 在“用户属性”对话框中的“用户声明”部分，执行以下步骤：
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 单击“编辑图标”，打开“管理用户声明”对话框。
+    a. 单击“编辑图标”，打开“管理用户声明”对话框。
 
     ![图像](./media/atlassian-cloud-tutorial/tutorial_usermail.png)
 
@@ -170,7 +170,7 @@ ms.locfileid: "53810520"
 
     ![配置单一登录](./media/atlassian-cloud-tutorial/tutorial_atlassiancloud_12.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“标识提供者实体 ID”框中，粘贴从 Azure 门户复制的 SAML 实体 ID。
+    a. 在“标识提供者实体 ID”框中，粘贴从 Azure 门户复制的 SAML 实体 ID。
 
     b. 在“标识提供者 SSO URL”框中，粘贴从 Azure 门户复制的 SAML 单一登录服务 URL。
 
@@ -182,7 +182,7 @@ ms.locfileid: "53810520"
 
     ![配置单一登录](./media/atlassian-cloud-tutorial/tutorial_atlassiancloud_13.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“SAML”窗口中，复制“SP 标识 ID”，然后在 Azure 门户中 Atlassian Cloud 的“域和 URL”下，将此 ID 粘贴到“标识符”框中。
+    a. 在“SAML”窗口中，复制“SP 标识 ID”，然后在 Azure 门户中 Atlassian Cloud 的“域和 URL”下，将此 ID 粘贴到“标识符”框中。
 
     b. 在“SAML”窗口中，复制“SP 断言使用者服务 URL”，然后在 Azure 门户中 Atlassian Cloud 的“域和 URL”下，将此 URL 粘贴到“回复 URL”框中。 “登录 URL”是 Atlassian Cloud 的租户 URL。
 

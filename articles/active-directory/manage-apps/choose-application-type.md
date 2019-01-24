@@ -4,7 +4,7 @@ description: 了解可以与 Azure AD 集成的应用程序支持类型及其相
 services: active-directory
 documentationcenter: ''
 author: barbkess
-manager: mtillman
+manager: daveba
 ms.assetid: ''
 ms.service: active-directory
 ms.component: app-mgmt
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/08/2018
 ms.author: barbkess
-ms.openlocfilehash: 99405f9ae3e86324aba7a6fdc583225c1f71f83a
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: ab68c8f73d4b53f441b8f46f466371cd1d03ad41
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52845104"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54846806"
 ---
 # <a name="choosing-the-application-type-when-adding-an-application-in-azure-active-directory"></a>在 Azure Active Directory 中添加应用程序时选择应用程序类型
 了解可以添加到 Azure Active Directory (Azure AD) 的四种类型的应用程序。 在 Azure Active Directory 中添加应用程序时，系统将提示你选择四种应用程序类型之一。 
@@ -68,11 +68,11 @@ Azure AD 中的上述四种应用程序类型都支持以下功能：
 
 -   **禁用 Azure AD 单一登录** - 如果尚未准备好将此应用程序与使用 Azure AD 的单一登录集成，或只是要进行测试，则选择禁用 Azure AD 单一登录**单一登录模式**
 
--   **链接登录** - 如果具有已连接到现有单一登录解决方案的应用程序，或只是想在用户的[应用程序访问面板](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)或 [Office 365 应用程序启动器](https://login.microsoftonline.com/common/oauth2/authorize?response_mode=form_post&response_type=id_token&scope=openid&nonce=d508a995-f6d6-4b8a-81b8-825c71f1be46.636253878097046923&state=https%3a%2f%2fsupport.office.com%2farticle%2fMeet-the-Office-365-app-launcher-79f12104-6fed-442f-96a0-eb089a3f476a%3fui%3den-US%26rs%3den-US%26ad%3dUS&client_id=4b233688-031c-404b-9a80-a4f3f2351f90&redirect_uri=https%3a%2f%2fsupport.office.com%2fauth%2fsignin&login_hint=asteen%40microsoft.com&prompt=none)中为其发布简单链接，则选择[链接登录](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis#how-does-single-sign-on-with-azure-active-directory-work)**单一登录模式**
+-   **链接登录** - 如果具有已连接到现有单一登录解决方案的应用程序，或只是想在用户的[应用程序访问面板](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)或 [Office 365 应用程序启动器](https://login.microsoftonline.com/common/oauth2/authorize?response_mode=form_post&response_type=id_token&scope=openid&nonce=d508a995-f6d6-4b8a-81b8-825c71f1be46.636253878097046923&state=https%3a%2f%2fsupport.office.com%2farticle%2fMeet-the-Office-365-app-launcher-79f12104-6fed-442f-96a0-eb089a3f476a%3fui%3den-US%26rs%3den-US%26ad%3dUS&client_id=4b233688-031c-404b-9a80-a4f3f2351f90&redirect_uri=https%3a%2f%2fsupport.office.com%2fauth%2fsignin&login_hint=asteen%40microsoft.com&prompt=none)中为其发布简单链接，则选择[链接登录](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)**单一登录模式**
 
--   **基于密码的登录** - 如果应用程序呈现 HTML 用户名和密码字段，且想要安全存储该用户名和密码，以便稍后将其重播到应用程序，则选择[基于密码的登录](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis#how-does-single-sign-on-with-azure-active-directory-work)**单一登录模式**
+-   **基于密码的登录** - 如果应用程序呈现 HTML 用户名和密码字段，且想要安全存储该用户名和密码，以便稍后将其重播到应用程序，则选择[基于密码的登录](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)**单一登录模式**
 
--   **基于 SAML 的登录** - 如果应用程序支持 SAML 或 OpenID Connect 协议，或希望能够根据在 SAML 声明中定义的规则将用户映射到特定应用程序角色，则选择[基于 SAML 的登录](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis#how-does-single-sign-on-with-azure-active-directory-work)单一登录模式*
+-   **基于 SAML 的登录** - 如果应用程序支持 SAML 或 OpenID Connect 协议，或希望能够根据在 SAML 声明中定义的规则将用户映射到特定应用程序角色，则选择[基于 SAML 的登录](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)单一登录模式*
 
    >[!NOTE]
    >如果已为应用程序配置了应用程序代理，则此选项不可用。

@@ -3,7 +3,7 @@ title: Microsoft Authenticator 手机登录 - Azure 和 Microsoft 帐户 | Micro
 description: 使用手机登录 Microsoft 帐户，而不是键入密码。 本文提供有关此功能的常见问题解答。
 services: active-directory
 author: eross-msft
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.component: user-help
@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 08/12/2017
 ms.author: lizross
 ms.reviewer: librown
-ms.openlocfilehash: 3df4be80e1a979590a05ff10601485e950de54bd
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 39ad9beeb6e562a4487588967910efaf0cbe4d84
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52962211"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54822529"
 ---
 # <a name="sign-in-with-your-phone-not-your-password"></a>使用手机（而不是密码）登录
 在你输入密码后，Microsoft Authenticator 应用不仅可以通过执行双重验证来帮助保护帐户的安全，而且现在它还能完全取代 Microsoft 帐户密码。

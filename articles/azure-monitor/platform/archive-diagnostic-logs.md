@@ -7,13 +7,13 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 07/18/2018
 ms.author: johnkem
-ms.component: logs
-ms.openlocfilehash: bc3ee549a4219441b657b89bef56d35dfac6626a
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.subservice: logs
+ms.openlocfilehash: b01afe1626fe27a20e7b7103ccb020e4414f774f
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53547483"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54476456"
 ---
 # <a name="archive-azure-diagnostic-logs"></a>存档 Azure 诊断日志
 
@@ -72,7 +72,7 @@ ms.locfileid: "53547483"
 Set-AzureRmDiagnosticSetting -ResourceId /subscriptions/s1id1234-5679-0123-4567-890123456789/resourceGroups/testresourcegroup/providers/Microsoft.Network/networkSecurityGroups/testnsg -StorageAccountId /subscriptions/s1id1234-5679-0123-4567-890123456789/resourceGroups/myrg1/providers/Microsoft.Storage/storageAccounts/my_storage -Categories networksecuritygroupevent,networksecuritygrouprulecounter -Enabled $true -RetentionEnabled $true -RetentionInDays 90
 ```
 
-| 属性 | 必选 | Description |
+| 属性 | 必选 | 说明 |
 | --- | --- | --- |
 | ResourceId |是 |要设置诊断设置的资源的资源 ID。 |
 | StorageAccountId |否 |应该将诊断日志保存到其中的存储帐户的资源 ID。 |
@@ -148,7 +148,7 @@ insights-logs-networksecuritygrouprulecounter/resourceId=/SUBSCRIPTIONS/s1id1234
 }
 ```
 
-| 元素名称 | Description |
+| 元素名称 | 说明 |
 | --- | --- |
 | time |处理与事件对应的请求的 Azure 服务生成事件时的时间戳。 |
 | resourceId |受影响资源的资源 ID。 |
@@ -165,3 +165,4 @@ insights-logs-networksecuritygrouprulecounter/resourceId=/SUBSCRIPTIONS/s1id1234
 * [将诊断日志流式传输到事件中心命名空间](../../azure-monitor/platform/diagnostic-logs-stream-event-hubs.md)
 * [使用 Azure Monitor 存档 Azure Active Directory 日志](../../active-directory/reports-monitoring/quickstart-azure-monitor-route-logs-to-storage-account.md)
 * [详细了解诊断日志](../../azure-monitor/platform/diagnostic-logs-overview.md)
+

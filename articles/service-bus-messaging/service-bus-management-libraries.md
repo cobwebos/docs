@@ -3,9 +3,9 @@ title: Azure 服务总线管理库 | Microsoft Docs
 description: 在 .NET 中管理服务总线命名空间和消息实体。
 services: service-bus-messaging
 documentationcenter: na
-author: spelluru
+author: axisc
 manager: timlt
-editor: ''
+editor: spelluru
 ms.assetid: ''
 ms.service: service-bus-messaging
 ms.workload: na
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 09/05/2018
-ms.author: spelluru
-ms.openlocfilehash: b7f63ac8a52da4898abb3d30b71f3ee3a3e1a4b3
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.author: aschhab
+ms.openlocfilehash: d6c2cd813e96b40fc9f95785a1fd28e324a0437b
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47394686"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54850943"
 ---
 # <a name="service-bus-management-libraries"></a>服务总线管理库
 

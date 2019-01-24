@@ -4,7 +4,7 @@ description: 了解如何在 Azure Active Directory 和 Asana 之间配置单一
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: barbkess
 ms.assetid: 837e38fe-8f55-475c-87f4-6394dc1fee2b
 ms.service: Azure-Active-Directory
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/31/2018
 ms.author: jeedes
-ms.openlocfilehash: c37f98604ad10116698434888d137ef88d00d2e4
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: b687f45221d968b3a75e6466ccb316273b9e0182
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53972050"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54822852"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-asana"></a>教程：Azure Active Directory 与 Asana 的集成
 
@@ -94,7 +94,7 @@ ms.locfileid: "53972050"
 
     ![配置单一登录链接](common/select-sso.png)
 
-2. 在“选择单一登录方法”对话框中，选择 SAML/WS-Fed 模式以启用单一登录。
+2. 在**选择单一登录方法**对话框中，选择 **SAML/WS-Fed**模式以启用单一登录。
 
     ![单一登录选择模式](common/select-saml-option.png)
 
@@ -106,7 +106,7 @@ ms.locfileid: "53972050"
 
     ![Asana 域和 URL 单一登录信息](common/sp-identifier.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“登录 URL”文本框中，键入 URL：`https://app.asana.com/`
+    a. 在“登录 URL”文本框中，键入 URL：`https://app.asana.com/`
 
     b. 在“标识符(实体 ID)”文本框中，键入 URL：`https://app.asana.com/`
 
@@ -134,7 +134,7 @@ ms.locfileid: "53972050"
 
     ![配置单一登录组织设置](./media/asana-tutorial/tutorial_asana_10.png)  
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“登录页 URL”文本框中，粘贴“登录 URL”。
+    a. 在“登录页 URL”文本框中，粘贴“登录 URL”。
 
     b. 右键单击从 Azure 门户下载的证书，然后使用记事本或首选文本编辑器打开证书文件。 复制证书开始和结束标题之间的内容，并将其粘贴在“X.509 证书”文本框中。
 

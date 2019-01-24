@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 03/09/2017
 ms.author: allclark
 ms.custom: mvc
-ms.openlocfilehash: 271390757b7e79eb29c5a3c14ca9ee1b38b53e29
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: 6963a7d8541897940316d0fdfbea06f265884249
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "41917899"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54478308"
 ---
 # <a name="create-a-vm-with-a-virtual-hard-disk"></a>使用虚拟硬盘创建 VM
 
@@ -56,12 +56,12 @@ az group delete -n az-cli-vhd
 | [az group create](https://docs.microsoft.com/cli/azure/group#az_group_create) | 创建用于存储所有资源的资源组。 |
 | [az storage account list](https://docs.microsoft.com/cli/azure/storage/account#az_storage_account_list) | 列出存储帐户 |
 | [az storage account check-name](https://docs.microsoft.com/cli/azure/storage/account#az_storage_account_check_name) | 检查存储帐户名称是否有效且目前还不存在 |
-| [az storage account keys list](https://docs.microsoft.com/cli/azure/storage/account/keys#az_storage_account_keys_list) | 列出存储帐户的密钥 |
+| [az storage account keys list](https://docs.microsoft.com/cli/azure/storage/account/keys) | 列出存储帐户的密钥 |
 | [az storage blob exists](https://docs.microsoft.com/cli/azure/storage/blob#az_storage_blob_exists) | 检查 Blob 是否存在 |
 | [az storage container create](https://docs.microsoft.com/cli/azure/storage/container#az_storage_container_create) | 在存储帐户中创建一个容器。 |
 | [az storage blob upload](https://docs.microsoft.com/cli/azure/storage/blob#az_storage_blob_upload) | 通过上传 VHD，在容器中创建一个 Blob。 |
 | [az vm list](https://docs.microsoft.com/cli/azure/vm#az_vm_list) | 与 `--query` 一起使用，用于检查 VM 名称是否已使用。 | 
-| [az vm create](https://docs.microsoft.com/cli/azure/vm/availability-set#az_vm_availability_set_create) | 创建虚拟机。 |
+| [az vm create](https://docs.microsoft.com/cli/azure/vm/availability-set) | 创建虚拟机。 |
 | [az vm list-ip-addresses](https://docs.microsoft.com/cli/azure/vm#az_vm_list-ip-addresses) | 获取已创建虚拟机的 IP 地址。 |
 
 ## <a name="next-steps"></a>后续步骤

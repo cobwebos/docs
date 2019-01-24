@@ -4,7 +4,7 @@ description: 了解 Azure Active Directory 基于组的许可，包括其工作�
 services: active-directory
 keywords: Azure AD 许可
 author: eross-msft
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.component: fundamentals
 ms.topic: conceptual
@@ -13,12 +13,12 @@ ms.date: 10/29/2018
 ms.author: lizross
 ms.reviewer: krbain
 ms.custom: it-pro, seodec18
-ms.openlocfilehash: 0450feb82e539ebd73c3013e066104b29916238d
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 895de485ed4b4e33719025a5c8aa6cbca3828042
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54018766"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54452286"
 ---
 # <a name="what-is-group-based-licensing-in-azure-active-directory"></a>Azure Active Directory 中基于组的许可是什么？
 

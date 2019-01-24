@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 05/30/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: a023d9f600f63d1ead4cf7c7e2a3cceec794d28b
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 4f4456ed81fba4648f5bc3efaa415b1e44e5e415
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46972583"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54852110"
 ---
 # <a name="tutorial---how-to-use-cloud-init-to-customize-a-linux-virtual-machine-in-azure-on-first-boot"></a>教程 - 如何在 Azure 中的 Linux 虚拟机首次启动时使用 cloud-init 对其进行自定义
 
@@ -171,7 +171,7 @@ az keyvault certificate create \
 
 
 ### <a name="prepare-certificate-for-use-with-vm"></a>准备用于 VM 的证书
-若要在 VM 创建过程中使用该证书，请使用 [az keyvault secret list-versions](/cli/azure/keyvault/secret#az-keyvault-secret-list-versions) 获取证书的 ID。 VM 需要特定格式的证书才能在启动时将其注入，因此请使用 [az vm secret format](/cli/azure/vm#az-vm-secret-format) 转换该证书。 以下示例将这些命令的输出分配给变量，以便在后续步骤中使用：
+若要在 VM 创建过程中使用该证书，请使用 [az keyvault secret list-versions](/cli/azure/keyvault/secret#az-keyvault-secret-list-versions) 获取证书的 ID。 VM 需要特定格式的证书才能在启动时将其注入，因此请使用 [az vm secret format](/cli/azure/vm) 转换该证书。 以下示例将这些命令的输出分配给变量，以便在后续步骤中使用：
 
 ```azurecli-interactive
 secret=$(az keyvault secret list-versions \

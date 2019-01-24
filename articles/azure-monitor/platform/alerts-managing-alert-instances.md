@@ -7,13 +7,13 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: anantr
-ms.component: alerts
-ms.openlocfilehash: 29c2f58e4b4bea50d156192c818f8f91bbfeab4e
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.subservice: alerts
+ms.openlocfilehash: 0324fffdfaaa512c3610d5389d68dba2164f8d55
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53283683"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54436444"
 ---
 # <a name="manage-alert-instances"></a>管理警报实例
 使用 Azure Monitor 中的[统一警报体验](https://aka.ms/azure-alerts-overview)，现在可以看到你在 Azure 中的所有不同类型的警报，这些警报来自多个订阅，显示在单个窗格中。 本文分步介绍了如何查看警报实例，以及如何深入门户来查找特定的警报实例以进行故障排除。
@@ -43,3 +43,4 @@ ms.locfileid: "53283683"
  
 1.  单击任何警报实例都会打开“警报详细信息”页面，可以在其中深入了解该特定警报实例的信息。   
 ![警报详细信息](media/alerts-managing-alert-instances/alert-details.jpg)  
+

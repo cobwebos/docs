@@ -3,7 +3,7 @@ title: 添加或删除用户 - Azure Active Directory | Microsoft Docs
 description: 有关如何使用 Azure Active Directory 添加新用户或删除现有用户的说明。
 services: active-directory
 author: eross-msft
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.component: fundamentals
@@ -12,12 +12,12 @@ ms.date: 09/04/2018
 ms.author: lizross
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
-ms.openlocfilehash: dd4a9132d5f04870239be3127f723afb60b3ecef
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: fbe513abee2eccdc4448df961517f179facab58a
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53104673"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54452728"
 ---
 # <a name="add-or-delete-users-using-azure-active-directory"></a>使用 Azure Active Directory 添加或删除用户
 在 Azure Active Directory (Azure AD) 租户中添加新用户或删除现有用户。

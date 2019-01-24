@@ -3,7 +3,7 @@ title: 注册你的组织以使用 Azure Active Directory | Microsoft Docs
 description: 有关如何注册你的组织以使用 Azure 和 Azure Active Directory 的说明。
 services: active-directory
 author: eross-msft
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.component: fundamentals
@@ -12,12 +12,12 @@ ms.date: 09/14/2018
 ms.author: lizross
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
-ms.openlocfilehash: 286c46f760dda4991fd89651bc3a01424d8a5502
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 8ba1fa7ae697dabe6748189ed272d2f0eeb9da85
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54054786"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54452065"
 ---
 # <a name="sign-up-your-organization-to-use-azure-active-directory"></a>注册你的组织以使用 Azure Active Directory
 使用以下任一帐户注册 Azure Active Directory (Azure AD) 或新 Microsoft Azure 订阅：

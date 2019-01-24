@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 01/29/2018
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: e2b17ef790f47a9352e3c2b744bdbb4960fe616b
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 638aa3bf0e278ce00c124d8217a1bf9104e878fb
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45579985"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54413766"
 ---
 # <a name="manage-web-traffic-using-the-azure-cli"></a>使用 Azure CLI 管理 Web 流量
 
@@ -53,7 +53,7 @@ az group delete --name myResourceGroupAG --yes
 | [az network public-ip create](https://docs.microsoft.com/cli/azure/network/public-ip?view=azure-cli-latest) | 创建应用程序网关的公用 IP 地址。 |
 | [az network application-gateway create](https://docs.microsoft.com/cli/azure/network/application-gateway?view=azure-cli-latest) | 创建应用程序网关。 |
 | [az vmss create](https://docs.microsoft.com/cli/azure/vmss#az-vmss-create) | 创建虚拟机规模集。 |
-| [az network public-ip show](https://docs.microsoft.com/cli/azure/network/public-ip#az-network_public_ip_show) | 获取应用程序网关的公共 IP 地址。 |
+| [az network public-ip show](https://docs.microsoft.com/cli/azure/network/public-ip) | 获取应用程序网关的公共 IP 地址。 |
 
 ## <a name="next-steps"></a>后续步骤
 

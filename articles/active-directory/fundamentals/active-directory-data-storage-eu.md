@@ -3,7 +3,7 @@ title: 欧洲客户标识数据存储 - Azure Active Directory | Microsoft Docs
 description: 了解 MAzure Active Directory 在哪个位置存储其欧洲客户的标识相关数据。
 services: active-directory
 author: eross-msft
-manager: mtillman
+manager: daveba
 ms.author: lizross
 ms.service: active-directory
 ms.component: fundamentals
@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 05/17/2018
 ms.custom: it-pro, seodec18
-ms.openlocfilehash: 51658fe686e2826618b2044cd969e6b4d463b93f
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: a95569ad332836734059abb58aacfff387d08e65
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54063162"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54445960"
 ---
 # <a name="identity-data-storage-for-european-customers-in-azure-active-directory"></a>Azure Active Directory 中的欧洲客户标识数据存储
 Azure Active Directory (Azure AD) 可帮助管理用户标识，并创建智能化的访问策略用于帮助保护组织的资源。 标识数据的存储位置基于订阅服务时（例如，订阅 Office 365 或 Azure 时） 组织提供的地址。 有关标识数据存储位置的具体信息，请参阅 Microsoft 信任中心的[数据存储在何处？](https://www.microsoft.com/trustcenter/privacy/where-your-data-is-located)部分。

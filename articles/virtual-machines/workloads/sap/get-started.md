@@ -3,8 +3,8 @@ title: Azure VM 上的 SAP 入门 | Microsoft Docs
 description: 了解在 Microsoft Azure 中的虚拟机 (VM) 上运行的 SAP 解决方案
 services: virtual-machines-linux
 documentationcenter: ''
-author: RicksterCDN
-manager: jeconnoc
+author: msjuergent
+manager: patfilot
 editor: ''
 tags: azure-resource-manager
 keywords: ''
@@ -14,15 +14,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 01/07/2019
-ms.author: rclaus
+ms.date: 01/22/2019
+ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d3256fcf33a9ad1eb34ec5dbb0c701c8166a49e2
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: a30448580d394f83642de824f2d50115aaf964dc
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54075169"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54448443"
 ---
 # <a name="using-azure-for-hosting-and-running-sap-workload-scenarios"></a>使用 Azure 承载和运行 SAP 工作负荷方案
 

@@ -4,7 +4,7 @@ description: 了解如何在 Azure Active Directory 和 YouEarnedIt 之间配置
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: barbkess
 ms.assetid: 3011d44d-dfcf-4061-888f-cff90fbc8150
 ms.service: Azure-Active-Directory
@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 12/6/2018
+ms.date: 01/17/2019
 ms.author: jeedes
-ms.openlocfilehash: fd65d6a5d210b4b0549236ec39844e36480b10c9
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 5b3746a1e29f436c277fd238e13fd46010941824
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53790252"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54825981"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-youearnedit"></a>教程：Azure Active Directory 与 YouEarnedIt 集成
 
@@ -78,8 +78,8 @@ ms.locfileid: "53790252"
 1. **[配置 Azure AD 单一登录](#configure-azure-ad-single-sign-on)** - 使用户能够使用此功能。
 2. **[配置 YouEarnedIt 单一登录](#configure-youearnedit-single-sign-on)** - 在应用程序端配置单一登录。
 3. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-4. **[创建 YouEarnedIt 测试用户](#create-youearnedit-test-user)** - 在 YouEarnedIt 中创建 Britta Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
-5. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
+4. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
+5. **[创建 YouEarnedIt 测试用户](#create-youearnedit-test-user)** - 在 YouEarnedIt 中创建 Britta Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
 6. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
@@ -92,7 +92,7 @@ ms.locfileid: "53790252"
 
     ![配置单一登录链接](common/select-sso.png)
 
-2. 在“选择单一登录方法”对话框中，选择 SAML/WS-Fed 模式以启用单一登录。
+2. 在**选择单一登录方法**对话框中，选择 **SAML/WS-Fed**模式以启用单一登录。
 
     ![单一登录选择模式](common/select-saml-option.png)
 
@@ -104,22 +104,24 @@ ms.locfileid: "53790252"
 
     ![YouEarnedIt 域和 URL 单一登录信息](common/sp-identifier.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“登录 URL”文本框中，使用以下模式键入 URL： 
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL：
+
     | 环境  | 模式  |
     |:--- |:--- |
     | 生产 | `https://<company name>.youearnedit.com/users/sign_in` |
     | 沙盒  |`https://<company name>.sandbox.youearnedit.com/users/sign_in` |
 
     b. 在“标识符”文本框中，使用以下模式键入 URL：
+
     | 环境  | 模式  |
     |:--- |:--- |
     | 生产 | `<company name>.youearnedit.com` |
     | 沙盒  |`<company name>.sandbox.youearnedit.com` |
 
-    > [!NOTE] 
+    > [!NOTE]
     > 这些不是实际值。 必须使用实际登录 URL 和标识符更新这些值。 请联系分配给你的 YouEarnedIt 客户成功经理以获取这些值。
 
-4. 在“使用 SAML 设置单一登录”页上，在“SAML 签名证书”部分中，单击“下载”以根据要求从给定的选项下载**证书(Base64)** 并将其保存在计算机上。
+5. 在“使用 SAML 设置单一登录”页上，在“SAML 签名证书”部分中，单击“下载”以根据要求从给定的选项下载**证书(Base64)** 并将其保存在计算机上。
 
     ![证书下载链接](common/certificatebase64.png)
 
@@ -192,11 +194,10 @@ ms.locfileid: "53790252"
 
 在本部分中，会在 YouEarnedIt 中创建一个名为“Britta Simon”的用户。 请与分配给你的 YouEarnedIt 客户成功经理协作，将用户添加到 YouEarnedIt 平台中。
 
->[!NOTE]
->YouEarnedIt 需要标识提供者在 NameID 属性中提供 EmailAddress 或 UserName。 如果在数据库中找不到相应的 UserName 或 EmailAddress，或不完全匹配，则身份验证失败。 这需要在 SSO 集成之前将帐户导入到 YouEarnedIt 系统中（通常通过 API 或 CSV 导入）。
+> [!NOTE]
+> YouEarnedIt 需要标识提供者在 NameID 属性中提供 EmailAddress 或 UserName。 如果在数据库中找不到相应的 UserName 或 EmailAddress，或不完全匹配，则身份验证失败。 这需要在 SSO 集成之前将帐户导入到 YouEarnedIt 系统中（通常通过 API 或 CSV 导入）。
 
-
-### <a name="test-single-sign-on"></a>测试单一登录 
+### <a name="test-single-sign-on"></a>测试单一登录
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
@@ -209,4 +210,3 @@ ms.locfileid: "53790252"
 - [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-

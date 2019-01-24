@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.date: 08/11/2018
 ms.author: mbullwin
 ms.reviewer: Dale.Koetke
-ms.component: ''
-ms.openlocfilehash: 6b8940f62b94615b4622f60786e411b9a18b2dee
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.subservice: ''
+ms.openlocfilehash: c326c255636bac7e698a64044e9ab65c8c05d01c
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54001611"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54460713"
 ---
 # <a name="monitoring-usage-and-estimated-costs"></a>监视使用情况和预估成本
 
@@ -112,7 +112,7 @@ ms.locfileid: "54001611"
 
 ## <a name="automate-moving-to-the-new-pricing-model"></a>自动转移到新定价模型
 
-下面的脚本需要使用 Azure PowerShell 模块。 若要检查是否拥有最新版本，请参阅[安装 Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-6.1.0)。
+下面的脚本需要使用 Azure PowerShell 模块。 若要检查是否拥有最新版本，请参阅[安装 Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps?view=azurermps-6.1.0)。
 
 在拥有最新版本的 Azure PowerShell 后，你需要运行 ``Connect-AzureRmAccount``。
 

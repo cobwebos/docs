@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.date: 01/11/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: mtillman
+manager: daveba
 ms.reviewer: michmcla
-ms.openlocfilehash: 5b88fda9252b4547a87b192ef662330912d67d1a
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: 7a6f6909791fcf60f6c691a830cab85241ae803c
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54247208"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54432483"
 ---
 # <a name="how-to-require-two-step-verification-for-a-user"></a>如何要求对用户进行双重验证
 
@@ -40,7 +40,7 @@ ms.locfileid: "54247208"
 
 Azure 多重身份验证中的用户帐户具有以下三种不同状态：
 
-| 状态 | Description | 受影响的非浏览器应用 | 受影响的浏览器应用 | 新式身份验证受影响 |
+| 状态 | 说明 | 受影响的非浏览器应用 | 受影响的浏览器应用 | 新式身份验证受影响 |
 |:---:|:---:|:---:|:--:|:--:|
 | 已禁用 |没有在 Azure MFA 中注册某个新用户的默认状态。 |否 |否 |否 |
 | 已启用 |用户已加入 Azure MFA 但尚未注册。 在用户下次登录时会提示他们进行注册。 |不是。  它们继续工作，直到注册过程完成。 | 是的。 会话过期后，会要求进行 Azure MFA 注册。| 是的。 访问令牌过期后，会要求进行 Azure MFA 注册。 |

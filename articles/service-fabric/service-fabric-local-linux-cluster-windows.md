@@ -14,11 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/20/2017
 ms.author: suhuruli
-ms.openlocfilehash: ad0d383888c173ece5a7fbd3b0de690ed13074f7
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 26acb3a2a0cefdca74d2c761ccddf89e18aa909a
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54388496"
 ---
 # <a name="set-up-a-linux-service-fabric-cluster-on-your-windows-developer-machine"></a>设置 Windows 开发人员计算机上的 Linux Service Fabric 群集
 
@@ -38,13 +39,8 @@ ms.lasthandoff: 05/16/2018
 ## <a name="create-a-local-container-and-setup-service-fabric"></a>创建本地容器和设置 Service Fabric
 若要设置本地 Docker 容器并在其上运行 Service Fabric 群集，请在 PowerShell 执行以下步骤：
 
-1. 从 Docker 中心存储库拉取映像：
 
-    ```powershell
-    docker pull microsoft/service-fabric-onebox
-    ```
-
-2. 使用以下内容更新主机上的 Docker 守护程序配置并重启 Docker 守护程序： 
+1. 使用以下内容更新主机上的 Docker 守护程序配置并重启 Docker 守护程序： 
 
     ```json
     {
@@ -54,32 +50,75 @@ ms.lasthandoff: 05/16/2018
     ```
     建议的更新方法是：转到 Docker 图标 >“设置”>“守护程序”>“高级”，并在该处更新。 接下来，请重启 Docker 守护程序来使更改生效。 
 
-3. 启动带映像的 Service Fabric 单机容器实例：
+2. 在新目录中创建名为 `Dockerfile` 的文件，以生成 Service Fabric 映像：
 
-    ```powershell
-    docker run -itd -p 19080:19080 --name sfonebox microsoft/service-fabric-onebox
+    ```dockerfile
+    FROM microsoft/service-fabric-onebox
+    WORKDIR /home/ClusterDeployer
+    RUN ./setup.sh
+    #Generate the local
+    RUN locale-gen en_US.UTF-8
+    #Set environment variables
+    ENV LANG=en_US.UTF-8
+    ENV LANGUAGE=en_US:en
+    ENV LC_ALL=en_US.UTF-8
+    EXPOSE 19080 19000 80 443
+    #Start SSH before running the cluster
+    CMD /etc/init.d/ssh start && ./run.sh
     ```
+
+    >[!NOTE]
+    >可以修改此文件，以便在容器中添加更多程序或依赖项。
+    >例如，添加 `RUN apt-get install nodejs -y` 可以支持将 `nodejs` 应用程序用作来宾可执行文件。
+    
     >[!TIP]
-    > * 可通过指定容器实例的名称，以更具可读性的方式对其进行处理。 
-    > * 如果应用程序正在侦听特定端口，则必须使用附加 -p 标记指定它。 例如，如果应用程序正在侦听端口 8080，则运行 docker run -itd -p 19080:19080 -p 8080:8080 --name sfonebox microsoft/service-fabric-onebox
+    > 默认情况下，这样会拉取具有最新 Service Fabric 版本的映像。 如需特定的修订版本，请访问 [Docker 中心](https://hub.docker.com/r/microsoft/service-fabric-onebox/)页。
 
-4. 以交互式 ssh 模式登录到 Docker 容器：
+3. 若要通过 `Dockerfile` 生成可重用的映像，请打开终端并运行 `cd` 切换到 `Dockerfile` 所在的目录，然后运行：
 
-    ```powershell
-    docker exec -it sfonebox bash
+    ```powershell 
+    docker build -t mysfcluster .
+    ```
+    
+    >[!NOTE]
+    >此操作需要一段时间，但只需执行一次。
+
+4. 现在，每当有需要时，都可以运行以下命令，快速启动 Service Fabric 的本地副本：
+
+    ```powershell 
+    docker run --name sftestcluster -d -v //var/run/docker.sock:/var/run/docker.sock -p 19080:19080 -p 19000:19000 -p 25100-25200:25100-25200 mysfcluster
     ```
 
-5. 运行安装程序脚本，该脚本会提取所需的依赖项，然后启动容器中的群集。
+    >[!TIP]
+    >为容器实例提供一个名称，以更具可读性的方式对其进行处理。 
+    >
+    >如果应用程序正在侦听特定端口，则必须使用附加的 `-p` 标记指定这些端口。 例如，如果应用程序正在侦听端口 8080，请添加下面的 `-p` 标记：
+    >
+    >`docker run -itd -p 19080:19080 -p 8080:8080 --name sfonebox microsoft/service-fabric-onebox`
+    >
 
-    ```bash
-    ./setup.sh     # Fetches and installs the dependencies required for Service Fabric to run
-    ./run.sh       # Starts the local cluster
+5. 群集需要一小段时间来启动，可以使用以下命令查看日志，或者通过 [http://localhost:19080](http://localhost:19080) 跳转到仪表板来查看群集运行状况：
+
+    ```powershell 
+    docker logs sftestcluster
     ```
 
 6. 成功完成步骤 5 之后，即可从 Windows 转到 ``http://localhost:19080``，然后便会看到 Service Fabric 资源管理器。 此时，可使用 Windows 开发人员计算机上的任何工具连接到此群集，并部署面向 Linux Service Fabric 群集的应用程序。 
 
     > [!NOTE]
     > Windows 当前不支持 Eclipse 插件。 
+
+7. 完成后，可使用以下命令来停止并清理容器：
+
+    ```powershell 
+    docker rm -f sftestcluster
+    ```
+
+### <a name="known-limitations"></a>已知限制 
+ 
+ 以下是在 Mac 的容器中运行的本地群集的已知限制： 
+ 
+ * DNS 服务无法运行且不受支持 [问题 #132](https://github.com/Microsoft/service-fabric/issues/132)
 
 ## <a name="next-steps"></a>后续步骤
 * [Eclipse](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-eclipse) 入门

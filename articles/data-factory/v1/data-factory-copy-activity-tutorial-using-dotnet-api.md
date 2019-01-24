@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 9a536efd59008572459b8736e2a6ada669c00519
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 7a3979d9f92526934f074b7a6a122352928abe68
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54015175"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54428390"
 ---
 # <a name="tutorial-create-a-pipeline-with-copy-activity-using-net-api"></a>教程：使用 .NET API 创建包含复制活动的管道
 > [!div class="op_single_selector"]
@@ -49,7 +49,7 @@ ms.locfileid: "54015175"
 * 请阅读 [教程概述和先决条件](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) 了解教程概述，并完成 **先决条件** 步骤。
 * Visual Studio 2012、2013 或 2015
 * 下载并安装 [Azure .NET SDK](https://azure.microsoft.com/downloads/)
-* Azure PowerShell。 遵循 [How to install and configure Azure PowerShell](/powershell/azure/install-azurerm-ps) （如何安装和配置 Azure PowerShell）一文中的说明，在计算机上安装 Azure PowerShell。 使用 Azure PowerShell 创建 Azure Active Directory 应用程序。
+* Azure PowerShell。 遵循 [How to install and configure Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps) （如何安装和配置 Azure PowerShell）一文中的说明，在计算机上安装 Azure PowerShell。 使用 Azure PowerShell 创建 Azure Active Directory 应用程序。
 
 ### <a name="create-an-application-in-azure-active-directory"></a>在 Azure Active Directory 中创建应用程序
 创建一个 Azure Active Directory 应用程序，为该应用程序创建服务主体，然后将其分配到 **数据工厂参与者** 角色。

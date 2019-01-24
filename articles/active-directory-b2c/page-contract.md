@@ -3,19 +3,19 @@ title: 在 Azure Active Directory B2C 中选择页面协定 | Microsoft Docs
 description: 了解如何在 Azure Active Directory B2C 中选择页面协定。
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: e2e6da5df434ffd217b0521d4a13cd8ec713d5a1
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: b2debff99e9492c251c8ffba6c0707a6cb6e6743
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53110561"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54855680"
 ---
 # <a name="select-a-page-contract-in-azure-active-directory-b2c-using-custom-policies"></a>使用自定义策略在 Azure Active Directory B2C 中选择页面协定
 

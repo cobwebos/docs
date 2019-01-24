@@ -4,7 +4,7 @@ description: 了解如何将用户帐户从 Azure AD 自动预配到 G Suite 及
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: 6dbd50b5-589f-4132-b9eb-a53a318a64e5
 ms.service: active-directory
 ms.component: saas-app-tutorial
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: 48a835bf8c63ffa5512173b600fb85abd5c6cb45
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 856fc4416bde6022693cf8250b84854f66a269fd
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52840344"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54820336"
 ---
 # <a name="tutorial-configure-g-suite-for-automatic-user-provisioning"></a>教程：为 G Suite 配置自动用户预配
 
@@ -84,7 +84,7 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
       
 1. 如果尚未向 Azure Active Directory 添加自定义域名，请按照以下步骤操作：
   
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在 [Azure 门户](https://portal.azure.com)的左侧导航窗格中，选择“Active Directory”。 在目录列表中，选择目录。 
+    a. 在 [Azure 门户](https://portal.azure.com)的左侧导航窗格中，选择“Active Directory”。 在目录列表中，选择目录。 
 
     b. 选择左侧导航窗格中的“域名”，然后单击“添加”。
      
@@ -110,7 +110,7 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 
 1. 向 Azure AD 验证完所有域后，必须再次向 Google Apps 验证这些域。 对于每个尚未向 Google 注册的域，请执行以下步骤：
    
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在 [Google Apps 管理员控制台](https://admin.google.com/)中，选择“域”。
+    a. 在 [Google Apps 管理员控制台](https://admin.google.com/)中，选择“域”。
      
      ![选择域][20]
 

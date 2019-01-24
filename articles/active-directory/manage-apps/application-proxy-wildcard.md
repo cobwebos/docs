@@ -4,7 +4,7 @@ description: 了解如何在 Azure Active Directory 应用程序代理中使用�
 services: active-directory
 documentationcenter: ''
 author: barbkess
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.component: app-mgmt
 ms.workload: identity
@@ -15,12 +15,12 @@ ms.date: 09/06/2018
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 8c876f220cde99bbeb3b5d9f8f8878acb5584802
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: d0b989ac7095f070c65f5f11cd8d67e3e41c9d45
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53140041"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54478359"
 ---
 # <a name="wildcard-applications-in-the-azure-active-directory-application-proxy"></a>Azure Active Directory 应用程序代理中的通配符应用程序 
 
@@ -168,7 +168,7 @@ Azure Active Directory (Azure AD) 中配置大量的本地应用程序后，如�
 
 ![AppId](./media/application-proxy-wildcard/05.png)
 
-| 颜色 | Description |
+| 颜色 | 说明 |
 | ---   | ---         |
 | 蓝色  | 显式发布并在 Azure 门户中可见的应用程序。 |
 | 灰色  | 可通过父应用程序访问的应用程序。 |

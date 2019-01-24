@@ -8,12 +8,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 1/11/2019
 ms.author: victorh
-ms.openlocfilehash: d80e1394d4c4159c17eabff93ff44fdefbaf21b7
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: 45751af66b1b050d4d36d1b8aee52dc6a5d8cc7b
+ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54247497"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54382409"
 ---
 # <a name="frequently-asked-questions-for-application-gateway"></a>应用程序网关常见问题
 
@@ -213,22 +213,6 @@ v2 SKU 可以自动确保新实例分布到各个容错域和更新域中。 如
 ### <a name="does-application-gateway-support-connection-draining"></a>应用程序网关是否支持连接排出？
 
 是的。 可配置连接排出以更改后端池内的成员，而无需中断操作。 这允许继续将现有连接发送到其以前的目标，直到该连接被关闭或可配置超时到期。 连接排出仅等待当前未完成的连接完成。 应用程序网关不了解应用程序会话状态。
-
-### <a name="what-are-application-gateway-sizes"></a>有哪些应用程序网关大小？
-
-应用程序网关目前有三种大小：**小型**、**中型**和**大型**。 小型实例大小适用于开发和测试方案。
-
-有关应用程序网关限制的完整列表，请参阅[应用程序网关服务限制](../azure-subscription-service-limits.md?toc=%2fazure%2fapplication-gateway%2ftoc.json#application-gateway-limits)。
-
-下表显示了已启用 SSL 卸载的每个应用程序网关实例的平均性能吞吐量：
-
-| 平均后端页面响应大小 | 小型 | 中型 | 大型 |
-| --- | --- | --- | --- |
-| 6 KB |7.5 Mbps |13 Mbps |50 Mbps |
-| 100 KB |35 Mbps |100 Mbps |200 Mbps |
-
-> [!NOTE]
-> 这些值是应用程序网关吞吐量的大约值。 实际吞吐量取决于平均页面大小、后端实例的位置、提供页面所需的处理时间等各种环境详细信息。 如需确切的性能数字，则应运行自己的测试。 提供的这些值仅适用于容量规划指南。
 
 ### <a name="can-i-change-instance-size-from-medium-to-large-without-disruption"></a>是否可以在不造成中断的情况下，将实例大小从中型更改为大型？
 

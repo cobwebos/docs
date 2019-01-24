@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: ce2c3bffecd691acd5eb26b999c63fd2bb5dd510
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 12c4241da2f4a65205d128d72f86ce2bc91a853c
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54015333"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54435577"
 ---
 # <a name="tutorial-create-a-data-factory-pipeline-that-moves-data-by-using-azure-powershell"></a>教程：使用 Azure PowerShell 创建移动数据的数据工厂管道
 > [!div class="op_single_selector"]
@@ -48,7 +48,7 @@ ms.locfileid: "54015333"
 
 ## <a name="prerequisites"></a>先决条件
 - 完成[教程先决条件](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)一文中列出的先决条件步骤。
-- 安装 **Azure PowerShell**。 遵循[如何安装和配置 Azure PowerShell](/powershell/azure/install-azurerm-ps) 中的说明。
+- 安装 **Azure PowerShell**。 遵循[如何安装和配置 Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps) 中的说明。
 
 ## <a name="steps"></a>Steps
 下面是本教程中要执行的步骤：
@@ -273,7 +273,7 @@ Azure 存储链接服务指定一个连接字符串，数据工厂服务在运�
 
     下表提供了代码片段中使用的 JSON 属性的描述：
 
-    | 属性 | Description |
+    | 属性 | 说明 |
     |:--- |:--- |
     | type | type 属性设置为 **AzureBlob**，因为数据驻留在 Azure Blob 存储中。 |
     | linkedServiceName | 表示前面创建的 **AzureStorageLinkedService**。 |
@@ -338,7 +338,7 @@ Azure 存储链接服务指定一个连接字符串，数据工厂服务在运�
 
     下表提供了代码片段中使用的 JSON 属性的描述：
 
-    | 属性 | Description |
+    | 属性 | 说明 |
     |:--- |:--- |
     | type | type 属性设置为 **AzureSqlTable**，因为数据复制到 Azure SQL 数据库中的表。 |
     | linkedServiceName | 表示前面创建的 **AzureSqlLinkedService**。 |

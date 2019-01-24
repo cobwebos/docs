@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 09/05/2018
 ms.author: pryerram
 ms.custom: mvc
-ms.openlocfilehash: 8c816d17807432d75b6102190fc37d25a525d7cf
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: 1e364003093d5e37a75830386cafe855b0bdcad2
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54244165"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54467395"
 ---
 # <a name="tutorial-use-azure-key-vault-with-an-azure-virtual-machine-in-python"></a>教程：将 Azure Key Vault 与通过 Python 编写的 Azure 虚拟机配合使用
 
@@ -101,7 +101,7 @@ az keyvault secret set --vault-name "<YourKeyVaultName>" --name "AppSecret" --va
 
 ## <a name="create-a-virtual-machine"></a>创建虚拟机
 
-使用 [az vm create](/cli/azure/vm#az_vm_create) 命令创建 VM。
+使用 [az vm create](/cli/azure/vm) 命令创建 VM。
 
 以下示例创建一个名为 *myVM* 的 VM 并添加一个名为 *azureuser* 的用户帐户。 `--generate-ssh-keys` 参数自动生成一个 SSH 密钥，并将其放置在默认密钥位置 (*~/.ssh*) 中。 若要改为使用一组特定的密钥，请使用 `--ssh-key-value` 选项。
 

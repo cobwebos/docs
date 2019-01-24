@@ -7,13 +7,13 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 07/25/2018
 ms.author: johnkem
-ms.component: ''
-ms.openlocfilehash: 2143ebdddc71973b64b8b77be55b4d0c2b84df64
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.subservice: ''
+ms.openlocfilehash: 1ef779e64995c6996538b68b892cb45f11788067
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53578982"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54477458"
 ---
 # <a name="stream-azure-diagnostic-logs-to-an-event-hub"></a>将 Azure 诊断日志流式传输到事件中心
 可将 **[Azure 诊断日志](diagnostic-logs-overview.md)** 以近实时方式流式传输到任何应用程序，方法是使用门户中的内置“导出到事件中心”选项，或者通过 Azure PowerShell Cmdlet 或 Azure CLI 在诊断设置中启用事件中心授权规则 ID。
@@ -177,7 +177,7 @@ az monitor diagnostic-settings create --name <diagnostic name> \
 }
 ```
 
-| 元素名称 | Description |
+| 元素名称 | 说明 |
 | --- | --- |
 | records |此有效负载中所有日志事件的数组。 |
 | time |发生事件的时间。 |
@@ -198,3 +198,4 @@ az monitor diagnostic-settings create --name <diagnostic name> \
 * [使用 Azure Monitor 流式传输 Azure Active Directory 日志](../../active-directory/reports-monitoring/tutorial-azure-monitor-stream-logs-to-event-hub.md)
 * [详细了解 Azure 诊断日志](diagnostic-logs-overview.md)
 * [事件中心入门](../../event-hubs/event-hubs-dotnet-standard-getstarted-send.md)
+

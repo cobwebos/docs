@@ -4,7 +4,7 @@ description: 了解如何在 Azure Active Directory 和 AirWatch 之间配置单
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: barbkess
 ms.assetid: 96a3bb1c-96c6-40dc-8ea0-060b0c2a62e5
 ms.service: Azure-Active-Directory
@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 12/31/2018
+ms.date: 01/17/2019
 ms.author: jeedes
-ms.openlocfilehash: 83a3a6fee7446766973cc8fdca1129cdc2ff80d0
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 366ffa560cb16f6445eca93e79068fba6cc31e6d
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53974448"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54813111"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-airwatch"></a>教程：Azure Active Directory 与 AirWatch 集成
 
@@ -78,8 +78,8 @@ ms.locfileid: "53974448"
 1. **[配置 Azure AD 单一登录](#configure-azure-ad-single-sign-on)** - 使用户能够使用此功能。
 2. **[配置 AirWatch 单一登录](#configure-airwatch-single-sign-on)** - 在应用程序端配置单一登录。
 3. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-4. [创建 AirWatch 测试用户](#create-airwatch-test-user) - 在 AirWatch 中创建 Britta Simon 的对应用户，将其链接到该用户的 Azure AD 表示形式。
-5. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
+4. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
+5. [创建 AirWatch 测试用户](#create-airwatch-test-user) - 在 AirWatch 中创建 Britta Simon 的对应用户，将其链接到该用户的 Azure AD 表示形式。
 6. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
@@ -92,7 +92,7 @@ ms.locfileid: "53974448"
 
     ![配置单一登录链接](common/select-sso.png)
 
-2. 在“选择单一登录方法”对话框中，选择 SAML/WS-Fed 模式以启用单一登录。
+2. 在**选择单一登录方法**对话框中，选择 **SAML/WS-Fed**模式以启用单一登录。
 
     ![单一登录选择模式](common/select-saml-option.png)
 
@@ -104,7 +104,7 @@ ms.locfileid: "53974448"
 
     ![AirWatch 域和 URL 单一登录信息](common/sp-identifier.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<subdomain>.awmdm.com/AirWatch/Login?gid=companycode`
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<subdomain>.awmdm.com/AirWatch/Login?gid=companycode`
 
     b. 在“标识符(实体 ID)”文本框中，键入值：`AirWatch`
 
@@ -149,7 +149,7 @@ ms.locfileid: "53974448"
 
     ![上传](./media/airwatch-tutorial/ic791924.png "上传")   
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 对于“目录类型”，选择“无”。
+    a. 对于“目录类型”，选择“无”。
 
     b. 选择“将 SAML 用于身份验证”。
 
@@ -159,7 +159,7 @@ ms.locfileid: "53974448"
 
     ![请求](./media/airwatch-tutorial/ic791925.png "请求")  
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 对于“请求绑定类型”，请选择“POST”。
+    a. 对于“请求绑定类型”，请选择“POST”。
 
     b. 在 Azure 门户的“配置 Airwatch 的单一登录”对话框上，复制“登录 URL”值，然后将其粘贴到“标识提供程序单一登录 URL”文本框。
 
@@ -175,7 +175,7 @@ ms.locfileid: "53974448"
 
     ![属性](./media/airwatch-tutorial/ic791927.png "属性")
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“对象标识符”文本框中，键入 `http://schemas.microsoft.com/identity/claims/objectidentifier`。
+    a. 在“对象标识符”文本框中，键入 `http://schemas.microsoft.com/identity/claims/objectidentifier`。
 
     b. 在“用户名”文本框中，键入 `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`。
 
@@ -260,7 +260,7 @@ ms.locfileid: "53974448"
 
    ![添加用户](./media/airwatch-tutorial/ic791931.png "添加用户")
 
-   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 键入希望在相关文本框中预配的有效 Azure Active Directory 帐户的“用户名”、“密码”、“确认密码”、“名字”、“姓氏”、“电子邮件地址”。
+   a. 键入希望在相关文本框中预配的有效 Azure Active Directory 帐户的“用户名”、“密码”、“确认密码”、“名字”、“姓氏”、“电子邮件地址”。
 
    b. 单击“ **保存**”。
 

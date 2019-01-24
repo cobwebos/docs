@@ -7,13 +7,13 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 03/19/2018
 ms.author: mcollier
-ms.component: ''
-ms.openlocfilehash: 0f08101c7948d7f3e211f8764458c2eaeacb0859
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.subservice: ''
+ms.openlocfilehash: 91b4d96caf59a8be67381aa6b420a3f759220025
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54330613"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54472953"
 ---
 # <a name="azure-monitoring-rest-api-walkthrough"></a>Azure 监视 REST API 演练
 本文说明如何执行身份验证，使代码能够遵循 [Microsoft Azure 监视器 REST API 参考](https://msdn.microsoft.com/library/azure/dn931943.aspx)。         
@@ -698,3 +698,4 @@ Invoke-RestMethod -Uri $request `
 * 查看 [Azure 监视器支持的指标](metrics-supported.md)。
 * 查看 [Microsoft Azure 监视器 REST API 参考](https://msdn.microsoft.com/library/azure/dn931943.aspx)。
 * 查看 [Azure 管理库](https://msdn.microsoft.com/library/azure/mt417623.aspx)。
+

@@ -3,7 +3,7 @@ title: 双重验证故障排除 - Azure Active Directory | Microsoft Docs
 description: 为用户提供指导，让他们了解遇到 Azure 多重身份验证和双重验证问题时应采取什么操作。
 services: active-directory
 author: eross-msft
-manager: mtillman
+manager: daveba
 ms.assetid: 8f3aef42-7f66-4656-a7cd-d25a971cb9eb
 ms.workload: identity
 ms.service: active-directory
@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 07/16/2018
 ms.author: lizross
 ms.reviewer: kexia
-ms.openlocfilehash: fd722da236f3e1fff18e2561756635cd95f098e0
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: 6cf794d36db865f553c0a4db16506305dab2f4fc
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39346517"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54810170"
 ---
 # <a name="get-help-with-two-step-verification"></a>获取有关双重验证的帮助
 

@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 05/08/2018
 ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 7dcdca594949a3b20000b31db681370ee4f9eac3
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: fa6b4de9282eec75747ca87b26058a47320f2fd3
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53255272"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54428131"
 ---
 # <a name="quickstart-create-a-private-container-registry-using-azure-powershell"></a>快速入门：使用 Azure PowerShell 创建专用容器注册表
 
@@ -21,7 +21,7 @@ Azure 容器注册表是托管的专用 Docker 容器注册表服务，用于生
 
 ## <a name="prerequisites"></a>先决条件
 
-本快速入门需要 Azure PowerShell 模块 5.7.0 或更高版本。 运行 `Get-Module -ListAvailable AzureRM` 即可确定已安装的版本。 如果需要进行安装或升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-azurerm-ps)。
+本快速入门需要 Azure PowerShell 模块 5.7.0 或更高版本。 运行 `Get-Module -ListAvailable AzureRM` 即可确定已安装的版本。 如果需要进行安装或升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/azurerm/install-azurerm-ps)。
 
 还必须在本地安装 Docker。 Docker 提供的包适用于 [macOS][docker-mac]、[Windows][docker-windows] 和 [Linux][docker-linux] 系统。
 

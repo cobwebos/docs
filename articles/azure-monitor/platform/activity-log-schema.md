@@ -7,13 +7,13 @@ ms.service: azure-monitor
 ms.topic: reference
 ms.date: 1/16/2019
 ms.author: dukek
-ms.component: logs
-ms.openlocfilehash: d5e57442a163c8a93adc39517285bd88affab2fe
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.subservice: logs
+ms.openlocfilehash: 9ad3ca2233237c9cb4aea0a7bd0c476f48613a9c
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54353050"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54438229"
 ---
 # <a name="azure-activity-log-event-schema"></a>Azure 活动日志事件架构
 通过 Azure 活动日志，可以深入了解 Azure 中发生的任何订阅级别事件。 本文介绍了每种数据类别的事件架构。 数据架构各有不同，具体取决于是在门户、PowerShell、CLI，或直接通过 REST API 读取数据，还是[使用日志配置文件将数据流式传输到存储或事件中心](./../../azure-monitor/platform/activity-logs-overview.md#export-the-activity-log-with-a-log-profile)。 以下示例显示的是通过门户、PowerShell、CLI 和 REST API 获得的架构。 本文末尾提供了这些属性到 [Azure 诊断日志架构](./tutorial-dashboards.md)的映射。
@@ -110,7 +110,7 @@ ms.locfileid: "54353050"
 ```
 
 ### <a name="property-descriptions"></a>属性说明
-| 元素名称 | Description |
+| 元素名称 | 说明 |
 | --- | --- |
 | authorization |包含事件的 RBAC 属性的 Blob。 通常包括“action”、“role”和“scope”属性。 |
 | caller |执行操作（UPN 声明或 SPN 声明，具体取决于可用性）的用户的电子邮件地址。 |
@@ -254,7 +254,7 @@ ms.locfileid: "54353050"
 ```
 
 ### <a name="property-descriptions"></a>属性说明
-| 元素名称 | Description |
+| 元素名称 | 说明 |
 | --- | --- |
 | channels | 始终是“Admin, Operation” |
 | correlationId | 字符串格式的 GUID。 |
@@ -347,7 +347,7 @@ ms.locfileid: "54353050"
 ```
 
 ### <a name="property-descriptions"></a>属性说明
-| 元素名称 | Description |
+| 元素名称 | 说明 |
 | --- | --- |
 | caller | 始终是 Microsoft.Insights/alertRules |
 | channels | 始终是“Admin, Operation” |
@@ -372,7 +372,7 @@ ms.locfileid: "54353050"
 该属性字段包含不同的值，具体取决于警报事件的源。 两种常见警报事件提供程序是活动日志警报和指标警报。
 
 #### <a name="properties-for-activity-log-alerts"></a>活动日志警报的属性
-| 元素名称 | Description |
+| 元素名称 | 说明 |
 | --- | --- |
 | properties.subscriptionId | 激活活动日志预警规则的活动日志事件的订阅 ID。 |
 | properties.eventDataId | 激活活动日志预警规则的活动日志事件的事件数据 ID。 |
@@ -383,7 +383,7 @@ ms.locfileid: "54353050"
 | properties.status | 激活活动日志预警规则的活动日志事件的状态。|
 
 #### <a name="properties-for-metric-alerts"></a>指标警报的属性
-| 元素名称 | Description |
+| 元素名称 | 说明 |
 | --- | --- |
 | properties.RuleUri | 指标预警规则自身的资源 ID。 |
 | properties.RuleName | 指标预警规则的名称。 |
@@ -456,7 +456,7 @@ ms.locfileid: "54353050"
 ```
 
 ### <a name="property-descriptions"></a>属性说明
-| 元素名称 | Description |
+| 元素名称 | 说明 |
 | --- | --- |
 | caller | 始终是 Microsoft.Insights/autoscaleSettings |
 | channels | 始终是“Admin, Operation” |
@@ -546,7 +546,7 @@ ms.locfileid: "54353050"
 ```
 
 ### <a name="property-descriptions"></a>属性说明
-| 元素名称 | Description |
+| 元素名称 | 说明 |
 | --- | --- |
 | channels | 始终为“运行” |
 | correlationId | 字符串格式的 GUID。 |
@@ -626,7 +626,7 @@ ms.locfileid: "54353050"
 
 ```
 ### <a name="property-descriptions"></a>属性说明
-| 元素名称 | Description |
+| 元素名称 | 说明 |
 | --- | --- |
 | channels | 始终为“运行” |
 | correlationId | 字符串格式的 GUID。 |
@@ -736,7 +736,7 @@ ms.locfileid: "54353050"
 
 ### <a name="policy-event-property-descriptions"></a>Policy 事件属性说明
 
-| 元素名称 | Description |
+| 元素名称 | 说明 |
 | --- | --- |
 | authorization | 事件的 RBAC 属性数组。 对于新资源，这是触发评估的请求的操作和范围。 对于现有资源，操作是“Microsoft.Resources/checkPolicyCompliance/read”。 |
 | caller | 对于新资源，为启动部署的标识。 对于现有资源，为 Microsoft Azure Policy Insights RP 的 GUID。 |
@@ -795,3 +795,4 @@ ms.locfileid: "54353050"
 ## <a name="next-steps"></a>后续步骤
 * [详细了解活动日志（以前称为审核日志）](../../azure-monitor/platform/activity-logs-overview.md)
 * [将 Azure 活动日志流式传输到事件中心](../../azure-monitor/platform/activity-logs-stream-event-hubs.md)
+

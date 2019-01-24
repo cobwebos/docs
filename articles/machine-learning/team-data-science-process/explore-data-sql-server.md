@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/09/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 45b842f7ff136f2d53b7724c11141f6b9104ebd7
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 5bca079afb929afef20e3c2448d9a928195d7780
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53140109"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54452796"
 ---
 # <a name="explore-data-in-sql-server-virtual-machine-on-azure"></a>浏览 Azure 上 SQL Server 虚拟机中的数据
 
@@ -62,7 +62,7 @@ ms.locfileid: "53140109"
 Python 中的 [Pandas 库](http://pandas.pydata.org/)提供一组丰富的数据结构，以及针对 Python 编程的数据操作的数据分析工具。 以下代码读取从 SQL Server 数据库返回到 Pandas 数据帧的结果：
 
     # Query database and load the returned results in pandas data frame
-    data_frame = pd.read_sql('''select <columnname1>, <cloumnname2>... from <tablename>''', conn)
+    data_frame = pd.read_sql('''select <columnname1>, <columnname2>... from <tablename>''', conn)
 
 现可使用 Pandas 数据帧，如本主题中[处理数据科学环境中的 Azure Blob 数据](data-blob.md)所述。
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/24/2017
 ms.author: jdial
-ms.openlocfilehash: c5667d5fafdc01e8568f459b675d91ace9b8869a
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 381c9a2af0f1743509db4495603c0e26da5c1736
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54023747"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54474513"
 ---
 # <a name="create-change-or-delete-a-network-interface"></a>创建、更改或删除网络接口
 
@@ -31,14 +31,14 @@ ms.locfileid: "54023747"
 
 - 如果还没有 Azure 帐户，请注册[免费试用帐户](https://azure.microsoft.com/free)。
 - 如果使用门户，请打开 https://portal.azure.com，并使用 Azure 帐户登录。
-- 如果使用 PowerShell 命令来完成本文中的任务，请运行 [Azure Cloud Shell](https://shell.azure.com/powershell) 中的命令，或从计算机运行 PowerShell。 Azure Cloud Shell 是免费的交互式 shell，可以使用它运行本文中的步骤。 它预安装有常用 Azure 工具并将其配置与帐户一起使用。 本教程需要 Azure PowerShell 模块 5.4.1 或更高版本。 运行 `Get-Module -ListAvailable AzureRM` 查找已安装的版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-azurerm-ps)。 如果在本地运行 PowerShell，则还需运行 `Connect-AzureRmAccount` 来创建与 Azure 的连接。
+- 如果使用 PowerShell 命令来完成本文中的任务，请运行 [Azure Cloud Shell](https://shell.azure.com/powershell) 中的命令，或从计算机运行 PowerShell。 Azure Cloud Shell 是免费的交互式 shell，可以使用它运行本文中的步骤。 它预安装有常用 Azure 工具并将其配置与帐户一起使用。 本教程需要 Azure PowerShell 模块 5.4.1 或更高版本。 运行 `Get-Module -ListAvailable AzureRM` 查找已安装的版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/azurerm/install-azurerm-ps)。 如果在本地运行 PowerShell，则还需运行 `Connect-AzureRmAccount` 来创建与 Azure 的连接。
 - 如果使用 Azure 命令行接口 (CLI) 命令来完成本文中的任务，请运行 [Azure Cloud Shell](https://shell.azure.com/bash) 中的命令，或从计算机运行 CLI。 本教程需要 Azure CLI 2.0.28 或更高版本。 运行 `az --version` 查找已安装的版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。 如果在本地运行 Azure CLI，则还需运行 `az login` 以创建与 Azure 的连接。
 
 登录或连接到 Azure 所用的帐户必须分配有[网络参与者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)角色或者分配有可执行[权限](#permissions)中列出的适当操作的[自定义角色](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
 
 ## <a name="create-a-network-interface"></a>创建网络接口
 
-使用 Azure 门户创建虚拟机时，门户将使用默认设置创建一个网络接口。 如果想要指定所有网络接口设置，可使用自定义设置创建网络接口并在创建虚拟机（使用 PowerShell 或 Azure CLI）时向其附加此网络接口。 还可创建网络接口并将其添加到现有的虚拟机（使用 PowerShell 或 Azure CLI）。 若要了解如何创建包含现有网络接口的虚拟机，或者要在现有虚拟机中添加或删除网络接口，请参阅[添加或删除网络接口](virtual-network-network-interface-vm.md)。 创建网络接口之前，创建该接口时所在的同一位置和订阅中必须存在现有的[虚拟网络](manage-virtual-network.md#create-a-virtual-network)。
+使用 Azure 门户创建虚拟机时，门户将使用默认设置创建一个网络接口。 如果想要指定所有网络接口设置，可使用自定义设置创建网络接口并在创建虚拟机（使用 PowerShell 或 Azure CLI）时向其附加此网络接口。 还可创建网络接口并将其添加到现有的虚拟机（使用 PowerShell 或 Azure CLI）。 若要了解如何创建包含现有网络接口的虚拟机，或者要在现有虚拟机中添加或删除网络接口，请参阅[添加或删除网络接口](virtual-network-network-interface-vm.md)。 创建网络接口之前，创建该接口时所在的同一位置和订阅中必须存在现有的[虚拟网络](manage-virtual-network.md)。
 
 1. 在 Azure 门户顶部包含“搜索资源”文本的框中，键入“网络接口”。 当“网络接口”出现在搜索结果中时，请选择它。
 2. 在“网络接口”下选择“+ 添加”。
@@ -69,7 +69,7 @@ ms.locfileid: "54023747"
 |工具|命令|
 |---|---|
 |CLI|[az network nic create](/cli/azure/network/nic#az_network_nic_create)|
-|PowerShell|[New-AzureRmNetworkInterface](/powershell/module/azurerm.network/new-azurermnetworkinterface#create)|
+|PowerShell|[New-AzureRmNetworkInterface](/powershell/module/azurerm.network/new-azurermnetworkinterface)|
 
 ## <a name="view-network-interface-settings"></a>查看网络接口设置
 
@@ -112,7 +112,7 @@ DNS 服务器由 Azure DHCP 服务器分配到虚拟机操作系统中的网络�
 
 |工具|命令|
 |---|---|
-|CLI|[az network nic update](/cli/azure/network/nic#az_network_nic_update)|
+|CLI|[az network nic update](/cli/azure/network/nic)|
 |PowerShell|[Set-AzureRmNetworkInterface](/powershell/module/azurerm.network/set-azurermnetworkinterface)|
 
 ## <a name="enable-or-disable-ip-forwarding"></a>启用/禁用 IP 转发
@@ -133,7 +133,7 @@ IP 转发使网络接口附加到的虚拟机能够：
 
 |工具|命令|
 |---|---|
-|CLI|[az network nic update](/cli/azure/network/nic#az_network_nic_update)|
+|CLI|[az network nic update](/cli/azure/network/nic)|
 |PowerShell|[Set-AzureRmNetworkInterface](/powershell/module/azurerm.network/set-azurermnetworkinterface)|
 
 ## <a name="change-subnet-assignment"></a>更改子网分配
@@ -158,7 +158,7 @@ IP 转发使网络接口附加到的虚拟机能够：
 
 ## <a name="add-to-or-remove-from-application-security-groups"></a>添加到应用程序安全组或从中删除
 
-只有在网络接口连接到虚拟机的情况下，才可以使用门户将网络接口添加到应用程序安全组或从中删除。 无论网络接口是否连接到虚拟机，都可使用 PowerShell 或 Azure CLI 将网络接口添加到应用程序安全组或从中删除。 了解[应用程序安全组](security-overview.md#application-security-groups)以及如何[创建应用程序安全组](manage-network-security-group.md#create-an-application-security-group)。
+只有在网络接口连接到虚拟机的情况下，才可以使用门户将网络接口添加到应用程序安全组或从中删除。 无论网络接口是否连接到虚拟机，都可使用 PowerShell 或 Azure CLI 将网络接口添加到应用程序安全组或从中删除。 了解[应用程序安全组](security-overview.md#application-security-groups)以及如何[创建应用程序安全组](manage-network-security-group.md)。
 
 1. 在门户顶部的“搜索资源、服务和文档”框中，键入虚拟机的名称，该虚拟机具有要添加到应用程序安全组或要从应用程序安全组中删除的网络接口。 当 VM 名称显示在搜索结果中时，将其选中。
 2. 在“设置”下选择“网络”。  选择“配置应用程序安全组”，选中要在其中添加网络接口的应用程序安全组，或取消选中要从中删除网络接口的应用程序安全组，然后选择“保存”。 只有位于同一虚拟网络的网络接口才能添加到同一应用程序安全组。 应用程序安全组必须与网络接口位于同一位置。
@@ -167,7 +167,7 @@ IP 转发使网络接口附加到的虚拟机能够：
 
 |工具|命令|
 |---|---|
-|CLI|[az network nic update](/cli/azure/network/nic#az_network_nic_update)|
+|CLI|[az network nic update](/cli/azure/network/nic)|
 |PowerShell|[Set-AzureRmNetworkInterface](/powershell/module/azurerm.network/set-azurermnetworkinterface)|
 
 ## <a name="associate-or-dissociate-a-network-security-group"></a>关联或取消关联网络安全组
@@ -199,7 +199,7 @@ IP 转发使网络接口附加到的虚拟机能够：
 
 |工具|命令|
 |---|---|
-|CLI|[az network nic delete](/cli/azure/network/nic#az_network_nic_delete)|
+|CLI|[az network nic delete](/cli/azure/network/nic)|
 |PowerShell|[Remove-AzureRmNetworkInterface](/powershell/module/azurerm.network/remove-azurermnetworkinterface)|
 
 ## <a name="resolve-connectivity-issues"></a>解决连接问题

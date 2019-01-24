@@ -3,7 +3,7 @@ title: 使用现有的本地代理服务器和 Azure AD | Microsoft 文档
 description: 介绍如何使用现有的本地代理服务器。
 services: active-directory
 author: barbkess
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.component: app-mgmt
 ms.workload: identity
@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 09/12/2018
 ms.author: barbkess
 ms.reviewer: japere
-ms.openlocfilehash: 6409b9313aa9b036e24ea50435659b3653ac01e0
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 6079f1ac1193568da2806efa27c775f97a6c5f95
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53720095"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54464028"
 ---
 # <a name="work-with-existing-on-premises-proxy-servers"></a>使用现有的本地代理服务器
 
@@ -111,7 +111,7 @@ OS 组件尝试通过针对 wpad.domainsuffix 执行 DNS 查找来查找代理�
 | mscrl.microsoft.com:80<br>crl.microsoft.com:80<br>ocsp.msocsp.com:80<br>www.microsoft.com:80 | Azure 使用以下 URL 来验证证书 |
 | login.windows.net<br>login.microsoftonline.com | 在注册过程中，连接器将使用这些 URL。 |
 
-如果防火墙或代理允许执行 DNS 白名单，可将与 \*.msappproxy.net 和 \*.servicebus.windows.net 的连接加入白名单。 否则，需要允许访问 [Azure 数据中心 IP 范围](https://www.microsoft.com/download/details.aspx?id=41653)。 IP 范围每周更新。
+如果防火墙或代理允许执行 DNS 允许列表，可将与 \*.msappproxy.net 和 \*.servicebus.windows.net 的连接加入允许列表。 否则，需要允许访问 [Azure 数据中心 IP 范围](https://www.microsoft.com/download/details.aspx?id=41653)。 IP 范围每周更新。
 
 
 如果不能通过 FQDN 允许连接，请使用以下选项改为指定 IP 范围：

@@ -7,13 +7,13 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 10/30/2018
 ms.author: robb
-ms.component: alerts
-ms.openlocfilehash: b24b98760e276c207bb360687f32ae902b3306fb
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.subservice: alerts
+ms.openlocfilehash: 18a63497cb0df2ade495dfb721aaa881aa4e6ff7
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53976947"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54464099"
 ---
 # <a name="overview-of-alerts-in-microsoft-azure"></a>Microsoft Azure 中的警报概述 
 
@@ -68,7 +68,7 @@ ms.locfileid: "53976947"
 
 支持以下警报状态。
 
-| 状态 | Description |
+| 状态 | 说明 |
 |:---|:---|
 | 新建 | 只是检测到了问题，但尚未审查问题。 |
 | 已确认 | 管理员已审查警报，并已开始进行处理。 |
@@ -91,7 +91,7 @@ ms.locfileid: "53976947"
 
 可以通过选择页面顶部的下拉菜单中的值，来对此视图进行筛选。
 
-| 列 | Description |
+| 列 | 说明 |
 |:---|:---|
 | 订阅 | 最多可选择五个 Azure 订阅。 只有选定订阅中的警报才会包含在视图中。 |
 | 资源组 | 选择单个资源组。 只有包含选定资源组中的目标的警报才会包含在视图中。 |
@@ -99,7 +99,7 @@ ms.locfileid: "53976947"
 
 选择“警报”页面顶部的以下值打开另一个页面。
 
-| 值 | Description |
+| 值 | 说明 |
 |:---|:---|
 | 警报总数 | 符合选定条件的警报总数。 选择此值会打开未经筛选的“所有警报”视图。 |
 | 智能组 | 从符合选定条件的警报创建的智能组总数。 选择此值会在“所有警报”视图中打开智能组列表。
@@ -141,7 +141,7 @@ ms.locfileid: "53976947"
 
 可以通过选择页面顶部的下拉菜单中的以下值，可以对该视图进行筛选。
 
-| 列 | Description |
+| 列 | 说明 |
 |:---|:---|
 | 订阅 | 最多可选择五个 Azure 订阅。 只有选定订阅中的警报才会包含在视图中。 |
 | 资源组 | 选择单个资源组。 只有包含选定资源组中的目标的警报才会包含在视图中。 |
@@ -162,7 +162,7 @@ ms.locfileid: "53976947"
 
 “警报详细信息”页包括以下部分。
 
-| 部分 | Description |
+| 部分 | 说明 |
 |:---|:---|
 | 概要 | 显示警报的属性和其他重要信息。 |
 | 历史记录 | 列出警报执行的每个操作，以及对警报进行的任何更改。 目前仅限状态更改。 |
@@ -183,6 +183,7 @@ ms.locfileid: "53976947"
 - [了解操作组](../../azure-monitor/platform/action-groups.md)
 - [在 Azure 中管理警报实例](https://aka.ms/managing-alert-instances)
 - [Managing Smart Groups](https://aka.ms/managing-smart-groups)（管理智能组）
+
 
 
 

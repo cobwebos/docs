@@ -4,7 +4,7 @@ description: 了解如何在 Azure Active Directory 和 Adobe Creative Cloud 之
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: barbkess
 ms.assetid: c199073f-02ce-45c2-b515-8285d4bbbca2
 ms.service: Azure-Active-Directory
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/19/2018
 ms.author: jeedes
-ms.openlocfilehash: 8000208dfe15744c891bbf27ad8f9e69f44ef4dc
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.openlocfilehash: 4907179b9cc333103a898056ff951decf81c0f6c
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53807782"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54826796"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-adobe-creative-cloud"></a>教程：Azure Active Directory 与 Adobe Creative Cloud 集成
 
@@ -92,7 +92,7 @@ ms.locfileid: "53807782"
 
     ![配置单一登录链接](common/select-sso.png)
 
-2. 在“选择单一登录方法”对话框中，选择 SAML/WS-Fed 模式以启用单一登录。
+2. 在**选择单一登录方法**对话框中，选择 **SAML/WS-Fed**模式以启用单一登录。
 
     ![单一登录选择模式](common/select-saml-option.png)
 
@@ -104,7 +104,7 @@ ms.locfileid: "53807782"
 
     ![Adobe Creative Cloud 域和 URL 单一登录信息](common/idp-intiated.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“标识符”文本框中，使用以下模式键入 URL：`https://www.okta.com/saml2/service-provider/<token>`
+    a. 在“标识符”文本框中，使用以下模式键入 URL：`https://www.okta.com/saml2/service-provider/<token>`
 
     b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<company name>.okta.com/auth/saml20/accauthlinktest`
 
@@ -129,7 +129,7 @@ ms.locfileid: "53807782"
     | LastName | user.surname |
     | 电子邮件 | user.mail
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 单击“添加新声明”以打开“管理用户声明”对话框。
+    a. 单击“添加新声明”以打开“管理用户声明”对话框。
 
     ![图像](common/new-save-attribute.png)
 
@@ -172,7 +172,7 @@ ms.locfileid: "53807782"
 
     ![设置](https://helpx.adobe.com/content/dam/help/en/enterprise/using/configure-microsoft-azure-with-adobe-sso/_jcr_content/main-pars/procedure_719391630/proc_par/step_3/step_par/image/edit-sso-configuration.png "设置")
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 单击“浏览”，将已下载的证书从 Azure AD 上传到“IDP 证书”。
+    a. 单击“浏览”，将已下载的证书从 Azure AD 上传到“IDP 证书”。
 
     b. 在“IDP 颁发者”文本框中，放置从 Azure 门户中的“配置登录”部分复制的“SAML 实体 ID”的值。
 
@@ -188,7 +188,7 @@ ms.locfileid: "53807782"
 
     ![在应用端配置单一登录](./media/adobe-creative-cloud-tutorial/tutorial_adobe-creative-cloud_003.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“配置应用设置”对话框上，将 Adobe 提供的 EntityDescriptor 值用于**标识符**。
+    a. 在“配置应用设置”对话框上，将 Adobe 提供的 EntityDescriptor 值用于**标识符**。
 
     b. 在“配置应用设置”对话框上，将 Adobe 提供的 AssertionConsumerService 值用于**回复 URL**。
 

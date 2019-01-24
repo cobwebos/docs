@@ -3,19 +3,19 @@ title: 在 Azure Active Directory B2C 中使用 Application Insights 排查自�
 description: 如何设置 Application Insights 来跟踪自定义策略的执行。
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 08/04/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: c733c148994b06e6d7cd13ee98e1a8157f26010a
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: 814ae29d4b50ecb44db45534c5d2a6bfb5b97a59
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53163169"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54846492"
 ---
 # <a name="azure-active-directory-b2c-collecting-logs"></a>Azure Active Directory B2C：收集日志
 
@@ -91,7 +91,7 @@ Azure AD B2C 支持将数据发送到 Application Insights 的功能。  Applica
 1. 在 Application Insights 中打开新选项卡。
 1. 下面是可用于查看日志的查询列表
 
-| Query | Description |
+| Query | 说明 |
 |---------------------|--------------------|
 traces | 查看 Azure AD B2C 生成的所有日志 |
 traces \| where timestamp > ago(1d) | 查看 Azure AD B2C 为前一天生成的所有日志

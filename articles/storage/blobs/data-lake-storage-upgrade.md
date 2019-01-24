@@ -8,12 +8,12 @@ ms.author: normesta
 ms.date: 12/19/2018
 ms.service: storage
 ms.component: data-lake-storage-gen2
-ms.openlocfilehash: dd8f33cd64728c1a66e5de05734b05ac35a9836b
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: b78a7d0635dd1ce23f690e5bb37a1d56b5f91c09
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54200167"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54438926"
 ---
 # <a name="upgrade-your-big-data-analytics-solutions-from-azure-data-lake-storage-gen1-to-azure-data-lake-storage-gen2-preview"></a>将大数据分析解决方案从 Azure Data Lake Storage Gen1 升级到 Azure Data Lake Storage Gen2 预览版
 
@@ -96,7 +96,7 @@ ms.locfileid: "54200167"
 | .NET SDK - 管理                  | [链接](https://docs.microsoft.com/dotnet/api/overview/azure/datalakestore/management?view=azure-dotnet)                                                                                                                                                                                                                 | *不支持*                                                      | 现已提供 - [链接](https://docs.microsoft.com/rest/api/storageservices/operations-on-the-account--blob-service-)                                    |
 | .NET SDK - 文件系统                  | [链接](https://docs.microsoft.com/dotnet/api/overview/azure/datalakestore/client?view=azure-dotnet)                                                                                                                                                                                                                     | 尚未提供                                                | 尚未提供                                                                                                                                             |
 | Java SDK - 管理                  | [链接](https://docs.microsoft.com/java/api/overview/azure/datalakestore/management)                                                                                                                                                                                                                                     | *不支持*                                                      | 现已提供 - [链接](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.blob?view=azure-java-stable)                                     |
-| Java SDK -文件系统                  | [链接](https://docs.microsoft.com/java/api/overview/azure/datalakestore/client)                                                                                                                                                                                                                                         | 尚未提供                                                | 尚未提供                                                                                                                                             |
+| Java SDK -文件系统                  | [链接](https://docs.microsoft.com/java/api/overview/azure/datalake)                                                                                                                                                                                                                                         | 尚未提供                                                | 尚未提供                                                                                                                                             |
 | Node.js - 管理                   | [链接](https://www.npmjs.com/package/azure-arm-datalake-store)                                                                                                                                                                                                                                                                | 不支持                                                      | 现已提供 - [链接](http://azure.github.io/azure-storage-node/)                                                                                            |
 | Node.js - 文件系统                   | [链接](https://www.npmjs.com/package/azure-arm-datalake-store)                                                                                                                                                                                                                                                                | 尚未提供                                                | 尚未提供                                                                                                                                             |
 | Python - 管理                    | [链接](https://docs.microsoft.com/python/api/overview/azure/datalakestore/management?view=azure-python)                                                                                                                                                                                                                 | *不支持*                                                      | 现已提供 - [链接](https://docs.microsoft.com/python/api/overview/azure/storage/management?view=azure-python)                                       |

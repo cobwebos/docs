@@ -7,13 +7,13 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 4/27/2018
 ms.author: johnkem
-ms.component: metrics
-ms.openlocfilehash: ac2987b6329d85c06d78d93341fe71f5c9120fcd
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.subservice: metrics
+ms.openlocfilehash: df26547132403bfe2f3fb3be74e5d1a3d9400967
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54105451"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54433027"
 ---
 # <a name="create-a-classic-metric-alert-with-a-resource-manager-template"></a>使用资源管理器模板创建经典指标警报
 本文说明如何使用 [Azure 资源管理器模板](../../azure-resource-manager/resource-group-authoring-templates.md)配置 Azure 指标警报。 这样，便可以在创建资源时自动对资源设置警报，确保正确监视所有资源。
@@ -405,3 +405,4 @@ ms.locfileid: "54105451"
 * [详细了解警报](alerts-overview.md)
 * [将诊断设置添加](../../azure-monitor/platform/diagnostic-logs-stream-template.md)到 Resource Manager 模板
 * 有关 JSON 语法和属性，请参阅 [Microsoft.Insights/alertrules](/azure/templates/microsoft.insights/alertrules) 模板参考。
+

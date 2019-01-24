@@ -4,7 +4,7 @@ description: 如何使用组策略为我的应用门户部署 Internet Explorer 
 services: active-directory
 documentationcenter: ''
 author: barbkess
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.component: app-mgmt
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.date: 11/08/2018
 ms.author: barbkess
 ms.reviewer: asteen
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: be3950d199b4362caa5fcd3f66b948802cfa1c49
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 3a48b2ce4689490b3a38917edfb776a6ea28c478
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52877470"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54463433"
 ---
 # <a name="how-to-deploy-the-access-panel-extension-for-internet-explorer-using-group-policy"></a>如何使用组策略部署 Internet Explorer 的访问面板扩展
 本教程说明如何使用组策略在用户的计算机上远程安装 Internet Explorer 的访问面板扩展。 需要登录到使用[基于密码的单一登录](what-is-single-sign-on.md#password-based-sso)配置的应用程序的 Internet Explorer 用户必须使用此扩展。

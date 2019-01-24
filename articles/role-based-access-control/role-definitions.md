@@ -15,12 +15,12 @@ ms.date: 01/15/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: ''
-ms.openlocfilehash: 065695f9ce0f0d8dfbb9a43877131c8ab7fada5e
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: ea022ce9b02fd54be7959f5e9521ca5dc34e4e7b
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54354308"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54426415"
 ---
 # <a name="understand-role-definitions"></a>了解角色定义
 
@@ -48,7 +48,7 @@ AssignableScopes []
 
 操作字符串的 `{action}` 部分指定可以对某个资源类型执行的操作类型。 例如，将在 `{action}` 中看到以下子字符串：
 
-| 操作子字符串    | Description         |
+| 操作子字符串    | 说明         |
 | ------------------- | ------------------- |
 | `*` | 通配符授予对与字符串匹配的所有操作的访问权限。 |
 | `read` | 允许读取操作 (GET)。 |
@@ -165,7 +165,7 @@ Bob 的权限限制为[存储 Blob 数据参与者（预览版）](built-in-role
 
 | 工具  | 版本  |
 |---------|---------|
-| [Azure PowerShell](/powershell/azure/install-azurerm-ps) | 5.6.0 或更高版本 |
+| [Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps) | 5.6.0 或更高版本 |
 | [Azure CLI](/cli/azure/install-azure-cli) | 2.0.30 或更高版本 |
 | [Azure for .NET](/dotnet/azure/) | 2.8.0-preview 或更高版本 |
 | [Azure SDK for Go](/go/azure/azure-sdk-go-install) | 15.0.0 或更高版本 |
@@ -185,7 +185,7 @@ Azure 门户还允许用户通过 Azure AD 预览体验浏览和管理队列和 
 
 `Actions` 权限指定该角色允许执行的管理操作。 它是操作字符串的集合，可标识 Azure 资源提供程序的安全对象操作。 下面是一些可以在 `Actions` 中使用的管理操作的示例。
 
-| 操作字符串    | Description         |
+| 操作字符串    | 说明         |
 | ------------------- | ------------------- |
 | `*/read` | 向所有 Azure 资源提供程序的所有资源类型的读取操作授予访问权限。|
 | `Microsoft.Compute/*` | 向 Microsoft.Compute 资源提供程序中的所有资源类型的所有操作授予访问权限。|
@@ -205,7 +205,7 @@ Azure 门户还允许用户通过 Azure AD 预览体验浏览和管理队列和 
 
 `DataActions` 权限指定此角色允许对该对象中的数据执行的数据操作。 例如，如果某个用户对某个存储帐户拥有读取 Blob 数据的访问权限，则该用户可以读取该存储帐户中的 Blob。 下面是可在 `DataActions` 中使用的一些数据操作的示例。
 
-| 操作字符串    | Description         |
+| 操作字符串    | 说明         |
 | ------------------- | ------------------- |
 | `Microsoft.Storage/storageAccounts/ blobServices/containers/blobs/read` | 返回 Blob 或 Blob 列表。 |
 | `Microsoft.Storage/storageAccounts/ blobServices/containers/blobs/write` | 返回写入 Blob 的结果。 |

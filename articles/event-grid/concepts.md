@@ -2,17 +2,17 @@
 title: Azure 事件网格概念
 description: 介绍 Azure 事件网格及其概念。 定义事件网格的几个关键组件。
 services: event-grid
-author: tfitzmac
+author: spelluru
 ms.service: event-grid
 ms.topic: conceptual
 ms.date: 08/03/2018
-ms.author: tomfitz
-ms.openlocfilehash: 89f0f5847f157cff59a57f7958508e4f260355c3
-ms.sourcegitcommit: 6678e16c4b273acd3eaf45af310de77090137fa1
+ms.author: spelluru
+ms.openlocfilehash: 40c749adee08e66319bed88f26c3c898428a41ad
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50747552"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54474347"
 ---
 # <a name="concepts-in-azure-event-grid"></a>Azure 事件网格中的概念
 

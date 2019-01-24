@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/16/2018
 ms.author: aljo
-ms.openlocfilehash: ba870cf722f95fb6516e1969350d3d25ba280a8c
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 06e0509f05352a023651d7121aa89e18e375ef32
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54043781"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54428319"
 ---
 # <a name="create-a-service-fabric-cluster-using-azure-resource-manager"></a>使用 Azure 资源管理器创建 Service Fabric 群集 
 > [!div class="op_single_selector"]
@@ -71,7 +71,7 @@ az account set --subscription $subscriptionId
 以下命令可创建 Windows 或 Linux 群集，需指定相应的操作系统。 PowerShell/CLI 命令还会在指定的 CertificateOutputFolder 中输出证书，但要确保已创建该证书文件夹。 此命令还采用 VM SKU 等其他参数。
 
 > [!NOTE]
-> 以下 PowerShell 命令仅适用于 Azure 资源管理器 PowerShell 6.1 以上版本。 若要检查 Azure 资源管理器 PowerShell 版的当前版本，请运行以下 PowerShell 命令“Get-Module AzureRM”。 单击[此链接](/powershell/azure/install-azurerm-ps?view=azurermps-6.3.0)升级 Azure 资源管理器 PowerShell 的版本。 
+> 以下 PowerShell 命令仅适用于 Azure 资源管理器 PowerShell 6.1 以上版本。 若要检查 Azure 资源管理器 PowerShell 版的当前版本，请运行以下 PowerShell 命令“Get-Module AzureRM”。 单击[此链接](/powershell/azure/azurerm/install-azurerm-ps?view=azurermps-6.3.0)升级 Azure 资源管理器 PowerShell 的版本。 
 >
 >
 
@@ -292,7 +292,7 @@ az sf cluster create --resource-group $resourceGroupName --location $resourceGro
 有关要在模板中使用的 JSON 语法和属性，请参阅 [Microsoft.ServiceFabric/clusters 模板参考](/azure/templates/microsoft.servicefabric/clusters)。
 
 <!-- Links -->
-[azure-powershell]:https://docs.microsoft.com/powershell/azure/install-azurerm-ps
+[azure-powershell]:https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps
 [azure-CLI]:https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest
 [service-fabric-cluster-security]: service-fabric-cluster-security.md
 [customize-your-cluster-template]: service-fabric-cluster-creation-via-arm.md#create-a-service-fabric-cluster-resource-manager-template

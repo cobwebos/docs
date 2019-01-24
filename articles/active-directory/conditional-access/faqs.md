@@ -4,7 +4,7 @@ description: 获取有关 Azure Active Directory 中条件访问的常见问题�
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
-manager: mtillman
+manager: daveba
 ms.assetid: 14f7fc83-f4bb-41bf-b6f1-a9bb97717c34
 ms.service: active-directory
 ms.component: conditional-access
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: e9ce5e1d86f6c1756f8871dc45d60d36cea74515
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 4fc2a5aced68ad27b87f409ff4220443648b9d1f
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39629287"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54446045"
 ---
 # <a name="azure-active-directory-conditional-access-faqs"></a>Azure Active Directory 条件访问常见问题解答
 

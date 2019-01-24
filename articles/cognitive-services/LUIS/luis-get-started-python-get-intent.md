@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: quickstart
-ms.date: 09/10/2018
+ms.date: 01/23/2019
 ms.author: diberry
-ms.openlocfilehash: e4601b5b6156ace897df65cd42159a1193f8194a
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 7979d83971fa9f34fc4d30b91018a36b954c4fbe
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53100117"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54855850"
 ---
 # <a name="quickstart-get-intent-using-python"></a>快速入门：使用 Python 获取意向
 在本快速入门中，你将向 LUIS 终结点传递话语并返回意向和实体。

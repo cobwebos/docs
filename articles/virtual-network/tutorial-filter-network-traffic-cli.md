@@ -17,12 +17,12 @@ ms.workload: infrastructure
 ms.date: 03/30/2018
 ms.author: jdial
 ms.custom: ''
-ms.openlocfilehash: 27102f3523749802dc16a28e28f8859d35814990
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 3252395c7a511a00e8da0a31139fce3b2763decb
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46952743"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54461835"
 ---
 # <a name="filter-network-traffic-with-a-network-security-group-using-the-azure-cli"></a>在 Azure CLI 中使用网络安全组筛选网络流量
 
@@ -37,7 +37,7 @@ ms.locfileid: "46952743"
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-如果选择在本地安装并使用 CLI，本文要求运行 Azure CLI 2.0.28 或更高版本。 若要查找版本，请运行 `az --version`。 如果需要进行安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。 
+如果选择在本地安装并使用 CLI，本文要求运行 Azure CLI 2.0.28 或更高版本。 要查找版本，请运行 `az --version`。 如果需要进行安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。 
 
 
 ## <a name="create-a-network-security-group"></a>创建网络安全组
@@ -128,7 +128,7 @@ az network vnet create \
   --address-prefixes 10.0.0.0/16
 ```
 
-使用 [az network vnet subnet create](/cli/azure/network/vnet/subnet#az_network_vnet_subnet_create) 将子网添加到虚拟网络。 以下示例将名为 *mySubnet* 的子网添加到虚拟网络，并将 *myNsg* 网络安全组关联到该虚拟网络：
+使用 [az network vnet subnet create](/cli/azure/network/vnet/subnet) 将子网添加到虚拟网络。 以下示例将名为 *mySubnet* 的子网添加到虚拟网络，并将 *myNsg* 网络安全组关联到该虚拟网络：
 
 ```azurecli-interactive
 az network vnet subnet create \

@@ -4,7 +4,7 @@ description: 了解如何在 Azure Active Directory 和 Kiteworks 之间配置�
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: f7984aaf-ab1f-4a85-9646-a9523f5275d9
 ms.service: active-directory
 ms.component: saas-app-tutorial
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/20/2017
 ms.author: jeedes
-ms.openlocfilehash: 986640c6af07c5a7ad85cfe8ca1f3d5b8a8aae84
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 627d2733c01a33a243978df552cf268dde983c5f
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52845988"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54808133"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-kiteworks"></a>教程：Azure Active Directory 与 Kiteworks 的集成
 
@@ -112,7 +112,7 @@ ms.locfileid: "52845988"
 
     ![配置单一登录](./media/kiteworks-tutorial/tutorial_kiteworks_url.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“登录 URL”文本框中，使用以下模式键入 URL： `https://<subdomain>.kiteworks.com`
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL： `https://<subdomain>.kiteworks.com`
 
     b. 在“标识符”文本框中，使用以下模式键入 URL：`https://<subdomain>.kiteworks.com/sp/module.php/saml/sp/saml2-acs.php/sp-sso`
 
@@ -145,7 +145,7 @@ ms.locfileid: "52845988"
    
     ![配置单一登录](./media/kiteworks-tutorial/tutorial_kiteworks_09.png)   
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 选择“通过 SSO 进行身份验证”。
+    a. 选择“通过 SSO 进行身份验证”。
 
     b. 选择“启动 AuthnRequest”。
 
@@ -186,7 +186,7 @@ ms.locfileid: "52845988"
  
     ![创建 Azure AD 测试用户](./media/kiteworks-tutorial/create_aaduser_04.png) 
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
+    a. 在“名称”文本框中，键入 **BrittaSimon**。
 
     b. 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 

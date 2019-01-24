@@ -3,18 +3,18 @@ title: 管理多个 Azure 虚拟机的更新
 description: 本文介绍了如何管理 Azure 虚拟机的更新。
 services: automation
 ms.service: automation
-ms.component: update-management
+ms.subservice: update-management
 author: georgewallace
 ms.author: gwallace
 ms.date: 01/10/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 3897225ef6ed7fcc0db75e82058e5b5b273ccbd4
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.openlocfilehash: ac2d1c1fb59988c8b95fda6b92bb9ae0332fc0e0
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54214022"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54427417"
 ---
 # <a name="manage-updates-for-multiple-machines"></a>管理多个计算机的更新
 
@@ -104,7 +104,7 @@ Linux 代理必须具有访问更新存储库的权限。
 
 下表介绍了此解决方案支持的连接的源：
 
-| 连接的源 | 支持 | Description |
+| 连接的源 | 支持 | 说明 |
 | --- | --- | --- |
 | Windows 代理 |是 |“更新管理”从 Windows 代理收集有关系统更新的信息，并开始安装必需的更新。 |
 | Linux 代理 |是 |“更新管理”从 Linux 代理收集有关系统更新的信息，然后开始在受支持的发行版上安装必需的更新。 |
@@ -159,7 +159,7 @@ Linux 代理必须具有访问更新存储库的权限。
 
 - **重启控制** - 此设置确定如何为更新部署处理重启。
 
-   |选项|Description|
+   |选项|说明|
    |---|---|
    |必要时请重启| **（默认）** 必要时且在维护时段允许的情况下开始重启。|
    |永远重启|无论是否需要重启，都会开始重启。 |
@@ -198,3 +198,4 @@ Linux 代理必须具有访问更新存储库的权限。
 ## <a name="next-steps"></a>后续步骤
 
 - 若要详细了解“更新管理”（包括日志、输出和错误），请参阅 [Azure 中的更新管理解决方案](../operations-management-suite/oms-solution-update-management.md)。
+

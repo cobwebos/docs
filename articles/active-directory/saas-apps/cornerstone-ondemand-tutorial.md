@@ -4,7 +4,7 @@ description: 了解如何在 Azure Active Directory 和 Cornerstone OnDemand 之
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: barbkess
 ms.assetid: f57c5fef-49b0-4591-91ef-fc0de6d654ab
 ms.service: Azure-Active-Directory
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/24/2018
 ms.author: jeedes
-ms.openlocfilehash: 40d5905764dbf139db28cd1c113d06981be8205d
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 7f2276cfb6019c15b28eeab92ecf63c788858b7f
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53972322"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54825589"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cornerstone-ondemand"></a>教程：Azure Active Directory 与 Cornerstone OnDemand 的集成
 
@@ -93,7 +93,7 @@ ms.locfileid: "53972322"
 
     ![配置单一登录链接](common/select-sso.png)
 
-2. 在“选择单一登录方法”对话框中，选择 SAML/WS-Fed 模式以启用单一登录。
+2. 在**选择单一登录方法**对话框中，选择 **SAML/WS-Fed**模式以启用单一登录。
 
     ![单一登录选择模式](common/select-saml-option.png)
 
@@ -105,7 +105,7 @@ ms.locfileid: "53972322"
 
     ![Cornerstone OnDemand 域和 URL 单一登录信息](common/sp-identifier.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<company>.csod.com`
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<company>.csod.com`
 
     b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`https://<company>.csod.com`
 

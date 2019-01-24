@@ -7,13 +7,13 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 12/18/2017
 ms.author: ancav
-ms.component: autoscale
-ms.openlocfilehash: af7e280c7dcd82c18e91ded759756c3826342cd3
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.subservice: autoscale
+ms.openlocfilehash: 02840b8a909f46c37130bdb7162674c694a0ff96
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53587230"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54474823"
 ---
 # <a name="understand-autoscale-settings"></a>了解自动缩放设置
 使用自动缩放设置有助于确保运行适当数量的资源来处理应用程序负载的波动。 可将自动缩放设置配置为基于指标（指示负载或性能）触发，或者在计划好的日期和时间触发。 本文将会深度剖析自动缩放设置。 本文首先介绍设置的架构和属性，然后逐步讲解可配置的不同配置文件类型。 最后讨论 Azure 中的自动缩放功能如何评估要在任意给定时间执行哪个配置文件。
@@ -89,7 +89,7 @@ ms.locfileid: "53587230"
 }
 ```
 
-| 部分 | 元素名称 | Description |
+| 部分 | 元素名称 | 说明 |
 | --- | --- | --- |
 | 设置 | ID | 自动缩放设置的资源 ID。 自动缩放设置属于 Azure 资源管理器资源。 |
 | 设置 | 名称 | 自动缩放设置的名称。 |
@@ -310,3 +310,4 @@ ms.locfileid: "53587230"
 * [Azure 监视器自动缩放的最佳做法](../../azure-monitor/platform/autoscale-best-practices.md)
 * [使用自动缩放操作发送电子邮件和 webhook 警报通知](../../azure-monitor/platform/autoscale-webhook-email.md)
 * [自动缩放 REST API](https://msdn.microsoft.com/library/dn931953.aspx)
+

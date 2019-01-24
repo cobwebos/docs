@@ -3,7 +3,7 @@ title: 排查 Azure 虚拟机上的更改错误 | Microsoft Docs
 description: 使用更改跟踪排查 Azure 虚拟机上的更改错误。
 services: automation
 ms.service: automation
-ms.component: change-inventory-management
+ms.subservice: change-inventory-management
 keywords: 更改, 跟踪, 自动化
 author: jennyhunter-msft
 ms.author: jehunte
@@ -11,12 +11,12 @@ ms.date: 12/05/2018
 ms.topic: tutorial
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: 1df3fcad8a30b0d79f40aecc353684b7356fe061
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 9fa1e3ffd92b3c375837c7b9a4a0e7fd1a80893a
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53190010"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54433673"
 ---
 # <a name="troubleshoot-changes-in-your-environment"></a>排查环境中的更改错误
 
@@ -228,3 +228,4 @@ ConfigurationChange | where ConfigChangeType == "WindowsServices" and SvcName ==
 
 > [!div class="nextstepaction"]
 > [变更管理和清单解决方案](automation-change-tracking.md)
+

@@ -4,7 +4,7 @@ description: 了解如何在 Azure Active Directory 与 MCM 之间配置单一�
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: 7f00799d-e3e9-4ba9-ae4a-fbca843ac5db
 ms.service: active-directory
 ms.component: saas-app-tutorial
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/26/2017
 ms.author: jeedes
-ms.openlocfilehash: 8b8ff27413888e1745bd9a83e2e2e8c7b77fba34
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: ae38276e4ae3cd838a1cdb7f80712f80b0b928b8
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52847042"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54816460"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mcm"></a>教程：Azure Active Directory 与 MCM 的集成
 
@@ -112,7 +112,7 @@ ms.locfileid: "52847042"
 
     ![配置单一登录](./media/mcm-tutorial/tutorial_mcm_url.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“登录 URL”文本框中，使用以下模式键入 URL： `https://myaba.co.uk/client-access/<companyname>/saml.php`
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL： `https://myaba.co.uk/client-access/<companyname>/saml.php`
 
     b. 在“标识符”文本框中，使用以下模式键入 URL：`https://myaba.co.uk/<companyname>`
 
@@ -156,7 +156,7 @@ ms.locfileid: "52847042"
  
     ![创建 Azure AD 测试用户](./media/mcm-tutorial/create_aaduser_04.png) 
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
+    a. 在“名称”文本框中，键入 **BrittaSimon**。
 
     b. 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 

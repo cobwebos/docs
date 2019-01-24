@@ -4,7 +4,7 @@ description: 有关如何获取帮助和打开 Azure Active directory 支持工�
 services: active-directory
 documentationcenter: na
 author: eross-msft
-manager: mtillman
+manager: daveba
 editor: ''
 ms.service: active-directory
 ms.topic: conceptual
@@ -14,12 +14,12 @@ ms.date: 08/28/2017
 ms.author: lizross
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
-ms.openlocfilehash: ddf4763b8f5abb81c7d884d9d978c85843410ccb
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: feecc0b5b8c6bd7cb39a9aa8f40e84b07b242f39
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54064940"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54447763"
 ---
 # <a name="find-help-and-open-a-support-ticket-for-azure-active-directory"></a>查找帮助并打开 Azure Active Directory 的支持票证
 Microsoft 针对 Azure Active Directory (Azure AD) 提供全球技术支持、售前、计费和订阅支持。 对于 Microsoft Azure 付费版和试用版订阅，将通过在线服务和电话提供支持。 电话支持和在线计费支持以更多的语言提供。 

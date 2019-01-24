@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 12/21/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: aa4ea4e724ec383fc9f22bd56572d2fd0e844abc
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: e79b85a2dd47706ca83b6cbc2c59100b05574fab
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54332432"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54425554"
 ---
 # <a name="quickstart-create-a-sql-server-windows-virtual-machine-with-azure-powershell"></a>快速入门：使用 Azure PowerShell 创建 SQL Server Windows 虚拟机
 
@@ -38,7 +38,7 @@ ms.locfileid: "54332432"
 
 ## <a id="powershell"></a> 获取 Azure PowerShell
 
-本快速入门需要 Azure PowerShell 模块 3.6 版或更高版本。 运行 `Get-Module -ListAvailable AzureRM` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-azurerm-ps)。
+本快速入门需要 Azure PowerShell 模块 3.6 版或更高版本。 运行 `Get-Module -ListAvailable AzureRM` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/azurerm/install-azurerm-ps)。
 
 ## <a name="configure-powershell"></a>配置 PowerShell
 
@@ -48,7 +48,7 @@ ms.locfileid: "54332432"
    Connect-AzureRmAccount
    ```
 
-1. 你应当会看到用来输入凭据的屏幕。 使用登录 Azure 门户时所用的相同电子邮件和密码。
+1. 此时应会显示用于输入凭据的屏幕。 使用登录 Azure 门户时所用的相同电子邮件和密码。
 
 ## <a name="create-a-resource-group"></a>创建资源组
 

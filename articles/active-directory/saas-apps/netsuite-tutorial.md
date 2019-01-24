@@ -4,7 +4,7 @@ description: 了解如何在 Azure Active Directory 和 NetSuite 之间配置单
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: barbkess
 ms.assetid: dafa0864-aef2-4f5e-9eac-770504688ef4
 ms.service: Azure-Active-Directory
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/17/2018
 ms.author: jeedes
-ms.openlocfilehash: 05e565d58faefbfc80815635afa38595177ad353
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.openlocfilehash: f93f6d01019b38fc157732ee221a5f73a156e809
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53807459"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54810391"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-netsuite"></a>教程：Azure Active Directory 与 NetSuite 集成
 
@@ -94,7 +94,7 @@ ms.locfileid: "53807459"
 
     ![配置单一登录链接](common/select-sso.png)
 
-2. 在“选择单一登录方法”对话框中，选择 SAML/WS-Fed 模式以启用单一登录。
+2. 在**选择单一登录方法**对话框中，选择 **SAML/WS-Fed**模式以启用单一登录。
 
     ![单一登录选择模式](common/select-saml-option.png)
 
@@ -133,7 +133,7 @@ ms.locfileid: "53807459"
     | ---------------| --------------- |
     | 帐户  | `account id` |
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 单击“添加新声明”以打开“管理用户声明”对话框。
+    a. 单击“添加新声明”以打开“管理用户声明”对话框。
 
     ![图像](common/new-save-attribute.png)
 
@@ -200,7 +200,7 @@ ms.locfileid: "53807459"
 
     ![配置单一登录](./media/NetSuite-tutorial/ns-saml-setup.png)
   
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 选择“主要身份验证方法”。
+    a. 选择“主要身份验证方法”。
 
     b. 对于标有“SAMLV2 标识提供者元数据”的字段，请选择“上传 IDP 元数据文件”。 然后单击“浏览”，上传从 Azure 门户下载的元数据文件。
 
@@ -218,7 +218,7 @@ ms.locfileid: "53807459"
 
 10. 在用户能够单一登录到 NetSuite 之前，必须先在 NetSuite 中为他们分配适当的权限。 请按以下说明来分配这些权限。
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在顶部导航菜单中单击“设置”。
+    a. 在顶部导航菜单中单击“设置”。
 
     ![配置单一登录](./media/NetSuite-tutorial/ns-setup.png)
 

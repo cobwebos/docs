@@ -8,13 +8,13 @@ author: ecfan
 ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: tutorial
-ms.date: 11/30/2017
-ms.openlocfilehash: 06fa9b9191104db3b141b6268a90a7c8f206280e
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.date: 01/12/2019
+ms.openlocfilehash: e735c9773971a4c594c32e9ae29eeb295c32810c
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53106067"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54473701"
 ---
 # <a name="tutorial-monitor-virtual-machine-changes-with-azure-event-grid-and-logic-apps"></a>教程：通过 Azure 事件网格和逻辑应用监视虚拟机更改
 
@@ -179,7 +179,7 @@ ms.locfileid: "53106067"
    > [!TIP]
    > 若要选择工作流中可用的字段，请单击“编辑”框，以便打开“动态内容”列表，或选择“添加动态内容”。 对于多个字段，请选择列表中每个部分的“查看更多”。 若要关闭“动态内容”列表，请选择“添加动态内容”。
 
-   | 设置 | 建议的值 | Description | 
+   | 设置 | 建议的值 | 说明 | 
    | ------- | --------------- | ----------- | 
    | **收件人** | *{recipient-email-address}* |输入收件人的电子邮件地址。 为进行测试，可以使用自己的电子邮件地址。 | 
    | **主题** | 更新资源：**主题**| 输入电子邮件的主题内容。 对于本教程，请输入建议的文本并选择该事件的“主题”字段。 此处，电子邮件主题包含更新资源（虚拟机）的名称。 | 

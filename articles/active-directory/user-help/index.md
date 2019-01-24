@@ -4,19 +4,14 @@ title: 有关身份验证、应用和设备管理的用户帮助 - Azure Active 
 description: 用户帮助适用于需要帮助设置和使用安全信息、双重验证、自助服务密码重置、设备管理、Microsoft Authenticator 应用以及“我的应用”门户的人员。
 services: active-directory
 author: eross-msft
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.component: user-help
 ms.topic: landing-page
 ms.date: 07/30/2018
 ms.author: lizross
-ms.openlocfilehash: 3ee8834a2ff8b9126fea38b19df115474c36a9e9
-ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
-ms.translationtype: HT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "41929040"
 ---
+
 # <a name="user-help-for-authentication-apps-and-device-management"></a>有关身份验证、应用和设备管理的用户帮助
 
 我们创建了此内容来帮助你设置和使用安全信息与双重验证、了解如何重置自己的密码、设置和加入 Azure Active Directory 设备以及设置和使用 Microsoft Authenticator 应用与“我的应用”门户。

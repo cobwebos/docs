@@ -3,19 +3,19 @@ title: 在 Azure Active Directory B2C 的自定义策略中定义 OAuth1 技术�
 description: 在 Azure Active Directory B2C 的自定义策略中定义 OAuth1 技术配置文件。
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 15c6730d752adf48cee2ff509220a033cac91ef2
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 6e93f42540492d138afef3a1d4b826165201b04c
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52842112"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54851345"
 ---
 # <a name="define-a-oauth1-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>在 Azure Active Directory B2C 自定义策略中定义 OAuth1 技术配置文件
 
@@ -67,7 +67,7 @@ Azure Active Directory (Azure AD) B2C 为 [OAuth 1.0 协议](https://tools.ietf.
 
 ## <a name="metadata"></a>元数据
 
-| 属性 | 必选 | Description |
+| 属性 | 必选 | 说明 |
 | --------- | -------- | ----------- |
 | client_id | 是 | 标识提供者的应用程序标识符。 |
 | ProviderName | 否 | 标识提供者的名称。 |
@@ -81,7 +81,7 @@ Azure Active Directory (Azure AD) B2C 为 [OAuth 1.0 协议](https://tools.ietf.
 
 **CryptographicKeys** 元素包含以下属性：
 
-| 属性 | 必选 | Description |
+| 属性 | 必选 | 说明 |
 | --------- | -------- | ----------- |
 | client_secret | 是 | 标识提供者应用程序的客户端机密。   | 
 

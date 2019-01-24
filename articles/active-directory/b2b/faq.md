@@ -8,14 +8,14 @@ ms.topic: reference
 ms.date: 10/29/2018
 ms.author: mimart
 author: msmimart
-manager: mtillman
+manager: daveba
 ms.reviewer: sasubram
-ms.openlocfilehash: 9f82deaa3ca048342c3501e111470eaea2ed9437
-ms.sourcegitcommit: 6678e16c4b273acd3eaf45af310de77090137fa1
+ms.openlocfilehash: 481fb929a8f937b1d822755e93fae09d9f585fad
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50748402"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54436818"
 ---
 # <a name="azure-active-directory-b2b-collaboration-faqs"></a>Azure Active Directory B2B 协作常见问题解答
 
@@ -55,7 +55,7 @@ ms.locfileid: "50748402"
 除非 B2B 协作用户被分配了受限制的管理员或全局管理员角色，否则他们不需要对 Azure 门户的访问权限。 但是，被分配了受限制的管理员或全局管理员角色的 B2B 协作用户可以访问门户。 另外，如果未被分配这些管理员角色之一的来宾用户访问门户，该用户可以访问某些部分的体验。 来宾用户角色具有目录中的某些权限。
 
 ### <a name="can-i-block-access-to-the-azure-portal-for-guest-users"></a>我能否阻止来宾用户访问 Azure 门户？
-能！ 配置此策略时请小心，避免意外阻止成员和管理员的访问。
+ 能！ 配置此策略时请小心，避免意外阻止成员和管理员的访问。
 若要阻止来宾用户访问 [Azure 门户](https://portal.azure.com)，可以在 Windows Azure 经典部署模型 API 中使用条件访问策略：
 1. 修改“所有用户”组，使其仅包含成员。
   ![修改组屏幕截图](media/faq/modify-all-users-group.png)

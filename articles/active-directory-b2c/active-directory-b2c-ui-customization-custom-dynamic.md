@@ -3,19 +3,19 @@ title: 使用自定义策略动态自定义 Azure Active Directory B2C 用户界
 description: 支持多品牌体验（包含运行时动态更改的 HTML5/CSS 内容）。
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/20/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: f078c1389e36b82f95b011ca1fbd7fbd1c4f895e
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 87634539b9709e057c0e51297569c1005a7bea1f
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52834215"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54852093"
 ---
 # <a name="azure-active-directory-b2c-configure-the-ui-with-dynamic-content-by-using-custom-policies"></a>Azure Active Directory B2C：使用自定义策略配置包含动态内容的 UI
 
@@ -39,7 +39,7 @@ ms.locfileid: "52834215"
 
 `ContentDefinitions` 节包含一系列 `ContentDefinition` XML 元素。 `ContentDefinition` 元素的 ID 属性指定与内容定义相关的页面类型。 也就是说，该元素定义了要在其中应用自定义 HTML5/CSS 模板的上下文。 下表描述了 IEF 引擎识别的内容定义 ID 集及其相关的页面类型。
 
-| 内容定义 ID | 默认 HTML5 模板| Description | 
+| 内容定义 ID | 默认 HTML5 模板| 说明 | 
 |-----------------------|--------|-------------|
 | *api.error* | [exception.cshtml](https://login.microsoftonline.com/static/tenant/default/exception.cshtml) | **错误页面**。 遇到异常或错误时显示此页面。 |
 | *api.idpselections* | [idpSelector.cshtml](https://login.microsoftonline.com/static/tenant/default/idpSelector.cshtml) | **标识提供者选择页面**。 此页面列出可供用户在登录期间选择的标识提供者。 选项通常是企业标识提供者、社交标识提供者（例如 Facebook 和 Google+）或本地帐户。 |
@@ -319,7 +319,7 @@ HTML5 模板现在可供使用。 但是，无法在 `ContentDefinition` 代码�
 如果在登录页面上选择“立即注册”链接，浏览器会显示默认背景，而不是定义的背景。 之所以出现此行为，是因为前面仅更改了注册或登录页面。 若要更改剩余的 Self-Assert 内容定义，请执行以下操作：
 1. 返回“步骤 2”，执行以下操作：
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 下载 *selfasserted* 文件。
+    a. 下载 *selfasserted* 文件。
 
     b. 复制文件内容。
 
@@ -329,7 +329,7 @@ HTML5 模板现在可供使用。 但是，无法在 `ContentDefinition` 代码�
 
 2. 返回“步骤 4”，执行以下操作： 
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在扩展策略中，找到包含 `Id="api.selfasserted"`、`Id="api.localaccountsignup"` 和 `Id="api.localaccountpasswordreset"` 的 `<ContentDefinition>` 节点。
+    a. 在扩展策略中，找到包含 `Id="api.selfasserted"`、`Id="api.localaccountsignup"` 和 `Id="api.localaccountpasswordreset"` 的 `<ContentDefinition>` 节点。
 
     b. 将 `LoadUri` 属性设置为 *selfasserted* URI。
 

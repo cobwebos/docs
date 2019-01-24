@@ -7,13 +7,13 @@ ms.service: azure-monitor
 ms.topic: reference
 ms.date: 10/11/2018
 ms.author: johnkem
-ms.component: logs
-ms.openlocfilehash: e31c957e9ef24079d6917109ec9c5f85928bfbd7
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.subservice: logs
+ms.openlocfilehash: ebadf69d5740dc9b9907880917516419129db170
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54260969"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54468824"
 ---
 # <a name="supported-services-schemas-and-categories-for-azure-diagnostic-logs"></a>Azure 诊断日志支持的服务、架构和类别
 
@@ -23,7 +23,7 @@ ms.locfileid: "54260969"
 
 ## <a name="top-level-diagnostic-logs-schema"></a>顶级诊断日志架构
 
-| 名称 | 必需/可选 | Description |
+| 名称 | 必需/可选 | 说明 |
 |---|---|---|
 | time | 必选 | 事件时间戳 (UTC)。 |
 | resourceId | 必选 | 发出事件的资源的资源 ID。 对于租户服务，其形式为 /tenants/tenant-id/providers/provider-name。 |
@@ -209,3 +209,4 @@ ms.locfileid: "54260969"
 * [将资源诊断日志流式传输到事件中心](../../azure-monitor/platform/diagnostic-logs-stream-event-hubs.md)
 * [使用 Azure Monitor REST API 更改资源诊断设置](https://docs.microsoft.com/rest/api/monitor/diagnosticsettings)
 * [使用 Log Analytics 分析 Azure 存储中的日志](../../azure-monitor/platform/collect-azure-metrics-logs.md)
+
