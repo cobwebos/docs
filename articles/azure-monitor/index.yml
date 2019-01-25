@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 579410d04c7f3fc5548e0014a4f6a028c3db74f1
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.openlocfilehash: 5b8d5e639711b91d380b5f14de48be6a80fb0263
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53651531"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54820761"
 documentType: LandingData
 title: Azure Monitor 文档
 metadata:
@@ -16,11 +16,21 @@ metadata:
   ms.service: azure-monitor
   ms.tgt_pltfrm: na
   ms.topic: landing-page
-  ms.date: 09/04/2018
+  ms.date: 01/22/2019
   ms.author: bwren
 abstract:
   description: Azure Monitor 现在包括 Log Analytics 和 Application Insights，其提供的高级工具适用于收集和分析遥测数据，以便最大程度地提高云和本地的资源和应用程序的性能和可用性。 它可以帮助你了解应用程序的性能，并主动识别影响应用程序及其所依赖资源的问题。
 sections:
+- title: 建议的内容
+  items:
+  - type: paragraph
+    text: 使用以下链接来查看 Log Analytics 和 Application Insights 的内容的建议列表。
+  - type: list
+    style: unordered
+    className: spaced noBullet
+    items:
+    - html: <a href="/azure/azure-monitor/azure-monitor-log-hub">Log Analytics</a>
+    - html: <a href="/azure/azure-monitor/azure-monitor-app-hub">Application Insights</a>
 - title: 5 分钟快速入门
   items:
   - type: paragraph
