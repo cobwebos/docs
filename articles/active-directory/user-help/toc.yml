@@ -47,12 +47,24 @@ items:
   items:
   - name: 概述
     href: user-help-auth-app-overview.md
-  - name: 入门
+  - name: 下载并安装应用
     href: microsoft-authenticator-app-how-to.md
-  - name: 备份和恢复
-    href: microsoft-authenticator-app-backup-and-recovery.md
-  - name: 使用手机登录
+  - name: “添加帐户”概述
+    href: microsoft-authenticator-app-add-accounts-overview.md
+    items:
+    - name: 添加工作或学校帐户
+      href: microsoft-authenticator-app-add-work-account.md
+    - name: 添加个人 Microsoft 帐户
+      href: microsoft-authenticator-app-add-personal-account.md
+    - name: 添加个人非 Microsoft 帐户
+      href: microsoft-authenticator-app-add-non-microsoft-account.md
+    - name: 手动添加帐户
+      href: microsoft-authenticator-app-add-account-manual.md
+    expanded: true
+  - name: 使用 Microsoft Authenticator 应用登录
     href: microsoft-authenticator-app-phone-signin-faq.md
+  - name: 备份并恢复帐户
+    href: microsoft-authenticator-app-backup-and-recovery.md
   - name: 常见问题解答
     href: microsoft-authenticator-app-faq.md
 - name: “我的应用”门户帮助
@@ -73,9 +85,9 @@ items:
     href: user-help-register-device-on-network.md
   - name: 针对“无法访问”消息进行故障排除
     href: user-help-device-remediation.md
-ms.openlocfilehash: 27d0d3300a19d4c27bec48ebf411c7ac3ee6ad87
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: 9ccadb31ce331d3a9dc64aa26d5e8edab900cd1e
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49649579"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54904091"

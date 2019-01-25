@@ -10,8 +10,13 @@ ms.component: user-help
 ms.topic: landing-page
 ms.date: 07/30/2018
 ms.author: lizross
+ms.openlocfilehash: c6fe14c9f67d6ce2f432b57b2cbbd0d026cebe85
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54901626"
 ---
-
 # <a name="user-help-for-authentication-apps-and-device-management"></a>有关身份验证、应用和设备管理的用户帮助
 
 我们创建了此内容来帮助你设置和使用安全信息与双重验证、了解如何重置自己的密码、设置和加入 Azure Active Directory 设备以及设置和使用 Microsoft Authenticator 应用与“我的应用”门户。
@@ -81,7 +86,10 @@ ms.author: lizross
                     <div class="cardText">
                         <h3>Microsoft Authenticator 应用帮助</h3>
                         <p>
-                        <a href="/azure/active-directory/user-help/microsoft-authenticator-app-how-to">入门</a><br/>
+                        <a href="/azure/active-directory/user-help/user-help-auth-app-overview">概述</a><br/>
+                        <a href="/azure/active-directory/user-help/microsoft-authenticator-app-how-to">下载并安装应用</a><br/>
+                        <a href="/azure/active-directory/user-help/microsoft-authenticator-app-add-accounts-overview">添加帐户</a><br/>
+                        <a href="/azure/active-directory/user-help/microsoft-authenticator-app-phone-signin-faq">使用应用登录</a><br/>
                         <a href="/azure/active-directory/user-help/microsoft-authenticator-app-backup-and-recovery">备份和恢复帐户凭据</a>
                         </p>
                     </div>

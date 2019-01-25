@@ -4,7 +4,7 @@ description: 了解如何在 Azure Active Directory 和 Cisco Spark 之间配置
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: barbkess
 ms.assetid: c47894b1-f5df-4755-845d-f12f4c602dc4
 ms.service: Azure-Active-Directory
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/03/2019
 ms.author: jeedes
-ms.openlocfilehash: 493ba5853173c34fbd58236c1a2dd2b28dc59a90
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: e5ed2abca6c9a8bab6ee0df7a8aa05e40b48de5e
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54064286"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54810799"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cisco-spark"></a>教程：Azure Active Directory 与 Cisco Spark 的集成
 
@@ -92,7 +92,7 @@ ms.locfileid: "54064286"
 
     ![配置单一登录链接](common/select-sso.png)
 
-2. 在“选择单一登录方法”对话框中，选择 SAML/WS-Fed 模式以启用单一登录。
+2. 在**选择单一登录方法**对话框中，选择 **SAML/WS-Fed**模式以启用单一登录。
 
     ![单一登录选择模式](common/select-saml-option.png)
 
@@ -109,7 +109,7 @@ ms.locfileid: "54064286"
     b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`https://idbroker.webex.com/<companyname>`
 
     > [!NOTE]
-    > 此标识符值不是实际值。 请将此值更新为实际标识符。 请联系 [Cisco Spark 客户端支持团队](https://support.ciscospark.com/)来获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”部分中显示的模式。
+    > 此标识符值不是实际值。 请使用实际标识符更新此值。 请联系 [Cisco Spark 客户端支持团队](https://support.ciscospark.com/)来获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”部分中显示的模式。
 
 5. Cisco Spark 应用程序需要特定格式的 SAML 断言。 请为此应用程序配置以下声明。 可以在应用程序集成页的“用户属性”部分管理这些属性的值。 在“使用 SAML 设置单一登录”页上，单击“编辑”按钮以打开“用户属性”对话框。
 
@@ -121,7 +121,7 @@ ms.locfileid: "54064286"
     | ---------------|--------- |
     | uid | user.userprincipalname |
 
-    a. 单击“添加新声明”以打开“管理用户声明”对话框。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 单击“添加新声明”以打开“管理用户声明”对话框。
 
     ![图像](common/new-save-attribute.png)
 

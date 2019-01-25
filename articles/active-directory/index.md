@@ -5,17 +5,22 @@ title: Azure Active Directory 文档 - 教程和 API 参考 | Microsoft 文档
 description: Azure Active Directory (Azure AD) 是 Microsoft 推出的基于云的多租户目录，也是标识管理服务，可以将核心目录服务、应用程序访问管理和标识保护组合到单个解决方案中。
 services: active-directory
 author: barbkess
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.topic: landing-page
-ms.date: 01/16/2019
-ms.author: mtillman
+ms.date: 01/24/2019
+ms.author: barbkess
+ms.openlocfilehash: e8e422e6ba69669b24fc141b2688d6777ab85384
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54900963"
 ---
-
 <div id="main" class="v2">
     <div class="container">
         <h1>Azure Active Directory 文档</h1>
-        <p>Azure Active Directory (Azure AD) 是多租户、基于云的目录和标识管理服务。</p><p></p>
+        <p>Azure Active Directory (Azure AD) 是多租户、基于云的标识和访问管理服务。</p><p></p>
         <ul class="cardsY panelContent singlePanelContent" style="display:flex!important;">
             <li>
                 <a href="fundamentals/active-directory-whatis.md">

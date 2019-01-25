@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/11/2018
 ms.author: raynew
-ms.openlocfilehash: 6bdb319eb89c3dad8b3602b0ec4561b962fcc868
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 36a84618a998dd2e06f5563fb8706a1dc8400e59
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53608692"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54823345"
 ---
 # <a name="contoso-migration-rehost-an-on-premises-app-to-azure-vms"></a>Contoso 迁移：将本地应用重新托管到 Azure VM
 
@@ -408,7 +408,7 @@ Contoso 管理员运行快速测试故障转移，然后运行完整故障转移
     ![恢复计划](./media/contoso-migration-rehost-vm/recovery-plan.png)
 
 2. 创建计划后，进行自定义（“恢复计划” > “SmartHotelMigrationPlan” > “自定义”）。
-2.  从“组 1:启动”中删除 WEBVM。 这可确保第一次启动操作只影响 SQLVM。
+2.  从“组 1:启动”中删除 WEBVM**。 这可确保第一次启动操作只影响 SQLVM。
 3.  在“+组” > “添加受保护的项”中，向“组 2:启动”添加 WEBVM。 VM 需要位于两个不同的组中。
 
 
