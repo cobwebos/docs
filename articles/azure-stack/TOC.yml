@@ -129,16 +129,8 @@ items:
       href: azure-stack-registration.md
     - name: 区域管理
       href: azure-stack-region-management.md
-    - name: 连接到 Azure
-      items:
-      - name: 使用 VPN 进行连接
-        href: azure-stack-connect-vpn.md
-      - name: 关于 VPN 网关
-        href: azure-stack-vpn-gateway-about-vpn-gateways.md
-      - name: VPN 网关设置
-        href: azure-stack-vpn-gateway-settings.md
-      - name: 使用 ExpressRoute 进行连接
-        href: azure-stack-connect-expressroute.md
+    - name: 使用 ExpressRoute 连接到 Azure
+      href: azure-stack-connect-expressroute.md
     - name: 为用户启用 CLI
       href: azure-stack-cli-admin.md
     - name: 设置管理环境
@@ -403,9 +395,9 @@ items:
     href: https://stackoverflow.com/questions/tagged/azure-stack
   - name: 培训和认证
     href: https://docs.microsoft.com/azure/azure-stack/azure-stack-train-and-cert
-ms.openlocfilehash: 03f8d00216ee555e0e7fddd946382577bb0c1904
-ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
-ms.translationtype: HT
+ms.openlocfilehash: 91c476e8e65642e490c3a42de7d5a340964f3ae5
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54382147"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54411707"

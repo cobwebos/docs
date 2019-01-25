@@ -76,6 +76,8 @@ items:
       href: howto-create-webhooks.md
     - name: 在 Microsoft Flow 中构建工作流
       href: howto-add-microsoft-flow.md
+    - name: 在 Azure 逻辑应用中构建工作流
+      href: howto-build-azure-logic-apps.md
     - name: 触发 Azure Functions
       href: howto-trigger-azure-functions.md
     - name: 导出数据
@@ -139,9 +141,9 @@ items:
     href: iot-central-customer-data-requests.md
   - name: 支持的浏览器
     href: iot-central-supported-browsers.md
-ms.openlocfilehash: f25b255f441901d873e246bc7e31460b614b7c88
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: 2606d8867f5a4c85c648667301e8be21882e2179
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54354427"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54445824"

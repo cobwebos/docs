@@ -34,13 +34,13 @@ items:
     href: cli-samples.md
 - name: 概念
   items:
-  - name: DNS 区域和记录
+  - name: 区域和记录
     href: dns-zones-records.md
-  - name: DNS 别名记录
+  - name: 别名记录
     href: dns-alias.md
-  - name: 使用 Azure DNS 进行 DNS 委派
+  - name: 使用 Azure DNS 进行委派
     href: dns-domain-delegation.md
-  - name: DNS 常见问题解答
+  - name: 常见问题解答
     href: dns-faq.md
   - name: 使用专用 DNS 区域
     href: private-dns-overview.md
@@ -148,9 +148,9 @@ items:
     href: https://azure.microsoft.com/pricing/calculator/
   - name: 服务更新
     href: https://azure.microsoft.com/updates/?product=dns
-ms.openlocfilehash: d33aefd15104bc3cd35d1c904ffdbb7c7a9f0ec8
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: ac539c7b7454a642a8bc1d36ef01a5e7a232375d
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 01/22/2019
-ms.locfileid: "54428539"
+ms.locfileid: "54446358"

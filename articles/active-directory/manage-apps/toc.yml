@@ -100,6 +100,8 @@ items:
       href: application-proxy-configure-custom-home-page.md
     - name: 转换内联链接
       href: application-proxy-configure-hard-coded-link-translation.md
+    - name: 配置 Cookie 设置
+      href: application-proxy-configure-cookie-settings.md
     - name: 使用通配符发布
       href: application-proxy-wildcard.md
     - name: 删除个人数据
@@ -284,9 +286,9 @@ items:
     href: https://stackoverflow.com/questions/tagged/azure-active-directory
   - name: 视频
     href: https://azure.microsoft.com/documentation/videos/index/?services=active-directory
-ms.openlocfilehash: c36be070b739f75760e3c7419da2aa76335a59d1
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: 28319f3c529491a7ae994ba9d323b66181d7486b
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54156997"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54473327"
