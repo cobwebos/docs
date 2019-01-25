@@ -11,12 +11,12 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 09/14/2018
 ms.author: routlaw
-ms.openlocfilehash: c9a66036902f346a7a9fd337416cbe85acca7856
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: 429c7c266357b4808ab3ebbb7f346cf22d9f479c
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54200924"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54855378"
 ---
 # <a name="azure-functions-java-developer-guide"></a>Azure Functions Java 开发人员指南
 
@@ -272,7 +272,7 @@ public class Function {
 
 ## <a name="metadata"></a>元数据
 
-少量的触发器会连同输入数据一起发送[触发器元数据](/azure/azure-functions/functions-triggers-bindings#trigger-metadata-properties)。 可以使用注释 `@BindingName` 绑定到触发器元数据
+少量的触发器会连同输入数据一起发送[触发器元数据](/azure/azure-functions/functions-triggers-bindings)。 可以使用注释 `@BindingName` 绑定到触发器元数据
 
 
 ```Java

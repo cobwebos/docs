@@ -4,7 +4,7 @@ description: 了解如何在 Azure Active Directory 和 Trello 之间配置单�
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: barbkess
 ms.assetid: cd5ae365-9ed6-43a6-920b-f7814b993949
 ms.service: Azure-Active-Directory
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/02/2019
 ms.author: jeedes
-ms.openlocfilehash: 981bcb6bc9160969e7225342a0e4cda6afc3ed7c
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: fd97321c638dd95f811ff772a4163ce3c2fd682c
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54064554"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54813400"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-trello"></a>教程：Azure Active Directory 与 Trello 集成
 
@@ -97,7 +97,7 @@ ms.locfileid: "54064554"
 
     ![配置单一登录链接](common/select-sso.png)
 
-2. 在“选择单一登录方法”对话框中，选择 SAML/WS-Fed 模式以启用单一登录。
+2. 在**选择单一登录方法**对话框中，选择 **SAML/WS-Fed**模式以启用单一登录。
 
     ![单一登录选择模式](common/select-saml-option.png)
 

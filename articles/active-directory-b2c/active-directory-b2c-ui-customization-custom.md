@@ -3,19 +3,19 @@ title: 使用 Azure Active Directory B2C 中的自定义策略自定义应用程
 description: 了解如何使用 Azure Active Directory B2C 中的自定义策略自定义用户界面。
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 12/18/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 1c2f7b46daf7b96d3a6f47dac647d5ed90461e8e
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: 738e4a4f94d86fc3a1acbb2e43c5b1974d6abac2
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54156249"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54849255"
 ---
 # <a name="customize-the-user-interface-of-your-application-using-a-custom-policy-in-azure-active-directory-b2c"></a>使用 Azure Active Directory B2C 中的自定义策略自定义应用程序的用户界面
 
@@ -167,7 +167,7 @@ git clone https://github.com/azureadquickstarts/b2c-azureblobstorage-client
 
 sample_templates/wingtip 文件夹包含以下 HTML 文件：
 
-| HTML5 模板 | Description |
+| HTML5 模板 | 说明 |
 |----------------|-------------|
 | *phonefactor.html* | 将此文件用作多重身份验证页面的模板。 |
 | *resetpassword.html* | 将此文件用作“忘记密码”页面的模板。 |
@@ -177,7 +177,7 @@ sample_templates/wingtip 文件夹包含以下 HTML 文件：
 
 在 [修改注册或登录自定义策略](#modify-your-sign-up-or-sign-in-custom-policy) 部分中，你已配置了 的内容定义`api.idpselections` 。 下表中列出了 Azure AD B2C 标识体验框架可以识别的整组内容定义 ID 及其说明：
 
-| 内容定义 ID | Description | 
+| 内容定义 ID | 说明 | 
 |-----------------------|-------------|
 | *api.error* | **错误页面**。 遇到异常或错误时显示此页面。 |
 | *api.idpselections* | **标识提供者选择页面**。 此页面包含有可供用户在登录期间选择的标识提供者列表。 这些选项是企业标识提供者、社交标识提供者（例如 Facebook 和 Google+）或本地帐户。 |

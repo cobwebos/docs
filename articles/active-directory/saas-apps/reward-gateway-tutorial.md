@@ -4,7 +4,7 @@ description: 了解如何在 Azure Active Directory 和 Reward Gateway 之间配
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: 34336386-998a-4d47-ab55-721d97708e5e
 ms.service: active-directory
 ms.component: saas-app-tutorial
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/30/2017
 ms.author: jeedes
-ms.openlocfilehash: 0339889228c80cc3675fd7fde52e75cb84521ab6
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 322d85ddfade82232075c11916c528efb3aa610e
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52840174"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54820166"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-reward-gateway"></a>教程：Azure Active Directory 与 Reward Gateway 集成
 
@@ -112,7 +112,7 @@ ms.locfileid: "52840174"
 
     ![配置单一登录](./media/reward-gateway-tutorial/tutorial_rewardgateway_url.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“标识符”文本框中，使用以下模式键入 URL：
+    a. 在“标识符”文本框中，使用以下模式键入 URL：
     | |
     |--|
     | `https://<companyname>.rewardgateway.com` |
@@ -168,7 +168,7 @@ ms.locfileid: "52840174"
  
     ![创建 Azure AD 测试用户](./media/reward-gateway-tutorial/create_aaduser_04.png) 
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
+    a. 在“名称”文本框中，键入 **BrittaSimon**。
 
     b. 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 

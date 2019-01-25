@@ -4,7 +4,7 @@ description: 了解如何在 Azure Active Directory 和云服务 PICCO 之间配
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: barbkess
 ms.assetid: 4808d390-a74e-4c98-8538-391a4a58aa62
 ms.service: Azure-Active-Directory
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/21/2018
 ms.author: jeedes
-ms.openlocfilehash: ad6b0fd822d9b57e935a69f889e777d3292837f0
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 27d7d31317d710daa1d2622c7a82a45c0bccbff3
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53981199"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54819622"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cloud-service-picco"></a>教程：Azure Active Directory 与云服务 PICCO 的集成
 
@@ -93,7 +93,7 @@ ms.locfileid: "53981199"
 
     ![配置单一登录链接](common/select-sso.png)
 
-2. 在“选择单一登录方法”对话框中，选择 SAML/WS-Fed 模式以启用单一登录。
+2. 在**选择单一登录方法**对话框中，选择 **SAML/WS-Fed**模式以启用单一登录。
 
     ![单一登录选择模式](common/select-saml-option.png)
 
@@ -105,7 +105,7 @@ ms.locfileid: "53981199"
 
     ![云服务 PICCO 域和 URL 单一登录信息](common/sp-identifier-reply.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<SUB DOMAIN>.cloudservicepicco.com/app`。
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<SUB DOMAIN>.cloudservicepicco.com/app`。
 
     b. 在“标识符”框中，使用以下模式键入 URL：`<SUB DOMAIN>.cloudservicepicco.com`
 

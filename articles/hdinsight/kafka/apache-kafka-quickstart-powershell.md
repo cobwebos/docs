@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: mvc,hdinsightactive
 ms.topic: quickstart
 ms.date: 04/16/2018
-ms.openlocfilehash: 1dd80cffe64e6c93a0681400d067182f1a74afff
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: 6883ebe1e103f9ed1f06aa4ee0e6281667fc46b8
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53581846"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54424925"
 ---
 # <a name="quickstart-create-an-apache-kafka-on-hdinsight-cluster"></a>快速入门：创建 Apache Kafka on HDInsight 群集
 
@@ -33,7 +33,7 @@ ms.locfileid: "53581846"
 
 * Azure 订阅。 如果还没有 Azure 订阅，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-* Azure PowerShell。 有关详细信息，请参阅[Install and Configure Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps)（安装和配置 Azure PowerShell ）文档。
+* Azure PowerShell。 有关详细信息，请参阅[Install and Configure Azure PowerShell](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps)（安装和配置 Azure PowerShell ）文档。
 
 * SSH 客户端。 文档中的步骤使用 SSH 连接到群集。
 

@@ -4,7 +4,7 @@ description: 了解如何在 Azure Active Directory 和 ArcGIS Online 之间配�
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: barbkess
 ms.assetid: a9e132a4-29e7-48bf-beb9-4148e617c8a9
 ms.service: Azure-Active-Directory
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/19/2018
 ms.author: jeedes
-ms.openlocfilehash: 1acb32b7001ef5d37a3c52d65563fc0627ec3643
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.openlocfilehash: ce8222ca29fb71e4f1b3b8e0992909ea0305ecac
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53808139"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54821985"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-arcgis-online"></a>教程：Azure Active Directory 与 ArcGIS Online 集成
 
@@ -92,7 +92,7 @@ ms.locfileid: "53808139"
 
     ![配置单一登录链接](common/select-sso.png)
 
-2. 在“选择单一登录方法”对话框中，选择 SAML/WS-Fed 模式以启用单一登录。
+2. 在**选择单一登录方法**对话框中，选择 **SAML/WS-Fed**模式以启用单一登录。
 
     ![单一登录选择模式](common/select-saml-option.png)
 
@@ -104,7 +104,7 @@ ms.locfileid: "53808139"
 
     ![ArcGIS Online 域和 URL 单一登录信息](common/sp-identifier.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<companyname>.maps.arcgis.com`
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<companyname>.maps.arcgis.com`
 
     b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`<companyname>.maps.arcgis.com`
 
@@ -141,7 +141,7 @@ ms.locfileid: "53808139"
 
     ![设置标识提供者](./media/arcgis-tutorial/ic784745.png "设置标识提供者")
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”文本框中，键入组织的名称。
+    a. 在“名称”文本框中，键入组织的名称。
 
     b. 对于“企业标识提供者提供元数据所使用的方法”，请选择“文件”。
 
@@ -221,7 +221,7 @@ ms.locfileid: "53808139"
    
      ![添加和查看](./media/arcgis-tutorial/ic784749.png "添加和查看")
     
-     a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 输入想要预配的有效 AAD 帐户的“电子邮件”、“名字”和“姓氏”。
+     a. 输入想要预配的有效 AAD 帐户的“电子邮件”、“名字”和“姓氏”。
   
      b. 单击“添加和查看”。
 5. 查看输入的数据，然后单击“添加成员”。

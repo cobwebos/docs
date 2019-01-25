@@ -7,13 +7,13 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 07/25/2018
 ms.author: johnkem
-ms.component: logs
-ms.openlocfilehash: b58b7c7ebc3547153f805f762c4caf3511a5a709
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.subservice: logs
+ms.openlocfilehash: aaaec6e02c9280801fbf7e3b5a8eaa1ae4a1ff43
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53717495"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54429763"
 ---
 # <a name="stream-the-azure-activity-log-to-event-hubs"></a>将 Azure 活动日志流式传输到事件中心
 可以选择下列两种方式之一将 [Azure 活动日志](../../azure-monitor/platform/activity-logs-overview.md)准实时流式传输到任何应用程序：
@@ -102,4 +102,5 @@ ms.locfileid: "53717495"
 * [将活动日志存档到存储帐户](../../azure-monitor/platform/archive-activity-log.md)
 * [阅读 Azure 活动日志概述](../../azure-monitor/platform/activity-logs-overview.md)
 * [根据活动日志事件设置警报](../../azure-monitor/platform/alerts-log-webhook.md)
+
 

@@ -11,12 +11,12 @@ author: hning86
 ms.author: haining
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 2c8edd73a287d5bca2f3deb68448ba951b7a3367
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 8d45ca0f55b373970bfc0b1d146d5b3e2d6d66fa
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54106556"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54823396"
 ---
 # <a name="quickstart-use-the-python-sdk-to-get-started-with-azure-machine-learning"></a>快速入门：通过 Python SDK 开始使用 Azure 机器学习
 
@@ -52,7 +52,7 @@ ms.locfileid: "54106556"
 
 本文中的代码需要 Azure 机器学习 SDK 1.0.2 版或更高版本。
 
-在安装该 SDK 之前，建议创建一个隔离的 Python 环境。 尽管本文使用 [Miniconda](https://conda.io/docs/user-guide/install/index.html)，但也可以使用完整安装的 [Anaconda](https://www.anaconda.com/)，或使用 [Python virtualenv](https://virtualenv.pypa.io/en/stable/)。
+在安装该 SDK 之前，建议创建一个隔离的 Python 环境。 尽管本文使用 [Miniconda](https://docs.conda.io/en/latest/miniconda.html)，但也可以使用完整安装的 [Anaconda](https://www.anaconda.com/)，或使用 [Python virtualenv](https://virtualenv.pypa.io/en/stable/)。
 
 ### <a name="install-miniconda"></a>安装 Miniconda
 

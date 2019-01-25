@@ -3,20 +3,20 @@ title: Azure 服务总线消息传送概述 | Microsoft Docs
 description: 介绍服务总线消息传送
 services: service-bus-messaging
 documentationcenter: ''
-author: spelluru
+author: axisc
 manager: timlt
-editor: ''
+editor: spelluru
 ms.service: service-bus-messaging
 ms.topic: overview
 ms.date: 09/22/2018
 ms.custom: mvc
-ms.author: spelluru
-ms.openlocfilehash: 55a651080c4ed1d22901681317046f0853e257f0
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.author: aschhab
+ms.openlocfilehash: ab1b68b8ca8339389a27d1c09aa8752cfdaec0d5
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53163100"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54851773"
 ---
 # <a name="what-is-azure-service-bus"></a>什么是 Azure 服务总线？
 

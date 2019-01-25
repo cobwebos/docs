@@ -3,19 +3,19 @@ title: 关于 Azure Active Directory B2C 自定义策略中的声明解析程序
 description: 了解声明解析程序如何用于 Azure Active Directory B2C 中的自定义策略。
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 10/08/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: dccb597cda1f5aba30d18b0f71371caa6ceee9b4
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.openlocfilehash: 6b7f3dc79e3b4c06b2b974e0cdca0bf20221c3ad
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51852369"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54845004"
 ---
 # <a name="about-claim-resolvers-in-azure-active-directory-b2c-custom-policies"></a>关于 Azure Active Directory B2C 自定义策略中的声明解析程序
 
@@ -45,7 +45,7 @@ Azure Active Directory (Azure AD) B2C [自定义策略](active-directory-b2c-ove
 
 ### <a name="culture"></a>环境
 
-| 声明 | Description | 示例 |
+| 声明 | 说明 | 示例 |
 | ----- | ----------- | --------|
 | {Culture:LanguageName} | 语言的两字母 ISO 代码。 | en |
 | {Culture:LCID}   | 语言代码的 LCID。 | 1033 |
@@ -54,7 +54,7 @@ Azure Active Directory (Azure AD) B2C [自定义策略](active-directory-b2c-ove
 
 ### <a name="policy"></a>策略
 
-| 声明 | Description | 示例 |
+| 声明 | 说明 | 示例 |
 | ----- | ----------- | --------|
 | {Policy:PolicyId} | 信赖方策略名称。 | B2C_1A_signup_signin |
 | {Policy:RelyingPartyTenantId} | 信赖方策略的租户 ID。 | your-tenant.onmicrosoft.com |
@@ -63,7 +63,7 @@ Azure Active Directory (Azure AD) B2C [自定义策略](active-directory-b2c-ove
 
 ### <a name="openid-connect"></a>OpenID Connect
 
-| 声明 | Description | 示例 |
+| 声明 | 说明 | 示例 |
 | ----- | ----------- | --------|
 | {OIDC:AuthenticationContextReferences} |`acr_values` 查询字符串参数。 | 不适用 |
 | {OIDC:ClientId} |`client_id` 查询字符串参数。 | 00000000-0000-0000-0000-000000000000 |
@@ -77,7 +77,7 @@ Azure Active Directory (Azure AD) B2C [自定义策略](active-directory-b2c-ove
 
 ### <a name="context"></a>上下文
 
-| 声明 | Description | 示例 |
+| 声明 | 说明 | 示例 |
 | ----- | ----------- | --------|
 | {Context:BuildNumber} | 标识体验框架版本（内部版本号）。  | 1.0.507.0 |
 | {Context:CorrelationId} | 相关 ID。  | 00000000-0000-0000-0000-000000000000 |
@@ -90,7 +90,7 @@ Azure Active Directory (Azure AD) B2C [自定义策略](active-directory-b2c-ove
 
 可以将 OIDC 或 OAuth2 请求中包括的任何参数名称映射到用户旅程中的某个声明， 例如，来自应用程序的请求可能包括名为 `app_session`、`loyalty_number` 的查询字符串参数或任何自定义查询字符串。
 
-| 声明 | Description | 示例 |
+| 声明 | 说明 | 示例 |
 | ----- | ----------------------- | --------|
 | {OAUTH-KV:campaignId} | 查询字符串参数。 | hawaii |
 | {OAUTH-KV:app_session} | 查询字符串参数。 | A3C5R |

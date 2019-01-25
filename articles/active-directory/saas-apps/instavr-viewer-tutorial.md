@@ -4,7 +4,7 @@ description: 了解如何在 Azure Active Directory 与 InstaVR Viewer 之间配
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: barbkess
 ms.assetid: 13ffa29f-d0a5-4b21-b296-cfd76f380940
 ms.service: Azure-Active-Directory
@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 12/7/2018
+ms.date: 01/17/2019
 ms.author: jeedes
-ms.openlocfilehash: c63e7d03c0fc17e9892617aaeca94803c671acea
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: b0548ec2bb580c2898f610f00fd5ba911b314114
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53194813"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54823025"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-instavr-viewer"></a>教程：Azure Active Directory 与 InstaVR Viewer 的集成
 
@@ -79,8 +79,8 @@ ms.locfileid: "53194813"
 1. **[配置 Azure AD 单一登录](#configure-azure-ad-single-sign-on)** - 使用户能够使用此功能。
 2. **[配置 InstaVR Viewer 单一登录](#configure-instavr-viewer-single-sign-on)** - 在应用程序端配置单一登录。
 3. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-4. **[创建 InstaVR Viewer 测试用户](#create-instavr-viewer-test-user)** - 在 InstaVR Viewer 中创建 Britta Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
-5. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
+4. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
+5. **[创建 InstaVR Viewer 测试用户](#create-instavr-viewer-test-user)** - 在 InstaVR Viewer 中创建 Britta Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
 6. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
@@ -93,7 +93,7 @@ ms.locfileid: "53194813"
 
     ![配置单一登录链接](common/select-sso.png)
 
-2. 在“选择单一登录方法”对话框中，选择 SAML/WS-Fed 模式以启用单一登录。
+2. 在**选择单一登录方法**对话框中，选择 **SAML/WS-Fed**模式以启用单一登录。
 
     ![单一登录选择模式](common/select-saml-option.png)
 
@@ -105,13 +105,13 @@ ms.locfileid: "53194813"
 
     ![InstaVR Viewer 域和 URL 单一登录信息](common/sp-identifier.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“登录 URL”文本框中，使用以下模式键入 URL：`https://console.instavr.co/auth/saml/login/<WEBPackagedURL>`。
-    
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://console.instavr.co/auth/saml/login/<WEBPackagedURL>`
+
     > [!NOTE]
     > “登录 URL”没有固定的模式。 它是在 InstaVR Viewer 客户执行 Web 打包时生成的。 此 URL 对于每个客户和包都是唯一的。 若要获取确切的登录 URL，需要登录到 InstaVR Viewer 实例并执行 Web 打包。
 
-    b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`https://console.instavr.co/auth/saml/sp/<WEBPackagedURL>`。 
-    
+    b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`https://console.instavr.co/auth/saml/sp/<WEBPackagedURL>`
+
     > [!NOTE]
     > 标识符非实际值。 本教程稍后将介绍如何使用实际标识符值来更新此值。
 
@@ -141,7 +141,7 @@ ms.locfileid: "53194813"
 
     ![InstaVR Viewer 配置 ](media/instavr-viewer-tutorial/tutorial-instavr-viewer-configure.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“SSO URL”文本框中，粘贴从 Azure 门户复制的“登录 URL”值。
+    a. 在“SSO URL”文本框中，粘贴从 Azure 门户复制的“登录 URL”值。
 
     b. 在“注销 URL”文本框中，粘贴从 Azure 门户复制的“注销 URL”值。
 

@@ -4,7 +4,7 @@ description: 了解如何在 Azure Active Directory 和 Blackboard Learn 之间�
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: barbkess
 ms.assetid: 0b8ca505-61ea-487c-9a3e-fa50c936df0c
 ms.service: Azure-Active-Directory
@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 12/25/2018
+ms.date: 01/17/2019
 ms.author: jeedes
-ms.openlocfilehash: 9aa03146608796f1a2d26d44b4e76b0331f8c5be
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: 3b57bea85b76b69b1826a81aa582f5326db588cb
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54063550"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54811564"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-blackboard-learn"></a>教程：Azure Active Directory 与 Blackboard Learn 的集成
 
@@ -79,8 +79,8 @@ ms.locfileid: "54063550"
 1. **[配置 Azure AD 单一登录](#configure-azure-ad-single-sign-on)** - 使用户能够使用此功能。
 2. **[配置 Blackboard Learn 单一登录](#configure-blackboard-learn-single-sign-on)** - 在应用程序端配置单一登录设置。
 3. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-4. **[创建 Blackboard Learn 测试用户](#create-blackboard-learn-test-user)** - 在 Blackboard Learn 中创建 Britta Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
-5. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
+4. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
+5. **[创建 Blackboard Learn 测试用户](#create-blackboard-learn-test-user)** - 在 Blackboard Learn 中创建 Britta Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
 6. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
@@ -93,7 +93,7 @@ ms.locfileid: "54063550"
 
     ![配置单一登录链接](common/select-sso.png)
 
-2. 在“选择单一登录方法”对话框中，选择 SAML/WS-Fed 模式以启用单一登录。
+2. 在**选择单一登录方法**对话框中，选择 **SAML/WS-Fed**模式以启用单一登录。
 
     ![单一登录选择模式](common/select-saml-option.png)
 
@@ -117,12 +117,12 @@ ms.locfileid: "54063550"
     ![图像](common/edit-attribute.png)
 
 6. 在“用户属性”对话框的“用户声明”部分中，按图中所示配置 SAML 令牌属性，并执行以下步骤。 我们已将 Userprincipalname 映射为唯一用户属性，但你可以将其映射到唯一区分组织中的用户和映射到 Blackboard Learn 用户名字段的相应值。
-    
+
     | 名称 | 源属性|
     | ---------------| --------------- |
     | urn:oid:1.3.6.1.4.1.5923.1.1.1.6 | user.userprincipalname |
 
-    a. 单击“添加新声明”以打开“管理用户声明”对话框。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 单击“添加新声明”以打开“管理用户声明”对话框。
 
     ![图像](common/new-save-attribute.png)
 
@@ -140,11 +140,11 @@ ms.locfileid: "54063550"
 
     g. 单击“ **保存**”。
 
-4. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分，单击“下载”以根据要求下载从给定选项提供的“联合元数据 XML”并将其保存在计算机上。
+7. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分，单击“下载”以根据要求下载从给定选项提供的“联合元数据 XML”并将其保存在计算机上。
 
     ![证书下载链接](common/metadataxml.png)
 
-6. 在“设置 Blackboard Learn”部分，根据要求复制相应的 URL。
+8. 在“设置 Blackboard Learn”部分，根据要求复制相应的 URL。
 
     ![复制配置 URL](common/copy-configuration-urls.png)
 
@@ -226,4 +226,3 @@ ms.locfileid: "54063550"
 - [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-

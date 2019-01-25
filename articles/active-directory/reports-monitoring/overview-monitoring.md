@@ -4,7 +4,7 @@ description: 简要介绍 Azure Active Directory 监视。
 services: active-directory
 documentationcenter: ''
 author: priyamohanram
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: e2b3d8ce-708a-46e4-b474-123792f35526
 ms.service: active-directory
@@ -16,12 +16,12 @@ ms.component: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 92e200f358098d5516246d057d1cef406750e326
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: 77cfddf8b7283487cc2417573379df53e8d26cdc
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52264676"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54812516"
 ---
 # <a name="what-is-azure-active-directory-monitoring-preview"></a>什么是 Azure Active Directory 监视？ （预览版）
 

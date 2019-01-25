@@ -3,18 +3,18 @@ title: 创建独立的 Azure 自动化帐户
 description: 本文逐步讲解如何在 Azure 自动化中创建、测试和使用示例安全主体身份验证。
 services: automation
 ms.service: automation
-ms.component: process-automation
+ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
 ms.date: 01/15/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 2e419da4ed84f3d202113f9616050c3e7c29f240
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.openlocfilehash: 1590a02503a12be870dab14a1ccffdd3cf64a282
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54322038"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54426601"
 ---
 # <a name="create-a-standalone-azure-automation-account"></a>创建独立的 Azure 自动化帐户
 
@@ -89,7 +89,7 @@ ms.locfileid: "54322038"
 
 成功创建自动化帐户后，系统会自动创建几个资源。 创建后，如果不想保留这些 runbook，可以放心地将其删除。 运行方式帐户可用于对 runbook 中的帐户进行身份验证，除非创建其他运行方式帐户或不需要它们，否则应将其保留。 下表汇总了运行方式帐户的资源。
 
-| 资源 | Description |
+| 资源 | 说明 |
 | --- | --- |
 | AzureAutomationTutorial Runbook |一个示例图形 Runbook，演示如何使用运行方式帐户进行身份验证。 该 Runbook 获取所有资源管理器资源。 |
 | AzureAutomationTutorialScript Runbook |一个示例 PowerShell Runbook，演示如何使用运行方式帐户进行身份验证。 该 Runbook 获取所有资源管理器资源。 |
@@ -99,7 +99,7 @@ ms.locfileid: "54322038"
 
 下表汇总了经典运行方式帐户的资源。
 
-| 资源 | Description |
+| 资源 | 说明 |
 | --- | --- |
 | AzureClassicAutomationTutorial Runbook |一个示例图形 Runbook。 该 Runbook 使用经典运行方式帐户（证书）获取订阅中的所有经典 VM。 然后，它显示 VM 名称和状态。 |
 | AzureClassicAutomationTutorial 脚本 Runbook |一个示例 PowerShell Runbook。 该 Runbook 使用经典运行方式帐户（证书）获取订阅中的所有经典 VM。 然后，它显示 VM 名称和状态。 |
@@ -112,3 +112,4 @@ ms.locfileid: "54322038"
 * 若要开始使用 PowerShell Runbook，请参阅[我的第一个 PowerShell Runbook](automation-first-runbook-textual-powershell.md)。
 * 若要开始使用 PowerShell 工作流 Runbook，请参阅 [我的第一个 PowerShell 工作流 Runbook](automation-first-runbook-textual.md)。
 * 若要开始使用 Python2 runbook，请参阅[第一个 Python2 runbook](automation-first-runbook-textual-python2.md)。
+

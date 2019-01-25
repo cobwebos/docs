@@ -3,22 +3,22 @@ title: Azure 服务总线端到端跟踪和诊断 | Microsoft Docs
 description: 服务总线客户端诊断和端到端跟踪概述
 services: service-bus-messaging
 documentationcenter: ''
-author: lmolkova
+author: axisc
 manager: timlt
-editor: ''
+editor: spelluru
 ms.service: service-bus-messaging
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/18/2018
-ms.author: lmolkova
-ms.openlocfilehash: 12f9f55544f46bc9c88cab7234f78ad7ee7de2d2
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.date: 01/23/2019
+ms.author: aschhab
+ms.openlocfilehash: 2330e395244f33653af415b5db896fdc2aa2024d
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53790888"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54852977"
 ---
 # <a name="distributed-tracing-and-correlation-through-service-bus-messaging"></a>通过服务总线消息传递进行分布式跟踪和关联
 
@@ -30,7 +30,7 @@ ms.locfileid: "53790888"
 Microsoft Azure 服务总线消息传递已定义生成者与使用者应该用来传递此类跟踪上下文的有效负载属性。
 该协议基于 [HTTP 关联协议](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md)。
 
-| 属性名称        | Description                                                 |
+| 属性名称        | 说明                                                 |
 |----------------------|-------------------------------------------------------------|
 |  Diagnostic-Id       | 生成者针对队列发出的外部调用的唯一标识符。 请参阅 [HTTP 协议中的 Request-Id](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md#request-id) 了解事实依据、注意事项和格式 |
 |  Correlation-Context | 操作上下文，将传播到操作处理流程涉及到的所有服务。 有关详细信息，请参阅 [HTTP 协议中的 Correlation-Context](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md#correlation-context) |

@@ -3,19 +3,19 @@ title: Azure Active Directory B2C 中的授权代码流 | Microsoft Docs
 description: 了解如何使用 Azure AD B2C 和 OpenID Connect 身份验证协议生成 Web 应用。
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: c6d976869f2a068c393a643bb97cae2f7ac1a470
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 17409bc763c89ac7898ee4533ecec90613f48674
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52843183"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54846041"
 ---
 # <a name="azure-active-directory-b2c-oauth-20-authorization-code-flow"></a>Azure Active Directory B2C：OAuth 2.0 授权代码流
 可使用 OAuth 2.0 授权代码向设备上安装的应用授权，获取访问受保护资源（例如 Web API）的权限。 通过使用 OAuth 2.0 的 Azure Active Directory B2C (Azure AD B2C) 实现，可向移动应用和桌面应用添加注册、登录和其他标识管理任务。 本文与语言无关。 本文介绍在不使用任何开放源代码库的情况下，如何发送和接收 HTTP 消息。
@@ -71,7 +71,7 @@ client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 &p=b2c_1_edit_profile
 ```
 
-| 参数 | 必需？ | Description |
+| 参数 | 必需？ | 说明 |
 | --- | --- | --- |
 | client_id |必选 |在 [Azure 门户](https://portal.azure.com)中分配给应用的应用程序 ID。 |
 | response_type |必选 |响应类型，其中必须包括 `code` 的授权待码流。 |
@@ -94,7 +94,7 @@ code=AwABAAAAvPM1KaPlrEqdFSBzjqfTGBCmLdgfSTLEMPGYuNHSUYBrq...        // the auth
 &state=arbitrary_data_you_can_receive_in_the_response                // the value provided in the request
 ```
 
-| 参数 | Description |
+| 参数 | 说明 |
 | --- | --- |
 | 代码 |应用程序请求的授权代码。 应用可使用授权代码请求目标资源的访问令牌。 授权代码的生存期非常短。 通常，它们在约 10 分钟后过期。 |
 | state |请参阅上一部分的表中的完整说明。 如果请求中包含 `state` 参数，响应中应该出现相同的值。 应用需验证请求和响应中的 `state` 值是否相同。 |
@@ -108,7 +108,7 @@ error=access_denied
 &state=arbitrary_data_you_can_receive_in_the_response
 ```
 
-| 参数 | Description |
+| 参数 | 说明 |
 | --- | --- |
 | error |可用于分类发生的错误类型的错误代码字符串。 还可使用该字符串对错误作出响应。 |
 | error_description |可帮助用户识别身份验证错误根本原因的特定错误消息。 |
@@ -126,7 +126,7 @@ grant_type=authorization_code&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&sco
 
 ```
 
-| 参数 | 必需？ | Description |
+| 参数 | 必需？ | 说明 |
 | --- | --- | --- |
 | p |必选 |用于获取授权代码的用户流。 无法在此请求中使用不同的用户流。 请注意，将此参数添加到*查询字符串*中，而不是添加到 POST 正文中。 |
 | client_id |必选 |在 [Azure 门户](https://portal.azure.com)中分配给应用的应用程序 ID。 |
@@ -147,7 +147,7 @@ grant_type=authorization_code&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&sco
     "refresh_token": "AAQfQmvuDy8WtUv-sd0TBwWVQs1rC-Lfxa_NDkLqpg50Cxp5Dxj0VPF1mx2Z...",
 }
 ```
-| 参数 | Description |
+| 参数 | 说明 |
 | --- | --- |
 | not_before |epoch 时间中令牌被视为有效的时间。 |
 | token_type |令牌类型值。 Azure AD 唯一支持的类型是 Bearer。 |
@@ -165,7 +165,7 @@ grant_type=authorization_code&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&sco
 }
 ```
 
-| 参数 | Description |
+| 参数 | 说明 |
 | --- | --- |
 | error |可用于分类发生的错误类型的错误代码字符串。 还可使用该字符串对错误作出响应。 |
 | error_description |可帮助用户识别身份验证错误根本原因的特定错误消息。 |
@@ -190,7 +190,7 @@ Content-Type: application/x-www-form-urlencoded
 grant_type=refresh_token&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&client_secret=JqQX2PNo9bpM0uEihUPzyrh&scope=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6 offline_access&refresh_token=AwABAAAAvPM1KaPlrEqdFSBzjqfTGBCmLdgfSTLEMPGYuNHSUYBrq...&redirect_uri=urn:ietf:wg:oauth:2.0:oob
 ```
 
-| 参数 | 必需？ | Description |
+| 参数 | 必需？ | 说明 |
 | --- | --- | --- |
 | p |必选 |用于获取原始刷新令牌的用户流。 无法在此请求中使用不同的用户流。 请注意，将此参数添加到*查询字符串*中，而不是添加到 POST 正文中。 |
 | client_id |必选 |在 [Azure 门户](https://portal.azure.com)中分配给应用的应用程序 ID。 |
@@ -212,7 +212,7 @@ grant_type=refresh_token&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&client_s
     "refresh_token": "AAQfQmvuDy8WtUv-sd0TBwWVQs1rC-Lfxa_NDkLqpg50Cxp5Dxj0VPF1mx2Z...",
 }
 ```
-| 参数 | Description |
+| 参数 | 说明 |
 | --- | --- |
 | not_before |epoch 时间中令牌被视为有效的时间。 |
 | token_type |令牌类型值。 Azure AD 唯一支持的类型是 Bearer。 |
@@ -230,7 +230,7 @@ grant_type=refresh_token&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&client_s
 }
 ```
 
-| 参数 | Description |
+| 参数 | 说明 |
 | --- | --- |
 | error |可用于分类发生的错误类型的错误代码字符串。 还可使用该字符串对错误作出响应。 |
 | error_description |可帮助用户识别身份验证错误根本原因的特定错误消息。 |

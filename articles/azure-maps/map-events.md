@@ -9,16 +9,16 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: b9174d98dd6d4dfb5353d6976d074bb4c91373dc
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: 16455719f05688793e2aee6f10fa00a707d553c0
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52678315"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54469522"
 ---
 # <a name="interact-with-the-map---mouse-events"></a>与地图交互 - 鼠标事件
 
-本文展示了如何使用 [map 类](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) [events](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#addeventlistener) 属性在地图上以及地图的不同层上突出显示事件。 它还展示了在与 HTML 标记进行交互时如何使用 map 类 events 属性来突出显示事件。
+本文展示了如何使用 [map 类](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) [events](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) 属性在地图上以及地图的不同层上突出显示事件。 它还展示了在与 HTML 标记进行交互时如何使用 map 类 events 属性来突出显示事件。
 
 ## <a name="interact-with-the-map"></a>与地图交互
 

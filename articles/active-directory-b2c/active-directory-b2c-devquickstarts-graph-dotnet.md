@@ -3,21 +3,21 @@ title: 在 Azure Active Directory B2C 中使用图形 API | Microsoft Docs
 description: 如何通过使用应用程序标识自动执行该过程为 B2C 租户调用图形 API。
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 08/07/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 0f53d71cca70f9340689d3d01fb9c67090f917c5
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 28a865ac5a24905a14b8936e4fbb1de576f2ac76
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51277528"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54846534"
 ---
-# <a name="azure-ad-b2c-use-the-azure-ad-graph-api"></a>Azure AD B2C：使用 Azure AD Graph API
+# <a name="azure-ad-b2c-use-the-azure-ad-graph-api"></a>Azure AD B2C：使用 Azure AD 图形 API
 
 >[!NOTE]
 > 必须使用 [Azure AD Graph API](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-operations-overview?f=255&MSPPError=-2147217396) 管理 Azure AD B2C 目录中的用户。 这不同于 Microsoft 图形 API。 在[此处](https://blogs.msdn.microsoft.com/aadgraphteam/2016/07/08/microsoft-graph-or-azure-ad-graph/)了解更多信息。

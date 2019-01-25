@@ -3,19 +3,19 @@ title: 在 Azure Active Directory B2C 中使用 Android 应用程序获取令牌
 description: 本文说明如何创建一个使用 AppAuth 和 Azure Active Directory B2C 来管理用户标识以及对用户进行身份验证的 Android 应用。
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 413a69f31125c6c8f18401bb997a490c0f99f948
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: 8a9f6e52f589ab68c3bf8b394d6875082bc0ddf1
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54352081"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54845786"
 ---
 # <a name="sign-in-using-an-android-application-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中使用 Android 应用程序登录
 

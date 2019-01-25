@@ -4,7 +4,7 @@ description: 了解如何在 Azure Active Directory 与 LaunchDarkly 之间配�
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: barbkess
 ms.assetid: 3f0671bc-f93f-496e-b465-b9ce8c6633fa
 ms.service: Azure-Active-Directory
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/02/2019
 ms.author: jeedes
-ms.openlocfilehash: 9677d021de9cb89760afad3db583e6954790ecad
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: d67afb6c8cba36e6f63cd9d25d753a29441a4834
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53971174"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54809235"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-launchdarkly"></a>教程：Azure Active Directory 与 LaunchDarkly 集成
 
@@ -93,7 +93,7 @@ ms.locfileid: "53971174"
 
     ![配置单一登录链接](common/select-sso.png)
 
-2. 在“选择单一登录方法”对话框中，选择 SAML/WS-Fed 模式以启用单一登录。
+2. 在**选择单一登录方法**对话框中，选择 **SAML/WS-Fed**模式以启用单一登录。
 
     ![单一登录选择模式](common/select-saml-option.png)
 
@@ -105,7 +105,7 @@ ms.locfileid: "53971174"
 
     ![LaunchDarkly 域和 URL 单一登录信息](common/idp-intiated.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“标识符”文本框中键入 URL：`app.launchdarkly.com`
+    a. 在“标识符”文本框中键入 URL：`app.launchdarkly.com`
 
     b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://app.launchdarkly.com/trust/saml2/acs/<customers-unique-id>`
 
@@ -152,7 +152,7 @@ ms.locfileid: "53971174"
 
     ![LaunchDarkly 配置](./media/launchdarkly-tutorial/configure4.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 复制实例的“SAML 使用者服务 URL”并将其粘贴到 Azure 门户上“LaunchDarkly 域和 URL”部分的“回复 URL”文本框中。
+    a. 复制实例的“SAML 使用者服务 URL”并将其粘贴到 Azure 门户上“LaunchDarkly 域和 URL”部分的“回复 URL”文本框中。
 
     b. 在“登录 URL”文本框中，粘贴从 Azure 门户复制的“登录 URL”值。
 

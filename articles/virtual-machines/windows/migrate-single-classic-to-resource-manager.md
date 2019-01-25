@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/15/2017
 ms.author: cynthn
-ms.openlocfilehash: a662a61d737dbb620d07fa6d114649e70c082796
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: b69cc0bcff8f791e0740b30f5521a2a7b36af3b1
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54329763"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54437651"
 ---
 # <a name="migrate-a-classic-vm-to-use-a-managed-disk"></a>迁移经典 VM 以使用托管磁盘 
 
@@ -93,7 +93,7 @@ ms.locfileid: "54329763"
 
 让应用程序做好停机准备。 为了执行净迁移，必须停止当前系统中的所有处理。 只有这样才能使其处于一致状态，可以将该状态迁移到新的平台。 停机持续时间取决于要迁移的磁盘中的数据量。
 
-本部分需要 Azure PowerShell 模块 6.0.0 或更高版本。 运行 ` Get-Module -ListAvailable AzureRM` 即可查找版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-azurerm-ps)。 此外，还需要运行 `Connect-AzureRmAccount` 以创建与 Azure 的连接。
+本部分需要 Azure PowerShell 模块 6.0.0 或更高版本。 运行 ` Get-Module -ListAvailable AzureRM` 即可查找版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/azurerm/install-azurerm-ps)。 此外，还需要运行 `Connect-AzureRmAccount` 以创建与 Azure 的连接。
 
 
 为常用参数创建变量。

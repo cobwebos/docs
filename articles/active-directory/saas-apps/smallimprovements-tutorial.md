@@ -4,7 +4,7 @@ description: 了解如何在 Azure Active Directory 和 Small Improvements 之�
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: 59c8a112-41e1-4337-9ef3-3d7029780d61
 ms.service: active-directory
 ms.component: saas-app-tutorial
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: jeedes
-ms.openlocfilehash: 588e56c9ae22578c08dbca07c7c576fe8b577b58
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 27f94ef7fb41315ea11f87adf8a4f7f026d584af
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53012328"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54818653"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-small-improvements"></a>教程：Azure Active Directory 与 Small Improvements 集成
 
@@ -112,7 +112,7 @@ ms.locfileid: "53012328"
 
     ![配置单一登录](./media/smallimprovements-tutorial/tutorial_smallimprovements_url.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“登录 URL”文本框中，使用以下模式键入 URL： `https://<subdomain>.small-improvements.com`
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL： `https://<subdomain>.small-improvements.com`
 
     b. 在“标识符”文本框中，使用以下模式键入 URL：`https://<subdomain>.small-improvements.com`
 
@@ -145,7 +145,7 @@ ms.locfileid: "53012328"
    
     ![配置单一登录](./media/smallimprovements-tutorial/tutorial_smallimprovements_08.png)  
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“HTTP 终结点”文本框中，粘贴从 Azure 门户复制的“SAML 单一登录服务 URL”值。
+    a. 在“HTTP 终结点”文本框中，粘贴从 Azure 门户复制的“SAML 单一登录服务 URL”值。
 
     b. 在记事本中打开下载的证书，复制其内容，并将其粘贴到“x509 证书”文本框中。 
 
@@ -182,7 +182,7 @@ ms.locfileid: "53012328"
  
     ![创建 Azure AD 测试用户](./media/smallimprovements-tutorial/create_aaduser_04.png) 
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
+    a. 在“名称”文本框中，键入 **BrittaSimon**。
 
     b. 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
@@ -212,7 +212,7 @@ ms.locfileid: "53012328"
 
     ![创建 Azure AD 测试用户](./media/smallimprovements-tutorial/tutorial_smallimprovements_12.png)
     
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 输入用户的名字，如 Britta。
+    a. 输入用户的名字，如 Britta。
 
     b. 输入用户的姓氏，如 Simon。
 

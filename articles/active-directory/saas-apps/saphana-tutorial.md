@@ -4,7 +4,7 @@ description: 了解如何在 Azure Active Directory 和 SAP HANA 之间配置单
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: barbkess
 ms.assetid: cef4a146-f4b0-4e94-82de-f5227a4b462c
 ms.service: Azure-Active-Directory
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/27/2018
 ms.author: jeedes
-ms.openlocfilehash: 1de479d5486bae224185407dadda4474a4ed8f0c
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.openlocfilehash: 6c0f1c97247298564737932299d13a44a6f0d88a
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53808938"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54824756"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sap-hana"></a>教程：将 Azure Active Directory 与 SAP HANA 集成
 
@@ -103,7 +103,7 @@ ms.locfileid: "53808938"
 
     ![配置单一登录链接](common/select-sso.png)
 
-2. 在“选择单一登录方法”对话框中，选择 SAML/WS-Fed 模式以启用单一登录。
+2. 在**选择单一登录方法**对话框中，选择 **SAML/WS-Fed**模式以启用单一登录。
 
     ![单一登录选择模式](common/select-saml-option.png)
 
@@ -115,7 +115,7 @@ ms.locfileid: "53808938"
 
     ![SAP HANA 域和 URL 单一登录信息](common/idp-intiated.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“标识符”文本框中键入以下值：`HA100`
+    a. 在“标识符”文本框中键入以下值：`HA100`
 
     b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<Customer-SAP-instance-url>/sap/hana/xs/saml/login.xscfunc`
 
@@ -128,7 +128,7 @@ ms.locfileid: "53808938"
 
 6. 在“用户属性和声明”对话框中的“用户属性”部分，执行以下步骤：
  
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 单击“编辑图标”，打开“管理用户声明”对话框。
+    a. 单击“编辑图标”，打开“管理用户声明”对话框。
 
     ![图像](./media/saphana-tutorial/tutorial_usermail.png)
 
@@ -155,7 +155,7 @@ ms.locfileid: "53808938"
 
     ![添加标识提供者](./media/saphana-tutorial/sap1.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“添加标识提供者信息”窗格中，将从 Azure 门户下载的元数据 XML 内容粘贴到“元数据”框中。
+    a. 在“添加标识提供者信息”窗格中，将从 Azure 门户下载的元数据 XML 内容粘贴到“元数据”框中。
 
     ![添加标识提供者设置](./media/saphana-tutorial/sap2.png)
 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/24/2018
 ms.author: cynthn
-ms.openlocfilehash: 983c2e6d03735ba26f7660fc07dcf1a05ef88189
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 291bcec5a2a3d1ed2d49816b0ed7317bcfb07995
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46960390"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54851848"
 ---
 # <a name="change-the-os-disk-used-by-an-azure-vm-using-the-cli"></a>使用 CLI 更改由 Azure VM 使用的 OS 磁盘
 
@@ -34,7 +34,7 @@ ms.locfileid: "46960390"
 本文需要 Azure CLI 2.0.25 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI]( /cli/azure/install-azure-cli)。 
 
 
-使用 [az disk list](/cli/azure/disk#list) 获取资源组中的磁盘列表。
+使用 [az disk list](/cli/azure/disk) 获取资源组中的磁盘列表。
 
 ```azurecli-interactive
 az disk list \

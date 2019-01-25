@@ -3,19 +3,19 @@ title: Azure Active Directory B2C 中使用隐式流的单页应用 | Microsoft 
 description: 了解如何直接通过使用 Azure Active Directory B2C 的 OAuth 2.0 隐式流生成单页应用。
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 9e72eafc49167848996328774f7d18198667aa3d
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 3df6795eb470f123be294f942560c9fb6d817d8d
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52845240"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54856139"
 ---
 # <a name="azure-ad-b2c-single-page-app-sign-in-by-using-oauth-20-implicit-flow"></a>Azure AD B2C：使用 OAuth 2.0 隐式流的单页应用登录
 
@@ -83,7 +83,7 @@ client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 &p=b2c_1_edit_profile
 ```
 
-| 参数 | 必需？ | Description |
+| 参数 | 必需？ | 说明 |
 | --- | --- | --- |
 | client_id |必选 |在 [Azure 门户](https://portal.azure.com)中分配给应用的应用程序 ID。 |
 | response_type |必选 |必须包含 OpenID Connect 登录的 `id_token`。 也可以包含响应类型 `token`。 如果使用 `token`，则应用能够立即从授权终结点接收访问令牌，而无需向授权终结点发出第二次请求。  如果使用 `token` 响应类型，`scope` 参数必须包含一个范围，以指出要对哪个资源发出令牌。 |
@@ -112,7 +112,7 @@ access_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZnl0aEV1Q..
 &state=arbitrary_data_you_sent_earlier
 ```
 
-| 参数 | Description |
+| 参数 | 说明 |
 | --- | --- |
 | access_token |应用请求的访问令牌。  访问令牌不得进行解码或检查， 可以被视为不透明的字符串。 |
 | token_type |令牌类型值。 Azure AD 唯一支持的类型是 Bearer。 |
@@ -131,7 +131,7 @@ error=access_denied
 &state=arbitrary_data_you_can_receive_in_the_response
 ```
 
-| 参数 | Description |
+| 参数 | 说明 |
 | --- | --- |
 | error |错误代码字符串，用于对发生的错误类型进行分类。 还可以使用错误代码进行错误处理。 |
 | error_description |可帮助用户识别身份验证错误根本原因的特定错误消息。 |
@@ -194,7 +194,7 @@ client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 &p=b2c_1_sign_in
 ```
 
-| 参数 | 必需？ | Description |
+| 参数 | 必需？ | 说明 |
 | --- | --- | --- |
 | client_id |必选 |在 [Azure 门户](https://portal.azure.com)中分配给应用的应用程序 ID。 |
 | response_type |必选 |必须包含 OpenID Connect 登录的 `id_token`。  也可能包含响应类型 `token`。 如果在此处使用 `token`，应用能够立即从授权终结点接收访问令牌，而无需向授权终结点发出第二次请求。 如果使用 `token` 响应类型，`scope` 参数必须包含一个范围，以指出要对哪个资源发出令牌。 |
@@ -221,7 +221,7 @@ access_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZnl0aEV1Q..
 &scope=https%3A%2F%2Fapi.contoso.com%2Ftasks.read
 ```
 
-| 参数 | Description |
+| 参数 | 说明 |
 | --- | --- |
 | access_token |应用请求的令牌。 |
 | token_type |令牌类型始终是“持有者”。 |
@@ -238,7 +238,7 @@ error=user_authentication_required
 &error_description=the+request+could+not+be+completed+silently
 ```
 
-| 参数 | Description |
+| 参数 | 说明 |
 | --- | --- |
 | error |错误代码字符串，可用于对发生的错误类型进行分类。 还可使用该字符串对错误作出响应。 |
 | error_description |可帮助用户识别身份验证错误根本原因的特定错误消息。 |
@@ -259,7 +259,7 @@ p=b2c_1_sign_in
 &post_logout_redirect_uri=https%3A%2F%2Faadb2cplayground.azurewebsites.net%2F
 ```
 
-| 参数 | 必需？ | Description |
+| 参数 | 必需？ | 说明 |
 | --- | --- | --- |
 | p |必选 |要用于从应用程序中注销用户的策略。 |
 | post_logout_redirect_uri |建议 |用户在成功注销后应重定向到的 URL。如果未包含此参数，Azure AD B2C 会向用户显示一条常规消息。 |

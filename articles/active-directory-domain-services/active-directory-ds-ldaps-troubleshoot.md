@@ -4,7 +4,7 @@ description: 对 Azure AD 域服务中的安全 LDAP (LDAPS) 故障排除
 services: active-directory-ds
 documentationcenter: ''
 author: eringreenlee
-manager: mtillman
+manager: daveba
 editor: curtand
 ms.assetid: 445c60da-e115-447b-841d-96739975bdf6
 ms.service: active-directory
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/01/2018
 ms.author: ergreenl
-ms.openlocfilehash: 3925db10a490be3c6d572f6d107e556595be8237
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: a055c73ea868ba40065638d90fadf66f5204276c
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50155774"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54848744"
 ---
 # <a name="troubleshoot-secure-ldap-ldaps-for-an-azure-ad-domain-services-managed-domain"></a>对 Azure AD 域服务中的安全 LDAP (LDAPS) 故障排除
 

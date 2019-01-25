@@ -3,7 +3,7 @@ title: 安全信息（预览版）概述 - Azure Active Directory | Microsoft Do
 description: 了解如何设置和使用安全信息。
 services: active-directory
 author: eross-msft
-manager: mtillman
+manager: daveba
 ms.reviewer: sahenry
 ms.service: active-directory
 ms.workload: identity
@@ -11,12 +11,12 @@ ms.component: user-help
 ms.topic: overview
 ms.date: 07/30/2018
 ms.author: lizross
-ms.openlocfilehash: 617c086ec78c84104fb2d72d34100a3130967399
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: 1e55ad5c056bf76f8332ea84fa960b4482825bfe
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44163288"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54826150"
 ---
 # <a name="security-info-preview-overview"></a>安全信息（预览版）概述
 
@@ -29,7 +29,7 @@ ms.locfileid: "44163288"
 
 可以添加下述任何方法，其中包括：
 
-|文章 |Description |
+|文章 |说明 |
 |------|------------|
 |[设置安全信息以使用电话呼叫](security-info-setup-phone-number.md)| 介绍如何将电话号码设置为方法。|
 |[设置安全信息以使用短信](security-info-setup-text-msg.md)|介绍如何将电话号码设置为方法。|

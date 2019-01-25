@@ -7,13 +7,13 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 11/01/2018
 ms.author: johnkem
-ms.component: ''
-ms.openlocfilehash: 7225bc8121ddab8809ebb1c409a3af59dbcc42f2
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.subservice: ''
+ms.openlocfilehash: 424dc1611622a1dfc37419fd443d860698020524
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54118381"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54468227"
 ---
 # <a name="stream-azure-monitoring-data-to-an-event-hub-for-consumption-by-an-external-tool"></a>将 Azure 监视数据流式传输到事件中心以便外部工具使用
 
@@ -120,4 +120,5 @@ Azure 资源将发出两种类型的监视数据：
 * [将活动日志存档到存储帐户](../../azure-monitor/platform/archive-activity-log.md)
 * [阅读 Azure 活动日志概述](../../azure-monitor/platform/activity-logs-overview.md)
 * [根据活动日志事件设置警报](../../azure-monitor/platform/alerts-log-webhook.md)
+
 

@@ -3,7 +3,7 @@ title: 使用 Microsoft Authenticator 应用进行备份和恢复 - Azure Active
 description: 了解如何使用 Microsoft Authenticator 应用备份和恢复帐户凭据。
 services: active-directory
 author: eross-msft
-manager: mtillman
+manager: daveba
 ms.component: user-help
 ms.service: active-directory
 ms.workload: identity
@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/28/2018
 ms.author: lizross
 ms.reviewer: olhaun
-ms.openlocfilehash: 623e7276ccba85b6df74291ee857613019349b7a
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.openlocfilehash: 49cc5114106336f41d119b00db1bfa472f09d2d5
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53993427"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54821696"
 ---
 # <a name="backup-and-recover-account-credentials-with-the-microsoft-authenticator-app"></a>使用 Microsoft Authenticator 应用备份和恢复帐户凭据
 

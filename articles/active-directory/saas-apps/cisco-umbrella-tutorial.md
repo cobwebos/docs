@@ -4,7 +4,7 @@ description: 了解如何在 Azure Active Directory 和 Cisco Umbrella 之间配
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: barbkess
 ms.assetid: 675dca98-f119-4463-8350-d6a45d5601e3
 ms.service: Azure-Active-Directory
@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 12/7/2018
+ms.date: 01/17/2019
 ms.author: jeedes
-ms.openlocfilehash: cbf58f7e5553f10087c854428a6a369cbb8c3bf9
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: f43c3072660ce4b9ca68c2bc58d1c752ce474e28
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53194828"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54821901"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cisco-umbrella"></a>教程：Azure Active Directory 与 Cisco Umbrella 的集成
 
@@ -78,8 +78,8 @@ ms.locfileid: "53194828"
 1. **[配置 Azure AD 单一登录](#configure-azure-ad-single-sign-on)** - 使用户能够使用此功能。
 2. **[配置 Cisco Umbrella 单一登录](#configure-cisco-umbrella-single-sign-on)** - 在应用程序端配置单一登录设置。
 3. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-4. **[创建 Cisco Umbrella 测试用户](#create-cisco-umbrella-test-user)** - 在 Cisco Umbrella 中创建 Britta Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
-5. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
+4. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
+5. **[创建 Cisco Umbrella 测试用户](#create-cisco-umbrella-test-user)** - 在 Cisco Umbrella 中创建 Britta Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
 6. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
@@ -92,7 +92,7 @@ ms.locfileid: "53194828"
 
     ![配置单一登录链接](common/select-sso.png)
 
-2. 在“选择单一登录方法”对话框中，选择 SAML/WS-Fed 模式以启用单一登录。
+2. 在**选择单一登录方法**对话框中，选择 **SAML/WS-Fed**模式以启用单一登录。
 
     ![单一登录选择模式](common/select-saml-option.png)
 
@@ -104,13 +104,13 @@ ms.locfileid: "53194828"
 
     ![Cisco Umbrella 域和 URL 单一登录信息](common/both-preintegrated-signon.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 如果要在 **SP** 发起的模式下配置应用程序，请执行以下步骤：
+    a. 如果要在 **SP** 发起的模式下配置应用程序，请执行以下步骤：
 
     b. 单击“设置其他 URL”。
 
     c. 在“登录 URL”文本框中，键入 URL `https://login.umbrella.com/sso`
 
-4. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分，单击“下载”以根据要求下载从给定选项提供的元数据 XML 并将其保存在计算机上。
+5. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分，单击“下载”以根据要求下载从给定选项提供的元数据 XML 并将其保存在计算机上。
 
     ![证书下载链接](common/metadataxml.png)
 
@@ -128,7 +128,7 @@ ms.locfileid: "53194828"
 
 1. 在另一个 Web 浏览器窗口中，以管理员身份登录到 Cisco Umbrella 公司站点。
 
-2.  在菜单左侧单击“管理”，导航到“身份验证”，然后单击“SAML”。
+2. 在菜单左侧单击“管理”，导航到“身份验证”，然后单击“SAML”。
 
     ![管理](./media/cisco-umbrella-tutorial/tutorial_cisco-umbrella_admin.png)
 
@@ -144,7 +144,6 @@ ms.locfileid: "53194828"
 
     ![下一步](./media/cisco-umbrella-tutorial/tutorial_cisco-umbrella_next.png)
 
-
 6. 在“选项 A:上传 XML 文件”中，上传从 Azure 门户下载的**联合元数据 XML** 文件。在上传元数据后，系统会自动填充以下值，此时请单击“下一步”。
 
     ![choosefile ](./media/cisco-umbrella-tutorial/tutorial_cisco-umbrella_choosefile.png)
@@ -155,7 +154,7 @@ ms.locfileid: "53194828"
 
 8. 单击“保存”。
 
-### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户 
+### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 
 本部分的目的是在 Azure 门户中创建名为 Britta Simon 的测试用户。
 
@@ -215,7 +214,7 @@ ms.locfileid: "53194828"
 
 1. 在另一个 Web 浏览器窗口中，以管理员身份登录到 Cisco Umbrella 公司站点。
 
-2.  在菜单左侧单击“管理”，导航到“帐户”。
+2. 在菜单左侧单击“管理”，导航到“帐户”。
 
     ![帐户](./media/cisco-umbrella-tutorial/tutorial_cisco-umbrella_account.png)
 
@@ -223,7 +222,7 @@ ms.locfileid: "53194828"
 
     ![用户](./media/cisco-umbrella-tutorial/tutorial_cisco-umbrella_createuser.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名字”字段中输入名字，例如 **Britta**。
+    a. 在“名字”字段中输入名字，例如 **Britta**。
 
     b. 在“姓氏”字段中输入姓，例如 **simon**。
 
@@ -237,7 +236,7 @@ ms.locfileid: "53194828"
 
     g. 单击“创建”。
 
-### <a name="test-single-sign-on"></a>测试单一登录 
+### <a name="test-single-sign-on"></a>测试单一登录
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
@@ -250,4 +249,3 @@ ms.locfileid: "53194828"
 - [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-

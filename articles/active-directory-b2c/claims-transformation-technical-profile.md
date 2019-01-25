@@ -3,19 +3,19 @@ title: 在 Azure Active Directory B2C 的自定义策略中定义声明转换技
 description: 在 Azure Active Directory B2C 的自定义策略中定义声明转换技术配置文件。
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: cd17c146091cd9d35ce35cf2099aa7c6109c9e34
-ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
+ms.openlocfilehash: 0cad532b950d7add0bde06482948e748e09abbb7
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54303304"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54856717"
 ---
 # <a name="define-a-claims-transformation-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>在 Azure Active Directory B2C 自定义策略中定义声明转换技术配置文件
 

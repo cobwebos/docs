@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: 2035d342a89ace6d286fc205c346591b29646c5d
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: fd7e7151d8ec676239ed810fb700149aab0fe0fa
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53270128"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54427396"
 ---
 # <a name="use-packet-capture-for-proactive-network-monitoring-with-alerts-and-azure-functions"></a>通过警报和 Azure Functions，使用数据包捕获执行主动网络监视
 
@@ -35,7 +35,7 @@ Azure 中部署的资源全天候运行。 但你和你的同事无法全天候�
 
 ## <a name="prerequisites"></a>先决条件
 
-* 最新版本的 [Azure PowerShell](/powershell/azure/install-azurerm-ps)。
+* 最新版本的 [Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps)。
 * 网络观察程序的现有实例。 [创建网络观察程序的实例](network-watcher-create.md)（如果还没有这样一个实例的话）。
 * 在网络观察程序所在的同一区域中的现有虚拟机，装有 [Windows 扩展](../virtual-machines/windows/extensions-nwa.md)或 [Linux 虚拟机扩展](../virtual-machines/linux/extensions-nwa.md)。
 

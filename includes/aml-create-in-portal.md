@@ -9,34 +9,32 @@ manager: cgronlund
 ms.custom: include file
 ms.topic: include
 ms.date: 09/24/2018
-ms.openlocfilehash: 8bbdd2d49171ee8f4e7eb3cc0def1c7a6e59806b
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 05331c710817e575deb7729189c9b2d8ccbafd7d
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54193289"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54489531"
 ---
-使用将所使用的 Azure 订阅的凭据登录到 [Azure 门户](https://portal.azure.com/)。 
-
-门户的工作区仪表板仅在 Microsoft Edge、Chrome 和 Firefox 浏览器上受支持。
+1. 使用将所使用的 Azure 订阅的凭据登录到 [Azure 门户](https://portal.azure.com/)。 
 
    ![Azure 门户](./media/aml-create-in-portal/portal-dashboard.png)
 
-在门户左上角选择“创建资源”。
+1. 在门户左上角选择“创建资源”。
 
    ![在 Azure 门户中创建资源](./media/aml-create-in-portal/portal-create-a-resource.png)
 
-在搜索栏中输入“机器学习”。 选择搜索结果“机器学习服务工作区”。
+1. 在搜索栏中输入“机器学习”。 选择搜索结果“机器学习服务工作区”。
 
    ![搜索工作区](./media/aml-create-in-portal/allservices-search.PNG)
 
-在“机器学习服务工作区”窗格中，滚动到底部并选择“创建”。
+1. 在“机器学习服务工作区”窗格中，滚动到底部并选择“创建”。
 
    ![创建](./media/aml-create-in-portal/portal-create-button.png)
 
-在“机器学习服务工作区”窗格中，配置工作区。
+1. 在“机器学习服务工作区”窗格中，配置工作区。
 
-   字段|Description
+   字段|说明
    ---|---
    工作区名称 |输入用于标识工作区的唯一名称。 本示例使用 docs-ws。 名称在整个资源组中必须唯一。 使用易于记忆且区别于其他人所创建工作区的名称。  
    订阅 |选择要使用的 Azure 订阅。
@@ -45,10 +43,10 @@ ms.locfileid: "54193289"
 
    ![创建工作区](./media/aml-create-in-portal/workspace-create.png)
 
-选择“创建”以开始进行创建。 创建工作区可能需要一些时间。
+1. 选择“创建”以开始进行创建。 创建工作区可能需要一些时间。
 
-若要检查部署状态，请选择工具栏上的“通知”图标（铃铛）。
+1. 若要检查部署状态，请选择工具栏上的“通知”图标（铃铛）。
+
+1. 完成创建后，会显示部署成功消息。 通知部分也会出现该消息。 若要查看新工作区，请选择“转到资源”。
 
    ![工作区创建状态](./media/aml-create-in-portal/notifications.png)
-
-完成创建后，会显示部署成功消息。 通知部分也会出现该消息。 若要查看新工作区，请选择“转到资源”。

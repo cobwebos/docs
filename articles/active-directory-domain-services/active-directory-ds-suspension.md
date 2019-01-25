@@ -4,7 +4,7 @@ description: 托管域的挂起和删除
 services: active-directory-ds
 documentationcenter: ''
 author: eringreenlee
-manager: mtillman
+manager: daveba
 editor: curtand
 ms.assetid: 95e1d8da-60c7-4fc1-987d-f48fde56a8cb
 ms.service: active-directory
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/20/2018
 ms.author: ergreenl
-ms.openlocfilehash: 161a9f1ac517d372884e7606dbd2ef30c910bf6b
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 1f548fefe1d28e3ca70de12911cb492d78c78629
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52968094"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54854830"
 ---
 # <a name="suspended-domains"></a>挂起的域
 当 Azure Active Directory 域服务 (Azure AD DS) 长时间无法为托管域提供服务时，它会将托管域置于挂起状态。 本文解释了托管域挂起的原因，以及如何修正挂起的域。

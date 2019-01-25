@@ -4,7 +4,7 @@ description: 了解如何在 Azure Active Directory 和 BambooHR 之间配置单
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: barbkess
 ms.assetid: f826b5d2-9c64-47df-bbbf-0adf9eb0fa71
 ms.service: Azure-Active-Directory
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/19/2018
 ms.author: jeedes
-ms.openlocfilehash: df61a1b9efafab327b243c3874ac23572350a20c
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.openlocfilehash: 692b53a4098bfe07d320bc4da322adb27acf16ae
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53808360"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54812720"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bamboohr"></a>教程：Azure Active Directory 与 BambooHR 集成
 
@@ -92,7 +92,7 @@ ms.locfileid: "53808360"
 
     ![配置单一登录链接](common/select-sso.png)
 
-2. 在“选择单一登录方法”对话框中，选择 SAML/WS-Fed 模式以启用单一登录。
+2. 在**选择单一登录方法**对话框中，选择 **SAML/WS-Fed**模式以启用单一登录。
 
     ![单一登录选择模式](common/select-saml-option.png)
 
@@ -104,7 +104,7 @@ ms.locfileid: "53808360"
 
     ![BambooHR 域和 URL 单一登录信息](common/sp-identifier.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<company>.bamboohr.com`
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<company>.bamboohr.com`
 
     b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`BambooHR-SAML`
 
@@ -133,7 +133,7 @@ ms.locfileid: "53808360"
    
     ![BambooHR 单一登录页面](./media/bamboo-hr-tutorial/ic796691.png "单一登录")   
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 选择“应用”。
+    a. 选择“应用”。
    
     b. 在“应用”窗格中，选择“单一登录”。
    
@@ -143,7 +143,7 @@ ms.locfileid: "53808360"
    
     ![“SAML 单一登录”窗格](./media/bamboo-hr-tutorial/IC796692.png "SAML 单一登录")
    
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“SSO 登录 URL”框中，粘贴在步骤 6 中从 Azure 门户复制的“登录 URL”。
+    a. 在“SSO 登录 URL”框中，粘贴在步骤 6 中从 Azure 门户复制的“登录 URL”。
       
     b. 在记事本中，打开从 Azure 门户下载的 base-64 编码证书，复制其内容，然后将其粘贴到“X.509 证书”框中。
    

@@ -4,7 +4,7 @@ description: 了解如何在 Azure Active Directory 和 Aravo 之间配置单一
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: 224939d8-2c9c-4561-968d-62722f5ab5ed
 ms.service: active-directory
 ms.component: saas-app-tutorial
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/09/2017
 ms.author: jeedes
-ms.openlocfilehash: 6631df4764e16fd2399b231732df3fb1ee475869
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: e026b4c6ccb6c107f4b86d53aa318a2f2e30c807
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52842639"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54815593"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-aravo"></a>教程：Azure Active Directory 与 Aravo 集成
 
@@ -112,7 +112,7 @@ ms.locfileid: "52842639"
 
     ![配置单一登录](./media/aravo-tutorial/tutorial_aravo_url.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“标识符”文本框中，使用以下模式键入 URL：`https://<companyname>.aravo.com`
+    a. 在“标识符”文本框中，使用以下模式键入 URL：`https://<companyname>.aravo.com`
 
     b. 在 **“回复 URL”** 文本框中，使用以下模式键入 URL：`https://<companyname>.aravo.com/aems/login.do`
 
@@ -160,7 +160,7 @@ ms.locfileid: "52842639"
  
     ![创建 Azure AD 测试用户](./media/aravo-tutorial/create_aaduser_04.png) 
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
+    a. 在“名称”文本框中，键入 **BrittaSimon**。
 
     b. 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 

@@ -6,14 +6,14 @@ author: vhorne
 ms.service: application-gateway
 ms.topic: overview
 ms.custom: mvc
-ms.date: 1/11/2019
+ms.date: 1/22/2019
 ms.author: victorh
-ms.openlocfilehash: 21aac318542f9d30cb44d940392d05367f1f7b9f
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: c574e3ab82f97f5fffc7c834a53d19df93fc426f
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54246460"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54448936"
 ---
 # <a name="what-is-azure-application-gateway"></a>什么是 Azure 应用程序网关？
 
@@ -102,7 +102,7 @@ Web 应用程序已逐渐成为利用常见已知漏洞的恶意攻击的目标�
 
 ## <a name="websocket-and-http2-traffic"></a>Websocket 和 HTTP/2 流量
 
-应用程序网关为 WebSocket 和 HTTP/2 协议提供本机支持。 用户无法通过配置设置来选择性地启用或禁用 WebSocket 支持。 可以通过 Azure PowerShell 启用 HTTP/2 支持。
+应用程序网关为 WebSocket 和 HTTP/2 协议提供本机支持。 用户无法通过配置设置来选择性地启用或禁用 WebSocket 支持。
 
 WebSocket 和 HTTP/2 协议通过长时间运行的 TCP 连接，在服务器和客户端之间实现全双工通信。 此功能让 Web 服务器和客户端之间能够进行交互性更强的通信。这种通信可以是双向的，而且不像基于 HTTP 的实现那样需要轮询。 不同于 HTTP，这些协议的开销很低，并且可以对多个请求/响应重复使用同一 TCP 连接，从而提高资源利用率。 这些协议设计为通过传统 HTTP 端口 80 和 443 运行。
 
@@ -113,6 +113,22 @@ HTTP 标头可让客户端和服务器连同请求或响应一起传递附加的
 应用程序网关现在支持重写传入 HTTP 请求和传出 HTTP 响应的标头。 当请求/响应数据包在客户端与后端池之间移动时，你可以添加、删除或更新 HTTP 请求和响应标头。 可以重写标准标头字段（[RFC 2616](https://www.ietf.org/rfc/rfc2616.txt) 中已定义）和非标准标头字段。  
 
 有关此公共预览版功能的详细信息，请参阅[重写 HTTP 标头](rewrite-http-headers.md)。
+
+## <a name="sizing"></a>调整大小
+
+应用程序网关目前有三种大小：**小型**、**中型**和**大型**。 小型实例大小适用于开发和测试方案。
+
+有关应用程序网关限制的完整列表，请参阅[应用程序网关服务限制](../azure-subscription-service-limits.md?toc=%2fazure%2fapplication-gateway%2ftoc.json#application-gateway-limits)。
+
+下表显示了已启用 SSL 卸载的每个应用程序网关实例的平均性能吞吐量：
+
+| 平均后端页面响应大小 | 小型 | 中型 | 大型 |
+| --- | --- | --- | --- |
+| 6 KB |7.5 Mbps |13 Mbps |50 Mbps |
+| 100 KB |35 Mbps |100 Mbps |200 Mbps |
+
+> [!NOTE]
+> 这些值是应用程序网关吞吐量的大约值。 实际吞吐量取决于平均页面大小、后端实例的位置、提供页面所需的处理时间等各种环境详细信息。 如需确切的性能数字，则应运行自己的测试。 提供的这些值仅适用于容量规划指南。
 
 ## <a name="next-steps"></a>后续步骤
 

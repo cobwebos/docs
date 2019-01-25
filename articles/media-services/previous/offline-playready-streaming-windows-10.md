@@ -14,19 +14,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/30/2018
 ms.author: willzhan
-ms.openlocfilehash: 8a5aefe1bade27c2f71914b61b332d5583026081
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 75ed9a3c2a9f2c5418af5d024cfcf979e3552035
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53981501"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54812040"
 ---
 # <a name="offline-playready-streaming-for-windows-10"></a>适用于 Windows 10 的 PlayReady 脱机流式处理
 
 Azure 媒体服务支持带 DRM 保护的脱机下载/播放。 本文涵盖用于 Windows 10/PlayReady 客户端的对 Azure 媒体服务的脱机支持。 可以通过以下文章了解对 iOS/FairPlay 和 Android/Widevine 设备的脱机模式支持：
 
-- [适用于 iOS 的脱机 FairPlay 流式处理](media-services-protect-hls-with-offline-fairplay.md)
-- [适用于 Android 的脱机 Widevine 流式处理](offline-widevine-for-android.md)
+- [适用于 iOS 的 FairPlay 脱机流式处理](media-services-protect-hls-with-offline-fairplay.md)
+- [适用于 Android 的 Widevine 脱机流式处理](offline-widevine-for-android.md)
 
 ## <a name="overview"></a>概述
 
@@ -43,7 +43,7 @@ Azure 媒体服务支持带 DRM 保护的脱机下载/播放。 本文涵盖用�
  
 其理念为：具有 H264/AAC 的平滑流式处理 ([PIFF](http://go.microsoft.com/?linkid=9682897)) 文件格式与 PlayReady (AES-128 CTR) 存在绑定。 平滑流式处理 .ismv 文件（假设音频混合在视频中）本身就是 fMP4，可以用于播放。 如果平滑流式处理内容经过 PlayReady 加密，则每个 .ismv 文件会变成受 PlayReady 保护的片段 MP4。 我们可以选择具有首选比特率的 .ismv 文件，并将其重命名为 .mp4 以便下载。
 
-托管受 PlayReady 保护的 MP4 用于渐进式下载的方式有两种：
+有以下两种方式用于承载 PlayReady 保护的 MP4，以便进行渐进式下载：
 
 * 可以将此 MP4 放入同一容器/媒体服务资产中，并利用 Azure 媒体服务流式处理终结点进行渐进式下载；
 * 使用 SAS 定位符直接从 Azure 存储进行渐进式下载，绕过 Azure 媒体服务。
@@ -57,7 +57,7 @@ Azure 媒体服务支持带 DRM 保护的脱机下载/播放。 本文涵盖用�
 
 资产 #1：
 
-* 渐进式下载 URL：[http://willzhanmswest.streaming.mediaservices.windows.net/8d078cf8-d621-406c-84ca-88e6b9454acc/20150807-bridges-2500_H264_1644kbps_AAC_und_ch2_256kbps.mp4](http://willzhanmswest.streaming.mediaservices.windows.net/8d078cf8-d621-406c-84ca-88e6b9454acc/20150807-bridges-2500_H264_1644kbps_AAC_und_ch2_256kbps.mp4")
+* 渐进式下载 URL：[http://willzhanmswest.streaming.mediaservices.windows.net/8d078cf8-d621-406c-84ca-88e6b9454acc/20150807-bridges-2500_H264_1644kbps_AAC_und_ch2_256kbps.mp4](http://willzhanmswest.streaming.mediaservices.windows.net/8d078cf8-d621-406c-84ca-88e6b9454acc/20150807-bridges-2500_H264_1644kbps_AAC_und_ch2_256kbps.mp4)
 * PlayReady LA_URL (AMS)：[https://willzhanmswest.keydelivery.mediaservices.windows.net/PlayReady/](https://willzhanmswest.keydelivery.mediaservices.windows.net/PlayReady/)
 
 资产 #2：

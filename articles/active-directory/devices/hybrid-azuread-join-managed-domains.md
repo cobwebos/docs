@@ -4,7 +4,7 @@ description: 了解如何为托管域配置混合 Azure Active Directory 加入�
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: 54e1b01b-03ee-4c46-bcf0-e01affc0419d
 ms.service: active-directory
@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 01/08/2019
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: b87bc4387b7e979aaf3b79a42b81baecc530a8aa
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: cf4d142adeff5157a7291e0bac65700bb2e9c8c5
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54105128"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54446912"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-join-for-managed-domains"></a>教程：为托管域配置混合 Azure Active Directory 加入
 
@@ -113,7 +113,7 @@ ms.locfileid: "54105128"
 
     ![SCP](./media/hybrid-azuread-join-managed-domains/16.png)
 
-    a. 选择林。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 选择林。
 
     b. 选择身份验证服务。
 

@@ -9,12 +9,12 @@ ms.topic: get-started-article
 ms.date: 02/26/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 53bb09824a88980a171fa4067a9efd2fc067a898
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: da4fda3d0cfa6cb33d2dd8bb3bb844f18654c30a
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52992162"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54851889"
 ---
 # <a name="deprecated-set-up-an-azure-ad-service-principal-for-a-kubernetes-cluster-in-container-service"></a>（已弃用）在容器服务中为 Kubernetes 群集设置 Azure AD 服务主体
 
@@ -149,7 +149,7 @@ az ad app show --id <appId> --debug
 ...
 ```
 
-如果服务主体凭据已过期，请使用 [az ad sp reset-credentials](/cli/azure/ad/sp#az-ad-sp-reset-credentials) 命令更新凭据：
+如果服务主体凭据已过期，请使用 [az ad sp reset-credentials](/cli/azure/ad/sp) 命令更新凭据：
 
 ```azurecli
 az ad sp reset-credentials --name <appId>

@@ -4,7 +4,7 @@ description: 了解如何在 Azure Active Directory 和 Zendesk 之间配置单�
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: barbkess
 ms.assetid: 9d7c91e5-78f5-4016-862f-0f3242b00680
 ms.service: Azure-Active-Directory
@@ -14,19 +14,19 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/03/2018
 ms.author: jeedes
-ms.openlocfilehash: 48e429c8ec95522e020d8d4cf9a9cbcfc38ea38f
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: 2f58bb8a1a3a0f0593513570355b8d3ba46816b9
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54062428"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54825827"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zendesk"></a>教程：Azure Active Directory 与 Zendesk 的集成
 
 本教程介绍了如何将 Zendesk 与 Azure Active Directory (Azure AD) 集成。
 将 Zendesk 与 Azure AD 集成具有以下优势：
 
-* 可以在 Azure AD 中控制谁有权访问 Zendesk。
+* 可在 Azure AD 中控制谁有权访问 Zendesk。
 * 可以让用户使用其 Azure AD 帐户自动登录到 Zendesk（单一登录）。
 * 可在中心位置（即 Azure 门户）管理帐户。
 
@@ -90,11 +90,11 @@ ms.locfileid: "54062428"
 
 若要配置 Zendesk 的 Azure AD 单一登录，请执行以下步骤：
 
-1. 在 [Azure 门户](https://portal.azure.com/)中，在 **Zendesk** 应用程序集成页上，选择“单一登录”。
+1. 在 [Azure 门户](https://portal.azure.com/)中的 Zendesk 应用程序集成页上，选择“单一登录”。
 
     ![配置单一登录链接](common/select-sso.png)
 
-2. 在“选择单一登录方法”对话框中，选择 SAML/WS-Fed 模式以启用单一登录。
+2. 在**选择单一登录方法**对话框中，选择 **SAML/WS-Fed**模式以启用单一登录。
 
     ![单一登录选择模式](common/select-saml-option.png)
 

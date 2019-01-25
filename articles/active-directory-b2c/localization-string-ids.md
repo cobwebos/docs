@@ -3,19 +3,19 @@ title: 本地化字符串 ID - Azure Active Directory B2C | Microsoft Docs
 description: 在 Azure Active Directory B2C 中使用自定义策略的 api.signuporsignin ID 指定内容定义的 ID。
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 7619ebf038e164c9e586118c70e34955ca7c4767
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 72ed1f7f6d9fe9958bbd78b001d727feb5f8861c
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47222654"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54848404"
 ---
 # <a name="localization-string-ids"></a>本地化字符串 ID
 

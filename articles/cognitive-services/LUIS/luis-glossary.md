@@ -8,14 +8,14 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 09/10/2018
+ms.date: 01/23/2019
 ms.author: diberry
-ms.openlocfilehash: b0bbd3300e48e82e44a7b7fac05f89c8d25e007f
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 8ab5000f1f50e10195c02b6198fa0bcffd0408b5
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53603491"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54844750"
 ---
 # <a name="language-understanding-glossary-of-common-vocabulary-and-concepts"></a>对包含常见词汇和概念的术语表进行语言理解
 语言理解 (LUIS) 术语表解释使用 LUIS API 服务时可能遇到的术语。
@@ -74,7 +74,7 @@ ms.locfileid: "53603491"
 
 ## <a name="endpoint"></a>终结点
 
-[LUIS 终结点](https://aka.ms/luis-endpoint-apis) URL 是在创作并发布 [LUIS 应用](#luis-app)后提交 LUIS 查询的地方。 终结点 URL 包含所发布的应用的区域和应用 ID。 可以在应用的**[密钥和终结点](luis-how-to-manage-keys.md)** 页上找到终结点，也可以从[获取应用信息](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c37) API 获取终结点 URL。
+[LUIS 终结点](https://aka.ms/luis-endpoint-apis) URL 是在创作并发布 [LUIS 应用](#luis-app)后提交 LUIS 查询的地方。 终结点 URL 包含所发布的应用的区域和应用 ID。 可以在应用的**[密钥和终结点](luis-how-to-azure-subscription.md)** 页上找到终结点，也可以从[获取应用信息](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c37) API 获取终结点 URL。
 
 以下是一个终结点示例：
 
@@ -177,7 +177,7 @@ LUIS 配额是 [Azure 订阅层](https://aka.ms/luis-price-tier)的限制。 可
 
 ## <a name="subscription-key"></a>订阅密钥
 
-订阅密钥是与 [Azure 中创建](luis-how-to-azure-subscription.md)的 LUIS 服务关联的“终结点”密钥。 此密钥不是[创作密钥](#programmatic-key)。 如果有终结点密钥，则应为所有终结点请求使用该密钥，而非创作密钥。 可在 [LUIS](luis-reference-regions.md) 网站中的[“密钥和终结点”页](luis-how-to-manage-keys.md)底部的终结点 URL 内看到当前的终结点密钥。 它是“subscription-key”名称/值对的值。
+订阅密钥是与 [Azure 中创建](luis-how-to-azure-subscription.md)的 LUIS 服务关联的“终结点”密钥。 此密钥不是[创作密钥](#programmatic-key)。 如果有终结点密钥，则应为所有终结点请求使用该密钥，而非创作密钥。 可在 [LUIS](luis-reference-regions.md) 网站中的[“密钥和终结点”页](luis-how-to-azure-subscription.md)底部的终结点 URL 内看到当前的终结点密钥。 它是“subscription-key”名称/值对的值。
 
 ## <a name="test"></a>测试
 

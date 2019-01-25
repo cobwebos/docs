@@ -3,7 +3,7 @@ title: 配置单一登录 - Azure Active Directory | Microsoft Docs
 description: 本教程使用 Azure 门户通过 Azure Active Directory (Azure AD) 为应用程序配置基于 SAML 的单一登录。
 services: active-directory
 author: barbkess
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.component: app-mgmt
 ms.topic: tutorial
@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 12/06/2018
 ms.author: barbkess
 ms.reviewer: arvinh,luleon
-ms.openlocfilehash: aceacdea8b3c86a5c4f26a5f082f4c6cf0b3805d
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 73e97a38913b3098ba2e14294ecf621add310428
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53011971"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54465710"
 ---
 # <a name="tutorial-configure-saml-based-single-sign-on-for-an-application-with-azure-active-directory"></a>教程：通过 Azure Active Directory 为应用程序配置基于 SAML 的单一登录
 
@@ -71,9 +71,9 @@ ms.locfileid: "53011971"
 
     | 配置设置 | SP 启动 | idP 启动 | 说明 |
     |:--|:--|:--|:--|
-    | 登录 URL | 必需 | 不指定 | 当用户打开此 URL 时，服务提供程序会将用户重定向到 Azure AD 进行身份验证和登录。 Azure AD 使用此 URL 从 Office 365 或 Azure AD 访问面板启动应用程序。 如果为空，则当用户启动应用程序时，Azure AD 依赖于标识提供者来启动单一登录。|
+    | 登录 URL | 必选 | 不指定 | 当用户打开此 URL 时，服务提供程序会将用户重定向到 Azure AD 进行身份验证和登录。 Azure AD 使用此 URL 从 Office 365 或 Azure AD 访问面板启动应用程序。 如果为空，则当用户启动应用程序时，Azure AD 依赖于标识提供者来启动单一登录。|
     | 标识符(实体 ID) | 某些应用所需 | 某些应用所需 | 唯一标识正为其配置单一登录的应用程序。 Azure AD 将该标识符作为 SAML 令牌的 Audience 参数发送回应用程序。 应用程序应当对其进行验证。 该值也在应用程序提供的任何 SAML 元数据中显示为实体 ID。|
-    | 回复 URL | 可选 | 必需 | 指定应用程序应在何处接收 SAML 令牌。 回复 URL 也称断言使用者服务 (ACS) URL。 |
+    | 回复 URL | 可选 | 必选 | 指定应用程序应在何处接收 SAML 令牌。 回复 URL 也称断言使用者服务 (ACS) URL。 |
     | 中继状态 | 可选 | 可选 | 指定应用程序在完成身份验证以后将用户重定向到何处。 该值通常是应用程序的有效 URL，但某些应用程序会将此字段用于其他用途。 有关详细信息，请询问应用程序供应商。
 
 2. 输入信息。 若要查看所有设置，请单击“显示高级 URL 设置”。

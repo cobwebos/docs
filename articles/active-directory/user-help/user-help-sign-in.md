@@ -3,7 +3,7 @@ title: 如何使用双重验证或安全信息进行登录 - Azure Active Direct
 description: 了解如何使用安全信息中的各种身份验证方法进行登录。
 services: active-directory
 author: eross-msft
-manager: mtillman
+manager: daveba
 ms.reviewer: sahenry
 ms.service: active-directory
 ms.workload: identity
@@ -11,12 +11,12 @@ ms.component: user-help
 ms.topic: conceptual
 ms.date: 07/30/2018
 ms.author: lizross
-ms.openlocfilehash: 9f7f06df2ab54e7ccb947362b6824097158166ce
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: 4bd1ceb03ddce572e0571afb87ec2f0c36a49443
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39347626"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54810408"
 ---
 # <a name="sign-in-using-two-step-verification-or-security-info"></a>使用双重验证或安全信息登录
 

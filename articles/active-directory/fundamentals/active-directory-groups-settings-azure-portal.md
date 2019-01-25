@@ -3,7 +3,7 @@ title: 编辑组信息 - Azure Active Directory | Microsoft Docs
 description: 有关如何使用 Azure Active Directory 编辑组信息的说明。
 services: active-directory
 author: eross-msft
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.component: fundamentals
@@ -12,12 +12,12 @@ ms.date: 08/27/2018
 ms.author: lizross
 ms.reviewer: krbain
 ms.custom: it-pro, seodec18
-ms.openlocfilehash: c63872ce19cc7076929785cc7bd150c1599c5705
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: 80c7390c7df00efaf6acc9699c7433aa6e3e52f9
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54063040"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54447320"
 ---
 # <a name="edit-your-group-information-using-azure-active-directory"></a>使用 Azure Active Directory 编辑组信息
 

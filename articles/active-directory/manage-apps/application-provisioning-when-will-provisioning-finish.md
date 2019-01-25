@@ -4,7 +4,7 @@ description: 如何找出预配到应用程序时所需时间可能会比预期�
 services: active-directory
 documentationcenter: ''
 author: barbkess
-manager: mtillman
+manager: daveba
 ms.assetid: ''
 ms.service: active-directory
 ms.component: app-mgmt
@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 07/11/2017
 ms.author: barbkess
 ms.reviewer: asteen
-ms.openlocfilehash: 2b46fecc44803130e4f79667d0e083314c4419c2
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 94859aa57ef6f565c1fe7ed4b199aff997661d0b
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44354695"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54478070"
 ---
 # <a name="user-provisioning-to-an-azure-ad-gallery-application-is-taking-hours-or-more"></a>用户预配到 Azure AD 库应用程序需要数小时或更长时间
 
@@ -35,5 +35,5 @@ ms.locfileid: "44354695"
 -   **用户范围筛选器** 使用范围筛选器，可优化预配服务通过筛选用户（基于特定属性值）从 Azure AD 提取的数据。 有关范围筛选器的详细信息，请参阅[使用范围筛选器进行基于属性的应用程序预配](https://docs.microsoft.com/azure/active-directory/active-directory-saas-scoping-filters)。
 
 ## <a name="next-steps"></a>后续步骤
-[Azure Active Directory SaaS 应用程序的自动化用户预配和取消预配](user-provisioning.md)
+[通过 Azure Active Directory 应用程序为 SaaS 自动化用户预配和取消预配](user-provisioning.md)
 

@@ -9,12 +9,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 3/12/2018
-ms.openlocfilehash: 6c9bef108c2f272c678879124ae2cd4f9ae093ba
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 3f10e5dfd0a4aac859c1a946b5f0a680899e0888
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54076210"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54852535"
 ---
 # <a name="use-an-azure-marketplace-image-to-create-a-terraform-linux-virtual-machine-with-managed-identities-for-azure-resources"></a>结合 Azure 资源的托管标识使用 Azure 市场映像创建 Terraform Linux 虚拟机
 
@@ -85,7 +85,7 @@ Terraform VM 映像执行以下步骤：
 
 `. ~/tfEnv.sh`
 
-上述脚本使用 [AZ CLI v 2.0 交互式登录](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest#interactive-log-in)机制在 Azure 中进行身份验证，并在整个订阅中分配虚拟机托管标识参与者权限。 
+上述脚本使用 [AZ CLI v 2.0 交互式登录](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest)机制在 Azure 中进行身份验证，并在整个订阅中分配虚拟机托管标识参与者权限。 
 
  VM 具有 Terraform 远程状态后端。 若要在 Terraform 部署中启用该后端，请将 tfTemplate 目录中的 remoteState.tf 文件复制到 Terraform 脚本所在的根目录。  
 

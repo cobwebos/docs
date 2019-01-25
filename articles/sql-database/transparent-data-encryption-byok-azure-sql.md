@@ -11,13 +11,13 @@ author: aliceku
 ms.author: aliceku
 ms.reviewer: vanto
 manager: craigg
-ms.date: 12/04/2018
-ms.openlocfilehash: 0c819e4efb158baa2150b00368c618c5467a01e0
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.date: 01/17/2019
+ms.openlocfilehash: 60c7483e698a07fcf86438798f6bb5013a7417ce
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52966766"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54391144"
 ---
 # <a name="azure-sql-transparent-data-encryption-bring-your-own-key-support"></a>Azure SQL 透明数据加密：自带密钥支持
 
@@ -116,7 +116,7 @@ ms.locfileid: "52966766"
 
 ### <a name="azure-key-vault-configuration-steps"></a>Azure Key Vault 配置步骤
 
-- 安装 [PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-5.6.0)
+- 安装 [PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azurermps-5.6.0)
 - 使用 [PowerShell 在 Key Vault 中启用“软删除”属性](https://docs.microsoft.com/azure/key-vault/key-vault-soft-delete-powershell)（目前无法从 AKV 门户使用此选项 – 但 SQL 需要此选项），在两个不同的区域中创建两个 Azure Key Vault。
 - 这两个 Azure Key Vault 必须位于同一 Azure 地理位置中的两个区域，这样才能正常备份和还原密钥。  如果需要将两个密钥保管库定位在不同的地理位置以满足 SQL 异地灾难恢复的要求，请遵循从本地 HSM 导入密钥的 [BYOK 过程](https://docs.microsoft.com/azure/key-vault/key-vault-hsm-protected-keys)。
 - 在第一个 Key Vault 中创建新密钥：  

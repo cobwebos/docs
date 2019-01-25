@@ -2,28 +2,28 @@
 title: Azure 事件网格容器注册表事件架构
 description: 介绍为 Azure 事件网格中的容器注册表事件提供的属性
 services: event-grid
-author: tfitzmac
+author: spelluru
 manager: timlt
 ms.service: event-grid
 ms.topic: reference
-ms.date: 08/13/2018
-ms.author: tomfitz
-ms.openlocfilehash: d18a6718e4c29f3d04639644dc752b0733f15ba8
-ms.sourcegitcommit: 7b845d3b9a5a4487d5df89906cc5d5bbdb0507c8
+ms.date: 01/13/2019
+ms.author: spelluru
+ms.openlocfilehash: 6f00d4f249543ece0eb8db4a8e040300d55b2de8
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2018
-ms.locfileid: "42140009"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54462838"
 ---
 # <a name="azure-event-grid-event-schema-for-container-registry"></a>容器注册表的 Azure 事件网格事件架构
 
-本文提供了容器注册表事件的属性和架构。 有关事件架构的简介，请参阅 [Azure 事件网格事件架构](event-schema.md)。
+本文提供了容器注册表事件的属性和架构。 有关事件架构的简介，请参阅 [Azure 事件网格事件架构](event-schema.md)。
 
 ## <a name="available-event-types"></a>可用事件类型
 
 Blob 存储发出以下事件类型：
 
-| 事件类型 | Description |
+| 事件类型 | 说明 |
 | ---------- | ----------- |
 | Microsoft.ContainerRegistry.ImagePushed | 推送映像时引发。 |
 | Microsoft.ContainerRegistry.ImageDeleted | 删除映像时引发。 |
@@ -97,7 +97,7 @@ Blob 存储发出以下事件类型：
 
 事件具有以下顶级数据：
 
-| 属性 | Type | Description |
+| 属性 | 类型 | 说明 |
 | -------- | ---- | ----------- |
 | 主题 | 字符串 | 事件源的完整资源路径。 此字段不可写入。 事件网格提供此值。 |
 | subject | 字符串 | 事件主题的发布者定义路径。 |
@@ -110,7 +110,7 @@ Blob 存储发出以下事件类型：
 
 数据对象具有以下属性：
 
-| 属性 | Type | Description |
+| 属性 | 类型 | 说明 |
 | -------- | ---- | ----------- |
 | id | 字符串 | 事件 ID。 |
 | timestamp | 字符串 | 发生事件的时间。 |
@@ -120,7 +120,7 @@ Blob 存储发出以下事件类型：
 
 目标对象具有以下属性：
 
-| 属性 | Type | Description |
+| 属性 | 类型 | 说明 |
 | -------- | ---- | ----------- |
 | mediaType | 字符串 | 引用对象的 MIME 类型。 |
 | size | integer | 内容的字节数。 与 Length 字段相同。 |
@@ -131,7 +131,7 @@ Blob 存储发出以下事件类型：
 
 请求对象具有以下属性：
 
-| 属性 | Type | Description |
+| 属性 | 类型 | 说明 |
 | -------- | ---- | ----------- |
 | id | 字符串 | 启动事件的请求 ID。 |
 | addr | 字符串 | 启动事件的客户端连接的 IP 或主机名可能还有端口。 此值是标准 http 请求中的 RemoteAddr。 |

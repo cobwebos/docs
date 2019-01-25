@@ -4,7 +4,7 @@ description: 将 Windows Server 虚拟机加入 Azure AD DS
 services: active-directory-ds
 documentationcenter: ''
 author: eringreenlee
-manager: mtillman
+manager: daveba
 editor: curtand
 ms.assetid: 29316313-c76c-4fb9-8954-5fa5ec82609e
 ms.service: active-directory
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/21/2018
 ms.author: ergreenl
-ms.openlocfilehash: 748345bf89e7f746b8ef388ad5cabc987a07d1f8
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: fc55fcef9977abcd8c40752d459088c1132cf2c1
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52957659"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54850359"
 ---
 # <a name="join-a-windows-server-virtual-machine-to-a-managed-domain"></a>将 Windows Server 虚拟机加入托管域
 本文展示了如何使用 Azure 门户部署 Windows Server 虚拟机。 它还展示了如何将虚拟机加入 Azure Active Directory 域服务 (Azure AD DS) 托管域。

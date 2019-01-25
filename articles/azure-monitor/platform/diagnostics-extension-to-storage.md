@@ -7,13 +7,13 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 08/01/2016
 ms.author: jeconnoc
-ms.component: diagnostic-extension
-ms.openlocfilehash: f0d1a51a3c787bd4d9602eeaad9ac92eda7bacb7
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.subservice: diagnostic-extension
+ms.openlocfilehash: 23379e9d9bb29efb7fb026260e8245e8eb8a2d71
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54103734"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54468516"
 ---
 # <a name="store-and-view-diagnostic-data-in-azure-storage"></a>在 Azure 存储中存储和查看诊断数据
 诊断数据不会永久存储，除非将其传输到 Microsoft Azure 存储模拟器或 Azure 存储中。 一旦位于存储空间中，诊断数据就可以使用提供的工具之一进行查看。
@@ -79,4 +79,5 @@ ms.locfileid: "54103734"
 
 ## <a name="next-steps"></a>后续步骤
 [使用 Azure 诊断跟踪云服务应用程序中的流](../../cloud-services/cloud-services-dotnet-diagnostics-trace-flow.md)
+
 

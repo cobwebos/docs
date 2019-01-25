@@ -12,12 +12,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: b772aa314316906a4079e3d6b8b4e0aeb0f54fba
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 4339782304f1bc175f1066954f1050bc00f25005
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54022982"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54434234"
 ---
 # <a name="create-azure-ssis-integration-runtime-in-azure-data-factory"></a>在 Azure 数据工厂中创建 Azure-SSIS 集成运行时
 本文提供在 Azure 数据工厂 (ADF) 中配置 Azure-SSIS 集成运行时 (IR) 所要执行的步骤。 然后，可以使用 SQL Server Data Tools (SSDT) 或 SQL Server Management Studio (SSMS) 在 Azure 的此集成运行时中部署并运行 SQL Server Integration Services (SSIS) 包。 
@@ -50,7 +50,7 @@ ms.locfileid: "54022982"
     - 要在 Azure SQL 数据库服务器中承载 SSISDB，该服务器包含虚拟网络中的虚拟网络服务终结点或托管实例。 
     - 要从 Azure-SSIS IR 中运行的 SSIS 包连接到本地据存储。 
 
-- **Azure PowerShell**。 若要运行 PowerShell 脚本来预配 Azure-SSIS IR，请遵照[如何安装和配置 Azure PowerShell](/powershell/azure/install-azurerm-ps) 中的说明。 
+- **Azure PowerShell**。 若要运行 PowerShell 脚本来预配 Azure-SSIS IR，请遵照[如何安装和配置 Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps) 中的说明。 
 
 ### <a name="region-support"></a>区域支持
 有关目前提供 ADF 和 Azure-SSIS IR 的 Azure 区域的列表，请参阅 [ADF + SSIS IR 可用性（按区域）](https://azure.microsoft.com/global-infrastructure/services/?products=data-factory&regions=all)。 
@@ -165,7 +165,7 @@ ms.locfileid: "54022982"
 
    ![虚拟网络的高级设置](./media/tutorial-create-azure-ssis-runtime-portal/advanced-settings-vnet.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 对于“订阅”，请选择包含你的虚拟网络的 Azure 订阅。 
+    a. 对于“订阅”，请选择包含你的虚拟网络的 Azure 订阅。 
 
     b. 对于“位置”，系统已选择集成运行时所在的位置。 
 

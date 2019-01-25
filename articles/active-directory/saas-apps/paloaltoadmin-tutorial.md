@@ -4,7 +4,7 @@ description: 了解如何在 Azure Active Directory 与 Palo Alto Networks - 管
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: barbkess
 ms.assetid: a826eaec-15af-4c85-8855-8a3374d1efb9
 ms.service: Azure-Active-Directory
@@ -14,19 +14,19 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/02/2019
 ms.author: jeedes
-ms.openlocfilehash: 9e7dc7874e6b48ecb03300df780118d5205a8773
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: 06c32dbd9ee0d960e4cd17476349ba3d1a784d81
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54063402"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54818993"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-palo-alto-networks---admin-ui"></a>教程：Azure Active Directory 与 Palo Alto Networks - 管理 UI 的集成
 
 在本教程中，了解如何将 Palo Alto Networks - 管理 UI 与 Azure Active Directory (Azure AD) 进行集成。
 将 Palo Alto Networks - 管理 UI 与 Azure AD 集成可提供以下好处：
 
-* 可以在 Azure AD 中控制谁有权访问 Palo Alto Networks - 管理 UI。
+* 可在 Azure AD 中控制谁有权访问 Palo Alto Networks - 管理 UI。
 * 可以让用户使用其 Azure AD 帐户自动登录到 Palo Alto Networks - 管理 UI（单一登录）。
 * 可在中心位置（即 Azure 门户）管理帐户。
 
@@ -93,7 +93,7 @@ ms.locfileid: "54063402"
 
     ![配置单一登录链接](common/select-sso.png)
 
-2. 在“选择单一登录方法”对话框中，选择 SAML/WS-Fed 模式以启用单一登录。
+2. 在**选择单一登录方法**对话框中，选择 **SAML/WS-Fed**模式以启用单一登录。
 
     ![单一登录选择模式](common/select-saml-option.png)
 
@@ -114,7 +114,7 @@ ms.locfileid: "54063402"
     > [!NOTE]
     > 这些不是实际值。 请使用实际登录 URL、标识符和回复 URL 更新这些值。 若要获取这些值，请联系 [Palo Alto Networks - 管理 UI 客户端支持团队](https://support.paloaltonetworks.com/support)。 还可以参考 Azure 门户中的“基本 SAML 配置”部分中显示的模式。
 
-5. Palo Alto Networks - 管理 UI 应用程序需要特定格式的 SAML 断言。 请为此应用程序配置以下声明。 可以在应用程序集成页的“用户属性”部分管理这些属性的值。 在“使用 SAML 设置单一登录”页上，单击“编辑”按钮以打开“用户属性”对话框。
+5. Palo Alto Networks - 管理 UI 应用程序需要采用特定格式的 SAML 断言。 请为此应用程序配置以下声明。 可以在应用程序集成页的“用户属性”部分管理这些属性的值。 在“使用 SAML 设置单一登录”页上，单击“编辑”按钮以打开“用户属性”对话框。
 
     ![图像](common/edit-attribute.png)
 
@@ -305,7 +305,7 @@ ms.locfileid: "54063402"
 
 ### <a name="create-palo-alto-networks---admin-ui-test-user"></a>创建 Palo Alto Networks - 管理 UI 测试用户
 
-Palo Alto Networks - 管理 UI 支持实时用户预配。 如果用户尚不存在，在身份验证成功后会自动创建该用户。 无需执行创建用户的操作。
+Palo Alto Networks - Admin UI 支持实时用户预配。 如果用户尚不存在，在身份验证成功后会自动创建该用户。 无需执行创建用户的操作。
 
 ### <a name="test-single-sign-on"></a>测试单一登录
 

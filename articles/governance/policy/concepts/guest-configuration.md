@@ -4,17 +4,17 @@ description: 了解 Azure Policy 如何使用来宾配置审核 Azure 虚拟机�
 services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 12/06/2018
+ms.date: 01/23/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 1ea87dc01048a2747a668db7a5b1f22b37ed9213
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 0a571084819c5dfed3f8d6891b59032ef2eecdd6
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53310056"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54856394"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>了解 Azure Policy 的来宾配置
 
@@ -48,8 +48,8 @@ ms.locfileid: "53310056"
 若要通过 PowerShell 注册资源提供程序的来宾配置，请运行以下命令：
 
 ```azurepowershell-interactive
-# Login first with Connect-AzureRmAccount if not using Cloud Shell
-Register-AzureRmResourceProvider -ProviderNamespace 'Microsoft.GuestConfiguration'
+# Login first with Connect-AzAccount if not using Cloud Shell
+Register-AzResourceProvider -ProviderNamespace 'Microsoft.GuestConfiguration'
 ```
 
 ### <a name="validation-tools"></a>验证工具
@@ -115,5 +115,5 @@ Azure Policy 使用来宾配置资源提供程序 complianceStatus 属性在“�
 - 查看[了解策略效果](effects.md)
 - 了解如何[以编程方式创建策略](../how-to/programmatically-create.md)
 - 了解如何[获取符合性数据](../how-to/getting-compliance-data.md)
-- 了解如何[修正不符合资源](../how-to/remediate-resources.md)
+- 了解如何[修正不符合的资源](../how-to/remediate-resources.md)
 - 参阅[使用 Azure 管理组来组织资源](../../management-groups/index.md)，了解什么是管理组

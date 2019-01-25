@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 11/17/2018
 ms.author: juliako
-ms.openlocfilehash: 95d3f0aac4acdfbd70dcadd8db5c13456e83a7e7
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 20aef7f971b4c4bf8dcff98c633aa0b0aa69811a
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53344306"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54828173"
 ---
 # <a name="analyzing-video-and-audio-files"></a>分析视频和音频文件
 
@@ -147,8 +147,8 @@ ms.locfileid: "53344306"
 |id|人脸 ID。|
 |名称|人脸姓名。 可以为“Unknown #0”、公认的名人或客户训练的人。|
 |confidence|人脸识别置信度。|
-|说明|名人的说明。 |
-|thumbnalId|该人脸的缩略图 ID。|
+|description|名人的说明。 |
+|thumbnailId|该人脸的缩略图 ID。|
 |knownPersonId|如果是已知人员，则为此人的内部 ID。|
 |referenceId|如果是必应名人，则为此人的必应 ID。|
 |referenceType|当前仅限必应。|

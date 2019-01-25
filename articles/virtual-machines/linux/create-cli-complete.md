@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 12/14/2017
 ms.author: cynthn
-ms.openlocfilehash: 6b3f862acd5aba39a7ad6eb0ce2f0a9b4a9e5307
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 27cef0287156d4cf76914704b849cb646c21dd7d
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53973649"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54467479"
 ---
 # <a name="create-a-complete-linux-virtual-machine-with-the-azure-cli"></a>使用 Azure CLI 创建完整的 Linux 虚拟机
 若要在 Azure 中快速创建虚拟机 (VM)，可使用单个使用默认值的 Azure CLI 命令创建任何所需的支持资源。 虚拟网络、公共 IP 地址和网络安全组规则等资源均会自动创建。 为了在生产使用中更好地控制环境，可提前创建这些资源，然后将 VM 添加到其中。 本文将逐步介绍如何创建 VM 和每个支持资源。
@@ -333,7 +333,7 @@ az network nsg show --resource-group myResourceGroup --name myNetworkSecurityGro
 ```
 
 ## <a name="create-a-virtual-nic"></a>创建虚拟 NIC
-由于可将规则应用到虚拟网络接口卡 (NIC) 的使用上，因此能以编程方式使用它。 可以将多个虚拟 NIC 附加到 VM，具体取决于 [VM 大小](sizes.md)。 在以下 [az network nic create](/cli/azure/network/nic#az_network_nic_create) 命令中，会创建一个名为 myNic 的 NIC，并将其与网络安全组相关联。 公共 IP 地址 myPublicIP 也与此虚拟 NIC 相关联。
+由于可将规则应用到虚拟网络接口卡 (NIC) 的使用上，因此能以编程方式使用它。 可以将多个虚拟 NIC 附加到 VM，具体取决于 [VM 大小](sizes.md)。 在以下 [az network nic create](/cli/azure/network/nic) 命令中，会创建一个名为 myNic 的 NIC，并将其与网络安全组相关联。 公共 IP 地址 myPublicIP 也与此虚拟 NIC 相关联。
 
 ```azurecli
 az network nic create \

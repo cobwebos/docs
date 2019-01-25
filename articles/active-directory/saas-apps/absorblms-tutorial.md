@@ -4,7 +4,7 @@ description: 了解如何在 Azure Active Directory 与 Absorb LMS 之间配置�
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: barbkess
 ms.assetid: ba9f1b3d-a4a0-4ff7-b0e7-428e0ed92142
 ms.service: Azure-Active-Directory
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/31/2018
 ms.author: jeedes
-ms.openlocfilehash: f7f96b4357e7db61d3b5d30b93eff8960e515c2d
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 51ae45b313cbe6b3cb61777a1571a75047632ca9
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53971284"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54818449"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-absorb-lms"></a>教程：Azure Active Directory 与 Absorb LMS 集成
 
@@ -92,7 +92,7 @@ ms.locfileid: "53971284"
 
     ![配置单一登录链接](common/select-sso.png)
 
-2. 在“选择单一登录方法”对话框中，选择 SAML/WS-Fed 模式以启用单一登录。
+2. 在**选择单一登录方法**对话框中，选择 **SAML/WS-Fed**模式以启用单一登录。
 
     ![单一登录选择模式](common/select-saml-option.png)
 
@@ -106,13 +106,13 @@ ms.locfileid: "53971284"
 
     如果使用的是 Absorb 5 - UI，请使用以下配置：
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“标识符”文本框中，使用以下模式键入 URL：`https://company.myabsorb.com/account/saml`
+    a. 在“标识符”文本框中，使用以下模式键入 URL：`https://company.myabsorb.com/account/saml`
 
     b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://company.myabsorb.com/account/saml`
 
     如果使用的是 Absorb 5 - New Learner Experience，请使用以下配置：
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“标识符”文本框中，使用以下模式键入 URL：`https://company.myabsorb.com/api/rest/v2/authentication/saml`
+    a. 在“标识符”文本框中，使用以下模式键入 URL：`https://company.myabsorb.com/api/rest/v2/authentication/saml`
 
     b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://company.myabsorb.com/api/rest/v2/authentication/saml`
 
@@ -153,7 +153,7 @@ ms.locfileid: "53971284"
 
     ![“单一登录”配置页](./media/absorblms-tutorial/settings.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”文本框中输入名称，例如“Azure AD 市场 SSO”。
+    a. 在“名称”文本框中输入名称，例如“Azure AD 市场 SSO”。
 
     b. 选择“SAML”作为“方法”。
 
@@ -246,7 +246,7 @@ ms.locfileid: "53971284"
 
     ![“添加用户”页](./media/absorblms-tutorial/user.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名字”框中键入名字，例如 Britta。
+    a. 在“名字”框中键入名字，例如 Britta。
 
     b. 在“姓氏”框中键入姓氏，例如 Simon。
 

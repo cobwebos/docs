@@ -3,7 +3,7 @@ title: 在 Azure Active Directory 中访问和使用 MyApps 门户时获得帮�
 description: 获得有关在访问面板中登录和执行常见任务的帮助。
 services: active-directory
 author: eross-msft
-manager: mtillman
+manager: daveba
 ms.assetid: c67cd675-b567-41e1-8bc2-e06fe0b38d3b
 ms.service: active-directory
 ms.component: user-help
@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 01/15/2018
 ms.author: lizross
 ms.reviewer: japere
-ms.openlocfilehash: a761e6a42e478aafca75709689a022edec2a64db
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 4af0b9cf50d643fda2341e791753e3bdfc8166b1
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54191019"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54812553"
 ---
 # <a name="troubleshoot-issues-with-accessing-and-using-the-myapps-portal"></a>排查有关访问和使用 MyApps 门户的问题
 

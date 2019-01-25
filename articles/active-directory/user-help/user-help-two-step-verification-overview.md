@@ -3,7 +3,7 @@ title: 双重验证概述 - Azure Active Directory | Microsoft Docs
 description: 了解如何设置和使用双重验证。
 services: active-directory
 author: eross-msft
-manager: mtillman
+manager: daveba
 ms.reviewer: sahenry
 ms.service: active-directory
 ms.workload: identity
@@ -11,12 +11,12 @@ ms.component: user-help
 ms.topic: overview
 ms.date: 07/30/2018
 ms.author: lizross
-ms.openlocfilehash: de5c9810b234a93643321d1ba299a66a3ae965a3
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: 047c2af2626c9efca05dc3d3e554d57b4d559add
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42022379"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54809099"
 ---
 # <a name="two-step-verification-overview"></a>双重验证概述
 
@@ -27,7 +27,7 @@ ms.locfileid: "42022379"
 
 双重验证比单纯使用密码更安全，因为它依赖于两种形式的身份验证：你知道的事情和拥有的物品。 你知道的事情就是你的密码。 你拥有的物品就是你经常携带的手机或设备。 双重验证有助于防止恶意黑客假装你的身份，因为即使他们有你的密码，也不太可能有你的设备。
 
-|文章 |Description |
+|文章 |说明 |
 |------|------------|
 |[设置体验](multi-factor-authentication-end-user-first-time.md) |介绍第一次时如何设置双重验证。|
 |[双重验证入门](multi-factor-authentication-end-user.md)|介绍双重验证的意义。| 

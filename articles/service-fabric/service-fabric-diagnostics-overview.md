@@ -12,14 +12,14 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 11/21/2018
+ms.date: 1/17/2019
 ms.author: srrengar
-ms.openlocfilehash: 8d6865349f103278131a02c2385557fb53ee24f5
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: f558c6fcfa864b142209712a536adf1be97122cf
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52720586"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54389252"
 ---
 # <a name="monitoring-and-diagnostics-for-azure-service-fabric"></a>对 Azure Service Fabric 进行监视和诊断
 
@@ -41,9 +41,12 @@ ms.locfileid: "52720586"
 由于用户自己编写代码，用户可以控制来自其应用程序的遥测，但是来自 Service Fabric 平台的诊断怎么办？ Service Fabric 的目标之一是确保应用程序能够灵活应对硬件故障。 为了实现此目的，可以通过平台的系统服务功能检测基础结构问题，并快速将工作负荷故障转移到群集中的其他节点。 但在此特殊情况下，系统服务本身出现问题该怎么办？ 或者，在尝试部署或移动工作负荷时，如果违反服务位置的规则该怎么办？ Service Fabric 为这些以及更多内容提供诊断，以确保你了解群集中发生的活动。 群集监视的一些示例场景包括：
 
 Service Fabric 提供了一组现成的综合事件。 可以通过 EventStore 或操作通道（平台公开的事件通道）来访问这些 [Service Fabric 事件](service-fabric-diagnostics-events.md)。 
-* EventStore - EventStore 是该平台提供的一项功能，它提供通过 REST API 且在 Service Fabric Explorer 中可用的 Service Fabric 平台事件。 可以查看群集中每个实体的动态快照视图，例如节点、服务、应用程序和基于事件时间的查询。 还可以从 [EventStore 概述](service-fabric-diagnostics-eventstore.md)了解有关 EventStore 的详细信息。    
 
 * Service Fabric 事件通道 - 在 Windows 上，Service Fabric 事件可通过使用一组相关 `logLevelKeywordFilters`（用于在操作通道与“数据和消息”通道之间进行选择）从单个 ETW 提供程序获得 - 这是我们用来分离出要根据需要筛选的传出 Service Fabric 事件的方式。 在 Linux 中，Service Fabric 事件通过 LTTng 传入一个存储表中，可在其中按需筛选事件。 这些通道包含组织有序的结构化事件用于更好地了解群集的状态。 创建群集时默认会启用“诊断”并创建一个 Azure 存储表，来自这些通道的事件将发送到其中，方便将来进行查询。 
+
+* EventStore - EventStore 是该平台提供的一项功能，它提供通过 REST API 且在 Service Fabric Explorer 中可用的 Service Fabric 平台事件。 可以查看群集中每个实体的动态快照视图，例如节点、服务、应用程序和基于事件时间的查询。 还可以从 [EventStore 概述](service-fabric-diagnostics-eventstore.md)了解有关 EventStore 的详细信息。    
+
+![EventStore](media/service-fabric-diagnostics-overview/eventstore.png)
 
 诊断以一系列现成的全面的事件集的形式提供。 这些 [Service Fabric 事件](service-fabric-diagnostics-events.md)说明了平台在节点、应用程序、服务、分区等不同实体上执行的操作。在上述最后一个场景中，如果节点发生故障，平台将发出 `NodeDown` 事件，可以立即通过所选的监控工具通知你。 故障转移期间，其他常见示例包括 `ApplicationUpgradeRollbackStarted` 或 `PartitionReconfigured`。 **Windows 和 Linux 群集上都有相同的事件。**
 

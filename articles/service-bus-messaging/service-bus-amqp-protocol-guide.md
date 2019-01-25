@@ -3,23 +3,23 @@ title: Azure 服务总线和事件中心内的 AMQP 1.0 协议指南 | Microsoft
 description: Azure 服务总线和事件中心内 AMQP 1.0 协议的表达与描述指南
 services: service-bus-messaging,event-hubs
 documentationcenter: .net
-author: clemensv
+author: axisc
 manager: timlt
-editor: ''
+editor: spelluru
 ms.assetid: d2d3d540-8760-426a-ad10-d5128ce0ae24
 ms.service: service-bus-messaging
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/26/2018
-ms.author: clemensv
-ms.openlocfilehash: 70f07b3925eb91d91dfbd623f8f1611ac31a1b6f
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.date: 01/23/2019
+ms.author: aschhab
+ms.openlocfilehash: 88f586fac4392e880efc3ef611a7c03177582bff
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53542503"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54856700"
 ---
 # <a name="amqp-10-in-azure-service-bus-and-event-hubs-protocol-guide"></a>Azure 服务总线和事件中心内的 AMQP 1.0 协议指南
 
@@ -134,7 +134,7 @@ AMQP 1.0 规范定义进一步的处置状态（称为“已接收”），其�
 
 当传输进入“已接受”、“已拒绝”或“已解除”终端状态的其中一种时，消息锁定就会解除。 终端的状态为“已接受”时，将从服务总线中删除消息。 它保留在服务总线中，并会在传输达到任何其他状态时传递给下一个接收者。 服务总线在因为重复拒绝或解除而达到实体所允许的最大传递计数时，自动将消息转到实体死信队列中。
 
-即使是服务总线 API 现今也不直接公开这种选项，较低级别的 AMQP 协议客户端可以使用链接信用额度模型，通过核发大量的链接信用额度，将针对每个接收请求核发一单位信用额度的“提取式”模型变成“推送式”模型，并接收可用的消息，而不需要任何进一步的交互。 通过 [MessagingFactory.PrefetchCount](/dotnet/api/microsoft.servicebus.messaging.messagingfactory#Microsoft_ServiceBus_Messaging_MessagingFactory_PrefetchCount) 或 [MessageReceiver.PrefetchCount](/dotnet/api/microsoft.servicebus.messaging.messagereceiver#Microsoft_ServiceBus_Messaging_MessageReceiver_PrefetchCount) 属性设置来支持推送。 如果两者均不为零，则 AMQP 客户端使用它作为链接信用额度。
+即使是服务总线 API 现今也不直接公开这种选项，较低级别的 AMQP 协议客户端可以使用链接信用额度模型，通过核发大量的链接信用额度，将针对每个接收请求核发一单位信用额度的“提取式”模型变成“推送式”模型，并接收可用的消息，而不需要任何进一步的交互。 通过 [MessagingFactory.PrefetchCount](/dotnet/api/microsoft.servicebus.messaging.messagingfactory) 或 [MessageReceiver.PrefetchCount](/dotnet/api/microsoft.servicebus.messaging.messagereceiver#Microsoft_ServiceBus_Messaging_MessageReceiver_PrefetchCount) 属性设置来支持推送。 如果两者均不为零，则 AMQP 客户端使用它作为链接信用额度。
 
 在此内容中，务必了解实体内消息锁定的过期时钟在从实体获取消息时启动，而不是在消息放在网络上时启动。 每当客户端通过颁发链接信用额度来表示接收消息的整备性，因此预期主动提取网络上的消息并准备好处理它们。 否则消息锁定可能在消息传递之前过期。 使用链接信用流量控制应直接反映出可立即准备处理分派给接收者的可用消息。
 
@@ -227,14 +227,14 @@ AMQP 1.0 规范定义进一步的处置状态（称为“已接收”），其�
 | to |应用程序定义的目标标识符，服务总线无法进行解释。 |[To](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_To) |
 | subject |应用程序定义的消息用途标识符，服务总线无法进行解释。 |[Label](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_Label) |
 | reply-to |应用程序定义的回复路径指示符，服务总线无法进行解释。 |[ReplyTo](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_ReplyTo) |
-| correlation-id |应用程序定义的相关性标识符，服务总线无法进行解释。 |[CorrelationId](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_CorrelationId) |
-| content-type |应用程序定义的内容类型指示符，服务总线无法进行解释。 |[ContentType](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_ContentType) |
+| correlation-id |应用程序定义的相关性标识符，服务总线无法进行解释。 |[CorrelationId](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
+| content-type |应用程序定义的内容类型指示符，服务总线无法进行解释。 |[ContentType](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
 | content-encoding |应用程序定义的内容编码指示符，服务总线无法进行解释。 |无法通过服务总线 API 访问。 |
 | absolute-expiry-time |声明消息过期的绝对时刻。 在输入时忽略（观察到标头 TTL），在输出时授权具权威性。 |[ExpiresAtUtc](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_ExpiresAtUtc) |
 | creation-time |声明消息的创建时间。 不由服务总线使用 |无法通过服务总线 API 访问。 |
 | group-id |应用程序为相关的消息集定义的标识符。 用于服务总线会话。 |[SessionId](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_SessionId) |
 | group-sequence |用于标识消息在会话内的相对序列号的计数器。 服务总线会将其忽略。 |无法通过服务总线 API 访问。 |
-| reply-to-group-id |- |[ReplyToSessionId](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_ReplyToSessionId) |
+| reply-to-group-id |- |[ReplyToSessionId](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
 
 #### <a name="message-annotations"></a>消息注释
 

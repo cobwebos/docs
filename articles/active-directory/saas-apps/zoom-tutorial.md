@@ -4,7 +4,7 @@ description: 了解如何在 Azure Active Directory 和 Zoom 之间配置单一�
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: barbkess
 ms.assetid: 0ebdab6c-83a8-4737-a86a-974f37269c31
 ms.service: Azure-Active-Directory
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/24/2018
 ms.author: jeedes
-ms.openlocfilehash: a9c0cf9dbe14478d805ff84aa480db0f9fac5d2c
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: ace02a0cb93cf3e56e4b895524b9e2d35440aecb
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53971880"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54812975"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zoom"></a>教程：Azure Active Directory 与 Zoom 的集成
 
@@ -92,7 +92,7 @@ ms.locfileid: "53971880"
 
     ![配置单一登录链接](common/select-sso.png)
 
-2. 在“选择单一登录方法”对话框中，选择 SAML/WS-Fed 模式以启用单一登录。
+2. 在**选择单一登录方法**对话框中，选择 **SAML/WS-Fed**模式以启用单一登录。
 
     ![单一登录选择模式](common/select-saml-option.png)
 
@@ -104,7 +104,7 @@ ms.locfileid: "53971880"
 
     ![Zoom 域和 URL 单一登录信息](common/sp-identifier.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<companyname>.zoom.us`
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<companyname>.zoom.us`
 
     b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`<companyname>.zoom.us`
 
@@ -125,7 +125,7 @@ ms.locfileid: "53971880"
     | 电话号码  | user.telephonenumber  | http://schemas.xmlsoap.org/ws/2005/05/identity/claims/phone |
     | 部门  | user.department  | http://schemas.xmlsoap.org/ws/2005/05/identity/claims/department |
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 单击“添加新声明”以打开“管理用户声明”对话框。
+    a. 单击“添加新声明”以打开“管理用户声明”对话框。
 
     ![图像](common/new-save-attribute.png)
 
@@ -169,7 +169,7 @@ ms.locfileid: "53971880"
    
     ![“单一登录”部分](./media/zoom-tutorial/IC784701.png "单一登录")
    
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“登录 URL”文本框中，粘贴从 Azure 门户复制的“登录 URL”值。
+    a. 在“登录 URL”文本框中，粘贴从 Azure 门户复制的“登录 URL”值。
    
     b. 在“注销 URL”文本框中，粘贴从 Azure 门户复制的“注销 URL”值。
      
@@ -251,7 +251,7 @@ ms.locfileid: "53971880"
    
     ![添加用户](./media/zoom-tutorial/IC784704.png "添加用户")
    
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 对于“用户类型”，请选择“基本”。
+    a. 对于“用户类型”，请选择“基本”。
 
     b. 在“电子邮件”文本框中，键入要预配的有效 Azure AD 帐户的电子邮件地址。
 

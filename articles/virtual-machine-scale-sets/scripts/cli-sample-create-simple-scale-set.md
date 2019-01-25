@@ -16,12 +16,12 @@ ms.workload: na
 ms.date: 03/27/2018
 ms.author: zarhoads
 ms.custom: mvc
-ms.openlocfilehash: 98617b2823cb4b17bf65621f302a0ea63ebda5fa
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: 9eca348c6cc8ba9559c501f6fae266bee59b4cd0
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49468137"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54844290"
 ---
 # <a name="create-a-virtual-machine-scale-set-with-the-azure-cli"></a>使用 Azure CLI 创建虚拟机规模集
 此脚本使用 Ubuntu 操作系统和相关网络资源（包括负载均衡器）创建 Azure 虚拟机规模集。 运行脚本后，可通过 SSH 访问 VM 实例。
@@ -45,8 +45,8 @@ az group delete --name myResourceGroup
 
 | 命令 | 说明 |
 |---|---|
-| [az group create](/cli/azure/ad/group#az_ad_group_create) | 创建用于存储所有资源的资源组。 |
-| [az vmss create](/cli/azure/vmss#az_vmss_create) | 创建虚拟机规模集并将其连接到虚拟网络、子网和网络安全组。 负载均衡器也会被创建，以将流量分配到多个 VM 实例。 此命令还指定要使用的 VM 映像和管理凭据。  |
+| [az group create](/cli/azure/ad/group) | 创建用于存储所有资源的资源组。 |
+| [az vmss create](/cli/azure/vmss) | 创建虚拟机规模集并将其连接到虚拟网络、子网和网络安全组。 负载均衡器也会被创建，以将流量分配到多个 VM 实例。 此命令还指定要使用的 VM 映像和管理凭据。  |
 | [az group delete](/cli/azure/ad/group#delete) | 删除资源组，包括所有嵌套的资源。 |
 
 ## <a name="next-steps"></a>后续步骤

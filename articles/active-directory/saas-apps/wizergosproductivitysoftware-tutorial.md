@@ -4,7 +4,7 @@ description: 了解如何在 Azure Active Directory 和 Wizergos Productivity So
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: joflore
 ms.assetid: acc04396-13c5-4c24-ab9a-30fbc9234ebd
 ms.service: active-directory
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/24/2017
 ms.author: jeedes
-ms.openlocfilehash: e117b6e791bde3a8311b35ea5d651dad6bf88737
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 5f43423ea7e0f03baedccc86f76a0b052ff5cde0
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52845665"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54826559"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-wizergos-productivity-software"></a>教程：Azure Active Directory 与 Wizergos Productivity Software 集成
 
@@ -138,7 +138,7 @@ ms.locfileid: "52845665"
 
     ![在应用端配置单一登录](./media/wizergosproductivitysoftware-tutorial/tutorial_wizergosproductivitysoftware_003.png)
     
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 单击“上传”按钮，从 Azure AD 上传已下载的证书。
+    a. 单击“上传”按钮，从 Azure AD 上传已下载的证书。
     
     b. 将从 Azure 门户复制的“SAML 实体 ID”值粘贴到“颁发者 URL”文本框中。
     
@@ -176,7 +176,7 @@ ms.locfileid: "52845665"
 
     ![“用户”对话框](./media/wizergosproductivitysoftware-tutorial/create_aaduser_04.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“姓名”框中，键入“BrittaSimon”。
+    a. 在“姓名”框中，键入“BrittaSimon”。
 
     b. 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
 

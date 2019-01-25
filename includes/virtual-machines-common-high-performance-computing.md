@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/15/2019
 ms.author: danlep
 ms.custom: include file
-ms.openlocfilehash: 2a2d5f9c85a881dad8f53f81a39c84d4a34b632e
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.openlocfilehash: 7a136f34a7dd9fada23a4225b60223220c92c665
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54360184"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54440517"
 ---
 组织具有大规模计算需求。 这些大型计算工作负荷包括工程设计和分析、财务风险计算、图像渲染、复杂建模、Monte Carlo 仿真等。 
 
@@ -95,7 +95,7 @@ N 系列的 VM 具备为计算密集型或图形密集型应用程序（包括�
 
 * [使用资源管理器模板安装和设置 CycleCloud](https://docs.microsoft.com/azure/cyclecloud/quickstart-install-cyclecloud)
 
-* [手动设置 CycleCloud](https://docs.microsoft.com/azure/cyclecloud/quickstart-installation)
+* [手动设置 CycleCloud](https://docs.microsoft.com/azure/cyclecloud/installation)
 
 ## <a name="azure-batch"></a>Azure 批处理
 

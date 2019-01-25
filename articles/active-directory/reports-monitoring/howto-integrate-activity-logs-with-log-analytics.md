@@ -4,7 +4,7 @@ description: 了解如何使用 Azure Monitor 将 Azure Active Directory 日志�
 services: active-directory
 documentationcenter: ''
 author: priyamohanram
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: 2c3db9a8-50fa-475a-97d8-f31082af6593
 ms.service: active-directory
@@ -16,12 +16,12 @@ ms.component: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 7509081bbf43aeaf39570f84afef81b6dd5a39fe
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 8b9189ef3fff75023316d5272bd93c136106cf94
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51621660"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54824671"
 ---
 # <a name="integrate-azure-ad-logs-with-log-analytics-using-azure-monitor-preview"></a>使用 Azure Monitor 将 Azure AD 日志与 Log Analytics 集成（预览版）
 
@@ -41,8 +41,8 @@ Ignite 会话中的以下视频通过实际用户方案演示了将 Log Analytic
 
 你可以将审核活动日志和登录活动日志路由到 Log Analytics 以供进一步分析。 
 
-* **审核日志**: 可以通过[审核日志活动报表](concept-audit-logs.md)访问在租户中执行的每个任务的历史记录。
-* **登录日志**：可以通过[登录活动报表](concept-sign-ins.md)来确定谁执行了审核日志中报告的任务。
+* **审核日志**：可通过[审核日志活动报表](concept-audit-logs.md)访问在租户中执行的每个任务的历史记录。
+* **登录日志**：可通过[登录活动报表](concept-sign-ins.md)来确定谁执行了审核日志中报告的任务。
 
 > [!NOTE]
 > 目前不支持 B2C 相关的审核和登录活动日志。

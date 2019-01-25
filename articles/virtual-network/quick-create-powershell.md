@@ -14,12 +14,12 @@ ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 12/04/2018
 ms.author: jdial
-ms.openlocfilehash: 725e03ded6d6f2e3b5d7a41d2053f418a5933ef8
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: ade8329e6e42fae9f3232617488a6d4a69f8ef1f
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54023237"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54437379"
 ---
 # <a name="quickstart-create-a-virtual-network-using-powershell"></a>快速入门：使用 PowerShell 创建虚拟网络
 
@@ -29,7 +29,7 @@ ms.locfileid: "54023237"
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-powershell.md)]
 
-如果决定在本地安装并使用 PowerShell，则本快速入门需要使用 AzureRM PowerShell 模块 5.4.1 版本或更高版本。 要查找已安装的版本，请运行 `Get-Module -ListAvailable AzureRM`。 请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-azurerm-ps)，获取安装和升级信息。
+如果决定在本地安装并使用 PowerShell，则本快速入门需要使用 AzureRM PowerShell 模块 5.4.1 版本或更高版本。 要查找已安装的版本，请运行 `Get-Module -ListAvailable AzureRM`。 请参阅[安装 Azure PowerShell 模块](/powershell/azure/azurerm/install-azurerm-ps)，获取安装和升级信息。
 
 最后，如果在本地运行 PowerShell，则还将需运行 `Connect-AzureRmAccount`。 该命令创建与 Azure 的连接。
 

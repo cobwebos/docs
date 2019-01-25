@@ -4,7 +4,7 @@ description: 了解如何在 Azure Active Directory 与 Adobe Experience Manager
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: barbkess
 ms.assetid: 88a95bb5-c17c-474f-bb92-1f80f5344b5a
 ms.service: Azure-Active-Directory
@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 12/25/2018
+ms.date: 01/17/2019
 ms.author: jeedes
-ms.openlocfilehash: 536db4e4927c03cafff35a3e811727a566c79dbd
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: 53d1bf57a4a6471fa224de5296484857ed388486
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54062802"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54821543"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-adobe-experience-manager"></a>教程：Azure Active Directory 与 Adobe Experience Manager 的集成
 
@@ -72,7 +72,7 @@ ms.locfileid: "54062802"
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
 
-在本部分中，将基于名为 **Britta Simon** 的测试用户配置和测试 [应用程序名称] 的 Azure AD 单一登录。
+在本部分中，根据名为 **Britta Simon** 的测试用户的指示配置和测试 [应用程序名称] 的 Azure AD 单一登录。
 若要运行单一登录，需要在 Azure AD 用户与 [应用程序名称] 相关用户之间建立链接关系。
 
 若要配置和测试 [应用程序名称] 的 Azure AD 单一登录，需要完成以下构建基块：
@@ -80,8 +80,8 @@ ms.locfileid: "54062802"
 1. **[配置 Azure AD 单一登录](#configure-azure-ad-single-sign-on)** - 使用户能够使用此功能。
 2. **[配置 Adobe Experience Manager 单一登录](#configure-adobe-experience-manager-single-sign-on)** - 在应用程序端配置单一登录。
 3. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-4. **[创建 Adobe Experience Manager 测试用户](#create-adobe-experience-manager-test-user)** - 在 Adobe Experience Manager 中创建 Britta Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
-5. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
+4. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
+5. **[创建 Adobe Experience Manager 测试用户](#create-adobe-experience-manager-test-user)** - 在 Adobe Experience Manager 中创建 Britta Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
 6. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
@@ -94,7 +94,7 @@ ms.locfileid: "54062802"
 
     ![配置单一登录链接](common/select-sso.png)
 
-2. 在“选择单一登录方法”对话框中，选择 SAML/WS-Fed 模式以启用单一登录。
+2. 在**选择单一登录方法**对话框中，选择 **SAML/WS-Fed**模式以启用单一登录。
 
     ![单一登录选择模式](common/select-saml-option.png)
 
@@ -111,7 +111,7 @@ ms.locfileid: "54062802"
     b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<AEM Server Url>/saml_login`
 
     > [!NOTE]
-    > 回复 URL 值不是真实值。 请将回复 URL 值更新为实际回复 URL。 若要获取此值，请联系 [Adobe Experience Manager 客户端支持团队](https://helpx.adobe.com/support/experience-manager.html)来获取此值。 还可以参考 Azure 门户中的“基本 SAML 配置”部分中显示的模式。
+    > 答复 URL 值不是真实值。 请将回复 URL 值更新为实际回复 URL。 若要获取此值，请联系 [Adobe Experience Manager 客户端支持团队](https://helpx.adobe.com/support/experience-manager.html)来获取此值。 还可以参考 Azure 门户中的“基本 SAML 配置”部分中显示的模式。
 
 5. 如果要在 SP 发起的模式下配置应用程序，请单击“设置其他 URL”，并执行以下步骤：
 
@@ -271,4 +271,3 @@ ms.locfileid: "54062802"
 - [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-

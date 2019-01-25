@@ -11,13 +11,13 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: sstein, carlrab
 manager: craigg
-ms.date: 12/05/2018
-ms.openlocfilehash: e0a5d6180c7dfa94abf8dd738c8017a3b332dfd8
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.date: 01/17/2019
+ms.openlocfilehash: 9d7131c6ed1808725f59e53488bedb5ef81a77c3
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53598798"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54389417"
 ---
 # <a name="use-read-only-replicas-to-load-balance-read-only-query-workloads-preview"></a>使用只读副本对只读的查询工作负荷进行负载均衡（预览版）
 
@@ -80,7 +80,7 @@ SELECT DATABASEPROPERTYEX(DB_NAME(), 'Updateability')
 
 ### <a name="powershell-enable-and-disable-read-scale-out"></a>PowerShell：启用和禁用读取扩展
 
-在 Azure PowerShell 中管理读取横向扩展需要安装 Azure PowerShell 2016 年 12 月版或更高版本。 有关最新的 PowerShell 版本，请参阅 [Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps)。
+在 Azure PowerShell 中管理读取横向扩展需要安装 Azure PowerShell 2016 年 12 月版或更高版本。 有关最新的 PowerShell 版本，请参阅 [Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps)。
 
 在 Azure PowerShell 中调用 [Set-AzureRmSqlDatabase](/powershell/module/azurerm.sql/set-azurermsqldatabase) cmdlet，并为 `-ReadScale` 参数传入所需的值 – `Enabled` 或 `Disabled`，即可启用或禁用读取横向扩展。 或者，可以使用 [New-AzureRmSqlDatabase](/powershell/module/azurerm.sql/new-azurermsqldatabase) cmdlet 来创建已启用读取横向扩展的新数据库。
 

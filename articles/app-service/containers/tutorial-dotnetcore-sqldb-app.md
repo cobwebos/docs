@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 04/11/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: fe6a1db295bc8fb1ab8e6c9d2d149be62871e733
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 9695c3d40ee85cf1a46e078776c88ad2f61ed839
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53629809"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54465392"
 ---
 # <a name="build-a-net-core-and-sql-database-app-in-azure-app-service-on-linux"></a>在 Linux 上的 Azure 应用服务中构建 .NET Core 和 SQL 数据库应用
 
@@ -362,9 +362,9 @@ git push azure master
 
 ## <a name="manage-your-azure-app"></a>管理 Azure 应用
 
-转到 [Azure 门户](https://portal.azure.com)查看已创建的应用。
+转到 [Azure 门户](https://portal.azure.com)查看创建的应用。
 
-从左侧菜单中单击“应用服务”，并单击 Azure 应用的名称。
+在左侧菜单中单击“应用服务”，然后单击 Azure 应用的名称。
 
 ![在门户中导航到 Azure 应用](./media/tutorial-dotnetcore-sqldb-app/access-portal.png)
 
@@ -387,7 +387,7 @@ git push azure master
 > * 将日志从 Azure 流式传输到终端
 > * 在 Azure 门户中管理应用
 
-转到下一教程，了解如何将自定义 DNS 名称映射到应用。
+继续学习下一篇教程，了解如何将自定义 DNS 名称映射到应用。
 
 > [!div class="nextstepaction"]
 > [将现有的自定义 DNS 名称映射到 Azure 应用服务](../app-service-web-tutorial-custom-domain.md)

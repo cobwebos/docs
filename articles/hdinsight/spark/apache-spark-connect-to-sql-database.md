@@ -8,13 +8,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 05/01/2018
-ms.openlocfilehash: 8e651f516254d408b15ab4aeae718861dfc2b3e6
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.date: 12/15/2018
+ms.openlocfilehash: 2b818350c19d1d9ff34bcdac0e438def0f859e40
+ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53608283"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54381903"
 ---
 # <a name="use-hdinsight-spark-cluster-to-read-and-write-data-to-azure-sql-database"></a>使用 HDInsight Spark 群集在 Azure SQL 数据库中读取和写入数据
 
@@ -147,7 +147,7 @@ ms.locfileid: "53608283"
 
 1. 使用 SSMS 连接到 Azure SQL 数据库，并确认其中是否显示了 `dbo.hvactable`。
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 启动 SSMS，然后提供以下屏幕截图中所示的连接详细信息，以连接到 Azure SQL 数据库。
+    a. 启动 SSMS，然后提供以下屏幕截图中所示的连接详细信息，以连接到 Azure SQL 数据库。
 
     ![使用 SSMS 连接到 SQL 数据库](./media/apache-spark-connect-to-sql-database/connect-to-sql-db-ssms.png "使用 SSMS 连接到 SQL 数据库")
 

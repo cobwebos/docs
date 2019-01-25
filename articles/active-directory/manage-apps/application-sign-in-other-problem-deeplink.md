@@ -4,7 +4,7 @@ description: 如何对使用 Azure AD 从深层链接 URL 访问应用程序时�
 services: active-directory
 documentationcenter: ''
 author: barbkess
-manager: mtillman
+manager: daveba
 ms.assetid: ''
 ms.service: active-directory
 ms.component: app-mgmt
@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 07/11/2017
 ms.author: barbkess
 ms.reviewer: asteen
-ms.openlocfilehash: c12e223c4e57fccd78ed773f929949c7c63efe9f
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 1ba34fa0bed467d1b6dedc1d5a475bdf04032d6d
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44354517"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54465303"
 ---
 # <a name="problems-signing-in-to-an-application-using-a-deeplink"></a>使用深层链接登录应用程序时出现的问题
 
@@ -250,7 +250,7 @@ ms.locfileid: "44354517"
 
 11. 将鼠标悬停在列表中的“用户”上方以显示“复选框”。 若要将用户添加到“已选择”列表，请单击用户个人资料照片或徽标旁边的复选框。
 
-12. **可选：** 如果想要**添加多个用户**，请在“按名称或电子邮件地址搜索”搜索框中，键入其他**全名**或**电子邮件地址**，然后单击复选框以将此用户添加到“已选择”列表。
+12. **可选：** 如果要“添加多个用户”，请在“按名称或电子邮件地址搜索”搜索框中键入其他“全名”或“电子邮件地址”，然后单击复选框以将此用户添加到“已选择”列表。
 
 13. 在完成用户的选择后，单击“选择”按钮将他们添加到要分配给应用程序的用户和组列表。
 

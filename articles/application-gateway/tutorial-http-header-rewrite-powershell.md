@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 12/20/2018
 ms.author: absha
-ms.openlocfilehash: 8bc0d53080d0653ae630765d8a656cbe8d50b24c
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 4784ac8ac619a1b9a00f2e869d796d05dd9658df
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53971563"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54434404"
 ---
 # <a name="tutorial-create-an-application-gateway-and-rewrite-http-headers"></a>教程：创建应用程序网关和重写 HTTP 标头
 
@@ -37,7 +37,7 @@ ms.locfileid: "53971563"
 
 ## <a name="prerequisites"></a>先决条件
 
-本教程要求在本地运行 Azure PowerShell。 必须安装 Az 模块 1.0.0 或更高版本。 依次运行 `Import-Module Az` 和 `Get-Module Az` 以查找版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-azurerm-ps)。 验证 PowerShell 版本以后，请运行 `Login-AzAccount`，以便创建与 Azure 的连接。
+本教程要求在本地运行 Azure PowerShell。 必须安装 Az 模块 1.0.0 或更高版本。 依次运行 `Import-Module Az` 和 `Get-Module Az` 以查找版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps)。 验证 PowerShell 版本以后，请运行 `Login-AzAccount`，以便创建与 Azure 的连接。
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
 

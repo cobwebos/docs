@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/05/2018
 ms.author: cynthn
-ms.openlocfilehash: 3eeaee9bc6320231f10aa85227e2f43756181806
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: 22a800e65c0f64dfa897433d1ea983006ed62250
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47433474"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54412183"
 ---
 # <a name="create-a-linux-virtual-machine-that-uses-ssh-authentication-with-the-rest-api"></a>使用 REST API 创建使用 SSH 身份验证的 Linux 虚拟机
 
@@ -35,7 +35,7 @@ Azure 中的 Linux 虚拟机 (VM) 包含各种资源（例如磁盘和网络接�
 在创建并提交请求之前，你需要具有以下项：
 
 * 你的订阅的 `{subscription-id}`
-  * 如果你有多个订阅，请参阅[使用多个订阅](/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest#working-with-multiple-subscriptions)
+  * 如果你有多个订阅，请参阅[使用多个订阅](/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest)
 * 提前创建的 `{resourceGroupName}`
 * 位于同一资源组中的[虚拟网络接口](../../virtual-network/virtual-network-network-interface.md)
 * SSH 密钥对（如果还没有，可以[生成一个新的](mac-create-ssh-keys.md)）
@@ -63,9 +63,9 @@ PUT https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/
 
 下面的通用定义用来构建请求正文：
 
-| 名称                       | 必需 | 类型                                                                                | 说明  |
+| 名称                       | 必选 | 类型                                                                                | 说明  |
 |----------------------------|----------|-------------------------------------------------------------------------------------|--------------|
-| location                   | 是     | 字符串                                                                              | 资源位置。 |
+| 位置                   | True     | 字符串                                                                              | 资源位置。 |
 | 名称                       |          | 字符串                                                                              | 虚拟机的名称。 |
 | properties.hardwareProfile |          | [HardwareProfile](/rest/api/compute/virtualmachines/createorupdate#hardwareprofile) | 指定虚拟机的硬件设置。 |
 | properties.storageProfile  |          | [StorageProfile](/rest/api/compute/virtualmachines/createorupdate#storageprofile)   | 指定虚拟机磁盘的存储设置。 |

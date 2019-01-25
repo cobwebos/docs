@@ -3,19 +3,19 @@ title: 在 Azure Active Directory B2C 的自定义策略中定义 JWT 令牌颁�
 description: 在 Azure Active Directory B2C 的自定义策略中定义 JWT 令牌颁发者的技术配置文件。
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 10/30/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 25352d12e578c289ccb4ab8aab60dc55a444762e
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: ae9f55943d4b178096230269215ac771ee1d20a1
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50413496"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54856090"
 ---
 # <a name="define-a-technical-profile-for-a-jwt-token-issuer-in-an-azure-active-directory-b2c-custom-policy"></a>在 Azure Active Directory B2C 自定义策略中定义 JWT 令牌颁发者的技术配置文件
 
@@ -44,7 +44,7 @@ Azure Active Directory (Azure AD) B2C 在每个身份验证流的处理过程中
 
 ## <a name="metadata"></a>元数据
 
-| 属性 | 必选 | Description |
+| 属性 | 必选 | 说明 |
 | --------- | -------- | ----------- |
 | issuer_refresh_token_user_identity_claim_type | 是 | 应在 OAuth2 授权代码和刷新令牌中用作用户标识声明的声明。 默认情况下，除非指定了不同的 SubjectNamingInfo 声明类型，否则应将其设置为 `objectId`。 | 
 | SendTokenResponseBodyWithJsonNumbers | 否 | 始终设置为 `true`。 对于以字符串而不是 JSON 数字形式指定数字值的旧格式，请将此属性设置为 `false`。 依赖于以字符串形式返回此类属性的早期实现的客户端需要此属性。 | 
@@ -60,7 +60,7 @@ Azure Active Directory (Azure AD) B2C 在每个身份验证流的处理过程中
 
 CryptographicKeys 元素包含以下属性：
 
-| 属性 | 必选 | Description |
+| 属性 | 必选 | 说明 |
 | --------- | -------- | ----------- |
 | issuer_secret | 是 | 用于对 JWT 令牌进行签名的 X509 证书（RSA 密钥集）。 这是在[自定义策略入门](active-directory-b2c-get-started-custom.md)中配置的 `B2C_1A_TokenSigningKeyContainer` 密钥。 | 
 | issuer_refresh_token_key | 是 | 用于加密刷新令牌的 X509 证书（RSA 密钥集）。 在[自定义策略入门](active-directory-b2c-get-started-custom.md)中已配置 `B2C_1A_TokenEncryptionKeyContainer` 密钥 |

@@ -4,7 +4,7 @@ description: 了解如何在 Azure Active Directory 与 Canvas 之间配置单�
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: barbkess
 ms.assetid: bfed291c-a33e-410d-b919-5b965a631d45
 ms.service: Azure-Active-Directory
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/02/2018
 ms.author: jeedes
-ms.openlocfilehash: 7612dc441d53f168e4472320c2de1e4431e65e95
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: d9f4a616c1f182c3073c0febf2ba5c251655dc5e
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54065420"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54824331"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-canvas"></a>教程：Azure Active Directory 与 Canvas 集成
 
@@ -92,7 +92,7 @@ ms.locfileid: "54065420"
 
     ![配置单一登录链接](common/select-sso.png)
 
-2. 在“选择单一登录方法”对话框中，选择 SAML/WS-Fed 模式以启用单一登录。
+2. 在**选择单一登录方法**对话框中，选择 **SAML/WS-Fed**模式以启用单一登录。
 
     ![单一登录选择模式](common/select-saml-option.png)
 

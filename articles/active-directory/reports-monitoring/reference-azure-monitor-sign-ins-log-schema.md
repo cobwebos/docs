@@ -4,7 +4,7 @@ description: 介绍在 Azure Monitor（预览版）中使用的 Azure AD 登录�
 services: active-directory
 documentationcenter: ''
 author: priyamohanram
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: 4b18127b-d1d0-4bdc-8f9c-6a4c991c5f75
 ms.service: active-directory
@@ -16,12 +16,12 @@ ms.component: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 0c44501a483b9a988c3ef048d12455eb3e5ae337
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 2957cd12fb6ef37b3e120b90b1500c6a43bb3e04
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53546393"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54813417"
 ---
 # <a name="interpret-the-azure-ad-sign-in-logs-schema-in-azure-monitor-preview"></a>解释 Azure Monitor（预览版）中的 Azure AD 登录日志架构
 
@@ -150,7 +150,7 @@ ms.locfileid: "53546393"
 
 ## <a name="field-descriptions"></a>字段说明
 
-| 字段名 | Description |
+| 字段名 | 说明 |
 |------------|-------------|
 | 时间 | 日期和时间 (UTC)。 |
 | ResourceId | 此值未映射，可以放心地忽略此字段。  |

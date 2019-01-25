@@ -5,7 +5,7 @@ services: active-directory
 keywords: 什么是企业状态漫游, 企业同步, Windows 云
 documentationcenter: ''
 author: MarkusVi
-manager: mtillman
+manager: daveba
 editor: curtand
 ms.component: devices
 ms.assetid: 83b3b58f-94c1-4ab0-be05-20e01f5ae3f0
@@ -16,12 +16,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/25/2018
 ms.author: markvi
-ms.openlocfilehash: 69cc1ab09c5c0462503b4d72961ac46df542738d
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: 82e3a4c43b008a70e8078297dc32777c4ec0b810
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50128785"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54450058"
 ---
 # <a name="what-is-enterprise-state-roaming"></a>什么是企业状态漫游？
 
@@ -33,7 +33,7 @@ ms.locfileid: "50128785"
 
 企业状态漫游可用于多个 Azure 区域。 可在 Azure Active Directory 下的“[Azure 服务（按区域）](https://azure.microsoft.com/regions/#services)”页找到更新的可用区域列表。
 
-| 文章 | Description |
+| 文章 | 说明 |
 | --- | --- |
 | [在 Azure Active Directory 中启用企业状态漫游](enterprise-state-roaming-enable.md) |企业状态漫游可供任何拥有高级 Azure Active Directory (Azure AD) 订阅的组织使用。 有关如何获取 Azure AD 订阅的更多详细信息，请参阅“[Azure AD 产品](https://azure.microsoft.com/services/active-directory)”页。 |
 | [Settings and data roaming FAQ](enterprise-state-roaming-faqs.md)（设置和数据漫游的常见问题） |本主题将解答 IT 管理员可能会遇到的一些设置和应用数据同步问题。 |

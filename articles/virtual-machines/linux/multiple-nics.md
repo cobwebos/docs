@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/07/2018
 ms.author: zarhoads
-ms.openlocfilehash: 024cf099dd65db036ae0b68d7094a60427ffa69c
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 300391d9a5079eefc90ba06ba819fc6d8a91ca05
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54119878"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54851685"
 ---
 # <a name="how-to-create-a-linux-virtual-machine-in-azure-with-multiple-network-interface-cards"></a>如何在 Azure 中创建具有多个网络接口卡的 Linux 虚拟机
 
@@ -67,7 +67,7 @@ az network nsg create \
 ```
 
 ## <a name="create-and-configure-multiple-nics"></a>创建和配置多个 NIC
-使用 [az network nic create](/cli/azure/network/nic#az_network_nic_create) 创建两个 NIC。 以下示例创建两个连接到网络安全组的 NIC（名为 myNic1 和 myNic2），其中一个 NIC 连接到每个子网：
+使用 [az network nic create](/cli/azure/network/nic) 创建两个 NIC。 以下示例创建两个连接到网络安全组的 NIC（名为 myNic1 和 myNic2），其中一个 NIC 连接到每个子网：
 
 ```azurecli
 az network nic create \
@@ -105,7 +105,7 @@ az vm create \
 ## <a name="add-a-nic-to-a-vm"></a>将 NIC 添加到 VM
 之前的步骤创建了具有多个 NIC 的 VM。 还可使用 Azure CLI 将 NIC 添加到现有 VM。 不同的 [VM 大小](sizes.md)支持不同数目的 NIC，因此请相应地调整 VM 的大小。 如果需要，可[调整 VM 的大小](change-vm-size.md)。
 
-使用 [az network nic create](/cli/azure/network/nic#az_network_nic_create) 创建另一 NIC。 以下示例创建一个名为 myNic3 的 NIC，该 NIC 连接到后端子网和之前步骤中创建的网络安全组：
+使用 [az network nic create](/cli/azure/network/nic) 创建另一 NIC。 以下示例创建一个名为 myNic3 的 NIC，该 NIC 连接到后端子网和之前步骤中创建的网络安全组：
 
 ```azurecli
 az network nic create \
@@ -132,7 +132,7 @@ az vm nic add \
     --nics myNic3
 ```
 
-使用 [az vm start](/cli/azure/vm#az_vm_start) 启动 VM：
+使用 [az vm start](/cli/azure/vm) 启动 VM：
 
 ```azurecli
 az vm start --resource-group myResourceGroup --name myVM
@@ -156,7 +156,7 @@ az vm nic remove \
     --nics myNic3
 ```
 
-使用 [az vm start](/cli/azure/vm#az_vm_start) 启动 VM：
+使用 [az vm start](/cli/azure/vm) 启动 VM：
 
 ```azurecli
 az vm start --resource-group myResourceGroup --name myVM

@@ -8,14 +8,14 @@ manager: timlt
 editor: ''
 ms.service: event-grid
 ms.topic: reference
-ms.date: 08/17/2018
+ms.date: 01/17/2019
 ms.author: kgremban
-ms.openlocfilehash: a86b22b3327b2353dd37a9f9863337d12a009434
-ms.sourcegitcommit: a1140e6b839ad79e454186ee95b01376233a1d1f
+ms.openlocfilehash: df1c0f8256b49e23b720df47c513fba8c62677b5
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43143567"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54475197"
 ---
 # <a name="azure-event-grid-event-schema-for-iot-hub"></a>IoT 中心的 Azure 事件网格事件架构
 
@@ -27,7 +27,7 @@ ms.locfileid: "43143567"
 
 Azure IoT 中心发出以下事件类型：
 
-| 事件类型 | Description |
+| 事件类型 | 说明 |
 | ---------- | ----------- |
 | Microsoft.Devices.DeviceCreated | 当设备注册到 IoT 中心时发布。 |
 | Microsoft.Devices.DeviceDeleted | 当设备从 IoT 中心删除时发布。 | 
@@ -111,7 +111,7 @@ DeviceCreated 和 DeviceDeleted 事件的架构具有相同结构。 此示例�
 
 所有事件均包含相同的顶级数据： 
 
-| 属性 | Type | Description |
+| 属性 | 类型 | 说明 |
 | -------- | ---- | ----------- |
 | id | 字符串 | 事件的唯一标识符。 |
 | 主题 | 字符串 | 事件源的完整资源路径。 此字段不可写入。 事件网格提供此值。 |
@@ -124,14 +124,14 @@ DeviceCreated 和 DeviceDeleted 事件的架构具有相同结构。 此示例�
 
 对于所有 IoT 中心事件，数据对象包含以下属性：
 
-| 属性 | Type | Description |
+| 属性 | 类型 | 说明 |
 | -------- | ---- | ----------- |
 | hubName | 字符串 | 已创建或已删除设备的 IoT 中心的名称。 |
 | deviceId | 字符串 | 设备的唯一标识符。 此区分大小写的字符串最多可长达 128 个字符，并支持 ASCII 7 位字母数字字符加上以下特殊字符：`- : . + % _ # * ? ! ( ) , = @ ; $ '`。 |
 
 每个事件发布者的数据对象内容是不同的。 对于**设备已连接**和**设备已断开连接** IoT 中心事件，数据对象包含以下属性：
 
-| 属性 | Type | Description |
+| 属性 | 类型 | 说明 |
 | -------- | ---- | ----------- |
 | moduleId | 字符串 | 模块的唯一标识符。 此字段是仅适用于模块设备的输出。 此区分大小写的字符串最多可长达 128 个字符，并支持 ASCII 7 位字母数字字符加上以下特殊字符：`- : . + % _ # * ? ! ( ) , = @ ; $ '`。 |
 | deviceConnectionStateEventInfo | 对象 | 设备连接状态事件信息
@@ -139,7 +139,7 @@ DeviceCreated 和 DeviceDeleted 事件的架构具有相同结构。 此示例�
 
 每个事件发布者的数据对象内容是不同的。 对于**设备已创建**和**设备已删除** IoT 中心事件，数据对象包含以下属性：
 
-| 属性 | Type | Description |
+| 属性 | 类型 | 说明 |
 | -------- | ---- | ----------- |
 | twin | 对象 | 有关设备孪生（即应用程序设备元数据的云表示形式）的信息。 | 
 | deviceID | 字符串 | 设备孪生的唯一标识符。 | 

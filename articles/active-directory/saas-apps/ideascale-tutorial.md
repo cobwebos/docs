@@ -4,7 +4,7 @@ description: 了解如何在 Azure Active Directory 和 IdeaScale 之间配置�
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: e16dda6b-fdf9-43cc-9bbb-a523f085a8af
 ms.service: active-directory
 ms.component: saas-app-tutorial
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/16/2017
 ms.author: jeedes
-ms.openlocfilehash: ecb73e4b520936b573254f2cf209d4a02c0fdd32
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: ca5cac1888fe7e126d6bdc8bd4a2e9bc192f4d41
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52848742"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54810051"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ideascale"></a>教程：Azure Active Directory 与 IdeaScale 集成
 
@@ -112,7 +112,7 @@ ms.locfileid: "52848742"
 
     ![配置单一登录](./media/ideascale-tutorial/tutorial_ideascale_url.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“登录 URL”文本框中，使用以下模式键入 URL： `https://<companyname>.ideascale.com`
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL： `https://<companyname>.ideascale.com`
 
     b. 在“标识符”文本框中，使用以下模式键入 URL：
     | |
@@ -153,7 +153,7 @@ ms.locfileid: "52848742"
    
     ![单一登录设置](./media/ideascale-tutorial/ic790850.png "Single Signon Settings")
    
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“SAML IdP 实体 ID”文本框中，粘贴从 Azure 门户复制的“SAML 实体 ID”值。
+    a. 在“SAML IdP 实体 ID”文本框中，粘贴从 Azure 门户复制的“SAML 实体 ID”值。
 
     b. 从 Azure 门户复制下载的元数据文件内容，然后将其粘贴到“SAML IdP 元数据”文本框。
 
@@ -188,7 +188,7 @@ ms.locfileid: "52848742"
  
     ![创建 Azure AD 测试用户](./media/ideascale-tutorial/create_aaduser_04.png) 
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
+    a. 在“名称”文本框中，键入 **BrittaSimon**。
 
     b. 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
@@ -218,7 +218,7 @@ ms.locfileid: "52848742"
    
     ![添加新成员](./media/ideascale-tutorial/ic790853.png "Add New Member")
    
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“电子邮件地址”文本框中，键入要预配的有效 AAD 帐户的电子邮件地址。
+    a. 在“电子邮件地址”文本框中，键入要预配的有效 AAD 帐户的电子邮件地址。
    
     b. 单击“保存更改”。 
    

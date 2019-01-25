@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 04/05/2017
 ms.author: allclark
 ms.custom: mvc
-ms.openlocfilehash: 1764fc15a888fbe15cc14b990721240d1baf3c40
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: cb8815db5e16603ca4578f6d3d943cbef62e49af
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2018
-ms.locfileid: "29851660"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54461139"
 ---
 # <a name="deploy-the-lamp-stack-in-a-load-balanced-virtual-machine-scale-set"></a>在负载均衡虚拟机规模集中部署 LAMP 堆栈
 
@@ -59,7 +59,7 @@ az group delete -n myResourceGroup
 | [az vmss extension set](https://docs.microsoft.com/cli/azure/vmss/extension#az_vmss_extension_set) | 创建对 VM 部署运行自定义脚本的扩展 |
 | [az vmss update-instances](https://docs.microsoft.com/cli/azure/vmss#az_vmss_update_instances) | 在将扩展应用到规模集之前部署的 VM 实例上运行此自定义脚本。 |
 | [az vmss scale](https://docs.microsoft.com/cli/azure/vmss#az_vmss_scale) | 通过添加更多 VM 实例来扩大规模集。 部署实例时，在实例上运行此自定义脚本。 |
-| [az network public-ip list](https://docs.microsoft.com/cli/azure/network/public-ip#az_network_public_ip_list) | 获取示例创建的 VM 的 IP 地址。 |
+| [az network public-ip list](https://docs.microsoft.com/cli/azure/network/public-ip) | 获取示例创建的 VM 的 IP 地址。 |
 | [az network lb show](https://docs.microsoft.com/cli/azure/network/lb#az_network_lb_show) | 获取负载均衡器使用的前端和后端端口。 |
 
 ## <a name="next-steps"></a>后续步骤

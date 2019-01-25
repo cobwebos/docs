@@ -4,7 +4,7 @@ description: 介绍在 Azure Monitor（预览版）中使用的 Azure AD 审核�
 services: active-directory
 documentationcenter: ''
 author: priyamohanram
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: 4b18127b-d1d0-4bdc-8f9c-6a4c991c5f75
 ms.service: active-directory
@@ -16,12 +16,12 @@ ms.component: report-monitor
 ms.date: 12/14/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 28e1ab1f950cf16e096946ffdef343504460e70f
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 04ea9387607be9b4a82eefe3c8dd3daa83867978
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53543676"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54818245"
 ---
 # <a name="interpret-the-azure-ad-audit-logs-schema-in-azure-monitor-preview"></a>解释 Azure Monitor 中的 Azure AD 审核日志架构（预览版）
 
@@ -146,7 +146,7 @@ ms.locfileid: "53543676"
 
 ## <a name="field-and-property-descriptions"></a>字段和属性说明
 
-| 字段名 | Description |
+| 字段名 | 说明 |
 |------------|-------------|
 | time       | 日期和时间 (UTC)。 |
 | operationName | 操作的名称。 |
@@ -166,7 +166,7 @@ ms.locfileid: "53543676"
 
 <br>
 
-| 属性名称 | Description |
+| 属性名称 | 说明 |
 |---------------|-------------|
 | AuditEventCategory | 审核事件的类型。 它可以是“用户管理”、“应用程序管理”或其他类型。|
 | 标识类型 | 类型可以是“应用程序”或“用户”。 |

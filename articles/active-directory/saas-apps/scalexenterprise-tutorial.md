@@ -4,7 +4,7 @@ description: 了解如何在 Azure Active Directory 和 ScaleX Enterprise 之间
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: c2379a8d-a659-45f1-87db-9ba156d83183
 ms.service: active-directory
 ms.component: saas-app-tutorial
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/20/2017
 ms.author: jeedes
-ms.openlocfilehash: 60beecc0895fbfb5d3af7817e8b76e0819c89a99
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: fb01aec04af10d3e413213dc9821a27b42a0a9d2
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52835380"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54822971"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-scalex-enterprise"></a>教程：Azure Active Directory 与 ScaleX Enterprise 的集成
 
@@ -112,7 +112,7 @@ ms.locfileid: "52835380"
 
     ![配置单一登录](./media/scalexenterprise-tutorial/tutorial_scalexenterprise_url1.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“标识符”文本框中，使用以下模式键入值：`https://platform.rescale.com/saml2/<company id>/`
+    a. 在“标识符”文本框中，使用以下模式键入值：`https://platform.rescale.com/saml2/<company id>/`
 
     b. 在 **“回复 URL”** 文本框中，使用以下模式键入 URL：`https://platform.rescale.com/saml2/<company id>/acs/`
 
@@ -129,7 +129,7 @@ ms.locfileid: "52835380"
 
     ![配置单一登录](./media/scalexenterprise-tutorial/scalex_attributes.png)
     
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 右键单击属性**名称**并单击“删除”。
+    a. 右键单击属性**名称**并单击“删除”。
 
     ![配置单一登录](./media/scalexenterprise-tutorial/delete_attribute_name.png)
 
@@ -166,7 +166,7 @@ ms.locfileid: "52835380"
 
     ![配置单一登录](./media/scalexenterprise-tutorial/scalex_admin_save.png) 
     
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 选择“创建可以通过 SSO 进行身份验证的任何用户”。
+    a. 选择“创建可以通过 SSO 进行身份验证的任何用户”。
 
     b. **服务提供商 saml**：粘贴 urn:oasis:names:tc:SAML:2.0:nameid-format:persistent 值
 
@@ -209,7 +209,7 @@ ms.locfileid: "52835380"
  
     ![创建 Azure AD 测试用户](./media/scalexenterprise-tutorial/create_aaduser_04.png) 
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
+    a. 在“名称”文本框中，键入 **BrittaSimon**。
 
     b. 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 

@@ -10,12 +10,12 @@ ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.workload: big-data
 ms.date: 09/14/2018
-ms.openlocfilehash: 76bfcd5e1b7e0215cfea7fbbfe1c51726d305fbc
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 68691430621c0055b3465b9428a8206c6a544a97
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52969833"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54412523"
 ---
 # <a name="how-to-set-up-a-cicd-pipeline-for-azure-data-lake-analytics"></a>如何为 Azure Data Lake Analytics 设置 CI/CD 管道  
 
@@ -246,7 +246,7 @@ Main
 param(
     [Parameter(Mandatory=$true)][string]$ADLSName, # ADLS account name to upload U-SQL scripts
     [Parameter(Mandatory=$true)][string]$ArtifactsRoot, # Root folder of U-SQL project build output
-    [Parameter(Mandatory=$false)][string]$DesitinationFolder = "USQLScriptSource" # Desitination folder in ADLS
+    [Parameter(Mandatory=$false)][string]$DestinationFolder = "USQLScriptSource" # Destination folder in ADLS
 )
 
 Function UploadResources()
@@ -261,7 +261,7 @@ Function UploadResources()
     foreach($file in $files)
     {
         Write-Host "Uploading file: $($file.Name)"
-        Import-AzureRmDataLakeStoreItem -AccountName $ADLSName -Path $file.FullName -Destination "/$(Join-Path $DesitinationFolder $file)" -Force
+        Import-AzureRmDataLakeStoreItem -AccountName $ADLSName -Path $file.FullName -Destination "/$(Join-Path $DestinationFolder $file)" -Force
     }
 }
 
@@ -452,7 +452,7 @@ U-SQL 数据库项目的生成输出是一个 U-SQL 数据库部署包，名称�
 
 #### <a name="common-parameters"></a>通用参数
 
-| 参数 | Description | 默认值 | 必选 |
+| 参数 | 说明 | 默认值 | 必选 |
 |---------|-----------|-------------|--------|
 |程序包|要部署的 U-SQL 数据库部署包的路径。|Null|true|
 |数据库|要部署到或创建的数据库名称。|master|false|
@@ -461,13 +461,13 @@ U-SQL 数据库项目的生成输出是一个 U-SQL 数据库部署包，名称�
 
 #### <a name="parameter-for-local-deployment"></a>本地部署的参数
 
-|参数|Description|默认值|必选|
+|参数|说明|默认值|必选|
 |---------|-----------|-------------|--------|
 |DataRoot|本地数据根文件夹的路径。|Null|true|
 
 #### <a name="parameters-for-azure-data-lake-analytics-deployment"></a>Azure Data Lake Analytics 部署的参数
 
-|参数|Description|默认值|必选|
+|参数|说明|默认值|必选|
 |---------|-----------|-------------|--------|
 |帐户|按帐户名称指定部署到哪个 Azure Data Lake Analytics 帐户。|Null|true|
 |resourceGroup|Azure Data Lake Analytics 帐户的 Azure 资源组名称。|Null|true|

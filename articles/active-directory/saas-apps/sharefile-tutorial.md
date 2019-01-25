@@ -4,7 +4,7 @@ description: 了解如何在 Azure Active Directory 和 Citrix ShareFile 之间�
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: barbkess
 ms.assetid: e14fc310-bac4-4f09-99ef-87e5c77288b6
 ms.service: Azure-Active-Directory
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/24/2018
 ms.author: jeedes
-ms.openlocfilehash: eab9970915e3c20eb6b0a7a4bff48490bdca83b8
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 3cd57c276ff5e5e5fed9db2f55ac2fc0e1443b3a
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53976471"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54821458"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-citrix-sharefile"></a>教程：Azure Active Directory 与 Citrix ShareFile 的集成
 
@@ -92,7 +92,7 @@ ms.locfileid: "53976471"
 
     ![配置单一登录链接](common/select-sso.png)
 
-2. 在“选择单一登录方法”对话框中，选择 SAML/WS-Fed 模式以启用单一登录。
+2. 在**选择单一登录方法**对话框中，选择 **SAML/WS-Fed**模式以启用单一登录。
 
     ![单一登录选择模式](common/select-saml-option.png)
 
@@ -104,7 +104,7 @@ ms.locfileid: "53976471"
 
     ![Citrix ShareFile 域和 URL 单一登录信息](common/sp-identifier-reply.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<tenant-name>.sharefile.com/saml/login`。
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<tenant-name>.sharefile.com/saml/login`。
 
     b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：
 
@@ -155,7 +155,7 @@ ms.locfileid: "53976471"
    
     ![单一登录](./media/sharefile-tutorial/ic773628.png "单一登录")
    
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 单击“启用 SAML”。
+    a. 单击“启用 SAML”。
     
     b. 在“IDP 证书颁发者/实体 ID”文本框中，粘贴从 Azure 门户复制的“Azure AD 标识符”值。
 
@@ -234,7 +234,7 @@ ms.locfileid: "53976471"
    
     ![基本信息](./media/sharefile-tutorial/IC799951.png "基本信息")
    
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“电子邮件地址”文本框中，键入 Britta Simon 的电子邮件地址，如 brittasimon@contoso.com。
+    a. 在“电子邮件地址”文本框中，键入 Britta Simon 的电子邮件地址，如 brittasimon@contoso.com。
    
     b. 在“名字”文本框中，输入用户的名字，如 Britta。
    

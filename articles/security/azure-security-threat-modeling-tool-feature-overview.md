@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: rodsan
-ms.openlocfilehash: 8bbc13aa77c50c6ae02ecc67869035e7ec85effa
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.openlocfilehash: 601f3bf05388406c8f96a7351f7fb3aa4de2650a
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 01/17/2019
-ms.locfileid: "54359334"
+ms.locfileid: "54389327"
 ---
 # <a name="threat-modeling-tool-feature-overview"></a>威胁建模工具功能概述
 
@@ -207,5 +207,5 @@ Threat Modeling Tool 可帮助满足你的威胁建模需求。 若要获取此�
 
 ## <a name="next-steps"></a>后续步骤
 
-* 若要为社区提供模板，请转到我们的 [GitHub](https://github.com/Microsoft/threat-modeling-templates) 页。 
-* 若要开始使用此工具，请转到[下载](https://aka.ms/tmtpreview)页。
+- 将你的问题、评论和疑问发送至 tmtextsupport@microsoft.com。 **[下载](https://aka.ms/threatmodelingtool)** 威胁建模工具以开始。
+- 若要为社区提供模板，请转到我们的 [GitHub](https://github.com/Microsoft/threat-modeling-templates) 页。

@@ -4,7 +4,7 @@ description: 了解如何在 Azure Active Directory 与 Box 之间配置单一�
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: barbkess
 ms.assetid: 3b565c8d-35e2-482a-b2f4-bf8fd7d8731f
 ms.service: Azure-Active-Directory
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/18/2018
 ms.author: jeedes
-ms.openlocfilehash: 188405d110b164d2c83a2a25d0c8705cba04a9e3
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.openlocfilehash: bc54df3ce727eedb5638ba8f43cc7489fd2497c5
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53810859"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54813230"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-box"></a>教程：Azure Active Directory 与 Box 集成
 
@@ -94,7 +94,7 @@ ms.locfileid: "53810859"
 
     ![配置单一登录链接](common/select-sso.png)
 
-2. 在“选择单一登录方法”对话框中，选择 SAML/WS-Fed 模式以启用单一登录。
+2. 在**选择单一登录方法**对话框中，选择 **SAML/WS-Fed**模式以启用单一登录。
 
     ![单一登录选择模式](common/select-saml-option.png)
 
@@ -106,7 +106,7 @@ ms.locfileid: "53810859"
 
     ![Box 域和 URL 单一登录信息](common/sp-identifier.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<SUBDOMAIN>.account.box.com`
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<SUBDOMAIN>.account.box.com`
 
     b. 在“标识符(实体 ID)”文本框中，键入 URL：`box.net`
 

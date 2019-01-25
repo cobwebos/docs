@@ -16,12 +16,13 @@ ms.workload: infrastructure
 ms.date: 11/14/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 2716838b28bc6dc5155ab7fbb6e1b4966b63f4dc
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.component: disks
+ms.openlocfilehash: 86bf01674e208446de8826c3deb0d11e9fd6576e
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54266104"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54464054"
 ---
 # <a name="tutorial---manage-azure-disks-with-the-azure-cli"></a>教程 - 使用 Azure CLI 管理 Azure 磁盘
 

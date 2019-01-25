@@ -4,7 +4,7 @@ description: 了解如何在 Azure Active Directory 和 Dropbox for Business 之
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: barbkess
 ms.assetid: 63502412-758b-4b46-a580-0e8e130791a1
 ms.service: Azure-Active-Directory
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/20/2018
 ms.author: jeedes
-ms.openlocfilehash: a05a246a3bdf0594484cbbf89998e337d2be5a12
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: cb639f04cec28596c528691066e60b087ca7b09a
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53974958"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54808870"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-dropbox-for-business"></a>教程：Azure Active Directory 与 Dropbox for Business 的集成
 
@@ -94,7 +94,7 @@ ms.locfileid: "53974958"
 
     ![配置单一登录链接](common/select-sso.png)
 
-2. 在“选择单一登录方法”对话框中，选择 SAML/WS-Fed 模式以启用单一登录。
+2. 在**选择单一登录方法**对话框中，选择 **SAML/WS-Fed**模式以启用单一登录。
 
     ![单一登录选择模式](common/select-saml-option.png)
 
@@ -106,7 +106,7 @@ ms.locfileid: "53974958"
 
     ![Dropbox for Business 域和 URL 单一登录信息](common/sp-identifier.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“登录 URL”文本框中，使用以下模式键入 URL：`https://www.dropbox.com/sso/<id>`
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://www.dropbox.com/sso/<id>`
 
     b. 在“标识符(实体 ID)”文本框中，键入值：`Dropbox`
 
@@ -153,7 +153,7 @@ ms.locfileid: "53974958"
 
     ![配置单一登录](./media/dropboxforbusiness-tutorial/configure5.png "配置单一登录")
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“单一登录”的下拉列表中选择“必选”选项。
+    a. 在“单一登录”的下拉列表中选择“必选”选项。
 
     b. 单击“添加单一 URL”，在“标识提供者登录 URL”文本框中，粘贴从 Azure 门户中复制的“登录 URL”值，然后选择“完成”。
 

@@ -3,7 +3,7 @@ title: Microsoft Authenticator 应用概述 - Azure Active Directory | Microsoft
 description: 了解如何设置和使用 Microsoft Authenticator 应用。
 services: active-directory
 author: eross-msft
-manager: mtillman
+manager: daveba
 ms.reviewer: sahenry
 ms.service: active-directory
 ms.component: user-help
@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: overview
 ms.date: 07/30/2018
 ms.author: lizross
-ms.openlocfilehash: e0fe2ade2e50ff549cb18f84a3c15830255ca0fb
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 611c9640a5cb546460d0fd4db863bc63543ad135
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51249585"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54810986"
 ---
 # <a name="microsoft-authenticator-app"></a>Microsoft Authenticator 应用
 
@@ -25,7 +25,7 @@ ms.locfileid: "51249585"
 
 通过在输入密码后执行双重验证，Microsoft Authenticator 应用可帮助你确保帐户安全。 但你是否知道，它能完全取代 Microsoft 个人帐户密码？ 了解如何设置和使用 Microsoft Authenticator 应用。
 
-|文章 |Description |
+|文章 |说明 |
 |------|------------|
 |[Microsoft Authenticator 应用入门](microsoft-authenticator-app-how-to.md)|介绍在何处采用何种方法获取和安装适用于 [Android](https://go.microsoft.com/fwlink/?linkid=866594)、[iOS](https://go.microsoft.com/fwlink/?linkid=866594) 和 [Windows Phone](https://go.microsoft.com/fwlink/?Linkid=825071) 的 Microsoft Authenticator 应用。|
 |[使用 Microsoft Authenticator 应用备份和恢复帐户凭据](microsoft-authenticator-app-backup-and-recovery.md)| 提供有关如何使用 Microsoft Authenticator 应用备份和恢复帐户凭据的信息。|

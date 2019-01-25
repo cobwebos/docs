@@ -3,7 +3,7 @@ title: Azure Active Directory 门户中“标记为风险用户”的用户的�
 description: 了解 Azure Active Directory 门户中“标记为风险用户”的用户的安全报告
 services: active-directory
 author: priyamohanram
-manager: mtillman
+manager: daveba
 ms.assetid: addd60fe-d5ac-4b8b-983c-0736c80ace02
 ms.service: active-directory
 ms.devlang: na
@@ -14,12 +14,12 @@ ms.component: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: e81b87a6cbaddf61492fa1fc41e66950eb7ce1d7
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: d7ca42f9446d2a6876e695afd26e17cce29230a3
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53191615"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54811958"
 ---
 # <a name="remediate-users-flagged-for-risk-in-the-azure-active-directory-portal"></a>修正 Azure Active Directory 门户中“标记为风险用户”的用户
 
@@ -62,7 +62,7 @@ Microsoft 致力于保护你的环境的安全。 为此，Microsoft 持续监�
 2.  为所有用户[启用多重身份验证](https://aka.ms/MFAuth)。 
 3.  对每个受影响的帐户使用此[修正脚本](https://aka.ms/remediate)以自动执行以下步骤： 
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 重置密码以保护帐户安全并终止活动会话。
+    a. 重置密码以保护帐户安全并终止活动会话。
 
     b. 删除邮箱委托。
 

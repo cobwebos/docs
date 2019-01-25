@@ -4,7 +4,7 @@ description: 了解如何在 Azure Active Directory 与 Palo Alto Networks - Glo
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: barbkess
 ms.assetid: 03bef6f2-3ea2-4eaa-a828-79c5f1346ce5
 ms.service: Azure-Active-Directory
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/11/2018
 ms.author: jeedes
-ms.openlocfilehash: 16bcd61d226fe97e9f3e4eb5c40f2fdf6c304a12
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.openlocfilehash: fb153317d90cf94781c5bb64dc8d5ce65021adcf
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53808275"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54822869"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-palo-alto-networks---globalprotect"></a>教程：Azure Active Directory 与 Palo Alto Networks - GlobalProtect 集成
 
@@ -93,7 +93,7 @@ ms.locfileid: "53808275"
 
     ![配置单一登录链接](common/select-sso.png)
 
-2. 在“选择单一登录方法”对话框中，选择 SAML/WS-Fed 模式以启用单一登录。
+2. 在**选择单一登录方法**对话框中，选择 **SAML/WS-Fed**模式以启用单一登录。
 
     ![单一登录选择模式](common/select-saml-option.png)
 
@@ -105,7 +105,7 @@ ms.locfileid: "53808275"
 
     ![Palo Alto Networks - GlobalProtect 域和 URL 单一登录信息](common/sp-identifier.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<Customer Firewall URL>`
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<Customer Firewall URL>`
 
     b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`https://<Customer Firewall URL>/SAML20/SP`
 
@@ -171,7 +171,7 @@ ms.locfileid: "53808275"
 
     ![配置 Palo Alto 单一登录](./media/paloaltoglobalprotect-tutorial/tutorial_paloaltoadmin_admin3.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“配置文件名称”文本框中提供名称，如 Azure AD GlobalProtect。
+    a. 在“配置文件名称”文本框中提供名称，如 Azure AD GlobalProtect。
 
     b. 在“标识提供者元数据”中，单击“浏览”并选择从 Azure 门户下载的元数据 xml 文件。
 

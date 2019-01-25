@@ -3,19 +3,19 @@ title: 什么是与 Azure AD 的密码哈希同步？ | Microsoft Docs
 description: 介绍了密码哈希同步。
 services: active-directory
 author: billmath
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: get-started-article
 ms.date: 12/05/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: a3e0c13312557503f4c2e1900f3c13eb45912345
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: ae4244a9ce17cdcb5942100e97b67916d455d019
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53110308"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54470236"
 ---
 # <a name="what-is-password-hash-synchronization-with-azure-ad"></a>什么是与 Azure AD 的密码哈希同步？
 密码哈希同步是用来实现混合标识的登录方法之一。 Azure AD Connect 将用户密码的哈希从本地 Active Directory 实例同步到基于云的 Azure AD 实例。

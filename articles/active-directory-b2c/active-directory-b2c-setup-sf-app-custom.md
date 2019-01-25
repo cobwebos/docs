@@ -3,19 +3,19 @@ title: 在 Azure Active Directory B2C 中使用自定义策略设置使用 Sales
 description: 在 Azure Active Directory B2C 中使用自定义策略设置使用 Salesforce SAML 提供程序的登录。
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/21/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 03961cab8bcf71a9db69937257385db5d3b500d8
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: 920d5924271d31848b455ebece9e4832548e1b06
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51684097"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54846398"
 ---
 # <a name="set-up-sign-in-with-a-salesforce-saml-provider-by-using-custom-policies-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中使用自定义策略设置使用 Salesforce SAML 提供程序的登录
 

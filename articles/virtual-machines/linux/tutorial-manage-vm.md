@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 03/23/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 5605ac9f3ac4f9a1c85cfedf257cb721205564db
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: bc548ea23249f89fadcec481cc97b6ca3ed2b909
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51613420"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54466850"
 ---
 # <a name="tutorial-create-and-manage-linux-vms-with-the-azure-cli"></a>教程：使用 Azure CLI 创建和管理 Linux VM
 
@@ -155,7 +155,7 @@ az vm create --resource-group myResourceGroupVM --name myVM2 --image OpenLogic:C
 
 下表将大小分类成了多个用例。  
 
-| 类型                     | 大小           |    Description       |
+| 类型                     | 大小           |    说明       |
 |--------------------------|-------------------|------------------------------------------------------------------------------------------------------------------------------------|
 | [常规用途](sizes-general.md)         |Dsv3、Dv3、DSv2、Dv2、DS、D、Av2、A0-7| CPU 与内存之比均衡。 适用于开发/测试、小到中型应用程序和数据解决方案。  |
 | [计算优化](sizes-compute.md)   | Fs, F             | 高 CPU 与内存之比。 适用于中等流量的应用程序、网络设备和批处理。        |
@@ -211,7 +211,7 @@ az vm create \
 
 ### <a name="resize-a-vm"></a>调整 VM 的大小
 
-部署 VM 后，可调整其大小以增加或减少资源分配。 可通过 [az vm show](/cli/azure/vm#az_vm_show) 查看 VM 的当前大小：
+部署 VM 后，可调整其大小以增加或减少资源分配。 可通过 [az vm show](/cli/azure/vm) 查看 VM 的当前大小：
 
 ```azurecli-interactive
 az vm show --resource-group myResourceGroupVM --name myVM --query hardwareProfile.vmSize
@@ -228,7 +228,7 @@ az vm list-vm-resize-options --resource-group myResourceGroupVM --name myVM --qu
 az vm resize --resource-group myResourceGroupVM --name myVM --size Standard_DS4_v2
 ```
 
-如果所需大小在当前群集上不可用，则需解除分配 VM，才能执行调整大小操作。 使用 [az vm deallocate]( /cli/azure/vm#az_vm_deallocate) 命令停止和解除分配 VM。 请注意，重新打开 VM 的电源时，可能会删除临时磁盘上的所有数据。 除非使用静态 IP 地址，否则公共 IP 地址也会更改。 
+如果所需大小在当前群集上不可用，则需解除分配 VM，才能执行调整大小操作。 使用 [az vm deallocate]( /cli/azure/vm) 命令停止和解除分配 VM。 请注意，重新打开 VM 的电源时，可能会删除临时磁盘上的所有数据。 除非使用静态 IP 地址，否则公共 IP 地址也会更改。 
 
 ```azurecli-interactive 
 az vm deallocate --resource-group myResourceGroupVM --name myVM
@@ -252,7 +252,7 @@ Azure VM 可能会处于多种电源状态之一。 从虚拟机监控程序的�
 
 ### <a name="power-states"></a>电源状态
 
-| 电源状态 | Description
+| 电源状态 | 说明
 |----|----|
 | 正在启动 | 指示正在启动虚拟机。 |
 | 正在运行 | 指示虚拟机正在运行。 |
