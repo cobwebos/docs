@@ -160,8 +160,6 @@ items:
       items:
       - name: 更新 Azure VM 的移动服务
         href: azure-to-azure-autoupdate.md
-      - name: Azure Site Recovery 中的更新
-        href: service updates-how-to.md
   - name: VMware 到 Azure 的灾难恢复
     items:
     - name: 设置网络
@@ -236,8 +234,6 @@ items:
         href: vmware-azure-manage-process-server.md
       - name: 管理 vCenter 服务器
         href: vmware-azure-manage-vcenter.md
-      - name: Azure Site Recovery 中的更新
-        href: service updates-how-to.md
       - name: 删除服务器并禁用保护
         href: site-recovery-manage-registration-and-protection.md
       - name: 删除保管库
@@ -278,8 +274,6 @@ items:
         href: vmware-azure-manage-process-server.md
       - name: 删除服务器并禁用保护
         href: site-recovery-manage-registration-and-protection.md
-      - name: Azure Site Recovery 中的更新
-        href: service updates-how-to.md
       - name: 删除保管库
         href: delete-vault.md
   - name: Azure Stack VM 灾难恢复
@@ -326,12 +320,8 @@ items:
         href: hyper-v-azure-failback.md
     - name: 管理
       items:
-      - name: 升级已配置了 Site Recovery 的 Windows Servers
-        href: upgrade-2012R2-to-2016.md
       - name: 删除服务器并禁用保护
         href: site-recovery-manage-registration-and-protection.md
-      - name: Azure Site Recovery 中的更新
-        href: service updates-how-to.md
       - name: 删除保管库
         href: delete-vault.md
       - name: 升级已配置了 Site Recovery 的 Windows Servers
@@ -452,9 +442,9 @@ items:
     href: https://azure.microsoft.com/pricing/calculator/
   - name: 服务更新
     href: https://azure.microsoft.com/updates/?product=site-recovery
-ms.openlocfilehash: c81028216a6af1fac6b6da261395d4fded3d8500
-ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
+ms.openlocfilehash: 1029557aed09aba06f7fce63bc4681969a6b3733
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54382494"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54103468"

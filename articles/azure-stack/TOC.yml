@@ -19,6 +19,8 @@ items:
       href: azure-stack-update-1807.md
 - name: 快速入门
   items:
+  - name: 评估 Azure Stack
+    href: azure-stack-deploy-overview.md
   - name: 使用管理门户
     href: azure-stack-manage-portals.md
   expanded: true
@@ -129,8 +131,16 @@ items:
       href: azure-stack-registration.md
     - name: 区域管理
       href: azure-stack-region-management.md
-    - name: 使用 ExpressRoute 连接到 Azure
-      href: azure-stack-connect-expressroute.md
+    - name: 连接到 Azure
+      items:
+      - name: 使用 VPN 进行连接
+        href: azure-stack-connect-vpn.md
+      - name: 关于 VPN 网关
+        href: azure-stack-vpn-gateway-about-vpn-gateways.md
+      - name: VPN 网关设置
+        href: azure-stack-vpn-gateway-settings.md
+      - name: 使用 ExpressRoute 进行连接
+        href: azure-stack-connect-expressroute.md
     - name: 为用户启用 CLI
       href: azure-stack-cli-admin.md
     - name: 设置管理环境
@@ -395,9 +405,9 @@ items:
     href: https://stackoverflow.com/questions/tagged/azure-stack
   - name: 培训和认证
     href: https://docs.microsoft.com/azure/azure-stack/azure-stack-train-and-cert
-ms.openlocfilehash: 91c476e8e65642e490c3a42de7d5a340964f3ae5
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
-ms.translationtype: MT
+ms.openlocfilehash: 4d16a02c09ae801e44b0f3e4d5540a445d41fae6
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54411707"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54319132"
