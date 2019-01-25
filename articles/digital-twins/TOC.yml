@@ -47,22 +47,28 @@ items:
       href: security-authenticating-apis.md
 - name: 操作指南
   items:
-  - name: 如何启用多租户应用程序
+  - name: 启用多租户应用程序
     href: how-to-multitenant-applications.md
-  - name: 如何创建用户定义的函数
+  - name: 创建用户定义的函数
     href: how-to-user-defined-functions.md
-  - name: 如何通过终结点路由事件和消息
+  - name: 通过终结点路由事件和消息
     href: how-to-egress-endpoints.md
-  - name: 如何配置 Postman
-    href: how-to-configure-postman.md
-  - name: 如何将 blob 添加到对象
+  - name: 将 blob 添加到对象
     href: how-to-add-blobs.md
-  - name: 如何使用数字孪生 Swagger
+  - name: 使用数字孪生 Swagger
     href: how-to-use-swagger.md
-  - name: 如何调试用户定义的函数
+  - name: 调试用户定义的函数
     href: how-to-diagnose-user-defined-functions.md
-  - name: 如何配置监视
+  - name: 配置监视
     href: how-to-configure-monitoring.md
+  - name: 查询数字孪生 API
+    items:
+    - name: 设置 Postman
+      href: how-to-configure-postman.md
+    - name: 使用数字孪生 API
+      href: how-to-navigate-apis.md
+    - name: 通用查询模式
+      href: how-to-query-common-apis.md
 - name: 引用
   items:
   - name: 用户定义函数客户端库
@@ -113,9 +119,9 @@ items:
     href: https://azure.microsoft.com/roadmap/?category=iot
   - name: 视频
     href: https://channel9.msdn.com/Search?term=%22Azure%20Digital%20Twins%22&lang-en=true
-ms.openlocfilehash: 04716146653b833461b8230c2895fd1a8b6dcd42
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.openlocfilehash: 92d60cbe1de8d8f2b36d67e1a7ff2999a45e1a8e
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53993461"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54102217"
