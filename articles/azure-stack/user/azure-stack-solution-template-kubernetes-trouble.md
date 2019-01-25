@@ -1,6 +1,6 @@
 ---
-title: 排查从 Kubernetes 部署到 Azure Stack 的问题 | Microsoft Docs
-description: 了解如何排查从 Kubernetes 部署到 Azure Stack 的问题。
+title: 排查 Kubernetes 部署到 Azure Stackk |Microsoft Docs
+description: 了解如何排查 Kubernetes 部署到 Azure Stack。
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -11,19 +11,19 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/16/2019
+ms.date: 01/24/2019
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.openlocfilehash: 844feb7999f88f63c9406c9f430d1d076cd032df
-ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
+ms.openlocfilehash: 8a67ae74f753fdbe3c5301c543e5a57544695922
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54390678"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54904210"
 ---
-# <a name="troubleshoot-your-deployment-to-kubernetes-to-azure-stack"></a>排查部署到 Kubernetes (K8) 以及向 Azure Stack 部署 Kubernetes (K8) 的问题
+# <a name="troubleshoot-your-kubernetes-deployment-to-azure-stack"></a>排查 Kubernetes 部署到 Azure Stack
 
-适用于：*Azure Stack 集成系统和 Azure Stack 开发工具包*
+*适用于：Azure Stack 集成系统和 Azure Stack 开发工具包*
 
 > [!Note]  
 > Azure Stack 上的 Kubernetes 现为预览版。

@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/24/2019
+ms.date: 01/25/2019
 ms.author: sethm
 ms.reviewer: adepue
-ms.openlocfilehash: 0c681e7406f5c0c6e205f9dc54ee5eea63b40252
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: 8bdc9a9a01a96ee34c5cf6cfa737be09661364bc
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54853232"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54904414"
 ---
 # <a name="azure-stack-1811-update"></a>Azure Stack 1811 更新
 
@@ -353,6 +353,8 @@ Azure Stack 定期发布修补程序。 将 Azure Stack 更新到 1811 之前，
     在 Azure Stack 中，不支持将其他选项用作源标记。 同样，如果添加出站安全规则并选择“服务标记”作为目标，则显示与“源标记”相同的选项列表。 仅有的有效选项与“源标记”的有效选项相同，如以上列表中所述。
 
 - **New-AzureRmIpSecPolicy** PowerShell cmdlet 不支持为 `DHGroup` 参数设置 **DHGroup24**。
+
+- 网络安全组 (Nsg) 在相同的方式为全球 Azure 中的 Azure Stack 中无效。 在 Azure 中，您可以在一个 NSG 规则中设置多个端口 (使用门户、 PowerShell 和 Resource Manager 模板)。 在 Azure Stack 中，不能通过门户的一个 NSG 规则上设置多个端口。 若要解决此问题，请使用资源管理器模板设置下列附加规则。
 
 ### <a name="infrastructure-backup"></a>基础结构备份
 

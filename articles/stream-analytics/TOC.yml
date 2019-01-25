@@ -155,7 +155,7 @@ items:
       href: stream-analytics-troubleshoot-output.md
     - name: 查询逻辑
       href: stream-analytics-troubleshoot-query.md
-    - name: 诊断日志
+    - name: 活动日志和诊断日志
       href: stream-analytics-job-diagnostic-logs.md
   - name: 与机器学习集成
     items:
@@ -427,9 +427,9 @@ items:
     href: https://azure.microsoft.com/case-studies/?service=stream-analytics
   - name: 白皮书 - 实时事件处理
     href: stream-analytics-real-time-event-processing-reference-architecture.md
-ms.openlocfilehash: a66aa2ae82ab9862de7a6a6be425268462c61755
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: afaa9f2a88a6ac3f93ffb58747381ae93ccd677a
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54352761"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54886537"

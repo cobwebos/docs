@@ -63,9 +63,9 @@
 ### [适用于 SAP 工作负荷的 SAP ASE Azure 虚拟机 DBMS 部署](dbms_guide_sapase.md)
 ### [Azure 上的 SAP MaxDB、liveCache 和内容服务器部署](dbms_guide_maxdb.md)
 ### Azure 虚拟机中的 SAP HANA 可用性
-### [Azure 上的 SAP HANA 可用性概述](sap-hana-availability-overview.md)
-### [一个 Azure 区域内的 Azure 上的 SAP HANA 可用性](sap-hana-availability-one-region.md)
-### [跨 Azure 区域的 Azure 上的 SAP HANA 可用性](sap-hana-availability-across-regions.md)
+#### [Azure 上的 SAP HANA 可用性概述](sap-hana-availability-overview.md)
+#### [一个 Azure 区域内的 Azure 上的 SAP HANA 可用性](sap-hana-availability-one-region.md)
+#### [跨 Azure 区域的 Azure 上的 SAP HANA 可用性](sap-hana-availability-across-regions.md)
 ## [Azure 虚拟机上的 SAP Business One](business-one-azure.md)
 ## [Windows/SQL Server SAP CAL 上的 SAP IDES 部署指南](cal-ides-erp6-erp7-sp3-sql.md)
 ## [适用于 Azure 的 SAP LaMa 连接器](lama-installation.md)
