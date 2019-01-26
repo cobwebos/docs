@@ -1,10 +1,10 @@
 ---
-title: 教程：Azure Active Directory 与 Palo Alto Networks - 强制网络门户的集成 | Microsoft Docs
-description: 了解如何在 Azure Active Directory 与 Palo Alto Networks - 强制网络门户之间配置单一登录。
+title: 教程：Azure Active Directory 与 Palo Alto Networks Captive Portal 的集成 | Microsoft Docs
+description: 了解如何在 Azure Active Directory 与 Palo Alto Networks Captive Portal 之间配置单一登录。
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: barbkess
 ms.assetid: 67a0b476-2305-4157-8658-2ec3625850d5
 ms.service: Azure-Active-Directory
@@ -14,198 +14,197 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/25/2018
 ms.author: jeedes
-ms.openlocfilehash: eff08cc17f475e2b6ad6406e463de27371bbe5b1
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: 15ddb29f090ca8dc14befc93e3377c181038b554
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54064721"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54816154"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-palo-alto-networks---captive-portal"></a>教程：Azure Active Directory 与 Palo Alto Networks - 强制网络门户的集成
+# <a name="tutorial-azure-active-directory-integration-with-palo-alto-networks-captive-portal"></a>教程：Azure Active Directory 与 Palo Alto Networks Captive Portal 的集成
 
-在本教程中，了解如何将 Palo Alto Networks - 强制网络门户与 Azure Active Directory (Azure AD) 集成。
-将 Palo Alto Networks - 强制网络门户与 Azure AD 集成可提供以下好处：
+本教程介绍如何将 Palo Alto Networks Captive Portal 与 Azure Active Directory (Azure AD) 集成。
 
-* 可以在 Azure AD 中控制谁有权访问 Palo Alto Networks - 强制网络门户。
-* 可以让用户使用其 Azure AD 帐户自动登录到 Palo Alto Networks - 强制网络门户（单一登录）。
-* 可在中心位置（即 Azure 门户）管理帐户。
+将 Palo Alto Networks Captive Portal 与 Azure AD 集成可获得以下优势：
 
-如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
-如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
+* 在 Azure AD 中可以控制谁有权访问 Palo Alto Networks Captive Portal。
+* 可让用户使用其 Azure AD 帐户自动登录到 Palo Alto Networks Captive Portal（单一登录）。
+* 可在一个中心位置（即 Azure 门户）管理帐户。
+
+若要了解服务型软件 (SaaS) 应用与 Azure AD 集成的详细信息，请参阅[单一登录到 Azure Active Directory 的应用程序](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+
+如果没有 Azure 订阅，可以[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
 ## <a name="prerequisites"></a>先决条件
 
-若要配置 Azure AD 与 Palo Alto Networks - 强制网络门户的集成，需具有以下项目：
+若要配置 Azure AD 与 Palo Alto Networks Captive Portal 的集成，需要准备好以下各项：
 
-* 一个 Azure AD 订阅。 如果你没有 Azure AD 环境，可以在[此处](https://azure.microsoft.com/pricing/free-trial/)获取一个月的试用版。
-* 启用了单一登录的 Palo Alto Networks - 强制网络门户订阅
+* 一个 Azure Active Directory 订阅。 如果没有 Azure AD，可以[获取一个月的试用版](https://azure.microsoft.com/pricing/free-trial/)。
+* 一个启用了 Palo Alto Networks Captive Portal 单一登录 (SSO) 的订阅。
 
 ## <a name="scenario-description"></a>方案描述
 
 本教程会在测试环境中配置和测试 Azure AD 单一登录。
 
-* Palo Alto Networks - 强制网络门户支持 **IDP** 发起的 SSO
+Palo Alto Networks Captive Portal 支持以下方案：
 
-* Palo Alto Networks - 强制网络门户支持**实时**用户预配
+* **IDP 发起的单一登录**
+* **实时用户预配**
 
-## <a name="adding-palo-alto-networks---captive-portal-from-the-gallery"></a>从库添加 Palo Alto Networks - 强制网络门户
+## <a name="add-palo-alto-networks-captive-portal-from-the-gallery"></a>从库中添加 Palo Alto Networks Captive Portal
 
-若要配置 Palo Alto Networks - 强制网络门户与 Azure AD 的集成，需要从库中将 Palo Alto Networks - 强制网络门户添加到托管的 SaaS 应用列表。
+若要开始，请将库中的 Palo Alto Networks Captive Portal 添加到托管 SaaS 应用列表：
 
-若要从库中添加 Palo Alto Networks - 强制网络门户，请执行以下步骤：
-
-1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”图标。
+1. 在 [Azure 门户](https://portal.azure.com) 的左侧菜单中，选择“Azure Active Directory”。
 
     ![“Azure Active Directory”按钮](common/select-azuread.png)
 
-2. 转到“企业应用”，并选择“所有应用”选项。
+2. 选择“企业应用程序” > “所有应用程序”。
 
-    ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
+    ![菜单中的“企业应用程序”选项](common/enterprise-applications.png)
 
-3. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
+3. 选择“新建应用程序”。
 
     ![“新增应用程序”按钮](common/add-new-app.png)
 
-4. 在搜索框中，键入“Palo Alto Networks - 强制网络门户”，从结果面板选择“Palo Alto Networks - 强制网络门户”，然后单击“添加”按钮来添加应用程序。
+4. 在搜索框中，键入 **Palo Alto Networks Captive Portal**。 在搜索结果中选择“Palo Alto Networks Captive Portal”，然后选择“添加”。
 
      ![结果列表中的 Palo Alto Networks - 强制网络门户](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
 
-在本部分中，将基于名为 **Britta Simon** 的测试用户配置和测试 Palo Alto Networks - 强制网络门户的 Azure AD 单一登录。
-若要运行单一登录，需要在 Azure AD 用户与 Palo Alto Networks - 强制网络门户中相关用户之间建立链接关系。
+基于名为 *Britta Simon* 的测试用户配置并测试 Palo Alto Networks Captive Portal 的 Azure AD 单一登录。 若要正常运行单一登录，必须在 Azure AD 用户与 Palo Alto Networks Captive Portal 中的相同用户之间建立关系。 
 
-若要配置和测试 Palo Alto Networks - 强制网络门户的 Azure AD 单一登录，需要完成以下构建基块：
+若要配置并测试 Palo Alto Networks Captive Portal 的 Azure AD 单一登录，请完成以下任务：
 
-1. **[配置 Azure AD 单一登录](#configure-azure-ad-single-sign-on)** - 使用户能够使用此功能。
-2. **[配置 Palo Alto Networks - 强制网络门户单一登录](#configure-palo-alto-networks---captive-portal-single-sign-on)** - 在应用程序端配置单一登录。
-3. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-4. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
-5. **[创建 Palo Alto Networks - 强制网络门户测试用户](#create-palo-alto-networks---captive-portal-test-user)** - 在 Palo Alto Networks - 强制网络门户中创建 Britta Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
-6. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
+1. **[配置 Azure AD 单一登录](#configure-azure-ad-single-sign-on)**：使用户能够使用此功能。
+2. **[配置 Palo Alto Networks Captive Portal 单一登录](#configure-palo-alto-networks-captive-portal-single-sign-on)**：在应用程序中配置单一登录设置。
+3. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)**：使用用户 *Britta Simon* 测试 Azure AD 单一登录。
+4. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)**：将 Britta Simon 设置为使用 Azure AD 单一登录。
+5. **[创建 Palo Alto Networks Captive Portal 测试用户](#create-palo-alto-networks-captive-portal-test-user)**：在 Palo Alto Networks Captive Portal 中创建一个链接到 Azure AD 用户的对应用户 *Britta Simon*。
+6. **[测试单一登录](#test-single-sign-on)**：验证配置是否正常工作。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
 
-在本部分中，将在 Azure 门户中启用 Azure AD 单一登录。
-
-若要配置 Palo Alto Networks - 强制网络门户的 Azure AD 单一登录，请执行以下步骤：
+首先，在 Azure 门户中启用 Azure AD 单一登录：
 
 1. 在 [Azure 门户](https://portal.azure.com/)中，在 **Palo Alto Networks - 强制网络门户**应用程序集成页上，选择“单一登录”。
 
     ![配置单一登录链接](common/select-sso.png)
 
-2. 在“选择单一登录方法”对话框中，选择 SAML/WS-Fed 模式以启用单一登录。
+2. 在“选择单一登录方法”窗格中选择“SAML”。
 
     ![单一登录选择模式](common/select-saml-option.png)
 
-3. 在“使用 SAML 设置单一登录”页上，单击“编辑”图标以打开“基本 SAML 配置”对话框。
+3. 在“使用 SAML 设置单一登录”窗格中，选择“编辑”铅笔图标。
 
-    ![编辑基本 SAML 配置](common/edit-urls.png)
+    ![“编辑”铅笔图标](common/edit-urls.png)
 
-4. 在“基本 SAML 配置”对话框中，执行以下步骤：
+4. 在“基本 SAML 配置”窗格中完成以下步骤：
 
-    ![Palo Alto Networks - 强制网络门户域和 URL 单一登录信息](common/idp-intiated.png)
+    ![Palo Alto Networks Captive Portal 的“基本 SAML 配置”窗格](common/idp-intiated.png)
 
-    a. 在“标识符”文本框中，使用以下模式键入 URL：`https://<Customer Firewall Hostname>/SAML20/SP`
+    1. 对于“标识符”，请输入采用 `https://<customer_firewall_host_name>/SAML20/SP` 模式的 URL。
 
-    b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<Customer Firewall Hostname>/SAML20/SP/ACS`
+    2. 对于“回复 URL”，请输入采用 `https://<customer_firewall_host_name>/SAML20/SP/ACS` 模式的 URL。
 
     > [!NOTE]
-    > 这些不是实际值。 请使用实际标识符和回复 URL 更新这些值。 请联系 [Palo Alto Networks - 强制网络门户客户端支持团队](https://support.paloaltonetworks.com/support)来获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”部分中显示的模式。
+    > 请将此步骤中的占位符值更新为实际的标识符和回复 URL。 若要获取实际值，请联系 [Palo Alto Networks Captive Portal 客户端支持团队](https://support.paloaltonetworks.com/support)。
 
-5. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分，单击“下载”以根据要求下载从给定选项提供的“联合元数据 XML”并将其保存在计算机上。
+5. 在“SAML 签名证书”部分中的“联合元数据 XML”旁边，选择“下载”。 将下载的文件保存在计算机上。
 
-    ![证书下载链接](common/metadataxml.png)
+    ![联合元数据 XML 下载链接](common/metadataxml.png)
 
-### <a name="configure-palo-alto-networks---captive-portal-single-sign-on"></a>配置 Palo Alto Networks - 强制网络门户单一登录
+### <a name="configure-palo-alto-networks-captive-portal-single-sign-on"></a>配置 Palo Alto Networks Captive Portal 单一登录
 
-1. 以管理员身份在另一个浏览器窗口中打开 Palo Alto 站点。
+接下来，在 Palo Alto Networks Captive Portal 中设置单一登录：
 
-2. 单击“设备”。
+1. 在另一个浏览器窗口中，以管理员身份登录到 Palo Alto Networks 网站。
 
-    ![配置 Palo Alto 单一登录](./media/paloaltonetworks-captiveportal-tutorial/tutorial_paloaltoadmin_admin1.png)
+2. 选择“设备”选项卡。
 
-3. 从左侧导航栏选择“SAML 标识提供者”，并单击“导入”以导入元数据文件。
+    ![Palo Alto Networks 网站上的“设备”选项卡](./media/paloaltonetworks-captiveportal-tutorial/tutorial_paloaltoadmin_admin1.png)
 
-    ![配置 Palo Alto 单一登录](./media/paloaltonetworks-captiveportal-tutorial/tutorial_paloaltoadmin_admin2.png)
+3. 在菜单中，依次选择“SAML 标识提供者”、“导入”。
 
-4. 在“导入”窗口执行以下操作
+    ![“导入”按钮](./media/paloaltonetworks-captiveportal-tutorial/tutorial_paloaltoadmin_admin2.png)
 
-    ![配置 Palo Alto 单一登录](./media/paloaltonetworks-captiveportal-tutorial/tutorial_paloaltoadmin_admin3.png)
+4. 在“SAML 标识提供者服务器配置文件导入”对话框中完成以下步骤：
 
-    a. 在“配置文件名称”文本框中提供名称，如 Azure AD 管理 UI。
+    ![配置 Palo Alto 网络单一登录](./media/paloaltonetworks-captiveportal-tutorial/tutorial_paloaltoadmin_admin3.png)
+
+    1. 对于“配置文件名称”，请输入类似于 **AzureAD-CaptivePortal** 的名称。
     
-    b. 在“标识提供者元数据”中，单击“浏览”并选择从 Azure 门户下载的元数据 xml 文件。
+    2. 在“标识提供者元数据”旁边，选择“浏览”。 选择在 Azure 门户中下载的 metadata.xml 文件。
     
-    c. 单击 **“确定”**
+    3. 选择“确定”。
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户 
 
-本部分的目的是在 Azure 门户中创建名为 Britta Simon 的测试用户。
+接下来，在 Azure 门户中创建名为 *Britta Simon* 的测试用户：
 
-1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”。
+1. 在 Azure 门户中，选择“Azure Active Directory” > “用户” > “所有用户”。
 
     ![“用户和组”以及“所有用户”链接](common/users.png)
 
-2. 选择屏幕顶部的“新建用户”。
+2. 选择“新建用户”。
 
     ![“新建用户”按钮](common/new-user.png)
 
-3. 在“用户属性”中，按照以下步骤操作。
+3. 在“用户”窗格中完成以下步骤：
 
     ![“用户”对话框](common/user-properties.png)
 
-    a. 在“名称”字段中，输入 BrittaSimon。
+    1. 对于“姓名”，请输入 **BrittaSimon**。
   
-    b. 在“用户名”字段中键入 brittasimon@yourcompanydomain.extension  
-    例如： BrittaSimon@contoso.com
+    2. 对于“用户名”，请输入 **BrittaSimon@\<公司域\>**。 例如，**BrittaSimon@contoso.com**。
 
-    c. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
+    3. 对于“密码”，请输入一个密码。 建议保留好所输入密码的记录。 可以选中“显示密码”复选框来显示密码。
 
-    d. 单击“创建”。
+    4. 选择“创建”。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
-在本部分中，通过授予 Britta Simon 访问 Palo Alto Networks - 强制网络门户的权限，使她能够使用 Azure 单一登录。
+接下来，授予 Palo Alto Networks Captive Portal 的访问权限，使 Britta Simon 能够使用 Azure 单一登录：
 
-1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”和“Palo Alto Networks - 强制网络门户”。
+1. 在 Azure 门户中，选择“企业应用程序” > “所有应用程序”。
 
-    ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
+    ![“企业应用程序”窗格](common/enterprise-applications.png)
 
-2. 在应用程序列表中，键入并选择“Palo Alto Networks - 强制网络门户”。
+2. 在“应用程序”列表中输入 **Palo Alto Networks Captive Portal**，然后选择该应用程序。
 
-    ![应用程序列表中的 Palo Alto Networks - 强制网络门户链接](common/all-applications.png)
+    ![“应用程序”列表中的“Palo Alto Networks Captive Portal”链接](common/all-applications.png)
 
-3. 在左侧菜单中，选择“用户和组”。
+3. 在菜单中选择“用户和组”。
 
     ![“用户和组”链接](common/users-groups-blade.png)
 
-4. 单击“添加用户”按钮，然后在“添加分配”对话框中选择“用户和组”。
+4. 选择“添加用户”。 然后，在“添加分配”窗格中选择“用户和组”。
 
     ![“添加分配”窗格](common/add-assign-user.png)
 
-5. 在“用户和组”对话框中，选择“用户”列表中的 Britta Simon，然后单击屏幕底部的“选择”按钮。
+5. 在“用户和组”窗格中的“用户”列表内，选择“Britta Simon”。 选择“选择”。
 
-6. 如果你在 SAML 断言中需要任何角色值，请在“选择角色”对话框中从列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。
+6. 若要将角色值添加到 SAML 断言，请在“选择角色”窗格中，选择该用户的相关角色。 选择“选择”。
 
-7. 在“添加分配”对话框中，单击“分配”按钮。
+7. 在“添加分配”窗格中选择“分配”。
 
-### <a name="create-palo-alto-networks---captive-portal-test-user"></a>创建 Palo Alto Networks - 强制网络门户测试用户
+### <a name="create-a-palo-alto-networks-captive-portal-test-user"></a>创建 Palo Alto Networks Captive Portal 测试用户
 
-在本部分中，我们将在 Palo Alto Networks - 强制网络门户中创建一个名为 Britta Simon 的用户。 Palo Alto Networks - 强制网络门户支持默认情况下启用的**实时用户预配**。 此部分不存在任何操作项。 如果 Palo Alto Networks - 强制网络门户中尚不存在用户，则会在身份验证后创建一个新用户。
+接下来，在 Palo Alto Networks Captive Portal 中创建名为 *Britta Simon* 的用户。 Palo Alto Networks Captive Portal 支持默认已启用的实时用户预配功能。 在本部分无需完成任何任务。 如果 Palo Alto Networks Captive Portal 中不存在任何用户，身份验证后会创建一个新用户。
 
 > [!NOTE]
-> 如果需要手动创建用户，则需要联系 [Palo Alto Networks - 强制网络门户客户端支持团队](https://support.paloaltonetworks.com/support)。
+> 若要手动创建用户，请联系 [Palo Alto Networks Captive Portal 客户端支持团队](https://support.paloaltonetworks.com/support)。
 
 ### <a name="test-single-sign-on"></a>测试单一登录 
 
-在 Windows VM 上的防火墙后面配置强制网络门户。 若要测试强制网络门户上的单一登录，请使用 RDP 登录 Windows VM。 从 RDP 会话内部打开可链接到任何网站的浏览器，它应当自动打开 SSO URL 并提示进行身份验证。 完成身份验证后，应能够导航至网站。
+Palo Alto Networks Captive Portal 安装在 Windows VM 上的防火墙后面。 若要在 Palo Alto Networks Captive Portal 中测试单一登录，请使用远程桌面协议 (RDP) 登录到该 Windows VM。 在 RDP 会话中，打开浏览器并转到任一网站。 此时会打开 SSO URL，并且系统会提示进行身份验证。 完成身份验证后，即可访问网站。
 
 ## <a name="additional-resources"></a>其他资源
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+若要了解更多信息，请参阅下列文章：
 
-- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
-
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [有关将 SaaS 应用与 Azure Active Directory 集成的教程](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [单一登录到 Azure Active Directory 中的应用程序](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory 中的条件性访问](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
