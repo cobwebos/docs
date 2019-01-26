@@ -310,4 +310,4 @@ dataflow.to_pandas_dataframe().head()
 |1|1011871|斯特恩斯家园农贸市场|http://Stearnshomestead.com |6975 Ridge Road|帕尔马|凯霍加河|
 |2|1011878|100 英里市场|http://www.pfcmarkets.com |507 哈里森街|卡拉马祖|卡拉马祖|
 |3|1009364|106 S. 主要街道农贸市场|http://thetownofsixmile.wordpress.com/ |106 S. 主要街道|六英里|||
-|4|1010691|第 10 街社区农贸市场|https://agrimissouri.com/..。 |第十街和波普拉区|拉马尔|巴顿|
+|4|1010691|第 10 街社区农贸市场|https://agrimissouri.com/.. |第十街和波普拉区|拉马尔|巴顿|
