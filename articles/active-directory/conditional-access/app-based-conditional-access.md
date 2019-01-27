@@ -5,7 +5,7 @@ services: active-directory
 keywords: 对应用的条件性访问, 使用 Azure AD 进行条件性访问, 保护对公司资源的访问, 条件性访问策略
 documentationcenter: ''
 author: MarkusVi
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: 8c1d978f-e80b-420e-853a-8bbddc4bcdad
 ms.service: active-directory
@@ -17,12 +17,12 @@ ms.workload: identity
 ms.date: 06/13/2018
 ms.author: markvi
 ms.reviewer: spunukol
-ms.openlocfilehash: 68c2178440264aa6a6efce074b299f4e3deaa10f
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 20beff7accbc987842141fa7ece9c17f11b0032e
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50415383"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54448799"
 ---
 # <a name="how-to-require-approved-client-apps-for-cloud-app-access-with-conditional-access"></a>如何：使用条件访问要求使用经批准的设备进行云应用访问 
 
@@ -110,11 +110,11 @@ ms.locfileid: "50415383"
 
 2. **用户和组**：每个条件访问策略必须选定至少一个用户或组。
 
-3. **云应用：** 对于云应用，需选择 Office 365 Exchange Online。
+3. **云应用：** 对于云应用，需要选择“Office 365 Exchange Online”。
 
     ![条件性访问](./media/app-based-conditional-access/07.png)
 
-4. **条件：** 对于“条件”，需配置“设备平台”和“客户端应用”：
+4. **条件：** 对于“条件”，需要配置“设备平台”和“客户端应用”：
 
     a. 对于“设备平台”，请选择 Android 和 iOS。
 
@@ -140,7 +140,7 @@ ms.locfileid: "50415383"
 2. **用户和组**：每个条件访问策略必须选定至少一个用户或组。
 
 
-3. **云应用：** 对于云应用，需选择 Office 365 Exchange Online。
+3. **云应用：** 对于云应用，需要选择“Office 365 Exchange Online”。
 
     ![条件性访问](./media/app-based-conditional-access/07.png)
 
@@ -191,11 +191,11 @@ ms.locfileid: "50415383"
 2. **用户和组**：每个条件访问策略必须选定至少一个用户或组。
 
 
-3. **云应用：** 对于云应用，需选择 Office 365 Exchange Online 和 Office 365 SharePoint Online。 
+3. **云应用：** 对于云应用，需要选择“Office 365 Exchange Online”和“Office 365 SharePoint Online”。 
 
     ![条件性访问](./media/app-based-conditional-access/02.png)
 
-4. **条件：** 对于“条件”，需配置“设备平台”和“客户端应用”：
+4. **条件：** 对于“条件”，需要配置“设备平台”和“客户端应用”：
 
     a. 对于“设备平台”，请选择 Android 和 iOS。
 
@@ -222,11 +222,11 @@ ms.locfileid: "50415383"
 
 2. **用户和组**：每个条件访问策略必须选定至少一个用户或组。
 
-3. **云应用：** 对于云应用，需选择 Office 365 Exchange Online。 联机 
+3. **云应用：** 对于云应用，需要选择“Office 365 Exchange Online”。 联机 
 
     ![条件性访问](./media/app-based-conditional-access/07.png)
 
-4. **条件：** 对于“条件”，无需配置“客户端应用”：
+4. **条件：** 对于“条件”，需要配置“客户端应用”：
 
     a. 对于“客户端应用(预览版)”，选择“移动应用和桌面客户端”以及“Exchange ActiveSync 客户端”。
 
@@ -275,11 +275,11 @@ ms.locfileid: "50415383"
 
 2. **用户和组**：每个条件访问策略必须选定至少一个用户或组。
 
-3. **云应用：** 对于云应用，需选择 Office 365 Exchange Online 和 Office 365 SharePoint Online。 
+3. **云应用：** 对于云应用，需要选择“Office 365 Exchange Online”和“Office 365 SharePoint Online”。 
 
      ![条件性访问](./media/app-based-conditional-access/02.png)
 
-4. **条件：** 对于“条件”，无需配置“设备平台”和“客户端应用”。 
+4. **条件：** 对于“条件”，需要配置“设备平台”和“客户端应用”。 
  
     a. 对于“设备平台”，请选择 Android 和 iOS。
 
@@ -311,11 +311,11 @@ ms.locfileid: "50415383"
 
 2. **用户和组**：每个条件访问策略必须选定至少一个用户或组。
 
-3. **云应用：** 对于云应用，需选择 Office 365 Exchange Online。 
+3. **云应用：** 对于云应用，需要选择“Office 365 Exchange Online”。 
 
     ![条件性访问](./media/app-based-conditional-access/07.png)
 
-4. **条件：** 对于“条件”，无需配置“客户端应用”. 
+4. **条件：** 对于“条件”，需要配置“客户端应用”。 
 
     对于“客户端应用(预览版)”，选择“移动应用和桌面客户端”以及“Exchange ActiveSync 客户端”。
 
@@ -371,11 +371,11 @@ ms.locfileid: "50415383"
 
 2. **用户和组**：每个条件访问策略必须选定至少一个用户或组。
 
-3. **云应用：** 对于云应用，需选择 Office 365 Exchange Online 和 Office 365 SharePoint Online。 
+3. **云应用：** 对于云应用，需要选择“Office 365 Exchange Online”和“Office 365 SharePoint Online”。 
 
      ![条件性访问](./media/app-based-conditional-access/02.png)
 
-4. **条件：** 对于“条件”，无需配置“设备平台”和“客户端应用”。 
+4. **条件：** 对于“条件”，需要配置“设备平台”和“客户端应用”。 
  
     a. 对于“设备平台”，请选择 Android 和 iOS。
 
@@ -407,7 +407,7 @@ ms.locfileid: "50415383"
 
 2. **用户和组**：每个条件访问策略必须选定至少一个用户或组。
 
-3. **云应用：** 对于云应用，需选择 Office 365 Exchange Online。 
+3. **云应用：** 对于云应用，需要选择“Office 365 Exchange Online”。 
 
     ![条件性访问](./media/app-based-conditional-access/07.png)
 

@@ -72,7 +72,7 @@ Azure 机器学习有两种类型的服务：
 1. 在顶部菜单单击“WEB 服务”。
 2. 单击想要为其检索密钥的 Web 服务。
 
-单击“使用 Web 服务”获取请求响应和批处理执行以及 C#、R 和 Python 示例代码的 URI。
+单击“使用 Web 服务”获取请求响应和批处理执行服务以及 C#、R 和 Python 示例代码的 URI。
 
 单击“Swagger API”从提供的 URI 为调用的 API 获取基于 Swagger 的文档。
 
@@ -167,7 +167,7 @@ namespace CallRequestResponseService
                 {
                     Console.WriteLine(string.Format("The request failed with status code: {0}", response.StatusCode));
 
-                    // Print the headers - they include the requert ID and the timestamp,
+                    // Print the headers - they include the request ID and the timestamp,
                     // which are useful for debugging the failure
                     Console.WriteLine(response.Headers.ToString());
 
@@ -228,7 +228,7 @@ try:
 except urllib2.HTTPError, error: 
     print("The request failed with status code: " + str(error.code))
 
-    # Print the headers - they include the requert ID and the timestamp, which are useful for debugging the failure
+    # Print the headers - they include the request ID and the timestamp, which are useful for debugging the failure
     print(error.info())
     print(json.loads(error.read())) 
 ```
@@ -280,7 +280,7 @@ if (httpStatus >= 400)
 {
 print(paste("The request failed with status code:", httpStatus, sep=" "))
 
-# Print the headers - they include the requert ID and the timestamp, which are useful for debugging the failure
+# Print the headers - they include the request ID and the timestamp, which are useful for debugging the failure
 print(headers)
 }
 

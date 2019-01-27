@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 4/11/2018
 ms.author: rangv
-ms.openlocfilehash: a533bd6ee447479f08add23833bf5acdde5c4d40
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: a55e77853a1c9466892f686f34d17a5e84b11ba7
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50155093"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54411279"
 ---
 # <a name="visualize-real-time-sensor-data-from-azure-iot-hub-using-power-bi"></a>使用 Power BI 可视化 Azure IoT 中心的实时传感器数据
 
@@ -63,7 +63,7 @@ ms.locfileid: "50155093"
 
    **位置**：与资源组使用同一位置。
 
-   **固定仪表板**：选中此选项可以方便地从仪表板访问 IoT 中心。
+   **固定到仪表板**：选中此选项可以方便地从仪表板访问 IoT 中心。
 
    ![在 Azure 中创建流分析作业](./media/iot-hub-live-data-visualization-in-power-bi/2_create-stream-analytics-job-azure.png)
 
@@ -75,11 +75,13 @@ ms.locfileid: "50155093"
 
 2. 在“作业拓扑”下，单击“输入”。
 
-3. 在“输入”窗格中单击“添加”，并输入以下信息：
+3. 在“输入”窗格中，单击“添加流输入”，并输入以下信息：
 
-   **输入别名**：输入的唯一别名。
+   **输入别名**：输入的唯一别名，并选择下面的“手动提供 IoT 中心设置”。
 
    **源**：选择“IoT 中心”。
+   
+   **终结点**：单击“消息传送”。
 
    **使用者组**：选择刚创建的使用者组。
 
@@ -91,15 +93,9 @@ ms.locfileid: "50155093"
 
 1. 在“作业拓扑”下，单击“输出”。
 
-2. 在“输出”窗格中单击“添加”，并输入以下信息：
+2. 在“输出”窗格中，依次单击“添加”和“Power BI”，并输入以下信息：
 
    **输出别名**：输出的唯一别名。
-
-   **接收器**：选择“Power BI”。
-
-3. 单击“授权”，并登录到 Power BI 帐户。
-
-4. 获得授权后，请输入以下信息：
 
    **组工作区**：选择目标组工作区。
 
@@ -107,7 +103,9 @@ ms.locfileid: "50155093"
 
    **表名称**：输入表名称。
 
-5. 单击“创建”。
+3. 单击“授权”，并登录到 Power BI 帐户。
+
+4. 单击“创建”。
 
    ![向 Azure 中的流分析作业添加输出](./media/iot-hub-live-data-visualization-in-power-bi/4_add-output-to-stream-analytics-job-azure.png)
 
@@ -135,13 +133,13 @@ ms.locfileid: "50155093"
 
 2. 登录到 [Power BI](https://powerbi.microsoft.com/en-us/) 帐户。
 
-3. 转到组工作区，该工作区是在为流分析作业创建输出时设置的。
+3. 单击你使用的工作区“我的工作区”。
 
-4. 单击“流式处理数据集”。
+4. 单击“数据集”。
 
-   此时会看到列出的数据集，该数据集是在为流分析作业创建输出时指定的。
+   此时应当会看到你在为流分析作业创建输出时指定的数据集。
 
-5. 在“操作”下，单击第一个用于创建报表的图标。
+5. 对于你创建的数据集，单击“添加报表”（数据集名称右侧的第一个图标）。
 
    ![创建 Microsoft Power BI 报表](./media/iot-hub-live-data-visualization-in-power-bi/7_create-power-bi-report-microsoft.png)
 
@@ -165,9 +163,11 @@ ms.locfileid: "50155093"
 
 8. 单击“保存”以保存该报表。
 
-9. 单击“文件” > “发布到 Web”。
+9. 在左侧窗格上单击“报表”，然后单击你刚才创建的报表。
 
-10. 单击“创建嵌入代码”，并单击“发布”。
+10. 单击“文件” > “发布到 Web”。
+
+11. 单击“创建嵌入代码”，并单击“发布”。
 
 系统会提供一个报表链接，以便将其共享给任何需要进行报表访问的人；同时还会提供一个代码片段，以便将报表集成到博客或网站中。
 

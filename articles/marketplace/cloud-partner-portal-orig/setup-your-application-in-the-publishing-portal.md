@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 9386f0e0bf552789b027df96e9e54ebcf31d7d34
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 7b5bb0bf8ff5fac10c47cf5bdf9564903f4d6b94
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48805255"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54448477"
 ---
 # <a name="setup-your-application-in-the-publishing-portal"></a>在发布门户中设置应用程序
 
@@ -84,7 +84,7 @@ ms.locfileid: "48805255"
 
 * 包的文件名：在上述步骤中创建 CRM AppSource 包的 zip 文件时创建的文件名。 在上述示例中，文件名为“Microsoft\_SamplePackage.zip”。
 * 包位置的 URL：这是包含上面指定的包文件名的 Azure 存储帐户的 URL。 它是在上述部分的“步骤 9”中创建的 URL。
-* 包文件中是否包含多个 CRM 包：**仅当**支持多个版本的、包含不同包的 CRM 时，才选择“是”。 大多数合作伙伴会选择“否”。 如果选择“是”，则需要为每个版本的解决方案创建 AppSource 包。 _注意：这并非询问是否存在多个 **zip** 文件。如果有多个 solution.zip 文件，但只有一个版本，则仍应选择“否”。打包工具会自动将这些文件合并到一起。_
+* 包文件中是否有多个 crm 包：仅当支持多个版本的、包含不同包的 CRM 时，才选择“是”。 大多数合作伙伴会选择“否”。 如果选择“是”，则需要为每个版本的解决方案创建 AppSource 包。 _注意：这并非询问是否存在多个 **zip** 文件。如果有多个 solution.zip 文件，但只有一个版本，则仍应选择“否”。打包工具会自动将这些文件合并到一起。_
 
 ### <a name="crm-package-availability"></a>CRM 包可用性
 
@@ -94,9 +94,9 @@ ms.locfileid: "48805255"
 
 ## <a name="storefront-details"></a>店面详细信息
 
-### <a name="offer-summary"></a>套餐摘要
+### <a name="offer-summary"></a>产品/服务摘要
 
-这是套餐的价值主张摘要。 它将显示在套餐的搜索页上。 此内容不能超过 100 个字符。
+这是套餐的价值主张摘要。 它将显示在套餐的搜索页上。 此内容不应超过 100 个字符。
 
 ### <a name="offer-description"></a>产品/服务描述
 
@@ -158,7 +158,7 @@ AppSource 允许客户基于关键字执行搜索。 可以输入关键字集，
 
 ### <a name="videos"></a>视频
 
-最多可以上传四个视频。 对于要上传的每个视频，需要填写视频名称、URL（仅限 YouTube 或 Vimeo），以及与视频关联的缩略图。 缩略图必须采用 png 格式，分辨率必须为 1280\*720 像素。 若要添加新视频，请单击加号。 视频缩略图将显示在应用的详细信息页上。
+最多可上传 4 个视频。 对于要上传的每个视频，需要填写视频名称、URL（仅限 YouTube 或 Vimeo），以及与视频关联的缩略图。 缩略图必须采用 png 格式，分辨率必须为 1280\*720 像素。 若要添加新视频，请单击加号。 视频缩略图将显示在应用的详细信息页上。
 
 ### <a name="documents"></a>文档
 
@@ -184,7 +184,7 @@ AppSource 允许客户基于关键字执行搜索。 可以输入关键字集，
 
 ### <a name="lead-destination"></a>潜在顾客目标
 
-选择用于存储潜在顾客的 CRM 系统。 如果有以下 CRM 系统之一，请在此处选择“Azure 表”：Salesforce、Marketo、Microsoft Dynamics CRM。 在 AppSource 中试用应用的最终用户（潜在顾客）的详细信息将写入到此处所选的 CRM 系统。 根据选择的 CRM 系统，单击以下相应 URL，以获取有关如何完成下一组字段的信息
+选择用于存储潜在顾客的 CRM 系统。 如果有以下 CRM 系统之一，在此处请选择“Azure 表”：Salesforce、Marketo、Microsoft Dynamics CRM。 在 AppSource 中试用应用的最终用户（潜在顾客）的详细信息将写入到此处所选的 CRM 系统。 根据选择的 CRM 系统，单击以下相应 URL，以获取有关如何完成下一组字段的信息
 
 * [Azure 表](./cloud-partner-portal-lead-management-instructions-azure-table.md)
 * [Marketo](./cloud-partner-portal-lead-management-instructions-marketo.md)

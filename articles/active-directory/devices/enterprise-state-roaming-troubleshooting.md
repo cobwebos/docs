@@ -5,7 +5,7 @@ services: active-directory
 keywords: 企业状态漫游设置, Windows 云, 企业状态漫游的常见问题解答
 documentationcenter: ''
 author: MarkusVi
-manager: mtillman
+manager: daveba
 editor: ''
 ms.component: devices
 ms.assetid: f45d0515-99f7-42ad-94d8-307bc0d07be5
@@ -18,12 +18,12 @@ ms.date: 10/25/2018
 ms.author: markvi
 ms.reviewer: tanning
 ms.custom: it-pro
-ms.openlocfilehash: 3825d527e520fae87d0dd2712df767090adad4e5
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: 417b909e4a5272b993a4696c1ef8d6718e055738
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50248415"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54452932"
 ---
 # <a name="troubleshooting-enterprise-state-roaming-settings-in-azure-active-directory"></a>在 Azure Active Directory 中排查企业状态漫游设置问题
 
@@ -166,7 +166,7 @@ ms.locfileid: "50248415"
 
 ---
 
-### <a name="event-id-6065-80070533-this-user-cant-sign-in-because-this-account-is-currently-disabled"></a>事件 ID 6065: 80070533 此用户无法登录，因为此帐户当前已禁用  
+### <a name="event-id-6065-80070533-this-user-cant-sign-in-because-this-account-is-currently-disabled"></a>事件 ID 6065：80070533 此用户无法登录，因为此帐户当前已禁用  
 
 如果用户凭据过期，则事件查看器的 SettingSync/Debug 日志下可能会出现此错误。 此外，如果租户未自动预配 AzureRMS，也可能会出现此错误。 
 
@@ -175,9 +175,9 @@ ms.locfileid: "50248415"
 
 ---
 
-### <a name="event-id-1098-error-0xcaa5001c-token-broker-operation-failed"></a>事件 ID 1098: 错误: 0xCAA5001C 令牌代理操作失败  
+### <a name="event-id-1098-error-0xcaa5001c-token-broker-operation-failed"></a>事件 ID 1098：错误：0xCAA5001C 令牌代理操作失败  
 
-在事件查看器中的 AAD/Operational 日志下面可能会出现此错误，其中附带消息：“事件 1104: AAD 云 AP 插件调用 Get 令牌返回了错误: 0xC000005F”。 如果缺少权限或所有权属性，将出现此问题。  
+在事件查看器中，在 AAD/Operational 日志下，可能会看到事件 ID 为 1104 的以下错误：AAD 云 AP 插件调用“获取令牌”返回了错误：0xC000005F。 如果缺少权限或所有权属性，将出现此问题。  
 
 **建议的操作**  
 执行 [KB3196528](https://support.microsoft.com/kb/3196528) 中所列的步骤。  

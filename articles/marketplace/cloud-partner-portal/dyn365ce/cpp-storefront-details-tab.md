@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 01/03/2019
 ms.author: pbutlerm
-ms.openlocfilehash: 62220104329e36fbb2e6f7d3b5b48bcaeaba3660
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 66119ffab8c6117e223468834b59e6d6b19409a0
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54081586"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54445056"
 ---
 # <a name="dynamics-365-for-customer-engagement-storefront-details-tab"></a>Dynamics 365 Customer Engagement “店面详细信息”选项卡
 
@@ -73,7 +73,7 @@ ms.locfileid: "54081586"
 
 下表介绍此选项卡中的字段： 
 
-|      字段            |    Description                 |
+|      字段            |    说明                 |
 |  ---------------      |  ---------------               |
 | 套餐徽标（png 格式，48x48） | 上传将在应用搜索页上显示的图像。 格式为 PNG，大小必须为 48 x 48 像素。 |
 | 套餐徽标（png 格式，216x216） | 上传将在应用详细信息页上显示的图像。 格式为 PNG，大小必须为 216 x 216 像素。 |
@@ -91,7 +91,7 @@ ms.locfileid: "54081586"
 
 下表介绍此选项卡中的字段： 
 
-|      字段            |    Description                 |
+|      字段            |    说明                 |
 |  ---------------      |  ---------------               |
 | 隐私策略 URL    | 应用的联机隐私策略 URL。  |
 | 使用条款          | 纯文本格式的应用使用条款。  AppSource 客户必须接受这些条款，才能试用应用。 |

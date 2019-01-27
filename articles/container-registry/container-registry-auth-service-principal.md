@@ -7,12 +7,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 12/13/2018
 ms.author: danlep
-ms.openlocfilehash: 70ca1b88c653601e077c55a847c13f67efc3e300
-ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
+ms.openlocfilehash: 3aa986efd4986eb1d96c0f013d997486e6e8ae2c
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/22/2018
-ms.locfileid: "53754197"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54390921"
 ---
 # <a name="azure-container-registry-authentication-with-service-principals"></a>使用服务主体的 Azure 容器注册表身份验证
 
@@ -47,9 +47,7 @@ Azure AD“服务主体”提供对订阅中的 Azure 资源的访问权限。 �
 
 ## <a name="next-steps"></a>后续步骤
 
-在创建服务主体并向其授予对容器注册表的访问权限后，可以在应用程序和服务中使用其凭据进行注册表交互。
-
-虽然对个体应用程序进行配置以使用服务主体凭据不在本文的讨论范围内，但是可以在此处找到针对一些特定服务和平台的说明：
+在创建服务主体并向其授予对容器注册表的访问权限后，可以在应用程序和服务中使用其凭据进行无外设注册表交互。 可以使用能够使用 Azure 容器注册表进行身份验证的任何 Azure 服务的服务主体凭据。 示例包括：
 
 * [使用 Azure 容器注册表从 Azure Kubernetes 服务 (AKS) 进行身份验证](container-registry-auth-aks.md)
 * [使用 Azure 容器注册表从 Azure 容器实例 (ACI) 进行身份验证](container-registry-auth-aci.md)

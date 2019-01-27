@@ -10,12 +10,12 @@ ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.workload: big-data
 ms.date: 07/17/2018
-ms.openlocfilehash: 6eb2452507c3adcb8532a0dd2e50ad701e35cd7f
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 7d5630c082c044ac936f555965aec5a2a00f3544
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45579193"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54448714"
 ---
 # <a name="schedule-u-sql-jobs-using-sql-server-integration-services-ssis"></a>使用 SQL Server Integration Services (SSIS) 计划 U-SQL 作业
 
@@ -40,7 +40,7 @@ Azure Data Lake Analytics 任务允许用户向 Azure Data Lake Analytics 帐户
 
 ## <a name="scenario-1-use-inline-script-call-tvfs-and-stored-procs"></a>场景 1-使用内联脚本调用 tvf 和存储过程
 
-在 Azure Data Lake Analytics 任务编辑器中，将 SourceType 配置为 DiretInput，并将 U-SQL 语句置于 USQLStatemnt 中。
+在 Azure Data Lake Analytics 任务编辑器中，将 SourceType 配置为 DirectInput，并将 U-SQL 语句置于 USQLStatement 中。
 
 为了便于维护和代码管理，只需将简短的 U-SQL 脚本作为内联脚本，例如，可以调用 U-SQL 数据库中现有的表值函数和存储过程。 
 
@@ -119,7 +119,7 @@ Azure Data Lake Analytics 任务允许用户向 Azure Data Lake Analytics 帐户
 
 通过使用 Azure 功能包中的 Azure Blob 下载任务，可使用 Azure Blob 存储中的 U-SQL 文件。 通过这种方法，可使用云中的脚本。
 
-这些步骤与[情景 2：使用 Azure Data Lake Store 中的 U-SQL 文件](#scenario-2-use-u-sql-files-in-azure-data-lake-store)中的步骤类似。 将 Azure Data Lake Store 文件系统任务更改为 Azure Blob 下载任务。 [详细了解 Azure Blob 下载任务](https://docs.microsoft.com/sql/integration-services/control-flow/azure-blob-download-task?view=sql-server-2017)。
+步骤与[方案 2：使用 Azure Data Lake Store 中的 U-SQL 文件](#scenario-2-use-u-sql-files-in-azure-data-lake-store)类似。 将 Azure Data Lake Store 文件系统任务更改为 Azure Blob 下载任务。 [详细了解 Azure Blob 下载任务](https://docs.microsoft.com/sql/integration-services/control-flow/azure-blob-download-task?view=sql-server-2017)。
 
 控制流如下所示。
 

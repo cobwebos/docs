@@ -10,12 +10,12 @@ ms.reviewer: divswa, LADocs
 ms.topic: article
 ms.date: 09/14/2018
 tags: connectors
-ms.openlocfilehash: 1738f02d28a4eb9ff5cbb51c73bc50ddf3c9a68b
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 27da87c11ca35be72690965a2359ff6ff6b9f999
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50231332"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54391281"
 ---
 # <a name="connect-to-sap-systems-from-azure-logic-apps"></a>从 Azure 逻辑应用连接到 SAP 系统
 
@@ -71,7 +71,7 @@ SAP 连接器通过[本地数据网关](https://www.microsoft.com/download/detai
 
 1. 在 [Azure 门户](https://portal.azure.com)中创建一个空白的逻辑应用。此时会打开逻辑应用设计器。 
 
-2. 在搜索框中，输入“http 请求”作为筛选器。 在触发器列表中选择此触发器：“请求 - 当收到 HTTP 请求时”
+2. 在搜索框中，输入“http 请求”作为筛选器。 从触发器列表中选择此触发器：**请求 - 当收到 HTTP 请求时**
 
    ![添加 HTTP 请求触发器](./media/logic-apps-using-sap-connector/add-trigger.png)
 
@@ -92,7 +92,7 @@ SAP 连接器通过[本地数据网关](https://www.microsoft.com/download/detai
 
    ![添加操作](./media/logic-apps-using-sap-connector/add-action.png) 
 
-2. 在搜索框中，输入“sap”作为筛选器。 在操作列表中选择此操作：“将消息发送到 SAP”
+2. 在搜索框中，输入“sap”作为筛选器。 在操作列表中选择此操作：**将消息发送到 SAP**
   
    ![选择 SAP 发送操作](media/logic-apps-using-sap-connector/select-sap-send-action.png)
 
@@ -159,7 +159,7 @@ SAP 连接器通过[本地数据网关](https://www.microsoft.com/download/detai
 
 1. 在逻辑应用设计器中的 SAP 操作下，选择“新建步骤” > “添加操作”。
 
-2. 在搜索框中，输入“响应”作为筛选器。 在操作列表中选择此操作：“请求 - 响应”
+2. 在搜索框中，输入“响应”作为筛选器。 在操作列表中选择此操作：**请求 - 响应**
 
 3. 在“正文”框中单击，以显示动态内容列表。 在该列表中的“发送到 SAP”下面，选择“正文”字段。 
 
@@ -201,7 +201,7 @@ SAP 连接器通过[本地数据网关](https://www.microsoft.com/download/detai
 
 1. 在 Azure 门户中创建一个空白的逻辑应用，以便打开逻辑应用设计器。 
 
-2. 在搜索框中，输入“sap”作为筛选器。 在触发器列表中选择此触发器：“从 SAP 收到消息时”
+2. 在搜索框中，输入“sap”作为筛选器。 从触发器列表中选择此触发器：**从 SAP 收到消息时**
 
    ![添加 SAP 触发器](./media/logic-apps-using-sap-connector/add-sap-trigger.png)
 
@@ -269,7 +269,7 @@ SAP 连接器通过[本地数据网关](https://www.microsoft.com/download/detai
 
 1. 在 Azure 门户中创建一个空白的逻辑应用，以便打开逻辑应用设计器。 
 
-2. 在搜索框中，输入“http 请求”作为筛选器。 在触发器列表中选择此触发器：“请求 - 当收到 HTTP 请求时”
+2. 在搜索框中，输入“http 请求”作为筛选器。 从触发器列表中选择此触发器：**请求 - 当收到 HTTP 请求时**
 
    ![添加 HTTP 请求触发器](./media/logic-apps-using-sap-connector/add-trigger.png)
 
@@ -286,7 +286,7 @@ SAP 连接器通过[本地数据网关](https://www.microsoft.com/download/detai
 
    ![添加操作](./media/logic-apps-using-sap-connector/add-action.png) 
 
-2. 在搜索框中，输入“sap”作为筛选器。 在操作列表中选择此操作：“生成架构”
+2. 在搜索框中，输入“sap”作为筛选器。 在操作列表中选择此操作：**生成架构**
   
    ![选择 SAP 发送操作](media/logic-apps-using-sap-connector/select-sap-schema-generator-action.png)
 
@@ -343,7 +343,7 @@ SAP 连接器通过[本地数据网关](https://www.microsoft.com/download/detai
 
 （可选）可以下载生成的架构，或将其存储在 Blob、存储或集成帐户等存储库中。 集成帐户为其他 XML 操作提供一流的体验。本示例演示如何使用 Azure 资源管理器连接器将架构上传到同一逻辑应用的集成帐户。
 
-1. 在逻辑应用设计器的触发器下，选择“新建步骤” > “添加操作”。 在搜索框中，输入“资源管理器”作为筛选器。 选择此操作：“创建或更新资源”
+1. 在逻辑应用设计器的触发器下，选择“新建步骤” > “添加操作”。 在搜索框中，输入“资源管理器”作为筛选器。 选择此操作：**创建或更新资源**
 
    ![选择 Azure 资源管理器操作](media/logic-apps-using-sap-connector/select-arm-action.png) 
 

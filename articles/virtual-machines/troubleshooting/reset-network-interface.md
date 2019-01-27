@@ -12,21 +12,65 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 11/16/2018
 ms.author: genli
-ms.openlocfilehash: 61001d4926dcce68872a368afb5b28f2d3a8e2c0
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: 6c3d3c831be52f56a1e0d3749ea2aa93fee0a955
+ms.sourcegitcommit: c31a2dd686ea1b0824e7e695157adbc219d9074f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51818994"
+ms.lasthandoff: 01/18/2019
+ms.locfileid: "54401735"
 ---
 # <a name="how-to-reset-network-interface-for-azure-windows-vm"></a>如何为 Azure Windows VM 重置网络接口 
 
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
 
-禁用默认网络接口 (NIC) 或为 NIC 手动设置静态 IP 后，无法连接到 Microsoft Azure Windows 虚拟机 (VM)。 本文介绍如何为 Azure Windows VM 重置网络接口，这将解决远程连接问题。
+本文介绍如何重置 Azure Windows VM 的网络接口，以便在执行以下操作后无法连接到 Microsoft Azure Windows 虚拟机 (VM) 时解决问题：
+
+* 禁用默认网络接口 (NIC)。 
+* 为 NIC 手动设置静态 IP。 
 
 [!INCLUDE [support-disclaimer](../../../includes/support-disclaimer.md)]
+
 ## <a name="reset-network-interface"></a>重置网络接口
+
+### <a name="for-vms-deployed-in-resource-group-model"></a>对于部署在资源组模型中的 VM
+
+1.  转到 [Azure 门户](https://ms.portal.azure.com)。
+2.  选择受影响的虚拟机。
+3.  选择“网络”，然后选择 VM 的网络接口。
+
+    ![网络接口位置](./media/reset-network-interface/select-network-interface-vm.png)
+    
+4.  选择“IP 配置”。
+5.  选择该 IP。 
+6.  如果“专用 IP 分配”不是“静态”，则将其更改为“静态”。
+7.  将“IP 地址”更改为子网中可用的其他 IP 地址。
+8. 虚拟机将重新启动以将新的 NIC 初始化到系统。
+9.  尝试通过远程桌面协议连接到计算机。 如果成功，可以根据需要将专用 IP 地址更改回原始 IP 地址。 否则，可以保留它。 
+
+#### <a name="use-azure-powershell"></a>使用 Azure PowerShell
+
+1. 确保[已安装最新的 Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview)
+2. 打开提升的 Azure PowerShell 会话（以管理员身份运行）。 运行以下命令：
+
+    ```powershell
+    #Set the variables 
+    $SubscriptionID = "<Suscription ID>"
+    $VM = "<VM Name>"
+    $ResourceGroup = "<Resource Group>"
+    $VNET = "<Virtual Network>"
+    $IP = "NEWIP"
+
+    #Log in to the subscription 
+    Add-AzureRMAccount
+    Select-AzureRMSubscription -SubscriptionId $SubscriptionId 
+    
+    #Check whether the new IP address is available in the virtual network.
+    Test-AzureStaticVNetIP –VNetName $VNET –IPAddress  $IP
+
+    #Add/Change static IP. This process will not change MAC address
+    Get-AzureRMVM -ServiceName $ResourceGroup -Name $VM | Set-AzureStaticVNetIP -IPAddress $IP | Update-AzureRMVM
+    ```
+3. 尝试通过远程桌面协议连接到计算机。  如果成功，可以根据需要将专用 IP 地址更改回原始 IP 地址。 否则，可以保留它。
 
 ### <a name="for-classic-vms"></a>对于经典 VM
 
@@ -42,7 +86,7 @@ ms.locfileid: "51818994"
 6.  将“IP 地址”更改为子网中可用的其他 IP 地址。
 7.  选择“保存”。
 8.  虚拟机将重新启动以将新的 NIC 初始化到系统。
-9.  尝试通过远程桌面协议连接到计算机。 如果成功，可以根据需要将专用 IP 地址更改回原始 IP 地址。 否则，可以保留它。 
+9.  尝试通过远程桌面协议连接到计算机。 如果成功，可以选择将专用 IP 地址重新还原为原始 IP 地址。  
 
 #### <a name="use-azure-powershell"></a>使用 Azure PowerShell
 
@@ -69,44 +113,6 @@ ms.locfileid: "51818994"
     ```
 3. 尝试通过远程桌面协议连接到计算机。 如果成功，可以根据需要将专用 IP 地址更改回原始 IP 地址。 否则，可以保留它。 
 
-### <a name="for-vms-deployed-in-resource-group-model"></a>对于部署在资源组模型中的 VM
-
-1.  转到 [Azure 门户]( https://ms.portal.azure.com)。
-2.  选择受影响的虚拟机。
-3.  选择“网络接口”。
-4.  选择与你的计算机相关联的网络接口
-5.  选择“IP 配置”。
-6.  选择该 IP。 
-7.  如果“专用 IP 分配”不是“静态”，则将其更改为“静态”。
-8.  将“IP 地址”更改为子网中可用的其他 IP 地址。
-9. 虚拟机将重新启动以将新的 NIC 初始化到系统。
-10. 尝试通过远程桌面协议连接到计算机。 如果成功，可以根据需要将专用 IP 地址更改回原始 IP 地址。 否则，可以保留它。 
-
-#### <a name="use-azure-powershell"></a>使用 Azure PowerShell
-
-1. 确保[已安装最新的 Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview)
-2. 打开提升的 Azure PowerShell 会话（以管理员身份运行）。 运行以下命令：
-
-    ```powershell
-    #Set the variables 
-    $SubscriptionID = "<Suscription ID>"
-    $VM = "<VM Name>"
-    $ResourceGroup = "<Resource Group>"
-    $VNET = "<Virtual Network>"
-    $IP = "NEWIP"
-
-    #Log in to the subscription 
-    Add-AzureRMAccount
-    Select-AzureRMSubscription -SubscriptionId $SubscriptionId 
-    
-    #Check whether the new IP address is available in the virtual network.
-    Test-AzureStaticVNetIP –VNetName $VNET –IPAddress  $IP
-
-    #Add/Change static IP. This process will not change MAC address
-    Get-AzureRMVM -ServiceName $ResourceGroup -Name $VM | Set-AzureStaticVNetIP -IPAddress $IP | Update-AzureRMVM
-    ```
-3. 尝试通过远程桌面协议连接到计算机。  如果成功，可以根据需要将专用 IP 地址更改回原始 IP 地址。 否则，可以保留它。 
-
 ## <a name="delete-the-unavailable-nics"></a>删除不可用的 NIC
 通过远程桌面连接到计算机后，必须删除旧的 NIC 以避免出现潜在问题：
 
@@ -123,4 +129,4 @@ ms.locfileid: "51818994"
     >
     >
 
-6.  现在，所有不可用的适配器应该已从系统中清除。
+6.  现在，所有不可用的适配器应该都已从系统中清除。

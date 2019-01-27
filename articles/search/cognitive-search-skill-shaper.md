@@ -8,15 +8,15 @@ ms.service: search
 ms.devlang: NA
 ms.workload: search
 ms.topic: conceptual
-ms.date: 05/01/2018
+ms.date: 01/17/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: 627c53f7339dbc35d822a0bf6038ca0f1ea5e653
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: a1f5a698ee76ebd0561bd19ff1a23d0f04be0771
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53313820"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54410109"
 ---
 #   <a name="shaper-cognitive-skill"></a>整形程序认知技能
 
@@ -27,6 +27,9 @@ ms.locfileid: "53313820"
 默认情况下，此技术支持一个级别深度的对象。 对于更复杂的对象，可链接多个整形程序步骤。
 
 在响应中，输出名称始终为“输出”。 管道可在内部映射不同名称，例如将以下示例中的“analyzedText”映射为“output”，但整形程序技能自身会在响应中返回“output”。 如果正在调试大量文档并发现存在命名差异，或者要生成自定义技能并自行构建响应，这一点非常重要。
+
+> [!NOTE]
+> 此技能未绑定到认知服务 API，你使用它无需付费。 但是，你仍然应该[附加认知服务资源](cognitive-search-attach-cognitive-services.md)，以覆盖**免费**资源选项，该选项限制你每天进行少量的每日扩充。
 
 ## <a name="odatatype"></a>@odata.type  
 Microsoft.Skills.Util.ShaperSkill
@@ -80,7 +83,7 @@ Microsoft.Skills.Util.ShaperSkill
 
 
 ### <a name="sample-output"></a>示例输出
-整形程序技能使用 text 和 sentiment 组合元素生成一个名为 analyzedText 的新元素。 
+整形程序技能使用 *text* 和 *sentiment* 组合元素生成一个名为 *analyzedText* 的新元素。 
 
 ```json
 {

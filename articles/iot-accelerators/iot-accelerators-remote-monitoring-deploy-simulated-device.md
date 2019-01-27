@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 08/15/2018
 ms.topic: conceptual
-ms.openlocfilehash: f073637810e9ed1acdf37b0e541ca3f1d518de2a
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: 8491acfd28524ee3bbbd06c788afb668c40c98b9
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43346708"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54450555"
 ---
 # <a name="deploy-a-new-simulated-device"></a>部署新的模拟设备
 
@@ -147,4 +147,4 @@ ms.locfileid: "43346708"
 
 ## <a name="next-steps"></a>后续步骤
 
-本指南介绍如何将自定义设备模型部署到远程监视解决方案加速器。 我们建议接下来了解如何[将物理设备连接到远程监视解决方案](iot-accelerators-connecting-devices-node.md)。
+本指南介绍如何将自定义设备模型部署到远程监视解决方案加速器。 我们建议接下来了解如何[将真实设备连接到远程监视解决方案](iot-accelerators-connecting-devices-node.md)。

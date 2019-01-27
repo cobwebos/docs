@@ -12,14 +12,14 @@ ms.devlang: dotNet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 11/21/2018
+ms.date: 1/17/2019
 ms.author: srrengar
-ms.openlocfilehash: b66373b6847b96a4fcbc1a0c9da42d285d089a9d
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 4a23d8c1e72ec453724514e4d1638c5a223d1644
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52727879"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54389229"
 ---
 # <a name="eventstore-service-overview"></a>事件存储服务概述
 
@@ -34,6 +34,7 @@ EventStore 服务是从版本 6.2 中引入的，它是 Service Fabric 中的监
 * 确认正在正确处理对群集执行的管理操作
 * 获取 Service Fabric 如何与特定实体进行交互的“快照”
 
+![EventStore](media/service-fabric-diagnostics-eventstore/eventstore.png)
 
 若要查看 EventStore 中可用的事件的完整列表，请参阅 [Service Fabric 事件](service-fabric-diagnostics-event-generation-operational.md)。
 
@@ -53,7 +54,7 @@ EventStore 服务是从版本 6.2 中引入的，它是 Service Fabric 中的监
 * 分区副本：来自所有副本的事件/特定分区中的实例，由 `partitionId` 标识
 * 分区副本：来自特定副本的事件/实例，由 `replicaId` 和 `partitionId` 标识
 
-若要了解有关 API 的详细信息，请查看 [EventStore API 参考]((https://docs.microsoft.com/rest/api/servicefabric/sfclient-index-eventsstore)。
+若要了解有关 API 的详细信息，请查看 [EventStore API 参考](https://docs.microsoft.com/rest/api/servicefabric/sfclient-index-eventsstore)。
 
 EventStore 服务还能够将群集中的事件相关联。 通过查看在同一时间从可能已相互影响的不同实体写入的事件，EventStore 服务能够将这些事件进行关联来帮助查明群集中发生各项活动的原因。 例如，如果某个应用程序变得不正常且没有诱发任何变化，则 EventStore 将查看由平台公开的其他事件并且可能会将此情况与 `Error` 或 `Warning` 事件相关联。 这有助于更快地进行故障检测和根本原因分析。
 

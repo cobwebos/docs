@@ -4,7 +4,7 @@ description: 了解如何扩展 Azure AD Connect 的默认配置和操作任务�
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: curtand
 ms.assetid: c18bee36-aebf-4281-b8fc-3fe14116f1a5
 ms.service: active-directory
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/12/2017
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 878b483c1f644bcfe39824766ca5495f111d1864
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: f9c9af94b15c78783f95fb92be548321a35b15a6
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46306216"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54473208"
 ---
 # <a name="next-steps-and-how-to-manage-azure-ad-connect"></a>后续步骤以及如何管理 Azure AD Connect
 使用本文中介绍的操作流程，根据组织的需要和要求自定义 Azure Active Directory (Azure AD) Connect。  
@@ -66,7 +66,7 @@ ms.locfileid: "46306216"
 
 ![其他任务列表](./media/how-to-connect-post-installation/addtasks.png)
 
-| 其他任务 | Description |
+| 其他任务 | 说明 |
 | --- | --- |
 | **查看所选方案** |查看当前的 Azure AD Connect 解决方案。  包括常规设置、同步的目录和同步设置等。 |
 | **自定义同步选项** |更改当前配置，包括在配置中添加其他 Active Directory 林，或启用同步选项（如用户、组、设备或密码回写）。 |

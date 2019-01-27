@@ -4,7 +4,7 @@ description: 此常见问题回答了关于 Azure AD Connect Health 的问题。
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: curtand
 ms.assetid: f1b851aa-54d7-4cb4-8f5c-60680e2ce866
 ms.service: active-directory
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: billmath
-ms.openlocfilehash: 83ff526eb0bd0c51822fc52c90b958d50022a834
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 101eeb89a44fbc28c831fefcdc6490495e0be7e8
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52497738"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54470318"
 ---
 # <a name="azure-ad-connect-health-frequently-asked-questions"></a>Azure AD Connect Health 常见问题
 本文提供有关 Azure Active Directory (Azure AD) Connect Health 的常见问题 (FAQ) 解答。 这些常见问题涉及到服务使用方法，包括计费模式、功能、限制和支持。
@@ -75,7 +75,7 @@ Azure AD Connect Health 不受德国云支持，但[同步错误报告功能](ho
 
 ## <a name="installation-questions"></a>安装问题
 
-**问：在个别服务器上安装 Azure AD Connect Health 代理有何影响？**
+**问：在单个服务器上安装 Azure AD Connect Health 代理有何影响？**
 
 安装 Microsoft Azure AD Connect Health 代理、AD FS、Web 应用程序代理服务器、Azure AD Connect（同步）服务器、域控制器对 CPU、内存消耗、网络带宽和存储的影响很小。
 
@@ -92,9 +92,9 @@ Azure AD Connect Health 不受德国云支持，但[同步错误报告功能](ho
 * Azure AD Connect Health 代理的本地缓冲区存储：约 20 MB。
 * 对于 AD FS 服务器，建议预配一个 1,024 MB (1 GB) 大小的磁盘空间，方便 Azure AD Connect Health 代理的 AD FS 审核通道在所有审核数据被覆盖之前将其处理掉。
 
-**问：在 Azure AD Connect Health 代理安装期间，我必须重新启动我的服务器吗？**
+**问：在 Azure AD Connect Health 代理安装期间，是否必须重启我的服务器？**
 
-不是。 安装代理时不需要重新启动服务器。 但是，安装某些先决条件步骤可能需要重新启动服务器。
+否。 安装代理时不需要重新启动服务器。 但是，安装某些先决条件步骤可能需要重新启动服务器。
 
 例如，在 Windows Server 2008 R2 上安装 .NET 4.5 Framework 需要重新启动服务器。
 
@@ -111,7 +111,7 @@ Azure AD Connect Health 不受德国云支持，但[同步错误报告功能](ho
 
 **问：Azure AD Connect Health 在连接到 HTTP 代理时是否支持基本身份验证？**
 
-不是。 目前不支持指定任意用户名和密码进行基本身份验证的机制。
+否。 目前不支持指定任意用户名和密码进行基本身份验证的机制。
 
 **问：若要确保 Azure AD Connect Health 代理正常使用，需要打开哪些防火墙端口？**
 
@@ -148,13 +148,13 @@ Azure AD Connect Health 不受德国云支持，但[同步错误报告功能](ho
 
 在成功的情况下，将解除 Azure AD Connect Health 警报。 Azure AD Connect Health 代理将定期检测并向服务报告成功的情况。 某些警报的解除取决于时间。 换句话说，如果在警报生成后的 72 小时内未观察到相同的错误条件，则警报会自动解除。
 
-问：我收到警报显示：“测试身份验证请求(合成事务)无法获取令牌。”**如何解决此问题？**
+**问：我收到警报显示：“测试身份验证请求(合成事务)无法获取令牌。”如何解决此问题？**
 
 当 AD FS 服务器上安装的 Health 代理无法获取由 Health 代理启动的作为综合事务一部分的令牌时，AD FS 的 Azure AD Connect Health 就会生成此警报。 Health 代理使用本地系统上下文，并尝试为自信赖方获取令牌。 这是一个全面测试，可确保 AD FS 处于发出令牌的状态。
 
 此测试通常会失败，因为 Health 代理无法解析 AD FS 场名称。 如果 AD FS 服务器位于网络负载均衡器之后，并且请求从位于负载均平衡器后面的节点（而不是位于负载均衡器前面的常规客户端）启动，则可能会发生这种情况。 这可以通过更新位于“C:\Windows\System32\drivers\etc”下的“hosts”文件来修复，以包括 AD FS 服务器的 IP 地址或 AD FS 场名称（如 sts.contoso.com）的环回 IP 地址 (127.0.0.1)。 添加主机文件会使网络调用短路，从而使 Health 代理获得令牌。
 
-问：我收到一封电子邮件，指示我的计算机没有应用最新的勒索攻击修补程序。我为什么会收到这个电子邮件？
+**问：我收到一封电子邮件，指示我的计算机没有应用最新的勒索攻击修补程序。** 我为什么会收到这个电子邮件？
 
 Azure AD Connect Health 服务会扫描其所监视的所有计算机，以确保已安装所需的修补程序。 如果至少有一台计算机未安装关键修补程序，则会向租户管理员发送此电子邮件。 以下逻辑用于做出此判断。
 1. 查找计算机上安装的所有修补程序。
@@ -184,7 +184,7 @@ CheckForMS17-010
 
 ```
 
-问：PowerShell cmdlet <i>Get-MsolDirSyncProvisioningError</i> 显示的同步错误为什么比较少？
+**问：PowerShell cmdlet <i>Get-MsolDirSyncProvisioningError</i> 显示的同步错误为什么比较少？**
 
 <i>Get-MsolDirSyncProvisioningError</i> 只返回 DirSync 预配错误。 除了该类错误以外，Connect Health 门户还会显示其他类型的同步错误，例如导出错误。 这与 Azure AD Connect delta 结果一致。 了解有关 [Azure AD Connect 同步错误](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-troubleshoot-sync-errors)的详细信息。
 

@@ -6,14 +6,14 @@ manager: hegate
 ms.author: avneet723
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.date: 10/25/2018
+ms.date: 01/17/2019
 ms.topic: conceptual
-ms.openlocfilehash: a30311f8b171d80e036b4e554b2f1026b43c8a67
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: e4a48312dc516010b7a7fe1471ba7e555a2f92f2
+ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53604765"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54382260"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-locally---visual-studio"></a>在本地部署远程监视解决方案加速器 - Visual Studio
 
@@ -48,16 +48,9 @@ ms.locfileid: "53604765"
 
 在本部分，我们将运行远程监视微服务。 在本地运行 Web UI，在 Docker 中运行设备模拟服务，并在 Visual Studio 中运行微服务。
 
-### <a name="run-the-web-ui"></a>运行 Web UI
-
-此步骤启动 Web UI。 导航到存储库本地副本中的 **webui** 文件夹，并运行以下命令：
-
-```cmd
-npm install
-npm start
-```
-
 ### <a name="run-the-device-simulation-service"></a>运行设备模拟服务
+
+打开一个新的命令提示符窗口，以确保能够访问在上一部分中由 **start.cmd** 脚本设置的环境变量。
 
 运行以下命令，启动设备模拟服务的 Docker 容器。 该服务模拟远程监视解决方案的设备。
 
@@ -94,11 +87,22 @@ npm start
 1. 在资源列表中单击“流分析作业”。
 1. 在流分析作业的“概述”页上，单击“启动”按钮。 然后单击“启动”以立即启动该作业。
 
+### <a name="run-the-web-ui"></a>运行 Web UI
+
+此步骤启动 Web UI。 打开一个新的命令提示符窗口，以确保能够访问由 **start.cmd** 脚本设置的环境变量。 导航到存储库本地副本中的 **webui** 文件夹，并运行以下命令：
+
+```cmd
+npm install
+npm start
+```
+
+在启动完成时，浏览器会显示页面 **http://localhost:3000/dashboard**。 此页面上的错误是预料之中的。 若想在无错误的情况下查看应用程序，请完成以下步骤。
+
 ### <a name="configure-and-run-nginx"></a>配置并运行 NGINX
 
 设置反向代理服务器，以链接本地计算机上运行的 Web 应用程序和微服务：
 
-* 将 **webui\scripts\localhost** 文件夹中的 **nginx.conf** 文件复制到 **nginx\conf** 安装目录。
+* 将存储库的本地副本的 **webui\scripts\localhost** 文件夹中的 **nginx.conf** 文件复制到 **nginx\conf** 安装目录。
 * 运行 **nginx**。
 
 有关运行 **nginx** 的详细信息，请参阅[适用于 Windows 的 nginx](https://nginx.org/en/docs/windows.html)。

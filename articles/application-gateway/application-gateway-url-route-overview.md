@@ -6,12 +6,12 @@ author: vhorne
 ms.service: application-gateway
 ms.date: 1/8/2019
 ms.author: victorh
-ms.openlocfilehash: 1ada74f5c85ef327957ec4981e83f68bcafea858
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 95d443eeebf2fe5a8fad185210f88576a5f21f6a
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54188753"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54435289"
 ---
 # <a name="url-path-based-routing-overview"></a>基于 URL 路径的路由概述
 
@@ -23,7 +23,7 @@ ms.locfileid: "54188753"
 
 ![imageURLroute](./media/application-gateway-url-route-overview/figure1.png)
 
-将针对 http://contoso.com/video/* 的请求路由到 VideoServerPool，将针对 http://contoso.com/images/* 的请求路由到 ImageServerPool。 如果没有任何路径模式匹配，则选择 DefaultServerPool。
+对 http\://contoso.com/video/* 的请求会路由到 VideoServerPool，对 http\://contoso.com/images/* 的请求会路由到 ImageServerPool。 如果没有任何路径模式匹配，则选择 DefaultServerPool。
 
 > [!IMPORTANT]
 > 规则将按照门户中的列出顺序进行处理。 我们强烈建议先配置多站点侦听器，然后再配置基本侦听器。  这确保将流量路由到适当的后端。 如果基本侦听器先列出并且与传入的请求匹配，则该侦听器将处理该请求。

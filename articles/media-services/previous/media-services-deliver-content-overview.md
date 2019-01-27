@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/28/2017
 ms.author: juliako
-ms.openlocfilehash: ae0ff36c7e83120a9571e0f87788c25193027616
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 3e968c71b87f7227dc4bd2e3f4ee486719b65e40
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51240131"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54388163"
 ---
 # <a name="deliver-content-to-customers"></a>向客户传送内容
 向客户传送流或视频点播内容时，目标在于向处于不同网络条件下的各种设备传送优质视频。
@@ -61,7 +61,7 @@ ms.locfileid: "51240131"
 * OnDemandOrigin 定位符。 这些定位符用于流媒体（例如，MPEG-DASH、HLS 或平滑流式处理）或渐进式下载文件。
 * 共享访问签名 (SAS) URL 定位符。 这些定位符用于将媒体文件下载到本地计算机。
 
-访问策略用于定义客户端可以访问特定资产的权限（例如读取、写入和列出）和持续时间。 请注意，创建 OrDemandOrigin 定位符时，不应使用列出权限 (AccessPermissions.List)。
+访问策略用于定义客户端可以访问特定资产的权限（例如读取、写入和列出）和持续时间。 请注意，创建 OnDemandOrigin 定位符时，不应使用列出权限 (AccessPermissions.List)。
 
 定位符具有过期日期。 Azure 门户将定位符的过期日期设置为 100 年以后。
 
@@ -77,7 +77,7 @@ ms.locfileid: "51240131"
 创建定位符时，可能会由于 Azure 存储中所需存储和传播进程的影响，出现 30 秒的延迟。
 
 ## <a name="adaptive-streaming"></a>自适应流
-自适应比特率技术允许视频播放器应用程序确定网络条件并从多个比特率中选择。 网络通信质量下降时，客户端可以选择较低的比特率，以便能够以较低的视频质量继续播放视频。 网络条件改善时，客户端可以切换到较高的比特率，提高视频质量。 Azure 媒体服务支持以下自适应比特率技术：HTTP Live Streaming (HLS)、平滑流式处理和 MPEG-DASH。
+自适应比特率技术允许视频播放器应用程序确定网络条件并从多个比特率中选择。 网络通信质量下降时，客户端可以选择较低的比特率，以便能够以较低的视频质量继续播放视频。 网络条件改善时，客户端可以切换到较高的比特率，提高视频质量。 Azure 媒体服务支持以下自适应比特率技术：HTTP Live Streaming (HLS)、平滑流式处理 和 MPEG-DASH。
 
 若要为用户提供流 URL，必须先创建一个 OnDemandOrigin 定位符。 通过创建定位符，可获得包含要流式传输的内容的资产的基本路径。 但是，为了能够流式传输此内容，需要进一步修改此路径。 要构造流式处理清单文件的完整 URL，必须将定位符的 path 值与清单 (filename.ism) 文件名连接起来。 然后，向定位符路径追加 /Manifest 和相应的格式（如果需要）。
 

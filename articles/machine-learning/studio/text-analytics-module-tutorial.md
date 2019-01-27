@@ -1,9 +1,10 @@
 ---
-title:创建文本分析模型 titleSuffix: Azure 机器学习工作室 description:如何在 Azure 机器学习工作室中使用用于文本预处理、N 元语法或特征哈希的模块创建文本分析模型 services: machine-learning ms.service: machine-learning ms.component: studio ms.topic: article
+title:创建情绪分析模型 titleSuffix: Azure 机器学习工作室 description:如何在 Azure 机器学习工作室中使用用于文本预处理、N 元语法或特征哈希的模块创建文本分析模型 services: machine-learning ms.service: machine-learning ms.component: studio ms.topic: article
 
 author: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18 ms.date:03/14/2018
 ---
-# <a name="create-text-analytics-models-in-azure-machine-learning-studio"></a>在 Azure 机器学习工作室中创建文本分析模型
+# <a name="create-a-sentiment-analysis-model-in-azure-machine-learning-studio"></a>在 Azure 机器学习工作室中创建情绪分析模型
+
 可以使用 Azure 机器学习构建和实现文本分析模型的操作化。 例如，这些模型可以帮助你解决文档分类或情绪分析问题。
 
 在文本分析实验中，通常需要：

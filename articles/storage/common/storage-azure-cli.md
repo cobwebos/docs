@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 06/02/2017
 ms.author: rogarana
 ms.component: common
-ms.openlocfilehash: cd2399e25889cdc9c885b76e002e47415c0629e5
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 977d40ba6fdb00f47f4ff32e60642ee3ab102da2
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46984362"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54413628"
 ---
 # <a name="using-the-azure-cli-with-azure-storage"></a>将 Azure CLI 用于 Azure 存储
 
@@ -30,7 +30,7 @@ ms.locfileid: "46984362"
 本指南假定你了解 Azure 存储的基本概念。 本指南还假定，用户能够满足下面为 Azure 和存储服务指定的帐户创建要求。
 
 ### <a name="accounts"></a>帐户
-* **Azure 帐户**：如果用户没有 Azure 订阅，可以[创建免费 Azure 帐户](https://azure.microsoft.com/free/)。
+* **Azure 帐户**：如果你还没有 Azure 订阅，可以[创建一个免费 Azure 帐户](https://azure.microsoft.com/free/)。
 * **存储帐户**：请参阅[关于 Azure 存储帐户](storage-create-storage-account.md)中的[创建存储帐户](storage-quickstart-create-account.md)。
 
 ### <a name="install-the-azure-cli"></a>安装 Azure CLI
@@ -183,10 +183,10 @@ az storage account create \
     --sku <account_sku>
 ```
 
-* `--location` [必填]：位置。 例如，“West US”。
-* `--name` [必填]：存储帐户名称。 名称长度必须为 3 到 24 个字符，并且名称只能包含小写字母数字字符。
-* `--resource-group` [必填]：资源组的名称。
-* `--sku` [必填]：存储帐户 SKU。 允许的值：
+* `--location` [必需]：位置。 例如，“West US”。
+* `--name` [必需]：存储帐户名称。 名称长度必须为 3 到 24 个字符，并且名称只能包含小写字母数字字符。
+* `--resource-group` [必需]：资源组的名称。
+* `--sku` [必需]：存储帐户 SKU。 允许的值：
   * `Premium_LRS`
   * `Standard_GRS`
   * `Standard_LRS`
@@ -197,7 +197,7 @@ az storage account create \
 
 可以在 Azure 订阅中设置多个存储帐户。 若要选择其中一个帐户用于所有后续存储命令，可以设置这些环境变量：
 
-首先，使用 [az storage account keys list](/cli/azure/storage/account/keys#list) 命令显示存储帐户密钥：
+首先，使用 [az storage account keys list](/cli/azure/storage/account/keys) 命令显示存储帐户密钥：
 
 ```azurecli-interactive
 az storage account keys list \

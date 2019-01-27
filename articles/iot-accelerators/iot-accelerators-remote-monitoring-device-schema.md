@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 12/18/2018
 ms.topic: conceptual
-ms.openlocfilehash: 54e21e0b5f522b226ec1abb71a1c5ab5b245df05
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 3c2bca45a7927689992cf44fb70199e246641760
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53635521"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54445416"
 ---
 # <a name="understand-the-device-model-schema"></a>了解设备模型架构
 
@@ -22,7 +22,7 @@ ms.locfileid: "53635521"
 本文介绍指定模拟设备的功能和行为的设备模型架构。 设备模型存储在 JSON 文件中。
 
 > [!NOTE]
-> 此设备模型架构仅适用于在设备模拟服务中托管的模拟设备。 如果想要创建物理设备，请参阅[将设备连接到远程监视解决方案加速器](iot-accelerators-connecting-devices.md)。
+> 此设备模型架构仅适用于在设备模拟服务中托管的模拟设备。 如果想要创建真实设备，请参阅[将设备连接到远程监视解决方案加速器](iot-accelerators-connecting-devices.md)。
 
 以下文章与本文相关：
 

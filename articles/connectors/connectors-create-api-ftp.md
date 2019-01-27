@@ -10,12 +10,12 @@ ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 10/15/2018
 tags: connectors
-ms.openlocfilehash: a14f045193c01b8c26019314ddde4c2116d8bad6
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: d57a80ec2a1ebfca173d7eaa165de4d344af2ccf
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50232811"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54391118"
 ---
 # <a name="create-monitor-and-manage-ftp-files-by-using-azure-logic-apps"></a>使用 Azure 逻辑应用创建、监视和管理 FTP 文件
 
@@ -26,7 +26,7 @@ ms.locfileid: "50232811"
 * 获取文件内容和元数据。
 * 将存档提取到文件夹。
 
-可以使用触发器从 FTP 服务器获取响应，并使输出可用于其他操作。 可以使用逻辑应用中的操作对 FTP 服务器上的文件执行任务。 还可以让其他操作使用来自 FTP 操作的输出。 例如，如果你定期从 FTP 服务器检索文件，则可以使用 Office 365 Outlook 连接器或 Outlook.com 连接器发送有关这些文件及其内容的电子邮件。 如果你不熟悉逻辑应用，请查看[什么是 Azure 逻辑应用？](../logic-apps/logic-apps-overview.md)
+可以使用触发器从 FTP 服务器获取响应，并使输出可用于其他操作。 可以使用逻辑应用中的运行操作对 FTP 服务器上的文件进行管理。 还可以让其他操作使用来自 FTP 操作的输出。 例如，如果你定期从 FTP 服务器获取文件，则可以使用 Office 365 Outlook 连接器或 Outlook.com 连接器发送有关这些文件及其内容的电子邮件。 如果你不熟悉逻辑应用，请查看[什么是 Azure 逻辑应用？](../logic-apps/logic-apps-overview.md)
 
 > [!NOTE]
 > 除非使用[区块处理大型消息](../logic-apps/logic-apps-handle-large-messages.md)，否则 FTP 连接器仅支持 50 MB 或更小的文件。 
@@ -39,7 +39,7 @@ ms.locfileid: "50232811"
 
 * FTP 主机服务器地址和帐户凭据
 
-  FTP 连接器需要可从 Internet 访问并设置为在 passive 模式下运行的 FTP 服务器。 你的凭据授权逻辑应用创建连接并访问你的 FTP 帐户。
+  FTP 连接器需要可从 Internet 访问并设置为在 passive 模式下运行的 FTP 服务器。 你的凭据允许逻辑应用创建连接并访问你的 FTP 帐户。
 
 * 有关[如何创建逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)的基本知识
 
@@ -72,19 +72,22 @@ ms.locfileid: "50232811"
 
 当此触发器检测到 FTP 服务器上添加或更改了文件时，将会启动逻辑应用工作流。 例如，可以添加一个条件，用于检查文件内容，并根据该内容是否符合指定的条件，来确定是否要获取该内容。 最后可以添加一个操作，用于获取文件内容并将该内容放在 SFTP 服务器上的某个文件夹中。 
 
-**企业示例**：可以使用此触发器监视 FTP 文件夹中表示客户订单的新文件。 然后，可以使用“获取文件内容”等 FTP 操作来获取订单内容以做进一步处理，并将该订单存储在订单数据库中。
+**企业示例**：可以使用此触发器监视 FTP 文件夹中描述客户订单的新文件。 然后，可以使用“获取文件内容”等 FTP 操作来获取订单内容以做进一步处理，并将该订单存储在订单数据库中。
 
 有效且正常工作的逻辑应用需要一个触发器和至少一个操作。 因此请确保在添加触发器后添加一个操作。
 
-以下是演示此触发器的示例：“添加或修改文件时”
+下面是一个展示了此触发器的示例：**添加或修改文件时**
 
 1. 登录到 [Azure 门户](https://portal.azure.com)，在逻辑应用设计器中打开逻辑应用（如果尚未打开）。
 
-1. 对于空白逻辑应用，请在搜索框中输入“ftp”作为筛选器。 在触发器列表下，选择以下触发器：“添加或修改字段时 - FTP”
+1. 对于空白逻辑应用，请在搜索框中输入“ftp”作为筛选器。 在触发器列表中选择此触发器：**添加或修改字段时 - FTP**
 
    ![查找和选择 FTP 触发器](./media/connectors-create-api-ftp/select-ftp-trigger.png)  
 
 1. 为连接提供所需的详细信息，然后选择“创建”。
+
+   默认情况下，此连接器将以文本格式传输文件。 
+   若要以二进制格式传输文件，例如，在使用了编码的情况下，请选择“二进制传输”。
 
    ![创建 FTP 服务器连接](./media/connectors-create-api-ftp/create-ftp-connection-trigger.png)  
 
@@ -104,7 +107,7 @@ ms.locfileid: "50232811"
 
 1. 在该触发器或其他任何操作下，选择“新建步骤”。 
 
-1. 在搜索框中，输入“ftp”作为筛选器。 在操作列表下，选择此操作：“获取文件内容 - FTP”
+1. 在搜索框中，输入“ftp”作为筛选器。 在操作列表中选择以下操作：**获取文件内容 - FTP**
 
    ![选择 FTP 操作](./media/connectors-create-api-ftp/select-ftp-action.png)  
 

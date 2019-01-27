@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/18/2018
 ms.author: pbutlerm
-ms.openlocfilehash: bfe2b0c70c8b912f6489ed461f5bcf6f233ed60d
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 4bf11c0a084cb0241125a1ed546f48c1c5455de3
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48805544"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54449446"
 ---
 <a name="update-an-existing-offer-for-azure-marketplace"></a>更新 Azure 市场的现有产品
 ==============================================
@@ -87,7 +87,7 @@ ms.locfileid: "48805544"
 
 1.  登录到[云合作伙伴门户](https://cloudpartner.azure.com/)。
 2.  在“所有套餐”下，找到要更新的套餐。
-3.  在“SKU”窗体下，单击“添加新 SKU”并在弹出菜单中提供一个 SKU ID。
+3.  在“SKU”窗体下，单击“添加新 SKU”并在弹出窗口中提供一个 **SKU ID**。
 4.  遵循[将虚拟机发布到 Azure 市场](./cloud-partner-portal-publish-virtual-machine.md)中详述的剩余步骤。
 5.  单击“发布”开始发布工作流，推出新的 SKU。
 

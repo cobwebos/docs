@@ -11,13 +11,13 @@ author: bonova
 ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp
 manager: craigg
-ms.date: 12/12/2018
-ms.openlocfilehash: f6191ba2f6ca86e07842030c0fca0a65b8c9d09a
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.date: 01/22/2019
+ms.openlocfilehash: 420d3c256f9bf2d0884e98312a5a66aea08b13bc
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53584490"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54450875"
 ---
 # <a name="overview-azure-sql-database-managed-instance-resource-limits"></a>概述 Azure SQL 数据库托管实例资源限制
 
@@ -39,7 +39,8 @@ Azure SQL 数据库托管实例可部署在两代硬件 (Gen4 和 Gen5) 上。 �
 | 硬件 | Intel E5-2673 v3 (Haswell) 2.4-GHz 处理器、附加的 SSD vCore = 1 PP（物理核心） | Intel E5-2673 v4 (Broadwell) 2.3-GHz 处理器、快速 eNVM SSD、vCore=1 LP（超线程） |
 | 计算 | 8、16、24 个 vCore | 8、16、24、32、40、64、80 个 vCore |
 | 内存 | 每个 vCore 7 GB | 每个 vCore 5.1 GB |
-| 最大存储（业务关键） | 1 TB | 1 TB、2 TB 或 4 TB，具体取决于核心数 |
+| 最大存储（常规用途） |  8 TB | 1 TB |
+| 最大存储（业务关键） | 8 TB | 1 TB、2 TB 或 4 TB，具体取决于核心数 |
 
 ### <a name="service-tier-characteristics"></a>服务层特征
 
@@ -53,8 +54,7 @@ Azure SQL 数据库托管实例可部署在两代硬件 (Gen4 和 Gen5) 上。 �
 | 每个数据库的最大存储 | 由每个实例的最大存储大小决定 | 由每个实例的最大存储大小决定 |
 | 每个实例的数据库数目上限 | 100 | 100 |
 | 每个实例的数据库文件数目上限 | 最多 280 个 | 每个数据库 32,767 个文件 |
-| 数据/日志 IOPS（近似） | 每个文件 500-7500<br/>\*[取决于文件大小](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#premium-storage-disk-sizes) | 11K - 110K（每个 vCore 为 1375） |
-| 实例日志吞吐量 | 22 MB/s（每个实例） | 3 MB/s（每个 vCore）<br/>最大 48 MB/s |
+| 数据/日志 IOPS（近似） | 每个文件 500-7500<br/>\*[取决于文件大小](https://docs.microsoft.com/azure/virtual-machines ce 日志吞吐量 | 22 MB/s（每个实例） | 3 MB/s（每个 vCore）<br/>最大 48 MB/s |
 | 数据吞吐量（近似） | 100-250 MB/s（每个文件）<br/>\*[取决于文件大小](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#premium-storage-disk-sizes) | 24-48 MB/s（每个 vCore） |
 | IO 延迟（近似） | 5-10 毫秒 | 1-2 毫秒 |
 | 最大 tempDB 大小 | 192-1920 GB（每个 vCore 为 24 GB） | 无约束 - 受最大实例存储大小限制 |

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/13/2018
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: b7f5d4683f0042b95399b86cd4f53c93518c3c56
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: 765d93780ad45eaaca61d4deb5f6607ef70ee432
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54330664"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54413679"
 ---
 # <a name="speech-service-rest-apis"></a>语音服务 REST API
 
@@ -258,7 +258,7 @@ public class Authentication
 
 可将以下参数包含在 REST 请求的查询字符串中。
 
-| 参数 | Description | 必需/可选 |
+| 参数 | 说明 | 必需/可选 |
 |-----------|-------------|---------------------|
 | `language` | 标识所要识别的口语。 请参阅[支持的语言](language-support.md#speech-to-text)。 | 必选 |
 | `format` | 指定结果格式。 接受的值为 `simple` 和 `detailed`。 简单结果包括 `RecognitionStatus`、`DisplayText`、`Offset` 和 `Duration`。 详细响应包括多个具有置信度值的结果，以及四种不同的表示形式。 默认设置是 `simple`。 | 可选 |
@@ -268,7 +268,7 @@ public class Authentication
 
 下表列出了语音转文本请求的必需和可选标头。
 
-|标头| Description | 必需/可选 |
+|标头| 说明 | 必需/可选 |
 |------|-------------|---------------------|
 | `Ocp-Apim-Subscription-Key` | 语音服务订阅密钥。 | 此标头或 `Authorization` 是必需的。 |
 | `Authorization` | 前面带有单词 `Bearer` 的授权令牌。 有关详细信息，请参阅[身份验证](#authentication)。 | 此标头或 `Ocp-Apim-Subscription-Key` 是必需的。 |
@@ -307,7 +307,7 @@ Expect: 100-continue
 
 每个响应的 HTTP 状态代码指示成功或一般错误。
 
-| HTTP 状态代码 | Description | 可能的原因 |
+| HTTP 状态代码 | 说明 | 可能的原因 |
 |------------------|-------------|-----------------|
 | 100 | 继续 | 已接受初始请求。 继续发送剩余的数据。 （与分块传输配合使用。） |
 | 200 | OK | 请求成功；响应正文是一个 JSON 对象。 |
@@ -362,7 +362,7 @@ using (fs = new FileStream(audioFile, FileMode.Open, FileAccess.Read))
 
 结果以 JSON 格式提供。 `simple` 格式包含以下顶级字段。
 
-| 参数 | Description  |
+| 参数 | 说明  |
 |-----------|--------------|
 |`RecognitionStatus`|状态，例如 `Success` 表示成功识别。 请参阅下表。|
 |`DisplayText`|经过大小写转换、添加标点、执行反向文本规范化（将口头文本转换为短形式，例如，200 表示“two hundred”，或“Dr.Smith”表示“doctor smith”）和屏蔽亵渎内容之后的识别文本。 仅在成功时提供。|
@@ -371,7 +371,7 @@ using (fs = new FileStream(audioFile, FileMode.Open, FileAccess.Read))
 
 `RecognitionStatus` 字段可包含以下值：
 
-| 状态 | Description |
+| 状态 | 说明 |
 |--------|-------------|
 | `Success` | 识别成功并且存在 `DisplayText` 字段。 |
 | `NoMatch` | 在音频流中检测到语音，但没有匹配目标语言的字词。 通常表示识别语言不同于讲话用户所用的语言。 |
@@ -386,7 +386,7 @@ using (fs = new FileStream(audioFile, FileMode.Open, FileAccess.Read))
 
 `NBest` 列表中的每个对象包括：
 
-| 参数 | Description |
+| 参数 | 说明 |
 |-----------|-------------|
 | `Confidence` | 条目的置信度评分，从 0.0（完全不可信）到 1.0（完全可信） |
 | `Lexical` | 已识别文本的词法形式：识别的实际单词。 |
@@ -444,7 +444,7 @@ using (fs = new FileStream(audioFile, FileMode.Open, FileAccess.Read))
 
 下表列出了语音转文本请求的必需和可选标头。
 
-| 标头 | Description | 必需/可选 |
+| 标头 | 说明 | 必需/可选 |
 |--------|-------------|---------------------|
 | `Authorization` | 前面带有单词 `Bearer` 的授权令牌。 有关其他信息，请参阅[身份验证](#authentication)。 | 必选 |
 | `Content-Type` | 指定所提供的文本的内容类型。 接受的值：`application/ssml+xml`。 | 必选 |
@@ -453,16 +453,17 @@ using (fs = new FileStream(audioFile, FileMode.Open, FileAccess.Read))
 
 ### <a name="audio-outputs"></a>音频输出
 
-这是在每个请求中作为 `X-Microsoft-OutputFormat` 标头发送的受支持音频格式的列表。 每种格式合并了比特率和编码类型。 语音服务支持 24 KHz 和 16 KHz 音频输出。
+这是在每个请求中作为 `X-Microsoft-OutputFormat` 标头发送的受支持音频格式的列表。 每种格式合并了比特率和编码类型。 语音服务支持 24 KHz、16 KHz 和 8 KHz 音频输出。
 
 |||
 |-|-|
 | `raw-16khz-16bit-mono-pcm` | `raw-8khz-8bit-mono-mulaw` |
-| `riff-8khz-8bit-mono-mulaw` | `riff-16khz-16bit-mono-pcm` |
-| `audio-16khz-128kbitrate-mono-mp3` | `audio-16khz-64kbitrate-mono-mp3` |
-| `audio-16khz-32kbitrate-mono-mp3`  | `raw-24khz-16bit-mono-pcm` |
-| `riff-24khz-16bit-mono-pcm`        | `audio-24khz-160kbitrate-mono-mp3` |
-| `audio-24khz-96kbitrate-mono-mp3`  | `audio-24khz-48kbitrate-mono-mp3` |
+| `riff-8khz-8bit-mono-alaw` | `riff-8khz-8bit-mono-mulaw` |
+| `riff-16khz-16bit-mono-pcm` | `audio-16khz-128kbitrate-mono-mp3` |
+| `audio-16khz-64kbitrate-mono-mp3` | `audio-16khz-32kbitrate-mono-mp3` |
+| `raw-24khz-16bit-mono-pcm` | `riff-24khz-16bit-mono-pcm` |
+| `audio-24khz-160kbitrate-mono-mp3` | `audio-24khz-96kbitrate-mono-mp3` |
+| `audio-24khz-48kbitrate-mono-mp3` | |
 
 > [!NOTE]
 > 如果所选语音和输出格式具有不同的比特率，则根据需要对音频重新采样。 但是，24khz 语音不支持 `audio-16khz-16kbps-mono-siren` 和 `riff-16khz-16kbps-mono-siren` 输出格式。
@@ -497,7 +498,7 @@ Authorization: Bearer [Base64 access_token]
 
 每个响应的 HTTP 状态代码指示成功或一般错误。
 
-| HTTP 状态代码 | Description | 可能的原因 |
+| HTTP 状态代码 | 说明 | 可能的原因 |
 |------------------|-------------|-----------------|
 | 200 | OK | 请求成功；响应正文是一个音频文件。 |
 | 400 | 错误的请求 | 必需参数缺失、为空或为 null。 或者，传递给必需参数或可选参数的值无效。 常见问题是标头太长。 |

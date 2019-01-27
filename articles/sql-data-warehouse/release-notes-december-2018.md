@@ -10,12 +10,12 @@ ms.component: manage
 ms.date: 12/12/2018
 ms.author: mausher
 ms.reviewer: twounder
-ms.openlocfilehash: 21baa89293c74ec49720bffc2506e20789fe9e55
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: b897b50edf4d5a7eeabacc6da1505e165f2bb21a
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53411254"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54431735"
 ---
 # <a name="whats-new-in-azure-sql-data-warehouse-december-2018"></a>Azure SQL 数据仓库中的新增功能 2018 年 12 月
 Azure SQL 数据仓库持续得到改进。 本文介绍了 2018 年 12 月发行的版本中引入的新功能和所做的更改。
@@ -53,6 +53,9 @@ ALTER DATABASE [Database Name] SET QUERY_STORE = ON;
 Azure SQL 数据仓库 Gen2 现支持较低的计算层。 客户可以体验 Azure SQL 数据仓库的领先性能、灵活性和安全性功能，从 100 cDWU（[数据仓库单元](https://docs.microsoft.com/azure/sql-data-warehouse/what-is-a-data-warehouse-unit-dwu-cdwu)）开始，并在几分钟内扩展到3 0,000 cDWU。 从 2018 年 12 月中开始，通过某些[区域](https://docs.microsoft.com/azure/sql-data-warehouse/gen2-lower-tier-regions)中的较低的计算层，客户可以从 Gen2 性能和灵活性中受益。其余区域的此类计算层在 2019 年提供。
 
 通过降低下一代数据仓库的入口点，Microsoft 为价值驱动型客户打开了大门，他们无需猜测哪种试用环境最适合，即可评估安全、高性能数据仓库的所有优势。 客户最低可以从 100 cDWU 开始，低于目前的 500 cDWU 入口点。 SQL 数据仓库 Gen2 继续支持暂停和恢复操作，并且不仅止于计算的灵活性。 Gen2 还支持无限的列存储容量，并且每个查询的内存增加了 1.5 倍，并发查询多达 128 个，以及[自适应缓存](https://azure.microsoft.com/blog/adaptive-caching-powers-azure-sql-data-warehouse-performance-gains/)功能。 与同一价格的 Gen1 上的相同数据仓库单元相比，这些功能的平均性能提高了 4 倍。 异地冗余备份是 Gen2 的标准配置，具有内置的保证数据保护。 Azure SQL 数据仓库 Gen2 随时可以缩放。
+
+## <a name="columnstore-background-merge"></a>列存储后台合并
+默认情况下，Azure SQL 数据仓库 (Azure SQL DW) 使用称为[行组](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-memory-optimizations-for-columnstore-compression)的微分区以列格式存储数据。 有时候，由于构建索引或加载数据时的内存约束，行组可能会被压缩为小于最佳大小 100 万行。 行组还可能会由于删除而产生碎片。 小的或碎片化的行组会导致较高的内存消耗以及低效的查询执行。 使用此版本的 Azure SQL DW 时，列存储后台维护任务会将较小的压缩行组进行合并以创建较大的行组，从而更好地利用内存并提高查询执行速度。
 
 ## <a name="next-steps"></a>后续步骤
 对 SQL 数据仓库有了初步的认识后，请了解如何快速[创建 SQL 数据仓库][create a SQL Data Warehouse]。 如果不熟悉 Azure，学习新术语时，[Azure 词汇表][Azure glossary] 可以提供帮助。 或者，查看一下以下一些其他 SQL 数据仓库资源。  

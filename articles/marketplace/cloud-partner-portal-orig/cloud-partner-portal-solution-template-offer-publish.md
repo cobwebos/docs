@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 11/15/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 333eebfa1bae919c43164572c63f2de4f7251fe0
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: a19b06e1297b86610ecee01a4e84150813cdb208
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52261611"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54452388"
 ---
 # <a name="publish-a-solution-template-to-azure-marketplace"></a>将解决方案模板发布到 Azure 市场
 
@@ -84,7 +84,7 @@ SKU 显示在 Azure 市场的父套餐下，并在 Azure 门户中以可购买�
     - 市场
     - 支持
 
-每个视图包含一组要填写的字段。必填字段标有红色星号 (\*)。
+每个视图包含一组要填写的字段。必填字段标有红色星号 (\*)
 
 ## <a name="to-configure-offer-settings"></a>配置“套餐设置”
 
@@ -139,7 +139,7 @@ SKU 显示在 Azure 市场的父套餐下，并在 Azure 门户中以可购买�
 - **标题** - SKU 的标题。 此标题将显示在此项的库中。
 - **摘要** - SKU 的简短摘要说明。 （最大长度为 100 个字符。）
 - **说明** - SKU 的详细说明。
-- **SKU 类型** - 包含以下值的下拉列表：“托管应用程序(预览版)”和“解决方案模板”。 对于本方案，请选择“解决方案模板”。
+- **SKU 类型** - 含以下值的下拉列表：“托管应用程序(预览版)”和“解决方案模板”。 对于本方案，请选择“解决方案模板”。
 - **云可用性** - SKU 的位置。 默认值为“公共 Azure”。
 
 ### <a name="package-details"></a>包详细信息

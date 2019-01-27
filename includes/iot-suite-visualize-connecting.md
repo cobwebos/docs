@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/24/2018
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: 5702c6e9c9d75c6cccb82f1c57684ef7b9898c34
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 73ba80878615f04e1755a4d12014691c5ae2a077
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34665987"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54453114"
 ---
 ## <a name="view-device-telemetry"></a>查看设备遥测数据
 
@@ -39,7 +39,7 @@ ms.locfileid: "34665987"
 
 1. 在“设备”页上的设备列表中选择已预配的设备：
 
-    ![选择物理设备](media/iot-suite-visualize-connecting/devicesselect.png)
+    ![选择真实设备](media/iot-suite-visualize-connecting/devicesselect.png)
 
 1. 若要显示可在设备上调用的方法列表，请选择“作业”，然后选择“运行方法”。 若要计划在多个设备上运行的作业，可以在列表中选择多个设备。 “作业”面板会显示普遍适用于所有选定设备的方法类型。
 

@@ -15,12 +15,12 @@ ms.date: 09/24/2018
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 281c426170985d43401a13988218126ea3951634
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 17a2d1ac747b46ed9a55ceffeea3ba9f4b2f0bc7
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47405608"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54412042"
 ---
 # <a name="custom-roles-in-azure"></a>Azure 中的自定义角色
 
@@ -90,7 +90,7 @@ ms.locfileid: "47405608"
 
 自定义角色具有以下属性。
 
-| 属性 | 必选 | Type | Description |
+| 属性 | 必选 | 类型 | 说明 |
 | --- | --- | --- | --- |
 | `Name` | 是 | String | 自定义角色的显示名称。 虽然角色定义是订阅级资源，但角色定义可以在共享同一 Azure AD 目录的多个订阅中使用。 此显示名称在 Azure AD 目录范围内必须是唯一的。 可以包含字母、数字、空格和特殊字符。 最多包含 128 个字符。 |
 | `Id` | 是 | String | 自定义角色的唯一 ID。 如果使用 Azure PowerShell 和 Azure CLI，在创建新角色时会自动生成此 ID。 |
@@ -106,7 +106,7 @@ ms.locfileid: "47405608"
 
 与在内置角色中一样，`AssignableScopes` 属性指定角色的可配置范围。 自定义角色的 `AssignableScopes` 属性还控制谁可以创建、删除、更新或查看自定义角色。
 
-| 任务 | Operation | Description |
+| 任务 | Operation | 说明 |
 | --- | --- | --- |
 | 创建/删除自定义角色 | `Microsoft.Authorization/ roleDefinition/write` | 在自定义角色的所有 `AssignableScopes` 上被允许此操作的用户可以创建（或删除）用于这些范围的自定义角色。 例如，订阅、资源组和资源的[所有者](built-in-roles.md#owner)和[用户访问管理员](built-in-roles.md#user-access-administrator)。 |
 | 更新自定义角色 | `Microsoft.Authorization/ roleDefinition/write` | 被授权在自定义角色的所有 `AssignableScopes` 上执行此操作的用户可以更新这些范围中的自定义角色。 例如，订阅、资源组和资源的[所有者](built-in-roles.md#owner)和[用户访问管理员](built-in-roles.md#user-access-administrator)。 |
@@ -116,3 +116,4 @@ ms.locfileid: "47405608"
 - [使用 Azure PowerShell 创建自定义角色](custom-roles-powershell.md)
 - [使用 Azure CLI 创建自定义角色](custom-roles-cli.md)
 - [了解角色定义](role-definitions.md)
+- [对 Azure 中的 RBAC 进行故障排除](troubleshooting.md)

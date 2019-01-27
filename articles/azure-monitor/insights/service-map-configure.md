@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/07/2018
 ms.author: bwren
-ms.openlocfilehash: ea1c44d95dfb00fdb2b0af9e5cd8560fdee3d361
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: 808fe41928a99ffc797c96a02305d81765318780
+ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54231336"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54381652"
 ---
 # <a name="configure-service-map-in-azure"></a>在 Azure 中配置服务映射
 服务映射自动发现 Windows 和 Linux 系统上的应用程序组件并映射服务之间的通信。 借助它，你可以按照自己的想法，将服务器作为提供重要服务的互连系统。 服务映射显示任何 TCP 连接的体系结构中服务器、进程和端口之间的连接，只需安装代理，无需任何其他配置。
@@ -130,7 +130,7 @@ ms.locfileid: "54231336"
 ## <a name="connected-sources"></a>连接的源
 服务映射从 Microsoft Dependency Agent 获取其数据。 Dependency Agent 依赖 Log Analytics 代理连接到 Log Analytics。 这意味着服务器必须首先安装和配置 Log Analytics 代理，然后再安装 Dependency Agent。  下表介绍了服务映射解决方案支持的连接的源。
 
-| 连接的源 | 支持 | Description |
+| 连接的源 | 支持 | 说明 |
 |:--|:--|:--|
 | Windows 代理 | 是 | 服务映射从 Windows 计算机分析和收集数据。 <br><br>除[适用于 Windows 的 Log Analytics 代理](../../azure-monitor/platform/log-analytics-agent.md)外，Windows 代理还需要 Microsoft Dependency Agent。 有关完整的操作系统版本列表，请参阅[支持的操作系统](#supported-operating-systems)。 |
 | Linux 代理 | 是 | 服务映射从 Linux 代理计算机分析和收集数据。 <br><br>除[适用于 Linux 的 Log Analytics 代理](../../azure-monitor/platform/log-analytics-agent.md)外，Linux 代理还需要 Microsoft Dependency Agent。 有关完整的操作系统版本列表，请参阅[支持的操作系统](#supported-operating-systems)。 |
@@ -210,7 +210,7 @@ ForEach-Object {
 "apiVersion": "2017-03-30",
 "location": "[resourceGroup().location]",
 "dependsOn": [
-"[concat('Microsoft.Compute/virtualMachines/', parameters('vmName'))]"
+    "[concat('Microsoft.Compute/virtualMachines/', parameters('vmName'))]"
 ],
 "properties": {
     "publisher": "Microsoft.Azure.Monitoring.DependencyAgent",
@@ -242,7 +242,7 @@ ForEach-Object {
 
     InstallDependencyAgent-Windows.exe /?
 
-| 标志 | Description |
+| 标志 | 说明 |
 |:--|:--|
 | /? | 获取命令行选项列表。 |
 | /S | 执行无提示安装，无用户提示。 |
@@ -268,7 +268,7 @@ ForEach-Object {
 
     InstallDependencyAgent-Linux64.bin -help
 
-| 标志 | Description |
+| 标志 | 说明 |
 |:--|:--|
 | -help | 获取命令行选项列表。 |
 | -s | 执行无提示安装，无用户提示。 |
@@ -305,32 +305,32 @@ sudo sh InstallDependencyAgent-Linux64.bin -s
 ```
 configuration ServiceMap {
 
-Import-DscResource -ModuleName xPSDesiredStateConfiguration
+    Import-DscResource -ModuleName xPSDesiredStateConfiguration
 
-$DAPackageLocalPath = "C:\InstallDependencyAgent-Windows.exe"
+    $DAPackageLocalPath = "C:\InstallDependencyAgent-Windows.exe"
 
-Node localhost
-{ 
-    # Download and install the Dependency agent
-    xRemoteFile DAPackage 
+    Node localhost
     {
-        Uri = "https://aka.ms/dependencyagentwindows"
-        DestinationPath = $DAPackageLocalPath
-    }
+        # Download and install the Dependency agent
+        xRemoteFile DAPackage 
+        {
+            Uri = "https://aka.ms/dependencyagentwindows"
+            DestinationPath = $DAPackageLocalPath
+        }
 
-    xPackage DA
-    {
-        Ensure="Present"
-        Name = "Dependency Agent"
-        Path = $DAPackageLocalPath
-        Arguments = '/S'
-        ProductId = ""
-        InstalledCheckRegKey = "HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\DependencyAgent"
-        InstalledCheckRegValueName = "DisplayName"
-        InstalledCheckRegValueData = "Dependency Agent"
-        DependsOn = "[xRemoteFile]DAPackage"
+        xPackage DA
+        {
+            Ensure="Present"
+            Name = "Dependency Agent"
+            Path = $DAPackageLocalPath
+            Arguments = '/S'
+            ProductId = ""
+            InstalledCheckRegKey = "HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\DependencyAgent"
+            InstalledCheckRegValueName = "DisplayName"
+            InstalledCheckRegValueData = "Dependency Agent"
+            DependsOn = "[xRemoteFile]DAPackage"
+        }
     }
-  }
 }
 ```
 
@@ -372,7 +372,7 @@ Microsoft Dependency Agent 基于 Microsoft Visual Studio 运行时库。 如果
 
 下表列出了代码号和建议的解决方法。
 
-| 代码 | Description | 解决方法 |
+| 代码 | 说明 | 解决方法 |
 |:--|:--|:--|
 | 0x17 | 库安装程序需要尚未安装的 Windows 更新。 | 查看最新的库安装程序日志。<br><br>如果对“Windows8.1-KB2999226-x64.msu”的引用后跟一行“错误 0x80240017:无法执行 MSU 包”，则没有安装 KB2999226 的先决条件。 请遵循 [Windows 中的 Universal C Runtime](https://support.microsoft.com/kb/2999226) 中必备组件部分的说明。 可能需要运行 Windows 更新并重新启动多次，才能安装好必备组件。<br><br>再次运行 Microsoft Dependency Agent 安装程序。 |
 
@@ -387,7 +387,7 @@ Linux：查找正在运行的进程“microsoft-dependency-agent”。
 
 * 服务器是否正在向 Log Analytics 发送日志和性能数据？ 转到日志搜索，并为计算机运行以下查询： 
 
-        Usage | where Computer == "admdemo-appsvr" | summarize sum(Quantity), any(QuantityUnit) by DataType
+    Usage | where Computer == "admdemo-appsvr" | summarize sum(Quantity), any(QuantityUnit) by DataType
 
 结果中是否有多种不同的事件？ 是否为最新数据？ 如果是，则表示 Log Analytics 代理正常运行并正在与 Log Analytics 通信。 如果不是，请检查服务器上的代理：[适用于 Windows 的 Log Analytics 代理故障排除](https://support.microsoft.com/help/3126513/how-to-troubleshoot-monitoring-onboarding-issues)或[适用于 Linux 的 Log Analytics 代理故障排除](../../azure-monitor/platform/agent-linux-troubleshoot.md)。
 

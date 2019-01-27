@@ -7,13 +7,13 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 01/08/2019
 ms.author: bwren
-ms.component: alerts
-ms.openlocfilehash: 9cd745cedd6d870262e412709e4e104c1406558e
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.subservice: alerts
+ms.openlocfilehash: 36be305e60806ba2cdea260fc46bc329c43284cb
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54234060"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54429780"
 ---
 # <a name="log-alert-queries-in-azure-monitor"></a>Azure Monitor 中的日志警报
 [基于 Azure Monitor 日志的预警规则](alerts-unified-log.md)定期运行，因此应确保这些规则旨在将开销和延迟降至最低。 本文提供了有关编写日志警报的高效查询以及转换现有查询的过程的建议。 
@@ -27,7 +27,7 @@ ms.locfileid: "54234060"
 SecurityEvent | where EventID == 4624 
 ```
 
-以 `search` 或 `union` 开头的查询允许在一个表甚至多个表中在多个多列上搜索。 以下示例显示搜索术语 Memory 的多个方法：
+以 `search` 或 `union` 开头的查询允许在一个表甚至多个表中跨多个列搜索。 以下示例显示搜索术语 Memory 的多个方法：
 
 ```Kusto
 search "Memory"
@@ -222,3 +222,4 @@ on Hour
 ## <a name="next-steps"></a>后续步骤
 - 了解 Azure Monitor 中的[日志警报](alerts-log.md)。
 - 了解[日志查询](../log-query/log-query-overview.md)。
+

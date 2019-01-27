@@ -10,12 +10,12 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: 6df8d9a5c1ca1e587834ea08f73b3dd9498f8537
-ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
+ms.openlocfilehash: cafb48f28e38794ce0757d50a5d87432b237e17c
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/22/2018
-ms.locfileid: "53753143"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54467156"
 ---
 # <a name="indexing-json-blobs-with-azure-search-blob-indexer"></a>使用 Azure 搜索 Blob 索引器为 JSON Blob 编制索引
 本文介绍如何配置 Azure 搜索 Blob 索引器，以从 Azure Blob 存储中的 JSON Blob 提取结构化内容。
@@ -23,6 +23,9 @@ ms.locfileid: "53753143"
 可以使用[门户](#json-indexer-portal)、[REST API](#json-indexer-rest) 或 [.NET SDK](#json-indexer-dotnet) 为 JSON 内容编制索引。 所有方法的共同特点是 JSON 文档位于 Azure 存储帐户中的某个 Blob 容器内。 有关从其他非 Azure 平台推送 JSON 文档的指导，请参阅 [Azure 搜索中的数据导入](search-what-is-data-import.md)。
 
 Azure Blob 存储中的 JSON Blob 通常是单个 JSON 文档或 JSON 数组。 Azure 搜索中的 Blob 索引器可以根据请求中 **parsingMode** 参数设置方式分析上述任一构造。
+
+> [!IMPORTANT]
+> JSON blob 索引已正式发布，但 JsonArray 分析以公共预览版提供，不应在生产环境中使用。 有关详细信息，请参阅 [REST api-version=2017-11-11-Preview](search-api-2017-11-11-preview.md)。 
 
 <a name="json-indexer-portal"></a>
 
@@ -94,7 +97,7 @@ Azure Blob 存储中的 JSON Blob 通常是单个 JSON 文档或 JSON 数组。 
 
 Azure Blob 存储中的 JSON Blob 通常是单个 JSON 文档或 JSON 数组。 Azure 搜索中的 Blob 索引器可以根据请求中 **parsingMode** 参数设置方式分析上述任一构造。
 
-| JSON 文档 | parsingMode | Description | 可用性 |
+| JSON 文档 | parsingMode | 说明 | 可用性 |
 |--------------|-------------|--------------|--------------|
 | 每个 Blob 各有一个 | `json` | 将 JSON Blob 分析为单个文本区块。 每个 JSON Blob 成为单个 Azure 搜索文档。 | 已在 [REST](https://docs.microsoft.com/rest/api/searchservice/indexer-operations) 和 [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexer) API 中正式发布。 |
 | 每个 Blob 有多个 | `jsonArray` | 分析 Blob 中的 JSON 数组，其中数组的每个元素成为单独的 Azure 搜索文档。  | 已在 [REST](https://docs.microsoft.com/rest/api/searchservice/indexer-operations) 和 [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexer) API 中正式发布。 |

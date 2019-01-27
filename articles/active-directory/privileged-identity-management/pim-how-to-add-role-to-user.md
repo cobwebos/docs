@@ -12,18 +12,18 @@ ms.workload: identity
 ms.component: pim
 ms.date: 10/30/2018
 ms.author: rolyon
-ms.openlocfilehash: 2b099e1377536b46229b75f25d04ab2c1beb5c11
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 69bc2bb5fa06f4edc0283961063d2302c7905b4f
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52724938"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54438994"
 ---
 # <a name="assign-azure-ad-directory-roles-in-pim"></a>在 PIM 中分配 Azure AD 目录角色
 
 使用 Azure Active Directory (Azure AD)，全局管理员可以完成**永久性的**目录角色分配。 可以使用 [Azure 门户](../users-groups-roles/directory-assign-admin-roles.md)或 [PowerShell 命令](/powershell/module/azuread#directory_roles)创建这些角色分配。
 
-Azure AD Privileged Identity Management (PIM) 服务还允许特权角色管理员完成永久性的目录角色分配。 此外，特权角色管理员能使用户**符合**目录角色的条件。 符合条件的管理员可在需要时激活角色，在完成任务后，其权限随即失效。 有关可以使用 PIM 管理的角色的信息，请参阅[可以在 PIM 中管理的 Azure AD 目录角色](pim-roles.md)。
+Azure AD Privileged Identity Management (PIM) 服务还允许特权角色管理员完成永久性的目录角色分配。 此外，特权角色管理员能使用户**符合**目录角色的条件。 符合条件的管理员可在需要时激活角色，在完成任务后，其权限随即失效。
 
 ## <a name="make-a-user-eligible-for-a-role"></a>使用户符合角色的条件
 

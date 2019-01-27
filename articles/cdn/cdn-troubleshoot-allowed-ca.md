@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/18/2018
 ms.author: magattus
 ms.custom: mvc
-ms.openlocfilehash: 79b8cfa061bafb43cbcf2ec8a43638fd14c2fcd0
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 11651c2721756a4f750a5a5e78f86fdbd363fb9d
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49954022"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54462583"
 ---
 # <a name="allowed-certificate-authorities-for-enabling-custom-https-on-azure-cdn"></a>获准对 Azure CDN 启用自定义 HTTPS 的证书颁发机构
 
@@ -37,9 +37,6 @@ ms.locfileid: "49954022"
 - AME 基础结构 CA 01
 - AME 基础结构 CA 02
 - Ameroot
-- AP 根 CA
-- AP 根证书颁发机构 2013
-- AP 根证书颁发机构 2014
 - APCA-DM3P
 - Autopilot 根 CA
 - Baltimore CyberTrust 根
@@ -70,8 +67,8 @@ ms.locfileid: "49954022"
 - GlobalSign 根 CA
 - Go Daddy 根证书颁发机构 - G2
 - Go Daddy 安全证书颁发机构 - G2
+- QuoVadis 根 CA2 G3
 - RapidSSL RSA CA 2018
-- 根代理
 - Symantec 类 3 EV SSL CA - G3
 - Symantec 类 3 安全服务器 CA - G4
 - 适用于 Microsoft 的 Symantec 企业移动根

@@ -4,18 +4,18 @@ description: 本文介绍如何创建和验证 Azure 自动化管理的 AWS 资�
 keywords: AWS 身份验证, 配置 AWS
 services: automation
 ms.service: automation
-ms.component: process-automation
+ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
 ms.date: 04/17/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 20d51062bd73a3d722a82eac2f00e5eac3275734
-ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
+ms.openlocfilehash: e6a7f1758fd0a6fb4ce91c18f375dcf189becd41
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52284276"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54435492"
 ---
 # <a name="authenticate-runbooks-with-amazon-web-services"></a>使用 Amazon Web Services 进行 Runbook 身份验证
 
@@ -24,7 +24,7 @@ ms.locfileid: "52284276"
 * AWS 订阅和一组凭据。 特别是 AWS 访问键和密钥。 有关详细信息，请查看[使用 AWS 凭据](https://docs.aws.amazon.com/powershell/latest/userguide/specifying-your-aws-credentials.html)这一文章。
 * Azure 订阅和自动化帐户。
 
-若要使用 AWS 进行身份验证，必须指定一组 AWS 凭据，对从 Azure 自动化运行的 Runbook 进行身份验证。 如果已创建自动化帐户，并且想要使用该帐户向 AWS 进行身份验证，则可以按照以下部分中的步骤操作：如果想要提供用于面向 AWS 资源的 Runbook 的帐户，则应首先创建一个新的[自动化帐户](automation-offering-get-started.md)（跳过创建服务主体的选项），并使用以下步骤：
+若要使用 AWS 进行身份验证，必须指定一组 AWS 凭据，对从 Azure 自动化运行的 Runbook 进行身份验证。 如果已创建了一个自动化帐户，并且想要使用它来通过 AWS 进行身份验证，可以按照以下部分中的步骤进行操作：如果想要一个针对 AWS 资源的专用于 Runbook 的帐户，应首先创建一个新的[自动化帐户](automation-offering-get-started.md)（跳过创建服务主体的选项），然后按照以下步骤进行操作：
 
 ## <a name="configure-automation-account"></a>配置自动化帐户
 

@@ -3,24 +3,24 @@ title: Azure Automation State Configuration 入门
 description: Azure Automation State Configuration (DSC) 中最常见任务的说明和示例
 services: automation
 ms.service: automation
-ms.component: dsc
+ms.subservice: dsc
 author: bobbytreed
 ms.author: robreed
 ms.date: 08/08/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: fc1c870d06d6bf4a0db941b261e9aebd317fdcb1
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: 19e1721a638dfc750938e09e1626c4e291367723
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45634348"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54432439"
 ---
 # <a name="getting-started-with-azure-automation-state-configuration"></a>Azure Automation State Configuration 入门
 
 本文说明如何使用 Azure Automation State Configuration 执行最常见的任务，例如创建、导入、编译配置，加入要管理的计算机和查看报告。 有关 Azure Automation State Configuration 的概述，请参阅 [Azure Automation State Configuration 概述](automation-dsc-overview.md)。 有关 Desired State Configuration (DSC) 文档，请参阅 [Windows PowerShell Desired State Configuration 概述](/powershell/dsc/overview)。
 
-本文提供有关如何使用 Azure Automation State Configuration 的分步指南。 如果需要一个已经设置好的示例环境，而不想按照本文所述步骤进行操作，则可使用以下资源管理器模板：[Azure 自动化托管节点模板](https://github.com/Azure/azure-quickstart-templates/tree/master/101-automation-configuration)。 此模板设置了一个完整的 Azure Automation State Configuration 环境，包括一个由 Azure Automation State Configuration 管理的 Azure VM。
+本文提供有关如何使用 Azure Automation State Configuration 的分步指南。 如果需要一个已经设置好的示例环境，而不想按照本文所述步骤进行操作，则可使用以下资源管理器模板：[Azure 自动化托管的节点模板](https://github.com/Azure/azure-quickstart-templates/tree/master/101-automation-configuration)。 此模板设置了一个完整的 Azure Automation State Configuration 环境，包括一个由 Azure Automation State Configuration 管理的 Azure VM。
 
 ## <a name="prerequisites"></a>先决条件
 

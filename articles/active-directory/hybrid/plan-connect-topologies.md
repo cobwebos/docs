@@ -1,10 +1,10 @@
 ---
-title: Azure AD Connect：支持的拓扑 | Microsoft 文档
+title: Azure AD Connect：支持的拓扑 | Microsoft Docs
 description: 本主题详细说明 Azure AD Connect 的受支持和不受支持的拓扑
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: 1034c000-59f2-4fc8-8137-2416fa5e4bfe
 ms.service: active-directory
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 11/27/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 74b2cea8e3adfb6689d4ac7049e7892f8f0ecf4a
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: be53e26d6277465836163b43fc5ab2529c67deef
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52582626"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54470182"
 ---
 # <a name="topologies-for-azure-ad-connect"></a>Azure AD Connect 的拓扑
 本文介绍使用 Azure AD Connect 同步作为关键集成解决方案的各种本地拓扑和 Azure Active Directory (Azure AD) 拓扑。 此外，介绍支持和不支持的配置。
@@ -28,7 +28,7 @@ ms.locfileid: "52582626"
 
 下面是本文中的图片图例：
 
-| Description | 符号 |
+| 说明 | 符号 |
 | --- | --- |
 | 本地 Active Directory 林 |![本地 Active Directory 林](./media/plan-connect-topologies/LegendAD1.png) |
 | 包含筛选导入的本地 Active Directory |![包含筛选导入的 Active Directory](./media/plan-connect-topologies/LegendAD2.png) |

@@ -9,12 +9,12 @@ ms.custom: seodec18
 ms.topic: article
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 3aa5a1c640cc46d677a66f5179f9f07a81e62b15
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 60c709108da041dc1e54ba69d3b1b153accebc19
+ms.sourcegitcommit: c31a2dd686ea1b0824e7e695157adbc219d9074f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53138069"
+ms.lasthandoff: 01/18/2019
+ms.locfileid: "54401395"
 ---
 # <a name="programming-guide-for-azure-event-hubs"></a>Azure 事件中心编程指南
 本文介绍使用 Azure 事件中心编写代码时的一些常见情况。 它假设你对事件中心已有初步的了解。 有关事件中心的概念概述，请参阅 [事件中心概述](event-hubs-what-is-event-hubs.md)。
@@ -92,7 +92,7 @@ for (var i = 0; i < numMessagesToSend; i++)
 
 分批发送事件可有助于提高吞吐量。 可以使用 [CreateBatch](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.createbatch) API 来创建一个批，以便稍后向其添加数据对象进行 [SendAsync](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.sendasync) 调用。
 
-单个批不能超过事件的 256 KB 限制。 此外，批中的每个消息都要使用相同的发布者标识。 发送者负责确保批不超过最大事件大小。 如果超过该限制，会生成客户端 **Send** 错误。 可以使用帮助器方法 [EventHubClient.CreateBatch](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.createbatch) 来确保批不超过 256 KB。 从 [CreateBatch](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.createbatch) API 获取空的 [EventDataBatch](/dotnet/api/microsoft.azure.eventhubs.eventdatabatch)，然后使用 [TryAdd](/dotnet/api/microsoft.azure.eventhubs.eventdatabatch.tryadd) 添加事件来构造批。 
+单个批不能超过事件的 1 MB 限制。 此外，批中的每个消息都要使用相同的发布者标识。 发送者负责确保批不超过最大事件大小。 如果超过该限制，会生成客户端 **Send** 错误。 可以使用帮助器方法 [EventHubClient.CreateBatch](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.createbatch) 来确保批不超过 1 MB。 从 [CreateBatch](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.createbatch) API 获取空的 [EventDataBatch](/dotnet/api/microsoft.azure.eventhubs.eventdatabatch)，然后使用 [TryAdd](/dotnet/api/microsoft.azure.eventhubs.eventdatabatch.tryadd) 添加事件来构造批。 
 
 ## <a name="send-asynchronously-and-send-at-scale"></a>异步发送和按比例发送
 

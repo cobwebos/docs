@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 12/09/2018
 ms.author: bwren
-ms.openlocfilehash: b499f6e1b05e42c7af71dedd81fd15bc7574b0aa
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 1c53dfb1447b0abd5b96d109a657eae5f5947118
+ms.sourcegitcommit: c31a2dd686ea1b0824e7e695157adbc219d9074f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54118841"
+ms.lasthandoff: 01/18/2019
+ms.locfileid: "54401429"
 ---
 # <a name="azure-monitor-overview"></a>Azure Monitor 概述
 
@@ -26,7 +26,7 @@ Azure Monitor 提供用于收集、分析和处理来自云与本地环境的遥
 > [!VIDEO https://www.youtube.com/embed/_hGff5bVtkM]
 
 ## <a name="overview"></a>概述
-下图提供了 Azure Monitor 的概要视图。 示意图的中心是用于存储指标和日志（Azure Monitor 使用的两种基本类型的数据）的数据存储。 左侧是[从不同的受监视资源收集遥测数据](platform/data-sources.md)并填充[数据存储](platform/data-collection.md)的源。 右侧是 Azure Monitor 针对这些收集的数据执行的不同功能，例如分析、警报和流式传输到外部系统。
+下图提供了 Azure Monitor 的概要视图。 示意图的中心是用于存储指标和日志（Azure Monitor 使用的两种基本类型的数据）的数据存储。 左侧是用于填充这些[数据存储](platform/data-collection.md)的[监视数据源](platform/data-sources.md)。 右侧是 Azure Monitor 针对这些收集的数据执行的不同功能，例如分析、警报和流式传输到外部系统。
 
 
 ![Azure Monitor 概述](media/overview/overview.png)
@@ -35,11 +35,11 @@ Azure Monitor 提供用于收集、分析和处理来自云与本地环境的遥
 ## <a name="monitoring-data-platform"></a>监视数据平台
 Azure Monitor 收集的所有数据属于以下两种基本类型之一：[指标和日志](platform/data-collection.md)。 [指标](platform/data-collection.md#metrics)是数字值，用于描述系统某些方面在特定时间点的情况。 指标是轻型数据，可以支持近实时方案。 [日志](platform/data-collection.md#logs)包含不同类型的已经整理成记录的数据，每种类型都有不同的属性集。 与性能数据一样，事件和跟踪等遥测数据也作为日志存储，因此，可将它们合并以进行分析。
 
-Azure 门户中的“概述”页会直接显示 Azure Monitor 针对许多 Azure 资源收集的数据。 例如，在查看任一虚拟机时，多个图表会显示性能指标。 单击任一图形会在 Azure 门户上的[指标资源管理器](../azure-monitor/platform/metrics-charts.md)中打开数据，可在其中绘制多个指标在不同时间段的值的图表。  可以通过交互方式查看图表，也可以将其固定到某个仪表板，与其他可视化效果一起查看。
+Azure 门户中的“概述”页会直接显示 Azure Monitor 针对许多 Azure 资源收集的数据。 例如，在查看任一虚拟机时，多个图表会显示性能指标。 单击任一图形会在 Azure 门户上的[指标资源管理器](platform/metrics-charts.md)中打开数据，可在其中绘制多个指标在不同时间段的值的图表。  可以通过交互方式查看图表，也可以将其固定到某个仪表板，与其他可视化效果一起查看。
 
 ![度量值](media/overview/metrics.png)
 
-Azure Monitor 收集的日志数据存储在 Log Analytics 中。Log Analytics 包含[丰富查询语言](../azure-monitor/log-query/log-query-overview.md)，可以快速检索、合并与分析收集的数据。  可以使用 Azure 门户中的 [Log Analytics 页](../azure-monitor/log-query/portals.md)创建和测试查询，然后可以直接使用这些工具分析数据，或者保存查询以便与[可视化效果](visualizations.md)或[警报规则](../azure-monitor/platform/alerts-overview.md)配合使用。
+Azure Monitor 收集的日志数据存储在 Log Analytics 中。Log Analytics 包含[丰富查询语言](log-query/log-query-overview.md)，可以快速检索、合并与分析收集的数据。  可以使用 Azure 门户中的 [Log Analytics 页](log-query/portals.md)创建和测试查询，然后可以直接使用这些工具分析数据，或者保存查询以便与[可视化效果](visualizations.md)或[警报规则](platform/alerts-overview.md)配合使用。
 
 Azure Monitor 使用[数据资源管理器查询语言](/azure/kusto/query/)的某个版本，该查询语言适用于简单的日志查询，但也包括高级功能，例如聚合、联接、智能分析。 可以通过[多个课程](log-query/get-started-queries.md)快速了解此查询语言。  特定指南提供给已熟悉 [SQL](log-query/sql-cheatsheet.md) 和 [Splunk](log-query/splunk-cheatsheet.md) 的用户。
 
@@ -54,22 +54,22 @@ Azure Monitor 可从各种源收集数据。 可将应用程序的监视数据�
 - **Azure 订阅监视数据**：有关 Azure 订阅操作和管理的数据，以及有关 Azure 本身运行状况和操作的数据。 
 - **Azure 租户监视数据**：有关租户级 Azure 服务（例如 Azure Active Directory）操作的数据。
 
-在创建 Azure 订阅并开始添加虚拟机和 Web 应用等资源后，Azure Monitor 会立即开始收集数据。  [活动日志](../azure-monitor/platform/activity-logs-overview.md)记录创建或修改资源的时间。 [指标](../monitoring-and-diagnostics/monitoring-overview-metrics.md)告知资源的性能如何，以及该资源消耗的资源。 
+在创建 Azure 订阅并开始添加虚拟机和 Web 应用等资源后，Azure Monitor 会立即开始收集数据。  [活动日志](platform/activity-logs-overview.md)记录创建或修改资源的时间。 [指标](../monitoring-and-diagnostics/monitoring-overview-metrics.md)告知资源的性能如何，以及该资源消耗的资源。 
 
-通过[启用诊断](../azure-monitor/platform/diagnostic-logs-overview.md)并[将代理添加](platform/agent-windows.md)到计算资源，将数据收集范围扩展到资源的实际操作。 这会收集资源内部操作的遥测数据，并可让你配置不同的[数据源](platform/agent-data-sources.md)用于从 Windows 和 Linux 来宾操作系统收集日志与指标。 
+通过[启用诊断](platform/diagnostic-logs-overview.md)并[将代理添加](platform/agent-windows.md)到计算资源，将数据收集范围扩展到资源的实际操作。 这会收集资源内部操作的遥测数据，并可让你配置不同的[数据源](platform/agent-data-sources.md)用于从 Windows 和 Linux 来宾操作系统收集日志与指标。 
 
-[将检测包添加到应用程序](../azure-monitor/app/azure-web-apps.md)，使 Application Insights 能够收集有关应用程序的详细信息，包括页面视图、应用程序请求和异常。 通过配置[可用性测试](../azure-monitor/app/monitor-web-app-availability.md)来模拟用户流量，进一步验证应用程序的可用性。
+[将检测包添加到应用程序](app/azure-web-apps.md)，使 Application Insights 能够收集有关应用程序的详细信息，包括页面视图、应用程序请求和异常。 通过配置[可用性测试](app/monitor-web-app-availability.md)来模拟用户流量，进一步验证应用程序的可用性。
 
 ### <a name="custom-sources"></a>自定义源
-Azure Monitor 可以使用[数据收集器 API](../azure-monitor/platform/data-collector-api.md) 从任何 REST 客户端收集日志数据。 这样，便可以创建自定义监视方案，并将监视范围扩展到不通过其他源公开遥测数据的资源。
+Azure Monitor 可以使用[数据收集器 API](platform/data-collector-api.md) 从任何 REST 客户端收集日志数据。 这样，便可以创建自定义监视方案，并将监视范围扩展到不通过其他源公开遥测数据的资源。
 
 
 
 ## <a name="insights"></a>洞察力
-仅当能够有利于洞察计算环境的操作时，监视数据才有作用。 Azure Monitor 包含多种功能和工具，可以提供应用程序及其依赖的其他资源的有用见解。 [监视解决方案](insights/solutions.md)和 [Application Insights](../azure-monitor/app/app-insights-overview.md) 与 Container Insights 等功能在应用程序和特定 Azure 服务的不同方面提供深入见解。 
+仅当能够有利于洞察计算环境的操作时，监视数据才有作用。 Azure Monitor 包含多种功能和工具，可以提供应用程序及其依赖的其他资源的有用见解。 [监视解决方案](insights/solutions.md)和 [Application Insights](app/app-insights-overview.md) 与 Container Insights 等功能在应用程序和特定 Azure 服务的不同方面提供深入见解。 
 
 ### <a name="application-insights"></a>Application Insights
-无论 Web 应用程序托管在云中还是本地，[Application Insights](../azure-monitor/app/app-insights-overview.md) 都可以监视其可用性、性能和使用情况。 它利用 Azure Monitor 中的强大数据分析平台来提供应用程序操作的深入见解，并可以诊断错误，无需等到用户报告这些问题。 Application Insights 包含各种开发工具的连接点，并与 Visual Studio 集成以支持 DevOps 过程。
+无论 Web 应用程序托管在云中还是本地，[Application Insights](app/app-insights-overview.md) 都可以监视其可用性、性能和使用情况。 它利用 Azure Monitor 中的强大数据分析平台来提供应用程序操作的深入见解，并可以诊断错误，无需等到用户报告这些问题。 Application Insights 包含各种开发工具的连接点，并与 Visual Studio 集成以支持 DevOps 过程。
 
 ![App Insights](media/overview/app-insights.png)
 
@@ -94,9 +94,9 @@ Azure Monitor 中的[监视解决方案](insights/solutions.md)是打包的逻�
 
 
 ### <a name="alerts"></a>警报
-[Azure Monitor 中的警报](../azure-monitor/platform/alerts-overview.md)会主动发送有关关键状况的通知，并可能尝试采取纠正措施。 基于指标的警报规则根据数值提供近实时的警报，而基于日志的规则允许对多个源中的数据采用复杂的逻辑。
+[Azure Monitor 中的警报](platform/alerts-overview.md)会主动发送有关关键状况的通知，并可能尝试采取纠正措施。 基于指标的警报规则根据数值提供近实时的警报，而基于日志的规则允许对多个源中的数据采用复杂的逻辑。
 
-Azure Monitor 中的警报规则使用[操作组](../azure-monitor/platform/action-groups.md)，其中包含可在多个规则之间共享的独特接收者和操作集。 操作组可根据要求执行多种操作，例如，使用 Webhook 来让警报启动外部操作，或者与 ITSM 工具集成。
+Azure Monitor 中的警报规则使用[操作组](platform/action-groups.md)，其中包含可在多个规则之间共享的独特接收者和操作集。 操作组可根据要求执行多种操作，例如，使用 Webhook 来让警报启动外部操作，或者与 ITSM 工具集成。
 
 ![警报](media/overview/alerts.png)
 
@@ -129,7 +129,7 @@ Azure Monitor 中的警报规则使用[操作组](../azure-monitor/platform/acti
 通常，我们需要将 Azure Monitor 与其他系统集成，并生成使用监视数据的自定义解决方案。 其他 Azure 服务使用 Azure Monitor 来提供这种集成。
 
 ### <a name="event-hub"></a>事件中心
-[Azure 事件中心](https://docs.microsoft.com/azure/event-hubs)是一个流式传输平台和事件引入服务，可以使用任何实时分析提供程序或批处理/存储适配器来转换和存储数据。 使用事件中心可[将 Azure Monitor 中的日志数据流式传输](../azure-monitor/platform/stream-monitoring-data-event-hubs.md)到合作伙伴 SIEM 和监视工具。
+[Azure 事件中心](https://docs.microsoft.com/azure/event-hubs)是一个流式传输平台和事件引入服务，可以使用任何实时分析提供程序或批处理/存储适配器来转换和存储数据。 使用事件中心可[将 Azure Monitor 中的日志数据流式传输](platform/stream-monitoring-data-event-hubs.md)到合作伙伴 SIEM 和监视工具。
 
 > [!VIDEO https://www.youtube.com/embed/SPHxCgbcvSw]
 

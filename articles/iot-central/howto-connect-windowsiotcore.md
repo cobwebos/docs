@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 7d593a992d0ff189d23185b3422dee86a55308d1
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: ff45ecc00d1c5c810015c8007d194b882f32f3da
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53309444"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54412562"
 ---
 # <a name="connect-a-windows-iot-core-device-to-your-azure-iot-central-application"></a>将 Windows IoT Core 设备连接到 Azure IoT Central 应用程序
 
@@ -57,7 +57,7 @@ ms.locfileid: "53309444"
 
 ### <a name="what-youll-need"></a>你将需要的内容
 
-若要设置物理 Windows 10 IoT Core 设备，需首先有一个运行 Windows 10 IoT Core 的设备。 在[此处](https://docs.microsoft.com/windows/iot-core/tutorials/quickstarter/devicesetup)了解如何设置 Windows 10 IoT Core 设备。
+若要设置真实 Windows 10 IoT Core 设备，需首先有一个运行 Windows 10 IoT Core 的设备。 在[此处](https://docs.microsoft.com/windows/iot-core/tutorials/quickstarter/devicesetup)了解如何设置 Windows 10 IoT Core 设备。
 
 此外还需要一个能够与 Azure IoT Central 通信的客户端应用程序。 可以使用 Azure SDK 开发你自己的自定义应用程序，然后使用 Visual Studio 将其部署到设备；也可以下载[预生成的示例](https://developer.microsoft.com/windows/iot/samples)，然后直接在设备上部署并运行。 
 

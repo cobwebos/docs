@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: gateway
 ms.topic: article
-ms.date: 10/03/2018
+ms.date: 01/15/2019
 ms.author: alkohli
-ms.openlocfilehash: 60078845c98f2e241b00e184303dce0c860629e9
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: f01fb88bf0ea726b421111a262bdfdd68cd3d38c
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49164427"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54388419"
 ---
 # <a name="azure-data-box-gateway-limits-preview"></a>Azure Data Box Gateway 限制（预览版）
 
@@ -33,7 +33,7 @@ ms.locfileid: "49164427"
 
 下表介绍了 Data Box Gateway 设备的限制。
 
-| Description | 值 |
+| 说明 | 值 |
 |---|---|
 |不是。 设备的文件数 |1 亿 <br> 限制为每 2 TB 磁盘空间大约 2500 万个文件，最大限制为 1 亿 |
 |不是。 设备的共享数 |24 |
@@ -57,9 +57,9 @@ ms.locfileid: "49164427"
 将数据移动到 Azure 中时，下面的警告适用。
 
 - 建议不要将多台设备写入到同一容器中。
-- 如果云中存在与正在复制的对象同名的现有 Azure 对象（例如 blob 或文件），则设备将覆盖云中的文件。 
+- 如果云中存在与正在复制的对象同名的现有 Azure 对象（例如 blob 或文件），则设备将覆盖云中的文件。
 - 在共享文件夹下创建的任何空目录层次结构（不含任何文件）都不会上传到 blob 容器。
-
+- 如果要复制大于设备大小的文件，建议使用 *Robocopy* 或 *rsync* 以确保不会失败。
 
 ## <a name="azure-storage-account-size-and-object-size-limits"></a>Azure 存储帐户大小和对象大小限制
 

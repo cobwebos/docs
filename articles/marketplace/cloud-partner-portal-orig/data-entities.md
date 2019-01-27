@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pbutlerm
-ms.openlocfilehash: c7b321ab04df405c56cab0952942b0d6e142da6d
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 579856ab87aaf8d051f2e3c161bb2d0e2f693ed5
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48805632"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54446572"
 ---
 # <a name="data-entities"></a>数据实体
 
@@ -29,7 +29,7 @@ ms.locfileid: "48805632"
 
 数据实体是数据库表的物理实现的一种抽象。 例如，在规范化表中，每个客户的大部分数据可能存储在客户表中，而剩余部分可能分散在一组相关表中。 在这种情况下，客户概念的数据实体显示为一个非规范化视图，其中每个行包含来自客户表和其相关表的所有数据。 数据实体将业务概念封装为一种使开发和集成更为容易的格式。 数据实体的抽象本质可以简化应用程序开发和自定义。 以后，抽象还会将应用程序代码与各个版本之间物理表不可避免的变动进行隔离。
 
-总结：数据实体提供基础表架构的概念抽象和封装（非规范化视图）来提供主要数据概念和功能。
+总结：数据实体提供基础表架构的概念抽象和封装（非规范化视图）来表示主要数据概念和功能。
 
 ## <a name="capabilities"></a>功能
 

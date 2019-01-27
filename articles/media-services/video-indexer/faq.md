@@ -9,12 +9,12 @@ ms.service: media-services
 ms.topic: article
 ms.date: 01/09/2019
 ms.author: juliako
-ms.openlocfilehash: ff3aa86fee7fc30cfc18edc3b413a4378df69662
-ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
+ms.openlocfilehash: 205a4f2089ec5f415932f98eefe2f3d5f614f0ba
+ms.sourcegitcommit: c31a2dd686ea1b0824e7e695157adbc219d9074f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54306959"
+ms.lasthandoff: 01/18/2019
+ms.locfileid: "54402041"
 ---
 # <a name="frequently-asked-questions"></a>常见问题
 
@@ -28,18 +28,17 @@ ms.locfileid: "54306959"
 
 ### <a name="what-can-i-do-with-video-indexer"></a>我可以使用视频索引器进行哪些操作？
 
-视频索引器可以对媒体文件执行以下类型的操作：
+视频索引器可以对媒体文件执行的一些操作包括：
 
-* 标识和提取语音，并识别说话人。
-* 标识和提取视频中屏幕上的文本。
-* 标识和标记视频文件中的对象。
-* 通过音轨和视频中屏幕上的文本识别 Microsoft 等品牌。
+* 识别和提取语音，并识别发言人。
+* 识别和提取视频中屏幕上的文本。
+* 检测视频文件中的对象。
+* 从音轨和视频中屏幕上的文本识别品牌（例如：Microsoft）。
 * 从名人数据库和用户定义的人脸数据库中检测和识别人脸。
-* 从基于口述和视觉文本的视频和音频内容中提取关键字。
-* 提取所讨论的主题，但这些主题不一定在基于口述和视觉文本的音频和视频内容中明确提及。
-* 从音轨创建隐藏式字幕或副标题。
+* 提取音频和视频内容中讨论的但不一定提及的主题。
+* 基于音轨创建隐藏式字幕或副标题。
 
-有关详细信息，请参阅[概述](video-indexer-overview.md)。
+有关详细信息和更多的视频索引器功能，请参阅[概述](video-indexer-overview.md)。
 
 ### <a name="how-do-i-get-started-with-video-indexer"></a>如何快速入门视频索引器？
 

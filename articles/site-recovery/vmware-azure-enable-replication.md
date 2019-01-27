@@ -6,12 +6,12 @@ ms.service: site-recovery
 ms.date: 11/27/2018
 ms.topic: conceptual
 ms.author: asgang
-ms.openlocfilehash: 51470e9f8e0bffe18d1dc4007433246d084a5cb2
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: f160fc5f15ad9ca8994995c34d9eba7ee375c015
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52846651"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54424143"
 ---
 # <a name="enable-replication-to-azure-for-vmware-vms"></a>为 VMware VM 启用到 Azure 的复制
 
@@ -59,7 +59,7 @@ ms.locfileid: "52846651"
 8. 选择 Azure VM 在故障转移后启动时所要连接的 Azure 网络和子网。 该网络必须位于与恢复服务保管库相同的区域中。 选择“立即为选定的计算机配置”，将网络设置应用到选择保护的所有计算机。 选择“稍后配置”以选择每个计算机的 Azure 网络。 如果没有网络，需要[创建一个](#set-up-an-azure-network)。 若要使用资源管理器创建网络，请单击“新建”。 选择适用的子网，然后单击“确定”。
 
     ![启用复制目标设置](./media/vmware-azure-enable-replication/enable-rep3.png)
-9. 在“虚拟机” > “选择虚拟机”中，选择要复制的每个虚拟机。 只能选择可以启用复制的计算机。 然后单击“确定”。
+9. 在“虚拟机” > “选择虚拟机”中，选择要复制的每个虚拟机。 只能选择可以启用复制的计算机。 然后单击“确定”。 如果无法查看/选择特定虚拟机，请单击[此处](https://aka.ms/doc-plugin-VM-not-showing)解决此问题。
 
     ![启用复制 选择虚拟机](./media/vmware-azure-enable-replication/enable-replication5.png)
 10. 在“属性” > “配置属性”中，选择进程服务器用于在虚拟机上自动安装移动服务的帐户。  

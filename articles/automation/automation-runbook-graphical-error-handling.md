@@ -3,18 +3,18 @@ title: Azure 自动化图形 Runbook 中的错误处理
 description: 本文介绍如何在 Azure 自动化图形 Runbook 中实现错误处理逻辑。
 services: automation
 ms.service: automation
-ms.component: process-automation
+ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 14112a9a9f64f20540a8f7e1d37cd31017238e59
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: d7fe38334b71334d4dae9235643117efdf5fbd5d
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34192704"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54436682"
 ---
 # <a name="error-handling-in-azure-automation-graphical-runbooks"></a>Azure 自动化图形 Runbook 中的错误处理
 
@@ -30,7 +30,7 @@ Runbook 应包含错误处理。 若要通过图形 Runbook 来验证活动的�
 
 * **非终止性错误**：非严重性错误，尽管失败，但允许继续执行。 例子包括：“找不到文件”之类的操作错误、权限问题。
 
-Azure 自动化图形 Runbook 在改进后可以进行错误处理。 用户现在可以将例外变成非终止性错误，并在活动之间创建错误链接。 通过这样一个过程，Runbook 创作者便可以捕获错误，以及管理意料内或意料外的情况。  
+Azure 自动化图形 Runbook 在改进后可以进行错误处理。 用户现在可以将例外变成非终止性错误，并在活动之间创建错误链接。 通过这样一个过程，Runbook 创作者便可以捕获错误，以及管理意料内或意料外的情况。  
 
 ## <a name="when-to-use-error-handling"></a>何时使用错误处理
 
@@ -69,3 +69,4 @@ Azure 自动化图形 Runbook 在改进后可以进行错误处理。 用户现�
 * 若要详细了解图形 Runbook 中的链接和链接类型，请参阅 [Azure 自动化中的图形创作](automation-graphical-authoring-intro.md#links-and-workflow)。
 
 * 若要详细了解 Runbook 执行方式、如何监视 Runbook 作业和其他技术详细信息，请参阅[跟踪 Runbook 作业](automation-runbook-execution.md)。
+

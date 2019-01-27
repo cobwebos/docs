@@ -13,12 +13,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: cda439973c584a57cadc30de7fb931732682de00
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: 73d14ebf8ed365659ec547469cd903d5db22c561
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50092451"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54428607"
 ---
 # <a name="run-an-ssis-package-with-the-execute-ssis-package-activity-in-azure-data-factory"></a>在 Azure 数据工厂中使用“执行 SSIS 包”活动运行 SSIS 包
 本文介绍如何使用“执行 SSIS 包”活动在 Azure 数据工厂管道中运行 SSIS 包。 
@@ -59,7 +59,7 @@ ms.locfileid: "50092451"
 5. 选择数据工厂的**位置**。 下拉列表中仅显示数据工厂支持的位置。 数据工厂使用的数据存储（Azure 存储、Azure SQL 数据库等）和计算资源（HDInsight 等）可以位于其他位置。
 6. 选择“固定到仪表板”。     
 7. 单击“创建”。
-8. 在仪表板上，会看到状态为“正在部署数据工厂”的以下磁贴。 
+8. 在仪表板上，你会看状态如下的以下磁贴：“正在部署数据工厂”。 
 
     ![“正在部署数据工厂”磁贴](media//how-to-invoke-ssis-package-stored-procedure-activity/deploying-data-factory.png)
 9. 创建完成后，可以看到图中所示的“数据工厂”页。
@@ -137,7 +137,7 @@ ms.locfileid: "50092451"
 ## <a name="run-a-package-with-powershell"></a>使用 PowerShell 运行包
 在此部分中，将使用 Azure PowerShell 创建一个数据工厂管道，管道中包含可运行 SSIS 包的“执行 SSIS 包”活动。 
 
-按[如何安装和配置 Azure PowerShell](/powershell/azure/install-azurerm-ps) 中的说明安装最新的 Azure PowerShell 模块。 
+按[如何安装和配置 Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps) 中的说明安装最新的 Azure PowerShell 模块。 
 
 ### <a name="create-a-data-factory"></a>创建数据工厂
 可使用具有 Azure-SSIS IR 的相同数据工厂，也可以创建单独的数据工厂。 下列过程提供创建数据工厂的步骤。 在此数据工厂中创建包含“执行 SSIS 包”活动的管道。 “执行 SSIS 包”活动运行 SSIS 包。 
@@ -180,7 +180,7 @@ ms.locfileid: "50092451"
     The specified Data Factory name 'ADFv2QuickStartDataFactory' is already in use. Data Factory names must be globally unique.
     ```
 * 若要创建数据工厂实例，用于登录到 Azure 的用户帐户必须属于**参与者**或**所有者**角色，或者是 Azure 订阅的**管理员**。
-* 要查看目前提供数据工厂的 Azure 区域的列表，请在以下页面上选择感兴趣的区域，然后展开“分析”以找到“数据工厂”：[可用产品（按区域）](https://azure.microsoft.com/global-infrastructure/services/)。 数据工厂使用的数据存储（Azure 存储、Azure SQL 数据库，等等）和计算资源（HDInsight 等）可以位于其他区域中。
+* 若要查看目前提供数据工厂的 Azure 区域的列表，请在以下页面上选择感兴趣的区域，然后展开“分析”以找到“数据工厂”：[各区域的产品可用性](https://azure.microsoft.com/global-infrastructure/services/)。 数据工厂使用的数据存储（Azure 存储、Azure SQL 数据库，等等）和计算资源（HDInsight 等）可以位于其他区域中。
 
 ### <a name="create-a-pipeline-with-an-execute-ssis-package-activity"></a>使用“执行 SSIS 包”活动创建管道 
 在此步骤中创建包含“执行 SSIS 包”活动的管道。 该活动运行 SSIS 包。 

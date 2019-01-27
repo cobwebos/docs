@@ -7,12 +7,12 @@ ms.service: terraform
 ms.topic: article
 ms.date: 09/13/2018
 ms.author: tarcher
-ms.openlocfilehash: db02a613e742c811341641e33b9a179b52045bd4
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 149d2bb5ca26afd530be60c5a22e449b8b2ae1ff
+ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54077362"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54381878"
 ---
 # <a name="store-terraform-state-in-azure-storage"></a>在 Azure 存储中存储 Terraform 状态
 
@@ -114,7 +114,7 @@ resource "azurerm_resource_group" "state-demo-secure" {
 
 ## <a name="next-steps"></a>后续步骤
 
-有关 Terraform 支持的配置的详细信息，请参阅 [Terraform 后端文档][terraform-backend]。
+有关 Terraform 后端配置的详细信息，请参阅 [Terraform 后端文档][terraform-backend]。
 
 <!-- LINKS - internal -->
 [azure-key-vault]: ../key-vault/quick-create-cli.md

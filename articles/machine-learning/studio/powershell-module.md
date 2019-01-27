@@ -25,7 +25,7 @@ Azure 机器学习的 PowerShell 模块是一个功能强大的工具，使你�
 * 运行试验 ([Start-AmlExperiment](https://github.com/hning86/azuremlps#start-amlexperiment))
 * 利用预测性试验创建 Web 服务 ([New-AmlWebService](https://github.com/hning86/azuremlps#new-amlwebservice))
 * 在已发布的 Web 服务上创建终结点 ([Add-AmlWebServiceEndpoint](https://github.com/hning86/azuremlps#add-amlwebserviceendpoint))
-* 调用 RRS 和/或 BES Web 服务终结点（[Invoke-AmlWebServiceRRSEndpoint](https://github.com/hning86/azuremlps#invoke-amlwebservicerrsendpoint) 和 [Invoke-AmlWebServicBESEndpoint](https://github.com/hning86/azuremlps#invoke-amlwebservicebesendpoint)）
+* 调用 RRS 和/或 BES Web 服务终结点（[Invoke-AmlWebServiceRRSEndpoint](https://github.com/hning86/azuremlps#invoke-amlwebservicerrsendpoint) 和 [Invoke-AmlWebServiceBESEndpoint](https://github.com/hning86/azuremlps#invoke-amlwebservicebesendpoint)）
 
 下面是使用 PowerShell 运行现有试验的一个简单示例︰
 

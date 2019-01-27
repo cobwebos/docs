@@ -3,18 +3,18 @@ title: Azure 自动化中的图形创作
 description: 图形创作可以让你在不使用代码的情况下，为 Azure 自动化创建 Runbook。 本文介绍了图形创作以及开始创建图形 Runbook 所需的所有详细信息。
 services: automation
 ms.service: automation
-ms.component: process-automation
+ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: a4cd2cec56a15660a03ac111b1b8962d531479ad
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 6d637436721ff464f58e41069bb00746fcd82410
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51233671"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54427230"
 ---
 # <a name="graphical-authoring-in-azure-automation"></a>Azure 自动化中的图形创作
 
@@ -44,7 +44,7 @@ Azure 自动化中的所有 Runbook 都是 Windows PowerShell 工作流。 图�
 
 库控件是你选择要添加到 Runbook 的[活动](#activities)的地方。 可以将活动添加到画布，再将它们连接到其他活动。 它包括下表中描述的四个部分：
 
-| 部分 | Description |
+| 部分 | 说明 |
 |:--- |:--- |
 | Cmdlet |包括可以在 Runbook 中使用的所有 cmdlet。 Cmdlet 按模块组织。 所有安装在自动化帐户中的模块都可用。 |
 | Runbook |包括你自动化帐户中的 Runbook。 这些 Runbook 可以添加到画布中用作子 Runbook。 仅显示核心类型与所编辑 Runbook 相同的 Runbook；对于图形 Runbook，仅显示基于 PowerShell 的 Runbook，而对于图形 PowerShell 工作流 Runbook，则仅显示基于 PowerShell 工作流的 Runbook。 |
@@ -109,9 +109,9 @@ Azure 自动化中的每个 Runbook 都有草稿版和已发布版。 只有已�
 
 指定某个参数的值时，可以选择一个数据源，以便确定如何指定该值。 可用于特定参数的数据源将取决于该参数的有效值。 例如，对于不允许 Null 值的参数，Null 不会是可用选项。
 
-| 数据源 | Description |
+| 数据源 | 说明 |
 |:--- |:--- |
-| 常量值 |键入参数的值。 这仅适用于以下数据类型：Int32、Int64、字符串、布尔值、DateTime、开关。 |
+| 常量值 |键入参数的值。 此参数仅适用于以下数据类型：Int32、Int64、String、Boolean、DateTime、Switch。 |
 | 活动输出 |工作流中某个位于当前活动前面的活动的输出。 将列出所有有效的活动。 只选择要将其输出用于参数值的活动。 如果该活动输出的对象具有多个属性，可以在选择活动之后键入属性的名称。 |
 | Runbook 输入 |选择一个 Runbook 输入参数作为活动参数的输入。 |
 | 变量资产 |选择一个自动化变量作为输入。 |
@@ -139,7 +139,7 @@ Azure 自动化中的每个 Runbook 都有草稿版和已发布版。 只有已�
 
 重试条件可以使用名为 $RetryData 的变量提供活动重试相关信息的访问权限。 此变量具有下表中的属性。
 
-| 属性 | Description |
+| 属性 | 说明 |
 |:--- |:--- |
 | NumberOfAttempts |活动已运行的次数。 |
 | 输出 |活动上次运行的输出。 |
@@ -191,7 +191,7 @@ $DateTimeStart
 
 选择可在“配置”边栏选项卡中配置其属性的链接。 这种情况下，会包括下表中描述的链接类型。
 
-| 链接类型 | Description |
+| 链接类型 | 说明 |
 |:--- |:--- |
 | 管道 |对于源活动中的每个对象输出，目标活动都将运行一次。 如果源活动没有生成任何输出，目标活动将不会运行。 源活动的输出可用作对象。 |
 | 序列 |目标活动只运行一次。 它会接收来自源活动的对象数组。 源活动的输出可用作对象数组。 |
@@ -322,10 +322,10 @@ Runbook 可能会要求用户提供输入（如果该用户是通过 Azure 门�
 
 按下表中的属性定义每个输入参数：
 
-| 属性 | Description |
+| 属性 | 说明 |
 |:--- |:--- |
 | 名称 |参数的唯一名称。 此项只能包含字母数字字符，不能包含空格。 |
-| Description |针对输入参数的可选说明。 |
+| 说明 |针对输入参数的可选说明。 |
 | 类型 |参数值应有的数据类型。 提示输入时，Azure 门户将针对每个参数的数据类型提供相应的控件。 |
 | 必需 |指定是否必须为该参数提供值。 如果没有为每个没有定义默认值的必需参数提供值，将无法启动 Runbook。 |
 | 默认值 |指定在未提供值的情况下，对参数使用什么值。 此项可以为 Null 或特定值。 |

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.custom: mvc
 ms.date: 12/03/2018
 ms.author: dobett
-ms.openlocfilehash: 69e3708ef4c31e2dd91b5f50baecc46ea129cf33
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 173963470a77932186b3c51f17ccb406b32a13f3
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53345036"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54452218"
 ---
 # <a name="device-simulation-solution-accelerator-overview"></a>设备模拟解决方案加速器概述
 
@@ -28,7 +28,7 @@ ms.locfileid: "53345036"
 
 ![无人机模拟示例](media/iot-accelerators-device-simulation-overview/dronesimulation.png)
 
-使用设备模拟时，可以定义模拟物理设备所需的设备模型。 该模型包括消息格式、孪生属性和方法。 还可以使用 JavaScript 模拟复杂的设备行为。
+使用设备模拟时，可以定义模拟真实设备所需的设备模型。 该模型包括消息格式、孪生属性和方法。 还可以使用 JavaScript 模拟复杂的设备行为。
 
 可以为一到一千台连接到 IoT 中心的设备运行模拟。 为了方便测试，可以选择为单独的环境部署 IoT 中心和设备模拟。
 

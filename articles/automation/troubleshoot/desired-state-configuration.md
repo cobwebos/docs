@@ -3,18 +3,18 @@ title: Azure 自动化 Desired State Configuration (DSC) 问题疑难解答
 description: 本文提供有关 Desired State Configuration (DSC) 疑难解答的信息
 services: automation
 ms.service: automation
-ms.component: ''
+ms.subservice: ''
 author: georgewallace
 ms.author: gwallace
 ms.date: 06/19/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 5d2eae67fcff74a7016f7f6125e31a9c8c2bda97
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: 997f332e14fd1accf32d8cc3f51557fe005acab5
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37064294"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54421636"
 ---
 # <a name="troubleshoot-desired-state-configuration-dsc"></a>Desired State Configuration (DSC) 疑难解答
 
@@ -103,8 +103,8 @@ System.InvalidOperationException error processing property 'Credential' of type 
 
 ## <a name="next-steps"></a>后续步骤
 
-如果未看到问题或者不能解决问题，请访问以下通道获取更多支持：
+如果你的问题未在本文中列出，或者无法解决问题，请访问以下渠道之一获取更多支持：
 
 * 通过 [Azure 论坛](https://azure.microsoft.com/support/forums/)获取 Azure 专家的解答
 * 与 [@AzureSupport](https://twitter.com/azuresupport)（Microsoft Azure 官方帐户）联系，它可以将 Azure 社区引导至适当的资源来改进客户体验：提供解答、支持和专业化服务。
-* 如果需要更多帮助，可以提出 Azure 支持事件。 请转到 [Azure 支持站点](https://azure.microsoft.com/support/options/)并选择 **获取支持**。
+* 如需更多帮助，可以提交 Azure 支持事件。 请转到 [Azure 支持站点](https://azure.microsoft.com/support/options/)并选择 **获取支持**。

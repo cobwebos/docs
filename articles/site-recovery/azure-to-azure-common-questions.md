@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.date: 12/12/2018
 ms.topic: conceptual
 ms.author: asgang
-ms.openlocfilehash: 7e70fe52646c2f61e97b4eee2badd7884d95d5f5
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: a277e392acb8587e05bb78d1d8dacce40bf91f56
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54260458"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54449548"
 ---
 # <a name="common-questions-azure-to-azure-replication"></a>常见问题：Azure 到 Azure 的复制
 
@@ -101,8 +101,8 @@ Site Recovery 每隔 5 分钟创建崩溃一致性恢复点。 用户无法更�
 ### <a name="how-far-back-can-i-recover"></a>可以恢复到哪个最早的时间点？
 可以使用的最早恢复点是 72 小时。
 
-### <a name="what-will-happen-if-i-have-a-replication-policy-of-24-hours-and-a-problem-prevents-site-recovery-from-generating-recovery-points-for-more-than-24-hours-will-my-previous-recovery-points-be-pruned"></a>如果我的复制策略是创建 24 小时的恢复点，但某个问题导致 Site Recovery 有 24 小时以上无法生成恢复点，将会发生什么情况？ 以前的恢复点是否将被删除？
-不会，在这种情况下，Site Recovery 将保留以前的所有恢复点。 
+### <a name="what-will-happen-if-i-have-a-replication-policy-of-24-hours-and-a-problem-prevents-site-recovery-from-generating-recovery-points-for-more-than-24-hours-will-my-previous-recovery-points-be-lost"></a>如果我的复制策略是创建 24 小时的恢复点，但某个问题导致 Site Recovery 有 24 小时以上无法生成恢复点，将会发生什么情况？ 以前的恢复点是否将丢失？
+不会，Site Recovery 将保留以前的所有恢复点。 根据恢复点保留时段（在本示例中为 24 小时），Site Recovery 仅在有新生成的恢复点时才替换最旧的恢复点。 在本示例中，由于某个问题而不会生成新的恢复点，到达保留时段后，所有旧恢复点将保持不变。
 
 ### <a name="after-replication-is-enabled-on-a-vm-how-do-i-change-the-replication-policy"></a>在 VM 上启用复制后，如何更改复制策略？ 
 转到“Site Recovery 保管库” > “Site Recovery 基础结构” > “复制策略”。 选择要编辑的策略并保存所做的更改。 任何更改也会应用到现有的所有复制。 

@@ -17,12 +17,12 @@ ms.date: 10/20/2018
 ms.author: celested
 ms.reviewer: luleon, jeedes
 ms.custom: aaddev
-ms.openlocfilehash: afcdb7c64f4431e920f1f1fbce1e1e6d3e4db79c
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 11132426bb8adb6ede564e706e18f3eddd649bef
+ms.sourcegitcommit: c31a2dd686ea1b0824e7e695157adbc219d9074f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52424946"
+ms.lasthandoff: 01/18/2019
+ms.locfileid: "54401871"
 ---
 # <a name="how-to-customize-claims-issued-in-the-saml-token-for-enterprise-applications"></a>如何：为企业应用程序自定义 SAML 令牌中颁发的声明
 
@@ -58,7 +58,7 @@ ms.locfileid: "52424946"
 
 为 `NameIdentifier`（或 NameID）声明选择所需的源。 可以从以下选项中选择。
 
-| 名称 | Description |
+| 名称 | 说明 |
 |------|-------------|
 | 电子邮件 | 用户的电子邮件地址 |
 | userprincipalName | 用户的用户主体名称 (UPN) |
@@ -72,7 +72,7 @@ ms.locfileid: "52424946"
 
 还可以使用特殊声明转换函数。
 
-| 函数 | Description |
+| 函数 | 说明 |
 |----------|-------------|
 | **ExtractMailPrefix()** | 从电子邮件地址、SAM 帐户名或用户主体名称中删除域后缀。 这只会提取传递用户名的第一部分（例如，“joe_smith”而不是 joe_smith@contoso.com）。 |
 | **join()** | 将属性与已验证的域联接。 如果所选用户标识符值具有域，则将提取用户名以追加所选的已验证域。 例如，如果选择电子邮件 (joe_smith@contoso.com) 作为用户标识符值，并选择 contoso.onmicrosoft.com 作为已验证的域，则将生成 joe_smith@contoso.onmicrosoft.com。 |
@@ -81,7 +81,7 @@ ms.locfileid: "52424946"
 
 ## <a name="adding-claims"></a>添加声明
 
-添加声明时，可以指定属性名称（根据 SAML 规范，并不严格需要遵循 URI 模式）。 将值设置为目录中存储的任何用户属性。
+添加声明时，可以指定属性名称（根据 SAML 规范，并不严格需要遵循 URI 模式）。 将值设置为目录中存储的任何用户属性，或将一个常量值用作组织中所有用户的静态条目。
 
 ![添加用户属性][7]
 

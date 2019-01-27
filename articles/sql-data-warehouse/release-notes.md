@@ -10,19 +10,20 @@ ms.component: manage
 ms.date: 11/11/2018
 ms.author: twounder
 ms.reviewer: twounder
-ms.openlocfilehash: a4737f4308f49547178bb216b90589c596f604c9
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 7a02a7fb8043c63ce47f7f0c7dccf025ab5ab402
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54118432"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54421447"
 ---
 # <a name="azure-sql-data-warehouse-release-notes"></a>Azure SQL 数据仓库发行说明
 
-Azure SQL 数据仓库是基于云的企业数据仓库 (EDW)，可利用大规模并行处理 (MPP) 对数 PB 的数据快速运行复杂的查询。 将 SQL 数据仓库用作大数据解决方案的关键组件。 使用简单的 PolyBase T-SQL 查询将大数据导入 SQL 数据仓库，然后利用 MPP 运行高性能分析。 进行集成和分析时，数据仓库是企业获取见解能够依赖的唯一事实来源。
+Azure SQL 数据仓库 (SQL DW) 是基于云的企业数据仓库，可利用大规模并行处理 (MPP) 对数 PB 的数据快速运行复杂的查询。 将 SQL 数据仓库用作大数据解决方案的关键组件。 使用简单的 PolyBase T-SQL 查询将大数据导入 SQL 数据仓库，然后利用 MPP 运行高性能分析。 进行集成和分析时，数据仓库是企业获取见解能够依赖的唯一事实来源。
 
 单击下面的链接可了解有关 Azure SQL 数据仓库的最新版本中可以预期的新功能和改进的更多信息。 你可以期望在确定的维护计划期间收到这些服务更新。
 
+- [SQL DW 版本 10.0.10106.0](./release-notes-10-0-10106-0.md)
 - [2018 年 12 月](./release-notes-december-2018.md)
 - [2018 年 10 月](./release-notes-october-2018.md)
 - [2018 年 9 月](./release-notes-september-2018.md)
@@ -39,9 +40,9 @@ Azure SQL 数据仓库是基于云的企业数据仓库 (EDW)，可利用大规�
 SELECT @@VERSION AS 'SQL Data Warehouse';
 ```
 
-示例输出：![SQL 数据仓库版本](./media/release-notes/sql_data_warehouse_version.png)
+示例输出：![SQL 数据仓库版本](./media/release-notes/dw-version.png)
 
-请使用标识的日期确认已将哪个版本应用于 Azure SQL 数据仓库。 
+请使用标识的版本确认已将哪个版本应用于 Azure SQL 数据仓库。 
 
 
 ## <a name="next-steps"></a>后续步骤

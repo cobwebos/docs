@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/11/2018
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: 1dd11e22361e25721effe2ed919f175d9cb1b9e4
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: e4fa42b6c32c3eb383eea4489ea109c0d496bdb9
+ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54249635"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54392755"
 ---
 下表介绍 Azure 存储的默认限制。 “传入”限制是指发送到存储帐户的所有数据（请求）。 “传出”限制是指从存储帐户接收的所有数据（响应）。
 
@@ -29,7 +29,7 @@ ms.locfileid: "54249635"
 | 常规用途 v1 存储帐户的最大出口（美国区域） | 如果已启用 RA-GRS/GRS，则为 20 Gbps；对于 LRS/ZRS <sup>2</sup>，为 30 Gbps |
 | 常规用途 v1 存储帐户的最大出口（非美国区域） | 如果已启用 RA-GRS/GRS，则为 10 Gbps；对于 LRS/ZRS <sup>2</sup>，为 15 Gbps |
 
-<sup>1</sup> Azure 存储帐户根据请求支持更高的流入量和 IOPS 上限。 若要请求提高帐户上限，请与 [Azure 支持](https://azure.microsoft.com/support/faq/)联系。
+<sup>1</sup> Azure 标准存储帐户根据请求支持更高的入口上限。 若要请求提高帐户入口上限，请与 [Azure 支持](https://azure.microsoft.com/support/faq/)联系。
 
 <sup>2</sup> [Azure 存储复制](https://docs.microsoft.com/azure/storage/common/storage-redundancy)选项包括：
 * **RA-GRS**：读取访问异地冗余存储。 如果已启用 RA-GRS，辅助位置的出口目标与主要位置的出口目标相同。

@@ -4,7 +4,7 @@ description: 混合标识设计注意事项指南的概述和内容地图
 documentationcenter: ''
 services: active-directory
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: 100509c4-0b83-4207-90c8-549ba8372cf7
 ms.service: active-directory
@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 05/30/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: d85157c3f1aafd33a2b996168f2f9eac613a209c
-ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
+ms.openlocfilehash: d0930de0ac3272d2858e961ec2038093dcc9ccc9
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51344876"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54463008"
 ---
 # <a name="azure-active-directory-hybrid-identity-design-considerations"></a>Azure Active Directory 混合标识设计注意事项
 基于使用者的设备在公司内日益激增，基于云的软件即服务 (SaaS) 应用程序便于采用。 因此，对用户应用程序的内部数据中心和云平台访问保持控制并非易事。  
@@ -49,7 +49,7 @@ Microsoft 的标识解决方案跨越本地和基于云的功能，创建单一�
 
 本指南将提供一系列可以遵循的步骤和任务，用于设计满足组织独特要求的混合标识解决方案。 在这些步骤和任务之中，该指南始终会向你提供可用的相关技术和功能选项，以满足组织的功能和服务质量级别要求。
 
-假设：有使用 Windows Server、Active Directory 域服务和 Azure Active Directory 的一些经验。 在本文档中，我们假设你正在寻找这些解决方案如何才能满足业务需求：基于自身还是通过集成的解决方案。
+**假设**：有使用 Windows Server、Active Directory 域服务和 Azure Active Directory 的一些经验。 在本文档中，我们假设你正在寻找这些解决方案如何才能满足业务需求：基于自身还是通过集成的解决方案。
 
 ## <a name="design-considerations-overview"></a>设计注意事项概述
 本文档将提供一组可以遵循的步骤和任务，用于设计最符合你需求的混合标识解决方案。 将按顺序提供这些步骤。 后续步骤中学习的设计注意事项可能会要求更改之前步骤中所做的决策，只是因为与设计选择冲突。 在整个文档中，我们会尽可能地提醒你潜在的设计冲突。 

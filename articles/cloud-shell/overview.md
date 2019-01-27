@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/04/2018
 ms.author: juluk
-ms.openlocfilehash: 85d054be6b72c736ec66384b9caec71208f36802
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: 1ad85a57762ae4fba30e1699b38eaa52d45ab26e
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48869357"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54447201"
 ---
 # <a name="overview-of-azure-cloud-shell"></a>Azure Cloud Shell 的概述
 Azure Cloud Shell 是一个用于管理 Azure 资源的交互式的可通过浏览器访问的 shell。
@@ -57,11 +57,16 @@ Cloud Shell 提供基于开源 Monaco Editor 的集成图形文本编辑器。 �
 
 [详细了解 Cloud Shell 编辑器](using-cloud-shell-editor.md)。
 
+### <a name="integrated-with-docsmicrosoftcom"></a>已与 docs.microsoft.com 集成
+
+可以直接从 [docs.microsoft.com](https://docs.microsoft.com) 上托管的文档中使用 Cloud Shell。 它已集成在 [Microsoft Learn](https://docs.microsoft.com/learn/)、[Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) 和 [Azure CLI 文档](https://docs.microsoft.com/cli/azure)中 - 单击代码片段中的“试用”按钮即可开启沉浸式 shell 体验。 
+
 ### <a name="multiple-access-points"></a>多个访问点
 Cloud Shell 是一个灵活的工具，可以通过以下项使用：
 * [portal.azure.com](https://portal.azure.com)
 * [shell.azure.com](https://shell.azure.com)
-* [Azure CLI“试用”文档](https://docs.microsoft.com/cli/azure?view=azure-cli-latest)
+* [Azure CLI 文档](https://docs.microsoft.com/cli/azure)
+* [Azure PowerShell 文档](https://docs.microsoft.com/powershell/azure/overview)
 * [Azure 移动应用](https://azure.microsoft.com/features/azure-portal/mobile-app/)
 * [VS Code Azure 帐户扩展](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account)
 

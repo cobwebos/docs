@@ -13,12 +13,12 @@ ms.workload: identity
 ms.date: 11/09/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 95582fb62f19dcc34aa03a6550f4dbc46257cf7f
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 7d97f68c04656c1f8e227069bb3d33aba13d4b53
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52494345"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54435067"
 ---
 # <a name="start-using-pim"></a>开始使用 PIM
 
@@ -33,7 +33,7 @@ ms.locfileid: "52494345"
 - Azure AD Premium P2
 - 企业移动性 + 安全性 (EMS) E5
 
-有关详细信息，请参阅[使用 PIM 的订阅要求](subscription-requirements.md)。
+有关详细信息，请参阅[使用 PIM 所要满足的许可要求](subscription-requirements.md)。
 
 ## <a name="first-person-to-use-pim"></a>要使用 PIM 的第一个人
 
@@ -101,7 +101,7 @@ ms.locfileid: "52494345"
 
 ![PIM 的顶级任务 - 屏幕快照](./media/pim-getting-started/pim-quickstart-tasks.png)
 
-| 任务 + 管理 | Description |
+| 任务 + 管理 | 说明 |
 | --- | --- |
 | **我的角色**  | 显示已向你分配的符合条件的活动角色列表。 可以在此处激活任何符合条件的已分配角色。 |
 | **我的请求** | 显示要激活符合条件的角色分配的挂起的请求。 |

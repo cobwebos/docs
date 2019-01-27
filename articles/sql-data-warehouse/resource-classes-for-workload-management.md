@@ -10,12 +10,12 @@ ms.component: manage
 ms.date: 04/26/2018
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: 8d0138d20e1a30ab3efc509eb71f17a6b1e4e8e5
-ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
+ms.openlocfilehash: 9ed3ab89387afc78bd631416a683e11f4dc7054a
+ms.sourcegitcommit: c31a2dd686ea1b0824e7e695157adbc219d9074f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43287466"
+ms.lasthandoff: 01/18/2019
+ms.locfileid: "54402245"
 ---
 # <a name="workload-management-with-resource-classes-in-azure-sql-data-warehouse"></a>使用 Azure SQL 数据仓库中的资源类管理工作负荷
 有关在 Azure SQL 数据仓库中使用资源类管理查询内存和并发性的指导。  
@@ -90,7 +90,7 @@ ms.locfileid: "43287466"
 ### <a name="default-resource-class"></a>默认资源类
 默认情况下，每个用户都是动态资源类 (**smallrc**) 的成员。 
 
-服务管理员的资源类是固定的，不可更改。  服务管理员是预配过程中创建的用户。
+服务管理员的资源类在 smallrc 中是固定的，不可更改。  服务管理员是预配过程中创建的用户。  在使用新服务器创建新的 SQL 数据仓库实例时，此上下文中的服务管理员是为“服务器管理员登录”指定的登录名。
 
 > [!NOTE]
 > 定义为 Active Directory 管理员的用户或组也是服务管理员。

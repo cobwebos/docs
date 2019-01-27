@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.date: 07/11/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: mtillman
+manager: daveba
 ms.reviewer: rogoya
-ms.openlocfilehash: 4c5fead0a7f4634a8f5ee005114d24cae9a2590f
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.openlocfilehash: 7cb1acace3dd8605d7506013a6f1c0273dafa32f
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50739815"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54421430"
 ---
 # <a name="eliminate-bad-passwords-in-your-organization"></a>消除你的组织中的错误密码
 
@@ -30,7 +30,7 @@ ms.locfileid: "50739815"
 
 Microsoft 一直在努力，力求比网络罪犯先行一步。 因此，Azure AD Identity Protection 团队不断在查明常用的已泄露密码。 然后，他们在所谓的全局禁止密码列表中阻止被认为太常用的密码。 网络罪犯在其攻击中也使用类似的策略，因此 Microsoft 未公开发布此列表的内容。 这些易受攻击的密码已被阻止，因为它们已对 Microsoft 的客户造成了实际威胁。 有关我们目前在安全方面所做努力的详细信息，请参阅 [Microsoft 安全智能报告](https://www.microsoft.com/security/intelligence-report)。
 
-## <a name="preview-custom-banned-password-list"></a>预览版：自定义的禁止密码列表
+## <a name="preview-custom-banned-password-list"></a>预览版：自定义禁止密码列表
 
 某些组织可能希望进一步采取措施，在全局禁止的 密码列表基础上添加自己的自定义项，Microsoft 称之为自定义的禁止密码列表。 然后，企业客户（例如 Contoso）可以阻止其品牌名称、公司特定项或其他项的变体。
 
@@ -46,7 +46,7 @@ Microsoft 一直在努力，力求比网络罪犯先行一步。 因此，Azure 
 
 禁止密码列表通过将字符串转换为小写并通过模糊匹配与编辑实例 1 中已知禁止的密码进行比较来匹配列表中的密码。
 
-示例：为组织阻止单词 password
+示例：为组织阻止单词密码
    - 用户尝试将其密码设置为“P@ssword”，它转换为“password”，因为它是 password 的变体，因此将被阻止。
    - 管理员尝试将用户密码设置为“Password123!”， 它转换为“password123!”， 因为它是 password 的变体，因此将被阻止。
 

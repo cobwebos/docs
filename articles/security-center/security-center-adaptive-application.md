@@ -3,7 +3,7 @@ title: Azure 安全中心的自适应应用程序控制 | Microsoft Docs
 description: 本文档介绍如何在 Azure 安全中心使用自适应应用程序控制将在 Azure VM 中运行的应用程序加入允许列表。
 services: security-center
 documentationcenter: na
-author: rkarlin
+author: monhaber
 manager: mbaldwin
 editor: ''
 ms.assetid: 9268b8dd-a327-4e36-918e-0c0b711e99d2
@@ -12,20 +12,20 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/30/2018
-ms.author: rkarlin
-ms.openlocfilehash: e4538127b39e01f2e30f8b219c2ccee56cb4d2bc
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.date: 01/21/2019
+ms.author: monhaber
+ms.openlocfilehash: b7a27dea9f521f14bfb4278eada636cb7e30c581
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54262891"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54427128"
 ---
 # <a name="adaptive-application-controls-in-azure-security-center"></a>Azure 安全中心的自适应应用程序控制
 了解如何通过本演练在 Azure 安全中心配置应用程序控制。
 
 ## <a name="what-are-adaptive-application-controls-in-security-center"></a>安全中心的自适应应用程序控制是什么？
-自适应应用程序控制是 Azure 安全中心提供的智能的自动化端到端应用程序允许列表解决方案。 可以通过自适应应用程序控制来控制哪些应用程序能够在 Azure 中的 VM 上运行，这样有很多好处，能够增强 VM 对恶意软件的抵抗力。 安全中心使用机器学习分析在 VM 上运行的应用程序，有助于运用此智能服务应用特定的允许列表规则。 此功能大大简化配置和维护应用程序允许列表策略的过程，让你可以：
+自适应应用程序控制是 Azure 安全中心提供的智能的自动化端到端应用程序允许列表解决方案。 可以通过它来控制哪些应用程序能够在 Azure 中的 VM 上运行，这样有很多好处，能够增强 VM 对恶意软件的抵抗力。 安全中心使用机器学习分析在 VM 上运行的应用程序，有助于运用此智能服务应用特定的允许列表规则。 此功能大大简化配置和维护应用程序允许列表策略的过程，让你可以：
 
 - 阻止运行恶意应用程序的尝试（包括在其他情况下可能会被反恶意软件解决方案遗漏的尝试）或者向用户发出此方面的警报。
 - 遵循组织要求只能使用许可软件的安全策略。
@@ -87,7 +87,6 @@ ms.locfileid: "54262891"
 
 5. 选择完以后，请选择“创建”。 <br>
 选择“创建”后，Azure 安全中心会自动基于 Windows 服务器 (AppLocker) 上可用的内置应用程序允许列表解决方案创建相应的规则。
-
 
 > [!NOTE]
 > - 安全中心需要至少两周的数据才能创建基线并根据 VM 组填充唯一建议。 安全中心标准层的新客户会遇到一种行为，即 VM 组首先显示在“无建议”选项卡下。

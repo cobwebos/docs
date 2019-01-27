@@ -5,7 +5,7 @@ services: active-directory
 keywords: AD DS 帐户, Active Directory 帐户, 密码
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: 76b19162-8b16-4960-9e22-bd64e6675ecc
 ms.service: active-directory
@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 07/12/2017
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 051ff6aa4e650f884a4712376b5dc420cc86fc3a
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 1b487651e938beadcada78eaf51b3f50beb7acf1
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46305486"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54470525"
 ---
 # <a name="changing-the-ad-ds-account-password"></a>更改 AD DS 帐户密码
 AD DS 帐户指 Azure AD connect 用来与本地 Active Directory 通信的用户帐户。 如果更改 AD DS 帐户的密码，则必须使用新密码更新 Azure AD Connect Synchronization Service。 否则，Synchronization 不再能正确与本地 Active Directory 同步，且会遇到以下错误：
@@ -54,6 +54,6 @@ AD DS 帐户指 Azure AD connect 用来与本地 Active Directory 通信的用�
 ## <a name="next-steps"></a>后续步骤
 **概述主题**
 
-* [Azure AD Connect 同步：理解和自定义同步](how-to-connect-sync-whatis.md)
+* [Azure AD Connect 同步：了解和自定义同步](how-to-connect-sync-whatis.md)
 
 * [将本地标识与 Azure Active Directory 集成](whatis-hybrid-identity.md)

@@ -4,7 +4,7 @@ description: 排查已加入混合 Azure Active Directory 的下层设备问题�
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
-manager: mtillman
+manager: daveba
 ms.assetid: cdc25576-37f2-4afb-a786-f59ba4c284c2
 ms.service: active-directory
 ms.component: devices
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 04/23/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: b5fd5a9544e27092c8b65e18d59701421fc59ef5
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 546f9054978f0b9fbe6bb9063905c982de627442
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48800853"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54445280"
 ---
 # <a name="troubleshooting-hybrid-azure-active-directory-joined-down-level-devices"></a>排查已加入混合 Azure Active Directory 的下层设备问题 
 
@@ -116,7 +116,7 @@ ms.locfileid: "48800853"
 
     ![适用于 Windows 的工作区加入](./media/troubleshoot-hybrid-join-windows-legacy/05.png)
 
-此外，也可以在“应用程序和服务日志\Microsoft-Workplace Join”下面的事件日志中找到状态信息
+还可以在以下路径下的事件日志中找到状态信息：**Applications and Services Log\Microsoft-Workplace Join**
   
 **混合 Azure AD 加入失败的最常见原因是：** 
 

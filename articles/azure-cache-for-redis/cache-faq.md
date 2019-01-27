@@ -3,7 +3,7 @@ title: Azure Redis 缓存常见问题解答 | Microsoft Docs
 description: 了解 Azure Redis 缓存的常见问题、模式和最佳做法
 services: azure-cache-for-redis
 documentationcenter: ''
-author: wesmc7777
+author: yegu-ms
 manager: cfowler
 editor: ''
 ms.assetid: c2c52b7d-b2d1-433a-b635-c20180e5cab2
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: azure-cache-for-redis
 ms.devlang: na
 ms.topic: article
 ms.date: 07/27/2017
-ms.author: wesmc
-ms.openlocfilehash: 5d70e4beb97a23212bc85d529382d8e89f09336d
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.author: yegu
+ms.openlocfilehash: 3a0fb06acd9fc798f1528a1487ae0682135187ca
+ms.sourcegitcommit: c31a2dd686ea1b0824e7e695157adbc219d9074f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54199907"
+ms.lasthandoff: 01/18/2019
+ms.locfileid: "54402382"
 ---
 # <a name="azure-cache-for-redis-faq"></a>用于 Redis 的 Azure 缓存常见问题解答
 了解 Azure Redis 缓存的常见问题、模式和最佳做法。
@@ -184,7 +184,7 @@ Azure Redis 缓存的定价在[此处](https://azure.microsoft.com/pricing/detai
 ### <a name="what-do-the-stackexchangeredis-configuration-options-do"></a>StackExchange.Redis 配置选项有什么作用？
 StackExchange.Redis 有很多选项。 本部分介绍一些常用设置。 有关 StackExchange.Redis 选项的详细详细，请参阅 [StackExchange.Redis configuration](https://stackexchange.github.io/StackExchange.Redis/Configuration)（StackExchange.Redis 配置）。
 
-| 配置选项 | Description | 建议 |
+| 配置选项 | 说明 | 建议 |
 | --- | --- | --- |
 | AbortOnConnectFail |如果设置为 true，则发生网络故障后不会重新建立连接。 |设置为 false，让 StackExchange.Redis 自动重新连接。 |
 | ConnectRetry |初始连接期间重试连接的次数。 |请参阅下面的注释寻求指导。 |
@@ -210,7 +210,7 @@ StackExchange.Redis 有很多选项。 本部分介绍一些常用设置。 有�
       * 此指导可以更好地改进每个 `ConnectionMultiplexer` 的延迟。
 
 ### <a name="what-azure-cache-for-redis-clients-can-i-use"></a>可以使用哪些 Azure Redis 缓存客户端？
-Redis 的一大优势是有许多客户端，支持许多不同的开发语言。 如需客户端的当前列表，请参阅 [Redis 客户端](https://redis.io/clients)。 若需涵盖多种不同语言和客户端的教程，请参阅[如何使用 Azure Redis 缓存](cache-dotnet-how-to-use-azure-redis-cache.md)，并单击文章顶部语言切换器中的所需语言。
+Redis 的一大优势是有许多客户端，支持许多不同的开发语言。 如需客户端的当前列表，请参阅 [Redis 客户端](https://redis.io/clients)。 有关介绍多种不同语言和客户端的教程，请参阅[如何使用 Azure Redis 缓存](cache-dotnet-how-to-use-azure-redis-cache.md)以及它在内容列表中的同级文章。
 
 [!INCLUDE [redis-cache-create](../../includes/redis-cache-access-keys.md)]
 
@@ -259,7 +259,7 @@ Azure Redis 缓存没有本地模拟器，但可以在本地计算机上从 [Red
 ### <a name="why-doesnt-azure-cache-for-redis-have-an-msdn-class-library-reference-like-some-of-the-other-azure-services"></a>Azure Redis 缓存为何不像某些其他 Azure 服务一样提供 MSDN 类库参考？
 Microsoft Azure Redis 缓存基于热门的开源 Azure Redis 缓存，可以通过适用于许多编程语言的各种 [Redis 客户端](https://redis.io/clients)进行访问。 每个客户端有自身的 API，用于通过 [Redis 命令](https://redis.io/commands)调用 Azure Redis 缓存实例。
 
-由于客户端各不相同，因此 MSDN 上未提供统一的类参考，并且每个客户端都在维护其自身的参考文档。 除了参考文档以外，还可以参阅多个教程，这些教程介绍了如何通过不同的语言和缓存客户端来开始使用 Azure Redis 缓存。 要访问这些教程，请参阅[如何使用 Azure Redis 缓存](cache-dotnet-how-to-use-azure-redis-cache.md)，并单击文章顶部语言切换器中的所需语言。
+由于客户端各不相同，因此 MSDN 上未提供统一的类参考，并且每个客户端都在维护其自身的参考文档。 除了参考文档以外，还可以参阅多个教程，这些教程介绍了如何通过不同的语言和缓存客户端来开始使用 Azure Redis 缓存。 若要访问这些教程，请参阅[如何使用 Azure Redis 缓存](cache-dotnet-how-to-use-azure-redis-cache.md)以及它在内容列表中的同级文章。
 
 ### <a name="can-i-use-azure-cache-for-redis-as-a-php-session-cache"></a>是否可将 Azure Redis 缓存用作 PHP 会话缓存？
 可以。若要使用 Azure Redis 缓存作为 PHP 会话缓存，请在 `session.save_path` 中指定 Azure Redis 缓存实例的连接字符串。

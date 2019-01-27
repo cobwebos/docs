@@ -15,12 +15,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 02/16/2017
 ms.author: v-livech
-ms.openlocfilehash: acfdd9070b49805c20b8ef921b5387c151448aa1
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 862d239227c277a92cbf80e54b010a4b184da016
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46961495"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54466085"
 ---
 # <a name="create-virtual-network-interface-cards-and-use-internal-dns-for-vm-name-resolution-on-azure"></a>创建虚拟网络接口卡，以及在 Azure 上使用内部 DNS 进行 VM 名称解析
 
@@ -49,7 +49,7 @@ az network nic create \
 ```
 
 ### <a name="deploy-a-vm-and-connect-the-vnic"></a>部署 VM 并连接 vNic
-使用 [az vm create](/cli/azure/vm#az_vm_create) 创建 VM。 在部署到 Azure 期间，`--nics` 标志将 VNic 连接到 VM。 以下示例使用 Azure 托管磁盘创建名为 `myVM` 的 VM，并附加上一步中名为 `myNic` 的 vNic：
+使用 [az vm create](/cli/azure/vm) 创建 VM。 在部署到 Azure 期间，`--nics` 标志将 VNic 连接到 VM。 以下示例使用 Azure 托管磁盘创建名为 `myVM` 的 VM，并附加上一步中名为 `myNic` 的 vNic：
 
 ```azurecli
 az vm create \
@@ -80,7 +80,7 @@ az group create --name myResourceGroup --location westus
 
 下一步是构建虚拟网络，以便在其中启动 VM。 该虚拟网络包含本演练的一个子网。 有关 Azure 虚拟网络的详细信息，请参阅[创建虚拟网络](../../virtual-network/manage-virtual-network.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#create-a-virtual-network)。 
 
-使用 [az network vnet create](/cli/azure/network/vnet#az_network_vnet_create) 创建虚拟网络。 以下示例创建一个名为 `myVnet` 的虚拟网络和名为 `mySubnet` 的子网：
+使用 [az network vnet create](/cli/azure/network/vnet) 创建虚拟网络。 以下示例创建一个名为 `myVnet` 的虚拟网络和名为 `mySubnet` 的子网：
 
 ```azurecli
 az network vnet create \
@@ -103,7 +103,7 @@ az network nsg create \
 ```
 
 ## <a name="add-an-inbound-rule-to-allow-ssh"></a>添加入站规则以允许 SSH
-使用 [az network nsg rule create](/cli/azure/network/nsg/rule#az_network_nsg_rule_create) 为网络安全组添加入站规则。 以下示例创建一个名为 `myRuleAllowSSH` 的规则：
+使用 [az network nsg rule create](/cli/azure/network/nsg/rule) 为网络安全组添加入站规则。 以下示例创建一个名为 `myRuleAllowSSH` 的规则：
 
 ```azurecli
 az network nsg rule create \
@@ -149,7 +149,7 @@ az network nic create \
 ## <a name="deploy-the-vm-into-the-virtual-network-infrastructure"></a>将 VM 部署到虚拟网络基础结构
 我们现在已有一个虚拟网络和子网、一个充当防火墙的网络安全组（该网络安全组可以通过阻止所有入站流量（用于 SSH 的端口 22 除外）来保护子网）以及一个 vNic。 现在可以在这个现有的网络基础结构内部署一个 VM。
 
-使用 [az vm create](/cli/azure/vm#az_vm_create) 创建 VM。 以下示例使用 Azure 托管磁盘创建名为 `myVM` 的 VM，并附加上一步中名为 `myNic` 的 vNic：
+使用 [az vm create](/cli/azure/vm) 创建 VM。 以下示例使用 Azure 托管磁盘创建名为 `myVM` 的 VM，并附加上一步中名为 `myNic` 的 vNic：
 
 ```azurecli
 az vm create \

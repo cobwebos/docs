@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.date: 07/11/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: mtillman
+manager: daveba
 ms.reviewer: michmcla
-ms.openlocfilehash: 1bd9dd82fb72c3d6b0759139680647be764f273a
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: 0c78974eb9775506f2ccbc6158eb03aa0c73be49
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39161546"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54431531"
 ---
 # <a name="user-portal-for-the-azure-multi-factor-authentication-server"></a>适用于 Azure 多重身份验证服务器的用户门户
 
@@ -65,7 +65,7 @@ ms.locfileid: "39161546"
    > [!NOTE]
    > 此 SSL 证书通常是公开签名的 SSL 证书。
 
-4. 从任何计算机打开 Web 浏览器，并导航到已安装用户门户的 URL（示例：https://mfa.contoso.com/MultiFactorAuth)。 确保未显示证书警告或错误。
+4. 从任何计算机打开 Web 浏览器，并导航到已安装用户门户的 URL（示例： https://mfa.contoso.com/MultiFactorAuth)。 确保未显示证书警告或错误。
 
 ![MFA 服务器用户门户安装](./media/howto-mfaserver-deploy-userportal/install.png)
 
@@ -104,7 +104,7 @@ ms.locfileid: "39161546"
     * 找到值 **https://www.contoso.com/MultiFactorAuthWebServiceSdk/PfWsSdk.asmx**，并将此占位符 URL 更改为我们在步骤 2 中安装的 Web 服务 SDK URL。
     * 保存 Web.Config 文件并关闭记事本。
 
-6. 从任何计算机打开 Web 浏览器，并导航到已安装用户门户的 URL（示例：https://mfa.contoso.com/MultiFactorAuth)。 确保未显示证书警告或错误。
+6. 从任何计算机打开 Web 浏览器，并导航到已安装用户门户的 URL（示例： https://mfa.contoso.com/MultiFactorAuth)。 确保未显示证书警告或错误。
 
 如果对如何在 IIS 服务器上配置 SSL 证书存在疑问，请参阅 [How to Set Up SSL on IIS](https://docs.microsoft.com/iis/manage/configuring-security/how-to-set-up-ssl-on-iis)（如何在 IIS 上设置 SSL）一文。
 
@@ -125,7 +125,7 @@ ms.locfileid: "39161546"
 
 Azure 多重身份验证服务器为用户门户提供了多个选项。 下表列出了这些选项及其用途的说明。
 
-| 用户门户设置 | Description |
+| 用户门户设置 | 说明 |
 |:--- |:--- |
 | 用户门户 URL | 输入托管门户的 URL。 |
 | 主要身份验证 | 指定在登录门户时要使用的身份验证类型。 Windows、Radius 或 LDAP 身份验证。 |

@@ -6,13 +6,13 @@ manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.author: ramamill
-ms.date: 12/12/2018
-ms.openlocfilehash: fef0cfd05fe0d44966cbb9f15ba1148f8473207d
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.date: 01/18/2019
+ms.openlocfilehash: e397540d33df8a509e10f52fde41fc178cdba67e
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53789901"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54411741"
 ---
 # <a name="troubleshoot-mobility-service-push-installation-issues"></a>解决移动服务推送安装问题
 
@@ -141,6 +141,14 @@ ms.locfileid: "53789901"
 ## <a name="boot-and-system-partitions--volumes-are-not-the-same-disk-errorid-95309"></a>启动和系统分区/卷不是同一磁盘（ErrorID：95309）
 
 在版本 9.20 之前，将启动和系统分区/卷置于不同磁盘上是不受支持的配置。 [版本 9.20](https://support.microsoft.com/en-in/help/4478871/update-rollup-31-for-azure-site-recovery) 开始支持此配置。 请使用最新版本来获取此支持。
+
+## <a name="boot-disk-not-found-errorid-95310"></a>找不到启动盘 (ErrorID:95310)
+
+无法保护没有启动盘的虚拟机。 这是为了确保在故障转移操作期间顺利恢复虚拟机。 缺少启动盘会导致故障转移后无法启动计算机。 确保虚拟机包含启动盘并重试该操作。 另请注意，不支持同一台计算机上有多个启动盘。
+
+## <a name="multiple-boot-disks-found-errorid-95311"></a>找到多个启动盘 (ErrorID:95311)
+
+具有多个启动盘的虚拟机不是[支持的配置](vmware-physical-azure-support-matrix.md#linux-file-systemsguest-storage)。
 
 ## <a name="system-partition-on-multiple-disks-errorid-95313"></a>在多个磁盘上进行系统分区（ErrorID：95313）
 

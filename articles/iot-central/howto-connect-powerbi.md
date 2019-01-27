@@ -7,12 +7,12 @@ author: viv-liu
 ms.author: viviali
 ms.date: 07/16/2018
 ms.topic: conceptual
-ms.openlocfilehash: 6f8bed8aba43d77cdfad49f4fe62a4c7aa2c5ce3
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: a37eb68d135d156c25c58bf91489d5b50ac2c170
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46368063"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54423114"
 ---
 # <a name="visualize-and-analyze-your-azure-iot-central-data-in-a-power-bi-dashboard"></a>在 Power BI 仪表板中可视化和分析 Azure IoT Central 数据
 
@@ -29,7 +29,7 @@ ms.locfileid: "46368063"
 
 此解决方案模板会设置一个管道，用于通过[连续数据导出](howto-export-data.md)将数据引入 Azure Blob 存储帐户。 此数据流入 Azure Functions、Azure 数据工厂和 Azure SQL 数据库以处理和转换数据。 输出可以在 Power BI 报告中得到可视化和分析，并可将该报告下载为 PBIX 文件。 所有这些资源在 Azure 订阅中创建，因此，你可以根据需求自定义每个组件。 此解决方案模板完全是开源的，可以访问 [GitHub 存储库](https://aka.ms/iotcentralgithubpowerbisolutiontemplate)来详细了解体系结构并扩展该解决方案。
 
-## <a name="get-the-azure-iot-central-analytics-solution-templatehttpsakamsiotcentralpowerbisolutiontemplate-from-microsoft-appsource"></a>从 Microsoft AppSource 获取 [Azure IoT Central Analytics 解决方案模板](https://aka.ms/iotcentralpowerbisolutiontemplate)
+## <a name="get-the-azure-iot-central-analytics-solution-templatehttpsbpsolutiontemplatescomnamemicrosoft-iotcontinuousdataexporttemplate-from-microsoft-appsource"></a>从 Microsoft AppSource 获取 [Azure IoT Central Analytics 解决方案模板](https://bpsolutiontemplates.com/?name=Microsoft-IoTContinuousDataExportTemplate)。
 
 ## <a name="prerequisites"></a>先决条件
 设置此模板需要以下各项：
@@ -52,7 +52,7 @@ ms.locfileid: "46368063"
 
 ## <a name="resources"></a>资源
 
-访问 AppSource 以获取 [Azure IoT Central Analytics 解决方案模板](https://aka.ms/iotcentralpowerbisolutiontemplate)。
+访问 AppSource 以获取 [Azure IoT Central Analytics 解决方案模板](https://bpsolutiontemplates.com/?name=Microsoft-IoTContinuousDataExportTemplate)。
 
 访问 [Github 存储库](https://aka.ms/iotcentralgithubpowerbisolutiontemplate)，详细了解体系结构并扩展解决方案。
 

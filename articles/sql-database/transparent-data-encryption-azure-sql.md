@@ -11,13 +11,13 @@ author: aliceku
 ms.author: aliceku
 ms.reviewer: vanto
 manager: craigg
-ms.date: 12/04/2018
-ms.openlocfilehash: f484eaf127c1dda0e3389e237ace75f51401a806
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.date: 01/22/2019
+ms.openlocfilehash: b0b4a89aaf9b00b30e6b4759c8aa168f06d0d008
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52959863"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54462464"
 ---
 # <a name="transparent-data-encryption-for-sql-database-and-data-warehouse"></a>SQL 数据库和数据仓库的透明数据加密
 
@@ -61,6 +61,9 @@ Microsoft 还可按需无缝移动和管理密钥，以实现异地复制和还�
 - 创建数据库副本
 - 将备份文件还原到 Azure SQL 托管实例
 
+> [!IMPORTANT]
+> 由于无法访问用于加密的证书，因此不允许在 Azure SQL 托管实例中对由服务托管的 TDE 加密的数据库手动执行仅复制备份。 使用时间点还原功能将此类型的数据库移到另一个托管实例。
+
 导出受透明数据加密保护的数据库时，不会加密数据库的导出内容。 此导出内容存储在未加密的 BACPAC 文件中。 请务必适当保护 BACPAC 文件，并在完成新数据库导入后启用透明数据加密。
 
 例如，如果从本地 SQL Server 实例导出 BACPAC 文件，则新数据库的导入内容不会自动加密。 同样，如果将 BACPAC 文件导出到本地 SQL Server 实例，则新数据库也不会自动加密。
@@ -87,7 +90,7 @@ Microsoft 还可按需无缝移动和管理密钥，以实现异地复制和还�
 
 对 Azure SQL 数据库和数据仓库使用以下 cmdlet：
 
-| Cmdlet | Description |
+| Cmdlet | 说明 |
 | --- | --- |
 | [Set-AzureRmSqlDatabaseTransparentDataEncryption](https://docs.microsoft.com/powershell/module/azurerm.sql/set-azurermsqldatabasetransparentdataencryption) |为数据库启用或禁用透明数据加密|
 | [Get-AzureRmSqlDatabaseTransparentDataEncryption](https://docs.microsoft.com/powershell/module/azurerm.sql/get-azurermsqldatabasetransparentdataencryption) |获取数据库的透明数据加密状态 |
@@ -106,7 +109,7 @@ Microsoft 还可按需无缝移动和管理密钥，以实现异地复制和还�
 
 使用 master 数据库中充当管理员或 **dbmanager** 角色成员的登录名连接到数据库。
 
-| 命令 | Description |
+| 命令 | 说明 |
 | --- | --- |
 | [ALTER DATABASE（Azure SQL 数据库）](https://docs.microsoft.com/sql/t-sql/statements/alter-database-azure-sql-database) | SET ENCRYPTION ON/OFF 会加密或解密数据库 |
 | [sys.dm_database_encryption_keys](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-database-encryption-keys-transact-sql) |返回有关数据库的加密状态及其关联的数据库加密密钥的信息 |
@@ -120,7 +123,7 @@ Microsoft 还可按需无缝移动和管理密钥，以实现异地复制和还�
 若要通过 REST API 配置透明数据加密，必须以 Azure 所有者、参与者或 SQL 安全管理员的身份进行连接。
 对 Azure SQL 数据库和数据仓库使用以下命令集：
 
-| 命令 | Description |
+| 命令 | 说明 |
 | --- | --- |
 |[创建或更新服务器](https://docs.microsoft.com/rest/api/sql/servers/createorupdate)|将 Azure Active Directory 标识添加到 SQL Server 实例（用于授予 Key Vault 的访问权限）|
 |[创建或更新服务器密钥](https://docs.microsoft.com/rest/api/sql/serverkeys/createorupdate)|将 Key Vault 密钥添加到 SQL Server 实例|

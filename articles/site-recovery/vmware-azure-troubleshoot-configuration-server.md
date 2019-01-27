@@ -5,14 +5,14 @@ author: Rajeswari-Mamilla
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 12/17/2018
+ms.date: 01/14/2019
 ms.author: ramamill
-ms.openlocfilehash: 597b8f59ef6991f7868d3de481e98ed9a459077b
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 0eebfd8b75f428d3b8f6024ed6ee71c18c1309f6
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54050789"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54435968"
 ---
 # <a name="troubleshoot-configuration-server-issues"></a>排查配置服务器问题
 
@@ -58,6 +58,16 @@ ms.locfileid: "54050789"
 
 如果服务在安装移动代理和注册到配置服务器时无法通过传输连接读取数据，则会发生此错误。 若要解决此问题，请确保在源计算机上启用 TLS 1.0。
 
+## <a name="vcenter-discovery-failures"></a>vCenter 发现失败
+
+若要解决 vCenter 发现失败，请确保将 vCenter 服务器添加到 byPass 列表代理设置。若要执行此活动，请执行以下操作：
+
+- 从[此处](https://aka.ms/PsExec)下载 PsExec 工具来访问系统用户内容。
+- 通过运行以下命令行在系统用户内容中打开 Internet Explorer：psexec -s -i "%programfiles%\Internet Explorer\iexplore.exe"
+- 在 IE 中添加代理设置并重启 tmanssvc 服务。
+- 若要配置 DRA 代理设置，请运行 cd C:\Program Files\Microsoft Azure Site Recovery Provider
+- 接下来，执行 DRCONFIGURATOR.EXE /configure /AddBypassUrls [添加在[配置服务器部署](vmware-azure-deploy-configuration-server.md#configure-settings)的**配置 vCenter 服务器/vSphere ESXi 服务器**步骤中提供的 vCenter 服务器 IP 地址/FQDN]
+
 ## <a name="change-the-ip-address-of-the-configuration-server"></a>更改配置服务器的 IP 地址
 
 我们强烈建议不要更改配置服务器的 IP 地址。 确保分配给配置服务器的所有 IP 是静态 IP 地址。 不要使用 DHCP IP 地址。
@@ -70,7 +80,7 @@ ms.locfileid: "54050789"
 
 无法创建用于在 Site Recovery 中进行身份验证的证书。 确保以本地管理员的身份运行安装程序后，重新运行安装程序。
 
-## <a name="register-the-source-machine-with-the-configuration-server"></a>将源计算机注册到配置服务器
+## <a name="register-source-machine-with-configuration-server"></a>将源计算机注册到配置服务器
 
 ### <a name="if-the-source-machine-runs-windows"></a>如果源计算机运行 Windows
 

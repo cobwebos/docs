@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/13/2018
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 27b952fb1a901ff716f25cc7d512f860f639fb02
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 688194c8d5ec0c2594d8c7178d8cae3925b8e482
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53632612"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54413358"
 ---
 # <a name="language-and-region-support-for-speech-service-api"></a>语音服务 API 的语言和区域支持
 
@@ -63,6 +63,9 @@ Microsoft 语音识别 API 支持以下语言。 每种语言都有不同级别�
 ## <a name="text-to-speech"></a>文本转语音
 
 文本转语音 REST API 支持以下语音，每种语音支持区域设置标识的特定语言和方言。
+
+> [!IMPORTANT]
+> 标准语音、自定义语音和神经语音的定价各不相同。 有关其他信息，请访问[定价](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/)页。
 
 ### <a name="neural-voices-preview"></a>神经语音（预览版）
 

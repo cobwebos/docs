@@ -11,19 +11,25 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 12/18/2018
+ms.date: 01/18/2019
 ms.author: borisb
-ms.openlocfilehash: dbef04710e1a91cfda8b039605b517de9524ee19
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: fd73863dacd7914e23199ba92211ea67e68f7d0d
+ms.sourcegitcommit: c31a2dd686ea1b0824e7e695157adbc219d9074f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54229568"
+ms.lasthandoff: 01/18/2019
+ms.locfileid: "54402143"
 ---
 # <a name="red-hat-enterprise-linux-images-in-azure"></a>Azure 中的 Red Hat Enterprise Linux 映像
 本文介绍 Azure 市场中可用的 Red Hat Enterprise Linux (RHEL) 映像以及与其命名和保留相关的策略。
 
 可以在 [Red Hat Enterprise Linux Life Cycle](https://access.redhat.com/support/policy/updates/errata)（Red Hat Enterprise Linux 生命周期）页找到有关 RHEL 所有版本的 Red Hat 支持策略的信息。
+
+>[!Important]
+> Azure 市场中当前提供的 RHEL 映像支持自带订阅 (BYOS) 或即用即付 (PAYG) 许可模型。 不支持 [Azure 混合使用权益](../windows/hybrid-use-benefit-licensing.md)以及 BYOS 和 PAYG 之间的动态切换。 切换许可模式需要从相应的映像重新部署 VM。
+
+>[!Note]
+> 有关 Azure 市场库中与 RHEL 映像相关的任何问题，请向 Microsoft 提交支持票证。
 
 ## <a name="images-available-in-the-ui"></a>UI 中可用的映像
 在市场中搜索“Red Hat”或在 Azure 门户 UI 中创建资源时，可看到一部分可用的 RHEL 映像和相关的 Red Hat 产品。 只要使用 Azure CLI/PowerShell/API 就能获取完整的可用 VM 映像集。

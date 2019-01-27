@@ -11,12 +11,12 @@ author: hning86
 ms.reviewer: larryfr
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 4d201669bf627cf9b591958f3372760c0c990db9
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.openlocfilehash: a5a5b306341780ead737def90306fe6cb6a47db1
+ms.sourcegitcommit: c31a2dd686ea1b0824e7e695157adbc219d9074f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53808088"
+ms.lasthandoff: 01/18/2019
+ms.locfileid: "54401958"
 ---
 # <a name="how-azure-machine-learning-service-works-architecture-and-concepts"></a>Azure 机器学习服务的工作原理：体系结构和概念
 
@@ -28,7 +28,7 @@ ms.locfileid: "53808088"
 
 1. 在 **Python** 中开发机器学习培训脚本。
 1. 创建和配置**计算目标**。
-1. **将脚本提交**到配置的计算目标以在该环境中运行。 在培训期间，计算目标会将运行记录存储到**数据存储**。 记录将保存到**试验**。
+1. **将脚本提交**到配置的计算目标以在该环境中运行。 在训练期间，脚本可以读取或写入**数据存储**。 并且执行记录在**工作区**中保存为**运行**，并在**试验**下分组。
 1. **查询试验**了解当前和过去的运行中已记录的指标。 如果指标未指示所需结果，请循环回到步骤 1 并循环访问脚本。
 1. 找到满意的运行后，在**模型注册表**中注册持久化模型。
 1. 开发评分脚本。

@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/04/2017
+ms.date: 01/16/2019
 ms.author: tomsh
-ms.openlocfilehash: d0826d60d766874ddd186bcf406ea987134dab16
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 49c043853cede0a20e3d61011ded40e57d7a0303
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49385838"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54389424"
 ---
 # <a name="azure-service-fabric-security-checklist"></a>Azure Service Fabric 安全性清单
 本文提供的易用清单有助于保护 Azure Service Fabric 环境。
@@ -31,7 +31,7 @@ Azure Service Fabric 是一种分布式系统平台，适用于打包、部署�
 以下清单有助于确保在管理和配置 Azure Service Fabric 解决方案过程中未忽略任何重要问题。
 
 
-|清单类别| Description |
+|清单类别| 说明 |
 | ------------ | -------- |
 |[基于角色的访问控制 (RBAC)](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-security-roles) | <ul><li>访问控制可让群集管理员针对不同的用户组限制特定群集操作的访问权限，使群集更加安全。</li><li>管理员对管理功能（包括读取/写入功能）拥有完全访问权限。 </li><li> 默认情况下，用户只有管理功能的读取访问权限（例如查询功能），以及解析应用程序和服务的能力。</li></ul>|
 |[X.509 证书和 Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-security) | <ul><li>运行生产工作负荷的群集中使用的[证书](https://docs.microsoft.com/dotnet/framework/wcf/feature-details/working-with-certificates)应使用正确配置的 Windows Server 证书服务进行创建，或者从已批准的[证书颁发机构 (CA)](https://en.wikipedia.org/wiki/Certificate_authority) 获取。</li><li>切勿在生产环境中使用通过 [MakeCert.exe](https://msdn.microsoft.com/library/windows/desktop/aa386968.aspx) 等工具创建的[临时或测试证书](https://docs.microsoft.com/dotnet/framework/wcf/feature-details/how-to-create-temporary-certificates-for-use-during-development)。 </li><li>可以使用[自签名证书](https://docs.microsoft.com/azure/service-fabric/service-fabric-windows-cluster-x509-security)，但只应使用它来测试群集，而不应在生产环境中使用。</li></ul>|
@@ -48,6 +48,8 @@ Azure Service Fabric 是一种分布式系统平台，适用于打包、部署�
 
 
 ## <a name="next-steps"></a>后续步骤
+
+- [Service Fabric 安全性最佳做法](azure-service-fabric-security-best-practices.md)
 - [Service Fabric 群集升级过程和用户预期](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-upgrade)
 - [在 Visual Studio 中管理 Service Fabric 应用程序](https://docs.microsoft.com/azure/service-fabric/service-fabric-manage-application-in-visual-studio)。
 - [Service Fabric 运行状况模型简介](https://docs.microsoft.com/azure/service-fabric/service-fabric-health-introduction)。

@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: sujayt
-ms.openlocfilehash: 8023129bf700793447b63f0686acd22f6ac2b25c
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 44801663165b85edc988dab8ae2b668ef0e613b7
+ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54264999"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54381585"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-replication-issues"></a>Azure 到 Azure VM 复制问题故障排除
 
@@ -230,6 +230,10 @@ Azure Site Recovery 当前强制要求源区域资源组和虚拟机应位于同
 - 使用 Site Recovery 为 Azure VM 启用复制，然后删除包含 Site Recovery 保管库的资源组，而不在 VM 上明确禁用复制。
 
 ### <a name="fix-the-problem"></a>解决问题
+
+>[!NOTE] 
+>
+>请确保在使用以下脚本之前更新“AzureRM.Resources”模块。 
 
 可使用[删除过时 ASR 配置脚本](https://gallery.technet.microsoft.com/Azure-Recovery-ASR-script-3a93f412)，删除 Azure VM 上的过时 Site Recovery 配置。 删除过时配置后，应能够看到该 VM。
 

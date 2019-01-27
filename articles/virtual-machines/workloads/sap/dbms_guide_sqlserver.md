@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 09/26/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 90b4bc17de60baa59d6c159105674468a63d10f9
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 78ad40796a31e0c803b892e0c1b50e66b32c2b0a
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49430164"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54425870"
 ---
 # <a name="sql-server-azure-virtual-machines-dbms-deployment-for-sap-netweaver"></a>适用于 SAP NetWeaver 的 SQL Server Azure 虚拟机 DBMS 部署
 
@@ -235,7 +235,7 @@ ms.locfileid: "49430164"
 [planning-guide-microsoft-azure-networking]:planning-guide.md#61678387-8868-435d-9f8c-450b2424f5bd 
 [planning-guide-storage-microsoft-azure-storage-and-data-disks]:planning-guide.md#a72afa26-4bf4-4a25-8cf7-855d6032157f 
 
-[powershell-install-configure]:https://docs.microsoft.com/powershell/azure/install-azurerm-ps
+[powershell-install-configure]:https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps
 [resource-group-authoring-templates]:../../../resource-group-authoring-templates.md
 [resource-group-overview]:../../../azure-resource-manager/resource-group-overview.md
 [resource-groups-networking]:../../../networking/networking-overview.md
@@ -330,7 +330,7 @@ ms.locfileid: "49430164"
 
 * **SQL 版本支持**：对于 SAP 客户，Microsoft Azure 虚拟机上支持 SQL Server 2008 R2 和更高版本。 不支持更早版本。 有关更多详细信息，请查看此通用[支持声明](https://support.microsoft.com/kb/956893)。 Microsoft 通常也支持 SQL Server 2008。 不过，由于适用于 SAP 的重要功能是通过 SQL Server 2008 R2 引进的，因此，SQL Server 2008 R2 是适用于 SAP 的最低版本。 通常应考虑使用最新的 SQL Server 版本在 Azure IaaS 中运行 SAP 工作负荷。 最新的 SQL Server 版本提供与一些 Azure 服务和功能的更好集成。 或者具有优化 Azure IaaS 基础结构中操作的更改。 因此，本文仅限于 SQL Server 2016 和 SQL Server 2017。
 * **SQL 性能**：相比其他公有云虚拟化产品，Microsoft Azure 托管的虚拟机将运行得非常顺利，但个别结果可能不同。 请参阅 [Azure 虚拟机中 SQL Server 的性能最佳做法](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-performance)一文。
-* **使用来自 Azure 市场的映像**：部署新 Azure VM 的最快方式是使用来自 Microsoft Azure 市场的映像。 Azure 市场提供包含最新 SQL Server 版本的映像。 已经安装 SQL Server 的映像不能立即用于 SAP NetWeaver 应用程序。 原因是这些映像安装了默认的 SQL Server 排序规则，而不是 SAP NetWeaver 系统所需的排序规则。 若要使用此类映像，请查看[使用来自 Microsoft Azure 市场的 SQL Server 映像][dbms-guide-5.6]一章中所述的步骤。 
+* **使用来自 Azure 市场的映像**：部署新 Microsoft Azure VM 的最快方式是使用来自 Azure 市场的映像。 Azure 市场提供包含最新 SQL Server 版本的映像。 已经安装 SQL Server 的映像不能立即用于 SAP NetWeaver 应用程序。 原因是这些映像安装了默认的 SQL Server 排序规则，而不是 SAP NetWeaver 系统所需的排序规则。 若要使用此类映像，请查看[使用来自 Microsoft Azure 市场的 SQL Server 映像][dbms-guide-5.6]一章中所述的步骤。 
 
 
 ## <a name="recommendations-on-vmvhd-structure-for-sap-related-sql-server-deployments"></a>适用于 SAP 相关 SQL Server 部署的 VM/VHD 结构建议
@@ -422,7 +422,7 @@ SQL Server 2014 引入了一项称为[缓冲池扩展](https://docs.microsoft.co
 
 有关此方法的功能的详细信息，请参阅以下文章：
 
-- SQL Server 2014：[QL Server 2014 虚拟机 (Resource Manager) 的自动备份](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-automated-backup)
+- SQL Server 2014：[SQL Server 2014 虚拟机（资源管理器）的自动备份](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-automated-backup)
 - SQL Server 2016/2017：[用于 Azure 虚拟机（资源管理器）的自动备份 v2](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-automated-backup-v2)
 
 查看文档，可以看到最新 SQL Server 版本的功能有所改进。 [Microsoft Azure 的 SQL Server 托管备份](https://docs.microsoft.com/sql/relational-databases/backup-restore/sql-server-managed-backup-to-microsoft-azure?view=sql-server-2017)一文中发布了有关 SQL Server 自动备份的详细信息。 理论备份大小限制为 12 TB。  对于高达 12 TB 的备份大小，自动备份是一种很好的方法。 由于多个 Blob 并行写入，因此预期吞吐量可大于 100 MB/秒。 
@@ -450,7 +450,7 @@ Microsoft 在 Azure 市场中提供已经包含 SQL Server 版本的 VM。 对�
 
 * 以管理员身份打开 Windows 命令窗口。
 * 将目录更改为 C:\Program Files\Microsoft SQL Server\110\Setup Bootstrap\SQLServer2012。
-* 执行命令：Setup.exe /QUIET /ACTION=REBUILDDATABASE /INSTANCENAME=MSSQLSERVER /SQLSYSADMINACCOUNTS=`<local_admin_account_name`> /SQLCOLLATION=SQL_Latin1_General_Cp850_BIN2   
+* 执行此命令：Setup.exe /QUIET /ACTION=REBUILDDATABASE /INSTANCENAME=MSSQLSERVER /SQLSYSADMINACCOUNTS=`<local_admin_account_name`> /SQLCOLLATION=SQL_Latin1_General_Cp850_BIN2   
   * `<local_admin_account_name`> 是第一次通过库部署 VM 时定义为管理员帐户的帐户。
 
 此过程应该只需要几分钟的时间。 若要确保此步骤最终会有正确的结果，请执行下列步骤：

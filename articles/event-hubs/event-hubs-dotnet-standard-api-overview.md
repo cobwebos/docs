@@ -9,19 +9,19 @@ ms.service: event-hubs
 ms.topic: article
 ms.date: 08/13/2018
 ms.author: shvija
-ms.openlocfilehash: 9b952bd96828c4f2c140cb2d75cecb9379895a63
-ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
+ms.openlocfilehash: f8cd167d8de738674939180e0d81fc9282434155
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2018
-ms.locfileid: "42746637"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54450441"
 ---
 # <a name="event-hubs-net-standard-api-overview"></a>事件中心 .NET Standard API 概述
 
 本文汇总了一些重要的 Azure 事件中心 [.NET Standard 客户端 API](https://www.nuget.org/packages/Microsoft.Azure.EventHubs/)。 目前有两个适用于事件中心的 .NET Standard 客户端库：
 
 * [Microsoft.Azure.EventHubs](/dotnet/api/microsoft.azure.eventhubs)：提供基本运行时的所有操作。
-* [Microsoft.Azure.EventHubs.Processor](/dotnet/api/microsoft.azure.eventhubs.processor)：添加了其他功能，该功能可以跟踪处理的事件，并且是从事件中心读取数据的最简单方法。
+* [Microsoft.Azure.EventHubs.Processor](/dotnet/api/microsoft.azure.eventhubs.processor)：添加了其他功能，可用于跟踪已处理的事件，并且是从事件中心读取数据的最简单方法。
 
 ## <a name="event-hubs-client"></a>事件中心客户端
 
