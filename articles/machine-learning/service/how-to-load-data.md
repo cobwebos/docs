@@ -306,7 +306,7 @@ dataflow.to_pandas_dataframe().head()
 
 ||FMID|MarketName|网站|street|city|县|
 |----|------|-----|----|----|----|----|
-|0|1012063|喀里多尼亚农贸市场协会 - 丹维尔|https://sites.google.com/site/caledoniafarmers..。 ||丹维尔|喀里多尼亚|
+|0|1012063|喀里多尼亚农贸市场协会 - 丹维尔|https://sites.google.com/site/caledoniafarmers.. ||丹维尔|喀里多尼亚|
 |1|1011871|斯特恩斯家园农贸市场|http://Stearnshomestead.com |6975 Ridge Road|帕尔马|凯霍加河|
 |2|1011878|100 英里市场|http://www.pfcmarkets.com |507 哈里森街|卡拉马祖|卡拉马祖|
 |3|1009364|106 S. 主要街道农贸市场|http://thetownofsixmile.wordpress.com/ |106 S. 主要街道|六英里|||
