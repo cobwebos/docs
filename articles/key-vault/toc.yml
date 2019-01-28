@@ -38,6 +38,10 @@ items:
         href: tutorial-net-windows-virtual-machine.md
       - name: Python
         href: tutorial-python-windows-virtual-machine.md
+  - name: Azure 存储密钥保管库集成 - 托管存储帐户密钥 - Azure CLI
+    href: key-vault-ovw-storage-keys.md
+  - name: Azure 存储密钥保管库集成 - 托管存储帐户密钥 - PowerShell
+    href: key-vault-overview-storage-keys-powershell.md
   - name: Azure 容器
     href: ../container-instances/container-instances-managed-identity.md
   - name: Azure 资源管理器模板
@@ -58,10 +62,6 @@ items:
     href: key-vault-ovw-security-worlds.md
   - name: 软删除
     href: key-vault-ovw-soft-delete.md
-  - name: 托管存储帐户密钥 - Azure CLI
-    href: key-vault-ovw-storage-keys.md
-  - name: 托管存储帐户密钥 - PowerShell
-    href: key-vault-overview-storage-keys-powershell.md
   - name: 限制
     href: key-vault-ovw-throttling.md
   - name: 虚拟网络服务终结点
@@ -163,9 +163,9 @@ items:
     href: http://blogs.technet.com/b/kv/
 - name: 产品反馈
   href: https://feedback.azure.com/forums/906355-azure-key-vault
-ms.openlocfilehash: 406f1dcfca9f05197a38e66e1c5d26b06a47791f
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.openlocfilehash: 3f18c68ada3be52e4f5716f86d68d89da317fa2c
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54321154"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55080984"
