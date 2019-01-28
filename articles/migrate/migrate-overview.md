@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 01/11/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 737dc40bafa519d59bcbc0ff6510a89cb3a840fa
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: c8aa7050163c2b58ca68adcf9a9b4d0bc96bb126
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54263194"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54808351"
 ---
 # <a name="about-azure-migrate"></a>关于 Azure Migrate
 
@@ -57,7 +57,7 @@ Azure Migrate 有助于：
 
 **属性** | **详细信息**
 --- | ---
-**目标位置** | 要迁移到的 Azure 位置。<br/><br/>Azure Migrate 当前支持 33 个区域作为迁移目标位置。 [查看区域](https://azure.microsoft.com/global-infrastructure/services/)。 默认情况下，目标区域设置为“美国西部 2”。
+**目标位置** | 要迁移到的 Azure 位置。<br/><br/>Azure Migrate 当前支持 33 个区域作为迁移目标位置。 [查看区域](https://azure.microsoft.com/global-infrastructure/services/)。 默认情况下，目标区域设置为“美国东部”。
 **存储类型** | 要为作为评估一部分的所有 VM 分配的托管磁盘的类型。 如果大小调整标准为“按本地大小调整”，则可以将目标磁盘类型指定为高级磁盘（默认值）、标准 SSD 磁盘或标准 HDD 磁盘。 对于基于性能的大小调整以及上述选项，还可以选择“自动”，这将确保根据 VM 的性能数据自动完成磁盘大小调整建议。 例如，如果要实现 [99.9% 的单实例 VM SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_8/)，则可能需要将存储类型指定为高级托管磁盘，这将确保将评估中的所有磁盘建议为高级托管磁盘磁盘。 请注意，Azure Migrate 仅支持使用托管磁盘进行迁移评估。
 **预留实例** |  是否在 Azure 中有[预留实例](https://azure.microsoft.com/pricing/reserved-vm-instances/)。 Azure Migrate 会进行相应的成本估算。
 **“大小调整”条件** | 可以根据本地 VM 的**性能历史记录**（默认设置）进行大小调整，也可以**按本地**要求来进行，而不考虑性能历史记录。

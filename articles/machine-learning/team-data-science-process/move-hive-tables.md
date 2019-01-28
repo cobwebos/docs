@@ -138,10 +138,10 @@ Hive 查询在 [GitHub 存储库](https://github.com/Azure/Azure-MachineLearning
 以下是需要插入的字段以及其他配置的说明：
 
 * **\<数据库名称\>**：要创建的数据库的名称。 如果只想使用默认数据库，则可以省略 *create database...* 查询。
-* **\<表名称\>**：要在指定的数据库内创建的表的名称。 如果你要使用默认的数据库，则该表可通过 \<表名称\> 而非 \<数据库名称\> 直接引用。
+* **\<表名称\>**：要在指定的数据库内创建的表的名称。 如果你要使用默认的数据库，则该表可通过 *\<表名称\>* 而非 \<数据库名称\> 直接引用。
 * **\<字段分隔符\>**：用于分隔数据文件（要上传到 Hive 表）中的字段的分隔符。
 * **\<行分隔符\>**：用于分隔数据文件中的行的分隔符。
-* **\<存储位置\>**：用于保存 Hive 表数据的 Azure 存储位置。 如果你未指定 LOCATION \<存储位置\>，则默认情况下，数据库和表存储在 Hive 群集的默认容器的 hive/warehouse/ 目录中。 如果要指定存储位置，该存储位置必须在数据库和表的默认容器中。 此位置必须引用为与群集的默认容器相对的位置，格式为 *'wasb:///<directory 1>/'* 或 *'wasb:///<directory 1>/<directory 2>/'* 等。执行查询后，相对目录会创建在默认容器中。
+* **\<存储位置\>**：用于保存 Hive 表数据的 Azure 存储位置。 如果你未指定 *LOCATION \<存储位置\>*，则默认情况下，数据库和表存储在 Hive 群集的默认容器的 hive/warehouse/ 目录中。 如果要指定存储位置，该存储位置必须在数据库和表的默认容器中。 此位置必须引用为与群集的默认容器相对的位置，格式为 *'wasb:///<directory 1>/'* 或 *'wasb:///<directory 1>/<directory 2>/'* 等。执行查询后，相对目录会创建在默认容器中。
 * **TBLPROPERTIES("skip.header.line.count"="1")**：如果数据文件具有标题行，则必须在 create table 查询的**末尾处**添加此属性。 否则，标题行将作为记录加载到表。 如果数据文件没有标题行，则可以在查询中省略此配置。
 
 ## <a name="load-data"></a>将数据加载到 Hive 表
@@ -149,7 +149,7 @@ Hive 查询在 [GitHub 存储库](https://github.com/Azure/Azure-MachineLearning
 
     LOAD DATA INPATH '<path to blob data>' INTO TABLE <database name>.<table name>;
 
-* **\<Blob 数据的路径\>**：如果要上传到 Hive 表的 Blob 文件位于 HDInsight Hadoop 群集的默认容器中，则 \<Blob 数据的路径\> 应采用“wasb:///”<directory in this container>/<blob file name>这种格式。 blob 文件也可以在 HDInsight Hadoop 群集的其他容器中。 在这种情况下，\<Blob 数据的路径\> 应采用“wasb://.blob.core.windows.net/”<container name><storage account name><blob file name>这种格式。
+* **\<Blob 数据的路径\>**：如果要上传到 Hive 表的 Blob 文件位于 HDInsight Hadoop 群集的默认容器中，则 *\<Blob 数据的路径\>* 应采用 *“wasb:///<directory in this container>/<blob file name>”* 这种格式。 blob 文件也可以在 HDInsight Hadoop 群集的其他容器中。 在这种情况下，*\<Blob 数据的路径\>* 应采用 *“wasb://<container name><storage account name>.blob.core.windows.net/<blob file name>”* 这种格式。
 
   > [!NOTE]
   > 要上传到 Hive 表的 blob 数据必须位于 Hadoop 群集存储帐户的默认或其他容器中。 否则，*LOAD DATA* 查询会失败，并声称它无法访问数据。
@@ -216,7 +216,7 @@ Hive 查询在 [GitHub 存储库](https://github.com/Azure/Azure-MachineLearning
             SELECT * FROM <database name>.<external textfile table name>;
 
 > [!NOTE]
-> 如果 TEXTFILE 表 \<数据库名称\>.\<外部 textfile 表名称\> 具有分区，则在步骤 3 中，`SELECT * FROM <database name>.<external textfile table name>` 命令会选择分区变量作为返回的数据集中的字段。 将数据插入 \<数据库名称\>.\<ORC 表名称\> 失败，因为 \<数据库名称\>.\<ORC 表名称\> 没有分区变量作为表架构中的字段。 在这种情况下，你需要专门选择要插入 \<数据库名称\>.\<ORC 表名称\> 的字段，如下所述：
+> 如果 TEXTFILE 表 *\<数据库名称\>.\<外部 textfile 表名称\>* 具有分区，则在步骤 3 中，`SELECT * FROM <database name>.<external textfile table name>` 命令会选择分区变量作为返回的数据集中的字段。 将数据插入 *\<数据库名称\>.\<ORC 表名称\>* 失败，因为 *\<数据库名称\>.\<ORC 表名称\>* 没有将分区变量作为表架构中的字段。 在这种情况下，需要专门选择要插入到 *\<数据库名称\>.\<ORC 表名称\>* 的字段，如下所示：
 >
 >
 
@@ -225,7 +225,7 @@ Hive 查询在 [GitHub 存储库](https://github.com/Azure/Azure-MachineLearning
            FROM <database name>.<external textfile table name>
            WHERE <partition variable>=<partition value>;
 
-在所有数据都已插入 \<数据库名称\>.\<ORC 表名称\> 后，使用以下查询可以安全地删除 \<外部 textfile 表名称\>：
+在所有数据都已插入到 *\<数据库名称\>.\<ORC 表名称\>* 后，使用以下查询可以安全地删除 *\<外部 textfile 表名称\>*：
 
         DROP TABLE IF EXISTS <database name>.<external textfile table name>;
 

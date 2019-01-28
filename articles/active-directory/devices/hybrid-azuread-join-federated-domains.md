@@ -4,7 +4,7 @@ description: 了解如何为联盟域配置混合 Azure Active Directory 加入�
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: 54e1b01b-03ee-4c46-bcf0-e01affc0419d
 ms.service: active-directory
@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 01/08/2019
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: 2f904690187f6f2b020cb9cc32f9a20712d8bb53
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: af1495af69255c7daa7de94da6ce0321c13d7599
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54107559"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54448205"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-join-for-federated-domains"></a>教程：为联盟域配置混合 Azure Active Directory 加入
 
@@ -73,11 +73,11 @@ ms.locfileid: "54107559"
 
 要实现混合 Azure AD 联接，设备必须有权从组织的网络中访问以下 Microsoft 资源：  
 
-- https://enterpriseregistration.windows.net
-- https://login.microsoftonline.com
-- https://device.login.microsoftonline.com
+- https\://enterpriseregistration.windows.net
+- https\://login.microsoftonline.com
+- https\://device.login.microsoftonline.com
 - 组织的 STS（联盟域）
-- https://autologon.microsoftazuread-sso.com（如果正在使用或计划使用无缝 SSO）
+- https\://autologon.microsoftazuread-sso.com（如果正在使用或计划使用无缝 SSO）
 
 从 Windows 10 1803 开始，如果 AD FS 等联合域的即时混合 Azure AD 加入失败，我们将依赖 Azure AD Connect 同步 Azure AD 中的计算机对象，该计算机对象随后用于完成混合 Azure AD 加入的设备注册。
 
@@ -123,7 +123,7 @@ ms.locfileid: "54107559"
 
     ![SCP](./media/hybrid-azuread-join-federated-domains/16.png)
 
-    a. 选择林。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 选择林。
 
     b. 选择身份验证服务。 除非你的组织仅有 Windows 10 客户端且你已配置计算机/设备同步或者你的组织使用 SeamlessSSO，否则必须选择 AD FS 服务器。
 

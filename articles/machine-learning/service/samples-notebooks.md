@@ -11,12 +11,12 @@ ms.author: sgilley
 ms.reviewer: sgilley
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 0d74f731d0a7eca25238344e36838dc6c806c788
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 6befe3a3fee80dd65fd3ac5be241c558707224e6
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53434522"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54811088"
 ---
 # <a name="use-jupyter-notebooks-to-explore-azure-machine-learning-service"></a>使用 Jupyter 笔记本探索 Azure 机器学习服务
 
@@ -31,7 +31,7 @@ ms.locfileid: "53434522"
 
 ## <a name="try-azure-notebooks-free-jupyter-notebooks-in-the-cloud"></a>试用 Azure Notebook：云中免费的 Jupyter Notebook
 
-Azure Notebooks 的入门很容易！ 已在 Azure Notebooks 上安装和配置[用于 Python 的 Azure 机器学习 SDK](https://aka.ms/aml-sdk)。 安装和未来的更新通过 Azure 服务自动管理。
+Azure Notebooks 的入门很容易！ 已在 [Azure Notebooks](https://notebooks.azure.com/) 上安装和配置[用于 Python 的 Azure 机器学习 SDK](https://aka.ms/aml-sdk)。 安装和未来的更新通过 Azure 服务自动管理。
   
 + 若要运行**核心教程笔记本**，请执行以下操作：
   1. 转到 [Azure Notebooks](https://notebooks.azure.com/)。

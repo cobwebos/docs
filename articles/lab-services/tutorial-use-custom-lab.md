@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 05/17/2018
+ms.date: 01/18/2019
 ms.author: spelluru
-ms.openlocfilehash: ab52206230c4dfe2d92c97f1e291ee00a086c570
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: b5abb8d4aad7c58bf673aa578255efe12d32ad4b
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49470857"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54422892"
 ---
 # <a name="tutorial-access-a-lab-in-azure-devtest-labs"></a>教程：访问 Azure 开发测试实验室中的实验室
 本教程使用[教程：在 Azure 开发测试实验室中创建实验室](tutorial-create-custom-lab.md)中创建的实验室。
@@ -68,10 +68,12 @@ ms.locfileid: "49470857"
 1. 在虚拟机页上，选择工具栏上的“取消认领”。 
 
     ![取消认领 VM](./media/tutorial-use-custom-lab/unclaim-vm-menu.png)
-1. 取消认领之前 VM 处于关闭状态。 
+1. 取消认领之前 VM 处于关闭状态。 可以在通知中查看此操作的状态。  
+3. 单击顶部痕迹导航菜单中的实验室名称，导航回“开发测试实验室”页。 
+    
+    ![导航回实验室](./media/tutorial-use-custom-lab/breadcrumb-to-lab.png)
+1. 确认在底部的“可认领的虚拟机”列表中看到 VM。
 
-    ![取消认领状态](./media/tutorial-use-custom-lab/unclaim-status.png) 
-1. 取消认领操作完成后，可看到该 VM 位于“可认领虚拟机”列表底部。 
     
 ## <a name="next-steps"></a>后续步骤
 本教程演示了如何访问和使用通过 Azure 开发测试实验室创建的实验室。 有关在实验室中访问和使用 VM 的详细信息，请参阅 

@@ -83,9 +83,9 @@ Azure 流分析支持使用 Azure Data Lake Storage (ADLS) Gen1 输出进行托�
 
    * 在 Azure Active Directory 中为流分析作业的标识自动创建服务主体。 新建标识的生命周期将由 Azure 管理。 删除流分析作业时，Azure 会自动删除关联的标识（即服务主体）。
 
-   * 为作业中使用的 ADLS Gen1 前缀路径自动设置“写入”和“执行”权限，并将该作业分配给此文件夹和所有子级。
+   * 为作业中使用的 ADLS Gen1 前缀路径自动设置“写入”和“执行”权限，并将这些权限分配给此文件夹和所有子级。
 
-5. 在生成计算机上，可以使用[流分析 CI.CD Nuget 包](https://www.nuget.org/packages/Microsoft.Azure.StreamAnalytics.CICD/) 1.5.0 或更高版本生成包含以下属性的资源管理器模板（生成操作在 Visual Studio 之外进行）。 按照下一节中的资源管理器模板部署步骤获取服务主体，并通过 PowerShell 授予对该服务主体的访问权限。
+5. 可以在生成计算机上（在 Visual Studio 之外）使用[流分析 CI.CD Nuget 包](https://www.nuget.org/packages/Microsoft.Azure.StreamAnalytics.CICD/) 1.5.0 或更高版本生成带有以下属性的资源管理器模板。 按照下一节中的资源管理器模板部署步骤获取服务主体，并通过 PowerShell 授予对该服务主体的访问权限。
 
 ## <a name="resource-manager-template-deployment"></a>资源管理器模板部署
 

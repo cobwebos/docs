@@ -5,16 +5,16 @@ services: iot-edge
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 01/04/2019
+ms.date: 01/18/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 426e4fe05890f1669859545db3d731943a12428a
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 2b99207f35bd83c9e02ad636a070ae538ae3472c
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54260169"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54412217"
 ---
 # <a name="tutorial-store-data-at-the-edge-with-sql-server-databases"></a>教程：使用 SQL Server 数据库存储边缘中的数据
 
@@ -36,7 +36,10 @@ ms.locfileid: "54260169"
 
 Azure IoT Edge 设备：
 
-* 可以按照适用于 [Linux](quickstart-linux.md) 或 [Windows 设备](quickstart.md)的快速入门中的步骤，将开发计算机或虚拟机用作 Edge 设备。 
+* 可以按照适用于 [Linux](quickstart-linux.md) 或 [Windows 设备](quickstart.md)的快速入门中的步骤，将开发计算机或虚拟机用作 Edge 设备。
+
+  > [!NOTE]
+  > SQL Server 仅支持 Linux 容器。 若要将 Windows 设备用作 Edge 设备来测试本教程，必须对其进行配置，使之使用 Linux 容器。 请参阅[在 Windows 上安装 Azure IoT Edge 运行时](how-to-install-iot-edge-windows-with-linux.md)，了解为 Windows 上的 Linux 容器配置 IoT Edge 运行时所需完成的先决条件和安装步骤。
 
 云资源：
 
@@ -227,15 +230,9 @@ Azure IoT Edge 设备：
 
 1. 在 Visual Studio Code 资源管理器中打开 **deployment.template.json** 文件。 
 
-2. 找到 **modules** 节。 应该会列出两个模块：**tempSensor** 模块，用于生成模拟数据，以及 **sqlFunction** 模块。
+1. 找到 **modules** 节。 应该会列出两个模块：**tempSensor** 模块，用于生成模拟数据，以及 **sqlFunction** 模块。
 
-3. 如果使用了 Windows 容器，请修改 **sqlFunction.settings.image** 部分。
-
-   ```json
-   "image": "${MODULES.sqlFunction.windows-amd64}"
-   ```
-
-4. 添加以下代码来声明第三个模块。 在 sqlFunction 部分后添加一个逗号并插入以下内容：
+1. 添加以下代码来声明第三个模块。 在 sqlFunction 部分后添加一个逗号并插入以下内容：
 
    ```json
    "sql": {
@@ -253,29 +250,7 @@ Azure IoT Edge 设备：
 
    ![将 SQL Server 模块添加到清单](./media/tutorial-store-data-sql-server/view_json_sql.png)
 
-5. 根据 IoT Edge 设备的 Docker 容器的类型，使用以下代码更新 **sql** 模块参数：
-   * Windows 容器：
-
-      ```json
-      "env": {
-        "ACCEPT_EULA": {"value": "Y"},
-        "SA_PASSWORD": {"value": "Strong!Passw0rd"}
-      },
-      "settings": {
-        "image": "microsoft/mssql-server-windows-developer",
-        "createOptions": {
-          "HostConfig": {
-            "Mounts": [{"Target": "C:\\mssql","Source": "sqlVolume","Type": "volume"}],
-            "PortBindings": {
-              "1433/tcp": [{"HostPort": "1401"}]
-            }
-          }
-        }
-      }
-      ```
-
-   * Linux 容器：
-
+1. 使用下面的代码更新 **sql** 模块参数：
       ```json
       "env": {
         "ACCEPT_EULA": {"value": "Y"},
@@ -295,9 +270,9 @@ Azure IoT Edge 设备：
       ```
 
    >[!Tip]
-   >每当在生产环境中创建 SQL Server 容器时，都应该[更改默认的系统管理员密码](https://docs.microsoft.com/sql/linux/quickstart-install-connect-docker#change-the-sa-password)。
+   >每当在生产环境中创建 SQL Server 容器时，都应该[更改默认的系统管理员密码](https://docs.microsoft.com/sql/linux/quickstart-install-connect-docker)。
 
-6. 保存 **deployment.template.json** 文件。
+1. 保存 **deployment.template.json** 文件。
 
 ## <a name="build-your-iot-edge-solution"></a>生成 IoT Edge 解决方案
 
@@ -353,42 +328,16 @@ Azure IoT Edge 设备：
 在 IoT Edge 设备上运行以下命令。 这些命令连接到在你的设备上运行的 **sql** 模块，并创建数据库和表来存放发送到它的温度数据。 
 
 1. 在 IoT Edge 设备上的命令行工具中，连接到你的数据库。 
-   * Windows 容器：
-   
-      ```cmd
-      docker exec -it sql cmd
-      ```
-    
-   * Linux 容器： 
-
       ```bash
       sudo docker exec -it sql bash
       ```
 
 2. 打开 SQL 命令工具。
-   * Windows 容器：
-
-      ```cmd
-      sqlcmd -S localhost -U SA -P "Strong!Passw0rd"
-      ```
-
-   * Linux 容器： 
-
       ```bash
       /opt/mssql-tools/bin/sqlcmd -S localhost -U SA -P 'Strong!Passw0rd'
       ```
 
 3. 创建数据库： 
-
-   * Windows 容器
-      ```sql
-      CREATE DATABASE MeasurementsDB
-      ON
-      (NAME = MeasurementsDB, FILENAME = 'C:\mssql\measurementsdb.mdf')
-      GO
-      ```
-
-   * Linux 容器
       ```sql
       CREATE DATABASE MeasurementsDB
       ON

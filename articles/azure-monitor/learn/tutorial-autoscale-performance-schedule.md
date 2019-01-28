@@ -8,13 +8,13 @@ ms.topic: tutorial
 ms.date: 12/11/2017
 ms.author: ancav
 ms.custom: mvc
-ms.component: autoscale
-ms.openlocfilehash: bf9cf931964fec9b2089cce100757e044788a972
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.subservice: autoscale
+ms.openlocfilehash: b9d54dc1483da20b4c411047af0b44b681fe197c
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54262313"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54429270"
 ---
 # <a name="create-an-autoscale-setting-for--azure-resources-based-on-performance-data-or-a-schedule"></a>基于性能数据或调度为 Azure 资源创建自动缩放设置 | Microsoft 文档
 
@@ -37,7 +37,7 @@ ms.locfileid: "54262313"
 ## <a name="create-a-web-app-and-app-service-plan"></a>创建 Web 应用和应用服务计划
 1. 在左侧导航窗格中单击“创建资源”选项。
 2. 搜索并选择“Web 应用”项，然后单击“创建”。
-3. 选择一个应用名称，例如 MyTestScaleWebApp。 新建资源组 *myResourceGroup，并将其放置在你选择的资源组中。
+3. 选择一个应用名称，例如 MyTestScaleWebApp。 新建资源组 *myResourceGroup'，或将其放置在所选资源组中。
 
 几分钟内，应会预配你的资源。 在本教程的后面部分，使用 Web 应用及相对应的应用服务计划。
 
@@ -185,3 +185,4 @@ ms.locfileid: "54262313"
 
 > [!div class="nextstepaction"]
 > [存档监视数据](tutorial-archive-data.md)
+

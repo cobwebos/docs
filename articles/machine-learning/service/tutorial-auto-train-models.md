@@ -11,12 +11,12 @@ ms.author: nilesha
 ms.reviewer: sgilley
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 5bd6649b063521853864d4da423372ae181cf977
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: 97910241cb4f903deeeb9ff6971839530903efe2
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53580512"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54823005"
 ---
 # <a name="tutorial-use-automated-machine-learning-to-build-your-regression-model"></a>教程：通过自动化机器学习来构建回归模型
 
@@ -44,11 +44,11 @@ ms.locfileid: "53580512"
 ## <a name="prerequisites"></a>先决条件
 
 > * [运行数据准备教程](tutorial-data-prep.md)。
-> * 自动化机器学习配置的环境。 示例包括 Azure Notebooks、本地 Python 环境或 Data Science Virtual Machine。 [设置自动化机器学习](samples-notebooks.md)。
+> * 自动化机器学习配置的环境。 示例包括 [Azure Notebooks](https://notebooks.azure.com/)、本地 Python 环境或 Data Science Virtual Machine。 [设置自动化机器学习](samples-notebooks.md)。
 
 ## <a name="get-the-notebook"></a>获取 Notebook
 
-为方便起见，本教程以 [Jupyter Notebook](https://github.com/Azure/MachineLearningNotebooks/blob/master/tutorials/regression-part2-automated-ml.ipynb) 的形式提供。 在 Azure Notebooks 或你自己的 Jupyter Notebook 服务器中运行 `regression-part2-automated-ml.ipynb` Notebook。
+为方便起见，本教程以 [Jupyter Notebook](https://github.com/Azure/MachineLearningNotebooks/blob/master/tutorials/regression-part2-automated-ml.ipynb) 的形式提供。 在 [Azure Notebooks](https://notebooks.azure.com/) 或你自己的 Jupyter Notebook 服务器中运行 `regression-part2-automated-ml.ipynb` 笔记本。
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-in-azure-notebook.md)]
 
@@ -66,9 +66,15 @@ import logging
 import os
 ```
 
+若要按照教程在自己的 Python 环境中操作，请使用以下命令安装必需的包。
+
+```shell
+pip install azureml-sdk[automl,notebooks] azureml-dataprep pandas scikit-learn matplotlib
+```
+
 ## <a name="configure-workspace"></a>配置工作区
 
-从现有工作区创建工作区对象。 `Workspace` 是可接受 Azure 订阅和资源信息的类。 它还可创建云资源来监视和跟踪模型运行。 
+从现有工作区创建工作区对象。 `Workspace` 是可接受 Azure 订阅和资源信息的类。 它还可创建云资源来监视和跟踪模型运行。
 
 `Workspace.from_config()` 读取 **aml_config/config.json** 文件并将详细信息加载到名为 `ws` 的对象中。  在本教程中，`ws` 在代码的其余部分使用。
 
@@ -95,7 +101,7 @@ pd.DataFrame(data=output, index=['']).T
 
 ## <a name="explore-data"></a>浏览数据
 
-使用在上一教程中创建的数据流对象。 打开并运行该数据流，然后查看结果：
+使用在上一教程中创建的数据流对象。 总结说来，本教程的第 1 部分清理了纽约市出租车数据，使之可以在机器学习模型中使用。 现在，请使用数据集中的各种特性，以便通过自动化模型在特性与出租车打车价格之间建立关系。 打开并运行该数据流，然后查看结果：
 
 
 ```python
@@ -605,27 +611,27 @@ x_train, x_test, y_train, y_test = train_test_split(x_df, y_df, test_size=0.2, r
 y_train.values.flatten()
 ```
 
-现在已有所需的包和数据，接下来可以开始自动训练模型。
+此步骤的目的是通过数据点来测试完成的模型（此模型尚未用于训练模型），以便测量实际准确性。 换句话说，经过良好训练的模型应该能够准确地根据其尚未看到的数据进行预测。 现在已有所需的包和数据，接下来可以开始自动训练模型。
 
 ## <a name="automatically-train-a-model"></a>自动训练模型
 
 若要自动训练模型，请执行以下步骤：
-1. 定义试验运行的设置。
-1. 提交用于模型优化的试验。
+1. 定义试验运行的设置。 将训练数据附加到配置，并修改用于控制训练过程的设置。
+1. 提交用于模型优化的试验。 在提交试验以后，此过程会根据定义的约束循环访问不同的机器学习算法和超参数设置。 它通过优化准确性指标来选择最佳拟合模型。
 
 ### <a name="define-settings-for-autogeneration-and-tuning"></a>定义自动生成和优化的设置
 
-定义自动生成和优化的试验参数和模型设置。 查看[设置](how-to-configure-auto-train.md)的完整列表。
+定义自动生成和优化的试验参数和模型设置。 查看[设置](how-to-configure-auto-train.md)的完整列表。 提交带这些默认设置的试验大约需要 10-15 分钟，但如果需要缩短运行时间，可减小 `iterations` 或 `iteration_timeout_minutes`。
 
 
 |属性| 本教程中的值 |Description|
 |----|----|---|
-|**iteration_timeout_minutes**|10|每个迭代的时间限制（分钟）。|
-|**迭代**|30|迭代次数。 在每个迭代中，模型通过特定管道使用数据进行训练。|
-|**primary_metric**| spearman_correlation | 要优化的指标。|
-|**preprocess**| True | 如果使用 **True**，则试验可以预处理输入。|
+|**iteration_timeout_minutes**|10|每个迭代的时间限制（分钟）。 减小此值可缩短总运行时。|
+|**迭代**|30|迭代次数。 每次迭代时，都会使用数据对新的机器学习模型进行训练。 这是影响总运行时间的主要值。|
+|**primary_metric**| spearman_correlation | 要优化的指标。 将根据此指标选择最佳拟合模型。|
+|**preprocess**| True | 如果使用 **True**，则试验可以预处理输入数据（处理缺失的数据、将文本转换为数字，等等）。|
 |**verbosity**| logging.INFO | 控制日志记录的级别。|
-|**n_cross_validationss**|5|交叉验证拆分数。|
+|**n_cross_validations**|5|在验证数据未指定的情况下，需执行的交叉验证拆分的数目。|
 
 
 
@@ -640,6 +646,7 @@ automl_settings = {
 }
 ```
 
+使用定义的训练设置作为 `AutoMLConfig` 对象的参数。 另请指定训练数据和模型的类型，后者在此示例中为 `regression`。
 
 ```python
 from azureml.train.automl import AutoMLConfig
@@ -664,6 +671,8 @@ experiment=Experiment(ws, experiment_name)
 local_run = experiment.submit(automated_ml_config, show_output=True)
 ```
 
+显示的输出会随着试验的运行进行实时更新。 可以看到每次迭代的模型类型、运行持续时间以及训练准确性。 字段 `BEST` 根据指标类型跟踪运行情况最好的训练分数。
+
     Parent Run ID: AutoML_02778de3-3696-46e9-a71b-521c8fca0651
     *******************************************************************************************
     ITERATION: The iteration being evaluated.
@@ -672,7 +681,7 @@ local_run = experiment.submit(automated_ml_config, show_output=True)
     METRIC: The result of computing score on the fitted pipeline.
     BEST: The best observed score thus far.
     *******************************************************************************************
-    
+
      ITERATION   PIPELINE                                       DURATION      METRIC      BEST
              0   MaxAbsScaler ExtremeRandomTrees                0:00:08       0.9447    0.9447
              1   StandardScalerWrapper GradientBoosting         0:00:09       0.9536    0.9536
@@ -724,7 +733,7 @@ RunDetails(local_run).show()
 
 ### <a name="option-2-get-and-examine-all-run-iterations-in-python"></a>选项 2：获取并检查 Python 中的所有运行迭代
 
-也可以检索每个试验的历史记录，并浏览每个迭代运行的单个指标：
+也可以检索每个试验的历史记录，并浏览每个迭代运行的单个指标。 通过检查单个模型运行的 RMSE (root_mean_squared_error)，可以看到大多数迭代预测的出租车费用是在合理的误差范围（3-4 美元）内。
 
 ```python
 children = list(local_run.get_children())
@@ -1081,28 +1090,16 @@ print(best_run)
 print(fitted_model)
 ```
 
-## <a name="register-the-model"></a>注册模型
-
-在 Azure 机器学习服务工作区中注册模型：
-
-
-```python
-description = 'Automated Machine Learning Model'
-tags = None
-local_run.register_model(description=description, tags=tags)
-local_run.model_id # Use this id to deploy the model as a web service in Azure
-```
-
 ## <a name="test-the-best-model-accuracy"></a>测试最佳模型的准确性
 
-使用最佳模型针对测试数据集运行预测。 函数 `predict` 使用最佳模型根据 `x_test` 数据集预测 y（**行程费用**）的值。 输出 `y_predict` 中头 10 个预测的费用值：
+使用最佳模型针对测试数据集运行预测，以便预测出租车费用。 函数 `predict` 使用最佳模型根据 `x_test` 数据集预测 y（**行程费用**）的值。 输出 `y_predict` 中头 10 个预测的费用值：
 
 ```python
 y_predict = fitted_model.predict(x_test.values)
 print(y_predict[:10])
 ```
 
-创建散点图来可视化与实际成本值相比的预测成本值。 以下代码使用 `distance` 特征作为 x 轴，使用行程 `cost` 作为 y 轴。 若要比较每个行程距离值处的预测成本的差异，前 100 个预测的和实际的成本值需创建为单独的系列。 查看绘图，其中显示的距离/成本关系几乎是线性的。 大多数情况下，对于相同的行程距离，预测的成本值非常接近于实际成本值。
+创建散点图来可视化与实际成本值相比的预测成本值。 以下代码使用 `distance` 特征作为 x 轴，使用行程 `cost` 作为 y 轴。 若要比较每个行程距离值处的预测成本的差异，前 100 个预测的和实际的成本值需创建为单独的系列。 观察绘图，其中显示的距离/成本关系几乎为线性的，并且大多数情况下，对于同样的行程距离，预测的成本值非常接近于实际成本值。
 
 ```python
 import matplotlib.pyplot as plt
@@ -1127,7 +1124,7 @@ plt.show()
 
 ![预测散点图](./media/tutorial-auto-train-models/automl-scatter-plot.png)
 
-计算结果的 `root mean squared error`。 使用 `y_test` 数据帧。 将其转换为一个列表，以便与预测的值进行比较。 函数 `mean_squared_error` 接受两个数组的值，计算两个数组之间的平均平方误差。 取结果的平方根会将相同单位的误差提供为 y 差异（**成本**）。 该值大致指出了预测值与实际值之间有多大的差距：
+计算结果的 `root mean squared error`。 使用 `y_test` 数据帧。 将其转换为一个列表，以便与预测的值进行比较。 函数 `mean_squared_error` 接受两个数组的值，计算两个数组之间的平均平方误差。 取结果的平方根会将相同单位的误差提供为 y 差异（**成本**）。 它大致指出了出租车费用预测值与实际费用之间有多大的差距：
 
 ```python
 from sklearn.metrics import mean_squared_error
@@ -1165,6 +1162,8 @@ print(1 - mean_abs_percent_error)
 
     Model Accuracy:
     0.8945484613043041
+
+从最终的预测准确率指标来看，该模型可以很好地根据数据集的特性来预测出租车费用，误差通常在 3.00 美元上下。 传统的机器学习模型开发过程是资源高度密集型的，需要大量的领域知识和时间投资来运行数十个模型并比较其结果。 使用自动化机器学习是一种很好的方式，可以针对方案快速测试许多不同的模型。
 
 ## <a name="clean-up-resources"></a>清理资源
 

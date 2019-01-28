@@ -12,15 +12,15 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 10/09/2018
+ms.date: 01/23/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 3af8f57cab6e420a7c7515bdf32b7ef382441cf9
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: f23aa49d44e8f29f860174ebde2447fad79c8c52
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53633141"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54843372"
 ---
 # <a name="create-a-python-app-in-azure-app-service-on-linux-preview"></a>在 Linux 上的 Azure 应用服务（预览）中创建 Python 应用
 
@@ -47,6 +47,8 @@ ms.locfileid: "53633141"
 git clone https://github.com/Azure-Samples/python-docs-hello-world
 cd python-docs-hello-world
 ```
+
+存储库包含一个 *application.py*，后者会告知应用服务：存储库包含 Flask 应用。 有关详细信息，请参阅[容器启动过程和自定义项](how-to-configure-python.md)。
 
 ## <a name="run-the-app-locally"></a>在本地运行应用
 

@@ -3,7 +3,7 @@ title: Azure 安全中心中的安全评分 | Microsoft Docs
 description: " 使用 Azure 安全中心中的安全评分确定安全建议的优先级。 "
 services: security-center
 documentationcenter: na
-author: rkarlin
+author: monhaber
 manager: MBaldwin
 editor: ''
 ms.assetid: c42d02e4-201d-4a95-8527-253af903a5c6
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/15/2019
-ms.author: rkarlin
-ms.openlocfilehash: 4bc426e291a47ae42e7628ad911e2960e654819f
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.author: monhaber
+ms.openlocfilehash: 4c7f272cbf98fefbf70e917634fb623c9e1b6a3b
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54261292"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54425876"
 ---
 # <a name="improve-your-secure-score-in-azure-security-center"></a>提高 Azure 安全中心的安全评分
 
@@ -45,7 +45,7 @@ Azure 安全中心会不断检查活动建议并根据它们计算安全评分�
 2. 可以在顶部看见安全功能分数突出显示：
    - 总体安全功能分数表示每个策略、每个所选订阅的分数
    - 按类别的安全功能分数显示哪些资源需要最多的关注
-   - 安全功能分数影响的最重要建议提供了一些建议列表，可以在进行修复时提高安全功能分数。
+   - 安全评分影响的最重要建议提供了一个建议列表，这些建议可以在你实施它们时最大程度提高安全评分。
  
    ![安全评分](./media/security-center-secure-score/secure-score-dashboard.png)
 

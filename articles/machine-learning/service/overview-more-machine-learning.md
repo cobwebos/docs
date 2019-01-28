@@ -9,32 +9,54 @@ ms.topic: overview
 ms.reviewer: jmartens
 author: garyericson
 ms.author: garye
-ms.date: 12/04/2018
-ms.openlocfilehash: b2d7888234a05c82f1245bd58b98f505989d7f2d
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.date: 1/17/2019
+ms.openlocfilehash: d5660d1a4d5d2a26af57e2a2411552e3f6267379
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53557880"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54389134"
 ---
 # <a name="what-are-the-machine-learning-products-at-microsoft"></a>Microsoft 的机器学习产品有哪些？
 
 Microsoft 提供多种多样的产品选项用于生成、部署和管理机器学习模型。 本文将比较这些产品，并帮助你选择所需的产品，以便最有效地开发机器学习解决方案。
 
-| 机器学习产品 | 作用 | 作用 |
+
+**基于云的选项**
+
+为 Azure 云中的机器学习提供了以下选项。
+
+| 云&nbsp;选项 | 作用 | 作用 |
 |-|-|-|
-| ***在云中*** | | |
 | [Azure 机器学习服务](#azure-machine-learning-services) | 适用于机器学习的托管云服务  | 使用 Python 和 CLI 在 Azure 中训练、部署和管理模型 |
-| [Azure 机器学习工作室](#azure-machine-learning-studio) | 机器学习的拖放式可视界面 | 使用预配置的算法生成、试验和部署模型 |
+| [Azure 机器学习工作室](#azure-machine-learning-studio) | 机器学习的拖放式可视界面 | 使用预配置的算法生成、试验和部署模型（Python 和 R）|
 | [Azure Databricks](#azure-databricks) | 基于 Spark 的分析平台 | 生成和部署模型与数据工作流 |
 | [Azure 认知服务](#azure-cognitive-services) | 包含预生成 AI 和机器学习模型的 Azure 服务 | 轻松将智能功能轻松添加到应用中 |
 | [Azure Data Science Virtual Machine](#azure-data-science-virtual-machine) | 预装了数据科学工具的虚拟机 | 在预配置的环境中开发机器学习解决方案 |
-| ***本地***<br>（本地服务器也可在云端虚拟机中运行） | | |
+
+**本地选项**
+
+为本地的机器学习提供了以下选项。 本地服务器也可以在云端的虚拟机中运行。
+
+| 本地&nbsp;选项 | 作用 | 作用 |
+|-|-|-|
 | [SQL Server 机器学习服务](#sql-server-machine-learning-services) | SQL 中嵌入的分析引擎 | 在 SQL Server 内部生成和部署模型 |
 | [Microsoft Machine Learning Server](#microsoft-machine-learning-server) | 用于预测分析的独立企业服务器 | 使用 R 和 Python 生成与部署模型 |
-| ***开发人员工具*** | | |
+
+**开发工具**
+
+为机器学习提供了以下开发工具。
+
+| 开发&nbsp;工具 | 作用 | 作用 |
+|-|-|-|
 | [ML.NET](#mlnet) | 开源跨平台机器学习 SDK | 开发适用于 .NET 应用程序的机器学习解决方案 |
 | [Windows ML](#windows-ml) | Windows 10 机器学习平台 | 在 Windows 10 设备上评估已训练的模型 |
+
+
+
+
+
+
 
 ## <a name="azure-machine-learning-service"></a>Azure 机器学习服务
 

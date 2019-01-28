@@ -3,7 +3,7 @@ title: 影响 Azure AD Connect 性能的因素
 description: 本文档介绍多种因素对 Azure AD Connect 预配引擎的影响。 这些因素可帮助组织规划 Azure AD Connect 部署，确保满足其同步要求。
 services: active-directory
 author: billmath
-manager: mtillman
+manager: daveba
 tags: azuread
 ms.service: active-directory
 ms.topic: conceptual
@@ -11,16 +11,16 @@ ms.workload: identity
 ms.date: 10/06/2018
 ms.reviewer: martincoetzer
 ms.author: billmath
-ms.openlocfilehash: cdca1b31f9b6cf10113dc0dba70b8f8991bafa2b
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: 801082164a0110178034c5fbe050ebe8e02b2772
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49093953"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54474126"
 ---
 # <a name="factors-influencing-the-performance-of-azure-ad-connect"></a>影响 Azure AD Connect 性能的因素
 
-Azure AD Connect 将 Active Directory 同步到 Azure AD。 此服务器是将用户标识迁移到云的重要组件。 影响 Azure AD Connect 性能的主要因素包括：
+Azure AD Connect 将 Active Directory 同步到 Azure AD。 此服务器是将用户标识迁移到云的过程中发挥着重要作用。 影响 Azure AD Connect 性能的主要因素包括：
 
 | **设计因素**| **定义** |
 |:-|-|
@@ -28,12 +28,12 @@ Azure AD Connect 将 Active Directory 同步到 Azure AD。 此服务器是将�
 | 缩放| 要由 Azure AD Connect 管理的用户、组和 OU 等对象的数量。 |
 | 硬件| 用于 Azure AD Connect 的硬件（物理或虚拟）以及各个硬件组件（包括 CPU、内存、网络和硬盘配置）的相关性能容量。 |
 | 配置| Azure AD Connect 处理目录和信息的方式。 |
-| 加载| 对象更改的频率。 一小时、一日或一周内的负载各不相同。 可能需要设计峰值负载或平均负载，具体取决于组件。 |
+| 加载| 对象更改的频率。 一小时、一日或一周内的负载各不相同。 可能需要根据峰值负载或平均负载进行设计，具体取决于组件。 |
 
-本文档旨在介绍影响 Azure AD Connect 预配引擎性能的因素。 大规模或复杂的组织（预配超过 10 万个对象的组织）如果遇到此处所述的任何性能问题，可使用建议方法来优化其 Azure AD Connect 实现。 其他 Azure AD Connect 组件（例如 [Azure AD Connect Health](how-to-connect-health-agent-install.md)）以及代理在此不作赘述。
+本文档旨在介绍影响 Azure AD Connect 预配引擎性能的因素。 大规模或复杂的组织（预配超过 10 万个对象的组织）如果遇到此处所述的任何性能问题，可使用建议方法来优化其 Azure AD Connect 实现。 其他 Azure AD Connect 组件（例如 [Azure AD Connect Health](how-to-connect-health-agent-install.md)）以及代理不在本文讨论范围之内。
 
 > [!IMPORTANT]
-> Microsoft 不支持在正式记录的操作之外修改或操作 Azure AD Connect。 其中的任何操作都可能会导致 Azure AD Connect 同步出现不一致或不受支持状态。因此，Microsoft 无法提供这种部署的技术支持。
+> Microsoft 不支持通过未正式记录的方法修改或操作 Azure AD Connect。 其中的任何操作都可能会导致 Azure AD Connect 同步出现不一致或不受支持状态。因此，Microsoft 无法提供这种部署的技术支持。
 
 ## <a name="azure-ad-connect-component-factors"></a>Azure AD Connect 组件因素
 
@@ -41,7 +41,7 @@ Azure AD Connect 将 Active Directory 同步到 Azure AD。 此服务器是将�
 
 ![AzureADConnentInternal](media/plan-connect-performance-factors/AzureADConnentInternal.png)
 
-预配引擎连接到每个 Active Directory 林且连接到 Azure AD。 从每个目录读取信息的过程称为“导入”。 导出是指从预配引擎更新目录。 同步则评估规定对象在预配引擎内的流动方式的规则。 若要深入了解，请参阅 [Azure AD Connect 同步：了解体系结构](https://docs.microsoft.com/azure/active-directory/hybrid/concept-azure-ad-connect-sync-architecture)。
+预配引擎连接到每个 Active Directory 林且连接到 Azure AD。 从每个目录读取信息的过程称为“导入”。 导出是指从预配引擎更新目录。 同步则评估规定对象在预配引擎内的流动方式的规则。 若要深入了解，可参阅 [Azure AD Connect 同步：了解体系结构](https://docs.microsoft.com/azure/active-directory/hybrid/concept-azure-ad-connect-sync-architecture)。
 
 Azure AD Connect 使用以下临时区域、规则和过程，以实现从 Active Directory 到 Azure AD 的同步：
 
@@ -50,11 +50,11 @@ Azure AD Connect 使用以下临时区域、规则和过程，以实现从 Activ
 * **同步规则** - 决定将创建（投射）哪些对象或将哪些对象连接（联接）到 MV 中的对象。 还决定要从目录或向目录复制或转换的属性值。
 * **运行配置文件** - 根据暂存区域和已连接目录之间的同步规则，捆绑复制对象及其属性值的过程步骤。
 
-有多种用于优化预配引擎性能的运行配置文件。 大多数组织对常规操作使用默认的计划和运行配置文件，但某些组织可能需要[更改计划](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sync-feature-scheduler)或触发其他运行配置文件才能应对不常见的情况。 可用的运行配置文件如下：
+有多种用于优化预配引擎性能的运行配置文件。 大多数组织使用默认的计划和运行配置文件来处理常规操作，但某些组织可能需要[更改计划](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sync-feature-scheduler)或触发其他运行配置文件以应对不常见的情况。 可用的运行配置文件如下：
 
 ### <a name="initial-sync-profile"></a>初始同步配置文件
 
-初始同步配置文件是首次读取已连接目录（如 Active Directory 林）的过程。 此后，它将对同步引擎数据库中的所有项进行分析。 初始周期将在 Azure AD 中创建新对象；如果 Active Directory 林较大，将需要更多时间才能完成循环。 初始同步包括以下步骤：
+初始同步配置文件涉及首次读取已连接目录（如 Active Directory 林）的过程。 此后，它将对同步引擎数据库中的所有项进行分析。 初始周期将在 Azure AD 中创建新对象；如果 Active Directory 林较大，将需要更多时间才能完成循环。 初始同步包括以下步骤：
 
 1. 在所有连接器上完全导入
 2. 在所有连接器上完全同步
@@ -82,7 +82,7 @@ Azure AD Connect 使用以下临时区域、规则和过程，以实现从 Activ
 
 
 
-- 增加要从已连接目录导出的对象或属性的范围。 例如，向导入范围添加域或 OU。
+- 增加要从已连接目录导入的对象或属性的范围。 例如，向导入范围添加域或 OU。
 - 更改同步规则。 例如，创建了新规则，用于从 Active Directory 中的 extension_attribute3 填充 Azure AD 中的用户职务。 此更新需要预配引擎重新检查所有现有用户是否已更新其职务，以便以后应用此更改。
 
 完全同步周期包括以下操作：

@@ -945,8 +945,8 @@ public class GuidAggregate : IAggregate<string, string, string>
 public abstract class IAggregate<T1, T2, TResult> : IAggregate
 ```
 
-* T1：传递到 Accumulate 的第一个参数
-* T2：传递到 Accumulate 的第一个参数
+* T1：Accumulate 的第一个参数
+* T2：Accumulate 的第一个参数
 * TResult：Terminate 的返回类型
 
 例如：
@@ -1067,7 +1067,7 @@ U-SQL 可让你定义自定义可编程性对象，此类对象称为用户定�
 ## <a name="use-user-defined-extractors"></a>使用用户定义的提取器
 U-SQL 允许通过使用 EXTRACT 语句导入外部数据。 EXTRACT 语句可以使用内置 UDO 提取器：  
 
-* *Extractors.Text()*：提供从不同编码的分隔文本文件中进行的提取。
+* *Extractors.Text()*：提供从不同编码的带分隔符的文本文件中进行的提取。
 
 * *Extractors.Csv()*：提供从不同编码的逗号分隔值 (CSV) 文件中进行的提取。
 
@@ -1219,7 +1219,7 @@ OUTPUT @rs0 TO @output_file USING Outputters.Text();
 ## <a name="use-user-defined-outputters"></a>使用用户定义的输出器
 用户定义的输出器是另一种 U-SQL UDO，允许扩展内置 U-SQL 功能。 与提取程序类似，内置输出器也有几种。
 
-* *Outputters.Text()*：将数据写入不同编码的分隔文本文件中。
+* *Outputters.Text()*：将数据写入不同编码的带分隔符的文本文件中。
 * *Outputters.Csv()*：将数据写入不同编码的逗号分隔值 (CSV) 文件中。
 * *Outputters.Tsv()*：将数据写入不同编码的制表符分隔值 (CSV) 文件中。
 

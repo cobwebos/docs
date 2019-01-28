@@ -9,18 +9,18 @@ services: iot-accelerators
 ms.date: 11/15/2018
 ms.topic: tutorial
 ms.custom: mvc
-ms.openlocfilehash: 5505ceaa88f1ad792df57f9728f5e4809404942c
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: a2dc5653b7579d9c5db4667d84e6e5b5082abaab
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53599495"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54448068"
 ---
 # <a name="tutorial-configure-devices-connected-to-your-monitoring-solution"></a>教程：配置连接到监视解决方案的设备
 
 在本教程中，你将使用远程监视解决方案加速器来配置和管理连接的 IoT 设备。 将新设备添加到解决方案加速器并配置设备。
 
-Contoso 购置了新的机器以扩建其某处生产场地。 在等待交付新机器期间，你想要运行一次模拟，以测试解决方案的行为。 为了运行该模拟，你要将一个新的模拟引擎设备添加到远程监视解决方案加速器，并测试此模拟设备是否能够正确响应配置更新。 尽管本教程使用的是模拟设备，但设备开发人员可以在[连接到远程监视解决方案加速器的物理设备](iot-accelerators-connecting-devices.md)上执行直接方法。
+Contoso 购置了新的机器以扩建其某处生产场地。 在等待交付新机器期间，你想要运行一次模拟，以测试解决方案的行为。 为了运行该模拟，你要将一个新的模拟引擎设备添加到远程监视解决方案加速器，并测试此模拟设备是否能够正确响应配置更新。 尽管本教程使用的是模拟设备，但设备开发人员可以在[连接到远程监视解决方案加速器的实际设备](iot-accelerators-connecting-devices.md)上执行直接方法。
 
 本教程介绍以下操作：
 

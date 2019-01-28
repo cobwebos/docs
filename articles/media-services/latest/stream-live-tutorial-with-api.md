@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 12/28/2018
+ms.date: 01/22/2019
 ms.author: juliako
-ms.openlocfilehash: 858c062c2b3d61b38247e323bf70d2768d33b257
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: c51a36f4380199de1ac62ef3f0c32bd0a8f06c01
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53969329"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54811207"
 ---
 # <a name="tutorial-stream-live-with-media-services-v3-using-apis"></a>教程：使用 API 通过媒体服务 v3 进行实时流式传输
 
@@ -100,8 +100,12 @@ ms.locfileid: "53969329"
 * 对引入和预览的 IP 限制。 可定义允许向该 LiveEvent 引入视频的 IP 地址。 允许的 IP 地址可以指定为单个 IP 地址（例如“10.0.0.1”）、使用一个 IP 地址和 CIDR 子网掩码的 IP 范围（例如“10.0.0.1/22”）或使用一个 IP 地址和点分十进制子网掩码的 IP 范围（例如“10.0.0.1(255.255.252.0)”）。
     
     如果未指定 IP 地址并且没有规则定义，则不会允许任何 IP 地址。 若要允许任何 IP 地址，请创建一个规则并设置 0.0.0.0/0。
+    
+    IP 地址必须采用以下格式之一：具有 4 个数字、CIDR 地址范围的 IpV4 地址。
 
-创建事件时，可以将其启动方式指定为自动启动。 
+* 创建事件时，可以将其启动方式指定为自动启动。 
+
+    如果将 autostart 设置为 true，则实时事件会在创建后启动。 这意味着，只要运行实时事件，就会开始计费。 你必须显式对 LiveEvent 资源调用停止操作才能停止进一步计费。 有关详细信息，请参阅 [LiveEvent 状态和计费](live-event-states-billing.md)。
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-core-tutorials/NETCore/Live/MediaV3LiveApp/Program.cs#CreateLiveEvent)]
 

@@ -4,7 +4,7 @@ description: 了解如何通过 Azure 门户下载登录报表
 services: active-directory
 documentationcenter: ''
 author: priyamohanram
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: 9131f208-1f90-4cc1-9c29-085cacd69317
 ms.service: active-directory
@@ -16,16 +16,16 @@ ms.component: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: ce242066df427163048a2ef51e79ffd98eadbc7d
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.openlocfilehash: 7b16fb718e689eec8ea016b513d866390b2328e0
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54214906"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54815544"
 ---
 # <a name="quickstart-download-a-sign-in-report-using-the-azure-portal"></a>快速入门：通过 Azure 门户下载登录报表
 
-在此快速入门中，你将学习如何下载租户过去 24 小时的登录数据。
+在此快速入门中，你将学习如何下载租户过去 24 小时的登录数据。 最多可从 Azure 门户下载 5000 条记录。 记录按最近时间进行排序，因此默认情况下获取的是最近 5000 条记录。 
 
 ## <a name="prerequisites"></a>先决条件
 

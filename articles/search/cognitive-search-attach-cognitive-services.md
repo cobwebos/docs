@@ -19,11 +19,11 @@ ms.locfileid: "54413237"
 ---
 # <a name="attach-a-cognitive-services-resource-with-a-skillset-in-azure-search"></a>将认知服务资源与 Azure 搜索中的技能集联系起来 
 
-[认知搜索管道](cognitive-search-concept-intro.md)用于在 Azure 搜索编制索引操作过程中处理非结构化数据，可由 AI 算法驱动。 这些算法基于[认知服务资源](https://azure.microsoft.com/services/cognitive-services/)，包括[计算机视觉](https://azure.microsoft.com/services/cognitive-services/computer-vision/)（用于图像分析和光学字符识别 (OCR)），以及[文本分析](https://azure.microsoft.com/services/cognitive-services/text-analytics/)（用于实体识别、关键短语提取和其他扩充操作）。
+AI 算法会驱动用于在 Azure 搜索编制索引操作过程中处理非结构化数据的[认知搜索管道](cognitive-search-concept-intro.md)。 这些算法基于[认知服务资源](https://azure.microsoft.com/services/cognitive-services/)，包括[计算机视觉](https://azure.microsoft.com/services/cognitive-services/computer-vision/)（用于图像分析和光学字符识别 (OCR)），以及[文本分析](https://azure.microsoft.com/services/cognitive-services/text-analytics/)（用于实体识别、关键短语提取和其他扩充操作）。
 
 可以免费扩充有限数量的文档，或者附加付费的认知服务资源来处理更大、更频繁的工作负荷。 本文介绍如何将认知服务资源关联到认知技能集，以便在 [Azure 搜索索引编制](search-what-is-an-index.md)期间扩充数据。
 
-如果管道中包含与认知服务 API 无关的技能，则你还应附加认知服务资源。 这样做可替代使你每天只能执行少量扩充操作的“免费”资源。 未绑定到认知服务 API 的技能不收费。 这些技能包括：[自定义技能](cognitive-search-create-custom-skill-example.md)、[文本合并器](cognitive-search-skill-textmerger.md)、[文本拆分器](cognitive-search-skill-textsplit.md)和[整形程序](cognitive-search-skill-shaper.md)。
+如果管道中包含与认知服务 API 无关的技能，则你还应附加认知服务资源。 这样做会替代仅允许你每天执行少量扩充操作的“免费”资源。 未绑定到认知服务 API 的技能不收费。 这些技能包括：[自定义技能](cognitive-search-create-custom-skill-example.md)、[文本合并器](cognitive-search-skill-textmerger.md)、[文本拆分器](cognitive-search-skill-textsplit.md)和[整形程序](cognitive-search-skill-shaper.md)。
 
 > [!NOTE]
 > 自 2018 年 12 月 21 日起，可将认知服务资源与 Azure 搜索技能集进行关联。 这样，我们就可以开始收取技能集的执行费。 在此日期，我们还会开始将图像提取视为文档破解阶段的一部分进行计费。 我们将继续提供文档文本提取服务而不收取额外费用。
@@ -54,7 +54,7 @@ ms.locfileid: "54413237"
 
 对于每日执行 20 项以上扩充操作的工作负荷，你需要附加收费的认知服务资源。 
 
-只有调用认知服务 API 的技能才收费。 如果技能未基于 API，例如[自定义技能](cognitive-search-create-custom-skill-example.md)、[文本合并器](cognitive-search-skill-textmerger.md)、[文本拆分器](cognitive-search-skill-textsplit.md)和[整形程序](cognitive-search-skill-shaper.md)，则不收费。
+只有调用认知服务 API 的技能才收费。 对于不基于 API 的技能，例如[自定义技能](cognitive-search-create-custom-skill-example.md)、[文本合并器](cognitive-search-skill-textmerger.md)、[文本拆分器](cognitive-search-skill-textsplit.md)和[整形程序](cognitive-search-skill-shaper.md)，则不收费。
 
 1. 在“导入数据”向导的“附加认知服务”中选择现有资源，或单击“创建新的认知服务资源”。
 

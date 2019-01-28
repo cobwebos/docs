@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 11/15/2018
 ms.author: mjbrown
-ms.openlocfilehash: 2a88b130c92f7b9074fd248afc97f0ea6b4c13bb
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: d101931fb2a4184ff9ffffc0aed4fc90fee2cbd5
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54042132"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54452949"
 ---
 # <a name="sql-query-examples-to-query-data-from-azure-cosmos-db"></a>从 Azure Cosmos DB 中查询数据的 SQL 查询示例
 
@@ -506,7 +506,7 @@ IN 关键字可用于检查指定的值是否与列表中的任意值匹配。 �
 
 如同使用其他查询运算符一样，如果任何项中缺少条件表达式的引用属性，或者如果正在进行比较的类型不同，那么这些项会被排除在查询结果之外。
 
-联合 (??) 运算符可用于有效地检查文档中是否存在属性（也称为 defined）。 此运算符在对半结构化数据或混合类型的数据执行查询时很有用。 例如，此查询返回“lastName”（如果存在）或“surname”（如果不存在）。
+联合 (??) 运算符可用于有效地检查项目中是否存在某个属性。 此运算符在对半结构化数据或混合类型的数据执行查询时很有用。 例如，此查询返回“lastName”（如果存在）或“surname”（如果不存在）。
 
 ```sql
     SELECT f.lastName ?? f.surname AS familyName
@@ -820,7 +820,7 @@ TOP 关键字可用于限制来自查询中的值的数量。 当 TOP 与 ORDER 
 
 下表显示了 SQL API 中受支持的聚合函数的列表。 `SUM` 和 `AVG` 基于数字值执行，而 `COUNT`、`MIN`、`MAX` 则可基于数字、字符串、布尔值和 null 值执行。
 
-| 使用情况 | Description |
+| 使用情况 | 说明 |
 |-------|-------------|
 | COUNT | 在表达式中返回项的数目。 |
 | SUM   | 在表达式中返回所有值的总和。 |
@@ -1363,7 +1363,7 @@ Cosmos DB 还支持使用许多内置函数进行常见操作，这些函数可�
 
 每个数学函数均执行一个计算，基于作为参数提供的输出值，并返回数值。 以下是受支持的内置数学函数表。
 
-| 使用情况 | Description |
+| 使用情况 | 说明 |
 |----------|--------|
 | [[ABS (num_expr)](#bk_abs) | 返回指定数值表达式的绝对（正）值。 |
 | [CEILING (num_expr)](#bk_ceiling) | 返回大于或等于指定数值表达式的最小整数值。 |
@@ -1438,7 +1438,7 @@ Cosmos DB 还支持使用许多内置函数进行常见操作，这些函数可�
 
 下面的标量函数对字符串输入值执行操作，并返回字符串、数值或布尔值。 以下是内置字符串函数表：
 
-| 使用情况 | Description |
+| 使用情况 | 说明 |
 | --- | --- |
 | [LENGTH (str_expr)](sql-api-query-reference.md#bk_length) | 返回指定字符串的字符数 |
 | [CONCAT (str_expr, str_expr [, str_expr])](sql-api-query-reference.md#bk_concat) | 返回一个字符串，该字符串是连接两个或多个字符串值的结果。 |
@@ -1520,7 +1520,7 @@ Cosmos DB 还支持使用许多内置函数进行常见操作，这些函数可�
 
 以下标量函数对数组输入值执行操作，并返回数值、布尔值或数组值。 以下是内置数组函数表：
 
-| 使用情况 | Description |
+| 使用情况 | 说明 |
 | --- | --- |
 | [ARRAY_LENGTH (arr_expr)](sql-api-query-reference.md#bk_array_length) |返回指定数组表达式的元素数。 |
 | [ARRAY_CONCAT (arr_expr, arr_expr [, arr_expr])](sql-api-query-reference.md#bk_array_concat) |返回一个数组，该数组是连接两个或更多数组值的结果。 |
@@ -1589,7 +1589,7 @@ Cosmos DB 还支持使用许多内置函数进行常见操作，这些函数可�
 
 Cosmos DB 支持以下用于查询地理空间的开放地理空间信息联盟 (OGC) 内置函数。 
 
-| 使用情况 | Description |
+| 使用情况 | 说明 |
 | --- | --- |
 | ST_DISTANCE (point_expr、point_expr) | 返回两个 GeoJSON 点、多边形或 LineString 表达式之间的距离。 |
 | T_WITHIN (point_expr, polygon_expr) | 返回一个布尔表达式，指示第一个 GeoJSON 对象（点、多边形或 LineString）是否在第二个 GeoJSON 对象 （点、多边形或 LineString）内。 |

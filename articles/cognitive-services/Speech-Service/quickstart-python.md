@@ -1,23 +1,23 @@
 ---
-title: 快速入门：使用语音服务 SDK 识别 Python 中的语音
+title: 快速入门：识别语音，Python - 语音服务
 titleSuffix: Azure Cognitive Services
-description: 了解如何使用语音服务 SDK 识别 Python 中的语音
+description: 按照本指南使用适用于 Python 的语音 SDK 创建语音转文本控制台应用程序。 完成后，可以使用计算机的麦克风实时将语音转录为文本。
 services: cognitive-services
 author: chlandsi
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: quickstart
-ms.date: 12/18/2018
+ms.date: 1/16/2019
 ms.author: chlandsi
-ms.openlocfilehash: 7610b12b351b2652df7ade603711d4d92e587292
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 40869457ce933368e17a2054dfca50fc4505fa22
+ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53723903"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54381576"
 ---
-# <a name="quickstart-using-the-speech-service-from-python"></a>快速入门：在 Python 中使用语音服务
+# <a name="quickstart-recognize-speech-with-the-speech-sdk-for-python"></a>快速入门：使用适用于 Python 的语音 SDK 识别语音
 
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
@@ -39,7 +39,7 @@ ms.locfileid: "53723903"
 
 * 在 Windows 上，还需要安装适用于你的平台的 [Microsoft Visual C++ Redistributable for Visual Studio 2017](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads)。
 
-## <a name="get-the-speech-sdk-python-package"></a>获取语音 SDK Python 包
+## <a name="install-the-speech-sdk"></a>安装语音 SDK
 
 [!INCLUDE [License Notice](../../../includes/cognitive-services-speech-service-license-notice.md)]
 
@@ -61,7 +61,7 @@ pip install azure-cognitiveservices-speech
 
 ## <a name="create-a-python-application-using-the-speech-sdk"></a>使用语音 SDK 创建 Python 应用程序
 
-### <a name="running-the-sample-in-a-terminal"></a>在终端中运行示例
+### <a name="run-the-sample"></a>运行示例
 
 可将本快速入门中的[代码](#quickstart-code)复制到源文件 `quickstart.py`，然后在 IDE 或控制台中运行该代码
 
@@ -71,11 +71,11 @@ python quickstart.py
 
 或者，可以从[认知服务语音示例存储库](https://github.com/Azure-Samples/cognitive-services-speech-sdk/)以 [Jupyter](https://jupyter.org) Notebook 的形式下载本快速入门教程，并将其作为 Notebook 运行。
 
-### <a name="quickstart-code"></a>快速入门代码
+### <a name="sample-code"></a>代码示例
 
 [!code-python[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/python/quickstart.py#code)]
 
-### <a name="installing-the-speech-sdk-python-package-and-running-the-sample-in-visual-studio-code"></a>安装语音 SDK Python 包并在 Visual Studio Code 中运行示例
+### <a name="install-and-use-the-speech-sdk-with-visual-studio-code"></a>通过 Visual Studio Code 安装并使用语音 SDK
 
 1. 在计算机上[下载](https://www.python.org/downloads/)并安装 64 位版本的 Python（3.5 或更高版本）。
 1. [下载](https://code.visualstudio.com/Download)并安装 Visual Studio Code。
