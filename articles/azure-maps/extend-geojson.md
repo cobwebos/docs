@@ -1,4 +1,4 @@
----
+﻿---
 title: 在 Azure Maps 中扩展 GeoJSON 几何图形 | Microsoft Docs
 description: 了解如何在 Azure Maps 中扩展 GeoJSON 几何图形
 author: sataneja
