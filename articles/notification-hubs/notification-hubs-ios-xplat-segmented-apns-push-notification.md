@@ -3,8 +3,8 @@ title: 使用 Azure 通知中心向特定 iOS 设备推送通知 | Microsoft Doc
 description: 在本教程中，将了解如何使用 Azure 通知中心向特定 iOS 设备推送通知。
 services: notification-hubs
 documentationcenter: ios
-author: dimazaid
-manager: kpiteira
+author: jwargo
+manager: patniko
 editor: spelluru
 ms.assetid: 6ead4169-deff-4947-858c-8c6cf03cc3b2
 ms.service: notification-hubs
@@ -12,14 +12,14 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-ios
 ms.devlang: objective-c
 ms.topic: article
-ms.date: 04/14/2018
-ms.author: dimazaid
-ms.openlocfilehash: 18caf2b1b96052d93737c8a9815e2e6643a52a67
-ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
+ms.date: 01/04/2019
+ms.author: jowargo
+ms.openlocfilehash: aaaeb4e101147c19af5bd1dc7071cca273255863
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42918056"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54449753"
 ---
 # <a name="tutorial-push-notifications-to-specific-ios-devices-using-azure-notification-hubs"></a>教程：使用 Azure 通知中心向特定 iOS 设备推送通知
 
@@ -41,7 +41,7 @@ ms.locfileid: "42918056"
 
 ## <a name="prerequisites"></a>先决条件
 
-本主题基于在[教程：使用 Azure 通知中心将通知推送到 iOS 应用][get-started]中创建的应用。 在开始本教程前，必须已完成[教程：使用 Azure 通知中心将通知推送到 iOS 应用][get-started]。
+本主题基于以下教程中创建的应用：[教程：使用 Azure 通知中心将通知推送到 iOS 应用][get-started]。 在开始学习本教程之前，必须已完成[教程：使用 Azure 通知中心将通知推送到 iOS 应用][get-started]。
 
 ## <a name="add-category-selection-to-the-app"></a>向应用程序中添加类别选择
 
@@ -59,7 +59,7 @@ ms.locfileid: "42918056"
     ![Xcode 接口生成器][3]
 
 2. 在助手编辑器中，为所有开关创建插座并称它们为“WorldSwitch”、“PoliticsSwitch”、“BusinessSwitch”、“TechnologySwitch”、“ScienceSwitch”、“SportsSwitch”
-3. 为名为“订阅”的按钮创建一个操作。 ViewController.h 应包含以下代码：
+3. 为名为 `subscribe` 的按钮创建一个操作；`ViewController.h` 应包含以下代码：
 
     ```objc
     @property (weak, nonatomic) IBOutlet UISwitch *WorldSwitch;
@@ -135,7 +135,7 @@ ms.locfileid: "42918056"
 
     此类使用本地存储来存储和检索此设备接收的新闻类别。 此外，它还包含了一个用于通过[模板](notification-hubs-templates-cross-platform-push-messages.md)注册来注册这些类别的方法。
 
-7. 在 AppDelegate.h 文件中，添加 Notifications.h 的导入语句，并添加 Notifications 类实例的属性：
+7. 在 `AppDelegate.h` 文件中，为 `Notifications.h` 添加 import 语句，并为 `Notifications` 类的实例添加一个属性：
 
     ```objc
     #import "Notifications.h"
@@ -143,9 +143,8 @@ ms.locfileid: "42918056"
     @property (nonatomic) Notifications* notifications;
     ```
 
-8. 在 AppDelegate.m 的 **didFinishLaunchingWithOptions** 方法中，在方法开头添加代码来初始化 notifications 实例。  
-
-    在 hubinfo.h 中定义的 `HUBNAME` 和 `HUBLISTENACCESS` 内，`<hub name>` 和 `<connection string with listen access>` 占位符应已替换为通知中心名称和你之前获取的 *DefaultListenSharedAccessSignature* 的连接字符串
+8. 在 `AppDelegate.m` 中的 `didFinishLaunchingWithOptions` 方法开头，添加用于初始化 notifications 实例的代码。  
+    在 `hubinfo.h` 中定义的 `HUBNAME` 和 `HUBLISTENACCESS` 内，`<hub name>` 和 `<connection string with listen access>` 占位符应已替换为通知中心名称和前面获取的 *DefaultListenSharedAccessSignature* 的连接字符串
 
     ```objc
     self.notifications = [[Notifications alloc] initWithConnectionString:HUBLISTENACCESS HubName:HUBNAME];
@@ -154,7 +153,7 @@ ms.locfileid: "42918056"
     > [!NOTE]
     > 由于使用客户端应用程序分发的凭据通常是不安全的，只应使用客户端应用程序分发具有侦听访问权限的密钥。 侦听访问权限允许应用程序注册通知，但是无法修改现有注册，也无法发送通知。 在受保护的后端服务中使用完全访问权限密钥，以便发送通知和更改现有注册。
 
-9. 在 AppDelegate.m 的 **didRegisterForRemoteNotificationsWithDeviceToken** 方法中，使用以下代码来替换方法中的代码，以将设备令牌传递给 notifications 类。 notifications 类将通知注册到类别。 如果用户更改类别选择，则调用 `subscribeWithCategories` 方法以响应“订阅”按钮，从而进行更新。
+9. 将 `AppDelegate.m` 中 `didRegisterForRemoteNotificationsWithDeviceToken` 方法内的代码替换为以下代码，以将设备令牌传递给 `notifications` 类。 `notifications` 类将通知注册到类别。 如果用户更改类别选择，则调用 `subscribeWithCategories` 方法以响应“订阅”按钮，从而进行更新。
 
     > [!NOTE]
     > 由于 Apple Push Notification 服务 (APNS) 分配的设备标记随时可能更改，因此，应该经常注册通知以避免通知失败。 此示例在每次应用程序启动时注册通知。 对于经常运行（一天一次以上）的应用程序，如果每次注册间隔时间不到一天，可以跳过注册来节省带宽。
@@ -173,9 +172,9 @@ ms.locfileid: "42918056"
     }];
     ```
 
-    此时 didRegisterForRemoteNotificationsWithDeviceToken 方法中不应有任何其他代码。
+    此时，`didRegisterForRemoteNotificationsWithDeviceToken` 方法中不应有任何代码。
 
-10. 通过完成[通知中心入门][get-started]教程，以下方法应该已存在于 AppDelegate.m 中。 否则，请添加这些方法。
+10. 完成[通知中心入门][get-started]教程后，以下方法应已存在于 `AppDelegate.m` 中。 否则，请添加这些方法。
 
     ```objc
     -(void)MessageBox:(NSString *)title message:(NSString *)messageText
@@ -195,7 +194,7 @@ ms.locfileid: "42918056"
 
     此方法通过显示简单的 **UIAlert** 处理运行应用程序时收到的通知。
 
-11. 在 ViewController.m 中，添加 AppDelegate.h 的导入语句，并将以下代码复制到 XCode 生成的 subscribe 方法中。 此代码会更新通知注册，使用用户在用户界面中选择的新类别标记。
+11. 在 `ViewController.m` 中，为 `AppDelegate.h` 添加 `import` 语句，并将以下代码复制到 XCode 生成的 `subscribe` 方法中。 此代码会更新通知注册，使用用户在用户界面中选择的新类别标记。
 
     ```objc
     #import "Notifications.h"
@@ -220,9 +219,9 @@ ms.locfileid: "42918056"
     }];
     ```
 
-    此方法创建一个类别的 **NSMutableArray** 并使用 **Notifications** 类将该列表存储在本地存储区中，将相应的标记注册到通知中心。 更改类别时，使用新类别重新创建注册。
+    此方法创建类别的 `NSMutableArray`，使用 `Notifications` 类将该列表存储在本地存储中，并将相应的标签注册到通知中心。 更改类别时，使用新类别重新创建注册。
 
-3. 在 ViewController.m 中，在 **viewDidLoad**方法中添加以下代码，以根据前面保存的类别来设置用户界面。
+12. 在 `ViewController.m` 中，在 `viewDidLoad` 方法中添加以下代码，以根据前面保存的类别来设置用户界面。
 
     ```objc
     // This updates the UI on startup based on the status of previously saved categories.
@@ -239,11 +238,11 @@ ms.locfileid: "42918056"
     if ([categories containsObject:@"Sports"]) self.SportsSwitch.on = true;
     ```
 
-应用程序现在可以在设备的本地存储区中存储一组类别，每当应用程序启动时，将使用这些类别注册到通知中心。 用户可以在运行时更改选择的类别，并单击 **subscribe** 方法来更新设备注册。 接下来，更新应用，直接从应用本身发送突发新闻通知。
+应用程序现在可以在设备的本地存储区中存储一组类别，每当应用程序启动时，将使用这些类别注册到通知中心。 用户可以在运行时更改选择的类别，并单击 `subscribe` 方法来更新设备注册。 接下来，更新应用，直接从应用本身发送突发新闻通知。
 
 ## <a name="optional-send-tagged-notifications"></a>（可选）发送带标记的通知
 
-如果无权访问 Visual Studio，可以跳到下一部分，并从应用内部发送通知。 还可以在 [Azure 门户]中使用通知中心的调试选项卡发送适当的模板通知。 
+如果无权访问 Visual Studio，可以跳到下一部分，并从应用内部发送通知。 还可以在 [Azure 门户]中使用通知中心的调试选项卡发送适当的模板通知。
 
 [!INCLUDE [notification-hubs-send-categories-template](../../includes/notification-hubs-send-categories-template.md)]
 
@@ -312,7 +311,7 @@ ms.locfileid: "42918056"
     }
     ```
 
-2. 在 `ViewController.m` 中，更新“发送通知”操作（如以下代码所示）。 如此，它会使用各个标记向多个平台分别发送通知。
+2. 在 `ViewController.m` 中更新 `Send Notification` 操作（如以下代码中所示）。 如此，它会使用各个标记向多个平台分别发送通知。
 
     ```objc
     - (IBAction)SendNotificationMessage:(id)sender
@@ -349,23 +348,15 @@ ms.locfileid: "42918056"
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，向注册类别的特定 iOS 设备发送了广播通知。 若要了解如何推送本地化通知，请转到以下教程： 
+在本教程中，向注册类别的特定 iOS 设备发送了广播通知。 若要了解如何推送本地化通知，请转到以下教程：
 
 > [!div class="nextstepaction"]
 >[推送本地化通知](notification-hubs-ios-xplat-localized-apns-push-notification.md)
-
 
 <!-- Images. -->
 [1]: ./media/notification-hubs-ios-send-breaking-news/notification-hub-breakingnews-subscribed.png
 [2]: ./media/notification-hubs-ios-send-breaking-news/notification-hub-breakingnews-ios1.png
 [3]: ./media/notification-hubs-ios-send-breaking-news/notification-hub-breakingnews-ios2.png
-
-
-
-
-
-
-
 
 <!-- URLs. -->
 [How To: Service Bus Notification Hubs (iOS Apps)]: http://msdn.microsoft.com/library/jj927168.aspx

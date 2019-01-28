@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/24/2018
+ms.date: 12/20/2018
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 52051ea221a3d49d86cc6b95e020e1075ce8cba2
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 87331ed0d9e5a4ff51e3669390d1b40dea58574a
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53275544"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54389234"
 ---
 # <a name="locking-down-an-app-service-environment"></a>锁定应用服务环境
 
@@ -33,34 +33,60 @@ ASE 出站依赖项几乎完全是使用 FQDN 定义的，不附带任何静态�
 
 ## <a name="configuring-azure-firewall-with-your-ase"></a>在 ASE 中配置 Azure 防火墙 
 
-使用 Azure 防火墙锁定 ASE 传出流量的步骤如下：
+使用 Azure 防火墙锁定现有 ASE 的传出流量的步骤如下：
 
-1. 在 ASE 所在的或将要放入到的 VNet 中创建 Azure 防火墙。 [Azure 防火墙文档](https://docs.microsoft.com/azure/firewall/)
-2. 在 Azure 防火墙 UI 中，选择“应用服务环境 FQDN 标记”
-3. 使用[应用服务环境管理地址]( https://docs.microsoft.com/azure/app-service/environment/management-addresses)中的管理地址创建一个路由表并添加 Internet 的下一跃点。 需要使用路由表条目来避免非对称路由问题。
-4. 在 IP 地址依赖项中为下面所示的 IP 地址依赖项添加路由，并添加 Internet 的下一跃点。
-5. 将路由添加到 0.0.0.0/0 的路由表并将 Azure 防火墙作为下一跃点。
-6. 为 Azure SQL 和 Azure 存储的 ASE 子网创建服务终结点。
-7. 将创建的路由表分配到 ASE 子网。
+1. 为 ASE 子网中的 SQL、存储和事件中心启用服务终结点。 为此，请转到网络门户 >“子网”，然后从服务终结点下拉列表中选择“Microsoft.EventHub”、“Microsoft.SQL”和“Microsoft.Storage”。 为 Azure SQL 启用服务终结点后，还必须为应用的所有 Azure SQL 依赖项配置服务终结点。 
+
+   ![选择服务终结点][2]
+  
+1. 在 ASE 所在的 VNet 中创建名为 AzureFirewallSubnet 的子网。 遵循 [Azure 防火墙文档](https://docs.microsoft.com/azure/firewall/)中的指导创建 Azure 防火墙。
+1. 在 Azure 防火墙 UI >“规则”>“应用程序规则集合”中，选择“添加应用程序规则集合”。 提供名称、优先级，并设置“允许”。 在“FQDN 标记”部分提供名称，将源地址设置为 *，然后选择“应用服务环境 FQDN 标记”和“Windows 更新”。 
+   
+   ![添加应用程序规则][1]
+   
+1. 在 Azure 防火墙 UI >“规则”>“网络规则集合”中，选择“添加网络规则集合”。 提供名称、优先级，并设置“允许”。 在“规则”部分提供名称，选择“任何”，将源和目标地址设置为 *，将端口设置为 123。 此规则允许系统使用 NTP 执行时钟同步。 以相同的方式针对端口 12000 创建另一个规则，以帮助诊断任何系统问题。
+
+   ![添加 NTP 网络规则][3]
+
+1. 使用[应用服务环境管理地址]( https://docs.microsoft.com/azure/app-service/environment/management-addresses)中的管理地址创建一个路由表并添加 Internet 的下一跃点。 需要使用路由表条目来避免非对称路由问题。 在 IP 地址依赖项中为下面所示的 IP 地址依赖项添加路由，并添加 Internet 的下一跃点。 将虚拟设备路由添加到 0.0.0.0/0 的路由表，并将 Azure 防火墙专用 IP 地址用作下一跃点。 
+
+   ![创建路由表][4]
+   
+1. 将创建的路由表分配到 ASE 子网。
+
+#### <a name="deploying-your-ase-behind-a-firewall"></a>在防火墙后部署 ASE
+
+在防火墙后部署 ASE 的步骤与使用 Azure 防火墙配置现有 ASE 的步骤相同，不过，需要创建 ASE 子网，然后遵循上述步骤。 若要在现有的子网中创建 ASE，需要根据[使用资源管理器模板创建 ASE](https://docs.microsoft.com/azure/app-service/environment/create-from-template) 文档中所述使用资源管理器模板。
 
 ## <a name="application-traffic"></a>应用程序流量 
 
 完成上述步骤后，ASE 可以正常运行。 但仍需根据应用程序的需要配置一些设置。 ASE 中配置了 Azure 防火墙的应用程序存在两个问题。  
 
-- 必须将应用程序依赖项 FQDN 添加到 Azure 防火墙或路由表
-- 必须为流量的来源地址创建路由，以避免非对称路由问题
+- 必须将应用程序依赖项添加到 Azure 防火墙或路由表。 
+- 必须为应用程序流量创建路由，以避免非对称路由问题
 
 如果应用程序有依赖项，则需要将这些依赖项添加到 Azure 防火墙。 创建允许 HTTP/HTTPS 流量的应用程序规则，并针对其他方面的控制创建网络规则。 
 
 如果你知道应用程序请求流量将来自哪个地址范围，则可将该范围添加到要分配给 ASE 子网的路由表。 如果地址范围很大或未指定，则你可以使用应用程序网关等网络设备来提供一个要添加到路由表的地址。 有关在 ILB ASE 中配置应用程序网关的详细信息，请阅读[将 ILB ASE 与应用程序网关集成](https://docs.microsoft.com/azure/app-service/environment/integrate-with-application-gateway)
 
+![使用 Azure 防火墙的 ASE 连接流][5]
 
+使用应用程序网关只是系统配置方法的一个例子。 如果遵循此路径，则需要将路由添加到 ASE 子网路由表，以便发送到应用程序网关的回复流量直接通过该路由传送。 
+
+## <a name="logging"></a>日志记录 
+
+Azure 防火墙可将日志发送到 Azure 存储、事件中心或 Log Analytics。 若要将应用与支持的任何目标相集成，请转到 Azure 防火墙门户 >“诊断日志”，并为所需目标启用日志。 与 Log Analytics 集成后，可以查看已发送到 Azure 防火墙的任何流量的日志。 若要查看被拒绝的流量，请打开 Log Analytics 门户 >“日志”，并输入如下所示的查询 
+
+    AzureDiagnostics | where msg_s contains "Deny" | where TimeGenerated >= ago(1h)
+ 
+首次运行应用程序时，如果你不知道所有的应用程序依赖项，则将 Azure 防火墙与 Log Analytics 集成会很有用。 可以通过[在 Azure Monitor 中分析 Log Analytics 数据](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview)详细了解 Log Analytics
+ 
 ## <a name="dependencies"></a>依赖项
 
-Azure 应用服务有许多的外部依赖项。 这些依赖项可按类别划分为多个主要方面：
+仅当所要配置的防火墙设备不是 Azure 防火墙时，才需要以下信息。 
 
-- 若要锁定出站网络流量，应为支持服务终结点的服务设置服务终结点。
-- IP 地址终结点不是使用域名寻址的。 对于预期所有 HTTPS 流量使用域名的防火墙设备而言，这可能是一个问题。 应将 IP 地址终结点添加到 ASE 子网中设置的路由表。
+- 应在支持服务终结点的服务中配置服务终结点。
+- IP 地址依赖项适用于非 HTTP/S 流量
 - 可将 FQDN HTTP/HTTPS 终结点放在防火墙设备中。
 - 通配符 HTTP/HTTPS 终结点是可以根据许多限定符随 ASE 一起变化的依赖项。 
 - 仅当要在 ASE 中部署 Linux 应用时，才需要考虑 Linux 依赖项。 如果不将 Linux 应用部署到 ASE，则不需要将这些地址添加到防火墙。 
@@ -72,21 +98,16 @@ Azure 应用服务有许多的外部依赖项。 这些依赖项可按类别划�
 |----------|
 | Azure SQL |
 | Azure 存储 |
-| Azure KeyVault |
+| Azure 事件中心 |
 
+#### <a name="ip-address-dependencies"></a>IP 地址依赖项
 
-#### <a name="ip-address-dependencies"></a>IP 地址依赖项 
+| 终结点 | 详细信息 |
+|----------| ----- |
+| \*:123 | NTP 时钟检查。 在端口 123 上的多个终结点中检查流量 |
+| \*:12000 | 此端口用于某些系统监视活动。 如果阻止此端口，则有些问题将难以诊断，但 ASE 会继续运行 |
 
-| 终结点 |
-|----------|
-| 40.77.24.27:443 |
-| 13.82.184.151:443 |
-| 13.68.109.212:443 |
-| 13.90.249.229:443 |
-| 13.91.102.27:443 |
-| 104.45.230.69:443 |
-| 168.62.226.198:12000 |
-
+使用 Azure 防火墙时，将使用 FQDN 标记自动配置以下所有设置。 
 
 #### <a name="fqdn-httphttps-dependencies"></a>FQDN HTTP/HTTPS 依赖项 
 
@@ -116,6 +137,7 @@ Azure 应用服务有许多的外部依赖项。 这些依赖项可按类别划�
 |csc3-2009-2.crl.verisign.com:80 |
 |crl.verisign.com:80 |
 |ocsp.verisign.com:80 |
+|cacerts.digicert.com:80 |
 |azperfcounters1.blob.core.windows.net:443 |
 |azurewatsonanalysis-prod.core.windows.net:443 |
 |global.metrics.nsatc.net:80   |
@@ -132,6 +154,7 @@ Azure 应用服务有许多的外部依赖项。 这些依赖项可按类别划�
 |schemas.microsoft.com:443 |
 |management.core.windows.net:443 |
 |management.core.windows.net:80 |
+|management.azure.com:443 |
 |www.msftconnecttest.com:80 |
 |shavamanifestcdnprod1.azureedge.net:443 |
 |validation-v2.sls.microsoft.com:443 |
@@ -173,3 +196,9 @@ Azure 应用服务有许多的外部依赖项。 这些依赖项可按类别划�
 |packages.treasuredata.com:80|
 |security.ubuntu.com:80 |
 
+<!--Image references-->
+[1]: ./media/firewall-integration/firewall-apprule.png
+[2]: ./media/firewall-integration/firewall-serviceendpoints.png
+[3]: ./media/firewall-integration/firewall-ntprule.png
+[4]: ./media/firewall-integration/firewall-routetable.png
+[5]: ./media/firewall-integration/firewall-topology.png

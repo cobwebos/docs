@@ -2,78 +2,190 @@
 title:Azure AI 库 titleSuffix: Azure 机器学习工作室 description:在 Azure AI 库中共享和发现分析资源以及更多内容。 学习其他人的经验，为社区做出自己的贡献。
 services: machine-learning ms.service: machine-learning ms.component: studio ms.topic: article
 
-author: ericlicoding ms.author: amlstudiodocs ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro ms.date:03/31/2017
+author: ericlicoding ms.author: amlstudiodocs ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro ms.date:01/11/2019
 ---
 # <a name="share-and-discover-resources-in-the-azure-ai-gallery"></a>在 Azure AI 库中共享和发现资源
 
 **[Azure AI 库](http://gallery.cortanaintelligence.com)** 是一个社区驱动的站点，用于发现和共享使用 Azure AI 构建的解决方案。
 该库包含各种可用于开发自己的分析解决方案的资源。
 
-
-
 ## <a name="what-can-i-find-in-the-gallery"></a>可以在库中查找哪些内容？
-Azure AI 库包含各种可用于开发自己的分析解决方案的资源。
 
-* **[试验](gallery-experiments.md)** - 该库包含在 Azure 机器学习工作室中开发的各种试验。 从演示特定机器学习技术的快速概念证明试验，到用于解决复杂机器学习问题的完整开发解决方案，都在这些试验的涵盖范围内。
-* **[Jupyter Notebook](gallery-jupyter-notebooks.md)** - Jupyter Notebook 在单一的交互式画布中包括代码、数据可视化和文档。
-  库中的 Notebook 提供了高级机器学习技术和解决方案的教学课程和详细说明。
+Azure AI 库包含 Microsoft 和数据科学社区成员贡献的多种不同资源。 其中包括：
 
-<!--
-- **[Machine Learning APIs](https://machine-learning-gallery-apis.md)** - An experiment developed in Azure Machine Learning can be launched as a web service so that the analytics model can be accessed by others through a set of REST APIs. A variety of these APIs are available in the Gallery, such as a product recommendation engine or cloud-based face and speech recognition.
--->
+* **试验** - 该库包含在 Azure 机器学习工作室中开发的各种试验。 涵盖了从演示特定机器学习技术的快速概念证明实验，到完全开发的解决复杂机器学习问题的解决方案。
+* **教程** - 可以通过一些教程来了解机器学习技术和概念，或描述解决各种机器学习问题的高级方法。
+* **集合** - 使用集合可将提出特定解决方案或概念的试验、API 以及其他库资源组合在一起。
+* **自定义模块** - 可将自定义模块下载到工作室工作区，以便在自己的试验中使用。
+* **Jupyter Notebook** - Jupyter Notebook 在单一的交互式画布中包括代码、数据可视化和文档。 库中的笔记本提供了有关高级机器学习技术和解决方案的教程和详细说明。
 
-* **[解决方案](gallery-solutions.md)** - 快速从预配置的解决方案、参考体系结构和设计模式构建 Cortana Intelligence 解决方案。 通过使用包含的说明或推荐的合作伙伴，可以将这些解决方案变成自己的解决方案。
-* **[教程](gallery-tutorials.md)** - 你可以通过一些教程来了解机器学习技术和概念，或描述解决各种机器学习问题的高级方法。
+## <a name="discover-and-contribute"></a>发现和参与
 
-按照逻辑，这些基本的库资源可以通过以下两种不同方式组合在一起：
-
-* **[集合](gallery-collections.md)** - 集合允许你将提出特定解决方案或概念的试验、API 以及其他库项组合在一起。
-* **[行业](gallery-industries.md)** - 库中的“行业”部分集合了零售、制造、金融和医疗保健等行业特有的各种资源。
-
-最后，**[竞赛](gallery-competitions.md)** 提供了绝佳机会让你与数据科学家社区竞争，看谁能用 Cortana Intelligence Suite 解决复杂的问题。
-
-![Azure AI 库主页](./media/gallery-how-to-use-contribute-publish/gallery-home-page.png)
-
-## <a name="discover-and-learn"></a>发现和了解
-任何人都可以浏览和搜索已由 Microsoft 和高级分析社区发表的不同类型的资源。
-使用这些内容来开始解决自己的数据分析问题。
-此外可以到机器学习试验室工作区中下载试验和 Jupyter notebook。
+任何人都可以浏览和搜索 Microsoft 与数据科学社区在库中贡献的不同类型的资源。
+使用这些资源可以了解详细信息并开始解决自己的数据分析问题。
 
 可以轻松地在库中找到最近发布的热门资源，或者可以根据名称、标记、算法及其他属性来搜索资源。
 单击库标头中的“**全部浏览**”，并选择页面左边的缩小搜索范围，并在顶端输入搜索字词。
-
-查看特定作者的发表内容，方法是从任何标题内单击作者名称：
-
-![查看作者的发布内容](./media/gallery-how-to-use-contribute-publish/view-by-author.png)
-
+在任何磁贴中单击作者名称可以查看特定作者的贡献内容。
 可以在每个资源页上评论、提供反馈，或者通过评论部分提问。
-甚至可以使用 LinkedIn 或 Twitter 的共享功能将感兴趣的资源与朋友或同事共享。
-还可以通过电子邮件发送这些资源都链接，以邀请其他用户查看这些网页。
+甚至可以使用 LinkedIn 或 Twitter 的共享功能或者通过电子邮件发送链接，将感兴趣的资源与朋友或同事共享。
 
-![与朋友共享此项](./media/gallery-how-to-use-contribute-publish/comment-and-share.png)
+在登录到库时你即会成为库社区的一名成员。 这样就可以下载资源或者贡献自己的库项，使其他人可以从你发现的解决方案中受益。
 
-## <a name="contribute-to-the-gallery"></a>为库作贡献
-在登录到库时你即会成为库社区的一名成员。 这允许提供自己的库项，以便其他人可以从你发现的解决方案中受益。
+可以下载**试验**、**自定义模块**和 **Jupyter Notebook**，以便在开发自己的分析解决方案时使用。
+可以在库中贡献**试验**、**教程**和**集合**。
 
-当其他人在库中浏览你发布的内容时，可以了解内容的查看数和下载数：
+## <a name="download-experiments-modules-notebooks"></a>下载试验、模块和 Notebook
 
-![与朋友共享此项](./media/gallery-how-to-use-contribute-publish/view-and-download-counts.png)
+可将**试验**、**自定义模块**和 **Jupyter Notebook** 下载到自己的机器学习工作室工作区中，以便在开发自己的分析解决方案时使用。
 
-用户还可以添加注释并与数据科学社区的其他成员共享你发布的内容。
-可以登录到类似于 Disqus 的讨论工具，接收通知以了解对你发布的内容所做的注释。
+从 AI 库内部下载资源：
 
-![跟踪用户注释](./media/gallery-how-to-use-contribute-publish/follow-comments.png)
+1. 打开 AI 库中的资源。
+1. 单击“在工作室中打开”。
 
-可以对库中的以下各项做出贡献 - 点击这些链接以了解详细信息：
+![从 AI 库打开项](./media/gallery-how-to-use-contribute-publish/open-experiment-from-gallery.png)
 
-* **[集合](gallery-collections.md#contribute)**
-* **[试验](gallery-experiments.md#contribute)**
-* **[教程](gallery-tutorials.md#contribute)**
+从工作室内部下载资源：
+
+1. 在工作室中选择“新建”。
+1. 选择“模块”、“试验”或“Notebook”。
+1. 通过浏览或搜索找到库资源。
+1. 将鼠标指向资源，然后选择“在工作室中打开”。
+    ![从机器学习工作室内部打开库试验](./media/gallery-how-to-use-contribute-publish/open-experiment-from-studio.png)
+
+在工作区中加载资源后，可以任意对其进行自定义和使用，就如同它是在工作室中创建的一样。
+
+若要使用导入的自定义模块：
+
+1. 创建试验或打开现有的试验。
+1. 若要在工作区中展开自定义模块列表，请在模块面板中选择“自定义”。 模块面板位于实验画布的左侧。
+1. 选择导入的模块，并将其拖到试验中。
+
+## <a name="contribute-experiments"></a>贡献试验
+
+若要演示分析技术或者向其他人提供有关解决方案的快速入门，可以贡献你在工作室中开发的**试验**。
+当其他人在库中浏览你的贡献内容时，你可以跟进贡献内容的查看次数和下载次数。
+用户还可以添加评论并与数据科学社区的其他成员分享你的贡献内容。
+可以登录到 Disqus 等论坛，这样，在有人对你的贡献内容发表评论后，你可以收到通知。
+
+1. 在工作室中打开试验。
+
+1. 在试验画布下面的操作列表中，选择“发布到库”。
+
+1. 在库中，输入描述性的**名称**和**标记**。 突出显示使用过的技术或要解决的实际问题。 描述性实验标题的示例是“二元分类：Twitter 情绪分析”。
+
+1. 在“摘要”框中，输入实验的摘要。 简要描述实验解决的问题以及处理方式。
+
+1. 在“详细说明”框中，介绍实验的各个部分所采取的步骤。 要包括的一些有用主题如下：
+   * 实验图屏幕快照
+   * 数据源和说明
+   * 数据处理
+   * 特性工程
+   * 模型说明
+   * 结果和模型性能的评估
+
+   可将 Markdown 用于格式化说明。 若要在实验发布后查看实验说明页上的条目外观，请选择“预览”。
+
+   > [!TIP]
+   > 为 Markdown 编辑和预览提供的文本框较小。 我们建议在 Markdown 编辑器（例如 [Visual Studio Code](https://aka.ms/vscode)）中编写试验文档，复制该文档，然后将完成的文档粘贴到库的文本框中。
+
+1. 在“图像选择”页上，为实验选择缩略图。 缩略图显示在实验详细信息页的顶部和实验磁贴中。 当其他用户浏览库时，他们将看到缩略图。 可以从计算机中上传图像，或者从库中选择内置图像。
+
+1. 在“设置”页的“可见性”下，选择是公开发布内容（“公开”）还是仅具有该页面链接的人员才可以访问它（“未列出”）。
+
+   > [!TIP]
+   > 如果想要在公开发布文档前先确保它没有问题，可以先将实验发布为“未列出”。 以后可以在实验详细信息页上将可见性设置更改为“公开”。 请注意，将试验设置为“公开”之后，无法将其更改为“未列出”。
+
+1. 要将实验发布到库，请选中“确定”复选标记。
+
+### <a name="update-your-experiment"></a>更新实验
+
+如果需要，可在已发布到库的实验中对工作流（模块、参数等）进行更改。 在机器学习工作室中，可对实验做任何所需的更改，并重新发布。 已发布的实验将随更改进行更新。
+
+可以直接在库中更改实验的以下任何信息：
+
+* 实验名称
+* 摘要或说明
+* 标记
+* 映像
+* 可见性设置（“公开”或“未列出”）
+
+还可以从库中删除实验。
+
+可以在库中进行这些更改，还可以从实验详细信息页或个人资料页中删除实验。
+
+* 在实验详细信息页上，若要更改实验的详细信息，请选择“编辑”。 详细信息页将进入编辑模式。 若要进行更改，请选择实验名称、摘要或标记旁边的“编辑”。 完成更改后，选择“完成”。 若要更改实验的可见性设置（“公开”或“未列出”），或者从库中删除实验，请选择“设置”图标。
+
+* 在个人资料页上，选择实验的向下箭头，并选择“编辑”。 这会转到处于编辑模式的实验的详细信息页。 完成更改后，选择“完成”。 若要从库中删除实验，请选择“删除”。
+
+### <a name="tips-for-documenting-and-publishing-your-experiment"></a>记录和发布实验的提示
+
+* 可以假定读者具有数据科学方面的经验，但使用简单的语言可能会很有帮助。 尽可能详细介绍相关内容。
+* 请提供充分的信息和分步说明，来帮助读者浏览实验。
+* 对于需要正确理解和使用实验文档的读者而言，视觉对象会很有用。 视觉对象包括实验关系图和数据屏幕截图。
+* 如果在试验中包含数据集（即，未通过“导入数据”模块导入数据集），数据集将成为试验的一部分并发布到库中。 确保发布的数据集具有相应的许可条款，以允许任何人共享和下载。 库发表内容均遵循 Azure [使用条款](https://azure.microsoft.com/support/legal/website-terms-of-use/)。
+
+## <a name="contribute-tutorials-and-collections"></a>贡献教程与集合
+
+可以在库中编写介绍机器学习概念的**教程**，或者创建一个可以围绕特定解决方案将多个资源组合到一起的**集合**，来为其他人提供帮助。
+
+1. 使用 Microsoft 帐户登录到库。
+
+1. 选择页面右上角的头像，然后选择你的姓名。
+
+1. 选择“新建项”。
+
+1. 在“说明”页上，为“项类型”选择“教程”或“集合”。 输入名称、简短摘要、详细说明和任何可能有助于其他用户找到贡献内容的标记。 然后单击“下一步”。
+
+1. 在“图像选择”页上，选择随贡献内容一同显示的图像。 可以上传自己的图像文件，或者选择内置图像。 选择可帮助用户识别贡献内容及其用途的图像。 然后单击“下一步”。
+
+1. 在“设置”页上，针对“可见性”选择贡献内容是“公开”（任何人都可以查看）还是“未列出”（只有收到了直接链接的人可以查看）。
+
+   > [!TIP]
+   > 如果想要在公开发布文档前先确保它没有问题，可以先将实验发布为“未列出”。 以后可以在实验详细信息页上将可见性设置更改为“公开”。 请注意，将试验设置为“公开”之后，无法将其更改为“未列出”。
+
+1. 选择“创建”。
+
+贡献内容随即会加入 Azure AI 库中。 贡献内容将在帐户页上的“项”选项卡中列出。
+
+### <a name="add-to-and-edit-your-collection"></a>补充和编辑集合
+
+可通过两种方式将项添加到集合：
+
+* 打开集合，依次选择“编辑”和“添加项”。 可以添加你在库中贡献的项，也可以在库中搜索要添加的项。 选择要添加的项后，单击“添加”。
+
+* 如果在浏览库时找到了要添加的项，请打开该项并选择“添加到集合”。 选择要向其中添加项的收藏。
+
+可以通过选择“编辑”来编辑集合中的项。
+
+* 可以更改集合的摘要、说明或标记。
+* 可以使用项旁边的箭头更改集合中项的顺序。
+* 要向收藏中的项添加备注，则选择项的右上角，并选择“添加/编辑备注”。
+* 若要从集合中删除某个项，请选择该项的右上角，然后选择“删除”。
+
+## <a name="frequently-asked-questions"></a>常见问题
+
+**提交或编辑图像需要满足哪些要求？**
+
+随贡献内容一起提交的图像用于创建磁贴。 我们建议图像应小于 500 KB，纵横比为 3:2，分辨率为 960 x 640。
+
+**在试验中使用的数据集会发生什么情况？数据集是否还会在库中发布？**
+
+如果数据集包含在试验中，并且未通过“导入数据”模块导入，数据集将作为试验的一部分发布到库中。 确保随试验一起发布的数据集具有相应的许可条款。 许可条款应允许任何人共享和下载数据。 库发表内容均遵循 Azure [使用条款](https://azure.microsoft.com/support/legal/website-terms-of-use/)。
+
+**我有一个使用“导入数据”模块从 Azure HDInsight 或 SQL Server 中提取数据的实验。它使用我的凭据来检索数据。是否可以发布这类实验？如何确保我的凭据不共享？**
+
+目前，无法在库中发布使用凭据的试验。
+
+**如何输入多个标记？**
+
+输入标记之后，若要输入其他标记，请按 Tab 键。
 
 ## <a name="we-want-to-hear-from-you"></a>我们希望倾听意见！
+
 我们希望库能由用户驱动并能为用户所用。 使用右侧的笑脸告诉我们你喜欢或不喜欢库。  
 
 ![反馈](./media/gallery-how-to-use-contribute-publish/feedback.png)
 
-**[将我转到库 >>](http://gallery.cortanaintelligence.com)**
-
+**[将我转到库 >>](http://gallery.azure.ai)**

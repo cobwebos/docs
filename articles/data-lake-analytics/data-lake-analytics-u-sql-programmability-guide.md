@@ -9,12 +9,12 @@ ms.reviewer: jasonwhowell
 ms.assetid: 63be271e-7c44-4d19-9897-c2913ee9599d
 ms.topic: conceptual
 ms.date: 06/30/2017
-ms.openlocfilehash: 0fa695218bb1112324ef2ddac80e52f927a5971b
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 9ff75cbd0a4915cdf7045be9a45d11075dda15bd
+ms.sourcegitcommit: c31a2dd686ea1b0824e7e695157adbc219d9074f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43045290"
+ms.lasthandoff: 01/18/2019
+ms.locfileid: "54402313"
 ---
 # <a name="u-sql-programmability-guide"></a>U-SQL 可编程性指南
 
@@ -135,7 +135,7 @@ U-SQL 当前使用 .NET Framework 4.5 版本。 因此请确保自己的程序�
 
 最后请注意，每个 U-SQL 数据库仅可包含任何给定程序集的一个版本。 例如，如果同时需要 NewtonSoft Json.Net 库的版本 7 和版本 8，则需要将它们注册到两个不同的数据库。 此外，每个脚本仅可引用给定程序集 DLL 的一个版本。 在这一方面，U-SQL 遵循 C# 程序集管理和版本控制语义。
 
-## <a name="use-user-defined-functions-udf"></a>使用用户定义的函数 (UDF)
+## <a name="use-user-defined-functions-udf"></a>使用用户定义的函数：UDF
 U-SQL 用户定义的函数或 UDF 是编程例程，可接受参数、执行操作（例如复杂计算）并将操作的结果以值的形式返回。 UDF 的返回值只能是单个标量。 与任何其他 C# 标量函数相似，U-SQL UDF可在 U-SQL 基本脚本中进行调用。
 
 我们建议将 U-SQL 用户定义的函数初始化为**公共**和**静态**。
@@ -426,7 +426,7 @@ OUTPUT @rs2
 
 此示例演示一个更复杂的用例场景，其中将使用代码隐藏部分（应用于整个内存行集）内部的全局变量。
 
-## <a name="use-user-defined-types-udt"></a>使用用户定义的类型 (UDT)
+## <a name="use-user-defined-types-udt"></a>使用用户定义的类型：UDT
 用户定义的类型 (UDT) 是 U-SQL 的另一个可编程性功能。 U-SQL UDT 的作用类似常规 C# 用户定义的类型。 C# 是一种强类型语言，允许使用内置的和自定义的用户定义的类型。
 
 在行集中的顶点之间传递 UDT 时，U-SQL 无法隐式序列化或反序列化任意 UDT。 这意味着，用户必须使用 IFormatter 接口提供显式格式化程序。 这样，就为 U-SQL 提供了针对 UDT 的序列化和反序列化方法。
@@ -504,7 +504,7 @@ SqlUserDefinedType 是 UDT 定义必需的特性。
 
 * SqlUserDefinedTypeAttribute（类型格式化程序）
 
-* 类型格式化程序：定义 UDT 格式化程序所需的参数 -- 具体而言，`IFormatter` 接口的类型必须在此处传递。
+* 类型格式化程序：定义 UDT 格式化程序所需的参数 -- 具体而言，`IFormatter` 接口的类型必须传递到此处。
 
 ```
 [SqlUserDefinedType(typeof(MyTypeFormatter))]
@@ -531,15 +531,15 @@ public class MyTypeFormatter : IFormatter<MyType>
 
 * **反序列化**：对所提供的流上的数据进行反序列化，并重构对象的图形。
 
-* **序列化**：使用所提供流的给定根对对象或对象的图形进行序列化。
+* **序列化**：使用所提供流的给定根对某对象或对象的图形进行序列化。
 
 `MyType` 实例：类型的实例。  
 `IColumnWriter` 写入器/`IColumnReader` 读取器：基础列流。  
-`ISerializationContext` 上下文：用于定义一组标志的枚举，这些标志在序列化期间指定流的源和定义上下文。
+`ISerializationContext` 上下文：用于定义一组标志的枚举，该枚举在序列化期间指定流的源上下文或目标上下文。
 
-* **Intermediate**：指定源或定义上下文不是持久存储区。
+* **中间**：指定源上下文或目标上下文不是持久存储。
 
-* **Persistence**：指定源或定义上下文是持久存储区。
+* **持久性**：指定源上下文或目标上下文是持久存储。
 
 U-SQL UDT 定义是常规 C# 类型，可包括对运算符（如 +/==/!=）的重写。 它还可包括静态方法。 例如，如果将此 UDT 用作 U-SQL MIN 聚合函数的参数，则必须定义 < 运算符重写。
 
@@ -895,7 +895,7 @@ var result = new FiscalPeriod(binaryReader.ReadInt16(), binaryReader.ReadInt16()
 }
 ```
 
-## <a name="use-user-defined-aggregates-udagg"></a>使用用户定义的聚合 (UDAGG)
+## <a name="use-user-defined-aggregates-udagg"></a>使用用户定义的聚合：UDAGG
 用户定义的聚合是非随时随附于 U-SQL 的任何与聚合相关的函数。 示例包括：用于执行自定义数学计算、字符串串联或字符串操作的聚合等。
 
 用户定义的聚合基类定义如下所示：
@@ -945,8 +945,8 @@ public class GuidAggregate : IAggregate<string, string, string>
 public abstract class IAggregate<T1, T2, TResult> : IAggregate
 ```
 
-* T1：Accumulate 的第一个参数
-* T2：Accumulate 的第二个参数
+* T1：传递到 Accumulate 的第一个参数
+* T2：传递到 Accumulate 的第一个参数
 * TResult：Terminate 的返回类型
 
 例如：
@@ -1025,7 +1025,7 @@ OUTPUT @rs1 TO @output_file USING Outputters.Text();
 
 在此用例场景中，将串联特定用户的类 GUID。
 
-## <a name="use-user-defined-objects-udo"></a>使用用户定义的对象 (UDO)
+## <a name="use-user-defined-objects-udo"></a>使用用户定义的对象：UDO
 U-SQL 可让你定义自定义可编程性对象，此类对象称为用户定义的对象 (UDO)。
 
 下面是 U-SQL 中的 UDO 列表：
@@ -1221,7 +1221,7 @@ OUTPUT @rs0 TO @output_file USING Outputters.Text();
 
 * *Outputters.Text()*：将数据写入不同编码的分隔文本文件中。
 * *Outputters.Csv()*：将数据写入不同编码的逗号分隔值 (CSV) 文件中。
-* *Outputters.Tsv()*：将数据写入不同编码的制表符分隔值 (TSV) 文件中。
+* *Outputters.Tsv()*：将数据写入不同编码的制表符分隔值 (CSV) 文件中。
 
 自定义输出器允许以自定义格式编写数据。 这有助于完成以下任务：
 
@@ -1300,7 +1300,7 @@ string val = row.Get<string>(col.Name)
 
 使用此方法可为任何元数据架构构建灵活的输出器。
 
-使用 `System.IO.StreamWriter` 将输出数据写入文件。 流参数设置为 `output.BaseStrea`（作为 `IUnstructuredWriter output` 的一部分）。
+使用 `System.IO.StreamWriter` 将输出数据写入文件。 流参数设置为 `output.BaseStream`（作为 `IUnstructuredWriter output` 的一部分）。
 
 每次行迭代后，必须将数据缓冲区刷新到文件中。 此外，在默认启用 Disposable 属性并使用 **using** 关键字的情况下，必须使用 `StreamWriter` 对象：
 
@@ -1775,7 +1775,7 @@ OUTPUT @rs1 TO @output_file USING Outputters.Text();
 
 ```
 103 Z1AB2CD123XY45889   Ford,Explorer,2005,SUV,152345
-303 Y0AB2CD34XY458890   Shevrolet,Cruise,2010,4Dr,32455
+303 Y0AB2CD34XY458890   Chevrolet,Cruise,2010,4Dr,32455
 210 X5AB2CD45XY458893   Nissan,Altima,2011,4Dr,74000
 ```
 

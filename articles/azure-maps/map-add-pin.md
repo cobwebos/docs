@@ -1,82 +1,74 @@
 ---
-title: 使用 Azure Maps 添加符号和标记 | Microsoft Docs
-description: 如何将符号和标记添加到 Javascript 地图
-author: walsehgal
-ms.author: v-musehg
-ms.date: 10/30/2018
+title: 将符号层添加到 Azure Maps | Microsoft Docs
+description: 如何将符号添加到 Javascript 地图
+author: rbrundritt
+ms.author: richbrun
+ms.date: 12/2/2018
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: c56ac35f49c364b7b0f2ad26b82b178411419414
-ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
+ms.openlocfilehash: 718a679418790a6bf1207a96e5c204f7962de239
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52282679"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54411248"
 ---
-# <a name="add-symbols-and-markers-to-a-map"></a>将符号和标记添加到地图
+# <a name="add-a-symbol-layer-to-a-map"></a>将符号层添加到地图
 
-本文介绍如何使用数据源将符号和标记添加到地图。
+本文介绍如何将数据源中的点数据呈现为地图上的符号层。 符号层是使用 WebGL 呈现的，与 HTML 标记相比，它支持的数据点数目大幅增加，但它不支持使用传统的 CSS 和 HTML 元素来设置样式。  
 
-## <a name="add-a-symbol-marker"></a>添加符号标记
+> [!TIP]
+> 默认情况下，符号层将呈现数据源中所有几何图形的坐标。 若要限制层以便仅呈现点几何图形功能，请将层的 `filter` 属性设置为 `['==', '$type', 'Point']`
+
+## <a name="add-a-symbol-layer"></a>添加符号层
 
 <iframe height='500' scrolling='no' title='切换图钉位置' src='//codepen.io/azuremaps/embed/ZqJjRP/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>请参阅 <a href='https://codepen.io'>CodePen</a> 上的通过 Azure Maps <a href='https://codepen.io/azuremaps/pen/ZqJjRP/'>切换图钉位置</a> (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 文章。
 </iframe>
 
 上述第一个代码块构造 Map 对象。 有关说明，可以参阅[创建地图](./map-create.md)。
 
-在第二个代码块中，使用 [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) 类创建了一个数据源对象。 然后创建一个点并将其添加到数据源。 点是 [Point](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.point?view=azure-iot-typescript-latest) 类的[特征](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.feature?view=azure-iot-typescript-latest)。
+在第二个代码块中，使用 [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) 类创建了一个数据源对象。 包含[点](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.point?view=azure-iot-typescript-latest)几何图形的 [特征] 由 [Shape](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.shape?view=azure-iot-typescript-latest) 类包装（因此更容易更新），并在创建后添加到数据源。
 
-第三个代码块创建[事件侦听器](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events)，并在单击鼠标时使用 shape 类的 [setCoordinates](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.shape?view=azure-iot-typescript-latest#setcoordinates) 方法更新点的坐标。
+第三个代码块创建[事件侦听器](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events)，并在单击鼠标时使用 shape 类的 [setCoordinates](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.shape?view=azure-iot-typescript-latest) 方法更新点的坐标。
 
 某个[符号层](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.symbollayer?view=azure-iot-typescript-latest)使用文本或图标来呈现作为符号包装在地图上 [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) 中的基于点的数据。  在[事件侦听器](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events)函数中创建数据源、点击事件侦听器和符号层并将其添加到地图，以确保完全加载地图后显示该点。
 
-## <a name="add-a-custom-symbol"></a>添加自定义符号
+## <a name="add-a-custom-icon-to-a-symbol-layer"></a>将自定义图标添加到符号层
 
-<iframe height='500' scrolling='no' title='HTML DataSource' src='//codepen.io/azuremaps/embed/qJVgMx/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>请参阅 <a href='https://codepen.io'>CodePen</a> 上的 Azure Maps <a href='https://codepen.io/azuremaps/pen/qJVgMx/'>HTML DataSource</a> (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 文章。
+符号层是使用 WebGL 呈现的。 因此，所有资源（例如图标图像）必须载入 WebGL 上下文。 本示例演示如何将自定义符号图标添加到地图资源，然后结合地图上的自定义符号使用此图标来呈现点数据。 符号层的 `textField` 属性要求指定一个表达式。 在本例中，我们希望以文本值的形式呈现点特征的温度属性。 可以使用表达式 `['get', 'temperature']` 来实现此目的。 
+
+<br/>
+
+<iframe height='500' scrolling='no' title='自定义符号图像图标' src='//codepen.io/azuremaps/embed/WYWRWZ/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>请参阅 <a href='https://codepen.io'>CodePen</a> 上的 Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) <a href='https://codepen.io/azuremaps/pen/WYWRWZ/'>自定义符号图像图标</a>文章。
 </iframe>
 
-在上面的代码中，第一个代码块构造地图对象。 有关说明，可以参阅[创建地图](./map-create.md)。
+## <a name="customize-a-symbol-layer"></a>自定义符号层 
 
-第二个代码块使用 [Map](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) 类的 [markers](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#markers) 属性将 [HtmlMarker](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.htmlmarker?view=azure-iot-typescript-latest) 添加到地图。 [事件侦听器](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events)函数中的 HtmlMarker 将添加到地图，以确保完全加载地图后会显示它。
+符号层有许多样式选项。 以下工具可以测试各种样式选项。
 
-## <a name="add-bubble-markers"></a>添加气泡标记
+<br/>
 
-<iframe height='500' scrolling='no' title='BubbleLayer DataSource' src='//codepen.io/azuremaps/embed/mzqaKB/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>请参阅 <a href='https://codepen.io'>CodePen</a> 上的 Azure Maps <a href='https://codepen.io/azuremaps/pen/mzqaKB/'>BubbleLayer DataSource</a> (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 文章。
+<iframe height='700' scrolling='no' title='符号层选项' src='//codepen.io/azuremaps/embed/PxVXje/?height=700&theme-id=0&default-tab=result' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>请参阅 <a href='https://codepen.io'>CodePen</a> 上的 Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) <a href='https://codepen.io/azuremaps/pen/PxVXje/'>符号层选项</a>文章。
 </iframe>
-
-在上面的代码中，第一个代码块构造 Map 对象。 有关说明，可以参阅[创建地图](./map-create.md)。
-
-在第二个代码块中，定义了位置数组并创建了 [MultiPoint](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.multipoint?view=azure-iot-typescript-latest) 对象。 然后，使用 [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) 类创建数据源对象，并将 MultiPoint 对象添加到数据源。
-
-[气泡层](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.bubblelayer?view=azure-iot-typescript-latest)呈现作为圆包装在地图上[数据源](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest)中的基于点的数据。 最后一个代码块创建气泡层并将其添加到地图。 请在 [BubblerLayerOptions](/javascript/api/azure-maps-control/atlas.bubblelayeroptions) 中查看气泡层的属性。
-
-在[事件侦听器](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events)函数中创建 MultiPoint 对象、数据源和气泡层并将其添加到地图，以确保完全加载地图后显示该圆。
-
-## <a name="add-bubble-markers-with-label"></a>添加带标签的气泡标记
-
-<iframe height='500' scrolling='no' title='MultiLayer DataSource' src='//codepen.io/azuremaps/embed/rqbQXy/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>请参阅 <a href='https://codepen.io'>CodePen</a> 上的 Azure Maps <a href='https://codepen.io/azuremaps/pen/rqbQXy/'>MultiLayer DataSource</a> (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 文章。
-</iframe>
-
-上面的代码演示了如何在地图上可视化和标记数据。 上述第一个代码块构造 map 对象。 有关说明，可以参阅[创建地图](./map-create.md)。
-
-第二个代码块创建 [point](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.point?view=azure-iot-typescript-latest) 对象。 然后，使用 [datasource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) 类创建数据源对象，并将点添加到该数据源。
-
-[气泡层](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.bubblelayer?view=azure-iot-typescript-latest)呈现作为圆包装在地图上[数据源](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest)中的基于点的数据。 第三个代码块创建气泡层并将其添加到地图。 请在 [BubblerLayerOptions](/javascript/api/azure-maps-control/atlas.bubblelayeroptions) 中查看气泡层的属性。
-
-某个[符号层](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.symbollayer?view=azure-iot-typescript-latest)使用文本或图标来呈现作为符号包装在地图上 [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) 中的基于点的数据。 最后一个代码块创建符号层并将其添加到地图，用于呈现气泡的文本标签。 请在 [SymbolLayerOptions](/javascript/api/azure-maps-control/atlas.symbollayeroptions) 中参阅符号层的属性。
-
-在[事件侦听器](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events)函数中创建数据源和层并将其添加到地图，以确保完全加载地图后显示该数据。
-
 
 ## <a name="next-steps"></a>后续步骤
 
 详细了解本文中使用的类和方法：
 
 > [!div class="nextstepaction"]
-> [Map](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)
+> [SymbolLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.symbollayer?view=azure-iot-typescript-latest)
+
+> [!div class="nextstepaction"]
+> [SymbolLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.symbollayeroptions?view=azure-iot-typescript-latest)
+
+> [!div class="nextstepaction"]
+> [IconOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.iconoptions?view=azure-iot-typescript-latest)
+
+> [!div class="nextstepaction"]
+> [TexTOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.textoptions?view=azure-iot-typescript-latest)
 
 有关可向地图添加的更多代码示例，请参阅以下文章：
 
@@ -85,3 +77,9 @@ ms.locfileid: "52282679"
 
 > [!div class="nextstepaction"]
 > [添加形状](./map-add-shape.md)
+
+> [!div class="nextstepaction"]
+> [添加气泡层](./map-add-bubble-layer.md)
+
+> [!div class="nextstepaction"]
+> [添加 HTML 标记](./map-add-bubble-layer.md)

@@ -3,19 +3,19 @@ title: 使用 Azure Active Directory 创建可复原的访问控制管理策略
 description: 本文档为组织提供了策略方面的指导，组织可采用这些策略来提供复原能力，以降低意外中断期间的锁定风险
 services: active-directory
 author: martincoetzer
-manager: mtillman
+manager: daveba
 tags: azuread
 ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 12/19/2018
 ms.author: martincoetzer
-ms.openlocfilehash: caabc5a396c015b806778bfc5887b0708897101e
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 9e13b8872fab89bef6ec952fe2ee0b901a25092e
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54101915"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54452541"
 ---
 # <a name="create-a-resilient-access-control-management-strategy-with-azure-active-directory"></a>使用 Azure Active Directory 创建可复原的访问控制管理策略
 
@@ -119,30 +119,48 @@ ms.locfileid: "54101915"
 * 如果未达到某个身份验证级别，则使用可限制应用内访问权限的策略，而不是简单地回退到完全访问权限。 例如：
   * 配置一个将受限会话声明发送到 Exchange 和 SharePoint 的备用策略。
   * 如果组织使用 Microsoft Cloud App Security，请考虑回退到使用 MCAS 的策略，MCAS 允许只读访问但不允许上传。
+* 请将策略命名，以确保在中断期间能够轻松找到它们。 在策略名称中包含以下元素：
+  * 策略的标签编号。
+  * 要显示的文本。此策略仅用于紧急情况。 例如：“在紧急情况下启用”
+  * 策略应用到的中断。 例如：“MFA 中断期间”
+  * 一个序号，用于指示策略的激活顺序。
+  * 策略应用到的应用。
+  * 策略应用到的控制措施。
+  * 策略要求满足的条件。
+  
+应变策略的此命名标准如下： 
 
-以下示例：**示例 A - 用于恢复对任务关键型协作应用的访问权限的应急 CA 策略**是一种典型的公司应急策略。 在此场景中，组织通常要求对所有 Exchange Online 和 SharePoint Online 访问执行 MFA，此示例中的中断是指客户的 MFA 提供程序发生中断（无论是 Azure MFA、本地 MFA 提供程序还是第三方 MFA）。 此策略仅在特定目标用户从受信任的公司网络访问应用时才允许其从受信任的 Windows 设备访问这些应用，从而缓解此中断带来的影响。 它还将紧急帐户和核心管理员排除在这些限制之外。 此示例需要一个名为 **CorpNetwork** 的网络位置和一个包含目标用户的安全组 **ContingencyAccess**，一个包含核心管理员的名为 **CoreAdmins** 的组，以及一个包含紧急访问帐户的名为 **EmergencyAccess** 的组。 该应急策略需要四个策略来提供所需的访问权限。
+`
+EMnnn - ENABLE IN EMERGENCY: [Disruption][i/n] - [Apps] - [Controls] [Conditions]
+`
+
+以下示例：**示例 A - 用于恢复对任务关键型协作应用的访问权限的应急 CA 策略**是一种典型的公司应急策略。 在此场景中，组织通常要求对所有 Exchange Online 和 SharePoint Online 访问执行 MFA，此示例中的中断是指客户的 MFA 提供程序发生中断（无论是 Azure MFA、本地 MFA 提供程序还是第三方 MFA）。 此策略仅在特定目标用户从受信任的公司网络访问应用时才允许其从受信任的 Windows 设备访问这些应用，从而缓解此中断带来的影响。 它还将紧急帐户和核心管理员排除在这些限制之外。 然后，目标用户将会获取 Exchange Online 和 SharePoint Online 的访问权限，而其他用户仍由于服务中断而无法访问应用。 此示例需要一个名为 **CorpNetwork** 的网络位置和一个包含目标用户的安全组 **ContingencyAccess**，一个包含核心管理员的名为 **CoreAdmins** 的组，以及一个包含紧急访问帐户的名为 **EmergencyAccess** 的组。 该应急策略需要四个策略来提供所需的访问权限。 
 
 **示例 A - 用于恢复对任务关键型协作应用的访问权限的应急 CA 策略：**
 
 * 策略 1：要求从已加入域的设备访问 Exchange 和 SharePoint
+  * 姓名：EM001 - 在紧急情况下启用：MFA 中断 [1/4] - Exchange SharePoint - 要求执行混合 Azure AD 加入
   * 用户和组：包括 ContingencyAccess。 排除 CoreAdmins 和 EmergencyAccess
   * 云应用：Exchange Online 和 SharePoint Online
   * 条件：任意
   * 授予控制权：要求已加入域
   * 状态：已禁用
 * 策略 2：阻止 Windows 以外的平台
+  * 姓名：EM002 - 在紧急情况下启用：MFA 中断 [2/4] - Exchange SharePoint - 阻止非 Windows 访问
   * 用户和组：包括所有用户。 排除 CoreAdmins 和 EmergencyAccess
   * 云应用：Exchange Online 和 SharePoint Online
   * 条件：设备平台包括所有平台，不包括 Windows
   * 授予控制权：街区
   * 状态：已禁用
 * 策略 3：阻止 CorpNetwork 以外的网络
+  * 姓名：EM003 - 在紧急情况下启用：MFA 中断 [3/4] - Exchange SharePoint - 阻止非企业网络的访问
   * 用户和组：包括所有用户。 排除 CoreAdmins 和 EmergencyAccess
   * 云应用：Exchange Online 和 SharePoint Online
   * 条件：位置包括任意位置，不包括 CorpNetwork
   * 授予控制权：街区
   * 状态：已禁用
 * 策略 4：显式阻止 EAS
+  * 姓名：EM004 - 在紧急情况下启用：MFA 中断 [4/4] - Exchange - 阻止所有用户的 EAS
   * 用户和组：包括所有用户
   * 云应用：包括 Exchange Online
   * 条件：客户端应用：Exchange ActiveSync
@@ -163,12 +181,14 @@ ms.locfileid: "54101915"
 **示例 B - 应急 CA 策略：**
 
 * 策略 1：阻止不属于 SalesContingency 团队的所有人员
+  * 姓名：EM001 - 在紧急情况下启用：设备合规性中断 [1/2] - Salesforce - 阻止除 SalesforceContingency 以外的所有用户
   * 用户和组：包括所有用户。 排除 SalesAdmins 和 SalesforceContingency
   * 云应用：Salesforce。
   * 条件：无
   * 授予控制权：街区
   * 状态：已禁用
 * 策略 2：阻止销售团队从移动设备以外的任何平台进行访问（以缩小受攻击面）
+  * 姓名：EM002 - 在紧急情况下启用：设备合规性中断 [2/2] - Salesforce - 阻止除 iOS 和 Android 以外的所有平台
   * 用户和组：包括 SalesforceContingency。 排除 SalesAdmins
   * 云应用：Salesforce
   * 条件：设备平台包括所有平台，不包括 iOS 和 Android
@@ -179,7 +199,7 @@ ms.locfileid: "54101915"
 
 1. 从 Salesforce 的现有设备符合性策略中排除 SalesAdmins 和 SalesforceContingency。 确保 SalesforceContingency 组中的用户能够访问 Salesforce。
 2. 启用策略 1：确保 SalesContingency 外部的用户无法访问 Salesforce。 确保 SalesAdmins 和 SalesforceContingency 中的用户能够访问 Salesforce。
-3. 启用策略 2：确保 SalesContigency 组中的用户无法从其 Windows/Mac 笔记本电脑访问 Salesforce，但仍可以从其移动设备访问。 确保 SalesAdmin 仍可以从任意设备访问 Salesforce。
+3. 启用策略 2：确保 SalesContingency 组中的用户无法从其 Windows/Mac 笔记本电脑访问 Salesforce，但仍可以从其移动设备访问。 确保 SalesAdmin 仍可以从任意设备访问 Salesforce。
 4. 禁用 Salesforce 的现有设备符合性策略。
 
 ### <a name="deploy-password-hash-sync-even-if-you-are-federated-or-use-pass-through-authentication"></a>即使你是联合用户或使用直通身份验证，也可以部署密码哈希同步
@@ -215,14 +235,14 @@ ms.locfileid: "54101915"
 
 ## <a name="after-a-disruption"></a>中断后
 
-一旦还原了导致中断的服务，就必须撤消作为已激活的应急计划的一部分所做的更改。 
+还原导致中断的服务后，请撤消作为已激活的应变计划的一部分所做的更改。 
 
 1. 启用常规策略
 2. 禁用应急策略。 
 3. 回滚在中断期间所做的并进行了记录的任何其他更改。
 4. 如果使用了紧急访问帐户，请记住重新生成凭据并以物理方式保护新凭据的详细信息，以作为紧急访问帐户过程的一部分。
 5. 继续对中断后就可疑活动[报告的所有风险事件进行会审](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-sign-ins)。
-6. 撤销[使用 PowerShell](https://docs.microsoft.com/powershell/module/azuread/revoke-azureaduserallrefreshtoken?view=azureadps-2.0) 针对一组用户颁发的所有刷新令牌。 撤销所有刷新令牌对于在中断期间使用的特权帐户特别重要，这样做将迫使它们重新进行身份验证并满足已还原策略的控制要求。
+6. 撤销[使用 PowerShell](https://docs.microsoft.com/powershell/module/azuread/revoke-azureaduserallrefreshtoken?view=azureadps-2.0) 针对一组用户颁发的所有刷新令牌。 撤销所有刷新令牌对于在中断期间使用的特权帐户非常重要，这样做将迫使它们重新进行身份验证并满足已还原策略的控制要求。
 
 ## <a name="emergency-options"></a>紧急选项
 
