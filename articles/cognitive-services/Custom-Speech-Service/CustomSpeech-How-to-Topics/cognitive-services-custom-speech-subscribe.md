@@ -1,4 +1,4 @@
----
+﻿---
 title: 获取 Azure 上自定义语音服务的订阅密钥 | Microsoft Docs
 description: 了解如何获取调用认知服务中自定义语音服务所需的订阅密钥。
 services: cognitive-services
