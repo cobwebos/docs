@@ -35,7 +35,10 @@
 #### [通过 Microsoft 促进业务发展](./gtm-promote-your-business.md)
 #### [首选解决方案](./preferred-solutions.md) 
 
-### [对 Azure 市场和 AppSource 的支持](./support-azure-marketplace.md)  
+### [对 Azure 市场和 AppSource 的支持](./support-azure-marketplace.md)
+#### [市场常见问题解答](./marketplace-faq-publisher-guide.md)
+#### [市场条款](./marketplace-terms.md)
+#### [市场参与策略](./marketplace-participation-policy.md)
 
 
 <!-- Following section is for Cloud Partner Portal (CPP). -->
@@ -151,7 +154,6 @@
 #### [发布产品/服务](./cloud-partner-portal/saas-app/cpp-publish-offer.md)
 #### [更新现有产品/服务](./cloud-partner-portal/saas-app/cpp-update-existing-offer.md)
 #### [SaaS API](./cloud-partner-portal-orig/cloud-partner-portal-saas-subscription-apis.md)
-#### [SaaS 自测试客户端](./cloud-partner-portal/saas-app/cpp-selftest-client.md)
 
 ### [虚拟机产品/服务](./cloud-partner-portal/virtual-machine/cpp-virtual-machine-offer.md)
 #### [先决条件](./cloud-partner-portal/virtual-machine/cpp-prerequisites.md)
@@ -176,6 +178,7 @@
 ###### [VHD 部署模板](./cloud-partner-portal/virtual-machine/cpp-deploy-json-template.md)
 ###### [从市场部署 VM](./cloud-partner-portal/virtual-machine/cpp-deploy-vm-marketplace.md)
 ##### [认证 VM 映像](./cloud-partner-portal/virtual-machine/cpp-certify-vm.md)
+##### [VM 自测试客户端](./cloud-partner-portal/virtual-machine/cpp-selftest-client.md)
 ##### [获取 SAS URI](./cloud-partner-portal/virtual-machine/cpp-get-sas-uri.md)
 ##### [常见 SAS URL 问题](./cloud-partner-portal/virtual-machine/cpp-common-sas-url-issues.md)
 #### [发布 VM 产品/服务](./cloud-partner-portal/virtual-machine/cpp-publish-offer.md)

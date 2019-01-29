@@ -9,6 +9,8 @@ items:
     href: sql-database-paas-vs-sql-server-iaas.md
 - name: 快速入门
   items:
+  - name: 单一数据库快速入门指南
+    href: sql-database-quickstart-guide.md
   - name: 托管实例快速入门指南
     href: sql-database-managed-instance-quickstart-guide.md
   - name: 创建
@@ -121,7 +123,7 @@ items:
     items:
     - name: 单个数据库概述
       href: sql-database-single-index.yml
-    - name: 创建和管理
+    - name: 管理 API 参考
       href: sql-database-single-databases-manage.md
     - name: 逻辑服务器
       items:
@@ -131,8 +133,6 @@ items:
         href: sql-database-resource-limits-logical-server.md
       - name: 连接体系结构
         href: sql-database-connectivity-architecture.md
-      - name: T-SQL 的差异
-        href: sql-database-transact-sql-information.md
     - name: 弹性池
       items:
       - name: 弹性池
@@ -151,6 +151,8 @@ items:
       href: sql-database-dtu-resource-limits-single-databases.md
     - name: 缩放资源
       href: sql-database-single-database-scale.md
+    - name: T-SQL 的差异
+      href: sql-database-transact-sql-information.md
   - name: 托管实例
     items:
     - name: 托管实例概述
@@ -690,9 +692,9 @@ items:
       href: sql-database-elastic-jobs-getting-started.md
     - name: 卸载弹性作业（已弃用）
       href: sql-database-elastic-jobs-uninstall.md
-ms.openlocfilehash: a991b2f6a7ac90d38c653b4daf12948b1b800638
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: 7d7e85b3a7934b03395960d5dcbdc1141f0effd8
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55078196"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55101085"

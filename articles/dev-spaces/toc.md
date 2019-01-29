@@ -28,6 +28,7 @@
 ### [使用自定义 NuGet 源](how-to/use-custom-nuget-feed.md)
 ### [将 kubectl 与 Azure Dev Spaces 配合使用](how-to/use-kubectl-with-azure-dev-spaces.md)
 ### [升级 Azure Dev Spaces 工具](how-to/upgrade-tools.md)
+### [Azure Dev Spaces 的业务连续性和灾难恢复](how-to/dev-spaces-business-continuity.md)
 
 ## [故障排除](troubleshooting.md)
 

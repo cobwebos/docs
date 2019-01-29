@@ -10,15 +10,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/25/2018
+ms.date: 01/25/2019
 ms.author: mabrigg
 ms.reviewer: hectorl
-ms.openlocfilehash: 4cb8ffe218ef1cd64b93201eddbbd09bb16026db
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.openlocfilehash: 477d0bcebf8f699c49e0cf769a54ef3ae52a3a76
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50087383"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55096019"
 ---
 # <a name="backup-and-data-recovery-for-azure-stack-with-the-infrastructure-backup-service"></a>使用基础结构备份服务对 Azure Stack 进行备份和数据恢复
 
@@ -37,7 +37,7 @@ ms.locfileid: "50087383"
 
 这些服务包含以下功能。
 
-| 功能                                            | 说明                                                                                                                                                |
+| Feature                                            | 描述                                                                                                                                                |
 |----------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | 备份基础结构服务                     | 协调 Azure Stack 中基础结构服务的一个子集的备份。 如果发生灾难，可以在重新部署过程中还原数据。 |
 | 压缩和加密导出的备份数据 | 将备份数据导出到管理员提供的外部存储位置之前，系统会对其进行压缩和加密。                |
