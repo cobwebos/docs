@@ -15,12 +15,12 @@ ms.topic: get-started-article
 ms.date: 12/10/2018
 ms.author: sethm
 ms.reviewer: unknown
-ms.openlocfilehash: 0fcdb2324868528e62e69fa0ce24ab2334052ced
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: 186e5ed062be8210f4efa0bdaf134f3af51d268b
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54245406"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55094124"
 ---
 # <a name="download-marketplace-items-from-azure-to-azure-stack"></a>将市场项从 Azure 下载到 Azure Stack
 
@@ -90,7 +90,7 @@ Azure Stack 部署必须已建立 Internet 连接，并且[已注册到 Azure](a
 
 - 在执行第一个过程期间，将下载市场联合工具。 
 
-- 你可以安装[AzCopy](../storage/common/storage-use-azcopy.md)最佳下载性能，但这不是必需。
+- 可以安装 [AzCopy](../storage/common/storage-use-azcopy.md) 以获得最佳下载性能，但此工具不是必需的。
 
 ### <a name="use-the-marketplace-syndication-tool-to-download-marketplace-items"></a>使用市场联合工具下载市场项
 
@@ -143,35 +143,35 @@ Azure Stack 部署必须已建立 Internet 连接，并且[已注册到 Azure](a
 
 9. 所需的下载时间取决于项的大小。 下载完成后，该项会出现在脚本中指定的文件夹内。 下载内容中包括一个 VHD 文件（适用于虚拟机）或 .zip 文件（适用于虚拟机扩展）。 其中还可能包含一个 *.azpkg* 格式的库包（只是一个 .zip 文件）。
 
-10. 如果下载失败，则可以再次尝试通过重新运行以下 PowerShell cmdlet:
+10. 如果下载失败，可以重新运行以下 PowerShell cmdlet 来重试下载：
 
     ```powershell
     Export-AzSOfflineMarketplaceItem -Destination "Destination folder path in quotes”
     ```
 
-    然后重试，删除在其中下载失败的产品文件夹。 例如，如果时下载到下载脚本失败`D:\downloadFolder\microsoft.customscriptextension-arm-1.9.1`，删除`D:\downloadFolder\microsoft.customscriptextension-arm-1.9.1`文件夹，然后重新运行该 cmdlet。
+    重试之前，请删除发生下载失败的产品文件夹。 例如，如果下载脚本在下载到 `D:\downloadFolder\microsoft.customscriptextension-arm-1.9.1` 时失败，请删除 `D:\downloadFolder\microsoft.customscriptextension-arm-1.9.1` 文件夹，然后重新运行该 cmdlet。
  
-### <a name="import-the-download-and-publish-to-azure-stack-marketplace-1811-and-higher"></a>导入下载和发布到 Azure Stack Marketplace （1811年和更高版本）
+### <a name="import-the-download-and-publish-to-azure-stack-marketplace-1811-and-higher"></a>导入下载内容并发布到 Azure Stack 市场（1811 和更高版本）
 
-1. 必须将移动的文件[以前下载的](#use-the-marketplace-syndication-tool-to-download-marketplace-items)本地，以便它们可供 Azure Stack 环境。 Marketplace 联合工具也必须可供 Azure Stack 环境，因为您需要使用该工具来执行导入操作。
+1. 必须在本地移动[以前下载](#use-the-marketplace-syndication-tool-to-download-marketplace-items)的文件，使其可供 Azure Stack 环境使用。 市场联合工具也必须可供 Azure Stack 环境使用，因为你需要使用该工具来执行导入操作。
 
-   下图显示了一个文件夹结构的示例。 `D:\downloadfolder` 包含所有已下载的 marketplace 项。 每个子文件夹是 marketplace 项 (例如， `microsoft.custom-script-linux-arm-2.0.3`)、 命名的产品 id。 每个子文件夹内是 marketplace 项下载的内容。
+   下图显示了文件夹结构示例。 `D:\downloadfolder` 包含所有已下载的市场项。 每个子文件夹是一个市场项（例如 `microsoft.custom-script-linux-arm-2.0.3`），按产品 ID 命名。 每个子文件夹包含市场项的下载内容。
 
-   [ ![Marketplace 下载目录结构](media/azure-stack-download-azure-marketplace-item/mp1sm.png "Marketplace 下载目录结构") ](media/azure-stack-download-azure-marketplace-item/mp1.png#lightbox)
+   [![市场下载目录结构](media/azure-stack-download-azure-marketplace-item/mp1sm.png "市场下载目录结构")](media/azure-stack-download-azure-marketplace-item/mp1.png#lightbox)
 
-2. 按照中的说明[这篇文章](azure-stack-powershell-configure-admin.md)若要配置 Azure Stack 操作员的 PowerShell 会话。 
+2. 遵照[此文](azure-stack-powershell-configure-admin.md)中的说明配置 Azure Stack 操作员 PowerShell 会话。 
 
-3. 导入联合模块，然后通过运行以下脚本来启动 marketplace 联合工具：
+3. 导入联合模块，然后运行以下脚本来启动市场联合工具：
 
    ```PowerShell
    $credential = Get-Credential -Message "Enter the azure stack operator credential:"
    Import-AzSOfflineMarketplaceItem -origin "marketplace content folder" -armendpoint "Environment Arm Endpoint" -AzsCredential $credential
    ```
-   `-AzsCredential` 参数是可选的。 它用于续订访问令牌，如果它已过期。 如果`-AzsCredential`未指定参数和令牌过期，则收到输入操作员凭据的提示。
+   `-AzsCredential` 参数是可选的。 该参数用于续订访问令牌（如果已过期）。 如果未指定 `-AzsCredential` 参数且令牌已过期，则你会收到输入操作员凭据的提示。
 
-4. 已成功完成脚本后，该项应在 Azure Stack Marketplace 中可用。
+4. 成功完成该脚本后，Azure Stack 市场中应会提供该项。
 
-### <a name="import-the-download-and-publish-to-azure-stack-marketplace-1809-and-lower"></a>导入下载和发布到 Azure Stack Marketplace （1809年和较低）
+### <a name="import-the-download-and-publish-to-azure-stack-marketplace-1809-and-lower"></a>导入下载内容并发布到 Azure Stack 市场（1809 和更低版本）
 
 1. 必须在本地将[前面下载的](#use-the-marketplace-syndication-tool-to-download-marketplace-items)虚拟机映像文件或解决方案模板文件提供给 Azure Stack 环境。  
 
@@ -232,9 +232,9 @@ Azure Stack 部署必须已建立 Internet 连接，并且[已注册到 Azure](a
 
 现在，可以使用 Azure Stack PowerShell 1.3.0 版添加虚拟机扩展。 例如：
 
-````PowerShell
+```PowerShell
 Add-AzsVMExtension -Publisher "Microsoft" -Type "MicroExtension" -Version "0.1.0" -ComputeRole "IaaS" -SourceBlob "https://github.com/Microsoft/PowerShell-DSC-for-Linux/archive/v1.1.1-294.zip" -SupportMultipleExtensions -VmOsType "Linux"
-````
+```
 
 ## <a name="next-steps"></a>后续步骤
 

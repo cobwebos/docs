@@ -14,12 +14,12 @@ ms.date: 11/26/2018
 ms.author: mabrigg
 ms.reviewer: johnhas
 ROBOTS: NOINDEX
-ms.openlocfilehash: f0ffb4a4c4ea12292639b5a94b7f2990db6e45bd
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: 53309eceaab566836cef5f73dff2b69db5d9c135
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54247803"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55102407"
 ---
 # <a name="deploy-the-local-agent"></a>部署本地代理
 
@@ -114,9 +114,9 @@ Azure Stack 是接受测试的系统。 计算机不应是 Azure Stack 的一部
 
 2. 运行以下命令：
 
-    ````PowerShell
+    ```PowerShell
     .\Microsoft.VaaSOnPrem.TaskEngineHost.exe -u <VaaSUserId> -t <VaaSTenantId>
-    ````
+    ```
 
       **参数**  
     | 参数 | 描述 |

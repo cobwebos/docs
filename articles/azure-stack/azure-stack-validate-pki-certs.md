@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 1/08/2019
 ms.author: mabrigg
 ms.reviewer: ppacent
-ms.openlocfilehash: 1205bb636c01ff03e7e5d6f245c7469c186fca6f
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 6b2b72403365dc0f6cc61232e0b70801b57a29e2
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54121162"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55095464"
 ---
 # <a name="validate-azure-stack-pki-certificates"></a>验证 Azure Stack PKI 证书
 
@@ -55,7 +55,7 @@ ms.locfileid: "54121162"
 
 在验证用于 Azure Stack 部署的 PKI 证书之前，系统应符合以下先决条件：
 
-- Microsoft Azure Stack 就绪性检查器
+- Microsoft Azure Stack Readiness Checker
 - 遵照[准备说明](azure-stack-prepare-pki-certs.md)导出的 SSL 证书
 - DeploymentData.json
 - Windows 10 或 Windows Server 2016
@@ -99,7 +99,7 @@ ms.locfileid: "54121162"
 
 4. 检查输出和所有证书是否通过所有测试。 例如：
 
-````PowerShell
+```PowerShell
 Invoke-AzsCertificateValidation v1.1809.1005.1 started.
 Testing: ARM Public\ssl.pfx
 Thumbprint: 7F6B27****************************E9C35A
@@ -141,7 +141,7 @@ Thumbprint: 4DBEB2****************************C5E7E6
 Log location (contains PII): C:\Users\username\AppData\Local\Temp\AzsReadinessChecker\AzsReadinessChecker.log
 Report location (contains PII): C:\Users\username\AppData\Local\Temp\AzsReadinessChecker\AzsReadinessCheckerReport.json
 Invoke-AzsCertificateValidation Completed
-````
+```
 
 ### <a name="known-issues"></a>已知问题
 

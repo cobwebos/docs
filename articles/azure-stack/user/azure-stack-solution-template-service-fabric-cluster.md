@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 10/22/2018
+ms.date: 01/25/2019
 ms.author: mabrigg
 ms.reviewer: shnatara
-ms.openlocfilehash: 151f6fa7880db03909c522147d9c1f74508f51a1
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: 6f67945bcd84eef5c332b92440afa3199429d365
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54351843"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55092068"
 ---
 # <a name="deploy-a-service-fabric-cluster-in-azure-stack"></a>在 Azure Stack 中部署 Service Fabric 群集
 
@@ -27,7 +27,7 @@ ms.locfileid: "54351843"
 
 有关使用 Service Fabric 的详细信息，请参阅 Azure 文档中的 [Azure Service Fabric 概述](https://docs.microsoft.com/azure/service-fabric/service-fabric-overview)和 [Service Fabric 群集安全方案](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-security)。
 
-Azure Stack 中的 Service Fabric 群集不使用资源提供程序 Microsoft.ServiceFabric。 相反，在 Azure Stack 中，Service Fabric 群集是一个虚拟机规模集，具有使用所需状态配置 (DSC) 设置的预安装软件。
+Azure Stack 中的 Service Fabric 群集不使用资源提供程序 Microsoft.ServiceFabric。 相反，在 Azure Stack 中，Service Fabric 群集是虚拟机规模集与使用 Desired State Configuration (DSC) 的预安装的软件集。
 
 ## <a name="prerequisites"></a>必备组件
 
@@ -210,7 +210,7 @@ Azure Stack 中的 Service Fabric 群集不使用资源提供程序 Microsoft.Se
 
 1. 更改环境变量的顺序后，重启 PowerShell，然后运行以下 PowerShell 脚本获取 Service Fabric 群集的访问权限：
 
-   ````PowerShell  
+   ```PowerShell  
     Connect-ServiceFabricCluster -ConnectionEndpoint "\[Service Fabric
     CLUSTER FQDN\]:19000" \`
 
@@ -221,8 +221,11 @@ Azure Stack 中的 Service Fabric 群集不使用资源提供程序 Microsoft.Se
     0272251171BA32CEC7938A65B8A6A553AA2D3283 \`
 
     -StoreLocation CurrentUser -StoreName My -Verbose
-   ````
+   ```
    
    > [!NOTE]  
    > 脚本中群集名称的前面没有 *https://*。 必须指定端口 19000。
- 
+
+## <a name="next-steps"></a>后续步骤
+
+[将 Kubernetes 部署到 Azure Stack](azure-stack-solution-template-kubernetes-deploy.md)

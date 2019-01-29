@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 01/19/2019
 ms.author: sethm
 ms.reviewer: sijuman
-ms.openlocfilehash: 36496dd80111689b510bbbd27edc35a454d230a3
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: f865d08f742ebd1072b80a95960609e6ae5f4a82
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54448286"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55098402"
 ---
 # <a name="use-api-version-profiles-with-go-in-azure-stack"></a>在 Azure Stack 中将 API 版本配置文件与 Go 配合使用
 
@@ -33,9 +33,9 @@ ms.locfileid: "54448286"
 
 在 Go SDK 中，配置文件可用于配置文件路径下，其版本采用**年-月-日**格式。 现在，最新的 Azure Stack API 配置文件版本是**2017年-03-09**。 若要从配置文件导入给定的服务，请从配置文件导入其相应的模块。 例如，若要导入**计算**服务从**2017年-03-09**配置文件，请使用以下代码：
 
-````go
+```go
 import "github.com/Azure/azure-sdk-for-go/profiles/2017-03-09/compute/mgmt/compute"
-````
+```
 
 ## <a name="install-azure-sdk-for-go"></a>安装 Azure SDK for Go
 

@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/22/2018
+ms.date: 01/25/2019
 ms.author: mabrigg
 ms.reviewer: fiseraci
-ms.openlocfilehash: df1f8d805c950bdfbe2c18f365a450a6d630891b
-ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.openlocfilehash: a9ca61d7845c427429282885c658f4a4cb9b7b7a
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51300432"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55097651"
 ---
 # <a name="using-the-privileged-endpoint-in-azure-stack"></a>使用 Azure Stack 中的特权终结点
 
@@ -52,29 +52,29 @@ PEP 记录你在 PowerShell 会话中执行的每项操作（及其相应的输�
 
     - 在集成系统中，从权限提升的 Windows PowerShell 会话运行以下命令，将 PEP 添加为硬件生命周期主机或特权访问工作站上运行的强化虚拟机的受信任主机。
 
-      ````PowerShell
+      ```PowerShell
         winrm s winrm/config/client '@{TrustedHosts="<IP Address of Privileged Endpoint>"}'
-      ````
-    - 如果您运行 ASDK，登录到开发工具包主机。
+      ```
+    - 如果运行的是 ASDK，请登录到开发工具包主机。
 
 2. 在硬件生命周期主机或特权工作站上运行的强化虚拟机中，打开 Windows PowerShell 会话。 运行以下命令，在托管 PEP 的虚拟机上建立远程会话：
  
     - 在集成系统上：
-      ````PowerShell
+      ```PowerShell
         $cred = Get-Credential
 
         Enter-PSSession -ComputerName <IP_address_of_ERCS> `
           -ConfigurationName PrivilegedEndpoint -Credential $cred
-      ````
+      ```
       `ComputerName` 参数可以是托管 PEP 的某个虚拟机的 IP 地址或 DNS 名称。 
-    - 如果您运行 ASDK:
+    - 如果运行的是 ASDK：
      
-      ````PowerShell
+      ```PowerShell
         $cred = Get-Credential
 
         Enter-PSSession -ComputerName azs-ercs01 `
           -ConfigurationName PrivilegedEndpoint -Credential $cred
-      ```` 
+      ``` 
    出现提示时，请使用以下凭据：
 
       - **用户名**：指定 CloudAdmin 帐户，格式为 **&lt;*Azure Stack 域*&gt;\cloudadmin**。 （对于 ASDK，用户名为 **azurestack\cloudadmin**。）
@@ -83,7 +83,7 @@ PEP 记录你在 PowerShell 会话中执行的每项操作（及其相应的输�
     > [!NOTE]
     > 如果无法连接到 ERCS 终结点，请使用尚未尝试连接到的 ERCS VM 的 IP 地址重试步骤 1 和 2。
 
-3.  连接后，系统会根据环境将提示符更改为 **[*IP 地址或 ERCS VM 名称*]: PS>** 或 **[azs-ercs01]: PS>**。 在此处运行 `Get-Command` 可查看可用的 cmdlet 列表。
+3.  在连接后，提示符将更改为 **[*IP 地址或 ERCS VM 名称*]:PS>** 或 **[azs-ercs01]:PS>**，具体取决于环境。 在此处运行 `Get-Command` 可查看可用的 cmdlet 列表。
 
     其中的许多 cmdlet 仅供集成系统环境使用（例如与数据中心集成相关的 cmdlet）。 在 ASDK 中，以下 cmdlet 已经过验证：
 
@@ -124,38 +124,38 @@ PEP 记录你在 PowerShell 会话中执行的每项操作（及其相应的输�
 
     在集成系统中，从权限提升的 Windows PowerShell 会话运行以下命令，将 PEP 添加为硬件生命周期主机或特权访问工作站上运行的强化虚拟机的受信任主机。
 
-      ````PowerShell
+      ```PowerShell
         winrm s winrm/config/client '@{TrustedHosts="<IP Address of Privileged Endpoint>"}'
-      ````
-    - 如果您运行 ASDK，登录到开发工具包主机。
+      ```
+    - 如果运行的是 ASDK，请登录到开发工具包主机。
 
 2. 在硬件生命周期主机或特权工作站上运行的强化虚拟机中，打开 Windows PowerShell 会话。 运行以下命令，在托管 PEP 的虚拟机上建立远程会话：
  
     - 在集成系统上：
-      ````PowerShell
+      ```PowerShell
         $cred = Get-Credential
 
         $session = New-PSSession -ComputerName <IP_address_of_ERCS> `
           -ConfigurationName PrivilegedEndpoint -Credential $cred
-      ````
+      ```
       `ComputerName` 参数可以是托管 PEP 的某个虚拟机的 IP 地址或 DNS 名称。 
-    - 如果您运行 ASDK:
+    - 如果运行的是 ASDK：
      
-      ````PowerShell
+      ```PowerShell
        $cred = Get-Credential
 
        $session = New-PSSession -ComputerName azs-ercs01 `
           -ConfigurationName PrivilegedEndpoint -Credential $cred
-      ```` 
+      ``` 
    出现提示时，请使用以下凭据：
 
       - **用户名**：指定 CloudAdmin 帐户，格式为 **&lt;*Azure Stack 域*&gt;\cloudadmin**。 （对于 ASDK，用户名为 **azurestack\cloudadmin**。）
       - **密码**：输入安装 AzureStackAdmin 域管理员帐户期间提供的相同密码。
 
 3. 将 PEP 会话导入本地计算机
-    ````PowerShell 
+    ```PowerShell 
         Import-PSSession $session
-    ````
+    ```
 4. 现在，可以在本地 PowerShell 会话中，配合 PEP 的所有函数和 cmdlet 如常使用 Tab 键补全和执行脚本操作，而无需降低 Azure Stack 的安全级别。 请尽情享受其中的乐趣！
 
 
@@ -178,4 +178,5 @@ PEP 记录你在 PowerShell 会话中执行的每项操作（及其相应的输�
 
 
 ## <a name="next-steps"></a>后续步骤
+
 [Azure Stack 诊断工具](azure-stack-diagnostics.md)
