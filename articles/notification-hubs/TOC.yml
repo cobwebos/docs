@@ -78,6 +78,8 @@ items:
     href: notification-hubs-push-notification-security.md
 - name: 操作指南
   items:
+  - name: 更改定价层
+    href: change-pricing-tier.md
   - name: 发送跨平台通知
     href: notification-hubs-aspnet-cross-platform-notification.md
   - name: 向设备推送丰富的内容
@@ -134,9 +136,9 @@ items:
     href: https://azure.microsoft.com/regions/services/
   - name: 支持选项
     href: https://azure.microsoft.com/support/options/
-ms.openlocfilehash: f8a26954be5154e9d37970a3659fd28a22b615a5
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: ce941c63797a14d8fb629c958ad3fb741f34fc0c
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54461444"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55196780"
