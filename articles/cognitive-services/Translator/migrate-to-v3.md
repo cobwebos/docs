@@ -41,13 +41,13 @@ Microsoft Translator 团队已发布文本翻译 API 版本 3 (V3)。 此版本�
 
 | V2 API 方法   | V3 API 兼容性 |
 |:----------- |:-------------|
-| 翻译     | [Translate](reference/v3-0-translate.md)          |
+| Translate     | [Translate](reference/v3-0-translate.md)          |
 | TranslateArray      | [Translate](reference/v3-0-translate.md)        |
 | GetLanguageNames      | [语言](reference/v3-0-languages.md)         |
 | GetLanguagesForTranslate     | [语言](reference/v3-0-languages.md)       |
 | GetLanguagesForSpeak      | [Microsoft 语音服务](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support#text-to-speech)         |
-| 讲述     | [Microsoft 语音服务](https://docs.microsoft.com/azure/cognitive-services/speech-service/text-to-speech)          |
-| 检测     | [Detect](reference/v3-0-detect.md)         |
+| Speak     | [Microsoft 语音服务](https://docs.microsoft.com/azure/cognitive-services/speech-service/text-to-speech)          |
+| Detect     | [Detect](reference/v3-0-detect.md)         |
 | DetectArray     | [Detect](reference/v3-0-detect.md)         |
 | AddTranslation     | [Microsoft Translator Hub API](https://hub.microsofttranslator.com/Help/Download/Microsoft%20Translator%20Hub%20API%20Guide.pdf)         |
 | AddTranslationArray    | [Microsoft Translator Hub API](https://hub.microsofttranslator.com/Help/Download/Microsoft%20Translator%20Hub%20API%20Guide.pdf)          |
@@ -75,12 +75,12 @@ Microsoft Translator V3 的定价方式与 V2 相同：按字符（包括空格�
 
 | V3 方法   | 应计费的字符 |
 |:----------- |:-------------|
-| 语言     | 未提交任何字符：不计算字符数，免费。          |
-| 翻译     | 根据提交翻译的字符数，以及字符要翻译成的语言数来统计费用。 如果提交了 50 个字符并 5 请求翻译成 5 种语言，则费用是 50x5。           |
-| 直译     | 根据提交音译的字符数统计费用。         |
-| 字典查找和示例     | 根据提交请求字典查找和示例的字符数统计费用。         |
-| 断句     | 免费。       |
-| 检测     | 免费。      |
+| Languages     | 未提交任何字符：不计算字符数，免费。          |
+| Translate     | 根据提交翻译的字符数，以及字符要翻译成的语言数来统计费用。 如果提交了 50 个字符并 5 请求翻译成 5 种语言，则费用是 50x5。           |
+| Transliterate     | 根据提交音译的字符数统计费用。         |
+| Dictionary lookup & example     | 根据提交请求字典查找和示例的字符数统计费用。         |
+| BreakSentence     | 免费。       |
+| Detect     | 免费。      |
 
 ## <a name="v3-end-points"></a>V3 终结点
 
