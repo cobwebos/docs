@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: d17f3ba0ac16ec8e6dec3adc5fa326c93c2eb0a2
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 854e944d91c5d43131cf6a9c05e69d5684267022
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54810768"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55161794"
 documentType: LandingData
 title: Azure Active Directory 报表和监视
 metadata:
@@ -12,7 +12,7 @@ metadata:
   title: Azure Active Directory 报表和监视文档 - 教程、快速入门和概念 | Microsoft Docs
   description: 了解如何配置并测试 Azure Active Directory 报表和监视解决方案
   services: active-directory
-  ms.component: report-monitor
+  ms.subservice: report-monitor
   author: priyamohanram
   manager: daveba
   ms.service: active-directory

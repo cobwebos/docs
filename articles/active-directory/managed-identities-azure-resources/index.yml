@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: c4613654e5f1da6ef55c1f648fff1687b21fe87d
-ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
+ms.openlocfilehash: fd9c4513c2cda3fb6283e748f2458043b02ab482
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54901932"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55203566"
 documentType: LandingData
 title: “Azure 资源的 Azure AD 托管标识”文档
 metadata:
@@ -12,7 +12,7 @@ metadata:
   title: “Azure 资源的 Azure AD 托管标识”文档
   description: 了解如何使用 Azure 资源的托管标识安全地向 Azure 云服务进行身份验证而无需将凭据保留在源代码中。
   services: active-directory
-  ms.component: msi
+  ms.subservice: msi
   author: priyamohanram
   manager: daveba
   ms.service: active-directory

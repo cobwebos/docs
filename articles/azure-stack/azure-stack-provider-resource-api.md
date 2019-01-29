@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/22/2018
+ms.date: 01/25/2019
 ms.author: mabrigg
 ms.reviewer: alfredop
-ms.openlocfilehash: c6f17fd4cc225b7d4ce60d38bf2abcabf12a40c5
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.openlocfilehash: 1963708fb05feb7797bc8b4df024d16175687b17
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49945580"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55177893"
 ---
 # <a name="provider-resource-usage-api"></a>提供商资源使用情况 API
 “提供者”一词适用于服务管理员和任何委派的提供者。 Azure Stack 操作员和委派的提供者可使用提供者使用情况 API，查看其直接租户的使用情况。 例如，如图中所示，P0 可以调用提供者 API，以获取 P1 和 P2 直接使用的使用情况信息；而 P1 可以调用以获取 P3 和 P4 的使用情况信息。
@@ -86,8 +86,8 @@ meterID1",
 | *subscriptionId* |Azure Stack 用户的订阅标识符。 |
 | *usageStartTime* |此使用情况聚合所属的使用情况存储桶 UTC 开始时间。|
 | *usageEndTime* |此使用情况聚合所属的使用情况存储桶 UTC 结束时间。 |
-| *instanceData* |实例详细信息的键/值对（采用新格式）：<br> *resourceUri*：完全限定的资源 ID，其中包括资源组和实例名称。 <br> *位置*：运行此服务的区域。 <br> *标记*：用户所指定的资源标记。 <br> *additionalInfo*：更多关于所消耗资源的详细信息（例如 OS 版本或映像类型）。 |
-| *数量* |此时间范围内发生的资源消耗数量。 |
+| *instanceData* |实例详细信息的键/值对（采用新格式）：<br> *resourceUri*：完全限定的资源 ID，其中包括资源组和实例名称。 <br> *location*：运行此服务的区域。 <br> *tags*：用户所指定的资源标记。 <br> *additionalInfo*：更多关于所消耗资源的详细信息（例如 OS 版本或映像类型）。 |
+| *quantity* |此时间范围内发生的资源消耗数量。 |
 | *meterId* |所消耗资源的唯一 ID（也称为 *ResourceID*）。 |
 
 
