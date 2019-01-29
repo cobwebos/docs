@@ -11,12 +11,12 @@ ms.author: cforbe
 ms.reviewer: trbye
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 81afda4227484c19b49ffc4c399e52576629da34
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.openlocfilehash: eb4d94d93a72844cfa869bd74aef6eeb34b0f8e9
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54321868"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54817497"
 ---
 # <a name="tutorial-prepare-data-for-regression-modeling"></a>教程：为回归建模准备数据
 
@@ -37,7 +37,7 @@ ms.locfileid: "54321868"
 
 ## <a name="get-the-notebook"></a>获取 Notebook
 
-为方便起见，本教程以 [Jupyter Notebook](https://github.com/Azure/MachineLearningNotebooks/blob/master/tutorials/regression-part1-data-prep.ipynb) 的形式提供。 在 Azure Notebooks 或你自己的 Jupyter Notebook 服务器中运行 **regression-part1-data-prep.ipynb** 笔记本。
+为方便起见，本教程以 [Jupyter Notebook](https://github.com/Azure/MachineLearningNotebooks/blob/master/tutorials/regression-part1-data-prep.ipynb) 的形式提供。 在 [Azure Notebooks](https://notebooks.azure.com/) 或你自己的 Jupyter 笔记本服务器中运行 **regression-part1-data-prep.ipynb** 笔记本。
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-in-azure-notebook.md)]
 
@@ -1066,7 +1066,7 @@ package.save(file_path)
 
 若要继续学习教程第二部分，需要当前目录中的 **dflows.dprep** 文件。
 
-如果不打算继续学习第二部分，请删除当前目录中的 **dflows.dprep** 文件。 不管是在本地还是在 Azure Notebooks 中运行此执行操作，均请删除此文件。
+如果不打算继续学习第二部分，请删除当前目录中的 **dflows.dprep** 文件。 不管是在本地还是在 [Azure Notebooks](https://notebooks.azure.com/) 中运行此执行操作，均请删除此文件。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: d50059fb6fe03309609c91b56fb3763bad32e46b
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: 0aef8c5e055eb43576ea0ecc7ef8bf09d22d6ed3
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54199963"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54412897"
 ---
 # <a name="tutorial-define-a-new-device-type-in-your-azure-iot-central-application"></a>教程：在 Azure IoT Central 应用程序中定义新的设备类型
 
@@ -75,7 +75,7 @@ ms.locfileid: "54199963"
 
 ## <a name="create-a-new-custom-device-template"></a>创建新的自定义设备模板
 
-构建人员可在应用程序中创建和编辑设备模板。 创建设备模板时，Azure IoT Central 将会基于该模板生成模拟设备。 模拟设备生成遥测数据，使你能够在连接物理设备之前测试应用程序的行为。
+构建人员可在应用程序中创建和编辑设备模板。 创建设备模板时，Azure IoT Central 将会基于该模板生成模拟设备。 模拟设备生成遥测数据，使你能够在连接实际设备之前测试应用程序的行为。
 
 若要将新设备模板添加到应用程序，需要转到“应用程序生成器”页。 为此，请在左侧导航菜单中选择“应用程序生成器”。
 
@@ -155,7 +155,7 @@ ms.locfileid: "54199963"
 
 ## <a name="define-event-measurement"></a>定义事件度量
 
-可以使用“事件”来定义设备发送的时间点数据，以指明某个重要的事件，例如，发生错误或组件故障。 与处理遥测度量一样，Azure IoT Central 可以模拟设备事件，使你能够在连接物理设备之前测试应用程序的行为。 在“度量”视图中为设备类型定义事件度量。
+可以使用“事件”来定义设备发送的时间点数据，以指明某个重要的事件，例如，发生错误或组件故障。 与处理遥测度量一样，Azure IoT Central 可以模拟设备事件，使你能够在连接实际设备之前测试应用程序的行为。 在“度量”视图中为设备类型定义事件度量。
 
 1. 若要添加“风扇电机错误”事件度量，请选择“新建度量”。 然后选择“事件”作为度量类型：
 
@@ -191,7 +191,7 @@ ms.locfileid: "54199963"
 
 ## <a name="define-state-measurement"></a>定义状态度量
 
-可以使用“状态”来定义和可视化设备或其组件在一段时间内的状态。 与处理遥测度量一样，Azure IoT Central 可以模拟设备状态，使你能够在连接物理设备之前测试应用程序的行为。 在“度量”视图中为设备类型定义状态度量。
+可以使用“状态”来定义和可视化设备或其组件在一段时间内的状态。 与处理遥测度量一样，Azure IoT Central 可以模拟设备状态，使你能够在连接实际设备之前测试应用程序的行为。 在“度量”视图中为设备类型定义状态度量。
 
 1. 若要添加“风扇模式”度量，请选择“新建度量”。 然后选择“状态”作为度量类型：
 

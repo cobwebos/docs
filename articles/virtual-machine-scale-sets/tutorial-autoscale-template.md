@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 03/27/2018
 ms.author: zarhoads
 ms.custom: mvc
-ms.openlocfilehash: e1257cbe14d8d0fe9dc6d9b0f2a48dbb8b3cc6e4
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: 81c33818733b2896f98e1f3a3648b4fe9b823211
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49466531"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54413849"
 ---
 # <a name="tutorial-automatically-scale-a-virtual-machine-scale-set-with-an-azure-template"></a>教程：使用 Azure 模板自动缩放虚拟机规模集
 创建规模集时，可定义想运行的 VM 实例数。 若应用程序需要更改，可自动增加或减少 VM 实例数。 通过自动缩放功能，可随客户需求的改变而进行调整，或在应用的整个生命周期内响应应用程序性能更改。 本教程介绍如何执行下列操作：
@@ -164,7 +164,7 @@ az group deployment create \
 ## <a name="generate-cpu-load-on-scale-set"></a>在规模集上生成 CPU 负载
 若要测试自动缩放规则，请在规模集的 VM 实例上生成一些 CPU 负载。 这种模拟的 CPU 负载会导致自动缩放规则以横向扩展的方式增加 VM 实例数。 随着模拟的 CPU 负载下降，自动缩放规则会进行横向缩减，减少 VM 实例数。
 
-首先，请使用 [az vmss list-instance-connection-info](/cli/azure/vmss#az_vmss_list_instance_connection_info) 列出用于连接到规模集中的 VM 实例的地址和端口：
+首先，请使用 [az vmss list-instance-connection-info](/cli/azure/vmss) 列出用于连接到规模集中的 VM 实例的地址和端口：
 
 ```azurecli-interactive
 az vmss list-instance-connection-info \
@@ -194,7 +194,7 @@ sudo apt-get -y install stress
 sudo stress --cpu 10 --timeout 420 &
 ```
 
-当 **stress** 显示类似于 *stress: info: [2688] dispatching hogs: 10 cpu, 0 io, 0 vm, 0 hdd* 的输出时，按 *Enter* 键返回到提示符。
+当 **stress** 显示类似于 *stress: info: [2688] dispatching hogs:10 cpu, 0 io, 0 vm, 0 hdd* 的输出时，按 *Enter* 键返回到提示符。
 
 若要确认 **stress** 是否生成了 CPU 负载，请使用 **top** 实用工具检查活动的系统负载：
 
@@ -209,7 +209,7 @@ Ctrl-c
 exit
 ```
 
-连接到第二个 VM 实例，所使用的端口号是前面的 [az vmss list-instance-connection-info](/cli/azure/vmss#az_vmss_list_instance_connection_info) 列出的：
+连接到第二个 VM 实例，所使用的端口号是前面的 [az vmss list-instance-connection-info](/cli/azure/vmss) 列出的：
 
 ```azurecli-interactive
 ssh azureuser@13.92.224.66 -p 50003
@@ -222,7 +222,7 @@ sudo apt-get -y install stress
 sudo stress --cpu 10 --timeout 420 &
 ```
 
-当 **stress** 再次显示类似于 *stress: info: [2713] dispatching hogs: 10 cpu, 0 io, 0 vm, 0 hdd* 的输出时，按 *Enter* 键返回到提示符。
+当 **stress** 再次显示类似于 *stress: info: [2713] dispatching hogs:10 cpu, 0 io, 0 vm, 0 hdd* 的输出时，按 *Enter* 键返回到提示符。
 
 关闭与第二个 VM 实例的连接。 **stress** 继续在 VM 实例上运行。
 

@@ -13,16 +13,16 @@ ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 06/12/2018
 ms.author: rolyon
-ms.openlocfilehash: 1e3043a6053625f8363e9035e59b53275714a827
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: f49f6f03b6d9f1c51cada58ae782bbc364fc9d66
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43300603"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54427281"
 ---
 # <a name="tutorial-create-a-custom-role-using-azure-powershell"></a>教程：使用 Azure PowerShell 创建自定义角色
 
-如果[内置角色](built-in-roles.md)不能满足你的组织的特定需求，可以创建你自己的自定义角色。 对于本教程，你将使用 Azure PowerShell 创建名为 Reader Support Tickets 的自定义角色。 该自定义角色允许用户查看订阅中的所有内容，以及创建支持票证。
+如果[内置角色](built-in-roles.md)不能满足组织的特定需求，你可以创建自己的自定义角色。 对于本教程，你将使用 Azure PowerShell 创建名为 Reader Support Tickets 的自定义角色。 该自定义角色允许用户查看订阅中的所有内容，以及创建支持票证。
 
 本教程介绍如何执行下列操作：
 
@@ -39,7 +39,7 @@ ms.locfileid: "43300603"
 要完成本教程，需要：
 
 - 有权创建自定义角色，例如[所有者](built-in-roles.md#owner)或[用户访问管理员](built-in-roles.md#user-access-administrator)
-- 在本地安装 [Azure PowerShell](/powershell/azure/install-azurerm-ps)
+- 在本地安装 [Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps)
 
 ## <a name="sign-in-to-azure-powershell"></a>登录到 Azure PowerShell
 

@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 05/04/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: ce90ea447f7dcf4df1451294acf9f7fd093ad6ee
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 1bee08800eb5b480024001f742e8965cbd609a73
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49408636"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54428879"
 ---
 # <a name="tutorial-monitor-and-update-a-windows-virtual-machine-in-azure"></a>教程：监视和更新 Azure 中的 Windows 虚拟机
 
@@ -40,7 +40,7 @@ Azure 监视使用代理从 Azure VM 收集启动和性能数据，将此数据�
 > * 监视器更改和清单
 > * 设置高级监视
 
-本教程需要 Azure PowerShell 模块 5.7.0 或更高版本。 运行 `Get-Module -ListAvailable AzureRM` 即可查找版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-azurerm-ps)。
+本教程需要 Azure PowerShell 模块 5.7.0 或更高版本。 运行 `Get-Module -ListAvailable AzureRM` 即可查找版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/azurerm/install-azurerm-ps)。
 
 ## <a name="create-virtual-machine"></a>创建虚拟机
 

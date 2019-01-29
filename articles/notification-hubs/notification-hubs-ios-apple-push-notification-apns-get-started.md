@@ -4,8 +4,8 @@ description: 在本教程中，将了解如何使用 Azure 通知中心将推送
 services: notification-hubs
 documentationcenter: ios
 keywords: 推送通知, 推送通知, ios 推送通知
-author: dimazaid
-manager: kpiteira
+author: jwargo
+manager: patniko
 editor: spelluru
 ms.assetid: b7fcd916-8db8-41a6-ae88-fc02d57cb914
 ms.service: notification-hubs
@@ -14,20 +14,20 @@ ms.tgt_pltfrm: mobile-ios
 ms.devlang: objective-c
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 04/14/2018
-ms.author: dimazaid
-ms.openlocfilehash: 27172696a1b94c1571bdade27d80de6b9a82d911
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.date: 01/04/2019
+ms.author: jowargo
+ms.openlocfilehash: 63fb04e6b31fe4026b93cef09d88601d6182101a
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49353962"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54448303"
 ---
-# <a name="tutorial-push-notifications-to-ios-apps-using-azure-notification-hubs"></a>教程：使用 Azure 通知中心向 iOS 应用推送通知
+# <a name="tutorial-push-notifications-to-ios-apps-using-azure-notification-hubs"></a>教程：使用 Azure 通知中心将通知推送到 iOS 应用
 
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
 
-在本教程中，你将使用 Azure 通知中心向 iOS 应用程序推送通知。 你将创建一个空白 iOS 应用，它使用 [Apple Push Notification 服务 (APNs)](https://developer.apple.com/library/content/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/APNSOverview.html#//apple_ref/doc/uid/TP40008194-CH8-SW1) 接收推送通知。 
+在本教程中，你将使用 Azure 通知中心向 iOS 应用程序推送通知。 你将创建一个空白 iOS 应用，它使用 [Apple Push Notification 服务 (APNs)](https://developer.apple.com/library/content/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/APNSOverview.html#//apple_ref/doc/uid/TP40008194-CH8-SW1) 接收推送通知。
 
 在本教程中，你将执行以下步骤：
 
@@ -44,27 +44,28 @@ ms.locfileid: "49353962"
 
 ## <a name="prerequisites"></a>先决条件
 
-- 有效的 Azure 帐户。 如果没有帐户，只需花费几分钟就能创建一 [个免费试用帐户](https://azure.microsoft.com/free)。 
-- [Windows Azure Messaging Framework]
-- 最新版本的 [Xcode]
-- 支持 iOS 10（或更高版本）的设备
-- [Apple 开发人员计划](https://developer.apple.com/programs/) 成员身份。
+* 有效的 Azure 帐户。 如果没有帐户，只需花费几分钟就能[创建一个免费 Azure 帐户](https://azure.microsoft.com/free)。
+* [Windows Azure Messaging Framework]
+* 最新版本的 [Xcode]
+* 支持 iOS 10（或更高版本）的设备
+* [Apple 开发人员计划](https://developer.apple.com/programs/) 成员身份。
   
-  > [!NOTE]
-  > 由于推送通知的配置要求，必须在物理 iOS 的设备（iPhone 或 iPad）而不是在 iOS 模拟器上部署和测试推送通知。
+ > [!NOTE]
+ > 由于推送通知的配置要求，必须在物理 iOS 的设备（iPhone 或 iPad）而不是在 iOS 模拟器上部署和测试推送通知。
   
 完成本教程是学习有关 iOS 应用的所有其他通知中心教程的先决条件。
 
 [!INCLUDE [Notification Hubs Enable Apple Push Notifications](../../includes/notification-hubs-enable-apple-push-notifications.md)]
 
 ## <a name="configure-your-notification-hub-for-ios-push-notifications"></a>针对 iOS 推送通知配置通知中心
+
 在本部分中，你将创建一个通知中心，并使用以前创建的 **.p12** 推送证书配置 APNS 身份验证。 如果想要使用已创建的通知中心，可以跳到步骤 5。
 
 [!INCLUDE [notification-hubs-portal-create-new-hub](../../includes/notification-hubs-portal-create-new-hub.md)]
 
 ### <a name="configure-your-notification-hub-with-apns-information"></a>使用 APNS 信息配置通知中心
 
-1. 在“通知服务”下选择“Apple (APNS)”。 
+1. 在“通知服务”下选择“Apple (APNS)”。
 2. 选择“证书”。
 3. 选择**文件图标**。
 4. 选择前面导出的 **.p12** 文件。
@@ -99,7 +100,7 @@ ms.locfileid: "49353962"
 
     ![解压缩 Azure SDK][10]
 
-6. 将新的标头文件添加到名为 **HubInfo.h** 的项目。 此文件保存着通知中心的常量。 添加以下定义，然后将字符串文本占位符替换为*中心名称*以及前面记下的 *DefaultListenSharedAccessSignature*。
+6. 将新的标头文件添加到名为 `HubInfo.h`的项目。 此文件保存着通知中心的常量。 添加以下定义，然后将字符串文本占位符替换为*中心名称*以及前面记下的 *DefaultListenSharedAccessSignature*。
 
     ```objc
     #ifndef HubInfo_h
@@ -111,14 +112,14 @@ ms.locfileid: "49353962"
     #endif /* HubInfo_h */
     ```
 
-7. 打开 **AppDelegate.h** 文件并添加以下导入指令：
+7. 打开 `AppDelegate.h` 文件并添加以下导入指令：
 
     ```objc
     #import <WindowsAzureMessaging/WindowsAzureMessaging.h>
-    #import <UserNotifications/UserNotifications.h> 
+    #import <UserNotifications/UserNotifications.h>
     #import "HubInfo.h"
     ```
-8. 在 **AppDelegate.m** 文件的 **didFinishLaunchingWithOptions** 方法中添加以下代码，具体取决于 iOS 版本。 此代码将向 APNs 注册设备句柄：
+8. 根据 iOS 版本，在 `AppDelegate.m` 文件的 `didFinishLaunchingWithOptions` 方法中添加以下代码。 此代码将向 APNs 注册设备句柄：
 
     ```objc
     UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeSound |
@@ -191,14 +192,12 @@ ms.locfileid: "49353962"
 
 ## <a name="next-steps"></a>后续步骤
 
-在这个简单的示例中，已将推送通知广播到所有已注册的 iOS 设备。 若要了解如何向特定的 iOS 设备推送通知，请转到以下教程： 
+在这个简单的示例中，已将推送通知广播到所有已注册的 iOS 设备。 若要了解如何向特定的 iOS 设备推送通知，请转到以下教程：
 
 > [!div class="nextstepaction"]
 >[向特定设备推送通知](notification-hubs-ios-xplat-segmented-apns-push-notification.md)
 
-
 <!-- Images. -->
-
 [6]: ./media/notification-hubs-ios-get-started/notification-hubs-apple-config.png
 [7]: ./media/notification-hubs-ios-get-started/notification-hubs-apple-config-cert.png
 [8]: ./media/notification-hubs-ios-get-started/notification-hubs-create-ios-app.png
@@ -206,15 +205,11 @@ ms.locfileid: "49353962"
 [10]: ./media/notification-hubs-ios-get-started/notification-hubs-create-ios-app3.png
 [11]: ./media/notification-hubs-ios-get-started/notification-hubs-xcode-product-name.png
 [12]: ./media/notification-hubs-ios-get-started/notification-hubs-enable-push.png
-
 [30]: ./media/notification-hubs-ios-get-started/notification-hubs-test-send.png
-
 [31]: ./media/notification-hubs-ios-get-started/notification-hubs-ios-ui.png
 [32]: ./media/notification-hubs-ios-get-started/notification-hubs-storyboard-view.png
 [33]: ./media/notification-hubs-ios-get-started/notification-hubs-test1.png
 [35]: ./media/notification-hubs-ios-get-started/notification-hubs-test3.png
-
-
 
 <!-- URLs. -->
 [Windows Azure Messaging Framework]: http://go.microsoft.com/fwlink/?LinkID=799698&clcid=0x409
@@ -222,15 +217,12 @@ ms.locfileid: "49353962"
 [Submit an app page]: http://go.microsoft.com/fwlink/p/?LinkID=266582
 [My Applications]: http://go.microsoft.com/fwlink/p/?LinkId=262039
 [Live SDK for Windows]: http://go.microsoft.com/fwlink/p/?LinkId=262253
-
 [Get started with Mobile Services]: /develop/mobile/tutorials/get-started-ios
 [Notification Hubs Guidance]: http://msdn.microsoft.com/library/jj927170.aspx
 [Xcode]: https://go.microsoft.com/fwLink/p/?LinkID=266532
 [iOS Provisioning Portal]: http://go.microsoft.com/fwlink/p/?LinkId=272456
-
 [Get started with push notifications in Mobile Services]: ../mobile-services-javascript-backend-ios-get-started-push.md
 [Azure Notification Hubs Notify Users for iOS with .NET backend]: notification-hubs-aspnet-backend-ios-apple-apns-notification.md
 [Use Notification Hubs to send breaking news]: notification-hubs-ios-xplat-segmented-apns-push-notification.md
-
 [Local and Push Notification Programming Guide]: http://developer.apple.com/library/mac/#documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/Chapters/ApplePushService.html#//apple_ref/doc/uid/TP40008194-CH100-SW1
 [Azure 门户]: https://portal.azure.com

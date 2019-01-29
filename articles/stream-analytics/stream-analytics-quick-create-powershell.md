@@ -8,12 +8,12 @@ ms.date: 12/20/2018
 ms.topic: quickstart
 ms.service: stream-analytics
 ms.custom: mvc
-ms.openlocfilehash: c3392c3fd169ceed84368ed9e8b8d81cab7baea4
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.openlocfilehash: 5591e8174f15d552bf7295d1c3fe9cb5257c0f2e
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54212919"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54438892"
 ---
 # <a name="quickstart-create-a-stream-analytics-job-using-azure-powershell"></a>快速入门：使用 Azure PowerShell 创建流分析作业
 
@@ -25,7 +25,7 @@ Azure PowerShell 模块用于通过 PowerShell cmdlet 或脚本创建和管理 A
 
 * 如果没有 Azure 订阅，请创建一个[免费帐户](https://azure.microsoft.com/free/)。  
 
-* 本快速入门需要 Azure PowerShell 模块 3.6 版或更高版本。 运行 `Get-Module -ListAvailable AzureRM` 即可找到在本地计算机上安装的版本。 如果需要进行安装或升级，请参阅[安装 Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-azurerm-ps)。
+* 本快速入门需要 Azure PowerShell 模块 3.6 版或更高版本。 运行 `Get-Module -ListAvailable AzureRM` 即可找到在本地计算机上安装的版本。 如果需要进行安装或升级，请参阅[安装 Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps)。
 
 * 某些 IoT 中心操作不受 Azure PowerShell 的支持，必须使用 Azure CLI 2.0.24 或更高版本以及 Azure CLI 的 IoT 扩展来完成。 [安装 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)，并使用 `az extension add --name azure-cli-iot-ext` 来安装 IoT 扩展。
 

@@ -3,7 +3,7 @@ title: Azure Active Directory 门户中“标记为风险用户”的用户的�
 description: 了解 Azure Active Directory 门户中“标记为风险用户”的用户的安全报告
 services: active-directory
 author: priyamohanram
-manager: mtillman
+manager: daveba
 ms.assetid: addd60fe-d5ac-4b8b-983c-0736c80ace02
 ms.service: active-directory
 ms.devlang: na
@@ -11,15 +11,15 @@ ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.component: report-monitor
-ms.date: 11/13/2018
+ms.date: 01/17/2019
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 9a7a3877970d5ecf3b86471b94fbb1bf6e5efbb4
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: de9cf73ba7ad68d84e43a7774617959f9c3789ee
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51621065"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54810748"
 ---
 # <a name="users-flagged-for-risk-report-in-the-azure-portal"></a>Azure 门户中标记为存在风险的用户的报表
 
@@ -55,19 +55,16 @@ Azure AD 免费版和基本版中“标记为风险用户”报告提供可能�
 
 ![有风险的登录](./media/concept-user-at-risk/03.png)
 
-选择用户可打开相关的用户数据边栏选项卡。 对于存在风险的用户，可查看其登录历史记录，并根据需要重置密码。
-
-![有风险的登录](./media/concept-user-at-risk/46.png)
-
+选择一个用户即可获得登录信息。 对于存在风险的用户，可查看其登录历史记录，并根据需要重置密码。
 
 此对话框提供的选项用于：
 
 - 下载报告
-
 - 搜索用户
 
-![有风险的登录](./media/concept-user-at-risk/16.png)
+    ![有风险的登录](./media/concept-user-at-risk/16.png)
 
+若要获得更详细的信息，需提供高级许可证。
 
 ## <a name="users-at-risk-report-for-azure-ad-premium-editions"></a>Azure Active Directory Premium 版的风险用户报告
 

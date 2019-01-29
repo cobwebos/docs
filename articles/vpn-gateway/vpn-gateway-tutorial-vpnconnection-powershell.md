@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 05/08/2018
 ms.author: yushwang
 ms.custom: mvc
-ms.openlocfilehash: 61e040fc2f7ff70794b49204e3dea01375637641
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: 0c71062bded65f8aa7c259c0678ee6675e2dab38
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43336570"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54432211"
 ---
 # <a name="create-and-manage-s2s-vpn-connections-with-the-azure-powershell-module"></a>使用 Azure PowerShell 模块创建和管理 S2S VPN 连接
 
@@ -39,7 +39,7 @@ Azure S2S VPN 连接提供客户本地和 Azure 间的安全跨界连接。 本�
 
 [!INCLUDE [cloud-shell-powershell.md](../../includes/cloud-shell-powershell.md)]
 
-如果选择在本地安装并使用 PowerShell，则本教程需要 Azure PowerShell 模块 5.3 或更高版本。 运行 `Get-Module -ListAvailable AzureRM` 即可查找版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-azurerm-ps)。 如果在本地运行 PowerShell，则还需运行 `Login-AzureRmAccount` 以创建与 Azure 的连接。
+如果选择在本地安装并使用 PowerShell，则本教程需要 Azure PowerShell 模块 5.3 或更高版本。 运行 `Get-Module -ListAvailable AzureRM` 即可查找版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/azurerm/install-azurerm-ps)。 如果在本地运行 PowerShell，则还需运行 `Login-AzureRmAccount` 以创建与 Azure 的连接。
 
 ## <a name="requirements"></a>要求
 

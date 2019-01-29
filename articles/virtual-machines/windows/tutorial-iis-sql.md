@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 02/27/2018
 ms.author: zarhoads
 ms.custom: mvc
-ms.openlocfilehash: 4909edf6e434e626e89409f01ae0f5fbca5bf442
-ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
+ms.openlocfilehash: ff8fe3c3c61777902269364df88a9fff4e8d1385
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2018
-ms.locfileid: "51515482"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54425146"
 ---
 # <a name="tutorial-install-the-sql-iis-net-stack-in-a-windows-vm-with-azure-powershell"></a>教程：使用 Azure PowerShell 在 Windows VM 中安装 SQL、IIS、.NET 堆栈
 
@@ -34,7 +34,7 @@ ms.locfileid: "51515482"
 
 [!INCLUDE [cloud-shell-powershell.md](../../../includes/cloud-shell-powershell.md)]
 
-如果选择在本地安装并使用 PowerShell，则本教程需要 AzureRM.Compute 模块 5.7.0 或更高版本。 运行 `Get-Module -ListAvailable AzureRM.Compute` 即可查找版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-azurerm-ps)。
+如果选择在本地安装并使用 PowerShell，则本教程需要 AzureRM.Compute 模块 5.7.0 或更高版本。 运行 `Get-Module -ListAvailable AzureRM.Compute` 即可查找版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/azurerm/install-azurerm-ps)。
 
 ## <a name="create-a-iis-vm"></a>创建 IIS VM 
 

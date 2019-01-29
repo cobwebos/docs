@@ -1,9 +1,9 @@
 ---
-title: 通过快速设置开始使用 Azure AD Connect | Microsoft 文档
+title: Azure AD Connect：快速设置入门 | Microsoft Docs
 description: 了解如何下载、安装和运行 Azure AD Connect 的设置向导。
 services: active-directory
 author: billmath
-manager: mtillman
+manager: daveba
 editor: curtand
 ms.assetid: b6ce45fd-554d-4f4d-95d1-47996d561c9f
 ms.service: active-directory
@@ -14,12 +14,12 @@ ms.topic: get-started-article
 ms.date: 09/28/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 14ed452759aa74abf5eaa2ae37a39f6172889313
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: b3b90950ea0ade8064680e813958b0575d11aab6
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51233314"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54467989"
 ---
 # <a name="getting-started-with-azure-ad-connect-using-express-settings"></a>通过快速设置开始使用 Azure AD Connect
 采用单林拓扑并将**密码哈希同步**用于身份验证时，可以使用 Azure AD Connect [快速设置](how-to-connect-password-hash-synchronization.md)。 **快速设置** 是默认选项，用于最常见的部署方案。 只需按几下鼠标即可将本地目录扩展到云中。
@@ -62,7 +62,7 @@ ms.locfileid: "51233314"
 ## <a name="next-steps"></a>后续步骤
 安装 Azure AD Connect 后，可以[验证安装并分配许可证](how-to-connect-post-installation.md)。
 
-若要了解有关这些功能（在安装过程中已启用）的详细信息，请参阅[自动升级](how-to-connect-install-automatic-upgrade.md)、[防止意外删除](how-to-connect-sync-feature-prevent-accidental-deletes.md)和 [Azure AD Connect Health](how-to-connect-health-sync.md)。
+若要了解有关这些功能（在安装过程中已启用）的详细信息，请参阅：[自动升级](how-to-connect-install-automatic-upgrade.md)、[防止意外删除](how-to-connect-sync-feature-prevent-accidental-deletes.md)和 [Azure AD Connect Health](how-to-connect-health-sync.md)。
 
 若要了解有关这些常见主题的详细信息，请参阅[计划程序以及如何触发同步](how-to-connect-sync-feature-scheduler.md)。
 

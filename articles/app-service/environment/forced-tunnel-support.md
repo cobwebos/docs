@@ -14,16 +14,16 @@ ms.topic: quickstart
 ms.date: 05/29/2018
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 89827cdc7d29a817c83fd16ec2a4340f06c8343c
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 36324ccd9b6e9470c93949efed6c29a9b8d3ab61
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53272723"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54389283"
 ---
 # <a name="configure-your-app-service-environment-with-forced-tunneling"></a>使用强制隧道配置应用服务环境
 
-应用服务环境 (ASE) 是部署在客户的 Azure 虚拟网络中的 Azure 应用服务。 许多客户使用 VPN 或 Azure ExpressRoute 连接将其 Azure 虚拟网络配置为本地网络的扩展。 强制隧道是指将本应发往 Internet 的流量重定向到 VPN 或虚拟设备。 这通常是安全要求的一部分，目的是检查和审核所有出站流量。 
+应用服务环境 (ASE) 是部署在客户的 Azure 虚拟网络中的 Azure 应用服务。 许多客户使用 VPN 或 Azure ExpressRoute 连接将其 Azure 虚拟网络配置为本地网络的扩展。 强制隧道是指将本应发往 Internet 的流量重定向到 VPN 或虚拟设备。 虚拟设备通常用于检查和审核出站网络流量。 
 
 ASE 具有许多外部依赖项，详见[应用服务环境网络体系结构][network]文档中的说明。 通常情况下，所有 ASE 出站依赖项流量必须通过 ASE 中预配的 VIP。 如果更改了出入 ASE 的流量的路由而没有遵循以下说明，则 ASE 会停止运行。
 
@@ -62,24 +62,21 @@ ASE 具有许多外部依赖项，详见[应用服务环境网络体系结构][n
 
 ## <a name="configure-your-ase-subnet-to-ignore-bgp-routes"></a>将 ASE 子网配置为忽略 BGP 路由 ## 
 
-可将 ASE 子网配置为忽略所有 BGP 路由。  如果采用这种配置，ASE 将可以访问其依赖项，而不会出现任何问题。  但是，需要创建 UDR 才能让应用访问本地资源。
+可将 ASE 子网配置为忽略所有 BGP 路由。  如果配置为忽略 BGP 路由，ASE 将可以访问其依赖项，而不会出现任何问题。  但是，需要创建 UDR 才能让应用访问本地资源。
 
 将 ASE 子网配置为忽略 BGP 路由：
 
 * 创建 UDR 并将其分配到 ASE 子网（如果没有 UDR）。
 * 在 Azure 门户中，打开分配到 ASE 子网的路由表的 UI。  选择“配置”。  将 BGP 路由传播设置为“已禁用”。  单击“保存”。 [创建路由表][routetable]文档介绍了如何关闭此设置。
 
-执行此操作后，应用程序不再能够访问本地资源。 若要解决此问题，请编辑分配到 ASE 子网的 UDR，并添加本地地址范围的路由。 “下一跃点类型”应设置为“虚拟网络网关”。 
+将 ASE 子网配置为忽略所有 BGP 路由后，应用将不再能够访问本地资源。 若要让用于访问本地资源，请编辑分配到 ASE 子网的 UDR，并添加本地地址范围的路由。 “下一跃点类型”应设置为“虚拟网络网关”。 
 
 
 ## <a name="configure-your-ase-with-service-endpoints"></a>为 ASE 配置服务终结点 ##
 
- > [!NOTE]
-   > 使用 SQL 的服务终结点不适用于 US Government 区域中的 ASE。  以下信息仅在 Azure 公共区域有效。  
-
 若要路由来自 ASE 的所有出站流量（到 Azure SQL 和 Azure 存储的除外），请执行以下步骤：
 
-1. 创建一个路由表，将其分配给 ASE 子网。 若要查找与区域相匹配的地址，请参阅[应用服务环境管理地址][management]。 为下一跃点为 Internet 的那些地址创建路由。 之所以需要这个，是因为应用服务环境入站管理流量必须从发送到的地址进行回复。   
+1. 创建一个路由表，将其分配给 ASE 子网。 若要查找与区域相匹配的地址，请参阅[应用服务环境管理地址][management]。 为下一跃点为 Internet 的那些地址创建路由。 之所以需要这些路由，是因为应用服务环境入站管理流量必须从发送到的地址进行回复。   
 
 2. 为 ASE 子网启用 Azure SQL 和 Azure 存储的服务终结点。  完成此步骤以后，即可使用强制隧道来配置 VNet。
 
@@ -91,7 +88,7 @@ ASE 具有许多外部依赖项，详见[应用服务环境网络体系结构][n
 
 在包含 Azure SQL 实例的子网上启用服务终结点时，所有与该子网有连接的 Azure SQL 实例必定会启用服务终结点。 如果需要从同一子网访问多个 Azure SQL 实例，则不能在一个 Azure SQL 实例上启用服务终结点，而在另一个实例上不启用。  Azure 存储的表现与 Azure SQL 不同。  对 Azure 存储启用服务终结点时，可以锁定从子网对该资源进行的访问，但仍可访问其他 Azure 存储帐户，即使这些帐户未启用服务终结点。  
 
-如果为强制隧道配置网络筛选设备，则请记住，除了 Azure SQL 和 Azure 存储，ASE 还有依赖项。 必须允许流向这些依赖项的流量，否则 ASE 会功能失常。
+如果为强制隧道配置网络筛选设备，则请记住，除了 Azure SQL 和 Azure 存储，ASE 还有依赖项。 如果阻止流向这些依赖项的流量，ASE 会功能失常。
 
 ![使用服务终结点的强制隧道][2]
 
@@ -99,7 +96,7 @@ ASE 具有许多外部依赖项，详见[应用服务环境网络体系结构][n
 
 若要让来自 ASE 的所有出站流量（到 Azure 存储的除外）进入隧道，请执行以下步骤：
 
-1. 创建一个路由表，将其分配给 ASE 子网。 若要查找与区域相匹配的地址，请参阅[应用服务环境管理地址][management]。 为下一跃点为 Internet 的那些地址创建路由。 之所以需要这个，是因为应用服务环境入站管理流量必须从发送到的地址进行回复。 
+1. 创建一个路由表，将其分配给 ASE 子网。 若要查找与区域相匹配的地址，请参阅[应用服务环境管理地址][management]。 为下一跃点为 Internet 的那些地址创建路由。 之所以需要这些路由，是因为应用服务环境入站管理流量必须从发送到的地址进行回复。 
 
 2. 为 ASE 子网启用 Azure 存储的服务终结点
 

@@ -4,7 +4,7 @@ description: 了解如何在 Azure Active Directory 与 Firstbird 之间配置�
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: barbkess
 ms.assetid: acab1200-32d3-4f4b-953f-f2a7e812b6a3
 ms.service: Azure-Active-Directory
@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 12/03/2018
+ms.date: 01/17/2019
 ms.author: jeedes
-ms.openlocfilehash: 4de6323d3cf6c642ea7714eabf45200e1be0c269
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: d11674632599afa190237b2a4a516d7cce6e2150
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52883654"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54810238"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-firstbird"></a>教程：Azure Active Directory 与 Firstbird 集成
 
@@ -79,8 +79,8 @@ ms.locfileid: "52883654"
 1. **[配置 Azure AD 单一登录](#configure-azure-ad-single-sign-on)** - 使用户能够使用此功能。
 2. **[配置 Firstbird 单一登录](#configure-firstbird-single-sign-on)** - 在应用程序端配置单一登录。
 3. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-4. [创建 Firstbird 测试用户](#create-firstbird-test-user) - 在 Firstbird 中创建 Britta Simon 的对应用户，并将其链接到用户的 Azure AD 表示形式。
-5. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
+4. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
+5. [创建 Firstbird 测试用户](#create-firstbird-test-user) - 在 Firstbird 中创建 Britta Simon 的对应用户，并将其链接到用户的 Azure AD 表示形式。
 6. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
@@ -93,7 +93,7 @@ ms.locfileid: "52883654"
 
     ![配置单一登录链接](common/select_sso.png)
 
-2. 在“选择单一登录方法”对话框中，选择 SAML/WS-Fed 模式以启用单一登录。
+2. 在**选择单一登录方法**对话框中，选择 **SAML/WS-Fed**模式以启用单一登录。
 
     ![单一登录选择模式](common/select_saml_option.png)
 
@@ -105,16 +105,16 @@ ms.locfileid: "52883654"
 
     ![Firstbird 域和 URL 单一登录信息](common/idp_intiated.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“标识符”文本框中，使用以下模式键入 URL：`https://<company-domain>.auth.1brd.com/saml/sp`。
+    a. 在“标识符”文本框中，使用以下模式键入 URL：`https://<company-domain>.auth.1brd.com/saml/sp`
 
-    b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<company-domain>.auth.1brd.com/saml/callback`。
+    b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<company-domain>.auth.1brd.com/saml/callback`
 
 5. 如果要在 SP 发起的模式下配置应用程序，请单击“设置其他 URL”，并执行以下步骤：
 
     ![Firstbird 域和 URL 单一登录信息](common/metadata_upload_additional_signon.png)
 
-    在“登录 URL”文本框中，使用以下模式键入 URL：`https://<company-domain>.1brd.com/login`。
-    
+    在“登录 URL”文本框中，使用以下模式键入 URL：`https://<company-domain>.1brd.com/login`
+
     > [!NOTE]
     > 这些不是实际值。 请使用实际的“标识符”、“回复 URL”和“登录 URL”更新这些值。 请联系 [Firstbird 客户端支持团队](mailto:support@firstbird.com)以获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”部分中显示的模式。
 

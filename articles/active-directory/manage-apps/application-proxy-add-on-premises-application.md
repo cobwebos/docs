@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 12/07/2018
 ms.author: barbkess
 ms.reviewer: japere
-ms.openlocfilehash: 926a339bc8214c989da4ef934ae41012eea58d1e
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: ed275638c1b217f18d5d1335b9d039879ae55004
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54120727"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54846297"
 ---
 # <a name="tutorial-add-an-on-premises-application-for-remote-access-through-application-proxy-in-azure-active-directory"></a>教程：在 Azure Active Directory 中添加一个本地应用程序以通过应用程序代理进行远程访问
 
@@ -166,7 +166,7 @@ Azure Active Directory (Azure AD) 具有可让用户使用其 Azure AD 帐户登
 
     ![配置应用程序](./media/application-proxy-publish-azure-portal/configure-app.png)
 
-    | 字段 | Description |
+    | 字段 | 说明 |
     | :---- | :---------- |
     | **名称** | 显示在访问面板和 Azure 门户中的应用程序名称。 |
     | **内部 URL** | 用于从专用网络内部访问应用程序的 URL。 可以提供后端服务器上要发布的特定路径，而服务器的其余部分则不发布。 通过这种方式，可以在同一服务器上将不同站点发布为不同应用，并为每个站点提供其自己的名称和访问规则。<br><br>如果发布路径，请确保它包含应用程序的所有必要映像、脚本和样式表。 例如，如果你的应用位于 https://yourapp/app，并使用位于 https://yourapp/media 的映像，则应发布 https://yourapp/ 作为路径。 此内部 URL 不一定是用户看到的登陆页面。 有关详细信息，请参阅[为发布的应用设置自定义主页](application-proxy-configure-custom-home-page.md)。 |
@@ -176,11 +176,12 @@ Azure Active Directory (Azure AD) 具有可让用户使用其 Azure AD 帐户登
 
 5. 根据需要配置**其他设置**。 对于大多数应用程序，应保留这些设置的默认状态。 
 
-    | 字段 | Description |
+    | 字段 | 说明 |
     | :---- | :---------- |
     | **后端应用程序超时** | 仅当应用程序身份验证和连接速度较慢时，才将此值设置为“长”。 |
     | **使用仅限 HTTP 的 Cookie** | 将此值设置为“是”，使应用程序代理 Cookie 在 HTTP 响应标头中包含 HTTPOnly 标志。 如果使用远程桌面服务，请将此值设置为“否”。|
     | **使用安全 Cookie**| 将此值设置为“是”可通过安全通道（例如加密的 HTTPS 请求）传输 Cookie。
+    | **使用永久性 Cookie**| 始终将此值设置为“否”。 此设置只应该用于不能在进程之间共享 Cookie 的应用程序。 有关 Cookie 设置的详细信息，请参阅 [Cookie settings for accessing on-premises applications in Azure Active Directory](https://docs.microsoft.com/en-us/azure/active-directory/manage-apps/application-proxy-configure-cookie-settings)（用于在 Azure Active Directory 中访问本地应用程序的 Cookie 设置）
     | **转换标头中的 URL** | 除非应用程序要求在身份验证请求中包含原始主机标头，否则请将此值保留为“是”。 |
     | **转换应用程序主体中的 URL** | 除非具有指向其他本地应用程序的硬编码 HTML 链接且不使用自定义域，否则请将此值保留为“否”。 有关详细信息，请参阅[使用应用程序代理进行链接转换](application-proxy-configure-hard-coded-link-translation.md)。<br><br>如果你打算使用 Microsoft 云应用安全性 (MCAS) 监视此应用程序，请将此值设置为“是”。 有关详细信息，请参阅[使用 Microsoft 云应用安全性和 Azure Active Directory 配置实时应用程序访问监视](application-proxy-integrate-with-microsoft-cloud-application-security.md) |
    

@@ -9,25 +9,23 @@ ms.topic: quickstart
 ms.reviewer: sgilley
 author: hning86
 ms.author: haining
-ms.date: 12/04/2018
+ms.date: 01/18/2019
 ms.custom: seodec18
-ms.openlocfilehash: 14c500d77cc0e67aaade5e6be490f599f39bfad5
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.openlocfilehash: e3569f560224ab8c9a64ababb2fcea7e96e87367
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53807714"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54812448"
 ---
 # <a name="quickstart-use-the-azure-portal-to-get-started-with-azure-machine-learning"></a>快速入门：通过 Azure 门户开始使用 Azure 机器学习
 
-在本快速入门中，请使用 Azure 门户创建 Azure 机器学习工作区。 该工作区是基础的云端块，用于通过机器学习进行机器学习模型的试验、训练和部署。 本快速入门使用云资源，不需安装。 要改为配置自己的 Jupyter Notebook 服务器，请参阅[快速入门：通过 Python 开始使用 Azure 机器学习](quickstart-create-workspace-with-python.md)。  
+使用 Azure 门户创建 Azure 机器学习工作区。 该工作区是基础的云端块，用于通过机器学习进行机器学习模型的试验、训练和部署。 本快速入门使用云资源，不需安装。 要改为配置自己的 Jupyter Notebook 服务器，请参阅[快速入门：通过 Python 开始使用 Azure 机器学习](quickstart-create-workspace-with-python.md)。  
  
-> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE2F9Ad]
-
 在本快速入门中，你将执行以下操作：
 
 * 在 Azure 订阅中创建工作区。
-* 在 Azure Notebook 中搭配 Python 使用，并记录多个迭代中的值。
+* 在 Jupyter 笔记本中搭配 Python 使用，并记录多个迭代中的值。
 * 在工作区中查看所记录的值。
 
 如果区域支持，下述 Azure 资源会自动添加到工作区：
@@ -46,14 +44,14 @@ ms.locfileid: "53807714"
 
 [!INCLUDE [aml-create-portal](../../../includes/aml-create-in-portal.md)]
 
-在工作区页面上，选择`Explore your Azure Machine Learning service Workspace`。
-
- ![浏览工作区](./media/quickstart-get-started/explore_aml.png)
-
 
 ## <a name="use-the-workspace"></a>使用工作区
 
-现在看看工作区如何帮助你管理机器学习脚本。 在本部分中执行以下步骤：
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE2F9Ad]
+
+
+
+现在了解如何通过工作区来管理机器学习脚本。 在本部分中执行以下步骤：
 
 * 在 Azure Notebooks 中打开笔记本。
 * 运行会创建一些记录值的代码。
@@ -63,46 +61,57 @@ ms.locfileid: "53807714"
 
 ### <a name="open-a-notebook"></a>打开笔记本 
 
-Azure Notebooks 为 Jupyter Notebook 提供了一个免费的云平台，它预配置有运行机器学习所需的一切内容。  
+[Azure Notebooks](https://notebooks.azure.com) 为 Jupyter 笔记本提供了一个免费的云平台，它预配置有运行机器学习所需的一切内容。 可以从你的工作区启动此平台，开始使用 Azure 机器学习服务工作区。
 
-选择`Open Azure Notebooks`，尝试第一个试验。
+1. 在工作区页上，选择“探索 Azure 机器学习服务工作区”。
+
+ ![浏览工作区](./media/quickstart-get-started/explore_aml.png)
+
+1. 选择“打开 Azure Notebooks”，在 Azure Notebooks 中尝试第一个试验。  Azure Notebooks 是一项单独的服务，可以用来在云中免费运行 Jupyter 笔记本。  当你使用服务的此链接时，系统会将有关如何连接到工作区的信息添加到你在 Azure Notebooks 中创建的库。
 
  ![打开 Azure Notebooks](./media/quickstart-get-started/explore_ws.png)
 
-组织可能需要[管理员许可](https://notebooks.azure.com/help/signing-up/work-or-school-account/admin-consent)才能让你登录。
+1. 登录 Azure Notebooks。  确保使用登录 Azure 门户的帐户进行登录。 组织可能需要[管理员许可](https://notebooks.azure.com/help/signing-up/work-or-school-account/admin-consent)才能让你登录。
 
-使用登录 Azure 门户的帐户登录 Azure Notebook。  登录后，会打开一个新的选项卡并显示 `Clone Library` 提示。 选择 `Clone`。
+1. 登录后，会打开一个新的选项卡并显示 `Clone Library` 提示。 克隆此库时，会将一组笔记本和其他文件加载到 Azure Notebooks 帐户中。  可以通过这些文件了解 Azure 机器学习的功能。
 
+1. 取消选中“公共”，这样就不会与他人共享工作区信息。
+
+1. 选择“克隆”。
+
+ ![克隆库](./media/quickstart-get-started/clone.png)
+
+1. 如果看到项目状态为“已停止”，请单击“在免费计算上运行”，以便使用免费的笔记本服务器。
+
+    ![在免费计算上运行项目](./media/quickstart-get-started/run-project.png)
 
 ### <a name="run-the-notebook"></a>运行笔记本
 
-除了两个 Notebook，还将显示 `config.json` 文件。 此配置文件包含已创建的工作区的相关信息。  
+在此项目的文件列表中，可以看到一个 `config.json` 文件。 此配置文件包含在 Azure 门户中创建的工作区的相关信息。  代码可以使用此文件连接到工作区并向其添加信息。
 
-选择 `01.run-experiment.ipynb` 以打开 Notebook。
+1. 选择 **01.run-experiment.ipynb** 以打开笔记本。
 
-一次运行一个单元 (Shift+Enter)。 也可选择 `Cells` > `Run All` 运行整个 Notebook。 在单元旁边看到星号 __*__ 时，表明它正在运行。 该单元的代码完成后，会显示一个数字。 
+1. 状态区域会告知你等待，直至内核启动。  内核就绪以后，此消息会消失。
+
+    ![等待内核启动](./media/quickstart-get-started/wait-for-kernel.png)
+
+1. 内核启动以后，请使用 **Shift+Enter** 一次运行一个单元。 也可选择“单元” > “全部运行”，运行整个笔记本。 如果在单元旁边看到星号 __*__，则表明单元仍在运行。 该单元的代码完成后，会显示一个数字。 
+
+1. 按照笔记本中的说明，对 Azure 订阅进行身份验证。
 
 运行完 Notebook 中的所有单元以后，即可在工作区中查看记录的值。
 
 ## <a name="view-logged-values"></a>查看所记录的值
 
-运行 Notebook 中的所有单元后，返回到门户页面。  
+1. `run` 单元的输出包含一个可以返回到 Azure 门户的链接，用于在工作区中查看试验结果。 
 
-选择 `View Experiments`。
+    ![查看试验](./media/quickstart-get-started/view_exp.png)
 
-![查看试验](./media/quickstart-get-started/view_exp.png)
+1. 单击“链接到 Azure 门户”，查看在工作区中的运行的相关信息。  此链接打开 Azure 门户中的工作区。
 
-关闭 `Reports` 弹出窗口。
+1. 你看到的已记录值的绘图已自动在工作区中创建。 只要使用相同的名称参数记录了多个值，系统就会自动为你生成绘图。
 
-选择 `my-first-experiment`。
-
-查看与刚才执行的运行相关的信息。 向下滚动页面，找到运行表。 选择运行编号链接。
-
- ![运行历史记录链接](./media/quickstart-get-started/report.png)
-
-你会看到自动创建的记录值的绘图。 只要使用相同的名称参数记录了多个值，系统就会自动为你生成绘图。
-
-   ![查看历史记录](./media/quickstart-get-started/plots.png)
+   ![查看历史记录](./media/quickstart-get-started/web-results.png)
 
 由于估算 pi 的代码使用随机值，因此绘图会显示不同的值。  
 

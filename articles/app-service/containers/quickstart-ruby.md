@@ -13,22 +13,22 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 08/24/2018
+ms.date: 01/23/2019
 ms.author: cfowler
 ms.custom: seodec18
-ms.openlocfilehash: 13686951324a10c1de621f0fe507be062c9d2095
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 3ddf98abf0c52d3bc1fb0a6ce43755d5adcf87fa
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53252467"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54848625"
 ---
 # <a name="create-a-ruby-on-rails-app-in-app-service-on-linux"></a>在 Linux 应用服务中创建 Ruby on Rails 应用
 
 [Linux 上的 Azure 应用服务](app-service-linux-intro.md)提供高度可缩放、自修补的 Web 托管服务。 本快速入门介绍如何创建一个基本的 [Ruby on Rails](https://rubyonrails.org/) 应用程序并将其部署到 Azure 上，以作为 Linux 上的 Web 应用。
 
 > [!NOTE]
-> Ruby 开发堆栈目前仅支持 Ruby on Rails。 如果想要使用不同的平台（如 Sinatra），请参阅有关[用于容器的 Web 应用](https://docs.microsoft.com/azure/app-service/containers/)的快速入门。
+> Ruby 开发堆栈目前仅支持 Ruby on Rails。 如果想要使用不同的平台（如 Sinatra），或者想要使用[不受支持的 Ruby 版本](app-service-linux-intro.md)，请参阅有关[用于容器的 Web 应用](https://docs.microsoft.com/azure/app-service/containers/)的快速入门。
 
 ![Hello-world](./media/quickstart-ruby/hello-world-updated.png)
 

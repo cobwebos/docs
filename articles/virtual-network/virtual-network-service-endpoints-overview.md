@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 08/15/2018
 ms.author: sumeet.mittal
 ms.custom: ''
-ms.openlocfilehash: 77d21a9db54a34d3f9981929bb90dfd3b54e23dd
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 45a0c179677a0a2c144ea33dbfb031c88257e1cb
+ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54190589"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54382516"
 ---
 # <a name="virtual-network-service-endpoints"></a>虚拟网络服务终结点
 
@@ -58,7 +58,8 @@ ms.locfileid: "54190589"
 
 - 该功能仅适用于使用 Azure 资源管理器部署模型部署的虚拟网络。
 - 终结点在 Azure 虚拟网络中配置的子网上启用。 终结点不可用于从本地发往 Azure 服务的流量。 有关详细信息，请参阅[保护从本地进行的 Azure 服务访问](#securing-azure-services-to-virtual-networks)
-- 对于 Azure SQL，服务终结点仅适用于虚拟网络区域中的 Azure 服务流量。 对于 Azure 存储和 ADLS Gen 1，为了支持 RA-GRS 和 GRS 流量，终结点还进行扩展以包括虚拟网络所部署到的配对区域。 详细了解 [Azure 配对区域](../best-practices-availability-paired-regions.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-paired-regions)。
+- 对于 Azure SQL，服务终结点仅适用于虚拟网络区域中的 Azure 服务流量。 对于 Azure 存储，为了支持 RA-GRS 和 GRS 流量，终结点还进行扩展以包括虚拟网络所部署到的配对区域。 详细了解 [Azure 配对区域](../best-practices-availability-paired-regions.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-paired-regions)。
+- 就 ADLS Gen 1 来说，VNet 集成功能仅适用于同一区域中的虚拟网络。
 
 ## <a name="securing-azure-services-to-virtual-networks"></a>在虚拟网络中保护 Azure 服务
 

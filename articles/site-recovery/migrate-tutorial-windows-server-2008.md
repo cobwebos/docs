@@ -9,12 +9,12 @@ ms.tgt_pltfrm: na
 ms.date: 11/27/2018
 ms.author: bsiva
 ms.custom: MVC
-ms.openlocfilehash: 2497793ce5d24ed2516636e76b8b947417dd9f74
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: afcf64b79b08ae76f56f57569905945489c2933e
+ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54039939"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54382876"
 ---
 # <a name="migrate-servers-running-windows-server-2008-to-azure"></a>将运行 Windows Server 2008 的服务器迁移到 Azure
 
@@ -119,7 +119,7 @@ ms.locfileid: "54039939"
 1. 若要创建新的复制策略，请单击“Site Recovery 基础结构” > “复制策略” > “+ 复制策略”。
 2. 在“创建复制策略”中指定策略名称。
 3. 在“RPO 阈值”中，指定恢复点目标 (RPO) 限制。 如果复制 RPO 超出此限制，则会生成警报。
-4. 在“恢复点保留期”中，指定每个恢复点的保留期时长（以小时为单位）。 可以将复制的虚拟机恢复到窗口中的任何点。 复制到高级存储的计算机最多支持 24 小时的保留期，复制到标准存储的计算机最多支持 72 小时的保留期。
+4. 在“恢复点保留期”中，指定每个恢复点的保留期时长（以小时为单位）。 可以将复制的服务器恢复到此窗口中的任何点。 复制到高级存储的计算机最多支持 24 小时的保留期，复制到标准存储的计算机最多支持 72 小时的保留期。
 5. 在“应用一致性快照频率”中，请指定“关”。 单击“确定”创建该策略。
 
 此策略自动与配置服务器关联。
@@ -154,13 +154,13 @@ ms.locfileid: "54039939"
 2. 在“故障转移”中，选择要故障转移到的“恢复点”。 选择最新恢复点。
 3. 选择“在开始故障转移前关闭计算机”。 Site Recovery 在触发故障转移之前会尝试关闭服务器。 即使关机失败，故障转移也仍会继续。 可以在“作业”页上跟踪故障转移进度。
 4. 检查 Azure VM 是否在 Azure 中按预期显示。
-5. 在“复制的项”中，右键单击 VM >“完成迁移”。 这样会执行以下操作：
+5. 在“复制的项”中，右键单击服务器 >“完成迁移”。 这样会执行以下操作：
 
-    - 完成迁移过程，停止 AWS VM 复制，并停止 VM 的 Site Recovery 计费。
+    - 完成迁移过程，停止服务器复制，并停止服务器的 Site Recovery 计费。
     - 此步骤清除复制数据。 它不删除迁移的 VM。
 
    ![完成迁移](media/migrate-tutorial-windows-server-2008/complete-migration.png)
 
 
 > [!WARNING]
-> **不会取消正在进行的故障转移**：在故障转移开始前，VM 复制已停止。 如果取消正在进行的故障转移，故障转移会停止，但 VM 将不再进行复制。
+> **不会取消正在进行的故障转移**：在故障转移开始前，服务器复制已停止。 如果取消正在进行的故障转移，故障转移会停止，但服务器将不继续复制。

@@ -8,14 +8,14 @@ ms.topic: overview
 ms.date: 03/15/2017
 ms.author: mimart
 author: msmimart
-manager: mtillman
+manager: daveba
 ms.reviewer: sasubram
-ms.openlocfilehash: 42fbb8b08a2dc24ced436c4a6104f03ae3bca1e9
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: 69c8e293186f955e86962a325fce2f54a2eefdc7
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45982804"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54432160"
 ---
 # <a name="compare-b2b-collaboration-and-b2c-in-azure-active-directory"></a>在 Azure Active Directory 中比较 B2B 协作和 B2C
 

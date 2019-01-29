@@ -3,19 +3,19 @@ title: 教程 - 使单页应用能够使用帐户通过 Azure Active Directory B
 description: 有关如何使用 Azure Active Directory B2C 为单页应用程序 (JavaScript) 提供用户登录功能的教程。
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.author: davidmu
 ms.date: 11/30/2018
 ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.component: B2C
-ms.openlocfilehash: cce76a0e97e039ec6e6c3a976d1fc7caca7fde73
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 08372700e9740ca69ba73dfba49f9d120dfabc6d
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52834428"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54850325"
 ---
 # <a name="tutorial-enable-single-page-app-authentication-with-accounts-using-azure-active-directory-b2c"></a>教程：使单页应用能够使用帐户通过 Azure Active Directory B2C 进行身份验证
 

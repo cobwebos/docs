@@ -8,12 +8,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 09/24/2018
-ms.openlocfilehash: b33a646c52ca5ce85e0525b04e9be5009cc6f90d
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: 11c6f421e2eb1c3e508868d4a87f838781bda8e2
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54352919"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54478444"
 ---
 # <a name="quickstart-ingest-data-from-event-hub-into-azure-data-explorer"></a>快速入门：将数据从事件中心引入到 Azure 数据资源管理器
 
@@ -37,7 +37,7 @@ Azure 数据资源管理器是一项快速且高度可缩放的数据探索服�
 
 在本快速入门中，生成示例数据并将其发送到事件中心。 第一步是创建事件中心。 通过使用 Azure 资源管理器模板在 Azure 门户中执行此操作。
 
-1. 若要创建事件中心，请使用以下按钮开始部署。 在另一个标签页或窗口中右键单击并选择“在新窗口中打开”链接，以便按本文中的剩余步骤操作。
+1. 若要创建事件中心，请使用以下按钮开始部署。 右键单击并选择“在新窗口中打开”，以便按本文中的剩余步骤操作。
 
     [![部署到 Azure](media/ingest-data-event-hub/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-event-hubs-create-event-hub-and-consumer-group%2Fazuredeploy.json)
 

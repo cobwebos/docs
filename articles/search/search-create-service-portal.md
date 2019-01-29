@@ -1,20 +1,20 @@
 ---
 title: 在门户中创建 Azure 搜索服务 - Azure 搜索
-description: 在 Azure 门户中预配 Azure 搜索服务。 选择资源组、区域以及 SKU 或定价层。
+description: 在 Azure 门户中预配 Azure 搜索资源。 选择资源组、区域以及 SKU 或定价层。
 manager: cgronlun
 author: HeidiSteen
 services: search
 ms.service: search
 ms.topic: quickstart
-ms.date: 01/02/2019
+ms.date: 01/17/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: dfb6ccac01933ea114694de361c2f1d4d5a649b0
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: 6d71ad9bdc7744898480fb2cc6743e59131ec588
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54230520"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54423436"
 ---
 # <a name="create-an-azure-search-service-in-the-portal"></a>在门户中创建 Azure 搜索服务
 
@@ -22,7 +22,7 @@ Azure 搜索是用于在自定义应用中插入搜索体验的独立资源。 �
 
 本文介绍如何在 [Azure 门户](https://portal.azure.com/)中创建 Azure 搜索资源。 
 
-![门户中的 Azure 搜索资源](media/search-create-service-portal/azure-search-resource-label.png)
+[ ![动画 GIF](./media/search-create-service-portal/AnimatedGif-AzureSearch-small.gif) ](./media/search-create-service-portal/AnimatedGif-AzureSearch.gif#lightbox)
 
 更喜欢 PowerShell？ 使用 Azure 资源管理器[服务模板](https://azure.microsoft.com/resources/templates/101-azure-search-create/)。 有关如何入门的帮助，请参阅[使用 PowerShell 管理 Azure 搜索](search-manage-powershell.md)。
 
@@ -37,7 +37,7 @@ Azure 搜索是用于在自定义应用中插入搜索体验的独立资源。 �
 2. 单击左上角的加号（“+ 创建资源”）。
 3. 使用搜索栏查找“Azure 搜索”，或通过“Web” > “Azure 搜索”导航到资源。
 
-![](./media/search-create-service-portal/find-search3.png)
+![导航到 Azure 搜索资源](./media/search-create-service-portal/find-search3.png "Azure 搜索的导航路径")
 
 ## <a name="name-the-service-and-url-endpoint"></a>对服务和 URL 终结点进行命名
 
@@ -64,7 +64,9 @@ Azure 搜索是用于在自定义应用中插入搜索体验的独立资源。 �
 > 删除资源组也会删除其中的服务。 对于使用多个服务项目的原型，将它们放在同一资源组中可在项目结束后更加轻松地进行清理。 
 
 ## <a name="select-a-hosting-location"></a>选择托管位置 
-作为 Azure 服务，Azure 搜索可托管在世界各地的数据中心中。 请注意，[价格因地域而异](https://azure.microsoft.com/pricing/details/search/)。
+作为 Azure 服务，Azure 搜索可托管在世界各地的数据中心中。 [价格因地域而异](https://azure.microsoft.com/pricing/details/search/)。
+
+如果打算使用认知搜索，请选择[启用了功能可用性的区域](cognitive-search-quickstart-blob.md#supported-regions)。
 
 ## <a name="select-a-pricing-tier-sku"></a>选择定价层 (SKU)
 [Azure 搜索当前以多个定价层提供](https://azure.microsoft.com/pricing/details/search/)：免费、基本或标准。 每个层都有自己的[容量和限制](search-limits-quotas-capacity.md)。 有关相关指南，请参阅[选择定价层或 SKU](search-sku-tier.md)。
@@ -77,7 +79,21 @@ Azure 搜索是用于在自定义应用中插入搜索体验的独立资源。 �
 
 请记住将服务固定到仪表板，以便登录时可轻松访问。
 
-![](./media/search-create-service-portal/new-service3.png)
+![固定到仪表板](./media/search-create-service-portal/new-service3.png "将资源固定到仪表板以方便访问")
+
+## <a name="get-a-key-and-url-endpoint"></a>获取密钥和 URL 终结点。
+
+使用新服务时，必须提供 URL 终结点和授权 API 密钥，只有少数几个例外。 快速入门、教程（例如[探索 Azure 搜索 REST API (Postman)](search-fiddler.md) 和[如何在 .NET 中使用 Azure 搜索](search-howto-dotnet-sdk.md)）、示例、自定义代码都需要终结点和密钥才能在特定资源上运行。
+
+1. 在服务概览页的左侧找到并复制 URL 终结点。 
+
+   ![包含 URL 终结点的服务概览页](./media/search-create-service-portal/url-endpoint.png "URL 终结点和其他服务详细信息")
+
+2. 在左侧导航窗格中，选择“密钥”，然后复制任一管理员密钥（它们是相同的）。 在服务上创建、更新和删除对象需要管理员 API 密钥。
+
+   ![显示主密钥和辅助密钥的密钥页](./media/search-create-service-portal/admin-api-keys.png "用于授权的管理员 API 密钥")
+
+基于门户的任务不需终结点和密钥。 门户已链接到具有管理员权限的 Azure 搜索资源。 至于门户教程，请从[教程：Azure 搜索中的导入、索引和查询](search-get-started-portal.md)着手。
 
 ## <a name="scale-your-service"></a>扩展服务
 创建服务可能需要几分钟（至少 15 分钟，具体取决于层）。 预配服务后，可以对其进行扩展以满足需求。 由于为 Azure 搜索服务选择标准层，因此可采用两个维度扩展服务：副本和分区。 如果已选择基本层，仅可以添加副本。 如果预配了免费服务，则扩展不可用。
@@ -95,7 +111,7 @@ Azure 搜索是用于在自定义应用中插入搜索体验的独立资源。 �
 2. 在左侧导航窗格中，选择“设置” > “缩放”。
 3. 使用滑块添加任一类型的资源。
 
-![](./media/search-create-service-portal/settings-scale.png)
+![添加容量](./media/search-create-service-portal/settings-scale.png "通过副本和分区添加容量")
 
 > [!Note] 
 > 每个层对于单个服务中允许的搜索单位总数都有不同的[限制](search-limits-quotas-capacity.md)（副本 * 分区 = 搜索单位总数）。

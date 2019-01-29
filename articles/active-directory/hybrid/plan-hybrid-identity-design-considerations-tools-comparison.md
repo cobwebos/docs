@@ -4,7 +4,7 @@ description: 本页将提供针对可用于目录集成的各种目录集成工�
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 ms.assetid: 1e62a4bd-4d55-4609-895e-70131dedbf52
 ms.service: active-directory
 ms.workload: identity
@@ -14,12 +14,12 @@ ms.topic: get-started-article
 ms.date: 08/28/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: c7050076f80f69929b3d12f2a55b4d4a720f9896
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 446cb0a930f5a949e690ae49e0ad5baa7ff9d841
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46301864"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54477577"
 ---
 # <a name="hybrid-identity-directory-integration-tools-comparison"></a>混合标识目录集成工具比较
 过去数年以来，集成工具已得到发展和演进。  本文档旨在帮助提供这些工具的合并视图，并比较每个工具提供的功能。
@@ -40,7 +40,7 @@ FR = 未来版本
 PP = 公开预览版  
 
 ## <a name="on-premises-to-cloud-synchronization"></a>本地到云的同步
-| 功能 | Azure Active Directory Connect | Azure Active Directory 同步服务 (AAD Sync) - 不再支持 | Azure Active Directory 同步工具 (DirSync) - 不再支持 | Forefront Identity Manager 2010 R2 (FIM) | Microsoft 标识管理器 2016 (MIM) |
+| Feature | Azure Active Directory Connect | Azure Active Directory 同步服务 (AAD Sync) - 不再支持 | Azure Active Directory 同步工具 (DirSync) - 不再支持 | Forefront Identity Manager 2010 R2 (FIM) | Microsoft 标识管理器 2016 (MIM) |
 |:--- |:---:|:---:|:---:|:---:|:---:|
 | 连接到单个本地 AD 林 |● |● |● |● |● |
 | 连接到多个本地 AD 林 |● |● | |● |● |
@@ -61,7 +61,7 @@ PP = 公开预览版
    2. 可以开发自己的解决方案，将对象从 LDAP 移至 Active Directory。  然后使用 Azure AD Connect 来同步对象。  可以将 MIM 或 FIM 用作移动这些对象的可能解决方案。 
 
 ## <a name="cloud-to-on-premises-synchronization"></a>云到本地的同步
-| 功能 | Azure Active Directory Connect | Azure Active Directory 同步服务 - 不再支持  | Azure Active Directory 同步工具 (DirSync) - 不再支持  | Forefront Identity Manager 2010 R2 (FIM) | Microsoft 标识管理器 2016 (MIM) |
+| Feature | Azure Active Directory Connect | Azure Active Directory 同步服务 - 不再支持  | Azure Active Directory 同步工具 (DirSync) - 不再支持  | Forefront Identity Manager 2010 R2 (FIM) | Microsoft 标识管理器 2016 (MIM) |
 |:--- |:---:|:---:|:---:|:---:|:---:|
 | 设备写回 |● | |● | | |
 | 属性写回（适用于 Exchange 混合部署） |● |● |● |● |● |
@@ -69,7 +69,7 @@ PP = 公开预览版
 | 密码写回（通过自助密码重置 (SSPR) 和密码更改） |● |● | | | |
 
 ## <a name="authentication-feature-support"></a>身份验证功能支持
-| 功能 | Azure Active Directory Connect | Azure Active Directory 同步服务 - 不再支持  | Azure Active Directory 同步工具 (DirSync) - 不再支持  | Forefront Identity Manager 2010 R2 (FIM) | Microsoft 标识管理器 2016 (MIM) |
+| Feature | Azure Active Directory Connect | Azure Active Directory 同步服务 - 不再支持  | Azure Active Directory 同步工具 (DirSync) - 不再支持  | Forefront Identity Manager 2010 R2 (FIM) | Microsoft 标识管理器 2016 (MIM) |
 |:--- |:---:|:---:|:---:|:---:|:---:|
 | 单个本地 AD 林的密码哈希同步 |●|●|● | | |
 | 多个本地 AD 林的密码哈希同步 |●|● | | | |
@@ -79,7 +79,7 @@ PP = 公开预览版
 | 密码写回（通过 SSPR 和密码更改） |● |● | | | |
 
 ## <a name="set-up-and-installation"></a>设置和安装
-| 功能 | Azure Active Directory Connect | Azure Active Directory 同步服务 - 不再支持  | Azure Active Directory 同步工具 (DirSync) - 不再支持  | Microsoft 标识管理器 2016 (MIM) |
+| Feature | Azure Active Directory Connect | Azure Active Directory 同步服务 - 不再支持  | Azure Active Directory 同步工具 (DirSync) - 不再支持  | Microsoft 标识管理器 2016 (MIM) |
 |:--- |:---:|:---:|:---:|:---:|
 | 支持在域控制器上安装 |● |● |● | |
 | 支持使用 SQL Express 安装 |● |● |● | |
@@ -90,7 +90,7 @@ PP = 公开预览版
 | 对 Windows Server 2012 和 Windows Server 2012 R2 的支持 |● |● |● |● |
 
 ## <a name="filtering-and-configuration"></a>筛选和配置
-| 功能 | Azure Active Directory Connect | Azure Active Directory 同步服务 - 不再支持  | Azure Active Directory 同步工具 (DirSync) - 不再支持  | Forefront Identity Manager 2010 R2 (FIM) | Microsoft 标识管理器 2016 (MIM) |
+| Feature | Azure Active Directory Connect | Azure Active Directory 同步服务 - 不再支持  | Azure Active Directory 同步工具 (DirSync) - 不再支持  | Forefront Identity Manager 2010 R2 (FIM) | Microsoft 标识管理器 2016 (MIM) |
 |:--- |:---:|:---:|:---:|:---:|:---:|
 | 筛选域和组织单位 |● |● |● |● |● |
 | 筛选对象的属性值 |● |● |● |● |● |

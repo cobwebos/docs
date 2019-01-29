@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 11/27/2018
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to configure compute on Data Box Edge so I can use it to transform the data before sending it to Azure.
-ms.openlocfilehash: c0901f22e4941fdfaa21138153a06e97c2d6095f
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: c52c311f1e1cd1335ea5797eadacd0bc89e1b36c
+ms.sourcegitcommit: c31a2dd686ea1b0824e7e695157adbc219d9074f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53630368"
+ms.lasthandoff: 01/18/2019
+ms.locfileid: "54402109"
 ---
 # <a name="tutorial-transform-data-with-azure-data-box-edge-preview"></a>教程：使用 Azure Data Box Edge（预览版）转换数据
 
@@ -110,7 +110,7 @@ ms.locfileid: "53630368"
 
 1. 执行以下操作，在 Edge 设备上添加本地共享：
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在 Data Box Edge 资源中，转到“共享”。 
+    a. 在 Data Box Edge 资源中，转到“共享”。 
     
     b. 选择“添加共享”，提供共享名称，然后选择共享类型。 
     
@@ -152,7 +152,7 @@ ms.locfileid: "53630368"
 
 1. 在“添加模块”下执行以下操作：
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 输入自定义模块的容器注册表设置的名称、地址、用户名和密码。  
+    a. 输入自定义模块的容器注册表设置的名称、地址、用户名和密码。  
     名称、地址和所列的凭据用于检索具有匹配 URL 的模块。 若要部署此模块，请在“部署模块”下选择“IoT Edge 模块”。 此 IoT Edge 模块是可以部署到与 Data Box Edge 设备相关联的 IoT Edge 设备的 Docker 容器。
 
     ![“设置模块”页](./media/data-box-edge-deploy-configure-compute/add-a-custom-module-6.png) 
@@ -232,7 +232,7 @@ ms.locfileid: "53630368"
 
     ![验证数据转换](./media/data-box-edge-deploy-configure-compute/verify-data-transform-6.png)  
 
-    然后，将数据从云共享推送到存储帐户。 转到存储资源管理器可查看数据。
+    然后，将数据从云共享推送到存储帐户。 若要查看数据，请转到存储资源管理器。
 
     ![验证数据转换](./media/data-box-edge-deploy-configure-compute/verify-data-transform-7.png) 
  

@@ -13,18 +13,18 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 01/11/2019
 ms.author: kraigb
-ms.openlocfilehash: ba06e568b3d7b0125d5868c1ad4a85e5e42f7e18
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: ffceeeeb5a55b0fab1dd1cf91aebfcd4cfd852ef
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54246205"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54848591"
 ---
 # <a name="overview-of-azure-notebooks"></a>Azure Notebooks 概述
 
 Azure Notebooks 是免费的托管服务，用于在云中开发和运行 Jupyter 笔记本而无需进行安装。 [Jupyter](https://jupyter.org/)（以前称为 IPython）是一个开放源代码项目，可让你将 Markdown 文本、可执行代码、持久性数据、图形和可视化效果轻松合并到单个可共享画布，即笔记本（jupyter.org 提供的图片）：
 
-[![](https://jupyter.org/assets/jupyterpreview.png "Jupyter 笔记本")](https://jupyter.org/assets/jupyterpreview.png#lightbox)
+[![Jupyter 笔记本的示例](https://jupyter.org/assets/jupyterpreview.png)](https://jupyter.org/assets/jupyterpreview.png#lightbox)
 
 由于代码、图形和说明性文本的这种组合功能强大，因此 Jupyter 在许多方面已变得很常用，例如数据科学指令、数据清理和转换、数值模拟、统计建模，以及机器学习模型的开发。
 
@@ -55,9 +55,9 @@ Azure Notebooks 是免费的托管服务，用于在云中开发和运行 Jupyte
 
 ## <a name="pricing-and-quotas"></a>定价和配额
 
-Azure Notebooks 是一项免费服务，但每个项目有 4-GB 内存和 1-GB 数据的限制，防止滥用。 超过这些限制的用户会看到 Captcha 质询，回答正确后即可继续运行笔记本。
+Azure Notebooks 是一项免费服务，但每个项目有 4GB 内存和 1GB 数据的限制，防止滥用。 超过这些限制的用户会看到 Captcha 质询，回答正确后即可继续运行笔记本。
 
-若要解除所有限制，请通过使用 Azure Active Directory 的某个帐户（例如公司帐户）登录到 Azure Notebooks。 如果该帐户与某个 Azure 订阅相关联，可以使用 Azure Data Science Virtual Machine 计算层。
+若要解除所有限制，请通过使用 Azure Active Directory 的某个帐户（例如公司帐户）登录到 Azure Notebooks。 如果该帐户与某个 Azure 订阅相关联，则可连接到该订阅中的任何 Azure Data Science Virtual Machine 实例。 有关详细信息，请参阅[管理和配置项目 - 计算层](configure-manage-azure-notebooks-projects.md#compute-tier)。
 
 ## <a name="available-kernels-and-environments"></a>可用内核和环境
 

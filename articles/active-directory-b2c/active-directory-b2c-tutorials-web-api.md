@@ -3,19 +3,19 @@ title: 教程 - 使用 Azure Active Directory B2C 通过 Web 应用授予对 ASP
 description: 有关如何使用 Active Directory B2C 保护 ASP.NET Web API 并通过 ASP.NET Web 应用对其进行调用的教程。
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.author: davidmu
 ms.date: 11/30/2018
 ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.component: B2C
-ms.openlocfilehash: bd900071bbcd894d4fe71e0f8a265d98348eb262
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 4051c0438cfb7c33f36cf49542e422e54e723cfc
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52726400"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54856054"
 ---
 # <a name="tutorial-grant-access-to-an-aspnet-web-api-from-a-web-app-using-azure-active-directory-b2c"></a>教程：使用 Azure Active Directory B2C 通过 Web 应用授予对 ASP.NET Web API 的访问权限
 

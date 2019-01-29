@@ -5,14 +5,14 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.topic: overview
-ms.date: 09/24/2018
+ms.date: 01/18/2019
 ms.author: alkohli
-ms.openlocfilehash: 4f1ab6d955c81ce6f7b141eef42341f43bb379f6
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: 9670d67fa1eb79e9e5e8c81726c10cc78767fb74
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49165311"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54435455"
 ---
 # <a name="what-is-azure-data-box-gateway-preview"></a>什么是 Data Box Gateway（预览版）？ 
 
@@ -39,14 +39,17 @@ Data Box Gateway 具有以下优势：
 
 - **轻松传输数据** - 可以轻松地将数据移入和移出 Azure 存储，就像使用本地网络共享一样简单。  
 - **高性能** - 通过与 Azure 之间的高性能传输，避免了网络数据传输的麻烦。 
-- **快速访问** - 缓存最近的文件，以快速访问本地文件。  
+- **营业时间的快速访问和高数据引入率** - Data Box Gateway 有一个本地缓存，可以在预配虚拟设备时将其定义为本地容量大小。 数据磁盘大小应该按[虚拟设备最低要求](data-box-gateway-system-requirements.md#specifications-for-the-virtual-device)进行指定。 本地缓存具有以下优势：
+    - 可以通过本地缓存高速引入时间。 在高峰营业时间引入大量数据时，可以由缓存来存储该数据并将其上传到云。
+    - 可以通过本地缓存进行快速读取访问，直至达到特定的阈值。 在设备达到 50-60% 的容量之前，从设备进行的所有读取都是通过缓存来访问的，因此速度更快。 在设备上使用的空间超出此阈值后，设备就会开始删除本地文件。 
+ 
 - **带宽用量受限** - 即使在营业高峰期网络用量受限，也能将数据写入 Azure。  
 
 ## <a name="key-capabilities"></a>关键功能
 
 Data Box Gateway 具有以下功能：
 
-|功能 |Description  |
+|功能 |说明  |
 |---------|---------|
 |Speed     | 完全自动化，高度优化的数据传输和带宽。|
 |支持的协议     | 支持用于数据引入的标准 SMB 和 NFS 协议。 <br> 有关支持的版本的详细信息，请转到 [Data Box Gateway 系统要求](data-box-gateway-system-requirements.md)。|
@@ -62,12 +65,12 @@ Data Box Gateway 具有以下功能：
 
 Data Box Gateway 虚拟设备具有以下规范：
 
-| 规范                                          | Description              |
+| 规范                                          | 说明              |
 |---------------------------------------------------------|--------------------------|
 | 虚拟处理器（核心数）   | 最低为 4 核 |            
 | 内存  | 最低为 8 GB|
 | 可用性|单节点|
-| 磁盘| OS 磁盘：250 GB <br> 数据磁盘：最低为 2 TB、配置精简，并且必须由 SSD 提供支持|
+| 磁盘| OS 磁盘：250 GB <br> 数据磁盘：最低为 2 TB、预配精简，并且必须由 SSD 提供支持|
 | 网络接口|1 个或多个虚拟网络接口|
 | 本机文件共享协议|SMB 和 NFS  |
 | 安全| 必须进行身份验证才能访问设备和数据 <br> 使用 AES-256 位加密动态数据进行加密|

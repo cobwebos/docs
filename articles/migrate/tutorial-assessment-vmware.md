@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 01/11/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 186d532f159db7d51ba4f93a250c00c7627280e0
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: e922e9e7741eb3338503e02cd0ca78387e32b1f6
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54229518"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54824093"
 ---
 # <a name="discover-and-assess-on-premises-vmware-vms-for-migration-to-azure"></a>发现和评估要迁移到 Azure 的本地 VMware VM
 

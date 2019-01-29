@@ -4,7 +4,7 @@ description: 了解如何设置 Azure 诊断，以便将 Azure Active Directory 
 services: active-directory
 documentationcenter: ''
 author: priyamohanram
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: 045f94b3-6f12-407a-8e9c-ed13ae7b43a3
 ms.service: active-directory
@@ -16,12 +16,12 @@ ms.component: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 941e914e6ce99082abdd920bd7171644f3575a38
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 0560f4a4a815373f86592126b30edcc4ca10ba24
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52849388"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54825317"
 ---
 # <a name="tutorial-stream-azure-active-directory-logs-to-an-azure-event-hub-preview"></a>教程：将 Azure Active Directory 日志流式传输到 Azure 事件中心（预览版）
 

@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 10/12/2018
 ms.author: tomfitz
 ms.custom: mvc
-ms.openlocfilehash: 715a8e5bab9e5d16b8c0e54298101df856d51a9a
-ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
+ms.openlocfilehash: e83d6e2f14f8665f8eb0c58a4dc41c7c2ecc792d
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2018
-ms.locfileid: "49309853"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54464249"
 ---
 # <a name="tutorial-learn-about-linux-virtual-machine-governance-with-azure-cli"></a>教程：了解如何使用 Azure CLI 管理 Linux 虚拟机
 
@@ -177,7 +177,7 @@ az group delete --name myResourceGroup
 
 [!INCLUDE [Resource Manager governance tags CLI](../../../includes/resource-manager-governance-tags-cli.md)]
 
-若要将标记应用于虚拟机，请使用 [az resource tag](/cli/azure/resource#az_resource_tag) 命令。 资源上的任何现有标记都不会保留。
+若要将标记应用于虚拟机，请使用 [az resource tag](/cli/azure/resource) 命令。 资源上的任何现有标记都不会保留。
 
 ```azurecli-interactive
 az resource tag -n myVM \
@@ -188,7 +188,7 @@ az resource tag -n myVM \
 
 ### <a name="find-resources-by-tag"></a>按标记查找资源
 
-若要通过标记名称和值查找资源，请使用 [az resource list](/cli/azure/resource#az_resource_list) 命令：
+若要通过标记名称和值查找资源，请使用 [az resource list](/cli/azure/resource) 命令：
 
 ```azurecli-interactive
 az resource list --tag Environment=Test --query [].name

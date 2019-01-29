@@ -8,14 +8,14 @@ ms.topic: tutorial
 ms.date: 07/11/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: mtillman
+manager: daveba
 ms.reviewer: michmcla
-ms.openlocfilehash: 098973e2ece3477ec87b154c0304c4ca7e0246d1
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: 5bd27ed71e93edc10fd86395121c524cb54c98e7
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39163264"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54427604"
 ---
 # <a name="tutorial-complete-an-azure-multi-factor-authentication-pilot-roll-out"></a>教程：完成 Azure 多重身份验证试验试点推广
 
@@ -29,7 +29,7 @@ ms.locfileid: "39163264"
 
 * 一个至少启用了试用版许可证的有效 Azure AD 租户。
 * 一个具有全局管理员权限的帐户。
-* 一个用于测试的你知道其密码的非管理员测试用户，如果需要创建用户，请参阅[快速入门：向 Azure Active Directory 添加新用户](../add-users-azure-active-directory.md)一文。
+* 一个用于测试的你知道其密码的非管理员测试用户。如果需要创建用户，请参阅以下文章：[快速入门：向 Azure Active Directory 添加新用户](../add-users-azure-active-directory.md)。
 * 非管理员用户所属的用于测试的一个试点组，如果需要创建组，请参阅[在 Azure Active Directory 中创建组并添加成员](../active-directory-groups-create-azure-portal.md)一文。
 
 ## <a name="enable-azure-multi-factor-authentication"></a>启用 Azure 多重身份验证

@@ -11,12 +11,12 @@ ms.author: haining
 ms.reviewer: sgilley
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 5008aebfea8fc284b1b85797f0523bc4fb11c7bd
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: a9fc0655a3666f09fed342af5b4f14e2097290ab
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54075934"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54828242"
 ---
 # <a name="tutorial-train-an-image-classification-model-with-azure-machine-learning-service"></a>教程：使用 Azure 机器学习服务定型图像分类模型
 
@@ -42,7 +42,7 @@ ms.locfileid: "54075934"
 
 ## <a name="get-the-notebook"></a>获取 Notebook
 
-为方便起见，本教程以 [Jupyter Notebook](https://github.com/Azure/MachineLearningNotebooks/blob/master/tutorials/img-classification-part1-training.ipynb) 的形式提供。 在 Azure Notebooks 或你自己的 Jupyter Notebook 服务器中运行 `tutorials/img-classification-part1-training.ipynb` Notebook。
+为方便起见，本教程以 [Jupyter Notebook](https://github.com/Azure/MachineLearningNotebooks/blob/master/tutorials/img-classification-part1-training.ipynb) 的形式提供。 在 [Azure Notebooks](https://notebooks.azure.com/) 或你自己的 Jupyter 笔记本服务器中运行 `tutorials/img-classification-part1-training.ipynb` 笔记本。
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-in-azure-notebook.md)]
 

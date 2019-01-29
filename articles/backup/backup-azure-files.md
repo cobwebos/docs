@@ -8,12 +8,12 @@ ms.date: 3/23/2018
 ms.topic: tutorial
 ms.service: backup
 manager: carmonm
-ms.openlocfilehash: 13003f671e479217d73d1c611be36987b3bda7bc
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 4343e8f1c456d35ccee169f3d7d62f152d8274d8
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53793574"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54465337"
 ---
 # <a name="back-up-azure-file-shares"></a>备份 Azure 文件共享
 本文介绍如何使用 Azure 门户备份和还原 [Azure 文件共享](../storage/files/storage-files-introduction.md)。
@@ -31,7 +31,7 @@ ms.locfileid: "53793574"
 在备份 Azure 文件共享之前，请确保其类型为[支持的存储帐户类型](backup-azure-files.md#limitations-for-azure-file-share-backup-during-preview)。 验证这个之后，即可对文件共享进行保护。
 
 ## <a name="limitations-for-azure-file-share-backup-during-preview"></a>预览版期间 Azure 文件共享备份的限制
-Azure 文件共享备份处于预览状态。 常规用途 v1 和常规用途 v2 存储帐户中的 Azure 文件共享均受支持。 Azure 文件共享不支持以下备份场景：
+Azure 文件共享备份为预览版。 常规用途 v1 和常规用途 v2 存储帐户中的 Azure 文件共享均受支持。 Azure 文件共享不支持以下备份场景：
 - 不能保护具有[读取访问异地冗余存储](../storage/common/storage-redundancy-grs.md) (RA-GRS) 复制功能\*的存储帐户中的 Azure 文件共享。
 - 不能保护已启用虚拟网络或防火墙的存储帐户中的 Azure 文件共享。
 - 无法使用 CLI 通过 Azure 备份来保护 Azure 文件。
@@ -46,7 +46,7 @@ Azure 文件共享备份处于预览状态。 常规用途 v1 和常规用途 v2
 使用[区域冗余存储](../storage/common/storage-redundancy-zrs.md) (ZRS) 复制对存储帐户中的 Azure 文件共享进行备份，目前只能在美国中部 (CUS)、美国东部 (EUS)、美国东部 2 (EUS2)、北欧 (NE)、东南亚 (SEA)、西欧 (WE) 和美国西部 2 (WUS2) 使用。
 
 ## <a name="configuring-backup-for-an-azure-file-share"></a>为 Azure 文件共享配置备份
-所有备份数据都存储在恢复服务保管库中。 本教程假定你已建立 Azure 文件共享。 若要备份 Azure 文件共享，请执行以下操作：
+本教程假定你已建立 Azure 文件共享。 若要备份 Azure 文件共享，请执行以下操作：
 
 1. 在文件共享所在区域创建恢复服务保管库。 如果已有一个保管库，请打开保管库的“概览”页，然后单击“备份”。
 

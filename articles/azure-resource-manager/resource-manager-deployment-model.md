@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/15/2017
 ms.author: tomfitz
-ms.openlocfilehash: 704bbe5cc566833ef1279e84f0fab9f363dfaa11
-ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
+ms.openlocfilehash: 97dffa4952354864f90f75ffb909228eb4202e77
+ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "43841620"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54382801"
 ---
-# <a name="azure-resource-manager-vs-classic-deployment-understand-deployment-models-and-the-state-of-your-resources"></a>Azure 资源管理器与经典部署：了解部署模型和资源状态
+# <a name="azure-resource-manager-vs-classic-deployment-understand-deployment-models-and-the-state-of-your-resources"></a>Azure 资源管理器和经典部署：了解部署模型和资源状态
 
 > [!NOTE]
 > 仅当从经典部署迁移到 Azure 资源管理器部署时，才会使用本文中提供的信息。
@@ -153,6 +153,7 @@ Get-AzureRmVM -ResourceGroupName ExampleGroup
 可以在 [Azure 资源管理器快速入门模板](https://azure.microsoft.com/documentation/templates/)中找到一系列综合的初学者模板。
 
 ## <a name="next-steps"></a>后续步骤
+
 * 若要演练如何创建用于定义虚拟机、存储帐户和虚拟网络的模板，请参阅 [Resource Manager 模板演练](resource-manager-template-walkthrough.md)。
 * 若要查看用于部署模板的命令，请参阅[使用 Azure 资源管理器模板部署应用程序](resource-group-template-deploy.md)。
 

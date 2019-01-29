@@ -4,35 +4,36 @@ description: 使用 Azure PowerShell 创建 Azure Policy 分配以识别不符�
 services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 12/06/2018
+ms.date: 01/23/2019
 ms.topic: quickstart
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 32fe811c80fd34b4ea3390a3f46a1d36aba7534e
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: b5f4306fc1627e679f8f59a92bae4124a48cbd42
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53310702"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54856462"
 ---
 # <a name="create-a-policy-assignment-to-identify-non-compliant-resources-using-azure-powershell"></a>使用 Azure PowerShell 创建策略分配以识别不符合的资源
 
 若要了解 Azure 中的符合性，第一步是确定资源的状态。 在本快速入门中，我们将创建策略分配，以识别未使用托管磁盘的虚拟机。 完成后，我们可以使用该策略分配来识别不合规的虚拟机。
 
-AzureRM PowerShell 模块用于从命令行或脚本创建和管理 Azure 资源。 本指南介绍如何使用 AzureRM 来创建策略分配。 该策略可识别 Azure 环境中的不合规资源。
+Azure PowerShell 模块用于从命令行或脚本创建和管理 Azure 资源。 本指南介绍如何使用 Az 来创建策略分配。 该策略可识别 Azure 环境中的不合规资源。
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费](https://azure.microsoft.com/free/)帐户。
+
+[!INCLUDE [az-powershell-update](../../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>先决条件
 
 - 安装 [ARMClient](https://github.com/projectkudu/ARMClient)（如果尚未安装）。 该工具可将 HTTP 请求发送到基于 Azure 资源管理器的 API。
-- 在开始之前，请确保安装 PowerShell 的最新版本。 有关详细信息，请参阅[如何安装和配置 Azure PowerShell](/powershell/azureps-cmdlets-docs)。
-- 将 AzureRM PowerShell 模块更新到最新版本。 如果需要进行安装或升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-azurerm-ps)。
+- 在开始之前，请确保安装 Azure PowerShell 的最新版本。 有关详细信息，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-az-ps)。
 - 使用 Azure PowerShell 注册 Policy Insights 资源提供程序。 注册此资源提供程序可确保订阅能够使用它。 要注册资源提供程序，必须具有注册资源提供程序操作的权限。 此操作包含在“参与者”和“所有者”角色中。 运行以下命令，注册资源提供程序：
 
   ```azurepowershell-interactive
-  Register-AzureRmResourceProvider -ProviderNamespace 'Microsoft.PolicyInsights'
+  Register-AzResourceProvider -ProviderNamespace 'Microsoft.PolicyInsights'
   ```
 
   有关注册和查看资源提供程序的详细信息，请参阅[资源提供程序和类型](../../azure-resource-manager/resource-manager-supported-services.md)
@@ -44,9 +45,9 @@ AzureRM PowerShell 模块用于从命令行或脚本创建和管理 Azure 资源
 运行以下命令创建新的策略分配：
 
 ```azurepowershell-interactive
-$rg = Get-AzureRmResourceGroup -Name '<resourceGroupName>'
-$definition = Get-AzureRmPolicyDefinition | Where-Object { $_.Properties.DisplayName -eq 'Audit VMs that do not use managed disks' }
-New-AzureRmPolicyAssignment -Name 'audit-vm-manageddisks' -DisplayName 'Audit VMs without managed disks Assignment' -Scope $rg.ResourceId -PolicyDefinition $definition
+$rg = Get-AzResourceGroup -Name '<resourceGroupName>'
+$definition = Get-AzPolicyDefinition | Where-Object { $_.Properties.DisplayName -eq 'Audit VMs that do not use managed disks' }
+New-AzPolicyAssignment -Name 'audit-vm-manageddisks' -DisplayName 'Audit VMs without managed disks Assignment' -Scope $rg.ResourceId -PolicyDefinition $definition
 ```
 
 上述命令使用以下信息：
@@ -63,11 +64,11 @@ New-AzureRmPolicyAssignment -Name 'audit-vm-manageddisks' -DisplayName 'Audit VM
 使用以下信息来识别不符合所创建的策略分配的资源。 运行以下命令：
 
 ```azurepowershell-interactive
-$policyAssignment = Get-AzureRmPolicyAssignment | Where-Object { $_.Properties.DisplayName -eq 'Audit VMs without managed disks Assignment' }
+$policyAssignment = Get-AzPolicyAssignment | Where-Object { $_.Properties.DisplayName -eq 'Audit VMs without managed disks Assignment' }
 $policyAssignment.PolicyAssignmentId
 ```
 
-有关策略分配 ID 的详细信息，请参阅 [Get-AzureRmPolicyAssignment](/powershell/module/azurerm.resources/get-azurermpolicyassignment)。
+有关策略分配 ID 的详细信息，请参阅 [Get-AzPolicyAssignment](/powershell/module/az.resources/get-azpolicyassignment)。
 
 接下来，运行以下命令，获取输出到 JSON 文件中的不合规资源的资源 ID：
 
@@ -108,7 +109,7 @@ armclient post "/subscriptions/<subscriptionID>/resourceGroups/<rgName>/provider
 要删除创建的分配，请使用以下命令：
 
 ```azurepowershell-interactive
-Remove-AzureRmPolicyAssignment -Name 'audit-vm-manageddisks' -Scope '/subscriptions/<subscriptionID>/resourceGroups/<resourceGroupName>'
+Remove-AzPolicyAssignment -Name 'audit-vm-manageddisks' -Scope '/subscriptions/<subscriptionID>/resourceGroups/<resourceGroupName>'
 ```
 
 ## <a name="next-steps"></a>后续步骤

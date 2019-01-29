@@ -10,12 +10,12 @@ ms.workload: infrastructure-services
 ms.date: 7/14/2018
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 27db76087165e37db936e802a01ddc4ecd269f4c
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: b1f1bb268223eb55270ff5dab5dbb346f6299d09
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52874424"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54856241"
 ---
 # <a name="tutorial-create-an-application-gateway-that-hosts-multiple-web-sites-using-the-azure-cli"></a>教程：使用 Azure CLI 创建托管多个网站的应用程序网关
 
@@ -122,7 +122,7 @@ az network application-gateway address-pool create \
 
 ### <a name="add-backend-listeners"></a>添加后端侦听器
 
-使用 [az network application-gateway http-listener create](/cli/azure/network/application-gateway#az-network_application_gateway_http_listener_create) 添加路由流量所需的后端侦听器。
+使用 [az network application-gateway http-listener create](/cli/azure/network/application-gateway) 添加路由流量所需的后端侦听器。
 
 ```azurecli-interactive
 az network application-gateway http-listener create \
@@ -146,7 +146,7 @@ az network application-gateway http-listener create \
 
 规则按其列出的顺序进行处理，并且流量使用匹配的第一个规则进行定向，而无论特殊性如何。 例如，如果在同一端口上同时有使用基本侦听器的规则和使用多站点侦听器的规则，则使用多站点侦听器的规则必须在使用基本侦听器的规则之前列出，多站点规则才能正常运行。 
 
-在此示例中，将创建两个新规则并删除在创建应用程序网关时创建的默认规则。 可以使用 [az network application-gateway rule create](/cli/azure/network/application-gateway#az-network_application_gateway_rule_create) 添加规则。
+在此示例中，将创建两个新规则并删除在创建应用程序网关时创建的默认规则。 可以使用 [az network application-gateway rule create](/cli/azure/network/application-gateway) 添加规则。
 
 ```azurecli-interactive
 az network application-gateway rule create \

@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-graph
 ms.topic: quickstart
 ms.date: 01/08/2018
 ms.author: lbosq
-ms.openlocfilehash: e94d52cc920759b0ddf462b7fb5d20b86ab61e6c
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 676fd2322dee170b015d0029163800989ff4e814
+ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54032170"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54383026"
 ---
 # <a name="azure-cosmos-db-create-query-and-traverse-a-graph-in-the-gremlin-console"></a>Azure Cosmos DB：在 Gremlin 控制台中创建、查询和遍历图形
 
@@ -78,6 +78,8 @@ connectionPool: {
 }
 serializer: { className: org.apache.tinkerpop.gremlin.driver.ser.GraphSONMessageSerializerV1d0, config: { serializeResultToString: true }}
 ```
+
+确保将 hosts 参数的值括在括号 [] 中。 
 
 3. 在终端中运行 `bin/gremlin.bat` 或 `bin/gremlin.sh` 启动[Gremlin 控制台](https://tinkerpop.apache.org/docs/3.2.5/tutorials/getting-started/)。
 4. 在终端中运行 `:remote connect tinkerpop.server conf/remote-secure.yaml` 连接到应用服务。

@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 09/18/2018
 ms.author: twhitney
 ms.custom: mvc, devcenter
-ms.openlocfilehash: ec282bc1159e8a8cf21b88b8430bbf3067686528
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: e1f2991b2e006c97087c6288d3ed3c20d2927e8c
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53788606"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54413475"
 ---
 # <a name="tutorial-deploy-a-service-fabric-mesh-application"></a>教程：部署 Service Fabric 网格应用程序
 
@@ -106,7 +106,8 @@ The application was deployed successfully and it can be accessed at http://10.00
 
 打开 Web 浏览器并导航到该 URL，以查看 Azure 中运行的网站。
 
-## <a name="set-up-service-fabric-mesh-cli"></a>设置 Service Fabric 网格 CLI 
+## <a name="set-up-service-fabric-mesh-cli"></a>设置 Service Fabric 网格 CLI
+
 可以使用 Azure Cloud Shell 或本地安装的 Azure CLI 来完成剩余的步骤。 根据这些[说明](service-fabric-mesh-howto-setup-cli.md)安装 Azure Service Fabric 网格 CLI 扩展模块。
 
 ## <a name="check-application-deployment-status"></a>检查应用程序部署状态
@@ -117,6 +118,14 @@ The application was deployed successfully and it can be accessed at http://10.00
 
 ```azurecli-interactive
 az mesh app show --resource-group $rg --name todolistapp
+```
+
+## <a name="get-the-ip-address-of-your-deployment"></a>获取部署的 IP 地址
+
+若要获取应用程序的 IP 地址，请使用以下命令：
+  
+```azurecli-interactive
+az mesh gateway show --resource-group myResourceGroup --name todolistappGateway
 ```
 
 ## <a name="see-all-applications-currently-deployed-to-your-subscription"></a>查看当前已部署到订阅中的所有应用程序

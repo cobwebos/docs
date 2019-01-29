@@ -2,19 +2,19 @@
 title: Azure 消息传递比较 - 事件网格、事件中心、服务总线
 description: 介绍三种 Azure 消息传递服务 - Azure 事件网格、事件中心和服务总线。 推荐不同场景使用的服务。
 services: event-grid
-author: tfitzmac
+author: spelluru
 manager: timlt
 ms.service: event-grid
 ms.topic: overview
 ms.date: 12/07/2018
-ms.author: tomfitz
+ms.author: spelluru
 ms.custom: seodec18
-ms.openlocfilehash: 0eeded4e6bfe9041b360441d1e7b2a5c7dd4a099
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: 80a2f9aa07f67c4d149a1ef8245f5e3269a751b3
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53166517"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54469842"
 ---
 # <a name="choose-between-azure-messaging-services---event-grid-event-hubs-and-service-bus"></a>在 Azure 消息传递服务之间进行选择 - 事件网格、事件中心和服务总线
 
@@ -77,7 +77,7 @@ Azure 事件中心是大数据管道。 它促进遥测数据和事件流数据�
 
 ### <a name="service-bus"></a>服务总线
 
-服务总线适用于传统企业应用程序。 这些企业应用程序需要事务、排序、重复检测和即时一致性。 服务总线使得云本机应用程序能够为业务进程提供可靠的状态转换管理。 处理不能丢失或复制的高价值消息时，请使用 Azure 服务总线。 服务总线还利于跨混合云解决方案的高度安全通信，并且可以将现有本地系统连接到云解决方案。
+服务总线适用于传统企业应用程序。 这些企业应用程序需要事务、排序、重复检测和即时一致性。 服务总线使得[云原生](https://azure.microsoft.com/overview/cloudnative/)应用程序能够为业务进程提供可靠的状态转换管理。 处理不能丢失或复制的高价值消息时，请使用 Azure 服务总线。 服务总线还利于跨混合云解决方案的高度安全通信，并且可以将现有本地系统连接到云解决方案。
 
 服务总线是一个中转消息传送系统。 它将消息存储在“中转站”（例如队列）中，直到使用方准备好接收这些消息。
 

@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: tutorial
 ms.date: 09/24/2018
 ms.author: alkohli
-ms.openlocfilehash: b8aac8a6a666bf3f360ef2867ff15933ad72dbd7
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: 6db713984b62ce3db48b2e72a4b117696bdd6add
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49166978"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54452966"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-data-box-gateway-preview"></a>教程：准备部署 Azure Data Box Gateway（预览版）
 

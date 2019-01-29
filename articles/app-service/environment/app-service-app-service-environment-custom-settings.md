@@ -12,19 +12,19 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 08/22/2016
+ms.date: 01/16/2018
 ms.author: stefsch
 ms.custom: seodec18
-ms.openlocfilehash: de68c59987a7ec1198c344cc22978ebed09c75e8
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 6463759dbd217cd054f838c09c7cfcf99a06aa2c
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53271345"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54390823"
 ---
 # <a name="custom-configuration-settings-for-app-service-environments"></a>应用服务环境的自定义配置设置
 ## <a name="overview"></a>概述
-由于应用服务环境对单个客户是隔离的，因此有一些可专门应用于应用服务环境的配置设置。 本文介绍各种可用于应用服务环境的特定自定义设置。
+由于应用服务环境 (ASE) 对单个客户是隔离的，因此有一些可专门应用于应用服务环境的配置设置。 本文介绍各种可用于应用服务环境的特定自定义设置。
 
 如果没有应用服务环境，请参阅 [How to Create an App Service Environment](app-service-web-how-to-create-an-app-service-environment.md)（如何创建应用服务环境）。
 
@@ -65,10 +65,11 @@ ms.locfileid: "53271345"
 不过，提交更改后，约需 30 分钟乘以应用服务环境中前端数量的时间，更改才会生效。
 例如，如果应用服务环境有四个前端，大约需要两个小时才能完成配置更新。 实行配置更改时，就无法在应用服务环境中进行其他缩放操作或配置更改操作。
 
-## <a name="disable-tls-10"></a>禁用 TLS 1.0
-客户的常见问题是，尤其是处理 PCI 合规性审核的客户，如何显式禁用其应用的 TLS 1.0。
+## <a name="disable-tls-10-and-tls-11"></a>禁用 TLS 1.0 和 TLS 1.1
 
-通过下列 **clusterSettings** 条目可以禁用 TLS 1.0：
+若要逐个应用地管理 TLS 设置，则可按[实施 TLS 设置](https://docs.microsoft.com/azure/app-service/app-service-web-tutorial-custom-ssl#enforce-tls-versions)文档提供的指南进行操作。 
+
+对于 ASE 中的所有应用，若要禁用所有入站 TLS 1.0 和 TLS 1.1 流量，可以设置以下 **clusterSettings** 条目：
 
         "clusterSettings": [
             {
@@ -76,6 +77,8 @@ ms.locfileid: "53271345"
                 "value": "1"
             }
         ],
+
+设置的名称显示 1.0，但在配置以后，却禁用了 TLS 1.0 和 TLS 1.1。
 
 ## <a name="change-tls-cipher-suite-order"></a>更改 TLS 密码套件顺序
 来自客户的另一个问题是，他们是否可以修改由其服务器协商的密码列表，而这可以通过修改 **clusterSettings** 来实现，如下所示。 可以从[此 MSDN 文章](https://msdn.microsoft.com/library/windows/desktop/aa374757\(v=vs.85\).aspx)检索可用的密码套件列表。

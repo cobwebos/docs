@@ -4,7 +4,7 @@ description: 了解如何在 Azure Active Directory 和 Talent Palette 之间配
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: barbkess
 ms.assetid: 839dbf54-b636-477b-9cf8-157374c78e7a
 ms.service: Azure-Active-Directory
@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 11/30/2018
+ms.date: 01/17/2019
 ms.author: jeedes
-ms.openlocfilehash: 7362b3279afc365db2a303de1b450c4e35e48874
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 7438480d046be6242829060ce8ee936dd1cfb588
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52883667"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54818840"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-talent-palette"></a>教程：Azure Active Directory 与 Talent Palette 的集成
 
@@ -79,8 +79,8 @@ ms.locfileid: "52883667"
 1. **[配置 Azure AD 单一登录](#configure-azure-ad-single-sign-on)** - 使用户能够使用此功能。
 2. **[配置 Talent Palette 单一登录](#configure-talent-palette-single-sign-on)** - 在应用程序端配置单一登录。
 3. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-4. **[创建 Talent Palette 测试用户](#create-talent-palette-test-user)** - 在 Talent Palette 中创建 Britta Simon 的对应用户，并将其链接到用户的 Azure AD 表示形式。
-5. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
+4. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
+5. **[创建 Talent Palette 测试用户](#create-talent-palette-test-user)** - 在 Talent Palette 中创建 Britta Simon 的对应用户，并将其链接到用户的 Azure AD 表示形式。
 6. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
@@ -93,7 +93,7 @@ ms.locfileid: "52883667"
 
     ![配置单一登录链接](common/select_sso.png)
 
-2. 在“选择单一登录方法”对话框中，选择 SAML/WS-Fed 模式以启用单一登录。
+2. 在**选择单一登录方法**对话框中，选择 **SAML/WS-Fed**模式以启用单一登录。
 
     ![单一登录选择模式](common/select_saml_option.png)
 
@@ -105,13 +105,13 @@ ms.locfileid: "52883667"
 
     ![Talent Palette 域和 URL 单一登录信息](common/both_replyurl.png)
 
-    在“回复 URL”文本框中，使用以下模式键入 URL：`https://talent-p.net/saml/acs/<tenantID>`。
+    在“回复 URL”文本框中，使用以下模式键入 URL：`https://talent-p.net/saml/acs/<tenantID>`
 
 5. 如果要在 SP 发起的模式下配置应用程序，请单击“设置其他 URL”，并执行以下步骤：
 
     ![Talent Palette 域和 URL 单一登录信息](common/both_signonurl.png)
-   
-    在“登录 URL”文本框中，使用以下模式键入 URL：`https://talent-p.net/saml/sso/<tenantID>`。
+
+    在“登录 URL”文本框中，使用以下模式键入 URL：`https://talent-p.net/saml/sso/<tenantID>`
 
     > [!NOTE]
     > 这些不是实际值。 请使用实际的“回复 URL”和“注销 URL”更新这些值。 请联系 [Talent Palette 客户端支持团队](mailto:talent-support@pa-consul.co.jp)来获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”部分中显示的模式。

@@ -6,15 +6,15 @@ author: banisadr
 manager: timlt
 ms.service: event-grid
 ms.topic: overview
-ms.date: 12/06/2018
+ms.date: 01/06/2019
 ms.author: babanisa
 ms.custom: seodec18
-ms.openlocfilehash: 466f7614026866bb038f3c73b23e28e34d9f2e30
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: 01c88b9bc64bc1541e97aff26e41c360acfaf6bd
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53321010"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54809964"
 ---
 # <a name="what-is-azure-event-grid"></a>什么是 Azure 事件网格？
 

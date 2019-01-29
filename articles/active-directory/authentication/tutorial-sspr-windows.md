@@ -8,14 +8,14 @@ ms.topic: tutorial
 ms.date: 12/05/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: mtillman
+manager: daveba
 ms.reviewer: sahenry
-ms.openlocfilehash: 5c40e6c681a4f37c61519040eb32531d3c8f071c
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 640f03cd35ac74df9c7b25352ab294c35c4ec0ea
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53437140"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54430664"
 ---
 # <a name="tutorial-azure-ad-password-reset-from-the-login-screen"></a>教程：登录屏幕中的“Azure AD 密码重置”
 
@@ -32,6 +32,7 @@ ms.locfileid: "53437140"
    * [已加入 Azure AD 的计算机](../device-management-azure-portal.md)或者
    * [已加入混合 Azure AD 的计算机](../device-management-hybrid-azuread-joined-devices-setup.md)，并且该计算机已与域控制器建立了网络连接。
 * 必须启用 Azure AD 自助密码重置。
+* 如果 Windows 10 计算机位于代理服务器或防火墙后面，应允许向 `passwordreset.microsoftonline.com` 和 `ajax.aspnetcdn.com` 传输 HTTPS 流量 (443)。
 
 ## <a name="configure-reset-password-link-using-intune"></a>使用 Intune 配置“重置密码”链接
 
@@ -126,8 +127,6 @@ Azure AD 审核日志将包含有关密码重置发生的 IP 地址和 ClientTyp
    * 将 Explorer.exe 替换为自定义 shell
 
 此功能不适用于部署了 802.1x 网络身份验证的网络和“在用户登录前立即执行”选项。 对于部署了 802.1x 网络身份验证的网络，建议使用计算机身份验证来启用此功能。
-
-如果 Windows 10 计算机位于代理服务器或防火墙后面，应允许向 passwordreset.microsoftonline.com 和 ajax.aspnetcdn.com 传输 HTTPS 流量 (443)。
 
 对于混合域加入方案，存在 SSPR 工作流将完成而不需要 Active Directory 域控制器的方案。 第一次使用新密码需要与域控制器连接。
 

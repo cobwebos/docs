@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 05/10/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: daee5a2073e78ca5bb9e0eb0386617d7638ab930
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: a0eb3ed26b0e8641cf4e1004c2c162c799dd8999
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46988507"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54463756"
 ---
 # <a name="tutorial-create-and-manage-azure-virtual-networks-for-linux-virtual-machines-with-the-azure-cli"></a>教程：使用 Azure CLI 为 Linux 虚拟机创建和管理 Azure 虚拟网络
 
@@ -208,7 +208,7 @@ az network nsg rule create \
   --destination-port-range 80
 ```
 
-只能在端口 *22* 和端口 *80* 上访问前端 VM。 其他所有传入流量会在网络安全组中被阻止。 可视化 NSG 规则配置可能很有帮助。 使用 [az network rule list](/cli/azure/network/nsg/rule#az_network_nsg_rule_list) 命令返回 NSG 规则配置。 
+只能在端口 *22* 和端口 *80* 上访问前端 VM。 其他所有传入流量会在网络安全组中被阻止。 可视化 NSG 规则配置可能很有帮助。 使用 [az network rule list](/cli/azure/network/nsg/rule) 命令返回 NSG 规则配置。 
 
 ```azurecli-interactive 
 az network nsg rule list --resource-group myRGNetwork --nsg-name myFrontendNSG --output table
@@ -285,7 +285,7 @@ az vm create \
   --generate-ssh-keys
 ```
 
-只能通过前端子网在端口 *22* 和端口 *3306* 上访问后端 VM。 其他所有传入流量会在网络安全组中被阻止。 可视化 NSG 规则配置可能很有帮助。 使用 [az network rule list](/cli/azure/network/nsg/rule#az_network_nsg_rule_list) 命令返回 NSG 规则配置。 
+只能通过前端子网在端口 *22* 和端口 *3306* 上访问后端 VM。 其他所有传入流量会在网络安全组中被阻止。 可视化 NSG 规则配置可能很有帮助。 使用 [az network rule list](/cli/azure/network/nsg/rule) 命令返回 NSG 规则配置。 
 
 ```azurecli-interactive 
 az network nsg rule list --resource-group myRGNetwork --nsg-name myBackendNSG --output table

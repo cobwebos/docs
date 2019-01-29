@@ -3,7 +3,7 @@ title: Azure AD Connect 和 Azure AD Connect Health 安装路线图。 | Microso
 description: 本文档概述可用于安装 Azure AD Connect 和 Connect Health 的安装选项和路径。
 services: active-directory
 author: billmath
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -12,12 +12,12 @@ ms.topic: get-started-article
 ms.date: 09/18/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 5da946ff0c9bdda91668999db2fccdd12a67c0d2
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 149c6436101750811af9ba3051ab715dd9eac021
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51253187"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54462329"
 ---
 # <a name="azure-ad-connect-and-azure-ad-connect-health-installation-roadmap"></a>Azure AD Connect 和 Azure AD Connect Health 安装路线图
 
@@ -100,7 +100,7 @@ Azure AD Connect 同步随附一个适用于大部分客户和拓扑的默认配
 |技术概念 | [Azure AD Connect 同步：技术概念](how-to-connect-sync-technical-concepts.md)|
 |了解默认配置 | [Azure AD Connect 同步：了解默认配置](concept-azure-ad-connect-sync-default-configuration.md)|
 |了解用户和联系人 | [Azure AD Connect 同步：了解用户和联系人](concept-azure-ad-connect-sync-user-and-contacts.md)|
-|声明性预配 | [Azure AD Connect Sync：了解声明性设置表达式](concept-azure-ad-connect-sync-declarative-provisioning-expressions.md)|
+|声明性预配 | [Azure AD Connect 同步：了解声明性预配表达式](concept-azure-ad-connect-sync-declarative-provisioning-expressions.md)|
 |更改默认配置 | [更改默认配置的最佳做法](how-to-connect-sync-best-practices-changing-default-configuration.md)|
 
 ## <a name="configure-federation-features"></a>配置联合身份验证功能
@@ -158,7 +158,7 @@ Azure AD Connect Health 门户显示警报、性能监视和使用情况分析�
     
 ![Azure AD Connect Health 门户](./media/whatis-hybrid-identity-health/portalsidebar.png)
 
-* **快速启动**：选择此选项会打开“快速启动”边栏选项卡。 可以选择“获取工具”来下载 Azure AD Connect Health 代理。 还可以访问文档并提供反馈。
+* **快速入门**：选择此选项会打开“快速入门”边栏选项卡。 可以选择“获取工具”来下载 Azure AD Connect Health 代理。 还可以访问文档并提供反馈。
 * **Azure Active Directory Connect (同步)**：此选项显示 Azure AD Connect Health 当前正在监视的 Azure AD Connect 服务器。 “同步错误”条目将按类别显示第一个已载入的同步服务的基本同步错误。 选择“同步错误”条目时，打开的边栏选项卡会显示有关 Azure AD Connect 服务器的信息。 通过[使用用于同步的 Azure AD Connect Health](how-to-connect-health-sync.md) 详细了解相关功能。
 * **Active Directory 联合身份验证服务**：此选项显示 Azure AD Connect Health 当前正在监视的所有 AD FS 服务。 选择某个实例时，打开的边栏选项卡会显示有关该服务实例的信息。 该信息包括概述、属性、警报、监视情况，以及使用情况分析。 通过[在 AD FS 中使用 Azure AD Connect Health](how-to-connect-health-adfs.md) 详细了解相关功能。
 * **Active Directory 域服务**：此选项显示 Azure AD Connect Health 当前正在监视的所有 AD DS 林。 选择某个林时，打开的边栏选项卡会显示有关该林的信息。 这些信息包括基本信息、域控制器仪表板、复制状态仪表板、警报和监视的概述。 通过[在 AD DS 中使用 Azure AD Connect Health](how-to-connect-health-adds.md) 详细了解相关功能。
