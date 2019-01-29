@@ -208,7 +208,7 @@ Perf
 ## <a name="protection-status"></a>保护状态
 
 ### <a name="computers-with-non-reporting-protection-status-duration"></a>处于“未报告”保护状态的计算机以及此状态的持续时间
-此示例列出保护状态为“未报告”的计算机，及其处于此状态的持续时间。
+此示例列出保护状态为 _Not Reporting_ 的计算机，及其处于此状态的持续时间。
 
 ```Kusto
 ProtectionStatus
