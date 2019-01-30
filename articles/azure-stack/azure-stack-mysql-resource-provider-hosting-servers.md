@@ -14,19 +14,20 @@ ms.topic: article
 ms.date: 10/16/2018
 ms.author: jeffgilb
 ms.reviewer: quying
-ms.openlocfilehash: 833d8e7960bfb7ee3c135df57e6d4dfec97af037
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.lastreviewed: 10/16/2018
+ms.openlocfilehash: 3a80e3a95252b60dd39ad4ce20878922aeee5730
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49364653"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55246876"
 ---
 # <a name="add-hosting-servers-for-the-mysql-resource-provider"></a>为 MySQL 资源提供程序添加托管服务器
 
 可以在 [Azure Stack](azure-stack-poc.md) 中的虚拟机 (VM) 上或者在 Azure Stack 环境外部的 VM 上托管 MySQL 实例，前提是 MySQL 资源提供程序能够连接到该实例。
 
 > [!NOTE]
-> 应在 MySQL 资源提供程序服务器上创建 MySQL 数据库。 MySQL 资源提供程序应默认提供商订阅中创建，而应计费的用户订阅中创建 MySQL 宿主服务器。 资源提供程序服务器不应承载用户数据库。
+> 应在 MySQL 资源提供程序服务器上创建 MySQL 数据库。 MySQL 资源提供程序应在默认提供程序订阅中创建，而 MySQL 托管服务器则应在可计费用户订阅中创建。 资源提供程序服务器不应用于托管用户数据库。
 
 可以将 MySQL 版本 5.6、5.7 和 8.0 用于宿主服务器。 MySQL RP 不支持 caching_sha2_password 身份验证；下一版本会添加此功能。 必须将 MySQL 8.0 服务器配置为使用 mysql_native_password。 也支持 MariaDB。
 
@@ -77,7 +78,7 @@ ms.locfileid: "49364653"
 可以在 Azure Stack 门户中部署更多的 MySQL 服务器，以便提高后端数据库容量。 将这些服务器添加到新的或现有的 SKU。 如果向现有的 SKU 添加服务器，请确保该服务器的特征与 SKU 中其他服务器的特征相同。
 
 ## <a name="sku-notes"></a>SKU 说明
-使用描述中的 SKU，例如容量和性能的服务器的功能的 SKU 名称。 名称可以协助用户将其数据库部署到相应的 SKU。 例如，可以使用 SKU 名称来区分服务产品/服务通过以下特征：
+使用可以描述 SKU 中服务器容量（例如容量和性能）的 SKU 名称。 名称可以协助用户将其数据库部署到相应的 SKU。 例如，可以使用 SKU 名称通过以下特征来区分服务产品/服务：
   
 * 高容量
 * 高性能
@@ -85,14 +86,14 @@ ms.locfileid: "49364653"
 
 最佳做法是使 SKU 中的所有宿主服务器具有相同的资源和性能特征。
 
-Sku 不能分配给特定用户或组。
+无法将 SKU 分配到特定的用户或组。
 
 SKU 最长可能需要在一小时后才显示在门户中。 在完全创建 SKU 之前，用户无法创建数据库。
 
-若要编辑一个 SKU，请转到**所有服务** > **MySQL 适配器** > **Sku**。 选择的 SKU，若要修改、 进行任何必要的更改，然后单击**保存**以保存更改。 若要删除不再需要的 SKU，请转到**所有服务** > **MySQL 适配器** > **Sku**。 右键单击 SKU 名称，然后选择**删除**将其删除。
+若要编辑某个 SKU，请转到“所有服务” > “MySQL 适配器” > “SKU”。 选择要修改的 SKU，进行任何必要的更改，然后单击“保存”以保存更改。 若要删除不再需要的 SKU，请转到“所有服务” > “MySQL 适配器” > “SKU”。 右键单击 SKU 名称，然后选择“删除”将其删除。
 
 > [!TIP]
-> 你可以编辑或删除 MySQL 资源提供程序在同一位置中的配额。
+> 可以在同一位置中编辑或删除 MySQL 资源提供程序配额。
 
 ## <a name="make-mysql-database-servers-available-to-your-users"></a>将 MySQL 数据库服务器提供给用户使用
 

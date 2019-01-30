@@ -15,12 +15,13 @@ ms.topic: article
 ms.date: 01/14/2019
 ms.author: mabrigg
 ms.reviewer: anajod
-ms.openlocfilehash: 8e577a95fc3cda3aafe1273cbc6b4e3c4fbb0317
-ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
+ms.lastreviewed: 01/14/2019
+ms.openlocfilehash: d9855f107f9888fbfbcb10a3df849e78c87c0605
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54304342"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55246756"
 ---
 # <a name="optimize-sql-server-performance"></a>优化 SQL Server 性能
 
@@ -120,7 +121,7 @@ Azure Stack 虚拟机上有三种主要磁盘类型：
 
 - 根据负载预期确定与你的存储池相关联的磁盘数。 请记住，不同的虚拟机大小允许不同数量的附加数据磁盘。 有关详细信息，请参阅 [Azure Stack 中支持的虚拟机大小](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-vm-sizes)。
 - 若要获取针对数据磁盘的最大可能 IOPS，建议添加[虚拟机大小](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-vm-sizes)支持的最大数量的数据磁盘并使用磁盘条带化。
-- **NTFS 分配单元大小：** 当格式化数据磁盘时，建议对数据和日志文件以及 TempDB 使用 64-KB 分配单元大小。
+- **NTFS 分配单元大小：** 格式化数据磁盘时，建议为数据和日志文件以及 TempDB 使用 64-KB 分配单元大小。
 - **磁盘管理实践：** 当删除数据磁盘，请在更改期间停止 SQL Server 服务。 另外，请勿更改磁盘上的缓存设置，因为这样做不会改进性能。
 
 > [!WARNING]  

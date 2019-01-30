@@ -13,13 +13,14 @@ ms.topic: article
 ms.date: 11/19/2018
 ms.author: mabrigg
 ms.reviewer: johnhas
+ms.lastreviewed: 11/19/2018
 ROBOTS: NOINDEX
-ms.openlocfilehash: 55c84fb982d078d5163c105f5af938d0c1a10356
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: 59adaed427eb0d791e18438826aff4f6477e831a
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54246375"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55247266"
 ---
 # <a name="workflow-common-parameters-for-azure-stack-validation-as-a-service"></a>工作流通用参数作为服务的 Azure Stack 验证
 

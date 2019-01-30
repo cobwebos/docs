@@ -15,12 +15,13 @@ ms.topic: article
 ms.date: 01/11/2019
 ms.author: sethm
 ms.reviewer: harik
-ms.openlocfilehash: db33ef743e595fe90d91769bf271f762fccade6b
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.lastreviewed: 01/11/2019
+ms.openlocfilehash: 1664e19f3a238b2986af4669c3853a54d7c7e328
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54212475"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55250817"
 ---
 # <a name="azure-stack-servicing-policy"></a>Azure Stack 服务策略
 
@@ -28,13 +29,13 @@ ms.locfileid: "54212475"
 
 ## <a name="download-update-packages-for-integrated-systems"></a>下载集成系统的更新包
 
-Microsoft 将发布完整每月的更新包以及解决特定问题的修补程序程序包。
+Microsoft 会发布完整的每月更新包和修补程序包来解决特定问题。
 
-每月的更新程序包托管在安全的 Azure 终结点。 您可以下载这些使用手动[Azure Stack 更新程序下载程序工具](https://aka.ms/azurestackupdatedownload)。 如果缩放单位已连接，更新会自动出现在管理员门户中，如下**可用更新**。 Full、 每月的更新包了每个版本。 有关每个版本的详细信息，可以单击从任何版本[更新包发布频率](#update-package-release-cadence)本文的部分。
+每月更新包托管在安全的 Azure 终结点中。 可以使用 [Azure Stack 更新下载程序工具](https://aka.ms/azurestackupdatedownload)手动下载它们。 如果缩放单元已连接，更新会以“有可用更新”消息的形式自动显示在管理员门户中。 完整的每月更新包在每次发布时都会详细地进行记录。 有关每次发布的详细信息，可以单击本文[更新包发布频率](#update-package-release-cadence)部分的任何发布。
 
-修补程序更新程序包托管在同一个安全 Azure 终结点。 您可以下载这些手动在每个相应的修补程序知识库文章; 中使用的嵌入的链接例如， [Azure Stack 修补程序 1.1809.12.114](https://support.microsoft.com/help/4481548/azure-stack-hotfix-1-1809-12-114)。 与完整、 每月的更新包类似，Azure Stack 操作员可以下载的.xml、.bin 和.exe 文件和它们的过程中导入[在 Azure Stack 中应用更新](azure-stack-apply-updates.md)。 与已连接的缩放单位的 azure Stack 操作员将看到修补程序都自动显示在管理员门户中的消息**可用更新**。
+修补程序更新包托管在同一个安全的 Azure 终结点中。 可以使用每篇相应的修补程序 KB 文章（例如，[Azure Stack 修补程序 1.1809.12.114](https://support.microsoft.com/help/4481548/azure-stack-hotfix-1-1809-12-114)）中的嵌入式链接手动下载它们。 Azure Stack 操作员可以按照[在 Azure Stack 中应用更新](azure-stack-apply-updates.md)中的过程下载 .xml、.bin 和 .exe 文件并将其导入，这与操作完整的每月更新包类似。 使用已连接缩放单元的 Azure Stack 操作员会看到修补程序自动出现在管理员门户中，并会看到消息“有可用更新”。
 
-如果未连接缩放单位，并且你想要获得有关每个修补程序版本的通知，订阅[RSS](https://support.microsoft.com/app/content/api/content/feeds/sap/en-us/32d322a8-acae-202d-e9a9-7371dccf381b/rss … )或[ATOM](https://support.microsoft.com/app/content/api/content/feeds/sap/en-us/32d322a8-acae-202d-e9a9-7371dccf381b/atom …)记下每个版本中的源。  
+如果在缩放单元未连接的情况下希望获得每个修补程序版本的通知，请订阅每个版本中注明的 [RSS](https://support.microsoft.com/app/content/api/content/feeds/sap/en-us/32d322a8-acae-202d-e9a9-7371dccf381b/rss … ) 或 [ATOM](https://support.microsoft.com/app/content/api/content/feeds/sap/en-us/32d322a8-acae-202d-e9a9-7371dccf381b/atom …) 源。  
 
 ## <a name="update-package-types"></a>更新包类型
 

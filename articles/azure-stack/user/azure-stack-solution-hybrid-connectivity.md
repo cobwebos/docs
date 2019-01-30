@@ -14,12 +14,13 @@ ms.topic: tutorial
 ms.date: 01/14/2019
 ms.author: mabrigg
 ms.reviewer: anajod
-ms.openlocfilehash: 19c5e530822d1d9c2b4ec815b37b3373e8e39b02
-ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
+ms.lastreviewed: 01/14/2019
+ms.openlocfilehash: 84e952514b88620af565cf7e9775c055476fb530
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54305972"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55247555"
 ---
 # <a name="tutorial-configure-hybrid-cloud-connectivity-with-azure-and-azure-stack"></a>教程：使用 Azure 和 Azure Stack 配置混合云连接
 
@@ -215,7 +216,7 @@ Azure Stack 操作员必须部署应用服务、创建计划和套餐、创建�
     - **虚拟网络网关**:选择你创建的虚拟网络网关。
     - **本地网络网关**:选择你创建的本地网络网关。
     - **连接名称**:这是自动填充使用来自两个网关的值。
-    - **共享密钥**: 此值必须匹配的本地 VPN 设备使用的值。 教程示例使用“abc123”，但可以（而且应该）使用更复杂的。 重要的是，此值必须与配置 VPN 设备时指定的值相同。
+    - **共享密钥**： 此值必须匹配的本地 VPN 设备使用的值。 教程示例使用“abc123”，但可以（而且应该）使用更复杂的。 重要的是，此值必须与配置 VPN 设备时指定的值相同。
     - “订阅”、“资源组”和“位置”值是固定的。
 
 6. 选择“确定”以创建连接。

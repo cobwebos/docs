@@ -12,15 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/25/2019
+ms.date: 01/30/2019
 ms.author: sethm
 ms.reviewer: adepue
-ms.openlocfilehash: 8bdc9a9a01a96ee34c5cf6cfa737be09661364bc
-ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
+ms.lastreviewed: 01/25/2019
+ms.openlocfilehash: 444c67e942fad732c959f834e2c50f0b2a35562c
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54904414"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55246528"
 ---
 # <a name="azure-stack-1811-update"></a>Azure Stack 1811 更新
 
@@ -186,8 +187,7 @@ Azure Stack 定期发布修补程序。 将 Azure Stack 更新到 1811 之前，
 - [CVE-2018-8566](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2018-8566)
 - [CVE-2018-8584](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2018-8584)
 
-
-有关这些漏洞的详细信息，请单击上述链接，或者查看 Microsoft 知识库文章 [4467684](https://support.microsoft.com/help/4467684)。
+有关这些漏洞的详细信息，单击上面的链接，或请参阅 Microsoft 知识库文章[4478877](https://support.microsoft.com/help/4478877)。
 
 ## <a name="known-issues-with-the-update-process"></a>更新过程的已知问题
 

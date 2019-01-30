@@ -15,13 +15,14 @@ ms.topic: get-started-article
 ms.date: 09/12/2018
 ms.author: sethm
 ms.reviewer: scottnap
+ms.lastreviewed: 09/12/2018
 ROBOTS: NOINDEX
-ms.openlocfilehash: b17b1b077a1acac5ddb0e9eea8c4a2cf44697979
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: 65bf3d7eb84f4a4e6fe6d74bd08c41ba4d9dd637
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49078896"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55247215"
 ---
 # <a name="create-a-site-to-site-vpn-connection-between-two-virtual-networks-in-different-azure-stack-development-kit-environments"></a>在不同 Azure Stack 开发工具包环境中的两个虚拟网络之间创建站点到站点 VPN 连接
 ## <a name="overview"></a>概述
@@ -35,7 +36,7 @@ ms.locfileid: "49078896"
 ### <a name="before-you-begin"></a>开始之前
 若要完成连接配置，请确保在开始之前准备好以下各项：
 
-* 满足[快速入门：评估 Azure Stack 开发工具包](azure-stack-deploy-overview.md)中所述 Azure Stack 开发工具包硬件要求的两台服务器和其他必备组件。 
+* 两个服务器和其他必备组件满足 Azure Stack 开发工具包硬件要求，如中所述的[快速入门：评估 Azure Stack 开发工具包](azure-stack-deploy-overview.md)。 
 * [Azure Stack 开发工具包](https://azure.microsoft.com/overview/azure-stack/try/)部署包。
 
 ## <a name="deploy-the-azure-stack-development-kit-environments"></a>部署 Azure Stack 开发工具包环境
@@ -92,7 +93,7 @@ ms.locfileid: "49078896"
 
 ### <a name="create-the-virtual-network-and-vm-subnet"></a>创建虚拟网络和 VM 子网
 1. 使用租户帐户登录到用户门户。
-2. 在用户门户中，选择 **+ 创建资源**。
+2. 在用户门户中，选择“+ 创建资源”。
 3. 转到**市场**，然后选择“网络”。
 4. 选择“虚拟网络”。
 5. 对于“名称”、“地址空间”、“子网名称”和“子网地址范围”，请使用前面网络配置表中显示的值。
@@ -100,7 +101,7 @@ ms.locfileid: "49078896"
 7. 对于“资源组”，可以创建资源组，也可以选择“使用现有项”（如果已有了一个）。
 8. 验证默认位置。
 9. 选择“固定到仪表板”。
-10. 选择**创建**。
+10. 选择“创建”。
 
 ### <a name="create-the-gateway-subnet"></a>创建网关子网
 1. 在仪表板上，打开前面创建的 VNET-01 虚拟网络资源。
@@ -115,7 +116,7 @@ ms.locfileid: "49078896"
 6. 选择“确定”创建网关子网。
 
 ### <a name="create-the-virtual-network-gateway"></a>创建虚拟网络网关
-1. 在 Azure 门户中，选择 **+ 创建资源**。 
+1. 在 Azure 门户中，选择“+ 创建资源”。 
 2. 转到**市场**，然后选择“网络”。
 3. 从网络资源列表中选择“虚拟网络网关”。
 4. 在“名称”中输入 **GW1**。
@@ -125,7 +126,7 @@ ms.locfileid: "49078896"
 7. 在“名称”中输入 **GW1-PiP**，然后选择“确定”。
 8.  对于“VPN 类型”，默认已选择“基于路由”。
     保留“基于路由”VPN 类型。
-9. 验证“订阅”和“位置”是否正确。 可将资源固定到仪表板。 选择**创建**。
+9. 验证“订阅”和“位置”是否正确。 可将资源固定到仪表板。 选择“创建”。
 
 ### <a name="create-the-local-network-gateway"></a>创建本地网关
 在此 Azure Stack 评估部署中实现*本地网关* 稍微不同于实际 Azure 部署中的情况。
@@ -137,7 +138,7 @@ ms.locfileid: "49078896"
 
 ### <a name="create-the-local-network-gateway-resource"></a>创建本地网关资源
 1. 登录到 POC1 的 Azure Stack 物理机。
-2. 在用户门户中，选择 **+ 创建资源**。
+2. 在用户门户中，选择“+ 创建资源”。
 3. 转到**市场**，然后选择“网络”。
 4. 从资源列表中选择“本地网络网关”。
 5. 在“名称”中输入 **POC2-GW**。
@@ -146,7 +147,7 @@ ms.locfileid: "49078896"
 8. 确认“订阅”、“资源组”和“位置”正确无误，然后选择“创建”。
 
 ### <a name="create-the-connection"></a>创建连接
-1. 在用户门户中，选择 **+ 创建资源**。
+1. 在用户门户中，选择“+ 创建资源”。
 2. 转到**市场**，然后选择“网络”。
 3. 从资源列表中选择“连接”。
 4. 在“基本”设置边栏选项卡上，针对“连接类型”选择“站点到站点(IPSec)”。
@@ -160,7 +161,7 @@ ms.locfileid: "49078896"
 ### <a name="create-a-vm"></a>创建 VM
 若要验证通过 VPN 连接传输的数据，需要使用虚拟机在每个 Azure Stack 开发工具包中发送和接收数据。 现在请在 POC1 中创建虚拟机，然后将它放在虚拟网络的 VM 子网上。
 
-1. 在 Azure 门户中，选择 **+ 创建资源**。
+1. 在 Azure 门户中，选择“+ 创建资源”。
 2. 转到“市场”，选择“计算”。
 3. 在虚拟机映像列表中，选择“Windows Server 2016 Datacenter Eval”映像。
 4. 在“基本”边栏选项卡的“名称”中，输入 **VM01**。
@@ -182,7 +183,7 @@ ms.locfileid: "49078896"
 ### <a name="create-the-virtual-network-and-vm-subnet"></a>创建虚拟网络和 VM 子网
 
 1. 使用租户帐户登录。
-2. 在用户门户中，选择 **+ 创建资源**。
+2. 在用户门户中，选择“+ 创建资源”。
 3. 转到**市场**，然后选择“网络”。
 4. 选择“虚拟网络”。
 5. 使用前面网络配置表中显示的信息来识别 POC2 的“名称”、“地址空间”、“子网名称”和“子网地址范围”的值。
@@ -190,7 +191,7 @@ ms.locfileid: "49078896"
 7. 对于“资源组”，可以创建新的资源组，也可以选择“使用现有项”（如果已有了一个）。
 8. 确认默认“位置”。
 9. 选择“固定到仪表板”。
-10. 选择**创建**。
+10. 选择“创建”。
 
 ### <a name="create-the-gateway-subnet"></a>创建网关子网
 1. 从仪表板打开刚创建的虚拟网络资源 (**VNET-02**)。
@@ -202,7 +203,7 @@ ms.locfileid: "49078896"
 6. 选择“确定”创建网关子网。
 
 ### <a name="create-the-virtual-network-gateway"></a>创建虚拟网络网关
-1. 在 Azure 门户中，选择 **+ 创建资源**。  
+1. 在 Azure 门户中，选择“+ 创建资源”。  
 2. 转到**市场**，然后选择“网络”。
 3. 从网络资源列表中选择“虚拟网络网关”。
 4. 在“名称”中输入 **GW2**。
@@ -211,11 +212,11 @@ ms.locfileid: "49078896"
 7. 在“名称”中输入 **GW2-PiP**，然后选择“确定”。
 8. 对于“VPN 类型”，默认已选择“基于路由”。
     保留“基于路由”VPN 类型。
-9. 验证“订阅”和“位置”是否正确。 可将资源固定到仪表板。 选择**创建**。
+9. 验证“订阅”和“位置”是否正确。 可将资源固定到仪表板。 选择“创建”。
 
 ### <a name="create-the-local-network-gateway-resource"></a>创建本地网关资源
 
-1. 在 POC2 用户门户中，选择 **+ 创建资源**。 
+1. 在 POC2 用户门户中，选择“+ 创建资源”。 
 4. 转到**市场**，然后选择“网络”。
 5. 从资源列表中选择“本地网络网关”。
 6. 在“名称”中输入 **POC1-GW**。
@@ -224,7 +225,7 @@ ms.locfileid: "49078896"
 9. 确认“订阅”、“资源组”和“位置”正确无误，然后选择“创建”。
 
 ## <a name="create-the-connection"></a>创建连接
-1. 在用户门户中，选择 **+ 创建资源**。 
+1. 在用户门户中，选择“+ 创建资源”。 
 2. 转到**市场**，然后选择“网络”。
 3. 从资源列表中选择“连接”。
 4. 在“基本”设置边栏选项卡中，选择“站点到站点(IPSec)”作为“连接类型”。
@@ -238,7 +239,7 @@ ms.locfileid: "49078896"
 ## <a name="create-a-virtual-machine"></a>创建虚拟机
 现在请在 POC2 中创建虚拟机，并将其放在虚拟网络中的 VM 子网上。
 
-1. 在 Azure 门户中，选择 **+ 创建资源**。
+1. 在 Azure 门户中，选择“+ 创建资源”。
 2. 转到“市场”，选择“计算”。
 3. 在虚拟机映像列表中，选择“Windows Server 2016 Datacenter Eval”映像。
 4. 在“基本”边栏选项卡上的“名称”中，输入 **VM02**。

@@ -14,12 +14,13 @@ ms.topic: article
 ms.date: 10/15/2018
 ms.author: jeffgilb
 ms.reviewer: thoroet
-ms.openlocfilehash: 66cd20eaa401261bcb18bedbbc16f5bcf40ee192
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.lastreviewed: 10/15/2018
+ms.openlocfilehash: 419b7c436e79b00d8f49d9e3801886f4e37e2c32
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49342977"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55241638"
 ---
 # <a name="integrate-external-monitoring-solution-with-azure-stack"></a>将外部监视解决方案与 Azure Stack 集成
 
@@ -75,7 +76,7 @@ Nagios 监视插件开发与合作伙伴 Cloudbase 解决方案一起宽松免�
 
 使用以下参数来配置插件文件“Azurestack_plugin.py”：
 
-| 参数 | 说明 | 示例 |
+| 参数 | 描述 | 示例 |
 |---------|---------|---------|
 | *arm_endpoint* | Azure 资源管理器（管理员）终结点 |https://adminmanagement.local.azurestack.external |
 | *api_endpoint* | Azure 资源管理器（管理员）终结点  | https://adminmanagement.local.azurestack.external |

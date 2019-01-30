@@ -15,12 +15,13 @@ ms.topic: article
 ms.date: 10/07/2018
 ms.author: sethm
 ms.reviewer: justini
-ms.openlocfilehash: 82343daa9fafe27ac814b6246a303e661a0a22d1
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.lastreviewed: 10/07/2018
+ms.openlocfilehash: 2b36c5d31e9377335a9cc8a37d4e4e0e890bfc3b
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54231030"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55245077"
 ---
 # <a name="azure-stack-1807-update"></a>Azure Stack 1807 更新
 
@@ -69,7 +70,7 @@ Azure Stack 1807 更新内部版本号为 **1.1807.0.76**。
 - **提高了网络使用情况计量的准确性和复原能力**。  网络使用情况计量现在更准确，考虑到了暂停的订阅、中断期间和争用条件等因素。
 
 <!-- 2753080 | IS -->  
-- **更新可用的通知。** 连接 Azure Stack 部署现在会定期检查受保护的终结点，并确定是否有可用于你的云的更新。 此通知显示在“更新”磁贴中，这与手动查看并导入新更新后的情况一致。 详细了解如何[管理 Azure Stack 的更新](azure-stack-updates.md)。
+- **更新发布通知。** 连接的 Azure Stack 部署现在会定期检查某个安全的终结点，看是否发布了云更新。 此通知显示在“更新”磁贴中，这与手动查看并导入新更新后的情况一致。 详细了解如何[管理 Azure Stack 的更新](azure-stack-updates.md)。
 
 <!-- 2297790 | IS, ASDK -->  
 - **改进了 Azure Stack Syslog 客户端（预览版功能）**。 此客户端允许将与 Azure Stack 基础结构相关的审核和日志转发到 Azure Stack 外部的 Syslog 服务器或安全信息与事件管理 (SIEM) 软件。 Syslog 客户端现在支持使用纯文本或 TLS 1.2 加密的 TCP 协议，后一种加密为默认配置。 可以使用仅服务器身份验证或相互身份验证对 TLS 连接进行配置。
