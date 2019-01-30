@@ -277,7 +277,7 @@ OData 链接的服务支持以下属性：
 | Edm.Boolean | Bool |
 | Edm.Byte | Byte[] |
 | Edm.DateTime | DateTime |
-| Edm.Decimal | 小数 |
+| Edm.Decimal | Decimal |
 | Edm.Double | Double |
 | Edm.Single | Single |
 | Edm.Guid | Guid |
