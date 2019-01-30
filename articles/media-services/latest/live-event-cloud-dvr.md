@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 01/14/2019
 ms.author: juliako
-ms.openlocfilehash: 8543f00ccaecd8fd3f46132b05c2af925e6de10a
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: 3646c6167f901fe43080d39df42fdb127b1c7fc2
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54352353"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54828139"
 ---
 # <a name="using-a-cloud-dvr"></a>使用云 DVR
 
@@ -37,8 +37,7 @@ ms.locfileid: "54352353"
 > [!NOTE]
 > **LiveOutput** 在创建时启动，在删除后停止。 删除 LiveOutput 不会删除基础资产和该资产中的内容。 
 >
-> 如果已在 LiveOutput 的资产上发布了流式处理定位器，则事件（最长可达 DVR 窗口长度）将继续可查看，直到流式处理定位器结束时或删除定位器时为止，具体取决于哪一时间先到。   
-  
+> 如果已使用 StreamingLocator 发布了 LiveOutput 资产，则 LiveEvent（长达 DVR 窗口长度）将继续可见，直到 StreamingLocator 过期或被删除（以先发生为准）。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -4,7 +4,7 @@ description: 登录活动报告错误代码参考。
 services: active-directory
 documentationcenter: ''
 author: priyamohanram
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: 4b18127b-d1d0-4bdc-8f9c-6a4c991c5f75
 ms.service: active-directory
@@ -16,12 +16,12 @@ ms.component: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: b6f8d3c3017a914f261c7e4f8bbe0e42d1edf8a9
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 0de3ced9974941399875ca98991430f10d4f8525
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51622425"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54820149"
 ---
 # <a name="sign-in-activity-report-error-codes"></a>登录活动报告错误代码 
 
@@ -43,7 +43,7 @@ ms.locfileid: "51622425"
 
 ![登录活动](./media/reference-sign-ins-error-codes/06.png "登录活动")
 
-在筛选的列表中选择某个项会打开“活动详细信息: 登录”边栏选项卡。 此视图提供有关失败的登录事件的其他信息，包括**登录错误代码**和**失败原因**。
+从筛选的列表中选择某个项会打开“活动详细信息:登录”边栏选项卡。 此视图提供有关失败的登录事件的其他信息，包括**登录错误代码**和**失败原因**。
 
 ![登录活动](./media/reference-sign-ins-error-codes/05.png "登录活动")
 
@@ -52,7 +52,7 @@ ms.locfileid: "51622425"
 ## <a name="error-codes"></a>错误代码
 
 
-|错误|Description|
+|错误|说明|
 |---|---|
 |16000|这是内部实现详细信息，而不是错误条件。 可以放心地忽略此引用。|
 |20001|联合标识提供者出现问题。 请联系 IDP 解决此问题。|
@@ -135,7 +135,7 @@ ms.locfileid: "51622425"
 |53002|使用的应用程序不是支持条件访问的获批准应用程序。 用户需使用可用的获批准应用程序列表中的某个应用才能获取访问权限。|
 |53003|访问因条件访问策略而被阻止。|
 |53004|在访问此内容之前，用户需要完成多重身份验证注册过程。 用户应注册多重身份验证。|
-|65001|应用程序 X 无权访问应用程序 Y，或者权限已被吊销。 或者，用户或管理员尚未同意将应用程序与 ID X 配合使用。请发送针对该用户和资源的交互式授权请求。 或者，用户或管理员尚未同意将应用程序与 ID X 配合使用。请代表应用 Y 向租户管理员发送针对资源 Z 的授权请求。|
+|65001|应用程序 X 无权访问应用程序 Y，或者权限已被吊销。 或者，用户或管理员尚未同意将应用程序与 ID X 配合使用。请发送针对该用户和资源的交互式授权请求。 或者，用户或管理员尚未同意将应用程序与 ID X 配合使用。请代表应用 Y向租户管理员发送针对资源 Z的授权请求。|
 |65004|用户拒绝许可该应用的访问权限。 让用户重试登录并许可应用|
 |65005|应用程序所需的资源访问列表不包含可以通过资源来发现的应用程序，或者客户端应用程序请求访问的资源未在其必需的资源访问列表中指定，或者 Graph 服务返回了错误的请求，或者资源找不到。 如果应用程序支持 SAML，则原因可能是使用错误的标识符（实体）配置了应用程序。 使用以下链接，尝试针对 SAML 列出的解决方法：[https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav#no-resource-in-requiredresourceaccess-list](https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav#no-resource-in-requiredresourceaccess-list)|
 |70000|以下原因导致授权无效：<ul><li>请求的 SAML 2.0 断言包含无效的使用者确认方法</li><li>V2 不支持应用 OnBehalfOf 流</li><li>未使用会话密钥为主要刷新令牌签名</li><li>外部刷新令牌无效</li><li>获取了其他租户的访问权限授权。</li></ul>|

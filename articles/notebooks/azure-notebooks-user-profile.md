@@ -13,18 +13,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2018
 ms.author: kraigb
-ms.openlocfilehash: b1010b5376a26a4d33c026be27ce363959954ca2
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 18b698861a791174f2e254543d5d3b7a54052574
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53078865"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54854153"
 ---
 # <a name="your-profile-and-user-id-for-azure-notebooks"></a>用于 Azure Notebooks 的个人资料和用户 ID
 
 在 Azure Notebooks 强大的协作空间中，用户个人资料将向其他人提供公共图像：
 
-[![](media/accounts/profile-page.png "Azure Notebooks 个人资料页")](media/accounts/profile-page.png#lightbox)
+[![Azure Notebooks 配置文件页](media/accounts/profile-page.png)](media/accounts/profile-page.png#lightbox)
 
 用于共享项目和笔记本的 URL 中包含用户 ID。 下表介绍了不同的 URL 模式：
 

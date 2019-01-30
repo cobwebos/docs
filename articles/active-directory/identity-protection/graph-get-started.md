@@ -5,7 +5,7 @@ services: active-directory
 keywords: azure active directory identity protection, 风险事件, 漏洞, 安全策略, Microsoft Graph
 documentationcenter: ''
 author: MarkusVi
-manager: mtillman
+manager: daveba
 ms.assetid: fa109ba7-a914-437b-821d-2bd98e681386
 ms.service: active-directory
 ms.component: conditional-access
@@ -17,12 +17,12 @@ ms.date: 10/26/2018
 ms.author: markvi
 ms.reviewer: nigu
 ms.custom: seohack1
-ms.openlocfilehash: a415258b8127bb78d8a8d1b5ef228234b34b3e26
-ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.openlocfilehash: d1703df524976bac4880975585e9d2e4f8af72fd
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51287500"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54475265"
 ---
 # <a name="get-started-with-azure-active-directory-identity-protection-and-microsoft-graph"></a>Azure Active Directory Identity Protection 和 Microsoft Graph 入门
 Microsoft Graph 是 Microsoft 的统一 API 终结点，并且是 [Azure Active Directory Identity Protection](../active-directory-identityprotection.md) API 的主页。 使用第一个 API **identityRiskEvents** 可以在 Microsoft Graph 中查询[风险事件](../reports-monitoring/concept-risk-events.md)列表和相关信息。 可以参考本文开始查询此 API。 如需深入介绍、完整文档和访问 Graph 浏览器，请参阅 [Microsoft Graph 站点](https://developer.microsoft.com/graph/)。
@@ -77,7 +77,7 @@ Microsoft Graph 是 Microsoft 的统一 API 终结点，并且是 [Azure Active 
    
     ![创建应用程序](./media/graph-get-started/44.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”文本框中，键入应用程序的名称（例如“AADIP 风险事件 API 应用程序”）。
+    a. 在“名称”文本框中，键入应用程序的名称（例如：AADIP 风险事件 API 应用程序）。
    
     b. 在“应用程序类型”中，选择“Web 应用程序和/或 Web API”。
    
@@ -136,7 +136,7 @@ Microsoft Graph 是 Microsoft 的统一 API 终结点，并且是 [Azure Active 
    
     ![创建应用程序](./media/graph-get-started/24.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“密钥说明”文本框中，键入说明（例如，AADIP 风险事件）。
+    a. 在“密钥说明”文本框中，键入说明（例如，AADIP 风险事件）。
     
     b. 对于“持续时间”，请选择“1 年内”。
 

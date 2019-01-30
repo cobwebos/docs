@@ -1,10 +1,10 @@
 ---
-title: 教程：Azure Active Directory 与 Tango Analytics 的集成 | Microsoft Docs
+title: 教程：Azure Active Directory 与 Tango Analytics 集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 和 Tango Analytics 之间配置单一登录。
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: 2f7555d3-e9ba-40b2-9b3a-2f0ab38a4c08
 ms.service: active-directory
 ms.component: saas-app-tutorial
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/22/2017
 ms.author: jeedes
-ms.openlocfilehash: eb0e309eed5594f806a65bc3f2820cdb9a861309
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: cf9ea3b841fc798f0b4313c3a3935f562cb7fd45
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39449122"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54809660"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-tango-analytics"></a>教程：Azure Active Directory 与 Tango Analytics 的集成
+# <a name="tutorial-azure-active-directory-integration-with-tango-analytics"></a>教程：Azure Active Directory 与 Tango Analytics 集成
 
 在本教程中，了解如何将 Tango Analytics 与 Azure Active Directory (Azure AD) 集成。
 
@@ -130,7 +130,7 @@ ms.locfileid: "39449122"
 1. 若要在 Tango Analytics 端配置单一登录，需要将下载的元数据 XML 发送给 [Tango Analytics 支持团队](mailto:support@tangoanalytics.com)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
 
 > [!TIP]
-> 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[ Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
+> 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
 ### <a name="creating-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
@@ -166,7 +166,7 @@ ms.locfileid: "39449122"
  
 ### <a name="creating-a-tango-analytics-test-user"></a>创建 Tango Analytics 测试用户
 
-本部分将在 Tango Analytics 中创建一个名为“Britta Simon”的用户。 与 [Tango Analytics 支持团队](mailto:support@tangoanalytics.com)协作，以在 Tango Analytics 平台中添加用户。 使用单一登录前，必须先创建并激活用户。
+本部分将在 Tango Analytics 中创建一个名为“Britta Simon”的用户。 请与  [Tango Analytics 支持团队](mailto:support@tangoanalytics.com) 协作，将用户添加到 Tango Analytics 平台中。 使用单一登录前，必须先创建并激活用户。
 
 ### <a name="assigning-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
@@ -203,12 +203,12 @@ ms.locfileid: "39449122"
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 如果单击访问面板中的 Tango Analytics 磁贴，将自动登录到 Tango Analytics 应用程序。
-有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md)（访问面板简介）。
+有关访问面板的详细信息，请参阅[访问面板简介](../user-help/active-directory-saas-access-panel-introduction.md)。
 
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](tutorial-list.md)
-* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
+* [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

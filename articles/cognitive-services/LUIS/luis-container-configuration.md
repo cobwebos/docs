@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: conceptual
-ms.date: 01/02/2019
+ms.date: 01/22/2019
 ms.author: diberry
-ms.openlocfilehash: e8e838fae0da3a47fe1b3ec8d412f956f5f28034
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 31d6725b6e02bbc583ad80f235360574941a97d3
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53975503"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54468329"
 ---
 # <a name="configure-language-understanding-docker-containers"></a>配置语言理解 docker 容器 
 
@@ -32,10 +32,11 @@ ms.locfileid: "53975503"
 |--|--|--|
 |是|[ApiKey](#apikey-setting)|用于跟踪账单信息。|
 |否|[ApplicationInsights](#applicationinsights-setting)|允许向容器添加 [Azure Application Insights](https://docs.microsoft.com/azure/application-insights) 遥测支持。|
-|是|[Billing](#billing-setting)|指定 Azure 上服务资源的终结点 URI。|
+|是|[计费](#billing-setting)|指定 Azure 上服务资源的终结点 URI。|
 |是|[Eula](#eula-setting)| 表示已接受容器的许可条款。|
 |否|[Fluentd](#fluentd-settings)|将日志和（可选）指标数据写入 Fluentd 服务器。|
-|否|[Logging](#logging-settings)|为容器提供 ASP.NET Core 日志记录支持。 |
+|否|[Http 代理](#http-proxy-credentials-settings)|配置 HTTP 代理以发出出站请求。|
+|否|[日志记录](#logging-settings)|为容器提供 ASP.NET Core 日志记录支持。 |
 |是|[Mounts](#mount-settings)|从主计算机读取数据并将其写入到容器，以及从容器读回数据并将其写回到主计算机。|
 
 > [!IMPORTANT]
@@ -65,7 +66,7 @@ ms.locfileid: "53975503"
 * Azure 门户：语言理解的“概述”，标记为 `Endpoint`
 * LUIS 门户：“密钥和终结点设置”页面，作为终结点 URI 的一部分。
 
-|必选| 名称 | 数据类型 | Description |
+|必选| 名称 | 数据类型 | 说明 |
 |--|------|-----------|-------------|
 |是| `Billing` | String | 账单终结点 URI<br><br>示例：<br>`Billing=https://westus.api.cognitive.microsoft.com/luis/v2.0` |
 
@@ -77,6 +78,10 @@ ms.locfileid: "53975503"
 
 
 [!INCLUDE [Container shared configuration fluentd settings](../../../includes/cognitive-services-containers-configuration-shared-settings-fluentd.md)]
+
+## <a name="http-proxy-credentials-settings"></a>Http 代理凭据设置
+
+[!INCLUDE [Container shared configuration fluentd settings](../../../includes/cognitive-services-containers-configuration-shared-settings-http-proxy.md)]
 
 ## <a name="logging-settings"></a>日志记录设置
  
@@ -93,7 +98,7 @@ LUIS 容器不使用输入或输出装载来存储训练或服务数据。
 
 下表描述了支持的设置。
 
-|必选| 名称 | 数据类型 | Description |
+|必选| 名称 | 数据类型 | 说明 |
 |-------|------|-----------|-------------|
 |是| `Input` | String | 输入装入点的目标。 默认值为 `/input`。 这是 LUIS 包文件的位置。 <br><br>示例：<br>`--mount type=bind,src=c:\input,target=/input`|
 |否| `Output` | String | 输出装入点的目标。 默认值为 `/output`。 这是日志的位置。 这包括 LUIS 查询日志和容器日志。 <br><br>示例：<br>`--mount type=bind,src=c:\output,target=/output`|
@@ -189,3 +194,4 @@ ApiKey={APPLICATION_ID} \
 
 * 查看[如何安装和运行容器](luis-container-howto.md)
 * 参阅[常见问题解答 (FAQ)](luis-resources-faq.md) 解决与 LUIS 功能相关的问题。
+* 使用更多[认知服务容器](../cognitive-services-container-support.md)

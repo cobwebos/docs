@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: text-analytics
 ms.topic: conceptual
-ms.date: 11/14/2018
+ms.date: 01/22/2019
 ms.author: diberry
-ms.openlocfilehash: eabbe8d771520d5b1d5360a3d86b96d27ea08277
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.openlocfilehash: a75f5ec11644bbd64a6bafeb8585371437eedc3b
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54359436"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54476914"
 ---
 # <a name="configure-containers"></a>配置容器
 
@@ -33,6 +33,7 @@ ms.locfileid: "54359436"
 * [CloudAI](#cloudai-configuration-settings)
 * [Eula](#eula-configuration-setting)
 * [Fluentd](#fluentd-configuration-settings)
+* [Http 代理凭据设置](#http-proxy-credentials-settings)
 * [日志记录](#logging-configuration-settings)
 * [Mounts](#mounts-configuration-settings)
 
@@ -78,7 +79,7 @@ ms.locfileid: "54359436"
 
 下表描述了 `ApplicationInsights` 节支持的配置设置。
 
-| 名称 | 数据类型 | Description |
+| 名称 | 数据类型 | 说明 |
 |------|-----------|-------------|
 | `InstrumentationKey` | String | 容器遥测数据要发送到的 Application Insights 实例的检测密钥。 有关详细信息，请参阅[适用于 ASP.NET Core 的 Application Insights](https://docs.microsoft.com/azure/application-insights/app-insights-asp-net-core)。 |
 
@@ -86,7 +87,7 @@ ms.locfileid: "54359436"
 
 `Authentication` 配置设置为容器提供 Azure 安全选项。 虽然此部分中的配置设置可用，但人脸容器不使用此部分。
 
-| 名称 | 数据类型 | Description |
+| 名称 | 数据类型 | 说明 |
 |------|-----------|-------------|
 | `Storage` | String | 容器遥测数据要发送到的 Application Insights 实例的检测密钥。 有关详细信息，请参阅[适用于 ASP.NET Core 的 Application Insights](https://docs.microsoft.com/azure/application-insights/app-insights-asp-net-core)。 |
 
@@ -101,7 +102,7 @@ ms.locfileid: "54359436"
 
 `CloudAI` 部分中的配置设置提供容器特有的容器特定选项。 `CloudAI` 部分中的人脸容器支持以下设置和对象
 
-| 名称 | 数据类型 | Description |
+| 名称 | 数据类型 | 说明 |
 |------|-----------|-------------|
 | `Storage` | 对象 | 人脸容器使用的存储方案。 有关 `Storage` 对象的存储方案和关联设置的详细信息，请参阅[存储方案设置](#storage-scenario-settings) |
 
@@ -120,7 +121,7 @@ ms.locfileid: "54359436"
 
 存储方案和关联的配置设置由 `Storage` 对象在 `CloudAI` 配置部分下进行管理。 `Storage` 对象中提供了以下配置设置：
 
-| 名称 | 数据类型 | Description |
+| 名称 | 数据类型 | 说明 |
 |------|-----------|-------------|
 | `StorageScenario` | String | 容器支持的存储方案。 可用值如下<br/>`Memory` - 默认值。 容器使用非持久、非分布式的内存中存储，用于单节点的临时使用情况。 如果停止或删除容器，则该容器的存储将被销毁。<br/>`Azure` - 容器使用 Azure 资源进行存储。 如果停止或删除容器，则会保留该容器的存储。|
 | `ConnectionStringOfAzureStorage` | String | 容器使用的 Azure 存储资源的连接字符串。<br/>仅当为 `StorageScenario` 配置设置指定了 `Azure` 时，才应用此设置。 |
@@ -153,7 +154,7 @@ ms.locfileid: "54359436"
 
 下表描述了 `Fluentd` 节支持的配置设置。
 
-| 名称 | 数据类型 | Description |
+| 名称 | 数据类型 | 说明 |
 |------|-----------|-------------|
 | `Host` | String | Fluentd 服务器的 IP 地址或 DNS 主机名。 |
 | `Port` | Integer | Fluentd 服务器的端口。<br/> 默认值为 24224。 |
@@ -161,6 +162,11 @@ ms.locfileid: "54359436"
 | `SendBufferSize` | Integer | 为发送操作分配的网络缓冲空间，以字节为单位。 默认值为 32768 字节（32 KB）。 |
 | `TlsConnectionEstablishmentTimeoutMs` | Integer | 与 Fluentd 服务器建立 SSL/TLS 连接的超时值，以毫秒为单位。 默认值为 10000 毫秒（10 秒）。<br/> 如果 `UseTLS` 设置为 false，则会忽略此值。 |
 | `UseTLS` | Boolean | 指示容器是否应使用 SSL/TLS 来与 Fluentd 服务器通信。 默认值为 false。 |
+
+
+## <a name="http-proxy-credentials-settings"></a>Http 代理凭据设置
+
+[!INCLUDE [Container shared configuration fluentd settings](../../../includes/cognitive-services-containers-configuration-shared-settings-http-proxy.md)]
 
 ## <a name="logging-configuration-settings"></a>Logging 配置设置
 
@@ -174,7 +180,7 @@ ms.locfileid: "54359436"
   JSON 日志记录提供程序。 此日志记录提供程序将日志数据写入输出装入点。  
   `Disk` 日志记录提供程序支持以下配置设置：  
 
-  | 名称 | 数据类型 | Description |
+  | 名称 | 数据类型 | 说明 |
   |------|-----------|-------------|
   | `Format` | String | 日志文件的输出格式。<br/> **注意：** 此值必须设置为 `json` 才能启用日志记录提供程序。 如果指定了此值，但未同时在实例化容器时指定输出装入点，则会发生错误。 |
   | `MaxFileSize` | Integer | 日志文件的最大大小，以 MB 为单位。 如果当前日志文件的大小达到或超过此值，则日志记录提供程序会启动新的日志文件。 如果指定 -1，则日志文件的大小仅受输出装入点的最大文件大小（如果有）的限制。 默认值为 1。 |
@@ -192,7 +198,7 @@ ms.locfileid: "54359436"
 
 下表描述了 `Mounts` 节支持的配置设置。
 
-| 名称 | 数据类型 | Description |
+| 名称 | 数据类型 | 说明 |
 |------|-----------|-------------|
 | `Input` | String | 输入装入点的目标。 默认值为 `/input`。 |
 | `Output` | String | 输出装入点的目标。 默认值为 `/output`。 |
@@ -212,3 +218,7 @@ ms.locfileid: "54359436"
   ```
 
 人脸容器不使用输入或输出装入点来存储培训或数据库数据。 相反，人脸容器提供用于管理培训和数据库数据的存储方案。 有关使用存储方案的详细信息，请参阅[存储方案设置](#storage-scenario-settings)。
+
+## <a name="next-steps"></a>后续步骤
+
+* 使用更多[认知服务容器](../cognitive-services-container-support.md)

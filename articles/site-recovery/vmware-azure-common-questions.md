@@ -8,12 +8,12 @@ services: site-recovery
 ms.date: 12/31/2018
 ms.topic: conceptual
 ms.author: raynew
-ms.openlocfilehash: 90f3a4571e485e52a47eda34eacf6367aef35933
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.openlocfilehash: 703d255a962dbac7a430404835c6d45c358d99a7
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54320984"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54478080"
 ---
 # <a name="common-questions---vmware-to-azure-replication"></a>常见问题 - VMware 到 Azure 的复制
 
@@ -43,7 +43,23 @@ ms.locfileid: "54320984"
 ### <a name="does-my-azure-account-need-permissions-to-create-vms"></a>我的 Azure 帐户是否需要拥有创建 VM 的权限？
 如果你是订阅管理员，则已经获得了所需的复制权限。 否则，需要有权在配置 Site Recovery 时指定的资源组和虚拟网络中创建 Azure VM，并有权写入选定的存储帐户。 [了解详细信息](site-recovery-role-based-linked-access-control.md#permissions-required-to-enable-replication-for-new-virtual-machines)。
 
+## <a name="azure-site-recovery-components-upgrade"></a>Azure Site Recovery 组件升级
 
+### <a name="my-mobility-agentconfiguration-serverprocess-server-version-is-very-old-and-my-upgrade-has-failed-how-should-i-upgrade-to-latest-version"></a>我的移动性代理/配置服务器/进程服务器版本过旧，导致升级失败。 应如何升级到最新版本？
+
+Azure Site Recovery 遵循 N-4 支持模型。 有关如何从过旧版本升级的详细信息，请参阅我们的[支持声明](https://aka.ms/asr_support_statement)。
+
+### <a name="where-can-i-find-the-release-notesupdate-rollups-of-azure-site-recovery"></a>在哪里可以找到 Azure Site Recovery 的发行说明/更新汇总？
+
+有关发行说明的信息，请参阅[文档](https://aka.ms/asr_update_rollups)。 可以在每个更新汇总中找到各个组件的安装链接。
+
+### <a name="how-should-i-upgrade-site-recovery-components-for-on-premises-vmware-or-physical-site-to-azure"></a>应如何将本地 VMware 或物理站点的 Site Recovery 组件升级到 Azure？
+
+请参阅[此处](https://aka.ms/asr_vmware_upgrades)提供的指南来升级组件。
+
+## <a name="is-reboot-of-source-machine-mandatory-for-each-upgrade"></a>每次升级是否必须重新启动源计算机？
+
+尽管建议重新启动，但并非每次升级都必须这样做。 有关明确的准则，请参阅[此处](https://aka.ms/asr_vmware_upgrades)。
 
 ## <a name="on-premises"></a>本地
 
@@ -142,7 +158,7 @@ Site Recovery 通过公共终结点或使用 ExpressRoute 公共对等互连将�
 虽然可以这样做，但运行配置服务器的 Azure VM 需要与本地的 VMware 基础结构和 VM 通信。 这可能会增加延迟并影响正在进行的复制。
 
 ### <a name="how-do-i-update-the-configuration-server"></a>如何更新配置服务器？
-[了解](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server)如何更新配置服务器。 可以在 [Azure 更新页](https://azure.microsoft.com/updates/?product=site-recovery)中找到最新的更新信息。 另外，还可以直接从 [Microsoft 下载中心](https://aka.ms/asrconfigurationserver)下载最新版本的配置服务器。
+[了解](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server)如何更新配置服务器。 可以在 [Azure 更新页](https://azure.microsoft.com/updates/?product=site-recovery)中找到最新的更新信息。 另外，还可以直接从 [Microsoft 下载中心](https://aka.ms/asrconfigurationserver)下载最新版本的配置服务器。 如果你的版本早于当前版本 4 个版本，请参阅[支持声明](https://aka.ms/asr_support_statement)获取升级指南。
 
 ### <a name="should-i-backup-the-deployed-configuration-server"></a>是否应该备份部署的配置服务器？
 建议定期备份配置服务器。 若想成功进行故障回复，进行故障回复的虚拟机必须存在于配置服务器数据库中，并且配置服务器必须正在运行且处于已连接状态。 可以在[此处](vmware-azure-manage-configuration-server.md)了解有关常见配置服务器管理任务的详细信息。

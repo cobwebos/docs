@@ -3,23 +3,23 @@ title: Azure 服务总线基于请求-响应的操作中的 AMQP 1.0 | Microsoft
 description: Microsoft Azure 服务总线基于请求/响应的操作的列表。
 services: service-bus-messaging
 documentationcenter: na
-author: spelluru
+author: axisc
 manager: timlt
-editor: ''
+editor: spelluru
 ms.assetid: ''
 ms.service: service-bus-messaging
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/22/2018
-ms.author: spelluru
-ms.openlocfilehash: 6ba3d8e4273d0f2ce2626d8876c386a3714d5355
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.date: 01/23/2019
+ms.author: aschhab
+ms.openlocfilehash: 113ed80910e396361396a9c1298fc04a55ac4800
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50159088"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54852469"
 ---
 # <a name="amqp-10-in-microsoft-azure-service-bus-request-response-based-operations"></a>Microsoft Azure 服务总线：基于请求-响应的操作中的 AMQP 1.0
 
@@ -153,7 +153,7 @@ properties: {
   
 |密钥|值类型|必选|值内容|  
 |---------|----------------|--------------|--------------------|  
-|statusCode|int|是|HTTP 响应代码 [RFC2616]<br /><br /> 200: 正常 – 成功，其他表示失败。|  
+|statusCode|int|是|HTTP 响应代码 [RFC2616]<br /><br /> 200：正常 – 成功，其他表示失败。|  
 |statusDescription|字符串|否|状态的说明。|  
   
 响应消息正文必须包含 amqp-value 部分，其中所含映射必须包括以下条目：  
@@ -188,7 +188,7 @@ properties: {
   
 |密钥|值类型|必选|值内容|  
 |---------|----------------|--------------|--------------------|  
-|statusCode|int|是|HTTP 响应代码 [RFC2616]<br /><br /> 200: 正常 – 有更多消息<br /><br /> 204: 无内容 - 没有更多消息|  
+|statusCode|int|是|HTTP 响应代码 [RFC2616]<br /><br /> 200：正常 – 有更多消息<br /><br /> 204：无内容 – 没有更多消息|  
 |statusDescription|字符串|否|状态的说明。|  
   
 响应消息正文必须包含 amqp-value 部分，其中所含映射必须包括以下条目：  
@@ -238,7 +238,7 @@ properties: {
   
 |密钥|值类型|必选|值内容|  
 |---------|----------------|--------------|--------------------|  
-|statusCode|int|是|HTTP 响应代码 [RFC2616]<br /><br /> 200: 正常 – 成功，其他表示失败。|  
+|statusCode|int|是|HTTP 响应代码 [RFC2616]<br /><br /> 200：正常 – 成功，其他表示失败。|  
 |statusDescription|字符串|否|状态的说明。|  
   
 响应消息正文必须包含 amqp-value 部分，其中所含映射必须包括以下条目：  
@@ -272,7 +272,7 @@ properties: {
   
 |密钥|值类型|必选|值内容|  
 |---------|----------------|--------------|--------------------|  
-|statusCode|int|是|HTTP 响应代码 [RFC2616]<br /><br /> 200: 正常 – 成功，其他表示失败。|  
+|statusCode|int|是|HTTP 响应代码 [RFC2616]<br /><br /> 200：正常 – 成功，其他表示失败。|  
 |statusDescription|字符串|否|状态的说明。|  
   
 响应消息正文必须包含 amqp-value 部分，其中所含映射必须包括以下条目：  
@@ -308,7 +308,7 @@ properties: {
   
 |密钥|值类型|必选|值内容|  
 |---------|----------------|--------------|--------------------|  
-|statusCode|int|是|HTTP 响应代码 [RFC2616]<br /><br /> 200: 正常 – 有更多消息<br /><br /> 204: 无内容 - 没有更多消息|  
+|statusCode|int|是|HTTP 响应代码 [RFC2616]<br /><br /> 200：正常 – 有更多消息<br /><br /> 204：无内容 – 没有更多消息|  
 |statusDescription|字符串|否|状态的说明。|  
   
 响应消息正文必须包含 amqp-value 部分，其中所含映射必须包括以下条目：  
@@ -344,7 +344,7 @@ properties: {
   
 |密钥|值类型|必选|值内容|  
 |---------|----------------|--------------|--------------------|  
-|statusCode|int|是|HTTP 响应代码 [RFC2616]<br /><br /> 200: 正常 – 有更多消息<br /><br /> 204: 无内容 - 没有更多消息|  
+|statusCode|int|是|HTTP 响应代码 [RFC2616]<br /><br /> 200：正常 – 有更多消息<br /><br /> 204：无内容 – 没有更多消息|  
 |statusDescription|字符串|否|状态的说明。|  
   
 响应消息正文必须包含 amqp-value 部分，其中所含映射必须包括以下条目：  
@@ -385,7 +385,7 @@ properties: {
   
 |密钥|值类型|必选|值内容|  
 |---------|----------------|--------------|--------------------|  
-|statusCode|int|是|HTTP 响应代码 [RFC2616]<br /><br /> 200: 正常 – 成功，其他表示失败|  
+|statusCode|int|是|HTTP 响应代码 [RFC2616]<br /><br /> 200：正常 – 成功，其他表示失败|  
 |statusDescription|字符串|否|状态的说明。|  
   
 ### <a name="get-session-state"></a>获取会话状态  
@@ -413,7 +413,7 @@ properties: {
   
 |密钥|值类型|必选|值内容|  
 |---------|----------------|--------------|--------------------|  
-|statusCode|int|是|HTTP 响应代码 [RFC2616]<br /><br /> 200: 正常 – 成功，其他表示失败|  
+|statusCode|int|是|HTTP 响应代码 [RFC2616]<br /><br /> 200：正常 – 成功，其他表示失败|  
 |statusDescription|字符串|否|状态的说明。|  
   
 响应消息正文必须包含 amqp-value 部分，其中所含映射必须包括以下条目：  
@@ -449,7 +449,7 @@ properties: {
   
 |密钥|值类型|必选|值内容|  
 |---------|----------------|--------------|--------------------|  
-|statusCode|int|是|HTTP 响应代码 [RFC2616]<br /><br /> 200: 正常 – 有更多消息<br /><br /> 204: 无内容 - 没有更多消息|  
+|statusCode|int|是|HTTP 响应代码 [RFC2616]<br /><br /> 200：正常 – 有更多消息<br /><br /> 204：无内容 – 没有更多消息|  
 |statusDescription|字符串|否|状态的说明。|  
   
 响应消息正文必须包含 amqp-value 部分，其中所含映射必须包括以下条目：  
@@ -519,7 +519,7 @@ sql-rule-action 映射必须包含以下条目：
   
 |密钥|值类型|必选|值内容|  
 |---------|----------------|--------------|--------------------|  
-|statusCode|int|是|HTTP 响应代码 [RFC2616]<br /><br /> 200: 正常 – 成功，其他表示失败|  
+|statusCode|int|是|HTTP 响应代码 [RFC2616]<br /><br /> 200：正常 – 成功，其他表示失败|  
 |statusDescription|字符串|否|状态的说明。|  
   
 ### <a name="remove-rule"></a>删除规则  
@@ -545,7 +545,7 @@ sql-rule-action 映射必须包含以下条目：
   
 |密钥|值类型|必选|值内容|  
 |---------|----------------|--------------|--------------------|  
-|statusCode|int|是|HTTP 响应代码 [RFC2616]<br /><br /> 200: 正常 – 成功，其他表示失败|  
+|statusCode|int|是|HTTP 响应代码 [RFC2616]<br /><br /> 200：正常 – 成功，其他表示失败|  
 |statusDescription|字符串|否|状态的说明。|  
   
 ### <a name="get-rules"></a>获取规则
@@ -572,7 +572,7 @@ sql-rule-action 映射必须包含以下条目：
 
 |密钥|值类型|必选|值内容|  
 |---------|----------------|--------------|--------------------|  
-|statusCode|int|是|HTTP 响应代码 [RFC2616]<br /><br /> 200: 正常 – 成功，其他表示失败|  
+|statusCode|int|是|HTTP 响应代码 [RFC2616]<br /><br /> 200：正常 – 成功，其他表示失败|  
 |规则| 映射数组|是|规则数组。 每个规则均由一个映射表示。|
 
 数组中的每个映射条目都包含以下属性：
@@ -612,7 +612,7 @@ sql-rule-action 映射必须包含以下条目：
 | 1 | 字符串 | 消息 ID |
 | 2 | 字符串 | 目标 |
 | 3 | 字符串 | 回复 |
-| 4 | 字符串 | 标签 |
+| 4 | 字符串 | Label |
 | 5 | 字符串 | 会话 ID |
 | 6 | 字符串 | 会话 ID 回复|
 | 7 | 字符串 | 内容类型 |
@@ -655,7 +655,7 @@ sql-rule-action 映射必须包含以下条目：
   
 |密钥|值类型|必选|值内容|  
 |---------|----------------|--------------|--------------------|  
-|statusCode|int|是|HTTP 响应代码 [RFC2616]<br /><br /> 200: 正常 – 成功，其他表示失败|  
+|statusCode|int|是|HTTP 响应代码 [RFC2616]<br /><br /> 200：正常 – 成功，其他表示失败|  
 |statusDescription|字符串|否|状态的说明。|  
   
 响应消息正文必须包含 amqp-value 部分，其中所含映射必须包括以下条目：  
@@ -700,7 +700,7 @@ sql-rule-action 映射必须包含以下条目：
   
 |密钥|值类型|必选|值内容|  
 |---------|----------------|--------------|--------------------|  
-|statusCode|int|是|HTTP 响应代码 [RFC2616]<br /><br /> 200: 正常 – 成功，其他表示失败|  
+|statusCode|int|是|HTTP 响应代码 [RFC2616]<br /><br /> 200：正常 – 成功，其他表示失败|  
 |statusDescription|字符串|否|状态的说明。|
 
 ## <a name="next-steps"></a>后续步骤

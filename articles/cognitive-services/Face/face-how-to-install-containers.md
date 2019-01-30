@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: text-analytics
 ms.topic: article
-ms.date: 11/14/2018
+ms.date: 01/22/2019
 ms.author: diberry
-ms.openlocfilehash: ac273ac7d4c6c371670e6b8a8170274602a5318b
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 310311c22be25960b15f20d573624f50b0f618b1
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53536536"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54474806"
 ---
 # <a name="install-and-run-containers"></a>安装和运行容器
 
@@ -53,7 +53,7 @@ ms.locfileid: "53536536"
 
 ## <a name="create-a-face-resource-on-azure"></a>在 Azure 上创建“人脸”资源
 
-若要使用“人脸”容器，必须在 Azure 上创建“人脸”资源。 创建资源后，使用资源中的订阅密钥和终结点 URL 来实例化容器。 有关实例化容器的详细信息，请参阅[从下载的容器映像实体化容器](#instantiate-a-container-from-a-downloaded-container-image)。
+若要使用“人脸”容器，必须在 Azure 上创建“人脸”资源。 创建资源后，使用资源中的订阅密钥和终结点 URL 来实例化容器。 有关实例化容器的详细信息，请参阅[从下载的容器映像中实例化容器](#instantiate-a-container-from-a-downloaded-container-image)。
 
 执行以下步骤，从“人脸”资源创建和检索信息：
 
@@ -148,7 +148,7 @@ POST http://localhost:5000/face/v1.0/detect
 
 “人脸”容器使用 Azure 帐户中相应的“人脸”资源向 Azure 发送账单信息。 “人脸”容器使用以下命令行选项进行计费：
 
-| 选项 | Description |
+| 选项 | 说明 |
 |--------|-------------|
 | `ApiKey` | 用于跟踪账单信息的“人脸”资源的 API 密钥。<br/>必须将此选项的值设置为 `Billing` 中指定的已预配“人脸”Azure 资源的 API 密钥。 |
 | `Billing` | 用于跟踪账单信息的“人脸”资源的终结点。<br/>必须将此选项的值设置为已预配的“人脸”Azure 资源的终结点 URI。|
@@ -178,3 +178,4 @@ POST http://localhost:5000/face/v1.0/detect
 * 查看[“人脸”概述](Overview.md)，详细了解如何检测和识别人脸  
 * 有关该容器支持的方法的详细信息，请参阅[人脸 API](//westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)。
 * 参阅[常见问题解答 (FAQ)](FAQ.md) 解决与“人脸”功能相关的问题。
+* 使用更多[认知服务容器](../cognitive-services-container-support.md)

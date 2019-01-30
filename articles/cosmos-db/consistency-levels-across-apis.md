@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/23/2018
 ms.reviewer: sngun
-ms.openlocfilehash: 76ebbc8cc8dbea4b7f8f8226cf1d8570a421e8cf
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 4d2994ea6ab6d6472ec56f0f2e378062590c8920
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54034329"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54806991"
 ---
 # <a name="consistency-levels-and-azure-cosmos-db-apis"></a>一致性级别和 Azure Cosmos DB API
 
@@ -24,15 +24,48 @@ Azure Cosmos DB 还为常用数据库提供对与线路协议兼容的 API 的�
 
 ## <a id="cassandra-mapping"></a>Apache Cassandra 与 Azure Cosmos DB 一致性级别之间的映射
 
-下表显示了 Apache Cassandra 4.x 客户端与 Azure Cosmos DB 中的默认一致性级别之间的“读取一致性”映射。 下表显示了多区域和单区域部署。
+下表显示了 Apache Cassandra 与 Azure Cosmos DB 中的一致性级别之间的一致性映射。 对于每个 Cassandra 读写一致性级别，对应的 Cosmos DB 一致性级别提供更强的（即更严格的）保证。
 
-| **Apache Cassandra 4.x** | **Azure Cosmos DB（多区域）** | **Azure Cosmos DB（单区域）** |
+下表显示了 Azure Cosmos DB 和 Cassandra 之间的“写一致性映射”：
+
+| Cassandra | Azure Cosmos DB | 保证 |
 | - | - | - |
-| ONE, TWO, THREE | 一致前缀 | 一致前缀 |
-| LOCAL_ONE | 一致前缀 | 一致前缀 |
-| QUORUM, ALL, SERIAL | “有限过期”为默认值。 “非常”在个人预览版中提供。 | 非常 |
-| LOCAL_QUORUM | 有限过期性 | 非常 |
-| LOCAL_SERIAL | 有限过期性 | 非常 |
+|ALL|非常  | 可线性化 |
+| EACH_QUORUM   | 非常    | 可线性化 | 
+| QUORUM, SERIAL |  非常 |    可线性化 |
+| LOCAL_QUORUM, THREE, TWO, ONE, LOCAL_ONE, ANY | 一致前缀 |全局一致前缀 |
+| EACH_QUORUM   | 非常    | 可线性化 |
+| QUORUM, SERIAL |  非常 |    可线性化 |
+| LOCAL_QUORUM, THREE, TWO, ONE, LOCAL_ONE, ANY | 一致前缀 | 全局一致前缀 |
+| QUORUM, SERIAL | 非常   | 可线性化 |
+| LOCAL_QUORUM, THREE, TWO, ONE, LOCAL_ONE, ANY | 一致前缀 | 全局一致前缀 |
+| LOCAL_QUORUM, LOCAL_SERIAL, TWO, THREE    | 有限过期 | <ul><li>有限过期。</li><li>至多到 K 版本或在 t 时间之后。</li><li>读取区域中提交的最新值。</li></ul> |
+| ONE, LOCAL_ONE, ANY   | 一致前缀 | 各区域一致前缀 |
+
+下表显示了 Azure Cosmos DB 和 Cassandra 之间的“读一致性映射”：
+
+| Cassandra | Azure Cosmos DB | 保证 |
+| - | - | - |
+| ALL, QUORUM, SERIAL, LOCAL_QUORUM, LOCAL_SERIAL, THREE, TWO, ONE, LOCAL_ONE | 非常  | 可线性化|
+| ALL, QUORUM, SERIAL, LOCAL_QUORUM, LOCAL_SERIAL, THREE, TWO   |非常 |   可线性化 |
+|LOCAL_ONE, ONE | 一致前缀 | 全局一致前缀 |
+| ALL, QUORUM, SERIAL   | 非常    | 可线性化 |
+| LOCAL_ONE, ONE, LOCAL_QUORUM, LOCAL_SERIAL, TWO, THREE |  一致前缀   | 全局一致前缀 |
+| LOCAL_ONE, ONE, TWO, THREE, LOCAL_QUORUM, QUORUM |    一致前缀   | 全局一致前缀 |
+| ALL, QUORUM, SERIAL, LOCAL_QUORUM, LOCAL_SERIAL, THREE, TWO   |非常 |   可线性化 |
+| LOCAL_ONE, ONE    | 一致前缀 | 全局一致前缀|
+| ALL, QUORUM, SERIAL   Strong  Linearizability
+LOCAL_ONE, ONE, LOCAL_QUORUM, LOCAL_SERIAL, TWO, THREE  |一致前缀  | 全局一致前缀 |
+|ALL    |非常 |可线性化 |
+| LOCAL_ONE, ONE, TWO, THREE, LOCAL_QUORUM, QUORUM  |一致前缀  |全局一致前缀|
+|ALL, QUORUM, SERIAL    Strong  Linearizability
+LOCAL_ONE, ONE, LOCAL_QUORUM, LOCAL_SERIAL, TWO, THREE  |一致前缀  |全局一致前缀 |
+|ALL    |非常 | 可线性化 |
+| LOCAL_ONE, ONE, TWO, THREE, LOCAL_QUORUM, QUORUM  | 一致前缀 | 全局一致前缀 |
+| QUORUM, LOCAL_QUORUM, LOCAL_SERIAL, TWO, THREE |  有限过期   | <ul><li>有限过期。</li><li>至多到 K 版本或在 t 时间之后。 </li><li>读取区域中提交的最新值。</li></ul>
+| LOCAL_ONE, ONE |一致前缀 | 各区域一致前缀 |
+| LOCAL_ONE, ONE, TWO, THREE, LOCAL_QUORUM, QUORUM  | 一致前缀 | 各区域一致前缀 |
+
 
 ## <a id="mongo-mapping"></a>MongoDB 3.4 与 Azure Cosmos DB 一致性级别之间的映射
 

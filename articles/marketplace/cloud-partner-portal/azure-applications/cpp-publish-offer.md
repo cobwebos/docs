@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: pbutlerm
-ms.openlocfilehash: deab8298d09972a4e60be5c72d6d7e43dc2683e6
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: ad62b306849b2291c81399cedc1634057e2eec9d
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54329984"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54828088"
 ---
 # <a name="publish-azure-application-offer"></a>发布 Azure 应用程序产品/服务
 
@@ -36,7 +36,7 @@ ms.locfileid: "54329984"
 |  **发布步骤**           | **时间**    | **说明**                                                            |
 |  -------------------           | --------    | ---------------                                                            |
 | 验证先决条件         | 小于 15 分钟    | 验证套餐信息和套餐设置。                        |
-| 验证影响的收入设置 | 小于 15 分钟  |      |
+| 验证影响的收入设置 | 小于 15 分钟  | 已选中产品/服务的 Azure 资源使用情况属性。             |
 | 认证                  | 小于 1 天     | Azure 认证团队对套餐进行分析。 针对病毒、恶意软件、安全合规性和安全问题对产品/服务进行扫描。 检查产品/服务，以了解它是否满足所有资格条件。 有关详细信息，请参阅[先决条件](./cpp-prerequisites.md)。 如果发现了问题，则提供反馈。 |
 | 体验版验证          | 小于 2 小时   | （可选）如果存在体验版，Microsoft 将验证是否可以部署和复制该体验版。  |
 | 打包以及潜在顾客开发注册 | 小于 1 小时  | 打包套餐的技术资产供客户使用，配置并部署潜在顾客系统。 |

@@ -4,7 +4,7 @@ description: 介绍如何借助一种新的行为，在目录同步期间使用 
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: 537a92b7-7a84-4c89-88b0-9bce0eacd931
 ms.service: active-directory
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 01/15/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: e20ae31ae64483d4d11b793f1c8656107413c05d
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: f3460520b8914a25807c77f631aa4c64f3b2efb0
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49406188"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54464861"
 ---
 # <a name="identity-synchronization-and-duplicate-attribute-resiliency"></a>标识同步和重复属性复原
 重复属性复原是 Azure Active Directory 的一项功能，可在运行 Microsoft 的同步工具之一时消除 **UserPrincipalName** 和 **ProxyAddress** 冲突所造成的不便。
@@ -133,7 +133,7 @@ ProxyAddress 冲突的电子邮件通知示例如下所示：
 ## <a name="resolving-conflicts"></a>解决冲突
 针对这些错误的故障排除策略和解决技巧不应与过去处理重复属性错误的方式不同。 唯一的差别在于，计时器任务将扫描服务端的租户，以便在冲突解决后，自动将有问题的属性添加到适当的对象。
 
-以下文章概述了各种故障排除和解决策略：[重复或无效的属性阻止 Office 365 中的目录同步](https://support.microsoft.com/kb/2647098)。
+以下文章概述了各种故障排除和解决策略：[Office 365 中的重复或无效属性导致无法进行目录同步](https://support.microsoft.com/kb/2647098)。
 
 ## <a name="known-issues"></a>已知问题
 没有任何已知问题导致数据丢失或服务降级。 其中有些问题是外观问题，有些问题将导致引发标准的“*复原前*”重复属性错误，而不是隔离冲突属性，还有一些问题导致特定错误需要额外的手动修复。
@@ -143,7 +143,7 @@ ProxyAddress 冲突的电子邮件通知示例如下所示：
 1. 具有特定属性配置的对象继续收到导出错误，而不是重复属性被隔离。  
    例如：
    
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 新用户在 AD 中创建，其 UPN 为 **Joe@contoso.com**，ProxyAddress 为 **smtp:Joe@contoso.com**。
+    a. 新用户在 AD 中创建，其 UPN 为 **Joe@contoso.com**，ProxyAddress 为 **smtp:Joe@contoso.com**。
    
     b. 此对象的属性与现有组发生冲突，其中 ProxyAddress 为 **SMTP:Joe@contoso.com**。
    
@@ -155,7 +155,7 @@ ProxyAddress 冲突的电子邮件通知示例如下所示：
 1. UPN 冲突集中两个对象的详细错误消息是相同的。 这意味着，它们的 UPN 都已更改/隔离，此时，实际上只有其中一个对象的数据发生更改。
 2. UPN 冲突的详细错误消息对已更改/隔离其 UPN 的用户显示不正确的 displayName。 例如：
    
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 **用户 A** 首先使用 **UPN = User@contoso.com** 同步。
+    a. **用户 A** 首先使用 **UPN = User@contoso.com** 同步。
    
     b. 然后，**用户 B** 尝试使用 **UPN = User@contoso.com** 同步。
    

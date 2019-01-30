@@ -14,12 +14,12 @@ ms.devlang: python
 ms.topic: article
 ms.date: 02/19/2015
 ms.author: MicrosoftHelp@twilio.com
-ms.openlocfilehash: 63eb894c64919826922fa60f4e12894542a97c69
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.openlocfilehash: e6cfd9e72dc1a38e4ed0c11320336ccc4b44a2c0
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53994159"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54447354"
 ---
 # <a name="how-to-use-twilio-for-voice-and-sms-capabilities-in-python"></a>如何通过 Python 使用 Twilio 实现语音和 SMS 功能
 本指南演示如何在 Azure 中使用 Twilio API 服务执行常见编程任务。 所涉及的任务包括发起电话呼叫和发送短信服务 (SMS) 消息。 有关 Twilio 以及在应用程序中使用语音和短信的详细信息，请参阅[后续步骤](#NextSteps)部分。
@@ -56,7 +56,7 @@ API 利用了 Twilio 谓词；例如，**&lt;Say&gt;** 谓词指示 Twilio 在�
 * **&lt;Redirect&gt;**：将对呼叫或短信的控制转移到其他 URL 上的 TwiML。
 * **&lt;Reject&gt;**：拒绝对 Twilio 号码的传入呼叫且无需付费。
 * **&lt;Say&gt;**：将文本转换为通话语音。
-* **&lt;SMS&gt;**：发送短信。
+* **&lt;Sms&gt;**：发送短信。
 
 ### <a id="TwiML"></a>TwiML
 TwiML 是一组基于 XML 的指令，这些指令以用于指示 Twilio 如何处理呼叫或 SMS 的 Twilio 谓词为基础。
@@ -88,7 +88,7 @@ TwiML 是一组基于 XML 的指令，这些指令以用于指示 Twilio 如何�
   3. 为**端口 80** 添加**传出规则**。 请确保允许从任何地址传入。
 
 ### <a name="set-the-dns-name-label"></a>设置 DNS 名称标签
-  1. 转到[公共 IP 地址][azure_ips] 页。
+  1. 转到 [公共 IP 地址][azure_nsg] 页。
   2. 选择与虚拟机对应的公共 IP。
   3. 在“配置”部分中设置“DNS 名称标签”。 就此示例而言，它将如此 *your-domain-label*.centralus.cloudapp.azure.com 中所示
 

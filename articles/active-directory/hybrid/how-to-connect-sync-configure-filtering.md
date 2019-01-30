@@ -1,10 +1,10 @@
 ---
-title: Azure AD Connect 同步：配置筛选 | Microsoft 文档
+title: Azure AD Connect 同步：配置筛选 | Microsoft Docs
 description: 介绍如何在 Azure AD Connect 同步中配置筛选。
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: 880facf6-1192-40e9-8181-544c0759d506
 ms.service: active-directory
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/12/2017
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 9ec136b418e78f82486d9d38f361e411c3d00c31
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 886ac908d2e294f4627f95b35d93ea49a9e1607a
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46306356"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54472324"
 ---
 # <a name="azure-ad-connect-sync-configure-filtering"></a>Azure AD Connect 同步：配置筛选
 使用筛选功能可以控制本地目录中的哪些对象应该出现在 Azure Active Directory (Azure AD) 中。 默认配置会采用配置的林中所有域内的所有对象。 我们一般建议使用这种配置。 使用 Exchange Online 和 Skype for Business 等 Office 365 工作负荷的用户将受益于完整的全局地址列表，因为这样可以发送电子邮件和呼叫每个联系人。 使用默认配置时，用户获得的体验与使用 Exchange 或 Lync 的本地实现获得的相同。
@@ -79,7 +79,7 @@ Azure AD Connect 只删除其曾经认为在范围中的对象。 如果 Azure A
 
 * [**基于组**](#group-based-filtering)：只能在初始安装时使用安装向导配置基于单个组的筛选。
 * [**基于域**](#domain-based-filtering)：使用此选项，可以选择要同步到 Azure AD 的域。 在安装 Azure AD Connect 同步之后对本地基础结构进行更改时，还可以在同步引擎配置中添加和删除域。
-* [**基于组织单位(OU)**](#organizational-unitbased-filtering)：使用此选项，可以选择要同步到 Azure AD 的 OU。 将对所选 OU 中的所有对象类型应用此选项。
+* [**基于组织单位 (OU)**](#organizational-unitbased-filtering)：使用此选项，可以选择要同步到 Azure AD 的 OU。 将对所选 OU 中的所有对象类型应用此选项。
 * [**基于属性**](#attribute-based-filtering)：使用此选项，可以根据对象属性值筛选对象。 也可以对不同的对象类型使用不同的筛选器。
 
 可以同时使用多个筛选选项。 例如，可以使用基于 OU 的筛选以便只包含某个 OU 中的对象。 同时，可以使用基于属性的筛选进一步筛选这些对象。 使用多个筛选方法时，筛选器之间使用逻辑“AND”。
@@ -185,6 +185,9 @@ Azure AD Connect 安装向导将始终创建此配置。
 
 ## <a name="attribute-based-filtering"></a>基于属性的筛选
 为了正常执行这些步骤，请确保使用 2015 年 11 月 ([1.0.9125](reference-connect-version-history.md#1091250)) 或更高版本。
+
+> [!IMPORTANT]
+>Microsoft 建议不要修改由 **Azure AD Connect** 创建的默认规则。 如果想要修改规则，请克隆它，然后禁用原始规则。 对克隆的规则进行任何更改。 请注意，这样做（禁用原始规则）会丢失通过该规则启用的任何 bug 修复或功能。
 
 基于属性的筛选是最灵活的对象筛选方式。 将对象同步到 Azure AD 时，可以使用[声明性预配](concept-azure-ad-connect-sync-declarative-provisioning.md)功能来控制几乎每个方面的问题。
 

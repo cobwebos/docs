@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/11/2018
 ms.author: raynew
-ms.openlocfilehash: eb046ceebf9c6233fa5178d18603add2f0c26a29
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 94ed136b48c53bd582a8b3ad210d421764b9f0f6
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53608011"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54808453"
 ---
 # <a name="contoso-migration-refactor-an-on-premises-app-to-an-azure-web-app-and-azure-sql-database"></a>Contoso 迁移：将本地应用重构到 Azure Web 应用和 Azure SQL 数据库
 
@@ -347,7 +347,7 @@ Contoso 管理员现在配置 Azure DevOps 来执行生成和发布过程。
 
     ![部署应用服务](./media/contoso-migration-refactor-web-app-sql/pipeline15.png)
 
-18. 在“选择文件或文件夹”中，找到生成期间创建的 SmartHotel.Registration.Wcf.zip 文件，然后单击“保存”。-sql
+18. 在“选择文件或文件夹”中，找到生成期间创建的 SmartHotel.Registration.Wcf.zip 文件，然后单击“保存”。
 
     ![保存 WCF](./media/contoso-migration-refactor-web-app-sql/pipeline16.png)
 

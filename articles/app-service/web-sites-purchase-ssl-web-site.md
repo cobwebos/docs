@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/16/2018
 ms.author: apurvajo;cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 78b7668dee892841ced1a06626ff09a534a88b69
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 784cb5248dab2b9554c67347e1b9b848e1a9e985
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53714294"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54820778"
 ---
 # <a name="buy-and-configure-an-ssl-certificate-for-azure-app-service"></a>为 Azure 应用服务购买和配置 SSL 证书
 
@@ -47,10 +47,10 @@ ms.locfileid: "53714294"
 
 使用下表来帮助配置证书。 完成后，单击“创建”。
 
-| 设置 | Description |
+| 设置 | 说明 |
 |-|-|
 | 名称 | 应用服务证书证书的友好名称。 |
-| 裸域主机名 | 此步骤是购买过程中的最重要步骤之一。 使用已映射到应用的根域名。 切勿在域名前面附加 `www`。 |
+| 裸域主机名 | 如果在此处指定根域，则会获得一个证书，该证书*同时*对根域和 `www` 子域提供保护。 若要仅保护子域，请在此处指定子域的完全限定域名（例如，`mysubdomain.contoso.com`）。 |
 | 订阅 | 托管 Web 应用的数据中心。 |
 | 资源组 | 包含证书的资源组。 例如，可以使用新资源组，或选择与应用服务应用相同的资源组。 |
 | 证书 SKU | 确定要创建的证书类型是标准证书还是[通配符证书](https://wikipedia.org/wiki/Wildcard_certificate)。 |
@@ -68,7 +68,7 @@ ms.locfileid: "53714294"
 
 在“Key Vault 状态”页，单击“Key Vault 存储库”以创建新的保管库或选择现有保管库。 如果选择创建新的保管库，请使用下表以帮助配置保管库，然后单击“创建”。 查看如何在同一订阅和资源组中创建新的 Key Vault。
 
-| 设置 | Description |
+| 设置 | 说明 |
 |-|-|
 | 名称 | 由字母数字字符和短划线组成的唯一名称。 |
 | 资源组 | 建议选择与应用服务证书相同的资源组。 |
@@ -111,7 +111,7 @@ ms.locfileid: "53714294"
 
 使用下表帮助在“SSL 绑定”对话框中配置绑定，然后单击“添加绑定”。
 
-| 设置 | Description |
+| 设置 | 说明 |
 |-|-|
 | 主机名 | 要为其添加 SSL 绑定的域名。 |
 | 私有证书指纹 | 要绑定的证书。 |
@@ -133,7 +133,7 @@ ms.locfileid: "53714294"
 
 ## <a name="renew-certificate"></a>续订证书
 
-若要在任何时候启用自动续订证书，请选择[应用服务证书](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.CertificateRegistration%2FcertificateOrders)页中的证书，然后单击左侧导航窗格的“自动续订设置”。 
+若要在任何时候启用证书自动续订，请选择[应用服务证书](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.CertificateRegistration%2FcertificateOrders)页面中的证书，然后单击左侧导航窗格的“自动续订设置”。 
 
 选择“开”，然后单击“保存”。 如果启用了自动续订，则证书会在到期前 60 天自动续订。
 

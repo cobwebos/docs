@@ -1,10 +1,10 @@
 ---
-title: 教程：Azure Active Directory 与 FirmPlay - Employee Advocacy for Recruiting 的集成 | Microsoft 文档
+title: 教程：教程：Azure Active Directory 与 FirmPlay - Employee Advocacy for Recruiting 的集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 与 FirmPlay - Employee Advocacy for Recruiting 之间配置单一登录。
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: a6799629-7546-43f8-a966-956db32864b1
 ms.service: active-directory
 ms.component: saas-app-tutorial
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/15/2017
 ms.author: jeedes
-ms.openlocfilehash: abc29480e5f5531857cbf973d5386727c3d7f2ac
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.openlocfilehash: 929494d5d802dbc545c750386a286029c4bf962d
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49114522"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54809796"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-firmplay---employee-advocacy-for-recruiting"></a>教程：Azure Active Directory 与 FirmPlay - Employee Advocacy for Recruiting 的集成
 
@@ -95,7 +95,7 @@ ms.locfileid: "49114522"
 
 1. **[配置 Azure AD 单一登录](#configuring-azure-ad-single-sign-on)** - 让用户使用此功能。
 1. **[创建 Azure AD 测试用户](#creating-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-1. **[创建 FirmPlay - Employee Advocacy for Recruiting 测试用户](#creating-a-firmplay---employee-advocacy-for-recruiting-test-user)** - 在 FirmPlay：Employee Advocacy for Recruiting 中创建 Britta Simon 的对应用户，并将其链接到她的 Azure AD 表示形式。
+1. [创建 FirmPlay - Employee Advocacy for Recruiting 测试用户](#creating-a-firmplay---employee-advocacy-for-recruiting-test-user) - 在 FirmPlay 中拥有 Britta Simon 的对应用户：Employee Advocacy for Recruiting 中有一个与 Azure AD 中的 Britta Simon 相对应的关联用户。
 1. **[分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)** - 让 Britta Simon 使用 Azure AD 单一登录。
 1. **[测试单一登录](#testing-single-sign-on)** - 验证配置是否正常工作。
 
@@ -180,7 +180,7 @@ ms.locfileid: "49114522"
  
     ![创建 Azure AD 测试用户](./media/firmplay-tutorial/create_aaduser_04.png) 
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
+    a. 在“名称”文本框中，键入 **BrittaSimon**。
 
     b. 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
@@ -237,7 +237,7 @@ ms.locfileid: "49114522"
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](tutorial-list.md)
-* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
+* [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
 
 

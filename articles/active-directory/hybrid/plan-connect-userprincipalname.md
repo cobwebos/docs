@@ -8,13 +8,13 @@ ms.date: 06/26/2018
 ms.topic: article
 ms.workload: identity
 ms.service: active-Directory
-manager: mtillman
-ms.openlocfilehash: 59df0dc61be1f670f21b94fe24e56a2f040f950e
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+manager: daveba
+ms.openlocfilehash: da2ae0262ef8380f31f37bfbbe5ddca45c72ebd1
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52426802"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54468091"
 ---
 # <a name="azure-ad-userprincipalname-population"></a>Azure AD UserPrincipalName 填充
 
@@ -24,7 +24,7 @@ UserPrincipalName 属性值是用户帐户的 Azure AD 用户名。
 ## <a name="upn-terminology"></a>UPN 术语
 本文使用了以下术语：
 
-|术语|Description|
+|术语|说明|
 |-----|-----|
 |初始域|Azure AD 租户中的默认域 (onmicrosoft.com)。 例如 contoso.onmicrosoft.com。|
 |Microsoft 联机电子邮件路由地址 (MOERA)|Azure AD 基于 Azure AD MailNickName 属性和 &lt;MailNickName&gt;&#64;&lt;初始域&gt; 形式的 Azure AD 初始域计算 MOERA。|
@@ -141,7 +141,7 @@ Azure AD 租户用户对象：
 - MailNickName：us4
 - UserPrincipalName：us4@contoso.onmicrosoft.com
 
-### <a name="scenario-4-non-verified-upn-suffix--update-primary-smtp-address-and-on-premises-mail-attribute"></a>方案 4：未验证的 UPN 后缀 – 更新主要 SMTP 地址和本地 mail 属性
+### <a name="scenario-4-non-verified-upn-suffix--update-primary-smtp-address-and-on-premises-mail-attribute"></a>情景 4：未验证的 UPN 后缀 – 更新主要 SMTP 地址和本地 mail 属性
 
 ![方案 4](./media/plan-connect-userprincipalname/example4.png)
 
@@ -158,7 +158,7 @@ Azure AD 租户用户对象：
 - MailNickName：us4
 - UserPrincipalName：us4@contoso.onmicrosoft.com
 
-### <a name="scenario-5-verified-upn-suffix--update-on-premises-userprincipalname-attribute-suffix"></a>方案 5：已验证的 UPN 后缀 – 更新本地 userPrincipalName 属性后缀
+### <a name="scenario-5-verified-upn-suffix--update-on-premises-userprincipalname-attribute-suffix"></a>情景 5：已验证的 UPN 后缀 – 更新本地 userPrincipalName 属性后缀
 
 ![方案 5](./media/plan-connect-userprincipalname/example5.png)
 

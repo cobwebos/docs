@@ -3,18 +3,19 @@ title: 使用 Azure 服务总线提高性能的最佳做法 | Microsoft 文档
 description: 介绍如何使用服务总线在交换中转消息时优化性能。
 services: service-bus-messaging
 documentationcenter: na
-author: spelluru
+author: axisc
 manager: timlt
+editor: spelluru
 ms.service: service-bus-messaging
 ms.topic: article
 ms.date: 09/14/2018
-ms.author: spelluru
-ms.openlocfilehash: cfce11546249310ce00e5f19ba81520cc9dd78cf
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.author: aschhab
+ms.openlocfilehash: 37e2dcc13ed41911c8117dc1841a389c14e5867f
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47392629"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54848560"
 ---
 # <a name="best-practices-for-performance-improvements-using-service-bus-messaging"></a>使用服务总线消息传递改进性能的最佳实践
 
@@ -36,7 +37,7 @@ AMQP 和 SBMP 更有效，因为只要消息工厂存在，它们便会维护与
 
 ## <a name="reusing-factories-and-clients"></a>重用工厂和客户端
 
-[QueueClient][QueueClient] 或 [MessageSender][MessageSender] 等服务总线客户端对象是通过 [MessagingFactory][MessagingFactory] 对象创建的，该对象还提供连接的内部管理。 发送消息后，建议不关闭消息工厂或队列、主题和订阅客户端，并在发送下一条消息时再重新创建它们。 关闭消息工厂将删除与服务总线服务的连接，并且会在重新创建工厂时建立新的连接。 建立连接是一项成本高昂的操作，可通过针对多个操作重复使用相同的工厂和客户端对象来避免这一操作。 可以使用 [QueueClient][QueueClient] 对象，安全地从并发异步操作和多个线程发送消息。 
+[QueueClient][QueueClient] 或 [MessageSender][MessageSender] 等服务总线客户端对象是通过 [MessagingFactory][MessagingFactory] 对象创建的，该对象还提供连接的内部管理。 发送消息后，建议不关闭消息工厂或队列、主题和订阅客户端，并在发送下一条消息时再重新创建它们。 关闭消息工厂将删除与服务总线服务的连接，并且会在重新创建工厂时建立新的连接。 建立连接是一项成本高昂的操作，可通过针对多个操作重复使用相同的工厂和客户端对象来避免这一操作。 这些客户端对象可安全地用于并发异步操作及从多个线程安全地使用。 
 
 ## <a name="concurrent-operations"></a>并发操作
 
@@ -71,7 +72,7 @@ AMQP 和 SBMP 更有效，因为只要消息工厂存在，它们便会维护与
 
 ## <a name="receive-mode"></a>接收模式
 
-在创建队列或订阅客户端时，可以指定接收模式：*扫视-锁定*或*接收和删除*。 默认接收模式是 [PeekLock][PeekLock]。 在此模式下操作时，客户端发送请求以从服务总线接收消息。 客户端收到消息后，将发送完成消息的请求。
+创建队列或订阅客户端时，可以指定接收模式：*Peek-lock* 或 *Receive and Delete*。 默认接收模式是 [PeekLock][PeekLock]。 在此模式下操作时，客户端发送请求以从服务总线接收消息。 客户端收到消息后，将发送完成消息的请求。
 
 如果将接收模式设置为 [ReceiveAndDelete][ReceiveAndDelete] 时，这两个步骤将合并到单个请求中。 这些步骤减少了操作的总体数目，并可以提高总消息吞吐量。 性能提高的同时也出现丢失消息的风险。
 
@@ -127,42 +128,13 @@ Queue q = namespaceManager.CreateQueue(qd);
 
 预提取不会影响可计费的消息操作的数目，且仅适用于服务总线客户端协议。 HTTP 协议不支持预提取。 预提取可用于同步和异步接收操作。
 
-## <a name="express-queues-and-topics"></a>Express 队列和主题
-
-Express 实体可实现高吞吐量并减少延迟，但仅在标准消息传递层中受到支持。 在[高级命名空间](service-bus-premium-messaging.md)中创建的实体不支持 express 选项。 使用 express 实体，如果发送消息到队列或主题，该消息则不会立即被存储在消息存储。 而是在内存中进行缓存。 如果消息在队列中留存的时间超过数秒钟，则会自动写入到稳定的存储区内，以避免其因中断而丢失。 将消息写入到内存缓存内会增加吞吐量，减少延迟，因为在消息发送时不存在对稳定存储区的访问。 将在几秒钟内使用的消息不会写入到消息存储中。 以下示例将创建一个 express 主题。
-
-```csharp
-TopicDescription td = new TopicDescription(TopicName);
-td.EnableExpress = true;
-namespaceManager.CreateTopic(td);
-```
-
-如果要将包含了必不可失的关键信息的消息发送到 express 实体，则发送方可以通过将 [ForcePersistence][ForcePersistence] 属性设置为 **true**，强制服务总线立即将消息保留至稳定的存储区内。
-
-> [!NOTE]
-> Express 实体不支持事务。
-
-## <a name="partitioned-queues-or-topics"></a>分区的队列或主题
-
-在内部，服务总线使用同一节点和消息存储来处理和存储消息传递实体（队列或主题）的所有消息。 另一方面，[分区的队列或主题](service-bus-partitioning.md)则分布在多个节点和消息存储上。 分区的队列和主题不仅比常规队列和主题产生更高的吞吐量，还显示出更高的可用性。 要创建分区的实体，则将 [EnablePartitioning][EnablePartitioning] 属性设置为 **true**，如以下示例所示。 有关分区的实体的详细信息，请参阅[分区的消息实体][Partitioned messaging entities]。
-
-> [!NOTE]
-> [高级 SKU](service-bus-premium-messaging.md) 不支持分区实体。 
-
-```csharp
-// Create partitioned queue.
-QueueDescription qd = new QueueDescription(QueueName);
-qd.EnablePartitioning = true;
-namespaceManager.CreateQueue(qd);
-```
-
 ## <a name="multiple-queues"></a>多个队列
 
-如果不能使用分区的队列或主题，或不能由单个分区的队列或主题处理预期的负载，则必须使用多个消息实体。 在使用多个实体时，为每个实体创建专用客户端，而不是针对所有实体使用同一个客户端。
+如果预期的负载不能由单个分区的队列或主题处理，则必须使用多个消息实体。 在使用多个实体时，为每个实体创建专用客户端，而不是针对所有实体使用同一个客户端。
 
 ## <a name="development-and-testing-features"></a>开发和测试功能
 
-服务总线有一项专门用于开发的功能，该功能永远不应在生产配置中使用：[TopicDescription.EnableFilteringMessagesBeforePublishing][]。
+服务总线具有一项专门用于开发的功能，该功能**永远不应在生产配置中使用**：[TopicDescription.EnableFilteringMessagesBeforePublishing][]。
 
 向主题添加了新规则或筛选器时，可以使用 [TopicDescription.EnableFilteringMessagesBeforePublishing][] 验证新的筛选器表达式是否按预期工作。
 
@@ -190,7 +162,7 @@ namespaceManager.CreateQueue(qd);
 
 ### <a name="low-latency-queue"></a>低延迟队列
 
-目标：将队列或主题的端到端滞后时间最小化。 发送方和接收方的数目较小。 队列的吞吐量较小或为中等。
+目标：将队列或主题的端到端延迟时间最小化。 发送方和接收方的数目较小。 队列的吞吐量较小或为中等。
 
 * 禁用客户端批处理。 客户端会立即发送一条消息。
 * 禁用批量存储访问。 该服务会立即将消息写入存储。
@@ -200,7 +172,7 @@ namespaceManager.CreateQueue(qd);
 
 ### <a name="queue-with-a-large-number-of-senders"></a>包含大量发送方的队列
 
-目标：使包含大量发件人的队列或主题的吞吐量最大化。 每个发送方均以中等速率发送消息。 接收方的数目较小。
+目标：将包含大量发送方的队列或主题的吞吐量最大化。 每个发送方均以中等速率发送消息。 接收方的数目较小。
 
 服务总线允许最多 1000 个与消息传递实体之间的并发连接（使用 AMQP 则为 5000 个）。 在命名空间级别强制实施此限制，并且队列/主题/订阅受每个命名空间的并发连接限制约束。 就队列而言，此数值在发送方和接收方之间共享。 如果发件人需要所有 1000 个连接，则将队列替换为主题和单个订阅。 主题接受来自发件人的最多 1000 个并发连接，而订阅则可接受来自接收方的其他 1000 个并发连接。 如果需要超过 1000 个并发发送方，则发送方应通过 HTTP 向服务总线协议发送消息。
 
@@ -215,7 +187,7 @@ namespaceManager.CreateQueue(qd);
 
 ### <a name="queue-with-a-large-number-of-receivers"></a>包含大量接收方的队列
 
-目标：使包含大量接收方的队列或订阅的接收速率最大化。 每个接收方以中等接收速率接收消息。 发送方的数目较小。
+目标：将包含大量接收方的队列或订阅的接收速率最大化。 每个接收方以中等接收速率接收消息。 发送方的数目较小。
 
 服务总线允许最多 1000 个与实体之间的并发连接。 如果队列需要超过 1000 个接收方，则将队列替换为主题和多个订阅。 每个订阅可支持最多 1000 个并发连接。 或者，接收方可通过 HTTP 协议访问队列。
 
@@ -229,7 +201,7 @@ namespaceManager.CreateQueue(qd);
 
 ### <a name="topic-with-a-small-number-of-subscriptions"></a>包含少量订阅的主题
 
-目标：使包含少量订阅的主题的吞吐量最大化。 消息由多个订阅接收，这意味着对所有订阅的组合接收速率比发送速率要大得多。 发送方的数目较小。 每个订阅的接收方的数目较小。
+目标：将包含少量订阅的主题的吞吐量最大化。 消息由多个订阅接收，这意味着对所有订阅的组合接收速率比发送速率要大得多。 发送方的数目较小。 每个订阅的接收方的数目较小。
 
 若要使吞吐量最大化，则执行以下操作：
 
@@ -243,7 +215,7 @@ namespaceManager.CreateQueue(qd);
 
 ### <a name="topic-with-a-large-number-of-subscriptions"></a>包含大量订阅的主题
 
-目标：使包含大量订阅的主题的吞吐量最大化。 消息由多个订阅接收，这意味着对所有订阅的组合接收速率比发送速率要大得多。 发送方的数目较小。 每个订阅的接收方的数目较小。
+目标：将包含大量订阅的主题的吞吐量最大化。 消息由多个订阅接收，这意味着对所有订阅的组合接收速率比发送速率要大得多。 发送方的数目较小。 每个订阅的接收方的数目较小。
 
 如果所有消息都路由到所有订阅，具有大量订阅的主题则通常会公开低的总吞吐量。 低吞吐量的原因是，每个消息被多次接收，并且一个主题中包含的所有消息以及所有订阅都存储在同一存储。 假定每个订阅的发送方数量和接收方数量很小。 服务总线支持每个主题最多 2,000 个订阅。
 

@@ -3,19 +3,19 @@ title: 在 Azure Active Directory B2C 中请求访问令牌 | Microsoft Docs
 description: 本文介绍如何设置客户端应用程序和获取访问令牌。
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 08/09/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 2043e0fc9fa63903073311856e7e8d31fb34c506
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: f3db56c7ce61960fca0e5347b2385bcc65a88354
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51015343"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54845140"
 ---
 # <a name="azure-ad-b2c-requesting-access-tokens"></a>Azure AD B2C：请求访问令牌
 
@@ -105,7 +105,7 @@ scope=https%3A%2F%2Fcontoso.onmicrosoft.com%2Fnotes%2Fread%20openid%20offline_ac
 
 OpenID Connect 标准指定了多个特殊的“scope”值。 以下特殊范围表示“访问用户的配置文件”的权限：
 
-* **openid**请求 ID 令牌
+* **openid**：请求 ID 令牌
 * **offline\_access**：请求刷新令牌（使用[授权代码流](active-directory-b2c-reference-oauth-code.md)）。
 
 如果 `/authorize` 请求中的 `response_type` 参数包含 `token`，那么 `scope` 参数必须包含至少一个将被授予的资源作用域（除 `openid` 和 `offline_access` 以外）。 否则，`/authorize` 请求会终止并失败。
@@ -114,7 +114,7 @@ OpenID Connect 标准指定了多个特殊的“scope”值。 以下特殊范�
 
 成功构建的 **access\_token**（通过 `/authorize` 或 `/token` 终结点）包含以下声明：
 
-| 名称 | 声明 | Description |
+| 名称 | 声明 | 说明 |
 | --- | --- | --- |
 |目标受众 |`aud` |令牌授权访问的单个资源的**应用程序 ID**。 |
 |范围 |`scp` |授予资源的权限。 多个授予的权限以空格分隔。 |

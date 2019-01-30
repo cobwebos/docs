@@ -1,10 +1,10 @@
 ---
-title: 教程：Azure Active Directory 与 HR2day by Merces 集成 | Microsoft Docs
+title: 教程：Azure Active Directory 与 HR2day by Merces 的集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 和 HR2day by Merces 之间配置单一登录。
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: 853d08c9-27b1-48d4-b8e7-3705140eb67f
 ms.service: active-directory
 ms.component: saas-app-tutorial
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/24/2017
 ms.author: jeedes
-ms.openlocfilehash: 984e2e9999a2aba7a595034f1fec8bafb976f310
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 327e6d94cbabd679531935ba330d3096d73f8897
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39441598"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54821016"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-hr2day-by-merces"></a>教程：Azure Active Directory 与 HR2day by Merces 集成
+# <a name="tutorial-azure-active-directory-integration-with-hr2day-by-merces"></a>教程：Azure Active Directory 与 HR2day by Merces 的集成
 
 本教程介绍了如何将 HR2day by Merces 与 Azure Active Directory (Azure AD) 集成。
 
@@ -89,8 +89,8 @@ ms.locfileid: "39441598"
 若要使用 HR2day by Merces 配置和测试 Azure AD 单一登录，需要完成以下构建基块：
 
 1. [配置 Azure AD 单一登录](#configuring-azure-ad-single-sign-on)：使用户能够使用此功能。
-1. [创建 Azure AD 测试用户](#creating-an-azure-ad-test-user)：通过 Britta Simon 测试 Azure AD 单一登录。
-1. [创建 HR2day by Merces 测试用户](#creating-an-hr2day-by-merces-test-user)：在 HR2day by Merces 中创建 Britta Simon 的对应者，链接到她的 Azure AD 表示形式。
+1. [创建 Azure AD 测试用户](#creating-an-azure-ad-test-user)：使用 Britta Simon 测试 Azure AD 单一登录。
+1. [创建 HR2day by Merces 测试用户](#creating-an-hr2day-by-merces-test-user)：在 HR2day by Merces 中创建 Britta Simon 的对应用户，并将其链接到用户的 Azure AD 表示形式。
 1. [分配 Azure AD 测试用户](#assigning-the-azure-ad-test-user)：使 Britta Simon 能够使用 Azure AD 单一登录。
 1. [测试单一登录](#testing-single-sign-on)：验证配置是否正常工作。
 
@@ -204,7 +204,7 @@ ms.locfileid: "39441598"
 
     c. 选择“显示密码”并记下密码。
 
-    d. 选择**创建**。
+    d. 选择“创建”。
  
 ### <a name="create-an-hr2day-by-merces-test-user"></a>创建 HR2day by Merces 测试用户
 
@@ -252,7 +252,7 @@ ms.locfileid: "39441598"
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](tutorial-list.md)
-* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
+* [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
 
 

@@ -4,7 +4,7 @@ description: 了解如何在 Azure Active Directory 和 Inkling 之间配置单�
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: 64c7ee45-ee8a-42f7-bf04-fd0e00833ea9
 ms.service: active-directory
 ms.component: saas-app-tutorial
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/06/2017
 ms.author: jeedes
-ms.openlocfilehash: 339c924fc03faddae6326b79cc376b59c567829e
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.openlocfilehash: 31e00c5810e33433d58820f4db300b935ad7baaf
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49116549"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54811275"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-inkling"></a>教程：Azure Active Directory 与 Inkling 集成
 
@@ -117,7 +117,7 @@ ms.locfileid: "49116549"
     
     ![配置单一登录](./media/inkling-tutorial/tutorial_inkling_01.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“标识符”文本框中，使用以下模式键入 URL：`https://api.inkling.com/saml/v2/metadata/<user-id>`
+    a. 在“标识符”文本框中，使用以下模式键入 URL：`https://api.inkling.com/saml/v2/metadata/<user-id>`
 
     b. 在 **“回复 URL”** 文本框中，使用以下模式键入 URL：`https://api.inkling.com/saml/v2/acs/<user-id>`
 
@@ -170,7 +170,7 @@ ms.locfileid: "49116549"
  
     ![创建 Azure AD 测试用户](./media/inkling-tutorial/create_aaduser_04.png) 
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
+    a. 在“名称”文本框中，键入 **BrittaSimon**。
 
     b. 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
@@ -227,7 +227,7 @@ ms.locfileid: "49116549"
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](tutorial-list.md)
-* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
+* [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
 
 

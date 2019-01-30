@@ -1,24 +1,17 @@
 ---
-title: Azure DNS 委托概述 | Microsoft Docs
+title: Azure DNS 委托概述
 description: 了解如何更改域委托并使用 Azure DNS 名称服务器提供域托管。
 services: dns
-documentationcenter: na
 author: vhorne
-manager: jeconnoc
-ms.assetid: 257da6ec-d6e2-4b6f-ad76-ee2dde4efbcc
 ms.service: dns
-ms.devlang: na
-ms.topic: get-started-article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 12/18/2017
+ms.date: 1/22/2019
 ms.author: victorh
-ms.openlocfilehash: a00cc00dee3a505f88abef3ecf99f49aa027c30b
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: d1de1212280c6767862233f990c9fc5e0cf97473
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39170498"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54461019"
 ---
 # <a name="delegation-of-dns-zones-with-azure-dns"></a>使用 Azure DNS 委托 DNS 区域
 
@@ -58,13 +51,16 @@ Azure DNS 提供权威 DNS 服务。  它不提供递归 DNS 服务。 Azure 中
 ![Dns-nameserver](./media/dns-domain-delegation/image1.png)
 
 1. 客户端从其本地 DNS 服务器请求 `www.partners.contoso.net`。
-1. 本地 DNS 服务器没有记录，因此向其根名称服务器发出请求。
-1. 根名称服务器没有记录，但知道 `.net` 名称服务器的地址，于是将该地址提供给 DNS 服务器
-1. DNS 将请求发送到 `.net` 名称服务器，该服务器没有记录，但是知道 contoso.net 名称服务器的地址。 本示例中为托管在 Azure DNS 中的 DNS 区域。
-1. 区域 `contoso.net` 没有记录，但知道 `partners.contoso.net` 的名称服务器，于是用其进行响应。 本示例中为托管在 Azure DNS 中的 DNS 区域。
-1. DNS 服务器从 `partners.contoso.net` 区域请求 `partners.contoso.net` 的 IP 地址。 它包含 A 记录，并使用 IP 地址进行响应。
-1. DNS 服务器为客户端提供 IP 地址
-1. 客户端连接到网站 `www.partners.contoso.net`。
+2. 本地 DNS 服务器没有记录，因此向其根名称服务器发出请求。
+3. 根名称服务器没有记录，但知道 `.net` 名称服务器的地址，于是将该地址提供给 DNS 服务器
+4. 本地 DNS 服务器将请求发送到 `.net` 名称服务器。
+5. `.net` 名称服务器没有该记录，但知道 `contoso.net` 名称服务器的地址。 在这种情况下，它会响应 Azure DNS 中托管的 DNS 区域的名称服务器的地址。
+6. 本地 DNS 服务器将请求发送到 Azure DNS 中托管的 `contoso.net` 区域的名称服务器。
+7. 区域 `contoso.net` 没有记录，但知道 `partners.contoso.net` 的名称服务器，于是使用地址进行响应。 本示例中为托管在 Azure DNS 中的 DNS 区域。
+8. 本地 DNS 服务器将请求发送到 `partners.contoso.net` 区域的名称服务器。
+9. `partners.contoso.net` 区域具有 A 记录，并使用 IP 地址进行响应。
+10. 本地 DNS 服务器为客户端提供 IP 地址
+11. 客户端连接到网站 `www.partners.contoso.net`。
 
 每个委托实际上有两份 NS 记录：一份在父区域中指向子区域，另一份在子区域本身。 “contoso.net”区域包含“contoso.net”的 NS 记录（“net”中的 NS 记录除外）。 这些记录称为权威 NS 记录，位于子区域的顶点处。
 

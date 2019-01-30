@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 12/04/2018
+ms.date: 01/22/2019
 ms.author: diberry
-ms.openlocfilehash: 1398db59199c62e90f8cf5654586bda1c24f2541
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: ac97cf3e269652dc33ce4211947b45631228a697
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54055041"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54463268"
 ---
 # <a name="install-and-run-luis-docker-containers"></a>安装并运行 LUIS docker 容器
  
@@ -113,7 +113,8 @@ LUIS 容器需要已训练或已发布的 LUIS 应用才能回复用户话语的
 |过渡|获取、发布|Azure 和容器|`{APPLICATION_ID}_STAGING.gz`|
 |生产|获取、发布|Azure 和容器|`{APPLICATION_ID}_PRODUCTION.gz`|
 
->**重要提示：** 请勿重命名、更改或解压缩 LUIS 包文件。
+> [!IMPORTANT]
+> 请勿重命名、更改或解压缩 LUIS 包文件。
 
 ### <a name="packaging-prerequisites"></a>打包先决条件
 
@@ -341,7 +342,7 @@ LUIS 容器使用 Azure 帐户中的语言理解资源向 Azure 发送账单信�
 
 `docker run` 使用以下参数以便计费：
 
-| 选项 | Description |
+| 选项 | 说明 |
 |--------|-------------|
 | `ApiKey` | 用于跟踪账单信息的语言理解资源的 API 密钥。<br/>必须将此选项的值设置为 `Billing` 中指定的已预配 LUIS Azure 资源的 API 密钥。 |
 | `Billing` | 用于跟踪账单信息的语言理解资源的终结点。<br/>必须将此选项的值设置为已预配的 LUIS Azure 资源的终结点 URI。|
@@ -383,3 +384,4 @@ LUIS 容器使用 Azure 帐户中的语言理解资源向 Azure 发送账单信�
 
 * 查看[配置容器](luis-container-configuration.md)了解配置设置
 * 参阅[常见问题解答 (FAQ)](luis-resources-faq.md) 解决与 LUIS 功能相关的问题。
+* 使用更多[认知服务容器](../cognitive-services-container-support.md)

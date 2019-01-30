@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2018
 ms.author: kraigb
-ms.openlocfilehash: 151d945bbeda9f7dd496f8469f8f858e8369da8f
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: 8961a863f1b268a034310554230096cc0f9d5260
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53164409"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54844052"
 ---
 # <a name="create-and-clone-projects"></a>创建和克隆项目
 
@@ -30,11 +30,11 @@ Azure Notebooks 将 Jupyter 笔记本和相关文件组织为称作“项目”�
 
 “我的项目”仪表板位于 `https://notebooks.azure.com/<userID>/projects`，用于查看、管理和创建项目：
 
-[![](media/my-projects-dashboard.png "Azure Notebooks 中的“我的项目”仪表板")](media/my-projects-dashboard.png#lightbox)
+[![Azure Notebooks 中的“我的项目”仪表板](media/my-projects-dashboard.png)](media/my-projects-dashboard.png#lightbox)
 
 可在仪表板上执行的操作取决于你是否使用拥有用户 ID 的帐户登录：
 
-| 命令 | 适用对象 | Description |
+| 命令 | 适用对象 | 说明 |
 | --- | --- | --- |
 | **Run** | 所有者 | 启动项目服务器并在 Jupyter 中打开项目文件夹。 （更常见的是：先导航到项目文件夹中，然后从中启动一个笔记本。） |
 | **下载** | 所有人 | 将选定项目的副本下载到一个 ZIP 文件中。 |
@@ -65,7 +65,7 @@ Azure Notebooks 将 Jupyter 笔记本和相关文件组织为称作“项目”�
 
 使用“+ 新建项目”命令时，Azure Notebooks 显示一个“新建项目”弹出窗口。 在其中输入以下信息，然后选择“创建”：
 
-| 字段 | Description |
+| 字段 | 说明 |
 | --- | --- |
 | 项目名称 | 项目的友好名称，Azure Notebooks 显示该名称。 例如“我的笔记本项目”。 |
 | 项目 ID | 自定义标识符，是用于共享项目的 URL 的一部分。 此 ID 只可使用字母、数字和连字符，长度限制为 30 个字符。 如果不确定使用什么内容，可按惯例使用小写的项目名且将空格转换为连字符，例如“my-notebook-project”（根据需要截断，以满足长度限制）。 |
@@ -76,7 +76,7 @@ Azure Notebooks 将 Jupyter 笔记本和相关文件组织为称作“项目”�
 
 可轻松将整个公共 GitHub 存储库作为项目（包括任何数据和 README.md 文件）导入。 使用“上传 GitHub 存储库”命令，在弹出窗口中提供以下详细信息，然后选择“导入”：
 
-| 字段 | Description |
+| 字段 | 说明 |
 | --- | --- |
 | GitHub 存储库 | github.com 上的源存储库的名称。 例如，若要克隆 Azure 认知服务的 Jupyter 笔记本（位于 [https://github.com/Microsoft/cognitive-services-notebooks](https://github.com/Microsoft/cognitive-services-notebooks)），请输入“Microsoft/cognitive-services-notebooks”。  |
 | 以递归方式克隆 | GitHub 存储库可以包含多个子存储库。 如果希望克隆父存储库及其所有子存储库，请设置此选项。 一个存储库可能拥有许多子存储库，除非需要这样设置，否则请勿勾选此选项。 |

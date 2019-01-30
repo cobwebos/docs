@@ -1,10 +1,10 @@
 ---
-title: 教程：Azure Active Directory 与 IMAGE WORKS 的集成 | Microsoft Docs
+title: 教程：Azure Active Directory 与 IMAGE WORKS 的集成 | Microsoft 文档
 description: 了解如何在 Azure Active Directory 和 IMAGE WORKS 之间配置单一登录。
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: joflore
 ms.assetid: 635d86a1-b512-442d-8851-3b18ec1a24a5
 ms.service: active-directory
@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/05/2017
 ms.author: jeedes
-ms.openlocfilehash: 5d0ee49bf2a792e855ed020eba74db1d15278fad
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 4f1636d32782bcef31c1cea98eb9e91d6d7a5878
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39442677"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54826287"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-image-works"></a>教程：Azure Active Directory 与 IMAGE WORKS 的集成
+# <a name="tutorial-azure-active-directory-integration-with-image-works"></a>教程：Azure Active Directory 与 IMAGE WORKS 集成
 
 在本教程中，了解如何将 IMAGE WORKS 与 Azure Active Directory (Azure AD) 集成。
 
@@ -132,7 +132,7 @@ ms.locfileid: "39442677"
 1. 若要在 IMAGE WORKS 端配置单一登录，需要将下载的证书 (Base64)、注销 URL、SAML 实体 ID 和 SAML 单一登录服务 URL 发送给 [IMAGE WORKS 支持团队](mailto:iw-sd-support@fujifilm.com)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
 
 > [!TIP]
-> 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[ Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
+> 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
@@ -169,7 +169,7 @@ ms.locfileid: "39442677"
  
 ### <a name="create-a-image-works-test-user"></a>创建 IMAGE WORKS 测试用户
 
-本部分在 IMAGE WORKS 中创建名为 Britta Simon 的用户。 与 [IMAGE WORKS 支持团队](mailto:iw-sd-support@fujifilm.com)协作，以在 IMAGE WORKS 平台中添加用户。 使用单一登录前，必须先创建并激活用户。
+本部分在 IMAGE WORKS 中创建名为 Britta Simon 的用户。 与  [IMAGE WORKS 支持团队](mailto:iw-sd-support@fujifilm.com) 协作，在 IMAGE WORKS 平台中添加用户。 使用单一登录前，必须先创建并激活用户。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
@@ -206,12 +206,12 @@ ms.locfileid: "39442677"
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 单击访问面板中的 IMAGE WORKS 磁贴时，应当会自动登录到 IMAGE WORKS 应用程序。
-有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
+有关访问面板的详细信息，请参阅[访问面板简介](../user-help/active-directory-saas-access-panel-introduction.md)。 
 
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](tutorial-list.md)
-* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
+* [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

@@ -5,15 +5,15 @@ services: storage
 author: xyh1
 ms.service: storage
 ms.topic: article
-ms.date: 11/05/2018
+ms.date: 01/21/2019
 ms.author: hux
 ms.component: blobs
-ms.openlocfilehash: 53c719fbeb31d605bd9dff170a798b262d44698a
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: f3a67c2eddba2b7bd734237466243da8f43a862a
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53634263"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54848642"
 ---
 # <a name="store-business-critical-data-in-azure-blob-storage"></a>在 Azure Blob 存储中存储业务关键型数据
 
@@ -197,7 +197,7 @@ Az.Storage 预览版模块支持不可变存储。  若要启用该功能，请�
 
 **此功能在国家/地区及政府云中是否可用？**
 
-不可变存储目前仅在 Azure 公共区域中推出。 如果你对特定的国家云感兴趣，请向 azurestoragefeedback@microsoft.com 发送电子邮件。
+Azure 公共区域、中国区域和政府区域均提供不可变存储。 如果你所在的区域不提供不可变存储，请向 azurestoragefeedback@microsoft.com 发送电子邮件。
 
 ## <a name="sample-powershell-code"></a>示例 PowerShell 代码
 

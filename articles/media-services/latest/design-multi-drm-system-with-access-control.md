@@ -1,5 +1,5 @@
 ---
-title: 设计带访问控制的多 DRM 内容保护系统 - Azure 媒体服务 | Microsoft Docs
+title: 设计带访问控制的多 DRM 内容保护系统 - Azure 媒体服务 | Microsoft 文档
 description: 了解如何为 Microsoft 平滑流式处理客户端移植工具包授权。
 services: media-services
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 12/21/2018
 ms.author: willzhan
 ms.custom: seodec18
-ms.openlocfilehash: 3e9909de5ec05710214279357134112804ab4ceb
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 40e7f257df41fa4836b9df692be48a4b6c57fc80
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54191235"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54812984"
 ---
 # <a name="design-of-a-multi-drm-content-protection-system-with-access-control"></a>设计带访问控制的多 DRM 内容保护系统 
 

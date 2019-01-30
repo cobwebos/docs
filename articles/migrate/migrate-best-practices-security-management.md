@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 12/08/2018
 ms.author: raynew
-ms.openlocfilehash: 6238d3d7a64816df01be69458d784114368d9e17
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: b2b5d62c54fbfdef8a5e448a089800eedcb66d07
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53141333"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54827493"
 ---
 # <a name="best-practices-for-securing-and-managing-workloads-migrated-to-azure"></a>有关保护和管理已迁移到 Azure 的工作负荷的最佳做法
 
@@ -71,7 +71,7 @@ Microsoft 努力确保为 Azure 租户管理员提供所需的信息，以启用
 ### <a name="encryption-for-iaas"></a>IaaS 加密
 
 - **VM**：对于 VM，可以使用 Azure 磁盘加密来加密 Windows 和 Linux IaaS VM 磁盘。
-    - 磁盘加密利用 Windows 版 Bitlocker 和 Linux 版 DM-Crypt 对 OS 和数据磁盘进行卷加密。
+    - 磁盘加密利用 Windows 版 BitLocker 和 Linux 版 DM-Crypt 对 OS 和数据磁盘进行卷加密。
     - 可以使用 Azure 创建的加密密钥，或者提供自己的、在 Azure Key Vault 中受保护的加密密钥。 
     - 使用磁盘加密可以保护静态（磁盘中）的 IaaS VM 数据，以及在启动 VM 期间保护这些数据。 
     - 如果 VM 未加密，Azure 安全中心会发出警报。

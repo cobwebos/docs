@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/11/2017
 ms.author: juliako
-ms.openlocfilehash: 7b742840f461744e0be8c7a4ab4d9b392238de4e
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: 9558a924ee151f47033178b0762a39e2d1e1f538
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54232679"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54828309"
 ---
 # <a name="how-to-build-a-smooth-streaming-windows-store-application"></a>如何生成平滑流式处理 Windows 应用商店应用程序
 
@@ -142,7 +142,7 @@ ms.locfileid: "54232679"
    MediaElement 控件用于播放媒体。 在下一课，我们将使用名为 sliderProgress 的滚动条控件来控制媒体进度。
 3. 按 **CTRL+S** 保存文件。
 
-MediaElement 控件并非原本就支持平滑流式处理内容。 若要启用平滑流式处理支持，必须按文件扩展名和 MIME 类型注册平滑流式处理字节流处理程序。  若要注册，可以使用 Windows.Media 命名空间的 MediaExtensionManager.RegisterByteStremHandler 方法。
+MediaElement 控件并非原本就支持平滑流式处理内容。 若要启用平滑流式处理支持，必须按文件扩展名和 MIME 类型注册平滑流式处理字节流处理程序。  若要注册，可以使用 Windows.Media 命名空间的 MediaExtensionManager.RegisterByteStreamHandler 方法。
 
 在此 XAML 文件中，某些事件处理程序与控件关联。  必须定义这些事件处理程序。
 

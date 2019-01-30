@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: kgremban
-ms.openlocfilehash: 830052341c4f0e3488c8e63da59cbef1f72e158a
-ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
+ms.openlocfilehash: 20bb0cb6982bcbea6b18989099322cfd3389b0b0
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2018
-ms.locfileid: "42140206"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54819625"
 ---
 # <a name="connecting-iot-devices-to-azure-iot-hub-and-event-hubs"></a>将 IoT 设备连接到 Azure：IoT 中心和事件中心
 
@@ -37,6 +37,7 @@ Azure IoT 中心是一个云网关，它连接 IoT 设备来收集数据以获�
 | 设备预配服务 | ![勾选标记][checkmark] | ![勾选标记][checkmark] |  |
 | 云到设备的消息传递 | ![勾选标记][checkmark] |  |  |
 | 设备孪生和设备管理 | ![勾选标记][checkmark] |  |  |
+| 设备流（预览版） | ![勾选标记][checkmark] |  |  |
 | IoT Edge | ![勾选标记][checkmark] |  |  |
 
 即使唯一的用例是设备到云数据引入，我们也强烈建议使用 IoT 中心，因为它提供专用于 IoT 设备连接的服务。 

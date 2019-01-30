@@ -4,18 +4,18 @@ description: 了解如何使用用于 Visual Studio Code 的 Azure HDInsight 工
 Keywords: VS Code,Azure HDInsight Tools,Hive,Python,PySpark,Spark,HDInsight,Hadoop,LLAP,Interactive Hive,Interactive Query
 services: HDInsight
 documentationcenter: ''
-author: jejiang
-ms.author: jejiang
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 10/27/2017
-ms.openlocfilehash: c86fd2affa08999ae574f55315c6a0b32fa58fca
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.date: 12/15/2018
+ms.openlocfilehash: cd7c4014752fb5fa014fd8b5204206cd4efbfdce
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54076784"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54818517"
 ---
 # <a name="use-azure-hdinsight-tools-for-visual-studio-code"></a>使用用于 Visual Studio Code 的 Azure HDInsight 工具
 
@@ -50,11 +50,11 @@ ms.locfileid: "54076784"
 
    ![用于 Visual Studio Code 的 HDInsight - Python 安装](./media/hdinsight-for-vscode/install-hdInsight-plugin.png)
 
-## <a name="open-hdinsight-workspace"></a>打开 HDInsight 工作区
+## <a name="open-hdinsight-work-folder"></a>打开 HDInsight 工作文件夹
 
-需要在 VS Code 中创建工作区，然后才能连接到 Azure。
+需要在 VS Code 中创建工作文件夹，然后才能连接到 Azure。
 
-### <a name="to-open-a-workspace"></a>打开工作区
+### <a name="to-open-a-work-folder"></a>打开工作文件夹
 
 1. 在“文件”菜单中，选择“打开文件夹”。 然后指定一个 现有文件夹或者创建一个新文件夹作为工作文件夹。 该文件夹将出现在左窗格中。
 
@@ -77,7 +77,7 @@ ms.locfileid: "54076784"
     ![用于 Visual Studio Code 的 HDInsight 工具 - 登录](./media/hdinsight-for-vscode/hdinsight-for-vscode-extension-login.png)
 
 3. 按照“输出”窗格中的登录说明进行登录。
-    + 在全局环境中，HDInsight 登录会触发 Azure 登录过程。
+    + 对于 Azure 全局环境，可使用“HDInsight:Login”命令在 HDInsight 资源管理器中触发“登录 Azure”操作，反之亦然。
 
         ![适用于 Azure 的登录说明](./media/hdinsight-for-vscode/hdi-azure-hdinsight-azure-signin.png)
 
@@ -140,18 +140,18 @@ ms.locfileid: "54076784"
 若要测试连接，可以列出 HDInsight 群集：
 
 ### <a name="to-list-hdinsight-clusters-under-your-azure-subscription"></a>列出 Azure 订阅下的 HDInsight 群集
-1. 打开一个工作区并连接到 Azure。 有关详细信息，请参阅[打开 HDInsight 工作区](#open-hdinsight-workspace)和[连接到 Azure](#connect-to-hdinsight-cluster)。
+1. 打开一个工作文件夹并连接到 Azure。 有关详细信息，请参阅[打开 HDInsight 工作文件夹](#open-hdinsight-work-folder)和[连接到 Azure](#connect-to-hdinsight-cluster)。
 
-2. 右键单击脚本编辑器，然后从上下文菜单中选择“HDInsight:列出群集”。 
+2. 右键单击脚本编辑器，然后选择“HDInsight：** 列出群集”。 
 
 3. HDInsight 群集将显示在“输出”窗格中。
 
     ![设置默认群集配置](./media/hdinsight-for-vscode/list-cluster-result.png)
 
 ## <a name="set-a-default-cluster"></a>设置默认群集
-1. 打开一个工作区并连接到 Azure。 请参阅[打开 HDInsight 工作区](#open-hdinsight-workspace)和[连接到 Azure](#connect-to-hdinsight-cluster)。
+1. 打开工作文件夹并连接到 Azure。 请参阅[打开 HDInsight 工作文件夹](#open-hdinsight-work-folder)和[连接到 Azure](#connect-to-hdinsight-cluster)。
 
-2. 右键单击脚本编辑器，然后从上下文菜单中选择“HDInsight:设置默认群集”。 
+2. 右键单击脚本编辑器，然后选择“HDInsight：** 设置默认群集”。 
 
 3. 选择一个群集作为当前脚本文件的默认群集。 工具将自动更新配置文件 **.VSCode\settings.json**。 
 
@@ -183,7 +183,7 @@ ms.locfileid: "54076784"
     ```
 4. 右键单击脚本编辑器，选择“HDInsight:Hive 交互式”提交查询，或使用快捷方式 Ctrl + Alt + I。选择“HDInsight:Hive 批处理”以提交脚本，或使用快捷键 Ctrl + Alt + H。 
 
-5. 如果尚未指定默认群集，请选择群集。 工具还允许使用上下文菜单提交代码块而非整个脚本文件。 过了一会儿，查询结果将显示在新选项卡中。
+5. 如果尚未指定默认群集，请选择群集。 工具还允许使用上下文菜单提交代码块而非整个脚本文件。 不久之后，查询结果将显示在新选项卡中。
 
    ![交互式 Hive 结果](./media/hdinsight-for-vscode/interactive-hive-result.png)
 
@@ -195,7 +195,12 @@ ms.locfileid: "54076784"
 
 ### <a name="to-submit-interactive-pyspark-queries-to-hdinsight-spark-clusters"></a>将交互式 PySpark 查询提交到 HDInsight Spark 群集。
 
-1. 创建一个新的工作文件夹和一个扩展名为 .py 的新脚本文件（如果没有）。
+1. 创建一个新的工作文件夹和一个新的 .py 文件（如果还没有）。
+
+    > [!NOTE]
+    > VSCode 建议为 .py 文件安装 Python 扩展。 可以安装该扩展或关闭对话框。
+    > 
+    >![用于 Visual Studio Code 的 HDInsight - Python 安装](./media/hdinsight-for-vscode/hdinsight-vscode-install-python.png)
 
 2. 连接到 Azure 帐户（如果尚未这样做）。
 
@@ -213,36 +218,19 @@ ms.locfileid: "54076784"
    for i in range(0, 5):
         print(sortedCollection[i])
    ```
-4. 突出显示此脚本。 然后右键单击脚本编辑器，选择“HDInsight:PySpark 交互式”，或使用快捷键 Ctrl + Alt + I。
+4. 如果尚未安装 Python 环境，请参阅[为 Visual Studio Code 设置 PySpark 交互式环境](set-up-pyspark-interactive-environment.md)。
 
-5. 如果尚未在 VS Code 中安装 **Python** 扩展，请选择下图所示的“安装”按钮。
+5. 突出显示此脚本。 然后右键单击脚本编辑器，选择“HDInsight:PySpark 交互式”，或使用快捷键 Ctrl + Alt + I。
 
-    ![用于 Visual Studio Code 的 HDInsight - Python 安装](./media/hdinsight-for-vscode/hdinsight-vscode-install-python.png)
-
-6. 在系统中安装 Python 环境（如果尚未安装）。 
-   - 对于 Windows，请下载并安装 [Python](https://www.python.org/downloads/)。 然后确保 `Python` 和 `pip` 已在系统 PATH 中。
-
-   - 有关 macOS 和 Linux 的说明，请参阅[为 Visual Studio Code 设置 PySpark 交互式环境](set-up-pyspark-interactive-environment.md)。
-
-7. 选择要将 PySpark 查询提交到的群集。 很快，查询结果将显示在右侧的新选项卡中：
+6. 选择要将 PySpark 查询提交到的群集。 很快，查询结果将显示在右侧的新选项卡中：
 
    ![提交 python 作业结果](./media/hdinsight-for-vscode/pyspark-interactive-result.png) 
-8. 工具还支持查询 **SQL 子句**查询。
+7. 工具还支持查询 **SQL 子句**查询。
 
    ![提交 python 作业结果](./media/hdinsight-for-vscode/pyspark-ineteractive-select-result.png)运行查询时，提交状态将显示在底部状态栏的左侧。 当状态为“PySpark 内核(忙)”时，请不要提交其他查询。 
 
 >[!NOTE]  
 >群集可以保留会话信息。 定义的变量、函数和相应值将保留在会话中，因此，可在针对同一群集发出的多个服务调用中引用这些信息。 
-
-### <a name="to-disable-environment-check"></a>禁用环境检查
-
-默认情况下，在提交交互式 PySpark 查询时，HDInsight 工具会检查环境并安装依赖的包。 若要禁用环境检查，请在“用户设置”下将 **hdinsight.disablePysparkEnvironmentValidation** 设置为 **yes**。
-
-   ![在设置中设置环境检查](./media/hdinsight-for-vscode/hdi-azure-hdinsight-environment-check.png)
-
-或者，在弹出对话框时单击“禁用验证”按钮。
-
-   ![在对话框中设置环境检查](./media/hdinsight-for-vscode/hdi-azure-hdinsight-environment-check-dialog.png)
 
 ### <a name="pyspark3-is-not-supported-with-spark2223"></a>Spark2.2/2.3 不支持 PySpark3
 

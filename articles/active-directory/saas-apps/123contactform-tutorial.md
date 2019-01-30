@@ -4,7 +4,7 @@ description: 了解如何在 Azure Active Directory 和 123ContactForm 之间配
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: 5211910a-ab96-4709-959a-524c4d57c43e
 ms.service: active-directory
 ms.component: saas-app-tutorial
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/23/2017
 ms.author: jeedes
-ms.openlocfilehash: ecbe627697fc4f8b5fbfecf96c3cb65d9ffe4607
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 450fc8df69eb5ffb99cb6548e80cd4d3628e7419
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39054346"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54819435"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-123contactform"></a>教程：Azure Active Directory 与 123ContactForm 的集成
+# <a name="tutorial-azure-active-directory-integration-with-123contactform"></a>教程：Azure Active Directory 与 123ContactForm 集成
 
 在本教程中，了解如何将 123ContactForm 与 Azure Active Directory (Azure AD) 集成。
 
@@ -112,7 +112,7 @@ ms.locfileid: "39054346"
 
     ![配置单一登录](./media/123contactform-tutorial/url1.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“标识符”文本框中，使用以下模式键入 URL：`https://www.123contactform.com/saml/azure_ad/<tenant_id>/metadata`
+    a. 在“标识符”文本框中，使用以下模式键入 URL：`https://www.123contactform.com/saml/azure_ad/<tenant_id>/metadata`
 
     b. 在 **“回复 URL”** 文本框中，使用以下模式键入 URL：`https://www.123contactform.com/saml/azure_ad/<tenant_id>/acs`
 
@@ -120,7 +120,7 @@ ms.locfileid: "39054346"
 
     ![配置单一登录](./media/123contactform-tutorial/url2.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 单击“显示高级 URL 设置”选项
+    a. 单击“显示高级 URL 设置”选项
 
     b. 在“登录 URL”文本框中，键入 URL：`https://www.123contactform.com/saml/azure_ad/<tenant_id>/sso`
 
@@ -139,7 +139,7 @@ ms.locfileid: "39054346"
 
     ![配置单一登录](./media/123contactform-tutorial/submit.png) 
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“电子邮件”文本框中，键入用户的电子邮件，如 **BrittaSimon@Contoso.com**：
+    a. 在“电子邮件”文本框中，键入用户的电子邮件，如 **BrittaSimon@Contoso.com**：
 
     b. 单击“上传”，然后浏览已从 Azure 门户下载的元数据 XML 文件。
 
@@ -149,14 +149,14 @@ ms.locfileid: "39054346"
     
     ![配置单一登录](./media/123contactform-tutorial/url3.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 如果想要在“IDP 发起的模式”下配置应用程序，请复制实例的“标识符”值，并将其粘贴在 Azure 门户的“123ContactForm 域和 URL”部分的“标识符”文本框中。
+    a. 如果想要在“IDP 发起的模式”下配置应用程序，请复制实例的“标识符”值，并将其粘贴在 Azure 门户的“123ContactForm 域和 URL”部分的“标识符”文本框中。
     
     b. 如果想要在“IDP 发起的模式”下配置应用程序，请复制实例的“答复 URL”值，并将其粘贴在 Azure 门户的“123ContactForm 域和 URL”部分中的“答复 URL”文本框中。
 
     c. 如果想要在“SP 发起的模式”下配置应用程序，请复制实例的“登录 URL”值，并将其粘贴在 Azure 门户的“123ContactForm 域和 URL”部分中的“登录 URL”文本框中。
 
 > [!TIP]
-> 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[ Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
+> 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
 ### <a name="creating-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
@@ -182,7 +182,7 @@ ms.locfileid: "39054346"
  
     ![创建 Azure AD 测试用户](./media/123contactform-tutorial/create_aaduser_04.png) 
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
+    a. 在“名称”文本框中，键入 **BrittaSimon**。
 
     b. 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
@@ -229,12 +229,12 @@ ms.locfileid: "39054346"
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 在访问面板中单击 123ContactForm 磁贴时，应当会自动登录到 123ContactForm 应用程序。
-有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md)（访问面板简介）。
+有关访问面板的详细信息，请参阅[访问面板简介](../user-help/active-directory-saas-access-panel-introduction.md)。
 
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](tutorial-list.md)
-* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
+* [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
 
 

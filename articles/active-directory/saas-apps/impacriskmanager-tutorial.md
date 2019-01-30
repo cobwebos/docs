@@ -4,7 +4,7 @@ description: 了解如何在 Azure Active Directory 和 IMPAC Risk Manager 之�
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: joflore
 ms.assetid: 4d77390e-898c-4258-a562-a1181dfe2880
 ms.service: active-directory
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/01/2017
 ms.author: jeedes
-ms.openlocfilehash: c086d58a7de4897f93699d2c22b6598896eb50e7
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: ca0ea482b1cfb2f7af962ae1b7537f79bb60a62b
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39434474"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54823141"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-impac-risk-manager"></a>教程：Azure Active Directory 与 IMPAC Risk Manager 集成
 
@@ -152,7 +152,7 @@ IMPAC Risk Manager 与 Azure AD 的集成可提供以下优势：
 1. 若要在“IMPAC Risk Manager”端配置单一登录，需要将下载的“证书(Base64)”、“注销 URL”、“SAML 实体 ID”和“SAML 单一登录服务 URL”发送给 [IMPAC Risk Manager 支持团队”](mailto:rmsupport@Impac.co.nz)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
 
 > [!TIP]
-> 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[ Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
+> 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 
@@ -188,7 +188,7 @@ IMPAC Risk Manager 与 Azure AD 的集成可提供以下优势：
  
 ### <a name="create-a-impac-risk-manager-test-user"></a>创建 IMPAC Risk Manager 测试用户
 
-在本部分中，将在 IMPAC Risk Manager 中创建名为 Britta Simon 的用户。 与 [IMPAC Risk Manager 支持团队](mailto:rmsupport@Impac.co.nz)协作，在 IMPAC Risk Manager 平台中添加用户。 使用单一登录前，必须先创建并激活用户。 
+在本部分中，将在 IMPAC Risk Manager 中创建名为 Britta Simon 的用户。 请与  [IMPAC Risk Manager 支持团队](mailto:rmsupport@Impac.co.nz) 协作，将用户添加到 IMPAC Risk Manager 平台中。 使用单一登录前，必须先创建并激活用户。 
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
@@ -225,12 +225,12 @@ IMPAC Risk Manager 与 Azure AD 的集成可提供以下优势：
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 在访问面板中单击 IMPAC Risk Manager 磁贴时，会自动登录到 IMPAC Risk Manager 应用程序。
-有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
+有关访问面板的详细信息，请参阅[访问面板简介](../user-help/active-directory-saas-access-panel-introduction.md)。 
 
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](tutorial-list.md)
-* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
+* [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

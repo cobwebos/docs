@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 01/15/2019
 ms.author: raynew
-ms.openlocfilehash: d3e6a17ba9d0712d921d8e0a1d0bcbcd68ce5cfb
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.openlocfilehash: 84890c0658970aa9f61a06764cf902a5e5ee4379
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54360431"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54812550"
 ---
 # <a name="azure-backup-architecture"></a>Azure 备份体系结构
 
@@ -163,7 +163,7 @@ Azure 备份根据备份类型提供不同的代理。
 - Azure VM 使用磁盘来存储其操作系统、应用和数据。
 - Azure VM 至少包含两个磁盘。 其中一个磁盘用于操作系统，另一个用作临时磁盘。 Azure VM 还可以使用数据磁盘来存储应用数据。 磁盘以 VHD 的形式进行存储。
 - 在 Azure 上的标准或高级存储帐户中，VHD 以页 Blob 的形式进行存储。
-    - 标准存储：为运行不关注延迟的工作负荷的 VM 提供可靠、低成本的磁盘支持。 标准存储可以使用标准 SSD 磁盘。
+    - 标准存储：为运行不关注延迟的工作负荷的 VM 提供可靠、低成本的磁盘支持。 标准存储可以使用标准 SSD 磁盘或标准 HDD 磁盘。
     - 高级存储：高性能磁盘支持。 使用高级·SSD 磁盘。
 - 磁盘具有不同的性能层：
     - 标准 HDD 磁盘：基于 HDD，用作经济高效的存储。

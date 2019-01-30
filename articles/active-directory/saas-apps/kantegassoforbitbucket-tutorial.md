@@ -4,7 +4,7 @@ description: 了解如何在 Azure Active Directory 和 Kantega SSO for Bitbucke
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: c41cdaaf-0441-493c-94c7-569615b7b1ab
 ms.service: active-directory
 ms.component: saas-app-tutorial
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: jeedes
-ms.openlocfilehash: 6dee106d688d9f9a6ebc6dc26caa6a46db3f6850
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: 8d8d42671a46465a32e3702f4839131bbf998883
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51823888"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54810119"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-kantega-sso-for-bitbucket"></a>教程：Azure Active Directory 与 Kantega SSO for Bitbucket 集成
 
@@ -112,7 +112,7 @@ ms.locfileid: "51823888"
 
     ![配置单一登录](./media/kantegassoforbitbucket-tutorial/tutorial_kantegassoforbitbucket_url1.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“标识符”文本框中，使用以下模式键入 URL：`https://<server-base-url>/plugins/servlet/no.kantega.saml/sp/<uniqueid>/login`
+    a. 在“标识符”文本框中，使用以下模式键入 URL：`https://<server-base-url>/plugins/servlet/no.kantega.saml/sp/<uniqueid>/login`
 
     b. 在 **“回复 URL”** 文本框中，使用以下模式键入 URL：`https://<server-base-url>/plugins/servlet/no.kantega.saml/sp/<uniqueid>/login`
 
@@ -171,7 +171,7 @@ ms.locfileid: "51823888"
 
     ![配置单一登录](./media/kantegassoforbitbucket-tutorial/addon6.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 复制“应用 ID URI”值并将其用作 Azure 门户中“Kantega SSO for Bitbucket 域和 URL”部分中的“标识符、回复 URL 和登录 URL”。
+    a. 复制“应用 ID URI”值并将其用作 Azure 门户中“Kantega SSO for Bitbucket 域和 URL”部分中的“标识符、回复 URL 和登录 URL”。
 
     b. 单击“下一步”。
 
@@ -179,7 +179,7 @@ ms.locfileid: "51823888"
 
     ![配置单一登录](./media/kantegassoforbitbucket-tutorial/addon7.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 选择“我的计算机上的元数据文件”，上传从 Azure 门户下载的元数据文件。
+    a. 选择“我的计算机上的元数据文件”，上传从 Azure 门户下载的元数据文件。
 
     b. 单击“下一步”。
 
@@ -187,7 +187,7 @@ ms.locfileid: "51823888"
 
     ![配置单一登录](./media/kantegassoforbitbucket-tutorial/addon8.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“标识提供者名称”文本框中添加标识提供者名称（例如 Azure AD）。
+    a. 在“标识提供者名称”文本框中添加标识提供者名称（例如 Azure AD）。
 
     b. 单击“下一步”。
 
@@ -199,7 +199,7 @@ ms.locfileid: "51823888"
 
     ![配置单一登录](./media/kantegassoforbitbucket-tutorial/addon10.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 选择“根据需要在 Bitbucket 的内部目录中创建用户”，并输入用户的组的合适名称（可以为多个 组，用逗号隔开）。
+    a. 选择“根据需要在 Bitbucket 的内部目录中创建用户”，并输入用户的组的合适名称（可以为多个 组，用逗号隔开）。
 
     b. 单击“下一步”。
 
@@ -211,14 +211,14 @@ ms.locfileid: "51823888"
 
     ![配置单一登录](./media/kantegassoforbitbucket-tutorial/addon12.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 从页的左侧面板中选择“已知域”。
+    a. 从页的左侧面板中选择“已知域”。
 
     b. 在“已知域”文本框中输入域名。
 
     c. 单击“ **保存**”。  
 
 > [!TIP]
-> 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[ Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
+> 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
 ### <a name="creating-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
@@ -244,7 +244,7 @@ ms.locfileid: "51823888"
  
     ![创建 Azure AD 测试用户](./media/kantegassoforbitbucket-tutorial/create_aaduser_04.png) 
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
+    a. 在“名称”文本框中，键入 **BrittaSimon**。
 
     b. 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
@@ -276,7 +276,7 @@ ms.locfileid: "51823888"
 
     ![添加员工](./media/kantegassoforbitbucket-tutorial/user4.png) 
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“用户名”文本框中，键入用户的电子邮件地址（例如 Brittasimon@contoso.com）。
+    a. 在“用户名”文本框中，键入用户的电子邮件地址（例如 Brittasimon@contoso.com）。
     
     b. 在“全名”文本框中，键入用户（例如 Britta Simon）的全名。
     

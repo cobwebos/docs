@@ -11,12 +11,12 @@ author: chris-lauren
 ms.author: clauren
 ms.date: 09/24/2018
 ms.custom: seodec18
-ms.openlocfilehash: 467af0f04708c9c6758531fb1cd71d79e9ddd6d7
-ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
+ms.openlocfilehash: 44f61d7b90018b76b1903a04d219dcf0226f95e0
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54302963"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54852314"
 ---
 # <a name="manage-deploy-and-monitor-models-with-azure-machine-learning-service"></a>使用 Azure 机器学习服务管理、部署和监视模型
 
@@ -39,7 +39,7 @@ ms.locfileid: "54302963"
 
 通过模型注册，可在 Azure 云的工作区中存储模型并确定模型版本。 使用模型注册表，可轻松组织和跟踪定型的模型。
  
-按名称和版本标识已注册的模型。 每次使用与现有名称相同的名称来注册模型时，注册表都会将版本递增。 也可在注册过程中提供其他的元数据标记，这些标记可以在搜索模型时使用。 对于可使用 Python 3 加载的模型，Azure 机器学习服务支持使用任何此类模型存储的模型。 
+按名称和版本标识已注册的模型。 每次使用与现有名称相同的名称来注册模型时，注册表都会将版本递增。 也可在注册过程中提供其他的元数据标记，这些标记可以在搜索模型时使用。 Azure 机器学习服务支持可以使用 Python 3 进行加载的任何模型。 
 
 映像正在使用的模型无法删除。
 
@@ -63,7 +63,7 @@ ms.locfileid: "54302963"
 Azure 机器学习支持最常用的框架，但通常情况下，任何可以进行 pip 安装的框架均可行。
 
 创建工作区时，也会创建多个其他的供该工作区使用的 Azure 资源。
-用于创建映像的所有对象都存储在工作区的 Azure 存储帐户中。 映像在创建后存储在 Azure 容器注册表中。 可以在创建映像时提供其他的元数据标记，这些标记也由映像注册表存储，可以通过查询这些标记来查找映像。
+用于创建映像的所有对象都存储在工作区的 Azure 存储帐户中。 创建映像时，可以提供其他元数据标记。 元数据标记还由映像注册表存储，并且可以进行查询以查找映像。
 
 有关详细信息，请参阅[部署模型](how-to-deploy-and-where.md#configureimage)的配置和注册映像部分。
 

@@ -6,14 +6,14 @@ author: Rajeswari-Mamilla
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 12/11/2018
-ms.author: mayg
-ms.openlocfilehash: 1efbd6bfb6f3bc3e5deae058b542f665b3153cdb
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.date: 01/22/2018
+ms.author: ramamill
+ms.openlocfilehash: 712f8fb2cb951460ad2be36b2899f52d4966fc82
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53794348"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54468389"
 ---
 # <a name="deploy-a-configuration-server"></a>部署配置服务器
 
@@ -67,13 +67,16 @@ ms.locfileid: "53794348"
 3. 在“选择源”中，输入下载的 OVF 所在的位置。
 4. 在“查看详细信息”中，选择“下一步”。
 5. 在“选择名称和文件夹”和“选择配置”中，接受默认设置。
-6. 在“选择存储”中，为获得最佳性能，请在“选择虚拟磁盘格式”中选择“Thick Provision Eager Zeroed”。
+6. 在“选择存储”中，为获得最佳性能，请在“选择虚拟磁盘格式”中选择“Thick Provision Eager Zeroed”。 使用精简预配选项可能会影响配置服务器的性能。
 7. 在余下的向导页中，接受默认设置。
 8. 在“准备完成”中：
 
     * 若要使用默认设置来设置 VM，请选择“部署后打开” > “完成”。
 
     * 若要添加其他网络接口，请清除“部署后打开”，并选择“完成”。 默认情况下，配置服务器模板是使用单个 NIC 部署的。 可以在部署后添加其他 NIC。
+
+> [!IMPORTANT]
+> 不要在部署后更改资源配置（内存/核心/CPU 限制）、修改/删除配置服务器上的已安装服务或文件。 这会影响向 Azure 服务注册配置服务器以及配置服务器的性能。
 
 ## <a name="add-an-additional-adapter"></a>添加其他适配器
 
@@ -119,7 +122,7 @@ ms.locfileid: "53794348"
 
 ## <a name="upgrade-the-configuration-server"></a>升级配置服务器
 
-若要将配置服务器升级到最新版本，请执行这些[步骤](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server)。
+若要将配置服务器升级到最新版本，请执行这些[步骤](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server)。 有关如何升级所有 Site Recovery 组件的详细说明，请单击[此处](https://docs.microsoft.com/en-us/azure/site-recovery/service%20updates-how-to)。
 
 ## <a name="manage-the-configuration-server"></a>管理配置服务器
 
@@ -141,20 +144,28 @@ ms.locfileid: "53794348"
     请参阅 [VMware 到 Azure 复制体系结构](vmware-azure-architecture.md)来详细了解配置服务器及其功能。
 5. 在哪里可以找到最新版本的配置服务器？
 
-    有关通过门户升级配置服务器的步骤，请参阅[升级配置服务器](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server)。 还可以从 [Microsoft 下载中心](https://aka.ms/asrconfigurationserver)直接下载。
+    有关通过门户升级配置服务器的步骤，请参阅[升级配置服务器](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server)。 有关如何升级所有 Site Recovery 组件的详细说明，请参阅[此处](https://aka.ms/asr_how_to_upgrade)。
 6. 在哪里可以下载配置服务器的密码？
 
     请参阅[本文](vmware-azure-manage-configuration-server.md#generate-configuration-server-passphrase)下载密码。
-7. 在哪里可以下载保管库注册密钥？
+7. 是否可以更改通行短语？
+
+    **不可以**，**强烈建议不要更改配置服务器的通行短语**。 通行短语的更改会中断受保护计算机的复制，并会导致关键运行状况状态。
+8. 在哪里可以下载保管库注册密钥？
 
     在“恢复服务保管库”中，“管理” > “Site Recovery 基础结构” > “配置服务器”。 在“服务器”中，选择“下载注册密钥”以下载保管库凭据文件。
-8. 是否可以克隆现有配置服务器并将其用于复制业务流程？
+9. 是否可以克隆现有配置服务器并将其用于复制业务流程？
 
     **不能**，不支持使用克隆的配置服务器组件。
 
-9. 能否更改配置服务器的 IP？
+10. 能否更改配置服务器的 IP？
 
     **否**，强烈建议不要更改配置服务器的 IP 地址。 请确保分配给配置服务器的所有 IP 是静态 IP，而不是 DHCP IP。
+11. 是否可以在 Azure 上设置配置服务器？
+
+    建议使用与 v-Center 的直通连接在本地环境中设置配置服务器，以及将数据传输延迟降至最低。 可出于[故障回复目的](vmware-azure-manage-configuration-server.md#failback-requirements)对配置服务器进行计划备份。
+
+有关配置服务器的更多常见问题解答，请参阅我们[有关配置服务器常见问题的文档](vmware-azure-common-questions.md#configuration-server)。
 
 ## <a name="troubleshoot-deployment-issues"></a>排查部署问题
 

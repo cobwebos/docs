@@ -4,7 +4,7 @@ description: 了解如何在 Azure Active Directory 和 Teamphoria 之间配置�
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: d569c705-6f0f-4ec1-b485-ba82526b5d32
 ms.service: active-directory
 ms.component: saas-app-tutorial
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/23/2018
 ms.author: jeedes
-ms.openlocfilehash: 554930b18a271a677aeb5e82c3e62a94965a8e7f
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 8232af95cf8414df67343f5004975b11df4488a0
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39439603"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54826711"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-teamphoria"></a>教程：Azure Active Directory 与 Teamphoria 集成
 
@@ -142,13 +142,13 @@ ms.locfileid: "39439603"
 
     ![配置单一登录](./media/teamphoria-tutorial/Teamphoria_sso_save.png)
 
-    a. 显示名称：在管理页上输入插件的显示名称。
+    a. **显示名称**：在管理页上输入插件的显示名称。
 
-    b. 按钮名称：会在用于通过 SSO 登录的登录页上显示的选项卡的名称。
+    b. **按钮名称**：会在用于通过 SSO 登录的登录页上显示的选项卡的名称。
 
-    c. 证书：在记事本中打开之前从 Azure 门户下载的证书，复制相同的内容并将其粘贴到此处的框中。
+    c. **证书**：在记事本中打开之前从 Azure 门户下载的证书，复制相同的内容并将其粘贴到此处的框中。
 
-    d. 入口点：粘贴之前从 Azure 门户中复制的“SAML 单一登录服务 URL”。
+    d. **入口点**：粘贴之前从 Azure 门户中复制的“SAML 单一登录服务 URL”。
 
     e. 将选项切换为“打开”，然后单击“保存”。
 
@@ -250,7 +250,7 @@ ms.locfileid: "39439603"
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](tutorial-list.md)
-* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
+* [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

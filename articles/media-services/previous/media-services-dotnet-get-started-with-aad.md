@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/22/2018
 ms.author: juliako
-ms.openlocfilehash: e36673c7baa03e1bcf36c149851e6455cea798fe
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.openlocfilehash: 6e829d617aa978f94b99cc9d018b5ca863eaaef0
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49945563"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54807314"
 ---
 # <a name="use-azure-ad-authentication-to-access-azure-media-services-api-with-net"></a>使用 Azure AD 身份验证可通过 .NET 访问 Azure 媒体服务 API
 
@@ -80,7 +80,7 @@ ms.locfileid: "49945563"
 
 这些参数的值可在 AzureEnvironments.AzureCloudEnvironment 中找到。 AzureEnvironments.AzureCloudEnvironment 常量是 .NET SDK 中的一个帮助程序，可以为公共 Azure 数据中心获取正确的环境变量设置。 
 
-它包含预定义的环境设置，从而仅允许访问公共数据中心中的媒体服务。 对于 sovereign 云或政府云区域，可以分别使用 AzureChinaCloudEnvironment、AzureUsGovernmentEnvrionment 或 AzureGermanCloudEnvironment。
+它包含预定义的环境设置，从而仅允许访问公共数据中心中的媒体服务。 对于 sovereign 云或政府云区域，可以分别使用“AzureChinaCloudEnvironment”、“AzureUsGovernmentEnvironment”或“AzureGermanCloudEnvironment”。
 
 以下示例代码创建一个令牌：
     
@@ -122,7 +122,7 @@ ms.locfileid: "49945563"
     }
 
 >[!NOTE]
->如果收到异常，指示“远程服务器返回了一个错误: (401)未授权”，请参阅使用 Azure AD身份验证访问 Azure 媒体服务 API 概述的[访问控制](media-services-use-aad-auth-to-access-ams-api.md#access-control)部分。
+>如果收到异常，指示“远程服务器返回了一个错误:(401)未授权”，请参阅“使用 Azure AD 身份验证访问 Azure 媒体服务 API”概述的[访问控制](media-services-use-aad-auth-to-access-ams-api.md#access-control)部分。
 
 ## <a name="use-service-principal-authentication"></a>使用服务主体身份验证
     

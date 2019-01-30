@@ -1,10 +1,10 @@
 ---
-title: 教程：Azure Active Directory 与 Allocadia 集成 | Microsoft Docs
+title: 教程：Azure Active Directory 与 Allocadia 的集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 和 Allocadia 之间配置单一登录。
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: c415fc55-6dc1-49f2-a8a2-2fc6e3790d65
 ms.service: active-directory
 ms.component: saas-app-tutorial
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/23/2017
 ms.author: jeedes
-ms.openlocfilehash: a25fbd4daaa4d1fb09d788ba7ab61392ffb100f2
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: bebd375365e36026e02aa0d7f447a8b0c3529139
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39043908"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54807861"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-allocadia"></a>教程：Azure Active Directory 与 Allocadia 集成
+# <a name="tutorial-azure-active-directory-integration-with-allocadia"></a>教程：Azure Active Directory 与 Allocadia 的集成
 
 在本教程中，了解如何将 Allocadia 与 Azure Active Directory (Azure AD) 集成。
 
@@ -112,7 +112,7 @@ ms.locfileid: "39043908"
 
     ![配置单一登录](./media/allocadia-tutorial/tutorial_allocadia_url.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“标识符”文本框中，使用以下模式键入 URL： 
+    a. 在“标识符”文本框中，使用以下模式键入 URL： 
        
      对于测试环境 - `https://na2standby.allocadia.com`
     
@@ -139,7 +139,7 @@ ms.locfileid: "39043908"
     | 姓 | user.surname |
     | 电子邮件 | user.mail |
     
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 单击“添加属性”，打开“添加属性”对话框。
+    a. 单击“添加属性”，打开“添加属性”对话框。
 
     ![配置单一登录](./media/allocadia-tutorial/tutorial_attribute_04.png)
 
@@ -165,7 +165,7 @@ ms.locfileid: "39043908"
 8. 若要在“Allocadia”端配置单一登录，需要将下载的元数据 XML 发送给 [Allocadia 支持团队](mailTo:support@allocadia.com)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
 
 > [!TIP]
-> 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[ Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
+> 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
 ### <a name="creating-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
@@ -191,7 +191,7 @@ ms.locfileid: "39043908"
  
     ![创建 Azure AD 测试用户](./media/allocadia-tutorial/create_aaduser_04.png) 
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
+    a. 在“名称”文本框中，键入 **BrittaSimon**。
 
     b. 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
@@ -238,12 +238,12 @@ ms.locfileid: "39043908"
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 当在访问面板中单击“Allocadia”磁贴时，应该会自动登录“Allocadia”应用程序。
-有关访问面板的详细信息，请参阅[访问面板简介](../user-help/active-directory-saas-access-panel-introduction.md)。
+有关访问面板的详细信息，请参阅[访问面板简介](../user-help/active-directory-saas-access-panel-introduction.md)
 
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](tutorial-list.md)
-* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
+* [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
 
 

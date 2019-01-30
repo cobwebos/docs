@@ -4,7 +4,7 @@ description: 了解如何在 Azure Active Directory 和 SmartRecruiters 之间�
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: joflore
 ms.assetid: e96aeecd-e113-454e-89c3-58c9f44cfd4c
 ms.service: active-directory
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/29/2017
 ms.author: jeedes
-ms.openlocfilehash: b248cd7d5d45e4f91bc97a5a29476f9bfa03089d
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 6624368e0438b8f41a0f90c5da3f7f00f4cbc86c
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39426979"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54813553"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-smartrecruiters"></a>教程：Azure Active Directory 与 SmartRecruiters 的集成
 
@@ -160,7 +160,7 @@ ms.locfileid: "39426979"
 1. 单击“保存 Web SSO 配置”。
 
 > [!TIP]
-> 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[ Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
+> 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 
@@ -196,7 +196,7 @@ ms.locfileid: "39426979"
  
 ### <a name="create-a-smartrecruiters-test-user"></a>创建 SmartRecruiters 测试用户
 
-在本部分中，在 SmartRecruiters 中创建名为 Britta Simon 的用户。 与 [SmartRecruiters 支持团队](https://www.smartrecruiters.com/about-us/contact-us/)合作，在 SmartRecruiters 平台中添加用户。 使用单一登录前，必须先创建并激活用户。 
+在本部分中，在 SmartRecruiters 中创建名为 Britta Simon 的用户。 与  [SmartRecruiters 支持团队](https://www.smartrecruiters.com/about-us/contact-us/) 合作，在 SmartRecruiters 平台中添加用户。 使用单一登录前，必须先创建并激活用户。 
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
@@ -233,12 +233,12 @@ ms.locfileid: "39426979"
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 单击访问面板中的 SmartRecruiters 磁贴时，应会自动登录到 SmartRecruiters 应用程序。
-有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
+有关访问面板的详细信息，请参阅[访问面板简介](../user-help/active-directory-saas-access-panel-introduction.md)。 
 
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](tutorial-list.md)
-* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
+* [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

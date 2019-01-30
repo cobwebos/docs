@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 03/15/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=fboylu, previous-ms.author=fboylu
-ms.openlocfilehash: d7acb24a6fef0435d59e5a07f5312f1e6368fe52
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: ca29526ab8abbfffcf5e58939acbd1c9b4798a51
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53140177"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54451714"
 ---
 # <a name="technical-guide-to-the-cortana-intelligence-solution-template-for-predictive-maintenance-in-aerospace"></a>在航天工业中用于预见性维护的 Cortana Intelligence 解决方案模板技术指南
 
@@ -174,7 +174,7 @@ Power BI 将连接到充当其数据源、用于存储预测结果的 Azure SQL 
    * 解决方案模板图示上的“Azure SQL 数据库”变为绿色后，请单击它，并单击“打开”。
    * 会看到新的浏览器选项卡/窗口显示 Azure 门户页面。 单击左侧面板中的“资源组”。
    * 选择要用于部署该解决方案的订阅，并选择“YourSolutionName\_ResourceGroup”。
-   * 在新弹出的面板中，单击 ![SQL 图标](./media/cortana-analytics-technical-guide-predictive-maintenance/icon-sql.png)图标以访问数据库。 数据库名称位于此图标的旁边（例如 **'pmaintenancedb'**），**数据库服务器名称**列于服务器名称属性下方且应类似于 **YourSoutionName.database.windows.net**。
+   * 在新弹出的面板中，单击 ![SQL 图标](./media/cortana-analytics-technical-guide-predictive-maintenance/icon-sql.png)图标以访问数据库。 数据库名称位于此图标的旁边（例如 'pmaintenancedb'），“数据库服务器名称”列于服务器名称属性下方且应类似于 YourSoutionName.database.windows.net。
    * 数据库**用户名**和**密码**与部署解决方案期间记下的用户名和密码相同。
 2. 使用 Power BI Desktop 更新冷路径报表文件的数据源。
    

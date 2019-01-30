@@ -11,12 +11,12 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: 7fc40945588c272ae0ae80ba17b7b3752cab4306
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: 4d62885743a4e50ece1c032c7b3405d8766d95cd
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54353305"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54850580"
 ---
 # <a name="deploy-models-with-the-azure-machine-learning-service"></a>使用 Azure 机器学习服务部署模型
 
@@ -27,7 +27,7 @@ Azure 机器学习服务允许使用 SDK 以多种方式部署已训练的模型
 
 可以将模型部署到以下计算目标：
 
-| 计算目标 | 部署类型 | Description |
+| 计算目标 | 部署类型 | 说明 |
 | ----- | ----- | ----- |
 | [Azure 容器实例 (ACI)](#aci) | Web 服务 | 快速部署。 适用于开发或测试。 |
 | [Azure Kubernetes 服务 (AKS)](#aks) | Web 服务 | 非常适合用于大规模生产部署。 提供了自动缩放和快速的响应时间。 |
@@ -101,7 +101,7 @@ image_config = ContainerImage.image_configuration(execution_script = "score.py",
 
 下表描述了此示例中的重要参数：
 
-| 参数 | Description |
+| 参数 | 说明 |
 | ----- | ----- |
 | `execution_script` | 指定一个 Python 脚本，用于接收提交到服务的请求。 在此示例中，该脚本包含在 `score.py` 文件中。 有关详细信息，请参阅[执行脚本](#script)部分。 |
 | `runtime` | 指示映像使用 Python。 另一个选项是将 Python 与 Apache Spark 配合使用的 `spark-py`。 |
@@ -245,7 +245,7 @@ image = ContainerImage.create(name = "myimage",
     **时间估计**：大约 3 分钟。
 
     > [!TIP]
-    > 如果在部署期间出现错误，请使用 `service.get_logs()` 查看 AKS 服务日志。 记录的信息可能指示错误的原因。
+    > 如果在部署期间出现错误，请使用 `service.get_logs()` 查看服务日志。 记录的信息可能指示错误的原因。
 
 有关详细信息，请参阅 [AciWebservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aciwebservice?view=azure-ml-py) 和 [Webservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.webservice?view=azure-ml-py) 类的参考文档。
 
@@ -300,7 +300,7 @@ from azureml.core.compute import AksCompute, ComputeTarget
 resource_group = 'myresourcegroup'
 cluster_name = 'mycluster'
 
-# Attatch the cluster to your workgroup
+# Attach the cluster to your workgroup
 attach_config = AksCompute.attach_configuration(resource_group = resource_group,
                                          cluster_name = cluster_name)
 aks_target = ComputeTarget.attach(ws, 'mycompute', attach_config)
@@ -335,7 +335,7 @@ print(service.state)
 **时间估计**：大约 3 分钟。
 
 > [!TIP]
-> 如果在部署期间出现错误，请使用 `service.get_logs()` 查看 AKS 服务日志。 记录的信息可能指示错误的原因。
+> 如果在部署期间出现错误，请使用 `service.get_logs()` 查看服务日志。 记录的信息可能指示错误的原因。
 
 有关详细信息，请参阅 [AksWebservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.akswebservice?view=azure-ml-py) 和 [Webservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.webservice.webservice?view=azure-ml-py) 类的参考文档。
 

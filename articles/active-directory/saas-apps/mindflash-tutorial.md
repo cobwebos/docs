@@ -1,10 +1,10 @@
 ---
-title: 教程：Azure Active Directory 与 Mindflash 的集成 | Microsoft Docs
+title: 教程：Azure Active Directory 与 Mindflash 集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 和 Mindflash 之间配置单一登录。
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: bdf91993-aaaa-4598-89b7-77ef8ca065d5
 ms.service: active-directory
 ms.component: saas-app-tutorial
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/30/2017
 ms.author: jeedes
-ms.openlocfilehash: e1b709944ce638579458680ecdbf3a5b7766eb13
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 1d9518e02a726ffb0e1a4d852a68fcdc5dcd5080
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39421485"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54820558"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-mindflash"></a>教程：Azure Active Directory 与 Mindflash 的集成
+# <a name="tutorial-azure-active-directory-integration-with-mindflash"></a>教程：Azure Active Directory 与 Mindflash 集成
 
 本教程介绍如何将 Mindflash 与 Azure Active Directory (Azure AD) 集成。
 
@@ -132,7 +132,7 @@ ms.locfileid: "39421485"
 1. 若要在 Mindflash 端配置单一登录，需要将下载的元数据 XML 发送给 [Mindflash 支持团队](https://www.mindflash.com/contact/)。
 
 > [!TIP]
-> 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[ Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
+> 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
 ### <a name="creating-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
@@ -190,7 +190,7 @@ ms.locfileid: "39421485"
     
     c. 在“电子邮件”文本框中，键入用户的电子邮件地址（如 BrittaSimon@contoso.com）。
 
-    b. 单击 **“添加”**。
+    b. 单击“添加”。
 
 >[!NOTE]
 >可以使用 Mindflash 提供的任何其他 Mindflash 用户帐户创建工具或 API 来预配 AAD 用户帐户。 
@@ -236,7 +236,7 @@ ms.locfileid: "39421485"
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](tutorial-list.md)
-* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
+* [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
 
 

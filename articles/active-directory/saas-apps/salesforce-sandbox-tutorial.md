@@ -1,10 +1,10 @@
 ---
-title: 教程：Azure Active Directory 与 Salesforce Sandbox 集成 | Microsoft 文档
+title: 教程：Azure Active Directory 与 Salesforce 沙盒集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 和 Salesforce 沙盒之间配置单一登录。
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: joflore
 ms.assetid: ee54c39e-ce20-42a4-8531-da7b5f40f57c
 ms.service: active-directory
@@ -15,19 +15,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/10/2018
 ms.author: jeedes
-ms.openlocfilehash: 48dcb4a3b1e06ab62905092055ba1b48bd0dddb7
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.openlocfilehash: 33d39e617bd55b88d8f04785d937faf176463ee5
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49114490"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54808810"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-salesforce-sandbox"></a>教程：Azure Active Directory 与 Salesforce 沙盒集成
 
 本教程介绍如何将 Salesforce 沙盒与 Azure Active Directory (Azure AD) 集成。
 
 使用沙盒可以在不同的环境中针对多种用途（如开发、测试和培训）创建组织的多个副本，而不会影响 Salesforce 产品组织中的的数据和应用程序。
-有关更多详细信息，请参阅[沙盒概述](https://help.salesforce.com/articleView?id=create_test_instance.htm&language=en_us&type=5)。
+有关更多详细信息，请参阅 [沙盒概述](https://help.salesforce.com/articleView?id=create_test_instance.htm&language=en_us&type=5)。
 
 将 Salesforce 沙盒与 Azure AD 集成具有以下优势：
 
@@ -121,7 +121,7 @@ ms.locfileid: "49114490"
 
 5. 如果要在 **IDP** 发起的模式下配置应用程序，请在“基本 SAML 配置”部分中执行以下步骤：
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 单击“上传元数据文件”。
+    a. 单击“上传元数据文件”。
 
     ![上传元数据文件](./media/salesforce-sandbox-tutorial/upload_metadata.png)
 
@@ -176,7 +176,7 @@ ms.locfileid: "49114490"
 
 16. 如果要在 **SP** 发起的模式下配置应用程序，请满足以下先决条件：
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 应有一个已验证的域。
+    a. 应有一个已验证的域。
 
     b. 需在 Salesforce 沙盒中配置并启用域，本教程稍后会介绍相关步骤。
 
@@ -219,7 +219,7 @@ ms.locfileid: "49114490"
 
     ![配置单一登录](./media/salesforce-sandbox-tutorial/xmlchoose.png)
 
-25. 在“SAML 单一登录设置”页上，各字段会自动填充数据，在“名称”文本框中键入配置的名称（例如：*SPSSOWAAD_Test*）并单击“保存”。
+25. 在“SAML 单一登录设置”页面上，各字段会自动填充数据，在“名称”文本框中键入配置的名称（例如：*SPSSOWAAD_Test*）并单击“保存”。
 
     ![配置单一登录](./media/salesforce-sandbox-tutorial/sf-saml-config.png)
 
@@ -256,7 +256,7 @@ ms.locfileid: "49114490"
 
     ![创建 Azure AD 测试用户](./media/salesforce-sandbox-tutorial/create_aaduser_02.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”字段中，输入 BrittaSimon。
+    a. 在“名称”字段中，输入 BrittaSimon。
   
     b. 在“用户名”字段中键入 brittasimon@yourcompanydomain.extension  
     例如： BrittaSimon@contoso.com

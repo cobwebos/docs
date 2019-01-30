@@ -4,7 +4,7 @@ description: 帮助依据每个生命周期阶段的可用选项定义混合标�
 documentationcenter: ''
 services: active-directory
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: 420b6046-bd9b-4fce-83b0-72625878ae71
 ms.service: active-directory
@@ -16,12 +16,12 @@ ms.date: 05/30/2018
 ms.component: hybrid
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: 5590f1fc3716582da090b8429f8bcf4fc7911dbe
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 6512cb71cc8ca973a778b7e172afcd9e056421ed
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51251757"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54478376"
 ---
 # <a name="determine-hybrid-identity-lifecycle-adoption-strategy"></a>确定混合标识生命周期采用策略
 蝻进在本任务中，将定义混合标识解决方案的标识管理策略，以满足在[确定混合标识管理任务](plan-hybrid-identity-design-considerations-hybrid-id-management-tasks.md)中定义的业务需求。
@@ -44,8 +44,8 @@ ms.locfileid: "51251757"
 Azure AD RBAC 使公司能够限制有权访问 Azure 门户的个人可以执行的操作数。 使用 RBAC 控制对门户的访问时，IT 管理员可通过下列访问管理方式委派访问权限：
 
 * **基于组的角色分配**：为可从本地 Active Directory 同步的 Azure AD 组分配访问权限。 这使你能够充分利用组织在工具和组管理过程中已有的现有投资。 也可以使用 Azure AD 高级版中的委派组管理功能。
-* **充分利用 Azure 中的内置角色**：可以使用三个角色 - 所有者、参与者和阅读人员，以确保用户和组仅具有完成工作所需任务的权限。
-* **对资源的细致访问**：针对特定的订阅、资源组或单独的 Azure 资源（例如，网站或数据库），可以将角色分配给用户和组。 这样，可以确保用户有权访问所有所需资源，并且无权访问不需要管理的资源。
+* **利用 Azure 中的内置角色**：可以使用三个角色 - 所有者、参与者和阅读者，以确保用户和组仅具有完成工作所需任务的权限。
+* **对资源的细致访问**：针对特定的订阅、资源组或单独的 Azure 资源（例如网站或数据库），可以将角色分配给用户和组。 这样，可以确保用户有权访问所有所需资源，并且无权访问不需要管理的资源。
 
 ## <a name="provisioning-and-other-customization-options"></a>预配和其他自定义选项
 团队可以根据业务规划和业务要求来决定自定义标识解决方案的程度。 例如，一家大型企业可能需要根据时间线针对工作流和自定义适配器分阶段实施计划，以增量方式预配跨地域广泛使用的应用程序。 成功测试之后，另一个自定义计划可能提供两个或更多要在整个组织范围内预配的应用程序。 可以自定义用户-应用程序交互，还可以更改资源预配过程以适应自动化预配。
@@ -93,7 +93,7 @@ Azure Active Directory 为数千种 SaaS 应用程序和本地 Web 应用程序�
 
 | 同步管理选项 | 优点 | 缺点 |
 | --- | --- | --- |
-| 基于同步（通过 DirSync 或 AADConnect） |从本地和云同步的用户和组 <br>  策略控制：可通过 Active Directory 设置帐户策略，这使得管理员无需在云中执行附加任务的情况下，就能够管理密码策略、工作站、限制、锁定控制等。  <br>  访问控制：可限制对云服务的访问，以便通过企业环境和/或联机服务器访问这些服务。 <br>  减少支持呼叫：用户需要记住的密码数量越少，就越不容易忘记它们。 <br>  安全性：由于单一登录使用的所有服务器和服务都在本地掌握和控制，因此用户标识和信息可受到保护。 <br>  支持强身份验证：对于云服务，可以使用强身份验证（也称为双重身份验证）。 但是，如果使用强身份验证，必须使用单一登录。 | |
+| 基于同步（通过 DirSync 或 AADConnect） |从本地和云同步的用户和组 <br>  **策略控制**：可通过 Active Directory 设置帐户策略，这使得管理员无需在云中执行附加任务，就能够管理密码策略、工作站、限制、锁定控制等。  <br>  **访问控制**：可限制对云服务的访问，以便通过企业环境和/或联机服务器访问这些服务。 <br>  减少支持呼叫：用户需要记住的密码数量越少，就越不容易忘记它们。 <br>  安全性：由于单一登录使用的所有服务器和服务都在本地掌握和控制，用户标识和信息可受到保护。 <br>  支持强身份验证：对于云服务，可以使用强身份验证（也称为双重身份验证）。 但是，如果使用强身份验证，必须使用单一登录。 | |
 | 基于联合身份验证（通过 AD FS） |受安全令牌服务 (STS) 支持。 使用 Microsoft 云服务配置 STS 以提供单一登录访问权限时，会在本地 STS和在 Azure AD 租户中指定的联合域之间创建联合信任。 <br> 允许最终用户使用同一组凭据来获得对多个资源的访问权限 <br>最终用户不需要维护多组凭据。 但是，用户必须为每个参与资源以及受支持的 B2B 和 B2C 方案提供凭据。 |需要专业人员部署和维护专用的本地 AD FS 服务器。 如果计划将 AD FS 用于 STS，强身份验证的使用将受到限制。 有关详细信息，请参阅[为 AD FS 2.0 配置高级选项](https://go.microsoft.com/fwlink/?linkid=235649)。 |
 
 > [!NOTE]
