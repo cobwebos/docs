@@ -15,12 +15,13 @@ ms.topic: get-started-article
 ms.date: 12/04/2018
 ms.author: sethm
 ms.reviewer: unknown
-ms.openlocfilehash: cbce1e1aa9ba89d6d46cfaa60ef4de7e6392d924
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.lastreviewed: 12/04/2018
+ms.openlocfilehash: 0281186be4fae71c56b65327e0c67da3f252a33c
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54245797"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55239513"
 ---
 # <a name="validate-azure-registration"></a>验证 Azure 注册
  

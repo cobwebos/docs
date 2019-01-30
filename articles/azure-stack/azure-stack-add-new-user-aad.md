@@ -15,12 +15,13 @@ ms.topic: article
 ms.date: 09/17/2018
 ms.author: jeffgilb
 ms.reviewer: unknown
-ms.openlocfilehash: fa8c8da34a687edd1bd92c1d516183ee5d3e1bd0
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.lastreviewed: 09/17/2018
+ms.openlocfilehash: c0f457955bd8df7fe07e2a96469fde0a751417bc
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51240114"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55240313"
 ---
 # <a name="add-a-new-azure-stack-tenant-account-in-azure-active-directory"></a>在 Azure Active Directory 中添加新的 Azure Stack 租户帐户
 
@@ -31,8 +32,8 @@ ms.locfileid: "51240114"
 必须具有 Azure 订阅才能使用 Azure 门户。
 
 1. 登录到 [Azure](https://portal.azure.com)。
-2. 在左侧的导航栏中，选择**Active Directory**并切换到想要用于 Azure Stack 的目录或创建一个新。
-3. 选择**Azure Active Directory** > **用户** > **新用户**。
+2. 在左侧导航栏中，选择“Active Directory”并切换到要用于 Azure Stack 的目录，或者创建一个新目录。
+3. 选择“Azure Active Directory” > “用户” > “新建用户”。
 
     ![用户 - 突出显示新用户的所有用户页面](media/azure-stack-add-new-user-aad/new-user-all-users.png)
 
@@ -44,9 +45,9 @@ ms.locfileid: "51240114"
     - **用户名（必需）。** 新用户的用户名。 例如，mary@contoso.com。
         用户名的域名部分必须是初始默认域名“<yourdomain name>.onmicrosoft.com”，或自定义域名（例如“contoso.com”）。 若要了解有关如何创建自定义域名的详细信息，请参阅[如何将自定义域名添加到 Azure Active Directory](../active-directory/fundamentals/add-custom-domain.md)。
     - **配置文件。** （可选）可添加有关用户的详细信息。 也可稍后添加用户信息。 有关添加用户信息的详细信息，请参阅[如何添加或更改用户配置文件信息](../active-directory/fundamentals/active-directory-users-profile-azure-portal.md)。
-    - **目录角色。**  选择**用户**。
+    - **目录角色。**  选择“用户”。
 
-5. 检查**显示密码**和复制中提供的自动生成密码**密码**框。 有关初始登录过程，将需要此密码。
+5. 选中“显示密码”并复制“密码”框中提供的自动生成的密码。 在初始登录过程中需要此密码。
 
 6. 选择“创建”。
 

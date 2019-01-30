@@ -15,18 +15,19 @@ ms.topic: article
 ms.date: 12/07/2018
 ms.author: sethm
 ms.reviewer: sijuman
-ms.openlocfilehash: 20e96ad7a99fdb8c90f3b7990965d7225aef8be0
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.lastreviewed: 12/07/2018
+ms.openlocfilehash: e335f4cb112c0f029768ccf050f888e00a6efdc1
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53555007"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55250605"
 ---
 # <a name="use-api-version-profiles-with-net-in-azure-stack"></a>在 Azure Stack 中将 API 版本配置文件与 .NET 配合使用
 
 *适用于：Azure Stack 集成系统和 Azure Stack 开发工具包*
 
-用于 Azure Stack 资源管理器的 .NET SDK 提供了相关工具来帮助构建和管理基础结构。 该 SDK 中的资源提供程序包括了计算、网络、存储、应用服务和 [KeyVault](../../key-vault/key-vault-whatis.md)。 .NET SDK 包括 14 NuGet 包。 这些包必须每次，其中包含的配置文件信息下载到你项目的解决方案。 不过，可以专门下载用于 2018-03-01-hybrid 或 2017-03-09-profile 的资源提供程序，以便优化应用程序的内存。 每个包都包含资源提供程序、相应的 API 版本以及所属 API 配置文件。 .NET SDK 中的 API 配置文件可以用来在公有云 Azure 资源和 Azure Stack 上的资源之间进行切换，实现混合云开发。
+用于 Azure Stack 资源管理器的 .NET SDK 提供了相关工具来帮助构建和管理基础结构。 该 SDK 中的资源提供程序包括了计算、网络、存储、应用服务和 [KeyVault](../../key-vault/key-vault-whatis.md)。 .NET SDK 包括 14 NuGet 包。 这些内含配置文件信息的包每次都必须下载到项目解决方案。 不过，可以专门下载用于 2018-03-01-hybrid 或 2017-03-09-profile 的资源提供程序，以便优化应用程序的内存。 每个包都包含资源提供程序、相应的 API 版本以及所属 API 配置文件。 .NET SDK 中的 API 配置文件可以用来在公有云 Azure 资源和 Azure Stack 上的资源之间进行切换，实现混合云开发。
 
 ## <a name="net-and-api-version-profiles"></a>.NET 与 API 版本配置文件
 
@@ -62,7 +63,7 @@ API 配置文件是资源提供程序和 API 版本的组合。 可以使用 API
 
 5.  如果不可用，请创建订阅，并保存订阅 ID 供稍后使用。 有关创建订阅的说明，请参阅[在 Azure Stack 中创建套餐的订阅][]。
 
-6.  创建服务主体并保存客户端 ID 和客户端机密。 有关如何为 Azure Stack 创建服务主体的说明，请参阅[提供对 Azure Stack 的应用程序访问权限][]。 创建服务主体时，客户端 ID 也称为是应用程序 ID。
+6.  创建服务主体并保存客户端 ID 和客户端机密。 有关如何为 Azure Stack 创建服务主体的说明，请参阅[提供对 Azure Stack 的应用程序访问权限][]。 创建服务主体时的客户端 ID 也称为应用程序 ID。
 
 7.  确保服务主体在订阅上具有“参与者/所有者”角色。 有关如何将角色分配到服务主体的说明，请参阅[提供对 Azure Stack 的应用程序访问权限][]。
 
@@ -76,10 +77,10 @@ API 配置文件是资源提供程序和 API 版本的组合。 可以使用 API
 | 客户端 ID                 | AZURE_CLIENT_ID       | 在本文上一部分创建服务主体时保存的服务主体应用程序 ID。 |
 | 订阅 ID           | AZURE_SUBSCRIPTION_ID | [订阅 ID][] 用于访问 Azure Stack 中的套餐。                                                      |
 | 客户端机密             | AZURE_CLIENT_SECRET   | 创建服务主体时保存的服务主体应用程序机密。                                      |
-| 资源管理器终结点 | ARM_ENDPOINT           | 请参阅[ *Azure Stack 资源管理器终结点*][]。                                                                    |
-| 位置                  | RESOURCE_LOCATION     | 适用于 Azure Stack 的位置。
+| 资源管理器终结点 | ARM_ENDPOINT           | 请参阅 [*Azure Stack 资源管理器终结点*][]。                                                                    |
+| 位置                  | RESOURCE_LOCATION     | Azure Stack 的位置。
 
-若要查找 Azure Stack 的租户 ID，请按[此处](../azure-stack-csp-ref-operations.md)提供的说明操作。 若要设置环境变量，请执行以下步骤操作：
+若要查找 Azure Stack 的租户 ID，请按[此处](../azure-stack-csp-ref-operations.md)提供的说明操作。 若要设置环境变量，请执行以下步骤：
 
 ### <a name="microsoft-windows"></a>Microsoft Windows
 
@@ -107,7 +108,7 @@ Microsoft Azure 资源管理器是一种管理框架，允许管理员部署、 
 
 - Azure Stack 开发工具包 (ASDK) 中的 **ResourceManagerUrl** 为： https://management.local.azurestack.external/
 
-- **ResourceManagerUrl**集成系统中是：`https://management.<location>.ext-<machine-name>.masd.stbtest.microsoft.com/` 若要检索所需的元数据： `<ResourceManagerUrl>/metadata/endpoints?api-version=1.0`
+- 集成系统中的 **ResourceManagerUrl** 为：`https://management.<location>.ext-<machine-name>.masd.stbtest.microsoft.com/` 检索所需的元数据：`<ResourceManagerUrl>/metadata/endpoints?api-version=1.0`
 
 示例 JSON 文件：
 
@@ -126,17 +127,17 @@ Microsoft Azure 资源管理器是一种管理框架，允许管理员部署、 
 
 ## <a name="existing-api-profiles"></a>现有 API 配置文件
 
-1.  **Microsoft.Azure.Management.Profiles.hybrid\_2018年\_03\_01。*ResourceProvider*。 0.9.0-preview.nupkg**:构建适用于 Azure Stack 的最新配置文件。 请将此配置文件用于与 Azure Stack 最兼容的服务，前提是使用 1808 或更高的戳记。
+1.  **Microsoft.Azure.Management.Profiles.hybrid\_2018\_03\_01.*ResourceProvider*.0.9.0-preview.nupkg**：为 Azure Stack 生成的最新配置文件。 请将此配置文件用于与 Azure Stack 最兼容的服务，前提是使用 1808 或更高的戳记。
 
-2.  **Microsoft.Azure.Management.Profiles.hybrid\_2017年\_03\_09。*ResourceProvider*。 0.9.0-preview.nupkg**:如果您是在低于 1808年生成标记上，使用此配置文件。
+2.  **Microsoft.Azure.Management.Profiles.hybrid\_2017\_03\_09.*ResourceProvider*.0.9.0-preview.nupkg**：如果使用的戳记低于版本 1808，请使用此配置文件。
 
-3.  **最新**：包含的所有服务的最新版本的配置文件。 使用所有服务的最新版本。 该配置文件是 **Microsoft.Azure.Management** NuGet 包的一部分。
+3.  **最新**：包含所有服务的最新版本的配置文件。 使用所有服务的最新版本。 该配置文件是 **Microsoft.Azure.Management** NuGet 包的一部分。
 
 有关 Azure Stack 和 API 配置文件的详细信息，请参阅 [API 配置文件的摘要][]。
 
 ## <a name="azure-net-sdk-api-profile-usage"></a>Azure .NET SDK API 配置文件的使用
 
-下面的代码应该用于实例化资源管理客户端。 可以使用类似的代码来实例化其他资源提供程序 （例如计算、 网络和存储） 的客户端。 
+应该使用以下代码来实例化资源管理客户端。 可以使用类似的代码来实例化其他资源提供程序（例如计算、网络和存储）客户端。 
 
 ```csharp
 var client = new ResourceManagementClient(armEndpoint, credentials)
@@ -145,13 +146,13 @@ var client = new ResourceManagementClient(armEndpoint, credentials)
 };
 ```
 
-`credentials`实例化客户端所需的参数在上面的代码。 下面的代码生成按租户 ID 和服务主体身份验证令牌。
+以上代码中的 `credentials` 参数是实例化客户端所需的。 以下代码根据租户 ID 和服务主体生成一个身份验证令牌。
 
 ```csharp
 var azureStackSettings = getActiveDirectoryServiceSettings(armEndpoint);
 var credentials = ApplicationTokenProvider.LoginSilentAsync(tenantId, servicePrincipalId, servicePrincipalSecret, azureStackSettings).GetAwaiter().GetResult();
 ```
-`getActiveDirectoryServiceSettings`代码中的调用从元数据终结点中检索 Azure Stack 终结点。 它从所做的调用声明环境变量： 
+代码中的 `getActiveDirectoryServiceSettings` 调用从元数据终结点检索 Azure Stack 终结点。 它从所做的调用声明环境变量： 
 
 ```csharp
 public static ActiveDirectoryServiceSettings getActiveDirectoryServiceSettings(string armEndpoint)
@@ -189,7 +190,7 @@ public static ActiveDirectoryServiceSettings getActiveDirectoryServiceSettings(s
 
 ## <a name="samples-using-api-profiles"></a>使用 API 配置文件的示例
 
-下面的示例可以使用作为参考，用于创建使用.NET 和 Azure Stack API 配置文件的解决方案。
+若要使用 .NET 和 Azure Stack API 配置文件来创建解决方案，可以将以下示例用作参考。
 - [管理资源组](https://github.com/Azure-Samples/hybrid-resources-dotnet-manage-resource-group)
 - [管理存储帐户](https://github.com/Azure-Samples/hybird-storage-dotnet-manage-storage-accounts)
 - [管理虚拟机](https://github.com/Azure-Samples/hybrid-compute-dotnet-manage-vm)

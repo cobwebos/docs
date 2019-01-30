@@ -8,12 +8,13 @@ ms.service: azure-stack
 ms.topic: article
 ms.date: 12/12/2018
 ms.author: mabrigg
-ms.openlocfilehash: cf0cc5290f0757723ee067ee8ea84e8d6e7ba845
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.lastreviewed: 12/12/2018
+ms.openlocfilehash: d4f7ec8f4b6960650b98d8f2d2f051c0873c9754
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53323399"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55242495"
 ---
 # <a name="azure-stack-training-and-certification"></a>Azure Stack 培训和认证
 
@@ -23,8 +24,8 @@ ms.locfileid: "53323399"
 
 ## <a name="training"></a>培训
 
-- [课程 20537A:配置和运行使用 Microsoft Azure Stack 的混合云](https://www.microsoft.com/en-us/learning/course.aspx?cid=20537)
-- [edX:Azure Stack 在线培训](https://aka.ms/AzureStackMOOC)
+- [课程 20537A：配置和运行使用 Microsoft Azure Stack 的混合云](https://www.microsoft.com/en-us/learning/course.aspx?cid=20537)
+- [edX：Azure Stack 联机培训](https://aka.ms/AzureStackMOOC)
 - [作业角色和学习路径](https://azure.microsoft.com/training/learning-paths/)
 
 ## <a name="certification"></a>认证

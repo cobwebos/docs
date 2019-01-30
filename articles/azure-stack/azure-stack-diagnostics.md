@@ -10,12 +10,13 @@ ms.topic: article
 ms.date: 11/20/2018
 ms.author: jeffgilb
 ms.reviewer: adshar
-ms.openlocfilehash: ef8a01228ff31afa78f469b2ad80b864fc9d3497
-ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
+ms.lastreviewed: 11/20/2018
+ms.openlocfilehash: bd1994aca3dbbc23977b01d3511f87b5ec08b96d
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52283446"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55251854"
 ---
 # <a name="azure-stack-diagnostics-tools"></a>Azure Stack 诊断工具
 
@@ -74,10 +75,10 @@ if($s)
 
 
 ### <a name="to-run-get-azurestacklog-on-an-azure-stack-development-kit-asdk-system"></a>在 Azure Stack 开发工具包 (ASDK) 系统上运行 Get-AzureStackLog
-使用以下步骤在 asdk 主机上运行 Get-azurestacklog。
+使用以下步骤在 ASDK 主机上运行 Get-AzureStackLog。
 
-1. 以身份登录**AzureStack\CloudAdmin** ASDK 主机计算机上。
-2. 以管理员身份打开新的 PowerShell 窗口。
+1. 以 **AzureStack\CloudAdmin** 身份登录到 ASDK 主机。
+2. 以管理员身份打开一个新的 PowerShell 窗口。
 3. 运行 **Get-AzureStackLog** PowerShell cmdlet。
 
 **示例：**
@@ -108,9 +109,9 @@ if($s)
 
 ### <a name="parameter-considerations-for-both-asdk-and-integrated-systems"></a>ASDK 系统和集成系统的参数考虑事项
 
-- 参数**OutputSharePath**并**OutputShareCredential**用于将日志存储在用户指定位置。
+- 参数 **OutputSharePath** 和 **OutputShareCredential** 用于将日志存储在用户指定的位置。
 
-- **FromDate**并**ToDate**参数可用于在特定时间段内收集日志。 如果未指定这些参数，日志收集过去四个小时内默认情况下。
+- 可以使用 **FromDate** 和 **ToDate** 参数来收集特定时间段的日志。 如果未指定这些参数，则默认收集过去四小时的日志。
 
 - 使用 **FilterByNode** 参数按计算机名筛选日志。 例如：
 
@@ -123,7 +124,7 @@ if($s)
     Get-AzureStackLog -OutputSharePath “<path>” -OutputShareCredential $cred -FilterByLogType File
     ```
 - 可以使用 **TimeOutInMinutes** 参数设置日志收集的超时。 它默认设置为 150（2.5 小时）。
-- 转储文件日志收集在默认情况下处于禁用状态。 若要启用它，请使用 **IncludeDumpFile** 开关参数。 
+- 转储文件日志收集默认情况下处于禁用状态。 若要启用它，请使用 **IncludeDumpFile** 开关参数。 
 - 目前，可以使用 **FilterByRole** 参数按以下角色筛选日志收集：
 
  |   |   |   |    |

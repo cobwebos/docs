@@ -1,5 +1,5 @@
 ---
-title: Azure Stack 上的应用服务 update 3 发行说明 |Microsoft Docs
+title: 基于 Azure Stack 的应用服务 Update 3 发行说明 | Microsoft Docs
 description: 了解基于 Azure Stack 的应用服务 Update 3 的功能、已知问题和更新下载位置。
 services: azure-stack
 documentationcenter: ''
@@ -15,12 +15,13 @@ ms.topic: article
 ms.date: 08/20/2018
 ms.author: anwestg
 ms.reviewer: sethm
-ms.openlocfilehash: 3e88e0a3337eafdd25c9c0cc655912a4cdbd3b68
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.lastreviewed: 08/20/2018
+ms.openlocfilehash: a7e8b1471e056fd789cda5258dd088e623c3cebd
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49079525"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55248497"
 ---
 # <a name="app-service-on-azure-stack-update-3-release-notes"></a>基于 Azure Stack 的应用服务 Update 3 发行说明
 
@@ -84,7 +85,7 @@ ms.locfileid: "49079525"
 >
 >
 
-1. 添加[AppService 数据库 （appservice_hosting 和 appservice_metering） 到可用性组](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/availability-group-add-a-database)
+1. [将 AppService 数据库（appservice_hosting 和 appservice_metering）添加到可用性组](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/availability-group-add-a-database)
 
 1. 启用包含的数据库
     ```sql
@@ -181,10 +182,10 @@ ms.locfileid: "49079525"
 
 ### <a name="known-issues-post-installation"></a>已知问题（安装后）
 
-- 当应用服务部署在现有虚拟网络中并且文件服务器仅在专用网络上可用时，工作人员将无法访问文件服务器。  这也称为在 Azure Stack 部署文档上的 Azure 应用服务中。
+- 当应用服务部署在现有虚拟网络中并且文件服务器仅在专用网络上可用时，工作人员将无法访问文件服务器。  在 Azure Stack 部署文档的 Azure 应用服务中也提到了这一点。
 
 如果选择部署到现有虚拟网络和内部 IP 地址以连接到文件服务器，则必须添加出站安全规则，以便在工作子网和文件服务器之间启用 SMB 流量。 为此，请转到管理门户中的 WorkersNsg 并添加具有以下属性的出站安全规则：
- * 源：任何
+ * 源：任意
  * 源端口范围：*
  * 目标：IP 地址
  * 目标 IP 地址范围：文件服务器的 IP 范围
@@ -192,7 +193,7 @@ ms.locfileid: "49079525"
  * 协议：TCP
  * 操作：允许
  * 优先级：700
- * 名称：Outbound_Allow_SMB445
+ * 姓名：Outbound_Allow_SMB445
 
 ### <a name="known-issues-for-cloud-admins-operating-azure-app-service-on-azure-stack"></a>云管理员在操作基于 Azure Stack 的 Azure 应用服务时的已知问题
 

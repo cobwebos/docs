@@ -15,12 +15,13 @@ ms.topic: article
 ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: unknown
-ms.openlocfilehash: 6bb3215e63e2fc672cde5746e6a9867df899ee88
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.lastreviewed: 01/04/2019
+ms.openlocfilehash: 274240aab54f27f36734516026e9feebf64ae4b5
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54016692"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55248106"
 ---
 # <a name="install-visual-studio-and-connect-to-azure-stack"></a>安装 Visual Studio 并连接到 Azure Stack
 
@@ -70,7 +71,7 @@ ms.locfileid: "54016692"
 
     ![X](./media/azure-stack-install-visual-studio/image5.png)
 
-5. 选择“设置” （应用程序对象和服务主体对象）。  
+5. 选择 **添加** 。  
 
     Visual Studio 调用 Azure 资源管理器，并发现终结点，包括身份验证终结点，用于 Azure Directory 联合身份验证服务 (AD FS)。
 

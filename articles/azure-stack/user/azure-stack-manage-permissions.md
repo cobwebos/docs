@@ -15,12 +15,13 @@ ms.topic: article
 ms.date: 12/06/2018
 ms.author: patricka
 ms.reviewer: unknown
-ms.openlocfilehash: 1e2846252059efb188cfb4c0305b447857d151f4
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.lastreviewed: 12/06/2018
+ms.openlocfilehash: 03c1879c34a00bb09b5a4dee6af7da7b984045fc
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54244658"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55241179"
 ---
 # <a name="manage-access-to-resources-with-azure-stack-role-based-access-control"></a>使用 Azure Stack 基于角色的访问控制管理对资源的访问权限
 

@@ -16,12 +16,13 @@ ms.custom: mvc
 ms.date: 11/13/2018
 ms.author: sethm
 ms.reviewer: unknown
-ms.openlocfilehash: 2f769706b5f6a9fa4326a0efeb9e8afb2edd8296
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.lastreviewed: 11/13/2018
+ms.openlocfilehash: 9ccdea6ca0bf46bbc19e5a7e19ac2d3527138345
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54246154"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55241774"
 ---
 # <a name="tutorial-create-a-vm-using-a-community-template"></a>教程：使用社区模板创建 VM
 

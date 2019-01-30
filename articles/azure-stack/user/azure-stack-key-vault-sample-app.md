@@ -14,18 +14,19 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 12/27/2018
 ms.author: sethm
-ms.openlocfilehash: 09a31103b2a29bc335653dd92e6b11a5f8294eda
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.lastreviewed: 12/27/2018
+ms.openlocfilehash: e395b3f24ac525ce226d5520ff483b07d23636b5
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54192376"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55241961"
 ---
 # <a name="a-sample-application-that-uses-keys-and-secrets-stored-in-a-key-vault"></a>使用密钥保管库中存储的密钥和机密的示例应用程序
 
 *适用于：Azure Stack 集成系统和 Azure Stack 开发工具包*
 
-按照这篇文章，以运行名为示例应用程序中的步骤**HelloKeyVault**检索密钥和机密的密钥保管库在 Azure Stack 中。
+按照本文中的步骤运行名为 **HelloKeyVault** 的示例应用程序，从 Azure Stack 中的密钥保管库检索密钥和机密。
 
 ## <a name="prerequisites"></a>必备组件
 
@@ -136,7 +137,7 @@ Write-Host "Paste the following settings into the app.config file for the HelloK
 Write-Host
 ```
 
-下图显示了用于创建密钥保管库的脚本的输出：
+下图显示用于创建密钥保管库的脚本的输出：
 
 ![具有访问密钥的密钥保管库](media/azure-stack-key-vault-sample-app/settingsoutput.png)
 
@@ -144,19 +145,19 @@ Write-Host
 
 ## <a name="download-and-configure-the-sample-application"></a>下载并配置示例应用程序
 
-从 Azure [密钥保管库客户端示例](https://www.microsoft.com/download/details.aspx?id=45343)页下载密钥保管库示例。 将 .zip 文件的内容解压缩到开发工作站上。 有两个应用程序示例文件夹中。 本文使用**HelloKeyVault**。
+从 Azure [密钥保管库客户端示例](https://www.microsoft.com/download/details.aspx?id=45343)页下载密钥保管库示例。 将 .zip 文件的内容解压缩到开发工作站上。 samples 文件夹中有两个应用程序。 本文使用 **HelloKeyVault**。
 
-若要加载**HelloKeyVault**示例：
+若要加载 **HelloKeyVault** 示例，请执行以下操作：
 
 * 浏览到 **Microsoft.Azure.KeyVault.Samples** > **samples** > **HelloKeyVault** 文件夹。
-* 打开**HelloKeyVault** Visual Studio 中应用程序。
+* 在 Visual Studio 中打开 **HelloKeyVault** 应用程序。
 
 ### <a name="configure-the-sample-application"></a>配置示例应用程序
 
 在 Visual Studio 中：
 
-* 打开 HelloKeyVault\App.config 文件并找到&lt; **appSettings** &gt;元素。
-* 更新**VaultUrl**， **AuthClientId**，并**AuthClientSecret**具有与用来创建密钥保管库返回的值的键。 默认情况下，App.config 文件具有占位符`AuthCertThumbprint`。 替换此占位符`AuthClientSecret`。
+* 打开 HelloKeyVault\App.config 文件，找到 &lt;**appSettings**&gt; 元素。
+* 将 **VaultUrl**、**AuthClientId** 和 **AuthClientSecret** 密钥更新为用来创建密钥保管库的脚本返回的值。 默认情况下，App.config 文件有一个用于 `AuthCertThumbprint` 的占位符。 请将此占位符替换为 `AuthClientSecret`。
 
   ![应用设置](media/azure-stack-key-vault-sample-app/appconfig.png)
 
@@ -169,7 +170,7 @@ Write-Host
 可以使用 HelloKeyVault 示例执行以下操作：
 
 * 对密钥和机密执行基本操作，例如创建、加密、包装和删除。
-* 将参数传递，例如`encrypt`和`decrypt`到 HelloKeyVault，并将指定的更改应用于密钥保管库。
+* 向 HelloKeyVault 传递诸如 `encrypt` 和 `decrypt` 之类的参数，以及向密钥保管库应用指定的更改。
 
 ## <a name="next-steps"></a>后续步骤
 

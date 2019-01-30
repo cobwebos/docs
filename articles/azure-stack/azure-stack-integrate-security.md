@@ -9,13 +9,14 @@ ms.topic: article
 ms.date: 01/28/2019
 ms.author: patricka
 ms.reviewer: fiseraci
+ms.lastreviewed: 01/28/2019
 keywords: ''
-ms.openlocfilehash: 5826ab8ac50a5d27f5a74cff4bebba4b2809d5f0
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 7dff82538448b27f14dd81e2862cd63d4dd56a9b
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55096613"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55247096"
 ---
 # <a name="azure-stack-datacenter-integration---syslog-forwarding"></a>Azure Stack 数据中心集成 - Syslog 转发
 
@@ -60,7 +61,7 @@ Set-SyslogClient [-pfxBinary <Byte[]>] [-CertPassword <SecureString>] [-RemoveCe
 
 *Set-SyslogServer* cmdlet 的参数：
 
-| 参数 | 描述 | 类型 | 需要 |
+| 参数 | 描述 | Type | 需要 |
 |---------|---------|---------|---------|
 |*ServerName* | Syslog 服务器的 FQDN 或 IP 地址 | String | 是|
 |*ServerPort* | syslog 服务器侦听的端口号 | String | 是|
@@ -71,7 +72,7 @@ Set-SyslogClient [-pfxBinary <Byte[]>] [-CertPassword <SecureString>] [-RemoveCe
 |*Remove*| 从客户端删除服务器的配置并停止 Syslog 转发| 标志 | 否|
 
 *Set-SyslogClient* cmdlet 的参数：
-| 参数 | 描述 | 类型 |
+| 参数 | 描述 | Type |
 |---------|---------| ---------|
 | *pfxBinary* | pfx 文件，其中包含的证书可供客户端用作对 Syslog 服务器进行身份验证的标识  | Byte[] |
 | *CertPassword* |  密码，用于导入与 pfx 文件关联的私钥 | SecureString |

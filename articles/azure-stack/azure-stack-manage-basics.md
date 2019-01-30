@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/15/2018
 ms.author: jeffgilb
-ms.openlocfilehash: f22754a16c4765989b5773d099fc3ecda73040db
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.lastreviewed: 10/15/2018
+ms.openlocfilehash: a9bf2240e6e60a3d2d80bf4829d74f1043024d7e
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52972382"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55239666"
 ---
 # <a name="azure-stack-administration-basics"></a>Azure Stack 管理基础知识
 如果不熟悉 Azure Stack 管理，则需要了解几项事情。 本指南概述了 Azure Stack 操作员角色，以及需要告知用户哪些东西才能让他们快速提高工作效率。
@@ -63,7 +64,7 @@ ms.locfileid: "52972382"
 
 **服务路线图**
 
-Azure Stack 会持续增加对 Azure 服务的支持。 如需计划的路线图，请参阅 [Azure Stack: An extension of Azure](https://go.microsoft.com/fwlink/?LinkId=842846&clcid=0x409)（Azure Stack：Azure 的扩展）白皮书。 也可留意 [Azure Stack 博客文章](https://azure.microsoft.com/blog/tag/azure-stack-technical-preview)中的新公告。
+Azure Stack 会持续增加对 Azure 服务的支持。 计划的路线图，请参阅[Azure Stack:Azure 的扩展](https://go.microsoft.com/fwlink/?LinkId=842846&clcid=0x409)白皮书。 也可留意 [Azure Stack 博客文章](https://azure.microsoft.com/blog/tag/azure-stack-technical-preview)中的新公告。
 
 ## <a name="what-account-should-i-use"></a>我应使用什么帐户?
 管理 Azure Stack 时，应该注意帐户方面的几个事项， 尤其是在使用 Windows Server Active Directory 联合身份验证服务 (AD FS) 而不是 Azure Active Directory (Azure AD) 作为标识提供者的部署中。 以下帐户注意事项同时适用于 Azure Stack 集成系统和 ASDK 部署：
@@ -108,7 +109,7 @@ Azure Stack 使用 Azure 资源管理器作为其基础的部署、管理和组�
 
 在 Azure Stack 中使用服务和开发应用之前，用户必须了解某些信息。 例如，必须了解特定的 PowerShell 和 API 版本要求。 另外，Azure 中的服务与 Azure Stack 中的相应服务存在一些功能差异。 请确保用户参阅以下文章：
 
-- [重要注意事项：使用 Azure Stack 的服务或开发适用于 Azure Stack 的应用](user/azure-stack-considerations.md)
+- [重要注意事项：使用 Azure Stack 的服务或构建适用于 Azure Stack 的应用](user/azure-stack-considerations.md)
 - [Azure Stack 中虚拟机的注意事项](user/azure-stack-vm-considerations.md)
 - [存储：差异和注意事项](user/azure-stack-acs-differences.md)
 

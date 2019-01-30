@@ -14,61 +14,62 @@ ms.topic: article
 ms.date: 12/21/2018
 ms.author: sethm
 ms.reviewer: misainat
-ms.openlocfilehash: d1ff154c42709f0c672b30f7ec51a436fb44ce13
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.lastreviewed: 12/21/2018
+ms.openlocfilehash: d3d776def9e031ca2bcc76d1b60a19f67a74b35a
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53724736"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55240338"
 ---
 # <a name="asdk-release-notes"></a>ASDK 发行说明 
  
-本文提供了有关改进、 修复和已知的问题在 Azure Stack 开发工具包 (ASDK) 的信息。 如果不确定所运行的版本，可以[使用门户检查版本](../azure-stack-updates.md#determine-the-current-version)。
+本文提供了 Azure Stack 开发工具包 (ASDK) 的改进、修复和已知问题的相关信息。 如果不确定所运行的版本，可以[使用门户检查版本](../azure-stack-updates.md#determine-the-current-version)。
 
 > 请订阅 [![RSS](./media/asdk-release-notes/feed-icon-14x14.png)](https://docs.microsoft.com/api/search/rss?search=Azure+Stack+Development+Kit+release+notes&locale=en-us#) [源](https://docs.microsoft.com/api/search/rss?search=Azure+Stack+Development+Kit+release+notes&locale=en-us#)，随时了解 ASDK 的新增功能。
 
-## <a name="build-118110101"></a>生成 1.1811.0.101
+## <a name="build-118110101"></a>内部版本 1.1811.0.101
 
 ### <a name="new-features"></a>新增功能
 
-此生成包含适用于 Azure Stack 的以下改进和修补程序：  
+此内部版本包含以下适用于 Azure Stack 的改进和修复：  
 
-- 没有一套新最低和推荐的硬件和软件要求 ASDK。 这些新建议的规范中所述[Azure Stack 部署规划注意事项](asdk-deploy-considerations.md)。 因为 Azure Stack 平台的发展演变，更多服务现已推出，并可能需要更多的资源。 更高的规格反映这些修改后的建议。
+- ASDK 有一套新的最低硬件和软件要求，以及建议的配置。 [Azure Stack 部署规划注意事项](asdk-deploy-considerations.md)中阐述了这些新的建议规范。 由于 Azure Stack 平台已经演进，现在可以使用更多的服务，此外可能需要更多的资源。 增加的规范反映了这些修订的建议。
 
 ### <a name="fixed-issues"></a>修复的问题
 
 <!-- TBD - IS ASDK --> 
-- 修复了公共 IP 地址使用计量数据显示相同的问题**EventDateTime**而不是每个记录的值**TimeDate**演示创建记录时的时间戳。 现在可以使用此数据执行的公共 IP 地址用量的准确计帐。
+- 修复了以下问题：公共 IP 地址使用计量数据针对每条记录显示相同的 **EventDateTime** 值，而不是创建记录时显示的 **TimeDate** 时间戳。 现在，可以使用此数据来执行公共 IP 地址用量的准确计帐。
 
 <!-- 3099544 – IS, ASDK --> 
-- 修复了创建新虚拟机 (VM) 使用 Azure Stack 门户时出现的问题。 选择 VM 大小时导致美元/月列以显示**不可用**消息。 此列不会再出现;显示 VM 定价的列不支持在 Azure Stack 中。
+- 修复了使用 Azure Stack 门户创建新虚拟机 (VM) 时发生的问题。 以前，选择 VM 大小会导致“美元/月”列显示“不可用”消息。 现在，此列不再显示；Azure Stack 不支持显示 VM 定价列。
 
 <!-- 2930718 - IS ASDK --> 
-- 在其中修复了管理员门户中，访问任何用户订阅的详细信息后关闭该边栏选项卡，并单击时**最近**，不显示用户订阅名称。 用户订阅名称现在出现。
+- 修复了以下问题：在管理员门户中访问用户订阅详细信息时，在关闭边栏选项卡并单击“最近”后，用户订阅名称不显示。 现在会显示用户订阅名称。
 
 <!-- 3060156 - IS ASDK --> 
-- 修复了门户管理员和用户门户： 单击门户设置并选择**删除所有设置和专用仪表板**未无法按预期工作，并显示错误通知的。 
+- 修复了管理员门户和用户门户中的以下问题：单击门户设置并选择“删除所有设置和专用仪表板”后，结果不符合预期，同时会显示错误通知。 
 
 <!-- 2930799 - IS ASDK --> 
-- 修复了门户管理员和用户门户： 下**所有服务**，该资产**DDoS 防护计划**已正确列出，而在 Azure Stack 中不可用。
+- 修复了管理员门户和用户门户中的以下问题：在“所有服务”下，资产“DDoS 防护计划”未正确列出，不过，Azure Stack 并不支持该资产。
  
 <!--2760466 – IS  ASDK --> 
-- 修复了在其中安装新的 Azure Stack 环境时出现的问题的警报，指示**需要激活**未显示。 它现在正确显示。
+- 修复了在安装新的 Azure Stack 环境时，不显示指示“需要激活”的警报的问题。 现在会显示该警报。
 
 <!--1236441 – IS  ASDK --> 
-- 修复了阻止使用 ADFS 时对用户组应用 RBAC 策略问题。
+- 修复了使用 ADFS 时阻止将 RBAC 策略应用到用户组的问题。
 
 <!--3463840 - IS, ASDK --> 
-- 由于无法访问文件服务器从公共 VIP 网络而失败的基础结构备份已修复的问题。 这一修补将移动基础结构备份服务返回到公共基础结构网络。 如果应用最新[1809年的 Azure Stack 修补程序](#azure-stack-hotfixes)解决此问题，1811年更新将不进行任何进一步的修改。 
+- 修复了由于无法从公共 VIP 网络访问文件服务器而导致基础结构备份失败的问题。 该项修复会将基础结构备份服务移回公共基础结构网络。 如果已应用解决此问题的最新 [Azure Stack 1809 修补程序](#azure-stack-hotfixes)，1811 更新将不进行任何进一步的修改。 
 
 <!-- 2967387 – IS, ASDK --> 
-- 修复了在用来登录到 Azure Stack 管理员或用户门户的帐户显示为**无法识别的用户**。 显示了此消息，如果帐户不具有任一*第一个*或*最后一个*指定名称。   
+- 修复了以下问题：登录 Azure Stack 管理员门户或用户门户时使用的帐户显示为“未识别的用户”。 如果帐户中未指定“名字”或“姓氏”，则会显示此消息。   
 
 <!--  2873083 - IS ASDK --> 
-- 修复了在哪些使用门户创建虚拟机规模集 (VMSS) 的问题*实例大小*使用 Internet Explorer 时，下拉列表中未正确加载。 此浏览器现在可正常工作。  
+- 修复了以下问题：使用门户创建虚拟机规模集 (VMSS) 时，如果使用 Internet Explorer，则“实例大小”下拉列表不会正确加载。 现在，此浏览器可正常工作。  
 
 <!-- 3190553 - IS ASDK -->
-- 修复了生成的该值指示基础结构角色实例是不可用或缩放单位节点已脱机的干扰性警报的问题。
+- 修复了以下问题：生成的干扰性警报指示某个基础结构角色实例不可用或缩放单元节点已脱机。
 
 ### <a name="known-issues"></a>已知问题
 
@@ -92,7 +93,7 @@ ms.locfileid: "53724736"
 #### <a name="compute"></a>计算 
 
 <!-- 3235634 – IS, ASDK -->
-- 若要将 Vm 部署包含的大小**v2**后缀; 例如， **Standard_A2_v2**，请指定作为后缀**Standard_A2_v2** (小写 v)。 不要使用**Standard_A2_V2** （大写 V）。 这适用于全球 Azure，在 Azure Stack 上有不一致的问题。
+- 若要部署大小包含 **v2** 后缀的 VM（例如 **Standard_A2_v2**），请将后缀指定为 **Standard_A2_v2**（小写 v）。 请勿使用 **Standard_A2_V2**（大写 V）。 这适用于全球 Azure，在 Azure Stack 上有不一致的问题。
 
 <!-- 2869209 – IS, ASDK --> 
 - 使用 [**Add-AzsPlatformImage** cmdlet](https://docs.microsoft.com/powershell/module/azs.compute.admin/add-azsplatformimage?view=azurestackps-1.4.0) 时，必须使用 **-OsUri** 参数作为存储帐户 URI（在其中上传磁盘）。 如果使用磁盘的本地路径，则此 cmdlet 会失败并显示以下错误：长时间运行的操作失败，状态为 'Failed'。 
@@ -115,18 +116,18 @@ ms.locfileid: "53724736"
    若要查找指标数据，例如 VM 的 CPU 百分比图表，请转到指标窗口并显示所有受支持的 Windows VM 来宾指标。
 
 <!-- 3507629 - IS, ASDK --> 
-- 托管的磁盘创建两个新[计算配额类型](../azure-stack-quota-types.md#compute-quota-types)来限制可以预配的托管磁盘的最大容量。 默认情况下，为每个托管的磁盘配额类型分配 GiB。 但是，您可能会遇到以下问题：
+- 托管磁盘创建了两个新的[计算配额类型](../azure-stack-quota-types.md#compute-quota-types)来限制可以预配的托管磁盘的最大容量。 默认情况下将为每个托管磁盘配额类型分配 2048 GiB。 不过，你可能会遇到以下问题：
 
-   - 对于 1808年更新之前创建的配额，托管磁盘配额将显示 0 值在管理员门户中，尽管分配 GiB。 你可以增加或减少值基于您的实际需求，并使用新设置配额值将覆盖 2048 GiB 默认值。
-   - 如果您更新的配额值为 0，相当于 GiB 的默认值。 作为一种解决方法，设置为 1 的配额值。
+   - 对于在 1808 更新之前创建的配额，托管磁盘配额在管理门户中将显示为值 0，虽然分配了 2048 GiB。 你可以根据实际需求增大或减小该值，新设置的配额值将替代 2048 GiB 默认值。
+   - 如果将配额值更新为 0，则它等效于默认值 2048 GiB。 作为一种解决方法，请将配额值设置为 1。
 
 <!-- TBD - IS ASDK --> 
-- 更新后应用 1811年，部署包含托管磁盘的 Vm 时，您可能会遇到以下问题：
+- 应用 1811 更新后，在部署包含托管磁盘的 VM 时可能会遇到以下问题：
 
-   1. 如果 1808年更新，使用托管磁盘部署 VM 之前创建的订阅可能会失败并显示内部错误消息。 若要解决此错误，请针对每个订阅执行以下步骤：
+   1. 如果订阅是在 1808 更新之前创建的，则部署具有托管磁盘的 VM 可能会失败并出现内部错误消息。 若要解决此错误，请针对每个订阅执行以下步骤：
       1. 在租户门户中转到“订阅”，找到相应订阅。 依次单击“资源提供程序”、“Microsoft.Compute”、“重新注册”。
       2. 在同一订阅下，转到“访问控制(标识和访问管理)”，验证“Azure Stack - 托管磁盘”是否已列出。
-   2. 如果已配置多租户环境中，在与来宾目录关联的订阅中部署虚拟机内部的错误消息可能会失败。 若要解决此错误，请按照中的步骤[这篇文章](../azure-stack-enable-multitenancy.md#registering-azure-stack-with-the-guest-directory)重新配置每个来宾目录。
+   2. 如果已配置多租户环境，在与来宾目录相关联的订阅中部署 VM 可能会失败并出现内部错误消息。 若要解决错误，请执行[此文章](../azure-stack-enable-multitenancy.md#registering-azure-stack-with-the-guest-directory)中的步骤来重新配置每个来宾目录。
 
 #### <a name="networking"></a>网络
 
@@ -228,7 +229,7 @@ ms.locfileid: "53724736"
 - 将分离的磁盘重新附加到具有相同名称和 LUN 的同一虚拟机 (VM) 失败，并发生类似于“无法将数据磁盘 'datadisk' 附加到 VM 'vm1'”的错误。 之所以发生该错误，是原因该磁盘目前已分离，或上次分离操作失败。 请等到磁盘完全分离后重试，或再次显式删除/分离磁盘。 解决方法是使用其他名称，或者在其他 LUN 上重新附加磁盘。 
 
 <!-- 3235634 – IS, ASDK -->
-- 若要将 Vm 部署包含的大小**v2**后缀; 例如， **Standard_A2_v2**，请指定作为后缀**Standard_A2_v2** (小写 v)。 不要使用**Standard_A2_V2** （大写 V）。 这适用于全球 Azure，Azure Stack 上的不一致。
+- 若要部署大小包含 **v2** 后缀的 VM（例如 **Standard_A2_v2**），请将后缀指定为 **Standard_A2_v2**（小写 v）。 请勿使用 **Standard_A2_V2**（大写 V）。 这适用于全球 Azure，Azure Stack 上的不一致。
 
 <!-- 3099544 – IS, ASDK --> 
 - 使用 Azure Stack 门户创建新的虚拟机 (VM) 并选择 VM 大小时，“美元/月”列在显示时会出现“不可用”消息。 此列不应显示；Azure Stack 不支持显示 VM 定价列。
@@ -460,7 +461,7 @@ ms.locfileid: "53724736"
 - 选择虚拟机大小进行虚拟机部署时，某些 F 系列 VM 大小在创建 VM 时显示的大小选择器中不可见。 选择器中不显示以下 VM 大小：*F8s_v2*、*F16s_v2*、*F32s_v2* 和 *F64s_v2*。  
   解决方法是，使用下列方法之一部署 VM。 在每种方法中，都需要指定要使用的 VM 大小。
 
-- <!-- 3099544 – IS, ASDK --> 美元/月列时创建新虚拟机 (VM) 使用 Azure Stack 门户中，并选择 VM 大小，将显示的**不可用**消息。 此列不应显示；Azure Stack 不支持显示 VM 定价列。
+- <!-- 3099544 – IS, ASDK --> 使用 Azure Stack 门户创建新的虚拟机 (VM) 并选择 VM 大小时，“美元/月”列在显示时会出现“不可用”消息。 此列不应显示；Azure Stack 不支持显示 VM 定价列。
 
 - <!-- 2869209 – IS, ASDK --> 使用 [**Add-AzsPlatformImage** cmdlet](https://docs.microsoft.com/powershell/module/azs.compute.admin/add-azsplatformimage?view=azurestackps-1.4.0) 时，必须使用 **-OsUri** 参数作为存储帐户 URI（在其中上传磁盘）。 如果使用磁盘的本地路径，则此 cmdlet 会失败并显示以下错误：长时间运行的操作失败，状态为 'Failed'。 
 

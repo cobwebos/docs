@@ -15,12 +15,13 @@ ms.topic: article
 ms.date: 11/27/2018
 ms.author: sethm
 ms.reviewer: efemmano
-ms.openlocfilehash: 80a8414d98eba984f2427f5f746cd0e1061248a4
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.lastreviewed: 11/27/2018
+ms.openlocfilehash: c28fce9c6c9d7b0ddeba54e1ba643817436adb4e
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53726901"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55244957"
 ---
 # <a name="region-management-in-azure-stack"></a>Azure Stack 中的区域管理
 
@@ -38,7 +39,7 @@ Azure Stack 在“区域管理”磁贴中提供了一组区域管理功能。 A
 
 如果单击“区域管理”磁贴中的一个区域，可以访问以下信息：
 
-[ ![区域管理边栏选项卡上的窗格的说明](media/azure-stack-region-management/regionssm.png "区域管理边栏选项卡") ](media/azure-stack-region-management/regions.png#lightbox)
+[ ![“区域管理”边栏选项卡上的窗格的说明](media/azure-stack-region-management/regionssm.png "“区域管理”边栏选项卡") ](media/azure-stack-region-management/regions.png#lightbox)
 
 1. **资源菜单**。 访问特定的基础结构管理领域，以及查看和管理用户资源，例如存储帐户和虚拟网络。
 
@@ -50,7 +51,7 @@ Azure Stack 在“区域管理”磁贴中提供了一组区域管理功能。 A
 
 5. **基础结构角色**。 运行 Azure Stack 时所需的组件。 仅报告警报的基础结构角色会列出。 通过选择角色，可以查看与角色关联的警报，以及运行此角色的角色实例。
 
-6. Properties。 注册状态和你的环境中的区域管理边栏选项卡的详细信息。 状态可以是**Registered**或**未注册**。 如果注册，它还显示的 Azure 订阅 ID，用于注册 Azure Stack，以及注册的资源组和名称。
+6. Properties。 “区域管理”边栏选项卡中的环境注册状态和详细信息。 状态可能是“已注册”，也可能是“未注册”。 如果是已注册，则还会显示用于注册 Azure Stack 的 Azure 订阅 ID，以及注册资源组和名称。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -15,12 +15,13 @@ ms.topic: article
 ms.date: 09/17/2018
 ms.author: jeffgilb
 ms.reviewer: thoroet
-ms.openlocfilehash: ff068ff5aa4401a80f2220df79fdac93db21cfb3
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.lastreviewed: 09/17/2018
+ms.openlocfilehash: d35d3bb32f9afabb0e2b02f0d93fc60e0121e9ce
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54232866"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55247640"
 ---
 # <a name="add-additional-scale-unit-nodes-in-azure-stack"></a>在 Azure Stack 中添加更多的缩放单元节点
 
@@ -130,16 +131,16 @@ Azure Stack 操作员可以通过添加更多的物理计算机来提高现有�
 ## <a name="troubleshooting"></a>故障排除
 下面是添加节点时的常见问题。 
 
-**方案 1:** 添加缩放单位节点操作将失败，但一个或多个节点列出且状态为已停止。  
+**场景 1：** 添加缩放单位节点操作将失败，但一个或多个节点列出且状态为已停止。  
 - 补救措施：使用修复操作修复一个或多个节点。 一次只能运行一个修复操作。
 
-**方案 2:** 一个或多个缩放单位节点已添加但存储扩展失败。 在这种情况下，缩放单元节点对象报告的状态为“正在运行”，但“配置存储”任务未启动。  
+**场景 2：** 一个或多个缩放单位节点已添加但存储扩展失败。 在这种情况下，缩放单元节点对象报告的状态为“正在运行”，但“配置存储”任务未启动。  
 - 补救措施：使用特权终结点来通过运行以下 PowerShell cmdlet 查看存储运行状况：
   ```powershell
      Get-VirtualDisk -CimSession s-cluster | Get-StorageJob
   ```
  
-**方案 3:** 你收到警报，指示存储向外缩放作业失败。  
+**场景 3：** 你收到警报，指示存储向外缩放作业失败。  
 - 补救措施：在这种情况下，存储配置任务已失败。 此问题需要联系支持部门。
 
 

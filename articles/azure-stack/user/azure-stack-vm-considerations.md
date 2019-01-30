@@ -14,12 +14,13 @@ ms.topic: article
 ms.date: 12/19/2018
 ms.author: mabrigg
 ms.reviewer: kivenkat
-ms.openlocfilehash: bfe53ac99ae1719deeacc156b250fe5a7f87a99a
-ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
+ms.lastreviewed: 12/19/2018
+ms.openlocfilehash: 421e3bf4465f5aa9aafc4ad666af2178faedb7c3
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54913441"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55245950"
 ---
 # <a name="considerations-for-using-virtual-machines-in-azure-stack"></a>在 Azure Stack 中使用虚拟机时的注意事项
 
@@ -53,7 +54,7 @@ Azure Stack 施加了一些资源限制，以避免资源（服务器本地和�
 
 下表列出了 Azure Stack 支持的 VM 及其配置：
 
-| 类型           | 大小          | 支持的大小范围 |
+| Type           | 大小          | 支持的大小范围 |
 | ---------------| ------------- | ------------------------ |
 |常规用途 |基本 A        |[A0 - A4](azure-stack-vm-sizes.md#basic-a)                   |
 |常规用途 |标准 A     |[A0 - A7](azure-stack-vm-sizes.md#standard-a)              |
