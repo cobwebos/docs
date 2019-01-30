@@ -3,19 +3,19 @@ title: 在 Azure Active Directory B2C 中管理用户访问 | Microsoft Docs
 description: 了解如何使用 Azure AD B2C 识别未成年人、收集出生日期和国家/地区数据，以及让用户在应用程序中接受使用条款。
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/24/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 6709fb8ae328f749b367c58f95b8a9ef8da9bc65
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: 982587fa7da41ea1de5fd11bb054f87039596da1
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42142058"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54852025"
 ---
 # <a name="manage-user-access-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中管理用户访问
 
@@ -34,9 +34,9 @@ ms.locfileid: "42142058"
 
 如果已将某个用户识别为未成年人，则你可以将 Azure AD B2C 中的用户流设置为以下三个选项之一：
 
-- **将签名的 JWT id_token 发回到应用程序**：在目录中注册用户，并将令牌返回到应用程序。 然后，应用程序将通过应用企业规则继续运行。 例如，应用程序可能继续采取家长同意过程。 若要使用此方法，请选择从应用程序接收 **ageGroup** 和 **consentProvidedForMinor** 声明。
+- **将已签名的 JWT id_token 发回到应用程序**：在目录中注册用户，并将令牌返回到应用程序。 然后，应用程序将通过应用企业规则继续运行。 例如，应用程序可能继续采取家长同意过程。 若要使用此方法，请选择从应用程序接收 **ageGroup** 和 **consentProvidedForMinor** 声明。
 
-- **将未签名的 JSON 令牌发送到应用程序**：Azure AD B2C 让应用程序知道用户是未成年人，并提供该用户的家长同意状态。 然后，应用程序将通过应用企业规则继续运行。 JSON 令牌不会在应用程序中成功完成身份验证。 应用程序必须根据 JSON 令牌中包含的声明处理未经身份验证的用户，这些声明可能包括 **name**、**email**、**ageGroup** 和 **consentProvidedForMinor**。
+- **将未签名的 JSON 令牌发送到应用程序**：Azure AD B2C 告知应用程序，用户是未成年人，并提供该用户的家长同意状态。 然后，应用程序将通过应用企业规则继续运行。 JSON 令牌不会在应用程序中成功完成身份验证。 应用程序必须根据 JSON 令牌中包含的声明处理未经身份验证的用户，这些声明可能包括 **name**、**email**、**ageGroup** 和 **consentProvidedForMinor**。
 
 - **阻止用户**：如果用户是未成年人，并且未获得家长同意，则 Azure AD B2C 可以告知该用户他（她）已被阻止。 不会颁发令牌，访问将被阻止，并且不会在注册旅程期间创建用户帐户。 若要实现此通知，可以提供适当的 HTML/CSS 内容页来告知用户，并显示相应的选项。 应用程序不需要对新的注册采取进一步的措施。
 
@@ -56,7 +56,7 @@ ms.locfileid: "42142058"
 
 5. 未成年人或成人撤消同意时，可以使用 Azure AD 图形 API 将 **consentProvidedForMinor** 更改为 **denied**。 或者，应用程序可以选择删除已撤消其同意的未成年人。 可以选择性地自定义用户流，让经过身份验证的未成年人（或使用未成年人帐户的家长）撤消同意。 Azure AD B2C 将 **consentProvidedForMinor** 记录为 **denied**。
 
-有关 **legalAgeGroupClassification**、**consentProvidedForMinor** 和 **ageGroup** 的详细信息，请参阅[用户资源类型](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/user)。 有关自定义属性的详细信息，请参阅[使用自定义属性来收集有关用户的信息](active-directory-b2c-reference-custom-attr.md)。 使用 Azure AD 图形 API 解决扩展属性时，必须使用长版本的属性，例如 *extension_18b70cf9bb834edd8f38521c2583cd86_dateOfBirth*: *2011-01-01T00:00:00Z*。
+有关 **legalAgeGroupClassification**、**consentProvidedForMinor** 和 **ageGroup** 的详细信息，请参阅[用户资源类型](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/user)。 有关自定义属性的详细信息，请参阅[使用自定义属性来收集有关用户的信息](active-directory-b2c-reference-custom-attr.md)。 使用 Azure AD 图形 API 解决扩展属性时，必须使用长版本的属性，例如 extension_18b70cf9bb834edd8f38521c2583cd86_dateOfBirth**:2011-01-01T00:00:00Z。
 
 ## <a name="gather-date-of-birth-and-country-data"></a>收集出生日期和国家/地区数据
 
