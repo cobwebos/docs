@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 865f7421172c3302333b1cbf465f66806b296759
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 4581173f142170248a48d99683804bdb67f1703e
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53314374"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55250668"
 abstract:
   description: 了解如何使用这些 Azure 机器学习产品在应用和网站中构建智能算法。  教程、快速入门、API 参考和示例演示了操作方法。
 documentType: LandingData
@@ -12,7 +12,7 @@ metadata:
   author: j-martens
   description: 了解如何将智能算法构建到应用、网站和机器人中，从而使它们通过自然的沟通方式观察、倾听、说出和理解用户需求。 教程、快速入门、API 参考和示例演示了操作方法。
   ms.author: jmartens
-  ms.component: core
+  ms.subservice: core
   ms.date: 12/04/2018
   ms.devlang: na
   ms.service: machine-learning
@@ -26,7 +26,7 @@ sections:
     columns: 2
     items:
     - href: /azure/machine-learning/service/overview-what-is-azure-ml
-      html: <p>了解该服务如何使用 Azure CLI 和 Python 工具和库以及各种 Azure 数据和计算服务，使<br/> 数据科学家得以实现 AI 解决方案的开发和管理。 了解详细信息...</p>
+      html: <p>了解该服务如何使用 CLI 和 Python 工具和库以及各种 Azure 数据和计算服务，使<br/> 数据科学家得以实现 AI 解决方案的开发和管理。 了解详细信息...</p>
       image:
         src: /azure/machine-learning/media/index/i_machine-learning.svg
       title: Azure 机器学习服务
