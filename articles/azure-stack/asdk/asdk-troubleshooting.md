@@ -15,12 +15,13 @@ ms.topic: article
 ms.date: 10/15/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: 3caa45064c41b641aa913e210aa698d818d5355e
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.lastreviewed: 10/15/2018
+ms.openlocfilehash: 2111fe6a70f45559faeb3e0f8096548dcc7b48bc
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52970257"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55238935"
 ---
 # <a name="microsoft-azure-stack-development-kit-asdk-troubleshooting"></a>Microsoft Azure Stack 开发工具包 (ASDK) 故障排除
 本文档提供 ASDK 的一般故障排除信息。 如果本文未阐述你所遇到的问题，请务必查看 [Azure Stack MSDN 论坛](https://social.msdn.microsoft.com/Forums/azure/home?forum=azurestack)以获取更多帮助和信息。  

@@ -15,12 +15,13 @@ ms.topic: article
 ms.date: 09/05/2018
 ms.author: jeffgilb
 ms.reviewer: hectorl
-ms.openlocfilehash: 08335f676437a32aa2240298be4680633eff16ba
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.lastreviewed: 09/05/2018
+ms.openlocfilehash: 0fed6751d326c5da4431e953f7ded9c12688871f
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47432964"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55250038"
 ---
 # <a name="back-up-azure-stack"></a>备份 Azure Stack
 
@@ -38,15 +39,15 @@ ms.locfileid: "47432964"
 ```
 
 ### <a name="start-azure-stack-backup-with-job-progress-tracking"></a>启动 Azure Stack 备份，并进行作业进度跟踪
-用于启动新的备份和 Start-azsbackup **-AsJob**参数并将其保存为一个变量以跟踪备份作业进度。
+使用带 **-AsJob** 参数的 Start-AzSBackup 启动新备份，并将其另存为变量以跟踪备份作业进度。
 
 > [!NOTE]
-> 备份作业将显示为已成功大约 10-15 分钟才能完成该作业将在门户中完成。
+> 备份作业将在作业完成前约 10-15 分钟在门户中显示为成功完成。
 >
-> 因此，通过下面的代码更好地观察到的实际状态。
+> 因此，通过下面的代码可以更好地观察实际状态。
 
 > [!IMPORTANT]
-> 初始 1 毫秒延迟引入了，因为代码太快了正确注册该作业且不带回来**PSBeginTime**和不带反过来**状态**的作业。
+> 最初引入了 1 毫秒延迟是因为代码执行太快，无法正确注册作业，它返回时不带 **PSBeginTime**，从而不带作业的**状态**。
 
 ```powershell
     $BackupJob = Start-AzsBackup -Force -AsJob
@@ -114,7 +115,7 @@ ms.locfileid: "47432964"
 使用 Azure Stack 管理门户按照以下步骤验证备份是否已成功完成：
 
 1. 打开 [Azure Stack 管理门户](azure-stack-manage-portals.md)。
-2. 选择**所有服务**，然后在**管理**类别中，选择 >**基础结构备份**。 在“基础结构备份”边栏选项卡中选择“配置”。
+2. 选择“所有服务”，然后在“管理”类别下选择“基础结构备份”。 在“基础结构备份”边栏选项卡中选择“配置”。
 3. 在“可用备份”列表中查找备份的**名称**和**完成日期**。
 4. 验证**状态**是否为“成功”。
 
