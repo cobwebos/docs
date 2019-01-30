@@ -13,13 +13,14 @@ ms.topic: article
 ms.date: 11/26/2018
 ms.author: mabrigg
 ms.reviewer: johnhas
+ms.lastreviewed: 11/26/2018
 ROBOTS: NOINDEX
-ms.openlocfilehash: 0fb1afb1a07b31f7e261c958b8a03bec3b299433
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: a6fea6962c5e8864398cd80635d997407cf1d22e
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54245287"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55250293"
 ---
 # <a name="troubleshoot-validation-as-a-service"></a>对验证作为服务进行故障排除
 

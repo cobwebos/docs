@@ -78,7 +78,7 @@ Microsoft Translator V3 的定价方式与 V2 相同：按字符（包括空格�
 | Languages     | 未提交任何字符：不计算字符数，免费。          |
 | Translate     | 根据提交翻译的字符数，以及字符要翻译成的语言数来统计费用。 如果提交了 50 个字符并 5 请求翻译成 5 种语言，则费用是 50x5。           |
 | Transliterate     | 根据提交音译的字符数统计费用。         |
-| Dictionary lookup & example     | 根据提交请求字典查找和示例的字符数统计费用。         |
+| Dictionary lookup &amp; example     | 根据提交请求字典查找和示例的字符数统计费用。         |
 | BreakSentence     | 免费。       |
 | Detect     | 免费。      |
 

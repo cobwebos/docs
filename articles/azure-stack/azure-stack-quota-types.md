@@ -1,6 +1,6 @@
 ---
 title: Azure Stack 中的配额类型 | Microsoft Docs
-description: 查看和编辑适用于服务和 Azure Stack 中的资源的不同配额类型。
+description: 查看和编辑可用于 Azure Stack 中的服务和资源的不同配额类型。
 services: azure-stack
 documentationcenter: ''
 author: sethmanheim
@@ -15,12 +15,13 @@ ms.topic: get-started-article
 ms.date: 12/07/2018
 ms.author: sethm
 ms.reviewer: xiaofmao
-ms.openlocfilehash: c5b3be1d5b047e77b12d22fd5d24cbc42d88f783
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.lastreviewed: 12/07/2018
+ms.openlocfilehash: 88cbfc895d188162d0f242a5aceaab721a6c877f
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53715643"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55239089"
 ---
 # <a name="quota-types-in-azure-stack"></a>Azure Stack 中的配额类型
 
@@ -64,44 +65,44 @@ ms.locfileid: "53715643"
 
 ## <a name="view-an-existing-quota"></a>查看现有配额
 
-有两种不同方式查看现有配额：
+可以通过两种不同的方式查看现有配额：
 
 ### <a name="plans"></a>计划
 
-1.  在管理员门户的左侧的导航窗格中，选择**计划**。
-2.  选择你想要查看详细信息，通过单击其名称的计划。
-3.  在打开的边栏选项卡，选择**服务和配额**。
-4.  选择你想要通过单击中查看的配额**名称**列。
+1.  在管理员门户的左侧导航窗格中，选择“计划”。
+2.  单击要查看其详细信息的计划的名称，将其选中。
+3.  在打开的边栏选项卡中，选择“服务和配额”。
+4.  在“名称”列中单击要查看的配额，将其选中。
 
     [ ![配额](media/azure-stack-quota-types/quotas1sm.png "查看配额") ](media/azure-stack-quota-types/quotas1.png#lightbox)
 
 ### <a name="resource-providers"></a>资源提供程序
 
 1. 在管理门户的默认仪表板上，找到“资源提供程序”磁贴。
-2. 选择与想要查看，如配额的服务**计算**，**网络**，或**存储**。
+2. 选择要查看其配额的服务，例如“计算”、“网络”或“存储”。
 3. 选择“配额”，然后选择要查看的配额。
 
 ## <a name="edit-a-quota"></a>编辑配额
 
-有两种不同方式编辑配额：
+可以通过两种不同的方式编辑配额：
 
 ### <a name="edit-a-plan"></a>编辑计划
 
-1.  在管理员门户的左侧的导航窗格中，选择**计划**。
-2.  选择要编辑配额，通过单击其名称的计划。
-3.  在打开的边栏选项卡，选择**服务和配额**。
-4.  选择你想要通过单击中编辑的配额**名称**列。
+1.  在管理员门户的左侧导航窗格中，选择“计划”。
+2.  单击要编辑其配额的计划的名称，将其选中。
+3.  在打开的边栏选项卡中，选择“服务和配额”。
+4.  在“名称”列中单击要编辑的配额，将其选中。
     [ ![配额](media/azure-stack-quota-types/quotas1sm.png "查看配额") ](media/azure-stack-quota-types/quotas1.png#lightbox)
 
-5.  在打开的边栏选项卡，选择**在计算中编辑**，**在网络中编辑**，或**在存储中编辑**。
+5.  在打开的边栏选项卡中，选择“在计算中编辑”、“在网络中编辑”或“在存储中编辑”。
     ![配额](media/azure-stack-quota-types/quotas3.png "查看配额")    
 
-此外，您可以按照此过程来编辑配额：
+或者，可以按照以下过程来编辑配额：
 
-1. 在管理员门户的默认仪表板中，找到**资源提供程序**磁贴。
+1. 在管理员门户的默认仪表板上，找到“资源提供程序”磁贴。
 2. 选择要修改其配额的服务，例如“计算”、“网络”或“存储”。
 3. 接下来选择“配额”，然后选择要更改的配额。
-4. 上**设置存储配额**，**设置计算配额**，或**设置网络配额**窗格 （具体取决于您选择要编辑的配额类型），需要编辑这些值，然后选择**保存**。
+4. 在“设置存储配额”、“设置计算配额”或“设置网络配额”窗格（具体取决于选择进行编辑的配额的类型）中编辑值，然后选择“保存”。
 
 ### <a name="edit-original-configuration"></a>编辑原始配置
   
