@@ -1,10 +1,10 @@
 ---
-title: Azure Active Directory 域服务：部署方案 | Microsoft 文档
+title: Azure Active Directory 域服务：部署方案 | Microsoft Docs
 description: Azure AD 域服务的部署方案
 services: active-directory-ds
 documentationcenter: ''
 author: eringreenlee
-manager: mtillman
+manager: daveba
 editor: curtand
 ms.assetid: c5216ec9-4c4f-4b7e-830b-9d70cf176b20
 ms.service: active-directory
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/21/2017
 ms.author: ergreenl
-ms.openlocfilehash: b660bb2675332612b73879e95b89ace9c7714bbf
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 80b0ecade7183a015656e1e6e77d08876a8df116
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50155280"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54855119"
 ---
 # <a name="deployment-scenarios-and-use-cases"></a>部署方案和用例
 本部分探讨一些可以受益于 Azure Active Directory (AD) 域服务的部署方案和用例。

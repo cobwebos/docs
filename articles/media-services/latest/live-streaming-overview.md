@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 01/15/2019
+ms.date: 01/22/2019
 ms.author: juliako
-ms.openlocfilehash: 91e24fb274c1f9895046e8e2e7d760d02d196ccd
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: 3be7ad84cf0d45276c136465d7247ec43621aceb
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54354172"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54810952"
 ---
 # <a name="live-streaming-with-azure-media-services-v3"></a>使用 Azure 媒体服务 v3 实时传送视频流
 
@@ -34,23 +34,32 @@ ms.locfileid: "54354172"
 
 下面是实时传送视频流工作流的步骤：
 
-1. 创建**实时事件**。
-2. 创建新的**资产**对象。
-3. 创建**实时输出**并使用创建的资产名称。
-4. 若要使用 DRM 加密内容，请创建**流式处理策略**和**内容密钥**。
-5. 如果不使用 DRM，则使用内置的**流式处理策略**类型创建**流式处理定位器**。
-6. 列出**流式处理策略**的路径，以取回要使用的 URL（这些是确定性的）。
-7. 获取要从中流式传输的**流式处理终结点**的主机名（确保该流式处理终结点正在运行）。 
-8. 将步骤 6 中的 URL 与步骤 7 中的主机名合并，以获取完整的 URL。
-9. 如果希望停止查看**实时事件**，则需要通过删除**流式处理定位器**来停止流式传输事件。
+1. 确保 StreamingEndpoint 正在运行。 
+2. 创建 LiveEvent。 
+  
+    创建事件时，可以将其启动方式指定为自动启动。 或者，可以在准备好开始流式传输后，启动事件。<br/> 如果将 autostart 设置为 true，则实时事件会在创建后立即启动。 这意味着，只要运行实时事件，就会开始计费。 你必须显式对 LiveEvent 资源调用停止操作才能停止进一步计费。 有关详细信息，请参阅 [LiveEvent 状态和计费](live-event-states-billing.md)。
+3. 获取引入 URL 并配置本地编码器以使用 URL 发送贡献源。<br/>请参阅[推荐的实时编码器](recommended-on-premises-live-encoders.md)。
+4. 获取预览 URL 并使用它验证来自编码器的输入是否实际接收。
+5. 创建新的**资产**对象。
+6. 创建 LiveOutput 并使用创建的资产名称。
 
-有关详细信息，请参阅基于 [Live .NET Core](https://github.com/Azure-Samples/media-services-v3-dotnet-core-tutorials/tree/master/NETCore/Live) 示例的[实时传送视频流教程](stream-live-tutorial-with-api.md)。
+     LiveOutput 会将流存档到资产中。
+7. 使用内置“流式处理策略”类型创建流式处理定位器。
+
+    如果想要加密内容，请查看[内容保护概述](content-protection-overview.md)。
+8. 列出流式处理定位器的路径，以取回要使用的 URL（这些是确定性的）。
+9. 获取要从中流式传输的“流式处理终结点”的主机名。
+10. 将步骤 8 中的 URL 与步骤 9 中的主机名合并，获取完整的 URL。
+11. 如果希望停止查看“实时事件”，则需要停止流式传输事件并删除“流式处理定位器”。
+
+有关详细信息，请参阅[实时传送视频流教程](stream-live-tutorial-with-api.md)。
 
 ## <a name="overview-of-main-components"></a>主要组件概述
 
 若要使用媒体服务传送点播流或实时流，至少需要一个 [StreamingEndpoint](https://docs.microsoft.com/rest/api/media/streamingendpoints)。 创建媒体服务帐户时，会将一个处于“已停止”状态的**默认** StreamingEndpoint 添加到帐户。 需要启动该 StreamingEndpoint，然后可从中向观看者流式传输内容。 可以使用默认的 **StreamingEndpoint**，或使用所需的配置和 CDN 设置创建另一个自定义的 **StreamingEndpoint**。 可根据需要启用多个 StreamingEndpoint，其中每个 StreamingEndpoint 面向不同的 CDN，并提供唯一的主机名用于传送内容。 
 
-在媒体服务中，[LiveEvent](https://docs.microsoft.com/rest/api/media/liveevents) 负责引入和处理实时视频源。 创建 LiveEvent 时，会创建一个输入终结点，可以使用它来从远程编码器发送实时信号。 远程实时编码器使用 [RTMP](https://www.adobe.com/devnet/rtmp.html) 或[平滑流式处理](https://msdn.microsoft.com/library/ff469518.aspx)（分段 MP4）协议将贡献源发送到该输入终结点。 对于平滑流式处理引入协议，支持的 URL 方案为 `http://` 或 `https://`。 对于 RTMP 引入协议，支持的 URL 方案为 `rtmp://` 或 `rtmps://`。 有关详细信息，请参阅[建议的实时传送视频流编码器](recommended-on-premises-live-encoders.md)。
+在媒体服务中，[LiveEvent](https://docs.microsoft.com/rest/api/media/liveevents) 负责引入和处理实时视频源。 创建 LiveEvent 时，会创建一个输入终结点，可以使用它来从远程编码器发送实时信号。 远程实时编码器使用 [RTMP](https://www.adobe.com/devnet/rtmp.html) 或[平滑流式处理](https://msdn.microsoft.com/library/ff469518.aspx)（分段 MP4）协议将贡献源发送到该输入终结点。 对于平滑流式处理引入协议，支持的 URL 方案为 `http://` 或 `https://`。 对于 RTMP 引入协议，支持的 URL 方案为 `rtmp://` 或 `rtmps://`。 有关详细信息，请参阅[建议的实时传送视频流编码器](recommended-on-premises-live-encoders.md)。<br/>
+创建实时事件时，可以使用以下格式之一指定允许的 IP 地址：具有 4 个数字、CIDR 地址范围的 IpV4 地址。
 
 一旦 **LiveEvent** 开始接收贡献源，你就可以使用其预览终结点（预览 URL）进行预览，并在进一步发布之前验证是否可以收到实时流。 确认预览流正常后，可以使用 LiveEvent 来确保可以通过一个或多个（预先创建的）**StreamingEndpoint** 传送实时流。 为此，需针对 **LiveEvent** 创建新的 [LiveOutput](https://docs.microsoft.com/rest/api/media/liveoutputs)。 
 
@@ -62,14 +71,7 @@ ms.locfileid: "54354172"
 
 还可根据需要应用动态筛选，以便控制发送到播放器的篇目数目、格式、比特率和呈现时间窗口。 有关详细信息，请参阅[筛选器和动态清单](filters-dynamic-manifest-overview.md)。
 
-### <a name="new-capabilities-for-live-streaming-in-v3"></a>v3 中实时传送视频流的新功能
-
-使用媒体服务的 v3 API 可受益于以下新功能：
-
-- 新的低延迟模式。 有关详细信息，请参阅[延迟](live-event-latency.md)。
-- 改进的 RTMP 支持（提高了稳定性并提供了更多的源编码器支持）。
-- RTMPS 安全引入。<br/>创建 LiveEvent 时，将获得 4 个引入 URL。 这 4 个引入 URL 几乎是相同的，具有相同的流式处理令牌 (AppId)，仅端口号部分不同。 其中两个 URL 是 RTMPS 的主要和备份 URL。   
-- 使用媒体服务将单比特率贡献源转码为具有多比特率的输出流时，可以流式传输最长 24 小时的实时事件。 
+有关 v3 中实时传送视频流的新功能的信息，请参阅[从媒体服务 v2 迁移到 v3 的迁移指南](migrate-from-v2-to-v3.md)。
 
 ## <a name="liveevent-types"></a>LiveEvent 类型
 
@@ -106,9 +108,9 @@ ms.locfileid: "54354172"
 使用 [LiveOutput](https://docs.microsoft.com/rest/api/media/liveoutputs) 可以控制传出实时流的属性，例如，记录的流数量（如云 DVR 的容量），以及观看者是否可以开始观看实时流。 **LiveEvent** 及其 **LiveOutput** 之间的关系类似于传统的电视广播，其中的频道 (**LiveEvent**) 表示恒定的视频流，录制 (**LiveOutput**) 限定为特定的时间分段（例如，下午 6:30 到 7:00 的晚间新闻）。 可以使用数字视频录像机 (DVR) 录制电视节目 – LiveEvents 中的等效功能是通过 ArchiveWindowLength 属性管理的。 它是一个 ISO-8601 时间跨度持续时间（例如 PTHH:MM:SS），指定 DVR 的容量，最小可设置为 3 分钟，最大为 25 小时。
 
 > [!NOTE]
-> **LiveOutput** 在创建时启动，在删除后停止。 删除 **LiveOutput** 不会删除基础**资产**和该资产中的内容。 
+> **LiveOutput** 在创建时启动，在删除后停止。 删除 LiveOutput 不会删除基础资产和该资产中的内容。 
 >
-> 如果已在 **LiveOutput** 的资产上发布了**流式处理定位器**，则事件（最长可达 DVR 窗口长度）将继续可查看，直到**流式处理定位器**结束时或删除定位器时为止，具体取决于哪一时间先到。   
+> 如果已使用 StreamingLocator 发布了 LiveOutput 资产，则 LiveEvent（长达 DVR 窗口长度）将继续可见，直到 StreamingLocator 过期或被删除（以先发生为准）。
 
 有关详细信息，请参阅[使用云 DVR](live-event-cloud-dvr.md)。
 

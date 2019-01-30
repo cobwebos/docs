@@ -4,7 +4,7 @@ description: 介绍可以如何使用 Azure AD 进行自动化设置、取消设
 services: active-directory
 documentationcenter: ''
 author: barbkess
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.component: app-mgmt
 ms.devlang: na
@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 07/30/2018
 ms.author: barbkess
 ms.reviewer: asmalser
-ms.openlocfilehash: ac58c6b951a03b403375fdc17dcd45f8e624deac
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: edd8e08ee20e7e6331701b55b3d58ebad3848408
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52311447"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54478478"
 ---
 # <a name="automate-user-provisioning-and-deprovisioning-to-saas-applications-with-azure-active-directory"></a>Azure Active Directory SaaS 应用程序的自动化用户预配和取消预配
 
@@ -62,7 +62,7 @@ Azure Active Directory (Azure AD) 允许用户自动创建、维护和删除云 
 ![出站预配](./media/user-provisioning/provisioning1.PNG)
 *图 2：从 Azure AD 到常见 SaaS 应用程序的“出站”用户预配工作流*
 
-![入站预配](./media/user-provisioning/provisioning2.PNG)
+![出站预配](./media/user-provisioning/provisioning2.PNG)
 *图 3：从常见人力资本管理 (HCM) 应用程序到 Azure Active Directory 和 Windows Server Active Directory 的“入站”用户预配工作流*
 
 
@@ -103,7 +103,7 @@ Azure AD 功能预先集成了对多种常见 SaaS 应用和人力资源系统�
 
 * 必须为 Azure AD 预配服务提供“管理员凭据”，使其能够连接到应用程序提供的用户管理 API。 还可以在此部分中启用电子邮件通知，以便在凭据失败，或者预配作业进入[隔离区](#quarantine)时发送通知。
 
-* 可以配置“属性映射”，用于指定要将源系统（例如 Azure AD）中的哪些字段内容同步到目标系统（例如 ServiceNow）中的哪些字段。 除了用户帐户的预配以外，还可在本部分中选择性地配置组的预配（如果目标应用程序支持这样做）。 使用“匹配的属性”可以选择要将哪些字段用于匹配系统之间的帐户。 使用 [表达式](functions-for-customizing-application-data.md)”可先修改和转换从源系统检索的值，然后将其写入目标系统。 有关详细信息，请参阅[自定义属性映射](customize-application-attributes.md)。
+* **属性映射**配置用于指定源系统（示例：Azure AD）中的哪些字段要将内容同步到目标系统中的哪些字段（示例：ServiceNow）。 除了用户帐户的预配以外，还可在本部分中选择性地配置组的预配（如果目标应用程序支持这样做）。 使用“匹配的属性”可以选择要将哪些字段用于匹配系统之间的帐户。 使用 [表达式](functions-for-customizing-application-data.md)”可先修改和转换从源系统检索的值，然后将其写入目标系统。 有关详细信息，请参阅[自定义属性映射](customize-application-attributes.md)。
 
 ![设置](./media/user-provisioning/provisioning_settings1.PNG)
 

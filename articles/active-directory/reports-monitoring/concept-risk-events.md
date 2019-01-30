@@ -4,7 +4,7 @@ description: 本文详细概述了风险事件。
 services: active-directory
 keywords: azure active directory identity protection , 安全性, 风险, 风险级别, 漏洞, 安全策略
 author: priyamohanram
-manager: mtillman
+manager: daveba
 ms.assetid: fa2c8b51-d43d-4349-8308-97e87665400b
 ms.service: active-directory
 ms.workload: identity
@@ -15,12 +15,12 @@ ms.component: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 4bca7ed2f10ce6b0231a260a9cf5b7468476343f
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.openlocfilehash: 7c352b92edede8bb986a00d5db846bda7b299df2
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53652143"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54808079"
 ---
 # <a name="azure-active-directory-risk-events"></a>Azure Active Directory 风险事件
 
@@ -44,6 +44,9 @@ ms.locfileid: "53652143"
 - [从不熟悉的位置登录](#sign-in-from-unfamiliar-locations) 
 
 ![风险事件](./media/concept-risk-events/91.png)
+
+> [!IMPORTANT]
+> 有时，可能会在[登录报表](concept-sign-ins.md)中发现没有相应登录输入的风险事件。 这是因为“身份保护”评估“交互式”和“非交互式”登录的风险，而登录报表只显示交互式登录。
 
 从检测到的风险事件获得的见解会绑定到 Azure AD 订阅。 
 

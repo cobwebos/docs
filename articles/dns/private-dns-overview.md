@@ -5,14 +5,14 @@ services: dns
 author: vhorne
 ms.service: dns
 ms.topic: article
-ms.date: 1/10/2019
+ms.date: 1/23/2019
 ms.author: victorh
-ms.openlocfilehash: e426e38ce5366f7c0d8b8bc20a639d827ea9e261
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: 4b5b98b5695901ca6d136682e454f059f157b743
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54200508"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54826473"
 ---
 # <a name="use-azure-dns-for-private-domains"></a>将 Azure DNS 用于专用域
 
@@ -64,9 +64,9 @@ Azure DNS 提供以下功能：
 Azure DNS 具有以下限制：
 
 * 只允许在每个专用区域中使用 1 个“注册”虚拟网络。
-* 最多允许在每个专用区域中使用 10 个“解析”虚拟网络。
+* 最多允许在每个专用区域中使用 10 个“解析”虚拟网络。 当此功能正式发行时，将删除此限制。
 * 一个特定的虚拟网络只能作为注册虚拟网络链接到 1 个专用区域。
-* 一个特定的虚拟网络可以作为解析虚拟网络链接到最多 10 个专用区域。
+* 一个特定的虚拟网络可以作为解析虚拟网络链接到最多 10 个专用区域。 当此功能正式发行时，将删除此限制。
 * 如果指定了注册虚拟网络，则无法通过 Azure Powershell 和 Azure CLI API 查看或检索注册到专用区域的虚拟网络中的 VM 的 DNS 记录。 VM 记录确实已注册并且会成功解析。
 * 反向 DNS 仅适用于注册虚拟网络中的专用 IP 空间。
 * 未注册到专用区域中的专用 IP（例如，作为解析虚拟网络链接到专用区域的虚拟网络中的虚拟机专用 IP）的反向 DNS 将返回 *internal.cloudapp.net* 作为 DNS 后缀。 但此后缀不可解析。

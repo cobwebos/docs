@@ -3,18 +3,18 @@ title: 在空闲时间启动/停止 VM 解决方案
 description: VM 管理解决方案可按计划启动和停止 Azure 资源管理器虚拟机，并通过 Log Analytics 进行主动监视。
 services: automation
 ms.service: automation
-ms.component: process-automation
+ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
 ms.date: 10/04/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 5f5c86a90325c9a6dcd521a97cb899b88b55198d
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: d9dfc70c7158c5f808367b8b2041725b03b9060d
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53194260"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54846177"
 ---
 # <a name="startstop-vms-during-off-hours-solution-in-azure-automation"></a>Azure 自动化中的在空闲时间启动/停止 VM 解决方案
 
@@ -59,7 +59,7 @@ ms.locfileid: "53194260"
    ![VM 管理中的“添加解决方案”页面](media/automation-solution-vm-management/azure-portal-add-solution-01.png)
 
 4. 在“添加解决方案”页面上，选择“工作区”。 选择链接到自动化帐户所在的同一个 Azure 订阅的 Log Analytics 工作区。 如果没有工作区，请选择“新建工作区”。 在“Log Analytics 工作区”页上，执行以下步骤：
-   - 指定新 **Log Analytics 工作区**的名称。
+   - 为新的 **Log Analytics 工作区**指定名称，例如“ContosoLAWorkspace”。
    - 如果选择的默认值不合适，请从下拉列表中选择要链接到的**订阅**。
    - 对于“资源组”，可以创建新资源组，或选择现有的资源组。
    - 选择“位置” 。 目前可用的位置仅为：澳大利亚东南部、加拿大中部、印度中部、美国东部、日本东部、东南亚、英国南部和西欧。
@@ -182,7 +182,7 @@ ms.locfileid: "53194260"
 
 所有父 Runbook 都包含 _WhatIf_ 参数。 设置为 **True** 时，_WhatIf_ 支持详细说明在无 _WhatIf_ 参数的情况下运行时 Runbook 的确切行为，并验证是否以正确 VM 为目标。 仅当 _WhatIf_ 参数设置为 **False** 时，Runbook 才执行其定义的操作。
 
-|Runbook | parameters | Description|
+|Runbook | parameters | 说明|
 | --- | --- | ---|
 |AutoStop_CreateAlert_Child | VMObject <br> AlertAction <br> WebHookURI | 从父 runbook 调用。 此 runbook 为 AutoStop 方案按每个资源创建警报。|
 |AutoStop_CreateAlert_Parent | VMList<br> WhatIf：是或否  | 在目标订阅或资源组中的 VM 上创建或更新 Azure 警报规则。 <br> VMList：以逗号分隔的 VM 列表。 例如“vm1, vm2, vm3”。<br> *WhatIf* 对 runbook 逻辑进行验证但不执行。|
@@ -197,7 +197,7 @@ ms.locfileid: "53194260"
 
 下表列出了在自动化帐户中创建的变量。 仅修改以 External 为前缀的变量。 修改以 **Internal** 为前缀的变量将导致不利影响。
 
-|变量 | Description|
+|变量 | 说明|
 |---------|------------|
 |External_AutoStop_Condition | 在触发警报之前配置条件时所需的条件运算符。 可接受的值包括：**GreaterThan**、**GreaterThanOrEqual**、**LessThan** 和 **LessThanOrEqual**。|
 |External_AutoStop_Description | CPU 百分比超过阈值时停止 VM 的警报。|
@@ -221,7 +221,7 @@ ms.locfileid: "53194260"
 
 不应启用所有计划，因为这可能会创建重叠的计划操作。 最好确定希望执行哪些优化，然后再进行相应的修改。 请参阅概述部分的示例方案以查看进一步解释。
 
-|计划名称 | 频率 | Description|
+|计划名称 | 频率 | 说明|
 |--- | --- | ---|
 |Schedule_AutoStop_CreateAlert_Parent | 每隔 8 小时 | 每隔 8 小时运行一次 AutoStop_CreateAlert_Parent Runbook，它将基于 Azure 自动化变量中的 External_Start_ResourceGroupNames、External_Stop_ResourceGroupNames 和 External_ExcludeVMNames 的值依次停止 VM。 或者，可以使用 VMList 参数指定用逗号分隔的 VM 列表。|
 |Scheduled_StopVM | 用户定义，每天 | 每天在指定的时间运行带有 _Stop_ 参数的 Scheduled_Parent Runbook。 自动停止所有满足通过资产变量定义的规则 VM。 启用相关计划 Scheduled-StartVM。|
@@ -235,7 +235,7 @@ ms.locfileid: "53194260"
 
 ### <a name="job-logs"></a>作业日志
 
-|属性 | Description|
+|属性 | 说明|
 |----------|----------|
 |调用方 |  谁启动了该操作。 可能的值为电子邮件地址或计划作业的系统。|
 |类别 | 数据类型的分类。 对于自动化，该值为 JobLogs。|
@@ -256,7 +256,7 @@ ms.locfileid: "53194260"
 
 ### <a name="job-streams"></a>作业流
 
-|属性 | Description|
+|属性 | 说明|
 |----------|----------|
 |调用方 |  谁启动了该操作。 可能的值为电子邮件地址或计划作业的系统。|
 |类别 | 数据类型的分类。 对于自动化，该值为 JobStreams。|
@@ -279,7 +279,7 @@ ms.locfileid: "53194260"
 
 下表提供了此解决方案收集的作业记录的示例日志搜索。
 
-|Query | Description|
+|Query | 说明|
 |----------|----------|
 |查找已成功完成 Runbook ScheduledStartStop_Parent 的作业 | ```search Category == "JobLogs" | where ( RunbookName_s == "ScheduledStartStop_Parent" ) | where ( ResultType == "Completed" )  | summarize |AggregatedValue = count() by ResultType, bin(TimeGenerated, 1h) | sort by TimeGenerated desc```|
 |查找已成功完成 Runbook SequencedStartStop_Parent 的作业 | ```search Category == "JobLogs" | where ( RunbookName_s == "SequencedStartStop_Parent" ) | where ( ResultType == "Completed" ) | summarize |AggregatedValue = count() by ResultType, bin(TimeGenerated, 1h) | sort by TimeGenerated desc```|

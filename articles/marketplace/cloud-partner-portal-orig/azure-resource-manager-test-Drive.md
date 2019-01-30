@@ -1,6 +1,6 @@
 ---
 title: Azure 资源管理器体验版 | Microsoft Docs
-description: 使用 Azure 资源管理器构建市场体验版
+description: 使用 Azure 资源管理器生成市场体验版
 services: Azure, Marketplace, Cloud Partner Portal,
 documentationcenter: ''
 author: pbutlerm
@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 87e57a1ee417a4cc69308e8af80dd9b781d60aaf
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: b7cbd69a4551605b71930a23f837b467177e3cc3
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53139259"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54451351"
 ---
 <a name="azure-resource-manager-test-drive"></a>Azure 资源管理器体验版
 =================================
@@ -77,7 +77,7 @@ Azure 资源管理器 (Azure Resource Manager) 模板是设计的一种 Azure �
 
 ### <a name="accepted-parameter-metadata-types"></a>接受的参数元数据类型
 
-| 元数据类型   | 参数类型  | Description     | 示例值    |
+| 元数据类型   | 参数类型  | 说明     | 示例值    |
 |---|---|---|---|---|
 | baseuri     | 字符串          | 部署包的基 URI| [https://\<\..\>.blob.core.windows.net/\<\..\>](#) |
 | **username**    | 字符串          | 随机的新用户名。| admin68876      |

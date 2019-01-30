@@ -4,21 +4,23 @@ description: 本操作说明将指导你完成修正 Azure Policy 中不符合�
 services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 12/06/2018
+ms.date: 01/23/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 093b49bea167efb12b941f8f0baff6fbdae5be25
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 054ce3d3483c3515e89c36eafc5d9a771e8e608d
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53312640"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54844137"
 ---
 # <a name="remediate-non-compliant-resources-with-azure-policy"></a>修正 Azure Policy 中的不符合资源
 
 不符合 deployIfNotExists 策略的资源可以通过修正置于符合状态。 可以通过指示 Policy 在现有资源上运行已分配策略的 deployIfNotExists 影响来完成修正。 本文介绍了使用 Policy 了解并完成修正需要执行的步骤。
+
+[!INCLUDE [az-powershell-update](../../../../includes/updated-for-az.md)]
 
 ## <a name="how-remediation-security-works"></a>修正安全的工作原理
 
@@ -51,7 +53,7 @@ az role definition list --name 'Contributor'
 ```
 
 ```azurepowershell-interactive
-Get-AzureRmRoleDefinition -Name 'Contributor'
+Get-AzRoleDefinition -Name 'Contributor'
 ```
 
 ## <a name="manually-configure-the-managed-identity"></a>手动配置托管标识
@@ -70,23 +72,23 @@ Get-AzureRmRoleDefinition -Name 'Contributor'
 若要在策略分配期间创建托管标识，必须定义 Location 并使用 AssignIdentity。 下面的示例获取内置策略“部署 SQL DB 透明数据加密”的定义，设置目标资源组，然后创建分配。
 
 ```azurepowershell-interactive
-# Login first with Connect-AzureRmAccount if not using Cloud Shell
+# Login first with Connect-Azccount if not using Cloud Shell
 
 # Get the built-in "Deploy SQL DB transparent data encryption" policy definition
-$policyDef = Get-AzureRmPolicyDefinition -Id '/providers/Microsoft.Authorization/policyDefinitions/86a912f6-9a06-4e26-b447-11b16ba8659f'
+$policyDef = Get-AzPolicyDefinition -Id '/providers/Microsoft.Authorization/policyDefinitions/86a912f6-9a06-4e26-b447-11b16ba8659f'
 
 # Get the reference to the resource group
-$resourceGroup = Get-AzureRmResourceGroup -Name 'MyResourceGroup'
+$resourceGroup = Get-AzResourceGroup -Name 'MyResourceGroup'
 
 # Create the assignment using the -Location and -AssignIdentity properties
-$assignment = New-AzureRmPolicyAssignment -Name 'sqlDbTDE' -DisplayName 'Deploy SQL DB transparent data encryption' -Scope $resourceGroup.ResourceId -PolicyDefinition $policyDef -Location 'westus' -AssignIdentity
+$assignment = New-AzPolicyAssignment -Name 'sqlDbTDE' -DisplayName 'Deploy SQL DB transparent data encryption' -Scope $resourceGroup.ResourceId -PolicyDefinition $policyDef -Location 'westus' -AssignIdentity
 ```
 
 `$assignment` 变量现包含托管标识的主体 ID，以及创建策略分配时返回的标准值。 可以通过 `$assignment.Identity.PrincipalId` 访问它。
 
 ### <a name="grant-defined-roles-with-powershell"></a>使用 PowerShell 授予定义的角色
 
-新的托管标识必须通过 Azure Active Directory 完成复制，然后才会向其授予所需的角色。 复制完成后，下面的示例将循环访问 `$policyDef` 中有关 roleDefinitionIds 的策略定义，并使用 [New-AzureRmRoleAssignment](/powershell/module/azurerm.resources/new-azurermroleassignment) 授予新托管标识角色。
+新的托管标识必须通过 Azure Active Directory 完成复制，然后才会向其授予所需的角色。 复制完成后，下面的示例将循环访问 `$policyDef` 中有关 roleDefinitionIds 的策略定义，并使用 [New-AzRoleAssignment](/powershell/module/az.resources/new-azroleassignment) 授予新托管标识角色。
 
 ```azurepowershell-interactive
 # Use the $policyDef to get to the roleDefinitionIds array
@@ -96,7 +98,7 @@ if ($roleDefinitionIds.Count -gt 0)
 {
     $roleDefinitionIds | ForEach-Object {
         $roleDefId = $_.Split("/") | Select-Object -Last 1
-        New-AzureRmRoleAssignment -Scope $resourceGroup.ResourceId -ObjectId $assignment.Identity.PrincipalId -RoleDefinitionId $roleDefId
+        New-AzRoleAssignment -Scope $resourceGroup.ResourceId -ObjectId $assignment.Identity.PrincipalId -RoleDefinitionId $roleDefId
     }
 }
 ```

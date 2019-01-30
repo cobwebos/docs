@@ -12,18 +12,18 @@ ms.topic: article
 ms.date: 12/20/2018
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 1d309bb550282d5245a2fbf74f14a931cf5c2279
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.openlocfilehash: 902014ff3c242a18b3872ba490845eb0923f39a4
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53745491"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54451181"
 ---
 # <a name="azure-media-services-entities-overview"></a>Azure 媒体服务实体概述
 
 本文简要概述 Azure 媒体服务实体，并指向详细介绍每个实体的文章。 
 
-| 主题 | Description |
+| 主题 | 说明 |
 |---|---|
 | [帐户筛选器和资产筛选器](filters-dynamic-manifest-overview.md)|将内容传送到客户（实时传送视频流事件或点播视频）时，客户端所需的灵活性可能比默认资产的清单文件中描述的灵活性更高。 使用 Azure 媒体服务可定义[帐户筛选器](https://docs.microsoft.com/rest/api/media/accountfilters)和[资产筛选器](https://docs.microsoft.com/rest/api/media/assetfilters)。 然后，根据预定义的筛选器使用**动态清单**。 |
 | [资产](assets-concept.md)|[资产](https://docs.microsoft.com/rest/api/media/assets)实体包含数字文件（包括视频、音频、图像、缩略图集合、文本轨道和隐藏式字幕文件）以及这些文件的相关元数据。 数字文件在上传到资产中后，即可用于媒体服务编码、流式处理和分析内容工作流。|

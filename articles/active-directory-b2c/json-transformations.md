@@ -3,19 +3,19 @@ title: Azure Active Directory B2C 标识体验框架架构的 JSON 声明转换�
 description: Azure Active Directory B2C 标识体验框架架构的 JSON 声明转换示例。
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: d712286cb4ea5e67474ec11d56d99eaf2cabec3e
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: e7096773f2aaa39abd965b4697f45a3b3f80f136
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47433066"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54850835"
 ---
 # <a name="json-claims-transformations"></a>JSON 声明转换
 
@@ -52,7 +52,7 @@ ms.locfileid: "47433066"
 ### <a name="example"></a>示例
 
 - 输入声明：
-    - **inputJson**: {"emailAddress": "someone@example.com", "displayName": "Someone"}
+    - inputJson: {"emailAddress": "someone@example.com", "displayName":"Someone"}
 - 输入参数：
     - claimToExtract: emailAddress
 - 输出声明： 
@@ -108,10 +108,10 @@ ms.locfileid: "47433066"
     - jsonSourceValueName: value
 - 输出声明：
     - email: "someone@example.com"
-    - displayName: "Someone"
-    - membershipNum: 6353399
+    - displayName:"Someone"
+    - membershipNum:6353399
     - active: true
-    - birthdate: 1980-09-23T00:00:00Z
+    - birthdate:1980-09-23T00:00:00Z
 
 ## <a name="getnumericclaimfromjson"></a>GetNumericClaimFromJson
 
@@ -150,11 +150,11 @@ ms.locfileid: "47433066"
 ### <a name="example"></a>示例
 
 - 输入声明：
-    - inputJson: {"emailAddress": "someone@example.com", "displayName": "Someone", "id" : 6353399}
+    - inputJson: {"emailAddress": "someone@example.com", "displayName":"Someone", "id" :6353399}
 - 输入参数
     - claimToExtract:  id
 - 输出声明： 
-    - extractedClaim: 6353399
+    - extractedClaim:6353399
 
 ## <a name="getsinglevaluefromjsonarray"></a>GetSingleValueFromJsonArray
 

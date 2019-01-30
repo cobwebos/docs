@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 07/19/2018
 ms.reviewer: mbullwin
 ms.author: harelbr
-ms.openlocfilehash: b1f4d278079b81b4a224dc4712426d1f078de110
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: edfd908166e4334bdfda0f043cba727cb0370405
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54020398"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54853589"
 ---
 # <a name="manage-application-insights-smart-detection-rules-using-azure-resource-manager-templates"></a>使用 Azure 资源管理器模板管理 Application Insights 智能检测规则
 
@@ -154,6 +154,17 @@ ms.locfileid: "54020398"
 | 检测到潜在的内存泄漏（预览） | extension_memoryleakextension |
 | 检测到潜在的安全问题（预览） | extension_securityextensionspackage |
 | 检测到资源利用率问题（预览） | extension_resourceutilizationextensionspackage |
+
+## <a name="who-receives-the-classic-alert-notifications"></a>谁会收到（经典）警报通知？
+
+本节仅适用于智能检测经典警报，并将帮助优化警报通知以确保只有预期的接收人能收到通知。 若要详细了解[经典警报]（../platform/alerts-classic.overview.md 和新警报体验）之间的区别，请参阅[警报概述文章](../platform/alerts-overview.md)。 当前智能检测警报仅支持经典警报体验。 有一个例外情况，是 [Azure 云服务上的智能检测警报](./proactive-cloud-services.md)。 若要控制 Azure 云服务上智能检测警报的警报通知，可使用[操作组](../platform/action-groups.md)。
+
+* 建议将智能检测/经典警报通知应用于特定收件人。
+
+* 对于智能检测警报，“批/组”复选框选项（如果已启用）将发送给订阅中具有所有者、参与者或读者角色的用户。 实际上，可以访问订阅 Application Insights 资源的_所有_用户均会接收到通知。 
+
+> [!NOTE]
+> 如果当前使用“批/组”复选框选项并禁用它，则无法还原更改。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -1,10 +1,10 @@
 ---
-title: 教程：Azure Active Directory 与 AppBlade 集成 | Microsoft Docs
+title: 教程：Azure Active Directory 与 AppBlade 的集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 和 AppBlade 之间配置单一登录。
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: 3360d7aa-6518-4f99-88bd-b7f7258183e8
 ms.service: active-directory
 ms.component: saas-app-tutorial
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/09/2017
 ms.author: jeedes
-ms.openlocfilehash: 66c893a89138d7daf7d8118d8e2b1d8389d40ea4
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 119647c4aeabc8f4a6dd3a1933fcfafe6b6cf5c2
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36229292"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54813315"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-appblade"></a>教程：Azure Active Directory 与 AppBlade 集成
+# <a name="tutorial-azure-active-directory-integration-with-appblade"></a>教程：Azure Active Directory 与 AppBlade 的集成
 
 本教程介绍如何将 AppBlade 与 Azure Active Directory (Azure AD) 集成。
 
@@ -112,7 +112,7 @@ ms.locfileid: "36229292"
 
     ![配置单一登录](./media/appblade-tutorial/tutorial_appblade_url.png)
 
-    在“登录 URL”文本框中，使用以下模式键入 URL：`https://<companyname>.appblade.com/saml/<tenantid>`
+    在“登录 URL”文本框中，使用以下模式键入 URL： `https://<companyname>.appblade.com/saml/<tenantid>`
 
     > [!NOTE] 
     > 此值不是真实值。 请使用实际登录 URL 更新该值。 若要获取此值，请与 [AppBlade 客户端支持团队](mailto:support@appblade.com)联系。 
@@ -129,7 +129,7 @@ ms.locfileid: "36229292"
 
 
 > [!TIP]
-> 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[ Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
+> 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
  
 ### <a name="creating-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 本部分的目的是在 Azure 门户中创建名为 Britta Simon 的测试用户。
@@ -211,7 +211,7 @@ ms.locfileid: "36229292"
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](tutorial-list.md)
-* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
+* [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
 
 

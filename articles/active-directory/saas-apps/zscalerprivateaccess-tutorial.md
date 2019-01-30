@@ -4,7 +4,7 @@ description: 了解如何在 Azure Active Directory 和 Zscaler Private Access (
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: 83711115-1c4f-4dd7-907b-3da24b37c89e
 ms.service: active-directory
 ms.component: saas-app-tutorial
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/06/2017
 ms.author: jeedes
-ms.openlocfilehash: 5858ab1846ccdc2e2b78f2be4173ea3cc17a3605
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.openlocfilehash: 5610316fdadb9a169c90e7e7761d9ddd2a74dcbe
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49116566"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54819112"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler-private-access-zpa"></a>教程：Azure Active Directory 与 Zscaler Private Access (ZPA) 集成
 
@@ -117,7 +117,7 @@ ms.locfileid: "49116566"
     
     ![配置单一登录](./media/zscalerprivateaccess-tutorial/tutorial_zscalerprivateaccess_01.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“登录 URL”文本框中，使用以下模式键入 URL：`https://samlsp.private.zscaler.com/auth/login?domain=<your-domain-name>`
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://samlsp.private.zscaler.com/auth/login?domain=<your-domain-name>`
 
     b. 在“标识符”文本框中，键入 `https://samlsp.private.zscaler.com/auth/metadata`
 
@@ -158,7 +158,7 @@ ms.locfileid: "49116566"
 
     ![在应用端配置单一登录](./media/zscalerprivateaccess-tutorial/tutorial_zscalerprivateaccess_06.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 单击“选择文件”，并上传已下载的元数据文件。
+    a. 单击“选择文件”，并上传已下载的元数据文件。
 
     b. 单击“保存”按钮。
     
@@ -187,7 +187,7 @@ ms.locfileid: "49116566"
  
     ![创建 Azure AD 测试用户](./media/zscalerprivateaccess-tutorial/create_aaduser_04.png) 
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
+    a. 在“名称”文本框中，键入 **BrittaSimon**。
 
     b. 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
@@ -244,7 +244,7 @@ ms.locfileid: "49116566"
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](tutorial-list.md)
-* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
+* [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
 
 

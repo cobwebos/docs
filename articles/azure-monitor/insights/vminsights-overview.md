@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/07/2018
+ms.date: 01/23/2019
 ms.author: magoedte
-ms.openlocfilehash: 69aa2cbcaa6861b1d5c5c71769be2fb8046d9ea5
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 0733b4179793e88759ca1c3330880546650fbe09
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53188484"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54856363"
 ---
 # <a name="what-is-azure-monitor-for-vms-preview"></a>什么是用于 VM 的 Azure Monitor（预览版）？
 
@@ -50,7 +50,7 @@ ms.locfileid: "53188484"
 
 ![Azure 门户中的虚拟机见解透视图](./media/vminsights-overview/vminsights-azmon-directvm-01.png)
 
-Azure DevOps 可以提供可预测的性能和重要应用程序的可用性。 它标识关键的操作系统事件、性能瓶颈和网络问题。 Azure DevOps 还有助于理解某个问题是否与其他依赖关系相关。  
+适用于 VM 的 Azure Monitor 可以提供可预测的性能和重要应用程序的可用性。 它标识关键的操作系统事件、性能瓶颈和网络问题。 适用于 VM 的 Azure Monitor 还有助于理解某个问题是否与其他依赖关系相关。  
 
 ## <a name="data-usage"></a>数据使用情况 
 

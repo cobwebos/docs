@@ -4,7 +4,7 @@ description: 当为在 Azure AD 应用程序库中列出的某个应用程序配
 services: active-directory
 documentationcenter: ''
 author: barbkess
-manager: mtillman
+manager: daveba
 ms.assetid: ''
 ms.service: active-directory
 ms.component: app-mgmt
@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 02/21/2018
 ms.author: barbkess
 ms.reviewer: asmalser
-ms.openlocfilehash: fe96ecc0ba6904819f0262a2f470e37203a7952e
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 4d8e5cb577eb7b3eecc800e7a74b1ddcbbc2c76c
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44354608"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54813366"
 ---
 # <a name="problem-saving-administrator-credentials-while-configuring-user-provisioning-to-an-azure-active-directory-gallery-application"></a>配置 Azure Active Directory 库应用程序的用户预配时保存管理员凭据时遇到问题 
 
@@ -30,7 +30,7 @@ ms.locfileid: "44354608"
 
 如果还为同一应用程序配置了基于 SAML 的单一登录，则发生此错误的最可能原因是已超出了 Azure AD 内部针对证书和凭据设定的每应用程序存储限制。
 
-Azure AD 当前对与应用程序的单个实例关联的所有证书、机密令牌、凭据以及相关配置数据（在 Azure AD 中也称为服务主体记录）具有最大存储容量为 1 KB 的限制。
+Azure AD 当前对与应用程序的单个实例关联的所有证书、机密令牌、凭据以及相关配置数据（在 Azure AD 中也称为服务主体记录）具有最大存储容量为 1024 字节的限制。
 
 当配置了基于 SAML 的单一登录时，用来对 SAML 令牌进行签名的证书存储在这里，并且通常会占用该空间的 50% 以上。
 

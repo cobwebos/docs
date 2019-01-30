@@ -1,10 +1,10 @@
 ---
-title: 教程：Azure Active Directory 与 Moxi Engage 集成 | Microsoft Docs
+title: 教程：Azure Active Directory 与 Moxi Engage 集成 | Microsoft 文档
 description: 了解如何在 Azure Active Directory 和 Moxi Engage 之间配置单一登录。
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: 1135a879-8f00-43b0-ac8a-831593d9586d
 ms.service: active-directory
 ms.component: saas-app-tutorial
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/25/2017
 ms.author: jeedes
-ms.openlocfilehash: 200382578d7cf2cce96b9cb73097bce632c88767
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: e7e130245cd61924c5f70645729551fd9e55702e
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39425063"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54816240"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-moxi-engage"></a>教程：Azure Active Directory 与 Moxi Engage 集成
 
@@ -128,7 +128,7 @@ ms.locfileid: "39425063"
 1. 若要在 Moxi Engage 端配置单一登录，需要将下载的元数据 XML 发送给 [Moxi Engage 支持团队](mailto:support@moxiworks.com)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
 
 > [!TIP]
-> 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[ Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
+> 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
 ### <a name="creating-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
@@ -164,7 +164,7 @@ ms.locfileid: "39425063"
  
 ### <a name="creating-a-moxi-engage-test-user"></a>创建 Moxi Engage 测试用户
 
-在本部分中，将在 Moxi Engage 中创建一个名为“Britta Simon”的用户。 使用 [Moxi Engage支持团队](mailto:support@moxiworks.com)在 Moxi Engage 平台中添加用户。
+在本部分中，将在 Moxi Engage 中创建一个名为“Britta Simon”的用户。 与  [Moxi Engage支持团队](mailto:support@moxiworks.com) 协作，在 Moxi Engage 平台中添加用户。
 
 ### <a name="assigning-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
@@ -206,7 +206,7 @@ ms.locfileid: "39425063"
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](tutorial-list.md)
-* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
+* [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
 
 

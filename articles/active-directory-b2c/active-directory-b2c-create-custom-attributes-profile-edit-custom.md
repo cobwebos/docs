@@ -3,19 +3,19 @@ title: 向 Azure Active Directory B2C 的自定义策略添加你自己的属性
 description: 有关使用扩展属性、自定义属性以及将其包含在用户界面中的演练。
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 08/04/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 5513e0ff434862ea7eee42cb94ff2a0f67f6d390
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: 7ebce84e6d8d3e7b1b8d3852951127ce954f9019
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43338738"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54854048"
 ---
 # <a name="azure-active-directory-b2c-use-custom-attributes-in-a-custom-profile-edit-policy"></a>Azure Active Directory B2C：在自定义配置文件编辑策略中使用自定义属性
 
@@ -25,7 +25,7 @@ ms.locfileid: "43338738"
 
 ## <a name="prerequisites"></a>先决条件
 
-遵循文章 [Azure Active Directory B2C：自定义策略入门](active-directory-b2c-get-started-custom.md)中的步骤进行操作。
+请按照 [Azure Active Directory B2C：自定义策略入门](active-directory-b2c-get-started-custom.md)一文中的步骤进行操作。
 
 ## <a name="use-custom-attributes-to-collect-information-about-your-customers-in-azure-ad-b2c-by-using-custom-policies"></a>使用自定义属性来收集有关使用自定义策略的 Azure AD B2C 中的客户信息
 Azure AD B2C 目录附带了一组内置属性。 示例包括：Given Name、Surname、City、Postal Code 和 userPrincipalName。 通常需要创建自己的属性，如下所示：
@@ -53,14 +53,14 @@ Azure AD B2C 扩展存储在每个用户帐户中的属性集。 还可以使用
 2. 在左侧导航菜单中，选择“Azure Active Directory”。 可能需要选择“更多服务”才能找到该选项。
 3. 选择“应用注册”。 选择“新建应用程序注册”。
 4. 提供了以下条目：
-    * Web 应用的名称：WebApp-GraphAPI-DirectoryExtensions。
-    * 应用程序类型：Web 应用/API。
+    * Web 应用程序的名称：“WebApp-GraphAPI-DirectoryExtensions”。
+    * 应用程序类型：“Web 应用/API”
     * 登录 URL： https://{tenantName}.onmicrosoft.com/WebApp-GraphAPI-DirectoryExtensions。
-5. 选择**创建**。
+5. 选择“创建”。
 6. 选择新建的 Web 应用程序。
 7. 选择“设置” > “所需权限”。
 8. 选择 API“Windows Azure Active Directory”。
-9. 在应用程序权限“读取和写入目录数据”中输入一个选中标记。 再选择“保存”。
+9. 在应用程序权限中输入选中标记：“读取和写入目录数据”。 再选择“保存”。
 10. 选择“授予权限”，然后单击“是”确认。
 11. 将以下标识符复制到剪贴板并保存：
     * **应用程序 ID**。 示例：`103ee0e6-f92d-4183-b576-8c3739027780`。
@@ -70,7 +70,7 @@ Azure AD B2C 扩展存储在每个用户帐户中的属性集。 还可以使用
 
 ## <a name="modify-your-custom-policy-to-add-the-applicationobjectid"></a>修改自定义策略以添加 ApplicationObjectId
 
-当按照 [Azure Active Directory B2C：自定义策略入门](active-directory-b2c-get-started-custom.md)中的步骤进行操作时，你已下载并修改了名为 TrustFrameworkBase.xml、TrustFrameworkExtensions.xml、SignUpOrSignin.xml、ProfileEdit.xml 和 PasswordReset.xml 的[示例文件](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/archive/master.zip)。 在此步骤中，请对这些文件进行更多修改。
+当按照 [Azure Active Directory B2C：自定义策略入门](active-directory-b2c-get-started-custom.md)中的步骤进行操作时，你已下载并修改了名为“TrustFrameworkBase.xml”、“TrustFrameworkExtensions.xml”、“SignUpOrSignin.xml”、“ProfileEdit.xml”和“PasswordReset.xml”的[示例文件](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/archive/master.zip)。 在此步骤中，请对这些文件进行更多修改。
 
 * 打开 **TrustFrameworkBase.xml** 文件，并添加 `Metadata` 节，如以下示例所示。 插入先前为 `ApplicationObjectId` 值记录的对象 ID 以及为 `ClientId` 值记录的应用程序 ID： 
 

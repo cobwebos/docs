@@ -1,10 +1,10 @@
 ---
-title: 教程：Azure Active Directory 与 Weekdone 的集成 | Microsoft Docs
+title: 教程：Azure Active Directory 与 Weekdone 集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 和 Weekdone 之间配置单一登录。
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: 34921f9a-5637-4420-ab4c-9beb34421909
 ms.service: active-directory
 ms.component: saas-app-tutorial
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/18/2018
 ms.author: jeedes
-ms.openlocfilehash: 7f7946ece91013696969dafda17b02c972f4b780
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 869deb1b68d30041b6780151a5712099982bd9b7
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36230397"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54807943"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-weekdone"></a>教程：Azure Active Directory 与 Weekdone 的集成
+# <a name="tutorial-azure-active-directory-integration-with-weekdone"></a>教程：Azure Active Directory 与 Weekdone 集成
 
 本教程介绍如何将 Weekdone 与 Azure Active Directory (Azure AD) 集成。
 
@@ -115,13 +115,13 @@ ms.locfileid: "36230397"
     > [!NOTE]
     > 可以使用相同的 URL 检索 weekdone 中的元数据文件。
 
-    b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://weekdone.com/a/<tenantname>`
+    b. 在 **“回复 URL”** 文本框中，使用以下模式键入 URL：`https://weekdone.com/a/<tenantname>`
 
 4. 选中“显示高级 URL 设置”。 如果要在“SP”发起的模式下配置应用程序：
 
     ![配置单一登录](./media/weekdone-tutorial/tutorial_weekdone_url2.png)
 
-    在“登录 URL”文本框中，使用以下模式键入 URL：`https://weekdone.com/a/<tenantname>`
+    在“登录 URL”文本框中，使用以下模式键入 URL： `https://weekdone.com/a/<tenantname>`
      
     > [!NOTE] 
     > 这些不是实际值。 请使用实际的“标识符”、“回复 URL”和“登录 URL”更新这些值。 请联系 [Weekdone 客户端支持团队](mailto:hello@weekdone.com)获取这些值。 
@@ -219,7 +219,7 @@ ms.locfileid: "36230397"
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](tutorial-list.md)
-* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
+* [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

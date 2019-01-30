@@ -1,10 +1,10 @@
 ---
-title: 教程：Azure Active Directory 与 Vodeclic 的集成 | Microsoft Docs
+title: 教程：Azure Active Directory 与 Vodeclic 集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 与 Vodeclic 之间配置单一登录。
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: joflore
 ms.assetid: d77a0f53-e3a3-445e-ab3e-119cef6e2e1d
 ms.service: active-directory
@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/06/2017
 ms.author: jeedes
-ms.openlocfilehash: fb985b389139bfd8d54e6c54d101bbfa8a68a6d4
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 8f53082a2f6a33e934c2e3138d08725ffdf4fa2b
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39444617"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54815406"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-vodeclic"></a>教程：Azure Active Directory 与 Vodeclic 的集成
+# <a name="tutorial-azure-active-directory-integration-with-vodeclic"></a>教程：Azure Active Directory 与 Vodeclic 集成
 
 本教程介绍如何将 Vodeclic 与 Azure Active Directory (Azure AD) 集成。
 
@@ -166,11 +166,11 @@ ms.locfileid: "39444617"
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
 
-    d. 选择**创建**。
+    d. 选择“创建”。
  
 ### <a name="create-a-vodeclic-test-user"></a>创建一个 Vodeclic 测试用户
 
-本部分在 Vodeclic 中创建一个名为 Britta Simon 的用户。 请与 [Vodeclic 支持团队](mailto:hotline@vodeclic.com)协作，将该用户添加到 Vodeclic 平台中。 使用单一登录前，必须先创建并激活用户。
+本部分在 Vodeclic 中创建一个名为 Britta Simon 的用户。 请与 [Vodeclic 支持团队](mailto:hotline@vodeclic.com) 协作，将用户添加到 Vodeclic 平台中。 使用单一登录前，必须先创建并激活用户。
 
 > [!NOTE]
 > 根据应用程序要求，可能需要获取计算机允许列表。 对于这种情况，需要与 [Vodeclic 支持团队](mailto:hotline@vodeclic.com)共享公用 IP 地址。
@@ -216,7 +216,7 @@ ms.locfileid: "39444617"
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](tutorial-list.md)
-* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
+* [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
 
 

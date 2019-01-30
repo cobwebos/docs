@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/23/2018
 ms.author: raynew
-ms.openlocfilehash: c2afd1c5a85ec393acfb0f754dd4ca9d77162061
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: 18e8b7699a388dabbf0e4f5cff7d4fb927e549c2
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54065488"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54853810"
 ---
 # <a name="contoso-migration-assess-on-premises-workloads-for-migration-to-azure"></a>Contoso 迁移：评估本地工作负荷是否适合迁移到 Azure
 
@@ -86,7 +86,7 @@ Contoso 云团队制定了迁移评估的目标：
 
 Contoso 使用 Microsoft 工具进行迁移评估。 这些工具符合公司的目标，并能为 Contoso 提供所需的所有信息。
 
-技术 | Description | 成本
+技术 | 说明 | 成本
 --- | --- | ---
 [Data Migration Assistant](https://docs.microsoft.com/sql/dma/dma-overview?view=ssdt-18vs2017) | Contoso 使用数据迁移助手评估和检测可能影响其在 Azure 中数据库功能的兼容性问题。 数据迁移助手评估 SQL 源和目标之间的功能奇偶一致性。 它针对性能和可靠性提升提供建议。 | 数据迁移助手是一个可以免费下载的工具。
 [Azure Migrate](https://docs.microsoft.com/azure/migrate/migrate-overview) | Contoso 使用 Azure Migrate 服务评估其 VMware VM。 Azure Migrate 评估计算机是否适合迁移。 它对在 Azure 中运行时的大小和成本进行估算。  | 截至 2018 年 5 月，使用 Azure Migrate 无需付费。
@@ -206,7 +206,7 @@ Contoso 使用 Microsoft 工具进行迁移评估。 这些工具符合公司的
 > [!NOTE]
 > 对于大规模的评估：
 > - 并发运行多个评估，在“所有评估”页面上查看评估的状态。
-> - 将评估合并到一个 [SQL Server 数据库](https://docs.microsoft.com/sql/dma/dma-consolidatereports?view=ssdt-18vs2017#import-assessment-results-into-a-sql-server-database)中。
+> - 将评估合并到一个 [SQL Server 数据库](https://docs.microsoft.com/sql/dma/dma-consolidatereports?view=ssdt-18vs2017)中。
 > - 将评估合并到一个 [Power BI 报表](https://docs.microsoft.com/sql/dma/dma-powerbiassesreport?view=ssdt-18vs2017)中。
 
 ## <a name="step-3-prepare-for-vm-assessment-by-using-azure-migrate"></a>步骤 3：使用 Azure Migrate 进行 VM 评估准备

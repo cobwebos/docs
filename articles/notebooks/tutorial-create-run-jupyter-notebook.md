@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/11/2019
 ms.author: kraigb
-ms.openlocfilehash: 110ba7f13b2a0d44277c881d67f0c794c8658cd1
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: dcee7df0b5da53bd7014a26f1f09695fe874833d
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54244573"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54849646"
 ---
 # <a name="tutorial-create-and-run-a-jupyter-notebook-with-python"></a>教程：使用 Python 创建并运行 Jupyter Notebook
 
@@ -128,7 +128,7 @@ ms.locfileid: "54244573"
 1. 由于已在环境设置中添加了 *requirements.txt* 文件，因此会看到消息“正在等待容器准备完成。” 可以选择“确定”关闭该消息并继续在 Notebook 中操作；但是，在完全设置好环境之前，无法运行代码单元。
 1. 该 Notebook 将在 Jupyter 界面中打开，其中默认包含单个空代码单元。
 
-    [![](media/tutorial/tutorial-new-notebook.png "Azure Notebooks 中新 Notebook 的初始视图")](media/tutorial/tutorial-new-notebook.png#lightbox)
+    [![Azure Notebooks 中新 Notebook 的初始视图](media/tutorial/tutorial-new-notebook.png)](media/tutorial/tutorial-new-notebook.png#lightbox)
 
 ## <a name="tour-the-notebook-interface"></a>在 Notebook 界面中导航
 
@@ -144,13 +144,13 @@ ms.locfileid: "54244573"
 (F) 指示该 Notebook 是否受信任（默认为“不受信任”）。
 (G) 用于运行 Notebook 的内核以及活动指示器。
 
-[![](media/tutorial/tutorial-notebook-ui.png "Jupyter 界面的主要 UI 区域")](media/tutorial/tutorial-notebook-ui.png#lightbox)
+[![Jupyter 界面的主要 UI 区域](media/tutorial/tutorial-notebook-ui.png)](media/tutorial/tutorial-notebook-ui.png#lightbox)
 
 Jupyter 提供主要 UI 元素的内置导航功能。 选择“帮助” > “用户界面导航”命令并在各个弹出窗口中单击可以开始导航。
 
 菜单命令的分组如下：
 
-| 菜单 | Description |
+| 菜单 | 说明 |
 | --- | --- |
 | 文件 | 用于管理 Notebook 文件的命令，包括用于创建和复制 Notebook、显示打印预览，以及以各种格式下载 Notebook 的命令。 |
 | 编辑 | 用于剪切、复制和粘贴单元、查找和替换值、管理单元附件，以及插入图像的典型命令。  |

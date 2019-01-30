@@ -12,12 +12,12 @@ ms.author: jovanpop
 ms.reviewer: carlrab, bonova
 manager: craigg
 ms.date: 12/03/2018
-ms.openlocfilehash: 489eccf1b73e7f5df76a3ce681b4479893a9e0ac
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 95a9f3d553bb3d8ca07ed90578861f6267058532
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52843200"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54463739"
 ---
 # <a name="azure-sql-database-managed-instance-t-sql-differences-from-sql-server"></a>Azure SQL 数据库托管实例与 SQL Server 之间的 T-SQL 差异
 
@@ -235,7 +235,7 @@ WITH PRIVATE KEY (<private_key_options>)
 不支持对 XEvents 使用某些特定于 Windows 的目标：
 
 - 不支持 `etw_classic_sync target`。 在 Azure Blob 存储中存储 `.xel` 文件。 请参阅 [etw_classic_sync 目标](https://docs.microsoft.com/sql/relational-databases/extended-events/targets-for-extended-events-in-sql-server#etwclassicsynctarget-target)。
-- 不支持 `event_file target`。 在 Azure Blob 存储中存储 `.xel` 文件。 请参阅 [event_file 目标](https://docs.microsoft.com/sql/relational-databases/extended-events/targets-for-extended-events-in-sql-server#eventfile-target)。
+- 不支持 `event_file target`。 在 Azure Blob 存储中存储 `.xel` 文件。 请参阅 [event_file 目标](https://docs.microsoft.com/sql/relational-databases/extended-events/targets-for-extended-events-in-sql-server#event_file-target)。
 
 ### <a name="external-libraries"></a>外部库
 
@@ -503,6 +503,12 @@ using (var scope = new TransactionScope())
 放置在托管实例中的 CLR 模块和链接的服务器/分布式查询如果引用了当前实例，则它们有时候无法解析本地实例的 IP。 此错误是暂时性问题。
 
 **解决方法**：如果可能，请在 CLR 模块中使用上下文连接。
+
+### <a name="tde-encrypted-databases-dont-support-user-initiated-backups"></a>TDE 加密数据库不支持用户启动的备份
+
+不能在使用透明数据加密 (TDE) 加密的数据库上执行 `BACKUP DATABASE ... WITH COPY_ONLY`。 TDE 强制使用内部 TDE 密钥对备份进行加密，并且该密钥无法导出，因此将无法还原备份。
+
+**解决方法**：使用自动备份和时点还原，或在数据库上禁用加密。
 
 ## <a name="next-steps"></a>后续步骤
 

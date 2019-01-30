@@ -3,22 +3,22 @@ title: 在 Azure Active Directory B2C 中迁移具有社交标识的用户 | Mic
 description: 介绍使用图形 API 将具有社交标识的用户迁移到 Azure AD B2C 的核心概念。
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 03/03/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: b9378face28b4d053dcd5f01b8f87126457cf339
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 0ca73b8bfaca481d3e0404d068a74e1a6b0e4dcb
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37445137"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54846551"
 ---
 # <a name="azure-active-directory-b2c-migrate-users-with-social-identities"></a>Azure Active Directory B2C：迁移具有社交标识的用户
-计划将标识提供者迁移到 Azure AD B2C 时，可能还需要迁移具有社交标识的用户。 本文介绍如何将现有的社交标识帐户（例如 Facebook、LinkedIn、Microsoft 和 Google 帐户）迁移到 Azure AD B2C。 本文也适用于联合标识，但这种迁移不太常见。
+计划将标识提供者迁移到 Azure AD B2C 时，可能还需要迁移具有社交标识的用户。 本文介绍如何将现有社交标识帐户（例如：Facebook、LinkedIn、Microsoft 和 Google 帐户）迁移到 Azure AD B2C。 本文也适用于联合标识，但这种迁移不太常见。
 
 ## <a name="prerequisites"></a>先决条件
 本文是“用户迁移”一文的延续，重点介绍社交标识迁移。 在开始之前，请阅读[用户迁移](active-directory-b2c-user-migration.md)。
@@ -63,7 +63,7 @@ ms.locfileid: "37445137"
 * **userIdentities** - 一个或多个 UserIdentity 记录，这些记录指定社交标识提供者中的社交帐户类型和唯一用户标识符。
 * [可选] **otherMails** - 仅适用于社交帐户，表示用户的电子邮件地址 
 
-有关详细信息，请参阅[图形 API 参考](https://msdn.microsoft.com/library/azure/ad/graph/api/users-operations#CreateLocalAccountUser)
+有关详细信息，请参阅：[图形 API 参考](https://msdn.microsoft.com/library/azure/ad/graph/api/users-operations#CreateLocalAccountUser)
 
 ## <a name="migrate-social-account-only"></a>仅迁移社交帐户
 只创建社交帐户，而不创建本地帐户凭据。 将 HTTPS POST 请求发送到图形 API。 请求正文包含要创建的社交帐户用户的属性。 最起码要指定必需的属性。 

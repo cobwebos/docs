@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 02/16/2017
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0ffcf483b2852ec87c263573a97b4508d5b5d39c
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: a6e217194508feae3b227b5ef65b02d0305a22a7
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46997465"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54852892"
 ---
 # <a name="configure-private-ip-addresses-for-a-virtual-machine-using-the-azure-cli"></a>使用 Azure CLI 为虚拟机配置专用 IP 地址
 
@@ -44,7 +44,7 @@ ms.locfileid: "46997465"
 
 1. 如果尚未这样做，请安装并配置最新的 [Azure CLI](/cli/azure/install-azure-cli)，并使用 [az login](/cli/azure/reference-index#az_login) 登录 Azure 帐户。
 
-2. 使用 [az network public-ip create](/cli/azure/network/public-ip#az_network_public_ip_create) 命令，为该 VM 创建公共 IP。 在输出后显示的列表说明了所用的参数。
+2. 使用 [az network public-ip create](/cli/azure/network/public-ip) 命令，为该 VM 创建公共 IP。 在输出后显示的列表说明了所用的参数。
 
     > [!NOTE]
     > 可能想要或需要根据环境对此步骤和后续步骤中的变量使用不同的值。

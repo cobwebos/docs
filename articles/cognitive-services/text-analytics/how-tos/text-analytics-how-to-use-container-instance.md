@@ -8,14 +8,14 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: text-analytics
 ms.topic: article
-ms.date: 01/11/2019
+ms.date: 01/22/2019
 ms.author: diberry
-ms.openlocfilehash: 513067f09d8cac64ca747ff217c84667c5469d82
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: 19ac1819c3b098597819ec75adcedeca929e802d
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54248211"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54464538"
 ---
 # <a name="deploy-the-language-detection-container-to-azure-kubernetes-service"></a>将语言检测容器部署到 Azure Kubernetes 服务
 
@@ -38,7 +38,7 @@ ms.locfileid: "54248211"
 
 此过程加载并运行认知服务容器示例以进行语言检测。 该示例有两个容器，一个用于客户端应用程序，另一个用于认知服务容器。 需要将这些映像都推送到自己的 Azure 容器注册表。 这些映像推送到自己的注册表后，请创建 Azure Kubernetes 服务来访问这些映像和运行容器。 容器在运行时，请使用 kubectl CLI，监视容器性能。 使用 HTTP 请求访问客户端应用程序，并查看结果。 
 
-
+![运行示例容器的概念性想法](../media/how-tos/container-instance-sample/containers.png)
 
 ## <a name="the-sample-containers"></a>示例容器
 
@@ -407,8 +407,8 @@ az group delete --name cogserv-container-rg
 
 ## <a name="next-steps"></a>后续步骤 
 
-> [!div class="nextstepaction"]
-> [使用文本分析连接服务](../vs-text-connected-service.md)
+* 使用更多[认知服务容器](../../cognitive-services-container-support.md)
+* 使用文本分析连接服务](../vs-text-connected-service.md)
 
 
 <!--

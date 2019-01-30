@@ -1,10 +1,10 @@
 ---
-title: 教程：Azure Active Directory 与 IBM Kenexa Survey Enterprise 集成 | Microsoft Docs
+title: 教程：Azure Active Directory 与 IBM Kenexa Survey Enterprise 的集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 和 IBM Kenexa Survey Enterprise 之间配置单一登录。
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: c7aac6da-f4bf-419e-9e1a-16b460641a52
 ms.service: active-directory
 ms.component: saas-app-tutorial
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/30/2017
 ms.author: jeedes
-ms.openlocfilehash: 6828617e0ae61a3784e4db3d1c2ecf4ce9862ce2
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: d8027aca628185b1e3d2e80323c9f83e6832a913
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39449460"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54823923"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-ibm-kenexa-survey-enterprise"></a>教程：Azure Active Directory 与 IBM Kenexa Survey Enterprise 集成
+# <a name="tutorial-azure-active-directory-integration-with-ibm-kenexa-survey-enterprise"></a>教程：Azure Active Directory 与 IBM Kenexa Survey Enterprise 的集成
 
 在本教程中，了解如何将 IBM Kenexa Survey Enterprise 与 Azure Active Directory (Azure AD) 集成。
 
@@ -213,7 +213,7 @@ ms.locfileid: "39449460"
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](tutorial-list.md)
-* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
+* [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

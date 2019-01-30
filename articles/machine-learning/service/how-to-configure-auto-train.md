@@ -9,14 +9,14 @@ services: machine-learning
 ms.service: machine-learning
 ms.component: core
 ms.topic: conceptual
-ms.date: 12/04/2018
+ms.date: 01/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3dedf5de1ac2c88a9a00fd5f62e0663b840c0fd9
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 865d00d4a6608e422fdfca1297962913ee205827
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53438517"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54823430"
 ---
 # <a name="configure-automated-machine-learning-experiments"></a>配置自动化机器学习试验
 
@@ -111,7 +111,7 @@ automl_config = AutoMLConfig(****, data_script=project_folder + "/get_data.py", 
 
 `get_data` 脚本可以返回：
 
-密钥 | 类型 |    与以下对象互斥 | Description
+密钥 | 类型 |    与以下对象互斥 | 说明
 ---|---|---|---
 X | Pandas 数据帧或 Numpy 数组 | data_train、label、columns |  用于训练的所有特征
 y | Pandas 数据帧或 Numpy 数组 |   label   | 用于训练的标签数据。 对于分类，应是一个整数数组。
@@ -208,7 +208,7 @@ y = dprep.read_csv(simple_example_data_root + 'y.csv').to_long(dprep.ColumnSelec
 
 下表列出了可用于试验的参数设置及其默认值。
 
-属性 |  Description | 默认值
+属性 |  说明 | 默认值
 --|--|--
 `task`  |指定机器学习问题的类型。 允许的值为 <li>分类</li><li>回归</li><li>预测</li>    | 无 |
 `primary_metric` |在生成模型时要优化的指标。 例如，如果将准确度指定为 primary_metric，则自动化机器学习将查找准确度最高的模型。 对于每个试验，只能指定一个 primary_metric。 允许的值为 <br/>**分类**：<br/><li> accuracy  </li><li> AUC_weighted</li><li> precision_score_weighted </li><li> balanced_accuracy </li><li> average_precision_score_weighted </li><br/>**回归**： <br/><li> normalized_mean_absolute_error </li><li> spearman_correlation </li><li> normalized_root_mean_squared_error </li><li> normalized_root_mean_squared_log_error</li><li> R2_score  </li> | 分类：accuracy <br/>回归：spearman_correlation <br/> |
@@ -219,7 +219,8 @@ y = dprep.read_csv(simple_example_data_root + 'y.csv').to_long(dprep.ColumnSelec
 `iteration_timeout_minutes` |   限制特定迭代占用的时间（分钟）。 如果某个迭代超过指定的时间，将取消该迭代。 如果未设置，则迭代会继续运行，直到完成。 |   无
 `n_cross_validations`   |交叉验证拆分数| 无
 `validation_size`   |验证集的大小（占所有训练样本的百分比）。|  无
-`preprocess` | True/False <br/>如果为 True，则试验可以基于输入执行预处理。 下面是预处理子集<li>缺少数据：插补缺失数据 - 带平均值的数字，出现次数最多的文本 </li><li>分类值：如果数据类型为数字，并且唯一值的数量小于 5%，则转换为独热编码 </li><li>等等。有关完整列表，请查看 [GitHub 存储库](https://aka.ms/aml-notebooks)</li><br/>注意：如果数据比较稀疏，则不能使用 preprocess = true |  False | 
+`preprocess` | True/False <br/>如果为 True，则试验可以基于输入执行预处理。 下面是预处理子集<li>缺少数据：插补缺失数据 - 带平均值的数字，出现次数最多的文本 </li><li>分类值：如果数据类型为数字，并且唯一值的数量小于 5%，则转换为独热编码 </li><li>等等。有关完整列表，请查看 [GitHub 存储库](https://aka.ms/aml-notebooks)</li><br/>注意：如果数据比较稀疏，则不能使用 preprocess = true |  False |
+`enable_cache`  | True/False <br/>设置为 True 可完成一次预处理，并将相同的预处理数据用于所有迭代。 | True |
 `blacklist_models`  | 自动化机器学习试验会尝试许多不同的算法。 配置为从试验中排除某些算法。 如果你知道某些算法不适合你的数据集，则这种做法很有用。 排除算法可以节省计算资源和训练时间。<br/>分类允许的值<br/><li>LogisticRegression</li><li>SGD</li><li>MultinomialNaiveBayes</li><li>BernoulliNaiveBayes</li><li>SVM</li><li>LinearSVM</li><li>KNN</li><li>DecisionTree</li><li>RandomForest</li><li>ExtremeRandomTrees</li><li>LightGBM</li><li>GradientBoosting</li><li>TensorFlowDNN</li><li>TensorFlowLinearClassifier</li><br/>回归允许的值<br/><li>ElasticNet</li><li>GradientBoosting</li><li>DecisionTree</li><li>KNN</li><li>LassoLars</li><li>SGD </li><li>RandomForest</li><li>ExtremeRandomTree</li><li>LightGBM</li><li>TensorFlowLinearRegressor</li><li>TensorFlowDNN</li></li><br/>预测允许的值<br/><li>ElasticNet</li><li>GradientBoosting</li><li>DecisionTree</li><li>KNN</li><li>LassoLars</li><li>SGD </li><li>RandomForest</li><li>ExtremeRandomTree</li><li>LightGBM</li><li>TensorFlowLinearRegressor</li><li>TensorFlowDNN</li></li>|   无
 `whitelist_models`  | 自动化机器学习试验会尝试许多不同的算法。 配置为在试验中包含某些算法。 如果你知道某些算法适合你的数据集，则这种做法很有用。 <br/>分类允许的值<br/><li>LogisticRegression</li><li>SGD</li><li>MultinomialNaiveBayes</li><li>BernoulliNaiveBayes</li><li>SVM</li><li>LinearSVM</li><li>KNN</li><li>DecisionTree</li><li>RandomForest</li><li>ExtremeRandomTrees</li><li>LightGBM</li><li>GradientBoosting</li><li>TensorFlowDNN</li><li>TensorFlowLinearClassifier</li><br/>回归允许的值<br/><li>ElasticNet</li><li>GradientBoosting</li><li>DecisionTree</li><li>KNN</li><li>LassoLars</li><li>SGD </li><li>RandomForest</li><li>ExtremeRandomTree</li><li>LightGBM</li><li>TensorFlowLinearRegressor</li><li>TensorFlowDNN</li></li><br/>预测允许的值<br/><li>ElasticNet</li><li>GradientBoosting</li><li>DecisionTree</li><li>KNN</li><li>LassoLars</li><li>SGD </li><li>RandomForest</li><li>ExtremeRandomTree</li><li>LightGBM</li><li>TensorFlowLinearRegressor</li><li>TensorFlowDNN</li></li>|  无
 `verbosity` |使用 INFO（最详细）和 CRITICAL（最精简）控制日志记录级别。 详细级别采用 Python 日志记录包中定义的相同值。 允许值包括：<br/><li>logging.INFO</li><li>logging.WARNING</li><li>logging.ERROR</li><li>logging.CRITICAL</li>  | logging.INFO</li> 
@@ -271,8 +272,8 @@ run = experiment.submit(automl_config, show_output=True)
 ### <a name="classification-metrics"></a>分类指标
 在分类任务的每次迭代中保存以下指标。
 
-|主要指标|Description|计算|其他参数
---|--|--|--|--|
+|主要指标|说明|计算|其他参数
+--|--|--|--|
 AUC_macro| AUC 是接收方操作特性曲线下面的区域。 Macro 是每个类的 AUC 算术平均值。  | [计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_auc_score.html) | average="macro"|
 AUC_Micro| AUC 是接收方操作特性曲线下面的区域。 通过组合每个类中的真报率和误报率来全局计算 Micro| [计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_auc_score.html) | average="micro"|
 AUC_Weighted  | AUC 是接收方操作特性曲线下面的区域。 Weighted 是每个类的评分算术平均值，按每个类中的真实实例数加权| [计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_auc_score.html)|average="weighted"
@@ -297,8 +298,8 @@ weighted_accuracy|加权准确度是当分配给每个示例的权重等于该�
 ### <a name="regression-and-forecasting-metrics"></a>回归和预测指标
 在回归或预测任务的每次迭代中保存以下指标。
 
-|主要指标|Description|计算|其他参数
---|--|--|--|--|
+|主要指标|说明|计算|其他参数
+--|--|--|--|
 explained_variance|解释方差是数学模型计算给定数据集的方差时遵循的比例。 它是原始数据方差与误差方差之间的递减百分比。 如果误差平均值为 0，则它等于解释方差。|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.explained_variance_score.html)|无|
 r2_score|R2 是与输出平均值的基线模型相比，平方误差的确定系数或递减百分比。 如果误差平均值为 0，则它等于解释方差。|[计算](https://scikit-learn.org/0.16/modules/generated/sklearn.metrics.r2_score.html)|无|
 spearman_correlation|斯皮尔曼相关是两个数据集之间的关系单一性的非参数测量法。 与皮尔逊相关不同，斯皮尔曼相关不假设两个数据集呈正态分布。 与其他相关系数一样，此参数在 -1 和 +1 之间变化，0 表示不相关。 -1 或 +1 相关表示确切的单一关系。 正相关表示 y 随着 x 的递增而递增。 负相关表示 y 随着 x 的递增而递减。|[计算](https://docs.scipy.org/doc/scipy-0.16.1/reference/generated/scipy.stats.spearmanr.html)|无|
@@ -309,7 +310,7 @@ normalized_median_absolute_error|规范化中间绝对误差是中间绝对误�
 root_mean_squared_error|均方根误差是目标与预测之间的预期平方差的平方根|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_error.html)|无|
 normalized_root_mean_squared_error|规范化均方根误差是均方根误差除以数据范围后的值|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_error.html)|除以数据范围|
 root_mean_squared_log_error|均方根对数误差是预期平方对数误差的平方根|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_log_error.html)|无|
-normalized_root_mean_squared_log_error|规范化均方根对数误差是均方根对数误差除以数据范围后的值|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_log_error.html)|除以数据范围|
+normalized_root_mean_squared_log_error|规范化均方根对数误差指均方根对数误差除以数据范围后的值|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_log_error.html)|除以数据范围|
 
 ## <a name="explain-the-model"></a>解释模型
 
@@ -321,7 +322,7 @@ normalized_root_mean_squared_log_error|规范化均方根对数误差是均方�
 
 *   完成试验后，可以针对任何迭代使用 `explain_model` 方法。
 
-    ```
+    ```python
     from azureml.train.automl.automlexplainer import explain_model
     
     shap_values, expected_values, overall_summary, overall_imp, per_class_summary, per_class_imp = \
@@ -338,7 +339,7 @@ normalized_root_mean_squared_log_error|规范化均方根对数误差是均方�
 
 *   若要查看所有迭代的特征重要性，请在 AutoMLConfig 中将 `model_explainability` 标志设置为 `True`。  
 
-    ```
+    ```python
     automl_config = AutoMLConfig(task = 'classification',
                                  debug_log = 'automl_errors.log',
                                  primary_metric = 'AUC_weighted',
@@ -355,7 +356,7 @@ normalized_root_mean_squared_log_error|规范化均方根对数误差是均方�
 
     完成后，可以使用 retrieve_model_explanation 方法检索特定迭代的特征重要性。
 
-    ```
+    ```python
     from azureml.train.automl.automlexplainer import retrieve_model_explanation
     
     shap_values, expected_values, overall_summary, overall_imp, per_class_summary, per_class_imp = \

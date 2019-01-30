@@ -10,18 +10,18 @@ ms.topic: conceptual
 ms.date: 01/15/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 664e31590f578b65da09f1e0fe8f57d579ed3cfc
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: 4b6e6cf3fb030f5f9706ded19f85575baed69b39
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54354546"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54471814"
 ---
 # <a name="choose-a-pricing-tier-for-azure-search"></a>选择 Azure 搜索的定价层
 
 在 Azure 搜索中，[资源是在某个定价层或 SKU 中创建的](search-create-service-portal.md)，该定价层或 SKU 在该服务的整个生存期内是固定的。 层包括“免费”、“基本”或“标准”，其中“标准”提供多种配置和容量。 大多数客户从“免费”层开始进行评估，然后升级到“标准”层进行开发和生产部署。 可以在“免费”层上完成所有快速入门和教程，包括资源密集型认知搜索的教程。 
 
-层确定容量而不是功能，其区分依据如下：
+层反映托管服务（而不是功能）的硬件的特征，并按以下标准进行区分：
 
 + 可以创建的索引数
 + 分区（物理存储）的大小和速度
@@ -63,7 +63,7 @@ SU 是服务使用的副本数和分区数的乘积：**`(R X P = SU)`**
 
 ### <a name="billing-for-image-extraction-in-cognitive-search"></a>认知搜索中图像提取的计费
 
-如果从认知搜索索引管道中的文件提取图像，则 Azure 搜索帐单会收取该操作的费用。 触发图像提取的参数是[索引器配置](https://docs.microsoft.com/erest/api/searchservice/create-indexer#indexer-parameters)中的 **imageAction**。 如果 **imageAction** 设置为 none（默认值），则图像提取不产生费用。
+如果从认知搜索索引管道中的文件提取图像，则 Azure 搜索帐单会收取该操作的费用。 触发图像提取的参数是[索引器配置](https://docs.microsoft.com/rest/api/searchservice/create-indexer#indexer-parameters)中的 **imageAction**。 如果 **imageAction** 设置为 none（默认值），则图像提取不产生费用。
 
 定价随时可能会更改，但 Azure 搜索的[定价详细信息](https://azure.microsoft.com/pricing/details/search/)页中始终会阐明定价。 
 

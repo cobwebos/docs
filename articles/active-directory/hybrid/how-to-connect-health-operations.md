@@ -4,7 +4,7 @@ description: 本文介绍在部署 Azure AD Connect Health 后可以执行的其
 services: active-directory
 documentationcenter: ''
 author: zhiweiwangmsft
-manager: mtillman
+manager: daveba
 ms.assetid: 86cc3840-60fb-43f9-8b2a-8598a9df5c94
 ms.service: active-directory
 ms.workload: identity
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: billmath
-ms.openlocfilehash: 7e0e2e19f2f21fa3199cbc4911fed3427cbc162c
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 35bbc44a8a54071530806576294163cb7ba627ea
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51280500"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54478291"
 ---
 # <a name="azure-active-directory-connect-health-operations"></a>Azure Active Directory Connect Health 操作
 本主题介绍可通过使用 Azure Active Directory (Azure AD) Connect Health 执行的各种操作。
@@ -64,6 +64,7 @@ ms.locfileid: "51280500"
 
 1. 通过选择要删除的服务器名称，从“服务器列表”边栏选项卡中打开“服务器”边栏选项卡。
 2. 在操作栏中的“服务器”边栏选项卡上，单击“删除”。
+![Azure AD Connect Health 删除服务器的屏幕截图](./media/how-to-connect-health-operations/DeleteServer2.png)
 3. 在确认框中键入服务器名称以进行确认。
 4. 单击“删除” 。
 
@@ -86,8 +87,9 @@ ms.locfileid: "51280500"
 * 执行此操作后，如果要开始监视此服务，请在所有服务器上先卸载 Health 代理，然后重新安装。 执行此操作后，如果要再次开始监视同一服务器，请先在此服务器上卸载、重新安装并注册 Health 代理。
 
 #### <a name="to-delete-a-service-instance-from-the-azure-ad-connect-health-service"></a>从 Azure AD Connect Health 服务中删除服务实例的步骤
-1. 通过选择要删除的服务标识符（场名称），从“服务列表”边栏选项卡中打开“服务”边栏选项卡。 
-2. 在操作栏中的“服务器”边栏选项卡上，单击“删除”。
+1. 通过选择要删除的服务标识符（场名称），从“服务列表”边栏选项卡中打开“服务”边栏选项卡。  
+2. 在操作栏中的“服务”边栏选项卡上，单击“删除”。 
+![Azure AD Connect Health 删除服务的屏幕截图](./media/how-to-connect-health-operations/DeleteServer.png)
 3. 在确认框中键入服务名称（例如：sts.contoso.com）以进行确认。
 4. 单击“删除” 。
    <br><br>
@@ -110,8 +112,8 @@ Azure AD Connect Health 支持以下内置角色：
 ### <a name="access-scope"></a>访问范围
 Azure AD Connect Health 支持两个级别的访问管理：
 
-* 所有服务实例：这是大多数情况下的建议路径。 它控制由 Azure AD Connect Health 监视的所有角色类型的所有服务实例（例如，AD FS 场）的访问权限。
-* 服务实例：在某些情况下，可能需要根据角色类型或服务实例来区分访问。 在此情况下，可以在服务实例级别管理访问。  
+* **所有服务实例**：这是大多数情况下的建议路径。 它控制由 Azure AD Connect Health 监视的所有角色类型的所有服务实例（例如，AD FS 场）的访问权限。
+* **服务实例**：在某些情况下，可能需要根据角色类型或服务实例来区分访问。 在此情况下，可以在服务实例级别管理访问。  
 
 如果最终用户有权在目录或服务实例级别访问，则会被授予权限。
 

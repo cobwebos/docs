@@ -3,18 +3,18 @@ title: Azure 自动化中的源代码管理集成 - 传统
 description: 本文介绍 Azure 自动化中源代码管理与 GitHub 的集成。
 services: automation
 ms.service: automation
-ms.component: process-automation
+ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
 ms.date: 09/25/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: a6ae91ba768f9aa002c2814133b26dd152c7ef25
-ms.sourcegitcommit: 4edf9354a00bb63082c3b844b979165b64f46286
+ms.openlocfilehash: 8316e571e97fce65b3f8308709d3300bc585663f
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48784802"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54434863"
 ---
 # <a name="source-control-integration-in-azure-automation---legacy"></a>Azure 自动化中的源代码管理集成 - 传统
 
@@ -66,7 +66,7 @@ ms.locfileid: "48784802"
      | **Parameter** | **值** |
      |:--- |:--- |
      | 名称 |Microsoft.Azure.Automation.SourceControl.Connection |
-     | Type |String |
+     | 类型 |String |
      | 值 |{"Branch":\<分支名称>,"RunbookFolderPath":\<Runbook 文件夹路径>,"ProviderType":\<GitHub 具有值 1>,"Repository":\<存储库名称>,"Username":\< GitHub 用户名称>} |
 
     * 变量 **Microsoft.Azure.Automation.SourceControl.OAuthToken** 包含 OAuthToken 的安全加密值。  
@@ -74,12 +74,12 @@ ms.locfileid: "48784802"
     |**Parameter**            |**值** |
     |:---|:---|
     | 名称  | Microsoft.Azure.Automation.SourceControl.OAuthToken |
-    | Type | Unknown(Encrypted) |
+    | 类型 | Unknown(Encrypted) |
     | 值 | <加密的 OAuthToken> |  
 
     ![变量](media/automation-source-control-integration-legacy/automation_04_Variables.png)  
 
-    * **自动化源代码管理**已作为已授权的应用程序添加到 GitHub 帐户。 若要查看应用程序，请从 GitHub 主页导航到“配置文件” > “设置” > “应用程序”。 此应用程序可让 Azure 自动化将 GitHub 存储库同步到自动化帐户。  
+    * **自动化源代码管理**已作为已授权的应用程序添加到 GitHub 帐户。 若要查看应用程序，请执行以下操作：从 GitHub 主页导航到“配置文件” > “设置” > “应用程序”。 此应用程序可让 Azure 自动化将 GitHub 存储库同步到自动化帐户。  
 
     ![Git 应用程序](media/automation-source-control-integration-legacy/automation_05_GitApplication.png)
 
@@ -99,7 +99,7 @@ Runbook 签入可让你将对 Azure 自动化中的 Runbook 所做的更改推�
 1. 单击“签入”时，会通过一条确认消息进行提示，请单击“是”以继续操作。  
    
     ![签入消息](media/automation-source-control-integration-legacy/automation_07_CheckinMessage.png)
-2. 签入启动源代码管理 Runbook：**Sync-MicrosoftAzureAutomationAccountToGitHubV1**。 此 Runbook 将连接到 GitHub 并将 Azure 自动化中的更改推送到存储库。 若要查看已签入的作业历史记录，请返回到“源代码管理集成”选项卡，单击以打开“存储库同步”页面。 此页面将显示所有源代码管理作业。  选择要查看的作业，并单击以查看详细信息。  
+2. 签入操作会启动源代码管理 runbook：**Sync-MicrosoftAzureAutomationAccountToGitHubV1**。 此 Runbook 将连接到 GitHub 并将 Azure 自动化中的更改推送到存储库。 若要查看已签入的作业历史记录，请返回到“源代码管理集成”选项卡，单击以打开“存储库同步”页面。 此页面将显示所有源代码管理作业。  选择要查看的作业，并单击以查看详细信息。  
    
     ![签入 Runbook](media/automation-source-control-integration-legacy/automation_08_CheckinRunbook.png)
    
@@ -110,7 +110,7 @@ Runbook 签入可让你将对 Azure 自动化中的 Runbook 所做的更改推�
 3. 修改后的 Runbook 的名称将发送为已签入 Runbook 的输入参数。 可以通过在“存储库同步”页面中展开 Runbook 来[查看作业详细信息](automation-runbook-execution.md#viewing-job-status-from-the-azure-portal)。  
    
     ![签入输入](media/automation-source-control-integration-legacy/automation_09_CheckinInput.png)
-4. 在作业完成时刷新 GitHub 存储库可以查看更改。  存储库中应有一个提交项，其提交消息为：“已在 Azure 自动化中更新 Runbook 名称”。  
+4. 在作业完成时刷新 GitHub 存储库可以查看更改。  存储库中应有一个提交项，其提交消息为：“已在 Azure 自动化中更新 *Runbook 名称*。”  
 
 ### <a name="sync-runbooks-from-source-control-to-azure-automation"></a>将源代码管理中的 Runbook 同步到 Azure 自动化
 使用“存储库同步”页面上的“同步”按钮，可以将存储库的 Runbook 文件夹路径中的所有 Runbook 提取到自动化帐户。 同一个存储库可以同步到多个自动化帐户。 以下是同步 Runbook 的步骤：
@@ -118,7 +118,7 @@ Runbook 签入可让你将对 Azure 自动化中的 Runbook 所做的更改推�
 1. 从设置源代码管理的自动化帐户中，打开“源代码管理集成/存储库同步”页面，然后单击“同步”。在出现确认消息提示时，单击“是”以继续操作。  
    
     ![同步按钮](media/automation-source-control-integration-legacy/automation_10_SyncButtonwithMessage.png)
-2. 同步启动 Runbook：**Sync-MicrosoftAzureAutomationAccountFromGitHubV1**。 此 Runbook 将连接到 GitHub 并将存储库中的更改提取到 Azure 自动化。 此操作的“存储库同步”页面中应该会显示一个新作业。 若要查看同步作业的详细信息，请单击以打开作业详细信息页面。  
+2. 同步操作会启动 runbook：**Sync-MicrosoftAzureAutomationAccountFromGitHubV1**。 此 Runbook 将连接到 GitHub 并将存储库中的更改提取到 Azure 自动化。 此操作的“存储库同步”页面中应该会显示一个新作业。 若要查看同步作业的详细信息，请单击以打开作业详细信息页面。  
    
     ![同步 Runbook](media/automation-source-control-integration-legacy/automation_11_SyncRunbook.png)
 
@@ -142,4 +142,5 @@ Runbook 签入可让你将对 Azure 自动化中的 Runbook 所做的更改推�
 * [Azure 自动化：Azure 自动化中的源代码管理集成](https://azure.microsoft.com/blog/azure-automation-source-control-13/)  
 * [喜爱的源代码管理系统投票](https://www.surveymonkey.com/r/?sm=2dVjdcrCPFdT0dFFI8nUdQ%3d%3d)  
 * [Azure 自动化：使用 Azure DevOps 集成 Runbook 源代码管理](https://azure.microsoft.com/blog/azure-automation-integrating-runbook-source-control-using-visual-studio-online/)  
+
 

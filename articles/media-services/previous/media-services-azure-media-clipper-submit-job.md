@@ -9,17 +9,17 @@ ms.author: dwgeo
 ms.date: 11/10/2017
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: 8372c405087c0dc7a000a65265bb99c395c3a8d6
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 0894c3677b87fe48c130d648253dadd0d43429f4
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33783176"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54821441"
 ---
 # <a name="submit-clipping-jobs-from-azure-media-clipper"></a>从 Azure 媒体剪辑器提交剪辑作业
 Azure 媒体剪辑器需要实现 submitSubclipCallback 方法才可以处理剪辑作业提交。 该功能用于实现指向 Web 服务的 Clipper 输出的 HTTP POST。 此 Web 服务是可以在其中提交编码作业的位置。 Clipper 的输出是对呈现作业的 Media Encoder Standard 编码预设，或者是动态清单筛选器调用的 REST API 有效负载。 此传递模型是必需的，因为客户端浏览器中的媒体服务帐户凭据并不安全。
 
-以下序列图阐释浏览器客户端、Web 服务和 Azure 媒体服务之间的工作流程：![Azure 媒体剪辑器序列图](media/media-services-azure-media-clipper-submit-job/media-services-azure-media-clipper-sequence-diagram.PNG)
+以下序列图阐释了浏览器客户端、Web 服务和 Azure 媒体服务之间的工作流：![Azure 媒体剪辑器序列图](media/media-services-azure-media-clipper-submit-job/media-services-azure-media-clipper-sequence-diagram.PNG)
 
 在上图中，这四个实体是：最终用户的浏览器、Web 服务、承载剪辑器资源的 CDN 终结点和 Azure 媒体服务。 当最终用户导航到 Web 页时，该页从承载的 CDN 终结点获取剪辑器 JavaScript 和 CSS 资源。 最终用户从浏览器配置剪裁作业或动态清单筛选器创建调用。 当最终用户提交作业或筛选器创建调用时，浏览器会将作业有效负载放入必须部署的 Web 服务中。 此 Web 服务最终使用媒体服务帐户凭据将剪裁作业或筛选器创建调用提交到 Azure 媒体服务。
 
@@ -31,7 +31,7 @@ Azure 媒体剪辑器需要实现 submitSubclipCallback 方法才可以处理剪
 // Parameter:
 // - subclip: object that represents the subclip (output contract).
 //
-// Returns: a Promise object that, when resolved, retuns true if the operation was accept in the back-end; otherwise, returns false.
+// Returns: a Promise object that, when resolved, returns true if the operation was accept in the back-end; otherwise, returns false.
 var onSubmitSubclip = function (subclip) {
     var promise = new Promise(function (resolve, reject) {
         // TODO: perform the back-end AJAX request to submit the subclip job.
@@ -99,7 +99,7 @@ var subclipper = new subclipper({
     "type": "job",
 
     /* Required if "type" === "job" */
-    /* NOTE: This is the preset for the Media Encoder Standard (MES) processor that can be used in the back-end to sumit the subclip job.
+    /* NOTE: This is the preset for the Media Encoder Standard (MES) processor that can be used in the back-end to submit the subclip job.
     The encoding profile ("Codecs" property) depends on the "singleBitrateMp4Profile" and "multiBitrateMp4Profile" option parameters
     specified when creating the widget instance. */
     /* REFERENCE: https://docs.microsoft.com/azure/media-services/media-services-advanced-encoding-with-mes */

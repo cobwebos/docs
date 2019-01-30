@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/24/2018
 ms.author: cwatson
-ms.openlocfilehash: 98ce2127cc9f60128767f8e4409134f2393ac84f
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: 5aca80a4ebeadc9e54cf99fb4a220c6ee7c37cae
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53582416"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54857006"
 ---
 # <a name="prevent-unexpected-charges-with-azure-billing-and-cost-management"></a>通过 Azure 计费和成本管理来防止意外费用
 
@@ -64,6 +64,24 @@ ms.locfileid: "53582416"
 
 单击该标题，并按照提示移除支出限制。 如果注册时未输入信用卡信息，则必须输入信息才能移除支出限制。 有关详细信息，请参阅 [Azure 支出限制 - 其工作原理以及如何将其启用或移除](https://azure.microsoft.com/pricing/spending-limits/)。
 
+可以使用 [Cloudyn](https://www.cloudyn.com/) 服务创建警报，自动通知利益干系人支出异常和超支风险。 可以使用支持基于预算和成本阈值的警报的报表创建警报。 有关使用 Cloudyn 的更多信息，请参阅[教程：查看使用情况和成本](../cost-management/tutorial-review-usage.md)。
+
+当你在 Azure VM 上的支出接近总预算时，此示例使用“一段时间的实际成本”报表来发送通知。 在此场景中，你的总预算为 20,000 美元，你希望在成本接近预算的一半（9,000 美元）时收到通知，在成本为 10,000 美元时再次收到警报。
+
+1. 在 Cloudyn 门户顶部的菜单中，选择“成本” > “成本分析” > “时段实际成本”。 
+2. 将“组”设置为“服务”，并将“按服务筛选”设置为“Azure/VM”。 
+3. 在报表的右上角，选择“操作”，然后选择“计划报表”。
+4. 若要按计划的时间间隔向自己发送有关报表的电子邮件，请在“保存或计划此报表”对话框中选择“计划”选项卡。 请务必选择“通过电子邮件发送”。 你使用的任何标记、分组和筛选均包含在通过电子邮件发送的报表中。 
+5. 选择“阈值”选项卡，然后选择“实际成本与阈值”**。**。 
+   1. 在“红色警报”阈值框中，输入 10000。 
+   2. 在“黄色警报”阈值框中，输入 9000。 
+   3. 在“连续警报数”框中，输入要接收的连续警报的数目。 当你收到的警报总数达到指定数目时，就不会再发送任何其他警报。 
+6. 选择“保存”。
+
+    ![基于支出阈值显示红色和黄色警报的示例](./media/billing-getting-started/schedule-alert01.png)
+
+还可以选择“成本百分比与预算”阈值指标来创建警报。 这样就可以将阈值指定为预算的百分比而不是货币值。
+
 ## <a name="ways-to-monitor-your-costs-when-using-azure-services"></a>使用 Azure 服务时监视成本的方法
 
 ### <a name="tags"></a>对资源添加标记以便对计费数据进行分组
@@ -90,7 +108,7 @@ ms.locfileid: "53582416"
 
     ![Azure 门户中成本分析视图的屏幕截图](./media/billing-getting-started/cost-analysis.PNG)
 
-4. 可按[标记](#tags)、资源组和时间跨度等不同的属性进行筛选。 单击“应用”确认筛选条件，如果想要将视图导出为逗号分隔值 (.csv) 文件，请单击“下载”。
+4. 可按[标记](#tags)、资源类型、资源组和时间跨度等不同的属性进行筛选。 单击“应用”确认筛选条件，如果想要将视图导出为逗号分隔值 (.csv) 文件，请单击“下载”。
 
 5. 此外，还可以单击资源，查看每日费用历史记录以及每天的资源成本。
 

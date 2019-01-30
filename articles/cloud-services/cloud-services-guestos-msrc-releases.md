@@ -11,17 +11,68 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 1/7/2019
+ms.date: 1/22/2019
 ms.author: raiye
-ms.openlocfilehash: 154b925cc173a1a8fac697e347759764807a3052
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 0a9b811f3781cd181c17b9ed92b9ca653ee91af0
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54107899"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54828445"
 ---
 # <a name="azure-guest-os"></a>Azure 来宾 OS
 下表显示了适用于 Azure 来宾 OS 的 Microsoft 安全响应中心 (MSRC) 更新。 要确定特定的更新是否适用于使用的来宾 OS，请搜索本文。 引入这些更新的特定[系列][family-explain]始终会包含这些更新。
+
+>[!NOTE]
+>目前，我们正在将 1 月来宾 OS 推广到配置为自动更新的云服务 VM。 推出完成后，此版本将可通过 Azure 门户和配置文件进行手动更新。 1 月来宾 OS 中包含以下修补程序。 此列表可能随时变动。
+
+## <a name="january-2019-guest-os"></a>2019 年 1 月来宾 OS
+
+| 产品类别 | 上层知识库文章 | 漏洞描述 | 来宾 OS | 首次引入日期 |
+| --- | --- | --- | --- | --- |
+| Rel 19-01 | [4480961] | Windows 10 安全性 | 5.27 | 2019 年 1 月 8 日 |
+| Rel 19-01 | [4480964] | Windows 安全性 | 4.62 | 2019 年 1 月 8 日 |
+| Rel 19-01 | [4480972] | Windows 安全性 | 3.69 | 2019 年 1 月 8 日 |
+| Rel 19-01 | [4480960] | Windows 安全性 | 2.82 | 2019 年 1 月 8 日 |
+| Rel 19-01 | [4480074] | .Net 4.x 安全性 | 4.62 | 2019 年 1 月 8 日 |
+| Rel 19-01 | [4480075] | .Net 4.x 安全性 | 3.69 | 2019 年 1 月 8 日 |
+| Rel 19-01 | [4480076] | .Net 4.x 安全性 | 2.82 | 2019 年 1 月 8 日 |
+| Rel 19-01 | [4480086] | .Net 3.x 安全性 | 4.62 | 2019 年 1 月 8 日 |
+| Rel 19-01 | [4480083] | .Net 3.x 安全性 | 3.69 | 2019 年 1 月 8 日 |
+| Rel 19-01 | [4480085] | .Net 3.x 安全性 | 2.82 | 2019 年 1 月 8 日 |
+| Rel 19-01 | [4480979] | 闪烁 | 3.69、4.62、5.27 | 2019 年 1 月 8 日 |
+| Rel 19-01 | [4480965] | Internet Explorer | 2.82、3.69、4.62 | 2019 年 1 月 8 日 |
+| 不适用 | [4471318] | 12 月非安全性汇总 | 2.82 | 2018 年 12 月 11 日 |
+| 不适用 | [4470641] | 12 月非安全性汇总 .NET 3.x | 2.82 | 2018 年 12 月 11 日 |
+| 不适用 | [4470637] | 12 月非安全性汇总 .NET 4.x | 2.82 | 2018 年 12 月 11 日 |
+| 不适用 | [4471330] | 12 月非安全性汇总 | 3.69 | 2018 年 12 月 11 日 |
+| 不适用 | [4470629] | 12 月非安全性汇总 .NET 3.x | 3.69 | 2018 年 12 月 11 日 |
+| 不适用 | [4470623] | 12 月非安全性汇总 .NET 4.x | 3.69 | 2018 年 12 月 11 日 |
+| 不适用 | [4471320] | 12 月非安全性汇总 | 4.62 | 2018 年 12 月 11 日 |
+| 不适用 | [4470630] | 12 月非安全性汇总 .NET 3.x | 4.62 | 2018 年 12 月 11 日 |
+| 不适用 | [4470622] | 12 月非安全性汇总 .NET 4.x | 4.62 | 2018 年 12 月 11 日 |
+
+[4480961]: http://support.microsoft.com/kb/4480961
+[4480964]: http://support.microsoft.com/kb/4480964
+[4480972]: http://support.microsoft.com/kb/4480972
+[4480960]: http://support.microsoft.com/kb/4480960
+[4480074]: http://support.microsoft.com/kb/4480074
+[4480075]: http://support.microsoft.com/kb/4480075
+[4480076]: http://support.microsoft.com/kb/4480076
+[4480086]: http://support.microsoft.com/kb/4480086
+[4480083]: http://support.microsoft.com/kb/4480083
+[4480085]: http://support.microsoft.com/kb/4480085
+[4480979]: http://support.microsoft.com/kb/4480979
+[4480965]: http://support.microsoft.com/kb/4480965
+[4471318]: http://support.microsoft.com/kb/4471318
+[4470641]: http://support.microsoft.com/kb/4470641
+[4470637]: http://support.microsoft.com/kb/4470637
+[4471330]: http://support.microsoft.com/kb/4471330
+[4470629]: http://support.microsoft.com/kb/4470629
+[4470623]: http://support.microsoft.com/kb/4470623
+[4471320]: http://support.microsoft.com/kb/4471320
+[4470630]: http://support.microsoft.com/kb/4470630
+[4470622]: http://support.microsoft.com/kb/4470622
 
 ## <a name="december-2018-guest-os"></a>2018 年 12 月来宾 OS
 

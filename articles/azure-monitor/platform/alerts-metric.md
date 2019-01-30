@@ -6,17 +6,17 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 09/18/2018
 ms.author: snmuvva
-ms.component: alerts
-ms.openlocfilehash: 4aa6f8fdf4eaa8e439c1a8c8c0202cf49a04433c
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.subservice: alerts
+ms.openlocfilehash: 117b65265c853194e93a97fe5e2b2dcc6e9f5bc2
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53584293"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54807382"
 ---
 # <a name="create-view-and-manage-metric-alerts-using-azure-monitor"></a>使用 Azure Monitor 创建、查看和管理指标警报
 
-Azure Monitor 中的指标警报提供了一种在指标超出阈值时获得通知的方式。 指标警报适用于一系列多维平台指标、自定义指标、Application Insights 标准指标和自定义指标。 本文将会介绍如何通过 Azure 门户和 Azure CLI 创建、查看和管理指标警报规则。 也可以使用 Azure 资源管理器模板创建指标警报规则，[另外的文章](../../azure-monitor/platform/alerts-enable-template.md)将会介绍此方法。
+Azure Monitor 中的指标警报提供了一种在指标超出阈值时获得通知的方式。 指标警报适用于一系列多维平台指标、自定义指标、Application Insights 标准指标和自定义指标。 本文将会介绍如何通过 Azure 门户和 Azure CLI 创建、查看和管理指标警报规则。 也可以使用 Azure 资源管理器模板创建指标警报规则，[另外的文章](alerts-metric-create-templates.md)将会介绍此方法。
 
 可以在[指标警报概述](alerts-metric-overview.md)中详细了解指标警报的工作原理。
 
@@ -31,23 +31,23 @@ Azure Monitor 中的指标警报提供了一种在指标超出阈值时获得通
     > [!TIP]
     > 大多数资源边栏选项卡的资源菜单中的“监视”下面也包含“警报”，同样可从中创建警报。
 
-3. 在加载的上下文窗格中单击“选择目标”，选择要修改的目标资源。 使用“订阅”和“资源类型”下拉列表查找要监视的资源。 也可以使用搜索栏查找资源。
+3. 在加载的上下文窗格中单击“选择目标”，选择要发出警报的目标资源。 使用“订阅”和“资源类型”下拉列表查找要监视的资源。 也可以使用搜索栏查找资源。
 
-4. 如果选定的资源具有可创建警报的指标，则右下方的“可用信号”将包含这些指标。 可在[此文](../../azure-monitor/platform/alerts-metric-near-real-time.md#metrics-and-dimensions-supported)中查看指标警报支持的资源类型的完整列表
+4. 如果选定的资源具有可创建警报的指标，则右下方的“可用信号”将包含这些指标。 可在[此文](../../azure-monitor/platform/alerts-metric-near-real-time.md#metrics-and-dimensions-supported)中查看指标警报支持的资源类型的完整列表。
 
-5. 选择目标资源之后，单击“添加条件”
+5. 选择目标资源后，单击“添加条件”。
 
 6. 此时会显示资源支持的信号列表，请选择要为其创建警报的指标。
 
-7. 随后会该指标在显示过去 6 小时的图表。 定义“期限”、“频率”、“运算符”和“阈值”，确定指标警报规则评估的逻辑。
+7. （可选）通过调整“时间段”和“聚合”来优化指标。 如果指标包含维度，则会显示“维度”表。 为每个维度选择一个或多个值。 指标警报将会运行，以评估所选值的所有组合的条件。 [详细了解如何针对多维指标发出警报](alerts-metric-overview.md)。 还可以针对任一维度**选择 \***。 **选择 \*** 会将选择范围动态调整为某个维度的所有当前和未来值。
 
-8. 使用指标图表可以确定可能合理的阈值。
+8. 随后会该指标在显示过去 6 小时的图表。 定义警报参数；“条件类型”、“频率”、“运算符”和“阈值”或“敏感度”，这将确定指标预警规则的计算逻辑。 [详细了解动态阈值条件类型和敏感度选项](alerts-dynamic-thresholds.md)。
 
-9. （可选）如果指标包含维度，则会显示“维度”表。 为每个维度选择一个或多个值。 指标警报将会运行，以评估所选值的所有组合的条件。 [详细了解如何针对多维指标发出警报](alerts-metric-overview.md)。 还可以针对任一维度**选择 \***。 **选择 \*** 会将选择范围动态调整为某个维度的所有当前和未来值。
+9. 如果使用静态阈值，指标图表可以帮助确定可能的合理阈值。 如果使用动态阈值，指标图表将显示基于最新数据计算得出的阈值。
 
 10. 单击“完成” 
 
-11. （可选）若要监视复杂的警报规则，请添加另一个条件
+11. （可选）若要监视复杂的预警规则，请添加另一个条件。 目前，用户可以将包含动态阈值条件的预警规则用作单一条件。
 
 12. 填写“警报详细信息”，例如“警报规则名称”、“说明”和“严重性”
 
@@ -73,7 +73,7 @@ Azure Monitor 中的指标警报提供了一种在指标超出阈值时获得通
 
 4. 单击要编辑的指标警报规则的名称
 
-5. 在“编辑规则”中，单击要编辑的“警报条件”。 可根据需要更改指标、阈值和其他字段
+5. 在“编辑规则”中，单击要编辑的“警报条件”。 可根据需要更改指标、阈值条件和其他字段
 
     > [!NOTE]
     > 创建指标警报后，无法编辑“目标资源”和“警报规则名称”。
@@ -92,10 +92,10 @@ Azure Monitor 中的指标警报提供了一种在指标超出阈值时获得通
     az monitor metrics alert --help
     ```
 
-3. 可以创建一个简单的指标警报规则来监视 VM 上的平均 CPU 百分比是否大于 70
+3. 可以创建一个简单的指标预警规则来监视 VM 上的平均 CPU 百分比是否大于 90
 
     ```azurecli
-    az monitor metrics alert create -n {nameofthealert} -g {ResourceGroup} --scopes {VirtualMachineResourceID} --condition "avg Percentage CPU > 90"
+    az monitor metrics alert create -n {nameofthealert} -g {ResourceGroup} --scopes {VirtualMachineResourceID} --condition "avg Percentage CPU > 90" --description {descriptionofthealert}
     ```
 
 4. 可以使用以下命令查看资源组中的所有指标警报
@@ -117,17 +117,19 @@ Azure Monitor 中的指标警报提供了一种在指标超出阈值时获得通
 6. 可以使用以下命令禁用指标警报规则。
 
     ```azurecli
-    az monitor metrics alert update -g {ResourceGroup} -n {AlertRuleName} -enabled false
+    az monitor metrics alert update -g {ResourceGroup} -n {AlertRuleName} --enabled false
     ```
 
 7. 可以使用以下命令删除指标警报规则。
 
     ```azurecli
-    az monitor metrics alert update -g {ResourceGroup} -n {AlertRuleName} -enabled false
+    az monitor metrics alert delete -g {ResourceGroup} -n {AlertRuleName}
     ```
 
 ## <a name="next-steps"></a>后续步骤
 
 - [使用 Azure 资源管理器模板创建指标警报](../../azure-monitor/platform/alerts-enable-template.md)。
 - [了解指标警报的工作原理](alerts-metric-overview.md)。
+- [了解指标警报与动态阈值条件的工作原理](alerts-dynamic-thresholds.md)。
 - [了解指标警报的 Webhook 架构](../../azure-monitor/platform/alerts-metric-near-real-time.md#payload-schema)
+

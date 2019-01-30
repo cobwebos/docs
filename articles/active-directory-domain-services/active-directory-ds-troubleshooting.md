@@ -1,10 +1,10 @@
 ---
-title: Azure Active Directory 域服务：故障排除指南 | Microsoft 文档
+title: Azure Active Directory 域服务：疑难解答指南 | Microsoft Docs
 description: Azure AD 域服务故障排除指南
 services: active-directory-ds
 documentationcenter: ''
 author: eringreenlee
-manager: mtillman
+manager: daveba
 editor: curtand
 ms.assetid: 4bc8c604-f57c-4f28-9dac-8b9164a0cf0b
 ms.service: active-directory
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/08/2018
 ms.author: ergreenl
-ms.openlocfilehash: e2b7eb4f5be5e73e70f883f9510e7fc6a13d6bea
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 8b752585fc72b7f4be8e7b9320290f8ad56f53c2
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50156080"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54844647"
 ---
 # <a name="azure-ad-domain-services---troubleshooting-guide"></a>Azure AD 域服务 - 故障排除指南
 本文提供设置或管理 Azure Active Directory (AD) 域服务时可能遇到的问题的故障排除提示。
@@ -128,7 +128,7 @@ if ($sp -ne $null)
 ## <a name="users-are-unable-to-sign-in-to-the-azure-ad-domain-services-managed-domain"></a>用户无法登录 Azure AD 域服务托管域
 如果 Azure AD 租户中有一个或多个用户无法登录到新建的托管域，请执行以下故障排除步骤：
 
-* **使用 UPN 格式登录：** 尝试使用 UPN 格式（例如“joeuser@contoso.com”）而非 SAMAccountName 格式（例如“CONTOSO\joeuser”）登录。 对于 UPN 前缀过长或与托管域上另一用户相同的用户，系统可能会自动生成 SAMAccountName。 UPN 格式可保证在 Azure AD 租户中唯一。
+* **使用 UPN 格式登录：** 尝试使用 UPN 格式（例如“joeuser@contoso.com”）而不是 SAMAccountName 格式（例如“CONTOSO\joeuser”）登录。 对于 UPN 前缀过长或与托管域上另一用户相同的用户，系统可能会自动生成 SAMAccountName。 UPN 格式可保证在 Azure AD 租户中唯一。
 
 > [!NOTE]
 > 建议使用 UPN 格式登录到 Azure AD 域服务托管域。

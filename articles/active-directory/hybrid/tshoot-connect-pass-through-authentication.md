@@ -1,11 +1,11 @@
 ---
-title: Azure AD Connect：对直通身份验证进行故障排除 | Microsoft Docs
+title: Azure AD Connect：对直通身份验证进行故障排除 | Microsoft 文档
 description: 本文介绍如何对 Azure Active Directory (Azure AD) 直通身份验证进行故障排除。
 services: active-directory
 keywords: 对 Azure AD Connect 直通身份验证进行故障排除, 安装 Active Directory, Azure AD 所需的组件, SSO, 单一登录
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 ms.assetid: 9f994aca-6088-40f5-b2cc-c753a4f41da7
 ms.service: active-directory
 ms.workload: identity
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 11/14/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 6172195a9914d841e480cd7ebbf9566616911378
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: db3dfc10d6936b063a225e48fd043b6208f10475
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51686188"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54472766"
 ---
 # <a name="troubleshoot-azure-active-directory-pass-through-authentication"></a>对 Azure Active Directory 直通身份验证进行故障排除
 
@@ -43,7 +43,7 @@ ms.locfileid: "51686188"
 
 如果用户无法使用直通身份验证进行登录，可能会在 Azure AD 登录屏幕上看到下列面向用户的错误之一： 
 
-|错误|Description|解决方法
+|错误|说明|解决方法
 | --- | --- | ---
 |AADSTS80001|无法连接到 Active Directory|确保代理服务器是需要验证其密码的用户所在的 AD 林的成员，并且能够连接到 Active Directory。  
 |AADSTS8002|连接到 Active Directory 时超时|检查以确保 Active Directory 可用，并且可以响应代理的请求。
@@ -66,7 +66,7 @@ ms.locfileid: "51686188"
 | 80002 | 身份验证代理的密码验证请求已超时。 | 检查是否可以从身份验证代理访问你的 Active Directory。
 | 80003 | 身份验证代理收到的响应无效。 | 如果在多个用户中均可重现此问题，请检查你的 Active Directory 配置。
 | 80004 | 在登录请求中使用的用户主体名称 (UPN) 不正确。 | 要求用户使用正确的用户名登录。
-| 80005 | 身份验证代理：出现错误。 | 暂时性的错误。 请稍后重试。
+| 80005 | 身份验证代理：出错。 | 暂时性的错误。 请稍后重试。
 | 80007 | 身份验证代理无法连接到 Active Directory。 | 检查是否可以从身份验证代理访问你的 Active Directory。
 | 80010 | 身份验证代理无法解密密码。 | 如果可始终重现该问题，请安装并注册新的身份验证代理。 并卸载当前的代理。 
 | 80011 | 身份验证代理无法检索到解密密钥。 | 如果可始终重现该问题，请安装并注册新的身份验证代理。 并卸载当前的代理。
@@ -95,7 +95,7 @@ ms.locfileid: "51686188"
 
 ### <a name="warning-message-when-uninstalling-azure-ad-connect"></a>卸载 Azure AD Connect 时出现警告消息
 
-如果在租户中启用了直通身份验证，则当尝试卸载 Azure AD Connect 时，会显示以下警告消息：“除非已在其他服务器上安装其他直通身份验证代理，否则用户无法登录到 Azure AD。”
+如果已在租户上启用直通身份验证并尝试卸载 Azure AD Connect，会收到以下警告消息：“用户将无法登录 Azure AD，除非你已在其他服务器上安装其他直通身份验证代理。”
 
 在卸载 Azure AD Connect 之前，确保设置具有[高可用性](how-to-connect-pta-quick-start.md#step-4-ensure-high-availability)，以免影响用户登录。
 
@@ -137,7 +137,7 @@ ms.locfileid: "51686188"
         DateTime=xxxx-xx-xxTxx:xx:xx.xxxxxxZ
 ```
 
-可以通过打开命令提示符并运行以下命令来获取错误（在上述示例中为错误“1328”）的描述性详细信息（注意：请将“1328”替换为在日志中看到的实际错误编号）：
+可以通过打开命令提示符并运行以下命令来获取错误（在前述示例中为错误“1328”）的描述性详细信息（注意：需要将“1328”替换为日志中显示的实际错误编号）：
 
 `Net helpmsg 1328`
 

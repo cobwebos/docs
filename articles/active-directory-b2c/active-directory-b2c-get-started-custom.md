@@ -3,19 +3,19 @@ title: Azure Active Directory B2C 中的自定义策略入门 | Microsoft Docs
 description: Azure Active Directory B2C 自定义策略入门方法。
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/17/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: b4ff8b607f9fded02a519b5f2a3abdfeedf93d88
-ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
+ms.openlocfilehash: 235b72393801717bb5d7258d6492dc4c943fe232
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47181766"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54852297"
 ---
 # <a name="get-started-with-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 中的自定义策略入门
 
@@ -30,7 +30,7 @@ ms.locfileid: "47181766"
 ## <a name="add-signing-and-encryption-keys"></a>添加签名和加密密钥
 
 1. 以 Azure AD B2C 租户的全局管理员身份登录 [Azure 门户](https://portal.azure.com/)。
-2. 请确保使用包含 Azure AD B2C 租户的目录，方法是：单击顶部菜单中的“目录和订阅筛选器”，然后选择包含租户的目录。 
+2. 请确保使用包含 Azure AD B2C 租户的目录，方法是单击顶部菜单中的“目录和订阅筛选器”，然后选择包含租户的目录。 
 
     ![切换到 Azure AD B2C 租户](./media/active-directory-b2c-setup-fb-app/switch-directories.png)
 

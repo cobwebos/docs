@@ -4,7 +4,7 @@ description: 了解如何在 Azure Active Directory 和 LinkedIn Elevate 之间�
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: 2ad9941b-c574-42c3-bd0f-5d6ec68537ef
 ms.service: active-directory
 ms.component: saas-app-tutorial
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/16/2018
 ms.author: jeedes
-ms.openlocfilehash: 8b11b5e3e420577590e95c6839673f54c52d078b
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.openlocfilehash: 209f87a77ff6e18fa08943385d9cf61bbf915089
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49116170"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54822631"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-linkedin-elevate"></a>教程：Azure Active Directory 与 LinkedIn Elevate 的集成
+# <a name="tutorial-azure-active-directory-integration-with-linkedin-elevate"></a>教程：Azure Active Directory 与 LinkedIn Elevate 集成
 
 本教程介绍了如何将 LinkedIn Elevate 与 Azure Active Directory (Azure AD) 进行集成。
 
@@ -119,7 +119,7 @@ ms.locfileid: "49116170"
 
     ![配置单一登录](./media/linkedinelevate-tutorial/tutorial_linkedin_signon_01.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“标识符”文本框中，输入从 LinkedIn 门户复制的“实体 ID” 
+    a. 在“标识符”文本框中，输入从 LinkedIn 门户复制的“实体 ID” 
 
     b. 在“回复 URL”文本框中，输入从 LinkedIn 门户复制的“断言使用者访问(ACS) URL”
 
@@ -141,7 +141,7 @@ ms.locfileid: "49116170"
 
       ![创建 Azure AD 测试用户](./media/linkedinelevate-tutorial/userattribute.png)
 
-      a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 单击“添加属性”，打开属性详细信息页，添加如下所示的 department 属性
+      a. 单击“添加属性”，打开属性详细信息页，添加如下所示的 department 属性
 
       ![创建 Azure AD 测试用户](./media/linkedinelevate-tutorial/adduserattribute.png)
 
@@ -188,7 +188,7 @@ ms.locfileid: "49116170"
 
     ![创建 Azure AD 测试用户](./media/linkedinelevate-tutorial/create_aaduser_04.png) 
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
+    a. 在“名称”文本框中，键入 **BrittaSimon**。
 
     b. 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
@@ -240,9 +240,9 @@ LinkedIn Elevate 应用程序支持及时用户设置，进行身份验证后，
 
 ## <a name="additional-resources"></a>其他资源
 
-* [教程：使用 Azure Active Directory 为LinkedIn Elevate 配置自动用户预配](linkedinelevate-provisioning-tutorial.md)
+* [教程：使用 Azure Active Directory 为 LinkedIn Elevate 配置自动用户预配](linkedinelevate-provisioning-tutorial.md)
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](tutorial-list.md)
-* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
+* [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 * [配置用户预配](linkedinelevate-provisioning-tutorial.md)
 
 <!--Image references-->

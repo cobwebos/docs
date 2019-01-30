@@ -3,19 +3,19 @@ title: 参考 - Azure Active Directory B2C 中的信任框架 | Microsoft Docs
 description: 本主题介绍了 Azure Active Directory B2C 自定义策略和标识体验框架。
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 08/04/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 00d2f37068c5bedb17ba9a4064d1f5058f5ab72c
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.openlocfilehash: 694d463c158f8c8beb0396edf22ac749c03e9e97
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39185772"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54845684"
 ---
 # <a name="define-trust-frameworks-with-azure-ad-b2c-identity-experience-framework"></a>使用 Azure AD B2C 标识体验框架定义信任框架
 
@@ -49,14 +49,13 @@ TF 是开放标识交换 (OIX) 信任框架模型的关键，在这种模型中�
     - 参与者提供/所需的保证级别 (LOA)；例如，数字标识信息真实性的一组有序置信度评级。
     - 参与者提供/所需的保护级别 (LOP)；例如，相关社区中参与者处理的数字标识信息受保护程度的一组有序置信度评级。
 
-- 
-  **参与者提供/所需的数字标识信息的说明**。
+- **参与者提供/所需的数字标识信息的说明**。
 
 - **有关生成和使用数字标识信息的技术策略，因而这些策略也与度量 LOA 和 LOP 有关。这些书面策略通常包括以下策略类别：**
-    - 标识证明策略，例如：个人标识信息的审查强度如何？
-    - 安全策略，例如：信息完整性和保密性的保护强度如何？
-    - 隐私策略，例如：用户对个人身份信息 (PII) 拥有哪些控制权？
-    - 留存性策略，例如：当提供者停止操作时 PII 的持续性和保护如何？
+    - 身份证明策略，例如：*个人身份信息的审查强度如何？*
+    - 安全策略，例如：*信息完整性和保密性的保护强度如何？*
+    - 隐私策略，例如：*用户对个人身份信息 (PII) 拥有哪些控制权？*
+    - 留存性策略，例如：*当提供者停止操作时 PII 的持续性和保护如何？*
 
 - **有关生成和使用数字标识信息的技术配置文件。这些配置文件包括：**
     - 为根据指定 LOA 提供数字标识信息界定了接口范围。

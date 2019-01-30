@@ -4,7 +4,7 @@ description: 了解如何在 Azure Active Directory 与 Aha! 之间配置单一�
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: ad955d3d-896a-41bb-800d-68e8cb5ff48d
 ms.service: active-directory
 ms.component: saas-app-tutorial
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/10/2017
 ms.author: jeedes
-ms.openlocfilehash: 30f0f316727cfcf20daa58c35d0ba11c25311898
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: d46467947116da6f6e5439a54e0315f216961819
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39044112"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54813213"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-aha"></a>教程：Azure Active Directory 与 Aha! 集成
 
@@ -112,7 +112,7 @@ ms.locfileid: "39044112"
 
     ![配置单一登录](./media/aha-tutorial/tutorial_aha_url.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“登录 URL”文本框中，使用以下模式键入 URL： `https://<companyname>.aha.io/session/new`
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL： `https://<companyname>.aha.io/session/new`
 
     b. 在“标识符”文本框中，使用以下模式键入 URL：`https://<companyname>.aha.io`
 
@@ -149,7 +149,7 @@ ms.locfileid: "39044112"
     
     ![单一登录](./media/aha-tutorial/IC798954.png "单一登录")
     
-       a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”文本框中，键入配置名称。
+       a. 在“名称”文本框中，键入配置名称。
 
        b. 对于“配置使用”，请选择“元数据文件”。
    
@@ -158,7 +158,7 @@ ms.locfileid: "39044112"
        d. 单击“更新”。
 
 > [!TIP]
-> 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[ Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
+> 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
 ### <a name="creating-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
@@ -184,7 +184,7 @@ ms.locfileid: "39044112"
  
     ![创建 Azure AD 测试用户](./media/aha-tutorial/create_aaduser_04.png) 
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”文本框中，键入 **BrittaSimon**。
+    a. 在“名称”文本框中，键入 **BrittaSimon**。
 
     b. 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
@@ -240,7 +240,7 @@ ms.locfileid: "39044112"
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](tutorial-list.md)
-* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
+* [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

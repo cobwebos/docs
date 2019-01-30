@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: article
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: c45023a462a5c01dfde806d7abbb9714aaf09b85
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 99b3a65feb232526cffecac4fec68d56fcd16ccb
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53189466"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54846279"
 ---
 # <a name="track-experiments-and-training-metrics-in-azure-machine-learning"></a>跟踪试验和训练指标 - Azure 机器学习
 
@@ -128,10 +128,10 @@ ms.locfileid: "53189466"
 
 此示例在上面的基本 sklearn 岭模型的基础上进行扩展。 它会对模型的 alpha 值执行简单的参数扫描以捕获指标，并通过在实验中运行来训练模型。 该示例在一个用户管理的环境中执行本地运行。 
 
-1. 创建训练脚本。 此代码使用 ```%%writefile%%``` 将训练代码以 ```train.py``` 的形式写出到脚本文件夹。
+1. 创建定型脚本 `train.py`。
 
   ```python
-  %%writefile $project_folder/train.py
+  # train.py
 
   import os
   from sklearn.datasets import load_diabetes
@@ -182,10 +182,11 @@ ms.locfileid: "53189466"
   
   ```
 
-2. ```train.py``` 脚本引用 ```mylib.py```。 通过此文件，可获取要在岭模型中使用的 alpha 值的列表。
+2. `train.py` 脚本引用 `mylib.py`，通过后者，可获取要在岭模型中使用的 alpha 值的列表。
 
   ```python
-  %%writefile $script_folder/mylib.py
+  # mylib.py
+  
   import numpy as np
 
   def get_alphas():
@@ -216,7 +217,31 @@ ms.locfileid: "53189466"
   src = ScriptRunConfig(source_directory = './', script = 'train.py', run_config = run_config_user_managed)
   run = experiment.submit(src)
   ```
+
+## <a name="cancel-a-run"></a>取消运行
+提交某个运行后，只要知道实验名称和运行 id，即使已丢失对象引用，仍可将其取消。 
+
+```python
+from azureml.core import Experiment
+exp = Experiment(ws, "my-experiment-name")
+
+# if you don't know the run id, you can list all runs under an experiment
+for r in exp.get_runs():  
+    print(r.id, r.get_status())
+
+# if you know the run id, you can "rehydrate" the run
+from azureml.core import get_run
+r = get_run(experiment=exp, run_id="my_run_id", rehydrate=True)
   
+# check the returned run type and status
+print(type(r), r.get_status())
+
+# you can only cancel a run if the status is Running
+if r.get_status() == 'Running':
+    r.cancel()
+```
+请注意，当前仅 ScriptRun 和 PipelineRun 类型支持取消操作。
+
 ## <a name="view-run-details"></a>查看运行详细信息
 
 ### <a name="monitor-run-with-jupyter-notebook-widgets"></a>使用 Jupyter 笔记本小组件监视运行

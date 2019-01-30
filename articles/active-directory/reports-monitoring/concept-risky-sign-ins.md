@@ -3,7 +3,7 @@ title: Azure Active Directory 门户中的“有风险的登录”报告 | Micro
 description: 了解 Azure Active Directory 门户中的“有风险的登录”报告
 services: active-directory
 author: priyamohanram
-manager: mtillman
+manager: daveba
 ms.assetid: 7728fcd7-3dd5-4b99-a0e4-949c69788c0f
 ms.service: active-directory
 ms.devlang: na
@@ -14,12 +14,12 @@ ms.component: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 8e92288883a7779130e3b7f7a8433b61f76aa18c
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: 402aae15ae4fe8e6961fbc76a4ddaa470b8c797a
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54244709"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54807756"
 ---
 # <a name="risky-sign-ins-report-in-the-azure-active-directory-portal"></a>Azure Active Directory 门户中的“有风险的登录”报告
 
@@ -61,9 +61,9 @@ Azure Active Directory (Azure AD) 可以检测到与用户帐户相关的可疑�
 
 Azure AD 免费版和基本版提供针对用户检测到的有风险的登录列表。 每个记录包含以下属性：
 
-- **用户** - 在登录操作期间使用的用户的名称
-- **IP** - 用于连接到 Azure Active Directory 的设备的 IP 地址
-- **位置** - 用于连接到 Azure Active Directory 的位置
+- **用户** - 在登录操作期间使用的用户的名称。
+- **IP** - 用于连接到 Azure Active Directory 的设备的 IP 地址。
+- **位置** - 用于连接到 Azure Active Directory 的位置。 这是基于跟踪、注册表数据、反向查询和其他信息的最佳近似值。
 - **登录时间** - 进行登录的时间
 - **状态** - 登录的状态
 
@@ -106,6 +106,9 @@ Azure AD Premium 版的风险登录报告提供：
 - 手动关闭风险事件。 
 
 ![有风险的登录](./media/concept-risky-sign-ins/457.png)
+
+> [!IMPORTANT]
+> 有时，可能会在[登录报表](concept-sign-ins.md)中发现没有相应登录输入的风险事件。 这是因为 Identity Protection 会评估**交互式**和**非交互式**登录的风险，而登录报表只显示交互式登录。
 
 选择用户时，可获取此用户的详细报表视图，以便：
 

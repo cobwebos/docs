@@ -1,10 +1,10 @@
 ---
-title: 教程：Azure Active Directory 与 Pingboard 集成 | Microsoft Docs
+title: 教程：Azure Active Directory 与 Pingboard 的集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 和 Pingboard 之间配置单一登录。
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: joflore
 ms.assetid: 28acce3e-22a0-4a37-8b66-6e518d777350
 ms.service: active-directory
@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/15/2018
 ms.author: jeedes
-ms.openlocfilehash: 794e3f6fe568d76f0687caa36709185f2a538270
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 02aabb9260cb0140b61091a8002f70d464091ddd
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39436094"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54818109"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-pingboard"></a>教程：Azure Active Directory 与 Pingboard 集成
+# <a name="tutorial-azure-active-directory-integration-with-pingboard"></a>教程：Azure Active Directory 与 Pingboard 的集成
 
 在本教程中，了解如何将 Pingboard 与 Azure Active Directory (Azure AD) 集成。
 
@@ -207,7 +207,7 @@ ms.locfileid: "39436094"
 
     d. 在“位置”下拉列表中，选择 Britta Simon 的位置。
 
-    e. 单击 **“添加”**。
+    e. 单击“添加”。
 
 1. 确认界面随即出现，以便确认添加用户。
 
@@ -256,7 +256,7 @@ ms.locfileid: "39436094"
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](tutorial-list.md)
-* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
+* [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 * [配置用户预配](pingboard-provisioning-tutorial.md)
 
 <!--Image references-->

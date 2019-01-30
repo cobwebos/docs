@@ -1,10 +1,10 @@
 ---
-title: 教程：Azure Active Directory 与 direct 的集成 | Microsoft Docs
+title: 教程：Azure Active Directory 与 direct 集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 和 direct 之间配置单一登录。
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: 7c2cd1f0-d14c-42f0-94a8-9b800008b285
 ms.service: active-directory
 ms.component: saas-app-tutorial
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/06/2018
 ms.author: jeedes
-ms.openlocfilehash: 7e693a721e5556970607fafd8ff187d3b06c913e
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: 6bb197b820b9f4262eb5c93665c46c14f9497d0f
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44092880"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54822648"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-direct"></a>教程：Azure Active Directory 与 direct 的集成
+# <a name="tutorial-azure-active-directory-integration-with-direct"></a>教程：Azure Active Directory 与 direct 集成
 
 本教程介绍如何将 direct 与 Azure Active Directory (Azure AD) 集成。
 
@@ -118,7 +118,7 @@ ms.locfileid: "44092880"
 
     ![配置单一登录](./media/direct-tutorial/tutorial_direct_url1.png)
 
-     在“登录 URL”文本框中，键入 URL：`https://direct4b.com/sso` 
+     在“登录 URL”文本框中，键入 URL：`https://direct4b.com/sso` 
 
 5. 在“SAML 签名证书”部分中，单击“元数据 XML”，并在计算机上保存元数据文件。
 
@@ -164,7 +164,7 @@ ms.locfileid: "44092880"
 
 ### <a name="creating-a-direct-test-user"></a>创建 direct 测试用户
 
-在本部分中，将在 direct 中创建一个名为“Britta Simon”的用户。 请与 [direct 支持团队](https://direct4b.com/ja/support.html#inquiry)协作，将用户添加到 direct 平台中。 使用单一登录前，必须先创建并激活用户。 
+在本部分中，将在 direct 中创建一个名为“Britta Simon”的用户。 请与  [direct 支持团队](https://direct4b.com/ja/support.html#inquiry) 协作，将用户添加到 direct 平台中。 使用单一登录前，必须先创建并激活用户。 
 
 ### <a name="assigning-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
@@ -208,14 +208,14 @@ ms.locfileid: "44092880"
 
     a. 单击访问面板中的 direct 磁贴时，将会重定向到应用程序登录页。
 
-    b. 在显示的文本框中输入 `subdomain`，然后按“次へ (下一步)”，此时应当会自动登录到 direct 应用程序。
+    b. 在显示的文本框中输入 `subdomain`，然后按“下一步”，此时应当会自动登录到 **direct** 应用程序。
 
-有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md)（访问面板简介）。
+有关访问面板的详细信息，请参阅[访问面板简介](../user-help/active-directory-saas-access-panel-introduction.md)。
 
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](tutorial-list.md)
-* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
+* [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

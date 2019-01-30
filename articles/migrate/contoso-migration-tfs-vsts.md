@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/11/2018
 ms.author: raynew
-ms.openlocfilehash: 79c95a53ace4fd5ab638587d1b74980812fbc273
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.openlocfilehash: 20c1e2a4394c249b410a1253356d0ef96c30e970
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49116957"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54818891"
 ---
 # <a name="contoso-migration--refactor-a-team-foundation-server-deployment-to-azure-devops-services"></a>Contoso 迁移：将 Team Foundation Server 部署重构到 Azure DevOps Services
 
@@ -33,7 +33,7 @@ ms.locfileid: "49116957"
 [文章 9：将应用重构到 Azure Web 应用和 Azure SQL 数据库](contoso-migration-refactor-web-app-sql.md) | 演示 Contoso 如何将 SmartHotel 应用迁移到基于 Azure 容器的 Web 应用，并将应用数据库迁移到 Azure SQL Server。 | 可用
 [文章 10：将 Linux 应用重构到 Azure 应用服务和 Azure MySQL 服务器](contoso-migration-refactor-linux-app-service-mysql.md) | 展示 Contoso 如何使用 PHP 7.0 Docker 容器将 Linux 应用 osTicket 迁移到 Azure 应用服务。 部署的代码库迁移到 GitHub。 应用数据库迁移到 Azure MySQL。 | 可用
 文章 11：在 Azure DevOps Services 中重构 TFS 部署 | 将开发应用 TFS 迁移到 Azure 中的 Azure DevOps Services | 本文
-[文章 12：基于 Azure 容器和 Azure SQL 数据库重构应用](contoso-migration-rearchitect-container-sql.md) | 展示 Contoso 如何将其 SmartHotel 应用迁移并重新架构到 Azure。 他们将应用 Web 层重新架构为 Windows 容器，将应用数据库重新架构到 Azure SQL 数据库中。 | 可用
+[文章 12：在 Azure 容器和 Azure SQL 数据库上重塑应用架构](contoso-migration-rearchitect-container-sql.md) | 展示 Contoso 如何将其 SmartHotel 应用迁移并重新架构到 Azure。 他们将应用 Web 层重新架构为 Windows 容器，将应用数据库重新架构到 Azure SQL 数据库中。 | 可用
 [文章 13：在 Azure 中重新生成应用](contoso-migration-rebuild.md) | 展示 Contoso 如何使用一系列 Azure 功能和服务（包括应用服务、Azure Kubernetes、Azure Functions、认知服务和 Cosmos DB）重新生成其 SmartHotel 应用。 | 可用
 [文章 14：到 Azure 的大规模迁移](contoso-migration-scale.md) | 尝试过组合迁移后，Contoso 准备大规模整体迁移到 Azure。 | 可用
 
@@ -91,15 +91,15 @@ Contoso 将按如下方式完成迁移进程：
 
 > [!div class="checklist"]
 > * **步骤 1：创建 Azure 存储帐户**：在迁移过程中将使用此存储帐户。
-> * **步骤 2：升级 TFS**：部署升级到 TFS 2018 Upgrade 2。 
+> * **步骤 2：升级 TFS**：将部署升级到 TFS 2018 Upgrade 2。 
 > * **步骤 3：验证集合**：在执行迁移准备工作时将验证 TFS 集合。
-> * **步骤 4：构建准备工作文件**：使用 TFS 迁移工具创建迁移文件。 
+> * **步骤 4：构建准备工作文件**：Contoso 使用 TFS 迁移工具创建迁移文件。 
 
 
 ## <a name="step-1-create-a-storage-account"></a>步骤 1：创建存储帐户
 
 1. 在 Azure 门户中，Contoso 管理员创建存储帐户 (**contosodevmigration**)。
-2. 他们将该帐户放置在用于故障转移的次要区域“美国中部”内。 他们使用具有本地冗余存储的常规用途标准帐户。
+2. 他们将该帐户放置在用于故障转移的次要区域“美国中部”内。 使用具有本地冗余存储的常规用途标准帐户。
 
     ![存储帐户](./media/contoso-migration-tfs-vsts/storage1.png) 
 
@@ -175,7 +175,7 @@ Contoso 管理员在迁移之前针对 ContosoDev 集合数据库运行 TFS 迁�
 
      ![TFS](./media/contoso-migration-tfs-vsts/collection5.png)
 
-6. 再次运行验证命令，并包括此值以及 Azure AD 名称：**TfsMigrator validate /collection:http://contosotfs:8080/tfs/ContosoDev /tenantDomainName:contosomigration.onmicrosoft.com**。
+6. 再次运行验证命令，并包括此值及其 Azure AD 名称：**TfsMigrator validate /collection:http://contosotfs:8080/tfs/ContosoDev /tenantDomainName:contosomigration.onmicrosoft.com**.
 
     ![TFS](./media/contoso-migration-tfs-vsts/collection7.png)
 
@@ -301,7 +301,7 @@ Contoso 管理员生成 DACPAC，如下所示：
 
     ![备份](./media/contoso-migration-tfs-vsts/backup2.png)
 
-3. 验证 DACPACfile 的属性
+3. 验证 DACPAC 文件的属性
 
     ![备份](./media/contoso-migration-tfs-vsts/backup3.png)
 
@@ -341,9 +341,9 @@ Contoso 管理员生成 DACPAC，如下所示：
 
 之前，Contoso 管理员已经部分填写了导入规范文件 (import.json)。 现在，他们需要添加剩余的设置。
 
-他们打开 import.json 文件，并填写以下字段：•   Location：前面生成的 SAS 密钥的位置。
-•   Dacpac：将名称设置为你上传到存储帐户的 DACPAC 文件的名称。 包括“.dacpac”扩展名。
-• ImportType：目前设置为 DryRun。
+打开 import.json 文件并填写以下字段：•   位置：上面生成的 SAS 密钥的位置。
+•   Dacpac：将名称设置为上传到存储帐户的 DACPAC 文件的名称。 包括“.dacpac”扩展名。
+•   ImportType：目前设置为 DryRun。
 
 
 ![导入设置](./media/contoso-migration-tfs-vsts/import1.png)
@@ -418,7 +418,7 @@ Contoso 管理员首先试运行迁移，确保一切按预期正常工作
 
     ![生产](./media/contoso-migration-tfs-vsts/full1.png)
 
-3. 像试运行时那样开始迁移：**TfsMigrator import /importFile:C:\TFSMigrator\import.json**。
+3. 开始迁移，就像在试运行中那样：**TfsMigrator import /importFile:C:\TFSMigrator\import.json**。
 4. 此时会显示一条消息，用以确认迁移，并且提醒用户，数据最多可以在一个作为临时区域的安全位置存储七天。
 
     ![生产](./media/contoso-migration-tfs-vsts/full2.png)

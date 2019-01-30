@@ -3,19 +3,19 @@ title: Azure Active Directory B2C 中的使用情况报表 API 示例和定义 |
 description: 获取有关 Azure AD B2C 租户用户、身份验证和多重身份验证报表的指南和示例。
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 08/04/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 544b0618f9135b684846c42bb7edeb37cf599883
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: cce6d71864d1c3e957937e374e90ee95a99e9f3c
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37445528"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54844351"
 ---
 # <a name="accessing-usage-reports-in-azure-ad-b2c-via-the-reporting-api"></a>通过报告 API 访问 Azure AD B2C 中的使用情况报表
 
@@ -97,12 +97,12 @@ if ($oauth.access_token -ne $null) {
 
 
 ## <a name="usage-report-definitions"></a>使用情况报表定义
-* **tenantUserCount**：过去 30 天，每天租户中的用户数计数（按标识提供者的类型分类）。 （或者，`TimeStamp` 筛选器提供从指定日期到当前日期的用户计数）。 报表提供：
+* **tenantUserCount**：过去 30 天，每天租户中的用户数（按标识提供者的类型分类）。 （或者，`TimeStamp` 筛选器提供从指定日期到当前日期的用户计数）。 报表提供：
   * **TotalUserCount**：所有用户对象数。
   * **OtherUserCount**：Azure Active Directory 用户（而非 Azure AD B2C 用户）数。
   * **LocalUserCount**：使用 Azure AD B2C 租户的本地凭据创建的 Azure AD B2C 用户帐户数。
 
-* **AlternateIdUserCount**：使用外部标识提供程序（例如，Facebook、Microsoft 帐户或其他 Azure Active Directory 租户，也称为 `OrgId`）注册的 Azure AD B2C 用户数。
+* **AlternateIdUserCount**：使用外部标识提供者（例如，Facebook、Microsoft 帐户或其他 Azure Active Directory 租户，也称为 `OrgId`）注册的 Azure AD B2C 用户数。
 
 * **b2cAuthenticationCountSummary**：过去 30 天内，可计费身份验证的日计数总和（按天和身份验证流的类型分类）。
 

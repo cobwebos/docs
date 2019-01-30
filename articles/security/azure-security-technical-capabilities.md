@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/01/2017
 ms.author: TomSh
-ms.openlocfilehash: b58d6315c4399a7bb23514eb90ab5a94acda2592
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: c74c208e77539833c2bc5e1323713191e29aec64
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51249024"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54820234"
 ---
 # <a name="azure-security-technical-capabilities"></a>Azure 安全技术功能
 
@@ -181,7 +181,7 @@ Azure 中的访问控制首先体现在计费方面。 Azure 帐户的所有者�
 
 - 静态：包括物理媒体（磁盘或光盘）上以静态方式存在的所有信息存储对象、容器和类型。
 
-- 传输中：数据在组件、位置或程序之间发送时，例如通过网络、通过服务总线（从本地到云，反之亦然，包括诸如 ExpressRoute 的混合连接），或在输入/输出过程中，会被视为动态数据。
+- 动态：数据在组件、位置或程序之间发送时，例如通过网络、通过服务总线（从本地到云，反之亦然，包括诸如 ExpressRoute 的混合连接），或在输入/输出过程中，会被视为动态数据。
 
 ### <a name="encryption-at-rest"></a>静态加密
 
@@ -216,7 +216,7 @@ Azure 中的访问控制首先体现在计费方面。 Azure 帐户的所有者�
 
 对于所使用的每个存储，充分利用现有的静态加密支持。
 
-- Azure 存储：请参阅[静态数据的 Azure 存储服务加密](https://docs.microsoft.com/azure/storage/storage-service-encryption)
+- Azure 存储：请参阅[静态数据的 Azure 存储服务加密](https://docs.microsoft.com/azure/storage/storage-service-encryption)，
 
 - SQL Azure：请参阅[透明数据加密 (TDE)、SQL Always Encrypted](https://msdn.microsoft.com/library/mt163865.aspx)
 
@@ -248,7 +248,7 @@ PaaS v1 当前不支持 Azure 磁盘加密。 因此，必须使用应用程序�
 
 由于静态加密涉及主机、基础结构和租户数据的加密，因此，因系统故障或恶意活动导致密钥丢失可能意味着丢失所有加密数据。 因此，静态加密解决方案必须具备能够弹性应对系统故障和恶意活动的全面灾难恢复方案，这一点很重要。
 
-通常，实施静态加密的服务仍然容易受到加密密钥或主机驱动器上（例如，在主机 OS 的页面文件中）未加密数据的影响。因此，服务必须确保对用于其服务的主机卷进行加密。 为了简化此过程，计算团队启用了主机加密部署，该部署使用 [Bitlocker](https://technet.microsoft.com/library/dn306081.aspx) NKP 以及 DCM 服务和代理的扩展对主机卷进行加密。
+通常，实施静态加密的服务仍然容易受到加密密钥或主机驱动器上（例如，在主机 OS 的页面文件中）未加密数据的影响。因此，服务必须确保对用于其服务的主机卷进行加密。 为了简化此过程，计算团队启用了主机加密部署，该部署使用 [BitLocker](https://technet.microsoft.com/library/dn306081.aspx) NKP 以及 DCM 服务和代理的扩展对主机卷进行加密。
 
 大多数服务在标准 Azure VM 上实施。 此类服务应在计算团队启用[主机加密](https://docs.microsoft.com/azure/security/azure-security-disk-encryption)时自动获取该功能。 在已推出的 Windows Server 2016 中，会自动为计算托管群集中运行的服务启用主机加密。
 
@@ -370,7 +370,7 @@ Azure 支持通过 [ExpressRoute](https://docs.microsoft.com/azure/expressroute/
 
 [Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/site-recovery-overview) 可帮助协调工作负荷和应用的复制、故障转移及恢复，因此能够在主要位置发生故障时通过辅助位置来提供工作负荷和应用。
 
-## <a name="ensure-compliance-cloud-services-due-diligence-checklist-protect"></a>确保合规性：云服务审慎调查清单（保护）
+## <a name="ensure-compliance-cloud-services-due-diligence-checklist-protect"></a>确保符合性：云服务审慎调查清单（保护）
 
 Microsoft 制定了[云服务审慎调查清单](https://aka.ms/cloudchecklist.download)，帮助组织在考虑迁移到云时执行审慎调查。 它为所有规模、所有类型的组织（私有企业和公共部门组织，包括所有级别的政府部门和非盈利组织）提供了一种结构，用于确定他们自己的性能、服务、数据管理以及监管目标和要求。 这样，他们就可以对不同云服务提供商的服务/产品进行比较，最终构成云服务协议的基础。
 

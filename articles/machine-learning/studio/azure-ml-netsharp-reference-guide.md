@@ -1,17 +1,17 @@
 ---
-title:Net# 神经网络 titleSuffix: Azure 机器学习工作室 description:有关 Net# 神经网络规范语言的语法，以及如何使用 Net# 和 Azure 机器学习工作室创建自定义神经网络模型的示例。
+title:使用 Net# titleSuffix 创建自定义神经网络： Azure 机器学习工作室 description:Net# 神经网络规范语言的语法指南。 了解如何在 Azure 机器学习工作室中创建自定义神经网络模型。
 services: machine-learning ms.service: machine-learning ms.component: studio ms.topic: reference
 
 author: ericlicoding ms.author: amlstudiodocs ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro ms.date:03/01/2018
 ---
 # <a name="guide-to-net-neural-network-specification-language-for-azure-machine-learning-studio"></a>有关 Azure 机器学习工作室的 Net# 神经网络规范语言的指南
 
-Net# 是由 Microsoft 开发的一种用于定义神经网络体系结构的语言。 使用 Net# 定义神经网络的结构使定义复杂结构（如深层神经网络或任意维度的卷积）变得可能，这些复杂结构被认为可提高对数据的学习，如映像、音频或视频。
+Net# 是由 Microsoft 开发的用于定义复杂神经网络体系结构（例如深度神经网络或任意维度的卷积）的语言。 可使用复杂的结构改进图像、视频或音频等数据的学习。
 
 在下列上下文中，可以使用 Net# 体系结构规范：
 
 + Microsoft Azure 机器学习工作室中的所有神经网络模块：[多类神经网络](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/multiclass-neural-network)[双类神经网络](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/two-class-neural-network)和[神经网络回归](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/neural-network-regression)
-+ MicrosoftML 中的神经网络函数：R 语言的 [NeuralNet](https://docs.microsoft.com/machine-learning-server/r-reference/microsoftml/neuralnet) 和 [rxNeuralNet](https://docs.microsoft.com/machine-learning-server/r-reference/microsoftml/rxneuralnet)，以及 Python 的 [rx_neural_network](https://docs.microsoft.com/machine-learning-server/python-reference/microsoftml/rx-neural-network)。
++ Microsoft ML Server 中的神经网络函数：R 语言的 [NeuralNet](https://docs.microsoft.com/machine-learning-server/r-reference/microsoftml/neuralnet) 和 [rxNeuralNet](https://docs.microsoft.com/machine-learning-server/r-reference/microsoftml/rxneuralnet)，以及 Python 的 [rx_neural_network](https://docs.microsoft.com/machine-learning-server/python-reference/microsoftml/rx-neural-network)。
 
 
 本文介绍了使用 Net# 开发自定义神经网络的基本概念和所需语法： 
@@ -26,17 +26,17 @@ Net# 是由 Microsoft 开发的一种用于定义神经网络体系结构的语�
 
 神经网络结构包括了在层中组织的节点，以及节点之间的加权连接（或边缘）。 连接是有方向的，每个连接具有一个源节点和一个目标节点。  
 
-每个可训练层（隐藏或输出层）具有一个或多个**连接捆绑**。 连接捆绑包括一个源层和该源层中的连接规范。 给定捆绑中的所有连接共享同一源层和同一目标层。 在 Net # 中，连接捆绑将视为属于捆绑的目标层。
+每个可训练层（隐藏或输出层）具有一个或多个**连接捆绑**。 连接捆绑包括一个源层和该源层中的连接规范。 给定捆绑中的所有连接共享源层和目标层。 在 Net # 中，连接捆绑将视为属于捆绑的目标层。
 
-Net # 支持各种类型的连接捆绑，可自定义映射到隐藏层和映射到输出的输入方式。
+Net# 支持各种类型的连接捆绑，可自定义映射到隐藏层和映射到输出的输入方式。
 
 默认或标准捆绑是一个**完整捆绑**，其中源层中的每个节点都连接到目标层中的每个节点。
 
 此外，Net# 支持以下四种高级连接捆绑：
 
-+ **筛选捆绑**。 用户可通过使用源层节点和目标层节点的位置来定义一个谓词。 每当谓词为 Ture，节点即连接。
++ **筛选捆绑**。 可通过使用源层节点和目标层节点的位置来定义谓词。 每当谓词为 True，节点即连接。
 
-+ **卷积捆绑**。 用户可在源层中定义节点的小范围邻域。 目标层中的每个节点连接到源层中节点的一个邻域。
++ **卷积捆绑**。 可在源层中定义节点的小范围邻域。 目标层中的每个节点连接到源层中节点的一个邻域。
 
 + **池捆绑**和**响应规范化**捆绑。 这些与卷积捆绑类似，用户可在其中定义源层中小范围的邻域。 不同之处在于这些捆绑中边缘的权重不可训练。 相反，为源节点值应用预定义的函数可确定目标节点值。
 
@@ -245,7 +245,7 @@ hidden P1 [5, 12, 12]
 
 ## <a name="response-normalization-bundles"></a>响应规范化捆绑
 
-**响应规范化**是本地规范化方案，由 Geoffrey Hinton 等人在文章 [ImageNet Classiﬁcation with Deep Convolutional Neural Networks](http://www.cs.toronto.edu/~hinton/absps/imagenet.pdf)（深层卷积神经网络的 ImageNet 分类）中首次引入。 
+**响应规范化**是本地规范化方案，由 Geoffrey Hinton 等人在 [ImageNet Classiﬁcation with Deep Convolutional Neural Networks](http://www.cs.toronto.edu/~hinton/absps/imagenet.pdf)（深层卷积神经网络的 ImageNet 分类）一文中首次提出。 
 
 响应规范化用于避免神经网络中的通用化。 一个神经元在一个非常高的激活级别中激发时，本地响应规范化层将抑制周围神经元的激活级别。 这是通过使用三个参数（`α`、`β` 和 `k`）和一个卷积结构（或邻域形状）来完成的。 目标层 **y** 中的每个神经元对应于源层中神经元 **x**。 **y** 的激活级别由以下公式指定，其中 `f` 是神经元的激活级别，`Nx` 是内核（或包含 **x** 邻域中神经元的集），由以下卷积结构定义：  
 

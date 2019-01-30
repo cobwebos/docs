@@ -3,19 +3,19 @@ title: Azure Active Directory B2C 标识体验框架架构的整数声明转换�
 description: Azure Active Directory B2C 标识体验框架架构的整数声明转换示例。
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 988e25b6a5ef3f99ae7df9076a40e06b403bb029
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: 36412d16328e757b4c28b0c77638e6d87f83b8e0
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44382461"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54855731"
 ---
 # <a name="integer-claims-transformations"></a>整数声明转换
 
@@ -27,7 +27,7 @@ ms.locfileid: "44382461"
 
 将 long 数据类型转换为字符串数据类型。
 
-| 项 | TransformationClaimType | 数据类型 | 说明 |
+| Item | TransformationClaimType | 数据类型 | 说明 |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | inputClaim | long | 要转换为字符串的 ClaimType。 |
 | OutputClaim | outputClaim | 字符串 | 调用此 ClaimsTransformation 后生成的 ClaimType。 |
@@ -48,7 +48,7 @@ ms.locfileid: "44382461"
 ### <a name="example"></a>示例
 
 - 输入声明：
-    - **inputClaim**: 12334 (long)
+    - **inputClaim**：12334 (long)
 - 输出声明： 
-    - **outputClaim**: "12334" (string)
+    - **outputClaim**："12334" (string)
 

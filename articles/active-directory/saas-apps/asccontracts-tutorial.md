@@ -1,10 +1,10 @@
 ---
-title: 教程：Azure Active Directory 与 ASC Contracts 集成 | Microsoft Docs
+title: 教程：Azure Active Directory 与 ASC Contracts 的集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 和 ASC Contracts 之间配置单一登录。
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: f7f54202-1581-4e55-a97e-02633ff9382d
 ms.service: active-directory
 ms.component: saas-app-tutorial
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/21/2017
 ms.author: jeedes
-ms.openlocfilehash: f5eaa61af2c44265f36662e8a3b1f8ff8a747afe
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 5737bd76e7809035f21103f45a20fa8306061f30
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39449547"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54823294"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-asc-contracts"></a>教程：Azure Active Directory 与 ASC Contracts 集成
+# <a name="tutorial-azure-active-directory-integration-with-asc-contracts"></a>教程：Azure Active Directory 与 ASC Contracts 的集成
 
 在本教程中，了解如何将 ASC Contracts 与 Azure Active Directory (Azure AD) 集成。
 
@@ -117,7 +117,7 @@ ms.locfileid: "39449547"
     b. 在 **“回复 URL”** 文本框中，使用以下模式键入 URL：`https://<subdomain>.asccontracts.com/shibboleth.sso/login`
 
     > [!NOTE] 
-    > 这些不是实际值。 请使用实际标识符和回复 URL 更新这些值。 若要获取这些值，请联系 ASC Networks Inc. (ASC) 团队，其电话是 **613.599.6178**。
+    > 这些不是实际值。 请使用实际标识符和回复 URL 更新这些值。 请联系 ASC Networks Inc.(ASC) 团队（电话为 613.599.6178）获取这些值。
 
 1. 在“SAML 签名证书”部分中，单击“元数据 XML”，并在计算机上保存元数据文件。
 
@@ -127,10 +127,10 @@ ms.locfileid: "39449547"
 
     ![配置单一登录](./media/asccontracts-tutorial/tutorial_general_400.png)
 
-1. 若要在 **ASC Contracts** 这边配置单一登录，请致电 ASC Networks Inc. (ASC) 支持部门：**613.599.6178**，并提供下载的**元数据 XML**。 他们会将此应用程序设置为使用在两端正确设置的 SAML SSO 连接。
+1. 若要在“ASC Contracts”端配置单一登录，请致电 ASC Networks Inc.(ASC) 支持团队（电话为 613.599.6178），并向他们提供下载的“元数据 XML”。 他们会将此应用程序设置为使用在两端正确设置的 SAML SSO 连接。
 
 > [!TIP]
-> 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[ Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
+> 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
 
 ### <a name="creating-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 本部分的目的是在 Azure 门户中创建名为 Britta Simon 的测试用户。
@@ -165,7 +165,7 @@ ms.locfileid: "39449547"
  
 ### <a name="creating-an-asc-contracts-test-user"></a>创建 ASC Contracts 测试用户
 
-请咨询 ASC Networks Inc. (ASC) 支持团队（电话：**613.599.6178**），获取在 ASC Contracts 平台添加的用户。
+请咨询 ASC Networks Inc.(ASC) 支持团队（电话为 613.599.6178），获取在 ASC Contracts 平台添加的用户。
 
 ### <a name="assigning-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
@@ -201,12 +201,12 @@ ms.locfileid: "39449547"
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-当在访问面板中单击 ASC Contracts 磁贴时，应该会自动登录 ASC Contracts 应用程序。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md)（访问面板简介）。
+当在访问面板中单击 ASC Contracts 磁贴时，应该会自动登录 ASC Contracts 应用程序。 有关访问面板的详细信息，请参阅 [访问面板简介](../user-help/active-directory-saas-access-panel-introduction.md)。
 
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](tutorial-list.md)
-* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
+* [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
 
 

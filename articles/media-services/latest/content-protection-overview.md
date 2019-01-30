@@ -11,15 +11,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/08/2018
+ms.date: 01/22/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 2a5383952f64edb08717b1a100c74352c9b4246f
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 848d6ffbccc809df1ab5c012c38174e13eacc391
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54187971"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54828243"
 ---
 # <a name="content-protection-overview"></a>内容保护概述
 
@@ -39,9 +39,9 @@ ms.locfileid: "54187971"
 
 1. Azure 媒体服务代码
   
-  * PlayReady、Widevine 和/或 FairPlay 的许可证模板。 使用这些模板可为使用的每个 DRM 配置权利和权限
-  * 许可证交付授权，指定基于 JWT 中的声明执行的授权检查的逻辑
-  * 应用的内容密钥、流式处理协议和相应的 DRM，定义 DRM 加密
+  * 配置 PlayReady、Widevine 和/或 FairPlay 的许可证模板。 使用这些模板可为使用的每个 DRM 配置权利和权限。
+  * 定义许可证交付授权，指定基于 JWT 中的声明执行的授权检查逻辑。
+  * 通过指定应使用的内容密钥和流式处理协议来配置 DRM 加密。
 
   > [!NOTE]
   > 可以使用多个加密类型（AES-128、PlayReady、Widevine、FairPlay）来加密每个资产。 请参阅[流式处理协议和加密类型](#streaming-protocols-and-encryption-types)，以了解有效的组合方式。
@@ -106,7 +106,7 @@ ms.locfileid: "54187971"
 
 若要保护静态资产，应通过存储端加密对资产进行加密。 下表显示了存储端加密在媒体服务 v3 中的工作方式：
 
-|加密选项|Description|媒体服务 v3|
+|加密选项|说明|媒体服务 v3|
 |---|---|---|---|
 |媒体服务存储加密| AES-256 加密，媒体服务管理的密钥|不支持<sup>(1)</sup>|
 |[静态数据的存储服务加密](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)|由 Azure 存储提供的服务器端加密，由 Azure 或客户管理的密钥|支持|

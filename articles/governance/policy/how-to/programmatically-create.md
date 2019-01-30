@@ -4,17 +4,17 @@ description: 本文逐步讲解如何以编程方式创建和管理适用于 Azu
 services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 12/06/2018
+ms.date: 01/23/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 3c8fd185feff9a580e2d23926dcf60cb33121122
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: adeb963333ffc2b587d7468eb357fab8dc4d6bbe
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53312470"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54847044"
 ---
 # <a name="programmatically-create-policies-and-view-compliance-data"></a>以编程方式创建策略和查看符合性数据
 
@@ -22,18 +22,20 @@ ms.locfileid: "53312470"
 
 有关符合性的信息，请参阅[获取符合性数据](getting-compliance-data.md)。
 
+[!INCLUDE [az-powershell-update](../../../../includes/updated-for-az.md)]
+
 ## <a name="prerequisites"></a>先决条件
 
 在开始之前，请确保满足以下先决条件：
 
 1. 安装 [ARMClient](https://github.com/projectkudu/ARMClient)（如果尚未安装）。 该工具可将 HTTP 请求发送到基于 Azure 资源管理器的 API。
 
-1. 将 AzureRM PowerShell 模块更新到最新版本。 有关最新版本的详细信息，请参阅 [Azure PowerShell](https://github.com/Azure/azure-powershell/releases)。
+1. 将 Azure PowerShell 模块更新到最新版本。 有关详细信息，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-az-ps)。 有关最新版本的详细信息，请参阅 [Azure PowerShell](https://github.com/Azure/azure-powershell/releases)。
 
 1. 使用 Azure PowerShell 注册策略见解资源提供程序，以确认订阅可使用资源提供程序正常工作。 若要注册资源提供程序，必须具有为资源提供程序运行注册操作所需的权限。 此操作包含在“参与者”和“所有者”角色中。 运行以下命令，注册资源提供程序：
 
    ```azurepowershell-interactive
-   Register-AzureRmResourceProvider -ProviderNamespace 'Microsoft.PolicyInsights'
+   Register-AzResourceProvider -ProviderNamespace 'Microsoft.PolicyInsights'
    ```
 
    有关注册和查看资源提供程序的详细信息，请参阅[资源提供程序和类型](../../../azure-resource-manager/resource-manager-supported-services.md)。
@@ -72,13 +74,13 @@ ms.locfileid: "53312470"
 1. 运行以下命令，使用 AuditStorageAccounts.json 文件创建策略定义。
 
    ```azurepowershell-interactive
-   New-AzureRmPolicyDefinition -Name 'AuditStorageAccounts' -DisplayName 'Audit Storage Accounts Open to Public Networks' -Policy 'AuditStorageAccounts.json'
+   New-AzPolicyDefinition -Name 'AuditStorageAccounts' -DisplayName 'Audit Storage Accounts Open to Public Networks' -Policy 'AuditStorageAccounts.json'
    ```
 
    该命令创建名为 _Audit Storage Accounts Open to Public Networks_ 的策略定义。
-   有关可用的其他参数的详细信息，请参阅 [New-AzureRmPolicyDefinition](/powershell/module/azurerm.resources/new-azurermpolicydefinition)。
+   有关可用的其他参数的详细信息，请参阅 [New-AzPolicyDefinition](/powershell/module/az.resources/new-azpolicydefinition)。
 
-   在没有位置参数的情况下调用时，`New-AzureRmPolicyDefinition` 默认将策略定义保存在会话上下文的选定订阅中。 若要将定义保存到其他位置，请使用以下参数：
+   在没有位置参数的情况下调用时，`New-AzPolicyDefinition` 默认将策略定义保存在会话上下文的选定订阅中。 若要将定义保存到其他位置，请使用以下参数：
 
    - **SubscriptionId** - 保存到其他订阅。 需要 _GUID_ 值。
    - **ManagementGroupName** - 保存到管理组。 需要_字符串_值。
@@ -86,21 +88,21 @@ ms.locfileid: "53312470"
 1. 创建策略定义后，可运行以下命令创建策略分配：
 
    ```azurepowershell-interactive
-   $rg = Get-AzureRmResourceGroup -Name 'ContosoRG'
-   $Policy = Get-AzureRmPolicyDefinition -Name 'AuditStorageAccounts'
-   New-AzureRmPolicyAssignment -Name 'AuditStorageAccounts' -PolicyDefinition $Policy -Scope $rg.ResourceId
+   $rg = Get-AzResourceGroup -Name 'ContosoRG'
+   $Policy = Get-AzPolicyDefinition -Name 'AuditStorageAccounts'
+   New-AzPolicyAssignment -Name 'AuditStorageAccounts' -PolicyDefinition $Policy -Scope $rg.ResourceId
    ```
 
    将 _ContosoRG_ 替换为所需资源组的名称。
 
-   `New-AzureRmPolicyAssignment` 上的 **Scope** 参数也可用于订阅和管理组。 该参数使用完整资源路径，它将返回 `Get-AzureRmResourceGroup` 的 **ResourceId** 属性。 每个容器的**范围**模式如下所示。
+   `New-AzPolicyAssignment` 上的 **Scope** 参数也可用于订阅和管理组。 该参数使用完整资源路径，它将返回 `Get-AzResourceGroup` 的 **ResourceId** 属性。 每个容器的**范围**模式如下所示。
    将 `{rgName}`、`{subId}` 和 `{mgName}` 分别替换为你的资源组名称、订阅 ID 和管理组名称。
 
    - 资源组 - `/subscriptions/{subId}/resourceGroups/{rgName}`
    - 订阅 - `/subscriptions/{subId}/`
    - 管理组 - `/providers/Microsoft.Management/managementGroups/{mgName}`
 
-有关使用 Azure 资源管理器 PowerShell 模块管理资源策略的详细信息，请参阅 [AzureRM.Resources](/powershell/module/azurerm.resources/#policies)。
+有关使用 Azure 资源管理器 PowerShell 模块管理资源策略的详细信息，请参阅 [Az.Resources](/powershell/module/az.resources/#policies)。
 
 ### <a name="create-and-assign-a-policy-definition-using-armclient"></a>使用 ARMClient 创建并分配策略定义
 
@@ -230,7 +232,7 @@ az policy definition show --name 'Audit Storage Accounts with Open Public Networ
 查看以下文章，详细了解本文中所示的命令和查询。
 
 - [Azure REST API 资源](/rest/api/resources/)
-- [Azure RM PowerShell 模块](/powershell/module/azurerm.resources/#policies)
+- [Azure PowerShell 模块](/powershell/module/az.resources/#policies)
 - [Azure CLI 策略命令](/cli/azure/policy?view=azure-cli-latest)
 - [策略见解资源提供程序 REST API 参考](/rest/api/policy-insights)
 - [使用 Azure 管理组来组织资源](../../management-groups/overview.md)

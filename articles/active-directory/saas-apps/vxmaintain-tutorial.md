@@ -4,7 +4,7 @@ description: 了解如何在 Azure Active Directory 和 vxMaintain 之间配置�
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: 841a1066-593c-4603-9abe-f48496d73d10
 ms.service: active-directory
 ms.component: saas-app-tutorial
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: 7e444692dfeab5ca14fbd896043cc28e2cbd8717
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 590c7961444a36c8958fd82aaf67b05ee2213e74
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39433988"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54819894"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-vxmaintain"></a>教程：Azure Active Directory 与 vxMaintain 集成
 
@@ -157,11 +157,11 @@ ms.locfileid: "39433988"
 
     c. 选择“显示密码”复选框，然后记下“密码”框中生成的值。
 
-    d. 选择**创建**。
+    d. 选择“创建”。
  
 ### <a name="create-a-vxmaintain-test-user"></a>创建 vxMaintain 测试用户
 
-在本部分中，会在 vxMaintain 中创建测试用户 Britta Simon。 与 [vxMaintain 支持团队](https://www.hubspot.com/company/contact)一起将用户添加到 vxMaintain 平台。 在使用 SSO 前创建并激活用户。
+在本部分中，会在 vxMaintain 中创建测试用户 Britta Simon。 若要在 vxMaintain 平台中添加用户，请与  [vxMaintain 支持团队](https://www.hubspot.com/company/contact)协作。 在使用 SSO 前创建并激活用户。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
@@ -195,12 +195,12 @@ ms.locfileid: "39433988"
 
 选择“访问面板”中的“vxMaintain”磁贴时，会自动登录到 vxMaintain 应用程序。
 
-有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md)（访问面板简介）。
+有关访问面板的详细信息，请参阅[访问面板简介](../user-help/active-directory-saas-access-panel-introduction.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
 * [有关将 SaaS 应用与 Azure Active Directory 集成的教程列表](tutorial-list.md)
-* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
+* [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

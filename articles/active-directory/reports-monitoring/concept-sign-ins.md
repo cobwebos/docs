@@ -4,7 +4,7 @@ description: Azure Active Directory 门户中的“登录活动”报告简介
 services: active-directory
 documentationcenter: ''
 author: priyamohanram
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: 4b18127b-d1d0-4bdc-8f9c-6a4c991c5f75
 ms.service: active-directory
@@ -16,12 +16,12 @@ ms.component: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: e1b1102594e7e4470c08cb0f18068dd368c0fe7a
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: 73f90d1df2c1a6a0655a61026112cc2a7a73cb1e
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54245083"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54808623"
 ---
 # <a name="sign-in-activity-reports-in-the-azure-active-directory-portal"></a>Azure Active Directory 门户中的“登录活动”报告
 
@@ -161,7 +161,7 @@ Azure Active Directory (Azure AD) 中的报告体系结构由以下部分组成�
 
 如果要在 **Windows 10** 计算机上运行脚本，则需要先执行一些其他步骤。 
 
-1. 安装 [AzureRM 模块](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-6.4.0l)。
+1. 安装 [AzureRM 模块](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps?view=azurermps-6.4.0l)。
 2. 通过打开 PowerShell 提示符并运行命令 **Import-Module AzureRM** 来导入模块。
 3. 运行 **Set-ExecutionPolicy unrestricted**，并选择 **Yes to All**。 
 4. 现在，可以在管理员模式下运行下载的 PowerShell 脚本以生成 CSV 文件。
@@ -203,7 +203,10 @@ Azure Active Directory (Azure AD) 中的报告体系结构由以下部分组成�
 - 日期
 - 需要 MFA
 - 登录状态
- 
+
+> [!NOTE]
+> IP 地址的发布方式是，在 IP 地址和使用该地址的计算机所在的物理位置之间没有确定的连接。 从中心池发布 IP 地址的移动运营商和 VPN 通常与实际使用客户端设备的位置距离很远，这会导致 IP 地址映射变得复杂。 目前，在 Azure AD 报告中，最好是基于跟踪、注册表数据、反向查看和其他信息将 IP 地址转换为物理位置。
+
 在“用户”页中单击“活动”部分的“登录”即可完全了解所有用户登录活动。
 
 ![登录活动](./media/concept-sign-ins/08.png "登录活动")

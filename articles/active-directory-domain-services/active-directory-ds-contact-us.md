@@ -1,10 +1,10 @@
 ---
-title: Azure Active Directory 域服务：联系我们 | Microsoft 文档
+title: Azure Active Directory 域服务：联系我们 | Microsoft Docs
 description: 联系 Azure AD 域服务产品团队
 services: active-directory-ds
 documentationcenter: ''
 author: eringreenlee
-manager: mtillman
+manager: daveba
 editor: curtand
 ms.assetid: 662362c3-1a5e-4e94-ae09-8e4254443697
 ms.service: active-directory
@@ -15,18 +15,18 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/23/2017
 ms.author: ergreenl
-ms.openlocfilehash: cedf09cd9dae23b3ea00d08b4a19ceb496e4958d
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: feb3f17268443feddcbecd751c9da4bf16051ee5
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50155960"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54849152"
 ---
 # <a name="azure-ad-domain-services---contact-us"></a>Azure AD 域服务 - 联系我们
 ## <a name="contact-the-product-team"></a>联系产品团队
 如果使用托管域时遇到问题，请确认[故障排除指南](active-directory-ds-troubleshooting.md)中所述的步骤是否能够解决该问题。 如果仍有问题，请联系我们。
 
-可以通过 [Azure AD 域服务反馈](mailto:aaddsfb@microsoft.com)向我们发送电子邮件。
+欢迎给我们发送电子邮件：[Azure AD 域服务反馈](mailto:aaddsfb@microsoft.com)。
 
 请务必包含以下信息，便于我们调查问题。
 

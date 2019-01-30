@@ -1,10 +1,10 @@
 ---
-title: 教程：Azure Active Directory 与 Wingspan eTMF 的集成 | Microsoft Docs
+title: 教程：Azure Active Directory 与 Wingspan eTMF 集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 和 Wingspan eTMF 之间配置单一登录。
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: ace320d3-521c-449c-992f-feabe7538de7
 ms.service: active-directory
 ms.component: saas-app-tutorial
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
 ms.author: jeedes
-ms.openlocfilehash: d27d2c6a6c6bae2ebd13f78da308f32275993ec5
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 1573b7259134037a8e573c6a01588ad782505ea3
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39434058"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54821152"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-wingspan-etmf"></a>教程：Azure Active Directory 与 Wingspan eTMF 的集成
+# <a name="tutorial-azure-active-directory-integration-with-wingspan-etmf"></a>教程：Azure Active Directory 与 Wingspan eTMF 集成
 
 本教程介绍了如何将 Wingspan eTMF 与 Azure Active Directory (Azure AD) 进行集成。
 
@@ -132,7 +132,7 @@ ms.locfileid: "39434058"
 1. 要在 **Wingspan eTMF** 端配置单一登录，需要将下载的**元数据 XML** 发送给 [Wingspan eTMF 支持团队](http://www.wingspan.com/contact-us/)。 他们会对此进行设置以在两端正确设置 SAML SSO 连接。
 
 > [!TIP]
-> 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[ Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
+> 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
  
 
 ### <a name="creating-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
@@ -168,7 +168,7 @@ ms.locfileid: "39434058"
  
 ### <a name="creating-a-wingspan-etmf-test-user"></a>创建 Wingspan eTMF 测试用户
 
-在本部分中，会在 Wingspan eTMF 中创建一个名为 Britta Simon 的用户。 与 [Wingspan eTMF 支持团队](http://www.wingspan.com/contact-us/)协作来将用户添加到 Wingspan eTMF 应用程序中。 使用单一登录前，必须先创建并激活用户。
+在本部分中，会在 Wingspan eTMF 中创建一个名为 Britta Simon 的用户。 请与  [Wingspan eTMF 支持团队](http://www.wingspan.com/contact-us/)协作，将用户添加到 Wingspan eTMF 应用程序中。 使用单一登录前，必须先创建并激活用户。
 
 ### <a name="assigning-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
@@ -204,12 +204,12 @@ ms.locfileid: "39434058"
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。 
 
-单击访问面板中的 Wingspan eTMF 磁贴，会被重定向到组织登录页面。 成功登录后，将登录到 Wingspan eTMF 应用程序。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md)（访问面板简介）。
+单击访问面板中的 Wingspan eTMF 磁贴，会被重定向到组织登录页面。 成功登录后，将登录到 Wingspan eTMF 应用程序。 有关访问面板的详细信息，请参阅[访问面板简介](../user-help/active-directory-saas-access-panel-introduction.md)。
 
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](tutorial-list.md)
-* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
+* [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
 
 

@@ -3,19 +3,19 @@ title: 在 Azure Active Directory B2C 中使用 HTTP 基本身份验证保护 RE
 description: 使用 HTTP 基本身份验证保护 Azure AD B2C 中的自定义 REST API 声明交换。
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/25/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: e6cff4e2daf86b63bc0db0d4f2d537322d2841df
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: dcabcbbce78b83c0d4328e0f5b1088c172bcfedb
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47409297"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54850669"
 ---
 # <a name="secure-your-restful-services-by-using-http-basic-authentication"></a>使用 HTTP 基本身份验证保护 RESTful 服务
 
@@ -239,7 +239,7 @@ RESTful 服务受客户端 ID（用户名）和机密的保护后，必须将凭
 
 7. 对于“密钥用法”，请选择“签名”。
 
-8. 选择**创建**。
+8. 选择“创建”。
 
 9. 确认已创建 `B2C_1A_B2cRestClientId` 密钥。
 
@@ -259,7 +259,7 @@ RESTful 服务受客户端 ID（用户名）和机密的保护后，必须将凭
 
 7. 对于“密钥用法”，请选择“签名”。
 
-8. 选择**创建**。
+8. 选择“创建”。
 
 9. 确认已创建 `B2C_1A_B2cRestClientSecret` 密钥。
 

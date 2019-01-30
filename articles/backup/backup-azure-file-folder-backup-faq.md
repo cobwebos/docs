@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 8/6/2018
 ms.author: trinadhk
-ms.openlocfilehash: 5262c99fae965201d4f9519495163d0e16836a7a
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: f5695da01752d701e1b688700580982f2d2e6154
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52726536"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54827408"
 ---
 # <a name="questions-about-the-azure-backup-agent"></a>有关 Azure 备份代理的问题
 本文提供常见问题的解答，有助于快速了解 Azure 备份代理组件。 某些答案提供内含全面信息的文章的链接。 也可以在 [论坛](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup)中发布有关 Azure 备份服务的问题。
@@ -33,7 +33,7 @@ ms.locfileid: "52726536"
 * 只读卷：为使卷影复制服务 (VSS) 起作用，卷必须是可写的。
 * 脱机卷：为使 VSS 起作用，卷必须是联机的。
 * 网络共享：卷必须位于需要使用联机备份进行备份的服务器本地。
-* Bitlocker 保护的卷：必须先解锁卷，才能备份。
+* BitLocker 保护的卷：必须先解锁卷，才能备份。
 * 文件系统标识：NTFS 是受支持的唯一文件系统。
 
 ### <a name="what-file-and-folder-types-can-i-back-up-from-my-serverbr"></a>可以从我的服务器备份哪些文件和文件夹类型？<br/>

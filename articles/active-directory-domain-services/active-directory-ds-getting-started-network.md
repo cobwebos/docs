@@ -4,7 +4,7 @@ description: 使用 Azure 门户启用 Azure Active Directory 域服务
 services: active-directory-ds
 documentationcenter: ''
 author: eringreenlee
-manager: mtillman
+manager: daveba
 editor: curtand
 ms.assetid: ace1ed4a-bf7f-43c1-a64a-6b51a2202473
 ms.service: active-directory
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/23/2018
 ms.author: ergreenl
-ms.openlocfilehash: 70dee552ec575f4969593eac4e91fdbb18b426f1
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: d73d9d269ce4c78c87e718aed752206f88276770
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50156181"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54857024"
 ---
 # <a name="enable-azure-active-directory-domain-services-using-the-azure-portal"></a>使用 Azure 门户启用 Azure Active Directory 域服务
 
@@ -44,14 +44,14 @@ ms.locfileid: "50156181"
   > **启用 Azure AD 域服务后，无法将托管域迁移到另一个虚拟网络。** 选取相应的虚拟网络以启用托管域。 创建托管域后，无法在不删除托管域的情况下将其迁移到另一个虚拟网络。 我们建议在继续操作之前查看 [Azure Active Directory 域服务的网络注意事项](active-directory-ds-networking.md)。  
   >
 
-4. 创建虚拟网络：单击“新建”来创建新的虚拟网络。 对 Azure AD 域服务使用专用子网。 例如，创建具有名称“DomainServices”的子网，从而使其他管理员可以方便地了解在该子网内部署的内容。 完成后，单击“确定”。
+4. **创建虚拟网络：** 单击“新建”，创建新的虚拟网络。 对 Azure AD 域服务使用专用子网。 例如，创建具有名称“DomainServices”的子网，从而使其他管理员可以方便地了解在该子网内部署的内容。 完成后，单击“确定”。
 
     ![选取虚拟网络](./media/getting-started/domain-services-blade-network-pick-vnet.png)
 
   > [!WARNING]
   > 请确保选取专用 IP 地址空间内的地址空间。 公共地址空间中你未拥有的 IP 地址会导致 Azure AD 域服务内出错。
 
-5. 现有虚拟网络：如果计划选取现有虚拟网络，则[使用虚拟网络扩展创建专用子网](../virtual-network/virtual-network-manage-subnet.md#add-a-subnet)，然后选取该子网。 单击“虚拟网络”，以选择一个现有虚拟网络。 单击“子网”，以在现有虚拟网络中选取要在其中启用新托管域的专用子网。 完成后，单击“确定”。
+5. **现有虚拟网络：** 如果计划选取现有虚拟网络，请[使用虚拟网络扩展创建专用子网](../virtual-network/virtual-network-manage-subnet.md#add-a-subnet)，然后选取该子网。 单击“虚拟网络”，以选择一个现有虚拟网络。 单击“子网”，以在现有虚拟网络中选取要在其中启用新托管域的专用子网。 完成后，单击“确定”。
 
     ![在虚拟网络中选取子网](./media/getting-started/domain-services-blade-network-pick-subnet.png)
 

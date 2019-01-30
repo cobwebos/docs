@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 10/26/2018
 ms.author: dobett
-ms.openlocfilehash: 2b6cb711bf0cd2f0ec7f5633bbb36ebaeb203690
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 6e21b1d8905dc0f0eda5b6282e345ef52006a75a
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53605528"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54468023"
 ---
 # <a name="remote-monitoring-solution-accelerator-overview"></a>远程监视解决方案加速器概述
 
@@ -47,11 +47,11 @@ GitHub 上提供了远程监视解决方案加速器代码：
 
 该解决方案在逻辑体系结构的设备连接部分中包含以下组件：
 
-### <a name="physical-devices"></a>物理设备
+### <a name="real-devices"></a>实际设备
 
-可将物理设备连接到解决方案。 可以使用 Azure IoT 设备 SDK 实现模拟设备的行为。
+可将实际设备连接到解决方案。 可以使用 Azure IoT 设备 SDK 实现模拟设备的行为。
 
-可以通过解决方案门户中的仪表板预配物理设备。
+可以通过解决方案门户中的仪表板预配实际设备。
 
 ### <a name="device-simulation-microservice"></a>设备模拟微服务
 
@@ -66,7 +66,7 @@ GitHub 上提供了远程监视解决方案加速器代码：
 
 ### <a name="iot-hub"></a>IoT 中心
 
-[IoT 中心](../iot-hub/index.yml)将从物理和模拟设备发送的遥测数据引入到云中。 IoT 中心使遥测数据可供 IoT 解决方案后端中的服务进行处理。
+[IoT 中心](../iot-hub/index.yml)将从实际和模拟设备发送的遥测数据引入到云中。 IoT 中心使遥测数据可供 IoT 解决方案后端中的服务进行处理。
 
 此外，解决方案中的 IoT 中心还可以：
 

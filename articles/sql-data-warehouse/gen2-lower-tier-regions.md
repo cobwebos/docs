@@ -9,12 +9,12 @@ ms.component: design
 ms.date: 12/03/2018
 ms.author: anvang
 ms.reviewer: igorstan
-ms.openlocfilehash: d3c42c13e58156013167b8570a8845ce9de08b3b
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 2aa513617f24201dfb341f9ab72ab9e3a221450d
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52884387"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54819350"
 ---
 # <a name="azure-sql-data-warehouse-gen2-support-for-lower-compute-tiers"></a>Azure SQL 数据仓库 Gen2 支持较低的计算层
 
@@ -29,7 +29,7 @@ Microsoft 通过为运行速度极快的 Azure SQL 数据仓库 Gen2 添加更�
 客户可以选择部署新的 Gen2 实例或升级现有的 Gen1 数据仓库实例，体验下一代数据仓库的灵活性和性能。 
 
 试用 [Azure SQL 数据仓库计算优化的 Gen2 层级。](https://azure.microsoft.com/services/sql-data-warehouse/?v=17.44)
-[将 Azure SQL 仓库计算优化的 Gen1 升级到 Gen2](https://docs.microsoft.com/azure/sql-data-warehouse/upgrade-to-latest-generation) 在 [Microsoft Mechanics 视频](https://www.youtube.com/watch?v=Ap8I3UZonzI&feature=youtu.be)中观看正在活动的 Azure SQL 数据仓库 Gen2。
+[将 Azure SQL 数据仓库计算优化的 Gen1 升级到 Gen2](https://docs.microsoft.com/azure/sql-data-warehouse/upgrade-to-latest-generation) 在 [Microsoft Mechanics 视频](https://www.youtube.com/watch?v=Ap8I3UZonzI&feature=youtu.be)中观看正在活动的 Azure SQL 数据仓库 Gen2。
 
 
 ## <a name="supported-regions-for-lower-compute-tiers"></a>较低计算层的受支持区域
@@ -52,4 +52,4 @@ Microsoft 通过为运行速度极快的 Azure SQL 数据仓库 Gen2 添加更�
 
 ## <a name="next-steps"></a>后续步骤
 
-- 通过升级 SQL 数据仓库了解有关优化性能的[详细信息](upgrade-to-latest-generation.md)。 
+- 通过升级 SQL 数据仓库了解有关计算优化性能的[详细信息](upgrade-to-latest-generation.md)。 

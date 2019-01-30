@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 11/26/2018
 ms.author: wgries
 ms.component: files
-ms.openlocfilehash: 76bec0f0e924fe193519f47effb8dd45f6262697
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 750ab99df1d241cf4252c49a5a9ced08a82b1c92
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53630319"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54809184"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>规划 Azure 文件同步部署
 使用 Azure 文件同步，即可将组织的文件共享集中在 Azure 文件中，同时又不失本地文件服务器的灵活性、性能和兼容性。 Azure 文件同步可将 Windows Server 转换为 Azure 文件共享的快速缓存。 可以使用 Windows Server 上可用的任意协议本地访问数据，包括 SMB、NFS 和 FTPS。 并且可以根据需要在世界各地具有多个缓存。
@@ -205,6 +205,9 @@ Microsoft 的内部防病毒解决方案 Windows Defender 和 System Center Endp
 
 > [!Note]  
 > 祼机 (BMR) 还原可能会导致意外的结果且当前不受支持。
+
+> [!Note]  
+> 启用了云分层的卷当前不支持 VSS 快照（包括“以前的版本”选项卡）。 如果启用了云分层，请使用 Azure 文件共享快照从备份还原文件。
 
 ### <a name="encryption-solutions"></a>加密解决方案
 是否支持加密解决方案取决于其实现方式。 Azure 文件同步现支持：

@@ -4,7 +4,7 @@ description: 了解如何在 Azure Active Directory 和 OnTrack 之间配置单�
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: joflore
 ms.assetid: d2cafba2-3b4a-4471-ba34-80f6a96ff2b9
 ms.service: active-directory
@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/24/2017
 ms.author: jeedes
-ms.openlocfilehash: 82e0788ad2f1e49cb593e504adc1e826516d4616
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 6da60497ccb2a88cdba2a848a82c3fb0fc174525
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39424719"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54808521"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-ontrack"></a>教程：Azure Active Directory 与 OnTrack 的集成
+# <a name="tutorial-azure-active-directory-integration-with-ontrack"></a>教程：Azure Active Directory 与 OnTrack 集成
 
 在本教程中，了解如何将 OnTrack 与 Azure Active Directory (Azure AD) 集成。
 
@@ -159,7 +159,7 @@ ms.locfileid: "39424719"
 1. 若要在 **OnTrack** 端配置单一登录，需要将下载的**元数据 XML** 发送给 [OnTrack 支持团队](mailto:CustomerService@insigniagroup.com)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
 
 > [!TIP]
-> 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[ Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
+> 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
@@ -196,7 +196,7 @@ ms.locfileid: "39424719"
  
 ### <a name="create-an-ontrack-test-user"></a>创建 OnTrack 测试用户
 
-在本部分中，将在 OnTrack 中创建一个名为“Britta Simon”的用户。 请与 [OnTrack 支持团队](mailto:CustomerService@insigniagroup.com)协作，将用户添加到 OnTrack 平台中。 使用单一登录前，必须先创建并激活用户。
+在本部分中，将在 OnTrack 中创建一个名为“Britta Simon”的用户。 请与  [OnTrack 支持团队](mailto:CustomerService@insigniagroup.com) 协作，将用户添加到 OnTrack 平台中。 使用单一登录前，必须先创建并激活用户。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
@@ -233,12 +233,12 @@ ms.locfileid: "39424719"
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 单击访问面板中的“OnTrack”磁贴时，应会自动登录到 OnTrack 应用程序。
-有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
+有关访问面板的详细信息，请参阅[访问面板简介](../user-help/active-directory-saas-access-panel-introduction.md)。 
 
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](tutorial-list.md)
-* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
+* [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
 
 

@@ -2,18 +2,19 @@
 title: Azure 服务总线异地灾难恢复 | Microsoft 文档
 description: 如何使用地理区域进行故障转移并在 Azure 服务总线中执行灾难恢复
 services: service-bus-messaging
-author: spelluru
+author: axisc
 manager: timlt
+editor: spelluru
 ms.service: service-bus-messaging
 ms.topic: article
-ms.date: 09/14/2018
-ms.author: spelluru
-ms.openlocfilehash: 0436248dac2812c447d25de16a4ac6b45bd7248f
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.date: 01/23/2019
+ms.author: aschhab
+ms.openlocfilehash: d98ff2c5b9d18c36e7d16ec19d3e136be03b8d4c
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48855166"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54847996"
 ---
 # <a name="azure-service-bus-geo-disaster-recovery"></a>Azure 服务总线异地灾难恢复
 
@@ -41,7 +42,7 @@ Azure 服务总线的异地灾难恢复功能是一项面向灾难恢复的解�
 
 -  *元数据*：队列、主题、订阅等实体及其与命名空间关联的服务的属性。 请注意，仅自动复制实体及其设置。 不会复制消息。 
 
--  故障转移：激活辅助命名空间的过程。
+-  *故障转移*：激活辅助命名空间的过程。
 
 ## <a name="setup-and-failover-flow"></a>设置和故障转移流程
 

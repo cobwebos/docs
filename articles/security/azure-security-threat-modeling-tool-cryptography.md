@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: 79803a749b6d08c94bcbf5f3ca66aac8b7294fa3
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: be702571d178fc67eeb92de4e52a48d5bef72b18
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52844645"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54824620"
 ---
 # <a name="security-frame-cryptography--mitigations"></a>安全框架：加密 | 缓解措施 
 | 产品/服务 | 文章 |
@@ -29,7 +29,7 @@ ms.locfileid: "52844645"
 | **IoT 设备** | <ul><li>[在 IoT 设备上安全存储加密密钥](#keys-iot)</li></ul> | 
 | **IoT 云网关** | <ul><li>[生成足够长度的随机对称密钥用于向 IoT 中心进行身份验证](#random-hub)</li></ul> | 
 | **Dynamics CRM 移动客户端** | <ul><li>[确保实施要求使用 PIN 并允许远程擦除的设备管理策略](#pin-remote)</li></ul> | 
-| **Dynamics CRM Outlook 客户端** | <ul><li>[确保实施要求 PIN/密码/自动锁定并加密所有数据的设备管理策略（例如 Bitlocker）](#bitlocker)</li></ul> | 
+| **Dynamics CRM Outlook 客户端** | <ul><li>[确保实施要求 PIN/密码/自动锁定并加密所有数据的设备管理策略（例如 BitLocker）](#bitlocker)</li></ul> | 
 | **标识服务器** | <ul><li>[使用标识服务器时确保滚动更新签名密钥](#rolled-server)</li><li>[确保在标识服务器中使用强加密型客户端 ID 和客户端密码](#client-server)</li></ul> | 
 
 ## <a id="cipher-length"></a>只使用批准的对称块加密法和密钥长度
@@ -209,7 +209,7 @@ var deviceClient = DeviceClient.Create( hubUri, AuthenticationMethodFactory. Cre
 | **参考**              | 不适用  |
 | **步骤** | 确保实施要求使用 PIN 并允许远程擦除的设备管理策略 |
 
-## <a id="bitlocker"></a>确保实施要求 PIN/密码/自动锁定并加密所有数据的设备管理策略（例如 Bitlocker）
+## <a id="bitlocker"></a>确保实施要求 PIN/密码/自动锁定并加密所有数据的设备管理策略（例如 BitLocker）
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
@@ -218,7 +218,7 @@ var deviceClient = DeviceClient.Create( hubUri, AuthenticationMethodFactory. Cre
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
 | **参考**              | 不适用  |
-| **步骤** | 确保实施要求 PIN/密码/自动锁定并加密所有数据的设备管理策略（例如 Bitlocker） |
+| **步骤** | 确保实施要求 PIN/密码/自动锁定并加密所有数据的设备管理策略（例如 BitLocker） |
 
 ## <a id="rolled-server"></a>使用标识服务器时确保滚动更新签名密钥
 
