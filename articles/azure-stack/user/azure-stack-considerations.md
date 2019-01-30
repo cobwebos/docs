@@ -14,16 +14,17 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 12/27/2018
 ms.author: sethm
-ms.openlocfilehash: 91966bf2958b1670559aa57076eae7a62214fec5
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.lastreviewed: 12/27/2018
+ms.openlocfilehash: 1f65d7711c57930886ac9826bb105b6bc4931268
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53809790"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55238901"
 ---
-# <a name="key-considerations-using-services-or-building-apps-for-azure-stack"></a>重要注意事项：使用服务或开发适用于 Azure Stack 的应用
+# <a name="key-considerations-using-services-or-building-apps-for-azure-stack"></a>重要注意事项：使用 Azure Stack 的服务或开发 Azure Stack 的应用
 
-使用 Azure Stack 的服务或开发适用于 Azure Stack 的应用之前，必须了解 Azure Stack 与 Azure 之间有所差异。 此项目用于标识的关键注意事项时 Azure Stack 用作混合云开发环境。
+使用 Azure Stack 的服务或开发适用于 Azure Stack 的应用之前，必须了解 Azure Stack 与 Azure 之间有所差异。 本文阐述在将 Azure Stack 用作混合云开发环境时的重要注意事项。
 
 ## <a name="overview"></a>概述
 
@@ -36,7 +37,7 @@ Azure 技术文档内容假设应用是为 Azure 服务（而不是 Azure Stack�
 * Azure Stack 提供 Azure 所提供的一部分服务和功能。
 * 你的公司或服务提供商可以选择他们想要提供的服务。 可用的选项可能包括自定义的服务或应用程序。 他们可以提供自己的自定义文档。
 * 必须使用正确的 Azure Stack 特定终结点（例如，门户地址和 Azure 资源管理器终结点的 URL）。
-* 必须使用 Azure Stack 支持的 PowerShell 和 API 版本。 使用受支持的版本可确保您的应用程序运行在 Azure Stack 和 Azure 中。
+* 必须使用 Azure Stack 支持的 PowerShell 和 API 版本。 使用支持的版本可确保应用在 Azure Stack 和 Azure 中运行。
 
 ## <a name="cheat-sheet-high-level-differences"></a>速查表：大致差异
 
@@ -53,14 +54,14 @@ Azure 技术文档内容假设应用是为 Azure 服务（而不是 Azure Stack�
 | 门户 URL* | [https://portal.azure.com](https://portal.azure.com) | 对于 Azure Stack 集成系统，请转到 Azure Stack 运营商提供的 URL。<br><br>对于开发工具包，请使用： https://portal.local.azurestack.external
 | 区域 | 可以选择要部署到的区域。 | 对于 Azure Stack 集成系统，请使用系统中可用的区域。<br><br>对于开发工具包，区域始终为**本地**。
 | 资源组 | 资源组可以跨区域。 | 对于集成系统和开发工具包，只有一个区域。
-|支持的命名空间、资源类型和 API 版本 | 最新版本（或未弃用的较低版本）。 | Azure Stack 支持特定的版本。 请参阅[版本要求](#version-requirements)本文的部分。
+|支持的命名空间、资源类型和 API 版本 | 最新版本（或未弃用的较低版本）。 | Azure Stack 支持特定的版本。 请参阅本文的[版本要求](#version-requirements)部分。
 | | |
 
 *如果你是 Azure Stack 运营商，请参阅[使用管理员门户](../azure-stack-manage-portals.md)和[管理基础知识](../azure-stack-manage-basics.md)来了解详细信息。
 
 ## <a name="helpful-tools-and-best-practices"></a>有用的工具和最佳做法
  
- Microsoft 提供了工具和指导，帮助您开发适用于 Azure Stack。
+ Microsoft 提供的工具和指导有助于 Azure Stack 方面的开发。
 
 | 建议 | 参考 |
 | -------- | ------------- |
@@ -76,16 +77,16 @@ Azure Stack 支持特定版本的 Azure PowerShell 和 Azure 服务 API。 使�
 若要确保使用正确版本的 Azure PowerShell，请使用 [API 版本配置文件](azure-stack-version-profiles.md)。 若要确定可以使用的最新 API 版本配置文件，请找出使用的 Azure Stack 内部版本。 可以从 Azure Stack 管理员获取此信息。
 
 >[!NOTE]
- 如果您使用的 Azure Stack 开发工具包，并具有管理访问权限，请参阅[确定当前版本](../azure-stack-updates.md#determine-the-current-version)部分，以确定 Azure Stack 内部版本。
+ 如果使用 Azure Stack 开发工具包，并且拥有管理访问权限，请参阅[确定当前版本](../azure-stack-updates.md#determine-the-current-version)部分来确定 Azure Stack 内部版本。
 
-对于其他 API，请运行以下 PowerShell 命令输出 Azure Stack 订阅中支持的命名空间、资源类型和 API 版本。 请注意，可能仍存在属性级别的差异。 若要运行此命令，必须事先[安装](azure-stack-powershell-install.md)并[配置](azure-stack-powershell-configure-user.md)适用于 Azure Stack 环境的 PowerShell。 此外必须具有对 Azure Stack 产品/服务的订阅。
+对于其他 API，请运行以下 PowerShell 命令输出 Azure Stack 订阅中支持的命名空间、资源类型和 API 版本。 请注意，可能仍存在属性级别的差异。 若要正常运行此命令，必须事先[安装](azure-stack-powershell-install.md)并[配置](azure-stack-powershell-configure-user.md)适用于 Azure Stack 环境的 PowerShell。 此外，必须有 Azure Stack 套餐的订阅。
 
 ```powershell
 Get-AzureRmResourceProvider | Select ProviderNamespace -Expand ResourceTypes | Select * -Expand ApiVersions | `
 Select ProviderNamespace, ResourceTypeName, @{Name="ApiVersion"; Expression={$_}} 
 ```
 
-示例输出 （已截断）：![Get-azurermresourceprovider 命令的输出示例](media/azure-stack-considerations/image1.png)
+示例输出（已截断）：![Get-AzureRmResourceProvider 命令的示例输出](media/azure-stack-considerations/image1.png)
  
 ## <a name="next-steps"></a>后续步骤
 

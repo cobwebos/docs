@@ -1,6 +1,6 @@
 ---
-title: Windows Server 的 azure Stack 相关的常见问题解答 |Microsoft Docs
-description: 适用于 Windows Server 的 Azure Stack Marketplace 常见问题列表
+title: Azure Stack Windows Server 相关的常见问题解答 | Microsoft Docs
+description: 列出有关 Windows Server 的 Azure Stack 市场常见问题解答
 services: azure-stack
 documentationcenter: ''
 author: sethmanheim
@@ -14,102 +14,103 @@ ms.topic: article
 ms.date: 11/12/2018
 ms.author: sethm
 ms.reviewer: avishwan
-ms.openlocfilehash: bf70f9a74b58758e03800d7f6fb92a8f8754828a
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.lastreviewed: 11/12/2018
+ms.openlocfilehash: 03a6f649f15f6a4905433d6e2ec292a901340929
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51613089"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55249674"
 ---
-# <a name="windows-server-in-azure-stack-marketplace-faq"></a>Azure Stack Marketplace 常见问题解答中的 Windows Server
+# <a name="windows-server-in-azure-stack-marketplace-faq"></a>Azure Stack 市场中的 Windows Server 常见问题解答
 
-本文回答了一些有关 Windows Server 映像中的常见问题[Azure Stack Marketplace](azure-stack-marketplace.md)。
+本文解答有关 [Azure Stack 市场](azure-stack-marketplace.md)中 Windows Server 映像的常见问题。
 
 ## <a name="marketplace-items"></a>市场项
 
 ### <a name="how-do-i-update-to-a-newer-windows-image"></a>如何更新到较新的 Windows 映像？
 
-首先，确定如果任何 Azure 资源管理器模板，请参阅特定版本。 如果是这样，更新这些模板，或保留较旧的映像版本。 最好是使用**版本： 最新**。
+首先，请确定是否有任何 Azure 资源管理器模板引用了特定的版本。 如果有，请更新这些模板，或保留旧的映像版本。 最好是使用 **version: latest**。
 
-接下来，如果任何虚拟机规模集引用的特定版本，您应考虑这些是否会更高版本，扩展并决定是否要保留较旧版本。 如果上述条件均不适用，请下载较新的之前删除旧映像 Marketplace 中。 使用 Marketplace 管理当下载原始的方式进行此操作。 然后下载较新版本。
+接下来，如果有任何虚拟机规模集引用特定的版本，则应考虑将来是否要缩放它们，并确定是否要保留旧版本。 如果上述两个条件都不适用，请先在市场中删除旧映像，然后下载新映像。 如果原始映像是使用“市场管理”下载的，请继续这样做。 然后下载新版本。
 
-### <a name="what-are-the-licensing-options-for-windows-server-marketplace-images-on-azure-stack"></a>适用于 Windows Server Marketplace 映像在 Azure Stack 上的许可选项有哪些？
+### <a name="what-are-the-licensing-options-for-windows-server-marketplace-images-on-azure-stack"></a>Azure Stack 上的 Windows Server 市场映像有哪些许可选项？
 
-Microsoft 提供了两个版本的 Windows Server 映像，通过 Azure Stack Marketplace:
+Microsoft 通过 Azure Stack 市场提供两种版本的 Windows Server 映像：
 
-- **使用即付即用**： 这些映像运行的全价 Windows 计量。 
-   应使用的用户： 使用企业协议 (EA) 客户*消耗计费模型*;不想使用 SPLA 许可的 Csp。
-- **自带许可 (BYOL)**： 这些映像运行基本指标。
-   应使用的用户： EA 客户，使用 Windows Server 许可证;使用 SPLA 许可的 Csp。
+- **即用即付**：这些映像运行全价 Windows 计量器。 
+   适合对象：使用消耗量计费模型的企业协议 (EA) 客户、不想要使用 SPLA 许可的 CSP。
+- **自带许可证 (BYOL)**：这些映像运行基本计量器。
+   适合对象：具有 Windows Server 许可证的 EA 客户、使用 SPLA 许可的 CSP。
 
-Azure Stack 不支持 azure 混合使用权益 (AHUB)。 通过"容量"模型许可的客户必须使用 BYOL 映像。 如果要测试与 Azure Stack 开发工具包 (ASDK)，可以使用上述任何选项。
+Azure Stack 不支持 Azure 混合使用权益 (AHUB)。 通过“容量”模型获取许可证的客户必须使用 BYOL 映像。 如果你正在使用 Azure Stack 开发工具包 (ASDK) 进行测试，则可以使用上述任一选项。
 
-### <a name="what-if-i-downloaded-the-wrong-version-to-offer-my-tenantsusers"></a>如果我下载了错误的版本提供我的租户/用户呢？
+### <a name="what-if-i-downloaded-the-wrong-version-to-offer-my-tenantsusers"></a>如果下载了错误的版本并将其提供给租户/用户，该怎么办？
 
-通过 Marketplace 管理首先删除不正确的版本。 等待它完成完全 （查看完成时，不 Marketplace 管理边栏选项卡的通知）。 然后下载正确版本。
+请先通过“市场管理”删除错误的版本。 等待删除操作完全完成（请查看完成通知，而不要查看“市场管理”边栏选项卡）。 然后下载正确的版本。
 
-### <a name="what-if-my-user-incorrectly-checked-the-i-have-a-license-box-in-previous-windows-builds-and-they-dont-have-a-license"></a>如果我的用户错误地检查以前的 Windows 中的"我拥有的许可证"框生成，并且它们没有许可证？
+### <a name="what-if-my-user-incorrectly-checked-the-i-have-a-license-box-in-previous-windows-builds-and-they-dont-have-a-license"></a>如果我的用户在旧版 Windows 生成中错误地选中了“我有许可证”框，但他们其实并没有许可证，该怎么办？
 
-请参阅[返回到即用即付的权益将 Windows Server Vm](../virtual-machines/windows/hybrid-use-benefit-licensing.md#powershell-1)。
+请参阅[将具有权益的 Windows Server VM 转换回即用即付](../virtual-machines/windows/hybrid-use-benefit-licensing.md#powershell-1)。
 
-### <a name="what-if-i-have-an-older-image-and-my-user-forgot-to-check-the-i-have-a-license-box-or-we-use-our-own-images-and-we-do-have-enterprise-agreement-entitlement"></a>如果我有较旧的映像和我的用户忘记检查"我拥有的许可证"框中，或我们使用我们自己的映像和我们确实有企业协议授权？
+### <a name="what-if-i-have-an-older-image-and-my-user-forgot-to-check-the-i-have-a-license-box-or-we-use-our-own-images-and-we-do-have-enterprise-agreement-entitlement"></a>我有一个旧版映像，而我的用户忘记了选中“我有许可证”框，或者我们使用自己的映像且拥有企业协议权利，该怎么办？
 
-请参阅[转换现有 VM 使用 Azure 混合权益 for Windows Server](../virtual-machines/windows/hybrid-use-benefit-licensing.md#convert-an-existing-vm-using-azure-hybrid-benefit-for-windows-server)。 请注意，Azure 混合权益不适用于 Azure Stack 中，但不适用于此设置的效果。
+请参阅[将现有 VM 转换为使用 Windows Server 的 Azure 混合权益](../virtual-machines/windows/hybrid-use-benefit-licensing.md#convert-an-existing-vm-using-azure-hybrid-benefit-for-windows-server)。 请注意，Azure 混合权益不适用于 Azure Stack，但此项设置的影响确实存在。
 
-### <a name="what-about-other-vms-that-use-windows-server-such-as-sql-or-machine-learning-server"></a>使用 Windows Server，如 SQL 或机器学习服务器的其他 Vm 呢？
+### <a name="what-about-other-vms-that-use-windows-server-such-as-sql-or-machine-learning-server"></a>对于使用 Windows Server 的其他 VM （例如 SQL 或 Machine Learning Server），该如何处理？
 
-这些映像是否适用**licenseType**参数，因此它们是付费使用。 此参数可以设置 （请参见上一个常见问题解答回答）。 这仅适用于 Windows Server 软件，不向需要自带许可证的分层产品 （如 SQL)。 即付使用授权不适用于分层的软件产品。
+这些映像应用 **licenseType** 参数，因此它们采用即用即付模式。 可以设置此参数（请参阅以前的常见问题解答）。 这只适用于 Windows Server 软件，而不适用于 SQL 等分层产品（需要自带许可证）。 即付即付许可不适用于分层软件产品。
 
-### <a name="i-have-an-enterprise-agreement-ea-and-will-be-using-my-ea-windows-server-license-how-do-i-make-sure-images-are-billed-correctly"></a>我有企业协议 (EA)，并将使用我的 EA Windows Server 许可证;如何确保映像收费正确？
+### <a name="i-have-an-enterprise-agreement-ea-and-will-be-using-my-ea-windows-server-license-how-do-i-make-sure-images-are-billed-correctly"></a>我已签署企业协议 (EA) 且将使用 EA Windows Server 许可证，如何确保映像正确计费？
 
-您可以添加**licenseType: Windows_Server** Azure 资源管理器模板中。 必须将此设置添加到每个虚拟机资源块。
+可将 **licenseType:Windows_Server** 添加到 Azure 资源管理器模板中。 必须将此设置添加到每个虚拟机资源块。
 
 ## <a name="activation"></a>激活
 
-若要激活 Azure Stack 上的 Windows Server 虚拟机，必须满足以下条件：
+若要在 Azure Stack 上激活 Windows Server 虚拟机，必须满足以下条件：
 
-- OEM 已在 Azure Stack 中每个主机系统上设置适当的 BIOS 标记。
-- 必须使用 Windows Server 2012 R2 和 Windows Server 2016[虚拟机自动激活](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn303421(v=ws.11))。 在 Azure Stack 上不支持密钥管理服务 (KMS) 和其他激活服务。
+- OEM 已在 Azure Stack 上的每个主机系统上设置相应的 BIOS 标记。
+- Windows Server 2012 R2 和 Windows Server 2016 必须使用[自动虚拟机激活](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn303421(v=ws.11))。 Azure Stack 不支持密钥管理服务 (KMS) 和其他激活服务。
 
-### <a name="how-can-i-verify-that-my-virtual-machine-is-activated"></a>如何验证我的虚拟机是否已激活？
+### <a name="how-can-i-verify-that-my-virtual-machine-is-activated"></a>如何验证虚拟机是否已激活？
 
-从提升的命令提示符运行以下命令： 
+在提升的命令提示符下运行以下命令： 
 
 ```shell
 slmgr /dlv
 ``` 
 
-如果正确激活它，就会看到以下明确地指示主机名显示在`slmgr`输出。 不依赖于在显示屏上的水印它们可能不是最新状态，或从你背后的不同虚拟机显示。
+如果虚拟机已正确激活，则 `slmgr` 输出中会明确指示此状态，并显示主机名。 请不要依赖于显示画面中的水印，因为它们可能不是最新的，或者显示你的虚拟机后面的其他虚拟机的状态。
 
-### <a name="my-vm-is-not-set-up-to-use-avma-how-can-i-fix-it"></a>我的 VM 不设置为使用 AVMA，如何解决它？
+### <a name="my-vm-is-not-set-up-to-use-avma-how-can-i-fix-it"></a>我的 VM 未设置为使用 AVMA，如何解决此问题？
 
-从提升的命令提示符运行以下命令： 
+在提升的命令提示符下运行以下命令： 
 
 ```shell
 slmgr /ipk <AVMA key> 
 ```
 
-请参阅文章[虚拟机自动激活](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn303421(v=ws.11))这些密钥用于你的映像。
+请参阅[自动虚拟机激活](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn303421(v=ws.11))一文，获取映像使用的密钥。
 
-### <a name="i-create-my-own-windows-server-images-how-can-i-make-sure-they-use-avma"></a>我创建我自己的 Windows Server 映像，我可以如何请确保它们使用 AVMA？
+### <a name="i-create-my-own-windows-server-images-how-can-i-make-sure-they-use-avma"></a>我自行创建了 Windows Server 映像，如何确保它们使用 AVMA？
 
-建议您执行`slmgr /ipk`命令行中使用相应的密钥在运行之前`sysprep`命令。 或者，在任何 Unattend.exe 安装文件中包括 AVMA 密钥。
+建议在运行 `sysprep` 命令之前，结合相应的密钥执行 `slmgr /ipk` 命令行。 或者，将 AVMA 密钥包含在任何 Unattend.exe 安装文件中。
 
-### <a name="i-am-trying-to-use-my-windows-server-2016-image-created-on-azure-and-it-is-not-activating-or-using-kms-activation"></a>我正尝试使用我在 Azure 上创建的 Windows Server 2016 映像，并且不激活或使用 KMS 激活。
+### <a name="i-am-trying-to-use-my-windows-server-2016-image-created-on-azure-and-it-is-not-activating-or-using-kms-activation"></a>我正在尝试使用自己在 Azure 上创建的 Windows Server 2016 映像，但它无法激活或者正在使用 KMS 激活。
 
-运行 `slmgr /ipk` 命令。 Azure 映像可能不正确地故障回复到 AVMA，但是，如果它们可以访问 Azure KMS 系统，它们将激活。 建议您确保这些 Vm 已设置为使用 AVMA。
+运行 `slmgr /ipk` 命令。 Azure 映像可能无法正确回退到 AVMA，但如果它们可以访问 Azure KMS 系统，则会激活。 请确保将这些 VM 设置为使用 AVMA。
 
-### <a name="i-have-performed-all-of-these-steps-but-my-virtual-machines-are-still-not-activating"></a>我已执行所有这些步骤，但仍没有激活我的虚拟机。
+### <a name="i-have-performed-all-of-these-steps-but-my-virtual-machines-are-still-not-activating"></a>我已执行上述所有步骤，但虚拟机仍无法激活。
 
-请联系硬件供应商联系以验证已安装正确的 BIOS 标记。
+请联系硬件供应商，以确认是否安装了正确的 BIOS 标记。
 
-### <a name="what-about-earlier-versions-of-windows-server"></a>Windows Server 的早期版本呢？
+### <a name="what-about-earlier-versions-of-windows-server"></a>对于早期版本的 Windows Server，如何激活？
 
-[虚拟机自动激活](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn303421(v=ws.11))早期版本的 Windows Server 中不支持。 你将需要手动激活 Vm。
+早期版本的 Windows Server 不支持[自动虚拟机激活](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn303421(v=ws.11))。 必须手动激活这些 VM。
 
 ## <a name="next-steps"></a>后续步骤
 
 有关详细信息，请参阅以下文章：
 
-- [Azure Stack Marketplace 概述](azure-stack-marketplace.md)
-- [从 Azure marketplace 项下载到 Azure Stack](azure-stack-download-azure-marketplace-item.md)
+- [Azure Stack 市场概述](azure-stack-marketplace.md)
+- [将市场项从 Azure 下载到 Azure Stack](azure-stack-download-azure-marketplace-item.md)

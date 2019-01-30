@@ -15,12 +15,13 @@ ms.topic: article
 ms.date: 10/22/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: b5314ce874c253151b88882b086257f96612c019
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.lastreviewed: 10/22/2018
+ms.openlocfilehash: ec7b56a7324f3c8c3e3459639e4fd00e92d93e8f
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51615382"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55249742"
 ---
 # <a name="prepare-the-asdk-host-computer"></a>准备 ASDK 主机
 在主机上安装 ASDK 之前，必须先准备好用于安装的 ASDK 环境。 准备好开发工具包主机之后，该主机会从 CloudBuilder.vhdx 虚拟机硬盘启动，以开始进行 ASDK 部署。
@@ -52,8 +53,8 @@ ms.locfileid: "51615382"
     ![](media/asdk-prepare-host/2.PNG)
 
 6. 在“可选设置”页上，提供开发工具包主机 的本地管理员帐户信息，然后单击“下一步”。 还可以提供以下可选设置的值：
-  - **Computername**：此选项设置开发工具包主机的名称。 名称必须符合 FQDN 要求，且长度不得超过 15 个字符。 默认值是由 Windows 生成的随机计算机名称。
-  - **静态 IP 配置**：将部署设置为使用静态 IP 地址。 否则，当安装程序重新启动到 cloudbuilder.vhdx 中，使用 DHCP 配置的网络接口。
+  - **计算机名**：此选项设置开发工具包主机的名称。 名称必须符合 FQDN 要求，且长度不得超过 15 个字符。 默认值是由 Windows 生成的随机计算机名称。
+  - **静态 IP 配置**：将部署设置为使用静态 IP 地址。 否则，当安装程序重启到 cloudbuilder.vhdx 中时，会使用 DHCP 来配置网络接口。
 
     ![](media/asdk-prepare-host/3.PNG)
 

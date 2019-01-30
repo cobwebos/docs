@@ -1,6 +1,6 @@
 ---
-title: Azure Stack 中的静态加密的数据
-description: 了解如何对 Azure Stack 保护静态加密数据
+title: Azure Stack 中的静态数据加密
+description: 了解 Azure Stack 如何使用静态加密来保护数据
 services: azure-stack
 author: PatAltimore
 manager: femila
@@ -9,54 +9,55 @@ ms.topic: article
 ms.date: 12/06/2018
 ms.author: patricka
 ms.reviewer: fiseraci
+ms.lastreviewed: 12/06/2018
 keywords: ''
-ms.openlocfilehash: f9e76b255647f62b273fef8336ed845e365261cf
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 563534424cad7f3e02be07ad582be0b3966950b4
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53731742"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55237976"
 ---
-# <a name="data-at-rest-encryption-in-azure-stack"></a>在 Azure Stack 中的静态加密的数据
+# <a name="data-at-rest-encryption-in-azure-stack"></a>Azure Stack 中的静态数据加密
 
-Azure Stack 保护用户和基础结构数据在存储子系统级别使用的静态加密。 Azure Stack 的存储子系统使用 128 位 AES 加密使用 BitLocker 进行加密。 BitLocker 密钥保留在内部的密钥存储区中。
+Azure Stack 使用静态加密来保护存储子系统级别的用户数据和基础结构数据。 Azure Stack 的存储子系统是配合 128 位 AES 加密法使用 BitLocker 加密的。 BitLocker 密钥保存在内部机密存储中。
 
-静态数据加密是主要的符合性标准 (例如，PCI DSS，FedRAMP、 HIPAA) 的许多常见的要求。 Azure Stack 使你能够满足这些要求不带任何额外的工作或所需的配置。 有关详细信息，Azure Stack 如何帮助你满足符合性标准，请参阅[Microsoft 服务信任门户](https://aka.ms/AzureStackCompliance)。
+静态数据加密是许多主流合规标准（例如 PCI-DSS、FedRAMP、HIPAA）的共同要求。 Azure Stack 可你满足这些要求，而无需投入额外的工作或进行额外的配置。 有关 Azure Stack 如何帮助你满足合规要求的详细信息，请参阅 [Microsoft 服务信任门户](https://aka.ms/AzureStackCompliance)。
 
 > [!NOTE]
-> 静态数据加密保护数据免受正在访问的用户组以物理方式窃取了一个或多个硬盘驱动器。 静态数据加密不能防止数据被截获通过网络 （在传输过程中的数据）、 当前正在使用的数据 （数据在内存中） 或多个一般情况下，数据被 exfiltrated 时在系统已启动并运行。
+> 静态数据加密可防止窃取一个或多个硬盘实物的人员访问你的数据。 当系统已启动且正在运行时，静态数据加密无法防止通过网络拦截数据（传输中的数据），也无法保护当前正在使用的数据（内存中的数据），或概括而言，无法防范数据外泄。
 
 ## <a name="retrieving-bitlocker-recovery-keys"></a>检索 BitLocker 恢复密钥
 
-静态数据的 azure Stack BitLocker 密钥在内部管理。 不需要向其提供的常规操作或在系统启动过程。 但是，支持方案可能需要 BitLocker 恢复密钥，以使系统处于联机状态。  
+Azure Stack BitLocker 的静态数据密钥在内部管理。 对于日常操作或者在系统启动期间，无需提供这些密钥。 但是，支持方案可能要求提供 BitLocker 恢复密钥来让系统联机。  
 
 > [!WARNING]
-> 检索 BitLocker 恢复密钥并将其存储在 Azure Stack 外部安全的位置。 在某些支持方案期间没有恢复密钥可能导致数据丢失，并且需要从备份映像的系统还原。
+> 检索 BitLocker 恢复密钥，并将其存储在 Azure Stack 外部的安全位置。 在某些支持方案中，不提供恢复密钥可能会导致数据丢失，并需要从备份映像还原系统。
 
-检索 BitLocker 恢复密钥要求有权[特权终结点](azure-stack-privileged-endpoint.md)(PEP)。 在 PEP 会话中，运行 Get AzsRecoveryKeys cmdlet。
+检索 BitLocker 恢复密钥需要访问[特权终结点](azure-stack-privileged-endpoint.md) (PEP)。 在 PEP 会话中运行 Get-AzsRecoveryKeys cmdlet。
 
 ```powershell
 ##This cmdlet retrieves the recovery keys for all the volumes that are encrypted with BitLocker.
 Get-AzsRecoveryKeys
 ```
 
-可选参数*Get AzsRecoveryKeys* cmdlet:
+*Get-AzsRecoveryKeys* cmdlet 的可选参数：
 
-| 参数 | 描述 | 类型 | 需要 |
+| 参数 | 描述 | Type | 需要 |
 |---------|---------|---------|---------|
-|*raw* | 恢复密钥、 计算机名称和密码的每个加密卷的号之间返回原始数据的映射  | 开关 | 无 (Designed 的支持方案)|
+|*raw* | 返回每个加密卷的恢复密钥、计算机名与密码 ID 之间的映射原始数据  | 开关 | 否（专用于支持方案）|
 
 
 ## <a name="troubleshoot-issues"></a>排查问题
 
-在极端情况下，BitLocker 解锁请求可能会导致特定的卷不启动失败。 具体取决于一些体系结构的组件的可用性，这种失败可能导致停机时间和数据丢失如果你没有你的 BitLocker 恢复密钥。
+在极端情况下，BitLocker 解锁请求可能失败，并导致特定卷无法启动。 如果没有 BitLocker 恢复密钥，根据某些体系结构组件的可用性，这种失败可能会导致停机以及潜在的数据丢失。
 
 > [!WARNING]
-> 检索 BitLocker 恢复密钥并将其存储在 Azure Stack 外部安全的位置。 在某些支持方案期间没有恢复密钥可能导致数据丢失，并且需要从备份映像的系统还原。
+> 检索 BitLocker 恢复密钥，并将其存储在 Azure Stack 外部的安全位置。 在某些支持方案中，不提供恢复密钥可能会导致数据丢失，并需要从备份映像还原系统。
 
-如果您怀疑您的系统遇到了 BitLocker，如无法启动，Azure Stack 的问题联系支持部门。 支持需要 BitLocker 恢复密钥。 BitLocker 大多数相关的问题，可能会解决该特定的 VM/主机/卷在 FRU 操作。 对于其他情况下，可以执行手动解锁过程，请使用 BitLocker 恢复密钥。 如果 BitLocker 恢复密钥不可用，唯一的选项是从备份映像还原。 具体取决于执行上次备份后，可能会遇到数据丢失。
+如果你怀疑系统中出现 BitLocker 问题（例如 Azure Stack 无法启动），请与支持人员联系。 支持人员需要你的 BitLocker 恢复密钥。 对该特定 VM/主机/卷执行 FRU 操作可以解决大多数 BitLocker 相关问题。 对于其他情况，可以使用 BitLocker 恢复密钥执行手动解锁过程。 如果 BitLocker 恢复密钥不可用，唯一的做法是从备份映像进行还原。 根据上次执行备份的时间，可能会丢失数据。
 
 ## <a name="next-steps"></a>后续步骤
 
 - [详细了解 Azure Stack 安全性](azure-stack-security-foundations.md)
-- 有关 BitLocker 如何保护 Csv 的详细信息，请参阅[来保护群集使用 BitLocker 的共享卷和存储区域网络](https://docs.microsoft.com/windows/security/information-protection/bitlocker/protecting-cluster-shared-volumes-and-storage-area-networks-with-bitlocker)。
+- 有关 BitLocker 如何保护 CSV 的详细信息，请参阅[使用 BitLocker 保护群集共享卷和存储区域网络](https://docs.microsoft.com/windows/security/information-protection/bitlocker/protecting-cluster-shared-volumes-and-storage-area-networks-with-bitlocker)。

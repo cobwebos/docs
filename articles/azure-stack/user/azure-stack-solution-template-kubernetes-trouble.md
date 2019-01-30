@@ -14,12 +14,13 @@ ms.topic: article
 ms.date: 01/24/2019
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.openlocfilehash: 8a67ae74f753fdbe3c5301c543e5a57544695922
-ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
+ms.lastreviewed: 01/24/2019
+ms.openlocfilehash: 9a65ef9acf7a1a133b3f479fe75921191949eeb8
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54904210"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55237845"
 ---
 # <a name="troubleshoot-your-kubernetes-deployment-to-azure-stack"></a>排查 Kubernetes 部署到 Azure Stack
 
@@ -112,7 +113,7 @@ ms.locfileid: "54904210"
     | 属性 | 描述 |
     | ----     | ----        |
     | 资源 | 资源的名称。 |
-    | 类型 | 资源提供程序和资源的类型。 |
+    | Type | 资源提供程序和资源的类型。 |
     | 状态 | 项状态。 |
     | 时间戳 | 时间的 UTC 时间戳。 |
     | 操作详细信息 | 操作详细信息，例如操作中涉及的资源提供程序、资源终结点和资源名称。 |

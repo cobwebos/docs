@@ -14,12 +14,13 @@ ms.topic: article
 ms.date: 01/08/2019
 ms.author: sethm
 ms.reviewer: avishwan
-ms.openlocfilehash: b2520864589558a530f4f9dbfed83a9f3b8c727a
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.lastreviewed: 01/08/2019
+ms.openlocfilehash: 44cf5b2cc7547a4e85c65215fdc1e4fe2cb585a9
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54104091"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55243634"
 ---
 # <a name="create-and-publish-a-marketplace-item"></a>创建和发布市场项目
 
@@ -128,7 +129,7 @@ ms.locfileid: "54104091"
 
 ### <a name="identity-information"></a>标识信息
 
-| 名称 | 需要 | 类型 | 约束 | 描述 |
+| 名称 | 需要 | Type | 约束 | 描述 |
 | --- | --- | --- | --- | --- |
 | 名称 |X |String |[A-Za-z0-9]+ | |
 | 发布者 |X |String |[A-Za-z0-9]+ | |
@@ -136,7 +137,7 @@ ms.locfileid: "54104091"
 
 ### <a name="metadata"></a>元数据
 
-| 名称 | 需要 | 类型 | 约束 | 描述 |
+| 名称 | 需要 | Type | 约束 | 描述 |
 | --- | --- | --- | --- | --- |
 | DisplayName |X |String |建议不要超过 80 个字符 |如果长度超过 80 个字符，门户可能无法美观地显示项名称。 |
 | PublisherDisplayName |X |String |建议不要超过 30 个字符 |如果长度超过 30 个字符，门户可能无法美观地显示发布者名称。 |
@@ -165,7 +166,7 @@ ms.locfileid: "54104091"
 
 每个市场项可以包括指向其他内容的各种链接。 链接被指定为名称和 Uri 的列表：
 
-| 名称 | 需要 | 类型 | 约束 | 描述 |
+| 名称 | 需要 | Type | 约束 | 描述 |
 | --- | --- | --- | --- | --- |
 | DisplayName |X |String |最多 64 个字符 | |
 | Uri |X |URI | | |
@@ -174,7 +175,7 @@ ms.locfileid: "54104091"
 
 除了前面的元数据之外，市场作者可以采用以下形式提供自定义键/值对数据：
 
-| 名称 | 需要 | 类型 | 约束 | 描述 |
+| 名称 | 需要 | Type | 约束 | 描述 |
 | --- | --- | --- | --- | --- |
 | DisplayName |X |String |最多 25 个字符 | |
 | 值 |X |String |最多 30 个字符 | |

@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 01/19/2019
 ms.author: sethm
 ms.reviewer: sijuman
-ms.openlocfilehash: f865d08f742ebd1072b80a95960609e6ae5f4a82
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
-ms.translationtype: MT
+ms.openlocfilehash: 3c5a261eb5216c2dca93243d11b5d21b1d92846f
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55098402"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55224150"
 ---
 # <a name="use-api-version-profiles-with-go-in-azure-stack"></a>在 Azure Stack 中将 API 版本配置文件与 Go 配合使用
 
@@ -51,7 +51,7 @@ import "github.com/Azure/azure-sdk-for-go/profiles/2017-03-09/compute/mgmt/compu
 
 您可以通过以下链接找到有关 Azure GO SDK 的详细信息：
 
-- [安装 Azure SDK for Go](/azure/azure-sdk-go-install) 中的“Azure Go SDK”。
+- [安装 Azure SDK for Go](/go/azure/azure-sdk-go-install) 中的“Azure Go SDK”。
 - Azure Go SDK，在 GitHub 上公开可用[azure sdk 的 go](https://github.com/Azure/azure-sdk-for-go)存储库。
 
 ### <a name="go-autorest-dependencies"></a>Go-AutoRest 依赖项

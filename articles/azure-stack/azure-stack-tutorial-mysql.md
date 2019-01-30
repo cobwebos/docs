@@ -15,14 +15,15 @@ ms.topic: tutorial
 ms.date: 10/23/2018
 ms.author: jeffgilb
 ms.reviewer: quying
-ms.openlocfilehash: bee684409b2ef3fffeb9f175c2b469d3736b6484
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.lastreviewed: 10/23/2018
+ms.openlocfilehash: 8587b40bf6963d57fd510aefc17de4385b871590
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52993843"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55249031"
 ---
-# <a name="tutorial-offer-highly-available-mysql-databases"></a>教程： 提供高可用性的 MySQL 数据库
+# <a name="tutorial-offer-highly-available-mysql-databases"></a>教程：提供高可用性的 MySQL 数据库
 
 Azure Stack 操作员，可以配置承载 MySQL Server 数据库服务器 Vm。 MySQL 群集后成功，由创建和管理 Azure Stack，具有已订阅的 MySQL 服务的用户可以轻松地创建高可用性的 MySQL 数据库。
 

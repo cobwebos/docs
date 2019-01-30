@@ -15,12 +15,13 @@ ms.topic: article
 ms.date: 10/15/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: 21c54e2e996bb987f7a27ac3e6333df6f74d6f4b
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.lastreviewed: 10/15/2018
+ms.openlocfilehash: 2cee4d75a111f56012782228d8070bb728720aca
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49338618"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55238325"
 ---
 # <a name="microsoft-azure-stack-development-kit-architecture"></a>Microsoft Azure Stack 开发工具包体系结构
 Azure Stack 开发工具包 (ASDK) 是 Azure Stack 的单节点部署。 所有组件安装在单主机计算机上运行的虚拟机中。 
@@ -33,7 +34,7 @@ Azure Stack 开发工具包 (ASDK) 是 Azure Stack 的单节点部署。 所有�
 ## <a name="virtual-machine-roles"></a>虚拟机角色
 ASDK 提供的服务使用托管在开发工具包主机上的以下 VM：
 
-| 名称 | 说明 |
+| 名称 | 描述 |
 | ----- | ----- |
 | **AzS-ACS01** | Azure Stack 存储服务。|
 | **AzS-ADFS01** | Active Directory 联合身份验证服务 (ADFS)。  |
