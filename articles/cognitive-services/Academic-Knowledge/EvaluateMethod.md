@@ -6,16 +6,16 @@ services: cognitive-services
 author: alch-msft
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: academic-knowledge
+ms.subservice: academic-knowledge
 ms.topic: conceptual
 ms.date: 03/27/2017
 ms.author: alch
-ms.openlocfilehash: 262beeefbbafefc95da51e9f4afcbc1bc143f952
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: c3449d3b61c9b8950c0530590e7f1950c06afbc3
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48902325"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55187286"
 ---
 # <a name="evaluate-method"></a>Evaluate 方法
 
@@ -28,18 +28,18 @@ https://westus.api.cognitive.microsoft.com/academic/v1.0/evaluate?
 ```   
 <br>
 ## <a name="request-parameters"></a>请求参数  
-名称     | 值 | 必需？  | Description
+Name     | 值 | 必需？  | 说明
 -----------|-----------|---------|--------
 **expr**       | 文本字符串 | 是 | 指定应返回哪些实体的查询表达式。
 **model**      | 文本字符串 | 否  | 要查询的模型的名称。  默认值暂为“latest”。        
-**attributes** | 文本字符串 | 否<br>默认值：Id | 指定响应中包含的属性值的逗号分隔列表。 属性名区分大小写。
+**attributes** | 文本字符串 | 否<br>默认值：ID | 指定响应中包含的属性值的逗号分隔列表。 属性名区分大小写。
 **count**        | Number | 否<br>默认值：10 | 要返回的结果数。
 **offset**     | Number |   否<br>默认值：0    | 要返回的第一个结果的索引。
 **orderby** |   文本字符串 | 否<br>默认值：by decreasing prob | 用于对实体排序的属性的属性名。 可以视需要指定升序/降序。 格式为 name:asc 或 name:desc。
   
  <br>
 ## <a name="response-json"></a>响应 (JSON)
-名称 | Description
+Name | 说明
 -------|-----   
 **expr** |  请求中的 expr 参数。
 **entities** |  一组与查询表达式匹配的 0 个或多个实体。 每个实体都包含自然对数概率值，以及其他请求获取的属性值。

@@ -6,17 +6,17 @@ services: cognitive-services
 author: PatrickFarley
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: computer-vision
+ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 08/29/2018
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 50942634bd50974453c242d1980db9fc589bd47e
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: 76484a2340e527dc016f321dbafa29adb7c358b5
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53579203"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55157527"
 ---
 # <a name="detecting-domain-specific-content"></a>检测特定领域的内容
 
@@ -33,7 +33,7 @@ ms.locfileid: "53579203"
 
 可以列出计算机视觉支持的特定于域的模型。 目前，计算机视觉支持以下特定于域的模型，用于检测特定于域的内容：
 
-| 名称 | Description |
+| Name | 说明 |
 |------|-------------|
 | 名人 | 名人识别，支持属于 `people_` 类别的图像 |
 | 地标 | 地标识别，支持属于 `outdoor_` 或 `building_` 类别的图像 |

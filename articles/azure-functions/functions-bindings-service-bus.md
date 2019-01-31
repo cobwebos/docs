@@ -12,12 +12,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 04/01/2017
 ms.author: cshoe
-ms.openlocfilehash: 21f8d8ad63e8ea7c134477a6171155c40a2b4dc8
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 2a0a4aeded3667b7c8f4a31821adb2fc40339137
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53792010"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55104093"
 ---
 # <a name="azure-service-bus-bindings-for-azure-functions"></a>Azure Functions 的 Azure 服务总线绑定
 
@@ -317,7 +317,7 @@ Functions 运行时以 [PeekLock 模式](../service-bus-messaging/service-bus-pe
 
 服务总线触发器提供了几个[元数据属性](functions-triggers-bindings.md#binding-expressions---trigger-metadata)。 这些属性可在其他绑定中用作绑定表达式的一部分，或者用作代码中的参数。 以下是 [BrokeredMessage](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) 类的属性。
 
-|属性|类型|Description|
+|属性|Type|说明|
 |--------|----|-----------|
 |`DeliveryCount`|`Int32`|传递次数。|
 |`DeadLetterSource`|`string`|死信源。|
@@ -626,10 +626,10 @@ public static string Run([HttpTrigger] dynamic input, ILogger log)
 }
 ```
 
-|属性  |默认 | Description |
+|属性  |默认 | 说明 |
 |---------|---------|---------| 
 |maxAutoRenewDuration|00:05:00|自动续订消息锁的最长持续时间。| 
-|autoComplete|false|触发器应立即标记为已完成（自动完成），还是等待调用完成的处理。| 
+|autoComplete|true|触发器应立即标记为已完成（自动完成），还是等待调用完成的处理。| 
 |maxConcurrentCalls|16|消息泵应该对回调发起的最大并发调用数。 默认情况下，Functions 运行时同时处理多条消息。 若要指示运行时一次只处理单个队列或主题消息，请将 `maxConcurrentCalls` 设置为 1。 | 
 |prefetchCount|不适用|基础 MessageReceiver 将要使用的默认 PrefetchCount。| 
 

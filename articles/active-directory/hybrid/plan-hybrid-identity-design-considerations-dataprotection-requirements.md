@@ -13,15 +13,15 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/30/2018
-ms.component: hybrid
+ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: 34c284f3fdd78d8b2f56ec7c36e139f9ac9d78bf
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: c31f104b3a7ae37d768a2a483a70385852dc47ca
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54473497"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55156813"
 ---
 # <a name="plan-for-enhancing-data-security-through-a-strong-identity-solution"></a>通过强标识解决方案增强数据安全性的计划
 保护数据的第一步是标识谁可以访问该数据。 此外，需要具有可与你的系统集成的标识解决方案，以提供身份验证和授权功能。 身份验证与授权经常给人造成混淆，并且其角色容易令人误解。 事实上它们是不同的，如下图中所示：

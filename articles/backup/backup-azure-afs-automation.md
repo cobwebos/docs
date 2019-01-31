@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/12/2018
 ms.author: pullabhk
 ms.assetid: 80da8ece-2cce-40dd-8dce-79960b6ae073
-ms.openlocfilehash: bbeccd03fffb699c95d52d50ec5c45e38b43ef51
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 912336d697e8f7b5d9c71080ec9a052ca562da4b
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54430392"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55101120"
 ---
 # <a name="use-powershell-to-back-up-and-restore-azure-file-shares"></a>使用 PowerShell 备份和还原 Azure 文件共享
 
@@ -292,17 +292,17 @@ BackupManagementType : AzureStorage
 
 在 restore 命令中提供这些参数可将备份的文件共享还原到备用位置。
 
-````powershell
+```powershell
 Restore-AzRecoveryServicesBackupItem -RecoveryPoint $rp[0] -TargetStorageAccountName "TargetStorageAcct" -TargetFileShareName "DestAFS" -TargetFolder "testAzureFS_restored" -ResolveConflict Overwrite
-````
+```
 
 该命令返回一个要跟踪的、带有 ID 的作业，如以下示例所示。
 
-````powershell
+```powershell
 WorkloadName     Operation            Status               StartTime                 EndTime                   JobID
 ------------     ---------            ------               ---------                 -------                   -----
 testAzureFS        Restore              InProgress           12/10/2018 9:56:38 AM                               9fd34525-6c46-496e-980a-3740ccb2ad75
-````
+```
 
 #### <a name="restore-an-azure-file"></a>还原 Azure 文件
 

@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 01/15/2019
-ms.openlocfilehash: e9f1b1a3df92c08b913a56aadc8eb8a9e80c7fdf
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.openlocfilehash: edc6e651c3ec352115e360e50f98a3e36cd287c0
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54320049"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54904074"
 ---
 # <a name="status-of-migration-scenarios-supported-by-the-azure-database-migration-service"></a>Azure 数据库迁移服务支持的迁移方案的状态
 Azure 数据库迁移服务旨在支持脱机（一次性）和联机（连续同步）迁移的各种迁移方案（源/目标对）。 随着时间的推移，Azure 数据库迁移服务提供的方案范围也在不断扩大。 将定期添加新的方案。 这篇文章介绍了 Azure 数据库迁移服务当前支持的迁移方案和状态（个人[或有限]预览版、公共预览版或正式发布版）或每个方案。
@@ -47,7 +47,7 @@ Azure 数据库迁移服务支持的每种迁移方案的状态随时间而变�
 |   | Oracle  | ✔  |
 | **Azure SQL VM**  | SQL Server | ✔ |
 |   | Oracle  |   |
-| **Cosmos DB**  | MongoDB | ✔ |
+| **Azure Cosmos DB**  | MongoDB | ✔ |
 | **Azure DB for MySQL**  | MySQL |  |
 |   | RDS MySQL  |  |
 | **Azure DB for PostgresSQL**  | PostgreSQL |  |
@@ -66,7 +66,7 @@ Azure 数据库迁移服务支持的每种迁移方案的状态随时间而变�
 |   | Oracle  | ✔  |
 | **Azure SQL VM**  | SQL Server  |   |
 |   | Oracle  | ✔  |
-| **Cosmos DB**  | MongoDB  | ✔ |
+| **Azure Cosmos DB**  | MongoDB  | ✔ |
 | **Azure DB for MySQL**  | MySQL | ✔ |
 |   | RDS MySQL  | ✔ |
 | **Azure DB for PostgresSQL**  | PostgreSQL | ✔ |

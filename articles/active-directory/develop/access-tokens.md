@@ -7,7 +7,7 @@ author: CelesteDG
 manager: mtillman
 editor: ''
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -16,12 +16,12 @@ ms.date: 10/23/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 164fc42d905c9354a58ea6f66a739ea05f12e601
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: 7dd2b60a985291311328407b07ef290e962f147b
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54157762"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55080559"
 ---
 # <a name="azure-active-directory-access-tokens"></a>Azure Active Directory 访问令牌
 
@@ -73,7 +73,7 @@ JWT 拆分成三个部分：
 
 ### <a name="header-claims"></a>标头声明
 
-|声明 | 格式 | Description |
+|声明 | 格式 | 说明 |
 |--------|--------|-------------|
 | `typ` | 字符串 - 始终为“JWT” | 指示令牌是 JWT。|
 | `nonce` | String | 用于防范令牌重放攻击的唯一标识符。 资源可以记录此值以防范重放攻击。 |
@@ -83,7 +83,7 @@ JWT 拆分成三个部分：
 
 ### <a name="payload-claims"></a>有效负载声明
 
-| 声明 | 格式 | Description |
+| 声明 | 格式 | 说明 |
 |-----|--------|-------------|
 | `aud` | 字符串，应用 ID URI | 标识令牌的目标接收方。 在访问令牌中，受众是在 Azure 门户中分配给应用的应用程序 ID。 应用应该验证此值并拒绝其值不匹配的令牌。 |
 | `iss` | 字符串，STS URI | 标识构造并返回令牌的安全令牌服务 (STS)，以及对用户进行身份验证的 Azure AD 租户。 如果颁发的令牌是 v2.0 令牌（请参阅 `ver` 声明），则 URI 将以 `/v2.0` 结尾。 表示用户是来自 Microsoft 帐户的使用者用户的 GUID 为 `9188040d-6c67-4c5b-b112-36a304b66dad`。 应用应该使用声明的 GUID 部分限制可登录应用的租户集（如果适用）。 |
@@ -118,7 +118,7 @@ JWT 拆分成三个部分：
 
 以下声明将包含在 v1.0 令牌中（如果适用），默认不会包含在 v2.0 令牌中。 如果使用 v2.0 并需要其中的某个声明，请使用[可选声明](active-directory-optional-claims.md)来请求它。
 
-| 声明 | 格式 | Description |
+| 声明 | 格式 | 说明 |
 |-----|--------|-------------|
 | `ipaddr`| String | 进行身份验证的用户的来源 IP 地址。 |
 | `onprem_sid`| 字符串，采用 [SID 格式](https://docs.microsoft.com/windows/desktop/SecAuthZ/sid-components) | 如果用户使用了本地身份验证，则此声明会提供其 SID。 可在旧版应用程序中将 `onprem_sid` 用于授权。 |
@@ -133,7 +133,7 @@ JWT 拆分成三个部分：
 
 Microsoft 标识可以通过与应用程序相关的多种方式进行身份验证。 `amr` 声明是可以包含多个项（例如 `["mfa", "rsa", "pwd"]`）的数组，适用于使用密码和 Authenticator 应用的身份验证。 
 
-| 值 | Description |
+| 值 | 说明 |
 |-----|-------------|
 | `pwd` | 密码身份验证，用户的 Microsoft 密码或应用的客户端机密。 |
 | `rsa` | 身份验证基于 RSA 密钥的证明，例如，使用 [Microsoft Authenticator 应用](https://aka.ms/AA2kvvu)。 这包括，身份验证是否是使用服务拥有的 X509 证书通过自签名的 JWT 执行的。 |

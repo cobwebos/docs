@@ -8,19 +8,19 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 68c453f7-aff1-4614-92d3-9b86f3ad99dc
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/10/2018
 ms.author: jeedes
-ms.openlocfilehash: af7489147c85eadd17a2f0849e630d89ec52151b
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 4051d870cdecb4a7359458e009c49e416cd22974
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53790735"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55170117"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler"></a>教程：Azure Active Directory 与 Zscaler 集成
 
@@ -129,7 +129,7 @@ ms.locfileid: "53790735"
     | ---------| ------------ |
     | memberOf     | user.assignedroles |
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 单击“添加新声明”以打开“管理用户声明”对话框。
+    a. 单击“添加新声明”以打开“管理用户声明”对话框。
 
     ![图像](./common/new_save_attribute.png)
     
@@ -150,7 +150,7 @@ ms.locfileid: "53790735"
 
 8. 在“设置 Zscaler”部分中，根据需求复制相应的 URL。
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 登录 URL
+    a. 登录 URL
 
     b. Azure AD 标识符
 
@@ -164,7 +164,7 @@ ms.locfileid: "53790735"
    
     ![管理](./media/zscaler-tutorial/ic800206.png "Administration")
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“身份验证类型”下选择“SAML”。
+    a. 在“身份验证类型”下选择“SAML”。
 
     b. 单击“配置 SAML”。
 
@@ -172,7 +172,7 @@ ms.locfileid: "53790735"
             
     ![管理用户和身份验证](./media/zscaler-tutorial/ic800208.png "管理用户和身份验证")
     
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“SAML 门户 URL”文本框中，粘贴从 Azure 门户复制的“登录 URL”。
+    a. 在“SAML 门户 URL”文本框中，粘贴从 Azure 门户复制的“登录 URL”。
 
     b. 在“登录名属性”文本框中，输入 **NameID**。
 
@@ -192,7 +192,7 @@ ms.locfileid: "53790735"
 
     ![管理](./media/zscaler-tutorial/ic800207.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 将鼠标悬停在左下角附近的“激活”菜单上。
+    a. 将鼠标悬停在左下角附近的“激活”菜单上。
 
     b. 单击“激活”。
 
@@ -215,7 +215,7 @@ ms.locfileid: "53790735"
    
     ![代理服务器](./media/zscaler-tutorial/ic769494.png "代理服务器")
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 选择“为 LAN 使用代理服务器”。
+    a. 选择“为 LAN 使用代理服务器”。
 
     b. 在“地址”文本框中，键入 gateway.zscaler.net。
 
@@ -243,7 +243,7 @@ ms.locfileid: "53790735"
 
     ![创建 Azure AD 测试用户](common/create_aaduser_02.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”字段中，输入 BrittaSimon。
+    a. 在“名称”字段中，输入 BrittaSimon。
   
     b. 在“用户名”字段中键入 brittasimon@yourcompanydomain.extension  
     例如： BrittaSimon@contoso.com

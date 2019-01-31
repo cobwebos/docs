@@ -8,19 +8,19 @@ manager: daveba
 editor: curtand
 ms.assetid: 4eabfd8e-5509-4acd-86b5-1318147fddb5
 ms.service: active-directory
-ms.component: domain-services
+ms.subservice: domain-services
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/22/2018
 ms.author: ergreenl
-ms.openlocfilehash: 32b670a4b51c2dc60fe89bc2b9ad0ef18b0ac263
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: 5b70a16d1da8f939a23bf7a96a03098463cfc529
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54856632"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55203328"
 ---
 # <a name="join-a-windows-server-virtual-machine-to-a-managed-domain-using-a-resource-manager-template"></a>使用资源管理器模板将 Windows Server 虚拟机加入托管域
 本文介绍如何使用资源管理器模板将 Windows Server 虚拟机加入 Azure AD 域服务托管域。
@@ -100,7 +100,7 @@ ms.locfileid: "54856632"
 
 
 ## <a name="related-content"></a>相关内容
-* [Azure PowerShell 概述](https://docs.microsoft.com/powershell/azure/overview?view=azurermps-4.4.0)
+* [Azure PowerShell 概述](/powershell/azure/overview)
 * [Azure 快速入门模板 - 将新 VM 加入域](https://azure.microsoft.com/resources/templates/201-vm-domain-join/)
 * [Azure 快速入门模板 - 将现有 VM 加入域](https://azure.microsoft.com/resources/templates/201-vm-domain-join-existing/)
 * [使用 Resource Manager 模板和 Azure PowerShell 部署资源](../azure-resource-manager/resource-group-template-deploy.md)

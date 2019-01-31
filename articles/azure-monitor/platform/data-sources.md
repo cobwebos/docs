@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/13/2018
 ms.author: bwren
-ms.openlocfilehash: 39229bbd120ca52f31a0bd54446e49990d952c9d
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: b9029676df6a878a6d3d5796928cbad9c20cd685
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54020126"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54889053"
 ---
 # <a name="sources-of-data-in-azure-monitor"></a>Azure Monitor 中的数据的来源
 本文介绍了由 Azure Monitor 收集的用于监视资源及其上运行的应用程序的运行状况和性能的数据的来源。 这些资源可能在 Azure 中，在其他云中或在本地。  有关此数据如何存储以及如何查看它的详细信息，请参阅 [Azure Monitor 收集的数据](data-collection.md)。
@@ -61,7 +61,7 @@ Azure 中的监视数据来自各种来源，这些来源可以组织为层，�
 
 
 ### <a name="resource-diagnostic-logs"></a>资源诊断日志
-活动日志提供在 Azure 资源上执行的操作的信息，而资源级[诊断日志](../../azure-monitor/platform/diagnostic-logs-overview.md)则可用于了解资源本身的操作。   这些日志的配置要求和内容[因资源类型而异](../../azure-monitor/platform/tutorial-dashboards.md)。
+活动日志提供在 Azure 资源上执行的操作的信息，而资源级[诊断日志](../../azure-monitor/platform/diagnostic-logs-overview.md)则可用于了解资源本身的操作。   这些日志的配置要求和内容[因资源类型而异](../../azure-monitor/platform/diagnostic-logs-schema.md)。
 
 不能直接在 Azure 门户中查看诊断日志，但可以[将它们发送到 Azure 存储进行存档](../../azure-monitor/platform/archive-diagnostic-logs.md)，然后将它们导出到[事件中心](../../event-hubs/event-hubs-about.md)以便重定向到其他服务，或者导出[到 Log Analytics](../../azure-monitor/platform/diagnostic-logs-stream-log-store.md) 进行分析。 某些资源可以直接写入到 Log Analytics 中，而另一些资源则只能先写入到存储帐户，然后再[导入 Log Analytics 中](../../azure-monitor/platform/azure-storage-iis-table.md#use-the-azure-portal-to-collect-logs-from-azure-storage)。
 

@@ -8,19 +8,19 @@ manager: daveba
 editor: curtand
 ms.assetid: 95e1d8da-60c7-4fc1-987d-f48fde56a8cb
 ms.service: active-directory
-ms.component: domain-services
+ms.subservice: domain-services
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/20/2018
 ms.author: ergreenl
-ms.openlocfilehash: 1f548fefe1d28e3ca70de12911cb492d78c78629
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: ba1507cd228b10972fb9e16a316b7f7e20982dbe
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54854830"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55198259"
 ---
 # <a name="suspended-domains"></a>挂起的域
 当 Azure Active Directory 域服务 (Azure AD DS) 长时间无法为托管域提供服务时，它会将托管域置于挂起状态。 本文解释了托管域挂起的原因，以及如何修正挂起的域。

@@ -6,16 +6,16 @@ services: cognitive-services
 author: aahill
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-entity-search
+ms.subservice: bing-entity-search
 ms.topic: conceptual
 ms.date: 12/04/2017
 ms.author: aahi
-ms.openlocfilehash: 578791c8beb34b08b28037977147d41db83f4a4d
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: 561c64db2b97ed8792acab6cc87de861ecc30fe9
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52164908"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55183979"
 ---
 # <a name="entity-search-endpoints"></a>实体搜索终结点
 实体搜索 API 包括一个终结点。

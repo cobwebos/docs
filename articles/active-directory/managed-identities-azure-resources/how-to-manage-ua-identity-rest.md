@@ -3,23 +3,23 @@ title: 如何使用 REST 管理 Azure 用户分配托管标识
 description: 分步说明如何创建、列出和删除用户分配托管标识以进行 REST API 调用。
 services: active-directory
 documentationcenter: ''
-author: daveba
+author: priyamohanram
 manager: daveba
 editor: ''
 ms.service: active-directory
-ms.component: msi
+ms.subservice: msi
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 06/26/2018
-ms.author: daveba
-ms.openlocfilehash: 9ac036b11734e40d0f601f2416ef4892646e6390
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.author: priyamo
+ms.openlocfilehash: cfa9a2ab2ec5d5a666bd431a430c7d1bdce6c8d8
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54425461"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55150442"
 ---
 # <a name="create-list-or-delete-a-user-assigned-managed-identity-using-rest-api-calls"></a>使用 REST API 调用创建、列出或删除用户分配托管标识
 
@@ -66,7 +66,7 @@ s/<RESOURCE GROUP>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<U
 
 **请求正文**
 
-|名称  |说明  |
+|Name  |说明  |
 |---------|---------|
 |位置     | 必需。 资源位置。        |
 

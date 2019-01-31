@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 09/04/2018
 ms.author: ryanwi
-ms.openlocfilehash: 4941d893c6c871541772569e42bf5169270def88
-ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
+ms.openlocfilehash: a030860bcef41d7276e1356553b984f55e27ae1e
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53413551"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55164149"
 ---
 # <a name="create-unit-tests-for-stateful-services"></a>为有状态服务创建单元测试
 对 Service Fabric 有状态服务进行单元测试可发现传统应用程序或特定于域的单元测试不一定会捕获的常见错误。 在为有状态服务开发单元测试时，应牢记一些特殊注意事项。
@@ -91,7 +91,7 @@ replicaSet.PromoteNewReplicaToPrimaryAsync(4);
 
 //promote the first idle secondary to an active secondary
 PromoteIdleSecondaryToActiveSecondaryAsync();
-//promote idle secodary with replica id 4 to active secondary
+//promote idle secondary with replica id 4 to active secondary
 PromoteIdleSecondaryToActiveSecondaryAsync(4);
 
 //add a new replica with randomly assigned replica id and promote it to primary

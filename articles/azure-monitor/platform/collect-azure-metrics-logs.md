@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 04/12/2017
 ms.author: magoedte
-ms.openlocfilehash: 6b5fc02e763b66f1d7d01643d1c9d6c971d6db84
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 1d01755ae62843ad1f2f1728df046b767fe123ca
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53434199"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54886571"
 ---
 # <a name="collect-azure-service-logs-and-metrics-for-use-in-log-analytics"></a>在 Log Analytics 中收集要使用的 Azure 服务日志和指标
 
@@ -76,7 +76,7 @@ ms.locfileid: "53434199"
 >
 
 * 有关可用指标的详细信息，请参阅 [Azure 监视器支持的指标](../../azure-monitor/platform/metrics-supported.md)。
-* 有关可用日志的详细信息，请参阅[诊断日志支持的服务和架构](../../azure-monitor/platform/tutorial-dashboards.md)。
+* 有关可用日志的详细信息，请参阅[诊断日志支持的服务和架构](../../azure-monitor/platform/diagnostic-logs-schema.md)。
 
 ### <a name="enable-diagnostics-with-powershell"></a>使用 PowerShell 启用诊断
 需要 [Azure PowerShell](/powershell/azure/overview) 的 2016 年 11 月版 (v2.3.0) 或更高版本。
