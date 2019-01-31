@@ -6,16 +6,16 @@ services: cognitive-services
 author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: translator-text
+ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 06/22/2018
 ms.author: erhopf
-ms.openlocfilehash: ff1f0a97667260fa19c46bec6901113ff696aaab
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: 7f45bcb02f1c3002cffff8b72a4f182f0bfa9497
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54156878"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55215488"
 ---
 # <a name="quickstart-look-up-words-with-bilingual-dictionary-using-php"></a>快速入门：通过 PHP 使用双语字典查找字词
 

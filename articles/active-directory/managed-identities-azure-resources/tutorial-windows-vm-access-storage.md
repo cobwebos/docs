@@ -3,23 +3,23 @@ title: 使用 Windows VM 系统分配的托管标识访问 Azure 存储
 description: 本教程将指导你完成使用 Windows VM 系统分配的托管标识访问 Azure 存储的过程。
 services: active-directory
 documentationcenter: ''
-author: daveba
+author: priyamohanram
 manager: daveba
 editor: daveba
 ms.service: active-directory
-ms.component: msi
+ms.subservice: msi
 ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/20/2017
-ms.author: daveba
-ms.openlocfilehash: 3c253fbebff534b1dcaae8d75322fe524e82a368
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.date: 01/24/2019
+ms.author: priyamo
+ms.openlocfilehash: c19c5031c27ac37aee3707911268965912c20994
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54421942"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55158190"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-storage-via-access-key"></a>教程：使用 Windows VM 系统分配的托管标识通过访问密钥访问 Azure 存储
 
@@ -36,6 +36,8 @@ ms.locfileid: "54421942"
 ## <a name="prerequisites"></a>先决条件
 
 [!INCLUDE [msi-tut-prereqs](../../../includes/active-directory-msi-tut-prereqs.md)]
+
+[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
 
 ## <a name="create-a-storage-account"></a>创建存储帐户 
 
@@ -119,17 +121,17 @@ $keysContent = $keysResponse.Content | ConvertFrom-Json
 $key = $keysContent.keys[0].value
 ```
 
-接下来，我们将创建一个名为“test.txt”的文件。 然后，通过 `New-AzureStorageContent` cmdlet 使用存储访问密钥进行身份验证，将该文件上传到 blob 容器，然后下载该文件。
+接下来，我们将创建一个名为“test.txt”的文件。 然后，通过 `New-AzStorageContent` cmdlet 使用存储访问密钥进行身份验证，将该文件上传到 blob 容器，然后下载该文件。
 
 ```bash
 echo "This is a test text file." > test.txt
 ```
 
-请务必首先使用 `Install-Module Azure.Storage` 安装 Azure 存储 cmdlet。 然后，可以使用 `Set-AzureStorageBlobContent` PowerShell cmdlet 上传刚创建的 blob：
+请务必首先使用 `Install-Module Az.Storage` 安装 Azure 存储 cmdlet。 然后，可以使用 `Set-AzStorageBlobContent` PowerShell cmdlet 上传刚创建的 blob：
 
 ```powershell
-$ctx = New-AzureStorageContext -StorageAccountName <STORAGE-ACCOUNT> -StorageAccountKey $key
-Set-AzureStorageBlobContent -File test.txt -Container <CONTAINER-NAME> -Blob testblob -Context $ctx
+$ctx = New-AzStorageContext -StorageAccountName <STORAGE-ACCOUNT> -StorageAccountKey $key
+Set-AzStorageBlobContent -File test.txt -Container <CONTAINER-NAME> -Blob testblob -Context $ctx
 ```
 
 响应：
@@ -146,10 +148,10 @@ Context           : Microsoft.WindowsAzure.Commands.Storage.AzureStorageContext
 Name              : testblob
 ```
 
-也可以使用 `Get-AzureStorageBlobContent` PowerShell cmdlet 下载刚上传的 blob：
+也可以使用 `Get-AzStorageBlobContent` PowerShell cmdlet 下载刚上传的 blob：
 
 ```powershell
-Get-AzureStorageBlobContent -Blob testblob -Container <CONTAINER-NAME> -Destination test2.txt -Context $ctx
+Get-AzStorageBlobContent -Blob testblob -Container <CONTAINER-NAME> -Destination test2.txt -Context $ctx
 ```
 
 响应：

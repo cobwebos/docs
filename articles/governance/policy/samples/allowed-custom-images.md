@@ -6,14 +6,14 @@ author: DCtheGeek
 manager: carmonm
 ms.service: azure-policy
 ms.topic: sample
-ms.date: 01/23/2019
+ms.date: 01/26/2019
 ms.author: dacoulte
-ms.openlocfilehash: 9fe9e0021d4c2c0ebccf8f0fdb123e2fa413a1aa
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: 19e6fa5c7286eea26397f0bd69aec1ac9cf03140
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54856598"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55103872"
 ---
 # <a name="approved-vm-images"></a>已批准的 VM 映像
 
@@ -53,7 +53,7 @@ ms.locfileid: "54856598"
 
 ## <a name="parameters"></a>parameters
 
-|名称 |类型 |字段 |说明 |
+|Name |Type |字段 |说明 |
 |---|---|---|---|
 |imageIds |Array |Microsoft.Compute/imageIds |已批准的 VM 映像的列表|
 
@@ -88,7 +88,7 @@ PowerShell 还支持 `-PolicyParameterObject`，这要求向该 cmdlet 传递一
 # Create the Policy Definition (Subscription scope)
 $definition = New-AzPolicyDefinition -Name 'allowed-custom-images' -DisplayName 'Approved VM images' -description 'This policy governs the approved VM images' -Policy 'https://raw.githubusercontent.com/Azure/azure-policy/master/samples/Compute/allowed-custom-images/azurepolicy.rules.json' -Parameter 'https://raw.githubusercontent.com/Azure/azure-policy/master/samples/Compute/allowed-custom-images/azurepolicy.parameters.json' -Mode All
 
-# Set the scope to a resource group; may also be a subscription or management group
+# Set the scope to a resource group; may also be a resource, subscription, or management group
 $scope = Get-AzResourceGroup -Name 'YourResourceGroup'
 
 # Set the Policy Parameter (JSON format)
@@ -132,7 +132,7 @@ Remove-AzPolicyDefinition -Id $definition.ResourceId
 # Create the Policy Definition (Subscription scope)
 definition=$(az policy definition create --name 'allowed-custom-images' --display-name 'Approved VM images' --description 'This policy governs the approved VM images' --rules 'https://raw.githubusercontent.com/Azure/azure-policy/master/samples/Compute/allowed-custom-images/azurepolicy.rules.json' --params 'https://raw.githubusercontent.com/Azure/azure-policy/master/samples/Compute/allowed-custom-images/azurepolicy.parameters.json' --mode All)
 
-# Set the scope to a resource group; may also be a subscription or management group
+# Set the scope to a resource group; may also be a resource, subscription, or management group
 scope=$(az group show --name 'YourResourceGroup')
 
 # Set the Policy Parameter (JSON format)

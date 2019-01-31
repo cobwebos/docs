@@ -9,12 +9,12 @@ ms.topic: get-started-article
 ms.date: 02/26/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: da4fda3d0cfa6cb33d2dd8bb3bb844f18654c30a
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: b2a9c6c31771be1316038d794d1c15ff9fa45916
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54851889"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55166724"
 ---
 # <a name="deprecated-set-up-an-azure-ad-service-principal-for-a-kubernetes-cluster-in-container-service"></a>（已弃用）在容器服务中为 Kubernetes 群集设置 Azure AD 服务主体
 
@@ -26,7 +26,7 @@ ms.locfileid: "54851889"
 在 Azure 容器服务中，Kubernetes 群集需要 [Azure Active Directory 服务主体](../../active-directory/develop/app-objects-and-service-principals.md)才能与 Azure API 交互。 需要服务主体才能动态管理相关资源，例如[用户定义路由](../../virtual-network/virtual-networks-udr-overview.md)和[第 4 层 Azure 负载均衡器](../../load-balancer/load-balancer-overview.md)。
 
 
-本文介绍用于为 Kubernetes 群集设置服务主体的不同选项。 例如，如果已安装并设置 [Azure CLI](/cli/azure/install-az-cli2)，则可运行 [`az acs create`](/cli/azure/acs#az_acs_create) 命令，以便同时创建 Kubernetes 群集和服务主体。
+本文介绍用于为 Kubernetes 群集设置服务主体的不同选项。 例如，如果已安装并设置 [Azure CLI](/cli/azure/install-az-cli2)，则可运行 [`az acs create`](/cli/azure/acs) 命令，以便同时创建 Kubernetes 群集和服务主体。
 
 
 ## <a name="requirements-for-the-service-principal"></a>服务主体的的要求

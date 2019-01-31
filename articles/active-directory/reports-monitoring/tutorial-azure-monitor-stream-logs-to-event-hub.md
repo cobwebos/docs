@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.component: report-monitor
+ms.subservice: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 0560f4a4a815373f86592126b30edcc4ca10ba24
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 5c9567c08db25eaeb79e2d27ce1295a54ccf5595
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54825317"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55174714"
 ---
 # <a name="tutorial-stream-azure-active-directory-logs-to-an-azure-event-hub-preview"></a>教程：将 Azure Active Directory 日志流式传输到 Azure 事件中心（预览版）
 

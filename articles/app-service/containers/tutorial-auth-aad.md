@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 04/26/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 8ebaab260d38a3fe4f492f2545c5ec8b07990235
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: ed056bf28881f391ed1ba16a875259e8e420b39d
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53715233"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55296077"
 ---
 # <a name="tutorial-authenticate-and-authorize-users-end-to-end-in-azure-app-service-on-linux"></a>教程：在 Linux 上的 Azure 应用服务中对用户进行端到端身份验证和授权
 
@@ -317,7 +317,7 @@ git push frontend master
 
 现在已配置好了应用。 前端现在可以通过适当的访问令牌访问后端了。
 
-若要了解如何为其他提供程序完成此配置，请参阅[刷新访问令牌](../app-service-authentication-how-to.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#refresh-access-tokens)。
+若要了解如何为其他提供程序完成此配置，请参阅[刷新访问令牌](../app-service-authentication-how-to.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#refresh-identity-provider-tokens)。
 
 ## <a name="call-api-securely-from-server-code"></a>通过服务器代码安全地调用 API
 

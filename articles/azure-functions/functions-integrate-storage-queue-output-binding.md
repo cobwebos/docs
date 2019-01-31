@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.date: 09/19/2017
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: 0cd3d3044623e2265a4ef5f817ed41258e63ae1c
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 15ef1905562d04c2732016dfd1340910b3a8f699
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52995519"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54900351"
 ---
 # <a name="add-messages-to-an-azure-storage-queue-using-functions"></a>使用 Functions 将消息添加到 Azure 存储队列
 
@@ -55,7 +55,7 @@ ms.locfileid: "52995519"
 
     ![将队列存储输出绑定添加到 Azure 门户中的函数。](./media/functions-integrate-storage-queue-output-binding/function-add-queue-storage-output-binding-2.png)
 
-    | 设置      |  建议的值   | Description                              |
+    | 设置      |  建议的值   | 说明                              |
     | ------------ |  ------- | -------------------------------------------------- |
     | **消息参数名称** | outputQueueItem | 输出绑定参数的名称。 | 
     | **存储帐户连接** | AzureWebJobsStorage | 可以使用 Function App 已在使用的存储帐户连接，也可以创建一个新的存储帐户连接。  |
@@ -162,6 +162,6 @@ ms.locfileid: "52995519"
 
 ## <a name="next-steps"></a>后续步骤
 
-本快速入门介绍了如何将输出绑定添加到现有函数。 有关队列存储绑定的详细信息，请参阅 [Azure Functions 存储队列绑定](functions-bindings-storage-queue.md)。 
+本快速入门介绍了如何将输出绑定添加到现有函数。 有关队列存储绑定的详细信息，请参阅 [Azure Functions 存储队列绑定](functions-bindings-storage-queue.md)。
 
-[!INCLUDE [Next steps note](../../includes/functions-quickstart-next-steps.md)]
+[!INCLUDE [Next steps note](../../includes/functions-quickstart-next-steps-2.md)]

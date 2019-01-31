@@ -3,17 +3,17 @@ title: 创建 Azure Data Lake Storage Gen2 存储帐户 | Microsoft Docs
 description: 快速学习使用 Azure 门户、Azure PowerShell 或 Azure CLI 创建能够访问 Data Lake Storage Gen2 的新存储帐户
 services: storage
 author: jamesbak
-ms.component: data-lake-storage-gen2
+ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: quickstart
 ms.date: 12/06/2018
 ms.author: jamesbak
-ms.openlocfilehash: c32e79098cb50600e10d353392e8ceb13d5014b2
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 906f1a85000a2be175a204e9e6e561a75cecfde3
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54475027"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55248429"
 ---
 # <a name="quickstart-create-an-azure-data-lake-storage-gen2-storage-account"></a>快速入门：创建 Azure Data Lake Storage Gen2 存储帐户
 
@@ -222,7 +222,7 @@ az storage account create `
 
 ### <a name="clean-up-resources"></a>清理资源
 
-若要删除资源组及其关联的资源（包括新的存储帐户），请使用 [az group delete](/cli/azure/group#az_group_delete) 命令。
+若要删除资源组及其关联的资源（包括新的存储帐户），请使用 [az group delete](/cli/azure/group) 命令。
 
 ```azurecli-interactive
 az group delete --name myResourceGroup

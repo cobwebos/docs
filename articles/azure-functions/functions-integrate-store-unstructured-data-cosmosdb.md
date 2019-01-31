@@ -13,12 +13,12 @@ ms.topic: quickstart
 ms.date: 10/01/2018
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: 172ac44855274682953f0fcd59a685eb5a994ba4
-ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
+ms.openlocfilehash: cdae0a04d09b7985935bee0ae636d7f88fbff541
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/22/2018
-ms.locfileid: "53752582"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54903649"
 ---
 # <a name="store-unstructured-data-using-azure-functions-and-azure-cosmos-db"></a>使用 Azure Functions 和 Azure Cosmos DB 存储非结构化数据
 
@@ -59,7 +59,7 @@ ms.locfileid: "53752582"
 
     ![配置 Cosmos DB 输出绑定](./media/functions-integrate-store-unstructured-data-cosmosdb/functions-integrate-tab-configure-cosmosdb-binding.png)
 
-    | 设置      | 建议的值  | Description                                |
+    | 设置      | 建议的值  | 说明                                |
     | ------------ | ---------------- | ------------------------------------------ |
     | 文档参数名称 | taskDocument | 引用代码中的 Cosmos DB 对象的名称。 |
     | **数据库名称** | taskDatabase | 用于保存文档的数据库的名称。 |
@@ -169,6 +169,6 @@ module.exports = async function (context, req) {
 
 ## <a name="next-steps"></a>后续步骤
 
-[!INCLUDE [functions-quickstart-next-steps](../../includes/functions-quickstart-next-steps.md)]
-
 若要详细了解如何绑定到 Cosmos DB 数据库，请参阅 [Azure Functions Cosmos DB 绑定](functions-bindings-cosmosdb.md)。
+
+[!INCLUDE [functions-quickstart-next-steps](../../includes/functions-quickstart-next-steps-2.md)]

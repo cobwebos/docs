@@ -6,16 +6,16 @@ services: cognitive-services
 author: wolfma61
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: speech-service
+ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 12/18/2018
 ms.author: wolfma
-ms.openlocfilehash: d741550fc64ef7544e33304f8608ad6e6ee3426e
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 914f86e8705916af4927aa192a41fc7636b80f3a
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53723633"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55228689"
 ---
 # <a name="quickstart-recognize-speech-in-c-on-linux-by-using-the-speech-sdk"></a>快速入门：在 Linux 上使用语音 SDK 通过 C++ 识别语音
 

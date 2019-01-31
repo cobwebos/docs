@@ -6,16 +6,16 @@ services: cognitive-services
 author: aahill
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-image-search
+ms.subservice: bing-image-search
 ms.topic: tutorial
 ms.date: 9/12/2018
 ms.author: aahi
-ms.openlocfilehash: f7ab94c6d935222c65c1259f1ce3b01d10f78ec1
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: a0fd10d48b3dc46435c2cbd3d43ff0f839343e10
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54062853"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55188144"
 ---
 # <a name="tutorial-create-a-single-page-app-using-the-bing-image-search-api"></a>教程：使用必应图像搜索 API 创建单页应用
 
@@ -316,7 +316,7 @@ function renderImageResults(items) {
 
 必应图像搜索 API 可以返回四种类型的搜索建议以帮助引导用户的搜索体验，每个建议都在其自己的顶级对象中。
 
-| 建议         | Description                                                                                                                                                                                                         |
+| 建议         | 说明                                                                                                                                                                                                         |
 |--------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `pivotSuggestions` | 将原始搜索中的透视字替换为其他字的查询。 例如，如果搜索“red flowers”，透视字可能为“red”，并且透视建议可能为“yellow flowers”。 |
 | `queryExpansions`  | 通过添加更多词缩小原始搜索范围的查询。 例如，如果搜索“Microsoft Surface”，查询扩展可能为“Microsoft Surface Pro”。                                   |
@@ -338,7 +338,7 @@ searchItemRenderers = {
 
 这些呈现器函数接受以下参数：
 
-| 参数         | Description                                                                                              |
+| 参数         | 说明                                                                                              |
 |---------|----------------------------------------------------------------------------------------------|
 | `item`  | 包含项目属性（如其 URL 及其说明）的 JavaScript 对象。 |
 | `index` | 结果项集合中的结果项的索引。                                          |

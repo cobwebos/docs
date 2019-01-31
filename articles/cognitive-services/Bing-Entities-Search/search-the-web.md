@@ -6,16 +6,16 @@ services: cognitive-services
 author: swhite-msft
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-entity-search
+ms.subservice: bing-entity-search
 ms.topic: overview
 ms.date: 07/06/2016
 ms.author: scottwhi
-ms.openlocfilehash: 2b3adf07a8522322434a6596475fa06c0df978e8
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: 98d624b51835f88d34ec7ffd9658e40985482498
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48813594"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55181820"
 ---
 # <a name="what-is-bing-entity-search"></a>什么是必应实体搜索？
 
@@ -48,7 +48,7 @@ ms.locfileid: "48813594"
 > [!NOTE]
 > 实体响应支持多个市场，但 Places 响应仅支持美国业务位置。 
 
-`entities` 字段是一个 [EntityAnswer](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#entityanswer) 对象，该对象包含 [Entity](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#entity) 对象的列表（参见 `value` 字段）。 此列表可能包含单个主实体和/或多个消除歧义实体。 
+`entities` 字段是一个 [EntityAnswer](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference) 对象，该对象包含 [Entity](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#entity) 对象的列表（参见 `value` 字段）。 此列表可能包含单个主实体和/或多个消除歧义实体。 
 
 主实体是必应认为的符合请求的唯一实体（对于哪个实体符合请求不存在争议）。 如果多个实体可能符合请求，则列表包含多个消除歧义实体。 例如，如果请求使用某个电影系列的宽泛的名称，则列表可能包含多个消除歧义实体。 但是，如果请求指定了来自该系列的一个具体的名称，则列表可能包含单个主实体。
 

@@ -6,18 +6,18 @@ services: cognitive-services
 author: swhite-msft
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-video-search
+ms.subservice: bing-video-search
 ms.topic: quickstart
 ms.date: 04/15/2017
 ms.author: scottwhi
-ms.openlocfilehash: 5b1ac98ee9ad5625d8db9790a3be10d42236874b
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 4962415578dd07465a0c60554c7a94598d7e8f43
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52307451"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55179117"
 ---
-# <a name="quickstart-your-first-video-search-query"></a>快速入门：第一个视频搜索查询
+# <a name="quickstart-your-first-video-search-query"></a>快速入门：你的第一个视频搜索查询
 
 在“搜索”下获取[认知服务访问密钥](https://azure.microsoft.com/try/cognitive-services/)。  另请参阅[认知服务定价 - 必应搜索 API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)。
 

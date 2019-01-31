@@ -7,16 +7,16 @@ author: diberry
 manager: cgronlun
 ms.custom: seodec18
 ms.service: cognitive-services
-ms.component: qna-maker
+ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 11/19/2018
 ms.author: diberry
-ms.openlocfilehash: a9ce92677e66bf4a0c38399dea1f9bab5285824e
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: fe68ee89d956d353eee9839ada7d60efd92e86cb
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53162369"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55207660"
 ---
 # <a name="quickstart-publish-a-knowledge-base-in-qna-maker-using-python"></a>快速入门：在 QnA Maker 中通过 Python 发布知识库
 

@@ -6,17 +6,17 @@ services: cognitive-services
 author: aahill
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-web-search
+ms.subservice: bing-web-search
 ms.topic: overview
 ms.date: 08/14/2018
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: b11e7117143dea6db71b1c60d89054477e94227d
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 5c2a31e10d53c8088afd3c3910b1b2f9d2b2d247
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53255986"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55159225"
 ---
 # <a name="what-is-the-bing-web-search-api"></a>什么是必应 Web 搜索 API？
 
@@ -30,7 +30,7 @@ ms.locfileid: "53255986"
 
 除了即时应答，必应 Web 搜索还提供其他特性和功能，用于为用户自定义搜索结果。
 
-| Feature | Description |
+| Feature | 说明 |
 |---------|-------------|
 | [以实时方式建议搜索词](../bing-autosuggest/get-suggested-search-terms.md) | 改进应用程序体验，方法是在用户键入时通过必应自动建议 API 显示建议的搜索词。 |
 | [通过内容类型筛选和限制结果](filter-answers.md) | 针对网页、图像、视频、安全搜索等使用筛选器和查询参数自定义和优化搜索结果。 |

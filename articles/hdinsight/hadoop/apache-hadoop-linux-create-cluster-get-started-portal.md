@@ -10,12 +10,12 @@ ms.custom: hdinsightactive,hdiseo17may2017,mvc,seodec18
 ms.topic: quickstart
 ms.date: 11/06/2018
 ms.author: hrasheed
-ms.openlocfilehash: b19866ad560dcb056f1cfad8fbc1918930bd143d
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.openlocfilehash: dbae234739cd58278b1dc56c956a5fb058394681
+ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53811539"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54913404"
 ---
 # <a name="quickstart-get-started-with-apache-hadoop-and-apache-hive-in-azure-hdinsight-using-the-azure-portal"></a>快速入门：通过 Azure 门户在 Azure HDInsight 中开始使用 Apache Hadoop 和 Apache Hive
 
@@ -172,6 +172,7 @@ ms.locfileid: "53811539"
 * 有关 HDInsight 如何使用 Azure 存储的信息，请参阅[将 Azure 存储与 HDInsight 配合使用](../hdinsight-hadoop-use-blob-storage.md)。
 * 有关如何使用 Data Lake Storage 创建 HDInsight 群集的信息，请参阅[快速入门：在 HDInsight 中设置群集](../../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)
 * 若要了解如何将数据上传到 HDInsight，请参阅[将数据上传到 HDInsight](../hdinsight-upload-data.md)。
+* [将 Azure Data Lake Storage Gen2 用于 Azure HDInsight 群集](../hdinsight-hadoop-use-data-lake-storage-gen2.md)
 
 有关如何使用 HDInsight 分析数据的详细信息，请参阅以下文章：
 

@@ -6,20 +6,20 @@ services: cognitive-services
 author: swhite-msft
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-autosuggest
+ms.subservice: bing-autosuggest
 ms.topic: quickstart
 ms.date: 04/15/2017
 ms.author: scottwhi
-ms.openlocfilehash: 446d271854a4e45bcea8c261a0dc078e549f8229
-ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
+ms.openlocfilehash: c748f58028d747b2d963d6ac28ea2661e41ec68c
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/06/2018
-ms.locfileid: "48830747"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55184506"
 ---
 # <a name="quickstart-making-your-first-autosuggest-query"></a>快速入门：进行第一次自动建议查询
 
-必须先获取认知服务订阅密钥，然后才能执行首次调用。 若要获取密钥，请参阅[试用认知服务](https://azure.microsoft.com/try/cognitive-services/?api=autosuggest-api)。
+在进行第一次调用之前，需要获取认知服务订阅密钥。 若要获取密钥，请参阅[试用认知服务](https://azure.microsoft.com/try/cognitive-services/?api=autosuggest-api)。
 
 若要获得 Web 搜索结果，请向以下终结点发送 GET 请求：
 

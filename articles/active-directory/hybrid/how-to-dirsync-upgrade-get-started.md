@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 07/13/2017
-ms.component: hybrid
+ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 9ec2cdd26db03698a3093336b500cb66e2125c50
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 12a11e444372ad7004e566851532a98be63af8e8
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54467802"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55195352"
 ---
 # <a name="azure-ad-connect-upgrade-from-dirsync"></a>Azure AD Connect：从 DirSync 升级
 Azure AD Connect 是 DirSync 的后继产品。 将在本主题中了解可从 DirSync 升级的方式。 这些步骤不适用于从另一个版本的 Azure AD Connect 或从 Azure AD Sync 升级。

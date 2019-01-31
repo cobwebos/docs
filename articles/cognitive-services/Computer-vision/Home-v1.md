@@ -6,17 +6,17 @@ services: cognitive-services
 author: KellyDF
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: computer-vision
+ms.subservice: computer-vision
 ms.topic: overview
 ms.date: 08/10/2017
 ms.author: kefre
 ms.custom: seodec18
-ms.openlocfilehash: acd6d41e8b6d1fb834697ec3d026419ee6b69ec9
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: 57388b4e2f74a1e9e8d9c322020077dfd67e89c1
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53582348"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55198140"
 ---
 # <a name="what-is-computer-vision-api-version-10"></a>什么是计算机视觉 API 版本 1.0？
 

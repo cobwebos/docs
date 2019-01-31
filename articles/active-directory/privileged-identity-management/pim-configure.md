@@ -8,17 +8,17 @@ manager: mtillman
 editor: ''
 ms.service: active-directory
 ms.workload: identity
-ms.component: pim
+ms.subservice: pim
 ms.topic: overview
 ms.date: 01/16/2019
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: b5848b16624f3b8c307a022b9f79c61910736b83
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: b5f1e5838fcf6eeac3b58fb0eef8fe08eb9202d4
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54433724"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55167132"
 ---
 # <a name="what-is-azure-ad-privileged-identity-management"></a>什么是 Azure AD Privileged Identity Management？
 
@@ -56,8 +56,8 @@ Azure Active Directory (Azure AD) Privileged Identity Management (PIM) 是用于
 
 | 术语或概念 | 角色分配类别 | 说明 |
 | --- | --- | --- |
-| 符合条件 | 类型 | 要求用户在使用角色之前执行一项或多项操作的角色分配。 如果用户符合某个角色的条件，则意味着他们在需要执行特权任务时可以激活该角色。 用户无论具有永久角色分配还是合格角色分配，获得的访问权限并无差异。 唯一的差异在于，有些用户并不是一直需要该访问权限。 |
-| 活动 | 类型 | 不要求用户在使用角色之前执行任何操作的角色分配。 分配为“活动”的用户拥有分配给该角色的特权。 |
+| 符合条件 | Type | 要求用户在使用角色之前执行一项或多项操作的角色分配。 如果用户符合某个角色的条件，则意味着他们在需要执行特权任务时可以激活该角色。 用户无论具有永久角色分配还是合格角色分配，获得的访问权限并无差异。 唯一的差异在于，有些用户并不是一直需要该访问权限。 |
+| 活动 | Type | 不要求用户在使用角色之前执行任何操作的角色分配。 分配为“活动”的用户拥有分配给该角色的特权。 |
 | 激活 |  | 执行一项或多项操作，使用户能够使用符合条件的角色的过程。 操作可能包括执行多重身份验证 (MFA) 检查、提供业务理由或请求获得指定审批者的批准。 |
 | 已分配 | 状态 | 具有活动角色分配的用户。 |
 | 已激活 | 状态 | 具有符合条件的角色分配、已执行激活角色的操作且现在处于活动状态的用户。 |

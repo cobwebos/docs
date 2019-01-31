@@ -6,16 +6,16 @@ services: cognitive-services
 author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: translator-text
+ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 10/29/2018
 ms.author: erhopf
-ms.openlocfilehash: f7f779ccd10eeffc9ddfcba5dbb9abde00e1f735
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: 502455c6302a19176b29e9e5dcbac4a9897a04ea
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54160006"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55214035"
 ---
 # <a name="quickstart-look-up-words-with-bilingual-dictionary-using-nodejs"></a>快速入门：通过 Node.js 使用双语字典查找字词
 

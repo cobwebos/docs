@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 01/15/2019
 ms.author: rezas
-ms.openlocfilehash: a90357e0075856049616a026fee7a49606ea4d90
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 590faaf727345dcfe8ab61a1860ca46d78256b22
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54830508"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55218999"
 ---
 # <a name="quickstart-communicate-to-a-device-application-in-nodejs-via-iot-hub-device-streams-preview"></a>快速入门：通过 IoT 中心设备流在 Node.js 中与设备应用程序通信（预览）
 
@@ -40,7 +40,7 @@ ms.locfileid: "54830508"
 
 若要运行本快速入门中所述的服务端应用程序，需要在开发计算机上安装 Node.js v4.x.x 或更高版本。
 
-可从 [Node.js.org](https://Node.js.org) 下载适用于多个平台的 Node.js。
+可从 [Node.js.org](https://nodejs.org) 下载适用于多个平台的 Node.js。
 
 可以使用以下命令验证开发计算机上 Node.js 当前的版本：
 
@@ -48,7 +48,7 @@ ms.locfileid: "54830508"
 node --version
 ```
 
-如果尚未进行此操作，请从 https://github.com/Azure-Samples/azure-iot-samples-node/archive/master.zip 下载示例 Node.js 项目并提取 ZIP 存档。
+如果尚未进行此操作，请从 https://github.com/Azure-Samples/azure-iot-samples-node/archive/streams-preview.zip 下载示例 Node.js 项目并提取 ZIP 存档。
 
 
 ## <a name="create-an-iot-hub"></a>创建 IoT 中心

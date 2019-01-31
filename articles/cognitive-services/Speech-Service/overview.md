@@ -6,16 +6,16 @@ services: cognitive-services
 author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: speech-service
+ms.subservice: speech-service
 ms.topic: overview
 ms.date: 12/13/2018
 ms.author: erhopf
-ms.openlocfilehash: e86adfd4e832e6b9514e4813ddd4a942b07ca624
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: beb1382d2e076052583dd5bbc546259c8aae2f96
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53336588"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55217962"
 ---
 # <a name="what-is-speech-services"></a>什么是语音服务？
 
@@ -53,7 +53,7 @@ ms.locfileid: "53336588"
 
 语音服务还有一个 [REST API](rest-apis.md)，此 API 适用于任何能够发出 HTTP 请求的编程语言。 此 REST 接口不提供 SDK 的流式处理实时功能。
 
-|<br>方法|语音<br>转文本|文本转<br>语音|语音<br>翻译|<br>Description|
+|<br>方法|语音<br>转文本|文本转<br>语音|语音<br>翻译|<br>说明|
 |-|-|-|-|-|
 |[语音 SDK](speech-sdk.md)|是|否|是|适用于 C#、C++ 和 Java 的本机 API，可以简化开发。|
 |[REST API](rest-apis.md)|是|是|否|一个基于 HTTP 的简单 API，可以轻松地将语音添加到应用程序。|

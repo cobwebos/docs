@@ -6,16 +6,16 @@ services: cognitive-services
 author: sanjeev3
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: content-moderator
+ms.subservice: content-moderator
 ms.topic: quickstart
 ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: f55906aa9de6faa5979ecedbc3ef288f164fd6c8
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 1038b116ea9c12e5252bea3fe67781061750cabb
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54261939"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55215531"
 ---
 # <a name="quickstart-start-moderation-jobs-using-net"></a>快速入门：使用 .NET 启动审核工作
 

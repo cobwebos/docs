@@ -11,17 +11,17 @@ Customer intent: I want to create a Basic Load balancer so that I can load balan
 ms.custom: mvc
 ms.service: load-balancer
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/19/2018
+ms.date: 01/25/2019
 ms.author: kumud
-ms.openlocfilehash: 18c5b8f31b2a912eade360ebc2c5845782667250
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: 884d64c2d7286dde7a62ac5e9a6fd3054b683fcd
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54230214"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55245935"
 ---
 # <a name="quickstart-create-a-load-balancer-to-load-balance-vms-using-azure-cli"></a>快速入门：使用 Azure CLI 创建负载均衡器以对 VM 进行负载均衡
 
@@ -33,7 +33,7 @@ ms.locfileid: "54230214"
 
 ## <a name="create-a-resource-group"></a>创建资源组
 
-使用 [az group create](https://docs.microsoft.com/cli/azure/group#create) 创建资源组。 Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。
+使用 [az group create](https://docs.microsoft.com/cli/azure/group) 创建资源组。 Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。
 
 以下示例在 eastus 位置创建名为 myResourceGroupLB 的资源组：
 
@@ -45,7 +45,7 @@ ms.locfileid: "54230214"
 
 ## <a name="create-a-public-ip-address"></a>创建公共 IP 地址
 
-若要通过 Internet 访问 Web 应用，需要负载均衡器有一个公共 IP 地址。 使用 [az network public-ip create](https://docs.microsoft.com/cli/azure/network/public-ip#create) 在 *myResourceGroupLB* 中创建名为 *myPublicIP* 的公共 IP 地址。
+若要通过 Internet 访问 Web 应用，需要负载均衡器有一个公共 IP 地址。 使用 [az network public-ip create](https://docs.microsoft.com/cli/azure/network/public-ip) 在 *myResourceGroupLB* 中创建名为 *myPublicIP* 的公共 IP 地址。
 
 ```azurecli-interactive
   az network public-ip create --resource-group myResourceGroupLB --name myPublicIP
@@ -61,7 +61,7 @@ ms.locfileid: "54230214"
 
 ### <a name="create-the-load-balancer"></a>创建负载均衡器
 
-使用 [az network lb create](https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest#create) 创建名为 **myLoadBalancer** 的公共 Azure 负载均衡器，该负载均衡器包括名为 **myFrontEndPool** 的前端池、名为 **myBackEndPool** 的后端池（与在前一步中创建的公共 IP 地址 **myPublicIP** 相关联）。
+使用 [az network lb create](https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest) 创建名为 **myLoadBalancer** 的公共 Azure 负载均衡器，该负载均衡器包括名为 **myFrontEndPool** 的前端池、名为 **myBackEndPool** 的后端池（与在前一步中创建的公共 IP 地址 **myPublicIP** 相关联）。
 
 ```azurecli-interactive
   az network lb create \
@@ -74,7 +74,7 @@ ms.locfileid: "54230214"
 
 ### <a name="create-the-health-probe"></a>创建运行状况探测
 
-运行状况探测器会检查所有虚拟机实例，以确保它们可以发送网络流量。 探测器检查失败的虚拟机实例将从负载均衡器中删除，直到它恢复联机状态并且探测器检查确定它运行正常。 使用 [az network lb probe create](https://docs.microsoft.com/cli/azure/network/lb/probe?view=azure-cli-latest#create) 创建运行状况探测，以监视虚拟机的运行状况。 
+运行状况探测器会检查所有虚拟机实例，以确保它们可以发送网络流量。 探测器检查失败的虚拟机实例将从负载均衡器中删除，直到它恢复联机状态并且探测器检查确定它运行正常。 使用 [az network lb probe create](https://docs.microsoft.com/cli/azure/network/lb/probe?view=azure-cli-latest) 创建运行状况探测，以监视虚拟机的运行状况。 
 
 ```azurecli-interactive
   az network lb probe create \
@@ -87,7 +87,7 @@ ms.locfileid: "54230214"
 
 ### <a name="create-the-load-balancer-rule"></a>创建负载均衡器规则
 
-负载均衡器规则定义传入流量的前端 IP 配置和后端 IP 池以接收流量，同时定义所需源和目标端口。 使用 [az network lb rule create](https://docs.microsoft.com/cli/azure/network/lb/rule?view=azure-cli-latest#create) 创建负载均衡器规则 *myLoadBalancerRuleWeb*，以便侦听前端池 *myFrontEndPool* 中的端口 80，并且将经过负载均衡的网络流量发送到也使用端口 80 的后端地址池 *myBackEndPool*。 
+负载均衡器规则定义传入流量的前端 IP 配置和后端 IP 池以接收流量，同时定义所需源和目标端口。 使用 [az network lb rule create](https://docs.microsoft.com/cli/azure/network/lb/rule?view=azure-cli-latest) 创建负载均衡器规则 *myLoadBalancerRuleWeb*，以便侦听前端池 *myFrontEndPool* 中的端口 80，并且将经过负载均衡的网络流量发送到也使用端口 80 的后端地址池 *myBackEndPool*。 
 
 ```azurecli-interactive
   az network lb rule create \
@@ -108,7 +108,7 @@ ms.locfileid: "54230214"
 
 ### <a name="create-a-virtual-network"></a>创建虚拟网络
 
-使用 [az network vnet create](https://docs.microsoft.com/cli/azure/network/vnet#create) 在 *myResourceGroup* 中创建名为 *myVnet* 的虚拟网络，该虚拟网络包含名为 *mySubnet* 的子网。
+使用 [az network vnet create](https://docs.microsoft.com/cli/azure/network/vnet) 在 *myResourceGroup* 中创建名为 *myVnet* 的虚拟网络，该虚拟网络包含名为 *mySubnet* 的子网。
 
 ```azurecli-interactive
   az network vnet create \

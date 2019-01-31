@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 11/29/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017, mvc
-ms.openlocfilehash: 96daacef134ca60cb497907a770c83a4bba24a5b
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 66ba6aa874e84ce86d54d5ea0f827a83dc6564b4
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52956018"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55208545"
 ---
 # <a name="azure-and-linux"></a>Azure 和 Linux
 Microsoft Azure 正在不断集结各种集成的公有云服务，包括分析、虚拟机、数据库、移动、网络、存储和 Web&mdash;是托管解决方案的理想之选。  Microsoft Azure 提供可缩放的计算平台，允许即用即付，而无需投资购买本地硬件。  Azure 允许根据客户端所需的任何规模，随时扩展和缩减解决方案。
@@ -72,7 +72,7 @@ Azure 正在支持它的大多数 Linux 发行版中推出 [cloud-init](http://c
 Microsoft 与合作伙伴紧密合作，以确保可用映像进行更新并针对 Azure 运行时进行优化。  有关 Azure 合作伙伴的详细信息，请参阅以下链接：
 
 * Azure 上的 Linux - [认可的分发](endorsed-distros.md)
-* SUSE - [Azure 市场 - SUSE Linux Enterprise Server](https://azuremarketplace.microsoft.com/en-us/marketplace/apps?search=%27SUSE%27)
+* SUSE - [Azure 市场 - SUSE Linux Enterprise Server](https://azuremarketplace.microsoft.com/marketplace/apps/SUSE.SLES?tab=Overview)
 * Red Hat - [Azure 市场 - Red Hat Enterprise Linux 7.2](https://azure.microsoft.com/marketplace/partners/redhat/redhatenterpriselinux72/)
 * Canonical - [Azure 市场 - Ubuntu Server 16.04 LTS](https://azure.microsoft.com/marketplace/partners/canonical/ubuntuserver1604lts/)
 * Debian - [Azure 市场 - Debian 8 "Jessie"](https://azure.microsoft.com/marketplace/partners/credativ/debian8/)

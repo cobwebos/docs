@@ -6,16 +6,16 @@ services: cognitive-services
 author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: translator-text
+ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 12/05/2018
 ms.author: erhopf
-ms.openlocfilehash: c1a75a32e60e337d07bda9d6f6d39efa58c679e2
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: ff4fdc94b77a09898efea3c74bef6091b2ebaac8
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54158561"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55209242"
 ---
 # <a name="quickstart-look-up-words-with-bilingual-dictionary-using-go"></a>快速入门：通过 Go 使用双语字典查找字词
 

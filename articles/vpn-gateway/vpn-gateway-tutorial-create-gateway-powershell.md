@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 05/14/2018
 ms.author: yushwang
 ms.custom: mvc
-ms.openlocfilehash: 8e3cdd99c99a300d7f1198826ae881373e179414
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 17c8a55c27a276fa1e2e04ebb9f748fa6d59a9dc
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54433690"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55204059"
 ---
 # <a name="create-and-manage-vpn-gateway-with-the-azure-powershell-module"></a>使用 Azure PowerShell 模块创建和管理 VPN 网关
 
@@ -126,7 +126,7 @@ New-AzureRmVirtualNetworkGateway -Name $Gw1 -ResourceGroupName $RG1 `
 可以在创建网关之后更改 VPN 网关 SKU。 不同的网关 SKU 支持不同的规范，例如吞吐量、连接数，等等。以下示例使用 [Resize-AzureRmVirtualNetworkGateway](/powershell/module/azurerm.network/Resize-AzureRmVirtualNetworkGateway) 将网关的大小从 VpnGw1 调整为 VpnGw2。 有关详细信息，请参阅[网关 SKU](vpn-gateway-about-vpn-gateway-settings.md#gwsku)。
 
 ```azurepowershell-interactive
-$gw = Get-AzureRmVirtualNetworkGateway -Name $Gw1 -ResourceGroup $RG1
+$gateway = Get-AzureRmVirtualNetworkGateway -Name $Gw1 -ResourceGroup $RG1
 Resize-AzureRmVirtualNetworkGateway -GatewaySku VpnGw2 -VirtualNetworkGateway $gateway
 ```
 
@@ -137,7 +137,7 @@ Resize-AzureRmVirtualNetworkGateway -GatewaySku VpnGw2 -VirtualNetworkGateway $g
 作为故障排除步骤的一部分，你可以重置 Azure VPN 网关来强制 VPN 网关重新启动 IPsec/IKE 隧道配置。 使用 [Reset-AzureRmVirtualNetworkGateway](/powershell/module/azurerm.network/Reset-AzureRmVirtualNetworkGateway) 重置网关。
 
 ```azurepowershell-interactive
-$gw = Get-AzureRmVirtualNetworkGateway -Name $Gw1 -ResourceGroup $RG1
+$gateway = Get-AzureRmVirtualNetworkGateway -Name $Gw1 -ResourceGroup $RG1
 Reset-AzureRmVirtualNetworkGateway -VirtualNetworkGateway $gateway
 ```
 

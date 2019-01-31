@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 07/18/2017
 ms.author: billmath
-ms.openlocfilehash: bf86a1d50b8c63b90a05d0b05bc6a1a037d300d5
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 7a15b04e9e0fbd2cedf07c2833df30e4f0ca3db7
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54468696"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55167931"
 ---
 # <a name="azure-ad-connect-health-agent-installation"></a>Azure AD Connect Health 代理安装
 本文档逐步讲解如何安装和配置 Azure AD Connect Health 代理。 可以从 [此处](how-to-connect-install-roadmap.md#download-and-install-azure-ad-connect-health-agent)下载代理。
@@ -171,10 +171,6 @@ ms.locfileid: "54468696"
 
 
 ## <a name="installing-the-azure-ad-connect-health-agent-for-sync"></a>安装用于同步的 Azure AD Connect Health 代理
-> [!NOTE]
-> 同步服务器应与 AD FS 服务器不同。 不要将同步代理安装到 AD FS 服务器。
->
-
 安装最新版本的 Azure AD Connect 时，会自动安装用于同步的 Azure AD Connect Health 代理。 若要使用 Azure AD Connect 进行同步，需要下载并安装最新版本的 Azure AD Connect。 可以在 [此处](https://www.microsoft.com/download/details.aspx?id=47594)下载最新版本。
 
 若要验证代理是否已安装，请在服务器上查看以下服务。 如果已完成配置，这些服务应已运行。 否则，它们会停止，直到完成配置。

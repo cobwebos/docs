@@ -8,7 +8,7 @@ manager: daveba
 editor: ''
 ms.assetid: 54e1b01b-03ee-4c46-bcf0-e01affc0419d
 ms.service: active-directory
-ms.component: devices
+ms.subservice: devices
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 01/08/2019
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: cf4d142adeff5157a7291e0bac65700bb2e9c8c5
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 9f12b14473cb459329312d5d3a607f06232b5992
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54446912"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55098623"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-join-for-managed-domains"></a>教程：为托管域配置混合 Azure Active Directory 加入
 

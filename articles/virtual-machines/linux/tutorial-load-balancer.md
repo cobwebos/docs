@@ -3,7 +3,7 @@ title: 教程 - 在 Azure 中均衡 Linux 虚拟机负载 | Microsoft Docs
 description: 本教程介绍如何使用 Azure CLI 创建负载均衡器，以实现在三个 Linux 虚拟机上高度可用且安全的应用程序
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: zr-msft
+author: cynthn
 manager: jeconnoc
 editor: tysonn
 tags: azure-resource-manager
@@ -14,14 +14,14 @@ ms.topic: tutorial
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 11/13/2017
-ms.author: zarhoads
+ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 47e3f449ef3ef0b732dfcef2af595ce5ccd24f16
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: 66c6a565fff81e1c0e39075502a6a7d3d8ffa7a6
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54856411"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55162287"
 ---
 # <a name="tutorial-load-balance-linux-virtual-machines-in-azure-to-create-a-highly-available-application-with-the-azure-cli"></a>教程：在 Azure 中使用 Azure CLI 均衡 Linux 虚拟机负载以创建高可用性应用程序
 
@@ -148,7 +148,7 @@ az network nsg rule create \
     --destination-port-range 80
 ```
 
-使用 [az network nic create](/cli/azure/network/nic#az_network_nic_create) 创建虚拟 NIC。 以下示例创建三个虚拟 NIC。 （在以下步骤中为应用创建的每个 VM 各使用一个虚拟 NIC）。 可随时创建其他虚拟 NIC 和 VM，并将其添加到负载均衡器：
+使用 [az network nic create](/cli/azure/network/nic) 创建虚拟 NIC。 以下示例创建三个虚拟 NIC。 （在以下步骤中为应用创建的每个 VM 各使用一个虚拟 NIC）。 可随时创建其他虚拟 NIC 和 VM，并将其添加到负载均衡器：
 
 ```bash
 for i in `seq 1 3`; do

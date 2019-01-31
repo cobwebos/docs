@@ -6,17 +6,17 @@ services: cognitive-services
 author: mikedodaro
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-news-search
+ms.subservice: bing-news-search
 ms.topic: quickstart
 ms.date: 01/10/2019
 ms.author: v-gedod
 ms.custom: seodec2018
-ms.openlocfilehash: 66f743273f9937902c3d39a0fc4dd2f034ab8d10
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: da1087dd233d1c3f5339b6521161dd7cb90b90d2
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54260238"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55165245"
 ---
 # <a name="quickstart-perform-a-news-search-with-the-bing-news-search-sdk-for-c"></a>快速入门：使用适用于 C# 的必应新闻搜索 SDK 执行新闻搜索
 

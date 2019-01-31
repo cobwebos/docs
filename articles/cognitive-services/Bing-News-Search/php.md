@@ -6,17 +6,17 @@ services: cognitive-services
 author: aahill
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-news-search
+ms.subservice: bing-news-search
 ms.topic: quickstart
 ms.date: 1/10/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: cd9dabfc7e462eace8fb8ae5d01359d19010c137
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: c7657a3ca8ab92079b47927d98b881fa9653e0cf
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54261819"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55197154"
 ---
 # <a name="quickstart-perform-a-news-search-using-php-and-the-bing-news-search-rest-api"></a>快速入门：使用 PHP 和必应新闻搜索 REST API 执行新闻搜索
 

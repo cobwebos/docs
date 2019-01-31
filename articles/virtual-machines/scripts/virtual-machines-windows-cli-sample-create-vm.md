@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-Windows
 ms.workload: infrastructure
 ms.date: 02/23/2017
 ms.author: rclaus
-ms.openlocfilehash: e4e098373120e8dc889ffd0319c049f2a83160ad
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: 03cd613a2a1882096a0bbf8cb06f061238cfe31c
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54844545"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55175683"
 ---
 # <a name="create-a-virtual-machine-with-the-azure-cli"></a>使用 Azure CLI 创建虚拟机
 
@@ -51,7 +51,7 @@ az group delete --name myResourceGroup --yes
 | [az group create](https://docs.microsoft.com/cli/azure/group#az_group_create) | 创建用于存储所有资源的资源组。 |
 | [az network vnet create](https://docs.microsoft.com/cli/azure/network/vnet#az_network_vnet_create) | 创建 Azure 虚拟网络和子网。 |
 | [az network public-ip create](https://docs.microsoft.com/cli/azure/network/public-ip#az_network_public_ip_create) | 使用静态 IP 地址和关联的 DNS 名称创建公共 IP 地址。 |
-| [az network nsg create](https://docs.microsoft.com/cli/azure/network/nsg#az_network_nsg_create) | 创建网络安全组 (NSG)，这是 Internet 和虚拟机之间的安全边界。 |
+| [az network nsg create](https://docs.microsoft.com/cli/azure/network/nsg) | 创建网络安全组 (NSG)，这是 Internet 和虚拟机之间的安全边界。 |
 | [az network nic create](https://docs.microsoft.com/cli/azure/network/nic) | 创建虚拟网卡并将其连接到虚拟网络、子网和 NSG。 |
 | [az vm create](https://docs.microsoft.com/cli/azure/vm#az_vm_create) | 创建虚拟机并将其连接到网卡、虚拟网络、子网和 NSG。 此命令还指定要使用的虚拟机映像和管理凭据。  |
 | [az group delete](https://docs.microsoft.com/cli/azure/vm/extension#az_vm_extension_set) | 删除资源组，包括所有嵌套的资源。 |

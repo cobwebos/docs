@@ -6,17 +6,17 @@ services: cognitive-services
 author: swhite-msft
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-news-search
+ms.subservice: bing-news-search
 ms.topic: overview
 ms.date: 01/10/2019
 ms.author: scottwhi
 ms.custom: seodec2018
-ms.openlocfilehash: 32c18508d07fc911366ffc77ebe347efd3c1b6fa
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 1409839718b7ea2f685952a396ea2f52bd34fae1
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54261445"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55148806"
 ---
 # <a name="what-is-the-bing-news-search-api"></a>什么是必应新闻搜索 API？
 
@@ -28,7 +28,7 @@ ms.locfileid: "54261445"
 
 虽然必应新闻搜索 API 主要用于查找并返回相关的新闻文章，但它还提供了一些在网络上进行智能化、集中化新闻检索的功能。
 
-|Feature  |Description  |
+|Feature  |说明  |
 |---------|---------|
 |[建议和使用搜索词](concepts/search-for-news.md#suggest-and-use-search-terms)     | 在用户键入时通过[必应自动建议 API](../bing-autosuggest/get-suggested-search-terms.md) 显示建议的搜索词改善搜索体验。         |
 |[获取一般新闻](concepts/search-for-news.md#get-general-news)     | 查找新闻时，可以向必应新闻搜索 API 发送搜索查询，然后就会获得相关新闻文章的列表。           |

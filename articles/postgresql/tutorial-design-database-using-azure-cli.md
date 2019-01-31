@@ -8,12 +8,12 @@ ms.custom: mvc
 ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 04/01/2018
-ms.openlocfilehash: 1782aa2a29bc2cf2593aa5bb1c356d4176196055
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: 795fe2b54c806947df2f4c078722e9acae3df96f
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54854405"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55148569"
 ---
 # <a name="tutorial-design-an-azure-database-for-postgresql-using-azure-cli"></a>教程：使用 Azure CLI 设计 Azure Database for PostgreSQL 
 在本教程中，需使用 Azure CLI（命令行接口）以及其他实用工具了解如何完成以下操作：
@@ -44,7 +44,7 @@ az group create --name myresourcegroup --location westus
 ```
 
 ## <a name="create-an-azure-database-for-postgresql-server"></a>创建 Azure Database for PostgreSQL 服务器
-使用 [az postgres server create](/cli/azure/postgres/server#az_postgres_server_create) 命令创建 [Azure Database for PostgreSQL 服务器](overview.md)。 服务器包含作为组进行管理的一组数据库。 
+使用 [az postgres server create](/cli/azure/postgres/server) 命令创建 [Azure Database for PostgreSQL 服务器](overview.md)。 服务器包含作为组进行管理的一组数据库。 
 
 下面的示例使用服务器管理员登录名 `myadmin` 在资源组 `myresourcegroup` 中创建名为 `mydemoserver` 的服务器。 服务器的名称映射到 DNS 名称，因此需要在 Azure 中全局唯一。 用自己的值替换 `<server_admin_password>`。 它是第 4 代常规用途服务器，带有 2 个 2 vCore。
 ```azurecli-interactive

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 12/12/2018
 ms.author: jdial
-ms.openlocfilehash: 9a2272c61932fe4628a0c90101446b6105cab29e
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
+ms.openlocfilehash: 8e46058432743febd70a017ee5131081a052364b
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54413645"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55195386"
 ---
 # <a name="quickstart-create-a-virtual-network-using-the-azure-cli"></a>快速入门：使用 Azure CLI 创建虚拟网络
 
@@ -38,7 +38,7 @@ ms.locfileid: "54413645"
 az group create --name myResourceGroup --location eastus
 ```
 
-使用 [az network vnet create](/cli/azure/network/vnet#az_network_vnet_create) 创建虚拟网络。 此示例创建名为 myVirtualNetwork 的默认虚拟网络，它具有一个名为 default 的子网：
+使用 [az network vnet create](/cli/azure/network/vnet) 创建虚拟网络。 此示例创建名为 myVirtualNetwork 的默认虚拟网络，它具有一个名为 default 的子网：
 
 ```azurecli-interactive
 az network vnet create \

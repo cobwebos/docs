@@ -8,7 +8,7 @@ manager: mtillman
 editor: ''
 ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
@@ -16,12 +16,12 @@ ms.workload: identity
 ms.date: 11/01/2018
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: d61d0220a87f81ca68255d40c00a6b7783943231
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 64faed888352e641cb51200d81c038fe5caf7ef4
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50960187"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55098538"
 ---
 # <a name="quickstart-call-the-microsoft-graph-api-from-a-universal-windows-platform-uwp-application"></a>快速入门：从通用 Windows 平台 (UWP) 应用程序调用 Microsoft Graph API
 
@@ -35,8 +35,8 @@ ms.locfileid: "50960187"
 > ## <a name="register-and-download-your-quickstart-app"></a>注册并下载快速入门应用
 > [!div renderon="docs" class="sxs-lookup"]
 > 可以使用两个选项来启动快速入门应用程序：
-> * [快速] [选项 1：注册并自动配置应用，然后下载代码示例](#option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample)
-> * [手动] [选项 2：注册并手动配置应用程序和代码示例](#option-2-register-and-manually-configure-your-application-and-code-sample)
+> * [快速][选项 1：注册并自动配置应用，然后下载代码示例](#option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample)
+> * [手动][选项 2：注册并手动配置应用程序和代码示例](#option-2-register-and-manually-configure-your-application-and-code-sample)
 >
 > ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>选项 1：注册并自动配置应用，然后下载代码示例
 >

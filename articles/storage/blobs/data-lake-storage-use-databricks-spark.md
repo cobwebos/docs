@@ -3,17 +3,17 @@ title: 教程：使用 Spark 通过 Azure Databricks 访问 Azure Data Lake Stor
 description: 本教程介绍如何在 Azure Databricks 群集上运行 Spark 查询，以便访问 Azure Data Lake Storage Gen2 存储帐户中的数据。
 services: storage
 author: dineshmurthy
-ms.component: data-lake-storage-gen2
+ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: tutorial
 ms.date: 01/14/2019
 ms.author: dineshm
-ms.openlocfilehash: e72a4f71a42a892d14fad076b124426f0c32ac7d
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.openlocfilehash: 31d18d7ea4ee195f7ffcfa04fb247b5dfd525c6a
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54321800"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55251465"
 ---
 # <a name="tutorial-access-data-lake-storage-gen2-preview-data-with-azure-databricks-using-spark"></a>教程：使用 Spark 通过 Azure Databricks 访问 Data Lake Storage Gen2 预览版数据
 
@@ -60,7 +60,7 @@ ms.locfileid: "54321800"
 
 :heavy_check_mark:在执行文章的[将应用程序分配给角色](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-the-application-to-a-role)部分的步骤时，请确保将应用程序分配给“Blob 存储参与者”角色。
 
-:heavy_check_mark:在执行文章的[获取用于登录的值](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)部分的步骤时，请将租户 ID、应用程序 ID 和身份验证密钥值粘贴到文本文件中。{0}{0} 很快就会需要这些值。
+:heavy_check_mark:在执行文章的[获取用于登录的值](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)部分的步骤时，请将租户 ID、应用程序 ID 和身份验证密钥值粘贴到文本文件中。 很快就会需要这些值。
 
 ## <a name="create-a-databricks-cluster"></a>创建 Databricks 群集
 

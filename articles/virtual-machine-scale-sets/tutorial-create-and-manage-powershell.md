@@ -3,7 +3,7 @@ title: 教程 - 创建和管理 Azure 虚拟机规模集 | Microsoft Docs
 description: 了解如何使用 Azure PowerShell 创建虚拟机规模集以及某些常见的管理任务，例如如何启动和停止实例，或者如何更改规模集容量。
 services: virtual-machine-scale-sets
 documentationcenter: ''
-author: zr-msft
+author: cynthn
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 05/18/2018
-ms.author: zarhoads
+ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: cc82b6e540eb46bf855a84a2e23f4999fbadc41d
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 0aa4b8fd606c45f2dea702140c34fc93bcd4c5a4
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54428250"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54885365"
 ---
 # <a name="tutorial-create-and-manage-a-virtual-machine-scale-set-with-azure-powershell"></a>教程：使用 Azure PowerShell 创建和管理虚拟机规模集
 利用虚拟机规模集，可以部署和管理一组相同的、自动缩放的虚拟机。 在虚拟机规模集的整个生命周期内，可能需要运行一个或多个管理任务。 本教程介绍如何执行下列操作：

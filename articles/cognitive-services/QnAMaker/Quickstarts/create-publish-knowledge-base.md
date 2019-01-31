@@ -5,16 +5,16 @@ description: 可以根据自己的内容（例如常见问题解答或产品手�
 author: diberry
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: qna-maker
+ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 12/18/2018
 ms.author: diberry
-ms.openlocfilehash: 4b4f208524f18b98d44dc3d34e05359445fb2f17
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 41a8f11f817ec550ef3423d85eb107796bdd1b28
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53598304"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55216942"
 ---
 # <a name="create-train-and-publish-your-qna-maker-knowledge-base"></a>创建、训练和发布 QnA Maker 知识库
 

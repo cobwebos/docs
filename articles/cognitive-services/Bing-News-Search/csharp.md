@@ -6,17 +6,17 @@ services: cognitive-services
 author: aahill
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-news-search
+ms.subservice: bing-news-search
 ms.topic: quickstart
 ms.date: 1/10/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 4461b4abf88ea7079d02f35d6b8c5f3a4aed8b6d
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 44958a806d7476bfc347236421758d6f8c4bc5ad
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54261904"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55150704"
 ---
 # <a name="quickstart-search-for-news-using-c-and-the-bing-news-search-rest-api"></a>快速入门：使用 C# 和必应新闻搜索 REST API 搜索新闻
 

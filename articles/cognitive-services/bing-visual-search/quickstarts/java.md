@@ -6,16 +6,16 @@ services: cognitive-services
 author: swhite-msft
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-visual-search
+ms.subservice: bing-visual-search
 ms.topic: quickstart
 ms.date: 5/16/2018
 ms.author: scottwhi
-ms.openlocfilehash: 148d145dae01fffdf7a4c650a0e2b20f8387295a
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.openlocfilehash: 67cd215479efb40e3eb7e81c6c519a59b6526f47
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53742178"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55172028"
 ---
 # <a name="quickstart-get-image-insights-using-the-bing-visual-search-rest-api-and-java"></a>快速入门：使用必应视觉搜索 REST API 和 Java 获取图像见解
 

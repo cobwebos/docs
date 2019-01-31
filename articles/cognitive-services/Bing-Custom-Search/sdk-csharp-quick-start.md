@@ -6,16 +6,16 @@ services: cognitive-services
 author: swhite-msft
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-custom-search
+ms.subservice: bing-custom-search
 ms.topic: quickstart
 ms.date: 09/06/2018
 ms.author: scottwhi
-ms.openlocfilehash: f5ede8d8dc2950551655e7e0331a68b15ba13cf8
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: 55a9982026e118e3c375908879967831a8121ede
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53555772"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55178233"
 ---
 # <a name="quickstart-call-your-bing-custom-search-endpoint-using-the-c-sdk"></a>快速入门：使用 C# SDK 调用必应自定义搜索终结点 
 

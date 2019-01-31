@@ -3,7 +3,7 @@ title: Azure CLI 示例 - 附加并使用数据磁盘 | Microsoft Docs
 description: Azure CLI 示例
 services: virtual-machine-scale-sets
 documentationcenter: ''
-author: zr-msft
+author: cynthn
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -14,14 +14,14 @@ ms.topic: sample
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/27/2018
-ms.author: zarhoads
+ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 26ec45fd380c399f21d259b4f1d2c02c31d925c7
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: f7acfb068d000eb76ea526ea7fb3244c585beebf
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49465281"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54887659"
 ---
 # <a name="attach-and-use-data-disks-with-a-virtual-machine-scale-set-with-the-azure-cli"></a>使用 Azure CLI 为虚拟机规模集附加并使用数据磁盘
 此脚本创建虚拟机规模集并附加和准备数据磁盘。

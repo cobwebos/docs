@@ -3,7 +3,7 @@ title: 教程 - 使用 Azure CLI 自动缩放规模集 | Microsoft Docs
 description: 了解如何使用 Azure CLI 随 CPU 需求的增减自动缩放虚拟机规模集
 services: virtual-machine-scale-sets
 documentationcenter: ''
-author: zr-msft
+author: cynthn
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 05/18/2018
-ms.author: zarhoads
+ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: b30c3a2e9f06cf02f27636592634884a7c3fdfc8
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: fdc1cb7c4b95a72aa55ccce57b2fa331f7c9615d
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49471299"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55170702"
 ---
 # <a name="tutorial-automatically-scale-a-virtual-machine-scale-set-with-the-azure-cli"></a>教程：使用 Azure CLI 自动缩放虚拟机规模集
 
@@ -41,13 +41,13 @@ ms.locfileid: "49471299"
 
 ## <a name="create-a-scale-set"></a>创建规模集
 
-使用 [az group create](/cli/azure/group#create) 创建资源组，如下所示：
+使用 [az group create](/cli/azure/group) 创建资源组，如下所示：
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
 ```
 
-现在，使用 [az vmss create](/cli/azure/vmss#create) 创建虚拟机规模集。 以下示例创建实例计数为 *2* 的规模集，并生成 SSH 密钥（如果不存在）：
+现在，使用 [az vmss create](/cli/azure/vmss) 创建虚拟机规模集。 以下示例创建实例计数为 *2* 的规模集，并生成 SSH 密钥（如果不存在）：
 
 ```azurecli-interactive
 az vmss create \
@@ -137,7 +137,7 @@ sudo apt-get -y install stress
 sudo stress --cpu 10 --timeout 420 &
 ```
 
-当 **stress** 显示类似于 *stress: info: [2688] dispatching hogs: 10 cpu, 0 io, 0 vm, 0 hdd* 的输出时，按 *Enter* 键返回到提示符。
+当 **stress** 显示类似于 *stress: info: [2688] dispatching hogs:10 cpu, 0 io, 0 vm, 0 hdd* 的输出时，按 *Enter* 键返回到提示符。
 
 若要确认 **stress** 是否生成了 CPU 负载，请使用 **top** 实用工具检查活动的系统负载：
 
@@ -165,7 +165,7 @@ sudo apt-get -y install stress
 sudo stress --cpu 10 --timeout 420 &
 ```
 
-当 **stress** 再次显示类似于 *stress: info: [2713] dispatching hogs: 10 cpu, 0 io, 0 vm, 0 hdd* 的输出时，按 *Enter* 键返回到提示符。
+当 **stress** 再次显示类似于 *stress: info: [2713] dispatching hogs:10 cpu, 0 io, 0 vm, 0 hdd* 的输出时，按 *Enter* 键返回到提示符。
 
 关闭与第二个 VM 实例的连接。 **stress** 继续在 VM 实例上运行。
 

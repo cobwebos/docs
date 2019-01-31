@@ -13,12 +13,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 01/08/2019
 ms.author: barclayn
-ms.openlocfilehash: 9b57dfcd6ecd00f9f1bb8ec752e0996ee52305db
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: a78cc79031a8dc9b0c98beddf759fbc8674c6dd1
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54159037"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55168254"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-azure-cli"></a>快速入门：使用 Azure CLI 在 Azure Key Vault 中设置和检索机密
 
@@ -88,7 +88,7 @@ az keyvault secret show --name "ExamplePassword" --vault-name "Contoso-Vault2"
 ## <a name="clean-up-resources"></a>清理资源
 
 本系列中的其他快速入门和教程是在本快速入门的基础上制作的。 如果打算继续使用后续的快速入门和教程，则可能需要保留这些资源。
-如果不再需要资源组和所有相关的资源，可以使用 [az group delete](/cli/azure/group#delete) 命令将其删除。 可以删除资源，如下所示：
+如果不再需要资源组和所有相关的资源，可以使用 [az group delete](/cli/azure/group) 命令将其删除。 可以删除资源，如下所示：
 
 ```azurecli
 az group delete --name ContosoResourceGroup

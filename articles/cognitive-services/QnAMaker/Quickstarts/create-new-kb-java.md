@@ -6,16 +6,16 @@ services: cognitive-services
 author: diberry
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: qna-maker
+ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 11/06/2018
 ms.author: diberry
-ms.openlocfilehash: 87ba02b6a840d416d54e3129b5720b4f59820eb8
-ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
+ms.openlocfilehash: 389348a34a45dc25d6a2e43ffbfe28822b966d2c
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53413432"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55225703"
 ---
 # <a name="quickstart-create-a-knowledge-base-in-qna-maker-using-java"></a>快速入门：在 QnA Maker 中使用 Java 创建知识库
 

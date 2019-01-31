@@ -7,16 +7,16 @@ author: diberry
 manager: cgronlun
 ms.custom: seodec18
 ms.service: cognitive-services
-ms.component: language-understanding
+ms.subservice: language-understanding
 ms.topic: quickstart
 ms.date: 01/23/2019
 ms.author: diberry
-ms.openlocfilehash: 5bb4bbb1c080fcbf1f374c68ede8f28c1e4e3c5f
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: 81a05ed3e981c2a35221830a16b5859ee5c1bd4f
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54853896"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55225510"
 ---
 # <a name="quickstart-get-intent-using-c"></a>快速入门：使用 C# 获取意向
 

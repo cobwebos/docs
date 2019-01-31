@@ -3,7 +3,7 @@ title: Azure CLI 示例 - 安装应用 | Microsoft Docs
 description: Azure CLI 示例
 services: virtual-machine-scale-sets
 documentationcenter: ''
-author: zr-msft
+author: cynthn
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -14,14 +14,14 @@ ms.topic: sample
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/27/2018
-ms.author: zarhoads
+ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 2469eef981246da9bfd9132ea0164395078fd164
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 9c1b0d4ea794e5b3ed4f899addef18da2465562a
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54468448"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54882185"
 ---
 # <a name="install-applications-into-a-virtual-machine-scale-set-with-the-azure-cli"></a>使用 Azure CLI 将应用程序安装到虚拟机规模集中
 此脚本创建运行 Ubuntu 的虚拟机规模集，并使用自定义脚本扩展安装一个基本 Web 应用程序。 运行脚本后，可以通过 Web 浏览器访问该 Web 应用。

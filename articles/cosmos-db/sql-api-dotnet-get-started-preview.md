@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 12/01/2018
 ms.author: dech
-ms.openlocfilehash: 27686adb7ae20e50ce822f83002135844f9f93bb
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: d497f3c5e3d64e13b0c6ad4d3021ad2e451f3ae5
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54037015"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55296695"
 ---
 # <a name="build-a-net-console-app-to-manage-data-in-azure-cosmos-db-sql-api-account-sdk-version-3-preview"></a>生成一个用于在 Azure Cosmos DB SQL API 帐户中管理数据的 .NET 控制台应用（SDK 版本 3 预览）
 
@@ -318,20 +318,20 @@ ms.locfileid: "54037015"
         //ADD THIS PART TO YOUR CODE
         await this.CreateContainer();
     }
+    ```
+选择 **F5** 来运行应用程序。
 
-Select **F5** to run your application.
+祝贺你！ 已成功创建 Azure Cosmos DB 容器。  
 
-Congratulations! You have successfully created an Azure Cosmos DB container.  
+## <a id="CreateDoc"></a>步骤 6：向容器添加项
+可以使用“CosmosItems”类的 [CreateItemAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.cosmositems) 函数创建项。 使用 SQL API 时，项会投射为文档，后者是用户定义的（任意）JSON 内容。 现在，可以将项插入 Azure Cosmos DB 容器中。
 
-## <a id="CreateDoc"></a>Step 6: Add items to the container
-An item can be created by using the [**CreateItemAsync**](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.cosmositems) function of the **CosmosItems** class. When using the SQL API, items are projected as documents, which are user-defined (arbitrary) JSON content. You can now insert an item into your Azure Cosmos DB container.
+在本例中，首先需要创建 **Family** 类来表示存储在 Azure Cosmos DB 中的对象。 此外还将创建 **Family** 中使用的 **Parent**、**Child**、**Pet** 和 **Address** 子类。 请注意，文档必须将 **ID** 属性序列化为 JSON 格式的 **ID**。 
+1. 选择“Ctrl + Shift + A”以打开“添加新项”对话框。 将新类“Family.cs”添加到项目中。 
 
-First, we need to create a **Family** class that will represent objects stored within Azure Cosmos DB in this sample. We will also create **Parent**, **Child**, **Pet**, **Address** subclasses that are used within **Family**. Note that documents must have an **Id** property serialized as **id** in JSON. 
-1. Select **Ctrl+Shift+A** to open the **Add New Item** dialog. Add a new class **Family.cs** to your project. 
+    ![将新的“Family.cs”类添加到项目中的屏幕截图](./media/sql-api-get-started/dotnet-tutorial-visual-studio-add-family-class.png)
 
-    ![Screen shot of adding a new Family.cs class into the project](./media/sql-api-get-started/dotnet-tutorial-visual-studio-add-family-class.png)
-
-1. Copy and paste the **Family**, **Parent**, **Child**, **Pet**, and **Address** class into **Family.cs**. 
+1. 将“Family”、“Parent”、“Child”、“Pet”和“Address”类复制并粘贴到“Family.cs”。 
     ```csharp
     using Newtonsoft.Json;
 
@@ -596,15 +596,15 @@ Azure Cosmos DB 支持对存储在每个集合中的 JSON 文档进行[各种查
         //ADD THIS PART TO YOUR CODE
         await this.ReplaceFamilyItem();
     }
+    ```
+选择 **F5** 来运行应用程序。
 
-Select **F5** to run your application.
+祝贺你！ 已成功替换了 Azure Cosmos DB 项。
 
-Congratulations! You have successfully replaced an Azure Cosmos DB item.
+## <a id="DeleteDocument"></a>步骤 9：删除项目
+现在，我们将删除 Azure Cosmos DB 中的一个项。
 
-## <a id="DeleteDocument"></a>Step 9: Delete item
-Now, we will delete an item in Azure Cosmos DB.
-
-1. Copy and paste the **DeleteFamilyItem** method below your **ReplaceFamilyItem** method.
+1. 将“DeleteFamilyItem”方法复制并粘贴到“ReplaceFamilyItem”方法下面。
     ```csharp
     /*
     Delete an item in the container

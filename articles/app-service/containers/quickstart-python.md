@@ -15,12 +15,12 @@ ms.topic: quickstart
 ms.date: 01/23/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: f23aa49d44e8f29f860174ebde2447fad79c8c52
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: be78c91a4fb5c1e79e7b58620f65c9f17bfb4bae
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54843372"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55226479"
 ---
 # <a name="create-a-python-app-in-azure-app-service-on-linux-preview"></a>在 Linux 上的 Azure 应用服务（预览）中创建 Python 应用
 
@@ -180,7 +180,7 @@ Linux 上的应用服务中内置的 Python 映像目前处于预览状态，你
 > [将 Python 与 PostgreSQL 配合使用](tutorial-python-postgresql-app.md)
 
 > [!div class="nextstepaction"]
-> [配置自定义启动命令](how-to-configure-python.md#custom-startup-command)
+> [配置自定义启动命令](how-to-configure-python.md#customize-startup-command)
 
 > [!div class="nextstepaction"]
 > [故障排除](how-to-configure-python.md#troubleshooting)

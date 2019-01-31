@@ -6,16 +6,16 @@ services: cognitive-services
 author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: translator-text
+ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 10/29/2018
 ms.author: erhopf
-ms.openlocfilehash: 09d0c855aada753b0a3e594055ec188c2698e677
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: b27bad7b3e34353ec7e2d33cab3614affc31322b
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52999012"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55215548"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-determine-sentence-length-with-nodejs"></a>快速入门：使用 Node.js 通过文本翻译 API 来确定句子长度
 

@@ -4,17 +4,17 @@ description: 本操作指南介绍如何使用 Azure 存储资源管理器对 Az
 services: storage
 author: roygara
 ms.custom: mvc
-ms.component: data-lake-storage-gen2
+ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: quickstart
 ms.date: 12/11/2018
 ms.author: rogarana
-ms.openlocfilehash: 1b89553816b6ff8a8076d954274d8404f49154a6
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: fd4ca3946ed4c32a8fd2f08c1c242c33dbca2aaf
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53384847"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55238307"
 ---
 # <a name="set-file-and-directory-level-permissions-using-azure-storage-explorer-with-azure-data-lake-storage-gen2-preview"></a>使用 Azure 存储资源管理器和 Azure Data Lake Storage Gen2（预览版）设置文件和目录级别权限
 

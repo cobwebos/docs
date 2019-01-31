@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 01/09/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: b1fa723863e6485e977e075986c3779efed1e689
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.openlocfilehash: cb3a60995a4edfe5eb00f1a5e88812146816806a
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54360619"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54883698"
 ---
 # <a name="azure-backup-support-matrix"></a>Azure 备份支持矩阵
 
@@ -30,13 +30,13 @@ Azure 备份使用恢复服务保管库来安排和管理备份以及存储备�
 保管库中的计算机数 | 单个保管库中最多可以有 1000 个 Azure VM。<br/><br/> 最多可以在单个保管库中注册 50 台运行 Azure 备份代理（Microsoft Azure 恢复服务代理 (MABS)）的本地计算机。
 保管库存储中的数据源 | 最多 54400 GB。 Azure VM 备份没有限制。
 到保管库的备份 | Azure VM：一天一次；受 DPM/MABS 保护的计算机：一天两次；直接使用 MARS 代理备份的计算机：一天三次。  
-移动保管库 | 可以跨订阅和资源组移动备份恢复服务保管库。 [了解详细信息](backup-azure-move-recovery-services-vault.md)。
+移动保管库 | 若要移动恢复服务保管库，必须注册专用预览版。 若要试用，请发邮件至 AskAzureBackupTeam@microsoft.com。
 在保管库之间移动数据 | 不支持在保管库之间移动备份的数据。
 存储复制类型 | 可以在存储备份之前修改保管库的存储复制类型 (GRS/LRS)。 在保管库中开始备份以后，就不能修改复制类型。
 
 
 
-## <a name="on-premises-backup-support"></a>本地备份支持 
+## <a name="on-premises-backup-support"></a>本地备份支持
 
 下面是在需要备份本地计算机的情况下的支持项目。
 
@@ -77,8 +77,8 @@ Azure VM 数据磁盘大小 | 单个磁盘最大可以为 4095 GB。
 下面是在需要备份 Linux 计算机的情况下的支持项目。
 
 **备份** | **Linux（Azure 认可）**
---- | --- 
-**本地 Linux 计算机（没有 DPM 或 MABS）**。 | 不是。 MARS 代理只能安装在 Windows 计算机上。 
+--- | ---
+**本地 Linux 计算机（没有 DPM 或 MABS）**。 | 不是。 MARS 代理只能安装在 Windows 计算机上。
 **Azure VM（没有 DPM 或 MABS）** | 使用[自定义脚本](backup-azure-linux-app-consistent.md)的应用一致性备份。<br/><br/> 文件级恢复。<br/><br/> 通过从恢复点或磁盘创建 VM 进行还原。
 **本地计算机/装有 DPM 的 Azure VM** | 在 Hyper-V 和 VMWare 上对 Linux 来宾 VM 进行文件一致性备份<br/><br/> 对 Hyper-V 和 VMWare Linux 来宾 VM 进行 VM 还原</br></br> 文件一致性备份不适用于 Azure VM
 **本地计算机/装有 MABS 的 Azure VM** | 在 Hyper-V 和 VMWare 上对 Linux 来宾 VM 进行文件一致性备份<br/><br/> 对 Hyper-V 和 VMWare Linux 来宾 VM 进行 VM 还原</br></br> 文件一致性备份不适用于 Azure VM。
@@ -110,7 +110,7 @@ Azure 备份支持针对传输中数据和静态数据的加密：
 **计算机** | **传输中** | **静态**
 --- | --- | ---
 没有 DPM/MABS 的本地 Windows 计算机 | ![是][green] | ![是][green]
-Azure VM | ![是][green] | ![是][green] 
+Azure VM | ![是][green] | ![是][green]
 本地计算机/装有 DPM 的 Azure VM | ![是][green] | ![是][green]
 本地计算机/装有 MABS 的 Azure VM | ![是][green] | ![是][green]
 
@@ -121,7 +121,7 @@ Azure VM | ![是][green] | ![是][green]
 Azure 备份支持对备份流量进行压缩，详细情况汇总在下表中。 请注意：
 
 - 就 Azure VM 来说，VM 扩展会通过存储网络直接读取 Azure 存储帐户中的数据，因此无需压缩此流量。
-- 如果使用 DPM 或 MABS，则可先压缩数据，然后再将其备份到 DPM/MABS，以便节省带宽。 
+- 如果使用 DPM 或 MABS，则可先压缩数据，然后再将其备份到 DPM/MABS，以便节省带宽。
 
 **计算机** | **压缩到 MABS/DPM (TCP)** | **压缩到保管库 (HTTPS)**
 --- | --- | ---
@@ -134,8 +134,8 @@ Azure VM | NA | NA
 
 ## <a name="retention-limits"></a>保留期限制
 
-**设置** | **限制** 
---- | --- 
+**设置** | **限制**
+--- | ---
 每个受保护实例（计算机/工作负荷）的恢复点数上限 | 9999
 恢复点的最长到期时间 | 无限制
 备份到 DPM/MABS 时的最高备份频率 | SQL Server 每隔 15 分钟<br/><br/> 其他工作负荷每小时一次。

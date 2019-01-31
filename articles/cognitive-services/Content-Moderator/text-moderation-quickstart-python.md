@@ -6,16 +6,16 @@ services: cognitive-services
 author: PatrickFarley
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: content-moderator
+ms.subservice: content-moderator
 ms.topic: quickstart
 ms.date: 01/10/2019
 ms.author: pafarley
-ms.openlocfilehash: 6aace9301050877d452b69bd7d1c741f50dae558
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 7952ea9a83e6a2a7689bfdf34e39c7862a6daf73
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54264082"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55217911"
 ---
 # <a name="quickstart-analyze-text-content-for-objectionable-material-in-python"></a>快速入门：使用 Python 分析文本内容中是否存在令人反感的材料
 
@@ -61,7 +61,7 @@ pip install azure-cognitiveservices-vision-contentmoderator
 
 ## <a name="query-the-moderator-service"></a>查询审查器服务
 
-使用订阅密钥和终结点 URL 创建 ContentModeratorClient 实例。 然后，使用其成员 TextModerationOperations 实例调用审查 API。 有关如何调用的详细信息，请参阅 **[screen_text](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.operations.textmoderationoperations?view=azure-python#screen-text)** 参考文档。
+使用订阅密钥和终结点 URL 创建 ContentModeratorClient 实例。 然后，使用其成员 TextModerationOperations 实例调用审查 API。 有关如何调用的详细信息，请参阅 **[screen_text](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.operations.textmoderationoperations?view=azure-python)** 参考文档。
 
 [!code-python[](~/cognitive-services-content-moderator-samples/documentation-samples/python/text-moderation-quickstart-python.py?range=23-36)]
 

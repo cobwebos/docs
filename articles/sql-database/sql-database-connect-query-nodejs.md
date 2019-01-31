@@ -11,12 +11,12 @@ ms.author: carlrab
 ms.reviewer: v-masebo
 manager: craigg
 ms.date: 11/26/2018
-ms.openlocfilehash: 22c783574897076b697b4b2bb3e8fc1da284dcae
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: c6e518f644e8fc43db58ef481312f44b2071a0dc
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52724666"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55194298"
 ---
 # <a name="quickstart-use-nodejs-to-query-an-azure-sql-database"></a>快速入门：使用 Node.js 查询 Azure SQL 数据库
 
@@ -27,8 +27,6 @@ ms.locfileid: "52724666"
 若要完成此示例，请确保具备以下先决条件：
 
 [!INCLUDE [prerequisites-create-db](../../includes/sql-database-connect-query-prerequisites-create-db-includes.md)]
-
-- 针对所用计算机的公共 IP 地址制定[服务器级防火墙规则](sql-database-get-started-portal-firewall.md)
 
 - 适用于操作系统的 Node.js 相关软件：
 

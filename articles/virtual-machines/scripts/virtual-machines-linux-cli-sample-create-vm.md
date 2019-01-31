@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 02/27/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 3e67cd535235593cc466e7e34506c44f9824e2c8
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: 73492e98d75ddcfe4ef6e40f8a43dcb983320ee1
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54848489"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55192683"
 ---
 # <a name="create-a-fully-configured-virtual-machine"></a>创建完全配置的虚拟机
 
@@ -51,7 +51,7 @@ az group delete --name myResourceGroup
 |---|---|
 | [az group create](https://docs.microsoft.com/cli/azure/group#az_group_create) | 创建用于存储所有资源的资源组。 |
 | [az network vnet create](https://docs.microsoft.com/cli/azure/network/vnet) | 创建 Azure 虚拟网络和子网。 |
-| [az network public-ip create](https://docs.microsoft.com/cli/azure/network/public-ip#az_network_public_ip_create) | 使用静态 IP 地址和关联的 DNS 名称创建公共 IP 地址。 |
+| [az network public-ip create](https://docs.microsoft.com/cli/azure/network/public-ip) | 使用静态 IP 地址和关联的 DNS 名称创建公共 IP 地址。 |
 | [az network nsg create](https://docs.microsoft.com/cli/azure/network/nsg#az_network_nsg_create) | 创建网络安全组 (NSG)，这是 Internet 和虚拟机之间的安全边界。 |
 | [az network nsg rule create](https://docs.microsoft.com/cli/azure/network/nsg/rule#az_network_nsg_rule_create) | 创建 NSG 规则以允许入站流量。 在此示例中，将为 SSH 流量打开端口 22。 |
 | [az network nic create](https://docs.microsoft.com/cli/azure/network/nic#az_network_nic_create) | 创建虚拟网卡并将其连接到虚拟网络、子网和 NSG。 |

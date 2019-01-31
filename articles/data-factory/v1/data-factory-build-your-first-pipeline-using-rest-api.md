@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.date: 11/01/2017
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 517d3da0e8e126a1982dafe8fcea0bbf391cfa5a
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 2465dd6c22567a3d8b50a7cfad4e26491bbe773e
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54019684"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54885194"
 ---
 # <a name="tutorial-build-your-first-azure-data-factory-using-data-factory-rest-api"></a>教程：使用数据工厂 REST API 构建第一个 Azure 数据工厂
 > [!div class="op_single_selector"]
@@ -120,7 +120,7 @@ ms.locfileid: "54019684"
 
 下表提供了代码片段中使用的 JSON 属性的描述：
 
-| 属性 | Description |
+| 属性 | 说明 |
 |:--- |:--- |
 | ClusterSize |HDInsight 群集的大小。 |
 | TimeToLive |指定 HDInsight 群集在被删除之前的空闲时间。 |
@@ -166,7 +166,7 @@ ms.locfileid: "54019684"
 
 下表提供了代码片段中使用的 JSON 属性的描述：
 
-| 属性 | Description |
+| 属性 | 说明 |
 |:--- |:--- |
 | type |type 属性设置为 AzureBlob，因为数据位于 Azure Blob 存储中。 |
 | linkedServiceName |引用前面创建的 StorageLinkedService。 |
@@ -218,8 +218,8 @@ ms.locfileid: "54019684"
                 "scriptPath": "adfgetstarted/script/partitionweblogs.hql",
                 "scriptLinkedService": "AzureStorageLinkedService",
                 "defines": {
-                    "inputtable": "wasb://adfgetstarted@<stroageaccountname>.blob.core.windows.net/inputdata",
-                    "partitionedtable": "wasb://adfgetstarted@<stroageaccountname>t.blob.core.windows.net/partitioneddata"
+                    "inputtable": "wasb://adfgetstarted@<storageaccountname>.blob.core.windows.net/inputdata",
+                    "partitionedtable": "wasb://adfgetstarted@<storageaccountname>t.blob.core.windows.net/partitioneddata"
                 }
             },
             "inputs": [{
@@ -487,7 +487,7 @@ IF ((ConvertFrom-Json $results2).value -ne $NULL) {
 本文创建了可在按需 Azure HDInsight 群集上运行 Hive 脚本、包含转换活动（HDInsight 活动）的管道。 若要了解如何使用复制活动将数据从 Azure Blob 复制到 Azure SQL，请参阅[教程：将数据从 Azure Blob 复制到 Azure SQL](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
 
 ## <a name="see-also"></a>另请参阅
-| 主题 | Description |
+| 主题 | 说明 |
 |:--- |:--- |
 | [Data Factory REST API Reference](/rest/api/datafactory/) |参阅有关数据工厂 cmdlet 的综合文档 |
 | [管道](data-factory-create-pipelines.md) |帮助你了解 Azure 数据工厂中的管道和活动，以及如何利用它们为方案或业务构造端对端数据驱动工作流。 |

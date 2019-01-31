@@ -4,18 +4,18 @@ description: include 文件
 ms.custom: include file
 services: azure-dev-spaces
 ms.service: azure-dev-spaces
-ms.component: azds-kubernetes
+ms.subservice: azds-kubernetes
 author: ghogen
 ms.author: ghogen
 ms.date: 05/11/2018
 ms.topic: include
 manager: douge
-ms.openlocfilehash: fb62468f2746072cea02185dbda022a1a5830fcf
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 7092d5059f36e6c8c046d14bb446d7ad1ac18451
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47410437"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55291139"
 ---
 到目前为止，在运行应用程序代码的过程中，如同你是唯一的一位开发人员在操作该应用。 本部分介绍 Azure Dev Spaces 如何简化团队开发：
 * 通过根据需要在共享的开发空间或不同的开发空间中工作，使一组开发人员能够在相同的环境中工作。

@@ -3,23 +3,23 @@ title: 使用 Windows VM 系统分配的托管标识访问 Azure 资源管理器
 description: 本教程将指导你完成使用 Windows VM 系统分配的托管标识访问 Azure Resource Manager 的过程。
 services: active-directory
 documentationcenter: ''
-author: daveba
+author: priyamohanram
 manager: daveba
 editor: daveba
 ms.service: active-directory
-ms.component: msi
+ms.subservice: msi
 ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
-ms.author: daveba
-ms.openlocfilehash: d777868fd44491ab676e1f021e2a8ace75367b2c
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.author: priyamo
+ms.openlocfilehash: 2faf67ccc6b5d080dac8e5e86e291109c5bdd31c
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54437430"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55196287"
 ---
 # <a name="use-a-windows-vm-system-assigned-managed-identity-to-access-resource-manager"></a>使用 Windows VM 系统分配的托管标识访问资源管理器
 

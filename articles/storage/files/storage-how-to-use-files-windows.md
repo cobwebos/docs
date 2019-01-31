@@ -8,12 +8,12 @@ ms.topic: get-started-article
 ms.date: 06/07/2018
 ms.author: renash
 ms.component: files
-ms.openlocfilehash: 4f9225f319eb4a2bbcbb5a79379fc46675ff4c04
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: 1c132c31ab6faac00d1428ee3a239265414a1abb
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54854729"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55221158"
 ---
 # <a name="use-an-azure-file-share-with-windows"></a>将 Azure 文件共享与 Windows 配合使用
 [Azure 文件](storage-files-introduction.md)是 Microsoft 推出的易用云文件系统。 Azure 文件共享可以在 Windows 和 Windows Server 中无缝使用。 本文讨论将 Azure 文件共享与 Windows 和 Windows Server 配合使用时的注意事项。
@@ -99,8 +99,8 @@ $storageAccountKeys = Get-AzStorageAccountKey -ResourceGroupName $resourceGroupN
 # cmdkey utility is the host address for the storage account, <storage-account>.file.core.windows.net for Azure 
 # Public Regions. $storageAccount.Context.FileEndpoint is used because non-Public Azure regions, such as sovereign 
 # clouds or Azure Stack deployments, will have different hosts for Azure file shares (and other storage resources).
-Invoke-Expression -Command "cmdkey /add:$([System.Uri]::new($storageAccount.Context.FileEndPoint).Host) " + `
-    "/user:AZURE\$($storageAccount.StorageAccountName) /pass:$($storageAccountKeys[0].Value)"
+Invoke-Expression -Command ("cmdkey /add:$([System.Uri]::new($storageAccount.Context.FileEndPoint).Host) " + `
+    "/user:AZURE\$($storageAccount.StorageAccountName) /pass:$($storageAccountKeys[0].Value)")
 ```
 
 可以使用 list 参数验证 cmdkey 实用程序是否已存储该存储帐户的凭据：

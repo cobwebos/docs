@@ -6,16 +6,16 @@ services: cognitive-services
 author: swhite-msft
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-visual-search
+ms.subservice: bing-visual-search
 ms.topic: overview
 ms.date: 04/10/2018
 ms.author: scottwhi
-ms.openlocfilehash: aab17f8a0213c213920ebdfc2b2fe31248657a91
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.openlocfilehash: 61a851b0efbcc4fdb55308e47447d218014ef9e0
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53742841"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55154348"
 ---
 # <a name="what-is-the-bing-visual-search-api"></a>什么是必应视觉搜索 API？
 
@@ -25,7 +25,7 @@ ms.locfileid: "53742841"
 
 下面是视觉搜索提供的见解：
 
-| 见解                              | Description |
+| 见解                              | 说明 |
 |--------------------------------------|-------------|
 | 视觉上相似的图像              | 与输入图像在外观上相似的图像列表。 |
 | 外观相似的产品            | 与所示产品外观相似的产品。            |

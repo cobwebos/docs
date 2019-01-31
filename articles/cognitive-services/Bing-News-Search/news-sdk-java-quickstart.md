@@ -6,17 +6,17 @@ services: cognitive-services
 author: mikedodaro
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-news-search
+ms.subservice: bing-news-search
 ms.topic: quickstart
 ms.date: 01/10/2019
 ms.author: v-gedod
 ms.custom: seodec2018
-ms.openlocfilehash: 49356d79ce9f8c4efdd27dc946f7373c3efe59cd
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 5bfd07eb11fd4504fa8c674ecb144c5fe328cc06
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54264557"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55149571"
 ---
 # <a name="quickstart-search-for-news-with-the-bing-news-search-sdk-for-java"></a>快速入门：使用适用于 Java 的必应新闻搜索 SDK 搜索新闻
 

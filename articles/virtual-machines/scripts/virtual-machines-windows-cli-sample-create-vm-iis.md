@@ -3,7 +3,7 @@ title: Azure CLI 脚本示例 - 安装 IIS | Microsoft 文档
 description: Azure CLI 脚本示例 - 安装 IIS
 services: virtual-machines-Windows
 documentationcenter: virtual-machines
-author: zr-msft
+author: cynthn
 manager: jeconnoc
 editor: tysonn
 tags: ''
@@ -14,13 +14,13 @@ ms.topic: sample
 ms.tgt_pltfrm: vm-Windows
 ms.workload: infrastructure
 ms.date: 02/28/2017
-ms.author: zarhoads
-ms.openlocfilehash: 75a226aa36455187a5792db197b1d6c802c4d824
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.author: cynthn
+ms.openlocfilehash: 1e90fac2bdfc93e2865389d43f36e7db258fbc31
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54474551"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54882882"
 ---
 # <a name="quick-create-a-virtual-machine-with-the-azure-cli"></a>使用 Azure CLI 快速创建虚拟机
 

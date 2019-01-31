@@ -6,17 +6,17 @@ services: cognitive-services
 author: mikedodaro
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-news-search
+ms.subservice: bing-news-search
 ms.topic: tutorial
 ms.date: 01/10/2019
 ms.author: v-gedod
 ms.custom: seodec2018
-ms.openlocfilehash: 02cfd00b8ab1f51c46e745dae480e39dee2ed710
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: fc07c825c6de4f9cf0e331d80f7838edf4ff3792
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54262330"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55197749"
 ---
 # <a name="tutorial-create-a-single-page-web-app"></a>教程：创建单页 Web 应用
 
@@ -101,7 +101,7 @@ HTML `<form>` 标记 `onsubmit` 可调用 `bingWebSearch` 函数以返回搜索�
 
 HTML 表单包括具有以下名称的元素：
 
-|元素|Description|
+|元素|说明|
 |-|-|
 | `where` | 用于选择市场（位置和语言）进行搜索的下拉菜单。 |
 | `query` | 用于输入搜索条件的文本字段。 |
@@ -315,7 +315,7 @@ function renderResults(items) {
 ```
 必应新闻搜索 API 最多返回四种不同类型的相关结果，每个都有其自己的顶级对象。 它们是：
 
-|关系|Description|
+|关系|说明|
 |-|-|
 |`pivotSuggestions`|将原始搜索中的透视字替换为其他字的查询。 例如，如果搜索“red flowers”，透视字可能为“red”，并且透视建议可能为“yellow flowers”。|
 |`queryExpansions`|通过添加更多词缩小原始搜索范围的查询。 例如，如果搜索“Microsoft Surface”，查询扩展可能为“Microsoft Surface Pro”。|
@@ -338,7 +338,7 @@ searchItemRenderers = {
 ```
 呈现器函数可以接受以下参数：
 
-|参数|Description|
+|参数|说明|
 |-|-|
 |`item`| 包含项目属性（如其 URL 及其说明）的 JavaScript 对象。|
 |`index`| 结果项集合中的结果项的索引。|

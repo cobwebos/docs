@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 1/11/2019
 ms.author: jeedes
-ms.openlocfilehash: 4a8b45850ef609f908450fbcf35aad6b5c87540b
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: c2e67adb93c34cc4421145964ee809e4423b4843
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54818500"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55101714"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-signagelive"></a>教程：Azure Active Directory 与 Signagelive 集成
 
@@ -104,7 +104,7 @@ ms.locfileid: "54818500"
 
     ![Signagelive 域和 URL 单一登录信息](common/sp-signonurl.png)
 
-    在“登录 URL”文本框中，使用以下模式键入 URL：`https://login.signagelive.com/sso/<ORGANISATIONALUNITNAME>`
+    在“登录 URL”文本框中，使用以下模式键入 URL：`https://login.signagelive.com/sso/<ORGANIZATIONALUNITNAME>`
 
     > [!NOTE]
     > 此值不是真实值。 请使用实际登录 URL 更新此值。 请联系 [Signagelive 客户端支持团队](mailto:support@signagelive.com)获取此值。 还可以参考 Azure 门户中的“基本 SAML 配置”部分中显示的模式。

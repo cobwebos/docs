@@ -1,4 +1,4 @@
-﻿---
+---
 title: 教程：审查电子商务产品图像 - 内容审查器
 titlesuffix: Azure Cognitive Services
 description: 设置一个应用程序，以通过指定的标签分析和分类产品图像（使用 Azure 计算机视觉和自定义视觉），并标记令人反感的图像以作进一步的评审（使用 Azure 内容审查器）。
@@ -6,16 +6,16 @@ services: cognitive-services
 author: PatrickFarley
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: content-moderator
+ms.subservice: content-moderator
 ms.topic: tutorial
 ms.date: 01/10/2019
 ms.author: pafarley
-ms.openlocfilehash: e490e51d0eb3e1c4534bed887508474ce3ffcb22
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 833aa9caed3d1fd5d39a0c15e9fc03ad32091834
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54259319"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55218897"
 ---
 # <a name="tutorial-moderate-e-commerce-product-images-with-azure-content-moderator"></a>教程：使用 Azure 内容审查器审查电子商务产品图像
 
@@ -97,7 +97,7 @@ GitHub 上的[电子商务目录审查示例](https://github.com/MicrosoftConten
 
 ## <a name="create-reviews-for-review-tool"></a>为评审工具创建评审
 
-前面的部分介绍了可以扫描传入图像中的成人和不雅内容（内容审查器）、名人（计算机视觉）和其他各种对象（自定义视觉）的方法。 接下来了解 CreateReview 方法。该方法将图像及其中应用的所有标记（作为元数据传入）上传到内容审查器审阅工具，使之可供人工审阅****。  
+前面的部分介绍了可以扫描传入图像中的成人和不雅内容（内容审查器）、名人（计算机视觉）和其他各种对象（自定义视觉）的方法。 接下来了解 CreateReview 方法。该方法将图像及其中应用的所有标记（作为元数据传入）上传到内容审查器审阅工具，使之可供人工审阅。 
 
 [!code-csharp[define CreateReview method](~/samples-eCommerceCatalogModeration/Fusion/Program.cs?range=173-196)]
 

@@ -4,18 +4,18 @@ titleSuffix: Microsoft
 description: 比较 Microsoft 提供的用于生成、部署和管理机器学习模型的各种产品。 确定要为解决方案选择哪种产品。
 services: machine-learning
 ms.service: machine-learning
-ms.component: core
+ms.subservice: core
 ms.topic: overview
 ms.reviewer: jmartens
 author: garyericson
 ms.author: garye
 ms.date: 1/17/2019
-ms.openlocfilehash: d5660d1a4d5d2a26af57e2a2411552e3f6267379
-ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
+ms.openlocfilehash: d7c7c383f51d8bcc2b1691724e8f22b43782c5e8
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54389134"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55242063"
 ---
 # <a name="what-are-the-machine-learning-products-at-microsoft"></a>Microsoft 的机器学习产品有哪些？
 

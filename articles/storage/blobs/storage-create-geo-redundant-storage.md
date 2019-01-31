@@ -8,13 +8,13 @@ ms.topic: tutorial
 ms.date: 01/03/2019
 ms.author: tamram
 ms.custom: mvc
-ms.component: blobs
-ms.openlocfilehash: e6b64c7545e7a36b9178af84f88ee89b498077b0
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.subservice: blobs
+ms.openlocfilehash: 81cd6b073fb46b01b3b98543d8f92e2ef7b1ec1b
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54019087"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55245371"
 ---
 # <a name="tutorial-make-your-application-data-highly-available-with-azure-storage"></a>教程：使用 Azure 存储实现应用程序数据的高可用性
 

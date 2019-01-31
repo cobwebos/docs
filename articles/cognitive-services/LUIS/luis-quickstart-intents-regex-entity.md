@@ -7,16 +7,16 @@ author: diberry
 manager: cgronlun
 ms.custom: seodec18
 ms.service: cognitive-services
-ms.component: language-understanding
+ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 12/21/2018
 ms.author: diberry
-ms.openlocfilehash: 58fa0c36f8c3f630ae7f349bd0f54a497a38f19d
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 7ce8ba5d35d4c8f8def7b87e96f102c45d39a5d7
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53976777"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55228077"
 ---
 # <a name="tutorial-get-well-formatted-data-from-the-utterance"></a>教程：从话语中获取格式正确的数据
 在此教程中，创建使用“正则表达式”实体从话语中提取带有一致格式的数据的应用。

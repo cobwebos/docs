@@ -11,12 +11,12 @@ ms.author: carlrab
 ms.reviewer: v-masebo
 manager: craigg
 ms.date: 11/28/2018
-ms.openlocfilehash: b768b50af7ad6736e5cc3c885e6ac5016976f48a
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: b3fe6e0249143b27cb763401a8d328922ed1fe99
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52958536"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55173915"
 ---
 # <a name="quickstart-use-php-to-query-an-azure-sql-database"></a>快速入门：使用 PHP 查询 Azure SQL 数据库
 
@@ -27,8 +27,6 @@ ms.locfileid: "52958536"
 若要完成此示例，请确保具备以下先决条件：
 
 [!INCLUDE [prerequisites-create-db](../../includes/sql-database-connect-query-prerequisites-create-db-includes.md)]
-
-- 针对所用计算机的公共 IP 地址制定[服务器级防火墙规则](sql-database-get-started-portal-firewall.md)
 
 - 已为操作系统安装与 PHP 相关的软件：
 

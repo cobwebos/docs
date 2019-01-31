@@ -6,16 +6,16 @@ services: cognitive-services
 author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: speech-service
+ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 12/13/2018
 ms.author: erhopf
-ms.openlocfilehash: e0c5139203b360be1eed2292d3ca07c9948b2ca5
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: d2408b894f58a17ab4f6423329114e0f0c0773c4
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53729516"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55216296"
 ---
 # <a name="quickstart-translate-speech-with-the-speech-sdk-for-java"></a>快速入门：使用适用于 Java 的语音 SDK 转换语音
 
@@ -30,7 +30,7 @@ ms.locfileid: "53729516"
 * 操作系统：64 位 Windows 或 64 位 Ubuntu Linux 16.04/18.04
 * [Eclipse Java IDE](https://www.eclipse.org/downloads/)
 * [Java 8](https://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html) 或 [JDK 8](https://www.oracle.com/technetwork/java/javase/downloads/index.html)
-* 语音服务的 Azure 订阅密钥。 [免费获取](get-started.md)。
+* 语音服务的 Azure 订阅密钥。 [免费获得一个](get-started.md)。
 
 如果运行 Ubuntu 16.04/18.04，请确保在启动 Eclipse 之前安装这些依赖项。
 

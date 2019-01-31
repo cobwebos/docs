@@ -8,19 +8,19 @@ manager: mtillman
 editor: ''
 ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/24/2018
 ms.author: andret
-ms.openlocfilehash: 10de179c6055feb46439792ea74a0a3131f39646
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: aeb9f1ba460a009daacf3090c75573dd5d69b813
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52970639"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55095849"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-web-app"></a>快速入门：向 ASP.NET Web 应用添加 Microsoft 登录功能
 
@@ -51,7 +51,7 @@ ms.locfileid: "52970639"
 
 本快速入门使用以下包：
 
-| 库 | Description |
+| 库 | 说明 |
 |---|---|
 | [Microsoft.Owin.Security.OpenIdConnect](https://www.nuget.org/packages/Microsoft.Owin.Security.OpenIdConnect/) | 让应用程序可使用 OpenIdConnect 进行身份验证的中间件 |
 | [Microsoft.Owin.Security.Cookies](https://www.nuget.org/packages/Microsoft.Owin.Security.Cookies) |允许应用程序使用 Cookie 维持用户会话的中间件 |
@@ -286,9 +286,9 @@ In this step, you will configure your project to use SSL, and then use the SSL U
 
  应看到一个表，其中包含已登录用户的基本属性：
 
-| 属性 | 值 | Description |
+| 属性 | 值 | 说明 |
 |---|---|---|
-| 名称 | {用户全名} | 用户的名字和姓氏 |
+| Name | {用户全名} | 用户的名字和姓氏 |
 | 用户名 | <span>user@domain.com</span> | 用于标识已登录用户的用户名 |
 | 主题| {使用者} |一个唯一地标识 Web 上用户登录名的字符串 |
 | 租户 ID | {Guid} | 唯一表示用户的 Azure AD 组织的 guid |

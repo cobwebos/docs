@@ -6,16 +6,16 @@ services: cognitive-services
 author: anrothMSFT
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: custom-vision
+ms.subservice: custom-vision
 ms.topic: quickstart
 ms.date: 10/31/2018
 ms.author: anroth
-ms.openlocfilehash: aaffd5e47c8465d44c2dbcdde3f40cf6e6995e55
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 01c4da98bbc89a49007aa7064907abd9ed01cc0d
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54079079"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55227533"
 ---
 # <a name="quickstart-create-an-image-classification-project-with-the-custom-vision-net-sdk"></a>快速入门：使用自定义视觉 .NET SDK 创建图像分类项目
 
@@ -33,7 +33,7 @@ ms.locfileid: "54079079"
 
 克隆或下载[认知服务 .NET 示例](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples)项目。 导航到 **CustomVision/ImageClassification** 文件夹，在 Visual Studio 中打开 _ImageClassification.csproj_。
 
-此 Visual Studio 项目创建新的名为“我的新项目”的自定义视觉项目，该项目可以通过[自定义视觉网站](https://customvision.ai/)进行访问。 然后，它上传图像以定型和测试分类器。 在此项目中，分类器用于确定树是铁杉树还是日本樱花树。
+此 Visual Studio 项目会新建名为“我的新项目”的自定义视觉项目，该项目可以通过[自定义视觉网站](https://customvision.ai/)进行访问。 然后，它上传图像以定型和测试分类器。 在此项目中，分类器用于确定树是铁杉树还是日本樱花树。
 
 [!INCLUDE [get-keys](includes/get-keys.md)]
 

@@ -6,18 +6,18 @@ author: curtand
 manager: mtillman
 ms.author: curtand
 ms.reviewer: vincesm
-ms.date: 01/14/2019
+ms.date: 01/28/2019
 ms.topic: overview
 ms.service: active-directory
 ms.workload: identity
 services: active-directory
-ms.custom: it-pro
-ms.openlocfilehash: 2689ec400b7d29c9f086481056e5f554d7fde95a
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.custom: it-pro;seo-update-azuread-jan
+ms.openlocfilehash: 2e8fc0cd0321fb59a641e5527b1609c85802dc63
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54321953"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55295179"
 ---
 # <a name="users-groups-licensing-and-roles-for-large-organizations"></a>大型组织的用户、组、许可和角色
 
@@ -58,7 +58,7 @@ ms.locfileid: "54321953"
 
 ## <a name="assign-app-access"></a>分配应用访问权限
 
-可以使用 Azure AD 为组分配对 [Azure AD 租户中部署的企业应用](/azure/active-directory/manage-apps/methods-for-assigning-users-and-groups#assign-a-group-directly-to-an-application-as-an-administrator?context=azure/active-directory/users-groups-roles/context/ugr-context)的访问权限。 如果在应用中结合使用动态组和组分配，则可以在组织不断发展的过程中，来自动分配用户对应用的访问权限。 需要一个 Azure Active Directory Premium P1 或 Premium P2 许可证才能分配对企业应用的访问权限。
+可以使用 Azure AD 为组分配对 [Azure AD 租户中部署的企业应用](/azure/active-directory/manage-apps/methods-for-assigning-users-and-groups#assign-group?context=azure/active-directory/users-groups-roles/context/ugr-context)的访问权限。 如果在应用中结合使用动态组和组分配，则可以在组织不断发展的过程中，来自动分配用户对应用的访问权限。 需要一个 Azure Active Directory Premium P1 或 Premium P2 许可证才能分配对企业应用的访问权限。
 
 在 Azure AD 中，还可以精细控制你有权访问的应用和组之间流动的数据。 在[企业应用程序](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps)中打开一个应用，并选择“预配”以执行以下操作：
 
@@ -72,4 +72,4 @@ ms.locfileid: "54321953"
 
 入门级的 Azure AD 管理员可在 [Azure Active Directory 基础知识](https://docs.microsoft.com/azure/active-directory/fundamentals/index)中获取基础知识。
 
-或者，可以开始[创建组](/azure/active-directory/fundamentals/active-directory-groups-create-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context)、[分配许可证](/azure/active-directory/fundamentals/license-users-groups?context=azure/active-directory/users-groups-roles/context/ugr-context)、[分配应用访问权限](/azure/active-directory/manage-apps/methods-for-assigning-users-and-groups#assign-a-group-directly-to-an-application-as-an-administrator?context=azure/active-directory/users-groups-roles/context/ugr-context)或[分配管理员角色](directory-assign-admin-roles.md)。
+或者，可以开始[创建组](/azure/active-directory/fundamentals/active-directory-groups-create-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context)、[分配许可证](/azure/active-directory/fundamentals/license-users-groups?context=azure/active-directory/users-groups-roles/context/ugr-context)、[分配应用访问权限](/azure/active-directory/manage-apps/methods-for-assigning-users-and-groups#assign-group?context=azure/active-directory/users-groups-roles/context/ugr-context)或[分配管理员角色](directory-assign-admin-roles.md)。

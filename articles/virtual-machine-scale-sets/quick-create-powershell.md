@@ -3,7 +3,7 @@ title: 快速入门 - 使用 Azure PowerShell 创建虚拟机规模集 | Microso
 description: 了解如何使用 Azure PowerShell 快速创建虚拟机规模集
 services: virtual-machine-scale-sets
 documentationcenter: ''
-author: zr-msft
+author: cynthn
 manager: jeconnoc
 editor: ''
 tags: ''
@@ -15,13 +15,13 @@ ms.devlang: na
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 11/08/18
-ms.author: zarhoads
-ms.openlocfilehash: b704a7bb4849b387be516dc32d1bf9ef321453b6
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.author: cynthn
+ms.openlocfilehash: 6e59c6ead364c77e3659b9c2a92106cb55abf744
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54430952"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54885959"
 ---
 # <a name="quickstart-create-a-virtual-machine-scale-set-with-azure-powershell"></a>快速入门：使用 Azure PowerShell 创建虚拟机规模集
 利用虚拟机规模集，可以部署和管理一组相同的、自动缩放的虚拟机。 可以手动缩放规模集中的 VM 数，也可以定义规则，以便根据资源使用情况（如 CPU 使用率、内存需求或网络流量）进行自动缩放。 然后，Azure 负载均衡器会将流量分配到规模集中的 VM 实例。 在本快速入门中，我们将使用 Azure PowerShell 创建虚拟机规模集并部署一个示例应用程序。

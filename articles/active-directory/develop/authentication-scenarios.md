@@ -8,7 +8,7 @@ manager: mtillman
 editor: ''
 ms.assetid: 0c84e7d0-16aa-4897-82f2-f53c6c990fd9
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
@@ -17,12 +17,12 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: saeeda, sureshja, hirsin
 ms.custom: aaddev
-ms.openlocfilehash: f541212cd549cde21bc3b2048bf633c57a911653
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: db642fea6dbf1bd1ebc53f5066d01dc4f9a5490f
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46967721"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55095627"
 ---
 # <a name="what-is-authentication"></a>什么是身份验证？
 
@@ -108,7 +108,7 @@ Azure AD 颁发的安全令牌（访问令牌和 ID 令牌）包含与经过身�
 
 下表提供了由 Azure AD 发出的每种声明的简要说明。 有关详细信息，请参阅 Azure AD 发布的[访问令牌](access-tokens.md)和 [ID 令牌](id-tokens.md)。
 
-| 声明 | Description |
+| 声明 | 说明 |
 | --- | --- |
 | 应用程序 ID | 标识正在使用令牌的应用程序。 |
 | 目标受众 | 标识令牌所针对的接收方资源。 |
@@ -121,7 +121,7 @@ Azure AD 颁发的安全令牌（访问令牌和 ID 令牌）包含与经过身�
 | 颁发时间 | 记录令牌的颁发时间，通常用于计算令牌新鲜度。 |
 | 颁发者 | 标识发出令牌以及 Azure AD 租户的 STS。 |
 | 姓氏 | 按照 Azure AD 中的设置提供用户的姓氏。 |
-| 名称 | 提供了一个用户可读值，用于标识令牌使用者。 |
+| Name | 提供了一个用户可读值，用于标识令牌使用者。 |
 | 对象 ID | 包含 Azure AD 中的使用者的不可变、唯一标识符。 |
 | 角色 | 包含授予用户的 Azure AD 应用程序角色的友好名称。 |
 | 范围 | 指示授予客户端应用程序的权限。 |

@@ -3,7 +3,7 @@ title: 教程 - 在 Azure 中为 Window 创建虚拟机规模集 | Microsoft Doc
 description: 本教程介绍如何通过 Azure PowerShell 使用虚拟机规模集在 Windows VM 上创建和部署高度可用的应用程序
 services: virtual-machine-scale-sets
 documentationcenter: ''
-author: zr-msft
+author: cynthn
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.devlang: ''
 ms.topic: tutorial
 ms.date: 11/07/2018
-ms.author: zarhoads
+ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 4d7d1ad57feab0c73b0f2e77b815bad746040b00
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: f4641125d15f159c6f50d2889e13b06ba954401b
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54426584"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54886805"
 ---
 # <a name="tutorial-create-a-virtual-machine-scale-set-and-deploy-a-highly-available-app-on-windows-with-azure-powershell"></a>教程：使用 Azure PowerShell 在 Windows 上创建虚拟机规模集和部署高度可用的应用
 利用虚拟机规模集，可以部署和管理一组相同的、自动缩放的虚拟机。 可以手动缩放规模集中的 VM 数。 也可以定义规则，以便根据 CPU、内存需求或网络流量等资源使用情况进行自动缩放。 在本教程中，请在 Azure 中部署虚拟机规模集，并了解如何执行以下操作：

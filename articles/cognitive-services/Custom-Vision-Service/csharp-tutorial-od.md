@@ -1,4 +1,4 @@
-﻿---
+---
 title: 快速入门：使用适用于 C# 的自定义视觉 SDK 创建对象检测项目
 titlesuffix: Azure Cognitive Services
 description: 使用 .NET SDK 和 C# 创建项目、添加标记、上传图像、训练项目以及检测对象。
@@ -6,16 +6,16 @@ services: cognitive-services
 author: areddish
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: custom-vision
+ms.subservice: custom-vision
 ms.topic: quickstart
 ms.date: 10/31/2018
 ms.author: areddish
-ms.openlocfilehash: 14123c316b2881c2ded36a5e30ce62a961183991
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 48f5bef06fddfc0df796e68be9de8b75a76cd337
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54079147"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55211049"
 ---
 # <a name="quickstart-create-an-object-detection-project-with-the-custom-vision-net-sdk"></a>快速入门：使用自定义视觉 .NET SDK 创建对象检测项目
 
@@ -33,7 +33,7 @@ ms.locfileid: "54079147"
 
 克隆或下载[认知服务 .NET 示例](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples)项目。 导航到 **CustomVision/ObjectDetection** 文件夹，在 Visual Studio 中打开 _ObjectDetection.csproj_。
 
-此 Visual Studio 项目会新建名为“我的新项目”的自定义视觉项目，该项目可以通过[自定义视觉网站](https://customvision.ai/)进行访问。然后，该项目会上传图像来训练和测试对象检测模型。在此项目中，会训练模型对图像中的叉子和剪刀进行检测****。
+此 Visual Studio 项目会新建名为“我的新项目”的自定义视觉项目，该项目可以通过[自定义视觉网站](https://customvision.ai/)进行访问。 然后，该项目会上传图像来训练和测试对象检测模型。 在此项目中，会训练模型对图像中的叉子和剪刀进行检测。
 
 [!INCLUDE [get-keys](includes/get-keys.md)]
 

@@ -5,16 +5,16 @@ description: 自定义翻译提供的功能类似于 Microsoft Translator Hub �
 author: rajdeep-in
 manager: christw
 ms.service: cognitive-services
-ms.component: custom-translator
+ms.subservice: custom-translator
 ms.date: 11/13/2018
 ms.author: v-rada
 ms.topic: overview
-ms.openlocfilehash: f845c064ec3625d205ec346ddfc90c3a1b2c3d8d
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: e613f660d4d1abfd45b11d71c2abfda53331cc31
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52874832"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55211198"
 ---
 # <a name="what-is-custom-translator"></a>什么是自定义翻译？
 
@@ -28,7 +28,7 @@ ms.locfileid: "52874832"
 
 自定义翻译提供不同的功能，用于生成自定义翻译系统，然后即可对其进行访问。
 
-|Feature  |Description  |
+|Feature  |说明  |
 |---------|---------|
 |[利用神经机器翻译技术](https://blogs.msdn.microsoft.com/translation/2016/11/15/microsoft-translator-launching-neural-network-based-translations-for-all-its-speech-languages/)     |  利用自定义翻译提供的神经机器翻译 (NMT) 来改进翻译。       |
 |[生成了解业务术语的系统](what-are-parallel-documents.md)     |  使用并行文档自定义并生成翻译系统，该系统了解在你自己的业务和行业中使用的术语。       |

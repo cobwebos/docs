@@ -6,16 +6,16 @@ services: cognitive-services
 author: wolfma61
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: speech-service
+ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 12/13/2018
 ms.author: wolfma
-ms.openlocfilehash: f5b33f0710070ff71ab52a1798773fe97965ef34
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 9d01a6658a62abdc84a18c3e5dbec7cb88aabc98
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53719058"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55208153"
 ---
 # <a name="quickstart-recognize-speech-with-the-speech-sdk-for-net-framework-windows"></a>快速入门：使用适用于 .NET Framework 的语音 SDK (Windows) 识别语音
 

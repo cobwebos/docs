@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 02/23/2017
 ms.author: rclaus
-ms.openlocfilehash: 06f20bd54e9a0057bab14ce144c126f56d54a062
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: 7e173783b76ed53269722d363545692480c29c9d
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54857074"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55182109"
 ---
 # <a name="load-balance-traffic-between-highly-available-virtual-machines"></a>对高度可用的虚拟机之间的流量进行负载均衡
 
@@ -54,9 +54,9 @@ az group delete --name myResourceGroup --yes
 | [az network lb create](https://docs.microsoft.com/cli/azure/network/lb#az_network_lb_create) | 创建 Azure 网络负载均衡器 (NLB)。 |
 | [az network lb probe create](https://docs.microsoft.com/cli/azure/network/lb/probe#az_network_lb_probe_create) | 创建 NLB 探测。 NLB 探测用于监视 NLB 集中的每个 VM。 如果任何 VM 无法访问，流量将不会路由到该 VM。 |
 | [az network lb rule create](https://docs.microsoft.com/cli/azure/network/lb/rule#az_network_lb_rule_create) | 创建 NLB 规则。 在此示例中，将为端口 80 创建一个规则。 当 HTTP 流量到达 NLB 时，它将路由到 NLB 集中的一个 VM 的端口 80。 |
-| [az network lb inbound-nat-rule create](https://docs.microsoft.com/cli/azure/network/lb/inbound-nat-rule#az_network_lb_inbound_nat_rule_create) | 创建 NLB 网络地址转换 (NAT) 规则。  NAT 规则将 NLB 的端口映射到 VM 上的端口。 在此示例中，将为发往 NLB 集中的每个 VM 的 SSH 流量创建 NAT 规则。  |
+| [az network lb inbound-nat-rule create](https://docs.microsoft.com/cli/azure/network/lb/inbound-nat-rule) | 创建 NLB 网络地址转换 (NAT) 规则。  NAT 规则将 NLB 的端口映射到 VM 上的端口。 在此示例中，将为发往 NLB 集中的每个 VM 的 SSH 流量创建 NAT 规则。  |
 | [az network nsg create](https://docs.microsoft.com/cli/azure/network/nsg#az_network_nsg_create) | 创建网络安全组 (NSG)，这是 Internet 和虚拟机之间的安全边界。 |
-| [az network nsg rule create](https://docs.microsoft.com/cli/azure/network/nsg/rule#az_network_nsg_rule_create) | 创建 NSG 规则以允许入站流量。 在此示例中，将为 SSH 流量打开端口 22。 |
+| [az network nsg rule create](https://docs.microsoft.com/cli/azure/network/nsg/rule) | 创建 NSG 规则以允许入站流量。 在此示例中，将为 SSH 流量打开端口 22。 |
 | [az network nic create](https://docs.microsoft.com/cli/azure/network/nic#az_network_nic_create) | 创建虚拟网卡并将其连接到虚拟网络、子网和 NSG。 |
 | [az vm availability-set create](https://docs.microsoft.com/cli/azure/network/lb/rule#az_network_lb_rule_create) | 创建可用性集。 可用性集通过将虚拟机分布到各个物理资源上（以便发生故障时，不会影响整个集）来确保应用程序运行时间。 |
 | [az vm create](https://docs.microsoft.com/cli/azure/vm/availability-set) | 创建虚拟机并将其连接到网卡、虚拟网络、子网和 NSG。 此命令还指定要使用的虚拟机映像和管理凭据。  |

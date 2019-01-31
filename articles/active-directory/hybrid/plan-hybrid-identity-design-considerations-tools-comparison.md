@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 08/28/2018
-ms.component: hybrid
+ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 446cb0a930f5a949e690ae49e0ad5baa7ff9d841
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 26c00ba1dc6a4d597db8fe067d28d687f50412b3
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54477577"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55194484"
 ---
 # <a name="hybrid-identity-directory-integration-tools-comparison"></a>混合标识目录集成工具比较
 过去数年以来，集成工具已得到发展和演进。  本文档旨在帮助提供这些工具的合并视图，并比较每个工具提供的功能。
