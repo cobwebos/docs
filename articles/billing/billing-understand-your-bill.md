@@ -14,13 +14,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/23/2019
-ms.author: cwatson
-ms.openlocfilehash: e1d9c348f83600b48f4b202c8660d9387dfc5484
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.author: banders
+ms.openlocfilehash: fdf346348be11a9f592fa3eff40e2f56e94ba656
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54856361"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54904312"
 ---
 # <a name="understand-your-bill-for-microsoft-azure"></a>了解 Microsoft Azure 帐单
 要了解 Azure 帐单，请在 Azure 门户中将发票与每日使用情况明细文件和成本管理报表进行比较。
@@ -44,8 +44,8 @@ ms.locfileid: "54856361"
  | 发票（PDF） | 使用情况明细 (CSV)|
  | --- | --- |
 |计费周期 | 计费周期 |
- |名称 |测定仪类别 |
- |类型 |测定仪子类别 |
+ |Name |测定仪类别 |
+ |Type |测定仪子类别 |
  |资源 |测定仪名称 |
  |区域 |测定仪区域 |
  |已耗用 |已耗用数量 |

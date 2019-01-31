@@ -2,7 +2,7 @@
 title: Azure Batch 任务失败事件 | Microsoft Docs
 description: 批处理任务失败事件参考。
 services: batch
-author: dlepow
+author: laurenhughes
 manager: jeconnoc
 ms.assetid: ''
 ms.service: batch
@@ -11,13 +11,13 @@ ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 04/20/2017
-ms.author: danlep
-ms.openlocfilehash: c4636ebbfb6737be07d01a3861ec6b9da66ff966
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.author: lahugh
+ms.openlocfilehash: f37769ceb761b8c8bc4834568813bb1b7af7f66a
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2018
-ms.locfileid: "30313090"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55458986"
 ---
 # <a name="task-fail-event"></a>任务失败事件
 
