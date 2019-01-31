@@ -10,12 +10,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive,hdiseo17may2017,mvc,seodec18
 ms.topic: quickstart
 ms.date: 12/27/2018
-ms.openlocfilehash: bec4e4271fa9f1e2333e9414268832fe77b722cb
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.openlocfilehash: a445f41732973dcd0053ada4aaef2458ec474830
+ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53811216"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54913506"
 ---
 # <a name="quickstart-get-started-with-apache-hadoop-and-apache-hive-in-azure-hdinsight-using-resource-manager-template"></a>快速入门：使用资源管理器模板在 Azure HDInsight 中开始使用 Apache Hadoop 和 Apache Hive
 
@@ -82,7 +82,7 @@ ms.locfileid: "53811216"
     ```hiveql
     SELECT * FROM hivesampletable;
     ```
-4. 右键单击脚本编辑器，然后选择“HDInsight：Hive 交互”提交查询。 工具还允许使用上下文菜单提交代码块而非整个脚本文件。 很快，查询结果将显示在新选项卡中。
+4. 右键单击脚本编辑器，然后选择“HDInsight：Hive 交互”提交查询**。 工具还允许使用上下文菜单提交代码块而非整个脚本文件。 很快，查询结果将显示在新选项卡中。
 
    ![交互式 Hive 结果](./media/apache-hadoop-linux-tutorial-get-started/interactive-hive-result.png)
 
@@ -103,7 +103,7 @@ ms.locfileid: "53811216"
     ```hiveql
     SELECT * FROM hivesampletable;
     ```
-4. 右键单击脚本编辑器，然后选择“HDInsight：Hive Batch”提交 Hive 作业。 
+4. 右键单击脚本编辑器，然后选择“HDInsight：Hive Batch”提交 Hive 作业**。 
 
 5. 选择想要提交的群集。  
 
@@ -240,6 +240,7 @@ ms.locfileid: "53811216"
 * 有关 HDInsight 如何使用 Azure 存储的信息，请参阅[将 Azure 存储与 HDInsight 配合使用](../hdinsight-hadoop-use-blob-storage.md)。
 * 有关如何使用 Data Lake Storage 创建 HDInsight 群集的信息，请参阅[快速入门：在 HDInsight 中设置群集](../../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)
 * 若要了解如何将数据上传到 HDInsight，请参阅[将数据上传到 HDInsight](../hdinsight-upload-data.md)。
+* [将 Azure Data Lake Storage Gen2 用于 Azure HDInsight 群集](../hdinsight-hadoop-use-data-lake-storage-gen2.md)
 
 有关如何使用 HDInsight 分析数据的详细信息，请参阅以下文章：
 

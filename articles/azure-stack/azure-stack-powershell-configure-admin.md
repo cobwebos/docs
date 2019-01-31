@@ -11,16 +11,16 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: PowerShell
 ms.topic: article
-ms.date: 01/24/2019
+ms.date: 01/30/2019
 ms.author: mabrigg
 ms.reviewer: thoroet
 ms.lastreviewed: 01/24/2019
-ms.openlocfilehash: cf7fe050d2c0521a84bd7f108b2a6d67bfbe09da
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 47d6b336a031f4233bebb7af0b0c57dd8f643dac
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55241621"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55452476"
 ---
 # <a name="connect-to-azure-stack-with-powershell-as-an-operator"></a>以操作员身份使用 PowerShell 连接到 Azure Stack
 
@@ -73,7 +73,7 @@ Add-AzureRMEnvironment -Name "AzureStackAdmin" -ArmEndpoint "https://adminmanage
   ```
 
 > [!Note]  
-> AD FS 仅支持交互式身份验证的用户标识。 如果是必需的凭据对象，则必须使用服务主体 (SPN)。 设置服务主体与 Azure Stack 和 AS FS 作为标识管理服务的详细信息，请参阅[适用于 AD FS 管理服务主体](azure-stack-create-service-principals.md#manage-service-principal-for-ad-fs)。
+> AD FS 仅支持交互式身份验证的用户标识。 如果是必需的凭据对象，则必须使用服务主体 (SPN)。 设置服务主体与 Azure Stack 和 AD FS 作为标识管理服务的详细信息，请参阅[适用于 AD FS 管理服务主体](azure-stack-create-service-principals.md#manage-service-principal-for-ad-fs)。
 
 ## <a name="test-the-connectivity"></a>测试连接
 

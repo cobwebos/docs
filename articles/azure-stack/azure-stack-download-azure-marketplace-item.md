@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 12/10/2018
+ms.date: 01/30/2019
 ms.author: sethm
 ms.reviewer: unknown
 ms.lastreviewed: 12/10/2018
-ms.openlocfilehash: 465f9d51f724bf1c8713259cd1d0b6ebabc230fe
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 8c699f8b3241694f36b73ae75b25754e551c91f6
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55239751"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55470699"
 ---
 # <a name="download-marketplace-items-from-azure-to-azure-stack"></a>将市场项从 Azure 下载到 Azure Stack
 
@@ -168,7 +168,13 @@ Azure Stack 部署必须已建立 Internet 连接，并且[已注册到 Azure](a
    $credential = Get-Credential -Message "Enter the azure stack operator credential:"
    Import-AzSOfflineMarketplaceItem -origin "marketplace content folder" -armendpoint "Environment Arm Endpoint" -AzsCredential $credential
    ```
+
+   `-origin`参数指定的最上层文件夹包含所有已下载的产品; 例如， `"D:\downloadfolder"`。
+
    `-AzsCredential` 参数是可选的。 该参数用于续订访问令牌（如果已过期）。 如果未指定 `-AzsCredential` 参数且令牌已过期，则你会收到输入操作员凭据的提示。
+
+    > [!Note]  
+    > AD FS 仅支持交互式身份验证的用户标识。 如果是必需的凭据对象，则必须使用服务主体 (SPN)。 设置服务主体与 Azure Stack 和 AD FS 作为标识管理服务的详细信息，请参阅[适用于 AD FS 管理服务主体](azure-stack-create-service-principals.md#manage-service-principal-for-ad-fs)。
 
 4. 成功完成该脚本后，Azure Stack 市场中应会提供该项。
 
