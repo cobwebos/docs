@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 12/27/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 4674428cf96562670b0e24e5ac93a2f2979128da
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: ce48e9a17ab6b63c7fb8caa752258e218ca51ba3
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54042047"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55226377"
 ---
 # <a name="migrate-amazon-web-services-aws-vms-to-azure"></a>将 Amazon Web Services (AWS) VM 迁移到 Azure
 
@@ -169,7 +169,7 @@ ms.locfileid: "54042047"
 
 为要迁移的各 VM 启用复制。 启用复制后，Site Recovery 会自动安装移动服务。
 
-1. 转到 [Azure 门户](htts://portal.azure.com)。
+1. 转到 [Azure 门户](https://portal.azure.com)。
 1. 在保管库相应页面的“入门”下，选择“Site Recovery”。
 2. 在“适用于本地计算机和 Azure VM”下，选择“步骤 1：复制应用程序”。 使用以下信息完成向导页面。 完成后，在每个页面上选择“确定”：
     - 1:配置源
