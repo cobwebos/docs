@@ -11,15 +11,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.component: compliance
+ms.subservice: compliance
 ms.date: 01/10/2019
 ms.author: rolyon
-ms.openlocfilehash: 341565bf621fa63ad578489cd04bcfff3510265b
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: be8a6ba83de81c5a82797ecf3d30c7a7fcaa65fa
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54229466"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55162763"
 ---
 # <a name="azure-active-directory-terms-of-use-feature"></a>Azure Active Directory 使用条款功能
 组织可以通过 Azure AD 使用条款这种简单的方法向最终用户显示信息。 可以通过这样的呈现方式确保用户看到法律要求或符合性要求的相关免责声明。 本文介绍如何快速了解使用条款。
@@ -120,7 +120,7 @@ Azure AD 使用条款使用 PDF 格式显示内容。 此 PDF 文件可以是任
 
     ![条件访问模板](./media/active-directory-tou/conditional-access-templates.png)
 
-    | 模板 | Description |
+    | 模板 | 说明 |
     | --- | --- |
     | **所有来宾对云应用的访问权限** | 将会针对所有来宾和所有云应用创建一个条件访问策略。 此策略会影响 Azure 门户。 创建后，可能需要注销再登录。 |
     | **所有用户对云应用的访问权限** | 将会针对所有用户和所有云应用创建条件访问策略。 此策略会影响 Azure 门户。 创建后，需要注销再登录。 |

@@ -6,16 +6,16 @@ services: cognitive-services
 author: aahill
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-entity-search
+ms.subservice: bing-entity-search
 ms.topic: conceptual
 ms.date: 12/12/2017
 ms.author: aahi
-ms.openlocfilehash: 56ca56afc799658c12293fdacaa1ccd5ca17bbf9
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: f0cae32acf2db62a5d3c060ea944b1131252beda
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52160879"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55195913"
 ---
 # <a name="using-ranking-to-display-results"></a>使用排名显示结果  
 

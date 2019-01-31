@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: tutorial
 ms.date: 10/23/2018
 ms.author: wgries
-ms.component: files
-ms.openlocfilehash: 661df6039948539d6b50b4c8caf8ca7bd9b58730
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.subservice: files
+ms.openlocfilehash: 0372f34d5e58361d460465a9ddf4b6eed79a49f0
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54321479"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55474813"
 ---
 # <a name="tutorial-extend-windows-file-servers-with-azure-file-sync"></a>教程：使用 Azure 文件同步扩展 Windows 文件服务器
 
@@ -262,7 +262,7 @@ Azure 文件同步代理是一个可下载包，可实现 Windows 服务器与 A
 
    | | |
    | ----- | ----- |
-   | 值 | Description |
+   | 值 | 说明 |
    | **Azure 订阅** | 包含本教程的存储同步服务的订阅。 |
    | **资源组** | 包含存储同步服务的资源组。 就本教程来说，请使用 _afsresgroup101918_。 |
    | **存储同步服务** | 存储同步服务的名称。 就本教程来说，请使用 _afssyncservice02_。 |
@@ -281,7 +281,7 @@ Azure 文件同步代理是一个可下载包，可实现 Windows 服务器与 A
 
 1. 输入以下信息，创建具有云终结点的同步组：
 
-   | 值 | Description |
+   | 值 | 说明 |
    | ----- | ----- |
    | **同步组名称** | 此名称在存储同步服务内必须是唯一的，但可以是符合逻辑的任何名称。 就本教程来说，请使用 *afssyncgroup*。|
    | **订阅** | 在其中部署了本教程的存储同步服务的订阅。 |
@@ -304,7 +304,7 @@ Azure 文件同步代理是一个可下载包，可实现 Windows 服务器与 A
 
    | | |
    | ----- | ----- |
-   | 值 | Description |
+   | 值 | 说明 |
    | **已注册的服务器** | 创建的服务器的名称。 就本教程来说，请使用 *afsvm101918*。 |
    | **路径** | 创建的驱动器的 Windows Server 路径。 在本教程中，请使用 *f:\filestosync*。 |
    | **云分层** | 在本教程中，保留为禁用状态。 |

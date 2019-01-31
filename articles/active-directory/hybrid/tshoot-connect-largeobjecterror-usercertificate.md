@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
-ms.component: hybrid
+ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: ffc8832fa2da9d4bfad23752a5bc767ace2b573e
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 5361b93d24c66ef6ccb2f117e6e3a68de4c5f459
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54478614"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55195577"
 ---
 # <a name="azure-ad-connect-sync-handling-largeobject-errors-caused-by-usercertificate-attribute"></a>Azure AD Connect 同步：处理 userCertificate 属性导致的 LargeObject 错误
 
@@ -116,7 +116,7 @@ LargeObject 错误可能由其他 AD 属性导致。 若要确认该错误是否
 
     | 属性 | 值 | 详细信息 |
     | --- | --- | --- |
-    | 名称 | *提供名称* | 例如“Out to AAD – Custom override for userCertificate” |
+    | Name | *提供名称* | 例如“Out to AAD – Custom override for userCertificate” |
     | 说明 | *提供说明* | 例如“If userCertificate attribute has more than 15 values, export NULL” |
     | 连接的系统 | *选择 Azure AD 连接器* |
     | 连接的系统对象类型 | **user** | |

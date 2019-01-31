@@ -7,19 +7,19 @@ author: CelesteDG
 manager: mtillman
 ms.assetid: ''
 ms.service: active-directory
-ms.component: app-mgmt
+ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/11/2018
 ms.author: celested
-ms.openlocfilehash: cbd0849399b2f1b1bb4df240b6d696266bbd84cc
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: be85456c94fbc156827157705bc29169bbae9cdd
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52423392"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55096750"
 ---
 # <a name="how-to-configure-a-new-multi-tenant-application"></a>如何配置新的多租户应用程序
 

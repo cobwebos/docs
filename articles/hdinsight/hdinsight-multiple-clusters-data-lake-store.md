@@ -10,12 +10,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/21/2018
 ms.author: hrasheed
-ms.openlocfilehash: 982e92d02e17aaefe0b197562013704636e3065f
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.openlocfilehash: 0760d850bdc6dab84722f00f1061d53f9b95cfcf
+ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53743692"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54912412"
 ---
 # <a name="use-multiple-hdinsight-clusters-with-an-azure-data-lake-storage-account"></a>通过一个 Azure Data Lake Storage 帐户使用多个 HDInsight 群集
 
@@ -94,4 +94,4 @@ Data Lake Storage 支持无限存储，因此不仅非常适合用于托管大�
 ## <a name="see-also"></a>另请参阅
 
 * [快速入门：在 HDInsight 中设置群集](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)
-
+* [将 Azure Data Lake Storage Gen2 用于 Azure HDInsight 群集](hdinsight-hadoop-use-data-lake-storage-gen2.md)

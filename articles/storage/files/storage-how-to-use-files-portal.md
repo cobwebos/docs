@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 10/18/2018
 ms.author: wgries
-ms.component: files
-ms.openlocfilehash: f295245cc14000e48cb3db55dc291edf02bb660e
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.subservice: files
+ms.openlocfilehash: ac78510a3f736d9d5a3f2aafcc1f77ef20e6d81a
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53634382"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55467759"
 ---
 # <a name="quickstart-create-and-manage-azure-file-shares-with-the-azure-portal"></a>快速入门：使用 Azure 门户创建和管理 Azure 文件共享 
 [Azure 文件](storage-files-introduction.md)是 Microsoft 推出的易用云文件系统。 可以在 Windows、Linux 和 macOS 中装载 Azure 文件共享。 本指南介绍通过 [Azure 门户](https://portal.azure.com/)来使用 Azure 文件共享的基本知识。

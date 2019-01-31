@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 12/14/2017
 ms.author: cynthn
-ms.openlocfilehash: 27cef0287156d4cf76914704b849cb646c21dd7d
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: ec520e7d06f6c5a560af56e6616eeed8481520fe
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54467479"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55180358"
 ---
 # <a name="create-a-complete-linux-virtual-machine-with-the-azure-cli"></a>使用 Azure CLI 创建完整的 Linux 虚拟机
 若要在 Azure 中快速创建虚拟机 (VM)，可使用单个使用默认值的 Azure CLI 命令创建任何所需的支持资源。 虚拟网络、公共 IP 地址和网络安全组规则等资源均会自动创建。 为了在生产使用中更好地控制环境，可提前创建这些资源，然后将 VM 添加到其中。 本文将逐步介绍如何创建 VM 和每个支持资源。
@@ -30,13 +30,13 @@ ms.locfileid: "54467479"
 在以下示例中，请将示例参数名称替换为自己的值。 示例参数名称包括 *myResourceGroup*、*myVnet* 和 *myVM*。
 
 ## <a name="create-resource-group"></a>创建资源组
-Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。 创建虚拟机和支持的虚拟网络资源前，必须先创建资源组。 使用 [az group create](/cli/azure/group#az_group_create) 创建资源组。 以下示例在 eastus 位置创建名为 myResourceGroup 的资源组：
+Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。 创建虚拟机和支持的虚拟网络资源前，必须先创建资源组。 使用 [az group create](/cli/azure/group) 创建资源组。 以下示例在 eastus 位置创建名为 myResourceGroup 的资源组：
 
 ```azurecli
 az group create --name myResourceGroup --location eastus
 ```
 
-默认情况下，Azure CLI 命令的输出采用 JSON（JavaScript 对象表示法）格式。 若要更改列表或表的默认输出，请使用 [az configure --output](/cli/azure/reference-index#az_configure)。 还可以向任何命令添加 `--output` 来对输出格式进行一次性更改。 以下示例显示了来自 `az group create` 命令的 JSON 输出：
+默认情况下，Azure CLI 命令的输出采用 JSON（JavaScript 对象表示法）格式。 若要更改列表或表的默认输出，请使用 [az configure --output](/cli/azure/reference-index)。 还可以向任何命令添加 `--output` 来对输出格式进行一次性更改。 以下示例显示了来自 `az group create` 命令的 JSON 输出：
 
 ```json                       
 {
@@ -559,7 +559,7 @@ sudo apt-get install -y nginx
 ![VM 上的默认 NGINX 站点](media/create-cli-complete/nginx.png)
 
 ## <a name="export-as-a-template"></a>作为模板导出
-如果现在要使用相同参数创建额外的开发环境或与其匹配的生产环境，该怎么办？ Resource Manager 使用定义了所有环境参数的 JSON 模板。 通过引用此 JSON 模板构建出整个环境。 可以[手动构建 JSON 模板](../../resource-group-authoring-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)，也可以通过导出现有环境来替你创建 JSON 模板。 使用 [az group export](/cli/azure/group#az_group_export) 导出资源组，如下所示：
+如果现在要使用相同参数创建额外的开发环境或与其匹配的生产环境，该怎么办？ Resource Manager 使用定义了所有环境参数的 JSON 模板。 通过引用此 JSON 模板构建出整个环境。 可以[手动构建 JSON 模板](../../resource-group-authoring-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)，也可以通过导出现有环境来替你创建 JSON 模板。 使用 [az group export](/cli/azure/group) 导出资源组，如下所示：
 
 ```azurecli
 az group export --name myResourceGroup > myResourceGroup.json

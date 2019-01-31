@@ -6,16 +6,16 @@ services: cognitive-services
 author: zhouwangzw
 manager: wolfma
 ms.service: cognitive-services
-ms.component: bing-speech
+ms.subservice: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: zhouwang
-ms.openlocfilehash: 0bbc6b638d11335e6d46501fa651996f05957dd5
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 1d6c0a8ca04949216e6410ff81b15f79c7067522
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49341811"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55217282"
 ---
 # <a name="bing-speech-websocket-protocol"></a>必应语音 WebSocket 协议
 
@@ -77,7 +77,7 @@ Content-Length: 0
 
 令牌访问需要以下标头信息。
 
-| 名称 | 格式 | Description |
+| Name | 格式 | 说明 |
 |----|----|----|
 | Ocp-Apim-Subscription-Key | ASCII | 订阅密钥 |
 
@@ -171,7 +171,7 @@ X-Timestamp 标头值的格式必须为 'yyyy'-'MM'-'dd'T'HH':'mm':'ss'.'fffffff
 
 客户端在建立与语音服务的连接之后以及发送任何 `audio` 消息之前，必须立即发送 `speech.config` 消息。 每个连接只需发送一次 `speech.config` 消息。
 
-| 字段 | Description |
+| 字段 | 说明 |
 |----|----|
 | WebSocket 消息编码 | 文本 |
 | Body | 有效负载作为 JSON 结构 |
@@ -216,7 +216,7 @@ X-Timestamp 标头值的格式必须为 'yyyy'-'MM'-'dd'T'HH':'mm':'ss'.'fffffff
 
 ##### <a name="os-element"></a>操作系统元素
 
-| 字段 | Description | 使用情况 |
+| 字段 | 说明 | 使用情况 |
 |-|-|-|
 | os.platform | 承载应用程序的操作系统平台，例如 Windows、Android、iOS 或 Linux |必选 |
 | os.name | 操作系统产品名称，例如 Debian 或 Windows 10 | 必选 |
@@ -224,7 +224,7 @@ X-Timestamp 标头值的格式必须为 'yyyy'-'MM'-'dd'T'HH':'mm':'ss'.'fffffff
 
 ##### <a name="device-element"></a>设备元素
 
-| 字段 | Description | 使用情况 |
+| 字段 | 说明 | 使用情况 |
 |-|-|-|
 | device.manufacturer | 设备硬件制造商 | 必选 |
 | device.model | 设备型号 | 必选 |
@@ -240,7 +240,7 @@ X-Timestamp 标头值的格式必须为 'yyyy'-'MM'-'dd'T'HH':'mm':'ss'.'fffffff
 
 语音服务使用包含唯一请求标识符的第一条 `audio` 消息来表示新请求/响应周期或轮次的开始。 当服务收到带有新请求标识符的 `audio` 消息后，它会放弃与任何上一轮相关的任何排队中或未发送的消息。
 
-| 字段 | Description |
+| 字段 | 说明 |
 |-------------|----------------|
 | WebSocket 消息编码 | 二进制 |
 | Body | 音频区块的二进制数据。 最大大小为 8,192 字节。 |
@@ -304,7 +304,7 @@ return SDK.CreateRecognizerWithCustomAudioSource(
 
 客户端必须在收到 `turn.end` 消息后立即发送 `telemetry` 消息，确认轮次结束。 客户端应尽快尝试确认 `turn.end`。 如果客户端应用程序未能确认轮次结束，则语音服务可能会因错误而终止连接。 客户端必须为 X-RequestId 值标识的每个请求和响应仅发送一条 `telemetry` 消息。
 
-| 字段 | Description |
+| 字段 | 说明 |
 | ------------- | ---------------- |
 | WebSocket 消息编码 | 文本 |
 | 路径 | `telemetry` |
@@ -326,7 +326,7 @@ return SDK.CreateRecognizerWithCustomAudioSource(
 
 `speech.startDetected` 消息指示语音服务已检测到音频流中的语音。
 
-| 字段 | Description |
+| 字段 | 说明 |
 | ------------- | ---------------- |
 | WebSocket 消息编码 | 文本 |
 | 路径 | `speech.startDetected` |
@@ -351,7 +351,7 @@ X-RequestId: 123e4567e89b12d3a456426655440000
 
  `speech.hypothesis` 消息适用于符合这些描述的客户端：具有一定的文本呈现功能，并希望向讲话者提供正在进行的识别的近实时反馈。
 
-| 字段 | Description |
+| 字段 | 说明 |
 | ------------- | ---------------- |
 | WebSocket 消息编码 | 文本 |
 | 路径 | `speech.hypothesis` |
@@ -383,7 +383,7 @@ Duration 元素指定该语音短语的持续时间（以 100 纳秒为单位）
 
 当语音服务确定信息已足以产生不会更改的识别结果时，该服务会生成 `speech.phrase` 消息。 语音服务会在检测到用户完成句子或短语后生成这些结果。
 
-| 字段 | Description |
+| 字段 | 说明 |
 | ------------- | ---------------- |
 | WebSocket 消息编码 | 文本 |
 | 路径 | `speech.phrase` |
@@ -411,7 +411,7 @@ X-RequestId: 123e4567e89b12d3a456426655440000
 
 `speech.endDetected` 消息指定客户端应用程序应停止向服务流式传输音频。
 
-| 字段 | Description |
+| 字段 | 说明 |
 | ------------- | ---------------- |
 | WebSocket 消息编码 | 文本 |
 | 路径 | `speech.endDetected` |
@@ -436,7 +436,7 @@ Offset 元素指定识别出短语时的位置相对于音频流开头位置的�
 
 `turn.start` 从服务透视发出轮次开始的信号。 `turn.start` 消息始终是任何请求收到的第一条响应消息。 如果未收到 `turn.start` 消息，则假定服务连接的状态无效。
 
-| 字段 | Description |
+| 字段 | 说明 |
 | ------------- | ---------------- |
 | WebSocket 消息编码 | 文本 |
 | 路径 | `turn.start` |
@@ -463,7 +463,7 @@ X-RequestId: 123e4567e89b12d3a456426655440000
 
 `turn.end` 从服务透视发出轮次结束的信号。 `turn.end` 消息始终是任何请求收到的最后一条响应消息。 客户端可使用此消息的接收作为清除活动和转换到空闲状态的信号。 如果未收到 `turn.end` 消息，则假定服务连接的状态无效。 在这些情况下，请关闭与服务的现有连接并重新连接。
 
-| 字段 | Description |
+| 字段 | 说明 |
 | ------------- | ---------------- |
 | WebSocket 消息编码 | 文本 |
 | 路径 | `turn.end` |
@@ -505,9 +505,9 @@ telemetry 消息的正文是 JSON 结构，其中包含有关轮次或尝试连�
 
 `Connection` 指标指定客户端连接尝试的详细信息。 该指标必须包括 WebSocket 连接开始和完成时的时间戳。 仅在第一次连接时需要 `Connection` 指标。 后续轮次不需要包含此信息。 如果客户端在建立连接之前进行多次连接尝试，则应包括有关所有连接尝试的信息。 有关详细信息，请参阅[连接失败遥测](#connection-failure-telemetry)。
 
-| 字段 | Description | 使用情况 |
+| 字段 | 说明 | 使用情况 |
 | ----- | ----------- | ----- |
-| 名称 | `Connection` | 必选 |
+| Name | `Connection` | 必选 |
 | ID | 此连接请求的 X-ConnectionId 标头中使用的连接标识符值 | 必选 |
 | 开始 | 客户端发出连接请求的时间 | 必选 |
 | 结束 | 客户端收到成功建立连接的通知时间，或出错时收到拒绝、弃用或失败的通知时间 | 必选 |
@@ -545,9 +545,9 @@ telemetry 消息的正文是 JSON 结构，其中包含有关轮次或尝试连�
 
 `Microphone` 指标的结束时间值记录客户端应用程序停止流式传输音频时的时间。 在大多数情况下，此事件在客户端从服务收到 `speech.endDetected` 消息后随即发生。 客户端应用程序可通过确保 `Microphone` 指标的结束时间值晚于 `speech.endDetected` 消息的接收时间值来验证它们是否正确符合协议。 并且，由于在一个轮次的结束和另一个轮次的开始之间往往存在延迟，因此客户端也可通过以下方法来验证是否符合协议：确保任何后续轮次 `Microphone` 指标的开始时间正确记录了客户端开始使用麦克风将音频输入流式传输到服务时的时间。
 
-| 字段 | Description | 使用情况 |
+| 字段 | 说明 | 使用情况 |
 | ----- | ----------- | ----- |
-| 名称 | 麦克风 | 必选 |
+| Name | 麦克风 | 必选 |
 | 开始 | 客户端开始使用来自麦克风或其他音频流的音频输入或从关键字监视器收到触发时的时间 | 必选 |
 | 结束 | 客户端停止使用麦克风或音频流时的时间 | 必选 |
 | 错误 | 已发生错误的描述（如有）。 如果麦克风操作成功，客户端应省略此字段。 此字段的最大长度为 50 个字符。 | 出错时必填，否则省略 |
@@ -565,9 +565,9 @@ telemetry 消息的正文是 JSON 结构，其中包含有关轮次或尝试连�
 
 * 客户端应用程序正在处理多轮次请求的第二个轮次，并收到服务响应消息通知打开麦克风以收集第二轮输入。 客户端应用程序本轮次不应包含 `ListeningTrigger` 指标。
 
-| 字段 | Description | 使用情况 |
+| 字段 | 说明 | 使用情况 |
 | ----- | ----------- | ----- |
-| 名称 | ListeningTrigger | 可选 |
+| Name | ListeningTrigger | 可选 |
 | 开始 | 客户端侦听触发开始时的时间 | 必选 |
 | 结束 | 客户端侦听触发完成时的时间 | 必选 |
 | 错误 | 已发生错误的描述（如有）。 如果触发操作成功，客户端应省略此字段。 此字段的最大长度为 50 个字符。 | 出错时必填，否则省略 |
@@ -686,7 +686,7 @@ X-Timestamp: 2016-08-16T15:03:54.183Z
 
 ### <a name="http-status-codes"></a>HTTP 状态代码
 
-| HTTP 状态代码 | Description | 故障排除 |
+| HTTP 状态代码 | 说明 | 故障排除 |
 | - | - | - |
 | 400 错误请求 | 客户端发送的 WebSocket 连接请求不正确。 | 请检查是否提供了所有必需的参数和 HTTP 标头，值是否正确。 |
 | 401 未授权 | 客户端未包含所需的授权信息。 | 请检查是否在 WebSocket 连接中发送了 Authorization 标头。 |
@@ -697,7 +697,7 @@ X-Timestamp: 2016-08-16T15:03:54.183Z
 
 ### <a name="websocket-error-codes"></a>WebSocket 错误代码
 
-| WebSocketsStatus 代码 | Description | 故障排除 |
+| WebSocketsStatus 代码 | 说明 | 故障排除 |
 | - | - | - |
 | 1000 正常关闭 | 该服务关闭了 WebSocket 连接并且没有发生错误。 | 如果 WebSocket 意外关闭，请重新阅读文档，确保已了解服务终止 WebSocket 连接的方式和时间点。 |
 | 1002 协议错误 | 客户端未遵守协议要求。 | 请确保已了解协议文档并明确要求。 阅读之前有关错误原因的文档，查看是否违反了协议要求。 |

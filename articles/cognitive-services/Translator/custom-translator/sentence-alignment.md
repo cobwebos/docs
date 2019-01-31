@@ -5,16 +5,16 @@ description: 在执行训练过程中，会将并行文档中的句子配对或�
 author: rajdeep-in
 manager: christw
 ms.service: cognitive-services
-ms.component: custom-translator
+ms.subservice: custom-translator
 ms.date: 11/13/2018
 ms.author: v-rada
 ms.topic: conceptual
-ms.openlocfilehash: 557cd8d3af0c774d4dd0558d5d25dba8eec07268
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 663dba72619a14c66fdafe083454d0df9b3f6216
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51626702"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55209921"
 ---
 # <a name="sentence-pairing-and-alignment-in-parallel-documents"></a>并行文档中的句子配对和对齐
 

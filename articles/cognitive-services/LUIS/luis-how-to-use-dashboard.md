@@ -7,16 +7,16 @@ author: diberry
 manager: cgronlun
 ms.custom: seodec18
 ms.service: cognitive-services
-ms.component: language-understanding
+ms.subservice: language-understanding
 ms.topic: article
 ms.date: 11/26/2018
 ms.author: diberry
-ms.openlocfilehash: 6f6de278e802b83623413b0bf70e556d083818c8
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 3f263e6e6b74c1d9392ec58f176962b0c37d70c5
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53140602"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55209989"
 ---
 # <a name="model-and-usage-statistics-in-the-dashboard"></a>仪表板中的模型和使用情况统计信息
 应用仪表板可让你一目了然地监视应用。 通过单击“我的应用”页中的应用程序名称打开应用，然后选择顶部面板中的“仪表板”，仪表板将随即显示。 

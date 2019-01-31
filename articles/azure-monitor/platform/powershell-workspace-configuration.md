@@ -14,12 +14,12 @@ ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 11/21/2016
 ms.author: richrund
-ms.openlocfilehash: a77406fd6a466ed92f6eb3ed3401e987831e3da0
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: e34d45d2d7c81ec5f15a5441ce2bb0f082c65155
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54267279"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54884106"
 ---
 # <a name="manage-log-analytics-using-powershell"></a>使用 PowerShell 管理 Log Analytics
 可使用 [Log Analytics PowerShell cmdlet](https://docs.microsoft.com/powershell/module/azurerm.operationalinsights/) 从命令行或作为脚本的一部分在 Log Analytics 中执行各种函数。  可使用 PowerShell 执行的任务示例包括：
@@ -228,7 +228,7 @@ New-AzureRmOperationalInsightsCustomLogDataSource -ResourceGroupName $ResourceGr
 
 有关可用指标的详细信息，请参阅 [Azure 监视器支持的指标](../../azure-monitor/platform/metrics-supported.md)。
 
-有关可用日志的详细信息，请参阅[诊断日志支持的服务和架构](../../azure-monitor/platform/tutorial-dashboards.md)。
+有关可用日志的详细信息，请参阅[诊断日志支持的服务和架构](../../azure-monitor/platform/diagnostic-logs-schema.md)。
 
 ```
 $workspaceId = "/subscriptions/d2e37fee-1234-40b2-5678-0b2199de3b50/resourcegroups/oi-default-east-us/providers/microsoft.operationalinsights/workspaces/rollingbaskets"
