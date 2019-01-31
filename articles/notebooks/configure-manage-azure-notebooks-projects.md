@@ -11,34 +11,59 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/04/2018
+ms.date: 01/22/2019
 ms.author: kraigb
-ms.openlocfilehash: d948be88fd75202dea010520d3531f151d6934b0
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 31cbe2e62582ae810d165ddef5db6a20c52ff050
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53104078"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54847537"
 ---
 # <a name="manage-and-configure-projects"></a>管理和配置项目
 
 Azure Notebooks 中的项目实质上是运行 Jupyter 笔记本的基础 Linux 虚拟机的一项配置，以及一个文件夹和一些描述性元数据。 Azure Notebooks 中的项目仪表板，可通过它管理文件和配置项目的特性：
 
-- 项目元数据，包括名称、说明、共享项目时使用的标识符以及说明项目是公共项目还是专用项目的信息。
+- 项目运行的计算层，可以是免费层或 Azure 虚拟机。
+- 项目元数据，其中包括名称、说明、共享项目时使用的标识符以及说明项目是公共项目还是专用项目的信息。
 - 管理项目笔记本、数据和其他文件的方式与其他文件系统中的管理方式相同。
 - 配置项目的环境有两种方式：通过启动脚本配置，或直接通过终端配置。
-- 通过终端配置必须具备对日志的访问权限。
+- 通过终端访问的日志。
 
 > [!Note]
-> 你无法管理不属于你的项目，除非项目所有者将你设为协作者。 否则，你不能使用此处所述的管理和配置功能。
+> 此处描述的管理和配置功能仅适用于最初创建项目的项目所有者。 但是，可以将项目克隆到你自己的帐户中，在这种情况下，你将成为所有者并可以根据需要配置项目。
 
 每当你运行笔记本或其他文件时，Azure Notebooks 都会启动基础虚拟机。 服务器自动保存文件并在处于非活动状态 60 分钟后关闭。 你还可以随时使用“关闭”命令（键盘快捷方式：h）停止服务器。
+
+## <a name="compute-tier"></a>计算层
+
+项目仪表板上的“运行”下拉列表是用于选择项目运行的计算层。 默认情况下，项目在“免费计算”层运行，限制为 4GB 内存和 1GB 数据以防止滥用：
+
+![项目仪表板上的计算层下拉列表](media/project-compute-tier-list.png)
+
+可以使用在 Azure 订阅中预配的其他虚拟机来绕过这些限制。 必须在该虚拟机上安装 Jupyter。 Data Science Virtual Machine 映像是很好的选择，因为它们默认包含 Jupyter。
+
+可使用下拉列表中的“直接计算”选项连接到任何已正确配置的 Azure 虚拟机。 选择此选项会提示输入名称（显示在列表中）、VM 的 IP 地址和端口（通常为8000，JupyterHub 监听的默认端口）以及 VM 凭据：
+
+![提示收集“直接计算”选项的服务器信息](media/project-compute-tier-direct.png)
+
+如果满足以下条件，则下拉列表还会显示“[Data Science Virtual Machine (DSVM)](/azure/machine-learning/data-science-virtual-machine)”实例。 （如果不满足任何这些条件，仍然可以使用“直接计算”选项连接到 DSVM 并输入从 Azure 门户获取的值。）
+
+- 使用 Azure Active Directory (AAD) 帐户（例如公司帐户）登录 Azure Notebooks。
+- 你的帐户已连接到 Azure 订阅。
+- 在该订阅中有一个或多个虚拟机至少具有读者访问权限，并使用 Data Science Virtual Machine for Linux (Ubuntu) 映像。
+
+![Data Science Virtual Machine 实例位于项目仪表板的下拉列表中](media/project-compute-tier-dsvm.png)
+
+选择 DSVM 实例时，Azure Notebooks 可能会提示输入创建 VM 时使用的特定计算机凭据。
+
+要创建新的 DSVM 实例，请按照[创建 Ubuntu Data Science VM](/azure/machine-learning/data-science-virtual-machine/dsvm-ubuntu-intro)上的说明进行操作。 必须使用 Data Science Virtual Machine for Linux (Ubuntu) 映像，因为 Azure Notebooks 不显示使用 Windows 或 CentOS 映像的 DSVM。
 
 ## <a name="edit-project-metadata"></a>编辑项目元数据
 
 在项目面板中，选择“项目设置”，再选择“信息”选项卡，该选项卡包含下表所含的项目元数据。 可随时更改项目元数据。
 
-| 设置 | Description |
+| 设置 | 说明 |
 | --- | --- |
 | 项目名称 | 项目的友好名称，Azure Notebooks 显示该名称。 例如“Python 中的 Hello World”。 |
 | 项目 ID | 自定义标识符，是用于共享项目的 URL 的一部分（形式为 `https://notebooks.azure.com/<user_id>/projects/<project_id>`）。 此 ID 只可使用字母、数字和连字符，长度限制为 30 个字符。 如果不确定使用什么内容，可按惯例使用小写的项目名且将空格转换为连字符，例如“My Project Name”变成“my-project-name”。 |

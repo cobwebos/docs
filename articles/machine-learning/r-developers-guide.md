@@ -14,12 +14,12 @@ ms.devlang: R
 ms.topic: article
 ms.date: 09/12/2018
 ms.author: jepeach
-ms.openlocfilehash: bc00bd3b61398355c663d133c0c9a66c2a52aa8d
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 102191b885d2a4a9234b7783b0a51b09903d3abd
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47045873"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54807450"
 ---
 # <a name="r-developers-guide-to-azure"></a>Azure 中的 R 开发指南
 <img src="media/r-developers-guide/logo_r.svg" alt="R logo" align="right" width="200" />
@@ -33,14 +33,14 @@ Microsoft 完全接受将 R 编程语言作为数据科学家的第一类工具�
 ## <a name="azure-services-with-r-language-support"></a>支持 R 语言的 Azure 服务
 本文介绍支持 R 语言的以下 Azure 服务：
 
-|服务                                                          |Description                                                                       |
+|服务                                                          |说明                                                                       |
 |-----------------------------------------------------------------|----------------------------------------------------------------------------------|
 |[数据科学虚拟机](#data-science-virtual-machine)    |用作数据科学工作站或自定义计算目标的自定义 VM|
 |[ML Services on HDInsight](#ml-services-on-hdinsight)            |基于群集的系统，用于对跨多个节点的大型数据集运行 R 分析   |
 |[Azure Databricks](#azure-databricks)                            |支持 R 和其他语言的协作型 Spark 环境               |
 |[Azure 机器学习工作室](#azure-machine-learning-studio)  |在 Azure 的机器学习试验中运行自定义 R 脚本                      |
 |[Azure Batch](#azure-batch)                                      |提供各种选项用于以经济节省的方式对群集中的多个节点运行 R 代码|
-|[Azure Notebook](#azure-notebooks)                              |Jupyter Notebook 的基于云的免费版本（但功能受限）                  |
+|[Azure Notebook](#azure-notebooks)                              |Jupyter Notebook 的基于云的免费版本                  |
 |[Azure SQL 数据库](#azure-sql-database)                        |在 SQL Server 数据库引擎内部运行 R 脚本                            |
 
 ## <a name="data-science-virtual-machine"></a>数据科学虚拟机
@@ -104,16 +104,17 @@ Databricks 中的协作由平台的 Notebook 系统启用。  用户可以创建
 ## <a name="azure-batch"></a>Azure 批处理
 对于大规模 R 作业，可以使用 [Azure Batch](https://azure.microsoft.com/services/batch/)。  此服务提供云规模的作业计划和计算管理，可让你缩放跨数十、数百甚至数千个虚拟机的 R 工作负荷。  由于它是一个通用化的计算平台，在 Azure Batch 上运行 R 作业的选项有很多。
 
-一个选项是使用 Microsoft 的 <code>[doAzureParallel](https://github.com/Azure/doAzureParallel)</code> 包。  此 R 包是 `foreach` 包的并行后端。  使用此包可在 Azure Batch 群集中的节点上并行运行 `foreach` 循环的每个迭代。  有关此包的介绍，请阅读 [doAzureParallel: Take advantage of Azure’s flexible compute directly from your R session](https://azure.microsoft.com/blog/doazureparallel/)（doAzureParallel：直接在 R 会话中利用 Azure 的灵活计算）博客文章。
+一个选项是使用 Microsoft 的 <code>[doAzureParallel](https://github.com/Azure/doAzureParallel)</code> 包。  此 R 包是 `foreach` 包的并行后端。  使用此包可在 Azure Batch 群集中的节点上并行运行 `foreach` 循环的每个迭代。  有关包的简介，请阅读博客文章[“doAzureParallel：直接通过 R 会话利用 Azure 的灵活计算能力”](https://azure.microsoft.com/blog/doazureparallel/)。
 
 在 Azure Batch 中运行 R 脚本的另一个选项是在 Azure 门户中使用“RScript.exe”将代码捆绑为 Batch 应用。  有关详细演练，请查阅 [Azure Batch 上的 R 工作负荷](https://azure.microsoft.com/blog/r-workloads-on-azure-batch/)。
 
 第三个选项是使用 [Azure 分布式数据工程工具包](https://github.com/Azure/aztk) (AZTK)。该工具包可让你使用 Azure Batch 中的 Docker 容器预配按需 Spark 群集。  这样，便可以经济节省的方式在 Azure 中运行 Spark 作业。  使用 [SparklyR 和 AZTK](https://github.com/Azure/aztk/wiki/SparklyR-on-Azure-with-AZTK) 可以在云中轻松、经济节省地扩展 R 脚本。
 
 ## <a name="azure-notebooks"></a>Azure Notebook
+
 [Azure Notebooks](https://notebooks.azure.com) 是一种成本低、冲突少的服务，适合偏向于使用 Notebook 将代码部署到 Azure 的 R 开发人员。  它是一个免费的服务，面向使用 [Jupyter](https://jupyter.org/)（一个开源项目，可将 markdown 文本信息、可执行代码和图形合并到一个画布上）在浏览器中开发和运行代码的任何用户。
 
-尽管 Azure Notebooks 对于小型项目而言是一个可行的选项，但它存在一些限制，因此并不适合用于大规模数据科学项目。  目前，该服务将 Notebook 的每个进程的内存消耗量限制为 4 GB，而数据集大小只能是 1 GB。  但是，在发布小型分析项目时，该服务可以提供便利，而且免费。
+Azure Notebooks 的免费服务层是适用于小规模项目的可行选项，因为它将每个 Notebook 的处理能力限制为 4 GB 内存和 1 GB 数据集。 但是，如果需要超出这些限制的计算和数据处理能力，则可以在 Data Science Virtual Machine 实例中运行 Notebook。 有关详细信息，请参阅[管理和配置 Azure Notebooks 项目 - 计算层](/azure/notebooks/configure-manage-azure-notebooks-projects.md#compute-tier)。
 
 ## <a name="azure-sql-database"></a>Azure SQL 数据库
 [Azure SQL 数据库](https://azure.microsoft.com/services/sql-database/)是 Microsoft 提供的完全托管式的智能关系型云数据库服务。  它可以让你使用 SQL Server 的完整功能，省去了设置基础结构的麻烦。  其中包括[机器学习服务](https://docs.microsoft.com/sql/advanced-analytics/what-is-sql-server-machine-learning?view=sql-server-2017)，这是最近在 SQL 服务中添加的新功能之一。
