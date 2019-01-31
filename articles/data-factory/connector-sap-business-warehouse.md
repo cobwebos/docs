@@ -166,25 +166,25 @@ SAP Business Warehouse (BW) 链接服务支持以下属性：
 
 | SAP BW 数据类型 | 数据工厂临时数据类型 |
 |:--- |:--- |
-| ACCP | int |
+| ACCP | Int |
 | CHAR | String |
 | CLNT | String |
-| CURR | 小数 |
+| CURR | Decimal |
 | CUKY | String |
-| DEC | 小数 |
+| DEC | Decimal |
 | FLTP | Double |
 | INT1 | Byte |
 | INT2 | Int16 |
-| INT4 | int |
+| INT4 | Int |
 | LANG | String |
 | LCHR | String |
 | LRAW | Byte[] |
 | PREC | Int16 |
-| QUAN | 小数 |
+| QUAN | Decimal |
 | RAW | Byte[] |
 | RAWSTRING | Byte[] |
 | STRING | String |
-| 单位 | String |
+| UNIT | String |
 | DATS | String |
 | NUMC | String |
 | TIMS | String |
