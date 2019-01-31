@@ -9,13 +9,13 @@ ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
-ms.component: B2C
-ms.openlocfilehash: ab2361eae7dac58adb2739437d0616bcd05f870f
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.subservice: B2C
+ms.openlocfilehash: 220a95f1bc95a8866a459eb878047e7f47920bd1
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54850376"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55175081"
 ---
 # <a name="define-a-validation-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>定义采用 Azure Active Directory B2C 的自定义策略的验证技术配置文件
 
@@ -65,7 +65,7 @@ Precondition 元素包含以下属性：
 
 | 属性 | 必选 | 说明 |
 | --------- | -------- | ----------- |
-| 类型 | 是 | 要对前置条件执行的检查或查询的类型。 指定 `ClaimsExist` 以确保在用户当前声明集中存在指定声明时应执行操作，或指定 `ClaimEquals` 以便仅当指定声明存在且其值等于指定值时才应执行操作。 |
+| Type | 是 | 要对前置条件执行的检查或查询的类型。 指定 `ClaimsExist` 以确保在用户当前声明集中存在指定声明时应执行操作，或指定 `ClaimEquals` 以便仅当指定声明存在且其值等于指定值时才应执行操作。 |
 | ExecuteActionsIf | 是 | 指示在测试为 true 或 false 时是否应执行前置条件中的操作。 |
 
 Precondition 元素包含以下元素：

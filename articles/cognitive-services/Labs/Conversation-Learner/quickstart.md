@@ -6,16 +6,16 @@ services: cognitive-services
 author: v-jaswel
 manager: nolachar
 ms.service: cognitive-services
-ms.component: conversation-learner
+ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 3d029c91debfc8ed3ac24e831224426a2780b763
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 0990ae2c21017c0d6ff25478eb4b5e3bfb4f0d11
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53791059"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55251429"
 ---
 # <a name="create-a-conversation-learner-model-using-nodejs"></a>使用 Node.js 创建对话学习器模型
 
@@ -78,26 +78,18 @@ ms.locfileid: "53791059"
 
     这会在 `cl-bot-01/src/app.ts` 中运行一个泛型空机器人。
 
-3. 运行对话学习器 UI：
-
-    ```bash
-    [open second command prompt window]
-    cd cl-bot-01
-    npm run ui
-    ```
-
-4. 打开浏览器，转到 http://localhost:5050 
+3. 打开浏览器，转到 http://localhost:3978
 
 现在，你正在使用对话学习器，可以创建和训练对话学习器模型。  
 
 > [!NOTE]
-> 启动时，可以根据邀请使用项目对话学习器。  如果 http://localhost:5050 显示 HTTP `403` 错误，则表示你的帐户未收到邀请。  请[请求邀请](https://aka.ms/conversation-learner-request-invite)。
+> 启动时，可以根据邀请使用项目对话学习器。  如果 http://localhost:3978/ui 显示 HTTP `403` 错误，则表示你的帐户未收到邀请。  请[请求邀请](https://aka.ms/conversation-learner-request-invite)。
 
 ## <a name="tutorials-demos-and-switching-between-bots"></a>教程、演示以及在机器人之间切换
 
 上述指令启动了泛型空机器人。  若要改为运行教程或演示机器人：
 
-1. 如果已打开对话学习器 Web UI，请返回到 http://localhost:5050/home 处的模型列表。
+1. 如果已打开对话学习器 Web UI，请返回到 http://localhost:3978/ui/home 处的模型列表。
     
 2. 如果另一个机器人（例如 `npm start` 或 `npm run demo-pizza`）正在运行，请将其停止。  不需要停止 UI 进程或关闭 Web 浏览器。
 
@@ -114,7 +106,7 @@ ms.locfileid: "53791059"
   npm run demo-storage
   ```
 
-4. 在 Chrome 中通过加载 http://localhost:5050/home 切换到对话学习器 Web UI（如果尚未这样做）。 
+4. 在 Chrome 中通过加载 http://localhost:3978/ui/home 切换到对话学习器 Web UI（如果尚未这样做）。 
 
 5. 单击“导入教程”，然后在 Conversation Learner UI 中选择对应于已启动的演示的演示模型。
 
@@ -122,7 +114,7 @@ ms.locfileid: "53791059"
 
 ## <a name="create-a-bot-which-includes-back-end-code"></a>创建包含后端代码的机器人
 
-1. 如果已打开对话学习器 Web UI，请返回到 http://localhost:5050/home 处的模型列表。
+1. 如果已打开对话学习器 Web UI，请返回到 http://localhost:3978/ui/home 处的模型列表。
     
 2. 如果某个机器人（例如 `npm run demo-pizza`）正在运行，请将其停止。  不需要停止 UI 进程或关闭 Web 浏览器。
 
@@ -135,7 +127,7 @@ ms.locfileid: "53791059"
     npm start
     ```
 
-5. 在 Chrome 中通过加载 http://localhost:5050/home 切换到对话学习器 Web UI（如果尚未这样做）。 
+5. 在 Chrome 中通过加载 http://localhost:3978/ui/home 切换到对话学习器 Web UI（如果尚未这样做）。 
 
 6. 在 UI 中创建新的对话学习器模型，并开始训练。
 

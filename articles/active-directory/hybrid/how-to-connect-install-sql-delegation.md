@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/07/2018
-ms.component: hybrid
+ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: e4f1e60424e058f805e89fc3291cfa9a28390c8d
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: bec7a7d363cf65cc8f7b2fb0cb5a8c529efec3e9
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54474893"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55155436"
 ---
 # <a name="install-azure-ad-connect-using-sql-delegated-administrator-permissions"></a>使用 SQL 委派的管理员权限安装 Azure AD Connect
 在最新的 Azure AD Connect 版本之前，不支持在部署需要 SQL 的配置时使用管理委派。  若要安装 Azure AD Connect，用户需具有 SQL Server 的服务器管理员 (SA) 权限。

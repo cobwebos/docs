@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/30/2018
-ms.component: hybrid
+ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 2fde653c6520b743990ae837f1553004793fefa2
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 50210ebeed30bdb58698d0e878667b92dcc73609
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54470692"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55167081"
 ---
 # <a name="azure-active-directory-connect-sync-configure-preferred-data-location-for-office-365-resources"></a>Azure Active Directory Connect 同步：为 Office 365 资源配置首选数据位置
 本主题的目的是介绍如何在 Azure Active Directory (Azure AD) Connect 同步中配置首选数据位置的属性。当某人使用了 Office 365 中的多地域功能时，你使用此属性来指定用户的 Office 365 数据的地理位置。 （术语*区域*和*地域*可以互换使用。）
@@ -31,7 +31,7 @@ ms.locfileid: "54470692"
 通过设置属性 **preferredDataLocation**，可以定义用户的地域。 可以将用户的 Office 365 资源（例如邮箱和 OneDrive）放在用户所在的同一区域，同时仍对整个组织使用一个租户。
 
 > [!IMPORTANT]
-> Office 365 服务订阅数大于等于 5000 个的客户现可使用 Multi-Geo。 有关详细信息，请咨询 Microsoft 代表。
+> Office 365 服务订阅数大于等于 2,500 个的客户现可使用多地理位置功能。 有关详细信息，请咨询 Microsoft 代表。
 >
 >
 
@@ -53,7 +53,7 @@ Office 365 中支持多地域的区域包括：
 | 美国 | NAM |
 
 * 如果某个地域未在此表中列出（例如南美），则它无法用于多地域。
-* 印度地域仅供帐单邮寄地址属于此地域且在此地域购买许可证的客户使用。
+
 * 并非所有 Office 365 工作负荷都支持设置用户的地域。
 
 ### <a name="azure-ad-connect-support-for-synchronization"></a>Azure AD Connect 对同步的支持
@@ -125,7 +125,7 @@ Azure AD Connect 在版本 1.1.524.0 及更高版本中支持对 **User** 对象
 
     | 属性 | 值 | 详细信息 |
     | --- | --- | --- |
-    | 名称 | *提供名称* | 例如“In from AD – User preferredDataLocation” |
+    | Name | *提供名称* | 例如“In from AD – User preferredDataLocation” |
     | 说明 | *提供自定义说明* |  |
     | 连接的系统 | *选取本地 Active Directory 连接器* |  |
     | 连接的系统对象类型 | **User** |  |
@@ -154,7 +154,7 @@ Azure AD Connect 在版本 1.1.524.0 及更高版本中支持对 **User** 对象
 
     | 属性 | 值 | 详细信息 |
     | ----- | ------ | --- |
-    | 名称 | *提供名称* | 例如，“Out to Azure AD – User preferredDataLocation” |
+    | Name | *提供名称* | 例如，“Out to Azure AD – User preferredDataLocation” |
     | 说明 | *提供说明* ||
     | 连接的系统 | *选择 Azure AD 连接器* ||
     | 连接的系统对象类型 | **User** ||

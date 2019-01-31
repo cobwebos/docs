@@ -6,17 +6,17 @@ services: cognitive-services
 author: PatrickFarley
 manager: nolachar
 ms.service: cognitive-services
-ms.component: computer-vision
+ms.subservice: computer-vision
 ms.topic: article
 ms.date: 08/28/2018
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: f4f588ad9123ec98cbae9f9bf03c08ec551a31a5
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: b944325287593a028d28545731370dc9ea6a5ac2
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54232747"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55224915"
 ---
 # <a name="tutorial-build-an-image-processing-app---c35"></a>教程：构建图像处理应用 - C#
 
@@ -88,7 +88,7 @@ git clone --recurse-submodules https://github.com/Microsoft/Cognitive-Face-Windo
 
 1. 在导航窗格中的“选择场景”处，选择示例应用当前包含的场景之一：  
 
-   | 场景 | Description |
+   | 场景 | 说明 |
    |----------|-------------|
    |分析图像 | 使用[分析图像](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa)操作来分析本地或远程图像。 可以选择视觉特征和语言进行分析，并查看图像和结果。  |
    |使用域模型分析图像 | 使用[列出域特定模型](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fd)操作列出可供选择的域模型，并使用[识别域特定内容](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e200)操作使用所选域模型分析本地或远程图像。 此外还可以选择分析的语言。 |

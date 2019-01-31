@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 12/07/2018
 ms.author: bwren
-ms.openlocfilehash: 574391fd64d0525d3d77b80bb488bea8109729af
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 0103225803ca98cb9d8e27eb57f150e0660cd7ab
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53187324"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55299115"
 ---
 # <a name="management-solutions-in-azure-monitor"></a>Azure Monitor 中的管理解决方案
 管理解决方案利用 Azure 中的服务来提供特定应用程序或服务的更多操作见解。 本文简要概述 Azure 中的管理解决方案，并详细介绍如何使用和安装这些解决方案。
@@ -60,7 +60,7 @@ ms.locfileid: "53187324"
 ## <a name="install-a-management-solution"></a>安装管理解决方案
 [Azure 市场](https://azuremarketplace.microsoft.com)中提供了 Microsoft 和合作伙伴的管理解决方案。 可以搜索可用的解决方案，并使用以下过程进行安装。 安装解决方案时，必须选择要在其中安装该解决方案的 [Log Analytics 工作区](../platform/manage-access.md)，以及要将解决方案数据收集到的位置。
 
-1. 在[订阅的解决方案列表](#list-installed-monitoring-solutions)中，单击“添加”。 
+1. 在[订阅的解决方案列表](#list-installed-management-solutions)中，单击“添加”。 
 1. 在“管理解决方案”的右侧，单击“更多”。 
 1. 找到所需的管理解决方案并阅读其说明。
 1. 单击“创建”以启动安装进程。

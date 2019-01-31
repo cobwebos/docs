@@ -7,16 +7,16 @@ author: diberry
 manager: cgronlun
 ms.custom: seodec18
 ms.service: cognitive-services
-ms.component: text-analytics
+ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 01/22/2019
 ms.author: diberry
-ms.openlocfilehash: 8f3c6b62f71247aabe88fd06956c6f2a26db82c1
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 2360cb56f40bf899cec5d4a5fb6637eaac59f4d1
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54460917"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55224320"
 ---
 # <a name="configure-text-analytics-docker-containers"></a>配置文本分析 docker 容器
 
@@ -49,7 +49,7 @@ ms.locfileid: "54460917"
 
 * Azure 门户：**文本分析的**概述，标签为 `Endpoint`
 
-|必选| 名称 | 数据类型 | 说明 |
+|必选| Name | 数据类型 | 说明 |
 |--|------|-----------|-------------|
 |是| `Billing` | String | 账单终结点 URI<br><br>示例：<br>`Billing=https://westus.api.cognitive.microsoft.com/text/analytics/v2.0` |
 
@@ -77,7 +77,7 @@ ms.locfileid: "54460917"
 
 主机确切语法的安装位置因主机操作系统不同而异。 此外，由于 docker 服务帐户使用的权限与主机安装位置权限之间的冲突，可能无法访问[主计算机](how-tos/text-analytics-how-to-install-containers.md#the-host-computer)的装载位置。 
 
-|可选| 名称 | 数据类型 | 说明 |
+|可选| Name | 数据类型 | 说明 |
 |-------|------|-----------|-------------|
 |不允许| `Input` | String | 文本分析容器不使用此项。|
 |可选| `Output` | String | 输出装入点的目标。 默认值为 `/output`。 这是日志的位置。 这包括容器日志。 <br><br>示例：<br>`--mount type=bind,src=c:\output,target=/output`|

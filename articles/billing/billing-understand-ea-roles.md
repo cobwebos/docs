@@ -12,13 +12,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2018
-ms.author: cwatson
-ms.openlocfilehash: 77d061166d599fe7556be7d0237100154890fe19
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.author: banders
+ms.openlocfilehash: 98ed28af8df246549fb521a81f1968e1f5c28cc4
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52576959"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54901558"
 ---
 # <a name="understand-azure-enterprise-agreement-administrative-roles-in-azure"></a>了解 Azure 中的 Azure 企业协议管理角色
 

@@ -7,13 +7,13 @@ ms.author: cbrooks
 ms.date: 01/30/2018
 ms.topic: article
 ms.service: storage
-ms.component: blobs
-ms.openlocfilehash: 0f726769b9e4266e310f9f50b1a7ef768c0c1d55
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.subservice: blobs
+ms.openlocfilehash: 6c2a642c30be79c907286e4ffac6bcea40d86fcd
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45735878"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55247742"
 ---
 # <a name="reacting-to-blob-storage-events"></a>响应 Blob 存储事件
 
@@ -28,12 +28,12 @@ Blob 存储事件会可靠地发送到事件网格服务，该服务通过丰富
 ![事件网格模型](./media/storage-blob-event-overview/event-grid-functional-model.png)
 
 ## <a name="blob-storage-accounts"></a>Blob 存储帐户
-可在常规用途 v2 存储帐户和 Blob 存储帐户中使用 Blob 存储事件。 常规用途 v2 存储帐户支持所有存储服务（包括 Blob、文件、队列和表）的所有功能。 Blob 存储帐户是将非结构化数据作为 Blob（对象）存储在 Azure 存储的专用存储帐户。 Blob 存储帐户类似于常规用途存储帐户，并且具有现在使用的所有卓越的耐用性、可用性、伸缩性和性能功能，包括用于块 blob 和追加 blob 的 100% API 一致性。 有关详细信息，请参阅 [Azure 存储帐户概述](../common/storage-account-overview.md)。
+可在常规用途 v2 存储帐户和 Blob 存储帐户中使用 Blob 存储事件。 常规用途 v2 存储帐户支持所有存储服务（包括 Blob、文件、队列和表）的所有功能。 Blob 存储帐户是一个专用存储帐户，用于将非结构化数据作为 Blob（对象）存储到 Azure 存储中。 Blob 存储帐户类似于常规用途存储帐户，并且具有现在使用的所有卓越的耐用性、可用性、伸缩性和性能功能，包括用于块 blob 和追加 blob 的 100% API 一致性。 有关详细信息，请参阅 [Azure 存储帐户概述](../common/storage-account-overview.md)。
 
 ## <a name="available-blob-storage-events"></a>可用的 Blob 存储事件
 事件网格使用[事件订阅](../../event-grid/concepts.md#event-subscriptions)将事件消息路由到订阅方。  Blob 存储事件订阅包括两种类型的事件：  
 
-> |事件名称|Description|
+> |事件名称|说明|
 > |----------|-----------|
 > |`Microsoft.Storage.BlobCreated`|当通过 `PutBlob`、`PutBlockList` 或 `CopyBlob` 操作创建或替换 blob 时触发|
 > |`Microsoft.Storage.BlobDeleted`|当通过 `DeleteBlob` 操作删除 blob 时触发|
@@ -41,7 +41,7 @@ Blob 存储事件会可靠地发送到事件网格服务，该服务通过丰富
 ## <a name="event-schema"></a>事件架构
 Blob 存储事件包含响应数据更改所需的所有信息。  可以识别 Blob 存储事件，因为 eventType 属性以“Microsoft.Storage”开头。 关于事件网格事件属性使用情况的其他信息，请参阅文档[事件网格事件架构](../../event-grid/event-schema.md)。  
 
-> |属性|Type|Description|
+> |属性|Type|说明|
 > |-------------------|------------------------|-----------------------------------------------------------------------|
 > |主题|字符串|发出该事件的存储帐户的完整 Azure 资源管理器 ID。|
 > |subject|字符串|作为事件使用者的对象的相对资源路径，使用的扩展 Azure 资源管理器格式与用于描述存储帐户、服务和适用于 Azure RBAC 容器的格式相同。  此格式包含保留大小写的 blob 名称。|
