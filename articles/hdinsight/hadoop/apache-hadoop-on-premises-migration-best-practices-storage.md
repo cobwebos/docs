@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/25/2018
 ms.author: hrasheed
-ms.openlocfilehash: ec67cb6b4bc1dd29dbbac4056d3365a74b31a24c
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 8f22885d67537194342115f07e4d04bc4b5c66da
+ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53013691"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54911738"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---storage-best-practices"></a>将本地 Apache Hadoop 群集迁移到 Azure HDInsight - 存储最佳做法
 
@@ -34,7 +34,7 @@ HDInsight 群集可将 Azure 存储中的 blob 容器用作默认文件系统或
 
 可以使用以下格式之一访问存储在 Azure 存储中的数据：
 
-|数据访问格式 |Description |
+|数据访问格式 |说明 |
 |---|---|
 |`wasb:///`|使用未加密通信访问默认存储。|
 |`wasbs:///`|使用加密通信访问默认存储。|
@@ -117,6 +117,7 @@ Data Lake Storage Gen2 的一个基本功能是，在 Blob 存储服务中添加
 
 - [Azure Data Lake Storage Gen2 预览版简介](../../storage/data-lake-storage/introduction.md)
 - [Azure Blob FileSystem 驱动程序 (ABFS.md)](../../storage/data-lake-storage/abfs-driver.md)
+- [将 Azure Data Lake Storage Gen2 用于 Azure HDInsight 群集](../hdinsight-hadoop-use-data-lake-storage-gen2.md)
 
 ## <a name="secure-azure-storage-keys-within-on-premises-hadoop-cluster-configuration"></a>在本地 Hadoop 群集配置中保护 Azure 存储密钥
 
@@ -155,7 +156,7 @@ hadoop distcp -D hadoop.security.credential.provider.path=jceks://hdfs@headnode
 
 1. 打开 [SASToken.py](https://github.com/Azure-Samples/hdinsight-dotnet-python-azure-storage-shared-access-signature/blob/master/Python/SASToken.py) 文件并更改以下值：
 
-    |令牌属性|Description|
+    |令牌属性|说明|
     |---|---|
     |policy_name|要创建的存储策略所用的名称。|
     |storage_account_name|存储帐户的名称。|

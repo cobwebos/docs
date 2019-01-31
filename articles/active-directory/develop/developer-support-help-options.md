@@ -8,7 +8,7 @@ manager: mtillman
 editor: ''
 ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
@@ -17,12 +17,12 @@ ms.date: 10/27/2017
 ms.author: celested
 ms.reviewer: andret
 ms.custom: aaddev
-ms.openlocfilehash: 7374b3f71474cb4d4e59e9d81ab1de7bea265483
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: f8c5e5f598ab8566eacb594ff66b63ce3793f57f
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53337132"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55093183"
 ---
 # <a name="support-and-help-options-for-developers"></a>开发人员的支持和帮助选项
 
@@ -50,7 +50,7 @@ ms.locfileid: "53337132"
 
 ## <a name="use-our-development-support-tools"></a>使用开发支持工具
 
-|工具  |Description  |
+|工具  |说明  |
 |---------|---------|
 |[jwt.ms](https://jwt.ms)| 粘贴 ID 或访问令牌来解码声明名称和值 |
 |[错误代码分析器](https://apps.dev.microsoft.com/portal/tools/errors)| 粘贴在登录或许可页面期间收到的错误代码，以查看可能的原因和补救措施 |

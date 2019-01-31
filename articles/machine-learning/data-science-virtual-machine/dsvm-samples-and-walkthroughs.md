@@ -9,19 +9,19 @@ manager: cgronlun
 ms.custom: seodec18
 ms.assetid: ''
 ms.service: machine-learning
-ms.component: data-science-vm
+ms.subservice: data-science-vm
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: gokuma
-ms.openlocfilehash: 64be6af340aa02c6c0b094013d2cbd286286aca7
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: e61f0f4ba30b29fea1b2fd5f2a2ab253d3a6710c
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53101977"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55475748"
 ---
 # <a name="samples-on-data-science-virtual-machines"></a>Data Science Virtual Machine 示例
 
@@ -30,7 +30,7 @@ Azure Data Science Virtual Machine 包含一整套示例代码。 示例代码�
 > 若要详细了解如何在 Data Science Virtual Machine 上运行 Jupyter Notebook，请参阅[访问 Jupyter](#access-jupyter) 部分。
 
 ## <a name="quick-reference-of-samples"></a>示例快速参考
-| 示例类别 | Description | 位置 |
+| 示例类别 | 说明 | 位置 |
 | ------------- | ------------- | ------------- |
 | R 语言  | 用 R 语言编写的示例，展示了如何与 Azure 云数据存储连接等方案。 此外，还展示了如何比较开放源代码 R 和 Microsoft R，以及如何在 Microsoft R Server 或 SQL Server 上实现模型。 <br/> [R 语言](#r-language) | <br/>`~notebooks` <br/> <br/> `~samples/MicrosoftR` <br/> <br/> `~samples/RSqlDemo` <br/> <br/> `~samples/SQLRServices`<br/> <br/>|
 | Python 语言  | 用 Python 语言编写的示例，展示了如何与 Azure 云数据存储连接并使用 Azure 机器学习等方案。  <br/> [Python 语言](#python-language) | <br/>`~notebooks` <br/><br/>|

@@ -11,14 +11,14 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 07/03/2018
+ms.date: 01/28/2019
 ms.author: bwren
-ms.openlocfilehash: 674a26b9c8eb5fe8f44b416b5296b61c6678d2cd
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 9fe25821d5a234326570b1681807c6f9dfd6ffc8
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53186168"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55211094"
 ---
 # <a name="send-data-to-log-analytics-with-the-http-data-collector-api-public-preview"></a>使用 HTTP 数据收集器 API（公共预览版）将数据发送到 Log Analytics
 本文说明如何使用 HTTP 数据收集器 API 从 REST API 客户端将数据发送到 Log Analytics。  它说明对于脚本或应用程序收集的数据，如何设置其格式、将其包含在请求中，并由 Log Analytics 授权该请求。  将针对 PowerShell、C# 和 Python 提供示例。
@@ -47,17 +47,17 @@ Log Analytics 存储库中的所有数据都存储为具有某种特定记录类
 | 内容类型 |application/json |
 
 ### <a name="request-uri-parameters"></a>请求 URI 参数
-| 参数 | Description |
+| 参数 | 说明 |
 |:--- |:--- |
 | CustomerID |Log Analytics 工作区的唯一标识符。 |
 | 资源 |API 资源名称: /api/logs。 |
 | API 版本 |用于此请求的 API 版本。 目前，API 版本为 2016-04-01。 |
 
 ### <a name="request-headers"></a>请求标头
-| 标头 | Description |
+| 标头 | 说明 |
 |:--- |:--- |
 | 授权 |授权签名。 在本文的后面部分，可以了解有关如何创建 HMAC-SHA256 标头的信息。 |
-| Log-Type |指定正在提交的数据的记录类型。 目前，日志类型仅支持字母字符。 它不支持数字或特殊字符。 此参数的大小限制为 100 个字符。 |
+| Log-Type |指定正在提交的数据的记录类型。 此参数的大小限制为 100 个字符。 |
 | x-ms-date |处理请求的日期，采用 RFC 1123 格式。 |
 | time-generated-field |数据中包含数据项时间戳的字段名称。 如果指定某一字段，其内容用于 **TimeGenerated**。 如果未指定此字段，**TimeGenerated** 的默认值是引入消息的时间。 消息字段的内容应遵循 ISO 8601 格式 YYYY-MM-DDThh:mm:ssZ。 |
 
@@ -177,7 +177,7 @@ HTTP 状态代码 200 表示已接收请求以便进行处理。 这表示操作
 
 此表列出了服务可能返回的完整状态代码集：
 
-| 代码 | 状态 | 错误代码 | Description |
+| 代码 | 状态 | 错误代码 | 说明 |
 |:--- |:--- |:--- |:--- |
 | 200 |OK | |已成功接受请求。 |
 | 400 |错误的请求 |InactiveCustomer |工作区已关闭。 |

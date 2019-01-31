@@ -9,18 +9,18 @@ ms.custom: seodec18
 ms.author: garye
 ms.assetid: 43300854-a14e-4cd2-9bb1-c55c779e0e93
 ms.service: machine-learning
-ms.component: studio
+ms.subservice: studio
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/23/2017
-ms.openlocfilehash: fce8f03adfad348c9daddf3c2a225d6df29552d7
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 2c21c08e71592e417d8ee3850af61ca2c1486a76
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53252492"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55464716"
 ---
 # <a name="walkthrough-develop-predictive-solution-for-credit-risk-assessment-in-azure-machine-learning-studio"></a>演练：在Azure 机器学习工作室中为信用风险评估开发预测解决方案
 
@@ -51,7 +51,7 @@ ms.locfileid: "53252492"
 1. [创建机器学习工作区](walkthrough-1-create-ml-workspace.md)
 2. [上传现有数据](walkthrough-2-upload-data.md)
 3. [创建试验](walkthrough-3-create-new-experiment.md)
-4. [定型和评估模型](walkthrough-4-train-and-evaluate-models.md)
+4. [培训和评估模型](walkthrough-4-train-and-evaluate-models.md)
 5. [部署 Web 服务](walkthrough-5-publish-web-service.md)
 6. [访问 Web 服务](walkthrough-6-access-web-service.md)
 

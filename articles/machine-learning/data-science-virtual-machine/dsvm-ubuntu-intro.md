@@ -10,18 +10,18 @@ manager: cgronlun
 ms.custom: seodec18
 ms.assetid: 3bab0ab9-3ea5-41a6-a62a-8c44fdbae43b
 ms.service: machine-learning
-ms.component: data-science-vm
+ms.subservice: data-science-vm
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/16/2018
-ms.openlocfilehash: e3f17dd3717a57d184be7c9b8c73855c3fd2a768
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: f0c9c06e953df16199acda5f821fdac35b86f07f
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53106764"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55477550"
 ---
 # <a name="provision-the-data-science-virtual-machine-for-linux-ubuntu"></a>在 Azure 上预配适用于 Linux (Ubuntu) 的数据科学虚拟机
 
@@ -136,7 +136,7 @@ Linux VM 已通过 X2Go 服务器进行预配并且可接受客户端连接。 �
      * **主机**：Linux Data Science VM 的主机名或 IP 地址。
      * **登录名**：Linux VM 上的用户名。
      * **SSH 端口**：保留默认值 22。
-     * **会话类型**：将值更改为 XFCE。 Linux VM 目前仅支持 XFCE 桌面。
+     * **会话类型**：将值更改为“XFCE”。 Linux VM 目前仅支持 XFCE 桌面。
    * **媒体选项卡**：如果无需使用声音支持和客户端打印功能，可将其关闭。
    * **共享文件夹**：如果希望将目录从客户端计算机装入 Linux VM，则在此选项卡上添加要与 VM 共享的客户端计算机目录。
 
@@ -220,7 +220,7 @@ R 是数据分析和机器学习的最常用语言之一。 如果要使用 R �
 
 若要调用 Python 交互式会话，只需在 shell 中键入 **python**。 
 
-使用 ```conda``` 或 ````pip```` 安装其他 Python 库。 对于 pip，如果不需要默认值，请先激活正确环境：
+使用 ```conda``` 或 ```pip``` 安装其他 Python 库。 对于 pip，如果不需要默认值，请先激活正确环境：
 
     source activate root
     pip install <package>
@@ -271,7 +271,7 @@ Jupyter 上提供了一个示例 PySpark 笔记本，该笔记本可以在 Jupyt
     chown hadoop:hadoop ~hadoop/.ssh/authorized_keys
     systemctl start hadoop-namenode hadoop-datanode hadoop-yarn
 
-不需要 Hadoop 相关服务时，可以通过运行 ````systemctl stop hadoop-namenode hadoop-datanode hadoop-yarn```` 停止这些服务。演示如何在远程 Spark 上下文（即，DSVM 上的独立 Spark 实例）中开发和测试 MRS 的示例在 `/dsvm/samples/MRS` 目录中提供。 
+不需要 Hadoop 相关服务时，可以通过运行 ```systemctl stop hadoop-namenode hadoop-datanode hadoop-yarn``` 停止这些服务。演示如何在远程 Spark 上下文（即，DSVM 上的独立 Spark 实例）中开发和测试 MRS 的示例在 `/dsvm/samples/MRS` 目录中提供。 
 
 ### <a name="ides-and-editors"></a>IDE 和编辑器
 可以选择多个代码编辑器。 这包括 vi/VIM、Emacs、PyCharm、RStudio 和 IntelliJ。 IntelliJ、RStudio 和 PyCharm 是图形编辑器，需登录图形桌面才能使用。 这些编辑器具有用以启动的桌面和应用程序菜单快捷方式。

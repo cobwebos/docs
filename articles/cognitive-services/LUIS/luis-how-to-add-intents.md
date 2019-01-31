@@ -6,17 +6,17 @@ services: cognitive-services
 author: diberry
 manager: cgronlun
 ms.custom: seodec18
-ms.component: language-understanding
+ms.subservice: language-understanding
 ms.topic: article
-ms.date: 10/24/2018
+ms.date: 01/23/2019
 ms.author: diberry
 ms.service: cognitive-services
-ms.openlocfilehash: c8bcbe011dc4ff9841a06b914a90ae7f9a14ee74
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 81b963a56b35cc1206982680f8742c2fea9f2446
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53598492"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55219322"
 ---
 # <a name="add-intents-to-determine-user-intention-of-utterances"></a>添加意向以确定用户的话语意向
 
@@ -24,19 +24,7 @@ ms.locfileid: "53598492"
 
 可以依次转到顶部导航栏的“生成”部分和左侧面板的“意向”来管理意向。 
 
-## <a name="create-an-app"></a>创建应用
-
-1. 登录到 [LUIS](https://www.luis.ai) 门户。
-
-1. 选择“创建新应用”。 
-
-1. 将新应用命名为 `MyHumanResourcesApp`。 选择“英语”区域性。 说明是可选的。 
-
-1. 选择“完成”。 
-
 ## <a name="add-intent"></a>添加意向
-
-1. 应用将会打开并显示“意向”列表。
 
 1. 在“意向”页上，选择“创建新意向”。
 

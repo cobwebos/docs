@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 06/29/2018
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: d5bbdac74b0afa745993dd848ef73352d996e8b6
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: c49a6320b7ba37297a7c1c0775aef2c2d8c6c868
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53315054"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55104290"
 ---
 # <a name="example-create-a-custom-skill-using-the-text-translate-api"></a>示例：使用文本翻译 API 创建自定义技能
 
@@ -154,7 +154,7 @@ namespace TranslateFunction
 
 
         /// <summary>
-        /// Use Cognitive Service to translate text from one language to antoher.
+        /// Use Cognitive Service to translate text from one language to another.
         /// </summary>
         /// <param name="originalText">The text to translate.</param>
         /// <param name="toLanguage">The language you want to translate to.</param>

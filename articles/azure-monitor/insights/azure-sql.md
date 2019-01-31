@@ -11,12 +11,12 @@ ms.author: danil
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 12/17/2018
-ms.openlocfilehash: f12aed12138b1b16fcce90401ea0d65bd083675f
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 02832ee84e02251239ab4364aac9ad0894c681b9
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53546704"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54884775"
 ---
 # <a name="monitor-azure-sql-database-using-azure-sql-analytics-preview"></a>使用 Azure SQL Analytics（预览版）监视 Azure SQL 数据库
 
@@ -35,12 +35,12 @@ Azure SQL Analytics 是一种高级云监视解决方案，用于通过单一虚
 
 Azure SQL Analytics 是一种仅限云的监视解决方案，支持流式传输 Azure SQL 数据库（单一的、池化的和托管的实例数据库）的诊断遥测数据。 由于该解决方案不使用代理连接到 Log Analytics 服务，因此它不支持监视本地或 VM 中托管的 SQL Server，具体请参阅下面的兼容性表。
 
-| 连接的源 | 支持 | Description |
+| 连接的源 | 支持 | 说明 |
 | --- | --- | --- |
-| [Azure 诊断](../../azure-monitor/platform/collect-azure-metrics-logs.md) | **是** | Azure 指标和日志数据由 Azure 直接发送到 Log Analytics。 |
-| [Azure 存储帐户](../../azure-monitor/platform/collect-azure-metrics-logs.md) | 否 | Log Analytics 不从存储帐户中读取数据。 |
-| [Windows 代理](../../azure-monitor/platform/agent-windows.md) | 否 | 该解决方案不使用直接 Windows 代理。 |
-| [Linux 代理](../../azure-monitor/learn/quick-collect-linux-computer.md) | 否 | 该解决方案不使用直接Linux 代理。 |
+| [Azure 诊断](../platform/collect-azure-metrics-logs.md) | **是** | Azure 指标和日志数据由 Azure 直接发送到 Log Analytics。 |
+| [Azure 存储帐户](../platform/collect-azure-metrics-logs.md) | 否 | Log Analytics 不从存储帐户中读取数据。 |
+| [Windows 代理](../platform/agent-windows.md) | 否 | 该解决方案不使用直接 Windows 代理。 |
+| [Linux 代理](../learn/quick-collect-linux-computer.md) | 否 | 该解决方案不使用直接Linux 代理。 |
 | [System Center Operations Manager 管理组](../platform/om-agents.md) | 否 | 此解决方案不使用从 Operations Manager 代理到 Log Analytics 的直接连接。 |
 
 ## <a name="configuration"></a>配置
@@ -109,7 +109,7 @@ Azure SQL Analytics 是一种仅限云的监视解决方案，支持流式传输
 
 下表概述了两个仪表板版本支持的透视图，一个版本适用于 Azure SQL 数据库和弹性池，另一个版本适用于托管实例。
 
-| 透视 | Description | SQL 数据库和弹性池支持 | 托管实例支持 |
+| 透视 | 说明 | SQL 数据库和弹性池支持 | 托管实例支持 |
 | --- | ------- | ----- | ----- |
 | 资源（按类型） | 对监视的所有资源进行计数的透视。 | 是 | 是 |
 | 洞察力 | 提供对性能智能见解的分层向下钻取。 | 是 | 是 |
@@ -185,7 +185,7 @@ Azure SQL Analytics 中的数据分析基于自定义查询和报告的 [Log Ana
 
 ### <a name="creating-alerts-for-azure-sql-database"></a>针对 Azure SQL 数据库创建警报
 
-可以使用来自 Azure SQL 数据库资源的数据轻松[创建警报](../../azure-monitor/platform/alerts-metric.md)。 以下是部分有用的可用于日志警报的[日志查询](../../azure-monitor/log-query/log-query-overview.md)：
+可以使用来自 Azure SQL 数据库资源的数据轻松[创建警报](../platform/alerts-metric.md)。 以下是部分有用的可用于日志警报的[日志查询](../log-query/log-query-overview.md)：
 
 #### <a name="high-cpu-on-azure-sql-database"></a>Azure SQL 数据库的 CPU 利用率较高
 
@@ -297,6 +297,6 @@ AzureDiagnostics
 
 ## <a name="next-steps"></a>后续步骤
 
-- 使用 Log Analytics 中的[日志搜索](../../azure-monitor/log-query/log-query-overview.md)查看 Azure SQL 的详细数据。
-- [创建自己的仪表板](../../azure-monitor/platform/dashboards.md)，显示 Azure SQL 数据。
-- 发生特定 Azure SQL 事件时[创建警报](../../azure-monitor/platform/alerts-overview.md)。
+- 使用 Log Analytics 中的[日志搜索](../log-query/log-query-overview.md)查看 Azure SQL 的详细数据。
+- [创建自己的仪表板](../learn/tutorial-logs-dashboards.md)，显示 Azure SQL 数据。
+- 发生特定 Azure SQL 事件时[创建警报](../platform/alerts-overview.md)。

@@ -8,19 +8,19 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 1f56e612-728b-4203-a545-a81dc5efda00
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 02/13/2018
 ms.author: jeedes
-ms.openlocfilehash: f46cb8f0d0b04b0cff5d3118906f11a060a55f80
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 331a8d07004a8915d27b28ca0fba940b1aa3ab72
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52833731"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55164803"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-attendance-management-services"></a>教程：Azure Active Directory 与 Attendance Management Services 的集成
 
@@ -108,7 +108,7 @@ ms.locfileid: "52833731"
 
     ![Attendance Management Services 域和 URL 单一登录信息](./media/attendancemanagementservices-tutorial/tutorial_attendancemanagementservices_url.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“登录 URL”文本框中，使用以下模式键入 URL： `https://id.obc.jp/<tenant information >/`
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL： `https://id.obc.jp/<tenant information >/`
 
     b. 在“标识符”文本框中，使用以下模式键入 URL：`https://id.obc.jp/<tenant information >/`
 
@@ -137,7 +137,7 @@ ms.locfileid: "52833731"
 
     ![Attendance Management Services 配置](./media/attendancemanagementservices-tutorial/user2.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 选择“使用 SAML 身份验证”。
+    a. 选择“使用 SAML 身份验证”。
 
     b. 在“标识符”文本框中，粘贴从 Azure 门户复制的“SAML 实体 ID”值。 
 
@@ -177,7 +177,7 @@ ms.locfileid: "52833731"
 
     ![“用户”对话框](./media/attendancemanagementservices-tutorial/create_aaduser_04.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“姓名”框中，键入“BrittaSimon”。
+    a. 在“姓名”框中，键入“BrittaSimon”。
 
     b. 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
 
@@ -205,7 +205,7 @@ ms.locfileid: "52833731"
 
     ![添加员工](./media/attendancemanagementservices-tutorial/user4.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“OBCiD”文本框中，键入用户的电子邮件，例如 BrittaSimon@contoso.com。
+    a. 在“OBCiD”文本框中，键入用户的电子邮件，例如 BrittaSimon@contoso.com。
 
     b. 在“密码”文本框中，键入用户的密码。
 

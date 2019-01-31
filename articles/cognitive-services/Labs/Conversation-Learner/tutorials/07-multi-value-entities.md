@@ -6,16 +6,16 @@ services: cognitive-services
 author: v-jaswel
 manager: nolachar
 ms.service: cognitive-services
-ms.component: conversation-learner
+ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 2363dde7dc2462adde730fa9a4883ffb6c558f3f
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 8544d63f38f88a0e623dff343bf8b5133931b70b
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53796442"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55228298"
 ---
 # <a name="how-to-use-multi-value-entities-with-a-conversation-learner-model"></a>如何通过对话学习器模型使用多值实体
 本教程介绍实体的“多值”属性。
@@ -34,7 +34,7 @@ ms.locfileid: "53796442"
 
 标记为“多值”的实体会将所识别出的每个实体实例追加到机器人的内存中的一个列表中。 后续识别将追加到实体的值后面，而不是覆盖。
 
-## <a name="steps"></a>步骤
+## <a name="steps"></a>Steps
 
 ### <a name="create-the-model"></a>创建模型
 

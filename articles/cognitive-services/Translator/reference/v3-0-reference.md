@@ -6,16 +6,16 @@ services: cognitive-services
 author: Jann-Skotdal
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: translator-text
+ms.subservice: translator-text
 ms.topic: reference
 ms.date: 03/29/2018
 ms.author: v-jansko
-ms.openlocfilehash: 5c952370908919deb6531e0b175063dc2657ae98
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 4d1c33480e408f892517cde6d42e103b34218f26
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52870396"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55459055"
 ---
 # <a name="translator-text-api-v30"></a>文本翻译 API v3.0
 
@@ -41,7 +41,7 @@ Microsoft Translator 位于多个数据中心位置之外。 目前位于 6 个 
 
 若要强制特定数据中心处理该请求，请将 API 请求中的全球终结点更改为所需的区域终结点：
 
-|Description|区域|基 URL|
+|说明|区域|基 URL|
 |:--|:--|:--|
 |Azure|全局|  api.cognitive.microsofttranslator.com|
 |Azure|北美|   api-nam.cognitive.microsofttranslator.com|
@@ -125,7 +125,7 @@ Authorization: Bearer <Base64-access_token>
 ```
 错误代码是一个 6 位数字，包括 3 位数的 HTTP 状态代码，后接用于进一步将错误分类的 3 位数。 常见错误代码包括：
 
-| 代码 | Description |
+| 代码 | 说明 |
 |:----|:-----|
 | 400000| 某个请求输入无效。|
 | 400001| “scope”参数无效。|

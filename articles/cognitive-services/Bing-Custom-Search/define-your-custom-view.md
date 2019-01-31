@@ -6,16 +6,16 @@ services: cognitive-services
 author: aahill
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-custom-search
+ms.subservice: bing-custom-search
 ms.topic: conceptual
 ms.date: 09/28/2017
 ms.author: aahi
-ms.openlocfilehash: ac5ba80740c47dd71a30bb20aab4a54829eac822
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 58830e3391cb6f794cfd8911e97b0c6dbb3cd2c1
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53597794"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55193635"
 ---
 # <a name="configure-your-bing-custom-search-experience"></a>配置必应自定义搜索体验
 
@@ -25,7 +25,7 @@ ms.locfileid: "53597794"
 
 定义 Web 切片时，请使用以下各项：
 
-| 切片名称 | Description                                                                                                                                                                                                                                                                                                |
+| 切片名称 | 说明                                                                                                                                                                                                                                                                                                |
 |------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | 域     | 域切片包括在 Internet 域中找到的所有内容。 例如，`www.microsoft.com`。 省略 `www.` 会导致必应同时搜索该域的子域。 例如，如果指定  `microsoft.com`，则必应还会返回来自  `support.microsoft.com` 或 `technet.microsoft.com` 的结果。 |
 | 子页面    | 子页面切片包括在子页面及其下面的路径中找到的所有内容。 最多可在路径中指定两个子页面。 例如： `www.microsoft.com/en-us/windows/`                                                                                                                       |
@@ -129,7 +129,7 @@ ms.locfileid: "53597794"
 > [!NOTE]
 > 用户搜索查询之间的所有比较以及固定项的搜索查询不区分大小写。
 
-| 值 | Description                                                                          |
+| 值 | 说明                                                                          |
 |---------------|----------------------------------------------------------------------------------|
 | 开头为 | 如果用户的查询字符串以固定项的查询字符串开头，则固定项为匹配项 |
 | 结尾为   | 如果用户的查询字符串以固定项的查询字符串结尾，则固定项为匹配项。  |

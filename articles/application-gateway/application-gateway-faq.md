@@ -8,12 +8,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 1/11/2019
 ms.author: victorh
-ms.openlocfilehash: 45751af66b1b050d4d36d1b8aee52dc6a5d8cc7b
-ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
+ms.openlocfilehash: bd3711a88b14d7a24df7c20c72b49fca5953b568
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54382409"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54886453"
 ---
 # <a name="frequently-asked-questions-for-application-gateway"></a>应用程序网关常见问题
 
@@ -105,8 +105,6 @@ Set-AzureRmApplicationGateway -ApplicationGateway $gw
 预配新的应用程序网关 v1 SKU 部署最多需 20 分钟。 更改实例大小/计数不会出现干扰，且在此期间网关处于活动状态。
 
 预配 V2 SKU 部署可能需要大约 5 到 6 分钟时间。
-
-应用程序网关是否支持 x-forwarded-for 标头？
 
 ## <a name="configuration"></a>配置
 

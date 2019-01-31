@@ -3,19 +3,19 @@ title: 如何在 Azure AD 中禁止密码
 description: 在 Azure AD 动态禁止密码的环境中禁止弱密码
 services: active-directory
 ms.service: active-directory
-ms.component: authentication
+ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 07/11/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
-ms.openlocfilehash: bc41f8b80719bcc1fee77fd40e4f50df1ebf1a99
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 8596e1a3d33041a5e7176b87e868d89ee6dc124d
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54428590"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55080118"
 ---
 # <a name="configuring-the-custom-banned-password-list"></a>配置自定义禁止密码列表
 

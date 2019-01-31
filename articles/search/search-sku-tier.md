@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 01/15/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 4b6e6cf3fb030f5f9706ded19f85575baed69b39
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: cf2359834aa79b1d3fef8b65e4ef4191eb6ff867
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54471814"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55467435"
 ---
 # <a name="choose-a-pricing-tier-for-azure-search"></a>选择 Azure 搜索的定价层
 
@@ -108,7 +108,7 @@ SU 是服务使用的副本数和分区数的乘积：**`(R X P = SU)`**
 
 |  | S1 | S2 | S3 |  |  |  |  |
 |--|----|----|----|--|--|--|--|
-| 分区大小|  25 GB | 100 GB | 250 GB |  |  |  |  |
+| 分区大小|  25 GB | 100 GB | 200 GB |  |  |  |  |
 | 索引和索引器限制| 50 | 200 | 200 |  |  |  |  |
 
 当需要专用资源和多个分区时，通常选择“S1”。 假设共有 12 个分区，每个分区 25 GB，如果通过副本最大化分区，则“S1”上每项服务的限制总计为 300 GB（请参阅[分配分区和副本](search-capacity-planning.md#chart)以获得更多均衡组合）。

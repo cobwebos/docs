@@ -6,16 +6,16 @@ author: twounder
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: manage
+ms.subservice: manage
 ms.date: 12/12/2018
 ms.author: mausher
 ms.reviewer: twounder
-ms.openlocfilehash: 074276e4550b9b2e347e5cd30c597a1d09f6cb2f
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 8e82e352ebea4634b1b99864245adcf606352657
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54440070"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55469324"
 ---
 # <a name="whats-new-in-azure-sql-data-warehouse-version---100101060"></a>Azure SQL 数据仓库版本 10.0.10106.0 中的新增功能
 Azure SQL 数据仓库 (SQL DW) 不断改进。 本文介绍 SQL 数据仓库版本 10.0.10106.0 中引入的新功能和更改。

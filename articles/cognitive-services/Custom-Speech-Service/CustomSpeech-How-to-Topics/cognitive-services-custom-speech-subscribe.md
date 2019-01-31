@@ -1,20 +1,20 @@
-﻿---
+---
 title: 获取 Azure 上自定义语音服务的订阅密钥 | Microsoft Docs
 description: 了解如何获取调用认知服务中自定义语音服务所需的订阅密钥。
 services: cognitive-services
 author: PanosPeriorellis
 manager: onano
 ms.service: cognitive-services
-ms.component: custom-speech
+ms.subservice: custom-speech
 ms.topic: article
 ms.date: 02/08/2017
 ms.author: panosper
-ms.openlocfilehash: 84ef657af2cc3dc4a7168a815b5e51d6f4f33fd7
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 74e4b9bb9a8baa6a28f1504c1e5a0e01e9ca56cd
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49338363"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55210092"
 ---
 # <a name="obtain-subscription-keys"></a>获取订阅密钥
 
@@ -36,7 +36,7 @@ ms.locfileid: "49338363"
     
 1. 填写以下必填字段：
 
-      a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 **帐户名**。 命名适合自己的名称。 请记住此名称，这样才能在资源列表中找到认知服务订阅。
+      a. **帐户名**。 命名适合自己的名称。 请记住此名称，这样才能在资源列表中找到认知服务订阅。
 
       b. **订阅**。 选择 Azure 订阅之一。
 

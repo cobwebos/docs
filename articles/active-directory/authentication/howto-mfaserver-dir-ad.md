@@ -3,19 +3,19 @@ title: Azure 多重身份验证与 Active Directory 之间的目录集成
 description: 如何将 Azure 多重身份验证服务器与 Active Directory 集成以便可以同步目录。
 services: multi-factor-authentication
 ms.service: active-directory
-ms.component: authentication
+ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 07/11/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
-ms.openlocfilehash: 045d95daf78775c483a9ec4e7abec0baff999838
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 27c9330e0e2f89cdb4bdc81cbd909126401f0441
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54432670"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55081001"
 ---
 # <a name="directory-integration-between-azure-mfa-server-and-active-directory"></a>Azure MFA 服务器与 Active Directory 之间的目录集成
 

@@ -9,13 +9,13 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: davidmu
-ms.component: B2C
-ms.openlocfilehash: 47cfd5820c80a0f53772f5424f674603acdaf18d
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.subservice: B2C
+ms.openlocfilehash: 6a588764908f72607bbb99e9b1ea031182c95e64
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54848931"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55166911"
 ---
 # <a name="azure-ad-b2c-token-reference"></a>Azure AD B2C：令牌参考
 
@@ -70,7 +70,7 @@ CQhoFA
 
 请注意，ID 令牌中的声明不按任何特定顺序返回。 此外，新的声明可以在任何时候引入 ID 令牌。 引入新的声明时，不得中断应用。 下面是预期在 Azure AD B2C 颁发的 ID 及访问令牌中存在的声明。 任何其他声明由策略确定。 练习时，请尝试将示例 ID 令牌中的声明粘贴到 [jwt.ms](https://jwt.ms) 中进行检查。 可以在 [OpenID Connect 规范](https://openid.net/specs/openid-connect-core-1_0.html)中找到进一步的详细信息。
 
-| 名称 | 声明 | 示例值 | 说明 |
+| Name | 声明 | 示例值 | 说明 |
 | --- | --- | --- | --- |
 | 目标受众 |`aud` |`90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6` |受众声明标识令牌的目标接收方。 对于 Azure AD B2C，受众是在应用注册门户中分配给应用的应用程序 ID。 应用应该验证此值并拒绝不匹配的令牌。 受众是资源的同义词。 |
 | 颁发者 |`iss` |`https://{tenantname}.b2clogin.com/775527ff-9a37-4307-8b3d-cc311f58d925/v2.0/` |此声明标识构造并返回令牌的安全令牌服务 (STS)。 它还标识在其中进行用户身份验证的 Azure AD 目录。 应用应该验证颁发者声明，以确保令牌来自 Azure Active Directory v2.0 终结点。 |

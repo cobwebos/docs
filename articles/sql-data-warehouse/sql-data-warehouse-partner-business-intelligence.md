@@ -6,22 +6,22 @@ author: jrowlandjones
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: consume
+ms.subservice: consume
 ms.date: 04/17/2018
 ms.author: jrj
 ms.reviewer: igorstan
-ms.openlocfilehash: e293c27faa69fe5c79b776a98bcae0f72e85c3ee
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.openlocfilehash: 17a55e84dcbec00eced290ec76c3201784075201
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53811148"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55462573"
 ---
 # <a name="sql-data-warehouse-business-intelligence-partners"></a>SQL 数据仓库商业智能合作伙伴
 若要创建端到端数据仓库解决方案，请从行业领先的各种工具中进行选择。  本文重点介绍其商业智能 (BI) 解决方案支持 Azure SQL 数据仓库的 Microsoft 合作伙伴公司。
 
 ## <a name="our-business-intelligence-partners"></a>我们的商业智能合作伙伴
-| 合作伙伴 | Description | 链接 | 视频 |
+| 合作伙伴 | 说明 | 链接 | 视频 |
 | --- | --- | --- | --- |
 | ![Birst][1] |**Birst**<br>Birst 是云 BI 与分析领域的全球领导者。 企业可以在每个重要业务用户的范围内创建受信任的数据源。 然后，整个组织的业务用户可以使用世界级的 BI 工具来报告和分析信息。 |[市场][birst_marketplace]<br>[网站][birst_website]<br>[Twitter][birst_twitter]<br>[YouTube][birst_youtube] | |
 | ![ClearStory Data][2] |**ClearStory Data**<br>ClearStory Data 能够快速分析 SQL 数据仓库中存储的不同数据。 ClearStory 的基于 Spark 的集成式平台和分析应用程序可以加速数据访问并协调不同的数据集。 它们可让业务用户进行快速协作探索，以及独自获得见解。 |[网站][clearstory_website]<br>[数据表][clearstory_datasheet]<br>[Twitter][clearstory_twitter]<br>[YouTube][clearstory_youtube] | |

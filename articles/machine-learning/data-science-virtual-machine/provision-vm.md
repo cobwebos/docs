@@ -9,18 +9,18 @@ manager: cgronlun
 ms.custom: seodec18
 ms.assetid: e1467c0f-497b-48f7-96a0-7f806a7bec0b
 ms.service: machine-learning
-ms.component: data-science-vm
+ms.subservice: data-science-vm
 ms.workload: data-services
 ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2018
 ms.author: gokuma
-ms.openlocfilehash: 5dacbbcba44879b28e311f08b089d10d0ad8d95b
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 709161165dc69ee6d33987d2cc45666045f4dfd4
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53079630"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55240609"
 ---
 # <a name="provision-the-windows-data-science-virtual-machine-on-azure"></a>在 Azure 上预配 Windows 数据科学虚拟机
 Microsoft Data Science Virtual Machine (DSVM) 是一个 Windows Azure 虚拟机 (VM) 映像。 它是使用几种用于数据分析和机器学习的工具进行预安装和配置的。 包括以下工具：
@@ -75,7 +75,7 @@ Microsoft 数据科研虚拟机可快速启动分析项目。 可以处理各种
 
 1. 用于创建 Microsoft Data Science Virtual Machine 的向导要求提供**输入**。 需要提供以下输入才能配置图中右侧显示的每个步骤：
 
-  a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 **基本信息**：
+  a. **基本信息**：
 
     i. **名称**。 要创建的数据科学服务器的名称。  
 

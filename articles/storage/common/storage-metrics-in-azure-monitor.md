@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 09/05/2017
 ms.author: fryu
-ms.component: common
-ms.openlocfilehash: 4bae38b7596504d8de452e445c05e1c973aba78a
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.subservice: common
+ms.openlocfilehash: 248624cc31fab0138eb8a45b5479cc8d2da6ef53
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54354573"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55467639"
 ---
 # <a name="azure-storage-metrics-in-azure-monitor"></a>Azure Monitor 中的 Azure 存储指标
 
@@ -330,13 +330,13 @@ Azure 存储在 Azure Monitor 中提供以下容量指标。
 
 ### <a name="account-level"></a>帐户级别
 
-| 指标名称 | Description |
+| 指标名称 | 说明 |
 | ------------------- | ----------------- |
 | UsedCapacity | 存储帐户使用的存储量。 对于标准存储帐户，该指标是 Blob、表、文件和队列使用的容量总和。 对于高级存储帐户和 Blob 存储帐户，它与 BlobCapacity 相同。 <br/><br/> 单位：字节 <br/> 聚合类型：平均值 <br/> 值示例：1024 |
 
 ### <a name="blob-storage"></a>Blob 存储
 
-| 指标名称 | Description |
+| 指标名称 | 说明 |
 | ------------------- | ----------------- |
 | BlobCapacity | 存储帐户中使用的 Blob 存储总计。 <br/><br/> 单位：字节 <br/> 聚合类型：平均值 <br/> 值示例：1024 <br/> 维度：BlobType（[定义](#metrics-dimensions)） |
 | BlobCount    | 在存储帐户中存储的 Blob 对象数。 <br/><br/> 单位：Count <br/> 聚合类型：平均值 <br/> 值示例：1024 <br/> 维度：BlobType（[定义](#metrics-dimensions)） |
@@ -345,7 +345,7 @@ Azure 存储在 Azure Monitor 中提供以下容量指标。
 
 ### <a name="table-storage"></a>表存储
 
-| 指标名称 | Description |
+| 指标名称 | 说明 |
 | ------------------- | ----------------- |
 | TableCapacity | 存储帐户使用的表存储量。 <br/><br/> 单位：字节 <br/> 聚合类型：平均值 <br/> 值示例：1024 |
 | TableCount   | 存储帐户中的表数目。 <br/><br/> 单位：Count <br/> 聚合类型：平均值 <br/> 值示例：1024 |
@@ -353,7 +353,7 @@ Azure 存储在 Azure Monitor 中提供以下容量指标。
 
 ### <a name="queue-storage"></a>队列存储
 
-| 指标名称 | Description |
+| 指标名称 | 说明 |
 | ------------------- | ----------------- |
 | QueueCapacity | 存储帐户使用的队列存储量。 <br/><br/> 单位：字节 <br/> 聚合类型：平均值 <br/> 值示例：1024 |
 | QueueCount   | 存储帐户中的队列数目。 <br/><br/> 单位：Count <br/> 聚合类型：平均值 <br/> 值示例：1024 |
@@ -361,7 +361,7 @@ Azure 存储在 Azure Monitor 中提供以下容量指标。
 
 ### <a name="file-storage"></a>文件存储
 
-| 指标名称 | Description |
+| 指标名称 | 说明 |
 | ------------------- | ----------------- |
 | FileCapacity | 存储帐户使用的文件存储量。 <br/><br/> 单位：字节 <br/> 聚合类型：平均值 <br/> 值示例：1024 |
 | FileCount   | 存储帐户中的文件数目。 <br/><br/> 单位：Count <br/> 聚合类型：平均值 <br/> 值示例：1024 |
@@ -373,7 +373,7 @@ Azure 存储在 Azure Monitor 中提供以下容量指标。
 
 Azure 存储在 Azure Monitor 中提供以下事务指标。
 
-| 指标名称 | Description |
+| 指标名称 | 说明 |
 | ------------------- | ----------------- |
 | 事务 | 向存储服务或指定的 API 操作发出的请求数。 此数字包括成功和失败的请求数，以及引发错误的请求数。 <br/><br/> 单位：Count <br/> 聚合类型：总计 <br/> 适用维度：ResponseType、GeoType、ApiName 和 Authentication（[定义](#metrics-dimensions)）<br/> 值示例：1024 |
 | 流入量 | 流入数据量。 此数字包括从外部客户端到 Azure 存储流入的数据量，以及流入 Azure 中的数据量。 <br/><br/> 单位：字节 <br/> 聚合类型：总计 <br/> 适用维度：GeoType、ApiName 和 Authentication（[定义](#metrics-dimensions)） <br/> 值示例：1024 |
@@ -386,7 +386,7 @@ Azure 存储在 Azure Monitor 中提供以下事务指标。
 
 Azure 存储支持对 Azure Monitor 中的指标使用以下维度。
 
-| 维度名称 | Description |
+| 维度名称 | 说明 |
 | ------------------- | ----------------- |
 | /BlobType | 仅限 Blob 指标的 Blob 类型。 支持的值为 **BlockBlob** 和 **PageBlob**。 BlockBlob 中包含追加 Blob。 |
 | ResponseType | 事务响应类型。 可用的值包括： <br/><br/> <li>ServerOtherError：除描述的错误以外的其他所有服务器端错误 </li> <li> ServerBusyError：返回了 HTTP 503 状态代码的已经过身份验证的请求。 </li> <li> ServerTimeoutError：返回了 HTTP 500 状态代码的超时已经过身份验证的请求。 由于服务器错误而发生超时。 </li> <li> AuthorizationError：由于未经授权访问数据或者授权失败，经过身份验证的请求失败。 </li> <li> NetworkError：由于网络错误，经过身份验证的请求失败。 往往发生于客户端在超时失效之前提前关闭了连接时。 </li> <li>    ClientThrottlingError：客户端限制错误。 </li> <li> ClientTimeoutError：返回了 HTTP 500 状态代码的超时已经过身份验证的请求。 如果将客户端的网络超时或请求超时设置为比存储服务预期值更小的值，则预期会发生此超时。 否则，会报告为 ServerTimeoutError。 </li> <li> ClientOtherError：除描述的错误以外的其他所有客户端错误。 </li> <li> Success：请求成功|

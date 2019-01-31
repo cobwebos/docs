@@ -12,14 +12,14 @@ ms.workload: ''
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: conceptual
-ms.date: 01/10/2018
+ms.date: 01/25/2019
 ms.author: pbutlerm
-ms.openlocfilehash: ad62b306849b2291c81399cedc1634057e2eec9d
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 2adf07cf2337611b9136af47ce6a35b617e2e9ff
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54828088"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55177026"
 ---
 # <a name="publish-azure-application-offer"></a>发布 Azure 应用程序产品/服务
 
@@ -28,6 +28,7 @@ ms.locfileid: "54828088"
 下图显示了发布套餐以使其“上线”的过程的主要步骤。
 
 ![产品/服务发布步骤](./media/offer-publishing-steps.png)
+
 
 ## <a name="detailed-description-of-publishing-steps"></a>发布步骤的详细说明
 
@@ -44,12 +45,14 @@ ms.locfileid: "54828088"
 | Microsoft 评审                | 7 - 14 天 | Microsoft 对 Azure 应用程序进行整体评审，如果发现问题，将通过电子邮件告诉你。  此步骤所需的时间取决于应用程序的复杂性、发现的问题，以及你对这些问题的响应速度。  |
 | 实时                           | 小于 1 天 | 发布套餐，将其复制到指定的区域，并使其可供公众使用。 |
 |   |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|   |
+
  
 可以在云合作伙伴门户上套餐的“状态”选项卡中监视发布过程。
 
 ![Azure 应用套餐的“状态”选项卡](./media/offer-status-tab.png)
 
 完成发布过程后，套餐将在 [Microsoft Azure 市场应用程序类别](https://azuremarketplace.microsoft.com/marketplace/apps/)中列出。
+
 
 
 ## <a name="errors-and-review-feedback"></a>错误和评审反馈

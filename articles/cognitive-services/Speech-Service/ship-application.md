@@ -6,17 +6,17 @@ services: cognitive-services
 author: wolfma61
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: speech-service
+ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/18/2018
 ms.author: wolfma
 ms.custom: seodec18
-ms.openlocfilehash: 8c230143a4b3ab15e5a43d8b565d1973bc47ec29
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: b37ba55e0d9e1a93994f90630f92075deb4af7e5
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53599004"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55206436"
 ---
 # <a name="ship-an-application"></a>交付应用程序
 
@@ -39,7 +39,7 @@ ms.locfileid: "53599004"
 
 所需语音 SDK 文件可部署在与应用程序相同的目录中。 这样，应用程序便可直接访问库。 请确保选择与应用程序匹配的正确版本 (Win32/x64)。
 
-| 名称 | 函数
+| Name | 函数
 |:-----|:----|
 | `Microsoft.CognitiveServices.Speech.core.dll` | 核心 SDK，对于本机和托管部署是必需的
 | `Microsoft.CognitiveServices.Speech.csharp.bindings.dll` | 对于托管部署是必需的

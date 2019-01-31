@@ -7,7 +7,7 @@ author: barbkess
 manager: daveba
 ms.assetid: ''
 ms.service: active-directory
-ms.component: app-mgmt
+ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 07/11/2017
 ms.author: barbkess
 ms.reviewer: asteen
-ms.openlocfilehash: 8f545aad7256764780a68f4b43ee30bf68749187
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 279f0290bb873e06146ec83d921caa50d482f924
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54469706"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55182874"
 ---
 # <a name="problems-signing-in-to-a-non-gallery-application-configured-for-federated-single-sign-on"></a>登录到配置为联合单一登录的非库应用程序时出现的问题
 
@@ -34,7 +34,7 @@ ms.locfileid: "54469706"
 
 ## <a name="application-not-found-in-directory"></a>在目录中未找到应用程序
 
-错误 AADSTS70001: 在目录中找不到标识符为“https://contoso.com”的应用程序。
+*错误 AADSTS70001:在目录中找不到标识符为 ‘https://contoso.com’ 的应用程序*。
 
 **可能的原因**
 
@@ -66,7 +66,7 @@ SAML 请求中从应用程序发送给 Azure AD 的颁发者属性与应用程�
 
 ## <a name="the-reply-address-does-not-match-the-reply-addresses-configured-for-the-application"></a>回复地址与为应用程序配置的回复地址不匹配。 
 
-错误 AADSTS50011: 回复地址“https://contoso.com”与为应用程序配置的回复地址不匹配 
+*错误 AADSTS50011:回复地址 ‘https://contoso.com’ 与为应用程序配置的回复地址不匹配* 
 
 **可能的原因** 
 
@@ -146,7 +146,7 @@ SAML 请求中的 AssertionConsumerServiceURL 值与 Azure AD 中配置的“回
 
 ## <a name="not-a-valid-saml-request"></a>不是有效的 SAML 请求
 
-错误 AADSTS75005: 请求不是有效的 Saml2 协议消息。
+*错误 AADSTS75005:请求不是有效的 Saml2 协议消息。*
 
 **可能的原因**
 
