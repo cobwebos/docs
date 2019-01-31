@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.openlocfilehash: 4aae44745981951fa61836fe52d8d6b799c6cadf
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 7b937158be39f9a1f7f9374611a150fd11837f02
+ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54001509"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54910260"
 ---
 # <a name="azure-storage-solutions-for-ml-services-on-azure-hdinsight"></a>适用于 ML Services on HDInsight 的 Azure 存储解决方案
 
@@ -172,4 +172,4 @@ ML Services on HDInsight 可使用各种存储解决方案来保存数据、代�
 * [HDInsight 上的 ML Services 群集概述](r-server-overview.md)
 * [Apache Hadoop 上的 ML Services 群集入门](r-server-get-started.md)
 * [适用于 HDInsight 上的 ML Services 群集的计算上下文选项](r-server-compute-contexts.md)
-
+* [将 Azure Data Lake Storage Gen2 用于 Azure HDInsight 群集](../hdinsight-hadoop-use-data-lake-storage-gen2.md)

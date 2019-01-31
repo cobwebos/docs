@@ -6,22 +6,22 @@ services: cognitive-services
 author: alch-msft
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: academic-knowledge
+ms.subservice: academic-knowledge
 ms.topic: conceptual
 ms.date: 03/23/2017
 ms.author: alch
-ms.openlocfilehash: 45b2860b56e79c197d96998350131a142326157a
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: 397293c17320ef75daa5c31af76d49183b6c435c
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48902801"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55193822"
 ---
 # <a name="journal-entity"></a>日记实体
 
 <sub> *以下属性特定于日记实体。(Ty = '2') </sub>
 
-名称    |Description                            |类型       | 操作
+Name    |说明                            |Type       | 操作
 ------- | ------------------------------------- | --------- | ----------------------------
 ID      |实体 ID                              |Int64      |等于
 DJN     |日记规范化名称                |String     |无

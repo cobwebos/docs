@@ -7,12 +7,12 @@ ms.service: mysql
 ms.devlang: azurecli
 ms.topic: conceptual
 ms.date: 04/01/2018
-ms.openlocfilehash: 6033dbbe6105968e5ef5839f0cfa560ac7f70fb6
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 801f6dddfb3aaea850d76c80d43de93181c3d41c
+ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53537777"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54913472"
 ---
 # <a name="how-to-back-up-and-restore-a-server-in-azure-database-for-mysql-using-the-azure-cli"></a>如何使用 Azure CLI 在 Azure Database for MySQL 中备份和还原服务器
 
@@ -69,7 +69,7 @@ az mysql server restore --resource-group myresourcegroup --name mydemoserver-res
 
 `az mysql server restore` 命令需要以下参数：
 
-| 设置 | 建议的值 | Description  |
+| 设置 | 建议的值 | 说明  |
 | --- | --- | --- |
 | resource-group |  myresourcegroup |  源服务器所在的资源组。  |
 | 名称 | mydemoserver-restored | 通过还原命令创建的新服务器的名称。 |
@@ -107,7 +107,7 @@ az mysql server georestore --resource-group newresourcegroup --name mydemoserver
 
 `az mysql server georestore` 命令需要以下参数：
 
-| 设置 | 建议的值 | Description  |
+| 设置 | 建议的值 | 说明  |
 | --- | --- | --- |
 |resource-group| myresourcegroup | 新服务器将属于的资源组的名称。|
 |名称 | mydemoserver-georestored | 新服务器的名称。 |

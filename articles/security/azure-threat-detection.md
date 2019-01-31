@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 8a546845adb32823e89b814377bcf3e469562445
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
+ms.openlocfilehash: b2b247b50eff446776edfbf3a552e92af3c7dfff
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54413662"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55228791"
 ---
 # <a name="azure-advanced-threat-detection"></a>Azure 高级威胁检测
 
@@ -115,7 +115,7 @@ Log Analytics 安全和审核仪表板有四个主要类别：
 
 与 Log Analytics 的大部分交互都会通过 Azure 门户完成，该门户在任意浏览器中运行，并提供对配置设置和多个工具的访问权限，以对收集的数据进行分析和操作。 在门户中，可以使用：
 * [日志搜索](https://docs.microsoft.com/azure/log-analytics/log-analytics-log-searches)，可在其中构造查询以分析收集的数据。
-* [仪表板](https://docs.microsoft.com/azure/log-analytics/log-analytics-dashboards)，可以使用最有价值搜索的图形视图对其进行自定义。
+* [仪表板](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-logs-dashboards)，可以使用最有价值搜索的图形视图对其进行自定义。
 * [解决方案](https://docs.microsoft.com/azure/log-analytics/log-analytics-add-solutions)，可提供其他功能和分析工具。
 
 ![分析工具](./media/azure-threat-detection/azure-threat-detection-fig6.png)

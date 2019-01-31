@@ -5,16 +5,16 @@ description: 本指南介绍自定义翻译中的文档格式和命名约定。 
 author: rajdeep-in
 manager: christw
 ms.service: cognitive-services
-ms.component: custom-translator
+ms.subservice: custom-translator
 ms.date: 11/13/2018
 ms.author: v-rada
 ms.topic: conceptual
-ms.openlocfilehash: 74b421691f5d3536c44af16e99dc54451dfde3f7
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: afd3192117bd22c62fd8e36752515166e4c6e043
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52872758"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55225469"
 ---
 # <a name="document-formats-and-naming-convention-guidance"></a>文档格式和命名约定指南
 
@@ -22,7 +22,7 @@ ms.locfileid: "52872758"
 
 下表包含了可用于生成翻译系统的所有受支持文件格式：
 
-| 格式            | 扩展   | Description                                                                                                                                                                                                                                                                    |
+| 格式            | 扩展   | 说明                                                                                                                                                                                                                                                                    |
 |-------------------|--------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | XLIFF             | .XLF、.XLIFF | 并行文档格式，是翻译记忆系统的导出格式。 使用的语言在该文件中定义。                                                                                                                                                              |
 | TMX               | .TMX         | 并行文档格式，是翻译记忆系统的导出格式。 使用的语言在该文件中定义。                                                                                                                                                              |

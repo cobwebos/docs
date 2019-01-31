@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: fc70089517bbc1aa90f95f1e0231f2c67f930090
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 43b482324f0244baf52edbb8989a56dd12833331
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51242188"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55104322"
 ---
 # <a name="use-the-azure-importexport-service-for-offline-copy-of-data-to-azure-data-lake-storage-gen1"></a>使用 Azure 导入/导出服务将数据脱机复制到 Azure Data Lake Storage Gen1
 本文介绍如何使用脱机复制方法（例如 [Azure 导入/导出服务](../storage/common/storage-import-export-service.md)）将大型数据集 (>200 GB) 复制到 Azure Data Lake Storage Gen1。 具体而言，本文中用作示例的文件大小为 339,420,860,416 字节，即约 319GB 磁盘空间。 命名此文件为 319GB.tsv。
@@ -54,9 +54,9 @@ ms.locfileid: "51242188"
 2. 数据发送到 Azure 数据中心后，确认数据要复制到的 Azure 存储帐户。
 3. 使用命令行实用程序 [Azure 导入/导出工具](https://go.microsoft.com/fwlink/?LinkID=301900&clcid=0x409)。 下面是有关如何使用该工具的示例代码段。
 
-    ````
+    ```
     WAImportExport PrepImport /sk:<StorageAccountKey> /t: <TargetDriveLetter> /format /encrypt /logdir:e:\myexportimportjob\logdir /j:e:\myexportimportjob\journal1.jrn /id:myexportimportjob /srcdir:F:\demo\ExImContainer /dstdir:importcontainer/vf1/
-    ````
+    ```
     请参阅[使用 Azure 导入/导出服务](../storage/common/storage-import-export-service.md)查看更多示例代码片段。
 4. 上面的命令会在指定位置创建日志文件。 使用此日志文件从 [Azure 门户](https://portal.azure.com)创建导入作业。
 
@@ -72,7 +72,7 @@ ms.locfileid: "51242188"
 本部分提供 JSON 定义，此定义可用于创建进行复制数据的 Azure 数据工厂管道。 可以从 [Azure 门户](../data-factory/tutorial-copy-data-portal.md)或 [Visual Studio](../data-factory/tutorial-copy-data-dot-net.md) 使用这些 JSON 定义。
 
 ### <a name="source-linked-service-azure-storage-blob"></a>源链接服务（Azure 存储 Blob）
-````
+```
 {
     "name": "AzureStorageLinkedService",
     "properties": {
@@ -83,10 +83,10 @@ ms.locfileid: "51242188"
         }
     }
 }
-````
+```
 
 ### <a name="target-linked-service-azure-data-lake-storage-gen1"></a>目标链接服务 (Azure Data Lake Storage Gen1)
-````
+```
 {
     "name": "AzureDataLakeStorageGen1LinkedService",
     "properties": {
@@ -99,9 +99,9 @@ ms.locfileid: "51242188"
         }
     }
 }
-````
+```
 ### <a name="input-data-set"></a>输入数据集
-````
+```
 {
     "name": "InputDataSet",
     "properties": {
@@ -119,9 +119,9 @@ ms.locfileid: "51242188"
         "policy": {}
     }
 }
-````
+```
 ### <a name="output-data-set"></a>输出数据集
-````
+```
 {
 "name": "OutputDataSet",
 "properties": {
@@ -137,9 +137,9 @@ ms.locfileid: "51242188"
     }
   }
 }
-````
+```
 ### <a name="pipeline-copy-activity"></a>管道（复制活动）
-````
+```
 {
     "name": "CopyImportedData",
     "properties": {
@@ -186,7 +186,7 @@ ms.locfileid: "51242188"
         "pipelineMode": "Scheduled"
     }
 }
-````
+```
 有关详细信息，请参阅[使用 Azure 数据工厂将数据从从 Azure 存储 Blob 移动到 Azure Data Lake Storage Gen1](../data-factory/connector-azure-data-lake-store.md)。
 
 ## <a name="reconstruct-the-data-files-in-azure-data-lake-storage-gen1"></a>重新构造 Azure Data Lake Storage Gen1 中的数据文件
@@ -205,7 +205,7 @@ Register-AzureRmResourceProvider -ProviderNamespace "Microsoft.DataLakeStore"
 
 # Join  the files
 Join-AzureRmDataLakeStoreItem -AccountName "<adlsg1_account_name" -Paths "/importeddatafeb8job/319GB.tsv-part-aa","/importeddatafeb8job/319GB.tsv-part-ab", "/importeddatafeb8job/319GB.tsv-part-ac", "/importeddatafeb8job/319GB.tsv-part-ad" -Destination "/importeddatafeb8job/MergedFile.csv"
-````
+```
 
 ## <a name="next-steps"></a>后续步骤
 * [保护 Data Lake Storage Gen1 中的数据](data-lake-store-secure-data.md)

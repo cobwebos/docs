@@ -15,13 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/17/2018
 ms.author: cynthn
-ms.component: disks
-ms.openlocfilehash: 69db6f4e89720d2c0313628045e4ae0eda99013f
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.subservice: disks
+ms.openlocfilehash: e27826629873566bf7b746649923c25e6ab70827
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54465541"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55457150"
 ---
 # <a name="how-to-detach-a-data-disk-from-a-windows-virtual-machine"></a>如何从 Windows 虚拟机分离数据磁盘
 

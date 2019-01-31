@@ -3,19 +3,19 @@ title: 配置 Azure MFA NPS 扩展 | Microsoft Docs
 description: 在安装 NPS 扩展后，通过下列步骤来进行高级配置，如 IP 白名单和 UPN 替换。
 services: multi-factor-authentication
 ms.service: active-directory
-ms.component: authentication
+ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 07/11/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
-ms.openlocfilehash: 81f6d6607f2fcc86e2499a537f3ddeff470d35f9
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 5d7b14825b8b34c2ab742febe463ea518209a82f
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54429100"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55075612"
 ---
 # <a name="advanced-configuration-options-for-the-nps-extension-for-multi-factor-authentication"></a>用于多重身份验证的 NPS 扩展的高级配置选项
 
@@ -29,7 +29,7 @@ ms.locfileid: "54429100"
 
 要配置备用登录 ID，请转至 `HKLM\SOFTWARE\Microsoft\AzureMfa` 并编辑下列注册表值：
 
-| 名称 | 类型 | 默认值 | 说明 |
+| Name | Type | 默认值 | 说明 |
 | ---- | ---- | ------------- | ----------- |
 | LDAP_ALTERNATE_LOGINID_ATTRIBUTE | 字符串 | 空 | 指定要使用的 Active Directory 属性（而非 UPN）的名称。 此属性将用作 AlternateLoginId 属性。 如果将此注册表值设置为[有效的 Active Directory 属性](https://msdn.microsoft.com/library/ms675090.aspx)（例如 mail 或 displayName），那么将使用该属性的值（而不使用用户的 UPN）来进行身份验证。 如果此注册表值为空或未配置，则将禁用 AlternateLoginId，并使用用户的 UPN 来进行身份验证。 |
 | LDAP_FORCE_GLOBAL_CATALOG | 布尔值 | False | 在查找 AlternateLoginId 时，凭此标记强制使用全局编录执行 LDAP 搜索。 将域控制器配置为全局编录，向全局编录中添加 AlternateLoginId 属性，然后启用此标记。 <br><br> 如果配置了 LDAP_LOOKUP_FORESTS（非空），则无论注册表设置的值为何，都会将此标记强制设为 True。 在这种情况下，NPS 扩展要求对每个林都使用 AlternateLoginId 属性来配置全局编录。 |
@@ -43,7 +43,7 @@ ms.locfileid: "54429100"
 
 要配置 IP 白名单，请转到 `HKLM\SOFTWARE\Microsoft\AzureMfa`，并配置如下注册表值： 
 
-| 名称 | 类型 | 默认值 | 说明 |
+| Name | Type | 默认值 | 说明 |
 | ---- | ---- | ------------- | ----------- |
 | IP_WHITELIST | 字符串 | 空 | 提供以分号隔开的 IP 地址列表。 包括发出服务请求的计算机的 IP 地址，例如 NAS/VPN 服务器。 IP 范围为不受支持的子网。 <br><br> 例如 10.0.0.1;10.0.0.2;10.0.0.3。
 

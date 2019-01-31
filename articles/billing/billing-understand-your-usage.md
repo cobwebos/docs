@@ -3,7 +3,7 @@ title: 了解 Azure 的详细使用情况| Microsoft Docs
 description: 了解如何阅读并理解 Azure 订阅的详细使用情况 CSV 部分
 services: ''
 documentationcenter: ''
-author: tonguyen10
+author: bandersmsft
 manager: alherz
 editor: ''
 tags: billing
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/31/2017
-ms.author: cwatson
-ms.openlocfilehash: c5b41d86133bbcafcc61423b4d60e59846edc2f2
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.author: banders
+ms.openlocfilehash: 88518bee879d01966813fc89e8095d2237476a15
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52580909"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54901303"
 ---
 # <a name="understand-terms-on-your-microsoft-azure-detailed-usage-charges"></a>了解 Microsoft Azure 详细使用费条款 
 
@@ -40,7 +40,7 @@ ms.locfileid: "52580909"
 
 详细使用情况 CSV 文件的顶部显示了你在这个月的计费周期期间使用的服务。 下表列出了此部份中显示的条款和说明。
 
-| 术语 | Description |
+| 术语 | 说明 |
 | --- | --- |
 |计费周期 |使用测定仪时的计费周期 |
 |测定仪类别 |标识该次使用的最上层服务 |
@@ -63,7 +63,7 @@ ms.locfileid: "52580909"
 
 该 CSV 文件的“每日使用情况”部分显示影响计费费率的使用详细信息。 下表列出了此部份中显示的条款和说明。
 
-| 术语 | Description |
+| 术语 | 说明 |
 | --- | --- |
 |使用日期 |使用测定仪时的日期 |
 |测定仪类别 |标识该次使用所属的最上层服务 |
@@ -90,4 +90,4 @@ ms.locfileid: "52580909"
 
 ## <a name="need-help-contact-us"></a>需要帮助？ 请联系我们。
 
-如果你有任何疑问或需要帮助，请[创建支持请求](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)。
+如有任何疑问或需要帮助，请[创建支持请求](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)。

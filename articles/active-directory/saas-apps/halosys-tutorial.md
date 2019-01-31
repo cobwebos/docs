@@ -8,19 +8,19 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 42a0eb7c-5cb7-44a9-b00b-b0e7df4b63e8
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/18/2018
 ms.author: jeedes
-ms.openlocfilehash: 838e839aeb0b6d227d9350c4b5cd1f3f1a8cad8e
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 9953176dd3833e29e5e518944c6fecb32fcd0500
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52837183"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55189181"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-halosys"></a>教程：Azure Active Directory 与 Halosys 集成
 
@@ -110,7 +110,7 @@ ms.locfileid: "52837183"
 
     ![Halosys 域和 URL 单一登录信息](./media/halosys-tutorial/tutorial_halosys_url.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“标识符”文本框中，使用以下模式键入 URL：`https://<company-name>.halosys.com`
+    a. 在“标识符”文本框中，使用以下模式键入 URL：`https://<company-name>.halosys.com`
 
     b. 在 **“回复 URL”** 文本框中，使用以下模式键入 URL：`https://<company-name>.halosys.com/<instance name>`
 
@@ -158,7 +158,7 @@ ms.locfileid: "52837183"
 
     ![“用户”对话框](./media/halosys-tutorial/create_aaduser_04.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“姓名”框中，键入“BrittaSimon”。
+    a. 在“姓名”框中，键入“BrittaSimon”。
 
     b. 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
 

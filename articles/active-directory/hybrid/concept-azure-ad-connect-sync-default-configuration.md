@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
-ms.component: hybrid
+ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 6de48b0f4c7c69ab0c6acb4099234b853d2c1523
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 493dc834319d8f5842a7f9f5c4ca568742264df9
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54478563"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55180460"
 ---
 # <a name="azure-ad-connect-sync-understanding-the-default-configuration"></a>Azure AD Connect 同步：了解默认配置
 本文介绍现成的配置规则。 其中说明这些规则及其对配置将有何影响。 此外还将逐步介绍如何完成 Azure AD Connect 同步的默认配置。其目的是让读者了解配置模型（名为声明性预配）在实际示例中的运行情形。 本文假设已使用安装向导安装并配置了 Azure AD Connect 同步。
@@ -219,7 +219,7 @@ NULL
 ### <a name="putting-it-all-together"></a>汇总
 我们现在对同步规则已有足够的认识，能够了解配置如何在不同的同步规则下运行。 如果观察某个用户和提供给 Metaverse 的属性，会发现规则将按以下顺序应用：
 
-| 名称 | 注释 |
+| Name | 注释 |
 |:--- |:--- |
 | In from AD – User Join |联接连接器空间对象与 Metaverse 的规则。 |
 | In from AD – UserAccount Enabled |登录 Azure AD 和 Office 365 所需的属性。 我们可以从已启用的帐户获取这些属性。 |

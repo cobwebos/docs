@@ -3,19 +3,19 @@ title: Azure 多重身份验证 - 工作原理
 description: Azure 多重身份验证可帮助保护对数据和应用程序的访问，同时可以满足用户对简单登录过程的需求。
 services: multi-factor-authentication
 ms.service: active-directory
-ms.component: authentication
+ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 10/11/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
-ms.openlocfilehash: cbe1dc351139645f5516bce79b1792103e90cf08
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: c15f40cc98cad497b6c53a3a900f30c191b67694
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54430290"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55079999"
 ---
 # <a name="how-it-works-azure-multi-factor-authentication"></a>工作原理：Azure 多重身份验证
 

@@ -7,7 +7,7 @@ author: CelesteDG
 manager: mtillman
 editor: ''
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -16,12 +16,12 @@ ms.date: 11/28/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 4eb6850e4b6e267e0b4ef83f7639e90308cee989
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 6df19f8d20853b569a2bc357e6c1115976a7de2c
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52841432"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55097956"
 ---
 # <a name="azure-active-directory-v20-and-the-oauth-20-resource-owner-password-credential"></a>Azure Active Directory v2.0 和 OAuth 2.0 资源所有者密码凭据
 
@@ -56,7 +56,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 &grant_type=password
 ```
 
-| 参数 | 条件 | Description |
+| 参数 | 条件 | 说明 |
 | --- | --- | --- |
 | `tenant` | 必选 | 一个目录租户，用户需登录到其中。 这可采用 GUID 或友好名称格式。 此参数不能设置为 `common` 或 `consumers`，但可以设置为 `organizations`。 |
 | `grant_type` | 必选 | 必须设置为 `password`。 |
@@ -79,7 +79,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 }
 ```
 
-| 参数 | 格式 | Description |
+| 参数 | 格式 | 说明 |
 | --------- | ------ | ----------- |
 | `token_type` | String | 始终设置为 `Bearer`。 |
 | `scope` | 空格分隔的字符串 | 如果返回了访问令牌，则此参数会列出该访问令牌的有效范围。 |
@@ -94,7 +94,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 
 如果用户未提供正确的用户名或密码，或者客户端未收到请求的许可，则身份验证会失败。
 
-| 错误 | Description | 客户端操作 |
+| 错误 | 说明 | 客户端操作 |
 |------ | ----------- | -------------|
 | `invalid_grant` | 身份验证失败 | 凭据不正确，或者客户端没有所请求范围的许可。 如果没有授予范围，则会返回 `consent_required` 子错误。 如果发生这种情况，客户端应通过 Webview 或浏览器向用户发送交互式提示。 |
 | `invalid_request` | 请求的构造方式不正确 | 授予类型在 `/common` 或 `/consumers` 身份验证上下文中不受支持。  请改用 `/organizations`。 |

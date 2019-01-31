@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/25/2017
-ms.author: cwatson
-ms.openlocfilehash: 0615a7fe9ba9661bc35da6488434636b71809bd5
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.author: banders
+ms.openlocfilehash: 5cf828b270d97ae39b58990a2480cd4ca1cc853e
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53315564"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54902442"
 ---
 # <a name="avoid-getting-charged-for-your-azure-free-account"></a>避免 Azure 免费帐户产生费用
 

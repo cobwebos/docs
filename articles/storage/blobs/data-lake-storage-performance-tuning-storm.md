@@ -3,17 +3,17 @@ title: Azure Data Lake Storage Gen2 Storm 性能优化指南 | Microsoft Docs
 description: Azure Data Lake Storage Gen2 Storm 性能优化指南
 services: storage
 author: swums
-ms.component: data-lake-storage-gen2
+ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: stewu
-ms.openlocfilehash: 845bb739408cb38d823ae662e261d6955726d28a
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: b242fca5a5a8490cc51222a6dd8b1ff1bb724417
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52976249"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55247902"
 ---
 # <a name="performance-tuning-guidance-for-storm-on-hdinsight-and-azure-data-lake-storage-gen2"></a>Storm on HDInsight 和 Azure Data Lake Storage Gen2 性能优化指南
 
@@ -22,7 +22,7 @@ ms.locfileid: "52976249"
 ## <a name="prerequisites"></a>先决条件
 
 * **Azure 订阅**。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
-* **Azure Data Lake Storage Gen2 帐户**。 有关如何创建帐户的说明，请参阅[快速入门：创建用于分析的存储帐户](data-lake-storage-quickstart-create-account.md)。
+* Azure Data Lake Storage Gen2 帐户。 有关如何创建帐户的说明，请参阅[快速入门：创建用于分析的存储帐户](data-lake-storage-quickstart-create-account.md)。
 * 具有 Data Lake Storage Gen2 帐户访问权限的 Azure HDInsight 群集。 请确保对该群集启用远程桌面。
 * **在 Data Lake Storage Gen2 中运行 Storm 群集**。 有关详细信息，请参阅 [Storm on HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-storm-overview)。
 * **Data Lake Storage Gen2 的性能优化指南**。  有关一般的性能概念，请参阅 [Data Lake Storage Gen2 性能优化指南](data-lake-storage-performance-tuning-guidance.md)。   

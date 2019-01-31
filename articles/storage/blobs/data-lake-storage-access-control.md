@@ -3,17 +3,17 @@ title: Azure Data Lake Storage Gen2 中的访问控制概述 | Microsoft Docs
 description: 了解 Azure Data Lake Storage Gen2 中访问控制的工作原理
 services: storage
 author: jamesbak
-ms.component: data-lake-storage-gen2
+ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: jamesbak
-ms.openlocfilehash: 52af1a45f920139ddda1d02734de91372fe4719d
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 3005f19ffbc4771da442e36290a5803dddebfdbb
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52976122"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55240164"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 中的访问控制
 

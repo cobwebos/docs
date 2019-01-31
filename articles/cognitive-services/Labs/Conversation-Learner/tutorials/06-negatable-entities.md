@@ -6,16 +6,16 @@ services: cognitive-services
 author: v-jaswel
 manager: nolachar
 ms.service: cognitive-services
-ms.component: conversation-learner
+ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 34806803c50308a288007bf3bad129075ca8bc6d
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: fea950e2c13d9b5ce0c3619990961e611edd6626
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53796531"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55207371"
 ---
 # <a name="how-to-use-negatable-entities-with-a-conversation-learner-model"></a>如何通过 Conversation Learner 模型使用可否定实体
 
@@ -33,7 +33,7 @@ ms.locfileid: "53796531"
 ## <a name="details"></a>详细信息
 实体的“可否定”属性可用于标记实体的正常（正）实例和负实例、基于正模型和负模型进行教学，以及清除现有实体的值。 设置了其“可否定”属性的实体在 Conversation Leaner 中称为“可否定的实体”。
 
-## <a name="steps"></a>步骤
+## <a name="steps"></a>Steps
 
 ### <a name="create-the-model"></a>创建模型
 

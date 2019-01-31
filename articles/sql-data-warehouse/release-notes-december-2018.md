@@ -6,16 +6,16 @@ author: twounder
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: manage
+ms.subservice: manage
 ms.date: 12/12/2018
 ms.author: mausher
 ms.reviewer: twounder
-ms.openlocfilehash: b897b50edf4d5a7eeabacc6da1505e165f2bb21a
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: f5060ab054d5b55b4b31ff01b00e30a34e6ebdce
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54431735"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55463423"
 ---
 # <a name="whats-new-in-azure-sql-data-warehouse-december-2018"></a>Azure SQL 数据仓库中的新增功能 2018 年 12 月
 Azure SQL 数据仓库持续得到改进。 本文介绍了 2018 年 12 月发行的版本中引入的新功能和所做的更改。

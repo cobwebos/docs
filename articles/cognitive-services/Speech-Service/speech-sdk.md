@@ -6,17 +6,17 @@ services: cognitive-services
 author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: speech-service
+ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/18/2018
 ms.author: wolfma
 ms.custom: seodec18
-ms.openlocfilehash: 1c29ed47e499ee23fab9f3b34e3974f479e3dbb7
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 1b58ef5f8254ef81eceefa277e5f146531fa2947
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53604265"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55221787"
 ---
 # <a name="about-the-speech-service-sdk"></a>关于语音服务 SDK
 
@@ -58,7 +58,7 @@ sudo apt-get install build-essential libssl1.0.0 libcurl3 libasound2
 
 * C++：将 SDK 下载为 [.tar 包](https://aka.ms/csspeech/linuxbinary)，并将文件解压缩到所选的一个目录中。 下表显示了 SDK 文件夹结构：
 
-  |路径|Description|
+  |路径|说明|
   |-|-|
   |`license.md`|许可|
   |`ThirdPartyNotices.md`|第三方声明|

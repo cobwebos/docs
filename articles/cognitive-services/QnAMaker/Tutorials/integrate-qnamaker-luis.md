@@ -6,17 +6,17 @@ services: cognitive-services
 author: diberry
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: qna-maker
+ms.subservice: qna-maker
 ms.topic: article
-ms.date: 09/28/2018
+ms.date: 01/24/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: f2d6f956564f01c14edb213f0bc5ae709892c542
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: 1d7130e841ce48ead4fca1d76bf5e3e051263efd
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53163304"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55216789"
 ---
 # <a name="use-bot-with-qna-maker-and-luis-to-distribute-your-knowledge-base"></a>将机器人与 QnA Maker 和 LUIS 结合使用以分发知识库
 随着 QnA Maker 知识库变得越来越大，将其作为单个整体集进行维护变得困难，并且需要将知识库分成更小的逻辑块。

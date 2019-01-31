@@ -6,18 +6,18 @@ services: cognitive-services
 author: Jann-Skotdal
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: translator-speech
+ms.subservice: translator-speech
 ms.topic: conceptual
 ms.date: 05/18/18
 ms.author: v-jansko
-ms.openlocfilehash: ac8de247f09ba3b4e38cabb565fe332eba909ccc
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: f377e073f42e96264fe4c7edb31ea58c68c46494
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54118126"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55474966"
 ---
-# <a name="translator-speech-api-languages"></a>语音翻译 API：语言
+# <a name="translator-speech-api-languages"></a>语音翻译 API：Languages
 
 [!INCLUDE [Deprecation note](../../../includes/cognitive-services-translator-speech-deprecation-note.md)]
 
@@ -131,13 +131,13 @@ Langagues { speech (object, optional), text (object, optional), tts (object, opt
 
 ### <a name="headers"></a>标头
 
-|标头|Description|类型|
+|标头|说明|Type|
 :--|:--|:--|
 X-RequestId|服务器生成的值，用于标识请求并用于故障排除目的。|字符串|
 
 ### <a name="parameters"></a>parameters
 
-|参数|Description|参数类型|数据类型|
+|参数|说明|参数类型|数据类型|
 |:--|:--|:--|:--|
 |api-version    |客户端所请求的 API 的版本。 允许值包括：`1.0`。|query|字符串|
 |作用域  |要返回给客户端的受支持语言或语音集。 此参数指定为以逗号分隔的关键字列表。 以下关键字可用：<ul><li>`speech`：提供支持转录语音的语言集。</li><li>`tts`：提供支持文本-语音转换的语音集。</li><li>`text`：提供支持翻译文本的语言集。</li></ul>如果未指定值，则 `scope` 的值默认为 `text`。|query|字符串|

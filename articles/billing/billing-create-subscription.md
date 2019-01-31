@@ -12,13 +12,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/28/2018
-ms.author: cwatson
-ms.openlocfilehash: 2ce4bf8e5c3356a5fae6d213e6e48c1313a12463
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.author: banders
+ms.openlocfilehash: 870ceaf1ded3dd8eb08128514dcc7020fe74e7ae
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52580332"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54903904"
 ---
 # <a name="create-an-additional-subscription-in-the-azure-portal"></a>在 Azure 门户中创建另外的订阅
 
@@ -35,7 +35,7 @@ ms.locfileid: "52580332"
 
    ![其中显示了在门户中搜索订阅的屏幕截图](./media/billing-create-subscription/billing-search-subscription-portal.png)
 
-1. 选择“添加”。
+1. 选择 **添加** 。
 
    ![其中显示了“订阅”视图中的“添加”按钮的屏幕截图](./media/billing-create-subscription/subscription-add.png)
 
@@ -50,4 +50,4 @@ ms.locfileid: "52580332"
 
 ## <a name="need-help-contact-us"></a>需要帮助？ 请联系我们。
 
-如果你有任何疑问或需要帮助，请[创建支持请求](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)。
+如有任何疑问或需要帮助，请[创建支持请求](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)。

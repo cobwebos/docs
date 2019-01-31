@@ -6,16 +6,16 @@ author: kevinvngo
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: manage
+ms.subservice: manage
 ms.date: 11/26/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 1e2f1a3c46c9d343c305292a217fff5750f442fa
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: 173846e4828228bdc51fc42858e0c6c9b00cafd6
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52682548"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55242784"
 ---
 # <a name="optimize-performance-by-upgrading-sql-data-warehouse"></a>通过升级 SQL 数据仓库优化性能
 将 Azure SQL 数据仓库升级到最新一代 Azure 硬件和存储体系结构。

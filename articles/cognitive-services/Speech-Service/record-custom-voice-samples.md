@@ -6,17 +6,17 @@ services: cognitive-services
 author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: speech-service
+ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 6aaa638504dd441240879050531952b269d02d15
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: ccde70aecd0ebb79928a1a6d548607a6ed36ab50
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53081075"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55212047"
 ---
 # <a name="record-voice-samples-to-create-a-custom-voice"></a>录制语音样本用于创建自定义语音
 
@@ -105,7 +105,7 @@ ms.locfileid: "53081075"
 
 幸运的是，可完全避免这些问题。 有很多文本源无需许可或权限即可使用。
 
-|文本源|Description|
+|文本源|说明|
 |-|-|
 |[CMU Arctic corpus](http://festvox.org/cmu_arctic/)|约 1100 个句子，选自专用于语音合成项目的无版权作品。 首先使用这类句子是很可取的。|
 |作品不再<br>受版权保护|通常是 1923 年之前出版的作品。 在英语方面，[Project Gutenberg](https://www.gutenberg.org/)（古腾堡计划）提供了数以万计的此类作品。 你可能想要关注较新的作品，因为语言将更接近现代英语。|

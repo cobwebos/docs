@@ -6,18 +6,18 @@ services: cognitive-services
 author: Jann-Skotdal
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: translator-text
+ms.subservice: translator-text
 ms.topic: reference
 ms.date: 03/29/2018
 ms.author: v-jansko
-ms.openlocfilehash: 841982a4ecbfa5241d826beaaae81921b2859596
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: a37b069d533dc51067aba4f9d9bd87608b116ae6
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52967327"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55466449"
 ---
-# <a name="translator-text-api-30-transliterate"></a>文本翻译 API 3.0：直译
+# <a name="translator-text-api-30-transliterate"></a>文本翻译 API 3.0：Transliterate
 
 将一种语言的文本从一个脚本转换为另一个脚本。
 
@@ -115,7 +115,7 @@ https://api.cognitive.microsofttranslator.com/transliterate?api-version=3.0
 
 <table width="100%">
   <th width="20%">标头</th>
-  <th>Description</th>
+  <th>说明</th>
   <tr>
     <td>X-RequestId</td>
     <td>服务生成的用于标识请求的值。 它用于故障排除目的。</td>
@@ -128,7 +128,7 @@ https://api.cognitive.microsofttranslator.com/transliterate?api-version=3.0
 
 <table width="100%">
   <th width="20%">状态代码</th>
-  <th>Description</th>
+  <th>说明</th>
   <tr>
     <td>200</td>
     <td>成功。</td>

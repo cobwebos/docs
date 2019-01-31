@@ -6,16 +6,16 @@ services: cognitive-services
 author: v-jaswel
 manager: nolachar
 ms.service: cognitive-services
-ms.component: conversation-learner
+ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: c198dfc19a350188f500af86c531be9a9ac424ce
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: afa927009e684fa7f8c6217c91dcb589b331b5f5
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53796444"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55224167"
 ---
 # <a name="how-to-add-pre-trained-entities"></a>如何添加预先训练的实体
 本教程展示了如何向 Conversation Learner 模型添加预先训练的实体。
@@ -33,7 +33,7 @@ ms.locfileid: "53796444"
 
 预先训练的实体可以识别常见类型的实体，例如数字、日期、货币金额和其他实体。  它们可以立即工作，不需要进行任何训练，并且其行为无法更改，这不同于自定义实体。  默认情况下，预先训练的实体是多值的，将累积实体的每个已识别实体。
 
-## <a name="steps"></a>步骤
+## <a name="steps"></a>Steps
 
 ### <a name="create-the-model"></a>创建模型
 

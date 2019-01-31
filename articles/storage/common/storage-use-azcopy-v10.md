@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 10/09/2018
 ms.author: artemuwka
-ms.component: common
-ms.openlocfilehash: 2d0f3292a12505249ebc8594c58234a0c6e81a8a
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.subservice: common
+ms.openlocfilehash: a4e115194d7e903edae4b4713c4f65eef9895cbf
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54212492"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55467112"
 ---
 # <a name="transfer-data-with-the-azcopy-v10-preview"></a>使用 AzCopy v10（预览版）传输数据
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/26/2018
 ms.author: sethm
 ms.custom: include file
-ms.openlocfilehash: a49ce4e997a21e0db707c851f5ea46817bcb642e
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 84a51f65ef46c390f84308ab17cf83859a16c3b8
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49960170"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55428515"
 ---
 下表列出了特定于 [Azure 事件中心](https://azure.microsoft.com/services/event-hubs/)的配额和限制。 有关事件中心定价的信息，请参阅[事件中心定价](https://azure.microsoft.com/pricing/details/event-hubs/)。
 
@@ -24,7 +24,7 @@ ms.locfileid: "49960170"
 | 每个事件中心的分区数 |实体 |- |32 |
 | 每个事件中心的使用者组数 |实体 |- |20 |
 | 每个命名空间的 AMQP 连接数 |命名空间 |系统将拒绝后续的附加连接请求，且调用代码会收到异常。 |5,000 |
-| 事件中心事件的最大大小|实体 |- |256 KB |
+| 事件中心事件的最大大小|实体 |- |1 MB |
 | 事件中心名称的最大大小 |实体 |- |50 个字符 |
 | 每个使用者组的非 epoch 接收者数 |实体 |- |5 |
 | 事件数据的最长保留期限 |实体 |- |1-7 天 |

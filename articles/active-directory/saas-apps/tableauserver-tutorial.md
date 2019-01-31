@@ -8,19 +8,19 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: c1917375-08aa-445c-a444-e22e23fa19e0
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/12/2018
 ms.author: jeedes
-ms.openlocfilehash: c727cddf41c269c214b541134cd9f688017ee687
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: a68ffb867a738e11c9895416bbdf2009b268c0c6
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53789715"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55155805"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-tableau-server"></a>教程：Azure Active Directory 与 Tableau Server 集成
 
@@ -139,7 +139,7 @@ ms.locfileid: "53789715"
 
 6. 在“基本 SAML 配置”部分中，按照以下步骤操作：
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“登录 URL”文本框中，使用以下模式键入 URL： `https://azure.<domain name>.link`
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL： `https://azure.<domain name>.link`
     
     b. 在“标识符”文本框中，使用以下模式键入 URL：`https://azure.<domain name>.link`
 
@@ -166,7 +166,7 @@ ms.locfileid: "53789715"
 
     ![配置单一登录](./media/tableauserver-tutorial/tutorial-tableauserver-config.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 对于**身份验证方法**，请选择“SAML”。
+    a. 对于**身份验证方法**，请选择“SAML”。
     
     b. 选中“为服务器启用 SAML 身份验证”复选框。
 
@@ -202,7 +202,7 @@ ms.locfileid: "53789715"
 
     ![创建 Azure AD 测试用户](common/create-aaduser-02.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”字段中，输入 BrittaSimon。
+    a. 在“名称”字段中，输入 BrittaSimon。
   
     b. 在“用户名”字段中键入 brittasimon@yourcompanydomain.extension  
     例如： BrittaSimon@contoso.com

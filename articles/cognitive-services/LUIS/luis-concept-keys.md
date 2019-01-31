@@ -7,16 +7,16 @@ author: diberry
 manager: cgronlun
 ms.custom: seodec18
 ms.service: cognitive-services
-ms.component: language-understanding
+ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 01/18/2019
 ms.author: diberry
-ms.openlocfilehash: ff7f25a9c1ac73c53587bb320ef3889a5bfa9dc5
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 81744e2af75410da911ee17f2c4acd05d5a57051
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54439113"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55222587"
 ---
 # <a name="authoring-and-query-prediction-endpoint-keys-in-luis"></a>LUIS 中的创作密钥和查询预测终结点密钥
 LUIS 使用两种密钥：[创作](#programmatic-key)密钥和[终结点](#endpoint-key)密钥。 在创建 LUIS 帐户时会自动创建创作密钥。 准备好发布 LUIS 应用时，需要[创建终结点密钥](luis-how-to-azure-subscription.md)、将[终结点密钥分配](luis-how-to-azure-subscription.md)到 LUIS 应用并[将其与终结点查询配合使用](#use-endpoint-key-in-query)。 

@@ -3,7 +3,7 @@ title: 如何升级 Azure Dev Spaces 工具 | Microsoft Docs
 titleSuffix: Azure Dev Spaces
 services: azure-dev-spaces
 ms.service: azure-dev-spaces
-ms.component: azds-kubernetes
+ms.subservice: azds-kubernetes
 author: zr-msft
 ms.author: zarhoads
 ms.date: 07/03/2018
@@ -11,12 +11,12 @@ ms.topic: article
 ms.technology: azds-kubernetes
 description: 在 Azure 中使用容器和微服务快速开发 Kubernetes
 keywords: Docker, Kubernetes, Azure, AKS, Azure 容器服务, 容器
-ms.openlocfilehash: 3d7e82903400d8aab0d33628af2b404583cb42a7
-ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
+ms.openlocfilehash: ad4c608d773dd6838fa95ab05c59e09c29906f8a
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51706342"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55476479"
 ---
 # <a name="how-to-upgrade-azure-dev-spaces-tools"></a>如何升级 Azure Dev Spaces 工具
 

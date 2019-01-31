@@ -6,17 +6,17 @@ author: marktab
 manager: cgronlun
 editor: cgronlun
 ms.service: machine-learning
-ms.component: team-data-science-process
+ms.subservice: team-data-science-process
 ms.topic: article
 ms.date: 11/13/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 88c3be12647bd73296c214390d3d2fb1fe79ccb4
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 514242eb759a2349d96b38ebe54bb98cf0e83423
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53138885"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55468812"
 ---
 # <a name="scenarios-for-advanced-analytics-in-azure-machine-learning"></a>用于 Azure 机器学习中高级分析的方案
 本文概述了各种示例数据源和可通过[团队数据科学过程 (TDSP)](overview.md) 处理的目标场景。 TDSP 为团队提供了一个系统性方法，可协作构建智能应用程序。 此处介绍的情景说明了数据处理工作流中的可用选项，具体取决于 Azure 中的数据特征、源位置和目标存储库。
@@ -113,7 +113,7 @@ ms.locfileid: "53138885"
 1. 将数据上传到 Azure 存储容器。
 1. （可选）预处理并清理数据。
    
-   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。  预处理并清理 IPython Notebook 中的数据，从 Azure 访问数据
+   a.  预处理并清理 IPython Notebook 中的数据，从 Azure 访问数据
    
        blobs.
    
@@ -122,7 +122,7 @@ ms.locfileid: "53138885"
    c.  将数据保存到本地 VM 文件（IPython Notebook 正在 VM 上运行，本地驱动器是指 VM 驱动器）。
 1. 将数据加载到在 Azure VM 上运行的 SQL Server 数据库。
    
-   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。  登录到 SQL Server VM。
+   a.  登录到 SQL Server VM。
    
    b.  如果数据尚未保存，请从 Azure 下载数据文件夹
    
@@ -160,7 +160,7 @@ ms.locfileid: "53138885"
 1. 将转储文件上传到 Azure 存储容器。
 1. 将数据加载到在 Azure 虚拟机上运行的 SQL Server 数据库。
    
-   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。  登录到 SQL Server VM。
+   a.  登录到 SQL Server VM。
    
    b.  从 Azure 存储容器将数据文件下载到本地 VM 文件夹。
    
@@ -202,7 +202,7 @@ ms.locfileid: "53138885"
 1. 创建 Azure HDInsight Hadoop 群集。
 1. （可选）预处理并清理数据。
    
-   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。  预处理并清理 IPython Notebook 中的数据，从 Azure 访问数据
+   a.  预处理并清理 IPython Notebook 中的数据，从 Azure 访问数据
    
        blobs.
    
@@ -212,7 +212,7 @@ ms.locfileid: "53138885"
 1. 将数据上传到步骤 2 中选择的 Hadoop 群集的默认容器。
 1. 将数据加载到 Azure HDInsight Hadoop 群集中的 Hive 数据库。
    
-   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。  登录到 Hadoop 群集的头节点
+   a.  登录到 Hadoop 群集的头节点
    
    b.  打开 Hadoop 命令行。
    
@@ -226,7 +226,7 @@ ms.locfileid: "53138885"
    > 
 1. 浏览数据，并根据需要在 Hadoop 命令行中创建功能。 请注意，这些功能不需要在数据库表中具体化。 仅请注意创建它们所需的查询。
    
-   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。  登录到 Hadoop 群集的头节点
+   a.  登录到 Hadoop 群集的头节点
    
    b.  打开 Hadoop 命令行。
    

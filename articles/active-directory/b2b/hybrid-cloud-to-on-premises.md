@@ -3,19 +3,19 @@ title: 向 Azure AD 中的 B2B 用户授予对本地应用程序的访问权限 
 description: 介绍如何使用 Azure AD B2B 协作向云 B2B 用户授予本地应用的访问权限。
 services: active-directory
 ms.service: active-directory
-ms.component: B2B
+ms.subservice: B2B
 ms.topic: conceptual
 ms.date: 10/10/2018
 ms.author: mimart
 author: msmimart
 manager: daveba
 ms.reviewer: sasubram
-ms.openlocfilehash: 25decf303023e5a71faa987caf6311f6a6f52b22
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: ef70b9e58a669695f3bdec7ad8ea4bab93e7e4b9
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54432466"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55082038"
 ---
 # <a name="grant-b2b-users-in-azure-ad-access-to-your-on-premises-applications"></a>向 Azure AD 中的 B2B 用户授予对本地应用程序的访问权限
 

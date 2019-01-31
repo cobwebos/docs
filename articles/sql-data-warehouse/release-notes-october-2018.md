@@ -6,16 +6,16 @@ author: twounder
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: manage
+ms.subservice: manage
 ms.date: 12/04/2018
 ms.author: mausher
 ms.reviewer: twounder
-ms.openlocfilehash: 9160a5f4e3a452682787ff500199e43e7fad0c77
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.openlocfilehash: 81096eeb1edcd6681bdc887d267ee477d78a8578
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54213683"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55472076"
 ---
 # <a name="whats-new-in-azure-sql-data-warehouse-october-2018"></a>Azure SQL 数据仓库中的新增功能 2018 年 10 月
 Azure SQL 数据仓库持续得到改进。 本文介绍了 2018 年 10 月发行的版本中所引入的新功能和所做的更改。
@@ -57,7 +57,7 @@ Azure SQL 数据仓库 (SQL DW) 现在已与 Azure Data Lake Storage Gen2 进行
 
 ## <a name="bug-fixes"></a>Bug 修复
 
-| 标题 | Description |
+| 标题 | 说明 |
 |:---|:---|
 | 针对 DW2000 及以上数据仓库小型资源类中的 CETAS 到 Parquet 故障 | 此修补程序在“Create External Table As”到“Parquet”代码路径中正确标识了空引用。 |
 |在某些 CTAS 操作中，标识列值可能会丢失 | CTAS 到其他表时，标识列的值可能不会保留。 在博客中报告：[https://blog.westmonroepartners.com/azure-sql-dw-identity-column-bugs/](https://blog.westmonroepartners.com/azure-sql-dw-identity-column-bugs/)。 |

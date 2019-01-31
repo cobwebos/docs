@@ -6,17 +6,17 @@ ms.author: minxia
 author: mx-iao
 services: machine-learning
 ms.service: machine-learning
-ms.component: core
+ms.subservice: core
 ms.topic: conceptual
 ms.reviewer: sgilley
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 0ebb12df835cf1c32e02419989b21684e9884c18
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 005854a51916d36bbad56f1296f17fa687020359
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53184349"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55251395"
 ---
 # <a name="train-models-with-azure-machine-learning"></a>使用 Azure 机器学习训练模型
 
@@ -56,7 +56,7 @@ sk_est = Estimator(source_directory='./my-sklearn-proj',
 
 此代码片段指定了 `Estimator` 构造函数的以下参数。
 
-参数 | Description
+参数 | 说明
 --|--
 `source_directory`| 包含训练作业所需的所有代码的本地目录。 此文件夹已从本地计算机复制到远程计算 
 `script_params`| 指定训练脚本 `entry_script` 的命令行参数的字典，格式为 <命令行参数, 值> 对
@@ -106,7 +106,7 @@ estimator = Estimator(source_directory='./my-cntk-proj',
 
 上述代码显示了 `Estimator` 构造函数的以下新参数：
 
-参数 | Description | 默认
+参数 | 说明 | 默认
 --|--|--
 `custom_docker_base_image`| 要使用的映像的名称。 仅提供公共 docker 存储库（这种情况下为 Docker 中心）中可用的映像。 要使用专用 docker 存储库中的映像，请改为使用构造函数的 `environment_definition` 参数 | `None`
 `node_count`| 要用于训练作业的节点数。 | `1`

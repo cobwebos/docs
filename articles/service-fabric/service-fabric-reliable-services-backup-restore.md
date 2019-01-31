@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/29/2018
 ms.author: mcoskun
-ms.openlocfilehash: 42aaafd346c6db9d4a8780628319720aa3f28134
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 986a7be49f8ae0f683b89596204845bb08eeaf2d
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52727709"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55095764"
 ---
 # <a name="backup-and-restore-reliable-services-and-reliable-actors"></a>备份和还原 Reliable Services 及 Reliable Actors
 Azure Service Fabric 是一个高可用性平台，用于复制多个节点中的状态以维护此高可用性。  因此，即使群集中的一个节点出现故障，服务也将继续可用。 尽管此平台提供的此内置冗余对某些情况来说可能已足够用了，但在特定情况下，仍需要服务备份数据（到外部存储）。
@@ -227,7 +227,7 @@ class MyCustomActorService : ActorService
   - 副本在变为主副本后从未执行过完整备份。
   - 自上次执行备份后，一些日志记录被截断。
 
-启用增量备份后，`KvsActorStateProvider` 未使用循环缓冲区管理其日志记录和定期截取它。 如果在 45 分钟的时间内用户未执行备份，则系统会自动截断日志记录。 可以通过在 `KvsActorStateProvider` 构造函数中指定 `logTrunctationIntervalInMinutes` 来配置此间隔（与启用增量备份时类似）。 如果主副本需要通过发送其所有数据来生成另一个副本，日志记录也可能会被截断。
+启用增量备份后，`KvsActorStateProvider` 未使用循环缓冲区管理其日志记录和定期截取它。 如果在 45 分钟的时间内用户未执行备份，则系统会自动截断日志记录。 可以通过在 `KvsActorStateProvider` 构造函数中指定 `logTruncationIntervalInMinutes` 来配置此间隔（与启用增量备份时类似）。 如果主副本需要通过发送其所有数据来生成另一个副本，日志记录也可能会被截断。
 
 从备份链进行还原时，与 Reliable Services 类似，BackupFolderPath 应包含子目录（其中一个子目录包含完整备份，其他子目录包含增量备份）。 如果备份链验证失败，还原 API 将引发 FabricException 并显示相应的错误消息。 
 

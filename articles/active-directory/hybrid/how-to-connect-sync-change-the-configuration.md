@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 08/30/2018
-ms.component: hybrid
+ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 50088dd00b0410ea32b6b61516021563c7ae061f
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 8c6fe9952beb8daeb9b96cf9244cccf85d9c2203
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54463365"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55165449"
 ---
 # <a name="azure-ad-connect-sync-make-a-change-to-the-default-configuration"></a>Azure AD Connect 同步：更改默认配置
 本文旨在介绍如何对 Azure Active Directory (Azure AD) Connect 同步中的默认配置进行更改。其中提供了一些常见方案的步骤。 了解这些知识后，用户应该能够根据自己的业务规则对自己的配置进行简单的更改。
@@ -267,7 +267,7 @@ Azure AD Connect 支持 1.1.524.0 及更高版本中 **User** 对象的 **UserTy
 
     | 属性 | 值 | 详细信息 |
     | --- | --- | --- |
-    | 名称 | *提供名称* | 例如 *In from AD – User UserType* |
+    | Name | *提供名称* | 例如 *In from AD – User UserType* |
     | 说明 | *提供说明* |  |
     | 连接的系统 | *选择本地 AD 连接器* |  |
     | 连接的系统对象类型 | **User** |  |
@@ -309,7 +309,7 @@ Azure AD Connect 支持 1.1.524.0 及更高版本中 **User** 对象的 **UserTy
 
     | 属性 | 值 | 详细信息 |
     | ----- | ------ | --- |
-    | 名称 | *提供名称* | 例如 *Out to AAD – User UserType* |
+    | Name | *提供名称* | 例如 *Out to AAD – User UserType* |
     | 说明 | *提供说明* ||
     | 连接的系统 | *选择 AAD 连接器* ||
     | 连接的系统对象类型 | **User** ||

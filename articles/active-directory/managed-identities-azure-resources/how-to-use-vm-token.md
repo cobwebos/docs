@@ -3,23 +3,23 @@ title: 如何在虚拟机上使用 Azure 资源的托管标识获取访问令牌
 description: 在虚拟机上使用 Azure 资源的托管标识获取 OAuth 访问令牌的分步说明和示例。
 services: active-directory
 documentationcenter: ''
-author: daveba
+author: priyamohanram
 manager: daveba
 editor: ''
 ms.service: active-directory
-ms.component: msi
+ms.subservice: msi
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/01/2017
-ms.author: daveba
-ms.openlocfilehash: d737f1b17322d4b2ea0ab00a8e0bd386e8cb1747
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.author: priyamo
+ms.openlocfilehash: b7ccdcf1cb1e75ab9a8113adc05b02196a0a2023
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54422400"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55166571"
 ---
 # <a name="how-to-use-managed-identities-for-azure-resources-on-an-azure-vm-to-acquire-an-access-token"></a>如何在 Azure VM 上使用 Azure 资源的托管标识获取访问令牌 
 
@@ -33,7 +33,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 
 [!INCLUDE [msi-qs-configure-prereqs](../../../includes/active-directory-msi-qs-configure-prereqs.md)]
 
-如果打算使用本文中的 Azure PowerShell 示例，请务必安装最新版本的 [Azure PowerShell](https://www.powershellgallery.com/packages/AzureRM)。
+如果打算使用本文中的 Azure PowerShell 示例，请务必安装最新版本的 [Azure PowerShell](/powershell/azure/install-az-ps)。
 
 
 > [!IMPORTANT]

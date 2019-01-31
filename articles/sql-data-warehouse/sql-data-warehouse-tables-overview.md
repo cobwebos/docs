@@ -6,16 +6,16 @@ author: ronortloff
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: implement
+ms.subservice: implement
 ms.date: 04/17/2018
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: 365b15f11409f985b71c9bba4372552321f162f2
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.openlocfilehash: 290230237a68730a908c6fd0fb0df1d63035b93b
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54212543"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55247334"
 ---
 # <a name="designing-tables-in-azure-sql-data-warehouse"></a>在 Azure SQL 数据仓库中设计表
 
@@ -111,7 +111,7 @@ SQL 数据仓库的一个基本功能是它可以跨 60 个[分布区](massively
 ## <a name="commands-for-creating-tables"></a>用于创建表的命令
 可以创建一个新的空表。 还可以创建一个表并在其中填充 select 语句的结果。 下面是用于创建表的 T-SQL 命令。
 
-| T-SQL 语句 | Description |
+| T-SQL 语句 | 说明 |
 |:----------------|:------------|
 | [CREATE TABLE](/sql/t-sql/statements/create-table-azure-sql-data-warehouse) | 通过定义所有表列和选项来创建空表。 |
 | [创建外部表](/sql/t-sql/statements/create-external-table-transact-sql) | 创建外部表。 表定义存储在 SQL 数据仓库中。 表数据存储在 Azure Blob 存储或 Azure Data Lake Store 中。 |

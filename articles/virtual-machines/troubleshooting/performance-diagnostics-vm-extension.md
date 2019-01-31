@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 7037c0b4c1021ac7b91134fa429a774f600a774f
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 3430ff2b292a3e5fe675c3a5f332a12a88d4bfbf
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53194158"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55096783"
 ---
 # <a name="azure-performance-diagnostics-vm-extension-for-windows"></a>适用于 Windows 的 Azure 性能诊断 VM 扩展
 
@@ -123,7 +123,7 @@ Azure 性能诊断 VM 扩展可用于从 Windows VM 收集性能诊断数据。 
 ## <a name="template-deployment"></a>模板部署
 可使用 Azure 资源管理器模板部署 Azure 虚拟机扩展。 在前一部分详述的 JSON 架构可以用在 Azure 资源管理器模板中。 这样就可以在 Azure 资源管理器模板部署期间运行 Azure 性能诊断 VM 扩展。 下面是示例模板：
 
-````
+```
 {
   "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
@@ -207,14 +207,14 @@ Azure 性能诊断 VM 扩展可用于从 Windows VM 收集性能诊断数据。 
     }
   ]
 }
-````
+```
 
 ## <a name="powershell-deployment"></a>PowerShell 部署
 可以使用 `Set-AzureRmVMExtension` 命令将 Azure 性能诊断 VM 扩展部署到现有的虚拟机。
 
 PowerShell
 
-````
+```
 $PublicSettings = @{ "storageAccountName"="mystorageaccount";"performanceScenario"="basic";"traceDurationInSeconds"=300;"perfCounterTrace"="p";"networkTrace"="";"xperfTrace"="";"storPortTrace"="";"srNumber"="";"requestTimeUtc"="2017-09-28T22:08:53.736Z";"resourceId"="VMResourceId" }
 $ProtectedSettings = @{"storageAccountKey"="mystoragekey" }
 
@@ -227,7 +227,7 @@ Set-AzureRmVMExtension -ExtensionName "AzurePerformanceDiagnostics" `
     -Settings $PublicSettings `
     -ProtectedSettings $ProtectedSettings `
     -Location WestUS
-````
+```
 
 ## <a name="information-on-the-data-captured"></a>有关捕获的数据信息
 PerfInsights 工具将收集各种日志、配置和诊断数据，具体视所选方案而定。 有关详细信息，请参阅 [PerfInsights 文档](https://aka.ms/perfinsights)。

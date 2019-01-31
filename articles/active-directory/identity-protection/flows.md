@@ -8,20 +8,20 @@ author: MarkusVi
 manager: daveba
 ms.assetid: de5bf637-75a7-4104-b6d8-03686372a319
 ms.service: active-directory
-ms.component: conditional-access
+ms.subservice: conditional-access
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/24/2018
+ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: a0c351df535a1f2463c14a4719eac0e4c4896c2b
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 42a32562eccc86d2516af14a529967a08108c94c
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54464198"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55155283"
 ---
 # <a name="sign-in-experiences-with-azure-ad-identity-protection"></a>Azure AD Identity Protection 中的登录体验
 使用 Azure Active Directory Identity Protection 时，可以：
@@ -57,18 +57,13 @@ ms.locfileid: "54464198"
 
 1. 第一个步骤是通知用户必须为其帐户设置多重身份验证。 
    
-    ![补救](./media/flows/301.png "补救")
-
+    ![补救](./media/flows/140.png "补救")
 2. 要设置多重身份验证，需要告知系统如何与你取得联系。
    
-    ![补救](./media/flows/302.png "补救")
-
-3. 在系统中提供电话号码和联系方式。
-
-    ![补救](./media/flows/303.png "补救")
-
-若要完成注册，需要回复电话呼叫或输入代码。 
-
+    ![补救](./media/flows/141.png "补救")
+3. 系统会向你提交质询，而需要做出回复。
+   
+    ![补救](./media/flows/142.png "补救")
 
 ## <a name="risky-sign-in-recovery"></a>有风险的登录恢复
 管理员针对登录风险配置策略后，受影响的用户在尝试登录时会看到通知。 

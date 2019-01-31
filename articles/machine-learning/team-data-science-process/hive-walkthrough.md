@@ -6,17 +6,17 @@ author: marktab
 manager: cgronlun
 editor: cgronlun
 ms.service: machine-learning
-ms.component: team-data-science-process
+ms.subservice: team-data-science-process
 ms.topic: article
 ms.date: 11/29/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: e6adbe5a0e5ce88db12637889e201b5a15a0556f
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 57f20a6b3a8d2845b0459f05e7b9d9ccd8d44424
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53139616"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55463287"
 ---
 # <a name="the-team-data-science-process-in-action-use-azure-hdinsight-hadoop-clusters"></a>运行中的 Team Data Science Process：使用 Azure HDInsight Hadoop 群集
 本演练在一个端到端方案中使用 [Team Data Science Process (TDSP)](overview.md)。 其中使用 [Azure HDInsight Hadoop 群集](http://www.andresmh.com/nyctaxitrips/)对公开发布的[纽约市出租车行程](https://azure.microsoft.com/services/hdinsight/)数据集中的数据进行存储、探索和实施特性工程，以及对该数据进行下采样。 为了处理二元分类、多类分类和回归预测任务，我们将使用 Azure 机器学习构建数据模型。 
@@ -761,7 +761,7 @@ NYC 出租车数据集中的牌照标识一辆唯一的出租车。 通过询问
 
   **使用的学习器：** 双类逻辑回归
 
-  a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 对于此问题，目标（或类）标签为 **tipped**。 原始下采样数据集具有几个列，这些列是此分类实验的目标泄漏。 具体而言，**tip\_class**、**tip\_amount** 和 **total\_amount** 可揭示有关测试时不可用的目标标签的信息。 使用[选择数据集中的列][select-columns]模块删除这些列，不将其纳入考虑。
+  a. 对于此问题，目标（或类）标签为 **tipped**。 原始下采样数据集具有几个列，这些列是此分类实验的目标泄漏。 具体而言，**tip\_class**、**tip\_amount** 和 **total\_amount** 可揭示有关测试时不可用的目标标签的信息。 使用[选择数据集中的列][select-columns]模块删除这些列，不将其纳入考虑。
 
   下图显示预测给定行程是否支付小费的试验。
 
@@ -781,7 +781,7 @@ NYC 出租车数据集中的牌照标识一辆唯一的出租车。 通过询问
 
   **使用的学习器：** 多类逻辑回归
 
-  a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 对于此问题，我们的目标（或类）标签为 **tip\_class**，其取值有五种选择（0、1、2、3、4）。 与二元分类的情况类似，我们也具有几个作为此实验的目标泄漏的列。 具体而言，**tipped**、**tip\_amount** 和 **total\_amount** 可揭示有关测试时不可用的目标标签的信息。 使用[选择数据集中的列][select-columns]模块删除这些列。
+  a. 对于此问题，我们的目标（或类）标签为 **tip\_class**，其取值有五种选择（0、1、2、3、4）。 与二元分类的情况类似，我们也具有几个作为此实验的目标泄漏的列。 具体而言，**tipped**、**tip\_amount** 和 **total\_amount** 可揭示有关测试时不可用的目标标签的信息。 使用[选择数据集中的列][select-columns]模块删除这些列。
 
   下图显示预测小费可能归属的 bin 的试验。 bin 为：类 0：小费 = $0，类 1：小费 > $0 且 <= $5，类 2：小费 > $5 且 <= $10，类 3：小费 > $10 且 <= $20，类 4：小费 > $20。
 
@@ -801,7 +801,7 @@ NYC 出租车数据集中的牌照标识一辆唯一的出租车。 通过询问
 
   **使用的学习器：** 提升决策树
 
-  a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 对于此问题，目标（或类）标签为 **tip\_amount**。 在本例中，目标泄漏为：**tipped**、**tip\_class** 和 **total\_amount**。 所有这些变量都揭示有关测试时通常不可用的小费金额的信息。 使用[选择数据集中的列][select-columns]模块删除这些列。
+  a. 对于此问题，目标（或类）标签为 **tip\_amount**。 在本例中，目标泄漏为：**tipped**、**tip\_class** 和 **total\_amount**。 所有这些变量都揭示有关测试时通常不可用的小费金额的信息。 使用[选择数据集中的列][select-columns]模块删除这些列。
 
   下图显示预测支付的小费金额的试验。
 

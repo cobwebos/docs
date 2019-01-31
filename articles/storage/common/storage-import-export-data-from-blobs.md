@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 12/11/2018
 ms.author: alkohli
-ms.component: common
-ms.openlocfilehash: 25ea4f41ac1fa36c7f9b6f64bc7c4eede4702f38
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.subservice: common
+ms.openlocfilehash: 0480a8d4079a39c8e365dde893a9a1af2d7341aa
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53315173"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55453104"
 ---
 # <a name="use-the-azure-importexport-service-to-export-data-from-azure-blob-storage"></a>使用 Azure 导入/导出服务从 Azure Blob 存储导出数据
 本文分步说明如何使用 Azure 导入/导出服务从 Azure Blob 存储安全地导出大量数据。 该服务要求你将空驱动器寄送到 Azure 数据中心。 该服务将数据从存储帐户导出到驱动器，然后将驱动器寄回。
@@ -139,7 +139,7 @@ ms.locfileid: "53315173"
 
     下表介绍了这些参数：
     
-    |命令行参数|Description|  
+    |命令行参数|说明|  
     |--------------------------|-----------------|  
     |**/logdir:**|可选。 日志目录。 详细日志文件将写入此目录。 如果未指定，则使用当前目录作为日志目录。|  
     |**/sn:**|必需。 导出作业的存储帐户的名称。|  
@@ -193,7 +193,7 @@ Number of drives needed:        3
 
 下表显示有效 Blob 路径的示例：
    
-   | 选择器 | Blob 路径 | Description |
+   | 选择器 | Blob 路径 | 说明 |
    | --- | --- | --- |
    | 开头为 |/ |导出存储帐户中的所有 Blob |
    | 开头为 |/$root/ |导出根容器中的所有 Blob |

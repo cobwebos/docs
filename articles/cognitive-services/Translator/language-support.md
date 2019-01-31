@@ -6,16 +6,16 @@ services: cognitive-services
 author: Jann-Skotdal
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: translator-text
+ms.subservice: translator-text
 ms.topic: article
 ms.date: 09/25/2018
 ms.author: v-jansko
-ms.openlocfilehash: 3d25cfd39b4b4278fedf33e042d394208fd5eafc
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 96f73d7d1324de9e5531aefcc4ee3b9a054cf941
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53713173"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55228038"
 ---
 # <a name="language-and-region-support-for-the-translator-text-api"></a>文本翻译 API 的语言和区域支持
 
@@ -186,7 +186,7 @@ Transliterate 方法支持以下语言。 在“音译方向”中，“<-->”�
 | 越南语      | `vi`          |
 | 威尔士语      | `cy`          |
 
-## <a name="detect"></a>检测
+## <a name="detect"></a>Detect
 
 Detect 方法支持以下语言。 Detect 可能会识别 Microsoft Translator 无法翻译的语言。
 

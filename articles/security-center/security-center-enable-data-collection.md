@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/2/2018
 ms.author: rkarlin
-ms.openlocfilehash: 40f3275b2f16a80f1199afdc0d7965cbd4433f50
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 5150f782d13e198c59e8d79f09ba0ffead5426d3
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53082437"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55100526"
 ---
 # <a name="data-collection-in-azure-security-center"></a>Azure 安全中心中的数据收集
 安全中心从 Azure 虚拟机 (VM) 和非 Azure 计算机收集数据以监视安全漏洞和威胁。 数据是使用 Microsoft Monitoring Agent 收集的，它从计算机中读取各种安全相关的配置和事件日志，然后将数据复制到工作区以进行分析。 此类数据的示例包括：操作系统类型和版本、操作系统日志（Windows 事件日志）、正在运行的进程、计算机名称、IP 地址和已登录的用户。 Microsoft Monitoring Agent 还将故障转储文件复制到工作区。
@@ -133,7 +133,7 @@ ms.locfileid: "53082437"
 
 5. 选择要在其中设置 Microsoft Monitoring Agent 的所需工作区的定价层。 <br>若要使用现有工作区，请设置该工作区的定价层。 这会在该工作区中安装一个安全中心解决方案（如果尚不存在）。
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。  在安全中心主菜单中，选择“安全策略”。
+    a.  在安全中心主菜单中，选择“安全策略”。
      
     b.  通过单击列表中所需订阅的“设置”列中的“编辑设置”，选择要在其中连接代理的所需工作区。
         ![选择工作区][8] c. 设置定价层。
@@ -246,7 +246,7 @@ ms.locfileid: "53082437"
 1.  选择自动预配 - 关闭。
 2.  创建工作区，并指定要在其中设置 Microsoft Monitoring Agent 的工作区的定价层：
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。  在安全中心主菜单中，选择“安全策略”。
+    a.  在安全中心主菜单中，选择“安全策略”。
      
     b.  选择要在其中连接代理的工作区。 确保该工作区位于安全中心内所用的同一个订阅中，并且你对该工作区拥有读/写权限。
         ![选择工作区][8]
@@ -258,7 +258,7 @@ ms.locfileid: "53082437"
 
 4.  若要使用资源管理器模板在新 VM 上部署代理，请安装 OMS 虚拟机扩展：
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。  [安装适用于 Windows 的 OMS 虚拟机扩展](../virtual-machines/extensions/oms-windows.md)
+    a.  [安装适用于 Windows 的 OMS 虚拟机扩展](../virtual-machines/extensions/oms-windows.md)
     
     b.  [安装适用于 Linux 的 OMS 虚拟机扩展](../virtual-machines/extensions/oms-linux.md)
 5.  若要在现有 VM 上部署扩展，请遵照[收集有关 Azure 虚拟机的数据](../azure-monitor/learn/quick-collect-azurevm.md)中的说明。
@@ -279,7 +279,7 @@ ms.locfileid: "53082437"
      
             $PublicConf = '{
                 "workspaceId": "WorkspaceID value",
-                "MultipleConnectistopOnons": true
+                "MultipleConnections": true
             }' 
  
             $PrivateConf = '{

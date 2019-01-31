@@ -7,16 +7,16 @@ author: diberry
 manager: cgronlun
 ms.custom: seodec18
 ms.service: cognitive-services
-ms.component: language-understanding
+ms.subservice: language-understanding
 ms.topic: article
 ms.date: 12/21/2018
 ms.author: diberry
-ms.openlocfilehash: 18a32f5e07470f71ba276fbe3a2633150b1bf188
-ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
+ms.openlocfilehash: 43d72b88c96b45939cb394a26881b1272e250819
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/22/2018
-ms.locfileid: "53754658"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55217248"
 ---
 # <a name="tutorial-group-and-extract-related-data"></a>教程：对相关的数据进行分组和提取
 在本教程中，添加复合实体来将提取的各种类型的数据捆绑到单个内含实体中。 通过捆绑数据，客户端应用程序可以轻松提取各种数据类型的相关数据。
@@ -58,7 +58,7 @@ ms.locfileid: "53754658"
 
 此意向的示例话语包括：
 
-|示例话语|
+|示例陈述|
 |--|
 |将 John W. Smith 转到会计部门|
 |将 Jill Jones 转到研发部门|
@@ -71,7 +71,7 @@ LUIS 为常见数据提取提供多个预生成的实体。
 
 1. 从顶部导航栏中选择“生成”，然后从左侧导航菜单中选择“实体”。
 
-1. 选择“管理预构建实体”按钮。
+1. 选择“管理预生成的实体”按钮。
 
 1. 从预生成实体的列表中选择 **[PersonName](luis-reference-prebuilt-person.md)**，然后选择“完成”。
 

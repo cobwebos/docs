@@ -13,24 +13,24 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 06/21/2018
 ms.author: richrund
-ms.openlocfilehash: 4363d7a319eb31dbf020121bf2fa5c5630296c5a
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 66bac977d05276833a357521a3a040c59b2f28fa
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53191695"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54900283"
 ---
 # <a name="azure-networking-monitoring-solutions-in-log-analytics"></a>Log Analytics 中的 Azure 网络监视解决方案
 
 Log Analytics 提供了用来监视网络的以下解决方案：
 * 网络性能监视器 (NPM)
- * 监视网络的运行状况
+    * 监视网络的运行状况
 * 要查看的 Azure 应用程序网关分析
- * Azure 应用程序网关日志
- * Azure 应用程序网关指标
+    * Azure 应用程序网关日志
+    * Azure 应用程序网关指标
 * 用于监视和审核云网络上的网络活动的解决方案
-* [流量分析](https://docs.microsoft.com/azure/networking/network-monitoring-overview#traffic-analytics) 
-* Azure 网络安全组分析
+    * [流量分析](https://docs.microsoft.com/azure/networking/network-monitoring-overview#traffic-analytics) 
+    * Azure 网络安全组分析
 
 ## <a name="network-performance-monitor-npm"></a>网络性能监视器 (NPM)
 

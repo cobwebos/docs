@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 8/7/2018
 ms.author: trinadhk
-ms.openlocfilehash: 1714a29e4b27f6363d748ceb180f56ba98c713bb
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: b3bfd7b2f2526dca0079a4411092ed21ee101bcd
+ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54809517"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54912725"
 ---
 # <a name="troubleshoot-azure-virtual-machine-backup"></a>Azure 虚拟机备份疑难解答
 可使用下表中所列出的信息排查使用 Azure 备份时遇到的错误：
@@ -21,10 +21,8 @@ ms.locfileid: "54809517"
 | 错误详细信息 | 解决方法 |
 | ------ | --- |
 | 由于虚拟机 (VM) 不再存在，备份无法执行操作： <br>停止保护虚拟机，无需删除备份数据。 有关更多信息，请参阅[停止保护虚拟机](http://go.microsoft.com/fwlink/?LinkId=808124)。 |删除主 VM 时会发生此错误，但备份策略仍会查找要备份的 VM。 要修复此错误，请执行以下步骤： <ol><li> 重新创建具有相同名称和相同资源组名称的虚拟机，“云服务名称”<br>**or**</li><li> 通过删除或不删除备份数据来停止保护虚拟机。 有关更多信息，请参阅[停止保护虚拟机](https://go.microsoft.com/fwlink/?LinkId=808124)。</li></ol> |
-| 由于虚拟机未建立网络连接，快照操作失败： <br>请确保 VM 具有网络访问权限。 要成功进行快照操作，请将 Azure 数据中心 IP 范围列入允许列表，或设置代理服务器以进行网络访问。 有关详细信息，请参阅[对 Azure 备份失败进行故障排除：代理或扩展的问题](http://go.microsoft.com/fwlink/?LinkId=800034)。 <br><br>如果已经在使用代理服务器，请确保正确配置代理服务器设置。 | 拒绝虚拟机上的出站 Internet 连接时，会发生此错误。 VM 快照扩展需要 Internet 连接才可拍摄基础磁盘的快照。 请参阅 [ExtensionSnapshotFailedNoNetwork](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md#ExtensionSnapshotFailedNoNetwork-snapshot-operation-failed-due-to-no-network-connectivity-on-the-virtual-machine)。 |
 | Azure 虚拟机代理（VM 代理）无法与 Azure 备份服务通信： <br>请确保 VM 具有网络连接，并且 VM 代理为最新版且正常运行。 有关详细信息，请参阅[对 Azure 备份失败进行故障排除：代理或扩展的问题](http://go.microsoft.com/fwlink/?LinkId=800034)。 |如果 VM 代理出现问题，或以某种方式阻止了对 Azure 基础结构的网络访问，则会发生此错误。 了解有关[调试 VM 快照问题](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md#UserErrorGuestAgentStatusUnavailable-vm-agent-unable-to-communicate-with-azure-backup)的详细信息。 <br><br>如果 VM 代理未导致任何问题，请重启 VM。 VM 状态错误可能导致出现问题，重启 VM 会重置状态。 |
 | VM 处于失败的预配状态： <br>请重启 VM，并确保 VM 正在运行或已关闭。 | 当其中某个扩展失败将 VM 状态置于失败的预配状态时，会发生此错误。 请转到扩展列表，查看是否有失败的扩展，将其删除并尝试重启虚拟机。 如果所有扩展都处于运行状态，请检查 VM 代理服务是否正在运行。 如果未运行，请重启 VM 代理服务。 |
-| 托管磁盘的“VMSnapshot”扩展操作失败： <br>请重试备份操作。 如果问题仍然存在，请按照[对 Azure 备份失败进行故障排除](http://go.microsoft.com/fwlink/?LinkId=800034)中的说明进行操作。 如果问题持续出现，请联系 Microsoft 支持。 | 备份服务未能触发快照时，会发生此错误。 了解有关[调试 VM 快照问题](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md#ExtentionOperationFailed-vmsnapshot-extension-operation-failed)的详细信息。 |
 | 由于存储帐户中的可用空间不足，备份无法复制虚拟机的快照： <br>请确保存储帐户的可用空间等于连接到虚拟机的高级存储磁盘上的数据。 | 对于 VM 备份堆栈 V1 上的高级 VM，我们将快照复制到存储帐户。 此步骤可确保在快照上运行的备份管理流量不会限制使用高级磁盘的应用程序的可用 IOPS 数。 <br><br>我们建议只分配总存储帐户空间的 50%（即 17.5 TB）。 这样，Azure 备份服务可以将快照复制到存储帐户，并将数据从存储帐户中的复制位置传输到保管库。 |
 | 由于 VM 代理没有响应，因此备份无法执行操作。 |如果 VM 代理出现问题，或以某种方式阻止了对 Azure 基础结构的网络访问，则会发生此错误。 对于 Windows VM，请检查服务中的 VM 代理服务状态，以及代理是否显示在控制面板的程序中。 <br><br>请尝试从控制面板中删除程序，然后按照 [VM 代理](#vm-agent)中的说明重新安装代理。 重新安装代理后，将触发临时备份以进行验证。 |
 | 恢复服务扩展操作失败： <br>请确保虚拟机上有最新的 VM 代理，并且 VM 代理服务正在运行。 请重试备份操作。 如果备份操作失败，请联系 Microsoft 支持部门。 |VM 代理过期时会发生此错误。 请参阅[对 Azure 虚拟机备份进行故障排除](#updating-the-VM-agent)以更新 VM 代理。 |

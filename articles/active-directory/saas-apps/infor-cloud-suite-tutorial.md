@@ -8,19 +8,19 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: a2f4f843-00d2-4522-a29d-6496cc5a781a
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/29/2018
 ms.author: jeedes
-ms.openlocfilehash: bed29e213c3a4ed81ec8736d40f33b35d7f069a5
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 09d0c92703c13baba2555245f7c71a3d48b4ee9d
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52730451"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55174969"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-infor-cloudsuite"></a>教程：Azure Active Directory 与 Infor CloudSuite 集成
 
@@ -114,7 +114,7 @@ ms.locfileid: "52730451"
 
     ![Infor CloudSuite 域和 URL 单一登录信息](./media/inforcloudsuite-tutorial/tutorial-inforcloudsuite-url1.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“标识符”文本框中，键入一个 URL：
+    a. 在“标识符”文本框中，键入一个 URL：
     
     | | |
     |-|-|
@@ -172,7 +172,7 @@ ms.locfileid: "52730451"
 
     ![创建 Azure AD 测试用户](common/create-aaduser-02.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”字段中，输入 BrittaSimon。
+    a. 在“名称”字段中，输入 BrittaSimon。
   
     b. 在“用户名”字段中键入 brittasimon@yourcompanydomain.extension  
     例如： BrittaSimon@contoso.com

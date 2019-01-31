@@ -7,16 +7,16 @@ manager: cgronlun
 ms.custom: seodec18
 services: cognitive-services
 ms.service: cognitive-services
-ms.component: language-understanding
+ms.subservice: language-understanding
 ms.topic: article
-ms.date: 01/11/2018
+ms.date: 01/23/2019
 ms.author: diberry
-ms.openlocfilehash: 3c0d7d3aed08c6dbbcac5f25e91edd8e27e64440
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 704c3c6b4c998526936e7532fcd92c85ccce54e9
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54429355"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55222178"
 ---
 # <a name="language-understanding-frequently-asked-questions-faq"></a>语言理解常见问题解答 (FAQ)
 
@@ -219,7 +219,7 @@ Get-AzureRmCognitiveServicesAccountUsage -ResourceGroupName <your-resource-group
 
 以下功能是在 Build 2018 大会上发布的：
 
-|名称|内容|
+|Name|内容|
 |--|--|
 |增强功能|[正则表达式](luis-concept-data-extraction.md##regular-expression-entity-data)实体和[关键短语](luis-concept-data-extraction.md#key-phrase-extraction-entity-data)实体
 |模式|模式[概念](luis-concept-patterns.md)、[教程](luis-tutorial-pattern.md)、[操作方法](luis-how-to-model-intent-pattern.md)<br>[Patterns.Any](luis-concept-entity-types.md) 实体概念，包括用作例外的[显式列表](luis-concept-patterns.md#explicit-lists)<br>[角色](luis-concept-roles.md)概念|
