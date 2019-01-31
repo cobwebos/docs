@@ -7,7 +7,7 @@ author: CelesteDG
 manager: mtillman
 ms.assetid: 7654ab4c-4489-4ea5-aba9-d7cdc256e42a
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: javascript
@@ -15,12 +15,12 @@ ms.topic: quickstart
 ms.date: 09/24/2018
 ms.author: celested
 ms.custom: aaddev
-ms.openlocfilehash: 9683eb8cbfcabb946f8b364ac9cc8aeeb167d023
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: dcde2a09f9e066c49d870f230aed37655c4b6647
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54120285"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55093406"
 ---
 # <a name="quickstart-secure-a-web-api-with-azure-active-directory"></a>快速入门：使用 Azure Active Directory 保护 Web API
 
@@ -74,7 +74,7 @@ az ad app create --display-name node-aad-demo --homepage http://localhost --iden
 
 `create` 命令的[参数](/cli/azure/ad/app?view=azure-cli-latest#az-ad-app-create)包括：
 
-| 参数  | Description |
+| 参数  | 说明 |
 |---------|---------|
 |`display-name` | 注册的友好名称 |
 |`homepage` | 用户可在其中登录和使用应用程序的 URL |
@@ -82,7 +82,7 @@ az ad app create --display-name node-aad-demo --homepage http://localhost --iden
 
 在连接到 Azure Active Directory 之前，需准备好以下信息：
 
-| 名称  | Description | 配置文件中的变量名称 |
+| Name  | 说明 | 配置文件中的变量名称 |
 | ------------- | ------------- | ------------- |
 | 租户名称  | 要用于身份验证的[租户名称](quickstart-create-new-tenant.md) | `tenantName`  |
 | 客户端 ID  | 客户端 ID 是对 AAD _应用程序 ID_ 使用的 OAuth 术语。 |  `clientID`  |
