@@ -9,15 +9,15 @@ ms.service: event-grid
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 01/19/2019
+ms.date: 01/29/2019
 ms.author: spelluru
 ms.custom: mvc
-ms.openlocfilehash: 4a7e6189914728fac24e51f3b2dee66cc0bd8a05
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: e19d8b1b6eb06f78908238969a4f6e90e42bb564
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54463705"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55301452"
 ---
 # <a name="tutorial-automate-resizing-uploaded-images-using-event-grid"></a>教程：使用事件网格自动调整上传图像的大小
 
@@ -68,11 +68,21 @@ Azure Functions 需要一个常规存储帐户。 使用 [az storage account cre
 
 在以下命令中，请将 `<general_storage_account>` 占位符替换为自己的常规存储帐户的全局唯一名称。 
 
-```azurecli-interactive
-az storage account create --name <general_storage_account> \
---location westcentralus --resource-group myResourceGroup \
---sku Standard_LRS --kind storage
-```
+1. 设置一个变量，用于存储在上一教程中创建的资源组的名称。 
+
+    ```azurecli-interactive
+    resourceGroupName=<Name of the resource group that you created in the previous tutorial>
+    ```
+2. 为 Azure 函数所需的存储帐户的名称设置一个变量。 
+
+    ```azurecli-interactive
+    functionstorage=<name of the storage account to be used by function>
+    ```
+3. 为 Azure 函数创建存储帐户。 这不同于图像所在的存储。 
+
+    ```azurecli-interactive
+    az storage account create --name $functionstorage --location eastus --resource-group $resourceGroupName --sku Standard_LRS --kind storage
+    ```
 
 ## <a name="create-a-function-app"></a>创建函数应用  
 
@@ -80,10 +90,16 @@ az storage account create --name <general_storage_account> \
 
 在以下命令中，请在看到 `<function_app>` 占位符的位置替换为自己的唯一函数应用名称。 函数应用名称用作该函数应用的默认 DNS 域，因此，该名称需要在 Azure 的所有应用中保持唯一。 请使用所创建的常规存储帐户的名称来代替 `<general_storage_account>`。
 
-```azurecli-interactive
-az functionapp create --name <function_app> --storage-account  <general_storage_account>  \
---resource-group myResourceGroup --consumption-plan-location westcentralus
-```
+1. 为将要创建的函数应用指定一个名称。 
+
+    ```azurecli-interactive
+    functionapp=<name of the function app>
+    ```
+2. 创建 Azure 函数。 
+
+    ```azurecli-interactive
+    az functionapp create --name $functionapp --storage-account  $functionstorage --resource-group $resourceGroupName --consumption-plan-location eastus
+    ```
 
 现在，必须对函数应用进行配置，以便连接到在[以前的教程][previous-tutorial]中创建的 Blob 存储帐户。
 
@@ -93,18 +109,18 @@ az functionapp create --name <function_app> --storage-account  <general_storage_
 
 在以下 CLI 命令中，`<blob_storage_account>` 是在上一教程中创建的 Blob 存储帐户的名称。
 
-```azurecli-interactive
-storageConnectionString=$(az storage account show-connection-string \
---resource-group myResourceGroup --name <blob_storage_account> \
---query connectionString --output tsv)
+1. 获取图像所在的存储帐户的连接字符串。 
 
-az functionapp config appsettings set --name <function_app> \
---resource-group myResourceGroup \
---settings myblobstorage_STORAGE=$storageConnectionString \
-myContainerName=thumbnails FUNCTIONS_EXTENSION_VERSION=~2
-```
+    ```azurecli-interactive
+    storageConnectionString=$(az storage account show-connection-string --resource-group $resourceGroupName --name $blobStorageAccount --query connectionString --output tsv)
+    ```
+2. 配置函数应用。 
 
-`FUNCTIONS_EXTENSION_VERSION=~2` 设置使函数应用在 Azure Functions 运行时的 2.x 版上运行。
+    ```azurecli-interactive
+    az functionapp config appsettings set --name $functionapp --resource-group $resourceGroupName --settings AzureWebJobsStorage=$storageConnectionString THUMBNAIL_CONTAINER_NAME=thumbnails THUMBNAIL_WIDTH=100 FUNCTIONS_EXTENSION_VERSION=~2
+    ```
+
+    `FUNCTIONS_EXTENSION_VERSION=~2` 设置使函数应用在 Azure Functions 运行时的 2.x 版上运行。
 
 现在可以将函数代码项目部署到此函数应用。
 
@@ -117,9 +133,7 @@ myContainerName=thumbnails FUNCTIONS_EXTENSION_VERSION=~2
 在以下命令中，`<function_app>` 是此前创建的函数应用的名称。
 
 ```azurecli-interactive
-az functionapp deployment source config --name <function_app> \
---resource-group myResourceGroup --branch master --manual-integration \
---repo-url https://github.com/Azure-Samples/function-image-upload-resize
+az functionapp deployment source config --name $functionapp --resource-group $resourceGroupName --branch master --manual-integration --repo-url https://github.com/Azure-Samples/function-image-upload-resize
 ```
 
 # <a name="nodejstabnodejs"></a>[Node.js](#tab/nodejs)
@@ -148,11 +162,11 @@ az functionapp deployment source config --name <function_app> \
 
 事件订阅指示要发送到特定终结点的提供程序生成的事件。 在这种情况下，终结点由函数公开。 使用以下步骤创建一个事件订阅，以便向 Azure 门户中的函数发送通知： 
 
-1. 在 [Azure 门户](https://portal.azure.com)中，单击左下角的箭头以展开所有服务，在“筛选器”字段中键入 *functions*，然后选择“Function App”。 
+1. 在 [Azure 门户](https://portal.azure.com)的左侧菜单上选择“所有服务”，然后选择“Function App”。 
 
     ![在 Azure 门户中浏览到 Function App](./media/resize-images-on-storage-blob-upload-event/portal-find-functions.png)
 
-2. 展开函数应用，选择“imageresizerfunc”函数，然后选择“添加事件网格订阅”。
+2. 展开函数应用，选择 **Thumbnail** 函数，然后选择“添加事件网格订阅”。
 
     ![在 Azure 门户中浏览到 Function App](./media/resize-images-on-storage-blob-upload-event/add-event-subscription.png)
 
@@ -162,6 +176,7 @@ az functionapp deployment source config --name <function_app> \
 
     | 设置      | 建议的值  | 说明                                        |
     | ------------ |  ------- | -------------------------------------------------- |
+    | **名称** | imageresizersub | 标识新事件订阅的名称。 | 
     | 主题类型 |  存储帐户 | 选择存储帐户事件提供程序。 | 
     | **订阅** | Azure 订阅 | 默认情况下，选择当前的 Azure 订阅。   |
     | **资源组** | myResourceGroup | 选择“使用现有”，然后选择此教程中使用的资源组。  |
@@ -169,9 +184,8 @@ az functionapp deployment source config --name <function_app> \
     | 事件类型 | 已创建 blob | 除“已创建 Blob”以外，取消选中所有其他类型。 只有 `Microsoft.Storage.BlobCreated` 的事件类型传递给函数。| 
     | **订阅者类型** |  自动生成 |  预定义为 Webhook。 |
     | 订阅者终结点 | 自动生成 | 使用为你生成的终结点 URL。 | 
-    | **名称** | imageresizersub | 标识新事件订阅的名称。 | 
 4. *可选：* 如果你将来需要在同一个 blob 存储中创建其他容器以用于其他目的，则可以使用“筛选器”标签页中的“主题筛选”功能来更精细地定位 blob 事件，以确保只有当 blob 特别添加到“图像”容器时才会调用你的函数应用。 
-5. 单击“创建”以添加事件订阅。 这将创建一个事件订阅。在将 Blob 添加到图像容器时，该订阅会触发 `imageresizerfunc`。 此函数重设图像大小，然后将图像添加到 *thumbnails* 容器。
+5. 单击“创建”以添加事件订阅。 这将创建一个事件订阅。在将 Blob 添加到 *images* 容器时，该订阅会触发 `Thumbnail` 函数。 此函数重设图像大小，然后将图像添加到 *thumbnails* 容器。
 
 至此，已配置后端服务，可在示例 Web 应用中测试调整图像大小功能。 
 

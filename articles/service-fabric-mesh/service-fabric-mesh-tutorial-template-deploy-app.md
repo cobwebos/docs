@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 01/11/2019
 ms.author: ryanwi
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 97b1efbcb02277028782764ca1018b195ab21277
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: 906efa00243cc622c374d442a7982d87d106079b
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54246358"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55158836"
 ---
 # <a name="tutorial-deploy-an-application-to-service-fabric-mesh-using-a-template"></a>教程：使用模板将应用程序部署到 Service Fabric 网格
 
@@ -109,7 +109,7 @@ az acr create --resource-group myResourceGroup --name myContainerRegistry --sku 
 
 ## <a name="push-the-images-to-azure-container-registry"></a>向 Azure 容器注册表推送映像
 
-本教程使用待办事项示例应用程序作为示例。  [WebFrontEnd](https://hub.docker.com/r/seabreeze/azure-mesh-todo-webfrontend/) 和 [ToDoService](https://hub.docker.com/r/seabreeze/azure-mesh-todo-service/) 服务的容器映像可在 Docker 中心找到。 有关如何在 Visual Studio 中构建应用程序的信息，请参阅[构建 Servic Fabric 网格 Web 应用](service-fabric-mesh-tutorial-create-dotnetcore.md)。 Service Fabric 网格可以运行 Windows 或 Linux Docker 容器。  如果你使用的是 Linux 容器，请在 Docker 中选择“切换到 Linux 容器”。  如果你使用的是 Windows 容器，请在 Docker 中选择“切换到 Windows 容器”。
+本教程使用待办事项示例应用程序作为示例。  [WebFrontEnd](https://hub.docker.com/r/seabreeze/azure-mesh-todo-webfrontend/) 和 [ToDoService](https://hub.docker.com/r/seabreeze/azure-mesh-todo-service/) 服务的容器映像可在 Docker 中心找到。 有关如何在 Visual Studio 中构建应用程序的信息，请参阅[构建 Service Fabric 网格 Web 应用](service-fabric-mesh-tutorial-create-dotnetcore.md)。 Service Fabric 网格可以运行 Windows 或 Linux Docker 容器。  如果你使用的是 Linux 容器，请在 Docker 中选择“切换到 Linux 容器”。  如果你使用的是 Windows 容器，请在 Docker 中选择“切换到 Windows 容器”。
 
 要将映像推送到 ACR 实例，首先必须具有容器映像。 如果尚不具有任何本地容器映像，请使用 [docker pull](https://docs.docker.com/engine/reference/commandline/pull/) 命令从 Docker 中心拉取 [WebFrontEnd](https://hub.docker.com/r/seabreeze/azure-mesh-todo-webfrontend/) 和 [ToDoService](https://hub.docker.com/r/seabreeze/azure-mesh-todo-service/) 映像。
 

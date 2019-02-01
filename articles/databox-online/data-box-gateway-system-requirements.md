@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: gateway
 ms.topic: article
-ms.date: 10/17/2018
+ms.date: 01/28/2019
 ms.author: alkohli
-ms.openlocfilehash: da22c09a227069af0eeb42ab67a59189ae494185
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 81df0a776cd22490342230567deacb23097cd12e
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53256666"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55094183"
 ---
 # <a name="azure-data-box-gateway-system-requirements-preview"></a>Azure Data Box Gateway 系统要求（预览版）
 
@@ -31,7 +31,7 @@ Data Box Gateway 虚拟设备的系统要求包括：
 
 Data Box Gateway 的基础主机系统可以提供以下资源来预配虚拟设备：
 
-| 规范                                          | Description              |
+| 规范                                          | 说明              |
 |---------------------------------------------------------|--------------------------|
 | 虚拟处理器（核心数）   | 最低为 4 核 |            
 | 内存  | 最低为 8 GB|
@@ -46,7 +46,7 @@ Data Box Gateway 的基础主机系统可以提供以下资源来预配虚拟设
 
 | **操作系统/平台** | **版本** |
 | --- | --- |
-| Windows Server |2012 R2 <br> 2016 |
+| Windows Server |2012 R2 <br> 2016 <br> 2019 |
 | Windows |8、10 |
 | SUSE Linux |Enterprise Server 12 (x86_64)|
 | Ubuntu |16.04.3 LTS|
@@ -64,7 +64,7 @@ Data Box Gateway 的基础主机系统可以提供以下资源来预配虚拟设
 | **操作系统/平台**  |**版本**   |**说明**  |
 |---------|---------|---------|
 |Hyper-V  |  2012 R2 <br> 2016  |         |
-|VMware ESXi     | 6.0 <br> 6.5        |不支持 VMware 工具。         |
+|VMware ESXi     | 6.0 <br> 6.5 <br> 6.7       |不支持 VMware 工具。         |
 
 
 ## <a name="supported-storage-accounts"></a>支持的存储帐户

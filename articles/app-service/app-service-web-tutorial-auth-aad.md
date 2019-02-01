@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 08/07/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 0c2b8b205229ec1ef180e52372f75d06c83f1cc7
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: ff0cb82e3f1ddedf8dabebadf7a0309d08b2c4e3
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53716406"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55297083"
 ---
 # <a name="tutorial-authenticate-and-authorize-users-end-to-end-in-azure-app-service"></a>教程：在 Azure 应用服务中对用户进行端到端身份验证和授权
 
@@ -293,7 +293,7 @@ git push frontend master
 
 现在已配置好了应用。 前端现在可以通过适当的访问令牌访问后端了。
 
-若要了解如何为其他提供程序完成此配置，请参阅[刷新访问令牌](app-service-authentication-how-to.md#refresh-access-tokens)。
+若要了解如何为其他提供程序完成此配置，请参阅[刷新标识提供者令牌](app-service-authentication-how-to.md#refresh-identity-provider-tokens)。
 
 ## <a name="call-api-securely-from-server-code"></a>通过服务器代码安全地调用 API
 
@@ -417,7 +417,7 @@ git push frontend master
 
 ## <a name="when-access-tokens-expire"></a>当访问令牌过期时
 
-访问令牌在一段时间后会过期。 若要了解如何在不需用户通过应用重新进行身份验证的情况下刷新访问令牌，请参阅[刷新访问令牌](app-service-authentication-how-to.md#refresh-access-tokens)。
+访问令牌在一段时间后会过期。 若要了解如何在不需用户通过应用重新进行身份验证的情况下刷新访问令牌，请参阅[刷新标识提供者令牌](app-service-authentication-how-to.md#refresh-identity-provider-tokens)。
 
 ## <a name="clean-up-resources"></a>清理资源
 

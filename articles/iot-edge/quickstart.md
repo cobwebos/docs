@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: e0ad51bd2370cd8b7569d76e5d91b606928eea6d
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: a48a2ebc64d156d2755a2bef32672bc58b57ad00
+ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54189348"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54911247"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-from-the-azure-portal-to-a-windows-device---preview"></a>快速入门：将第一个 IoT Edge 模块从 Azure 门户部署到 Windows 设备 - 预览
 
@@ -104,7 +104,7 @@ IoT Edge 设备：
    az iot hub device-identity show-connection-string --device-id myEdgeDevice --hub-name {hub_name}
    ```
 
-3. 复制 JSON 输出中的连接字符串并保存。 在下一部分中配置 IoT Edge 运行时时将用到此值。
+3. 复制 JSON 输出中 `cs` 键的值并保存。 该值为设备连接字符串。 在下一部分中配置 IoT Edge 运行时时将用到此连接字符串。
 
    ![从 CLI 输出中检索连接字符串](./media/quickstart/retrieve-connection-string.png)
 
@@ -170,6 +170,8 @@ IoT Edge 运行时部署在所有 IoT Edge 设备上。 它有三个组件。 �
    ```
 
    ![查看设备上的一个模块](./media/quickstart/iotedge-list-1.png)
+
+完成安装并启动 IoT Edge 代理模块可能需要数分钟，尤其是在所用设备的容量或 Internet 访问受限的情况下。 
 
 IoT Edge 设备现在已配置好。 它可以运行云部署型模块了。
 

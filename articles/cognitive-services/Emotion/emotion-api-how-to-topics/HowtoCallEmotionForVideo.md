@@ -1,24 +1,24 @@
 ---
-title: 示例：对视频调用情感 API
+title: 示例：为视频调用情感 API
 titlesuffix: Azure Cognitive Services
 description: 了解如何在认知服务中调用用于视频的情感 API。
 services: cognitive-services
 author: anrothMSFT
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: emotion-api
+ms.subservice: emotion-api
 ms.topic: sample
 ms.date: 02/06/2017
 ms.author: anroth
 ROBOTS: NOINDEX
-ms.openlocfilehash: 6c96ab18161230ffabd0703bdb6d0230bdc8d3ba
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: dd2df32ed43fd540a0516b7d5c1debc6a4f49f4f
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50026256"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55211162"
 ---
-# <a name="example-call-emotion-api-for-video"></a>示例：对视频调用情感 API
+# <a name="example-call-emotion-api-for-video"></a>示例：为视频调用情感 API
 
 > [!IMPORTANT]
 > 情感 API 将于 2019 年 2 月 15 日弃用。 情感识别功能现在已作为[人脸 API](https://docs.microsoft.com/azure/cognitive-services/face/) 的一部分正式发布。 
@@ -115,7 +115,7 @@ var emotionRecognitionJsonString = ((VideoOperationInfoResult<VideoAggregateReco
 
 人脸检测和跟踪 JSON 包括以下属性：
 
-属性 | Description
+属性 | 说明
 -------------|-------------
 版本 | 指用于视频的情感 API 的 JSON 版本。
 时间刻度 | 视频的每秒“刻度”数。

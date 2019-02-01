@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 01/15/2019
 ms.author: rezas
-ms.openlocfilehash: f1c2cd037539b3cf33f6c58c4ac8a3a1e8c304ce
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: d0fc8d68b3412c2c43a88e3a9484dab3a150b811
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54830521"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54886265"
 ---
 # <a name="quickstart-sshrdp-over-iot-hub-device-streams-using-c-proxy-application-preview"></a>快速入门：使用 C 应用程序代理通过 IoT 中心设备流实现 SSH/RDP 方案（预览）
 
@@ -95,7 +95,7 @@ ms.locfileid: "54830521"
 
 ```
     # In Linux
-    cmake -Denable_streaming=ON ..
+    cmake ..
     make -j
 ```
 
@@ -104,10 +104,10 @@ ms.locfileid: "54830521"
 ```
     # In Windows
     # For VS2015
-    $ cmake -Denable_streaming=ON .. -G "Visual Studio 15 2015"
+    $ cmake .. -G "Visual Studio 15 2015"
     
     # Or for VS2017
-    $ cmake -Denable_streaming=ON .. -G "Visual Studio 15 2017
+    $ cmake .. -G "Visual Studio 15 2017
 
     # Then build the project
     cmake --build . -- /m /p:Configuration=Release
@@ -141,7 +141,7 @@ ms.locfileid: "54830521"
     az iot hub device-identity show-connection-string --hub-name YourIoTHubName --device-id MyDevice --output table
     ```
 
-    记下设备连接字符串，如以下示例中所示：
+    记下设备连接字符串，如以下示例所示：
 
    `HostName={YourIoTHubName}.azure-devices.net;DeviceId=MyDevice;SharedAccessKey={YourSharedAccessKey}`
 
@@ -179,7 +179,6 @@ ms.locfileid: "54830521"
     # Go to sample's folder cmake/iothub_client/samples/iothub_client_c2d_streaming_proxy_sample
     $ ./iothub_client_c2d_streaming_proxy_sample
 
-
     # In Windows
     # Go to sample's release folder cmake\iothub_client\samples\iothub_client_c2d_streaming_proxy_sample\Release
     iothub_client_c2d_streaming_proxy_sample.exe
@@ -194,14 +193,14 @@ ms.locfileid: "54830521"
 
 假设设备本地代理和服务本地代理都在运行，请使用 SSH 客户端程序并连接到端口 2222 上的服务本地代理（而不要直接连接到 SSH 守护程序）。 
 
-```azurecli-interactive
+```
 ssh <username>@localhost -p 2222
 ```
 
 此时会看到 SSH 登录提示，其中要求输入凭据。
 
 
-通过 <code>IP_address:22</code> 连接到 SSH 守护程序的设备本地代理中的控制台输出：![替代文本](./media/quickstart-device-streams-proxy-c/device-console-output.PNG "设备本地代理输出")
+通过 `IP_address:22` 连接到 SSH 守护程序的设备本地代理中的控制台输出：![替代文本](./media/quickstart-device-streams-proxy-c/device-console-output.PNG "设备本地代理输出")
 
 SSH 客户端程序的控制台输出（SSH 客户端通过连接到服务本地代理侦听的端口 22 来与 SSH 守护程序通信）：![替代文本](./media/quickstart-device-streams-proxy-csharp/ssh-console-output.png "SSH 客户端输出")
 

@@ -7,7 +7,7 @@ author: CelesteDG
 manager: mtillman
 editor: ''
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
@@ -16,12 +16,12 @@ ms.date: 10/25/2018
 ms.author: celested
 ms.custom: aaddev
 ms.reviewer: lenalepa, sureshja
-ms.openlocfilehash: 589ad189a3a157d0116e3991f8df3d6b43afc167
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: 3f38162fd4d95127ddf7797638bc9af21e6aaf20
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49988655"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55095682"
 ---
 # <a name="quickstart-configure-an-application-to-expose-web-apis-preview"></a>快速入门：将应用程序配置为公开 Web API（预览版）
 
@@ -64,7 +64,7 @@ ms.locfileid: "49988655"
 
 1. 出现“添加范围”页时，输入范围的信息：
 
-    | 字段 | Description |
+    | 字段 | 说明 |
     |-------|-------------|
     | **范围名称** | 为范围输入一个有意义的名称。<br><br>例如，`Employees.Read.All`。 |
     | **谁可以许可** | 选择是让用户许可此范围，还是让管理员许可。 若要获得更高特权，请选择“仅管理员”。 |
@@ -73,7 +73,7 @@ ms.locfileid: "49988655"
 
     如果用户可以许可你的范围，另请添加以下字段的值：
 
-    | 字段 | Description |
+    | 字段 | 说明 |
     |-------|-------------|
     | **用户许可显示名称** | 为范围输入一个用户会看到的有意义名称。<br><br>例如： `Read-only access to your Employee records` |
     | **用户许可说明** | 为范围输入用户会看到的有意义说明。<br><br>例如： `Allow the application to have read-only access to your Employee data.` |

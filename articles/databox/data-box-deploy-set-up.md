@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 01/17/2019
+ms.date: 01/24/2019
 ms.author: alkohli
-ms.openlocfilehash: 460a05ac25ca4af56b81fb2025e0886c7bda3070
-ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
+ms.openlocfilehash: 79e2d33d1452eda35141b6ae80b46ab4eecd0909
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54391160"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54902153"
 ---
 # <a name="tutorial-cable-and-connect-to-your-azure-data-box"></a>教程：为 Azure Data Box 连接电缆并连接到它
 
@@ -50,7 +50,7 @@ ms.locfileid: "54391160"
 
 1. 检查设备是否有任何改动的痕迹或任何明显的损坏。 如果设备已被篡改或严重损坏，请不要继续操作。 请立即联系 Microsoft 支持部门，让他们帮助评估设备是否正常，或者是否需要更换磁盘。
 2. 将设备运输到你希望为其通电的位置。 将设备放置在一个平面上。 也可以将设备放置在标准机架上。
-3. 连接电源线和网络电缆。 对于常见配置，连接电缆后的设备的底板如下所示。 
+3. 连接电源线和网络电缆。 对于常见配置，连接电缆后的设备的底板如下所示。 可以根据环境从其他[布线选项](data-box-cable-options.md)中进行选择。
     
     ![已连接了电缆的 Data Box 设备底板](media/data-box-deploy-set-up/data-box-cabled-dhcp.png)
 

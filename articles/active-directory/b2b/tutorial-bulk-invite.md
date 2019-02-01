@@ -3,18 +3,18 @@ title: 有关批量邀请 B2B 协作用户的教程 - Azure Active Directory | M
 description: 在本教程中，你将学习如何使用 PowerShell 和 CSV 文件向外部 Azure AD B2B 协作用户批量发送邀请。
 services: active-directory
 ms.service: active-directory
-ms.component: B2B
+ms.subservice: B2B
 ms.topic: tutorial
 ms.date: 08/14/2018
 ms.author: mimart
 author: msmimart
 ms.reviewer: mal
-ms.openlocfilehash: c24a82d5765fef01eab9ae24f637c215c62e822d
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: e40eb5c1727317b375d45da83cd712cf0b7f963c
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45986896"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55099724"
 ---
 # <a name="tutorial-bulk-invite-azure-ad-b2b-collaboration-users"></a>教程：批量邀请 Azure AD B2B 协作用户
 
@@ -34,29 +34,29 @@ ms.locfileid: "45986896"
 
 首先，检查已安装了哪些模块。 以已提升的用户身份打开 Windows PowerShell（以管理员身份运行），然后运行以下命令：
  
-````powershell  
+```powershell  
 Get-Module -ListAvailable AzureAD*
-````
+```
 
 根据输出，执行以下操作之一：
 
 - 如果未返回任何结果，请运行以下命令来安装 AzureADPreview 模块：
   
-   ````powershell  
+   ```powershell  
    Install-Module AzureADPreview
-   ````
+   ```
 - 如果结果中仅显示了 AzureAD 模块，请运行以下命令来安装 AzureADPreview 模块： 
 
-   ````powershell 
+   ```powershell 
    Uninstall-Module AzureAD 
    Install-Module AzureADPreview 
-   ````
+   ```
 - 如果结果中仅显示了 AzureADPreview 模块，但收到消息指出存在更新的版本，请运行以下命令来更新此模块： 
 
-   ````powershell 
+   ```powershell 
    Uninstall-Module AzureADPreview 
    Install-Module AzureADPreview 
-  ````
+  ```
 
 可能会收到提示，其要求你从不受信任的存储库安装模块。 如果之前未将 PSGallery 存储库设置为受信任的存储库，则可能出现此情况。 按 Y 以安装模块。
 

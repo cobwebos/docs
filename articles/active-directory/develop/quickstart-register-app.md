@@ -7,7 +7,7 @@ author: CelesteDG
 manager: mtillman
 editor: ''
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
@@ -16,12 +16,12 @@ ms.date: 11/02/2018
 ms.author: celested
 ms.custom: aaddev
 ms.reviewer: lenalepa, sureshja
-ms.openlocfilehash: 1809e7f72afd99de38387317daf2ecb92dbe3cf0
-ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.openlocfilehash: fa75666c63d666f1358c1d6bf2f4b18b9eb7a813
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51298715"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55103320"
 ---
 # <a name="quickstart-register-an-application-with-the-microsoft-identity-platform-preview"></a>快速入门：将应用程序注册到 Microsoft 标识平台（预览版）
 
@@ -43,7 +43,7 @@ ms.locfileid: "51298715"
     - **名称**：输入一个会显示给应用用户的有意义的应用程序名称。
     - **支持的帐户类型** - 选择希望应用程序支持的具体帐户。
 
-        | 支持的帐户类型 | Description |
+        | 支持的帐户类型 | 说明 |
         |-------------------------|-------------|
         | **仅此组织目录中的帐户** | 若要生成业务线 (LOB) 应用程序，请选择此选项。 如果不在目录中注册应用程序，则此选项不可用。<br><br>此选项映射到仅限 Azure AD 的单租户。<br><br>这是默认选项，除非你是在目录外部注册应用。 如果在目录外部注册应用，则默认设置为 Azure AD 多租户和个人 Microsoft 帐户。 |
         | **任何组织目录中的帐户** | 若要以所有企业和教育客户为目标，请选择此选项。<br><br>此选项映射到仅限 Azure AD 的多租户。<br><br>如果已将应用注册为仅限 Azure AD 的单租户，则可通过“身份验证”边栏选项卡将其更新为 Azure AD 多租户，以及从多租户更新为单租户。 |

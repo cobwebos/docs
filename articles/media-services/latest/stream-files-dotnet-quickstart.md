@@ -11,16 +11,16 @@ ms.service: media-services
 ms.workload: media
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 11/11/2018
+ms.date: 01/28/2019
 ms.author: juliako
-ms.openlocfilehash: fc8fc1af51332df032e864c84791791a38bc8601
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: 50c17e6ce953b601cc4ac0a406f443a54b9db3e7
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51612214"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55162712"
 ---
-# <a name="quickstart-stream-video-files---net"></a>快速入门：流式传输视频文件 - .NET
+# <a name="quickstart-stream-video-files---net"></a>快速入门：流式处理视频文件 - .NET
 
 本快速入门展示了使用 Azure 媒体服务在各种浏览器和设备上对视频进行编码和流式处理有多轻松。 可以使用 HTTPS、URL、SAS URL 或位于 Azure Blob 存储中的文件路径来指定输入内容。
 本主题中的示例对可通过 HTTPS URL 访问的内容进行编码。 请注意，目前，AMS v3 不支持基于 HTTPS URL 的块传输编码。
@@ -34,13 +34,10 @@ ms.locfileid: "51612214"
 ## <a name="prerequisites"></a>先决条件
 
 - 如果没有安装 Visual Studio，可下载 [Visual Studio Community 2017](https://www.visualstudio.com/thank-you-downloading-visual-studio/?sku=Community&rel=15)。
-- 在本地安装并使用 CLI，本文要求使用 Azure CLI 2.0 或更高版本。 运行 `az --version` 即可确定你拥有的版本。 如需进行安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。 
+- [创建媒体服务帐户](create-account-cli-how-to.md)。<br/>请务必记住用于资源组名称和媒体服务帐户名称的值。
+- 遵循[使用 Azure CLI 访问 Azure 媒体服务 API](access-api-cli-how-to.md) 中的步骤并保存凭据。 需要使用这些凭据来访问 API。
 
-    目前，并非所有[媒体服务 v3 CLI](https://aka.ms/ams-v3-cli-ref) 命令都可在 Azure Cloud Shell 中运行。 建议在本地使用 CLI。
-
-- [创建媒体服务帐户](create-account-cli-how-to.md)。
-
-## <a name="download-the-sample"></a>下载示例
+## <a name="download-and-configure-the-sample"></a>下载并配置示例
 
 使用以下命令将包含流式处理 .NET 示例的 GitHub 存储库克隆到计算机：  
 
@@ -50,19 +47,19 @@ ms.locfileid: "51612214"
 
 该示例位于 [EncodeAndStreamFiles](https://github.com/Azure-Samples/media-services-v3-dotnet-quickstarts/tree/master/AMSV3Quickstarts/EncodeAndStreamFiles) 文件夹。
 
+打开下载的项目中的 [appsettings.json](https://github.com/Azure-Samples/media-services-v3-dotnet-quickstarts/blob/master/AMSV3Quickstarts/EncodeAndStreamFiles/appsettings.json)。 将值替换为在[访问 API](access-api-cli-how-to.md) 中获取的凭据。
+
 该示例执行以下操作：
 
-1. 创建一个转换（首先，检查指定的转换是否存在）。 
-2. 创建一个输出资产用作编码作业的输出。
-3. 创建基于 HTTPS URL 的作业输入。
-4. 使用先前创建的输入和输出提交编码作业。
+1. 创建一个**转换**（首先，检查指定的转换是否存在）。 
+2. 创建一个输出**资产**，用作编码**作业**的输出。
+3. 创建基于 HTTPS URL 的**作业**输入。
+4. 使用先前创建的输入和输出提交编码**作业**。
 5. 检查作业的状态。
-6. 创建 StreamingLocator。
+6. 创建**流式处理定位符**。
 7. 生成流式处理 URL。
 
 有关示例代码中的每个功能的内容介绍，请在[此源文件](https://github.com/Azure-Samples/media-services-v3-dotnet-quickstarts/blob/master/AMSV3Quickstarts/EncodeAndStreamFiles/Program.cs)中查看相关代码和注释。
-
-[!INCLUDE [media-services-v3-cli-access-api-include](../../../includes/media-services-v3-cli-access-api-include.md)]
 
 ## <a name="run-the-sample-app"></a>运行示例应用
 

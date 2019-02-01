@@ -10,22 +10,21 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 01/15/2019
 ms.author: rezas
-ms.openlocfilehash: 012fdfa4faf10cacaf85819517f358c1af1ab39d
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 0231b67ee56de5e1729c02ed3d87b2461f025b84
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54830703"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54887421"
 ---
 # <a name="quickstart-sshrdp-over-iot-hub-device-streams-using-nodejs-proxy-application-preview"></a>快速入门：使用 Node.js 应用程序代理通过 IoT 中心设备流实现 SSH/RDP 方案（预览）
 
 [!INCLUDE [iot-hub-quickstarts-4-selector](../../includes/iot-hub-quickstarts-4-selector.md)]
 
-服务和设备应用程序可以使用 [IoT 中心设备流](./iot-hub-device-streams-overview.md)以安全且防火墙友好的方式进行通信。 本快速入门介绍如何执行一个在服务端中运行的 Node.js 代理应用程序，以通过设备流将 SSH 和 RDP 流量发送到设备。 有关设置概述，请参阅[此页](./iot-hub-device-streams-overview.md#local-proxy-sample-for-ssh-or-rdp)。 在公共预览期，Node.js SDK 仅支持服务端中的设备流。 因此，本快速入门只会提供有关运行服务端代理的说明。 应该运行 [C 快速入门](./quickstart-device-streams-proxy-c.md)或 [C# 快速入门](./quickstart-device-streams-proxy-csharp.md)指南中随附的设备端代理。
+服务和设备应用程序可以使用 [IoT 中心设备流](./iot-hub-device-streams-overview.md)以安全且防火墙友好的方式进行通信。 本快速入门指南介绍如何执行一个在服务端中运行的 Node.js 代理应用程序，以通过设备流将 SSH 和 RDP 流量发送到设备。 有关设置概述，请参阅[此文](./iot-hub-device-streams-overview.md#local-proxy-sample-for-ssh-or-rdp)。 在公共预览期，Node.js SDK 仅支持服务端的设备流。 因此，本快速入门指南只会提供有关运行服务本地代理的说明。 应该运行 [C 快速入门](./quickstart-device-streams-proxy-c.md)或 [C# 快速入门](./quickstart-device-streams-proxy-csharp.md)指南中随附的设备本地代理。
 
-本文首先介绍 SSH 的设置（使用端口 `22`）。 然后介绍如何修改 RDP 的设置（使用端口 3389）。 由于设备流不区分应用程序和协议，因此，可以修改同一示例（通常是通过更改通信端口）来适应其他类型的应用程序流量。
+本文首先介绍 SSH 的设置（使用端口 22）。 然后介绍如何修改 RDP 的设置（使用端口 3389）。 由于设备流不区分应用程序和协议，因此，可以修改同一示例（通常是修改通信端口）来适应其他类型的客户端/服务器应用程序流量。
 
-代码将演示设备流的发起和用法。可针对其他应用程序流量（不是 RDP 和 SSH）改编这些代码。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -34,7 +33,7 @@ ms.locfileid: "54830703"
 
 ## <a name="prerequisites"></a>先决条件
 
-若要运行本快速入门中所述的服务端应用程序，需要在开发计算机上安装 Node.js v4.x.x 或更高版本。
+若要运行本快速入门中所述的服务本地应用程序，需要在开发计算机上安装 Node.js v4.x.x 或更高版本。
 
 可从 [nodejs.org](https://nodejs.org) 为下载适用于多个平台的 Node.js。
 
@@ -86,14 +85,14 @@ node --version
 
 ## <a name="ssh-to-a-device-via-device-streams"></a>使用 SSH 通过设备流连接到设备
 
-### <a name="run-the-device-side-proxy"></a>运行设备端代理
+### <a name="run-the-device-local-proxy"></a>运行设备本地代理
 
-如前所述，IoT 中心 Node.js SDK 仅支持服务端中的设备流。 对于设备端应用程序，请使用 [C 快速入门](./quickstart-device-streams-proxy-c.md)或 [C# 快速入门](./quickstart-device-streams-proxy-csharp.md)指南中随附的设备代理程序。 请继续下一步之前，请确保设备端代理正在运行。
+如前所述，IoT 中心 Node.js SDK 仅支持服务端的设备流。 对于设备本地应用程序，请使用 [C 快速入门](./quickstart-device-streams-proxy-c.md)或 [C# 快速入门](./quickstart-device-streams-proxy-csharp.md)指南中随附的设备代理程序。 请继续下一步之前，请确保设备本地代理正在运行。
 
 
-### <a name="run-the-service-side-proxy"></a>运行服务端代理
+### <a name="run-the-service-local-proxy"></a>运行服务本地代理
 
-假设设备端代理正在运行，请遵循以下步骤运行以 Node.js 编写的服务端代理：
+假设[设备本地代理](#run-the-device-local-proxy)正在运行，请遵循以下步骤运行以 Node.js 编写的服务本地代理：
 
 - 以环境变量的形式提供服务凭据、运行 SSH 守护程序的目标设备 ID，以及设备上运行的代理的端口号。
 ```
@@ -107,7 +106,7 @@ node --version
   SET STREAMING_TARGET_DEVICE=MyDevice
   SET PROXY_PORT=2222
 ```
-将 `MyDevice` 更改为你给设备选择的设备 ID。
+更改上述值以匹配设备 ID 和连接字符串。
 
 - 导航到解压缩的项目文件夹中的 `Quickstarts/device-streams-service`，并运行服务本地代理。
 ```
@@ -124,10 +123,10 @@ node --version
 ### <a name="ssh-to-your-device-via-device-streams"></a>使用 SSH 通过设备流连接到设备
 在 Linux 中，请在终端上使用 `ssh $USER@localhost -p 2222` 运行 SSH。 在 Windows 中，请使用偏好的 SSH 客户端（例如 PuTTY）。
 
-建立 SSH 会话后服务端中的控制台输出（服务本地代理侦听端口 2222）：![替代文本](./media/quickstart-device-streams-proxy-nodejs/service-console-output.PNG "SSH 终端输出")
+建立 SSH 会话后服务本地的控制台输出（服务本地代理侦听端口 2222）：![替代文本](./media/quickstart-device-streams-proxy-nodejs/service-console-output.PNG "SSH 终端输出")
 
 
-SSH 客户端程序的控制台输出（SSH 客户端通过连接到服务本地代理侦听的端口 <code>22</code> 来与 SSH 守护程序通信）：![替代文本](./media/quickstart-device-streams-proxy-nodejs/ssh-console-output.PNG "SSH 客户端输出")
+SSH 客户端程序的控制台输出（SSH 客户端通过连接到服务本地代理侦听的端口 22 来与 SSH 守护程序通信）：![替代文本](./media/quickstart-device-streams-proxy-nodejs/ssh-console-output.PNG "SSH 客户端输出")
 
 
 ### <a name="rdp-to-your-device-via-device-streams"></a>使用 RDP 通过设备流连接到设备

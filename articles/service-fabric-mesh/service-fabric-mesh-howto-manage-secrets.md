@@ -3,18 +3,18 @@ title: 管理 Azure Service Fabric 网格应用程序机密 | Microsoft Docs
 description: 管理应用程序机密，以便可以安全地创建并部署 Service Fabric 网格应用程序。
 services: service-fabric-mesh
 keywords: 机密
-author: aljo
+author: aljo-microsoft
 ms.author: aljo
 ms.date: 11/28/2018
 ms.topic: get-started-article
 ms.service: service-fabric-mesh
 manager: chackdan
-ms.openlocfilehash: d92726ebc2cd4c6c44afdb2d2a9f53ab5441ac32
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.openlocfilehash: 06d8519836129a557ec69d59d15eb12129e8099b
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52891850"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55236745"
 ---
 # <a name="manage-service-fabric-mesh-application-secrets"></a>管理 Service Fabric 网格应用程序机密
 Service Fabric 网格支持将机密作为 Azure 资源。 Service Fabric 网格机密可以是任何敏感文本信息，例如存储连接字符串、密码或应该安全存储和传输的其他值。 本文展示了如何使用 Service Fabric Secure Store Service 来部署和维护机密。
@@ -183,7 +183,7 @@ Service Fabric 网格支持将机密作为 Azure 资源。 Service Fabric 网格
 
 ## <a name="modify-mesh-application-to-reference-mesh-secret-values"></a>修改网格应用程序以引用网格机密值
 要使用 Secure Store Service 机密值，Service Fabric 网格应用程序需要知道以下两个字符串：
-1. Micrsoft.ServiceFabricMesh/Secrets.name 包含文件的名称，并且将包含明文形式的机密值。
+1. Microsoft.ServiceFabricMesh/Secrets.name 包含文件的名称，并且将包含明文形式的机密值。
 2. Windows 或 Linux 环境变量“Fabric_SettingPath”包含可以从中访问 Secure Store Service 机密值所在文件的目录路径。 对于 Windows 承载的网格应用程序，这是“C:\Settings”；对于 Linux 承载的网格应用程序，这是“/var/settings”。
 
 ## <a name="deploy-or-use-a-rolling-upgrade-for-mesh-application-to-consume-secret-values"></a>部署或滚动升级网格应用程序以使用机密值

@@ -1,23 +1,23 @@
 ---
-title: 快速入门：项目答案搜索、Java
+title: 快速入门：项目答案答搜索，Java
 titlesuffix: Azure Cognitive Services
 description: 开始在 Java 中使用项目应答搜索。
 services: cognitive-services
 author: mikedodaro
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: answer-search
+ms.subservice: answer-search
 ms.topic: quickstart
 ms.date: 04/13/2018
 ms.author: rosh
-ms.openlocfilehash: 66d5488fa0e8f542327b4150d50e4351af6ade55
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: 0353736b3b66c58288dbd3d351b3b3dd53f467d6
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49469089"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55226870"
 ---
-# <a name="quickstart-project-answer-search-query-in-java"></a>快速入门：使用 Java 实现项目答案搜索查询
+# <a name="quickstart-project-answer-search-query-in-java"></a>快速入门：Java 中的项目答应搜索查询
 本文使用 Java 来演示 Azure 上 Microsoft 认知服务中包含的必应搜索 API。 该 API 是一种 REST Web 服务，与任何可以发出 HTTP 请求和分析 JSON 的编程语言兼容。
  
 示例代码使用 Java 和最小数量的外部依赖项。  也可在使用 Mono 的 Linux 或 Mac OS X 上运行它。
@@ -30,7 +30,7 @@ ms.locfileid: "49469089"
 
 下面的代码创建 `WebRequest`、设置访问密钥标头，并为“Gibraltar”添加查询字符串。  然后发送请求，并将响应分配到包含 JSON 文本的字符串。
 
-````
+```
     static String host = "https://api.labs.cognitive.microsoft.com";
     static String path = "/answerSearch/v7.0/search";
 
@@ -46,7 +46,7 @@ ms.locfileid: "49469089"
 
     // construct result object for return
     SearchResults results = new SearchResults(new HashMap<String, String>(), response);
-````
+```
 
 ## <a name="complete-code"></a>完整代码
 
@@ -57,7 +57,7 @@ ms.locfileid: "49469089"
 4. 使用对订阅有效的访问密钥替换 subscriptionKey 值。
 5. 运行该程序。
 
-````
+```
 package knowledgeAPI;
 import java.io.InputStream;
 import java.net.*;
@@ -148,7 +148,7 @@ public class KnowledgeSrch {
         }
 }
 
-````
+```
 
 ## <a name="next-steps"></a>后续步骤
 - [C# 快速入门](c-sharp-quickstart.md)

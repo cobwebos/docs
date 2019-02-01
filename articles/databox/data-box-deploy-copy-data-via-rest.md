@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 12/07/2018
+ms.date: 01/24/2019
 ms.author: alkohli
-ms.openlocfilehash: fa0883c18e0d586e6e9b35fb19dbe304388045b5
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.openlocfilehash: 85c9eeb60027ba44fd5e65d056864aa76a6e720a
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54215280"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54900878"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-blob-storage-via-rest-apis"></a>教程：通过 REST API 将数据复制到 Azure Data Box Blob 存储  
 
@@ -22,9 +22,9 @@ ms.locfileid: "54215280"
 本教程介绍如何执行下列操作：
 
 > [!div class="checklist"]
+> * 先决条件
 > * 通过 *http* 或 *https* 连接到 Data Box Blob 存储
 > * 将数据复制到 Data Box
-> * 准备交付
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -201,18 +201,17 @@ ms.locfileid: "54215280"
     AzCopy /Source:C:\myfolder /Dest:https://data-box-storage-account-name.blob.device-serial-no.microsoftdatabox.com/container-name/files/ /DestKey:<key> /S /XO
 
 
-## <a name="prepare-to-ship"></a>准备交付
-
-[!INCLUDE [data-box-prepare-to-ship](../../includes/data-box-prepare-to-ship.md)]
+下一步是准备好要交付的设备。
 
 ## <a name="next-steps"></a>后续步骤
 
 本教程介绍了有关 Azure Data Box 的主题，例如：
 
 > [!div class="checklist"]
+> * 先决条件
 > * 通过 *http* 或 *https* 连接到 Data Box Blob 存储
 > * 将数据复制到 Data Box
-> * 准备交付
+
 
 请继续学习下一篇教程，了解如何将 Data Box 寄回 Microsoft。
 

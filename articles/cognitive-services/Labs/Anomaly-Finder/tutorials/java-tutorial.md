@@ -1,21 +1,21 @@
 ---
-title: 教程：异常情况检测、Java
+title: 教程：异常检测，Java
 titlesuffix: Azure Cognitive Services
 description: 探索使用异常情况检测 API 的 Java 应用。 将原始数据点发送到 API 并获得预期值和异常点。
 services: cognitive-services
 author: wenya
 manager: bix
 ms.service: cognitive-services
-ms.component: anomaly-detection
+ms.subservice: anomaly-detection
 ms.topic: tutorial
 ms.date: 05/01/2018
 ms.author: wenya
-ms.openlocfilehash: 4aab76b819ba252dbe00b3faf2f69c24df14bbd1
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 8f087e07bbf5033698b18b4349c4d13e862a1555
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50419021"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55223334"
 ---
 # <a name="tutorial-anomaly-detection-with-java-application"></a>教程：使用 Java 应用程序进行异常情况检测
 

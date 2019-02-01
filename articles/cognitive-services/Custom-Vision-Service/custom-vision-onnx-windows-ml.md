@@ -1,23 +1,23 @@
 ---
-title: 教程：结合使用 ONNX 模型和 Windows ML - 自定义影像服务
+title: 教程：结合使用 ONNX 模型和 Windows ML - 自定义视觉服务
 titlesuffix: Azure Cognitive Services
 description: 了解如何创建使用从 Azure 认知服务导出的 ONNX 模型的 Windows UWP 应用。
 services: cognitive-services
 author: larryfr
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: custom-vision
+ms.subservice: custom-vision
 ms.topic: tutorial
 ms.date: 10/16/2018
 ms.author: larryfr
-ms.openlocfilehash: f9ffbdd34c6fe7e8fc0f5e8ad8a49a3ad922f88a
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.openlocfilehash: 55235c8c209a17a494c3879d61e22665ba7a893b
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49362954"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55224898"
 ---
-# <a name="tutorial-use-an-onnx-model-from-custom-vision-with-windows-ml-preview"></a>教程：结合使用自定义影像服务 ONNX 模型和 Windows ML（预览版）
+# <a name="tutorial-use-an-onnx-model-from-custom-vision-with-windows-ml-preview"></a>教程：结合使用自定义视觉服务 ONNX 模型和 Windows ML（预览版）
 
 了解如何结合使用从自定义影像服务导出的 ONNX 模型和 Windows ML（预览版）。
 

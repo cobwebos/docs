@@ -4,93 +4,56 @@ titleSuffix: Azure Machine Learning service
 description: 找到并使用示例 Jupyter 笔记本，以便在 Python 中探索 Azure 机器学习服务。
 services: machine-learning
 ms.service: machine-learning
-ms.component: core
+ms.subservice: core
 ms.topic: sample
 author: sdgilley
 ms.author: sgilley
 ms.reviewer: sgilley
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 6befe3a3fee80dd65fd3ac5be241c558707224e6
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 5ba555ad31545e1ae1aa822ec58b0bd22ef486ac
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54811088"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55295145"
 ---
 # <a name="use-jupyter-notebooks-to-explore-azure-machine-learning-service"></a>使用 Jupyter 笔记本探索 Azure 机器学习服务
-
 
 为了方便用户，我们开发了一系列 Jupyter Python 笔记本，用于探索 Azure 机器学习服务。 
 
 了解如何将服务与有关本站点的文档配合使用，并使用这些笔记本，根据情况来自定义它们。 
 
-## <a name="prerequisite"></a>先决条件
+使用下面的路径之一，以便运行笔记本服务器和这些示例笔记本。  待服务器运行以后，在 **tutorials** 文件夹中找到教程笔记本，或者在 **how-to-use-azureml** 文件夹中浏览不同的功能。
 
-完成 [Azure 机器学习 Python 快速入门](quickstart-get-started.md)，以便创建工作区并启动 Azure Notebooks。
 
 ## <a name="try-azure-notebooks-free-jupyter-notebooks-in-the-cloud"></a>试用 Azure Notebook：云中免费的 Jupyter Notebook
 
 Azure Notebooks 的入门很容易！ 已在 [Azure Notebooks](https://notebooks.azure.com/) 上安装和配置[用于 Python 的 Azure 机器学习 SDK](https://aka.ms/aml-sdk)。 安装和未来的更新通过 Azure 服务自动管理。
   
-+ 若要运行**核心教程笔记本**，请执行以下操作：
-  1. 转到 [Azure Notebooks](https://notebooks.azure.com/)。
-    
-  1. 找到 **tutorials** 文件夹，该文件夹位于在先决条件快速入门期间创建的**入门**库中。
-    
-  1. 打开要运行的笔记本。
-    
-+ 若要运行**其他笔记本**，请执行以下操作：
-
-  1. 在 Azure Notebooks 中[导入示例笔记本](https://aka.ms/aml-clone-azure-notebooks)。
-
-  1. 使用下述方法之一，将工作区配置文件添加到库：
-     + 将 **config.json** 文件从**入门**库复制到新克隆的库中。
-
-     + 使用 [configuration.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/configuration.ipynb) 中的代码创建新的工作区。
-    
-  1. 打开要运行的笔记本。     
+[!INCLUDE [aml-azure-notebooks](../../../includes/aml-azure-notebooks.md)]
 
 
 ## <a name="use-a-data-science-virtual-machine-dsvm"></a>使用 Data Science Virtual Machine (DSVM)
 
-已在 DSVM 上安装和配置[用于 Python 的 Azure 机器学习 SDK](https://aka.ms/aml-sdk) 和笔记本服务器。 使用这些步骤来运行笔记本。
+已在 DSVM 上安装和配置[用于 Python 的 Azure 机器学习 SDK](https://aka.ms/aml-sdk) 和笔记本服务器。 
 
-1. [创建 DSVM](how-to-configure-environment.md#dsvm)。
+[创建 DSVM](how-to-configure-environment.md#dsvm) 以后，在 DSVM 上根据这些步骤运行笔记本。
 
-1. 克隆 [GitHub 存储库](https://aka.ms/aml-notebooks)。
+[!INCLUDE [aml-dsvm-server](../../../includes/aml-dsvm-server.md)]
 
-1. 使用下述方法之一，将工作区配置文件添加到库：
-    * 将通过先决条件快速入门创建的 **aml_config\config.json** 文件复制到克隆的目录中。
-
-    * 使用 [configuration.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/configuration.ipynb) 中的代码创建新的工作区。
-
-1. 从克隆目录启动 notebook 服务器。
 
 ## <a name="use-your-own-jupyter-notebook-server"></a>使用自己的 Jupyter Notebook 服务器
 
 执行这些步骤，在计算机上创建本地 Jupyter Notebook 服务器。
 
-1. 确保完成先决条件快速入门，在其中安装 Azure 机器学习 SDK。
+[!INCLUDE [aml-your-server](../../../includes/aml-your-server.md)]
 
-1. 克隆 [GitHub 存储库](https://aka.ms/aml-notebooks)。
+<a name="automated-ml-setup"></a>
 
-1. 使用下述方法之一，将工作区配置文件添加到库：
-    * 将通过先决条件快速入门创建的 **aml_config\config.json** 文件复制到克隆的目录中。
-    
-    * 使用 [configuration.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/configuration.ipynb) 中的代码创建新的工作区。
+## <a name="automated-machine-learning-setup"></a>自动化机器学习设置 
 
-1. 从克隆目录启动 notebook 服务器。
-
-1. 转到包含笔记本的文件夹。
-
-1. 打开笔记本。
-
-<a name="auto"></a>
-
-## <a name="automated-ml-setup"></a>自动化 ML 设置 
-
-**这些步骤仅适用于 `automated-machine-learning` 文件夹中的笔记本。**
+这些步骤仅适用于 **how-to-use-azureml/automated-machine-learning** 文件夹中的笔记本。
 
 虽然可以使用上述任意选项，但同时也可按照以下说明来安装环境并创建工作区。 
 
@@ -106,7 +69,7 @@ Azure Notebooks 的入门很容易！ 已在 [Azure Notebooks](https://notebooks
    
    1. 导航到已解压缩到本地计算机上的文件。
    
-   1. 打开 `automated-machine-learning` 文件夹。
+   1. 打开 **automated-machine-learning** 文件夹。
    
    1. 在 Windows 版 conda 提示符中执行 `automl_setup.cmd`，或者执行适用于操作系统的 `.sh` 文件。 执行起来可能需要大约 10 分钟。
 
@@ -123,7 +86,7 @@ Azure Notebooks 的入门很容易！ 已在 [Azure Notebooks](https://notebooks
 
 1. 导航到保存笔记本的路径。 
 
-1. 打开 automated-machine-learning 文件夹，然后打开 `configuration.ipynb` 笔记本。 
+1. 打开 automated-machine-learning 文件夹，然后打开 **configuration.ipynb** 笔记本。 
 
 1. 在笔记本中执行相关单元，以便注册机器学习服务资源提供程序并创建一个工作区。
 

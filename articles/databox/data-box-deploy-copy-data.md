@@ -6,25 +6,26 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 01/16/2019
+ms.date: 01/28/2019
 ms.author: alkohli
-ms.openlocfilehash: 2b6db4977b585b50168c2fa523db9210ca031ff3
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.openlocfilehash: 2af94deaedbafdfa638f5deb3150f1e7f711a238
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54359283"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55093505"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-via-smb"></a>教程：通过 SMB 将数据复制到 Azure Data Box
 
-本教程介绍如何使用本地 Web UI 连接到主机并从中复制数据，然后准备交付 Data Box。
+本教程介绍如何使用本地 Web UI 连接到主机并从中复制数据。
 
 本教程介绍如何执行下列操作：
 
 > [!div class="checklist"]
+> * 先决条件
 > * 连接到 Data Box
 > * 将数据复制到 Data Box
-> * 准备交付 Data Box。
+
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -34,7 +35,7 @@ ms.locfileid: "54359283"
 2. 已收到 Data Box，并且门户中的订单状态为“已送达”。
 3. 你有一台主机，其中的数据需复制到 Data Box。 该主机必须
     - 运行[支持的操作系统](data-box-system-requirements.md)。
-    - 连接到高速网络。 强烈建议你至少建立一个 10-GbE 连接。 如果 10-GbE 连接不可用，可以使用 1-GbE 数据链路，但复制速度会受影响。 
+    - 连接到高速网络。 强烈建议你至少建立一个 10-GbE 连接。 如果 10-GbE 连接不可用，可以使用 1-GbE 数据链路，但复制速度会受影响。
 
 ## <a name="connect-to-data-box"></a>连接到 Data Box
 
@@ -87,7 +88,7 @@ ms.locfileid: "54359283"
     
     ![通过文件资源管理器连接到共享 2](media/data-box-deploy-copy-data/connect-shares-file-explorer2.png)    
 
-    **始终为要复制到共享下的文件创建一个文件夹，然后将文件复制到该文件夹**。 在块 blob 和页 blob 共享下创建的文件夹表示将数据作为 blob 上传到的容器。 无法将文件直接复制到存储帐户中的 $root 文件夹。
+    **始终为要复制到共享下的文件创建一个文件夹，然后将文件复制到该文件夹**。 在块 blob 和页 blob 共享下创建的文件夹表示将数据作为 blob 上传到的容器。 无法将文件直接复制到存储帐户中的 root 文件夹。
     
      
 
@@ -95,7 +96,7 @@ ms.locfileid: "54359283"
 
 连接到 Data Box 共享后，下一步是复制数据。 在开始复制数据之前，请查看以下注意事项：
 
-- 确保将数据复制到与适当数据格式对应的共享中。 例如，将块 Blob 数据复制到块 Blob 的共享中。 如果数据格式与相应的共享类型不匹配，则在后续步骤中，数据将无法上传到 Azure。
+- 确保将数据复制到与适当数据格式对应的共享中。 例如，将块 Blob 数据复制到块 Blob 的共享中。 将 VHD 复制到页 Blob。 如果数据格式与相应的共享类型不匹配，则在后续步骤中，数据将无法上传到 Azure。
 -  复制数据时，请确保数据大小符合 [Azure 存储和 Data Box 限制](data-box-limits.md)中所述的大小限制。
 - 如果 Data Box 正在上传的数据同时已由 Data Box 外部的其他应用程序上传，则可能会导致上传作业失败和数据损坏。
 - 我们建议：
@@ -103,7 +104,7 @@ ms.locfileid: "54359283"
     - 将相同的数据复制到 Azure 上的同一个最终目标。 
      
   在这些情况下，最终的结果不可确定。
-- 始终为要复制到共享下的文件创建一个文件夹，然后将文件复制到该文件夹。 在块 blob 和页 blob 共享下创建的文件夹表示将数据作为 blob 上传到的容器。 无法将文件直接复制到存储帐户中的 $root 文件夹。
+- 始终为要复制到共享下的文件创建一个文件夹，然后将文件复制到该文件夹。 在块 blob 和页 blob 共享下创建的文件夹表示将数据作为 blob 上传到的容器。 无法将文件直接复制到存储帐户中的 root 文件夹。
 
 连接到 SMB 共享后，开始数据复制。 可以使用与 SMB 兼容的任何文件复制工具（例如 Robocopy）复制数据。 可以使用 Robocopy 启动多个复制作业。 请使用以下命令：
     
@@ -111,7 +112,7 @@ ms.locfileid: "54359283"
   
  下表描述了属性。
     
-|属性  |Description  |
+|属性  |说明  |
 |---------|---------|
 |/e     |复制包括空目录的子目录。         |
 |/r:     |指定复制失败时的重试次数。         |
@@ -203,19 +204,16 @@ ms.locfileid: "54359283"
    ![在仪表板上检查可用空间和已用空间](media/data-box-deploy-copy-data/verify-used-space-dashboard.png)
 
 
-## <a name="prepare-to-ship"></a>准备交付
-
-[!INCLUDE [data-box-prepare-to-ship](../../includes/data-box-prepare-to-ship.md)]
-
 
 ## <a name="next-steps"></a>后续步骤
 
 本教程介绍了有关 Azure Data Box 的主题，例如：
 
 > [!div class="checklist"]
+> * 先决条件
 > * 连接到 Data Box
 > * 将数据复制到 Data Box
-> * 准备交付 Data Box
+
 
 请继续学习下一篇教程，了解如何将 Data Box 寄回 Microsoft。
 

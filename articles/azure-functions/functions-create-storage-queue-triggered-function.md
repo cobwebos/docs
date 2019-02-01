@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.date: 10/01/2018
 ms.author: glenga
 ms.custom: mvc, cc996988-fb4f-47
-ms.openlocfilehash: 33f7367d9cdc510cf04f349f44b6e85215d46038
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 44d6311246ab303966b7cfd8bee854b1c017f85d
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52995602"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54902680"
 ---
 # <a name="create-a-function-triggered-by-azure-queue-storage"></a>创建由 Azure 队列存储触发的函数
 
@@ -113,8 +113,9 @@ ms.locfileid: "52995602"
 
 ## <a name="next-steps"></a>后续步骤
 
-已创建将消息添加到存储队列时运行的函数。
+已创建将消息添加到存储队列时运行的函数。 有关队列存储触发器的详细信息，请参阅 [Azure Functions 存储队列绑定](functions-bindings-storage-queue.md)。
 
-[!INCLUDE [Next steps note](../../includes/functions-quickstart-next-steps.md)]
+创建第一个函数以后，即可向这个可以将消息写回另一队列的函数添加输出绑定。
 
-有关队列存储触发器的详细信息，请参阅 [Azure Functions 存储队列绑定](functions-bindings-storage-queue.md)。
+> [!div class="nextstepaction"]
+> [使用 Functions 将消息添加到 Azure 存储队列](functions-integrate-storage-queue-output-binding.md)

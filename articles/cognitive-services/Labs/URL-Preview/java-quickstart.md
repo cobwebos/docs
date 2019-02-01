@@ -6,16 +6,16 @@ services: cognitive-services
 author: mikedodaro
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: url-preview
+ms.subservice: url-preview
 ms.topic: quickstart
 ms.date: 04/24/2018
 ms.author: rosh, v-gedod
-ms.openlocfilehash: cdbed473af04b7a0ba0fd2bba56219d43bf72537
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: cfc0cd690c040ed912281be081daffd26566bd4d
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49465706"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55209118"
 ---
 # <a name="quickstart-url-preview-with-java"></a>快速入门：通过 Java 使用 URL 预览
 
@@ -29,7 +29,7 @@ ms.locfileid: "49465706"
 
 下面的代码创建 `WebRequest`、设置访问密钥标头，并为“https://swiftkey.com/en”添加查询字符串。  然后发送请求，并将响应分配到包含 JSON 文本的字符串。
 
-````
+```
     // construct URL of search request (endpoint + query string)
 
     static String host = "https://api.labs.cognitive.microsoft.com";
@@ -47,7 +47,7 @@ ms.locfileid: "49465706"
 
     // construct result object for return
     SearchResults results = new SearchResults(new HashMap<String, String>(), response);
-````
+```
 
 ## <a name="complete-code"></a>完整代码
 
@@ -58,7 +58,7 @@ ms.locfileid: "49465706"
 4. 使用对订阅有效的访问密钥替换 subscriptionKey 值。
 5. 运行该程序。
 
-````
+```
 package UrlPreviewpkg;
 
 import java.net.*;
@@ -165,7 +165,7 @@ class SearchResults{
  }
 }
 
-````
+```
 
 ## <a name="next-steps"></a>后续步骤
 - [C# 快速入门](csharp.md)

@@ -4,23 +4,23 @@ titleSuffix: Azure Machine Learning service
 description: 本教程介绍如何使用 Azure 机器学习服务在 Python Jupyter notebook 中使用 scikit-learn 训练映像分类模型。 本教程是由两个部分构成的系列教程的第一部分。
 services: machine-learning
 ms.service: machine-learning
-ms.component: core
+ms.subservice: core
 ms.topic: tutorial
 author: hning86
 ms.author: haining
 ms.reviewer: sgilley
-ms.date: 12/04/2018
+ms.date: 01/28/2019
 ms.custom: seodec18
-ms.openlocfilehash: a9fc0655a3666f09fed342af5b4f14e2097290ab
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 6811888b5113a2cf5a06811f0e1b1bcee57d864b
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54828242"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55298052"
 ---
-# <a name="tutorial-train-an-image-classification-model-with-azure-machine-learning-service"></a>教程：使用 Azure 机器学习服务定型图像分类模型
+# <a name="tutorial-train-an-image-classification-model-with-azure-machine-learning-service"></a>教程：使用 Azure 机器学习服务训练图像分类模型
 
-在本教程中，你将在本地和远程计算资源上定型机器学习模型。 会在 Python Jupyter Notebook 中使用 Azure 机器学习服务的定型和部署工作流。 然后可以将 Notebook 用作模板，使用你自己的数据来定型机器学习。 本教程是由两个部分构成的系列教程的第一部分。  
+在本教程中，你将在远程计算资源上训练一个机器学习模型。 将在 Python Jupyter Notebook 中使用 Azure 机器学习服务（预览）的定型和部署工作流。  然后可以将 Notebook 用作模板，使用你自己的数据来定型机器学习。 本教程是由两个部分构成的系列教程的第一部分。  
 
 本教程将 [MNIST](http://yann.lecun.com/exdb/mnist/) 数据集和 [scikit-learn](https://scikit-learn.org) 与 Azure 机器学习服务配合使用来定型简单的逻辑回归。 MNIST 是包含 70,000 张灰度图像的常用数据集。 每个图像是 28 x 28 像素的手写数字，代表一个从零到九的数字。 目标是创建多类分类器，以确定给定图像代表的数字。 
 
@@ -38,16 +38,40 @@ ms.locfileid: "54828242"
 如果没有 Azure 订阅，请在开始之前创建一个免费帐户。 立即试用 [Azure 机器学习服务免费版或付费版](http://aka.ms/AMLFree)。
 
 >[!NOTE]
-> 本文中的代码已使用 Azure 机器学习 SDK 版本 1.0.2 进行测试
+> 本文中的代码已使用 Azure 机器学习 SDK 版本 1.0.8 进行测试。
 
-## <a name="get-the-notebook"></a>获取 Notebook
+## <a name="prerequisites"></a>先决条件
 
-为方便起见，本教程以 [Jupyter Notebook](https://github.com/Azure/MachineLearningNotebooks/blob/master/tutorials/img-classification-part1-training.ipynb) 的形式提供。 在 [Azure Notebooks](https://notebooks.azure.com/) 或你自己的 Jupyter 笔记本服务器中运行 `tutorials/img-classification-part1-training.ipynb` 笔记本。
+跳到[设置开发环境](#start)来了解整个 Notebook 设置步骤，或遵照以下说明获取 Notebook 并在 Azure Notebooks 或自己的 Notebook 服务器中运行。  若要运行 Notebook，需要：
 
-[!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-in-azure-notebook.md)]
+* 一个装有以下组件的 Python 3.6 Notebook 服务器：
+    * 适用于 Python 的 Azure 机器学习 SDK
+    * `matplotlib` 和 `scikit-learn`
+* 教程 Notebook 和文件 utils.py
+* 机器学习工作区 
+* Notebook 所在的同一目录中的工作区的配置文件 
+
+从以下任一部分获取所有这些必备组件。
+ 
+* 使用 [Azure Notebooks](#azure) 
+* 使用[自己的 Notebook 服务器](#server)
+
+### <a name="azure"></a>使用 Azure Notebooks：云中免费的 Jupyter Notebook
+
+Azure Notebooks 的入门很容易！ 已在 [Azure Notebooks](https://notebooks.azure.com/) 上安装和配置[用于 Python 的 Azure 机器学习 SDK](https://aka.ms/aml-sdk)。 安装和未来的更新通过 Azure 服务自动管理。
+
+完成以下步骤后，运行**入门**项目中的 **tutorials/img-classification-part1-training.ipynb** Notebook。
+
+[!INCLUDE [aml-azure-notebooks](../../../includes/aml-azure-notebooks.md)]
 
 
-## <a name="set-up-your-development-environment"></a>设置开发环境
+### <a name="server"></a>使用自己的 Jupyter Notebook 服务器
+
+执行这些步骤，在计算机上创建本地 Jupyter Notebook 服务器。  完成步骤后，运行 **tutorials/img-classification-part1-training.ipynb** Notebook。
+
+[!INCLUDE [aml-your-server](../../../includes/aml-your-server.md)]
+
+## <a name="start"></a>设置开发环境
 
 开发工作的所有设置都可以在 Python Notebook 中完成。 安装包括以下操作：
 
@@ -63,11 +87,10 @@ ms.locfileid: "54828242"
 ```python
 %matplotlib inline
 import numpy as np
-import matplotlib
 import matplotlib.pyplot as plt
 
-import azureml
-from azureml.core import Workspace, Run
+import azureml.core
+from azureml.core import Workspace
 
 # check core SDK version number
 print("Azure ML SDK Version: ", azureml.core.VERSION)
@@ -94,11 +117,11 @@ from azureml.core import Experiment
 exp = Experiment(workspace=ws, name=experiment_name)
 ```
 
-### <a name="create-or-attach-an-existing-amlcompute"></a>创建或附加现有 AMlCompute
+### <a name="create-or-attach-an-existing-compute-resource"></a>创建或附加现有的计算资源
 
-Azure 机器学习托管计算 (AmlCompute) 是一项托管服务，可以让数据科学家在 Azure 虚拟机群集上定型机器学习模型。 示例包括带 GPU 支持的 VM。 在本教程中，创建 AmlCompute 作为训练环境。 如果工作区中尚且没有计算群集，此代码将创建计算群集。
+Azure 机器学习计算是一项托管服务，可让数据科学家在 Azure 虚拟机群集上训练机器学习模型。 示例包括带 GPU 支持的 VM。 在本教程中，你将创建 Azure 机器学习计算作为训练环境。 如果工作区中尚无计算群集，以下代码将创建计算群集。
 
- 创建计算群集需要大约 5 分钟。 如果计算群集已在工作区中，此代码将使用它，并跳过创建过程：
+ 创建计算群集需要大约 5 分钟。 如果工作区中已有计算，该代码将使用它，并跳过创建过程。
 
 
 ```python
@@ -132,8 +155,8 @@ else:
     # if no min node count is provided it will use the scale settings for the cluster
     compute_target.wait_for_completion(show_output=True, min_node_count=None, timeout_in_minutes=20)
     
-     # For a more detailed view of current AmlCompute status, use the 'status' property    
-    print(compute_target.status.serialize())
+     # For a more detailed view of current AmlCompute status, use get_status()
+    print(compute_target.get_status().serialize())
 ```
 
 现在已有所需的包和计算资源，可以在云中定型模型。 
@@ -155,13 +178,15 @@ else:
 import os
 import urllib.request
 
-os.makedirs('./data', exist_ok = True)
+data_path = os.path.join(os.getcwd(), 'data')
+os.makedirs(data_path, exist_ok = True)
 
 urllib.request.urlretrieve('http://yann.lecun.com/exdb/mnist/train-images-idx3-ubyte.gz', filename='./data/train-images.gz')
 urllib.request.urlretrieve('http://yann.lecun.com/exdb/mnist/train-labels-idx1-ubyte.gz', filename='./data/train-labels.gz')
 urllib.request.urlretrieve('http://yann.lecun.com/exdb/mnist/t10k-images-idx3-ubyte.gz', filename='./data/test-images.gz')
 urllib.request.urlretrieve('http://yann.lecun.com/exdb/mnist/t10k-labels-idx1-ubyte.gz', filename='./data/test-labels.gz')
 ```
+将显示类似于下面的输出：```('./data/test-labels.gz', <http.client.HTTPMessage at 0x7f40864c77b8>)```
 
 ### <a name="display-some-sample-images"></a>显示一些示例图像
 
@@ -210,60 +235,32 @@ MNIST 文件被上传到数据存储根目录下一个名为 `mnist` 的目录�
 ds = ws.get_default_datastore()
 print(ds.datastore_type, ds.account_name, ds.container_name)
 
-ds.upload(src_dir='./data', target_path='mnist', overwrite=True, show_progress=True)
+ds.upload(src_dir=data_path, target_path='mnist', overwrite=True, show_progress=True)
 ```
 现在你已经拥有开始定型模型所需的一切条件。 
 
-## <a name="train-a-local-model"></a>训练本地模型
-
-在本地使用 scikit-learn 定型简单的逻辑回归模型。
-
-本地定型可能需要一两分钟，具体取决于计算机配置：
-
-```python
-%%time
-from sklearn.linear_model import LogisticRegression
-
-clf = LogisticRegression()
-clf.fit(X_train, y_train)
-```
-
-接下来，使用测试集进行预测，并计算准确性： 
-
-```python
-y_hat = clf.predict(X_test)
-print(np.average(y_hat == y_test))
-```
-
-本地模型准确性显示：
-
-`0.9202`
-
-只需几行代码，便可以获得 92% 的准确性。
 
 ## <a name="train-on-a-remote-cluster"></a>在远程群集上定型
 
-现在可以通过使用不同正则化率构建一个模型来扩展此简单模型。 这一次会在远程资源上定型模型。  
-
-对于此任务，将作业提交到之前设置的远程定型群集。 若要提交作业，请执行以下步骤：
-* 创建目录。
-* 创建训练脚本。
-* 创建估算器对象。
-* 提交作业。
+对于此任务，将作业提交到之前设置的远程定型群集。  若要提交作业：
+* 创建目录
+* 创建定型脚本
+* 创建估算器对象
+* 提交作业 
 
 ### <a name="create-a-directory"></a>创建目录
 
-创建一个目录，将所需代码从计算机发送到远程资源：
+创建一个目录，将所需的代码从计算机发送到远程资源。
 
 ```python
 import os
-script_folder = './sklearn-mnist'
+script_folder  = os.path.join(os.getcwd(), "sklearn-mnist")
 os.makedirs(script_folder, exist_ok=True)
 ```
 
 ### <a name="create-a-training-script"></a>创建定型脚本
 
-若要将作业提交到群集，首先创建定型脚本。 运行以下代码，在刚创建的目录中创建名为 `train.py` 的定型脚本。 此定型向定型算法添加正则化率。 因此，它会生成与本地版本略有不同的模型：
+若要将作业提交到群集，首先创建定型脚本。 运行以下代码，以在刚创建的目录中创建名为 `train.py` 的定型脚本。
 
 ```python
 %%writefile $script_folder/train.py
@@ -406,6 +403,8 @@ RunDetails(run).show()
 
 ![Notebook 小组件](./media/tutorial-train-models-with-aml/widget.png)
 
+如果需要取消运行，可以遵照[这些说明](https://aka.ms/aml-docs-cancel-run)。
+
 ### <a name="get-log-results-upon-completion"></a>完成时获取日志结果
 
 模型定型和监视在后台发生。 在运行更多代码之前，请耐心等待，直到该模型完成定型。 使用 `wait_for_completion` 显示模型定型过程何时完成： 
@@ -422,7 +421,7 @@ run.wait_for_completion(show_output=False) # specify True for a verbose log
 ```python
 print(run.get_metrics())
 ```
-输出显示远程模型的准确性要略高于本地模型，因为在定型期间增加了正则化率：  
+输出显示远程模型的准确度为 0.9204：
 
 `{'regularization rate': 0.8, 'accuracy': 0.9204}`
 
@@ -465,8 +464,7 @@ compute_target.delete()
 > [!div class="checklist"]
 > * 设置开发环境。
 > * 访问和检查数据。
-> * 使用常用的 scikit-learn 机器学习库在本地定型简单的逻辑回归。
-> * 在远程群集上定型多个模型。
+> * 使用流行的 scikit-learn 机器学习库训练远程群集上的多个模型
 > * 查看定型详细信息，然后注册最佳模型。
 
 可以使用本系列教程的下一部分中的说明来部署此注册模型：

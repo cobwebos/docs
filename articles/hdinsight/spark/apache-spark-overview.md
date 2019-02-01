@@ -7,14 +7,14 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,mvc
 ms.topic: overview
-ms.date: 12/07/2018
+ms.date: 01/28/2019
 ms.author: hrasheed
-ms.openlocfilehash: 64218299bee1bdd413471e1872095c4e681bcb58
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.openlocfilehash: c08672b178a9327b39414ca1c0e71653f62d1d07
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53653605"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55295791"
 ---
 # <a name="what-is-apache-spark-in-azure-hdinsight"></a>Azure HDInsight 中的 Apache Spark 是什么
 
@@ -24,21 +24,21 @@ Apache Spark 是并行处理框架，支持使用内存中处理来提升大数�
 
 ## <a name="what-is-apache-spark"></a>什么是 Apache Spark？
 
-Spark 提供了用于内存中群集计算的基元。 Spark 作业可以将数据加载和缓存到内存中并重复地对其进行查询。 内存中计算比基于磁盘的应用程序（如通过 HDFS 共享数据的 Hadoop）更快速。 Spark 还集成到 Scala 编程语言中，让你可以像处理本地集合一样处理分布式数据集。 无需将所有内容构造为映射和化简操作。
+Spark 提供了用于内存中群集计算的基元。 Spark 作业可以将数据加载和缓存到内存中并重复地对其进行查询。 内存中计算比基于磁盘的应用程序（例如通过 Hadoop 分布式文件系统 (HDFS) 共享数据的 Hadoop）快速得多。 Spark 还集成到 Scala 编程语言中，让你可以像处理本地集合一样处理分布式数据集。 无需将所有内容构造为映射和化简操作。
 
 ![传统 MapReduce 与Spark](./media/apache-spark-overview/mapreduce-vs-spark.png)
 
 HDInsight 中的 Spark 群集提供完全托管的 Spark 服务。 下面列出了在 HDInsight 中创建 Spark 群集的优势。
 
-| Feature | Description |
+| Feature | 说明 |
 | --- | --- |
-| 轻松创建 |可以使用 Azure 门户、Azure PowerShell 或 HDInsight .NET SDK，在几分钟之内于 HDInsight 中创建新的 Spark 群集。 请参阅 [HDInsight 中的 Apache Spark 群集入门](apache-spark-jupyter-spark-sql.md) |
+| 轻松创建 |可以使用 Azure 门户、Azure PowerShell 或 HDInsight .NET SDK，在几分钟之内于 HDInsight 中创建新的 Spark 群集。 请参阅 [HDInsight 中的 Apache Spark 群集入门](apache-spark-jupyter-spark-sql-use-portal.md)。 |
 | 易于使用 |HDInsight 中的 Spark 群集包括 Jupyter 和 Apache Zeppelin Notebook。 可以使用这些笔记本执行交互式数据处理和可视化。|
-| REST API |HDInsight 中的 Spark 群集包含 [Apache Livy](https://github.com/cloudera/hue/tree/master/apps/spark/java#welcome-to-livy-the-rest-spark-server)，它是基于 REST-API 的 Spark 作业服务器，用于远程提交和监视作业。 |
+| REST API |HDInsight 中的 Spark 群集包含 [Apache Livy](https://github.com/cloudera/hue/tree/master/apps/spark/java#welcome-to-livy-the-rest-spark-server)，它是基于 REST-API 的 Spark 作业服务器，用于远程提交和监视作业。 请参阅[使用 Apache Spark REST API 将远程作业提交到 HDInsight Spark 群集](apache-spark-livy-rest-interface.md)。|
 | 支持 Azure Data Lake Storage | HDInsight 中的 Spark 群集可使用 Azure Data Lake Storage 作为主存储或附加存储。 有关 Data Lake Storage 的详细信息，请参阅 [Azure Data Lake Storage 概述](../../data-lake-store/data-lake-store-overview.md)。 |
 | 与 Azure 服务集成 |HDInsight 中的 Spark 群集随附了 Azure 事件中心的连接器。 除了 Spark 中提供的 [Apache Kafka](https://kafka.apache.org/) 之外，还可以使用事件中心来生成流式处理应用程序。 |
 | 对 ML Server 的支持 | HDInsight 中对 ML Server 的支持是作为 **ML Services** 群集类型提供的。 可以将 ML Services 群集设置为以 Spark 群集承诺的速度运行分布式 R 计算。 有关详细信息，请参阅[开始使用 HDInsight 中的 ML Server](../r-server/r-server-get-started.md)。 |
-| 与第三方 IDE 集成 | HDInsight 提供多个 IDE 插件，这些插件可用于创建应用程序，并将应用程序提交到 HDInsight Spark 群集。 有关详细信息，请参阅[使用用于 IntelliJ IDEA 的 Azure 工具包](apache-spark-intellij-tool-plugin.md)、[将 HDInsight 用于 VSCode](../hdinsight-for-vscode.md) 和[使用用于 Eclipse 的 Azure 工具包](apache-spark-eclipse-tool-plugin.md)。|
+| 与第三方 IDE 集成 | HDInsight 提供多个 IDE 插件，这些插件可用于创建应用程序，并将应用程序提交到 HDInsight Spark 群集。 有关详细信息，请参阅[使用用于 IntelliJ IDEA 的 Azure 工具包](apache-spark-intellij-tool-plugin.md)、[将 HDInsight 用于 VSCode] 和[使用用于 Eclipse 的 Azure 工具包](apache-spark-eclipse-tool-plugin.md)。|
 | 并发查询 |HDInsight 中的 Spark 群集支持并发查询。 此功能允许一个用户运行多个查询，或者不同的用户运行多个查询，以及让应用程序共享相同的群集资源。 |
 | SSD 缓存 |可以选择将数据缓存在内存中，或缓存在已附加到群集节点的 SSD 中。 内存缓存提供最佳的查询性能，但可能费用不菲。 SSD 缓存是改善查询性能的绝佳选项，而且不需要根据内存中的整个数据集创建满足其需求的群集规模。 |
 | 与 BI 工具集成 |HDInsight 中的 Spark 群集提供 BI 工具（如 [Power BI](https://www.powerbi.com/)）的连接器，用于数据分析。 |
@@ -48,7 +48,7 @@ HDInsight 中的 Spark 群集提供完全托管的 Spark 服务。 下面列出�
 
 默认情况下，HDInsight 中的 Apache Spark 群集可通过群集提供以下组件。
 
-* [Spark Core](https://spark.apache.org/docs/1.5.1/)。 包括 Spark Core、Spark SQL、Spark 流式处理 API、GraphX 和 MLlib。
+* [Spark Core](https://spark.apache.org/docs/latest/)。 包括 Spark Core、Spark SQL、Spark 流式处理 API、GraphX 和 MLlib。
 * [Anaconda](https://docs.continuum.io/anaconda/)
 * [Apache Livy](https://github.com/cloudera/hue/tree/master/apps/spark/java#welcome-to-livy-the-rest-spark-server)
 * [Jupyter 笔记本](https://jupyter.org)
@@ -66,7 +66,7 @@ Spark 应用程序在群集上作为一组独立的进程运行，由主要程�
 
 SparkContext 可连接到多种类型的群集管理器，因而可跨应用程序分配资源。 这些群集管理器包括 [Apache Mesos](https://mesos.apache.org/)、[Apache Hadoop YARN](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html) 或 Spark 群集管理器。 在 HDInsight 中，Spark 使用 YARN 群集管理器运行。 连接后，Spark 可获取群集中工作节点上的执行程序，该执行程序是为应用程序运行计算和存储数据的进程。 然后，它将应用程序代码（由传递给 SparkContext 的 JAR 或 Python 文件指定）发送到执行程序。 最后，SparkContext 将任务发送给执行程序来运行。
 
-SparkContext 在工作节点上运行用户的主函数，并执行各种并行操作。 然后，SparkContext 收集操作的结果。 工作节点从 Hadoop 分布式文件系统 (HDFS) 读取数据并将数据写入其中。 工作节点还将已转换数据作为弹性分布式数据集 (RDD) 缓存在内存中。
+SparkContext 在工作节点上运行用户的主函数，并执行各种并行操作。 然后，SparkContext 收集操作的结果。 工作节点从 Hadoop 分布式文件系统读取数据并将数据写入其中。 工作节点还将已转换数据作为弹性分布式数据集 (RDD) 缓存在内存中。
 
 SparkContext 连接到 Spark 主服务器，并负责将应用程序转换为单个任务的有向图 (DAG)，这些任务在工作节点上的执行程序进程中执行。 每个应用程序获取自己的执行程序进程，这些进程在整个应用程序持续时间内保留，并以多个线程运行任务。
 
@@ -83,7 +83,8 @@ HDInsight 中的 Spark 群集适用于以下主要方案：
 
     Apache Spark 随附 [MLlib](https://spark.apache.org/mllib/) - 构建在 Spark（可以从 HDInsight 中的 Spark 群集使用）基础之上的机器学习库。 HDInsight 中的 Spark 群集还包含 Anaconda - 为机器学习提供各种包的 Python 发行版。 结合内置的 Jupyter 和 Zeppelin 笔记本支持，即可拥有机器学习应用程序创建环境。
 
-    [教程：使用 HVAC 数据预测建筑物温度](apache-spark-ipython-notebook-machine-learning.md)[教程：预测食品检测结果](apache-spark-machine-learning-mllib-ipython.md)    
+    [教程：使用 HVAC 数据预测建筑物温度](apache-spark-ipython-notebook-machine-learning.md)  
+    [教程：预测食品检测结果](apache-spark-machine-learning-mllib-ipython.md)    
 - Spark 流式处理和实时数据分析
 
     HDInsight 中的 Spark 群集提供丰富的支持，供你生成实时分析解决方案。 尽管 Spark 已随附从 Kafka、Flume、Twitter、ZeroMQ 或 TCP 套接字等众多来源引入数据的连接器，但 HDInsight 中的 Spark 增加了一流的支持，供你从 Azure 事件中心引入数据。 事件中心是 Azure 上最广泛使用的队列服务。 拥有立即可用的事件中心支持，让 HDInsight 中的 Spark 群集成为生成实时分析管道的理想平台。
@@ -92,7 +93,7 @@ HDInsight 中的 Spark 群集适用于以下主要方案：
 
 可通过以下文章深入了解 HDInsight 中的 Apache Spark：
 
-- [快速入门：使用 Jupyter 在 HDInsight 中创建 Apache Spark 群集并运行交互式查询](./apache-spark-jupyter-spark-sql.md)
+- [快速入门：使用 Jupyter 在 HDInsight 中创建 Apache Spark 群集并运行交互式查询](./apache-spark-jupyter-spark-sql-use-portal.md)
 - [教程：使用 Jupyter 运行 Apache Spark 作业](./apache-spark-load-data-run-query.md)
 - [教程：使用 BI 工具分析数据](./apache-spark-use-bi-tools.md)
 - [教程：使用 Apache Spark 进行机器学习](./apache-spark-ipython-notebook-machine-learning.md)
@@ -102,4 +103,4 @@ HDInsight 中的 Spark 群集适用于以下主要方案：
 
 在此概述中，可了解 Azure HDInsight 中 Apache Spark 的一些基础知识。 转到下一文章，了解如何创建 HDInsight Spark 群集并运行 Spark SQL 查询：
 
-- [在 HDInsight 中创建 Apache Spark 群集](./apache-spark-jupyter-spark-sql.md)
+- [在 HDInsight 中创建 Apache Spark 群集](./apache-spark-jupyter-spark-sql-use-portal.md)

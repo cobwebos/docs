@@ -8,7 +8,7 @@ manager: mtillman
 editor: ''
 ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
@@ -16,12 +16,12 @@ ms.workload: identity
 ms.date: 09/23/2018
 ms.author: andret
 ms.custom: aaddev
-ms.openlocfilehash: 49ced3277a659ddacef239c7a1394cbe5ce06ac9
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 2f91cfc6c391bb22ca5f75a7a72123b695380aff
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46973603"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55094302"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-ios-native-app"></a>快速入门：从 iOS 本机应用将用户登录并调用 Microsoft Graph API
 
@@ -157,9 +157,9 @@ MSAL 有两种用来获取令牌的方法：`acquireToken` 和 `acquireTokenSile
 在某些情况下，需要强制用户与 Azure Active Directory (Azure AD) v2.0 终结点进行交互，这将导致进行上下文切换以转到系统浏览器，以验证用户的凭据或表示同意。 示例包括：
 
 * 用户首次登录应用程序
-* 由于密码已过期，用户可能需要重新输入凭据
-* 应用程序正在请求访问需要用户同意的资源
-* 需要双重身份验证
+* 由于密码已过期，用户可能需要重新输入凭据的情况
+* 应用程序正在请求访问用户需要同意的资源的情况
+* 需要双重身份验证的情况
 
 ```swift
 applicationContext.acquireToken(forScopes: self.kScopes) { (result, error) in /* Add your handling logic */}

@@ -6,17 +6,17 @@ services: cognitive-services
 author: aahill
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-news-search
+ms.subservice: bing-news-search
 ms.topic: quickstart
 ms.date: 1/10/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: f8a98133d68cb73958664dd04bb2d959c97195cf
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 71f0ece2ff06ef000092485b8e7e11c5eedb38dd
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54263843"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55174493"
 ---
 # <a name="quickstart-perform-a-news-search-using-java-and-the-bing-news-search-rest-api"></a>快速入门：使用 Java 和必应新闻搜索 REST API 执行新闻搜索
 
@@ -64,7 +64,7 @@ ms.locfileid: "54263843"
     }
     ```
 
-## <a name="construct-the-search-request-and-recieve-a-json-response"></a>构造搜索请求并接收 JSON 响应
+## <a name="construct-the-search-request-and-receive-a-json-response"></a>构造搜索请求并接收 JSON 响应
 
 1. 使用上一个步骤中的变量来设置 API 请求的搜索 URL 的格式。 注意，将搜索词附加到请求之前，必须进行 URL 编码。
 

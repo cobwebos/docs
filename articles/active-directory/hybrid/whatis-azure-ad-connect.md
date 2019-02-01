@@ -7,15 +7,16 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: get-started-article
-ms.date: 11/28/2018
 ms.component: hybrid
+ms.date: 01/30/2019
+ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 1c18200bb36b75a07d7b26e3ea0016ec35efdd87
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: cb1ba63a0f32d026d51507fe66432a520a6f6e71
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54460487"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55298957"
 ---
 # <a name="what-is-azure-ad-connect"></a>什么是 Azure AD Connect？
 
@@ -49,6 +50,20 @@ Azure Active Directory (Azure AD) Connect Health 为本地标识基础结构提�
 
 ## <a name="why-use-azure-ad-connect-health"></a>为何使用 Azure AD Connect Health？
 使用 Azure AD 时，用户的工作效率更高，因为可以通过一个通用标识来访问云和本地资源。 确保环境可靠以便用户可以访问这些资源已成为一个难题。  Azure AD Connect Health 可帮助你监视和深入了解本地标识基础结构，从而确保此环境的可靠性。 这种方法就像在每个本地标识服务器上安装代理那样简单。
+
+适用于 AD FS 的 Azure AD Connect Health 支持 Windows Server 2008 R2、Windows Server 2012、Windows Server 2012 R2 和 Windows Server 2016 中的 AD FS 2.0。 它还支持监视为 Extranet 访问提供身份验证支持的 AD FS 代理或 Web 应用程序代理服务器。 轻松快速地安装 Health 代理后，适用于 AD FS 的 Azure AD Connect Health 可提供以下一组重要功能：
+
+主要优点和最佳做法：
+
+|主要优势|最佳实践|
+|-----|-----|
+|增强的安全性|[Extranet 锁定趋势](how-to-connect-health-adfs.md#usage-analytics-for-ad-fs)</br>[失败的登录报告](how-to-connect-health-adfs.md#risky-ip-report-public-preview)</br>[符合隐私标准](reference-connect-health-user-privacy.md)|
+|[出现严重 ADFS 系统问题](how-to-connect-health-alert-catalog.md#alerts-for-active-directory-federation-services)时会收到通知|服务器配置和可用性</br>[性能和连接](how-to-connect-health-adfs.md#performance-monitoring-for-ad-fs)</br>定期维护|
+|易于部署和管理|[快速的代理安装](how-to-connect-health-agent-install.md#installing-the-azure-ad-connect-health-agent-for-ad-fs)</br>代理自动升级到最新版本</br>数据在几分钟后便可出现在门户中|
+丰富的[使用情况指标](how-to-connect-health-adfs.md#usage-analytics-for-ad-fs)|排名靠前的应用程序使用情况</br>网络位置和 TCP 连接</br>每个服务器的令牌请求|
+|出色的用户体验|Azure 门户中的仪表板方式</br>[通过电子邮件提供警报](how-to-connect-health-adfs.md#alerts-for-ad-fs)|
+
+
 
 
 ## <a name="next-steps"></a>后续步骤

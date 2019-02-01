@@ -1,21 +1,21 @@
 ---
-title: 快速入门：必应视频搜索 API、Java
+title: 快速入门：必应视频搜索 API，Java
 titlesuffix: Azure Cognitive Services
 description: 获取信息和代码示例，有助于快速开始使用必应视频搜索 API。
 services: cognitive-services
 author: aahill
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-video-search
+ms.subservice: bing-video-search
 ms.topic: quickstart
 ms.date: 9/21/2017
 ms.author: aahi
-ms.openlocfilehash: 4d2097672a781ef2efd5b7871c39b473bd42cece
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: d377f03bf8ea4567e5e0e9eafdc9d1dd4c9082ea
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52306499"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55187005"
 ---
 # <a name="quickstart-bing-video-search-api-with-java"></a>快速入门：必应视频搜索 API 与 Java
 

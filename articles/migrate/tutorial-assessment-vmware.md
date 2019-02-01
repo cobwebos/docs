@@ -4,15 +4,15 @@ description: 介绍如何发现和评估要使用 Azure Migrate 迁移到 Azure 
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: tutorial
-ms.date: 01/11/2019
+ms.date: 01/30/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: e922e9e7741eb3338503e02cd0ca78387e32b1f6
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 58a4f60a5ef01f8f2757aeb04c2dd7165d68179a
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54824093"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55298715"
 ---
 # <a name="discover-and-assess-on-premises-vmware-vms-for-migration-to-azure"></a>发现和评估要迁移到 Azure 的本地 VMware VM
 
@@ -30,7 +30,7 @@ ms.locfileid: "54824093"
 
 ## <a name="prerequisites"></a>先决条件
 
-- **VMware**：计划迁移的 VM 必须由运行版本 5.5、6.0 或 6.5 的 vCenter Server 托管。 此外，需要一个运行 5.0 或更高版本的 ESXi 主机来部署收集器 VM。
+- **VMware**：计划迁移的 VM 必须由运行版本 5.5、6.0 或 6.5 的 vCenter Server 托管。 此外，需要一个运行 5.5 或更高版本的 ESXi 主机来部署收集器 VM。
 - **vCenter Server 帐户**：需要只读帐户来访问 vCenter Server。 Azure Migrate 使用此帐户发现本地 VM。
 - **权限**：在 vCenter Server 上，需要有通过导入 .OVA 格式的文件来创建 VM 的权限。
 
@@ -102,6 +102,14 @@ Azure Migrate 会创建一个称作收集器设备的本地 VM。 此 VM 可发�
 3. 生成的哈希应匹配这些设置。
 
 #### <a name="continuous-discovery"></a>持续发现
+
+  对于 OVA 版本 1.0.10.11
+
+  **算法** | **哈希值**
+    --- | ---
+    MD5 | 5f6b199d8272428ccfa23543b0b5f600
+    SHA1 | daa530de6e8674a66a728885a7feb3b0a2e8ccb0
+    SHA256 | 85da50a21a7a6ca684418a87ccc1dd4f8aab30152c438a17b216ec401ebb3a21
 
   对于 OVA 版本 1.0.10.9
 

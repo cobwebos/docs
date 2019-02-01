@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 01/10/2019
+ms.date: 01/24/2019
 ms.author: alkohli
-ms.openlocfilehash: a71635abd036bb89546dd3421af97cd9b88f4327
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 9d271642a432d8a149fbe468087a0598c91e7c36
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54439885"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54902373"
 ---
 # <a name="tutorial-use-data-copy-service-to-directly-ingest-data-into-azure-data-box-preview"></a>教程：使用数据复制服务直接将数据引入 Azure Data Box（预览版）
 
@@ -24,11 +24,12 @@ ms.locfileid: "54439885"
 - 可在中间主机不可用的网络连接存储 (NAS) 环境中使用。
 - 可用于复制需要花费数周时间来引入和上传其中数据的小型文件。 此服务能够大幅缩减引入和上传时间。
 
-本教程介绍如何执行下列操作：
+本教程的介绍内容包括：
 
 > [!div class="checklist"]
+> * 先决条件
 > * 将数据复制到 Data Box
-> * 准备交付 Data Box。
+
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -60,13 +61,13 @@ ms.locfileid: "54439885"
     |-------------------------------|---------|
     |作业名称                       |作业的唯一名称，少于 230 个字符。 作业名称中不允许以下字符 - \<、\>、\|、\?、\*、\\、\:、\/ 和 \\\.         |
     |源位置                |使用 `\\<ServerIPAddress>\<ShareName>` 或 `\\<ServerName>\<ShareName>` 格式提供数据源的 SMB 路径。        |
-    |用户名                       |用于访问数据源的用户名。        |
+    |用户名                       |用于访问数据源的用户名，采用 `\\<DomainName><UserName>` 格式。        |
     |密码                       |用于访问数据源的密码。           |
     |目标存储帐户    |从下拉列表中选择要将数据上传到的目标存储帐户。         |
     |目标存储类型       |选择目标存储类型：块 Blob、页 Blob 或 Azure 文件。        |
     |目标容器/共享    |输入目标存储帐户中要将数据上传到的容器或共享的名称。 该名称可以是共享名称或容器名称。 例如 `myshare` 或 `mycontainer`。 也可以在云中以 `sharename\directory_name` 或 `containername\virtual_directory_name` 格式输入名称。        |
     |复制文件匹配模式    | 按以下两种方式输入文件名匹配模式。<ul><li>**使用通配符表达式**。通配符表达式中仅支持 `*` 和 `?`。 例如，表达式 `*.vhd` 匹配扩展名为 .vhd 的所有文件。 同理，`*.dl?` 匹配扩展名为 `.dl` 或 `.dll` 的所有文件。 此外，`*foo` 匹配名称以 `foo` 结尾的所有文件。<br>可以直接在该字段中输入通配符表达式。 默认情况下，在该字段中输入的值被视为通配符表达式。</li><li>**使用正则表达式** - 支持基于 POSIX 的正则表达式。 例如，正则表达式 `.*\.vhd` 匹配扩展名为 `.vhd` 的所有文件。 对于正则表达式，请直接提供 `<pattern>` 作为 `regex(<pattern>)`。 <li>有关正则表达式的详细信息，请转到[正则表达式语言 - 快速参考](https://docs.microsoft.com/dotnet/standard/base-types/regular-expression-language-quick-reference)。</li><ul>|
-    |文件优化              |启用此功能后，引入时会打包文件。 这样可以加快小型文件的数据复制速度。        |
+    |文件优化              |启用此功能后，引入时会打包不到 1 MB 的文件。 这样可以加快小型文件的数据复制速度。 如果文件数远远超出目录数，则可显著节省时间。        |
  
 4. 单击“启动”。 随后会验证输入，如果验证成功，则启动某个作业。 启动该作业可能需要花费几分钟时间。
 
@@ -106,9 +107,7 @@ ms.locfileid: "54439885"
     - 在此版本中无法删除作业。
     
     - 可以创建无限个作业，但在任意给定时间，一次最多只能运行 10 个作业。
-    - 如果启用了文件优化，则引入时会打包小型文件，以提高复制性能。 在这种情况下，你会看到以下屏幕截图中所示的打包文件（GUID 为名称）。
-
-        ![打包文件的示例](media/data-box-deploy-copy-data-via-copy-service/packed-file-on-ingest.png)
+    - 如果启用了文件优化，则引入时会打包小型文件，以提高复制性能。 在这种情况下，你会看到打包文件（GUID 为名称）。 请勿删除此文件，因为此文件会在上传过程中解包。
 
 6. 当作业正在进行时，在“复制数据”页上：
 
@@ -139,18 +138,14 @@ ms.locfileid: "54439885"
 >[!NOTE]
 > 复制作业正在进行时，无法运行“准备交付”。
 
-## <a name="prepare-to-ship"></a>准备交付
-
-[!INCLUDE [data-box-prepare-to-ship](../../includes/data-box-prepare-to-ship.md)]
-
-
 ## <a name="next-steps"></a>后续步骤
 
 本教程介绍了有关 Azure Data Box 的主题，例如：
 
 > [!div class="checklist"]
+> * 先决条件
 > * 将数据复制到 Data Box
-> * 准备交付 Data Box
+
 
 请继续学习下一篇教程，了解如何将 Data Box 寄回 Microsoft。
 

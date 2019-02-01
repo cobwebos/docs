@@ -1,5 +1,5 @@
 ---
-title: 注册视频索引器并上传第一个视频
+title: 注册视频索引器并上传第一个视频 - Azure
 titlesuffix: Azure Media Services
 description: 了解如何使用视频索引器门户注册并上传第一个视频。
 services: media-services
@@ -7,16 +7,16 @@ author: Juliako
 manager: femila
 ms.service: media-services
 ms.topic: tutorial
-ms.date: 11/19/2018
+ms.date: 01/28/2019
 ms.author: juliako
-ms.openlocfilehash: 72412956d231ea2696c05ba250302faf5f90c91d
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 1e3ba1e12a8b058429f75b1d2aab3942cd843778
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54823277"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55090501"
 ---
-# <a name="tutorial-how-to-sign-up-and-upload-your-first-video"></a>教程：如何注册并上传第一个视频
+# <a name="quickstart-how-to-sign-up-and-upload-your-first-video"></a>快速入门：如何注册并上传第一个视频
 
 本入门教程介绍如何登录到视频索引器网站，以及如何上传第一个视频。
 

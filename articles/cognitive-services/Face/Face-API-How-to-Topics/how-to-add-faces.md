@@ -6,16 +6,16 @@ services: cognitive-services
 author: SteveMSFT
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: face-api
+ms.subservice: face-api
 ms.topic: sample
 ms.date: 03/01/2018
 ms.author: sbowles
-ms.openlocfilehash: fb5d03e2cb3c11daf7a94966fda46345ee910ded
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: f443eb13650483bc3ee63dad59cc40b8042bc35b
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46125096"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55222808"
 ---
 # <a name="example-how-to-add-faces"></a>示例：如何添加人脸
 
@@ -23,7 +23,7 @@ ms.locfileid: "46125096"
 相同的策略也适用于 FaceList 和 LargePersonGroup。
 示例在 C# 中使用人脸 API 客户端库编写。
 
-## <a name="step-1-initialization"></a>第 1 步：初始化
+## <a name="step-1-initialization"></a>步骤 1：初始化
 
 声明了几个变量，并实现了用于计划请求的帮助程序函数。
 
@@ -60,7 +60,7 @@ static async Task WaitCallLimitPerSecondAsync()
 }
 ```
 
-## <a name="step-2-authorize-the-api-call"></a>第 2 步：授权 API 调用
+## <a name="step-2-authorize-the-api-call"></a>步骤 2：授权 API 调用
 
 使用客户端库时，订阅密钥通过 FaceServiceClient 类的构造函数传入。 例如：
 
@@ -70,7 +70,7 @@ FaceServiceClient faceServiceClient = new FaceServiceClient("<Subscription Key>"
 
 可以从 Azure 门户的“市场”页获取订阅密钥。 请参阅[订阅](https://www.microsoft.com/cognitive-services/en-us/sign-up)。
 
-## <a name="step-3-create-the-persongroup"></a>第 3 步：创建 PersonGroup
+## <a name="step-3-create-the-persongroup"></a>步骤 3：创建 PersonGroup
 
 创建用于保存人员的 PersonGroup，命名为“MyPersonGroup”。
 为了确保整体验证，请求时间排入 `_timeStampQueue` 队列。
@@ -82,7 +82,7 @@ _timeStampQueue.Enqueue(DateTime.UtcNow);
 await faceServiceClient.CreatePersonGroupAsync(personGroupId, personGroupName);
 ```
 
-## <a name="step-4-create-the-persons-to-the-persongroup"></a>第 4 步：创建添加到 PersonGroup 中的人员
+## <a name="step-4-create-the-persons-to-the-persongroup"></a>步骤 4：创建添加到 PersonGroup 中的人员
 
 可同时创建所有人员。为避免超出调用限制，还会应用 `await WaitCallLimitPerSecondAsync()`。
 
@@ -97,7 +97,7 @@ Parallel.For(0, PersonCount, async i =>
 });
 ```
 
-## <a name="step-5-add-faces-to-the-persons"></a>第 5 步：向人员添加人脸
+## <a name="step-5-add-faces-to-the-persons"></a>步骤 5：向人员添加人脸
 
 虽然可同时处理向不同人员添加人脸，但对于某个人来说，处理则是依序的。
 同样，为了确保请求频率在限制范围内，还会调用 `await WaitCallLimitPerSecondAsync()`。

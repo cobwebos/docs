@@ -4,29 +4,32 @@ titleSuffix: Azure Machine Learning service
 description: 在 Python 中开始使用 Azure 机器学习服务。 使用 Python SDK 创建工作区，该工作区是基础的云端块，用于试验、训练和部署机器学习模型。
 services: machine-learning
 ms.service: machine-learning
-ms.component: core
+ms.subservice: core
 ms.topic: quickstart
 ms.reviewer: sgilley
 author: hning86
 ms.author: haining
-ms.date: 12/04/2018
+ms.date: 01/22/2019
 ms.custom: seodec18
-ms.openlocfilehash: 8d45ca0f55b373970bfc0b1d146d5b3e2d6d66fa
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: e0c235a9fd3898fa4525651d514c77432627603c
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54823396"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55238952"
 ---
 # <a name="quickstart-use-the-python-sdk-to-get-started-with-azure-machine-learning"></a>快速入门：通过 Python SDK 开始使用 Azure 机器学习
 
-本文介绍通过用于 Python 的 Azure 机器学习 SDK 来创建并使用 Azure 机器学习服务[工作区](concept-azure-machine-learning-architecture.md)。 该工作区是基础的云端块，用于通过机器学习进行机器学习模型的试验、训练和部署。 
+本文介绍如何通过适用于 Python 的 Azure 机器学习 SDK 3 来创建并使用 Azure 机器学习服务[工作区](concept-azure-machine-learning-architecture.md)。 该工作区是基础的云端块，用于通过机器学习进行机器学习模型的试验、训练和部署。
 
-请从配置自己的 Python 环境和 Jupyter Notebook 服务器着手。 若要在未安装的情况下运行，请参阅[快速入门：通过 Azure 门户开始使用 Azure 机器学习](quickstart-get-started.md)。
+请从配置自己的 Python 环境和 Jupyter Notebook 服务器着手。 若要在未安装的情况下运行，请参阅[快速入门：通过 Azure 门户开始使用 Azure 机器学习](quickstart-get-started.md)。 
+
+观看本快速入门的视频版本：
 
 > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE2G9N6]
 
-本文内容：
+在本快速入门中，请执行以下操作：
+
 * 安装 Python SDK。
 * 在 Azure 订阅中创建工作区。
 * 创建该工作区的配置文件，以便稍后在其他 Notebook 和脚本中使用。
@@ -42,25 +45,28 @@ ms.locfileid: "54823396"
 - [Azure Application Insights](https://azure.microsoft.com/services/application-insights/) 
 - [Azure Key Vault](https://azure.microsoft.com/services/key-vault/)
 
-如果还没有 Azure 订阅，请在开始前创建免费帐户。 立即试用 [Azure 机器学习服务免费版或付费版](http://aka.ms/AMLFree)。
+>[!NOTE]
+> 本文中的代码需要 Azure 机器学习 SDK 版本 1.0.2 或更高版本，并且已使用版本 1.0.8 进行测试。
+
+
+如果没有 Azure 订阅，请在开始之前创建一个免费帐户。 立即试用 [Azure 机器学习服务免费版或付费版](http://aka.ms/AMLFree)。
 
 ## <a name="install-the-sdk"></a>安装 SDK
 
 > [!IMPORTANT]
-> 如果使用的是 2018 年 9 月 27 日之后创建的数据科学虚拟机，请跳过本部分。
-> 在此日期之后创建的数据科学虚拟机附带预先安装的 Python SDK。
-
-本文中的代码需要 Azure 机器学习 SDK 1.0.2 版或更高版本。
+> 如果使用的是 Azure Data Science Virtual Machine 或 Azure Databricks，请跳过本部分。
+> * 在 2018 年 9 月 27 日之后创建的 Azure Data Science Virtual Machine 已预装 Python SDK。
+> * 在 Azure Databricks 环境中，请改用 [Databricks 安装步骤](how-to-configure-environment.md#azure-databricks)。
 
 在安装该 SDK 之前，建议创建一个隔离的 Python 环境。 尽管本文使用 [Miniconda](https://docs.conda.io/en/latest/miniconda.html)，但也可以使用完整安装的 [Anaconda](https://www.anaconda.com/)，或使用 [Python virtualenv](https://virtualenv.pypa.io/en/stable/)。
 
 ### <a name="install-miniconda"></a>安装 Miniconda
 
-[下载并安装 Miniconda](https://conda.io/miniconda.html)。 选择 Python 3.7 或更高版本。 请勿选择 Python 2.x。
+[下载并安装 Miniconda](https://docs.conda.io/en/latest/miniconda.html)。 选择要安装的 Python 3.7 或更高版本。 请勿选择 Python 2.x 版本。  
 
-### <a name="create-an-isolated-python-environment"></a>创建隔离的 Python 环境 
+### <a name="create-an-isolated-python-environment"></a>创建隔离的 Python 环境
 
-1. 打开命令行窗口，然后使用 Python 3.6 创建名为 myenv 的新 conda 环境。
+1. 打开命令行窗口，然后创建名为 *myenv* 的新 conda 环境，并安装 Python 3.6。 Azure 机器学习 SDK 可与 Python 3.5.2 或更高版本配合工作，但自动化机器学习组件不能在 Python 3.7 上完全正常运行。
 
     ```shell
     conda create -n myenv -y Python=3.6
@@ -74,34 +80,35 @@ ms.locfileid: "54823396"
 
 ### <a name="install-the-sdk"></a>安装 SDK
 
-在激活的 conda 环境中安装 SDK。 此代码安装机器学习 SDK 的核心组件。 它还在 conda 环境中安装 Jupyter Notebook 服务器。 安装需要数分钟才能完成，取决于计算机的配置。
+1. 在已激活的 conda 环境中，安装机器学习 SDK 的核心组件以及 Jupyter Notebook 功能。  安装需要数分钟才能完成，取决于计算机的配置。
 
-```shell
-# Install Jupyter
-conda install nb_conda
+  ```shell
+    pip install --upgrade azureml-sdk[notebooks]
+    ```
 
-# Install the base SDK and Jupyter Notebook
-pip install azureml-sdk[notebooks]
-```
+1. 在 conda 环境中安装 Jupyter Notebook 服务器。
 
-还可以使用其他关键字来安装 SDK 的其他组件：
+  ```shell
+    conda install nb_conda
+    ```
 
-```shell
-# Install the base SDK and auto ml components
-pip install azureml-sdk[automl]
+1. 若要在 Azure 机器学习教程中使用此环境，请安装这些包。
 
-# Install the base SDK and the model explainability component
-pip install azureml-sdk[explain]
+    ```shell
+    conda install -y cython matplotlib pandas
+    ```
 
-# Install the base SDK and experimental components
-pip install azureml-sdk[contrib]
-```
+1. 若要在 Azure 机器学习教程中使用此环境，请安装自动化机器学习组件。
 
-在 Azure Databricks 环境中，请改用 [Databricks 安装步骤](how-to-configure-environment.md#azure-databricks
-)。
-
+    ```shell
+    pip install --upgrade azureml-sdk[automl]
+    ```
 
 ## <a name="create-a-workspace"></a>创建工作区
+
+使用 Python SDK 在 Jupyter Notebook 中创建工作区。
+
+1. 创建要用于快速入门和教程的目录，并/或通过 cd 切换到该目录。
 
 1. 若要启动 Jupyter Notebook，请输入以下命令：
 
@@ -123,7 +130,7 @@ pip install azureml-sdk[contrib]
                          subscription_id='<azure-subscription-id>', 
                          resource_group='myresourcegroup',
                          create_resource_group=True,
-                         location='eastus2' # Or other supported Azure region   
+                         location='eastus2' 
                         )
    ```
 
@@ -138,7 +145,11 @@ pip install azureml-sdk[contrib]
 
 将配置文件中工作区的详细信息保存到当前目录中。 此文件名为“aml_config\config.json”。  
 
-`write_config()` API 调用在当前目录中创建配置文件。 config.json 文件包含以下内容：
+稍后可以通过此工作区配置文件轻松加载相同的工作区。 可以使用同一目录或子目录中的其他 Notebook 和脚本来加载它。  
+
+[!code-python[](~/aml-sdk-samples/ignore/doc-qa/quickstart-create-workspace-with-python/quickstart.py?name=writeConfig)]
+
+此 `write_config()` API 调用在当前目录中创建配置文件。 config.json 文件包含以下内容：
 
 ```json
 {
@@ -148,15 +159,13 @@ pip install azureml-sdk[contrib]
 }
 ```
 
-稍后可以通过此工作区配置文件轻松加载相同的工作区。 可以使用同一目录或子目录中的其他 Notebook 和脚本来加载它。 
-
-[!code-python[](~/aml-sdk-samples/ignore/doc-qa/quickstart-create-workspace-with-python/quickstart.py?name=writeConfig)]
-
-
-
 ## <a name="use-the-workspace"></a>使用工作区
 
-编写一些使用 SDK 基本 API 来跟踪试验运行的代码。
+运行一些使用 SDK 基本 API 来跟踪试验运行的代码。
+
+1. 在工作区中创建一个试验。
+1. 将单个值记录到试验中。
+1. 将值列表记录到试验中。
 
 [!code-python[](~/aml-sdk-samples/ignore/doc-qa/quickstart-create-workspace-with-python/quickstart.py?name=useWs)]
 
@@ -182,19 +191,6 @@ print(run.get_portal_url())
 ## <a name="next-steps"></a>后续步骤
 
 在本文中，你创建了进行试验和部署模型所需的资源。 在 Notebook 中运行了代码，并在云端工作区中浏览了该代码的运行历史记录。
-
-要将该代码用于机器学习教程，需要在环境中额外安装几个包。
-
-1. 在浏览器中关闭 Notebook。
-1. 在命令行窗口中，选择 Ctrl+C 停止 Jupyter Notebook 服务器。
-1. 安装额外的包。  如果没有安装上面的 `azureml-sdk[automl]`，请确保现在就安装。
-
-    ```shell
-    conda install -y cython matplotlib scikit-learn pandas numpy
-    pip install azureml-sdk[automl]
-    ```
-
-安装这些包后，继续学习训练和部署模型的教程。 
 
 > [!div class="nextstepaction"]
 > [教程：训练图像分类模型](tutorial-train-models-with-aml.md)

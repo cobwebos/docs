@@ -254,14 +254,6 @@ items:
       items:
       - name: 调整查询性能
         href: sql-api-query-metrics.md
-      - name: 服务器端编程
-        items:
-        - name: 编写存储过程、触发器和 UDF
-          href: how-to-write-stored-procedures-triggers-udfs.md
-        - name: 使用 JavaScript 查询 API 编写存储过程和触发器
-          href: how-to-write-javascript-query-api.md
-        - name: 使用存储过程、触发器和 UDF
-          href: how-to-use-stored-procedures-triggers-udfs.md
       - name: 数据类型
         items:
         - name: DateTime
@@ -282,7 +274,7 @@ items:
           href: /java/azure/spring-framework/configure-spring-data-gremlin-java-app-with-cosmos-db
         - name: 使用 Spring Data MongoDB API
           href: /java/azure/spring-framework/configure-spring-data-mongodb-with-cosmos-db
-    - name: 参考
+    - name: 引用
       items:
       - name: .NET
         href: sql-api-sdk-dotnet.md
@@ -337,7 +329,7 @@ items:
         - name: Node.js 和 React 应用
           href: tutorial-develop-mongodb-react.md
       - name: 2 - 迁移数据
-        href: mongodb-migrate.md
+        href: https://docs.microsoft.com/azure/dms/tutorial-mongodb-cosmos-db?toc=/azure/cosmos-db/toc.json
       - name: 3 - 查询数据
         href: tutorial-query-mongodb.md
       - name: 4 - 全球分配数据
@@ -450,7 +442,7 @@ items:
         href: table-storage-how-to-use-ruby.md
       - name: F#
         href: https://docs.microsoft.com/dotnet/articles/fsharp/using-fsharp-on-azure/table-storage
-    - name: 参考
+    - name: 引用
       items:
       - name: .NET
         href: table-sdk-dotnet.md
@@ -497,6 +489,14 @@ items:
       items:
       - name: 管理索引
         href: how-to-manage-indexing-policy.md
+  - name: 服务器端编程
+    items:
+    - name: 编写存储过程、触发器和 UDF
+      href: how-to-write-stored-procedures-triggers-udfs.md
+    - name: 使用 JavaScript 查询 API 编写存储过程和触发器
+      href: how-to-write-javascript-query-api.md
+    - name: 使用存储过程、触发器和 UDF
+      href: how-to-use-stored-procedures-triggers-udfs.md
   - name: 安全
     items:
     - name: 配置 IP 防火墙
@@ -627,9 +627,9 @@ items:
       href: use-cases.md
     - name: 社交媒体应用
       href: social-media-apps.md
-ms.openlocfilehash: 93d8abe428305ce62fb95afabc6ab71dfc8f67b4
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 2fdf08837bc239ba10da85fad7b81c819b9f26fc
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 01/31/2019
-ms.locfileid: "55464868"
+ms.locfileid: "55511915"

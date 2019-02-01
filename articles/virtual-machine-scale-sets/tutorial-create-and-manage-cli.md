@@ -3,7 +3,7 @@ title: 教程 - 创建和管理 Azure 虚拟机规模集 | Microsoft Docs
 description: 了解如何使用 Azure CLI 创建虚拟机规模集以及某些常见的管理任务，例如如何启动和停止实例，或者如何更改规模集容量。
 services: virtual-machine-scale-sets
 documentationcenter: ''
-author: zr-msft
+author: cynthn
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/27/2018
-ms.author: zarhoads
+ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 263a2ddd1cf42348678488a02ed0b97a7ed1304c
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: 9abf1d1105c112051041688f1d4305c543b148ce
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49466131"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55179474"
 ---
 # <a name="tutorial-create-and-manage-a-virtual-machine-scale-set-with-the-azure-cli"></a>教程：使用 Azure CLI 创建和管理虚拟机规模集
 利用虚拟机规模集，可以部署和管理一组相同的、自动缩放的虚拟机。 在虚拟机规模集的整个生命周期内，可能需要运行一个或多个管理任务。 本教程介绍如何执行下列操作：
@@ -51,7 +51,7 @@ az group create --name myResourceGroup --location eastus
 
 
 ## <a name="create-a-scale-set"></a>创建规模集
-请使用 [az vmss create](/cli/azure/vmss#az_vmss_create) 命令创建虚拟机规模集。 以下示例创建名为“myScaleSet”的规模集，并生成 SSH 密钥（如果不存在）：
+请使用 [az vmss create](/cli/azure/vmss) 命令创建虚拟机规模集。 以下示例创建名为“myScaleSet”的规模集，并生成 SSH 密钥（如果不存在）：
 
 ```azurecli-interactive
 az vmss create \
@@ -98,7 +98,7 @@ az vmss get-instance-view \
 ## <a name="list-connection-information"></a>列出连接信息
 系统将公共 IP 地址分配给负载均衡器，由后者将流量路由到各个 VM 实例。 默认情况下，会将网络地址转换 (NAT) 规则添加到 Azure 负载均衡器，由后者将远程连接流量转发给给定端口上的每个 VM。 若要连接到规模集中的 VM 实例，请创建一个可连接到已分配的公共 IP 地址和端口号的远程连接。
 
-若要列出规模集中连接到 VM 实例的地址和端口，请使用 [az vmss list-instance-connection-info](/cli/azure/vmss#az_vmss_list_instance_connection_info)：
+若要列出规模集中连接到 VM 实例的地址和端口，请使用 [az vmss list-instance-connection-info](/cli/azure/vmss)：
 
 ```azurecli-interactive
 az vmss list-instance-connection-info \
@@ -202,7 +202,7 @@ VM 实例大小或 *SKU* 决定了可供 VM 实例使用的计算资源（如 CP
 | [高性能](../virtual-machines/linux/sizes-hpc.md) | H, A8-11          | 功能极其强大的 CPU VM 具有可选的高吞吐量网络接口 (RDMA)。 
 
 ### <a name="find-available-vm-instance-sizes"></a>查找可用的 VM 实例大小
-若要查看在特定区域可用的 VM 实例大小的列表，请使用 [az vm list-sizes](/cli/azure/vm#az_vm_list_sizes) 命令。
+若要查看在特定区域可用的 VM 实例大小的列表，请使用 [az vm list-sizes](/cli/azure/vm) 命令。
 
 ```azurecli-interactive
 az vm list-sizes --location eastus --output table
@@ -227,7 +227,7 @@ az vm list-sizes --location eastus --output table
 ```
 
 ### <a name="create-a-scale-set-with-a-specific-vm-instance-size"></a>创建特定 VM 实例大小的规模集
-在教程开头创建规模集时，为 VM 实例提供了默认 VM SKU *Standard_D1_v2*。 可以根据 [az vm list-sizes](/cli/azure/vm#az_vm_list_sizes) 的输出指定其他 VM 实例大小。 以下示例会使用 `--vm-sku` 参数创建一个规模集，以便指定 VM 实例大小 *Standard_F1*。 由于只需数分钟即可创建和配置所有的规模集资源和 VM 实例，因此不需部署以下规模集：
+在教程开头创建规模集时，为 VM 实例提供了默认 VM SKU *Standard_D1_v2*。 可以根据 [az vm list-sizes](/cli/azure/vm) 的输出指定其他 VM 实例大小。 以下示例会使用 `--vm-sku` 参数创建一个规模集，以便指定 VM 实例大小 *Standard_F1*。 由于只需数分钟即可创建和配置所有的规模集资源和 VM 实例，因此不需部署以下规模集：
 
 ```azurecli-interactive
 az vmss create \
@@ -241,7 +241,7 @@ az vmss create \
 
 
 ## <a name="change-the-capacity-of-a-scale-set"></a>更改规模集的容量
-在教程开头创建规模集时，默认部署了两个 VM 实例。 可以使用 [az vmss create](/cli/azure/vmss#az_vmss_create) 来指定 `--instance-count` 参数，以便更改通过规模集创建的实例数。 若要增加或减少现有规模集中的 VM 实例数，可以手动更改容量。 规模集会创建或删除所需数量的 VM 实例，然后配置分发流量所需的负载均衡器。
+在教程开头创建规模集时，默认部署了两个 VM 实例。 可以使用 [az vmss create](/cli/azure/vmss) 来指定 `--instance-count` 参数，以便更改通过规模集创建的实例数。 若要增加或减少现有规模集中的 VM 实例数，可以手动更改容量。 规模集会创建或删除所需数量的 VM 实例，然后配置分发流量所需的负载均衡器。
 
 若要手动增加或减少规模集中 VM 实例的数目，请使用 [az vmss scale](/cli/azure/vmss#az_vmss_scale)。 以下示例将规模集中 VM 实例的数目设置为 *3*：
 

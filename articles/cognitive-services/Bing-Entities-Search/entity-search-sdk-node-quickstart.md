@@ -1,21 +1,21 @@
 ---
-title: 快速入门：必应实体搜索 SDK、Node
+title: 快速入门：必应实体搜索 SDK，Node
 titleSuffix: Azure Cognitive Services
 description: 使用 Node 设置实体搜索 SDK 控制台应用程序。
 services: cognitive-services
 author: mikedodaro
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-entity-search
+ms.subservice: bing-entity-search
 ms.topic: quickstart
 ms.date: 02/12/2018
 ms.author: v-gedod
-ms.openlocfilehash: f94e3b5a6070da5ef9510216abd3f52a958030c5
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 0a61a6b1ada68307af7e7e574cba9910841f5939
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52311375"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55153005"
 ---
 # <a name="quickstart-bing-entity-search-sdk-with-node"></a>快速入门：通过 Node 使用必应实体搜索 SDK
 
@@ -51,8 +51,8 @@ entitySearchApiClient.entitiesOperations.search('seahawks').then((result) => {
 
 ```
 代码会将 `result.value` 项打印至控制台，并且不会分析任何文本。  结果（如果每个类别都有结果）将包括：
-- _type: 'Thing'
-- _type: 'ImageObject'
+- _type:'Thing'
+- _type:'ImageObject'
 
 <!-- Removing until we can replace with a sanitized version.
 ![Entity results](media/entity-search-sdk-node-quickstart-results.png)

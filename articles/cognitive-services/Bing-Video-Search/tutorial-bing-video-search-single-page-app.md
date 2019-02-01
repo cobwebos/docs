@@ -6,16 +6,16 @@ services: cognitive-services
 author: mikedodaro
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-video-search
+ms.subservice: bing-video-search
 ms.topic: tutorial
 ms.date: 11/01/2017
 ms.author: rosh
-ms.openlocfilehash: a7c6646a69aec11797d354da28baca669b802ab0
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 5661cab24d3c5ada401f416a3d39b1a787094b5c
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47226596"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55175105"
 ---
 # <a name="tutorial-single-page-video-search-app"></a>教程：单页视频搜索应用
 使用必应视频搜索 API 可以搜索 Web，并获取与搜索查询相关的视频结果。 本教程将生成一个单页 Web 应用程序，该应用程序使用必应搜索 API 在页面中显示搜索结果。 该应用程序包含 HTML、CSS 和 JavaScript 组件。
@@ -100,7 +100,7 @@ HTML `<form>` 标记 `onsubmit` 可调用 `bingWebSearch` 函数以返回搜索�
 
 HTML 表单包括具有以下名称的元素：
 
-|元素|Description|
+|元素|说明|
 |-|-|
 | `where` | 用于选择市场（位置和语言）进行搜索的下拉菜单。 |
 | `query` | 用于输入搜索条件的文本字段。 |
@@ -308,7 +308,7 @@ function renderSearchResults(results) {
 
 必应新闻搜索 API 最多返回四种不同类型的相关结果，每个都有其自己的顶级对象。 它们是：
 
-|关系|Description|
+|关系|说明|
 |-|-|
 |`pivotSuggestions`|将原始搜索中的透视字替换为其他字的查询。 例如，如果搜索“red flowers”，透视字可能为“red”，并且透视建议可能为“yellow flowers”。|
 |`queryExpansions`|通过添加更多词缩小原始搜索范围的查询。 例如，如果搜索“Microsoft Surface”，查询扩展可能为“Microsoft Surface Pro”。|
@@ -332,7 +332,7 @@ searchItemRenderers = {
 ```
 呈现器函数可以接受以下参数：
 
-|参数|Description|
+|参数|说明|
 |-|-|
 |`item`| 包含项目属性（如其 URL 及其说明）的 JavaScript 对象。|
 |`index`| 结果项集合中的结果项的索引。|

@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.component: report-monitor
+ms.subservice: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: ad34a5c3d72ec1f7fce0b56a85fd7c9cba007366
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: ca3b25929a21e844b6350a79a3713d8e1b7ef0f8
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54824569"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55168634"
 ---
 # <a name="tutorial-how-to-download-and-use-a-script-to-access-sign-in-logs"></a>教程：如何下载并使用脚本来访问登录日志
 
@@ -35,7 +35,7 @@ ms.locfileid: "54824569"
 
 * 一个使用高级 (P1/P2) 许可证的 Azure Active Directory 租户。 请注意，如果在升级之前没有任何活动数据，则在升级到高级版许可证后，数据需要经过几天才会显示在报表中。 
 * 一位属于该租户的全局管理员、安全管理员、安全读者或报表读者角色的用户。 此外，任何用户都可以访问自己的登录活动。 
-* 若要在 Windows 10 计算机上运行下载的脚本，请[设置 AzureRM 模块并设置执行策略](concept-sign-ins.md#running-the-script-on-a-windows-10-machine)。
+* 若要在 Windows 10 计算机上运行下载的脚本，请[设置 Azure PowerShell 模块并设置执行策略](concept-sign-ins.md#running-the-script-on-a-windows-10-machine)。
 
 ## <a name="tutorial"></a>教程
 

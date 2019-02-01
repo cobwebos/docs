@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 1/11/2019
+ms.date: 1/25/2019
 ms.author: jeedes
-ms.openlocfilehash: baf78fc0bc0941c9466f77a77ef922f3fe3d62b3
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: a12a0b383db63cc80aea045ca5afe6c75b0b83a9
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54823014"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55100013"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-idid-manager"></a>教程：Azure Active Directory 与 iDiD Manager 的集成
 
@@ -70,10 +70,10 @@ ms.locfileid: "54823014"
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
 
-在本部分中，根据名为 **Britta Simon** 的测试用户的指示配置和测试 [应用程序名称] 的 Azure AD 单一登录。
-若要运行单一登录，需要在 Azure AD 用户与 [应用程序名称] 相关用户之间建立链接关系。
+在本部分中，基于一个名为“Britta Simon”的测试用户配置和测试 iDiD Manager 的 Azure AD 单一登录。
+若要正常进行单一登录，需要在 Azure AD 用户与 iDiD Manager 相关用户之间建立链接关系。
 
-若要配置和测试 [应用程序名称] 的 Azure AD 单一登录，需要完成以下构建基块：
+若要配置和测试 iDiD Manager 的 Azure AD 单一登录，需要完成以下构建基块：
 
 1. **[配置 Azure AD 单一登录](#configure-azure-ad-single-sign-on)** - 使用户能够使用此功能。
 2. **[配置 iDiD Manager 单一登录](#configure-idid-manager-single-sign-on)** - 在应用程序端配置单一登录设置。
@@ -86,7 +86,7 @@ ms.locfileid: "54823014"
 
 在本部分中，将在 Azure 门户中启用 Azure AD 单一登录。
 
-若要配置 [应用程序名称] 的 Azure AD 单一登录，请执行以下步骤：
+若要配置 iDiD Manager 的 Azure AD 单一登录，请执行以下步骤：
 
 1. 在 [Azure 门户](https://portal.azure.com/)中的“iDiD Manager”应用程序集成页上，选择“单一登录”。
 
@@ -100,18 +100,20 @@ ms.locfileid: "54823014"
 
     ![编辑基本 SAML 配置](common/edit-urls.png)
 
-4. 如果要在 **SP** 发起的模式下配置应用程序，请在“基本 SAML 配置”部分执行以下步骤：
+4. 在“基本 SAML 配置”部分中，用户不必执行任何步骤，因为该应用已经与 Azure 预先集成。
 
-    ![iDiD Manager 域和 URL 单一登录信息](common/both-preintegrated-signon.png)
+    ![iDiD Manager 域和 URL 单一登录信息](common/preintegrated.png)
 
-    a. 单击“设置其他 URL”。
+5. 如果要在 SP 发起的模式下配置应用程序，请单击“设置其他 URL”，并执行以下步骤：
 
-    b. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://idid2.fi/saml/login/<domain>`。
+    ![iDiD Manager 域和 URL 单一登录信息](common/metadata-upload-additional-signon.png)
+
+    在“登录 URL”文本框中，使用以下模式键入 URL：`https://idid2.fi/saml/login/<domain>`
 
     > [!NOTE]
     > 此值不是真实值。 请使用实际登录 URL 更新此值。 若要获取该值，请与 [iDiD Manager 客户端支持团队](mailto:support@idid.fi)联系。 还可以参考 Azure 门户中的“基本 SAML 配置”部分中显示的模式。
 
-5. 在“设置 SAML 单一登录”页的“SAML 签名证书”部分中，单击“复制”按钮，以复制“应用联合元数据 URL”，并将它保存在计算机上。
+6. 在“设置 SAML 单一登录”页的“SAML 签名证书”部分中，单击“复制”按钮，以复制“应用联合元数据 URL”，并将它保存在计算机上。
 
     ![证书下载链接](common/copy-metadataurl.png)
 
@@ -187,3 +189,4 @@ ms.locfileid: "54823014"
 - [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+

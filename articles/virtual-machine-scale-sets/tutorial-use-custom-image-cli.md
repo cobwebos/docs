@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 5eee55846bd6f5821be1e40b969a35f5e50bd205
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 119a53949b6184389c0e36e56732f0486c24ca5c
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46967364"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55193482"
 ---
 # <a name="tutorial-create-and-use-a-custom-image-for-virtual-machine-scale-sets-with-the-azure-cli"></a>教程：通过 Azure CLI 创建和使用虚拟机规模集的自定义映像
 创建规模集时，需指定部署 VM 实例时要使用的映像。 若要在部署 VM 实例之后减少任务数目，可以使用自定义 VM 映像。 在此自定义 VM 映像中可以完成全部所需的应用程序安装或配置步骤。 在规模集中创建的任何 VM 实例使用自定义 VM 映像，并随时可为应用程序流量提供服务。 本教程介绍如何执行下列操作：
@@ -44,7 +44,7 @@ ms.locfileid: "46967364"
 >[!NOTE]
 > 本教程介绍创建和使用通用化 VM 映像的过程。 不支持从专用 VM 映像创建规模集。
 
-首先使用 [az group create](/cli/azure/group#az_group_create) 创建资源组，然后使用 [az vm create](/cli/azure/vm#az_vm_create) 创建 VM。 此 VM 可用作自定义 VM 映像的源。 以下示例在名为 *myResourceGroup* 的资源组中创建名为 *myVM* 的 VM：
+首先使用 [az group create](/cli/azure/group#az_group_create) 创建资源组，然后使用 [az vm create](/cli/azure/vm) 创建 VM。 此 VM 可用作自定义 VM 映像的源。 以下示例在名为 *myResourceGroup* 的资源组中创建名为 *myVM* 的 VM：
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
@@ -57,7 +57,7 @@ az vm create \
   --generate-ssh-keys
 ```
 
-[az vm create](/cli/azure/vm#az_vm_create) 命令的输出中会显示 VM 的公共 IP 地址。 通过 SSH 连接到 VM 的公共 IP 地址，如下所示：
+[az vm create](/cli/azure/vm) 命令的输出中会显示 VM 的公共 IP 地址。 通过 SSH 连接到 VM 的公共 IP 地址，如下所示：
 
 ```azurecli-interactive
 ssh azureuser@<publicIpAddress>
@@ -96,7 +96,7 @@ az vm generalize --resource-group myResourceGroup --name myVM
 
 解除分配和通用化 VM 可能需要花费几分钟时间。
 
-现在，使用 [az image create](/cli//azure/image#az_image_create) 创建 VM 的映像。 以下示例从 VM 创建名为 *myImage* 的映像：
+现在，使用 [az image create](/cli//azure/image) 创建 VM 的映像。 以下示例从 VM 创建名为 *myImage* 的映像：
 
 ```azurecli-interactive
 az image create \

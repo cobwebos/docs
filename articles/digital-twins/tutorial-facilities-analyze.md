@@ -6,20 +6,20 @@ author: dsk-2015
 ms.custom: seodec18
 ms.service: digital-twins
 ms.topic: tutorial
-ms.date: 10/15/2018
+ms.date: 12/18/2018
 ms.author: dkshir
-ms.openlocfilehash: f233efc93fa07cc7fc7c904336f01348f4da3f82
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: 488b97074d74650ecf5602d25e2a90a1998e5585
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53554514"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54883868"
 ---
 # <a name="tutorial-visualize-and-analyze-events-from-your-azure-digital-twins-spaces-by-using-time-series-insights"></a>教程：使用时序见解直观显示和分析 Azure 数字孪生空间中的事件
 
-部署 Azure 数字孪生实例、预配空间并实现用于监视特定条件的自定义函数以后，即可将空间中的事件和数据可视化，查找趋势和异常。 
+部署 Azure 数字孪生实例、预配空间并实现用于监视特定条件的自定义函数以后，即可将空间中的事件和数据可视化，查找趋势和异常。
 
-在[第一个教程](tutorial-facilities-setup.md)中，你配置了一栋虚构大楼的空间图，其中一个房间包含用于移动、二氧化碳和温度的传感器。 在[第二个教程](tutorial-facilities-udf.md)中，已预配了图形和用户定义的函数。 此函数监视这些传感器值并在条件适当的情况下触发通知， 这里的条件适当是指房间为空房间且温度和二氧化碳水平正常。 
+在[第一个教程](tutorial-facilities-setup.md)中，你配置了一栋虚构大楼的空间图，其中一个房间包含用于移动、二氧化碳和温度的传感器。 在[第二个教程](tutorial-facilities-udf.md)中，已预配了图形和用户定义的函数。 此函数监视这些传感器值并在条件适当的情况下触发通知， 这里的条件适当是指房间为空房间且温度和二氧化碳水平正常。
 
 本教程介绍如何将这些通知和来自 Azure 数字孪生设置的数据与 Azure 时序见解集成。 然后，你可以将某段时间的传感器值可视化， 查找各种趋势，例如，哪个房间使用频率最高、一天中最忙的时间是什么时间。 也可检测异常，例如，哪些房间让人感觉又闷又热，或者大楼中某个区域发送的温度值是否始终很高，表明空调故障。
 
@@ -32,43 +32,44 @@ ms.locfileid: "53554514"
 ## <a name="prerequisites"></a>先决条件
 
 本教程假定你已[配置](tutorial-facilities-setup.md)和[预配](tutorial-facilities-udf.md) Azure 数字孪生设置。 在继续操作之前，请确保已具备以下条件：
+
 - 一个 [Azure 帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 - 一个正在运行的数字孪生实例。
 - 在工作计算机上下载并解压缩的[数字孪生 C# 示例](https://github.com/Azure-Samples/digital-twins-samples-csharp)。
-- 在用于运行示例的开发计算机上安装的 [.NET Core SDK 2.1.403 或更高版本](https://www.microsoft.com/net/download)。 请运行 `dotnet --version` 以验证是否安装了正确的版本。 
-
+- 在用于运行示例的开发计算机上安装的 [.NET Core SDK 2.1.403 或更高版本](https://www.microsoft.com/net/download)。 请运行 `dotnet --version` 以验证是否安装了正确的版本。
 
 ## <a name="stream-data-by-using-event-hubs"></a>使用事件中心对数据进行流式传输
+
 可以使用[事件中心](../event-hubs/event-hubs-about.md)服务创建流式传输数据所需的管道。 本部分介绍如何将事件中心创建为 Azure 数字孪生和时序见解实例之间的连接器。
 
 ### <a name="create-an-event-hub"></a>创建事件中心
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 
-1. 在左窗格中，选择“创建资源”。 
+1. 在左窗格中，选择“创建资源”。
 
 1. 搜索并选择“事件中心”。 选择“创建”。
 
-1. 为事件中心命名空间输入一个“名称”。 选择“标准”作为**定价层**，然后选择你的**订阅**、用于数字孪生实例的**资源组**，以及**位置**。 选择“创建”。 
+1. 为事件中心命名空间输入一个“名称”。 选择“标准”作为**定价层**，然后选择你的**订阅**、用于数字孪生实例的**资源组**，以及**位置**。 选择“创建”。
 
 1. 在事件中心命名空间部署中，选择“资源”下的命名空间。
 
     ![部署后的事件中心命名空间](./media/tutorial-facilities-analyze/open-event-hub-ns.png)
 
-
-1. 在事件中心命名空间的“概览”窗格中，选择顶部的“事件中心”按钮。 
+1. 在事件中心命名空间的“概览”窗格中，选择顶部的“事件中心”按钮。
     ![“事件中心”按钮](./media/tutorial-facilities-analyze/create-event-hub.png)
 
-1. 为事件中心输入一个“名称”，然后选择“创建”。 
+1. 为事件中心输入一个“名称”，然后选择“创建”。
 
    事件中心在部署以后，会显示在其命名空间的“事件中心”窗格中，其“状态”为“活动”。 选择此事件中心，打开其“概览”窗格。
 
 1. 选择顶部的“使用者组”按钮，为使用者组输入一个名称，例如 **tsievents**。 选择“创建”。
+
     ![事件中心使用者组](./media/tutorial-facilities-analyze/event-hub-consumer-group.png)
 
-   使用者组在创建以后，会显示在事件中心的“概览”窗格底部的列表中。 
+   使用者组在创建以后，会显示在事件中心的“概览”窗格底部的列表中。
 
-1. 打开事件中心的“共享访问策略”窗格，然后选择“添加”按钮。 输入 **ManageSend** 作为策略名称，确保所有复选框都已选中，然后选择“创建”。 
+1. 打开事件中心的“共享访问策略”窗格，然后选择“添加”按钮。 输入 **ManageSend** 作为策略名称，确保所有复选框都已选中，然后选择“创建”。
 
     ![事件中心连接字符串](./media/tutorial-facilities-analyze/event-hub-connection-strings.png)
 
@@ -100,13 +101,13 @@ ms.locfileid: "53554514"
 
 1. 将占位符 `Primary_connection_string_for_your_event_hub` 替换为事件中心的“连接字符串--主键”的值。 确保此连接字符串的格式如下：
 
-   ```
+   ```plaintext
    Endpoint=sb://nameOfYourEventHubNamespace.servicebus.windows.net/;SharedAccessKeyName=ManageSend;SharedAccessKey=yourShareAccessKey1GUID;EntityPath=nameOfYourEventHub
    ```
 
 1. 将占位符 `Secondary_connection_string_for_your_event_hub` 替换为事件中心的“连接字符串--辅助键”的值。 确保此连接字符串的格式如下： 
 
-   ```
+   ```plaintext
    Endpoint=sb://nameOfYourEventHubNamespace.servicebus.windows.net/;SharedAccessKeyName=ManageSend;SharedAccessKey=yourShareAccessKey2GUID;EntityPath=nameOfYourEventHub
    ```
 
@@ -115,13 +116,12 @@ ms.locfileid: "53554514"
     > [!IMPORTANT]
     > 输入所有值，不带任何引号。 在 YAML 文件中，请确保在冒号之后至少有一个空格字符。 也可使用任何联机 YAML 验证程序（例如[此工具](https://onlineyamltools.com/validate-yaml)）来验证 YAML 文件内容。
 
-
 1. 保存并关闭该文件。 在命令窗口中运行以下命令，在系统提示时使用 Azure 帐户登录。
 
     ```cmd/sh
     dotnet run CreateEndpoints
     ```
-   
+
    它为事件中心创建两个终结点。
 
    ![事件中心的终结点](./media/tutorial-facilities-analyze/dotnet-create-endpoints.png)
@@ -165,12 +165,11 @@ ms.locfileid: "53554514"
     > [!TIP]
     > 如果在删除数字孪生实例时遇到麻烦，请使用已推出的包含修补程序的服务更新。 请重新尝试删除实例。
 
-2. 可以根据需要删除工作计算机上的示例应用程序。 
-
+2. 可以根据需要删除工作计算机上的示例应用程序。
 
 ## <a name="next-steps"></a>后续步骤
 
-请继续阅读下一篇文章，详细了解 Azure 数字孪生中的空间智能图和对象模型。 
+请继续阅读下一篇文章，详细了解 Azure 数字孪生中的空间智能图和对象模型。
+
 > [!div class="nextstepaction"]
 > [了解数字孪生对象模型和空间智能图](concepts-objectmodel-spatialgraph.md)
-

@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 01/15/2019
 ms.author: rezas
-ms.openlocfilehash: 149d3e3515c8bbc10798ad26e58dcefbe830f9bc
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 24b00a589454bfa8413cd98407c2022671cb92ce
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54830729"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54887948"
 ---
 # <a name="quickstart-communicate-to-a-device-application-in-c-via-iot-hub-device-streams-preview"></a>快速入门：通过 IoT 中心设备流在 C 中与设备应用程序通信（预览）
 
@@ -82,7 +82,7 @@ ms.locfileid: "54830729"
 
 ```
     # In Linux
-    cmake -Denable_streaming=ON ..
+    cmake ..
     make -j
 ```
 
@@ -91,10 +91,10 @@ ms.locfileid: "54830729"
 ```
     # In Windows
     # For VS2015
-    cmake -Denable_streaming=ON .. -G "Visual Studio 15 2015"
+    cmake .. -G "Visual Studio 15 2015"
     
     # Or for VS2017
-    cmake -Denable_streaming=ON .. -G "Visual Studio 15 2017
+    cmake .. -G "Visual Studio 15 2017
 
     # Then build the project
     cmake --build . -- /m /p:Configuration=Release

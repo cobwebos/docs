@@ -6,16 +6,16 @@ services: cognitive-services
 author: mikedodaro
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: answer-search
+ms.subservice: answer-search
 ms.topic: quickstart
 ms.date: 04/16/2018
 ms.author: rosh
-ms.openlocfilehash: 7e8a793362e51a05a73c0b42346e2e8fafb3f44d
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: b8358890658a38133452ba2092ac9b8b78114ff7
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49469395"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55210941"
 ---
 # <a name="quickstart-query-for-facts"></a>快速入门：查询事实
 
@@ -26,14 +26,14 @@ valentines+2016、when+is+ramadan 等查询被视为与日期相关的查询。 
 下面的示例是日期相关的 `facts` 答案。 
 
 **查询：**
-````
+```
 https://labsportalppe.azure-api.net/answerSearch/v7.0/search?q=valentines+2016
 
-````
+```
 
 **响应：**`subjectName` 字段包含显示事实时可用作标签的用户查询的显示版本。 如果查询字符串是 valentines+2016，则必应可能将其更改为“Valentine's Day 2016”。 说明字段包含事实。
 
-````
+```
 {   
     "_type" : "SearchResponse",   
     "queryContext" : {   
@@ -57,20 +57,20 @@ https://labsportalppe.azure-api.net/answerSearch/v7.0/search?q=valentines+2016
     }   
 }   
 
-````
+```
 
 查询“天空为何是蓝色的？” 返回与知识相关的答案的示例。
 
 **查询：**
 
-````
+```
 https://api.labs.cognitive.microsoft.com/answerSearch/v7.0/search?q=why+is+the+sky+blue
 
-````
+```
 
 **响应：**`value/description` 字段包含查询请求的知识或信息。
 
-````
+```
   "facts": {
     "id": "https://www.bingapis.com/api/v7/#Facts",
     "contractualRules": [
@@ -112,17 +112,17 @@ https://api.labs.cognitive.microsoft.com/answerSearch/v7.0/search?q=why+is+the+s
     ]
   },
 
-````
+```
 
 ## <a name="tabular-data"></a>表格数据
 在某些情况下，事实可作为 `_type: StructuredValue/TabularData` 返回。 以下查询获取咖啡和茶对比信息的表格数据。
 
-````
+```
 https://labsportalppe.azure-api.net/answerSearch/v7.0/search?q=coffee+vs+tea&mkt=en-us 
 
-````
+```
 `facts` 结果包含以下行和单元格：
-````
+```
     "value": [
       {
         "subjectName": "Coffee vs. Tea",
@@ -196,7 +196,7 @@ https://labsportalppe.azure-api.net/answerSearch/v7.0/search?q=coffee+vs+tea&mkt
     ]
   },
 
-````
+```
 
 ## <a name="next-steps"></a>后续步骤
 - [C# 快速入门](c-sharp-quickstart.md)

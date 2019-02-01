@@ -6,16 +6,16 @@ services: cognitive-services
 author: aahill
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-web-search
+ms.subservice: bing-web-search
 ms.topic: tutorial
 ms.date: 09/12/2018
 ms.author: aahi
-ms.openlocfilehash: b94e6f70d4a28dc59ddaa62cfad55c6c8383b761
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: 13040cf7f75b8bf2c0bf898dc4f3b16c99a80560
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52161916"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55172470"
 ---
 # <a name="tutorial-create-a-single-page-app-using-the-bing-web-search-api"></a>教程：使用必应 Web 搜索 API 创建单页应用
 
@@ -82,7 +82,7 @@ npm install
 
 HTML 表单包含用于映射到[必应 Web 搜索 API v7](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#query-parameters) 中的查询参数的选项。 下表分类介绍了用户可如何使用示例应用筛选搜索结果：
 
-| 参数 | Description |
+| 参数 | 说明 |
 |-----------|-------------|
 | `query` | 用于输入查询字符串的文本字段。 |
 | `where` | 用于选择市场（位置和语言）的下拉菜单。 |
@@ -386,7 +386,7 @@ searchItemRenderers = {
 
 上下文参数为：
 
-| 参数  | Description |
+| 参数  | 说明 |
 |------------|-------------|
 | `section` | 结果部分（`pole`、`mainline` 或 `sidebar`），在其中会显示项。 |
 | `index`<br>`count` | 在 `RankingResponse` 项指定显示给定集合中的所有项时可用；否则为 `undefined`。 其集合中项目的索引，以及该集合中的项目总数。 此信息可用于设置结果编号，还可用于为第一个或最后一个结果生成不同的 HTML 等等。 |

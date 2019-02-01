@@ -3,7 +3,7 @@ title: 教程 - 通过 Azure CLI 创建和使用规模集的磁盘 | Microsoft D
 description: 了解如何通过 Azure CLI 对虚拟机规模集创建和使用托管磁盘，包括如何添加、准备、列出和分离磁盘。
 services: virtual-machine-scale-sets
 documentationcenter: ''
-author: zr-msft
+author: cynthn
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/27/2018
-ms.author: zarhoads
+ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 35256a22265ca544975b2fead40b1a2be0d73ff1
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: da7848fe561d061470e8921f1f76ac30bed4c809
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49469378"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55163052"
 ---
 # <a name="tutorial-create-and-use-disks-with-virtual-machine-scale-set-with-the-azure-cli"></a>教程：通过 Azure CLI 对虚拟机规模集创建和使用磁盘
 虚拟机规模集使用磁盘来存储 VM 实例的操作系统、应用程序和数据。 创建和管理规模集时，请务必选择适用于所需工作负荷的磁盘大小和配置。 本教程介绍如何创建和管理 VM 磁盘。 本教程介绍如何执行下列操作：
@@ -48,7 +48,7 @@ ms.locfileid: "49469378"
 **临时磁盘** - 临时磁盘使用 VM 实例所在的 Azure 主机上的固态硬盘。 这些磁盘具有高性能，可用于临时数据处理等操作。 但是，如果将 VM 实例移到新的主机，临时磁盘上存储的数据都会删除。 临时磁盘的大小由 VM 实例大小决定。 临时磁盘标记为“/dev/sdb”，且装载点为 /mnt。
 
 ### <a name="temporary-disk-sizes"></a>临时磁盘大小
-| 类型 | 常见大小 | 临时磁盘大小上限 (GiB) |
+| Type | 常见大小 | 临时磁盘大小上限 (GiB) |
 |----|----|----|
 | [常规用途](../virtual-machines/linux/sizes-general.md) | A、B、D 系列 | 1600 |
 | [计算优化](../virtual-machines/linux/sizes-compute.md) | F 系列 | 576 |
@@ -59,10 +59,10 @@ ms.locfileid: "49469378"
 
 
 ## <a name="azure-data-disks"></a>Azure 数据磁盘
-可添加额外的数据磁盘，用于安装应用程序和存储数据。 在任何需要持久和灵敏数据存储的情况下，都应使用数据磁盘。 每个数据磁盘的最大容量为 4 TB。 VM 实例的大小决定可附加的数据磁盘数。 对于每个 VM vCPU，都可以附加两个数据磁盘。
+可添加额外的数据磁盘，用于安装应用程序和存储数据。 在任何需要持久和响应性数据存储的情况下，都应使用数据磁盘。 每个数据磁盘的最大容量为 4 TB。 VM 实例的大小决定可附加的数据磁盘数。 对于每个 VM vCPU，都可以附加两个数据磁盘。
 
 ### <a name="max-data-disks-per-vm"></a>每个 VM 的最大数据磁盘数
-| 类型 | 常见大小 | 每个 VM 的最大数据磁盘数 |
+| Type | 常见大小 | 每个 VM 的最大数据磁盘数 |
 |----|----|----|
 | [常规用途](../virtual-machines/linux/sizes-general.md) | A、B、D 系列 | 64 |
 | [计算优化](../virtual-machines/linux/sizes-compute.md) | F 系列 | 64 |
@@ -132,7 +132,7 @@ az vmss disk attach \
 
 若要跨规模集中的多个 VM 实例自动完成此过程，可以使用 Azure 自定义脚本扩展。 此扩展可以在每个 VM 实例上以本地方式执行脚本，以便完成各种任务，例如准备附加的数据磁盘。 有关详细信息，请参阅[自定义脚本扩展概述](../virtual-machines/linux/extensions-customscript.md)。
 
-以下示例在每个 VM 实例上执行来自 GitHub 示例存储库的脚本，使用的是 [az vmss extension set](/cli/azure/vmss/extension#az_vmss_extension_set) 命令，该命令用于准备所有原始的附加数据磁盘：
+以下示例在每个 VM 实例上执行来自 GitHub 示例存储库的脚本，使用的是 [az vmss extension set](/cli/azure/vmss/extension) 命令，该命令用于准备所有原始的附加数据磁盘：
 
 ```azurecli-interactive
 az vmss extension set \
@@ -279,7 +279,7 @@ az vmss show \
 
 
 ## <a name="detach-a-disk"></a>分离磁盘
-不再需要某个给定的磁盘时，可以将其从规模集中分离。 该磁盘会从规模集的所有 VM 实例中删除。 若要从规模集中分离某个磁盘，请使用 [az vmss disk detach](/cli/azure/vmss/disk#az_vmss_disk_detach) 并指定磁盘的 LUN。 LUN 显示在上一部分的 [az vmss show](/cli/azure/vmss#az_vmss_show) 命令的输出中。 以下示例从规模集分离 LUN *2*：
+不再需要某个给定的磁盘时，可以将其从规模集中分离。 该磁盘会从规模集的所有 VM 实例中删除。 若要从规模集中分离某个磁盘，请使用 [az vmss disk detach](/cli/azure/vmss/disk) 并指定磁盘的 LUN。 LUN 显示在上一部分的 [az vmss show](/cli/azure/vmss#az_vmss_show) 命令的输出中。 以下示例从规模集分离 LUN *2*：
 
 ```azurecli-interactive
 az vmss disk detach \

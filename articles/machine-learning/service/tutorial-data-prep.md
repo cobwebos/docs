@@ -4,23 +4,23 @@ titleSuffix: Azure Machine Learning service
 description: 本教程的第一部分介绍如何在 Python 中准备数据，以便使用 Azure 机器学习 SDK 进行回归建模。
 services: machine-learning
 ms.service: machine-learning
-ms.component: core
+ms.subservice: core
 ms.topic: tutorial
 author: cforbe
 ms.author: cforbe
 ms.reviewer: trbye
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: eb4d94d93a72844cfa869bd74aef6eeb34b0f8e9
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: c199a403e65bd084428fd45e8dc67cca214f5f9f
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54817497"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55251276"
 ---
 # <a name="tutorial-prepare-data-for-regression-modeling"></a>教程：为回归建模准备数据
 
-本教程介绍如何准备数据，以便使用 Azure 机器学习数据准备 SDK 进行回归建模。 运行各种转换，以便筛选并组合两个不同的纽约市出租车数据集。  
+本教程介绍如何准备数据，以便使用 Azure 机器学习数据准备 SDK 进行回归建模。 运行各种转换，以便筛选并组合两个不同的纽约市出租车数据集。
 
 本教程是由两个部分构成的系列教程的第一部分。 完成这一系列的教程以后，即可根据数据特性训练一个模型，以便预测出租车打车费用。 这些特性包括上车日期和时间、乘客数和上车位置。
 
@@ -45,9 +45,14 @@ ms.locfileid: "54817497"
 
 从导入 SDK 着手。
 
-
 ```python
 import azureml.dataprep as dprep
+```
+
+若要按照教程在自己的 Python 环境中操作，请使用以下命令安装必需的包。
+
+```shell
+pip install azureml-dataprep
 ```
 
 ## <a name="load-data"></a>加载数据
@@ -61,13 +66,15 @@ dataset_root = "https://dprepdata.blob.core.windows.net/demo"
 green_path = "/".join([dataset_root, "green-small/*"])
 yellow_path = "/".join([dataset_root, "yellow-small/*"])
 
-green_df = dprep.read_csv(path=green_path, header=dprep.PromoteHeadersMode.GROUPED)
+green_df_raw = dprep.read_csv(path=green_path, header=dprep.PromoteHeadersMode.GROUPED)
 # auto_read_file automatically identifies and parses the file type, which is useful when you don't know the file type.
-yellow_df = dprep.auto_read_file(path=yellow_path)
+yellow_df_raw = dprep.auto_read_file(path=yellow_path)
 
-display(green_df.head(5))
-display(yellow_df.head(5))
+display(green_df_raw.head(5))
+display(yellow_df_raw.head(5))
 ```
+
+`Dataflow` 对象类似于数据帧，表示针对数据执行的一系列松散评估的不可变操作。 可以通过调用不同的转换并筛选可用方法来添加操作。 在 `Dataflow` 中添加操作后，始终会获得新的 `Dataflow` 对象。
 
 ## <a name="cleanse-data"></a>清理数据
 
@@ -82,11 +89,11 @@ useful_columns = [
 ]
 ```
 
-首先处理绿色出租车数据，使之具有有效的形状，能够与黄色出租车数据组合在一起。 创建名为 `tmp_df` 的临时数据流。 使用已创建的快捷方式转换变量来调用 `replace_na()`、`drop_nulls()` 和 `keep_columns()` 函数。 另外，请将 dataframe 中的所有列重命名，使之与 `useful_columns` 变量中的名称匹配。
+首先处理绿色出租车数据，使之具有有效的形状，能够与黄色出租车数据组合在一起。 使用已创建的快捷方式转换变量来调用 `replace_na()`、`drop_nulls()` 和 `keep_columns()` 函数。 另外，请将 dataframe 中的所有列重命名，使之与 `useful_columns` 变量中的名称匹配。
 
 
 ```python
-tmp_df = (green_df
+green_df = (green_df_raw
     .replace_na(columns=all_columns)
     .drop_nulls(*drop_if_all_null)
     .rename_columns(column_pairs={
@@ -105,7 +112,7 @@ tmp_df = (green_df
         "Trip_distance": "distance"
      })
     .keep_columns(columns=useful_columns))
-tmp_df.head(5)
+green_df.head(5)
 ```
 
 <div>
@@ -211,17 +218,10 @@ tmp_df.head(5)
 </table>
 </div>
 
-使用在上一步的 `tmp_df` 数据流上运行的转换覆盖 `green_df` 变量。
+对黄色出租车数据运行相同的转换步骤。 这些函数确保从数据集中删除 null 数据，这有助于提高机器学习模型的准确度。
 
 ```python
-green_df = tmp_df
-```
-
-对黄色出租车数据运行相同的转换步骤。
-
-
-```python
-tmp_df = (yellow_df
+yellow_df = (yellow_df_raw
     .replace_na(columns=all_columns)
     .drop_nulls(*drop_if_all_null)
     .rename_columns(column_pairs={
@@ -246,20 +246,18 @@ tmp_df = (yellow_df
         "trip_distance": "distance"
     })
     .keep_columns(columns=useful_columns))
-tmp_df.head(5)
+yellow_df.head(5)
 ```
 
-再次使用 `tmp_df` 数据流来覆盖 `yellow_df` 数据流。 然后，针对绿色出租车数据调用 `append_rows()` 函数，以便追加黄色出租车数据。 此时会创建新的组合 dataframe。
-
+针对绿色出租车数据调用 `append_rows()` 函数，以追加黄色出租车数据。 此时会创建新的组合 dataframe。
 
 ```python
-yellow_df = tmp_df
 combined_df = green_df.append_rows([yellow_df])
 ```
 
-### <a name="convert-types-and-filter"></a>转换类型和筛选器 
+### <a name="convert-types-and-filter"></a>转换类型和筛选器
 
-检查上车和下车的坐标摘要统计信息，了解数据的分布情况。 首先定义一个 `TypeConverter` 对象，将纬度和经度字段更改为十进制类型。 接下来调用 `keep_columns()` 函数，使输出仅限纬度和经度字段，然后调用 `get_profile()` 函数。
+检查上车和下车的坐标摘要统计信息，了解数据的分布情况。 首先定义一个 `TypeConverter` 对象，将纬度和经度字段更改为十进制类型。 接下来调用 `keep_columns()` 函数，使输出仅限纬度和经度字段，然后调用 `get_profile()` 函数。 这些函数调用创建数据流的精简视图，以便仅显示纬度/经度字段，并更方便地评估缺失的坐标或超出范围的坐标。
 
 
 ```python
@@ -271,7 +269,7 @@ combined_df = combined_df.set_column_types(type_conversions={
     "dropoff_latitude": decimal_type
 })
 combined_df.keep_columns(columns=[
-    "pickup_longitude", "pickup_latitude", 
+    "pickup_longitude", "pickup_latitude",
     "dropoff_longitude", "dropoff_latitude"
 ]).get_profile()
 ```
@@ -283,7 +281,7 @@ combined_df.keep_columns(columns=[
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>类型</th>
+      <th>Type</th>
       <th>Min</th>
       <th>Max</th>
       <th>Count</th>
@@ -403,15 +401,15 @@ combined_df.keep_columns(columns=[
 
 
 
-从摘要统计信息输出中可以看到，有的坐标缺失，有的坐标不在纽约市。 筛选掉位置在城市边缘之外的坐标。 链接 `filter()` 函数中的列筛选器命令，定义每个字段的最小和最大边界。 然后再次调用 `get_profile()` 函数，验证转换。
+从摘要统计信息输出中可以看到，有的坐标缺失，有的坐标不在纽约市（通过主观分析来确定）。 筛选掉位置在城市边缘之外的坐标。 链接 `filter()` 函数中的列筛选器命令，定义每个字段的最小和最大边界。 然后再次调用 `get_profile()` 函数，验证转换。
 
 
 ```python
-tmp_df = (combined_df
+latlong_filtered_df = (combined_df
     .drop_nulls(
         columns=["pickup_longitude", "pickup_latitude", "dropoff_longitude", "dropoff_latitude"],
         column_relationship=dprep.ColumnRelationship(dprep.ColumnRelationship.ANY)
-    ) 
+    )
     .filter(dprep.f_and(
         dprep.col("pickup_longitude") <= -73.72,
         dprep.col("pickup_longitude") >= -74.09,
@@ -422,8 +420,8 @@ tmp_df = (combined_df
         dprep.col("dropoff_latitude") <= 40.88,
         dprep.col("dropoff_latitude") >= 40.53
     )))
-tmp_df.keep_columns(columns=[
-    "pickup_longitude", "pickup_latitude", 
+latlong_filtered_df.keep_columns(columns=[
+    "pickup_longitude", "pickup_latitude",
     "dropoff_longitude", "dropoff_latitude"
 ]).get_profile()
 ```
@@ -435,7 +433,7 @@ tmp_df.keep_columns(columns=[
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>类型</th>
+      <th>Type</th>
       <th>Min</th>
       <th>Max</th>
       <th>Count</th>
@@ -553,22 +551,13 @@ tmp_df.keep_columns(columns=[
   </tbody>
 </table>
 
-
-
-使用对 `tmp_df` 数据流所做的转换覆盖 `combined_df` 数据流。
-
-
-```python
-combined_df = tmp_df
-```
-
 ### <a name="split-and-rename-columns"></a>拆分和重命名列
 
-查看 `store_forward` 列的数据配置文件。
+查看 `store_forward` 列的数据配置文件。 此字段是一个布尔标志。如果出租车在完成行程后未连接到服务器，因此必须先将行程数据存储在内存中，然后在连接后将数据转发到服务器，则此标志的值为 `Y`。
 
 
 ```python
-combined_df.keep_columns(columns='store_forward').get_profile()
+latlong_filtered_df.keep_columns(columns='store_forward').get_profile()
 ```
 
 
@@ -578,7 +567,7 @@ combined_df.keep_columns(columns='store_forward').get_profile()
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>类型</th>
+      <th>Type</th>
       <th>Min</th>
       <th>Max</th>
       <th>Count</th>
@@ -633,25 +622,25 @@ combined_df.keep_columns(columns='store_forward').get_profile()
 
 
 ```python
-combined_df = combined_df.replace(columns="store_forward", find="0", replace_with="N").fill_nulls("store_forward", "N")
+replaced_stfor_vals_df = latlong_filtered_df.replace(columns="store_forward", find="0", replace_with="N").fill_nulls("store_forward", "N")
 ```
 
-执行 `distance` 字段上的 `replace` 函数。 此函数将重新格式化错误标记为 `.00` 的距离值，并用 0 填充任何 null 值。 将 `distance` 字段转换为数值格式。
+执行 `distance` 字段上的 `replace` 函数。 此函数将重新格式化错误标记为 `.00` 的距离值，并用 0 填充任何 null 值。 将 `distance` 字段转换为数值格式。 这些错误的数据点可能是出租车内部数据收集系统中的异常。
 
 
 ```python
-combined_df = combined_df.replace(columns="distance", find=".00", replace_with=0).fill_nulls("distance", 0)
-combined_df = combined_df.to_number(["distance"])
+replaced_distance_vals_df = replaced_stfor_vals_df.replace(columns="distance", find=".00", replace_with=0).fill_nulls("distance", 0)
+replaced_distance_vals_df = replaced_distance_vals_df.to_number(["distance"])
 ```
 
 将上车和下车日期/时间值拆分为相应的日期和时间列。 使用 `split_column_by_example()` 函数进行拆分。 在此示例中，`split_column_by_example()` 函数的可选 `example` 参数已省略。 因此，函数会自动根据数据来确定在何处进行拆分。
 
 
 ```python
-tmp_df = (combined_df
+time_split_df = (replaced_distance_vals_df
     .split_column_by_example(source_column="pickup_datetime")
     .split_column_by_example(source_column="dropoff_datetime"))
-tmp_df.head(5)
+time_split_df.head(5)
 ```
 
 <div>
@@ -781,27 +770,23 @@ tmp_df.head(5)
 </table>
 </div>
 
-
 将 `split_column_by_example()` 函数生成的列重命名，使用有意义的名称。
 
-
 ```python
-tmp_df_renamed = (tmp_df
+renamed_col_df = (time_split_df
     .rename_columns(column_pairs={
         "pickup_datetime_1": "pickup_date",
         "pickup_datetime_2": "pickup_time",
         "dropoff_datetime_1": "dropoff_date",
         "dropoff_datetime_2": "dropoff_time"
     }))
-tmp_df_renamed.head(5)
+renamed_col_df.head(5)
 ```
 
-使用所执行的转换覆盖 `combined_df` 数据流。 然后调用 `get_profile()` 函数，以便查看进行所有转换之后的完整摘要统计信息。
-
+调用 `get_profile()` 函数，以查看完成所有清理步骤之后的完整摘要统计信息。
 
 ```python
-combined_df = tmp_df_renamed
-combined_df.get_profile()
+renamed_col_df.get_profile()
 ```
 
 ## <a name="transform-data"></a>转换数据
@@ -810,12 +795,14 @@ combined_df.get_profile()
 
 生成这些新特性后，请通过 `drop_columns()` 函数删除原始字段，因为新生成的特性是首选特性。 重命名其余字段，使用有意义的说明。
 
+以这种方式转换数据来创建基于时间的新特征可以提高机器学习模型的准确度。 例如，为工作日生成新特征有助于在星期日期与出租车费用价格之间建立关系，因为某些星期日期的用车需求更高，其价格也更高。
+
 
 ```python
-tmp_df = (combined_df
+transformed_features_df = (renamed_col_df
     .derive_column_by_example(
-        source_columns="pickup_date", 
-        new_column_name="pickup_weekday", 
+        source_columns="pickup_date",
+        new_column_name="pickup_weekday",
         example_data=[("2009-01-04", "Sunday"), ("2013-08-22", "Thursday")]
     )
     .derive_column_by_example(
@@ -823,17 +810,17 @@ tmp_df = (combined_df
         new_column_name="dropoff_weekday",
         example_data=[("2013-08-22", "Thursday"), ("2013-11-03", "Sunday")]
     )
-          
+
     .split_column_by_example(source_column="pickup_time")
     .split_column_by_example(source_column="dropoff_time")
     # The following two calls to split_column_by_example reference the column names generated from the previous two calls.
     .split_column_by_example(source_column="pickup_time_1")
     .split_column_by_example(source_column="dropoff_time_1")
     .drop_columns(columns=[
-        "pickup_date", "pickup_time", "dropoff_date", "dropoff_time", 
+        "pickup_date", "pickup_time", "dropoff_date", "dropoff_time",
         "pickup_date_1", "dropoff_date_1", "pickup_time_1", "dropoff_time_1"
     ])
-          
+
     .rename_columns(column_pairs={
         "pickup_date_2": "pickup_month",
         "pickup_date_3": "pickup_monthday",
@@ -847,7 +834,7 @@ tmp_df = (combined_df
         "dropoff_time_2": "dropoff_second"
     }))
 
-tmp_df.head(5)
+transformed_features_df.head(5)
 ```
 
 <div>
@@ -1001,21 +988,23 @@ tmp_df.head(5)
 </table>
 </div>
 
-注意，数据显示通过派生的转换生成的上车和下车日期和时间组件是正确的。 请删除 `pickup_datetime` 和 `dropoff_datetime` 列，因为已不再需要它们。
+注意，数据显示通过派生的转换生成的上车和下车日期和时间组件是正确的。 删除 `pickup_datetime` 和 `dropoff_datetime` 列，因为已不再需要它们（小时、分钟和秒等粒度时间特征更适合用于模型训练）。
 
 
 ```python
-tmp_df = tmp_df.drop_columns(columns=["pickup_datetime", "dropoff_datetime"])
+processed_df = transformed_features_df.drop_columns(columns=["pickup_datetime", "dropoff_datetime"])
 ```
 
 请使用类型推断功能自动检查每个字段的数据类型，并显示推断结果。
 
 
 ```python
-type_infer = tmp_df.builders.set_column_types()
+type_infer = processed_df.builders.set_column_types()
 type_infer.learn()
 type_infer
 ```
+
+`type_infer` 生成的输出如下所示。
 
     Column types conversion candidates:
     'pickup_weekday': [FieldType.STRING],
@@ -1040,25 +1029,24 @@ type_infer
 
 
 ```python
-tmp_df = type_infer.to_dataflow()
-tmp_df.get_profile()
+type_converted_df = type_infer.to_dataflow()
+type_converted_df.get_profile()
 ```
 
-在打包数据流之前，请对数据集运行两个最终筛选器。 若要消除不正确的数据点，请对 `cost` 和 `distance` 变量值都大于零的记录筛选数据流。
+在打包数据流之前，请对数据集运行两个最终筛选器。 若要消除错误捕获的数据点，请根据 `cost` 和 `distance` 变量值都大于零的记录筛选数据流。 此步骤可以大幅提高机器学习模型的准确度，因为成本或距离为零的数据点表示严重离群值，会导致丧失预测准确度。
 
 ```python
-tmp_df = tmp_df.filter(dprep.col("distance") > 0)
-tmp_df = tmp_df.filter(dprep.col("cost") > 0)
+final_df = type_converted_df.filter(dprep.col("distance") > 0)
+final_df = final_df.filter(dprep.col("cost") > 0)
 ```
 
-目前已经有了完全转换和准备好的数据流对象，可以在机器学习模型中使用了。 此 SDK 包含对象序列化功能，其用法如以下代码片段所示。
+目前已经有了完全转换和准备好的数据流对象，可以在机器学习模型中使用了。 SDK 包含对象序列化功能，其用法如以下代码中所示。
 
 ```python
 import os
 file_path = os.path.join(os.getcwd(), "dflows.dprep")
 
-dflow_prepared = tmp_df
-package = dprep.Package([dflow_prepared])
+package = dprep.Package([final_df])
 package.save(file_path)
 ```
 
