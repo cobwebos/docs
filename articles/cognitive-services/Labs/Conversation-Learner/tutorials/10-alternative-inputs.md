@@ -6,16 +6,16 @@ services: cognitive-services
 author: v-jaswel
 manager: nolachar
 ms.service: cognitive-services
-ms.component: conversation-learner
+ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: b6ea1ee4eb8b55d2da4069ef19a268ec68f49cb4
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: c60dc2ca93547b93ce2ee457393570479069c899
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53796450"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55216262"
 ---
 # <a name="how-to-use-alternative-inputs"></a>如何使用备用输入
 
@@ -45,7 +45,7 @@ ms.locfileid: "53796450"
 
 1. 在左侧面板中单击“实体”，然后单击“新建实体”按钮。
 2. 选择“自定义训练”作为“实体类型”。
-3. 键入“城市”作为“实体名称”。
+3. 键入“city”作为“实体名称”。
 4. 单击“创建”按钮。
 
 现在，创建三个操作。
@@ -58,7 +58,7 @@ ms.locfileid: "53796450"
 4. 在“取消实体资格”字段中，键入“城市。”
 5. 单击“创建”按钮。
 
-### <a name="create-the-second-action"></a>创建第二个操作。
+### <a name="create-the-second-action"></a>创建第二个操作
 
 1. 在左面板中单击“操作”，然后单击“新建操作”按钮。
 2. 在“机器人的响应...”字段中，键入“$city 的天气可能为晴天。”

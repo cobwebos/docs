@@ -8,19 +8,19 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 24ffc841-7a77-481c-9cc4-6f8bda58fe66
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/16/2018
 ms.author: jeedes
-ms.openlocfilehash: b02a5ec5a68743e148bcfef3c631d7777fd0a067
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: e5c7a578320beb57858ff93c848345f7f5a21caf
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52871676"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55183486"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-iwellnessnow"></a>教程：Azure Active Directory 与 iWellnessNow 集成
 
@@ -108,7 +108,7 @@ ms.locfileid: "52871676"
 
     ![iWellnessNow 域和 URL 单一登录上传](./media/iwellnessnow-tutorial/tutorial_iwellnessnow_upload.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 单击“上传元数据文件”。
+    a. 单击“上传元数据文件”。
 
     ![iWellnessNow 域和 URL 单一登录上传配置](./media/iwellnessnow-tutorial/tutorial_iwellnessnow_uploadconfig.png)
 
@@ -122,7 +122,7 @@ ms.locfileid: "52871676"
 
     ![iWellnessNow 域和 URL 单一登录信息](./media/iwellnessnow-tutorial/tutorial_iwellnessnow_url.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“标识符”文本框中，使用以下模式键入 URL：`http://<CustomerName>.iwellnessnow.com`
+    a. 在“标识符”文本框中，使用以下模式键入 URL：`http://<CustomerName>.iwellnessnow.com`
 
     b. 在 **“回复 URL”** 文本框中，使用以下模式键入 URL：`https://<CustomerName>.iwellnessnow.com/ssologin`
 
@@ -169,7 +169,7 @@ ms.locfileid: "52871676"
 
     ![“用户”对话框](./media/iwellnessnow-tutorial/create_aaduser_04.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“姓名”框中，键入“BrittaSimon”。
+    a. 在“姓名”框中，键入“BrittaSimon”。
 
     b. 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
 

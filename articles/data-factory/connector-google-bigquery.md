@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 1e0cb556bf2b36ec2b6ebee7163ec44e459f35ab
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: c9320c8d0cf512bc9145accc07ab4c79630a7c84
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54023679"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55301350"
 ---
 # <a name="copy-data-from-google-bigquery-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 Google BigQuery 复制数据
 
@@ -78,8 +78,8 @@ Google BigQuery 链接服务支持以下属性。
                 "value":"<secret of the application used to generate the refresh token>"
             },
             "refreshToken": {
-                 "type": "SecureString",
-                 "value": "<refresh token>"
+                "type": "SecureString",
+                "value": "<refresh token>"
             }
         }
     }
@@ -116,7 +116,7 @@ Google BigQuery 链接服务支持以下属性。
             "type": "IntegrationRuntimeReference"
         }
     }
-} 
+}
 ```
 
 ## <a name="dataset-properties"></a>数据集属性

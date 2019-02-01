@@ -6,16 +6,16 @@ services: cognitive-services
 author: diberry
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: qna-maker
+ms.subservice: qna-maker
 ms.topic: article
 ms.date: 12/04/2018
 ms.author: diberry
-ms.openlocfilehash: 0cbd25c0ea906c0b0f35b6ac0ae798505863ac8a
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 6eccf4014eb663d0a3275d70c4e997f9ed324762
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53273249"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55211978"
 ---
 # <a name="quickstart-get-answer-from-knowledge-base-using-curl"></a>快速入门：使用 cURL 从知识库获取答案
 
@@ -69,7 +69,7 @@ ms.locfileid: "53273249"
 
 ## <a name="use-staging-endpoint-with-curl"></a>与 cURL 配合使用临时终结点
 
-如果想要从临时终结点获取答案，请使用值为 `true` 的查询字符串布尔参数 `isTest`。
+如果想要从暂存终结点获取答案，请使用值为 `true` 的查询字符串布尔参数 `isTest`。
 
 `isTest=true`
 

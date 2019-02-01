@@ -12,12 +12,12 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 12/03/2018
-ms.openlocfilehash: 48f8bb2e8251191fac456549cfca7a37e75d7f8c
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 4d9618bbceacf4167aac843e3d5fd818f225d297
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52997686"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55467809"
 ---
 # <a name="resolving-transact-sql-differences-during-migration-to-sql-database"></a>解析迁移到 SQL 数据库的过程中的 Transact-SQL 差异
 
@@ -39,7 +39,7 @@ Microsoft SQL Server 和 Azure SQL 数据库都完全支持应用程序使用的
 
 - CREATE 和 ALTER DATABASE 语句具有超过 36 个的选项。 这些语句包括文件定位、FILESTREAM 以及仅适用于 SQL Server 的服务中转站选项。 如果在迁移前创建数据库，这可能不是问题，但如果要迁移用于创建数据库的 T-SQL 代码，应将 [CREATE DATABASE（Azure SQL 数据库）](https://msdn.microsoft.com/library/dn268335.aspx)与 [CREATE DATABASE (SQL Server Transact-SQL)](https://msdn.microsoft.com/library/ms176061.aspx) 中的 SQL Server 语法进行比较，以确保所用的所有选项都受支持。 Azure SQL 数据库的 CREATE DATABASE 语句还具有服务目标和仅适用于 SQL 数据库的弹性缩放选项。
 - CREATE 和 ALTER TABLE 语句具有不能在 SQL 数据库上使用的 FileTable 选项，因为不支持 FILESTREAM。
-- SQL 数据库支持 CREATE 和 ALTER login 语句，但未提供所有选项。 要使数据库更易于移植，SQL 数据库建议尽可能使用包含的数据库用户，而不是使用登录名。 有关详细信息，请参阅 [CREATE/ALTER LOGIN](https://msdn.microsoft.com/library/ms189828.aspx) 和[控制和授予数据库访问权限](https://docs.microsoft.com/azure/sql-database/sql-database-manage-logins)。
+- SQL 数据库支持 CREATE 和 ALTER login 语句，但未提供所有选项。 要使数据库更易于移植，SQL 数据库建议尽可能使用包含的数据库用户，而不是使用登录名。 有关详细信息，请参阅 [CREATE/ALTER LOGIN](https://msdn.microsoft.com/library/ms189828.aspx) 和[控制和授予数据库访问权限](sql-database-manage-logins.md)。
 
 ## <a name="transact-sql-syntax-not-supported-in-azure-sql-database"></a>Azure SQL 数据库不支持的 Transact-SQL 语法
 

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: hrasheed
 ms.custom: hdiseo17may2017
-ms.openlocfilehash: 8ef8f66a67ee93ea8c015c33e69b87e7c5d2a898
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: d729d840bb055452eb8bb87cc978f1e38dcea48e
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53259981"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55227941"
 ---
 # <a name="serialize-data-in-apache-hadoop-with-the-microsoft-avro-library"></a>使用 Microsoft Avro Library 序列化 Apache Hadoop 中的数据
 
@@ -1351,7 +1351,7 @@ Microsoft Avro Library 可以使用反射从要序列化的 C# 对象的数据�
 该示例将执行以下任务：
 
 * 连接到现有的 HDInsight 服务群集。
-* 序列化多个 CSV 文件并将结果上传到 Azure Blob 存储。 （CSV 文件随着示例一起分发，而且代表 [Infochimps](https://www.infochimps.com/) 在 1970 年到 2010 年期间提取自 AMEX 股票的历史记录数据。 该示例将读取 CSV 文件数据、将记录转换为 **Stock** 类的实例，然后使用反射序列化这些实例。 Stock 类型定义是使用 Microsoft Avro Library 代码生成实用工具从 JSON 架构创建的。
+* 序列化多个 CSV 文件并将结果上传到 Azure Blob 存储。 （CSV 文件随着示例一起分发，而且代表 [Infochimps](https://www.infochimps.org/) 在 1970 年到 2010 年期间提取自 AMEX 股票的历史记录数据。 该示例将读取 CSV 文件数据、将记录转换为 **Stock** 类的实例，然后使用反射序列化这些实例。 Stock 类型定义是使用 Microsoft Avro Library 代码生成实用工具从 JSON 架构创建的。
 * 在 Hive 中创建名为 **Stocks** 的新外部表，并将它链接到前一个步骤中上传的数据。
 * 使用 Hive 对 **Stocks** 表执行查询。
 

@@ -7,16 +7,16 @@ author: tulasim88
 manager: cgronlun
 ms.custom: seodec18
 ms.service: cognitive-services
-ms.component: qna-maker`
+ms.subservice: qna-maker`
 ms.topic: article
-ms.date: 10/25/2018
+ms.date: 01/24/2019
 ms.author: tulasim
-ms.openlocfilehash: f5587e14a0250e7312f1c95598b481bd052931c3
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 428aea5775c1777f38d7ea563cfe3af700c27f02
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53094825"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55211825"
 ---
 # <a name="tutorial-create-a-qna-bot-with-azure-bot-service-v3"></a>教程：使用 Azure 机器人服务 v3 创建 QnA 机器人
 

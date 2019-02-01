@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: billmath
-ms.openlocfilehash: 101eeb89a44fbc28c831fefcdc6490495e0be7e8
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 67523641ff9650a5b35a142147a2f69adcfb3b1c
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54470318"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55077295"
 ---
 # <a name="azure-ad-connect-health-frequently-asked-questions"></a>Azure AD Connect Health 常见问题
 本文提供有关 Azure Active Directory (Azure AD) Connect Health 的常见问题 (FAQ) 解答。 这些常见问题涉及到服务使用方法，包括计费模式、功能、限制和支持。
@@ -62,7 +62,7 @@ ms.locfileid: "54470318"
 
 **问：Azure AD Connect Health 是否支持 Azure 德国云？**
 
-Azure AD Connect Health 不受德国云支持，但[同步错误报告功能](how-to-connect-health-sync.md#object-level-synchronization-error-report)除外。 
+Azure AD Connect Health 不受德国云支持，但[同步错误报告功能](how-to-connect-health-sync.md#object-level-synchronization-error-report)除外。
 
 | 角色 | 功能 | 德国云支持 |
 | ------ | --------------- | --- |
@@ -71,7 +71,7 @@ Azure AD Connect Health 不受德国云支持，但[同步错误报告功能](ho
 | 适用于 ADFS 的 Connect Health | 监视/见解/警报/分析 | 否 |
 | 适用于 ADDS 的 Connect Health | 监视/见解/警报/分析 | 否 |
 
-若要确保适用于同步的 Connect Health 的代理连接，请相应地配置[安装要求](how-to-connect-health-agent-install.md#outbound-connectivity-to-the-azure-service-endpoints)。   
+若要确保适用于同步的 Connect Health 的代理连接，请相应地配置[安装要求](how-to-connect-health-agent-install.md#outbound-connectivity-to-the-azure-service-endpoints)。
 
 ## <a name="installation-questions"></a>安装问题
 
@@ -94,7 +94,7 @@ Azure AD Connect Health 不受德国云支持，但[同步错误报告功能](ho
 
 **问：在 Azure AD Connect Health 代理安装期间，是否必须重启我的服务器？**
 
-否。 安装代理时不需要重新启动服务器。 但是，安装某些先决条件步骤可能需要重新启动服务器。
+不是。 安装代理时不需要重新启动服务器。 但是，安装某些先决条件步骤可能需要重新启动服务器。
 
 例如，在 Windows Server 2008 R2 上安装 .NET 4.5 Framework 需要重新启动服务器。
 
@@ -111,7 +111,7 @@ Azure AD Connect Health 不受德国云支持，但[同步错误报告功能](ho
 
 **问：Azure AD Connect Health 在连接到 HTTP 代理时是否支持基本身份验证？**
 
-否。 目前不支持指定任意用户名和密码进行基本身份验证的机制。
+不是。 目前不支持指定任意用户名和密码进行基本身份验证的机制。
 
 **问：若要确保 Azure AD Connect Health 代理正常使用，需要打开哪些防火墙端口？**
 
@@ -163,7 +163,7 @@ Azure AD Connect Health 服务会扫描其所监视的所有计算机，以确�
 
 以下 PowerShell 脚本可用于手动执行此检查。 它可实现上述逻辑。
 
-```
+```powershell
 Function CheckForMS17-010 ()
 {
     $hotfixes = "KB3205409", "KB3210720", "KB3210721", "KB3212646", "KB3213986", "KB4012212", "KB4012213", "KB4012214", "KB4012215", "KB4012216", "KB4012217", "KB4012218", "KB4012220", "KB4012598", "KB4012606", "KB4013198", "KB4013389", "KB4013429", "KB4015217", "KB4015438", "KB4015546", "KB4015547", "KB4015548", "KB4015549", "KB4015550", "KB4015551", "KB4015552", "KB4015553", "KB4015554", "KB4016635", "KB4019213", "KB4019214", "KB4019215", "KB4019216", "KB4019263", "KB4019264", "KB4019472", "KB4015221", "KB4019474", "KB4015219", "KB4019473"
@@ -190,7 +190,7 @@ CheckForMS17-010
 
 **问：为什么未生成 ADFS 审核？**
 
-请使用 PowerShell cmdlet <i>Get-AdfsProperties -AuditLevel</i> 确保审核日志未处于禁用状态。 阅读有关 [ADFS 审核日志](https://docs.microsoft.com/windows-server/identity/ad-fs/technical-reference/auditing-enhancements-to-ad-fs-in-windows-server#auditing-levels-in-ad-fs-for-windows-server-2016)的更多信息。 请注意，如果有高级审核设置推送到 ADFS 服务器，则通过 auditpol.exe 进行的任何更改都将被覆盖 （即使未配置“已生成应用程序”）。 在这种情况下，请设置本地安全策略来记录“已生成应用程序”失败和成功。 
+请使用 PowerShell cmdlet <i>Get-AdfsProperties -AuditLevel</i> 确保审核日志未处于禁用状态。 阅读有关 [ADFS 审核日志](https://docs.microsoft.com/windows-server/identity/ad-fs/technical-reference/auditing-enhancements-to-ad-fs-in-windows-server#auditing-levels-in-ad-fs-for-windows-server-2016)的更多信息。 请注意，如果有高级审核设置推送到 ADFS 服务器，则通过 auditpol.exe 进行的任何更改都将被覆盖 （即使未配置“已生成应用程序”）。 在这种情况下，请设置本地安全策略来记录“已生成应用程序”失败和成功。
 
 
 ## <a name="related-links"></a>相关链接

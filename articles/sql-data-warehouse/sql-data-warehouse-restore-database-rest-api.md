@@ -6,16 +6,16 @@ author: kevinvngo
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: manage
+ms.subservice: manage
 ms.date: 04/17/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 71236afd3f72497887f42667f971539ed294bef1
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: daf013472e5fa533912920e4c14a552905b5d333
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43307530"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55241512"
 ---
 # <a name="restore-an-azure-sql-data-warehouse-with-rest-apis"></a>使用 REST API 还原 Azure SQL 数据仓库
 使用 REST API 还原 Azure SQL 数据仓库。

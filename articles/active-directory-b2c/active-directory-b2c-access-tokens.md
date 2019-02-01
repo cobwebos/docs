@@ -9,13 +9,13 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 08/09/2017
 ms.author: davidmu
-ms.component: B2C
-ms.openlocfilehash: f3db56c7ce61960fca0e5347b2385bcc65a88354
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.subservice: B2C
+ms.openlocfilehash: 86c62c021c6668783b3f843a908f4b17845f8c72
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54845140"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55172980"
 ---
 # <a name="azure-ad-b2c-requesting-access-tokens"></a>Azure AD B2C：请求访问令牌
 
@@ -114,7 +114,7 @@ OpenID Connect 标准指定了多个特殊的“scope”值。 以下特殊范�
 
 成功构建的 **access\_token**（通过 `/authorize` 或 `/token` 终结点）包含以下声明：
 
-| 名称 | 声明 | 说明 |
+| Name | 声明 | 说明 |
 | --- | --- | --- |
 |目标受众 |`aud` |令牌授权访问的单个资源的**应用程序 ID**。 |
 |范围 |`scp` |授予资源的权限。 多个授予的权限以空格分隔。 |

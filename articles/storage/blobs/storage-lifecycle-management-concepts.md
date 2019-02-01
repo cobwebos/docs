@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 11/04/2018
 ms.author: yzheng
-ms.component: common
-ms.openlocfilehash: 5c77d7d8f1ce3b4a13e497d461244aae5b34d08c
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.subservice: common
+ms.openlocfilehash: dd74cac3000f6a280d5b8faa858c2143d17a7e55
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53631356"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55247793"
 ---
 # <a name="managing-the-azure-blob-storage-lifecycle-preview"></a>管理 Azure Blob 存储生命周期（预览版）
 
@@ -136,7 +136,7 @@ az storage account management-policy show --resource-group [resourceGroupName] -
 
 | 参数名称 | 参数类型 | 说明 |
 |----------------|----------------|-------|
-| 名称           | String | 规则名称只能包含字母数字字符的任意组合。 规则名称区分大小写。 该名称必须在策略中唯一。 |
+| Name           | String | 规则名称只能包含字母数字字符的任意组合。 规则名称区分大小写。 该名称必须在策略中唯一。 |
 | type           | 枚举值 | 预览版中的有效值为 `Lifecycle`。 |
 | 定义     | 定义生命周期规则的对象 | 每个定义均由筛选器集和操作集组成。 |
 
@@ -209,7 +209,7 @@ az storage account management-policy show --resource-group [resourceGroupName] -
 
 在预览版中，操作执行条件基于陈旧程度。 基本 Blob 使用上次修改时间来跟踪陈旧程度，Blob 快照使用快照创建时间来跟踪陈旧程度。
 
-| 操作执行条件 | 条件值 | Description |
+| 操作执行条件 | 条件值 | 说明 |
 |----------------------------|-----------------|-------------|
 | daysAfterModificationGreaterThan | 指示陈旧程度（天）的整数值 | 基本 Blob 操作的有效条件 |
 | daysAfterCreationGreaterThan     | 指示陈旧程度（天）的整数值 | Blob 快照操作的有效条件 | 

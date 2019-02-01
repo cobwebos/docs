@@ -6,16 +6,16 @@ services: cognitive-services
 author: mikedodaro
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: url-preview
+ms.subservice: url-preview
 ms.topic: reference
 ms.date: 03/29/2018
 ms.author: rosh
-ms.openlocfilehash: 12e91a07d09929ba59873d0d56f4e19b20077f53
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: f7925c3eb14915c2b811ccfcd3a3803b9bd7c806
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53999741"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55222909"
 ---
 # <a name="project-url-preview-v7-reference"></a>项目 URL 预览 v7 参考
 
@@ -31,10 +31,10 @@ URL 预览支持对博客文章、论坛讨论、预览页面等 Web 资源的�
 若要请求 URL 预览结果，请向以下终结点发送请求。 使用标头和 URL 参数来进一步定义规范。
 
 终结点 GET：
-````
+```
 https://api.labs.cognitive.microsoft.com/urlpreview/v7.0/search?q=queryURL
 
-````
+```
 
 请求必须使用 HTTPS 协议并包括以下查询参数：
 
@@ -62,7 +62,7 @@ q - 标识要预览的 URL 的查询
 ## <a name="headers"></a>标头
 下面是请求和响应可能包含的标头。
 
-|标头|Description|
+|标头|说明|
 |------------|-----------------|
 |<a name="market" />BingAPIs-Market|响应标头。<br /><br /> 请求使用的市场。 形式为 \<languageCode\>-\<countryCode\>。 例如，en-US。|
 |<a name="traceid" />BingAPIs-TraceId|响应标头。<br /><br /> 包含请求详细信息的日志条目 ID。 发生错误时，捕获此 ID。 如果无法确定并解决问题，请纳入此 ID 以及提供给支持团队的其他信息。|
@@ -73,7 +73,7 @@ q - 标识要预览的 URL 的查询
 ## <a name="query-parameters"></a>查询参数
 请求可以包含以下查询参数。 请查看所需参数的“必需”列。 必须对查询参数进行 URL 编码。 查询必须是使用 http 或 https 方案的绝对 URL；我们不支持相对 URL 或其他方案（如 ftp://）
 
-|名称|值|类型|必选|
+|Name|值|Type|必选|
 |----------|-----------|----------|--------------|
 |<a name="mkt" />mkt|产生结果的市场。 <br /><br />如需可能的市场值的列表，请参阅[市场代码](#market-codes)。<br /><br /> **注意：** URL 预览 API 目前仅支持美国地理和英语。<br /><br />|String|是|
 |<a name="query" />q|要预览的 URL|String|是|
@@ -83,14 +83,14 @@ q - 标识要预览的 URL 的查询
 ## <a name="response-objects"></a>响应对象
 就像在 Web 搜索 API 中一样，响应架构为 [WebPage] 或 ErrorResponse。 如果请求失败，则顶级对象为 [ErrorResponse](#errorresponse) 对象。
 
-|对象|Description|
+|对象|说明|
 |------------|-----------------|
 |[WebPage](#webpage)|包含预览属性的顶级 JSON 对象。|
 
 ### <a name="error"></a>错误
 定义已发生的错误。
 
-|元素|Description|类型|
+|元素|说明|Type|
 |-------------|-----------------|----------|
 |<a name="error-code" />code|用于标识错误类别的错误代码。 如需可能的代码的列表，请参阅[错误代码](#error-codes)。|String|
 |<a name="error-message" />message|对错误的说明。|String|
@@ -102,7 +102,7 @@ q - 标识要预览的 URL 的查询
 ### <a name="errorresponse"></a>ErrorResponse
 请求失败时响应包含的顶级对象。
 
-|名称|值|类型|
+|Name|值|Type|
 |----------|-----------|----------|
 |_type|类型提示。|String|
 |<a name="errors" />errors|错误的列表，用于说明请求失败原因。|[Error](#error)[]|
@@ -110,7 +110,7 @@ q - 标识要预览的 URL 的查询
 ### <a name="webpage"></a>WebPage
 定义预览版网页的信息。
 
-|名称|值|类型|
+|Name|值|Type|
 |----------|-----------|----------|
 |名称|页面标题，不一定是 HTML 标题|String|
 |url|进行了实际爬网的 URL（请求可能已随之进行了重定向）|String|
@@ -119,7 +119,7 @@ q - 标识要预览的 URL 的查询
 |primaryImageOfPage/contentUrl|将包括在预览版中的代表性图像的 URL|String|
 
 ### <a name="identifiable"></a>Identifiable
-|名称|值|类型|
+|Name|值|Type|
 |-------------|-----------------|----------|
 |id|一个资源标识符|String|
 
@@ -127,7 +127,7 @@ q - 标识要预览的 URL 的查询
 
 下面是请求可能返回的 HTTP 状态代码。
 
-|状态代码|Description|
+|状态代码|说明|
 |-----------------|-----------------|
 |200|成功。|
 |400|查询参数之一缺失或无效。|
@@ -170,7 +170,7 @@ q - 标识要预览的 URL 的查询
 
 下面是可能的错误代码和子错误代码值。
 
-|代码|SubCode|Description
+|代码|SubCode|说明
 |-|-|-
 |ServerError|UnexpectedError<br/>ResourceError<br/>NotImplemented|HTTP 状态代码为 500。
 |InvalidRequest|ParameterMissing<br/>ParameterInvalidValue<br/>HttpNotAllowed<br/>已阻止|只要请求的任何部分无效，必应就会返回 InvalidRequest。 例如，缺少必需参数或参数值无效。<br/><br/>如果错误是 ParameterMissing 或 ParameterInvalidValue，则 HTTP 状态代码为 400。<br/><br/>如果使用 HTTP 协议而不是 HTTPS 协议，则必应会返回 HttpNotAllowed，且 HTTP 状态代码为 410。

@@ -6,16 +6,16 @@ services: cognitive-services
 author: zhouwangzw
 manager: wolfma
 ms.service: cognitive-services
-ms.component: bing-speech
+ms.subservice: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: zhouwang
-ms.openlocfilehash: 205eff6c79ba4699516a8898c5b1268eb3dfe644
-ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
+ms.openlocfilehash: 163ec61dc534255470626468195dcab28b3e3250
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/22/2018
-ms.locfileid: "53754010"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55221821"
 ---
 # <a name="authenticate-to-the-speech-api"></a>对语音 API 进行身份验证
 
@@ -34,7 +34,7 @@ ms.locfileid: "53754010"
 
 若要使用语音 REST API，需要传递请求标头 `Ocp-Apim-Subscription-Key` 字段中的订阅密钥。
 
-名称| 格式| Description
+Name| 格式| 说明
 ----|-------|------------
 Ocp-Apim-Subscription-Key | ASCII | YOUR_SUBSCRIPTION_KEY
 

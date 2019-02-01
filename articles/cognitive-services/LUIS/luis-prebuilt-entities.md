@@ -7,16 +7,16 @@ author: diberry
 ms.custom: seodec18
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: language-understanding
+ms.subservice: language-understanding
 ms.topic: article
 ms.date: 12/05/2018
 ms.author: diberry
-ms.openlocfilehash: 9e0d1ae39431ca75b43680981802b82f16703d4d
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 160721560b6cf311f146cd0f48ae719d95b30a0f
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53103925"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55206271"
 ---
 # <a name="prebuilt-entities-to-recognize-common-data-types"></a>用于识别常见数据类型的预生成实体
 

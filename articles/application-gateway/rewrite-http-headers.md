@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 12/20/2018
 ms.author: absha
-ms.openlocfilehash: 3e40dbb96b27df4b228c52e7a8f70d047a556c31
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: 2babb6ff7b93ad9cf7c93565cadce9453a3b96ca
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54198519"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55103422"
 ---
 # <a name="rewrite-http-headers-with-application-gateway-public-preview"></a>使用应用程序网关（公共预览版）重写 HTTP 标头
 
@@ -90,12 +90,10 @@ HTTP 标头可让客户端和服务器连同请求或响应一起传递附加的
 
 此功能支持将标头重写为以下服务器变量：
 
-| 支持的服务器变量 | Description                                                  |
+| 支持的服务器变量 | 说明                                                  |
 | -------------------------- | :----------------------------------------------------------- |
 | ciphers_supported          | 返回客户端支持的加密列表          |
 | ciphers_used               | 返回用于已建立的 SSL 连接的加密字符串 |
-| client_latitude            | 根据客户端 IP 地址确定国家/地区、区域和城市 |
-| client_longitude           | 根据客户端 IP 地址确定国家/地区、区域和城市 |
 | client_port                | 客户端端口                                                  |
 | client_tcp_rtt             | 关于客户端 TCP 连接的信息；在支持 TCP_INFO 套接字选项的系统上可用 |
 | client_user                | 使用 HTTP 身份验证时，为身份验证提供的用户名 |

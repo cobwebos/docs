@@ -8,7 +8,7 @@ manager: mtillman
 editor: ''
 ms.assetid: 780eec4d-7ee1-48b7-b29f-cd0b8cb41ed3
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -17,12 +17,12 @@ ms.date: 10/02/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 29cbb96cc6dec4bac601e8795599f77c955c418a
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: df45ec1478314e0d60f2c66a42a48801f1ce0643
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50230823"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55093081"
 ---
 # <a name="azure-active-directory-v20-and-the-oauth-20-device-code-flow"></a>Azure Active Directory v2.0 和 OAuth 2.0 设备代码流
 
@@ -60,7 +60,7 @@ scope=user.read%20openid%20profile
 
 ```
 
-| 参数 | 条件 | Description |
+| 参数 | 条件 | 说明 |
 | --- | --- | --- |
 | tenant |必选 |要向其请求权限的目录租户。 这可采用 GUID 或友好名称格式。  |
 | client_id |必选 |[应用程序注册门户](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList)分配给该应用的应用程序 ID。 |
@@ -70,7 +70,7 @@ scope=user.read%20openid%20profile
 
 成功响应是一个 JSON 对象，其中包含允许用户登录所需的信息。  
 
-| 参数 | 格式 | Description |
+| 参数 | 格式 | 说明 |
 | ---              | --- | --- |
 |`device_code`     |String| 一个长字符串，用于验证客户端与授权服务器之间的会话。  客户端使用此字符串从授权服务器请求访问令牌。 |
 |`user_code`       |String| 向用户显示的短字符串，用于标识辅助设备上的会话。|
@@ -95,7 +95,7 @@ client_id: 6731de76-14a6-49ae-97bc-6eba6914391e
 device_code: GMMhmHCXhWEzkobqIHGG_EnNYYsAkukHspeYUk9E8
 ```
 
-|参数 | 必选 | Description|
+|参数 | 必选 | 说明|
 | -------- | -------- | ---------- |
 |`grant_type` | 必选| 必须是 `urn:ietf:params:oauth:grant-type:device_code`|
 |`client_id`  | 必选| 必须与初始请求中使用的 `client_id` 匹配。 |
@@ -105,7 +105,7 @@ device_code: GMMhmHCXhWEzkobqIHGG_EnNYYsAkukHspeYUk9E8
 
 由于设备代码流是一个轮询协议，因此，客户端必须预料到在用户完成身份验证之前会收到错误。  
 
-| 错误 | Description | 客户端操作 |
+| 错误 | 说明 | 客户端操作 |
 |------ | ----------- | -------------|
 | `authorization_pending` |  用户尚未完成身份验证，但未取消流。 | 在至少 `interval` 秒之后重复请求。 |
 | `authorization_declined`|  最终用户拒绝了授权请求。| 停止轮询，并恢复到未经过身份验证状态。  |
@@ -128,7 +128,7 @@ device_code: GMMhmHCXhWEzkobqIHGG_EnNYYsAkukHspeYUk9E8
 }
 ```
 
-| 参数 | 格式 | Description |
+| 参数 | 格式 | 说明 |
 | --------- | ------ | ----------- |
 |`token_type` | String| 始终为“Bearer”。 |
 |`scope` | 空格分隔的字符串 | 如果返回了访问令牌，则会列出该访问令牌的有效范围。 |

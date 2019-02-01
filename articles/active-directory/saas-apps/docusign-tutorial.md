@@ -8,19 +8,19 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: a691288b-84c1-40fb-84bd-5b06878865f0
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/19/2018
 ms.author: jeedes
-ms.openlocfilehash: 6b2b5f72c9520498d4834bbbfaf6c56656a807e7
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 8838cb2479078a8b6b4f031128501f09284b6bdd
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53015206"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55159260"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-docusign"></a>教程：Azure Active Directory 与 DocuSign 的集成
 
@@ -114,7 +114,7 @@ ms.locfileid: "53015206"
 
     ![DocuSign 域和 URL 单一登录信息](./media/docusign-tutorial/tutorial_docusign_url.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“登录 URL”文本框中，使用以下模式键入 URL： `https://<subdomain>.docusign.com/organizations/<OrganizationID>/saml2/login/sp/<IDPID>`
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL： `https://<subdomain>.docusign.com/organizations/<OrganizationID>/saml2/login/sp/<IDPID>`
 
     b. 在“标识符”文本框中，使用以下模式键入 URL：`https://<subdomain>.docusign.com/organizations/<OrganizationID>/saml2`
 
@@ -127,7 +127,7 @@ ms.locfileid: "53015206"
 
 6. 在“设置 DocuSign”部分中，根据要求复制相应的 URL。
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 登录 URL
+    a. 登录 URL
 
     b. Azure AD 标识符
 
@@ -165,7 +165,7 @@ ms.locfileid: "53015206"
 
     ![配置单一登录][56]
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”文本框中，为配置键入一个唯一的名称。 请不要使用空格。
+    a. 在“名称”文本框中，为配置键入一个唯一的名称。 请不要使用空格。
 
     b. 在“标识提供者颁发者”文本框中，粘贴从 Azure 门户复制的“Azure AD 标识符”值。
 
@@ -224,7 +224,7 @@ ms.locfileid: "53015206"
 
     ![创建 Azure AD 测试用户](common/create_aaduser_02.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”字段中，输入 BrittaSimon。
+    a. 在“名称”字段中，输入 BrittaSimon。
   
     b. 在“用户名”字段中键入 brittasimon@yourcompanydomain.extension  
     例如： BrittaSimon@contoso.com

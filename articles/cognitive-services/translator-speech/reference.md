@@ -6,16 +6,16 @@ services: cognitive-services
 author: Jann-Skotdal
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: translator-speech
+ms.subservice: translator-speech
 ms.topic: reference
 ms.date: 05/18/2018
 ms.author: v-jansko
-ms.openlocfilehash: dea32146c1e00869de43b50823e81853e6543411
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: e1796b2cb3efee6ff610f9dade7a10b2c2637bba
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53259420"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55466177"
 ---
 # <a name="translator-speech-api"></a>语音翻译 API
 
@@ -165,7 +165,7 @@ GET /speech/translate 建立用于语音翻译的会话
 
 ### <a name="parameters"></a>parameters
 
-|参数|值|Description|参数类型|数据类型|
+|参数|值|说明|参数类型|数据类型|
 |:---|:---|:---|:---|:---|
 |api-version|1.0|客户端所请求的 API 的版本。 允许值包括：`1.0`。|query   |字符串|
 |from|(empty)   |指定传入语音的语言。 值为一种语言标识符，来自语言 API 的响应中的 `speech` 范围。|query|字符串|

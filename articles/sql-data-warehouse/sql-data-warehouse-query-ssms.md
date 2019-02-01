@@ -2,20 +2,20 @@
 title: 连接到 Azure SQL 数据仓库 - SSMS | Microsoft 文档
 description: 使用 SQL Server Management Studio (SSMS) 来连接并查询 Azure SQL 数据仓库。
 services: sql-data-warehouse
-author: kavithaj
+author: KavithaJonnakuti
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: consume
+ms.subservice: consume
 ms.date: 04/17/2018
 ms.author: kavithaj
 ms.reviewer: igorstan
-ms.openlocfilehash: 6079c3064699da38fad20468517eb97d6ab107f8
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: 809802bc34a6cdc45f4b018d35895939e4b8f667
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43307194"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55471940"
 ---
 # <a name="connect-to-sql-data-warehouse-with-sql-server-management-studio-ssms"></a>使用 SQL Server Management Studio (SSMS) 连接到 SQL 数据仓库
 > [!div class="op_single_selector"]

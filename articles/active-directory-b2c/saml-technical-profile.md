@@ -9,13 +9,13 @@ ms.workload: identity
 ms.topic: reference
 ms.date: 12/21/2018
 ms.author: davidmu
-ms.component: B2C
-ms.openlocfilehash: 0efe78fa994353e7fd64d9954d07a0731685fa60
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.subservice: B2C
+ms.openlocfilehash: d5120b7569acbe9735ea1a70fcb609d322d60793
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54856515"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55154365"
 ---
 # <a name="define-a-saml-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>定义采用 Azure Active Directory B2C 的自定义策略的 SAML 技术配置文件
 

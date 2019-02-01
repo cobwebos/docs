@@ -4,19 +4,19 @@ titleSuffix: Azure Machine Learning service
 description: 了解适用于 Azure CLI 的 Azure 机器学习的机器学习 CLI 扩展。 Azure CLI 是一个跨平台命令行实用工具，可让你使用 Azure 云中的资源。 借助该机器学习扩展可以使用 Azure 机器学习服务。
 services: machine-learning
 ms.service: machine-learning
-ms.component: core
+ms.subservice: core
 ms.topic: conceptual
 ms.reviewer: jmartens
 ms.author: jordane
 author: jpe316
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: bbe843f3481c6cd15f2c14386088cbb8d2d355d6
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: d7baa4faf718852e5bddd89f99e4ffc1248a403c
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54053119"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55249725"
 ---
 # <a name="use-the-cli-extension-for-azure-machine-learning-service"></a>将 CLI 扩展用于 Azure 机器学习服务
 
@@ -91,7 +91,7 @@ az extension remove -n azure-cli-ml
     az configure --defaults aml_workspace=myworkspace group=myresourcegroup
     ```
 
-+ 为分布式训练创建托管的计算目标：
++ 为分布式定型创建托管的计算目标：
 
     ```azurecli-interactive
     az ml computetarget create amlcompute -n mycompute --max_nodes 4 --size Standard_NC6
@@ -103,7 +103,7 @@ az extension remove -n azure-cli-ml
     az ml computetarget update --name mycompute --workspace –-group --max_nodes 4 --min_nodes 2 --idle_time 300
     ```
 
-* 附加非托管计算目标以进行训练或部署：
+* 附加非托管计算目标以进行定型或部署：
 
     ```azurecli-interactive
     az ml computetarget attach aks -n myaks -i myaksresourceid -g myrg -w myworkspace

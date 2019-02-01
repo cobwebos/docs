@@ -3,19 +3,19 @@ title: 使用 Azure MFA 和第三方 VPN 的高级方案
 description: 用于将 Azure MFA 与 Cisco、Citrix 和 Juniper 集成的分步配置指南。
 services: multi-factor-authentication
 ms.service: active-directory
-ms.component: authentication
+ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 07/11/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
-ms.openlocfilehash: 8f182d6238f09ab4e3a0d3b8d5275dd0794481f3
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: bfba596a18655e092225f665e6a6c901f04f635c
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54426212"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55080882"
 ---
 # <a name="advanced-scenarios-with-azure-multi-factor-authentication-and-third-party-vpn-solutions"></a>使用 Azure 多重身份验证和第三方 VPN 解决方案的高级方案
 

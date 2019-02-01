@@ -2,7 +2,7 @@
 title: Azure Batch 池创建事件 | Microsoft Docs
 description: 批处理池创建事件参考。
 services: batch
-author: dlepow
+author: laurenhughes
 manager: jeconnoc
 ms.assetid: ''
 ms.service: batch
@@ -11,13 +11,13 @@ ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 04/20/2017
-ms.author: danlep
-ms.openlocfilehash: 794b3c83ff58967ef8169bed98f7b369335029ae
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.author: lahugh
+ms.openlocfilehash: 176f00de77c2d353d6efeb8b5a535a607b8f3204
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54259829"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55470581"
 ---
 # <a name="pool-create-event"></a>池创建事件
 
@@ -65,14 +65,14 @@ ms.locfileid: "54259829"
 
 ###  <a name="bk_csconf"></a> cloudServiceConfiguration
 
-|元素名称|类型|说明|
+|元素名称|Type|说明|
 |------------------|----------|-----------|
 |osFamily|String|要安装在池中虚拟机上的 Azure 来宾 OS 系列。<br /><br /> 可能的值包括：<br /><br /> **2** – OS 系列 2，等效于 Windows Server 2008 R2 SP1。<br /><br /> **3** – OS 系列 3，等效于Windows Server 2012。<br /><br /> **4** – OS 系列 4，等效于 Windows Server 2012 R2。<br /><br /> 有关详细信息，请参阅 [Azure 来宾 OS 版本](https://azure.microsoft.com/documentation/articles/cloud-services-guestos-update-matrix/#releases)。|
 |targetOSVersion|String|要安装在池中虚拟机上的 Azure 来宾 OS 版本。<br /><br /> 默认值为 **\***，用于指定特定系列的最新操作系统版本。<br /><br /> 有关其他允许的值的信息，请参阅 [Azure 来宾 OS 版本](https://azure.microsoft.com/documentation/articles/cloud-services-guestos-update-matrix/#releases)。|
 
 ###  <a name="bk_vmconf"></a> virtualMachineConfiguration
 
-|元素名称|类型|说明|
+|元素名称|Type|说明|
 |------------------|----------|-----------|
 |[imageReference](#bk_imgref)|复杂类型|指定关于要使用的平台或市场映像的信息。|
 |nodeAgentSKUId|String|在计算节点上预配的批处理节点代理的 SKU。|
@@ -80,7 +80,7 @@ ms.locfileid: "54259829"
 
 ###  <a name="bk_imgref"></a> imageReference
 
-|元素名称|类型|说明|
+|元素名称|Type|说明|
 |------------------|----------|-----------|
 |发布者|String|映像的发布者。|
 |offer|String|映像的产品/服务。|
@@ -89,12 +89,12 @@ ms.locfileid: "54259829"
 
 ###  <a name="bk_winconf"></a> windowsConfiguration
 
-|元素名称|类型|说明|
+|元素名称|Type|说明|
 |------------------|----------|-----------|
 |enableAutomaticUpdates|Boolean|指示是否对虚拟机启用自动更新。 如果未指定此属性，则默认值为 true。|
 
 ###  <a name="bk_netconf"></a> networkConfiguration
 
-|元素名称|类型|说明|
+|元素名称|Type|说明|
 |------------------|--------------|----------|
 |subnetId|String|指定创建池计算节点的子网的资源标识符。|

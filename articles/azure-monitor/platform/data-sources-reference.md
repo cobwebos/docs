@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/12/2018
 ms.author: johnkem
 ms.subservice: ''
-ms.openlocfilehash: 4c8d14e01805ea66ff3a954c153d858bf4ecaba6
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: ec61b179627702af7f2c4bc0fc0989230f5eca84
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54467496"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54885790"
 ---
 # <a name="consume-monitoring-data-from-azure"></a>使用 Azure 中的监视数据
 
@@ -29,7 +29,7 @@ ms.locfileid: "54467496"
 | 存储度量值 | 度量值 | Azure 存储 | <ul><li>**存储表：**[存储分析](https://docs.microsoft.com/rest/api/storageservices/storage-analytics)</li></ul> |
 | 账单数据 | 度量值 | 所有 Azure 服务 | <ul><li>**REST API：**[Azure 资源使用状况和 RateCard API](../../billing/billing-usage-rate-card-overview.md)</li></ul> |
 | 活动日志 | 活动 | 所有 Azure 服务 | <ul><li>**REST API：**[Azure Monitor 事件 API](https://docs.microsoft.com/rest/api/monitor/eventcategories)</li><li>**存储 blob 或事件中心：**[日志配置文件](activity-logs-overview.md#export-the-activity-log-with-a-log-profile)</li></ul> |
-| Azure Monitor 诊断日志 | 活动 | [查看此处的列表](tutorial-dashboards.md) | <ul><li>**存储 blob 或事件中心：**[诊断设置](diagnostic-logs-overview.md#diagnostic-settings)</li></ul> |
+| Azure Monitor 诊断日志 | 活动 | [查看此处的列表](diagnostic-logs-schema.md) | <ul><li>**存储 blob 或事件中心：**[诊断设置](diagnostic-logs-overview.md#diagnostic-settings)</li></ul> |
 | 计算来宾 OS 日志（例如 IIS、ETW、syslog） | 活动 | [Windows](/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines) 和 Linux 虚拟机 (v2)、[云服务](../../cloud-services/cloud-services-dotnet-diagnostics-trace-flow.md)、[Service Fabric](../../service-fabric/service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md) | <ul><li>**存储表或 blob：**[Windows 或 Linux Azure 诊断](diagnostics-extension-to-storage.md)</li><li>**事件中心：**[Windows Azure 诊断](diagnostics-extension-stream-event-hubs.md)</li></ul> |
 | 应用服务日志 | 活动 | 应用程序服务 | <ul><li>**文件、表或 blob 存储：**[Web 应用诊断](../../app-service/troubleshoot-diagnostic-logs.md)</li></ul> |
 | 存储日志 | 活动 | Azure 存储 | <ul><li>**存储表：**[存储分析](https://docs.microsoft.com/rest/api/storageservices/storage-analytics)</li></ul> |

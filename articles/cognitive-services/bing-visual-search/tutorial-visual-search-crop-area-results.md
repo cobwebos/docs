@@ -5,16 +5,16 @@ services: cognitive-services
 author: mikedodaro
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-visual-search
+ms.subservice: bing-visual-search
 ms.topic: article
 ms.date: 06/20/2018
 ms.author: rosh
-ms.openlocfilehash: c3a06eef594ef3a7b2dda146ad76f648c07dc666
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.openlocfilehash: 2ec4810b6ac01eca17186f4b8d2e8c2959292b8d
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53742144"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55187889"
 ---
 # <a name="tutorial-crop-an-image-with-the-bing-visual-search-sdk-for-c"></a>教程：使用适用于 C# 的必应视觉搜索 SDK 裁剪图像
 
@@ -81,7 +81,7 @@ Console.WriteLine("\r\n" + "ActionType: " + i.ActionType + " -> WebSearchUrl: " 
 完整的应用程序返回：
 
 
-|ActionType  |URL  | |
+|ActionType  |代码  | |
 |---------|---------|---------|
 |PagesIncluding WebSearchURL     |         |         
 |MoreSizes WebSearchURL     |         |         

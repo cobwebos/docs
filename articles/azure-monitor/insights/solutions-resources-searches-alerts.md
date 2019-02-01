@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 06/18/2018
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9b9ad1157469303f4065a3c27ccf6514aaa35155
-ms.sourcegitcommit: c31a2dd686ea1b0824e7e695157adbc219d9074f
+ms.openlocfilehash: c46c65fe7e720e3afdd976e2480e8f183cc4398d
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/18/2019
-ms.locfileid: "54402194"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54901184"
 ---
 # <a name="adding-log-analytics-saved-searches-and-alerts-to-management-solution-preview"></a>将 Log Analytics 保存的搜索和警报添加到管理解决方案（预览版）
 
@@ -180,8 +180,8 @@ Log Analytics 中的所有资源都包含在[工作区](../../azure-monitor/plat
 
 | 元素名称 | 必选 | 说明 |
 |:--|:--|:--|
-| 类型 | 是 | 操作的类型。  警报操作的类型是 Alert。 |
-| 名称 | 是 | 警报的显示名称。  这是警报规则在控制台中的显示名称。 |
+| Type | 是 | 操作的类型。  警报操作的类型是 Alert。 |
+| Name | 是 | 警报的显示名称。  这是警报规则在控制台中的显示名称。 |
 | 说明 | 否 | 警报的可选说明。 |
 | 严重性 | 是 | 警报记录的严重等级包括以下值：<br><br> 严重<br>警告<br>信息性
 
@@ -447,6 +447,7 @@ Webhook 操作通过调用 URL 和提供要发送的负载（可选）启动进�
 ```
 
 下方参数文件提供了此解决方案的示例值。
+
 ```json
 {
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",

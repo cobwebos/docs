@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hub-page
-ms.date: 01/15/2019
+ms.date: 01/29/2019
 ms.author: magoedte
-ms.openlocfilehash: 5c3a61eb4509742f8f5a8732f5d4e81cab59ff78
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: a48e252d1dce2d9142249642a6221e8913c1d92d
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54829883"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55223401"
 ---
 <div id="main" class="v2">
     <div class="container">
@@ -53,8 +53,8 @@ ms.locfileid: "54829883"
                                                                     <p> 
                                                                         <a href="/azure/azure-monitor/overview">Azure Monitor 是什么？</a><br/>
                                                                         <a href="/azure/azure-monitor/azure-monitor-rebrand">品牌更改</a><br/>
-                                                                        <a href="/azure/azure-monitor/platform/monitoring-data-sources">监视数据源</a><br/>
-                                                                        <a href="/azure/azure-monitor/platform/log-analytics-service-providers">服务提供程序的设计注意事项</a><br/>
+                                                                        <a href="/azure/azure-monitor/platform/data-sources">监视数据源</a><br/>
+                                                                        <a href="/azure/azure-monitor/platform/service-providers">服务提供程序的设计注意事项</a><br/>
                                                                     </p>
                                                                 </div>
                                                             </div>
@@ -75,8 +75,8 @@ ms.locfileid: "54829883"
                                                                 <div class="cardText" style="padding-left: 0px">
                                                                     <h3>了解安全性</h3> 
                                                                     <p>
-                                                                        <a href="/azure/azure-monitor/platform/log-analytics-data-security">日志数据</a><br/>
-                                                                        <a href="/azure/azure-monitor/platform/log-analytics-personal-data-mgmt">个人日志数据处理</a><br/>
+                                                                        <a href="/azure/azure-monitor/platform/data-security">日志数据</a><br/>
+                                                                        <a href="/azure/azure-monitor/platform/personal-data-mgmt">个人日志数据处理</a><br/>
                                                                         <a href="/azure/azure-monitor/platform/roles-permissions-security">角色权限和安全</a><br/>
                                                                     </p>
                                                                     <br>
@@ -103,7 +103,7 @@ ms.locfileid: "54829883"
                                                     <h3>监视</h3>
                                                         <p>
                                                             <a href="/azure/azure-monitor/platform/data-collection">指标和日志</a><br/>
-                                                            <a href="/azure/azure-monitor/platform/log-analytics-data-ingestion-time">日志数据引入时间</a><br/>
+                                                            <a href="/azure/azure-monitor/platform/data-ingestion-time">日志数据引入时间</a><br/>
                                                         </p>
                                                         <br>
                                                         <h3>数据源</h3>
@@ -147,7 +147,7 @@ ms.locfileid: "54829883"
                                                         <br>
                                                         <h3>事件响应</h3>
                                                         <p>
-                                                            <a href="/azure/azure-monitor/platform/alerts-unified">警报概述</a><br/>
+                                                            <a href="/azure/azure-monitor/platform/alerts-overview">警报概述</a><br/>
                                                             <a href="/azure/azure-monitor/platform/autoscale-overview">自动缩放</a><br/>
                                                             <a href="/azure/azure-monitor/platform/alerts-unified-log">日志警报</a><br/>
                                                             <a href="/azure/azure-monitor/platform/alerts-activity-log">活动日志警报</a><br/>

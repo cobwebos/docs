@@ -6,16 +6,16 @@ services: cognitive-services
 author: zhouwangzw
 manager: wolfma
 ms.service: cognitive-services
-ms.component: bing-speech
+ms.subservice: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: zhouwang
-ms.openlocfilehash: 2da6795e938f1a0c0ed0495fb169007126501eea
-ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
+ms.openlocfilehash: bcb8b421eeb0db215aa21b93a7792e0e978a4f48
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/22/2018
-ms.locfileid: "53753654"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55215463"
 ---
 # <a name="troubleshooting-bing-speech"></a>必应语音故障排除
 

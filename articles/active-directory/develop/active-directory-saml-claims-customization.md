@@ -8,7 +8,7 @@ manager: mtillman
 editor: ''
 ms.assetid: f1daad62-ac8a-44cd-ac76-e97455e47803
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -17,12 +17,12 @@ ms.date: 10/20/2018
 ms.author: celested
 ms.reviewer: luleon, jeedes
 ms.custom: aaddev
-ms.openlocfilehash: 11132426bb8adb6ede564e706e18f3eddd649bef
-ms.sourcegitcommit: c31a2dd686ea1b0824e7e695157adbc219d9074f
+ms.openlocfilehash: affdad71c9c97f13c015b35f1c67ee79f2473442
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/18/2019
-ms.locfileid: "54401871"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55075204"
 ---
 # <a name="how-to-customize-claims-issued-in-the-saml-token-for-enterprise-applications"></a>如何：为企业应用程序自定义 SAML 令牌中颁发的声明
 
@@ -58,7 +58,7 @@ ms.locfileid: "54401871"
 
 为 `NameIdentifier`（或 NameID）声明选择所需的源。 可以从以下选项中选择。
 
-| 名称 | 说明 |
+| Name | 说明 |
 |------|-------------|
 | 电子邮件 | 用户的电子邮件地址 |
 | userprincipalName | 用户的用户主体名称 (UPN) |
