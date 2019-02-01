@@ -6,16 +6,16 @@ services: cognitive-services
 author: v-jaswel
 manager: nolachar
 ms.service: cognitive-services
-ms.component: conversation-learner
+ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: c6696d0f22026ac333c526b505732d15a4b01be7
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 01d991cff9b7f7a66740f86e537833ffe4e862c7
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53796462"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55226262"
 ---
 # <a name="how-to-use-the-expected-entity-property-of-actions"></a>如何使用操作的“预期实体”属性
 
@@ -76,7 +76,7 @@ ms.locfileid: "53796462"
 3. 单击“创建”按钮。
 
 > [!NOTE]
-> “名称”实体已自动由响应中的引用添加为“所需实体”。
+> “name”实体已自动由响应中的引用添加为“所需实体”。
 
 现在已有两个操作。
 

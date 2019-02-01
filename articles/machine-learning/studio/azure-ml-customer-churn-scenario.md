@@ -4,18 +4,18 @@ titleSuffix: Azure Machine Learning Studio
 description: 使用 Azure 机器学习工作室开发集成模型对客户流失进行分析和评分的案例研究。
 services: machine-learning
 ms.service: machine-learning
-ms.component: studio
+ms.subservice: studio
 ms.topic: article
 author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 12/18/2017
-ms.openlocfilehash: 153ddcc1ba0da6171963ec91511fafe84023ecf8
-ms.sourcegitcommit: c31a2dd686ea1b0824e7e695157adbc219d9074f
+ms.openlocfilehash: 47d267a2c4c122d8acbb2d3bf40e6858b4d6b77c
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/18/2019
-ms.locfileid: "54401957"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55244175"
 ---
 # <a name="analyze-customer-churn-using-azure-machine-learning-studio"></a>使用 Azure 机器学习工作室分析客户流失
 ## <a name="overview"></a>概述

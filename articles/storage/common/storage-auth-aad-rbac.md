@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 12/12/2018
 ms.author: tamram
-ms.component: common
-ms.openlocfilehash: fce89cc754ac179054a60ce837949bb02b2102c6
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.subservice: common
+ms.openlocfilehash: 6cecb2d5fde4fc651cf0ba971189ef62fa330c13
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53408691"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55241698"
 ---
 # <a name="manage-access-rights-to-azure-blob-and-queue-data-with-rbac-preview"></a>使用 RBAC 管理对 Azure Blob 和队列数据的访问权限（预览版）
 
@@ -43,7 +43,7 @@ Azure 存储同时支持内置的和自定义 RBAC 角色。 Azure 存储提供�
 
 向 Azure 标识分配 RBAC 角色，以授予对存储帐户中容器或队列的权限。 可以将角色分配范围限定于存储帐户或特定的容器或队列。 下表总结了由内置角色授予的访问权限，具体取决于作用域：
 
-|作用域|Blob 数据所有者|Blob 数据参与者|Blob 数据读取器|队列数据参与者|队列数据读取器|
+|范围|Blob 数据所有者|Blob 数据参与者|Blob 数据读取器|队列数据参与者|队列数据读取器|
 |---|---|---|---|---|---|
 |订阅级别|对订阅中的所有容器和 blob 具有读/写访问权限和 POSIX 访问控制管理权限|对订阅中的所有容器和 blob 具有读/写访问权限| 对订阅中的所有容器和 blob 具有读取访问权限|对订阅中的所有队列具有读/写访问权限|对订阅中的所有队列具有读取访问权限|
 |资源组级别|对资源组中的所有容器和 blob 具有读/写访问权限和 POSIX 访问控制管理权限|对资源组中的所有容器和 blob 具有读/写访问权限|对资源组中的所有容器和 blob 具有读取访问权限|对资源组中的所有队列具有读/写访问权限|对资源组中的所有队列具有读取访问权限|

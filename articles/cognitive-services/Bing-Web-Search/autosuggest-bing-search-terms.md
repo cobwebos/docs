@@ -6,16 +6,16 @@ services: cognitive-services
 author: aahill
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-web-search
+ms.subservice: bing-web-search
 ms.topic: conceptual
 ms.date: 8/13/2018
 ms.author: aahi
-ms.openlocfilehash: 1df478f02e90c95d11c9305381e89e147fee3077
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: 5640d8ca23f0efc3e54b6ef7c986314a9b209fcf
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52164012"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55192122"
 ---
 # <a name="autosuggest-bing-search-terms-in-your-application"></a>应用程序中的自动建议必应搜索词
 

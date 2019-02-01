@@ -5,16 +5,16 @@ services: cognitive-services
 author: PanosPeriorellis
 manager: onano
 ms.service: cognitive-services
-ms.component: custom-speech
+ms.subservice: custom-speech
 ms.topic: article
 ms.date: 11/23/2017
 ms.author: panosper
-ms.openlocfilehash: 1e9de9755ef4baee7e2a0e6c093e2cf27cb4281f
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 0459fdb63134598e65657e5e26020c2ee0dc0efc
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49339808"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55209785"
 ---
 # <a name="enable-custom-pronunciation"></a>启用自定义发音
 
