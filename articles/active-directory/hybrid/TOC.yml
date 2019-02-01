@@ -14,6 +14,8 @@ items:
     href: tutorial-passthrough-authentication.md
   - name: 将单个 AD 林环境联合到云中
     href: tutorial-federation.md
+  - name: 在 Azure AD Connect 中将 PHS 设置为 AD FS 的后备
+    href: tutorial-phs-backup.md
   expanded: true
 - name: 概念
   items:
@@ -287,7 +289,7 @@ items:
       href: tshoot-connect-recover-from-localdb-10gb-limit.md
     - name: SQL 连接
       href: tshoot-connect-tshoot-sql-connectivity.md
-- name: 引用
+- name: 参考
   items:
   - name: 混合标识所需的端口和协议
     href: reference-connect-ports.md
@@ -325,9 +327,9 @@ items:
     href: reference-connect-adsynctools.md
   - name: ADConnectivityTools 参考
     href: reference-connect-adconnectivitytools.md
-ms.openlocfilehash: 4e34d1cda9e905656a6eddd1f3e5ed3e21592d49
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: df7f0256af71ecfa751fd459e4e1e6c285a779ed
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54888577"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55301707"

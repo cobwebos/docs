@@ -648,6 +648,8 @@ items:
     items:
     - name: 在指标资源管理器中创建指标图表
       href: platform/metrics-charts.md
+    - name: 指标资源管理器图表示例
+      href: platform/metric-chart-samples.md
     - name: 在活动日志中查看事件
       href: ../azure-resource-manager/resource-group-audit.md?toc=/azure/azure-monitor/toc.json
     - name: 查看服务通知
@@ -904,7 +906,7 @@ items:
         href: insights/solutions-best-practices.md
       - name: 从 runbook 收集监视数据
         href: platform/runbook-datacollect.md
-- name: 引用
+- name: 参考
   items:
   - name: Application Insights
     items:
@@ -1019,9 +1021,9 @@ items:
     href: https://stackoverflow.com/search?q=monitoring
   - name: 代码示例
     href: https://azure.microsoft.com/resources/samples/?service=monitor
-ms.openlocfilehash: 8c78f79b08b389f7570d1a726e5ffcaef56bdfa3
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 1199720ddd3014c52c8436e06a638876a7ecb486
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55104558"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55297746"

@@ -49,6 +49,8 @@ items:
       href: tutorial-linux-vm-access-nonaad.md
     - name: 访问 Azure Cosmos DB
       href: tutorial-linux-vm-access-cosmos-db.md
+    - name: 访问 Azure 容器注册表
+      href: /azure/container-registry/container-registry-authentication-managed-identity?context=azure/active-directory/managed-identities-azure-resources/context/msi-context
     - name: 访问 Azure AD 图形 API
       href: tutorial-linux-vm-access-azure-ad-graph.md
     - name: 使用用户分配的托管标识访问 Azure 资源管理器
@@ -125,7 +127,7 @@ items:
       href: how-to-view-managed-identity-service-principal-cli.md
     - name: PowerShell
       href: how-to-view-managed-identity-service-principal-powershell.md
-- name: 引用
+- name: 参考
   items:
   - name: CLI
     href: /cli/azure/identity
@@ -153,9 +155,9 @@ items:
     href: https://stackoverflow.com/questions/tagged/azure-msi
   - name: AAD 开发者论坛
     href: https://feedback.azure.com/forums/169401-azure-active-directory/category/164757-developer-experiences
-ms.openlocfilehash: f2e2db9c327083bb7e8053213be3dbe5cdfde9b3
-ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
+ms.openlocfilehash: 0af911de9bd2982738c3c57ed9f5c266ba4b57f4
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54902065"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55451676"

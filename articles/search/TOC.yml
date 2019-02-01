@@ -13,7 +13,7 @@ items:
     href: search-create-service-portal.md
   - name: 门户
     items:
-    - name: 基于门户的导入、索引编制和查询演练
+    - name: 加载并查询索引
       href: search-get-started-portal.md
     - name: 使用 AI（认知搜索）扩充
       href: cognitive-search-quickstart-blob.md
@@ -216,19 +216,19 @@ items:
         href: search-filters-facets.md
       - name: 筛选器表达式语法
         href: https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search
-    - name: 性能和优化
-      href: search-performance-optimization.md
   - name: 管理和分析
     items:
     - name: 管理（门户）
       href: search-manage.md
     - name: PowerShell（Azure 搜索）
       href: search-manage-powershell.md
+    - name: 性能和优化
+      href: search-performance-optimization.md
     - name: 监视活动和日志记录
       href: search-monitor-usage.md
     - name: 搜索流量分析
       href: search-traffic-analytics.md
-- name: 引用
+- name: 参考
   items:
   - name: Azure CLI
     href: https://docs.microsoft.com/cli/azure/search?view=azure-cli-latest
@@ -297,9 +297,9 @@ items:
     href: https://azure.microsoft.com/pricing/details/search/
   - name: 视频
     href: https://azure.microsoft.com/resources/videos/index/?services=search
-ms.openlocfilehash: e65adf41bc6555e8e2bcd74be07e6a1b2b96514d
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 133f3e44b7efc81f13aba5db68269678ddac9554
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55203821"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55464222"

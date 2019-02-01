@@ -1,15 +1,15 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 8b591cacd1c468f46dcdb5809cdc6ff0adf09ccb
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 9c337f147eaebc376c7953e7f585b5b9f6a10f94
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55247674"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55471678"
 documentType: LandingData
 title: Azure 机器学习服务文档
 metadata:
-  title: 文档 - Azure 机器学习服务 - 教程和 API 参考 | Microsoft Docs
-  description: 了解如何将智能算法内置到应用和网站中。 使用 Scikit-learn、Tensorflow、Pytorch 或任何其他基于 Python 的框架来生成机器学习模型，并在本地或云中对其进行训练。 教程、快速入门、API 参考和示例演示了操作方法。
+  title: Azure 机器学习服务文档 - 教程和 API 参考 | Microsoft Docs
+  description: Azure 机器学习服务提供了一个基于云的环境，你可以使用这一环境来开发、培训、测试、部署、管理和跟踪机器学习模型。 Azure 机器学习服务完全支持开放源代码技术，如 Scikit-learn、Tensorflow、Pytorch 或任何其他基于 Python 的框架。 使用我们的快速入门和教程了解如何将 Azure 机器学习服务用于机器学习工作流。
   services: machine-learning
   ms.service: machine-learning
   ms.subservice: core
@@ -17,22 +17,17 @@ metadata:
   manager: jhubbard
   author: j-martens
   ms.author: jmartens
-  ms.date: 12/04/2018
+  ms.date: 1/30/2019
   ms.custom: seodec18
   ms.tgt_pltfrm: na
   ms.devlang: na
 abstract:
-  description: 了解如何将智能算法内置到应用和网站中。 使用 Scikit-learn、Tensorflow、Pytorch 或任何其他基于 Python 的框架来生成机器学习模型，并在本地或云中对其进行训练。 教程、快速入门、API 参考和示例演示了操作方法。
+  description: Azure 机器学习服务提供了一个基于云的环境，你可以使用这一环境来开发、培训、测试、部署、管理和跟踪机器学习模型。 此服务完全支持开放源代码技术，如 Scikit-learn、Tensorflow、Pytorch 或任何其他基于 Python 的框架。 使用我们的快速入门和教程了解如何将此服务用于机器学习工作流。
 sections:
 - title: 5 分钟快速入门
   items:
   - type: paragraph
-    text: 了解如何使用快速入门为 Azure 机器学习服务设置工作区和资源：
-  - type: list
-    style: unordered
-    items:
-    - html: 开始使用 <a href="quickstart-get-started">Azure 门户</a>。
-    - html: 开始使用 <a href="quickstart-create-workspace-with-python">Python</a>。
+    text: 首先，<a href="quickstart-get-started">在 Azure 门户中</a>或<a href="quickstart-create-workspace-with-python">使用 Python</a> 创建服务工作区和资源。
 - title: 分步教程
   items:
   - type: paragraph
@@ -40,18 +35,20 @@ sections:
   - type: list
     style: unordered
     items:
-    - html: <a href="tutorial-train-models-with-aml">训练和部署图像分类模型</a>（<b>由两个部分构成的系列</b>）。
-    - html: <a href="tutorial-data-prep">准备数据并使用自动化机器学习</a>训练和优化回归模型（<b>由两个部分构成的系列</b>）。<br>&nbsp;
+    - html: <a href="tutorial-train-models-with-aml">训练</a>和<a href="tutorial-deploy-models-with-aml">部署</a>图像分类模型（<b>由两个部分构成的系列</b>）。<br>&nbsp;
+    - html: <a href="tutorial-data-prep">准备数据</a>并<a href="tutorial-auto-train-models">使用自动化机器学习</a>训练和优化回归模型（<b>由两个部分构成的系列</b>）。
+- title: 示例
+  items:
   - type: paragraph
-    text: <b>示例</b>：使用 GitHub 上的这些 <a href="https://aka.ms/aml-notebooks">Jupyter 笔记本</a>探索该服务。
-- title: 引用
+    text: 在 GitHub 上查找 <a href="samples-notebooks">Jupyter 笔记本</a>以帮助你探索该服务。
+- title: 参考
   items:
   - type: list
     style: unordered
     items:
-    - html: <a href="https://aka.ms/data-prep-sdk">Azure 机器学习数据准备 SDK</a>
-    - html: <a href="https://aka.ms/aml-sdk">适用于 Python 的 Azure 机器学习 SDK（主 SDK）</a>
-    - html: <a href="https://aka.ms/aml-monitoring-sdk">Azure 机器学习监视 SDK</a>
+    - html: <a href="https://aka.ms/aml-sdk">主 SDK (Python)</a>
+    - html: <a href="https://aka.ms/data-prep-sdk">数据准备 SDK (Python)</a>
+    - html: <a href="https://aka.ms/aml-monitoring-sdk">监视 SDK (Python)</a>
 - title: 其他 Azure 机器学习技术
   items:
   - type: list

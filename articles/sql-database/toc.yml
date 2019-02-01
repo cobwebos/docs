@@ -3,7 +3,7 @@ items:
   href: index.yml
 - name: SQL 数据库服务
   items:
-  - name: 什么是 SQL DB
+  - name: 什么是 SQL 数据库
     href: sql-database-technical-overview.md
   - name: 选择 Azure SQL 版本
     href: sql-database-paas-vs-sql-server-iaas.md
@@ -21,7 +21,7 @@ items:
       href: sql-database-managed-instance-get-started.md
   - name: 配置
     items:
-    - name: 逻辑服务器防火墙规则
+    - name: SQL 数据库服务器防火墙规则
       href: sql-database-get-started-portal-firewall.md
     - name: 客户端 VM 与托管实例的连接
       href: sql-database-managed-instance-configure-vm.md
@@ -75,7 +75,7 @@ items:
       href: sql-database-design-first-database-csharp.md
   - name: 迁移到 Azure SQL 数据库
     items:
-    - name: 使用 DMS 迁移到单一数据库
+    - name: 使用 DMS 迁移到单一/共用数据库
       href: ../dms/tutorial-sql-server-to-azure-sql.md?toc=/azure/sql-database/toc.json
     - name: 使用 DMS 迁移到托管实例
       href: ../dms/tutorial-sql-server-to-managed-instance.md?toc=/azure/sql-database/toc.json
@@ -115,48 +115,52 @@ items:
     items:
     - name: 概述
       href: sql-database-service-tiers-general-purpose-business-critical.md
-    - name: 常规用途/标准
+    - name: 常规用途/标准服务层
       href: sql-database-service-tier-general-purpose.md
-    - name: 业务关键/高级
+    - name: 业务关键/高级服务层
       href: sql-database-service-tier-business-critical.md
-    - name: 超大规模
+    - name: 超大规模服务层
       href: sql-database-service-tier-hyperscale.md
     - name: 超大规模常见问题解答
       href: sql-database-service-tier-hyperscale-faq.md
   - name: 单一数据库
     items:
-    - name: 单个数据库概述
+    - name: 单一数据库概述
       href: sql-database-single-index.yml
-    - name: 管理 API 参考
+    - name: SQL 数据库服务器
+      items:
+      - name: 数据库服务器概述
+        href: sql-database-servers.md
+      - name: 数据库服务器资源限制
+        href: sql-database-resource-limits-database-server.md
+    - name: 单一数据库资源
+      items:
+      - name: 基于虚拟核心的资源限制
+        href: sql-database-vcore-resource-limits-single-databases.md
+      - name: 基于 DTU 的资源限制
+        href: sql-database-dtu-resource-limits-single-databases.md
+      - name: 缩放资源
+        href: sql-database-single-database-scale.md
+    - name: 创建和管理服务器与数据库
       href: sql-database-single-databases-manage.md
-    - name: 逻辑服务器
-      items:
-      - name: 创建和管理
-        href: sql-database-logical-servers.md
-      - name: 资源限制
-        href: sql-database-resource-limits-logical-server.md
-      - name: 连接体系结构
-        href: sql-database-connectivity-architecture.md
+    - name: 连接体系结构
+      href: sql-database-connectivity-architecture.md
+    - name: T-SQL 的差异
+      href: sql-database-transact-sql-information.md
+  - name: 弹性池
+    items:
     - name: 弹性池
+      href: sql-database-elastic-pool.md
+    - name: 弹性池资源
       items:
-      - name: 弹性池
-        href: sql-database-elastic-pool.md
-      - name: 创建和管理
-        href: sql-database-elastic-pool-manage.md
       - name: 基于虚拟核心的资源限制
         href: sql-database-vcore-resource-limits-elastic-pools.md
       - name: 基于 DTU 的资源限制
         href: sql-database-dtu-resource-limits-elastic-pools.md
       - name: 缩放资源
         href: sql-database-elastic-pool-scale.md
-    - name: 基于虚拟核心的资源限制
-      href: sql-database-vcore-resource-limits-single-databases.md
-    - name: 基于 DTU 的资源限制
-      href: sql-database-dtu-resource-limits-single-databases.md
-    - name: 缩放资源
-      href: sql-database-single-database-scale.md
-    - name: T-SQL 的差异
-      href: sql-database-transact-sql-information.md
+    - name: 创建和管理
+      href: sql-database-elastic-pool-manage.md
   - name: 托管实例
     items:
     - name: 托管实例概述
@@ -209,9 +213,9 @@ items:
       href: sql-database-security-index.yml
     - name: 安全功能
       href: sql-database-security-overview.md
-    - name: 高级威胁防护
+    - name: 高级数据安全
       items:
-      - name: 高级威胁防护
+      - name: 高级数据安全
         href: sql-advanced-threat-protection.md
       - name: 数据发现和分类
         href: sql-database-data-discovery-and-classification.md
@@ -561,7 +565,7 @@ items:
           href: saas-tenancy-welcome-wingtip-tickets-app.md
         - name: 一般指南
           href: saas-tenancy-wingtip-app-guidance-tips.md
-        - name: 独立的应用程序
+        - name: 单一应用程序
           items:
           - name: 部署示例应用
             href: saas-standaloneapp-get-started-deploy.md
@@ -609,7 +613,7 @@ items:
           href: saas-multitenantdb-schema-management.md
         - name: 用于分析的 ETL
           href: saas-multitenantdb-tenant-analytics.md
-- name: 引用
+- name: 参考
   items:
   - name: Azure PowerShell
     href: /powershell/module/azurerm.sql/#sql
@@ -696,9 +700,9 @@ items:
       href: sql-database-elastic-jobs-getting-started.md
     - name: 卸载弹性作业（已弃用）
       href: sql-database-elastic-jobs-uninstall.md
-ms.openlocfilehash: b69adc5f54e2566f62049225ccb0fc438a33ca6e
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 0c34894ea3a09a4cd630938a045e0ab78681c10f
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55226802"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55471022"

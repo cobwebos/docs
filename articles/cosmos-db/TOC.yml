@@ -80,7 +80,7 @@ items:
       href: consistency-levels.md
     - name: 选择适当的一致性级别
       href: consistency-levels-choosing.md
-    - name: 一致性级别和 Cosmos DB API
+    - name: 一致性级别和 Azure Cosmos DB API
       href: consistency-levels-across-apis.md
     - name: 一致性、可用性和性能权衡
       href: consistency-levels-tradeoffs.md
@@ -98,9 +98,9 @@ items:
     items:
     - name: 概述
       href: partitioning-overview.md
-    - name: 逻辑分区
+    - name: 分区和水平扩展
       href: partition-data.md
-    - name: 创建综合分区键
+    - name: 创建合成分区键
       href: synthetic-partition-keys.md
   - name: 预配的吞吐量
     items:
@@ -122,7 +122,7 @@ items:
       items:
       - name: 概述
         href: index-overview.md
-      - name: 索引编制策略
+      - name: 索引策略
         href: index-policy.md
       - name: 索引类型
         href: index-types.md
@@ -136,13 +136,13 @@ items:
         href: read-change-feed.md
       - name: 更改源处理器
         href: change-feed-processor.md
-      - name: 将更改源与 Azure Functions 配合使用
+      - name: 触发 Azure Functions
         href: change-feed-functions.md
     - name: 生存时间
       href: time-to-live.md
     - name: 唯一键约束
       href: unique-keys.md
-    - name: 事务和乐观并发
+    - name: 事务和乐观并发控制
       href: database-transactions-optimistic-concurrency.md
   - name: 服务器端编程
     items:
@@ -168,9 +168,9 @@ items:
       href: optimize-cost-reads-writes.md
     - name: 优化多区域成本
       href: optimize-cost-regions.md
-    - name: 优化开发/测试工作负荷
+    - name: 优化开发/测试成本
       href: optimize-dev-test.md
-    - name: 借助保留容量进行优化
+    - name: 借助保留容量优化成本
       href: cosmos-db-reserved-capacity.md
   - name: 安全
     items:
@@ -186,7 +186,7 @@ items:
       href: vnet-service-endpoint.md
   - name: 企业就绪情况
     items:
-    - name: 联机备份和还原
+    - name: 联机备份和本地还原
       href: online-backup-and-restore.md
     - name: 合规性
       href: compliance.md
@@ -282,7 +282,7 @@ items:
           href: /java/azure/spring-framework/configure-spring-data-gremlin-java-app-with-cosmos-db
         - name: 使用 Spring Data MongoDB API
           href: /java/azure/spring-framework/configure-spring-data-mongodb-with-cosmos-db
-    - name: 引用
+    - name: 参考
       items:
       - name: .NET
         href: sql-api-sdk-dotnet.md
@@ -450,7 +450,7 @@ items:
         href: table-storage-how-to-use-ruby.md
       - name: F#
         href: https://docs.microsoft.com/dotnet/articles/fsharp/using-fsharp-on-azure/table-storage
-    - name: 引用
+    - name: 参考
       items:
       - name: .NET
         href: table-sdk-dotnet.md
@@ -467,13 +467,13 @@ items:
   expanded: true
 - name: 操作指南
   items:
-  - name: 管理数据库帐户
+  - name: 管理 Azure Cosmos 帐户
     href: how-to-manage-database-account.md
   - name: 全球分布
     items:
-    - name: 管理一致性
+    - name: 管理一致性级别
       href: how-to-manage-consistency.md
-    - name: 管理冲突
+    - name: 配置冲突解决策略
       href: how-to-manage-conflicts.md
   - name: 预配的吞吐量
     items:
@@ -489,9 +489,13 @@ items:
       href: how-to-query-container.md
     - name: 配置生存时间
       href: how-to-time-to-live.md
+    - name: 使用 Azure 存储资源管理器处理数据
+      href: storage-explorer.md
+    - name: 使用 Azure Cosmos 资源管理器处理数据
+      href: data-explorer.md
     - name: 索引
       items:
-      - name: 配置索引
+      - name: 管理索引
         href: how-to-manage-indexing-policy.md
   - name: 安全
     items:
@@ -501,22 +505,18 @@ items:
       href: how-to-configure-vnet-service-endpoint.md
     - name: 配置跨源资源共享 (CORS)
       href: how-to-configure-cross-origin-resource-sharing.md
-    - name: 使用 Key Vault 进行保护
+    - name: 使用 Key Vault 保护 Azure Cosmos 密钥
       href: access-secrets-from-keyvault.md
   - name: 企业就绪情况
     items:
     - name: 从备份还原数据
       href: how-to-backup-and-restore.md
-  - name: 管理
+  - name: 管理 Azure Cosmos DB 资源
     items:
     - name: 使用 PowerShell 管理
       href: manage-account-with-powershell.md
     - name: 使用 Azure CLI 进行管理
       href: manage-with-cli.md
-    - name: 使用存储资源管理器进行管理
-      href: storage-explorer.md
-    - name: 使用数据资源管理器进行管理
-      href: data-explorer.md
   - name: 日志记录
     items:
     - name: 诊断日志记录
@@ -627,9 +627,9 @@ items:
       href: use-cases.md
     - name: 社交媒体应用
       href: social-media-apps.md
-ms.openlocfilehash: 72d6169090749f81025dabed2b919e6c0a1dc70f
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 93d8abe428305ce62fb95afabc6ab71dfc8f67b4
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55094472"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55464868"

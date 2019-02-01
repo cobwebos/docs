@@ -11,16 +11,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 12/03/2018
+ms.date: 01/30/2019
 ms.author: mabrigg
 ms.reviwer: xiaofmao
-ms.lastreviewed: 12/03/2018
-ms.openlocfilehash: 947886a96ab31150cf81ebea0a3cdd69e0273b01
-ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
+ms.lastreviewed: 01/30/2019
+ms.openlocfilehash: 11736b978242416bcfb95d3025975028e4148e98
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54305743"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55486532"
 ---
 # <a name="azure-stack-storage-differences-and-considerations"></a>Azure Stack 存储：差异和注意事项
 
@@ -35,8 +35,8 @@ Azure Stack 存储是存储在 Microsoft Azure Stack 中的云服务的组。 Az
 | Feature | Azure（公有云） | Azure Stack |
 | --- | --- | --- |
 |文件存储|支持基于云的 SMB 文件共享|尚不支持
-|静态数据的 Azure 存储服务加密|256 位 AES 加密。 支持使用 Key Vault 中客户托管密钥的加密。|BitLocker 128 位 AES 加密。 使用客户托管密钥的加密不受支持。
-|存储帐户类型|常规用途 V1 和 V2 和 Blob 存储帐户|常规用途 V1。
+|静态数据的 Azure 存储服务加密|256 位 AES 加密。 支持使用 Key Vault 中客户托管密钥的加密。|BitLocker 128 位 AES 加密。 不支持使用客户托管密钥的加密。
+|存储帐户类型|常规用途 V1 和 V2，Blob 存储帐户|仅常规用途 V1。
 |复制选项|本地冗余存储、异地冗余存储、读取访问异地冗余存储和区域冗余存储|本地冗余存储。
 |高级存储|完全支持|可预配，但无性能限制或保证。
 |托管磁盘|支持高级和标准版|使用版本 1808 或更高版本时支持。
@@ -45,14 +45,14 @@ Azure Stack 存储是存储在 Microsoft Azure Stack 中的云服务的组。 Az
 |页 Blob 快照复制|支持备份已附加到运行中 VM 的 Azure 非托管 VM 磁盘|尚不支持。
 |页 Blob 增量快照复制|支持高级和标准 Azure 页 Blob|尚不支持。
 |适用于 Blob 存储的存储层|热存储层、冷存储层和存档存储层。|尚不支持。
-|适用于 Blob 存储的软删除|常规可用|尚不支持。
+|适用于 Blob 存储的软删除|公开发布|尚不支持。
 |页 Blob 大小上限|8 TB|1 TB
 |页 blob 页面大小|512 字节|4 KB
 |表分区键和行键大小|1,024 个字符（2,048 字节）|400 个字符（800 字节）
 |Blob 快照|一个 blob 的最大快照数不受限制。|一个 blob 的最大快照数为 1,000。
 |有关存储的 azure AD 身份验证|预览中|尚不支持。
-|不可变的 Blob|常规可用|尚不支持。
-|防火墙和存储的虚拟网络规则|常规可用|尚不支持。|
+|不可变的 Blob|公开发布|尚不支持。
+|针对存储的防火墙和虚拟网络规则|公开发布|尚不支持。|
 
 存储指标也有一些差异：
 
@@ -67,16 +67,8 @@ Azure 存储服务 API：
 
 1811 更新或更高版本：
 
- - [2017-11-09](https://docs.microsoft.com/rest/api/storageservices/version-2017-11-09)
- - [2017-07-29](https://docs.microsoft.com/rest/api/storageservices/version-2017-07-29)
- - [2017-04-17](https://docs.microsoft.com/rest/api/storageservices/version-2017-04-17)
- - [2016-05-31](https://docs.microsoft.com/rest/api/storageservices/version-2016-05-31)
- - [2015-12-11](https://docs.microsoft.com/rest/api/storageservices/version-2015-12-11)
- - [2015-07-08](https://docs.microsoft.com/rest/api/storageservices/version-2015-07-08)
- - [2015-04-05](https://docs.microsoft.com/rest/api/storageservices/version-2015-04-05)
-
-1809 更新到 1802年更新：
-
+- [2017-11-09](https://docs.microsoft.com/rest/api/storageservices/version-2017-11-09)
+- [2017-07-29](https://docs.microsoft.com/rest/api/storageservices/version-2017-07-29)
 - [2017-04-17](https://docs.microsoft.com/rest/api/storageservices/version-2017-04-17)
 - [2016-05-31](https://docs.microsoft.com/rest/api/storageservices/version-2016-05-31)
 - [2015-12-11](https://docs.microsoft.com/rest/api/storageservices/version-2015-12-11)
@@ -85,35 +77,34 @@ Azure 存储服务 API：
 
 以前的版本：
 
+- [2017-04-17](https://docs.microsoft.com/rest/api/storageservices/version-2017-04-17)
+- [2016-05-31](https://docs.microsoft.com/rest/api/storageservices/version-2016-05-31)
+- [2015-12-11](https://docs.microsoft.com/rest/api/storageservices/version-2015-12-11)
+- [2015-07-08](https://docs.microsoft.com/rest/api/storageservices/version-2015-07-08)
 - [2015-04-05](https://docs.microsoft.com/rest/api/storageservices/version-2015-04-05)
 
 Azure 存储服务管理 API：
 
-- [2015-05-01-preview](https://docs.microsoft.com/rest/api/storagerp/?redirectedfrom=MSDN)
-- [2015-06-15](https://docs.microsoft.com/rest/api/storagerp/?redirectedfrom=MSDN)
+1811 更新或更高版本：
+
+- [2017-10-01](https://docs.microsoft.com/rest/api/storagerp/?redirectedfrom=MSDN)
+- [2017-06-01](https://docs.microsoft.com/rest/api/storagerp/?redirectedfrom=MSDN)
+- [2016-12-01](https://docs.microsoft.com/rest/api/storagerp/?redirectedfrom=MSDN)
+- [2016-05-01](https://docs.microsoft.com/rest/api/storagerp/?redirectedfrom=MSDN)
 - [2016-01-01](https://docs.microsoft.com/rest/api/storagerp/?redirectedfrom=MSDN)
+- [2015-06-15](https://docs.microsoft.com/rest/api/storagerp/?redirectedfrom=MSDN)
+- [2015-05-01-preview](https://docs.microsoft.com/rest/api/storagerp/?redirectedfrom=MSDN)
 
 以前的版本：
 
- - [2016-01-01](https://docs.microsoft.com/rest/api/storagerp/?redirectedfrom=MSDN)
- - [2015-06-15](https://docs.microsoft.com/rest/api/storagerp/?redirectedfrom=MSDN)
- - [2015-05-01-preview](https://docs.microsoft.com/rest/api/storagerp/?redirectedfrom=MSDN)
- 
-## <a name="sdk-versions"></a>SDK 版本
+- [2016-01-01](https://docs.microsoft.com/rest/api/storagerp/?redirectedfrom=MSDN)
+- [2015-06-15](https://docs.microsoft.com/rest/api/storagerp/?redirectedfrom=MSDN)
+- [2015-05-01-preview](https://docs.microsoft.com/rest/api/storagerp/?redirectedfrom=MSDN)
 
-Azure Stack 存储支持以下客户端库：
-
-| 客户端库 | Azure Stack 支持的版本 | 链接                                                                                                                                                                                                                                                                                                                                     | 终结点规范       |
-|----------------|-------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------|
-| .NET           | 从 6.2.0 至 8.7.0。          | NuGet 包：<br>https://www.nuget.org/packages/WindowsAzure.Storage/<br> <br>GitHub 版本：<br>https://github.com/Azure/azure-storage-net/releases                                                                                                                                                                                    | app.config 文件              |
-| Java           | 从 4.1.0 至 6.1.0           | Maven 包：<br>http://mvnrepository.com/artifact/com.microsoft.azure/azure-storage<br> <br>GitHub 版本：<br>https://github.com/Azure/azure-storage-java/releases                                                                                                                                                                    | 连接字符串设置      |
-| Node.js        | 从 1.1.0 至 2.7.0           | NPM 链接：<br>https://www.npmjs.com/package/azure-storage<br>（例如：运行“npm install azure-storage@2.7.0”）<br> <br>GitHub 版本：<br>https://github.com/Azure/azure-storage-node/releases                                                                                                                                         | 服务实例声明 |
-| C++            | 从 2.4.0 至 3.1.0           | NuGet 包：<br>https://www.nuget.org/packages/wastorage.v140/<br> <br>GitHub 版本：<br>https://github.com/Azure/azure-storage-cpp/releases                                                                                                                                                                                          | 连接字符串设置      |
-| PHP            | 从 0.15.0 至 1.0.0          | GitHub 版本：<br>https://github.com/Azure/azure-storage-php/releases<br> <br>通过 Composer 安装（请参阅下面的详细信息）                                                                                                                                                                                                                  | 连接字符串设置      |
-| Python         | 从 0.30.0 至 1.0.0          | GitHub 版本：<br>https://github.com/Azure/azure-storage-python/releases                                                                                                                                                                                                                                                                | 服务实例声明 |
-| Ruby           | 从 0.12.1 至 1.0.1          | RubyGems 包：<br>常见：<br>https://rubygems.org/gems/azure-storage-common/<br>Blob： https://rubygems.org/gems/azure-storage-blob/<br>队列： https://rubygems.org/gems/azure-storage-queue/<br>表： https://rubygems.org/gems/azure-storage-table/<br> <br>GitHub 版本：<br>https://github.com/Azure/azure-storage-ruby/releases | 连接字符串设置      |
+有关支持的 Azure Stack 存储客户端库的详细信息，请参阅：[开始使用 Azure Stack 存储开发工具](azure-stack-storage-dev.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
 * [Azure Stack 存储开发工具入门](azure-stack-storage-dev.md)
+* [用于 Azure Stack 存储的数据传输工具](azure-stack-storage-transfer.md)
 * [Azure Stack 存储简介](azure-stack-storage-overview.md)

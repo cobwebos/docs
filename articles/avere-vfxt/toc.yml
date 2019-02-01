@@ -43,15 +43,15 @@ items:
     items:
     - name: 补充文档
       href: avere-vfxt-additional-resources.md
-    - name: 在没有控制器的情况下创建群集角色
-      href: avere-vfxt-pre-role.md
+    - name: 自定义的控制器访问角色
+      href: avere-vfxt-controller-role.md
     - name: Avere 群集 DNS 配置
       href: avere-vfxt-configure-dns.md
     - name: 授权非所有者部署 Avere vFXT
       href: avere-vfxt-non-owner.md
-ms.openlocfilehash: 319745fad14ca3cce97e8735def901f380132eff
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.openlocfilehash: ee0f2be03f44e1d458c118f5d5d963824922f99a
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52273705"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55300314"
