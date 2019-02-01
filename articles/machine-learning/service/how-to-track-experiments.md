@@ -6,17 +6,17 @@ services: machine-learning
 author: heatherbshapiro
 ms.author: hshapiro
 ms.service: machine-learning
-ms.component: core
+ms.subservice: core
 ms.workload: data-services
 ms.topic: article
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 99b3a65feb232526cffecac4fec68d56fcd16ccb
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: 83e17d4988753e757d6e30299e648af083b0a1a5
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54846279"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55239156"
 ---
 # <a name="track-experiments-and-training-metrics-in-azure-machine-learning"></a>跟踪试验和训练指标 - Azure 机器学习
 
@@ -27,7 +27,7 @@ ms.locfileid: "54846279"
 
 训练实验时可将以下指标添加到运行中。 若要查看可在运行中跟踪的内容的更详细列表，请参阅 [Run 类参考文档](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py)。
 
-|类型| Python 函数 | 说明|
+|Type| Python 函数 | 说明|
 |----|:----|:----|
 |标量值 |函数：<br>`run.log(name, value, description='')`<br><br>示例：<br>run.log("accuracy", 0.95) |使用给定名称将数值或字符串值记录到运行中。 在运行中记录某个指标会导致在试验中的运行记录中存储该指标。  可在一次运行中多次记录同一指标，其结果被视为该指标的一个矢量。|
 |列表|函数：<br>`run.log_list(name, value, description='')`<br><br>示例：<br>run.log_list("accuracies", [0.6, 0.7, 0.87]) | 使用给定名称将值列表记录到运行中。|
@@ -236,8 +236,8 @@ r = get_run(experiment=exp, run_id="my_run_id", rehydrate=True)
 # check the returned run type and status
 print(type(r), r.get_status())
 
-# you can only cancel a run if the status is Running
-if r.get_status() == 'Running':
+# you can cancel a run if it hasn't completed or failed
+if r.get_status() not in ['Complete', 'Failed']:
     r.cancel()
 ```
 请注意，当前仅 ScriptRun 和 PipelineRun 类型支持取消操作。

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/16/2018
 ms.author: sedusch
-ms.openlocfilehash: 2cec9e9b9724ca401778d4493d03def2aefc4ee9
-ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
+ms.openlocfilehash: f3d6205635284c2ff2b0d4ab9cdab1e8a5844a94
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54304476"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55099792"
 ---
 # <a name="setting-up-pacemaker-on-suse-linux-enterprise-server-in-azure"></a>在 Azure 中的 SUSE Linux Enterprise Server 上设置 Pacemaker
 
@@ -525,7 +525,7 @@ STONITH 设备使用服务主体对 Microsoft Azure 授权。 请按照以下步
 
 将在最后一章中创建的自定义角色“Linux 隔离代理角色”分配给服务主体。 不要再使用“所有者”角色！
 
-1. 转到 https\://portal.azure.com
+1. 转到 [https://portal.azure.com](https://portal.azure.com)
 1. 打开“所有资源”边栏选项卡
 1. 选择第一个群集节点的虚拟机
 1. 选择“访问控制(IAM)”

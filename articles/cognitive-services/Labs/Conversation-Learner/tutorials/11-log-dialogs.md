@@ -6,16 +6,16 @@ services: cognitive-services
 author: v-jaswel
 manager: nolachar
 ms.service: cognitive-services
-ms.component: conversation-learner
+ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 74ee04fb3d4044573a98535a9bdc26d5c593a222
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 9a819f94ae0cc90d86fdbdf4c9201f1d5a2df6ee
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53796464"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55213338"
 ---
 # <a name="how-to-log-dialogs-in-a-conversation-learner-model"></a>如何在对话学习器模型中记录对话
 
@@ -35,7 +35,7 @@ ms.locfileid: "53796464"
 ## <a name="details"></a>详细信息
 日志对话是所录制的、机器人与最终用户进行交互的日志。 通过利用这些日志对话，可以修复实体标签和操作选择来改进模型的性能和整体系统性能。
 
-## <a name="steps"></a>步骤
+## <a name="steps"></a>Steps
 
 在 Web UI 中，单击“导入教程”并选择名为“Tutorial-11-LogDialogs”的模型。
 

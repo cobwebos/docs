@@ -4,19 +4,19 @@ titleSuffix: Azure Machine Learning service
 description: 了解如何使用 PyTorch 估算器运行 PyTorch 模型的单节点和分布式训练
 services: machine-learning
 ms.service: machine-learning
-ms.component: core
+ms.subservice: core
 ms.topic: conceptual
 ms.author: minxia
 author: mx-iao
 ms.reviewer: sgilley
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: a6401c6059d8f72f344021879828b01c9ce77169
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: e5528cdfc2efa2d5c257732c8b6b6df117421839
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53100538"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55250021"
 ---
 # <a name="train-pytorch-models-with-azure-machine-learning-service"></a>使用 Azure 机器学习服务训练 PyTorch 模型
 
@@ -42,7 +42,7 @@ pt_est = PyTorch(source_directory='./my-pytorch-proj',
 ```
 
 此处，我们为 PyTorch 构造函数指定以下参数：
-参数 | Description
+参数 | 说明
 --|--
 `source_directory` |  包含训练作业所需的所有代码的本地目录。 此文件夹已从本地计算机复制到远程计算
 `script_params` |  指定训练脚本 `entry_script` 的命令行参数的字典，格式为 <命令行参数, 值> 对
@@ -82,7 +82,7 @@ pt_est = PyTorch(source_directory='./my-pytorch-project',
 ```
 
 该代码显示了 PyTorch 构造函数的以下新参数：
-参数 | Description | 默认
+参数 | 说明 | 默认
 --|--|--
 `node_count` |  要用于训练作业的节点数。 | `1`
 `process_count_per_node` |  要在每个节点上运行的进程（或“工作线程”）数。 | `1`

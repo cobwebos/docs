@@ -4,19 +4,19 @@ titleSuffix: Azure Machine Learning service
 description: 了解如何使用 TensorFlow 估算器运行 TensorFlow 模型的单节点和分布式训练
 services: machine-learning
 ms.service: machine-learning
-ms.component: core
+ms.subservice: core
 ms.topic: conceptual
 ms.author: minxia
 author: mx-iao
 ms.reviewer: sgilley
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: d15d3ed115009ad1395a85d36e833d85197d4d19
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: c76a94695114888ca8946106528fe179ff81c811
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53094096"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55244719"
 ---
 # <a name="train-tensorflow-models-with-azure-machine-learning-service"></a>使用 Azure 机器学习服务训练 TensorFlow 模型
 
@@ -45,7 +45,7 @@ tf_est = TensorFlow(source_directory='./my-tf-proj',
 
 此处，我们为 TensorFlow 构造函数指定以下参数：
 
-参数 | Description
+参数 | 说明
 --|--
 `source_directory` | 包含训练作业所需的所有代码的本地目录。 此文件夹已从本地计算机复制到远程计算
 `script_params` | 指定训练脚本 `entry_script` 的命令行参数的字典，格式为 <命令行参数, 值> 对
@@ -88,7 +88,7 @@ tf_est = TensorFlow(source_directory='./my-tf-proj',
 
 上述代码显示了 TensorFlow 构造函数的以下新参数：
 
-参数 | Description | 默认
+参数 | 说明 | 默认
 --|--|--
 `node_count` | 要用于训练作业的节点数。 | `1`
 `process_count_per_node` | 要在每个节点上运行的进程（或“工作线程”）数。|`1`
@@ -129,7 +129,7 @@ tf_est = TensorFlow(source_directory='./my-tf-proj',
 
 请注意，上述代码中 TensorFlow 构造函数的以下参数：
 
-参数 | Description | 默认
+参数 | 说明 | 默认
 --|--|--
 `worker_count` | 工作线程数。 | `1`
 `parameter_server_count` | 参数服务器数。 | `1`
