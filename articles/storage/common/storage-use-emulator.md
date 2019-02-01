@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 08/10/2018
 ms.author: tamram
-ms.component: common
-ms.openlocfilehash: 22c7adc5db044568b4aa49dbbb0e36d2c919f6a6
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.subservice: common
+ms.openlocfilehash: b3b011d9789cbb3dcd8557eda1473b7fd2609075
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53629613"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55454277"
 ---
 # <a name="use-the-azure-storage-emulator-for-development-and-testing"></a>使用 Azure 存储模拟器进行开发和测试
 
@@ -167,7 +167,7 @@ http://127.0.0.1:10000/devstoreaccount1/sascontainer?sv=2012-02-12&se=2015-07-08
 ### <a name="options"></a>选项
 若要查看选项列表，请在命令提示符下键入 `/help`。
 
-| 选项 | Description | 命令 | 参数 |
+| 选项 | 说明 | 命令 | 参数 |
 | --- | --- | --- | --- |
 | **启动** |启动存储模拟器。 |`AzureStorageEmulator.exe start [-inprocess]` |*-inprocess*：在当前进程中启动仿真器，而不是创建新的进程。 |
 | **Stop** |停止存储模拟器。 |`AzureStorageEmulator.exe stop` | |

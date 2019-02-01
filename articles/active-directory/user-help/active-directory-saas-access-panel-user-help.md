@@ -6,18 +6,18 @@ author: eross-msft
 manager: daveba
 ms.assetid: c67cd675-b567-41e1-8bc2-e06fe0b38d3b
 ms.service: active-directory
-ms.component: user-help
+ms.subservice: user-help
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 01/15/2018
 ms.author: lizross
 ms.reviewer: japere
-ms.openlocfilehash: 4af0b9cf50d643fda2341e791753e3bdfc8166b1
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 9613b1d1738b58df4024841339f1579661594f70
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54812553"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55166301"
 ---
 # <a name="troubleshoot-issues-with-accessing-and-using-the-myapps-portal"></a>排查有关访问和使用 MyApps 门户的问题
 

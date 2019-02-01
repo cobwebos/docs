@@ -6,16 +6,16 @@ services: cognitive-services
 author: Jann-Skotdal
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: translator-text
+ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 12/14/2017
 ms.author: v-jansko
-ms.openlocfilehash: aa59ce89bf8c2c4b31d85c572dcdfb3645f06884
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: 273b54961adafb58fe9faa7993003ff74d50b6f9
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49646001"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55218150"
 ---
 # <a name="how-to-use-collaborative-translation-framework-ctf-reporting"></a>如何使用协作性翻译框架 (CTF) 报告
 
@@ -36,7 +36,7 @@ CTF 报告 API 的终结点为 http://api.microsofttranslator.com/v2/beta/ctfrep
 
 
 ## <a name="methods"></a>方法
-| 名称 |    Description|
+| Name |    说明|
 |:---|:---|
 | GetUserTranslationCounts 方法 | 获取用户创建的翻译计数。 |
 | GetUserTranslations 方法 | 检索用户创建的翻译。 |
@@ -74,7 +74,7 @@ UserTranslationCount[]GetUserTranslationCounts(
 
 **参数**
 
-| 参数 | Description |
+| 参数 | 说明 |
 |:---|:---|
 | appId | **必需**：如果使用授权标头，请将 appid 字段留空，否则请指定包含 "Bearer" + " " + access token 的字符串。|
 | uriPrefix | **可选**：一个包含翻译 URI 前缀的字符串。|
@@ -96,7 +96,7 @@ UserTranslationCount[]GetUserTranslationCounts(
 
 结果集包含 **UserTranslationCount** 的数组。 每个 UserTranslationCount 都具有以下元素：
 
-| 字段 | Description |
+| 字段 | 说明 |
 |:---|:---|
 | Count| 检索的结果数|
 | 源 | 源语言|
@@ -145,7 +145,7 @@ UserTranslation[] GetUserTranslations (
 
 **参数**
 
-| 参数 | Description |
+| 参数 | 说明 |
 |:---|:---|
 | appId | **必需**：如果使用授权标头，请将 appid 字段留空，否则请指定包含 "Bearer" + " " + access token 的字符串。|
 | uriPrefix| **可选**：一个包含翻译 URI 前缀的字符串。|
@@ -167,7 +167,7 @@ UserTranslation[] GetUserTranslations (
 
 结果集包含 **UserTranslation** 的数组。 每个 UserTranslation 都具有以下元素：
 
-| 字段 | Description |
+| 字段 | 说明 |
 |:---|:---|
 | CreatedDateUtc| 使用 AddTranslation() 创建条目的日期|
 | 源| 源语言|

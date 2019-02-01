@@ -6,17 +6,17 @@ author: marktab
 manager: cgronlun
 editor: cgronlun
 ms.service: machine-learning
-ms.component: team-data-science-process
+ms.subservice: team-data-science-process
 ms.topic: article
 ms.date: 05/11/2018
 ms.author: tdsp
 ms.custom: seodec18, previous-author=fboylu, previous-ms.author=fboylu
-ms.openlocfilehash: 8d2a16047a741daf484d6ccdc48453d49355d443
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 860d24bf9de02d1b2ca46f05f1e09843a826aaf9
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53135673"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55466823"
 ---
 # <a name="azure-ai-guide-for-predictive-maintenance-solutions"></a>针对预测性维护解决方案的 Azure AI 指南
 
@@ -409,7 +409,7 @@ PdM 的建议方法是以时间相关的方式将示例拆分为训练、验证�
 
 本指南的最后一部分提供可在 Azure 中实现的 PdM 解决方案模板、教程和试验的列表。 在某些情况下，只需片刻时间即可将这些 PdM 应用程序部署到 Azure 订阅。 可将它们用作概念证明演示、用于试验替代方案的沙盒，或者用于实际生产实施项目的加速器。 这些模板在 [Azure AI 库](http://gallery.azure.ai)或 [Azure GitHub](https://github.com/Azure) 中提供。 这些不同的示例会逐渐部署到此解决方案模板。
 
-| # | 标题 | Description |
+| # | 标题 | 说明 |
 |--:|:------|-------------|
 | 2 | [Azure 预测性维护解决方案模板](https://github.com/Azure/AI-PredictiveMaintenance) | 开放源代码解决方案模板，用于演示机器学习建模和完整的 Azure 基础结构，该结构可支持 IoT 远程监视环境中的预测性维护方案。 |
 | 3 | [预测性维护的深度学习](https://github.com/Azure/MachineLearningSamples-DeepLearningforPredictiveMaintenance) | 包含一个演示解决方案的 Azure Notebook。该解决方案使用 LSTM （长短期记忆）网络（某类递归神经网络）进行预测性维护。请参阅[有关此示例的博客文章](https://azure.microsoft.com/blog/deep-learning-for-predictive-maintenance)。|

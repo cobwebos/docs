@@ -4,19 +4,19 @@ titleSuffix: Azure Machine Learning Studio
 description: 可以使用界面或 AI 库目录 API 从 Azure AI 库中导出和删除产品内用户数据。 本文介绍相关实现方法。
 services: machine-learning
 ms.service: machine-learning
-ms.component: studio
+ms.subservice: studio
 ms.topic: conceptual
 author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 05/25/2018
 ms.reviewer: jmartens, mldocs
-ms.openlocfilehash: 14f46ffd45f0b1948dfc4892a45dc880dc378355
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 85d7286c1fd075da7034a2a43d46a158550d2fe9
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54263980"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55247708"
 ---
 # <a name="view-and-delete-in-product-user-data-from-azure-ai-gallery"></a>从 Azure AI 库中查看和删除产品内用户数据
 
