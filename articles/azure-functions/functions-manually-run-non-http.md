@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: tutorial
 ms.date: 12/12/2018
 ms.author: cshoe
-ms.openlocfilehash: 6c77e58e626ba370a6278a0f01b09578930cba09
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: 61bece83697a4907a7bf3c881003f4da9b0e8a84
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54247106"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55466874"
 ---
 # <a name="manually-run-a-non-http-triggered-function"></a>手动运行非 HTTP 触发的函数
 
@@ -35,6 +35,9 @@ ms.locfileid: "54247106"
 - **函数名：** 要运行的函数的名称。
 
 请将 Postman 中的此请求位置与函数发送给 Azure 的请求中的主密钥配合使用，以便运行函数。
+
+> [!NOTE]
+> 在本地运行时，不需要函数的主密钥。 可以直接[调用函数](#call-the-function)，省略 `x-functions-key` 标头。
 
 ## <a name="get-the-functions-master-key"></a>获取函数的主密钥
 

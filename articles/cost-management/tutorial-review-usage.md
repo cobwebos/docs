@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.service: cost-management
 ms.custom: seodec18
 manager: benshy
-ms.openlocfilehash: e96119abd4fc77c576fb65281c3f48b8263e020d
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: e240cbadbee87938107c4a9bf034c47db42acf92
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54849968"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55098640"
 ---
 <!-- Intent: As a cloud-consuming user, I need to view usage and costs for my cloud resources and services.
 -->
@@ -101,7 +101,7 @@ Azure 成本管理也为 Azure 服务提供成本节省建议 有关详细信息
 2. 将“组”设置为“服务”，并将“按服务筛选”设置为“Azure/VM”。 
 3. 在报表的右上角，选择“操作”，然后选择“计划报表”。
 4. 若要按计划的时间间隔向自己发送有关报表的电子邮件，请在“保存或计划此报表”对话框中选择“计划”选项卡。 请务必选择“通过电子邮件发送”。 你使用的任何标记、分组和筛选均包含在通过电子邮件发送的报表中。 
-5. 选择“阈值”选项卡，然后选择“实际成本与阈值”。 
+5. 选择“阈值”选项卡，然后选择“实际成本与阈值”**。**。 
    1. 在“红色警报”阈值框中，输入 10000。 
    2. 在“黄色警报”阈值框中，输入 9000。 
    3. 在“连续警报数”框中，输入要接收的连续警报的数目。 当你收到的警报总数达到指定数目时，就不会再发送任何其他警报。 

@@ -1,5 +1,5 @@
 ---
-title: 教程：使用 SSMS 设计第一个 Azure SQL 数据库 | Microsoft Docs
+title: 教程：使用 SSMS 在 Azure SQL 数据库中设计第一个单一数据库 | Microsoft Docs
 description: 了解如何使用 SQL Server Management Studio 设计第一个 Azure SQL 数据库。
 services: sql-database
 ms.service: sql-database
@@ -9,13 +9,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: v-masebo
 manager: craigg
-ms.date: 12/04/2018
-ms.openlocfilehash: 9fa36b9b87a8e9591b0c863826cd2278a29ba28e
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.date: 01/25/2019
+ms.openlocfilehash: e7229a0816cf74fed08397a68dd34e305bf8c0ea
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52956051"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55459530"
 ---
 # <a name="tutorial-design-your-first-azure-sql-database-using-ssms"></a>教程：使用 SSMS 设计第一个 Azure SQL 数据库
 
@@ -47,7 +47,7 @@ Azure SQL 数据库是 Microsoft 云 (Azure) 中的关系型数据库即服务 (
 
 ## <a name="create-a-blank-database"></a>创建空数据库
 
-创建 Azure SQL 数据库时，会使用定义好的一组[计算和存储资源](sql-database-service-tiers-dtu.md)。 数据库在 [Azure 资源组](../azure-resource-manager/resource-group-overview.md)和 [Azure SQL 数据库逻辑服务器](sql-database-features.md)中创建。
+创建 Azure SQL 数据库时，会使用定义好的一组[计算和存储资源](sql-database-service-tiers-dtu.md)。 数据库在 [Azure 资源组](../azure-resource-manager/resource-group-overview.md)和 [Azure SQL 数据库服务器](sql-database-features.md)中创建。
 
 按照以下步骤创建空的 SQL 数据库。
 
@@ -113,7 +113,7 @@ SQL 数据库服务会在服务器级别创建防火墙。 防火墙会阻止外
 
    1. 在工具栏上单击“添加客户端 IP”，将当前的 IP 地址添加到新的防火墙规则。 防火墙规则可以针对单个 IP 地址或一系列 IP 地址打开端口 1433。
 
-   1. 单击“保存”。 此时会针对当前的 IP 地址创建服务器级防火墙规则，在逻辑服务器上打开 端口 1433。
+   1. 单击“ **保存**”。 此时会针对当前的 IP 地址创建服务器级防火墙规则，在 SQL 数据库服务器上打开端口 1433。
 
    1. 单击“确定”，然后关闭“防火墙设置”页。
 
@@ -130,7 +130,7 @@ SQL 数据库服务会在服务器级别创建防火墙。 防火墙会阻止外
 
 1. 在“连接到服务器”对话框中，输入以下信息：
 
-   | 设置       | 建议的值 | Description |
+   | 设置       | 建议的值 | 说明 |
    | ------------ | ------------------ | ------------------------------------------------- |
    | **服务器类型** | 数据库引擎 | 此值是必需的。 |
    | **服务器名称** | 完全限定的服务器名称 | 例如，yourserver.database.windows.net。 |

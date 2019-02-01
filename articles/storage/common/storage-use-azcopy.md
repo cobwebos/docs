@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 01/03/2019
 ms.author: seguler
-ms.component: common
-ms.openlocfilehash: 03d307a324826a4805da5ed6ff8b995b7c3eab62
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.subservice: common
+ms.openlocfilehash: d28ea2972b8b73921bb078d8570afe9a6dffce8f
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54019293"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55461761"
 ---
 # <a name="transfer-data-with-the-azcopy-on-windows"></a>使用 AzCopy on Windows 传输数据
 AzCopy 是一个命令行实用程序，专用于使用旨在实现最佳性能的简单命令将数据复制到 Microsoft Azure Blob、文件和表存储以及从这些位置复制数据。 可在文件系统和存储帐户之间或在存储帐户之间复制数据。  
@@ -981,7 +981,7 @@ AzCopy 默认情况下使用服务器端的异步复制。 指定此选项以执
 * 如果值为 True（默认值），AzCopy 会使用 .NET MD5 实现。
 * 如果值为 False，AzCopy 会使用 FIPS 兼容的 MD5 算法。
 
-Windows 中默认已禁用 FIPS 兼容的算法。 可在计算机上更改此策略设置。 在“运行”窗口（按 Windows 键 + R 键）中键入 secpol.msc 打开“本地安全策略”窗口。 在“安全设置”窗口中，导航到“安全设置” > “本地策略” > “安全选项”。 找到“系统加密:将 FIPS 兼容算法用于加密、哈希和签名”策略。 双击该策略，查看“安全设置”列中显示的值。
+Windows 中默认已禁用 FIPS 兼容的算法。 可在计算机上更改此策略设置。 在“运行”窗口（按 Windows 键 + R 键）中键入 secpol.msc 打开“本地安全策略”窗口。 在“安全设置”窗口中，导航到“安全设置” > “本地策略” > “安全选项”。 找到“系统加密:将 FIPS 兼容算法用于加密、哈希和签名”策略。** 双击该策略，查看“安全设置”列中显示的值。
 
 ## <a name="next-steps"></a>后续步骤
 

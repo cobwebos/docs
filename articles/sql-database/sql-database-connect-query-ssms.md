@@ -12,13 +12,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 12/04/2018
-ms.openlocfilehash: 23f2d32b2323821155467bd1ad12e9baf8c33074
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.date: 01/25/2019
+ms.openlocfilehash: 2b510accb2a30250a2855cfa22dbf45546a77569
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55150744"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55461740"
 ---
 # <a name="quickstart-use-sql-server-management-studio-to-connect-and-query-an-azure-sql-database"></a>快速入门：使用 SQL Server Management Studio 连接和查询 Azure SQL 数据库
 
@@ -30,7 +30,9 @@ ms.locfileid: "55150744"
 
 [!INCLUDE [prerequisites-create-db](../../includes/sql-database-connect-query-prerequisites-create-db-includes.md)]
 
-#### <a name="install-the-latest-ssms"></a>安装最新的 SSMS
+* 配置态服务器级防火墙规则。 有关详细信息，请参阅[创建服务器级防火墙规则](sql-database-get-started-portal-firewall.md)。
+
+## <a name="install-the-latest-ssms"></a>安装最新的 SSMS
 
 在开始之前，请确保已安装最新的 [SSMS][ssms-install-latest-84g]。 
 
@@ -43,7 +45,7 @@ ms.locfileid: "55150744"
 在 SMSS 中，连接到 Azure SQL 数据库服务器。 
 
 > [!IMPORTANT]
-> Azure SQL 数据库逻辑服务器在端口 1433 上进行侦听。 要从公司防火墙后连接到逻辑服务器，该防火墙必须打开此端口。
+> Azure SQL 数据库服务器在端口 1433 上进行侦听。 若要从公司防火墙后连接到 SQL 数据库服务器，该防火墙必须打开此端口。
 >
 
 1. 打开 SSMS。 此时会显示“连接到服务器”对话框。

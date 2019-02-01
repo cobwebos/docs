@@ -6,14 +6,14 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 10/17/2018
 ms.author: chrande
-ms.openlocfilehash: d3ee6db382f848a029f3e0355abdfe5eecc80656
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 1486ab3240036abedea2cbb3cbe93e5c061691d8
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54035825"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55467401"
 ---
-# <a name="manage-database-accounts-in-azure-cosmos-db"></a>在 Azure Cosmos DB 中管理数据库帐户
+# <a name="manage-an-azure-cosmos-account"></a>管理 Azure Cosmos 帐户
 
 本文介绍了如何管理你的 Azure Cosmos DB 帐户。 你将了解如何设置多宿主功能、添加或删除区域、配置多个写入区域，以及设置故障转移优先级。 
 

@@ -6,16 +6,16 @@ author: kevinvngo
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: quickstart
-ms.component: implement
+ms.subservice: implement
 ms.date: 04/17/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 1abafb011a445847757af3efb9e0ea4e6170408d
-ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
+ms.openlocfilehash: 31ec1537a0075f486130a3bcf1017d35b47e499d
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43285527"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55463644"
 ---
 # <a name="quickstart-scale-compute-in-azure-sql-data-warehouse-in-the-azure-portal"></a>快速入门：使用 Azure 门户在 Azure SQL 数据仓库中缩放计算资源
 
@@ -49,7 +49,7 @@ ms.locfileid: "43285527"
 
 3. 单击“保存”。 此时会显示确认消息。 单击“是”以确认或“否”以取消。
 
-    ![点击“保存”(Save)](media/quickstart-scale-compute-portal/confirm-change.png)
+    ![点击“保存”](media/quickstart-scale-compute-portal/confirm-change.png)
 
 
 

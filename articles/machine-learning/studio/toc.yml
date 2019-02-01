@@ -15,8 +15,6 @@ items:
   - name: 常见问题
     displayName: FAQ
     href: faq.md
-  - name: 新增功能
-    href: whats-new.md
   expanded: true
 - name: 教程
   items:
@@ -41,8 +39,6 @@ items:
     - name: 6 - 访问 Web 服务
       displayName: consume
       href: walkthrough-6-access-web-service.md
-  - name: 通过 R 开始使用
-    href: r-quickstart.md
 - name: 示例
   items:
   - name: 可用数据集
@@ -120,6 +116,8 @@ items:
         href: debug-models.md
     - name: 使用 R 和 Python
       items:
+      - name: 通过 R 开始使用
+        href: r-quickstart.md
       - name: 执行 R 脚本
         href: extend-your-experiment-with-r.md
       - name: 创作自定义 R 模块
@@ -208,21 +206,25 @@ items:
     href: /rest/api/machinelearning
 - name: 资源
   items:
+  - name: 服务更新
+    href: https://azure.microsoft.com/updates/?product=machine-learning-studio
+  - name: 获取支持
+    href: support-aml-studio.md
   - name: Azure 路线图
     href: https://azure.microsoft.com/roadmap/
+  - name: 区域可用性
+    href: https://azure.microsoft.com/regions/services/
   - name: 定价
     href: https://azure.microsoft.com/pricing/details/machine-learning/
   - name: R 开发人员指南
     href: ../r-developers-guide.md
-  - name: 使用 Net# 的自定义神经网络
+  - name: 自定义神经网络 (Net#)
     href: azure-ml-netsharp-reference-guide.md
-  - name: 获取支持
-    href: support-aml-studio.md
   - name: 比较我们的 ML 产品
     href: ../service/overview-more-machine-learning.md
-ms.openlocfilehash: 12fa71315c1cb43570505d2428804f4a5348a266
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 27cd57a52b80006482f50f96120e8eaf8a8cb00e
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55156082"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55512187"

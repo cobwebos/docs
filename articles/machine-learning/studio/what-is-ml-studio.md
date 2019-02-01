@@ -10,18 +10,18 @@ ms.custom: seodec18
 ms.author: garye
 ms.assetid: e65c8fe1-7991-4a2a-86ef-fd80a7a06269
 ms.service: machine-learning
-ms.component: studio
+ms.subservice: studio
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
 ms.date: 03/28/2018
-ms.openlocfilehash: 04c9803909fb5dfd1072840a0c1d7e33814ad1a3
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: bb01db14cec73b8c5668915a9eaab5e7728724df
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54264354"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55469103"
 ---
 # <a name="what-is-azure-machine-learning-studio"></a>什么是 Azure 机器学习工作室？
 Microsoft Azure 机器学习工作室是一个协作型拖放式工具，可用于根据数据构建、测试和部署预测分析解决方案。 机器学习工作室将模型发布为可让自定义应用或 BI 工具（如 Excel）方便使用的 Web 服务。
@@ -39,8 +39,8 @@ Microsoft Azure 机器学习工作室是一个协作型拖放式工具，可用�
 
 > [!TIP]
 > 若要下载和打印 Microsoft Azure 机器学习工作室功能概述示意图，请参阅 [Overview diagram of Azure Machine Learning Studio capabilities](studio-overview-diagram.md)（Azure Machine 机器学习工作室功能概述）。
-> 
-> 
+>
+>
 
 ![Azure 机器学习工作室示意图：创建试验、读取多个源的数据、编写评分的数据、编写模型。][ml-studio-overview]
 
@@ -104,7 +104,7 @@ Microsoft Azure 机器学习工作室是一个协作型拖放式工具，可用�
 * [线性回归][linear-regression] - 创建在线梯度下降线性回归模型。
 * [评分模型][score-model] - 为训练的分类或回归模型评分。
 
-构建试验时，可以从画布左侧提供的模块列表中选择。  
+构建试验时，可以从画布左侧提供的模块列表中选择。
 
 模块可能提供一组参数用于配置模块的内部算法。 在画布上选择模块时，模块的参数会显示在画布右侧的“属性”窗格中。 可以在该窗格中修改参数来调整模型。
 
@@ -162,7 +162,7 @@ Microsoft Azure 机器学习工作室是一个协作型拖放式工具，可用�
 * **样本**：用于代表整体的一部分数据集。 可以随机采样，或根据数据集的具体特征采样。
 
 ## <a name="next-steps"></a>后续步骤
-可以使用[分步指南](create-experiment.md)和[基于样本的构建](sample-experiments.md)了解预测分析和机器学习的基础知识。  
+可以使用[分步指南](create-experiment.md)和[基于样本的构建](sample-experiments.md)了解预测分析和机器学习的基础知识。
 
 
 <!-- Module References -->

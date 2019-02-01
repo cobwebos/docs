@@ -6,16 +6,16 @@ services: cognitive-services
 author: v-jaswel
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: translator-speech
+ms.subservice: translator-speech
 ms.topic: quickstart
 ms.date: 3/5/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 3db4e242ad630949533823c22a16587daa4f9786
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: a88eade0d5fbfe4fd951e3e98c72a1e697099f1a
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49389694"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55466313"
 ---
 # <a name="quickstart-translator-speech-api-with-nodejs"></a>快速入门：将语音翻译 API 与 Node.js 配合使用 
 <a name="HOLTop"></a>

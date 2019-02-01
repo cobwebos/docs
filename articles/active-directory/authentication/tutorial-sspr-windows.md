@@ -3,19 +3,19 @@ title: Windows 10 登录屏幕中的 Azure AD SSPR
 description: 在本教程中，你将在 Windows 10 登录屏幕上启用密码重置，以减少支持人员呼叫。
 services: active-directory
 ms.service: active-directory
-ms.component: authentication
+ms.subservice: authentication
 ms.topic: tutorial
 ms.date: 12/05/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
-ms.openlocfilehash: 640f03cd35ac74df9c7b25352ab294c35c4ec0ea
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: a36f9bf3ade623a6b623116c504c2b6a04fcdf2b
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54430664"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55474864"
 ---
 # <a name="tutorial-azure-ad-password-reset-from-the-login-screen"></a>教程：登录屏幕中的“Azure AD 密码重置”
 
@@ -28,11 +28,11 @@ ms.locfileid: "54430664"
 
 ## <a name="prerequisites"></a>先决条件
 
-* Windows 10 的 2018 年 4 月更新或更高版本的客户端，并且它们应当：
-   * [已加入 Azure AD 的计算机](../device-management-azure-portal.md)或者
-   * [已加入混合 Azure AD 的计算机](../device-management-hybrid-azuread-joined-devices-setup.md)，并且该计算机已与域控制器建立了网络连接。
+* 至少必须运行 Windows 10 2018 年 4 月更新版，且设备必须符合下述条件之一：
+   * [已加入 Azure AD](../device-management-azure-portal.md)，或者
+   * [已加入混合 Azure AD](../device-management-hybrid-azuread-joined-devices-setup.md)，可以通过网络连接到域控制器。
 * 必须启用 Azure AD 自助密码重置。
-* 如果 Windows 10 计算机位于代理服务器或防火墙后面，应允许向 `passwordreset.microsoftonline.com` 和 `ajax.aspnetcdn.com` 传输 HTTPS 流量 (443)。
+* 如果 Windows 10 设备位于代理服务器或防火墙后面，则必须向 HTTPS 流量（端口 443）的“允许的 URL”列表添加 URL、`passwordreset.microsoftonline.com` 和 `ajax.aspnetcdn.com`。
 
 ## <a name="configure-reset-password-link-using-intune"></a>使用 Intune 配置“重置密码”链接
 

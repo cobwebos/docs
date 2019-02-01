@@ -6,18 +6,18 @@ services: cognitive-services
 author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: translator-text
+ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 11/21/2018
 ms.author: erhopf
-ms.openlocfilehash: d67fbdad32612f23b1de31f7d2a1d7b4dee3b68e
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.openlocfilehash: 7beddd7f7f21466ee404303b2727370d0cfc86f6
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52889134"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55220145"
 ---
-# <a name="quickstart-use-the-translator-text-api-to-transliterate-text-using-c"></a>快速入门：使用文本翻译 API 通过 C# 对文本进行直译
+# <a name="quickstart-use-the-translator-text-api-to-transliterate-text-using-c"></a>快速入门：使用 C# 通过文本翻译 API 对文本进行直译
 
 本快速入门介绍如何使用 .NET Core (C#) 和文本翻译 REST API 将文本从一个脚本直译（转换）为另一个脚本。 在提供的示例中，日语在经过直译后使用拉丁字母。
 

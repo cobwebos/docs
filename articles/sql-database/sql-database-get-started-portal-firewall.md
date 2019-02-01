@@ -11,13 +11,13 @@ author: sachinpMSFT
 ms.author: sachinp
 ms.reviewer: vanto, carlrab
 manager: craigg
-ms.date: 12/01/2018
-ms.openlocfilehash: cab92539b5019d4807ddefb2b84279c844f53016
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.date: 01/25/2019
+ms.openlocfilehash: 589d3fa8c0ee8c8f374cd4f34f17401caa46d265
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52721895"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55462250"
 ---
 # <a name="quickstart-create-a-server-level-firewall-rule-for-your-sql-database-using-the-azure-portal"></a>快速入门：使用 Azure 门户为 SQL 数据库创建服务器级防火墙规则
 
@@ -57,7 +57,7 @@ SQL 数据库服务会在服务器级别创建防火墙。 此防火墙阻止应
    > 默认情况下，所有 Azure 服务都允许通过 SQL 数据库防火墙进行访问。 在此页上选择“关”即可对所有 Azure 服务执行禁用操作。
    >
 
-5. 选择“保存”。 此时会针对当前的 IP 地址创建服务器级防火墙规则，在逻辑服务器上打开 端口 1433。
+5. 选择“保存”。 此时会针对当前的 IP 地址创建服务器级防火墙规则，在 SQL 数据库服务器上打开端口 1433。
 
 6. 关闭“防火墙设置”页。
 
@@ -66,7 +66,6 @@ SQL 数据库服务会在服务器级别创建防火墙。 此防火墙阻止应
 ## <a name="clean-up-resources"></a>清理资源
 
 若要转到[后续步骤](#next-steps)，以便了解如何使用多种不同的方法连接和查询数据库，请保存这些资源。 但是，如果希望删除在本快速入门中创建的资源，请执行以下步骤。
-
 
 1. 在 Azure 门户的左侧菜单中，选择“资源组”，然后选择“myResourceGroup”。
 2. 在资源组页上选择“删除”，在文本框中键入 **myResourceGroup**，然后选择“删除”。

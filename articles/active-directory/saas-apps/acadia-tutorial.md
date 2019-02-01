@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 1/17/2019
 ms.author: jeedes
-ms.openlocfilehash: a43db3eba5bec9bef0aacc51d246414d54d222bf
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: dc36e66e9dae62fdfede3a82146cd218ca5eb489
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54813434"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55458170"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-acadia"></a>教程：Azure Active Directory 与 Acadia 集成
 
@@ -71,10 +71,10 @@ ms.locfileid: "54813434"
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
 
-在本部分中，根据名为 **Britta Simon** 的测试用户的指示配置和测试 [应用程序名称] 的 Azure AD 单一登录。
-若要运行单一登录，需要在 Azure AD 用户与 [应用程序名称] 相关用户之间建立链接关系。
+在本部分中，基于一个名为“Britta Simon”的测试用户使用 Acadia 配置和测试 Azure AD 单一登录。
+若要使单一登录有效，需要在 Azure AD 用户与 Acadia 中的相关用户之间建立链接关系。
 
-若要配置和测试 [应用程序名称] 的 Azure AD 单一登录，需要完成以下构建基块：
+若要配置和测试 Acadia 的 Azure AD 单一登录，需要完成以下构建基块：
 
 1. **[配置 Azure AD 单一登录](#configure-azure-ad-single-sign-on)** - 使用户能够使用此功能。
 2. **[配置 Acadia 单一登录](#configure-acadia-single-sign-on)** - 在应用程序端配置单一登录设置。
@@ -87,7 +87,7 @@ ms.locfileid: "54813434"
 
 在本部分中，将在 Azure 门户中启用 Azure AD 单一登录。
 
-若要配置 [应用程序名称] 的 Azure AD 单一登录，请执行以下步骤：
+若要配置 Acadia 的 Azure AD 单一登录，请执行以下步骤：
 
 1. 在 [Azure 门户](https://portal.azure.com/)中，在 **Acadia** 应用程序集成页上，选择“单一登录”。
 
@@ -116,7 +116,7 @@ ms.locfileid: "54813434"
     在“登录 URL”文本框中，使用以下模式键入 URL：`https://<CUSTOMER>.acadia.sysalli.com/Shibboleth.sso/Login`
 
     > [!NOTE]
-    > 这些不是实际值。 请使用实际的“标识符”、“回复 URL”和“登录 URL”更新这些值。 请联系 [Acadia 客户端支持团队](https://www.systemsalliance.com/contact-us/)，获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”部分中显示的模式。
+    > 步骤 4 和 5 的值将由 Acadia 团队在元数据文件中提供，该文件可以通过单击“基本 SAML 配置”部分的“上传元数据文件”进行导入。 请使用实际的“标识符”、“回复 URL”和“登录 URL”更新这些值。 还可以参考 Azure 门户中“基本 SAML 配置”部分显示的模式，确认元数据值是否正确。 如果提供的值不正确，请联系 [Acadia 客户端支持团队](mailto:support@systemsalliance.com)。
 
 6. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分，单击“下载”以根据要求下载从给定选项提供的“联合元数据 XML”并将其保存在计算机上。
 
@@ -134,7 +134,7 @@ ms.locfileid: "54813434"
 
 ### <a name="configure-acadia-single-sign-on"></a>配置 Acadia 单一登录
 
-若要在 Acadia 端配置单一登录，需要将下载的元数据 XML 以及从 Azure 门户复制的相应 URL 发送给 [Acadia 支持团队](https://www.systemsalliance.com/contact-us/)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
+若要在 Acadia 端配置单一登录，需要将下载的元数据 XML、应用联合元数据 URL 以及从 Azure 门户复制的相应 URL 发送给 [Acadia 支持团队](mailto:support@systemsalliance.com)。 他们会对此设置进行配置，以在两端正确设置 SAML SSO 连接。
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 

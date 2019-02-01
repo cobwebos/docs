@@ -18,12 +18,12 @@ ms.workload: infrastructure
 ms.date: 12/12/2018
 ms.author: jdial
 ms.custom: mvc
-ms.openlocfilehash: 3422219e33c04d7cb130e064790896f5da28649a
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 855adccf036f731de12810fe0f5287186048ddb0
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54025039"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55095951"
 ---
 # <a name="tutorial-route-network-traffic-with-a-route-table-using-the-azure-portal"></a>教程：使用 Azure 门户通过路由表路由网络流量
 
@@ -54,7 +54,7 @@ ms.locfileid: "54025039"
 
     | 设置 | 值 |
     | ------- | ----- |
-    | 名称 | 输入 *myRouteTablePublic*。 |
+    | Name | 输入 *myRouteTablePublic*。 |
     | 订阅 | 选择订阅。 |
     | 资源组 | 选择“新建”，输入 *myResourceGroup*，然后选择“确定”。 |
     | 位置 | 保留默认值“美国东部”。
@@ -95,7 +95,7 @@ ms.locfileid: "54025039"
 
     | 设置 | 值 |
     | ------- | ----- |
-    | 名称 | 输入 myVirtualNetwork。 |
+    | Name | 输入 myVirtualNetwork。 |
     | 地址空间 | 输入 *10.0.0.0/16*。 |
     | 订阅 | 选择订阅。 |
     | 资源组 | 选择“选择现有项” > “myResourceGroup”。 |
@@ -119,7 +119,7 @@ ms.locfileid: "54025039"
 
     | 设置 | 值 |
     | ------- | ----- |
-    | 名称 | 输入“专用”。 |
+    | Name | 输入“专用”。 |
     | 地址空间 | 输入 *10.0.1.0/24*。 |
 
 1. 将剩余的字段保留默认设置，然后选择“确定”。
@@ -128,7 +128,7 @@ ms.locfileid: "54025039"
 
     | 设置 | 值 |
     | ------- | ----- |
-    | 名称 | 输入“外围网络”。 |
+    | Name | 输入“外围网络”。 |
     | 地址空间 | 输入 *10.0.2.0/24*。 |
 
 1. 与上次一样，将剩余的字段保留默认值，然后选择“确定”。
@@ -193,7 +193,7 @@ NVA 是帮助实现网络功能（例如路由和防火墙优化）的 VM。 如
 
     | 设置 | 值 |
     | ------- | ----- |
-    | 名称 | 输入 *mynvastorageaccount*。 |
+    | Name | 输入 *mynvastorageaccount*。 |
     | 帐户类型 | 保留默认值“存储(常规用途 v1)”。 |
     | 性能 | 保留默认值“标准”。 |
     | 复制 | 保留默认值“本地冗余存储(LRS)”。
@@ -281,7 +281,7 @@ NVA 是帮助实现网络功能（例如路由和防火墙优化）的 VM。 如
 
 1. 请选择“是”以连接到 VM。
 
-### <a name="enable-icpm-through-the-windows-firewall"></a>启用通过 Windows 防火墙的 ICPM
+### <a name="enable-icmp-through-the-windows-firewall"></a>允许 ICMP 通过 Windows 防火墙
 
 在稍后的步骤中，我们将使用跟踪路由工具来测试路由。 跟踪路由使用 Internet 控制消息协议 (ICMP)，而 Windows 防火墙默认拒绝该协议。 启用通过 Windows 防火墙的 ICMP。
 
