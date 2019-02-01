@@ -1,21 +1,21 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: f8083d9db71b9f3c7d80444d574ed5c89b918f6c
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: 89376bf654a23b37e004a1b9b00e32a0c2ac3e2a
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48900357"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55495066"
 documentType: LandingData
 title: 适用于容器的 Azure
 metadata:
   document_id: 
-  title: 适用于容器的 Azure - 教程和 API 参考
-  description: 使用以下资源来查找容器的极佳快速入门、教程和工具，以便在 Azure 中开始开发应用。
+  title: 适用于容器的 Azure - 快速入门、教程和 API 参考
+  description: 使用用于容器的快速入门、教程和工具，开始通过 Azure 管理和部署容器应用。
   keywords: Azure, 容器, Docker, API, Kubernetes
-  author: bketelsen
-  ms.author: brketels
-  manager: listonb
-  ms.date: 09/14/2017
+  author: dlepow
+  ms.author: danlep
+  manager: jeconnoc
+  ms.date: 01/08/2019
   ms.topic: article
   ms.prod: azure
   featureFlags:
@@ -26,24 +26,7 @@ metadata:
 sections:
 - items:
   - type: markdown
-    text: >
-      使用以下资源来查找容器的极佳教程和工具，以便在 Azure 中开始开发应用。
-- items:
-  - type: list
-    style: cards
-    className: cardsM
-    columns: 2
-    items:
-    - href: https://docs.microsoft.com/azure/container-instances/container-instances-quickstart
-      html: <p>使用 Azure 容器实例创建容器化的应用</p>
-      image:
-        src: https://docs.microsoft.com/media/common/i_get-started.svg
-      title: 入门
-    - href: https://docs.microsoft.com/azure/container-service/kubernetes/cli-samples
-      html: <p>用于 Azure 容器服务的 Azure CLI 示例</p>
-      image:
-        src: https://docs.microsoft.com/media/common/i_code-samples.svg
-      title: 代码示例
+    text: "使用适用于容器的 Azure 工具和服务，开始部署和管理容器应用。 \n"
 - title: 5 分钟快速入门
   items:
   - type: paragraph
@@ -73,36 +56,31 @@ sections:
       title: 在 Azure 容器实例中按需运行容器应用
       image:
         src: /azure/media/index/containerinstances.svg
-- title: 免费 Pluralsight 视频培训
-  items:
-  - type: list
-    style: cards
-    className: cardsM
-    columns: 3
-    items:
-    - href: https://go.microsoft.com/fwlink/?linkid=2012827
-      image:
-        src: https://docs.microsoft.com/media/logos/logo_pluralsight.svg
-      title: " Azure 管理员"
-- title: 示例
-  items:
-  - type: list
-    style: unordered
-    items:
-    - html: <a href="https://azure.microsoft.com/resources/samples/app-service-java-deploy-image-from-acr-to-linux/">应用服务入门 - 使用容器注册表管理 Linux Web 应用 - 以 Java 编写</a>
-    - html: <a href="https://azure.microsoft.com/resources/samples/service-fabric-containers/">Service Fabric 容器示例</a>
-    - html: <a href="https://azure.microsoft.com/resources/samples/container-service-python-manage/">在 Azure 群集中部署和连接 Docker 容器</a>
 - title: 分步教程
   items:
   - type: paragraph
-    text: 了解如何使用 Azure Kubernetes 服务 (AKS)
+    text: 了解如何使用 Azure 服务部署、管理和更新容器应用
   - type: list
     style: unordered
     items:
-    - html: <a href="/azure/aks/tutorial-kubernetes-prepare-app">从应用程序创建容器映像</a>
-    - html: <a href="/azure/aks/tutorial-kubernetes-prepare-acr">将容器映像上传到 Azure 容器注册表</a>
-    - html: <a href="/azure/aks/tutorial-kubernetes-deploy-cluster">部署 AKS 群集</a>
-    - html: <a href="/azure/aks/tutorial-kubernetes-deploy-application">在 Kubernetes 中运行容器映像</a>
-    - html: <a href="/azure/aks/tutorial-kubernetes-scale">缩放应用程序和 Kubernetes 基础结构</a>
-    - html: <a href="/azure/aks/tutorial-kubernetes-app-update">更新 Kubernetes 中运行的应用程序</a>
-    - html: <a href="/azure/aks/tutorial-kubernetes-monitor">使用 Log Analytics 监视 Kubernetes</a>
+    - html: <a href="/azure/aks/tutorial-kubernetes-prepare-app">生成容器并将其部署到 Azure Kubernetes 服务</a>
+    - html: <a href="/azure/service-fabric/service-fabric-host-app-in-a-container">生成 .NET 容器应用并将其部署到 Azure Service Fabric</a>
+    - html: <a href="/azure/app-service/containers/tutorial-multi-container-app">在用于容器的 Web 应用中创建多容器应用</a>
+    - html: <a href="/azure/container-registry/container-registry-tutorial-quick-task">使用 Azure 容器注册表任务生成并部署容器映像</a>
+    - html: <a href="/azure/container-instances/container-instances-tutorial-prepare-app">生成容器并将其部署到 Azure 容器实例</a>
+- title: 利用 Microsoft Learn 掌握技能
+  items:
+  - type: list
+    style: cards
+    className: cardsFTitle
+    items:
+    - title: 通过 Azure 容器实例运行 Docker 容器
+      href: /learn/modules/run-docker-with-azure-container-instances/
+      image:
+        src: /learn/achievements/run-docker-with-azure-container-instances.svg
+        href: /learn/modules/run-docker-with-azure-container-instances/
+    - title: 使用 Azure 容器注册表生成并存储容器映像
+      href: /learn/modules/build-and-store-container-images/
+      image:
+        src: /learn/achievements/build-and-store-container-images.svg
+        href: /learn/modules/build-and-store-container-images/

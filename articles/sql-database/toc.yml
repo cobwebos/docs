@@ -21,9 +21,9 @@ items:
       href: sql-database-managed-instance-get-started.md
   - name: 配置
     items:
-    - name: SQL 数据库服务器防火墙规则
+    - name: 数据库服务器防火墙规则
       href: sql-database-get-started-portal-firewall.md
-    - name: 客户端 VM 与托管实例的连接
+    - name: 与托管实例的客户端 VM 连接
       href: sql-database-managed-instance-configure-vm.md
     - name: 与托管实例的点到站点连接
       href: sql-database-managed-instance-configure-p2s.md
@@ -127,12 +127,20 @@ items:
     items:
     - name: 单一数据库概述
       href: sql-database-single-index.yml
-    - name: SQL 数据库服务器
+    - name: 单一数据库功能
+      href: sql-database-single-database.md
+    - name: 管理 API 参考
+      href: sql-database-single-databases-manage.md
+    - name: T-SQL 的差异
+      href: sql-database-transact-sql-information.md
+    - name: 数据库服务器和资源
       items:
       - name: 数据库服务器概述
         href: sql-database-servers.md
       - name: 数据库服务器资源限制
         href: sql-database-resource-limits-database-server.md
+      - name: 连接体系结构
+        href: sql-database-connectivity-architecture.md
     - name: 单一数据库资源
       items:
       - name: 基于虚拟核心的资源限制
@@ -141,12 +149,6 @@ items:
         href: sql-database-dtu-resource-limits-single-databases.md
       - name: 缩放资源
         href: sql-database-single-database-scale.md
-    - name: 创建和管理服务器与数据库
-      href: sql-database-single-databases-manage.md
-    - name: 连接体系结构
-      href: sql-database-connectivity-architecture.md
-    - name: T-SQL 的差异
-      href: sql-database-transact-sql-information.md
   - name: 弹性池
     items:
     - name: 弹性池
@@ -223,7 +225,7 @@ items:
         href: sql-vulnerability-assessment.md
       - name: 威胁检测
         href: sql-database-threat-detection-overview.md
-    - name: 防火墙规则
+    - name: 数据库服务器 IP 防火墙规则
       items:
       - name: 创建和管理
         href: sql-database-firewall-configure.md
@@ -241,7 +243,7 @@ items:
       href: sql-database-aad-authentication.md
     - name: 审核
       items:
-      - name: 审核 - 服务器、池和数据库
+      - name: 审核 - 单一数据库和弹性池
         href: sql-database-auditing.md
       - name: 审核 - 托管实例
         href: sql-database-managed-instance-auditing.md
@@ -613,7 +615,7 @@ items:
           href: saas-multitenantdb-schema-management.md
         - name: 用于分析的 ETL
           href: saas-multitenantdb-tenant-analytics.md
-- name: 参考
+- name: 引用
   items:
   - name: Azure PowerShell
     href: /powershell/module/azurerm.sql/#sql
@@ -662,6 +664,8 @@ items:
       href: /sql/connect/odbc/microsoft-odbc-driver-for-sql-server
 - name: 资源
   items:
+  - name: 术语词汇表
+    href: sql-database-glossary-terms.md
   - name: 利用 Microsoft Learn 掌握技能
     href: /learn/browse/?products=azure-sql-database
   - name: Azure 路线图
@@ -700,9 +704,9 @@ items:
       href: sql-database-elastic-jobs-getting-started.md
     - name: 卸载弹性作业（已弃用）
       href: sql-database-elastic-jobs-uninstall.md
-ms.openlocfilehash: 0c34894ea3a09a4cd630938a045e0ab78681c10f
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 7530d0926cca2b89e532407d32e394e0b3018a60
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 01/31/2019
-ms.locfileid: "55471022"
+ms.locfileid: "55512408"

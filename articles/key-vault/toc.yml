@@ -152,6 +152,8 @@ items:
     href: https://azure.microsoft.com/global-infrastructure/services/?products=key-vault
   - name: 服务级别协议 (SLA)
     href: https://azure.microsoft.com/support/legal/sla/key-vault/
+  - name: 常见安全属性
+    href: key-vault-security-attributes.md
   - name: 服务限制
     href: key-vault-service-limits.md
   - name: 服务状态
@@ -162,9 +164,9 @@ items:
     href: http://blogs.technet.com/b/kv/
 - name: 产品反馈
   href: https://feedback.azure.com/forums/906355-azure-key-vault
-ms.openlocfilehash: 7015de273dc13a4319d6e17cf6bb0a5ffd0681ed
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 15db7be3409b36d12583df07e54f0d36cd845b6b
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55226938"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55510708"

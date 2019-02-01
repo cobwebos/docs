@@ -5,6 +5,9 @@ items:
   items:
   - name: 什么是必应实体搜索？
     href: search-the-web.md
+  - name: 比较必应搜索 API
+    href: ../Bing-Web-Search/bing-api-comparison.md
+    maintainContext: true
 - name: REST API 快速入门
   items:
   - name: C#
@@ -44,12 +47,13 @@ items:
     href: https://azure.microsoft.com/resources/samples/?sort=0&service=cognitive-services&term=Bing+Entity+Search
 - name: 操作指南
   items:
-  - name: 使用和显示要求
-    href: use-display-requirements.md
   - name: 调整和裁剪缩略图
     href: resize-and-crop-thumbnails.md
 - name: 引用
   items:
+  - name: 必应搜索 API 使用和显示要求
+    href: ../Bing-Web-Search/use-display-requirements.md
+    maintainContext: true
   - name: 必应实体搜索 API v7
     href: https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference
   - name: SDK
@@ -86,9 +90,9 @@ items:
     href: entity-search-endpoint.md
   - name: 适用于必应实体搜索 API 的分析
     href: bing-entity-stats.md
-ms.openlocfilehash: a0f92f5b3ef8f0ea24393da1199422b032a57f06
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 919d44bbf41397cf58c06cfe2eff56867546b61e
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53789537"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55509926"

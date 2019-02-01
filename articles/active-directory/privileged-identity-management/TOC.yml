@@ -29,7 +29,7 @@ items:
     items:
     - name: 激活我的目录角色
       href: pim-how-to-activate-role.md
-    - name: 激活我的资源角色
+    - name: 激活我的 Azure 资源角色
       href: pim-resource-roles-activate-your-roles.md
   - name: 配置 PIM
     items:
@@ -53,7 +53,7 @@ items:
       href: pim-how-to-configure-security-alerts.md
     - name: 查看审核历史记录
       href: pim-how-to-use-audit-log.md
-  - name: 管理资源角色
+  - name: 管理 Azure 资源角色
     items:
     - name: 分配角色
       href: pim-resource-roles-assign-roles.md
@@ -77,22 +77,22 @@ items:
       items:
       - name: 评审我的目录角色
         href: pim-how-to-perform-security-review.md
-      - name: 开始访问审阅
+      - name: 开始访问评审
         href: pim-how-to-start-security-review.md
       - name: 完成访问评审
         href: pim-how-to-complete-review.md
-    - name: 资源角色
+    - name: Azure 资源角色
       items:
-      - name: 评审我的资源角色
+      - name: 评审我的 Azure 资源角色
         href: pim-resource-roles-perform-access-review.md
       - name: 开始访问审阅
         href: pim-resource-roles-start-access-review.md
       - name: 完成访问评审
         href: pim-resource-roles-complete-access-review.md
   expanded: true
-ms.openlocfilehash: 84c50c4d3fe6472f53d64ba42f462a6fdf2783fe
-ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
+ms.openlocfilehash: a7c314bd6fd7fdc96900411db78a37b45b8c3e07
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54913115"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55512325"

@@ -62,6 +62,8 @@ items:
       href: classroom-labs/how-to-configure-student-usage.md
     - name: 访问教室实验室
       href: classroom-labs/how-to-use-classroom-lab.md
+    - name: 创建并管理计划
+      href: classroom-labs/how-to-create-schedules.md
   - name: 开发测试实验室
     items:
     - name: 创建实验室
@@ -221,9 +223,9 @@ items:
     href: https://azure.microsoft.com/documentation/videos/index/?services=devtest-lab
   - name: 定价
     href: https://azure.microsoft.com/pricing/details/devtest-lab/
-ms.openlocfilehash: 58617af180ba908568377b7572449701e1e0df30
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 1fc989f61f5c11e06e2651326e0e7e7f51092253
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54118449"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55496714"

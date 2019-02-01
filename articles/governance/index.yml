@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 78d5f767f137b8b1e925b95efb60136353401ce9
-ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.openlocfilehash: d99fcc9a8bb69926da7538edc06ae2b7533c86be
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51298613"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55507420"
 documentType: LandingData
 title: Azure 管理 - 治理
 metadata:
@@ -52,7 +52,7 @@ sections:
         src: ./media/policy-illustration.svg
       title: 策略
     - href: ./blueprints/
-      html: <p>创建一个 Azure 本机<i>项目</i>包（资源组、策略、角色分配、资源管理器模板等），可将该包动态部署到订阅以创建一致的可重复环境。</p>
+      html: <p>创建一个 Azure 本机<i>项目</i>包（资源组、策略、角色分配、资源管理器模板等），从而可将该包动态部署到订阅以创建一致的可重复环境。</p>
       image:
         src: ./media/blueprints-illustration.svg
       title: 蓝图
