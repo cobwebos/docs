@@ -12,16 +12,16 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/02/2019
+ms.date: 01/30/2019
 ms.author: mabrigg
 ms.reviewer: ppacent
-ms.lastreviewed: 01/02/2019
-ms.openlocfilehash: 93e6345ba50bab21e03fb7a30148ea51c52a10f2
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.lastreviewed: 01/30/2019
+ms.openlocfilehash: 51ab999880dd3bfd453b0e6c2d20d8d6f9a0e093
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55244243"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55660113"
 ---
 # <a name="azure-stack-public-key-infrastructure-certificate-requirements"></a>Azure Stack 公钥基础结构证书要求
 
@@ -49,7 +49,7 @@ Azure Stack 有一个公共基础结构网络，该网络使用分配给少量 A
 - 证书 pfx 文件必须具有"增强型密钥用法"字段中的"服务器身份验证 (1.3.6.1.5.5.7.3.1)"和"客户端身份验证 (1.3.6.1.5.5.7.3.2)"的值。
 - 证书的“颁发给:”字段不能与其“颁发者:”字段相同。
 - 部署时，所有证书 pfx 文件的密码都必须相同
-- 证书 pfx 的密码必须是复杂密码。
+- 证书 pfx 的密码必须是复杂密码。 创建满足以下密码复杂性要求的密码。 八个字符的最小长度。 密码包含至少三个以下： 大写的字母，小写字母、 数字 0-9、 特殊字符，不是大写或小写的字母字符。 记下此密码。 您将使用它作为部署参数。
 - 确保使用者名称与使用者可选名称扩展 (x509v3_config) 中的使用者可选名称匹配。 “使用者可选名称”字段允许你指定要受单个 SSL 证书保护的其他主机名（网站、IP 地址、公用名称）。
 
 > [!NOTE]  
