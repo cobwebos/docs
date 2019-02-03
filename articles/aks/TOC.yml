@@ -191,7 +191,10 @@ items:
         - name: 1 - 入门
           href: ../dev-spaces/get-started-java.md
           maintainContext: true
-        - name: 2 - 团队开发
+        - name: 2 - 多服务开发
+          href: ../dev-spaces/multi-service-java.md
+          maintainContext: true
+        - name: 3 - 团队开发
           href: ../dev-spaces/team-development-java.md
           maintainContext: true
       - name: .NET Core（VS Code 和 CLI）
@@ -199,7 +202,10 @@ items:
         - name: 1 - 入门
           href: ../dev-spaces/get-started-netcore.md
           maintainContext: true
-        - name: 2 - 团队开发
+        - name: 2 - 多服务开发
+          href: ../dev-spaces/multi-service-netcore.md
+          maintainContext: true
+        - name: 3 - 团队开发
           href: ../dev-spaces/team-development-netcore.md
           maintainContext: true
       - name: .NET Core (Visual Studio 2017)
@@ -207,7 +213,10 @@ items:
         - name: 1 - 入门
           href: ../dev-spaces/get-started-netcore-visualstudio.md
           maintainContext: true
-        - name: 2 - 团队开发
+        - name: 2 - 多服务开发
+          href: ../dev-spaces/multi-service-netcore-visualstudio.md
+          maintainContext: true
+        - name: 3 - 团队开发
           href: ../dev-spaces/team-development-netcore-visualstudio.md
           maintainContext: true
       - name: Node.js（VS Code 和 CLI）
@@ -215,7 +224,10 @@ items:
         - name: 1 - 入门
           href: ../dev-spaces/get-started-nodejs.md
           maintainContext: true
-        - name: 2 - 团队开发
+        - name: 2 - 多服务开发
+          href: ../dev-spaces/multi-service-nodejs.md
+          maintainContext: true
+        - name: 3 - 团队开发
           href: ../dev-spaces/team-development-nodejs.md
           maintainContext: true
       maintainContext: true
@@ -264,7 +276,7 @@ items:
       href: kube-advisor-tool.md
     - name: SSH 节点访问权限
       href: ssh.md
-- name: 参考
+- name: 引用
   items:
   - name: Azure CLI
     href: /cli/azure/aks
@@ -300,9 +312,9 @@ items:
     href: https://azure.microsoft.com/resources/videos/index/?services=container-service&sort=newest
   - name: 常见问题解答
     href: faq.md
-ms.openlocfilehash: d91ca488b148eabffd7b6c80bb402b1f875eb329
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 52956dd55cbb78b074a7898d5415dc204975893b
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55453342"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55656475"

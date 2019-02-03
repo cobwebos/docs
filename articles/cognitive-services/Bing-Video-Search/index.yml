@@ -1,15 +1,15 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 1ff0b711e2c839f81f7f3b68603c2b9e46092316
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 7f462bf635eeec0e7a7eba4467aa2567fc09cb83
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55152954"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55562396"
 documentType: LandingData
-title: 必应视频搜索文档
+title: 必应视频搜索 API 文档
 metadata:
-  title: 必应视频搜索文档 - 教程、快速入门和 API 参考 | Microsoft Docs
-  description: 了解如何使用必应视频搜索 API 从与用户查询相关的 Web 获取视频。 教程介绍了如何构建使用该服务的应用。
+  title: 必应视频搜索 API 文档 - 教程、快速入门和 API 参考 | Microsoft Docs
+  description: 了解如何使用必应视频搜索 API 在 Web 中搜索并查找视频。
   services: cognitive-services
   author: mikedodaro
   manager: rosh
@@ -18,48 +18,69 @@ metadata:
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
-  ms.date: 11/02/2017
+  ms.date: 01/31/2019
   ms.author: v-gedod
 abstract:
-  description: 通过返回必应确定与用户查询相关的视频，必应视频搜索 API 提供与必应视频类似的体验。
+  description: 必应视频搜索 API 可用于将必应的视频搜索功能集成到应用程序中。 通过向此 API 发送搜索查询，可以获取并显示与 bing.com/videos 类似的相关高质量视频。
 sections:
+- items:
+  - type: list
+    style: cards
+    className: cardsM
+    columns: 3
+    items:
+    - href: /azure/cognitive-services/bing-video-search/overview
+      html: <p>了解必应视频搜索 API</p>
+      image:
+        src: ../media/index/i_overview.svg
+      title: 什么是必应视频搜索 API？
+    - href: /azure/cognitive-services/bing-video-search/concepts/sending-requests
+      html: <p>了解如何向必应发送视频搜索查询</p>
+      image:
+        src: ../media/index/i_guidelines.svg
+      title: 发送搜索查询
+    - href: /azure/cognitive-services/bing-image-search/concepts/bing-image-search-get-images
+      html: <p>了解如何筛选搜索结果、获取视频缩略图以及展开搜索查询</p>
+      image:
+        src: ../media/index/i_guidelines.svg
+      title: 从 Web 获取视频
 - title: 5 分钟快速入门
   items:
   - type: paragraph
-    text: 通过发出查询并查看 JSON 响应，开始使用必应视频搜索 API：
+    text: 使用以下语言在 Web 中搜索视频：
   - type: list
     style: icon48
     items:
     - image:
         src: media/index/logo_csharp.svg
-      href: csharp
+      href: quickstarts/sdk-csharp-quickstart
       text: C&#35;
     - image:
         src: media/index/logo_java.svg
-      href: java
+      href: quickstarts/sdk-java-quickstart
       text: Java
     - image:
         src: media/index/logo_nodejs.svg
-      href: nodejs
+      href: quickstarts/nodejs
       text: Node.js
     - image:
         src: media/index/logo_php.svg
-      href: php
+      href: quickstarts/php
       text: PHP
     - image:
         src: media/index/logo_python.svg
-      href: python
+      href: quickstarts/sdk-python-quickstart
       text: Python
     - image:
         src: media/index/logo_ruby.svg
-      href: ruby
+      href: quickstarts/ruby
       text: Ruby
 - title: 分步教程
   items:
   - type: paragraph
     text: 使用必应视频搜索 API 开发应用程序：
   - type: paragraph
-    text: <a href="tutorial-bing-video-search-single-page-app">单页 Web 应用</a> &#124; <a href="tutorial-bing-video-search-single-page-app-source">源代码</a>
+    text: <a href="tutorial-bing-video-search-single-page-app">单页 Web 应用</a>
 - title: 示例
   items:
   - type: paragraph

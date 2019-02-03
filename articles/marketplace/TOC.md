@@ -67,7 +67,7 @@
 
 ### [管理产品/服务](./cloud-partner-portal/manage-offers/cpp-manage-offers.md)
 #### [创建产品/服务](./cloud-partner-portal/manage-offers/cpp-create-offer.md)
-<!-- #### [Publish offer](./cloud-partner-portal/manage-offers/cpp-publish-offer.md)   -->
+#### [发布产品/服务](./cloud-partner-portal/manage-offers/cpp-publish-offer.md) 
 #### [查看产品/服务状态](./cloud-partner-portal/manage-offers/cpp-view-status-offer.md)
 #### [更新产品/服务](./cloud-partner-portal/manage-offers/cpp-update-offer.md)
 #### [删除产品/服务](./cloud-partner-portal/manage-offers/cpp-delete-offer.md) 
@@ -140,6 +140,17 @@
 #### [创建 IoT Edge 模块技术资产](./cloud-partner-portal/iot-edge-module/cpp-create-technical-assets.md)
 #### [发布 IoT Edge 模块产品/服务](./cloud-partner-portal/iot-edge-module/cpp-publish-offer.md)
 #### [更新现有产品/服务](./cloud-partner-portal/iot-edge-module/cpp-update-existing-offer.md)
+
+### [Power BI 应用产品/服务](./cloud-partner-portal/power-bi/cpp-power-bi-offer.md)
+#### [先决条件](./cloud-partner-portal/power-bi/cpp-prerequisites.md)
+#### [创建 Power BI 应用产品/服务](./cloud-partner-portal/power-bi/cpp-create-offer.md)
+##### [“产品/服务设置”选项卡](./cloud-partner-portal/power-bi/cpp-offer-settings-tab.md)
+##### [“技术信息”选项卡](./cloud-partner-portal/power-bi/cpp-technical-info-tab.md)
+##### [“店面详细信息”选项卡](./cloud-partner-portal/power-bi/cpp-storefront-details-tab.md)
+##### [“联系人”选项卡](./cloud-partner-portal/power-bi/cpp-contacts-tab.md)
+#### [创建 Power BI 应用技术资产](./cloud-partner-portal/power-bi/cpp-create-technical-assets.md)
+#### [发布 Power BI 应用产品/服务](./cloud-partner-portal/power-bi/cpp-publish-offer.md)
+#### [更新现有产品/服务](./cloud-partner-portal/power-bi/cpp-update-existing-offer.md)
 
 ### [SaaS 应用程序产品/服务](./cloud-partner-portal/saas-app/cpp-saas-offer.md)
 #### [先决条件](./cloud-partner-portal/saas-app/cpp-prerequisites.md)
