@@ -25,9 +25,9 @@ items:
   - name: 3 - 自定义操作员的视图
     href: ../iot-central/tutorial-customize-operator-experimental.md?toc=/azure/iot-central-experimental/toc.json&bc=/azure/iot-central-experimental/breadcrumb/toc.json
   - name: 4 - 监视设备
-    href: ../iot-central/tutorial-monitor-devices.md?toc=/azure/iot-central-experimental/toc.json&bc=/azure/iot-central-experimental/breadcrumb/toc.json
+    href: ../iot-central/tutorial-monitor-devices-experimental.md?toc=/azure/iot-central-experimental/toc.json&bc=/azure/iot-central-experimental/breadcrumb/toc.json
   - name: 5 - 添加设备
-    href: ../iot-central/tutorial-add-device.md?toc=/azure/iot-central-experimental/toc.json&bc=/azure/iot-central-experimental/breadcrumb/toc.json
+    href: ../iot-central/tutorial-add-device-experimental.md?toc=/azure/iot-central-experimental/toc.json&bc=/azure/iot-central-experimental/breadcrumb/toc.json
 - name: 概念
   items:
   - name: 体系结构
@@ -65,9 +65,9 @@ items:
   - name: 监视和分析
     items:
     - name: 创建遥测规则
-      href: ../iot-central/howto-create-telemetry-rules.md?toc=/azure/iot-central-experimental/toc.json&bc=/azure/iot-central-experimental/breadcrumb/toc.json
+      href: ../iot-central/howto-create-telemetry-rules-experimental.md?toc=/azure/iot-central-experimental/toc.json&bc=/azure/iot-central-experimental/breadcrumb/toc.json
     - name: 创建事件中心
-      href: ../iot-central/howto-create-event-rules.md?toc=/azure/iot-central-experimental/toc.json&bc=/azure/iot-central-experimental/breadcrumb/toc.json
+      href: ../iot-central/howto-create-event-rules-experimental.md?toc=/azure/iot-central-experimental/toc.json&bc=/azure/iot-central-experimental/breadcrumb/toc.json
     - name: 分析设备数据
       href: ../iot-central/howto-create-analytics.md?toc=/azure/iot-central-experimental/toc.json&bc=/azure/iot-central-experimental/breadcrumb/toc.json
   - name: 操作和扩展性
@@ -141,9 +141,9 @@ items:
     href: ../iot-central/iot-central-customer-data-requests.md?toc=/azure/iot-central-experimental/toc.json&bc=/azure/iot-central-experimental/breadcrumb/toc.json
   - name: 支持的浏览器
     href: ../iot-central/iot-central-supported-browsers.md?toc=/azure/iot-central-experimental/toc.json&bc=/azure/iot-central-experimental/breadcrumb/toc.json
-ms.openlocfilehash: ff26be9c367f80009fb1eda1632fcbda38f6a9ea
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 5eef62e35c8927262c9f2e303cb697b5e63333eb
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55664448"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55727154"

@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: f5d48559592fa98df5e4f10fc89e137d06e3e166
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: b3e11c58dcc5f5c68e9fe081cc47cf2fa18e9e57
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55079199"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55697884"
 documentType: LandingData
 title: Azure AD 条件访问文档
 metadata:
@@ -12,7 +12,7 @@ metadata:
   title: Azure Active Directory 条件访问文档 - 教程、快速入门、概念、引用 | Microsoft Docs
   description: 了解如何配置和测试 Azure Active Directory 条件访问。
   services: active-directory
-  ms.subservice: authentication
+  ms.subservice: conditional-access
   author: MarkusVi
   manager: daveba
   ms.service: active-directory

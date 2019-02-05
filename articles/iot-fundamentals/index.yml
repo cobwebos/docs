@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: f18c25d6d7692d5a0adff7e1efc69b25cdb31a0d
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.openlocfilehash: 678f18d04ba25b614f490170aa9c4ba36d94b9e0
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49069397"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55694279"
 documentType: LandingData
 title: Azure IoT 基础
 metadata:
@@ -50,14 +50,14 @@ sections:
     - html: <a href="/azure/iot-dps">IoT 中心设备预配服务</a>
     - html: <a href="/azure/azure-maps">Azure Maps</a>
     - html: <a href="/azure/time-series-insights">Azure 时序见解</a>
-    - html: <a href="/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks">IoT 服务 SDK</a>
+    - html: <a href="/azure/iot-hub/iot-hub-devguide-sdks">IoT 服务 SDK</a>
   - type: paragraph
     text: 使用 IoT 设备和边缘计算生成解决方案。
   - type: list
     style: unordered
     items:
     - html: <a href="/azure/iot-edge">IoT Edge</a>
-    - html: <a href="/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks">IoT 设备 SDK</a>
+    - html: <a href="/azure/iot-hub/iot-hub-devguide-sdks">IoT 设备 SDK</a>
 - title: 示例
   items:
   - type: paragraph
@@ -95,7 +95,7 @@ sections:
     items:
     - title: 命令行
       html: <p><a href="/cli/azure/iot">Azure CLI</a></p><p><a href="https://github.com/Azure/azure-iot-cli-extension">Azure IoT CLI 扩展</a></p>
-    - title: 语言
+    - title: Languages
       html: <p><a href="/azure/iot-hub/iot-hub-devguide-sdks">用于 .Net、C、Java、Node.js、Python 的 Azure IoT SDK</a></p>
     - title: REST
       html: <p><a href="/rest/api/iothub">IoT 中心</a></p><p><a href="/rest/api/iot-dps">IoT 中心设备预配服务</a></p><p><a href="/rest/api/maps-management/">Maps 管理</a></p><p><a href="/rest/api/maps/">Maps 功能</a></p><p><a href="/rest/api/time-series-insights-management/">时序见解管理</a></p><p><a href="/rest/api/time-series-insights/">时序见解</a></p>

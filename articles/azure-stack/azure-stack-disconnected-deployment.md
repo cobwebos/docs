@@ -16,12 +16,12 @@ ms.date: 12/11/2018
 ms.author: jeffgilb
 ms.reviewer: wfayed
 ms.lastreviewed: 12/11/2018
-ms.openlocfilehash: 5447bcb0dc37cb3c923c4e6bbff4d69d987b6df6
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 05bf01e2b7c380f7bb79230885e247bd8c834d14
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55244362"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55691161"
 ---
 # <a name="azure-disconnected-deployment-planning-decisions-for-azure-stack-integrated-systems"></a>Azure Stack 集成系统的 Azure 断开连接部署计划决策
 在决定[如何将 Azure Stack 集成到混合云环境](azure-stack-connection-models.md)后，可以完成 Azure Stack 部署决策。
@@ -47,7 +47,7 @@ Azure Stack 设计为在连接到 Azure 的情况下功能最佳，因此请务�
 |VM 部署（带有用于运行 Docker 命令的 Docker 扩展）|被削弱-Docker 将检查 Internet 以确定最新版本，并且此检查将失败。|
 |Azure Stack 门户中的文档链接|不可用-链接，例如提供反馈，帮助，快速入门中，Internet URL 不起作用的使用。|
 |引用联机修正指南的警报修正/缓解|不可用 – 任何警报修正链接的使用 Internet URL 不起作用。|
-|Marketplace – 选择并直接从 Azure Marketplace 添加库包的功能|被削弱-在 Azure Stack 部署在断开连接模式下 （不带任何 Internet 连接） 时，不能使用 Azure Stack 门户下载 marketplace 项。 但是，可以使用[市场联合工具](https://docs.microsoft.com/azure/azure-stack/azure-stack-download-azure-marketplace-item#download-marketplace-items-in-a-disconnected-or-a-partially-connected-scenario-with-limited-internet-connectivity)将市场项下载到有 Internet 连接的计算机，然后再将这些项转移到 Azure Stack 环境。|
+|Marketplace – 选择并直接从 Azure Marketplace 添加库包的功能|被削弱-在 Azure Stack 部署在断开连接模式下 （不带任何 Internet 连接） 时，不能使用 Azure Stack 门户下载 marketplace 项。 但是，可以使用[市场联合工具](https://docs.microsoft.com/azure/azure-stack/azure-stack-download-azure-marketplace-item)将市场项下载到有 Internet 连接的计算机，然后再将这些项转移到 Azure Stack 环境。|
 |使用 Azure Active Directory 联合身份验证帐户管理 Azure Stack 部署|不可用-此功能要求连接到 Azure。 必须改用具有本地 Active Directory 实例的 AD FS。|
 |应用服务|被损坏 - WebApps 可能需要访问 Internet 以获取更新的内容。|
 |命令行接口 (CLI)|被削弱-CLI 减少了在身份验证和预配服务主体的方面的功能。|

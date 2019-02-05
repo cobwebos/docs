@@ -16,12 +16,12 @@ ms.date: 01/24/2019
 ms.author: sethm
 ms.reviewer: justini
 ms.lastreviewed: 01/24/2019
-ms.openlocfilehash: c4dcf34ff113c4f1a6d7dcacbe598c453dbd63c3
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: a9cf502f169f4a9c4650545b1b37e11cc16a0a95
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55658226"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55694374"
 ---
 # <a name="azure-stack-1809-update"></a>Azure Stack 1809 更新
 
@@ -135,7 +135,7 @@ Azure Stack 1809 更新内部版本号为 **1.1809.0.90**。
 
 ### <a name="prerequisites"></a>必备组件
 
-- 为 1808年应用 1809年之前安装最新的 Azure Stack 修补程序。 有关详细信息，请参阅[知识库文章 4481066 – Azure Stack 修补程序 1.1808.9.117](https://support.microsoft.com/help/4481066/)。 尽管 Microsoft 建议最新修补程序可用，需安装 1809年的最少量版本是 1.1808.5.110。
+- 为 1808年应用 1809年之前安装最新的 Azure Stack 修补程序。 有关详细信息，请参阅[知识库文章 4481066 – Azure Stack 修补程序 1.1808.9.117](https://support.microsoft.com/help/4481066/)。 尽管 Microsoft 建议可用的最新修补程序，安装 1809年所需的最低版本是 1.1808.5.110。
 
   > [!TIP]  
   > 订阅下述 *RRS* 或 *Atom* 源，了解 Azure Stack 修补程序的最新更新：
