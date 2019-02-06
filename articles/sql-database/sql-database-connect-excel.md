@@ -11,13 +11,13 @@ author: joseidz
 ms.author: craigg
 ms.reviewer: ''
 manager: craigg
-ms.date: 03/10/2017
-ms.openlocfilehash: 8750552499a5112b1a46b2cb4929c029d5e7e3a0
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.date: 01/25/2019
+ms.openlocfilehash: 318dce78059a169ede2f19f6aadaab9d61e07086
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47063823"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55474949"
 ---
 # <a name="connect-excel-to-an-azure-sql-database-and-create-a-report"></a>将 Excel 连接到 Azure SQL 数据库并创建报表
 
@@ -28,47 +28,48 @@ ms.locfileid: "47063823"
 还需要 Excel 的副本。 本文使用 [Microsoft Excel 2016](https://products.office.com/)。
 
 ## <a name="connect-excel-to-a-sql-database-and-load-data"></a>将 Excel 连接到 SQL 数据库并加载数据
+
 1. 要将 Excel 连接到 SQL 数据库，请打开 Excel，然后创建新的工作簿或打开现有的 Excel 工作簿。
 2. 在页面顶部的菜单栏中，依次选择“数据”选项卡、“获取数据”、“从 Azure 获取”，然后选择“从 Azure SQL 数据库获取”。 
-   
+
    ![选择数据源：将 Excel 连接到 SQL 数据库。](./media/sql-database-connect-excel/excel_data_source.png)
-   
+
    此时会打开“数据连接”向导。
 3. 在“连接到数据库服务器”对话框中，以 <服务器名称>**.database.windows.net** 的格式键入要连接到的 SQL 数据库**服务器名称**。 例如“msftestserver.database.windows.net”。 输入数据库名称（可选）。 选择“确定”以打开凭据窗口。 
 
    ![server-name.png](media/sql-database-connect-excel/server-name.png)
 
-1. 在“SQL Server 数据库”对话框中，选择左侧的“数据库”，然后输入要连接到的 SQL 数据库服务器的用户名和密码。 选择“连接”以打开“导航器”。 
+4. 在“SQL Server 数据库”对话框中，选择左侧的“数据库”，然后输入要连接到的 SQL 数据库服务器的用户名和密码。 选择“连接”以打开“导航器”。 
 
   ![键入服务器名称和登录凭据](./media/sql-database-connect-excel/connect-to-server.png)
-   
+
   > [!TIP]
   > 根据网络环境，可能无法连接；如果 SQL 数据库服务器不允许来自客户端 IP 地址的流量，可能会断开连接。 转到 [Azure 门户](https://portal.azure.com/)，依次单击“SQL 服务器”、服务器、“设置”下面的“防火墙”，然后添加客户端 IP 地址。 有关详细信息，请参阅 [如何配置防火墙设置](sql-database-configure-firewall-settings.md) 。
-   
-   
-5. 在“导航器”中，从列表中选择想要使用的数据库，选择想要使用的表格或视图（我们选择的是“vGetAllCategories”），然后选择“加载”以将数据从 SQL Azure 数据库移至 Excel 电子表格。
-   
+
+5. 在“导航器”中，从列表中选择想要使用的数据库，选择想要使用的表格或视图（我们选择的是“vGetAllCategories”），然后选择“加载”以将数据从数据库移至 Excel 电子表格。
+
     ![选择数据库和表。](./media/sql-database-connect-excel/select-database-and-table.png)
-   
 
 ## <a name="import-the-data-into-excel-and-create-a-pivot-chart"></a>将数据导入 Excel 并创建数据透视图
+
 建立连接后，有多种加载数据的方式可供选择。 例如，以下步骤使用来自 SQL 数据库的数据创建数据透视表。 
 
 1. 按照前一部分中的步骤进行操作，不过这次不再选择“加载”，而是改为从“加载”下拉列表中选择“加载至”。
 2. 然后选择该数据在工作簿中的显示方式。 **将此数据添加到数据模型**。 也可以选择创建**新工作表**或**将此数据添加到数据模型**。 有关数据模型的详细信息，请参阅[在 Excel 中创建数据模型](https://support.office.com/article/Create-a-Data-Model-in-Excel-87E7A54C-87DC-488E-9410-5C75DBCB0F7B)。 
-   
+
     ![选择 Excel 中数据的格式](./media/sql-database-connect-excel/import-data.png)
-   
+
     工作表现在包含空白的数据透视表和图表。
-2. 在“数据透视表字段”下，选中要查看的所有字段的复选框。
-   
+3. 在“数据透视表字段”下，选中要查看的所有字段的复选框。
+
     ![配置数据库的报表。](./media/sql-database-connect-excel/power-pivot-results.png)
 
 > [!TIP]
 > 如果想将其他 Excel 工作簿和工作表与数据库连接，请选择“数据”选项卡，然后选择“最近使用的源”以启动“最近使用的源”对话框。 从该对话框中的列表中选择之前创建的连接，然后单击“打开”。
 > ![最近的连接](media/sql-database-connect-excel/recent-connections.png)
- 
+
 ## <a name="create-a-permanent-connection-using-odc-file"></a>使用 .odc 文件创建永久连接
+
 若要永久保存连接详细信息，可以创建一个 .odc 文件，并将此连接作为“现有连接”对话框中的一个选项。 
 
 1. 在页面顶部的菜单栏中选择“数据”选项卡，然后选择“现有连接”以启动“现有连接”对话框。 
@@ -97,7 +98,7 @@ ms.locfileid: "47063823"
     ![现有连接](media/sql-database-connect-excel/existing-connection.png)
 
 ## <a name="next-steps"></a>后续步骤
+
 * 了解如何 [使用 SQL Server Management Studio 连接到 SQL 数据库](sql-database-connect-query-ssms.md) ，以便进行高级查询和分析。
 * 了解 [弹性池](sql-database-elastic-pool.md)的优点。
 * 了解如何 [创建与后端 SQL 数据库连接的 Web 应用程序](../app-service/app-service-web-tutorial-dotnet-sqldatabase.md)。
-

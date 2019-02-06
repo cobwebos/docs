@@ -1,5 +1,5 @@
 ---
-title:创建情绪分析模型 titleSuffix: Azure 机器学习工作室 description:如何在 Azure 机器学习工作室中使用用于文本预处理、N 元语法或特征哈希的模块创建文本分析模型 services: machine-learning ms.service: machine-learning ms.component: studio ms.topic: article
+title:创建情绪分析模型 titleSuffix:Azure 机器学习工作室 description:如何在 Azure 机器学习工作室中使用用于文本预处理、N 元语法或特征哈希的模块创建文本分析模型 services: machine-learning ms.service: machine-learning ms.subservice: studio ms.topic: article
 
 author: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18 ms.date:03/14/2018
 ---

@@ -1,6 +1,6 @@
 ---
-title:以编程方式重新训练机器学习工作室模型 titleSuffix: Azure 机器学习工作室 description:了解如何使用 C# 和机器学习批处理执行服务以编程方式重新训练模型。
-services: machine-learning ms.service: machine-learning ms.component: studio ms.topic: article
+title:以编程方式重新训练机器学习工作室模型 titleSuffix:Azure 机器学习工作室 description:了解如何使用 C# 和机器学习批处理执行服务以编程方式重新训练模型。
+services: machine-learning ms.service: machine-learning ms.subservice: studio ms.topic: article
 
 author: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18 ms.date:2017/04/19
 ---

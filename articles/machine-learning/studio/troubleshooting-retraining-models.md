@@ -1,6 +1,6 @@
 ---
-title:对机器学习工作室经典 Web 服务重新训练进行故障排除 titleSuffix: Azure 机器学习工作室 description:确定并更正重新训练 Azure 机器学习工作室 Web 服务的模型时遇到的常见问题。
-services: machine-learning ms.service: machine-learning ms.component: studio ms.topic: article
+title:对机器学习工作室经典 Web 服务重新训练进行故障排除 titleSuffix:Azure 机器学习工作室 description:确定并更正重新训练 Azure 机器学习工作室 Web 服务的模型时遇到的常见问题。
+services: machine-learning ms.service: machine-learning ms.subservice: studio ms.topic: article
 
 author: ericlicoding ms.author: amlstudiodocs ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT ms.date:2017/11/01
 ---

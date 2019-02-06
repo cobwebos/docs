@@ -1,6 +1,6 @@
 ---
 title: Azure SQL 数据库托管实例概述 | Microsoft Docs
-description: 本主题介绍 Azure SQL 数据库托管实例，解释其工作原理，并说明它与 Azure SQL 数据库中的单一数据库的差别。
+description: 本主题介绍 Azure SQL 数据库托管实例，解释其工作原理，并说明它与 Azure SQL 数据库中的单一或入池数据库的差别。
 services: sql-database
 ms.service: sql-database
 ms.subservice: managed-instance
@@ -11,13 +11,13 @@ author: bonova
 ms.author: bonova
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 12/03/2018
-ms.openlocfilehash: 2807e989436aa80fa812b337340db8cb534b2b28
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.date: 01/25/2019
+ms.openlocfilehash: ac9a7c081515b35348d10a2968b10647af29ef61
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53994753"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55465701"
 ---
 # <a name="use-sql-database-managed-instance-with-virtual-networks-and-near-100-compatibility"></a>使用具有虚拟网络和近 100% 兼容性的 SQL 数据库托管实例
 
@@ -34,7 +34,7 @@ Azure SQL 数据库托管实例面向想要以最少的迁移工作量，将大�
 
 在正式版推出之前，托管实例旨在通过分阶段的发布计划，实现外围应用与最新本地 SQL Server 版本的近乎 100% 的兼容性。
 
-若要在 Azure SQL 数据库单一数据库、Azure SQL 数据库托管实例和虚拟机中托管的 SQL Server IaaS 之间作出抉择，请参阅[如何在 Azure 云中选择适当版本的 SQL Server](sql-database-paas-vs-sql-server-iaas.md)。
+若要在 Azure SQL 数据库单一数据库、入池数据库、拖管实例和虚拟机中托管的 SQL Server 之间作出抉择，请参阅[如何在 Azure 云中选择适当版本的 SQL Server](sql-database-paas-vs-sql-server-iaas.md)。
 
 ## <a name="key-features-and-capabilities"></a>主要特性和功能
 
@@ -51,7 +51,7 @@ Azure SQL 数据库托管实例结合了 Azure SQL 数据库和 SQL Server 数�
 
 下表显示托管实例的主要功能：
 
-|Feature | Description|
+|Feature | 说明|
 |---|---|
 | SQL Server 版本/内部版本 | SQL Server 数据库引擎（最新稳定版） |
 | 受管理的自动备份 | 是 |
@@ -185,7 +185,7 @@ Azure SQL 数据库托管实例支持传统的 SQL Server 数据库引擎登录�
 - 有关从 URL 还原的信息，请参阅[从 URL 本机还原](sql-database-managed-instance-migrate.md#native-restore-from-url)。
 
 > [!IMPORTANT]
-> 来自托管实例的备份只能还原到另一个托管实例。 它们无法还原到本地 SQL Server 或 Azure SQL 数据库逻辑服务器单一数据库或入池数据库。
+> 来自托管实例的备份只能还原到另一个托管实例。 它们无法还原到本地 SQL Server 或单一数据库/弹性池。
 
 ### <a name="data-migration-service"></a>数据迁移服务
 
@@ -210,7 +210,7 @@ Azure 数据库迁移服务是一项完全托管的服务，旨在实现从多�
 - 托管实例不允许指定完整的物理路径，因此必须以不同的方式为相应的方案提供支持：RESTORE DB 不支持 WITH MOVE，CREATE DB 不允许使用物理路径，BULK INSERT 仅适用于 Azure Blob，等等。
 - 托管实例支持使用 [Azure AD 身份验证](sql-database-aad-authentication.md)作为 Windows 身份验证的云替代方法。
 - 对于包含内存中 OLTP 对象的数据库，托管实例会自动管理 XTP 文件组和文件
-- 托管实例支持 SQL Server Integration Services (SSIS)，并且可以托管存储 SSIS 包的 SSIS 目录 (SSISDB)，但它们在 Azure 数据工厂 (ADF) 的托管 Azure-SSIS 集成运行时 (IR) 上执行，请参阅[在 ADF 中创建 Azure-SSIS IR](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime)。 若要比较 SQL 数据库和托管实例中的 SSIS 功能，请参阅[比较 SQL 数据库逻辑服务器和托管实例](../data-factory/create-azure-ssis-integration-runtime.md#compare-sql-database-logical-server-and-sql-database-managed-instance)。
+- 托管实例支持 SQL Server Integration Services (SSIS)，并且可以托管存储 SSIS 包的 SSIS 目录 (SSISDB)，但它们在 Azure 数据工厂 (ADF) 的托管 Azure-SSIS 集成运行时 (IR) 上执行，请参阅[在 ADF 中创建 Azure-SSIS IR](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime)。 若要比较 SQL 数据库和托管实例中的 SSIS 功能，请参阅[比较 Azure SQL 数据库单一数据库/弹性池和托管实例](../data-factory/create-azure-ssis-integration-runtime.md#compare-sql-database-single-databaseelastic-pool-and-sql-database-managed-instance)。
 
 ### <a name="managed-instance-administration-features"></a>托管实例管理功能
 

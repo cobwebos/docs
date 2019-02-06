@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/22/2019
 ms.author: kraigb
-ms.openlocfilehash: 31cbe2e62582ae810d165ddef5db6a20c52ff050
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: 54b211584b170d6e2ee0bcaa6c80bcaed376814f
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54847537"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54904363"
 ---
 # <a name="manage-and-configure-projects"></a>管理和配置项目
 
@@ -41,9 +41,9 @@ Azure Notebooks 中的项目实质上是运行 Jupyter 笔记本的基础 Linux 
 
 ![项目仪表板上的计算层下拉列表](media/project-compute-tier-list.png)
 
-可以使用在 Azure 订阅中预配的其他虚拟机来绕过这些限制。 必须在该虚拟机上安装 Jupyter。 Data Science Virtual Machine 映像是很好的选择，因为它们默认包含 Jupyter。
+可以使用在 Azure 订阅中预配的其他虚拟机来绕过这些限制。 必须在该虚拟机上安装并运行 JupyterHub。 Data Science Virtual Machine 映像（任何操作系统）是很好的选择，因为它们默认包含 JupyterHub。
 
-可使用下拉列表中的“直接计算”选项连接到任何已正确配置的 Azure 虚拟机。 选择此选项会提示输入名称（显示在列表中）、VM 的 IP 地址和端口（通常为8000，JupyterHub 监听的默认端口）以及 VM 凭据：
+适当配置了 Azure 虚拟机之后，在下拉列表中选择“直接计算”，该选项会提示你输入名称（用于在列表中显示）、VM 的 IP 地址和端口（通常为 8000，这是 JupyterHub 侦听的默认端口）和 VM 凭据：
 
 ![提示收集“直接计算”选项的服务器信息](media/project-compute-tier-direct.png)
 
@@ -57,7 +57,7 @@ Azure Notebooks 中的项目实质上是运行 Jupyter 笔记本的基础 Linux 
 
 选择 DSVM 实例时，Azure Notebooks 可能会提示输入创建 VM 时使用的特定计算机凭据。
 
-要创建新的 DSVM 实例，请按照[创建 Ubuntu Data Science VM](/azure/machine-learning/data-science-virtual-machine/dsvm-ubuntu-intro)上的说明进行操作。 必须使用 Data Science Virtual Machine for Linux (Ubuntu) 映像，因为 Azure Notebooks 不显示使用 Windows 或 CentOS 映像的 DSVM。
+要创建新的 DSVM 实例，请按照[创建 Ubuntu Data Science VM](/azure/machine-learning/data-science-virtual-machine/dsvm-ubuntu-intro)上的说明进行操作。 如果希望 DSVM 出现在 Azure Notebooks 的下拉列表中，则使用适用于 Linux (Ubuntu) 的 Data Science Virtual Machine 映像。  如果出于其他原因需要使用 Windows 或 CentOS 映像，则可以使用“直接计算”选项手动连接到 DSVM。
 
 ## <a name="edit-project-metadata"></a>编辑项目元数据
 

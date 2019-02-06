@@ -1,5 +1,5 @@
 ---
-title:使用 Azure 资源管理器部署工作室工作区 titleSuffix: Azure 机器学习工作室 description:如何使用 Azure 资源管理器模板为 Azure 机器学习部署工作区 services: machine-learning ms.service: machine-learning ms.component: studio ms.topic: article
+title:使用 Azure 资源管理器部署工作室工作区 titleSuffix:Azure 机器学习工作室 description:如何使用 Azure 资源管理器模板为 Azure 机器学习部署工作区 services: machine-learning ms.service: machine-learning ms.subservice: studio ms.topic: article
 
 author: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18 ms.date:02/05/2018
 ---
@@ -64,7 +64,7 @@ author: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18 ms.date:02/05/
 
 ### <a name="deploy-the-resource-group-based-on-the-template"></a>根据模板部署资源组
 * 打开 PowerShell
-* 为 Azure 资源管理器和 Azure 服务管理安装模块  
+* 为 Azure 资源管理器和 Azure 服务管理安装模块
 
 ```
 # Install the Azure Resource Manager modules from the PowerShell Gallery (press “A”)
@@ -74,9 +74,9 @@ Install-Module AzureRM -Scope CurrentUser
 Install-Module Azure -Scope CurrentUser
 ```
 
-   这些步骤将下载和安装完成剩余步骤所需的模块。 这在执行 PowerShell 命令的环境中仅需操作一次。   
+   这些步骤将下载和安装完成剩余步骤所需的模块。 这在执行 PowerShell 命令的环境中仅需操作一次。
 
-* 向 Azure 进行身份验证  
+* 向 Azure 进行身份验证
 
 ```
 # Authenticate (enter your credentials in the pop-up window)
@@ -110,22 +110,22 @@ $rgd = New-AzureRmResourceGroupDeployment -Name "demo" -TemplateFile "C:\temp\ml
 完成部署后，可直接访问所部属工作区的属性。 例如，可访问主密钥令牌。
 
 ```
-# Access Azure ML Workspace Token after its deployment.
+# Access Azure Machine Learning studio Workspace Token after its deployment.
 $rgd.Outputs.mlWorkspaceToken.Value
 ```
 
 另一种检索现有工作区的方法是使用 Invoke-AzureRmResourceAction 命令。 例如，可列出所有工作区的主要和辅助令牌。
 
-```  
+```
 # List the primary and secondary tokens of all workspaces
-Get-AzureRmResource |? { $_.ResourceType -Like "*MachineLearning/workspaces*"} |% { Invoke-AzureRmResourceAction -ResourceId $_.ResourceId -Action listworkspacekeys -Force}  
+Get-AzureRmResource |? { $_.ResourceType -Like "*MachineLearning/workspaces*"} |% { Invoke-AzureRmResourceAction -ResourceId $_.ResourceId -Action listworkspacekeys -Force}
 ```
 预配工作区后，还可使用[用于 Azure 机器学习的 PowerShell 模块](https://aka.ms/amlps)自动化许多 Azure 机器学习工作室任务。
 
 ## <a name="next-steps"></a>后续步骤
-* 了解有关[编写 Azure 资源管理器模板](../../azure-resource-manager/resource-group-authoring-templates.md)的详细信息 
-* 请查看 [Azure 快速启动模板存储库](https://github.com/Azure/azure-quickstart-templates)。 
-* 观看有关 [Azure 资源管理器](https://channel9.msdn.com/Events/Ignite/2015/C9-39)的视频。 
+* 了解有关[编写 Azure 资源管理器模板](../../azure-resource-manager/resource-group-authoring-templates.md)的详细信息
+* 请查看 [Azure 快速启动模板存储库](https://github.com/Azure/azure-quickstart-templates)。
+* 观看有关 [Azure 资源管理器](https://channel9.msdn.com/Events/Ignite/2015/C9-39)的视频。
 * 请参阅[资源管理器模板参考帮助](https://docs.microsoft.com/azure/templates/microsoft.machinelearning/allversions)
 <!--Image references--> [1]: ./media/deploy-with-resource-manager-template/azuresubscription.png [2]: ./media/deploy-with-resource-manager-template/resourcegroupprovisioning.png
 

@@ -6,17 +6,17 @@ author: marktab
 manager: cgronlun
 editor: cgronlun
 ms.service: machine-learning
-ms.component: team-data-science-process
+ms.subservice: team-data-science-process
 ms.topic: article
 ms.date: 11/04/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: be257b49e5ad5acc47a6daeec203e8513995e52e
-ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
+ms.openlocfilehash: be953621dbadee74361b2170c2a532cfec6ef77a
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54390943"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55477841"
 ---
 # <a name="create-hive-tables-and-load-data-from-azure-blob-storage"></a>从 Blob 存储创建 Hive 表和加载数据
 
@@ -25,12 +25,12 @@ ms.locfileid: "54390943"
 ## <a name="prerequisites"></a>先决条件
 本文假设用户具备以下条件：
 
-* 已创建 Azure 存储帐户。 有关说明，请参阅[关于 Azure 存储帐户](../../storage/common/storage-create-storage-account.md)。
-* 已预配具有 HDInsight 服务的自定义 Hadoop 群集。  有关说明，请参阅[为高级分析自定义 Azure HDInsight Hadoop 群集](customize-hadoop-cluster.md)。
-* 已启用了对群集的远程访问，登录并打开了 Hadoop 命令行控制台。 如果需要说明，请参阅[访问 Hadoop 群集的头节点](customize-hadoop-cluster.md)。
+* 已创建 Azure 存储帐户。 有关说明，请参阅[关于 Azure 存储帐户](../../storage/common/storage-introduction.md)。
+* 已预配具有 HDInsight 服务的自定义 Hadoop 群集。  如果需要说明，请参阅[在 HDInsight 中设置群集](../../hdinsight/hdinsight-hadoop-provision-linux-clusters.md)。
+* 已启用了对群集的远程访问，登录并打开了 Hadoop 命令行控制台。 如果需要说明，请参阅[管理 Apache Hadoop 群集](../../hdinsight/hdinsight-administer-use-portal-linux.md)。
 
 ## <a name="upload-data-to-azure-blob-storage"></a>将数据上传到 Azure Blob 存储
-如果按照[设置 Azure 虚拟机以进行高级分析](../data-science-virtual-machine/setup-virtual-machine.md)中提供的说明创建 Azure 虚拟机，那么此脚本文件应已下载到了虚拟机上的 *C:\\Users\\\<用户名\>\\Documents\\Data Science Scripts* 目录中。 这些 Hive 查询仅需要用户在相应的字段中插入自己的数据架构和 Azure Blob 存储配置，即可开始进行提交。
+如果按照[设置 Azure 虚拟机以进行高级分析](../../machine-learning/data-science-virtual-machine/overview.md)中提供的说明创建 Azure 虚拟机，那么此脚本文件应已下载到了虚拟机上的 *C:\\Users\\\<用户名\>\\Documents\\Data Science Scripts* 目录中。 这些 Hive 查询仅需要用户在相应的字段中插入自己的数据架构和 Azure Blob 存储配置，即可开始进行提交。
 
 假设 Hive 表的数据是**未压缩**的表格格式，并且该数据已上传至 Hadoop 群集所使用的存储帐户的默认或其他容器。
 
@@ -38,7 +38,7 @@ ms.locfileid: "54390943"
 
 * **下载** 24 个 [NYC 出租车行程数据](http://www.andresmh.com/nyctaxitrips)文件（12 个行程文件和 12 个费用文件），
 * 将所有文件**解压缩**为 .csv 文件，然后
-* 将它们**上传**到 Azure 存储帐户的默认或相应容器，此存储帐户按照[为高级分析流程和技术自定义 Azure HDInsight Hadoop 群集](customize-hadoop-cluster.md)主题中所述的过程进行创建。 可在此[文章](hive-walkthrough.md#upload)中找到将 .csv 文件上传到存储帐户的默认容器的流程。
+* 将它们上传到 Azure 存储帐户的默认设置（或适当的容器）；在[将 Azure 存储与 Azure HDInsight 群集配合使用](../../hdinsight/hdinsight-hadoop-use-blob-storage.md)主题中介绍了用于这类帐户的选项。 可在此[文章](hive-walkthrough.md#upload)中找到将 .csv 文件上传到存储帐户的默认容器的流程。
 
 ## <a name="submit"></a>如何提交 Hive 查询
 可通过以下方法提交 Hive 查询：

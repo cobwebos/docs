@@ -4,35 +4,62 @@ titleSuffix: Azure Machine Learning service
 description: 了解 Azure 机器学习服务的最新更新以及机器学习和数据准备 Python SDK。
 services: machine-learning
 ms.service: machine-learning
-ms.component: core
+ms.subservice: core
 ms.topic: reference
 author: hning86
 ms.author: haining
 ms.reviewer: j-martens
 ms.date: 12/20/2018
 ms.custom: seodec18
-ms.openlocfilehash: 5341c4901ca2a7aa0b4935e13d06c8fb5a1f0d1b
-ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
+ms.openlocfilehash: 1cf2f25ab96fde342244c99029db6a96c72a5681
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54304086"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55473096"
 ---
 # <a name="azure-machine-learning-service-release-notes"></a>Azure 机器学习服务发行说明
 
-本文介绍 Azure 机器学习服务版本。 
+本文介绍 Azure 机器学习服务版本。  有关每个 SDK 的完整说明，请访问以下内容的参考文档：
++ Azure 机器学习[适用于 Python 的主 SDK](https://aka.ms/aml-sdk)
++ Azure 机器学习[数据准备 SDK](https://aka.ms/data-prep-sdk)
+
+## <a name="2019-01-28"></a>2019-01-28
+
+### <a name="azure-machine-learning-sdk-for-python-v1010"></a>适用于 Python 的 Azure 机器学习 SDK v1.0.10
+
++ **更改**： 
+  + Azure 机器学习 SDK 不再将 azure-cli 包作为依赖项。 具体而言，azure-cli-core 和 azure-cli-profile 已从 azureml-core 中删除。 以下是对用户有所影响的更改：
+    + 如果在执行“az login”，然后使用 azureml-sdk，则 SDK 会再次执行浏览器或设备代码登录。 它不会使用“az login”所创建的任何凭据状态。
+    + 对于 Azure CLI 身份验证（如使用“az login”），请使用 azureml.core.authentication.AzureCliAuthentication 类。 对于 Azure CLI 身份验证，请在安装了 azureml-sdk 的 Python 环境中执行 pip install azure-cli。
+    + 如果在使用服务主体执行“az login”以实现自动化，则建议使用 azureml.core.authentication.ServicePrincipalAuthentication 类，因为 azureml-sdk 不会使用 azure CLI 所创建的凭据状态。 
+
++ **Bug 修复**：此版本主要包含次要 Bug 修复
+
+### <a name="azure-machine-learning-data-prep-sdk-v108"></a>Azure 机器学习数据准备 SDK v1.0.8
+
++ **Bug 修复**
+  + 显著改进了获取数据配置文件的性能。
+  + 修复了与错误报告相关的次要 bug。
+  
+### <a name="azure-portal-new-features"></a>Azure 门户：新功能
++ 报表的新拖放图表体验。 用户可以将列或属性从井中拖动到图表区域，系统会在其中基于数据类型自动选择适合于用户的图表类型。 用户可以将图表类型更改为其他适用类型或添加其他属性。
+
+    支持的图表类型：
+    - 折线图
+    - 直方图
+    - 堆积条形图
+    - 盒须图
+    - 散点图
+    - 气泡图
 
 ## <a name="2019-01-14"></a>2019-01-14
 
 ### <a name="azure-machine-learning-sdk-for-python-v108"></a>适用于 Python 的 Azure 机器学习 SDK v1.0.8
 
-+ **SDK 参考文档**： https://aka.ms/aml-sdk
-
 + **Bug 修复**：此版本主要包含次要 Bug 修复
 
 ### <a name="azure-machine-learning-data-prep-sdk-v107"></a>Azure 机器学习数据准备 SDK v1.0.7
-
-+ **SDK 参考文档**： https://aka.ms/data-prep-sdk
 
 + **新功能**
   + 数据存储改进（记录在[数据存储区操作指南](https://github.com/Microsoft/AMLDataPrepDocs/tree/master/how-to-guides/datastore.ipynb)中）
@@ -44,22 +71,15 @@ ms.locfileid: "54304086"
 
 ### <a name="azure-machine-learning-data-prep-sdk-v106"></a>Azure 机器学习数据准备 SDK v1.0.6
 
-+ **SDK 参考文档**： https://aka.ms/data-prep-sdk
-
 + **Bug 修复**
   + 修复了从 Spark 上的公共可读 Azure Blob 容器读取时出现的 bug
 
 ## <a name="2018-12-20"></a>2018-12-20 
 
 ### <a name="azure-machine-learning-sdk-for-python-v106"></a>适用于 Python 的 Azure 机器学习 SDK v1.0.6
-
-+ **SDK 参考文档**： https://aka.ms/aml-sdk
-
 + **Bug 修复**：此版本主要包含次要 Bug 修复
 
 ### <a name="azure-machine-learning-data-prep-sdk-v104"></a>Azure 机器学习数据准备 SDK v1.0.4
-
-+ **SDK 参考文档**： https://aka.ms/data-prep-sdk
 
 + **新功能**
   + 现在可以通过 `to_bool` 函数将不匹配的值转换为“错误”值。 这是针对 `to_bool` 和 `set_column_types` 的新的默认不匹配行为，而旧的默认行为是将不匹配的值转换为 False。

@@ -11,13 +11,13 @@ author: joesackmsft
 ms.author: josack
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 10/05/2018
-ms.openlocfilehash: 30ee4f1f56a3c8df44e7a14a131371acfebc6c9e
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.date: 01/25/2019
+ms.openlocfilehash: 78879947ae0e702604b56f1cb9c914acc4d4d592
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54052711"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55478468"
 ---
 # <a name="new-dba-in-the-cloud--managing-your-database-in-azure-sql-database"></a>云中的新 DBA - 在 Azure SQL 数据库中管理数据库
 
@@ -83,7 +83,7 @@ SQL 数据库中提供了[两种身份验证方法](sql-database-control-access.
 - [Azure Active Directory 身份验证](sql-database-aad-authentication.md)
 - SQL 身份验证
 
-不支持传统的 Windows 身份验证。 Azure Active Directory (AD) 是集中式标识和访问管理服务。 通过此服务可非常方便地为组织中的所有人员提供单一登录访问 (SSO)。 这意味着，所有 Azure 服务共享凭据，身份验证更容易。 AAD 支持 [MFA（多重身份验证）](sql-database-ssms-mfa-authentication.md)，只需[单击几次](../active-directory/hybrid/how-to-connect-install-express.md)，AAD 就可与 Windows Server Active Directory 集成。 SQL 身份验证的工作方式与之前完全相同。 提供用户名/密码后，即可对给定逻辑服务器上任何数据库的用户进行身份验证。 此外，还允许 SQL 数据库和 SQL 数据仓库在 Azure AD 域中提供多重身份验证和来宾用户帐户。 如果你已经有一个本地 Active Directory，则可以将该目录与 Azure Active Directory 联合在一起，以将目录扩展到 Azure。
+不支持传统的 Windows 身份验证。 Azure Active Directory (AD) 是集中式标识和访问管理服务。 通过此服务可非常方便地为组织中的所有人员提供单一登录访问 (SSO)。 这意味着，所有 Azure 服务共享凭据，身份验证更容易。 AAD 支持 [MFA（多重身份验证）](sql-database-ssms-mfa-authentication.md)，只需[单击几次](../active-directory/hybrid/how-to-connect-install-express.md)，AAD 就可与 Windows Server Active Directory 集成。 SQL 身份验证的工作方式与之前完全相同。 提供用户名/密码后，即可对给定 SQL 数据库服务器上任何数据库的用户进行身份验证。 此外，还允许 SQL 数据库和 SQL 数据仓库在 Azure AD 域中提供多重身份验证和来宾用户帐户。 如果你已经有一个本地 Active Directory，则可以将该目录与 Azure Active Directory 联合在一起，以将目录扩展到 Azure。
 
 |**如果你...**|**SQL 数据库/SQL 数据仓库**|
 |---|---|
@@ -106,7 +106,7 @@ SQL 数据库中提供了[两种身份验证方法](sql-database-control-access.
 
 #### <a name="firewall"></a>防火墙
 
-防火墙仅允许特定实体访问逻辑服务器，以此来防止外部实体访问服务器。 默认拒绝逻辑服务器内的所有连接和数据库，来自其他 Azure 服务的连接除外。 利用防火墙规则，可以仅向实体（例如，开发人员计算机）开放服务器的访问权限。为此，你只需通过防火墙允许该计算机的 IP 地址。 利用它还可以指定你想要允许访问逻辑服务器的 IP 范围。 例如，通过在防火墙设置页中指定一个范围，可以一次性添加组织中开发人员计算机 IP 地址。
+防火墙仅允许特定实体访问 SQL 数据库服务器，以此来防止外部实体访问服务器。 默认拒绝 SQL 数据库服务器内的所有连接和数据库，来自其他 Azure 服务的连接除外。 利用防火墙规则，可以仅向实体（例如，开发人员计算机）开放服务器的访问权限。为此，你只需通过防火墙允许该计算机的 IP 地址。 利用它还可以指定你想要允许访问 SQL 数据库服务器的 IP 范围。 例如，通过在防火墙设置页中指定一个范围，可以一次性添加组织中开发人员计算机 IP 地址。
 
 可以创建服务器级或数据库级的防火墙规则。 可使用 Azure 门户或通过 SSMS 创建服务器级防火墙规则。 有关如何设置服务器和数据库级防火墙规则的详细信息，请参阅：[在 SQL 数据库中创建防火墙规则](sql-database-security-tutorial.md#create-firewall-rules)。
 
@@ -240,7 +240,7 @@ Azure SQL 平台会分析服务器中数据库的利用率历史记录，作出�
 
 #### <a name="azure-portal"></a>Azure 门户
 
-Azure 门户通过选择数据库并单击“概述”窗格中的图表来显示单个数据库的利用率。 可以修改图表以显示多个指标，包括 CPU 百分比、DTU 百分比、数据 IO 百分比、会话百分比和数据库大小百分比。
+Azure 门户通过选择数据库并单击“概述”窗格中的图表来显示数据库的利用率。 可以修改图表以显示多个指标，包括 CPU 百分比、DTU 百分比、数据 IO 百分比、会话百分比和数据库大小百分比。
 
 ![监视图表](./media/sql-database-manage-after-migration/monitoring-chart.png)
 
